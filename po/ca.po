@@ -1,15 +1,16 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# (c) Softcatalà 2002, Jesús Moreno <jmmolas@wanadoo.es>
-# 
+# Catalan translation of Metacity.
+# Copyright (C) 2002, Free Software Foundation, Inc.
+# This file is distributed under the same license as the metacity package.
+# Softcatala <info@softcatala.org>, 2002.
+# Jesús Moreno <jmmolas@wanadoo.es>, 2002.
+# Jordi Mallach <jordi@sindominio.net>, 2003.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: metacity\n"
-"POT-Creation-Date: 2003-01-20 22:01-0500\n"
-"PO-Revision-Date: 2002-05-19 00:00-0400\n"
-"Last-Translator: Softcatalà <tradgnome@softcatala.org>\n"
+"Project-Id-Version: metacity 2.4.0.0\n"
+"POT-Creation-Date: 2003-01-23 17:52+0100\n"
+"PO-Revision-Date: 2003-01-23 18:26+0100\n"
+"Last-Translator: Jordi Mallach <jordi@sindominio.net>\n"
 "Language-Team: Softcatalà <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,11 +19,11 @@ msgstr ""
 #: src/tools/metacity-message.c:150
 #, c-format
 msgid "Usage: %s\n"
-msgstr ""
+msgstr "Forma d'ús: %s\n"
 
 #: src/tools/metacity-message.c:174 src/util.c:128
 msgid "Metacity was compiled without support for verbose mode\n"
-msgstr ""
+msgstr "Metacity es va compilar sense suport per al mode detallat\n"
 
 #: src/delete.c:60 src/delete.c:87 src/metacity-dialog.c:46
 #: src/theme-parser.c:467
@@ -111,7 +112,7 @@ msgstr ""
 "Ja hi ha algun altre programa utilitzant la clau %s amb els modificadors %x "
 "com a vinculació\n"
 
-#: src/keybindings.c:2246
+#: src/keybindings.c:2317
 #, fuzzy, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr ""
@@ -119,16 +120,16 @@ msgstr ""
 "la \n"
 "finalització d'una aplicació: %s\n"
 
-#: src/keybindings.c:2277
-#, fuzzy, c-format
+#: src/keybindings.c:2348
+#, c-format
 msgid "No command %d has been defined.\n"
-msgstr "No s'ha definit cap <draw_ops> amb el nom \"%s\""
+msgstr "No s'ha definit cap ordre %d.\n"
 
 #: src/main.c:64
 msgid ""
 "metacity [--disable-sm] [--sm-save-file=FILENAME] [--display=DISPLAY] [--"
 "replace] [--version]\n"
-msgstr ""
+msgstr "metacity [--disable-sm] [--sm-save-file=NOM DE FITXER] [--display=PANTALLA] [--replace] [--version]\n"
 
 #: src/main.c:71
 #, c-format
@@ -139,9 +140,14 @@ msgid ""
 "There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A "
 "PARTICULAR PURPOSE.\n"
 msgstr ""
+"metacity %s\n"
+"Copyright © 2001, 2002 Havoc Pennington, Red Hat, Inc., i altres\n"
+"Aquest és programari lliure; vegeu els fonts per a les condicons de còpia.\n"
+"No hi ha CAP garantia; ni tan sols la garantia implícita de COMERCIABILITAT\n"
+"o ADEQUACIÓ PER UN PROPÒSIT PARTICULAR.\n"
 
 #: src/main.c:326
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not find a theme! Be sure %s exists and contains the usual themes."
 msgstr ""
@@ -151,34 +157,31 @@ msgstr ""
 #: src/main.c:374
 #, c-format
 msgid "Failed to restart: %s\n"
-msgstr "Es impossible de reiniciar: %s\n"
+msgstr "No s'ha pogut reiniciar: %s\n"
 
 #: src/menu.c:52
-#, fuzzy
 msgid "Mi_nimize"
-msgstr "_Minimitza"
+msgstr "Mi_nimitza"
 
 #: src/menu.c:53
 msgid "Ma_ximize"
 msgstr "Ma_ximitza"
 
 #: src/menu.c:54
-#, fuzzy
 msgid "Unma_ximize"
-msgstr "_Desmaximitza"
+msgstr "Desma_ximitza"
 
 #: src/menu.c:55
 msgid "Roll _Up"
-msgstr ""
+msgstr "Enrotlla cap am_unt"
 
 #: src/menu.c:56
 msgid "_Unroll"
-msgstr ""
+msgstr "Desenro_tlla"
 
 #: src/menu.c:57
-#, fuzzy
 msgid "_Move"
-msgstr "Mo_u"
+msgstr "_Mou"
 
 #: src/menu.c:58
 msgid "_Resize"
@@ -192,35 +195,35 @@ msgstr "_Tanca"
 #. separator
 #: src/menu.c:62
 msgid "Put on _All Workspaces"
-msgstr "Posa-ho en _tots els llocs de treball"
+msgstr "Posa-ho en _tots els espais de treball"
 
 #: src/menu.c:63
 msgid "Only on _This Workspace"
-msgstr "Només en _aquest lloc de treball"
+msgstr "Només en aques_t espai de treball"
 
 #: src/menu.c:152 src/prefs.c:1669
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %d"
-msgstr "Només en el lloc de treball %s%d"
+msgstr "Espai de treball %d"
 
 #.
 #. * Above name is a pointer into the Workspace struct. Here we make
 #. * a copy copy so we can have our wicked way with it.
 #.
 #: src/menu.c:160
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %s%d"
-msgstr "Només en el lloc de treball %s%d"
+msgstr "espai de treball %s%d"
 
 #: src/menu.c:353
-#, fuzzy, c-format
+#, c-format
 msgid "Only on %s"
-msgstr "Només en el lloc de treball %s%d"
+msgstr "Només en l'%s"
 
 #: src/menu.c:355
-#, fuzzy, c-format
+#, c-format
 msgid "Move to %s"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Mou a l'%s"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the shift key. If the text on this key isn't typically
@@ -229,7 +232,7 @@ msgstr "Mou al lloc de treball %s%d"
 #.
 #: src/metaaccellabel.c:105
 msgid "Shift"
-msgstr ""
+msgstr "Shift"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the control key. If the text on this key isn't typically
@@ -238,7 +241,7 @@ msgstr ""
 #.
 #: src/metaaccellabel.c:111
 msgid "Ctrl"
-msgstr ""
+msgstr "Ctrl"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the alt key. If the text on this key isn't typically
@@ -247,7 +250,7 @@ msgstr ""
 #.
 #: src/metaaccellabel.c:117
 msgid "Alt"
-msgstr ""
+msgstr "Alt"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the meta key. If the text on this key isn't typically
@@ -256,7 +259,7 @@ msgstr ""
 #.
 #: src/metaaccellabel.c:123
 msgid "Meta"
-msgstr ""
+msgstr "Meta"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the super key. If the text on this key isn't typically
@@ -265,7 +268,7 @@ msgstr ""
 #.
 #: src/metaaccellabel.c:129
 msgid "Super"
-msgstr ""
+msgstr "Super"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the hyper key. If the text on this key isn't typically
@@ -274,7 +277,7 @@ msgstr ""
 #.
 #: src/metaaccellabel.c:135
 msgid "Hyper"
-msgstr ""
+msgstr "Hyper"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the mod2 key. If the text on this key isn't typically
@@ -283,7 +286,7 @@ msgstr ""
 #.
 #: src/metaaccellabel.c:141
 msgid "Mod2"
-msgstr ""
+msgstr "Mod2"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the mod3 key. If the text on this key isn't typically
@@ -292,7 +295,7 @@ msgstr ""
 #.
 #: src/metaaccellabel.c:147
 msgid "Mod3"
-msgstr ""
+msgstr "Mod3"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the mod4 key. If the text on this key isn't typically
@@ -301,7 +304,7 @@ msgstr ""
 #.
 #: src/metaaccellabel.c:153
 msgid "Mod4"
-msgstr ""
+msgstr "Mod4"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the mod5 key. If the text on this key isn't typically
@@ -310,7 +313,7 @@ msgstr ""
 #.
 #: src/metaaccellabel.c:159
 msgid "Mod5"
-msgstr ""
+msgstr "Mod5"
 
 #: src/metacity-dialog.c:86
 #, c-format
@@ -319,7 +322,7 @@ msgid ""
 "Force this application to exit?\n"
 "(Any open documents will be lost.)"
 msgstr ""
-"La finestra \"%s\" no respon.\n"
+"La finestra «%s» no respon.\n"
 "Voleu sortir d'aquesta aplicació?\n"
 "(Es perdrà qualsevol document obert.)"
 
@@ -329,17 +332,17 @@ msgstr "Finalitza l'aplicació"
 
 #: src/metacity-dialog.c:188
 msgid "Title"
-msgstr ""
+msgstr "Títol"
 
 #: src/metacity-dialog.c:200
 msgid "Class"
-msgstr ""
+msgstr "Classe"
 
 #: src/metacity-dialog.c:224
 msgid ""
 "These windows do not support \"save current setup\" and will have to be "
 "restarted manually next time you log in."
-msgstr ""
+msgstr "Aquestes finestres no suporten «desa la configuració actual» i es tindràn que reiniciar manualment la pròxima vegada que entreu."
 
 #: src/metacity-dialog.c:276
 #, c-format
@@ -347,10 +350,12 @@ msgid ""
 "There was an error running \"%s\":\n"
 "%s."
 msgstr ""
+"S'ha produït un error en executar «%s»:\n"
+"%s."
 
 #: src/metacity.desktop.in.h:1
 msgid "Metacity"
-msgstr ""
+msgstr "Metacity"
 
 #: src/metacity.schemas.in.h:1
 msgid "(Not implemented) Navigation works in terms of applications not windows"
@@ -401,9 +406,8 @@ msgid ""
 msgstr ""
 
 #: src/metacity.schemas.in.h:9
-#, fuzzy
 msgid "Close a window"
-msgstr "Tanca la finestra"
+msgstr "Tanca una finestra"
 
 #: src/metacity.schemas.in.h:10
 msgid "Commands to run in response to keybindings"
@@ -517,92 +521,77 @@ msgid "Move focus backwards between windows using popup display"
 msgstr ""
 
 #: src/metacity.schemas.in.h:33
-#, fuzzy
 msgid "Move window one workspace down"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Mou la finestra un espai de treball avall"
 
 #: src/metacity.schemas.in.h:34
 msgid "Move window one workspace to the left"
-msgstr ""
+msgstr "Mou la finestra un espai de treball a l'esquerra"
 
 #: src/metacity.schemas.in.h:35
 msgid "Move window one workspace to the right"
-msgstr ""
+msgstr "Mou la finestra un espai de treball a la dreta"
 
 #: src/metacity.schemas.in.h:36
-#, fuzzy
 msgid "Move window one workspace up"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Mou la finestra un espai de treball amunt"
 
 #: src/metacity.schemas.in.h:37
-#, fuzzy
 msgid "Move window to workspace 1"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Mou la finestra a l'espai de treball 1"
 
 #: src/metacity.schemas.in.h:38
-#, fuzzy
 msgid "Move window to workspace 10"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Mou la finestra a l'espai de treball 10"
 
 #: src/metacity.schemas.in.h:39
-#, fuzzy
 msgid "Move window to workspace 11"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Mou la finestra a l'espai de treball 11"
 
 #: src/metacity.schemas.in.h:40
-#, fuzzy
 msgid "Move window to workspace 12"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Mou la finestra a l'espai de treball 12"
 
 #: src/metacity.schemas.in.h:41
-#, fuzzy
 msgid "Move window to workspace 2"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Mou la finestra a l'espai de treball 2"
 
 #: src/metacity.schemas.in.h:42
-#, fuzzy
 msgid "Move window to workspace 3"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Mou la finestra a l'espai de treball 3"
 
 #: src/metacity.schemas.in.h:43
-#, fuzzy
 msgid "Move window to workspace 4"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Mou la finestra a l'espai de treball 4"
 
 #: src/metacity.schemas.in.h:44
-#, fuzzy
 msgid "Move window to workspace 5"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Mou la finestra a l'espai de treball 5"
 
 #: src/metacity.schemas.in.h:45
-#, fuzzy
 msgid "Move window to workspace 6"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Mou la finestra a l'espai de treball 6"
 
 #: src/metacity.schemas.in.h:46
-#, fuzzy
 msgid "Move window to workspace 7"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Mou la finestra a l'espai de treball 7"
 
 #: src/metacity.schemas.in.h:47
-#, fuzzy
 msgid "Move window to workspace 8"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Mou la finestra a l'espai de treball 8"
 
 #: src/metacity.schemas.in.h:48
-#, fuzzy
 msgid "Move window to workspace 9"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Mou la finestra a l'espai de treball 9"
 
 #: src/metacity.schemas.in.h:49
-#, fuzzy
 msgid "Name of workspace"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Nom de l'espai de treball"
 
 #: src/metacity.schemas.in.h:50
 #, fuzzy
 msgid "Number of workspaces"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Número d'espais de treball"
 
 #: src/metacity.schemas.in.h:51
 msgid ""
@@ -645,69 +634,57 @@ msgid ""
 msgstr ""
 
 #: src/metacity.schemas.in.h:57
-#, fuzzy
 msgid "Switch to workspace 1"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Canvia a l'espai de treball 1"
 
 #: src/metacity.schemas.in.h:58
-#, fuzzy
 msgid "Switch to workspace 10"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Canvia a l'espai de treball 10"
 
 #: src/metacity.schemas.in.h:59
-#, fuzzy
 msgid "Switch to workspace 11"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Canvia a l'espai de treball 11"
 
 #: src/metacity.schemas.in.h:60
-#, fuzzy
 msgid "Switch to workspace 12"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Canvia a l'espai de treball 12"
 
 #: src/metacity.schemas.in.h:61
-#, fuzzy
 msgid "Switch to workspace 2"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Canvia a l'espai de treball 2"
 
 #: src/metacity.schemas.in.h:62
-#, fuzzy
 msgid "Switch to workspace 3"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Canvia a l'espai de treball 3"
 
 #: src/metacity.schemas.in.h:63
-#, fuzzy
 msgid "Switch to workspace 4"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Canvia a l'espai de treball 4"
 
 #: src/metacity.schemas.in.h:64
-#, fuzzy
 msgid "Switch to workspace 5"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Canvia a l'espai de treball 5"
 
 #: src/metacity.schemas.in.h:65
-#, fuzzy
 msgid "Switch to workspace 6"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Canvia a l'espai de treball 6"
 
 #: src/metacity.schemas.in.h:66
-#, fuzzy
 msgid "Switch to workspace 7"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Canvia a l'espai de treball 7"
 
 #: src/metacity.schemas.in.h:67
-#, fuzzy
 msgid "Switch to workspace 8"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Canvia a l'espai de treball 8"
 
 #: src/metacity.schemas.in.h:68
-#, fuzzy
 msgid "Switch to workspace 9"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Canvia a l'espai de treball 9"
 
 #: src/metacity.schemas.in.h:69
 #, fuzzy
 msgid "Switch to workspace above this one"
-msgstr "Mou al lloc de treball %s%d"
+msgstr ""
 
 #: src/metacity.schemas.in.h:70
 #, fuzzy
@@ -716,11 +693,11 @@ msgstr "Mou al lloc de treball %s%d"
 
 #: src/metacity.schemas.in.h:71
 msgid "Switch to workspace on the left"
-msgstr ""
+msgstr "Canvia a l'espai de treball de la esquerra"
 
 #: src/metacity.schemas.in.h:72
 msgid "Switch to workspace on the right"
-msgstr ""
+msgstr "Canvia a l'espai de treball a la dreta"
 
 #: src/metacity.schemas.in.h:73
 msgid ""
@@ -1233,7 +1210,7 @@ msgstr ""
 #: src/metacity.schemas.in.h:127
 #, fuzzy
 msgid "The name of a workspace."
-msgstr "Mou al lloc de treball %s%d"
+msgstr "El nom d'un espai de treball."
 
 #: src/metacity.schemas.in.h:128
 msgid ""
@@ -1455,7 +1432,7 @@ msgstr "No s'ha pogut llançar la pantalla %d en la visualització '%s'\n"
 msgid ""
 "Failed to a open connection to a session manager, so window positions will "
 "not be saved: %s\n"
-msgstr ""
+msgstr "No s'ha pogut obrir una connexió al gestor de sessions, aixì que les posicions de les finestres no es desaran: %s\n"
 
 #: src/session.c:881 src/session.c:888
 #, c-format
@@ -2325,32 +2302,31 @@ msgstr "La constant \"%s\" ja s'ha definit"
 
 #: src/tools/metacity-properties.desktop.in.h:1
 msgid "Select how to give focus to windows"
-msgstr ""
+msgstr "Selecciona com donar el focus a les finestres"
 
 #: src/tools/metacity-properties.desktop.in.h:2
-#, fuzzy
 msgid "Window Focus"
-msgstr "Menú de la finestra"
+msgstr "Focus de les finestres"
 
 #: src/tools/metacity-properties.glade.h:1
 msgid "Clic_k to give focus"
-msgstr ""
+msgstr "_Clic per a obtindre el focus"
 
 #: src/tools/metacity-properties.glade.h:2
 msgid "Focus behavior:"
-msgstr ""
+msgstr "Comportament del focus:"
 
 #: src/tools/metacity-properties.glade.h:3
 msgid "Window Focus Preferences"
-msgstr ""
+msgstr "Preferències del focus de les finestres"
 
 #: src/tools/metacity-properties.glade.h:4
 msgid "_Point to give focus"
-msgstr ""
+msgstr "A_punta per a obtindre el focus"
 
 #: src/tools/metacity-properties.glade.h:5
 msgid "_Raise window on focus"
-msgstr ""
+msgstr "_Alça la finestra amb el focus"
 
 #: src/util.c:93
 #, c-format
@@ -2369,19 +2345,19 @@ msgstr "S'ha obert el fitxer de registre %s\n"
 
 #: src/util.c:203
 msgid "Window manager: "
-msgstr ""
+msgstr "Gestor de finestres: "
 
 #: src/util.c:347
 msgid "Bug in window manager: "
-msgstr ""
+msgstr "Error en el gestor de finestres: "
 
 #: src/util.c:376
 msgid "Window manager warning: "
-msgstr ""
+msgstr "Avís del gestor de finestres: "
 
 #: src/util.c:400
 msgid "Window manager error: "
-msgstr ""
+msgstr "Error del gestor de finestres: "
 
 #: src/window-props.c:161
 #, c-format
@@ -2403,7 +2379,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5457
+#: src/window.c:5471
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
