@@ -1,8 +1,8 @@
-2004-12-06  Elijah Newrne  <newren@gmail.com>
+2004-12-06  Elijah Newren  <newren@gmail.com>
 
 	* configure.in: post-release bump version to 2.8.13
 
-2004-12-06  Elijah Newrne  <newren@gmail.com>
+2004-12-06  Elijah Newren  <newren@gmail.com>
 
 	* configure.in: bump version to 2.8.8 in order to follow Fibonacci
 	sequence micro version numbering
