@@ -1,5 +1,14 @@
 2003-02-04  Havoc Pennington  <hp@redhat.com>
 
+	* src/tools/Makefile.am: fix to get metacity-properties.c in the 
+	distribution.
+
+	* NEWS: update
+
+	* configure.in: 2.4.21.1
+
+2003-02-04  Havoc Pennington  <hp@redhat.com>
+
 	* src/metacity.schemas.in: default to Simple instead of Atlanta
 
 	* src/themes/Makefile.am (THEMES): add Simple theme

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity HEAD\n"
-"POT-Creation-Date: 2002-12-20 21:49+0100\n"
+"POT-Creation-Date: 2003-02-04 23:41-0500\n"
 "PO-Revision-Date: 2002-12-17 21:03+0100\n"
 "Last-Translator: Christian Neumair <chris@gnome-de.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
@@ -61,7 +61,7 @@ msgstr ""
 msgid "Failed to get hostname: %s\n"
 msgstr "Rechnername konnte nicht ermittelt werden: %s\n"
 
-#: src/display.c:273
+#: src/display.c:279
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
 msgstr "X-Window-Systemanzeige »%s« konnte nicht geöffnet werden\n"
@@ -82,27 +82,27 @@ msgstr ""
 msgid "Fatal IO error %d (%s) on display '%s'.\n"
 msgstr "Schwerwiegender E/A-Fehler %d (%s) auf Anzeige »%s«.\n"
 
-#: src/frames.c:900
+#: src/frames.c:1010
 msgid "Close Window"
 msgstr "Fenster schließen"
 
-#: src/frames.c:903
+#: src/frames.c:1013
 msgid "Window Menu"
 msgstr "Fenstermenü"
 
-#: src/frames.c:906
+#: src/frames.c:1016
 msgid "Minimize Window"
 msgstr "Fenster minimieren"
 
-#: src/frames.c:909
+#: src/frames.c:1019
 msgid "Maximize Window"
 msgstr "Fenster maximieren"
 
-#: src/frames.c:912
+#: src/frames.c:1022
 msgid "Unmaximize Window"
 msgstr "Fenster wiederherstellen"
 
-#: src/keybindings.c:870
+#: src/keybindings.c:910
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
@@ -111,14 +111,14 @@ msgstr ""
 "Ein anderes Programm verwendet die Taste %s bereits mit den Umschaltern %x "
 "als Tastenkombination\n"
 
-#: src/keybindings.c:2206
+#: src/keybindings.c:2246
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr ""
 "Beim Starten eines Metacity-Dialogs, der einen Fehler zu einem Befehl "
 "anzeigen sollte, ist ein Fehler aufgetreten: %s\n"
 
-#: src/keybindings.c:2237
+#: src/keybindings.c:2277
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "Es wurde kein Befehl %d festgelegt.\n"
@@ -203,7 +203,7 @@ msgstr "Auf _alle Arbeitsflächen legen"
 msgid "Only on _This Workspace"
 msgstr "Nur auf _dieser Arbeitsfläche"
 
-#: src/menu.c:152 src/prefs.c:1680
+#: src/menu.c:152 src/prefs.c:1669
 #, c-format
 msgid "Workspace %d"
 msgstr "Arbeitsfläche %d"
@@ -1765,16 +1765,15 @@ msgstr "Modus des Fensterfokus"
 msgid "Window title font"
 msgstr "Schrift für Fenstertitel"
 
-#: src/prefs.c:430 src/prefs.c:446 src/prefs.c:462 src/prefs.c:478
-#: src/prefs.c:494 src/prefs.c:514 src/prefs.c:530 src/prefs.c:546
-#: src/prefs.c:562 src/prefs.c:578 src/prefs.c:594 src/prefs.c:610
-#: src/prefs.c:625 src/prefs.c:641 src/prefs.c:658 src/prefs.c:674
-#: src/prefs.c:690
+#: src/prefs.c:422 src/prefs.c:438 src/prefs.c:454 src/prefs.c:470
+#: src/prefs.c:486 src/prefs.c:506 src/prefs.c:522 src/prefs.c:538
+#: src/prefs.c:554 src/prefs.c:570 src/prefs.c:586 src/prefs.c:602
+#: src/prefs.c:618 src/prefs.c:635 src/prefs.c:651 src/prefs.c:667
 #, c-format
 msgid "GConf key \"%s\" is set to an invalid type\n"
 msgstr "GConf-Schlüssel »%s« hat einen ungültigen Typ\n"
 
-#: src/prefs.c:735
+#: src/prefs.c:712
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -1783,19 +1782,19 @@ msgstr ""
 "In der Konfigurationsdatenbank gefundenes »%s« ist kein gültiger Wert für "
 "den Mausknopf-Umschalter\n"
 
-#: src/prefs.c:759 src/prefs.c:1131
+#: src/prefs.c:736 src/prefs.c:1103
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
 msgstr "GConf-Schlüssel »%s« hat einen ungültigen Wert\n"
 
-#: src/prefs.c:843
+#: src/prefs.c:820
 #, c-format
 msgid "Could not parse font description \"%s\" from GConf key %s\n"
 msgstr ""
 "Schriftbeschreibung »%s« aus GConf-Schlüssel %s konnte nicht interpretiert "
 "werden\n"
 
-#: src/prefs.c:1028
+#: src/prefs.c:1005
 #, c-format
 msgid ""
 "%d stored in GConf key %s is not a reasonable number of workspaces, current "
@@ -1804,7 +1803,7 @@ msgstr ""
 "%d, gespeichert in GConf-Schlüssel %s ist keine sinnvolle Anzahl der "
 "Arbeitsflächen; das aktuelle Maximum ist %d\n"
 
-#: src/prefs.c:1093
+#: src/prefs.c:1065
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -1812,18 +1811,18 @@ msgstr ""
 "Provisorien (Workarounds) für defekte Anwendungen abgeschaltet. "
 "Möglicherweise funktionieren manche Anwendungen nicht richtig.\n"
 
-#: src/prefs.c:1158
+#: src/prefs.c:1130
 #, c-format
 msgid "%d stored in GConf key %s is out of range 0 to %d\n"
 msgstr ""
 "%d, gespeichert in GConf-Schlüssel %s, liegt außerhalb des Bereichs 0-%d\n"
 
-#: src/prefs.c:1253
+#: src/prefs.c:1222
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr "Fehler beim Festlegen der Anzahl der Arbeitsflächen auf %d: %s\n"
 
-#: src/prefs.c:1471
+#: src/prefs.c:1460
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -1832,7 +1831,7 @@ msgstr ""
 "In der Konfigurationsdatenbank gefundenes »%s« ist kein gültiger Wert für "
 "die Tastenkombination »%s«\n"
 
-#: src/prefs.c:1761
+#: src/prefs.c:1750
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr "Fehler beim Festlegen des Namens der Arbeitsflächen %d auf »%s«: %s\n"
@@ -2809,15 +2808,15 @@ msgstr "Protokolldatei %s geöffnet\n"
 msgid "Window manager: "
 msgstr "Fenstermanager:"
 
-#: src/util.c:345
+#: src/util.c:347
 msgid "Bug in window manager: "
 msgstr "Fehler in Fenstermanager:"
 
-#: src/util.c:374
+#: src/util.c:376
 msgid "Window manager warning: "
 msgstr "Fenstermanager-Warnung:"
 
-#: src/util.c:398
+#: src/util.c:400
 msgid "Window manager error: "
 msgstr "Fenstermanager-Fehler:"
 
@@ -2827,7 +2826,7 @@ msgid "Application set a bogus _NET_WM_PID %ld\n"
 msgstr "Application hat eine unsinnige _NET_WM_PID %ld angegeben\n"
 
 #. first time through
-#: src/window.c:4863
+#: src/window.c:4897
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -2849,7 +2848,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5423
+#: src/window.c:5457
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"

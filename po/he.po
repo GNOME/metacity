@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity.HEAD\n"
-"POT-Creation-Date: 2002-12-27 06:09+0100\n"
+"POT-Creation-Date: 2003-02-04 23:41-0500\n"
 "PO-Revision-Date: 2003-01-03 15:58+0200\n"
 "Last-Translator: Gil 'Dolfin' Osher <dolfin@rpg.org.il>\n"
 "Language-Team: Hebrew <he@li.org>\n"
@@ -48,7 +48,8 @@ msgstr "שגיאה בקריאה מתהליך הצגת תיבת דו-שיח: %s\n
 
 #: src/delete.c:331
 #, c-format
-msgid "Error launching metacity-dialog to ask about killing an application: %s\n"
+msgid ""
+"Error launching metacity-dialog to ask about killing an application: %s\n"
 msgstr "שגיאה בהפעלת תיבת דו-שיח של מטאסיטי השואלת אם להרוג יישום: %s\n"
 
 #: src/delete.c:429
@@ -56,7 +57,7 @@ msgstr "שגיאה בהפעלת תיבת דו-שיח של מטאסיטי השו�
 msgid "Failed to get hostname: %s\n"
 msgstr "נכשל בקבלת שם המארח: %s\n"
 
-#: src/display.c:273
+#: src/display.c:279
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
 msgstr "נכשל בפתיחת תצוגת מערכת X Window '%s'\n"
@@ -77,39 +78,39 @@ msgstr ""
 msgid "Fatal IO error %d (%s) on display '%s'.\n"
 msgstr "שגיאת קלט/פלט חמורה %d (%s) בתצוגה '%s'.\n"
 
-#: src/frames.c:900
+#: src/frames.c:1010
 msgid "Close Window"
 msgstr "סגור חלון"
 
-#: src/frames.c:903
+#: src/frames.c:1013
 msgid "Window Menu"
 msgstr "תפריט חלון"
 
-#: src/frames.c:906
+#: src/frames.c:1016
 msgid "Minimize Window"
 msgstr "מזער חלון"
 
-#: src/frames.c:909
+#: src/frames.c:1019
 msgid "Maximize Window"
 msgstr "הגדל חלון"
 
-#: src/frames.c:912
+#: src/frames.c:1022
 msgid "Unmaximize Window"
 msgstr "שחזר חלון"
 
-#: src/keybindings.c:870
+#: src/keybindings.c:910
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
 "binding\n"
 msgstr "תוכנית אחרת כבר משתמשת במקש %s עם המקש %x כצירוף\n"
 
-#: src/keybindings.c:2206
+#: src/keybindings.c:2246
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr "שגיאה בהפעלת תיבת דו-שיח של מטאסיטי כדי להדפיס שגיאה על הפקודה: %s\n"
 
-#: src/keybindings.c:2237
+#: src/keybindings.c:2277
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "אף פקודה %d לא הוגדרה.\n"
@@ -138,7 +139,8 @@ msgstr ""
 
 #: src/main.c:326
 #, c-format
-msgid "Could not find a theme! Be sure %s exists and contains the usual themes."
+msgid ""
+"Could not find a theme! Be sure %s exists and contains the usual themes."
 msgstr "לא ניתן למצוא ערכת נושא! ודא כי %s קיים ומכיל את ערכות הנושא הרגילות."
 
 #: src/main.c:374
@@ -188,7 +190,7 @@ msgstr "שים ב_כל סביבות העבודה"
 msgid "Only on _This Workspace"
 msgstr "רק בסביבת עבודה _זו"
 
-#: src/menu.c:152 src/prefs.c:1644
+#: src/menu.c:152 src/prefs.c:1669
 #, c-format
 msgid "Workspace %d"
 msgstr "סביבת עבודה %d"
@@ -581,8 +583,7 @@ msgid ""
 "workspaces)."
 msgstr ""
 "מספר סביבות עבודה. חייב להיות יותר מאפס, וחייב שיהיה בעל מקסימום קבוע (כדי "
-"למנוע את השמדת שולחן העבודה בטעות על-ידי בקשת 34 מיליון "
-"סביבות עבודה.)"
+"למנוע את השמדת שולחן העבודה בטעות על-ידי בקשת 34 מיליון סביבות עבודה.)"
 
 #: src/metacity.schemas.in.h:52
 msgid "Raise obscured window, otherwise lower"
@@ -1317,7 +1318,7 @@ msgid ""
 "modifier\n"
 msgstr ""
 
-#: src/prefs.c:736 src/prefs.c:1098
+#: src/prefs.c:736 src/prefs.c:1103
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
 msgstr ""
@@ -1334,30 +1335,30 @@ msgid ""
 "maximum is %d\n"
 msgstr ""
 
-#: src/prefs.c:1060
+#: src/prefs.c:1065
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
 msgstr ""
 
-#: src/prefs.c:1125
+#: src/prefs.c:1130
 #, c-format
 msgid "%d stored in GConf key %s is out of range 0 to %d\n"
 msgstr ""
 
-#: src/prefs.c:1217
+#: src/prefs.c:1222
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr ""
 
-#: src/prefs.c:1435
+#: src/prefs.c:1460
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
 "\"%s\"\n"
 msgstr ""
 
-#: src/prefs.c:1725
+#: src/prefs.c:1750
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr ""
@@ -1381,7 +1382,8 @@ msgstr ""
 
 #: src/screen.c:449
 #, c-format
-msgid "Could not acquire window manager selection on screen %d display \"%s\"\n"
+msgid ""
+"Could not acquire window manager selection on screen %d display \"%s\"\n"
 msgstr ""
 
 #: src/screen.c:505
@@ -1470,8 +1472,8 @@ msgid ""
 "Error launching metacity-dialog to warn about apps that don't support "
 "session management: %s\n"
 msgstr ""
-"שגיאה בהפעלת תיבת דו-שיח של מטאסיטי לאזהרה על יישומים שאינם "
-"תומכים בניהול תצורתם: %s\n"
+"שגיאה בהפעלת תיבת דו-שיח של מטאסיטי לאזהרה על יישומים שאינם תומכים בניהול "
+"תצורתם: %s\n"
 
 #: src/theme-parser.c:224 src/theme-parser.c:242
 #, c-format
@@ -1613,7 +1615,8 @@ msgid "No \"value\" attribute on element <%s>"
 msgstr ""
 
 #: src/theme-parser.c:1320 src/theme-parser.c:1334 src/theme-parser.c:1393
-msgid "Cannot specify both button_width/button_height and aspect ratio for buttons"
+msgid ""
+"Cannot specify both button_width/button_height and aspect ratio for buttons"
 msgstr ""
 
 #: src/theme-parser.c:1343
@@ -1904,7 +1907,8 @@ msgstr ""
 
 #: src/theme-parser.c:3679
 #, c-format
-msgid "Element <%s> is not allowed inside a name/author/date/description element"
+msgid ""
+"Element <%s> is not allowed inside a name/author/date/description element"
 msgstr ""
 
 #: src/theme-parser.c:3684
@@ -1914,7 +1918,8 @@ msgstr ""
 
 #: src/theme-parser.c:3696
 #, c-format
-msgid "Element <%s> is not allowed inside a distance/border/aspect_ratio element"
+msgid ""
+"Element <%s> is not allowed inside a distance/border/aspect_ratio element"
 msgstr ""
 
 #: src/theme-parser.c:3718
@@ -2056,7 +2061,8 @@ msgstr ""
 
 #: src/theme.c:1111
 #, c-format
-msgid "Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
+msgid ""
+"Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
 msgstr ""
 
 #: src/theme.c:1122
@@ -2107,12 +2113,14 @@ msgid "Coordinate expression results in division by zero"
 msgstr ""
 
 #: src/theme.c:1779
-msgid "Coordinate expression tries to use mod operator on a floating-point number"
+msgid ""
+"Coordinate expression tries to use mod operator on a floating-point number"
 msgstr ""
 
 #: src/theme.c:1836
 #, c-format
-msgid "Coordinate expression has an operator \"%s\" where an operand was expected"
+msgid ""
+"Coordinate expression has an operator \"%s\" where an operand was expected"
 msgstr ""
 
 #: src/theme.c:1845
@@ -2169,8 +2177,10 @@ msgstr ""
 
 #: src/theme.c:4362 src/theme.c:4394
 #, c-format
-msgid "Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
-msgstr "חסר <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
+msgid ""
+"Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
+msgstr ""
+"חסר <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
 
 #: src/theme.c:4445
 #, c-format
@@ -2201,7 +2211,8 @@ msgstr ""
 
 #: src/theme.c:5038 src/theme.c:5100
 #, c-format
-msgid "User-defined constants must begin with a capital letter; \"%s\" does not"
+msgid ""
+"User-defined constants must begin with a capital letter; \"%s\" does not"
 msgstr "קבועים מותאמים-אישית חייבים להתחיל באות גדולה; \"%s\" לא"
 
 #: src/theme.c:5046 src/theme.c:5108
@@ -2256,15 +2267,15 @@ msgstr ""
 msgid "Window manager: "
 msgstr "מנהל החלונות: "
 
-#: src/util.c:345
+#: src/util.c:347
 msgid "Bug in window manager: "
 msgstr "תקלה במנהל החלונות: "
 
-#: src/util.c:374
+#: src/util.c:376
 msgid "Window manager warning: "
 msgstr "אזהרת מנהל החלונות: "
 
-#: src/util.c:398
+#: src/util.c:400
 msgid "Window manager error: "
 msgstr "שגיאת מנהל החלונות: "
 
@@ -2274,7 +2285,7 @@ msgid "Application set a bogus _NET_WM_PID %ld\n"
 msgstr ""
 
 #. first time through
-#: src/window.c:4863
+#: src/window.c:4897
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -2288,7 +2299,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5423
+#: src/window.c:5457
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
@@ -2312,6 +2323,6 @@ msgstr "המאפיין %s של החלון 0x%lx מכיל UTF-8 לא תקני\n"
 
 #: src/xprops.c:479
 #, c-format
-msgid "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
+msgid ""
+"Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
 msgstr "המאפיין %s של החלון 0x%lx מכיל UTF-8 לא תקני לפריט %d ברשימה\n"
-

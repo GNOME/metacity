@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.4.0\n"
-"POT-Creation-Date: 2002-12-09 14:37-0500\n"
+"POT-Creation-Date: 2003-02-04 23:41-0500\n"
 "PO-Revision-Date: 2002-09-01 23:19+0300\n"
 "Last-Translator: Mugurel Tudor <mugurelu@go.ro>\n"
 "Language-Team: română <ro@li.org>\n"
@@ -14,6 +14,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 0.9.6\n"
+
+#: src/tools/metacity-message.c:150
+#, c-format
+msgid "Usage: %s\n"
+msgstr ""
+
+#: src/tools/metacity-message.c:174 src/util.c:128
+msgid "Metacity was compiled without support for verbose mode\n"
+msgstr ""
 
 #: src/delete.c:60 src/delete.c:87 src/metacity-dialog.c:46
 #: src/theme-parser.c:467
@@ -49,7 +58,7 @@ msgstr ""
 msgid "Failed to get hostname: %s\n"
 msgstr "Nu am putut încărca numele gazdei: %s\n"
 
-#: src/display.c:270
+#: src/display.c:279
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
 msgstr "Nu am putut deschide afişajul X Window System '%s'\n"
@@ -70,27 +79,27 @@ msgstr ""
 msgid "Fatal IO error %d (%s) on display '%s'.\n"
 msgstr "Eroare fatală IO %d (%s) la afişajul '%s'.\n"
 
-#: src/frames.c:900
+#: src/frames.c:1010
 msgid "Close Window"
 msgstr "Închide fereastra"
 
-#: src/frames.c:903
+#: src/frames.c:1013
 msgid "Window Menu"
 msgstr "Meniu fereastră"
 
-#: src/frames.c:906
+#: src/frames.c:1016
 msgid "Minimize Window"
 msgstr "Minimizează fereastra"
 
-#: src/frames.c:909
+#: src/frames.c:1019
 msgid "Maximize Window"
 msgstr "Maximizează fereastra"
 
-#: src/frames.c:912
+#: src/frames.c:1022
 msgid "Unmaximize Window"
 msgstr "Restaurează fereastra"
 
-#: src/keybindings.c:870
+#: src/keybindings.c:910
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
@@ -98,14 +107,14 @@ msgid ""
 msgstr ""
 "Alt program foloseşte deja tasta %s cu modificatorul %x drept combinaţie\n"
 
-#: src/keybindings.c:2206
+#: src/keybindings.c:2246
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr ""
 "Eroare la lansarea metacity-dialog pentru a afişa o eroare despre o comandă: "
 "%s\n"
 
-#: src/keybindings.c:2237
+#: src/keybindings.c:2277
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "Nici o comandă %d nu a fost definită.\n"
@@ -185,7 +194,7 @@ msgstr "Pe _toate ecranele"
 msgid "Only on _This Workspace"
 msgstr "Doar pe _acest ecran"
 
-#: src/menu.c:152 src/prefs.c:1644
+#: src/menu.c:152 src/prefs.c:1669
 #, c-format
 msgid "Workspace %d"
 msgstr "Ecranul %d"
@@ -1735,7 +1744,7 @@ msgstr ""
 "\"%s\" găsită în configuraţie nu este o cheie validă pentru combinaţia de "
 "taste \"%s\""
 
-#: src/prefs.c:736 src/prefs.c:1098
+#: src/prefs.c:736 src/prefs.c:1103
 #, fuzzy, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
 msgstr "Cheia GConf '%s' este setată la o valoare invalidă"
@@ -1754,7 +1763,7 @@ msgstr ""
 "%d stocat în cheia GConf %s nu este un număr rezonabil de spaţii de lucru, "
 "maximul este de %d\n"
 
-#: src/prefs.c:1060
+#: src/prefs.c:1065
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -1762,17 +1771,17 @@ msgstr ""
 "Soluţiile de compromis pentru aplicaţiile problematice sunt dezactivate. "
 "Există posibilitatea ca unele aplicaţii să nu se comporte corect.\n"
 
-#: src/prefs.c:1125
+#: src/prefs.c:1130
 #, c-format
 msgid "%d stored in GConf key %s is out of range 0 to %d\n"
 msgstr "%d stocat în cheia GConf %s este în afara domeniului 0 - %d\n"
 
-#: src/prefs.c:1217
+#: src/prefs.c:1222
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr "Eroare la setare numărului de ecrane la %d: %s\n"
 
-#: src/prefs.c:1435
+#: src/prefs.c:1460
 #, fuzzy, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -1781,7 +1790,7 @@ msgstr ""
 "\"%s\" găsită în configuraţie nu este o cheie validă pentru combinaţia de "
 "taste \"%s\""
 
-#: src/prefs.c:1720
+#: src/prefs.c:1750
 #, fuzzy, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr "Eroare la setare numărului de ecrane la %d: %s\n"
@@ -2740,23 +2749,19 @@ msgstr "Nu am putut să fdopen() fişierul de log %s: %s\n"
 msgid "Opened log file %s\n"
 msgstr "Am deschis fişierul de log %s\n"
 
-#: src/util.c:128
-msgid "Metacity was compiled without support for verbose mode\n"
-msgstr ""
-
 #: src/util.c:203
 msgid "Window manager: "
 msgstr ""
 
-#: src/util.c:343
+#: src/util.c:347
 msgid "Bug in window manager: "
 msgstr ""
 
-#: src/util.c:372
+#: src/util.c:376
 msgid "Window manager warning: "
 msgstr ""
 
-#: src/util.c:396
+#: src/util.c:400
 msgid "Window manager error: "
 msgstr ""
 
@@ -2766,7 +2771,7 @@ msgid "Application set a bogus _NET_WM_PID %ld\n"
 msgstr "Aplicaţia a setat un _NET_WM_PID fals %ld\n"
 
 #. first time through
-#: src/window.c:4847
+#: src/window.c:4897
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -2780,28 +2785,31 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5407
+#: src/window.c:5457
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
 "d x %d and max size %d x %d; this doesn't make much sense.\n"
 msgstr ""
 
-#: src/xprops.c:124
-#, c-format
+#: src/xprops.c:153
+#, fuzzy, c-format
 msgid ""
-"Window 0x%lx has property %s that was expected to have type %s format %d and "
-"actually has type %s format %d n_items %d\n"
+"Window 0x%lx has property %s\n"
+"that was expected to have type %s format %d\n"
+"and actually has type %s format %d n_items %d.\n"
+"This is most likely an application bug, not a window manager bug.\n"
+"The window has title=\"%s\" class=\"%s\" name=\"%s\"\n"
 msgstr ""
 "Fereastra 0x%lx are proprietatea %s care era aşteptată să aibă tipul %s "
 "formatul %d şi de fapt are tipul %s formatul %d n_items %d\n"
 
-#: src/xprops.c:369
+#: src/xprops.c:399
 #, c-format
 msgid "Property %s on window 0x%lx contained invalid UTF-8\n"
 msgstr "Proprietatea %s din fereastra 0x%lx conţine date invalide UTF-8\n"
 
-#: src/xprops.c:449
+#: src/xprops.c:479
 #, c-format
 msgid ""
 "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"

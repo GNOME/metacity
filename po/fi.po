@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
-"POT-Creation-Date: 2003-01-08 22:45+0200\n"
+"POT-Creation-Date: 2003-02-04 23:41-0500\n"
 "PO-Revision-Date: 2003-01-08 22:44+0200\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@hut.fi>\n"
 "Language-Team: Gnome Finnish Translation Team <gnome-fi-laatu@lists."
@@ -101,7 +101,7 @@ msgstr "Suurenna ikkuna"
 msgid "Unmaximize Window"
 msgstr "Palauta ikkuna"
 
-#: src/keybindings.c:870
+#: src/keybindings.c:910
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
@@ -109,14 +109,14 @@ msgid ""
 msgstr ""
 "Jokin muu ohjelma käyttää jo näppäintä %s muunnoksin %x pikanäppäimenään\n"
 
-#: src/keybindings.c:2206
+#: src/keybindings.c:2246
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr ""
 "Virhe metacity-dialogin käynnistämisessä komennon virheen tulostamista "
 "varten: %s\n"
 
-#: src/keybindings.c:2237
+#: src/keybindings.c:2277
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "Mitään komentoa %d ei ole määritelty.\n"
@@ -199,7 +199,7 @@ msgstr "_Näytä joka työtilassa"
 msgid "Only on _This Workspace"
 msgstr "Näytä _vain tässä työtilassa"
 
-#: src/menu.c:152 src/prefs.c:1649
+#: src/menu.c:152 src/prefs.c:1669
 #, c-format
 msgid "Workspace %d"
 msgstr "Työtila %d"
@@ -1736,7 +1736,7 @@ msgstr "%d, joka on GConf-avaimessa %s, ei ole välillä 0 - %d\n"
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr "Virhe työtilojen määrän asettamisessa arvoon %d: %s\n"
 
-#: src/prefs.c:1440
+#: src/prefs.c:1460
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -1745,7 +1745,7 @@ msgstr ""
 "\"%s\", joka on asetustietokannassa, ei ole kelvollinen näppäinsidonnan \"%s"
 "\" arvo\n"
 
-#: src/prefs.c:1730
+#: src/prefs.c:1750
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr "Virhe työtilan %d nimen asettamisessa nimeksi \"%s\": %s\n"
@@ -2720,7 +2720,7 @@ msgid "Application set a bogus _NET_WM_PID %ld\n"
 msgstr "Sovellus asetti virheellisen _NET_WM_PID:n %ld\n"
 
 #. first time through
-#: src/window.c:4893
+#: src/window.c:4897
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -2736,7 +2736,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5453
+#: src/window.c:5457
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
