@@ -1,3 +1,7 @@
+2003-03-10  Paul Duffy <dubhthach@zion.nuigalway.ie>
+    
+        * configure.in: Added Irish (ga) to ALL_LINGUAS
+	
 2003-03-10  Roozbeh Pournader  <roozbeh@sharif.edu>
 
 	* configure.in: Added Persian to ALL_LINGUAS.
