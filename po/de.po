@@ -1,13 +1,13 @@
 # German Metacity translation.
 # Copyright (C) 2002-2003 Free Software Foundation, Inc.
-# Christian Neumair <chris@gnome-de.org>, 2002, 2003.
 # Matthias Warkus <mawarkus@gnome.org>, 2002.
+# Christian Neumair <chris@gnome-de.org>, 2002, 2003.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Metacity 2.4.x\n"
-"POT-Creation-Date: 2003-01-21 20:32+0100\n"
-"PO-Revision-Date: 2002-01-21 20:32+0100\n"
+"POT-Creation-Date: 2003-01-22 20:23+0100\n"
+"PO-Revision-Date: 2003-01-22 20:23+0100\n"
 "Last-Translator: Christian Neumair <chris@gnome-de.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -35,7 +35,7 @@ msgstr "»%s« konnte nicht als Ganzzahl verarbeitet werden"
 #, c-format
 msgid "Did not understand trailing characters \"%s\" in string \"%s\""
 msgstr ""
-"Schließende Zeichen »%s« in Zeichenkette »%s« konnten nicht interpretiert "
+"Schließende Zeichen »%s« in Zeichenkette »%s« konnten nicht verarbeitet "
 "werden"
 
 #: src/delete.c:125
@@ -111,14 +111,14 @@ msgstr ""
 "Ein anderes Programm verwendet die Taste %s bereits mit den Umschaltern %x "
 "als Tastenkombination\n"
 
-#: src/keybindings.c:2246
+#: src/keybindings.c:2317
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr ""
 "Beim Starten eines Metacity-Dialogs, der einen Fehler zu einem Befehl "
 "anzeigen sollte, ist ein Fehler aufgetreten: %s\n"
 
-#: src/keybindings.c:2277
+#: src/keybindings.c:2348
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "Es wurde kein Befehl %d festgelegt.\n"
@@ -1791,7 +1791,7 @@ msgstr "GConf-Schlüssel »%s« hat einen ungültigen Wert\n"
 #, c-format
 msgid "Could not parse font description \"%s\" from GConf key %s\n"
 msgstr ""
-"Schriftbeschreibung »%s« aus GConf-Schlüssel %s konnte nicht interpretiert "
+"Schriftbeschreibung »%s« aus GConf-Schlüssel %s konnte nicht verarbeitet "
 "werden\n"
 
 #: src/prefs.c:1005
@@ -1911,7 +1911,7 @@ msgstr "Gespeicherte Sitzungsdatei %s konnte nicht gelesen werden: %s\n"
 #: src/session.c:1172
 #, c-format
 msgid "Failed to parse saved session file: %s\n"
-msgstr "Gespeicherte Sitzungsdatei konnte nicht interpretiert werden: %s\n"
+msgstr "Gespeicherte Sitzungsdatei konnte nicht verarbeitet werden: %s\n"
 
 #: src/session.c:1221
 msgid "<metacity_session> attribute seen but we already have the session ID"
@@ -1986,7 +1986,7 @@ msgstr "Ganzzahl %ld ist zu groß, aktuelles Maximum ist %d"
 #: src/theme-parser.c:521 src/theme-parser.c:602 src/theme-parser.c:626
 #, c-format
 msgid "Could not parse \"%s\" as a floating point number"
-msgstr "»%s« konnte nicht als Gleitkommazahl interpretiert werden"
+msgstr "»%s« konnte nicht als Gleitkommazahl verarbeitet werden"
 
 #: src/theme-parser.c:552
 #, c-format
@@ -2224,7 +2224,7 @@ msgstr "Kein Attribut »type« in Element <%s>"
 #: src/theme-parser.c:2209
 #, c-format
 msgid "Did not understand value \"%s\" for type of gradient"
-msgstr "Wert »%s« für Typ des Farbverlaufs konnte nicht interpretiert werden"
+msgstr "Wert »%s« für Typ des Farbverlaufs konnte nicht verarbeitet werden"
 
 #: src/theme-parser.c:2294
 #, c-format
@@ -2234,7 +2234,7 @@ msgstr "Kein Attribut »filename« in Element <%s>"
 #: src/theme-parser.c:2319 src/theme-parser.c:2827
 #, c-format
 msgid "Did not understand fill type \"%s\" for <%s> element"
-msgstr "Fülltyp »%s« für Element <%s> konnte nicht interpretiert werden"
+msgstr "Fülltyp »%s« für Element <%s> konnte nicht verarbeitet werden"
 
 #: src/theme-parser.c:2462 src/theme-parser.c:2595 src/theme-parser.c:2700
 #, c-format
@@ -2254,17 +2254,17 @@ msgstr "Kein Attribut »arrow« in Element <%s>"
 #: src/theme-parser.c:2529 src/theme-parser.c:2651 src/theme-parser.c:2739
 #, c-format
 msgid "Did not understand state \"%s\" for <%s> element"
-msgstr "Zustand »%s« für Element <%s> konnte nicht interpretiert werden"
+msgstr "Zustand »%s« für Element <%s> konnte nicht verarbeitet werden"
 
 #: src/theme-parser.c:2539 src/theme-parser.c:2661
 #, c-format
 msgid "Did not understand shadow \"%s\" for <%s> element"
-msgstr "Schatten »%s« für Element <%s> konnte nicht interpretiert werden"
+msgstr "Schatten »%s« für Element <%s> konnte nicht verarbeitet werden"
 
 #: src/theme-parser.c:2549
 #, c-format
 msgid "Did not understand arrow \"%s\" for <%s> element"
-msgstr "Pfeil »%s« für Element <%s> konnte nicht interpretiert werden"
+msgstr "Pfeil »%s« für Element <%s> konnte nicht verarbeitet werden"
 
 #: src/theme-parser.c:2962 src/theme-parser.c:3078
 #, c-format
@@ -2542,13 +2542,12 @@ msgstr ""
 #: src/theme.c:1000
 #, c-format
 msgid "Did not understand state \"%s\" in color specification"
-msgstr "Zustand »%s« in der Farbangabe konnte nicht interpretiert werden"
+msgstr "Zustand »%s« in der Farbangabe konnte nicht verarbeitet werden"
 
 #: src/theme.c:1013
 #, c-format
 msgid "Did not understand color component \"%s\" in color specification"
-msgstr ""
-"Farbkomponente »%s« in der Farbangabe konnte nicht interpretiert werden"
+msgstr "Farbkomponente »%s« in der Farbangabe konnte nicht verarbeitet werden"
 
 #: src/theme.c:1043
 #, c-format
@@ -2592,7 +2591,7 @@ msgstr "Der Mischfaktor »%s« in einer Mischfarbe ist negativ"
 #: src/theme.c:1161
 #, c-format
 msgid "Could not parse color \"%s\""
-msgstr "Die Farbe »%s« konnte nicht interpretiert werden"
+msgstr "Die Farbe »%s« konnte nicht verarbeitet werden"
 
 #: src/theme.c:1423
 #, c-format
@@ -2848,7 +2847,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5457
+#: src/window.c:5471
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
