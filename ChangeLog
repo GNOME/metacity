@@ -1,3 +1,8 @@
+2004-06-24  Elijah Newren  <newren@math.utah.edu>
+
+	* src/keybindings.c: (handle_toggle_desktop): Choose correct
+	window to focus when "un-showing" the desktop.  Fixes #144900.
+
 2004-06-16  Havoc Pennington  <hp@redhat.com>
 
 	* configure.in: switch to versioning 2.8.1.x on gnome-2-6 branch
