@@ -1,3 +1,4 @@
+# translation of metacity.gnome-2-2.he.po to Hebrew
 # translation of metacity.HEAD.po to Hebrew
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -5,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: metacity.HEAD\n"
-"POT-Creation-Date: 2003-02-04 23:36-0500\n"
-"PO-Revision-Date: 2003-01-03 15:58+0200\n"
+"Project-Id-Version: metacity.gnome-2-2.he\n"
+"POT-Creation-Date: 2003-03-17 12:34+0100\n"
+"PO-Revision-Date: 2003-03-17 18:30+0200\n"
 "Last-Translator: Gil 'Dolfin' Osher <dolfin@rpg.org.il>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -48,8 +49,7 @@ msgstr "שגיאה בקריאה מתהליך הצגת תיבת דו-שיח: %s\n
 
 #: src/delete.c:331
 #, c-format
-msgid ""
-"Error launching metacity-dialog to ask about killing an application: %s\n"
+msgid "Error launching metacity-dialog to ask about killing an application: %s\n"
 msgstr "שגיאה בהפעלת תיבת דו-שיח של מטאסיטי השואלת אם להרוג יישום: %s\n"
 
 #: src/delete.c:429
@@ -139,8 +139,7 @@ msgstr ""
 
 #: src/main.c:326
 #, c-format
-msgid ""
-"Could not find a theme! Be sure %s exists and contains the usual themes."
+msgid "Could not find a theme! Be sure %s exists and contains the usual themes."
 msgstr "לא ניתן למצוא ערכת נושא! ודא כי %s קיים ומכיל את ערכות הנושא הרגילות."
 
 #: src/main.c:374
@@ -332,6 +331,8 @@ msgid ""
 "These windows do not support \"save current setup\" and will have to be "
 "restarted manually next time you log in."
 msgstr ""
+"החלונות הללו אינם תומכים ב \"שמירת הגדרות נוכחיות\" ויצטרכו להפתח מחדש ידנית "
+"הפעם הבאה שתתחבר."
 
 #: src/metacity-dialog.c:276
 #, c-format
@@ -348,7 +349,7 @@ msgstr "מטאסיטי"
 
 #: src/metacity.schemas.in.h:1
 msgid "(Not implemented) Navigation works in terms of applications not windows"
-msgstr ""
+msgstr "(לא יושם) ניווט פועל במושגי יישומים לא חלונות"
 
 #: src/metacity.schemas.in.h:2
 msgid ""
@@ -384,7 +385,7 @@ msgstr ""
 
 #: src/metacity.schemas.in.h:7
 msgid "Automatically raises the focused window"
-msgstr ""
+msgstr "הרם אוטומטית את החלון הממוקד"
 
 #: src/metacity.schemas.in.h:8
 msgid ""
@@ -408,7 +409,7 @@ msgstr "ערכת נושא נוכחית"
 
 #: src/metacity.schemas.in.h:12
 msgid "Delay in milliseconds for the auto raise option"
-msgstr ""
+msgstr "השהייה במילישניות לאפשרות ההרמה האוטומטית"
 
 #: src/metacity.schemas.in.h:13
 msgid "Disable misfeatures that are required by old or broken applications"
@@ -446,7 +447,7 @@ msgstr ""
 
 #: src/metacity.schemas.in.h:18
 msgid "Lower window below other windows"
-msgstr ""
+msgstr "הנמך את החלון מתחת לחלונות אחרים"
 
 #: src/metacity.schemas.in.h:19
 msgid "Maximize a window"
@@ -474,7 +475,7 @@ msgstr "הזז חלון"
 
 #: src/metacity.schemas.in.h:25
 msgid "Move backward between panels and the desktop immediately"
-msgstr ""
+msgstr "הזז אחורה בין לוחות ושולחן העבודה מיידית"
 
 #: src/metacity.schemas.in.h:26
 msgid "Move backwards between panels and the desktop with popup"
@@ -482,11 +483,11 @@ msgstr ""
 
 #: src/metacity.schemas.in.h:27
 msgid "Move backwards between windows immediately"
-msgstr ""
+msgstr "הזז אחורה בין חלונות מיידית"
 
 #: src/metacity.schemas.in.h:28
 msgid "Move between panels and the desktop immediately"
-msgstr ""
+msgstr "הזז בין לוחות ושולחן העבודה מיידית"
 
 #: src/metacity.schemas.in.h:29
 msgid "Move between panels and the desktop with popup"
@@ -494,7 +495,7 @@ msgstr ""
 
 #: src/metacity.schemas.in.h:30
 msgid "Move between windows immediately"
-msgstr ""
+msgstr "הזז בין חלונות מיידית"
 
 #: src/metacity.schemas.in.h:31
 msgid "Move between windows with popup"
@@ -1273,7 +1274,7 @@ msgstr ""
 
 #: src/metacity.schemas.in.h:137
 msgid "Toggle fullscreen mode"
-msgstr ""
+msgstr "החלף מצב מסך-מלא"
 
 #: src/metacity.schemas.in.h:138
 msgid "Toggle maximization state"
@@ -1321,7 +1322,7 @@ msgstr ""
 #: src/prefs.c:736 src/prefs.c:1103
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
-msgstr ""
+msgstr "מפתח GConf '%s' נקבע לערך לא תקני\n"
 
 #: src/prefs.c:820
 #, c-format
@@ -1344,12 +1345,12 @@ msgstr ""
 #: src/prefs.c:1130
 #, c-format
 msgid "%d stored in GConf key %s is out of range 0 to %d\n"
-msgstr ""
+msgstr "%d השמור במפתח GConf %s הוא מחוץ לטווח שבין 0 ל %d\n"
 
 #: src/prefs.c:1222
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
-msgstr ""
+msgstr "שגיאה בקביעת מספר שולחנות העבודה ל %d: %s\n"
 
 #: src/prefs.c:1460
 #, c-format
@@ -1361,7 +1362,7 @@ msgstr ""
 #: src/prefs.c:1750
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
-msgstr ""
+msgstr "שגיאה בקביעת השם של סביבת העבודה %d ל \"%s\": %s\n"
 
 #: src/resizepopup.c:127
 #, c-format
@@ -1371,7 +1372,7 @@ msgstr "%d x %d"
 #: src/screen.c:392
 #, c-format
 msgid "Screen %d on display '%s' is invalid\n"
-msgstr ""
+msgstr "המסך %d בתצוגה '%s' אינו תקין\n"
 
 #: src/screen.c:408
 #, c-format
@@ -1382,8 +1383,7 @@ msgstr ""
 
 #: src/screen.c:449
 #, c-format
-msgid ""
-"Could not acquire window manager selection on screen %d display \"%s\"\n"
+msgid "Could not acquire window manager selection on screen %d display \"%s\"\n"
 msgstr ""
 
 #: src/screen.c:505
@@ -1391,7 +1391,7 @@ msgstr ""
 msgid "Screen %d on display \"%s\" already has a window manager\n"
 msgstr ""
 
-#: src/screen.c:673
+#: src/screen.c:674
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr ""
@@ -1615,8 +1615,7 @@ msgid "No \"value\" attribute on element <%s>"
 msgstr ""
 
 #: src/theme-parser.c:1320 src/theme-parser.c:1334 src/theme-parser.c:1393
-msgid ""
-"Cannot specify both button_width/button_height and aspect ratio for buttons"
+msgid "Cannot specify both button_width/button_height and aspect ratio for buttons"
 msgstr ""
 
 #: src/theme-parser.c:1343
@@ -1907,8 +1906,7 @@ msgstr ""
 
 #: src/theme-parser.c:3679
 #, c-format
-msgid ""
-"Element <%s> is not allowed inside a name/author/date/description element"
+msgid "Element <%s> is not allowed inside a name/author/date/description element"
 msgstr ""
 
 #: src/theme-parser.c:3684
@@ -1918,8 +1916,7 @@ msgstr ""
 
 #: src/theme-parser.c:3696
 #, c-format
-msgid ""
-"Element <%s> is not allowed inside a distance/border/aspect_ratio element"
+msgid "Element <%s> is not allowed inside a distance/border/aspect_ratio element"
 msgstr ""
 
 #: src/theme-parser.c:3718
@@ -2061,8 +2058,7 @@ msgstr ""
 
 #: src/theme.c:1111
 #, c-format
-msgid ""
-"Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
+msgid "Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
 msgstr ""
 
 #: src/theme.c:1122
@@ -2113,14 +2109,12 @@ msgid "Coordinate expression results in division by zero"
 msgstr ""
 
 #: src/theme.c:1779
-msgid ""
-"Coordinate expression tries to use mod operator on a floating-point number"
+msgid "Coordinate expression tries to use mod operator on a floating-point number"
 msgstr ""
 
 #: src/theme.c:1836
 #, c-format
-msgid ""
-"Coordinate expression has an operator \"%s\" where an operand was expected"
+msgid "Coordinate expression has an operator \"%s\" where an operand was expected"
 msgstr ""
 
 #: src/theme.c:1845
@@ -2177,10 +2171,8 @@ msgstr ""
 
 #: src/theme.c:4362 src/theme.c:4394
 #, c-format
-msgid ""
-"Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
-msgstr ""
-"חסר <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
+msgid "Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
+msgstr "חסר <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
 
 #: src/theme.c:4445
 #, c-format
@@ -2211,8 +2203,7 @@ msgstr ""
 
 #: src/theme.c:5038 src/theme.c:5100
 #, c-format
-msgid ""
-"User-defined constants must begin with a capital letter; \"%s\" does not"
+msgid "User-defined constants must begin with a capital letter; \"%s\" does not"
 msgstr "קבועים מותאמים-אישית חייבים להתחיל באות גדולה; \"%s\" לא"
 
 #: src/theme.c:5046 src/theme.c:5108
@@ -2285,7 +2276,7 @@ msgid "Application set a bogus _NET_WM_PID %ld\n"
 msgstr ""
 
 #. first time through
-#: src/window.c:4897
+#: src/window.c:4916
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -2299,7 +2290,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5471
+#: src/window.c:5490
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
@@ -2323,6 +2314,6 @@ msgstr "המאפיין %s של החלון 0x%lx מכיל UTF-8 לא תקני\n"
 
 #: src/xprops.c:479
 #, c-format
-msgid ""
-"Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
+msgid "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
 msgstr "המאפיין %s של החלון 0x%lx מכיל UTF-8 לא תקני לפריט %d ברשימה\n"
+
