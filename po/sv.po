@@ -1,5 +1,5 @@
 # Swedish messages for metacity.
-# Copyright (C) 2001, 2002 Free Software Foundation, Inc.
+# Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 # Christian Rose <menthos@menthos.com>, 2001, 2002.
 #
 # $Id$
@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
-"POT-Creation-Date: 2003-02-04 23:36-0500\n"
-"PO-Revision-Date: 2002-12-17 09:44+0100\n"
+"POT-Creation-Date: 2003-02-12 00:19+0100\n"
+"PO-Revision-Date: 2003-02-12 00:20+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1414,10 +1414,11 @@ msgid ""
 "keybinding for this action."
 msgstr ""
 "Tangentbindningen som används för att flytta fokus baklänges mellan fönster "
-"utan ett popupfönster (traditionellt &lt;Alt&gt;Escape). Formatet ser ut som "
-"\"&lt;Control&gt;a\" eller \"&lt;Shift&gt;&lt;Alt&gt;F1\". Tolken är ganska "
-"tillåtande och tillåter gemener och versaler och även förkortningar som "
-"\"&lt;Ctl&gt;\" och \"&lt;Ctrl&gt;\". Om du ställer in alternativet till "
+"utan ett popupfönster. Att hålla \"skift\"-tangenten nedtryckt tillsammans "
+"med denna tangentbindning gör att riktningen går framåt igen. Formatet ser "
+"ut som \"&lt;Control&gt;a\" eller \"&lt;Shift&gt;&lt;Alt&gt;F1\". Tolken är "
+"ganska tillåtande och tillåter gemener och versaler och även förkortningar "
+"som \"&lt;Ctl&gt;\" och \"&lt;Ctrl&gt;\". Om du ställer in alternativet till "
 "specialsträngen \"disabled\" kommer det inte att finnas en tangentbindning "
 "för denna åtgärd."
 
@@ -1432,10 +1433,11 @@ msgid ""
 "keybinding for this action."
 msgstr ""
 "Tangentbindningen som används för att flytta fokus baklänges mellan fönster "
-"med ett popupfönster (traditionellt &lt;Alt&gt;Tab). Formatet ser ut som "
-"\"&lt;Control&gt;a\" eller \"&lt;Shift&gt;&lt;Alt&gt;F1\". Tolken är ganska "
-"tillåtande och tillåter gemener och versaler och även förkortningar som "
-"\"&lt;Ctl&gt;\" och \"&lt;Ctrl&gt;\". Om du ställer in alternativet till "
+"med ett popupfönster. Att hålla \"skift\"-tangenten nedtryckt tillsammans "
+"med denna tangentbindning gör att riktningen går framåt igen. Formatet ser "
+"ut som \"&lt;Control&gt;a\" eller \"&lt;Shift&gt;&lt;Alt&gt;F1\". Tolken är "
+"ganska tillåtande och tillåter gemener och versaler och även förkortningar "
+"som \"&lt;Ctl&gt;\" och \"&lt;Ctrl&gt;\". Om du ställer in alternativet till "
 "specialsträngen \"disabled\" kommer det inte att finnas en tangentbindning "
 "för denna åtgärd."
 
