@@ -1,12 +1,12 @@
 # traditional Chinese translation of metacity.
-# Copyright (C) 2002, 03 Free Software Foundation, Inc.
+# Copyright (C) 2002, 2003 Free Software Foundation, Inc.
 # Abel Cheung <maddog@linux.org.hk>, 2002-2003.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: metacity 2.4.34\n"
-"POT-Creation-Date: 2003-05-02 20:06+0800\n"
-"PO-Revision-Date: 2003-05-02 21:53+0800\n"
+"Project-Id-Version: metacity 2.4.55\n"
+"POT-Creation-Date: 2003-05-30 08:35+0800\n"
+"PO-Revision-Date: 2003-05-30 08:20+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditioanl) <zh-l10n@linux.org.tw>\n"
 "MIME-Version: 1.0\n"
@@ -37,12 +37,12 @@ msgstr "無法理解字串“%2$s”中的結束字元“%1$s”"
 #: src/delete.c:125
 #, c-format
 msgid "Failed to parse message \"%s\" from dialog process\n"
-msgstr "無法從對話窗程序中分析訊息“%s”\n"
+msgstr "無法從對話方塊進程中分析訊息“%s”\n"
 
 #: src/delete.c:260
 #, c-format
 msgid "Error reading from dialog display process: %s\n"
-msgstr "從對話窗程序中讀取資料時出現錯誤：%s\n"
+msgstr "從對話方塊進程中讀取資料時出現錯誤：%s\n"
 
 #: src/delete.c:331
 #, c-format
@@ -68,7 +68,7 @@ msgid ""
 "the window manager.\n"
 msgstr ""
 "和畫面‘%s’失去聯繫；\n"
-"很可能 X 伺服程式已經中止運作，或是閣下強行中止了視窗管理程式。\n"
+"很可能 X 伺服程式已經中止運作，或是您強行中止了視窗總管。\n"
 
 #: src/errors.c:238
 #, c-format
@@ -100,7 +100,7 @@ msgstr "視窗還原最大化"
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
 "binding\n"
-msgstr "其它程式已經使用了按鍵 %s 加上輔助按鍵 %x 作為按鍵組合\n"
+msgstr "其它程式已經使用了按鍵 %s 加上特殊按鍵 %x 作為按鍵組合\n"
 
 #: src/keybindings.c:2317
 #, c-format
@@ -130,7 +130,7 @@ msgid ""
 "PARTICULAR PURPOSE.\n"
 msgstr ""
 "metacity %s\n"
-"版權所有 ©2001-2002 Havoc Pennington、Red Hat, Inc.、及其它開發者\n"
+"版權所有 ©2001-2002 Havoc Pennington、Red Hat, Inc. 及其它開發者\n"
 "本程式是自由軟體；有關版權的詳情請參考源程式碼。本程式不負任何擔保責任；亦無"
 "對適售性或特定目的適用性所為的默示性擔保。\n"
 
@@ -366,7 +366,7 @@ msgstr ""
 
 #: src/metacity.schemas.in.h:3
 msgid "Action on title bar double-click"
-msgstr "double-click 標題列所表示的操作程序"
+msgstr "雙擊標題列所表示的操作程序"
 
 #: src/metacity.schemas.in.h:4
 msgid "Activate window menu"
@@ -401,8 +401,8 @@ msgid ""
 "(right click). Modifier is expressed as \"&lt;Alt&gt;\" or \"&lt;Super&gt;\" "
 "for example."
 msgstr ""
-"當在視窗中按下滑鼠按鈕及本輔助按鍵會：移動視窗 (左按鈕)、調整視窗尺寸 (中按"
-"鈕) 或顯示視窗選單 (右按鈕)。輔助按鍵可以表示為“&lt;Alt&gt;”或“&lt;"
+"當在視窗中按下滑鼠按鈕及本特殊按鍵會：移動視窗 (左按鈕)、調整視窗尺寸 (中按"
+"鈕) 或顯示視窗選單 (右按鈕)。特殊按鍵可以表示為“&lt;Alt&gt;”或“&lt;"
 "Super&gt;”那樣。"
 
 #: src/metacity.schemas.in.h:9
@@ -467,7 +467,7 @@ msgstr ""
 
 #: src/metacity.schemas.in.h:18
 msgid "Lower window below other windows"
-msgstr "令某視窗被其它視窗遮蔽"
+msgstr "遮蔽某個視窗"
 
 #: src/metacity.schemas.in.h:19
 msgid "Maximize a window"
@@ -487,7 +487,7 @@ msgstr "將視窗最小化"
 
 #: src/metacity.schemas.in.h:23
 msgid "Modifier to use for modified window click actions"
-msgstr "按下指定的輔助按鍵後，點擊動作會代表不同的操作程序"
+msgstr "按下指定的特殊按鍵後，點擊動作會代表不同的操作程序"
 
 #: src/metacity.schemas.in.h:24
 msgid "Move a window"
@@ -619,7 +619,7 @@ msgstr "調整視窗尺寸"
 
 #: src/metacity.schemas.in.h:55
 msgid "Run a defined command"
-msgstr "執行已定義的指令"
+msgstr "執行指定的指令"
 
 #: src/metacity.schemas.in.h:56
 msgid ""
@@ -636,14 +636,14 @@ msgid ""
 "limitations in the specifications themselves, so sometimes a bug in no-"
 "workarounds mode won't be fixable without amending a spec."
 msgstr ""
-"某些應用程式不符合規格，令視窗管理程式要加入某些不應該有的功能。例如在最理想"
-"的情況下，Metacity 會將所有對話窗放置在和主視窗相應的位置。這樣需要忽略由應用"
-"程式所指定的對話窗位置。可是，某些版本的 Java/Swing 將它們的彈出式選單標記為"
-"對話窗，因些 Metacity 必須關閉指定對話窗位置的功能，令不合規格的 Java 程式可"
-"以運作。同類的情況還會在某些程式中發生。本選項會關閉對這些不合規格的程式的支"
-"援，如果閣下不需要執行任何不合規格的程式，這樣的用戶界面會較好。可是，預設的"
-"情況下必須支援這種功能；這個世界不是完美的。某些暫時性的解決途徑是為了解決規"
-"格上的限制，因此在不支援這些功能的情況下，不修正規格是不可能將漏洞解決的。"
+"某些應用程式不符合規格，令視窗總管要加入某些不應該有的功能。例如在最理想的情"
+"況下，Metacity 會將所有對話方塊放置在和主視窗相應的位置。這樣需要忽略由應用程"
+"式所指定的對話方塊位置。可是，某些版本的 Java/Swing 將它們的快顯式選單標記為"
+"對話方塊，因些 Metacity 必須關閉指定對話方塊位置的功能，令不合規格的 Java 程"
+"式可以運作。同類的情況還會在某些程式中發生。本選項會關閉對這些不合規格的程式"
+"的支援，如果您不需要執行任何不合規格的程式，這樣的用戶界面會較好。可是，預設"
+"的情況下必須支援這種功能；這個世界不是完美的。某些暫時性的解決途徑是為了解決"
+"規格上的限制，因此在不支援這些功能的情況下，不修正規格是不可能將漏洞解決的。"
 
 #: src/metacity.schemas.in.h:57
 msgid "Switch to workspace 1"
@@ -1557,8 +1557,8 @@ msgid ""
 "The time delay before raising a window if auto_raise is set to true. The "
 "delay is given in thousandths of a second."
 msgstr ""
-"如果選用 auto_raise 選項時，令視窗完全顯示前的延遲時間。延遲的時間會以 "
-"1/1000 秒為單位來表示。"
+"如果選用 auto_raise 選項時，令視窗不被遮蔽的延遲時間。延遲的時間會以 1/1000 "
+"秒為單位來表示。"
 
 #: src/metacity.schemas.in.h:130
 msgid ""
@@ -1711,7 +1711,7 @@ msgstr "GConf 設定鍵“%s”的設定值類型無效\n"
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
 "modifier\n"
-msgstr "組態資料庫中的“%s”設定值不是有效的滑鼠按鈕輔助按鍵\n"
+msgstr "組態資料庫中的“%s”設定值不是有效的滑鼠按鈕修改功能鍵\n"
 
 #: src/prefs.c:736 src/prefs.c:1103
 #, c-format
@@ -1775,20 +1775,20 @@ msgid ""
 "Screen %d on display \"%s\" already has a window manager; try using the --"
 "replace option to replace the current window manager.\n"
 msgstr ""
-"畫面‘%2$s’中的第 %1$d 個螢幕已經有了視窗管理程式；請嘗試使用 --replace 選項來"
-"替換目前的視窗管理程式。\n"
+"畫面‘%2$s’中的第 %1$d 個螢幕已經有了視窗總管；請嘗試使用 --replace 選項來替換"
+"目前的視窗總管。\n"
 
 # FIXME: I'm still unclear about the meaning of XGetSelectionOwner -- Abel
 #: src/screen.c:449
 #, c-format
 msgid ""
 "Could not acquire window manager selection on screen %d display \"%s\"\n"
-msgstr "無法在畫面“%2$s”中的第 %1$d 個螢幕進行視窗管理程式選擇程序\n"
+msgstr "無法在畫面“%2$s”中的第 %1$d 個螢幕進行視窗總管選擇程序\n"
 
 #: src/screen.c:505
 #, c-format
 msgid "Screen %d on display \"%s\" already has a window manager\n"
-msgstr "畫面“%2$s”中的第 %1$d 個螢幕已經有了視窗管理程式\n"
+msgstr "畫面“%2$s”中的第 %1$d 個螢幕已經有了視窗總管\n"
 
 #: src/screen.c:674
 #, c-format
@@ -1800,7 +1800,7 @@ msgstr "無法釋放畫面“%2$s”中的第 %1$d 個螢幕\n"
 msgid ""
 "Failed to a open connection to a session manager, so window positions will "
 "not be saved: %s\n"
-msgstr "無法連上作業階段管理程式，因此無法記錄視窗的位置：%s\n"
+msgstr "無法連上作業階段總管，因此無法記錄視窗的位置：%s\n"
 
 #: src/session.c:881 src/session.c:888
 #, c-format
@@ -1887,7 +1887,7 @@ msgstr "屬性“%s”在 <%s> 元素中出現了兩次"
 #: src/theme-parser.c:414 src/theme-parser.c:439
 #, c-format
 msgid "Attribute \"%s\" is invalid on <%s> element in this context"
-msgstr "在此部份內容中，屬性“%s”在 <%s> 元素中是無效的"
+msgstr "在此部分內容中，屬性“%s”在 <%s> 元素中是無效的"
 
 #: src/theme-parser.c:485
 #, c-format
@@ -2405,12 +2405,12 @@ msgstr "右"
 #: src/theme.c:222
 #, c-format
 msgid "frame geometry does not specify \"%s\" dimension"
-msgstr "邊框的位置大小中沒有指定“%s”部份的尺寸"
+msgstr "邊框的位置大小中沒有指定“%s”部分的尺寸"
 
 #: src/theme.c:241
 #, c-format
 msgid "frame geometry does not specify dimension \"%s\" for border \"%s\""
-msgstr "邊框的位置大小中沒有指定“%2$s”邊框中的“%1$s”部份"
+msgstr "邊框的位置大小中沒有指定“%2$s”邊框中的“%1$s”部分"
 
 #: src/theme.c:278
 #, c-format
@@ -2451,7 +2451,7 @@ msgstr "無法將“%s”理解為色彩規格中的狀態"
 #: src/theme.c:1013
 #, c-format
 msgid "Did not understand color component \"%s\" in color specification"
-msgstr "無法將“%s”理解為色彩規格中的色彩部份"
+msgstr "無法將“%s”理解為色彩規格中的色彩部分"
 
 #: src/theme.c:1043
 #, c-format
@@ -2513,7 +2513,7 @@ msgstr "座標表達式中出現無法分析的整數‘%s’"
 msgid ""
 "Coordinate expression contained unknown operator at the start of this text: "
 "\"%s\""
-msgstr "在座標表達式中，以下文字的開始部份含有不明的運算符：“%s”"
+msgstr "在座標表達式中，以下文字的開始部分含有不明的運算符：“%s”"
 
 #: src/theme.c:1588
 msgid "Coordinate expression was empty or not understood"
@@ -2680,19 +2680,19 @@ msgstr "已開啟紀錄檔 %s\n"
 
 #: src/util.c:203
 msgid "Window manager: "
-msgstr "視窗管理員："
+msgstr "視窗總管："
 
 #: src/util.c:347
 msgid "Bug in window manager: "
-msgstr "視窗管理員出現錯誤："
+msgstr "視窗總管出現錯誤："
 
 #: src/util.c:376
 msgid "Window manager warning: "
-msgstr "視窗管理員警告："
+msgstr "視窗總管警告："
 
 #: src/util.c:400
 msgid "Window manager error: "
-msgstr "視窗管理員錯誤："
+msgstr "視窗總管錯誤："
 
 #: src/window-props.c:161
 #, c-format
@@ -2750,3 +2750,165 @@ msgstr "視窗 0x%2$lx 的屬性 %1$s 中含有無效的 UTF-8 資料\n"
 msgid ""
 "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
 msgstr "視窗 0x%2$lx 的屬性清單 %1$s 的第 %3$d 個項目含有無效的 UTF-8 資料\n"
+
+#~ msgid ""
+#~ "metacity [--sm-disable] [--sm-client-id=ID] [--sm-save-file=FILENAME] [--"
+#~ "display=DISPLAY] [--replace] [--version]\n"
+#~ msgstr ""
+#~ "metacity [--disable-sm] [--sm-client-id=識別碼] [--sm-save-file=檔案名稱] "
+#~ "[--display=DISPLAY] [--replace] [--version]\n"
+
+#~ msgid "The window \"%s\" is not responding."
+#~ msgstr "視窗“%s”沒有回應。"
+
+#~ msgid ""
+#~ "Forcing this application to quit will cause you to lose any unsaved "
+#~ "changes."
+#~ msgstr "如果強制這個程式結束，會失去所有未儲存的資料。"
+
+#~ msgid "_Force Quit"
+#~ msgstr "強制結束(_F)"
+
+#~ msgid ""
+#~ "Determines whether applications or the system can generate audible "
+#~ "'beeps'; may be used in conjunction with 'visual bell' to allow silent "
+#~ "'beeps'."
+#~ msgstr ""
+#~ "決定程式或系統可否發出可聽見的「聲響」；配合「鈴聲視覺效果」後，就可以產生"
+#~ "不發出聲音的「聲響」。"
+
+#~ msgid "Enable Visual Bell"
+#~ msgstr "啟用鈴聲視覺效果"
+
+#~ msgid "Show the panel menu"
+#~ msgstr "顯示面板選單"
+
+#~ msgid "Show the panel run dialog"
+#~ msgstr "顯示面板的「執行程式」對話方塊"
+
+#~ msgid "System Bell is Audible"
+#~ msgstr "系統聲響可發出聲音"
+
+#~ msgid "Take a screenshot"
+#~ msgstr "擷取畫面快照"
+
+#~ msgid "Take a screenshot of a window"
+#~ msgstr "擷取視窗的畫面快照"
+
+#~ msgid ""
+#~ "Tells Metacity how to implement the visual indication that the system "
+#~ "bell or another application 'bell' indicator has been rung. Currently "
+#~ "there are two valid values, \"fullscreen\", which causes a fullscreen "
+#~ "white-black flash, and \"frame_flash\" which causes the titlebar of the "
+#~ "application which sent the bell signal to flash. If the application which "
+#~ "sent the bell is unknown (as is usually the case for the default \"system "
+#~ "beep\"), the currently focused window's titlebar is flashed."
+#~ msgstr ""
+#~ "讓 Metacity 知道當系統或程式發出「鈴聲」時，如何顯示該「鈴聲」的視覺效果。"
+#~ "目前可接受的值有兩個：\n"
+#~ "“fullscreen”令整個畫面以黑白方式閃爍\n"
+#~ "“frame_flash”令發出鈴聲的程式的視窗標題列閃動。如果不知道發出鈴聲的是哪一"
+#~ "個視窗 (主要的例子為預設的「系統聲響」)，則會令目前輸入焦點所在的視窗閃動"
+#~ "標題列"
+
+#~ msgid ""
+#~ "The /apps/metacity/global_keybindings/run_command_screenshot key defines "
+#~ "a keybinding which causes the command specified by this setting to be "
+#~ "invoked."
+#~ msgstr ""
+#~ "/apps/metacity/global_keybindings/run_command_screenshot 設定鍵中定義了相"
+#~ "應指令所使用的按鍵組合。"
+
+#~ msgid ""
+#~ "The /apps/metacity/global_keybindings/run_command_window_screenshot key "
+#~ "defines a keybinding which causes the command specified by this setting "
+#~ "to be invoked."
+#~ msgstr ""
+#~ "/apps/metacity/global_keybindings/run_command_window_screenshot 設定鍵中定"
+#~ "義了相應指令所使用的按鍵組合。"
+
+#~ msgid ""
+#~ "The keybinding which display's the panel's \"Run Program\" dialog box. "
+#~ "The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;"
+#~ "F1. The parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
+#~ "keybinding for this action."
+#~ msgstr ""
+#~ "本按鍵組合可以顯示「執行程式」對話方塊。\n"
+#~ "\n"
+#~ "格式可以像“&lt;Control&gt;a”或是“&lt;Shift&gt;&lt;Alt&gt;F1”。分析按鍵組合"
+#~ "字串時是比較寬鬆的，允許使用大寫或小寫，也允許使用像“&lt;Ctl&gt;”及“&lt;"
+#~ "Ctrl&gt;”等的縮寫。如果將此選項設定為字串“disabled”，則不會為該項操作安排"
+#~ "任何按鍵組合。"
+
+#~ msgid ""
+#~ "The keybinding which invokes the panel's screenshot utility to take a "
+#~ "screenshot of a window. The format looks like \"&lt;Control&gt;a\" or "
+#~ "\"&lt;Shift&gt;&lt;Alt&gt;F1. The parser is fairly liberal and allows "
+#~ "lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and "
+#~ "\"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled"
+#~ "\", then there will be no keybinding for this action."
+#~ msgstr ""
+#~ "本按鍵組合可以啟動畫面快照公用程式，擷取某視窗的畫面。\n"
+#~ "\n"
+#~ "格式可以像“&lt;Control&gt;a”或是“&lt;Shift&gt;&lt;Alt&gt;F1”。分析按鍵組合"
+#~ "字串時是比較寬鬆的，允許使用大寫或小寫，也允許使用像“&lt;Ctl&gt;”及“&lt;"
+#~ "Ctrl&gt;”等的縮寫。如果將此選項設定為字串“disabled”，則不會為該項操作安排"
+#~ "任何按鍵組合。"
+
+#~ msgid ""
+#~ "The keybinding which invokes the panel's screenshot utility. The format "
+#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1. The "
+#~ "parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
+#~ "keybinding for this action."
+#~ msgstr ""
+#~ "本按鍵組合可以啟動畫面快照公用程式。\n"
+#~ "\n"
+#~ "格式可以像“&lt;Control&gt;a”或是“&lt;Shift&gt;&lt;Alt&gt;F1”。分析按鍵組合"
+#~ "字串時是比較寬鬆的，允許使用大寫或小寫，也允許使用像“&lt;Ctl&gt;”及“&lt;"
+#~ "Ctrl&gt;”等的縮寫。如果將此選項設定為字串“disabled”，則不會為該項操作安排"
+#~ "任何按鍵組合。"
+
+#~ msgid ""
+#~ "The keybinding which shows the panel's main menu. The format looks like "
+#~ "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1. The parser is "
+#~ "fairly liberal and allows lower or upper case, and also abbreviations "
+#~ "such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to "
+#~ "the special string \"disabled\", then there will be no keybinding for "
+#~ "this action."
+#~ msgstr ""
+#~ "本按鍵組合可以顯示面板的主選單。\n"
+#~ "\n"
+#~ "格式可以像“&lt;Control&gt;a”或是“&lt;Shift&gt;&lt;Alt&gt;F1”。分析按鍵組合"
+#~ "字串時是比較寬鬆的，允許使用大寫或小寫，也允許使用像“&lt;Ctl&gt;”及“&lt;"
+#~ "Ctrl&gt;”等的縮寫。如果將此選項設定為字串“disabled”，則不會為該項操作安排"
+#~ "任何按鍵組合。"
+
+#~ msgid "The screenshot command"
+#~ msgstr "桌面畫面快照指令"
+
+#~ msgid "The window screenshot command"
+#~ msgstr "視窗畫面快照指令"
+
+#~ msgid ""
+#~ "This option determines the effects of double-clicking on the title bar. "
+#~ "Current valid options are 'toggle_shade', which will shade/unshade the "
+#~ "window, and 'toggle_maximize' which will maximize/unmaximize the window."
+#~ msgstr ""
+#~ "本選項決定在標題列上雙擊滑鼠按鈕的效果。目前有效的選項為：\n"
+#~ "‘toggle_shaded’會捲起/放下視窗，\n"
+#~ "‘toggle_maximized’會切換是否將視窗最大化。"
+
+#~ msgid ""
+#~ "Turns on a visual indication when an application or the system issues a "
+#~ "'bell' or 'beep'; useful for the hard-of-hearing and for use in noisy "
+#~ "environments, or when 'audible bell' is off."
+#~ msgstr ""
+#~ "當程式系統發出「聲響」或「鈴聲」時，以視覺方式表示。對於聽障人士、在嘈雜的"
+#~ "環境中、或者關閉了「發出聲音的鈴聲」時，這個設定會比較有用。"
+
+#~ msgid "Visual Bell Type"
+#~ msgstr "鈴聲視覺效果類型"
