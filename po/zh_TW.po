@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: metacity 2.4.13\n"
-"POT-Creation-Date: 2003-01-20 22:01-0500\n"
-"PO-Revision-Date: 2003-01-20 04:55+0800\n"
+"Project-Id-Version: metacity 2.4.21\n"
+"POT-Creation-Date: 2003-01-23 11:34+0800\n"
+"PO-Revision-Date: 2003-01-23 11:49+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditioanl) <zh-l10n@linux.org.tw>\n"
 "MIME-Version: 1.0\n"
@@ -102,12 +102,12 @@ msgid ""
 "binding\n"
 msgstr ""
 
-#: src/keybindings.c:2246
+#: src/keybindings.c:2317
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr ""
 
-#: src/keybindings.c:2277
+#: src/keybindings.c:2348
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "並未定義任何指令 %d。\n"
@@ -323,13 +323,15 @@ msgstr "標題"
 
 #: src/metacity-dialog.c:200
 msgid "Class"
-msgstr ""
+msgstr "分類"
 
 #: src/metacity-dialog.c:224
 msgid ""
 "These windows do not support \"save current setup\" and will have to be "
 "restarted manually next time you log in."
 msgstr ""
+"即使登出時選取「儲存目前的設定」，以下的視窗仍然無法記錄設定，必須在下次登入"
+"後以人手啟動。"
 
 #: src/metacity-dialog.c:276
 #, c-format
@@ -399,6 +401,9 @@ msgid ""
 "(right click). Modifier is expressed as \"&lt;Alt&gt;\" or \"&lt;Super&gt;\" "
 "for example."
 msgstr ""
+"當在視窗中按下滑鼠按鈕及本輔助按鍵會：移動視窗 (左按鈕)、調整視窗尺寸 (中按"
+"鈕) 或顯示視窗選單 (右按鈕)。輔助按鍵可以表示為“&lt;Alt&gt;”或“&lt;"
+"Super&gt;”那樣。"
 
 #: src/metacity.schemas.in.h:9
 msgid "Close a window"
@@ -1682,7 +1687,7 @@ msgstr "GConf 設定鍵“%s”的設定值類型無效\n"
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
 "modifier\n"
-msgstr ""
+msgstr "組態資料庫中的“%s”設定值不是有效的滑鼠按鈕輔助按鍵\n"
 
 #: src/prefs.c:736 src/prefs.c:1103
 #, c-format
@@ -1746,8 +1751,8 @@ msgid ""
 "Screen %d on display \"%s\" already has a window manager; try using the --"
 "replace option to replace the current window manager.\n"
 msgstr ""
-"顯示代號‘%2$s’中的第 %1$d 個畫面已經有了視窗管理程式；請嘗試使用 --replace 選"
-"項來替換目前的視窗管理程式。\n"
+"畫面‘%2$s’中的第 %1$d 個螢幕已經有了視窗管理程式；請嘗試使用 --replace 選項來"
+"替換目前的視窗管理程式。\n"
 
 #: src/screen.c:449
 #, c-format
@@ -1758,12 +1763,12 @@ msgstr ""
 #: src/screen.c:505
 #, c-format
 msgid "Screen %d on display \"%s\" already has a window manager\n"
-msgstr "顯示代號‘%2$s’中的第 %1$d 個畫面已經有了視窗管理程式\n"
+msgstr "畫面“%2$s”中的第 %1$d 個螢幕已經有了視窗管理程式\n"
 
 #: src/screen.c:673
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
-msgstr ""
+msgstr "無法釋放畫面“%2$s”中的第 %1$d 個螢幕\n"
 
 #: src/session.c:274
 #, c-format
@@ -1841,6 +1846,8 @@ msgid ""
 "Error launching metacity-dialog to warn about apps that don't support "
 "session management: %s\n"
 msgstr ""
+"目前有不支援作業階段管理的程式存在，但當啟動 metactiy-dialog 來顯示有關此類程"
+"式的警告訊息時出現錯誤：%s\n"
 
 #: src/theme-parser.c:224 src/theme-parser.c:242
 #, c-format
@@ -1855,7 +1862,7 @@ msgstr "屬性“%s”在 <%s> 元素中出現了兩次"
 #: src/theme-parser.c:414 src/theme-parser.c:439
 #, c-format
 msgid "Attribute \"%s\" is invalid on <%s> element in this context"
-msgstr ""
+msgstr "在此部份內容中，屬性“%s”在 <%s> 元素中是無效的"
 
 #: src/theme-parser.c:485
 #, c-format
@@ -1885,7 +1892,7 @@ msgstr "角度必須在 0.0 至 360.0 之間，此處的值為 %g\n"
 #: src/theme-parser.c:638
 #, c-format
 msgid "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g\n"
-msgstr "透明度必須在 0.0（完全透明）至 1.0（完全不透明），此處的值為 %g\n"
+msgstr "透明度必須在 0.0 (完全透明) 至 1.0 (完全不透明)之間，此處的值為 %g\n"
 
 #: src/theme-parser.c:684
 #, c-format
@@ -1913,7 +1920,7 @@ msgstr "沒有任何“%s”屬性出現在 <%s> 元素內"
 #: src/theme-parser.c:1020
 #, c-format
 msgid "<%s> name \"%s\" used a second time"
-msgstr ""
+msgstr "<%s> 的 name 屬性“%s”用了超過一次"
 
 #: src/theme-parser.c:849 src/theme-parser.c:955 src/theme-parser.c:1032
 #, c-format
@@ -1933,12 +1940,12 @@ msgstr ""
 #: src/theme-parser.c:1080
 #, c-format
 msgid "Unknown type \"%s\" on <%s> element"
-msgstr "不明的類型“%s”出現於 <%s> 元素 之內"
+msgstr "<%2$s> 元素之內出現不明的類型“%1$s”"
 
 #: src/theme-parser.c:1091
 #, c-format
 msgid "Unknown style_set \"%s\" on <%s> element"
-msgstr "不明的 style_set“%s”出現於 <%s> 元素 之內"
+msgstr "<%2$s> 元素之內出現不明的 style_set“%1$s”"
 
 #: src/theme-parser.c:1099
 #, c-format
@@ -1971,7 +1978,7 @@ msgstr "沒有定義任何名稱為“%s”的 <draw_ops>"
 #: src/theme-parser.c:3629
 #, c-format
 msgid "Element <%s> is not allowed below <%s>"
-msgstr "<%s> 元素 不可出現在 <%s> 之下"
+msgstr "<%s> 元素不可出現在 <%s> 之下"
 
 #: src/theme-parser.c:1282 src/theme-parser.c:1369 src/theme-parser.c:1439
 #, c-format
@@ -2192,7 +2199,7 @@ msgstr ""
 #: src/theme-parser.c:3298
 #, c-format
 msgid "Unknown state \"%s\" for button"
-msgstr ""
+msgstr "無法理解“%s”為按鈕的狀態"
 
 #: src/theme-parser.c:3306
 #, c-format
@@ -2303,15 +2310,15 @@ msgstr "<%s> 元素不可出現在 <%s> 元素內"
 
 #: src/theme-parser.c:3984
 msgid "No draw_ops provided for frame piece"
-msgstr ""
+msgstr "邊框沒有提供任何 draw_ops 屬性"
 
 #: src/theme-parser.c:3999
 msgid "No draw_ops provided for button"
-msgstr ""
+msgstr "按鈕沒有提供任何 draw_ops 屬性"
 
 #: src/theme-parser.c:4014
 msgid "No draw_ops provided for menu icon"
-msgstr ""
+msgstr "選單圖示沒有提供任何 draw_ops 屬性"
 
 #: src/theme-parser.c:4054
 #, c-format
@@ -2346,7 +2353,7 @@ msgstr "無法從檔案 %s 讀入佈景主題：%s\n"
 #: src/theme-parser.c:4402
 #, c-format
 msgid "Theme file %s did not contain a root <metacity_theme> element"
-msgstr ""
+msgstr "佈景檔 %s 沒有頂層的 <metacity_theme> 元素"
 
 #: src/theme.c:202
 msgid "top"
@@ -2475,7 +2482,7 @@ msgstr "座標表達式中出現無法分析的整數‘%s’"
 msgid ""
 "Coordinate expression contained unknown operator at the start of this text: "
 "\"%s\""
-msgstr ""
+msgstr "在座標表達式中，以下文字的開始部份含有不明的運算符：“%s”"
 
 #: src/theme.c:1588
 msgid "Coordinate expression was empty or not understood"
@@ -2494,22 +2501,22 @@ msgstr "座標表達式中出現將浮點數使用於餘數運算符 (mod) 的�
 #, c-format
 msgid ""
 "Coordinate expression has an operator \"%s\" where an operand was expected"
-msgstr ""
+msgstr "在座標表達式中，應該有運算子的地方出現了運算符“%s”"
 
 #: src/theme.c:1845
 msgid "Coordinate expression had an operand where an operator was expected"
-msgstr ""
+msgstr "在座標表達式中，應該有運算符的地方出現了運算子"
 
 #: src/theme.c:1853
 msgid "Coordinate expression ended with an operator instead of an operand"
-msgstr ""
+msgstr "結束座標表達式的是一個運算符而非運算子"
 
 #: src/theme.c:1863
 #, c-format
 msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
 "operand in between"
-msgstr ""
+msgstr "在座標表達式中，運算符“%c”緊隨運算符“%c”出現，但中間沒有任何運算子"
 
 #: src/theme.c:1982
 msgid ""
@@ -2572,6 +2579,8 @@ msgid ""
 "No frame style set for window type \"%s\" in theme \"%s\", add a <window "
 "type=\"%s\" style_set=\"whatever\"/> element"
 msgstr ""
+"在佈景主題“%2$s”中，視窗類型“%1$s”沒有指定任何邊框款式。請加上 <window type="
+"\"%3$s\" style_set=\"whatever\"/> 元素"
 
 #: src/theme.c:4651
 #, c-format
@@ -2642,7 +2651,7 @@ msgstr "視窗管理員："
 
 #: src/util.c:347
 msgid "Bug in window manager: "
-msgstr ""
+msgstr "視窗管理員出現錯誤："
 
 #: src/util.c:376
 msgid "Window manager warning: "
@@ -2672,7 +2681,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5457
+#: src/window.c:5471
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
