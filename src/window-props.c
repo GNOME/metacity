@@ -439,7 +439,6 @@ init_normal_hints (MetaDisplay   *display,
   value->atom = XA_WM_NORMAL_HINTS;
 }
 
-
 #define FLAG_TOGGLED_ON(old,new,flag) \
  (((old)->flags & (flag)) == 0 &&     \
   ((new)->flags & (flag)) != 0)

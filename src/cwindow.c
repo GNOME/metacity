@@ -3,8 +3,28 @@
 #include "errors.h"
 #include "compositor.h"
 #include "matrix.h"
+#include <X11/extensions/Xcomposite.h>
 
 #define SHADOW_OFFSET 3
+
+typedef struct Geometry Geometry;
+typedef struct FreezeInfo FreezeInfo;
+
+struct Geometry
+{
+  int x;
+  int y;
+  int width;
+  int height;
+  int border_width;
+};
+
+struct FreezeInfo
+{
+  Geometry	geometry;
+  Pixmap	pixmap;
+};
+
 /* Unlike MetaWindow, there's one of these for _all_ toplevel windows,
  * override redirect or not. We also track unmapped windows as
  * otherwise on window map we'd have to determine where the
@@ -18,25 +38,15 @@ struct CWindow
   
 #ifdef HAVE_COMPOSITE_EXTENSIONS
   MetaCompositor *compositor;
-  
-  int x;
-  int y;
-  int width;
-  int height;
-  int border_width;
-  
-  int pending_x;
-  int pending_y;
-  int pending_width;
-  int pending_height;
-  int pending_border_width;
+
+  Geometry geometry;
   
   Damage          damage;
   XserverRegion   last_painted_extents;
   
   XserverRegion   border_size;
-  
-  Pixmap          pixmap;
+
+  FreezeInfo *freeze_info;
   
   unsigned int managed : 1;
   unsigned int damaged : 1;
@@ -67,10 +77,11 @@ cwindow_free (CWindow *cwindow)
   XDamageDestroy (cwindow_get_xdisplay (cwindow), cwindow->damage);
   
   /* Free our window pixmap name */
-  if (cwindow->pixmap != None)
-    XFreePixmap (cwindow_get_xdisplay (cwindow),
-		 cwindow->pixmap);
-  meta_error_trap_pop (meta_compositor_get_display (cwindow->compositor), FALSE);
+  if (cwindow->freeze_info)
+    cwindow_thaw (cwindow);
+  
+  meta_error_trap_pop (meta_compositor_get_display (cwindow->compositor),
+		       FALSE);
   
   g_free (cwindow);
 }
@@ -80,12 +91,18 @@ cwindow_free (CWindow *cwindow)
 XserverRegion
 cwindow_extents (CWindow *cwindow)
 {
+  Geometry *geometry;
   XRectangle r;
+
+  if (cwindow->freeze_info)
+    geometry = &cwindow->freeze_info->geometry;
+  else
+    geometry = &cwindow->geometry;
   
-  r.x = cwindow->x;
-  r.y = cwindow->y;
-  r.width = cwindow->width;
-  r.height = cwindow->height;
+  r.x = geometry->x;
+  r.y = geometry->y;
+  r.width = geometry->width;
+  r.height = geometry->height;
   
   r.width += SHADOW_OFFSET;
   r.height += SHADOW_OFFSET;
@@ -98,10 +115,17 @@ XserverRegion
 cwindow_get_opaque_region (CWindow *cwindow)
 {
   XRectangle rect;
-  rect.x = cwindow->x;
-  rect.y = cwindow->y;
-  rect.width = cwindow->width;
-  rect.height = cwindow->height;
+  Geometry *geometry;
+
+  if (cwindow->freeze_info)
+    geometry = &cwindow->freeze_info->geometry;
+  else
+    geometry = &cwindow->geometry;
+  
+  rect.x = geometry->x;
+  rect.y = geometry->y;
+  rect.width = geometry->width;
+  rect.height = geometry->height;
 
   return XFixesCreateRegion (cwindow_get_xdisplay (cwindow), &rect, 1);
 }
@@ -109,10 +133,14 @@ cwindow_get_opaque_region (CWindow *cwindow)
 Drawable
 cwindow_get_drawable (CWindow *cwindow)
 {
-  if (cwindow->pixmap)
-    return cwindow->pixmap;
+  if (cwindow->freeze_info)
+    {
+      return cwindow->freeze_info->pixmap;
+    }
   else
-    return cwindow->xwindow;
+    {
+      return cwindow->xwindow;
+    }
 }
 
 void
@@ -158,7 +186,9 @@ cwindow_get_screen (CWindow *cwindow)
 }
 
 CWindow *
-cwindow_new (MetaCompositor *compositor, Window xwindow, XWindowAttributes *attrs)
+cwindow_new (MetaCompositor *compositor,
+	     Window xwindow,
+	     XWindowAttributes *attrs)
 {
   CWindow *cwindow;
   Damage damage;
@@ -178,11 +208,14 @@ cwindow_new (MetaCompositor *compositor, Window xwindow, XWindowAttributes *attr
   cwindow->xwindow = xwindow;
   cwindow->screen_index = XScreenNumberOfScreen (attrs->screen);
   cwindow->damage = damage;
-  cwindow->x = attrs->x;
-  cwindow->y = attrs->y;
-  cwindow->width = attrs->width;
-  cwindow->height = attrs->height;
-  cwindow->border_width = attrs->border_width;
+  
+  cwindow->freeze_info = NULL;
+
+  cwindow->geometry.x = attrs->x;
+  cwindow->geometry.y = attrs->y;
+  cwindow->geometry.width = attrs->width;
+  cwindow->geometry.height = attrs->height;
+  cwindow->geometry.border_width = attrs->border_width;
   
   if (attrs->class == InputOnly)
     cwindow->input_only = TRUE;
@@ -190,16 +223,6 @@ cwindow_new (MetaCompositor *compositor, Window xwindow, XWindowAttributes *attr
     cwindow->input_only = FALSE;
   
   cwindow->visual = attrs->visual;
-  
-#if 0
-  if (compositor->have_name_window_pixmap)
-    {
-      meta_error_trap_push (meta_compositor_get_display (compositor));
-      cwindow->pixmap = XCompositeNameWindowPixmap (meta_compositor_get_display (compositor)->xdisplay,
-						    cwindow->xwindow);
-      meta_error_trap_pop (meta_compositor_get_display (compositor), FALSE);
-    }
-#endif
   
   /* viewable == mapped for the root window, since root can't be unmapped */
   cwindow->viewable = (attrs->map_state == IsViewable);
@@ -254,43 +277,37 @@ cwindow_get_last_painted_extents (CWindow *cwindow)
 int
 cwindow_get_x (CWindow *cwindow)
 {
-  return cwindow->x;
+  return cwindow->geometry.x;
 }
 
 int
 cwindow_get_y (CWindow *cwindow)
 {
-  return cwindow->y;
+  return cwindow->geometry.y;
 }
 
 int
 cwindow_get_width (CWindow *cwindow)
 {
-  return cwindow->width;
+  return cwindow->geometry.width;
 }
 
 int
 cwindow_get_height (CWindow *cwindow)
 {
-  return cwindow->height;
+  return cwindow->geometry.height;
 }
 
 int
 cwindow_get_border_width (CWindow *cwindow)
 {
-  return cwindow->border_width;
+  return cwindow->geometry.border_width;
 }
 
 Damage
 cwindow_get_damage (CWindow *cwindow)
 {
   return cwindow->damage;
-}
-
-Pixmap
-cwindow_get_pixmap (CWindow *cwindow)
-{
-  return cwindow->pixmap;
 }
 
 MetaCompositor *
@@ -300,57 +317,27 @@ cwindow_get_compositor (CWindow *cwindow)
 }
 
 void
-cwindow_set_pending_x (CWindow *cwindow, int pending_x)
-{
-  cwindow->pending_x = pending_x;
-}
-
-void
-cwindow_set_pending_y (CWindow *cwindow, int pending_y)
-{
-  cwindow->pending_y = pending_y;
-}
-
-void
-cwindow_set_pending_width (CWindow *cwindow, int pending_width)
-{
-  cwindow->pending_width = pending_width;
-}
-
-void
-cwindow_set_pending_height (CWindow *cwindow, int pending_height)
-{
-  cwindow->pending_height = pending_height;
-}
-
-void
-cwindow_set_pending_border_width (CWindow *cwindow, int pending_border_width)
-{
-  cwindow->pending_border_width = pending_border_width;
-}
-
-void
 cwindow_set_x (CWindow *cwindow, int x)
 {
-  cwindow->x = x;
+  cwindow->geometry.x = x;
 }
 
 void
 cwindow_set_y (CWindow *cwindow, int y)
 {
-  cwindow->y = y;
+  cwindow->geometry.y = y;
 }
 
 void
 cwindow_set_width (CWindow *cwindow, int width)
 {
-  cwindow->width = width;
+  cwindow->geometry.width = width;
 }
 
 void
 cwindow_set_height (CWindow *cwindow, int height)
 {
-  cwindow->height = height;
+  cwindow->geometry.height = height;
 }
 
 
@@ -364,7 +351,7 @@ cwindow_set_viewable (CWindow *cwindow, gboolean viewable)
 void
 cwindow_set_border_width (CWindow *cwindow, int border_width)
 {
-  cwindow->border_width = border_width;
+  cwindow->geometry.border_width = border_width;
 }
 
 static XFixed
@@ -735,7 +722,7 @@ cwindow_process_damage_notify (CWindow *cwindow, XDamageNotifyEvent *event)
   XserverRegion region;
   MetaScreen *screen;
   MetaWindow *window;
-  
+
   window = meta_display_lookup_x_window (meta_compositor_get_display (cwindow->compositor),
 					 cwindow_get_xwindow (cwindow));
 #if 0
@@ -762,7 +749,11 @@ cwindow_process_damage_notify (CWindow *cwindow, XDamageNotifyEvent *event)
   
   screen = cwindow_get_screen (cwindow);
   
-  meta_compositor_invalidate_region (cwindow->compositor, screen, region);
+  if (!cwindow->freeze_info)
+    {
+      /* ignore damage on frozen window */
+      meta_compositor_invalidate_region (cwindow->compositor, screen, region);
+    }
   
   XFixesDestroyRegion (cwindow_get_xdisplay (cwindow), region);
 }
@@ -775,31 +766,23 @@ cwindow_process_configure_notify (CWindow *cwindow, XConfigureEvent *event)
   
   screen = cwindow_get_screen (cwindow);
   
-  if (cwindow_get_last_painted_extents (cwindow))
+  if (cwindow_get_last_painted_extents (cwindow) && !cwindow->freeze_info)
     {
       meta_compositor_invalidate_region (cwindow->compositor, screen, cwindow_get_last_painted_extents (cwindow));
       cwindow_set_last_painted_extents (cwindow, None);
     }
   
-  if (cwindow_get_pixmap (cwindow))
-    {
-      cwindow_set_pending_x (cwindow, event->x);
-      cwindow_set_pending_y (cwindow, event->y);
-      cwindow_set_pending_width (cwindow, event->width);
-      cwindow_set_pending_height (cwindow, event->height);
-      cwindow_set_pending_border_width (cwindow, event->border_width);
-    }
-  else
-    {
-      cwindow_set_x (cwindow, event->x);
-      cwindow_set_y (cwindow, event->y);
-      cwindow_set_width (cwindow, event->width);
-      cwindow_set_height (cwindow, event->height);
-      cwindow_set_border_width (cwindow, event->border_width);
-    }
+  cwindow_set_x (cwindow, event->x);
+  cwindow_set_y (cwindow, event->y);
+  cwindow_set_width (cwindow, event->width);
+  cwindow_set_height (cwindow, event->height);
+  cwindow_set_border_width (cwindow, event->border_width);
+  
+  if (cwindow->freeze_info)
+    return;
   
   region = cwindow_extents (cwindow);
-  
+
   meta_compositor_invalidate_region (cwindow->compositor,
 				     screen,
 				     region);
@@ -824,6 +807,59 @@ cwindow_set_transformation (CWindow *cwindow,
       cwindow->distortions = g_memdup (distortions, n_distortions * sizeof (Distortion));
       cwindow->n_distortions = n_distortions;
     }
+}
+
+void
+cwindow_freeze (CWindow *cwindow)
+{
+  if (cwindow->freeze_info)
+    {
+      meta_print_backtrace();
+      return;
+    }
+  
+  meta_error_trap_push (meta_compositor_get_display (cwindow->compositor));
+
+  cwindow->freeze_info = g_new (FreezeInfo, 1);
+  cwindow->freeze_info->geometry = cwindow->geometry;
+  
+  cwindow->freeze_info->pixmap =
+    XCompositeNameWindowPixmap (cwindow_get_xdisplay (cwindow),
+				cwindow->xwindow);
+  
+  meta_error_trap_pop (meta_compositor_get_display (cwindow->compositor), FALSE);
+}
+
+void
+cwindow_thaw (CWindow *cwindow)
+{
+  XserverRegion region;
+  if (!cwindow->freeze_info)
+    return;
+
+  if (cwindow_get_last_painted_extents (cwindow))
+    {
+      meta_compositor_invalidate_region (cwindow->compositor, cwindow_get_screen (cwindow),
+					 cwindow_get_last_painted_extents (cwindow));
+      cwindow_set_last_painted_extents (cwindow, None);
+    }
+  
+  
+  if (cwindow->freeze_info->pixmap)
+    XFreePixmap (cwindow_get_xdisplay (cwindow),
+		 cwindow->freeze_info->pixmap);
+
+  g_free (cwindow->freeze_info);
+  cwindow->freeze_info = NULL;
+
+  region = cwindow_extents (cwindow);
+  
+  meta_compositor_invalidate_region (cwindow->compositor,
+				     cwindow_get_screen (cwindow),
+				     region);
+  
+  XFixesDestroyRegion (cwindow_get_xdisplay (cwindow), region);
+
 }
 
 void
@@ -880,6 +916,10 @@ cwindow_draw (CWindow *cwindow, Picture destination)
   else
     {
       Display *dpy = cwindow_get_xdisplay (cwindow);
+      Geometry *geometry = cwindow->freeze_info?
+	&cwindow->freeze_info->geometry :
+	&cwindow->geometry;
+      
       XRenderColor shadow_color = { 0x0000, 0x000, 0x0000, 0x70c0 };
       XserverRegion shadow_clip;
       XserverRegion old_clip = XFixesCreateRegionFromPicture (dpy, destination);
@@ -895,8 +935,8 @@ cwindow_draw (CWindow *cwindow, Picture destination)
 			    PictOpOver,
 			    destination,
 			    &shadow_color,
-			    cwindow->x + SHADOW_OFFSET, cwindow->y + SHADOW_OFFSET,
-			    cwindow->width, cwindow->height);
+			    geometry->x + SHADOW_OFFSET, geometry->y + SHADOW_OFFSET,
+			    geometry->width, geometry->height);
 
       XFixesSetPictureClipRegion (dpy, destination, 0, 0, old_clip);
       
@@ -906,10 +946,10 @@ cwindow_draw (CWindow *cwindow, Picture destination)
 			None,
 			destination,
 			0, 0, 0, 0,
-			cwindow->x,
-			cwindow->y,
-			cwindow->width,
-			cwindow->height);
+			geometry->x,
+			geometry->y,
+			geometry->width,
+			geometry->height);
 
       XFixesDestroyRegion (dpy, old_clip);
       XFixesDestroyRegion (dpy, shadow_clip);

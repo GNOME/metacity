@@ -2461,11 +2461,8 @@ meta_window_move_resize_internal (MetaWindow  *window,
     meta_frame_calc_geometry (window->frame,
                               &fgeom);
   
-
-  meta_compositor_stop_compositing (window->display->compositor, window);
-  
   if (is_configure_request || do_gravity_adjust)
-    {      
+    {
       adjust_for_gravity (window,
                           window->frame ? &fgeom : NULL,
                           /* configure request coords assume
@@ -2702,11 +2699,6 @@ meta_window_move_resize_internal (MetaWindow  *window,
 
   if (use_static_gravity)
     meta_window_set_gravity (window, StaticGravity);  
-  
-  if (configure_frame_first && window->frame)
-    meta_frame_sync_to_window (window->frame,
-                               resize_gravity,
-                               need_move_frame, need_resize_frame);
 
   values.border_width = 0;
   values.x = client_move_x;
@@ -2722,40 +2714,74 @@ meta_window_move_resize_internal (MetaWindow  *window,
   if (need_resize_client)
     mask |= (CWWidth | CWHeight);
 
+#if 0
+  if (mask == 0)
+    g_print ("nothing happened\n");
+#endif
+
+  configure_frame_first = TRUE;
+  
+  if (mask != 0)
+    if (window->sync_request_counter != None &&
+	window->display->grab_sync_request_alarm != None &&
+	window->sync_request_time.tv_usec == 0 &&
+	window->sync_request_time.tv_sec == 0)
+      {
+#if 0
+	g_print ("stop compositing\n");
+#endif
+	meta_compositor_stop_compositing (window->display->compositor, window);
+      }
+  
+  if (configure_frame_first && window->frame)
+    meta_frame_sync_to_window (window->frame,
+                               resize_gravity,
+                               need_move_frame, need_resize_frame);
+
   if (mask != 0)
     {
       {
-        int newx, newy;
-        meta_window_get_position (window, &newx, &newy);
-        meta_topic (META_DEBUG_GEOMETRY,
-                    "Syncing new client geometry %d,%d %dx%d, border: %s pos: %s size: %s\n",
-                    newx, newy,
-                    window->rect.width, window->rect.height,
-                    mask & CWBorderWidth ? "true" : "false",
-                    need_move_client ? "true" : "false",
-                    need_resize_client ? "true" : "false");
+	int newx, newy;
+	meta_window_get_position (window, &newx, &newy);
+	meta_topic (META_DEBUG_GEOMETRY,
+		    "Syncing new client geometry %d,%d %dx%d, border: %s pos: %s size: %s\n",
+		    newx, newy,
+		    window->rect.width, window->rect.height,
+		    mask & CWBorderWidth ? "true" : "false",
+		    need_move_client ? "true" : "false",
+		    need_resize_client ? "true" : "false");
       }
       
       meta_error_trap_push (window->display);
-
+      
 #ifdef HAVE_XSYNC
       if (window->sync_request_counter != None &&
 	  window->display->grab_sync_request_alarm != None &&
 	  window->sync_request_time.tv_usec == 0 &&
 	  window->sync_request_time.tv_sec == 0)
 	{
+#if 0
+	  g_print ("send sync request: %p\n", window);
+#endif
 	  send_sync_request (window);
 	}
+      else
+	meta_print_backtrace ();
+#if 0
+      g_print ("not sending request\n");
 #endif
-
+#endif
+#if 0
+      g_print ("configuring client\n"); 
+#endif
       XConfigureWindow (window->display->xdisplay,
-                        window->xwindow,
-                        mask,
-                        &values);
+			window->xwindow,
+			mask,
+			&values);
       
       meta_error_trap_pop (window->display, FALSE);
     }
-
+  
   if (!configure_frame_first && window->frame)
     meta_frame_sync_to_window (window->frame,
                                resize_gravity,
@@ -5956,15 +5982,18 @@ check_moveresize_frequency (MetaWindow *window,
 	  double elapsed =
 	    time_diff (&current_time, &window->sync_request_time);
 
-	  if (elapsed < 1000.0)
+	  if (elapsed < 10000000.0)
 	    {
 	      /* We want to be sure that the timeout happens at
 	       * a time where elapsed will definitely be
 	       * greater than 1000, so we can disable sync
 	       */
 	      if (remaining)
-		*remaining = 1000.0 - elapsed + 100;
-	      
+		*remaining = 10000000.0 - elapsed + 100;
+
+#if 0
+	      g_print ("ignoring event\n");
+#endif
 	      return FALSE;
 	    }
 	  else
@@ -5973,6 +6002,9 @@ check_moveresize_frequency (MetaWindow *window,
 	       * application to respond to the sync request
 	       */
 	      window->disable_sync = TRUE;
+#if 0
+	      g_print ("buggy app\n");
+#endif
 	      return TRUE;
 	    }
 	}
@@ -5980,6 +6012,9 @@ check_moveresize_frequency (MetaWindow *window,
 	{
 	  /* No outstanding sync requests. Go ahead and resize
 	   */
+#if 0
+	  g_print ("going ahead\n");
+#endif
 	  return TRUE;
 	}
     }
@@ -6255,8 +6290,6 @@ update_resize (MetaWindow *window,
   gravity = meta_resize_gravity_from_grab_op (window->display->grab_op);
   g_assert (gravity >= 0);
   
-  meta_compositor_start_compositing (window->display->compositor, window);
-  
   if (window->display->grab_wireframe_active)
     {
       /* FIXME This is crap. For example, the wireframe isn't
@@ -6289,7 +6322,10 @@ update_resize (MetaWindow *window,
     }
   else
     {
-	meta_window_resize_with_gravity (window, TRUE, new_w, new_h, gravity);
+#if 0
+      g_print ("r with g\n");
+#endif
+      meta_window_resize_with_gravity (window, TRUE, new_w, new_h, gravity);
     }
 
   /* Store the latest resize time, if we actually resized. */
@@ -6328,7 +6364,6 @@ handle_moving_event (MetaWindow *window, XEvent *event)
 		   event->xcrossing.y_root);
     }
 }
-
 
 static void
 handle_resizing_event (MetaWindow *window, XEvent *event)
@@ -6377,10 +6412,18 @@ meta_window_handle_mouse_grab_op_event (MetaWindow *window,
        * the application has come to its senses (maybe it was just
        * busy with a pagefault or a long computation).
        */
+#if 0
+      g_print ("resetting\n");
+#endif
       window->disable_sync = FALSE;
       window->sync_request_time.tv_sec = 0;
       window->sync_request_time.tv_usec = 0;
 
+#if 0
+      g_print ("start compositing %p\n", window);
+#endif
+      meta_compositor_start_compositing (window->display->compositor, window);
+      
       /* This means we are ready for another configure. */
       if (meta_grab_op_is_resizing (window->display->grab_op))
 	{

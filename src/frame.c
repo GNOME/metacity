@@ -347,7 +347,7 @@ meta_frame_sync_to_window (MetaFrame *frame,
    * shaped, which might be more visible.
    */
   update_shape (frame);
-  
+
   meta_ui_move_resize_frame (frame->window->screen->ui,
 			     frame->xwindow,
 			     frame->rect.x,

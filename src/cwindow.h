@@ -99,3 +99,5 @@ void            cwindow_process_configure_notify     (CWindow            *cwindo
 						      XConfigureEvent    *event);
 void            cwindow_draw                         (CWindow            *cwindow,
 						      Picture             destination);
+void		cwindow_freeze			     (CWindow		 *cwindow);
+void		cwindow_thaw			     (CWindow		 *cwindow);

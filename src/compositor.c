@@ -54,7 +54,6 @@ struct MetaCompositor
   GHashTable *window_hash;
   
   guint repair_idle;
-  guint repair_timeout;
   
   guint enabled : 1;
   guint have_composite : 1;
@@ -79,15 +78,15 @@ free_window_hash_value (void *v)
 static void
 print_region (Display *dpy, const char *name, XserverRegion region)
 {
-    XRectangle *rects;
-    int i, n_rects;
-    
-    rects = XFixesFetchRegion (dpy, region, &n_rects);
-
-    g_print ("region \"%s\":\n", name);
-    for (i = 0; i < n_rects; ++i)
-	g_print ("  %d %d %d %d\n", rects[i].x, rects[i].y, rects[i].width, rects[i].height);
-    XFree (rects);
+  XRectangle *rects;
+  int i, n_rects;
+  
+  rects = XFixesFetchRegion (dpy, region, &n_rects);
+  
+  g_print ("region \"%s\":\n", name);
+  for (i = 0; i < n_rects; ++i)
+    g_print ("  %d %d %d %d\n", rects[i].x, rects[i].y, rects[i].width, rects[i].height);
+  XFree (rects);
 }
 
 MetaCompositor*
@@ -193,19 +192,12 @@ meta_compositor_set_debug_updates (MetaCompositor *compositor,
 static void
 remove_repair_idle (MetaCompositor *compositor)
 {
-  if (compositor->repair_idle || compositor->repair_timeout)
-    meta_topic (META_DEBUG_COMPOSITOR, "Damage idle removed\n");
-  
-  if (compositor->repair_idle != 0)
+  if (compositor->repair_idle)
     {
+      meta_topic (META_DEBUG_COMPOSITOR, "Damage idle removed\n");
+
       g_source_remove (compositor->repair_idle);
       compositor->repair_idle = 0;
-    }
-  
-  if (compositor->repair_timeout != 0)
-    {
-      g_source_remove (compositor->repair_timeout);
-      compositor->repair_timeout = 0;
     }
 }
 #endif /* HAVE_COMPOSITE_EXTENSIONS */
@@ -456,7 +448,7 @@ do_repair (MetaCompositor *compositor)
 
 #ifdef HAVE_COMPOSITE_EXTENSIONS
 static gboolean
-repair_idle_func (void *data)
+repair_now (void *data)
 {
   MetaCompositor *compositor = data;
   
@@ -469,19 +461,6 @@ repair_idle_func (void *data)
 
 
 #ifdef HAVE_COMPOSITE_EXTENSIONS
-static gboolean
-repair_timeout_func (void *data)
-{
-  MetaCompositor *compositor = data;
-  
-  compositor->repair_timeout = 0;
-  do_repair (compositor);
-  
-  return FALSE;
-}
-#endif /* HAVE_COMPOSITE_EXTENSIONS */
-
-#ifdef HAVE_COMPOSITE_EXTENSIONS
 static void
 ensure_repair_idle (MetaCompositor *compositor)
 {
@@ -489,9 +468,7 @@ ensure_repair_idle (MetaCompositor *compositor)
     return;
   
   compositor->repair_idle = g_idle_add_full (META_PRIORITY_COMPOSITE,
-                                             repair_idle_func, compositor, NULL);
-  compositor->repair_timeout = g_timeout_add (FRAME_INTERVAL_MILLISECONDS,
-                                              repair_timeout_func, compositor);
+                                             repair_now, compositor, NULL);
   
   meta_topic (META_DEBUG_COMPOSITOR, "Damage idle queued\n");
 }
@@ -519,7 +496,12 @@ meta_compositor_invalidate_region (MetaCompositor *compositor,
       XSync (screen->display->xdisplay, False);
     }
 #endif
-      
+
+#if 0
+  print_region (compositor->display->xdisplay, "invalidate", invalid_area);
+  meta_print_top_of_stack (4);
+#endif
+  
   XFixesUnionRegion (compositor->display->xdisplay,
                      screen->damage_region,
                      invalid_area, screen->damage_region);
@@ -1169,12 +1151,24 @@ void
 meta_compositor_stop_compositing (MetaCompositor *compositor,
 				  MetaWindow     *window)
 {
+    CWindow *cwindow;
+    cwindow = window_to_cwindow (compositor, window);
+
+    if (cwindow)
+	cwindow_freeze (cwindow);
 }
 
 void
 meta_compositor_start_compositing (MetaCompositor *compositor,
 				   MetaWindow     *window)
 {
+    CWindow *cwindow;
+    cwindow = window_to_cwindow (compositor, window);
+
+    if (cwindow)
+	cwindow_thaw (cwindow);
+
+    repair_now (compositor);
 }
 
 static void
@@ -1314,7 +1308,7 @@ meta_compositor_genie (MetaCompositor *compositor,
       XFixesSetPictureClipRegion (compositor->display->xdisplay,
 				  window->screen->root_picture, 0, 0, None);
       /* Copy buffer to root window */
-      paint_buffer (window->screen, buffer, NULL);
+      paint_buffer (window->screen, buffer, None);
       
       XRenderFreePicture (compositor->display->xdisplay, buffer);
       

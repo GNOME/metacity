@@ -1,3 +1,13 @@
+Mon Jan 24 17:07:26 2005  Søren Sandmann  <sandmann@redhat.com>
+
+	* src/compositor.c (remove_repair_idle): Don't use a timeout to do
+	the repair. Add meta_compositor_start/stop_compositing()
+
+	* src/cwindow.[ch]: Add cwindow_freeze()/thaw() to stop and start
+	compositing. Update various places to use stored geometry.
+
+	* src/window.c: Use start/stop composting to make resizing smooth.
+
 Fri Jan 21 14:36:32 2005  Søren Sandmann  <sandmann@redhat.com>
 
 	* src/window.c (update_resize): s/new_h/new_y/

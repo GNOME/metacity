@@ -83,6 +83,7 @@ gint  meta_unsigned_long_equal (gconstpointer v1,
 guint meta_unsigned_long_hash  (gconstpointer v);
 
 void meta_print_backtrace (void);
+void meta_print_top_of_stack (int n_frames);
 
 #include <libintl.h>
 #define _(x) dgettext (GETTEXT_PACKAGE, x)

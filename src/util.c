@@ -32,26 +32,36 @@
 #ifdef HAVE_BACKTRACE
 #include <execinfo.h>
 void
-meta_print_backtrace (void)
+meta_print_top_of_stack (int n_frames)
 {
   void *bt[500];
   int bt_size;
   int i;
   char **syms;
+
+  if (n_frames < 0)
+      n_frames = 500;
   
-  bt_size = backtrace (bt, 500);
+  bt_size = backtrace (bt, n_frames);
 
   syms = backtrace_symbols (bt, bt_size);
   
   i = 0;
   while (i < bt_size)
     {
-      meta_verbose ("  %s\n", syms[i]);
-      ++i;
+	g_print ("  %s\n", syms[i]);
+	++i;
     }
 
   free (syms);
 }
+
+void
+meta_print_backtrace (void)
+{
+    meta_print_top_of_stack (-1);
+}
+
 #else
 void
 meta_print_backtrace (void)
