@@ -1,19 +1,20 @@
 # French translation of metacity.
 # Copyright (C) 2002-2004 Free Software Foundation, Inc.
 # This file is distributed under the same license as the metacity package.
-#
+# 
 # maintainer: Christophe Fergeau <teuf@users.sourceforge.net>, 2002.
 # Christophe Merlet (RedFox) <redfox@redfoxcenter.org>, 2002-2004.
 # Sun G11n <gnome_int_l10n@ireland.sun.com>, 2002.
 # Guy CLOTILDE <guy.clotilde@wanadoo.fr>, 2002.
-#
+# Baptiste Mille-Mathias <baptiste@mille-mathias.info>, 2004.
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: metacity 2.8.4\n"
+"Project-Id-Version: metacity 2.8.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-11 08:59-0700\n"
-"PO-Revision-Date: 2004-09-10 19:27+0200\n"
-"Last-Translator: Christophe Merlet (RedFox) <redfox@redfoxcenter.org>\n"
+"POT-Creation-Date: 2004-11-14 10:28+0100\n"
+"PO-Revision-Date: 2004-11-14 10:12+0100\n"
+"Last-Translator: Baptiste Mille-Mathias <baptiste@mille-mathias.info>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -110,7 +111,7 @@ msgstr "Maximiser la fenêtre"
 msgid "Unmaximize Window"
 msgstr "Annuler la maximisation"
 
-#: src/keybindings.c:989
+#: src/keybindings.c:987
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
@@ -119,14 +120,14 @@ msgstr ""
 "Un autre programme utilise déjà la clé %s avec les modificateurs %x comme "
 "liaisons\n"
 
-#: src/keybindings.c:2529
+#: src/keybindings.c:2553
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr ""
 "Erreur pendant le lancement de metacity-dialog pour afficher un message "
 "d'erreur pour la commande : %s\n"
 
-#: src/keybindings.c:2602
+#: src/keybindings.c:2626
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "Aucune commande %d n'a été définie.\n"
@@ -382,7 +383,7 @@ msgid ""
 "There was an error running \"%s\":\n"
 "%s."
 msgstr ""
-"It y a eu une erreur lors de l'exécution de « %s » :\n"
+"Il y a eu une erreur lors de l'exécution de « %s » :\n"
 "%s."
 
 #: src/metacity.desktop.in.h:1
@@ -457,9 +458,8 @@ msgstr ""
 "est défini comme « &lt;Alt&gt; » ou « &lt;Super&gt; » par exemple."
 
 #: src/metacity.schemas.in.h:9
-#, fuzzy
 msgid "Close window"
-msgstr "Ferme une fenêtre"
+msgstr "Ferme la fenêtre"
 
 #: src/metacity.schemas.in.h:10
 msgid "Commands to run in response to keybindings"
@@ -545,7 +545,7 @@ msgid ""
 msgstr ""
 "Si la valeur est vrai, Metacity fonctionne en termes d'applications plutôt "
 "que de fenêtres. Le concept est assez abstrait, mais, en général, une "
-"configuration basée sur les applications est plus proche de Mac que de "
+"configuration basée sur les applications est plus proche de Mac OS que de "
 "Windows. Lorsque vous activez une fenêtre en mode basé sur les applications, "
 "toutes les fenêtres de l'application seront mises au premier plan. En outre, "
 "en mode basé sur les applications, les clics de focus ne sont pas transmis "
@@ -565,9 +565,8 @@ msgid "Lower window below other windows"
 msgstr "Mettre une fenêtre sous les autres fenêtres"
 
 #: src/metacity.schemas.in.h:23
-#, fuzzy
 msgid "Maximize window"
-msgstr "Maximiser une fenêtre"
+msgstr "Maximiser la fenêtre"
 
 #: src/metacity.schemas.in.h:24
 msgid "Maximize window horizontally"
@@ -578,9 +577,8 @@ msgid "Maximize window vertically"
 msgstr "Maximiser la fenêtre verticalement"
 
 #: src/metacity.schemas.in.h:26
-#, fuzzy
 msgid "Minimize window"
-msgstr "Minimiser une fenêtre"
+msgstr "Minimiser la fenêtre"
 
 #: src/metacity.schemas.in.h:27
 msgid "Modifier to use for modified window click actions"
@@ -623,9 +621,8 @@ msgstr ""
 "Se déplacer en arrière entre les fenêtres en utilisant une boîte de dialogue"
 
 #: src/metacity.schemas.in.h:36
-#, fuzzy
 msgid "Move window"
-msgstr "Déplacer une fenêtre"
+msgstr "Déplacer la fenêtre"
 
 #: src/metacity.schemas.in.h:37
 msgid "Move window one workspace down"
@@ -718,9 +715,8 @@ msgid "Raise window above other windows"
 msgstr "Mettre la fenêtre au premier plan"
 
 #: src/metacity.schemas.in.h:58
-#, fuzzy
 msgid "Resize window"
-msgstr "Redimensionner une fenêtre"
+msgstr "Redimensionner la fenêtre"
 
 #: src/metacity.schemas.in.h:59
 msgid "Run a defined command"
@@ -731,7 +727,6 @@ msgid "Show the panel menu"
 msgstr "Afficher le menu du tableau de bord"
 
 #: src/metacity.schemas.in.h:61
-#, fuzzy
 msgid "Show the panel run application dialog"
 msgstr "Afficher la boîte de dialogue « Lancer une application »"
 
@@ -869,7 +864,7 @@ msgid ""
 "that correspond to these commands. Pressing the keybinding for run_command_N "
 "will execute command_N."
 msgstr ""
-"Les clés /apps/metacity/global_keybindings/run_command_N definissent les "
+"Les clés /apps/metacity/global_keybindings/run_command_N définissent les "
 "combinaisons de touches qui corresponde à ces commandes. Presser la "
 "combinaison pour run_command_N exécutera la command_N."
 
@@ -878,7 +873,7 @@ msgid ""
 "The /apps/metacity/global_keybindings/run_command_screenshot key defines a "
 "keybinding which causes the command specified by this setting to be invoked."
 msgstr ""
-"La clé /apps/metacity/global_keybindings/run_command_screenshot defini une "
+"La clé /apps/metacity/global_keybindings/run_command_screenshot défini une "
 "combinaison de touches qui invoque la commande spécifiée par ce réglage."
 
 #: src/metacity.schemas.in.h:85
@@ -888,11 +883,10 @@ msgid ""
 "be invoked."
 msgstr ""
 "La clé /apps/metacity/global_keybindings/run_command_window_screenshot "
-"defini une combinaison de touches qui invoque la commande spécifiée par ce "
+"défini une combinaison de touches qui invoque la commande spécifiée par ce "
 "réglage."
 
 #: src/metacity.schemas.in.h:86
-#, fuzzy
 msgid ""
 "The keybinding that runs the correspondingly-numbered command in /apps/"
 "metacity/keybinding_commands The format looks like \"&lt;Control&gt;a\" or "
@@ -902,7 +896,7 @@ msgid ""
 "then there will be no keybinding for this action."
 msgstr ""
 "Les combinaisons de touches qui exécutent les commandes numérotées "
-"correspondantes dans /apps/metacity/keybindin_commands. Le format ressemble "
+"correspondantes dans /apps/metacity/keybinding_commands. Le format ressemble "
 "à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;F1 » (la touche "
 "Shift est parfois notée Maj sur certains claviers). L'analyseur est assez "
 "souple et permet d'utiliser des majuscules ou des minuscules et des "
@@ -911,7 +905,6 @@ msgstr ""
 "aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:87
-#, fuzzy
 msgid ""
 "The keybinding that switches to the workspace above the current workspace. "
 "The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1"
@@ -930,7 +923,6 @@ msgstr ""
 "cette action."
 
 #: src/metacity.schemas.in.h:88
-#, fuzzy
 msgid ""
 "The keybinding that switches to the workspace below the current workspace. "
 "The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1"
@@ -948,7 +940,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:89
-#, fuzzy
 msgid ""
 "The keybinding that switches to the workspace on the left of the current "
 "workspace. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;"
@@ -967,7 +958,6 @@ msgstr ""
 "cette action."
 
 #: src/metacity.schemas.in.h:90
-#, fuzzy
 msgid ""
 "The keybinding that switches to the workspace on the right of the current "
 "workspace. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;"
@@ -986,7 +976,6 @@ msgstr ""
 "cette action."
 
 #: src/metacity.schemas.in.h:91
-#, fuzzy
 msgid ""
 "The keybinding that switches to workspace 1. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1003,7 +992,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:92
-#, fuzzy
 msgid ""
 "The keybinding that switches to workspace 10. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1020,7 +1008,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:93
-#, fuzzy
 msgid ""
 "The keybinding that switches to workspace 11. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1028,7 +1015,7 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La combinaison de touches qui fait basculer vers l'espace de travail 11.Le "
+"La combinaison de touches qui fait basculer vers l'espace de travail 11. Le "
 "format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;"
 "F1 » (la touche Shift est parfois noté Maj sur certains claviers). "
 "L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
@@ -1037,7 +1024,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:94
-#, fuzzy
 msgid ""
 "The keybinding that switches to workspace 12. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1045,7 +1031,7 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La combinaison de touches quifait basculer vers l'espace de travail 12. Le "
+"La combinaison de touches qui fait basculer vers l'espace de travail 12. Le "
 "format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;"
 "F1 » (la touche Shift est parfois noté Maj sur certains claviers). "
 "L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
@@ -1054,7 +1040,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:95
-#, fuzzy
 msgid ""
 "The keybinding that switches to workspace 2. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1062,7 +1047,7 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La combinaison de touches qui fait basculer vers l'espace de travail 2.Le "
+"La combinaison de touches qui fait basculer vers l'espace de travail 2. Le "
 "format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;"
 "F1 » (la touche Shift est parfois noté Maj sur certains claviers). "
 "L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
@@ -1071,7 +1056,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:96
-#, fuzzy
 msgid ""
 "The keybinding that switches to workspace 3. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1079,7 +1063,7 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La combinaison de touches qui fait basculer vers l'espace de travail 3.Le "
+"La combinaison de touches qui fait basculer vers l'espace de travail 3. Le "
 "format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;"
 "F1 » (la touche Shift est parfois noté Maj sur certains claviers). "
 "L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
@@ -1088,7 +1072,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:97
-#, fuzzy
 msgid ""
 "The keybinding that switches to workspace 4. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1105,7 +1088,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:98
-#, fuzzy
 msgid ""
 "The keybinding that switches to workspace 5. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1122,7 +1104,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:99
-#, fuzzy
 msgid ""
 "The keybinding that switches to workspace 6. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1139,7 +1120,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:100
-#, fuzzy
 msgid ""
 "The keybinding that switches to workspace 7. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1156,7 +1136,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:101
-#, fuzzy
 msgid ""
 "The keybinding that switches to workspace 8. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1173,7 +1152,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:102
-#, fuzzy
 msgid ""
 "The keybinding that switches to workspace 9. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1190,7 +1168,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:103
-#, fuzzy
 msgid ""
 "The keybinding used to activate the window menu. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1207,7 +1184,6 @@ msgstr ""
 "aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:104
-#, fuzzy
 msgid ""
 "The keybinding used to close a window. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1224,7 +1200,6 @@ msgstr ""
 "aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:105
-#, fuzzy
 msgid ""
 "The keybinding used to enter \"move mode\" and begin moving a window using "
 "the keyboard. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;"
@@ -1243,7 +1218,6 @@ msgstr ""
 "aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:106
-#, fuzzy
 msgid ""
 "The keybinding used to enter \"resize mode\" and begin resizing a window "
 "using the keyboard. The format looks like \"&lt;Control&gt;a\" or \"&lt;"
@@ -1262,7 +1236,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:107
-#, fuzzy
 msgid ""
 "The keybinding used to hide all normal windows and set the focus to the "
 "desktop background. The format looks like \"&lt;Control&gt;a\" or \"&lt;"
@@ -1281,7 +1254,6 @@ msgstr ""
 "combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:108
-#, fuzzy
 msgid ""
 "The keybinding used to maximize a window The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1298,7 +1270,6 @@ msgstr ""
 "aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:109
-#, fuzzy
 msgid ""
 "The keybinding used to minimize a window. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1315,7 +1286,6 @@ msgstr ""
 "aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:110
-#, fuzzy
 msgid ""
 "The keybinding used to move a window one workspace down. The format looks "
 "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
@@ -1334,7 +1304,6 @@ msgstr ""
 "cette action."
 
 #: src/metacity.schemas.in.h:111
-#, fuzzy
 msgid ""
 "The keybinding used to move a window one workspace to the left. The format "
 "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
@@ -1353,7 +1322,6 @@ msgstr ""
 "cette action."
 
 #: src/metacity.schemas.in.h:112
-#, fuzzy
 msgid ""
 "The keybinding used to move a window one workspace to the right. The format "
 "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
@@ -1372,7 +1340,6 @@ msgstr ""
 "cette action."
 
 #: src/metacity.schemas.in.h:113
-#, fuzzy
 msgid ""
 "The keybinding used to move a window one workspace up. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1390,7 +1357,6 @@ msgstr ""
 "cette action."
 
 #: src/metacity.schemas.in.h:114
-#, fuzzy
 msgid ""
 "The keybinding used to move a window to workspace 1. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1407,7 +1373,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:115
-#, fuzzy
 msgid ""
 "The keybinding used to move a window to workspace 10. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1424,7 +1389,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:116
-#, fuzzy
 msgid ""
 "The keybinding used to move a window to workspace 11. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1441,7 +1405,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:117
-#, fuzzy
 msgid ""
 "The keybinding used to move a window to workspace 12. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1458,7 +1421,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:118
-#, fuzzy
 msgid ""
 "The keybinding used to move a window to workspace 2. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1475,7 +1437,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:119
-#, fuzzy
 msgid ""
 "The keybinding used to move a window to workspace 3. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1492,7 +1453,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:120
-#, fuzzy
 msgid ""
 "The keybinding used to move a window to workspace 4. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1509,7 +1469,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:121
-#, fuzzy
 msgid ""
 "The keybinding used to move a window to workspace 5. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1526,7 +1485,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:122
-#, fuzzy
 msgid ""
 "The keybinding used to move a window to workspace 6. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1543,7 +1501,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:123
-#, fuzzy
 msgid ""
 "The keybinding used to move a window to workspace 7. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1560,7 +1517,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:124
-#, fuzzy
 msgid ""
 "The keybinding used to move a window to workspace 8. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1577,7 +1533,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:125
-#, fuzzy
 msgid ""
 "The keybinding used to move a window to workspace 9. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1594,7 +1549,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:126
-#, fuzzy
 msgid ""
 "The keybinding used to move focus backwards between panels and the desktop, "
 "using a popup window. The format looks like \"&lt;Control&gt;a\" or \"&lt;"
@@ -1604,7 +1558,7 @@ msgid ""
 "will be no keybinding for this action."
 msgstr ""
 "La combinaisons de touches utilisée pour déplacer le focus entre les "
-"panneaux et le bureau, en utilisant une boîte de dialogue. Le format "
+"tableaux de bord et le bureau, en utilisant une boîte de dialogue. Le format "
 "ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;F1 "
 "» (la touche Shift est parfois notée Maj sur certains claviers). L'analyseur "
 "est assez souple et permet d'utiliser des majuscules ou des minuscules et "
@@ -1613,7 +1567,6 @@ msgstr ""
 "aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:127
-#, fuzzy
 msgid ""
 "The keybinding used to move focus backwards between panels and the desktop, "
 "without a popup window. The format looks like \"&lt;Control&gt;a\" or \"&lt;"
@@ -1622,9 +1575,9 @@ msgid ""
 "\". If you set the option to the special string \"disabled\", then there "
 "will be no keybinding for this action."
 msgstr ""
-"La combinaison de touches utilisée pour déplacer le focus entre les panneaux "
-"et le bureau, sans boîte de dialogue. Le format ressemble à ceci : « &lt;"
-"Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est "
+"La combinaison de touches utilisée pour déplacer le focus entre les tableaux "
+"de bord et le bureau, sans boîte de dialogue. Le format ressemble à ceci : "
+"« &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est "
 "parfois notée Maj sur certains claviers). L'analyseur est assez souple et "
 "permet d'utiliser des majuscules ou des minuscules et des abréviations "
 "telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; ». Si vous définissez l'option "
@@ -1632,7 +1585,6 @@ msgstr ""
 "combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:128
-#, fuzzy
 msgid ""
 "The keybinding used to move focus backwards between windows without a popup "
 "window. Holding \"shift\" together with this binding makes the direction go "
@@ -1653,7 +1605,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:129
-#, fuzzy
 msgid ""
 "The keybinding used to move focus backwards between windows, using a popup "
 "window. Holding \"shift\" together with this binding makes the direction go "
@@ -1673,7 +1624,6 @@ msgstr ""
 "aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:130
-#, fuzzy
 msgid ""
 "The keybinding used to move focus between panels and the desktop, using a "
 "popup window. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;"
@@ -1682,17 +1632,17 @@ msgid ""
 "If you set the option to the special string \"disabled\", then there will be "
 "no keybinding for this action."
 msgstr ""
-"La combinaison de touches utilisée pour déplacer le focus entre les panneaux "
-"et le bureau, en utilisant une boîte de dialogue. Le format ressemble à "
-"ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;F1 » (la touche "
-"Shift est parfois notée Maj sur certains claviers). L'analyseur est assez "
-"souple et permet d'utiliser des majuscules ou des minuscules et des "
-"abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; ». Si vous "
-"définissez l'option sur la chaîne spéciale « disabled » (désactivé), il n'y "
-"aura pas de combinaison de touches pour cette action."
+"La combinaison de touches utilisée pour déplacer le focus entre les tableaux "
+"de bord et le bureau, en utilisant une boîte de dialogue. Le format "
+"ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;"
+"F1 » (la touche Shift est parfois notée Maj sur certains claviers). "
+"L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
+"minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;"
+"Ctrl&gt; ». Si vous définissez l'option sur la chaîne spéciale "
+"« disabled » (désactivé), il n'y aura pas de combinaison de touches pour "
+"cette action."
 
 #: src/metacity.schemas.in.h:131
-#, fuzzy
 msgid ""
 "The keybinding used to move focus between panels and the desktop, without a "
 "popup window. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;"
@@ -1701,9 +1651,9 @@ msgid ""
 "If you set the option to the special string \"disabled\", then there will be "
 "no keybinding for this action."
 msgstr ""
-"La combinaison de touches utilisée pour déplacer le focus entre les panneaux "
-"et le bureau, sans boîte de dialogue. Le format ressemble à ceci : « &lt;"
-"Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est "
+"La combinaison de touches utilisée pour déplacer le focus entre les tableaux "
+"de bord et le bureau, sans boîte de dialogue. Le format ressemble à ceci : "
+"« &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est "
 "parfois notée Maj sur certains claviers). L'analyseur est assez souple et "
 "permet d'utiliser des majuscules ou des minuscules et des abréviations "
 "telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; ». Si vous définissez l'option "
@@ -1711,7 +1661,6 @@ msgstr ""
 "combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:132
-#, fuzzy
 msgid ""
 "The keybinding used to move focus between windows without a popup window. "
 "(Traditionally &lt;Alt&gt;Escape) Holding the \"shift\" key while using this "
@@ -1732,7 +1681,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:133
-#, fuzzy
 msgid ""
 "The keybinding used to move focus between windows, using a popup window. "
 "(Traditionally &lt;Alt&gt;Tab) Holding the \"shift\" key while using this "
@@ -1750,11 +1698,10 @@ msgstr ""
 "certains claviers). L'analyseur est assez souple et permet d'utiliser des "
 "majuscules ou des minuscules et des abréviations telles que « &lt;Ctl&gt; » "
 "et « &lt;Ctrl&gt; ». Si vous définissez l'option sur la chaîne spéciale "
-"« disabled » (désactivé), il n'y aura pas de combinaison de touches pour "
+"« disabled » (désactivé), il n'y aura pas de combinaison de touches pour "
 "cette action."
 
 #: src/metacity.schemas.in.h:134
-#, fuzzy
 msgid ""
 "The keybinding used to toggle always on top. A window that is always on top "
 "will always be visible over other overlapping windows. The format looks like "
@@ -1767,12 +1714,11 @@ msgstr ""
 "qui est toujours au-dessus sera toujours visible au-dessus des autres "
 "fenêtres. Le format ressemble à « &lt;Control&gt;a » ou « &lt;Shift&gt;&lt;"
 "Alt&gt;F1 ». L'analyseur est très libéral et n'est pas sensible à la casse "
-"ou aux abbréviations tel que « &lt;Ctl&gt; » ou « &lt;Ctrl&gt; ». Si vous "
+"ou aux abréviations tel que « &lt;Ctl&gt; » ou « &lt;Ctrl&gt; ». Si vous "
 "définissez l'option à la chaîne spécial « disabled », alors il n'y aura "
 "aucune combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:135
-#, fuzzy
 msgid ""
 "The keybinding used to toggle fullscreen mode. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1789,7 +1735,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:136
-#, fuzzy
 msgid ""
 "The keybinding used to toggle maximization. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1806,7 +1751,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:137
-#, fuzzy
 msgid ""
 "The keybinding used to toggle shaded/unshaded state. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1824,7 +1768,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:138
-#, fuzzy
 msgid ""
 "The keybinding used to toggle whether the window is on all workspaces or "
 "just one. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;"
@@ -1843,7 +1786,6 @@ msgstr ""
 "combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:139
-#, fuzzy
 msgid ""
 "The keybinding used to unmaximize a window. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1860,7 +1802,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:140
-#, fuzzy
 msgid ""
 "The keybinding which display's the panel's \"Run Application\" dialog box. "
 "The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1"
@@ -1872,12 +1813,11 @@ msgstr ""
 "La combinaison de touches qui affiche la boîte de dialogue « Lancer une "
 "application » du tableau de bord. Le format ressemble à « <Control>a » ou "
 "« <Shift><Alt>F1 ». L'analyseur est très libéral et est insensible à la "
-"casse, ainsi que les abbréviations tel que « <Ctl> » et « <Ctrl> ». Si vous "
+"casse, ainsi que les abréviations tel que « <Ctl> » et « <Ctrl> ». Si vous "
 "définissez l'option à la chaîne spéciale « disabled »; alors il n'y aura "
 "aucune combinaison de touches associée à cette action."
 
 #: src/metacity.schemas.in.h:141
-#, fuzzy
 msgid ""
 "The keybinding which invokes the panel's screenshot utility to take a "
 "screenshot of a window. The format looks like \"&lt;Control&gt;a\" or \"&lt;"
@@ -1889,12 +1829,11 @@ msgstr ""
 "La combinaison de touches utilisée pour invoquer l'utilitaire de capture "
 "d'écran du tableau de bord pour prendre une capture d'une fenêtre. Le format "
 "ressemble à « <Control>a » ou « <Shift><Alt>F1 ». L'analyseur est libéral et "
-"est insensible à la casse, de même  aux abbréviations tels que « <Ctl> » et "
+"est insensible à la casse, de même  aux abréviations tels que « <Ctl> » et "
 "« <Ctrl> ». Si vous définissez l'option à la chaîne spéciale « disabled », "
 "alors il n'y aura aucune combinaison de touches associée à cette action."
 
 #: src/metacity.schemas.in.h:142
-#, fuzzy
 msgid ""
 "The keybinding which invokes the panel's screenshot utility. The format "
 "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
@@ -1906,12 +1845,11 @@ msgstr ""
 "La combinaison de touches utilisée pour invoquer l'utilitaire de capture "
 "d'écran du tableau de bord. Le format ressemble à « <Control>a » ou "
 "« <Shift><Alt>F1 ». L'analyseur est libéral et est insensible à la casse, de "
-"même  aux abbréviations tels que « <Ctl> » et « <Ctrl> ». Si vous définissez "
+"même  aux abréviations tels que « <Ctl> » et « <Ctrl> ». Si vous définissez "
 "l'option à la chaîne spéciale « disabled », alors il n'y aura aucune "
 "combinaison de touches associée à cette action."
 
 #: src/metacity.schemas.in.h:143
-#, fuzzy
 msgid ""
 "The keybinding which shows the panel's main menu. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1922,8 +1860,8 @@ msgstr ""
 "La combinaison de touches utilisée pour afficher le menu principal du "
 "tableau de bord. Le format ressemble à « <Control>a » ou « <Shift><Alt>F1 ». "
 "L'analyseur est libéral et est insensible à la casse, de même  aux "
-"abbréviations tels que « <Ctl> » et « <Ctrl> ». Si vous définissez l'option "
-"à la chaîne spéciale « disabled », alors il n'y aura aucune combinaison de "
+"abréviations tels que « <Ctl> » et « <Ctrl> ». Si vous définissez l'option à "
+"la chaîne spéciale « disabled », alors il n'y aura aucune combinaison de "
 "touches associée à cette action."
 
 #: src/metacity.schemas.in.h:144
@@ -1970,7 +1908,6 @@ msgid "The window screenshot command"
 msgstr "La commande de capture d'écran de fenêtre"
 
 #: src/metacity.schemas.in.h:150
-#, fuzzy
 msgid ""
 "This keybinding changes whether a window is above or below other windows. If "
 "the window is covered by another window, it raises the window above other "
@@ -1992,7 +1929,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:151
-#, fuzzy
 msgid ""
 "This keybinding lowers a window below other windows. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -2009,7 +1945,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:152
-#, fuzzy
 msgid ""
 "This keybinding raises the window above other windows. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -2026,7 +1961,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:153
-#, fuzzy
 msgid ""
 "This keybinding resizes a window to fill available horizontal space. The "
 "format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
@@ -2044,7 +1978,6 @@ msgstr ""
 "» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:154
-#, fuzzy
 msgid ""
 "This keybinding resizes a window to fill available vertical space. The "
 "format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
@@ -2098,14 +2031,13 @@ msgid ""
 "'bell' or 'beep'; useful for the hard-of-hearing and for use in noisy "
 "environments, or when 'audible bell' is off."
 msgstr ""
-"Active une indication visuelle lorsque une application ou le système emets "
+"Active une indication visuelle lorsque une application ou le système émets "
 "un bip ; utile pour les malentendants et pour une utilisation dans des "
 "environnements bruyants, ou lorsque « audible bell » est off."
 
 #: src/metacity.schemas.in.h:162
-#, fuzzy
 msgid "Unmaximize window"
-msgstr "Annuler la maximisation d'une fenêtre"
+msgstr "Annuler la maximisation de la fenêtre"
 
 #: src/metacity.schemas.in.h:163
 msgid "Use standard system font in window titles"
@@ -2229,7 +2161,7 @@ msgstr ""
 msgid "Screen %d on display \"%s\" already has a window manager\n"
 msgstr "L'écran %d sur le visuel « %s » a déjà un gestionnaire de fenêtres\n"
 
-#: src/screen.c:701
+#: src/screen.c:699
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "Impossible de libérer l'écran %d sur le visuel « %s »\n"
@@ -2947,7 +2879,7 @@ msgstr "Bordure"
 #: src/theme-viewer.c:731
 #, c-format
 msgid "Button layout test %d"
-msgstr "Test d'agencemet de boutons %d"
+msgstr "Test d'agencement de boutons %d"
 
 #: src/theme-viewer.c:760
 #, c-format
@@ -3401,7 +3333,7 @@ msgid "Application set a bogus _NET_WM_PID %ld\n"
 msgstr "L'application a défini un faux _NET_WM_PID %ld\n"
 
 #. first time through
-#: src/window.c:4939
+#: src/window.c:4940
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -3417,7 +3349,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5610
+#: src/window.c:5611
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
@@ -3456,10 +3388,3 @@ msgid ""
 msgstr ""
 "La propriété %s de la fenêtre 0x%lx contient un code UTF-8 non valide pour "
 "l'élément %d dans la liste\n"
-
-#~ msgid ""
-#~ "Failed to a open connection to a session manager, so window positions "
-#~ "will not be saved: %s\n"
-#~ msgstr ""
-#~ "Impossible d'ouvrir une connexion avec un gestionnaire de sessions. Les "
-#~ "positions des fenêtres ne seront donc pas enregistrées : %s\n"
