@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity CVS-20020905\n"
-"POT-Creation-Date: 2003-03-11 00:12+0900\n"
-"PO-Revision-Date: 2003-03-10 15:44+0900\n"
+"POT-Creation-Date: 2003-03-21 16:37+0900\n"
+"PO-Revision-Date: 2003-03-17 23:06+0900\n"
 "Last-Translator: KAMAGASAKO Masatoshi <emerald@gnome.gr.jp>\n"
 "Language-Team: Japanese <translation@gnome.gr.jp>\n"
 "MIME-Version: 1.0\n"
@@ -162,19 +162,19 @@ msgstr "最小化(_N)"
 
 #: src/menu.c:53
 msgid "Ma_ximize"
-msgstr "最大化(_x)"
+msgstr "最大化(_X)"
 
 #: src/menu.c:54
 msgid "Unma_ximize"
-msgstr "元のサイズに戻す(_x)"
+msgstr "元のサイズに戻す(_X)"
 
 #: src/menu.c:55
 msgid "Roll _Up"
-msgstr "巻き上げる (_U)"
+msgstr "巻き上げる(_U)"
 
 #: src/menu.c:56
 msgid "_Unroll"
-msgstr "展開する (_U)"
+msgstr "展開する(_U)"
 
 #: src/menu.c:57
 msgid "_Move"
@@ -2730,7 +2730,7 @@ msgid "Application set a bogus _NET_WM_PID %ld\n"
 msgstr "アプリケーションは偽物の_NET_WM_PID %ld を設定しました\n"
 
 #. first time through
-#: src/window.c:4907
+#: src/window.c:4916
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -2746,7 +2746,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5481
+#: src/window.c:5490
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
