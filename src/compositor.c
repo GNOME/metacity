@@ -75,6 +75,20 @@ free_window_hash_value (void *v)
 }
 #endif /* HAVE_COMPOSITE_EXTENSIONS */
 
+static void
+print_region (Display *dpy, const char *name, XserverRegion region)
+{
+    XRectangle *rects;
+    int i, n_rects;
+    
+    rects = XFixesFetchRegion (dpy, region, &n_rects);
+
+    g_print ("region \"%s\":\n", name);
+    for (i = 0; i < n_rects; ++i)
+	g_print ("  %d %d %d %d\n", rects[i].x, rects[i].y, rects[i].width, rects[i].height);
+    XFree (rects);
+}
+
 MetaCompositor*
 meta_compositor_new (MetaDisplay *display)
 {
@@ -215,7 +229,6 @@ draw_windows (MetaCompositor *compositor,
   CWindow *cwindow;
   XserverRegion region_below;
   Display *dpy = compositor->display->xdisplay;
-  int x, y, w, h;
   
   if (!list)
     return;
@@ -225,26 +238,48 @@ draw_windows (MetaCompositor *compositor,
   region_below = XFixesCreateRegion (dpy, NULL, 0);
   XFixesCopyRegion (dpy, region_below, damaged_region);
   
-  cwindow_get_paint_bounds (cwindow, &x, &y, &w, &h);
-  
   if (!cwindow_is_translucent (cwindow) && !cwindow_get_input_only (cwindow) && cwindow_get_viewable (cwindow))
     {
-      XRectangle rect = { x, y, w, h };
-      XserverRegion window_region = XFixesCreateRegion (dpy, &rect, 1);
-      XFixesSubtractRegion (dpy, region_below, region_below, window_region);
-      XFixesDestroyRegion (dpy, window_region);
+      XserverRegion opaque = cwindow_get_opaque_region (cwindow);
+
+      XFixesSubtractRegion (dpy, region_below, region_below, opaque);
+
+      XFixesDestroyRegion (dpy, opaque);
+    }
+
+  draw_windows (compositor, screen, list->next, region_below, picture);
+
+  XFixesDestroyRegion (dpy, region_below);
       
 #if 0
-      XSetForeground (xdisplay, gc, 0x00ffff00);
-      XFillRectangle (xdisplay, screen->xroot, gc, 0, 0, screen->width, screen->height);
+  if (window_region)
+  {
+      XserverRegion clip = XFixesCreateRegion (dpy, NULL, 0);
+      XFixesCopyRegion (dpy, clip, damaged_region);
+      XFixesIntersectRegion (dpy, clip, clip, window_region);
+
+#if 0
+      print_region (dpy, "clip1", clip);
 #endif
-    }
-  
-  draw_windows (compositor, screen, list->next, region_below, picture);
-  
-  XFixesDestroyRegion (dpy, region_below);
-  
-  cwindow_new_draw (cwindow, picture, damaged_region);
+      
+      XRenderColor hilit = { rand(), rand(), rand(), 0xffff };
+
+      XFixesSetPictureClipRegion (dpy, screen->root_picture, 0, 0, clip);
+      XRenderFillRectangle (compositor->display->xdisplay,
+			    PictOpSrc,
+			    screen->root_picture, &hilit,
+			    0, 0,
+			    screen->width, screen->height);
+      XSync (compositor->display->xdisplay, False);
+      g_usleep (50000);
+
+#if 0
+      print_region (dpy, "clip2", clip);
+  }
+#endif
+#endif
+  XFixesSetPictureClipRegion (dpy, picture, 0, 0, damaged_region);
+  cwindow_new_draw (cwindow, picture);
 }
 
 static Picture
@@ -293,6 +328,11 @@ create_root_buffer (MetaScreen *screen)
 static void
 paint_buffer (MetaScreen *screen, Picture buffer)
 {
+#if 0
+  XFixesSetPictureClipRegion (screen->display->xdisplay,
+			      screen->root_picture, 0, 0, damaged_region);
+#endif
+  
   XRenderComposite (screen->display->xdisplay,
 		    PictOpSrc,
 		    buffer, None,
@@ -334,9 +374,9 @@ do_paint_screen (MetaCompositor *compositor,
   XFixesSetPictureClipRegion (xdisplay,
 			      picture, 0, 0,
 			      region);
-  
   draw_windows (compositor, screen, screen->compositor_windows, region, picture);
   meta_error_trap_pop (compositor->display, FALSE);
+  
   
   return region;
 }
@@ -358,8 +398,8 @@ paint_screen (MetaCompositor *compositor,
   xdisplay = screen->display->xdisplay;
   
   buffer_picture = create_root_buffer (screen);
-  
-  /* set clip */          
+
+  /* set clip */
   region = do_paint_screen (compositor, screen, buffer_picture, damage_region);
   
   /* Copy buffer to root window */
@@ -369,6 +409,21 @@ paint_screen (MetaCompositor *compositor,
   XFixesSetPictureClipRegion (xdisplay,
                               screen->root_picture,
                               0, 0, region);
+
+#if 0
+  XRenderColor hilit = { 0xFFFF, 0x0000, 0x0000, 0xFFFF } ;
+  XRenderFillRectangle (compositor->display->xdisplay,
+                        PictOpSrc,
+                        screen->root_picture, &hilit, 0, 0, screen->width, screen->height);
+#endif
+
+  XSync (xdisplay, False);
+
+#if 0
+  g_usleep (370000);
+#endif
+
+  XFixesSetPictureClipRegion (xdisplay, buffer_picture, 0, 0, None);
   
   paint_buffer (screen, buffer_picture);
   
@@ -1227,6 +1282,7 @@ quad_to_quad_interpolate (Quad *start, Quad *end, Quad *dest, gdouble t)
     }
 }
 
+#if 0
 void
 meta_compositor_old_genie (MetaCompositor *compositor,
 			   MetaWindow       *window)
@@ -1358,6 +1414,7 @@ meta_compositor_old_genie (MetaCompositor *compositor,
     }
 #endif
 }
+#endif
 
 void
 meta_compositor_genie (MetaCompositor *compositor,
@@ -1461,7 +1518,7 @@ meta_compositor_genie (MetaCompositor *compositor,
 	  XFixesDestroyRegion (compositor->display->xdisplay, region);
       }
       
-      cwindow_new_draw (cwindow, buffer, None);
+      cwindow_new_draw (cwindow, buffer);
       
       XFixesSetPictureClipRegion (compositor->display->xdisplay,
 				  window->screen->root_picture, 0, 0, None);

@@ -38,11 +38,7 @@ void            cwindow_set_transformation           (CWindow            *window
 						      int                 n_distortions);
 void            cwindow_free                         (CWindow            *cwindow);
 XserverRegion   cwindow_extents                      (CWindow            *cwindow);
-void            cwindow_get_paint_bounds             (CWindow            *cwindow,
-						      int                *x,
-						      int                *y,
-						      int                *w,
-						      int                *h);
+XserverRegion	cwindow_get_opaque_region            (CWindow            *cwindow);
 Drawable        cwindow_get_drawable                 (CWindow            *cwindow);
 Window          cwindow_get_xwindow                  (CWindow            *cwindow);
 gboolean        cwindow_get_viewable                 (CWindow            *cwindow);
@@ -102,5 +98,4 @@ void            cwindow_process_damage_notify        (CWindow            *cwindo
 void            cwindow_process_configure_notify     (CWindow            *cwindow,
 						      XConfigureEvent    *event);
 void            cwindow_new_draw                     (CWindow            *cwindow,
-						      Picture             destination,
-						      XserverRegion       damaged_region);
+						      Picture             destination);

@@ -4,7 +4,7 @@
 #include "compositor.h"
 #include "matrix.h"
 
-#define SHADOW_OFFSET 10
+#define SHADOW_OFFSET 3
 /* Unlike MetaWindow, there's one of these for _all_ toplevel windows,
  * override redirect or not. We also track unmapped windows as
  * otherwise on window map we'd have to determine where the
@@ -94,27 +94,16 @@ cwindow_extents (CWindow *cwindow)
 }
 #endif /* HAVE_COMPOSITE_EXTENSIONS */
 
-void
-cwindow_get_paint_bounds (CWindow *cwindow,
-			  int *x,
-			  int *y,
-			  int *w,
-			  int *h)
+XserverRegion
+cwindow_get_opaque_region (CWindow *cwindow)
 {
-  if (cwindow->pixmap != None)
-    {
-      *x = cwindow->x;
-      *y = cwindow->y;
-      *w = cwindow->width + cwindow->border_width * 2;
-      *h = cwindow->height + cwindow->border_width * 2;
-    }
-  else
-    {
-      *x = cwindow->x + cwindow->border_width;
-      *y = cwindow->y + cwindow->border_width;
-      *w = cwindow->width;
-      *h = cwindow->height;
-    }
+  XRectangle rect;
+  rect.x = cwindow->x;
+  rect.y = cwindow->y;
+  rect.width = cwindow->width;
+  rect.height = cwindow->height;
+
+  return XFixesCreateRegion (cwindow_get_xdisplay (cwindow), &rect, 1);
 }
 
 Drawable
@@ -423,8 +412,9 @@ get_transform (XTransform *trans, int x, int y, int w, int h)
   convert_matrix (&tmp, trans);
 }
 
+#if 0
 void
-cwindow_draw (CWindow *cwindow, Picture picture, XserverRegion damaged_region)
+cwindow_draw (CWindow *cwindow, Picture picture)
 {
   /* Actually draw the window */
   XRenderPictFormat *format;
@@ -549,10 +539,12 @@ cwindow_draw (CWindow *cwindow, Picture picture, XserverRegion damaged_region)
     }
   XRenderFreePicture (cwindow_get_xdisplay (cwindow), wpicture);
 }
+#endif
 
 gboolean
 cwindow_is_translucent (CWindow *cwindow)
 {
+    return FALSE;
   MetaCompositor *compositor = cwindow_get_compositor (cwindow);
   MetaWindow *window = meta_display_lookup_x_window (meta_compositor_get_display (compositor), cwindow_get_xwindow (cwindow));
   return (window != NULL &&
@@ -831,7 +823,7 @@ cwindow_set_transformation (CWindow *cwindow,
 }
 
 void
-cwindow_new_draw (CWindow *cwindow, Picture destination, XserverRegion damaged_region)
+cwindow_new_draw (CWindow *cwindow, Picture destination)
 {
   XRenderPictFormat *format;
   int i;
@@ -883,21 +875,26 @@ cwindow_new_draw (CWindow *cwindow, Picture destination, XserverRegion damaged_r
     }
   else
     {
-      int x, y, w, h;
+	Display *dpy = cwindow_get_xdisplay (cwindow);
       XRenderColor shadow_color = { 0x0000, 0x000, 0x0000, 0x70c0 };
+      XserverRegion shadow_clip;
+      XserverRegion old_clip = XFixesCreateRegionFromPicture (dpy, destination);
+
+      shadow_clip = cwindow_get_opaque_region (cwindow);
       
-      cwindow_get_paint_bounds (cwindow, &x, &y, &w, &h);
-  
+      XFixesSubtractRegion (dpy, shadow_clip, old_clip, shadow_clip);
+
+      XFixesSetPictureClipRegion (dpy, destination, 0, 0, shadow_clip);
+      
       /* superlame drop shadow */
-#if 0
-      XRenderFillRectangle (cwindow_get_xdisplay (cwindow), PictOpOver,
-			    picture,
+      XRenderFillRectangle (cwindow_get_xdisplay (cwindow),
+			    PictOpOver,
+			    destination,
 			    &shadow_color,
-			    cwindow_get_x (cwindow) + SHADOW_OFFSET,
-			    cwindow_get_y (cwindow) + SHADOW_OFFSET,
-			    cwindow_get_width (cwindow),
-			    cwindow_get_height (cwindow));
-#endif
+			    cwindow->x + SHADOW_OFFSET, cwindow->y + SHADOW_OFFSET,
+			    cwindow->width, cwindow->height);
+
+      XFixesSetPictureClipRegion (dpy, destination, 0, 0, old_clip);
       
       XRenderComposite (cwindow_get_xdisplay (cwindow),
 			PictOpOver, /* PictOpOver for alpha, PictOpSrc without */
@@ -905,8 +902,19 @@ cwindow_new_draw (CWindow *cwindow, Picture destination, XserverRegion damaged_r
 			None,
 			destination,
 			0, 0, 0, 0,
-			x, y, w, h);
+			cwindow->x,
+			cwindow->y,
+			cwindow->width,
+			cwindow->height);
+
+      XFixesDestroyRegion (dpy, old_clip);
+      XFixesDestroyRegion (dpy, shadow_clip);
     }
       
+  if (cwindow_get_last_painted_extents (cwindow))
+    cwindow_destroy_last_painted_extents (cwindow);
+  
+  cwindow_set_last_painted_extents (cwindow, cwindow_extents (cwindow));
+  
   XRenderFreePicture (cwindow_get_xdisplay (cwindow), picture);
 }
