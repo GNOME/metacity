@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-10-27 19:40-0500\n"
-"PO-Revision-Date: 2003-10-06 16:30+0300\n"
+"POT-Creation-Date: 2003-12-02 11:02+0200\n"
+"PO-Revision-Date: 2003-11-21 15:47+0200\n"
 "Last-Translator: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "MIME-Version: 1.0\n"
@@ -2520,9 +2520,9 @@ msgstr ""
 "šešėlių būsenų aprašymui"
 
 #: src/theme-parser.c:3464
-#, fuzzy, c-format
+#, c-format
 msgid "Style has already been specified for state %s resize %s focus %s"
-msgstr "state %s resize %s focus %s požymiai jau turi stilias aprašymą"
+msgstr "State %s resize %s focus %s požymiai jau turi stiliaus aprašymą"
 
 #: src/theme-parser.c:3475 src/theme-parser.c:3486 src/theme-parser.c:3497
 #, c-format
@@ -2576,7 +2576,7 @@ msgid ""
 msgstr "Elementas <%s> nepriimtinas tarp distance/border/aspect_ratio elementų"
 
 #: src/theme-parser.c:3718
-#, fuzzy, c-format
+#, c-format
 msgid "Element <%s> is not allowed inside a draw operation element"
 msgstr "Elementas <%s> nepriimtinas tarp draw operation elemento"
 
@@ -2973,7 +2973,7 @@ msgstr "Programa nustatė apgaulingą _NET_WM_PID %ld požymį\n"
 
 #. first time through
 #: src/window.c:4638
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
 "window as specified in the ICCCM.\n"
@@ -2988,7 +2988,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5299
+#: src/window.c:5296
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
