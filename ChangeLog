@@ -1,3 +1,8 @@
+2003-06-26  Mohammad DAMT  <mdamt@bisnisweb.com>
+
+	* po/id.po: Added Indonesian translation
+	* configure.in: Added "id" to ALL_LINGUAS
+
 2003-06-07  Havoc Pennington  <hp@pobox.com>
 
 	* src/window.c (meta_window_notify_focus): drop the mouse button
