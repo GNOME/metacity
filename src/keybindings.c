@@ -857,7 +857,7 @@ meta_change_keygrab (MetaDisplay *display,
                      int          keycode,
                      int          modmask)
 {
-  int ignored_mask;
+  unsigned int ignored_mask;
 
   /* Grab keycode/modmask, together with
    * all combinations of ignored modifiers.
@@ -874,7 +874,7 @@ meta_change_keygrab (MetaDisplay *display,
   meta_error_trap_push (display);
   
   ignored_mask = 0;
-  while (ignored_mask < (int) display->ignored_modifier_mask)
+  while (ignored_mask <= display->ignored_modifier_mask)
     {
       if (ignored_mask & ~(display->ignored_modifier_mask))
         {
