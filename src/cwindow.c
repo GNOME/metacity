@@ -817,10 +817,17 @@ cwindow_set_transformation (CWindow *cwindow,
 			    int n_distortions)
 {
   if (cwindow->distortions)
-    g_free (cwindow->distortions);
+    {
+      g_free (cwindow->distortions);
+      cwindow->distortions = NULL;
+      cwindow->n_distortions = 0;
+    }
   
-  cwindow->distortions = g_memdup (distortions, n_distortions * sizeof (Distortion));
-  cwindow->n_distortions = n_distortions;
+  if (n_distortions)
+    {
+      cwindow->distortions = g_memdup (distortions, n_distortions * sizeof (Distortion));
+      cwindow->n_distortions = n_distortions;
+    }
 }
 
 void
@@ -828,6 +835,8 @@ cwindow_new_draw (CWindow *cwindow, Picture destination, XserverRegion damaged_r
 {
   XRenderPictFormat *format;
   int i;
+  Picture picture;
+  XRenderPictureAttributes pa;
   
   if (cwindow_get_input_only (cwindow))
     return;
@@ -837,66 +846,67 @@ cwindow_new_draw (CWindow *cwindow, Picture destination, XserverRegion damaged_r
   
   format = XRenderFindVisualFormat (cwindow_get_xdisplay (cwindow),
 				    cwindow_get_visual (cwindow));
-  
-  for (i = 0; i < cwindow->n_distortions; ++i)
+
+  pa.subwindow_mode = IncludeInferiors;
+  picture = XRenderCreatePicture (cwindow_get_xdisplay (cwindow),
+				  cwindow_get_drawable (cwindow),
+				  format,
+				  CPSubwindowMode,
+				  &pa);
+	  
+  if (cwindow->n_distortions)
     {
-      XTransform transform;
-      Picture picture;
-      XRenderPictureAttributes pa;
+      for (i = 0; i < cwindow->n_distortions; ++i)
+	{
+	  XTransform transform;
+	  
+	  Distortion *dist = &cwindow->distortions[i];
+	  compute_transform (dist->source.x,
+			     dist->source.y,
+			     dist->source.width, dist->source.height,
+			     &dist->destination, &transform);
+	  
+	  /* Draw window */
+	  XRenderSetPictureTransform (cwindow_get_xdisplay (cwindow), picture, &transform);
+	  XRenderSetPictureFilter (cwindow_get_xdisplay (cwindow), picture, "bilinear", 0, 0);
+	  
+	  XRenderComposite (cwindow_get_xdisplay (cwindow),
+			    PictOpOver, /* PictOpOver for alpha, PictOpSrc without */
+			    picture,
+			    cwindow_get_screen (cwindow)->trans_picture,
+			    destination,
+			    dist->source.x, dist->source.y,
+			    0, 0,
+			    bbox (&dist->destination).x, bbox (&dist->destination).y,
+			    bbox (&dist->destination).width, bbox (&dist->destination).height);
+	}
+    }
+  else
+    {
+      int x, y, w, h;
+      XRenderColor shadow_color = { 0x0000, 0x000, 0x0000, 0x70c0 };
       
-      Distortion *dist = &cwindow->distortions[i];
-      compute_transform (dist->source.x,
-			 dist->source.y,
-			 dist->source.width, dist->source.height,
-			 &dist->destination, &transform);
-      
-      /* Draw window */
-      pa.subwindow_mode = IncludeInferiors;
-      picture = XRenderCreatePicture (cwindow_get_xdisplay (cwindow),
-				      cwindow_get_drawable (cwindow),
-				      format,
-				      CPSubwindowMode,
-				      &pa);
-      
-      XRenderSetPictureTransform (cwindow_get_xdisplay (cwindow), picture, &transform);
-      XRenderSetPictureFilter (cwindow_get_xdisplay (cwindow), picture, "bilinear", 0, 0);
+      cwindow_get_paint_bounds (cwindow, &x, &y, &w, &h);
+  
+      /* superlame drop shadow */
+#if 0
+      XRenderFillRectangle (cwindow_get_xdisplay (cwindow), PictOpOver,
+			    picture,
+			    &shadow_color,
+			    cwindow_get_x (cwindow) + SHADOW_OFFSET,
+			    cwindow_get_y (cwindow) + SHADOW_OFFSET,
+			    cwindow_get_width (cwindow),
+			    cwindow_get_height (cwindow));
+#endif
       
       XRenderComposite (cwindow_get_xdisplay (cwindow),
 			PictOpOver, /* PictOpOver for alpha, PictOpSrc without */
 			picture,
-			cwindow_get_screen (cwindow)->trans_picture,
+			None,
 			destination,
-			dist->source.x, dist->source.y,
-			0, 0,
-			bbox (&dist->destination).x, bbox (&dist->destination).y,
-			bbox (&dist->destination).width, bbox (&dist->destination).height);
-      
-      {
-	int j = i + 2;
-	XRenderColor hilit_color = { (j / 10.0) * 0x0000, 0, (j / 10.0) * 0x9999, (j / 10.0) * 0xFFFF } ;
-	
-#if 0
-	XRenderFillRectangle (cwindow_get_xdisplay (cwindow), PictOpOver,
-			      destination,
-			      &hilit_color,
-			      bbox (&dist->destination).x, bbox (&dist->destination).y,
-			      bbox (&dist->destination).width, bbox (&dist->destination).height);
-#endif
-	
-#if 0
-	g_print ("destination (%d %d) (%d %d) (%d %d) (%d %d)\n",
-		 dist->destination.points[0].x, dist->destination.points[0].y,
-		 dist->destination.points[1].x, dist->destination.points[1].y,
-		 dist->destination.points[2].x, dist->destination.points[2].y,
-		 dist->destination.points[3].x, dist->destination.points[3].y);
-	
-	g_print ("filling: %d %d %d %d\n",
-		 bbox (&dist->destination).x, bbox (&dist->destination).y,
-		 bbox (&dist->destination).width, bbox (&dist->destination).height);
-#endif
-	
-      }
-      
-      XRenderFreePicture (cwindow_get_xdisplay (cwindow), picture);
+			0, 0, 0, 0,
+			x, y, w, h);
     }
+      
+  XRenderFreePicture (cwindow_get_xdisplay (cwindow), picture);
 }

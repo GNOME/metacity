@@ -1,3 +1,7 @@
+Thu Jan 13 23:31:31 2005  Søren Sandmann  <sandmann@redhat.com>
+
+	* src/cwindow.c (cwindow_new_draw): Some drawing fixes
+
 Thu Jan 13 18:43:17 2005  Søren Sandmann  <sandmann@redhat.com>
 
 	* Initial check-in of changes to compositing manager. New files:
