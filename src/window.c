@@ -6205,56 +6205,27 @@ update_resize (MetaWindow *window,
   /* FIXME this is only used in wireframe mode */
   new_x = window->display->grab_anchor_window_pos.x;
   new_y = window->display->grab_anchor_window_pos.y;
-  
-  switch (window->display->grab_op)
-    {
-    case META_GRAB_OP_RESIZING_SE:
-    case META_GRAB_OP_RESIZING_NE:
-    case META_GRAB_OP_RESIZING_E:
-    case META_GRAB_OP_KEYBOARD_RESIZING_SE:
-    case META_GRAB_OP_KEYBOARD_RESIZING_NE:
-    case META_GRAB_OP_KEYBOARD_RESIZING_E:
-      new_w += dx;
-      break;
 
-    case META_GRAB_OP_RESIZING_NW:
-    case META_GRAB_OP_RESIZING_SW:
-    case META_GRAB_OP_RESIZING_W:
-    case META_GRAB_OP_KEYBOARD_RESIZING_NW:
-    case META_GRAB_OP_KEYBOARD_RESIZING_SW:
-    case META_GRAB_OP_KEYBOARD_RESIZING_W:
+  if (meta_grab_op_is_resizing_east (window->display->grab_op))
+    {
+      new_w += dx;
+    }
+  else if (meta_grab_op_is_resizing_west (window->display->grab_op))
+    {
       new_w -= dx;
       new_x += dx;
-      break;
-      
-    default:
-      break;
-    }
-  
-  switch (window->display->grab_op)
-    {
-    case META_GRAB_OP_RESIZING_SE:
-    case META_GRAB_OP_RESIZING_S:
-    case META_GRAB_OP_RESIZING_SW:
-    case META_GRAB_OP_KEYBOARD_RESIZING_SE:
-    case META_GRAB_OP_KEYBOARD_RESIZING_S:
-    case META_GRAB_OP_KEYBOARD_RESIZING_SW:
-      new_h += dy;
-      break;
-      
-    case META_GRAB_OP_RESIZING_N:
-    case META_GRAB_OP_RESIZING_NE:
-    case META_GRAB_OP_RESIZING_NW:
-    case META_GRAB_OP_KEYBOARD_RESIZING_N:
-    case META_GRAB_OP_KEYBOARD_RESIZING_NE:
-    case META_GRAB_OP_KEYBOARD_RESIZING_NW:
-      new_h -= dy;
-      new_y += dy;
-      break;
-    default:
-      break;
     }
 
+  if (meta_grab_op_is_resizing_south (window->display->grab_op))
+    {
+      new_h += dy;
+    }
+  else if (meta_grab_op_is_resizing_north (window->display->grab_op))
+    {
+      new_h -= dy;
+      new_h += dy;
+    }
+  
   if (!check_moveresize_frequency (window, &remaining) && !force)
     {
       /* we are ignoring an event here, so we schedule a
@@ -6406,6 +6377,69 @@ check_use_this_motion_notify (MetaWindow *window,
     }
 }
 
+static void
+handle_moving_event (MetaWindow *window, XEvent *event)
+{
+  if (event->type == ButtonRelease				&&
+      event->xbutton.root == window->screen->xroot)
+    {
+      update_move (window, event->xbutton.state,
+		   event->xbutton.x_root, event->xbutton.y_root);
+      
+      meta_display_end_grab_op (window->display, event->xbutton.time);
+    }
+  else if (event->type == MotionNotify				&&
+	   event->xmotion.root == window->screen->xroot		&&
+	   check_use_this_motion_notify (window, event))
+    {
+      update_move (window,
+		   event->xmotion.state,
+		   event->xmotion.x_root,
+		   event->xmotion.y_root);
+    }
+  else if ((event->type == EnterNotify || event->type == LeaveNotify) &&
+	   event->xcrossing.root == window->screen->xroot)
+    {
+      update_move (window,
+		   event->xcrossing.state,
+		   event->xcrossing.x_root,
+		   event->xcrossing.y_root);
+    }
+}
+
+
+static void
+handle_resizing_event (MetaWindow *window, XEvent *event)
+{
+  if (event->type == ButtonRelease				&&
+      event->xbutton.root == window->screen->xroot)
+    {
+      update_resize (window,
+		     event->xbutton.x_root,
+		     event->xbutton.y_root,
+		     TRUE);
+      
+      meta_display_end_grab_op (window->display, event->xbutton.time);
+    }
+  else if (event->type == MotionNotify				&&
+	   event->xmotion.root == window->screen->xroot		&&
+	   check_use_this_motion_notify (window, event))
+    {
+      update_resize (window,
+		     event->xmotion.x_root,
+		     event->xmotion.y_root,
+		     FALSE);
+    }
+  else if ((event->type == EnterNotify || event->type == LeaveNotify)	&&
+	   event->xcrossing.root == window->screen->xroot)
+    {
+      update_resize (window,
+		     event->xcrossing.x_root,
+		     event->xcrossing.y_root,
+		     FALSE);
+    }
+}
+
 void
 meta_window_handle_mouse_grab_op_event (MetaWindow *window,
                                         XEvent     *event)
@@ -6427,106 +6461,24 @@ meta_window_handle_mouse_grab_op_event (MetaWindow *window,
       window->sync_request_time.tv_usec = 0;
 
       /* This means we are ready for another configure. */
-      switch (window->display->grab_op)
-        {
-        case META_GRAB_OP_RESIZING_E:
-        case META_GRAB_OP_RESIZING_W:
-        case META_GRAB_OP_RESIZING_S:
-        case META_GRAB_OP_RESIZING_N:
-        case META_GRAB_OP_RESIZING_SE:
-        case META_GRAB_OP_RESIZING_SW:
-        case META_GRAB_OP_RESIZING_NE:
-        case META_GRAB_OP_RESIZING_NW:
-        case META_GRAB_OP_KEYBOARD_RESIZING_S:
-        case META_GRAB_OP_KEYBOARD_RESIZING_N:
-        case META_GRAB_OP_KEYBOARD_RESIZING_W:
-        case META_GRAB_OP_KEYBOARD_RESIZING_E:
-        case META_GRAB_OP_KEYBOARD_RESIZING_SE:
-        case META_GRAB_OP_KEYBOARD_RESIZING_NE:
-        case META_GRAB_OP_KEYBOARD_RESIZING_SW:
-        case META_GRAB_OP_KEYBOARD_RESIZING_NW:
+      if (meta_grab_op_is_resizing (window->display->grab_op))
+	{
           /* no pointer round trip here, to keep in sync */
           update_resize (window,
                          window->display->grab_latest_motion_x,
                          window->display->grab_latest_motion_y,
 			 TRUE);
-          break;
-          
-        default:
-          break;
-        }
+	}
     }
 #endif /* HAVE_XSYNC */
-  
-  switch (event->type)
+
+  if (meta_grab_op_is_moving (window->display->grab_op))
     {
-    case ButtonRelease:      
-      if (meta_grab_op_is_moving (window->display->grab_op))
-        {
-          if (event->xbutton.root == window->screen->xroot)
-            update_move (window, event->xbutton.state,
-                         event->xbutton.x_root, event->xbutton.y_root);
-        }
-      else if (meta_grab_op_is_resizing (window->display->grab_op))
-        {
-          if (event->xbutton.root == window->screen->xroot)
-            update_resize (window,
-			   event->xbutton.x_root,
-			   event->xbutton.y_root,
-			   TRUE);
-        }
-
-      meta_display_end_grab_op (window->display, event->xbutton.time);
-      break;    
-
-    case MotionNotify:
-      if (meta_grab_op_is_moving (window->display->grab_op))
-        {
-          if (event->xmotion.root == window->screen->xroot)
-            {
-              if (check_use_this_motion_notify (window,
-                                                event))
-                update_move (window,
-                             event->xmotion.state,
-                             event->xmotion.x_root,
-                             event->xmotion.y_root);
-            }
-        }
-      else if (meta_grab_op_is_resizing (window->display->grab_op))
-        {
-          if (event->xmotion.root == window->screen->xroot)
-            {
-              if (check_use_this_motion_notify (window,
-                                                event))
-                update_resize (window,
-                               event->xmotion.x_root,
-                               event->xmotion.y_root,
-			       FALSE);
-            }
-        }
-      break;
-
-    case EnterNotify:
-    case LeaveNotify:
-      if (meta_grab_op_is_moving (window->display->grab_op))
-        {
-          if (event->xcrossing.root == window->screen->xroot)
-            update_move (window,
-                         event->xcrossing.state,
-                         event->xcrossing.x_root,
-                         event->xcrossing.y_root);
-        }
-      else if (meta_grab_op_is_resizing (window->display->grab_op))
-        {
-          if (event->xcrossing.root == window->screen->xroot)
-            update_resize (window,
-                           event->xcrossing.x_root,
-                           event->xcrossing.y_root,
-			   FALSE);
-        }
-      break;
-    default:
-      break;
+      handle_moving_event (window, event);
+    }
+  else if (meta_grab_op_is_resizing (window->display->grab_op))
+    {
+      handle_resizing_event (window, event);
     }
 }
 
@@ -6713,40 +6665,17 @@ meta_window_refresh_resize_popup (MetaWindow *window)
    */
   if (window->display->grab_wireframe_active)
     return;
-  
-  switch (window->display->grab_op)
-    {
-    case META_GRAB_OP_RESIZING_SE:
-    case META_GRAB_OP_RESIZING_S:
-    case META_GRAB_OP_RESIZING_SW:
-    case META_GRAB_OP_RESIZING_N:
-    case META_GRAB_OP_RESIZING_NE:
-    case META_GRAB_OP_RESIZING_NW:
-    case META_GRAB_OP_RESIZING_W:
-    case META_GRAB_OP_RESIZING_E:
-    case META_GRAB_OP_KEYBOARD_RESIZING_UNKNOWN:
-    case META_GRAB_OP_KEYBOARD_RESIZING_S:
-    case META_GRAB_OP_KEYBOARD_RESIZING_N:
-    case META_GRAB_OP_KEYBOARD_RESIZING_W:
-    case META_GRAB_OP_KEYBOARD_RESIZING_E:
-    case META_GRAB_OP_KEYBOARD_RESIZING_SE:
-    case META_GRAB_OP_KEYBOARD_RESIZING_NE:
-    case META_GRAB_OP_KEYBOARD_RESIZING_SW:
-    case META_GRAB_OP_KEYBOARD_RESIZING_NW:
-      break;
 
-    default:
-      /* Not resizing */
-      return;
-    }
+  if (!meta_grab_op_is_resizing (window->display->grab_op))
+    return;
       
-  if (window->display->grab_resize_popup == NULL)
+  if (window->display->grab_resize_popup == NULL		&&
+      (window->size_hints.width_inc > 1 ||
+       window->size_hints.height_inc > 1))
     {
-      if (window->size_hints.width_inc > 1 ||
-          window->size_hints.height_inc > 1)
-        window->display->grab_resize_popup =
-          meta_ui_resize_popup_new (window->display->xdisplay,
-                                    window->screen->number);
+      window->display->grab_resize_popup =
+	meta_ui_resize_popup_new (window->display->xdisplay,
+				  window->screen->number);
     }
   
   if (window->display->grab_resize_popup != NULL)

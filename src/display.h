@@ -487,6 +487,10 @@ int meta_resize_gravity_from_grab_op (MetaGrabOp op);
 
 gboolean meta_grab_op_is_moving   (MetaGrabOp op);
 gboolean meta_grab_op_is_resizing (MetaGrabOp op);
+gboolean meta_grab_op_is_resizing_east (MetaGrabOp op);
+gboolean meta_grab_op_is_resizing_west (MetaGrabOp op);
+gboolean meta_grab_op_is_resizing_north (MetaGrabOp op);
+gboolean meta_grab_op_is_resizing_south(MetaGrabOp op);
 
 gboolean meta_rectangle_intersect (MetaRectangle *src1,
                                    MetaRectangle *src2,

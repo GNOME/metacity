@@ -217,12 +217,12 @@ meta_ui_create_frame_window (MetaUI *ui,
   attrs.cursor = NULL;
   attrs.wmclass_name = NULL;
   attrs.wmclass_class = NULL;
-  attrs.override_redirect = FALSE;
+  attrs.override_redirect = TRUE;	/* to allow clients to resize the frame window */
 
   attrs.width  = width;
   attrs.height = height;
 
-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL | GDK_WA_COLORMAP;
+  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL | GDK_WA_COLORMAP | GDK_WA_NOREDIR;
 
   window =
     gdk_window_new (gdk_screen_get_root_window(screen),

@@ -1085,6 +1085,50 @@ meta_grab_op_is_resizing (MetaGrabOp op)
 }
 
 gboolean
+meta_grab_op_is_resizing_east (MetaGrabOp op)
+{
+  return (op == META_GRAB_OP_RESIZING_SE		||
+	  op == META_GRAB_OP_RESIZING_NE		||
+	  op == META_GRAB_OP_RESIZING_E			||
+	  op == META_GRAB_OP_KEYBOARD_RESIZING_SE	||
+	  op == META_GRAB_OP_KEYBOARD_RESIZING_NE	||
+	  op == META_GRAB_OP_KEYBOARD_RESIZING_E);
+}
+
+gboolean
+meta_grab_op_is_resizing_west (MetaGrabOp op)
+{
+  return (op == META_GRAB_OP_RESIZING_NW		||
+	  op == META_GRAB_OP_RESIZING_SW		||
+	  op == META_GRAB_OP_RESIZING_W			||
+	  op == META_GRAB_OP_KEYBOARD_RESIZING_NW	||
+	  op == META_GRAB_OP_KEYBOARD_RESIZING_SW	||
+	  op == META_GRAB_OP_KEYBOARD_RESIZING_W);
+}
+
+gboolean
+meta_grab_op_is_resizing_south (MetaGrabOp op)
+{
+  return (op == META_GRAB_OP_RESIZING_SW		||
+	  op == META_GRAB_OP_RESIZING_SE		||
+	  op == META_GRAB_OP_RESIZING_S			||
+	  op == META_GRAB_OP_KEYBOARD_RESIZING_SW	||
+	  op == META_GRAB_OP_KEYBOARD_RESIZING_SE	||
+	  op == META_GRAB_OP_KEYBOARD_RESIZING_S);
+}
+
+gboolean
+meta_grab_op_is_resizing_north (MetaGrabOp op)
+{
+  return (op == META_GRAB_OP_RESIZING_NW		||
+	  op == META_GRAB_OP_RESIZING_NE		||
+	  op == META_GRAB_OP_RESIZING_N			||
+	  op == META_GRAB_OP_KEYBOARD_RESIZING_NW	||
+	  op == META_GRAB_OP_KEYBOARD_RESIZING_NE	||
+	  op == META_GRAB_OP_KEYBOARD_RESIZING_N);
+}
+
+gboolean
 meta_grab_op_is_moving (MetaGrabOp op)
 {
   switch (op)
