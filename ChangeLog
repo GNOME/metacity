@@ -1,3 +1,7 @@
+2004-10-28  Gora Mohanty  <gmohanty@cvs.gnome.org>
+                                                                                
+        * configure.in: Added 'or' to ALL_LINGUAS.
+           
 2004-06-24  Elijah Newren  <newren@math.utah.edu>
 
 	* src/keybindings.c: (handle_toggle_desktop): Choose correct
