@@ -9,8 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity 2.4.34\n"
-"POT-Creation-Date: 2003-02-16 20:54+0100\n"
-"PO-Revision-Date: 2003-02-16 20:38+0100\n"
+"POT-Creation-Date: 2003-03-27 01:22+0100\n"
+"PO-Revision-Date: 2003-03-27 01:12+0100\n"
 "Last-Translator: Christophe Merlet (RedFox) <redfox@redfoxcenter.org>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
@@ -506,7 +506,7 @@ msgstr ""
 
 #: src/metacity.schemas.in.h:18
 msgid "Lower window below other windows"
-msgstr "Mettre une fenetre sous les autres fenêtres"
+msgstr "Mettre une fenêtre sous les autres fenêtres"
 
 #: src/metacity.schemas.in.h:19
 msgid "Maximize a window"
@@ -1505,7 +1505,7 @@ msgid ""
 "set the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
 msgstr ""
-"La combinaison de touche utilisé pour déplacer le focus entre fenetres, en "
+"La combinaison de touche utilisé pour déplacer le focus entre fenêtres, en "
 "utilisant une boîte de dialogue. Tenir « shift » en même temps que ces "
 "combinaisons permet de se déplacer normalement vers l'avant. Le format "
 "ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;F1. "
@@ -1580,7 +1580,7 @@ msgid ""
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La combinaison de touche utilisé pour déplacer le focus entre fenetres, en "
+"La combinaison de touche utilisé pour déplacer le focus entre fenêtres, en "
 "utilisant une boîte de dialogue (traditionnellement &lt;Alt&gt;Tab). Tenir « "
 "shift » en même temps que ces combinaisons permet de se déplacer normalement "
 "vers l'avant. Le format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;"
@@ -2907,15 +2907,15 @@ msgstr "Gestionnaire de fenêtres : "
 
 #: src/util.c:347
 msgid "Bug in window manager: "
-msgstr "Bogue dans le gestionnaire de fenêtre :"
+msgstr "Bogue dans le gestionnaire de fenêtres : "
 
 #: src/util.c:376
 msgid "Window manager warning: "
-msgstr "Avertissement du gestionnaire de fenêtre :"
+msgstr "Avertissement du gestionnaire de fenêtres : "
 
 #: src/util.c:400
 msgid "Window manager error: "
-msgstr "Erreur du gestionnaire de fenêtre :"
+msgstr "Erreur du gestionnaire de fenêtres : "
 
 #: src/window-props.c:161
 #, c-format
@@ -2923,14 +2923,14 @@ msgid "Application set a bogus _NET_WM_PID %ld\n"
 msgstr "L'application a défini un faux _NET_WM_PID %ld\n"
 
 #. first time through
-#: src/window.c:4897
+#: src/window.c:4916
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
 "window as specified in the ICCCM.\n"
 msgstr ""
-"La fenêtre %s positionne SM_CLIENT_ID sur elle-même, au lieu le positionner "
-"sur la fenêtre WM_CLIENT_LEADER, comme spécifié dans l'ICCCM.\n"
+"La fenêtre %s positionne SM_CLIENT_ID sur elle-même, au lieu de le "
+"positionner sur la fenêtre WM_CLIENT_LEADER tel que spécifié dans l'ICCCM.\n"
 
 #. We ignore mwm_has_resize_func because WM_NORMAL_HINTS is the
 #. * authoritative source for that info. Some apps such as mplayer or
@@ -2939,7 +2939,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5471
+#: src/window.c:5490
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
