@@ -1,3 +1,11 @@
+2003-07-29  Arvind Samptur  <arvind.samptur@wipro.com>
+
+	* src/xprops.c (utf8_list_from_results): Number of
+	strings we are processing is one more than required.
+
+	Also get the string count right even without a null byte at the end.
+	Pointed out by Havoc.
+
 2003-07-21  Arafat Medini  <lumina@silverpen.de>
 
 	* ar.po: Added "ar" Arabic to ALL_LINGUAS
