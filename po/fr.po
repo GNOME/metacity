@@ -8,10 +8,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: metacity 2.4.21\n"
-"POT-Creation-Date: 2003-02-04 23:36-0500\n"
-"PO-Revision-Date: 2003-01-26 00:52+0100\n"
-"Last-Translator: Guy CLOTILDE <guy.clotilde@wanadoo.fr>\n"
+"Project-Id-Version: metacity 2.4.34\n"
+"POT-Creation-Date: 2003-02-16 20:54+0100\n"
+"PO-Revision-Date: 2003-02-16 20:38+0100\n"
+"Last-Translator: Christophe Merlet (RedFox) <redfox@redfoxcenter.org>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -211,7 +211,7 @@ msgstr "Uniquement sur _cet espace de travail"
 #: src/menu.c:152 src/prefs.c:1669
 #, c-format
 msgid "Workspace %d"
-msgstr "Bureau %d"
+msgstr "Espace de travail %d"
 
 #.
 #. * Above name is a pointer into the Workspace struct. Here we make
@@ -220,7 +220,7 @@ msgstr "Bureau %d"
 #: src/menu.c:160
 #, c-format
 msgid "Workspace %s%d"
-msgstr "Bureau %s%d"
+msgstr "Espace de travail %s%d"
 
 #: src/menu.c:353
 #, c-format
@@ -230,7 +230,7 @@ msgstr "Uniquement sur %s"
 #: src/menu.c:355
 #, c-format
 msgid "Move to %s"
-msgstr "Déplacer vers le %s"
+msgstr "Déplacer vers %s"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the shift key. If the text on this key isn't typically
@@ -330,12 +330,12 @@ msgid ""
 "(Any open documents will be lost.)"
 msgstr ""
 "La fenêtre « %s » ne répond pas.\n"
-"Forcer la fermeture de cette application?\n"
+"Forcer la fermeture de cette application ?\n"
 "(Tous les documents ouverts seront perdus.)"
 
 #: src/metacity-dialog.c:94
 msgid "Kill application"
-msgstr "Finir l'application"
+msgstr "Tuer l'application"
 
 #: src/metacity-dialog.c:188
 msgid "Title"
@@ -386,12 +386,12 @@ msgstr ""
 "titre de fenêtre. La taille de la description ne sera toutefois utilisée que "
 "si l'option titlebar_font_size est réglée sur 0. Cette option est en outre "
 "désactivée si l'option titlebar_uses_desktop_font est réglée sur vrai. Par "
-"défaut, titlebar_font est annulé et Metacity rétablit donc la police bureau, "
-"même si la valeur de titlebar_uses_desktop_font est faux."
+"défaut, titlebar_font est annulé et Metacity rétablit donc la police du "
+"bureau, même si la valeur de titlebar_uses_desktop_font est fausse."
 
 #: src/metacity.schemas.in.h:3
 msgid "Action on title bar double-click"
-msgstr "Action lors du double-clic sur la barre de titre"
+msgstr "Action lors du double-clique sur la barre de titre"
 
 #: src/metacity.schemas.in.h:4
 msgid "Activate window menu"
@@ -430,8 +430,8 @@ msgid ""
 "for example."
 msgstr ""
 "Cliquer sur une fenêtre en maintenant enfoncé cette touche de modification "
-"déplacera la fenêtre (clic gauche), redimenssionnera la fenêtre (clic au "
-"milieu), ou affichera le menu de la fenêtre (clic droit). Le modificateur "
+"déplacera la fenêtre (clique gauche), redimenssionnera la fenêtre (clique au "
+"milieu), ou affichera le menu de la fenêtre (clique droit). Le modificateur "
 "est défini comme « &lt;Alt&gt; » ou « &lt;Super&gt; » par exemple."
 
 #: src/metacity.schemas.in.h:9
@@ -497,12 +497,12 @@ msgstr ""
 "configuration basée sur les applications est plus proche de Mac que de "
 "Windows. Lorsque vous activez une fenêtre en mode basé sur les applications, "
 "toutes les fenêtres de l'application seront mises au premier plan. En outre, "
-"en mode basé sur les applications, les clics de focus ne sont pas transmis "
+"en mode basé sur les applications, les cliques de focus ne sont pas transmis "
 "aux fenêtres d'autres applications. L'existence de ce paramètre est assez "
 "douteuse, mais elle est préférable à la définition de paramètres pour tous "
 "les détails spécifiques des modes basés sur les applications/fenêtres, p. "
-"ex. concernant la transmission des clics. Pour l'instant, le mode basé sur "
-"des applications n'est généralement pas mis en uvre."
+"ex. concernant la transmission des cliques. Pour l'instant, le mode basé sur "
+"des applications n'est généralement pas mis en oeuvre."
 
 #: src/metacity.schemas.in.h:18
 msgid "Lower window below other windows"
@@ -526,7 +526,7 @@ msgstr "Réduire une fenêtre"
 
 #: src/metacity.schemas.in.h:23
 msgid "Modifier to use for modified window click actions"
-msgstr "La touche à utiliser pour modifier les actions du clic"
+msgstr "La touche à utiliser pour modifier les actions du clique"
 
 #: src/metacity.schemas.in.h:24
 msgid "Move a window"
@@ -1675,7 +1675,7 @@ msgstr ""
 
 #: src/metacity.schemas.in.h:127
 msgid "The name of a workspace."
-msgstr "Nom de l'espace de travail"
+msgstr "Le nom d'un espace de travail."
 
 #: src/metacity.schemas.in.h:128
 msgid ""
@@ -1801,10 +1801,10 @@ msgid ""
 "Current valid options are 'toggle_shaded', which will shade/unshade the "
 "window, and 'toggle_maximized' which will maximize/unmaximize the window."
 msgstr ""
-"Cette option détermine les effets lors du double-clic sur la barre de titre. "
-"Les options possibles sont « bascule_réduction_au_titre » qui réduit ou pas "
-"la fenêtre à son titre, « bascule_maximisation » qui maximize la fenêtre ou "
-"la remet à la taille précédente aprés maximisation."
+"Cette option détermine les effets lors du double-clique sur la barre de "
+"titre. Les options possibles sont « bascule_réduction_au_titre » qui réduit "
+"ou pas la fenêtre à son titre, « bascule_maximisation » qui maximize la "
+"fenêtre ou la remet à la taille précédente aprés maximisation."
 
 #: src/metacity.schemas.in.h:137
 msgid "Toggle fullscreen mode"
@@ -1820,7 +1820,7 @@ msgstr "Réduire à la barre de titre/restaurer la fenêtre à sa taille normale
 
 #: src/metacity.schemas.in.h:140
 msgid "Toggle window on all workspaces"
-msgstr "Basculer l'apparition de la fenêtre sur tous les espaces de travail"
+msgstr "Basculer l'affichage de la fenêtre sur tous les espaces de travail"
 
 #: src/metacity.schemas.in.h:141
 msgid "Unmaximize a window"
@@ -1944,7 +1944,7 @@ msgstr ""
 msgid "Screen %d on display \"%s\" already has a window manager\n"
 msgstr "L'écran %d sur le visuel « %s » a déjà un gestionnaire de fenêtres\n"
 
-#: src/screen.c:673
+#: src/screen.c:674
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "Impossible de libérer l'écran %d sur le visuel « %s »\n"
