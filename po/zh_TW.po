@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity 2.4.21\n"
-"POT-Creation-Date: 2003-01-23 11:34+0800\n"
+"POT-Creation-Date: 2003-02-04 23:36-0500\n"
 "PO-Revision-Date: 2003-01-23 11:49+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditioanl) <zh-l10n@linux.org.tw>\n"

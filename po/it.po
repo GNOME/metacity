@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity 2.3.55\n"
-"POT-Creation-Date: 2003-01-20 22:01-0500\n"
+"POT-Creation-Date: 2003-02-04 23:36-0500\n"
 "PO-Revision-Date: 2003-01-26 21:14+0100\n"
 "Last-Translator: Lapo Calamandrei <lapo.calamandrei@virgilio.it>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
@@ -21,8 +21,8 @@ msgstr "Utilizzo: %s\n"
 
 #: src/tools/metacity-message.c:174 src/util.c:128
 msgid "Metacity was compiled without support for verbose mode\n"
-msgstr "Metacity è stato compilato escludendo il supporto per "
-"la modalità prolissa\n"
+msgstr ""
+"Metacity è stato compilato escludendo il supporto per la modalità prolissa\n"
 
 #: src/delete.c:60 src/delete.c:87 src/metacity-dialog.c:46
 #: src/theme-parser.c:467
@@ -106,16 +106,17 @@ msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
 "binding\n"
 msgstr ""
-"Qualche altro programma sta usando come associazione il tasto %s con " "modificatore %x\n"
+"Qualche altro programma sta usando come associazione il tasto %s con "
+"modificatore %x\n"
 
-#: src/keybindings.c:2246
+#: src/keybindings.c:2317
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr ""
 "Errore nell'esecuzione di metacity-dialog per la notifica di un errore "
 "relativo a un comando: %s\n"
 
-#: src/keybindings.c:2277
+#: src/keybindings.c:2348
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "Il comando %d non è stato definito.\n"
@@ -140,8 +141,8 @@ msgstr ""
 "metacity %s\n"
 "Copyright © 2001-2002 Havoc Pennington, Red Hat, Inc. ed altri.\n"
 "Questo è software libero; si vedano i sorgenti per le condizioni di copia.\n"
-"NON è fornita alcuna garanzia; neanche di COMMERCIABILITÀ o APPLICABILITÀ PER UNO SCOPO PARTICOLARE.\n"
-
+"NON è fornita alcuna garanzia; neanche di COMMERCIABILITÀ o APPLICABILITÀ "
+"PER UNO SCOPO PARTICOLARE.\n"
 
 #: src/main.c:326
 #, c-format
@@ -421,8 +422,8 @@ msgid ""
 msgstr ""
 "Cliccare una finestra mentre questo tasto modificatore è premuto fa muovere "
 "la finestra (tasto sinistro), ridimensionare la finestra (tasto centrale) o "
-"visualizzare il menù della finestra (tasto destro). Il "
-"modificatore è definito come \"&lt;Alt&gt;\" o \"&lt;Super&gt;\"."
+"visualizzare il menù della finestra (tasto destro). Il modificatore è "
+"definito come \"&lt;Alt&gt;\" o \"&lt;Super&gt;\"."
 
 #: src/metacity.schemas.in.h:9
 msgid "Close a window"
@@ -430,7 +431,8 @@ msgstr "Chiude una finestra"
 
 #: src/metacity.schemas.in.h:10
 msgid "Commands to run in response to keybindings"
-msgstr "Comandi da eseguire in seguito alla pressione di una combinazione di tasti"
+msgstr ""
+"Comandi da eseguire in seguito alla pressione di una combinazione di tasti"
 
 #: src/metacity.schemas.in.h:11
 msgid "Current theme"
@@ -513,8 +515,8 @@ msgstr "Minimizza la finestra"
 #: src/metacity.schemas.in.h:23
 msgid "Modifier to use for modified window click actions"
 msgstr ""
-"Modificatore da utilizzare per le azioni sulle finestre con i pulsanti "
-"del mouse"
+"Modificatore da utilizzare per le azioni sulle finestre con i pulsanti del "
+"mouse"
 
 #: src/metacity.schemas.in.h:24
 msgid "Move a window"
@@ -527,13 +529,12 @@ msgstr "Sposta, in senso contrario, il focus tra i panneli ed il desktop"
 #: src/metacity.schemas.in.h:26
 msgid "Move backwards between panels and the desktop with popup"
 msgstr ""
-"Sposta, in senso contrario, il focus tra i pannelli ed il desktop "
-"con il dialogo popup"
+"Sposta, in senso contrario, il focus tra i pannelli ed il desktop con il "
+"dialogo popup"
 
 #: src/metacity.schemas.in.h:27
 msgid "Move backwards between windows immediately"
-msgstr ""
-"Sposta, in senso contrario, il focus tra le finestre"
+msgstr "Sposta, in senso contrario, il focus tra le finestre"
 
 #: src/metacity.schemas.in.h:28
 msgid "Move between panels and the desktop immediately"
@@ -541,8 +542,7 @@ msgstr "Sposta il focus tra i pannelli ed il desktop"
 
 #: src/metacity.schemas.in.h:29
 msgid "Move between panels and the desktop with popup"
-msgstr ""
-"Sposta il focus tra i pannelli ed il desktop con il dialogo popup"
+msgstr "Sposta il focus tra i pannelli ed il desktop con il dialogo popup"
 
 #: src/metacity.schemas.in.h:30
 msgid "Move between windows immediately"
@@ -641,8 +641,7 @@ msgstr ""
 
 #: src/metacity.schemas.in.h:52
 msgid "Raise obscured window, otherwise lower"
-msgstr ""
-"Porta la finestra in primo piano se è coperta, altrimenti in sfondo"
+msgstr "Porta la finestra in primo piano se è coperta, altrimenti in sfondo"
 
 #: src/metacity.schemas.in.h:53
 msgid "Raise window above other windows"
@@ -672,14 +671,14 @@ msgid ""
 "workarounds mode won't be fixable without amending a spec."
 msgstr ""
 "Alcune applicazioni non seguono le specifiche in modo da far sì che il "
-"gestore delle finestre si comporti erroneamente. Metacity, "
-"idealmente, posizionerebbe tutti i dialoghi in modo consistente con la "
-"finestra dell'applicazione che li genera. Ciò comporta che la posizione "
-"richiesta dall'applicazione per tali dialoghi venga ignorata. Aalcune "
-"versioni di Java/Swing, però, marcano i propri menù a tendina come dialoghi, "
-"così Metacity deve disabilitare il posizionamento degli stessi per fare in "
-"modo che funzionino correttamente. Disabilitare questa opzione fa sì che "
-"Metacity funzioni in modalità corretta che permette di avere una interfaccia "
+"gestore delle finestre si comporti erroneamente. Metacity, idealmente, "
+"posizionerebbe tutti i dialoghi in modo consistente con la finestra "
+"dell'applicazione che li genera. Ciò comporta che la posizione richiesta "
+"dall'applicazione per tali dialoghi venga ignorata. Aalcune versioni di Java/"
+"Swing, però, marcano i propri menù a tendina come dialoghi, così Metacity "
+"deve disabilitare il posizionamento degli stessi per fare in modo che "
+"funzionino correttamente. Disabilitare questa opzione fa sì che Metacity "
+"funzioni in modalità corretta che permette di avere una interfaccia "
 "moderatamente migliore se non è necessario eseguire applicazioni buggate. "
 "Tristemente il mondo reale non è un posto ideale e quindi questa opzione è "
 "abilitata per default. Alcune di queste funzioni abilitate servono per "
@@ -787,9 +786,9 @@ msgid ""
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
 msgstr ""
-"Scorciatoia per sportarsi nell'area di lavoro in alto rispetto a quella corrente. Il "
-"formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È "
-"consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
+"Scorciatoia per sportarsi nell'area di lavoro in alto rispetto a quella "
+"corrente. Il formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;"
+"F1\". È consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
 "abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione viene "
 "impostata \"disabled\", allora non ci sarà nessuna scorciatoia per questa "
 "azione."
@@ -803,9 +802,9 @@ msgid ""
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
 msgstr ""
-"Scorciatoia per sportarsi nell'area di lavoro in basso rispetto a quella corrente. Il "
-"formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È "
-"consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
+"Scorciatoia per sportarsi nell'area di lavoro in basso rispetto a quella "
+"corrente. Il formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;"
+"F1\". È consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
 "abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione viene "
 "impostata \"disabled\", allora non ci sarà nessuna scorciatoia per questa "
 "azione."
@@ -1387,11 +1386,12 @@ msgid ""
 "keybinding for this action."
 msgstr ""
 "Scorciatoia per spostare il focus tra le finestre in senso contrario, non "
-"visualizzando la finestra di selezione. La pressione cdontemporanea di questa scorciatoia e del tasto \"Maiusc\" inverte il senco. Il formato è \"&lt;Control$gt;a\" "
-"oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di lettere "
-"maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;"
-"Ctrl&gt;\". Se l'opzione viene impostata \"disabled\", allora non ci sarà "
-"nessuna scorciatoia per questa azione."
+"visualizzando la finestra di selezione. La pressione cdontemporanea di "
+"questa scorciatoia e del tasto \"Maiusc\" inverte il senco. Il formato è "
+"\"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito "
+"l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo "
+"\"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione viene impostata \"disabled"
+"\", allora non ci sarà nessuna scorciatoia per questa azione."
 
 #: src/metacity.schemas.in.h:117
 msgid ""
@@ -1455,13 +1455,13 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "Scorciatoia per spostare il focus tra le finestre, non visualizzando la "
-"finestra di selezione (usualmente &lt;Alt&gt;Escape). Tenendo premuto "
-"\"shift\", mentre si utilizza questa scorciatoia, si inverte il senso di "
+"finestra di selezione (usualmente &lt;Alt&gt;Escape). Tenendo premuto \"shift"
+"\", mentre si utilizza questa scorciatoia, si inverte il senso di "
 "spostamento. Il formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;"
-"Alt&gt;F1\". È consentito l'utilizzo di lettere maiuscole, minuscole e "
-"anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione "
-"viene impostata \"disabled\", allora non ci sarà nessuna scorciatoia per "
-"questa azione."
+"Alt&gt;F1\". È consentito l'utilizzo di lettere maiuscole, minuscole e anche "
+"di abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione viene "
+"impostata \"disabled\", allora non ci sarà nessuna scorciatoia per questa "
+"azione."
 
 #: src/metacity.schemas.in.h:121
 msgid ""
@@ -1474,13 +1474,13 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "Scorciatoia per spostare il focus tra le finestre, visualizzando la finestra "
-"di selezione (usualmente &lt;Alt&gt;Escape). Tenendo premuto \"shift"
-"\", mentre si utilizza questa scorciatoia, si inverte il senso di "
-"spostamento. Il formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;"
-"Alt&gt;F1\". È consentito l'utilizzo di lettere maiuscole, minuscole e "
-"anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione "
-"viene impostata \"disabled\", allora non ci sarà nessuna scorciatoia per "
-"questa azione."
+"di selezione (usualmente &lt;Alt&gt;Escape). Tenendo premuto \"shift\", "
+"mentre si utilizza questa scorciatoia, si inverte il senso di spostamento. "
+"Il formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È "
+"consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
+"abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione viene "
+"impostata \"disabled\", allora non ci sarà nessuna scorciatoia per questa "
+"azione."
 
 #: src/metacity.schemas.in.h:122
 msgid ""
@@ -1490,11 +1490,12 @@ msgid ""
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Scorciatoia per attivare/disattivare la modalità a schermo intero. Il formato "
-"è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito "
-"l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo "
-"\"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione viene impostata \"disabled"
-"\", allora non ci sarà nessuna scorciatoia per questa azione."
+"Scorciatoia per attivare/disattivare la modalità a schermo intero. Il "
+"formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È "
+"consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
+"abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione viene "
+"impostata \"disabled\", allora non ci sarà nessuna scorciatoia per questa "
+"azione."
 
 #: src/metacity.schemas.in.h:123
 msgid ""
@@ -1645,11 +1646,12 @@ msgid ""
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
 msgstr ""
-"Scorciatoia per ridimensionare la finestra attiva in modo che occupi "
-"tutto lo spazio orizzontale disponibile. Il formato è \"&lt;Control$gt;a\" ""oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito "
-"l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo "
-"\"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione viene impostata \"disabled"
-"\", allora non ci sarà nessuna scorciatoia per questa azione."
+"Scorciatoia per ridimensionare la finestra attiva in modo che occupi tutto "
+"lo spazio orizzontale disponibile. Il formato è \"&lt;Control$gt;a\" oppure "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di lettere "
+"maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;"
+"Ctrl&gt;\". Se l'opzione viene impostata \"disabled\", allora non ci sarà "
+"nessuna scorciatoia per questa azione."
 
 #: src/metacity.schemas.in.h:135
 msgid ""
@@ -1660,11 +1662,12 @@ msgid ""
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
 msgstr ""
-"Scorciatoia per ridimensionare la finestra attiva in modo che occupi "
-"tutto lo spazio verticale disponibile. Il formato è \"&lt;Control$gt;a\" ""oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito "
-"l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo "
-"\"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione viene impostata \"disabled"
-"\", allora non ci sarà nessuna scorciatoia per questa azione."
+"Scorciatoia per ridimensionare la finestra attiva in modo che occupi tutto "
+"lo spazio verticale disponibile. Il formato è \"&lt;Control$gt;a\" oppure "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di lettere "
+"maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;"
+"Ctrl&gt;\". Se l'opzione viene impostata \"disabled\", allora non ci sarà "
+"nessuna scorciatoia per questa azione."
 
 #: src/metacity.schemas.in.h:136
 msgid ""
@@ -1674,8 +1677,8 @@ msgid ""
 msgstr ""
 "Questa opzione determina l'effetto del doppio clic sulla barra del titolo. "
 "Le possibili impostazioni sono \"toggle_shade\" e \"toggle_maximize\" che "
-"rispettivamente servono per arrotolare/srotolare e "
-"massimizzare/demassimizzare la finestra."
+"rispettivamente servono per arrotolare/srotolare e massimizzare/"
+"demassimizzare la finestra."
 
 #: src/metacity.schemas.in.h:137
 msgid "Toggle fullscreen mode"
@@ -1691,8 +1694,7 @@ msgstr "Attiva/disattiva l'arrotamento"
 
 #: src/metacity.schemas.in.h:140
 msgid "Toggle window on all workspaces"
-msgstr ""
-"Attiva/disattiva la presenza della finestra su tutte le aree di lavoro"
+msgstr "Attiva/disattiva la presenza della finestra su tutte le aree di lavoro"
 
 #: src/metacity.schemas.in.h:141
 msgid "Unmaximize a window"
@@ -1780,7 +1782,8 @@ msgstr ""
 #: src/prefs.c:1750
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
-msgstr "Errore nell'impostazione del nome dell'area di lavoro %d a \"%s\": %s\n"
+msgstr ""
+"Errore nell'impostazione del nome dell'area di lavoro %d a \"%s\": %s\n"
 
 #: src/resizepopup.c:127
 #, c-format
@@ -1798,8 +1801,8 @@ msgid ""
 "Screen %d on display \"%s\" already has a window manager; try using the --"
 "replace option to replace the current window manager.\n"
 msgstr ""
-"Lo schermo %d nel display \"%s\" ha già un window manager; "
-"utilizzare l'opzione --replace per sostituirlo.\n"
+"Lo schermo %d nel display \"%s\" ha già un window manager; utilizzare "
+"l'opzione --replace per sostituirlo.\n"
 
 #: src/screen.c:449
 #, c-format
@@ -1861,8 +1864,8 @@ msgstr "Analisi del file della sessione salvato fallita: %s\n"
 #: src/session.c:1221
 msgid "<metacity_session> attribute seen but we already have the session ID"
 msgstr ""
-"È stato trovato un'attributo in <metacity_session> ma è già presente un ID della "
-"sessione"
+"È stato trovato un'attributo in <metacity_session> ma è già presente un ID "
+"della sessione"
 
 #: src/session.c:1234
 #, c-format
@@ -1945,8 +1948,7 @@ msgstr "L'angolo deve essere tra 0.0 e 360.0, non %g\n"
 #: src/theme-parser.c:638
 #, c-format
 msgid "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g\n"
-msgstr ""
-"Alpha deve essere tra 0.0 (trasparente) e 1.0 (opaco), non %g\n"
+msgstr "Alpha deve essere tra 0.0 (trasparente) e 1.0 (opaco), non %g\n"
 
 #: src/theme-parser.c:684
 #, c-format
@@ -2780,7 +2782,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5457
+#: src/window.c:5471
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
@@ -2801,8 +2803,8 @@ msgid ""
 msgstr ""
 "La finestra 0x%lx ha una proprietà %s che dovrebbe avere un tipo %s di "
 "formato %d e attualmente ha un tipo %s di formato %d e n_items %d.\n"
-"Probabilmente si tratta di un bug nell'applicazione e non del "
-"window manager.\n"
+"Probabilmente si tratta di un bug nell'applicazione e non del window "
+"manager.\n"
 "Gli attributi della finestra dono titolo=\"%s\" classe=\"%s\" nome=\"%s\"\n"
 
 #: src/xprops.c:399

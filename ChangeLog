@@ -1,5 +1,11 @@
 2003-02-04  Havoc Pennington  <hp@redhat.com>
 
+	* NEWS: updated
+
+	* configure.in: 2.4.34
+
+2003-02-04  Havoc Pennington  <hp@redhat.com>
+
 	* src/metacity.schemas.in: default to Simple instead of Atlanta
 
 	* src/themes/Makefile.am (THEMES): add Simple theme

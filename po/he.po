@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity.HEAD\n"
-"POT-Creation-Date: 2003-01-20 22:01-0500\n"
+"POT-Creation-Date: 2003-02-04 23:36-0500\n"
 "PO-Revision-Date: 2003-01-03 15:58+0200\n"
 "Last-Translator: Gil 'Dolfin' Osher <dolfin@rpg.org.il>\n"
 "Language-Team: Hebrew <he@li.org>\n"
@@ -105,12 +105,12 @@ msgid ""
 "binding\n"
 msgstr "תוכנית אחרת כבר משתמשת במקש %s עם המקש %x כצירוף\n"
 
-#: src/keybindings.c:2246
+#: src/keybindings.c:2317
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr "שגיאה בהפעלת תיבת דו-שיח של מטאסיטי כדי להדפיס שגיאה על הפקודה: %s\n"
 
-#: src/keybindings.c:2277
+#: src/keybindings.c:2348
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "אף פקודה %d לא הוגדרה.\n"
@@ -2299,7 +2299,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5457
+#: src/window.c:5471
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"

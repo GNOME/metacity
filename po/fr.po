@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity 2.4.21\n"
-"POT-Creation-Date: 2003-01-26 00:58+0100\n"
+"POT-Creation-Date: 2003-02-04 23:36-0500\n"
 "PO-Revision-Date: 2003-01-26 00:52+0100\n"
 "Last-Translator: Guy CLOTILDE <guy.clotilde@wanadoo.fr>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"

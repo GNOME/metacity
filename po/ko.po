@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity 2.4.21\n"
-"POT-Creation-Date: 2003-01-25 23:51+0900\n"
+"POT-Creation-Date: 2003-02-04 23:36-0500\n"
 "PO-Revision-Date: 2003-01-25 15:01+0900\n"
 "Last-Translator: Young-Ho, Cha <ganadist@chollian.net>\n"
 "Language-Team: GTP Korean <gnome-kr-translation@gnome.or.kr>\n"

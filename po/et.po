@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
-"POT-Creation-Date: 2003-02-03 02:09+0200\n"
+"POT-Creation-Date: 2003-02-04 23:36-0500\n"
 "PO-Revision-Date: 2003-02-03 02:28+0200\n"
 "Last-Translator: Tõivo Leedjärv <toivo@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
@@ -86,7 +86,7 @@ msgstr "Aknamenüü"
 msgid "Minimize Window"
 msgstr "Minimeeri aken"
 
-#: src/framesm.c:1019
+#: src/frames.c:1019
 msgid "Maximize Window"
 msgstr "Maksimeeri aken"
 
@@ -322,8 +322,8 @@ msgid ""
 "These windows do not support \"save current setup\" and will have to be "
 "restarted manually next time you log in."
 msgstr ""
-"Need aknad ei toeta \"hetkeseisu salvestamist\" ning tuleb järgmisel sisselogimisel "
-"käsitsi uuesti käivitada."
+"Need aknad ei toeta \"hetkeseisu salvestamist\" ning tuleb järgmisel "
+"sisselogimisel käsitsi uuesti käivitada."
 
 #: src/metacity-dialog.c:276
 #, c-format

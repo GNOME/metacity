@@ -1,3 +1,23 @@
+2.4.34
+===
+
+ - tons of new translations
+ - add new theme Simple and make it the default
+ - match key handlers to key codes instead of key syms 
+   which fixes some occasional keybinding bugs
+ - don't show workspace menu items if there's only one workspace
+ - fix fullscreen mode workaround for xine/mplayer
+ - fix startup sequences that use StartupWMClass
+ - fix 64-bit bug in async-getprop.c that caused a lockup
+ - put metacity-properties.c in the tarball
+ - don't mess up the focus window in mouse focus mode when 
+   switching workspaces
+ - improve event compression to speed up window move/resize
+   a bit more
+ - don't jump mozilla windows between workspaces
+ - don't stick the tab/workspace-switch popup 
+   on machines under heavy load or slow machines
+
 2.4.21
 ===
 
