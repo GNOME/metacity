@@ -1,3 +1,7 @@
+2003-10-27  Havoc Pennington  <hp@redhat.com>
+
+	* 2.3.2
+
 2003-10-25  Havoc Pennington  <hp@redhat.com>
 
 	* src/window.c (meta_window_notify_focus): if a window is focused

@@ -1,3 +1,14 @@
+2.6.3
+===
+
+Thanks to Rob Adams for contributions to this release.
+
+ - fix to right, left, bottom onscreen resize constraints
+ - detect case where we fail to get a pointer grab when the mouse 
+   is clicked, to avoid "this window is stuck to my mouse!"
+ - keep panels at the end of the focus MRU list so we don't 
+   focus them all the time in annoying ways
+
 2.6.2
 ===
 
