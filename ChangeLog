@@ -1,6 +1,15 @@
+Fri Mar 28 14:13:37 2003  Soeren Sandmann  <sandmann@daimi.au.dk>
+ 	
+	* src/window.c (update_resize): Only cap refresh rate when not
+	using SYNC. Remove bogus update-if-we-moved-more-than-a-delta.
+ 
+	* src/window.c (update_move): Don't cap refresh rate during
+	moves. Remove bogus update-if-we-moved-more-than-a-delta.
+ 
 Sun Mar 23 23:10:42 2003  Soeren Sandmann  <sandmann@daimi.au.dk>
 
-	* src/display.c (meta_spew_event): just return if we are not verbose
+	* src/display.c (meta_spew_event): just return if we are not
+	verbose
 
 2003-03-11  Havoc Pennington  <hp@pobox.com>
 
