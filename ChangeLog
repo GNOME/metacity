@@ -1,3 +1,10 @@
+2003-01-08  Havoc Pennington  <hp@pobox.com>
+
+        (not for 2.2.0)
+	
+	* src/screen.c (meta_screen_apply_startup_properties): small code
+	snippet to fix startup sequences that set legacy class/name
+
 2003-01-22  Havoc Pennington  <hp@redhat.com>
 
         (not for 2.2.0)
@@ -145,7 +152,7 @@
 	default.
 
 2003-01-08  Havoc Pennington  <hp@pobox.com>
-
+	
 	* src/metacity.schemas.in: assign Alt+F12 to shade window, 
 	per #102658
 
