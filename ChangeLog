@@ -1,3 +1,7 @@
+2003-03-13  Christian Rose  <menthos@menthos.com>
+
+	* configure.in: Added "ml" to ALL_LINGUAS.
+
 2003-03-10  Paul Duffy <dubhthach@zion.nuigalway.ie>
     
         * configure.in: Added Irish (ga) to ALL_LINGUAS
