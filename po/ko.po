@@ -1,13 +1,13 @@
 # metacity korean translation
-# Copyright (C) 2002 Free Software Foundation, Inc.
 # Young-Ho, Cha <ganadist@chollian.net>, 2002.
+# Changwoo Ryu <cwryu@debian.org>, 2003
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity 2.4.21\n"
-"POT-Creation-Date: 2003-02-04 23:36-0500\n"
-"PO-Revision-Date: 2003-01-25 15:01+0900\n"
-"Last-Translator: Young-Ho, Cha <ganadist@chollian.net>\n"
+"POT-Creation-Date: 2003-05-08 01:19+0900\n"
+"PO-Revision-Date: 2003-05-08 02:16+0900\n"
+"Last-Translator: Changwoo Ryu <cwryu@debian.org.net>\n"
 "Language-Team: GTP Korean <gnome-kr-translation@gnome.or.kr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -356,7 +356,7 @@ msgstr "메타시티"
 
 #: src/metacity.schemas.in.h:1
 msgid "(Not implemented) Navigation works in terms of applications not windows"
-msgstr ""
+msgstr "(구현되지 않음) 네비게이션을 창 단위가 아니라 애플리케이션 단위로 합니다"
 
 #: src/metacity.schemas.in.h:2
 msgid ""
@@ -375,7 +375,7 @@ msgstr ""
 
 #: src/metacity.schemas.in.h:3
 msgid "Action on title bar double-click"
-msgstr ""
+msgstr "제목에 두 번 클릭할 때 액션"
 
 #: src/metacity.schemas.in.h:4
 msgid "Activate window menu"
@@ -383,7 +383,7 @@ msgstr "창 메뉴 활성"
 
 #: src/metacity.schemas.in.h:5
 msgid "Arrangement of buttons on the titlebar"
-msgstr ""
+msgstr "제목 위에 있는 단추의 배치"
 
 #: src/metacity.schemas.in.h:6
 msgid ""
@@ -393,7 +393,7 @@ msgid ""
 "Duplicate buttons are not allowed. Unknown button names are silently ignored "
 "so that buttons can be added in future metacity versions without breaking "
 "older versions."
-msgstr ""
+msgstr "제목 위에 있는 단추의 배치. 이 값은 스트링으로, \"menu:minimize,maximize,close\"와 같이 씁니다; 콜론으로 창의 왼쪽 끝과 오른쪽 끝을 구분하며, 각 단추는 콤마로 구분합니다. 같은 단추를 중복해서 쓸 수 없습니다. 알 수 없는 단추 이름은 그냥 무시되며 다음 버전의 메타시티에서 그 단추가 새로 생길 경우에도 문제 없이 사용할 수 있습니다."
 
 #: src/metacity.schemas.in.h:7
 msgid "Automatically raises the focused window"
@@ -405,7 +405,7 @@ msgid ""
 "(left click), resize the window (middle click), or show the window menu "
 "(right click). Modifier is expressed as \"&lt;Alt&gt;\" or \"&lt;Super&gt;\" "
 "for example."
-msgstr ""
+msgstr "이 변경 키를 누른 채로 창을 클릭하면 창을 옮기거나 (왼쪽 클릭), 창의 크기를 바꾸거나 (가운데 클릭), 혹은 창 메뉴를 보여줍니다 (오른쪽 클릭). 변경 키는 \"&lt;Alt&gt;\" 혹은 \"&lt;Super&gt;\"와 같이 씁니다."
 
 #: src/metacity.schemas.in.h:9
 msgid "Close a window"
@@ -460,7 +460,7 @@ msgid ""
 "questionable. But it's better than having settings for all the specific "
 "details of application-based vs. window-based, e.g. whether to pass through "
 "clicks. Also, application-based mode is largely unimplemented at the moment."
-msgstr ""
+msgstr "참이면, 메타시티가 창 단위로 동작하지 않고 애플리케이션 단위로 동작합니다. 개념이 좀 추상적이지만, 애플리케이션 단위의 설정은 윈도우보다는 맥과 비슷합니다. 애플리케이션 단위의 모드에서 어떤 창에 포커스를 맞췄을 때, 해당 애플리케이션의 모든 창이 올라옵니다. 또, 애플리케이션 단위의 모드에서, 포커스 은 다른 애플리케이션의 윈도우에는 전달되지 않습니다. 이 설정이 왜 필요한지 의문이 들 지도 모릅니다. 하지만 이런 설정이 있는 편이 애플리케이션 단위 vs. 창 단위의 모든 설정 하나하나를 만드는 것보다는 낫습니다. 또, 애플리케이션 단위 모드는 현재 많은 부분이 구현되어 있지 않습니다."
 
 #: src/metacity.schemas.in.h:18
 msgid "Lower window below other windows"
@@ -492,15 +492,15 @@ msgstr "창을 움직입니다"
 
 #: src/metacity.schemas.in.h:25
 msgid "Move backward between panels and the desktop immediately"
-msgstr ""
+msgstr "패널과 바탕화면 사이에서 반대 방향으로 바로 옮기기"
 
 #: src/metacity.schemas.in.h:26
 msgid "Move backwards between panels and the desktop with popup"
-msgstr ""
+msgstr "패널과 바탕화면 사이에서 반대 방향으로 팝업으로 옮기기"
 
 #: src/metacity.schemas.in.h:27
 msgid "Move backwards between windows immediately"
-msgstr ""
+msgstr "창 반대 방향으로 옮기기"
 
 #: src/metacity.schemas.in.h:28
 msgid "Move between panels and the desktop immediately"
@@ -508,19 +508,19 @@ msgstr "패널과 바탕화면 사이에서 바로 옮기기"
 
 #: src/metacity.schemas.in.h:29
 msgid "Move between panels and the desktop with popup"
-msgstr "패널과 바탕화면 사이에서 옮기기"
+msgstr "패널과 바탕화면 사이에서 팝업으로 옮기기"
 
 #: src/metacity.schemas.in.h:30
 msgid "Move between windows immediately"
-msgstr "창사이에서 바로 옮기기"
+msgstr "창 사이에서 바로 옮기기"
 
 #: src/metacity.schemas.in.h:31
 msgid "Move between windows with popup"
-msgstr "창사이에서 옮기기"
+msgstr "창 사이에서 옮기기"
 
 #: src/metacity.schemas.in.h:32
 msgid "Move focus backwards between windows using popup display"
-msgstr ""
+msgstr "창 사이에서 포커스를 팝업으로 옮기기"
 
 #: src/metacity.schemas.in.h:33
 msgid "Move window one workspace down"
@@ -633,7 +633,7 @@ msgid ""
 "world is an ugly place. Some of the workarounds are workarounds for "
 "limitations in the specifications themselves, so sometimes a bug in no-"
 "workarounds mode won't be fixable without amending a spec."
-msgstr ""
+msgstr "애플리케이션들중에는 규칙대로 동작하지 않아서 창 관리자가 오동작하게 만듭니다. 예를 들어, 메타시티는 모든 대화 상자를 그 부모 창의 위치에 따라 동일한 위치에 계속 표시해야 합니다. 이렇게 하려면 대화 상자에 대해서는 애플리케이션이 지정한 위치를 무시해야 합니다. 하지만 Java/Swing의 어떤 버전의 경우 팝업 메뉴를 대화 상자로 만듭니다. 이 경우 메타시티는 대화 상자의 위치를 바꾸지 않도록 만들어서 메뉴가 엉터리 자바 애플리케이션에서도 동작하도록 해야 합니다. 그 밖에도 이런 예들이 있습니다. 이 옵션은 메타시티가 완전히 올바른 모드로 동작하도록 만듭니다. 이 옵션을 적용할 경우 엉터리 애플리케이션을 실행하지 않는다면 그럭저럭 더 훌륭한 UI가 만들어 집니다. 불행히도 기본적으로는 이 문제를 피해가는 모드를 사용합니다; 실제 세계는 지저분합니다. 문제를 피해가는 방법중에는 창 관리자 규칙 자체의 한계때문에 필요한 것들도 있으므로, 이 옵션을 켤 경우 규칙을 변경하지 않고는 고칠 수 없는 버그도 있습니다."
 
 #: src/metacity.schemas.in.h:57
 msgid "Switch to workspace 1"
@@ -704,7 +704,7 @@ msgid ""
 "The /apps/metacity/global_keybindings/run_command_N keys define keybindings "
 "that correspond to these commands. Pressing the keybinding for run_command_N "
 "will execute command_N."
-msgstr ""
+msgstr "/apps/metacity/global_keybindings/run_command_N 키는 해당 명령어에 해당하는 키바인딩을 정의합니다. run_command_N의 키바인딩을 누르면 command_N을 실행합니다."
 
 #: src/metacity.schemas.in.h:74
 msgid ""
@@ -714,7 +714,7 @@ msgid ""
 "or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;"
 "Ctrl&gt;\". If you set the option to the special string \"disabled\", then "
 "there will be no keybinding for this action."
-msgstr ""
+msgstr "/apps/metacity/keybinding_commands의 해당 번호의 명령어를 실행하는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:75
 msgid ""
@@ -724,7 +724,7 @@ msgid ""
 "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
-msgstr ""
+msgstr "현재 작업 공간의 위에 있는 작업 공간으로 이동하는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:76
 msgid ""
@@ -734,7 +734,7 @@ msgid ""
 "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
-msgstr ""
+msgstr "현재 작업 공간의 아래에 있는 작업 공간으로 이동하는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:77
 msgid ""
@@ -744,7 +744,7 @@ msgid ""
 "also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
 "the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
-msgstr ""
+msgstr "현재 작업 공간의 왼쪽에 있는 작업 공간으로 이동하는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:78
 msgid ""
@@ -754,7 +754,7 @@ msgid ""
 "also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
 "the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
-msgstr ""
+msgstr "현재 작업 공간의 오른쪽에 있는 작업 공간으로 이동하는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:79
 msgid ""
@@ -763,7 +763,7 @@ msgid ""
 "and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "작업 공간 1로 이동하는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:80
 msgid ""
@@ -772,7 +772,7 @@ msgid ""
 "and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "작업 공간 10으로 이동하는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:81
 msgid ""
@@ -781,7 +781,7 @@ msgid ""
 "and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "작업 공간 11로 이동하는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:82
 msgid ""
@@ -790,7 +790,7 @@ msgid ""
 "and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "작업 공간 12로 이동하는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:83
 msgid ""
@@ -799,7 +799,7 @@ msgid ""
 "and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "작업 공간 2로 이동하는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:84
 msgid ""
@@ -808,7 +808,7 @@ msgid ""
 "and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "작업 공간 3으로 이동하는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:85
 msgid ""
@@ -817,7 +817,7 @@ msgid ""
 "and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "작업 공간 4로 이동하는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:86
 msgid ""
@@ -826,7 +826,7 @@ msgid ""
 "and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "작업 공간 5로 이동하는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:87
 msgid ""
@@ -835,7 +835,7 @@ msgid ""
 "and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "작업 공간 6으로 이동하는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:88
 msgid ""
@@ -844,7 +844,7 @@ msgid ""
 "and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "작업 공간 7로 이동하는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:89
 msgid ""
@@ -853,7 +853,7 @@ msgid ""
 "and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "작업 공간 8로 이동하는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:90
 msgid ""
@@ -862,7 +862,7 @@ msgid ""
 "and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "작업 공간 9로 이동하는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:91
 msgid ""
@@ -871,7 +871,7 @@ msgid ""
 "and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "창 메뉴를 활성화하는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:92
 msgid ""
@@ -880,7 +880,7 @@ msgid ""
 "and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "창을 닫는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:93
 msgid ""
@@ -890,7 +890,7 @@ msgid ""
 "and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you "
 "set the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
-msgstr ""
+msgstr "\"옮기기 모드\"로 들어가는 키바인딩. 이 모드로 들어간 다음 키보드로 창을 옮깁니다. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:94
 msgid ""
@@ -900,7 +900,7 @@ msgid ""
 "upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;"
 "\". If you set the option to the special string \"disabled\", then there "
 "will be no keybinding for this action."
-msgstr ""
+msgstr "\"크기 바꾸기 모드\"로 들어가는 키바인딩. 이 모드로 들어간 다음 키보드로 창 크기를 바꿉니다. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:95
 msgid ""
@@ -910,7 +910,7 @@ msgid ""
 "upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;"
 "\". If you set the option to the special string \"disabled\", then there "
 "will be no keybinding for this action."
-msgstr ""
+msgstr "모든 창을 감추고 포커스를 데스크탑 바탕화면으로 옮기는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:96
 msgid ""
@@ -919,7 +919,7 @@ msgid ""
 "and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "창을 최대화하는 키바인딩. 이 \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:97
 msgid ""
@@ -928,7 +928,7 @@ msgid ""
 "and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "창을 최소화하는 키바인딩. 이 \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:98
 msgid ""
@@ -938,7 +938,7 @@ msgid ""
 "as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
 "special string \"disabled\", then there will be no keybinding for this "
 "action."
-msgstr ""
+msgstr "창을 아래에 있는 작업공간으로 옮기는 키바인딩. 이 \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:99
 msgid ""
@@ -948,7 +948,7 @@ msgid ""
 "such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
 "special string \"disabled\", then there will be no keybinding for this "
 "action."
-msgstr ""
+msgstr "창을 왼쪽에 있는 작업공간으로 옮기는 키바인딩. 이 \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:100
 msgid ""
@@ -958,7 +958,7 @@ msgid ""
 "such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
 "special string \"disabled\", then there will be no keybinding for this "
 "action."
-msgstr ""
+msgstr "창을 오른쪽에 있는 작업공간으로 옮기는 키바인딩. 이 \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:101
 msgid ""
@@ -967,7 +967,7 @@ msgid ""
 "liberal and allows lower or upper case, and also abbreviations such as \"&lt;"
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "창을 위에 있는 작업공간으로 옮기는 키바인딩. 이 \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:102
 msgid ""
@@ -976,7 +976,7 @@ msgid ""
 "liberal and allows lower or upper case, and also abbreviations such as \"&lt;"
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "창을 작업공간 1로 옮기는 키바인딩. 이 \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:103
 msgid ""
@@ -985,7 +985,7 @@ msgid ""
 "liberal and allows lower or upper case, and also abbreviations such as \"&lt;"
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "창을 작업공간 10으로 옮기는 키바인딩. 이 \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:104
 msgid ""
@@ -994,7 +994,7 @@ msgid ""
 "liberal and allows lower or upper case, and also abbreviations such as \"&lt;"
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "창을 작업공간 11로 옮기는 키바인딩. 이 \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:105
 msgid ""
@@ -1003,7 +1003,7 @@ msgid ""
 "liberal and allows lower or upper case, and also abbreviations such as \"&lt;"
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "창을 작업공간 12로 옮기는 키바인딩. 이 \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:106
 msgid ""
@@ -1012,7 +1012,7 @@ msgid ""
 "liberal and allows lower or upper case, and also abbreviations such as \"&lt;"
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "창을 작업공간 2로 옮기는 키바인딩. 이 \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:107
 msgid ""
@@ -1021,7 +1021,7 @@ msgid ""
 "liberal and allows lower or upper case, and also abbreviations such as \"&lt;"
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "창을 작업공간 3으로 옮기는 키바인딩. 이 \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:108
 msgid ""
@@ -1030,7 +1030,7 @@ msgid ""
 "liberal and allows lower or upper case, and also abbreviations such as \"&lt;"
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "창을 작업공간 4로 옮기는 키바인딩. 이 \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:109
 msgid ""
@@ -1039,7 +1039,7 @@ msgid ""
 "liberal and allows lower or upper case, and also abbreviations such as \"&lt;"
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "창을 작업공간 5로 옮기는 키바인딩. 이 \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:110
 msgid ""
@@ -1048,7 +1048,7 @@ msgid ""
 "liberal and allows lower or upper case, and also abbreviations such as \"&lt;"
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "창을 작업공간 6으로 옮기는 키바인딩. 이 \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:111
 msgid ""
@@ -1057,7 +1057,7 @@ msgid ""
 "liberal and allows lower or upper case, and also abbreviations such as \"&lt;"
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "창을 작업공간 7로 옮기는 키바인딩. 이 \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:112
 msgid ""
@@ -1066,7 +1066,7 @@ msgid ""
 "liberal and allows lower or upper case, and also abbreviations such as \"&lt;"
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "창을 작업공간 8로 옮기는 키바인딩. 이 \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:113
 msgid ""
@@ -1075,7 +1075,7 @@ msgid ""
 "liberal and allows lower or upper case, and also abbreviations such as \"&lt;"
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "창을 작업공간 9로 옮기는 키바인딩. 이 \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:114
 msgid ""
@@ -1085,7 +1085,7 @@ msgid ""
 "upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;"
 "\". If you set the option to the special string \"disabled\", then there "
 "will be no keybinding for this action."
-msgstr ""
+msgstr "패널과 바탕화면 사이에서 반대 방향으로 팝업 윈도우를 사용해 포커스를 옮기는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:115
 msgid ""
@@ -1095,7 +1095,7 @@ msgid ""
 "upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;"
 "\". If you set the option to the special string \"disabled\", then there "
 "will be no keybinding for this action."
-msgstr ""
+msgstr "패널과 바탕화면 사이에서 반대 방향으로 팝업 윈도우 없이 포커스를 옮기는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:116
 msgid ""
@@ -1106,7 +1106,7 @@ msgid ""
 "and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you "
 "set the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
-msgstr ""
+msgstr "패널과 바탕화면 사이에서 반대 방향으로 팝업 윈도우 없이 포커스를 옮기는 키바인딩. 이 바인딩에 \"shift\"를 동시에 누르면 방향이 반대가 됩니다. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:117
 msgid ""
@@ -1117,7 +1117,7 @@ msgid ""
 "and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you "
 "set the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
-msgstr ""
+msgstr "패널과 바탕화면 사이에서 반대 방향으로 팝업 윈도우를 사용해 포커스를 옮기는 키바인딩. 이 바인딩에 \"shift\"를 동시에 누르면 방향이 반대가 됩니다. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:118
 msgid ""
@@ -1127,7 +1127,7 @@ msgid ""
 "and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you "
 "set the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
-msgstr ""
+msgstr "패널과 바탕화면 사이에서 팝업 윈도우를 사용해 포커스를 옮기는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:119
 msgid ""
@@ -1137,7 +1137,7 @@ msgid ""
 "and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you "
 "set the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
-msgstr ""
+msgstr "패널과 바탕화면 사이에서 팝업 윈도우 없이 포커스를 옮기는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:120
 msgid ""
@@ -1148,7 +1148,7 @@ msgid ""
 "and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "창 사이에서 팝업 윈도우 없이 포커스를 옮기는 키바인딩. (전통적으로 &lt;Alt&gt;Escape) 이 바인딩에 \"shift\"를 누르면 옮기는 방향이 반대가 됩니다. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:121
 msgid ""
@@ -1159,7 +1159,7 @@ msgid ""
 "and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "창 사이에서 팝업 윈도우를 사용해 포커스를 옮기는 키바인딩. (전통적으로 &lt;Alt&gt;Tab) 이 바인딩에 \"shift\"를 누르면 옮기는 방향이 반대가 됩니다. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:122
 msgid ""
@@ -1168,7 +1168,7 @@ msgid ""
 "and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "전체 화면 모드를 토글하는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:123
 msgid ""
@@ -1177,7 +1177,7 @@ msgid ""
 "and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "최대화를 토글하는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:124
 msgid ""
@@ -1186,7 +1186,7 @@ msgid ""
 "liberal and allows lower or upper case, and also abbreviations such as \"&lt;"
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "창 숨기기/보이기를 토글하는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:125
 msgid ""
@@ -1196,7 +1196,7 @@ msgid ""
 "also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
 "the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
-msgstr ""
+msgstr "창을 모든 작업공간에 둘 것인지 한 작업 공간에 둘 것인지 토글하는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:126
 msgid ""
@@ -1205,7 +1205,7 @@ msgid ""
 "and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "창의 최대화를 취소하는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:127
 msgid "The name of a workspace."
@@ -1215,13 +1215,13 @@ msgstr "작업 공간 이름"
 msgid ""
 "The theme determines the appearance of window borders, titlebar, and so "
 "forth."
-msgstr ""
+msgstr "창의 테두리, 제목 등의 모양을 지정하는 테마."
 
 #: src/metacity.schemas.in.h:129
 msgid ""
 "The time delay before raising a window if auto_raise is set to true. The "
 "delay is given in thousandths of a second."
-msgstr ""
+msgstr "auto_raise가 침일 경우, 창을 올리기 전의 지연 시간. 이 시간은 천분의 일초 단위로 주어집니다."
 
 #: src/metacity.schemas.in.h:130
 msgid ""
@@ -1230,7 +1230,7 @@ msgid ""
 "them, \"sloppy\" means windows are focused when the mouse enters the window, "
 "and \"mouse\" means windows are focused when the mouse enters the window and "
 "unfocused when the mouse leaves the window."
-msgstr ""
+msgstr "창 포커스 모드는 창을 활성화하는 방법을 지정합니다. 세 가지 값을 사용할 수 있습니다; \"click\"은 창에 포커스를 놓으려면 클릭해야 하는 것이고, \"sloppy\"는 마우스가 창 위로 들어갈 때 포커스되는 것이고, \"mouse\"는 마우스가 창 위로 들어가면 포커스되고 마우스가 창 밖으로 나갈 때 포커스가 없어지는 것입니다."
 
 #: src/metacity.schemas.in.h:131
 msgid ""
@@ -1242,7 +1242,7 @@ msgid ""
 "and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you "
 "set the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
-msgstr ""
+msgstr "창을 다른 창들보다 항상 위에/아래에 놓이게 만들지 결정하는 키바인딩. 해당 창이 다른 창에 가려져 있으면, 그 창을 다른 창들 위로 올립니다. 창이 가려져 있지 않은 경우에는 다른 창들 아래로 내립니다. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:132
 msgid ""
@@ -1251,7 +1251,7 @@ msgid ""
 "liberal and allows lower or upper case, and also abbreviations such as \"&lt;"
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "창을 다른 창들보다 아래에 놓이게 만드는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:133
 msgid ""
@@ -1260,7 +1260,7 @@ msgid ""
 "liberal and allows lower or upper case, and also abbreviations such as \"&lt;"
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
+msgstr "창을 다른 창들보다 위에 놓이게 만드는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:134
 msgid ""
@@ -1270,7 +1270,7 @@ msgid ""
 "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
-msgstr ""
+msgstr "사용 가능한 가로 방향의 공간을 꽉 채우도록 만드는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:135
 msgid ""
@@ -1280,14 +1280,14 @@ msgid ""
 "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
-msgstr ""
+msgstr "사용 가능한 세로 방향의 공간을 꽉 채우도록 만드는 키바인딩. \"&lt;Control&gt;a\" 혹은 \"&lt;Shift&gt;&lt;Alt&gt;F1\"과 같이 씁니다. 파서는 매우 유연하므로 대소문자를 모두 쓸 수 있고, \"&lt;Ctl&gt;\"나 \"&lt;Ctrl&gt;\"처럼 줄여서 쓸 수도 있습니다. 이 옵션을 \"disabled\" 스트링으로 하면, 이 액션에 대한 키바인딩은 없습니다\""
 
 #: src/metacity.schemas.in.h:136
 msgid ""
 "This option determines the effects of double-clicking on the title bar. "
 "Current valid options are 'toggle_shaded', which will shade/unshade the "
 "window, and 'toggle_maximized' which will maximize/unmaximize the window."
-msgstr ""
+msgstr "이 옵션은 제목에 더블클릭했을 때 어떻게 할 지를 결정합니다. 사용 가능한 옵션으로, \"toggle_shaded\"는 창을 숨기거나/보여주는 것이고, \"toggle_maximized\"는 최대화/최대화취소하는 것입니다."
 
 #: src/metacity.schemas.in.h:137
 msgid "Toggle fullscreen mode"
@@ -1420,7 +1420,7 @@ msgid "Screen %d on display \"%s\" already has a window manager\n"
 msgstr ""
 "디스플레이 \"%2$s\"의 화면 %1$d은(는) 이미 창 관리자가 실행되고 있습니다\n"
 
-#: src/screen.c:673
+#: src/screen.c:674
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "디스플레이 \"%2$s\"의 화면 %1$d을(를) 떼어 놓을수 없습니다\n"
@@ -2350,7 +2350,7 @@ msgid "Application set a bogus _NET_WM_PID %ld\n"
 msgstr "응용 프로그램이 가짜 _NET_WM_PID %ld을(를) 설정하였습니다\n"
 
 #. first time through
-#: src/window.c:4897
+#: src/window.c:4916
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -2366,12 +2366,12 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5471
+#: src/window.c:5490
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
 "d x %d and max size %d x %d; this doesn't make much sense.\n"
-msgstr ""
+msgstr "%s 창에서 크기 변경이 불가능하다는 MWM 힌트를 설정했지만, 최소 크기(%d x %d) 및 최대 크기(%d x %d)를 설정했습니다; 앞뒤가 맞지 않습니다.\n"
 
 #: src/xprops.c:153
 #, c-format
@@ -2383,7 +2383,7 @@ msgid ""
 "The window has title=\"%s\" class=\"%s\" name=\"%s\"\n"
 msgstr ""
 "창 0x%lx의 등록 정보 %s\n"
-"형식 %s %d 이(가) 들어있어야 하는데\n"
+"형식 %s %d이(가) 들어있어야 하는데\n"
 "실제로는 형식 %s %d n_items %d이(가) 들어있습니다\n"
 "대부분은 창 관리자 버그가 아니라 응용 프로그램 버그입니다.\n"
 "창의 정보: title=\"%s\" class=\"%s\" name=\"%s\"\n"
