@@ -307,7 +307,7 @@ create_root_buffer (MetaScreen *screen, Pixmap *pixmap)
 		  GCFunction | GCSubwindowMode, &value);
   XSetForeground (display, gc, WhitePixel (display, screen->number));
   
-  XSetForeground (display, gc, 0x00ff0099);
+  XSetForeground (display, gc, 0x00000000);
 
   XFillRectangle (display, buffer_pixmap, gc, 0, 0, screen->width, screen->height);
   

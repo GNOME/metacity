@@ -1,3 +1,8 @@
+Sat Feb 12 19:52:09 2005  Søren Sandmann  <sandmann@redhat.com>
+
+	* src/compositor.c (create_root_buffer): Get rid of shocking pink
+	background.
+
 2005-02-12  Owen Taylor  <otaylor@redhat.com>
 
 	* configure.in: Revert compositor checks to what HEAD
