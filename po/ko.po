@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: metacity 2.4.3\n"
-"POT-Creation-Date: 2003-01-20 22:01-0500\n"
-"PO-Revision-Date: 2002-11-06 11:53+0900\n"
-"Last-Translator: Young-Ho, Cha <ganadist@mizi.com>\n"
+"Project-Id-Version: metacity 2.4.21\n"
+"POT-Creation-Date: 2003-01-25 23:51+0900\n"
+"PO-Revision-Date: 2003-01-25 15:01+0900\n"
+"Last-Translator: Young-Ho, Cha <ganadist@chollian.net>\n"
 "Language-Team: GTP Korean <gnome-kr-translation@gnome.or.kr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,11 +16,11 @@ msgstr ""
 #: src/tools/metacity-message.c:150
 #, c-format
 msgid "Usage: %s\n"
-msgstr ""
+msgstr "사용법: %s\n"
 
 #: src/tools/metacity-message.c:174 src/util.c:128
 msgid "Metacity was compiled without support for verbose mode\n"
-msgstr ""
+msgstr "Metacity가 자세한 모드 지원 없이 컴파일 되었습니다\n"
 
 #: src/delete.c:60 src/delete.c:87 src/metacity-dialog.c:46
 #: src/theme-parser.c:467
@@ -107,14 +107,14 @@ msgstr ""
 "몇몇 다른 프로그램에서 이미 단축 글쇠로 변경키 %2$x와(과) 글쇠 %1$s을(를) 사"
 "용하고 있습니다\n"
 
-#: src/keybindings.c:2246
+#: src/keybindings.c:2317
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr ""
 "명령에 대한 오류를 출력하기 위해 metacity-dialog를 실행하는 중 오류가 발생했"
 "습니다: %s\n"
 
-#: src/keybindings.c:2277
+#: src/keybindings.c:2348
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "명령 %d이(가) 정의되지 않았습니다.\n"
@@ -379,7 +379,7 @@ msgstr ""
 
 #: src/metacity.schemas.in.h:4
 msgid "Activate window menu"
-msgstr "창 메뉴를 활성화 합니다"
+msgstr "창 메뉴 활성"
 
 #: src/metacity.schemas.in.h:5
 msgid "Arrangement of buttons on the titlebar"
@@ -409,7 +409,7 @@ msgstr ""
 
 #: src/metacity.schemas.in.h:9
 msgid "Close a window"
-msgstr "창을 닫습니다"
+msgstr "창 닫기"
 
 #: src/metacity.schemas.in.h:10
 msgid "Commands to run in response to keybindings"
@@ -464,143 +464,131 @@ msgstr ""
 
 #: src/metacity.schemas.in.h:18
 msgid "Lower window below other windows"
-msgstr ""
+msgstr "창 낮추기"
 
 #: src/metacity.schemas.in.h:19
-#, fuzzy
 msgid "Maximize a window"
-msgstr "창을 최소화 합니다"
+msgstr "창 최대화"
 
 #: src/metacity.schemas.in.h:20
-#, fuzzy
 msgid "Maximize window horizontally"
-msgstr "창을 최소화 합니다"
+msgstr "창 가로로 최대화"
 
 #: src/metacity.schemas.in.h:21
-#, fuzzy
 msgid "Maximize window vertically"
-msgstr "창을 최소화 합니다"
+msgstr "창 세로로 최대화"
 
 #: src/metacity.schemas.in.h:22
 msgid "Minimize a window"
-msgstr "창을 최소화 합니다"
+msgstr "창 최소화"
 
 #: src/metacity.schemas.in.h:23
 msgid "Modifier to use for modified window click actions"
-msgstr ""
+msgstr "변경 창을 누를 때 쓸 변경자"
 
 #: src/metacity.schemas.in.h:24
 msgid "Move a window"
 msgstr "창을 움직입니다"
 
 #: src/metacity.schemas.in.h:25
-#, fuzzy
 msgid "Move backward between panels and the desktop immediately"
-msgstr "초점을 패널과 바탕화면 사이에서 움직입니다"
+msgstr ""
 
 #: src/metacity.schemas.in.h:26
-#, fuzzy
 msgid "Move backwards between panels and the desktop with popup"
-msgstr "초점을 패널과 바탕화면 사이에서 움직입니다"
+msgstr ""
 
 #: src/metacity.schemas.in.h:27
-#, fuzzy
 msgid "Move backwards between windows immediately"
-msgstr "초점을 창사이에서 움직입니다"
+msgstr ""
 
 #: src/metacity.schemas.in.h:28
-#, fuzzy
 msgid "Move between panels and the desktop immediately"
-msgstr "초점을 패널과 바탕화면 사이에서 움직입니다"
+msgstr "패널과 바탕화면 사이에서 바로 옮기기"
 
 #: src/metacity.schemas.in.h:29
-#, fuzzy
 msgid "Move between panels and the desktop with popup"
-msgstr "초점을 패널과 바탕화면 사이에서 움직입니다"
+msgstr "패널과 바탕화면 사이에서 옮기기"
 
 #: src/metacity.schemas.in.h:30
-#, fuzzy
 msgid "Move between windows immediately"
-msgstr "초점을 창사이에서 움직입니다"
+msgstr "창사이에서 바로 옮기기"
 
 #: src/metacity.schemas.in.h:31
-#, fuzzy
 msgid "Move between windows with popup"
-msgstr "초점을 창사이에서 움직입니다"
+msgstr "창사이에서 옮기기"
 
 #: src/metacity.schemas.in.h:32
-#, fuzzy
 msgid "Move focus backwards between windows using popup display"
-msgstr "초점을 창사이에서 움직입니다"
+msgstr ""
 
 #: src/metacity.schemas.in.h:33
 msgid "Move window one workspace down"
-msgstr "창을 아래의 작업 공간으로 움직입니다"
+msgstr "창을 아래의 작업 공간으로 옮기기"
 
 #: src/metacity.schemas.in.h:34
 msgid "Move window one workspace to the left"
-msgstr "창을 왼쪽의 작업 공간으로 움직입니다"
+msgstr "창을 왼쪽의 작업 공간으로 옮기기"
 
 #: src/metacity.schemas.in.h:35
 msgid "Move window one workspace to the right"
-msgstr "창을 오른쪽의 작업 공간으로 움직입니다"
+msgstr "창을 오른쪽의 작업 공간으로 옮기기"
 
 #: src/metacity.schemas.in.h:36
 msgid "Move window one workspace up"
-msgstr "창을 위의 작업 공간으로 움직입니다"
+msgstr "창을 위의 작업 공간으로 옮기기"
 
 #: src/metacity.schemas.in.h:37
 msgid "Move window to workspace 1"
-msgstr "창을 작업 공간 1로 움직입니다"
+msgstr "창을 1번째 작업 공간으로 옮기기"
 
 #: src/metacity.schemas.in.h:38
 msgid "Move window to workspace 10"
-msgstr "창을 작업 공간 10으로 움직입니다"
+msgstr "창을 2번째 작업 공간으로 옮기기"
 
 #: src/metacity.schemas.in.h:39
 msgid "Move window to workspace 11"
-msgstr "창을 작업 공간 11로 움직입니다"
+msgstr "창을 11번째 작업 공간으로 옮기기"
 
 #: src/metacity.schemas.in.h:40
 msgid "Move window to workspace 12"
-msgstr "창을 작업 공간 12로 움직입니다"
+msgstr "창을 12번째 작업 공간으로 옮기기"
 
 #: src/metacity.schemas.in.h:41
 msgid "Move window to workspace 2"
-msgstr "창을 작업 공간 2로 움직입니다"
+msgstr "창을 2번째 작업 공간으로 옮기기"
 
 #: src/metacity.schemas.in.h:42
 msgid "Move window to workspace 3"
-msgstr "창을 작업 공간 3으로 움직입니다"
+msgstr "창을 3번째 작업 공간으로 옮기기"
 
 #: src/metacity.schemas.in.h:43
 msgid "Move window to workspace 4"
-msgstr "창을 작업 공간 4로 움직입니다"
+msgstr "창을 4번째 작업 공간으로 옮기기"
 
 #: src/metacity.schemas.in.h:44
 msgid "Move window to workspace 5"
-msgstr "창을 작업 공간 5로 움직입니다"
+msgstr "창을 5번째 작업 공간으로 옮기기"
 
 #: src/metacity.schemas.in.h:45
 msgid "Move window to workspace 6"
-msgstr "창을 작업 공간 6으로 움직입니다"
+msgstr "창을 6번째 작업 공간으로 옮기기"
 
 #: src/metacity.schemas.in.h:46
 msgid "Move window to workspace 7"
-msgstr "창을 작업 공간 7로 움직입니다"
+msgstr "창을 7번째 작업 공간으로 옮기기"
 
 #: src/metacity.schemas.in.h:47
 msgid "Move window to workspace 8"
-msgstr "창을 작업 공간 8로 움직입니다"
+msgstr "창을 8번째 작업 공간으로 옮기기"
 
 #: src/metacity.schemas.in.h:48
 msgid "Move window to workspace 9"
-msgstr "창을 작업 공간 9로 움직입니다"
+msgstr "창을 9번째 작업 공간으로 옮기기"
 
 #: src/metacity.schemas.in.h:49
-#, fuzzy
 msgid "Name of workspace"
-msgstr "작업 공간 개수"
+msgstr "작업 공간 이름"
 
 #: src/metacity.schemas.in.h:50
 msgid "Number of workspaces"
@@ -616,9 +604,8 @@ msgstr ""
 "사용하려 해지 마십시오. 컴퓨터가 폭발할지 모릅니다.)"
 
 #: src/metacity.schemas.in.h:52
-#, fuzzy
 msgid "Raise obscured window, otherwise lower"
-msgstr "창을 띄우면 다른것들을 내려버립니다"
+msgstr "창을 띄우고 다른것들을 내려버리기"
 
 #: src/metacity.schemas.in.h:53
 msgid "Raise window above other windows"
@@ -626,7 +613,7 @@ msgstr "다른창 위에 창 띄우기"
 
 #: src/metacity.schemas.in.h:54
 msgid "Resize a window"
-msgstr "창크기를 조절합니다"
+msgstr "창크기 조절"
 
 #: src/metacity.schemas.in.h:55
 msgid "Run a defined command"
@@ -650,69 +637,67 @@ msgstr ""
 
 #: src/metacity.schemas.in.h:57
 msgid "Switch to workspace 1"
-msgstr "작업 공간 1로 갑니다"
+msgstr "1번째 작업 공간으로 가기"
 
 #: src/metacity.schemas.in.h:58
 msgid "Switch to workspace 10"
-msgstr "작업 공간 10으로 갑니다"
+msgstr "10번째 작업 공간으로 가기"
 
 #: src/metacity.schemas.in.h:59
 msgid "Switch to workspace 11"
-msgstr "작업 공간 11로 갑니다"
+msgstr "11번째 작업 공간으로 가기"
 
 #: src/metacity.schemas.in.h:60
 msgid "Switch to workspace 12"
-msgstr "작업 공간 12로 갑니다"
+msgstr "12번째 작업 공간으로 가기"
 
 #: src/metacity.schemas.in.h:61
 msgid "Switch to workspace 2"
-msgstr "작업 공간 2로 갑니다"
+msgstr "2번째 작업 공간으로 가기"
 
 #: src/metacity.schemas.in.h:62
 msgid "Switch to workspace 3"
-msgstr "작업 공간 3으로 갑니다"
+msgstr "3번째 작업 공간으로 가기"
 
 #: src/metacity.schemas.in.h:63
 msgid "Switch to workspace 4"
-msgstr "작업 공간 4로 갑니다"
+msgstr "4번째 작업 공간으로 가기"
 
 #: src/metacity.schemas.in.h:64
 msgid "Switch to workspace 5"
-msgstr "작업 공간 5로 갑니다"
+msgstr "5번째 작업 공간으로 가기"
 
 #: src/metacity.schemas.in.h:65
 msgid "Switch to workspace 6"
-msgstr "작업 공간 6으로 갑니다"
+msgstr "6번째 작업 공간으로 가기"
 
 #: src/metacity.schemas.in.h:66
 msgid "Switch to workspace 7"
-msgstr "작업 공간 7로 갑니다"
+msgstr "7번째 작업 공간으로 가기"
 
 #: src/metacity.schemas.in.h:67
 msgid "Switch to workspace 8"
-msgstr "작업 공간 8로 갑니다"
+msgstr "8번째 작업 공간으로 가기"
 
 #: src/metacity.schemas.in.h:68
 msgid "Switch to workspace 9"
-msgstr "작업 공간 9로 갑니다"
+msgstr "9번째 작업 공간으로 가기"
 
 #: src/metacity.schemas.in.h:69
-#, fuzzy
 msgid "Switch to workspace above this one"
-msgstr "현재 공간의 위쪽 작업 공간으로 갑니다"
+msgstr "위쪽 작업 공간으로 가기"
 
 #: src/metacity.schemas.in.h:70
-#, fuzzy
 msgid "Switch to workspace below this one"
-msgstr "현재 공간의 아래쪽 작업 공간으로 갑니다"
+msgstr "아래쪽 작업 공간으로 가기"
 
 #: src/metacity.schemas.in.h:71
 msgid "Switch to workspace on the left"
-msgstr "현재 공간의 왼쪽 작업 공간으로 갑니다"
+msgstr "왼쪽 작업 공간으로 가기"
 
 #: src/metacity.schemas.in.h:72
 msgid "Switch to workspace on the right"
-msgstr "현재 공간의 오른쪽 작업 공간으로 갑니다"
+msgstr "오른쪽 작업 공간으로 가기"
 
 #: src/metacity.schemas.in.h:73
 msgid ""
@@ -1223,9 +1208,8 @@ msgid ""
 msgstr ""
 
 #: src/metacity.schemas.in.h:127
-#, fuzzy
 msgid "The name of a workspace."
-msgstr "작업 공간 개수"
+msgstr "작업 공간 이름"
 
 #: src/metacity.schemas.in.h:128
 msgid ""
@@ -1318,12 +1302,10 @@ msgid "Toggle shaded state"
 msgstr "창 숨김 토글"
 
 #: src/metacity.schemas.in.h:140
-#, fuzzy
 msgid "Toggle window on all workspaces"
 msgstr "모든 작업 공간에 두기 토글"
 
 #: src/metacity.schemas.in.h:141
-#, fuzzy
 msgid "Unmaximize a window"
 msgstr "창 최대화 취소"
 
@@ -2271,7 +2253,7 @@ msgstr "테마 \"%s\"을(를) 읽을 수 없습니다: %s\n"
 #: src/theme.c:4619
 #, c-format
 msgid "No <%s> set for theme \"%s\""
-msgstr "테마 \"%2$s\"의 <%s>(이)가 설정되지 않았습니다"
+msgstr "테마 \"%2$s\"의 <%1$s>(이)가 설정되지 않았습니다"
 
 #: src/theme.c:4629
 #, c-format
@@ -2384,7 +2366,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5457
+#: src/window.c:5471
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
@@ -2392,7 +2374,7 @@ msgid ""
 msgstr ""
 
 #: src/xprops.c:153
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Window 0x%lx has property %s\n"
 "that was expected to have type %s format %d\n"
@@ -2400,8 +2382,11 @@ msgid ""
 "This is most likely an application bug, not a window manager bug.\n"
 "The window has title=\"%s\" class=\"%s\" name=\"%s\"\n"
 msgstr ""
-"창 0x%lx의 등록 정보 %s에 형식 %s %d이(가) 들어있어야 하는데 실제로는 형식 %"
-"s %d n_items %d이(가) 들어있습니다\n"
+"창 0x%lx의 등록 정보 %s\n"
+"형식 %s %d 이(가) 들어있어야 하는데\n"
+"실제로는 형식 %s %d n_items %d이(가) 들어있습니다\n"
+"대부분은 창 관리자 버그가 아니라 응용 프로그램 버그입니다.\n"
+"창의 정보: title=\"%s\" class=\"%s\" name=\"%s\"\n"
 
 #: src/xprops.c:399
 #, c-format
