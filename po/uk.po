@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "POT-Creation-Date: 2003-01-21 16:06+0200\n"
-"PO-Revision-Date: 2003-01-21 08:36--500\n"
+"PO-Revision-Date: 2003-01-21 09:40--500\n"
 "Last-Translator: Yuriy Syrota <yuri@renome.rovno.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -111,9 +111,9 @@ msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr "Сталася помилка завантаження діалога \"Метаситі\" для виводу повідомлення про помилку команди: %s\n"
 
 #: src/keybindings.c:2277
-#, fuzzy, c-format
+#, c-format
 msgid "No command %d has been defined.\n"
-msgstr "Стилю \"%s\" не визначено"
+msgstr "Команду %d не визначено.\n"
 
 #: src/main.c:64
 msgid "metacity [--disable-sm] [--sm-save-file=FILENAME] [--display=DISPLAY] [--replace] [--version]\n"
@@ -893,9 +893,8 @@ msgid "Toggle shaded state"
 msgstr "Перемикнути режим зрортання"
 
 #: src/metacity.schemas.in.h:140
-#, fuzzy
 msgid "Toggle window on all workspaces"
-msgstr "Перемістити на робоче місце %s%d"
+msgstr "Чи буде його розміщено на усіх робочих областях"
 
 #: src/metacity.schemas.in.h:141
 msgid "Unmaximize a window"
@@ -1398,7 +1397,7 @@ msgstr "Немає ознаки \"type\" у елементі <%s>"
 #: src/theme-parser.c:2209
 #, c-format
 msgid "Did not understand value \"%s\" for type of gradient"
-msgstr ""
+msgstr "Не вдалось розпізнати значення \"%s\" для типу градієнта"
 
 #: src/theme-parser.c:2294
 #, c-format
@@ -1434,30 +1433,30 @@ msgstr "Немає ознаки \"arrow\" елементі <%s>"
 #: src/theme-parser.c:2739
 #, c-format
 msgid "Did not understand state \"%s\" for <%s> element"
-msgstr ""
+msgstr "Не вдалось розпізнати стан \"%s\" для елемента <%s>"
 
 #: src/theme-parser.c:2539
 #: src/theme-parser.c:2661
 #, c-format
 msgid "Did not understand shadow \"%s\" for <%s> element"
-msgstr ""
+msgstr "Не вдалось розпізнати тінь \"%s\" для елемента <%s>"
 
 #: src/theme-parser.c:2549
 #, c-format
 msgid "Did not understand arrow \"%s\" for <%s> element"
-msgstr ""
+msgstr "Не вдалось розпізнати стрілку \"%s\" для елемента <%s>"
 
 #: src/theme-parser.c:2962
 #: src/theme-parser.c:3078
 #, c-format
 msgid "No <draw_ops> called \"%s\" has been defined"
-msgstr ""
+msgstr "Не визначено <draw_ops> з назвою \"%s\""
 
 #: src/theme-parser.c:2974
 #: src/theme-parser.c:3090
 #, c-format
 msgid "Including draw_ops \"%s\" here would create a circular reference"
-msgstr ""
+msgstr "Введення сюди параметра draw_ops \"%s\" створить ціклічне посилання"
 
 #: src/theme-parser.c:3153
 #, c-format
@@ -1472,12 +1471,12 @@ msgstr "Немає ознаки \"position\" елементі <%s>"
 #: src/theme-parser.c:3219
 #, c-format
 msgid "Unknown position \"%s\" for frame piece"
-msgstr ""
+msgstr "Невідома позиція \"%s\" для ділянки рамки"
 
 #: src/theme-parser.c:3227
 #, c-format
 msgid "Frame style already has a piece at position %s"
-msgstr ""
+msgstr "В стилю рамки вже є ділянка в позиції %s"
 
 #: src/theme-parser.c:3272
 #, c-format
@@ -1503,7 +1502,7 @@ msgstr "Невідомий стан кнопки – \"%s\""
 #: src/theme-parser.c:3306
 #, c-format
 msgid "Frame style already has a button for function %s state %s"
-msgstr ""
+msgstr "В стилю рамки вже є кнопка для режиму %s функції %s"
 
 #: src/theme-parser.c:3376
 #, c-format
@@ -1518,12 +1517,12 @@ msgstr "Немає ознаки \"style\" елементі <%s>"
 #: src/theme-parser.c:3401
 #, c-format
 msgid "\"%s\" is not a valid value for focus attribute"
-msgstr ""
+msgstr "\"%s\" – неправильне значення для атрибута \"focus\""
 
 #: src/theme-parser.c:3410
 #, c-format
 msgid "\"%s\" is not a valid value for state attribute"
-msgstr ""
+msgstr "\"%s\" – неправильне значення для атрибута \"state\""
 
 #: src/theme-parser.c:3420
 #, c-format
@@ -1538,7 +1537,7 @@ msgstr "Немає ознаки \"resize\" у елементі <%s>"
 #: src/theme-parser.c:3440
 #, c-format
 msgid "\"%s\" is not a valid value for resize attribute"
-msgstr ""
+msgstr "\"%s\" – неправильне значення для атрибута \"resize\""
 
 #: src/theme-parser.c:3450
 #, c-format
@@ -1891,11 +1890,11 @@ msgstr "Властивості активації вікна"
 
 #: src/tools/metacity-properties.glade.h:4
 msgid "_Point to give focus"
-msgstr ""
+msgstr "На_вести курсор для активації"
 
 #: src/tools/metacity-properties.glade.h:5
 msgid "_Raise window on focus"
-msgstr ""
+msgstr "Розміщувати _над всіма вікнами на активації"
 
 #: src/util.c:93
 #, c-format
