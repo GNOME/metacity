@@ -1,3 +1,7 @@
+2003-02-03  Tõivo Leedjärv  <toivo@linux.ee>
+
+	* configure.in: Added et to ALL_LINGUAS
+
 2003-01-29  Abel Cheung  <maddog@linux.org.hk>
 
 	* configure.in: Added en_GB nl to ALL_LINGUAS
