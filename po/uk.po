@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
-"POT-Creation-Date: 2003-01-24 23:31+0200\n"
-"PO-Revision-Date: 2003-01-24 14:16--500\n"
+"POT-Creation-Date: 2003-01-28 17:21+0200\n"
+"PO-Revision-Date: 2003-01-28 07:25--500\n"
 "Last-Translator: Yuriy Syrota <yuri@renome.rovno.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -538,7 +538,7 @@ msgstr "Кількість робочих областей"
 
 #: src/metacity.schemas.in.h:51
 msgid "Number of workspaces. Must be more than zero, and has a fixed maximum (to prevent accidentally destroying your desktop by asking for 34 million workspaces)."
-msgstr ""
+msgstr "Кількість робочих областей. Має бути більше нуля і мати фіксований максимум (для пнедопущення знищення стільниці запитом на 34 мільйони робочих областей)."
 
 #: src/metacity.schemas.in.h:52
 msgid "Raise obscured window, otherwise lower"
@@ -930,23 +930,23 @@ msgstr "Шрифт заголовка вікна"
 #: src/prefs.c:667
 #, c-format
 msgid "GConf key \"%s\" is set to an invalid type\n"
-msgstr ""
+msgstr "Ключ GConf \"%s\" має неправильний тип\n"
 
 #: src/prefs.c:712
 #, c-format
 msgid "\"%s\" found in configuration database is not a valid value for mouse button modifier\n"
-msgstr ""
+msgstr "Значення \"%s\" з бази даних конфігурації не є правильним для модифікатора кнопки миші\n"
 
 #: src/prefs.c:736
 #: src/prefs.c:1103
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
-msgstr ""
+msgstr "Ключ GConf \"%s\" має неправильне значення\n"
 
 #: src/prefs.c:820
 #, c-format
 msgid "Could not parse font description \"%s\" from GConf key %s\n"
-msgstr ""
+msgstr "Не вдалося проаналізувати опис шрифта \"%s\" з ключа GConf \"%s\"\n"
 
 #: src/prefs.c:1005
 #, c-format
@@ -965,17 +965,17 @@ msgstr ""
 #: src/prefs.c:1222
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
-msgstr ""
+msgstr "Сталася помилка встановлення кількості робочих місць рівною %d: %s\n"
 
 #: src/prefs.c:1460
 #, c-format
 msgid "\"%s\" found in configuration database is not a valid value for keybinding \"%s\"\n"
-msgstr ""
+msgstr "Значення \"%s\" з бази даних конфігурації не є правильним значенням для комбінації клавіш \"%s\"\n"
 
 #: src/prefs.c:1750
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
-msgstr ""
+msgstr "Помилка встановлення назви для робочої області %d у \"%s\": %s\n"
 
 #: src/resizepopup.c:127
 #, c-format
@@ -1010,7 +1010,7 @@ msgstr "Не вдалось створити каталог \"%s\": %s\n"
 #: src/session.c:274
 #, c-format
 msgid "Failed to a open connection to a session manager, so window positions will not be saved: %s\n"
-msgstr ""
+msgstr "Стався збій на відкритті з'єднання з менеджером сеансу, позицію вікна не буде збережено: %s\n"
 
 #: src/session.c:881
 #: src/session.c:888
@@ -1045,7 +1045,7 @@ msgstr "Збій аналізування збереженого файлу се
 
 #: src/session.c:1221
 msgid "<metacity_session> attribute seen but we already have the session ID"
-msgstr ""
+msgstr "Вказано ознаку <metacity_session>, аде ідентифікатор сеансу вже є"
 
 #: src/session.c:1234
 #, c-format
@@ -1699,32 +1699,32 @@ msgstr ""
 #: src/theme.c:1000
 #, c-format
 msgid "Did not understand state \"%s\" in color specification"
-msgstr ""
+msgstr "Не вдалось розпізнати режим \"%s\" в специфікації кольору"
 
 #: src/theme.c:1013
 #, c-format
 msgid "Did not understand color component \"%s\" in color specification"
-msgstr ""
+msgstr "Не вдалося розпізнати компонент кольору \"%s\" у визначенні кольору"
 
 #: src/theme.c:1043
 #, c-format
 msgid "Blend format is \"blend/bg_color/fg_color/alpha\", \"%s\" does not fit the format"
-msgstr ""
+msgstr "Формат визначення змішаного кольору — \"blend/колр_тла/колір_переднього_плану/альфа\", \"%s\" не відповідає формату"
 
 #: src/theme.c:1054
 #, c-format
 msgid "Could not parse alpha value \"%s\" in blended color"
-msgstr ""
+msgstr "Не вдалося проаналізувати значення альфа-каналу \"%s\" в змішаному кольорі"
 
 #: src/theme.c:1064
 #, c-format
 msgid "Alpha value \"%s\" in blended color is not between 0.0 and 1.0"
-msgstr ""
+msgstr "Значення альфа-каналу \"%s\" в змішаному кольорі не входить в діапазон між 0.0 і 1.0"
 
 #: src/theme.c:1111
 #, c-format
 msgid "Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
-msgstr ""
+msgstr "Формат тіні — \"shade/основний_колір/компонент\", \"%s\" не відповідає формату"
 
 #: src/theme.c:1122
 #, fuzzy, c-format
@@ -1734,7 +1734,7 @@ msgstr "Не вдалось проаналізувати колір \"%s\""
 #: src/theme.c:1132
 #, c-format
 msgid "Shade factor \"%s\" in shaded color is negative"
-msgstr ""
+msgstr "Компонент тіні \"%s\" в затіненому кольорі від'ємний"
 
 #: src/theme.c:1161
 #, c-format
@@ -1744,93 +1744,93 @@ msgstr "Не вдалось проаналізувати колір \"%s\""
 #: src/theme.c:1423
 #, c-format
 msgid "Coordinate expression contains character '%s' which is not allowed"
-msgstr ""
+msgstr "Вираз координати містить символ \"%s\", який заборонено використовувати"
 
 #: src/theme.c:1450
 #, c-format
 msgid "Coordinate expression contains floating point number '%s' which could not be parsed"
-msgstr ""
+msgstr "Вираз координати містить дійсне число \"%s\", яке не вдалося розпізнати"
 
 #: src/theme.c:1464
 #, c-format
 msgid "Coordinate expression contains integer '%s' which could not be parsed"
-msgstr ""
+msgstr "Вираз координати містить ціле число \"%s\", який не вдалося проаналізувати"
 
 #: src/theme.c:1531
 #, c-format
 msgid "Coordinate expression contained unknown operator at the start of this text: \"%s\""
-msgstr ""
+msgstr "Вираз координати містить невідомий оператор в початку такого тексту: \"%s\""
 
 #: src/theme.c:1588
 msgid "Coordinate expression was empty or not understood"
-msgstr ""
+msgstr "Вираз координати порожній, чи його не вдалось розпізнати"
 
 #: src/theme.c:1727
 #: src/theme.c:1737
 #: src/theme.c:1771
 msgid "Coordinate expression results in division by zero"
-msgstr ""
+msgstr "Розрахунок виразу координати призвів до ділення на нуль"
 
 #: src/theme.c:1779
 msgid "Coordinate expression tries to use mod operator on a floating-point number"
-msgstr ""
+msgstr "Вираз координати намагається використати оператор взяття остачі від ділення для дійсного числа"
 
 #: src/theme.c:1836
 #, c-format
 msgid "Coordinate expression has an operator \"%s\" where an operand was expected"
-msgstr ""
+msgstr "У виразі координати використано оператор \"%s\", там де має бути операнд"
 
 #: src/theme.c:1845
 msgid "Coordinate expression had an operand where an operator was expected"
-msgstr ""
+msgstr "У виразі координати використано операнд, там де має бути оператор"
 
 #: src/theme.c:1853
 msgid "Coordinate expression ended with an operator instead of an operand"
-msgstr ""
+msgstr "Вираз координати закінчується оператором, а не операндом"
 
 #: src/theme.c:1863
 #, c-format
 msgid "Coordinate expression has operator \"%c\" following operator \"%c\" with no operand in between"
-msgstr ""
+msgstr "У виразі координати за оператором \"%c\" йде оператор \"%c\", між ними немає операнда"
 
 #: src/theme.c:1982
 msgid "Coordinate expression parser overflowed its buffer, this is really a Metacity bug, but are you sure you need a huge expression like that?"
-msgstr ""
+msgstr "Буфер аналізатора виразу координати переповнено, це помилка \"Метаситі\", але навіщо вам такий великий вираз?"
 
 #: src/theme.c:2011
 msgid "Coordinate expression had a close parenthesis with no open parenthesis"
-msgstr ""
+msgstr "У виразі координати використано вікдривні дужки, але немає відповідних закривних"
 
 #: src/theme.c:2074
 #, c-format
 msgid "Coordinate expression had unknown variable or constant \"%s\""
-msgstr ""
+msgstr "У виразі координати є невідома змінна чи константа \"%s\""
 
 #: src/theme.c:2131
 msgid "Coordinate expression had an open parenthesis with no close parenthesis"
-msgstr ""
+msgstr "У виразі координати використано відкривні дужки, але немає відповідних закривних"
 
 #: src/theme.c:2142
 msgid "Coordinate expression doesn't seem to have any operators or operands"
-msgstr ""
+msgstr "У виразі координати немає ні операторів, ні операндів"
 
 #: src/theme.c:2386
 #: src/theme.c:2408
 #: src/theme.c:2429
 #, c-format
 msgid "Theme contained an expression \"%s\" that resulted in an error: %s\n"
-msgstr ""
+msgstr "В темі був вираз \"%s\", що спричинив помилку: \"%s\"\n"
 
 #: src/theme.c:3912
 #, c-format
 msgid "<button function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> must be specified for this frame style"
-msgstr ""
+msgstr "для цього стилю рамки потрібно вказати <button function=\"%s\" state=\"%s\" draw_ops=\"що-небудь\"/>"
 
 #: src/theme.c:4362
 #: src/theme.c:4394
 #, c-format
 msgid "Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
-msgstr ""
+msgstr "Відсутній <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"що-небудь\"/>"
 
 #: src/theme.c:4445
 #, c-format
@@ -1849,18 +1849,18 @@ msgstr "Не встановлено <%s> для теми \"%s\""
 #: src/theme.c:4629
 #, c-format
 msgid "No frame style set for window type \"%s\" in theme \"%s\", add a <window type=\"%s\" style_set=\"whatever\"/> element"
-msgstr ""
+msgstr "Немає стилю рамки для типу вікна \"%s\" в темі \"%s\", додайте елемент <window type=\"%s\" style_set=\"що-небудь\"/>"
 
 #: src/theme.c:4651
 #, c-format
 msgid "<menu_icon function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> must be specified for this theme"
-msgstr ""
+msgstr "для цієї теми потрібно вказати <menu_icon function=\"%s\" state=\"%s\" draw_ops=\"що-небудь\"/>"
 
 #: src/theme.c:5038
 #: src/theme.c:5100
 #, c-format
 msgid "User-defined constants must begin with a capital letter; \"%s\" does not"
-msgstr ""
+msgstr "Користувацькі константи мають починатися з великої літери; \"%s\" не починається з великої літери"
 
 #: src/theme.c:5046
 #: src/theme.c:5108
@@ -1870,7 +1870,7 @@ msgstr "Константа \"%s\" вже визначена"
 
 #: src/tools/metacity-properties.desktop.in.h:1
 msgid "Select how to give focus to windows"
-msgstr ""
+msgstr "Налаштування перемикання фокусу вводу між вікнами"
 
 #: src/tools/metacity-properties.desktop.in.h:2
 msgid "Window Focus"
@@ -1930,7 +1930,7 @@ msgstr "Помилка віконного менеджера:"
 #: src/window-props.c:161
 #, c-format
 msgid "Application set a bogus _NET_WM_PID %ld\n"
-msgstr ""
+msgstr "Додаток встановив неправильне значення параметра _NET_WM_PID %ld\n"
 
 #. first time through
 #: src/window.c:4897
