@@ -1,3 +1,17 @@
+Thu Jan 20 16:13:47 2005  Søren Sandmann  <sandmann@redhat.com>
+
+	* src/compositor.c, src/cwindow.c: Remove old, unsued code. Add a
+
+		METACITY_DEBUG_UPDATES
+
+	environment variable.
+
+Wed Jan 19 17:23:05 2005  Søren Sandmann  <sandmann@redhat.com>
+
+	* src/compositor.c (meta_compositor_genie): Disable genie effect
+	* src/compositor.c (process_create): Get rid of some more
+	debugging spew.
+
 Wed Jan 19 16:54:21 2005  Søren Sandmann  <sandmann@redhat.com>
 
 	* src/compositor.c (process_create): Remove debugging spew

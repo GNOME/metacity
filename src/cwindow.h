@@ -97,5 +97,5 @@ void            cwindow_process_damage_notify        (CWindow            *cwindo
 						      XDamageNotifyEvent *event);
 void            cwindow_process_configure_notify     (CWindow            *cwindow,
 						      XConfigureEvent    *event);
-void            cwindow_new_draw                     (CWindow            *cwindow,
+void            cwindow_draw                         (CWindow            *cwindow,
 						      Picture             destination);

@@ -61,6 +61,7 @@ struct MetaCompositor
   guint have_damage : 1;
   guint have_fixes : 1;
   guint have_name_window_pixmap : 1;
+  guint debug_updates : 1;
   
   GList *ignored_damage;
 };
@@ -181,6 +182,13 @@ meta_compositor_new (MetaDisplay *display)
 #endif /* HAVE_COMPOSITE_EXTENSIONS */
 }
 
+void
+meta_compositor_set_debug_updates (MetaCompositor *compositor,
+				   gboolean	   debug_updates)
+{
+    compositor->debug_updates = !!debug_updates;
+}
+
 #ifdef HAVE_COMPOSITE_EXTENSIONS
 static void
 remove_repair_idle (MetaCompositor *compositor)
@@ -251,39 +259,12 @@ draw_windows (MetaCompositor *compositor,
 
   XFixesDestroyRegion (dpy, region_below);
       
-#if 0
-  if (window_region)
-  {
-      XserverRegion clip = XFixesCreateRegion (dpy, NULL, 0);
-      XFixesCopyRegion (dpy, clip, damaged_region);
-      XFixesIntersectRegion (dpy, clip, clip, window_region);
-
-#if 0
-      print_region (dpy, "clip1", clip);
-#endif
-      
-      XRenderColor hilit = { rand(), rand(), rand(), 0xffff };
-
-      XFixesSetPictureClipRegion (dpy, screen->root_picture, 0, 0, clip);
-      XRenderFillRectangle (compositor->display->xdisplay,
-			    PictOpSrc,
-			    screen->root_picture, &hilit,
-			    0, 0,
-			    screen->width, screen->height);
-      XSync (compositor->display->xdisplay, False);
-      g_usleep (50000);
-
-#if 0
-      print_region (dpy, "clip2", clip);
-  }
-#endif
-#endif
   XFixesSetPictureClipRegion (dpy, picture, 0, 0, damaged_region);
-  cwindow_new_draw (cwindow, picture);
+  cwindow_draw (cwindow, picture);
 }
 
 static Picture
-create_root_buffer (MetaScreen *screen)
+create_root_buffer (MetaScreen *screen, Pixmap *pixmap)
 {
   GC gc;
   Display *display = screen->display->xdisplay;
@@ -305,10 +286,6 @@ create_root_buffer (MetaScreen *screen)
   XSetForeground (display, gc, WhitePixel (display, screen->number));
   
   XSetForeground (display, gc, 0x00ff0099);
-#if 0
-  XFillRectangle (display, buffer_pixmap, gc, 0, 0,
-		  screen->width, screen->height);
-#endif
   
   format = XRenderFindVisualFormat (display,
 				    DefaultVisual (display,
@@ -319,26 +296,36 @@ create_root_buffer (MetaScreen *screen)
 					 format,
 					 0, 0);
   
-  XFreePixmap (display, buffer_pixmap);
+  if (pixmap)
+      *pixmap = buffer_pixmap;
+  else
+      XFreePixmap (display, buffer_pixmap);
+  
   XFreeGC (display, gc);
   
   return buffer_picture;
 }
 
 static void
-paint_buffer (MetaScreen *screen, Picture buffer)
+paint_buffer (MetaScreen *screen,
+	      Pixmap pixmap,
+	      XserverRegion damage_region)
 {
-#if 0
-  XFixesSetPictureClipRegion (screen->display->xdisplay,
-			      screen->root_picture, 0, 0, damaged_region);
-#endif
-  
-  XRenderComposite (screen->display->xdisplay,
-		    PictOpSrc,
-		    buffer, None,
-		    screen->root_picture,
-		    0, 0, 0, 0, 0, 0,
-		    screen->width, screen->height);
+  XGCValues value;
+  GC gc;
+  value.function = GXcopy;
+  value.subwindow_mode = IncludeInferiors;
+
+  gc = XCreateGC (screen->display->xdisplay, pixmap, GCFunction | GCSubwindowMode, &value);
+
+  if (damage_region)
+    XFixesSetGCClipRegion (screen->display->xdisplay, gc, 0, 0, damage_region);
+
+  XCopyArea (screen->display->xdisplay,
+	     pixmap, screen->xroot, gc,
+	     0, 0, screen->width, screen->height, 0, 0);
+
+  XFreeGC (screen->display->xdisplay, gc);
 }
 
 static XserverRegion
@@ -376,8 +363,7 @@ do_paint_screen (MetaCompositor *compositor,
 			      region);
   draw_windows (compositor, screen, screen->compositor_windows, region, picture);
   meta_error_trap_pop (compositor->display, FALSE);
-  
-  
+    
   return region;
 }
 
@@ -389,6 +375,7 @@ paint_screen (MetaCompositor *compositor,
   Picture buffer_picture;
   Display *xdisplay;
   XserverRegion region;
+  Pixmap pixmap;
   
   meta_topic (META_DEBUG_COMPOSITOR, "Repainting screen %d root 0x%lx\n",
               screen->number, screen->xroot);
@@ -397,7 +384,7 @@ paint_screen (MetaCompositor *compositor,
   
   xdisplay = screen->display->xdisplay;
   
-  buffer_picture = create_root_buffer (screen);
+  buffer_picture = create_root_buffer (screen, &pixmap);
 
   /* set clip */
   region = do_paint_screen (compositor, screen, buffer_picture, damage_region);
@@ -410,22 +397,22 @@ paint_screen (MetaCompositor *compositor,
                               screen->root_picture,
                               0, 0, region);
 
-#if 0
-  XRenderColor hilit = { 0xFFFF, 0x0000, 0x0000, 0xFFFF } ;
-  XRenderFillRectangle (compositor->display->xdisplay,
-                        PictOpSrc,
-                        screen->root_picture, &hilit, 0, 0, screen->width, screen->height);
-#endif
-
-  XSync (xdisplay, False);
-
-#if 0
-  g_usleep (370000);
-#endif
-
   XFixesSetPictureClipRegion (xdisplay, buffer_picture, 0, 0, None);
+
+  if (compositor->debug_updates)
+    {
+#define ALPHA 0.5      
+      XRenderColor hilight = { ALPHA * 0xFFFF, ALPHA * 0xFFFF, ALPHA * 0x0000, ALPHA * 0xFFFF };
+      XRenderFillRectangle (screen->display->xdisplay, PictOpOver,
+			    screen->root_picture, &hilight,
+			    0, 0, screen->width, screen->height);
+      XSync (xdisplay, False);
+      g_usleep (20000);
+    }
   
-  paint_buffer (screen, buffer_picture);
+  paint_buffer (screen, pixmap, damage_region);
+
+  XFreePixmap (screen->display->xdisplay, pixmap);
   
   XFixesDestroyRegion (xdisplay, region);
   
@@ -510,31 +497,6 @@ ensure_repair_idle (MetaCompositor *compositor)
 }
 #endif /* HAVE_COMPOSITE_EXTENSIONS */
 
-#if 0
-#ifdef HAVE_COMPOSITE_EXTENSIONS
-static void
-merge_and_destroy_damage_region (MetaCompositor *compositor,
-                                 MetaScreen     *screen,
-                                 XserverRegion   region)
-{
-  if (screen->damage_region != None)
-    {
-      XFixesUnionRegion (compositor->display->xdisplay,
-                         screen->damage_region,
-                         region, screen->damage_region);
-      XFixesDestroyRegion (compositor->display->xdisplay,
-                           region);
-    }
-  else
-    {
-      screen->damage_region = region;
-    }
-  
-  ensure_repair_idle (compositor);
-}
-#endif /* HAVE_COMPOSITE_EXTENSIONS */
-#endif
-
 #ifdef HAVE_COMPOSITE_EXTENSIONS
 void
 meta_compositor_invalidate_region (MetaCompositor *compositor,
@@ -544,7 +506,20 @@ meta_compositor_invalidate_region (MetaCompositor *compositor,
   if (screen->damage_region == None)
     screen->damage_region =
       XFixesCreateRegion (compositor->display->xdisplay, NULL, 0);
-  
+
+#if 0
+  if (compositor->debug_updates)
+    {
+#     define ALPHA 0.1
+      XRenderColor hilight = { ALPHA * 0x0000, ALPHA * 0x1000, ALPHA * 0xFFFF, ALPHA * 0xFFFF };
+      XFixesSetPictureClipRegion (screen->display->xdisplay, screen->root_picture, 0, 0, invalid_area);
+      XRenderFillRectangle (screen->display->xdisplay, PictOpOver,
+			    screen->root_picture, &hilight,
+			    0, 0, screen->width, screen->height);
+      XSync (screen->display->xdisplay, False);
+    }
+#endif
+      
   XFixesUnionRegion (compositor->display->xdisplay,
                      screen->damage_region,
                      invalid_area, screen->damage_region);
@@ -569,8 +544,6 @@ process_damage_notify (MetaCompositor     *compositor,
   cwindow_process_damage_notify (cwindow, event);
 }
 #endif /* HAVE_COMPOSITE_EXTENSIONS */
-
-
 
 static void
 handle_restacking (MetaCompositor *compositor,
@@ -618,7 +591,7 @@ process_expose (MetaCompositor     *compositor,
   XserverRegion region;
   MetaScreen *screen;
   XRectangle r;
-  
+
   screen = meta_display_screen_for_root (compositor->display,
                                          event->window);
   
@@ -691,7 +664,7 @@ process_map (MetaCompositor     *compositor,
 
   /* We don't actually need to invalidate anything, because we will
    * get damage events as the server fills the background and the client
-   * draws
+   * draws the window
    */
 }
 #endif /* HAVE_COMPOSITE_EXTENSIONS */
@@ -725,8 +698,8 @@ process_unmap (MetaCompositor     *compositor,
       if (cwindow_get_last_painted_extents (cwindow))
         {
           meta_compositor_invalidate_region (compositor,
-					   screen,
-					   cwindow_get_last_painted_extents (cwindow));
+					     screen,
+					     cwindow_get_last_painted_extents (cwindow));
           cwindow_set_last_painted_extents (cwindow, None);
         }
     }
@@ -752,7 +725,6 @@ process_create (MetaCompositor     *compositor,
       return;
     }
   
-  g_print ("hello\n");
   meta_error_trap_push_with_return (compositor->display);
   
   XGetWindowAttributes (compositor->display->xdisplay,
@@ -966,13 +938,6 @@ meta_compositor_add_window (MetaCompositor    *compositor,
   
   /* FIXME this assertion can fail somehow... */
   g_assert (attrs->map_state != IsUnviewable);
-#if 0
-  if (attrs->map_state == Mapped)
-    g_print ("mapped\n");
-
-  if (attrs->map_state == Viewable)
-    g_pritn ("viewable\n");
-#endif
   
   g_hash_table_insert (compositor->window_hash,
                        cwindow_get_xid_address (cwindow), cwindow);
@@ -1204,50 +1169,12 @@ void
 meta_compositor_stop_compositing (MetaCompositor *compositor,
 				  MetaWindow     *window)
 {
-#if 0
-  CWindow *cwindow = window_to_cwindow (compositor, window);
-  
-  if (cwindow)
-    {
-      if (cwindow->pixmap)
-	XFreePixmap (compositor->display->xdisplay, cwindow->pixmap);
-      
-      cwindow->pixmap = XCompositeNameWindowPixmap (compositor->display->xdisplay,
-						    cwindow->xwindow);
-      
-      cwindow->pending_x = cwindow->x;
-      cwindow->pending_y = cwindow->y;
-      cwindow->pending_width = cwindow->width;
-      cwindow->pending_height = cwindow->height;
-      cwindow->pending_border_width = cwindow->border_width;
-    }
-#endif
 }
 
 void
 meta_compositor_start_compositing (MetaCompositor *compositor,
 				   MetaWindow     *window)
 {
-#if 0
-  CWindow *cwindow = window_to_cwindow (compositor, window);
-  
-  if (cwindow)
-    {
-      if (cwindow->pixmap)
-	{
-	  XFreePixmap (compositor->display->xdisplay, cwindow->pixmap);
-	  cwindow->pixmap = None;
-	}
-      
-      cwindow->x = cwindow->pending_x;
-      cwindow->y = cwindow->pending_y;
-      cwindow->width = cwindow->pending_width;
-      cwindow->height = cwindow->pending_height;
-      cwindow->border_width = cwindow->pending_border_width;
-      
-      meta_compositor_damage_window (compositor, window);
-    }
-#endif
 }
 
 static void
@@ -1280,149 +1207,15 @@ quad_to_quad_interpolate (Quad *start, Quad *end, Quad *dest, gdouble t)
     }
 }
 
-#if 0
-void
-meta_compositor_old_genie (MetaCompositor *compositor,
-			   MetaWindow       *window)
-{
-#if 0
-  int i;
-  int x, y, w, h;
-#if 0
-  int dx, dy, dw, dh;
-#endif
-  
-  Quad start;
-  Quad end;
-  Quad dest;
-  
-  CWindow *cwindow = window_to_cwindow (compositor, window);
-  
-  if (!cwindow)
-    return;
-  
-  x = cwindow_get_x (cwindow);
-  y = cwindow_get_y (cwindow);
-  w = cwindow_get_width (cwindow) + cwindow_get_border_width (cwindow) * 2;
-  h = cwindow_get_height (cwindow) + cwindow_get_border_width (cwindow) * 2;
-  
-  start.points[0].x = x;
-  start.points[0].y = y;
-  start.points[1].x = x + w - 1;
-  start.points[1].y = y;
-  start.points[2].x = x;
-  start.points[2].y = y + h - 1;
-  start.points[3].x = x + w - 1;
-  start.points[3].y = y + h - 1;
-  
-  end.points[0].x = 0;
-  end.points[0].y = 1200 - 30;
-  end.points[1].x = 100;
-  end.points[1].y = 1200 - 30;
-  end.points[2].x = 0;
-  end.points[2].y = 1200 - 1;
-  end.points[3].x = 100;
-  end.points[3].y = 1200 - 1;
-
-#define N_STEPS 5
-  
-  for  (i = 0; i < N_STEPS; ++i)
-    {
-#if 0
-      int j;
-#endif
-#if 0
-      XTransform trans = {
-	{{ XDoubleToFixed(1.0), XDoubleToFixed(0),   XDoubleToFixed(0) },
-	 { XDoubleToFixed(0),   XDoubleToFixed(1.0), XDoubleToFixed(0) },
-	 { XDoubleToFixed(0),   XDoubleToFixed(0),   XDoubleToFixed((49 - i)/49.0)}}
-      };	    
-#endif
-#if 0
-      XRenderPictFormat *format;
-#endif
-      Picture buffer;
-      
-#if 0
-      wpicture = XRenderCreatePicture (compositor->display->xdisplay,
-				       cwindow_get_drawable (cwindow),
-				       format,
-				       CPSubwindowMode,
-				       &pa);
-      
-      g_assert (compositor->display);
-#endif
-      
-      quad_to_quad_interpolate (&start, &end, &dest, i/((double)N_STEPS - 1));
-      
-      buffer = create_root_buffer (window->screen);
-      
-      XFixesSetPictureClipRegion (compositor->display->xdisplay,
-				  buffer, 0, 0,
-				  None);
-      
-      {
-	XRectangle  r;
-	XserverRegion region;
-	
-	r.x = 0;
-	r.y = 0;
-	r.width = window->screen->width;
-	r.height = window->screen->height;
-	
-	region = XFixesCreateRegion (compositor->display->xdisplay, &r, 1);
-	
-	XFixesDestroyRegion (compositor->display->xdisplay,
-			     do_paint_screen (compositor, window->screen, buffer, region));
-	XFixesDestroyRegion (compositor->display->xdisplay, region);
-      }
-
-      cwindow_draw_warped (cwindow, window->screen, buffer, &dest);
-      
-#if 0
-      XRenderColor c = { 0x1000, 0x1000, 0x1000, 0x70c0 };
-#endif
-      
-      XFixesSetPictureClipRegion (compositor->display->xdisplay, window->screen->root_picture, 0, 0, None);
-      
-#if 0
-      XRenderFillRectangle (compositor->display->xdisplay, PictOpOver, buffer, &c, 0, 0, 100, 100);
-#endif
-      
-      paint_buffer (window->screen, buffer);
-      
-      XRenderFreePicture (compositor->display->xdisplay, buffer);
-      
-      XSync (compositor->display->xdisplay, False);
-      /* Copy buffer to root window */
-#if 0
-      meta_topic (META_DEBUG_COMPOSITOR, "Copying buffer to root window 0x%lx picture 0x%lx\n",
-		  screen->xroot, screen->root_picture);
-#endif
-#if 0
-      g_print ("%d %d %d %d  %d %d %d %d\n",
-	       dest.points[0].x, dest.points[0].y,
-	       dest.points[1].x, dest.points[1].y,
-	       dest.points[2].x, dest.points[2].y,
-	       dest.points[3].x, dest.points[3].y);
-#endif
-#if 0
-      g_usleep (30000);
-#endif
-    }
-#endif
-}
-#endif
-
 void
 meta_compositor_genie (MetaCompositor *compositor,
 		       MetaWindow       *window)
 {
   int i;
   int x, y, w, h;
-#if 0
-  int dx, dy, dw, dh;
-#endif
+
+  /* It's unusably slow right now, and also ugly */
+  return;
   
   Quad start1;
   Quad end1;
@@ -1498,7 +1291,7 @@ meta_compositor_genie (MetaCompositor *compositor,
       
       cwindow_set_transformation (cwindow, distortion, 2);
       
-      buffer = create_root_buffer (window->screen);
+      buffer = create_root_buffer (window->screen, NULL);
       
       {
 	  XRectangle  r;
@@ -1516,19 +1309,16 @@ meta_compositor_genie (MetaCompositor *compositor,
 	  XFixesDestroyRegion (compositor->display->xdisplay, region);
       }
       
-      cwindow_new_draw (cwindow, buffer);
+      cwindow_draw (cwindow, buffer);
       
       XFixesSetPictureClipRegion (compositor->display->xdisplay,
 				  window->screen->root_picture, 0, 0, None);
       /* Copy buffer to root window */
-      paint_buffer (window->screen, buffer);
+      paint_buffer (window->screen, buffer, NULL);
       
       XRenderFreePicture (compositor->display->xdisplay, buffer);
       
       XSync (compositor->display->xdisplay, False);
-#if 0
-      g_usleep (500000);
-#endif
   }
 }
 

@@ -633,6 +633,8 @@ meta_display_open (const char *name)
 
   display->last_focus_time = timestamp;
   display->compositor = meta_compositor_new (display);
+
+  meta_compositor_set_debug_updates (display->compositor, g_getenv ("METACITY_DEBUG_UPDATES") != NULL);
   
   screens = NULL;
   

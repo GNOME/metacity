@@ -390,6 +390,7 @@ convert_matrix (Matrix3 *matrix, XTransform *trans)
   trans->matrix[2][2] = double_to_fixed (matrix->coeff[2][2]);
 }
 
+#if 0
 static void
 get_transform (XTransform *trans, int x, int y, int w, int h)
 {
@@ -411,6 +412,7 @@ get_transform (XTransform *trans, int x, int y, int w, int h)
   
   convert_matrix (&tmp, trans);
 }
+#endif
 
 #if 0
 void
@@ -646,6 +648,7 @@ compute_transform (int x, int y,
   convert_matrix (&matrix, transform);
 }
 
+#if 0
 void
 cwindow_draw_warped (CWindow *cwindow,
 		     MetaScreen		 *screen,
@@ -701,6 +704,7 @@ cwindow_draw_warped (CWindow *cwindow,
   
   XRenderFreePicture (display, wpicture);
 }
+#endif
 
 #if 0
 static void
@@ -823,7 +827,7 @@ cwindow_set_transformation (CWindow *cwindow,
 }
 
 void
-cwindow_new_draw (CWindow *cwindow, Picture destination)
+cwindow_draw (CWindow *cwindow, Picture destination)
 {
   XRenderPictFormat *format;
   int i;
@@ -875,7 +879,7 @@ cwindow_new_draw (CWindow *cwindow, Picture destination)
     }
   else
     {
-	Display *dpy = cwindow_get_xdisplay (cwindow);
+      Display *dpy = cwindow_get_xdisplay (cwindow);
       XRenderColor shadow_color = { 0x0000, 0x000, 0x0000, 0x70c0 };
       XserverRegion shadow_clip;
       XserverRegion old_clip = XFixesCreateRegionFromPicture (dpy, destination);

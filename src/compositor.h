@@ -37,6 +37,8 @@ void            meta_compositor_add_window    (MetaCompositor    *compositor,
                                                XWindowAttributes *attrs);
 void            meta_compositor_remove_window (MetaCompositor    *compositor,
                                                Window             xwindow);
+void		meta_compositor_set_debug_updates (MetaCompositor *compositor,
+						   gboolean	   debug_updates);
 
 void meta_compositor_manage_screen   (MetaCompositor *compositor,
                                       MetaScreen     *screen);
