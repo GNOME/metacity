@@ -1,5 +1,9 @@
 2005-02-19  Elijah Newren  <newren@gmail.com>
 
+	* configure.in: post-release bump version to 2.8.21
+
+2005-02-19  Elijah Newren  <newren@gmail.com>
+
 	* NEWS: Metacity 2.8.13 (stable release)
 
 2005-02-04  Elijah Newren  <newren@gmail.com>
