@@ -8,7 +8,7 @@ EGGFILES=			\
 	eggaccelerators.c	\
 	eggaccelerators.h
 
-metacity_SOURCES= 				\
+metacity_SOURCES=				\
 	async-getprop.c				\
 	async-getprop.h				\
 	bell.h					\
@@ -20,6 +20,8 @@ metacity_SOURCES= 				\
 	constraints.h				\
 	core.c					\
 	core.h					\
+	cwindow.c				\
+	cwindow.h				\
 	delete.c				\
 	display.c				\
 	display.h				\
@@ -49,6 +51,8 @@ metacity_SOURCES= 				\
 	inlinepixbufs.h				\
 	keybindings.c				\
 	keybindings.h				\
+	matrix.c				\
+	matrix.h				\
 	main.c					\
 	main.h					\
 	menu.c					\

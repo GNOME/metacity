@@ -39,6 +39,7 @@
 #include "group.h"
 #include "window-props.h"
 #include "constraints.h"
+#include "compositor.h"
 
 #include <X11/Xatom.h>
 #include <string.h>
@@ -226,11 +227,14 @@ meta_window_new_with_attrs (MetaDisplay       *display,
   Atom initial_props[N_INITIAL_PROPS];
   int i;
   gboolean has_shape;
+  char *name = NULL;
 
   g_assert (attrs != NULL);
   g_assert (N_INITIAL_PROPS == (int) G_N_ELEMENTS (initial_props));
-  
-  meta_verbose ("Attempting to manage 0x%lx\n", xwindow);
+
+  XFetchName (display->xdisplay, xwindow, &name);
+
+  meta_verbose ("Attempting to manage 0x%lx (%s)\n", xwindow, name? name : "<no name>");
 
   if (xwindow == display->no_focus_window)
     {
@@ -521,9 +525,8 @@ meta_window_new_with_attrs (MetaDisplay       *display,
   window->stack_position = -1;
   window->initial_workspace = 0; /* not used */
   window->initial_timestamp = 0; /* not used */
-  
-  meta_display_register_x_window (display, &window->xwindow, window);
 
+  meta_display_register_x_window (display, &window->xwindow, window);
 
   /* assign the window to its group, or create a new group if needed
    */
@@ -1327,11 +1330,14 @@ implement_showing (MetaWindow *window,
           meta_window_get_outer_rect (window, &window_rect);
           
           /* Draw a nice cool animation */
+#if 0
           meta_effects_draw_box_animation (window->screen,
                                            &window_rect,
                                            &icon_rect,
                                            META_MINIMIZE_ANIMATION_LENGTH,
                                            META_BOX_ANIM_SCALE);
+#endif
+	  meta_compositor_genie (window->display->compositor, window);
 	}
 
       meta_window_hide (window);
@@ -2454,6 +2460,9 @@ meta_window_move_resize_internal (MetaWindow  *window,
   if (window->frame)
     meta_frame_calc_geometry (window->frame,
                               &fgeom);
+  
+
+  meta_compositor_stop_compositing (window->display->compositor, window);
   
   if (is_configure_request || do_gravity_adjust)
     {      
@@ -6275,6 +6284,8 @@ update_resize (MetaWindow *window,
   gravity = meta_resize_gravity_from_grab_op (window->display->grab_op);
   g_assert (gravity >= 0);
   
+  meta_compositor_start_compositing (window->display->compositor, window);
+  
   if (window->display->grab_wireframe_active)
     {
       /* FIXME This is crap. For example, the wireframe isn't
@@ -6307,7 +6318,7 @@ update_resize (MetaWindow *window,
     }
   else
     {
-      meta_window_resize_with_gravity (window, TRUE, new_w, new_h, gravity);
+	meta_window_resize_with_gravity (window, TRUE, new_w, new_h, gravity);
     }
 
   /* Store the latest resize time, if we actually resized. */
@@ -6414,7 +6425,7 @@ meta_window_handle_mouse_grab_op_event (MetaWindow *window,
       window->disable_sync = FALSE;
       window->sync_request_time.tv_sec = 0;
       window->sync_request_time.tv_usec = 0;
-      
+
       /* This means we are ready for another configure. */
       switch (window->display->grab_op)
         {

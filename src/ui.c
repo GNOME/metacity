@@ -261,6 +261,8 @@ meta_ui_map_frame   (MetaUI *ui,
 
   window = gdk_xid_table_lookup (xwindow);
 
+  meta_verbose ("Mapping 0x%lx which is a frame window\n", xwindow);
+  
   if (window)
     gdk_window_show_unraised (window);
 }

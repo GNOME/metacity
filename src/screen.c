@@ -644,6 +644,8 @@ meta_screen_new (MetaDisplay *display,
 
   meta_compositor_manage_screen (screen->display->compositor,
                                  screen);
+
+  XSync (screen->display->xdisplay, False);
   
   meta_verbose ("Added screen %d ('%s') root 0x%lx\n",
                 screen->number, screen->screen_name, screen->xroot);
@@ -756,11 +758,21 @@ meta_screen_manage_all_windows (MetaScreen *screen)
         }
       else
         {
-          meta_window_new_with_attrs (screen->display, children[i], TRUE,
-                                      &attrs);
+	  MetaWindow *window =
+	      meta_window_new_with_attrs (screen->display, children[i], TRUE,
+					  &attrs);
 
           meta_compositor_add_window (screen->display->compositor,
                                       children[i], &attrs);
+
+	  if (window && window->frame)
+	  {
+	      XGetWindowAttributes (screen->display->xdisplay,
+				    window->frame->xwindow, &attrs);
+
+	      meta_compositor_add_window (screen->display->compositor,
+					  window->frame->xwindow, &attrs);
+	  }
         }
 
       ++i;

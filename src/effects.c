@@ -78,7 +78,7 @@ update_wireframe_window (MetaDisplay         *display,
   XMoveResizeWindow (display->xdisplay,
                      xwindow,
                      rect->x, rect->y,
-                     rect->width, rect->height);
+                    rect->width, rect->height);
 
 #ifdef HAVE_SHAPE  
 
@@ -307,7 +307,7 @@ meta_effects_draw_box_animation (MetaScreen     *screen,
                                  double          seconds_duration,
                                  MetaBoxAnimType anim_type)
 {
-  BoxAnimationContext *context;
+    BoxAnimationContext *context;
 
   g_return_if_fail (seconds_duration > 0.0);
 

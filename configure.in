@@ -199,12 +199,20 @@ fi
 have_xrender=no
 
 XCOMPOSITE_VERSION=1.0
-AC_MSG_CHECKING([Xcomposite >= $XCOMPOSITE_VERSION])
-if $PKG_CONFIG --atleast-version $XCOMPOSITE_VERSION xcomposite; then
-   have_xcomposite=yes
-else
-   have_xcomposite=no
+
+XCOMPOSITE_LIBS=
+found_xcomposite=no
+AC_CHECK_LIB(Xcomposite, XCompositeQueryExtension,
+               [AC_CHECK_HEADER(X11/extensions/composite.h,
+                                found_xcomposite=yes,,
+				[#include <X11/Xlib.h>])],
+               , $ALL_X_LIBS)
+
+if test x$enable_xcompositor = xno; then
+   found_xcomposite=no
 fi
+
+AC_MSG_CHECKING([Xcomposite >= $XCOMPOSITE_VERSION])
 AC_MSG_RESULT($have_xcomposite)
 
 if test x$enable_compositor = xyes; then

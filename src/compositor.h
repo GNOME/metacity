@@ -25,6 +25,8 @@
 #include "util.h"
 #include "display.h"
 
+#include <X11/extensions/Xfixes.h>
+
 MetaCompositor* meta_compositor_new           (MetaDisplay       *display);
 void            meta_compositor_unref         (MetaCompositor    *compositor);
 void            meta_compositor_process_event (MetaCompositor    *compositor,
@@ -44,13 +46,18 @@ void meta_compositor_unmanage_screen (MetaCompositor *compositor,
 void meta_compositor_damage_window   (MetaCompositor *compositor,
                                       MetaWindow     *window);
 
+void meta_compositor_stop_compositing (MetaCompositor *compositor,
+				       MetaWindow     *window);
+void meta_compositor_start_compositing (MetaCompositor *compositor,
+					MetaWindow     *window);
+MetaDisplay *meta_compositor_get_display (MetaCompositor *compositor);
+
+void
+meta_compositor_genie (MetaCompositor *compositor,
+		       MetaWindow       *window);
+void
+meta_compositor_invalidate_region (MetaCompositor *compositor,
+				   MetaScreen	*screen,
+				   XserverRegion   invalid_area);
+
 #endif /* META_COMPOSITOR_H */
-
-
-
-
-
-
-
-
-
