@@ -1,3 +1,7 @@
+2003-02-25  Pablo Gonzalo del Campo <pablodc@bigfoot.com>
+
+	* es.po: Fixed a translation string to match with libwnck.
+
 2003-02-16  Christophe Merlet  <redfox@redfoxcenter.org>
 
 	* fr.po: Updated French translation.
