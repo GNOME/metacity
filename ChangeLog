@@ -1,3 +1,7 @@
+Mon Jan 24 20:27:53 2005  Søren Sandmann  <sandmann@redhat.com>
+
+	* src/window.c: start compositing after ending grap op
+
 Mon Jan 24 17:07:26 2005  Søren Sandmann  <sandmann@redhat.com>
 
 	* src/compositor.c (remove_repair_idle): Don't use a timeout to do

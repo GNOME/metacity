@@ -6375,6 +6375,8 @@ handle_resizing_event (MetaWindow *window, XEvent *event)
 		     event->xbutton.x_root,
 		     event->xbutton.y_root,
 		     TRUE);
+
+      meta_compositor_start_compositing (window->display->compositor, window);
       
       meta_display_end_grab_op (window->display, event->xbutton.time);
     }
