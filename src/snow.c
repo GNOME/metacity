@@ -8,18 +8,9 @@
 
 typedef struct Flake Flake;
 
-/*
- * Diana:
- *		Snowflakes are two concentric circles
- *			outer radius:			8.2 * s
- *			inner radius:			5.2 * s
- *			alpha of both circles:		60 %
- *
- */
-
 #define MAX_RADIUS 6.2
 #define MIN_RADIUS 4.5
-#define MIN_ALPHA  40.0
+#define MIN_ALPHA  20.0
 #define MAX_ALPHA  70.0
 
 struct Flake
@@ -28,7 +19,7 @@ struct Flake
     double	x;
     double	y;
     int		alpha;
-    int	radius;
+    int		radius;
     double	y_speed;
     double	increment;
     double	angle;
@@ -41,6 +32,7 @@ struct World
     MetaScreen *screen;
     GList *flakes;
     gdouble time;
+    gint xmouse;
 };
 
 static void
@@ -94,15 +86,33 @@ static void
 flake_move (Flake *flake,
 	    gdouble delta)
 {
+    gboolean mouse_enabled = TRUE;
+    
     flake->angle += delta * flake->increment;
 
-    flake->x += flake->radius * 100000 * delta * sin (flake->angle);
-    flake->y += delta * flake->y_speed;
-
-    if ((flake->x > flake->world->screen->width || flake->x < 0) ||
-	(flake->y > flake->world->screen->height || flake->y < 0))
+    if (mouse_enabled)
     {
-	flake_renew (flake, FALSE);
+	flake->x += (flake->world->screen->width / 2 - flake->world->xmouse) / 100;
+	flake->y += delta * 10 * flake->y_speed;
+
+	if ((flake->y > flake->world->screen->height || flake->y < 0))
+	{
+	    flake_renew (flake, FALSE);
+	}
+
+	while (flake->x < 0)
+	    flake->x += flake->world->screen->width;
+    }
+    else
+    {
+	flake->x += flake->radius * 25000 * delta * sin (flake->angle);
+	flake->y += delta * flake->y_speed;
+
+	if ((flake->x > flake->world->screen->width || flake->x < 0) ||
+	    (flake->y > flake->world->screen->height || flake->y < 0))
+	{
+	    flake_renew (flake, FALSE);
+	}
     }
 }
 
@@ -271,7 +281,7 @@ World *
 world_new (Display *dpy,
 	   MetaScreen *screen)
 {
-#define N_FLAKES (screen->width / 40)
+#define N_FLAKES (screen->width / 20)
 #if 0
 #define N_FLAKES 10
 #endif
@@ -298,7 +308,19 @@ world_set_time (World *world, double time)
     GList *list;
     gdouble delta = time - world->time;
     world->time = time;
+    Window dummy;
+    int dummyint;
 
+    XQueryPointer (world->dpy,
+		   world->screen->xroot,
+		   &dummy,	/* root_return */
+		   &dummy,	/* child return */
+		   &world->xmouse,	/* root x return */
+		   &dummyint,		/* root y return */
+		   &dummyint,		/* win x return */
+		   &dummyint,		/* win y return */
+		   &dummyint		/* mask return */);
+    
     for (list = world->flakes; list; list = list->next)
     {
 	Flake *flake = list->data;

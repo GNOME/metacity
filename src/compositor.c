@@ -113,7 +113,7 @@ update_world (gpointer data)
     meta_compositor_invalidate_region (compositor, screen, region);
     XFixesDestroyRegion (compositor->display->xdisplay, region);
 
-    time += 0.0005;
+    time += 0.001;
     
     return TRUE;
 }
@@ -511,7 +511,7 @@ ensure_repair_idle (MetaCompositor *compositor)
       
       g_print ("screen %p\n", world_get_screen (compositor->world));
       
-      g_timeout_add_full (G_PRIORITY_LOW, 25, update_world, compositor, NULL);
+      g_timeout_add_full (G_PRIORITY_HIGH, 50, update_world, compositor, NULL);
   }
   
   compositor->repair_idle = g_idle_add_full (META_PRIORITY_COMPOSITE,
