@@ -1,3 +1,9 @@
+2003-02-04  Havoc Pennington  <hp@redhat.com>
+
+	* src/metacity.schemas.in: default to Simple instead of Atlanta
+
+	* src/themes/Makefile.am (THEMES): add Simple theme
+
 2003-01-30  Havoc Pennington  <hp@redhat.com>
 
 	* src/keybindings.c (process_event): match handlers to key events 
