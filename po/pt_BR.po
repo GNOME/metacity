@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
-"POT-Creation-Date: 2003-02-04 23:36-0500\n"
+"POT-Creation-Date: 2003-05-09 19:53+0200\n"
 "PO-Revision-Date: 2003-01-17 02:00-0200\n"
 "Last-Translator: Gustavo Noronha Silva <kov@debian.org>\n"
 "Language-Team: GNOME-BR <gnome-l10n-br@listas.cipsga.org.br>\n"
@@ -1846,7 +1846,7 @@ msgstr ""
 msgid "Screen %d on display \"%s\" already has a window manager\n"
 msgstr "A tela %d na exibição \"%s\" já possui um gerenciador de janelas\n"
 
-#: src/screen.c:673
+#: src/screen.c:674
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "Não foi possível liberar a tela %d na exibição \"%s\"\n"
@@ -2799,7 +2799,7 @@ msgid "Application set a bogus _NET_WM_PID %ld\n"
 msgstr "A aplicação definiu um _NET_WM_PID %ld inválido\n"
 
 #. first time through
-#: src/window.c:4897
+#: src/window.c:4916
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -2815,7 +2815,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5471
+#: src/window.c:5490
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
@@ -2826,7 +2826,7 @@ msgstr ""
 "sentido.\n"
 
 #: src/xprops.c:153
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Window 0x%lx has property %s\n"
 "that was expected to have type %s format %d\n"
@@ -2834,13 +2834,12 @@ msgid ""
 "This is most likely an application bug, not a window manager bug.\n"
 "The window has title=\"%s\" class=\"%s\" name=\"%s\"\n"
 msgstr ""
-"A janela 0x%1$lx tem a propriedade %2$s\n"
-"que deveria ter o formato %4$d do tipo %3$s \n"
-"e, na verdade, ela tem n_items %6$d do formato \n"
-"%7$d do tipo %5$s.\n"
-"Isso é bem provavelmente um erro da aplicação, não do gerenciado de "
+"A janela 0x%lx tem a propriedade %s\n"
+"que deveria ter o formato %d do tipo %s \n"
+"e, na verdade, ela tem %d n_items %d do tipo %s.\n"
+"Isso é bem provavelmente um erro da aplicação, não do gerenciador de "
 "janelas.\n"
-"A janela tem title=\"%7$s\" class=\"%8$s\" name=\"%9$s\"\n"
+"A janela tem title=\"%s\" class=\"%s\" name=\"%s\"\n"
 
 #: src/xprops.c:399
 #, c-format
