@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "POT-Creation-Date: 2003-01-21 16:06+0200\n"
-"PO-Revision-Date: 2003-01-21 08:20--500\n"
+"PO-Revision-Date: 2003-01-21 08:36--500\n"
 "Last-Translator: Yuriy Syrota <yuri@renome.rovno.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -882,7 +882,7 @@ msgstr ""
 
 #: src/metacity.schemas.in.h:137
 msgid "Toggle fullscreen mode"
-msgstr ""
+msgstr "Перемикнути повноекранний режим"
 
 #: src/metacity.schemas.in.h:138
 msgid "Toggle maximization state"
@@ -890,7 +890,7 @@ msgstr "Перемикнути стан максимізації"
 
 #: src/metacity.schemas.in.h:139
 msgid "Toggle shaded state"
-msgstr ""
+msgstr "Перемикнути режим зрортання"
 
 #: src/metacity.schemas.in.h:140
 #, fuzzy
@@ -903,11 +903,11 @@ msgstr "Демаксимізувати вікно"
 
 #: src/metacity.schemas.in.h:142
 msgid "Use standard system font in window titles"
-msgstr ""
+msgstr "Використовувати стандартний системний шрифт в заголовках вікон"
 
 #: src/metacity.schemas.in.h:143
 msgid "Window focus mode"
-msgstr ""
+msgstr "Оежим активації вікна"
 
 #: src/metacity.schemas.in.h:144
 msgid "Window title font"
@@ -1165,24 +1165,24 @@ msgstr "Немає ознаки \"%s\" елементі <%s>"
 #: src/theme-parser.c:1020
 #, c-format
 msgid "<%s> name \"%s\" used a second time"
-msgstr ""
+msgstr "Назва \"%s\" елемента <%s> було використано вдруге"
 
 #: src/theme-parser.c:849
 #: src/theme-parser.c:955
 #: src/theme-parser.c:1032
 #, c-format
 msgid "<%s> parent \"%s\" has not been defined"
-msgstr ""
+msgstr "Батьківський об'єкт \"%s\" елемента <%s> не визначено"
 
 #: src/theme-parser.c:968
 #, c-format
 msgid "<%s> geometry \"%s\" has not been defined"
-msgstr ""
+msgstr "Геометрію \"%s\" об'єкта <%s> не визначено"
 
 #: src/theme-parser.c:981
 #, c-format
 msgid "<%s> must specify either a geometry or a parent that has a geometry"
-msgstr ""
+msgstr "В <%s> має бути визначено або геометрію, або батьківський об'єкт, що міє геометрію"
 
 #: src/theme-parser.c:1080
 #, c-format
@@ -1197,17 +1197,17 @@ msgstr "Невідома ознака %s у елементі <window>"
 #: src/theme-parser.c:1099
 #, c-format
 msgid "Window type \"%s\" has already been assigned a style set"
-msgstr ""
+msgstr "Типу вікна \"%s\" вже було присвоєно набір стилів"
 
 #: src/theme-parser.c:1143
 #, c-format
 msgid "Unknown function \"%s\" for menu icon"
-msgstr ""
+msgstr "Невідома функція \"%s\" для піктограми меню"
 
 #: src/theme-parser.c:1152
 #, c-format
 msgid "Unknown state \"%s\" for menu icon"
-msgstr ""
+msgstr "Невідомий стан \"%s\" для піктограми меню"
 
 #: src/theme-parser.c:1160
 #, c-format
@@ -1233,7 +1233,7 @@ msgstr ""
 #: src/theme-parser.c:3629
 #, c-format
 msgid "Element <%s> is not allowed below <%s>"
-msgstr ""
+msgstr "Не можна використовувати елемент <%s> під <%s>"
 
 #: src/theme-parser.c:1282
 #: src/theme-parser.c:1369
