@@ -1,18 +1,22 @@
+# translation of metacity.gnome-2-4.hu.po to Hungarian
 # Metacity Hungarian translation
 # Copyright (C) 2002
 # This file is distributed under the same license as the PACKAGE package.
-# Andras Timar <timar@gnome.hu>, 2002.
+# Andras Timar <timar@gnome.hu>, 2002, 2003.
+# Gabor Sari <saga@chello.hu>, 2003
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: metacity VERSION\n"
-"POT-Creation-Date: 2003-10-17 23:26+0200\n"
-"PO-Revision-Date: 2003-10-08 13:15+0200\n"
+"Project-Id-Version: metacity.gnome-2-4.hu\n"
+"POT-Creation-Date: 2003-10-20 11:47+0200\n"
+"PO-Revision-Date: 2003-10-20 10:55+0200\n"
 "Last-Translator: Andras Timar <timar@gnome.hu>\n"
 "Language-Team: Hungarian <hu@gnome.hu>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
+"X-Generator: KBabel 1.2\n"
 
 #: src/tools/metacity-message.c:150
 #, c-format
@@ -55,7 +59,7 @@ msgstr ""
 #: src/delete.c:446
 #, c-format
 msgid "Failed to get hostname: %s\n"
-msgstr ""
+msgstr "Hiba a gépnév lekérdezése közben: %s\n"
 
 #: src/display.c:286
 #, c-format
@@ -177,7 +181,7 @@ msgstr "_Bezárás"
 #. separator
 #: src/menu.c:62
 msgid "Put on _All Workspaces"
-msgstr "_Megjelenés minden munkaterületen"
+msgstr "_Megjelenítés minden munkaterületen"
 
 #: src/menu.c:63
 msgid "Only on _This Workspace"
@@ -325,6 +329,9 @@ msgid ""
 "These windows do not support \"save current setup\" and will have to be "
 "restarted manually next time you log in."
 msgstr ""
+"Az alábbi alkalmazások nem támogatják a Munkaterület beállításainak "
+"mentését, emiatt ezeket a legközelebbi bejelentkezéskor manuálisan újra kell "
+"indítanod."
 
 #: src/metacity-dialog.c:288
 #, c-format
@@ -1288,7 +1295,7 @@ msgstr ""
 
 #: src/metacity.schemas.in.h:142
 msgid "The name of a workspace."
-msgstr ""
+msgstr "A munkaterület neve."
 
 #: src/metacity.schemas.in.h:143
 msgid "The screenshot command"
@@ -1298,7 +1305,7 @@ msgstr ""
 msgid ""
 "The theme determines the appearance of window borders, titlebar, and so "
 "forth."
-msgstr ""
+msgstr "A téma meghatározza az ablakkeretek, a címsor és sok más kinézetét."
 
 #: src/metacity.schemas.in.h:145
 msgid ""
@@ -1409,7 +1416,7 @@ msgstr ""
 
 #: src/metacity.schemas.in.h:161
 msgid "Use standard system font in window titles"
-msgstr ""
+msgstr "A rendszer általános betűtípusának használata az ablak címsorában"
 
 #: src/metacity.schemas.in.h:162
 msgid "Visual Bell Type"
@@ -1421,7 +1428,7 @@ msgstr ""
 
 #: src/metacity.schemas.in.h:164
 msgid "Window title font"
-msgstr ""
+msgstr "Az ablak címsorának betűtípusa"
 
 #: src/prefs.c:450 src/prefs.c:466 src/prefs.c:482 src/prefs.c:498
 #: src/prefs.c:514 src/prefs.c:534 src/prefs.c:550 src/prefs.c:566
@@ -1527,7 +1534,7 @@ msgstr ""
 #: src/session.c:881 src/session.c:888
 #, c-format
 msgid "Could not create directory '%s': %s\n"
-msgstr ""
+msgstr "A(z) %s könyvtár létrehozása nem sikerült: %s\n"
 
 #: src/session.c:898
 #, c-format
@@ -1537,17 +1544,17 @@ msgstr ""
 #: src/session.c:1057
 #, c-format
 msgid "Error writing session file '%s': %s\n"
-msgstr ""
+msgstr "Hiba történt a(z) %s session fájl írása közben: %s\n"
 
 #: src/session.c:1062
 #, c-format
 msgid "Error closing session file '%s': %s\n"
-msgstr ""
+msgstr "Hiba történt a(z) %s session fájl lezárása közben: %s\n"
 
 #: src/session.c:1137
 #, c-format
 msgid "Failed to read saved session file %s: %s\n"
-msgstr ""
+msgstr "Hiba történt a(z) %s session fájl olvasása közben: %s\n"
 
 #: src/session.c:1172
 #, c-format
@@ -1597,7 +1604,7 @@ msgstr ""
 #: src/theme-parser.c:224 src/theme-parser.c:242
 #, c-format
 msgid "Line %d character %d: %s"
-msgstr ""
+msgstr "%d. sor %d. karakter: %s"
 
 #: src/theme-parser.c:396
 #, c-format
@@ -2100,19 +2107,19 @@ msgstr ""
 
 #: src/theme.c:202
 msgid "top"
-msgstr ""
+msgstr "fent"
 
 #: src/theme.c:204
 msgid "bottom"
-msgstr ""
+msgstr "lent"
 
 #: src/theme.c:206
 msgid "left"
-msgstr ""
+msgstr "bal"
 
 #: src/theme.c:208
 msgid "right"
-msgstr ""
+msgstr "jobb"
 
 #: src/theme.c:222
 #, c-format
@@ -2301,7 +2308,7 @@ msgstr ""
 #: src/theme.c:4445
 #, c-format
 msgid "Failed to load theme \"%s\": %s\n"
-msgstr ""
+msgstr "Hiba a(z) \"%s\" téma betöltése közben: %s\n"
 
 #: src/theme.c:4591 src/theme.c:4598 src/theme.c:4605 src/theme.c:4612
 #: src/theme.c:4619
@@ -2332,7 +2339,7 @@ msgstr ""
 #: src/theme.c:5048 src/theme.c:5110
 #, c-format
 msgid "Constant \"%s\" has already been defined"
-msgstr ""
+msgstr "A(z) \"%s\" konstans már definiálva van"
 
 #: src/tools/metacity-properties.desktop.in.h:1
 msgid "Select how to give focus to windows"
@@ -2379,7 +2386,7 @@ msgstr ""
 
 #: src/util.c:203
 msgid "Window manager: "
-msgstr "Ablakkezelő "
+msgstr "Ablakkezelő: "
 
 #: src/util.c:347
 msgid "Bug in window manager: "
@@ -2387,11 +2394,11 @@ msgstr "Hiba az ablakkezelőben: "
 
 #: src/util.c:376
 msgid "Window manager warning: "
-msgstr "Ablakkezelő-figyelmeztetés: "
+msgstr "Figyelmeztetés az ablakkezelőtől: "
 
 #: src/util.c:400
 msgid "Window manager error: "
-msgstr "Ablakkezelő-hibaüzenet: "
+msgstr "Hibaüzenet az ablakkezelőtől: "
 
 #: src/window-props.c:162
 #, c-format
