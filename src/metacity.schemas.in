@@ -114,7 +114,7 @@
       <applyto>/apps/metacity/general/theme</applyto>
       <owner>metacity</owner>
       <type>string</type>
-      <default>Atlanta</default>
+      <default>Simple</default>
       <locale name="C">
          <short>Current theme</short>
          <long>
@@ -173,57 +173,6 @@
           Number of workspaces. Must be more than zero, and 
           has a fixed maximum (to prevent accidentally destroying 
           your desktop by asking for 34 million workspaces).
-         </long>
-      </locale>
-    </schema>
-
-    <schema>
-      <key>/apps/metacity/visual_bell</key>
-      <applyto>/apps/metacity/general/visual_bell</applyto>      
-      <owner>metacity</owner>
-      <type>bool</type>
-      <default>false</default>
-      <locale name="C">
-         <short>Enable Visual Bell</short>
-         <long>Turns on a visual indication when an application or the system
-	issues a 'bell' or 'beep'; useful for the hard-of-hearing and for use
-	in noisy environments, or when 'audible bell' is off.
-         </long>
-      </locale>
-    </schema>
-
-    <schema>
-      <key>/schemas/apps/metacity/general/audible_bell</key>
-      <applyto>/apps/metacity/general/audible_bell</applyto>      
-      <owner>metacity</owner>
-      <type>bool</type>
-      <default>true</default>
-      <locale name="C">
-         <short>System Bell is Audible</short>
-         <long>Determines whether applications or the system can generate audible 
-	'beeps'; may be used in conjunction with 'visual bell' to 
-	allow silent 'beeps'.
-         </long>
-      </locale>
-    </schema>
-
-    <schema>
-      <key>/schemas/apps/metacity/general/visual_bell_type</key>
-      <applyto>/apps/metacity/general/visual_bell_type</applyto>      
-      <owner>metacity</owner>
-      <type>string</type>
-      <default>fullscreen</default>
-      <locale name="C">
-         <short>Visual Bell Type</short>
-         <long>
-	Tells Metacity how to implement the visual indication that
-	the system bell or another application 'bell' indicator has
-	been rung.  Currently there are two valid values, "fullscreen",
-	which causes a fullscreen white-black flash, and "frame_flash" which
-	causes the titlebar of the application which sent the bell signal to
-	flash.  If the application which sent the bell is unknown (as is
-	usually the case for the default "system beep"), the currently
-	focused window's titlebar is flashed.
          </long>
       </locale>
     </schema>

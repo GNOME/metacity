@@ -2,7 +2,7 @@
 
 /* 
  * Copyright (C) 2001, 2002 Havoc Pennington
- * Copyright (C) 2002, 2003 Red Hat Inc.
+ * Copyright (C) 2002 Red Hat Inc.
  * Some ICCCM manager selection code derived from fvwm2,
  * Copyright (C) 2001 Dominik Vogt, Matthias Clasen, and fvwm2 team
  * 
@@ -523,7 +523,6 @@ meta_screen_new (MetaDisplay *display,
   screen->current_cursor = -1; /* invalid/unset */
   screen->default_xvisual = DefaultVisualOfScreen (screen->xscreen);
   screen->default_depth = DefaultDepthOfScreen (screen->xscreen);
-  screen->flash_window = None;
 
   screen->wm_sn_selection_window = new_wm_sn_owner;
   screen->wm_sn_atom = wm_sn_atom;
@@ -1219,66 +1218,6 @@ meta_screen_focus_top_window (MetaScreen *screen,
     {
       meta_topic (META_DEBUG_FOCUS, "No top window to focus found\n");
     }
-}
-
-void
-meta_screen_focus_mouse_window (MetaScreen  *screen,
-                                MetaWindow  *not_this_one)
-{
-  MetaWindow *window;
-  Window root_return, child_return;
-  int root_x_return, root_y_return;
-  int win_x_return, win_y_return;
-  unsigned int mask_return;
-  
-  if (not_this_one)
-    meta_topic (META_DEBUG_FOCUS,
-                "Focusing mouse window excluding %s\n", not_this_one->desc);
-
-  meta_error_trap_push (screen->display);
-  XQueryPointer (screen->display->xdisplay,
-                 screen->xroot,
-                 &root_return,
-                 &child_return,
-                 &root_x_return,
-                 &root_y_return,
-                 &win_x_return,
-                 &win_y_return,
-                 &mask_return);
-  meta_error_trap_pop (screen->display, TRUE);
-
-  window = meta_stack_get_default_focus_window_at_point (screen->stack,
-                                                         screen->active_workspace,
-                                                         not_this_one,
-                                                         root_x_return,
-                                                         root_y_return);
-
-  /* FIXME I'm a loser on the CurrentTime front */
-  if (window)
-    {
-      meta_topic (META_DEBUG_FOCUS,
-                  "Focusing mouse window %s\n", window->desc);
-
-      meta_window_focus (window, meta_display_get_current_time (screen->display));
-
-      /* Also raise the window if in click-to-focus */
-      if (meta_prefs_get_focus_mode () == META_FOCUS_MODE_CLICK)
-        meta_window_raise (window);
-    }
-  else
-    {
-      meta_topic (META_DEBUG_FOCUS, "No mouse window to focus found\n");
-    }
-}
-
-void
-meta_screen_focus_default_window (MetaScreen *screen,
-                                  MetaWindow *not_this_one)
-{
-  if (meta_prefs_get_focus_mode () == META_FOCUS_MODE_CLICK)
-    meta_screen_focus_top_window (screen, not_this_one);
-  else
-    meta_screen_focus_mouse_window (screen, not_this_one);
 }
 
 const MetaXineramaScreenInfo*
@@ -2183,14 +2122,9 @@ meta_screen_sn_event (SnMonitorEvent *event,
     {
     case SN_MONITOR_EVENT_INITIATED:
       {
-        const char *wmclass;
-
-        wmclass = sn_startup_sequence_get_wmclass (sequence);
-        
         meta_topic (META_DEBUG_STARTUP,
-                    "Received startup initiated for %s wmclass %s\n",
-                    sn_startup_sequence_get_id (sequence),
-                    wmclass ? wmclass : "(unset)");
+                    "Received startup initiated for %s\n",
+                    sn_startup_sequence_get_id (sequence));
         add_sequence (screen, sequence);
       }
       break;
@@ -2230,67 +2164,24 @@ meta_screen_apply_startup_properties (MetaScreen *screen,
   SnStartupSequence *sequence;
   
   startup_id = meta_window_get_startup_id (window);
-
-  meta_topic (META_DEBUG_STARTUP,
-              "Applying startup props to %s id \"%s\"\n",
-              window->desc,
-              startup_id ? startup_id : "(none)");
-  
-  sequence = NULL;
-  if (startup_id == NULL)
-    {
-      tmp = screen->startup_sequences;
-      while (tmp != NULL)
-        {
-          const char *wmclass;
-
-          wmclass = sn_startup_sequence_get_wmclass (tmp->data);
-
-          if (wmclass != NULL &&
-              ((window->res_class &&
-                strcmp (wmclass, window->res_class) == 0) ||
-               (window->res_name &&
-                strcmp (wmclass, window->res_name) == 0)))
-            {
-              sequence = tmp->data;
-
-              g_assert (window->startup_id == NULL);
-              window->startup_id = g_strdup (sn_startup_sequence_get_id (sequence));
-              startup_id = window->startup_id;
-
-              meta_topic (META_DEBUG_STARTUP,
-                          "Ending legacy sequence %s due to window %s\n",
-                          sn_startup_sequence_get_id (sequence),
-                          window->desc);
-              
-              sn_startup_sequence_complete (sequence);
-              break;
-            }
-          
-          tmp = tmp->next;
-        }
-    }
-
   if (startup_id == NULL)
     return;
-  
-  if (sequence == NULL)
+
+  sequence = NULL;
+  tmp = screen->startup_sequences;
+  while (tmp != NULL)
     {
-      tmp = screen->startup_sequences;
-      while (tmp != NULL)
+      const char *id;
+
+      id = sn_startup_sequence_get_id (tmp->data);
+
+      if (strcmp (id, startup_id) == 0)
         {
-          const char *id;
-          
-          id = sn_startup_sequence_get_id (tmp->data);
-          
-          if (strcmp (id, startup_id) == 0)
-            {
-              sequence = tmp->data;
-              break;
-            }
-          
-          tmp = tmp->next;
+          sequence = tmp->data;
+          break;
         }
+
+      tmp = tmp->next;
     }
 
   if (sequence != NULL)

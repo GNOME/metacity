@@ -183,33 +183,20 @@ window_is_fullscreen_size (MetaWindow *window)
 {
   int i;
 
-  if (window->rect.width >= window->screen->width &&
+  if (window->rect.x <= 0 &&
+      window->rect.y <= 0 &&
+      window->rect.width >= window->screen->width &&
       window->rect.height >= window->screen->height)
-    {
-      /* we use the work area since windows that try to
-       * position at 0,0 will get pushed down by menu panel
-       */
-      MetaRectangle workarea;
-      
-      meta_window_get_work_area (window, FALSE, &workarea);
-      if (window->rect.x <= workarea.x &&
-          window->rect.y <= workarea.y) 
-        return TRUE;
-    }
+    return TRUE;
   
   i = 0;
   while (i < window->screen->n_xinerama_infos)
     {
-      if (window->rect.width >= window->screen->xinerama_infos[i].width &&
+      if (window->rect.x == window->screen->xinerama_infos[i].x_origin &&
+          window->rect.y == window->screen->xinerama_infos[i].y_origin &&
+          window->rect.width >= window->screen->xinerama_infos[i].width &&
           window->rect.height >= window->screen->xinerama_infos[i].height)
-        {
-          MetaRectangle workarea;
-          
-          meta_window_get_work_area (window, TRUE, &workarea);
-          if (window->rect.x <= workarea.x &&
-              window->rect.y <= workarea.y) 
-            return TRUE;
-        }
+        return TRUE;
       
       ++i;
     }
@@ -1312,27 +1299,12 @@ meta_stack_get_below (MetaStack      *stack,
     return NULL;
   else
     return below;
-}
+}                               
 
-static gboolean
-window_contains_point (MetaWindow *window,
-                       int         root_x,
-                       int         root_y)
-{
-  MetaRectangle rect;
-
-  meta_window_get_outer_rect (window, &rect);
-
-  return POINT_IN_RECT (root_x, root_y, rect);
-}
-
-static MetaWindow*
-get_default_focus_window (MetaStack     *stack,
-                          MetaWorkspace *workspace,
-                          MetaWindow    *not_this_one,
-                          gboolean       must_be_at_point,
-                          int            root_x,
-                          int            root_y)
+MetaWindow*
+meta_stack_get_default_focus_window (MetaStack     *stack,
+                                     MetaWorkspace *workspace,
+                                     MetaWindow    *not_this_one)
 {
   /* Find the topmost, focusable, mapped, window.
    * not_this_one is being unfocused or going away, so exclude it.
@@ -1381,16 +1353,12 @@ get_default_focus_window (MetaStack     *stack,
             {
               if (transient_parent == NULL &&
                   not_this_one->xtransient_for != None &&
-                  not_this_one->xtransient_for == window->xwindow &&
-                  (!must_be_at_point ||
-                   window_contains_point (window, root_x, root_y)))
+                  not_this_one->xtransient_for == window->xwindow)
                 transient_parent = window;
 
               if (topmost_in_group == NULL &&
                   not_this_one_group != NULL &&
-                  not_this_one_group == meta_window_get_group (window) &&
-                  (!must_be_at_point ||
-                   window_contains_point (window, root_x, root_y)))
+                  not_this_one_group == meta_window_get_group (window))
                 topmost_in_group = window;
             }
 
@@ -1399,9 +1367,7 @@ get_default_focus_window (MetaStack     *stack,
            * focusing dock, even though docks are stacked higher.
            */
           if (topmost_overall == NULL &&
-              window->type != META_WINDOW_DOCK &&
-              (!must_be_at_point ||
-               window_contains_point (window, root_x, root_y)))
+              window->type != META_WINDOW_DOCK)
             topmost_overall = window;
 
           /* We could try to bail out early here for efficiency in
@@ -1420,26 +1386,6 @@ get_default_focus_window (MetaStack     *stack,
     return topmost_overall;
   else
     return topmost_dock;
-}
-
-MetaWindow*
-meta_stack_get_default_focus_window_at_point (MetaStack     *stack,
-                                              MetaWorkspace *workspace,
-                                              MetaWindow    *not_this_one,
-                                              int            root_x,
-                                              int            root_y)
-{
-  return get_default_focus_window (stack, workspace, not_this_one,
-                                   TRUE, root_x, root_y);
-}
-
-MetaWindow*
-meta_stack_get_default_focus_window (MetaStack     *stack,
-                                     MetaWorkspace *workspace,
-                                     MetaWindow    *not_this_one)
-{
-  return get_default_focus_window (stack, workspace, not_this_one,
-                                   FALSE, 0, 0);
 }
 
 GList*

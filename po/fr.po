@@ -1,32 +1,20 @@
 # French translation of metacity.
-# Copyright (C) 2002-2003 Free Software Foundation,, Inc.
+# Copyright (C) 2002 Havoc Pennington 
 # This file is distributed under the same license as the metacity package.
 # maintainer: Christophe Fergeau <teuf@users.sourceforge.net>, 2002.
-# Christophe Merlet (RedFox) <redfox@redfoxcenter.org>, 2002-2003.
+# Christophe Merlet (RedFox) <christophe@merlet.net>, 2002.
 # Sun G11n <gnome_int_l10n@ireland.sun.com>, 2002.
-# Guy CLOTILDE <guy.clotilde@wanadoo.fr>, 2002.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: metacity 2.5.0\n"
-"POT-Creation-Date: 2003-01-26 00:55+0100\n"
-"PO-Revision-Date: 2003-01-26 00:52+0100\n"
-"Last-Translator: Guy CLOTILDE <guy.clotilde@wanadoo.fr>\n"
+"Project-Id-Version: metacity 2.4.2\n"
+"POT-Creation-Date: 2002-12-09 14:37-0500\n"
+"PO-Revision-Date: 2002-10-17 20:09+0200\n"
+"Last-Translator: Christophe Merlet (RedFox) <christophe@merlet.net>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: src/tools/metacity-message.c:150
-#, c-format
-msgid "Usage: %s\n"
-msgstr "Usage : %s\n"
-
-#: src/tools/metacity-message.c:174 src/util.c:128
-msgid "Metacity was compiled without support for verbose mode\n"
-msgstr ""
-"Metacity a été compilé sans le support du mode bavard (donc moins de "
-"commentaires de la part de l'application)\n"
 
 #: src/delete.c:60 src/delete.c:87 src/metacity-dialog.c:46
 #: src/theme-parser.c:467
@@ -67,7 +55,7 @@ msgstr ""
 msgid "Failed to get hostname: %s\n"
 msgstr "Impossible d'obtenir le nom de machine : %s\n"
 
-#: src/display.c:279
+#: src/display.c:270
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
 msgstr "Impossible d'ouvrir le visuel « %s » du système X Window\n"
@@ -88,43 +76,43 @@ msgstr ""
 msgid "Fatal IO error %d (%s) on display '%s'.\n"
 msgstr "Erreur d'ES fatale %d (%s) sur le visuel « %s ».\n"
 
-#: src/frames.c:1010
+#: src/frames.c:900
 msgid "Close Window"
 msgstr "Fermer la fenêtre"
 
-#: src/frames.c:1013
+#: src/frames.c:903
 msgid "Window Menu"
 msgstr "Menu Fenêtre"
 
-#: src/frames.c:1016
+#: src/frames.c:906
 msgid "Minimize Window"
 msgstr "Réduire la fenêtre"
 
-#: src/frames.c:1019
+#: src/frames.c:909
 msgid "Maximize Window"
 msgstr "Agrandir la fenêtre"
 
-#: src/frames.c:1022
+#: src/frames.c:912
 msgid "Unmaximize Window"
 msgstr "Annuler l'agrandissement"
 
-#: src/keybindings.c:910
+#: src/keybindings.c:870
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
 "binding\n"
 msgstr ""
-"Un autre programme utilise déjà la clé %s avec les modificateurs %x comme "
-"liaisons\n"
+"Un autre programme utilise déjà la clé %s avec les modificateurs %x commes "
+"liaison\n"
 
-#: src/keybindings.c:2317
+#: src/keybindings.c:2206
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr ""
 "Erreur pendant le lancement de metacity-dialog pour afficher un message "
 "d'erreur pour la commande : %s\n"
 
-#: src/keybindings.c:2348
+#: src/keybindings.c:2237
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "Aucune commande %d n'a été définie.\n"
@@ -148,8 +136,8 @@ msgid ""
 msgstr ""
 "metacity %s\n"
 "Copyright (C) 2001-2002 Havoc Pennington, Red Hat, Inc., et autres\n"
-"Ceci est un logiciel libre ; voir le code source pour les conditions de "
-"copie.\n"
+"Ceci est un logiciel libre ; voir le code source pour les conditions\n"
+"de copie.\n"
 "Il n'y a AUCUNE garantie ; même pas de VALEUR MARCHANDE ou d'ADÉQUATION\n"
 "À UN USAGE PARTICULIER.\n"
 
@@ -176,15 +164,15 @@ msgstr "Ma_ximiser"
 
 #: src/menu.c:54
 msgid "Unma_ximize"
-msgstr "Annuler la ma_ximisation"
+msgstr "A_nnuler l'agrandissement"
 
 #: src/menu.c:55
 msgid "Roll _Up"
-msgstr "Rédu_ire"
+msgstr "_Réduire"
 
 #: src/menu.c:56
 msgid "_Unroll"
-msgstr "Agrand_ir"
+msgstr "_Agrandir"
 
 #: src/menu.c:57
 msgid "_Move"
@@ -208,7 +196,7 @@ msgstr "Placer sur _tous les espaces de travail"
 msgid "Only on _This Workspace"
 msgstr "Uniquement sur _cet espace de travail"
 
-#: src/menu.c:152 src/prefs.c:1669
+#: src/menu.c:152 src/prefs.c:1644
 #, c-format
 msgid "Workspace %d"
 msgstr "Bureau %d"
@@ -239,7 +227,7 @@ msgstr "Déplacer vers le %s"
 #.
 #: src/metaaccellabel.c:105
 msgid "Shift"
-msgstr "Shift"
+msgstr ""
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the control key. If the text on this key isn't typically
@@ -248,7 +236,7 @@ msgstr "Shift"
 #.
 #: src/metaaccellabel.c:111
 msgid "Ctrl"
-msgstr "Ctrl"
+msgstr ""
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the alt key. If the text on this key isn't typically
@@ -257,7 +245,7 @@ msgstr "Ctrl"
 #.
 #: src/metaaccellabel.c:117
 msgid "Alt"
-msgstr "Alt"
+msgstr ""
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the meta key. If the text on this key isn't typically
@@ -265,8 +253,9 @@ msgstr "Alt"
 #. * this.
 #.
 #: src/metaaccellabel.c:123
+#, fuzzy
 msgid "Meta"
-msgstr "Meta"
+msgstr "Metacity"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the super key. If the text on this key isn't typically
@@ -275,7 +264,7 @@ msgstr "Meta"
 #.
 #: src/metaaccellabel.c:129
 msgid "Super"
-msgstr "Super"
+msgstr ""
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the hyper key. If the text on this key isn't typically
@@ -284,7 +273,7 @@ msgstr "Super"
 #.
 #: src/metaaccellabel.c:135
 msgid "Hyper"
-msgstr "Hyper"
+msgstr ""
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the mod2 key. If the text on this key isn't typically
@@ -293,7 +282,7 @@ msgstr "Hyper"
 #.
 #: src/metaaccellabel.c:141
 msgid "Mod2"
-msgstr "Mod2"
+msgstr ""
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the mod3 key. If the text on this key isn't typically
@@ -302,7 +291,7 @@ msgstr "Mod2"
 #.
 #: src/metaaccellabel.c:147
 msgid "Mod3"
-msgstr "Mod3"
+msgstr ""
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the mod4 key. If the text on this key isn't typically
@@ -311,7 +300,7 @@ msgstr "Mod3"
 #.
 #: src/metaaccellabel.c:153
 msgid "Mod4"
-msgstr "Mod4"
+msgstr ""
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the mod5 key. If the text on this key isn't typically
@@ -320,7 +309,7 @@ msgstr "Mod4"
 #.
 #: src/metaaccellabel.c:159
 msgid "Mod5"
-msgstr "Mod5"
+msgstr ""
 
 #: src/metacity-dialog.c:86
 #, c-format
@@ -330,12 +319,12 @@ msgid ""
 "(Any open documents will be lost.)"
 msgstr ""
 "La fenêtre « %s » ne répond pas.\n"
-"Forcer la fermeture de cette application?\n"
+"Forcer cette application à quitter ?\n"
 "(Tous les documents ouverts seront perdus.)"
 
 #: src/metacity-dialog.c:94
 msgid "Kill application"
-msgstr "Finir l'application"
+msgstr "Tuer l'application"
 
 #: src/metacity-dialog.c:188
 msgid "Title"
@@ -370,8 +359,8 @@ msgstr "Metacity"
 #: src/metacity.schemas.in.h:1
 msgid "(Not implemented) Navigation works in terms of applications not windows"
 msgstr ""
-"(Pas encore mis en oeuvre) La navigation fonctionne en termes d'applications "
-"et non de fenêtres"
+"(Non mis en oeuvre) La navigation fonctionne en termes d'applications et non "
+"de fenêtres"
 
 #: src/metacity.schemas.in.h:2
 msgid ""
@@ -391,7 +380,7 @@ msgstr ""
 
 #: src/metacity.schemas.in.h:3
 msgid "Action on title bar double-click"
-msgstr "Action lors du double-clic sur la barre de titre"
+msgstr ""
 
 #: src/metacity.schemas.in.h:4
 msgid "Activate window menu"
@@ -399,7 +388,7 @@ msgstr "Activer le menu fenêtre"
 
 #: src/metacity.schemas.in.h:5
 msgid "Arrangement of buttons on the titlebar"
-msgstr "Agencement des boutons sur la barre de titre"
+msgstr "Arrangement des boutons sur la barre de titre"
 
 #: src/metacity.schemas.in.h:6
 msgid ""
@@ -454,7 +443,7 @@ msgstr ""
 #: src/metacity.schemas.in.h:13
 msgid "Disable misfeatures that are required by old or broken applications"
 msgstr ""
-"Désactive les ajustements requis par les applications anciennes ou "
+"Désactive les misfeatures requises par les applications anciennes ou "
 "endommagées"
 
 #: src/metacity.schemas.in.h:14
@@ -467,10 +456,9 @@ msgid ""
 "focused window will be automatically raised after a delay (the delay is "
 "specified by the auto_raise_delay key)."
 msgstr ""
-"Si la valeur est vrai et si le mode de focus est « sloppy » (« coulé ») ou "
-"« mouse » (« souris »), la fenêtre active sera automatiquement mise au "
-"premier plan après un délai (qui est spécifié par la touche "
-"auto_raise_delay)."
+"Si la valeur est vrai et si le mode de focus est « sloppy » ou « mouse », la "
+"fenêtre active sera automatiquement mise au premier plan après un délai (qui "
+"est spécifié par la touche auto_raise_delay)."
 
 #: src/metacity.schemas.in.h:16
 msgid ""
@@ -513,62 +501,75 @@ msgid "Maximize a window"
 msgstr "Maximixer une fenêtre"
 
 #: src/metacity.schemas.in.h:20
+#, fuzzy
 msgid "Maximize window horizontally"
-msgstr "Maximixer la fenêtre horizontalement"
+msgstr "Maximixer une fenêtre"
 
 #: src/metacity.schemas.in.h:21
+#, fuzzy
 msgid "Maximize window vertically"
-msgstr "Maximixer la fenêtre verticalement"
+msgstr "Maximixer une fenêtre"
 
 #: src/metacity.schemas.in.h:22
 msgid "Minimize a window"
 msgstr "Réduire une fenêtre"
 
 #: src/metacity.schemas.in.h:23
+#, fuzzy
 msgid "Modifier to use for modified window click actions"
-msgstr "La touche à utiliser pour modifier les actions du clic"
+msgstr ""
+"Le modificateur à utiliser pour modifier les actions du clic (Alt+left/"
+"middle/right click)"
 
 #: src/metacity.schemas.in.h:24
 msgid "Move a window"
 msgstr "Déplacer une fenêtre"
 
 #: src/metacity.schemas.in.h:25
+#, fuzzy
 msgid "Move backward between panels and the desktop immediately"
 msgstr ""
-"Se déplacer en arrière entre les tableaux de bord et le bureau immédiatement"
+"Déplacer le focus entre les tableaux de bord et le bureau immédiatement"
 
 #: src/metacity.schemas.in.h:26
+#, fuzzy
 msgid "Move backwards between panels and the desktop with popup"
 msgstr ""
-"Se déplacer en arrière entre les tableaux de bord et le bureau en utilisant "
-"une boîte de dialogue"
+"Déplacer le focus entre les tableaux de bord et le bureau en utilisant un "
+"popup"
 
 #: src/metacity.schemas.in.h:27
+#, fuzzy
 msgid "Move backwards between windows immediately"
-msgstr "Se déplacer en arrière entre les fenêtres immédiatement"
+msgstr "Déplacer le focus entre les fenêtres immédiatement"
 
 #: src/metacity.schemas.in.h:28
+#, fuzzy
 msgid "Move between panels and the desktop immediately"
-msgstr "Se déplacer entre les tableaux de bord et le bureau directement"
+msgstr ""
+"Déplacer le focus entre les tableaux de bord et le bureau immédiatement"
 
 #: src/metacity.schemas.in.h:29
+#, fuzzy
 msgid "Move between panels and the desktop with popup"
 msgstr ""
-"Se déplacer entre les tableaux de bord et le bureau en utilisant une boîte "
-"de dialogue"
+"Déplacer le focus entre les tableaux de bord et le bureau en utilisant un "
+"popup"
 
 #: src/metacity.schemas.in.h:30
+#, fuzzy
 msgid "Move between windows immediately"
-msgstr "Se déplacer entre les fenêtres directement"
+msgstr "Déplacer le focus entre les fenêtres immédiatement"
 
 #: src/metacity.schemas.in.h:31
+#, fuzzy
 msgid "Move between windows with popup"
-msgstr "Se déplacer entre les fenêtres en utilisant une boîte de dialogue"
+msgstr "Déplacer le focus entre les fenêtres en utilisant un popup"
 
 #: src/metacity.schemas.in.h:32
+#, fuzzy
 msgid "Move focus backwards between windows using popup display"
-msgstr ""
-"Se déplacer en arrière entre les fenêtres en utilisant une boîte de dialogue"
+msgstr "Déplacer le focus entre les fenêtres en utilisant un popup"
 
 #: src/metacity.schemas.in.h:33
 msgid "Move window one workspace down"
@@ -635,8 +636,9 @@ msgid "Move window to workspace 9"
 msgstr "Déplacer la fenêtre vers l'espace de travail 9"
 
 #: src/metacity.schemas.in.h:49
+#, fuzzy
 msgid "Name of workspace"
-msgstr "Nom de l'espace de travail"
+msgstr "Nombre d'espaces de travail"
 
 #: src/metacity.schemas.in.h:50
 msgid "Number of workspaces"
@@ -653,10 +655,11 @@ msgstr ""
 "bureau en demandant 34 millions d'espaces de travail)."
 
 #: src/metacity.schemas.in.h:52
+#, fuzzy
 msgid "Raise obscured window, otherwise lower"
 msgstr ""
-"Mettre la fenêtre grisée au premier plan, autrement la mettre à l'arrière-"
-"plan"
+"Mettre la fenêtre au premier plan si elle est grisée, la mettre à l'arrière-"
+"plan dans le cas contraire"
 
 #: src/metacity.schemas.in.h:53
 msgid "Raise window above other windows"
@@ -686,22 +689,22 @@ msgid ""
 "workarounds mode won't be fixable without amending a spec."
 msgstr ""
 "Certaines applications rompent les spécifications de telle manière que cela "
-"entraîne des dysfonctionnements du gestionnaire de fenêtres. Par exemple, il "
-"serait idéal que Metacity place toutes les boîtes de dialogue  dans une "
-"position constante par rapport à leur fenêtre parente. Pour ce faire, il "
-"convient d'ignorer les positions des boîtes de dialogue spécifiées par "
-"l'application. Toutefois, certaines versions de Java/Swing marquent leur "
-"menus contextuels comme des boîtes de dialogue et Metacity doit donc "
-"désactiver le positionnement des boîtes de dialogue pour permettre aux menus "
-"de fonctionner dans des applications Java endommagées. Il existe de nombreux "
+"entraîne des misfeatures du gestionnaire de fenêtres. Par exemple, il serait "
+"idéal que Metacity place toutes les boîtes de dialogue  dans une position "
+"constante par rapport à leur fenêtre parente. Pour ce faire, il convient "
+"d'ignorer les positions des boîtes de dialogue spécifiées par l'application. "
+"Toutefois, certaines versions de Java/Swing marquent leur menus contextuels "
+"comme des boîtes de dialogue et Metacity doit donc désactiver le "
+"positionnement des boîtes de dialogue pour permettre aux menus de "
+"fonctionner dans des applications Java endommagées. Il existe de nombreux "
 "exemples de ce type. Cette option place Metacity en mode de correction "
 "complet, ce qui peut permettre d'obtenir une interface utilisateur "
 "légèrement meilleure si vous ne devez pas exécuter d'applications "
 "endommagées. Malheureusement, les solutions de rechange doivent être "
 "activées par défaut ; le monde réel est une jungle. Certaines des solutions "
 "de rechange concernent les limites des spécifications proprement dites et un "
-"bogue en mode sans solution de rechange ne pourra parfois être résolu que "
-"par la modification d'une spécification."
+"bogue en mode sans solutionde rechange ne pourra parfois être résolu que par "
+"la modification d'une spécification."
 
 #: src/metacity.schemas.in.h:57
 msgid "Switch to workspace 1"
@@ -752,12 +755,14 @@ msgid "Switch to workspace 9"
 msgstr "Passer à l'espace de travail 9"
 
 #: src/metacity.schemas.in.h:69
+#, fuzzy
 msgid "Switch to workspace above this one"
-msgstr "Passer à l'espace de travail au-dessus de celui-ci"
+msgstr "Passer à l'espace de travail au-dessus de l'espace courant"
 
 #: src/metacity.schemas.in.h:70
+#, fuzzy
 msgid "Switch to workspace below this one"
-msgstr "Passer à l'espace de travail au dessous de celui-ci"
+msgstr "Passer à l'espace de travail sous l'espace courant"
 
 #: src/metacity.schemas.in.h:71
 msgid "Switch to workspace on the left"
@@ -774,7 +779,7 @@ msgid ""
 "will execute command_N."
 msgstr ""
 "Les clés /apps/metacity/global_keybindings/run_command_N definissent les "
-"combinaisons de touches qui corresponde à ces commandes. Presser la "
+"combinaisons de touches qui corresponde à ces commandes. Pressez la "
 "combinaison pour run_command_N executera la commande N."
 
 #: src/metacity.schemas.in.h:74
@@ -788,12 +793,11 @@ msgid ""
 msgstr ""
 "Les combinaisons de touche qui executent les commandes numérotés "
 "correspondantes dans /apps/metacity/keybindin_commands. Le format ressemble "
-"à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;F1 » (la touche "
-"Shift est parfois noté Maj sur certains claviers). L'analyseur est assez "
-"souple et permet d'utiliser des majuscules ou des minuscules et des "
-"abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; ». Si vous "
-"définissez l'option sur la chaîne spéciale « disabled » (désactivé), il n'y "
-"aura pas de combinaison de touches pour cette action."
+"à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;F1. L'analyseur "
+"est assez souple et permet d'utiliser des majuscules ou des minuscules et "
+"des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;\". Si vous "
+"définissez l'option sur la chaîne spéciale \"disabled\", il n'y aura pas de "
+"combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:75
 msgid ""
@@ -805,13 +809,12 @@ msgid ""
 "for this action."
 msgstr ""
 "La combinaison de touches qui fait basculer vers l'espace de travail au-"
-"dessus de celui en cours. Le format ressemble à ceci : « &lt;Contrôle&gt;a » "
-"ou « &lt;Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est parfois noté Maj sur "
-"certains claviers). L'analyseur est assez souple et permet d'utiliser des "
-"majuscules ou des minuscules et des abréviations telles que « &lt;Ctl&gt; » "
-"et « &lt;Ctrl&gt; ». Si vous définissez l'option sur la chaîne spéciale « "
-"disabled » (désactivé), il n'y aura pas de combinaison de touches pour cette "
-"action."
+"dessus de celui en cours. Le format ressemble à ceci : \"&lt;Contrôle&gt;a\" "
+"ou \"&lt;Maj&gt;&lt;Alt&gt;F1. L'analyseur est assez souple et permet "
+"d'utiliser des majuscules ou des minuscules et des abréviations telles que "
+"\"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;\". Si vous définissez l'option sur la "
+"chaîne spéciale \"disabled\", il n'y aura pas de combinaison de touches pour "
+"cette action."
 
 #: src/metacity.schemas.in.h:76
 msgid ""
@@ -823,12 +826,11 @@ msgid ""
 "for this action."
 msgstr ""
 "La combinaison de touches qui fait basculer vers l'espace de travail sous "
-"celui en cours. Le format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;"
-"Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est parfois noté Maj sur certains "
-"claviers). L'analyseur est assez souple et permet d'utiliser des majuscules "
-"ou des minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;"
-"Ctrl&gt; ». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"celui en cours. Le format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;"
+"Maj&gt;&lt;Alt&gt;F1. L'analyseur est assez souple et permet d'utiliser des "
+"majuscules ou des minuscules et des abréviations telles que \"&lt;Ctl&gt;\" "
+"et \"&lt;Ctrl&gt;\". Si vous définissez l'option sur la chaîne spéciale "
+"\"disabled\", il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:77
 msgid ""
@@ -840,13 +842,12 @@ msgid ""
 "keybinding for this action."
 msgstr ""
 "La combinaison de touches qui fait basculer vers l'espace de travail à "
-"gauche de celui en cours. Le format ressemble à ceci : « &lt;Contrôle&gt;a » "
-"ou « &lt;Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est parfois noté Maj sur "
-"certains claviers). L'analyseur est assez souple et permet d'utiliser des "
-"majuscules ou des minuscules et des abréviations telles que « &lt;Ctl&gt; » "
-"et « &lt;Ctrl&gt; ». Si vous définissez l'option sur la chaîne spéciale « "
-"disabled » (désactivé), il n'y aura pas de combinaison de touches pour cette "
-"action."
+"gauche de celui en cours. Le format ressemble à ceci : \"&lt;Contrôle&gt;a\" "
+"ou \"&lt;Maj&gt;&lt;Alt&gt;F1. L'analyseur est assez souple et permet "
+"d'utiliser des majuscules ou des minuscules et des abréviations telles que "
+"\"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;\". Si vous définissez l'option sur la "
+"chaîne spéciale \"disabled\", il n'y aura pas de combinaison de touches pour "
+"cette action."
 
 #: src/metacity.schemas.in.h:78
 msgid ""
@@ -858,13 +859,12 @@ msgid ""
 "keybinding for this action."
 msgstr ""
 "La combinaison de touches qui fait basculer vers l'espace de travail à "
-"droite de celui en cours. Le format ressemble à ceci : « &lt;Contrôle&gt;a » "
-"ou « &lt;Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est parfois noté Maj sur "
-"certains claviers). L'analyseur est assez souple et permet d'utiliser des "
-"majuscules ou des minuscules et des abréviations telles que « &lt;Ctl&gt; » "
-"et « &lt;Ctrl&gt; ». Si vous définissez l'option sur la chaîne spéciale « "
-"disabled » (désactivé), il n'y aura pas de combinaison de touches pour cette "
-"action."
+"droite de celui en cours. Le format ressemble à ceci : \"&lt;Contrôle&gt;a\" "
+"ou \"&lt;Maj&gt;&lt;Alt&gt;F1. L'analyseur est assez souple et permet "
+"d'utiliser des majuscules ou des minuscules et des abréviations telles que "
+"\"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;\". Si vous définissez l'option sur la "
+"chaîne spéciale \"disabled\", il n'y aura pas de combinaison de touches pour "
+"cette action."
 
 #: src/metacity.schemas.in.h:79
 msgid ""
@@ -875,12 +875,11 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches qui fait basculer vers l'espace de travail 1. Le "
-"format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;"
-"F1 » (la touche Shift est parfois noté Maj sur certains claviers). "
-"L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
-"minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; "
-"». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;"
+"F1. L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
+"minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;"
+"\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", il n'y "
+"aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:80
 msgid ""
@@ -891,12 +890,11 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches qui fait basculer vers l'espace de travail 10. Le "
-"format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;"
-"F1 » (la touche Shift est parfois noté Maj sur certains claviers). "
-"L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
-"minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; "
-"». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;"
+"F1. L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
+"minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;"
+"\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", il n'y "
+"aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:81
 msgid ""
@@ -906,13 +904,12 @@ msgid ""
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La combinaison de touches qui fait basculer vers l'espace de travail 11.Le "
-"format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;"
-"F1 » (la touche Shift est parfois noté Maj sur certains claviers). "
-"L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
-"minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; "
-"». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"La combinaison de touches qui fait basculer vers l'espace de travail 11. Le "
+"format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;"
+"F1. L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
+"minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;"
+"\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", il n'y "
+"aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:82
 msgid ""
@@ -922,13 +919,12 @@ msgid ""
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La combinaison de touches quifait basculer vers l'espace de travail 12. Le "
-"format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;"
-"F1 » (la touche Shift est parfois noté Maj sur certains claviers). "
-"L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
-"minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; "
-"». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"La combinaison de touches qui fait basculer vers l'espace de travail 12. Le "
+"format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;"
+"F1. L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
+"minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;"
+"\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", il n'y "
+"aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:83
 msgid ""
@@ -938,13 +934,12 @@ msgid ""
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La combinaison de touches qui fait basculer vers l'espace de travail 2.Le "
-"format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;"
-"F1 » (la touche Shift est parfois noté Maj sur certains claviers). "
-"L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
-"minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; "
-"». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"La combinaison de touches qui fait basculer vers l'espace de travail 2. Le "
+"format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;"
+"F1. L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
+"minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;"
+"\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", il n'y "
+"aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:84
 msgid ""
@@ -954,13 +949,12 @@ msgid ""
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La combinaison de touches qui fait basculer vers l'espace de travail 3.Le "
-"format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;"
-"F1 » (la touche Shift est parfois noté Maj sur certains claviers). "
-"L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
-"minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; "
-"». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"La combinaison de touches qui fait basculer vers l'espace de travail 3. Le "
+"format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;"
+"F1. L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
+"minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;"
+"\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", il n'y "
+"aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:85
 msgid ""
@@ -971,12 +965,11 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches qui fait basculer vers l'espace de travail 4. Le "
-"format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;"
-"F1 » (la touche Shift est parfois noté Maj sur certains claviers). "
-"L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
-"minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; "
-"». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;"
+"F1. L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
+"minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;"
+"\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", il n'y "
+"aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:86
 msgid ""
@@ -987,12 +980,11 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches qui fait basculer vers l'espace de travail 5. Le "
-"format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;"
-"F1 » (la touche Shift est parfois noté Maj sur certains claviers). "
-"L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
-"minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; "
-"». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;"
+"F1. L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
+"minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;"
+"\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", il n'y "
+"aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:87
 msgid ""
@@ -1003,12 +995,11 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches qui fait basculer vers l'espace de travail 6. Le "
-"format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;"
-"F1 » (la touche Shift est parfois noté Maj sur certains claviers). "
-"L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
-"minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; "
-"». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;"
+"F1. L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
+"minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;"
+"\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", il n'y "
+"aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:88
 msgid ""
@@ -1019,12 +1010,11 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches qui fait basculer vers l'espace de travail 7. Le "
-"format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;"
-"F1 » (la touche Shift est parfois noté Maj sur certains claviers). "
-"L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
-"minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; "
-"». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;"
+"F1. L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
+"minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;"
+"\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", il n'y "
+"aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:89
 msgid ""
@@ -1035,12 +1025,11 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches qui fait basculer vers l'espace de travail 8. Le "
-"format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;"
-"F1 » (la touche Shift est parfois noté Maj sur certains claviers). "
-"L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
-"minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; "
-"». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;"
+"F1. L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
+"minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;"
+"\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", il n'y "
+"aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:90
 msgid ""
@@ -1051,12 +1040,11 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches qui fait basculer vers l'espace de travail 9. Le "
-"format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;"
-"F1 » (la touche Shift est parfois noté Maj sur certains claviers). "
-"L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
-"minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; "
-"». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;"
+"F1. L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
+"minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;"
+"\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", il n'y "
+"aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:91
 msgid ""
@@ -1067,11 +1055,10 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches utilisée pour activer le menu Fenêtre. Le format "
-"ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;F1 "
-"» (la touche Shift est parfois noté Maj sur certains claviers). L'analyseur "
-"est assez souple et permet d'utiliser des majuscules ou des minuscules et "
-"des abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; ». Si vous "
-"définissez l'option sur la chaîne spéciale « disabled » (désactivé), il n'y "
+"ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;F1. "
+"L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
+"minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;"
+"\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", il n'y "
 "aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:92
@@ -1083,11 +1070,10 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches utilisée pour fermer une fenêtre. Le format "
-"ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;F1 "
-"» (la touche Shift est parfois noté Maj sur certains claviers). L'analyseur "
-"est assez souple et permet d'utiliser des majuscules ou des minuscules et "
-"des abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; ». Si vous "
-"définissez l'option sur la chaîne spéciale « disabled » (désactivé), il n'y "
+"ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;F1. "
+"L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
+"minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;"
+"\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", il n'y "
 "aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:93
@@ -1099,14 +1085,13 @@ msgid ""
 "set the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
 msgstr ""
-"La combinaison de touches utilisée pour entrer en « mode de déplacement » et "
+"La combinaison de touches utilisée pour entrer en \"mode de déplacement\" et "
 "commencer à déplacer une fenêtre à l'aide du clavier. Le format ressemble à "
-"ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;F1 » (la touche "
-"Shift est parfois noté Maj sur certains claviers). L'analyseur est assez "
-"souple et permet d'utiliser des majuscules ou des minuscules et des "
-"abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; ». Si vous "
-"définissez l'option sur la chaîne spéciale « disabled » (désactivé), il n'y "
-"aura pas de combinaison de touches pour cette action."
+"ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;F1. L'analyseur est "
+"assez souple et permet d'utiliser des majuscules ou des minuscules et des "
+"abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;\". Si vous "
+"définissez l'option sur la chaîne spéciale \"disabled\", il n'y aura pas de "
+"combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:94
 msgid ""
@@ -1117,14 +1102,13 @@ msgid ""
 "\". If you set the option to the special string \"disabled\", then there "
 "will be no keybinding for this action."
 msgstr ""
-"La combinaison de touches utilisée pour entrer en « mode de "
-"redimensionnement » et commencer à redimensionner une fenêtre à l'aide du "
-"clavier. Le format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;"
-"Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est parfois noté Maj sur certains "
-"claviers). L'analyseur est assez souple et permet d'utiliser des majuscules "
-"ou des minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;"
-"Ctrl&gt; ». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"La combinaison de touches utilisée pour entrer en \"mode de redimensionnement"
+"\" et commencer à redimensionner une fenêtre à l'aide du clavier. Le format "
+"ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;F1. "
+"L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
+"minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;"
+"\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", il n'y "
+"aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:95
 msgid ""
@@ -1136,13 +1120,12 @@ msgid ""
 "will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches utilisée pour masquer toutes les fenêtres normales "
-"et activer l'arrière-plan du bureau. Le format ressemble à ceci : « &lt;"
-"Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est "
-"parfois noté Maj sur certains claviers). L'analyseur est assez souple et "
-"permet d'utiliser des majuscules ou des minuscules et des abréviations "
-"telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; ». Si vous définissez l'option "
-"sur la chaîne spéciale « disabled » (désactivé), il n'y aura pas de "
-"combinaison de touches pour cette action."
+"et activer l'arrière-plan du bureau. Le format ressemble à ceci : \"&lt;"
+"Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;F1. L'analyseur est assez souple "
+"et permet d'utiliser des majuscules ou des minuscules et des abréviations "
+"telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;\". Si vous définissez l'option "
+"sur la chaîne spéciale \"disabled\", il n'y aura pas de combinaison de "
+"touches pour cette action."
 
 #: src/metacity.schemas.in.h:96
 msgid ""
@@ -1153,11 +1136,10 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches utilisée pour maximiser une fenêtre. Le format "
-"ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;F1 "
-"» (la touche Shift est parfois noté Maj sur certains claviers). L'analyseur "
-"est assez souple et permet d'utiliser des majuscules ou des minuscules et "
-"des abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; ». Si vous "
-"définissez l'option sur la chaîne spéciale « disabled » (désactivé), il n'y "
+"ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;F1. "
+"L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
+"minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;"
+"\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", il n'y "
 "aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:97
@@ -1169,11 +1151,10 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches utilisée pour réduire une fenêtre. Le format "
-"ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;F1 "
-"» (la touche Shift est parfois noté Maj sur certains claviers). L'analyseur "
-"est assez souple et permet d'utiliser des majuscules ou des minuscules et "
-"des abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; ». Si vous "
-"définissez l'option sur la chaîne spéciale « disabled » (désactivé), il n'y "
+"ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;F1. "
+"L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
+"minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;"
+"\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", il n'y "
 "aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:98
@@ -1186,13 +1167,12 @@ msgid ""
 "action."
 msgstr ""
 "La combinaison de touches utilisée pour déplacer une fenêtre d'un espace de "
-"travail vers le bas. Le format ressemble à ceci : « &lt;Contrôle&gt;a » ou « "
-"&lt;Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est parfois noté Maj sur "
-"certains claviers). L'analyseur est assez souple et permet d'utiliser des "
-"majuscules ou des minuscules et des abréviations telles que « &lt;Ctl&gt; » "
-"et « &lt;Ctrl&gt; ». Si vous définissez l'option sur la chaîne spéciale « "
-"disabled » (désactivé), il n'y aura pas de combinaison de touches pour cette "
-"action."
+"travail vers le bas. Le format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou "
+"\"&lt;Maj&gt;&lt;Alt&gt;F1. L'analyseur est assez souple et permet "
+"d'utiliser des majuscules ou des minuscules et des abréviations telles que   "
+"\"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;\". Si vous définissez l'option sur la "
+"chaîne spéciale   \"disabled\", il n'y aura pas de combinaison de touches "
+"pour cette action."
 
 #: src/metacity.schemas.in.h:99
 msgid ""
@@ -1204,13 +1184,12 @@ msgid ""
 "action."
 msgstr ""
 "La combinaison de touches utilisée pour déplacer une fenêtre d'un espace de "
-"travail vers la gauche. Le format ressemble à ceci : « &lt;Contrôle&gt;a » "
-"ou « &lt;Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est parfois noté Maj sur "
-"certains claviers). L'analyseur est assez souple et permet d'utiliser des "
-"majuscules ou des minuscules et des abréviations telles que « &lt;Ctl&gt; » "
-"et « &lt;Ctrl&gt; ». Si vous définissez l'option sur la chaîne spéciale « "
-"disabled » (désactivé), il n'y aura pas de combinaison de touches pour cette "
-"action."
+"travail vers la gauche. Le format ressemble à ceci \"&lt;Contrôle&gt;a\" ou "
+"\"&lt;Maj&gt;&lt;Alt&gt;F1. L'analyseur est assez souple et permet "
+"d'utiliser des majuscules ou des minuscules et des abréviations telles que   "
+"\"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;\". Si vous définissez l'option sur la "
+"chaîne spéciale   \"disabled\", il n'y aura pas de combinaison de touches "
+"pour cette action."
 
 #: src/metacity.schemas.in.h:100
 msgid ""
@@ -1222,13 +1201,12 @@ msgid ""
 "action."
 msgstr ""
 "La combinaison de touches utilisée pour déplacer une fenêtre d'un espace de "
-"travail vers la droite. Le format ressemble à ceci : « &lt;Contrôle&gt;a » "
-"ou « &lt;Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est parfois noté Maj sur "
-"certains claviers). L'analyseur est assez souple et permet d'utiliser des "
-"majuscules ou des minuscules et des abréviations telles que « &lt;Ctl&gt; » "
-"et « &lt;Ctrl&gt; ». Si vous définissez l'option sur la chaîne spéciale « "
-"disabled » (désactivé), il n'y aura pas de combinaison de touches pour cette "
-"action."
+"travail vers la droite. Le format ressemble à ceci \"&lt;Contrôle&gt;a\" ou "
+"\"&lt;Maj&gt;&lt;Alt&gt;F1. L'analyseur est assez souple et permet "
+"d'utiliser des majuscules ou des minuscules et des abréviations telles que   "
+"\"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;\". Si vous définissez l'option sur la "
+"chaîne spéciale   \"disabled\", il n'y aura pas de combinaison de touches "
+"pour cette action."
 
 #: src/metacity.schemas.in.h:101
 msgid ""
@@ -1239,13 +1217,12 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches utilisée pour déplacer une fenêtre d'un espace de "
-"travail vers le haut. Le format ressemble à ceci : « &lt;Contrôle&gt;a » ou "
-"« &lt;Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est parfois noté Maj sur "
-"certains claviers). L'analyseur est assez souple et permet d'utiliser des "
-"majuscules ou des minuscules et des abréviations telles que « &lt;Ctl&gt; » "
-"et « &lt;Ctrl&gt; ». Si vous définissez l'option sur la chaîne spéciale « "
-"disabled » (désactivé), il n'y aura pas de combinaison de touches pour cette "
-"action."
+"travail vers le haut. Le format ressemble à ceci :  \"&lt;Contrôle&gt;a\" ou "
+"\"&lt;Maj&gt;&lt;Alt&gt;F1. L'analyseur est assez souple et permet "
+"d'utiliser des majuscules ou des minuscules et des abréviations telles que "
+"\"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;\". Si vous définissez l'option sur la "
+"chaîne spéciale \"disabled\", il n'y aura pas de combinaison de touches pour "
+"cette action."
 
 #: src/metacity.schemas.in.h:102
 msgid ""
@@ -1256,12 +1233,11 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches utilisée pour déplacer une fenêtre vers l'espace "
-"de travail 1. Le format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;"
-"Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est parfois noté Maj sur certains "
-"claviers). L'analyseur est assez souple et permet d'utiliser des majuscules "
-"ou des minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;"
-"Ctrl&gt; ». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"de travail 1. Le format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;"
+"Maj&gt;&lt;Alt&gt;F1. L'analyseur est assez souple et permet d'utiliser des "
+"majuscules ou des minuscules et des abréviations telles que \"&lt;Ctl&gt;\" "
+"et \"&lt;Ctrl&gt;\". Si vous définissez l'option sur la chaîne spéciale "
+"\"disabled\", il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:103
 msgid ""
@@ -1272,12 +1248,11 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches utilisée pour déplacer une fenêtre vers l'espace "
-"de travail 10. Le format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;"
-"Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est parfois noté Maj sur certains "
-"claviers). L'analyseur est assez souple et permet d'utiliser des majuscules "
-"ou des minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;"
-"Ctrl&gt; ». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"de travail 10. Le format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;"
+"Maj&gt;&lt;Alt&gt;F1. L'analyseur est assez souple et permet d'utiliser des "
+"majuscules ou des minuscules et des abréviations telles que \"&lt;Ctl&gt;\" "
+"et \"&lt;Ctrl&gt;\". Si vous définissez l'option sur la chaîne spéciale "
+"\"disabled\", il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:104
 msgid ""
@@ -1288,12 +1263,11 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches utilisée pour déplacer une fenêtre vers l'espace "
-"de travail 11. Le format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;"
-"Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est parfois noté Maj sur certains "
-"claviers). L'analyseur est assez souple et permet d'utiliser des majuscules "
-"ou des minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;"
-"Ctrl&gt; ». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"de travail 11. Le format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;"
+"Maj&gt;&lt;Alt&gt;F1. L'analyseur est assez souple et permet d'utiliser des "
+"majuscules ou des minuscules et des abréviations telles que \"&lt;Ctl&gt;\" "
+"et \"&lt;Ctrl&gt;\". Si vous définissez l'option sur la chaîne spéciale "
+"\"disabled\", il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:105
 msgid ""
@@ -1304,12 +1278,11 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches utilisée pour déplacer une fenêtre vers l'espace "
-"de travail 12. Le format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;"
-"Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est parfois noté Maj sur certains "
-"claviers). L'analyseur est assez souple et permet d'utiliser des majuscules "
-"ou des minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;"
-"Ctrl&gt; ». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"de travail 12. Le format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;"
+"Maj&gt;&lt;Alt&gt;F1. L'analyseur est assez souple et permet d'utiliser des "
+"majuscules ou des minuscules et des abréviations telles que \"&lt;Ctl&gt;\" "
+"et \"&lt;Ctrl&gt;\". Si vous définissez l'option sur la chaîne spéciale "
+"\"disabled\", il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:106
 msgid ""
@@ -1320,12 +1293,11 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches utilisée pour déplacer une fenêtre vers l'espace "
-"de travail 2. Le format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;"
-"Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est parfois noté Maj sur certains "
-"claviers). L'analyseur est assez souple et permet d'utiliser des majuscules "
-"ou des minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;"
-"Ctrl&gt; ». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"de travail 2. Le format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;"
+"Maj&gt;&lt;Alt&gt;F1. L'analyseur est assez souple et permet d'utiliser des "
+"majuscules ou des minuscules et des abréviations telles que \"&lt;Ctl&gt;\" "
+"et \"&lt;Ctrl&gt;\". Si vous définissez l'option sur la chaîne spéciale "
+"\"disabled\", il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:107
 msgid ""
@@ -1336,12 +1308,11 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches utilisée pour déplacer une fenêtre vers l'espace "
-"de travail 3. Le format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;"
-"Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est parfois noté Maj sur certains "
-"claviers). L'analyseur est assez souple et permet d'utiliser des majuscules "
-"ou des minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;"
-"Ctrl&gt; ». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"de travail 3. Le format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;"
+"Maj&gt;&lt;Alt&gt;F1. L'analyseur est assez souple et permet d'utiliser des "
+"majuscules ou des minuscules et des abréviations telles que \"&lt;Ctl&gt;\" "
+"et \"&lt;Ctrl&gt;\". Si vous définissez l'option sur la chaîne spéciale "
+"\"disabled\", il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:108
 msgid ""
@@ -1352,12 +1323,11 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches utilisée pour déplacer une fenêtre vers l'espace "
-"de travail 4. Le format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;"
-"Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est parfois noté Maj sur certains "
-"claviers). L'analyseur est assez souple et permet d'utiliser des majuscules "
-"ou des minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;"
-"Ctrl&gt; ». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"de travail 4. Le format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;"
+"Maj&gt;&lt;Alt&gt;F1. L'analyseur est assez souple et permet d'utiliser des "
+"majuscules ou des minuscules et des abréviations telles que \"&lt;Ctl&gt;\" "
+"et \"&lt;Ctrl&gt;\". Si vous définissez l'option sur la chaîne spéciale "
+"\"disabled\", il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:109
 msgid ""
@@ -1368,12 +1338,11 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches utilisée pour déplacer une fenêtre vers l'espace "
-"de travail 5. Le format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;"
-"Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est parfois noté Maj sur certains "
-"claviers). L'analyseur est assez souple et permet d'utiliser des majuscules "
-"ou des minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;"
-"Ctrl&gt; ». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"de travail 5. Le format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;"
+"Maj&gt;&lt;Alt&gt;F1. L'analyseur est assez souple et permet d'utiliser des "
+"majuscules ou des minuscules et des abréviations telles que \"&lt;Ctl&gt;\" "
+"et \"&lt;Ctrl&gt;\". Si vous définissez l'option sur la chaîne spéciale "
+"\"disabled\", il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:110
 msgid ""
@@ -1384,12 +1353,11 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches utilisée pour déplacer une fenêtre vers l'espace "
-"de travail 6. Le format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;"
-"Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est parfois noté Maj sur certains "
-"claviers). L'analyseur est assez souple et permet d'utiliser des majuscules "
-"ou des minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;"
-"Ctrl&gt; ». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"de travail 6. Le format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;"
+"Maj&gt;&lt;Alt&gt;F1. L'analyseur est assez souple et permet d'utiliser des "
+"majuscules ou des minuscules et des abréviations telles que \"&lt;Ctl&gt;\" "
+"et \"&lt;Ctrl&gt;\". Si vous définissez l'option sur la chaîne spéciale "
+"\"disabled\", il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:111
 msgid ""
@@ -1400,12 +1368,11 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches utilisée pour déplacer une fenêtre vers l'espace "
-"de travail 7. Le format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;"
-"Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est parfois noté Maj sur certains "
-"claviers). L'analyseur est assez souple et permet d'utiliser des majuscules "
-"ou des minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;"
-"Ctrl&gt; ». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"de travail 7. Le format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;"
+"Maj&gt;&lt;Alt&gt;F1. L'analyseur est assez souple et permet d'utiliser des "
+"majuscules ou des minuscules et des abréviations telles que \"&lt;Ctl&gt;\" "
+"et \"&lt;Ctrl&gt;\". Si vous définissez l'option sur la chaîne spéciale "
+"\"disabled\", il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:112
 msgid ""
@@ -1416,12 +1383,11 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches utilisée pour déplacer une fenêtre vers l'espace "
-"de travail 8. Le format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;"
-"Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est parfois noté Maj sur certains "
-"claviers). L'analyseur est assez souple et permet d'utiliser des majuscules "
-"ou des minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;"
-"Ctrl&gt; ». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"de travail 8. Le format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;"
+"Maj&gt;&lt;Alt&gt;F1. L'analyseur est assez souple et permet d'utiliser des "
+"majuscules ou des minuscules et des abréviations telles que \"&lt;Ctl&gt;\" "
+"et \"&lt;Ctrl&gt;\". Si vous définissez l'option sur la chaîne spéciale "
+"\"disabled\", il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:113
 msgid ""
@@ -1432,14 +1398,14 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches utilisée pour déplacer une fenêtre vers l'espace "
-"de travail 9. Le format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;"
-"Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est parfois noté Maj sur certains "
-"claviers). L'analyseur est assez souple et permet d'utiliser des majuscules "
-"ou des minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;"
-"Ctrl&gt; ». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"de travail 9. Le format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;"
+"Maj&gt;&lt;Alt&gt;F1. L'analyseur est assez souple et permet d'utiliser des "
+"majuscules ou des minuscules et des abréviations telles que \"&lt;Ctl&gt;\" "
+"et \"&lt;Ctrl&gt;\". Si vous définissez l'option sur la chaîne spéciale "
+"\"disabled\", il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:114
+#, fuzzy
 msgid ""
 "The keybinding used to move focus backwards between panels and the desktop, "
 "using a popup window. The format looks like \"&lt;Control&gt;a\" or \"&lt;"
@@ -1449,15 +1415,15 @@ msgid ""
 "will be no keybinding for this action."
 msgstr ""
 "La combinaisons de touches utilisés pour déplacer le focus entre les "
-"panneaux et le bureau, en utilisant une boîte de dialogue. Le format "
-"ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;F1 "
-"» (la touche Shift est parfois noté Maj sur certains claviers). L'analyseur "
-"est assez souple et permet d'utiliser des majuscules ou des minuscules et "
-"des abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; ». Si vous "
-"définissez l'option sur la chaîne spéciale « disabled » (désactivé), il n'y "
+"panneaux et le bureau, en utilisant une boite de dialogue. Le format "
+"ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;F1. "
+"L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
+"minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;"
+"\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", il n'y "
 "aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:115
+#, fuzzy
 msgid ""
 "The keybinding used to move focus backwards between panels and the desktop, "
 "without a popup window. The format looks like \"&lt;Control&gt;a\" or \"&lt;"
@@ -1467,15 +1433,15 @@ msgid ""
 "will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches utilisé pour déplacer le focus entre les panneaux "
-"et le bureau, sans boîte de dialogue. Le format ressemble à ceci : « &lt;"
-"Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est "
-"parfois noté Maj sur certains claviers). L'analyseur est assez souple et "
-"permet d'utiliser des majuscules ou des minuscules et des abréviations "
-"telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; ». Si vous définissez l'option "
-"sur la chaîne spéciale « disabled » (désactivé), il n'y aura pas de "
-"combinaison de touches pour cette action."
+"et le bureau, sans boite de dialogue. Le format ressemble à ceci : \"&lt;"
+"Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;F1. L'analyseur est assez souple "
+"et permet d'utiliser des majuscules ou des minuscules et des abréviations "
+"telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;\". Si vous définissez l'option "
+"sur la chaîne spéciale \"disabled\", il n'y aura pas de combinaison de "
+"touches pour cette action."
 
 #: src/metacity.schemas.in.h:116
+#, fuzzy
 msgid ""
 "The keybinding used to move focus backwards between windows without a popup "
 "window. Holding \"shift\" together with this binding makes the direction go "
@@ -1485,17 +1451,16 @@ msgid ""
 "set the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
 msgstr ""
-"La combinaison de touches utilisée pour déplacer en arrière le focus entre "
-"les fenêtre sans l'aide d'une boîte de dialogue. Tenir « shift » en même "
-"temps que ces combinaisons permet de se déplacer normalement vers l'avant. "
-"Le format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;"
-"Alt&gt;F1 » (la touche Shift est parfois noté Maj sur certains claviers). "
+"La combinaison de touche utilisé pour déplacer le focus entre fenêtres sans "
+"boite de dialogue (traditionnellement &lt;Alt&gt;Escape). Le format "
+"ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;F1. "
 "L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
-"minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; "
-"». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;"
+"\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", il n'y "
+"aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:117
+#, fuzzy
 msgid ""
 "The keybinding used to move focus backwards between windows, using a popup "
 "window. Holding \"shift\" together with this binding makes the direction go "
@@ -1506,10 +1471,9 @@ msgid ""
 "keybinding for this action."
 msgstr ""
 "La combinaison de touche utilisé pour déplacer le focus entre fenetres, en "
-"utilisant une boîte de dialogue. Tenir « shift » en même temps que ces "
-"combinaisons permet de se déplacer normalement vers l'avant. Le format "
-"ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;F1. "
-"L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
+"utilisant une boite de dialogue (traditionnellement &lt;Alt&gt;Tab). Le "
+"format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;"
+"F1. L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
 "minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;"
 "\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", il n'y "
 "aura pas de combinaison de touches pour cette action."
@@ -1524,12 +1488,11 @@ msgid ""
 "keybinding for this action."
 msgstr ""
 "La combinaisons de touches utilisés pour déplacer le focus entre les "
-"panneaux et le bureau, en utilisant une boîte de dialogue. Le format "
-"ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;F1 "
-"» (la touche Shift est parfois noté Maj sur certains claviers). L'analyseur "
-"est assez souple et permet d'utiliser des majuscules ou des minuscules et "
-"des abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; ». Si vous "
-"définissez l'option sur la chaîne spéciale « disabled » (désactivé), il n'y "
+"panneaux et le bureau, en utilisant une boite de dialogue. Le format "
+"ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;F1. "
+"L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
+"minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;"
+"\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", il n'y "
 "aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:119
@@ -1542,15 +1505,15 @@ msgid ""
 "keybinding for this action."
 msgstr ""
 "La combinaison de touches utilisé pour déplacer le focus entre les panneaux "
-"et le bureau, sans boîte de dialogue. Le format ressemble à ceci : « &lt;"
-"Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est "
-"parfois noté Maj sur certains claviers). L'analyseur est assez souple et "
-"permet d'utiliser des majuscules ou des minuscules et des abréviations "
-"telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; ». Si vous définissez l'option "
-"sur la chaîne spéciale « disabled » (désactivé), il n'y aura pas de "
-"combinaison de touches pour cette action."
+"et le bureau, sans boite de dialogue. Le format ressemble à ceci : \"&lt;"
+"Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;F1. L'analyseur est assez souple "
+"et permet d'utiliser des majuscules ou des minuscules et des abréviations "
+"telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;\". Si vous définissez l'option "
+"sur la chaîne spéciale \"disabled\", il n'y aura pas de combinaison de "
+"touches pour cette action."
 
 #: src/metacity.schemas.in.h:120
+#, fuzzy
 msgid ""
 "The keybinding used to move focus between windows without a popup window. "
 "(Traditionally &lt;Alt&gt;Escape) Holding the \"shift\" key while using this "
@@ -1561,16 +1524,15 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touche utilisé pour déplacer le focus entre fenêtres sans "
-"boîte de dialogue (traditionnellement &lt;Alt&gt;Escape). Tenir « shift » en "
-"même temps que ces combinaisons permet de se déplacer normalement vers "
-"l'avant. Le format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;"
-"Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est parfois noté Maj sur certains "
-"claviers). L'analyseur est assez souple et permet d'utiliser des majuscules "
-"ou des minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;"
-"Ctrl&gt; ». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"boite de dialogue (traditionnellement &lt;Alt&gt;Escape). Le format "
+"ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;F1. "
+"L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
+"minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;"
+"\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", il n'y "
+"aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:121
+#, fuzzy
 msgid ""
 "The keybinding used to move focus between windows, using a popup window. "
 "(Traditionally &lt;Alt&gt;Tab) Holding the \"shift\" key while using this "
@@ -1581,14 +1543,12 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touche utilisé pour déplacer le focus entre fenetres, en "
-"utilisant une boîte de dialogue (traditionnellement &lt;Alt&gt;Tab). Tenir « "
-"shift » en même temps que ces combinaisons permet de se déplacer normalement "
-"vers l'avant. Le format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;"
-"Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est parfois noté Maj sur certains "
-"claviers). L'analyseur est assez souple et permet d'utiliser des majuscules "
-"ou des minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;"
-"Ctrl&gt; ». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"utilisant une boite de dialogue (traditionnellement &lt;Alt&gt;Tab). Le "
+"format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;"
+"F1. L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
+"minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;"
+"\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", il n'y "
+"aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:122
 msgid ""
@@ -1599,12 +1559,11 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches utilisée pour basculer en mode plein écran. Le "
-"format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;"
-"F1 » (la touche Shift est parfois noté Maj sur certains claviers). "
-"L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
-"minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; "
-"». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;"
+"F1. L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
+"minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;"
+"\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", il n'y "
+"aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:123
 msgid ""
@@ -1615,12 +1574,11 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches utilisée pour faire basculer l'agrandissement. Le "
-"format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;"
-"F1 » (la touche Shift est parfois noté Maj sur certains claviers). "
-"L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
-"minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; "
-"». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;"
+"F1. L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
+"minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;"
+"\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", il n'y "
+"aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:124
 msgid ""
@@ -1632,12 +1590,11 @@ msgid ""
 msgstr ""
 "La combinaison de touches utilisée pour basculer entre la réduction à la "
 "barre de titre et la restauration de la fenêtre à sa taille normale. Le "
-"format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;"
-"F1 » (la touche Shift est parfois noté Maj sur certains claviers). "
-"L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
-"minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; "
-"». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"format ressemble à ceci :  \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;"
+"F1. L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
+"minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;"
+"\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", il n'y "
+"aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:125
 msgid ""
@@ -1649,13 +1606,12 @@ msgid ""
 "keybinding for this action."
 msgstr ""
 "La combinaison de touches utilisée pour placer la fenêtre sur tous les "
-"espaces de travail ou un seul. Le format ressemble à ceci : « &lt;"
-"Contrôle&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est "
-"parfois noté Maj sur certains claviers). L'analyseur est assez souple et "
-"permet d'utiliser des majuscules ou des minuscules et des abréviations "
-"telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; ». Si vous définissez l'option "
-"sur la chaîne spéciale « disabled » (désactivé), il n'y aura pas de "
-"combinaison de touches pour cette action."
+"espaces de travail ou un seul. Le format ressemble à ceci : \"&lt;"
+"Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;Alt&gt;F1. L'analyseur est assez souple "
+"et permet d'utiliser des majuscules ou des minuscules et des abréviations "
+"telles que \"&lt;Ctl&gt;\" et \"&lt;Ctrl&gt;\". Si vous définissez l'option "
+"sur la chaîne spéciale \"disabled\", il n'y aura pas de combinaison de "
+"touches pour cette action."
 
 #: src/metacity.schemas.in.h:126
 msgid ""
@@ -1666,16 +1622,16 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches utilisée pour restaurer une fenêtre à sa taille "
-"initiale. Le format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;"
-"Shift&gt;&lt;Alt&gt;F1 » (la touche Shift est parfois noté Maj sur certains "
-"claviers). L'analyseur est assez souple et permet d'utiliser des majuscules "
-"ou des minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;"
-"Ctrl&gt; ». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"initiale. Le format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;"
+"&lt;Alt&gt;F1. L'analyseur est assez souple et permet d'utiliser des "
+"majuscules ou des minuscules et des abréviations telles que \"&lt;Ctl&gt;\" "
+"et \"&lt;Ctrl&gt;\". Si vous définissez l'option sur la chaîne spéciale "
+"\"disabled\", il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:127
+#, fuzzy
 msgid "The name of a workspace."
-msgstr "Nom de l'espace de travail"
+msgstr "Nombre d'espaces de travail"
 
 #: src/metacity.schemas.in.h:128
 msgid ""
@@ -1702,11 +1658,11 @@ msgid ""
 "unfocused when the mouse leaves the window."
 msgstr ""
 "Le mode de focus de la fenêtre indique la façon dont les fenêtres sont "
-"activées. Il présente trois valeurs possibles ; « click » signifie que vous "
-"devez cliquer sur les fenêtres pour les activer,  « sloppy » (« coulé ») "
-"signifie que les fenêtres sont activées lorsque la souris s'y place et « "
-"mouse » (« souris »), signifie que les fenêtres sont activées lorsque la "
-"souris s'y place et désactivées lorsqu'elle les quitte."
+"activées. Il présente trois valeurs possibles ; \"click\" signifie que vous "
+"devez cliquer sur les fenêtres pour les activer,  \"sloppy\" signifie que "
+"les fenêtres sont activées lorsque la souris s'y place et \"mouse\", "
+"signifie que les fenêtres sont activées lorsque la souris s'y place et "
+"désactivées lorsqu'elle les quitte."
 
 #: src/metacity.schemas.in.h:131
 msgid ""
@@ -1722,12 +1678,11 @@ msgstr ""
 "Cette combinaison de touches change la position d'une fenêtre par rapport "
 "aux autres. Si la fenêtre est recouverte par une autre, elle est replacée au "
 "premier plan. Si elle est déjà entièrement visible, elle est placée sous les "
-"autres. Le format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;"
-"&lt;Alt&gt;F1 » (la touche Shift est parfois noté Maj sur certains "
-"claviers). L'analyseur est assez souple et permet d'utiliser des majuscules "
-"ou des minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;"
-"Ctrl&gt; ». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"autres. Le format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;"
+"&lt;Alt&gt;F1. L'analyseur est assez souple et permet d'utiliser des "
+"majuscules ou des minuscules et des abréviations telles que \"&lt;Ctl&gt;\" "
+"et \"&lt;Ctrl&gt;\". Si vous définissez l'option sur la chaîne spéciale "
+"\"disabled\", il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:132
 msgid ""
@@ -1738,12 +1693,11 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches utilisée pour mettre une fenêtre sous les autres. "
-"Le format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;"
-"Alt&gt;F1 » (la touche Shift est parfois noté Maj sur certains claviers). "
-"L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
-"minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; "
-"». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"Le format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;"
+"Alt&gt;F1. L'analyseur est assez souple et permet d'utiliser des majuscules "
+"ou des minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;"
+"Ctrl&gt;\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", "
+"il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:133
 msgid ""
@@ -1754,14 +1708,14 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "La combinaison de touches utilisée pour mettre une fenêtre au premier plan. "
-"Le format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;"
-"Alt&gt;F1 » (la touche Shift est parfois noté Maj sur certains claviers). "
-"L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
-"minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; "
-"». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"Le format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;"
+"Alt&gt;F1. L'analyseur est assez souple et permet d'utiliser des majuscules "
+"ou des minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;"
+"Ctrl&gt;\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", "
+"il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:134
+#, fuzzy
 msgid ""
 "This keybinding resizes a window to fill available horizontal space. The "
 "format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1. The "
@@ -1771,14 +1725,14 @@ msgid ""
 "for this action."
 msgstr ""
 "La combinaison de touches utilisée pour mettre une fenêtre au premier plan. "
-"Le format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;"
-"Alt&gt;F1 » (la touche Shift est parfois noté Maj sur certains claviers). "
-"L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
-"minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; "
-"». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"Le format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;"
+"Alt&gt;F1. L'analyseur est assez souple et permet d'utiliser des majuscules "
+"ou des minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;"
+"Ctrl&gt;\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", "
+"il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:135
+#, fuzzy
 msgid ""
 "This keybinding resizes a window to fill available vertical space. The "
 "format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1. The "
@@ -1788,12 +1742,11 @@ msgid ""
 "for this action."
 msgstr ""
 "La combinaison de touches utilisée pour mettre une fenêtre au premier plan. "
-"Le format ressemble à ceci : « &lt;Contrôle&gt;a » ou « &lt;Shift&gt;&lt;"
-"Alt&gt;F1 » (la touche Shift est parfois noté Maj sur certains claviers). "
-"L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
-"minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; "
-"». Si vous définissez l'option sur la chaîne spéciale « disabled "
-"» (désactivé), il n'y aura pas de combinaison de touches pour cette action."
+"Le format ressemble à ceci : \"&lt;Contrôle&gt;a\" ou \"&lt;Maj&gt;&lt;"
+"Alt&gt;F1. L'analyseur est assez souple et permet d'utiliser des majuscules "
+"ou des minuscules et des abréviations telles que \"&lt;Ctl&gt;\" et \"&lt;"
+"Ctrl&gt;\". Si vous définissez l'option sur la chaîne spéciale \"disabled\", "
+"il n'y aura pas de combinaison de touches pour cette action."
 
 #: src/metacity.schemas.in.h:136
 msgid ""
@@ -1801,10 +1754,6 @@ msgid ""
 "Current valid options are 'toggle_shaded', which will shade/unshade the "
 "window, and 'toggle_maximized' which will maximize/unmaximize the window."
 msgstr ""
-"Cette option détermine les effets lors du double-clic sur la barre de titre. "
-"Les options possibles sont « bascule_réduction_au_titre » qui réduit ou pas "
-"la fenêtre à son titre, « bascule_maximisation » qui maximize la fenêtre ou "
-"la remet à la taille précédente aprés maximisation."
 
 #: src/metacity.schemas.in.h:137
 msgid "Toggle fullscreen mode"
@@ -1819,8 +1768,9 @@ msgid "Toggle shaded state"
 msgstr "Réduire à la barre de titre/restaurer la fenêtre à sa taille normale"
 
 #: src/metacity.schemas.in.h:140
+#, fuzzy
 msgid "Toggle window on all workspaces"
-msgstr "Basculer l'apparition de la fenêtre sur tous les espaces de travail"
+msgstr "Basculer le placement de la fenêtre sur tous les espaces de travail"
 
 #: src/metacity.schemas.in.h:141
 msgid "Unmaximize a window"
@@ -1828,7 +1778,7 @@ msgstr "Restaurer une fenêtre à sa taille initiale"
 
 #: src/metacity.schemas.in.h:142
 msgid "Use standard system font in window titles"
-msgstr "Utiliser la police standard du système dans les titres des fenêtres"
+msgstr "Utiliser la police système standard dans les titres des fenêtres"
 
 #: src/metacity.schemas.in.h:143
 msgid "Window focus mode"
@@ -1844,7 +1794,7 @@ msgstr "Police de titre des fenêtres"
 #: src/prefs.c:618 src/prefs.c:635 src/prefs.c:651 src/prefs.c:667
 #, c-format
 msgid "GConf key \"%s\" is set to an invalid type\n"
-msgstr "La touche GConf « %s » est définie sur un type incorrect\n"
+msgstr "La touche GConf « %s » est définie sur un type non valide\n"
 
 #: src/prefs.c:712
 #, c-format
@@ -1853,12 +1803,12 @@ msgid ""
 "modifier\n"
 msgstr ""
 "« %s » trouvé dans la base de données de configuration n'est pas une valeur "
-"correcte pour le bouton de souris\n"
+"valide pour le bouton de souris\n"
 
-#: src/prefs.c:736 src/prefs.c:1103
+#: src/prefs.c:736 src/prefs.c:1098
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
-msgstr "La touche GConf « %s » est définie sur une valeur incorrecte\n"
+msgstr "La touche GConf « %s » est définie sur une valeur non valide\n"
 
 #: src/prefs.c:820
 #, c-format
@@ -1876,40 +1826,39 @@ msgstr ""
 "%d enregistré dans la touche GConf %s n'est pas un nombre d'espaces de "
 "travail raisonnable, le maximum actuel est %d\n"
 
-#: src/prefs.c:1065
+#: src/prefs.c:1060
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
 msgstr ""
 "Solutions de rechange désactivées pour les applications endommagées. "
-"Certaines applications peuvent ne pas se comporter correctement.\n"
+"Certaines applications ne peuvent pas se comporter correctement.\n"
 
-#: src/prefs.c:1130
+#: src/prefs.c:1125
 #, c-format
 msgid "%d stored in GConf key %s is out of range 0 to %d\n"
 msgstr ""
 "%d enregistré dans la touche GConf %s est hors limite comprise entre 0 et %"
 "d\n"
 
-#: src/prefs.c:1222
+#: src/prefs.c:1217
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr "Erreur de définition du nombre d'espaces de travail sur %d : %s\n"
 
-#: src/prefs.c:1460
+#: src/prefs.c:1435
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
 "\"%s\"\n"
 msgstr ""
 "« %s » trouvé dans la base de données de configuration n'est pas une valeur "
-"correcte pour la combinaison de touches « %s »\n"
+"valide pour la combinaison de touches « %s »\n"
 
-#: src/prefs.c:1750
-#, c-format
+#: src/prefs.c:1720
+#, fuzzy, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
-msgstr ""
-"Erreur dans la définition du nom pour l'espace de travail %d à \"%s\": %s\n"
+msgstr "Erreur de définition du nombre d'espaces de travail sur %d : %s\n"
 
 #: src/resizepopup.c:127
 #, c-format
@@ -1919,7 +1868,7 @@ msgstr "%d x %d"
 #: src/screen.c:392
 #, c-format
 msgid "Screen %d on display '%s' is invalid\n"
-msgstr "L'écran %d sur le visuel « %s » n'est pas correct\n"
+msgstr "L'écran %d sur le visuel « %s » n'est pas valide\n"
 
 #: src/screen.c:408
 #, c-format
@@ -1936,8 +1885,8 @@ msgstr ""
 msgid ""
 "Could not acquire window manager selection on screen %d display \"%s\"\n"
 msgstr ""
-"Impossible d'avoir la sélection du gestionnaire de fenêtres sur l'écran %d "
-"du visuel « %s »\n"
+"Impossible d'acquérir la sélection de gestionnaire de fenêtres sur l'écran %"
+"d du visuel « %s »\n"
 
 #: src/screen.c:505
 #, c-format
@@ -1956,7 +1905,7 @@ msgid ""
 "not be saved: %s\n"
 msgstr ""
 "Impossible d'ouvrir une connexion avec un gestionnaire de sessions. Les "
-"positions des fenêtres ne seront donc pas enregistrées : %s\n"
+"positions de fenêtre ne seront donc pas enregistrées : %s\n"
 
 #: src/session.c:881 src/session.c:888
 #, c-format
@@ -2171,19 +2120,19 @@ msgstr "L'élément <%s> n'est pas autorisé sous <%s>"
 #: src/theme-parser.c:1282 src/theme-parser.c:1369 src/theme-parser.c:1439
 #, c-format
 msgid "No \"name\" attribute on element <%s>"
-msgstr "Aucun attribut « name » (« nom ») sur l'élément <%s>"
+msgstr "Aucun attribut \"name\" sur l'élément <%s>"
 
 #: src/theme-parser.c:1289 src/theme-parser.c:1376
 #, c-format
 msgid "No \"value\" attribute on element <%s>"
-msgstr "Aucun attribut « value » (« valeur ») sur l'élément <%s>"
+msgstr "Aucun attribut \"value\" sur l'élément <%s>"
 
 #: src/theme-parser.c:1320 src/theme-parser.c:1334 src/theme-parser.c:1393
 msgid ""
 "Cannot specify both button_width/button_height and aspect ratio for buttons"
 msgstr ""
-"Impossible de spécifier à la fois button_width/button_height (largeur/"
-"hauteur) et la proportion des boutons"
+"Impossible de spécifier à la fois button_width/button_height et la "
+"proportion des boutons"
 
 #: src/theme-parser.c:1343
 #, c-format
@@ -2198,53 +2147,53 @@ msgstr "Proportion « %s » inconnue"
 #: src/theme-parser.c:1446
 #, c-format
 msgid "No \"top\" attribute on element <%s>"
-msgstr "Aucun attribut « top » (« haut ») sur l'élément <%s>"
+msgstr "Aucun attribut \"top\" sur l'élément <%s>"
 
 #: src/theme-parser.c:1453
 #, c-format
 msgid "No \"bottom\" attribute on element <%s>"
-msgstr "Aucun attribut « bottom » (« bas ») sur l'élément <%s>"
+msgstr "Aucun attribut \"bottom\" sur l'élément <%s>"
 
 #: src/theme-parser.c:1460
 #, c-format
 msgid "No \"left\" attribute on element <%s>"
-msgstr "Aucun attribut « left » (« gauche ») sur l'élément <%s>"
+msgstr "Aucun attribut \"left\" sur l'élément <%s>"
 
 #: src/theme-parser.c:1467
 #, c-format
 msgid "No \"right\" attribute on element <%s>"
-msgstr "Aucun attribut « right » (« droite ») sur l'élément <%s>"
+msgstr "Aucun attribut \"right\" sur l'élément <%s>"
 
 #: src/theme-parser.c:1499
 #, c-format
 msgid "Border \"%s\" is unknown"
-msgstr "La bordure « %s » inconnue"
+msgstr "Bordure « %s » inconnue"
 
 #: src/theme-parser.c:1655 src/theme-parser.c:1765 src/theme-parser.c:1868
 #: src/theme-parser.c:2055 src/theme-parser.c:2869
 #, c-format
 msgid "No \"color\" attribute on element <%s>"
-msgstr "Aucun attribut « color » (« couleur ») sur l'élément <%s>"
+msgstr "Aucun attribut \"color\" sur l'élément <%s>"
 
 #: src/theme-parser.c:1662
 #, c-format
 msgid "No \"x1\" attribute on element <%s>"
-msgstr "Aucun attribut « x1 » sur l'élément <%s>"
+msgstr "Aucun attribut \"x1\" sur l'élément <%s>"
 
 #: src/theme-parser.c:1669 src/theme-parser.c:2714
 #, c-format
 msgid "No \"y1\" attribute on element <%s>"
-msgstr "Aucun attribut « y1 » sur l'élément <%s>"
+msgstr "Aucun attribut \"y1\" sur l'élément <%s>"
 
 #: src/theme-parser.c:1676
 #, c-format
 msgid "No \"x2\" attribute on element <%s>"
-msgstr "Aucun attribut « x2 » sur l'élément <%s>"
+msgstr "Aucun attribut \"x2\" sur l'élément <%s>"
 
 #: src/theme-parser.c:1683 src/theme-parser.c:2721
 #, c-format
 msgid "No \"y2\" attribute on element <%s>"
-msgstr "Aucun attribut « y2 » sur l'élément <%s>"
+msgstr "Aucun attribut \"y2\" sur l'élément <%s>"
 
 #: src/theme-parser.c:1772 src/theme-parser.c:1875 src/theme-parser.c:1981
 #: src/theme-parser.c:2062 src/theme-parser.c:2168 src/theme-parser.c:2266
@@ -2252,7 +2201,7 @@ msgstr "Aucun attribut « y2 » sur l'élément <%s>"
 #: src/theme-parser.c:2781 src/theme-parser.c:2876
 #, c-format
 msgid "No \"x\" attribute on element <%s>"
-msgstr "Aucun attribut « x » sur l'élément <%s>"
+msgstr "Aucun attribut \"x\" sur l'élément <%s>"
 
 #: src/theme-parser.c:1779 src/theme-parser.c:1882 src/theme-parser.c:1988
 #: src/theme-parser.c:2069 src/theme-parser.c:2175 src/theme-parser.c:2273
@@ -2260,42 +2209,41 @@ msgstr "Aucun attribut « x » sur l'élément <%s>"
 #: src/theme-parser.c:2883
 #, c-format
 msgid "No \"y\" attribute on element <%s>"
-msgstr "Aucun attribut « y » sur l'élément <%s>"
+msgstr "Aucun attribut \"y\" sur l'élément <%s>"
 
 #: src/theme-parser.c:1786 src/theme-parser.c:1889 src/theme-parser.c:1995
 #: src/theme-parser.c:2076 src/theme-parser.c:2182 src/theme-parser.c:2280
 #: src/theme-parser.c:2497 src/theme-parser.c:2623 src/theme-parser.c:2795
 #, c-format
 msgid "No \"width\" attribute on element <%s>"
-msgstr "Aucun attribut « width » (« largeur ») sur l'élément <%s>"
+msgstr "Aucun attribut \"width\" sur l'élément <%s>"
 
 #: src/theme-parser.c:1793 src/theme-parser.c:1896 src/theme-parser.c:2002
 #: src/theme-parser.c:2083 src/theme-parser.c:2189 src/theme-parser.c:2287
 #: src/theme-parser.c:2504 src/theme-parser.c:2630 src/theme-parser.c:2802
 #, c-format
 msgid "No \"height\" attribute on element <%s>"
-msgstr "Aucun attribut « height » (« hauteur ») sur l'élément <%s>"
+msgstr "Aucun attribut \"height\" sur l'élément <%s>"
 
 #: src/theme-parser.c:1903
 #, c-format
 msgid "No \"start_angle\" attribute on element <%s>"
-msgstr "Aucun attribut « start_angle » (« début d'angle ») sur l'élément <%s>"
+msgstr "Aucun attribut \"start_angle\" sur l'élément <%s>"
 
 #: src/theme-parser.c:1910
 #, c-format
 msgid "No \"extent_angle\" attribute on element <%s>"
-msgstr ""
-"Aucun attribut « extent_angle » (« extension d'angle ») sur l'élément <%s>"
+msgstr "Aucun attribut \"extent_angle\" sur l'élément <%s>"
 
 #: src/theme-parser.c:2090
 #, c-format
 msgid "No \"alpha\" attribute on element <%s>"
-msgstr "Aucun attribut « alpha » sur l'élément <%s>"
+msgstr "Aucun attribut \"alpha\" sur l'élément <%s>"
 
 #: src/theme-parser.c:2161
 #, c-format
 msgid "No \"type\" attribute on element <%s>"
-msgstr "Aucun attribut « type » sur l'élément <%s>"
+msgstr "Aucun attribut \"type\" sur l'élément <%s>"
 
 #: src/theme-parser.c:2209
 #, c-format
@@ -2305,7 +2253,7 @@ msgstr "Impossible de comprendre la valeur « %s » pour le type de dégradé"
 #: src/theme-parser.c:2294
 #, c-format
 msgid "No \"filename\" attribute on element <%s>"
-msgstr "Aucun attribut « filename » (« nom de fichier ») sur l'élément <%s>"
+msgstr "Aucun attribut \"filename\" sur l'élément <%s>"
 
 #: src/theme-parser.c:2319 src/theme-parser.c:2827
 #, c-format
@@ -2316,17 +2264,17 @@ msgstr ""
 #: src/theme-parser.c:2462 src/theme-parser.c:2595 src/theme-parser.c:2700
 #, c-format
 msgid "No \"state\" attribute on element <%s>"
-msgstr "Aucun attribut « state » (« état ») sur l'élément <%s>"
+msgstr "Aucun attribut \"state\" sur l'élément <%s>"
 
 #: src/theme-parser.c:2469 src/theme-parser.c:2602
 #, c-format
 msgid "No \"shadow\" attribute on element <%s>"
-msgstr "Aucun attribut « shadow » (« ombre ») sur l'élément <%s>"
+msgstr "Aucun attribut \"shadow\" sur l'élément <%s>"
 
 #: src/theme-parser.c:2476
 #, c-format
 msgid "No \"arrow\" attribute on element <%s>"
-msgstr "Aucun attribut « arrow » (« flèche ») sur l'élément <%s>"
+msgstr "Aucun attribut \"arrow\" sur l'élément <%s>"
 
 #: src/theme-parser.c:2529 src/theme-parser.c:2651 src/theme-parser.c:2739
 #, c-format
@@ -2356,12 +2304,12 @@ msgstr "L'inclusion de draw_ops « %s » ici créerait une référence circula
 #: src/theme-parser.c:3153
 #, c-format
 msgid "No \"value\" attribute on <%s> element"
-msgstr "Aucun attribut « value » (« valeur ») sur l'élément <%s>"
+msgstr "Aucun attribut \"value\" sur l'élément <%s>"
 
 #: src/theme-parser.c:3210
 #, c-format
 msgid "No \"position\" attribute on <%s> element"
-msgstr "Aucun attribut « position » sur l'élément <%s>"
+msgstr "Aucun attribut \"position\" sur l'élément <%s>"
 
 #: src/theme-parser.c:3219
 #, c-format
@@ -2376,12 +2324,12 @@ msgstr "Le style de cadre a déjà une pièce à la position %s"
 #: src/theme-parser.c:3272
 #, c-format
 msgid "No \"function\" attribute on <%s> element"
-msgstr "Aucun attribut « function » sur l'élément <%s>"
+msgstr "Aucun attribut \"function\" sur l'élément <%s>"
 
 #: src/theme-parser.c:3280 src/theme-parser.c:3384
 #, c-format
 msgid "No \"state\" attribute on <%s> element"
-msgstr "Aucun attribut « state » sur l'élément <%s>"
+msgstr "Aucun attribut \"state\" sur l'élément <%s>"
 
 #: src/theme-parser.c:3289
 #, c-format
@@ -2401,12 +2349,12 @@ msgstr "Le style de cadre a déjà un bouton pour la fonction %s, état %s"
 #: src/theme-parser.c:3376
 #, c-format
 msgid "No \"focus\" attribute on <%s> element"
-msgstr "Aucun attribut « focus » sur l'élément <%s>"
+msgstr "Aucun attribut \"focus\" sur l'élément <%s>"
 
 #: src/theme-parser.c:3392
 #, c-format
 msgid "No \"style\" attribute on <%s> element"
-msgstr "Aucun attribut « style » sur l'élément <%s>"
+msgstr "Aucun attribut \"style\" sur l'élément <%s>"
 
 #: src/theme-parser.c:3401
 #, c-format
@@ -2426,7 +2374,7 @@ msgstr "Aucun style appelé « %s » n'a été défini"
 #: src/theme-parser.c:3430
 #, c-format
 msgid "No \"resize\" attribute on <%s> element"
-msgstr "Aucun attribut « resize » (« redimensionnement ») sur l'élément <%s>"
+msgstr "Aucun attribut \"resize\" sur l'élément <%s>"
 
 #: src/theme-parser.c:3440
 #, c-format
@@ -2440,8 +2388,8 @@ msgid ""
 "Should not have \"resize\" attribute on <%s> element for maximized/shaded "
 "states"
 msgstr ""
-"L'attribut « resize » (« redimensionnement ») ne devrait pas figurer sur "
-"l'élément <%s> pour les états agrandi/réduit à la barre de titre"
+"L'attribut \"resize\" ne devrait pas figurer sur l'élément <%s> pour les "
+"états agrandi/réduit à la barre de titre"
 
 #: src/theme-parser.c:3464
 #, c-format
@@ -2646,7 +2594,7 @@ msgid ""
 "Blend format is \"blend/bg_color/fg_color/alpha\", \"%s\" does not fit the "
 "format"
 msgstr ""
-"Le format de mélange est « blend/bg_color/fg_color/alpha », « %s » il ne "
+"Le format de mélange est \"blend/bg_color/fg_color/alpha\", « %s » il ne "
 "correspond pas au format ."
 
 #: src/theme.c:1054
@@ -2666,7 +2614,7 @@ msgstr ""
 msgid ""
 "Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
 msgstr ""
-"Le format d'ombre est « shade/base_color/factor », « %s » il ne correspond "
+"Le format d'ombre est \"shade/base_color/factor\", « %s » il ne correspond "
 "pas au format"
 
 #: src/theme.c:1122
@@ -2756,8 +2704,8 @@ msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
 "operand in between"
 msgstr ""
-"L'expression de la coordonnée a un opérateur « %c » suivant l'opérateur « %c "
-"» sans opérande entre eux"
+"L'expression de la coordonnée a un opérateur \"%c\" suivant l'opérateur \"%c"
+"\" sans opérande entre eux"
 
 #: src/theme.c:1982
 msgid ""
@@ -2778,8 +2726,8 @@ msgstr ""
 #, c-format
 msgid "Coordinate expression had unknown variable or constant \"%s\""
 msgstr ""
-"L'expression de la coordonnée possède une variable ou constante inconnue « %"
-"s »"
+"L'expression de la coordonnée possède une variable ou constante inconnue \"%s"
+"\""
 
 #: src/theme.c:2131
 msgid "Coordinate expression had an open parenthesis with no close parenthesis"
@@ -2832,8 +2780,8 @@ msgid ""
 "No frame style set for window type \"%s\" in theme \"%s\", add a <window "
 "type=\"%s\" style_set=\"whatever\"/> element"
 msgstr ""
-"Aucun style de cadre défini pour le type de fenêtre « %s » dans le thème « %"
-"s », ajoutez un élément <window type=\"%s\" style_set=\"whatever\"/>"
+"Aucun style de cadre défini pour le type de fenêtre « %s » dans le thème \"%s"
+"\", ajoutez un élément <window type=\"%s\" style_set=\"whatever\"/>"
 
 #: src/theme.c:4651
 #, c-format
@@ -2901,19 +2849,23 @@ msgstr ""
 msgid "Opened log file %s\n"
 msgstr "Ouverture du fichier journal %s\n"
 
+#: src/util.c:128
+msgid "Metacity was compiled without support for verbose mode\n"
+msgstr ""
+
 #: src/util.c:203
 msgid "Window manager: "
 msgstr "Gestionnaire de fenêtres : "
 
-#: src/util.c:347
+#: src/util.c:343
 msgid "Bug in window manager: "
 msgstr "Bogue dans le gestionnaire de fenêtre :"
 
-#: src/util.c:376
+#: src/util.c:372
 msgid "Window manager warning: "
 msgstr "Avertissement du gestionnaire de fenêtre :"
 
-#: src/util.c:400
+#: src/util.c:396
 msgid "Window manager error: "
 msgstr "Erreur du gestionnaire de fenêtre :"
 
@@ -2923,7 +2875,7 @@ msgid "Application set a bogus _NET_WM_PID %ld\n"
 msgstr "L'application a défini un faux _NET_WM_PID %ld\n"
 
 #. first time through
-#: src/window.c:4897
+#: src/window.c:4847
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -2939,42 +2891,58 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5471
+#: src/window.c:5407
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
 "d x %d and max size %d x %d; this doesn't make much sense.\n"
 msgstr ""
 "La fenêtre %s positionne un indice MWM indiquant qu'elle n'est pas "
-"redimensionnable, mais positionne une taille minimale de %d x %d et une "
-"taille maximale de %d x %d ; ceci n'a pas beaucoup de sens :P.\n"
+"redimensionnable, but positionne une taille minimale de %d x %d et une "
+"taille maximale de %d x %d ; Ceci n'a pas beaucoup de sens.\n"
 
-#: src/xprops.c:153
+#: src/xprops.c:124
 #, c-format
 msgid ""
-"Window 0x%lx has property %s\n"
-"that was expected to have type %s format %d\n"
-"and actually has type %s format %d n_items %d.\n"
-"This is most likely an application bug, not a window manager bug.\n"
-"The window has title=\"%s\" class=\"%s\" name=\"%s\"\n"
+"Window 0x%lx has property %s that was expected to have type %s format %d and "
+"actually has type %s format %d n_items %d\n"
 msgstr ""
-"La fenêtre 0x%lx a la propriété %s\n"
-"qui devrait avoir le type %s et le format %d\n"
-"et a en fait le type %s et le format %d n_items %d\n"
-"C'est probablement un bogue de l'application, et non du gestionnaire de "
-"fenêtres.\n"
-"Le titre de la fenêtre est=\"%s\" sa classe=\"%s\" et son nom=\"%s\"\n"
+"La fenêtre 0x%lx a la propriété %s qui devrait avoir le type %s et le format "
+"%d et a en fait le type %s et le format %d n_items %d\n"
 
-#: src/xprops.c:399
+#: src/xprops.c:369
 #, c-format
 msgid "Property %s on window 0x%lx contained invalid UTF-8\n"
-msgstr ""
-"La propriété %s de la fenêtre 0x%lx contenait un codage UTF-8 incorret\n"
+msgstr "La propriété %s de la fenêtre 0x%lx contenait un UTF-8 non valide\n"
 
-#: src/xprops.c:479
+#: src/xprops.c:449
 #, c-format
 msgid ""
 "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
 msgstr ""
-"La propriété %s de la fenêtre 0x%lx contient des données UTF-8 incorrectes "
+"La propriété %s de la fenêtre 0x%lx contient des données UTF-8 invalides "
 "pour l'élément %d dans la liste\n"
+
+#~ msgid "Workspace %u"
+#~ msgstr "Bureau %u"
+
+#~ msgid "_Shade"
+#~ msgstr "_Réduire à la barre de titre"
+
+#~ msgid "Un_shade"
+#~ msgstr "_Restaurer une fenêtre à sa taille normale"
+
+#~ msgid "No <author> set for theme \"%s\""
+#~ msgstr "Aucun <author> défini pour le thème « %s »"
+
+#~ msgid "No <date> set for theme \"%s\""
+#~ msgstr "Aucune <date> définie pour le thème « %s »"
+
+#~ msgid "No <description> set for theme \"%s\""
+#~ msgstr "Aucune <description> définie pour le thème « %s »"
+
+#~ msgid "No <copyright> set for theme \"%s\""
+#~ msgstr "Aucun <copyright> défini pour le thème « %s »"
+
+#~ msgid "Change how focus is moved from one window to another"
+#~ msgstr "Modifie la façon dont les fenêtres sont activées en alternance"
