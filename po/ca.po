@@ -7,9 +7,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: metacity 2.4.0.0\n"
-"POT-Creation-Date: 2003-01-23 17:52+0100\n"
-"PO-Revision-Date: 2003-01-23 18:26+0100\n"
+"Project-Id-Version: metacity 2.4.21\n"
+"POT-Creation-Date: 2003-01-24 15:34+0100\n"
+"PO-Revision-Date: 2003-01-24 16:37+0100\n"
 "Last-Translator: Jordi Mallach <jordi@sindominio.net>\n"
 "Language-Team: Softcatalà <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -113,12 +113,9 @@ msgstr ""
 "com a vinculació\n"
 
 #: src/keybindings.c:2317
-#, fuzzy, c-format
+#, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
-msgstr ""
-"S'ha produït un error en executar el diàleg metacity per preguntar sobre "
-"la \n"
-"finalització d'una aplicació: %s\n"
+msgstr "S'ha produït un error en executar el metacity-dialog per a mostrar un error sobre una ordre: %s\n"
 
 #: src/keybindings.c:2348
 #, c-format
@@ -129,7 +126,9 @@ msgstr "No s'ha definit cap ordre %d.\n"
 msgid ""
 "metacity [--disable-sm] [--sm-save-file=FILENAME] [--display=DISPLAY] [--"
 "replace] [--version]\n"
-msgstr "metacity [--disable-sm] [--sm-save-file=NOM DE FITXER] [--display=PANTALLA] [--replace] [--version]\n"
+msgstr ""
+"metacity [--disable-sm] [--sm-save-file=NOM DE FITXER] [--display=PANTALLA] "
+"[--replace] [--version]\n"
 
 #: src/main.c:71
 #, c-format
@@ -342,7 +341,9 @@ msgstr "Classe"
 msgid ""
 "These windows do not support \"save current setup\" and will have to be "
 "restarted manually next time you log in."
-msgstr "Aquestes finestres no suporten «desa la configuració actual» i es tindràn que reiniciar manualment la pròxima vegada que entreu."
+msgstr ""
+"Aquestes finestres no suporten «desa la configuració actual» i es tindràn "
+"que reiniciar manualment la pròxima vegada que entreu."
 
 #: src/metacity-dialog.c:276
 #, c-format
@@ -359,7 +360,7 @@ msgstr "Metacity"
 
 #: src/metacity.schemas.in.h:1
 msgid "(Not implemented) Navigation works in terms of applications not windows"
-msgstr ""
+msgstr "(No implementat) La navegació funciona en termes d'aplicacions, no finestres"
 
 #: src/metacity.schemas.in.h:2
 msgid ""
@@ -373,15 +374,15 @@ msgstr ""
 
 #: src/metacity.schemas.in.h:3
 msgid "Action on title bar double-click"
-msgstr ""
+msgstr "Acció al fer doble clic en la barra de títol"
 
 #: src/metacity.schemas.in.h:4
 msgid "Activate window menu"
-msgstr ""
+msgstr "Activa el menú de finestra"
 
 #: src/metacity.schemas.in.h:5
 msgid "Arrangement of buttons on the titlebar"
-msgstr ""
+msgstr "Emplaçament dels botons en la barra de títol"
 
 #: src/metacity.schemas.in.h:6
 msgid ""
@@ -395,7 +396,7 @@ msgstr ""
 
 #: src/metacity.schemas.in.h:7
 msgid "Automatically raises the focused window"
-msgstr ""
+msgstr "Alça automàticament la finestra amb el focus"
 
 #: src/metacity.schemas.in.h:8
 msgid ""
@@ -415,19 +416,19 @@ msgstr ""
 
 #: src/metacity.schemas.in.h:11
 msgid "Current theme"
-msgstr ""
+msgstr "Tema actual"
 
 #: src/metacity.schemas.in.h:12
 msgid "Delay in milliseconds for the auto raise option"
-msgstr ""
+msgstr "Retard en milisegons per a l'opció d'alçat automàtic"
 
 #: src/metacity.schemas.in.h:13
 msgid "Disable misfeatures that are required by old or broken applications"
-msgstr ""
+msgstr "Inhabilita funcionalitats que són requerides per aplicacions velles o amb errors"
 
 #: src/metacity.schemas.in.h:14
 msgid "Hide all windows and focus desktop"
-msgstr ""
+msgstr "Amaga totes les finestres i enfoca l'escriptori"
 
 #: src/metacity.schemas.in.h:15
 msgid ""
@@ -460,33 +461,28 @@ msgid "Lower window below other windows"
 msgstr ""
 
 #: src/metacity.schemas.in.h:19
-#, fuzzy
 msgid "Maximize a window"
-msgstr "Minimitza la finestra"
+msgstr "Maximitza una finestra"
 
 #: src/metacity.schemas.in.h:20
-#, fuzzy
 msgid "Maximize window horizontally"
-msgstr "Minimitza la finestra"
+msgstr "Maximitza la finestra horitzontalment"
 
 #: src/metacity.schemas.in.h:21
-#, fuzzy
 msgid "Maximize window vertically"
-msgstr "Minimitza la finestra"
+msgstr "Maximitza la finestra verticalment"
 
 #: src/metacity.schemas.in.h:22
-#, fuzzy
 msgid "Minimize a window"
-msgstr "Minimitza la finestra"
+msgstr "Minimitza una finestra"
 
 #: src/metacity.schemas.in.h:23
 msgid "Modifier to use for modified window click actions"
-msgstr ""
+msgstr "Modificador a usar per a les accions modificades de clic en finestra"
 
 #: src/metacity.schemas.in.h:24
-#, fuzzy
 msgid "Move a window"
-msgstr "Tanca la finestra"
+msgstr "Mou una finestra"
 
 #: src/metacity.schemas.in.h:25
 msgid "Move backward between panels and the desktop immediately"
@@ -589,7 +585,6 @@ msgid "Name of workspace"
 msgstr "Nom de l'espai de treball"
 
 #: src/metacity.schemas.in.h:50
-#, fuzzy
 msgid "Number of workspaces"
 msgstr "Número d'espais de treball"
 
@@ -598,7 +593,7 @@ msgid ""
 "Number of workspaces. Must be more than zero, and has a fixed maximum (to "
 "prevent accidentally destroying your desktop by asking for 34 million "
 "workspaces)."
-msgstr ""
+msgstr "Número d'espais de treball. Ha de ser més de zero, i te un màxim fixat (per a previndre la destrucció accidental del vostre escriptori demanant 34 milions de espais de treball)."
 
 #: src/metacity.schemas.in.h:52
 msgid "Raise obscured window, otherwise lower"
@@ -609,13 +604,12 @@ msgid "Raise window above other windows"
 msgstr ""
 
 #: src/metacity.schemas.in.h:54
-#, fuzzy
 msgid "Resize a window"
-msgstr "Tanca la finestra"
+msgstr "Redimensiona una finestra"
 
 #: src/metacity.schemas.in.h:55
 msgid "Run a defined command"
-msgstr ""
+msgstr "Executa una ordre definida"
 
 #: src/metacity.schemas.in.h:56
 msgid ""
@@ -682,14 +676,12 @@ msgid "Switch to workspace 9"
 msgstr "Canvia a l'espai de treball 9"
 
 #: src/metacity.schemas.in.h:69
-#, fuzzy
 msgid "Switch to workspace above this one"
-msgstr ""
+msgstr "Canvia a l'espai de treball damunt d'aquest"
 
 #: src/metacity.schemas.in.h:70
-#, fuzzy
 msgid "Switch to workspace below this one"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Canvia a l'espai de treball sota aquest"
 
 #: src/metacity.schemas.in.h:71
 msgid "Switch to workspace on the left"
@@ -1208,7 +1200,6 @@ msgid ""
 msgstr ""
 
 #: src/metacity.schemas.in.h:127
-#, fuzzy
 msgid "The name of a workspace."
 msgstr "El nom d'un espai de treball."
 
@@ -1292,38 +1283,35 @@ msgstr ""
 
 #: src/metacity.schemas.in.h:137
 msgid "Toggle fullscreen mode"
-msgstr ""
+msgstr "Si s'utilitza el mode a pantalla complerta"
 
 #: src/metacity.schemas.in.h:138
 msgid "Toggle maximization state"
-msgstr ""
+msgstr "Canvia l'estat de maximització"
 
 #: src/metacity.schemas.in.h:139
 msgid "Toggle shaded state"
 msgstr ""
 
 #: src/metacity.schemas.in.h:140
-#, fuzzy
 msgid "Toggle window on all workspaces"
-msgstr "Mou al lloc de treball %s%d"
+msgstr "Commuta que la finestra estiga en tots els espais de treball"
 
 #: src/metacity.schemas.in.h:141
-#, fuzzy
 msgid "Unmaximize a window"
-msgstr "Desmaximitza la finestra"
+msgstr "Desmaximitza una finestra"
 
 #: src/metacity.schemas.in.h:142
 msgid "Use standard system font in window titles"
-msgstr ""
+msgstr "Utilitza el tipus de lletra estàndard del sistema en els títols de les finestres"
 
 #: src/metacity.schemas.in.h:143
 msgid "Window focus mode"
-msgstr ""
+msgstr "Mode de focus de les finestres"
 
 #: src/metacity.schemas.in.h:144
-#, fuzzy
 msgid "Window title font"
-msgstr "Menú de la finestra"
+msgstr "Tipus de lletra del títol de les finestres"
 
 #: src/prefs.c:422 src/prefs.c:438 src/prefs.c:454 src/prefs.c:470
 #: src/prefs.c:486 src/prefs.c:506 src/prefs.c:522 src/prefs.c:538
@@ -1334,33 +1322,28 @@ msgid "GConf key \"%s\" is set to an invalid type\n"
 msgstr "La clau Gconf \"%s\" està configurada a un tipus no vàlid\n"
 
 #: src/prefs.c:712
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
 "modifier\n"
-msgstr ""
-"\"%s\" trobat a la base de dades de la configuració no és un valor vàlid a "
-"la vinculació de la clau \"%s\""
+msgstr "«%s» trobat a la base de dades de la configuració no és un valor vàlid per al modificador del botó del ratolí\n"
 
 #: src/prefs.c:736 src/prefs.c:1103
-#, fuzzy, c-format
+#, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
-msgstr "La clau Gconf '%s' està configurada a un valor no vàlid"
+msgstr "La clau GConf «%s» està establerta a un valor no vàlid\n"
 
 #: src/prefs.c:820
 #, c-format
 msgid "Could not parse font description \"%s\" from GConf key %s\n"
-msgstr ""
-"No s'ha pogut analitzar la descripció font \"%s\" de la clau GConf %s\n"
+msgstr "No s'ha pogut analitzar la descripció font «%s» de la clau GConf %s\n"
 
 #: src/prefs.c:1005
 #, c-format
 msgid ""
 "%d stored in GConf key %s is not a reasonable number of workspaces, current "
 "maximum is %d\n"
-msgstr ""
-"%d emmagatzemat a la clau Gconf %s no té un nombre raonable de llocs de "
-"treball, el màxim actual és %d\n"
+msgstr "%d emmagatzemat a la clau GConf %s no té un nombre raonable d'espais de treball, el màxim actual és %d\n"
 
 #: src/prefs.c:1065
 msgid ""
@@ -1369,30 +1352,26 @@ msgid ""
 msgstr ""
 
 #: src/prefs.c:1130
-#, fuzzy, c-format
+#, c-format
 msgid "%d stored in GConf key %s is out of range 0 to %d\n"
-msgstr "%d emmagatzemat a la clau Gconf %s no té una mida de font vàlida\n"
+msgstr "%d emmagatzemat a la clau GConf %s està fora del rang 0 a %d\n"
 
 #: src/prefs.c:1222
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
-msgstr ""
-"S'ha produït un error en establir el nombre de llocs de treball a %d: %s\n"
+msgstr "S'ha produït un error en establir el nombre d'espais de treball a %d: %s\n"
 
 #: src/prefs.c:1460
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
 "\"%s\"\n"
-msgstr ""
-"\"%s\" trobat a la base de dades de la configuració no és un valor vàlid a "
-"la vinculació de la clau \"%s\""
+msgstr "«%s» trobat a la base de dades de la configuració no és un valor vàlid per a la vinculació de tecla «%s»\n"
 
 #: src/prefs.c:1750
-#, fuzzy, c-format
+#, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
-msgstr ""
-"S'ha produït un error en establir el nombre de llocs de treball a %d: %s\n"
+msgstr "S'ha produït un error en establir el nom de l'espai de treball %d a «%s»: %s\n"
 
 #: src/resizepopup.c:127
 #, c-format
@@ -1405,59 +1384,61 @@ msgid "Screen %d on display '%s' is invalid\n"
 msgstr "La pantalla %d en la visualització '%s' no és vàlida\n"
 
 #: src/screen.c:408
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Screen %d on display \"%s\" already has a window manager; try using the --"
 "replace option to replace the current window manager.\n"
-msgstr "La pantalla %d en la visualització '%s' ja té un gestor de finestres\n"
+msgstr "La pantalla %d en la visualització «%s» ja té un gestor de finestres; proveu l'opció --replace per a reemplaçar el gestor de finestres actual.\n"
 
 #: src/screen.c:449
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not acquire window manager selection on screen %d display \"%s\"\n"
-msgstr "No s'ha pogut llançar la pantalla %d en la visualització '%s'\n"
+msgstr "No s'ha pogut adquirir la selecció del gestor de finestres en la pantalla %d visualització «%s»\n"
 
 #: src/screen.c:505
-#, fuzzy, c-format
+#, c-format
 msgid "Screen %d on display \"%s\" already has a window manager\n"
-msgstr "La pantalla %d en la visualització '%s' ja té un gestor de finestres\n"
+msgstr "La pantalla %d en la visualització «%s» ja té un gestor de finestres\n"
 
 #: src/screen.c:673
-#, fuzzy, c-format
+#, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
-msgstr "No s'ha pogut llançar la pantalla %d en la visualització '%s'\n"
+msgstr "No s'ha pogut lliberar la pantalla %d en la visualització «%s»\n"
 
 #: src/session.c:274
 #, c-format
 msgid ""
 "Failed to a open connection to a session manager, so window positions will "
 "not be saved: %s\n"
-msgstr "No s'ha pogut obrir una connexió al gestor de sessions, aixì que les posicions de les finestres no es desaran: %s\n"
+msgstr ""
+"No s'ha pogut obrir una connexió al gestor de sessions, aixì que les "
+"posicions de les finestres no es desaran: %s\n"
 
 #: src/session.c:881 src/session.c:888
 #, c-format
 msgid "Could not create directory '%s': %s\n"
-msgstr "No s'ha pogut crear el directori '%s': %s\n"
+msgstr "No s'ha pogut crear el directori «%s»: %s\n"
 
 #: src/session.c:898
 #, c-format
 msgid "Could not open session file '%s' for writing: %s\n"
-msgstr "No s'ha pogut obrir el fitxer de sessió '%s' per a l'escriptura: %s\n"
+msgstr "No s'ha pogut obrir el fitxer de sessió «%s» per a l'escriptura: %s\n"
 
 #: src/session.c:1057
 #, c-format
 msgid "Error writing session file '%s': %s\n"
-msgstr "S'ha produït un error en escriure el fitxer de sessió '%s': %s\n"
+msgstr "S'ha produït un error en escriure el fitxer de sessió «%s»: %s\n"
 
 #: src/session.c:1062
 #, c-format
 msgid "Error closing session file '%s': %s\n"
-msgstr "S'ha produït un error en tancar el fitxer de sessió '%s': %s\n"
+msgstr "S'ha produït un error en tancar el fitxer de sessió «%s»: %s\n"
 
 #: src/session.c:1137
 #, c-format
 msgid "Failed to read saved session file %s: %s\n"
-msgstr "És impossible de llegir el fitxer de sessió '%s' desat: %s\n"
+msgstr "És impossible de llegir el fitxer de sessió «%s» desat: %s\n"
 
 #: src/session.c:1172
 #, c-format
@@ -1485,9 +1466,9 @@ msgid "Unknown attribute %s on <window> element"
 msgstr "Atribut %s desconegut a l'element <window>"
 
 #: src/session.c:1413
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown attribute %s on <maximized> element"
-msgstr "Atribut %s desconegut a l'element <window>"
+msgstr "Atribut %s desconegut a l'element <maximized>"
 
 #: src/session.c:1473
 #, c-format
@@ -1500,14 +1481,11 @@ msgid "Unknown element %s"
 msgstr "Element %s desconegut"
 
 #: src/session.c:1921
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Error launching metacity-dialog to warn about apps that don't support "
 "session management: %s\n"
-msgstr ""
-"S'ha produït un error en executar el diàleg metacity per preguntar sobre "
-"la \n"
-"finalització d'una aplicació: %s\n"
+msgstr "S'ha produït un error en executar el metacity-dialog per a avisar sobre aplicacions que no suporten la gestió de sessions: %s\n"
 
 #: src/theme-parser.c:224 src/theme-parser.c:242
 #, c-format
@@ -1664,9 +1642,9 @@ msgid "Distance \"%s\" is unknown"
 msgstr "La distància \"%s\" és desconeguda"
 
 #: src/theme-parser.c:1402
-#, fuzzy, c-format
+#, c-format
 msgid "Aspect ratio \"%s\" is unknown"
-msgstr "La distància \"%s\" és desconeguda"
+msgstr "El ratio d'aspecte \"%s\" és desconeguda"
 
 #: src/theme-parser.c:1446
 #, c-format
@@ -1780,9 +1758,9 @@ msgid "No \"filename\" attribute on element <%s>"
 msgstr "No hi ha cap element de \"nom de fitxer\" en l'element <%s>"
 
 #: src/theme-parser.c:2319 src/theme-parser.c:2827
-#, fuzzy, c-format
+#, c-format
 msgid "Did not understand fill type \"%s\" for <%s> element"
-msgstr "No s'entén l'estat \"%s\" per a l'element <%s>"
+msgstr "No s'entén el tipus de plenat \"%s\" per a l'element <%s>"
 
 #: src/theme-parser.c:2462 src/theme-parser.c:2595 src/theme-parser.c:2700
 #, c-format
@@ -1968,10 +1946,10 @@ msgid "Element <%s> is not allowed inside a <constant> element"
 msgstr "L'element <%s> no és permès dins d'un element <constant>"
 
 #: src/theme-parser.c:3696
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Element <%s> is not allowed inside a distance/border/aspect_ratio element"
-msgstr "L'element <%s> no és permès dins d'un element distància/contorn"
+msgstr "L'element <%s> no és permès dins d'un element distància/contorn/ratio_d'aspecte"
 
 #: src/theme-parser.c:3718
 #, c-format
@@ -2060,12 +2038,11 @@ msgstr ""
 #: src/theme.c:278
 #, c-format
 msgid "Button aspect ratio %g is not reasonable"
-msgstr ""
+msgstr "El ràtio d'aspecte dels botons %g no és raonable"
 
 #: src/theme.c:290
-#, fuzzy
 msgid "Frame geometry does not specify size of buttons"
-msgstr "la geometria del marc no especifica la dimensió \"%s\""
+msgstr "La geometria del marc no especifica la mida dels botons"
 
 #: src/theme.c:849
 msgid "Gradients should have at least two colors"
@@ -2120,17 +2097,15 @@ msgid "Alpha value \"%s\" in blended color is not between 0.0 and 1.0"
 msgstr "El valor alfa \"%s\" en el color barrejat no està entre 0,0 i 1,0"
 
 #: src/theme.c:1111
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
-msgstr ""
-"El format de barreja és \"blend/bg_color/fg_color/alpha\", \"%s\" no "
-"s'ajusta al format"
+msgstr "El format d'ombrejat és \"ombra/base_color/factor\", \"%s\" no s'ajusta al format"
 
 #: src/theme.c:1122
-#, fuzzy, c-format
+#, c-format
 msgid "Could not parse shade factor \"%s\" in shaded color"
-msgstr "No s'ha pogut analitzar el valor alfa \"%s\" en el color barrejat"
+msgstr "No s'ha pogut analitzar el factor d'ombrejat \"%s\" en el color ombrejat"
 
 #: src/theme.c:1132
 #, c-format
@@ -2265,9 +2240,9 @@ msgstr "És impossible de carregar el tema \"%s\": %s\n"
 
 #: src/theme.c:4591 src/theme.c:4598 src/theme.c:4605 src/theme.c:4612
 #: src/theme.c:4619
-#, fuzzy, c-format
+#, c-format
 msgid "No <%s> set for theme \"%s\""
-msgstr "No s'ha definit <name> per al tema \"%s\""
+msgstr "No s'ha definit <%s> per al tema \"%s\""
 
 #: src/theme.c:4629
 #, c-format
@@ -2387,7 +2362,7 @@ msgid ""
 msgstr ""
 
 #: src/xprops.c:153
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Window 0x%lx has property %s\n"
 "that was expected to have type %s format %d\n"
@@ -2395,8 +2370,12 @@ msgid ""
 "This is most likely an application bug, not a window manager bug.\n"
 "The window has title=\"%s\" class=\"%s\" name=\"%s\"\n"
 msgstr ""
-"La finestra 0x%lx té la propietat %s que s'esperava tingués el tipus %s "
-"format %d i actualment té el tipus %s format %d n elements %d\n"
+"La finestra 0x%lx té la propietat %s\n"
+"que s'esperava tingués el tipus %s format %d\n"
+"i actualment té el tipus %s format %d n elements %d.\n"
+"Açò és molt possible que siga un error en l'aplicació, no un error del gestor de finestres.\n"
+"La finestra té el títol=«%s» classe=«%s» nom=«%s»\n"
+"\n"
 
 #: src/xprops.c:399
 #, c-format
@@ -2404,26 +2383,10 @@ msgid "Property %s on window 0x%lx contained invalid UTF-8\n"
 msgstr "La propietat %s en la finestra 0x%lx contenia un UTF-8 invàlid\n"
 
 #: src/xprops.c:479
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
-msgstr "La propietat %s en la finestra 0x%lx contenia un UTF-8 invàlid\n"
+msgstr "La propietat %s en la finestra 0x%lx contenia UTF-8 invàlid per a l'element %d en la lista\n"
 
 #~ msgid "_Shade"
 #~ msgstr "_Ombreja"
-
-#, fuzzy
-#~ msgid "Un_shade"
-#~ msgstr "Desfés l'ombre_jat"
-
-#~ msgid "No <author> set for theme \"%s\""
-#~ msgstr "No s'ha definit <author> per al tema \"%s\""
-
-#~ msgid "No <date> set for theme \"%s\""
-#~ msgstr "No s'ha definit <date> per al tema \"%s\""
-
-#~ msgid "No <description> set for theme \"%s\""
-#~ msgstr "No s'ha definit <description> per al tema \"%s\""
-
-#~ msgid "No <copyright> set for theme \"%s\""
-#~ msgstr "No s'ha definit <copyright> per al tema \"%s\""
