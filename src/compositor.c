@@ -29,6 +29,7 @@
 #include "matrix.h"
 #include <math.h>
 #include "cwindow.h"
+#include "snow.h"
 
 #ifdef HAVE_COMPOSITE_EXTENSIONS
 #include <X11/extensions/Xcomposite.h>
@@ -42,7 +43,9 @@
 struct MetaCompositor
 {
   MetaDisplay *display;
-  
+
+    World *world;
+    
   int composite_error_base;
   int composite_event_base;
   int damage_error_base;
@@ -86,6 +89,33 @@ print_region (Display *dpy, const char *name, XserverRegion region)
   for (i = 0; i < n_rects; ++i)
     g_print ("  %d %d %d %d\n", rects[i].x, rects[i].y, rects[i].width, rects[i].height);
   XFree (rects);
+}
+
+static gboolean
+update_world (gpointer data)
+{
+    static double time;
+
+    MetaCompositor *compositor = data;
+    World *world = compositor->world;
+    MetaScreen *screen = world_get_screen (world);
+    XserverRegion region;
+
+    region = world_invalidate (world);
+    screen = world_get_screen (world);
+    
+    meta_compositor_invalidate_region (compositor, screen, region);
+    XFixesDestroyRegion (compositor->display->xdisplay, region);
+    
+    world_set_time (world, time); /* FIXME */
+
+    region = world_invalidate (world);
+    meta_compositor_invalidate_region (compositor, screen, region);
+    XFixesDestroyRegion (compositor->display->xdisplay, region);
+
+    time += 0.0005;
+    
+    return TRUE;
 }
 
 MetaCompositor*
@@ -173,7 +203,7 @@ meta_compositor_new (MetaDisplay *display)
                                                    free_window_hash_value);
   
   compositor->enabled = TRUE;
-  
+
   return compositor;
 #else /* HAVE_COMPOSITE_EXTENSIONS */
   return (void*) 0xdeadbeef; /* non-NULL value */
@@ -273,10 +303,13 @@ create_root_buffer (MetaScreen *screen, Pixmap *pixmap)
   value.function = GXcopy;
   value.subwindow_mode = IncludeInferiors;
   
-  gc = XCreateGC (display, buffer_pixmap, GCFunction | GCSubwindowMode, &value);
+  gc = XCreateGC (display, buffer_pixmap,
+		  GCFunction | GCSubwindowMode, &value);
   XSetForeground (display, gc, WhitePixel (display, screen->number));
   
   XSetForeground (display, gc, 0x00ff0099);
+
+  XFillRectangle (display, buffer_pixmap, gc, 0, 0, screen->width, screen->height);
   
   format = XRenderFindVisualFormat (display,
 				    DefaultVisual (display,
@@ -390,7 +423,7 @@ paint_screen (MetaCompositor *compositor,
 
   XFixesSetPictureClipRegion (xdisplay, buffer_picture, 0, 0, None);
 
-  if (compositor->debug_updates)
+ if (compositor->debug_updates)
     {
 #define ALPHA 0.5      
       XRenderColor hilight = { ALPHA * 0xFFFF, ALPHA * 0xFFFF, ALPHA * 0x0000, ALPHA * 0xFFFF };
@@ -400,6 +433,8 @@ paint_screen (MetaCompositor *compositor,
       XSync (xdisplay, False);
       g_usleep (20000);
     }
+
+  world_paint (compositor->world, buffer_picture);
   
   paint_buffer (screen, pixmap, damage_region);
 
@@ -465,6 +500,19 @@ ensure_repair_idle (MetaCompositor *compositor)
 {
   if (compositor->repair_idle != 0)
     return;
+  
+  if (!compositor->world)
+  {
+      compositor->world = world_new (compositor->display->xdisplay,
+				     meta_display_screen_for_x_screen (
+					 compositor->display,
+					 ScreenOfDisplay (compositor->display->xdisplay,
+							  DefaultScreen (compositor->display->xdisplay))));
+      
+      g_print ("screen %p\n", world_get_screen (compositor->world));
+      
+      g_timeout_add_full (G_PRIORITY_LOW, 25, update_world, compositor, NULL);
+  }
   
   compositor->repair_idle = g_idle_add_full (META_PRIORITY_COMPOSITE,
                                              repair_now, compositor, NULL);
@@ -605,7 +653,7 @@ process_map (MetaCompositor     *compositor,
   /* See if window was mapped as child of root */
   screen = meta_display_screen_for_root (compositor->display,
                                          event->event);
-  
+
   if (screen == NULL || screen->root_picture == None)
     {
       meta_topic (META_DEBUG_COMPOSITOR,

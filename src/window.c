@@ -2771,8 +2771,10 @@ meta_window_move_resize_internal (MetaWindow  *window,
 #endif
 	  send_sync_request (window);
 	}
+#if 0
       else
 	meta_print_backtrace ();
+#endif
 #if 0
       g_print ("not sending request\n");
 #endif

@@ -1,3 +1,34 @@
+This is the 'spifficity' branch of metacity. It is intended to take advantage of 
+new X extensions such as composite, damage and fixes. Some brokenness should be
+expected.
+
+Somewhat surprisingly, the better the video card you have, the worse
+performance you should expect. The technical reason for this is that
+better video cards usually have more frame-buffer memory, so more
+windows will end up being put in the framebuffer.  This casues
+software rendering to slow down because reading from the framebuffer
+is really slow.
+
+To get reasonable performance, try adding
+
+	Option "NoAccel"
+
+to the "Device" section of your /etc/X11/xorg.conf file. This will
+likely improve performance a lot when a compositing manager is
+running, but also hurt performance a lot when no compositing manager
+is running.
+
+Besides the drop-shadows which were lifted from Keith Packard's
+xcompmgr, you should also see gtk+ (> 2.6) applications applications
+resize a lot more smoothly.  If someone adds support for the
+_NET_WM_SYNC_REQUEST protocol to Qt, you should see Qt applications
+resize smoothly too.
+
+
+
+Original README:
+
+
 Metacity is not a meta-City as in an urban center, but rather
 Meta-ness as in the state of being meta. i.e. metacity : meta as
 opacity : opaque. Also it may have something to do with the Meta key

@@ -7,9 +7,9 @@
 #include <math.h>
 #include <string.h>
 
-#define SHADOW_RADIUS 14
-#define SHADOW_OPACITY (.75)
-#define SHADOW_OFFSET -17
+#define SHADOW_RADIUS 6
+#define SHADOW_OPACITY (.25)
+#define SHADOW_OFFSET -6
 
 static Picture shadow_picture (Display *dpy, Window root,
 			       double opacity, int width, int height, int *wp, int *hp);
@@ -62,7 +62,7 @@ struct CWindow
   unsigned int viewable : 1;
   unsigned int input_only : 1;
   unsigned int translucent : 1;
-  
+
   unsigned int screen_index : 8;
   
   Visual *visual;
@@ -146,7 +146,7 @@ cwindow_extents (CWindow *cwindow)
   if (cwindow->shadow)
   {
       r.x = geometry->x + SHADOW_OFFSET;
-      r.y = geometry->y + SHADOW_OFFSET;
+      r.y = geometry->y;
       r.width = cwindow->shadow_width;
       r.height = cwindow->shadow_height;
   }
@@ -424,9 +424,13 @@ cwindow_set_height (CWindow *cwindow, int height)
 void
 cwindow_set_viewable (CWindow *cwindow, gboolean viewable)
 {
-  cwindow->viewable = viewable;
-}
-
+  viewable = !!viewable;
+  if (cwindow->viewable != viewable)
+    {
+      cwindow_queue_paint (cwindow);
+      cwindow->viewable = viewable;
+    }
+} 
 
 void
 cwindow_set_border_width (CWindow *cwindow, int border_width)
@@ -539,11 +543,13 @@ compute_transform (int x, int y,
   matrix3_translate (&matrix, (gdouble)-x, (gdouble)-y);
 #endif
   
+#if 0
   g_print ("mapping from %d %d %d %d to (%d %d) (%d %d) (%d %d) (%d %d)\n", x, y, width, height,
 	   tmp.points[0].x, tmp.points[0].y,
 	   tmp.points[1].x, tmp.points[1].y,
 	   tmp.points[2].x, tmp.points[2].y,
 	   tmp.points[3].x, tmp.points[3].y);
+#endif
   
   transform_matrix_perspective (x, y,
 				x + width - 1,
@@ -562,86 +568,19 @@ compute_transform (int x, int y,
   convert_matrix (&matrix, transform);
 }
 
-#if 0
-void
-cwindow_draw_warped (CWindow *cwindow,
-		     MetaScreen		 *screen,
-		     Picture		  picture,
-		     Quad		 *destination)
-{
-  MetaCompositor *compositor;
-  Display *display;
-  
-  Picture wpicture;
-  XRenderPictureAttributes pa;
-  XRenderPictFormat *format;
-  
-  XTransform transform;
-  
-  if (!cwindow)
-    return;
-  
-  if (cwindow_get_input_only (cwindow))
-    return;
-  
-  if (!cwindow_get_viewable (cwindow))
-    return;
-  
-  compositor = cwindow_get_compositor (cwindow);
-  display = meta_compositor_get_display (compositor)->xdisplay;
-  
-  
-  format = XRenderFindVisualFormat (meta_compositor_get_display (compositor)->xdisplay,
-				    cwindow_get_visual (cwindow));
-  pa.subwindow_mode = IncludeInferiors;
-  g_assert (meta_compositor_get_display (compositor));
-  
-  wpicture = XRenderCreatePicture (display, cwindow_get_drawable (cwindow), format, CPSubwindowMode, &pa);
-  
-  g_assert (wpicture);
-  
-  compute_transform (0, 0, cwindow_get_width (cwindow), cwindow_get_height (cwindow),
-		     destination, &transform);
-  
-  XRenderSetPictureTransform (display, wpicture, &transform);
-  XRenderSetPictureFilter (meta_compositor_get_display (compositor)->xdisplay, wpicture, "bilinear", 0, 0);
-  
-  XRenderComposite (meta_compositor_get_display (compositor)->xdisplay,
-		    PictOpOver, /* PictOpOver for alpha, PictOpSrc without */
-		    wpicture,
-		    screen->trans_picture,
-		    picture, 
-		    0, 0,
-		    0, 0,
-		    bbox (destination).x, bbox (destination).y,
-		    bbox (destination).width, bbox (destination).height + 100);
-  
-  XRenderFreePicture (display, wpicture);
-}
-#endif
-
-#if 0
 static void
-compute_transformation (int x, int y, int w, int h, Quad *dest, XTransform *trans)
+print_region (Display *dpy, const char *name, XserverRegion region)
 {
-  Matrix3 tmp;
+  XRectangle *rects;
+  int i, n_rects;
   
-  matrix3_identity (&tmp);
+  rects = XFixesFetchRegion (dpy, region, &n_rects);
   
-  transform_matrix_perspective (x, y, w, h,
-				
-				dest->points[0].x, dest->points[0].y,
-				dest->points[1].x, dest->points[1].y,
-				dest->points[2].x, dest->points[2].y,
-				dest->points[3].x, dest->points[3].y,
-				
-				&tmp);
-  
-  matrix3_invert (&tmp);
-  
-  convert_matrix (&tmp, trans);
+  g_print ("region \"%s\":\n", name);
+  for (i = 0; i < n_rects; ++i)
+    g_print ("  %d %d %d %d\n", rects[i].x, rects[i].y, rects[i].width, rects[i].height);
+  XFree (rects);
 }
-#endif
 
 void
 cwindow_process_damage_notify (CWindow *cwindow, XDamageNotifyEvent *event)
@@ -658,7 +597,7 @@ cwindow_process_damage_notify (CWindow *cwindow, XDamageNotifyEvent *event)
   else
     g_print ("damage on unknown window\n");
 #endif
-  
+
   region = XFixesCreateRegion (cwindow_get_xdisplay (cwindow), NULL, 0);
   
   /* translate region to screen; can error if window of damage is
@@ -676,9 +615,9 @@ cwindow_process_damage_notify (CWindow *cwindow, XDamageNotifyEvent *event)
   
   screen = cwindow_get_screen (cwindow);
   
+  /* ignore damage on frozen window */
   if (!cwindow->freeze_info)
     {
-      /* ignore damage on frozen window */
       meta_compositor_invalidate_region (cwindow->compositor, screen, region);
     }
   
@@ -745,6 +684,9 @@ cwindow_set_transformation (CWindow *cwindow,
 void
 cwindow_freeze (CWindow *cwindow)
 {
+  if (!cwindow)
+    return;
+    
   if (cwindow->freeze_info)
     {
       meta_print_backtrace();
@@ -766,7 +708,6 @@ cwindow_freeze (CWindow *cwindow)
 void
 cwindow_thaw (CWindow *cwindow)
 {
-  XserverRegion region;
   if (!cwindow->freeze_info)
     return;
 
@@ -803,7 +744,7 @@ cwindow_draw (CWindow *cwindow, Picture destination)
   
   if (!cwindow_get_viewable (cwindow))
     return;
-  
+
   format = XRenderFindVisualFormat (cwindow_get_xdisplay (cwindow),
 				    cwindow_get_visual (cwindow));
 
@@ -848,7 +789,6 @@ cwindow_draw (CWindow *cwindow, Picture destination)
 	&cwindow->freeze_info->geometry :
 	&cwindow->geometry;
       
-      XRenderColor shadow_color = { 0x0000, 0x000, 0x0000, 0x70c0 };
       XserverRegion shadow_clip;
       XserverRegion old_clip = XFixesCreateRegionFromPicture (dpy, destination);
 
@@ -858,17 +798,15 @@ cwindow_draw (CWindow *cwindow, Picture destination)
 
       XFixesSetPictureClipRegion (dpy, destination, 0, 0, shadow_clip);
       
-      /* super drop shadow */
       if (!cwindow->translucent)
       {
-	  int hp, wp;
 	  create_shadow (cwindow);
 
 	  XRenderComposite (cwindow_get_xdisplay (cwindow), PictOpOver,
 			    cwindow->shadow, None, destination,
 			    0, 0,
 			    0, 0,
-			    geometry->x + SHADOW_OFFSET, geometry->y + SHADOW_OFFSET,
+			    geometry->x + SHADOW_OFFSET, geometry->y,
 			    cwindow->shadow_width, cwindow->shadow_height);
       }
       
