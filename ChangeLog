@@ -1,3 +1,15 @@
+Fri Jan 21 14:36:32 2005  Søren Sandmann  <sandmann@redhat.com>
+
+	* src/window.c (update_resize): s/new_h/new_y/
+
+	* src/display.c (use_this_motion_notify): Use this code here from window.c
+
+Fri Jan 21 11:26:27 2005  Søren Sandmann  <sandmann@redhat.com>
+
+	* src/window.c: Some cleanups
+	* src/ui.c: Make frame windows override redirect so clients can
+	resize them.
+
 Thu Jan 20 16:13:47 2005  Søren Sandmann  <sandmann@redhat.com>
 
 	* src/compositor.c, src/cwindow.c: Remove old, unsued code. Add a

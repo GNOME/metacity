@@ -528,5 +528,4 @@ void meta_display_focus_the_no_focus_window (MetaDisplay *display,
 void meta_display_queue_autoraise_callback  (MetaDisplay *display,
                                              MetaWindow  *window);
 void meta_display_remove_autoraise_callback (MetaDisplay *display);
-
 #endif

@@ -6223,7 +6223,7 @@ update_resize (MetaWindow *window,
   else if (meta_grab_op_is_resizing_north (window->display->grab_op))
     {
       new_h -= dy;
-      new_h += dy;
+      new_y += dy;
     }
   
   if (!check_moveresize_frequency (window, &remaining) && !force)
@@ -6300,83 +6300,6 @@ update_resize (MetaWindow *window,
     }
 }
 
-typedef struct
-{
-  const XEvent *current_event;
-  int count;
-  Time last_time;
-} EventScannerData;
-
-static Bool
-find_last_time_predicate (Display  *display,
-                          XEvent   *xevent,
-                          XPointer  arg)
-{
-  EventScannerData *esd = (void*) arg;
-
-  if (esd->current_event->type == xevent->type &&
-      esd->current_event->xany.window == xevent->xany.window)
-    {
-      esd->count += 1;
-      esd->last_time = xevent->xmotion.time;
-    }
-
-  return False;
-}
-
-static gboolean
-check_use_this_motion_notify (MetaWindow *window,
-                              XEvent     *event)
-{
-  EventScannerData esd;
-  XEvent useless;
-
-  /* This code is copied from Owen's GDK code. */
-  
-  if (window->display->grab_motion_notify_time != 0)
-    {
-      /* == is really the right test, but I'm all for paranoia */
-      if (window->display->grab_motion_notify_time <=
-          event->xmotion.time)
-        {
-          meta_topic (META_DEBUG_RESIZING,
-                      "Arrived at event with time %lu (waiting for %lu), using it\n",
-                      (unsigned long) event->xmotion.time,
-                      (unsigned long) window->display->grab_motion_notify_time);
-          window->display->grab_motion_notify_time = 0;
-          return TRUE;
-        }
-      else
-        return FALSE; /* haven't reached the saved timestamp yet */
-    }
-  
-  esd.current_event = event;
-  esd.count = 0;
-  esd.last_time = 0;
-
-  /* "useless" isn't filled in because the predicate never returns True */
-  XCheckIfEvent (window->display->xdisplay,
-                 &useless,
-                 find_last_time_predicate,
-                 (XPointer) &esd);
-
-  if (esd.count > 0)
-    meta_topic (META_DEBUG_RESIZING,
-                "Will skip %d motion events and use the event with time %lu\n",
-                esd.count, (unsigned long) esd.last_time);
-  
-  if (esd.last_time == 0)
-    return TRUE;
-  else
-    {
-      /* Save this timestamp, and ignore all motion notify
-       * until we get to the one with this stamp.
-       */
-      window->display->grab_motion_notify_time = esd.last_time;
-      return FALSE;
-    }
-}
-
 static void
 handle_moving_event (MetaWindow *window, XEvent *event)
 {
@@ -6389,8 +6312,7 @@ handle_moving_event (MetaWindow *window, XEvent *event)
       meta_display_end_grab_op (window->display, event->xbutton.time);
     }
   else if (event->type == MotionNotify				&&
-	   event->xmotion.root == window->screen->xroot		&&
-	   check_use_this_motion_notify (window, event))
+	   event->xmotion.root == window->screen->xroot)
     {
       update_move (window,
 		   event->xmotion.state,
@@ -6422,8 +6344,7 @@ handle_resizing_event (MetaWindow *window, XEvent *event)
       meta_display_end_grab_op (window->display, event->xbutton.time);
     }
   else if (event->type == MotionNotify				&&
-	   event->xmotion.root == window->screen->xroot		&&
-	   check_use_this_motion_notify (window, event))
+	   event->xmotion.root == window->screen->xroot)
     {
       update_resize (window,
 		     event->xmotion.x_root,

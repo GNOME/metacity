@@ -1107,17 +1107,6 @@ meta_grab_op_is_resizing_west (MetaGrabOp op)
 }
 
 gboolean
-meta_grab_op_is_resizing_south (MetaGrabOp op)
-{
-  return (op == META_GRAB_OP_RESIZING_SW		||
-	  op == META_GRAB_OP_RESIZING_SE		||
-	  op == META_GRAB_OP_RESIZING_S			||
-	  op == META_GRAB_OP_KEYBOARD_RESIZING_SW	||
-	  op == META_GRAB_OP_KEYBOARD_RESIZING_SE	||
-	  op == META_GRAB_OP_KEYBOARD_RESIZING_S);
-}
-
-gboolean
 meta_grab_op_is_resizing_north (MetaGrabOp op)
 {
   return (op == META_GRAB_OP_RESIZING_NW		||
@@ -1126,6 +1115,17 @@ meta_grab_op_is_resizing_north (MetaGrabOp op)
 	  op == META_GRAB_OP_KEYBOARD_RESIZING_NW	||
 	  op == META_GRAB_OP_KEYBOARD_RESIZING_NE	||
 	  op == META_GRAB_OP_KEYBOARD_RESIZING_N);
+}
+
+gboolean
+meta_grab_op_is_resizing_south (MetaGrabOp op)
+{
+  return (op == META_GRAB_OP_RESIZING_SW		||
+	  op == META_GRAB_OP_RESIZING_SE		||
+	  op == META_GRAB_OP_RESIZING_S			||
+	  op == META_GRAB_OP_KEYBOARD_RESIZING_SW	||
+	  op == META_GRAB_OP_KEYBOARD_RESIZING_SE	||
+	  op == META_GRAB_OP_KEYBOARD_RESIZING_S);
 }
 
 gboolean
@@ -1430,6 +1430,84 @@ handle_net_restack_window (MetaDisplay* display,
     }
 }
 #endif
+
+
+typedef struct
+{
+  const XEvent *current_event;
+  int count;
+  Time last_time;
+} EventScannerData;
+
+static Bool
+find_last_time_predicate (Display  *display,
+                          XEvent   *xevent,
+                          XPointer  arg)
+{
+  EventScannerData *esd = (void*) arg;
+
+  if (esd->current_event->type == xevent->type &&
+      esd->current_event->xany.window == xevent->xany.window)
+    {
+      esd->count += 1;
+      esd->last_time = xevent->xmotion.time;
+    }
+
+  return False;
+}
+
+static gboolean
+use_this_motion_notify (MetaDisplay *display,
+			XEvent      *event)
+{
+  EventScannerData esd;
+  XEvent useless;
+
+  /* This code is copied from Owen's GDK code. */
+  
+  if (display->grab_motion_notify_time != 0)
+    {
+      /* == is really the right test, but I'm all for paranoia */
+      if (display->grab_motion_notify_time <=
+          event->xmotion.time)
+        {
+          meta_topic (META_DEBUG_RESIZING,
+                      "Arrived at event with time %lu (waiting for %lu), using it\n",
+                      (unsigned long) event->xmotion.time,
+                      (unsigned long) display->grab_motion_notify_time);
+          display->grab_motion_notify_time = 0;
+          return TRUE;
+        }
+      else
+        return FALSE; /* haven't reached the saved timestamp yet */
+    }
+  
+  esd.current_event = event;
+  esd.count = 0;
+  esd.last_time = 0;
+
+  /* "useless" isn't filled in because the predicate never returns True */
+  XCheckIfEvent (display->xdisplay,
+                 &useless,
+                 find_last_time_predicate,
+                 (XPointer) &esd);
+
+  if (esd.count > 0)
+    meta_topic (META_DEBUG_RESIZING,
+                "Will skip %d motion events and use the event with time %lu\n",
+                esd.count, (unsigned long) esd.last_time);
+  
+  if (esd.last_time == 0)
+    return TRUE;
+  else
+    {
+      /* Save this timestamp, and ignore all motion notify
+       * until we get to the one with this stamp.
+       */
+      display->grab_motion_notify_time = esd.last_time;
+      return FALSE;
+    }
+}
 
 static gboolean
 event_callback (XEvent   *event,
@@ -1778,8 +1856,11 @@ event_callback (XEvent   *event,
     case MotionNotify:
       if (display->grab_window == window &&
           event->xany.serial >= display->grab_start_serial &&
-          grab_op_is_mouse (display->grab_op))
-        meta_window_handle_mouse_grab_op_event (window, event);
+          grab_op_is_mouse (display->grab_op) &&
+	  use_this_motion_notify (display, event))
+      {
+	  meta_window_handle_mouse_grab_op_event (window, event);
+      }
       break;
     case EnterNotify:
       if (display->grab_window == window &&
