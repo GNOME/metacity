@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "POT-Creation-Date: 2003-01-28 17:21+0200\n"
-"PO-Revision-Date: 2003-01-28 07:31--500\n"
+"PO-Revision-Date: 2003-01-28 07:36--500\n"
 "Last-Translator: Yuriy Syrota <yuri@renome.rovno.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1124,12 +1124,12 @@ msgstr ""
 #: src/theme-parser.c:572
 #, c-format
 msgid "Angle must be between 0.0 and 360.0, was %g\n"
-msgstr ""
+msgstr "Кут має бути в діапазоні від 0,0 до 360,0, а був %g\n"
 
 #: src/theme-parser.c:638
 #, c-format
 msgid "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g\n"
-msgstr ""
+msgstr "Альфа-канал має бути в діапазоні від 0,0 (невидимість) до 1,0 (повна непрозорість), а був %g\n"
 
 #: src/theme-parser.c:684
 #, c-format
