@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity 0.1\n"
-"POT-Creation-Date: 2003-01-25 10:00+0100\n"
-"PO-Revision-Date: 2003-01-25 09:57+0100\n"
+"POT-Creation-Date: 2003-01-30 20:40+0100\n"
+"PO-Revision-Date: 2003-01-30 21:00+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian (bokmål) <i18n-no@lister.ping.uio.no>\n"
 "MIME-Version: 1.0\n"
@@ -368,7 +368,7 @@ msgid ""
 "titlebar_uses_desktop_font option is set to true. By default, titlebar_font "
 "is unset, causing Metacity to fall back to the desktop font even if "
 "titlebar_uses_desktop_font is false."
-msgstr ""
+msgstr "En streng som beskriver skriften for vinduets tittellinje. Størrelsen fra beskrivelsen vil likevel kun brukes hvis titlebar_font_size er satt til 0. I tillegg er dette alternativet deaktivert hvis titlebar_uses_desktop_font er satt til «true». Standardverdien for titlebar_font ikke satt, hvilket gjør at Metacity bruker skrivebordets skrift selv om titlebar_uses_desktop_font er usann."
 
 #: src/metacity.schemas.in.h:3
 msgid "Action on title bar double-click"
@@ -390,7 +390,7 @@ msgid ""
 "Duplicate buttons are not allowed. Unknown button names are silently ignored "
 "so that buttons can be added in future metacity versions without breaking "
 "older versions."
-msgstr ""
+msgstr "Plassering av knappene på tittellinjen. Verdien skal være en streng, som f.eks. «menu:minimize,maximize,close»; kolonet skiller venstre hjørne av vinduet fra høyre, og navnene på knappene er kommaseparert. Flere like knapper er ikke tillatt. Ukjente navn på knapper ignoreres slik at knapper kan legges til i fremtidige versjoner av Metacity uten å ødelegge for gamle versjoner."
 
 #: src/metacity.schemas.in.h:7
 msgid "Automatically raises the focused window"
@@ -402,7 +402,7 @@ msgid ""
 "(left click), resize the window (middle click), or show the window menu "
 "(right click). Modifier is expressed as \"&lt;Alt&gt;\" or \"&lt;Super&gt;\" "
 "for example."
-msgstr ""
+msgstr "Klikk på et vindu mens denne endringstasten holdes nede vil flytte vinduet (venstreklikk), endre størrelse på vinduet (midtklikk), eller vise vindusmenyen (høyreklikk). Endringstasten uttrykkes som dette: «&lt;Alt&gt;» eller «&lt;Super&gt;»."
 
 #: src/metacity.schemas.in.h:9
 msgid "Close a window"
@@ -433,13 +433,15 @@ msgid ""
 "If true, and the focus mode is either \"sloppy\" or \"mouse\" then the "
 "focused window will be automatically raised after a delay (the delay is "
 "specified by the auto_raise_delay key)."
-msgstr ""
+msgstr "Hvis denne er sann og fokusmodus er enten «sloppy» eller «mouse» så vil det fokuserte vinduet automatisk heves etter en pause (pausen spesifiseres av nøkkelen auto_raise_delay_key)."
 
 #: src/metacity.schemas.in.h:16
 msgid ""
 "If true, ignore the titlebar_font option, and use the standard application "
 "font for window titles."
 msgstr ""
+"Hvis sann ignoreres alternativet «titlebar_font», og applikasjonens "
+"forvalgte skrift for vindustitler brukes."
 
 #: src/metacity.schemas.in.h:17
 msgid ""
@@ -452,7 +454,7 @@ msgid ""
 "questionable. But it's better than having settings for all the specific "
 "details of application-based vs. window-based, e.g. whether to pass through "
 "clicks. Also, application-based mode is largely unimplemented at the moment."
-msgstr ""
+msgstr "Hvis sann vil Metacity arbeide med applikasjoner i stedet for vinduer. Konseptet er litt abstrakt, men generelt sett er applikasjonsbasert oppsett mer likt Mac og mindre likt Windows. Når du fokuserer et vindu i applikasjonsbasert modus vil alle vinduene i applikasjonen heves. I tillegg vil fokus-klikk ikke videresendes til vinduer i andre applikasjoner. Denne innstillingens eksistens er tvilsom, men det er bedre enn å ha innstillinger for alle spesifikke detaljer for applikasjonsbasert vs. vindusbasert modus, f.eks. om klikk skal videresendes til underliggende vinduer. Applikasjonsbasert modus er ikke ferdig implementert ennå."
 
 #: src/metacity.schemas.in.h:18
 msgid "Lower window below other windows"
@@ -593,6 +595,9 @@ msgid ""
 "prevent accidentally destroying your desktop by asking for 34 million "
 "workspaces)."
 msgstr ""
+"Antall arbeidsområder. Må være høyrere enn null, og har en fast "
+"maskimumsverdi (for å forhindre at brukere gjør skrivebordet ubrukelig ved å "
+"be om 34 millioner arbeidsområder)."
 
 #: src/metacity.schemas.in.h:52
 msgid "Raise obscured window, otherwise lower"
@@ -624,7 +629,7 @@ msgid ""
 "world is an ugly place. Some of the workarounds are workarounds for "
 "limitations in the specifications themselves, so sometimes a bug in no-"
 "workarounds mode won't be fixable without amending a spec."
-msgstr ""
+msgstr "Noen applikasjoner bryter standarder på måter som resulterer i dårlige funksjoner i vindushåndterere. Ideelt sett ville Metacity plassert alle dialoger på en konsistent måte i forhold til opphavsvinduet. Dette krever at man ignorerer applikasjonsspesifikke plasseringer for dialoger. Men noen versjoner av Java/Swing merker sine oppsprettvinduer som dialoger, slik at Metacity må deaktivere dialogplassering for å la menyer fungere i dårlige Java-applikasjoner. Det finnes flere eksempler som dette. Dette alternativet setter Metacity i fullstendig korrekt modus, hvilket kanskje gir et moderat bedre brukergrensesnitt hvis du ikke trenger å kjøre applikasjoner som bryter standardene. Dette må beklageligvis aktiveres som standard; den virkelige verden er et stygt sted. Noen av dette er for å komme rundt begrensninger i selve standardene, så enkelte ganger vil ikke en feil som finnes i «no-workarounds»-modus kunne utbedres uten hjelp fra en endring i selve standarden."
 
 #: src/metacity.schemas.in.h:57
 msgid "Switch to workspace 1"
@@ -695,7 +700,7 @@ msgid ""
 "The /apps/metacity/global_keybindings/run_command_N keys define keybindings "
 "that correspond to these commands. Pressing the keybinding for run_command_N "
 "will execute command_N."
-msgstr ""
+msgstr "Nøklene /apps/metacity/global_keybindings/run_command_N definerer tastaturbindinger som korresponderer til disse kommandoene. Hvis du trykker tastaturbindingen for run_command_N kjøres command_N."
 
 #: src/metacity.schemas.in.h:74
 msgid ""
@@ -1545,7 +1550,7 @@ msgid ""
 "them, \"sloppy\" means windows are focused when the mouse enters the window, "
 "and \"mouse\" means windows are focused when the mouse enters the window and "
 "unfocused when the mouse leaves the window."
-msgstr ""
+msgstr "Fokusmodus for vinduer indikerer hvordan vinduer aktiveres. Det er tre mulige verdier; «click» betyr at vinduer må klikkes for å fokuseres, «sloppy» betyr at vinduer fokuseres når muspekeren er over vinduet, og «mouse» som betyr at vinduer fokuseres når muspekeren går inn i vinduet og at fokus fjernes når muspekeren forlater vinduet."
 
 #: src/metacity.schemas.in.h:131
 msgid ""
@@ -1633,7 +1638,7 @@ msgid ""
 "This option determines the effects of double-clicking on the title bar. "
 "Current valid options are 'toggle_shaded', which will shade/unshade the "
 "window, and 'toggle_maximized' which will maximize/unmaximize the window."
-msgstr ""
+msgstr "Dette alternativet bestemmer effekten av dobbeltklikk på tittellinjen. Gyldige alternativer er «toggle_shaded», som vil skyggelegge eller fjerne skyggelegging av vinduet, og «toggle_maximized», som vil maksimere/gjenopprette vinduet."
 
 #: src/metacity.schemas.in.h:137
 msgid "Toggle fullscreen mode"
