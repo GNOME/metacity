@@ -459,7 +459,7 @@ utf8_list_from_results (GetPropertyResults *results,
       ++i;
     }
 
-  if (results->prop[n_items - 1] != '\0')
+  if (results->prop[results->n_items - 1] != '\0')
     ++n_strings;
 
   /* we're guaranteed that results->prop has a nul on the end

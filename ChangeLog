@@ -1,3 +1,8 @@
+2004-06-14  Havoc Pennington  <hp@redhat.com>
+
+	* src/xprops.c (utf8_list_from_results): fix this to compile (1
+	year later) - clearly everyone is testing GNOME 2.2 from CVS...
+
 2003-07-29  Arvind Samptur  <arvind.samptur@wipro.com>
 
 	* src/xprops.c (utf8_list_from_results): Number of
