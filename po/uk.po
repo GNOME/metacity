@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
-"POT-Creation-Date: 2003-01-21 16:06+0200\n"
-"PO-Revision-Date: 2003-01-21 09:40--500\n"
+"POT-Creation-Date: 2003-01-24 23:31+0200\n"
+"PO-Revision-Date: 2003-01-24 14:16--500\n"
 "Last-Translator: Yuriy Syrota <yuri@renome.rovno.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -105,12 +105,12 @@ msgstr "Демаксимізувати вікно"
 msgid "Some other program is already using the key %s with modifiers %x as a binding\n"
 msgstr "Якась програма вже використовує клавішу %s з модифікатором %x в якості прив'язки\n"
 
-#: src/keybindings.c:2246
+#: src/keybindings.c:2317
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr "Сталася помилка завантаження діалога \"Метаситі\" для виводу повідомлення про помилку команди: %s\n"
 
-#: src/keybindings.c:2277
+#: src/keybindings.c:2348
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "Команду %d не визначено.\n"
@@ -346,7 +346,7 @@ msgstr "Рядок опису шрифта для заголовка вікна.
 
 #: src/metacity.schemas.in.h:3
 msgid "Action on title bar double-click"
-msgstr ""
+msgstr "Дія на подвійне клацання по заголовку вікна"
 
 #: src/metacity.schemas.in.h:4
 msgid "Activate window menu"
@@ -354,11 +354,11 @@ msgstr "Активувати меню вікна"
 
 #: src/metacity.schemas.in.h:5
 msgid "Arrangement of buttons on the titlebar"
-msgstr ""
+msgstr "Вирівнювання кнопок у заголовку вікна"
 
 #: src/metacity.schemas.in.h:6
 msgid "Arrangement of buttons on the titlebar. The value should be a string, such as \"menu:minimize,maximize,close\"; the colon separates the left corner of the window from the right corner, and the button names are comma-separated. Duplicate buttons are not allowed. Unknown button names are silently ignored so that buttons can be added in future metacity versions without breaking older versions."
-msgstr ""
+msgstr "Вирівнювання кнопок у заголовку вікна. Значення має бути рядком, наприклад, \"menu:minimize,maximize,close\"; двокрапка розділяє півий і правий кути вікна, назви кнопок розділяються комами. Дублювати кнопки не дозволяється. Невідомі назви кнопок завжди ігноруються без сповіщення, так що кнопки може бути додано в наступних версіях, не порушуючи попередніх."
 
 #: src/metacity.schemas.in.h:7
 msgid "Automatically raises the focused window"
@@ -366,7 +366,7 @@ msgstr "Автоматично вікривати активне вікно"
 
 #: src/metacity.schemas.in.h:8
 msgid "Clicking a window while holding down this modifier key will move the window (left click), resize the window (middle click), or show the window menu (right click). Modifier is expressed as \"&lt;Alt&gt;\" or \"&lt;Super&gt;\" for example."
-msgstr ""
+msgstr "Клацання по вікну, коли натиснуто клавішу-модифікатор, перенесе вікно (ліва кнопка), змінить розмір (середня кнопка) чи покаже меню вікна (права кнопка). Модифікатор визначається як \"&lt;Alt&gt;\" чи \"&lt;Super&gt;\", для наприкладу."
 
 #: src/metacity.schemas.in.h:9
 msgid "Close a window"
@@ -394,15 +394,15 @@ msgstr "Сховати всі вікна і активувати стільни�
 
 #: src/metacity.schemas.in.h:15
 msgid "If true, and the focus mode is either \"sloppy\" or \"mouse\" then the focused window will be automatically raised after a delay (the delay is specified by the auto_raise_delay key)."
-msgstr ""
+msgstr "Якщо Істина, а для режиму активації вибрано значення \"sloppy\" чи \"mouse\", то з невеликою затримкою активне вікно буде піднято (час затримки визначається ключем auto_raise_delay)."
 
 #: src/metacity.schemas.in.h:16
 msgid "If true, ignore the titlebar_font option, and use the standard application font for window titles."
-msgstr ""
+msgstr "Якщо Істина, ігнорується параметр titlebar_font, і використовується стандартний шрифт додатка для заголовків вікна."
 
 #: src/metacity.schemas.in.h:17
 msgid "If true, then Metacity works in terms of applications rather than windows. The concept is a bit abstract, but in general an application-based setup is more like the Mac and less like Windows. When you focus a window in application-based mode, all the windows in the application will be raised. Also, in application-based mode, focus clicks are not passed through to windows in other applications. The existence of this setting is somewhat questionable. But it's better than having settings for all the specific details of application-based vs. window-based, e.g. whether to pass through clicks. Also, application-based mode is largely unimplemented at the moment."
-msgstr ""
+msgstr "Якщо Істина, \"Метаситі\" працює з додатками, а не з вікнами. Підхід, що ґрунтується на додатках, більше схожа на системи Mac, ніж на Windows, хоча таке формулювання досить нечітке. Коли активується вікно в режимі, що ґрунтується на додатках, відкриваються всі вікна додатка. Крім того, в цьому режимі клацання мишою не передаются вікнам інших додатків. Раціональність такого підходу знаходиться під питанням. Але це все ж таки краще, ніж вписувати в налаштуваннях всі відмінності режимів один від одного (наприклад, чи потрібно передавати клацання мишою). Крім того, реалізація режиму, що ґрунтується на додатках, в даний момент ще досить далека від завершення."
 
 #: src/metacity.schemas.in.h:18
 msgid "Lower window below other windows"
@@ -426,7 +426,7 @@ msgstr "Мінінізувати вікно"
 
 #: src/metacity.schemas.in.h:23
 msgid "Modifier to use for modified window click actions"
-msgstr ""
+msgstr "Модифікатор для дій з клацанням мишою"
 
 #: src/metacity.schemas.in.h:24
 msgid "Move a window"
@@ -1945,7 +1945,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5457
+#: src/window.c:5471
 #, c-format
 msgid "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %d x %d and max size %d x %d; this doesn't make much sense.\n"
 msgstr ""
