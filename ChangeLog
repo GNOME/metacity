@@ -1,3 +1,8 @@
+2005-02-12  Owen Taylor  <otaylor@redhat.com>
+
+	* configure.in: Revert compositor checks to what HEAD
+	has ... what was here wasn't really functional.
+
 Tue Feb  1 16:21:40 2005  Søren Sandmann  <sandmann@redhat.com>
 
 	* src/snow.[ch]: new files
