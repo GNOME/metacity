@@ -1,3 +1,9 @@
+Fri Mar 28 15:39:35 2003  Soeren Sandmann  <sandmann@daimi.au.dk>
+
+	* src/window.c (update_resize): Don't cap refresh rate.  Fixes
+	problem with my last commit, where the window could get stuck with
+	a wrong size until you released the button.
+
 Fri Mar 28 14:13:37 2003  Soeren Sandmann  <sandmann@daimi.au.dk>
  	
 	* src/window.c (update_resize): Only cap refresh rate when not

@@ -6304,8 +6304,7 @@ update_resize (MetaWindow *window,
       break;
     }
 
-  if (!check_moveresize_frequency (window))
-    return;
+  check_moveresize_frequency (window);
   
   old = window->rect;
   
