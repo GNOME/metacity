@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "POT-Creation-Date: 2003-01-28 17:21+0200\n"
-"PO-Revision-Date: 2003-01-28 07:25--500\n"
+"PO-Revision-Date: 2003-01-28 07:31--500\n"
 "Last-Translator: Yuriy Syrota <yuri@renome.rovno.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1189,9 +1189,9 @@ msgid "Unknown type \"%s\" on <%s> element"
 msgstr "Невідомий тип \"%s\" у елементі <%s>"
 
 #: src/theme-parser.c:1091
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown style_set \"%s\" on <%s> element"
-msgstr "Невідома ознака %s у елементі <window>"
+msgstr "Невідомий параметр style_set \"%s\" для елемента <%s>"
 
 #: src/theme-parser.c:1099
 #, c-format
@@ -1259,9 +1259,9 @@ msgid "Distance \"%s\" is unknown"
 msgstr "Не відома відстань \"%s\""
 
 #: src/theme-parser.c:1402
-#, fuzzy, c-format
+#, c-format
 msgid "Aspect ratio \"%s\" is unknown"
-msgstr "Не відома відстань \"%s\""
+msgstr "Невідомий кофіцієнт пропорційності \"%s\""
 
 #: src/theme-parser.c:1446
 #, c-format
@@ -1727,9 +1727,9 @@ msgid "Shade format is \"shade/base_color/factor\", \"%s\" does not fit the form
 msgstr "Формат тіні — \"shade/основний_колір/компонент\", \"%s\" не відповідає формату"
 
 #: src/theme.c:1122
-#, fuzzy, c-format
+#, c-format
 msgid "Could not parse shade factor \"%s\" in shaded color"
-msgstr "Не вдалось проаналізувати колір \"%s\""
+msgstr "Не вдалось проаналізувати компонент тіні \"%s\" в затіненому кольорі"
 
 #: src/theme.c:1132
 #, c-format
