@@ -760,13 +760,11 @@ process_create (MetaCompositor     *compositor,
   
   if (meta_error_trap_pop_with_return (compositor->display, TRUE) != Success)
     {
-      g_print ("couldn't get\n");
       meta_topic (META_DEBUG_COMPOSITOR, "Failed to get attributes for window 0x%lx\n",
                   event->window);
     }
   else
     {
-      g_print ("adding\n");
       meta_topic (META_DEBUG_COMPOSITOR,
                   "Create window 0x%lx, adding\n", event->window);
       meta_compositor_add_window (compositor,

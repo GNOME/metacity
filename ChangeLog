@@ -1,3 +1,7 @@
+Wed Jan 19 16:54:21 2005  Søren Sandmann  <sandmann@redhat.com>
+
+	* src/compositor.c (process_create): Remove debugging spew
+
 Fri Jan 14 17:09:32 2005  Søren Sandmann  <sandmann@redhat.com>
 
 	* src/compositor.c (draw_windows): Carefully avoid drawing windows
