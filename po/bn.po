@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: METACITY 2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-01-02 01:59-0500\n"
+"POT-Creation-Date: 2004-02-15 17:25-0500\n"
 "PO-Revision-Date: 2003-10-12 20:33+0530\n"
 "Last-Translator: Dr Anirban Mitra <mitra_anirban@yahoo.co.in>\n"
 "Language-Team: Bengali <gnome-trans@bengalinux.org>\n"
@@ -2883,7 +2883,7 @@ msgid "Application set a bogus _NET_WM_PID %ld\n"
 msgstr "প্রোগ্রামটি একটি অর্থহীন _NET_WM_PID স্থির করেছে %ld\n"
 
 #. first time through
-#: src/window.c:4657
+#: src/window.c:4659
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -2899,7 +2899,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5315
+#: src/window.c:5317
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"

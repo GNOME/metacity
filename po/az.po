@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity.HEAD.az\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-10-27 19:40-0500\n"
+"POT-Creation-Date: 2004-02-15 17:25-0500\n"
 "PO-Revision-Date: 2003-09-27 22:04+0300\n"
 "Last-Translator: Mətin Əmirov <metin@karegen.com>\n"
 "Language-Team: Azərbaycan <gnome@azitt.com>\n"
@@ -2859,7 +2859,7 @@ msgid "Application set a bogus _NET_WM_PID %ld\n"
 msgstr "Proqram tə'minatı xətalı _NET_WM_PID %ld tə'yin etdi\n"
 
 #. first time through
-#: src/window.c:4638
+#: src/window.c:4659
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -2875,7 +2875,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5299
+#: src/window.c:5317
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"

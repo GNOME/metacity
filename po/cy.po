@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-10-27 19:40-0500\n"
+"POT-Creation-Date: 2004-02-15 17:25-0500\n"
 "PO-Revision-Date: 2003-08-29 17:17+0100\n"
 "Last-Translator: Dafydd Harries <daf@parnassus.ath.cx>\n"
 "Language-Team: Cymraeg <gnome-cy@pengwyn.linux.org.uk>\n"
@@ -2955,7 +2955,7 @@ msgid "Application set a bogus _NET_WM_PID %ld\n"
 msgstr "Gosododd rhaglen _NET_WM_PID drŵg %ld\n"
 
 #. first time through
-#: src/window.c:4638
+#: src/window.c:4659
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -2971,7 +2971,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5299
+#: src/window.c:5317
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"

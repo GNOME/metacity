@@ -1,3 +1,13 @@
+2.6.5
+===
+
+Thanks to Rob Adams and Keith Packard for contributions to this release.
+
+ - flipflop on #102209/#115072 again (raise on click, but break some 
+   apps by causing enter/leave)
+ - fix memory corruption in window list
+ - fix window-type-inference code for legacy toolkits' windows
+
 2.6.3
 ===
 
