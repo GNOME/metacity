@@ -1,3 +1,25 @@
+2.4.55
+===
+
+ Thanks to Soeren Sandmann, Owen Taylor, Frederic Crozat, 
+ Rob Adams, Orien Vandenbergh, Arvind Samptur, Youssef Makki 
+ for contributions to this release.
+
+ - some fixes to opaque resize that make it slightly less 
+   choppy
+ - fix some infinite loops caused by stupid apps with transient for
+   cycles
+ - force window min/max size to be at least 1 pixel
+ - unfocus window on leaving window border, not on leaving 
+   window itself, in strict mouse focus mode
+ - fix handling of workspace names so they don't get 
+   all lost/broken/etc.
+ - fix handling of ignored modifiers (makes key shortcuts 
+   work while CapsLock/ScrollLock/NumLock are all enabled,
+   most people didn't notice as nobody turns on ScrollLock)
+ - fix multihead crash #106086
+ - many translation updates
+
 2.4.34
 ===
 
