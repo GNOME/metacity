@@ -1,3 +1,8 @@
+Fri Jan 14 17:09:32 2005  Søren Sandmann  <sandmann@redhat.com>
+
+	* src/compositor.c (draw_windows): Carefully avoid drawing windows
+	that are obscured by other windows.
+
 Thu Jan 13 23:31:31 2005  Søren Sandmann  <sandmann@redhat.com>
 
 	* src/cwindow.c (cwindow_new_draw): Some drawing fixes
