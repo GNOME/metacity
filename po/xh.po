@@ -1,17 +1,17 @@
-# Italian translation of Metacity.
-# Copyright (C) 2002 Free Software Foundation, Inc.
-# Pier Luigi Fiorini <plfiorini@libero.it>, 2002. 
-# Lapo Calamandrei <lapo.calamandrei@virgilio.it>, 2003.
-# Luca Ferretti <elle.uca@infinito.it>, 2004.
+# Xhosa translation of metacity
+# Copyright (C) 2005 Canonical Ltd.
+# This file is distributed under the same license as the metacity package.
+# Translation by Canonical Ltd <translations@canonical.com> with thanks to
+# Translation World CC in South Africa, 2005.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: metacity 2.3.55\n"
+"Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-23 10:55+0100\n"
-"PO-Revision-Date: 2005-02-15 09:14+0100\n"
-"Last-Translator: Luca Ferretti <elle.uca@infinito.it>\n"
-"Language-Team: Italian <tp@lists.linux.it>\n"
+"POT-Creation-Date: 2005-03-10 17:14+0200\n"
+"PO-Revision-Date: 2005-03-01 00:11+0200\n"
+"Last-Translator: Canonical Ltd <translations@canonical.com>\n"
+"Language-Team: Xhosa <xh-translate@ubuntu.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,52 +19,53 @@ msgstr ""
 #: ../src/tools/metacity-message.c:150
 #, c-format
 msgid "Usage: %s\n"
-msgstr "Uso: %s\n"
+msgstr "Usetyenziso: %s\n"
 
 #: ../src/tools/metacity-message.c:176 ../src/util.c:128
 msgid "Metacity was compiled without support for verbose mode\n"
-msgstr ""
-"Metacity è stato compilato escludendo il supporto per la modalità prolissa\n"
+msgstr "I-Metacity yaqulunqwa ngaphandle kwenkxaso kwimowdi yeverbose\n"
 
 #: ../src/delete.c:63 ../src/delete.c:90 ../src/metacity-dialog.c:70
 #: ../src/theme-parser.c:467
 #, c-format
 msgid "Could not parse \"%s\" as an integer"
-msgstr "Impossibile analizzare «%s» come un intero"
+msgstr "Ayikwazi kwahlula ngezijungqe \"%s\" njengenani elipheleleyo"
 
 #: ../src/delete.c:70 ../src/delete.c:97 ../src/metacity-dialog.c:77
 #: ../src/theme-parser.c:476 ../src/theme-parser.c:530
 #, c-format
 msgid "Did not understand trailing characters \"%s\" in string \"%s\""
-msgstr "I caratteri «%s» nella stringa «%s» risultano incomprensibili"
+msgstr "Ayikwazanga kuqonda oonobumba abarhuqayo \"%s\" kwistring \"%s\""
 
 #: ../src/delete.c:128
 #, c-format
 msgid "Failed to parse message \"%s\" from dialog process\n"
-msgstr "Analisi del messaggio «%s» dal processo dialogo fallita\n"
+msgstr ""
+"Ayikwazanga kuhlula ngezijungqe umyalezo \"%s\" ukusuka kwinkqubo "
+"yonxibelelwano\n"
 
 #: ../src/delete.c:263
 #, c-format
 msgid "Error reading from dialog display process: %s\n"
-msgstr "Errore nel leggere dal processo visualizzazione dialogo: %s\n"
+msgstr "Impazamo ekufundeni kwinkqubo yokuboniswa konxibelelwano: %s\n"
 
 #: ../src/delete.c:344
 #, c-format
 msgid ""
 "Error launching metacity-dialog to ask about killing an application: %s\n"
 msgstr ""
-"Errore nell'avviare metacity-dialog per richiedere se terminare "
-"un'applicazione: %s\n"
+"Impazamo ekuqaliseni unxibelelwano lwemetacity ukubuza ngokubulala inkqubo: %"
+"s\n"
 
 #: ../src/delete.c:452
 #, c-format
 msgid "Failed to get hostname: %s\n"
-msgstr "Recupero del nome host fallito: %s\n"
+msgstr "Ayikwazi kufumana igama lomququzeleli: %s\n"
 
 #: ../src/display.c:316
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
-msgstr "Apertura del display «%s» di X Window System fallita\n"
+msgstr "Ayikwazi ukuvula umboniso we-X Window System '%s'\n"
 
 #: ../src/errors.c:231
 #, c-format
@@ -73,34 +74,34 @@ msgid ""
 "most likely the X server was shut down or you killed/destroyed\n"
 "the window manager.\n"
 msgstr ""
-"Connessione al display «%s» persa;\n"
-"molto probabilmente il server X è stato arrestato oppure\n"
-"si è terminato o distrutto il window manager.\n"
+"Kulahleke unxibelelwano kumboniso '%s';\n"
+"kusenokwenzeka ukuba iseva X ivaliwe okanye ubulewe/utshabalalise\n"
+"umanejala wefestile.\n"
 
 #: ../src/errors.c:238
 #, c-format
 msgid "Fatal IO error %d (%s) on display '%s'.\n"
-msgstr "Errore fatale di IO %d (%s) relativo al display «%s».\n"
+msgstr "Impazamo enkulu IO %d (%s) kumboniso '%s'.\n"
 
 #: ../src/frames.c:1020
 msgid "Close Window"
-msgstr "Chiude la finestra"
+msgstr "Vala iFestile"
 
 #: ../src/frames.c:1023
 msgid "Window Menu"
-msgstr "Menù della finestra"
+msgstr "Imenyu yeFestile"
 
 #: ../src/frames.c:1026
 msgid "Minimize Window"
-msgstr "Minimizza la finestra"
+msgstr "Nciphisa iFestile"
 
 #: ../src/frames.c:1029
 msgid "Maximize Window"
-msgstr "Massimizza la finestra"
+msgstr "Yandisa iFestile"
 
 #: ../src/frames.c:1032
 msgid "Unmaximize Window"
-msgstr "Demassimizza la finestra"
+msgstr "Sukwandisa iFestile"
 
 #: ../src/keybindings.c:994
 #, c-format
@@ -108,35 +109,37 @@ msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
 "binding\n"
 msgstr ""
-"Qualche altro programma sta usando come associazione il tasto %s con "
-"modificatore %x\n"
+"Enye kwiinkqubo sele isebenzisa iqhosha %s nabalungisi %x njengesidibanisi\n"
 
-#: ../src/keybindings.c:2559
+#: ../src/keybindings.c:2561
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr ""
-"Errore nell'avviare metacity-dialog per notificare un errore relativo a un "
-"comando: %s\n"
+"Impazamo ukuqalisa unxibelelwano lwemetacity ukushicilela impazamo emalunga "
+"nomyalelo: %s\n"
 
-#: ../src/keybindings.c:2664
+#: ../src/keybindings.c:2666
 #, c-format
 msgid "No command %d has been defined.\n"
-msgstr "Il comando %d non è stato definito.\n"
+msgstr "Akukho myalelo %d othe wachazwa.\n"
 
-#: ../src/keybindings.c:3494
+#: ../src/keybindings.c:3511
 msgid "No terminal command has been defined.\n"
-msgstr "Nessun comando di terminale è stato definito.\n"
+msgstr "Akukho myalelo wetheminali ochaziweyo.\n"
 
+# Please translate "ID", "FILENAME" and "DISPLAY" as single words or link multiple words with underscores
 #: ../src/main.c:69
+#, fuzzy
 msgid ""
 "metacity [--sm-disable] [--sm-client-id=ID] [--sm-save-file=FILENAME] [--"
 "display=DISPLAY] [--replace] [--version]\n"
 msgstr ""
-"metacity [--sm-disable] [--sm-client-id=ID] [--sm-save-file=NOMEFILE] [--"
+"metacity [--sm-disable] [--sm-client-id=ID] [--sm-save-file=FILENAME] [--"
 "display=DISPLAY] [--replace] [--version]\n"
 
+# Please translate "MERCHANTABILITY" and "FITNESS FOR A PARTICULAR PURPOSE
 #: ../src/main.c:76
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "metacity %s\n"
 "Copyright (C) 2001-2002 Havoc Pennington, Red Hat, Inc., and others\n"
@@ -144,110 +147,111 @@ msgid ""
 "There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A "
 "PARTICULAR PURPOSE.\n"
 msgstr ""
-"metacity %s\n"
-"Copyright © 2001-2002 Havoc Pennington, Red Hat, Inc. ed altri.\n"
-"Questo è software libero; si vedano i sorgenti per le condizioni di copia.\n"
-"NON è fornita alcuna garanzia; neanche di COMMERCIABILITÀ o APPLICABILITÀ "
-"PER UNO SCOPO PARTICOLARE.\n"
+"Imetacity %s\n"
+"Copyright (C) 2001-2002 Havoc Pennington, Red Hat, Inc., and others\n"
+"Le yisoftwe engahlawulelwayo; jonga umboneleli kwiimeko zokukopa.\n"
+"Iwaranti AYIKHO; nakwi-MERCHANTABILITY okanye FITNESS FOR A PARTICULAR "
+"PURPOSE.\n"
 
 #: ../src/main.c:443
 #, c-format
 msgid "Failed to scan themes directory: %s\n"
-msgstr "Scansione della directory dei temi fallita: %s\n"
+msgstr "Ayiphumeleli ukuskena uvimba weefayili zemixholo: %s\n"
 
 #: ../src/main.c:459
 #, c-format
 msgid ""
 "Could not find a theme! Be sure %s exists and contains the usual themes."
 msgstr ""
-"Non è stato trovato alcun tema. Assicurarsi che %s esista e contenga i temi "
-"standard."
+"Ayikwazi kufumana umxholo! Qinisekisa %s ukhona kwaye uqulathe imixholo "
+"eqhelekileyo."
 
 #: ../src/main.c:521
 #, c-format
 msgid "Failed to restart: %s\n"
-msgstr "Riavvio fallito: %s\n"
+msgstr "Ayikwazi kuqala kwakhona: %s\n"
 
-# mantenere in sync con libwnck
 #: ../src/menu.c:54
 msgid "Mi_nimize"
-msgstr "_Minimizza"
+msgstr "_Nciphisa"
 
 #: ../src/menu.c:55
 msgid "Ma_ximize"
-msgstr "Ma_ssimizza"
+msgstr "_Yandisa"
 
 #: ../src/menu.c:56
 msgid "Unma_ximize"
-msgstr "Dema_ssimizza"
+msgstr "_Sukwandisa"
 
 #: ../src/menu.c:57
 msgid "Roll _Up"
-msgstr "Arr_otola"
+msgstr "Songela _Phezulu"
 
 #: ../src/menu.c:58
 msgid "_Unroll"
-msgstr "Sr_otola"
+msgstr "Musa _Ukusonga "
 
 #: ../src/menu.c:59 ../src/menu.c:60
 msgid "On _Top"
-msgstr "In _primo piano"
+msgstr "Nga _Phezulu"
 
 #: ../src/menu.c:61
 msgid "_Move"
-msgstr "_Muovi"
+msgstr "_Shenxisa"
 
 #: ../src/menu.c:62
 msgid "_Resize"
-msgstr "_Ridimensiona"
+msgstr "_Tshintsha ubungakanani"
 
 #. separator
 #: ../src/menu.c:64
 msgid "_Close"
-msgstr "_Chiudi"
+msgstr "_Vala"
 
 #. separator
 #: ../src/menu.c:66
+#, fuzzy
 msgid "_Always on Visible Workspace"
-msgstr "S_empre sull'area di lavoro visibile"
+msgstr "Kuphela _Kule Ndawo yoSebenzela"
 
 #: ../src/menu.c:67
+#, fuzzy
 msgid "_Only on This Workspace"
-msgstr "Solo su _questa area di lavoro"
+msgstr "Kuphela _Kule Ndawo yoSebenzela"
 
 #: ../src/menu.c:68
 msgid "Move to Workspace _Left"
-msgstr "Sposta sull'area di lavoro a sin_istra"
+msgstr "Shenxisela kwiNdawo yoSebenzela _eKhohlo"
 
 #: ../src/menu.c:69
 msgid "Move to Workspace R_ight"
-msgstr "Sposta sull'area di lavoro a d_estra"
+msgstr "Shenxisela kwiNdawo yokuSebenzela e_Kunene"
 
 #: ../src/menu.c:70
 msgid "Move to Workspace _Up"
-msgstr "Sposta sull'area di lavoro il a_lto"
+msgstr "Shenxisela kwiNdawo yokuSebenzela e_Phezulu"
 
 #: ../src/menu.c:71
 msgid "Move to Workspace _Down"
-msgstr "Sposta sull'area di lavoro in _basso"
+msgstr "Shenxisela kwiNdawo yokuSebenzela eP_hantsi"
 
 #: ../src/menu.c:162 ../src/prefs.c:1996
 #, c-format
 msgid "Workspace %d"
-msgstr "Area di lavoro %d"
+msgstr "Indawo yokusebenzela %d"
 
 #: ../src/menu.c:171
 msgid "Workspace 1_0"
-msgstr "Area di lavoro 1_0"
+msgstr "Indawo yokusebenzela 1_0"
 
 #: ../src/menu.c:173
 #, c-format
 msgid "Workspace %s%d"
-msgstr "Area di lavoro %s%d"
+msgstr "Indawo yokusebenzela %s%d"
 
 #: ../src/menu.c:368
 msgid "Move to Another _Workspace"
-msgstr "Sposta su altra area di _lavoro"
+msgstr "Shenxisela kweNye iNdawo _Yokusebenzela"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the shift key. If the text on this key isn't typically
@@ -256,7 +260,7 @@ msgstr "Sposta su altra area di _lavoro"
 #.
 #: ../src/metaaccellabel.c:105
 msgid "Shift"
-msgstr "Maiusc"
+msgstr "I-Shift"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the control key. If the text on this key isn't typically
@@ -265,7 +269,7 @@ msgstr "Maiusc"
 #.
 #: ../src/metaaccellabel.c:111
 msgid "Ctrl"
-msgstr "Ctrl"
+msgstr "I-Ctrl"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the alt key. If the text on this key isn't typically
@@ -274,7 +278,7 @@ msgstr "Ctrl"
 #.
 #: ../src/metaaccellabel.c:117
 msgid "Alt"
-msgstr "Alt"
+msgstr "I-Alt"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the meta key. If the text on this key isn't typically
@@ -342,34 +346,36 @@ msgstr "Mod5"
 #: ../src/metacity-dialog.c:110
 #, c-format
 msgid "The window \"%s\" is not responding."
-msgstr "La finestra «%s» non risponde."
+msgstr "Ifestile \"%s\" ayiphenduli."
 
 #: ../src/metacity-dialog.c:118
 msgid ""
 "Forcing this application to quit will cause you to lose any unsaved changes."
 msgstr ""
-"Forzando l'uscita di questa applicazione si causa la perdita di ogni "
-"modifica non salvata."
+"Ukunyanzelisa le nkqubo ukuba iphume kuya kubangela ukuphulukana nawo "
+"nawuphi na umsebenzi ongagcinwanga."
 
 #: ../src/metacity-dialog.c:128
 msgid "_Force Quit"
-msgstr "_Forza uscita"
+msgstr "_Phuma ngoNyanzeliso"
 
 #: ../src/metacity-dialog.c:225
 msgid "Title"
-msgstr "Titolo"
+msgstr "Isihloko"
 
 #: ../src/metacity-dialog.c:237
 msgid "Class"
-msgstr "Classe"
+msgstr "Udidi"
 
+# Please translate "save current setup"
 #: ../src/metacity-dialog.c:262
+#, fuzzy
 msgid ""
 "These windows do not support \"save current setup\" and will have to be "
 "restarted manually next time you log in."
 msgstr ""
-"Queste finestre non supportano \"salva impostazioni attuali\" e dovranno "
-"essere riavviate manualmente al prossimo login."
+"Ezi festile azixhasi \"save current setup\" kwaye ziya kufuneka ziqaliswe "
+"ngokutsha ngesandla kwixa elizayo xa ungena."
 
 #: ../src/metacity-dialog.c:325
 #, c-format
@@ -377,18 +383,19 @@ msgid ""
 "There was an error running \"%s\":\n"
 "%s."
 msgstr ""
-"Si è verificato un errore nell'eseguire «%s»:\n"
+"Kubekho impazamo ukuqhuba  \"%s\":\n"
 "%s."
 
 #: ../src/metacity.desktop.in.h:1
 msgid "Metacity"
-msgstr "Metacity"
+msgstr "Imetacity"
 
+# No translation for "Navigation"?
 #: ../src/metacity.schemas.in.h:1
+#, fuzzy
 msgid "(Not implemented) Navigation works in terms of applications not windows"
 msgstr ""
-"(Non implementato) La navigazione funziona a livello applicazione, non a "
-"livello finestra"
+"(Awuzalisekiswanga) I-Navigation isebenza ngokweenkqubo ingezizo iifestile"
 
 #: ../src/metacity.schemas.in.h:2
 msgid ""
@@ -399,26 +406,24 @@ msgid ""
 "is unset, causing Metacity to fall back to the desktop font even if "
 "titlebar_uses_desktop_font is false."
 msgstr ""
-"Una stringa di descrizione del tipo di carattere che specifica un tipo di "
-"carattere per la barra del titolo della finestra. La dimensione qui "
-"specificata è utilizzata solo se l'opzione \"titlebar_font_size\" è "
-"impostata a 0. Inoltre, questa opzione è disabilitata se "
-"\"titlebar_uses_desktop_font\" è impostata a vero. In modo predefinito "
-"l'opzione \"titlebar_font\" è non impostata e per questo Metacity ripiega "
-"sul tipo di carattere del desktop anche se \"titlebar_uses_desktop_font\" è "
-"falso."
+"Istring senkcazelo ngefonti esichaza ifonti kwii-titlebar zefestile. "
+"Ubungakanani kwinkcazelo buya kusetyenziswa kuphela xa i-titlebar_font_size "
+"imiselwe ku-0, ke ngoko. Kwakhona, oku kwenziwa kungasebenzi xa i-"
+"titlebar_uses_desktop_font isetelwe inyaniso. Ngokwenene, i-titlebar_font "
+"ayimiselwanga, oko kwenza iMetacity ibuyele kwifonti yedesktop noba i-"
+"titlebar_uses_desktop_font ayinyanisekanga."
 
 #: ../src/metacity.schemas.in.h:3
 msgid "Action on title bar double-click"
-msgstr "Azione per il doppio clic sulla barra del titolo"
+msgstr "Inyathelo kwititle bar, cofa kabini"
 
 #: ../src/metacity.schemas.in.h:4
 msgid "Activate window menu"
-msgstr "Attiva il menù della finestra"
+msgstr "Yenza imenyu yefestile isebenze"
 
 #: ../src/metacity.schemas.in.h:5
 msgid "Arrangement of buttons on the titlebar"
-msgstr "Disposizione dei pulsanti sulla barra del titolo"
+msgstr "Amalungiselelo amaqhosha kwi-titlebar"
 
 #: ../src/metacity.schemas.in.h:6
 msgid ""
@@ -429,17 +434,16 @@ msgid ""
 "so that buttons can be added in future metacity versions without breaking "
 "older versions."
 msgstr ""
-"Disposizione dei pulsanti sulla barra del titolo. Il valore deve essere una "
-"stringa, tipo \"menu:minimize,maximize,close\". I due punti separano "
-"l'angolo sinistro della finestra dal destro, i nomi dei pulsanti devono "
-"essere separati da virgole. Non sono ammessi nomi duplicati. I nomi "
-"sconosciuti verranno ignorati in modo che nuovi pulsanti possano essere "
-"aggiunti alle versioni future di metacity, senza precludere la compatibilità "
-"con le versioni più vecchie."
+"Amalungiselelo amaqhosha kwi-titlebar. Ixabiso iya kuba sistring esinjenge "
+"\"menu:minimize,maximize,close\"; ikholoni eyohlula ikona yasekhohlo "
+"yefestile kwikona yasekunene namagama amaqhosha ohlulwa ngekoma. Amaqhosha "
+"aphinda-phindwayo awavumelekanga. Amagama amaqhosha angaziwa awahoywa "
+"ngokuthuleyo ukuze amaqhosha ongezwe kwiinguqulelo zexesha elizayo "
+"zemetacity ngaphandle kokonakalisa iinguqulelo zakudala."
 
 #: ../src/metacity.schemas.in.h:7
 msgid "Automatically raises the focused window"
-msgstr "Primo piano automatico per finestre con focus"
+msgstr "Inyusa ngokuzenzekelayo ifestile ekuqwalaselwe kuyo"
 
 #: ../src/metacity.schemas.in.h:8
 msgid ""
@@ -448,48 +452,49 @@ msgid ""
 "(right click). Modifier is expressed as \"&lt;Alt&gt;\" or \"&lt;Super&gt;\" "
 "for example."
 msgstr ""
-"Facendo clic su una finestra mentre questo tasto modificatore è premuto "
-"consente di muovere la finestra (tasto sinistro), ridimensionarla (tasto "
-"centrale) o visualizzare il menù della finestra (tasto destro). Il "
-"modificatore è espresso come \"&lt;Alt&gt;\" o \"&lt;Super&gt;\"."
+"Ukucofa ifestile ngexa ubambe eli qhosha lesilungisi liya kuya kuhambisa "
+"ifestile (ukucofa ekhohlo), ubungakanani befestile (ukucofa phakathi), "
+"okanye ibonise imenyu yefestile (ukucofa ekunene). Isilungisi siboniswa "
+"njenge \"&lt;Alt&gt;\" or \"&lt;Super&gt;\" umzekelo."
 
 #: ../src/metacity.schemas.in.h:9
 msgid "Close window"
-msgstr "Chiudi la finestra"
+msgstr "Vala ifestile"
 
 #: ../src/metacity.schemas.in.h:10
 msgid "Commands to run in response to keybindings"
-msgstr "Comandi da eseguire in risposta alle combinazioni di tasti"
+msgstr "Imiyalelo eqhutywa xa kuphendulwa izidibanisi-qhosha"
 
 #: ../src/metacity.schemas.in.h:11
 msgid "Current theme"
-msgstr "Tema in uso"
+msgstr "Umxholo wangoku"
 
 #: ../src/metacity.schemas.in.h:12
 msgid "Delay in milliseconds for the auto raise option"
-msgstr "Ritardo in millisecondi per l'opzione di \"auto raise\""
+msgstr "Libazisa ngokweemilisekondi kunyuso oluzenzekelayo"
 
 #: ../src/metacity.schemas.in.h:13
 msgid ""
 "Determines whether applications or the system can generate audible 'beeps'; "
 "may be used in conjunction with 'visual bell' to allow silent 'beeps'."
 msgstr ""
-"Determina se le applicazioni o il sistema possano generare dei \"bip\" "
-"udibili; usabile in congiunzione con \"visual_bell\" per consentire dei bip "
-"sileziosi."
+"Imisa ukuba iinkqubo zekhompyutha okanye inkqubo ingadala ii-'beeps' "
+"ezivakalayo; zingasetyenziswa ngokusebenzisana 'nentsimbi evakalayo' "
+"ukuvumela ii-'beeps' ezithuleyo."
 
 #: ../src/metacity.schemas.in.h:14
 msgid "Disable misfeatures that are required by old or broken applications"
 msgstr ""
-"Disabilita le funzioni richieste da applicazioni vecchie o non funzionanti"
+"Yenza zingasebenzi iimpawu ezingalunganga ezifuneka kwiinkqubo ezindala "
+"okanye ezophukileyo"
 
 #: ../src/metacity.schemas.in.h:15
 msgid "Enable Visual Bell"
-msgstr "Abilita campanella visiva"
+msgstr "Yenza iNtsimbi eVakalayo isebenze"
 
 #: ../src/metacity.schemas.in.h:16
 msgid "Hide all windows and focus desktop"
-msgstr "Nascondi tutte le finestre e da il focus al desktop"
+msgstr "Fihla zonke iifestile nefocus desktop"
 
 #: ../src/metacity.schemas.in.h:17
 msgid ""
@@ -497,21 +502,20 @@ msgid ""
 "focused window will be automatically raised after a delay (the delay is "
 "specified by the auto_raise_delay key)."
 msgstr ""
-"Se impostata a vero e la modalità di focus è \"sloppy\" o \"mouse\", allora "
-"la finestra con il focus è portata automaticamente in primo piano dopo un "
-"certo ritardo, specificato nella chiave \"auto_raise_delay\"."
+"Ukuba kuyinene, nefocus mode i- \"sloppy\" or \"mouse\" ke ngoko ifestile "
+"ekuqwalaselwe kuyo iya kunyuswa ngokuzenzekelayo emva kokulibaziseka "
+"(ukulibaziseka kubalulwa liqhosha i-auto_raise_delay)."
 
 #: ../src/metacity.schemas.in.h:18
 msgid ""
 "If true, ignore the titlebar_font option, and use the standard application "
 "font for window titles."
 msgstr ""
-"Se impostata a vero, l'opzione \"titlebar_font\" è ignorata e per i titoli "
-"delle finestre viene usato il tipo di carattere predefinito per le "
-"applicazioni."
+"Ukuba kuyinene, sukuyihoya i-titlebar_font, sebenzisa ifonti yenkqubo "
+"esemgangathweni kwizihloko zefestile."
 
-# cacchio di quel wireframe
 #: ../src/metacity.schemas.in.h:19
+#, fuzzy
 msgid ""
 "If true, metacity will give the user less feedback and less sense of "
 "\"direct manipulation\", by using wireframes, avoiding animations, or other "
@@ -520,13 +524,12 @@ msgid ""
 "otherwise be impractical. However, the wireframe feature is disabled when "
 "accessibility is on to avoid weird desktop breakages."
 msgstr ""
-"Se impostata a vero, metacity fornisce all'utente minore riscontro e minore "
-"senso di \"manipolazione diretta\" usando wireframe, evitando le animazioni "
-"ed altro. Ciò rappresenta una significativa riduzione di facilità d'uso da "
-"parte di molti utenti, ma potrebbe consentire ad applicazioni legacy e "
-"terminal server di funzionare laddove sarebbe invece poco pratico. La "
-"funzionalità wireframe è disabilitata quando l'accessibilità è attivata per "
-"evitare strani malfunzionamenti del desktop."
+"Ukuba kuyinene, imetacity iya kunikeza umsebenzisi ingxelo engaphantsi "
+"nobulumko obungaphantsi \"direct manipulation\", ngokusebenzisa izakhelo "
+"zocingo, ukuthintela oopopayi, okanye ezinye iindlela. Olu lunciphiso "
+"olubalulekileyo kusetyenziso lwabasebenzisi abaninzi kodwa kungavumela "
+"iinkqubo ezililifa neeseva zetheminali ukuba zisebenze ngexa bezingasayi "
+"kusebenza."
 
 #: ../src/metacity.schemas.in.h:20
 msgid ""
@@ -540,163 +543,157 @@ msgid ""
 "details of application-based vs. window-based, e.g. whether to pass through "
 "clicks. Also, application-based mode is largely unimplemented at the moment."
 msgstr ""
-"Se impostata a vero, Metacity funziona in termini di applicazioni invece che "
-"di finestre. Il concetto è un po' astratto, ma in generale una "
-"configurazione basara sulle applicazioni è più simile al Mac che a Windows. "
-"Quando si da il focus a una finestra nella modalità basata sulle "
-"applicazioni, tutte le finestre dell'applicazione vengono \"alzate\". "
-"Inoltre in questa modalità i clic per l'assegnazione del focus non vengono "
-"passatti attraverso le finestre verso altre applicazioni. L'esistenza di "
-"questa impostazione è quantomeno questionabile, ma è meglio che avere "
-"impostazioni per tutti i dettagli specifici della modalità basata sulle "
-"applicazioni e quella sulle finestre, ad esempio se passare attraverso i "
-"clic o no. La modalità in base alle applicazioni è largamente non "
-"implementata al momento."
+"Ukuba kuyinene, kengoko iMetacity isebenza ngokweenkqubo kuneefestile. Le "
+"ngqiqo inokuthabathekisa okuthile, kodwa ke jikelele, umiselo olumiselwe "
+"kwinkqubo ikakhulu lunjenge-Mac libe ngaphantsi kune-Windows. Xa uqwalasele "
+"ifestile kwimowdi esekelwe kwinkqubo, zonke iifestile kwinkqubo ziya "
+"kunyuka. Kwakhona, kwimowdi esekelwe kwinkqubo, ukucofa kwingqwalaselo "
+"akugqithiswa kwiifestile kwezinye iinkqubo. Ubukho bolu miselo "
+"buyathandabuzeka. Kodwa kungcono kunokuba nomiselo kwiinkcukacha zizonke "
+"ezizodwa ezisekelwe kwiinkqubo nokuba ngaba ezisekelwe kwifestile, umz. noba "
+"kufuneka ugqithe ekucofeni. Kananjalo, imowdi esekelwe kwinkqubo iye "
+"ikakhulu ingazalisekiswa ngokwangoku."
 
 #: ../src/metacity.schemas.in.h:21
 msgid "If true, trade off usability for less resource usage"
-msgstr "Se impostata a vero, riduce l'usabilità per un minor uso di risorse"
+msgstr ""
+"Ukuba kuyinene, rhwebisa ngosetyenziso kusetyenziso loovimba olungaphantsi"
 
 #: ../src/metacity.schemas.in.h:22
 msgid "Lower window below other windows"
-msgstr "Abbassa la finestra sotto le altre"
+msgstr "Thoba ifestile ngaphantsi kwezinye iifestile"
 
 #: ../src/metacity.schemas.in.h:23
 msgid "Maximize window"
-msgstr "Massimizza la finestra"
+msgstr "Yandisa ifestile"
 
 #: ../src/metacity.schemas.in.h:24
 msgid "Maximize window horizontally"
-msgstr "Massimizza orizzontalmente la finestra"
+msgstr "Yandisa ifestile ngokuthe tyaba"
 
 #: ../src/metacity.schemas.in.h:25
 msgid "Maximize window vertically"
-msgstr "Massimizza verticalmente la finestra"
+msgstr "Yandisa ifestile ngokuthe nkqo"
 
 #: ../src/metacity.schemas.in.h:26
 msgid "Minimize window"
-msgstr "Minimizza la finestra"
+msgstr "Nciphisa ifestile"
 
 #: ../src/metacity.schemas.in.h:27
 msgid "Modifier to use for modified window click actions"
 msgstr ""
-"Modificatore da utilizzare per le azioni sulle finestre con i pulsanti del "
-"mouse"
+"Isilungisi sokusetyenziswa kumanyathelo okucofa kwifestile elungisiweyo"
 
 #: ../src/metacity.schemas.in.h:28
 msgid "Move backward between panels and the desktop immediately"
-msgstr ""
-"Sposta immediatamente e in senso contrario il focus tra i panneli ed il "
-"desktop"
+msgstr "Hambela ngasemva phakathi kweendawo zolawulo nedesktop ngokukhawuleza"
 
 #: ../src/metacity.schemas.in.h:29
 msgid "Move backwards between panels and the desktop with popup"
 msgstr ""
-"Sposta con una finestra a comparsa e in senso contrario il focus tra i "
-"pannelli ed il desktop"
+"Hambela ngasemva phakathi kweendawo zolawulo nedesktop enokukhetha okuvelayo"
 
 #: ../src/metacity.schemas.in.h:30
 msgid "Move backwards between windows immediately"
-msgstr "Sposta immediatamente e in senso contrario il focus tra le finestre"
+msgstr "Hambela ngasemva phakathi kweefestile ngokukhawuleza"
 
 #: ../src/metacity.schemas.in.h:31
 msgid "Move between panels and the desktop immediately"
-msgstr "Sposta immediatamente il focus tra i pannelli ed il desktop"
+msgstr "Hambela phakathi kweendawo zolawulo nedesktop ngokukhawuleza"
 
 #: ../src/metacity.schemas.in.h:32
 msgid "Move between panels and the desktop with popup"
-msgstr ""
-"Sposta con una finestra a comparsa il focus tra i pannelli ed il desktop"
+msgstr "Hambela phakathi kweendawo zolawulo nedesktop enokukhetha okuvelayo"
 
 #: ../src/metacity.schemas.in.h:33
 msgid "Move between windows immediately"
-msgstr "Sposta immediatamente il focus tra le finestre"
+msgstr "Hambela phakathi kweefestile ngokukhawuleza"
 
 #: ../src/metacity.schemas.in.h:34
 msgid "Move between windows with popup"
-msgstr "Sposta con una finestra a comparsa il focus tra le finestre"
+msgstr "Hambela phakathi kweefestile ezinokukhetha okuvelayo"
 
 #: ../src/metacity.schemas.in.h:35
 msgid "Move focus backwards between windows using popup display"
 msgstr ""
-"Sposta, facendo uso di una finestra a comparsa e in senso contrario, il "
-"focus tra le finestre"
+"Hambisa ugqaliselo ngasemva phakathi kweefestile ezisebenzisa umboniso "
+"onokukhetha okuvelayo"
 
 #: ../src/metacity.schemas.in.h:36
 msgid "Move window"
-msgstr "Muovi la finestra"
+msgstr "Hambisa ifestile"
 
 #: ../src/metacity.schemas.in.h:37
 msgid "Move window one workspace down"
-msgstr "Sposta la finestra nell'area di lavoro in basso"
+msgstr "Hambisa ifestile indawo yokusebenzela ibenye ukwehla"
 
 #: ../src/metacity.schemas.in.h:38
 msgid "Move window one workspace to the left"
-msgstr "Sposta la finestra nell'area di lavoro a sinistra"
+msgstr "Hambisa ifestile indawo yokusebenzela ibenye ukuya ekhohlo"
 
 #: ../src/metacity.schemas.in.h:39
 msgid "Move window one workspace to the right"
-msgstr "Sposta la finestra nell'area di lavoro a destra"
+msgstr "Hambisa ifestile indawo yokusebenzela benye ukuya ekunene"
 
 #: ../src/metacity.schemas.in.h:40
 msgid "Move window one workspace up"
-msgstr "Sposta la finestra nell'area di lavoro in alto"
+msgstr "Hambisa ifestile indawo yokusebenzela benye ukuya phezulu"
 
 #: ../src/metacity.schemas.in.h:41
 msgid "Move window to workspace 1"
-msgstr "Sposta la finestra nell'area di lavoro 1"
+msgstr "Hambisela ifestile kwindawo yokusebenzela 1"
 
 #: ../src/metacity.schemas.in.h:42
 msgid "Move window to workspace 10"
-msgstr "Sposta la finestra nell'area di lavoro 10"
+msgstr "Hambisela ifestile kwindawo yokusebenzela 10"
 
 #: ../src/metacity.schemas.in.h:43
 msgid "Move window to workspace 11"
-msgstr "Sposta la finestra nell'area di lavoro 11"
+msgstr "Hambisela ifestile kwindawo yokusebenzela 11"
 
 #: ../src/metacity.schemas.in.h:44
 msgid "Move window to workspace 12"
-msgstr "Sposta la finestra nell'area di lavoro 12"
+msgstr "Hambisela ifestile kwindawo yokusebenzela 12"
 
 #: ../src/metacity.schemas.in.h:45
 msgid "Move window to workspace 2"
-msgstr "Sposta la finestra nell'area di lavoro 2"
+msgstr "Hambisela ifestile kwindawo yokusebenzela 2"
 
 #: ../src/metacity.schemas.in.h:46
 msgid "Move window to workspace 3"
-msgstr "Sposta la finestra nell'area di lavoro 3"
+msgstr "Hambisela ifestile kwindawo yokusebenzela 3"
 
 #: ../src/metacity.schemas.in.h:47
 msgid "Move window to workspace 4"
-msgstr "Sposta la finestra nell'area di lavoro 4"
+msgstr "Hambisela ifestile kwindawo yokusebenzela 4"
 
 #: ../src/metacity.schemas.in.h:48
 msgid "Move window to workspace 5"
-msgstr "Sposta la finestra nell'area di lavoro 5"
+msgstr "Hambisela ifestile kwindawo yokusebenzela 5"
 
 #: ../src/metacity.schemas.in.h:49
 msgid "Move window to workspace 6"
-msgstr "Sposta la finestra nell'area di lavoro 6"
+msgstr "Hambisela ifestile kwindawo yokusebenzela 6"
 
 #: ../src/metacity.schemas.in.h:50
 msgid "Move window to workspace 7"
-msgstr "Sposta la finestra nell'area di lavoro 7"
+msgstr "Hambisela ifestile kwindawo yokusebenzela 7"
 
 #: ../src/metacity.schemas.in.h:51
 msgid "Move window to workspace 8"
-msgstr "Sposta la finestra nell'area di lavoro 8"
+msgstr "Hambisela ifestile kwindawo yokusebenzela 8"
 
 #: ../src/metacity.schemas.in.h:52
 msgid "Move window to workspace 9"
-msgstr "Sposta la finestra nell'area di lavoro 9"
+msgstr "Hambisela ifestile kwindawo yokusebenzela 9"
 
 #: ../src/metacity.schemas.in.h:53
 msgid "Name of workspace"
-msgstr "Nome dell'area di lavoro"
+msgstr "Igama lendawo yokusebenzela"
 
 #: ../src/metacity.schemas.in.h:54
 msgid "Number of workspaces"
-msgstr "Numero di aree di lavoro"
+msgstr "Inani lendawo yokusebenzela"
 
 #: ../src/metacity.schemas.in.h:55
 msgid ""
@@ -704,37 +701,37 @@ msgid ""
 "prevent accidentally destroying your desktop by asking for 34 million "
 "workspaces)."
 msgstr ""
-"Numero delle aree di lavoro. Deve essere maggiore di zero ed ha un limite "
-"massimo stabilito (per evitare di \"distruggere\" accidentalmente il desktop "
-"richiedendo 34 milioni di aree di lavoro)."
+"Inani leendawo zokusebenzela. Kufuneka zibe ngaphezulu kozero, zibe "
+"nobuninzi obusisigxina (ukukhusela ukutshabalalisa ngempazamo idesktop yakho "
+"ngokufuna iindawo zokusebenzela ezingama-34 million)."
 
 #: ../src/metacity.schemas.in.h:56
 msgid "Raise obscured window, otherwise lower"
-msgstr "Porta la finestra in primo piano se è coperta, altrimenti in fondo"
+msgstr "Nyusa ifestile ekekeleyo, kungenjalo ezantsi"
 
 #: ../src/metacity.schemas.in.h:57
 msgid "Raise window above other windows"
-msgstr "Porta la finestra in primo piano"
+msgstr "Nyusa ifestile ngaphezu kwezinye iifestile"
 
 #: ../src/metacity.schemas.in.h:58
 msgid "Resize window"
-msgstr "Ridimensiona la finestra"
+msgstr "Linganisa ngokutsha ifestile"
 
 #: ../src/metacity.schemas.in.h:59
 msgid "Run a defined command"
-msgstr "Esegui un comando stabilito"
+msgstr "Qhuba umyalelo ochaziweyo"
 
 #: ../src/metacity.schemas.in.h:60
 msgid "Run a terminal"
-msgstr "Esegui un terminale"
+msgstr "Qhuba itheminali"
 
 #: ../src/metacity.schemas.in.h:61
 msgid "Show the panel menu"
-msgstr "Mostra il menù del pannello"
+msgstr "Bonisa imenyu yendawo yolawulo"
 
 #: ../src/metacity.schemas.in.h:62
 msgid "Show the panel run application dialog"
-msgstr "Mostra la finestra di dialogo \"Esegui applicazione\""
+msgstr "Bonisa ibhokisi yenkqubo yokuqhuba indawo yolawulo"
 
 #: ../src/metacity.schemas.in.h:63
 msgid ""
@@ -751,98 +748,96 @@ msgid ""
 "limitations in the specifications themselves, so sometimes a bug in no-"
 "workarounds mode won't be fixable without amending a spec."
 msgstr ""
-"Alcune applicazioni non rispettano le specifiche in modi tali da risultare "
-"in comportamenti errati del window manager. Ad esempio Metacity "
-"posizionerebbe idealmente tutte le finestre di dialogo in modo consistente "
-"con la finestra genitore. Ciò richiede di ignorare il posizionamento "
-"specificato dalle applicazioni per le finestre di dialogo. Alcune versioni "
-"di Java/Swing, però, marcano i propri menù a comparsa come finestre di "
-"dialogo, così Metacity deve disabilitare il posizionamento degli stessi per "
-"fare in modo che funzionino correttamente anche applicazioni Java errate; e "
-"questo non è l'unico esempio. Questa opzione pone Metacity in modalità "
-"pienamente corretta, che permette di avere una interfaccia moderatamente "
-"migliore se non è necessario eseguire applicazioni errate. Tristemente il "
-"mondo reale non è un posto ideale, quindi questa opzione è abilitata in modo "
-"predefinito. Alcune delle funzioni abilitate servono per aggirare "
-"limitazioni delle specifiche stesse, così è possibile che dei bug nella "
-"modalità corretta non siano risolvibili che tramite cambiamenti o aggiunte "
-"alle specifiche."
+"Ezinye iinkqubo zophula okukodwa ngeendlela ezibangela iimpawu "
+"ezingalunganga zomlawuli wefestile. Umzekelo, iMetacity ingabeka zonke "
+"iibhokisi zonxibelelwano kwindawo efanayo ngokunxulumene nefestile yomzali "
+"wazo. Oku kufuna ukungahoyi iindawo ezizodwa zeenkqubo zeebhokisi. Kodwa "
+"ezinye iinguqulelo zeJava/Swing ziphawula iimenyu zazo zokukhetha okuvelayo "
+"njengeebhokisi, ke ngoko iMetacity kufuneka yenze ubeko lwebhokisi "
+"lungasebenzi ukuvumela iimenyu ukuba zisebenze kwiinkqubo ezophukileyo "
+"zeJava. Kukho imizekelo emininzi engeminye efana nale. Oku kubeka iMetacity "
+"kwimowdi epheleleyo eChanekileyo, nenikeza i-UI engcono ukuba akufunekanga "
+"uqhube naziphi na iinkqubo ezophukileyo. Ngelishwa, ukusebenza jikelele "
+"kufuneka kuvulwe ngokumiyo; ihlabathi lenene yindawo embi. Okunye kusetyenzo "
+"jikelele luncitshiso kokukodwa, kengoko ngamanye amaxesha isiphene kwinkqubo "
+"kwimowdi yokungasebenzi jikelele asisayi kulungiswa ngaphandle kokulungisa "
+"ispec."
 
 #: ../src/metacity.schemas.in.h:64
 msgid "Switch to workspace 1"
-msgstr "Passa all'area di lavoro 1"
+msgstr "Vula indawo yokusebenzela 1"
 
 #: ../src/metacity.schemas.in.h:65
 msgid "Switch to workspace 10"
-msgstr "Passa all'area di lavoro 10"
+msgstr "Vula indawo yokusebenzela 10"
 
 #: ../src/metacity.schemas.in.h:66
 msgid "Switch to workspace 11"
-msgstr "Passa all'area di lavoro 11"
+msgstr "Vula indawo yokusebenzela 11"
 
 #: ../src/metacity.schemas.in.h:67
 msgid "Switch to workspace 12"
-msgstr "Passa all'area di lavoro 12"
+msgstr "Vula indawo yokusebenzela 12"
 
 #: ../src/metacity.schemas.in.h:68
 msgid "Switch to workspace 2"
-msgstr "Passa all'area di lavoro 2"
+msgstr "Vula indawo yokusebenzela 2"
 
 #: ../src/metacity.schemas.in.h:69
 msgid "Switch to workspace 3"
-msgstr "Passa all'area di lavoro 3"
+msgstr "Vula indawo yokusebenzela 3"
 
 #: ../src/metacity.schemas.in.h:70
 msgid "Switch to workspace 4"
-msgstr "Passa all'area di lavoro 4"
+msgstr "Vula indawo yokusebenzela 4"
 
 #: ../src/metacity.schemas.in.h:71
 msgid "Switch to workspace 5"
-msgstr "Passa all'area di lavoro 5"
+msgstr "Vula indawo yokusebenzela 5"
 
 #: ../src/metacity.schemas.in.h:72
 msgid "Switch to workspace 6"
-msgstr "Passa all'area di lavoro 6"
+msgstr "Vula indawo yokusebenzela 6"
 
 #: ../src/metacity.schemas.in.h:73
 msgid "Switch to workspace 7"
-msgstr "Passa all'area di lavoro 7"
+msgstr "Vula indawo yokusebenzela 7"
 
 #: ../src/metacity.schemas.in.h:74
 msgid "Switch to workspace 8"
-msgstr "Passa all'area di lavoro 8"
+msgstr "Vula indawo yokusebenzela 8"
 
 #: ../src/metacity.schemas.in.h:75
 msgid "Switch to workspace 9"
-msgstr "Passa all'area di lavoro 9"
+msgstr "Vula indawo yokusebenzela 9"
 
 #: ../src/metacity.schemas.in.h:76
 msgid "Switch to workspace above this one"
-msgstr "Passa all'area di lavoro in alto"
+msgstr "Vula indawo yokusebenzela engasentla kule"
 
 #: ../src/metacity.schemas.in.h:77
 msgid "Switch to workspace below this one"
-msgstr "Passa all'area di lavoro in basso"
+msgstr "Vula indawo yokusebenzela engaphantsi kule"
 
 #: ../src/metacity.schemas.in.h:78
 msgid "Switch to workspace on the left"
-msgstr "Passa all'area di lavoro a sinistra"
+msgstr "Vula indawo yokusebenzela esekhohlo"
 
 #: ../src/metacity.schemas.in.h:79
 msgid "Switch to workspace on the right"
-msgstr "Passa all'area di lavoro a destra"
+msgstr "Vula indawo yokusebenzela esekunene"
 
 #: ../src/metacity.schemas.in.h:80
 msgid "System Bell is Audible"
-msgstr "Campanella di sistema udibile"
+msgstr "I-System Bell iyaVakala"
 
 #: ../src/metacity.schemas.in.h:81
 msgid "Take a screenshot"
-msgstr "Cattura un schermata"
+msgstr "Thatha iscreenshot"
 
 #: ../src/metacity.schemas.in.h:82
 msgid "Take a screenshot of a window"
-msgstr "Cattura una schermata di una finestra"
+msgstr "Thatha iscreenshot sefestile"
 
 #: ../src/metacity.schemas.in.h:83
 msgid ""
@@ -854,14 +849,13 @@ msgid ""
 "is unknown (as is usually the case for the default \"system beep\"), the "
 "currently focused window's titlebar is flashed."
 msgstr ""
-"Indica come Metacity implementi l'indicazione visiva che la campanella di "
-"sistema o un altro indicatore di \"campanella\" di applicazione sta "
-"suonando. Al momento sono ammessi due valori: \"fullscreen\", che causa un "
-"lampeggio bianco-nero a tutto schermo, e \"frame_flash\" che causa un "
-"lampeggio della barra del titolo dell'applicazione che ha inviato il segnale "
-"della campanella. Se l'applicazione che ha inviato la campanella è "
-"sconosciuta (come accade nel caso della campanella di sistema), il lampeggio "
-"avviene sulla finestra che al momento ha il focus."
+"Ixelela iMetacity indlela yokuzalisekisa umboniso ovakalayo enokuthi "
+"intsimbi yenkqubo okanye enye inkqubo isalathisi se-'bell' esikhaliswe "
+"ngayo. Ngokwangoku kukho amaxabiso amabini asebenzayo, \"fullscreen\", "
+"nebangela udanyazo olumhlophe-mnyama kwiscreen sisonke kunye \"frame_flash\" "
+"ebangela ititlebar yenkqubo nethumele isignali yentsimbi ukuba idanyaze. "
+"Ukuba inkqubo ethumele intsimbi ayaziwa (njengoko kuqhele ukuba njalo "
+"kokumiyo \"system beep\"), ititlebar yefestile ekuqwalaselwe kuyo iyadanyaza."
 
 #: ../src/metacity.schemas.in.h:84
 msgid ""
@@ -869,19 +863,17 @@ msgid ""
 "that correspond to these commands. Pressing the keybinding for run_command_N "
 "will execute command_N."
 msgstr ""
-"Le chiavi /apps/metacity/global_keybindings/run_command_N definiscono le "
-"scorciatoie da tastiera che corrispondono a questi comandi. Premendo i tasti "
-"della scorciatoia corrispondente alla chiave run_command_N, è eseguito il "
-"comando command_N."
+"Amaqhosha /apps/metacity/global_keybindings/run_command_N achaza izidibanisi-"
+"qhosha ezihambelana nale miyalelo. Ukucofa isidibanisi-qhosha kwi-"
+"run_command_N kuya kuvula i-command_N."
 
 #: ../src/metacity.schemas.in.h:85
 msgid ""
 "The /apps/metacity/global_keybindings/run_command_screenshot key defines a "
 "keybinding which causes the command specified by this setting to be invoked."
 msgstr ""
-"La chiave /apps/metacity/global_keybindings/run_command_screenshot definisce "
-"una scorciatoia da tastiera che causa l'invocazione del comando specificato "
-"da questa impostazione."
+"Iqhosha /apps/metacity/global_keybindings/run_command_screenshot lichaza "
+"isidibanisi-qhosha esibangela umyalelo obalulwe lolu miselo ukuba ubizwe."
 
 #: ../src/metacity.schemas.in.h:86
 msgid ""
@@ -889,9 +881,9 @@ msgid ""
 "defines a keybinding which causes the command specified by this setting to "
 "be invoked."
 msgstr ""
-"La chiave /apps/metacity/global_keybindings/run_command_window_screenshot "
-"definisce una scorciatoia da tastiera che causa l'invocazione del comando "
-"specificato da questa impostazione."
+"Iqhosha /apps/metacity/global_keybindings/run_command_window_screenshot "
+"lichaza isidibanisi-qhosha esibangela umyalelo obalulwe lolu miselo ukuba "
+"ubizwe."
 
 #: ../src/metacity.schemas.in.h:87
 msgid ""
@@ -902,12 +894,12 @@ msgid ""
 "\"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled\", "
 "then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia che esegue il comando con numero corrispondente in /apps/"
-"metacity/keybinding_commands. Il formato è \"&lt;Control$gt;a\" oppure \"&lt;"
-"Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di lettere maiuscole, "
-"minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". "
-"Se l'opzione è impostata alla stringa speciale \"disabled\", allora non c'è "
-"alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esiqhuba umyalelo onamanani ohambelana noku kwi- /apps/"
+"metacity/keybinding_commands Ifomathi ikhangeleka \"&lt;Control&gt;a\" "
+"okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". Isahluli ngezijungqe sinesisa kwaye "
+"sivumela oonombumba abakhulu okanye abancinci, kunye nezifinyezo ezinjengo "
+"\"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". Ukuba useta okunye kwistring esisodwa "
+"\"disabled\", akusayi kubakho isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:88
 msgid ""
@@ -918,12 +910,12 @@ msgid ""
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
 msgstr ""
-"La scorciatoia per passare all'area di lavoro sopra a quella in uso. Il "
-"formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È "
-"consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
-"abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è "
-"impostata alla stringa speciale \"disabled\", allora non c'è alcuna "
-"scorciatoia per questa azione."
+"Isidibanisi-qhosha esitshintshela kwindawo yokusebenzela ngasentla kwendawo "
+"yokusebenzela ekhoyo. Ifomathi ibonakala \"&lt;Control&gt;a\" okanye \"&lt;"
+"Shift&gt;&lt;Alt&gt;F1\". Isahluli ngezijungqe sinesisa kwaye sivumela "
+"oonombumba abakhulu okanye abancinci, kunye nezifinyezo ezinjengo \"&lt;"
+"Ctl&gt;\" ne \"&lt;Ctrl&gt;\". Ukuba umisela okunye kwistring esisodwa "
+"\"disabled\", akusayi kubakho isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:89
 msgid ""
@@ -934,12 +926,13 @@ msgid ""
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
 msgstr ""
-"La scorciatoia per sportarsi nell'area di lavoro sotto quella in uso. Il "
-"formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È "
-"consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
-"abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è "
-"impostata alla stringa speciale \"disabled\", allora non c'è alcuna "
-"scorciatoia per questa azione."
+"Isidibanisi-qhosha esitshintshela kwindawo yokusebenzela ngezantsi kwendawo "
+"yokusebenzela ekhoyo. below the current workspace. Ifomathi ibonakala \"&lt;"
+"Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". Isahluli ngezijungqe "
+"sinesisa kwaye sivumela oonombumba abakhulu okanye abancinci, kunye "
+"nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". Ukuba umisela "
+"okunye kwistring esisodwa \"disabled\", akusayi kubakho isidibanisi-qhosha "
+"kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:90
 msgid ""
@@ -950,12 +943,12 @@ msgid ""
 "set the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
 msgstr ""
-"La scorciatoia per passare all'area di lavoro a sinistra di quella in uso. "
-"Il formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È "
-"consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
-"abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è "
-"impostata alla stringa speciale \"disabled\", allora non c'è alcuna "
-"scorciatoia per questa azione."
+"Isidibanisi-qhosha esitshintshela kwindawo yokusebenzela ngasekhohlo "
+"kwendawo yokusebenzela ekhoyo. Ifomathi ibonakala \"&lt;Control&gt;a\" "
+"okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". Isahluli ngezijungqe sinesisa kwaye "
+"sivumela oonombumba abakhulu okanye abancinci, kunye nezifinyezo ezinjengo "
+"\"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". Ukuba umiselo okunye kwistring esisodwa "
+"\"disabled\", akusayi kubakho isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:91
 msgid ""
@@ -966,12 +959,12 @@ msgid ""
 "set the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
 msgstr ""
-"La scorciatoia per passare all'area di lavoro a destra di quella in uso. Il "
-"formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È "
-"consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
-"abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è "
-"impostata alla stringa speciale \"disabled\", allora non c'è alcuna "
-"scorciatoia per questa azione."
+"Isidibanisi-qhosha esitshintshela kwindawo yokusebenzela ngasekunene "
+"kwendawo yokusebenzela ekhoyo. Ifomathi ibonakala \"&lt;Control&gt;a\" "
+"okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". Isahluli ngezijungqe sinesisa kwaye "
+"sivumela oonombumba abakhulu okanye abancinci, kunye nezifinyezo ezinjengo "
+"\"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". Ukuba umiselo okunye kwistring esisodwa "
+"\"disabled\", akusayi kubakho isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:92
 msgid ""
@@ -981,11 +974,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia per passare all'area di lavoro 1. Il formato è \"&lt;Control"
-"$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di "
-"lettere maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o "
-"\"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled"
-"\", allora non c'è alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esitshintshela kwindawo yokusebenzela 1. Ifomathi "
+"ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
+"Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye "
+"abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". "
+"Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho "
+"isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:93
 msgid ""
@@ -995,11 +989,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia per passare all'area di lavoro 10. Il formato è \"&lt;Control"
-"$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di "
-"lettere maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o "
-"\"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled"
-"\", allora non c'è alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esitshintshela kwindawo yokusebenzela 10. Ifomathi "
+"ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
+"Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye "
+"abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". "
+"Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho "
+"isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:94
 msgid ""
@@ -1009,11 +1004,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia per passare all'area di lavoro 11. Il formato è \"&lt;Control"
-"$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di "
-"lettere maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o "
-"\"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled"
-"\", allora non c'è alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esitshintshela kwindawo yokusebenzela 11. Ifomathi "
+"ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
+"Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye "
+"abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". "
+"Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho "
+"isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:95
 msgid ""
@@ -1023,11 +1019,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia per passare all'area di lavoro 12. Il formato è \"&lt;Control"
-"$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di "
-"lettere maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o "
-"\"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled"
-"\", allora non c'è alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esitshintshela kwindawo yokusebenzela 12. Ifomathi "
+"ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
+"Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye "
+"abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". "
+"Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho "
+"isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:96
 msgid ""
@@ -1037,11 +1034,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia per passare all'area di lavoro 2. Il formato è \"&lt;Control"
-"$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di "
-"lettere maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o "
-"\"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled"
-"\", allora non c'è alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esitshintshela kwindawo yokusebenzela 2. Ifomathi "
+"ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
+"Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye "
+"abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". "
+"Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho "
+"isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:97
 msgid ""
@@ -1051,11 +1049,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia per passare all'area di lavoro 3. Il formato è \"&lt;Control"
-"$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di "
-"lettere maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o "
-"\"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled"
-"\", allora non c'è alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esitshintshela kwindawo yokusebenzela 3. Ifomathi "
+"ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
+"Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye "
+"abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". "
+"Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho "
+"isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:98
 msgid ""
@@ -1065,11 +1064,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia per passare all'area di lavoro 4. Il formato è \"&lt;Control"
-"$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di "
-"lettere maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o "
-"\"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled"
-"\", allora non c'è alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esitshintshela kwindawo yokusebenzela 4. Ifomathi "
+"ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
+"Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye "
+"abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". "
+"Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho "
+"isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:99
 msgid ""
@@ -1079,11 +1079,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia per passare all'area di lavoro 5. Il formato è \"&lt;Control"
-"$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di "
-"lettere maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o "
-"\"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled"
-"\", allora non c'è alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esitshintshela kwindawo yokusebenzela 5. Ifomathi "
+"ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
+"Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye "
+"abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne\"&lt;Ctrl&gt;\". "
+"Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho "
+"isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:100
 msgid ""
@@ -1093,11 +1094,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia per passare all'area di lavoro 6. Il formato è \"&lt;Control"
-"$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di "
-"lettere maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o "
-"\"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled"
-"\", allora non c'è alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esitshintshela kwindawo yokusebenzela 6. Ifomathi "
+"ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
+"Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye "
+"abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". "
+"Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho "
+"isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:101
 msgid ""
@@ -1107,11 +1109,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia per passare all'area di lavoro 7. Il formato è \"&lt;Control"
-"$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di "
-"lettere maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o "
-"\"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled"
-"\", allora non c'è alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esitshintshela kwindawo yokusebenzela 7. Ifomathi "
+"ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
+"Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye "
+"abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". "
+"Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho "
+"isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:102
 msgid ""
@@ -1121,11 +1124,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia per passare all'area di lavoro 8. Il formato è \"&lt;Control"
-"$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di "
-"lettere maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o "
-"\"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled"
-"\", allora non c'è alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esitshintshela kwindawo yokusebenzela 8. Ifomathi "
+"ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
+"Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye "
+"abancinci, kunye nezifinyezo ezinjengo\"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". "
+"Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho "
+"isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:103
 msgid ""
@@ -1135,11 +1139,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia per passare all'area di lavoro 9. Il formato è \"&lt;Control"
-"$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di "
-"lettere maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o "
-"\"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled"
-"\", allora non c'è alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esitshintshela kwindawo yokusebenzela 9. Ifomathi "
+"ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
+"Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye "
+"abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". "
+"Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho "
+"isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:104
 msgid ""
@@ -1149,11 +1154,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per attivare il menù della finestra. Il formato è \"&lt;"
-"Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito "
-"l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo "
-"\"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa "
-"speciale \"disabled\", allora non c'è alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ekuvuleni imenyu yefestile. Ifomathi "
+"ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
+"Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye "
+"abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". "
+"Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho "
+"isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:105
 msgid ""
@@ -1163,11 +1169,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per chiudere una finestra. Il formato è \"&lt;Control"
-"$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di "
-"lettere maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o "
-"\"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled"
-"\", allora non c'è alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ekuvaleni ifestile. Ifomathi ibonakala"
+"\"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". Isahluli "
+"ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye abancinci, "
+"kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" okanye \"&lt;Ctrl&gt;\". Ukuba "
+"umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho isidibanisi-"
+"qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:106
 msgid ""
@@ -1178,12 +1185,13 @@ msgid ""
 "If you set the option to the special string \"disabled\", then there will be "
 "no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per attivare la \"modalità movimento\" e cominciare a "
-"muovere la finestra utilizzando la tastiera. Il formato è \"&lt;Control$gt;a"
-"\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di lettere "
-"maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;"
-"Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled\", "
-"allora non c'è alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ekungeneni \"move mode\" nesiqalisa "
+"ukuhambisa ifestile sisebenzisa ikeyboard. Ifomathi ibonakala \"&lt;"
+"Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". Isahluli ngezijungqe "
+"sinesisa kwaye sivumela oonombumba abakhulu okanye abancinci, kunye "
+"nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". Ukuba umisela "
+"okunye kwistring esisodwa \"disabled\", akusayi kubakho isidibanisi-qhosha "
+"kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:107
 msgid ""
@@ -1194,12 +1202,13 @@ msgid ""
 "\". If you set the option to the special string \"disabled\", then there "
 "will be no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per attivare la \"modalità ridimensionamento\" e "
-"cominciare a ridimensionare la finestra utilizzando la tastiera. Il formato "
-"è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito "
-"l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo "
-"\"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa "
-"speciale \"disabled\", allora non c'è alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ekungeneni \"resize mode\" anesiqalisa "
+"ukuhambisa ifestile sisebenzisa ikeyboard. Ifomathi ibonakala \"&lt;"
+"Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". Isahluli ngezijungqe "
+"sinesisa kwaye sivumela oonombumba abakhulu okanye abancinci, kunye "
+"nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". Ukuba umisela "
+"okunye kwistring esisodwa \"disabled\", akusayi kubakho isidibanisi-qhosha "
+"kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:108
 msgid ""
@@ -1210,12 +1219,13 @@ msgid ""
 "\". If you set the option to the special string \"disabled\", then there "
 "will be no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per nascondere tutte le finestre normali e assegnare il "
-"focus allo sfondo del desktop. Il formato è \"&lt;Control$gt;a\" oppure "
-"\"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di lettere "
-"maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;"
-"Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled\", "
-"allora non c'è alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ekufihleni zonke iifestile eziqhelekileyo "
+"size simisele ingqwalaselo kumva wedesktop. Ifomathi ibonakala \"&lt;"
+"Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". Isahluli ngezijungqe "
+"sinesisa kwaye sivumela oonombumba abakhulu okanye abancinci, kunye "
+"nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". Ukuba umisela "
+"okunye kwistring esisodwa \"disabled\", akusayi kubakho isidibanisi-qhosha "
+"kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:109
 msgid ""
@@ -1225,11 +1235,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per massimizzare una finestra. Il formato è \"&lt;"
-"Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito "
-"l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo "
-"\"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa "
-"speciale \"disabled\", allora non c'è alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukwandisa ifestile. Ifomathi ibonakala "
+"\"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". Isahluli "
+"ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye abancinci, "
+"kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". Ukuba "
+"umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho isidibanisi-"
+"qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:110
 msgid ""
@@ -1239,11 +1250,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per minimizzare una finestra. Il formato è \"&lt;Control"
-"$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di "
-"lettere maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o "
-"\"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled"
-"\", allora non c'è alcuna scorciatoia scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukunciphisa ifestile. Ifomathi ibonakala "
+"\"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". Isahluli "
+"ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye abancinci, "
+"kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". Ukuba "
+"umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho isidibanisi-"
+"qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:111
 msgid ""
@@ -1254,12 +1266,12 @@ msgid ""
 "special string \"disabled\", then there will be no keybinding for this "
 "action."
 msgstr ""
-"La scorciatoia usata per spostare una finestra nell'area di lavoro in basso. "
-"Il formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È "
-"consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
-"abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è "
-"impostata alla stringa speciale \"disabled\", allora non c'è alcuna "
-"scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukuhambisa ifestile indawo yokusebenzela "
+"enye ngezantsi. Ifomathi ibonakala \"&lt;Control&gt;a\" okanye \"&lt;"
+"Shift&gt;&lt;Alt&gt;F1\". Isahluli ngezijungqe sinesisa kwaye sivumela "
+"oonombumba abakhulu okanye abancinci, kunye nezifinyezo ezinjengo \"&lt;"
+"Ctl&gt;\" ne \"&lt;Ctrl&gt;\". Ukuba umisela okunye kwistring esisodwa "
+"\"disabled\", akusayi kubakho isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:112
 msgid ""
@@ -1270,12 +1282,12 @@ msgid ""
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
 msgstr ""
-"La scorciatoia usata per spostare una finestra nell'area di lavoro a "
-"sinistra. Il formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;"
-"F1\". È consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
-"abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è "
-"impostata alla stringa speciale \"disabled\", allora non c'è alcuna "
-"scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukuhambisa indawo yokusebenzela enye "
+"ekhohlo. Ifomathi ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;"
+"Alt&gt;F1\". Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba "
+"abakhulu okanye abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne "
+"\"&lt;Ctrl&gt;\". Ukuba umisela okunye kwistring esisodwa \"disabled\", "
+"akusayi kubakho isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:113
 msgid ""
@@ -1286,12 +1298,12 @@ msgid ""
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
 msgstr ""
-"La scorciatoia usata per spostare una finestra nell'area di lavoro a destra. "
-"Il formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È "
-"consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
-"abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è "
-"impostata alla stringa speciale \"disabled\", allora non c'è alcuna "
-"scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukuhambisa ifestile indawo yokusebenzela "
+"enye ekunene. Ifomathi ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;"
+"&lt;Alt&gt;F1\". Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba "
+"abakhulu okanye abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne "
+"\"&lt;Ctrl&gt;\". Ukuba umisela okunye kwistring esisodwa \"disabled\", "
+"akusayi kubakho isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:114
 msgid ""
@@ -1301,12 +1313,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per spostare una finestra nell'area di lavoro in alto. "
-"Il formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È "
-"consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
-"abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è "
-"impostata alla stringa speciale \"disabled\", allora non c'è alcuna "
-"scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukuhambisa ifestile indawo yokusebenzela "
+"enye phezulu. Ifomathi ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;"
+"&lt;Alt&gt;F1\". Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba "
+"abakhulu okanye abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne "
+"\"&lt;Ctrl&gt;\". Ukuba umisela okunye kwistring esisodwa \"disabled\", "
+"akusayi kubakho isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:115
 msgid ""
@@ -1316,12 +1328,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per spostare una finestra nell'area di lavoro 1. Il "
-"formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È "
-"consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
-"abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è "
-"impostata alla stringa speciale \"disabled\", allora non c'è alcuna "
-"scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukuhambisa ifestile kwindawo yokusebenzela "
+"1. Ifomathi ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;"
+"F1\". Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu "
+"okanye abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;"
+"Ctrl&gt;\". Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi "
+"kubakho isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:116
 msgid ""
@@ -1331,12 +1343,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per spostare una finestra nell'area di lavoro 10. Il "
-"formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È "
-"consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
-"abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è "
-"impostata alla stringa speciale \"disabled\", allora non c'è alcuna "
-"scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukuhambisa ifestile kwindawo yokusebenzela "
+"10. Ifomathi ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;"
+"F1\". Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu "
+"okanye abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;"
+"Ctrl&gt;\". Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi "
+"kubakho isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:117
 msgid ""
@@ -1346,12 +1358,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per spostare una finestra nell'area di lavoro 11. Il "
-"formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È "
-"consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
-"abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è "
-"impostata alla stringa speciale \"disabled\", allora non c'è alcuna "
-"scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukuhambisa ifestile kwindawo yokusebenzela "
+"11. Ifomathi ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;"
+"F1\". Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu "
+"okanye abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;"
+"Ctrl&gt;\". Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi "
+"kubakho isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:118
 msgid ""
@@ -1361,12 +1373,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per spostare una finestra nell'area di lavoro 12. Il "
-"formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È "
-"consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
-"abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è "
-"impostata alla stringa speciale \"disabled\", allora non c'è alcuna "
-"scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukuhambisa ifestile kwindawo yokusebenzela "
+"12. Ifomathi ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;"
+"F1\". Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu "
+"okanye abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;"
+"Ctrl&gt;\". Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi "
+"kubakho isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:119
 msgid ""
@@ -1376,12 +1388,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per spostare una finestra nell'area di lavoro 2. Il "
-"formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È "
-"consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
-"abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è "
-"impostata alla stringa speciale \"disabled\", allora non c'è alcuna "
-"scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukuhambisa ifestile kwindawo yokusebenzela "
+"2. Ifomathi ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;"
+"F1\". Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu "
+"okanye abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;"
+"Ctrl&gt;\". Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi "
+"kubakho isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:120
 msgid ""
@@ -1391,12 +1403,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per spostare una finestra nell'area di lavoro 3. Il "
-"formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È "
-"consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
-"abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è "
-"impostata alla stringa speciale \"disabled\", allora non c'è alcuna "
-"scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukuhambisa ifestile kwindawo yokusebenzela "
+"3. Ifomathi ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;"
+"F1\". Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu "
+"okanye abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;"
+"Ctrl&gt;\". Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi "
+"kubakho isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:121
 msgid ""
@@ -1406,12 +1418,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per spostare una finestra nell'area di lavoro 4. Il "
-"formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È "
-"consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
-"abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è "
-"impostata alla stringa speciale \"disabled\", allora non c'è alcuna "
-"scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukuhambisa ifestile kwindawo yokusebenzela "
+"4. Ifomathi ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;"
+"F1\". Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu "
+"okanye abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;"
+"Ctrl&gt;\". Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi "
+"kubakho isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:122
 msgid ""
@@ -1421,12 +1433,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per spostare una finestra nell'area di lavoro 5. Il "
-"formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È "
-"consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
-"abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è "
-"impostata alla stringa speciale \"disabled\", allora non c'è alcuna "
-"scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukuhambisa ifestile kwindawo yokusebenzela "
+"5. Ifomathi ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;"
+"F1\". Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu "
+"okanye abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;"
+"Ctrl&gt;\". Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi "
+"kubakho isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:123
 msgid ""
@@ -1436,12 +1448,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per spostare una finestra nell'area di lavoro 6. Il "
-"formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È "
-"consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
-"abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è "
-"impostata alla stringa speciale \"disabled\", allora non c'è alcuna "
-"scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukuhambisa ifestile kwindawo yokusebenzela "
+"6. Ifomathi ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;"
+"F1\". Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu "
+"okanye abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;"
+"Ctrl&gt;\". Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi "
+"kubakho isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:124
 msgid ""
@@ -1451,12 +1463,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per spostare una finestra nell'area di lavoro 7. Il "
-"formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È "
-"consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
-"abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è "
-"impostata alla stringa speciale \"disabled\", allora non c'è alcuna "
-"scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukuhambisa ifestile kwindawo yokusebenzela "
+"7. Ifomathi ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;"
+"F1\". Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu "
+"okanye abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;"
+"Ctrl&gt;\". Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi "
+"kubakho isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:125
 msgid ""
@@ -1466,12 +1478,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per spostare una finestra nell'area di lavoro 8. Il "
-"formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È "
-"consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
-"abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è "
-"impostata alla stringa speciale \"disabled\", allora non c'a alcuna "
-"scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukuhambisa ifestile kwindawo yokusebenzela "
+"8. Ifomathi ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;"
+"F1\". Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu "
+"okanye abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;"
+"Ctrl&gt;\". Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi "
+"kubakho isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:126
 msgid ""
@@ -1481,12 +1493,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per spostare una finestra nell'area di lavoro 9. Il "
-"formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È "
-"consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
-"abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è "
-"impostata alla stringa speciale \"disabled\", allora non c'è alcuna "
-"scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukuhambisa ifestile kwindawo yokusebenzela "
+"9. Ifomathi ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;"
+"F1\". Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu "
+"okanye abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;"
+"Ctrl&gt;\". Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi "
+"kubakho isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:127
 msgid ""
@@ -1497,12 +1509,13 @@ msgid ""
 "\". If you set the option to the special string \"disabled\", then there "
 "will be no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per spostare il focus tra i pannelli ed il desktop in "
-"senso contrario, visualizzando la finestra di selezione. Il formato è \"&lt;"
-"Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito "
-"l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo "
-"\"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa "
-"speciale \"disabled\", allora non c'è alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukuhambisa ifocus ngasemva phakathi "
+"kweendawo zolawulo nedesktop, sisebenzisa ifestile yokukhetha okuvelayo. "
+"Imbonakalo ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1"
+"\". Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye "
+"abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". "
+"Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho "
+"isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:128
 msgid ""
@@ -1513,12 +1526,13 @@ msgid ""
 "\". If you set the option to the special string \"disabled\", then there "
 "will be no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per spostare il focus tra i pannelli ed il desktop in "
-"senso contrario, senza una finestra a comparsa. Il formato è \"&lt;Control"
-"$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di "
-"lettere maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o "
-"\"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled"
-"\", allora non c'è alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukuhambisa ifocus ngasemva phakathi "
+"kweendawo zolawulo nedesktop, ngaphandle kwefestile yokukhetha okuvelayo. "
+"Imbonakalo ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1"
+"\". Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye "
+"abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". "
+"Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho "
+"isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:129
 msgid ""
@@ -1530,13 +1544,14 @@ msgid ""
 "If you set the option to the special string \"disabled\", then there will be "
 "no keybinding for this action."
 msgstr ""
-"La scorciatoia per spostare il focus tra le finestre in senso contrario, "
-"senza una finestra a comparsa. La pressione contemporanea di questa "
-"scorciatoia e del tasto \"Maiusc\" inverte il senco. Il formato è \"&lt;"
-"Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito "
-"l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo "
-"\"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa "
-"speciale \"disabled\", allora non c'è alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukuhambisa ifocus ngasemva phakathi "
+"kweefestile ngaphandle kwefestile yokukhetha okuvelayo. Ukubamba \"shift\" "
+"kunye nesi sidibanisi kwenza indlela iye phambili kwakhona. Imbonakalo "
+"ibonakalo \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
+"Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye "
+"abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". "
+"Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho "
+"isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:130
 msgid ""
@@ -1548,14 +1563,14 @@ msgid ""
 "If you set the option to the special string \"disabled\", then there will be "
 "no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per spostare il focus tra le finestre in senso "
-"contrario, con una finestra a comparsa. Tenendo premuto \"Maiusc\", mentre "
-"si utilizza questa scorciatoia, si inverte il senso dello spostamento. Il "
-"formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È "
-"consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
-"abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è "
-"impostata alla stringa speciale \"disabled\", allora non c'è alcuna "
-"scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukuhambisa ifocus ngasemva phakathi "
+"kweefestile, kusetyenziswa ifestile yokukhetha okuvelayo. Ukubamba \"shift\" "
+"kunye nesi sidibanisi kwenza indlela iye phambili kwakhona. Imbonakalo "
+"ibonakalo \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
+"Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye "
+"abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". "
+"Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho "
+"isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:131
 msgid ""
@@ -1566,12 +1581,13 @@ msgid ""
 "If you set the option to the special string \"disabled\", then there will be "
 "no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per spostare il focus tra i pannelli ed in desktop, con "
-"una finestra a comparsa. Il formato è \"&lt;Control$gt;a\" oppure \"&lt;"
-"Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di lettere maiuscole, "
-"minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". "
-"Se l'opzione è  impostata alla stringa speciale \"disabled\", allora non c'è "
-"alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukuhambisa ifocus phakathi kwendawo "
+"yolawulo nedesktop, kusetyenziswa ifestile yokukhetha okuvelayo. Ifomathi "
+"ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
+"Isahluli ngezijungqu sinesisa kwaye sivumela oonombumba abakhulu okanye "
+"abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". "
+"Ukuba useta okunye kwistring esisodwa \"disabled\", akusayi kubakho "
+"isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:132
 msgid ""
@@ -1582,12 +1598,13 @@ msgid ""
 "If you set the option to the special string \"disabled\", then there will be "
 "no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per spostare il focus tra i pannelli ed il desktop, "
-"senza una finestra a comparsa. Il formato è \"&lt;Control$gt;a\" oppure "
-"\"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di lettere "
-"maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;"
-"Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled\", "
-"allora non c'è alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukuhambisa ifocus phakathi kwendawo "
+"yolawulo nedesktop, ngaphandle kokusebenzisa ifestile yokukhetha okuvelayo. "
+"Ifomathi ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1"
+"\". Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye "
+"abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". "
+"Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho "
+"isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:133
 msgid ""
@@ -1599,14 +1616,14 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per spostare il focus tra le finestre, senza una "
-"finestra a comparsa  (usualmente &lt;Alt&gt;Escape). Tenendo premuto "
-"\"Maiuscolo\", mentre si utilizza questa scorciatoia, si inverte il senso di "
-"spostamento. Il formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;"
-"Alt&gt;F1\". È consentito l'utilizzo di lettere maiuscole, minuscole e anche "
-"di abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è "
-"impostata alla stringa speciale \"disabled\", allora non c'è alcuna "
-"scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukuhambisa ifocus phakathi kweefestile "
+"ngaphandle kokusebenzisa ifestile yokukhetha okuvelayo. (Traditionally &lt;"
+"Alt&gt;Escape) Ukubamba iqhosha \"shift\" ngexa usebenzisa esi sidibanisi "
+"kubuyisela umva indlela yokuhamba. Ifomathi ibonakala \"&lt;Control&gt;a\" "
+"okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". Isahluli ngezijungqe sinesisa kwaye "
+"sivumela oonombumba abakhulu okanye abancinci, kunye nezifinyezo ezinjengo "
+"\"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". Ukuba umisela okunye kwistring "
+"esisodwa \"disabled\", akusayi kubakho isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:134
 msgid ""
@@ -1618,14 +1635,14 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia per spostare il focus tra le finestre, con una finestra a "
-"comparsa (usualmente &lt;Alt&gt;Escape). Tenendo premuto \"Maiuscolo\", "
-"mentre si utilizza questa scorciatoia, si inverte il senso di spostamento. "
-"Il formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È "
-"consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
-"abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è "
-"impostata alla stringa speciale \"disabled\", allora non c'è alcuna "
-"scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukuhambisa ifocus phakathi kweefestile, "
+"ngokusebenzisa ifestile yokukhetha okuvelayo. (Traditionally &lt;Alt&gt;Tab) "
+"Ukubamba iqhosha \"shift\" ngexa usebenzisa esi sidibanisi kubuyisela umva "
+"indlela yokuhamba. Ifomathi ibonakala \"&lt;Control&gt;a\" okanye \"&lt;"
+"Shift&gt;&lt;Alt&gt;F1\". Isahluli ngezijungqe sinesisa kwaye sivumela "
+"oonombumba abakhulu okanye abancinci, kunye nezifinyezo ezinjengo \"&lt;"
+"Ctl&gt;\" and \"&lt;Ctrl&gt;\". Ukuba umisela okunye kwistring esisodwa "
+"\"disabled\", akusayi kubakho isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:135
 msgid ""
@@ -1636,13 +1653,13 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per commutare la modalità sempre in primo piano. Una "
-"finestra che è sempre in primo piano risulta sempre visibile sovrapponendosi "
-"alle altre. Il formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;"
-"Alt&gt;F1\". È consentito l'utilizzo di lettere maiuscole, minuscole e anche "
-"di abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è "
-"impostata alla stringa speciale \"disabled\", allora non c'è alcuna "
-"scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukuqhobosha sihlala singentla. Ifestile "
+"ehlala ingasentla iya kuhlala ibonakala kwezinye iifestile ezingenanayo. "
+"Ifomathi ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1"
+"\". Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye "
+"abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". "
+"Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho "
+"isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:136
 msgid ""
@@ -1652,11 +1669,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per commutare la modalità a schermo intero. Il formato "
-"è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito "
-"l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo "
-"\"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa "
-"speciale \"disabled\", allora non c'è alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukuqhobosha imowdi yescreen esigcweleyo. "
+"Ifomathi ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1"
+"\". Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye "
+"abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". "
+"Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho "
+"isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:137
 msgid ""
@@ -1666,11 +1684,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per commutare la massimizzazione. Il formato è \"&lt;"
-"Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito "
-"l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo "
-"\"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa "
-"speciale \"disabled\", allora non c'è alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukuqhobosha ulwandiso. Ifomathi ibonakala "
+"\"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". Isahluli "
+"ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye abancinci, "
+"kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". Ukuba "
+"umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho isidibanisi-"
+"qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:138
 msgid ""
@@ -1680,11 +1699,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per commutare lo stato arrotolata/srotolata. Il formato "
-"è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito "
-"l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo "
-"\"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa "
-"speciale \"disabled\", allora non c'è alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukuqhobosha imeko ekhuhliweyo/"
+"engakhuhlwanga. Ifomathi ibonakala \"&lt;Control&gt;a\" okanye \"&lt;"
+"Shift&gt;&lt;Alt&gt;F1\". Isahluli ngezijungqe sinesisa kwaye sivumela "
+"oonombumba abakhulu okanye abancinci, kunye nezifinyezo ezinjengo \"&lt;"
+"Ctl&gt;\" and \"&lt;Ctrl&gt;\". Ukuba umisela okunye kwistring esisodwa "
+"\"disabled\", akusayi kubakho isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:139
 msgid ""
@@ -1695,12 +1715,12 @@ msgid ""
 "set the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
 msgstr ""
-"La scorciatoia usata per far sì che la finestra sia presente su tutte le "
-"aree di lavoro o soltanto su una. Il formato è \"&lt;Control$gt;a\" oppure "
-"\"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di lettere "
-"maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;"
-"Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled\", "
-"allora non c'è alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukuqhobosha nokuba ifestile ikuzo zonke "
+"iindawo zokusebenzela okanye enye. Ifomathi ibonakala \"&lt;Control&gt;a\" "
+"or \"&lt;Shift&gt;&lt;Alt&gt;F1\". Isahluli ngezijungqe sinesisa kwaye "
+"sivumela oonombumba abakhulu okanye abancinci, kunye nezifinyezo ezinjengo "
+"\"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". Ukuba umisela okunye kwistring "
+"esisodwa \"disabled\", akusayi kubakho isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:140
 msgid ""
@@ -1710,11 +1730,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia usata per demassimizzare una finestra. Il formato è \"&lt;"
-"Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito "
-"l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo "
-"\"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa "
-"speciale \"disabled\", allora non c'è alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esisetyenziswa ukungandisi ifestile. Ifomathi ibonakala "
+"\"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". Isahluli "
+"ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye abancinci, "
+"kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". Ukuba "
+"umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho isidibanisi-"
+"qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:141
 msgid ""
@@ -1725,12 +1746,12 @@ msgid ""
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
 msgstr ""
-"La scorciatoia che mostra la casella di dialogo \"Esegui applicazione\" del "
-"pannello. Il formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;"
-"F1\". È consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
-"abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è "
-"impostata alla stringa speciale \"disabled\", allora non c'è alcuna "
-"scorciatoia per questa azione."
+"Isidibanisi-qhosha esibonisa ibhokisi yendawo yolawulo \"Run Application\". "
+"Ifomathi ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1"
+"\". Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye "
+"abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". "
+"Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho "
+"isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:142
 msgid ""
@@ -1740,11 +1761,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia che fa eseguire un terminale. Il formato è \"&lt;Control$gt;a"
-"\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di lettere "
-"maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;"
-"Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled\", "
-"allora non c'è alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esibiza itheminali. Ifomathi ibonakala \"&lt;Control&gt;a"
+"\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". Isahluli ngezijungqe sinesisa "
+"kwaye sivumela oonombumba abakhulu okanye abancinci, kunye nezifinyezo "
+"ezinjengo \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". Ukuba umisela okunye "
+"kwistring esisodwa \"disabled\", akusayi kubakho isidibanisi-qhosha kweli "
+"nyathelo."
 
 #: ../src/metacity.schemas.in.h:143
 msgid ""
@@ -1755,12 +1777,12 @@ msgid ""
 "\". If you set the option to the special string \"disabled\", then there "
 "will be no keybinding for this action."
 msgstr ""
-"La scorciatoia che invoca l'utilità del pannello per catturare una schermata "
-"di una finestra. Il formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;"
-"Alt&gt;F1\". È consentito l'utilizzo di lettere maiuscole, minuscole e anche "
-"di abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è "
-"impostata alla stringa speciale \"disabled\", allora non c'è alcuna "
-"scorciatoia per questa azione."
+"Isidibanisi-qhosha esibiza isibonelelo sescreenshot sendawo yolawulo "
+"kwifestile. Ifomathi ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;"
+"&lt;Alt&gt;F1\". Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba "
+"abakhulu okanye abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne "
+"\"&lt;Ctrl&gt;\". Ukuba umisela okunye kwistring esisodwa \"disabled\", "
+"akusayi kubakho isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:144
 msgid ""
@@ -1771,12 +1793,12 @@ msgid ""
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
 msgstr ""
-"La scorciatoia che invoca l'utilità del pannello per le schermate. Il "
-"formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È "
-"consentito l'utilizzo di lettere maiuscole, minuscole e anche di "
-"abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è "
-"impostata alla stringa speciale \"disabled\", allora non c'è alcuna "
-"scorciatoia per questa azione."
+"Isidibanisi-qhosha esibiza isibonelelo sescreenshot sendawo yolawulo. "
+"Ifomathi ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1"
+"\". Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye "
+"abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". "
+"Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho "
+"isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:145
 msgid ""
@@ -1786,35 +1808,34 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La scorciatoia che mostra il menù principale del pannello. Il formato è "
-"\"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito "
-"l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo "
-"\"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa "
-"speciale \"disabled\", allora non c'è alcuna scorciatoia per questa azione."
+"Isidibanisi-qhosha esibonisa eyona menyu yendawo yolawulo. Ifomathi "
+"ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
+"Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye "
+"abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". "
+"Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho "
+"isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:146
 msgid "The name of a workspace."
-msgstr "Il nome di un'area di lavoro."
+msgstr "Igama lendawo yokusebenzela."
 
 #: ../src/metacity.schemas.in.h:147
 msgid "The screenshot command"
-msgstr "Il comando per le schermate"
+msgstr "Umyalelo wescreenshot"
 
 #: ../src/metacity.schemas.in.h:148
 msgid ""
 "The theme determines the appearance of window borders, titlebar, and so "
 "forth."
-msgstr ""
-"Il tema determina l'aspetto dei bordi delle finestre, della barra del titolo "
-"e così via."
+msgstr "Umxholo umisa imbonakalo yemida yefestile, ititlebar, nokunye."
 
 #: ../src/metacity.schemas.in.h:149
 msgid ""
 "The time delay before raising a window if auto_raise is set to true. The "
 "delay is given in thousandths of a second."
 msgstr ""
-"L'intervallo di tempo in millisecondi prima che la finestra venga portata in "
-"primo piano quando auto_raise è impostato a \"true\"."
+"Ukulibaziseka kwexesha ngaphambi kokunyusa ifestile xa auto_raise isetelwe "
+"kwinyani. Ulibaziseko lunikezwa kumawaka esekondi."
 
 #: ../src/metacity.schemas.in.h:150
 msgid ""
@@ -1824,16 +1845,16 @@ msgid ""
 "and \"mouse\" means windows are focused when the mouse enters the window and "
 "unfocused when the mouse leaves the window."
 msgstr ""
-"La modalità di focus indica come vengono attivate le finestre. I possibili "
-"valori sono tre: \"click\" fa sì che si debba fare clic su una finestra per "
-"farle ottenere il focus, \"sloppy\" fa sì che le finestre ottengano il focus "
-"quando il puntatore entra nella loro area, \"mouse\" fa sì che le finestre "
-"ottengono il focus quando il puntantore entra nella loro area e lo perdano "
-"quando ne esce."
+"Imowdi yefocus yefestile ibonisa indlela iifestile ezivulwa ngayo. Kukho "
+"iindlela ezintathu ezinokwenziwa ngayo; \"click\" uthetha ukuba iifestile "
+"kufuneka zicofwe ukuze kuqwalaselwe kuzo, \"sloppy\" kuthetha iifestile "
+"ziqwalaselwe xa imouse ingena kwifestile kunye \"mouse\" uthetha ukuba "
+"iifestile ziqwalaselwe xa imouse ingena kwifestile ize ingaqwalaselwa xa "
+"imouse ishiya ifestile."
 
 #: ../src/metacity.schemas.in.h:151
 msgid "The window screenshot command"
-msgstr "Il comando per schermate di finestre"
+msgstr "Umyalelo wescreenshot sefestile"
 
 #: ../src/metacity.schemas.in.h:152
 msgid ""
@@ -1846,14 +1867,15 @@ msgid ""
 "If you set the option to the special string \"disabled\", then there will be "
 "no keybinding for this action."
 msgstr ""
-"Questa scorciatoia cambia se una finestra è sopra o sotto le altre finestre. "
-"Se la finestra è coperta da un'altra, la scorciatoia porta in primo piano la "
-"finestra che sta sotto. Se la finestra è già completamente visibile, la "
-"abbassa sotto le altre. Il formato è \"&lt;Control$gt;a\" oppure \"&lt;"
-"Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di lettere maiuscole, "
-"minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". "
-"Se l'opzione è impostata alla stringa speciale \"disabled\", allora non c'è "
-"alcuna scorciatoia per questa azione."
+"Esi sidibanisi-qhosha siyatshintsha noba ifestile ingentla okanye ngezantsi "
+"kwezinye iifestile. Ukuba ifestile yogqunywe yenye ifestile, yonyusa "
+"ifestile engasentla kwezinye iifestile. Ukuba ifestile sele ibonakala "
+"ngokupheleleyo, inciphisa ifestile engezantsi kwezinye iifestile. Ifomathi "
+"ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
+"Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye "
+"abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". "
+"Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho "
+"isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:153
 msgid ""
@@ -1863,11 +1885,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Scorciatoia per portare una finestra sotto le altre. Il formato è \"&lt;"
-"Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito "
-"l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo "
-"\"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa "
-"speciale \"disabled\", allora non c'è alcuna scorciatoia per questa azione."
+"Esi sidibanisi-qhosha sehlisa ifestile engezantsi kwezinye iifestile. "
+"Ifomathi ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1"
+"\". Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye "
+"abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". "
+"Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho "
+"isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:154
 msgid ""
@@ -1877,11 +1900,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Scorciatoia per portare la finestra sopra le altre. Il formato è \"&lt;"
-"Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito "
-"l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo "
-"\"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa "
-"speciale \"disabled\", allora non c'è alcuna scorciatoia per questa azione."
+"Esi sidibanisi-qhosha senyusa ifestile engasentla kwezinye iifestile. "
+"Ifomathi ibonakala \"&lt;Control&gt;a\" okanye \"&lt;Shift&gt;&lt;Alt&gt;F1"
+"\". Isahluli ngezijungqe sinesisa kwaye sivumela oonombumba abakhulu okanye "
+"abancinci, kunye nezifinyezo ezinjengo \"&lt;Ctl&gt;\" ne \"&lt;Ctrl&gt;\". "
+"Ukuba umisela okunye kwistring esisodwa \"disabled\", akusayi kubakho "
+"isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:155
 msgid ""
@@ -1892,12 +1916,12 @@ msgid ""
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
 msgstr ""
-"Scorciatoia per ridimensionare una finestra in modo che occupi tutto lo "
-"spazio orizzontale disponibile. Il formato è \"&lt;Control$gt;a\" oppure "
-"\"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di lettere "
-"maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;"
-"Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled\", "
-"allora non c'è alcuna scorciatoia per questa azione."
+"Esi sidibanisi-qhosha silungisa ubungakanani ngokutsha befestile ukugcwalisa "
+"indawo ethe tyaba efumanekayo. Ifomathi ibonakala \"&lt;Control&gt;a\" or "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1\". Isahluli ngezijungqe sinesisa kwaye sivumela "
+"oonombumba abakhulu okanye abancinci, kunye nezifinyezo ezinjengo \"&lt;"
+"Ctl&gt;\" ne \"&lt;Ctrl&gt;\". Ukuba umisela okunye kwistring esisodwa "
+"\"disabled\", akusayi kubakho isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:156
 msgid ""
@@ -1908,12 +1932,12 @@ msgid ""
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
 msgstr ""
-"Scorciatoia per ridimensionare una finestra in modo che occupi tutto lo "
-"spazio verticale disponibile. Il formato è \"&lt;Control$gt;a\" oppure \"&lt;"
-"Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di lettere maiuscole, "
-"minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". "
-"Se l'opzione è impostata alla stringa speciale \"disabled\", allora non c'è "
-"alcuna scorciatoia per questa azione."
+"Esi sidibanisi-qhosha silungisa ubungakanani ngokutsha befestile ukugcwalisa "
+"indawo ethe nkqo efumanekayo. Ifomathi ibonakala \"&lt;Control&gt;a\" or "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1\". Isahluli ngezijungqe sinesisa kwaye sivumela "
+"oonombumba abakhulu okanye abancinci, kunye nezifinyezo ezinjengo \"&lt;"
+"Ctl&gt;\" ne \"&lt;Ctrl&gt;\". Ukuba umisela okunye kwistring esisodwa "
+"\"disabled\", akusayi kubakho isidibanisi-qhosha kweli nyathelo."
 
 #: ../src/metacity.schemas.in.h:157
 msgid ""
@@ -1921,60 +1945,59 @@ msgid ""
 "Current valid options are 'toggle_shade', which will shade/unshade the "
 "window, and 'toggle_maximize' which will maximize/unmaximize the window."
 msgstr ""
-"Questa opzione determina l'effetto del doppio clic sulla barra del titolo. "
-"Le possibili impostazioni sono \"toggle_shade\" per arrotolare/srotolare e "
-"\"toggle_maximize\" per  massimizzare/demassimizzare la finestra."
+"Oku kumisa iziphumo zokucofa kabini kwititle bar. Okunye okukhoyo "
+"okusebenzayo yi- 'toggle_shade', neya kukhuhla/ingakhuhli ifestile "
+"ne-'toggle_maximize' neya kwandisa/kungandisi ifestile."
 
 #: ../src/metacity.schemas.in.h:158
 msgid "Toggle always on top state"
-msgstr "Attiva/disattiva la stato sempre in primo piano"
+msgstr "I-toggle ihlala rhoqo ikwimeko ephezulu"
 
 #: ../src/metacity.schemas.in.h:159
 msgid "Toggle fullscreen mode"
-msgstr "Attiva/disattiva la modalità a tutto schermo"
+msgstr "Imowdi yefullscreen ye-toggle"
 
 #: ../src/metacity.schemas.in.h:160
 msgid "Toggle maximization state"
-msgstr "Attiva/disattiva lo stato massimizzazione"
+msgstr "Imeko eyandisiweyo ye-toggle"
 
 #: ../src/metacity.schemas.in.h:161
 msgid "Toggle shaded state"
-msgstr "Attiva/disattiva lo stato arrotolato"
+msgstr "Imeko ekhuhliweyo ye-toggle"
 
 #: ../src/metacity.schemas.in.h:162
 msgid "Toggle window on all workspaces"
-msgstr "Attiva/disattiva la presenza della finestra su tutte le aree di lavoro"
+msgstr "Ifestile ye-toggle kuzo zonke indawo zokusebenzela"
 
-# Notare che audible_bell è il nome della chiave!
 #: ../src/metacity.schemas.in.h:163
 msgid ""
 "Turns on a visual indication when an application or the system issues a "
 "'bell' or 'beep'; useful for the hard-of-hearing and for use in noisy "
 "environments, or when 'audible bell' is off."
 msgstr ""
-"Attiva un'indicazione visiva quando un'applicazione o il sistema emette un "
-"\"bip\" o \"suona una campanella\"; utile per chi ha problemi d'udito o per "
-"l'uso in ambienti rumorosi, oppure quando \"audible_bell\" è disattivata."
+"Ivula isalathisi esibonakalayo xa inkqubo yekhompyutha okanye inkqubo "
+"inikeza 'bell' okanye 'beep'; neziluncedo ekuveni nzima nokusetyenziswa "
+"kwiindawo ezinengxolo okanye xa i-'audible bell' ivaliwe."
 
 #: ../src/metacity.schemas.in.h:164
 msgid "Unmaximize window"
-msgstr "Demassimizza la finestra"
+msgstr "Sukwandisa ifestile"
 
 #: ../src/metacity.schemas.in.h:165
 msgid "Use standard system font in window titles"
-msgstr "Utilizzare il carattere di sistema per i titoli delle finestre"
+msgstr "Sebenzisa ifonti yenkqubo esemgangathweni kwizihloko zefestile"
 
 #: ../src/metacity.schemas.in.h:166
 msgid "Visual Bell Type"
-msgstr "Tipo avviso visuale"
+msgstr "Udidi lweVisual Bell"
 
 #: ../src/metacity.schemas.in.h:167
 msgid "Window focus mode"
-msgstr "Modalità di focus delle finestre"
+msgstr "Imowdi yefocus yefestile"
 
 #: ../src/metacity.schemas.in.h:168
 msgid "Window title font"
-msgstr "Carattere per il titolo della finestra"
+msgstr "Ifonti yesihloko sefestile"
 
 #: ../src/prefs.c:501 ../src/prefs.c:517 ../src/prefs.c:533 ../src/prefs.c:549
 #: ../src/prefs.c:565 ../src/prefs.c:585 ../src/prefs.c:601 ../src/prefs.c:617
@@ -1984,7 +2007,7 @@ msgstr "Carattere per il titolo della finestra"
 #: ../src/prefs.c:823 ../src/prefs.c:839
 #, c-format
 msgid "GConf key \"%s\" is set to an invalid type\n"
-msgstr "La chiave GConf «%s» è impostata ad un tipo non valido\n"
+msgstr "Iqhosha i-GConf \"%s\" limiselwe kudidi olungasebenziyo\n"
 
 #: ../src/prefs.c:884
 #, c-format
@@ -1992,20 +2015,20 @@ msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
 "modifier\n"
 msgstr ""
-"Il valore «%s» nel database di configurazione non è valido per il "
-"modificatore del tasto del mouse\n"
+"\"%s\" ifunyenwe kwidatabase yesimo asiloxabiso elisebenzayo kwisilungisi "
+"seqhosha lemouse\n"
 
 #: ../src/prefs.c:908 ../src/prefs.c:1318
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
-msgstr "La chiave GConf «%s» è impostata ad un valore non valido\n"
+msgstr "Iqhosha i-GConf '%s' limiselwe kwixabiso elingasebenziyo\n"
 
 #: ../src/prefs.c:1035
 #, c-format
 msgid "Could not parse font description \"%s\" from GConf key %s\n"
 msgstr ""
-"Impossibile analizzare la descrizione del tipo di carattere «%s» dalla "
-"chiave GConf %s\n"
+"Ayikwazi kuhlula ngokwezijungqe inkcazelo ngefonti \"%s\" ukusuka kwiqhosha "
+"i-GConf %s\n"
 
 #: ../src/prefs.c:1220
 #, c-format
@@ -2013,28 +2036,26 @@ msgid ""
 "%d stored in GConf key %s is not a reasonable number of workspaces, current "
 "maximum is %d\n"
 msgstr ""
-"Il valore %d memorizzato nella chiave GConf %s non è un numero ragionevole "
-"di aree di lavoro, il massimo corrente è %d\n"
+"%d igcinwe kwiqhosha GConf %s asilo nani elifanelekileyo leendawo "
+"zokusebenzela, ubuninzi bangoku yi- %d\n"
 
 #: ../src/prefs.c:1280
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
 msgstr ""
-"Funzionalità palliative per la gestione di applicazioni difettose "
-"disabilitate. Alcune applicazioni potrebbero esibire comportamenti errati.\n"
+"Ukusebenza jikelele kwiinkqubo ezophukileyo akusebenzi. Ezinye iinkqubo "
+"azisayi kuziphatha ngendlela efanelekileyo.\n"
 
 #: ../src/prefs.c:1345
 #, c-format
 msgid "%d stored in GConf key %s is out of range 0 to %d\n"
-msgstr ""
-"Il valore %d memorizzato nella chiave GConf %s è fuori dall'intervallo da 0 "
-"a %d\n"
+msgstr "%d igcinwe kwiqhosha GConf %s alifumaneki 0 ukuya %d\n"
 
 #: ../src/prefs.c:1479
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
-msgstr "Errore nell'impostare il numero di aree di lavoro a %d: %s\n"
+msgstr "Impazamo kumiselo lwenani leendawo zokusebenzela ukuya %d: %s\n"
 
 #: ../src/prefs.c:1723
 #, c-format
@@ -2042,23 +2063,23 @@ msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
 "\"%s\"\n"
 msgstr ""
-"Il valore «%s» nel database di configurazione non è valido per la "
-"scorciatoia «%s»\n"
+"\"%s\" funyenwe kwidatabase yesimo asiloxabiso elisebenzayo kwisidibanisi-"
+"qhosha \"%s\"\n"
 
 #: ../src/prefs.c:2077
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
-msgstr "Errore nell'impostare il nome dell'area di lavoro %d a «%s»: %s\n"
+msgstr "Impazamo kumiselo lwegama kwindawo yokusebenzela %d ukuya \"%s\": %s\n"
 
 #: ../src/resizepopup.c:126
 #, c-format
 msgid "%d x %d"
-msgstr "%d × %d"
+msgstr "%d x %d"
 
 #: ../src/screen.c:408
 #, c-format
 msgid "Screen %d on display '%s' is invalid\n"
-msgstr "Lo schermo %d nel display «%s» non è valido\n"
+msgstr "Iscreen %d kumboniso '%s' asisebenzi\n"
 
 #: ../src/screen.c:424
 #, c-format
@@ -2066,91 +2087,89 @@ msgid ""
 "Screen %d on display \"%s\" already has a window manager; try using the --"
 "replace option to replace the current window manager.\n"
 msgstr ""
-"Lo schermo %d nel display «%s» ha già un window manager; utilizzare "
-"l'opzione --replace per sostituirlo.\n"
+"Iscreen %d kumboniso \"%s\" sele sinaye umanejala wefestile; zama "
+"ukusebenzisa --replace ukutshintsha umlawuli okhoyo wefestile.\n"
 
 #: ../src/screen.c:448
 #, c-format
 msgid ""
 "Could not acquire window manager selection on screen %d display \"%s\"\n"
 msgstr ""
-"Impossibile acquisire la selezione del window manager per lo schermo %d nel "
-"display «%s»\n"
+"Ayikwazi kufumana ukhetho lomlawuli wefestile kwiscreen %d somboniso \"%s\"\n"
 
 #: ../src/screen.c:506
 #, c-format
 msgid "Screen %d on display \"%s\" already has a window manager\n"
-msgstr "Lo schermo %d nel display «%s» ha già un window manager\n"
+msgstr "Iscreen %d kumboniso \"%s\" sele sinomlawuli wefestile\n"
 
 #: ../src/screen.c:699
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
-msgstr "Impossibile rilasciare lo schermo %d nel display «%s»\n"
+msgstr "Ayikwazi kukhupha iscreen %d kumboniso \"%s\"\n"
 
 #: ../src/session.c:884 ../src/session.c:891
 #, c-format
 msgid "Could not create directory '%s': %s\n"
-msgstr "Impossibile creare la directory «%s»: %s\n"
+msgstr "Ayikwazi kwenza uvimba weefayili '%s': %s\n"
 
 #: ../src/session.c:901
 #, c-format
 msgid "Could not open session file '%s' for writing: %s\n"
-msgstr "Impossibile aprire il file di sessione «%s» in scrittura: %s\n"
+msgstr "Ayikwazi kuvula ifayili yeseshini '%s' kubhalo: %s\n"
 
 #: ../src/session.c:1053
 #, c-format
 msgid "Error writing session file '%s': %s\n"
-msgstr "Errore nello scrivere il file di sessione «%s»: %s\n"
+msgstr "Impazamo kwifayili yeseshini yobhalo '%s': %s\n"
 
 #: ../src/session.c:1058
 #, c-format
 msgid "Error closing session file '%s': %s\n"
-msgstr "Errore nel chiudere il file di sessione «%s»: %s\n"
+msgstr "Impazamo kwifayili yeseshini yovalo '%s': %s\n"
 
 #: ../src/session.c:1133
 #, c-format
 msgid "Failed to read saved session file %s: %s\n"
-msgstr "Lettura del file della sessione %s fallita: %s\n"
+msgstr "Ayikwazi kufunda ifayili yeseshini egciniweyo %s: %s\n"
 
 #: ../src/session.c:1168
 #, c-format
 msgid "Failed to parse saved session file: %s\n"
-msgstr "Analisi del file della sessione salvato fallita: %s\n"
+msgstr "Ayikwazi ukwahlula ngezijungqe ifayili yeseshini egciniweyo: %s\n"
 
 #: ../src/session.c:1217
 msgid "<metacity_session> attribute seen but we already have the session ID"
 msgstr ""
-"È stato trovato un'attributo in <metacity_session> ma è già presente un ID "
-"della sessione"
+"<metacity_session> ukubalelwa okuboniweyo kodwa sele siyenzile iseshini ye-ID"
 
 #: ../src/session.c:1230
 #, c-format
 msgid "Unknown attribute %s on <metacity_session> element"
-msgstr "Attributo %s sconosciuto nell'elemento <metacity_session>"
+msgstr "Ukubalelwa okungaziwa %s kumba we-<metacity_session>"
 
 #: ../src/session.c:1247
 msgid "nested <window> tag"
-msgstr "tag <window> annidato"
+msgstr "itag esendlwaneni <window>"
 
 #: ../src/session.c:1305 ../src/session.c:1337
 #, c-format
 msgid "Unknown attribute %s on <window> element"
-msgstr "Attributo %s sconosciuto nell'elemento <window>"
+msgstr "Ulwabelo olungaziwayo %s kwinto ethile <window> element"
 
 #: ../src/session.c:1409
 #, c-format
 msgid "Unknown attribute %s on <maximized> element"
-msgstr "Attributo %s sconosciuto nell'elemento <maximized>"
+msgstr "Ulwabelo olungaziwayo %s ko <maximized> kokuthile"
 
 #: ../src/session.c:1469
 #, c-format
 msgid "Unknown attribute %s on <geometry> element"
-msgstr "Attributo %s sconosciuto nell'elemento <geometry>"
+msgstr "Ulwabelo olungaziwayo %s ko <geometry> kokuthile"
 
 #: ../src/session.c:1489
 #, c-format
 msgid "Unknown element %s"
-msgstr "Elemento %s sconosciuto"
+msgstr "Izinto ezingaziwayo %s"
 
 #: ../src/session.c:1961
 #, c-format
@@ -2158,54 +2177,56 @@ msgid ""
 "Error launching metacity-dialog to warn about apps that don't support "
 "session management: %s\n"
 msgstr ""
-"Errore nell'avviare metacity-dialog per un avvertimento riguardo le "
-"applicazioni che non supportano il gestore di sessione: %s\n"
+"Impazamo xa kuqaliswa imetacity-dialog ukulumkisa ngeenkqubo ezingaxhasi "
+"ulawulo lweseshini: %s\n"
 
 #: ../src/theme-parser.c:224 ../src/theme-parser.c:242
 #, c-format
 msgid "Line %d character %d: %s"
-msgstr "Riga %d carattere %d: %s"
+msgstr "Ilayini %d unobumba %d: %s"
 
 #: ../src/theme-parser.c:396
 #, c-format
 msgid "Attribute \"%s\" repeated twice on the same <%s> element"
-msgstr "L'attributo «%s» è ripetuto due volte nello stesso elemento <%s>"
+msgstr "Ulwabelo \"%s\" luphindwe kabini kwinto enye <%s>"
 
 #: ../src/theme-parser.c:414 ../src/theme-parser.c:439
 #, c-format
 msgid "Attribute \"%s\" is invalid on <%s> element in this context"
-msgstr "L'attributo «%s» non è valido nell'elemento <%s> in questo contesto"
+msgstr "Ulwabelo \"%s\" alusebenzi kwinto <%s> ekule meko"
 
 #: ../src/theme-parser.c:485
 #, c-format
 msgid "Integer %ld must be positive"
-msgstr "L'intero %ld deve essere positivo"
+msgstr "I-Integer %ld kufuneka ichaneke"
 
 #: ../src/theme-parser.c:493
 #, c-format
 msgid "Integer %ld is too large, current max is %d"
-msgstr "L'intero %ld è troppo grande, il massimo corrente è %d"
+msgstr "I-Integer %ld inkulu kakhulu, ubukhulu yi-%d"
 
 #: ../src/theme-parser.c:521 ../src/theme-parser.c:602
 #: ../src/theme-parser.c:626
 #, c-format
 msgid "Could not parse \"%s\" as a floating point number"
-msgstr "Impossibile analizzare «%s» come numero in virgola mobile"
+msgstr "Ayikwazi ukwahlula ngezijungqe \"%s\" njengenani lenqaku elibhabhayo"
 
 #: ../src/theme-parser.c:552
 #, c-format
 msgid "Boolean values must be \"true\" or \"false\" not \"%s\""
-msgstr "I valori booleani devono essere «true» o «false» non «%s»"
+msgstr "Amaxabiso e-Boolean kufuneka \"true\" okanye \"false\" hayi \"%s\""
 
 #: ../src/theme-parser.c:572
 #, c-format
 msgid "Angle must be between 0.0 and 360.0, was %g\n"
-msgstr "L'angolo deve essere tra 0.0 e 360.0, non %g\n"
+msgstr "I-engile kufuneka ibe phakathi ko-0.0 no-360.0, ibingu-%g\n"
 
 #: ../src/theme-parser.c:638
 #, c-format
 msgid "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g\n"
-msgstr "Alpha deve essere tra 0.0 (trasparente) e 1.0 (opaco), non %g\n"
+msgstr ""
+"I-Alpha kufuneka ibe phakathi ko-0.0 (ingabonakali) no-1.0 (ibe ngqindilili "
+"ngokupheleleyo), ibingu- %g\n"
 
 #: ../src/theme-parser.c:684
 #, c-format
@@ -2213,15 +2234,15 @@ msgid ""
 "Invalid title scale \"%s\" (must be one of xx-small,x-small,small,medium,"
 "large,x-large,xx-large)\n"
 msgstr ""
-"Taglia del titolo «%s» non valida (deve essere xx-small, x-small, small, "
-"medium,large, x-large, o xx-large)\n"
+"Isikali sesihloko asisebenzi \"%s\" (kufuneka sibe sesinye se- xx-small,x-"
+"small,small,medium,large,x-large,xx-large)\n"
 
 #: ../src/theme-parser.c:729 ../src/theme-parser.c:737
 #: ../src/theme-parser.c:2936 ../src/theme-parser.c:3025
 #: ../src/theme-parser.c:3032 ../src/theme-parser.c:3039
 #, c-format
 msgid "No \"%s\" attribute on element <%s>"
-msgstr "Nessun attributo «%s» nell'elemento <%s>"
+msgstr "Akukho \"%s\" lwabelo kwinto <%s>"
 
 #: ../src/theme-parser.c:807 ../src/theme-parser.c:897
 #: ../src/theme-parser.c:935 ../src/theme-parser.c:1012
@@ -2229,65 +2250,66 @@ msgstr "Nessun attributo «%s» nell'elemento <%s>"
 #: ../src/theme-parser.c:1126 ../src/theme-parser.c:1134
 #, c-format
 msgid "No \"%s\" attribute on <%s> element"
-msgstr "Nessun attributo «%s» nell'elemento <%s>"
+msgstr "Akukho \"%s\" lwabelo kwinto <%s>"
 
 #: ../src/theme-parser.c:837 ../src/theme-parser.c:905
 #: ../src/theme-parser.c:943 ../src/theme-parser.c:1020
 #, c-format
 msgid "<%s> name \"%s\" used a second time"
-msgstr "<%s> il nome «%s» usato una seconda volta"
+msgstr "<%s> igama \"%s\" elisetyenziswe okwesibini"
 
 #: ../src/theme-parser.c:849 ../src/theme-parser.c:955
 #: ../src/theme-parser.c:1032
 #, c-format
 msgid "<%s> parent \"%s\" has not been defined"
-msgstr "L'elemento genitore «%s» di <%s> non è definito"
+msgstr "<%s> umzali \"%s\" akachazwanga"
 
 #: ../src/theme-parser.c:968
 #, c-format
 msgid "<%s> geometry \"%s\" has not been defined"
-msgstr "<%s> la geometria «%s» non è stata definita"
+msgstr "<%s> igeometry \"%s\" ayichazwanga"
 
 #: ../src/theme-parser.c:981
 #, c-format
 msgid "<%s> must specify either a geometry or a parent that has a geometry"
-msgstr "<%s> deve specificare una geometria o un genitore che ha una geometria"
+msgstr "<%s> kufuneka ichaze igeometry okanye unozala onegeometry"
 
 #: ../src/theme-parser.c:1080
 #, c-format
 msgid "Unknown type \"%s\" on <%s> element"
-msgstr "Tipo «%s» sconosciuto nell'elemento <%s>"
+msgstr "Uhlobo olungaziwayo \"%s\" on <%s>"
 
 #: ../src/theme-parser.c:1091
 #, c-format
 msgid "Unknown style_set \"%s\" on <%s> element"
-msgstr "style_set «%s» sconosciuto nell'elemento <%s>"
+msgstr "Esingaziwayo style_set \"%s\" on <%s> kwinto"
 
 #: ../src/theme-parser.c:1099
 #, c-format
 msgid "Window type \"%s\" has already been assigned a style set"
-msgstr "Al tipo di finestra «%s» è già stato assegnato uno stile"
+msgstr "Uhlobo lwefestile \"%s\" sele lwabelwe umiselo lohlobo"
 
 #: ../src/theme-parser.c:1143
 #, c-format
 msgid "Unknown function \"%s\" for menu icon"
-msgstr "Funzione «%s» sconosciuta per l'icona del menù"
+msgstr "Umsebenzi ongaziwayo \"%s\" womfanekiso ongumqondiso wemenyu"
 
 #: ../src/theme-parser.c:1152
 #, c-format
 msgid "Unknown state \"%s\" for menu icon"
-msgstr "Stato «%s» sconosciuto per l'icona del menù"
+msgstr "Imeko engaziwayo \"%s\" kumfanekiso ongumqondiso kwimenyu"
 
+# Please translate "state"
 #: ../src/theme-parser.c:1160
-#, c-format
+#, fuzzy, c-format
 msgid "Theme already has a menu icon for function %s state %s"
-msgstr "Il tema ha già un'icona del menù per la funzione %s e lo stato %s"
+msgstr "Umxholo sele une-aykhoni yemenyu kumsebenzi %s state %s"
 
 #: ../src/theme-parser.c:1177 ../src/theme-parser.c:3244
 #: ../src/theme-parser.c:3323
 #, c-format
 msgid "No <draw_ops> with the name \"%s\" has been defined"
-msgstr "Non è stato definito alcun <draw_ops> con il nome «%s»"
+msgstr "Akukho <draw_ops> negama \"%s\" lichaziwe"
 
 #: ../src/theme-parser.c:1192 ../src/theme-parser.c:1256
 #: ../src/theme-parser.c:1545 ../src/theme-parser.c:3124
@@ -2296,88 +2318,87 @@ msgstr "Non è stato definito alcun <draw_ops> con il nome «%s»"
 #: ../src/theme-parser.c:3591 ../src/theme-parser.c:3629
 #, c-format
 msgid "Element <%s> is not allowed below <%s>"
-msgstr "L'elemento <%s> non è consentito all'interno di <%s>"
+msgstr "Into <%s> ayivunyelwa ngezantsi <%s>"
 
 #: ../src/theme-parser.c:1282 ../src/theme-parser.c:1369
 #: ../src/theme-parser.c:1439
 #, c-format
 msgid "No \"name\" attribute on element <%s>"
-msgstr "Nessun attributo «name» nell'elemento <%s>"
+msgstr "Akukho \"name\" lolwabiwo kwinto <%s>"
 
 #: ../src/theme-parser.c:1289 ../src/theme-parser.c:1376
 #, c-format
 msgid "No \"value\" attribute on element <%s>"
-msgstr "Nessun attributo «value» nell'elemento <%s>"
+msgstr "Akukho \"value\" yolwabelo kwinto <%s>"
 
 #: ../src/theme-parser.c:1320 ../src/theme-parser.c:1334
 #: ../src/theme-parser.c:1393
 msgid ""
 "Cannot specify both button_width/button_height and aspect ratio for buttons"
 msgstr ""
-"Non è possibile specificare sia button_width/button_height che le "
-"proporzioni per i pulsanti"
+"Ayikwazi kubalula i-button_width/button_height nezinga lengqiqo kumaqhosha"
 
 #: ../src/theme-parser.c:1343
 #, c-format
 msgid "Distance \"%s\" is unknown"
-msgstr "La distanza «%s» è sconosciuta"
+msgstr "Umgama \"%s\" awaziwa"
 
 #: ../src/theme-parser.c:1402
 #, c-format
 msgid "Aspect ratio \"%s\" is unknown"
-msgstr "Le proporzioni «%s» sono sconosciute"
+msgstr "Izinga lengqiqo \"%s\" alaziwa"
 
 #: ../src/theme-parser.c:1446
 #, c-format
 msgid "No \"top\" attribute on element <%s>"
-msgstr "Nessun attributo «top» nell'elemento <%s>"
+msgstr "Akukho \"top\" lwabiwo kwinto <%s>"
 
 #: ../src/theme-parser.c:1453
 #, c-format
 msgid "No \"bottom\" attribute on element <%s>"
-msgstr "Nessun attributo «bottom» nell'elemento <%s>"
+msgstr "Akukho \"bottom\" lwabiwo kwinto <%s>"
 
 #: ../src/theme-parser.c:1460
 #, c-format
 msgid "No \"left\" attribute on element <%s>"
-msgstr "Nessun attributo «left» nell'elemento <%s>"
+msgstr "Akukho \"left\" lwabiwo kwinto <%s>"
 
 #: ../src/theme-parser.c:1467
 #, c-format
 msgid "No \"right\" attribute on element <%s>"
-msgstr "Nessun attributo «right» nell'elemento <%s>"
+msgstr "Akukho \"right\" lwabiwo kwinto <%s>"
 
 #: ../src/theme-parser.c:1499
 #, c-format
 msgid "Border \"%s\" is unknown"
-msgstr "Il bordo «%s» è sconosciuto"
+msgstr "Umda \"%s\" awaziwa"
 
 #: ../src/theme-parser.c:1655 ../src/theme-parser.c:1765
 #: ../src/theme-parser.c:1868 ../src/theme-parser.c:2055
 #: ../src/theme-parser.c:2869
 #, c-format
 msgid "No \"color\" attribute on element <%s>"
-msgstr "Nessun attributo «color» nell'elemento <%s>"
+msgstr "Akukho \"color\" lwabiwo kwinto <%s>"
 
 #: ../src/theme-parser.c:1662
 #, c-format
 msgid "No \"x1\" attribute on element <%s>"
-msgstr "Nessun attributo «x1» nell'elemento <%s>"
+msgstr "Akukho \"x1\" lwabiwo kwinto <%s>"
 
 #: ../src/theme-parser.c:1669 ../src/theme-parser.c:2714
 #, c-format
 msgid "No \"y1\" attribute on element <%s>"
-msgstr "Nessun attributo «y1» nell'elemento <%s>"
+msgstr "Akukho \"y1\" alwabiwo kwinto <%s>"
 
 #: ../src/theme-parser.c:1676
 #, c-format
 msgid "No \"x2\" attribute on element <%s>"
-msgstr "Nessun attributo «x2» nell'elemento <%s>"
+msgstr "Akukho \"x2\" lwabiwo kwinto <%s>"
 
 #: ../src/theme-parser.c:1683 ../src/theme-parser.c:2721
 #, c-format
 msgid "No \"y2\" attribute on element <%s>"
-msgstr "Nessun attributo «y2» nell'elemento <%s>"
+msgstr "Akukho \"y2\" lwabiwo kwinto <%s>"
 
 #: ../src/theme-parser.c:1772 ../src/theme-parser.c:1875
 #: ../src/theme-parser.c:1981 ../src/theme-parser.c:2062
@@ -2387,7 +2408,7 @@ msgstr "Nessun attributo «y2» nell'elemento <%s>"
 #: ../src/theme-parser.c:2876
 #, c-format
 msgid "No \"x\" attribute on element <%s>"
-msgstr "Nessun attributo «x» nell'elemento <%s>"
+msgstr "Akukho \"x\" lwabiwo kwinto <%s>"
 
 #: ../src/theme-parser.c:1779 ../src/theme-parser.c:1882
 #: ../src/theme-parser.c:1988 ../src/theme-parser.c:2069
@@ -2396,7 +2417,7 @@ msgstr "Nessun attributo «x» nell'elemento <%s>"
 #: ../src/theme-parser.c:2788 ../src/theme-parser.c:2883
 #, c-format
 msgid "No \"y\" attribute on element <%s>"
-msgstr "Nessun attributo «y» nell'elemento <%s>"
+msgstr "Akukho \"y\" lwabiwo kwinto <%s>"
 
 #: ../src/theme-parser.c:1786 ../src/theme-parser.c:1889
 #: ../src/theme-parser.c:1995 ../src/theme-parser.c:2076
@@ -2405,7 +2426,7 @@ msgstr "Nessun attributo «y» nell'elemento <%s>"
 #: ../src/theme-parser.c:2795
 #, c-format
 msgid "No \"width\" attribute on element <%s>"
-msgstr "Nessun attributo «width» nell'elemento <%s>"
+msgstr "Akukho \"width\" lwabiwo kwinto <%s>"
 
 #: ../src/theme-parser.c:1793 ../src/theme-parser.c:1896
 #: ../src/theme-parser.c:2002 ../src/theme-parser.c:2083
@@ -2414,164 +2435,164 @@ msgstr "Nessun attributo «width» nell'elemento <%s>"
 #: ../src/theme-parser.c:2802
 #, c-format
 msgid "No \"height\" attribute on element <%s>"
-msgstr "Nessun attributo «height» nell'elemento <%s>"
+msgstr "Akukho \"height\" lwabiwo kwinto <%s>"
 
 #: ../src/theme-parser.c:1903
 #, c-format
 msgid "No \"start_angle\" attribute on element <%s>"
-msgstr "Nessun attributo «start_angle» nell'elemento <%s>"
+msgstr "Akukho \"start_angle\" lwabiwo kwinto <%s>"
 
 #: ../src/theme-parser.c:1910
 #, c-format
 msgid "No \"extent_angle\" attribute on element <%s>"
-msgstr "Nessun attributo «extent_andle» nell'elemento <%s>"
+msgstr "Akukho \"extent_angle\" lwabiwo kwinto <%s>"
 
 #: ../src/theme-parser.c:2090
 #, c-format
 msgid "No \"alpha\" attribute on element <%s>"
-msgstr "Nessun attributo «alpha» nell'elemento <%s>"
+msgstr "Akukho \"alpha\" lwabiwo kwinto <%s>"
 
 #: ../src/theme-parser.c:2161
 #, c-format
 msgid "No \"type\" attribute on element <%s>"
-msgstr "Nessun attributo «type» nell'elemento <%s>"
+msgstr "Akukho \"type\" lwabiwo kwinto <%s>"
 
 #: ../src/theme-parser.c:2209
 #, c-format
 msgid "Did not understand value \"%s\" for type of gradient"
-msgstr "Valore «%s» incomprensibile per il tipo di gradiente"
+msgstr "Ayiliqondanga ixabiso \"%s\" lohlobo lokuthambeka"
 
 #: ../src/theme-parser.c:2294
 #, c-format
 msgid "No \"filename\" attribute on element <%s>"
-msgstr "Nessun attributo «filename» nell'elemento <%s>"
+msgstr "Akukho \"filename\" lwabiwo kwinto <%s>"
 
 #: ../src/theme-parser.c:2319 ../src/theme-parser.c:2827
 #, c-format
 msgid "Did not understand fill type \"%s\" for <%s> element"
-msgstr "Tipo di riempimento «%s» incomprensibile per l'elemento <%s>"
+msgstr "Ayiluqondanga uhlobo logcwaliso \"%s\" kwinto <%s>"
 
 #: ../src/theme-parser.c:2462 ../src/theme-parser.c:2595
 #: ../src/theme-parser.c:2700
 #, c-format
 msgid "No \"state\" attribute on element <%s>"
-msgstr "Nessun attributo «state» nell'elemento <%s>"
+msgstr "Akukho \"state\" lwabiwo kwinto <%s>"
 
 #: ../src/theme-parser.c:2469 ../src/theme-parser.c:2602
 #, c-format
 msgid "No \"shadow\" attribute on element <%s>"
-msgstr "Nessun attributo «shadow» nell'elemento <%s>"
+msgstr "Akukho \"shadow\" lwabiwo kwinto <%s>"
 
 #: ../src/theme-parser.c:2476
 #, c-format
 msgid "No \"arrow\" attribute on element <%s>"
-msgstr "Nessun attributo «arrow» nell'elemento <%s>"
+msgstr "Akukho \"arrow\" lwabiwo kwinto <%s>"
 
 #: ../src/theme-parser.c:2529 ../src/theme-parser.c:2651
 #: ../src/theme-parser.c:2739
 #, c-format
 msgid "Did not understand state \"%s\" for <%s> element"
-msgstr "Stato «%s» incomprensibile per l'elemento <%s>"
+msgstr "Ayiqondekanga imeko \"%s\" yento <%s>"
 
 #: ../src/theme-parser.c:2539 ../src/theme-parser.c:2661
 #, c-format
 msgid "Did not understand shadow \"%s\" for <%s> element"
-msgstr "Ombra «%s» incomprensibile per l'elemento <%s>"
+msgstr "Ayikuqondanga ukukhuhleka \"%s\" kwinto <%s>"
 
 #: ../src/theme-parser.c:2549
 #, c-format
 msgid "Did not understand arrow \"%s\" for <%s> element"
-msgstr "Freccia «%s» incomprensibile per l'elemento <%s>"
+msgstr "Ayisiqondanga isalathisi \"%s\" kwinto <%s>"
 
 #: ../src/theme-parser.c:2962 ../src/theme-parser.c:3078
 #, c-format
 msgid "No <draw_ops> called \"%s\" has been defined"
-msgstr "Nessun <draw_ops> di nome «%s» è stato definito"
+msgstr "Akukho <draw_ops> ebiziweyo \"%s\" echaziweyo"
 
 #: ../src/theme-parser.c:2974 ../src/theme-parser.c:3090
 #, c-format
 msgid "Including draw_ops \"%s\" here would create a circular reference"
-msgstr "Includere draw_ops «%s» qui provocherà un riferimento circolare"
+msgstr "Ukuquka draw_ops \"%s\" apha kuya kuyila isalathisi sesetyhula"
 
 #: ../src/theme-parser.c:3153
 #, c-format
 msgid "No \"value\" attribute on <%s> element"
-msgstr "Nessun attributo «value» nell'elemento <%s>"
+msgstr "Akukho \"value\" lwabiwo <%s> kwinto"
 
 #: ../src/theme-parser.c:3210
 #, c-format
 msgid "No \"position\" attribute on <%s> element"
-msgstr "Nessun attributo «position» nell'elemento <%s>"
+msgstr "Akukho \"position\" lwabiwo <%s> kwinto"
 
 #: ../src/theme-parser.c:3219
 #, c-format
 msgid "Unknown position \"%s\" for frame piece"
-msgstr "Posizione «%s» sconosciuta per la parte di cornice"
+msgstr "Indawo engaziwayo \"%s\" kwisuntswana lesakhelo"
 
 #: ../src/theme-parser.c:3227
 #, c-format
 msgid "Frame style already has a piece at position %s"
-msgstr "Lo stile della cornice ha già una parte alla posizione %s"
+msgstr "Isitayile sobume sele sikhona sinesuntswana kwindawo %s"
 
 #: ../src/theme-parser.c:3272
 #, c-format
 msgid "No \"function\" attribute on <%s> element"
-msgstr "Nessun attributo «function» nell'elemento <%s>"
+msgstr "Akukho \"function\" lwabiwo <%s> kwinto"
 
 #: ../src/theme-parser.c:3280 ../src/theme-parser.c:3384
 #, c-format
 msgid "No \"state\" attribute on <%s> element"
-msgstr "Nessun attributo «state» nell'elemento <%s>"
+msgstr "Akukho \"state\" lwabiwo kwinto <%s>"
 
 #: ../src/theme-parser.c:3289
 #, c-format
 msgid "Unknown function \"%s\" for button"
-msgstr "Funzione «%s» sconosciuta per il pulsante"
+msgstr "Umsebenzi ongaziwayo \"%s\" kwiqhosha"
 
 #: ../src/theme-parser.c:3298
 #, c-format
 msgid "Unknown state \"%s\" for button"
-msgstr "Stato «%s» sconosciuto per il pulsate"
+msgstr "Imeko engaziwayo \"%s\" kwiqhosha"
 
 #: ../src/theme-parser.c:3306
 #, c-format
 msgid "Frame style already has a button for function %s state %s"
-msgstr "Lo stile della cornice ha già un pulsante per la funzione %s stato %s"
+msgstr "Isitayili sobume sele sineqhosha kumsebenzi %s kwimeko %s"
 
 #: ../src/theme-parser.c:3376
 #, c-format
 msgid "No \"focus\" attribute on <%s> element"
-msgstr "Nessun attributo «focus» nell'elemento <%s>"
+msgstr "Akukho \"focus\" kulwabiwo lwento <%s>"
 
 #: ../src/theme-parser.c:3392
 #, c-format
 msgid "No \"style\" attribute on <%s> element"
-msgstr "Nessun attributo «style» nell'elemento <%s>"
+msgstr "Akukho \"style\" kulwabiwo lwento <%s>"
 
 #: ../src/theme-parser.c:3401
 #, c-format
 msgid "\"%s\" is not a valid value for focus attribute"
-msgstr "«%s» non è un valore valido per l'attributo focus"
+msgstr "\"%s\" asilo xabiso elisebenzayo kulwabiwo logqaliselo"
 
 #: ../src/theme-parser.c:3410
 #, c-format
 msgid "\"%s\" is not a valid value for state attribute"
-msgstr "«%s» non è un valore valido per l'attributo state"
+msgstr "\"%s\" asilo xabiso elisebenzayo kulwabiwo lwemeko"
 
 #: ../src/theme-parser.c:3420
 #, c-format
 msgid "A style called \"%s\" has not been defined"
-msgstr "Uno stile chiamato «%s» non è stato definito"
+msgstr "Ubume obaziwa \"%s\" abuchazwanga"
 
 #: ../src/theme-parser.c:3430
 #, c-format
 msgid "No \"resize\" attribute on <%s> element"
-msgstr "Nessun attributo «resize» nell'elemento <%s>"
+msgstr "Akukho \"resize\" kulwabiwo lwento <%s>"
 
 #: ../src/theme-parser.c:3440
 #, c-format
 msgid "\"%s\" is not a valid value for resize attribute"
-msgstr "«%s» non è un valore valido per l'attributo resize"
+msgstr "\"%s\" asilo xabiso elisebenzayo kulwabiwo lobungakanani"
 
 #: ../src/theme-parser.c:3450
 #, c-format
@@ -2579,281 +2600,314 @@ msgid ""
 "Should not have \"resize\" attribute on <%s> element for maximized/shaded "
 "states"
 msgstr ""
-"Non si dovrebbe avere l'attributo «resize» nell'elemento <%s> per gli stati "
-"maximized/shaded"
+"Ayifanele kuba \"resize\" nolwabiwo <%s> kwinto ekwiimeko ezandisiweyo/"
+"khuhliweyo"
 
 #: ../src/theme-parser.c:3464
 #, c-format
 msgid "Style has already been specified for state %s resize %s focus %s"
-msgstr "Stile già specificato per state %s resize %s focus %s"
+msgstr "Ubume sele bubalulwe kwimeko %s ubungakanani %s ugqaliselo %s"
 
 #: ../src/theme-parser.c:3475 ../src/theme-parser.c:3486
 #: ../src/theme-parser.c:3497
 #, c-format
 msgid "Style has already been specified for state %s focus %s"
-msgstr "Lo stile è stato già specificato per lo stato %s focus %s"
+msgstr "Ubume sele bubalulwe kwimeko %s ugqaliselo %s"
 
 #: ../src/theme-parser.c:3536
 msgid ""
 "Can't have a two draw_ops for a <piece> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
 msgstr ""
-"Impossibile avere due draw_ops per un elemento <piece> (il tema ha "
-"specificato un attributo draw_ops e anche un elemento <draw_ops>, o ha "
-"specificato due elmenti)"
+"Azinakubambini i-draw_ops kwintwana <piece> (umxholo ubalulwe draw_ops "
+"kulwabiwo kwakunye <draw_ops> kwinto, okanye izinto ezibaluliweyo ezimbini)"
 
 #: ../src/theme-parser.c:3574
 msgid ""
 "Can't have a two draw_ops for a <button> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
 msgstr ""
-"Impossibile avere due draw_ops per un elemento <button> (il tema ha "
-"specificato un attributo draw_ops e anche un elemento <draw_ops>, o ha "
-"specificato due elementi)"
+"Azinakubambini i-draw_ops kwintwana <button> (umxholo ubalulwe draw_ops "
+"kulwabiwo kwakunye <draw_ops> kwinto, okanye izinto ezibaluliweyo ezimbini)"
 
 #: ../src/theme-parser.c:3612
 msgid ""
 "Can't have a two draw_ops for a <menu_icon> element (theme specified a "
 "draw_ops attribute and also a <draw_ops> element, or specified two elements)"
 msgstr ""
-"Impossibile avere due draw_ops per un elemento <menu_icon> (il tema ha "
-"specificato un attributo draw_ops e anche un elemento <draw_ops>, o ha "
-"specificato due elementi)"
+"Azinakubambini i-draw_ops kwinto <menu_icon> (umxholo ubalulwe draw_ops "
+"kulwabiwo kwakunye <draw_ops> kwinto, okanye izinto ezibaluliweyo ezimbini)"
 
 #: ../src/theme-parser.c:3659
 #, c-format
 msgid "Outermost element in theme must be <metacity_theme> not <%s>"
-msgstr "L'elemento più esterno nel tema deve essere <metacity_theme> not <%s>"
+msgstr ""
+"Eyona nto ingaphandle kumxholo kufuneka ibe yi- <metacity_theme> hayi <%s>"
 
 #: ../src/theme-parser.c:3679
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a name/author/date/description element"
 msgstr ""
-"L'elemento <%s> non è consentito all'interno degli elementi name/author/date/"
+"Into <%s> ayivunyelwanga ngaphakathi kwenkcazelo ye-name/author/date/"
 "description"
 
 #: ../src/theme-parser.c:3684
 #, c-format
 msgid "Element <%s> is not allowed inside a <constant> element"
-msgstr "L'elemento <%s> non è consentito all'interno delll'elemento <constant>"
+msgstr "Into <%s> ayivunyelwanga ngaphakathi <constant> kwento"
 
 #: ../src/theme-parser.c:3696
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a distance/border/aspect_ratio element"
 msgstr ""
-"L'elemento <%s> non è consentito all'inteno dell'elemento distance/border/"
-"aspect_ratio"
+"Into <%s> ayivunyelwanga ngaphakathi kwe-distance/border/aspect_ratio kwinto"
 
 #: ../src/theme-parser.c:3718
 #, c-format
 msgid "Element <%s> is not allowed inside a draw operation element"
-msgstr ""
-"L'elemento <%s> non è consentito all'interno di un elemento relativo "
-"un'operazione di disegno"
+msgstr "Into <%s> ayivunyelwanga ngaphakathi kwento yomsebenzi olinganayo"
 
 #: ../src/theme-parser.c:3728 ../src/theme-parser.c:3758
 #: ../src/theme-parser.c:3763
 #, c-format
 msgid "Element <%s> is not allowed inside a <%s> element"
-msgstr "L'elemento <%s> non è consentito all'interno di un elemento <%s>"
+msgstr "Into <%s> ayivunyelwa ngaphakathi <%s> kwento"
 
 #: ../src/theme-parser.c:3984
 msgid "No draw_ops provided for frame piece"
-msgstr "Nessun draw_ops fornito per la parte di frame"
+msgstr "Akukho draw_ops ezinikezelwe kwisuntswana lefreym"
 
 #: ../src/theme-parser.c:3999
 msgid "No draw_ops provided for button"
-msgstr "Nessun draw_ops fornito per il pulsante"
+msgstr "Akukho draw_ops ezinikezelwe kwiqhosha"
 
 #: ../src/theme-parser.c:4014
 msgid "No draw_ops provided for menu icon"
-msgstr "Nessun draw_ops fornito per l'icona del menù"
+msgstr "Akukho draw_ops ezinikezelwe kwi-aykhoni yemenyu"
 
 #: ../src/theme-parser.c:4054
 #, c-format
 msgid "No text is allowed inside element <%s>"
-msgstr "Il testo non è consentito all'interno dell'elemento <%s>"
+msgstr "Akukho magama avunyelweyo ngaphakathi kwento <%s>"
 
 #: ../src/theme-parser.c:4109
 msgid "<name> specified twice for this theme"
-msgstr "<name> specificato due volte per questo tema"
+msgstr "<name> libalulwe kabini kulo mxholo"
 
 #: ../src/theme-parser.c:4120
 msgid "<author> specified twice for this theme"
-msgstr "<author> specificato due volte per questo tema"
+msgstr "<author> libalulwe kabini kulo mxholo"
 
 #: ../src/theme-parser.c:4131
 msgid "<copyright> specified twice for this theme"
-msgstr "<copyright> specificato due volte per questo tema"
+msgstr "<copyright> libalulwe kabini kulo mxholo"
 
 #: ../src/theme-parser.c:4142
 msgid "<date> specified twice for this theme"
-msgstr "<date> specificato due volte per questo tema"
+msgstr "<date> libalulwe kabini kulo mxholo"
 
 #: ../src/theme-parser.c:4153
 msgid "<description> specified twice for this theme"
-msgstr "<description> specificato due volte per questo tema"
+msgstr "<description> libalulwe kabini kulo mxholo"
 
 #: ../src/theme-parser.c:4348
 #, c-format
 msgid "Failed to read theme from file %s: %s\n"
-msgstr "Errore nel leggere il tema dal file %s: %s\n"
+msgstr "Ayikwazi kufunda umxholo kwifayili %s: %s\n"
 
 #: ../src/theme-parser.c:4403
 #, c-format
 msgid "Theme file %s did not contain a root <metacity_theme> element"
-msgstr "Il file di tema «%s» non contiene un elemento radice <metacity_theme>"
+msgstr "Ifayili yomxholo %s ayiqulathanga ingcambu <metacity_theme> kwinto"
 
+# Please translate: I know these look like folder names that should not be
+# translated but they are part of the browser for themes
 #: ../src/theme-viewer.c:70
+#, fuzzy
 msgid "/_Windows"
-msgstr "/_Finestre"
+msgstr "/_Windows"
 
+# Please translate: I know these look like folder names that should not be
+# translated but they are part of the browser for themes
 #: ../src/theme-viewer.c:71
+#, fuzzy
 msgid "/Windows/tearoff"
-msgstr "/Finestre/staccatore"
+msgstr "/Windows/tearoff"
 
+# Please translate: I know these look like folder names that should not be
+# translated but they are part of the browser for themes
 #: ../src/theme-viewer.c:72
+#, fuzzy
 msgid "/Windows/_Dialog"
-msgstr "/Finestre/_Dialogo"
+msgstr "/Windows/_Dialog"
 
+# Please translate: I know these look like folder names that should not be
+# translated but they are part of the browser for themes
 #: ../src/theme-viewer.c:73
+#, fuzzy
 msgid "/Windows/_Modal dialog"
-msgstr "/Finestre/Dialogo _modale"
+msgstr "/Windows/_Modal dialog"
 
+# Please translate: I know these look like folder names that should not be
+# translated but they are part of the browser for themes
 #: ../src/theme-viewer.c:74
+#, fuzzy
 msgid "/Windows/_Utility"
-msgstr "/Finestre/_Utilità"
+msgstr "/Windows/_Utility"
 
+# Please translate: I know these look like folder names that should not be
+# translated but they are part of the browser for themes
 #: ../src/theme-viewer.c:75
+#, fuzzy
 msgid "/Windows/_Splashscreen"
-msgstr "/Finestre/_Schermata d'avvio"
+msgstr "/Windows/_Splashscreen"
 
+# Please translate: I know these look like folder names that should not be
+# translated but they are part of the browser for themes
 #: ../src/theme-viewer.c:76
+#, fuzzy
 msgid "/Windows/_Top dock"
-msgstr "/Finestre/Dock superi_ore"
+msgstr "/Windows/_Top dock"
 
+# Please translate: I know these look like folder names that should not be
+# translated but they are part of the browser for themes
 #: ../src/theme-viewer.c:77
+#, fuzzy
 msgid "/Windows/_Bottom dock"
-msgstr "/Finestre/Dock in_feriore"
+msgstr "/Windows/_Bottom dock"
 
+# Please translate: I know these look like folder names that should not be
+# translated but they are part of the browser for themes
 #: ../src/theme-viewer.c:78
+#, fuzzy
 msgid "/Windows/_Left dock"
-msgstr "/Finestre/Dock _sinistro"
+msgstr "/Windows/_Left dock"
 
+# Please translate: I know these look like folder names that should not be
+# translated but they are part of the browser for themes
 #: ../src/theme-viewer.c:79
+#, fuzzy
 msgid "/Windows/_Right dock"
-msgstr "/Finestre/Dock _destro"
+msgstr "/Windows/_Right dock"
 
+# Please translate: I know these look like folder names that should not be
+# translated but they are part of the browser for themes
 #: ../src/theme-viewer.c:80
+#, fuzzy
 msgid "/Windows/_All docks"
-msgstr "/Finestre/Tutti i doc_k"
+msgstr "/Windows/_All docks"
 
+# Please translate: I know these look like folder names that should not be
+# translated but they are part of the browser for themes
 #: ../src/theme-viewer.c:81
+#, fuzzy
 msgid "/Windows/Des_ktop"
-msgstr "/Finestre/D_esktop"
+msgstr "/Windows/Des_ktop"
 
 #: ../src/theme-viewer.c:131
 msgid "Open another one of these windows"
-msgstr "Apre un'altra di queste finestre"
+msgstr "Vula enye yezi festile"
 
 #: ../src/theme-viewer.c:138
 msgid "This is a demo button with an 'open' icon"
-msgstr "Questo è un pulsante di prova con un'icona «Apri»"
+msgstr "Lo ngumboniso weqhosha eline-'open' aykhoni"
 
 #: ../src/theme-viewer.c:145
 msgid "This is a demo button with a 'quit' icon"
-msgstr "Questo è un pulsante di prova con un'icona «Esci»"
+msgstr "Lo ngumboniso weqhosha eline-'quit' aykhoni"
 
 #: ../src/theme-viewer.c:241
 msgid "This is a sample message in a sample dialog"
-msgstr "Questo è un messaggo d'esempio in una finestra di dialogo d'esempio"
+msgstr "Lo ngumzekelo womyalezo kwibhokisi yomyalezo"
 
 #: ../src/theme-viewer.c:324
 #, c-format
 msgid "Fake menu item %d\n"
-msgstr "Voce di menu finta n.%d\n"
+msgstr "Ulandelo lwemenyu olungachanekanga %d\n"
 
 #: ../src/theme-viewer.c:358
 msgid "Border-only window"
-msgstr "Finestra solo-bordo"
+msgstr "Ifestile engumda kuphela"
 
 #: ../src/theme-viewer.c:360
 msgid "Bar"
-msgstr "Barra"
+msgstr "Ibar"
 
 #: ../src/theme-viewer.c:377
 msgid "Normal Application Window"
-msgstr "Finestra applicazione normale"
+msgstr "IFestile yeNkqubo eQhelekileyo"
 
 #: ../src/theme-viewer.c:382
 msgid "Dialog Box"
-msgstr "Casella di dialogo"
+msgstr "Ibhokisi yoNxibelelwano"
 
 #: ../src/theme-viewer.c:387
 msgid "Modal Dialog Box"
-msgstr "Casella di dialogo modale"
+msgstr "Isihloko seBhokisi yoNxibelelwano"
 
 #: ../src/theme-viewer.c:392
 msgid "Utility Palette"
-msgstr "Tavolozza utilità"
+msgstr "I-Utility Palette"
 
 #: ../src/theme-viewer.c:397
 msgid "Torn-off Menu"
-msgstr "Menu staccato"
+msgstr "IMenyu ye-Torn-off"
 
 #: ../src/theme-viewer.c:402
 msgid "Border"
-msgstr "Bordo"
+msgstr "Umda"
 
 #: ../src/theme-viewer.c:731
 #, c-format
 msgid "Button layout test %d"
-msgstr "Test n.%d disposizione pulsanti"
+msgstr "Uvavanyo lweqhosha %d"
 
 #: ../src/theme-viewer.c:760
 #, c-format
 msgid "%g milliseconds to draw one window frame"
-msgstr "%g millisecondi per disegnare una cornice di finestra"
+msgstr "%g milisekondi ukuzoba isakhelo esinye sefestile"
 
+# Please translate THEMENAME
 #: ../src/theme-viewer.c:803
+#, fuzzy
 msgid "Usage: metacity-theme-viewer [THEMENAME]\n"
-msgstr "Uso: metacity-theme-viewer [NOME_TEMA]\n"
+msgstr "Usetyenziso: metacity-theme-viewer [THEMENAME]\n"
 
 #: ../src/theme-viewer.c:810
 #, c-format
 msgid "Error loading theme: %s\n"
-msgstr "Errore nel caricare il tema: %s\n"
+msgstr "Impazamo kufako lomxholo: %s\n"
 
 #: ../src/theme-viewer.c:816
 #, c-format
 msgid "Loaded theme \"%s\" in %g seconds\n"
-msgstr "Tema «%s» caricato in %g secondi\n"
+msgstr "Umxholo ofakiwe \"%s\" nge- %g sekondi\n"
 
 #: ../src/theme-viewer.c:839
 msgid "Normal Title Font"
-msgstr "Carattere titolo normale"
+msgstr "IFonti yeSihloko esiQhelekileyo"
 
 #: ../src/theme-viewer.c:845
 msgid "Small Title Font"
-msgstr "Carattere titolo piccolo"
+msgstr "IFonti yeSihloko esiNcinci"
 
 #: ../src/theme-viewer.c:851
 msgid "Large Title Font"
-msgstr "Carattere titolo grande"
+msgstr "IFonti yeSihloko esiKhulu"
 
 #: ../src/theme-viewer.c:856
 msgid "Button Layouts"
-msgstr "Disposizione pulsanti"
+msgstr "Uyilo lwamaQhosha"
 
 #: ../src/theme-viewer.c:861
 msgid "Benchmark"
-msgstr "Prestazioni"
+msgstr "Umlinganiselo"
 
 #: ../src/theme-viewer.c:908
 msgid "Window Title Goes Here"
-msgstr "Qui va il titolo della finestra"
+msgstr "ISihloko seFestile Siya Apha"
 
 #: ../src/theme-viewer.c:1012
 #, c-format
@@ -2862,88 +2916,89 @@ msgid ""
 "seconds wall clock time including X server resources (%g milliseconds per "
 "frame)\n"
 msgstr ""
-"Disegnate %d cornici in %g secondi lato client (%g millisecondi per cornice) "
-"e %g secondi di wall clock time, incluse le risorse del server X (%g "
-"millisecondi per cornice)\n"
+"Kutsalwe %d iifreym %g kwicala lomxhasi iisekondi (%g imilisekondi "
+"kwisakhelo ngasinye) kunye %g iisekondi kwixesha lekloko yodonga ukuquka "
+"oovimba beseva X (%g imilisekondi kwisakhelo nganye)\n"
 
 #: ../src/theme-viewer.c:1227
 msgid "position expression test returned TRUE but set error"
-msgstr "test espressione posizione ha restituito TRUE, ma impostato errore"
+msgstr "uvavanyo oluchaza indawo lubuyiswe LUYINYANI kodwa lumiselwe nempazamo"
 
 #: ../src/theme-viewer.c:1229
 msgid "position expression test returned FALSE but didn't set error"
 msgstr ""
-"test espressione posizione ha restituito FALSE, ma non ha impostato errore"
+"uvavanyo oluchaza indawo lubuyiswe LUBUBUXOKI kodwa lungamiselwanga "
+"ngempazamo"
 
 #: ../src/theme-viewer.c:1233
 msgid "Error was expected but none given"
-msgstr "Errore atteso, ma non fornito"
+msgstr "Impazamo ibilindelekile kodwa ayikho enikiweyo"
 
 #: ../src/theme-viewer.c:1235
 #, c-format
 msgid "Error %d was expected but %d given"
-msgstr "Atteso errore %d, ma fornito %d"
+msgstr "Impazamo %d ibilindelekile kodwa %d enikiweyo"
 
 #: ../src/theme-viewer.c:1241
 #, c-format
 msgid "Error not expected but one was returned: %s"
-msgstr "Errore non atteso, ma è stato restituito: %s"
+msgstr "Impazamo ayilindelekanga kodwa enye yabuyiswa: %s"
 
 #: ../src/theme-viewer.c:1245
 #, c-format
 msgid "x value was %d, %d was expected"
-msgstr "valore x era %d, era atteso %d"
+msgstr "x ixabiso yaba %d, %d lalilindelekile"
 
 #: ../src/theme-viewer.c:1248
 #, c-format
 msgid "y value was %d, %d was expected"
-msgstr "valore y era %d, era atteso %d"
+msgstr "y ixabiso yaba %d, %d lalilindelekile"
 
 #: ../src/theme-viewer.c:1310
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr ""
-"%d espressioni di coordinate analizzate in %g secondi (%g secondi in media)\n"
+"%d ulungelelaniso lweentetho eyahlulwe %g ngeesekondi (%g i-avareji "
+"yeesekondi)\n"
 
 #: ../src/theme.c:202
 msgid "top"
-msgstr "alto"
+msgstr "phezulu"
 
 #: ../src/theme.c:204
 msgid "bottom"
-msgstr "basso"
+msgstr "ezantsi"
 
 #: ../src/theme.c:206
 msgid "left"
-msgstr "sinistra"
+msgstr "ekhohlo"
 
 #: ../src/theme.c:208
 msgid "right"
-msgstr "destra"
+msgstr "ekunene"
 
 #: ../src/theme.c:222
 #, c-format
 msgid "frame geometry does not specify \"%s\" dimension"
-msgstr "la geometria della cornice non specifica la dimensione «%s»"
+msgstr "isakhelo se-geometry asibaluli \"%s\" umlinganiso"
 
 #: ../src/theme.c:241
 #, c-format
 msgid "frame geometry does not specify dimension \"%s\" for border \"%s\""
-msgstr ""
-"la geometria della cornice non specifica la dimensione «%s» per il bordo «%s»"
+msgstr "isakhelo se-geometry ayibaluli umlinganiso \"%s\" womda \"%s\""
 
 #: ../src/theme.c:278
 #, c-format
 msgid "Button aspect ratio %g is not reasonable"
-msgstr "Le proporzioni %g del pulsante non sono ragionevoli"
+msgstr "Izinga lomba wamaqhosha %g alifanelekanga"
 
 #: ../src/theme.c:290
 msgid "Frame geometry does not specify size of buttons"
-msgstr "La geometria della cornice non specifica la dimensione dei pulsanti"
+msgstr "Isakhelo se-geometry ayibaluli ubungakanani bamaqhosha"
 
 #: ../src/theme.c:849
 msgid "Gradients should have at least two colors"
-msgstr "I gradienti dovrebbero avere almeno due colori"
+msgstr "Ukuthambeka kufuneka kube nemibala emibini ubuncinane"
 
 #: ../src/theme.c:975
 #, c-format
@@ -2951,8 +3006,8 @@ msgid ""
 "GTK color specification must have the state in brackets, e.g. gtk:fg[NORMAL] "
 "where NORMAL is the state; could not parse \"%s\""
 msgstr ""
-"La specificazione di colore GTK deve avere lo stato fra parentesi, per es. "
-"gtk:fg[NORMAL] dove NORMAL è lo stato, impossibile analizzare \"%s\""
+"Ubalulo lombala we-GTK kufuneka ube nemeko kwizibiyeli, umz. gtk:fg[NORMAL] "
+"apho u-QHELEKILEYO eyimeko; alunokwahlula njengezijungqu \"%s\""
 
 #: ../src/theme.c:989
 #, c-format
@@ -2960,18 +3015,19 @@ msgid ""
 "GTK color specification must have a close bracket after the state, e.g. gtk:"
 "fg[NORMAL] where NORMAL is the state; could not parse \"%s\""
 msgstr ""
-"La specifica di colore GTK deve avere una parentesi chiusa dopo lo stato, "
-"per es. gtk:fg[NORMAL] dove NORMAL è lo stato, impossibile analizzare \"%s\""
+"Ubalulo lombala we-GTK kufuneka ube nesibiyeli esikufuphi emva kwemeko, umz. "
+"gtk:fg[NORMAL] apho u-QHELEKILEYO eyimeko; alunokwahlula njengezijungqe \"%s"
+"\""
 
 #: ../src/theme.c:1000
 #, c-format
 msgid "Did not understand state \"%s\" in color specification"
-msgstr "State «%s» incomprensibile nella specifica di colore"
+msgstr "Ayiqondekanga imeko \"%s\" kubalulo lombala"
 
 #: ../src/theme.c:1013
 #, c-format
 msgid "Did not understand color component \"%s\" in color specification"
-msgstr "Componente di colore «%s» incomprensibile nella specifica del colore"
+msgstr "Aliqondeki icandelo lombala \"%s\" kubalulo lombala"
 
 #: ../src/theme.c:1043
 #, c-format
@@ -2979,50 +3035,47 @@ msgid ""
 "Blend format is \"blend/bg_color/fg_color/alpha\", \"%s\" does not fit the "
 "format"
 msgstr ""
-"Il formato della sfumature è «blend/bg_color/fg_color/alpha», «%s» non è "
-"adatto a tale formato"
+"Ifomathi yokudibana yi- \"blend/bg_color/fg_color/alpha\", \"%s\" "
+"ayifaneleki kwifomathi"
 
 #: ../src/theme.c:1054
 #, c-format
 msgid "Could not parse alpha value \"%s\" in blended color"
-msgstr "Impossibile analizzare il valore alfa «%s» nel colore sfumato"
+msgstr "Ayikwazi kwahlula ixabiso le-alpha \"%s\" kumbala odityanisiweyo"
 
 #: ../src/theme.c:1064
 #, c-format
 msgid "Alpha value \"%s\" in blended color is not between 0.0 and 1.0"
-msgstr "Il valore alfa «%s» nel colore sfumato non è compresto tra 0.0 e 1.0"
+msgstr ""
+"Ixabiso le-alpha \"%s\" kumbala odityanisiweyo alikho phakathi ko-0.0 no-1.0"
 
 #: ../src/theme.c:1111
 #, c-format
 msgid ""
 "Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
 msgstr ""
-"Il formato dell'ombreggiatura è «shade/base_color/factor», «%s» non è adatto "
-"a tale formato"
+"Ifomathi yokhuhlo yi- \"shade/base_color/factor\", \"%s\" ayifaneleki "
+"kwifomathi"
 
 #: ../src/theme.c:1122
 #, c-format
 msgid "Could not parse shade factor \"%s\" in shaded color"
-msgstr ""
-"Impossibile analizzare il fattore di ombreggiatura «%s» nel colore "
-"ombreggiato"
+msgstr "Ayikwazi kwahlula ukhuhleko \"%s\" kumbala okhuhliweyo"
 
 #: ../src/theme.c:1132
 #, c-format
 msgid "Shade factor \"%s\" in shaded color is negative"
-msgstr "Il fattore di ombreggiatura «%s» nel colore ombreggiato è negativo"
+msgstr "Umba wokhuhleko \"%s\" kumbala okhuhliweyo uyalandula"
 
 #: ../src/theme.c:1161
 #, c-format
 msgid "Could not parse color \"%s\""
-msgstr "Impossibile analizzare il colore «%s»"
+msgstr "Ayikwazi kwahlula umbala \"%s\""
 
 #: ../src/theme.c:1423
 #, c-format
 msgid "Coordinate expression contains character '%s' which is not allowed"
-msgstr ""
-"L'espressione della coordinata contiene il carattere «%s» che non è "
-"consentito"
+msgstr "Intetho elungelelanisiweyo iqulathe unobumba '%s' ongavumelekanga"
 
 #: ../src/theme.c:1450
 #, c-format
@@ -3030,15 +3083,13 @@ msgid ""
 "Coordinate expression contains floating point number '%s' which could not be "
 "parsed"
 msgstr ""
-"L'espressione della coordinata contiene il numero in virgola mobile «%s» che "
-"non può essere analizzato"
+"Intetho elungelelanisiweyo iqulathe inombolo yenqaku elibhabhayo '%s' "
+"elingenakwahlulwa"
 
 #: ../src/theme.c:1464
 #, c-format
 msgid "Coordinate expression contains integer '%s' which could not be parsed"
-msgstr ""
-"L'espressione della coordinata contiene l'intero «%s» che non può essere "
-"analizzato"
+msgstr "Intetho elungelelanisiweyo iqulathe i-integer '%s' engenokohlulwa"
 
 #: ../src/theme.c:1531
 #, c-format
@@ -3046,41 +3097,40 @@ msgid ""
 "Coordinate expression contained unknown operator at the start of this text: "
 "\"%s\""
 msgstr ""
-"L'espressione della coordinata contiene un operatore sconosciuto "
-"all'inizione di questo testo: \"%s\""
+"Intetho elungelelanisiweyo iqulathe umsebenzisi ongaziwa ekuqaleni kwala "
+"magama: \"%s\""
 
 #: ../src/theme.c:1588
 msgid "Coordinate expression was empty or not understood"
-msgstr "L'espressione della coordinata è vuota o non compresa"
+msgstr "Intetho elungelelanisiweyo ibingenanto okanye ingaqondwa"
 
 #: ../src/theme.c:1731 ../src/theme.c:1741 ../src/theme.c:1775
 msgid "Coordinate expression results in division by zero"
-msgstr "L'espressione della coordinata risulta una divisione per zero"
+msgstr "Intetho elungelelanisiweyo ibangela ulwahlulo ngozero"
 
 #: ../src/theme.c:1783
 msgid ""
 "Coordinate expression tries to use mod operator on a floating-point number"
 msgstr ""
-"L'espressione della coordinata tenta di usare un operatore mod su un numero "
-"in virgola mobile"
+"Intetho elungelelanisiweyo izama ukusebenzisa i-mod operator kwinani lenqaku "
+"elibhabhayo"
 
 #: ../src/theme.c:1840
 #, c-format
 msgid ""
 "Coordinate expression has an operator \"%s\" where an operand was expected"
 msgstr ""
-"L'espressione della coordinata ha un operatore «%s» dove è atteso un operando"
+"Intetho elungelelanisiweyo inomsebenzisi \"%s\" apho i-operand yayilindeleke "
+"khona"
 
 #: ../src/theme.c:1849
 msgid "Coordinate expression had an operand where an operator was expected"
 msgstr ""
-"L'espressione della coordinata ha un operando dove è atteso un operatore"
+"Intetho elungelelanisiweyo ine operand apho umsebenzisi wayelindeleke khona"
 
 #: ../src/theme.c:1857
 msgid "Coordinate expression ended with an operator instead of an operand"
-msgstr ""
-"L'espressione della coordinata finisce con un operatore invece che un "
-"operando"
+msgstr "Intetho elungelelanisiweyo iphele kumsebenzisi ingeyiyo i-operand"
 
 #: ../src/theme.c:1867
 #, c-format
@@ -3088,45 +3138,46 @@ msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
 "operand in between"
 msgstr ""
-"L'espressione di coordinata ha l'operatore «%c» seguito dall'operatore «%c» "
-"senza un operando fra i due"
+"Intetho elungelelanisiweyo inomsebenzisi \"%c\" olandela umsebenzisi \"%c\" "
+"ngaphandle kwe-operand phakathi kwabo"
 
 #: ../src/theme.c:1986
 msgid ""
 "Coordinate expression parser overflowed its buffer, this is really a "
 "Metacity bug, but are you sure you need a huge expression like that?"
 msgstr ""
-"L'analizzatore dell'espressione della coordinata ha superato il proprio "
-"buffer. Questo è un bug di Metacity, ma è necessaria un'espressione di "
-"queste dimensioni?"
+"Intetho elungelelanisiweyo umahluli ngezijungqe engaphezulu kwesigcini "
+"sethutyana, esi sisiphene senene seMetacity kodwa uqinisekile ufuna intetho "
+"enkulu kanjalo?"
 
 #: ../src/theme.c:2015
 msgid "Coordinate expression had a close parenthesis with no open parenthesis"
 msgstr ""
-"L'espressione della coordinata ha una parentesi di chiusura senza la "
-"relativa di apertura"
+"Intetho elungelelanisiweyo enesivakalisi esiphakathi kwesinye esikufuphi "
+"nezingavulekanga"
 
 #: ../src/theme.c:2078
 #, c-format
 msgid "Coordinate expression had unknown variable or constant \"%s\""
 msgstr ""
-"L'espressione della coordinata ha la variabile o la costante «%s» sconosciuta"
+"Intetho elungelelanisiweyo enokuguqu-guquka okungaziwayo okanye ukungaguquki "
+"\"%s\""
 
 #: ../src/theme.c:2135
 msgid "Coordinate expression had an open parenthesis with no close parenthesis"
 msgstr ""
-"L'espressione della coordinata ha una parentesi di apertura senza la "
-"relativa di chiusura"
+"Intetho elungelelanisiweyo enesivakalisi esiphakathi kwesinye esivulekileyo "
+"nesingavalekanga"
 
 #: ../src/theme.c:2146
 msgid "Coordinate expression doesn't seem to have any operators or operands"
 msgstr ""
-"L'espressione della coordinata non sembra avere né operatori o operandi"
+"Intetho elungelelanisiweyo akubonakali inabasebenzisi okanye ii-operand"
 
 #: ../src/theme.c:2390 ../src/theme.c:2412 ../src/theme.c:2433
 #, c-format
 msgid "Theme contained an expression \"%s\" that resulted in an error: %s\n"
-msgstr "Il tema contiene un'espressione «%s» che provoca errore: %s\n"
+msgstr "Umxholo uqulathe intetho \"%s\" ebangele impazamo: %s\n"
 
 #: ../src/theme.c:3919
 #, c-format
@@ -3134,26 +3185,27 @@ msgid ""
 "<button function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> must be "
 "specified for this frame style"
 msgstr ""
-"<button function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> deve essere "
-"specificato per questo stile di cornice"
+"<button function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> kufuneka "
+"ichazwe kwesi sitayili sefreym"
 
 #: ../src/theme.c:4369 ../src/theme.c:4401
 #, c-format
 msgid ""
 "Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
 msgstr ""
-"<frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/> mancante"
+"Ilahlekile <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/"
+">"
 
 #: ../src/theme.c:4452
 #, c-format
 msgid "Failed to load theme \"%s\": %s\n"
-msgstr "Caricamento del tema «%s» fallito: %s\n"
+msgstr "Ayiphumeleli ukufaka umxholo \"%s\": %s\n"
 
 #: ../src/theme.c:4598 ../src/theme.c:4605 ../src/theme.c:4612
 #: ../src/theme.c:4619 ../src/theme.c:4626
 #, c-format
 msgid "No <%s> set for theme \"%s\""
-msgstr "Nessun <%s> impostato per il tema «%s»"
+msgstr "Akukho <%s> miselo lomxholo \"%s\""
 
 #: ../src/theme.c:4636
 #, c-format
@@ -3161,8 +3213,8 @@ msgid ""
 "No frame style set for window type \"%s\" in theme \"%s\", add a <window "
 "type=\"%s\" style_set=\"whatever\"/> element"
 msgstr ""
-"Nessuno stile del frame impostato per il tipo di finestra «%s» nel tema «%"
-"s», aggiungere un elemento <window type=\"%s\" style_set=\"whatever\"/>"
+"Akukho sitayili esimiselwe uhlobo lwefestile \"%s\" kumxholo \"%s\", yongeza "
+"<window type=\"%s\" style_set=\"whatever\"/> into"
 
 #: ../src/theme.c:4658
 #, c-format
@@ -3170,67 +3222,67 @@ msgid ""
 "<menu_icon function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> must be "
 "specified for this theme"
 msgstr ""
-"<menu_icon function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> deve essere "
-"specificato per questo tema"
+"<menu_icon function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> kufuneka "
+"ichazwe kulo mxholo"
 
 #: ../src/theme.c:5047 ../src/theme.c:5109
 #, c-format
 msgid ""
 "User-defined constants must begin with a capital letter; \"%s\" does not"
 msgstr ""
-"Le costanti definite dall'utente devono iniziare con una lettera maiuscola, "
-"«%s» non lo fa"
+"Isixa esichaziweyo somsebenzisi kufuneka siqale ngonombumba omkhulu; \"%s\" "
+"akunjalo"
 
 #: ../src/theme.c:5055 ../src/theme.c:5117
 #, c-format
 msgid "Constant \"%s\" has already been defined"
-msgstr "La costante «%s» è già definita"
+msgstr "Isixa \"%s\" sele sichaziwe"
 
 #: ../src/util.c:93
 #, c-format
 msgid "Failed to open debug log: %s\n"
-msgstr "Apertura nel file di log di debug fallita: %s\n"
+msgstr "Ayikwazi ukuvula idebug log: %s\n"
 
 #: ../src/util.c:103
 #, c-format
 msgid "Failed to fdopen() log file %s: %s\n"
-msgstr "Esecuzione di fdopen() sul file di log %s fallita: %s\n"
+msgstr "Ayikwazi ku-fdopen() ifayili yelog %s: %s\n"
 
 #: ../src/util.c:109
 #, c-format
 msgid "Opened log file %s\n"
-msgstr "File di log %s aperto\n"
+msgstr "Ifayili yelog evuliweyo %s\n"
 
 #: ../src/util.c:203
 msgid "Window manager: "
-msgstr "Window manager: "
+msgstr "Umlawuli wefestile: "
 
 #: ../src/util.c:349
 msgid "Bug in window manager: "
-msgstr "Bug nel window manager: "
+msgstr "Isiphene kumlawuli wefestile: "
 
 #: ../src/util.c:378
 msgid "Window manager warning: "
-msgstr "Avviso del window manager: "
+msgstr "Isilumkiso kumlawuli wefestile: "
 
 #: ../src/util.c:402
 msgid "Window manager error: "
-msgstr "Errore del window manager: "
+msgstr "Impazamo kumlawuli wefestile: "
 
 #: ../src/window-props.c:162
 #, c-format
 msgid "Application set a bogus _NET_WM_PID %ld\n"
-msgstr "L'applicazione ha impostato un _NET_WM_PID errato %ld\n"
+msgstr "Inkqubo imisela i-bogus _NET_WM_PID %ld\n"
 
 #. first time through
-#: ../src/window.c:5051
+#: ../src/window.c:5070
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
 "window as specified in the ICCCM.\n"
 msgstr ""
-"La finestra %s ha impostato SM_CLIENT_ID su se stessa, invece che sulla "
-"finestra WM_CLIENT_LEADER come da specifiche ICCCM.\n"
+"Ifestile %s imisele SM_CLIENT_ID ngokwayo, endaweni yefestile i-"
+"WM_CLIENT_LEADER njengoko kuphawulwe kwi-ICCCM.\n"
 
 #. We ignore mwm_has_resize_func because WM_NORMAL_HINTS is the
 #. * authoritative source for that info. Some apps such as mplayer or
@@ -3239,15 +3291,15 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/window.c:5722
+#: ../src/window.c:5741
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
 "d x %d and max size %d x %d; this doesn't make much sense.\n"
 msgstr ""
-"La finestra %s ha impostato un suggerimento MWM indicando che è "
-"ridimensionabile, ma ha impostato la dimesione minima %d x %d e la "
-"dimensione massima %d x %d; ciò non ha senso.\n"
+"Ifestile %s imisele MWM ingcebiso eyalathisa ukuba ayinabungakanani, kodwa "
+"isete ubungakanani obungephi %d x %d nobungakanani obukhulu %d x %d; oku "
+"akwenzi ntsingiselo.\n"
 
 #: ../src/xprops.c:153
 #, c-format
@@ -3258,22 +3310,24 @@ msgid ""
 "This is most likely an application bug, not a window manager bug.\n"
 "The window has title=\"%s\" class=\"%s\" name=\"%s\"\n"
 msgstr ""
-"La finestra 0x%lx ha una proprietà %s\n"
-"che dovrebbe avere un tipo %s di formato %d\n"
-"e attualmente ha un tipo %s di formato %d e n_items %d.\n"
-"Probabilmente si tratta di un bug nell'applicazione e non del window "
-"manager.\n"
-"Gli attributi della finestra sono titolo=\"%s\" classe=\"%s\" nome=\"%s\"\n"
+"Ifestile 0x%lx inepropati %s\n"
+"eyayilindeleke ukuba ibenohlobo %s lwefomathi %d\n"
+"kodwa inodidi %s lwefomathi %d n_items %d.\n"
+"Oku sisiphene senkqubo, ingesiso isiphene somlawuli wefestile.\n"
+"Ifestile inesihloko=\"%s\" udidi=\"%s\" igama=\"%s\"\n"
 
 #: ../src/xprops.c:399
 #, c-format
 msgid "Property %s on window 0x%lx contained invalid UTF-8\n"
-msgstr "La proprietà %s della finestra 0x%lx contiene UTF-8 non valido\n"
+msgstr "Ipropati %s kwifestile 0x%lx iqulathe engasebenziyo i-UTF-8\n"
 
 #: ../src/xprops.c:482
 #, c-format
 msgid ""
 "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
 msgstr ""
-"La proprietà %s della finestra 0x%lx contiene UTF-8 non valido per "
-"l'elemento %d nella lista\n"
+"Ipropati %s kwifestile 0x%lx iqulathe engasebenziyo i-UTF-8 kumba %d "
+"kuluhlu\n"
+
+#~ msgid "Put on _All Workspaces"
+#~ msgstr "Beka _iiNdawo Zonke zokusebenzela"

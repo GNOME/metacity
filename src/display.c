@@ -63,6 +63,12 @@
 
 #define USE_GDK_DISPLAY
 
+#define GRAB_OP_IS_WINDOW_SWITCH(g)                     \
+        (g == META_GRAB_OP_KEYBOARD_TABBING_NORMAL  ||  \
+         g == META_GRAB_OP_KEYBOARD_TABBING_DOCK    ||  \
+         g == META_GRAB_OP_KEYBOARD_ESCAPING_NORMAL ||  \
+         g == META_GRAB_OP_KEYBOARD_ESCAPING_DOCK)
+
 typedef struct 
 {
   MetaDisplay *display;
@@ -108,6 +114,9 @@ static void    update_window_grab_modifiers (MetaDisplay *display);
 
 static void    prefs_changed_callback    (MetaPreference pref,
                                           void          *data);
+
+static void    sanity_check_timestamps   (MetaDisplay *display,
+                                          Time         known_good_timestamp);
 
 static void
 set_utf8_string_hint (MetaDisplay *display,
@@ -289,7 +298,8 @@ meta_display_open (const char *name)
     "_NET_RESTACK_WINDOW",
     "_NET_MOVERESIZE_WINDOW",
     "_NET_DESKTOP_GEOMETRY",
-    "_NET_DESKTOP_VIEWPORT"
+    "_NET_DESKTOP_VIEWPORT",
+    "_METACITY_VERSION"
   };
   Atom atoms[G_N_ELEMENTS(atom_names)];
   
@@ -331,6 +341,9 @@ meta_display_open (const char *name)
   display->autoraise_window = NULL;
   display->focus_window = NULL;
   display->expected_focus_window = NULL;
+  display->grab_old_window_stacking = NULL;
+
+  display->mouse_mode = TRUE; /* Only relevant for mouse or sloppy focus */
 
 #ifdef HAVE_XSYNC
   display->grab_sync_request_alarm = None;
@@ -443,6 +456,7 @@ meta_display_open (const char *name)
   display->atom_net_moveresize_window = atoms[88];
   display->atom_net_desktop_geometry = atoms[89];
   display->atom_net_desktop_viewport = atoms[90];
+  display->atom_metacity_version = atoms[91];
 
   display->prop_hooks = NULL;
   meta_display_init_window_prop_hooks (display);
@@ -620,6 +634,11 @@ meta_display_open (const char *name)
                           display->atom_net_wm_name,
                           "Metacity");
     
+    set_utf8_string_hint (display,
+                          display->leader_window,
+                          display->atom_metacity_version,
+                          VERSION);
+
     data[0] = display->leader_window;
     XChangeProperty (display->xdisplay,
                      display->leader_window,
@@ -636,6 +655,7 @@ meta_display_open (const char *name)
   }
 
   display->last_focus_time = timestamp;
+  display->last_user_time = timestamp;
   display->compositor = meta_compositor_new (display);
 
   meta_compositor_set_debug_updates (display->compositor, g_getenv ("METACITY_DEBUG_UPDATES") != NULL);
@@ -796,6 +816,9 @@ meta_display_close (MetaDisplay *display)
   meta_prefs_remove_listener (prefs_changed_callback, display);
   
   meta_display_remove_autoraise_callback (display);
+
+  if (display->grab_old_window_stacking)
+    g_list_free (display->grab_old_window_stacking);
   
 #ifdef USE_GDK_DISPLAY
   /* Stop caring about events */
@@ -1179,6 +1202,8 @@ meta_display_get_current_time_roundtrip (MetaDisplay *display)
 
       timestamp = property_event.xproperty.time;
     }
+
+  sanity_check_timestamps (display, timestamp);
 
   return timestamp;
 }
@@ -1675,11 +1700,8 @@ event_callback (XEvent   *event,
   if (window && ((event->type == KeyPress) || (event->type == ButtonPress)))
     {
       g_assert (CurrentTime != display->current_time);
-      meta_topic (META_DEBUG_WINDOW_STATE,
-                  "Metacity set %s's net_wm_user_time to %d.\n",
-                  window->desc, display->current_time);
-      window->net_wm_user_time_set = TRUE;
-      window->net_wm_user_time = display->current_time;
+      meta_window_set_user_time (window, display->current_time);
+      sanity_check_timestamps (display, display->current_time);
     }
   
   switch (event->type)
@@ -1702,6 +1724,16 @@ event_callback (XEvent   *event,
                       (display->grab_window ?
                        display->grab_window->desc : 
                        "none"));
+          if (GRAB_OP_IS_WINDOW_SWITCH (display->grab_op))
+            {
+              MetaScreen *screen;
+              meta_topic (META_DEBUG_WINDOW_OPS, 
+                          "Syncing to old stack positions.\n");
+              screen = 
+                meta_display_screen_for_root (display, event->xany.window);
+              meta_stack_set_positions (screen->stack,
+                                        display->grab_old_window_stacking);
+            }
           meta_display_end_grab_op (display,
                                     event->xbutton.time);
         }
@@ -1886,10 +1918,15 @@ event_callback (XEvent   *event,
                   window->type != META_WINDOW_DESKTOP)
                 {
                   meta_topic (META_DEBUG_FOCUS,
-                              "Focusing %s due to enter notify with serial %lu\n",
-                              window->desc, event->xany.serial);
+                              "Focusing %s due to enter notify with serial %lu "
+                              "at time %lu, and setting display->mouse_mode to "
+                              "TRUE.\n",
+                              window->desc, 
+                              event->xany.serial,
+                              event->xcrossing.time);
 
-		  meta_window_focus (window, event->xcrossing.time);
+                  display->mouse_mode = TRUE;
+                  meta_window_focus (window, event->xcrossing.time);
 
 		  /* stop ignoring stuff */
 		  reset_ignores (display);
@@ -1923,16 +1960,29 @@ event_callback (XEvent   *event,
           switch (meta_prefs_get_focus_mode ())
             {
             case META_FOCUS_MODE_MOUSE:
-              if (window == display->expected_focus_window &&
-                  (window->frame == NULL || frame_was_receiver) &&
-		  event->xcrossing.mode != NotifyGrab && 
-		  event->xcrossing.mode != NotifyUngrab &&
-		  event->xcrossing.detail != NotifyInferior)
+              if ((window->frame == NULL || frame_was_receiver) &&
+                  event->xcrossing.mode != NotifyGrab && 
+                  event->xcrossing.mode != NotifyUngrab &&
+                  event->xcrossing.detail != NotifyInferior &&
+                  meta_display_focus_sentinel_clear (display))
                 {
-                  meta_verbose ("Unsetting focus from %s due to LeaveNotify\n",
-                                window->desc);
-                  meta_display_focus_the_no_focus_window (display, 
-                                                          event->xcrossing.time);
+                  if (window == display->expected_focus_window)
+                    {
+                      meta_topic (META_DEBUG_FOCUS,
+                                  "Unsetting focus from %s due to LeaveNotify\n",
+                                  window->desc);
+                      meta_display_focus_the_no_focus_window (display, 
+                                                              event->xcrossing.time);
+                    }
+                  if (window->type != META_WINDOW_DOCK &&
+                      window->type != META_WINDOW_DESKTOP)
+                    {
+                      meta_topic (META_DEBUG_FOCUS,
+                                  "Setting display->mouse_mode to TRUE due to "
+                                  "LeaveNotify at time %lu.\n",
+                                  event->xcrossing.time);
+                      display->mouse_mode = TRUE;
+                    }
                 }
               break;
             case META_FOCUS_MODE_SLOPPY:
@@ -2255,18 +2305,25 @@ event_callback (XEvent   *event,
                 {
                   int space;
                   MetaWorkspace *workspace;
+                  guint32 time;
               
                   space = event->xclient.data.l[0];
+                  time = event->xclient.data.l[1];
               
-                  meta_verbose ("Request to change current workspace to %d\n",
-                                space);
-              
+                  meta_verbose ("Request to change current workspace to %d with "
+                                "specified timestamp of %lu\n",
+                                space, (unsigned long)time);
+
                   workspace =
                     meta_screen_get_workspace_by_index (screen,
                                                         space);
 
+                  /* Handle clients using the older version of the spec... */
+                  if (time == 0 && workspace)
+                    time = meta_display_get_current_time_roundtrip (display);
+
                   if (workspace)
-                    meta_workspace_activate (workspace, meta_display_get_current_time_roundtrip (display));
+                    meta_workspace_activate (workspace, time);
                   else
                     meta_verbose ("Don't know about workspace %d\n", space);
                 }
@@ -3312,6 +3369,7 @@ meta_display_begin_grab_op (MetaDisplay *display,
   display->grab_last_moveresize_time.tv_sec = 0;
   display->grab_last_moveresize_time.tv_usec = 0;
   display->grab_motion_notify_time = 0;
+  display->grab_old_window_stacking = NULL;
 #ifdef HAVE_XSYNC
   display->grab_sync_request_alarm = None;
 #endif
@@ -3332,7 +3390,7 @@ meta_display_begin_grab_op (MetaDisplay *display,
       display->grab_anchor_window_pos = display->grab_initial_window_pos;
 
       display->grab_wireframe_active =
-        meta_prefs_get_reduced_resources () && 
+        (meta_prefs_get_reduced_resources () && !meta_prefs_get_gnome_accessibility ())  && 
         (meta_grab_op_is_resizing (display->grab_op) ||
          meta_grab_op_is_moving (display->grab_op));
       
@@ -3420,6 +3478,16 @@ meta_display_begin_grab_op (MetaDisplay *display,
   g_assert (display->grab_window != NULL || display->grab_screen != NULL);
   g_assert (display->grab_op != META_GRAB_OP_NONE);
 
+  /* Save the old stacking */
+  if (GRAB_OP_IS_WINDOW_SWITCH (display->grab_op))
+    {
+      meta_topic (META_DEBUG_WINDOW_OPS,
+                  "Saving old stack positions; old pointer was %p.\n",
+                  display->grab_old_window_stacking);
+      display->grab_old_window_stacking = 
+        meta_stack_get_positions (screen->stack);
+    }
+
   /* Do this last, after everything is set up. */
   switch (op)
     {
@@ -3471,10 +3539,7 @@ meta_display_end_grab_op (MetaDisplay *display,
   if (display->grab_window != NULL)
     display->grab_window->shaken_loose = FALSE;
   
-  if (display->grab_op == META_GRAB_OP_KEYBOARD_TABBING_NORMAL ||
-      display->grab_op == META_GRAB_OP_KEYBOARD_TABBING_DOCK ||
-      display->grab_op == META_GRAB_OP_KEYBOARD_ESCAPING_NORMAL ||
-      display->grab_op == META_GRAB_OP_KEYBOARD_ESCAPING_DOCK ||
+  if (GRAB_OP_IS_WINDOW_SWITCH (display->grab_op) ||
       display->grab_op == META_GRAB_OP_KEYBOARD_WORKSPACE_SWITCHING)
     {
       meta_ui_tab_popup_free (display->grab_screen->tab_popup);
@@ -3486,6 +3551,15 @@ meta_display_end_grab_op (MetaDisplay *display,
       display->ungrab_should_not_cause_focus_window = display->grab_xwindow;
     }
   
+  if (display->grab_old_window_stacking != NULL)
+    {
+      meta_topic (META_DEBUG_WINDOW_OPS,
+                  "Clearing out the old stack position, which was %p.\n",
+                  display->grab_old_window_stacking);
+      g_list_free (display->grab_old_window_stacking);
+      display->grab_old_window_stacking = NULL;
+    }
+
   if (display->grab_wireframe_active)
     {
       display->grab_wireframe_active = FALSE;
@@ -4736,20 +4810,114 @@ meta_display_focus_sentinel_clear (MetaDisplay *display)
   return (display->sentinel_counter == 0);
 }
 
+static void
+sanity_check_timestamps (MetaDisplay *display,
+                         Time         timestamp)
+{
+  if (XSERVER_TIME_IS_BEFORE (timestamp, display->last_focus_time))
+    {
+      meta_warning ("last_focus_time (%lu) is greater than comparison "
+                    "timestamp (%lu).  This most likely represents a buggy "
+                    "client sending inaccurate timestamps in messages such as "
+                    "_NET_ACTIVE_WINDOW.  Trying to work around...\n",
+                    display->last_focus_time, (unsigned long)timestamp);
+      display->last_focus_time = timestamp;
+    }
+  if (XSERVER_TIME_IS_BEFORE (timestamp, display->last_user_time))
+    {
+      GSList *windows;
+      GSList *tmp;
+
+      meta_warning ("last_user_time (%lu) is greater than comparison "
+                    "timestamp (%lu).  This most likely represents a buggy "
+                    "client sending inaccurate timestamps in messages such as "
+                    "_NET_ACTIVE_WINDOW.  Trying to work around...\n",
+                    display->last_user_time, (unsigned long)timestamp);
+      display->last_user_time = timestamp;
+
+      windows = meta_display_list_windows (display);
+      tmp = windows;
+      while (tmp != NULL)
+        {
+          MetaWindow *window = tmp->data;
+          
+          if (XSERVER_TIME_IS_BEFORE (timestamp, window->net_wm_user_time))
+            {
+              meta_warning ("%s appears to be one of the offending windows "
+                            "with a timestamp of %lu.  Working around...\n",
+                            window->desc, window->net_wm_user_time);
+              window->net_wm_user_time = timestamp;
+            }
+          
+          tmp = tmp->next;
+        }
+
+      g_slist_free (windows);
+    }
+}
+
+static gboolean
+timestamp_too_old (MetaDisplay *display,
+                   MetaWindow  *window,
+                   Time        *timestamp)
+{
+  /* FIXME: If Soeren's suggestion in bug 151984 is implemented, it will allow
+   * us to sanity check the timestamp here and ensure it doesn't correspond to
+   * a future time (though we would want to rename to 
+   * timestamp_too_old_or_in_future).
+   */
+
+  MetaWindow *focus_window;
+  focus_window = display->focus_window;
+
+  if (*timestamp == CurrentTime)
+    {
+      meta_warning ("Got a request to focus %s with a timestamp of 0.  This "
+                    "shouldn't happen!\n",
+                    window ? window->desc : "the no_focus_window");
+      meta_print_backtrace ();
+      *timestamp = meta_display_get_current_time_roundtrip (display);
+      return FALSE;
+    }
+  else if (XSERVER_TIME_IS_BEFORE (*timestamp, display->last_focus_time))
+    {
+      if (XSERVER_TIME_IS_BEFORE (*timestamp, display->last_user_time))
+        {
+          meta_topic (META_DEBUG_FOCUS,
+                      "Ignoring focus request for %s since %lu "
+                      "is less than %lu and %lu.\n",
+                      window ? window->desc : "the no_focus_window",
+                      *timestamp,
+                      (unsigned long) display->last_user_time,
+                      (unsigned long) display->last_focus_time);
+          return TRUE;
+        }
+      else
+        {
+          meta_topic (META_DEBUG_FOCUS,
+                      "Received focus request for %s which is newer than most "
+                      "recent user_time, but less recent than "
+                      "last_focus_time (%lu < %lu < %lu); adjusting "
+                      "accordingly.  (See bug 167358)\n",
+                      window ? window->desc : "the no_focus_window",
+                      display->last_user_time,
+                      *timestamp,
+                      display->last_focus_time);
+          *timestamp = display->last_focus_time;
+          return FALSE;
+        }
+    }
+
+  return FALSE;
+}
+
 void
 meta_display_set_input_focus_window (MetaDisplay *display, 
                                      MetaWindow  *window,
                                      gboolean     focus_frame,
                                      Time         timestamp)
 {
-  if (timestamp == CurrentTime)
-    {
-      meta_warning ("meta_display_set_input_focus_window called with a "
-                    "timestamp of 0 for window %s.  This shouldn't happen!\n",
-                    window->desc);
-      meta_print_backtrace ();
-    }
-  else if (XSERVER_TIME_IS_BEFORE (timestamp, display->last_focus_time))
+  if (timestamp_too_old (display, window, &timestamp))
     return;
 
   XSetInputFocus (display->xdisplay,
@@ -4767,17 +4935,8 @@ void
 meta_display_focus_the_no_focus_window (MetaDisplay *display, 
                                         Time         timestamp)
 {
-  if (timestamp == CurrentTime)
-    {
-      meta_warning ("meta_display_focus_the_no_focus_window called with a "
-                    "timestamp of 0.  This shouldn't happen!\n");
-      meta_print_backtrace ();
-    }
-  else if (XSERVER_TIME_IS_BEFORE (timestamp, display->last_focus_time))
-    {
-      meta_warning ("Ignoring focus request for no_focus_window since %lu is less than %lu.\n", timestamp, display->last_focus_time);
+  if (timestamp_too_old (display, NULL, &timestamp))
     return;
-    }
 
   XSetInputFocus (display->xdisplay,
                   display->no_focus_window,

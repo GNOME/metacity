@@ -95,8 +95,6 @@ static void     ensure_mru_position_after (MetaWindow *window,
 
 void meta_window_move_resize_now (MetaWindow  *window);
 
-static gboolean window_showing_on_its_workspace (MetaWindow *window);
-
 /* FIXME we need an abstraction that covers all these queues. */   
 
 void meta_window_unqueue_calc_showing (MetaWindow *window);
@@ -450,6 +448,7 @@ meta_window_new_with_attrs (MetaDisplay       *display,
     meta_topic (META_DEBUG_PLACEMENT,
                 "Not placing window 0x%lx since it's already mapped\n",
                 xwindow);
+  window->denied_focus_and_not_transient = FALSE;
   window->unmanaging = FALSE;
   window->calc_showing_queued = FALSE;
   window->move_resize_queued = FALSE;
@@ -591,12 +590,6 @@ meta_window_new_with_attrs (MetaDisplay       *display,
    */
   meta_screen_apply_startup_properties (window->screen, window);
   
-  /* FIXME we have a tendency to set this then immediately
-   * change it again.
-   */
-  set_wm_state (window, window->iconic ? IconicState : NormalState);
-  set_net_wm_state (window);
-
   if (window->decorated)
     meta_window_ensure_frame (window);
 
@@ -658,7 +651,7 @@ meta_window_new_with_attrs (MetaDisplay       *display,
       parent = meta_display_lookup_x_window (window->display,
                                              window->xtransient_for);
 
-      if (parent)
+      if (parent && parent->workspace)
         {
           meta_topic (META_DEBUG_PLACEMENT,
                       "Putting window %s on same workspace as parent %s\n",
@@ -717,6 +710,12 @@ meta_window_new_with_attrs (MetaDisplay       *display,
       }
   }
   
+  /* FIXME we have a tendency to set this then immediately
+   * change it again.
+   */
+  set_wm_state (window, window->iconic ? IconicState : NormalState);
+  set_net_wm_state (window);
+
   /* Sync stack changes */
   meta_stack_thaw (window->screen->stack);
 
@@ -1142,7 +1141,7 @@ set_net_wm_state (MetaWindow *window)
       data[i] = window->display->atom_net_wm_state_fullscreen;
       ++i;
     }
-  if (!window_showing_on_its_workspace (window))
+  if (!meta_window_showing_on_its_workspace (window) || window->shaded)
     {
       data[i] = window->display->atom_net_wm_state_hidden;
       ++i;
@@ -1206,8 +1205,8 @@ ancestor_is_minimized (MetaWindow *window)
   return is_minimized;
 }
 
-static gboolean
-window_showing_on_its_workspace (MetaWindow *window)
+gboolean
+meta_window_showing_on_its_workspace (MetaWindow *window)
 {
   gboolean showing;
   gboolean is_desktop_or_dock;
@@ -1228,9 +1227,6 @@ window_showing_on_its_workspace (MetaWindow *window)
                                 &is_desktop_or_dock);
 
   if (window->on_all_workspaces)
-    /* Until the behavior in bug 87531 is implemented, this will be
-     * just a hack that only sort of works.
-     */
     workspace_of_window = window->screen->active_workspace;
   else if (window->workspace)
     workspace_of_window = window->workspace;
@@ -1291,7 +1287,7 @@ meta_window_should_be_showing (MetaWindow  *window)
   if (window->on_all_workspaces)
     meta_verbose ("Window %s is on all workspaces\n", window->desc);
 
-  return on_workspace && window_showing_on_its_workspace (window);
+  return on_workspace && meta_window_showing_on_its_workspace (window);
 }
 
 static void
@@ -1489,6 +1485,25 @@ idle_calc_showing (gpointer data)
       tmp = tmp->next;
     }
 
+  if (meta_prefs_get_focus_mode () != META_FOCUS_MODE_CLICK)
+    {
+      /* When display->mouse_mode is false, we want to ignore
+       * EnterNotify events unless they come from mouse motion.  To do
+       * that, we set a sentinel property on the root window if we're
+       * not in mouse_mode.
+       */
+      tmp = should_show;
+      while (tmp != NULL)
+        {
+          MetaWindow *window = tmp->data;
+          
+          if (!window->display->mouse_mode)
+            meta_display_increment_focus_sentinel (window->display);
+
+          tmp = tmp->next;
+        }
+    }
+
   g_slist_free (copy);
 
   g_slist_free (unplaced);
@@ -1560,104 +1575,134 @@ meta_window_queue_calc_showing (MetaWindow  *window)
 }
 
 static gboolean
-window_takes_focus_on_map (MetaWindow *window)
+intervening_user_event_occurred (MetaWindow *window)
 {
   Time compare;
+  MetaWindow *focus_window;
+
+  focus_window = window->display->focus_window;
+
+  meta_topic (META_DEBUG_STARTUP,
+              "COMPARISON:\n"
+              "  net_wm_user_time_set : %d\n"
+              "  net_wm_user_time     : %lu\n"
+              "  initial_timestamp_set: %d\n"
+              "  initial_timestamp    : %lu\n",
+              window->net_wm_user_time_set,
+              window->net_wm_user_time,
+              window->initial_timestamp_set,
+              window->initial_timestamp);
+  if (focus_window != NULL)
+    {
+      meta_topic (META_DEBUG_STARTUP,
+                  "COMPARISON (continued):\n"
+                  "  focus_window         : %s\n"
+                  "  fw->net_wm_user_time : %lu\n",
+                  focus_window->desc,
+                  focus_window->net_wm_user_time);
+    }
+
+  /* We expect the most common case for not focusing a new window
+   * to be when a hint to not focus it has been set.  Since we can
+   * deal with that case rapidly, we use special case it--this is
+   * merely a preliminary optimization.  :)
+   */
+  if ( ((window->net_wm_user_time_set == TRUE) &&
+       (window->net_wm_user_time == 0))
+      ||
+       ((window->initial_timestamp_set == TRUE) &&
+       (window->initial_timestamp == 0)))
+    {
+      meta_topic (META_DEBUG_STARTUP,
+                  "window %s explicitly requested no focus\n",
+                  window->desc);
+      return TRUE;
+    }
+
+  if (!(window->net_wm_user_time_set) && !(window->initial_timestamp_set))
+    {
+      meta_topic (META_DEBUG_STARTUP,
+                  "no information about window %s found\n",
+                  window->desc);
+      return FALSE;
+    }
+
+  /* To determine the "launch" time of an application,
+   * startup-notification can set the TIMESTAMP and the
+   * application (usually via its toolkit such as gtk or qt) can
+   * set the _NET_WM_USER_TIME.  If both are set, then it means
+   * the user has interacted with the application since it
+   * launched, and _NET_WM_USER_TIME is the value that should be
+   * used in the comparison.
+   */
+  compare = window->initial_timestamp_set ? window->initial_timestamp : 0;
+  compare = window->net_wm_user_time_set  ? window->net_wm_user_time  : compare;
+
+  if ((focus_window != NULL) &&
+      XSERVER_TIME_IS_BEFORE (compare, focus_window->net_wm_user_time))
+    {
+      meta_topic (META_DEBUG_STARTUP,
+                  "window %s focus prevented by other activity; %lu < %lu\n",
+                  window->desc, compare, 
+                  focus_window->net_wm_user_time);
+      return TRUE;
+    }
+  else
+    {
+      meta_topic (META_DEBUG_STARTUP,
+                  "new window %s with no intervening events\n",
+                  window->desc);
+      return FALSE;
+    }
+}
+
+/* This function determines what state the window should have assuming that it
+ * and the focus_window have no relation
+ */
+static void
+window_state_on_map (MetaWindow *window, 
+                     gboolean *takes_focus,
+                     gboolean *places_on_top)
+{
+  gboolean intervening_events;
+
+  intervening_events = intervening_user_event_occurred (window);
+
+  *takes_focus = !intervening_events;
+  *places_on_top = *takes_focus;
 
   /* don't initially focus windows that are intended to not accept
    * focus
    */
   if (!(window->input || window->take_focus))
-    return FALSE;
+    {
+      *takes_focus = FALSE;
+      return;
+    }
 
   switch (window->type)
     {
+    case META_WINDOW_UTILITY:
+    case META_WINDOW_TOOLBAR:
+      *takes_focus = FALSE;
+      *places_on_top = FALSE;
+      break;
     case META_WINDOW_DOCK:
     case META_WINDOW_DESKTOP:
-    case META_WINDOW_UTILITY:
     case META_WINDOW_SPLASHSCREEN:
-    case META_WINDOW_TOOLBAR:
     case META_WINDOW_MENU:
-      /* don't focus these */
+      /* don't focus any of these; places_on_top may be irrelevant for some of
+       * these (e.g. dock)--but you never know--the focus window might also be
+       * of the same type in some weird situation...
+       */
+      *takes_focus = FALSE;
       break;
     case META_WINDOW_NORMAL:
     case META_WINDOW_DIALOG:
     case META_WINDOW_MODAL_DIALOG:
-      meta_topic (META_DEBUG_STARTUP,
-                  "COMPARISON:\n"
-                  "  net_wm_user_time_set : %d\n"
-                  "  net_wm_user_time     : %lu\n"
-                  "  initial_timestamp_set: %d\n"
-                  "  initial_timestamp    : %lu\n",
-                  window->net_wm_user_time_set,
-                  window->net_wm_user_time,
-                  window->initial_timestamp_set,
-                  window->initial_timestamp);
-      if (window->display->focus_window != NULL) {
-        meta_topic (META_DEBUG_STARTUP,
-                    "COMPARISON (continued):\n"
-                    "  focus_window         : %s\n"
-                    "  fw->net_wm_user_time : %lu\n",
-                    window->display->focus_window->desc,
-                    window->display->focus_window->net_wm_user_time);
-      }
-
-      /* We expect the most common case for not focusing a new window
-       * to be when a hint to not focus it has been set.  Since we can
-       * deal with that case rapidly, we use special case it--this is
-       * merely a preliminary optimization.  :)
-       */
-      if ( ((window->net_wm_user_time_set == TRUE) &&
-	   (window->net_wm_user_time == 0))
-          ||
-           ((window->initial_timestamp_set == TRUE) &&
-	   (window->initial_timestamp == 0)))
-        {
-          meta_topic (META_DEBUG_STARTUP,
-                      "window %s explicitly requested no focus\n",
-                      window->desc);
-          return FALSE;
-        }
-
-      if (!(window->net_wm_user_time_set) && !(window->initial_timestamp_set))
-        {
-          meta_topic (META_DEBUG_STARTUP,
-                      "no information about window %s found\n",
-                      window->desc);
-          return TRUE;
-        }
-
-      /* To determine the "launch" time of an application,
-       * startup-notification can set the TIMESTAMP and the
-       * application (usually via its toolkit such as gtk or qt) can
-       * set the _NET_WM_USER_TIME.  If both are set, then it means
-       * the user has interacted with the application since it
-       * launched, and _NET_WM_USER_TIME is the value that should be
-       * used in the comparison.
-       */
-      compare = window->initial_timestamp_set ? window->initial_timestamp : 0;
-      compare = window->net_wm_user_time_set  ? window->net_wm_user_time  : compare;
-
-      if ((window->display->focus_window != NULL) &&
-          XSERVER_TIME_IS_BEFORE (compare, window->display->focus_window->net_wm_user_time))
-        {
-          meta_topic (META_DEBUG_STARTUP,
-                      "window %s focus prevented by other activity; %lu is before %lu\n",
-                      window->desc, compare, window->display->focus_window->net_wm_user_time);
-          return FALSE;
-        }
-      else
-        {
-          meta_topic (META_DEBUG_STARTUP,
-                      "new window %s with no intervening events\n",
-                      window->desc);
-          return TRUE;
-        }
-
+      /* The default is correct for these */
       break;
     }
-
-  return FALSE;
 }
 
 void
@@ -1666,6 +1711,7 @@ meta_window_show (MetaWindow *window)
   gboolean did_placement;
   gboolean did_show;
   gboolean takes_focus_on_map;
+  gboolean place_on_top_on_map;
 
   meta_topic (META_DEBUG_WINDOW_STATE,
               "Showing window %s, shaded: %d iconic: %d placed: %d\n",
@@ -1673,11 +1719,19 @@ meta_window_show (MetaWindow *window)
 
   did_show = FALSE;
   did_placement = FALSE;
-  takes_focus_on_map = window_takes_focus_on_map (window);
+  window_state_on_map (window, &takes_focus_on_map, &place_on_top_on_map);
 
-  if ( (!takes_focus_on_map) && (window->display->focus_window != NULL) )
+  meta_topic (META_DEBUG_WINDOW_STATE,
+              "Window %s %s focus on map, and %s place on top on map.\n",
+              window->desc,
+              takes_focus_on_map ? "does" : "does not",
+              place_on_top_on_map ? "does" : "does not");
+
+  if ( !takes_focus_on_map &&
+       window->display->focus_window != NULL &&
+       !place_on_top_on_map &&
+       window->showing_for_first_time )
     {
-
       if (meta_window_is_ancestor_of_transient (window->display->focus_window,
                                                 window))
         {
@@ -1697,6 +1751,8 @@ meta_window_show (MetaWindow *window)
         {
           meta_window_stack_just_below (window, window->display->focus_window);
           ensure_mru_position_after (window, window->display->focus_window);
+          if (!window->placed)
+            window->denied_focus_and_not_transient = TRUE;
         }
     }
 
@@ -1720,6 +1776,11 @@ meta_window_show (MetaWindow *window)
        */
       window->placed = TRUE;
       did_placement = TRUE;
+
+      /* Don't want to accidentally reuse the fact that we had been denied
+       * focus in any future constraints unless we're denied focus again.
+       */
+      window->denied_focus_and_not_transient = FALSE;
     }
   
   /* Shaded means the frame is mapped but the window is not */
@@ -1789,7 +1850,11 @@ meta_window_show (MetaWindow *window)
         }
       else
         {
-          window->wm_state_demands_attention = TRUE;
+          /* Only set the demands attention hint if the window doesn't
+           * take focus on map and it isn't placed on top on map.
+           */
+          if (!place_on_top_on_map)
+            window->wm_state_demands_attention = TRUE;
 
           /* Prevent EnterNotify events in sloppy/mouse focus from
            * erroneously focusing the window that had been denied
@@ -2071,8 +2136,6 @@ meta_window_unmake_fullscreen (MetaWindow  *window)
       
       window->fullscreen = FALSE;
 
-      meta_window_update_layer (window);
-      
       meta_window_move_resize (window,
                                TRUE,
                                window->saved_rect.x,
@@ -2080,6 +2143,8 @@ meta_window_unmake_fullscreen (MetaWindow  *window)
                                window->saved_rect.width,
                                window->saved_rect.height);
 
+      meta_window_update_layer (window);
+      
       recalc_window_features (window);
       set_net_wm_state (window);
     }
@@ -2128,7 +2193,7 @@ meta_window_shade (MetaWindow  *window)
                   "Re-focusing window %s after shading it\n",
                   window->desc);
       meta_window_focus (window,
-                         meta_display_get_current_time (window->display));
+                         meta_display_get_current_time_roundtrip (window->display));
       
       set_net_wm_state (window);
     }
@@ -2149,7 +2214,8 @@ meta_window_unshade (MetaWindow  *window)
       meta_topic (META_DEBUG_FOCUS,
                   "Focusing window %s after unshading it\n",
                   window->desc);
-      meta_window_focus (window, meta_display_get_current_time (window->display));
+      meta_window_focus (window,
+                         meta_display_get_current_time_roundtrip (window->display));
 
       set_net_wm_state (window);
     }
@@ -2174,28 +2240,58 @@ void
 meta_window_activate (MetaWindow *window,
                       guint32     timestamp)
 {
-  if (timestamp != 0)
-    window->net_wm_user_time = timestamp;
+  meta_topic (META_DEBUG_FOCUS,
+              "_NET_ACTIVE_WINDOW message sent for %s at time %lu.\n",
+              window->desc, (unsigned long)timestamp);
+
+  /* Older EWMH spec didn't specify a timestamp, so it can be 0 and we
+   * have to treat that as a new request.
+   */
+  if (XSERVER_TIME_IS_BEFORE (timestamp, window->display->last_user_time) &&
+      timestamp != 0)
+    {
+      meta_topic (META_DEBUG_FOCUS,
+                  "last_user_time (%lu) is more recent; ignoring "
+                  " _NET_ACTIVE_WINDOW message.\n",
+                  window->display->last_user_time);
+      window->wm_state_demands_attention = TRUE;
+      set_net_wm_state (window);
+      return;
+    }
+  
+  if (timestamp == 0)
+    timestamp = meta_display_get_current_time_roundtrip (window->display);
+
+  meta_window_set_user_time (window, timestamp);
 
   /* disable show desktop mode unless we're a desktop component */
   maybe_leave_show_desktop_mode (window);
  
-  /* Get window on current workspace */
-  if (!meta_window_located_on_workspace (window,
-                                         window->screen->active_workspace))
-    meta_window_change_workspace (window,
-                                  window->screen->active_workspace);
-  
   if (window->shaded)
     meta_window_unshade (window);
 
   unminimize_window_and_all_transient_parents (window);
-  
-  meta_window_raise (window);
-  meta_topic (META_DEBUG_FOCUS,
-              "Focusing window %s due to activation\n",
-              window->desc);
-  meta_window_focus (window, timestamp);
+
+  /* Activate the window, moving to its workspace if necessary */
+  if (!meta_window_located_on_workspace (window,
+                                         window->screen->active_workspace))
+    {
+      meta_topic (META_DEBUG_FOCUS,
+                  "Focusing and moving to workspace of window %s due to "
+                  "activation\n",
+                  window->desc);
+      meta_workspace_activate_with_focus (window->workspace,
+                                          window,
+                                          timestamp);
+    }
+  else
+    {
+      meta_window_raise (window);
+      meta_topic (META_DEBUG_FOCUS,
+                  "Focusing window %s due to activation\n",
+                  window->desc);
+      meta_window_focus (window, timestamp);
+    }
 }
 
 /* returns values suitable for meta_window_move
@@ -2947,9 +3043,9 @@ check_maximize_to_work_area (MetaWindow          *window,
 
   if ( rect.x >= work_area->x &&
        rect.y >= work_area->y &&
-       (((work_area->width - work_area->x) - rect.width) <
+       (((work_area->width + work_area->x) - (rect.width + rect.x)) <
         window->size_hints.width_inc) &&
-       (((work_area->height - work_area->y) - rect.height) <
+       (((work_area->height + work_area->y) - (rect.height + rect.y)) <
         window->size_hints.height_inc) )
     meta_window_maximize (window);
 }
@@ -3297,10 +3393,50 @@ meta_window_get_startup_id (MetaWindow *window)
   return window->startup_id;
 }
 
+static MetaWindow*
+get_modal_transient (MetaWindow *window)
+{
+  GSList *windows;
+  GSList *tmp;
+  MetaWindow *modal_transient;
+
+  /* A window can't be the transient of itself, but this is just for
+   * convenience in the loop below; we manually fix things up at the
+   * end if no real modal transient was found.
+   */
+  modal_transient = window;
+
+  windows = meta_display_list_windows (window->display);
+  tmp = windows;
+  while (tmp != NULL)
+    {
+      MetaWindow *transient = tmp->data;
+      
+      if (transient->xtransient_for == modal_transient->xwindow &&
+          transient->wm_state_modal)
+        {
+          modal_transient = transient;
+          tmp = windows;
+          continue;
+        }
+      
+      tmp = tmp->next;
+    }
+
+  g_slist_free (windows);
+
+  if (window == modal_transient)
+    modal_transient = NULL;
+
+  return modal_transient;
+}
+
 void
 meta_window_focus (MetaWindow  *window,
                    Time         timestamp)
 {  
+  MetaWindow *modal_transient;
+
   meta_topic (META_DEBUG_FOCUS,
               "Setting input focus to window %s, input: %d take_focus: %d\n",
               window->desc, window->input, window->take_focus);
@@ -3318,6 +3454,19 @@ meta_window_focus (MetaWindow  *window,
                   "Current focus window %s has global keygrab, not focusing window %s after all\n",
                   window->display->grab_window->desc, window->desc);
       return;
+    }
+
+  modal_transient = get_modal_transient (window);
+  if (modal_transient != NULL)
+    {
+      meta_topic (META_DEBUG_FOCUS,
+                  "%s has %s as a modal transient, so focusing it instead.\n",
+                  window->desc, modal_transient->desc);
+      if (!modal_transient->on_all_workspaces &&
+          modal_transient->workspace != window->screen->active_workspace)
+        meta_window_change_workspace (modal_transient, 
+                                      window->screen->active_workspace);
+      window = modal_transient;
     }
 
   meta_window_flush_calc_showing (window);
@@ -3432,8 +3581,8 @@ meta_window_change_workspace (MetaWindow    *window,
                                  workspace);
 }
 
-void
-meta_window_stick (MetaWindow  *window)
+static void
+window_stick_impl (MetaWindow  *window)
 {
   GList *tmp; 
   MetaWorkspace *workspace;
@@ -3467,8 +3616,8 @@ meta_window_stick (MetaWindow  *window)
   meta_window_queue_calc_showing (window);
 }
 
-void
-meta_window_unstick (MetaWindow  *window)
+static void
+window_unstick_impl (MetaWindow  *window)
 {
   GList *tmp;
   MetaWorkspace *workspace;
@@ -3501,6 +3650,40 @@ meta_window_unstick (MetaWindow  *window)
   meta_window_set_current_workspace_hint (window);
   
   meta_window_queue_calc_showing (window);
+}
+
+static gboolean
+stick_foreach_func (MetaWindow *window,
+                    void       *data)
+{
+  gboolean stick;
+
+  stick = *(gboolean*)data;
+  if (stick)
+    window_stick_impl (window);
+  else
+    window_unstick_impl (window);
+  return TRUE;
+}
+
+void
+meta_window_stick (MetaWindow  *window)
+{
+  gboolean stick = TRUE;
+  window_stick_impl (window);
+  meta_window_foreach_transient (window,
+                                 stick_foreach_func,
+                                 &stick);
+}
+
+void
+meta_window_unstick (MetaWindow  *window)
+{
+  gboolean stick = FALSE;
+  window_unstick_impl (window);
+  meta_window_foreach_transient (window,
+                                 stick_foreach_func,
+                                 &stick);
 }
 
 unsigned long
@@ -3569,13 +3752,44 @@ meta_window_set_current_workspace_hint (MetaWindow *window)
   meta_error_trap_pop (window->display, FALSE);
 }
 
+static gboolean
+find_root_ancestor (MetaWindow *window,
+                    void       *data)
+{
+  MetaWindow **ancestor = data;
+
+  /* Overwrite the previously "most-root" ancestor with the new one found */
+  *ancestor = window;
+
+  /* We want this to continue until meta_window_foreach_ancestor quits because
+   * there are no more valid ancestors.
+   */
+  return TRUE;
+}
+
 void
 meta_window_raise (MetaWindow  *window)
 {
-  meta_topic (META_DEBUG_WINDOW_OPS,
-              "Raising window %s\n", window->desc);
+  MetaWindow *ancestor;
+  ancestor = window;
+  meta_window_foreach_ancestor (window, find_root_ancestor, &ancestor);
 
-  meta_stack_raise (window->screen->stack, window);
+  meta_topic (META_DEBUG_WINDOW_OPS,
+              "Raising window %s, ancestor of %s\n", 
+              ancestor->desc, window->desc);
+
+  if (window->screen->stack != ancestor->screen->stack)
+    {
+      meta_warning (
+                    "Either stacks aren't per screen or some window has a weird "
+                    "transient_for hint; window->screen->stack != "
+                    "ancestor->screen->stack.  window = %s, ancestor = %s.\n",
+                    window->desc, ancestor->desc);
+      /* Just punt and raise the window itself */
+      meta_stack_raise (window->screen->stack, window);
+    }
+  else
+    meta_stack_raise (window->screen->stack, ancestor);
 }
 
 void
@@ -3788,18 +4002,44 @@ meta_window_configure_request (MetaWindow *window,
    */
   if (event->xconfigurerequest.value_mask & CWStackMode)
     {
-      switch (event->xconfigurerequest.detail)
+      MetaWindow *active_window;
+      active_window = window->display->expected_focus_window;
+      if (meta_prefs_get_disable_workarounds ())
         {
-        case Above:
-          meta_window_raise (window);
-          break;
-        case Below:
-          meta_window_lower (window);
-          break;
-        case TopIf:
-        case BottomIf:
-        case Opposite:
-          break;
+          meta_topic (META_DEBUG_STACK,
+                      "%s sent an xconfigure stacking request; this is "
+                      "broken behavior and the request is being ignored.\n",
+                      window->desc);
+        }
+      else if (active_window &&
+               !meta_window_same_application (window, active_window) &&
+               XSERVER_TIME_IS_BEFORE (window->net_wm_user_time,
+                                       active_window->net_wm_user_time))
+        {
+          meta_topic (META_DEBUG_STACK,
+                      "Ignoring xconfigure stacking request from %s (with "
+                      "user_time %lu); currently active application is %s (with "
+                      "user_time %lu).\n",
+                      window->desc,
+                      window->net_wm_user_time,
+                      active_window->desc,
+                      active_window->net_wm_user_time);
+        }
+      else
+        {
+          switch (event->xconfigurerequest.detail)
+            {
+            case Above:
+              meta_window_raise (window);
+              break;
+            case Below:
+              meta_window_lower (window);
+              break;
+            case TopIf:
+            case BottomIf:
+            case Opposite:
+              break;
+            }
         }
     }      
   
@@ -4163,7 +4403,7 @@ meta_window_client_message (MetaWindow *window,
   else if (event->xclient.message_type ==
            display->atom_net_active_window)
     {
-      meta_verbose ("_NET_ACTIVE_WINDOW request for window '%s', activating",
+      meta_verbose ("_NET_ACTIVE_WINDOW request for window '%s', activating\n",
                     window->desc);
 
       if (event->xclient.data.l[0] != 0)
@@ -4637,6 +4877,7 @@ update_mwm_hints (MetaWindow *window)
                                   &hints))
     {
       meta_verbose ("Window %s has no MWM hints\n", window->desc);
+      recalc_window_features (window);
       return;
     }
   
@@ -7104,5 +7345,36 @@ meta_window_stack_just_below (MetaWindow *window,
       meta_topic (META_DEBUG_STACK,
                   "Window %s  was already below window %s.\n",
                   window->desc, below_this_one->desc);
+    }
+}
+
+void
+meta_window_set_user_time (MetaWindow *window,
+                           Time        timestamp)
+{
+  /* FIXME: If Soeren's suggestion in bug 151984 is implemented, it will allow
+   * us to sanity check the timestamp here and ensure it doesn't correspond to
+   * a future time.
+   */
+
+  /* Only update the time if this timestamp is newer... */
+  if (window->net_wm_user_time_set &&
+      XSERVER_TIME_IS_BEFORE (timestamp, window->net_wm_user_time))
+    {
+      meta_topic (META_DEBUG_STARTUP,
+                  "Window %s _NET_WM_USER_TIME not updated to %lu, because it "
+                  "is less than %lu\n",
+                  window->desc, timestamp, window->net_wm_user_time);
+
+    }
+  else
+    {
+      meta_topic (META_DEBUG_STARTUP,
+                  "Window %s has _NET_WM_USER_TIME of %lu\n",
+                  window->desc, timestamp);
+      window->net_wm_user_time_set = TRUE;
+      window->net_wm_user_time = timestamp;
+      if (XSERVER_TIME_IS_BEFORE (window->display->last_user_time, timestamp))
+        window->display->last_user_time = timestamp;
     }
 }

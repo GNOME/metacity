@@ -207,6 +207,9 @@ struct _MetaWindow
   /* Have we placed this window? */
   guint placed : 1;
 
+  /* Is this not a transient of the focus window which is being denied focus? */
+  guint denied_focus_and_not_transient : 1;
+
   /* Has this window not ever been shown yet? */
   guint showing_for_first_time : 1;
 
@@ -388,6 +391,9 @@ void        meta_window_resize_with_gravity (MetaWindow  *window,
 void        meta_window_fill_horizontal     (MetaWindow  *window);
 void        meta_window_fill_vertical       (MetaWindow  *window);
 
+/* Return whether the window would be showing if we were on its workspace */
+gboolean    meta_window_showing_on_its_workspace (MetaWindow *window);
+
 /* Return whether the window should be currently mapped */
 gboolean    meta_window_should_be_showing   (MetaWindow  *window);
 
@@ -525,5 +531,8 @@ void meta_window_queue_update_icon (MetaWindow *window);
 
 void meta_window_stack_just_below (MetaWindow *window,
                                    MetaWindow *below_this_one);
+
+void meta_window_set_user_time (MetaWindow *window,
+                                Time        timestamp);
 
 #endif

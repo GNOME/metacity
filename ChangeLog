@@ -1,3 +1,7 @@
+Mon Mar 28 15:34:37 2005  Søren Sandmann  <sandmann@redhat.com>
+
+	* Merge changes on head.
+
 Thu Feb 24 15:17:09 2005  Søren Sandmann  <sandmann@redhat.com>
 
 	* src/compositor.c, src/cwindow.c: Support shaped windows, disable
@@ -95,6 +99,608 @@ Thu Jan 13 18:43:17 2005  Søren Sandmann  <sandmann@redhat.com>
 		cwindow.[ch]	the CWindow class
 
 	It is not yet very smooth or spiffy, and it is not snappy at all.
+
+2005-03-17  Lex Hider <Lex.Hider@gmail.com>
+
+	* doc/Makefile.am (EXTRA_DIST): add doc/code-overview.txt and
+	doc/how-to-get-focus-right.txt
+
+2005-03-10  Adi Attar  <aattar@cvs.gnome.org>
+
+	* configure.in: Added "xh" to ALL_LINGUAS.
+
+2005-03-07  Elijah Newren  <newren@gmail.com>
+
+	* configure.in: post-release version bump to 2.10.1
+
+2005-03-07  Elijah Newren  <newren@gmail.com>
+
+	* configure.in:
+	* README:
+	* NEWS:
+	2.10.0 release
+
+2005-02-28  Elijah Newren  <newren@gmail.com>
+
+	* configure.in: post-release version bump to 2.9.55
+
+2005-02-28  Elijah Newren  <newren@gmail.com>
+
+	* NEWS: Metacity 2.9.34 unstable release
+
+2005-02-28  Elijah Newren  <newren@gmail.com>
+
+	Patch from Aidan Delaney to make sure that icons in the alt-tab
+	popup are dimmed for all hidden windows, not just minimized ones.
+	Fixes #168455.
+
+	* src/screen.c: (meta_screen_ensure_tab_popup): make use
+	meta_window_showing_on_its_workspace() instead of just checking if
+	the window is minimized.
+
+2005-02-25  Elijah Newren  <newren@gmail.com>
+
+	Prevent the visual bell from changing the focus window.  Fixes
+	#123366.
+
+	* src/bell.c: (meta_bell_flash_screen): if not in click-to-focus
+	mode and mouse_mode is also false, increment the focus sentinel so
+	that we can ignore spurious EnterNotify and LeaveNotify events.
+
+	* src.display.c: (event_callback): make sure to also ignore
+	LeaveNotify events when the focus sentinel isn't clear
+
+2005-02-23  Elijah Newren  <newren@gmail.com>
+
+	* src/window.c: (meta_window_new_with_attrs): Fix crash that
+	occurs when stupid apps claim that a window is its own parent.
+	#168207
+
+2005-02-21  Elijah Newren  <newren@gmail.com>
+
+	* configure.in: post-release version bump to 2.9.34
+
+2005-02-21  Elijah Newren  <newren@gmail.com>
+
+	* NEWS: Metacity 2.9.21 unstable release
+
+2005-02-21  Elijah Newren  <newren@gmail.com>
+
+	Handle keynav vs. mousenav in mouse and sloppy focus modes.  Fixes
+	#167545.
+
+	* doc/how-to-get-focus-right.txt: Update due to this new method
+	for handling keynav vs. mousenav, plus various other updates that
+	I previously forgot.
+
+	* src/display.h: (struct _MetaDisplay): add a mouse_mode boolean
+
+	* src/display.c: (meta_display_open): initialize mouse_mode to
+	true, (event_callback): have EnterNotify and LeaveNotify events
+	set mouse_mode to true when focusing a window
+
+	* src/keybindings.c: (process_tab_grab): set mouse_mode to false
+	when using alt-tab/alt-esc, (do_choose_window): likewise,
+	(do_handle_move_to_workspace): set mouse_mode to false on
+	move-window-to-workspace-<n> keybindings
+
+	* src/window.c (idle_calc_showing): if we're in keynav mode while
+	using sloppy or mouse focus, use metacity_sentinel to avoid
+	EnterNotify events being generated from events other than mouse
+	movement.
+
+	* src/workspace.c (meta_workspace_activate_with_focus): add a
+	FIXME in a potentially duplicate section of code,
+	(meta_workspace_focus_default_window): use the same focus choice
+	as click-to-focus if in keynav mode.
+
+2005-02-20  Elijah Newren  <newren@gmail.com>
+
+	* src/display.c: (event_callback): Handle _NET_CURRENT_DESKTOP
+	messages that come with timestamps.  Fixes the metacity portion of
+	#161361 other than the portion handled by #128380.
+
+2005-02-20  Elijah Newren  <newren@gmail.com>
+
+	* src/window.c: (meta_window_activate): when receiving a
+	_NET_ACTIVE_WINDOW message, switch to the desktop where the window
+	is located before activating instead of moving the window to the
+	current desktop.  Thanks to Lubos Lunak for catching this issue.
+	Fixes #128380.
+
+2005-02-20  Elijah Newren  <newren@gmail.com>
+
+	* src/window.c (meta_window_show): Ignore all focus and
+	focus-stealing-prevention code in meta_window_show when not
+	showing the window for the first time.  Fixes #167199.
+
+2005-02-20  Elijah Newren  <newren@gmail.com>
+
+	Fix an obscure xinerama placement bug with windows that are too
+	large to fit in the workarea in both dimensions.  #166757
+
+	* src/place.c: (meta_window_place): use the current xinerama
+	instead of arbitrarily resetting to 0
+
+2005-02-20  Elijah Newren  <newren@gmail.com>
+
+	Patch from Joe Marcus Clarke to fix a possible crash on logout.
+	#167935.  Thanks for fixing my mistakes, Joe!
+
+	* src/display.c: (meta_display_open): initialize
+	display->grab_old_window_stacking to NULL.
+
+2005-02-20  Elijah Newren  <newren@gmail.com>
+
+	Big patch to cover about 6 different issues in order to correct
+	rare problems with timestamps (make sure window selected in
+	tasklist actually gets focus, sanity check timestamps to avoid
+	rogue apps hosing the system, correct the updating of
+	net_wm_user_time, correctly handle timestamps of 0 when comparing
+	xserver timestamps for those who have had their systems up for
+	over 25 days or so, add some debugging information to verbose
+	logs, some code cleanups).  Fixes all issues listed in #167358.
+
+	* src/display.h: (struct _MetaDisplay): clarify comment on
+	last_focus_time, introduce a new variable--last_user_time,
+	(XSERVER_TIME_IS_BEFORE macro): put this functionality into a
+	separate macro and then introduce a new macro with this name that
+	uses the old one but adds additional special-case checks for
+	timestamps that are 0, (comment to
+	meta_display_set_input_focus_window): add information about how
+	last_user_time should be used in this function
+	
+	* src/display.c (santiy_check_timestamps): new function,
+	(meta_display_open): intialize display->last_user_time,
+	(meta_display_get_current_time_roundtrip): use the timestamp,
+	which is known to be good, in order to sanity_check_timestamps,
+	(event_callback): use the new meta_window_ste_user_time() function
+	in order to correct problems, use the timestamp of KeyPress and
+	ButtonPress events, which are known to be good, in order to
+	sanity_check_timestamps, (timestamp_too_old): new function for
+	common behavior of meta_display_focus_the_no_focus_window and
+	meta_display_set_input_focus_window, with added checking for
+	display->last_user_time in addition to display->last_focus_time,
+	(meta_display_set_input_focus_window): replace some of the code
+	with a call to timestamp_too_old(),
+	(meta_display_focus_the_no_focus_window): replace some of th ecode
+	with a call to timestamp_too_old()
+
+	* src/window.h: (meta_window_set_user_time): new function to
+	abstract the many things that need to be done when updating the
+	net_wm_user_time of any window
+
+	* src/window.c: (meta_window_activate): add debugging spew, make
+	sure the comparison is made with last_user_time NOT
+	last_focus_time, use meta_window_set_user_time() function in order
+	to correct problems, (meta_window_client_message): add a newline
+	to a debugging message to make them easier to read,
+	(meta_window_set_user_time): new function
+
+	* src/window-props.c (reload_net_wm_user_time): use the new
+	meta_window_ste_user_time() function in order to correct problems
+
+2005-02-16  Elijah Newren  <newren@gmail.com>
+
+	* src/display.c: (event_callback): trivial fix to a log message:
+	change %d to %lu (see debugging log from bug 167358).
+
+2005-02-12  Elijah Newren  <newren@gmail.com>
+
+	Raise the ancestor of a window instead of the window itself.
+	Fixes #166894.
+
+	* src/window.c: (find_root_ancestor): new function,
+	(meta_window_raise): get the ancestor of the given window and
+	raise it if possible instead of the window
+
+2005-02-12  Elijah Newren  <newren@gmail.com>
+
+	Don't unconditionally place splashscreens (and other
+	not-to-be-focused windows) below the focus window.  Fixes #167042.
+
+	* src/window.c: (intervening_user_event_occurred): new function
+	taken from the timestamp comparison portion of the old
+	window_takes_focus_on_map function, (window_state_on_map): new
+	function with remainder of old window_takes_focus_on_map function
+	that determines both whether the window will take focus and
+	whether it should be placed on top, (meta_window_show): use
+	place_on_top_on_map to determine window stacking instead of trying
+	to infer it from takes_focus_on_map
+
+2005-02-11  Elijah Newren  <newren@gmail.com>
+
+	Avoid new windows being obscured by the focus window (and thus
+	possibly lost).  Fixes #166524.
+
+	* src/place.c: new MetaWindowDirection enum,
+	(find_most_freespace): new function to find where there is the
+	most space available around the focused window,
+	(meta_window_place): if a window is denied focus and the window
+	overlaps the focused window, retry the first-fit algorithm only
+	paying attention to the focus window position and if that fails
+	just find the location on the screen with the most space
+	available.
+
+	* src/window.h: (struct MetaWindow): new
+	denied_focus_and_not_transient bitfield
+
+	* src/window.c: (meta_window_new_with_attrs): initialize
+	denied_focus_and_not_transient, (meta_window_show): set and unset
+	the denied_focus_and_not_transient field appropriately
+
+2005-02-08  Aidan Delaney  <adelaney@cs.may.ie>
+
+	Removed useless function call.  #166730
+
+	* src/tabpopup.c: (outline_window_expose): Removed unused
+	references to variables and an unnecessary function call to
+	gdk_window_get_size().
+
+2005-02-08  Elijah Newren  <newren@gmail.com>
+
+	Avoid using CurrentTime when focusing, handle it better in case we
+	miss any cases.  Fixes #166732.
+
+	* src/window.c: (meta_window_shade): use
+	meta_display_get_current_time_roundtrip() to ensure we have a
+	valid timestamp, (meta_window_unshade): same
+
+	* src/display.c: (meta_display_set_input_focus_window): If
+	CurrentTime was passed, get one from the XServer in addition to
+	throwing a warning, (meta_display_focus_the_no_focus_window): same
+
+2005-02-08  Elijah Newren  <newren@gmail.com>
+
+	* src/window.c: (meta_window_activate): If we're not passed a
+	timestamp, make sure to manually get one.  Fixes #166728.
+
+2005-02-07  Elijah Newren  <newren@gmail.com>
+
+	* configure.in: post-release version bump to 2.9.21
+
+2005-02-07  Elijah Newren  <newren@gmail.com>
+
+	* NEWS: Metacity 2.9.13 unstable release
+
+2005-02-06  Elijah Newren  <newren@gmail.com>
+
+	Set a _METACITY_VERSION property (a utf8 string) on the WM check
+	window.  #165350.
+
+	* src/display.h: (struct MetaDisplay): add a atom_metacity_version
+	field
+	
+	* src/display.c: (meta_display_open): initialize the
+	_METACITY_VERSION property on the WM check window to the current
+	version of Metacity.
+
+2005-02-06  Elijah Newren  <newren@gmail.com>
+
+	Ignore xconfigurerequest events for stacking when it should be
+	safe to do so.  Again, thanks to Crispin Flowerday for the test
+	case.  Thanks to KWin for the inspiration (and to Google for
+	indexing their source code).  Fixes the other half of #166395.
+
+	* src/window.c: (meta_window_configure_request): if the
+	active_window is from a separate application than the one getting
+	the configure request and the net_wm_user_time of the active
+	window is later than that of the window getting the configure
+	request, then ignore the request.
+
+2005-02-06  Elijah Newren  <newren@gmail.com>
+
+	If activation requests are too old, set the demands_attention hint
+	instead of actually activating.  Thanks to Crispin Flowerday for
+	the test case and for testing the patch.  Fixes half of #166395.
+
+	* src/window.c: (meta_window_activate): if the request came before
+	the last focus time, set the demands attention hint instead
+
+2005-02-04  Dave Ahlswede  <mightyquinn@letterboxes.org>
+
+	* src/metacity.schemas.in: Add period to the end of
+	reduced_resources' description.  Fixes #165780.
+ 	
+2005-02-04  Elijah Newren  <newren@gmail.com>
+
+	Make sure window->border_only is initialized so we don't get
+	random windows without decorations.  Thanks to Sinisa Segvic and
+	Owen Taylor for providing test cases.  Fixes #145131.
+
+	* src/window.c: (update_mwm_hints): Be sure to call
+	recalc_window_features even if no MWM hints are set
+
+2005-02-02  Elijah Newren  <newren@gmail.com>
+
+	Focus parents of dismissed transient windows in preference to the
+	window that most recently had keyboard focus.  Fixes #157360.
+
+	* doc/how-to-get-focus-right.txt: Note the distinction between
+	"most recently used window" and "most recent to have keyboard
+	focus" that we are now making.
+
+	* src/workspace.c: (focus_ancestor_or_mru_window): rename from
+	meta_workspace_focus_mru_window, and first check whether we need
+	to focus an ancestor window before looking for the mru window,
+	(record_ancestor): helper function for
+	focus_ancestor_or_mru_window,
+	(meta_workspace_focus_default_window): update due to the function
+	rename from meta_workspace_focus_mru_window to
+	focus_ancestor_or_mru_window
+
+2005-01-31  Elijah Newren  <newren@gmail.com>
+
+	Try 2 to correct misleading and inaccurate wording.  Hopefully,
+	really fixes #165380.
+
+	* src/menu.c: Change wording of menu from "Always on Current
+	Workspace" to "Always on Visible Workspace".  "Always on Current
+	Workspace" could sound like a synonym of "Only on This Workspace"
+	when it was supposed to be the opposite.
+
+2005-01-31  Elijah Newren  <newren@gmail.com>
+
+	Correct the stacking when return from fullscreen mode.  Fixes
+	#165718.
+	
+	* src/window.c: (meta_window_unmake_fullscreen): Update the layer
+	after resizing the window
+
+2005-01-31  Muktha  <muktha.narayan@wipro.com>
+
+	src/themes/Atlanta/metacity-theme-1.xml:
+	src/themes/Simple/metacity-theme-1.xml:
+	src/themes/Bright/metacity-theme-1.xml:	
+	Make the unfocussed title bar distinguishable. Fixes #125291.
+
+2005-01-28  Elijah Newren  <newren@gmail.com>
+
+	Patch from RHEL-3 (Havoc doesn't remember how it got there) that
+	Havoc posted in bug 156511 to fix the problem with fullscreen
+	windows on a different xinerama monitor not staying on top.  I
+	updated to HEAD.  Should fix #156511.
+
+	* src/stack.c: (windows_on_different_xinerama): new function,
+	(get_standalone_layer): let windows on a different screen than the
+	one with the focus window stay in the fullscreen layer
+
+2005-01-28  Elijah Newren  <newren@gmail.com>
+
+	* src/metacity-dialog.c: (warn_about_no_sm_support): make this
+	dialog be sticky.  Fixes #164745.
+
+2005-01-28  Elijah Newren  <newren@gmail.com>
+
+	Patch from Tim Herold to handle xcomposite pkgconfig version
+	regression.  Fixes #149368.
+
+	* configure.in: Change XCOMPOSITE_VERSION from 1.0 to 0.2
+
+2005-01-28  Elijah Newren  <newren@gmail.com>
+
+	Correct misleading and inaccurate wording.  Fixes #165380.
+
+	* src/menu.c: Change wording of menu to "Always on Current
+	Workspace" from "Put on All Workspaces", remove a quick-key
+	conflict between "On _Top" and "Only on _This Workspace" by
+	switching the latter to "_Only on This Workspace"
+
+	* src/window.c: Remove a comment that is no longer necessary
+	(since bug 87531 has been fixed)
+
+2005-01-28  Elijah Newren  <newren@gmail.com>
+
+	Take into account the appropriate list of windows when placing a
+	new one.  Fixes #165381.
+
+	* src/place.c: (meta_window_place): use
+	meta_window_showing_on_its_workspace(w) instead of !w->minimzed,
+	also take into account sticky windows
+
+	* src/window.[ch]: rename window_showing_on_its_workspace to
+	meta_window_showing_on_its_workspace and export it
+
+2005-01-27  Elijah Newren  <newren@gmail.com>
+
+	Plug a pair of leaks.  Fixes #165378
+
+	* src/place.c: (meta_window_place, get_windows_on_same_workspace):
+	free list returned by meta_display_list_windows.
+
+2005-01-27  Elijah Newren  <newren@gmail.com>
+
+	Treat splashscreens same as other windows for stacking.  Fixes
+	#165243.
+
+	* src/stack.h: (MetaStackLayer enum): remove META_LAYER_SPLASH
+	from the list
+
+	* src/stack.c: (get_standalone_layer): remove the special casing
+	of META_WINDOW_SPLASHSCREEN
+
+2005-01-27  Elijah Newren  <newren@gmail.com>
+
+	* src/window.c: (set_net_wm_state): shaded windows should not show
+	up in pagers.  Fixes #165377.
+
+2005-01-26  Elijah Newren  <newren@gmail.com>
+
+	Stick and unstick transients with their parent automatically.
+	Fixes #152283.
+
+	* src/window.c: (window_stick_impl, window_unstick_impl): rename
+	from meta_window_stick and meta_window_unstick respectively,
+	(stick_foreach_func): a function to assist calling
+	window_(un)stick_impl on each transient, (meta_window_stick,
+	meta_window_unstick): new functions that call window_stick_impl or
+	window_unstick_impl for the window and each of its transients.
+
+2005-01-26  Elijah Newren  <newren@gmail.com>
+
+	Patch from John Paul Wallington to keep tooltip on screen
+	horizontally for xinerama.  Fixes #165261.
+
+	* src/fixedtip.c: (meta_fixed_tip_show): rename screen_width and
+	screen_height to screen_right_edge and screen_bottom_edge, set
+	them using xinerama info instead of just screen geometry, and use
+	them to determine where to place the tooltip window.
+
+2005-01-26  Arvind Samptur  <arvind.samptur@wipro.com>
+
+	Don't wireframe when accessibility is on, it apparently
+	causes a desktop wide freeze.
+
+	* src/prefs.[ch] (meta_prefs_init) (change_notify)
+	(update_gnome_accessibility) (meta_preference_to_string)
+	(meta_prefs_get_gnome_accessibility) : Add code to monitor
+	accessibility status.
+
+	* src/display.c (meta_display_begin_grab_op): Check
+	accessibility status before going ahead with wireframe.
+	Fixes #159538
+
+2005-01-25  Elijah Newren  <newren@gmail.com>
+
+	* src/tabpopup.c: (meta_select_workspace_expose_event): ignore
+	sticky windows for non-active workspaces.  Fixes #165259.
+
+2005-01-25  Elijah Newren  <newren@gmail.com>
+
+	* src/window.c: (meta_window_new_with_attrs): set the window state
+	hints _after_ applying session information.  Fixes #164677.
+
+2005-01-25  Elijah Newren  <newren@gmail.com>
+
+	Add man pages for metacity-window-demo and metacity-theme-viewer.
+	Man pages from Jose Moya, auto-fu from Dave Ahlswede. (#143513)
+
+	* doc/man/metacity-theme-viewer.1:
+	* doc/man/metacity-window-demo.1:
+
+	New man pages
+
+	* doc/man/Makefile.am:
+	* doc/Makefile.am:
+	* configure.in:
+
+	Make sure to install the man pages
+	
+	* doc/man/.cvsignore:
+	
+	Silence cvs
+
+2005-01-25  Benjamin Kahn  <xkahn@novell.com>
+
+	New 48x48 default icon as specified in bug #160660
+
+2005-01-25  Elijah Newren  <newren@math.utah.edu>
+
+	Patch from Stephane LOEUILLET in bug #151850.
+
+	* src/metacity.desktop.in: specify encoding
+
+2005-01-25  Balamurali Viswanathan <balamurali.viswanathan@wipro.com>
+ 
+ 	* src/prefs.c (meta_prefs_init): Get gconf to load the
+ 	terminal dir so that we get the notifications when
+ 	the command is changed. Fixes bug #160934
+ 
+2005-01-25  Elijah Newren  <newren@gmail.com>
+
+	Refuse to focus a window with a modal transient, and focus the
+	transient instead.  Fixes #164716.
+
+	* src/window.c: (get_modal_transient): new function,
+	(meta_window_focus): if the window has a modal transient, make
+	sure it is on the current workspace and then focus it instead.
+
+2005-01-24  Elijah Newren  <newren@gmail.com>
+
+	* configure.in: post-release version bump to 2.9.13
+
+2005-01-24  Elijah Newren  <newren@gmail.com>
+
+	* NEWS: Metacity 2.9.8 unstable release
+
+2005-01-24  Elijah Newren  <newren@gmail.com>
+
+	* src/display.c: (meta_display_begin_grab_op): don't forget to
+	initialize display->grab_old_window_stacking.  Thanks to Sebastien
+	Bacher and the bleeding edge Ubuntu users for catching the
+	occasional crash this could cause so quickly, and for verifying
+	that the patch worked (I couldn't duplicate).  Fixes #165093.
+
+2005-01-23  Elijah Newren  <newren@gmail.com>
+
+	* configure.in: post-release version bump to 2.9.8
+
+2005-01-23  Elijah Newren  <newren@gmail.com>
+
+	* NEWS: Metacity 2.9.5 unstable release
+	* README: there are more stable releases beyond 2.8.6...
+
+2005-01-23  Elijah Newren  <newren@gmail.com>
+
+	Restore original stacking when aborting an alt-esc window switch
+	operation.  Fixes #123576.
+
+	* src/display.c: (GRAB_OP_IS_WINDOW_SWITCH): new macro,
+	(meta_display_close): clear grab_old_window_stacking if non-NULL,
+	(event_callback): restore stack positions if alt-esc op cancelled
+	with button press, (meta_display_begin_grab_op): store the old
+	stacking positions, (meta_display_end_grab_op): free the old stack
+	positions
+
+	* src/display.h: (struct _MetaDisplay): add a
+	grab_old_window_stacking list
+
+	* src/keybindings.c: (process_tab_grab): restore stack positions
+	if alt-esc op cancelled with an errant key press
+
+	* src/stack.c: (compare_just_window_stack_position): new
+	GCompareFunc function, (meta_stack_get_positions): get current
+	stack positions, (compare_pointers): new GCompareFunc function,
+	(lists_contain_same_windows): simple utility func to see if two
+	lists contains the same windows, (meta_stack_set_positions): new
+	function to set the positions of all the windows in the stack
+
+	* src/stack.h: (meta_stack_get_postions,
+	meta_stack_set_positions): new functions
+
+2005-01-23  Elijah Newren  <newren@gmail.com>
+
+	Patch from John Paul Wallington to fix #163420.
+
+	* src/window.c: (check_maximize_to_work_area): fix vertical
+	maximization for second screen
+
+2005-01-21  Elijah Newren  <newren@gmail.com>
+
+	* rationales.txt: Add a tracker bug for modal dialog issues
+
+2005-01-20  Elijah Newren  <newren@gmail.com>
+
+	* src/tabpopup.c (dimm_icon): use pixbuf, not dimmed_pixbuf (which
+	isn't defined yet).  Fixes crash from #136666.
+
+2005-01-20  Vincent Noel  <vnoel@cox.net>
+
+	* src/screen.c: (meta_screen_ensure_tab_popup),
+	(meta_screen_ensure_workspace_popup):
+	* src/tabpopup.c: (meta_ui_tab_popup_new), (display_entry):
+	* src/tabpopup.h: Show labels in bold for windows that demand
+	attention. Fixes #164590.
+
+2005-01-18  Vincent Noel  <vnoel@cox.net>
+
+	* src/screen.c: (meta_screen_ensure_tab_popup),
+	(meta_screen_ensure_workspace_popup):
+	* src/tabpopup.c: (dimm_icon), (meta_ui_tab_popup_new),
+	(free_entry):
+	* src/tabpopup.h: In the tab task switcher popup, dim the window
+	icon and put its name between brackets when the window is
+	minimized. Fixes #136666.
 
 2005-01-11  Elijah Newren  <newren@gmail.com>
 

@@ -2,7 +2,7 @@
 # Copyright (C) 2003 The Free Software Foundation, Inc.
 # This file is distributed under the same license as the metacity package.
 # Tino Meinen <a.t.meinen@chello.nl>, 2003, 2004
-# Reinout van Schouwen <reinout@cs.vu.nl>, 2003.
+# Reinout van Schouwen <reinout@cs.vu.nl>, 2003, 2005.
 # -------------------------------------------
 # Unroll -> Uitrollen of afrollen?
 # draw_ops?
@@ -12,13 +12,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity 2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-09 21:23-0700\n"
-"PO-Revision-Date: 2004-07-27 18:02+0100\n"
-"Last-Translator: Michiel Sikkes <michiel@eyesopened.nl>\n"
-"Language-Team: Dutch <vertaling@nl.linux.org>\n"
+"POT-Creation-Date: 2005-03-07 07:33+0100\n"
+"PO-Revision-Date: 2005-02-27 23:50+0100\n"
+"Last-Translator: Reinout van Schouwen <reinout@cs.vu.nl>\n"
+"Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/tools/metacity-message.c:150
 #, c-format
@@ -62,12 +63,12 @@ msgstr ""
 #: src/delete.c:452
 #, c-format
 msgid "Failed to get hostname: %s\n"
-msgstr "Ophalen hostname mislukt: %s\n"
+msgstr "Ophalen hostnaam mislukt: %s\n"
 
-#: src/display.c:306
+#: src/display.c:316
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
-msgstr "Openen van X Window System display, mislukt: '%s'\n"
+msgstr "Openen van X Window System display '%s' mislukt\n"
 
 #: src/errors.c:231
 #, c-format
@@ -91,7 +92,7 @@ msgstr "Venster sluiten"
 
 #: src/frames.c:1023
 msgid "Window Menu"
-msgstr "Venster-menu"
+msgstr "Venstermenu"
 
 #: src/frames.c:1026
 msgid "Minimize Window"
@@ -115,22 +116,21 @@ msgstr ""
 "Een ander programma gebruikt reeds de %s-toets met controletoets %x als "
 "toetsbinding\n"
 
-#: src/keybindings.c:2554
+#: src/keybindings.c:2561
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr ""
 "Fout bij het starten van een metacity-dialoogvenster om een foutmelding te "
 "tonen over een opdracht: %s\n"
 
-#: src/keybindings.c:2659
+#: src/keybindings.c:2666
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "Er is geen opdracht %d gedefinieerd.\n"
 
-#: src/keybindings.c:3489
-#, fuzzy
+#: src/keybindings.c:3511
 msgid "No terminal command has been defined.\n"
-msgstr "Er is geen opdracht %d gedefinieerd.\n"
+msgstr "Er is geen opdracht voor de terminal gedefinieerd.\n"
 
 #: src/main.c:69
 msgid ""
@@ -195,7 +195,7 @@ msgstr "_Uitrollen"
 
 #: src/menu.c:59 src/menu.c:60
 msgid "On _Top"
-msgstr "_Bovenliggend"
+msgstr "_Bovenop"
 
 #: src/menu.c:61
 msgid "_Move"
@@ -212,11 +212,11 @@ msgstr "Sl_uiten"
 
 #. separator
 #: src/menu.c:66
-msgid "Put on _All Workspaces"
-msgstr "Op _alle werkbladen tonen"
+msgid "_Always on Visible Workspace"
+msgstr "Op _alle werkbladen zichtbaar"
 
 #: src/menu.c:67
-msgid "Only on _This Workspace"
+msgid "_Only on This Workspace"
 msgstr "Alleen op dit _werkblad"
 
 #: src/menu.c:68
@@ -235,7 +235,7 @@ msgstr "Verplaatsen naar _bovenliggend werkblad"
 msgid "Move to Workspace _Down"
 msgstr "Verplaatsen naar _onderliggend werkblad"
 
-#: src/menu.c:162 src/prefs.c:1942
+#: src/menu.c:162 src/prefs.c:1996
 #, c-format
 msgid "Workspace %d"
 msgstr "Werkblad %d"
@@ -375,7 +375,7 @@ msgstr ""
 "Deze vensters ondersteunen niet \"huidige instellingen opslaan\" en zullen "
 "bij een volgende sessie opnieuw moeten worden opgestart."
 
-#: src/metacity-dialog.c:323
+#: src/metacity-dialog.c:325
 #, c-format
 msgid ""
 "There was an error running \"%s\":\n"
@@ -517,7 +517,8 @@ msgid ""
 "\"direct manipulation\", by using wireframes, avoiding animations, or other "
 "means. This is a significant reduction in usability for many users, but may "
 "allow legacy applications and terminal servers to function when they would "
-"otherwise be impractical."
+"otherwise be impractical. However, the wireframe feature is disabled when "
+"accessibility is on to avoid weird desktop breakages."
 msgstr ""
 "Indien waar, geeft metacity de gebruiker minder directe terugkoppeling door "
 "raamwerken te gebruiken en animaties te minimaliseren. Dit is een "
@@ -715,14 +716,14 @@ msgstr "Venstergrootte veranderen"
 msgid "Run a defined command"
 msgstr "Voorgedefineerde opdracht uitvoeren"
 
+# Terminal opstarten/Een terminal opstarten
 #: src/metacity.schemas.in.h:60
 msgid "Run a terminal"
-msgstr ""
+msgstr "Een terminal opstarten"
 
-# aan elkaar hier is niet consistent met het andere bericht: panel run dialog
 #: src/metacity.schemas.in.h:61
 msgid "Show the panel menu"
-msgstr "Het paneel-menu tonen"
+msgstr "Het paneelmenu tonen"
 
 #: src/metacity.schemas.in.h:62
 msgid "Show the panel run application dialog"
@@ -1207,7 +1208,6 @@ msgstr ""
 "\"uitgeschakeld\", dan zal deze actie geen toetskoppeling kennen."
 
 #: src/metacity.schemas.in.h:109
-#, fuzzy
 msgid ""
 "The keybinding used to maximize a window. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1718,7 +1718,6 @@ msgstr ""
 "actie niet aan een toets zijn gebonden."
 
 #: src/metacity.schemas.in.h:142
-#, fuzzy
 msgid ""
 "The keybinding which invokes a terminal. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1961,17 +1960,17 @@ msgstr "Vensteraandacht-modus"
 msgid "Window title font"
 msgstr "Venstertitellettertype"
 
-#: src/prefs.c:476 src/prefs.c:492 src/prefs.c:508 src/prefs.c:524
-#: src/prefs.c:540 src/prefs.c:560 src/prefs.c:576 src/prefs.c:592
-#: src/prefs.c:608 src/prefs.c:624 src/prefs.c:640 src/prefs.c:656
-#: src/prefs.c:672 src/prefs.c:689 src/prefs.c:705 src/prefs.c:721
-#: src/prefs.c:737 src/prefs.c:753 src/prefs.c:768 src/prefs.c:783
-#: src/prefs.c:798
+#: src/prefs.c:501 src/prefs.c:517 src/prefs.c:533 src/prefs.c:549
+#: src/prefs.c:565 src/prefs.c:585 src/prefs.c:601 src/prefs.c:617
+#: src/prefs.c:633 src/prefs.c:649 src/prefs.c:665 src/prefs.c:681
+#: src/prefs.c:697 src/prefs.c:714 src/prefs.c:730 src/prefs.c:746
+#: src/prefs.c:762 src/prefs.c:778 src/prefs.c:793 src/prefs.c:808
+#: src/prefs.c:823 src/prefs.c:839
 #, c-format
 msgid "GConf key \"%s\" is set to an invalid type\n"
 msgstr "GConf-sleutel \"%s\" is op een ongeldig type ingesteld\n"
 
-#: src/prefs.c:843
+#: src/prefs.c:884
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -1980,18 +1979,18 @@ msgstr ""
 "\"%s\", gevonden in de configuratiedatabase, is geen geldige waarde voor de "
 "muisknop-optietoets\n"
 
-#: src/prefs.c:867 src/prefs.c:1277
+#: src/prefs.c:908 src/prefs.c:1318
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
 msgstr "GConf-sleutel '%s' is ingesteld op een ongeldige waarde\n"
 
-#: src/prefs.c:994
+#: src/prefs.c:1035
 #, c-format
 msgid "Could not parse font description \"%s\" from GConf key %s\n"
 msgstr ""
 "Kon lettertypebeschrijving \"%s\" niet verwerken van Gconf-sleutel %s\n"
 
-#: src/prefs.c:1179
+#: src/prefs.c:1220
 #, c-format
 msgid ""
 "%d stored in GConf key %s is not a reasonable number of workspaces, current "
@@ -2000,7 +1999,7 @@ msgstr ""
 "%d opgeslagen in GConf-sleutel %s is geen redelijk aantal werkbladen, "
 "huidige maximum is %d\n"
 
-#: src/prefs.c:1239
+#: src/prefs.c:1280
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -2008,17 +2007,17 @@ msgstr ""
 "Werkoplossing voor gebroken toepassingen uitgezet. Bepaalde toepassingen "
 "zullen niet naar behoren functioneren.\n"
 
-#: src/prefs.c:1304
+#: src/prefs.c:1345
 #, c-format
 msgid "%d stored in GConf key %s is out of range 0 to %d\n"
 msgstr "%d opgeslagen in GConf-sleutel %s valt buiten het bereik 0 %d\n"
 
-#: src/prefs.c:1425
+#: src/prefs.c:1479
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr "Fout bij het instellen van het aantal werkbladen op %d: %s\n"
 
-#: src/prefs.c:1669
+#: src/prefs.c:1723
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -2027,7 +2026,7 @@ msgstr ""
 "\"%s\" in de configuratiedatabase is geen geldige waarde voor toetsbinding "
 "\"%s\"\n"
 
-#: src/prefs.c:2023
+#: src/prefs.c:2077
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr "Fout bij het instellen van de naam voor werkblad %d op \"%s\": %s\n"
@@ -2304,22 +2303,22 @@ msgstr "Verhouding \"%s\" is onbekend"
 #: src/theme-parser.c:1446
 #, c-format
 msgid "No \"top\" attribute on element <%s>"
-msgstr "Geen \"boven\" attribuut op element <%s>"
+msgstr "Geen \"top\"-attribuut op element <%s>"
 
 #: src/theme-parser.c:1453
 #, c-format
 msgid "No \"bottom\" attribute on element <%s>"
-msgstr "Geen \"onder\" attribuut op element <%s>"
+msgstr "Geen \"bottom\"-attribuut op element <%s>"
 
 #: src/theme-parser.c:1460
 #, c-format
 msgid "No \"left\" attribute on element <%s>"
-msgstr "Geen \"links\" attribuut op element <%s>"
+msgstr "Geen \"left\"-attribuut op element <%s>"
 
 #: src/theme-parser.c:1467
 #, c-format
 msgid "No \"right\" attribute on element <%s>"
-msgstr "Geen \"rechts\" attribuut op element <%s>"
+msgstr "Geen \"right\"-attribuut op element <%s>"
 
 #: src/theme-parser.c:1499
 #, c-format
@@ -2373,24 +2372,24 @@ msgstr "Geen \"y\" attribuut op element <%s>"
 #: src/theme-parser.c:2497 src/theme-parser.c:2623 src/theme-parser.c:2795
 #, c-format
 msgid "No \"width\" attribute on element <%s>"
-msgstr "Geen \"breedte\" attribuut op element <%s>"
+msgstr "Geen \"width\" attribuut op element <%s>"
 
 #: src/theme-parser.c:1793 src/theme-parser.c:1896 src/theme-parser.c:2002
 #: src/theme-parser.c:2083 src/theme-parser.c:2189 src/theme-parser.c:2287
 #: src/theme-parser.c:2504 src/theme-parser.c:2630 src/theme-parser.c:2802
 #, c-format
 msgid "No \"height\" attribute on element <%s>"
-msgstr "Geen \"hoogte\" attribuut op element <%s>"
+msgstr "Geen \"height\" attribuut op element <%s>"
 
 #: src/theme-parser.c:1903
 #, c-format
 msgid "No \"start_angle\" attribute on element <%s>"
-msgstr "Geen \"begin_hoek\" attribuut op element <%s>"
+msgstr "Geen \"start_angle\" attribuut op element <%s>"
 
 #: src/theme-parser.c:1910
 #, c-format
 msgid "No \"extent_angle\" attribute on element <%s>"
-msgstr "Geen \"reikweidte_hoek\" attribuut op element <%s>"
+msgstr "Geen \"extent_angle\" attribuut op element <%s>"
 
 #: src/theme-parser.c:2090
 #, c-format
@@ -2410,27 +2409,27 @@ msgstr "Niet begrepen: de waarde \"%s\" voor type kleurverloop"
 #: src/theme-parser.c:2294
 #, c-format
 msgid "No \"filename\" attribute on element <%s>"
-msgstr "Geen \"bestandsnaam\" attribuut op element <%s>"
+msgstr "Geen \"filename\"-attribuut op element <%s>"
 
 #: src/theme-parser.c:2319 src/theme-parser.c:2827
 #, c-format
 msgid "Did not understand fill type \"%s\" for <%s> element"
-msgstr "Niet begrepen: vul-type \"%s\" voor <%s> element"
+msgstr "Niet begrepen: vul-type \"%s\" voor <%s>-element"
 
 #: src/theme-parser.c:2462 src/theme-parser.c:2595 src/theme-parser.c:2700
 #, c-format
 msgid "No \"state\" attribute on element <%s>"
-msgstr "Geen \"status\" attribuut op element <%s>"
+msgstr "Geen \"state\"-attribuut op element <%s>"
 
 #: src/theme-parser.c:2469 src/theme-parser.c:2602
 #, c-format
 msgid "No \"shadow\" attribute on element <%s>"
-msgstr "Geen \"schaduw\" attribuut op element <%s>"
+msgstr "Geen \"shadow\"-attribuut op element <%s>"
 
 #: src/theme-parser.c:2476
 #, c-format
 msgid "No \"arrow\" attribute on element <%s>"
-msgstr "Geen \"pijl\" attribuut op element <%s>"
+msgstr "Geen \"arrow\"-attribuut op element <%s>"
 
 #: src/theme-parser.c:2529 src/theme-parser.c:2651 src/theme-parser.c:2739
 #, c-format
@@ -2505,12 +2504,12 @@ msgstr "Kader-stijl heeft reeds een knop voor functie %s status %s"
 #: src/theme-parser.c:3376
 #, c-format
 msgid "No \"focus\" attribute on <%s> element"
-msgstr "Geen \"aandacht\" attribuut op <%s> element"
+msgstr "Geen \"focus\"-attribuut op <%s> element"
 
 #: src/theme-parser.c:3392
 #, c-format
 msgid "No \"style\" attribute on <%s> element"
-msgstr "Geen \"stijl\" attribuut op <%s> element"
+msgstr "Geen \"style\"-attribuut op <%s> element"
 
 #: src/theme-parser.c:3401
 #, c-format
@@ -2543,7 +2542,7 @@ msgid ""
 "Should not have \"resize\" attribute on <%s> element for maximized/shaded "
 "states"
 msgstr ""
-"Behoort geen \"grootte aanpassen\" attribuut te hebben op <%s> element voor "
+"Behoort geen \"resize\"-attribuut te hebben op <%s>-element voor "
 "gemaximaliseerde/opgerolde toestanden"
 
 #: src/theme-parser.c:3464
@@ -2617,7 +2616,7 @@ msgstr "Element <%s> is niet toegestaan binnen een \"draw operation\" element"
 #: src/theme-parser.c:3728 src/theme-parser.c:3758 src/theme-parser.c:3763
 #, c-format
 msgid "Element <%s> is not allowed inside a <%s> element"
-msgstr "Element <%s> is niet toegestaan binnen een <%s> element"
+msgstr "Element <%s> is niet toegestaan binnen een <%s>-element"
 
 #: src/theme-parser.c:3984
 msgid "No draw_ops provided for frame piece"
@@ -2659,7 +2658,7 @@ msgstr "<beschrijving> twee keer gegeven voor dit thema"
 #: src/theme-parser.c:4348
 #, c-format
 msgid "Failed to read theme from file %s: %s\n"
-msgstr "Kon thema niet uit bestand %s lezen: %s\n"
+msgstr "Kan thema niet uit bestand %s lezen: %s\n"
 
 #: src/theme-parser.c:4403
 #, c-format
@@ -2862,7 +2861,7 @@ msgstr "y-waarde is %d, %d verwacht"
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr ""
-"%d coordinatenexpressies verwerkt in %g seconden (gemiddelde van %g "
+"%d coördinatenexpressies verwerkt in %g seconden (gemiddelde van %g "
 "seconden)\n"
 
 #: src/theme.c:202
@@ -3143,7 +3142,7 @@ msgstr "Constante \"%s\" is reeds gedefinieerd"
 #: src/util.c:93
 #, c-format
 msgid "Failed to open debug log: %s\n"
-msgstr "debug-logboek openen mislukt: %s\n"
+msgstr "Debug-logboek openen mislukt: %s\n"
 
 #: src/util.c:103
 #, c-format
@@ -3177,7 +3176,7 @@ msgid "Application set a bogus _NET_WM_PID %ld\n"
 msgstr "Toepassing heeft een overbodige _NET_WM_PID %ld ingesteld\n"
 
 #. first time through
-#: src/window.c:4829
+#: src/window.c:5070
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -3193,7 +3192,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5500
+#: src/window.c:5741
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
@@ -3231,6 +3230,9 @@ msgid ""
 msgstr ""
 "Eigenschap %s bij venster 0x%lx bevat ongeldige UTF-8 voor item %d van de "
 "lijst\n"
+
+#~ msgid "Put on _All Workspaces"
+#~ msgstr "Op _alle werkbladen tonen"
 
 #~ msgid "Select how to give focus to windows"
 #~ msgstr "Kiezen hoe u vensters aandacht geeft"
