@@ -2826,7 +2826,7 @@ msgstr ""
 "sentido.\n"
 
 #: src/xprops.c:153
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Window 0x%lx has property %s\n"
 "that was expected to have type %s format %d\n"

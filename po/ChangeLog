@@ -1,3 +1,8 @@
+2003-05-02  Abel Cheung  <maddog@linux.org.hk>
+
+	* zh_TW.po: Updated traditional Chinese translation.
+	* pt_BR.po: Mark wrong entry as fuzzy (msgfmt check failed).
+
 2003-04-16  Jordi Mallach  <jordi@sindominio.net>
 
 	* ca.po: Updated Catalan translation.
