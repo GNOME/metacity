@@ -1,12 +1,12 @@
 # Czech translation of Metacity
 # This file is distributed under the same license as the metacity package.
-# Miloslav Trmac <mitr@volny.cz>, 2002.
+# Miloslav Trmac <mitr@volny.cz>, 2002, 2003
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity 2.0\n"
-"POT-Creation-Date: 2003-02-04 23:36-0500\n"
-"PO-Revision-Date: 2002-12-20 13:13+0100\n"
+"POT-Creation-Date: 2003-02-06 12:08+0100\n"
+"PO-Revision-Date: 2003-02-07 05:05+0100\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1421,14 +1421,7 @@ msgid ""
 "and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
-msgstr ""
-"Klávesová zkratka pro přepínání mezi okny bez pomocného okna (tradičně &lt;"
-"Alt&gt;Escape). Stisknutí klávesy \"shift\" při použití této zkraky obrátí "
-"směr pohybu. Formát je jako \"&lt;Control&gt;a\" nebo \"&lt;Shift&gt;&lt;"
-"Alt&gt;F1. Parser je poměrně liberální a dovoluje malá i velká písmena a "
-"zkratky jako \"&lt;Ctl&gt;\" a \"&lt;Ctrl&gt;\". Pokud volbu nastavíte na "
-"speciální řetězec \"disabled\", tak pro tuto akci nebude žádná klávesová "
-"zkratka."
+msgstr "Klávesová zkratka pro přepínání mezi okny bez pomocného okna (tradičně &lt;Alt&gt;Escape). Stisknutí klávesy \"shift\" při použití této zkratky obrátí směr pohybu. Formát je jako \"&lt;Control&gt;a\" nebo \"&lt;Shift&gt;&lt;Alt&gt;F1. Parser je poměrně liberální a dovoluje malá i velká písmena a zkratky jako \"&lt;Ctl&gt;\" a \"&lt;Ctrl&gt;\". Pokud volbu nastavíte na speciální řetězec \"disabled\", tak pro tuto akci nebude žádná klávesová zkratka."
 
 #: src/metacity.schemas.in.h:121
 msgid ""
@@ -1606,12 +1599,7 @@ msgid ""
 "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
-msgstr ""
-"Tato klávesová zkratka změní veilkost okna, aby vyplnilo dostupné vodorovné "
-"místo. Formát je jako \"&lt;Control&gt;a\" nebo \"&lt;Shift&gt;&lt;Alt&gt;"
-"F1. Parser je poměrně liberální a dovoluje malá i velká písmena a zkratky "
-"jako \"&lt;Ctl&gt;\" a \"&lt;Ctrl&gt;\". Pokud volbu nastavíte na speciální "
-"řetězec \"disabled\", tak pro tuto akci nebude žádná klávesová zkratka."
+msgstr "Tato klávesová zkratka změní velikost okna, aby vyplnilo dostupné vodorovné místo. Formát je jako \"&lt;Control&gt;a\" nebo \"&lt;Shift&gt;&lt;Alt&gt;F1. Parser je poměrně liberální a dovoluje malá i velká písmena a zkratky jako \"&lt;Ctl&gt;\" a \"&lt;Ctrl&gt;\". Pokud volbu nastavíte na speciální řetězec \"disabled\", tak pro tuto akci nebude žádná klávesová zkratka."
 
 #: src/metacity.schemas.in.h:135
 msgid ""
@@ -1621,12 +1609,7 @@ msgid ""
 "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
-msgstr ""
-"Tato klávesová zkratka změní veilkost okna, aby vyplnilo dostupné svislé "
-"místo. Formát je jako \"&lt;Control&gt;a\" nebo \"&lt;Shift&gt;&lt;Alt&gt;"
-"F1. Parser je poměrně liberální a dovoluje malá i velká písmena a zkratky "
-"jako \"&lt;Ctl&gt;\" a \"&lt;Ctrl&gt;\". Pokud volbu nastavíte na speciální "
-"řetězec \"disabled\", tak pro tuto akci nebude žádná klávesová zkratka."
+msgstr "Tato klávesová zkratka změní velikost okna, aby vyplnilo dostupné svislé místo. Formát je jako \"&lt;Control&gt;a\" nebo \"&lt;Shift&gt;&lt;Alt&gt;F1. Parser je poměrně liberální a dovoluje malá i velká písmena a zkratky jako \"&lt;Ctl&gt;\" a \"&lt;Ctrl&gt;\". Pokud volbu nastavíte na speciální řetězec \"disabled\", tak pro tuto akci nebude žádná klávesová zkratka."
 
 #: src/metacity.schemas.in.h:136
 msgid ""
@@ -2453,7 +2436,7 @@ msgstr "Nemohu parsovat hodnotu alfa \"%s\" v prolínané barvě"
 #: src/theme.c:1064
 #, c-format
 msgid "Alpha value \"%s\" in blended color is not between 0.0 and 1.0"
-msgstr "Hodnot alfa \"%s\" v prolínané barvě není mezi 0.0 a 1.Gé"
+msgstr "Hodnota alfa \"%s\" v prolínané barvě není mezi 0.0 a 1.0"
 
 #: src/theme.c:1111
 #, c-format
