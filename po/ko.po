@@ -5,13 +5,22 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity 2.4.3\n"
-"POT-Creation-Date: 2002-12-09 14:37-0500\n"
+"POT-Creation-Date: 2003-01-20 22:01-0500\n"
 "PO-Revision-Date: 2002-11-06 11:53+0900\n"
 "Last-Translator: Young-Ho, Cha <ganadist@mizi.com>\n"
 "Language-Team: GTP Korean <gnome-kr-translation@gnome.or.kr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: src/tools/metacity-message.c:150
+#, c-format
+msgid "Usage: %s\n"
+msgstr ""
+
+#: src/tools/metacity-message.c:174 src/util.c:128
+msgid "Metacity was compiled without support for verbose mode\n"
+msgstr ""
 
 #: src/delete.c:60 src/delete.c:87 src/metacity-dialog.c:46
 #: src/theme-parser.c:467
@@ -48,7 +57,7 @@ msgstr ""
 msgid "Failed to get hostname: %s\n"
 msgstr "호스트 이름 얻기 실패: %s\n"
 
-#: src/display.c:270
+#: src/display.c:279
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
 msgstr "X 윈도 시스템 디스플레이 '%s'을(를) 여는데 실패하였습니다\n"
@@ -69,27 +78,27 @@ msgstr ""
 msgid "Fatal IO error %d (%s) on display '%s'.\n"
 msgstr "디스플레이 '%3$s'에서 치명적인 입출력 오류 %1$d (%2$s).\n"
 
-#: src/frames.c:900
+#: src/frames.c:1010
 msgid "Close Window"
 msgstr "창 닫기"
 
-#: src/frames.c:903
+#: src/frames.c:1013
 msgid "Window Menu"
 msgstr "창 메뉴"
 
-#: src/frames.c:906
+#: src/frames.c:1016
 msgid "Minimize Window"
 msgstr "창 최소화"
 
-#: src/frames.c:909
+#: src/frames.c:1019
 msgid "Maximize Window"
 msgstr "창 최대화"
 
-#: src/frames.c:912
+#: src/frames.c:1022
 msgid "Unmaximize Window"
 msgstr "창 최대화 취소"
 
-#: src/keybindings.c:870
+#: src/keybindings.c:910
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
@@ -98,14 +107,14 @@ msgstr ""
 "몇몇 다른 프로그램에서 이미 단축 글쇠로 변경키 %2$x와(과) 글쇠 %1$s을(를) 사"
 "용하고 있습니다\n"
 
-#: src/keybindings.c:2206
+#: src/keybindings.c:2246
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr ""
 "명령에 대한 오류를 출력하기 위해 metacity-dialog를 실행하는 중 오류가 발생했"
 "습니다: %s\n"
 
-#: src/keybindings.c:2237
+#: src/keybindings.c:2277
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "명령 %d이(가) 정의되지 않았습니다.\n"
@@ -187,7 +196,7 @@ msgstr "모든 작업 공간에 놓기(_A)"
 msgid "Only on _This Workspace"
 msgstr "이 작업 공간에만 놓기(_T)"
 
-#: src/menu.c:152 src/prefs.c:1644
+#: src/menu.c:152 src/prefs.c:1669
 #, c-format
 msgid "Workspace %d"
 msgstr "작업 공간 %d"
@@ -1347,7 +1356,7 @@ msgstr ""
 "설정 데이터베이스에서 찾은 \"%s\"이(가) 마우스 단추 설정 글쇠의 올바른 값이 "
 "아닙니다\n"
 
-#: src/prefs.c:736 src/prefs.c:1098
+#: src/prefs.c:736 src/prefs.c:1103
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
 msgstr "GConf 키 '%s'이(가) 잘못된 값으로 설정되어 있습니다\n"
@@ -1366,7 +1375,7 @@ msgstr ""
 "Gconf 키 %2$s에 저장된 %1$d은(는) 사용할 수 없는 작업 공간 번호 입니다, 현재 "
 "최대값은 %3$d 입니다\n"
 
-#: src/prefs.c:1060
+#: src/prefs.c:1065
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -1374,17 +1383,17 @@ msgstr ""
 "응용 프로그램에 대한 임시 방편을 막았습니다. 몇몇 응용프로그램들이 제대로 동"
 "작하지 않을것입니다.\n"
 
-#: src/prefs.c:1125
+#: src/prefs.c:1130
 #, c-format
 msgid "%d stored in GConf key %s is out of range 0 to %d\n"
 msgstr "GConf 키 %2$s에 저장된 %1$d은(는) 0과 %3$d의 범위를 넘었습니다\n"
 
-#: src/prefs.c:1217
+#: src/prefs.c:1222
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr "작업 공간의 수를 %d(으)로 설정하는 중 오류: %s\n"
 
-#: src/prefs.c:1435
+#: src/prefs.c:1460
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -1393,7 +1402,7 @@ msgstr ""
 "설정 데이터베이스에서 찾은 \"%s\"이(가) 단축글쇠 \"%s\"에 대한 올바른 값이 아"
 "닙니다\n"
 
-#: src/prefs.c:1720
+#: src/prefs.c:1750
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr "작업 공간 %d의 이름을 \"%s\"(으)로 설정하는 중 오류: %s\n"
@@ -2337,23 +2346,19 @@ msgstr "로그 파일 %s을(를) fdopen()하기 실패: %s\n"
 msgid "Opened log file %s\n"
 msgstr "로그 파일 %s을(를) 엽니다\n"
 
-#: src/util.c:128
-msgid "Metacity was compiled without support for verbose mode\n"
-msgstr ""
-
 #: src/util.c:203
 msgid "Window manager: "
 msgstr "창 관리자: "
 
-#: src/util.c:343
+#: src/util.c:347
 msgid "Bug in window manager: "
 msgstr "창 관리자의 벌레: "
 
-#: src/util.c:372
+#: src/util.c:376
 msgid "Window manager warning: "
 msgstr "창 관리자 주의: "
 
-#: src/util.c:396
+#: src/util.c:400
 msgid "Window manager error: "
 msgstr "장 관리자 오류: "
 
@@ -2363,7 +2368,7 @@ msgid "Application set a bogus _NET_WM_PID %ld\n"
 msgstr "응용 프로그램이 가짜 _NET_WM_PID %ld을(를) 설정하였습니다\n"
 
 #. first time through
-#: src/window.c:4847
+#: src/window.c:4897
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -2379,28 +2384,31 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5407
+#: src/window.c:5457
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
 "d x %d and max size %d x %d; this doesn't make much sense.\n"
 msgstr ""
 
-#: src/xprops.c:124
-#, c-format
+#: src/xprops.c:153
+#, fuzzy, c-format
 msgid ""
-"Window 0x%lx has property %s that was expected to have type %s format %d and "
-"actually has type %s format %d n_items %d\n"
+"Window 0x%lx has property %s\n"
+"that was expected to have type %s format %d\n"
+"and actually has type %s format %d n_items %d.\n"
+"This is most likely an application bug, not a window manager bug.\n"
+"The window has title=\"%s\" class=\"%s\" name=\"%s\"\n"
 msgstr ""
 "창 0x%lx의 등록 정보 %s에 형식 %s %d이(가) 들어있어야 하는데 실제로는 형식 %"
 "s %d n_items %d이(가) 들어있습니다\n"
 
-#: src/xprops.c:369
+#: src/xprops.c:399
 #, c-format
 msgid "Property %s on window 0x%lx contained invalid UTF-8\n"
 msgstr "창 0x%2$lx의 등록 정보 %1$s은(는) 잘못된 UTF-8을 포함하고 있습니다\n"
 
-#: src/xprops.c:449
+#: src/xprops.c:479
 #, c-format
 msgid ""
 "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"

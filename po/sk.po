@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: sk\n"
-"POT-Creation-Date: 2003-01-05 13:38+0100\n"
+"POT-Creation-Date: 2003-01-20 22:01-0500\n"
 "PO-Revision-Date: 2003-01-05 14:28+0100\n"
 "Last-Translator: Stanislav Visnovsky <visnovsky@nenya.ms.mff.cuni.cz>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -49,7 +49,8 @@ msgstr "Chyba pri čítaní z procesu pre zobrazenie dialógu: %s\n"
 
 #: src/delete.c:331
 #, c-format
-msgid "Error launching metacity-dialog to ask about killing an application: %s\n"
+msgid ""
+"Error launching metacity-dialog to ask about killing an application: %s\n"
 msgstr "Chyba pri spustení dialógu metacity pre zabitie aplikácie: %s\n"
 
 #: src/delete.c:429
@@ -77,39 +78,40 @@ msgstr ""
 msgid "Fatal IO error %d (%s) on display '%s'.\n"
 msgstr "Kritická chyba V/V %d (%s) na displeji '%s'\n"
 
-#: src/frames.c:1004
+#: src/frames.c:1010
 msgid "Close Window"
 msgstr "Zavrieť okno"
 
-#: src/frames.c:1007
+#: src/frames.c:1013
 msgid "Window Menu"
 msgstr "Menu okna"
 
-#: src/frames.c:1010
+#: src/frames.c:1016
 msgid "Minimize Window"
 msgstr "Minimalizovať okno"
 
-#: src/frames.c:1013
+#: src/frames.c:1019
 msgid "Maximize Window"
 msgstr "Maximalizovať okno"
 
-#: src/frames.c:1016
+#: src/frames.c:1022
 msgid "Unmaximize Window"
 msgstr "Odmaximalizovať okno"
 
-#: src/keybindings.c:870
+#: src/keybindings.c:910
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
 "binding\n"
-msgstr "Iný program už používa kláves %s s modifikátormi %x ako klávesovú skratku.\n"
+msgstr ""
+"Iný program už používa kláves %s s modifikátormi %x ako klávesovú skratku.\n"
 
-#: src/keybindings.c:2206
+#: src/keybindings.c:2246
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr "Chyba pri spustení dialógu metacity pre zobrazenie chyby príkazu: %s\n"
 
-#: src/keybindings.c:2237
+#: src/keybindings.c:2277
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "Nedefinovaný príkaz %d.\n"
@@ -139,8 +141,10 @@ msgstr ""
 
 #: src/main.c:326
 #, c-format
-msgid "Could not find a theme! Be sure %s exists and contains the usual themes."
-msgstr "Nepodarilo sa nájsť tému. Overte, že %s existuje a obrazuje obvyklé témy."
+msgid ""
+"Could not find a theme! Be sure %s exists and contains the usual themes."
+msgstr ""
+"Nepodarilo sa nájsť tému. Overte, že %s existuje a obrazuje obvyklé témy."
 
 #: src/main.c:374
 #, c-format
@@ -189,7 +193,7 @@ msgstr "Na _všetky plochy"
 msgid "Only on _This Workspace"
 msgstr "Len na _tejto ploche"
 
-#: src/menu.c:152 src/prefs.c:1649
+#: src/menu.c:152 src/prefs.c:1669
 #, c-format
 msgid "Workspace %d"
 msgstr "Plocha %d"
@@ -387,12 +391,11 @@ msgid ""
 "so that buttons can be added in future metacity versions without breaking "
 "older versions."
 msgstr ""
-"Usporiadanie tlačidiel v titulku. Hodnota je reťazec, napríklad "
-"\"menu:minimize,maximize,close\". Dvojbodka oddeľuje ľavý roh okna "
-"od pravého a mená tlačidiel sú oddelené čiarkami. "
-"Viacnásobné použitie tlačidiel nie je povolené. Neznáme mená tlačidiel "
-"sú potichu ignorované, takže tlačidlá pridané v budúcich verziách "
-"metacity nespôsobia nefunkčnosť starších verzií."
+"Usporiadanie tlačidiel v titulku. Hodnota je reťazec, napríklad \"menu:"
+"minimize,maximize,close\". Dvojbodka oddeľuje ľavý roh okna od pravého a "
+"mená tlačidiel sú oddelené čiarkami. Viacnásobné použitie tlačidiel nie je "
+"povolené. Neznáme mená tlačidiel sú potichu ignorované, takže tlačidlá "
+"pridané v budúcich verziách metacity nespôsobia nefunkčnosť starších verzií."
 
 #: src/metacity.schemas.in.h:7
 msgid "Automatically raises the focused window"
@@ -405,10 +408,10 @@ msgid ""
 "(right click). Modifier is expressed as \"&lt;Alt&gt;\" or \"&lt;Super&gt;\" "
 "for example."
 msgstr ""
-"Kliknutím na okno pri držaní tohto modifikátora okno presunie "
-"(ľavé kliknutie), zmení jeho veľkosť (stredné kliknutie) alebo zobrazí "
-"menu okna (pravé kliknutie). Modifikátor sa zadáva napríklad ako "
-"\"&lt;Alt&gt;\" alebo \"&lt;Super&gt;\"."
+"Kliknutím na okno pri držaní tohto modifikátora okno presunie (ľavé "
+"kliknutie), zmení jeho veľkosť (stredné kliknutie) alebo zobrazí menu okna "
+"(pravé kliknutie). Modifikátor sa zadáva napríklad ako \"&lt;Alt&gt;\" alebo "
+"\"&lt;Super&gt;\"."
 
 #: src/metacity.schemas.in.h:9
 msgid "Close a window"
@@ -1339,12 +1342,12 @@ msgid ""
 "\". If you set the option to the special string \"disabled\", then there "
 "will be no keybinding for this action."
 msgstr ""
-"Táto klávesová skratka prepne aktívne okno dozadu medzi panelmi a plochou bez "
-"zobrazenia malého okna. Formát je \"&lt;Control&gt;a\" alebo \"&lt;Shift&gt;"
-"&lt;Alt&gt;F1. Spracovanie je dosť liberálne a umožňuje malé aj veľké "
-"písmená a skratky ako je \"&lt;Ctl&gt;\" a \"&lt;Ctrl&gt;\". Ak nastavíte "
-"túto možnosť na špeciálnu hodnotu \"disabled\", pre túto akciu nebude "
-"definovaná žiadna klávesová skratka."
+"Táto klávesová skratka prepne aktívne okno dozadu medzi panelmi a plochou "
+"bez zobrazenia malého okna. Formát je \"&lt;Control&gt;a\" alebo \"&lt;"
+"Shift&gt;&lt;Alt&gt;F1. Spracovanie je dosť liberálne a umožňuje malé aj "
+"veľké písmená a skratky ako je \"&lt;Ctl&gt;\" a \"&lt;Ctrl&gt;\". Ak "
+"nastavíte túto možnosť na špeciálnu hodnotu \"disabled\", pre túto akciu "
+"nebude definovaná žiadna klávesová skratka."
 
 #: src/metacity.schemas.in.h:116
 msgid ""
@@ -1356,9 +1359,9 @@ msgid ""
 "set the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
 msgstr ""
-"Táto klávesová skratka prepne aktívne okno na predchádzajúce okno bez zobrazenia malého "
-"okienka. Držaním \"shift\" spolu s touto klávesovou skratkou "
-"znovu obráti smer prepínania. Formát je \"&lt;Control&gt;a\" alebo "
+"Táto klávesová skratka prepne aktívne okno na predchádzajúce okno bez "
+"zobrazenia malého okienka. Držaním \"shift\" spolu s touto klávesovou "
+"skratkou znovu obráti smer prepínania. Formát je \"&lt;Control&gt;a\" alebo "
 "\"&lt;Shift&gt;&lt;Alt&gt;F1. Spracovanie je dosť liberálne a umožňuje malé "
 "aj veľké písmená a skratky ako je \"&lt;Ctl&gt;\" a \"&lt;Ctrl&gt;\". Ak "
 "nastavíte túto možnosť na špeciálnu hodnotu \"disabled\", pre túto akciu "
@@ -1374,11 +1377,11 @@ msgid ""
 "set the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
 msgstr ""
-"Táto klávesová skratka prepne aktívne okno na predchádzajúce okno pomocou malého "
-"okienka (tradične &lt;Alt&gt;Tab). Formát je \"&lt;Control&gt;a\" alebo "
-"\"&lt;Shift&gt;&lt;Alt&gt;F1. Spracovanie je dosť liberálne a umožňuje malé "
-"aj veľké písmená a skratky ako je \"&lt;Ctl&gt;\" a \"&lt;Ctrl&gt;\". Ak "
-"nastavíte túto možnosť na špeciálnu hodnotu \"disabled\", pre túto akciu "
+"Táto klávesová skratka prepne aktívne okno na predchádzajúce okno pomocou "
+"malého okienka (tradične &lt;Alt&gt;Tab). Formát je \"&lt;Control&gt;a\" "
+"alebo \"&lt;Shift&gt;&lt;Alt&gt;F1. Spracovanie je dosť liberálne a umožňuje "
+"malé aj veľké písmená a skratky ako je \"&lt;Ctl&gt;\" a \"&lt;Ctrl&gt;\". "
+"Ak nastavíte túto možnosť na špeciálnu hodnotu \"disabled\", pre túto akciu "
 "nebude definovaná žiadna klávesová skratka."
 
 #: src/metacity.schemas.in.h:118
@@ -1513,11 +1516,11 @@ msgid ""
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Táto klávesová skratka pre zrušenie maximalizácie okna. Formát je \"&lt;Control&gt;a"
-"\" alebo \"&lt;Shift&gt;&lt;Alt&gt;F1. Spracovanie je dosť liberálne a "
-"umožňuje malé aj veľké písmená a skratky ako je \"&lt;Ctl&gt;\" a \"&lt;"
-"Ctrl&gt;\". Ak nastavíte túto možnosť na špeciálnu hodnotu \"disabled\", pre "
-"túto akciu nebude definovaná žiadna klávesová skratka."
+"Táto klávesová skratka pre zrušenie maximalizácie okna. Formát je \"&lt;"
+"Control&gt;a\" alebo \"&lt;Shift&gt;&lt;Alt&gt;F1. Spracovanie je dosť "
+"liberálne a umožňuje malé aj veľké písmená a skratky ako je \"&lt;Ctl&gt;\" "
+"a \"&lt;Ctrl&gt;\". Ak nastavíte túto možnosť na špeciálnu hodnotu \"disabled"
+"\", pre túto akciu nebude definovaná žiadna klávesová skratka."
 
 #: src/metacity.schemas.in.h:127
 msgid "The name of a workspace."
@@ -1578,12 +1581,11 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Táto klávesová skratka pre presun okna pod ostatné. "
-"Formát je \"&lt;Control&gt;a\" "
-"alebo \"&lt;Shift&gt;&lt;Alt&gt;F1. Spracovanie je dosť liberálne a umožňuje "
-"malé aj veľké písmená a skratky ako je \"&lt;Ctl&gt;\" a \"&lt;Ctrl&gt;\". "
-"Ak nastavíte túto možnosť na špeciálnu hodnotu \"disabled\", pre túto akciu "
-"nebude definovaná žiadna klávesová skratka."
+"Táto klávesová skratka pre presun okna pod ostatné. Formát je \"&lt;"
+"Control&gt;a\" alebo \"&lt;Shift&gt;&lt;Alt&gt;F1. Spracovanie je dosť "
+"liberálne a umožňuje malé aj veľké písmená a skratky ako je \"&lt;Ctl&gt;\" "
+"a \"&lt;Ctrl&gt;\". Ak nastavíte túto možnosť na špeciálnu hodnotu \"disabled"
+"\", pre túto akciu nebude definovaná žiadna klávesová skratka."
 
 #: src/metacity.schemas.in.h:133
 msgid ""
@@ -1593,11 +1595,11 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Táto klávesová skratka pre presun okna nad ostatné. Formát je \"&lt;Control&gt;a\" "
-"alebo \"&lt;Shift&gt;&lt;Alt&gt;F1. Spracovanie je dosť liberálne a umožňuje "
-"malé aj veľké písmená a skratky ako je \"&lt;Ctl&gt;\" a \"&lt;Ctrl&gt;\". "
-"Ak nastavíte túto možnosť na špeciálnu hodnotu \"disabled\", pre túto akciu "
-"nebude definovaná žiadna klávesová skratka."
+"Táto klávesová skratka pre presun okna nad ostatné. Formát je \"&lt;"
+"Control&gt;a\" alebo \"&lt;Shift&gt;&lt;Alt&gt;F1. Spracovanie je dosť "
+"liberálne a umožňuje malé aj veľké písmená a skratky ako je \"&lt;Ctl&gt;\" "
+"a \"&lt;Ctrl&gt;\". Ak nastavíte túto možnosť na špeciálnu hodnotu \"disabled"
+"\", pre túto akciu nebude definovaná žiadna klávesová skratka."
 
 #: src/metacity.schemas.in.h:134
 msgid ""
@@ -1608,12 +1610,12 @@ msgid ""
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
 msgstr ""
-"Táto klávesová skratka pre zmenu veľkosti tak, aby vyplnilo "
-"celý horizontálny priestor. Formát je \"&lt;Control&gt;a\" "
-"alebo \"&lt;Shift&gt;&lt;Alt&gt;F1. Spracovanie je dosť liberálne a umožňuje "
-"malé aj veľké písmená a skratky ako je \"&lt;Ctl&gt;\" a \"&lt;Ctrl&gt;\". "
-"Ak nastavíte túto možnosť na špeciálnu hodnotu \"disabled\", pre túto akciu "
-"nebude definovaná žiadna klávesová skratka."
+"Táto klávesová skratka pre zmenu veľkosti tak, aby vyplnilo celý "
+"horizontálny priestor. Formát je \"&lt;Control&gt;a\" alebo \"&lt;Shift&gt;"
+"&lt;Alt&gt;F1. Spracovanie je dosť liberálne a umožňuje malé aj veľké "
+"písmená a skratky ako je \"&lt;Ctl&gt;\" a \"&lt;Ctrl&gt;\". Ak nastavíte "
+"túto možnosť na špeciálnu hodnotu \"disabled\", pre túto akciu nebude "
+"definovaná žiadna klávesová skratka."
 
 #: src/metacity.schemas.in.h:135
 msgid ""
@@ -1624,12 +1626,12 @@ msgid ""
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
 msgstr ""
-"Táto klávesová skratka pre zmenu veľkosti tak, aby vyplnilo "
-"celý vertikálny priestor. Formát je \"&lt;Control&gt;a\" "
-"alebo \"&lt;Shift&gt;&lt;Alt&gt;F1. Spracovanie je dosť liberálne a umožňuje "
-"malé aj veľké písmená a skratky ako je \"&lt;Ctl&gt;\" a \"&lt;Ctrl&gt;\". "
-"Ak nastavíte túto možnosť na špeciálnu hodnotu \"disabled\", pre túto akciu "
-"nebude definovaná žiadna klávesová skratka."
+"Táto klávesová skratka pre zmenu veľkosti tak, aby vyplnilo celý vertikálny "
+"priestor. Formát je \"&lt;Control&gt;a\" alebo \"&lt;Shift&gt;&lt;Alt&gt;F1. "
+"Spracovanie je dosť liberálne a umožňuje malé aj veľké písmená a skratky ako "
+"je \"&lt;Ctl&gt;\" a \"&lt;Ctrl&gt;\". Ak nastavíte túto možnosť na "
+"špeciálnu hodnotu \"disabled\", pre túto akciu nebude definovaná žiadna "
+"klávesová skratka."
 
 #: src/metacity.schemas.in.h:136
 msgid ""
@@ -1637,9 +1639,9 @@ msgid ""
 "Current valid options are 'toggle_shaded', which will shade/unshade the "
 "window, and 'toggle_maximized' which will maximize/unmaximize the window."
 msgstr ""
-"Táto voľba určuje výsledok dvojitého kliknutia na titulku okna. "
-"Momentálne je možné použiť 'toggle_shaded', ktorý rozbalí/zabalí okno, "
-"a 'toggle_maximized', ktorý maximalizuje alebo zruší maximalizáciu okna."
+"Táto voľba určuje výsledok dvojitého kliknutia na titulku okna. Momentálne "
+"je možné použiť 'toggle_shaded', ktorý rozbalí/zabalí okno, a "
+"'toggle_maximized', ktorý maximalizuje alebo zruší maximalizáciu okna."
 
 #: src/metacity.schemas.in.h:137
 msgid "Toggle fullscreen mode"
@@ -1727,7 +1729,7 @@ msgstr "Hodnota %d uložená v GConf kľúči %s nie je v rozsahu od 0 do %d\n"
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr "Chyba pri nastavovaní počtu pracovných plôch na %d: %s\n"
 
-#: src/prefs.c:1440
+#: src/prefs.c:1460
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -1736,7 +1738,7 @@ msgstr ""
 "V konfiguračnej databázi nájdené \"%s\", čo nie je platná hodnota pre "
 "klávesovú skratku \"%s\".\n"
 
-#: src/prefs.c:1730
+#: src/prefs.c:1750
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr "Chyba pri nastavovaní mena pracovnej plochy %d na \"%s\": %s\n"
@@ -1762,7 +1764,8 @@ msgstr ""
 
 #: src/screen.c:449
 #, c-format
-msgid "Could not acquire window manager selection on screen %d display \"%s\"\n"
+msgid ""
+"Could not acquire window manager selection on screen %d display \"%s\"\n"
 msgstr ""
 "Nepodarilo sa získať výber správcu okien pre obrazovku %d na displeji \"%s"
 "\".\n"
@@ -1901,7 +1904,8 @@ msgstr "Uhol musí byť medzi 0.0 a 360.0, a je %g\n"
 #: src/theme-parser.c:638
 #, c-format
 msgid "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g\n"
-msgstr "Alfa musí byť medzi 0.0 (neviditeľné) a 1.0 (úplne nakreslené), a je %g\n"
+msgstr ""
+"Alfa musí byť medzi 0.0 (neviditeľné) a 1.0 (úplne nakreslené), a je %g\n"
 
 #: src/theme-parser.c:684
 #, c-format
@@ -2000,8 +2004,10 @@ msgid "No \"value\" attribute on element <%s>"
 msgstr "Chýbajúci atribút \"value\" v elemente <%s>"
 
 #: src/theme-parser.c:1320 src/theme-parser.c:1334 src/theme-parser.c:1393
-msgid "Cannot specify both button_width/button_height and aspect ratio for buttons"
-msgstr "Nie je možné zadať aj button_width/button_height a aj pomer strán tlačidiel"
+msgid ""
+"Cannot specify both button_width/button_height and aspect ratio for buttons"
+msgstr ""
+"Nie je možné zadať aj button_width/button_height a aj pomer strán tlačidiel"
 
 #: src/theme-parser.c:1343
 #, c-format
@@ -2299,7 +2305,8 @@ msgstr "Najvyšším elementovm témy musí byť <metacity_theme>, nie <%s>"
 
 #: src/theme-parser.c:3679
 #, c-format
-msgid "Element <%s> is not allowed inside a name/author/date/description element"
+msgid ""
+"Element <%s> is not allowed inside a name/author/date/description element"
 msgstr "Element <%s> nie je povolený v elemente name/author/date/description"
 
 #: src/theme-parser.c:3684
@@ -2309,8 +2316,10 @@ msgstr "Element <%s> nie je povolený v elemente <constant>"
 
 #: src/theme-parser.c:3696
 #, c-format
-msgid "Element <%s> is not allowed inside a distance/border/aspect_ratio element"
-msgstr "Element <%s> nie je povolený v elemente vzdialenosti/okrajov/pomeru strán"
+msgid ""
+"Element <%s> is not allowed inside a distance/border/aspect_ratio element"
+msgstr ""
+"Element <%s> nie je povolený v elemente vzdialenosti/okrajov/pomeru strán"
 
 #: src/theme-parser.c:3718
 #, c-format
@@ -2441,7 +2450,8 @@ msgstr "V špecifikácii farby nerozpoznaný komponent \"%s\""
 msgid ""
 "Blend format is \"blend/bg_color/fg_color/alpha\", \"%s\" does not fit the "
 "format"
-msgstr "Formát miešania he \"blend/bg_color/fg_color/alpha\", \"%s\" tomu neodpovedá"
+msgstr ""
+"Formát miešania he \"blend/bg_color/fg_color/alpha\", \"%s\" tomu neodpovedá"
 
 #: src/theme.c:1054
 #, c-format
@@ -2455,7 +2465,8 @@ msgstr "Hodnota alfa \"%s\" v miešanej farbe nie je medzi 0.0 a 1.0"
 
 #: src/theme.c:1111
 #, c-format
-msgid "Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
+msgid ""
+"Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
 msgstr "Formát tieňa je \"shade/base_color/factor\", \"%s\" tomu neodpovedá"
 
 #: src/theme.c:1122
@@ -2483,19 +2494,22 @@ msgstr "Výraz umiestnenia obsahuje znak '%s', ktorý nie je povolený"
 msgid ""
 "Coordinate expression contains floating point number '%s' which could not be "
 "parsed"
-msgstr "Výraz umiestnenia obsahuje reálne číslo '%s', ktoré nie je možné spracovať."
+msgstr ""
+"Výraz umiestnenia obsahuje reálne číslo '%s', ktoré nie je možné spracovať."
 
 #: src/theme.c:1464
 #, c-format
 msgid "Coordinate expression contains integer '%s' which could not be parsed"
-msgstr "Výraz umiestnenia obsahuje celé čísl '%s', ktoré nie je možné spracovať."
+msgstr ""
+"Výraz umiestnenia obsahuje celé čísl '%s', ktoré nie je možné spracovať."
 
 #: src/theme.c:1531
 #, c-format
 msgid ""
 "Coordinate expression contained unknown operator at the start of this text: "
 "\"%s\""
-msgstr "Výraz umiestnenia obsahuje neznámy operátor na začiatku tohto textu: \"%s\""
+msgstr ""
+"Výraz umiestnenia obsahuje neznámy operátor na začiatku tohto textu: \"%s\""
 
 #: src/theme.c:1588
 msgid "Coordinate expression was empty or not understood"
@@ -2506,12 +2520,14 @@ msgid "Coordinate expression results in division by zero"
 msgstr "Výsledok výrazu umiestnenia je delenie nulou"
 
 #: src/theme.c:1779
-msgid "Coordinate expression tries to use mod operator on a floating-point number"
+msgid ""
+"Coordinate expression tries to use mod operator on a floating-point number"
 msgstr "Výraz umiestnenia sa snaží použiť operátor modulo na reálne číslo"
 
 #: src/theme.c:1836
 #, c-format
-msgid "Coordinate expression has an operator \"%s\" where an operand was expected"
+msgid ""
+"Coordinate expression has an operator \"%s\" where an operand was expected"
 msgstr "Výraz umiestnenia obsahuje operátor \"%s\" tam, kde sa očakáva operand"
 
 #: src/theme.c:1845
@@ -2572,8 +2588,10 @@ msgstr ""
 
 #: src/theme.c:4362 src/theme.c:4394
 #, c-format
-msgid "Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
-msgstr "Chýbajúce <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
+msgid ""
+"Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
+msgstr ""
+"Chýbajúce <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
 
 #: src/theme.c:4445
 #, c-format
@@ -2606,7 +2624,8 @@ msgstr ""
 
 #: src/theme.c:5038 src/theme.c:5100
 #, c-format
-msgid "User-defined constants must begin with a capital letter; \"%s\" does not"
+msgid ""
+"User-defined constants must begin with a capital letter; \"%s\" does not"
 msgstr "Používateľské konštanty musia začítať veľkým písmenom, \"%s\" nezačína"
 
 #: src/theme.c:5046 src/theme.c:5108
@@ -2685,8 +2704,8 @@ msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
 "window as specified in the ICCCM.\n"
 msgstr ""
-"Okno %s nastavuje SM_CLIENT_ID na seba a nie na WM_CLIENT_LEADER, "
-"ako je uvedené v ICCCM.\n"
+"Okno %s nastavuje SM_CLIENT_ID na seba a nie na WM_CLIENT_LEADER, ako je "
+"uvedené v ICCCM.\n"
 
 #. We ignore mwm_has_resize_func because WM_NORMAL_HINTS is the
 #. * authoritative source for that info. Some apps such as mplayer or
@@ -2701,9 +2720,9 @@ msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
 "d x %d and max size %d x %d; this doesn't make much sense.\n"
 msgstr ""
-"Okno %s nastavuje radu MWM že nie je možné zmeniť jeho "
-"veľkosť, ale nastavuje minimálnu veľkosť %d x %d a maximálnu "
-"veľkosť %d x %d. To nedáva zmysel.\n"
+"Okno %s nastavuje radu MWM že nie je možné zmeniť jeho veľkosť, ale "
+"nastavuje minimálnu veľkosť %d x %d a maximálnu veľkosť %d x %d. To nedáva "
+"zmysel.\n"
 
 #: src/xprops.c:153
 #, c-format
@@ -2727,8 +2746,8 @@ msgstr "Vlastnosť %s pre okno 0x%lx obsahuje neplatné UTF-8\n"
 
 #: src/xprops.c:479
 #, c-format
-msgid "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
+msgid ""
+"Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
 msgstr ""
 "Vlastnosť %s pre okno 0x%lx obsahuje neplatné UTF-8 pre položku %d v "
 "zozname\n"
-

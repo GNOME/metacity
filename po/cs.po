@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity 2.0\n"
-"POT-Creation-Date: 2002-12-20 05:15+0100\n"
+"POT-Creation-Date: 2003-01-20 22:01-0500\n"
 "PO-Revision-Date: 2002-12-20 13:13+0100\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -55,7 +55,7 @@ msgstr "Chyba při spouštění metacity-dialog pro dotaz o zabití aplikace: %s
 msgid "Failed to get hostname: %s\n"
 msgstr "Nemohu získat jméno počítače: %s\n"
 
-#: src/display.c:273
+#: src/display.c:279
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
 msgstr "Nemohu otevřít displej X Window System '%s'\n"
@@ -76,27 +76,27 @@ msgstr ""
 msgid "Fatal IO error %d (%s) on display '%s'.\n"
 msgstr "Fatální chyba IO %d (%s) na displeji '%s'.\n"
 
-#: src/frames.c:900
+#: src/frames.c:1010
 msgid "Close Window"
 msgstr "Zavřít okno"
 
-#: src/frames.c:903
+#: src/frames.c:1013
 msgid "Window Menu"
 msgstr "Menu okna"
 
-#: src/frames.c:906
+#: src/frames.c:1016
 msgid "Minimize Window"
 msgstr "Minimalizovat okno"
 
-#: src/frames.c:909
+#: src/frames.c:1019
 msgid "Maximize Window"
 msgstr "Maximalizovat okno"
 
-#: src/frames.c:912
+#: src/frames.c:1022
 msgid "Unmaximize Window"
 msgstr "Demaximalizovat okno"
 
-#: src/keybindings.c:870
+#: src/keybindings.c:910
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
@@ -104,12 +104,12 @@ msgid ""
 msgstr ""
 "Klávesu %s s modifikátory %x již jako zkratku používá nějaký jiný program\n"
 
-#: src/keybindings.c:2206
+#: src/keybindings.c:2246
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr "Chyba při spouštění metacity-dialog pro výpis chyby o příkazu: %s\n"
 
-#: src/keybindings.c:2237
+#: src/keybindings.c:2277
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "Nebyl definován příkaz %d.\n"
@@ -193,7 +193,7 @@ msgid "Only on _This Workspace"
 msgstr "Jen na _tuto plochu"
 
 # Let's hope it is used only in the "Only on %s" and "Move to %s" strings
-#: src/menu.c:152 src/prefs.c:1644
+#: src/menu.c:152 src/prefs.c:1669
 #, c-format
 msgid "Workspace %d"
 msgstr "plochu %d"
@@ -1687,7 +1687,7 @@ msgstr ""
 "\"%s\" nalezené v konfigurační databázi není platná hodnota pro modifikátor "
 "tlačítka myši\n"
 
-#: src/prefs.c:736 src/prefs.c:1098
+#: src/prefs.c:736 src/prefs.c:1103
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
 msgstr "Klíč GConf '%s' je nastaven na neplatnou hodnotu\n"
@@ -1706,7 +1706,7 @@ msgstr ""
 "%d uložené v klíči GConf %s není rozumný počet ploch, aktuální maximum je %"
 "d\n"
 
-#: src/prefs.c:1060
+#: src/prefs.c:1065
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -1714,17 +1714,17 @@ msgstr ""
 "Bylo zakázáno obcházení chyb aplikací. Některé aplikace se možná nebudou "
 "chovat správně.\n"
 
-#: src/prefs.c:1125
+#: src/prefs.c:1130
 #, c-format
 msgid "%d stored in GConf key %s is out of range 0 to %d\n"
 msgstr "%d uloženo v klíči GConf %s je mimo rozsah 0 až %d\n"
 
-#: src/prefs.c:1217
+#: src/prefs.c:1222
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr "Chyba při nastavování počtu ploch na %d: %s\n"
 
-#: src/prefs.c:1435
+#: src/prefs.c:1460
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -1733,7 +1733,7 @@ msgstr ""
 "\"%s\" nalezené v konfigurační databázi není platná hodnota pro klávesovou "
 "zkratku \"%s\"\n"
 
-#: src/prefs.c:1725
+#: src/prefs.c:1750
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr "Chyba při nastavování jména plochy %d na \"%s\": %s\n"
@@ -2679,15 +2679,15 @@ msgstr "Otevřen soubor záznamu %s\n"
 msgid "Window manager: "
 msgstr "Manažer oken: "
 
-#: src/util.c:345
+#: src/util.c:347
 msgid "Bug in window manager: "
 msgstr "Chyba v manažeru oken: "
 
-#: src/util.c:374
+#: src/util.c:376
 msgid "Window manager warning: "
 msgstr "Varování manažera oken: "
 
-#: src/util.c:398
+#: src/util.c:400
 msgid "Window manager error: "
 msgstr "Chyba manažera oken: "
 
@@ -2697,7 +2697,7 @@ msgid "Application set a bogus _NET_WM_PID %ld\n"
 msgstr "Aplikace nastavila neplatný _NET_WM_PID %ld\n"
 
 #. first time through
-#: src/window.c:4863
+#: src/window.c:4897
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -2713,7 +2713,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5423
+#: src/window.c:5457
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"

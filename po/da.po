@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
-"POT-Creation-Date: 2002-12-25 18:33+0100\n"
+"POT-Creation-Date: 2003-01-20 22:01-0500\n"
 "PO-Revision-Date: 2002-12-25 18:33+0100\n"
 "Last-Translator: Ole Laursen <olau@hardworking.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -57,7 +57,7 @@ msgstr ""
 msgid "Failed to get hostname: %s\n"
 msgstr "Kunne ikke skaffe værtsnavn: %s\n"
 
-#: src/display.c:273
+#: src/display.c:279
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
 msgstr "Kunne ikke åbne X Window System-terminalen '%s'\n"
@@ -78,27 +78,27 @@ msgstr ""
 msgid "Fatal IO error %d (%s) on display '%s'.\n"
 msgstr "Fatal IO-fejl %d (%s) på terminal '%s'.\n"
 
-#: src/frames.c:900
+#: src/frames.c:1010
 msgid "Close Window"
 msgstr "Luk vindue"
 
-#: src/frames.c:903
+#: src/frames.c:1013
 msgid "Window Menu"
 msgstr "Vinduesmenu"
 
-#: src/frames.c:906
+#: src/frames.c:1016
 msgid "Minimize Window"
 msgstr "Minimér vindue"
 
-#: src/frames.c:909
+#: src/frames.c:1019
 msgid "Maximize Window"
 msgstr "Maksimér vindue"
 
-#: src/frames.c:912
+#: src/frames.c:1022
 msgid "Unmaximize Window"
 msgstr "Gendan vindue"
 
-#: src/keybindings.c:870
+#: src/keybindings.c:910
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
@@ -106,13 +106,13 @@ msgid ""
 msgstr ""
 "Et andet program bruger allerede nøglen %s med modifikatorer %x som binding\n"
 
-#: src/keybindings.c:2206
+#: src/keybindings.c:2246
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr ""
 "Fejl ved start af metacity-dialog for at vise en fejl for en kommando: %s\n"
 
-#: src/keybindings.c:2237
+#: src/keybindings.c:2277
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "Ingen kommando %d er blevet defineret.\n"
@@ -195,7 +195,7 @@ msgstr "Placér på _alle arbejdsområder"
 msgid "Only on _This Workspace"
 msgstr "Kun på de_tte arbejdsområde"
 
-#: src/menu.c:152 src/prefs.c:1644
+#: src/menu.c:152 src/prefs.c:1669
 #, c-format
 msgid "Workspace %d"
 msgstr "Arbejdsområde %d"
@@ -1738,7 +1738,7 @@ msgstr ""
 "\"%s\" fundet i konfigurationsdatabasen er ikke en gyldig værdi som "
 "museknapsmodifikation\n"
 
-#: src/prefs.c:736 src/prefs.c:1098
+#: src/prefs.c:736 src/prefs.c:1103
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
 msgstr "GConf-nøglen '%s' er sat til en ugyldig værdi\n"
@@ -1757,7 +1757,7 @@ msgstr ""
 "%d lagret i GConf-nøgle %s er ikke et fornuftigt antal arbejdsområder, "
 "aktuelt maksimum er %d\n"
 
-#: src/prefs.c:1060
+#: src/prefs.c:1065
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -1765,17 +1765,17 @@ msgstr ""
 "Omgåelser for ødelagte programmer deaktiveret. Nogle programmer opfører sig "
 "måske ikke korrekt.\n"
 
-#: src/prefs.c:1125
+#: src/prefs.c:1130
 #, c-format
 msgid "%d stored in GConf key %s is out of range 0 to %d\n"
 msgstr "%d lagret i GConf-nøgle %s er uden for intervallet 0 til %d\n"
 
-#: src/prefs.c:1217
+#: src/prefs.c:1222
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr "Fejl under sætning af antallet af arbejdsområder til %d: %s\n"
 
-#: src/prefs.c:1435
+#: src/prefs.c:1460
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -1784,7 +1784,7 @@ msgstr ""
 "\"%s\" fundet i konfigurationsdatabasen er ikke en gyldig værdi for "
 "tastebindingen \"%s\"\n"
 
-#: src/prefs.c:1725
+#: src/prefs.c:1750
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr "Fejl under sætning af navnet for arbejdsområde %d til \"%s\": %s\n"
@@ -2736,15 +2736,15 @@ msgstr "Åbnede logfilen %s\n"
 msgid "Window manager: "
 msgstr "Vindueshåndtering: "
 
-#: src/util.c:345
+#: src/util.c:347
 msgid "Bug in window manager: "
 msgstr "Fejl i vindueshåndtering: "
 
-#: src/util.c:374
+#: src/util.c:376
 msgid "Window manager warning: "
 msgstr "Vindueshåndteringsadvarsel: "
 
-#: src/util.c:398
+#: src/util.c:400
 msgid "Window manager error: "
 msgstr "Vindueshåndteringsfejl: "
 
@@ -2754,7 +2754,7 @@ msgid "Application set a bogus _NET_WM_PID %ld\n"
 msgstr "Program angav en ugyldig _NET_WM_PID %ld\n"
 
 #. first time through
-#: src/window.c:4863
+#: src/window.c:4897
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -2770,7 +2770,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5423
+#: src/window.c:5457
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"

@@ -1,3 +1,14 @@
+2.4.21
+===
+
+ - fix for #103317 (windows getting "stuck" when unfullscreened)
+ - support up to 32 run_command keybindings (Rob Adams)
+ - add compression for motion events, somewhat suboptimally, 
+   a better patch is pending for GNOME 2.2.1, should fix "slow
+   move/resize" for most people (especially when combined 
+   with Alex's nautilus fixes)
+ - fix configure options (Akira Tagoh)
+
 2.4.13
 ===
 

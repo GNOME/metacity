@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
-"POT-Creation-Date: 2003-01-15 02:18+0200\n"
+"POT-Creation-Date: 2003-01-20 22:01-0500\n"
 "PO-Revision-Date: 2003-01-14 00:17+0200\n"
 "Last-Translator: Alexander Shopov <al_shopov@yahoo.com>\n"
 "Language-Team: Bulgarian <dict@linux.zonebg.com>\n"
@@ -99,21 +99,21 @@ msgstr "Максимизирай прозореца"
 msgid "Unmaximize Window"
 msgstr "Демаксимизирай прозореца"
 
-#: src/keybindings.c:870
+#: src/keybindings.c:910
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
 "binding\n"
 msgstr "Някоя друга програма използва бързия клавиш %s с модификатори %x\n"
 
-#: src/keybindings.c:2206
+#: src/keybindings.c:2246
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr ""
 "Грешка при стартиране на диалога на Метасити, за отпечатване на грешка за "
 "команда: %s\n"
 
-#: src/keybindings.c:2237
+#: src/keybindings.c:2277
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "Не е дефинирана команда %d.\n"
@@ -197,7 +197,7 @@ msgstr "Постави на _всички работни места"
 msgid "Only on _This Workspace"
 msgstr "_Само на това работно място"
 
-#: src/menu.c:152 src/prefs.c:1649
+#: src/menu.c:152 src/prefs.c:1669
 #, c-format
 msgid "Workspace %d"
 msgstr "Работно място %d"
@@ -1751,7 +1751,7 @@ msgstr "Стойността %d записана в GConf ключа %s е из�
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr "Грешка при задаване на броя на работни места да е %d: %s\n"
 
-#: src/prefs.c:1440
+#: src/prefs.c:1460
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -1760,7 +1760,7 @@ msgstr ""
 "Низът \"%s\" открит в базата данни с настройки е невалиден за стойност на "
 "клавишната комбинация \"%s\"\n"
 
-#: src/prefs.c:1730
+#: src/prefs.c:1750
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr "Грешка при задаване на името на работното място %d да е \"%s\": %s\n"
@@ -2736,7 +2736,7 @@ msgid "Application set a bogus _NET_WM_PID %ld\n"
 msgstr "Приложението зададе неверен _NET_WM_PID %ld\n"
 
 #. first time through
-#: src/window.c:4893
+#: src/window.c:4897
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -2752,7 +2752,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5453
+#: src/window.c:5457
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
