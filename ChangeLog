@@ -1,3 +1,8 @@
+2003-01-30  Havoc Pennington  <hp@redhat.com>
+
+	* src/keybindings.c (process_event): match handlers to key events 
+	using key codes, not key syms
+
 2003-02-03  Tõivo Leedjärv  <toivo@linux.ee>
 
 	* configure.in: Added et to ALL_LINGUAS
