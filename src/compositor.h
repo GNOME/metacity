@@ -66,5 +66,7 @@ void
 meta_compositor_set_translucent (MetaCompositor *compositor,
 				 MetaWindow *window,
 				 gboolean translucent);
+gboolean
+meta_compositor_repair_now (MetaCompositor *compositor);
 
 #endif /* META_COMPOSITOR_H */

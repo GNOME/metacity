@@ -6,6 +6,7 @@
 #include <X11/extensions/Xcomposite.h>
 #include <math.h>
 #include <string.h>
+#include <X11/extensions/shape.h>
 
 #define SHADOW_RADIUS 6
 #define SHADOW_OPACITY (.25)
@@ -155,19 +156,42 @@ cwindow_extents (CWindow *cwindow)
 }
 #endif /* HAVE_COMPOSITE_EXTENSIONS */
 
+static gboolean
+cwindow_has_alpha (CWindow *cwindow)
+{
+  XRenderPictFormat *format;
+  
+  format = XRenderFindVisualFormat (cwindow_get_xdisplay (cwindow),
+				    cwindow_get_visual (cwindow));
+
+  return format->direct.alpha;
+}
+
 XserverRegion
 cwindow_get_opaque_region (CWindow *cwindow)
 {
   XRectangle rect;
   Geometry *geometry;
 
-  if (cwindow->translucent)
+  if (cwindow->translucent || cwindow_get_input_only (cwindow) ||
+      !cwindow_get_viewable (cwindow) || cwindow_has_alpha (cwindow) ||
+      cwindow->n_distortions)
     {
       return XFixesCreateRegion (cwindow_get_xdisplay (cwindow), NULL, 0);
     }
   else
     {
-  
+      XserverRegion region = XFixesCreateRegionFromWindow (cwindow_get_xdisplay (cwindow),
+							   cwindow->xwindow, ShapeBounding);
+
+      XFixesTranslateRegion (cwindow_get_xdisplay (cwindow),
+			     region,
+			     cwindow_get_x (cwindow),
+			     cwindow_get_y (cwindow));
+
+      return region;
+#if 0
+      
       if (cwindow->freeze_info)
 	geometry = &cwindow->freeze_info->geometry;
       else
@@ -179,6 +203,7 @@ cwindow_get_opaque_region (CWindow *cwindow)
       rect.height = geometry->height;
       
       return XFixesCreateRegion (cwindow_get_xdisplay (cwindow), &rect, 1);
+#endif
     }
 }
 
@@ -798,7 +823,7 @@ cwindow_draw (CWindow *cwindow, Picture destination)
 
       XFixesSetPictureClipRegion (dpy, destination, 0, 0, shadow_clip);
       
-      if (!cwindow->translucent)
+      if (!cwindow->translucent && !cwindow_has_alpha (cwindow))
       {
 	  create_shadow (cwindow);
 

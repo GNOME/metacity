@@ -534,7 +534,11 @@ meta_display_open (const char *name)
         display->xsync_event_base = 0;
       }
     else
-      display->have_xsync = TRUE;
+      {
+	display->have_xsync = TRUE;
+	XSyncSetPriority (display->xdisplay, None, -10);
+      }
+
     
     meta_verbose ("Attempted to init Xsync, found version %d.%d error base %d event base %d\n",
                   major, minor,

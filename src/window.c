@@ -731,7 +731,9 @@ meta_window_new_with_attrs (MetaDisplay       *display,
   if (window->frame)
     {
       meta_compositor_add_window (window->display->compositor, window->frame->xwindow, attrs);
+#if 0
       meta_compositor_set_translucent (window->display->compositor, window, TRUE);
+#endif
     }
   
   return window;
@@ -2834,6 +2836,10 @@ meta_window_move_resize_internal (MetaWindow  *window,
     }
   
   meta_window_refresh_resize_popup (window);
+
+#if 0
+  meta_compositor_repair_now (window->display->compositor);
+#endif
   
   /* Invariants leaving this function are:
    *   a) window->rect and frame->rect reflect the actual

@@ -303,14 +303,6 @@ create_root_buffer (MetaScreen *screen, Pixmap *pixmap)
   value.function = GXcopy;
   value.subwindow_mode = IncludeInferiors;
   
-  gc = XCreateGC (display, buffer_pixmap,
-		  GCFunction | GCSubwindowMode, &value);
-  XSetForeground (display, gc, WhitePixel (display, screen->number));
-  
-  XSetForeground (display, gc, 0x00000000);
-
-  XFillRectangle (display, buffer_pixmap, gc, 0, 0, screen->width, screen->height);
-  
   format = XRenderFindVisualFormat (display,
 				    DefaultVisual (display,
 						   screen->number));
@@ -324,8 +316,6 @@ create_root_buffer (MetaScreen *screen, Pixmap *pixmap)
       *pixmap = buffer_pixmap;
   else
       XFreePixmap (display, buffer_pixmap);
-  
-  XFreeGC (display, gc);
   
   return buffer_picture;
 }
@@ -434,7 +424,9 @@ paint_screen (MetaCompositor *compositor,
       g_usleep (20000);
     }
 
+#if 0
   world_paint (compositor->world, buffer_picture);
+#endif
   
   paint_buffer (screen, pixmap, damage_region);
 
@@ -481,11 +473,9 @@ do_repair (MetaCompositor *compositor)
 #endif /* HAVE_COMPOSITE_EXTENSIONS */
 
 #ifdef HAVE_COMPOSITE_EXTENSIONS
-static gboolean
-repair_now (void *data)
+gboolean
+meta_compositor_repair_now (MetaCompositor *compositor)
 {
-  MetaCompositor *compositor = data;
-  
   compositor->repair_idle = 0;
   do_repair (compositor);
   
@@ -511,11 +501,13 @@ ensure_repair_idle (MetaCompositor *compositor)
       
       g_print ("screen %p\n", world_get_screen (compositor->world));
       
+#if 0
       g_timeout_add_full (G_PRIORITY_HIGH, 50, update_world, compositor, NULL);
+#endif
   }
   
   compositor->repair_idle = g_idle_add_full (META_PRIORITY_COMPOSITE,
-                                             repair_now, compositor, NULL);
+                                             meta_compositor_repair_now, compositor, NULL);
   
   meta_topic (META_DEBUG_COMPOSITOR, "Damage idle queued\n");
 }
@@ -1215,7 +1207,7 @@ meta_compositor_start_compositing (MetaCompositor *compositor,
     if (cwindow)
 	cwindow_thaw (cwindow);
 
-    repair_now (compositor);
+    meta_compositor_repair_now (compositor);
 }
 
 static void
@@ -1316,6 +1308,7 @@ meta_compositor_genie (MetaCompositor *compositor,
   {
       Distortion distortion[2];
       Picture buffer;
+      Pixmap pixmap;
       
       quad_to_quad_interpolate (&start1, &end1, &distortion[0].destination, i/((double)STEPS - 1));
       quad_to_quad_interpolate (&start2, &end2, &distortion[1].destination, i/((double)STEPS - 1));
@@ -1332,7 +1325,7 @@ meta_compositor_genie (MetaCompositor *compositor,
       
       cwindow_set_transformation (cwindow, distortion, 2);
       
-      buffer = create_root_buffer (window->screen, NULL);
+      buffer = create_root_buffer (window->screen, &pixmap);
       
       {
 	  XRectangle  r;
@@ -1355,12 +1348,16 @@ meta_compositor_genie (MetaCompositor *compositor,
       XFixesSetPictureClipRegion (compositor->display->xdisplay,
 				  window->screen->root_picture, 0, 0, None);
       /* Copy buffer to root window */
-      paint_buffer (window->screen, buffer, None);
+      paint_buffer (window->screen, pixmap, None);
+
+      XFreePixmap (compositor->display->xdisplay, pixmap);
       
       XRenderFreePicture (compositor->display->xdisplay, buffer);
       
       XSync (compositor->display->xdisplay, False);
   }
+
+  cwindow_set_transformation (cwindow, NULL, 0);
 }
 
 MetaDisplay *
