@@ -4413,6 +4413,16 @@ update_size_hints (MetaWindow *window)
                   window->size_hints.min_height);
       window->size_hints.max_height = window->size_hints.min_height;
     }
+
+  /* fix busted apps that set 0x0 hints */
+  if (window->size_hints.max_height < 1)
+    window->size_hints.max_height = 1;
+  if (window->size_hints.min_height < 1)
+    window->size_hints.min_height = 1;
+  if (window->size_hints.max_width < 1)
+    window->size_hints.max_width = 1;
+  if (window->size_hints.min_width < 1)
+    window->size_hints.min_width = 1;
   
   if (window->size_hints.flags & PResizeInc)
     {

@@ -1,3 +1,9 @@
+2003-03-08  Havoc Pennington  <hp@pobox.com>
+
+	* src/window.c (update_size_hints): Backport patch from Rob Adams
+	to check that window min and max size hints are at least 1.  Fix
+	for #107110.
+
 2003-02-26  Dmitry G. Mastrukov  <dmitry@taurussoft.org>
 
 	* configure.in: Added Belarusian to ALL_LINGUAS.
