@@ -62,4 +62,9 @@ meta_compositor_invalidate_region (MetaCompositor *compositor,
 				   MetaScreen	*screen,
 				   XserverRegion   invalid_area);
 
+void
+meta_compositor_set_translucent (MetaCompositor *compositor,
+				 MetaWindow *window,
+				 gboolean translucent);
+
 #endif /* META_COMPOSITOR_H */

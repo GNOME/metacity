@@ -1,3 +1,12 @@
+Wed Jan 26 18:00:35 2005  Søren Sandmann  <sandmann@redhat.com>
+
+	* src/cwindow.c: Add Gaussian shadows, lifted from xcompmgr. Add
+	support for translucent windows.
+
+	* src/compositor.c: Support translucent windows.
+
+	* src/window.c: Make unfocused windows translucent.
+
 Mon Jan 24 20:27:53 2005  Søren Sandmann  <sandmann@redhat.com>
 
 	* src/window.c: start compositing after ending grap op

@@ -727,6 +727,12 @@ meta_window_new_with_attrs (MetaDisplay       *display,
 
   meta_error_trap_pop (display, FALSE); /* pop the XSync()-reducing trap */
   meta_display_ungrab (display);
+
+  if (window->frame)
+    {
+      meta_compositor_add_window (window->display->compositor, window->frame->xwindow, attrs);
+      meta_compositor_set_translucent (window->display->compositor, window, TRUE);
+    }
   
   return window;
 }
@@ -2771,6 +2777,9 @@ meta_window_move_resize_internal (MetaWindow  *window,
       g_print ("not sending request\n");
 #endif
 #endif
+
+      
+      
 #if 0
       g_print ("configuring client\n"); 
 #endif
@@ -3287,6 +3296,12 @@ meta_window_focus (MetaWindow  *window,
   meta_topic (META_DEBUG_FOCUS,
               "Setting input focus to window %s, input: %d take_focus: %d\n",
               window->desc, window->input, window->take_focus);
+
+  if (window->display->expected_focus_window)
+    {
+      meta_compositor_set_translucent (window->display->compositor,
+				       window->display->expected_focus_window, TRUE);
+    }
   
   if (window->display->grab_window &&
       window->display->grab_window->all_keys_grabbed)
@@ -3361,6 +3376,12 @@ meta_window_focus (MetaWindow  *window,
       window->wm_state_demands_attention = FALSE;
       set_net_wm_state (window);
     }  
+
+  if (window->display->expected_focus_window)
+    {
+      meta_compositor_set_translucent (window->display->compositor,
+				       window->display->expected_focus_window, FALSE);
+    }
 }
 
 static void

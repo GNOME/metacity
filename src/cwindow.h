@@ -101,3 +101,4 @@ void            cwindow_draw                         (CWindow            *cwindo
 						      Picture             destination);
 void		cwindow_freeze			     (CWindow		 *cwindow);
 void		cwindow_thaw			     (CWindow		 *cwindow);
+void		cwindow_set_translucent (CWindow *cwindow, gboolean translucent);

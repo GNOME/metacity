@@ -37,7 +37,6 @@
 
 #endif /* HAVE_COMPOSITE_EXTENSIONS */
 
-#define SHADOW_OFFSET 10
 #define FRAME_INTERVAL_MILLISECONDS ((int)(1000.0/40.0))
 
 struct MetaCompositor
@@ -917,7 +916,7 @@ meta_compositor_add_window (MetaCompositor    *compositor,
               "mapped" : "unmapped");
   
   cwindow = cwindow_new (compositor, xwindow, attrs);
-  
+
   /* FIXME this assertion can fail somehow... */
   g_assert (attrs->map_state != IsUnviewable);
   
@@ -1056,7 +1055,7 @@ meta_compositor_manage_screen (MetaCompositor *compositor,
                           &pa);
   
   c.red = c.green = c.blue = 0;
-  c.alpha = 0xb0b0;
+  c.alpha = 0xd0d0;
   XRenderFillRectangle (compositor->display->xdisplay,
                         PictOpSrc,
                         screen->trans_picture, &c, 0, 0, 1, 1);
@@ -1320,4 +1319,17 @@ MetaDisplay *
 meta_compositor_get_display (MetaCompositor *compositor)
 {
   return compositor->display;
+}
+
+void
+meta_compositor_set_translucent (MetaCompositor *compositor,
+				 MetaWindow *window,
+				 gboolean translucent)
+{
+    CWindow *cwindow = window_to_cwindow (compositor, window);
+
+    if (cwindow)
+    {
+	cwindow_set_translucent (cwindow, translucent);
+    }
 }

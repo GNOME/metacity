@@ -4,8 +4,15 @@
 #include "compositor.h"
 #include "matrix.h"
 #include <X11/extensions/Xcomposite.h>
+#include <math.h>
+#include <string.h>
 
-#define SHADOW_OFFSET 3
+#define SHADOW_RADIUS 14
+#define SHADOW_OPACITY (.75)
+#define SHADOW_OFFSET -17
+
+static Picture shadow_picture (Display *dpy, Window root,
+			       double opacity, int width, int height, int *wp, int *hp);
 
 typedef struct Geometry Geometry;
 typedef struct FreezeInfo FreezeInfo;
@@ -46,12 +53,15 @@ struct CWindow
   
   XserverRegion   border_size;
 
+    Picture	shadow;
+    
   FreezeInfo *freeze_info;
   
   unsigned int managed : 1;
   unsigned int damaged : 1;
   unsigned int viewable : 1;
   unsigned int input_only : 1;
+  unsigned int translucent : 1;
   
   unsigned int screen_index : 8;
   
@@ -59,6 +69,9 @@ struct CWindow
   
   Distortion *distortions;
   int n_distortions;
+
+    int shadow_width;
+    int shadow_height;
 #endif  
 };
 
@@ -87,6 +100,30 @@ cwindow_free (CWindow *cwindow)
 }
 #endif /* HAVE_COMPOSITE_EXTENSIONS */
 
+static void
+create_shadow (CWindow *cwindow)
+{
+    if (!cwindow->shadow)
+    {
+	cwindow->shadow = shadow_picture (cwindow_get_xdisplay (cwindow),
+					  cwindow_get_screen (cwindow)->xroot,
+					  SHADOW_OPACITY,
+					  cwindow_get_width (cwindow),
+					  cwindow_get_height (cwindow),
+					  &cwindow->shadow_width, &cwindow->shadow_height);
+    }
+}
+
+static void
+delete_shadow (CWindow *cwindow)
+{
+    if (cwindow->shadow)
+    {
+	XRenderFreePicture (cwindow_get_xdisplay (cwindow), cwindow->shadow);
+	cwindow->shadow = None;
+    }
+}
+
 #ifdef HAVE_COMPOSITE_EXTENSIONS
 XserverRegion
 cwindow_extents (CWindow *cwindow)
@@ -103,9 +140,16 @@ cwindow_extents (CWindow *cwindow)
   r.y = geometry->y;
   r.width = geometry->width;
   r.height = geometry->height;
-  
-  r.width += SHADOW_OFFSET;
-  r.height += SHADOW_OFFSET;
+
+  create_shadow (cwindow);
+
+  if (cwindow->shadow)
+  {
+      r.x = geometry->x + SHADOW_OFFSET;
+      r.y = geometry->y + SHADOW_OFFSET;
+      r.width = cwindow->shadow_width;
+      r.height = cwindow->shadow_height;
+  }
   
   return XFixesCreateRegion (cwindow_get_xdisplay (cwindow), &r, 1);
 }
@@ -117,17 +161,53 @@ cwindow_get_opaque_region (CWindow *cwindow)
   XRectangle rect;
   Geometry *geometry;
 
-  if (cwindow->freeze_info)
-    geometry = &cwindow->freeze_info->geometry;
+  if (cwindow->translucent)
+    {
+      return XFixesCreateRegion (cwindow_get_xdisplay (cwindow), NULL, 0);
+    }
   else
-    geometry = &cwindow->geometry;
+    {
   
-  rect.x = geometry->x;
-  rect.y = geometry->y;
-  rect.width = geometry->width;
-  rect.height = geometry->height;
+      if (cwindow->freeze_info)
+	geometry = &cwindow->freeze_info->geometry;
+      else
+	geometry = &cwindow->geometry;
+      
+      rect.x = geometry->x;
+      rect.y = geometry->y;
+      rect.width = geometry->width;
+      rect.height = geometry->height;
+      
+      return XFixesCreateRegion (cwindow_get_xdisplay (cwindow), &rect, 1);
+    }
+}
 
-  return XFixesCreateRegion (cwindow_get_xdisplay (cwindow), &rect, 1);
+static void
+cwindow_queue_paint (CWindow *cwindow)
+{
+  XserverRegion region;
+  MetaScreen *screen;
+  
+  create_shadow (cwindow);
+  
+  region = cwindow_extents (cwindow);
+  screen = cwindow_get_screen (cwindow);
+
+  meta_compositor_invalidate_region (cwindow->compositor,
+				     screen,
+				     region);
+  
+  XFixesDestroyRegion (cwindow_get_xdisplay (cwindow), region);
+}
+
+void
+cwindow_set_translucent (CWindow *cwindow, gboolean translucent)
+{
+#if 0
+  cwindow->translucent = !!translucent;
+#endif
+
+  cwindow_queue_paint (cwindow);
 }
 
 Drawable
@@ -377,169 +457,16 @@ convert_matrix (Matrix3 *matrix, XTransform *trans)
   trans->matrix[2][2] = double_to_fixed (matrix->coeff[2][2]);
 }
 
-#if 0
-static void
-get_transform (XTransform *trans, int x, int y, int w, int h)
-{
-  Matrix3 tmp;
-  
-  matrix3_identity (&tmp);
-  
-  transform_matrix_perspective (0, 0, w, h,
-				0, 0,				  w - 1 - 0.1 * w, 0,
-				0, 0 + h - 1 - 0.1 * h,	  0 + w - 1, 0 + h - 1,
-				
-				&tmp);
-  
-#if 0
-  matrix3_translate (&tmp, 50, 50);
-#endif
-  
-  matrix3_invert (&tmp);
-  
-  convert_matrix (&tmp, trans);
-}
-#endif
-
-#if 0
-void
-cwindow_draw (CWindow *cwindow, Picture picture)
-{
-  /* Actually draw the window */
-  XRenderPictFormat *format;
-  Picture wpicture;
-  XRenderPictureAttributes pa;
-  XTransform trans;
-  int x, y, w, h;
-  
-  if (cwindow_get_input_only (cwindow))
-    return;
-  
-  if (!cwindow_get_viewable (cwindow))
-    return;
-  
-  cwindow_get_paint_bounds (cwindow, &x, &y, &w, &h);
-  
-  format = XRenderFindVisualFormat (cwindow_get_xdisplay (cwindow),
-				    cwindow_get_visual (cwindow));
-  pa.subwindow_mode = IncludeInferiors;
-  wpicture = XRenderCreatePicture (cwindow_get_xdisplay (cwindow),
-				   cwindow_get_drawable (cwindow),
-				   format,
-				   CPSubwindowMode,
-				   &pa);
-  
-  get_transform (&trans, x, y, w, h);
-  
-  if (cwindow_get_last_painted_extents (cwindow))
-    cwindow_destroy_last_painted_extents (cwindow);
-  
-  cwindow_set_last_painted_extents (cwindow, cwindow_extents (cwindow));
-  
-#if 0
-  meta_topic (META_DEBUG_COMPOSITOR, "  Compositing window 0x%lx %d,%d %dx%d\n",
-	      cwindow_get_xwindow (cwindow),
-	      cwindow->x, cwindow->y,
-	      cwindow->width, cwindow->height);
-#endif
-  
-#if 0
-  {
-    XGCValues value;
-    GC gc;
-    
-    value.function = GXcopy;
-    value.subwindow_mode = IncludeInferiors;
-    
-    gc = XCreateGC (dpy, screen->xroot, GCFunction | GCSubwindowMode, &value);
-    XSetForeground (dpy, gc, rand());
-    XFixesSetGCClipRegion (dpy, gc, 0, 0, damaged_region);
-    XFillRectangle (dpy, screen->xroot, gc, 0, 0,
-		    screen->width, screen->height);
-    XFreeGC (dpy, gc);
-    XSync (dpy, False);
-    g_usleep (70000);
-  }
-#endif
-  
-  if (cwindow_is_translucent (cwindow))
-    {
-      XRenderColor shadow_color = { 0x0000, 0, 0x0000, 0x70c0 };
-      XFixesSetPictureClipRegion (cwindow_get_xdisplay (cwindow),
-				  picture, 0, 0,
-				  damaged_region);
-      
-      
-      
-      XRenderFillRectangle (cwindow_get_xdisplay (cwindow), PictOpOver,
-			    picture,
-			    &shadow_color,
-			    cwindow_get_x (cwindow) + SHADOW_OFFSET,
-			    cwindow_get_y (cwindow) + SHADOW_OFFSET,
-			    cwindow_get_width (cwindow),
-			    cwindow_get_height (cwindow));
-      /* Draw window transparent while resizing */
-      XRenderComposite (cwindow_get_xdisplay (cwindow), PictOpOver, /* PictOpOver for alpha, PictOpSrc without */
-			wpicture,
-			cwindow_get_screen (cwindow)->trans_picture,
-			picture,
-			0, 0, 0, 0,
-			x, y, w, h);
-    }
-  else
-    {
-#if 0
-      XRenderSetPictureTransform (cwindow_get_xdisplay (cwindow),
-				  wpicture,
-				  &trans);
-      XRenderSetPictureFilter (cwindow_get_xdisplay (cwindow), wpicture, "bilinear", 0, 0);
-#endif
-      
-      /* Draw window normally */
-      XRenderColor shadow_color = { 0x0000, 0, 0x0000, 0x70c0 };
-      
-#if 0
-      XFixesSetPictureClipRegion (dpy,
-				  picture, 0, 0,
-				  region_below);
-#endif
-      
-      XFixesSetPictureClipRegion (cwindow_get_xdisplay (cwindow),
-				  picture, 0, 0,
-				  damaged_region);
-      
-      /* superlame drop shadow */
-      XRenderFillRectangle (cwindow_get_xdisplay (cwindow), PictOpOver,
-			    picture,
-			    &shadow_color,
-			    cwindow_get_x (cwindow) + SHADOW_OFFSET,
-			    cwindow_get_y (cwindow) + SHADOW_OFFSET,
-			    cwindow_get_width (cwindow),
-			    cwindow_get_height (cwindow));
-      
-      XRenderComposite (cwindow_get_xdisplay (cwindow),
-			PictOpOver, /* PictOpOver for alpha, PictOpSrc without */
-			wpicture,
-			None,
-			picture,
-			0, 0, 0, 0,
-			x, y, w, h);
-      
-    }
-  XRenderFreePicture (cwindow_get_xdisplay (cwindow), wpicture);
-}
-#endif
-
 gboolean
 cwindow_is_translucent (CWindow *cwindow)
 {
     return FALSE;
-  MetaCompositor *compositor = cwindow_get_compositor (cwindow);
-  MetaWindow *window = meta_display_lookup_x_window (meta_compositor_get_display (compositor), cwindow_get_xwindow (cwindow));
-  return (window != NULL &&
-	  window == meta_compositor_get_display (compositor)->grab_window &&
-	  (meta_grab_op_is_resizing (meta_compositor_get_display (compositor)->grab_op) ||
-	   meta_grab_op_is_moving (meta_compositor_get_display (compositor)->grab_op)));
+    MetaCompositor *compositor = cwindow_get_compositor (cwindow);
+    MetaWindow *window = meta_display_lookup_x_window (meta_compositor_get_display (compositor), cwindow_get_xwindow (cwindow));
+    return (window != NULL &&
+	    window == meta_compositor_get_display (compositor)->grab_window &&
+	    (meta_grab_op_is_resizing (meta_compositor_get_display (compositor)->grab_op) ||
+	     meta_grab_op_is_moving (meta_compositor_get_display (compositor)->grab_op)));
 }
 
 
@@ -761,8 +688,8 @@ cwindow_process_damage_notify (CWindow *cwindow, XDamageNotifyEvent *event)
 void
 cwindow_process_configure_notify (CWindow *cwindow, XConfigureEvent *event)
 {
-  XserverRegion region;
   MetaScreen *screen;
+  int old_width, old_height;
   
   screen = cwindow_get_screen (cwindow);
   
@@ -774,20 +701,26 @@ cwindow_process_configure_notify (CWindow *cwindow, XConfigureEvent *event)
   
   cwindow_set_x (cwindow, event->x);
   cwindow_set_y (cwindow, event->y);
+  old_width = cwindow_get_width (cwindow);
   cwindow_set_width (cwindow, event->width);
+  old_height = cwindow_get_height (cwindow);
   cwindow_set_height (cwindow, event->height);
   cwindow_set_border_width (cwindow, event->border_width);
   
   if (cwindow->freeze_info)
-    return;
-  
-  region = cwindow_extents (cwindow);
-
-  meta_compositor_invalidate_region (cwindow->compositor,
-				     screen,
-				     region);
-  
-  XFixesDestroyRegion (cwindow_get_xdisplay (cwindow), region);
+  {
+      return;
+  }
+  else
+  {
+      if (old_width != cwindow_get_width (cwindow) || 
+	  old_height != cwindow_get_height (cwindow))
+      {
+	  delete_shadow (cwindow);
+      }
+      
+      cwindow_queue_paint (cwindow);
+  }
 }
 
 void
@@ -852,14 +785,9 @@ cwindow_thaw (CWindow *cwindow)
   g_free (cwindow->freeze_info);
   cwindow->freeze_info = NULL;
 
-  region = cwindow_extents (cwindow);
+  delete_shadow (cwindow);
   
-  meta_compositor_invalidate_region (cwindow->compositor,
-				     cwindow_get_screen (cwindow),
-				     region);
-  
-  XFixesDestroyRegion (cwindow_get_xdisplay (cwindow), region);
-
+  cwindow_queue_paint (cwindow);
 }
 
 void
@@ -930,20 +858,26 @@ cwindow_draw (CWindow *cwindow, Picture destination)
 
       XFixesSetPictureClipRegion (dpy, destination, 0, 0, shadow_clip);
       
-      /* superlame drop shadow */
-      XRenderFillRectangle (cwindow_get_xdisplay (cwindow),
-			    PictOpOver,
-			    destination,
-			    &shadow_color,
-			    geometry->x + SHADOW_OFFSET, geometry->y + SHADOW_OFFSET,
-			    geometry->width, geometry->height);
+      /* super drop shadow */
+      if (!cwindow->translucent)
+      {
+	  int hp, wp;
+	  create_shadow (cwindow);
 
+	  XRenderComposite (cwindow_get_xdisplay (cwindow), PictOpOver,
+			    cwindow->shadow, None, destination,
+			    0, 0,
+			    0, 0,
+			    geometry->x + SHADOW_OFFSET, geometry->y + SHADOW_OFFSET,
+			    cwindow->shadow_width, cwindow->shadow_height);
+      }
+      
       XFixesSetPictureClipRegion (dpy, destination, 0, 0, old_clip);
       
       XRenderComposite (cwindow_get_xdisplay (cwindow),
 			PictOpOver, /* PictOpOver for alpha, PictOpSrc without */
 			picture,
-			None,
+			cwindow->translucent? cwindow_get_screen (cwindow)->trans_picture : None,
 			destination,
 			0, 0, 0, 0,
 			geometry->x,
@@ -961,4 +895,327 @@ cwindow_draw (CWindow *cwindow, Picture destination)
   cwindow_set_last_painted_extents (cwindow, cwindow_extents (cwindow));
   
   XRenderFreePicture (cwindow_get_xdisplay (cwindow), picture);
+}
+
+
+/*
+ * Gaussian shadows
+ */
+
+/*
+ * FIXME: move these into MetaDisplay
+ */
+
+/* For shadow precomputation */
+typedef struct _conv {
+    int	    size;
+    double  *data;
+} conv;
+
+int            Gsize = -1;
+unsigned char *shadowCorner = NULL;
+unsigned char *shadowTop = NULL;
+conv          *gaussianMap;
+
+static double
+gaussian (double r, double x, double y)
+{
+    return ((1 / (sqrt (2 * M_PI * r))) *
+	    exp ((- (x * x + y * y)) / (2 * r * r)));
+}
+
+static conv *
+make_gaussian_map (Display *dpy, double r)
+{
+    conv	    *c;
+    int		    size = ((int) ceil ((r * 3)) + 1) & ~1;
+    int		    center = size / 2;
+    int		    x, y;
+    double	    t;
+    double	    g;
+    
+    c = g_malloc (sizeof (conv) + size * size * sizeof (double));
+    c->size = size;
+    c->data = (double *) (c + 1);
+    t = 0.0;
+    for (y = 0; y < size; y++)
+	for (x = 0; x < size; x++)
+	{
+	    g = gaussian (r, (double) (x - center), (double) (y - center));
+	    t += g;
+	    c->data[y * size + x] = g;
+	}
+/*    printf ("gaussian total %f\n", t); */
+    for (y = 0; y < size; y++)
+	for (x = 0; x < size; x++)
+	{
+	    c->data[y*size + x] /= t;
+	}
+    return c;
+}
+
+/*
+ * A picture will help
+ *
+ *	-center   0                width  width+center
+ *  -center +-----+-------------------+-----+
+ *	    |     |                   |     |
+ *	    |     |                   |     |
+ *        0 +-----+-------------------+-----+
+ *	    |     |                   |     |
+ *	    |     |                   |     |
+ *	    |     |                   |     |
+ *   height +-----+-------------------+-----+
+ *	    |     |                   |     |
+ * height+  |     |                   |     |
+ *  center  +-----+-------------------+-----+
+ */
+ 
+static unsigned char
+sum_gaussian (conv *map, double opacity, int x, int y, int width, int height)
+{
+    int	    fx, fy;
+    double  *g_data;
+    double  *g_line = map->data;
+    int	    g_size = map->size;
+    int	    center = g_size / 2;
+    int	    fx_start, fx_end;
+    int	    fy_start, fy_end;
+    double  v;
+    
+    /*
+     * Compute set of filter values which are "in range",
+     * that's the set with:
+     *	0 <= x + (fx-center) && x + (fx-center) < width &&
+     *  0 <= y + (fy-center) && y + (fy-center) < height
+     *
+     *  0 <= x + (fx - center)	x + fx - center < width
+     *  center - x <= fx	fx < width + center - x
+     */
+
+    fx_start = center - x;
+    if (fx_start < 0)
+	fx_start = 0;
+    fx_end = width + center - x;
+    if (fx_end > g_size)
+	fx_end = g_size;
+
+    fy_start = center - y;
+    if (fy_start < 0)
+	fy_start = 0;
+    fy_end = height + center - y;
+    if (fy_end > g_size)
+	fy_end = g_size;
+
+    g_line = g_line + fy_start * g_size + fx_start;
+    
+    v = 0;
+    for (fy = fy_start; fy < fy_end; fy++)
+    {
+	g_data = g_line;
+	g_line += g_size;
+	
+	for (fx = fx_start; fx < fx_end; fx++)
+	    v += *g_data++;
+    }
+    if (v > 1)
+	v = 1;
+    
+    return ((unsigned char) (v * opacity * 255.0));
+}
+
+/* precompute shadow corners and sides to save time for large windows */
+static void
+presum_gaussian (conv *map)
+{
+    int center = map->size/2;
+    int opacity, x, y;
+
+    Gsize = map->size;
+
+    if (shadowCorner)
+	g_free ((void *)shadowCorner);
+    if (shadowTop)
+	g_free ((void *)shadowTop);
+
+    shadowCorner = (unsigned char *)(g_malloc ((Gsize + 1) * (Gsize + 1) * 26));
+    shadowTop = (unsigned char *)(g_malloc ((Gsize + 1) * 26));
+    
+    for (x = 0; x <= Gsize; x++)
+    {
+	shadowTop[25 * (Gsize + 1) + x] = sum_gaussian (map, 1, x - center, center, Gsize * 2, Gsize * 2);
+	for(opacity = 0; opacity < 25; opacity++)
+	    shadowTop[opacity * (Gsize + 1) + x] = shadowTop[25 * (Gsize + 1) + x] * opacity / 25;
+	for(y = 0; y <= x; y++)
+	{
+	    shadowCorner[25 * (Gsize + 1) * (Gsize + 1) + y * (Gsize + 1) + x]
+		= sum_gaussian (map, 1, x - center, y - center, Gsize * 2, Gsize * 2);
+	    shadowCorner[25 * (Gsize + 1) * (Gsize + 1) + x * (Gsize + 1) + y]
+		= shadowCorner[25 * (Gsize + 1) * (Gsize + 1) + y * (Gsize + 1) + x];
+	    for(opacity = 0; opacity < 25; opacity++)
+		shadowCorner[opacity * (Gsize + 1) * (Gsize + 1) + y * (Gsize + 1) + x]
+		    = shadowCorner[opacity * (Gsize + 1) * (Gsize + 1) + x * (Gsize + 1) + y]
+		    = shadowCorner[25 * (Gsize + 1) * (Gsize + 1) + y * (Gsize + 1) + x] * opacity / 25;
+	}
+    }
+}
+
+static XImage *
+make_shadow (Display *dpy, double opacity, int width, int height)
+{
+    XImage	    *ximage;
+    unsigned char   *data;
+    int		    gsize = gaussianMap->size;
+    int		    ylimit, xlimit;
+    int		    swidth = width + gsize;
+    int		    sheight = height + gsize;
+    int		    center = gsize / 2;
+    int		    x, y;
+    unsigned char   d;
+    int		    x_diff;
+    int             opacity_int = (int)(opacity * 25);
+    data = g_malloc (swidth * sheight * sizeof (unsigned char));
+    if (!data)
+	return 0;
+    ximage = XCreateImage (dpy,
+			   DefaultVisual(dpy, DefaultScreen(dpy)),
+			   8,
+			   ZPixmap,
+			   0,
+			   (char *) data,
+			   swidth, sheight, 8, swidth * sizeof (unsigned char));
+    if (!ximage)
+    {
+	g_free (data);
+	return 0;
+    }
+    /*
+     * Build the gaussian in sections
+     */
+
+    /*
+     * center (fill the complete data array)
+     */
+    if (Gsize > 0)
+	d = shadowTop[opacity_int * (Gsize + 1) + Gsize];
+    else
+	d = sum_gaussian (gaussianMap, opacity, center, center, width, height);
+    memset(data, d, sheight * swidth);
+    
+    /*
+     * corners
+     */
+    ylimit = gsize;
+    if (ylimit > sheight / 2)
+	ylimit = (sheight + 1) / 2;
+    xlimit = gsize;
+    if (xlimit > swidth / 2)
+	xlimit = (swidth + 1) / 2;
+
+    for (y = 0; y < ylimit; y++)
+	for (x = 0; x < xlimit; x++)
+	{
+	    if (xlimit == Gsize && ylimit == Gsize)
+		d = shadowCorner[opacity_int * (Gsize + 1) * (Gsize + 1) + y * (Gsize + 1) + x];
+	    else
+		d = sum_gaussian (gaussianMap, opacity, x - center, y - center, width, height);
+	    data[y * swidth + x] = d;
+	    data[(sheight - y - 1) * swidth + x] = d;
+	    data[(sheight - y - 1) * swidth + (swidth - x - 1)] = d;
+	    data[y * swidth + (swidth - x - 1)] = d;
+	}
+
+    /*
+     * top/bottom
+     */
+    x_diff = swidth - (gsize * 2);
+    if (x_diff > 0 && ylimit > 0)
+    {
+	for (y = 0; y < ylimit; y++)
+	{
+	    if (ylimit == Gsize)
+		d = shadowTop[opacity_int * (Gsize + 1) + y];
+	    else
+		d = sum_gaussian (gaussianMap, opacity, center, y - center, width, height);
+	    memset (&data[y * swidth + gsize], d, x_diff);
+	    memset (&data[(sheight - y - 1) * swidth + gsize], d, x_diff);
+	}
+    }
+
+    /*
+     * sides
+     */
+    
+    for (x = 0; x < xlimit; x++)
+    {
+	if (xlimit == Gsize)
+	    d = shadowTop[opacity_int * (Gsize + 1) + x];
+	else
+	    d = sum_gaussian (gaussianMap, opacity, x - center, center, width, height);
+	for (y = gsize; y < sheight - gsize; y++)
+	{
+	    data[y * swidth + x] = d;
+	    data[y * swidth + (swidth - x - 1)] = d;
+	}
+    }
+
+    return ximage;
+}
+
+static Picture
+shadow_picture (Display *dpy, Window root,
+		double opacity, int width, int height, int *wp, int *hp)
+{
+    XImage  *shadowImage;
+    Pixmap  shadowPixmap;
+    Picture shadowPicture;
+    GC	    gc;
+    
+    if (!gaussianMap)
+    {
+	gaussianMap = make_gaussian_map(dpy, SHADOW_RADIUS);
+	presum_gaussian (gaussianMap);
+    }
+
+    shadowImage = make_shadow (dpy, opacity, width, height);
+    if (!shadowImage)
+	return None;
+    shadowPixmap = XCreatePixmap (dpy, root, 
+				  shadowImage->width,
+				  shadowImage->height,
+				  8);
+    if (!shadowPixmap)
+    {
+	XDestroyImage (shadowImage);
+	return None;
+    }
+
+    shadowPicture = XRenderCreatePicture (dpy, shadowPixmap,
+					  XRenderFindStandardFormat (dpy, PictStandardA8),
+					  0, 0);
+    if (!shadowPicture)
+    {
+	XDestroyImage (shadowImage);
+	XFreePixmap (dpy, shadowPixmap);
+	return None;
+    }
+
+    gc = XCreateGC (dpy, shadowPixmap, 0, 0);
+    if (!gc)
+    {
+	XDestroyImage (shadowImage);
+	XFreePixmap (dpy, shadowPixmap);
+	XRenderFreePicture (dpy, shadowPicture);
+	return None;
+    }
+    
+    XPutImage (dpy, shadowPixmap, gc, shadowImage, 0, 0, 0, 0, 
+	       shadowImage->width,
+	       shadowImage->height);
+    *wp = shadowImage->width;
+    *hp = shadowImage->height;
+    XFreeGC (dpy, gc);
+    XDestroyImage (shadowImage);
+    XFreePixmap (dpy, shadowPixmap);
+    return shadowPicture;
 }

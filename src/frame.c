@@ -395,4 +395,3 @@ meta_frame_set_screen_cursor (MetaFrame	*frame,
       XFreeCursor (frame->window->display->xdisplay, xcursor);
     }
 }
-
