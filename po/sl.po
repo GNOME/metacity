@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
-"POT-Creation-Date: 2003-01-20 22:01-0500\n"
+"POT-Creation-Date: 2003-01-17 14:59+0100\n"
 "PO-Revision-Date: 2002-06-07 21:46+0200\n"
 "Last-Translator: Andraz Tori <andraz.tori1@guest.arnes.si>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
@@ -49,7 +49,7 @@ msgstr "Napaka ob branju iz procesa prikaza dialogov: %s\n"
 msgid ""
 "Error launching metacity-dialog to ask about killing an application: %s\n"
 msgstr ""
-"Napaka ob zaganjanju metacity-dialog, da bi vprašal o ubijanju programa: %s\n"
+"Napaka ob zaganjanju metacity-dialog, da bi vprašal o ubijanju programa: %s\n" 
 
 #: src/delete.c:429
 #, c-format
@@ -79,34 +79,35 @@ msgstr "Usodna napaka IO %d (%s) na zaslonu '%s'.\n"
 
 #: src/frames.c:1010
 msgid "Close Window"
-msgstr "Zapri okno"
+msgstr "Zapri okno"	# G:1 K:1 O:0
 
-# G:1 K:1 O:0
+
 #: src/frames.c:1013
 msgid "Window Menu"
-msgstr "Menu oken"
+msgstr "Menu oken"	# G:0 K:1 O:0
 
-# G:0 K:1 O:0
+
 #: src/frames.c:1016
 msgid "Minimize Window"
 msgstr "Pomanjšaj okno"
 
 #: src/frames.c:1019
 msgid "Maximize Window"
-msgstr "Razpni okno"
+msgstr "Razpni okno"	# G:1 K:0 O:0
 
-# G:1 K:0 O:0
+
 #: src/frames.c:1022
 msgid "Unmaximize Window"
-msgstr "Odrazpni okno"
+msgstr "Odrazpni okno"	# G:1 K:0 O:0
 
-# G:1 K:0 O:0
+
 #: src/keybindings.c:910
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
 "binding\n"
-msgstr "Tipko %s s spremenilnikom %x uporablja že nek drug program\n"
+msgstr ""
+"Tipko %s s spremenilnikom %x uporablja že nek drug program\n" 
 
 #: src/keybindings.c:2246
 #, c-format
@@ -142,13 +143,13 @@ msgstr ""
 "Program prihaja BREZ KAKRŠNIHKOLI ZAGOTOVIL; tudi brez PRODAJNE VREDNOSTI\n"
 "PRIMERNOSTI ZA DOLOČEN NAMEN.\n"
 
+
 #: src/main.c:326
 #, c-format
 msgid ""
 "Could not find a theme! Be sure %s exists and contains the usual themes."
 msgstr ""
-"Nisem mogel najti teme! Prepričajte se ali %s obstaja in vsebuje običajne "
-"teme."
+"Nisem mogel najti teme! Prepričajte se ali %s obstaja in vsebuje običajne teme."
 
 #: src/main.c:374
 #, c-format
@@ -157,62 +158,62 @@ msgstr "Nisem uspel znova pognati: %s\n"
 
 #: src/menu.c:52
 msgid "Mi_nimize"
-msgstr "Po_manjšaj"
+msgstr "Po_manjšaj"	# G:1 K:0 O:0
 
-# G:1 K:0 O:0
+
 #: src/menu.c:53
 msgid "Ma_ximize"
-msgstr "Ra_zpni"
+msgstr "Ra_zpni"	# G:1 K:0 O:0
 
-# G:1 K:0 O:0
+
 #: src/menu.c:54
 msgid "Unma_ximize"
-msgstr "Odra_zpni"
+msgstr "Odra_zpni"	# G:2 K:0 O:0
 
-# G:2 K:0 O:0
+
 #: src/menu.c:55
 msgid "Roll _Up"
-msgstr "_Zavrti navzgor"
+msgstr "_Zavrti navzgor"	# G:1 K:0 O:0
 
-# G:1 K:0 O:0
+
 #: src/menu.c:56
 msgid "_Unroll"
-msgstr "_Odvij"
+msgstr "_Odvij"	# G:1 K:0 O:0
 
-# G:1 K:0 O:0
+
 #: src/menu.c:57
 msgid "_Move"
-msgstr "_Prestavi"
+msgstr "_Prestavi"	# G:2 K:2 O:0
 
-# G:2 K:2 O:0
+
 #: src/menu.c:58
 msgid "_Resize"
-msgstr "_Spremeni velikost"
+msgstr "_Spremeni velikost"	# G:0 K:1 O:0
 
-# G:0 K:1 O:0
+
 #. separator
 #: src/menu.c:60
 msgid "_Close"
-msgstr "_Zapri"
+msgstr "_Zapri"	# G:12 K:1 O:0
 
-# G:12 K:1 O:0
+
 #. separator
 #: src/menu.c:62
 msgid "Put on _All Workspaces"
-msgstr "Postavi na _vse delovne površine"
+msgstr "Postavi na _vse delovne površine"	# G:1 K:0 O:0
 
-# G:1 K:0 O:0
+
 #: src/menu.c:63
 msgid "Only on _This Workspace"
-msgstr "Le na _tej delovni površini"
+msgstr "Le na _tej delovni površini"	# G:1 K:0 O:0
 
-# G:1 K:0 O:0
+
 #: src/menu.c:152 src/prefs.c:1669
 #, c-format
 msgid "Workspace %d"
-msgstr "Delovna površina %d"
+msgstr "Delovna površina %d"	# G:2 K:0 O:0
 
-# G:2 K:0 O:0
+
 #.
 #. * Above name is a pointer into the Workspace struct. Here we make
 #. * a copy copy so we can have our wicked way with it.
@@ -239,9 +240,9 @@ msgstr "Prestavi na %s"
 #.
 #: src/metaaccellabel.c:105
 msgid "Shift"
-msgstr "Shift"
+msgstr "Shift"	# G:2 K:1 O:0
 
-# G:2 K:1 O:0
+
 #. This is the text that should appear next to menu accelerators
 #. * that use the control key. If the text on this key isn't typically
 #. * translated on keyboards used for your language, don't translate
@@ -249,9 +250,9 @@ msgstr "Shift"
 #.
 #: src/metaaccellabel.c:111
 msgid "Ctrl"
-msgstr "Ctrl"
+msgstr "Ctrl"	# G:2 K:1 O:0
 
-# G:2 K:1 O:0
+
 #. This is the text that should appear next to menu accelerators
 #. * that use the alt key. If the text on this key isn't typically
 #. * translated on keyboards used for your language, don't translate
@@ -259,9 +260,9 @@ msgstr "Ctrl"
 #.
 #: src/metaaccellabel.c:117
 msgid "Alt"
-msgstr "Alt"
+msgstr "Alt"	# G:5 K:2 O:0
 
-# G:5 K:2 O:0
+
 #. This is the text that should appear next to menu accelerators
 #. * that use the meta key. If the text on this key isn't typically
 #. * translated on keyboards used for your language, don't translate
@@ -269,9 +270,9 @@ msgstr "Alt"
 #.
 #: src/metaaccellabel.c:123
 msgid "Meta"
-msgstr "Meta"
+msgstr "Meta"	# G:0 K:2 O:0
 
-# G:0 K:2 O:0
+
 #. This is the text that should appear next to menu accelerators
 #. * that use the super key. If the text on this key isn't typically
 #. * translated on keyboards used for your language, don't translate
@@ -288,9 +289,9 @@ msgstr "Super"
 #.
 #: src/metaaccellabel.c:135
 msgid "Hyper"
-msgstr "Hiper"
+msgstr "Hiper"	# G:1 K:0 O:0
 
-# G:1 K:0 O:0
+
 #. This is the text that should appear next to menu accelerators
 #. * that use the mod2 key. If the text on this key isn't typically
 #. * translated on keyboards used for your language, don't translate
@@ -307,9 +308,9 @@ msgstr "Mod2"
 #.
 #: src/metaaccellabel.c:147
 msgid "Mod3"
-msgstr "Mod3"
+msgstr "Mod3"	# G:0 K:1 O:0
 
-# G:0 K:1 O:0
+
 #. This is the text that should appear next to menu accelerators
 #. * that use the mod4 key. If the text on this key isn't typically
 #. * translated on keyboards used for your language, don't translate
@@ -345,21 +346,21 @@ msgstr "Ubij program"
 
 #: src/metacity-dialog.c:188
 msgid "Title"
-msgstr "Naziv"
+msgstr "Naziv"	# G:1 K:0 O:0
 
-# G:1 K:0 O:0
+
 #: src/metacity-dialog.c:200
 msgid "Class"
-msgstr "Razred"
+msgstr "Razred"	# G:2 K:6 O:0
 
-# G:2 K:6 O:0
+
 #: src/metacity-dialog.c:224
 msgid ""
 "These windows do not support \"save current setup\" and will have to be "
 "restarted manually next time you log in."
 msgstr ""
-"Ta okna ne podpirajo \"shranitve trenutnih nastavitev\", zato bodo morala "
-"biti ob vaši naslednji prijavi znova zagnana ročno."
+"Ta okna ne podpirajo \"shranitve trenutnih nastavitev\", zato bodo morala"
+" biti ob vaši naslednji prijavi znova zagnana ročno."
 
 #: src/metacity-dialog.c:276
 #, c-format
@@ -369,6 +370,7 @@ msgid ""
 msgstr ""
 "Ob poganjanju \"%s\" se je zgodila napaka:\n"
 "%s."
+
 
 #: src/metacity.desktop.in.h:1
 msgid "Metacity"
@@ -387,11 +389,11 @@ msgid ""
 "is unset, causing Metacity to fall back to the desktop font even if "
 "titlebar_uses_desktop_font is false."
 msgstr ""
-"Niz opisa pisave, ki opisuje pisavo za nazive oken. Velikost opisa bo "
-"uporabljena le, če je možnost titlebar_font_size nastavljena na 0. Poleg "
-"tega je ta možnost izklopljena, če je titlebar_uses_desktop_font nastavljena "
-"na true (resnično). Privzeto možnost titlebar_font ni nastavljena, kar "
-"povzroči, da Metacity uporabi pisavo namizja celo, če je "
+"Niz opisa pisave, ki opisuje pisavo za nazive oken. Velikost opisa "
+"bo uporabljena le, če je možnost titlebar_font_size nastavljena na 0."
+" Poleg tega je ta možnost izklopljena, če je titlebar_uses_desktop_font "
+"nastavljena na true (resnično). Privzeto možnost titlebar_font ni "
+"nastavljena, kar povzroči, da Metacity uporabi pisavo namizja celo, če je "
 "titlebar_uses_desktop_font nastavljena na false (neresnično)."
 
 #: src/metacity.schemas.in.h:3
@@ -414,12 +416,12 @@ msgid ""
 "Duplicate buttons are not allowed. Unknown button names are silently ignored "
 "so that buttons can be added in future metacity versions without breaking "
 "older versions."
-msgstr ""
-"Postavitev gumbov v nazivni vrstici okna. Vrednost mora biti niz, kot je "
-"\"menu:minimize,maximize,close\";  dvopičje loči levi kot okna od desnega in "
-"imena gumbov so ločena z vejico. Podvojeni gumbi niso dovoljeni. Neznana "
-"imena gumbov so tiho prezrta, tako, da se lahko v novih različicah Metacity "
-"doda nove gumbe brez, da bi se porušila kompatibilnost s starimi različicami"
+msgstr "Postavitev gumbov v nazivni vrstici okna. Vrednost mora biti "
+"niz, kot je \"menu:minimize,maximize,close\";  dvopičje loči levi kot "
+"okna od desnega in imena gumbov so ločena z vejico. "
+"Podvojeni gumbi niso dovoljeni. Neznana imena gumbov so tiho prezrta, "
+"tako, da se lahko v novih različicah Metacity doda nove gumbe brez, da "
+"bi se porušila kompatibilnost s starimi različicami"
 
 #: src/metacity.schemas.in.h:7
 msgid "Automatically raises the focused window"
@@ -446,9 +448,9 @@ msgstr "Ukazi, ki naj se poženejo preko povezanih tipk"
 
 #: src/metacity.schemas.in.h:11
 msgid "Current theme"
-msgstr "Trenutna tema"
+msgstr "Trenutna tema"	# G:1 K:0 O:0
 
-# G:1 K:0 O:0
+
 #: src/metacity.schemas.in.h:12
 msgid "Delay in milliseconds for the auto raise option"
 msgstr "Premor v milisekundah za možnost samodejnega dviga"
@@ -467,17 +469,17 @@ msgid ""
 "focused window will be automatically raised after a delay (the delay is "
 "specified by the auto_raise_delay key)."
 msgstr ""
-"Če je true (resnično) in je način fokusa \"sloppy\" ali \"mouse\", potem bo "
-"fokusirano okno po premoru samodejno dvignjeno (premor je določen v ključu "
-"auto_raise_delay)"
+"Če je true (resnično) in je način fokusa \"sloppy\" ali \"mouse\", potem "
+"bo fokusirano okno po premoru samodejno dvignjeno (premor je določen "
+"v ključu auto_raise_delay)"
 
 #: src/metacity.schemas.in.h:16
 msgid ""
 "If true, ignore the titlebar_font option, and use the standard application "
 "font for window titles."
 msgstr ""
-"Če je true (resnično), prezri možnost titlebar_font in za naziv okna uporabi "
-"privzeto pisavo programov."
+"Če je true (resnično), prezri možnost titlebar_font in za naziv okna uporabi privzeto "
+"pisavo programov."
 
 #: src/metacity.schemas.in.h:17
 msgid ""
@@ -491,14 +493,14 @@ msgid ""
 "details of application-based vs. window-based, e.g. whether to pass through "
 "clicks. Also, application-based mode is largely unimplemented at the moment."
 msgstr ""
-"Če je true (resnično), potem Metacity deluje s konceptom programov namesto s "
-"konceptom oken. Koncept je malce abstrakten, a v splošnem je koncept "
-"programov značilen za Mace in manj za Windows. Kadar fokusirate okno v "
-"programskemkonceptu se vsa okna programa dvignejo. Prav tako se v "
-"programskem načinu kliki za fokus ne štejejo za klike programov Obstoj te "
-"nastavitve je rahlo vprašljiv, a vseeno je bolje kot, da se uvede nastavitve "
-"za specifične podrobnosti obeh konceptov).clicks. Also, application-based "
-"mode is largely unimplemented at the moment."
+"Če je true (resnično), potem Metacity deluje s konceptom programov namesto "
+"s konceptom oken. Koncept je malce abstrakten, a v splošnem je koncept programov"
+" značilen za Mace in manj za Windows. Kadar fokusirate okno v programskem"
+"konceptu se vsa okna programa dvignejo. "
+"Prav tako se v programskem načinu kliki za fokus ne štejejo za klike programov "
+"Obstoj te nastavitve je rahlo vprašljiv, a vseeno je bolje kot, da se uvede nastavitve "
+"za specifične podrobnosti obeh konceptov)."
+"clicks. Also, application-based mode is largely unimplemented at the moment."
 
 #: src/metacity.schemas.in.h:18
 msgid "Lower window below other windows"
@@ -506,19 +508,19 @@ msgstr "Spusti okno pod druga"
 
 #: src/metacity.schemas.in.h:19
 msgid "Maximize a window"
-msgstr "Okno čez cel zaslon"
+msgstr "Okno čez cel zaslon"	# G:0 K:1 O:0
 
-# G:0 K:1 O:0
+
 #: src/metacity.schemas.in.h:20
 msgid "Maximize window horizontally"
-msgstr "Razpni okno vodoravno"
+msgstr "Razpni okno vodoravno"	# G:1 K:0 O:0
 
-# G:1 K:0 O:0
+
 #: src/metacity.schemas.in.h:21
 msgid "Maximize window vertically"
-msgstr "Razpni okno navpično"
+msgstr "Razpni okno navpično"	# G:1 K:0 O:0
 
-# G:1 K:0 O:0
+
 #: src/metacity.schemas.in.h:22
 msgid "Minimize a window"
 msgstr "Pomanjšaj okno"
@@ -529,9 +531,9 @@ msgstr "Spremenilnik, ki naj se uporabi za dejanja klika na okno"
 
 #: src/metacity.schemas.in.h:24
 msgid "Move a window"
-msgstr "Premikanje okna"
+msgstr "Premikanje okna"	# G:0 K:1 O:0
 
-# G:0 K:1 O:0
+
 #: src/metacity.schemas.in.h:25
 msgid "Move backward between panels and the desktop immediately"
 msgstr "Med pulti in namizjem se pomakni nazaj takoj"
@@ -634,17 +636,17 @@ msgstr "Ime delovne površine"
 
 #: src/metacity.schemas.in.h:50
 msgid "Number of workspaces"
-msgstr "Število delovnih površin"
+msgstr "Število delovnih površin"	# G:1 K:0 O:0
 
-# G:1 K:0 O:0
+
 #: src/metacity.schemas.in.h:51
 msgid ""
 "Number of workspaces. Must be more than zero, and has a fixed maximum (to "
 "prevent accidentally destroying your desktop by asking for 34 million "
 "workspaces)."
 msgstr ""
-"Število delovnih površin. Mora biti več kot nič in ima najvišjo vrednost (da "
-"vam prepreči po nesreči uničiti namizja z 34 miljoni površin)"
+"Število delovnih površin. Mora biti več kot nič in ima najvišjo vrednost "
+"(da vam prepreči po nesreči uničiti namizja z 34 miljoni površin)"
 
 #: src/metacity.schemas.in.h:52
 msgid "Raise obscured window, otherwise lower"
@@ -656,9 +658,8 @@ msgstr "Dvigni okno nad druga okna"
 
 #: src/metacity.schemas.in.h:54
 msgid "Resize a window"
-msgstr "Spremeni velikost okna"
+msgstr "Spremeni velikost okna"	# G:0 K:1 O:0
 
-# G:0 K:1 O:0
 #: src/metacity.schemas.in.h:55
 msgid "Run a defined command"
 msgstr "Poženi določen ukaz"
@@ -681,15 +682,15 @@ msgstr ""
 "Nekateri programi se ne ravnajo po specifikacijah, kar povzroči napačno "
 "delovanje upravljalnika oken. Na primer, idealno bi Metacity lahko namestil "
 "vse dialoge v konsistenten položaj glede na starševsko okno. Zo zahteva "
-"prezrtje programsko določenega mesta za dialog. A nekatere različice Java/"
-"Swinga označijo vzklična okna kot dialoge, zato mora Metacity izklopiti "
+"prezrtje programsko določenega mesta za dialog. A nekatere različice "
+"Java/Swinga označijo vzklična okna kot dialoge, zato mora Metacity izklopiti "
 "nameščanje dialoga, da lahko v pokvarjenih programih Java delujejo menuji. "
-"Obstaja še mnogo drugih primerov. Ta možnost postavi Metacity v  Pravilen "
-"način, kar morda da rahlo lepši uporabniški vmesnik, če vam ni treba "
+"Obstaja še mnogo drugih primerov. Ta možnost postavi Metacity v  "
+"Pravilen način, kar morda da rahlo lepši uporabniški vmesnik, če vam ni treba "
 "poganjati pokvarjenih programov. Na žalost je svet grd in obhodi teh napak "
 "morajo biti privzeto vklopljeni. Nekaterih obhodov ni mogoče popraviti  "
-"brez, da se odpravi pomankljivosti samih specifikacij, zato kdaj hroščav "
-"brezobhodnem načinu ne bo mogoče popraviti brez, da se popravi specifikacija."
+"brez, da se odpravi pomankljivosti samih specifikacij, zato kdaj hrošča"
+"v brezobhodnem načinu ne bo mogoče popraviti brez, da se popravi specifikacija."
 
 #: src/metacity.schemas.in.h:57
 msgid "Switch to workspace 1"
@@ -761,9 +762,9 @@ msgid ""
 "that correspond to these commands. Pressing the keybinding for run_command_N "
 "will execute command_N."
 msgstr ""
-"Ključi /apps/metacity/global_keybindings/run_command_N navajajo tipkovnične "
-"povezave, ki ustrezajo tem ukazom. Pritisk tipke za run_command_N bo izvedel "
-"ukaz command_N."
+"Ključi /apps/metacity/global_keybindings/run_command_N navajajo "
+"tipkovnične povezave, ki ustrezajo tem ukazom. Pritisk tipke za "
+"run_command_N bo izvedel ukaz command_N."
 
 #: src/metacity.schemas.in.h:74
 msgid ""
@@ -774,12 +775,12 @@ msgid ""
 "Ctrl&gt;\". If you set the option to the special string \"disabled\", then "
 "there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez, ki zažene ustrezno oštevilčen ukaz v /apps/metacity/"
-"keybinding_commands Oblikovano je kot \"&lt;Control&gt;a\" or \"&lt;Shift&gt;"
-"&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča različno "
-"velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če "
-"v to možnost naastavite posebni niz \"disabled\", potem za to dejanje ne bo "
-"tipkovnične vezi."
+"Tipkovnična vez, ki zažene ustrezno oštevilčen ukaz v /apps/"
+"metacity/keybinding_commands Oblikovano je kot \"&lt;Control&gt;a\" or "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:75
 msgid ""
@@ -791,11 +792,11 @@ msgid ""
 "for this action."
 msgstr ""
 "Tipkovnična vez, ki povzroči preklop na delovno površino nad trenutno. "
-"Oblikovano je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. "
-"Razčlenilnik je precej toleranten in dopušča različno velikost črk ter "
-"okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost "
-"naastavite posebni niz \"disabled\", potem za to dejanje ne bo tipkovnične "
-"vezi."
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:76
 msgid ""
@@ -807,11 +808,11 @@ msgid ""
 "for this action."
 msgstr ""
 "Tipkovnična vez, ki povzroči preklop na delovno površino pod trenutno. "
-"Oblikovano je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. "
-"Razčlenilnik je precej toleranten in dopušča različno velikost črk ter "
-"okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost "
-"naastavite posebni niz \"disabled\", potem za to dejanje ne bo tipkovnične "
-"vezi."
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:77
 msgid ""
@@ -823,11 +824,12 @@ msgid ""
 "keybinding for this action."
 msgstr ""
 "Tipkovnična vez, ki povzroči preklop na delovno površino levo od trenutne. "
-"Oblikovano je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. "
-"Razčlenilnik je precej toleranten in dopušča različno velikost črk ter "
-"okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost "
-"naastavite posebni niz \"disabled\", potem za to dejanje ne bo tipkovnične "
-"vezi."
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
+
 
 #: src/metacity.schemas.in.h:78
 msgid ""
@@ -839,11 +841,12 @@ msgid ""
 "keybinding for this action."
 msgstr ""
 "Tipkovnična vez, ki povzroči preklop na delovno površino desno od trenutne. "
-"Oblikovano je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. "
-"Razčlenilnik je precej toleranten in dopušča različno velikost črk ter "
-"okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost "
-"naastavite posebni niz \"disabled\", potem za to dejanje ne bo tipkovnične "
-"vezi."
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
+
 
 #: src/metacity.schemas.in.h:79
 msgid ""
@@ -853,11 +856,12 @@ msgid ""
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez, ki povzroči preklop na delovno površino št. 1. Oblikovano "
-"je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik "
-"je precej toleranten in dopušča različno velikost črk ter okrajšave kot nrp. "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez, ki povzroči preklop na delovno površino št. 1. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:80
 msgid ""
@@ -867,11 +871,12 @@ msgid ""
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez, ki povzroči preklop na delovno površino št. 10. Oblikovano "
-"je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik "
-"je precej toleranten in dopušča različno velikost črk ter okrajšave kot nrp. "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez, ki povzroči preklop na delovno površino št. 10. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:81
 msgid ""
@@ -881,11 +886,12 @@ msgid ""
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez, ki povzroči preklop na delovno površino št. 11. Oblikovano "
-"je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik "
-"je precej toleranten in dopušča različno velikost črk ter okrajšave kot nrp. "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez, ki povzroči preklop na delovno površino št. 11. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:82
 msgid ""
@@ -895,11 +901,12 @@ msgid ""
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez, ki povzroči preklop na delovno površino št. 12. Oblikovano "
-"je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik "
-"je precej toleranten in dopušča različno velikost črk ter okrajšave kot nrp. "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez, ki povzroči preklop na delovno površino št. 12. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:83
 msgid ""
@@ -909,11 +916,12 @@ msgid ""
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez, ki povzroči preklop na delovno površino št. 2. Oblikovano "
-"je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik "
-"je precej toleranten in dopušča različno velikost črk ter okrajšave kot nrp. "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez, ki povzroči preklop na delovno površino št. 2. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:84
 msgid ""
@@ -923,11 +931,12 @@ msgid ""
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez, ki povzroči preklop na delovno površino št. 3. Oblikovano "
-"je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik "
-"je precej toleranten in dopušča različno velikost črk ter okrajšave kot nrp. "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez, ki povzroči preklop na delovno površino št. 3. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:85
 msgid ""
@@ -937,11 +946,12 @@ msgid ""
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez, ki povzroči preklop na delovno površino št. 4. Oblikovano "
-"je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik "
-"je precej toleranten in dopušča različno velikost črk ter okrajšave kot nrp. "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez, ki povzroči preklop na delovno površino št. 4. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:86
 msgid ""
@@ -951,11 +961,12 @@ msgid ""
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez, ki povzroči preklop na delovno površino št. 5. Oblikovano "
-"je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik "
-"je precej toleranten in dopušča različno velikost črk ter okrajšave kot nrp. "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez, ki povzroči preklop na delovno površino št. 5. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:87
 msgid ""
@@ -965,11 +976,12 @@ msgid ""
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez, ki povzroči preklop na delovno površino št. 6. Oblikovano "
-"je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik "
-"je precej toleranten in dopušča različno velikost črk ter okrajšave kot nrp. "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez, ki povzroči preklop na delovno površino št. 6. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:88
 msgid ""
@@ -979,11 +991,12 @@ msgid ""
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez, ki povzroči preklop na delovno površino št. 7. Oblikovano "
-"je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik "
-"je precej toleranten in dopušča različno velikost črk ter okrajšave kot nrp. "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez, ki povzroči preklop na delovno površino št. 7. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:89
 msgid ""
@@ -993,11 +1006,12 @@ msgid ""
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez, ki povzroči preklop na delovno površino št. 8. Oblikovano "
-"je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik "
-"je precej toleranten in dopušča različno velikost črk ter okrajšave kot nrp. "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez, ki povzroči preklop na delovno površino št. 8. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:90
 msgid ""
@@ -1007,11 +1021,12 @@ msgid ""
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez, ki povzroči preklop na delovno površino št. 9. Oblikovano "
-"je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik "
-"je precej toleranten in dopušča različno velikost črk ter okrajšave kot nrp. "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez, ki povzroči preklop na delovno površino št. 9. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:91
 msgid ""
@@ -1021,10 +1036,11 @@ msgid ""
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez, ki aktivira menu oken. Oblikovano je kot \"&lt;Control&gt;a"
-"\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in "
-"dopušča različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in "
-"\"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"Tipkovnična vez, ki aktivira menu oken. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
 "za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:92
@@ -1035,11 +1051,12 @@ msgid ""
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez za zaprtje okna. Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"Tipkovnična vez za zaprtje okna. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
 "\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
 "različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
-"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem za to "
-"dejanje ne bo tipkovnične vezi."
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:93
 msgid ""
@@ -1050,12 +1067,12 @@ msgid ""
 "set the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
 msgstr ""
-"Tipkovnična vez za prehod v premikalni način in začetek premikanja okna s "
-"pomočjo tipkovnice. Oblikovano je kot \"&lt;Control&gt;a\" ali \"&lt;"
-"Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"Tipkovnična vez za prehod v premikalni način in začetek premikanja okna s pomočjo tipkovnice. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
 "različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
-"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem za to "
-"dejanje ne bo tipkovnične vezi."
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:94
 msgid ""
@@ -1066,12 +1083,12 @@ msgid ""
 "\". If you set the option to the special string \"disabled\", then there "
 "will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez za prehod v način spreminjanja velikost in začetek "
-"spreminjanja velikosti okna s pomočjo tipkovnice. Oblikovano je kot \"&lt;"
-"Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej "
-"toleranten in dopušča različno velikost črk ter okrajšave kot nrp. \"&lt;"
-"Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez za prehod v način spreminjanja velikost in začetek spreminjanja velikosti okna s pomočjo tipkovnice. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:95
 msgid ""
@@ -1083,11 +1100,11 @@ msgid ""
 "will be no keybinding for this action."
 msgstr ""
 "Tipkovnična vez za zaprtje vseh običajnih oken in fokusiranje na namizje. "
-"Oblikovano je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. "
-"Razčlenilnik je precej toleranten in dopušča različno velikost črk ter "
-"okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost "
-"naastavite posebni niz \"disabled\", potem za to dejanje ne bo tipkovnične "
-"vezi."
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:96
 msgid ""
@@ -1097,11 +1114,12 @@ msgid ""
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez za razpetje okna. Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"Tipkovnična vez za razpetje okna. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
 "\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
 "različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
-"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem za to "
-"dejanje ne bo tipkovnične vezi."
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:97
 msgid ""
@@ -1111,10 +1129,11 @@ msgid ""
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez za pomanjšanje okna. Oblikovano je kot \"&lt;Control&gt;a\" "
-"ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in "
-"dopušča različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in "
-"\"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"Tipkovnična vez za pomanjšanje okna. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
 "za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:98
@@ -1126,11 +1145,12 @@ msgid ""
 "special string \"disabled\", then there will be no keybinding for this "
 "action."
 msgstr ""
-"Tipkovnična vez za prestavitev okna eno delovno površino navzdol. Oblikovano "
-"je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik "
-"je precej toleranten in dopušča različno velikost črk ter okrajšave kot nrp. "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez za prestavitev okna eno delovno površino navzdol. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:99
 msgid ""
@@ -1141,11 +1161,12 @@ msgid ""
 "special string \"disabled\", then there will be no keybinding for this "
 "action."
 msgstr ""
-"Tipkovnična vez za prestavitev okna eno delovno površino levo. Oblikovano je "
-"kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je "
-"precej toleranten in dopušča različno velikost črk ter okrajšave kot nrp. "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez za prestavitev okna eno delovno površino levo. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:100
 msgid ""
@@ -1156,11 +1177,12 @@ msgid ""
 "special string \"disabled\", then there will be no keybinding for this "
 "action."
 msgstr ""
-"Tipkovnična vez za prestavitev okna eno delovno površino desno. Oblikovano "
-"je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik "
-"je precej toleranten in dopušča različno velikost črk ter okrajšave kot nrp. "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez za prestavitev okna eno delovno površino desno. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:101
 msgid ""
@@ -1170,11 +1192,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez za prestavitev okna eno delovno površino navzgor. Oblikovano "
-"je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik "
-"je precej toleranten in dopušča različno velikost črk ter okrajšave kot nrp. "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez za prestavitev okna eno delovno površino navzgor. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:102
 msgid ""
@@ -1184,11 +1207,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez za prestavitev okna na delovno površino št. 1. Oblikovano je "
-"kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je "
-"precej toleranten in dopušča različno velikost črk ter okrajšave kot nrp. "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez za prestavitev okna na delovno površino št. 1. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:103
 msgid ""
@@ -1198,11 +1222,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez za prestavitev okna na delovno površino št. 10. Oblikovano "
-"je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik "
-"je precej toleranten in dopušča različno velikost črk ter okrajšave kot nrp. "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez za prestavitev okna na delovno površino št. 10. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:104
 msgid ""
@@ -1212,11 +1237,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez za prestavitev okna na delovno površino št. 11. Oblikovano "
-"je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik "
-"je precej toleranten in dopušča različno velikost črk ter okrajšave kot nrp. "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez za prestavitev okna na delovno površino št. 11. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:105
 msgid ""
@@ -1226,11 +1252,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez za prestavitev okna na delovno površino št. 12. Oblikovano "
-"je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik "
-"je precej toleranten in dopušča različno velikost črk ter okrajšave kot nrp. "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez za prestavitev okna na delovno površino št. 12. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:106
 msgid ""
@@ -1240,11 +1267,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez za prestavitev okna na delovno površino št. 2. Oblikovano je "
-"kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je "
-"precej toleranten in dopušča različno velikost črk ter okrajšave kot nrp. "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez za prestavitev okna na delovno površino št. 2. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:107
 msgid ""
@@ -1254,11 +1282,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez za prestavitev okna na delovno površino št. 3. Oblikovano je "
-"kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je "
-"precej toleranten in dopušča različno velikost črk ter okrajšave kot nrp. "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez za prestavitev okna na delovno površino št. 3. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:108
 msgid ""
@@ -1268,11 +1297,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez za prestavitev okna na delovno površino št. 4. Oblikovano je "
-"kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je "
-"precej toleranten in dopušča različno velikost črk ter okrajšave kot nrp. "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez za prestavitev okna na delovno površino št. 4. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:109
 msgid ""
@@ -1282,11 +1312,13 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez za prestavitev okna na delovno površino št. 5. Oblikovano je "
-"kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je "
-"precej toleranten in dopušča različno velikost črk ter okrajšave kot nrp. "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez za prestavitev okna na delovno površino št. 5. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
+
 
 #: src/metacity.schemas.in.h:110
 msgid ""
@@ -1296,11 +1328,13 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez za prestavitev okna na delovno površino št. 6. Oblikovano je "
-"kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je "
-"precej toleranten in dopušča različno velikost črk ter okrajšave kot nrp. "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez za prestavitev okna na delovno površino št. 6. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
+
 
 #: src/metacity.schemas.in.h:111
 msgid ""
@@ -1310,11 +1344,13 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez za prestavitev okna na delovno površino št. 7. Oblikovano je "
-"kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je "
-"precej toleranten in dopušča različno velikost črk ter okrajšave kot nrp. "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez za prestavitev okna na delovno površino št. 7. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
+
 
 #: src/metacity.schemas.in.h:112
 msgid ""
@@ -1324,11 +1360,13 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez za prestavitev okna na delovno površino št. 8. Oblikovano je "
-"kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je "
-"precej toleranten in dopušča različno velikost črk ter okrajšave kot nrp. "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez za prestavitev okna na delovno površino št. 8. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
+
 
 #: src/metacity.schemas.in.h:113
 msgid ""
@@ -1338,11 +1376,13 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez za prestavitev okna na delovno površino št. 9. Oblikovano je "
-"kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je "
-"precej toleranten in dopušča različno velikost črk ter okrajšave kot nrp. "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez za prestavitev okna na delovno površino št. 9. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
+
 
 #: src/metacity.schemas.in.h:114
 msgid ""
@@ -1353,12 +1393,13 @@ msgid ""
 "\". If you set the option to the special string \"disabled\", then there "
 "will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez za preklopitev fokusa med pulti in namizjem s pomočjo "
-"vzkličnega okna. Oblikovano je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;"
-"&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča različno "
-"velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če "
-"v to možnost naastavite posebni niz \"disabled\", potem za to dejanje ne bo "
-"tipkovnične vezi."
+"Tipkovnična vez za preklopitev fokusa med pulti in namizjem s pomočjo vzkličnega okna. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
+
 
 #: src/metacity.schemas.in.h:115
 msgid ""
@@ -1369,12 +1410,13 @@ msgid ""
 "\". If you set the option to the special string \"disabled\", then there "
 "will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez za preklopitev fokusa med pulti in namizjem brez vzkličnega "
-"okna. Oblikovano je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;"
-"F1. Razčlenilnik je precej toleranten in dopušča različno velikost črk ter "
-"okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost "
-"naastavite posebni niz \"disabled\", potem za to dejanje ne bo tipkovnične "
-"vezi."
+"Tipkovnična vez za preklopitev fokusa med pulti in namizjem brez vzkličnega okna. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
+
 
 #: src/metacity.schemas.in.h:116
 msgid ""
@@ -1387,11 +1429,12 @@ msgid ""
 "keybinding for this action."
 msgstr ""
 "Tipkovnična vez za preklopitev fokusa med okni brez vzkličnega okna. "
-"Oblikovano je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. "
-"Razčlenilnik je precej toleranten in dopušča različno velikost črk ter "
-"okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost "
-"naastavite posebni niz \"disabled\", potem za to dejanje ne bo tipkovnične "
-"vezi."
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
+
 
 #: src/metacity.schemas.in.h:117
 msgid ""
@@ -1404,11 +1447,12 @@ msgid ""
 "keybinding for this action."
 msgstr ""
 "Tipkovnična vez za preklopitev fokusa med okni s pomočjo vzkličnega okna. "
-"Oblikovano je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. "
-"Razčlenilnik je precej toleranten in dopušča različno velikost črk ter "
-"okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost "
-"naastavite posebni niz \"disabled\", potem za to dejanje ne bo tipkovnične "
-"vezi."
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
+
 
 #: src/metacity.schemas.in.h:118
 msgid ""
@@ -1419,13 +1463,12 @@ msgid ""
 "set the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
 msgstr ""
-"Tipkovnična vez za preklopitev fokusa med pulti in namizjem s pomočjo "
-"vzkličnega okna. Oblikovano je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;"
-"&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča različno "
-"velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če "
-"v to možnost naastavite posebni niz \"disabled\", potem za to dejanje ne bo "
-"tipkovnične vezi."
-
+"Tipkovnična vez za preklopitev fokusa med pulti in namizjem s pomočjo vzkličnega okna. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 #: src/metacity.schemas.in.h:119
 msgid ""
 "The keybinding used to move focus between panels and the desktop, without a "
@@ -1435,14 +1478,13 @@ msgid ""
 "set the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
 msgstr ""
-"Tipkovnična vez za preklopitev fokusa med pulti in namizjem brez vzkličnega "
-"okna. Oblikovano je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;"
-"F1. Razčlenilnik je precej toleranten in dopušča različno velikost črk ter "
-"okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost "
-"naastavite posebni niz \"disabled\", potem za to dejanje ne bo tipkovnične "
-"vezi."
+"Tipkovnična vez za preklopitev fokusa med pulti in namizjem brez vzkličnega okna. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."#: src/metacity.schemas.in.h:120
 
-#: src/metacity.schemas.in.h:120
 msgid ""
 "The keybinding used to move focus between windows without a popup window. "
 "(Traditionally &lt;Alt&gt;Escape) Holding the \"shift\" key while using this "
@@ -1453,11 +1495,11 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "Tipkovnična vez za preklopitev fokusa med okni brez vzkličnega okna. "
-"(Običajno je bila to &lt;Alt&gt;Escape). Držanje tipke \"shift\" pa je "
-"povzročilo obrnjeno smer preklopitev. Oblikovano je kot \"&lt;Control&gt;a\" "
-"ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in "
-"dopušča različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in "
-"\"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"(Običajno je bila to &lt;Alt&gt;Escape). Držanje tipke \"shift\" pa je povzročilo obrnjeno smer preklopitev. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
 "za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:121
@@ -1471,11 +1513,11 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "Tipkovnična vez za preklopitev fokusa med okni s pomočjo vzkličnega okna. "
-"(Običajno je bila to &lt;Alt&gt;Tab). Držanje tipke \"shift\" pa je "
-"povzročilo obrnjeno smer preklopitev. Oblikovano je kot \"&lt;Control&gt;a\" "
-"ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in "
-"dopušča različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in "
-"\"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"(Običajno je bila to &lt;Alt&gt;Tab). Držanje tipke \"shift\" pa je povzročilo obrnjeno smer preklopitev. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
 "za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:122
@@ -1486,11 +1528,12 @@ msgid ""
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez za preklopitev celozaslonskega načina. Oblikovano je kot "
-"\"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je "
-"precej toleranten in dopušča različno velikost črk ter okrajšave kot nrp. "
-"\"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez za preklopitev celozaslonskega načina. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:123
 msgid ""
@@ -1500,11 +1543,12 @@ msgid ""
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez za preklopitev razpenjanja okna. Oblikovano je kot \"&lt;"
-"Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej "
-"toleranten in dopušča različno velikost črk ter okrajšave kot nrp. \"&lt;"
-"Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez za preklopitev razpenjanja okna. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:124
 msgid ""
@@ -1515,11 +1559,11 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "Tipkovnična vez za preklopitev med senčenim in nesenčenim stanjem. "
-"Oblikovano je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. "
-"Razčlenilnik je precej toleranten in dopušča različno velikost črk ter "
-"okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost "
-"naastavite posebni niz \"disabled\", potem za to dejanje ne bo tipkovnične "
-"vezi."
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:125
 msgid ""
@@ -1530,12 +1574,12 @@ msgid ""
 "the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
 msgstr ""
-"Tipkovnična vez za preklopitev med tem ali je okno na vseh delovnih "
-"površinah ali na eni sami. Oblikovano je kot \"&lt;Control&gt;a\" ali \"&lt;"
-"Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"Tipkovnična vez za preklopitev med tem ali je okno na vseh delovnih površinah ali na eni sami. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
 "različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
-"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem za to "
-"dejanje ne bo tipkovnične vezi."
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:126
 msgid ""
@@ -1545,10 +1589,11 @@ msgid ""
 "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez za odrazpetje okna. Oblikovano je kot \"&lt;Control&gt;a\" "
-"ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in "
-"dopušča različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in "
-"\"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"Tipkovnična vez za odrazpetje okna. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
 "za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:127
@@ -1559,15 +1604,16 @@ msgstr "Ime namizja."
 msgid ""
 "The theme determines the appearance of window borders, titlebar, and so "
 "forth."
-msgstr "Tema določa izgled robov oken, naziva oken itd."
+msgstr ""
+"Tema določa izgled robov oken, naziva oken itd."
 
 #: src/metacity.schemas.in.h:129
 msgid ""
 "The time delay before raising a window if auto_raise is set to true. The "
 "delay is given in thousandths of a second."
 msgstr ""
-"Časovni premor preden se okno dvigne, kadar je auto_raise nastavljen na "
-"\"true\". Premor je podan v tisočinkah sekunde."
+"Časovni premor preden se okno dvigne, kadar je auto_raise nastavljen na \"true\". "
+"Premor je podan v tisočinkah sekunde."
 
 #: src/metacity.schemas.in.h:130
 msgid ""
@@ -1577,11 +1623,10 @@ msgid ""
 "and \"mouse\" means windows are focused when the mouse enters the window and "
 "unfocused when the mouse leaves the window."
 msgstr ""
-"Način fokusiranja oken določa kako se okna aktivirajo. Možnosti so tri; "
-"\"click\" pomeni, da morajo biti okna za pridobitev fokusa kliknjena. "
-"\"sloppy\" pomeni, da se okna fokusiranja, ko gre v njih miška, in \"mouse\" "
-"pomeni, da se okna fokusirajo, ko gre v njih miška in odfokusirajo, ko jih "
-"ta zapusti."
+"Način fokusiranja oken določa kako se okna aktivirajo. "
+"Možnosti so tri; \"click\" pomeni, da morajo biti okna za pridobitev fokusa "
+"kliknjena. \"sloppy\" pomeni, da se okna fokusiranja, ko gre v njih miška, "
+"in \"mouse\" pomeni, da se okna fokusirajo, ko gre v njih miška in odfokusirajo, ko jih ta zapusti."
 
 #: src/metacity.schemas.in.h:131
 msgid ""
@@ -1594,13 +1639,13 @@ msgid ""
 "set the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
 msgstr ""
-"Tipkovnična vez spremeni ali je okno nad ali pod ostalimi okni. Če je okno "
-"prekrito z drugim oknom, se okno dvigne, da je popolnoma vidno.Če je okno že "
-"popolnoma vidno, se spusti pod druga okna. Oblikovano je kot \"&lt;"
-"Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej "
-"toleranten in dopušča različno velikost črk ter okrajšave kot nrp. \"&lt;"
-"Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez spremeni ali je okno nad ali pod ostalimi okni. Če je okno prekrito z drugim oknom, se okno dvigne, da je popolnoma vidno."
+"Če je okno že popolnoma vidno, se spusti pod druga okna. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:132
 msgid ""
@@ -1610,11 +1655,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez spusti okno pod druga okna. Oblikovano je kot \"&lt;"
-"Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej "
-"toleranten in dopušča različno velikost črk ter okrajšave kot nrp. \"&lt;"
-"Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez spusti okno pod druga okna. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:133
 msgid ""
@@ -1624,11 +1670,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"Tipkovnična vez dvigne okno nad druga okna. Oblikovano je kot \"&lt;"
-"Control&gt;a\" ali \"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej "
-"toleranten in dopušča različno velikost črk ter okrajšave kot nrp. \"&lt;"
-"Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to možnost naastavite posebni niz "
-"\"disabled\", potem za to dejanje ne bo tipkovnične vezi."
+"Tipkovnična vez dvigne okno nad druga okna. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:134
 msgid ""
@@ -1639,12 +1686,12 @@ msgid ""
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
 msgstr ""
-"Tipkovnična vez spremeni velikost okna, da napolni vodoraven prostor, ki je "
-"na voljo. Oblikovano je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;"
-"Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča različno velikost "
-"črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to "
-"možnost naastavite posebni niz \"disabled\", potem za to dejanje ne bo "
-"tipkovnične vezi."
+"Tipkovnična vez spremeni velikost okna, da napolni vodoraven prostor, ki je na voljo. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:135
 msgid ""
@@ -1655,12 +1702,12 @@ msgid ""
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
 msgstr ""
-"Tipkovnična vez spremeni velikost okna, da napolni navpičen prostor, ki je "
-"na voljo. Oblikovano je kot \"&lt;Control&gt;a\" ali \"&lt;Shift&gt;&lt;"
-"Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča različno velikost "
-"črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;Ctrl&gt;\". Če v to "
-"možnost naastavite posebni niz \"disabled\", potem za to dejanje ne bo "
-"tipkovnične vezi."
+"Tipkovnična vez spremeni velikost okna, da napolni navpičen prostor, ki je na voljo. "
+"Oblikovano je kot \"&lt;Control&gt;a\" ali "
+"\"&lt;Shift&gt;&lt;Alt&gt;F1. Razčlenilnik je precej toleranten in dopušča "
+"različno velikost črk ter okrajšave kot nrp. \"&lt;Ctl&gt;\" in \"&lt;"
+"Ctrl&gt;\". Če v to možnost naastavite posebni niz \"disabled\", potem "
+"za to dejanje ne bo tipkovnične vezi."
 
 #: src/metacity.schemas.in.h:136
 msgid ""
@@ -1668,15 +1715,15 @@ msgid ""
 "Current valid options are 'toggle_shaded', which will shade/unshade the "
 "window, and 'toggle_maximized' which will maximize/unmaximize the window."
 msgstr ""
-"Ta možnost določa učinek dvojnega klika na nazivno vrstico okna. Trenutno "
-"veljavne možnosti so \"toggle_shaded\", ki spremeni senčenost okna in "
+"Ta možnost določa učinek dvojnega klika na nazivno vrstico okna. "
+"Trenutno veljavne možnosti so \"toggle_shaded\", ki spremeni senčenost okna in "
 "\"togle_maximized\", ki spremeni razpetost okna."
 
 #: src/metacity.schemas.in.h:137
 msgid "Toggle fullscreen mode"
-msgstr "Preklopi celozaslonski način"
+msgstr "Preklopi celozaslonski način"	# G:1 K:0 O:0
 
-# G:1 K:0 O:0
+
 #: src/metacity.schemas.in.h:138
 msgid "Toggle maximization state"
 msgstr "Preklopi stanje razpetja"
@@ -1703,9 +1750,9 @@ msgstr "Način fokusiranja oken"
 
 #: src/metacity.schemas.in.h:144
 msgid "Window title font"
-msgstr "Pisava naziva okna"
+msgstr "Pisava naziva okna"	# G:1 K:0 O:0
 
-# G:1 K:0 O:0
+
 #: src/prefs.c:422 src/prefs.c:438 src/prefs.c:454 src/prefs.c:470
 #: src/prefs.c:486 src/prefs.c:506 src/prefs.c:522 src/prefs.c:538
 #: src/prefs.c:554 src/prefs.c:570 src/prefs.c:586 src/prefs.c:602
@@ -1720,8 +1767,7 @@ msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
 "modifier\n"
 msgstr ""
-"\"%s\", ki je bil najden v podatkovni zbirki nastavitev ni veljaven "
-"spremenilnik za miškine gumbe.\n"
+"\"%s\", ki je bil najden v podatkovni zbirki nastavitev ni veljaven spremenilnik za miškine gumbe.\n"
 
 #: src/prefs.c:736 src/prefs.c:1103
 #, c-format
@@ -1747,8 +1793,7 @@ msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
 msgstr ""
-"Obhodi za pokvarjene programe so izključeni. Nekateri programi se morda ne "
-"bodo pravilno obnašali.\n"
+"Obhodi za pokvarjene programe so izključeni. Nekateri programi se morda ne bodo pravilno obnašali.\n"
 
 #: src/prefs.c:1130
 #, c-format
@@ -1766,8 +1811,8 @@ msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
 "\"%s\"\n"
 msgstr ""
-"\"%s\" najden v podatkovni zbirki nastavitev ni veljaven ključ za "
-"tipkovnično vez \"%s\"\n"
+"\"%s\" najden v podatkovni zbirki nastavitev ni veljaven ključ za tipkovnično vez "
+"\"%s\"\n"
 
 #: src/prefs.c:1750
 #, c-format
@@ -1791,7 +1836,7 @@ msgid ""
 "replace option to replace the current window manager.\n"
 msgstr ""
 "Zaslon %d na prikazu \"%s\" že ima upravljalnik oken; poskušajte uporabiti "
-"možnost --replace za zamenjavo trenutnega upravljalnika zaslona.\n"
+"možnost --replace za zamenjavo trenutnega upravljalnika zaslona.\n" 
 
 #: src/screen.c:449
 #, c-format
@@ -1816,15 +1861,15 @@ msgid ""
 "Failed to a open connection to a session manager, so window positions will "
 "not be saved: %s\n"
 msgstr ""
-"Nisem uspel odpreti povezave z upravljalnikom seje, zato se položaji oken ne "
-"bodo shranili: %s\n"
+"Nisem uspel odpreti povezave z upravljalnikom seje, zato se položaji oken "
+"ne bodo shranili: %s\n"
 
 #: src/session.c:881 src/session.c:888
 #, c-format
 msgid "Could not create directory '%s': %s\n"
-msgstr "Nisem mogel ustvariti imenika %s %s\n"
+msgstr "Nisem mogel ustvariti imenika %s %s\n"	# G:2 K:0 O:0
 
-# G:2 K:0 O:0
+
 #: src/session.c:898
 #, c-format
 msgid "Could not open session file '%s' for writing: %s\n"
@@ -1889,8 +1934,7 @@ msgid ""
 "Error launching metacity-dialog to warn about apps that don't support "
 "session management: %s\n"
 msgstr ""
-"Napaka ob zaganjanju metacity-dialog za opozorilo o programih, ki ne "
-"podpirajo upravljanja seje: %s\n"
+"Napaka ob zaganjanju metacity-dialog za opozorilo o programih, ki ne podpirajo upravljanja seje: %s\n"
 
 #: src/theme-parser.c:224 src/theme-parser.c:242
 #, c-format
@@ -1935,8 +1979,7 @@ msgstr "Kot mora biti med 0.0 in 360.0, bil pa je %g\n"
 #: src/theme-parser.c:638
 #, c-format
 msgid "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g\n"
-msgstr ""
-"Alfa mora biti med 0.0 (nevidno) in 1.0 (popolnoma vidno), bilo je %g\n"
+msgstr "Alfa mora biti med 0.0 (nevidno) in 1.0 (popolnoma vidno), bilo je %g\n"
 
 #: src/theme-parser.c:684
 #, c-format
@@ -1944,8 +1987,8 @@ msgid ""
 "Invalid title scale \"%s\" (must be one of xx-small,x-small,small,medium,"
 "large,x-large,xx-large)\n"
 msgstr ""
-"Neveljavna velikost naziva \"%s\" (mora biti eno od xx-small,x-small,small,"
-"medium,large,x-large,xx-large)\n"
+"Neveljavna velikost naziva \"%s\" (mora biti eno od xx-small,x-small,small,medium,"
+"large,x-large,xx-large)\n"
 
 #: src/theme-parser.c:729 src/theme-parser.c:737 src/theme-parser.c:2936
 #: src/theme-parser.c:3025 src/theme-parser.c:3032 src/theme-parser.c:3039
@@ -2038,8 +2081,7 @@ msgstr "Element <%s> nima atributa \"value\""
 msgid ""
 "Cannot specify both button_width/button_height and aspect ratio for buttons"
 msgstr ""
-"Ni mogoče navesti obojega \"button_width\"/\"button_height\" in razmerje "
-"aspect ratio za gumbe"
+"Ni mogoče navesti obojega \"button_width\"/\"button_height\" in razmerje aspect ratio za gumbe"
 
 #: src/theme-parser.c:1343
 #, c-format
@@ -2310,24 +2352,24 @@ msgid ""
 "Can't have a two draw_ops for a <piece> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
 msgstr ""
-"Za element <piece> ni mogoče imeti dveh draw_ops (tema je navedla atribut "
-"draw_ops in hkrati element <draw_ops> ali navedena dva elementa)"
+"Za element <piece> ni mogoče imeti dveh draw_ops (tema je navedla atribut draw_ops "
+"in hkrati element <draw_ops> ali navedena dva elementa)"
 
 #: src/theme-parser.c:3574
 msgid ""
 "Can't have a two draw_ops for a <button> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
 msgstr ""
-"Za element <button> ni mogoče imeti dveh draw_ops (tema je navedla atribut "
-"draw_ops in hkrati element <draw_ops> ali navedena dva elementa)"
+"Za element <button> ni mogoče imeti dveh draw_ops (tema je navedla atribut draw_ops "
+"in hkrati element <draw_ops> ali navedena dva elementa)"
 
 #: src/theme-parser.c:3612
 msgid ""
 "Can't have a two draw_ops for a <menu_icon> element (theme specified a "
 "draw_ops attribute and also a <draw_ops> element, or specified two elements)"
 msgstr ""
-"Za element <menu_icon> ni mogoče imeti dveh draw_ops (tema je navedla "
-"atribut draw_ops in hkrati element <draw_ops> ali navedena dva elementa)"
+"Za element <menu_icon> ni mogoče imeti dveh draw_ops (tema je navedla atribut draw_ops "
+"in hkrati element <draw_ops> ali navedena dva elementa)"
 
 #: src/theme-parser.c:3659
 #, c-format
@@ -2412,24 +2454,23 @@ msgstr "Datoteka teme %s ne vsebuje korenskega elementa <metacity_theme>"
 
 #: src/theme.c:202
 msgid "top"
-msgstr "zgoraj"
+msgstr "zgoraj"	# G:12 K:5 O:0
 
-# G:12 K:5 O:0
+
 #: src/theme.c:204
 msgid "bottom"
-msgstr "spodaj"
+msgstr "spodaj"	# G:10 K:4 O:0
 
-# G:10 K:4 O:0
+
 #: src/theme.c:206
 msgid "left"
-msgstr "levo"
+msgstr "levo"	# G:1 K:0 O:0
 
-# G:1 K:0 O:0
+
 #: src/theme.c:208
 msgid "right"
-msgstr "desno"
+msgstr "desno"	# G:1 K:0 O:0
 
-# G:1 K:0 O:0
 #: src/theme.c:222
 #, c-format
 msgid "frame geometry does not specify \"%s\" dimension"
@@ -2459,8 +2500,8 @@ msgid ""
 "GTK color specification must have the state in brackets, e.g. gtk:fg[NORMAL] "
 "where NORMAL is the state; could not parse \"%s\""
 msgstr ""
-"Navedba barve GTK mora vsebovati stanje v oglatih oklepajih, npr. gtk:fg"
-"[NORMAL], kjer je NORMAL stanje; ne morem razčleniti \"%s\""
+"Navedba barve GTK mora vsebovati stanje v oglatih oklepajih, npr. gtk:fg[NORMAL], "
+"kjer je NORMAL stanje; ne morem razčleniti \"%s\""
 
 #: src/theme.c:989
 #, c-format
@@ -2487,8 +2528,7 @@ msgid ""
 "Blend format is \"blend/bg_color/fg_color/alpha\", \"%s\" does not fit the "
 "format"
 msgstr ""
-"Oblika zapisa preliva je \"blend/bg_color/fg_color/alpha\", \"%s\" ne "
-"ustreza pravilni obliki"
+"Oblika zapisa preliva je \"blend/bg_color/fg_color/alpha\", \"%s\" ne ustreza pravilni obliki"
 
 #: src/theme.c:1054
 #, c-format
@@ -2505,8 +2545,7 @@ msgstr "V prelivni barvi alfa vrednost \"%s\" ni med 0.0 in 1.0"
 msgid ""
 "Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
 msgstr ""
-"Oblika zapisa barve senčenja je \"shade/base_color/factor\", \"%s\" ne "
-"ustreza pravilni obliki."
+"Oblika zapisa barve senčenja je \"shade/base_color/factor\", \"%s\" ne ustreza pravilni obliki."
 
 #: src/theme.c:1122
 #, c-format
@@ -2534,8 +2573,7 @@ msgid ""
 "Coordinate expression contains floating point number '%s' which could not be "
 "parsed"
 msgstr ""
-"Izraz kordinat vsebuje številko s plavajočo vejico '%s', ki ne more biti "
-"razčlenjena"
+"Izraz kordinat vsebuje številko s plavajočo vejico '%s', ki ne more biti razčlenjena"
 
 #: src/theme.c:1464
 #, c-format
@@ -2547,7 +2585,9 @@ msgstr "Izraz kordinat vsebuje celo število '%s', ki ga ni mogoče razčleniti"
 msgid ""
 "Coordinate expression contained unknown operator at the start of this text: "
 "\"%s\""
-msgstr "Izraz kordinat vsebuje neznan operator na pričetku besedila: \"%s\""
+msgstr ""
+"Izraz kordinat vsebuje neznan operator na pričetku besedila: "
+"\"%s\""
 
 #: src/theme.c:1588
 msgid "Coordinate expression was empty or not understood"
@@ -2567,7 +2607,8 @@ msgstr ""
 #, c-format
 msgid ""
 "Coordinate expression has an operator \"%s\" where an operand was expected"
-msgstr "Izraz kordinat vsebuje operator \"%s\", kjer je pričakovan operand"
+msgstr ""
+"Izraz kordinat vsebuje operator \"%s\", kjer je pričakovan operand"
 
 #: src/theme.c:1845
 msgid "Coordinate expression had an operand where an operator was expected"
@@ -2583,16 +2624,15 @@ msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
 "operand in between"
 msgstr ""
-"Izraz kordinat vsebuje operator \"%c\", ki sledi operatorju \"%c\", brez "
-"vmesnega operanda"
+"Izraz kordinat vsebuje operator \"%c\", ki sledi operatorju \"%c\", brez vmesnega operanda"
 
 #: src/theme.c:1982
 msgid ""
 "Coordinate expression parser overflowed its buffer, this is really a "
 "Metacity bug, but are you sure you need a huge expression like that?"
 msgstr ""
-"Razčlenilnik izraza kodrinat je prekoračil svoj izravnalnik, to je hrošč v "
-"Metacity, ampak ali zares potrebujete tak izraz?"
+"Razčlenilnik izraza kodrinat je prekoračil svoj izravnalnik, "
+"to je hrošč v Metacity, ampak ali zares potrebujete tak izraz?"
 
 #: src/theme.c:2011
 msgid "Coordinate expression had a close parenthesis with no open parenthesis"
@@ -2622,8 +2662,7 @@ msgid ""
 "<button function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> must be "
 "specified for this frame style"
 msgstr ""
-"za ta slog okvirja mora biti naveden <button function=\"%s\" state=\"%s\" "
-"draw_ops=\"karkoli\"/>"
+"za ta slog okvirja mora biti naveden <button function=\"%s\" state=\"%s\" draw_ops=\"karkoli\"/>"
 
 #: src/theme.c:4362 src/theme.c:4394
 #, c-format
@@ -2631,6 +2670,7 @@ msgid ""
 "Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
 msgstr ""
 "Manjka <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"karkoli\"/>"
+
 
 #: src/theme.c:4445
 #, c-format
@@ -2649,8 +2689,8 @@ msgid ""
 "No frame style set for window type \"%s\" in theme \"%s\", add a <window "
 "type=\"%s\" style_set=\"whatever\"/> element"
 msgstr ""
-"Slog okvirja za okno vrste \"%s\" v temi \"%s\" ni nastavljen, dodajte "
-"element <window type=\"%s\" style_set=\"whatever\"/>"
+"Slog okvirja za okno vrste \"%s\" v temi \"%s\" ni nastavljen, dodajte element <window "
+"type=\"%s\" style_set=\"whatever\"/>"
 
 #: src/theme.c:4651
 #, c-format
@@ -2658,8 +2698,7 @@ msgid ""
 "<menu_icon function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> must be "
 "specified for this theme"
 msgstr ""
-"Za to temo mora biti naveden <menu_icon function=\"%s\" state=\"%s\" "
-"draw_ops=\"karkoli\"/>"
+"Za to temo mora biti naveden <menu_icon function=\"%s\" state=\"%s\" draw_ops=\"karkoli\"/>"
 
 #: src/theme.c:5038 src/theme.c:5100
 #, c-format
@@ -2687,9 +2726,9 @@ msgstr "_Klik za fokus"
 
 #: src/tools/metacity-properties.glade.h:2
 msgid "Focus behavior:"
-msgstr "Obnašanje fokusa:"
+msgstr "Obnašanje fokusa:"	# G:1 K:0 O:0
 
-# G:1 K:0 O:0
+
 #: src/tools/metacity-properties.glade.h:3
 msgid "Window Focus Preferences"
 msgstr "Nastavitve fokusa oken"
@@ -2719,9 +2758,9 @@ msgstr "Odpru dnevniško datoteko %s\n"
 
 #: src/util.c:203
 msgid "Window manager: "
-msgstr "Upravljalnik oken: "
+msgstr "Upravljalnik oken: "	# G:4 K:0 O:0
 
-# G:4 K:0 O:0
+
 #: src/util.c:347
 msgid "Bug in window manager: "
 msgstr "Hrošč v upravljalniku oken: "
@@ -2762,9 +2801,8 @@ msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
 "d x %d and max size %d x %d; this doesn't make much sense.\n"
 msgstr ""
-"Okno %s nastavi namig MWM, ki pove, da se mu ne da spremeniti velikosti, "
-"anastavi najmanjšo velikost na %d x %d in največjo na %d x %d; to nima "
-"smilsa.\n"
+"Okno %s nastavi namig MWM, ki pove, da se mu ne da spremeniti velikosti, a"
+"nastavi najmanjšo velikost na %d x %d in največjo na %d x %d; to nima smilsa.\n"
 
 #: src/xprops.c:153
 #, c-format
@@ -2791,5 +2829,14 @@ msgstr "Lastnost %s okna 0x%lx vsebuje neveljaven znak UTF-8\n"
 msgid ""
 "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
 msgstr ""
-"Lastnost %s okna 0x%lx vsebuje neveljaven znak UTF-8 za %d. predmet na "
-"seznamu\n"
+"Lastnost %s okna 0x%lx vsebuje neveljaven znak UTF-8 za %d. predmet na seznamu\n"
+
+# Smart report:
+# Total untranslated messages in file: 391 
+# Translations made:
+# full: 27
+# smart: 2
+# cond: 42
+# total: 71 ; distinct: 39
+
+
