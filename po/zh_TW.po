@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity 2.8.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-11 08:59-0700\n"
+"POT-Creation-Date: 2004-12-06 11:36-0700\n"
 "PO-Revision-Date: 2004-09-11 19:26+0800\n"
 "Last-Translator: Woodman Tuen <woodman@culurecom.com.hk>\n"
 "Language-Team: Chinese (traditioanl) <zh-l10n@linux.org.tw>\n"
@@ -98,19 +98,19 @@ msgstr "視窗最大化"
 msgid "Unmaximize Window"
 msgstr "視窗還原最大化"
 
-#: src/keybindings.c:989
+#: src/keybindings.c:987
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
 "binding\n"
 msgstr "其它程式已經使用了按鍵 %s 加上特殊按鍵 %x 作為按鍵組合\n"
 
-#: src/keybindings.c:2529
+#: src/keybindings.c:2553
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr "當嘗試啟動 metacity-dialog 來顯示某指令的錯誤訊息時出現錯誤：%s\n"
 
-#: src/keybindings.c:2602
+#: src/keybindings.c:2626
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "並未定義任何指令 %d。\n"
@@ -1872,7 +1872,7 @@ msgstr "無法在畫面“%2$s”中的第 %1$d 個螢幕進行視窗總管選�
 msgid "Screen %d on display \"%s\" already has a window manager\n"
 msgstr "畫面“%2$s”中的第 %1$d 個螢幕已經有了視窗總管\n"
 
-#: src/screen.c:701
+#: src/screen.c:699
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "無法釋放畫面“%2$s”中的第 %1$d 個螢幕\n"
@@ -2972,7 +2972,7 @@ msgid "Application set a bogus _NET_WM_PID %ld\n"
 msgstr "程式設定了多餘的 _NET_WM_PID %ld\n"
 
 #. first time through
-#: src/window.c:4939
+#: src/window.c:4940
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -2988,7 +2988,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5610
+#: src/window.c:5611
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"

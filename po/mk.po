@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity.HEAD.mk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-11 08:59-0700\n"
+"POT-Creation-Date: 2004-12-06 11:36-0700\n"
 "PO-Revision-Date: 2004-09-11 22:44+0200\n"
 "Last-Translator: Arangel Angov <ufo@linux.net.mk>\n"
 "Language-Team: Macedonian <ossm-members@hedona.on.net.mk>\n"
@@ -108,7 +108,7 @@ msgstr "Зголеми прозорец"
 msgid "Unmaximize Window"
 msgstr "Намали прозорец"
 
-#: src/keybindings.c:989
+#: src/keybindings.c:987
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
@@ -117,13 +117,13 @@ msgstr ""
 "Некоја друга програма веќе го користи тоа копче %s со изменувачи %x како "
 "биндинг\n"
 
-#: src/keybindings.c:2529
+#: src/keybindings.c:2553
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr ""
 "Грешка при отворањето на metacity-дијалог да печати грешка за команда: %s\n"
 
-#: src/keybindings.c:2602
+#: src/keybindings.c:2626
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "Ниедна команда %d не е дефинирана.\n"
@@ -2062,7 +2062,7 @@ msgstr ""
 msgid "Screen %d on display \"%s\" already has a window manager\n"
 msgstr "Екран %d на приказ \"%s\" веќе има менаџер на прозорец\n"
 
-#: src/screen.c:701
+#: src/screen.c:699
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "Не можам да отпуштам екран %d на приказ \"%s\"\n"
@@ -3186,7 +3186,7 @@ msgid "Application set a bogus _NET_WM_PID %ld\n"
 msgstr "Апликацијата намести лажно _NET_WM_PID %ld\n"
 
 #. first time through
-#: src/window.c:4939
+#: src/window.c:4940
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -3202,7 +3202,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5610
+#: src/window.c:5611
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"

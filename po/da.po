@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-11-23 13:38+0100\n"
+"POT-Creation-Date: 2004-12-06 11:36-0700\n"
 "PO-Revision-Date: 2004-07-30 20:40+0200\n"
 "Last-Translator: Martin Willemoes Hansen <mwh@sysrq.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -54,7 +54,8 @@ msgstr "Fejl ved læsning fra vinduesprocessen: %s\n"
 msgid ""
 "Error launching metacity-dialog to ask about killing an application: %s\n"
 msgstr ""
-"Fejl ved start af metacity-dialog for at spørge om at afslutte et program: %s\n"
+"Fejl ved start af metacity-dialog for at spørge om at afslutte et program: %"
+"s\n"
 
 #: src/delete.c:452
 #, c-format

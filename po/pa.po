@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity.HEAD.pa\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-11 08:59-0700\n"
+"POT-Creation-Date: 2004-12-06 11:36-0700\n"
 "PO-Revision-Date: 2004-08-09 16:08+0530\n"
 "Last-Translator: Amanpreet Singh Alam <aalam@redhat.com>\n"
 "Language-Team: Punjabi <pa@li.org>\n"
@@ -104,19 +104,19 @@ msgstr "ਝਰੋਖਾ ਅਧਿਕਤਮ"
 msgid "Unmaximize Window"
 msgstr "ਝਰੋਖਾਂ ਅਧਿਕਤਮ ਨਾ ਕਰੋ"
 
-#: src/keybindings.c:989
+#: src/keybindings.c:987
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
 "binding\n"
 msgstr "ਕੋਈ ਹੋਰ ਕਾਰਜ %s ਸਵਿੱਚ ਨੂੰ  %x ਸੋਧਕ ਨਾਲ ਪਹਿਲਾਂ ਹੀ ਜੋੜ ਵਾਂਗ ਵਰਤ ਰਿਹਾ ਹੈ\n"
 
-#: src/keybindings.c:2529
+#: src/keybindings.c:2553
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr "ਕਮਾਂਡ ਬਾਰੇ ਗਲਤੀ ਛਾਪਣ ਵਾਲੇ ਮੈਟਾਸਿਟੀ ਤਖਤੀ ਨੂੰ ਸ਼ੁਰੂ ਕਰਨ ਵਿੱਚ ਗਲਤੀ: %s \n"
 
-#: src/keybindings.c:2602
+#: src/keybindings.c:2626
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "ਕੋਈ ਕਮਾਂਡ %d ਪਰਭਾਸ਼ਿਤ ਨਹੀ ਕੀਤੀ|\n"
@@ -1921,7 +1921,7 @@ msgstr "%d ਪਰਦੇ ਤੇ ਦਰਿਸ਼ \"%s\"  ਉੱਪਰ ਝਰੋਖਾ
 msgid "Screen %d on display \"%s\" already has a window manager\n"
 msgstr " ਪਰਦੇ %d ਤੇ ਦਰਿਸ਼ '%s' ਉੱਪਰ ਕੋਲ ਪਹਿਲਾਂ ਹੀ ਝਰੋਖਾ ਪ੍ਰਬੰਧਕ ਹੈ\n"
 
-#: src/screen.c:701
+#: src/screen.c:699
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr " ਪਰਦੇ %d ਤੇ  ਦਰਿਸ਼ '%s'ਵਿਖਾਵੇ ਉੱਪਰ ਪਰਸਾਰਿਤ ਨਹੀਂ ਕਰ ਸਕਿਆ\n"
@@ -3019,7 +3019,7 @@ msgid "Application set a bogus _NET_WM_PID %ld\n"
 msgstr "ਕਾਰਜ ਨੇ ਇੱਕ ਨਕਲੀ _NET_WM_PID %ld ਨਿਰਧਾਰਿਤ ਕੀਤਾ\n"
 
 #. first time through
-#: src/window.c:4939
+#: src/window.c:4940
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -3035,7 +3035,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5610
+#: src/window.c:5611
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"

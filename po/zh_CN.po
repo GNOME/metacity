@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-11 08:59-0700\n"
+"POT-Creation-Date: 2004-12-06 11:36-0700\n"
 "PO-Revision-Date: 2004-03-12 23:37+0800\n"
 "Last-Translator: Funda Wang <fundawang@linux.net.cn>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
@@ -101,19 +101,19 @@ msgstr "最大化窗口"
 msgid "Unmaximize Window"
 msgstr "取消最大化窗口"
 
-#: src/keybindings.c:989
+#: src/keybindings.c:987
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
 "binding\n"
 msgstr "某个其它程序已经将按键 %s 和修饰键 %x 配合使用作为一种组合\n"
 
-#: src/keybindings.c:2529
+#: src/keybindings.c:2553
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr "用 metacity-dialog 输出一个命令错误消息时出错：%s\n"
 
-#: src/keybindings.c:2602
+#: src/keybindings.c:2626
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "命令 %d 尚未定义。\n"
@@ -1861,7 +1861,7 @@ msgstr "无法获得显示“%2$s”上的屏幕 %1$d 的窗口管理器选定�
 msgid "Screen %d on display \"%s\" already has a window manager\n"
 msgstr "显示“%2$s”上的屏幕 %1$d 已经有一个窗口管理器\n"
 
-#: src/screen.c:701
+#: src/screen.c:699
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "无法释放显示“%2$s”上的屏幕 %1$d\n"
@@ -2958,7 +2958,7 @@ msgid "Application set a bogus _NET_WM_PID %ld\n"
 msgstr "应用程序设置一个假的 _NET_WM_PID %ld\n"
 
 #. first time through
-#: src/window.c:4939
+#: src/window.c:4940
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -2974,7 +2974,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5610
+#: src/window.c:5611
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"

@@ -3,10 +3,13 @@ AC_INIT(src/display.c)
 
 AM_CONFIG_HEADER(config.h)
 
+# Fibonacci sequence for micro version numbering:
+# 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987
+
 # we'll hold the 2.8.x versioning for GNOME 2.8, it was also used
 # for GNOME 2.6, then after GNOME 2.8 we'll have the numbers synced
 # with GNOME
-AM_INIT_AUTOMAKE(metacity, 2.8.7)
+AM_INIT_AUTOMAKE(metacity, 2.8.8)
 
 # Honor aclocal flags
 ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"

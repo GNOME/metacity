@@ -1,3 +1,31 @@
+2.8.8
+==
+
+This is a stable release for Gnome 2.8.2.
+
+Thanks Rob Adams, Anders Carlsson, Elijah Newren, and Soeren Sandmann,
+for fixes in this release.
+
+Fixes
+  * Correct the requested number of keycodes (Rob) [#155247]
+  * Make the "showing desktop" mode be per-workspace instead of
+    per-screen. (Elijah) [#142198]
+  * Don't try to use an ARGB visual at all if the depth isn't
+    32-bit. This caused major slowdowns with Composite
+    enabled. (Anders)
+  * Fix the modifier key breakage introduced by an Xorg
+    change. (Soeren) [#151554]
+  * Fix the alt-tab order--if the most recently used window is not
+    focused, start alt tabbing with that window instead of the one
+    after it (Elijah) [#156251]
+  * Use only numbers from the Fibonacci sequence for micro version
+    numbers at Havoc's request (thus the reason this is 2.8.8 instead
+    of 2.8.7--2.8.4 and 2.8.6 were mistakes that didn't comply with
+    this requirement)
+
+Translations
+  * da(Martin Willemoes Hansen), fr(Christophe Merlet, Baptiste Mille-Mathias)
+
 2.8.6
 ==
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity.HEAD.hi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-11 08:59-0700\n"
+"POT-Creation-Date: 2004-12-06 11:36-0700\n"
 "PO-Revision-Date: 2004-07-18 14:18+0530\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@yahoo.com>\n"
 "Language-Team: Hindi <indlinux-hindi@lists.sourceforge.net>\n"
@@ -102,7 +102,7 @@ msgstr "विंडो अधिकतम करें"
 msgid "Unmaximize Window"
 msgstr "विंडो अधिकतम खत्म करें"
 
-#: src/keybindings.c:989
+#: src/keybindings.c:987
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
@@ -110,12 +110,12 @@ msgid ""
 msgstr ""
 "कोई अन्य प्रोग्राम पहले से ही कुंजी %s उपयोग में ले रहा है, परिवर्धक %x बाइंडिंग के रूप में \n"
 
-#: src/keybindings.c:2529
+#: src/keybindings.c:2553
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr "कमांड: %s  हेतु हुई त्रुटि मुद्रण हेतु मेटासिटी-संवाद प्रारंभ करने में त्रुटि हुई\n"
 
-#: src/keybindings.c:2602
+#: src/keybindings.c:2626
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "कोई कमांड %d पारिभाषित नहीं है.\n"
@@ -2058,7 +2058,7 @@ msgstr "स्क्रीन %d प्रदर्शक \"%s\" पर वि�
 msgid "Screen %d on display \"%s\" already has a window manager\n"
 msgstr "स्क्रीन %d जो प्रदर्शक \"%s\" पर है वहां पहले ही विंडो प्रबंधक है\n"
 
-#: src/screen.c:701
+#: src/screen.c:699
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "स्क्रीन %d जो प्रदर्शक \"%s\" पर है को मुक्त नहीं कर सका\n"
@@ -3162,7 +3162,7 @@ msgstr "अनुप्रयोग ने नियत किया एक bogu
 
 #  first time through
 #. first time through
-#: src/window.c:4939
+#: src/window.c:4940
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -3184,7 +3184,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/window.c:5610
+#: src/window.c:5611
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
