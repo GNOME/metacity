@@ -69,4 +69,7 @@ meta_compositor_set_translucent (MetaCompositor *compositor,
 gboolean
 meta_compositor_repair_now (MetaCompositor *compositor);
 
+XID
+meta_compositor_get_gl_window (MetaCompositor *compositor);
+
 #endif /* META_COMPOSITOR_H */

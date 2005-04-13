@@ -94,6 +94,10 @@ metacity_SOURCES=				\
 	workspace.h				\
 	xprops.c				\
 	xprops.h				\
+	lmcbits.c				\
+	lmcbits.h				\
+	lmctexture.c				\
+	lmctexture.h				\
 	$(EGGFILES)
 
 # by setting libmetacity_private_la_CFLAGS, the files shared with
@@ -135,7 +139,7 @@ bin_PROGRAMS=metacity metacity-theme-viewer
 libexec_PROGRAMS=metacity-dialog
 
 EFENCE=
-metacity_LDADD=@METACITY_LIBS@ $(EFENCE)
+metacity_LDADD=@METACITY_LIBS@ $(EFENCE) -lGL -lGLU
 metacity_theme_viewer_LDADD= @METACITY_LIBS@ libmetacity-private.la
 metacity_dialog_LDADD=@METACITY_LIBS@
 

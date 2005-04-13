@@ -1,3 +1,10 @@
+Wed Apr 13 14:39:54 2005  Søren Sandmann  <sandmann@redhat.com>
+
+	* Commit first attempt at using GL
+
+	For to those following along at home: It won't work unless you
+	patch your X server.
+
 Mon Mar 28 15:34:37 2005  Søren Sandmann  <sandmann@redhat.com>
 
 	* Merge changes on head.

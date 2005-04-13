@@ -5,6 +5,8 @@
 #include <glib.h>
 #include "screen.h"
 
+#define USE_RENDER 0
+
 typedef struct CWindow CWindow;
 typedef struct Quad Quad;
 typedef struct Point Point;
@@ -98,7 +100,8 @@ void            cwindow_process_damage_notify        (CWindow            *cwindo
 void            cwindow_process_configure_notify     (CWindow            *cwindow,
 						      XConfigureEvent    *event);
 void            cwindow_draw                         (CWindow            *cwindow,
-						      Picture             destination);
+						      Picture             destination,
+						      XserverRegion	  clip);
 void		cwindow_freeze			     (CWindow		 *cwindow);
 void		cwindow_thaw			     (CWindow		 *cwindow);
 void		cwindow_set_translucent (CWindow *cwindow, gboolean translucent);
