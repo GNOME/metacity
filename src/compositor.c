@@ -294,6 +294,9 @@ meta_compositor_unref (MetaCompositor *compositor)
 #endif /* HAVE_COMPOSITE_EXTENSIONS */
 }
 
+double tmp;
+static double last;
+static GTimer *timer ;
 
 #ifdef HAVE_COMPOSITE_EXTENSIONS
 static void
@@ -324,13 +327,19 @@ draw_windows (MetaCompositor *compositor,
       
       XFixesDestroyRegion (dpy, opaque);
     }
-  
+
   draw_windows (compositor, screen, list->next, region_below, picture);
   
   XFixesDestroyRegion (dpy, region_below);
   
   if (cwindow_get_viewable (cwindow) && cwindow_get_xwindow (cwindow) != compositor->gl_window)
+  {
       cwindow_draw (cwindow, picture, damaged_region);
+#if 0
+      g_print ("drawing a window: %f\n", (tmp = g_timer_elapsed (timer, NULL)) - last);
+      last = tmp;
+#endif
+  }
 }
 
 static Picture
@@ -454,7 +463,7 @@ do_paint_screen (MetaCompositor *compositor,
       glDisable (GL_TEXTURE_2D);
       glDisable (GL_BLEND);
 
-      glViewport (0, 0, 1600, 1200);
+      glViewport (0, 0, screen->width, screen->height);
 
 #if 0
       glClearColor (0.0, 0.5, 0.5, 0.0);
@@ -503,9 +512,17 @@ do_paint_screen (MetaCompositor *compositor,
 
       glLoadIdentity();
       
-      gluOrtho2D (0, 1600, 1200, 0);
+      gluOrtho2D (0, screen->width, screen->height, 0);
       glDisable (GL_SCISSOR_TEST);
   }
+      
+  if (!timer)
+      timer = g_timer_new ();
+
+#if 0
+  g_print ("outside: %f\n", (tmp = g_timer_elapsed (timer, NULL)) - last);
+  last = tmp;
+#endif
       
   draw_windows (compositor, screen, screen->compositor_windows, region, picture);
   if (USE_RENDER)
@@ -520,8 +537,25 @@ do_paint_screen (MetaCompositor *compositor,
       
       /* FIXME: we should probably grab the server around the raise/swap */
       XRaiseWindow (compositor->display->xdisplay, compositor->gl_window);
+
+#if 0
+      g_print ("painting window: %f\n", (tmp = g_timer_elapsed (timer, NULL)) - last);
+      last = tmp;
+#endif
+      
       glXSwapBuffers (screen->display->xdisplay, compositor->gl_window);
+
+      g_print ("in swap: %f\n", (tmp = g_timer_elapsed (timer, NULL)) - last);
+      last = tmp;
+      
+#if 0
       glFinish();
+#endif
+
+#if 0
+      g_print ("inside: %f\n", (tmp = g_timer_elapsed (timer, NULL)) - last);
+      last = tmp;
+#endif
       
 #if 0
       XGCValues values;
@@ -794,7 +828,9 @@ process_configure_notify (MetaCompositor  *compositor,
   
   cwindow = g_hash_table_lookup (compositor->window_hash,
                                  &event->window);
+#if 0
   g_print ("configure: %lx above %lx\n", event->window, event->above);
+#endif
   
   if (cwindow == NULL)
   {
@@ -802,7 +838,9 @@ process_configure_notify (MetaCompositor  *compositor,
       return;
   }
 
+#if 0
   g_print ("gl window: %lx\n", compositor->gl_window);
+#endif
 
   handle_restacking (compositor, cwindow,
 		     g_hash_table_lookup (compositor->window_hash, &event->above));
@@ -1349,13 +1387,16 @@ meta_compositor_manage_screen (MetaCompositor *compositor,
       
       XVisualInfo *visual = init_gl (compositor->display->xdisplay, 0, &context);
 
+#if 0
       g_print ("dfepth: %d\n", visual->depth);
       g_print ("visual: %lx\n", visual->visualid);
+#endif
 
       attr.colormap = XCreateColormap(compositor->display->xdisplay, screen->xroot, visual->visual,
 				      AllocNone);
       
-      w = XCreateWindow (compositor->display->xdisplay, screen->xroot, 0, 0, 1600, 1200, 0,
+      w = XCreateWindow (compositor->display->xdisplay, screen->xroot, 0, 0,
+			 screen->width, screen->height, 0,
 			 visual->depth, InputOutput, visual->visual, 
 			 CWColormap, &attr);
 

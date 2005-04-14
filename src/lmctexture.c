@@ -1,6 +1,9 @@
+#include "config.h"
 #include "lmctexture.h"
 #include <string.h>
 #include <GL/glu.h>
+#include "lmctypes.h"
+#include "screen.h"
 
 typedef struct Tile Tile;
 
@@ -10,6 +13,8 @@ struct Tile
     GLuint	 texture;
 };
 
+#define WOBBLE_TILE_SIZE 16
+
 struct _LmcTexture
 {
     /*< private >*/
@@ -18,25 +23,31 @@ struct _LmcTexture
     LmcBits *bits;
     
     GList *tiles;
+
+    gint grid_width;
+    gint grid_height;
+
+    LmcPoint *grid;
 };
 
 static int
 get_max_texture_width (void)
 {
-    return 512;
+    return 128;
     return GL_MAX_TEXTURE_SIZE;
 }
 
 static int
 get_max_texture_height (void)
 {
-    return 512;
+    return 128;
     return GL_MAX_TEXTURE_SIZE;
 }
 
 static void
 dump_error (const char *context)
 {
+#if 0
   /* glGetError() is a server roundtrip */
   GLenum err;
 
@@ -46,6 +57,7 @@ dump_error (const char *context)
       const GLubyte *message = gluErrorString (err);
       g_warning ("GL Error: %s [at %s]\n", message, context);
   }
+#endif
 }
 
 static int
@@ -575,7 +587,7 @@ region_intersects_rect (GdkRegion *region, GdkRectangle *rect)
 static void
 print_gdk_region (const char *name, GdkRegion *region)
 {
-    GdkRectangle *rects;
+  GdkRectangle *rects;
   int i, n_rects;
   
   gdk_region_get_rectangles (region, &rects, &n_rects);
@@ -584,6 +596,97 @@ print_gdk_region (const char *name, GdkRegion *region)
   for (i = 0; i < n_rects; ++i)
     g_print ("  %d %d %d %d\n", rects[i].x, rects[i].y, rects[i].width, rects[i].height);
   g_free (rects);
+}
+
+void
+lmc_texture_set_deformation (LmcTexture         *texture,
+                             LmcDeformationFunc  func,
+                             void               *data)
+{
+  int x, y, deformed_x, deformed_y;
+  LmcPoint *grid;
+  LmcBits *bits;
+
+  if (func != NULL)
+    {
+      bits = texture->bits;
+
+      texture->grid_width =
+        (bits->width + WOBBLE_TILE_SIZE - 1) / WOBBLE_TILE_SIZE + 1;
+      texture->grid_height =
+        (bits->height + WOBBLE_TILE_SIZE - 1) / WOBBLE_TILE_SIZE + 1;
+      grid = g_new0 (LmcPoint, texture->grid_width * texture->grid_height);
+
+      for (y = 0; y < texture->grid_height; y++)
+        for (x = 0; x < texture->grid_width; x++)
+          {
+            func (x * WOBBLE_TILE_SIZE, y * WOBBLE_TILE_SIZE,
+                  0, 0, bits->width, bits->height,
+                  &deformed_x, &deformed_y,
+                  data);
+            grid[x + y * texture->grid_width].x = deformed_x;
+            grid[x + y * texture->grid_width].y = deformed_y;
+          }
+    }
+  else
+    grid = NULL;
+
+  if (texture->grid)
+    g_free (texture->grid);
+  texture->grid = grid;
+}
+
+static void
+draw_tile (MetaScreen *screen, Tile *tile, int x, int y, GdkRegion *clip)
+{
+    if ((!clip || region_intersects_rect (clip, &tile->geometry)))
+    {
+	GdkRectangle *rects;
+	int n_rects;
+	int translated_x = tile->geometry.x + x;
+	int translated_y = tile->geometry.y + y;
+	int i;
+	GdkRectangle dummy;
+
+	gdk_region_get_rectangles (clip, &rects, &n_rects);
+
+	glEnable (GL_SCISSOR_TEST);
+	
+	glBindTexture (GL_TEXTURE_2D, tile->texture);
+		
+	for (i = 0; i < n_rects; ++i)
+	{
+	    if (gdk_rectangle_intersect (&(rects[i]), &tile->geometry, &dummy))
+	    {
+		glScissor (rects[i].x + x,
+			   screen->height - (y + rects[i].y + rects[i].height),
+			   rects[i].width,
+			   rects[i].height);
+		dump_error ("glbindtexture");
+		
+		glBegin (GL_QUADS);
+		
+		/* corner 1 */
+		glTexCoord2f (0.0, 0.0);
+		glVertex3i (translated_x, translated_y, 0);
+		
+		/* corner 2 */
+		glTexCoord2f (1.0, 0.0);
+		glVertex3i (translated_x + tile->geometry.width, translated_y, 0);
+		
+		/* corner 3 */
+		glTexCoord2f (1.0, 1.0);
+		glVertex3i (translated_x + tile->geometry.width, translated_y + tile->geometry.height, 0);
+		
+		/* corner 4 */
+		glTexCoord2f (0.0, 1.0);
+		glVertex3i (translated_x, translated_y + tile->geometry.height, 0);
+		
+		glEnd ();
+		dump_error ("glEnd");
+	    }
+	}
+    }
 }
 
 /**
@@ -597,7 +700,8 @@ print_gdk_region (const char *name, GdkRegion *region)
  * Draw the texture, the clip is in window coordinates.
  **/
 void
-lmc_texture_draw        (LmcTexture   *texture,
+lmc_texture_draw        (MetaScreen  *screen,
+			 LmcTexture   *texture,
 			 double        alpha,
 			 int           x,
 			 int           y,
@@ -628,13 +732,15 @@ lmc_texture_draw        (LmcTexture   *texture,
     g_print ("alpha %f\n", alpha);
 #endif
 
+#if 0
     set_clip_region (clip, x, y);
+#endif
 
 #if 0
     glColor4f (g_random_double(),
 	       g_random_double(),
-	       g_random_double(), 0.3);
-    
+	       g_random_double(), 0.3); 
+   
     glBegin (GL_QUADS);
 
     glVertex3i (0, 0, 0);
@@ -647,100 +753,22 @@ lmc_texture_draw        (LmcTexture   *texture,
     goto out;
 #endif
     
-    glColor4f (1.0, 1.0, 1.0, alpha);
+#if 0
+    glColor4f (g_random_double(),
+	       g_random_double(),
+	       g_random_double(), 1); 
 
+#endif
+
+
+    glColor4f (1.0, 1.0, 1.0, 1.0);
+    
     /* Emit quads */
     for (list = texture->tiles; list != NULL; list = list->next)
     {
 	Tile *tile = list->data;
 
-	if ((!clip || region_intersects_rect (clip, &tile->geometry)))
-	{
-	    int translated_x = tile->geometry.x + x;
-	    int translated_y = tile->geometry.y + y;
-	    
-	    glBindTexture (GL_TEXTURE_2D, tile->texture);
-#if 0
-	    g_print ("bound %p, %d\n", tile, tile->texture);
-#endif
-	    
-	    dump_error ("glbindtexture");
-	    
-	    glBegin (GL_QUADS);
-	    
-	    /* corner 1 */
-#if 0
-	    glColor4f (1.0, 0.2, 0.2, alpha);
-#endif
-	    glTexCoord2f (0.0, 0.0);
-	    glVertex3i (translated_x, translated_y, 0);
-	    
-	    /* corner 2 */
-#if 0
-	    glColor4f (0.0, 0.4, 0.2, alpha);
-#endif
-	    glTexCoord2f (1.0, 0.0);
-	    glVertex3i (translated_x + tile->geometry.width, translated_y, 0);
-	    
-	    /* corner 3 */
-#if 0
-	    glColor4f (0.0, 0.2, 0.8, alpha);
-#endif
-	    glTexCoord2f (1.0, 1.0);
-	    glVertex3i (translated_x + tile->geometry.width, translated_y + tile->geometry.height, 0);
-	    
-	    /* corner 4 */
-#if 0
-	    glColor4f (0.8, 0.8, 0.0, alpha);
-#endif
-	    glTexCoord2f (0.0, 1.0);
-	    glVertex3i (translated_x, translated_y + tile->geometry.height, 0);
-	    
-	    glEnd ();
-	    dump_error ("glEnd");
-
-	    unset_clip_region ();
-	    
-	    glColor4f (0.8, 0.0, 0.8, 0.2);
-	    
-	    glDisable (GL_TEXTURE_2D);
-	    glBegin (GL_QUADS);
-	    glVertex3i (translated_x, translated_y, 0);
-	    glVertex3i (translated_x + tile->geometry.width, translated_y, 0);
-	    glVertex3i (translated_x + tile->geometry.width,
-			translated_y + tile->geometry.height, 0);
-	    glVertex3i (translated_x, translated_y + tile->geometry.height, 0);
-	    glEnd ();
-	    glEnable (GL_TEXTURE_2D);
-
-	    set_clip_region (clip, x, y);
-	    glColor4f (1.0, 1.0, 1.0, alpha);
-	}
-
-	else
-	{
-#if 0
-	    int translated_x = tile->geometry.x + x;
-	    int translated_y = tile->geometry.y + y;
-
-	    print_gdk_region ("clip", clip);
-	    
-	    glColor4f (g_random_double(),
-		       g_random_double(),
-		       g_random_double(), 0.2);
-	    
-	    glDisable (GL_TEXTURE_2D);
-	    glBegin (GL_QUADS);
-	    glVertex3i (translated_x, translated_y, 0);
-	    glVertex3i (translated_x + tile->geometry.width, translated_y, 0);
-	    glVertex3i (translated_x + tile->geometry.width,
-			translated_y + tile->geometry.height, 0);
-	    glVertex3i (translated_x, translated_y + tile->geometry.height, 0);
-	    glEnd ();
-	    glEnable (GL_TEXTURE_2D);
-	    glColor4f (1.0, 1.0, 1.0, alpha);
-#endif
-	}
+	draw_tile (screen, tile, x, y, clip);
     }
 
     glDisable (GL_TEXTURE_2D);
@@ -769,9 +797,9 @@ lmc_texture_draw        (LmcTexture   *texture,
     }
 #endif
 
+#if 0
     unset_clip_region ();
-
- out:
+#endif
     
     glPopAttrib ();
 }

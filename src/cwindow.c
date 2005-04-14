@@ -1206,11 +1206,12 @@ cwindow_draw (CWindow *cwindow,
 	if (rects)
 	{
 	    gdk_region_offset (gdk_clip_region, -geometry->x, -geometry->y);
-	    lmc_texture_draw (cwindow->texture, 1.0, geometry->x, geometry->y, gdk_clip_region);
+	    lmc_texture_draw (cwindow_get_screen (cwindow), cwindow->texture, 1.0, geometry->x, geometry->y, gdk_clip_region);
 	    gdk_region_offset (gdk_clip_region, geometry->x, geometry->y);
 	}
 	else
-	    lmc_texture_draw (cwindow->texture, 1.0, geometry->x, geometry->y, NULL);
+	    lmc_texture_draw (cwindow_get_screen (cwindow),
+			      cwindow->texture, 1.0, geometry->x, geometry->y, NULL);
 
 	gdk_region_destroy (gdk_clip_region);
     }

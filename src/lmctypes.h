@@ -8,6 +8,8 @@ G_BEGIN_DECLS
 
 typedef struct _LmcBorderInfo   LmcBorderInfo;
 typedef struct _LmcPropertyValue LmcPropertyValue;
+typedef struct _LmcPixel LmcPixel;
+typedef struct _LmcPoint LmcPoint;
 
 struct _LmcBorderInfo
 {
@@ -21,13 +23,30 @@ struct _LmcPropertyValue
   int format;			/* 8, 16, 32 */
   
   union {
-    unsigned char *b;
+    char *b;
     short *s;
     long *l;
   } data;
   
   unsigned long n_items;	/* Number of 8, 16, or 32 bit quantities */
 };
+
+struct _LmcPixel {
+  guchar red;
+  guchar green;
+  guchar blue;
+  guchar alpha;
+};
+
+struct _LmcPoint {
+    double x;
+    double y;
+};
+
+typedef void (*LmcDeformationFunc) (int u, int v,
+				    int x, int y, int width, int height,
+				    int *deformed_x, int *deformed_y,
+				    void *data);
 
 G_END_DECLS
 
