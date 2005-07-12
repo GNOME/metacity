@@ -1,3 +1,8 @@
+2005-07-12  Aivars Kalvans <aivars.kalvans@inbox.lv>
+
+	* src/screen.c (meta_screen_free): free ->xinerama_infos
+	Closes bug#307884
+
 2005-06-27  Elijah Newren  <newren@gmail.com>
 
 	* configure.in: post-release version bump to 2.10.3
