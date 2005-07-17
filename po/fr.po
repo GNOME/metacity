@@ -10,10 +10,10 @@
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: metacity 2.9.21\n"
+"Project-Id-Version: metacity 2.10.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-27 17:21-0600\n"
-"PO-Revision-Date: 2005-02-21 23:27+0100\n"
+"POT-Creation-Date: 2005-07-17 19:15+0200\n"
+"PO-Revision-Date: 2005-07-17 19:14+0200\n"
 "Last-Translator: Christophe Merlet (RedFox) <redfox@redfoxcenter.org>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
@@ -222,7 +222,7 @@ msgstr "_Toujours sur l'espace de travail visible"
 
 #: src/menu.c:67
 msgid "_Only on This Workspace"
-msgstr "Seulement sur _cet espace de travail"
+msgstr "_Seulement sur cet espace de travail"
 
 #: src/menu.c:68
 msgid "Move to Workspace _Left"
