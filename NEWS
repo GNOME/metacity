@@ -1,3 +1,17 @@
+2.10.3
+==
+
+Thanks to Aivars Kalvans and Elijah Newren for improvements in this
+release.
+
+ - fix a memory leak (Aivars) [#307884]
+ - revert _NET_ACTIVE_WINDOW behavior to avoid inducing inconsistency
+   among applications (Elijah) [reversion of #128380]
+
+Translations
+  Hendrik Richter (de), Tõivo Leedjärv (et), Christophe Merlet (RedFox) (fr),
+  Ignacio Casal Quinteiro (gl), Clytie Siddall (vi)
+
 2.10.2
 ==
 

@@ -1,5 +1,9 @@
 2005-07-23  Elijah Newren  <newren@gmail.com>
 
+	* NEWS:	2.10.3 release
+
+2005-07-23  Elijah Newren  <newren@gmail.com>
+
 	* src/window.c: (meta_window_activate): revert the patch from
 	#128380--change _NET_ACTIVE_WINDOW behavior to what it originally
 	was.
