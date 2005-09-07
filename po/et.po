@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-02-08 15:29+0100\n"
-"PO-Revision-Date: 2005-08-18 13:20+0300\n"
+"PO-Revision-Date: 2005-09-05 22:46+0300\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
@@ -74,7 +74,7 @@ msgstr ""
 #: src/errors.c:238
 #, c-format
 msgid "Fatal IO error %d (%s) on display '%s'.\n"
-msgstr ""
+msgstr "Saatuslik SV viga %d (%s) kuval '%s'.\n"
 
 #: src/frames.c:1020
 msgid "Close Window"
@@ -111,11 +111,11 @@ msgstr ""
 #: src/keybindings.c:2664
 #, c-format
 msgid "No command %d has been defined.\n"
-msgstr ""
+msgstr "Käsku %d pole defineeritud.\n"
 
 #: src/keybindings.c:3494
 msgid "No terminal command has been defined.\n"
-msgstr ""
+msgstr "Terminalikäsku pole defineeritud.\n"
 
 #: src/main.c:69
 msgid ""
@@ -327,7 +327,9 @@ msgstr "Aken \"%s\" ei vasta."
 #: src/metacity-dialog.c:118
 msgid ""
 "Forcing this application to quit will cause you to lose any unsaved changes."
-msgstr "Sellest rakendusest jõuga väljumine põhjustab kõigi salvestamata andmete hävimise."
+msgstr ""
+"Sellest rakendusest jõuga väljumine põhjustab kõigi salvestamata andmete "
+"hävimise."
 
 #: src/metacity-dialog.c:128
 msgid "_Force Quit"
@@ -617,7 +619,10 @@ msgid ""
 "Number of workspaces. Must be more than zero, and has a fixed maximum (to "
 "prevent accidentally destroying your desktop by asking for 34 million "
 "workspaces)."
-msgstr "Tööalade arv. Peab olema suurem kui null ja omab fikseeritud maksimaalsuurust (selleks, et ära hoida kogemata töölaua õhkulaskmist peale 34 miljoni tööala küsimist)."
+msgstr ""
+"Tööalade arv. Peab olema suurem kui null ja omab fikseeritud "
+"maksimaalsuurust (selleks, et ära hoida kogemata töölaua õhkulaskmist peale "
+"34 miljoni tööala küsimist)."
 
 #: src/metacity.schemas.in.h:56
 msgid "Raise obscured window, otherwise lower"
@@ -1526,7 +1531,7 @@ msgstr ""
 #: src/prefs.c:2077
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
-msgstr ""
+msgstr "Viga tööalale %d nime \"%s\" määramisel: %s\n"
 
 #: src/resizepopup.c:126
 #, c-format
@@ -1536,7 +1541,7 @@ msgstr "%d x %d"
 #: src/screen.c:408
 #, c-format
 msgid "Screen %d on display '%s' is invalid\n"
-msgstr ""
+msgstr "Ekraan %d kuval '%s' on vigane\n"
 
 #: src/screen.c:424
 #, c-format
@@ -1544,6 +1549,8 @@ msgid ""
 "Screen %d on display \"%s\" already has a window manager; try using the --"
 "replace option to replace the current window manager.\n"
 msgstr ""
+"Ekraan %d kuval '%s' on juba aknahalduri poolt hallatav. Olemasoleva "
+"aknahalduri asendamiseks proovi --replace võtit \n"
 
 #: src/screen.c:448
 #, c-format
@@ -1554,7 +1561,7 @@ msgstr ""
 #: src/screen.c:506
 #, c-format
 msgid "Screen %d on display \"%s\" already has a window manager\n"
-msgstr ""
+msgstr "Ekraan %d kuval '%s' on juba aknahalduri poolt hallatav\n"
 
 #: src/screen.c:699
 #, c-format
@@ -1564,32 +1571,32 @@ msgstr ""
 #: src/session.c:884 src/session.c:891
 #, c-format
 msgid "Could not create directory '%s': %s\n"
-msgstr ""
+msgstr "Kataloogi '%s' pole võimalik luua: %s\n"
 
 #: src/session.c:901
 #, c-format
 msgid "Could not open session file '%s' for writing: %s\n"
-msgstr ""
+msgstr "Seansifaili '%s' pole võimalik kirjutamiseks avada: %s\n"
 
 #: src/session.c:1053
 #, c-format
 msgid "Error writing session file '%s': %s\n"
-msgstr ""
+msgstr "Viga seansifaili '%s' kirjutamisel: %s\n"
 
 #: src/session.c:1058
 #, c-format
 msgid "Error closing session file '%s': %s\n"
-msgstr ""
+msgstr "Viga seansifaili '%s' sulgemisel: %s\n"
 
 #: src/session.c:1133
 #, c-format
 msgid "Failed to read saved session file %s: %s\n"
-msgstr ""
+msgstr "Viga salvestatud seansifaili '%s' lugemisel: %s\n"
 
 #: src/session.c:1168
 #, c-format
 msgid "Failed to parse saved session file: %s\n"
-msgstr ""
+msgstr "Viga salvestatud seansifaili analüüsimisel: %s\n"
 
 #: src/session.c:1217
 msgid "<metacity_session> attribute seen but we already have the session ID"
@@ -1778,7 +1785,7 @@ msgstr ""
 #: src/theme-parser.c:1343
 #, c-format
 msgid "Distance \"%s\" is unknown"
-msgstr ""
+msgstr "Vahemaa \"%s\" on tundmatu"
 
 #: src/theme-parser.c:1402
 #, c-format
@@ -1808,7 +1815,7 @@ msgstr ""
 #: src/theme-parser.c:1499
 #, c-format
 msgid "Border \"%s\" is unknown"
-msgstr ""
+msgstr "Raam \"%s\" on tundmatu"
 
 #: src/theme-parser.c:1655 src/theme-parser.c:1765 src/theme-parser.c:1868
 #: src/theme-parser.c:2055 src/theme-parser.c:2869
@@ -2189,15 +2196,15 @@ msgstr ""
 
 #: src/theme-viewer.c:138
 msgid "This is a demo button with an 'open' icon"
-msgstr ""
+msgstr "See on näidisnupp koos 'ava' ikooniga"
 
 #: src/theme-viewer.c:145
 msgid "This is a demo button with a 'quit' icon"
-msgstr ""
+msgstr "See on näidisnupp koos 'lõpeta' ikooniga"
 
 #: src/theme-viewer.c:241
 msgid "This is a sample message in a sample dialog"
-msgstr ""
+msgstr "See on näidisteade näidisdialoogis"
 
 #: src/theme-viewer.c:324
 #, c-format
@@ -2206,11 +2213,11 @@ msgstr "Võltsitud menüüpunkt %d\n"
 
 #: src/theme-viewer.c:358
 msgid "Border-only window"
-msgstr ""
+msgstr "Ainult raamiga aken"
 
 #: src/theme-viewer.c:360
 msgid "Bar"
-msgstr ""
+msgstr "Riba"
 
 #: src/theme-viewer.c:377
 msgid "Normal Application Window"
@@ -2239,7 +2246,7 @@ msgstr "Raam"
 #: src/theme-viewer.c:731
 #, c-format
 msgid "Button layout test %d"
-msgstr ""
+msgstr "Nuppude paigutuse test %d"
 
 #: src/theme-viewer.c:760
 #, c-format
@@ -2258,27 +2265,27 @@ msgstr "Viga teema laadimisel: %s\n"
 #: src/theme-viewer.c:816
 #, c-format
 msgid "Loaded theme \"%s\" in %g seconds\n"
-msgstr "Teema \"%s\" laeti %g sekundi jooksul\n"
+msgstr "Teema \"%s\" laaditi %g sekundi jooksul\n"
 
 #: src/theme-viewer.c:839
 msgid "Normal Title Font"
-msgstr ""
+msgstr "Tiitli tavasuurusega kirjatüüp"
 
 #: src/theme-viewer.c:845
 msgid "Small Title Font"
-msgstr ""
+msgstr "Tiitli väike kirjatüüp"
 
 #: src/theme-viewer.c:851
 msgid "Large Title Font"
-msgstr ""
+msgstr "Tiitli suur kirjatüüp"
 
 #: src/theme-viewer.c:856
 msgid "Button Layouts"
-msgstr ""
+msgstr "Nuppude paigutus"
 
 #: src/theme-viewer.c:861
 msgid "Benchmark"
-msgstr ""
+msgstr "Jõudlud"
 
 #: src/theme-viewer.c:908
 msgid "Window Title Goes Here"
