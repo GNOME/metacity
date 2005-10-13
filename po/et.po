@@ -1,9 +1,9 @@
 # Metacity eesti tõlge.
 # Estonian translation of Metacity
-# 
+#
 # Copyright (C) 2004-2005 The Free Software Foundation
 # This file is distributed under the same license as the metacity package.
-# 
+#
 # Tõivo Leedjärv <toivo@linux.ee>, 2004.
 # Ivar Smolin <okul@linux.ee>, 2005
 #
@@ -2688,10 +2688,3 @@ msgstr ""
 msgid ""
 "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
 msgstr ""
-
-#~ msgid ""
-#~ "metacity [--sm-disable] [--sm-client-id=ID] [--sm-save-file=FILENAME] [--"
-#~ "display=DISPLAY] [--replace] [--version]\n"
-#~ msgstr ""
-#~ "metacity [--sm-disable] [--sm-client-id=ID] [--sm-save-file=FAILINIMI] [--"
-#~ "display=KUVA] [--replace] [--version]\n"
