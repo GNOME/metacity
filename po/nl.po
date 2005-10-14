@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity 2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-19 12:30+0200\n"
+"POT-Creation-Date: 2005-10-14 12:53+0200\n"
 "PO-Revision-Date: 2005-08-19 16:17+0100\n"
 "Last-Translator: Michiel Sikkes <michiels@gnome.org>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -65,7 +65,7 @@ msgstr ""
 msgid "Failed to get hostname: %s\n"
 msgstr "Ophalen hostnaam mislukt: %s\n"
 
-#: ../src/display.c:319
+#: ../src/display.c:307
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
 msgstr "Openen van X Window System display '%s' mislukt\n"
@@ -86,23 +86,23 @@ msgstr ""
 msgid "Fatal IO error %d (%s) on display '%s'.\n"
 msgstr "Fatale IO-fout %d (%s) op display '%s'.\n"
 
-#: ../src/frames.c:1125
+#: ../src/frames.c:1122
 msgid "Close Window"
 msgstr "Venster sluiten"
 
-#: ../src/frames.c:1128
+#: ../src/frames.c:1125
 msgid "Window Menu"
 msgstr "Venstermenu"
 
-#: ../src/frames.c:1131
+#: ../src/frames.c:1128
 msgid "Minimize Window"
 msgstr "Venster minimaliseren"
 
-#: ../src/frames.c:1134
+#: ../src/frames.c:1131
 msgid "Maximize Window"
 msgstr "Venster maximaliseren"
 
-#: ../src/frames.c:1137
+#: ../src/frames.c:1134
 msgid "Unmaximize Window"
 msgstr "Venster herstellen"
 
@@ -507,7 +507,7 @@ msgstr "Visuele bel gebruiken"
 
 #: ../src/metacity.schemas.in.h:16
 msgid "Hide all windows and focus desktop"
-msgstr "Alle vensters verbergen en de dekstop de aandacht geven"
+msgstr "Alle vensters verbergen en het bureaublad de aandacht geven"
 
 #: ../src/metacity.schemas.in.h:17
 msgid ""
@@ -3186,19 +3186,19 @@ msgstr "Logboek %s openen via fdopen() mislukt: %s\n"
 msgid "Opened log file %s\n"
 msgstr "Logboek %s geopend\n"
 
-#: ../src/util.c:203
+#: ../src/util.c:217
 msgid "Window manager: "
 msgstr "Windowmanager:"
 
-#: ../src/util.c:349
+#: ../src/util.c:363
 msgid "Bug in window manager: "
 msgstr "Fout in windowmanager:"
 
-#: ../src/util.c:378
+#: ../src/util.c:392
 msgid "Window manager warning: "
 msgstr "Windowmanager waarschuwing:"
 
-#: ../src/util.c:402
+#: ../src/util.c:416
 msgid "Window manager error: "
 msgstr "Windowmanager fout:"
 
@@ -3208,7 +3208,7 @@ msgid "Application set a bogus _NET_WM_PID %ld\n"
 msgstr "Toepassing heeft een overbodige _NET_WM_PID %ld ingesteld\n"
 
 #. first time through
-#: ../src/window.c:5205
+#: ../src/window.c:5207
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -3224,7 +3224,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/window.c:5876
+#: ../src/window.c:5878
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
