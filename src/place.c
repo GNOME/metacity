@@ -1056,8 +1056,8 @@ meta_window_place (MetaWindow        *window,
  * would be weird otherwise.
  */
 static GSList*
-get_windows_on_same_workspace (MetaWindow *window,
-                               int        *n_windows)
+get_windows_showing_on_same_screen (MetaWindow *window,
+                                    int        *n_windows)
 {
   GSList *windows;
   GSList *all_windows;
@@ -1074,7 +1074,9 @@ get_windows_on_same_workspace (MetaWindow *window,
     {
       MetaWindow *w = tmp->data;
       
-      if (meta_window_should_be_showing (w) && w != window)
+      if (meta_window_should_be_showing (w) &&
+          w->screen == window->screen       &&
+          w != window)
         {            
           windows = g_slist_prepend (windows, w);
           ++i;
@@ -1131,7 +1133,7 @@ get_vertical_edges (MetaWindow *window,
   MetaRectangle rect;
   MetaRectangle work_area;
   
-  windows = get_windows_on_same_workspace (window, &n_windows);
+  windows = get_windows_showing_on_same_screen (window, &n_windows);
 
   edges = g_array_sized_new (FALSE, FALSE, sizeof (int), 
                              n_windows * 2 + 4 /* 4 = workspace/screen edges */
@@ -1213,7 +1215,7 @@ get_horizontal_edges (MetaWindow *window,
   MetaRectangle rect;
   MetaRectangle work_area;
   
-  windows = get_windows_on_same_workspace (window, &n_windows);
+  windows = get_windows_showing_on_same_screen (window, &n_windows);
 
   edges = g_array_sized_new (FALSE, FALSE, sizeof (int), 
                              n_windows * 2 + 4 /* 4 = workspace/screen edges */
