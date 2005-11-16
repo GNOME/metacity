@@ -1276,6 +1276,7 @@ cwindow_undamage (CWindow *cwindow)
 	create_window_image (cwindow);
     }
 
+    
     if (!get_all)
 	XFixesSetGCClipRegion (xdisplay, cwindow->shm_gc,
 			       0, 0, cwindow->parts_region);

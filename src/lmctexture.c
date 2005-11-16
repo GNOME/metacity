@@ -639,8 +639,10 @@ lmc_texture_set_deformation (LmcTexture         *texture,
 static void
 draw_tile (MetaScreen *screen, Tile *tile, int x, int y, GdkRegion *clip)
 {
+#if 0
     if ((!clip || region_intersects_rect (clip, &tile->geometry)))
     {
+#endif
 	GdkRectangle *rects;
 	int n_rects;
 	int translated_x = tile->geometry.x + x;
@@ -654,16 +656,28 @@ draw_tile (MetaScreen *screen, Tile *tile, int x, int y, GdkRegion *clip)
 	
 	glBindTexture (GL_TEXTURE_2D, tile->texture);
 		
+#if 0
 	for (i = 0; i < n_rects; ++i)
 	{
+#endif
+#if 0
 	    if (gdk_rectangle_intersect (&(rects[i]), &tile->geometry, &dummy))
 	    {
+#endif
+#if 0
 		glScissor (rects[i].x + x,
 			   screen->height - (y + rects[i].y + rects[i].height),
 			   rects[i].width,
 			   rects[i].height);
+#endif
 		dump_error ("glbindtexture");
 		
+#if 0
+		glColor4f (g_random_double(),
+			   g_random_double(),
+			   g_random_double(), 0.1); 
+#endif
+   
 		glBegin (GL_QUADS);
 		
 		/* corner 1 */
@@ -684,9 +698,15 @@ draw_tile (MetaScreen *screen, Tile *tile, int x, int y, GdkRegion *clip)
 		
 		glEnd ();
 		dump_error ("glEnd");
+#if 0
 	    }
+#endif
+#if 0
 	}
+#endif
+#if 0
     }
+#endif
 }
 
 /**
