@@ -652,9 +652,14 @@ draw_tile (MetaScreen *screen, Tile *tile, int x, int y, GdkRegion *clip)
 
 	gdk_region_get_rectangles (clip, &rects, &n_rects);
 
+#if 0
 	glEnable (GL_SCISSOR_TEST);
+#endif
 	
 	glBindTexture (GL_TEXTURE_2D, tile->texture);
+#if 0
+	glEnable (GL_TEXTURE_2D);
+#endif
 		
 #if 0
 	for (i = 0; i < n_rects; ++i)
