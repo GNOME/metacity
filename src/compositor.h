@@ -25,6 +25,8 @@
 #include "util.h"
 #include "display.h"
 
+#include <X11/extensions/Xfixes.h>
+
 MetaCompositor* meta_compositor_new           (MetaDisplay       *display);
 void            meta_compositor_unref         (MetaCompositor    *compositor);
 void            meta_compositor_process_event (MetaCompositor    *compositor,
@@ -35,6 +37,8 @@ void            meta_compositor_add_window    (MetaCompositor    *compositor,
                                                XWindowAttributes *attrs);
 void            meta_compositor_remove_window (MetaCompositor    *compositor,
                                                Window             xwindow);
+void		meta_compositor_set_debug_updates (MetaCompositor *compositor,
+						   gboolean	   debug_updates);
 
 void meta_compositor_manage_screen   (MetaCompositor *compositor,
                                       MetaScreen     *screen);
@@ -44,13 +48,28 @@ void meta_compositor_unmanage_screen (MetaCompositor *compositor,
 void meta_compositor_damage_window   (MetaCompositor *compositor,
                                       MetaWindow     *window);
 
+void meta_compositor_stop_compositing (MetaCompositor *compositor,
+				       MetaWindow     *window);
+void meta_compositor_start_compositing (MetaCompositor *compositor,
+					MetaWindow     *window);
+MetaDisplay *meta_compositor_get_display (MetaCompositor *compositor);
+
+void
+meta_compositor_genie (MetaCompositor *compositor,
+		       MetaWindow       *window);
+void
+meta_compositor_invalidate_region (MetaCompositor *compositor,
+				   MetaScreen	*screen,
+				   XserverRegion   invalid_area);
+
+void
+meta_compositor_set_translucent (MetaCompositor *compositor,
+				 MetaWindow *window,
+				 gboolean translucent);
+gboolean
+meta_compositor_repair_now (MetaCompositor *compositor);
+
+XID
+meta_compositor_get_gl_window (MetaCompositor *compositor);
+
 #endif /* META_COMPOSITOR_H */
-
-
-
-
-
-
-
-
-

@@ -20,6 +20,8 @@ metacity_SOURCES= 				\
 	constraints.h				\
 	core.c					\
 	core.h					\
+	cwindow.c				\
+	cwindow.h				\
 	delete.c				\
 	display.c				\
 	display.h				\
@@ -49,8 +51,14 @@ metacity_SOURCES= 				\
 	inlinepixbufs.h				\
 	keybindings.c				\
 	keybindings.h				\
+	lmcbits.c				\
+	lmcbits.h				\
+	lmctexture.c				\
+	lmctexture.h				\
 	main.c					\
 	main.h					\
+	matrix.c				\
+	matrix.h				\
 	menu.c					\
 	menu.h					\
 	metaaccellabel.c			\
@@ -66,6 +74,8 @@ metacity_SOURCES= 				\
 	screen.h				\
 	session.c				\
 	session.h				\
+	snow.h					\
+	snow.c					\
 	stack.c					\
 	stack.h					\
 	tabpopup.c				\
@@ -129,7 +139,7 @@ bin_PROGRAMS=metacity metacity-theme-viewer
 libexec_PROGRAMS=metacity-dialog
 
 EFENCE=
-metacity_LDADD=@METACITY_LIBS@ $(EFENCE)
+metacity_LDADD=@METACITY_LIBS@ $(EFENCE) -lGL -lGLU
 metacity_theme_viewer_LDADD= @METACITY_LIBS@ libmetacity-private.la
 metacity_dialog_LDADD=@METACITY_LIBS@
 
