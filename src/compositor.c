@@ -465,10 +465,10 @@ do_paint_screen (MetaCompositor *compositor,
 
       glViewport (0, 0, screen->width, screen->height);
 
-#if 0
       glClearColor (0.0, 0.5, 0.5, 0.0);
       glClear (GL_COLOR_BUFFER_BIT);
-      
+
+#if 0
       glLoadIdentity ();
       
       glColor4f (0.8, 0.3, 0.8, 0.8);
