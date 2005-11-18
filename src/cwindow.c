@@ -137,25 +137,7 @@ cwindow_has_alpha (CWindow *cwindow)
 XserverRegion
 cwindow_get_opaque_region (CWindow *cwindow)
 {
-    if (!USE_RENDER || cwindow->translucent || cwindow_get_input_only (cwindow) ||
-	!cwindow_get_viewable (cwindow) || cwindow_has_alpha (cwindow) ||
-	cwindow->n_distortions)
-    {
-	return XFixesCreateRegion (cwindow_get_xdisplay (cwindow), NULL, 0);
-    }
-    else
-    {
-	XserverRegion region = XFixesCreateRegionFromWindow (
-	    cwindow_get_xdisplay (cwindow),
-	    cwindow->xwindow, ShapeBounding);
-	
-	XFixesTranslateRegion (cwindow_get_xdisplay (cwindow),
-			       region,
-			       cwindow_get_x (cwindow),
-			       cwindow_get_y (cwindow));
-	
-	return region;
-    }
+    return XFixesCreateRegion (cwindow_get_xdisplay (cwindow), NULL, 0);
 }
 
 static void
@@ -740,33 +722,6 @@ cwindow_process_damage_notify (CWindow *cwindow, XDamageNotifyEvent *event)
     if (cwindow->xwindow == screen->xroot)
 	g_print ("huh????\n");
     
-    if (USE_RENDER)
-    {
-	XserverRegion region;
-	region = XFixesCreateRegion (cwindow_get_xdisplay (cwindow), NULL, 0);
-	
-	/* translate region to screen; can error if window of damage is
-	 * destroyed
-	 */
-	meta_error_trap_push (meta_compositor_get_display (cwindow->compositor));
-	XDamageSubtract (cwindow_get_xdisplay (cwindow),
-			 cwindow_get_damage (cwindow), None, region);
-	meta_error_trap_pop (meta_compositor_get_display (cwindow->compositor), FALSE);
-	
-	XFixesTranslateRegion (cwindow_get_xdisplay (cwindow),
-			       region,
-			       cwindow_get_x (cwindow),
-			       cwindow_get_y (cwindow));
-	
-	if (!cwindow->freeze_info)
-	{
-	    meta_compositor_invalidate_region (cwindow->compositor, screen, region);
-	}
-	
-	XFixesDestroyRegion (cwindow_get_xdisplay (cwindow), region);
-	/* ignore damage on frozen window */
-    }
-    else
     {
 	XserverRegion region;
 	
@@ -859,10 +814,7 @@ cwindow_process_configure_notify (CWindow *cwindow, XConfigureEvent *event)
 	    initialize_damage (cwindow);
 	}
 	
-#if 0
-	if (USE_RENDER)
-#endif
-	    cwindow_queue_paint (cwindow);
+	cwindow_queue_paint (cwindow);
     }
 }
 
@@ -923,24 +875,14 @@ cwindow_thaw (CWindow *cwindow)
 	cwindow_set_last_painted_extents (cwindow, None);
     }
     
-    if (!USE_RENDER)
+    if (cwindow->texture)
     {
-	
-	if (cwindow->texture)
-	{
-	    lmc_texture_unref (cwindow->texture);
-	    cwindow->texture = NULL;
-	}
-	
-	destroy_window_image (cwindow);
-	initialize_damage (cwindow);
+	lmc_texture_unref (cwindow->texture);
+	cwindow->texture = NULL;
     }
-    else
-    {
-	if (cwindow->freeze_info->pixmap)
-	    XFreePixmap (cwindow_get_xdisplay (cwindow),
-			 cwindow->freeze_info->pixmap);
-    }
+    
+    destroy_window_image (cwindow);
+    initialize_damage (cwindow);
     
     g_free (cwindow->freeze_info);
     cwindow->freeze_info = NULL;
@@ -1072,9 +1014,6 @@ cwindow_draw (CWindow *cwindow,
 	cwindow_destroy_last_painted_extents (cwindow);
     
     cwindow_set_last_painted_extents (cwindow, cwindow_extents (cwindow));
-
-    if (USE_RENDER)
-	XRenderFreePicture (cwindow_get_xdisplay (cwindow), picture);
 }
 
 
@@ -1103,17 +1042,6 @@ cwindow_undamage (CWindow *cwindow)
     get_all = cwindow->damage_serial == 0;
     cwindow->damage_serial = NextRequest (xdisplay);
 
-    /* Window could go away at any point */
-    if (cwindow->damage)
-    {
-    }
-    else
-	g_print ("No damage\n");
-
-#if 0
-    get_all = TRUE;
-#endif
-    
     if (get_all)
     {
 	if (cwindow->texture)
