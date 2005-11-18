@@ -28,8 +28,7 @@ void        lmc_texture_draw        (MetaScreen  *screen,
 				     LmcTexture *texture,
 				     double      alpha,
 				     int         x,
-				     int         y,
-				     GdkRegion  *clip);
+				     int         y);
 
 G_END_DECLS
 

@@ -128,12 +128,6 @@ cwindow_extents (CWindow *cwindow)
 }
 #endif /* HAVE_COMPOSITE_EXTENSIONS */
 
-static gboolean
-cwindow_has_alpha (CWindow *cwindow)
-{
-    return TRUE;
-}
-
 XserverRegion
 cwindow_get_opaque_region (CWindow *cwindow)
 {
@@ -956,10 +950,7 @@ cwindow_draw (CWindow *cwindow,
 	      Picture destination,
 	      XserverRegion clip_region)
 {
-    XRenderPictFormat *format;
     int i;
-    Picture picture;
-    XRenderPictureAttributes pa;
 
     if (cwindow_get_input_only (cwindow))
 	return;
@@ -976,10 +967,6 @@ cwindow_draw (CWindow *cwindow,
 	    &cwindow->freeze_info->geometry :
 	    &cwindow->geometry;
 
-#if 0
-	g_print ("drawing: %lx\n", cwindow->xwindow);
-#endif
-    
 	cwindow_undamage (cwindow);
 	
 	if (!cwindow->texture)
@@ -1000,12 +987,12 @@ cwindow_draw (CWindow *cwindow,
 	if (rects)
 	{
 	    gdk_region_offset (gdk_clip_region, -geometry->x, -geometry->y);
-	    lmc_texture_draw (cwindow_get_screen (cwindow), cwindow->texture, 1.0, geometry->x, geometry->y, gdk_clip_region);
+	    lmc_texture_draw (cwindow_get_screen (cwindow), cwindow->texture, 1.0, geometry->x, geometry->y);
 	    gdk_region_offset (gdk_clip_region, geometry->x, geometry->y);
 	}
 	else
 	    lmc_texture_draw (cwindow_get_screen (cwindow),
-			      cwindow->texture, 1.0, geometry->x, geometry->y, NULL);
+			      cwindow->texture, 1.0, geometry->x, geometry->y);
 
 	gdk_region_destroy (gdk_clip_region);
     }
@@ -1021,7 +1008,6 @@ static void
 cwindow_undamage (CWindow *cwindow)
 {
     Display *xdisplay = cwindow_get_xdisplay (cwindow);
-    Window xwindow = cwindow->xwindow;
     gboolean get_all;
     Geometry *geometry = cwindow->freeze_info?
 	&cwindow->freeze_info->geometry :
