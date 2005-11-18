@@ -1028,6 +1028,10 @@ cwindow_undamage (CWindow *cwindow)
     get_all = cwindow->damage_serial == 0;
     cwindow->damage_serial = NextRequest (xdisplay);
 
+#if 0
+    get_all = TRUE;
+#endif
+    
     if (get_all)
     {
 	if (cwindow->texture)

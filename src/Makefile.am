@@ -20,8 +20,6 @@ metacity_SOURCES= 				\
 	constraints.h				\
 	core.c					\
 	core.h					\
-	cwindow.c				\
-	cwindow.h				\
 	delete.c				\
 	display.c				\
 	display.h				\
@@ -139,7 +137,7 @@ bin_PROGRAMS=metacity metacity-theme-viewer
 libexec_PROGRAMS=metacity-dialog
 
 EFENCE=
-metacity_LDADD=@METACITY_LIBS@ $(EFENCE) -lGL -lGLU
+metacity_LDADD=@METACITY_LIBS@ $(EFENCE) -lGL -lGLU -lcm
 metacity_theme_viewer_LDADD= @METACITY_LIBS@ libmetacity-private.la
 metacity_dialog_LDADD=@METACITY_LIBS@
 

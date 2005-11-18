@@ -182,6 +182,7 @@ x_error_handler (Display     *xdisplay,
   
   XGetErrorText (xdisplay, error->error_code, buf, 63);  
 
+#if 0
   display = meta_display_for_x_display (xdisplay);
   
   if (display->error_traps > 0)
@@ -202,6 +203,7 @@ x_error_handler (Display     *xdisplay,
       retval = (* display->error_trap_handler) (xdisplay, error);
     }
   else
+#endif
     {
       meta_bug ("Unexpected X error: %s serial %ld error_code %d request_code %d minor_code %d)\n",
                 buf,
