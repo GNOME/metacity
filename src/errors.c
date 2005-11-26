@@ -97,7 +97,9 @@ meta_error_trap_pop_internal  (MetaDisplay *display,
                                       XErrorEvent *);
 
       restored_error_handler = XSetErrorHandler (x_error_handler);
+#if 0
       g_assert (restored_error_handler == x_error_handler);
+#endif
 
       /* remove this */
       display->error_trap_handler = NULL;
@@ -182,10 +184,9 @@ x_error_handler (Display     *xdisplay,
   
   XGetErrorText (xdisplay, error->error_code, buf, 63);  
 
-#if 0
   display = meta_display_for_x_display (xdisplay);
-  
-  if (display->error_traps > 0)
+
+  if (display && display->error_traps > 0)
     {
       /* we're in an error trap, chain to the trap handler
        * saved from GDK
@@ -203,8 +204,7 @@ x_error_handler (Display     *xdisplay,
       retval = (* display->error_trap_handler) (xdisplay, error);
     }
   else
-#endif
-    {
+  {
       meta_bug ("Unexpected X error: %s serial %ld error_code %d request_code %d minor_code %d)\n",
                 buf,
                 error->serial, 

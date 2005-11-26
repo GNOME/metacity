@@ -112,6 +112,7 @@ print_region (Display *dpy, const char *name, XserverRegion region)
     XFree (rects);
 }
 
+#if 0
 static gboolean
 update_world (gpointer data)
 {
@@ -138,6 +139,7 @@ update_world (gpointer data)
     
     return TRUE;
 }
+#endif
 
 static XVisualInfo *
 init_gl (Display    *xdisplay,
@@ -508,6 +510,7 @@ do_paint_screen (MetaCompositor *compositor,
     last = tmp;
 #endif
     
+    ws_window_raise (compositor->glw);
     draw_windows (screen, screen->compositor_windows);
     {
 	glShadeModel (GL_FLAT);
@@ -515,7 +518,6 @@ do_paint_screen (MetaCompositor *compositor,
 	glDisable (GL_BLEND);
 	
 	/* FIXME: we should probably grab the server around the raise/swap */
-	ws_window_raise (compositor->glw);
 
 	ws_window_gl_swap_buffers (compositor->glw);
     }
@@ -1107,13 +1109,16 @@ meta_compositor_add_window (MetaCompositor    *compositor,
 
     drawable = (WsDrawable *)ws_window_lookup (compositor->ws, xwindow);
 
-    if (ws_window_query_input_only (drawable) ||
+    if (ws_window_query_input_only ((WsWindow *)drawable) ||
 	drawable == compositor->glw)
     {
+	if (drawable == compositor->glw)
+	    g_print ("skipping gl window\n");
 	return;
     }
     else
     {
+	g_print ("allocating drawable\n");
 	node = drawable_node_new (drawable);
     }
     
@@ -1200,6 +1205,8 @@ typedef struct Info
     WsWindow	*window;
 } Info;
 
+Info *the_info;
+
 static gboolean
 update (gpointer data)
 {
@@ -1210,7 +1217,7 @@ update (gpointer data)
 
     glMatrixMode (GL_MODELVIEW);
     glLoadIdentity ();
-    gluOrtho2D (0, 1.0, 1.0, 0.0);
+    gluOrtho2D (0, 1.0, 0.0, 1.0);
 	
     ws_window_raise (gl_window);
     
@@ -1243,6 +1250,12 @@ update (gpointer data)
     ws_window_gl_swap_buffers (gl_window);
     
     return TRUE;
+}
+
+void
+debug_update (void)
+{
+    update (the_info);
 }
 
 void
@@ -1331,7 +1344,9 @@ meta_compositor_manage_screen (MetaCompositor *compositor,
 	info->window = compositor->glw;
 	info->screen = screen;
 	
-	g_timeout_add (100, update, info);
+	g_idle_add (update, info);
+
+	the_info = info;
     }
 #endif
 }

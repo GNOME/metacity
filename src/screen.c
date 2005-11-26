@@ -659,9 +659,6 @@ meta_screen_new (MetaDisplay *display,
       meta_workspace_activate (space, timestamp);
   }
 
-  meta_compositor_manage_screen (screen->display->compositor,
-                                 screen);
-  
   meta_verbose ("Added screen %d ('%s') root 0x%lx\n",
                 screen->number, screen->screen_name, screen->xroot);
   

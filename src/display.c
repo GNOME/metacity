@@ -688,7 +688,17 @@ meta_display_open (const char *name)
   tmp = display->screens;
   while (tmp != NULL)
     {
-      meta_screen_manage_all_windows (tmp->data);
+      MetaScreen *screen = tmp->data;
+	
+      meta_screen_manage_all_windows (screen);
+
+      meta_display_ungrab (display);
+      
+      meta_compositor_manage_screen (screen->display->compositor,
+				     screen);
+
+      meta_display_grab (display);
+  
       tmp = tmp->next;
     }
 
