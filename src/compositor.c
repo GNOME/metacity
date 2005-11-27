@@ -91,28 +91,9 @@ free_window_hash_value (void *v)
 {
     DrawableNode *drawable_node = v;
     
-#if 0
-    g_print ("freeing cwindow %lx\n", cwindow_get_xwindow (cwindow));
-#endif
     drawable_node_unref (drawable_node);
 }
 #endif /* HAVE_COMPOSITE_EXTENSIONS */
-
-#if 0
-static void
-print_region (Display *dpy, const char *name, XserverRegion region)
-{
-    XRectangle *rects;
-    int i, n_rects;
-    
-    rects = XFixesFetchRegion (dpy, region, &n_rects);
-    
-    g_print ("region \"%s\":\n", name);
-    for (i = 0; i < n_rects; ++i)
-	g_print ("  %d %d %d %d\n", rects[i].x, rects[i].y, rects[i].width, rects[i].height);
-    XFree (rects);
-}
-#endif
 
 MetaCompositor*
 meta_compositor_new (MetaDisplay *display)
@@ -249,7 +230,6 @@ meta_compositor_unref (MetaCompositor *compositor)
 }
 
 double tmp;
-static GTimer *timer ;
 
 #ifdef HAVE_COMPOSITE_EXTENSIONS
 static void
@@ -267,176 +247,6 @@ draw_windows (MetaScreen *screen,
     node->render (node);
 }
 #endif
-
-static XserverRegion
-do_paint_screen (MetaCompositor *compositor,
-		 MetaScreen *screen,
-		 XserverRegion damage_region)
-{
-    Display *xdisplay = compositor->display->xdisplay;
-    XserverRegion region;
-    if (damage_region == None)
-    {
-	XRectangle  r;
-	
-	r.x = 0;
-	r.y = 0;
-	r.width = screen->width;
-	r.height = screen->height;
-	
-	region = XFixesCreateRegion (xdisplay, &r, 1);
-    }
-    else
-    {
-	region = XFixesCreateRegion (xdisplay, NULL, 0);
-	
-	XFixesCopyRegion (compositor->display->xdisplay,
-			  region,
-			  damage_region);
-    }
-    
-#if 0
-    {
-	XGCValues values;
-	values.subwindow_mode = IncludeInferiors;
-	values.foreground = 0x00ff00ff; /* shocking pink */
-	GC gc = XCreateGC (screen->display->xdisplay,
-			   screen->xroot,
-			   GCSubwindowMode | GCForeground, &values);
-	
-	XFixesSetGCClipRegion (screen->display->xdisplay, gc,
-			       0, 0, region);
-	
-	XFillRectangle (screen->display->xdisplay, screen->xroot, gc,
-			0, 0, screen->width, screen->height);
-	XSync (screen->display->xdisplay, False);
-    }
-#endif
-    
-    
-    {
-	glShadeModel (GL_FLAT);
-	glDisable (GL_TEXTURE_2D);
-	glDisable (GL_BLEND);
-	
-	glViewport (0, 0, screen->width, screen->height);
-
-	glMatrixMode (GL_MODELVIEW);
-	glLoadIdentity ();
-	gluOrtho2D (0, 1.0, 1.0, 0.0);
-	
-	g_print ("clearing\n");
-	
-	glClearColor (0.0, 0.5, 0.5, 0.0);
-	glClear (GL_COLOR_BUFFER_BIT);
-	
-#if 0
-	glLoadIdentity ();
-	
-	glColor4f (0.8, 0.3, 0.8, 0.8);
-	
-	glBegin (GL_TRIANGLES);
-	
-	glVertex2f (0.0, 0.0);
-	glVertex2f (10, 100);
-	glVertex2f (20, 0.0);
-	
-	glEnd ();
-	
-	glColor4f (0.2, 0.2, 1.0, 0.5);
-	
-	glBegin (GL_TRIANGLES);
-	
-	glVertex2f (-1.0, 0.0);
-	glVertex2f (120, 100);
-	glVertex2f (200, 23.0);
-	
-	glEnd();
-#endif
-	
-#if 0
-	glColor4f (g_random_double (),
-		   g_random_double (),
-		   g_random_double (),
-		   1.0);
-#endif
-	
-#if 0
-	glBegin (GL_QUADS);
-	
-	glVertex2f (-1.0, -1.0);
-	glVertex2f (1.0, -1.0);
-	glVertex2f (1.0, 1.0);
-	glVertex2f (-1.0, 1.0);
-	
-	glEnd ();
-#endif
-	
-	glLoadIdentity();
-	
-	gluOrtho2D (0, screen->width, screen->height, 0);
-	glDisable (GL_SCISSOR_TEST);
-    }
-    
-    if (!timer)
-	timer = g_timer_new ();
-    
-#if 0
-    g_print ("outside: %f\n", (tmp = g_timer_elapsed (timer, NULL)) - last);
-    last = tmp;
-#endif
-    
-    ws_window_raise (compositor->glw);
-    draw_windows (screen, screen->compositor_windows);
-    {
-	glShadeModel (GL_FLAT);
-	glDisable (GL_TEXTURE_2D);
-	glDisable (GL_BLEND);
-	
-	/* FIXME: we should probably grab the server around the raise/swap */
-
-	ws_window_gl_swap_buffers (compositor->glw);
-    }
-    
-    
-    return region;
-}
-
-#ifdef HAVE_COMPOSITE_EXTENSIONS
-#if 0
-void
-meta_compositor_invalidate_region (MetaCompositor *compositor,
-				   MetaScreen	*screen,
-				   XserverRegion   invalid_area)
-{
-    if (screen->damage_region == None)
-	screen->damage_region =
-	    XFixesCreateRegion (compositor->display->xdisplay, NULL, 0);
-    
-#if 0
-    if (compositor->debug_updates)
-    {
-#     define ALPHA 0.1
-	XRenderColor hilight = { ALPHA * 0x0000, ALPHA * 0x1000, ALPHA * 0xFFFF, ALPHA * 0xFFFF };
-	XFixesSetPictureClipRegion (screen->display->xdisplay, screen->root_picture, 0, 0, invalid_area);
-	XRenderFillRectangle (screen->display->xdisplay, PictOpOver,
-			      screen->root_picture, &hilight,
-			      0, 0, screen->width, screen->height);
-	XSync (screen->display->xdisplay, False);
-    }
-#endif
-    
-#if 0
-    print_region (compositor->display->xdisplay, "invalidate", invalid_area);
-    meta_print_top_of_stack (4);
-#endif
-    
-    XFixesUnionRegion (compositor->display->xdisplay,
-		       screen->damage_region,
-		       invalid_area, screen->damage_region);
-}
-#endif
-#endif /* HAVE_COMPOSITE_EXTENSIONS */
 
 #include <X11/Xlib.h>
 
@@ -539,12 +349,6 @@ process_expose (MetaCompositor     *compositor,
     r.width = screen->width;
     r.height = screen->height;
     region = XFixesCreateRegion (compositor->display->xdisplay, &r, 1);
-    
-#if 0
-    meta_compositor_invalidate_region (compositor,
-				       screen,
-				       region);
-#endif
     
     XFixesDestroyRegion (compositor->display->xdisplay, region);
 }
@@ -841,11 +645,6 @@ meta_compositor_add_window (MetaCompositor    *compositor,
     if (!compositor->enabled)
 	return; /* no extension */
     
-#if 0
-    if (xwindow == compositor->gl_window)
-	return;
-#endif
-    
     screen = meta_screen_for_x_screen (attrs->screen);
     g_assert (screen != NULL);
     
@@ -868,11 +667,10 @@ meta_compositor_add_window (MetaCompositor    *compositor,
     }
     else
     {
-	g_print ("allocating drawable\n");
 	node = drawable_node_new (drawable);
     }
     
-    /* FIXME: this will not work - the hash table should be fixed */
+    /* FIXME: we should probably just store xid's directly */
     g_hash_table_insert (compositor->window_hash,
 			 &(node->drawable->xid), node);
     
@@ -914,16 +712,6 @@ meta_compositor_remove_window (MetaCompositor    *compositor,
 #endif
     
     screen = node_get_screen (compositor->display->xdisplay, node);
-
-#if 0
-    if (cwindow_get_last_painted_extents (cwindow))
-    {
-	meta_compositor_invalidate_region (compositor,
-					   screen,
-					   cwindow_get_last_painted_extents (cwindow));
-	cwindow_set_last_painted_extents (cwindow, None);
-    }
-#endif
     
     screen->compositor_windows = g_list_remove (screen->compositor_windows,
 						node);
@@ -977,10 +765,6 @@ update (gpointer data)
     glEnable (GL_TEXTURE_2D);
     draw_windows (screen, screen->compositor_windows);
     
-#if 0
-    g_print ("raise/swap\n");
-#endif
-    
     /* FIXME: we should probably grab the server around the raise/swap */
     
     ws_window_gl_swap_buffers (gl_window);
@@ -1009,32 +793,6 @@ meta_compositor_manage_screen (MetaCompositor *compositor,
      */
     
     g_assert (screen->root_picture == None);
-    
-    /* FIXME add flag for whether we're composite-managing each
-     * screen and detect failure here
-     */
-    
-#if 0
-    /* CompositeRedirectSubwindows result in all mapped windows
-     * getting unmapped/mapped, which confuses Metacity since it
-     * thinks that non-override redirect windows should only
-     * be mapped by the window manager.
-     *
-     * To work around this, we discard all events generated
-     * by XCompositeRedirectSubwindows
-     */
-    
-    XSync (screen->display->xdisplay, False);
-    
-    /* FIXME add flag for whether we're composite-managing each
-     * screen and detect failure here
-     */
-    XCompositeRedirectSubwindows (screen->display->xdisplay,
-				  screen->xroot,
-				  CompositeRedirectManual);
-    
-    XSync (screen->display->xdisplay, True);
-#endif
     
     /* FIMXE: This shouldn't be needed for the gl compositor, but it is. Various stuff gets
      * confused if root_picture is None
@@ -1109,10 +867,6 @@ meta_compositor_unmanage_screen (MetaCompositor *compositor,
     {
 	DrawableNode *node = screen->compositor_windows->data;
 	
-#if 0
-	meta_topic (META_DEBUG_COMPOSITOR,
-		    "Unmanage screen for 0x%lx\n", cwindow_get_xwindow (cwindow));
-#endif
 	meta_compositor_remove_window (compositor, node->drawable->xid);
     }
 #endif /* HAVE_COMPOSITE_EXTENSIONS */
@@ -1137,33 +891,6 @@ window_to_node (MetaCompositor *compositor,
 }
 
 void
-meta_compositor_damage_window (MetaCompositor *compositor,
-                               MetaWindow     *window)
-{
-#ifdef HAVE_COMPOSITE_EXTENSIONS
-    
-#if 0
-    if (!compositor->enabled)
-	return;
-    
-    if (window->screen->root_picture == None)
-	return;
-    
-    cwindow = window_to_cwindow (compositor, window);
-    
-    if (cwindow == NULL)
-	return;
-    
-    region = cwindow_extents (cwindow);
-    
-    meta_compositor_invalidate_region (compositor, cwindow_get_screen (cwindow), region);
-    
-    XFixesDestroyRegion (compositor->display->xdisplay, region);
-#endif
-#endif /* HAVE_COMPOSITE_EXTENSIONS */
-}
-
-void
 meta_compositor_stop_compositing (MetaCompositor *compositor,
 				  MetaWindow     *window)
 {
@@ -1181,156 +908,10 @@ meta_compositor_start_compositing (MetaCompositor *compositor,
 {
     DrawableNode *node;
     node = window_to_node (compositor, window);
-    
-#if 0
-    if (cwindow)
-	cwindow_thaw (cwindow);
-#endif
-    
-#if 0
-    meta_compositor_repair_now (compositor);
-#endif
 }
-
-#if 0
-void
-meta_compositor_genie (MetaCompositor *compositor,
-		       MetaWindow       *window)
-{
-    int i;
-    int x, y, w, h;
-    
-    /* It's unusably slow right now, and also ugly */
-    return;
-    
-    Quad start1;
-    Quad end1;
-    
-    Quad start2;
-    Quad end2;
-    
-    CWindow *cwindow = window_to_cwindow (compositor, window);
-    
-    if (!cwindow)
-	return;
-    
-    x = cwindow_get_x (cwindow);
-    y = cwindow_get_y (cwindow);
-    w = cwindow_get_width (cwindow) + cwindow_get_border_width (cwindow) * 2;
-    h = cwindow_get_height (cwindow) + cwindow_get_border_width (cwindow) * 2;
-    
-    start1.points[0].x = x;
-    start1.points[0].y = y;
-    start1.points[1].x = x + w/2 - 1;
-    start1.points[1].y = y;
-    start1.points[2].x = x;
-    start1.points[2].y = y + h - 1;
-    start1.points[3].x = x + w/2 - 1;
-    start1.points[3].y = y + h - 1;
-    
-    end1.points[0].x = 500;
-    end1.points[0].y = 200 + 50;
-    end1.points[1].x = 600;
-    end1.points[1].y = 200 + 50;
-    end1.points[2].x = 500;
-    end1.points[2].y = 200 + 80;
-    end1.points[3].x = 600;
-    end1.points[3].y = 200 + 80;
-    
-    start2.points[0].x = x + w/2;
-    start2.points[0].y = y;
-    start2.points[1].x = x + w - 1;
-    start2.points[1].y = y;
-    start2.points[2].x = x + w/2;
-    start2.points[2].y = y + h - 1;
-    start2.points[3].x = x + w - 1;
-    start2.points[3].y = y + h - 1;
-    
-    end2.points[0].x = 600;
-    end2.points[0].y = 200 + 50;
-    end2.points[1].x = 700;
-    end2.points[1].y = 200 + 50;
-    end2.points[2].x = 600;
-    end2.points[2].y = 200 + 80;
-    end2.points[3].x = 700;
-    end2.points[3].y = 200 + 130;
-    
-#define STEPS 50
-    
-    for  (i = 0; i < STEPS; ++i)
-    {
-	Distortion distortion[2];
-	Picture buffer;
-	Pixmap pixmap;
-	
-	quad_to_quad_interpolate (&start1, &end1, &distortion[0].destination, i/((double)STEPS - 1));
-	quad_to_quad_interpolate (&start2, &end2, &distortion[1].destination, i/((double)STEPS - 1));
-	
-	distortion[0].source.x = 0;
-	distortion[0].source.y = 0;
-	distortion[0].source.width = cwindow_get_width (cwindow) / 2;
-	distortion[0].source.height = cwindow_get_height (cwindow);
-	
-	distortion[1].source.x = cwindow_get_width (cwindow) / 2;
-	distortion[1].source.y = 0;
-	distortion[1].source.width = cwindow_get_width (cwindow) / 2;
-	distortion[1].source.height = cwindow_get_height (cwindow);
-	
-	cwindow_set_transformation (cwindow, distortion, 2);
-	
-	buffer = create_root_buffer (window->screen, &pixmap);
-	
-	{
-	    XRectangle  r;
-	    XserverRegion region;
-	    
-	    r.x = 0;
-	    r.y = 0;
-	    r.width = window->screen->width;
-	    r.height = window->screen->height;
-	    
-	    region = XFixesCreateRegion (compositor->display->xdisplay, &r, 1);
-	    
-	    XFixesDestroyRegion (compositor->display->xdisplay,
-				 do_paint_screen (compositor, window->screen, buffer, region));
-	    XFixesDestroyRegion (compositor->display->xdisplay, region);
-	}
-	
-	cwindow_draw (cwindow, buffer, None);
-	
-	XFixesSetPictureClipRegion (compositor->display->xdisplay,
-				    window->screen->root_picture, 0, 0, None);
-	/* Copy buffer to root window */
-	paint_buffer (window->screen, pixmap, None);
-	
-	XFreePixmap (compositor->display->xdisplay, pixmap);
-	
-	XRenderFreePicture (compositor->display->xdisplay, buffer);
-	
-	XSync (compositor->display->xdisplay, False);
-    }
-    
-    cwindow_set_transformation (cwindow, NULL, 0);
-}
-#endif
 
 MetaDisplay *
 meta_compositor_get_display (MetaCompositor *compositor)
 {
     return compositor->display;
-}
-
-void
-meta_compositor_set_translucent (MetaCompositor *compositor,
-				 MetaWindow *window,
-				 gboolean translucent)
-{
-    DrawableNode *node = window_to_node (compositor, window);
-
-    if (node)
-    {
-#if 0
-	cwindow_set_translucent (cwindow, translucent);
-#endif
-    }
 }
