@@ -98,6 +98,7 @@ free_window_hash_value (void *v)
 }
 #endif /* HAVE_COMPOSITE_EXTENSIONS */
 
+#if 0
 static void
 print_region (Display *dpy, const char *name, XserverRegion region)
 {
@@ -111,73 +112,7 @@ print_region (Display *dpy, const char *name, XserverRegion region)
 	g_print ("  %d %d %d %d\n", rects[i].x, rects[i].y, rects[i].width, rects[i].height);
     XFree (rects);
 }
-
-#if 0
-static gboolean
-update_world (gpointer data)
-{
-    static double time;
-    
-    MetaCompositor *compositor = data;
-    World *world = compositor->world;
-    MetaScreen *screen = world_get_screen (world);
-    XserverRegion region;
-    
-    region = world_invalidate (world);
-    screen = world_get_screen (world);
-    
-    meta_compositor_invalidate_region (compositor, screen, region);
-    XFixesDestroyRegion (compositor->display->xdisplay, region);
-    
-    world_set_time (world, time); /* FIXME */
-    
-    region = world_invalidate (world);
-    meta_compositor_invalidate_region (compositor, screen, region);
-    XFixesDestroyRegion (compositor->display->xdisplay, region);
-    
-    time += 0.001;
-    
-    return TRUE;
-}
 #endif
-
-static XVisualInfo *
-init_gl (Display    *xdisplay,
-	 int         screen,
-	 GLXContext *ctx)
-{
-    int attrib[] = { GLX_RGBA,
-		     GLX_RED_SIZE, 1,
-		     GLX_GREEN_SIZE, 1,
-		     GLX_BLUE_SIZE, 1,
-		     GLX_STENCIL_SIZE, 1,
-		     GLX_DOUBLEBUFFER,
-		     GLX_DEPTH_SIZE, 1,
-		     None };
-    XVisualInfo *visinfo;
-    GLXContext context;
-    
-    visinfo = glXChooseVisual( xdisplay, screen, attrib );
-    if (!visinfo)
-    {
-	g_printerr ("Error: couldn't get an RGB, Double-buffered visual.\n");
-	return NULL;
-    }
-    
-    context = glXCreateContext( xdisplay, visinfo, NULL, True );
-    
-    if (!context)
-    {
-	g_printerr ("glXCreateContext failed.\n");
-	return NULL;
-    }
-    
-    *ctx = context;
-    
-    g_print ("visual depth: %d\n", visinfo->depth);
-    
-    return visinfo;
-}
 
 MetaCompositor*
 meta_compositor_new (MetaDisplay *display)
@@ -314,7 +249,6 @@ meta_compositor_unref (MetaCompositor *compositor)
 }
 
 double tmp;
-static double last;
 static GTimer *timer ;
 
 #ifdef HAVE_COMPOSITE_EXTENSIONS
@@ -332,66 +266,8 @@ draw_windows (MetaScreen *screen,
     draw_windows (screen, list->next);
     node->render (node);
 }
+#endif
 
-static Picture
-create_root_buffer (MetaScreen *screen, Pixmap *pixmap)
-{
-    Display *display = screen->display->xdisplay;
-    Pixmap buffer_pixmap;
-    XGCValues value;
-    XRenderPictFormat *format;
-    Picture buffer_picture;
-    
-    buffer_pixmap = XCreatePixmap (display, screen->xroot,
-				   screen->width,
-				   screen->height,
-				   DefaultDepth (display,
-						 screen->number));
-    
-    value.function = GXcopy;
-    value.subwindow_mode = IncludeInferiors;
-    
-    format = XRenderFindVisualFormat (display,
-				      DefaultVisual (display,
-						     screen->number));
-    
-    buffer_picture = XRenderCreatePicture (display,
-					   buffer_pixmap,
-					   format,
-					   0, 0);
-    
-    if (pixmap)
-	*pixmap = buffer_pixmap;
-    else
-	XFreePixmap (display, buffer_pixmap);
-    
-    return buffer_picture;
-}
-
-static void
-paint_buffer (MetaScreen *screen,
-	      Pixmap pixmap,
-	      XserverRegion damage_region)
-{
-    XGCValues value;
-    GC gc;
-    value.function = GXcopy;
-    value.subwindow_mode = IncludeInferiors;
-    
-    gc = XCreateGC (screen->display->xdisplay, pixmap, GCFunction | GCSubwindowMode, &value);
-    
-    if (damage_region)
-	XFixesSetGCClipRegion (screen->display->xdisplay, gc, 0, 0, damage_region);
-    
-    XCopyArea (screen->display->xdisplay,
-	       pixmap, screen->xroot, gc,
-	       0, 0, screen->width, screen->height, 0, 0);
-    
-    XFreeGC (screen->display->xdisplay, gc);
-}
-
-static void
-ensure_repair_idle (MetaCompositor *compositor);
 static XserverRegion
 do_paint_screen (MetaCompositor *compositor,
 		 MetaScreen *screen,
@@ -526,109 +402,6 @@ do_paint_screen (MetaCompositor *compositor,
     return region;
 }
 
-static void
-paint_screen (MetaCompositor *compositor,
-              MetaScreen     *screen,
-              XserverRegion   damage_region)
-{
-    Display *xdisplay;
-    XserverRegion region;
-    
-    meta_topic (META_DEBUG_COMPOSITOR, "Repainting screen %d root 0x%lx\n",
-		screen->number, screen->xroot);
-    
-    /* meta_display_grab (screen->display); */
-    
-    xdisplay = screen->display->xdisplay;
-    
-    /* set clip */
-    region = do_paint_screen (compositor, screen, damage_region);
-    
-    /* Copy buffer to root window */
-    meta_topic (META_DEBUG_COMPOSITOR, "Copying buffer to root window 0x%lx picture 0x%lx\n",
-		screen->xroot, screen->root_picture);
-    
-    XFixesDestroyRegion (xdisplay, region);
-    
-    XSync (screen->display->xdisplay, False);
-}
-#endif /* HAVE_COMPOSITE_EXTENSIONS */
-
-#ifdef HAVE_COMPOSITE_EXTENSIONS
-static void
-do_repair (MetaCompositor *compositor)
-{
-    GSList *tmp;
-    
-    tmp = compositor->display->screens;
-    while (tmp != NULL)
-    {
-	MetaScreen *s = tmp->data;
-	
-	if (s->damage_region != None)
-        {
-#if 0
-	    print_region (compositor->display->xdisplay,
-			  "damage region",
-			  s->damage_region);
-#endif
-	    paint_screen (compositor, s,
-			  s->damage_region);
-	    XFixesDestroyRegion (s->display->xdisplay,
-				 s->damage_region);
-	    s->damage_region = None;
-        }
-	
-	tmp = tmp->next;
-    }
-    
-    remove_repair_idle (compositor);
-}
-#endif /* HAVE_COMPOSITE_EXTENSIONS */
-
-#ifdef HAVE_COMPOSITE_EXTENSIONS
-#if 0
-gboolean
-meta_compositor_repair_now (MetaCompositor *compositor)
-{
-    compositor->repair_idle = 0;
-    do_repair (compositor);
-    
-    return FALSE;
-}
-#endif
-#endif /* HAVE_COMPOSITE_EXTENSIONS */
-
-
-#ifdef HAVE_COMPOSITE_EXTENSIONS
-static void
-ensure_repair_idle (MetaCompositor *compositor)
-{
-    if (compositor->repair_idle != 0)
-	return;
-    
-    if (!compositor->world)
-    {
-	compositor->world = world_new (compositor->display->xdisplay,
-				       meta_display_screen_for_x_screen (
-					   compositor->display,
-					   ScreenOfDisplay (compositor->display->xdisplay,
-							    DefaultScreen (compositor->display->xdisplay))));
-	
-	g_print ("screen %p\n", world_get_screen (compositor->world));
-	
-#if 0
-	g_timeout_add_full (G_PRIORITY_HIGH, 50, update_world, compositor, NULL);
-#endif
-    }
-    
-    compositor->repair_idle = g_idle_add_full (META_PRIORITY_COMPOSITE,
-					       meta_compositor_repair_now, compositor, NULL);
-    
-    meta_topic (META_DEBUG_COMPOSITOR, "Damage idle queued\n");
-}
-#endif /* HAVE_COMPOSITE_EXTENSIONS */
-
 #ifdef HAVE_COMPOSITE_EXTENSIONS
 #if 0
 void
@@ -661,10 +434,6 @@ meta_compositor_invalidate_region (MetaCompositor *compositor,
     XFixesUnionRegion (compositor->display->xdisplay,
 		       screen->damage_region,
 		       invalid_area, screen->damage_region);
-    
-#if 0
-    ensure_repair_idle (compositor);
-#endif
 }
 #endif
 #endif /* HAVE_COMPOSITE_EXTENSIONS */
@@ -691,40 +460,29 @@ handle_restacking (MetaCompositor *compositor,
     GList *window_link, *above_link;
     MetaScreen *screen;
     
-    if (!node)
-	return;
-    
     screen = node_get_screen (compositor->display->xdisplay, node);
     
     window_link = g_list_find (screen->compositor_windows, node);
     above_link  = g_list_find (screen->compositor_windows, above);
+
+    if (!window_link || !above_link)
+	return;
+
+    if (window_link == above_link)
+    {
+	/* This can happen if the topmost window is raise above
+	 * the GL window
+	 */
+	return;
+    }
     
     if (window_link->next != above_link)
     {
-	screen->compositor_windows = g_list_delete_link (screen->compositor_windows, window_link);
-	screen->compositor_windows = g_list_insert_before (screen->compositor_windows, above_link, node);
+	screen->compositor_windows = g_list_delete_link (
+	    screen->compositor_windows, window_link);
+	screen->compositor_windows = g_list_insert_before (
+	    screen->compositor_windows, above_link, node);
     }
-}
-
-static void
-raise_gl_window (MetaCompositor *compositor)
-{
-#if 0
-    CWindow *cwindow = g_hash_table_lookup (compositor->window_hash, &compositor->gl_window);
-    if (cwindow)
-    {
-	MetaScreen *screen = cwindow_get_screen (cwindow);
-	GList *gl_link = g_list_find (screen->compositor_windows, cwindow);
-	
-	if (gl_link)
-	{
-	    XRaiseWindow (compositor->display->xdisplay, compositor->gl_window);
-	    screen->compositor_windows = g_list_delete_link (screen->compositor_windows, gl_link);
-	    screen->compositor_windows = g_list_prepend (screen->compositor_windows, cwindow);
-	}
-    }
-#endif
-    /* FIXME */
 }
 
 #ifdef HAVE_COMPOSITE_EXTENSIONS
@@ -732,31 +490,31 @@ static void
 process_configure_notify (MetaCompositor  *compositor,
                           XConfigureEvent *event)
 {
+    WsWindow *above_window;
     DrawableNode *node = g_hash_table_lookup (compositor->window_hash,
 					      &event->window);
-#if 0
-    g_print ("configure: %lx above %lx\n", event->window, event->above);
-#endif
+    DrawableNode *above_node;
+    MetaScreen *screen;
     
-    if (node == NULL)
-    {
-	g_print ("no window for event->window\n");
+    if (!node)
 	return;
+    
+    screen = node_get_screen (compositor->display->xdisplay, node);
+    
+    above_window = ws_window_lookup (node->drawable->ws, event->above);
+
+    if (above_window == compositor->glw)
+    {
+	g_print ("yup\n");
+	above_node = screen->compositor_windows->data;
     }
-    
-#if 0
-    g_print ("gl window: %lx\n", compositor->gl_window);
-#endif
-    
-    handle_restacking (compositor, node,
-		       g_hash_table_lookup (compositor->window_hash, &event->above));
-    
-#if 0
-    cwindow_process_configure_notify (cwindow, event);
-#endif
-    
-    raise_gl_window (compositor);
-    
+    else
+    {
+	above_node = g_hash_table_lookup (compositor->window_hash,
+					  &event->above);
+    }
+
+    handle_restacking (compositor, node, above_node);
 }
 #endif /* HAVE_COMPOSITE_EXTENSIONS */
 
@@ -1101,19 +859,11 @@ meta_compositor_add_window (MetaCompositor    *compositor,
 	return;
     }
     
-    meta_topic (META_DEBUG_COMPOSITOR,
-		"Adding window 0x%lx (%s) to compositor\n",
-		xwindow,
-		attrs->map_state == IsViewable ?
-		"mapped" : "unmapped");
-
     drawable = (WsDrawable *)ws_window_lookup (compositor->ws, xwindow);
 
     if (ws_window_query_input_only ((WsWindow *)drawable) ||
-	drawable == compositor->glw)
+	drawable == (WsDrawable *)compositor->glw)
     {
-	if (drawable == compositor->glw)
-	    g_print ("skipping gl window\n");
 	return;
     }
     else
@@ -1122,9 +872,6 @@ meta_compositor_add_window (MetaCompositor    *compositor,
 	node = drawable_node_new (drawable);
     }
     
-    /* FIXME this assertion can fail somehow... */
-    g_assert (attrs->map_state != IsUnviewable);
-
     /* FIXME: this will not work - the hash table should be fixed */
     g_hash_table_insert (compositor->window_hash,
 			 &(node->drawable->xid), node);
@@ -1186,17 +933,6 @@ meta_compositor_remove_window (MetaCompositor    *compositor,
 			 &xwindow);
     
 #endif /* HAVE_COMPOSITE_EXTENSIONS */
-}
-
-static XserverRegion
-empty_region (Display *dpy)
-{
-    XRectangle r;
-    r.x = 0;
-    r.y = 0;
-    r.width = 10;
-    r.height = 10;
-    return XFixesCreateRegion (dpy, &r, 1);
 }
 
 typedef struct Info
