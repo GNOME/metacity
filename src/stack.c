@@ -956,6 +956,7 @@ raise_window_relative_to_managed_windows (MetaScreen *screen,
   
   meta_error_trap_push_with_return (screen->display);
   
+  g_print ("querytree\n");
   XQueryTree (screen->display->xdisplay,
               screen->xroot,
               &ignored1, &ignored2, &children, &n_children);
@@ -1001,6 +1002,7 @@ raise_window_relative_to_managed_windows (MetaScreen *screen,
           changes.stack_mode = Above;
 
           meta_error_trap_push (screen->display);
+	  g_print ("relative configurewindow\n");
           XConfigureWindow (screen->display->xdisplay,
                             xwindow,
                             CWSibling | CWStackMode,
@@ -1163,6 +1165,7 @@ meta_stack_sync_to_server (MetaStack *stack)
                   meta_topic (META_DEBUG_STACK, "Placing window 0x%lx below 0x%lx\n",
                               *newp, last_window);
                   
+		  g_print ("configurewindow\n");
                   XConfigureWindow (stack->screen->display->xdisplay,
                                     *newp,
                                     CWSibling | CWStackMode,
@@ -1185,6 +1188,7 @@ meta_stack_sync_to_server (MetaStack *stack)
            */
           if (newp != new_stack)
             --newp;
+	  g_print ("restackwindows\n");
           XRestackWindows (stack->screen->display->xdisplay,
                            (Window *) newp, new_end - newp);
         }

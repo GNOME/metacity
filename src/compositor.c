@@ -57,7 +57,7 @@
 struct MetaCompositor
 {
     MetaDisplay *display;
-
+    
     Ws *ws;
     
     World *world;
@@ -81,7 +81,7 @@ struct MetaCompositor
     guint debug_updates : 1;
     
     GList *ignored_damage;
-
+    
     WsWindow *glw;
 };
 
@@ -100,11 +100,11 @@ meta_compositor_new (MetaDisplay *display)
 {
 #ifdef HAVE_COMPOSITE_EXTENSIONS
     MetaCompositor *compositor;
-
+    
     compositor = g_new0 (MetaCompositor, 1);
-
+    
     compositor->ws = ws_new (NULL);
-
+    
     ws_init_test (compositor->ws);
     ws_set_ignore_grabs (compositor->ws, TRUE);
     
@@ -237,12 +237,12 @@ draw_windows (MetaScreen *screen,
 	      GList      *list)
 {
     Node *node;
-
+    
     if (!list)
 	return;
-
+    
     node = list->data;
-
+    
     draw_windows (screen, list->next);
     node->render (node);
 }
@@ -274,10 +274,10 @@ handle_restacking (MetaCompositor *compositor,
     
     window_link = g_list_find (screen->compositor_windows, node);
     above_link  = g_list_find (screen->compositor_windows, above);
-
+    
     if (!window_link || !above_link)
 	return;
-
+    
     if (window_link == above_link)
     {
 	/* This can happen if the topmost window is raise above
@@ -312,10 +312,9 @@ process_configure_notify (MetaCompositor  *compositor,
     screen = node_get_screen (compositor->display->xdisplay, node);
     
     above_window = ws_window_lookup (node->drawable->ws, event->above);
-
+    
     if (above_window == compositor->glw)
     {
-	g_print ("yup\n");
 	above_node = screen->compositor_windows->data;
     }
     else
@@ -323,7 +322,7 @@ process_configure_notify (MetaCompositor  *compositor,
 	above_node = g_hash_table_lookup (compositor->window_hash,
 					  &event->above);
     }
-
+    
     handle_restacking (compositor, node, above_node);
 }
 #endif /* HAVE_COMPOSITE_EXTENSIONS */
@@ -341,7 +340,7 @@ process_expose (MetaCompositor     *compositor,
     screen = meta_display_screen_for_root (compositor->display,
 					   event->window);
     
-    if (screen == NULL || screen->root_picture == None)
+    if (screen == NULL)
 	return;
     
     r.x = 0;
@@ -367,7 +366,7 @@ process_map (MetaCompositor     *compositor,
     screen = meta_display_screen_for_root (compositor->display,
 					   event->event);
     
-    if (screen == NULL || screen->root_picture == None)
+    if (screen == NULL)
     {
 	meta_topic (META_DEBUG_COMPOSITOR,
 		    "MapNotify received on non-root 0x%lx for 0x%lx\n",
@@ -422,7 +421,7 @@ process_unmap (MetaCompositor     *compositor,
     screen = meta_display_screen_for_root (compositor->display,
 					   event->event);
     
-    if (screen == NULL || screen->root_picture == None)
+    if (screen == NULL)
     {
 	meta_topic (META_DEBUG_COMPOSITOR,
 		    "UnmapNotify received on non-root 0x%lx for 0x%lx\n",
@@ -431,7 +430,7 @@ process_unmap (MetaCompositor     *compositor,
     }
     
     node = g_hash_table_lookup (compositor->window_hash,
-				   &event->window);
+				&event->window);
     if (node != NULL)
     {
 	drawable_node_set_viewable (node, FALSE);
@@ -450,7 +449,7 @@ process_create (MetaCompositor     *compositor,
     screen = meta_display_screen_for_root (compositor->display,
 					   event->parent);
     
-    if (screen == NULL || screen->root_picture == None)
+    if (screen == NULL)
     {
 	meta_topic (META_DEBUG_COMPOSITOR,
 		    "CreateNotify received on non-root 0x%lx for 0x%lx\n",
@@ -489,7 +488,7 @@ process_destroy (MetaCompositor      *compositor,
     screen = meta_display_screen_for_root (compositor->display,
 					   event->event);
     
-    if (screen == NULL || screen->root_picture == None)
+    if (screen == NULL)
     {
 	meta_topic (META_DEBUG_COMPOSITOR,
 		    "DestroyNotify received on non-root 0x%lx for 0x%lx\n",
@@ -522,7 +521,7 @@ process_reparent (MetaCompositor      *compositor,
     
     g_print ("reparent\n");
     
-    if (event_screen == NULL || event_screen->root_picture == None)
+    if (event_screen == NULL)
     {
 	meta_topic (META_DEBUG_COMPOSITOR,
 		    "ReparentNotify received on non-root 0x%lx for 0x%lx\n",
@@ -659,7 +658,7 @@ meta_compositor_add_window (MetaCompositor    *compositor,
     }
     
     drawable = (WsDrawable *)ws_window_lookup (compositor->ws, xwindow);
-
+    
     if (ws_window_query_input_only ((WsWindow *)drawable) ||
 	drawable == (WsDrawable *)compositor->glw)
     {
@@ -735,33 +734,33 @@ static gboolean
 update (gpointer data)
 {
     Info *info = data;
-
+    
     MetaScreen *screen = info->screen;
     WsWindow *gl_window = info->window;
-
+    
     glMatrixMode (GL_MODELVIEW);
     glLoadIdentity ();
     gluOrtho2D (0, 1.0, 0.0, 1.0);
-	
+    
     ws_window_raise (gl_window);
     
     glClearColor (0.0, 0.5, 0.5, 0.0);
     glClear (GL_COLOR_BUFFER_BIT);
-
+    
     glColor4f (1.0, 0.0, 0.0, 1.0);
-
+    
     glDisable (GL_TEXTURE_2D);
     
     glBegin (GL_QUADS);
-
+    
     glVertex2f (0.2, 0.2);
     glVertex2f (0.2, 0.4);
     glVertex2f (0.4, 0.4);
     glVertex2f (0.4, 0.2);
     
     glEnd ();
-
-
+    
+    
     glEnable (GL_TEXTURE_2D);
     draw_windows (screen, screen->compositor_windows);
     
@@ -783,65 +782,38 @@ meta_compositor_manage_screen (MetaCompositor *compositor,
                                MetaScreen     *screen)
 {
 #ifdef HAVE_COMPOSITE_EXTENSIONS
-    XRenderPictureAttributes pa;
+    WsScreen *ws_screen = ws_screen_get_from_number (
+	compositor->ws, screen->number);
+    WsWindow *root = ws_screen_get_root_window (ws_screen);
+    Info *info;
+    WsRegion *region;
     
-    if (!compositor->enabled)
-	return; /* no extension */
     
-    /* FIXME we need to handle root window resize by recreating the
-     * root_picture
-     */
+    compositor->glw = ws_window_new_gl (root);
     
-    g_assert (screen->root_picture == None);
+    ws_init_composite (compositor->ws);
+    ws_init_damage (compositor->ws);
+    ws_init_fixes (compositor->ws);
     
-    /* FIMXE: This shouldn't be needed for the gl compositor, but it is. Various stuff gets
-     * confused if root_picture is None
-     */
-    pa.subwindow_mode = IncludeInferiors;
+    ws_window_redirect_subwindows (root);
+    ws_window_set_override_redirect (compositor->glw, TRUE);
+    ws_window_unredirect (compositor->glw);
     
-    screen->root_picture =
-	XRenderCreatePicture (compositor->display->xdisplay,
-			      screen->xroot, 
-			      XRenderFindVisualFormat (compositor->display->xdisplay,
-						       DefaultVisual (compositor->display->xdisplay,
-								      screen->number)),
-			      CPSubwindowMode,
-			      &pa);
+    region = ws_region_new (compositor->ws);
+    ws_window_set_input_shape (compositor->glw, region);
+    ws_region_unref (region);
     
-    {
-	WsScreen *ws_screen = ws_screen_get_from_number (
-	    compositor->ws, screen->number);
-	WsWindow *root = ws_screen_get_root_window (ws_screen);
-	Info *info;
-	WsRegion *region;
-		      
-
-	compositor->glw = ws_window_new_gl (root);
-
-	ws_init_composite (compositor->ws);
-	ws_init_damage (compositor->ws);
-	ws_init_fixes (compositor->ws);
-	
-	ws_window_redirect_subwindows (root);
-	ws_window_set_override_redirect (compositor->glw, TRUE);
-	ws_window_unredirect (compositor->glw);
-
-	region = ws_region_new (compositor->ws);
-	ws_window_set_input_shape (compositor->glw, region);
-	ws_region_unref (region);
-	
-	ws_window_map (compositor->glw);
-	
-	ws_sync (compositor->ws);
-	
-	info = g_new (Info, 1);
-	info->window = compositor->glw;
-	info->screen = screen;
-	
-	g_idle_add (update, info);
-
-	the_info = info;
-    }
+    ws_window_map (compositor->glw);
+    
+    ws_sync (compositor->ws);
+    
+    info = g_new (Info, 1);
+    info->window = compositor->glw;
+    info->screen = screen;
+    
+    g_idle_add (update, info);
+    
+    the_info = info;
 #endif
 }
 
@@ -852,16 +824,6 @@ meta_compositor_unmanage_screen (MetaCompositor *compositor,
 #ifdef HAVE_COMPOSITE_EXTENSIONS  
     if (!compositor->enabled)
 	return; /* no extension */
-    
-    XRenderFreePicture (screen->display->xdisplay,
-			screen->root_picture);
-    screen->root_picture = None;
-    XRenderFreePicture (screen->display->xdisplay,
-			screen->trans_picture);
-    screen->trans_picture = None;
-    XFreePixmap (screen->display->xdisplay,
-		 screen->trans_pixmap);
-    screen->trans_pixmap = None;
     
     while (screen->compositor_windows != NULL)
     {

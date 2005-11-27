@@ -541,10 +541,6 @@ meta_screen_new (MetaDisplay *display,
   screen->starting_corner = META_SCREEN_TOPLEFT;
 
   screen->compositor_windows = NULL;
-  screen->damage_region = None;
-  screen->root_picture = None;
-  screen->trans_pixmap = None;
-  screen->trans_picture = None;
   
   {
     XFontStruct *font_info;

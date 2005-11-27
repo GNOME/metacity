@@ -2838,6 +2838,7 @@ meta_window_move_resize_internal (MetaWindow  *window,
 	}
 #endif
 
+      g_print ("window configurewindow\n");
       XConfigureWindow (window->display->xdisplay,
                         window->xwindow,
                         mask,

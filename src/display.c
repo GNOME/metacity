@@ -3381,12 +3381,6 @@ meta_display_begin_grab_op (MetaDisplay *display,
   if (display->grab_window)
     {
       meta_window_refresh_resize_popup (display->grab_window);
-
-      /* repaint window in case we draw it differently
-       * when grabbed
-       */
-      meta_compositor_damage_window (display->compositor,
-                                     display->grab_window);
     }
   
   return TRUE;
@@ -3468,13 +3462,6 @@ meta_display_end_grab_op (MetaDisplay *display,
       display->grab_sync_request_alarm = None;
     }
 #endif /* HAVE_XSYNC */
-
-  /* repaint window in case the grab op drew it in a
-   * nonstandard way such as transparent or wireframe
-   */
-  if (display->grab_window != NULL)
-    meta_compositor_damage_window (display->compositor,
-                                   display->grab_window);
   
   display->grab_window = NULL;
   display->grab_screen = NULL;
