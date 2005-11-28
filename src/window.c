@@ -77,7 +77,6 @@ static void     send_configure_notify     (MetaWindow     *window);
 static gboolean process_property_notify   (MetaWindow     *window,
                                            XPropertyEvent *event);
 static void     meta_window_show          (MetaWindow     *window);
-static void     meta_window_hide          (MetaWindow     *window);
 
 static void     meta_window_save_rect         (MetaWindow    *window);
 
@@ -1335,6 +1334,7 @@ implement_showing (MetaWindow *window,
           meta_window_get_outer_rect (window, &window_rect);
           
           /* Draw a nice cool animation */
+	  window->animation_running = TRUE;
 	  meta_compositor_minimize (window->display->compositor,
 				    window,
 				    icon_rect.x,
@@ -1349,8 +1349,8 @@ implement_showing (MetaWindow *window,
                                            META_BOX_ANIM_SCALE);
 #endif
 	}
-
-      meta_window_hide (window);
+      else
+ 	  meta_window_hide (window);
     }
   else
     {
@@ -1964,7 +1964,6 @@ meta_window_minimize (MetaWindow  *window)
           meta_topic (META_DEBUG_FOCUS,
                       "Focusing default window due to minimization of focus window %s\n",
                       window->desc);
-          meta_workspace_focus_default_window (window->screen->active_workspace, window, meta_display_get_current_time_roundtrip (window->display));
         }
       else
         {

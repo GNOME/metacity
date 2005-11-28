@@ -29,6 +29,7 @@
 #include "matrix.h"
 #include <math.h>
 #include "snow.h"
+#include "workspace.h"
 
 #include <math.h>
 
@@ -686,7 +687,9 @@ meta_compositor_add_window (MetaCompositor    *compositor,
     {
 	node = drawable_node_new (drawable);
 
+#if 0
 	drawable_node_set_deformation_func (node, wavy, NULL);
+#endif
     }
     
     /* FIXME: we should probably just store xid's directly */
@@ -881,6 +884,7 @@ typedef struct
 
 typedef struct
 {
+    MetaWindow *window;
     DrawableNode *node;
 
     DoubleRect start;
@@ -893,7 +897,7 @@ typedef struct
 static gdouble
 interpolate (gdouble t, gdouble begin, gdouble end, double power)
 {
-    return begin + (end - begin) * pow (t, power);
+    return (begin + (end - begin) * pow (t, power));
 }
 
 static gboolean
@@ -902,8 +906,12 @@ stop_minimize (gpointer data)
     MiniInfo *info = data;
     
     drawable_node_set_deformation_func (info->node, NULL, NULL);
-    g_free (info);
 
+    meta_window_hide (info->window);
+    meta_workspace_focus_default_window (info->window->screen->active_workspace, info->window, meta_display_get_current_time_roundtrip (info->window->display));
+    
+    g_free (info);
+    
     return FALSE;
 }
 
@@ -915,7 +923,7 @@ minimize_deformation (gdouble time,
 		      double *out_y,
 		      gpointer data)
 {
-#define MINIMIZE_TIME 3.0
+#define MINIMIZE_TIME 0.5
     MiniInfo *info = data;
     gdouble elapsed;
     gdouble pos;
@@ -925,18 +933,10 @@ minimize_deformation (gdouble time,
 
     elapsed = time - info->start_time;
     pos = elapsed / MINIMIZE_TIME;
-
-#if 0
-    g_print ("%f\n", info->target.width * ((in_x - info->start.x)  / info->start.width));
-#endif
     
-    *out_x = interpolate (pos, in_x, info->target.x + info->target.width * ((in_x - info->start.x)  / info->start.width), 3 * (1 - in_y));
+    *out_x = interpolate (pos, in_x, info->target.x + info->target.width * ((in_x - info->start.x)  / info->start.width), 10 * (1 - in_y));
     *out_y = interpolate (pos, in_y, info->target.y + info->target.height * ((in_y - info->start.y)  / info->start.height), 1.0);
 
-#if 0
-    g_print ("%f %f => %f %f\n", in_x, in_y, *out_x, *out_y);
-#endif
-    
     if (elapsed > MINIMIZE_TIME)
     {
 	g_assert (info->node);
@@ -988,6 +988,8 @@ meta_compositor_minimize (MetaCompositor *compositor,
 	     info->target.x, info->target.y,
 	     info->target.width, info->target.height);
 
+    info->window = window;
+    
     info->target.y = 1 - info->target.y - info->target.height;
     
     info->start_time = -1;

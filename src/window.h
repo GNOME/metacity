@@ -266,6 +266,7 @@ struct _MetaWindow
 
   /* if TRUE, application is buggy and SYNC resizing is turned off */
   guint disable_sync : 1;
+  guint animation_running : 1;
 
 #ifdef HAVE_XSYNC
   /* XSync update counter */
@@ -544,5 +545,6 @@ void meta_window_stack_just_below (MetaWindow *window,
 
 void meta_window_set_user_time (MetaWindow *window,
                                 Time        timestamp);
+void meta_window_hide          (MetaWindow *window);
 
 #endif
