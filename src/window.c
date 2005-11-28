@@ -1335,11 +1335,19 @@ implement_showing (MetaWindow *window,
           meta_window_get_outer_rect (window, &window_rect);
           
           /* Draw a nice cool animation */
+	  meta_compositor_minimize (window->display->compositor,
+				    window,
+				    icon_rect.x,
+				    icon_rect.y,
+				    icon_rect.width,
+				    icon_rect.height);
+#if 0
           meta_effects_draw_box_animation (window->screen,
                                            &window_rect,
                                            &icon_rect,
                                            META_MINIMIZE_ANIMATION_LENGTH,
                                            META_BOX_ANIM_SCALE);
+#endif
 	}
 
       meta_window_hide (window);

@@ -137,7 +137,7 @@ bin_PROGRAMS=metacity metacity-theme-viewer
 libexec_PROGRAMS=metacity-dialog
 
 EFENCE=
-metacity_LDADD=@METACITY_LIBS@ $(EFENCE) -lGL -lGLU -lcm
+metacity_LDADD=@METACITY_LIBS@ $(EFENCE) -lGL -lGLU -lcm -lXtst
 metacity_theme_viewer_LDADD= @METACITY_LIBS@ libmetacity-private.la
 metacity_dialog_LDADD=@METACITY_LIBS@
 

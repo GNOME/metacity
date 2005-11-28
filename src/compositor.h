@@ -69,4 +69,12 @@ meta_compositor_repair_now (MetaCompositor *compositor);
 XID
 meta_compositor_get_gl_window (MetaCompositor *compositor);
 
+void
+meta_compositor_minimize (MetaCompositor *compositor,
+			  MetaWindow *window,
+			  int         x,
+			  int         y,
+			  int         width,
+			  int         height);
+
 #endif /* META_COMPOSITOR_H */

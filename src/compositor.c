@@ -807,8 +807,7 @@ meta_compositor_manage_screen (MetaCompositor *compositor,
     WsWindow *root = ws_screen_get_root_window (ws_screen);
     Info *info;
     WsRegion *region;
-    
-    
+
     compositor->glw = ws_window_new_gl (root);
     
     ws_init_composite (compositor->ws);
@@ -872,24 +871,128 @@ window_to_node (MetaCompositor *compositor,
     return node;
 }
 
-void
-meta_compositor_stop_compositing (MetaCompositor *compositor,
-				  MetaWindow     *window)
+typedef struct
 {
-#if 0
-    DrawableNode *node = window_to_node (compositor, window);
+    double x;
+    double y;
+    double width;
+    double height;
+} DoubleRect;
+
+typedef struct
+{
+    DrawableNode *node;
+
+    DoubleRect start;
+    DoubleRect target;
     
-    if (cwindow)
-	cwindow_freeze (cwindow);
+    double start_time;
+    int idle_id;
+} MiniInfo;
+
+static gdouble
+interpolate (gdouble t, gdouble begin, gdouble end, double power)
+{
+    return begin + (end - begin) * pow (t, power);
+}
+
+static gboolean
+stop_minimize (gpointer data)
+{
+    MiniInfo *info = data;
+    
+    drawable_node_set_deformation_func (info->node, NULL, NULL);
+    g_free (info);
+
+    return FALSE;
+}
+
+static void
+minimize_deformation (gdouble time,
+		      double in_x,
+		      double in_y,
+		      double *out_x,
+		      double *out_y,
+		      gpointer data)
+{
+#define MINIMIZE_TIME 3.0
+    MiniInfo *info = data;
+    gdouble elapsed;
+    gdouble pos;
+
+    if (info->start_time == -1)
+	info->start_time = time;
+
+    elapsed = time - info->start_time;
+    pos = elapsed / MINIMIZE_TIME;
+
+#if 0
+    g_print ("%f\n", info->target.width * ((in_x - info->start.x)  / info->start.width));
 #endif
+    
+    *out_x = interpolate (pos, in_x, info->target.x + info->target.width * ((in_x - info->start.x)  / info->start.width), 3 * (1 - in_y));
+    *out_y = interpolate (pos, in_y, info->target.y + info->target.height * ((in_y - info->start.y)  / info->start.height), 1.0);
+
+#if 0
+    g_print ("%f %f => %f %f\n", in_x, in_y, *out_x, *out_y);
+#endif
+    
+    if (elapsed > MINIMIZE_TIME)
+    {
+	g_assert (info->node);
+	if (!info->idle_id)
+	    info->idle_id = g_idle_add (stop_minimize, info);
+    }
+}
+
+static void
+convert (MetaScreen *screen,
+	 int x, int y, int width, int height,
+	 DoubleRect *rect)
+{
+    rect->x = x / (double)screen->width;
+    rect->y = y / (double)screen->height;
+    rect->width = width / (double)screen->width;
+    rect->height = height / (double)screen->height;
 }
 
 void
-meta_compositor_start_compositing (MetaCompositor *compositor,
-				   MetaWindow     *window)
+meta_compositor_minimize (MetaCompositor *compositor,
+			  MetaWindow *window,
+			  int         x,
+			  int         y,
+			  int         width,
+			  int         height)
 {
-    DrawableNode *node;
-    node = window_to_node (compositor, window);
+    MiniInfo *info = g_new (MiniInfo, 1);
+    DrawableNode *node = window_to_node (compositor, window);
+    WsRectangle start;
+    MetaScreen *screen = window->screen;
+    
+    info->node = node;
+
+    info->idle_id = 0;
+    
+    ws_drawable_query_geometry (node->drawable, &start);
+
+    convert (screen, start.x, start.y, start.width, start.height,
+	     &info->start);
+    convert (screen, x, y, width, height,
+	     &info->target);
+
+    g_print ("start: %f %f %f %f\n",
+	     info->start.x, info->start.y,
+	     info->start.width, info->start.height);
+    
+    g_print ("target: %f %f %f %f\n",
+	     info->target.x, info->target.y,
+	     info->target.width, info->target.height);
+
+    info->target.y = 1 - info->target.y - info->target.height;
+    
+    info->start_time = -1;
+    
+    drawable_node_set_deformation_func (node, minimize_deformation, info);
 }
 
 MetaDisplay *

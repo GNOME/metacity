@@ -40,7 +40,6 @@ void            cwindow_set_transformation           (CWindow            *window
 						      int                 n_distortions);
 void            cwindow_free                         (CWindow            *cwindow);
 XserverRegion   cwindow_extents                      (CWindow            *cwindow);
-XserverRegion	cwindow_get_opaque_region            (CWindow            *cwindow);
 Drawable        cwindow_get_drawable                 (CWindow            *cwindow);
 Window          cwindow_get_xwindow                  (CWindow            *cwindow);
 gboolean        cwindow_get_viewable                 (CWindow            *cwindow);
