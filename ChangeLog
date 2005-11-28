@@ -1,3 +1,7 @@
+2005-11-28  Elijah Newren  <newren@gmail.com>
+
+	* NEWS:	2.12.2 release
+
 2005-10-29  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* src/eventqueue.c: (meta_event_queue_new): Close a GSource leak

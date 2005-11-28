@@ -1,3 +1,24 @@
+2.12.2
+==
+
+Thanks to Björn Lindqvist, Kjartan Maraas, Søren Sandmann, and
+Elijah Newren for improvements in this release.
+
+ - Mave ancestors come along with the transient when moving the window from
+   one workspace to another (Björn) [#314977]
+ - Fix the workspace switcher tabpopup to display the right windows and to
+   fix the pick-a-new-window-to-focus algorithm in order to not select
+   windows that aren't showing (Björn) [#170475]
+ - Fix a couple memory leaks (Kjartan, Søren, Elijah) [#313030]
+ - Fix a crash that occurs when removing some virtual desktops and windows
+   happen to be on those desktops (Elijah) [#318306]
+ - Fix edge snapping for multi-screen (non-xinerama) setups (Elijah)
+   [#319425]
+ - Close a GSource leak just to be correct (Kjartan) [#320050]
+
+Translations
+  Kostas Papadimas (el), Ivar Smolin (et), Michiel Sikkes (nl)
+
 2.12.1
 ==
 
