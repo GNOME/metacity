@@ -30,6 +30,7 @@
 #include <math.h>
 #include "snow.h"
 
+#include <math.h>
 
 #include <cm/node.h>
 #include <cm/drawable-node.h>
@@ -628,6 +629,23 @@ meta_compositor_process_event (MetaCompositor *compositor,
 #endif /* HAVE_COMPOSITE_EXTENSIONS */
 }
 
+static void
+wavy (double time,
+      double in_x, double in_y,
+      double *out_x, double *out_y,
+      gpointer data)
+{
+    static int m;
+    time = time * 5;
+    double dx = 0.0025 * sin (time + 35 * in_y);
+    double dy = 0.0025 * cos (time + 35 * in_x);
+
+    *out_x = in_x + dx;
+    *out_y = in_y + dy;
+
+    m++;
+}
+
 /* This is called when metacity does its XQueryTree() on startup
  * and when a new window is mapped.
  */
@@ -667,6 +685,8 @@ meta_compositor_add_window (MetaCompositor    *compositor,
     else
     {
 	node = drawable_node_new (drawable);
+
+	drawable_node_set_deformation_func (node, wavy, NULL);
     }
     
     /* FIXME: we should probably just store xid's directly */
