@@ -934,7 +934,7 @@ minimize_deformation (gdouble time,
     elapsed = time - info->start_time;
     pos = elapsed / MINIMIZE_TIME;
     
-    *out_x = interpolate (pos, in_x, info->target.x + info->target.width * ((in_x - info->start.x)  / info->start.width), 10 * (1 - in_y));
+    *out_x = interpolate (pos, in_x, info->target.x + info->target.width * ((in_x - info->start.x)  / info->start.width), 10 * in_y);
     *out_y = interpolate (pos, in_y, info->target.y + info->target.height * ((in_y - info->start.y)  / info->start.height), 1.0);
 
     if (elapsed > MINIMIZE_TIME)
@@ -990,7 +990,7 @@ meta_compositor_minimize (MetaCompositor *compositor,
 
     info->window = window;
     
-    info->target.y = 1 - info->target.y - info->target.height;
+    info->target.y = 1 - info->target.y;
     
     info->start_time = -1;
     
