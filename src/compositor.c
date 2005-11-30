@@ -1,5 +1,3 @@
-/* Metacity compositing manager */
-
 /* 
  * Copyright (C) 2003, 2004 Red Hat, Inc.
  * Copyright (C) 2003 Keith Packard
