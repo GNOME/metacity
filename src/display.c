@@ -460,7 +460,6 @@ meta_display_open (const char *name)
    * created in screen_new
    */
   display->leader_window = None;
-  display->no_focus_window = None;
 
   display->xinerama_cache_invalidated = TRUE;
 
@@ -709,7 +708,10 @@ meta_display_open (const char *name)
      * as it is the most recent timestamp.
      */
     if (focus == None || focus == PointerRoot)
-      meta_display_focus_the_no_focus_window (display, timestamp);
+      /* Just focus the no_focus_window on the first screen */
+      meta_display_focus_the_no_focus_window (display,
+                                              display->screens->data,
+                                              timestamp);
     else
       {
         MetaWindow * window;
@@ -717,7 +719,10 @@ meta_display_open (const char *name)
         if (window)
           meta_display_set_input_focus_window (display, window, FALSE, timestamp);
         else
-          meta_display_focus_the_no_focus_window (display, timestamp);
+          /* Just focus the no_focus_window on the first screen */
+          meta_display_focus_the_no_focus_window (display,
+                                                  display->screens->data,
+                                                  timestamp);
       }
 
     meta_error_trap_pop (display, FALSE);
@@ -1843,6 +1848,7 @@ event_callback (XEvent   *event,
                                   "Unsetting focus from %s due to LeaveNotify\n",
                                   window->desc);
                       meta_display_focus_the_no_focus_window (display, 
+                                                              window->screen,
                                                               event->xcrossing.time);
                     }
                   if (window->type != META_WINDOW_DOCK &&
@@ -1874,7 +1880,8 @@ event_callback (XEvent   *event,
         {
           meta_window_notify_focus (window, event);
         }
-      else if (event->xany.window == display->no_focus_window)
+      else if (meta_display_xwindow_is_a_no_focus_window (display,
+                                                          event->xany.window))
         {
           meta_topic (META_DEBUG_FOCUS,
                       "Focus %s event received on no_focus_window 0x%lx "
@@ -2962,6 +2969,24 @@ meta_display_unregister_x_window (MetaDisplay *display,
 
   /* Remove any pending pings */
   remove_pending_pings_for_window (display, xwindow);
+}
+
+gboolean
+meta_display_xwindow_is_a_no_focus_window (MetaDisplay *display,
+                                           Window xwindow)
+{
+  gboolean is_a_no_focus_window = FALSE;
+  GSList *temp = display->screens;
+  while (temp != NULL) {
+    MetaScreen *screen = temp->data;
+    if (screen->no_focus_window == xwindow) {
+      is_a_no_focus_window = TRUE;
+      break;
+    }
+    temp = temp->next;
+  }
+
+  return is_a_no_focus_window;
 }
 
 Cursor
@@ -4819,13 +4844,14 @@ meta_display_set_input_focus_window (MetaDisplay *display,
 
 void
 meta_display_focus_the_no_focus_window (MetaDisplay *display, 
+                                        MetaScreen  *screen,
                                         Time         timestamp)
 {
   if (timestamp_too_old (display, NULL, &timestamp))
     return;
 
   XSetInputFocus (display->xdisplay,
-                  display->no_focus_window,
+                  screen->no_focus_window,
                   RevertToPointerRoot,
                   timestamp);
   display->expected_focus_window = NULL;
