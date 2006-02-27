@@ -1,3 +1,21 @@
+2.13.144
+==
+
+Thanks to Jens Granseuer, Kristian, Søren Sandmann, Sylvain
+Bertrand, and Thomas Thurman for improvements in this release.
+
+ - Fix build with gcc 2.95 (Jens) [#331166]
+ - Compositor improvements [remember, still off by default]: add
+   unused wobbly (un)minimize animation (Kristian), add support for
+   turning updates on and off (Søren), use sync counter to make
+   composited resizing tear free (Søren), add ability to unmanage
+   the screen (S½ren), 
+ - Fix build issue with library search order (Sylvain) [#330695]
+ - Work around buggy application grouping with transient windows
+   (Thomas) [#328211]
+ - Prevent setting cycle_windows to keybindings that won't work.
+   (Thomas) [#329676]
+
 2.13.89
 ==
 

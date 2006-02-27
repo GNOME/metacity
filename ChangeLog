@@ -1,5 +1,9 @@
 2006-02-27  Elijah Newren  <newren gmail com>
 
+	* NEWS:	2.13.144 release
+
+2006-02-27  Elijah Newren  <newren gmail com>
+
 	Patch from Thomas Thurman to prevent setting cycle_windows to
 	keybindings that won't work.  #329676
 
