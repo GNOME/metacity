@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity 2.14.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-03-02 16:50+0100\n"
-"PO-Revision-Date: 2006-03-02 16:49+0100\n"
+"POT-Creation-Date: 2006-03-02 17:02+0100\n"
+"PO-Revision-Date: 2006-03-07 09:26+0100\n"
 "Last-Translator: Luca Ferretti <elle.uca@libero.it>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
@@ -252,7 +252,7 @@ msgstr "Sposta sull'area di lavoro il alt_o"
 msgid "Move to Workspace _Down"
 msgstr "Sposta sull'area di lavoro in _basso"
 
-#: ../src/menu.c:164 ../src/prefs.c:1978 ../src/prefs.c:2279
+#: ../src/menu.c:164 ../src/prefs.c:1978 ../src/prefs.c:2341
 #, c-format
 msgid "Workspace %d"
 msgstr "Area di lavoro %d"
@@ -515,7 +515,6 @@ msgstr "Nascondi tutte le finestre e da il focus al desktop"
 # chiave general/auto_raise
 # la descrizione breve è "Automatically raises the focused window"
 #: ../src/metacity.schemas.in.h:17
-#, fuzzy
 msgid ""
 "If true, and the focus mode is either \"sloppy\" or \"mouse\" then the "
 "focused window will be automatically raised after a delay (the delay is "
@@ -604,7 +603,6 @@ msgstr "Abbassa la finestra sotto le altre"
 # chiave general/raise_on_click
 # descrizione breve "Whether raising should be a side-effect of other user interactions"
 #: ../src/metacity.schemas.in.h:23
-#, fuzzy
 msgid ""
 "Many actions (e.g. clicking in the client area, moving or resizing the "
 "window) normally raise the window as a side-effect. Set this option to false "
@@ -2133,7 +2131,7 @@ msgstr ""
 "Il valore «%s» nel database di configurazione non è valido per la "
 "scorciatoia «%s»\n"
 
-#: ../src/prefs.c:2360
+#: ../src/prefs.c:2422
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr "Errore nell'impostare il nome dell'area di lavoro %d a «%s»: %s\n"
@@ -3324,7 +3322,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/window.c:6028
+#: ../src/window.c:6037
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
@@ -3362,15 +3360,3 @@ msgid ""
 msgstr ""
 "La proprietà %s della finestra 0x%lx contiene UTF-8 non valido per "
 "l'elemento %d nella lista\n"
-
-#~ msgid ""
-#~ "If true, and the focus mode is either \"sloppy\" or \"mouse\" then the "
-#~ "focused window will be automatically raised after a delay (the delay is "
-#~ "specified by the auto_raise_delay key)."
-#~ msgstr ""
-#~ "Se impostata a vero e la modalità di focus è \"sloppy\" o \"mouse\", "
-#~ "allora la finestra con il focus è portata automaticamente in primo piano "
-#~ "dopo un certo ritardo, specificato nella chiave \"auto_raise_delay\"."
-
-#~ msgid "No \"%s\" attribute on element <%s>"
-#~ msgstr "Nessun attributo «%s» nell'elemento <%s>"
