@@ -1,5 +1,9 @@
 2006-03-13  Elijah Newren  <newren gmail com>
 
+	* configure.in: post-release version bump to 2.14.2
+
+2006-03-13  Elijah Newren  <newren gmail com>
+
 	* configure.in:
 	Remove the "This is the UNSTABLE branch" warning.  *sigh* I wished
 	I would have remembered this before 2.14.0.
