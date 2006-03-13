@@ -2,14 +2,14 @@
 # Copyright (C) 2002 Free Software Foundation, Inc.
 # Pier Luigi Fiorini <plfiorini@libero.it>, 2002. 
 # Lapo Calamandrei <lapo.calamandrei@virgilio.it>, 2003.
-# Luca Ferretti <elle.uca@libero.it>, 2004-2005.
+# Luca Ferretti <elle.uca@libero.it>, 2004-2006.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity 2.14.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-03-02 17:02+0100\n"
-"PO-Revision-Date: 2006-03-07 09:26+0100\n"
+"POT-Creation-Date: 2006-03-13 14:13+0100\n"
+"PO-Revision-Date: 2006-03-13 14:14+0100\n"
 "Last-Translator: Luca Ferretti <elle.uca@libero.it>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
@@ -3305,8 +3305,13 @@ msgstr "Errore del window manager: "
 msgid "Application set a bogus _NET_WM_PID %lu\n"
 msgstr "L'applicazione ha impostato un _NET_WM_PID errato %lu\n"
 
+#: ../src/window-props.c:233
+#, c-format
+msgid "%s (on %s)"
+msgstr "%s (su %s)"
+
 #. first time through
-#: ../src/window.c:5409
+#: ../src/window.c:5410
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -3322,7 +3327,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/window.c:6037
+#: ../src/window.c:6038
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
