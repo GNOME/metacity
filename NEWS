@@ -1,3 +1,17 @@
+2.14.0
+==
+
+Thanks to Ryan Lortie and Thomas Thurman for fixes in this release.
+
+ - Mark the app-running-remotely-window-title string for translation
+   (Thomas) [#334332]
+ - Only unmaximise window before freeing if the window is actually
+   maximised (Ryan) [#333563]
+
+Translations
+  Jordi Mallach (ca), Frank Arnold (de), Luca Ferretti (it), Evandro
+  Fernandes Giovanini (pt_BR), Theppitak Karoonboonyanan (th)
+
 2.13.144
 ==
 
