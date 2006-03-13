@@ -1,3 +1,10 @@
+2.14.1
+==
+
+The only change since 2.14.0 is to remove the "This is the UNSTABLE
+branch" warning from configure for those compiling Metacity from
+source.
+
 2.14.0
 ==
 
