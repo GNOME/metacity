@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-25 23:51+0100\n"
-"PO-Revision-Date: 2006-01-26 05:46-0300\n"
+"POT-Creation-Date: 2006-03-12 21:48-0300\n"
+"PO-Revision-Date: 2006-03-12 21:48-0300\n"
 "Last-Translator: Evandro Fernandes Giovanini <evandrofg@ig.com.br>\n"
 "Language-Team: Portuguese/Brazil\n"
 "MIME-Version: 1.0\n"
@@ -112,19 +112,19 @@ msgstr ""
 "Algum outro programa já está usando a chave %s com modificadores %x como uma "
 "vinculação\n"
 
-#: ../src/keybindings.c:2504
+#: ../src/keybindings.c:2534
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr ""
 "Erro ao abrir um diálogo do Metacity para exibir uma mensagem de erro sobre "
 "um comando: %s\n"
 
-#: ../src/keybindings.c:2609
+#: ../src/keybindings.c:2639
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "Nenhum comando %d foi definido.\n"
 
-#: ../src/keybindings.c:3471
+#: ../src/keybindings.c:3501
 msgid "No terminal command has been defined.\n"
 msgstr "Nenhum comando de terminal foi definido.\n"
 
@@ -251,7 +251,7 @@ msgstr "Mover para Área de Trabalho _Acima"
 msgid "Move to Workspace _Down"
 msgstr "Mover para Área de Trabalho A_baixo"
 
-#: ../src/menu.c:164 ../src/prefs.c:1976 ../src/prefs.c:2277
+#: ../src/menu.c:164 ../src/prefs.c:1978 ../src/prefs.c:2341
 #, c-format
 msgid "Workspace %d"
 msgstr "Área de Trabalho %d"
@@ -524,15 +524,16 @@ msgid ""
 "grabbing the mouse)"
 msgstr ""
 "Se verdadeiro, e o modo de foco é \"sloppy\" ou \"mouse\", então a janela "
-"focalizada será automaticamente levantada após um atraso (que é definido pela "
-"chave auto_raise_delay). O nome dessa preferência não é perfeito, mas é usado "
-"para compatibilidade com versões anteriores. Para ser mais claro (ou pelo menos "
-"de forma mais técnica), o significado é \"automaticamente levantar a janela após "
-"a espera que é causada por uma entrada não obtida do mouse no modo de foco sloppy "
-"ou mouse\". Não é relacionada ao comportamento de cliques (isto é, não é relacionada "
-"a levantar-no-clique/levantar-ortogonalmente). Não está relacionada a entrar em uma "
-"janela durante uma operação de arrastar e soltar (porque isso resulta em uma aplicação "
-"obtendo o mouse)." 
+"focalizada será automaticamente levantada após um atraso (que é definido "
+"pela chave auto_raise_delay). O nome dessa preferência não é perfeito, mas é "
+"usado para compatibilidade com versões anteriores. Para ser mais claro (ou "
+"pelo menos de forma mais técnica), o significado é \"automaticamente "
+"levantar a janela após a espera que é causada por uma entrada não obtida do "
+"mouse no modo de foco sloppy ou mouse\". Não é relacionada ao comportamento "
+"de cliques (isto é, não é relacionada a levantar-no-clique/levantar-"
+"ortogonalmente). Não está relacionada a entrar em uma janela durante uma "
+"operação de arrastar e soltar (porque isso resulta em uma aplicação obtendo "
+"o mouse)."
 
 #: ../src/metacity.schemas.in.h:18
 msgid ""
@@ -603,15 +604,15 @@ msgid ""
 "from pagers, may also raise windows when this option is false. This option "
 "is currently disabled in click-to-focus mode."
 msgstr ""
-"Várias ações (como clicar em uma área cliente, mover ou redimensionar a janela) "
-"normalmente levantam a janela como consequência. Defina esta opção para falsa "
-"para não levantar a janela ao realizar esses tipos interações. Quando falsa, "
-"janelas podem ser levantadas por um alt-left-click em qualquer lugar da janela "
-"ou por um clique normal na decoração da janela (considerando que tais cliques não "
-"sejam usados para iniciar uma operação de mover ou redimensionar). Mensagens "
-"especiais, como pedidos de ativação de pagers, também podem levantar janelas quando "
-"essa opção for falsa. Essa opção está atualmente desabilitada no modo click-to-focus "
-"(clique para focalizar)."
+"Várias ações (como clicar em uma área cliente, mover ou redimensionar a "
+"janela) normalmente levantam a janela como consequência. Defina esta opção "
+"para falsa para não levantar a janela ao realizar esses tipos interações. "
+"Quando falsa, janelas podem ser levantadas por um alt-left-click em qualquer "
+"lugar da janela ou por um clique normal na decoração da janela (considerando "
+"que tais cliques não sejam usados para iniciar uma operação de mover ou "
+"redimensionar). Mensagens especiais, como pedidos de ativação de pagers, "
+"também podem levantar janelas quando essa opção for falsa. Essa opção está "
+"atualmente desabilitada no modo click-to-focus (clique para focalizar)."
 
 #: ../src/metacity.schemas.in.h:24
 msgid "Maximize window"
@@ -1988,8 +1989,8 @@ msgid ""
 msgstr ""
 "Essa opção determina o efeito de um duplo-clique na barra de título. As "
 "opções válidas são 'toggle_shaded', que irá sombrear ou não a janela, "
-"'toggle_maximize', que irá maximizar/desmaximizar a janela, 'minimize', "
-"que irá minimizar a janela e 'none', que não faz nada."
+"'toggle_maximize', que irá maximizar/desmaximizar a janela, 'minimize', que "
+"irá minimizar a janela e 'none', que não faz nada."
 
 #: ../src/metacity.schemas.in.h:159
 msgid "Toggle always on top state"
@@ -2035,7 +2036,9 @@ msgstr "Tipo de Campainha Visual"
 
 #: ../src/metacity.schemas.in.h:168
 msgid "Whether raising should be a side-effect of other user interactions"
-msgstr "Se colocar janela à frente deve ser consequência de outras interações do usuário"
+msgstr ""
+"Se colocar janela à frente deve ser consequência de outras interações do "
+"usuário"
 
 #: ../src/metacity.schemas.in.h:169
 msgid "Window focus mode"
@@ -2045,18 +2048,18 @@ msgstr "Modo de foco de janela"
 msgid "Window title font"
 msgstr "Fonte do título da janela"
 
-#: ../src/prefs.c:558 ../src/prefs.c:574 ../src/prefs.c:590 ../src/prefs.c:606
-#: ../src/prefs.c:622 ../src/prefs.c:638 ../src/prefs.c:658 ../src/prefs.c:674
-#: ../src/prefs.c:690 ../src/prefs.c:706 ../src/prefs.c:722 ../src/prefs.c:738
-#: ../src/prefs.c:754 ../src/prefs.c:770 ../src/prefs.c:787 ../src/prefs.c:803
-#: ../src/prefs.c:819 ../src/prefs.c:835 ../src/prefs.c:851 ../src/prefs.c:866
-#: ../src/prefs.c:881 ../src/prefs.c:896 ../src/prefs.c:912 ../src/prefs.c:928
-#: ../src/prefs.c:944
+#: ../src/prefs.c:560 ../src/prefs.c:576 ../src/prefs.c:592 ../src/prefs.c:608
+#: ../src/prefs.c:624 ../src/prefs.c:640 ../src/prefs.c:660 ../src/prefs.c:676
+#: ../src/prefs.c:692 ../src/prefs.c:708 ../src/prefs.c:724 ../src/prefs.c:740
+#: ../src/prefs.c:756 ../src/prefs.c:772 ../src/prefs.c:789 ../src/prefs.c:805
+#: ../src/prefs.c:821 ../src/prefs.c:837 ../src/prefs.c:853 ../src/prefs.c:868
+#: ../src/prefs.c:883 ../src/prefs.c:898 ../src/prefs.c:914 ../src/prefs.c:930
+#: ../src/prefs.c:946
 #, c-format
 msgid "GConf key \"%s\" is set to an invalid type\n"
 msgstr "A chave GConf \"%s\" está definida como um tipo inválido\n"
 
-#: ../src/prefs.c:989
+#: ../src/prefs.c:991
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -2065,12 +2068,12 @@ msgstr ""
 "\"%s\" localizado no banco de dados de configurações não é um valor válido "
 "para o modificador de botão do mouse\n"
 
-#: ../src/prefs.c:1013 ../src/prefs.c:1503
+#: ../src/prefs.c:1015 ../src/prefs.c:1505
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
 msgstr "A chave GConf '%s' está definida com um valor inválido\n"
 
-#: ../src/prefs.c:1136
+#: ../src/prefs.c:1138
 #, c-format
 msgid ""
 "%d stored in GConf key %s is not a reasonable cursor_size; must be in the "
@@ -2079,14 +2082,14 @@ msgstr ""
 "%d armazenado na chave GConf %s não é um cursor_size razoável; deve estar no "
 "intervalo 1...128\n"
 
-#: ../src/prefs.c:1216
+#: ../src/prefs.c:1218
 #, c-format
 msgid "Could not parse font description \"%s\" from GConf key %s\n"
 msgstr ""
 "Não foi possível analisar a descrição da fonte \"%s\" a partir da chave "
 "GConf %s\n"
 
-#: ../src/prefs.c:1401
+#: ../src/prefs.c:1403
 #, c-format
 msgid ""
 "%d stored in GConf key %s is not a reasonable number of workspaces, current "
@@ -2095,7 +2098,7 @@ msgstr ""
 "%d armazenado na chave GConf %s não é um número razoável de áreas de "
 "trabalho; o máximo atual é %d\n"
 
-#: ../src/prefs.c:1461
+#: ../src/prefs.c:1463
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -2103,17 +2106,17 @@ msgstr ""
 "As alternativas para aplicações quebradas estão desabilitadas. É possível "
 "que algumas aplicações não funcionem de maneira adequada.\n"
 
-#: ../src/prefs.c:1530
+#: ../src/prefs.c:1532
 #, c-format
 msgid "%d stored in GConf key %s is out of range 0 to %d\n"
 msgstr "%d armazenado na chave GConf %s está fora do intervalo de 0 a %d\n"
 
-#: ../src/prefs.c:1667
+#: ../src/prefs.c:1669
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr "Erro ao definir o número de áreas de trabalho como %d: %s\n"
 
-#: ../src/prefs.c:2003
+#: ../src/prefs.c:2005
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -2122,7 +2125,7 @@ msgstr ""
 "\"%s\" localizado no banco de dados de configurações não é um valor válido "
 "para a vinculação de teclas \"%s\"\n"
 
-#: ../src/prefs.c:2358
+#: ../src/prefs.c:2422
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr ""
@@ -3289,8 +3292,13 @@ msgstr "Erro do gerenciador de janelas: "
 msgid "Application set a bogus _NET_WM_PID %lu\n"
 msgstr "A aplicação definiu um _NET_WM_PID %lu inválido\n"
 
+#: ../src/window-props.c:233
+#, c-format
+msgid "%s (on %s)"
+msgstr "%s (em %s)"
+
 #. first time through
-#: ../src/window.c:5405
+#: ../src/window.c:5410
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -3306,7 +3314,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/window.c:6035
+#: ../src/window.c:6038
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
