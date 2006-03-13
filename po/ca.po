@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity 2.9.91\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-27 01:32+0100\n"
-"PO-Revision-Date: 2006-01-27 01:46+0100\n"
+"POT-Creation-Date: 2006-03-13 20:14+0100\n"
+"PO-Revision-Date: 2006-03-01 01:29+0100\n"
 "Last-Translator: Jordi Mallach <jordi@sindominio.net>\n"
 "Language-Team: Softcatalà <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -114,19 +114,19 @@ msgstr ""
 "Ja hi ha algun altre programa utilitzant la clau %s amb els modificadors %x "
 "com a vinculació\n"
 
-#: ../src/keybindings.c:2504
+#: ../src/keybindings.c:2534
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr ""
 "S'ha produït un error en executar el metacity-dialog per a mostrar un error "
 "quant a una ordre: %s\n"
 
-#: ../src/keybindings.c:2609
+#: ../src/keybindings.c:2639
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "No s'ha definit cap ordre %d.\n"
 
-#: ../src/keybindings.c:3471
+#: ../src/keybindings.c:3501
 msgid "No terminal command has been defined.\n"
 msgstr "No s'ha definit cap ordre de terminal.\n"
 
@@ -253,7 +253,7 @@ msgstr "Mou a l'espai de treball de _sobre"
 msgid "Move to Workspace _Down"
 msgstr "Mou a l'espai de treball de s_ota"
 
-#: ../src/menu.c:164 ../src/prefs.c:1976 ../src/prefs.c:2277
+#: ../src/menu.c:164 ../src/prefs.c:1978 ../src/prefs.c:2341
 #, c-format
 msgid "Workspace %d"
 msgstr "Espai de treball %d"
@@ -2006,18 +2006,18 @@ msgstr "Mode de focus de les finestres"
 msgid "Window title font"
 msgstr "Tipus de lletra del títol de les finestres"
 
-#: ../src/prefs.c:558 ../src/prefs.c:574 ../src/prefs.c:590 ../src/prefs.c:606
-#: ../src/prefs.c:622 ../src/prefs.c:638 ../src/prefs.c:658 ../src/prefs.c:674
-#: ../src/prefs.c:690 ../src/prefs.c:706 ../src/prefs.c:722 ../src/prefs.c:738
-#: ../src/prefs.c:754 ../src/prefs.c:770 ../src/prefs.c:787 ../src/prefs.c:803
-#: ../src/prefs.c:819 ../src/prefs.c:835 ../src/prefs.c:851 ../src/prefs.c:866
-#: ../src/prefs.c:881 ../src/prefs.c:896 ../src/prefs.c:912 ../src/prefs.c:928
-#: ../src/prefs.c:944
+#: ../src/prefs.c:560 ../src/prefs.c:576 ../src/prefs.c:592 ../src/prefs.c:608
+#: ../src/prefs.c:624 ../src/prefs.c:640 ../src/prefs.c:660 ../src/prefs.c:676
+#: ../src/prefs.c:692 ../src/prefs.c:708 ../src/prefs.c:724 ../src/prefs.c:740
+#: ../src/prefs.c:756 ../src/prefs.c:772 ../src/prefs.c:789 ../src/prefs.c:805
+#: ../src/prefs.c:821 ../src/prefs.c:837 ../src/prefs.c:853 ../src/prefs.c:868
+#: ../src/prefs.c:883 ../src/prefs.c:898 ../src/prefs.c:914 ../src/prefs.c:930
+#: ../src/prefs.c:946
 #, c-format
 msgid "GConf key \"%s\" is set to an invalid type\n"
 msgstr "La clau Gconf «%s» està configurada a un tipus no vàlid\n"
 
-#: ../src/prefs.c:989
+#: ../src/prefs.c:991
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -2026,12 +2026,12 @@ msgstr ""
 "«%s», trobat a la base de dades de la configuració, no és un valor vàlid per "
 "al modificador del botó del ratolí\n"
 
-#: ../src/prefs.c:1013 ../src/prefs.c:1503
+#: ../src/prefs.c:1015 ../src/prefs.c:1505
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
 msgstr "La clau GConf «%s» està establerta a un valor no vàlid\n"
 
-#: ../src/prefs.c:1136
+#: ../src/prefs.c:1138
 #, c-format
 msgid ""
 "%d stored in GConf key %s is not a reasonable cursor_size; must be in the "
@@ -2040,14 +2040,14 @@ msgstr ""
 "%d, emmagatzemat a la clau GConf %s, no és una mida de cursor raonable, ha "
 "d'estar dins del rang 1..128\n"
 
-#: ../src/prefs.c:1216
+#: ../src/prefs.c:1218
 #, c-format
 msgid "Could not parse font description \"%s\" from GConf key %s\n"
 msgstr ""
 "No s'ha pogut analitzar la descripció de tipus de lletra «%s» de la clau "
 "GConf %s\n"
 
-#: ../src/prefs.c:1401
+#: ../src/prefs.c:1403
 #, c-format
 msgid ""
 "%d stored in GConf key %s is not a reasonable number of workspaces, current "
@@ -2056,7 +2056,7 @@ msgstr ""
 "%d, emmagatzemat a la clau GConf, %s no té un nombre raonable d'espais de "
 "treball. El màxim actual és %d\n"
 
-#: ../src/prefs.c:1461
+#: ../src/prefs.c:1463
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -2064,18 +2064,18 @@ msgstr ""
 "El suport per a aplicacions amb errors està inhabilitat. Algunes aplicacions "
 "poden no comportar-se correctament.\n"
 
-#: ../src/prefs.c:1530
+#: ../src/prefs.c:1532
 #, c-format
 msgid "%d stored in GConf key %s is out of range 0 to %d\n"
 msgstr "%d, emmagatzemat a la clau GConf %s, està fora del rang de 0 a %d\n"
 
-#: ../src/prefs.c:1667
+#: ../src/prefs.c:1669
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr ""
 "S'ha produït un error en establir el nombre d'espais de treball a %d: %s\n"
 
-#: ../src/prefs.c:2003
+#: ../src/prefs.c:2005
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -2084,7 +2084,7 @@ msgstr ""
 "«%s» trobat a la base de dades de la configuració no és un valor vàlid per a "
 "la vinculació de tecla «%s»\n"
 
-#: ../src/prefs.c:2358
+#: ../src/prefs.c:2422
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr ""
@@ -3245,8 +3245,13 @@ msgstr "Error del gestor de finestres: "
 msgid "Application set a bogus _NET_WM_PID %lu\n"
 msgstr "L'aplicació ha definit un _NET_WM_PID %lu fals\n"
 
+#: ../src/window-props.c:233
+#, c-format
+msgid "%s (on %s)"
+msgstr "%s (a %s)"
+
 #. first time through
-#: ../src/window.c:5405
+#: ../src/window.c:5410
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -3262,7 +3267,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/window.c:6035
+#: ../src/window.c:6038
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
@@ -3301,6 +3306,13 @@ msgid ""
 msgstr ""
 "La propietat %s en la finestra 0x%lx contenia UTF-8 invàlid per a l'element %"
 "d en la lista\n"
+
+# compositing workstation: taula d'efectes digitals (TERMCAT, josep)
+#~ msgid "Compositing Manager"
+#~ msgstr "Gestor d'efectes digitals"
+
+#~ msgid "Determines whether Metacity is a compositing manager."
+#~ msgstr "Determina si el Metacity és un gestor d'efectes digitals."
 
 #~ msgid ""
 #~ "If true, and the focus mode is either \"sloppy\" or \"mouse\" then the "
