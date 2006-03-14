@@ -11,14 +11,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-24 21:16+0100\n"
-"PO-Revision-Date: 2006-01-24 21:17+0100\n"
+"POT-Creation-Date: 2006-03-14 10:19+0100\n"
+"PO-Revision-Date: 2006-03-14 10:19+0100\n"
 "Last-Translator: Ignacio Casal Quinteiro <nacho.resa@gmail.com>\n"
-"Language-Team: Galego\n"
+"Language-Team: Galego <trasno@ceu.fi.udc.es>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.1\n"
+"X-Generator: KBabel 1.11.2\n"
 
 #: ../src/tools/metacity-message.c:150
 #, c-format
@@ -113,19 +113,19 @@ msgstr ""
 "Algún outro programa está usando xa a tecla %s cos modificadores %x como "
 "asignación (binding)\n"
 
-#: ../src/keybindings.c:2504
+#: ../src/keybindings.c:2534
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr ""
 "Ocorreu un erro ao lanzar metacity-dialog para imprimir un erro acerca dun "
 "comando: %s\n"
 
-#: ../src/keybindings.c:2609
+#: ../src/keybindings.c:2639
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "Non se definiu ningún comando %d.\n"
 
-#: ../src/keybindings.c:3471
+#: ../src/keybindings.c:3501
 msgid "No terminal command has been defined.\n"
 msgstr "Non se definiu ningún comando de terminal.\n"
 
@@ -251,7 +251,7 @@ msgstr "Mover ao escritorio de _arriba"
 msgid "Move to Workspace _Down"
 msgstr "Mover ao escritorio de abai_xo"
 
-#: ../src/menu.c:164 ../src/prefs.c:1976 ../src/prefs.c:2277
+#: ../src/menu.c:164 ../src/prefs.c:1978 ../src/prefs.c:2341
 #, c-format
 msgid "Workspace %d"
 msgstr "Escritorio de traballo %d"
@@ -2055,18 +2055,18 @@ msgstr "Modo de foco da fiestra"
 msgid "Window title font"
 msgstr "Fonte do título da fiestra"
 
-#: ../src/prefs.c:558 ../src/prefs.c:574 ../src/prefs.c:590 ../src/prefs.c:606
-#: ../src/prefs.c:622 ../src/prefs.c:638 ../src/prefs.c:658 ../src/prefs.c:674
-#: ../src/prefs.c:690 ../src/prefs.c:706 ../src/prefs.c:722 ../src/prefs.c:738
-#: ../src/prefs.c:754 ../src/prefs.c:770 ../src/prefs.c:787 ../src/prefs.c:803
-#: ../src/prefs.c:819 ../src/prefs.c:835 ../src/prefs.c:851 ../src/prefs.c:866
-#: ../src/prefs.c:881 ../src/prefs.c:896 ../src/prefs.c:912 ../src/prefs.c:928
-#: ../src/prefs.c:944
+#: ../src/prefs.c:560 ../src/prefs.c:576 ../src/prefs.c:592 ../src/prefs.c:608
+#: ../src/prefs.c:624 ../src/prefs.c:640 ../src/prefs.c:660 ../src/prefs.c:676
+#: ../src/prefs.c:692 ../src/prefs.c:708 ../src/prefs.c:724 ../src/prefs.c:740
+#: ../src/prefs.c:756 ../src/prefs.c:772 ../src/prefs.c:789 ../src/prefs.c:805
+#: ../src/prefs.c:821 ../src/prefs.c:837 ../src/prefs.c:853 ../src/prefs.c:868
+#: ../src/prefs.c:883 ../src/prefs.c:898 ../src/prefs.c:914 ../src/prefs.c:930
+#: ../src/prefs.c:946
 #, c-format
 msgid "GConf key \"%s\" is set to an invalid type\n"
 msgstr "A clave GConf \"%s\" está configurada cun tipo inválido\n"
 
-#: ../src/prefs.c:989
+#: ../src/prefs.c:991
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -2075,12 +2075,12 @@ msgstr ""
 "\"%s\" atopado na base de datos de configuración non é un valor válido para "
 "o modificador do botón do rato\n"
 
-#: ../src/prefs.c:1013 ../src/prefs.c:1503
+#: ../src/prefs.c:1015 ../src/prefs.c:1505
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
 msgstr "A clave GConf '%s' está configurada cun valor inválido\n"
 
-#: ../src/prefs.c:1136
+#: ../src/prefs.c:1138
 #, c-format
 msgid ""
 "%d stored in GConf key %s is not a reasonable cursor_size; must be in the "
@@ -2089,12 +2089,12 @@ msgstr ""
 "%d almacenado na clave GConf %s non é un _tamaño de cursor razoable, debe "
 "estar no rango entre 1..128\n"
 
-#: ../src/prefs.c:1216
+#: ../src/prefs.c:1218
 #, c-format
 msgid "Could not parse font description \"%s\" from GConf key %s\n"
 msgstr "Non se puido analizar a descripción da fonte \"%s\" da clave GConf %s\n"
 
-#: ../src/prefs.c:1401
+#: ../src/prefs.c:1403
 #, c-format
 msgid ""
 "%d stored in GConf key %s is not a reasonable number of workspaces, current "
@@ -2103,7 +2103,7 @@ msgstr ""
 "%d almacenado na clave GConf %s non é un número razoable de espacios de "
 "traballo. O máximo despoñible é de %d\n"
 
-#: ../src/prefs.c:1461
+#: ../src/prefs.c:1463
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -2111,17 +2111,17 @@ msgstr ""
 "Os arreglos para aplicacións rotas desabilitáronse. Algunhas aplicacións "
 "poderán non comportarse correctamente.\n"
 
-#: ../src/prefs.c:1530
+#: ../src/prefs.c:1532
 #, c-format
 msgid "%d stored in GConf key %s is out of range 0 to %d\n"
 msgstr "%d almacenado na clave GConf %s está fora de rango 0 ata %d\n"
 
-#: ../src/prefs.c:1667
+#: ../src/prefs.c:1669
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr "Erro establecendo o número de espacios de traballo a %d: %s\n"
 
-#: ../src/prefs.c:2003
+#: ../src/prefs.c:2005
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -2130,7 +2130,7 @@ msgstr ""
 "\"%s\" atopado na base de datos de configuración no é un valor válido para a "
 "combinación de teclas \"%s\"\n"
 
-#: ../src/prefs.c:2358
+#: ../src/prefs.c:2422
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr "Erro ao establecer o nome do escritorio de traballo %d como \"%s\": %s\n"
@@ -3274,8 +3274,13 @@ msgstr "Erro do xestor de fiestras: "
 msgid "Application set a bogus _NET_WM_PID %lu\n"
 msgstr "A aplicación configurou un _NET_WM_PID %lu erróneo\n"
 
+#: ../src/window-props.c:233
+#, c-format
+msgid "%s (on %s)"
+msgstr "%s (en %s)"
+
 #. first time through
-#: ../src/window.c:5405
+#: ../src/window.c:5410
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -3291,7 +3296,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/window.c:6035
+#: ../src/window.c:6038
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
