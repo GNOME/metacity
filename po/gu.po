@@ -1,11 +1,12 @@
+# translation of metacity.gnome-2-14.gu.po to Gujarati
 # translation of metacity.HEAD.gu.po to Gujarati
 # Ankit Patel <ankit644@yahoo.com>, 2005, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: metacity.HEAD.gu\n"
+"Project-Id-Version: metacity.gnome-2-14.gu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-23 07:31+0100\n"
-"PO-Revision-Date: 2006-01-23 15:06+0530\n"
+"POT-Creation-Date: 2006-03-16 07:07+0100\n"
+"PO-Revision-Date: 2006-03-16 12:52+0530\n"
 "Last-Translator: Ankit Patel <ankit644@yahoo.com>\n"
 "Language-Team: Gujarati <indianoss-gujarati@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -13,6 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.9.1\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n\n"
+"\n"
 "\n"
 "\n"
 "\n"
@@ -106,17 +108,17 @@ msgid ""
 "binding\n"
 msgstr "કોઈ બીજો કાર્યક્રમ પહેલેથીજ કી %s ને બદલનાર %x સાથે જોડાણ તરીકે વાપરી રહ્યુ છે\n"
 
-#: ../src/keybindings.c:2504
+#: ../src/keybindings.c:2534
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr "આદેશ વિશેની ભૂલ છાપવા માટે મેટાસીટી-સંવાદને શરુ કરવામાં ભૂલ: %s\n"
 
-#: ../src/keybindings.c:2609
+#: ../src/keybindings.c:2639
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "કોઈ આદેશ %d વ્યાખ્યાયિત કરાયો નથી.\n"
 
-#: ../src/keybindings.c:3471
+#: ../src/keybindings.c:3501
 msgid "No terminal command has been defined.\n"
 msgstr "કોઈ ટર્મિનલ આદેશ વ્યાખ્યાયિત નથી.\n"
 
@@ -240,7 +242,7 @@ msgstr "કામ કરવાની જગ્યાને ઉપર ખસે�
 msgid "Move to Workspace _Down"
 msgstr "કામ કરવાની જગ્યાને ડાબે ખસેડો (_D)"
 
-#: ../src/menu.c:164 ../src/prefs.c:1973 ../src/prefs.c:2274
+#: ../src/menu.c:164 ../src/prefs.c:1978 ../src/prefs.c:2341
 #, c-format
 msgid "Workspace %d"
 msgstr "કામ કરવાની જગ્યા %d"
@@ -1878,7 +1880,11 @@ msgid ""
 "window, 'toggle_maximize' which will maximize/unmaximize the window, "
 "'minimize' which will minimize the window, and 'none' which will not do "
 "anything."
-msgstr "આ વિકલ્પ શીર્ષક પટ્ટી પર બેવડું-ક્લિક કરવાથી થતી અસરોને વર્ણવે છે. 'toggle_shade' એ વર્તમાન માન્ય વિકલ્પો છે, કે જે વિન્ડોને છાયામાં લાવે/નહિં લાવે, 'toggle_maximize' કે જે વિન્ડોને મહત્તમ બનાવે/મહત્તમમાંથી પાછી લાવે, 'minimize' કે જે વિન્ડોને ન્યૂનતમ બનાવે/ન્યૂનતમમાંથી પાછી લાવે છે, અને 'none' કે જે કંઈ કરશે નહિં."
+msgstr ""
+"આ વિકલ્પ શીર્ષક પટ્ટી પર બેવડું-ક્લિક કરવાથી થતી અસરોને વર્ણવે છે. 'toggle_shade' એ "
+"વર્તમાન માન્ય વિકલ્પો છે, કે જે વિન્ડોને છાયામાં લાવે/નહિં લાવે, 'toggle_maximize' કે જે "
+"વિન્ડોને મહત્તમ બનાવે/મહત્તમમાંથી પાછી લાવે, 'minimize' કે જે વિન્ડોને ન્યૂનતમ બનાવે/"
+"ન્યૂનતમમાંથી પાછી લાવે છે, અને 'none' કે જે કંઈ કરશે નહિં."
 
 #: ../src/metacity.schemas.in.h:159
 msgid "Toggle always on top state"
@@ -1934,42 +1940,44 @@ msgstr "વિન્ડોની પ્રકાશન સ્થિતિ"
 msgid "Window title font"
 msgstr "વિન્ડોના શીર્ષકના ફોન્ટ"
 
-#: ../src/prefs.c:555 ../src/prefs.c:571 ../src/prefs.c:587 ../src/prefs.c:603
-#: ../src/prefs.c:619 ../src/prefs.c:635 ../src/prefs.c:655 ../src/prefs.c:671
-#: ../src/prefs.c:687 ../src/prefs.c:703 ../src/prefs.c:719 ../src/prefs.c:735
-#: ../src/prefs.c:751 ../src/prefs.c:767 ../src/prefs.c:784 ../src/prefs.c:800
-#: ../src/prefs.c:816 ../src/prefs.c:832 ../src/prefs.c:848 ../src/prefs.c:863
-#: ../src/prefs.c:878 ../src/prefs.c:893 ../src/prefs.c:909 ../src/prefs.c:925
-#: ../src/prefs.c:941
+#: ../src/prefs.c:560 ../src/prefs.c:576 ../src/prefs.c:592 ../src/prefs.c:608
+#: ../src/prefs.c:624 ../src/prefs.c:640 ../src/prefs.c:660 ../src/prefs.c:676
+#: ../src/prefs.c:692 ../src/prefs.c:708 ../src/prefs.c:724 ../src/prefs.c:740
+#: ../src/prefs.c:756 ../src/prefs.c:772 ../src/prefs.c:789 ../src/prefs.c:805
+#: ../src/prefs.c:821 ../src/prefs.c:837 ../src/prefs.c:853 ../src/prefs.c:868
+#: ../src/prefs.c:883 ../src/prefs.c:898 ../src/prefs.c:914 ../src/prefs.c:930
+#: ../src/prefs.c:946
 #, c-format
 msgid "GConf key \"%s\" is set to an invalid type\n"
 msgstr "જીકોન્ફ કી \"%s\" એ અયોગ્ય પ્રકારમાં ગોઠવાયેલી છે\n"
 
-#: ../src/prefs.c:986
+#: ../src/prefs.c:991
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
 "modifier\n"
 msgstr "માઉસ બટનની કિંમત બદલવા માટે રુપરેખાના ડેટાબેઝમાંથી મળેલ કિંમત \"%s\" એ યોગ્ય નથી\n"
 
-#: ../src/prefs.c:1010 ../src/prefs.c:1500
+#: ../src/prefs.c:1015 ../src/prefs.c:1505
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
 msgstr "જીકોન્ફ કી '%s' એ અયોગ્ય કિંમતમાં ગોઠવાયેલી છે\n"
 
-#: ../src/prefs.c:1133
+#: ../src/prefs.c:1138
 #, c-format
 msgid ""
 "%d stored in GConf key %s is not a reasonable cursor_size; must be in the "
 "range 1..128\n"
-msgstr "%d એ જીકોન્ફ કી %s માં સંગ્રહાયેલ છે કે જે કારણવાળું કર્સર માપ નથી; તે 1..128 વિસ્તારમાં હોવું જ જોઈએ (_s)\n"
+msgstr ""
+"%d એ જીકોન્ફ કી %s માં સંગ્રહાયેલ છે કે જે કારણવાળું કર્સર માપ નથી; તે 1..128 વિસ્તારમાં "
+"હોવું જ જોઈએ (_s)\n"
 
-#: ../src/prefs.c:1213
+#: ../src/prefs.c:1218
 #, c-format
 msgid "Could not parse font description \"%s\" from GConf key %s\n"
 msgstr "\"%s\" ફોન્ટના વર્ણનને જીકોન્ફ કી %s માંથી પદચ્છેદ કરી શકાતા નથી\n"
 
-#: ../src/prefs.c:1398
+#: ../src/prefs.c:1403
 #, c-format
 msgid ""
 "%d stored in GConf key %s is not a reasonable number of workspaces, current "
@@ -1978,7 +1986,7 @@ msgstr ""
 "%d એ જીકોન્ફ કી %s માં સંગ્રહિત યોગ્ય કામ કરવાની જગ્યાની સંખ્યા નથી, વર્તમાન મહત્તમ %d "
 "છે\n"
 
-#: ../src/prefs.c:1458
+#: ../src/prefs.c:1463
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -1986,24 +1994,24 @@ msgstr ""
 "બગડેલા કાર્યક્રમો માટે આસપાસના કાર્યો નિષ્ક્રિય કરેલા છે. કદાચ કેટલાક કાર્યક્રમો યોગ્ય "
 "રીતે નહિ વર્તતા હોય.\n"
 
-#: ../src/prefs.c:1527
+#: ../src/prefs.c:1532
 #, c-format
 msgid "%d stored in GConf key %s is out of range 0 to %d\n"
 msgstr "%d એ જીકોન્ફ કી %s માં સંગ્રહિત ૦ થી %d ની સીમાની બહાર છે\n"
 
-#: ../src/prefs.c:1664
+#: ../src/prefs.c:1669
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr "કામ કરવાની જગ્યાની સંખ્યા %d નક્કી કરવામાં ભૂલ થઈ: %s\n"
 
-#: ../src/prefs.c:2000
+#: ../src/prefs.c:2005
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
 "\"%s\"\n"
 msgstr "કી જોડાણ \"%s\" માટે રુપરેખાના ડેટાબેઝ \"%s\" માં મળેલ કિંમત યોગ્ય નથી\n"
 
-#: ../src/prefs.c:2355
+#: ../src/prefs.c:2422
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr "કામ કરવાની જગ્યા %d ને \"%s\" નું નામ બદલવામાં ભૂલ થઈ: %s\n"
@@ -3114,8 +3122,13 @@ msgstr "વિન્ડો વ્યવસ્થાપકની ભૂલ: "
 msgid "Application set a bogus _NET_WM_PID %lu\n"
 msgstr "કાર્યક્રમ એ ખોટું _NET_WM_PID %lu સુયોજિત કર્યું છે\n"
 
+#: ../src/window-props.c:233
+#, c-format
+msgid "%s (on %s)"
+msgstr "%s (%s પર)"
+
 #. first time through
-#: ../src/window.c:5405
+#: ../src/window.c:5410
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -3131,7 +3144,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/window.c:6035
+#: ../src/window.c:6038
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
