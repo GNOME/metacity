@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-21 20:21+0100\n"
-"PO-Revision-Date: 2006-01-21 20:24+0100\n"
+"POT-Creation-Date: 2006-03-16 16:58+0100\n"
+"PO-Revision-Date: 2006-03-16 16:58+0100\n"
 "Last-Translator: Francisco Javier F. Serrador <serrador@cvs.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -115,19 +115,19 @@ msgstr ""
 "Algún otro programa ya está usando la clave %s con el modificador %x como "
 "una vinculación\n"
 
-#: ../src/keybindings.c:2504
+#: ../src/keybindings.c:2534
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr ""
 "Ocurrió un error al lanzar metacity-dialog para imprimir un error acerca de "
 "un comando: %s\n"
 
-#: ../src/keybindings.c:2609
+#: ../src/keybindings.c:2639
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "No ha sido definido ningún comando %d.\n"
 
-#: ../src/keybindings.c:3471
+#: ../src/keybindings.c:3501
 msgid "No terminal command has been defined.\n"
 msgstr "No ha sido definido ningún comando de terminal.\n"
 
@@ -254,7 +254,7 @@ msgstr "Mover al área de trabajo de _arriba"
 msgid "Move to Workspace _Down"
 msgstr "Mover al área de trabajo de a_bajo"
 
-#: ../src/menu.c:164 ../src/prefs.c:1973 ../src/prefs.c:2274
+#: ../src/menu.c:164 ../src/prefs.c:1978 ../src/prefs.c:2341
 #, c-format
 msgid "Workspace %d"
 msgstr "Área de trabajo %d"
@@ -2001,7 +2001,11 @@ msgid ""
 "window, 'toggle_maximize' which will maximize/unmaximize the window, "
 "'minimize' which will minimize the window, and 'none' which will not do "
 "anything."
-msgstr "Esta opción determina los efectos de la pulsación doble en la barra de títulos. Las opciones válidas actualmente son «toggle_shade», que enrolla/desenrolla la ventana, «toggle_maximized» que maximiza/desmaximiza la ventana, «minimize» que minimizará la ventana, y «none» que no hará nada."
+msgstr ""
+"Esta opción determina los efectos de la pulsación doble en la barra de "
+"títulos. Las opciones válidas actualmente son «toggle_shade», que enrolla/"
+"desenrolla la ventana, «toggle_maximized» que maximiza/desmaximiza la "
+"ventana, «minimize» que minimizará la ventana, y «none» que no hará nada."
 
 #: ../src/metacity.schemas.in.h:159
 msgid "Toggle always on top state"
@@ -2059,18 +2063,18 @@ msgstr "Modo de foco de la ventana"
 msgid "Window title font"
 msgstr "Tipografía del título de la ventana"
 
-#: ../src/prefs.c:555 ../src/prefs.c:571 ../src/prefs.c:587 ../src/prefs.c:603
-#: ../src/prefs.c:619 ../src/prefs.c:635 ../src/prefs.c:655 ../src/prefs.c:671
-#: ../src/prefs.c:687 ../src/prefs.c:703 ../src/prefs.c:719 ../src/prefs.c:735
-#: ../src/prefs.c:751 ../src/prefs.c:767 ../src/prefs.c:784 ../src/prefs.c:800
-#: ../src/prefs.c:816 ../src/prefs.c:832 ../src/prefs.c:848 ../src/prefs.c:863
-#: ../src/prefs.c:878 ../src/prefs.c:893 ../src/prefs.c:909 ../src/prefs.c:925
-#: ../src/prefs.c:941
+#: ../src/prefs.c:560 ../src/prefs.c:576 ../src/prefs.c:592 ../src/prefs.c:608
+#: ../src/prefs.c:624 ../src/prefs.c:640 ../src/prefs.c:660 ../src/prefs.c:676
+#: ../src/prefs.c:692 ../src/prefs.c:708 ../src/prefs.c:724 ../src/prefs.c:740
+#: ../src/prefs.c:756 ../src/prefs.c:772 ../src/prefs.c:789 ../src/prefs.c:805
+#: ../src/prefs.c:821 ../src/prefs.c:837 ../src/prefs.c:853 ../src/prefs.c:868
+#: ../src/prefs.c:883 ../src/prefs.c:898 ../src/prefs.c:914 ../src/prefs.c:930
+#: ../src/prefs.c:946
 #, c-format
 msgid "GConf key \"%s\" is set to an invalid type\n"
 msgstr "La clave GConf «%s» está configurada con un tipo inválido\n"
 
-#: ../src/prefs.c:986
+#: ../src/prefs.c:991
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -2079,26 +2083,28 @@ msgstr ""
 "«%s» encontrado en la base de datos de configuración no es un valor válido "
 "para el modificador del botón del ratón\n"
 
-#: ../src/prefs.c:1010 ../src/prefs.c:1500
+#: ../src/prefs.c:1015 ../src/prefs.c:1505
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
 msgstr "La clave GConf «%s» está configurada con un valor inválido\n"
 
-#: ../src/prefs.c:1133
+#: ../src/prefs.c:1138
 #, c-format
 msgid ""
 "%d stored in GConf key %s is not a reasonable cursor_size; must be in the "
 "range 1..128\n"
-msgstr "%d almacenado en la clave GConf %s no es un tamaño razonable para «cursor_size»; debe estar entre 1..128\n"
+msgstr ""
+"%d almacenado en la clave GConf %s no es un tamaño razonable para "
+"«cursor_size»; debe estar entre 1..128\n"
 
-#: ../src/prefs.c:1213
+#: ../src/prefs.c:1218
 #, c-format
 msgid "Could not parse font description \"%s\" from GConf key %s\n"
 msgstr ""
 "No se ha podido interpretar la descripción de la tipografía «%s» de la clave "
 "GConf %s\n"
 
-#: ../src/prefs.c:1398
+#: ../src/prefs.c:1403
 #, c-format
 msgid ""
 "%d stored in GConf key %s is not a reasonable number of workspaces, current "
@@ -2107,7 +2113,7 @@ msgstr ""
 "%d almacenado en la clave GConf %s no es un número razonable de espacios de "
 "trabajo. El máximo disponible es de %d\n"
 
-#: ../src/prefs.c:1458
+#: ../src/prefs.c:1463
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -2115,18 +2121,18 @@ msgstr ""
 "Los arreglos para aplicaciones rotas se han deshabilitado. Algunas "
 "aplicaciones podrían no comportarse correctamente.\n"
 
-#: ../src/prefs.c:1527
+#: ../src/prefs.c:1532
 #, c-format
 msgid "%d stored in GConf key %s is out of range 0 to %d\n"
 msgstr "%d almacenado en la clave GConf %s está fuera de rango 0 hasta %d\n"
 
-#: ../src/prefs.c:1664
+#: ../src/prefs.c:1669
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr ""
 "Ocurrió un error configurando la número de espacios de trabajo para %d: %s\n"
 
-#: ../src/prefs.c:2000
+#: ../src/prefs.c:2005
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -2135,7 +2141,7 @@ msgstr ""
 "«%s» encontrado en la base de datos de configuración no es un valor válido "
 "para la combinación de teclas «%s»\n"
 
-#: ../src/prefs.c:2355
+#: ../src/prefs.c:2422
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr ""
@@ -3244,13 +3250,13 @@ msgstr ""
 msgid "Failed to load theme \"%s\": %s\n"
 msgstr "Ocurrió un error al cargar el tema «%s»: %s\n"
 
-#: ../src/theme.c:4589 ../src/theme.c:4596 ../src/theme.c:4603
-#: ../src/theme.c:4610 ../src/theme.c:4617
+#: ../src/theme.c:4597 ../src/theme.c:4604 ../src/theme.c:4611
+#: ../src/theme.c:4618 ../src/theme.c:4625
 #, c-format
 msgid "No <%s> set for theme \"%s\""
 msgstr "No se configuró <%s> para el tema «%s»"
 
-#: ../src/theme.c:4627
+#: ../src/theme.c:4635
 #, c-format
 msgid ""
 "No frame style set for window type \"%s\" in theme \"%s\", add a <window "
@@ -3259,7 +3265,7 @@ msgstr ""
 "No hay un estilo de marco para el tipo de ventana «%s» en el tema «%s», "
 "añada un elemento <window type=\"%s\" style_set=\"whatever\"/>"
 
-#: ../src/theme.c:4649
+#: ../src/theme.c:4657
 #, c-format
 msgid ""
 "<menu_icon function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> must be "
@@ -3268,7 +3274,7 @@ msgstr ""
 "<menu_icon function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> debe ser "
 "especificado para este tema"
 
-#: ../src/theme.c:5038 ../src/theme.c:5100
+#: ../src/theme.c:5046 ../src/theme.c:5108
 #, c-format
 msgid ""
 "User-defined constants must begin with a capital letter; \"%s\" does not"
@@ -3276,7 +3282,7 @@ msgstr ""
 "Las constantes definidas por el usuario deben comenzar con una letra "
 "mayúscula; «%s» no lo hace"
 
-#: ../src/theme.c:5046 ../src/theme.c:5108
+#: ../src/theme.c:5054 ../src/theme.c:5116
 #, c-format
 msgid "Constant \"%s\" has already been defined"
 msgstr "La constante «%s» ya ha sido definida"
@@ -3318,8 +3324,13 @@ msgstr "Error del gestor de ventanas: "
 msgid "Application set a bogus _NET_WM_PID %lu\n"
 msgstr "La aplicación establecio un _NET_WM_PID %lu erróneo\n"
 
+#: ../src/window-props.c:233
+#, c-format
+msgid "%s (on %s)"
+msgstr "%s (en %s)"
+
 #. first time through
-#: ../src/window.c:5405
+#: ../src/window.c:5410
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -3335,7 +3346,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/window.c:6035
+#: ../src/window.c:6038
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
