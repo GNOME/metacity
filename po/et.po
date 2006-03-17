@@ -1,15 +1,15 @@
 # Metacity eesti tõlge.
 # Estonian translation of Metacity
-# 
+#
 # Copyright (C) 2004-2005 The Free Software Foundation
 # This file is distributed under the same license as the metacity package.
-# 
+#
 # Tõivo Leedjärv <toivo@linux.ee>, 2004.
 # Ivar Smolin <okul@linux.ee>, 2005
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: metacity HEAD\n"
+"Project-Id-Version: metacity 2.14\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-09-05 14:56+0000\n"
 "PO-Revision-Date: 2005-09-05 22:46+0300\n"
@@ -130,6 +130,12 @@ msgid ""
 "There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A "
 "PARTICULAR PURPOSE.\n"
 msgstr ""
+"metacity %s\n"
+"Autoriõigused (C) 2001-2002 Havoc Pennington, Red Hat, Inc., ja teised\n"
+"See protgramm on vaba tarkvara; kopeerimistingimuste kohta vaata\n"
+"programmi lähteteksti. Sellel programmil pole MINGISUGUST GARANTIID;\n"
+"isegi KESKMISE/TAVALISE KVALITEEDI GARANTIID või GARANTIID SOBIVUSELE\n"
+"TEATUD KINDLAKS EESMÄRGIKS.\n"
 
 #: ../src/main.c:257
 msgid "Disable connection to session manager"
@@ -145,11 +151,11 @@ msgstr "Seansihalduse ID kirjeldamine"
 
 #: ../src/main.c:274
 msgid "X Display to use"
-msgstr ""
+msgstr "X'i kuva, mida kasutada"
 
 #: ../src/main.c:280
 msgid "Initialize session from savefile"
-msgstr ""
+msgstr "Seansi lähtestamine salvestatud failist"
 
 #: ../src/main.c:286
 msgid "Print version"
@@ -1358,11 +1364,11 @@ msgstr ""
 
 #: ../src/metacity.schemas.in.h:146
 msgid "The name of a workspace."
-msgstr ""
+msgstr "Tööala nimi."
 
 #: ../src/metacity.schemas.in.h:147
 msgid "The screenshot command"
-msgstr ""
+msgstr "Ekraanitõmmise võtmise käsk"
 
 #: ../src/metacity.schemas.in.h:148
 msgid ""
@@ -1387,7 +1393,7 @@ msgstr ""
 
 #: ../src/metacity.schemas.in.h:151
 msgid "The window screenshot command"
-msgstr ""
+msgstr "Akna ekraanitõmmise käsk"
 
 #: ../src/metacity.schemas.in.h:152
 msgid ""
@@ -1491,7 +1497,7 @@ msgstr ""
 
 #: ../src/metacity.schemas.in.h:168
 msgid "Window title font"
-msgstr ""
+msgstr "Akna pealkirja kirjatüüp"
 
 #: ../src/prefs.c:528 ../src/prefs.c:544 ../src/prefs.c:560 ../src/prefs.c:576
 #: ../src/prefs.c:592 ../src/prefs.c:612 ../src/prefs.c:628 ../src/prefs.c:644
@@ -1501,7 +1507,7 @@ msgstr ""
 #: ../src/prefs.c:850 ../src/prefs.c:866 ../src/prefs.c:882 ../src/prefs.c:898
 #, c-format
 msgid "GConf key \"%s\" is set to an invalid type\n"
-msgstr ""
+msgstr "GConf-i võti \"%s\" on määratud vigase tüübiga\n"
 
 #: ../src/prefs.c:943
 #, c-format
@@ -1764,7 +1770,7 @@ msgstr ""
 #: ../src/theme-parser.c:1143
 #, c-format
 msgid "Unknown function \"%s\" for menu icon"
-msgstr ""
+msgstr "Tundmatu funktsioon \"%s\" menüüikoonile"
 
 #: ../src/theme-parser.c:1152
 #, c-format
@@ -2473,7 +2479,7 @@ msgstr ""
 #: ../src/theme.c:1155
 #, c-format
 msgid "Could not parse color \"%s\""
-msgstr ""
+msgstr "Värvust \"%s\" pole võimalik analüüsida"
 
 #: ../src/theme.c:1417
 #, c-format
@@ -2577,7 +2583,7 @@ msgstr ""
 #: ../src/theme.c:4446
 #, c-format
 msgid "Failed to load theme \"%s\": %s\n"
-msgstr ""
+msgstr "Tõrge teema \"%s\" laadimisel: %s\n"
 
 #: ../src/theme.c:4592 ../src/theme.c:4599 ../src/theme.c:4606
 #: ../src/theme.c:4613 ../src/theme.c:4620
@@ -2688,10 +2694,3 @@ msgstr ""
 msgid ""
 "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
 msgstr ""
-
-#~ msgid ""
-#~ "metacity [--sm-disable] [--sm-client-id=ID] [--sm-save-file=FILENAME] [--"
-#~ "display=DISPLAY] [--replace] [--version]\n"
-#~ msgstr ""
-#~ "metacity [--sm-disable] [--sm-client-id=ID] [--sm-save-file=FAILINIMI] [--"
-#~ "display=KUVA] [--replace] [--version]\n"
