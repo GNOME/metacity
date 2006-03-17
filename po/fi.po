@@ -3,14 +3,14 @@
 #
 # Copyright (C) 2003 Free Software Foundation, Inc.
 # Pauli Virtanen <pauli.virtanen@hut.fi>, 2003-2005.
-# Ilkka Tuohela <hile@iki.fi> 2005.
+# Ilkka Tuohela <hile@iki.fi> 2005-2006.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-22 09:29+0200\n"
-"PO-Revision-Date: 2006-01-22 09:32:0200\n"
+"POT-Creation-Date: 2006-03-17 16:34+0200\n"
+"PO-Revision-Date: 2006-03-17 16.35:0200\n"
 "Last-Translator: Ilkka Tuohela <hile@iki.fi>\n"
 "Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -110,19 +110,19 @@ msgid ""
 msgstr ""
 "Jokin muu ohjelma käyttää jo näppäintä %s muunnoksin %x pikanäppäimenään\n"
 
-#: ../src/keybindings.c:2504
+#: ../src/keybindings.c:2534
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr ""
 "Virhe metacity-dialogin käynnistämisessä komennon virheen tulostamista "
 "varten: %s\n"
 
-#: ../src/keybindings.c:2609
+#: ../src/keybindings.c:2639
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "Mitään komentoa %d ei ole määritelty.\n"
 
-#: ../src/keybindings.c:3471
+#: ../src/keybindings.c:3501
 msgid "No terminal command has been defined.\n"
 msgstr "Mitään päätteen komentoa ei ole määritelty.\n"
 
@@ -249,7 +249,7 @@ msgstr "Siirry _ylläolevaan työtilaan"
 msgid "Move to Workspace _Down"
 msgstr "Siirrä _alla olevaan työtilaan"
 
-#: ../src/menu.c:164 ../src/prefs.c:1973 ../src/prefs.c:2274
+#: ../src/menu.c:164 ../src/prefs.c:1978 ../src/prefs.c:2341
 #, c-format
 msgid "Workspace %d"
 msgstr "Työtila %d"
@@ -1922,11 +1922,11 @@ msgid ""
 "'minimize' which will minimize the window, and 'none' which will not do "
 "anything."
 msgstr ""
-"Tämä valinta määrittelee otsikkopalkin kaksoisnapsautuksen toiminnon. "
-"Tällä hetkellä mahdolliset toiminnot ovat \"toggle_shade\", joka rullaa "
-"ikkunan ylös tai avaa rullauksen, \"toggle_maximize\", joka suurentaa tai "
-"palauttaa ikkunan, \"minimize\", joka pienentää ikkunan tai \"none\" joka "
-"ei tee mitään."
+"Tämä valinta määrittelee otsikkopalkin kaksoisnapsautuksen toiminnon. Tällä "
+"hetkellä mahdolliset toiminnot ovat \"toggle_shade\", joka rullaa ikkunan "
+"ylös tai avaa rullauksen, \"toggle_maximize\", joka suurentaa tai palauttaa "
+"ikkunan, \"minimize\", joka pienentää ikkunan tai \"none\" joka ei tee "
+"mitään."
 
 #: ../src/metacity.schemas.in.h:159
 msgid "Toggle always on top state"
@@ -1982,18 +1982,18 @@ msgstr "Windows-tyylinen kohdistus"
 msgid "Window title font"
 msgstr "Ikkunan otsikon kirjasin"
 
-#: ../src/prefs.c:555 ../src/prefs.c:571 ../src/prefs.c:587 ../src/prefs.c:603
-#: ../src/prefs.c:619 ../src/prefs.c:635 ../src/prefs.c:655 ../src/prefs.c:671
-#: ../src/prefs.c:687 ../src/prefs.c:703 ../src/prefs.c:719 ../src/prefs.c:735
-#: ../src/prefs.c:751 ../src/prefs.c:767 ../src/prefs.c:784 ../src/prefs.c:800
-#: ../src/prefs.c:816 ../src/prefs.c:832 ../src/prefs.c:848 ../src/prefs.c:863
-#: ../src/prefs.c:878 ../src/prefs.c:893 ../src/prefs.c:909 ../src/prefs.c:925
-#: ../src/prefs.c:941
+#: ../src/prefs.c:560 ../src/prefs.c:576 ../src/prefs.c:592 ../src/prefs.c:608
+#: ../src/prefs.c:624 ../src/prefs.c:640 ../src/prefs.c:660 ../src/prefs.c:676
+#: ../src/prefs.c:692 ../src/prefs.c:708 ../src/prefs.c:724 ../src/prefs.c:740
+#: ../src/prefs.c:756 ../src/prefs.c:772 ../src/prefs.c:789 ../src/prefs.c:805
+#: ../src/prefs.c:821 ../src/prefs.c:837 ../src/prefs.c:853 ../src/prefs.c:868
+#: ../src/prefs.c:883 ../src/prefs.c:898 ../src/prefs.c:914 ../src/prefs.c:930
+#: ../src/prefs.c:946
 #, c-format
 msgid "GConf key \"%s\" is set to an invalid type\n"
 msgstr "GConf-avain \"%s\" on asetettu väärän tyyppiseksi\n"
 
-#: ../src/prefs.c:986
+#: ../src/prefs.c:991
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -2001,12 +2001,12 @@ msgid ""
 msgstr ""
 "Asetustietokannassa oleva \"%s\" ei ole kelvollinen hiiren muunnosnäppäin\n"
 
-#: ../src/prefs.c:1010 ../src/prefs.c:1500
+#: ../src/prefs.c:1015 ../src/prefs.c:1505
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
 msgstr "GConf-avain \"%s\" on asetettu arvoltaan vääräksi\n"
 
-#: ../src/prefs.c:1133
+#: ../src/prefs.c:1138
 #, c-format
 msgid ""
 "%d stored in GConf key %s is not a reasonable cursor_size; must be in the "
@@ -2015,12 +2015,12 @@ msgstr ""
 "GConf-avaimeen %2$s tallennettu arvo %1$d ei ole järkevä kohdistimen koko. "
 "Sallitut arvot ovat välilä 1-128\n"
 
-#: ../src/prefs.c:1213
+#: ../src/prefs.c:1218
 #, c-format
 msgid "Could not parse font description \"%s\" from GConf key %s\n"
 msgstr "GConf-avaimesta %2$s saatu kirjasinkuvaus \"%1$s\" ei jäsenny\n"
 
-#: ../src/prefs.c:1398
+#: ../src/prefs.c:1403
 #, c-format
 msgid ""
 "%d stored in GConf key %s is not a reasonable number of workspaces, current "
@@ -2029,7 +2029,7 @@ msgstr ""
 "GConf-avaimeen %2$s tallennettu %1$d ei ole järkevä työtilojen määrä. "
 "Nykyinen raja on %3$d\n"
 
-#: ../src/prefs.c:1458
+#: ../src/prefs.c:1463
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -2037,17 +2037,17 @@ msgstr ""
 "Rikkinäisten sovellusten kiertotiet eivät ole käytössä. Jotkin sovellukset "
 "eivät välttämättä käyttäydy kunnolla.\n"
 
-#: ../src/prefs.c:1527
+#: ../src/prefs.c:1532
 #, c-format
 msgid "%d stored in GConf key %s is out of range 0 to %d\n"
 msgstr "%d, joka on GConf-avaimessa %s, ei ole välillä 0 - %d\n"
 
-#: ../src/prefs.c:1664
+#: ../src/prefs.c:1669
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr "Virhe työtilojen määrän asettamisessa arvoon %d: %s\n"
 
-#: ../src/prefs.c:2000
+#: ../src/prefs.c:2005
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -2056,7 +2056,7 @@ msgstr ""
 "\"%s\", joka on asetustietokannassa, ei ole kelvollinen näppäinsidonnan \"%s"
 "\" arvo\n"
 
-#: ../src/prefs.c:2355
+#: ../src/prefs.c:2422
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr "Virhe työtilan %d nimen asettamisessa nimeksi \"%s\": %s\n"
@@ -3190,15 +3190,15 @@ msgstr "Lokitiedosto %s avattu\n"
 msgid "Window manager: "
 msgstr "Ikkunointiohjelma:"
 
-#: ../src/util.c:366
+#: ../src/util.c:368
 msgid "Bug in window manager: "
 msgstr "Vika ikkunointiohjelmassa."
 
-#: ../src/util.c:395
+#: ../src/util.c:397
 msgid "Window manager warning: "
 msgstr "Ikkunointiohjelman varoitus:"
 
-#: ../src/util.c:419
+#: ../src/util.c:421
 msgid "Window manager error: "
 msgstr "Ikkunointiohjelmavirhe:"
 
@@ -3207,8 +3207,13 @@ msgstr "Ikkunointiohjelmavirhe:"
 msgid "Application set a bogus _NET_WM_PID %lu\n"
 msgstr "Sovellus asetti ylimääräisen _NET_WM_PIDin %lu\n"
 
+#: ../src/window-props.c:233
+#, c-format
+msgid "%s (on %s)"
+msgstr "%s (%s)"
+
 #. first time through
-#: ../src/window.c:5405
+#: ../src/window.c:5404
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -3224,7 +3229,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/window.c:6035
+#: ../src/window.c:6032
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
