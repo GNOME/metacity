@@ -1,3 +1,7 @@
+2006-03-18  Vladimer Sichinava  <vlsichinava@gmail.com>
+
+        * configure.in: Added "ka" (Georgian) to ALL_LINGUAS
+
 2006-03-16  Thomas Thurman  <thomas@thurman.org.uk>
 
 	Always set _NET_WM_STATE when a window is shown or
