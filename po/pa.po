@@ -1,27 +1,26 @@
-# translation of metacity.HEAD.po to Punjabi
-# translation of pa.po to Punjabi
-# translation of metacity.HEAD.pa.po to Punjabi
+# translation of metacity.gnome-2-14.po to Punjabi
 # Punjabi translation of metacity.HEAD.
 # Copyright (C) 2004 THE metacity.HEAD'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the metacity.HEAD package.
+#
 # Amanpreet_Singh <amanlinux@netscape.net>, 2004.
 # Amanpreet Singh Alam <amanlinux@netscape.net>, 2004.
 # Amanpreet Singh Alam <aalam@redhat.com>, 2004.
 # Amanpreet Singh Alam <amanpreetalam@yahoo.com>, 2005.
-#
+# A S Alam <apbrar@gmail.com>, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: metacity.HEAD\n"
+"Project-Id-Version: metacity.gnome-2-14\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-19 12:30+0200\n"
-"PO-Revision-Date: 2005-09-02 01:13+0530\n"
-"Last-Translator: Amanpreet Singh Alam <amanpreetalam@yahoo.com>\n"
+"POT-Creation-Date: 2006-03-25 06:46+0100\n"
+"PO-Revision-Date: 2006-03-25 19:44+0530\n"
+"Last-Translator: A S Alam <apbrar@gmail.com>\n"
 "Language-Team: Punjabi <fedora-trans-pa@redhat.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10.2\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: KBabel 1.11.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "\n"
 
 #: ../src/tools/metacity-message.c:150
@@ -29,49 +28,48 @@ msgstr ""
 msgid "Usage: %s\n"
 msgstr "ਉਪਯੋਗ: %s\n"
 
-#: ../src/tools/metacity-message.c:176 ../src/util.c:128
+#: ../src/tools/metacity-message.c:176 ../src/util.c:131
 msgid "Metacity was compiled without support for verbose mode\n"
 msgstr "ਮੈਟਾਸਿਟੀ, ਵਰਬੋਜ਼ ਮੋਡ ਲਈ ਸਹਾਰੇ ਤੋਂ ਬਿਨਾਂ ਕੰਪਾਇਲ ਹੋਇਆ\n"
 
-#: ../src/delete.c:63 ../src/delete.c:90 ../src/metacity-dialog.c:70
+#: ../src/delete.c:64 ../src/delete.c:91 ../src/metacity-dialog.c:71
 #: ../src/theme-parser.c:467
 #, c-format
 msgid "Could not parse \"%s\" as an integer"
 msgstr "\"%s\" ਦੀ ਪੂਰਨ ਅੰਕ ਵਾਂਗ ਪਾਰਸ ਨਹੀ ਕਰ ਸਕਿਆ"
 
-#: ../src/delete.c:70 ../src/delete.c:97 ../src/metacity-dialog.c:77
+#: ../src/delete.c:71 ../src/delete.c:98 ../src/metacity-dialog.c:78
 #: ../src/theme-parser.c:476 ../src/theme-parser.c:530
 #, c-format
 msgid "Did not understand trailing characters \"%s\" in string \"%s\""
 msgstr "\"%s\" ਸਤਰ ਵਿਚ ਖੋਜੇ ਅੱਖਰ \"%s\" ਨੂੰ ਸਮਝ ਨਹੀ ਸਕੇ"
 
-#: ../src/delete.c:128
+#: ../src/delete.c:129
 #, c-format
 msgid "Failed to parse message \"%s\" from dialog process\n"
 msgstr "ਵਾਰਤਾਲਾਪ ਕਾਰਜ ਵਿੱਚੋਂ \"%s\" ਸੁਨੇਹੇ ਦੀ ਪਾਰਸ ਕਰਨ ਵਿੱਚ ਅਸਫਲ\n"
 
-#: ../src/delete.c:263
+#: ../src/delete.c:264
 #, c-format
 msgid "Error reading from dialog display process: %s\n"
 msgstr "ਵਾਰਤਾਲਾਪ ਵਿਖਾਵੇ ਵਾਲੇ ਕਾਰਜ ਵਿੱਚੋਂ ਪੜਨ ਦੀ ਗਲਤੀ: %s\n"
 
-#: ../src/delete.c:344
+#: ../src/delete.c:345
 #, c-format
-msgid ""
-"Error launching metacity-dialog to ask about killing an application: %s\n"
+msgid "Error launching metacity-dialog to ask about killing an application: %s\n"
 msgstr "ਕਾਰਜ ਖਤਮ ਕਰਨ ਲਈ ਪੁੱਛਣ ਵਾਲੇ ਮੈਟਾਸਿਟੀ ਵਾਰਤਾਲਾਪ ਨੂੰ ਸ਼ੁਰੂ ਕਰਨ ਵਿੱਚ ਗਲਤੀ:%s\n"
 
-#: ../src/delete.c:452
+#: ../src/delete.c:453
 #, c-format
 msgid "Failed to get hostname: %s\n"
 msgstr "ਮੇਜ਼ਬਾਨ ਨਾਂ ਪ੍ਰਾਪਤ ਕਰਨ ਵਿੱਚ ਅਸਫਲ: %s\n"
 
-#: ../src/display.c:319
+#: ../src/display.c:308
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
-msgstr "X ਝਰੋਖਾ ਸਿਸਟਮ ਵਿਖਾਵੇ '%s' ਨੂੰ ਖੋਲਣ ਵਿੱਚ ਅਸਮਰਥ\n"
+msgstr "X ਝਰੋਖਾ ਸਿਸਟਮ ਵਿਖਾਵੇ '%s' ਨੂੰ ਖੋਲਣ ਵਿੱਚ ਅਸਮੱਰਥ\n"
 
-#: ../src/errors.c:231
+#: ../src/errors.c:233
 #, c-format
 msgid ""
 "Lost connection to the display '%s';\n"
@@ -82,53 +80,53 @@ msgstr ""
 "ਜਿਵੇਂ ਕਿ X ਸਰਵਰ ਬੰਦ ਹੋ ਗਿਆ ਹੈ ਜਾਂ ਤੁਸੀਂ ਝਰੋਖਾ ਮੈਨੇਜਰ\n"
 "ਖਤਮ ਕੀਤਾ ਹੈ।\n"
 
-#: ../src/errors.c:238
+#: ../src/errors.c:240
 #, c-format
 msgid "Fatal IO error %d (%s) on display '%s'.\n"
-msgstr "ਘਾਤਕ IO ਗਲਤੀ %d (%s) ਦਰਿਸ਼ ਉਪੱਰ'%s' ਹੈ।\n"
+msgstr "ਘਾਤਕ IO ਗਲਤੀ %d (%s) ਦਰਿਸ਼ ਉਪੱਰ '%s' ਹੈ।\n"
 
-#: ../src/frames.c:1125
+#: ../src/frames.c:1097
 msgid "Close Window"
 msgstr "ਝਰੋਖਾ ਬੰਦ"
 
-#: ../src/frames.c:1128
+#: ../src/frames.c:1100
 msgid "Window Menu"
 msgstr "ਝਰੋਖਾ ਮੇਨੂ-ਸੂਚੀ"
 
-#: ../src/frames.c:1131
+#: ../src/frames.c:1103
 msgid "Minimize Window"
 msgstr "ਝਰੋਖਾ ਅਲਪੀਕਰਨ"
 
-#: ../src/frames.c:1134
+#: ../src/frames.c:1106
 msgid "Maximize Window"
 msgstr "ਝਰੋਖਾ ਅਧਿਕਤਮ"
 
-#: ../src/frames.c:1137
+#: ../src/frames.c:1109
 msgid "Unmaximize Window"
-msgstr "ਝਰੋਖਾ ਅਧਿਕਤਮ ਨਾ ਕਰੋ"
+msgstr "ਝਰੋਖਾ ਨਾ-ਅਧਿਕਤਮ ਕਰੋ"
 
-#: ../src/keybindings.c:994
+#: ../src/keybindings.c:996
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
 "binding\n"
 msgstr "ਕੋਈ ਹੋਰ ਕਾਰਜ %s ਸਵਿੱਚ ਨੂੰ %x ਸੋਧਕ ਨਾਲ ਪਹਿਲਾਂ ਹੀ ਜੋੜ ਵਾਂਗ ਵਰਤ ਰਿਹਾ ਹੈ\n"
 
-#: ../src/keybindings.c:2620
+#: ../src/keybindings.c:2534
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr "ਕਮਾਂਡ ਬਾਰੇ ਗਲਤੀ ਛਾਪਣ ਵਾਲੇ ਮੈਟਾਸਿਟੀ ਵਾਰਤਾਲਾਪ ਨੂੰ ਸ਼ੁਰੂ ਕਰਨ ਵਿੱਚ ਗਲਤੀ: %s \n"
 
-#: ../src/keybindings.c:2725
+#: ../src/keybindings.c:2639
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "ਕੋਈ ਕਮਾਂਡ %d ਪਰਭਾਸ਼ਿਤ ਨਹੀ ਕੀਤੀ।\n"
 
-#: ../src/keybindings.c:3570
+#: ../src/keybindings.c:3501
 msgid "No terminal command has been defined.\n"
-msgstr "ਕੋਈ ਟਰਮੀਨਲ ਕਮਾਂਡ ਪ੍ਰਭਾਸ਼ਿਤ ਨਹੀ ਕੀਤੀ।\n"
+msgstr "ਕੋਈ ਟਰਮੀਨਲ ਕਮਾਂਡ ਦਿੱਤੀ ਨਹੀਂ ਗਈ ਹੈ।\n"
 
-#: ../src/main.c:69
+#: ../src/main.c:70
 #, c-format
 msgid ""
 "metacity %s\n"
@@ -138,127 +136,130 @@ msgid ""
 "PARTICULAR PURPOSE.\n"
 msgstr ""
 "ਮੈਟਾਸਿਟੀ %s\n"
-"ਹੱਕ ਰਾਖਵੇ ਹਨ(C) 2001-2002 ਹਾਵੇਨ ਪੈਨਿੰਗਟੋਨ ਰੈੱਡ ਹੈੱਟ, ਅਤੇ ਹੋਰ\n"
+"ਹੱਕ ਰਾਖਵੇ ਹਨ (C) 2001-2002 ਹਾਵੇਨ ਪੈਨਿੰਗਟੋਨ ਰੈੱਡ ਹੈੱਟ, ਅਤੇ ਹੋਰ\n"
 "ਇਹ ਮੁਫਤ ਸਾਫਟਵੇਅਰ ਹੈ; ਉਤਾਰਾ ਹਾਲਤਾਂ ਲਈ ਸਰੋਤ ਵੇਖੋ।\n"
 "ਇਸ ਦੀ ਕੋਈ ਗਰੰਟੀ ਨਹੀ; ਇਥੋਂ ਤੱਕ ਕਿ ਖਰੀਦਦਾਰੀ ਜਾਂ ਖਾਸ ਮਕਸਦ ਦੀ ਪੂਰਤੀ ਲਈ ਵੀ।\n"
 
-#: ../src/main.c:257
+#: ../src/main.c:258
 msgid "Disable connection to session manager"
 msgstr "ਅਜਲਾਸ ਪਰਬੰਧਕ ਨਾਲ ਕੁਨੈਕਸ਼ਨ ਅਯੋਗ"
 
-#: ../src/main.c:263
+#: ../src/main.c:264
 msgid "Replace the running window manager with Metacity"
 msgstr "ਚੱਲ ਰਹੇ ਝਰੋਖਾ ਪਰਬੰਧਕ ਨੂੰ ਮੈਟਾਸਿਟੀ ਨਾਲ ਤਬਦੀਲ"
 
-#: ../src/main.c:269
+#: ../src/main.c:270
 msgid "Specify session management ID"
 msgstr "ਅਜਲਾਸ ਪਰਬੰਧਨ ID ਦਿਓ"
 
-#: ../src/main.c:274
+#: ../src/main.c:275
 msgid "X Display to use"
 msgstr "ਵਰਤਣ ਲਈ X ਦਰਿਸ਼"
 
-#: ../src/main.c:280
+#: ../src/main.c:281
 msgid "Initialize session from savefile"
 msgstr "ਸੰਭਾਲੀ ਫਾਇਲ ਤੋਂ ਅਜਲਾਸ ਸ਼ੁਰੂ"
 
-#: ../src/main.c:286
+#: ../src/main.c:287
 msgid "Print version"
 msgstr "ਵਰਜਨ ਛਾਪੋ"
 
-#: ../src/main.c:440
+#: ../src/main.c:439
 #, c-format
 msgid "Failed to scan themes directory: %s\n"
 msgstr "ਸਰੂਪ ਡਾਇਰੈਕਟਰੀ ਦੀ ਜਾਂਚ ਅਸਫਲ: %s\n"
 
-#: ../src/main.c:456
+#: ../src/main.c:455
 #, c-format
-msgid ""
-"Could not find a theme! Be sure %s exists and contains the usual themes."
+msgid "Could not find a theme! Be sure %s exists and contains the usual themes."
 msgstr "ਸਰੂਪ ਨਹੀ ਲੱਭ ਸਕਿਆ! ਯਕੀਨੀ ਬਣਾਓ ਕਿ %s ਮੌਜੂਦ ਹੈ ਅਤੇ ਇਸ ਵਿਚ ਵਰਤਣ ਵਾਲੇ ਸਰੂਪ ਹਨ।"
 
-#: ../src/main.c:518
+#: ../src/main.c:527
 #, c-format
 msgid "Failed to restart: %s\n"
 msgstr "ਮੁੜ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਅਸਫਲ: %s\n"
 
-#: ../src/menu.c:54
+#: ../src/menu.c:55
 msgid "Mi_nimize"
 msgstr "ਅਲਪੀਕਰਨ(_n)"
 
-#: ../src/menu.c:55
+#: ../src/menu.c:56
 msgid "Ma_ximize"
 msgstr "ਅਧਿਕਤਮ(_x)"
 
-#: ../src/menu.c:56
+#: ../src/menu.c:57
 msgid "Unma_ximize"
 msgstr "ਨਾ-ਅਧਿਕਤਮ(_x)"
 
-#: ../src/menu.c:57
+#: ../src/menu.c:58
 msgid "Roll _Up"
 msgstr "ਸਮੇਟੋ(_U)"
 
-#: ../src/menu.c:58
+#: ../src/menu.c:59
 msgid "_Unroll"
-msgstr "ਖੋਲੋ(_U)"
+msgstr "ਖੋਲ੍ਹੋ(_U)"
 
-#: ../src/menu.c:59 ../src/menu.c:60
+#: ../src/menu.c:60 ../src/menu.c:61
 msgid "On _Top"
 msgstr "ਸਿਖਰ ਉੱਪਰ(_T)"
 
-#: ../src/menu.c:61
+#: ../src/menu.c:62
 msgid "_Move"
 msgstr "ਏਧਰ-ਓਧਰ(_M)"
 
-#: ../src/menu.c:62
+#: ../src/menu.c:63
 msgid "_Resize"
 msgstr "ਮੁੜ-ਅਕਾਰ(_R)"
 
-#. separator
 #: ../src/menu.c:64
-msgid "_Close"
-msgstr "ਬੰਦ(_C)"
+msgid "Move Titlebar On_screen"
+msgstr "ਸਿਰਲੇਖ ਸਕਰੀਨ ਭੇਜੋ(_s)"
 
 #. separator
 #: ../src/menu.c:66
-msgid "_Always on Visible Workspace"
-msgstr "ਸਿਰਫ਼ ਇਸ ਵਰਕਸਪੇਸ ਵਿੱਚ ਰੱਖੋ(_A)"
+msgid "_Close"
+msgstr "ਬੰਦ ਕਰੋ(_C)"
 
-#: ../src/menu.c:67
-msgid "_Only on This Workspace"
-msgstr "ਸਿਰਫ਼ ਇਸ ਵਰਕਸਪੇਸ ਵਿੱਚ ਰੱਖੋ(_O)"
-
+#. separator
 #: ../src/menu.c:68
+msgid "_Always on Visible Workspace"
+msgstr "ਹਮੇਸ਼ਾ ਦਿੱਖ ਵਰਕਸਪੇਸ ਉੱਤੇ(_A)"
+
+#: ../src/menu.c:69
+msgid "_Only on This Workspace"
+msgstr "ਸਿਰਫ਼ ਇਸ ਵਰਕਸਪੇਸ 'ਚ ਰੱਖੋ(_O)"
+
+#: ../src/menu.c:70
 msgid "Move to Workspace _Left"
 msgstr "ਵਰਕਸਪੇਸ ਵਿੱਚ ਖੱਬੇ ਭੇਜੋ(_L)"
 
-#: ../src/menu.c:69
+#: ../src/menu.c:71
 msgid "Move to Workspace R_ight"
 msgstr "ਵਰਕਸਪੇਸ ਵਿੱਚ ਸੱਜੇ ਭੇਜੋ(_i)"
 
-#: ../src/menu.c:70
+#: ../src/menu.c:72
 msgid "Move to Workspace _Up"
-msgstr "ਵਰਕਸਪੇਸ ਵਿੱਚ ਉੱਪਰ ਲੈ ਜਾਉ(_U)"
+msgstr "ਵਰਕਸਪੇਸ ਵਿੱਚ ਉੱਪਰ ਲੈ ਜਾਓ(_U)"
 
-#: ../src/menu.c:71
+#: ../src/menu.c:73
 msgid "Move to Workspace _Down"
-msgstr "ਵਰਕਸਪੇਸ ਵਿੱਚ ਹੇਠਾਂ ਲੈ ਜਾਉ(_D)"
+msgstr "ਵਰਕਸਪੇਸ ਵਿੱਚ ਹੇਠਾਂ ਲੈ ਜਾਓ(_D)"
 
-#: ../src/menu.c:162 ../src/prefs.c:2106
+#: ../src/menu.c:164 ../src/prefs.c:1978 ../src/prefs.c:2341
 #, c-format
 msgid "Workspace %d"
 msgstr "ਵਰਕਸਪੇਸ %d"
 
-#: ../src/menu.c:171
+#: ../src/menu.c:173
 msgid "Workspace 1_0"
 msgstr "ਵਰਕਸਪੇਸ 1_0"
 
-#: ../src/menu.c:173
+#: ../src/menu.c:175
 #, c-format
 msgid "Workspace %s%d"
 msgstr "ਵਰਕਸਪੇਸ %s%d"
 
-#: ../src/menu.c:368
+#: ../src/menu.c:370
 msgid "Move to Another _Workspace"
 msgstr "ਹੋਰ ਵਰਕਸਪੇਸ ਉਪੱਰ ਜਾਓ(_W)"
 
@@ -267,61 +268,61 @@ msgstr "ਹੋਰ ਵਰਕਸਪੇਸ ਉਪੱਰ ਜਾਓ(_W)"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/metaaccellabel.c:105
+#: ../src/metaaccellabel.c:103
 msgid "Shift"
-msgstr "ਸ਼ਿਫਟ(Shift)"
+msgstr "ਸ਼ਿਫਟ (Shift)"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the control key. If the text on this key isn't typically
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/metaaccellabel.c:111
+#: ../src/metaaccellabel.c:109
 msgid "Ctrl"
-msgstr "ਕੰਟਰੋਲ(Ctrl)"
+msgstr "ਕੰਟਰੋਲ (Ctrl)"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the alt key. If the text on this key isn't typically
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/metaaccellabel.c:117
+#: ../src/metaaccellabel.c:115
 msgid "Alt"
-msgstr "ਆਲਟ(Alt)"
+msgstr "ਆਲਟ (Alt)"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the meta key. If the text on this key isn't typically
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/metaaccellabel.c:123
+#: ../src/metaaccellabel.c:121
 msgid "Meta"
-msgstr "ਮੈਟਾ(Meta)"
+msgstr "ਮੈਟਾ (Meta)"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the super key. If the text on this key isn't typically
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/metaaccellabel.c:129
+#: ../src/metaaccellabel.c:127
 msgid "Super"
-msgstr "ਸੁਪਰ(Super)"
+msgstr "ਸੁਪਰ (Super)"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the hyper key. If the text on this key isn't typically
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/metaaccellabel.c:135
+#: ../src/metaaccellabel.c:133
 msgid "Hyper"
-msgstr "ਹਾਈਪਰ(Hyper)"
+msgstr "ਹਾਈਪਰ (Hyper)"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the mod2 key. If the text on this key isn't typically
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/metaaccellabel.c:141
+#: ../src/metaaccellabel.c:139
 msgid "Mod2"
 msgstr "ਮਾਡ2"
 
@@ -330,7 +331,7 @@ msgstr "ਮਾਡ2"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/metaaccellabel.c:147
+#: ../src/metaaccellabel.c:145
 msgid "Mod3"
 msgstr "ਮਾਡ3"
 
@@ -339,7 +340,7 @@ msgstr "ਮਾਡ3"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/metaaccellabel.c:153
+#: ../src/metaaccellabel.c:151
 msgid "Mod4"
 msgstr "ਮਾਡ4"
 
@@ -348,47 +349,46 @@ msgstr "ਮਾਡ4"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/metaaccellabel.c:159
+#: ../src/metaaccellabel.c:157
 msgid "Mod5"
 msgstr "ਮਾਡ5"
 
-#: ../src/metacity-dialog.c:110
+#: ../src/metacity-dialog.c:111
 #, c-format
 msgid "The window \"%s\" is not responding."
-msgstr "ਝਰੋਖਾ \"%s\" ਜਵਾਬ ਨਹੀ ਦਿੰਦਾ।"
+msgstr "ਝਰੋਖਾ \"%s\" ਜਵਾਬ ਨਹੀਂ ਦਿੰਦਾ ਹੈ।"
 
-#: ../src/metacity-dialog.c:118
-msgid ""
-"Forcing this application to quit will cause you to lose any unsaved changes."
-msgstr "ਇਸ ਕਾਰਜ ਤੋਂ ਬਾਹਰ ਆਉਣ ਨਾਲ ਨਾ ਸੰਭਾਲੀ ਤਬਦੀਲੀ ਗੁੰਮ ਜਾਏਗੀ।"
+#: ../src/metacity-dialog.c:119
+msgid "Forcing this application to quit will cause you to lose any unsaved changes."
+msgstr "ਇਸ ਕਾਰਜ ਨੂੰ ਧੱਕੇ ਨਾਲ ਬੰਦ ਕਰਨ ਨਾਲ ਨਾ ਸੰਭਾਲੀਆਂ ਤਬਦੀਲੀਆਂ ਖਤਮ ਹੋ ਜਾਣਗੀਆਂ।"
 
-#: ../src/metacity-dialog.c:129
+#: ../src/metacity-dialog.c:130
 msgid "_Force Quit"
 msgstr "ਬੰਦ ਹੋਣ ਲਈ ਮਜਬੂਰ(_F)"
 
-#: ../src/metacity-dialog.c:226
+#: ../src/metacity-dialog.c:227
 msgid "Title"
 msgstr "ਸਿਰਲੇਖ"
 
-#: ../src/metacity-dialog.c:238
+#: ../src/metacity-dialog.c:239
 msgid "Class"
 msgstr "ਸ਼੍ਰੇਣੀ"
 
-#: ../src/metacity-dialog.c:264
+#: ../src/metacity-dialog.c:265
 msgid ""
 "These windows do not support \"save current setup\" and will have to be "
 "restarted manually next time you log in."
 msgstr ""
-"ਇਹ ਝਰੋਖੇ \"ਵਰਤਮਾਨ ਸਥਿਤੀ ਸੰਭਾਲੋ\" ਵਾਸਤੇ ਸਹਾਇਕ ਨਹੀਂ ਅਤੇ ਅਗਲੀ ਵਾਰ ਜਦੋਂ ਤੁਸੀਂ ਲਾਗਿੰਨ ਕਰੋਗੇ ਤਾਂ "
-"ਮੁੜ ਸ਼ੁਰੂ ਕਰਨਾ ਪਵੇਗਾ।"
+"ਇਹ ਝਰੋਖੇ \"ਮੌਜੂਦਾ ਸਥਾਪਨ ਸੰਭਾਲੋ\" ਵਾਸਤੇ ਸਹਾਇਕ ਨਹੀਂ ਅਤੇ ਅਗਲੀ ਵਾਰ ਜਦੋਂ ਤੁਸੀਂ "
+"ਲਾਗਇਨ ਕਰੋਗੇ ਤਾਂ ਮੁੜ ਸ਼ੁਰੂ ਕਰਨਾ ਪਵੇਗਾ।"
 
-#: ../src/metacity-dialog.c:330
+#: ../src/metacity-dialog.c:331
 #, c-format
 msgid ""
 "There was an error running \"%s\":\n"
 "%s."
 msgstr ""
-"ਉਥੇ \"%s\" ਨੂੰ ਚਲਾਉਣ ਉਪਰੰਤ ਇੱਕ ਗਲਤੀ ਹੈ:\n"
+"\"%s\" ਨੂੰ ਚਲਾਉਣ ਉਪਰੰਤ ਇੱਕ ਗਲਤੀ ਸੀ:\n"
 "%s"
 
 #: ../src/metacity.desktop.in.h:1
@@ -397,7 +397,7 @@ msgstr "ਮੈਟਾਸਿਟੀ"
 
 #: ../src/metacity.schemas.in.h:1
 msgid "(Not implemented) Navigation works in terms of applications not windows"
-msgstr "(ਲਾਗੂ ਨਹੀ ਕੀਤਾ) ਸੰਚਾਲਨ ਕਾਰਜ ਦੇ ਵਿਹਾਰ ਨਾਲ ਕੰਮ ਕਰਦਾ ਹੈ ਨਾ ਕਿ ਝਰੋਖੇ ਦੇ"
+msgstr "(ਲਾਗੂ ਨਹੀ ਕੀਤਾ) ਸੰਚਾਲਨ ਕਾਰਜ ਦੇ ਵਿਹਾਰ ਨਾਲ ਕੰਮ ਕਰਦਾ ਹੈ, ਨਾ ਕਿ ਝਰੋਖੇ ਦੇ"
 
 #: ../src/metacity.schemas.in.h:2
 msgid ""
@@ -408,14 +408,14 @@ msgid ""
 "is unset, causing Metacity to fall back to the desktop font even if "
 "titlebar_uses_desktop_font is false."
 msgstr ""
-"ਫੋਟ ਵਰਨਣ ਸਤਰ ਝਰੋਖੇ ਦੀ ਸਿਰਲੇਖ ਪੱਟੀ ਵਾਸਤੇ ਫੋਟ ਦਰਸਾਉਂਦੀ ਹੈ। ਵਰਨਣ ਵਿਚਲਾਆਕਾਰ ਤਾਂ ਹੀ ਅਸਰ "
-"ਕਰੇਗਾ ਜੇ ਕਿਸੇ ਵੀ ਤਰਾਂ ਸਿਰਲੇਖ ਪੱਟੀ ਫੋਟ ਆਕਾਰ ਚੋਣ 0 ਕੀਤੀਹੈ, ਇਹ ਚੋਣ ਅਯੋਗ ਵੀ ਹੈ ਜੇ ਸਿਰਲੇਖ ਪੱਟੀ "
-"ਵਿਹੜਾ ਫੋਟ ਚੋਣ ਨੂੰ ਯੋਗ ਹੋਈ ਵਰਤਦਾ ਹੈ। ਮੂਲ ਰੂਪ ਵਿੱਚ, ਸਿਰਲੇਖ ਪੱਟੀ ਫੋਟ ਅਯੋਗ ਹੈ, ਜੋ ਮੈਟਾਸਿਟੀ ਨੂੰ ਪਿੱਛੇ "
-"ਵਿਹੜਾ ਫੋਟ ਵਿੱਚ ਸੁੱਟਦਾਹੈ ਭਾਵੇਂ ਸਿਰਲੇਖ ਅਯੋਗ ਵਿਹੜਾ ਫੋਟ ਵਰਤਦਾ ਹੈ।"
+"ਫੋਂਟ ਵਰਨਣ ਸਤਰ ਝਰੋਖੇ ਦੀ ਸਿਰਲੇਖ ਪੱਟੀ ਵਾਸਤੇ ਫੋਟ ਦਰਸਾਉਂਦੀ ਹੈ। ਵੇਰਵੇ ਤੋਂ ਆਕਾਰ ਤਾਂ ਹੀ ਅਸਰ "
+"ਕਰੇਗਾ, ਜੇ ਕਿਸੇ ਵੀ ਤਰਾਂ ਸਿਰਲੇਖ ਪੱਟੀ ਫੋਟ ਆਕਾਰ ਚੋਣ 0 ਕੀਤੀਹੈ, ਇਹ ਚੋਣ ਅਯੋਗ ਵੀ ਹੈ, ਜੇ ਸਿਰਲੇਖ ਪੱਟੀ "
+"ਵੇਹੜਾ ਫੋਟ ਚੋਣ ਨੂੰ ਯੋਗ ਹੋਈ ਵਰਤਦਾ ਹੈ। ਮੂਲ ਰੂਪ ਵਿੱਚ, ਸਿਰਲੇਖ ਪੱਟੀ ਫੋਟ ਅਯੋਗ ਹੈ, ਜੋ ਮੈਟਾਸਿਟੀ ਨੂੰ ਪਿੱਛੇ "
+"ਵੇਹੜਾ ਫੋਟ ਵਿੱਚ ਸੁੱਟਦਾ ਹੈ, ਭਾਵੇਂ ਸਿਰਲੇਖ ਅਯੋਗ ਵੇਹੜਾ ਫੋਂਟ ਵਰਤਦਾ ਹੈ।"
 
 #: ../src/metacity.schemas.in.h:3
 msgid "Action on title bar double-click"
-msgstr "ਸਿਰਲੇਖ ਪੱਟੀ ਉੱਪਰ ਕਿਰਿਆ ਦੋ-ਵਾਰ ਦਬਾਉ"
+msgstr "ਸਿਰਲੇਖ ਪੱਟੀ ਉੱਪਰ ਕਿਰਿਆ ਦੋ-ਵਾਰ ਦਬਾਓ"
 
 #: ../src/metacity.schemas.in.h:4
 msgid "Activate window menu"
@@ -435,13 +435,13 @@ msgid ""
 "older versions."
 msgstr ""
 "ਸਿਰਲੇਖ ਪੱਟੀ ਉੱਪਰ ਬਟਨਾਂ ਦਾ ਪਰਬੰਧ। ਕੀਮਤ, ਸਤਰ ਹੋਣੀ ਚਾਹੀਦੀ ਹੈ, ਜਿਵੇਂ ਕਿ\"ਸੂਚੀ:ਛੋਟਾ,ਵੱਡਾ ਬੰਦ"
-"\"; ਕੌਲਨ ਝਰੋਖੇ ਦੇ ਖੱਬੇ ਖੂੰਜੇ ਨੂੰ ਸੱਜੇ ਤੋਂ ਵੱਖ ਕਰਦਾ ਹੈ,ਅਤੇ ਬਟਨ ਨਾਂ ਕਾਮੇ ਨਾਲ ਵੱਖ ਹਨ। ਨਕਲੀ ਬਟਨਾਂ ਦੀ "
-"ਇਜਾਜ਼ਤ ਨਹੀਂ। ਅਣਜਾਣ ਬਟਨ ਅਣਡਿੱਠ ਕੀਤੇ ਜਾਣਗੇ ਤਾਂ ਕਿ ਬਟਨ, ਮੈਟਾਸਿਟੀ ਦੇ ਪੁਰਾਣੇਵਰਜਨ ਨੂੰ ਤੋੜੇ ਬਿਨਾਂ "
+"\"; ਕਾਲਨ ਝਰੋਖੇ ਦੇ ਖੱਬੇ ਖੂੰਜੇ ਨੂੰ ਸੱਜੇ ਤੋਂ ਵੱਖ ਕਰਦਾ ਹੈ,ਅਤੇ ਬਟਨ ਨਾਂ ਕਾਮੇ ਨਾਲ ਵੱਖ ਹਨ। ਨਕਲੀ ਬਟਨਾਂ ਦੀ "
+"ਇਜਾਜ਼ਤ ਨਹੀਂ। ਅਣਜਾਣ ਬਟਨ ਅਣਡਿੱਠ ਕੀਤੇ ਜਾਣਗੇ ਤਾਂ ਕਿ ਬਟਨ, ਮੈਟਾਸਿਟੀ ਦੇ ਪੁਰਾਣੇ ਵਰਜਨ ਨੂੰ ਤੋੜੇ ਬਿਨਾਂ "
 "ਨਵੇਂ ਵਰਜਨ ਵਿੱਚ ਜੋੜੇ ਜਾ ਸਕਣ।"
 
 #: ../src/metacity.schemas.in.h:7
 msgid "Automatically raises the focused window"
-msgstr "ਕੇਂਦਰਿਤ ਝਰੋਖੇ ਨੂੰ ਆਪਣੇ ਆਪ ਉਠਾਏਗਾ"
+msgstr "ਫੋਕਸ ਕੀਤਾ ਝਰੋਖਾ ਸਵੈ-ਚਾਲਤ ਉਭਾਰੋ"
 
 #: ../src/metacity.schemas.in.h:8
 msgid ""
@@ -456,7 +456,7 @@ msgstr ""
 
 #: ../src/metacity.schemas.in.h:9
 msgid "Close window"
-msgstr "ਝਰੋਖਾ ਬੰਦ"
+msgstr "ਝਰੋਖਾ ਬੰਦ ਕਰੋ"
 
 #: ../src/metacity.schemas.in.h:10
 msgid "Commands to run in response to keybindings"
@@ -468,7 +468,7 @@ msgstr "ਮੌਜੂਦਾ ਸਰੂਪ"
 
 #: ../src/metacity.schemas.in.h:12
 msgid "Delay in milliseconds for the auto raise option"
-msgstr "ਸਵੈ ਉਠਾਊ ਚੋਣ ਲਈ ਮਿਲੀ ਸਕਿੰਟਾਂ ਵਿੱਚ ਵਕਫਾ"
+msgstr "ਸਵੈ ਉਠਾਉਣ ਚੋਣ ਲਈ ਮਿਲੀ ਸਕਿੰਟਾਂ ਵਿੱਚ ਵਕਫਾ"
 
 #: ../src/metacity.schemas.in.h:13
 msgid ""
@@ -480,7 +480,7 @@ msgstr ""
 
 #: ../src/metacity.schemas.in.h:14
 msgid "Disable misfeatures that are required by old or broken applications"
-msgstr "ਨਾ ਮੌਜੂਦ ਗੁਣਾਂ ਨੂੰ ਅਯੋਗ ਕਰੋ ਜਿਹੜੇ ਪੁਰਾਣੇ ਜਾਂ ਤੋੜੇ ਕਾਰਜਾਂ ਦੁਆਰਾ ਲੋੜੀਂਦੇ ਹਨ"
+msgstr "ਨਾ ਮੌਜੂਦ ਗੁਣਾਂ ਨੂੰ ਅਯੋਗ ਕਰੋ ਜਿਹੜੇ ਪੁਰਾਣੇ ਜਾਂ ਤੋੜੇ ਕਾਰਜਾਂ ਰਾਹੀਂ ਲੋੜੀਂਦੇ ਹਨ"
 
 #: ../src/metacity.schemas.in.h:15
 msgid "Enable Visual Bell"
@@ -488,23 +488,36 @@ msgstr "ਦਿੱਖ ਘੰਟੀ ਯੋਗ ਕਰੋ"
 
 #: ../src/metacity.schemas.in.h:16
 msgid "Hide all windows and focus desktop"
-msgstr "ਸਾਰੇ ਝਰੋਖੇ ਢੱਕੋ ਅਤੇ ਵਿਹੜੇ ਨੂੰ ਕੇਂਦਰਿਤ ਕਰੋ"
+msgstr "ਸਭ ਝਰੋਖੇ ਓਹਲੇ ਕਰਕੇ ਵੇਹੜੇ ਉੱਤੇ ਕੇਂਦਰਿਤ"
 
 #: ../src/metacity.schemas.in.h:17
 msgid ""
 "If true, and the focus mode is either \"sloppy\" or \"mouse\" then the "
 "focused window will be automatically raised after a delay (the delay is "
-"specified by the auto_raise_delay key)."
+"specified by the auto_raise_delay key). This preference is poorly named, but "
+"kept for backwards compatibility. To try to be more clear (at least to the "
+"technically inclined), its meaning is \"automatically raise the window "
+"following a timeout which is triggered by non-grabbed mouse entry in sloppy "
+"or mouse focus modes\". It is unrelated to clicking behavior (i.e. this is "
+"not related to raise-on-click/orthogonal-raise). It is unrelated to entering "
+"a window during drag and drop (because that results in the application "
+"grabbing the mouse)"
 msgstr ""
-"ਜੇ ਯੋਗ ਹੈ ਅਤੇ ਕੇਂਦਰਿਤ ਵਿਧੀ \"ਸਲੋਪੀ\" ਜਾਂ \"ਮਾਊਸ\" ਹੈ ਤਾਂ ਕੇਂਦਰਿਤ ਝਰੋਖਾ ਇੱਕ ਵਕਫੇ ਬਾਅਦ ਆਪਣੇ-ਆਪ "
-"ਉੱਠੇਗਾ (ਵਕਫਾ ਸਵੈ ਉਠਾਊ ਵਕਫਾ ਸਵਿੱਚ ਦੁਆਰਾ ਦਰਸਾਇਆ ਗਿਆ ਹੈ)।"
+"ਜੇਕਰ ਸੱਚ ਕੀਤਾ ਅਤੇ ਫੋਕਸ \"ਸਲੋਪੀ\" ਜਾਂ \"ਮਾਊਸ\" ਹੋਇਆ ਤਾਂ ਇੱਕ ਅੰਤਰਾਲ "
+"ਬਾਅਦ ਸਵੈ-ਚਾਲਤ ਹੀ ਝਰੋਖਾ ਉਭਾਰਿਆ ਜਾਵੇ (ਅੰਤਰਾਲ auto_raise_delay ਕੁੰਜੀ ਵਿੱਚ "
+"ਦਿੱਤਾ ਜਾਵੇਗਾ)। ਇਹ ਪਸੰਦ ਦਾ ਨਾਂ ਗਲਤ ਹੈ, ਪਰ ਪਿਛਲੇ ਵਰਜਨ ਨਾਲ ਅਨੁਕੂਲਤਾ ਰੱਖਣ "
+"ਲਈ ਹੈ। ਹੋਰ ਸਹੀਂ ਢੰਗ ਨਾਲ ਕੋਸ਼ਿਸ਼ ਕਰਨ ਲਈ (ਘੱਟੋ-ਘੱਟ ਤਕਨੀਕੀ ਰੂਪ ਨਾਲ), ਇਸ "
+"ਦਾ ਅਰਥ ਹੈ \"ਸਲੋਪੀ ਜਾਂ ਮਾਊਸ ਫੋਕਸ ਢੰਗ ਵਿੱਚ ਨਾ-ਪ੍ਰਾਪਤੀ ਮਾਊਸ ਇੰਦਰਾਜ਼ ਨਾਲ ਸ਼ੁਰੂ "
+"ਹੋਣ ਉੱਤੇ ਸਮਾਂ ਸਮਾਪਤ ਹੋਣ ਬਾਅਦ ਝਰੋਖਾ ਸਵੈ-ਚਾਲਤ ਹੀ ਉਭਾਰਿਆ ਜਾਵੇਗਾ\"। ਇਹ "
+"ਦਬਾਉਣ ਦੇ ਰਵੱਈਆ ਨਾਲ ਸਬੰਧਿਤ ਨਹੀਂ ਹੈ (ਇਸਕਰਕੇ ਇਹ ਦਬਾਉਣ ਉੱਤੇ ਉਘਾੜਨ ਨਾਲ "
+"ਸਬੰਧਤ ਨਹੀਂ ਹੈ)। ਇਹ ਚੁੱਕਣ ਅਤੇ ਸੁੱਟਣ ਦੇ ਦੌਰਾਨ ਝਰੋਖੇ 'ਚ ਦਾਖਲ ਹੋਣ ਨਾਲ ਸਬੰਧਤ ਵੀ "
+"ਨਹੀਂ ਹੈ (ਕਿਉਕਿ ਨਤੀਜੇ ਵਿੱਚ ਕਾਰਜ ਮਾਊਸ ਨੂੰ ਪ੍ਰਾਪਤ ਕਰ ਲੈਂਦਾ ਹੈ)।"
 
 #: ../src/metacity.schemas.in.h:18
 msgid ""
 "If true, ignore the titlebar_font option, and use the standard application "
 "font for window titles."
-msgstr ""
-"ਜੇ ਯੋਗ ਹੈ, ਸਿਰਲੇਖ ਪੱਟੀ ਫੋਟ ਚੋਣ ਨੂੰ ਅਣਡਿੱਠ ਕਰੋ, ਅਤੇ ਝਰੋਖਾ ਸਿਰਲੇਖ ਵਾਸਤੇ ਮਿਆਰੀ ਕਾਰਜ ਅੱਖਰ ਵਰਤੋਂ।"
+msgstr "ਜੇ ਯੋਗ ਹੈ, ਸਿਰਲੇਖ ਪੱਟੀ ਫੋਟ ਚੋਣ ਨੂੰ ਅਣਡਿੱਠ ਕਰੋ, ਅਤੇ ਝਰੋਖਾ ਸਿਰਲੇਖ ਵਾਸਤੇ ਮਿਆਰੀ ਕਾਰਜ ਅੱਖਰ ਵਰਤੋਂ।"
 
 #: ../src/metacity.schemas.in.h:19
 msgid ""
@@ -532,149 +545,168 @@ msgid ""
 "clicks. Also, application-based mode is largely unimplemented at the moment."
 msgstr ""
 "ਜੇ ਯੋਗ ਹੈ, ਮੈਟਾਸਿਟੀ ਕਾਰਜਾਂ ਦੇ ਵਿਹਾਰ ਨਾਲ ਕੰਮ ਕਰੇਗਾ ਨਾ ਕਿ ਝਰੋਖੇ ਦੇ। ਵਿਚਾਰ ਕੁਝ ਵੱਖਰਾ ਹੈ, ਪਰ "
-"ਸਾਧਾਰਨ ਤੌਰ ਤੇ ਕਾਰਜ ਤੇ ਆਧਾਰਿਤ ਬਣਾਵਟ ਮੈਕ(Mac) ਦੀ ਤਰਾਂ ਜਿਆਦਾ ਹੈ ਅਤੇ ਝਰੋਖੇ ਵਾਂਗ ਘੱਟ। ਜਦੋਂ ਤੁਸੀਂ "
+"ਸਾਧਾਰਨ ਤੌਰ ਤੇ ਕਾਰਜ ਤੇ ਆਧਾਰਿਤ ਬਣਾਵਟ ਮੈਕ (Mac) ਦੀ ਤਰਾਂ ਜਿਆਦਾ ਹੈ ਅਤੇ ਝਰੋਖੇ ਵਾਂਗ ਘੱਟ। ਜਦੋਂ ਤੁਸੀਂ "
 "ਝਰੋਖੇ ਨੂੰ ਕਾਰਜ ਆਧਾਰਿਤ ਰੂਪ ਵਿੱਚ ਕੇਂਦਰਿਤ ਕਰਦੇ ਹੋ, ਕਾਰਜ ਵਿਚਲੇ ਸਾਰੇ ਝਰੋਖੇ ਕਾਰਜ ਆਧਾਰਿਤ ਰੂਪ ਵਿੱਚ "
 "ਖੁੱਲਣਗੇ ਕੇਂਦਰਿਤ ਕਲਿੱਕ ਦੂਜੇ ਕਾਰਜਾਂ ਵਿਚਲੇ ਝਰੋਖਿਆਂ ਵਿੱਚ ਨਹੀਂ ਜਾਂਦੇ। ਇਸ ਬਣਤਰ ਦੀ ਮੌਜੂਦਗੀ ਕੁਝ ਸਵਾਲੀਆ "
-"ਹੈ। ਪਰ ਇਹ ਕਾਰਜ ਆਧਾਰਿਤ ਬਨਾਮ(vs) ਝਰੋਖਾ ਆਧਾਰਿਤ ਸਾਰੇ ਵੱਖਰੇ ਵਿਸਥਾਰਾਂ ਲਈ ਬਣਾਵਟ ਨਾਲੋਂ ਵਧੀਆ "
+"ਹੈ। ਪਰ ਇਹ ਕਾਰਜ ਆਧਾਰਿਤ ਬਨਾਮ ਝਰੋਖਾ ਆਧਾਰਿਤ ਸਾਰੇ ਵੱਖਰੇ ਵਿਸਥਾਰਾਂ ਲਈ ਬਣਾਵਟ ਨਾਲੋਂ ਵਧੀਆ "
 "ਹੈ, ਉਦਾਹਰਨ ਕਲਿੱਕ ਨਾਲ ਕਿੱਥੇ ਜਾਣਾ ਹੈ। ਕਾਰਜ ਆਧਾਰਿਤ ਰੂਪ ਇਸ ਸਮੇਂ ਵੀ ਲਾਗੂ ਨਹੀਂ ਹੈ।"
 
 #: ../src/metacity.schemas.in.h:21
 msgid "If true, trade off usability for less resource usage"
-msgstr "ਜੇ ਯੋਗ ਹੈ, ਘੱਟ ਸਰੋਤ ਉਪਯੋਗ ਲਈ ਉਪਯੋਗਤਾ ਪੇਸ਼ਾ ਖਤਮ ਕਰੋ"
+msgstr "ਜੇ ਯੋਗ ਹੈ, ਘੱਟ ਸਰੋਤ ਉਪਯੋਗ ਲਈ ਸਹੂਲਤਾਂ ਸਰੋਤ ਬੰਦ ਕਰੋ"
 
 #: ../src/metacity.schemas.in.h:22
 msgid "Lower window below other windows"
-msgstr "ਦੂਸਰੇ ਝਰੋਖਿਆਂ ਹੇਠਾਂ ਥੱਲੇ ਵਾਲਾ ਝਰੋਖਾ"
+msgstr "ਝਰੋਖੇ ਨੂੰ ਹੋਰ ਝਰੋਖਿਆਂ ਹੇਠ ਭੇਜੋ"
 
 #: ../src/metacity.schemas.in.h:23
+msgid ""
+"Many actions (e.g. clicking in the client area, moving or resizing the "
+"window) normally raise the window as a side-effect. Set this option to false "
+"to decouple raising from other user interactions. When false, windows can "
+"still be raised by an alt-left-click anywhere on the window or a normal "
+"click on the window decorations (assuming such clicks aren't used to start a "
+"move or resize operation). Special messages, such as activation requests "
+"from pagers, may also raise windows when this option is false. This option "
+"is currently disabled in click-to-focus mode."
+msgstr ""
+"ਕਈ ਕਾਰਵਾਈਆਂ (ਜਿਸ ਵਿੱਚ ਕਲਾਂਈਟ ਖੇਤਰ ਵਿੱਚ ਦਬਾਉਣ, ਝਰੋਖੇ ਨੂੰ ਹਿਲਾਉਣ ਜਾਂ ਅਕਾਰ ਬਦਲਣਾ) "
+"ਅਸਰ ਵਜੋਂ ਝਰੋਖੇ ਨੂੰ ਆਮ ਤੌਰ ਉੱਤੇ ਉਭਾਰ ਦਿੰਦੇ ਹਨ। ਇਹ ਚੋਣ ਝੂਠ ਕਰਨ ਨਾਲ ਹੋਰ ਉਪਭੋਗੀ ਦਖਲ "
+"ਤੋਂ ਉਭਰਨਾ ਹਟ ਜਾਵੇਗਾ। ਜਦੋਂ ਝੂਠ ਹੋਵੇਗਾ, ਤਾਂ ਵੀ ਝਰੋਖੇ ਨੂੰ alt-ਖੱਬਾ ਬਟਨ ਨਾਲ ਉਭਾਰਿਆ ਜਾ ਸਕਦਾ ਹੈ, "
+"ਜਦੋਂ ਕਿ ਝਰੋਖੇ ਉੱਤੇ ਜਾਂ ਆਮ ਝਰੋਖਾ ਸਜਾਵਟ (ਇਹ ਮੰਨ ਕੇ ਕਿ ਦਬਾਉਣ ਨਾਲ ਹਿਲਾਉਣ ਜਾਂ ਮੁੜ-ਅਕਾਰ "
+"ਦੀ ਕਾਰਵਾਈ ਨਹੀਂ ਹੋਵੇਗੀ) ਨੂੰ ਦਬਾਇਆ ਜਾਵੇਗਾ। ਖਾਸ ਸੁਨੇਹੇ, ਜਿਵੇਂ ਕਿ ਪੇਜ਼ਰਾਂ ਤੋਂ ਸਰਗਰਮ ਮੰਗ, "
+"ਵੀ ਇਹ ਚੋਣ ਝੂਠ ਹੋਣ ਦੀ ਸੂਰਤ ਵਿੱਚ ਵੀ ਝਰੋਖਿਆਂ ਨੂੰ ਉਭਾਰ ਸਕਦੇ ਹਨ। ਇਹ ਚੋਣ ਦਬਾਉਣ ਉੱਤੇ ਫੋਕਸ "
+"ਢੰਗ ਵਿੱਚ ਆਯੋਗ ਹੈ।"
+
+#: ../src/metacity.schemas.in.h:24
 msgid "Maximize window"
 msgstr "ਝਰੋਖਾ ਅਧਿਕਤਮ"
 
-#: ../src/metacity.schemas.in.h:24
+#: ../src/metacity.schemas.in.h:25
 msgid "Maximize window horizontally"
 msgstr "ਝਰੋਖਾ ਖਿਤਿਜੀ ਅਧਿਕਤਮ"
 
-#: ../src/metacity.schemas.in.h:25
+#: ../src/metacity.schemas.in.h:26
 msgid "Maximize window vertically"
 msgstr "ਝਰੋਖਾ ਲੰਬਕਾਰੀ ਅਧਿਕਤਮ"
 
-#: ../src/metacity.schemas.in.h:26
+#: ../src/metacity.schemas.in.h:27
 msgid "Minimize window"
 msgstr "ਝਰੋਖਾ ਅਲਪੀਕਰਨ"
 
-#: ../src/metacity.schemas.in.h:27
+#: ../src/metacity.schemas.in.h:28
 msgid "Modifier to use for modified window click actions"
 msgstr "ਸੋਧੇ ਝਰੋਖੇ ਦੀਆਂ ਕਲਿੱਕ ਕਿਰਿਆਵਾਂ ਲਈ ਵਰਤਣ ਵਾਲਾ ਸੋਧਕ"
 
-#: ../src/metacity.schemas.in.h:28
+#: ../src/metacity.schemas.in.h:29
 msgid "Move backward between panels and the desktop immediately"
 msgstr "ਪੈਨਲ ਅਤੇ ਝਰੋਖੇ ਵਿਚਕਾਰ ਫੁਰਤੀ ਨਾਲ ਪਿੱਛੇ ਵੱਲ ਨੂੰ ਹਿਲਾਓ"
 
-#: ../src/metacity.schemas.in.h:29
+#: ../src/metacity.schemas.in.h:30
 msgid "Move backwards between panels and the desktop with popup"
 msgstr "ਪੈਨਲ ਅਤੇ ਝਰੋਖੇ ਵਿਚਕਾਰ ਲਟਕਵੀਂ ਸੂਚੀ ਨਾਲ ਪਿੱਛੇ ਵੱਲ ਨੂੰ ਹਿਲਾਓ"
 
-#: ../src/metacity.schemas.in.h:30
+#: ../src/metacity.schemas.in.h:31
 msgid "Move backwards between windows immediately"
 msgstr "ਝਰੋਖਿਆਂ ਵਿਚਕਾਰ ਫੁਰਤੀ ਨਾਲ ਪਿੱਛੇ ਵੱਲ ਨੂੰ ਹਿਲਾਓ"
 
-#: ../src/metacity.schemas.in.h:31
+#: ../src/metacity.schemas.in.h:32
 msgid "Move between panels and the desktop immediately"
 msgstr "ਪੈਨਲ ਅਤੇ ਝਰੋਖੇ ਵਿਚਕਾਰ ਫੁਰਤੀ ਨਾਲ ਹਿਲਾਓ"
 
-#: ../src/metacity.schemas.in.h:32
+#: ../src/metacity.schemas.in.h:33
 msgid "Move between panels and the desktop with popup"
 msgstr "ਪੈਨਲ ਅਤੇ ਝਰੋਖੇ ਵਿਚਕਾਰ ਲਟਕਵੀਂ ਸੂਚੀ ਨਾਲ ਹਿਲਾਓ"
 
-#: ../src/metacity.schemas.in.h:33
-msgid "Move between windows immediately"
-msgstr "ਝਰੋਖਿਆਂ ਵਿਚਕਾਰ ਫੁਰਤੀ ਨਾਲ ਹਿਲਾਓ"
-
 #: ../src/metacity.schemas.in.h:34
+msgid "Move between windows immediately"
+msgstr "ਝਰੋਖਿਆਂ ਵਿਚਕਾਰ ਤੁਰੰਤ ਹਿਲਾਓ"
+
+#: ../src/metacity.schemas.in.h:35
 msgid "Move between windows with popup"
 msgstr "ਝਰੋਖਿਆਂ ਵਿਚਕਾਰ ਲਟਕਵੀਂ ਸੂਚੀ ਨਾਲ ਹਿਲਾਓ"
 
-#: ../src/metacity.schemas.in.h:35
+#: ../src/metacity.schemas.in.h:36
 msgid "Move focus backwards between windows using popup display"
 msgstr "ਝਰੋਖਿਆਂ ਵਿਚਕਾਰ ਲਟਕਵਾਂ ਵਿਖਾਵਾ ਵਰਤ ਕੇ ਕੇਂਦਰ ਬਿੰਦੂ ਹਿਲਾਓ"
 
-#: ../src/metacity.schemas.in.h:36
+#: ../src/metacity.schemas.in.h:37
 msgid "Move window"
 msgstr "ਝਰੋਖਾ ਏਧਰ-ਓਧਰ"
 
-#: ../src/metacity.schemas.in.h:37
-msgid "Move window one workspace down"
-msgstr "ਝਰੋਖੇ ਨੂੰ ਇੱਕ ਵਰਕਸਪੇਸ ਹੇਠਾਂ ਲਿਜਾਓ"
-
 #: ../src/metacity.schemas.in.h:38
-msgid "Move window one workspace to the left"
-msgstr "ਝਰੋਖੇ ਨੂੰ ਇੱਕ ਵਰਕਸਪੇਸ ਖੱਬੇ ਵੱਲ ਲਿਜਾਓ"
+msgid "Move window one workspace down"
+msgstr "ਝਰੋਖੇ ਨੂੰ ਇੱਕ ਵਰਕਸਪੇਸ ਹੇਠਾਂ ਭੇਜੋ"
 
 #: ../src/metacity.schemas.in.h:39
-msgid "Move window one workspace to the right"
-msgstr "ਝਰੋਖੇ ਨੂੰ ਇੱਕ ਵਰਕਸਪੇਸ ਸੱਜੇ ਵੱਲ ਲਿਜਾਓ"
+msgid "Move window one workspace to the left"
+msgstr "ਝਰੋਖੇ ਨੂੰ ਇੱਕ ਵਰਕਸਪੇਸ ਖੱਬੇ ਵੱਲ ਭੇਜੋ"
 
 #: ../src/metacity.schemas.in.h:40
-msgid "Move window one workspace up"
-msgstr "ਝਰੋਖੇ ਨੂੰ ਇੱਕ ਵਰਕਸਪੇਸ ਉੱਪਰ ਲਿਜਾਓ"
+msgid "Move window one workspace to the right"
+msgstr "ਝਰੋਖੇ ਨੂੰ ਇੱਕ ਵਰਕਸਪੇਸ ਸੱਜੇ ਵੱਲ ਭੇਜੋ"
 
 #: ../src/metacity.schemas.in.h:41
-msgid "Move window to workspace 1"
-msgstr "ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 1 ਵਿੱਚ ਲਿਜਾਓ"
+msgid "Move window one workspace up"
+msgstr "ਝਰੋਖੇ ਨੂੰ ਇੱਕ ਵਰਕਸਪੇਸ ਉੱਪਰ ਭੇਜੋ"
 
 #: ../src/metacity.schemas.in.h:42
-msgid "Move window to workspace 10"
-msgstr "ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 10 ਵਿੱਚ ਲਿਜਾਓ"
+msgid "Move window to workspace 1"
+msgstr "ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 1 ਵਿੱਚ ਭੇਜੋ"
 
 #: ../src/metacity.schemas.in.h:43
-msgid "Move window to workspace 11"
-msgstr "ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 11 ਵਿੱਚ ਲਿਜਾਓ"
+msgid "Move window to workspace 10"
+msgstr "ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 10 ਵਿੱਚ ਭੇਜੋ"
 
 #: ../src/metacity.schemas.in.h:44
-msgid "Move window to workspace 12"
-msgstr "ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 12 ਵਿੱਚ ਲਿਜਾਓ"
+msgid "Move window to workspace 11"
+msgstr "ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 11 ਵਿੱਚ ਭੇਜੋ"
 
 #: ../src/metacity.schemas.in.h:45
-msgid "Move window to workspace 2"
-msgstr "ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 2 ਵਿੱਚ ਲਿਜਾਓ"
+msgid "Move window to workspace 12"
+msgstr "ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 12 ਵਿੱਚ ਭੇਜੋ"
 
 #: ../src/metacity.schemas.in.h:46
-msgid "Move window to workspace 3"
-msgstr "ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 3 ਵਿੱਚ ਲਿਜਾਓ"
+msgid "Move window to workspace 2"
+msgstr "ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 2 ਵਿੱਚ ਭੇਜੋ"
 
 #: ../src/metacity.schemas.in.h:47
-msgid "Move window to workspace 4"
-msgstr "ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 4 ਵਿੱਚ ਲਿਜਾਓ"
+msgid "Move window to workspace 3"
+msgstr "ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 3 ਵਿੱਚ ਭੇਜੋ"
 
 #: ../src/metacity.schemas.in.h:48
-msgid "Move window to workspace 5"
-msgstr "ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 5 ਵਿੱਚ ਲਿਜਾਓ"
+msgid "Move window to workspace 4"
+msgstr "ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 4 ਵਿੱਚ ਭੇਜੋ"
 
 #: ../src/metacity.schemas.in.h:49
-msgid "Move window to workspace 6"
-msgstr "ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 6 ਵਿੱਚ ਲਿਜਾਓ"
+msgid "Move window to workspace 5"
+msgstr "ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 5 ਵਿੱਚ ਭੇਜੋ"
 
 #: ../src/metacity.schemas.in.h:50
-msgid "Move window to workspace 7"
-msgstr "ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 7 ਵਿੱਚ ਲਿਜਾਓ"
+msgid "Move window to workspace 6"
+msgstr "ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 6 ਵਿੱਚ ਭੇਜੋ"
 
 #: ../src/metacity.schemas.in.h:51
-msgid "Move window to workspace 8"
-msgstr "ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 8 ਵਿੱਚ ਲਿਜਾਓ"
+msgid "Move window to workspace 7"
+msgstr "ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 7 ਵਿੱਚ ਭੇਜੋ"
 
 #: ../src/metacity.schemas.in.h:52
-msgid "Move window to workspace 9"
-msgstr "ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 9 ਵਿੱਚ ਲਿਜਾਓ"
+msgid "Move window to workspace 8"
+msgstr "ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 8 ਵਿੱਚ ਭੇਜੋ"
 
 #: ../src/metacity.schemas.in.h:53
+msgid "Move window to workspace 9"
+msgstr "ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 9 ਵਿੱਚ ਭੇਜੋ"
+
+#: ../src/metacity.schemas.in.h:54
 msgid "Name of workspace"
 msgstr "ਵਰਕਸਪੇਸ ਦਾ ਨਾਂ"
 
-#: ../src/metacity.schemas.in.h:54
+#: ../src/metacity.schemas.in.h:55
 msgid "Number of workspaces"
 msgstr "ਵਰਕਸਪੇਸ ਦੀ ਗਿਣਤੀ"
 
-#: ../src/metacity.schemas.in.h:55
+#: ../src/metacity.schemas.in.h:56
 msgid ""
 "Number of workspaces. Must be more than zero, and has a fixed maximum (to "
 "prevent accidentally destroying your desktop by asking for 34 million "
@@ -683,35 +715,35 @@ msgstr ""
 "ਵਰਕਸਪੇਸ ਦੀ ਗਿਣਤੀ। ਜੀਰੋ ਤੋਂ ਜਿਆਦਾ ਹੋਣੀ ਜਰੂਰੀ ਹੈ,ਅਤੇ ਵੱਧ ਤੋਂ ਵੱਧ ਨਿਯਮਤ ਹੋਣੀ ਚਾਹੀਦੀ ਹੈ (34 "
 "ਮਿਲੀਅਨ ਵਰਕਸਪੇਸ ਪੁੱਛ ਕੇ ਤੁਹਾਡੇ ਵਿਹੜੇ ਨੂੰ ਖਤਮ ਹੋਣ ਦੀ ਘਟਨਾ ਤੋਂ ਬਚਾਉਣ ਲਈ)"
 
-#: ../src/metacity.schemas.in.h:56
+#: ../src/metacity.schemas.in.h:57
 msgid "Raise obscured window, otherwise lower"
 msgstr "ਧੁੰਦਲਾ ਝਰੋਖਾ ਉਠਾਓ, ਨਹੀਂ ਤਾਂ ਹੇਠਲਾ"
 
-#: ../src/metacity.schemas.in.h:57
+#: ../src/metacity.schemas.in.h:58
 msgid "Raise window above other windows"
 msgstr "ਦੂਜੇ ਝਰੋਖਿਆਂ ਤੋਂ ਉੱਪਰਲਾ ਝਰੋਖਾ ਉਠਾਓ"
 
-#: ../src/metacity.schemas.in.h:58
+#: ../src/metacity.schemas.in.h:59
 msgid "Resize window"
 msgstr "ਝਰੋਖਾ ਮੁੜ-ਅਕਾਰ"
 
-#: ../src/metacity.schemas.in.h:59
-msgid "Run a defined command"
-msgstr "ਪ੍ਰਭਾਸ਼ਿਤ ਕਮਾਂਡ ਚਲਾਓ"
-
 #: ../src/metacity.schemas.in.h:60
-msgid "Run a terminal"
-msgstr "ਟਰਮੀਨਲ ਚਲਾਓ"
+msgid "Run a defined command"
+msgstr "ਇੱਕ ਦਿੱਤੀ ਕਮਾਂਡ ਚਲਾਓ"
 
 #: ../src/metacity.schemas.in.h:61
-msgid "Show the panel menu"
-msgstr "ਪੈਨਲ ਮੇਨੂ-ਸੂਚੀ ਵਿਖਾਓ"
+msgid "Run a terminal"
+msgstr "ਇੱਕ ਟਰਮੀਨਲ ਚਲਾਓ"
 
 #: ../src/metacity.schemas.in.h:62
-msgid "Show the panel run application dialog"
-msgstr "ਪੈਨਲ ਵਿਚਲੇ ਚਲਾਉਣ ਵਾਲੇ ਵਾਰਤਾਲਾਪ ਨੂੰ ਵਿਖਾਓ"
+msgid "Show the panel menu"
+msgstr "ਪੈਨਲ ਮੇਨੂ-ਸੂਚੀ ਵੇਖਾਓ"
 
 #: ../src/metacity.schemas.in.h:63
+msgid "Show the panel run application dialog"
+msgstr "ਪੈਨਲ ਵਿਚਲੇ ਚਲਾਉਣ ਵਾਲੇ ਵਾਰਤਾਲਾਪ ਨੂੰ ਵੇਖਾਓ"
+
+#: ../src/metacity.schemas.in.h:64
 msgid ""
 "Some applications break specifications in ways that result in window manager "
 "misfeatures. For example, ideally Metacity would place all dialogs in a "
@@ -737,83 +769,83 @@ msgstr ""
 "ਜਗਤ ਇੱਕ ਬਦਸੂਰਤ ਜਗਾ ਹੈ। ਕੁਝ ਕੰਮ ਘੇਰੇ ਆਪਣੇ ਦੁਆਰਾ ਦਰਸਾਈਆਂ ਗਈਆਂ ਸੀਮਾਵਾਂ ਲਈ ਕੰਮ ਘੇਰੇ ਹਨ, ਇਸ ਲਈ "
 "ਕਈ ਵਾਰ ਕੋਈ ਕੰਮ ਘੇਰਾ ਨਹੀਂ ਰੂਪ ਵਿੱਚ ਇੱਕ ਬਗ spec ਨੂੰ ਸੋਧਣ ਤੋਂ ਬਗੈਰ ਪੱਕਾ ਕਰਨ ਦੇ ਯੋਗ ਨਹੀਂ ਹੁੰਦਾ।"
 
-#: ../src/metacity.schemas.in.h:64
-msgid "Switch to workspace 1"
-msgstr "ਵਰਕਸਪੇਸ 1 ਵਿੱਚ ਜਾਓ"
-
 #: ../src/metacity.schemas.in.h:65
-msgid "Switch to workspace 10"
-msgstr "ਵਰਕਸਪੇਸ 10 ਵਿੱਚ ਜਾਓ"
+msgid "Switch to workspace 1"
+msgstr "ਵਰਕਸਪੇਸ 1 ਵਿੱਚ ਭੇਜੋ"
 
 #: ../src/metacity.schemas.in.h:66
-msgid "Switch to workspace 11"
-msgstr "ਵਰਕਸਪੇਸ 11 ਵਿੱਚ ਜਾਓ"
+msgid "Switch to workspace 10"
+msgstr "ਵਰਕਸਪੇਸ 10 ਵਿੱਚ ਭੇਜੋ"
 
 #: ../src/metacity.schemas.in.h:67
-msgid "Switch to workspace 12"
-msgstr "ਵਰਕਸਪੇਸ 12 ਵਿੱਚ ਜਾਓ"
+msgid "Switch to workspace 11"
+msgstr "ਵਰਕਸਪੇਸ 11 ਵਿੱਚ ਭੇਜੋ"
 
 #: ../src/metacity.schemas.in.h:68
-msgid "Switch to workspace 2"
-msgstr "ਵਰਕਸਪੇਸ 2 ਵਿੱਚ ਜਾਓ"
+msgid "Switch to workspace 12"
+msgstr "ਵਰਕਸਪੇਸ 12 ਵਿੱਚ ਭੇਜੋ"
 
 #: ../src/metacity.schemas.in.h:69
-msgid "Switch to workspace 3"
-msgstr "ਵਰਕਸਪੇਸ 3 ਵਿੱਚ ਜਾਓ"
+msgid "Switch to workspace 2"
+msgstr "ਵਰਕਸਪੇਸ 2 ਵਿੱਚ ਭੇਜੋ"
 
 #: ../src/metacity.schemas.in.h:70
-msgid "Switch to workspace 4"
-msgstr "ਵਰਕਸਪੇਸ 4 ਵਿੱਚ ਜਾਓ"
+msgid "Switch to workspace 3"
+msgstr "ਵਰਕਸਪੇਸ 3 ਵਿੱਚ ਭੇਜੋ"
 
 #: ../src/metacity.schemas.in.h:71
-msgid "Switch to workspace 5"
-msgstr "ਵਰਕਸਪੇਸ 5 ਵਿੱਚ ਜਾਓ"
+msgid "Switch to workspace 4"
+msgstr "ਵਰਕਸਪੇਸ 4 ਵਿੱਚ ਭੇਜੋ"
 
 #: ../src/metacity.schemas.in.h:72
-msgid "Switch to workspace 6"
-msgstr "ਵਰਕਸਪੇਸ 6 ਵਿੱਚ ਜਾਓ"
+msgid "Switch to workspace 5"
+msgstr "ਵਰਕਸਪੇਸ 5 ਵਿੱਚ ਭੇਜੋ"
 
 #: ../src/metacity.schemas.in.h:73
-msgid "Switch to workspace 7"
-msgstr "ਵਰਕਸਪੇਸ 7 ਵਿੱਚ ਜਾਓ"
+msgid "Switch to workspace 6"
+msgstr "ਵਰਕਸਪੇਸ 6 ਵਿੱਚ ਭੇਜੋ"
 
 #: ../src/metacity.schemas.in.h:74
-msgid "Switch to workspace 8"
-msgstr "ਵਰਕਸਪੇਸ 8 ਵਿੱਚ ਜਾਓ"
+msgid "Switch to workspace 7"
+msgstr "ਵਰਕਸਪੇਸ 7 ਵਿੱਚ ਭੇਜੋ"
 
 #: ../src/metacity.schemas.in.h:75
-msgid "Switch to workspace 9"
-msgstr "ਵਰਕਸਪੇਸ 9 ਵਿੱਚ ਜਾਓ"
+msgid "Switch to workspace 8"
+msgstr "ਵਰਕਸਪੇਸ 8 ਵਿੱਚ ਭੇਜੋ"
 
 #: ../src/metacity.schemas.in.h:76
-msgid "Switch to workspace above this one"
-msgstr "ਇਸ ਤੋਂ ਉੱਪਰਲੇ ਵਰਕਸਪੇਸ ਵਿੱਚ ਜਾਓ"
+msgid "Switch to workspace 9"
+msgstr "ਵਰਕਸਪੇਸ 9 ਵਿੱਚ ਭੇਜੋ"
 
 #: ../src/metacity.schemas.in.h:77
+msgid "Switch to workspace above this one"
+msgstr "ਇਸ ਤੋਂ ਉੱਪਰਲੇ ਵਰਕਸਪੇਸ ਵਿੱਚ ਭੇਜੋ"
+
+#: ../src/metacity.schemas.in.h:78
 msgid "Switch to workspace below this one"
 msgstr "ਇਸ ਤੋਂ ਹੇਠਲੇ ਵਰਕਸਪੇਸ ਵਿੱਚ ਜਾਓ"
 
-#: ../src/metacity.schemas.in.h:78
+#: ../src/metacity.schemas.in.h:79
 msgid "Switch to workspace on the left"
 msgstr "ਖੱਬੇ ਵਰਕਸਪੇਸ ਵਿੱਚ ਜਾਓ"
 
-#: ../src/metacity.schemas.in.h:79
+#: ../src/metacity.schemas.in.h:80
 msgid "Switch to workspace on the right"
 msgstr "ਸੱਜੇ ਵਰਕਸਪੇਸ ਵਿੱਚ ਜਾਓ"
 
-#: ../src/metacity.schemas.in.h:80
+#: ../src/metacity.schemas.in.h:81
 msgid "System Bell is Audible"
 msgstr "ਸਿਸਟਮ ਘੰਟੀ ਸੁਣਨਯੋਗ ਹੈ"
 
-#: ../src/metacity.schemas.in.h:81
-msgid "Take a screenshot"
-msgstr "ਪਰਦਾ ਤਸਵੀਰ ਲਓ"
-
 #: ../src/metacity.schemas.in.h:82
-msgid "Take a screenshot of a window"
-msgstr "ਝਰੋਖੇ ਦੀ ਪਰਦਾ ਤਸਵੀਰ ਲਓ"
+msgid "Take a screenshot"
+msgstr "ਇੱਕ ਸਕਰੀਨ-ਸ਼ਾਟ ਲਵੋ"
 
 #: ../src/metacity.schemas.in.h:83
+msgid "Take a screenshot of a window"
+msgstr "ਇੱਕ ਝਰੋਖੇ ਦੀ ਤਸਵੀਰ ਲਵੋ"
+
+#: ../src/metacity.schemas.in.h:84
 msgid ""
 "Tells Metacity how to implement the visual indication that the system bell "
 "or another application 'bell' indicator has been rung. Currently there are "
@@ -824,30 +856,30 @@ msgid ""
 "currently focused window's titlebar is flashed."
 msgstr ""
 "ਮੈਟਾਸਿਟੀ ਨੂੰ ਦੱਸੋ ਕਿ ਦਰਿਸ਼ੀ ਸੰਕੇਤ ਨੂੰ ਕਿਸ ਤਰਾਂ ਲਾਗੂ ਕਰਨਾ ਹੈ ਤਾਂ ਕਿ ਸਿਸਟਮ ਘੰਟੀ ਜਾਂ ਹੋਰ ਕਾਰਜ "
-"'ਘੰਟੀ' ਸੰਕੇਤਕ ਵੱਜੇ। ਹੁਣ ਇੱਥੇ ਦੋ ਯੋਗ ਕੀਮਤਾਂ ਹਨ, \"ਸਾਰਾ ਪਰਦਾ\", ਜੋ ਪਰਦੇ ਨੂੰ ਸਫੈਦ-ਕਾਲਾ ਲਿਸ਼ਕਾਰਾ "
+"'ਘੰਟੀ' ਸੰਕੇਤਕ ਵੱਜੇ। ਹੁਣ ਇੱਥੇ ਦੋ ਯੋਗ ਕੀਮਤਾਂ ਹਨ, \"ਪੂਰਾ ਪਰਦਾ\", ਜੋ ਪਰਦੇ ਨੂੰ ਸਫੈਦ-ਕਾਲਾ ਲਿਸ਼ਕਾਰਾ "
 "ਬਣਾਉਂਦਾ ਹੈ, ਅਤੇ \"ਫਰੇਮ_ਲਿਸ਼ਕਾਰਾ\" ਜੋ ਕਾਰਜ ਦੀ ਸਿਰਲੇਖ ਪੱਟੀ ਜਿਹੜੀ ਘੰਟੀ ਸੰਕੇਤ ਭੇਜਦੀ ਹੈ ਨੂੰ "
 "ਲਿਸ਼ਕਣ ਦਿੰਦਾ ਹੈ। ਜੇ ਘੰਟੀ ਭੇਜਣ ਵਾਲਾ ਕਾਰਜ ਅਣਪਛਾਤਾ ਹੋਵੇ (ਜਿਵੇਂ ਕਿ ਮੂਲ \"ਸਿਸਟਮ ਬੀਪ\" ਹੈ), "
 "ਵਰਤਮਾਨ ਕੇਂਦਰਿਤ ਰੱਖੇ ਦੀ ਸਿਰਲੇਖ ਪੱਟੀ ਲਿਸ਼ਕੇਗੀ।"
 
-#: ../src/metacity.schemas.in.h:84
+#: ../src/metacity.schemas.in.h:85
 msgid ""
 "The /apps/metacity/global_keybindings/run_command_N keys define keybindings "
 "that correspond to these commands. Pressing the keybinding for run_command_N "
 "will execute command_N."
 msgstr ""
 "/apps/metacity/global_keybindings/run_command_N ਸਵਿੱਚਾਂ ਸਵਿੱਚ ਬੰਧਨ ਪਰਭਾਸ਼ਿਤ ਕਰਦੀਆਂ "
-"ਹਨ ਜਿਹੜੇ ਕਿ ਉਹਨਾਂ ਕਮਾਂਡਾਂ ਦੇ ਅਨੁਸਾਰੀ ਹਨ। ਚਲਾਓ_ਕਮਾਂਡ_N ਵਾਸਤੇ ਸਵਿੱਚ ਬੰਧਨ ਦਬਾਉਣ ਨਾਲ "
+"ਹਨ, ਜਿਹੜੇ ਕਿ ਉਹਨਾਂ ਕਮਾਂਡਾਂ ਦੇ ਅਨੁਸਾਰੀ ਹਨ। ਚਲਾਓ_ਕਮਾਂਡ_N ਵਾਸਤੇ ਸਵਿੱਚ ਬੰਧਨ ਦਬਾਉਣ ਨਾਲ "
 "ਕਮਾਂਡ_N ਚੱਲੇਗੀ।"
 
-#: ../src/metacity.schemas.in.h:85
+#: ../src/metacity.schemas.in.h:86
 msgid ""
 "The /apps/metacity/global_keybindings/run_command_screenshot key defines a "
 "keybinding which causes the command specified by this setting to be invoked."
 msgstr ""
-"/apps/metacity/global_keybindings/run_command_screensho ਸਵਿੱਚ, ਸਵਿੱਚ ਬੰਧਨ "
-"ਪਰਭਾਸ਼ਿਤ ਕਰਦੀ ਹੈ ਜਿਹਨਾ ਨੇ ਇਸ ਵਿਵਸਥਾ ਦੁਆਰਾ ਦਰਸਾਈ ਕਮਾਂਡ ਨੂੰ ਬੁਲਾਇਆ।"
+"/apps/metacity/global_keybindings/run_command_screenshot ਸਵਿੱਚ, ਸਵਿੱਚ ਬੰਧਨ "
+"ਪਰਭਾਸ਼ਿਤ ਕਰਦੀ ਹੈ, ਜਿਹਨਾਂ ਨੇ ਇਸ ਸਥਾਪਨ ਰਾਹੀਂ ਦਿੱਤੀ ਕਮਾਂਡ ਦੇ ਦਖਲ ਤਹਿ ਕਰਦੀ ਹੈ।"
 
-#: ../src/metacity.schemas.in.h:86
+#: ../src/metacity.schemas.in.h:87
 msgid ""
 "The /apps/metacity/global_keybindings/run_command_window_screenshot key "
 "defines a keybinding which causes the command specified by this setting to "
@@ -856,7 +888,7 @@ msgstr ""
 "/apps/metacity/global_keybindings/run_command_window_screenshot ਸਵਿੱਚ, ਸਵਿੱਚ "
 "ਬੰਧਨ ਪਰਭਾਸ਼ਿਤ ਕਰਦੀ ਹੈ ਜਿਹਨਾ ਨੇ ਇਸ ਵਿਵਸਥਾ ਦੁਆਰਾ ਦਰਸਾਈ ਕਮਾਂਡ ਨੂੰ ਬੁਲਾਇਆ।"
 
-#: ../src/metacity.schemas.in.h:87
+#: ../src/metacity.schemas.in.h:88
 msgid ""
 "The keybinding that runs the correspondingly-numbered command in /apps/"
 "metacity/keybinding_commands The format looks like \"&lt;Control&gt;a\" or "
@@ -866,12 +898,12 @@ msgid ""
 "then there will be no keybinding for this action."
 msgstr ""
 "ਸਵਿੱਚ ਬੰਧਨ ਜਿਹੜਾ apps/metacity/keybinding_command ਵਿੱਚ ਅਨੁਸਾਰੀ ਅੰਕਿਤ ਕਮਾਂਡ ਚਲਾਉਦਾ "
-"ਹੈ ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1|"
+"ਹੈ ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\""
 "ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ "
 "ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ "
 "ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:88
+#: ../src/metacity.schemas.in.h:89
 msgid ""
 "The keybinding that switches to the workspace above the current workspace. "
 "The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1"
@@ -880,13 +912,13 @@ msgid ""
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ, ਜੋ ਵਰਤਮਾਨ ਅਖਾੜੇ ਤੋਂ ਉੱਪਰਲੇ ਅਖਾੜੇ ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;"
-"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
+"ਸਵਿੱਚ ਬੰਧਨ, ਜੋ ਵਰਤਮਾਨ ਅਖਾੜੇ ਤੋਂ ਉੱਪਰਲੇ ਅਖਾੜੇ ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;"
+"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
 "ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;"
 "Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ "
 "ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:89
+#: ../src/metacity.schemas.in.h:90
 msgid ""
 "The keybinding that switches to the workspace below the current workspace. "
 "The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1"
@@ -895,13 +927,13 @@ msgid ""
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਵਰਤਮਾਨ ਅਖਾੜੇ ਤੋਂ ਹੇਠਲੇ ਅਖਾੜੇ ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;"
-"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
+"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਵਰਤਮਾਨ ਅਖਾੜੇ ਤੋਂ ਹੇਠਲੇ ਅਖਾੜੇ ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;"
+"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
 "ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;"
 "Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ "
 "ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:90
+#: ../src/metacity.schemas.in.h:91
 msgid ""
 "The keybinding that switches to the workspace on the left of the current "
 "workspace. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;"
@@ -910,13 +942,13 @@ msgid ""
 "set the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਵਰਤਮਾਨ ਅਖਾੜੇ ਤੋਂ ਖੱਬੇ ਅਖਾੜੇ ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;"
-"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
+"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਵਰਤਮਾਨ ਅਖਾੜੇ ਤੋਂ ਖੱਬੇ ਅਖਾੜੇ ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;"
+"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
 "ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;"
 "Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ "
 "ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:91
+#: ../src/metacity.schemas.in.h:92
 msgid ""
 "The keybinding that switches to the workspace on the right of the current "
 "workspace. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;"
@@ -925,13 +957,13 @@ msgid ""
 "set the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਵਰਤਮਾਨ ਅਖਾੜੇ ਤੋਂ ਸੱਜੇ ਅਖਾੜੇ ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;"
-"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
+"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਵਰਤਮਾਨ ਅਖਾੜੇ ਤੋਂ ਸੱਜੇ ਅਖਾੜੇ ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;"
+"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
 "ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;"
 "Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ "
 "ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:92
+#: ../src/metacity.schemas.in.h:93
 msgid ""
 "The keybinding that switches to workspace 1. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -939,12 +971,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਅਖਾੜਾ 1 ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;Control&gt;a\" "
-"ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ "
+"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਅਖਾੜਾ 1 ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" "
+"ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ "
 "ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ "
 "ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:93
+#: ../src/metacity.schemas.in.h:94
 msgid ""
 "The keybinding that switches to workspace 10. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -952,12 +984,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਅਖਾੜਾ 10 ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;Control&gt;a\" "
-"ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ "
+"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਅਖਾੜਾ 10 ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" "
+"ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ "
 "ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ "
 "ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:94
+#: ../src/metacity.schemas.in.h:95
 msgid ""
 "The keybinding that switches to workspace 11. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -965,12 +997,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਅਖਾੜਾ 11ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;Control&gt;a\" "
-"ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ "
+"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਅਖਾੜਾ 11ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" "
+"ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ "
 "ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ "
 "ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:95
+#: ../src/metacity.schemas.in.h:96
 msgid ""
 "The keybinding that switches to workspace 12. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -978,12 +1010,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਅਖਾੜਾ 12 ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;Control&gt;a\" "
-"ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ "
+"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਅਖਾੜਾ 12 ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" "
+"ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ "
 "ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ "
 "ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:96
+#: ../src/metacity.schemas.in.h:97
 msgid ""
 "The keybinding that switches to workspace 2. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -991,12 +1023,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਅਖਾੜਾ 2 ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;Control&gt;a\" "
-"ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ "
+"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਅਖਾੜਾ 2 ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" "
+"ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ "
 "ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ "
 "ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:97
+#: ../src/metacity.schemas.in.h:98
 msgid ""
 "The keybinding that switches to workspace 3. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1004,12 +1036,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਅਖਾੜਾ 3 ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;Control&gt;a\" "
-"ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ "
+"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਅਖਾੜਾ 3 ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" "
+"ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ "
 "ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ "
 "ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:98
+#: ../src/metacity.schemas.in.h:99
 msgid ""
 "The keybinding that switches to workspace 4. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1017,12 +1049,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਅਖਾੜਾ 4 ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;Control&gt;a\" "
-"ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ "
+"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਅਖਾੜਾ 4 ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" "
+"ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ "
 "ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ "
 "ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:99
+#: ../src/metacity.schemas.in.h:100
 msgid ""
 "The keybinding that switches to workspace 5. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1030,12 +1062,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਅਖਾੜਾ 5 ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;Control&gt;a\" "
-"ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ "
+"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਅਖਾੜਾ 5 ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" "
+"ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ "
 "ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ "
 "ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:100
+#: ../src/metacity.schemas.in.h:101
 msgid ""
 "The keybinding that switches to workspace 6. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1043,12 +1075,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਅਖਾੜਾ 6 ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;Control&gt;a\" "
-"ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ "
+"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਅਖਾੜਾ 6 ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" "
+"ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ "
 "ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ "
 "ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:101
+#: ../src/metacity.schemas.in.h:102
 msgid ""
 "The keybinding that switches to workspace 7. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1056,12 +1088,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਅਖਾੜਾ 7 ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;Control&gt;a\" "
-"ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ "
+"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਅਖਾੜਾ 7 ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" "
+"ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ "
 "ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ "
 "ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:102
+#: ../src/metacity.schemas.in.h:103
 msgid ""
 "The keybinding that switches to workspace 8. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1069,12 +1101,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਅਖਾੜਾ 8 ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;Control&gt;a\" "
-"ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ "
+"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਅਖਾੜਾ 8 ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" "
+"ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ "
 "ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ "
 "ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:103
+#: ../src/metacity.schemas.in.h:104
 msgid ""
 "The keybinding that switches to workspace 9. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1082,12 +1114,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਅਖਾੜਾ 9 ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;Control&gt;a\" "
-"ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ "
+"ਸਵਿੱਚ ਬੰਧਨ ਜੋ ਅਖਾੜਾ 9 ਵਿੱਚ ਲਿਜਾਂਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" "
+"ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ "
 "ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ "
 "ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:104
+#: ../src/metacity.schemas.in.h:105
 msgid ""
 "The keybinding used to activate the window menu. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1095,13 +1127,13 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖਾ ਸੂਚੀ ਨੂੰ ਸਰਗਰਮ ਕਰਨ ਲਈ ਵਰਤਿਆ ਗਿਆ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;"
-"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
+"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖਾ ਸੂਚੀ ਨੂੰ ਸਰਗਰਮ ਕਰਨ ਲਈ ਵਰਤਿਆ ਗਿਆ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;"
+"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
 "ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;"
 "Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ "
 "ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:105
+#: ../src/metacity.schemas.in.h:106
 msgid ""
 "The keybinding used to close a window. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1109,12 +1141,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਬੰਦ ਕਰਨ ਲਈ ਵਰਤਿਆ ਗਿਆ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;Control&gt;a"
-"\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ "
+"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਬੰਦ ਕਰਨ ਲਈ ਵਰਤਿਆ ਗਿਆ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a"
+"\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ "
 "ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ "
 "ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:106
+#: ../src/metacity.schemas.in.h:107
 msgid ""
 "The keybinding used to enter \"move mode\" and begin moving a window using "
 "the keyboard. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;"
@@ -1123,13 +1155,13 @@ msgid ""
 "If you set the option to the special string \"disabled\", then there will be "
 "no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ \"ਹਿਲਾਓ ਵਿਧੀ\" ਵਿੱਚ ਜਾਣ ਲਈ ਵਰਤਿਆ ਗਿਆ ਹੈ ਅਤੇ ਕੀਬੋਰਡ ਵਰਤ ਕੇ ਝਰੋਖਾ ਹਿਲਾਉਣਾ "
-"ਸ਼ੁਰੂ ਕਰਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;"
-"Alt&gt;F1|ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ "
+"ਸਵਿੱਚ ਬੰਧਨ \"ਹਲਾਓ ਵਿਧੀ\" ਵਿੱਚ ਜਾਣ ਲਈ ਵਰਤਿਆ ਗਿਆ ਹੈ ਅਤੇ ਕੀਬੋਰਡ ਵਰਤ ਕੇ ਝਰੋਖਾ ਹਿਲਾਉਣਾ "
+"ਸ਼ੁਰੂ ਕਰਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;"
+"Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ "
 "ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ"
 "\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:107
+#: ../src/metacity.schemas.in.h:108
 msgid ""
 "The keybinding used to enter \"resize mode\" and begin resizing a window "
 "using the keyboard. The format looks like \"&lt;Control&gt;a\" or \"&lt;"
@@ -1139,12 +1171,12 @@ msgid ""
 "will be no keybinding for this action."
 msgstr ""
 "ਸਵਿੱਚ ਬੰਧਨ \"ਮੁੜ ਆਕਾਰ ਦਿਓ ਵਿਧੀ\" ਵਿੱਚ ਜਾਣ ਲਈ ਵਰਤਿਆ ਗਿਆ ਹੈ ਅਤੇ ਕੀਬੋਰਡ ਵਰਤ ਕੇ ਝਰੋਖੇ ਨੂੰ ਮੁੜ "
-"ਆਕਾਰ ਦਿੰਦਾ ਹੈ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;"
-"&lt;Alt&gt;F1|ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ "
+"ਆਕਾਰ ਦਿੰਦਾ ਹੈ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;"
+"&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ "
 "ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ"
 "\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:108
+#: ../src/metacity.schemas.in.h:109
 msgid ""
 "The keybinding used to hide all normal windows and set the focus to the "
 "desktop background. The format looks like \"&lt;Control&gt;a\" or \"&lt;"
@@ -1154,12 +1186,12 @@ msgid ""
 "will be no keybinding for this action."
 msgstr ""
 "ਸਵਿੱਚ ਬੰਧਨ ਸਾਰੇ ਸਾਧਾਰਨ ਝਰੋਖਿਆਂ ਨੂੰ ਢਕਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ ਅਤੇ ਵਿਹੜੇ ਦੀ ਪਿੱਠ ਭੂਮੀ ਨੂੰ ਕੇਂਦਰਿਤ "
-"ਕਰਦਾ ਹੈ ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;"
-"Alt&gt;F1|ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ "
+"ਕਰਦਾ ਹੈ ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;"
+"Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ "
 "ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ"
 "\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:109
+#: ../src/metacity.schemas.in.h:110
 msgid ""
 "The keybinding used to maximize a window. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1167,13 +1199,13 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖਾ ਅਧਿਕਤਮ ਕਰਨ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;"
-"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
+"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖਾ ਅਧਿਕਤਮ ਕਰਨ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;"
+"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
 "ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;"
 "Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ "
 "ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:110
+#: ../src/metacity.schemas.in.h:111
 msgid ""
 "The keybinding used to minimize a window. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1181,12 +1213,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖਾ ਛੋਟਾ ਕਰਨ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;Control&gt;"
-"a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ "
+"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖਾ ਛੋਟਾ ਕਰਨ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;"
+"a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ "
 "ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ "
 "ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:111
+#: ../src/metacity.schemas.in.h:112
 msgid ""
 "The keybinding used to move a window one workspace down. The format looks "
 "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
@@ -1195,13 +1227,13 @@ msgid ""
 "special string \"disabled\", then there will be no keybinding for this "
 "action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਇੱਕ ਵਰਕਸਪੇਸ ਹੇਠਾਂ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;"
-"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
+"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਇੱਕ ਵਰਕਸਪੇਸ ਹੇਠਾਂ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;"
+"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
 "ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;"
 "Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ "
 "ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:112
+#: ../src/metacity.schemas.in.h:113
 msgid ""
 "The keybinding used to move a window one workspace to the left. The format "
 "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
@@ -1210,13 +1242,13 @@ msgid ""
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਇੱਕ ਵਰਕਸਪੇਸ ਖੱਬੇ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;"
-"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
+"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਇੱਕ ਵਰਕਸਪੇਸ ਖੱਬੇ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;"
+"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
 "ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;"
 "Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ "
 "ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:113
+#: ../src/metacity.schemas.in.h:114
 msgid ""
 "The keybinding used to move a window one workspace to the right. The format "
 "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
@@ -1225,13 +1257,13 @@ msgid ""
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਇੱਕ ਵਰਕਸਪੇਸ ਸੱਜੇ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;"
-"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
+"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਇੱਕ ਵਰਕਸਪੇਸ ਸੱਜੇ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;"
+"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
 "ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;"
 "Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ "
 "ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:114
+#: ../src/metacity.schemas.in.h:115
 msgid ""
 "The keybinding used to move a window one workspace up. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1239,13 +1271,13 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਇੱਕ ਵਰਕਸਪੇਸ ਉੱਪਰ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;"
-"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
+"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਇੱਕ ਵਰਕਸਪੇਸ ਉੱਪਰ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;"
+"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
 "ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;"
 "Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ "
 "ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:115
+#: ../src/metacity.schemas.in.h:116
 msgid ""
 "The keybinding used to move a window to workspace 1. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1253,13 +1285,13 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 1 ਉੱਪਰ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;"
-"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
+"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 1 ਉੱਪਰ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;"
+"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
 "ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;"
 "Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ "
 "ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:116
+#: ../src/metacity.schemas.in.h:117
 msgid ""
 "The keybinding used to move a window to workspace 10. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1267,13 +1299,13 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 10 ਉੱਪਰ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;"
-"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
+"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 10 ਉੱਪਰ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;"
+"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
 "ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;"
 "Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ "
 "ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:117
+#: ../src/metacity.schemas.in.h:118
 msgid ""
 "The keybinding used to move a window to workspace 11. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1281,13 +1313,13 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 11 ਉੱਪਰ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ "
-"\"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ "
+"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 11 ਉੱਪਰ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ "
+"\"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ "
 "ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ "
 "\"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ "
 "ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:118
+#: ../src/metacity.schemas.in.h:119
 msgid ""
 "The keybinding used to move a window to workspace 12. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1295,13 +1327,13 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 12 ਉੱਪਰ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;"
-"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
+"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 12 ਉੱਪਰ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;"
+"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
 "ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;"
 "Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ "
 "ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:119
+#: ../src/metacity.schemas.in.h:120
 msgid ""
 "The keybinding used to move a window to workspace 2. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1309,13 +1341,13 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 2 ਉੱਪਰ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;"
-"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
+"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 2 ਉੱਪਰ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;"
+"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
 "ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;"
 "Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ "
 "ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:120
+#: ../src/metacity.schemas.in.h:121
 msgid ""
 "The keybinding used to move a window to workspace 3. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1323,13 +1355,13 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 3 ਉੱਪਰ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;"
-"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
+"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 3 ਉੱਪਰ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;"
+"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
 "ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;"
 "Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ "
 "ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:121
+#: ../src/metacity.schemas.in.h:122
 msgid ""
 "The keybinding used to move a window to workspace 4. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1337,13 +1369,13 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 4 ਉੱਪਰ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;"
-"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
+"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 4 ਉੱਪਰ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;"
+"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
 "ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;"
 "Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ "
 "ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:122
+#: ../src/metacity.schemas.in.h:123
 msgid ""
 "The keybinding used to move a window to workspace 5. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1351,13 +1383,13 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 5 ਉੱਪਰ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;"
-"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
+"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 5 ਉੱਪਰ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;"
+"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
 "ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;"
 "Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ "
 "ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:123
+#: ../src/metacity.schemas.in.h:124
 msgid ""
 "The keybinding used to move a window to workspace 6. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1365,13 +1397,13 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 6 ਉੱਪਰ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;"
-"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
+"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 6 ਉੱਪਰ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;"
+"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
 "ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;"
 "Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ "
 "ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:124
+#: ../src/metacity.schemas.in.h:125
 msgid ""
 "The keybinding used to move a window to workspace 7. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1379,13 +1411,13 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 7 ਉੱਪਰ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;"
-"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
+"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 7 ਉੱਪਰ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;"
+"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
 "ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;"
 "Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ "
 "ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:125
+#: ../src/metacity.schemas.in.h:126
 msgid ""
 "The keybinding used to move a window to workspace 8. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1393,13 +1425,13 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 8 ਉੱਪਰ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;"
-"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
+"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 8 ਉੱਪਰ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;"
+"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
 "ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;"
 "Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ "
 "ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:126
+#: ../src/metacity.schemas.in.h:127
 msgid ""
 "The keybinding used to move a window to workspace 9. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1407,13 +1439,13 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 9 ਉੱਪਰ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;"
-"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
+"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਵਰਕਸਪੇਸ 9 ਉੱਪਰ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;"
+"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
 "ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;"
 "Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ "
 "ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:127
+#: ../src/metacity.schemas.in.h:128
 msgid ""
 "The keybinding used to move focus backwards between panels and the desktop, "
 "using a popup window. The format looks like \"&lt;Control&gt;a\" or \"&lt;"
@@ -1423,12 +1455,12 @@ msgid ""
 "will be no keybinding for this action."
 msgstr ""
 "ਸਵਿੱਚ ਬੰਧਨ ਲਟਕਵਾਂ ਝਰੋਖਾ ਵਰਤ ਕੇ ਪੈਨਲ ਅਤੇ ਵਰਕਸਪੇਸ ਵਿਚਕਾਰ ਕੇਂਦਰ ਪਿਛਾਂਹ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ "
-"ਹੈ।ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1|"
+"ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\""
 "ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ "
 "ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ "
 "ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:128
+#: ../src/metacity.schemas.in.h:129
 msgid ""
 "The keybinding used to move focus backwards between panels and the desktop, "
 "without a popup window. The format looks like \"&lt;Control&gt;a\" or \"&lt;"
@@ -1437,13 +1469,13 @@ msgid ""
 "\". If you set the option to the special string \"disabled\", then there "
 "will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਲਟਕਵਾਂ ਝਰੋਖਾ ਵਰਤੇ ਬਿਨਾਂ ਪੈਨਲ ਅਤੇ ਅਖਾੜੇ(ਵਰਕਸਪੇਸ) ਵਿਚਕਾਰ ਕੇਂਦਰ ਪਿਛਾਂਹ ਲਿਜਾਣ ਲਈ "
-"ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;"
-"&lt;Alt&gt;F1|ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ "
+"ਸਵਿੱਚ ਬੰਧਨ ਲਟਕਵਾਂ ਝਰੋਖਾ ਵਰਤੇ ਬਿਨਾਂ ਪੈਨਲ ਅਤੇ ਵਰਕਸਪੇਸ ਵਿਚਕਾਰ ਕੇਂਦਰ ਪਿਛਾਂਹ ਲਿਜਾਣ ਲਈ "
+"ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;"
+"&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ "
 "ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ"
 "\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:129
+#: ../src/metacity.schemas.in.h:130
 msgid ""
 "The keybinding used to move focus backwards between windows without a popup "
 "window. Holding \"shift\" together with this binding makes the direction go "
@@ -1454,13 +1486,13 @@ msgid ""
 "no keybinding for this action."
 msgstr ""
 "ਸਵਿੱਚ ਬੰਧਨ ਲਟਕਵਾਂ ਝਰੋਖਾ ਵਰਤੇ ਬਿਨਾਂ ਵਰਕਸਪੇਸ ਵਿਚਕਾਰ ਕੇਂਦਰ ਪਿਛਾਂਹ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ "
-"ਹੈ।ਇਸ ਬੰਧਨ ਨਾਲ \"ਸ਼ਿਫਟ(shift)\" ਦਬਾ ਕੇ ਮੁੜ ਅਗਾਂਹ ਜਾਣ ਦੀ ਦਿਸ਼ਾ ਬਣਦੀ ਹੈ।ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ "
-"ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1|ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ "
+"ਹੈ।ਇਸ ਬੰਧਨ ਨਾਲ \"ਸ਼ਿਫਟ(shift)\" ਦਬਾ ਕੇ ਮੁੜ ਅਗਾਂਹ ਜਾਣ ਦੀ ਦਿਸ਼ਾ ਬਣਦੀ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ "
+"ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ "
 "ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;"
 "\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ "
 "ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:130
+#: ../src/metacity.schemas.in.h:131
 msgid ""
 "The keybinding used to move focus backwards between windows, using a popup "
 "window. Holding \"shift\" together with this binding makes the direction go "
@@ -1470,14 +1502,14 @@ msgid ""
 "If you set the option to the special string \"disabled\", then there will be "
 "no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਲਟਕਵਾਂ ਝਰੋਖਾ ਵਰਤ ਕੇ ਵਰਕਸਪੇਸ ਵਿਚਕਾਰ ਕੇਂਦਰ ਪਿਛਾਂਹ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ।ਇਸ "
-"ਬੰਧਨ ਨਾਲ \"ਸ਼ਿਫਟ(shift)\" ਦਬਾ ਕੇ ਦੁਬਾਰਾ ਅਗਾਂਹ ਜਾਣ ਦੀ ਦਿਸ਼ਾ ਬਣਦੀ ਹੈ।ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ "
-"ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1|ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ "
+"ਸਵਿੱਚ ਬੰਧਨ ਲਟਕਵਾਂ ਝਰੋਖਾ ਵਰਤ ਕੇ ਵਰਕਸਪੇਸ ਵਿਚਕਾਰ ਕੇਂਦਰ ਪਿਛਾਂਹ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ। "
+"ਇਸ ਬੰਧਨ ਨਾਲ \"ਸ਼ਿਫਟ(shift)\" ਦਬਾ ਕੇ ਦੁਬਾਰਾ ਅਗਾਂਹ ਜਾਣ ਦੀ ਦਿਸ਼ਾ ਬਣਦੀ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ "
+"ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ "
 "ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;"
 "\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ "
 "ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:131
+#: ../src/metacity.schemas.in.h:132
 msgid ""
 "The keybinding used to move focus between panels and the desktop, using a "
 "popup window. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;"
@@ -1487,12 +1519,12 @@ msgid ""
 "no keybinding for this action."
 msgstr ""
 "ਸਵਿੱਚ ਬੰਧਨ ਲਟਕਵਾਂ ਝਰੋਖਾ ਵਰਤ ਕੇ ਪੈਨਲ ਅਤੇ ਵਰਕਸਪੇਸ ਵਿਚਕਾਰ ਕੇਂਦਰ ਘੁਮਾਉਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ "
-"ਹੈ।ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1|"
+"ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" "
 "ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ "
 "ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ "
 "ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:132
+#: ../src/metacity.schemas.in.h:133
 msgid ""
 "The keybinding used to move focus between panels and the desktop, without a "
 "popup window. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;"
@@ -1502,12 +1534,12 @@ msgid ""
 "no keybinding for this action."
 msgstr ""
 "ਸਵਿੱਚ ਬੰਧਨ ਲਟਕਵਾਂ ਝਰੋਖਾ ਵਰਤੇ ਬਿਨਾਂ ਪੈਨਲ ਅਤੇ ਵਰਕਸਪੇਸ ਵਿਚਕਾਰ ਕੇਂਦਰ ਘੁਮਾਉਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ। "
-"ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1|"
+"ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" "
 "ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ "
 "ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ "
 "ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:133
+#: ../src/metacity.schemas.in.h:134
 msgid ""
 "The keybinding used to move focus between windows without a popup window. "
 "(Traditionally &lt;Alt&gt;Escape) Holding the \"shift\" key while using this "
@@ -1517,14 +1549,14 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਲਟਕਵੇਂ ਝਰੋਖੇ ਬਿਨਾਂ ਵਰਕਸਪੇਸ ਵਿਚਕਾਰ ਕੇਂਦਰ ਘੁਮਾਉਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ।(ਰਿਵਾਇਤੀ &lt;"
-"Alt&gt;ਭੁੱਲ) ਇਸ ਬੰਧਨ ਨੂੰ ਵਰਤਣ ਸਮੇਂ \"ਸ਼ਿਫਟ(shift)\" ਦਬਾਉਣ ਨਾਲ ਗਤੀ ਦੀ ਦਿਸ਼ਾ ਉਲਟਦੀ "
-"ਹੈ।ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1|"
+"ਸਵਿੱਚ ਬੰਧਨ ਲਟਕਵੇਂ ਝਰੋਖੇ ਬਿਨਾਂ ਵਰਕਸਪੇਸ ਵਿਚਕਾਰ ਕੇਂਦਰ ਘੁਮਾਉਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ। "
+"(ਰਿਵਾਇਤੀ &lt;Alt&gt;ਭੁੱਲ) ਇਸ ਬੰਧਨ ਨੂੰ ਵਰਤਣ ਸਮੇਂ \"ਸ਼ਿਫਟ(shift)\" ਦਬਾਉਣ ਨਾਲ ਗਤੀ ਦੀ ਦਿਸ਼ਾ "
+"ਉਲਟਦੀ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" "
 "ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ "
 "ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ "
 "ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:134
+#: ../src/metacity.schemas.in.h:135
 msgid ""
 "The keybinding used to move focus between windows, using a popup window. "
 "(Traditionally &lt;Alt&gt;Tab) Holding the \"shift\" key while using this "
@@ -1534,14 +1566,14 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਲਟਕਵਾਂ ਝਰੋਖਾ ਵਰਤ ਕੇ ਵਰਕਸਪੇਸ ਵਿਚਕਾਰ ਕੇਂਦਰ ਘੁਮਾਉਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ।(ਰਿਵਾਇਤੀ "
-"&lt;Alt&gt;ਭੁੱਲ) ਇਸ ਬੰਧਨ ਨੂੰ ਵਰਤਣ ਸਮੇਂ \"ਸ਼ਿਫਟ(shift)\" ਦਬਾਉਣ ਨਾਲ ਗਤੀ ਦੀ ਦਿਸ਼ਾ ਉਲਟਦੀ "
-"ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;"
-"F1|ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ "
+"ਸਵਿੱਚ ਬੰਧਨ ਲਟਕਵਾਂ ਝਰੋਖਾ ਵਰਤ ਕੇ ਵਰਕਸਪੇਸ ਵਿਚਕਾਰ ਕੇਂਦਰ ਘੁਮਾਉਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ। "
+"(ਰਿਵਾਇਤੀ &lt;Alt&gt;ਭੁੱਲ) ਇਸ ਬੰਧਨ ਨੂੰ ਵਰਤਣ ਸਮੇਂ \"ਸ਼ਿਫਟ(shift)\" ਦਬਾਉਣ ਨਾਲ ਗਤੀ ਦੀ ਦਿਸ਼ਾ "
+"ਉਲਟਦੀ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;"
+"F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ "
 "ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" "
-"ਬਣਾਉਦੇ ਹੋ ਤਾਂਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
+"ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:135
+#: ../src/metacity.schemas.in.h:136
 msgid ""
 "The keybinding used to toggle always on top. A window that is always on top "
 "will always be visible over other overlapping windows. The format looks like "
@@ -1550,14 +1582,14 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਹਮੇਸ਼ਾ ਸਿਖਰ ਉੱਪਰ ਰਹਿਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ। ਝਰੋਖਾ ਜੋ ਹਮੇਸ਼ਾ ਸਿਖਰ ਤੇ ਹੁੰਦਾ ਹੈ ਹਮੇਸ਼ਾ "
-"ਹੋਰ ਇੱਕ ਦੂਜੇ ਨੂੰ ਢਕਣ ਵਾਲੇ ਝਰੋਖਿਆਂ ਦੇ ਉੱਪਰੋਂ ਵੀ ਦਿਖੇਗਾ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;"
-"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1 ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
+"ਸਵਿੱਚ ਬੰਧਨ ਹਮੇਸ਼ਾ ਸਿਖਰ ਉੱਪਰ ਰਹਿਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ। ਝਰੋਖਾ, ਜੋ ਹਮੇਸ਼ਾ ਸਿਖਰ ਤੇ ਹੁੰਦਾ ਹੈ ਹਮੇਸ਼ਾ "
+"ਹੋਰ ਇੱਕ ਦੂਜੇ ਨੂੰ ਢਕਣ ਵਾਲੇ ਝਰੋਖਿਆਂ ਦੇ ਉੱਪਰੋਂ ਵੀ ਦਿਖੇਗਾ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;"
+"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
 "ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;"
 "Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ "
 "ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:136
+#: ../src/metacity.schemas.in.h:137
 msgid ""
 "The keybinding used to toggle fullscreen mode. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1565,13 +1597,13 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਸਾਰਾ ਪਰਦਾ ਰੂਪ ਵਿੱਚ ਲਿਜਾਂਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;"
-"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
-"ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;"
+"ਸਵਿੱਚ ਬੰਧਨ ਸਾਰਾ ਪਰਦਾ ਰੂਪ ਵਿੱਚ ਲਿਜਾਂਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ "
+"\"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ "
+"ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;"
 "Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ "
 "ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:137
+#: ../src/metacity.schemas.in.h:138
 msgid ""
 "The keybinding used to toggle maximization. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1579,12 +1611,13 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਵੱਡਾ ਆਕਾਰ ਕਰਨ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;Control&gt;"
-"a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ "
-"ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ "
-"ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
+"ਸਵਿੱਚ ਬੰਧਨ ਵੱਡਾ ਆਕਾਰ ਕਰਨ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ "
+"\"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ "
+"ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ "
+"\"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ "
+"ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:138
+#: ../src/metacity.schemas.in.h:139
 msgid ""
 "The keybinding used to toggle shaded/unshaded state. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1592,13 +1625,13 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਰੰਗਤ/ਬਿਨ-ਰੰਗਤ ਸਥਿਤੀ ਵਿੱਚ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ"
-"\"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ "
+"ਸਵਿੱਚ ਬੰਧਨ ਰੰਗਤ/ਬਿਨ-ਰੰਗਤ ਸਥਿਤੀ ਵਿੱਚ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ"
+"\"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ "
 "ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ "
 "\"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ "
 "ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:139
+#: ../src/metacity.schemas.in.h:140
 msgid ""
 "The keybinding used to toggle whether the window is on all workspaces or "
 "just one. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;"
@@ -1607,13 +1640,13 @@ msgid ""
 "set the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਸਾਰੇ ਵਰਕਸਪੇਸਾਂ ਜਾਂ ਸਿਰਫ ਇੱਕ ਉੱਪਰ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ।ਫਾਰਮਿਟ ਇਸ "
-"ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1|ਪਾਰਸਰ ਪੂਰੀ "
-"ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;"
-"Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ "
+"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਸਾਰੇ ਵਰਕਸਪੇਸਾਂ ਜਾਂ ਸਿਰਫ ਇੱਕ ਉੱਪਰ ਲਿਜਾਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ। "
+"ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ "
+"ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ "
+"\"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ "
 "ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:140
+#: ../src/metacity.schemas.in.h:141
 msgid ""
 "The keybinding used to unmaximize a window. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1621,13 +1654,13 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਵੱਡਾ ਨਾ ਰੱਖਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ\"&lt;"
-"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
+"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਵੱਡਾ ਨਾ ਰੱਖਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;"
+"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
 "ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;"
 "Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ "
 "ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:141
+#: ../src/metacity.schemas.in.h:142
 msgid ""
 "The keybinding which display's the panel's \"Run Application\" dialog box. "
 "The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1"
@@ -1636,13 +1669,13 @@ msgid ""
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਜਿਹੜਾ ਪੈਨਲ ਦੇ \"ਕਾਰਜ ਚਲਾਓ\" ਵਾਰਤਾਲਾਪ ਡੱਬੇ ਨੂੰ ਵਿਖਾਉਂਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ "
-"ਦਿਸਦਾ ਹੈ  \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1|ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ "
+"ਸਵਿੱਚ ਬੰਧਨ ਜਿਹੜਾ ਪੈਨਲ ਦੇ \"ਕਾਰਜ ਚਲਾਓ\" ਵਾਰਤਾਲਾਪ ਡੱਬੇ ਨੂੰ ਵਿਖਾਉਂਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ "
+"ਦਿਸਦਾ ਹੈ  \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ "
 "ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;"
 "\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ "
 "ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:142
+#: ../src/metacity.schemas.in.h:143
 msgid ""
 "The keybinding which invokes a terminal. The format looks like \"&lt;"
 "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1650,13 +1683,13 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਜਿਹੜਾ ਪੈਨਲ ਦੀ ਮੁੱਖ ਸੂਚੀ ਵਿਖਾਉਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿੱਸਦਾ ਹੈ \"&lt;"
-"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1। ਪਾਰਸਰਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
+"ਸਵਿੱਚ ਬੰਧਨ ਜਿਹੜਾ ਪੈਨਲ ਦੀ ਮੁੱਖ ਸੂਚੀ ਵਿਖਾਉਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿੱਸਦਾ ਹੈ \"&lt;"
+"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
 "ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;"
 "Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ "
 "ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:143
+#: ../src/metacity.schemas.in.h:144
 msgid ""
 "The keybinding which invokes the panel's screenshot utility to take a "
 "screenshot of a window. The format looks like \"&lt;Control&gt;a\" or \"&lt;"
@@ -1665,13 +1698,13 @@ msgid ""
 "\". If you set the option to the special string \"disabled\", then there "
 "will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਜਿਹੜਾ ਝਰੋਖੇ ਦੀ ਪਰਦਾ ਤਸਵੀਰ ਲੈਣ ਵਾਸਤੇ ਪੈਨਲ ਦੀ ਪਰਦਾ ਤਸਵੀਰ ਉਪਯੋਗਤਾ ਨੂੰ ਬੁਲਾਉਦਾ "
-"ਹੈ।ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦੀ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1|"
+"ਸਵਿੱਚ ਬੰਧਨ, ਜਿਹੜਾ ਝਰੋਖੇ ਦੀ ਪਰਦਾ ਤਸਵੀਰ ਲੈਣ ਵਾਸਤੇ ਪੈਨਲ ਦੀ ਪਰਦਾ ਤਸਵੀਰ ਸਹੂਲਤ ਨੂੰ "
+"ਬੁਲਾਉਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦੀ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" "
 "ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ "
 "ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ "
 "ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:144
+#: ../src/metacity.schemas.in.h:145
 msgid ""
 "The keybinding which invokes the panel's screenshot utility. The format "
 "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
@@ -1680,13 +1713,13 @@ msgid ""
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਜਿਹੜਾ ਝਰੋਖੇ ਦੀ ਪਰਦਾ ਤਸਵੀਰ ਉਪਯੋਗਤਾ ਨੂੰ ਬੁਲਾਉਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਖਦਾ ਹੈ "
-"\"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1|ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ "
+"ਸਵਿੱਚ ਬੰਧਨ, ਜਿਹੜਾ ਝਰੋਖੇ ਦੀ ਪਰਦਾ ਤਸਵੀਰ ਸਹੂਲਤਾ ਨਾਲ ਸਬੰਧਤ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਖਦਾ ਹੈ "
+"\"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ "
 "ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ "
 "\"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ "
 "ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:145
+#: ../src/metacity.schemas.in.h:146
 msgid ""
 "The keybinding which shows the panel's main menu. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1694,34 +1727,33 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਜਿਹੜਾ ਪੈਨਲ ਦੀ ਮੁੱਖ ਸੂਚੀ ਵਿਖਾਉਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿੱਸਦਾ ਹੈ \"&lt;"
-"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1|ਪਾਰਸਰਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
+"ਸਵਿੱਚ ਬੰਧਨ ਜਿਹੜਾ ਪੈਨਲ ਦੀ ਮੁੱਖ ਸੂਚੀ ਵਿਖਾਉਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿੱਸਦਾ ਹੈ \"&lt;"
+"Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ "
 "ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;"
 "Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ "
 "ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:146
+#: ../src/metacity.schemas.in.h:147
 msgid "The name of a workspace."
 msgstr "ਵਰਕਸਪੇਸ ਦਾ ਨਾਂ"
 
-#: ../src/metacity.schemas.in.h:147
-msgid "The screenshot command"
-msgstr "ਪਰਦਾ-ਤਸਵੀਰ ਕਮਾਂਡ"
-
 #: ../src/metacity.schemas.in.h:148
-msgid ""
-"The theme determines the appearance of window borders, titlebar, and so "
-"forth."
-msgstr "ਸਰੂਪ ਝਰੋਖੇ ਦੇ ਹਾਸ਼ੀਏ, ਸਿਰਲੇਖ ਪੱਟੀ, ਅਤੇ ਸਾਹਮਣੀ ਦਿੱਖ ਨਿਰਧਾਰਿਤ ਕਰਦਾ ਹੈ।"
+msgid "The screenshot command"
+msgstr "ਸਕਰੀਨ-ਸ਼ਾਟ ਕਮਾਂਡ"
 
 #: ../src/metacity.schemas.in.h:149
 msgid ""
-"The time delay before raising a window if auto_raise is set to true. The "
-"delay is given in thousandths of a second."
-msgstr ""
-"ਝਰੋਖਾ ਉਠਾਉਣ ਤੋਂ ਪਹਿਲਾਂ ਵਕਫਾ ਜੇ ਸਵੈ-ਉਠਾਊ ਯੋਗ ਕੀਤੀ ਹੈ। ਵਕਫਾ ਸਕਿੰਟ ਦੇ ਹਜਾਰਵੇਂ ਵਿੱਚ ਦਿੱਤਾ ਹੈ।"
+"The theme determines the appearance of window borders, titlebar, and so "
+"forth."
+msgstr "ਸਰੂਪ ਝਰੋਖੇ ਦੇ ਹਾਸ਼ੀਏ, ਸਿਰਲੇਖ ਪੱਟੀ, ਅਤੇ ਸਾਹਮਣੀ ਦਿੱਖ ਤਹਿ ਕਰਦਾ ਹੈ।"
 
 #: ../src/metacity.schemas.in.h:150
+msgid ""
+"The time delay before raising a window if auto_raise is set to true. The "
+"delay is given in thousandths of a second."
+msgstr "ਝਰੋਖਾ ਉਠਾਉਣ ਤੋਂ ਪਹਿਲਾਂ ਵਕਫਾ ਜੇ ਸਵੈ-ਉਠਾਊ ਯੋਗ ਕੀਤੀ ਹੈ। ਵਕਫਾ ਸਕਿੰਟ ਦੇ ਹਜ਼ਾਰਵੇਂ ਵਿੱਚ ਦਿੱਤਾ ਹੈ।"
+
+#: ../src/metacity.schemas.in.h:151
 msgid ""
 "The window focus mode indicates how windows are activated. It has three "
 "possible values; \"click\" means windows must be clicked in order to focus "
@@ -1734,11 +1766,11 @@ msgstr ""
 "ਹਨ ਜਦੋਂ ਮਾਊਸ ਉਹਨਾਂ ਵਿੱਚ ਪਰਵੇਸ਼ ਕਰਦਾ ਹੈ, \"ਮਾਊਸ\" ਮਤਲਬ ਮਤਲਬ ਝਰੋਖੇ ਕੇਂਦਰਿਤ ਹੁੰਦੇ ਹਨ ਜਦੋਂ ਮਾਊਸ "
 "ਉਹਨਾਂ ਵਿੱਚ ਪਰਵੇਸ਼ ਕਰਦਾ ਹੈ ਅਤੇ ਬਿਨ-ਕੇਂਦਰਿਤ ਹੁੰਦੀਆਂ ਹਨ ਜਦੋਂ ਮਾਊਸ ਝਰੋਖਾ ਛੱਡ ਜਾਂਦਾ ਹੈ।"
 
-#: ../src/metacity.schemas.in.h:151
+#: ../src/metacity.schemas.in.h:152
 msgid "The window screenshot command"
 msgstr "ਝਰੋਖਾ ਪਰਦਾ-ਤਸਵੀਰ ਕਮਾਂਡ"
 
-#: ../src/metacity.schemas.in.h:152
+#: ../src/metacity.schemas.in.h:153
 msgid ""
 "This keybinding changes whether a window is above or below other windows. If "
 "the window is covered by another window, it raises the window above other "
@@ -1751,12 +1783,12 @@ msgid ""
 msgstr ""
 "ਸਵਿੱਚ ਬੰਧਨ ਬਦਲਦੇ ਹਨ ਭਾਵੇਂ ਝਰੋਖਾ ਹੋਰ ਝਰੋਖੇ ਦੇ ਉੱਪਰ ਜਾਂ ਹੇਠਾਂ ਹੋਵੇ। ਜੇ ਝਰੋਖਾ ਹੋਰ ਝਰੋਖੇ ਨਾਲ ਢਕਿਆ ਹੋਵੇ, "
 "ਇਹ ਝਰੋਖੇ ਨੂੰ ਹੋਰ ਝਰੋਖੇ ਤੋਂ ਉੱਪਰ ਉਠਾਉਦਾ ਹੈ। ਜੇ ਝਰੋਖਾ ਪਹਿਲਾਂ ਹੀ ਪੂਰਾ ਦਿਸਦਾ ਹੈ ਇਹ ਝਰੋਖੇ ਨੂੰ ਹੋਰ ਝਰੋਖੇ "
-"ਤੋ ਹੇਠਾਂ ਕਰਦਾ ਹੈ ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;"
-"&lt;Alt&gt;F1|ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ "
+"ਤੋ ਹੇਠਾਂ ਕਰਦਾ ਹੈ ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;"
+"&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ "
 "ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ"
 "\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:153
+#: ../src/metacity.schemas.in.h:154
 msgid ""
 "This keybinding lowers a window below other windows. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1764,12 +1796,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਹੋਰ ਝਰੋਖੇ ਤੋਂ ਹੇਠਾਂ ਕਰਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਖਦੀ ਹੈ \"&lt;Control&gt;a"
-"\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ "
-"ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ "
+"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਹੋਰ ਝਰੋਖੇ ਤੋਂ ਹੇਠਾਂ ਕਰਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਖਦੀ ਹੈ \"&lt;Control&gt;a"
+"\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F\"| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ "
+"ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ "
 "ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\"ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:154
+#: ../src/metacity.schemas.in.h:155
 msgid ""
 "This keybinding raises the window above other windows. The format looks like "
 "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -1777,12 +1809,12 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਹੋਰ ਝਰੋਖੇ ਤੋਂ ਉੱਪਰ ਉਠਾਉਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾ ਦਿੱਸਦਾ ਹੈ\"&lt;Control&gt;a"
-"\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ "
+"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਹੋਰ ਝਰੋਖੇ ਤੋਂ ਉੱਪਰ ਉਠਾਉਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾ ਦਿੱਸਦਾ ਹੈ \"&lt;Control&gt;a"
+"\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ "
 "ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ "
 "ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:155
+#: ../src/metacity.schemas.in.h:156
 msgid ""
 "This keybinding resizes a window to fill available horizontal space. The "
 "format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
@@ -1791,13 +1823,13 @@ msgid ""
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਪੂਰੀ ਉਪਲੱਬਧ ਸਮਤਲ ਜਗਾ ਤੱਕ ਮੁੜ ਆਕਾਰ ਦਿੰਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿੱਸਦਾ ਹੈ "
-"\"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ "
-"ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ "
-"\"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\"ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ "
+"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਪੂਰੀ ਉਪਲੱਬਧ ਸਮਤਲ ਜਗਾ ਤੱਕ ਮੁੜ ਆਕਾਰ ਦਿੰਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿੱਸਦਾ ਹੈ "
+"\"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ "
+"ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ "
+"\"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ "
 "ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:156
+#: ../src/metacity.schemas.in.h:157
 msgid ""
 "This keybinding resizes a window to fill available vertical space. The "
 "format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
@@ -1806,43 +1838,46 @@ msgid ""
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
 msgstr ""
-"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਪੂਰੀ ਉਪਲੱਬਧ ਲੰਬਕਾਰੀ ਜਗਾ ਤੱਕ ਮੁੜ ਆਕਾਰ ਦਿੰਦਾ ਹੈ। ਫਾਰਮਿਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ"
-"\"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1| ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ "
+"ਸਵਿੱਚ ਬੰਧਨ ਝਰੋਖੇ ਨੂੰ ਪੂਰੀ ਉਪਲੱਬਧ ਲੰਬਕਾਰੀ ਜਗਾ ਤੱਕ ਮੁੜ ਆਕਾਰ ਦਿੰਦਾ ਹੈ। ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ"
+"\"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;Alt&gt;F1\" ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ "
 "ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ "
 "\"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ "
 "ਸਵਿੱਚ ਬੰਧਨ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.h:157
+#: ../src/metacity.schemas.in.h:158
 msgid ""
 "This option determines the effects of double-clicking on the title bar. "
 "Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, and 'toggle_maximize' which will maximize/unmaximize the window."
+"window, 'toggle_maximize' which will maximize/unmaximize the window, "
+"'minimize' which will minimize the window, and 'none' which will not do "
+"anything."
 msgstr ""
-"ਇਹ ਚੋਣ ਸਿਰਲੇਖ ਪੱਟੀ ਉੱਪਰ ਦੋ ਵਾਰ ਦਬਾਉ ਦਾ ਪ੍ਰਭਾਵ ਨਿਰਧਾਰਿਤ ਕਰਦੀ ਹੈ। ਮੌਜੂਦ ਯੋਗ ਚੋਣਾਂ ਹਨ 'ਰੰਗਤ "
-"ਕਰੋ', ਜਿਹੜੀ ਝਰੋਖੇ ਨੂੰ ਰੰਗਤ/ਬਿਨਾਂ-ਰੰਗਤ ਕਰੇਗਾ, ਅਤੇ 'ਆਕਾਰ ਵੱਡਾ ਕਰੋ' ਜਿਹੜਾ ਝਰੋਖੇ ਨੂੰ ਵੱਡਾ/ਵੱਡਾ ਨਾ "
-"ਕਰੇਗਾ।"
-
-#: ../src/metacity.schemas.in.h:158
-msgid "Toggle always on top state"
-msgstr "ਹਮੇਸ਼ਾ ਸਿਖਰ ਸਥਿਤੀ ਕਰੋ"
+"ਇਹ ਚੋਣ ਸਿਰਲੇਖ ਪੱਟੀ ਉੱਪਰ ਦੋ ਵਾਰ ਦਬਾਉਣ ਦਾ ਪ੍ਰਭਾਵ ਤਹਿ ਕਰਦੀ ਹੈ। ਮੌਜੂਦ ਯੋਗ ਚੋਣਾਂ ਹਨ "
+"'ਰੰਗਤ ਤਬਦੀਲ (toggle_shade', ਜਿਹੜੀ ਝਰੋਖੇ ਨੂੰ ਰੰਗਤ/ਬਿਨਾਂ-ਰੰਗਤ ਕਰੇਗਾ, ਅਤੇ "
+"'ਆਕਾਰ ਵੱਡਾ ਤਬਦੀਲ (toggle_maximize)' ਜਿਹੜਾ ਝਰੋਖੇ ਨੂੰ ਵੱਡਾ/ਵੱਡਾ ਨਾ ਕਰੇਗਾ ਅਤੇ "
+"'ਕੋਈ ਨਹੀਂ (none)', ਜੋ ਕਿ ਕੁਝ ਨਹੀਂ ਕਰੇਗਾ।"
 
 #: ../src/metacity.schemas.in.h:159
-msgid "Toggle fullscreen mode"
-msgstr "ਪੂਰਾ ਪਰਦਾ ਕਰੋ"
+msgid "Toggle always on top state"
+msgstr "ਹਮੇਸ਼ਾ ਸਿਖਰ ਹਾਲਤ ਤਬਦੀਲ"
 
 #: ../src/metacity.schemas.in.h:160
-msgid "Toggle maximization state"
-msgstr "ਅਧਿਕਤਮ ਸਥਿਤੀ ਕਰੋ"
+msgid "Toggle fullscreen mode"
+msgstr "ਪੂਰਾ ਪਰਦਾ ਤਬਦੀਲ ਕਰੋ"
 
 #: ../src/metacity.schemas.in.h:161
-msgid "Toggle shaded state"
-msgstr "ਰੰਗਤ ਸਥਿਤੀ ਕਰੋ"
+msgid "Toggle maximization state"
+msgstr "ਅਧਿਕਤਮ ਹਾਲਤ ਤਬਦੀਲ"
 
 #: ../src/metacity.schemas.in.h:162
-msgid "Toggle window on all workspaces"
-msgstr "ਝਰੋਖੇ ਨੂੰ ਸਾਰੇ ਵਰਕਸਪੇਸ ਉੱਪਰ ਲਿਜਾਓ"
+msgid "Toggle shaded state"
+msgstr "ਰੰਗਤ ਸਥਿਤੀ ਤਬਦੀਲ"
 
 #: ../src/metacity.schemas.in.h:163
+msgid "Toggle window on all workspaces"
+msgstr "ਝਰੋਖੇ ਨੂੰ ਸਭ ਵਰਕਸਪੇਸ ਉੱਪਰ ਲੈ ਜਾਓ"
+
+#: ../src/metacity.schemas.in.h:164
 msgid ""
 "Turns on a visual indication when an application or the system issues a "
 "'bell' or 'beep'; useful for the hard-of-hearing and for use in noisy "
@@ -1851,189 +1886,202 @@ msgstr ""
 "ਦਰਿਸ਼ੀ ਸੰਕੇਤ ਨੂੰ ਯੋਗ ਕਰੋ ਜਦੋਂ ਇੱਕ ਕਾਰਜ ਜਾਂ ਸਿਸਟਮ 'ਘੰਟੀ' ਜਾਂ 'ਬੀਪ' ਪ੍ਰਦਾਨਕਰਦਾ ਹੈ; ਸੁਣਨ ਦੀ "
 "ਮੁਸ਼ਕਿਲ ਲਈ ਉਪਯੋਗੀ ਅਤੇ ਰੌਲੇ-ਰੱਪੇ ਵਾਲੇ ਮਾਹੌਲ ਵਿੱਚ ਵਰਤਣ ਲਈ, ਜਾਂ ਜਦੋਂ 'ਆਵਾਜ਼ੀ ਘੰਟੀ' ਬੰਦ ਹੋਵੇ।"
 
-#: ../src/metacity.schemas.in.h:164
+#: ../src/metacity.schemas.in.h:165
 msgid "Unmaximize window"
 msgstr "ਝਰੋਖੇ ਨਾ-ਅਧਿਕਤਮ"
 
-#: ../src/metacity.schemas.in.h:165
-msgid "Use standard system font in window titles"
-msgstr "ਝਰੋਖਾਂ ਸਿਰਲੇਖਾਂ ਵਿੱਚ ਮਿਆਰੀ ਫੋਟ ਵਰਤੋ"
-
 #: ../src/metacity.schemas.in.h:166
+msgid "Use standard system font in window titles"
+msgstr "ਝਰੋਖਾਂ ਸਿਰਲੇਖਾਂ ਵਿੱਚ ਮਿਆਰੀ ਫੋਟ ਵਰਤੋਂ"
+
+#: ../src/metacity.schemas.in.h:167
 msgid "Visual Bell Type"
 msgstr "ਦਿੱਖ ਘੰਟੀ ਕਿਸਮ"
 
-#: ../src/metacity.schemas.in.h:167
+#: ../src/metacity.schemas.in.h:168
+msgid "Whether raising should be a side-effect of other user interactions"
+msgstr "ਜਦੋਂ ਵਧਾਇਆ ਜਾਵੇਗਾ ਤਾਂ ਹੋਰ ਉਪਭੋਗੀ ਦਖਲਾਂ ਉੱਤੇ ਗਲਤ ਪਰਭਾਵ ਪਵੇਗਾ"
+
+#: ../src/metacity.schemas.in.h:169
 msgid "Window focus mode"
 msgstr "ਝਰੋਖਾ ਕੇਂਦਰਿਤ ਰੂਪ"
 
-#: ../src/metacity.schemas.in.h:168
+#: ../src/metacity.schemas.in.h:170
 msgid "Window title font"
-msgstr "ਝਰੋਖਾ ਸਿਰਲੇਖ ਫੋਟ"
+msgstr "ਝਰੋਖਾ ਸਿਰਲੇਖ ਫੋਂਟ"
 
-#: ../src/prefs.c:528 ../src/prefs.c:544 ../src/prefs.c:560 ../src/prefs.c:576
-#: ../src/prefs.c:592 ../src/prefs.c:612 ../src/prefs.c:628 ../src/prefs.c:644
-#: ../src/prefs.c:660 ../src/prefs.c:676 ../src/prefs.c:692 ../src/prefs.c:708
-#: ../src/prefs.c:724 ../src/prefs.c:741 ../src/prefs.c:757 ../src/prefs.c:773
-#: ../src/prefs.c:789 ../src/prefs.c:805 ../src/prefs.c:820 ../src/prefs.c:835
-#: ../src/prefs.c:850 ../src/prefs.c:866 ../src/prefs.c:882 ../src/prefs.c:898
+#: ../src/prefs.c:560 ../src/prefs.c:576 ../src/prefs.c:592 ../src/prefs.c:608
+#: ../src/prefs.c:624 ../src/prefs.c:640 ../src/prefs.c:660 ../src/prefs.c:676
+#: ../src/prefs.c:692 ../src/prefs.c:708 ../src/prefs.c:724 ../src/prefs.c:740
+#: ../src/prefs.c:756 ../src/prefs.c:772 ../src/prefs.c:789 ../src/prefs.c:805
+#: ../src/prefs.c:821 ../src/prefs.c:837 ../src/prefs.c:853 ../src/prefs.c:868
+#: ../src/prefs.c:883 ../src/prefs.c:898 ../src/prefs.c:914 ../src/prefs.c:930
+#: ../src/prefs.c:946
 #, c-format
 msgid "GConf key \"%s\" is set to an invalid type\n"
 msgstr "ਜੀ-ਕਾਨਫ ਸਵਿੱਚ \"%s\" ਨੂੰ ਇੱਕ ਅਯੋਗ ਕਿਸਮ ਨਿਰਧਾਰਿਤ ਕੀਤੀ ਹੈ\n"
 
-#: ../src/prefs.c:943
+#: ../src/prefs.c:991
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
 "modifier\n"
 msgstr "ਸੰਰਚਨਾ ਡਾਟਾਬੇਸ ਵਿੱਚ ਲੱਭੀ ਹੋਈ \"%s\" ਮਾਊਸ ਬਟਨ ਸੋਧਕ ਲਈ ਯੋਗ ਕੀਮਤ ਨਹੀਂ ਹੈ\n"
 
-#: ../src/prefs.c:967 ../src/prefs.c:1428
+#: ../src/prefs.c:1015 ../src/prefs.c:1505
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
 msgstr "ਜੀ-ਕਾਨਫ ਸਵਿੱਚ \"%s\" ਨੂੰ ਇੱਕ ਅਯੋਗ ਕੀਮਤ ਨਿਰਧਾਰਿਤ ਕੀਤੀ ਹੈ\n"
 
-#: ../src/prefs.c:1145
+#: ../src/prefs.c:1138
+#, c-format
+msgid ""
+"%d stored in GConf key %s is not a reasonable cursor_size; must be in the "
+"range 1..128\n"
+msgstr ""
+"%d, ਜੋ ਕਿ ਜੀ-ਕਾਨਫ਼ ਕੁੰਜੀ %s ਵਿੱਚ ਸੰਭਾਲੀ ਹੈ, ਵਿੱਚ ਕਰਸਰ ਅਕਾਰ (cursor_size) ਦੀ ਸੀਮਾ "
+"1..28 ਵਿੱਚ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ\n"
+
+#: ../src/prefs.c:1218
 #, c-format
 msgid "Could not parse font description \"%s\" from GConf key %s\n"
 msgstr "ਜੀ-ਕਾਨਫ ਸਵਿੱਚ \"%s\" ਤੋਂ ਅੱਖਰ ਵਰਨਣ \"%s\" ਨੂੰ ਪਾਰਸ ਨਹੀਂ ਕਰ ਸਕਿਆ\n"
 
-#: ../src/prefs.c:1330
+#: ../src/prefs.c:1403
 #, c-format
 msgid ""
 "%d stored in GConf key %s is not a reasonable number of workspaces, current "
 "maximum is %d\n"
 msgstr ""
-"ਸੰਭਾਲੀ %d ਜੀ-ਕਾਨਫ ਸਵਿੱਚ \"%s\" ਵਿੱਚ ਵਰਕਸਪੇਸ ਦਾ ਉਚਿੱਤ ਅੰਕ ਨਹੀਂ ਹੈ, ਵਰਤਮਾਨ ਅਧਿਕਤਮ %d "
-"ਹੈ \n"
+"ਸੰਭਾਲੀ %d ਜੀ-ਕਾਨਫ ਸਵਿੱਚ \"%s\" ਵਿੱਚ ਵਰਕਸਪੇਸ ਦਾ ਉਚਿੱਤ ਅੰਕ ਨਹੀਂ ਹੈ, ਮੌਜੂਦਾ ਅਧਿਕਤਮ %d "
+"ਹੈ\n"
 
-#: ../src/prefs.c:1390
+#: ../src/prefs.c:1463
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
 msgstr "ਭੰਗ ਕਾਰਜ ਵਾਸਤੇ ਕੰਮ ਘੇਰਾ ਅਯੋਗ ਕੀਤਾ ਹੈ। ਕੁਝ ਕਾਰਜ ਚੰਗੀ ਤਰਾਂ ਕੰਮ ਨਹੀਂ ਕਰਦੇ।\n"
 
-#: ../src/prefs.c:1455
+#: ../src/prefs.c:1532
 #, c-format
 msgid "%d stored in GConf key %s is out of range 0 to %d\n"
 msgstr "ਜੀ-ਕਾਨਫ ਸੰਭਾਲੀ %d  ਸਵਿੱਚ %s ਵਿੱਚ ਨਿਸਚਿਤ ਸੀਮਾਂਵਾਂ 0 ਤੋਂ %d ਬਾਹਰ ਹੈ\n"
 
-#: ../src/prefs.c:1589
+#: ../src/prefs.c:1669
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
-msgstr "ਵਰਕਸਪੇਸਾਂ ਦੀ ਗਿਣਤੀ %d ਨਿਰਧਾਰਿਤ ਕਰਨ ਨਾਲ ਗਲਤੀ: %s\n"
+msgstr "ਵਰਕਸਪੇਸਾਂ ਦੀ ਗਿਣਤੀ %d ਦੇਣ ਲਈ ਗਲਤੀ: %s\n"
 
-#: ../src/prefs.c:1833
+#: ../src/prefs.c:2005
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
 "\"%s\"\n"
 msgstr "ਸੰਰਚਨਾ ਡਾਟਾਬੇਸ ਵਿੱਚ  ਲੱਭੀ ਹੋਈ \"%s\" ਸਵਿੱਚ ਬੰਧਨ \"%s\" ਲਈ ਯੋਗ ਕੀਮਤ ਨਹੀਂ ਹੈ\n"
 
-#: ../src/prefs.c:2187
+#: ../src/prefs.c:2422
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
-msgstr "ਵਰਕਸਪੇਸ %d ਦਾ ਨਾਂ \"%s\" ਨਿਰਧਾਰਿਤ ਕਰਨ ਵਿੱਚ ਗਲਤੀ:%s\n"
+msgstr "ਵਰਕਸਪੇਸ %d ਦਾ ਨਾਂ \"%s\" ਦੇਣ ਦੌਰਾਨ ਗਲਤੀ:%s\n"
 
 #: ../src/resizepopup.c:126
 #, c-format
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: ../src/screen.c:408
+#: ../src/screen.c:403
 #, c-format
 msgid "Screen %d on display '%s' is invalid\n"
 msgstr "ਪਰਦਾ %d ਲਈ ਦਰਿਸ਼ '%s' ਅਯੋਗ ਹੈ\n"
 
-#: ../src/screen.c:424
+#: ../src/screen.c:419
 #, c-format
 msgid ""
 "Screen %d on display \"%s\" already has a window manager; try using the --"
 "replace option to replace the current window manager.\n"
 msgstr ""
-"ਪਰਦਾ %d ਤੇ ਦਰਿਸ਼ \"%s\" ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ, ਇਸ ਨੂੰ ਤਬਦੀਲ ਕਰਨ ਦੀ ਚੋਣ --replace  ਪ੍ਰਬੰਧਕ "
+"ਪਰਦੇ %d 'ਤੇ ਦਰਿਸ਼ \"%s\" ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ, ਇਸ ਨੂੰ ਤਬਦੀਲ ਕਰਨ ਦੀ ਚੋਣ --replace  ਪ੍ਰਬੰਧਕ "
 "ਵਰਤੋ।\n"
 
-#: ../src/screen.c:448
+#: ../src/screen.c:443
 #, c-format
-msgid ""
-"Could not acquire window manager selection on screen %d display \"%s\"\n"
-msgstr "%d ਪਰਦੇ ਤੇ ਦਰਿਸ਼ \"%s\" ਉੱਪਰ ਝਰੋਖਾ ਪ੍ਰਬੰਧਕ ਚੋਣ ਉਪਲੱਬਧ ਨਹੀਂ ਹੋ ਸਕੀ\n"
+msgid "Could not acquire window manager selection on screen %d display \"%s\"\n"
+msgstr "%d ਪਰਦੇ 'ਤੇ ਦਰਿਸ਼ \"%s\" ਉੱਪਰ ਝਰੋਖਾ ਪ੍ਰਬੰਧਕ ਚੋਣ ਉਪਲੱਬਧ ਨਹੀਂ ਹੋ ਸਕੀ\n"
 
-#: ../src/screen.c:506
+#: ../src/screen.c:501
 #, c-format
 msgid "Screen %d on display \"%s\" already has a window manager\n"
-msgstr "ਪਰਦੇ %d ਤੇ ਦਰਿਸ਼ '%s' ਉੱਪਰ ਕੋਲ ਪਹਿਲਾਂ ਹੀ ਝਰੋਖਾ ਪ੍ਰਬੰਧਕ ਹੈ\n"
+msgstr "ਪਰਦੇ %d 'ਤੇ ਦਰਿਸ਼ '%s' ਉੱਪਰ ਕੋਲ ਪਹਿਲਾਂ ਹੀ ਝਰੋਖਾ ਪ੍ਰਬੰਧਕ ਹੈ\n"
 
-#: ../src/screen.c:716
+#: ../src/screen.c:702
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
-msgstr "ਪਰਦੇ %d ਤੇ  ਦਰਿਸ਼ '%s'ਵਿਖਾਵੇ ਉੱਪਰ ਪਰਸਾਰਿਤ ਨਹੀਂ ਕਰ ਸਕਿਆ\n"
+msgstr "ਪਰਦੇ %d ਉੱਤੇ  ਦਰਿਸ਼ '%s' ਵਿਖਾਵੇ ਉੱਪਰ ਜਾਰੀ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ\n"
 
-#: ../src/session.c:884 ../src/session.c:891
+#: ../src/session.c:835 ../src/session.c:842
 #, c-format
 msgid "Could not create directory '%s': %s\n"
-msgstr "'%s' ਡਾਇਰੈਕਟਰੀ ਬਣਾ ਨਹੀਂ ਸਕਿਆ:%s\n"
+msgstr "'%s' ਡਾਇਰੈਕਟਰੀ ਬਣਾਈ ਨਹੀਂ ਜਾ ਸਕਦੀ:%s\n"
 
-#: ../src/session.c:901
+#: ../src/session.c:852
 #, c-format
 msgid "Could not open session file '%s' for writing: %s\n"
-msgstr "ਲਿਖਣ ਲਈ ਅਜਲਾਸ ਫਾਇਲ '%s' ਖੋਲ ਨਹੀਂ ਸਕਿਆ: %s\n"
+msgstr "ਲਿਖਣ ਲਈ ਅਜਲਾਸ ਫਾਇਲ '%s' ਖੋਲ੍ਹੀ ਨਹੀਂ ਸਕਦੀ: %s\n"
 
-#: ../src/session.c:1053
+#: ../src/session.c:1004
 #, c-format
 msgid "Error writing session file '%s': %s\n"
 msgstr "ਅਜਲਾਸ ਫਾਇਲ '%s' ਲਿਖਣ ਦੀ ਗਲਤੀ:%s\n"
 
-#: ../src/session.c:1058
+#: ../src/session.c:1009
 #, c-format
 msgid "Error closing session file '%s': %s\n"
 msgstr "ਅਜਲਾਸ ਫਾਇਲ '%s' ਖੋਲਣ ਦੀ ਗਲਤੀ: %s\n"
 
-#: ../src/session.c:1133
+#: ../src/session.c:1084
 #, c-format
 msgid "Failed to read saved session file %s: %s\n"
 msgstr "ਸੰਭਾਲੀ ਅਜਲਾਸ ਫਾਇਲ %s ਨੂੰ ਪੜਨ ਲਈ ਅਸਫਲ:%s\n"
 
-#: ../src/session.c:1168
+#: ../src/session.c:1119
 #, c-format
 msgid "Failed to parse saved session file: %s\n"
 msgstr "ਸੰਭਾਲੀ ਅਜਲਾਸ ਫਾਇਲ ਨੂੰ ਪਾਰਸ ਕਰਨ ਲਈ ਅਸਫਲ: %s\n"
 
-#: ../src/session.c:1217
+#: ../src/session.c:1168
 msgid "<metacity_session> attribute seen but we already have the session ID"
-msgstr "<ਮੈਟਾਸਿਟੀ ਸਰੂਪ> ਗੁਣ ਦਿਖਿਆ ਪਰ ਸਾਡੇ ਕੋਲ ਸਰੂਪ ਸ਼ੰਨਾ-ਨੰ ਪਹਿਲਾਂ ਹੀ ਹੈ"
+msgstr "<metacity_session> ਗੁਣ ਦਿਖਿਆ ਪਰ ਸਾਡੇ ਕੋਲ ਸਰੂਪ ਸ਼ੰਨਾ-ਨੰ ਪਹਿਲਾਂ ਹੀ ਹੈ"
 
-#: ../src/session.c:1230
+#: ../src/session.c:1181
 #, c-format
 msgid "Unknown attribute %s on <metacity_session> element"
-msgstr "<ਮੈਟਾਸਿਟੀ ਸਰੂਪ> ਅੰਸ਼  ਉੱਪਰ ਅਣਪਛਾਤਾ ਗੁਣ %s"
+msgstr "<window_session> ਅੰਸ਼  ਉੱਪਰ ਅਣਪਛਾਤਾ ਗੁਣ %s"
 
-#: ../src/session.c:1247
+#: ../src/session.c:1198
 msgid "nested <window> tag"
-msgstr "ਅੰਦਰੂਨੀ <ਝਰੋਖਾ> ਟੈਗ"
+msgstr "ਅੰਦਰੂਨੀ <window> ਟੈਗ"
 
-#: ../src/session.c:1305 ../src/session.c:1337
+#: ../src/session.c:1256 ../src/session.c:1288
 #, c-format
 msgid "Unknown attribute %s on <window> element"
-msgstr "<ਝਰੋਖਾ> ਅੰਸ਼ ਉੱਪਰ ਅਣਪਛਾਤਾ ਗੁਣ %s"
+msgstr "<window> ਅੰਸ਼ ਉੱਪਰ ਅਣਪਛਾਤਾ ਗੁਣ %s"
 
-#: ../src/session.c:1409
+#: ../src/session.c:1360
 #, c-format
 msgid "Unknown attribute %s on <maximized> element"
-msgstr "<ਵੱਡਾ ਕੀਤਾ> ਅੰਸ਼  ਉੱਪਰ ਅਣਪਛਾਤਾ ਗੁਣ %s"
+msgstr "<maximized> ਅੰਸ਼  ਉੱਪਰ ਅਣਪਛਾਤਾ ਗੁਣ %s"
 
-#: ../src/session.c:1469
+#: ../src/session.c:1420
 #, c-format
 msgid "Unknown attribute %s on <geometry> element"
-msgstr "<ਅਕਿਰਤੀ> ਅੰਸ਼  ਉੱਪਰ ਅਣਪਛਾਤਾ ਗੁਣ %s"
+msgstr "<geometry> ਅੰਸ਼  ਉੱਪਰ ਅਣਪਛਾਤਾ ਗੁਣ %s"
 
-#: ../src/session.c:1489
+#: ../src/session.c:1440
 #, c-format
 msgid "Unknown element %s"
-msgstr "ਅਣਪਛਾਤਾ ਅੰਸ਼ %s"
+msgstr "ਅਣਜਾਣ ਇਕਾਈ %s"
 
-#: ../src/session.c:1961
+#: ../src/session.c:1906
 #, c-format
 msgid ""
 "Error launching metacity-dialog to warn about apps that don't support "
@@ -2136,12 +2184,12 @@ msgstr "ਅਣਪਛਾਤੀ ਕਿਸਮ \"%s\" ਉਪੱਰ <%s> ਅੰਸ਼"
 #: ../src/theme-parser.c:1091
 #, c-format
 msgid "Unknown style_set \"%s\" on <%s> element"
-msgstr "ਅਣਪਛਾਤਾ ਸ਼ੈਲੀ ਸਮੂਹ \"%s\" <%s> ਅੰਸ਼ ਉੱਪਰ "
+msgstr "ਅਣਪਛਾਤਾ ਸ਼ੈਲੀ ਸਮੂਹ \"%s\" <%s> ਅੰਸ਼ ਉੱਪਰ"
 
 #: ../src/theme-parser.c:1099
 #, c-format
 msgid "Window type \"%s\" has already been assigned a style set"
-msgstr "ਝਰੋਖਾ ਕਿਸਮ \"%s\" ਵਾਸਤੇ ਪਹਿਲਾਂ ਹੀ ਨਮੂਨਾ ਸਮੂਹ ਨਿਰਧਾਰਿਤ ਹੈ"
+msgstr "ਝਰੋਖਾ ਕਿਸਮ \"%s\" ਵਾਸਤੇ ਪਹਿਲਾਂ ਹੀ ਸ਼ੈਲੀ ਸੈੱਟ ਦਿੱਤੀ ਗਈ ਹੈ"
 
 #: ../src/theme-parser.c:1143
 #, c-format
@@ -2162,7 +2210,7 @@ msgstr "ਸਰੂਪ ਕੋਲ ਪਹਿਲਾਂ ਹੀ ਕੰਮ %s ਸਥਿ�
 #: ../src/theme-parser.c:3323
 #, c-format
 msgid "No <draw_ops> with the name \"%s\" has been defined"
-msgstr "\"%s\" ਨਾਂ ਨਾਲ <ਉਲੀਕ_ਚੋਣਾਂ> ਪਰਭਾਸ਼ਿਤ ਨਹੀਂ ਕੀਤੀਆਂ"
+msgstr "\"%s\" ਨਾਂ ਨਾਲ <draw_ops> ਪਰਭਾਸ਼ਿਤ ਨਹੀਂ ਕੀਤੀਆਂ"
 
 #: ../src/theme-parser.c:1192 ../src/theme-parser.c:1256
 #: ../src/theme-parser.c:1545 ../src/theme-parser.c:3124
@@ -2186,8 +2234,7 @@ msgstr "<%s> ਅੰਸ਼ ਉੱਪਰ ਕੋਈ \"ਕੀਮਤ\" ਗੁਣ ਨਹ�
 
 #: ../src/theme-parser.c:1320 ../src/theme-parser.c:1334
 #: ../src/theme-parser.c:1393
-msgid ""
-"Cannot specify both button_width/button_height and aspect ratio for buttons"
+msgid "Cannot specify both button_width/button_height and aspect ratio for buttons"
 msgstr "ਬਟਨਾਂ ਲਈ ਦੋਨੋਂ ਬਟਨ ਚੌੜਾਈ/ਬਟਨ ਉਚਾਈ ਅਤੇ ਰੂਪ ਅਨੁਪਾਤ ਨਿਰਧਾਰਿਤ ਨਹੀਂ ਹੋ ਸਕਿਆ"
 
 #: ../src/theme-parser.c:1343
@@ -2359,7 +2406,7 @@ msgstr "ਅੰਸ਼ <%s> ਲਈ ਤੀਰ \"%s\" ਨਹੀਂ ਸਮਝਿਆ ਹ�
 #: ../src/theme-parser.c:2962 ../src/theme-parser.c:3078
 #, c-format
 msgid "No <draw_ops> called \"%s\" has been defined"
-msgstr "ਕੋਈ <ਉਲੀਕ_ਚੋਣਾਂ> \"%s\" ਪਰਭਾਸ਼ਿਤ ਨਹੀਂ ਕੀਤੀ ਹੈ।"
+msgstr "ਕੋਈ <draw_ops> \"%s\" ਪਰਭਾਸ਼ਿਤ ਨਹੀਂ ਕੀਤੀ ਹੈ।"
 
 #: ../src/theme-parser.c:2974 ../src/theme-parser.c:3090
 #, c-format
@@ -2394,7 +2441,7 @@ msgstr "ਅੰਸ਼ <%s> ਉੱਪਰ ਕੋਈ \"ਕੰਮ\" ਗੁਣ ਨਹੀ�
 #: ../src/theme-parser.c:3280 ../src/theme-parser.c:3384
 #, c-format
 msgid "No \"state\" attribute on <%s> element"
-msgstr "ਅੰਸ਼ <%s> ਉੱਪਰ ਕੋਈ \"ਅਵਸਥਾ\" ਗੁਣ ਨਹੀਂ ਹੈ।"
+msgstr "ਅੰਸ਼ <%s> ਉੱਪਰ ਕੋਈ \"ਹਾਲਤ\" ਗੁਣ ਨਹੀਂ ਹੈ।"
 
 #: ../src/theme-parser.c:3289
 #, c-format
@@ -2434,7 +2481,7 @@ msgstr "ਅਵਸਥਾ ਗੁਣ ਲਈ \"%s\" ਯੋਗ ਕੀਮਤ ਨਹੀ
 #: ../src/theme-parser.c:3420
 #, c-format
 msgid "A style called \"%s\" has not been defined"
-msgstr "ਇੱਕ ਨਮੂਨਾ \"%s\" ਪਰਭਾਸ਼ਿਤ ਨਹੀਂ ਕੀਤਾ ਹੈ।"
+msgstr "ਸ਼ੈਲੀ \"%s\" ਪਰਭਾਸ਼ਿਤ ਨਹੀਂ ਕੀਤਾ ਹੈ।"
 
 #: ../src/theme-parser.c:3430
 #, c-format
@@ -2469,15 +2516,15 @@ msgid ""
 "Can't have a two draw_ops for a <piece> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
 msgstr ""
-"<ਟੁਕੜਾ> ਅੰਸ਼ ਵਾਸਤੇ ਦੋ ਉਲੀਕ ਕਿਰਿਆਂਵਾਂ ਨਹੀਂ ਹੋ ਸਕਦੀਆਂ(ਸਰੂਪ ਨੇ ਉਲੀਕ ਕਿਰਿਆਂਵਾਂ ਗੁਣ ਅਤੇ <ਉਲੀਕ "
-"ਕਿਰਿਆਂਵਾਂ> ਅੰਸ਼ ਵੀ ਨਿਰਧਾਰਿਤ ਕੀਤੇ ਹਨ, ਜਾਂ ਦੋ ਅੰਸ਼ ਨਿਰਧਾਰਿਤ ਕੀਤੇ ਹਨ)"
+"<piece> ਅੰਸ਼ ਵਾਸਤੇ ਦੋ ਉਲੀਕ ਕਿਰਿਆਂਵਾਂ ਨਹੀਂ ਹੋ ਸਕਦੀਆਂ(ਸਰੂਪ ਨੇ ਉਲੀਕ ਕਿਰਿਆਂਵਾਂ ਗੁਣ ਅਤੇ "
+"<draw_ops> ਅੰਸ਼ ਵੀ ਨਿਰਧਾਰਿਤ ਕੀਤੇ ਹਨ, ਜਾਂ ਦੋ ਅੰਸ਼ ਨਿਰਧਾਰਿਤ ਕੀਤੇ ਹਨ)"
 
 #: ../src/theme-parser.c:3574
 msgid ""
 "Can't have a two draw_ops for a <button> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
 msgstr ""
-"<ਬਟਨ> ਅੰਸ਼ ਵਾਸਤੇ ਦੋ ਉਲੀਕ_ਕਿਰਿਆਂਵਾਂ ਨਹੀਂ ਹੋ ਸਕਦੀਆਂ(ਸਰੂਪ ਨੇ ਉਲੀਕ ਚੋਣਾਂ ਗੁਣ ਅਤੇ <ਉਲੀਕ ਕਿਰਿਆਂਵਾਂ> "
+"<button> ਅੰਸ਼ ਵਾਸਤੇ ਦੋ <draw_ops>ਨਹੀਂ ਹੋ ਸਕਦੀਆਂ(ਸਰੂਪ ਨੇ ਉਲੀਕ ਚੋਣਾਂ ਗੁਣ ਅਤੇ <ਉਲੀਕ ਕਿਰਿਆਂਵਾਂ> "
 "ਅੰਸ਼ ਵੀ ਨਿਰਧਾਰਿਤ ਕੀਤੇ ਹਨ, ਜਾਂ ਦੋ ਅੰਸ਼ ਨਿਰਧਾਰਿਤ ਕੀਤੇ ਹਨ)"
 
 #: ../src/theme-parser.c:3612
@@ -2485,8 +2532,8 @@ msgid ""
 "Can't have a two draw_ops for a <menu_icon> element (theme specified a "
 "draw_ops attribute and also a <draw_ops> element, or specified two elements)"
 msgstr ""
-"<ਸੂਚੀ ਆਈਕਾਨ> ਅੰਸ਼ ਵਾਸਤੇ ਦੋ ਉਲੀਕ ਕਿਰਿਆਂਵਾਂ ਨਹੀਂ ਹੋ ਸਕਦੀਆਂ(ਅਜਲਾਸ ਨੇ ਉਲੀਕ ਕਿਰਿਆਂਵਾਂ ਗੁਣ ਅਤੇ "
-"<ਉਲੀਕ ਕਿਰਿਆਂਵਾਂ> ਅੰਸ਼ ਨਿਰਧਾਰਿਤ ਕੀਤੇ ਹਨ, ਜਾਂ ਦੋ ਅੰਸ਼ ਨਿਰਧਾਰਿਤ ਕੀਤੇ ਹਨ)"
+"<menu_icon> ਅੰਸ਼ ਵਾਸਤੇ ਦੋ ਉਲੀਕ ਕਿਰਿਆਂਵਾਂ ਨਹੀਂ ਹੋ ਸਕਦੀਆਂ(ਅਜਲਾਸ ਨੇ ਉਲੀਕ ਕਿਰਿਆਂਵਾਂ ਗੁਣ ਅਤੇ "
+"<draw_ops> ਅੰਸ਼ ਨਿਰਧਾਰਿਤ ਕੀਤੇ ਹਨ, ਜਾਂ ਦੋ ਅੰਸ਼ ਨਿਰਧਾਰਿਤ ਕੀਤੇ ਹਨ)"
 
 #: ../src/theme-parser.c:3659
 #, c-format
@@ -2495,8 +2542,7 @@ msgstr "ਸਰੂਪ ਵਿੱਚ ਸਭ ਤੋਂ ਬਾਹਰੀ ਅੰਸ਼ <�
 
 #: ../src/theme-parser.c:3679
 #, c-format
-msgid ""
-"Element <%s> is not allowed inside a name/author/date/description element"
+msgid "Element <%s> is not allowed inside a name/author/date/description element"
 msgstr "<%s> ਅੰਸ਼ ਨੂੰ ਨਾਂ/ਲੇਖਕ/ਮਿਤੀ/ਵਰਨਣ ਅੰਸ਼ ਵਿੱਚ ਇਜਾਜ਼ਤ ਨਹੀਂ ਹੈ"
 
 #: ../src/theme-parser.c:3684
@@ -2506,8 +2552,7 @@ msgstr "<%s> ਅੰਸ਼ ਨੂੰ <ਸਥਿਰ> ਅੰਸ਼ ਵਿੱਚ ਇਜਾ
 
 #: ../src/theme-parser.c:3696
 #, c-format
-msgid ""
-"Element <%s> is not allowed inside a distance/border/aspect_ratio element"
+msgid "Element <%s> is not allowed inside a distance/border/aspect_ratio element"
 msgstr "<%s> ਅੰਸ਼ ਨੂੰ ਫਾਸਲਾ/ਹਾਸ਼ੀਆ/ਅਕਾਰ ਅਨੁਪਾਤ ਅੰਸ਼ ਵਿੱਚ ਇਜਾਜ਼ਤ ਨਹੀਂ ਹੈ"
 
 #: ../src/theme-parser.c:3718
@@ -2540,15 +2585,15 @@ msgstr "<%s> ਅੰਸ਼ ਵਿੱਚ ਕਿਸੇ ਪਾਠ ਨੂੰ ਇਜਾ�
 
 #: ../src/theme-parser.c:4109
 msgid "<name> specified twice for this theme"
-msgstr "ਇਸ ਸਰੂਪ ਲਈ <ਨਾਂ> ਦੋ ਵਾਰ ਬਿਆਨ ਕੀਤਾ ਗਿਆ"
+msgstr "ਇਸ ਸਰੂਪ ਲਈ <name> ਦੋ ਵਾਰ ਬਿਆਨ ਕੀਤਾ ਗਿਆ"
 
 #: ../src/theme-parser.c:4120
 msgid "<author> specified twice for this theme"
-msgstr "ਇਸ ਸਰੂਪ ਲਈ <ਲੇਖਕ> ਦੋ ਵਾਰ ਬਿਆਨ ਕੀਤਾ ਗਿਆ"
+msgstr "ਇਸ ਸਰੂਪ ਲਈ <author> ਦੋ ਵਾਰ ਬਿਆਨ ਕੀਤਾ ਗਿਆ"
 
 #: ../src/theme-parser.c:4131
 msgid "<copyright> specified twice for this theme"
-msgstr "ਇਸ ਸਰੂਪ ਲਈ <ਭੇਜਿਆ ਉਤਾਰਾ>ਦੋ ਵਾਰ ਬਿਆਨ ਕੀਤਾ ਗਿਆ"
+msgstr "ਇਸ ਸਰੂਪ ਲਈ <copyright>ਦੋ ਵਾਰ ਬਿਆਨ ਕੀਤਾ ਗਿਆ"
 
 #: ../src/theme-parser.c:4142
 msgid "<date> specified twice for this theme"
@@ -2566,158 +2611,158 @@ msgstr "ਫਾਇਲ %s ਵਿੱਚੋਂ ਸਰੂਪ ਪੜਨ ਲਈ ਅਸ�
 #: ../src/theme-parser.c:4403
 #, c-format
 msgid "Theme file %s did not contain a root <metacity_theme> element"
-msgstr "ਸਰੂਪ ਫਾਇਲ %s  root <ਮੈਟਾਸਿਟੀ ਸਰੂਪ> ਅੰਸ਼ ਵਿੱਚ ਸ਼ਾਮਿਲ ਨਹੀਂ ਸੀ"
+msgstr "ਸਰੂਪ ਫਾਇਲ %s root <ਮੈਟਾਸਿਟੀ ਸਰੂਪ> ਅੰਸ਼ ਵਿੱਚ ਸ਼ਾਮਿਲ ਨਹੀਂ ਸੀ"
 
-#: ../src/theme-viewer.c:70
+#: ../src/theme-viewer.c:72
 msgid "/_Windows"
 msgstr "/ਝਰੋਖੇ(_W)"
 
-#: ../src/theme-viewer.c:71
+#: ../src/theme-viewer.c:73
 msgid "/Windows/tearoff"
 msgstr "/ਝਰੋਖੇ/ਝਟਕੇ ਨਾਲ ਵੱਖ"
 
-#: ../src/theme-viewer.c:72
+#: ../src/theme-viewer.c:74
 msgid "/Windows/_Dialog"
 msgstr "/ਝਰੋਖੇ/ਵਾਰਤਾਲਾਪ(_D)"
 
-#: ../src/theme-viewer.c:73
+#: ../src/theme-viewer.c:75
 msgid "/Windows/_Modal dialog"
 msgstr "/ਝਰੋਖੇ/ਮਾਡਲ ਵਾਰਤਾਲਾਪ(_M)"
 
-#: ../src/theme-viewer.c:74
+#: ../src/theme-viewer.c:76
 msgid "/Windows/_Utility"
-msgstr "/ਝਰੋਖੇ/ਉਪਯੋਗਤਾ(_U)"
+msgstr "/ਝਰੋਖੇ/ਸਹੂਲਤ(_U)"
 
-#: ../src/theme-viewer.c:75
+#: ../src/theme-viewer.c:77
 msgid "/Windows/_Splashscreen"
 msgstr "/ਝਰੋਖੇ/ਸਵਾਗਤੀ ਝਲਕ(_S)"
 
-#: ../src/theme-viewer.c:76
-msgid "/Windows/_Top dock"
-msgstr "/ਝਰੋਖੇ/ਉਪੱਰ ਡੌਕ(_T)"
-
-#: ../src/theme-viewer.c:77
-msgid "/Windows/_Bottom dock"
-msgstr "/ਝਰੋਖੇ/ਹੇਠਾਂ ਡੌਕ(_B)"
-
 #: ../src/theme-viewer.c:78
-msgid "/Windows/_Left dock"
-msgstr "/ਝਰੋਖੇ/ਖੱਬਾ ਡੌਕ(_L)"
+msgid "/Windows/_Top dock"
+msgstr "/ਝਰੋਖੇ/ਉੱਪਰ ਡੋਕ(_T)"
 
 #: ../src/theme-viewer.c:79
-msgid "/Windows/_Right dock"
-msgstr "/ਝਰੋਖੇ/ਸੱਜਾ ਡੌਕ(_R)"
+msgid "/Windows/_Bottom dock"
+msgstr "/ਝਰੋਖੇ/ਹੇਠਾਂ ਡੋਕ(_B)"
 
 #: ../src/theme-viewer.c:80
-msgid "/Windows/_All docks"
-msgstr "/ਝਰੋਖੇ/ਸਾਰੇ ਡੌਕ(_A)"
+msgid "/Windows/_Left dock"
+msgstr "/ਝਰੋਖੇ/ਖੱਬਾ ਡੋਕ(_L)"
 
 #: ../src/theme-viewer.c:81
+msgid "/Windows/_Right dock"
+msgstr "/ਝਰੋਖੇ/ਸੱਜਾ ਡੋਕ(_R)"
+
+#: ../src/theme-viewer.c:82
+msgid "/Windows/_All docks"
+msgstr "/ਝਰੋਖੇ/ਸਭ ਡੋਕ(_A)"
+
+#: ../src/theme-viewer.c:83
 msgid "/Windows/Des_ktop"
-msgstr "/ਝਰੋਖੇ/ਵਿਹੜਾ(_k)"
+msgstr "/ਝਰੋਖੇ/ਵੇਹੜਾ(_k)"
 
-#: ../src/theme-viewer.c:131
+#: ../src/theme-viewer.c:132
 msgid "Open another one of these windows"
-msgstr "ਇਹਨਾਂ ਝਰੋਖਿਆਂ ਵਿੱਚੋਂ ਕੋਈ ਹੋਰ ਖੋਲੋ"
+msgstr "ਇਹਨਾਂ ਝਰੋਖਿਆਂ ਵਿੱਚੋਂ ਕੋਈ ਹੋਰ ਖੋਲ੍ਹੋ"
 
-#: ../src/theme-viewer.c:138
+#: ../src/theme-viewer.c:139
 msgid "This is a demo button with an 'open' icon"
-msgstr "ਇਹ 'ਖੋਲੋ' ਆਈਕਾਨ ਨਾਲ ਪ੍ਰਦਰਸ਼ਨ ਬਟਨ ਹੈ"
+msgstr "ਇਹ 'ਖੋਲ੍ਹੋ' ਆਈਕਾਨ ਨਾਲ ਪ੍ਰਦਰਸ਼ਨ ਬਟਨ ਹੈ"
 
-#: ../src/theme-viewer.c:145
+#: ../src/theme-viewer.c:146
 msgid "This is a demo button with a 'quit' icon"
 msgstr "ਇਹ 'ਬਾਹਰ ਜਾਓ'ਆਈਕਾਨ ਨਾਲ ਪ੍ਰਦਰਸ਼ਨ ਬਟਨ ਹੈ"
 
-#: ../src/theme-viewer.c:241
+#: ../src/theme-viewer.c:239
 msgid "This is a sample message in a sample dialog"
 msgstr "ਇਹ ਨਮੂਨਾ ਵਾਰਤਾਲਾਪ ਵਿੱਚ ਨਮੂਨਾ ਸੁਨੇਹਾ ਹੈ"
 
-#: ../src/theme-viewer.c:324
+#: ../src/theme-viewer.c:322
 #, c-format
 msgid "Fake menu item %d\n"
 msgstr "ਨਕਲੀ ਮੇਨੂ-ਸੂਚੀ ਇਕਾਈ %d\n"
 
-#: ../src/theme-viewer.c:358
+#: ../src/theme-viewer.c:356
 msgid "Border-only window"
 msgstr "ਸਿਰਫ ਹਾਸ਼ੀਏ ਵਾਲਾ ਝਰੋਖਾ"
 
-#: ../src/theme-viewer.c:360
+#: ../src/theme-viewer.c:358
 msgid "Bar"
 msgstr "ਪੱਟੀ"
 
-#: ../src/theme-viewer.c:377
+#: ../src/theme-viewer.c:375
 msgid "Normal Application Window"
 msgstr "ਸਾਧਾਰਨ ਕਾਰਜ ਝਰੋਖਾ"
 
-#: ../src/theme-viewer.c:382
+#: ../src/theme-viewer.c:379
 msgid "Dialog Box"
 msgstr "ਵਾਰਤਾਲਾਪ ਡੱਬਾ"
 
-#: ../src/theme-viewer.c:387
+#: ../src/theme-viewer.c:383
 msgid "Modal Dialog Box"
 msgstr "ਮਾਡਲ ਵਾਰਤਾਲਾਪ ਡੱਬਾ"
 
-#: ../src/theme-viewer.c:392
+#: ../src/theme-viewer.c:387
 msgid "Utility Palette"
-msgstr "ਉਪਯੋਗਤਾ ਰੰਗ-ਪੱਟੀ"
+msgstr "ਸਹੂਲਤ ਰੰਗ-ਪੱਟੀ"
 
-#: ../src/theme-viewer.c:397
+#: ../src/theme-viewer.c:391
 msgid "Torn-off Menu"
 msgstr "ਝਟਕੇ ਵਾਲੀ ਮੇਨੂ-ਸੂਚੀ"
 
-#: ../src/theme-viewer.c:402
+#: ../src/theme-viewer.c:395
 msgid "Border"
 msgstr "ਹਾਸ਼ੀਆ"
 
-#: ../src/theme-viewer.c:731
+#: ../src/theme-viewer.c:723
 #, c-format
 msgid "Button layout test %d"
 msgstr "ਬਟਨ ਖਾਕਾ ਜਾਂਚ %d"
 
-#: ../src/theme-viewer.c:760
+#: ../src/theme-viewer.c:752
 #, c-format
 msgid "%g milliseconds to draw one window frame"
 msgstr "ਇੱਕ ਝਰੋਖਾ ਫਰੇਮ ਉਲੀਕਣ ਲਈ %g ਮਿਲੀ ਸਕਿੰਟ"
 
-#: ../src/theme-viewer.c:803
+#: ../src/theme-viewer.c:795
 msgid "Usage: metacity-theme-viewer [THEMENAME]\n"
-msgstr "ਉਪਯੋਗਤਾ: ਟਾਸਿਟੀ ਅਜਲਾਸ ਦਰਸ਼ਕ [ਅਜਲਾਸ ਨਾਂ]\n"
+msgstr "ਵਰਤੋਂ: metacity-theme-viewer [THEMENAME]\n"
 
-#: ../src/theme-viewer.c:810
+#: ../src/theme-viewer.c:802
 #, c-format
 msgid "Error loading theme: %s\n"
 msgstr "ਸਰੂਪ ਲੋਡ ਕਰਨ ਵਿੱਚ ਗਲਤੀ: %s\n"
 
-#: ../src/theme-viewer.c:816
+#: ../src/theme-viewer.c:808
 #, c-format
 msgid "Loaded theme \"%s\" in %g seconds\n"
 msgstr "ਸਰੂਪ \"%s\" ਨੂੰ ਲੋਡ ਕਰਨ ਵਿੱਚ ਲੱਗਾ ਸਮਾਂ %g ਸਕਿੰਟਾਂ ਵਿੱਚ \n"
 
-#: ../src/theme-viewer.c:839
+#: ../src/theme-viewer.c:831
 msgid "Normal Title Font"
 msgstr "ਸਾਧਾਰਨ ਸਿਰਲੇਖ ਅੱਖਰ"
 
-#: ../src/theme-viewer.c:845
+#: ../src/theme-viewer.c:837
 msgid "Small Title Font"
 msgstr "ਛੋਟੇ ਸਿਰਲੇਖ ਅੱਖਰ"
 
-#: ../src/theme-viewer.c:851
+#: ../src/theme-viewer.c:843
 msgid "Large Title Font"
 msgstr "ਵੱਡੇ ਸਿਰਲੇਖ ਅੱਖਰ"
 
-#: ../src/theme-viewer.c:856
+#: ../src/theme-viewer.c:848
 msgid "Button Layouts"
-msgstr "ਤਲ ਖਾਕਾ"
+msgstr "ਬਟਨ ਖਾਕਾ"
 
-#: ../src/theme-viewer.c:861
+#: ../src/theme-viewer.c:853
 msgid "Benchmark"
 msgstr "ਬੈਂਚਮਾਰਕ"
 
-#: ../src/theme-viewer.c:908
+#: ../src/theme-viewer.c:900
 msgid "Window Title Goes Here"
-msgstr "ਝਰੋਖਾ ਸਿਰਲੇਖ ਇੱਥੇ "
+msgstr "ਝਰੋਖਾ ਸਿਰਲੇਖ ਇੱਥੇ ਹੈ"
 
-#: ../src/theme-viewer.c:1012
+#: ../src/theme-viewer.c:1004
 #, c-format
 msgid ""
 "Drew %d frames in %g client-side seconds (%g milliseconds per frame) and %g "
@@ -2727,46 +2772,46 @@ msgstr ""
 "%d ਫਰੇਮ ਉਲੀਕੇ %g ਕਲਾਈਂਟ ਸਾਈਡ ਸਕਿੰਟਾਂ ਵਿੱਚ (%g ਮਿਲੀ ਸਕਿੰਟ ਪ੍ਰਤੀ ਫਰੇਮ) ਅਤੇ X ਸਰਵਰ ਸਮੇਤ %g "
 "ਸਕਿੰਟ ਕੰਧ ਘੜੀ ਸਮਾਂ (%g ਮਿਲੀ ਸਕਿੰਟ ਪ੍ਰਤੀ ਫਰੇਮ)\n"
 
-#: ../src/theme-viewer.c:1227
+#: ../src/theme-viewer.c:1219
 msgid "position expression test returned TRUE but set error"
 msgstr "ਸਥਿਤੀ ਕਥਨ ਜਾਂਚ ਨੇ ਜਵਾਬ ਠੀਕ(TRUE) ਦਿੱਤਾ ਪਰ ਗਲਤੀ ਕੱਢੀ ਹੈ"
 
-#: ../src/theme-viewer.c:1229
+#: ../src/theme-viewer.c:1221
 msgid "position expression test returned FALSE but didn't set error"
 msgstr "ਸਥਿਤੀ ਕਥਨ ਜਾਂਚ ਨੇ ਜਵਾਬ ਗਲਤ(FALSE) ਦਿੱਤਾ ਪਰ ਗਲਤੀ ਨਹੀਂ ਕੱਢੀ ਹੈ"
 
-#: ../src/theme-viewer.c:1233
+#: ../src/theme-viewer.c:1225
 msgid "Error was expected but none given"
 msgstr "ਗਲਤੀ ਦੀ ਉਮੀਦ ਸੀ ਪਰ ਕੋਈ ਵਿਖਾਈ ਨਹੀਂ"
 
-#: ../src/theme-viewer.c:1235
+#: ../src/theme-viewer.c:1227
 #, c-format
 msgid "Error %d was expected but %d given"
 msgstr "ਗਲਤੀ %d ਦੀ ਉਮੀਦ ਸੀ ਪਰ ਵਿਖਾਈ %d"
 
-#: ../src/theme-viewer.c:1241
+#: ../src/theme-viewer.c:1233
 #, c-format
 msgid "Error not expected but one was returned: %s"
 msgstr "ਗਲਤੀ ਦੀ ਉਮੀਦ ਨਹੀਂ ਸੀ ਪਰ ਇੱਕ ਨਿਕਲੀ: %s"
 
-#: ../src/theme-viewer.c:1245
+#: ../src/theme-viewer.c:1237
 #, c-format
 msgid "x value was %d, %d was expected"
 msgstr "x ਕੀਮਤ %d ਹੈ, %d ਦੀ ਉਮੀਦ ਸੀ"
 
-#: ../src/theme-viewer.c:1248
+#: ../src/theme-viewer.c:1240
 #, c-format
 msgid "y value was %d, %d was expected"
 msgstr "y ਕੀਮਤ %d ਸੀ, %d ਦੀ ਉਮੀਦ ਸੀ"
 
-#: ../src/theme-viewer.c:1310
+#: ../src/theme-viewer.c:1303
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr "%d ਸਮਾਨਾਰਥਕ ਕਥਨ ਦੀ ਪਾਰਸ %g ਸਕਿੰਟਾਂ ਵਿੱਚ ਕੀਤੀ(ਔਸਤਨ %g ਸਕਿੰਟ)\n"
 
 #: ../src/theme.c:202
 msgid "top"
-msgstr "ਉਪੱਰ"
+msgstr "ਉੱਪਰ"
 
 #: ../src/theme.c:204
 msgid "bottom"
@@ -2799,20 +2844,20 @@ msgstr "ਤਲ ਰੂਪ ਅਨੁਪਾਤ %g ਸ਼ੰਕਾਜਨਕ ਨਹੀ�
 msgid "Frame geometry does not specify size of buttons"
 msgstr "ਫਰੇਮ ਅਕਿਰਤੀ ਬਟਨਾਂ ਦਾ ਆਕਾਰ ਨਹੀਂ ਦਰਸਾਉਦੀ"
 
-#: ../src/theme.c:843
+#: ../src/theme.c:842
 msgid "Gradients should have at least two colors"
 msgstr "ਢਾਲਵੇ ਲਈ ਘੱਟ ਤੋਂ ਘੱਟ ਦੋ ਰੰਗ ਚਾਹੀਦੇ ਹਨ"
 
-#: ../src/theme.c:969
+#: ../src/theme.c:968
 #, c-format
 msgid ""
 "GTK color specification must have the state in brackets, e.g. gtk:fg[NORMAL] "
 "where NORMAL is the state; could not parse \"%s\""
 msgstr ""
-"GTK ਰੰਗ ਦੀ ਨਿਰਧਾਰਨਾ ਦੀ ਅਵਸਥਾ ਬਰੈਕਟਾਂ ਵਿੱਚ ਜਰੂਰੀ ਹੈ, ਉਦਾਹਰਨ ਵਜੋਂ gtk:fg[ਸਾਧਾਰਨ] ਜਿੱਥੇ "
+"GTK ਰੰਗ ਦੀ ਨਿਰਧਾਰਨ ਦੀ ਅਵਸਥਾ ਬਰੈਕਟਾਂ ਵਿੱਚ ਜਰੂਰੀ ਹੈ, ਉਦਾਹਰਨ ਵਜੋਂ gtk:fg[ਸਾਧਾਰਨ] ਜਿੱਥੇ "
 "ਸਾਧਾਰਨ  ਇੱਕ ਅਵਸਥਾ ਹੈ; \"%s\" ਦੀ ਪਾਰਸ ਨਹੀਂ ਕਰ ਸਕਿਆ"
 
-#: ../src/theme.c:983
+#: ../src/theme.c:982
 #, c-format
 msgid ""
 "GTK color specification must have a close bracket after the state, e.g. gtk:"
@@ -2821,243 +2866,241 @@ msgstr ""
 "ਅਵਸਥਾ ਤੋਂ ਬਾਅਦ GTK ਰੰਗ ਨਿਰਧਾਰਨ ਬਰੈਕਟਾਂ ਵਿੱਚ ਬੰਦ ਕਰਨੀ ਜਰੂਰੀ ਹੈ, ਉਦਾਹਰਨ ਵਜੋਂ gtk:fg"
 "[ਸਾਧਾਰਨ] ਜਿੱਥੇ ਸਾਧਾਰਨ ਇੱਕ ਅਵਸਥਾ ਹੈ; \"%s\" ਦੀ ਪਾਰਸ ਨਹੀਂ ਕਰ ਸਕਿਆ"
 
-#: ../src/theme.c:994
+#: ../src/theme.c:993
 #, c-format
 msgid "Did not understand state \"%s\" in color specification"
 msgstr "ਰੰਗ ਨਿਰਧਾਰਨ ਵਿੱਚ \"%s\" ਅਵਸਥਾ ਨੂੰ ਨਹੀਂ ਸਮਝਿਆ"
 
-#: ../src/theme.c:1007
+#: ../src/theme.c:1006
 #, c-format
 msgid "Did not understand color component \"%s\" in color specification"
 msgstr "ਰੰਗ ਨਿਰਧਾਰਨ ਵਿੱਚ ਰੰਗ ਸੰਖੇਪ \"%s\" ਨੂੰ ਨਹੀਂ ਸਮਝਿਆ"
 
-#: ../src/theme.c:1037
+#: ../src/theme.c:1036
 #, c-format
 msgid ""
 "Blend format is \"blend/bg_color/fg_color/alpha\", \"%s\" does not fit the "
 "format"
 msgstr "ਧੁੰਦਲੀ ਬਣਤਰ \"ਧੁੰਦਲੀ/ਪਿੱਠ ਭੂਮੀ_ਰੰਗ/ਐਲਫਾ, \"%s\" ਬਣਤਰ ਵਿੱਚ ਠੀਕ ਨਹੀਂ ਆਂਉਦੀ"
 
-#: ../src/theme.c:1048
+#: ../src/theme.c:1047
 #, c-format
 msgid "Could not parse alpha value \"%s\" in blended color"
 msgstr "ਧੁੰਦਲੇ ਰੰਗ ਵਿੱਚ ਐਲਫਾ ਕੀਮਤ \"%s\" ਦੀ ਪਾਰਸ ਨਹੀਂ ਕਰ ਸਕਿਆ"
 
-#: ../src/theme.c:1058
+#: ../src/theme.c:1057
 #, c-format
 msgid "Alpha value \"%s\" in blended color is not between 0.0 and 1.0"
 msgstr "ਧੁੰਦਲੇ ਰੰਗ ਵਿੱਚ ਐਲਫਾ ਕੀਮਤ \"%s\" 0.0 ਅਤੇ 1.0 ਵਿਚਕਾਰ ਨਹੀਂ ਹੈ"
 
-#: ../src/theme.c:1105
+#: ../src/theme.c:1104
 #, c-format
-msgid ""
-"Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
+msgid "Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
 msgstr "ਰੰਗਤ ਬਣਤਰ \"ਰੰਗਤ/ਆਧਾਰ_ਰੰਗ/ਗੁਣਨਖੰਡ\" ਹੈ, \"%s\" ਬਣਤਰ ਵਿੱਚ ਠੀਕ ਨਹੀਂ ਆਉਦੀ"
 
-#: ../src/theme.c:1116
+#: ../src/theme.c:1115
 #, c-format
 msgid "Could not parse shade factor \"%s\" in shaded color"
 msgstr "ਛਾਇਆ ਰੰਗ ਵਿੱਚ ਰੰਗਤ ਗੁਣਨਖੰਡ \"%s\" ਦੀ ਪਾਰਸ ਨਹੀਂ ਕਰ ਸਕਿਆ"
 
-#: ../src/theme.c:1126
+#: ../src/theme.c:1125
 #, c-format
 msgid "Shade factor \"%s\" in shaded color is negative"
 msgstr "ਛਾਇਆ ਰੰਗ ਵਿੱਚ ਰੰਗਤ ਗੁਣਨਖੰਡ \"%s\" ਨਾਂਹਵਾਚਕ ਹੈ"
 
-#: ../src/theme.c:1155
+#: ../src/theme.c:1154
 #, c-format
 msgid "Could not parse color \"%s\""
 msgstr "\"%s\" ਰੰਗ ਦੀ ਪਾਰਸ ਨਹੀਂ ਕਰ ਸਕਿਆ"
 
-#: ../src/theme.c:1417
+#: ../src/theme.c:1416
 #, c-format
 msgid "Coordinate expression contains character '%s' which is not allowed"
 msgstr "ਤਾਲਮੇਲ ਸਮੀਕਰਨ ਵਿੱਚ ਅੱਖਰ '%s' ਸ਼ਾਮਿਲ ਹੈ ਜਿਸ ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ"
 
-#: ../src/theme.c:1444
+#: ../src/theme.c:1443
 #, c-format
 msgid ""
 "Coordinate expression contains floating point number '%s' which could not be "
 "parsed"
 msgstr "ਤਾਲਮੇਲ ਸਮੀਕਰਨ ਵਿੱਚ ਦਸ਼ਮਲਵ ਅੰਕ '%s' ਸ਼ਾਮਿਲ ਹੈ ਜਿਸ ਦੀ ਪਾਰਸ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ"
 
-#: ../src/theme.c:1458
+#: ../src/theme.c:1457
 #, c-format
 msgid "Coordinate expression contains integer '%s' which could not be parsed"
 msgstr "ਤਾਲਮੇਲ ਸਮੀਕਰਨ ਵਿੱਚ ਪੂਰਨ ਅੰਕ '%s' ਸ਼ਾਮਿਲ ਹੈ ਜਿਸ ਦੀ ਪਾਰਸ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ"
 
-#: ../src/theme.c:1525
+#: ../src/theme.c:1524
 #, c-format
 msgid ""
 "Coordinate expression contained unknown operator at the start of this text: "
 "\"%s\""
 msgstr "ਤਾਲਮੇਲ ਸਮੀਕਰਨ ਵਿੱਚ ਇਸ ਪਾਠ \"%s\" ਦੇ ਸ਼ੁਰੂ ਵਿੱਚ ਅਣਪਛਾਤਾ ਆਪ੍ਰੇਟਰ ਸ਼ਾਮਿਲ ਹੈ"
 
-#: ../src/theme.c:1582
+#: ../src/theme.c:1581
 msgid "Coordinate expression was empty or not understood"
 msgstr "ਤਾਲਮੇਲ ਸਮੀਕਰਨ ਖਾਲੀ ਸੀ ਜਾਂ ਸਮਝਿਆ ਨਹੀਂ"
 
-#: ../src/theme.c:1725 ../src/theme.c:1735 ../src/theme.c:1769
+#: ../src/theme.c:1724 ../src/theme.c:1734 ../src/theme.c:1768
 msgid "Coordinate expression results in division by zero"
 msgstr "ਤਾਲਮੇਲ ਸਮੀਕਰਨ ਦੇ ਨਤੀਜੇ ਵਜੋਂ ਜੀਰੋ ਨਾਲ ਭਾਗ ਹੈ"
 
-#: ../src/theme.c:1777
-msgid ""
-"Coordinate expression tries to use mod operator on a floating-point number"
-msgstr "ਤਾਲਮੇਲ ਸਮੀਕਰਨ ਦਸ਼ਮਲਵ ਅੰਕ ਉੱਪਰ ਮਾਡ(mod)ਆਪ੍ਰੇਟਰ ਵਰਤਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰਦਾ ਹੈ"
+#: ../src/theme.c:1776
+msgid "Coordinate expression tries to use mod operator on a floating-point number"
+msgstr "ਤਾਲਮੇਲ ਸਮੀਕਰਨ ਦਸ਼ਮਲਵ ਅੰਕ ਉੱਪਰ ਮਾਡ (mod) ਓਪਰੇਟਰ ਵਰਤਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰਦਾ ਹੈ"
 
-#: ../src/theme.c:1834
+#: ../src/theme.c:1832
 #, c-format
-msgid ""
-"Coordinate expression has an operator \"%s\" where an operand was expected"
+msgid "Coordinate expression has an operator \"%s\" where an operand was expected"
 msgstr "ਤਾਲਮੇਲ ਸਮੀਕਰਨ ਵਿੱਚ ਆਪ੍ਰੇਟਰ \"%s\" ਹੈ ਜਿੱਥੇ ਪ੍ਰਭਾਵੀ ਅੰਕ ਦੀ ਉਮੀਦ ਸੀ"
 
-#: ../src/theme.c:1843
+#: ../src/theme.c:1841
 msgid "Coordinate expression had an operand where an operator was expected"
 msgstr "ਤਾਲਮੇਲ ਸਮੀਕਰਨ ਵਿੱਚ ਪ੍ਰਭਾਵੀ ਅੰਕ ਸੀ ਜਿੱਥੇ ਆਪ੍ਰੇਟਰ ਦੀ ਉਮੀਦ ਸੀ"
 
-#: ../src/theme.c:1851
+#: ../src/theme.c:1849
 msgid "Coordinate expression ended with an operator instead of an operand"
 msgstr "ਤਾਲਮੇਲ ਸਮੀਕਰਨ ਦੀ ਸਮਾਪਤੀ ਆਪ੍ਰੇਟਰ ਨਾਲ ਹੁੰਦੀ ਹੈ ਨਾ ਕਿ ਪ੍ਰਭਾਵੀ ਅੰਕ ਨਾਲ"
 
-#: ../src/theme.c:1861
+#: ../src/theme.c:1859
 #, c-format
 msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
 "operand in between"
-msgstr ""
-"ਤਾਲਮੇਲ ਸਮੀਕਰਨ ਵਿੱਚ ਵਿਚਕਾਰ ਪ੍ਰਭਾਵੀ ਅੰਕ ਤੋਂ ਬਿਨਾਂ  ਆਪ੍ਰੇਟਰ \"%c\" ਤੋਂ ਬਾਅਦ ਆਪ੍ਰੇਟਰ \"%c\" ਹੈ "
+msgstr "ਤਾਲਮੇਲ ਸਮੀਕਰਨ ਵਿੱਚ ਵਿਚਕਾਰ ਪ੍ਰਭਾਵੀ ਅੰਕ ਤੋਂ ਬਿਨਾਂ  ਆਪਰੇਟਰ \"%c\" ਤੋਂ ਬਾਅਦ ਆਪਰੇਟਰ \"%c\" ਹੈ "
 
-#: ../src/theme.c:1980
+#: ../src/theme.c:1978
 msgid ""
 "Coordinate expression parser overflowed its buffer, this is really a "
 "Metacity bug, but are you sure you need a huge expression like that?"
 msgstr ""
-"ਤਾਲਮੇਲ ਸਮੀਕਰਨ ਪਾਰਸਰ ਦਾ ਰਾਖਵਾਂ ਭਰ ਗਿਆ, ਅਸਲ ਵਿੱਚ ਇਹ ਮੈਟਾਸਿਟੀ ਬੱਗ ਹੈ, ਪਰ ਕੀ ਤੁਸੀਂ ਯਕੀਨਨ "
-"ਇਸ ਤਰਾਂ ਦੀ ਵੱਡੀ ਸਮੀਕਰਨ ਚਾਹੁੰਦੇ ਹੋ?"
+"ਤਾਲਮੇਲ ਸਮੀਕਰਨ ਪਾਰਸਰ ਦਾ ਰਾਖਵਾਂ ਭਰ ਗਿਆ, ਅਸਲ ਵਿੱਚ ਇਹ ਮੈਟਾਸਿਟੀ ਬੱਗ ਹੈ, "
+"ਪਰ ਕੀ ਤੁਸੀਂ ਯਕੀਨਨ ਇਸ ਤਰਾਂ ਦੀ ਵੱਡੀ ਸਮੀਕਰਨ ਚਾਹੁੰਦੇ ਹੋ?"
 
-#: ../src/theme.c:2009
+#: ../src/theme.c:2007
 msgid "Coordinate expression had a close parenthesis with no open parenthesis"
-msgstr "ਤਾਲਮੇਲ ਸਮੀਕਰਨ ਵਿੱਚ ਕੋਈ ਖੁੱਲੀ ਬਰੈਕਟ ਨਾ ਹੋਣ ਕਰਕੇ ਬੰਦ ਬਰੈਕਟ(parenthesis) ਸੀ"
+msgstr "ਤਾਲਮੇਲ ਸਮੀਕਰਨ ਵਿੱਚ ਕੋਈ ਖੁੱਲੀ ਬਰੈਕਟ ਨਾ ਹੋਣ ਕਰਕੇ ਬੰਦ ਬਰੈਕਟ ਸੀ"
 
-#: ../src/theme.c:2072
+#: ../src/theme.c:2069
 #, c-format
 msgid "Coordinate expression had unknown variable or constant \"%s\""
 msgstr "ਤਾਲਮੇਲ ਸਮੀਕਰਨ ਵਿੱਚ ਅਣਪਛਾਤਾ ਅਸਥਿਰ ਜਾਂ ਸਥਿਰ \"%s\" ਸੀ"
 
-#: ../src/theme.c:2129
+#: ../src/theme.c:2126
 msgid "Coordinate expression had an open parenthesis with no close parenthesis"
-msgstr ""
-"ਤਾਲਮੇਲ ਸਮੀਕਰਨ ਵਿੱਚ ਕੋਈ ਬੰਦ ਬਰੈਕਟ (parenthesis) ਨਾ ਹੋਣ ਕਰਕੇ ਖੁੱਲੀ ਬਰੈਕਟ(parenthesis) ਸੀ"
+msgstr "ਤਾਲਮੇਲ ਸਮੀਕਰਨ ਵਿੱਚ ਕੋਈ ਬੰਦ ਬਰੈਕਟ ਨਾ ਹੋਣ ਕਰਕੇ ਖੁੱਲੀ ਬਰੈਕਟ ਸੀ"
 
-#: ../src/theme.c:2140
+#: ../src/theme.c:2137
 msgid "Coordinate expression doesn't seem to have any operators or operands"
-msgstr "ਤਾਲਮੇਲ ਸਮੀਕਰਨ ਵਿੱਚ ਕੋਈ ਵੀ ਆਪ੍ਰੇਟਰ ਜਾਂ ਪ੍ਰਭਾਵੀ ਅੰਕ ਨਹੀਂ ਦਿਸਦਾ"
+msgstr "ਤਾਲਮੇਲ ਸਮੀਕਰਨ ਵਿੱਚ ਕੋਈ ਵੀ ਆਪਰੇਟਰ ਜਾਂ ਪ੍ਰਭਾਵੀ ਅੰਕ ਨਹੀਂ ਦਿਸਦਾ"
 
-#: ../src/theme.c:2384 ../src/theme.c:2406 ../src/theme.c:2427
+#: ../src/theme.c:2381 ../src/theme.c:2403 ../src/theme.c:2424
 #, c-format
 msgid "Theme contained an expression \"%s\" that resulted in an error: %s\n"
-msgstr "ਸਰੂਪ ਵਿੱਚ ਸਮੀਕਰਨ \"%s\" ਹੈ ਜਿਸ ਦਾ ਨਤੀਜਾ ਹੈ ਗਲਤੀ: %s\n"
+msgstr "ਸਰੂਪ ਵਿੱਚ ਸਮੀਕਰਨ \"%s\" ਹੈ, ਜਿਸ ਦਾ ਨਤੀਜਾ ਹੈ ਗਲਤੀ: %s\n"
 
-#: ../src/theme.c:3913
+#: ../src/theme.c:3910
 #, c-format
 msgid ""
 "<button function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> must be "
 "specified for this frame style"
 msgstr ""
-"ਇਸ ਫਰੇਮ ਵਾਸਤੇ <ਬਟਨ ਕੰਮ=\"%s\"ਅਵਸਥਾ=\"%s\" ਉਲੀਕ_ਕਿਰਿਆ=\"ਕੋਈ ਵੀ\"/> ਨਿਰਧਾਰਿਤ ਕਰਨਾ "
-"ਜਰੂਰੀ ਹੈ"
+"ਇਹ ਫਰੇਮ ਸ਼ੈਲੀ ਲਈ <button function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> "
+"ਦੇਣਾ ਲਾਜ਼ਮੀ"
 
-#: ../src/theme.c:4363 ../src/theme.c:4395
+#: ../src/theme.c:4360 ../src/theme.c:4392
 #, c-format
-msgid ""
-"Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
-msgstr "ਗੁੰਮ <ਫਰੇਮ ਅਵਸਥਾ=\"%s\" ਮੁੜ ਆਕਾਰ =\"%s\" ਕੇਂਦਰ=\"%s\" ਨਮੂਨਾ=\"ਕੋਈ ਵੀ\"/>"
+msgid "Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
+msgstr "<frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/> ਗੁੰਮ ਨਹੀਂ"
 
-#: ../src/theme.c:4446
+#: ../src/theme.c:4443
 #, c-format
 msgid "Failed to load theme \"%s\": %s\n"
 msgstr "ਸਰੂਪ \"%s\" ਲੋਡ ਕਰਨ ਲਈ ਅਸਫਲ: %s\n"
 
-#: ../src/theme.c:4592 ../src/theme.c:4599 ../src/theme.c:4606
-#: ../src/theme.c:4613 ../src/theme.c:4620
+#: ../src/theme.c:4597 ../src/theme.c:4604 ../src/theme.c:4611
+#: ../src/theme.c:4618 ../src/theme.c:4625
 #, c-format
 msgid "No <%s> set for theme \"%s\""
-msgstr "ਕੋਈ <%s> ਨਿਰਧਾਰਿਤ ਨਹੀਂ ਸਰੂਪ \"%s\" ਲਈ"
+msgstr "ਸਰੂਪ \"%2$s\" ਲਈ ਕੋਈ <%1$s> ਸੈੱਟ ਨਹੀਂ"
 
-#: ../src/theme.c:4630
+#: ../src/theme.c:4635
 #, c-format
 msgid ""
 "No frame style set for window type \"%s\" in theme \"%s\", add a <window "
 "type=\"%s\" style_set=\"whatever\"/> element"
 msgstr ""
-"ਅਜਲਾਸ \"%s\" ਵਿੱਚ ਝਰੋਖਾ ਕਿਸਮ \"%s\" ਲਈ ਕੋਈ ਫਰੇਮ ਨਮੂਨਾ ਨਿਰਧਾਰਿਤ ਨਹੀਂ ਕੀਤਾ, ਇੱਕ <ਝਰੋਖਾ "
-"ਕਿਸਮ=\"%s\" ਨਮੂਨਾ ਸਮੂਹ=\"ਕੋਈ ਵੀ\"/> ਅੰਸ਼ ਸ਼ਾਮਿਲ ਕਰੋ"
+"ਝਰੋਖਾ ਕਿਸਮ \"%s\", ਸਰੂਪ \"%s\" ਵਿੱਚ, ਕੋਈ ਫਰੇਮ ਸ਼ੈਲੀ ਨਹੀਂ ਦਿੱਤੀ ਹੈ, ਇੱਕ <window "
+"type=\"%s\" style_set=\"whatever\"/> ਇਕਾਈ ਜੋੜੋ"
 
-#: ../src/theme.c:4652
+#: ../src/theme.c:4657
 #, c-format
 msgid ""
 "<menu_icon function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> must be "
 "specified for this theme"
 msgstr ""
-"ਇਸ ਅਜਲਾਸ ਲਈ <ਸੂਚੀ ਆਈਕਾਨ ਕੰਮ=\"%s\" ਅਵਸਥਾ=\"%s\" ਉਲੀਕ ਕਿਰਿਆ=\"ਕੋਈ ਵੀ\"/>ਨਿਰਧਾਰਿਤ "
-"ਹੋਵੇ"
+"ਇਹ ਸਰੂਪ ਲਈ <menu_icon function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> ਦੇਣਾ "
+"ਲਾਜ਼ਮੀ ਹੈ"
 
-#: ../src/theme.c:5041 ../src/theme.c:5103
+#: ../src/theme.c:5046 ../src/theme.c:5108
 #, c-format
-msgid ""
-"User-defined constants must begin with a capital letter; \"%s\" does not"
-msgstr "ਉਪਯੋਗੀ ਦੁਆਰਾ ਪਰਭਾਸ਼ਿਤ ਸਥਿਰ ਵੱਡੇ ਅੱਖਰ ਨਾਲ ਸ਼ੁਰੂ ਹੋਣ; \"%s\" ਨਹੀਂ ਹੁੰਦੇ"
+msgid "User-defined constants must begin with a capital letter; \"%s\" does not"
+msgstr "ਉਪਭੋਗੀ-ਪਰਭਾਸ਼ਿਤ ਸਥਿਰ ਵੱਡੇ ਅੱਖਰ ਨਾਲ ਸ਼ੁਰੂ ਹੋਣ; \"%s\" ਨਹੀਂ ਹੁੰਦੇ"
 
-#: ../src/theme.c:5049 ../src/theme.c:5111
+#: ../src/theme.c:5054 ../src/theme.c:5116
 #, c-format
 msgid "Constant \"%s\" has already been defined"
 msgstr "ਸਥਿਰ \"%s\" ਪਹਿਲਾਂ ਹੀ ਪਰਭਾਸ਼ਿਤ ਕੀਤਾ ਹੈ"
 
-#: ../src/util.c:93
+#: ../src/util.c:96
 #, c-format
 msgid "Failed to open debug log: %s\n"
-msgstr "ਡੀਬੱਗ ਲਾਗ(ਰੋਜਨਾਮਚਾ) ਖੋਲਣ ਵਿੱਚ ਅਸਫਲ: %s\n"
+msgstr "ਡੀਬੱਗ ਲਾਗ ਖੋਲ੍ਹਣ ਵਿੱਚ ਅਸਫਲ: %s\n"
 
-#: ../src/util.c:103
+#: ../src/util.c:106
 #, c-format
 msgid "Failed to fdopen() log file %s: %s\n"
-msgstr "ਲਾਗ(ਰੋਜਨਾਮਚਾ) ਫਾਇਲ %s ਨੂੰ fdopen() ਲਈ ਅਸਫਲ: %s\n"
+msgstr "ਲਾਗ ਫਾਇਲ %s ਨੂੰ fdopen() ਲਈ ਅਸਫਲ: %s\n"
 
-#: ../src/util.c:109
+#: ../src/util.c:112
 #, c-format
 msgid "Opened log file %s\n"
-msgstr "ਖੁੱਲੀ ਹੋਈ ਲਾਗ(ਰੋਜਨਾਮਚਾ) ਫਾਇਲ %s\n"
+msgstr "ਖੁੱਲ੍ਹੀ ਲਾਗ ਫਾਇਲ %s\n"
 
-#: ../src/util.c:203
+#: ../src/util.c:220
 msgid "Window manager: "
 msgstr "ਝਰੋਖਾ ਪ੍ਰਬੰਧਕ: "
 
-#: ../src/util.c:349
+#: ../src/util.c:368
 msgid "Bug in window manager: "
 msgstr "ਝਰੋਖਾ ਪ੍ਰਬੰਧਕ ਵਿੱਚ ਬੱਗ: "
 
-#: ../src/util.c:378
+#: ../src/util.c:397
 msgid "Window manager warning: "
 msgstr "ਝਰੋਖਾ ਪ੍ਰਬੰਧਕ ਚੇਤਾਵਨੀ: "
 
-#: ../src/util.c:402
+#: ../src/util.c:421
 msgid "Window manager error: "
 msgstr "ਝਰੋਖਾ ਪ੍ਰਬੰਧਕ ਗਲਤੀ: "
 
-#: ../src/window-props.c:162
+#: ../src/window-props.c:169
 #, c-format
-msgid "Application set a bogus _NET_WM_PID %ld\n"
-msgstr "ਕਾਰਜ ਨੇ ਇੱਕ ਨਕਲੀ _NET_WM_PID %ld ਨਿਰਧਾਰਿਤ ਕੀਤਾ\n"
+msgid "Application set a bogus _NET_WM_PID %lu\n"
+msgstr "ਕਾਰਜ ਨੇ ਇੱਕ ਨਕਲੀ _NET_WM_PID %lu ਦਿੱਤਾ\n"
+
+#: ../src/window-props.c:233
+#, c-format
+msgid "%s (on %s)"
+msgstr "%s (%s ਉੱਤੇ)"
 
 #. first time through
-#: ../src/window.c:5205
+#: ../src/window.c:5404
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
 "window as specified in the ICCCM.\n"
 msgstr ""
-"ਝਰੋਖੇ %s  ਨੇ ਆਪਣੇ ਉੱਪਰ ICCCM ਦੁਆਰਾ ਦੱਸੇ ਅਨੁਸਾਰ WM_CLIENT_LEADER ਝਰੋਖੇ ਦੀ ਬਜਾਏ "
+"ਝਰੋਖੇ %s  ਨੇ ਆਪਣੇ ਉੱਪਰ ICCCM ਵਲੋਂ ਦੱਸੇ ਅਨੁਸਾਰ WM_CLIENT_LEADER ਝਰੋਖੇ ਦੀ ਬਜਾਏ "
 "SM_CLIENT_ID ਨਿਰਧਾਰਿਤ ਕੀਤਾ ਹੈ।\n"
 
 #. We ignore mwm_has_resize_func because WM_NORMAL_HINTS is the
@@ -3067,13 +3110,13 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/window.c:5876
+#: ../src/window.c:6032
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
 "d x %d and max size %d x %d; this doesn't make much sense.\n"
 msgstr ""
-"ਝਰੋਖੇ %s ਨੇ ਦੱਸਣ ਲਈ ਕਿ ਮੁੜ ਆਕਾਰ ਦੇਣ ਯੋਗ ਨਹੀਂ MWM ਸੰਕੇਤ ਨਿਰਧਾਰਿਤ ਕੀਤਾ ਹੈ, ਪਰ ਘੱਟ ਤੋਘੱਟ ਆਕਾਰ "
+"ਝਰੋਖੇ %s ਨੇ ਦੱਸਣ ਲਈ ਕਿ ਮੁੜ ਆਕਾਰ ਦੇਣ ਯੋਗ ਨਹੀਂ MWM ਸੰਕੇਤ ਦਿੱਤਾ ਹੈ, ਪਰ ਘੱਟ ਤੋਂ ਘੱਟ ਆਕਾਰ "
 "%d x %d ਅਤੇ ਵੱਧ ਤੋਂ ਵੱਧ ਆਕਾਰ %d x %d ਨਿਰਧਾਰਿਤ ਕਰਦਾ ਹੈ।\n"
 
 #: ../src/xprops.c:153
@@ -3086,7 +3129,7 @@ msgid ""
 "The window has title=\"%s\" class=\"%s\" name=\"%s\"\n"
 msgstr ""
 "0x%lx ਝਰੋਖੇ ਵਿੱਚ %s ਵਿਸ਼ੇਸ਼ਤਾ ਹੈ\n"
-"ਜੋ ਕਿ ਕਿਸਮ %s ਫਾਰਮਿਟ %d ਹੋਣ ਦੀ ਉਮੀਦ ਹੈ\n"
+"ਜੋ ਕਿ ਕਿਸਮ %s ਫਾਰਮੈਟ %d ਹੋਣ ਦੀ ਉਮੀਦ ਹੈ\n"
 "ਅਤੇ ਅਸਲ ਵਿੱਚ ਕਿਸਮ %s ਵਿਸ਼ੇਸ਼ਤਾ  %d n_ਅੰਗ %d ਹੈ।\n"
 "ਇਹ ਜਿਆਦਾਤਰ ਇੱਕ ਕਾਰਜ ਬੱਗ ਵਰਗਾ ਹੈ ਝਰੋਖਾ ਬੱਗ ਵਰਗਾ ਨਹੀਂ।\n"
 "ਝਰੋਖੇ ਦਾ ਸਿਰਲੇਖ=\"%s\" ਕਿਸਮ=\"%s\" ਨਾਂ=\"%s\" ਹੈ\n"
@@ -3098,6 +3141,6 @@ msgstr "ਵਿਸ਼ੇਸ਼ਤਾ %s ਝਰੋਖੇ 0x%lx ਵਿੱਚ ਅਯੋਗ
 
 #: ../src/xprops.c:482
 #, c-format
-msgid ""
-"Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
+msgid "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
 msgstr "%s ਵਿਸ਼ੇਸ਼ਤਾ 0x%lx ਝਰੋਖੇ ਉੱਪਰ ਵਿੱਚ ਲੜੀ ਵਿਚਲੇ ਮੈਂਬਰ %d ਲਈ ਅਯੋਗ UTF-8 ਸ਼ਾਮਿਲ ਹੈ\n"
+
