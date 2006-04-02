@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity 2.13.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-03 18:59+0100\n"
-"PO-Revision-Date: 2006-02-03 19:08+0100\n"
+"POT-Creation-Date: 2006-04-02 14:38+0200\n"
+"PO-Revision-Date: 2006-04-02 14:43+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian (bokmål) <i18n-no@lister.ping.uio.no>\n"
 "MIME-Version: 1.0\n"
@@ -108,19 +108,19 @@ msgstr ""
 "Et annet program bruker allerede nøkkelen %s med modifikatorer %x som "
 "binding\n"
 
-#: ../src/keybindings.c:2504
+#: ../src/keybindings.c:2534
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr ""
 "Feil under oppstart av metacity-dialog for å skrive ut en feil om en "
 "kommando: %s\n"
 
-#: ../src/keybindings.c:2609
+#: ../src/keybindings.c:2639
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "Ingen kommando %d er definert\n"
 
-#: ../src/keybindings.c:3471
+#: ../src/keybindings.c:3501
 msgid "No terminal command has been defined.\n"
 msgstr "Ingen terminalkommando er definert\n"
 
@@ -246,7 +246,7 @@ msgstr "Flytt til arbeidsområdet _over"
 msgid "Move to Workspace _Down"
 msgstr "Flytt til arbeidsområdet ne_denfor"
 
-#: ../src/menu.c:164 ../src/prefs.c:1976 ../src/prefs.c:2277
+#: ../src/menu.c:164 ../src/prefs.c:1958 ../src/prefs.c:2321
 #, c-format
 msgid "Workspace %d"
 msgstr "Arbeidsområde %d"
@@ -582,7 +582,7 @@ msgid ""
 "move or resize operation). Special messages, such as activation requests "
 "from pagers, may also raise windows when this option is false. This option "
 "is currently disabled in click-to-focus mode."
-msgstr ""
+msgstr "Mange handlinger (f.eks klikking i klientområdet, flytting av, eller endring av størrelse på vinduet) hever normalt vinduet som en bi-effekt. Sett dette valget til «false» for å fjerne koblingen mellom heving av vinduet og andre handlinger. Når denne er satt til «false» vil vinduer likevel heves av alt+venstreklikk hvor som helst på vinduet i tillegg til normalt klikk på vinduskanten (så lenge slike klikk ikke brukes til å starte flytting eller endring av størrelse på vinduet). Spesielle meldinger som aktiviseringsforespørsler fra programmer kan også heve vinduer når dette valget er satt til «false». Dette valget er deaktivert i klikk-for-fokus modus."
 
 #: ../src/metacity.schemas.in.h:24
 msgid "Maximize window"
@@ -1931,7 +1931,12 @@ msgid ""
 "window, 'toggle_maximize' which will maximize/unmaximize the window, "
 "'minimize' which will minimize the window, and 'none' which will not do "
 "anything."
-msgstr "Dette alternativet bestemmer effekten av dobbeltklikk på tittellinjen. Gyldige alternativer er «toggle_shade», hvilket vil rulle ned/opp vinduet, «toggle_maximizes» som vil maksimere/gjenopprette vinduet, «toggle_minimize», som vil minimere vinduet, og «none» som ikke gjør noen ting."
+msgstr ""
+"Dette alternativet bestemmer effekten av dobbeltklikk på tittellinjen. "
+"Gyldige alternativer er «toggle_shade», hvilket vil rulle ned/opp vinduet, "
+"«toggle_maximizes» som vil maksimere/gjenopprette vinduet, "
+"«toggle_minimize», som vil minimere vinduet, og «none» som ikke gjør noen "
+"ting."
 
 #: ../src/metacity.schemas.in.h:159
 msgid "Toggle always on top state"
@@ -1987,18 +1992,18 @@ msgstr "Fokuseringsmodus for vindu"
 msgid "Window title font"
 msgstr "Skrift for vindutittel"
 
-#: ../src/prefs.c:558 ../src/prefs.c:574 ../src/prefs.c:590 ../src/prefs.c:606
-#: ../src/prefs.c:622 ../src/prefs.c:638 ../src/prefs.c:658 ../src/prefs.c:674
-#: ../src/prefs.c:690 ../src/prefs.c:706 ../src/prefs.c:722 ../src/prefs.c:738
-#: ../src/prefs.c:754 ../src/prefs.c:770 ../src/prefs.c:787 ../src/prefs.c:803
-#: ../src/prefs.c:819 ../src/prefs.c:835 ../src/prefs.c:851 ../src/prefs.c:866
-#: ../src/prefs.c:881 ../src/prefs.c:896 ../src/prefs.c:912 ../src/prefs.c:928
-#: ../src/prefs.c:944
+#: ../src/prefs.c:540 ../src/prefs.c:556 ../src/prefs.c:572 ../src/prefs.c:588
+#: ../src/prefs.c:604 ../src/prefs.c:620 ../src/prefs.c:640 ../src/prefs.c:656
+#: ../src/prefs.c:672 ../src/prefs.c:688 ../src/prefs.c:704 ../src/prefs.c:720
+#: ../src/prefs.c:736 ../src/prefs.c:752 ../src/prefs.c:769 ../src/prefs.c:785
+#: ../src/prefs.c:801 ../src/prefs.c:817 ../src/prefs.c:833 ../src/prefs.c:848
+#: ../src/prefs.c:863 ../src/prefs.c:878 ../src/prefs.c:894 ../src/prefs.c:910
+#: ../src/prefs.c:926
 #, c-format
 msgid "GConf key \"%s\" is set to an invalid type\n"
 msgstr "GConf-nøkkel «%s» er satt til en ugyldig type\n"
 
-#: ../src/prefs.c:989
+#: ../src/prefs.c:971
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -2007,12 +2012,12 @@ msgstr ""
 "«%s» funnet i konfigurasjonsdatabasen er ikke en gyldig verdi for endring av "
 "musknapp\n"
 
-#: ../src/prefs.c:1013 ../src/prefs.c:1503
+#: ../src/prefs.c:995 ../src/prefs.c:1485
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
 msgstr "GConf-nøkkel «%s» er satt til en ugyldig verdi\n"
 
-#: ../src/prefs.c:1136
+#: ../src/prefs.c:1118
 #, c-format
 msgid ""
 "%d stored in GConf key %s is not a reasonable cursor_size; must be in the "
@@ -2021,12 +2026,12 @@ msgstr ""
 "%d lagret i GConf-nøkkel %s er ikke en fornuftig verdi for cursor_size. Må "
 "være i området 1..128\n"
 
-#: ../src/prefs.c:1216
+#: ../src/prefs.c:1198
 #, c-format
 msgid "Could not parse font description \"%s\" from GConf key %s\n"
 msgstr "Kunne ikke tolke skriftbeskrivelsen «%s» fra GConf-nøkkel %s\n"
 
-#: ../src/prefs.c:1401
+#: ../src/prefs.c:1383
 #, c-format
 msgid ""
 "%d stored in GConf key %s is not a reasonable number of workspaces, current "
@@ -2035,7 +2040,7 @@ msgstr ""
 "%d lagret i GConf-nøkkel %s er ikke et lesbart antall arbeidsområder, aktivt "
 "maksimum er %d\n"
 
-#: ../src/prefs.c:1461
+#: ../src/prefs.c:1443
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -2043,17 +2048,17 @@ msgstr ""
 "Funksjonalitet for å gå rundt ødelagte programmer er deaktivert. Noen "
 "programmer vil kanskje ikke oppføre seg korrekt.\n"
 
-#: ../src/prefs.c:1530
+#: ../src/prefs.c:1512
 #, c-format
 msgid "%d stored in GConf key %s is out of range 0 to %d\n"
 msgstr "%d lagret i GConf-nøkkel %s er utenfor området 0 til %d\n"
 
-#: ../src/prefs.c:1667
+#: ../src/prefs.c:1649
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr "Feil under spesifisering av antall arbeidsområder til %d: %s\n"
 
-#: ../src/prefs.c:2003
+#: ../src/prefs.c:1985
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -2062,7 +2067,7 @@ msgstr ""
 "«%s» funnet i konfigurasjonsdatabasen er ikke en gyldig verdi for "
 "tastaturbinding «%s»\n"
 
-#: ../src/prefs.c:2358
+#: ../src/prefs.c:2402
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr "Feil under setting av navn på arbeidsområde %d til «%s»: %s\n"
@@ -3187,15 +3192,15 @@ msgstr "Åpnet loggfil %s\n"
 msgid "Window manager: "
 msgstr "Vindushåndterer: "
 
-#: ../src/util.c:366
+#: ../src/util.c:368
 msgid "Bug in window manager: "
 msgstr "Feil i vindushåndterer: "
 
-#: ../src/util.c:395
+#: ../src/util.c:397
 msgid "Window manager warning: "
 msgstr "Advarsel fra vindushåndterer: "
 
-#: ../src/util.c:419
+#: ../src/util.c:421
 msgid "Window manager error: "
 msgstr "Feil i vindushåndterer: "
 
@@ -3204,8 +3209,13 @@ msgstr "Feil i vindushåndterer: "
 msgid "Application set a bogus _NET_WM_PID %lu\n"
 msgstr "Programmet satte en feil _NET_WM_PID %lu\n"
 
+#: ../src/window-props.c:233
+#, c-format
+msgid "%s (on %s)"
+msgstr "%s (på %s)"
+
 #. first time through
-#: ../src/window.c:5405
+#: ../src/window.c:5412
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -3221,7 +3231,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/window.c:6035
+#: ../src/window.c:6040
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
