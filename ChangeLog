@@ -1,3 +1,7 @@
+2006-04-04  Jérémy Ar Floc'h  <jeremy.lefloch@gmail.com>
+
+	* configure.in: Added "br" (Breton) to ALL_LINGUAS.
+
 2006-04-04  Pema Geyleg  <pema.geyleg@gmail.com>
 
 	* configure.in: Added "dz" (Dzongkha) to ALL_LINGUAS.
