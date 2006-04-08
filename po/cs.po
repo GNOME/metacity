@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-10 00:21+0100\n"
+"POT-Creation-Date: 2006-04-08 13:50+0200\n"
 "PO-Revision-Date: 2006-02-13 05:46+0100\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -106,17 +106,17 @@ msgid ""
 msgstr ""
 "Klávesu %s s modifikátory %x již jako zkratku používá nějaký jiný program\n"
 
-#: ../src/keybindings.c:2504
+#: ../src/keybindings.c:2534
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr "Chyba při spouštění metacity-dialog pro výpis chyby o příkazu: %s\n"
 
-#: ../src/keybindings.c:2609
+#: ../src/keybindings.c:2639
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "Nebyl definován příkaz %d.\n"
 
-#: ../src/keybindings.c:3471
+#: ../src/keybindings.c:3501
 msgid "No terminal command has been defined.\n"
 msgstr "Nebyl definován příkaz terminálu.\n"
 
@@ -243,7 +243,7 @@ msgstr "Přesunout na plochu _nahoře"
 msgid "Move to Workspace _Down"
 msgstr "Přesunout na plochu _dole"
 
-#: ../src/menu.c:164 ../src/prefs.c:1976 ../src/prefs.c:2277
+#: ../src/menu.c:164 ../src/prefs.c:1958 ../src/prefs.c:2321
 #, c-format
 msgid "Workspace %d"
 msgstr "Plocha %d"
@@ -583,7 +583,15 @@ msgid ""
 "move or resize operation). Special messages, such as activation requests "
 "from pagers, may also raise windows when this option is false. This option "
 "is currently disabled in click-to-focus mode."
-msgstr "Mnoho akcí (např. kliknutí do klientské oblasti, přesun nebo změna velikosti okna) normálně zvyšují okno jako postranní efekt. Nastavte tuto volbu na false pro oddělení zvyšování od jiných interakcí s uživatelem. Je-li false, okna lze stále zvýšit pomocí alt-levé-kliknutí kdekoli v okně nebo normálního kliknutí na dekoracích okna (pokud tato kliknutí nezačínají operaci přesunu nebo změny velikosti). Speciální zprávy, například požadavky aktivace od přepínačů, mohou také zýšit okna, je-li tato volba false. Tato volba je momentálně zakázána v režimu přepínání kliknutím."
+msgstr ""
+"Mnoho akcí (např. kliknutí do klientské oblasti, přesun nebo změna velikosti "
+"okna) normálně zvyšují okno jako postranní efekt. Nastavte tuto volbu na "
+"false pro oddělení zvyšování od jiných interakcí s uživatelem. Je-li false, "
+"okna lze stále zvýšit pomocí alt-levé-kliknutí kdekoli v okně nebo "
+"normálního kliknutí na dekoracích okna (pokud tato kliknutí nezačínají "
+"operaci přesunu nebo změny velikosti). Speciální zprávy, například požadavky "
+"aktivace od přepínačů, mohou také zýšit okna, je-li tato volba false. Tato "
+"volba je momentálně zakázána v režimu přepínání kliknutím."
 
 #: ../src/metacity.schemas.in.h:24
 msgid "Maximize window"
@@ -1894,7 +1902,11 @@ msgid ""
 "window, 'toggle_maximize' which will maximize/unmaximize the window, "
 "'minimize' which will minimize the window, and 'none' which will not do "
 "anything."
-msgstr "Tato volba určuje důsledek dvojitého kliknutí na nadpis okna. Momentálně platné volby jsou 'toggle_shade', která okno zaroluje/vyroluje, 'toggle_maximize', která okno maximalizuje/demaximalizuje, 'minimize', která okno minimalizuje, a 'none, která nedělá nic."
+msgstr ""
+"Tato volba určuje důsledek dvojitého kliknutí na nadpis okna. Momentálně "
+"platné volby jsou 'toggle_shade', která okno zaroluje/vyroluje, "
+"'toggle_maximize', která okno maximalizuje/demaximalizuje, 'minimize', která "
+"okno minimalizuje, a 'none, která nedělá nic."
 
 #: ../src/metacity.schemas.in.h:159
 msgid "Toggle always on top state"
@@ -1950,18 +1962,18 @@ msgstr "Režim aktivace oken"
 msgid "Window title font"
 msgstr "Písmo nadpisu oken"
 
-#: ../src/prefs.c:558 ../src/prefs.c:574 ../src/prefs.c:590 ../src/prefs.c:606
-#: ../src/prefs.c:622 ../src/prefs.c:638 ../src/prefs.c:658 ../src/prefs.c:674
-#: ../src/prefs.c:690 ../src/prefs.c:706 ../src/prefs.c:722 ../src/prefs.c:738
-#: ../src/prefs.c:754 ../src/prefs.c:770 ../src/prefs.c:787 ../src/prefs.c:803
-#: ../src/prefs.c:819 ../src/prefs.c:835 ../src/prefs.c:851 ../src/prefs.c:866
-#: ../src/prefs.c:881 ../src/prefs.c:896 ../src/prefs.c:912 ../src/prefs.c:928
-#: ../src/prefs.c:944
+#: ../src/prefs.c:540 ../src/prefs.c:556 ../src/prefs.c:572 ../src/prefs.c:588
+#: ../src/prefs.c:604 ../src/prefs.c:620 ../src/prefs.c:640 ../src/prefs.c:656
+#: ../src/prefs.c:672 ../src/prefs.c:688 ../src/prefs.c:704 ../src/prefs.c:720
+#: ../src/prefs.c:736 ../src/prefs.c:752 ../src/prefs.c:769 ../src/prefs.c:785
+#: ../src/prefs.c:801 ../src/prefs.c:817 ../src/prefs.c:833 ../src/prefs.c:848
+#: ../src/prefs.c:863 ../src/prefs.c:878 ../src/prefs.c:894 ../src/prefs.c:910
+#: ../src/prefs.c:926
 #, c-format
 msgid "GConf key \"%s\" is set to an invalid type\n"
 msgstr "Klíč GConf \"%s\" je nastaven na neplatný typ\n"
 
-#: ../src/prefs.c:989
+#: ../src/prefs.c:971
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -1970,24 +1982,26 @@ msgstr ""
 "\"%s\" nalezené v konfigurační databázi není platná hodnota pro modifikátor "
 "tlačítka myši\n"
 
-#: ../src/prefs.c:1013 ../src/prefs.c:1503
+#: ../src/prefs.c:995 ../src/prefs.c:1485
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
 msgstr "Klíč GConf '%s' je nastaven na neplatnou hodnotu\n"
 
-#: ../src/prefs.c:1136
+#: ../src/prefs.c:1118
 #, c-format
 msgid ""
 "%d stored in GConf key %s is not a reasonable cursor_size; must be in the "
 "range 1..128\n"
-msgstr "%d uložené v klíči GConf %s není rozumná cursor_size; musí být v rozsahu 1..128\n"
+msgstr ""
+"%d uložené v klíči GConf %s není rozumná cursor_size; musí být v rozsahu "
+"1..128\n"
 
-#: ../src/prefs.c:1216
+#: ../src/prefs.c:1198
 #, c-format
 msgid "Could not parse font description \"%s\" from GConf key %s\n"
 msgstr "Nemohu parsovat popis písma \"%s\" v klíči GConf %s\n"
 
-#: ../src/prefs.c:1401
+#: ../src/prefs.c:1383
 #, c-format
 msgid ""
 "%d stored in GConf key %s is not a reasonable number of workspaces, current "
@@ -1996,7 +2010,7 @@ msgstr ""
 "%d uložené v klíči GConf %s není rozumný počet ploch, aktuální maximum je %"
 "d\n"
 
-#: ../src/prefs.c:1461
+#: ../src/prefs.c:1443
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -2004,17 +2018,17 @@ msgstr ""
 "Bylo zakázáno obcházení chyb aplikací. Některé aplikace se možná nebudou "
 "chovat správně.\n"
 
-#: ../src/prefs.c:1530
+#: ../src/prefs.c:1512
 #, c-format
 msgid "%d stored in GConf key %s is out of range 0 to %d\n"
 msgstr "%d uloženo v klíči GConf %s je mimo rozsah 0 až %d\n"
 
-#: ../src/prefs.c:1667
+#: ../src/prefs.c:1649
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr "Chyba při nastavování počtu ploch na %d: %s\n"
 
-#: ../src/prefs.c:2003
+#: ../src/prefs.c:1985
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -2023,7 +2037,7 @@ msgstr ""
 "\"%s\" nalezené v konfigurační databázi není platná hodnota pro klávesovou "
 "zkratku \"%s\"\n"
 
-#: ../src/prefs.c:2358
+#: ../src/prefs.c:2402
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr "Chyba při nastavování jména plochy %d na \"%s\": %s\n"
@@ -3144,15 +3158,15 @@ msgstr "Otevřen soubor záznamu %s\n"
 msgid "Window manager: "
 msgstr "Manažer oken: "
 
-#: ../src/util.c:366
+#: ../src/util.c:368
 msgid "Bug in window manager: "
 msgstr "Chyba v manažeru oken: "
 
-#: ../src/util.c:395
+#: ../src/util.c:397
 msgid "Window manager warning: "
 msgstr "Varování manažera oken: "
 
-#: ../src/util.c:419
+#: ../src/util.c:421
 msgid "Window manager error: "
 msgstr "Chyba manažera oken: "
 
@@ -3161,8 +3175,13 @@ msgstr "Chyba manažera oken: "
 msgid "Application set a bogus _NET_WM_PID %lu\n"
 msgstr "Aplikace nastavila neplatný _NET_WM_PID %lu\n"
 
+#: ../src/window-props.c:233
+#, c-format
+msgid "%s (on %s)"
+msgstr ""
+
 #. first time through
-#: ../src/window.c:5405
+#: ../src/window.c:5412
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -3178,7 +3197,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/window.c:6035
+#: ../src/window.c:6040
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
