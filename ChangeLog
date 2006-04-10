@@ -1,5 +1,9 @@
 2006-04-10  Elijah Newren  <newren gmail com>
 
+	* configure.in: post-release version bump to 2.14.3
+
+2006-04-10  Elijah Newren  <newren gmail com>
+
 	* NEWS:	2.14.2 release
 
 2006-04-04  Jérémy Ar Floc'h  <jeremy.lefloch@gmail.com>
