@@ -1,3 +1,31 @@
+2006-04-12  Elijah Newren  <newren gmail com>
+
+	Patch from Ron Yorston to add a focus_new_windows option.  Default
+	is 'smart' (focus by default but normal focus-stealing-prevention
+	can kick in); 'strict' is current other choice (like 'smart'
+	except that programs launched by the terminal will not be
+	focused).  Fixes remainder of #326159.  Should also close #152004
+	and a bunch of others.
+
+	* src/common.h:
+	Add a MetaFocusNewWindows enum giving the current types allowed
+	
+	* src/display.h:
+	Update docs on allow_terminal_deactivation to note that it is only
+	relevant when focus_new_windows is 'strict'
+	
+	* src/metacity.schemas.in: add the new gconf key and explanation
+
+	* src/prefs.[ch] (#define KEY_FOCUS_NEW_WINDOWS, static gboolean
+	  focus_new_windows, update_focus_new_windows, meta_prefs_init,
+	  change_notify, meta_prefs_get_focus_new_windows,
+	  meta_preference_to_string):
+	Add all the normal preference handling stuff for this new
+	focus-new-windows option.
+	
+	* src/window.c (window_state_on_map, meta_window_set_user_time):
+	Don't focus windows launched from a terminal
+
 2006-04-10  Elijah Newren  <newren gmail com>
 
 	* configure.in: post-release version bump to 2.14.3
