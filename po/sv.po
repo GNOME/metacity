@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-13 21:40+0200\n"
-"PO-Revision-Date: 2006-04-14 01:08+0100\n"
+"PO-Revision-Date: 2006-04-14 12:51+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -434,7 +434,7 @@ msgstr "Kommandon att köra som svar på tangentbindningar"
 
 #: ../src/metacity.schemas.in.h:11
 msgid "Control how new windows get focus"
-msgstr "Kontrollera hur ny fönster får fokus"
+msgstr "Kontrollera hur nya fönster får fokus"
 
 #: ../src/metacity.schemas.in.h:12
 msgid "Current theme"
@@ -1033,7 +1033,7 @@ msgstr "Detta alternativ avgör effekterna av dubbelklick på titelraden. Aktuel
 
 #: ../src/metacity.schemas.in.h:160
 msgid "This option provides additional control over how newly created windows get focus. It has two possible values; \"smart\" applies the user's normal focus mode, and \"strict\" results in windows started from a terminal not being given focus."
-msgstr "Detta alternativ ger ytterligare kontroll över hur nyligen skapade fönster får fokus. Det har två möjliga värden; \"smart\" gäller användarens normala fokusläge, och \"strict\" resulterar i fönster startade från en terminal som inte har tilldelats fokus."
+msgstr "Det har två möjliga värden; \"smart\" tillämpar användarens normala fokusläge, och \"strict\" resulterar i att fönster startade från en terminal inte tilldelas fokus."
 
 #: ../src/metacity.schemas.in.h:161
 msgid "Toggle always on top state"
