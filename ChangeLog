@@ -1,3 +1,7 @@
+2006-04-13  Elijah Newren  <newren gmail com>
+
+	* NEWS:	2.14.3 release
+
 2006-04-12  Elijah Newren  <newren gmail com>
 
 	Patch from Ron Yorston to add a focus_new_windows option.  Default

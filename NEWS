@@ -1,3 +1,21 @@
+2.14.3
+==
+
+This release just reverts the widely hated new focus behavior of Metacity
+2.14.x to the behavior found in 2.12.x.  Patch came from Ron Yorston.  
+See http://blogs.gnome.org/view/newren/2006/04/13/0 and
+http://mail.gnome.org/archives/release-team/2006-April/msg00025.html for
+more details.
+
+ - Add a focus_new_windows gconf key, change the default to 'smart' (2.12
+   behavior) and add a 'strict' option to get 2.14 behavior.  (Ron)
+   [#326159]
+
+Translations
+  Vladimir Petkov (bg), Miloslav Trmac (cs), Frank Arnold (de), Francisco
+  Javier F. Serrador (es), Ilkka Tuohela (fi), Tino Meinen (nl), Åsmund
+  Skjæveland (nn), Raphael Higino (pt_BR), Daniel Nylander (sv)
+
 2.14.2
 ==
 
