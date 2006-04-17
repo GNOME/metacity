@@ -1,3 +1,7 @@
+2006-04-17  Clytie Siddall <clytie@riverland.net.au>
+
+	* vi.po: Updated Vietnamese translation.
+
 2006-04-17  Ankit Patel  <ankit644@yahoo.com>
 
         * gu.po: Updated Gujarati Translation.
@@ -13,7 +17,7 @@
 2006-04-16  Funda Wang  <fundawang@linux.net.cn>
 
 	* zh_CN.po: Updated Simplified Chinese translation.
-
+	
 2006-04-14  Miloslav Trmac  <mitr@volny.cz>
 
 	* cs.po: Updated Czech translation.
@@ -26,19 +30,23 @@
 
 	* pt_BR.po: Updated Brazilian Portuguese translation.
 
-2006-04-14  Ilkka Tuohela  <hile@iki.fi> 
-
-	* fi.po: Updated Finnish translation.
-
 2006-04-14  Åsmund Skjæveland  <aasmunds@fys.uio.no>
 
 	* nn.po: Updated Norwegian Nynorsk translation.
+
+2006-04-14  Ilkka Tuohela  <hile@iki.fi>
+	
+	* fi.po: Updated Finnish translation.
+
+2006-04-14  Wouter Bolsterlee  <uws+gnome@xs4all.nl>
+
+	* nl.po: Translation updated by Wouter Bolsterlee.
 
 2006-04-14  Alexander Shopov  <ash@contact.bg>
 
 	* bg.po: Updated Bulgarian translation by
 	Alexander Shopov <ash@contact.bg>
-
+	
 2006-04-14  Frank Arnold  <farnold@cvs.gnome.org>
 
 	* de.po: Updated German translation.
@@ -50,11 +58,15 @@
 2006-04-14  Vincent van Adrighem  <adrighem@gnome.org>
 
 	* nl.po: Translation updated by Tino Meinen.
-
+	
 2006-04-10  Artur Flinta  <aflinta@cvs.gnome.org>
 
 	* pl.po: Updated Polish translation by GNOME PL Team.
 
+2006-04-09  Vincent van Adrighem  <adrighem@gnome.org>
+
+	* nl.po: Translation updated by Michiel Sikkes.
+	
 2006-04-08  Miloslav Trmac  <mitr@volny.cz>
 
 	* cs.po: Updated Czech translation.
@@ -75,7 +87,7 @@
 
 	* nb.po: Updated Norwegian bokmål translation.
 	* no.po: Same.
-
+	
 2006-03-26  Ole Laursen  <olau@hardworking.dk>
 
 	* da.po: Committed Danish translation from HEAD to the gnome-2-14
@@ -100,7 +112,7 @@
 2006-03-17  Priit Laes  <amd@store20.com>
 
 	* et.po: Translation updated by Ivar Smolin.
-
+	
 2006-03-16  Francisco Javier F. Serrador  <serrador@cvs.gnome.org>
 
 	* es.po: Updated Spanish translation.
@@ -116,7 +128,7 @@
 2006-03-15  Žygimantas Beručka  <zygis@gnome.org>
 
 	* lt.po: Updated Lithuanian translation.
-
+	
 2006-03-15  Maxim Dziumanenko <mvd@mylinux.ua>
 
         * uk.po: Updated Ukrainian translation.
@@ -142,7 +154,7 @@
 
 	* ja.po: Updated Japanese translation; merged changes 
 	from HEAD.
-	
+
 2006-03-14  Mugurel Tudor  <mugurelu@gnome.ro>
 
 	* ro.po: Updated Romanian translation
@@ -288,7 +300,7 @@
 	
 2006-03-02  Luca Ferretti  <elle.uca@libero.it>
 
-	* it.po: Updated Italian translation.	
+	* it.po: Updated Italian translation.
 
 2006-03-02  Rhys Jones  <rhys@sucs.org>
 
