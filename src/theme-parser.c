@@ -83,6 +83,7 @@ typedef struct
   char *theme_dir;              /* dir the theme is inside */
   MetaTheme *theme;             /* theme being parsed */
   char *name;                   /* name of named thing being parsed */
+  guint format_version;         /* theme version */
   MetaFrameLayout *layout;      /* layout being parsed if any */
   MetaDrawOpList *op_list;      /* op list being parsed if any */
   MetaDrawOp *op;               /* op being parsed if any */
@@ -2252,7 +2253,7 @@ parse_draw_op_element (GMarkupParseContext  *context,
                               "x", &x, "y", &y,
                               "width", &width, "height", &height,
                               "alpha", &alpha, "filename", &filename,
-			      "colorize", &colorize,
+                              "colorize", &colorize,
                               "fill_type", &fill_type,
                               NULL))
         return;
@@ -4240,15 +4241,19 @@ text_handler (GMarkupParseContext *context,
     }
 }
 
-/* We change the filename when we break the format,
- * so themes can work with various metacity versions
- * (note, this is obsolete now because we are versioning
- * the directory this file is inside, so oh well)
+/* We were intending to put the version number
+ * in the subdirectory name, but we ended up
+ * using the filename instead.  The "-1" survives
+ * as a fossil.
  */
-#define THEME_FILENAME "metacity-theme-1.xml"
-
-/* now this is versioned, /usr/share/themes/NAME/THEME_SUBDIR/THEME_FILENAME */
 #define THEME_SUBDIR "metacity-1"
+
+/* Highest version of the theme format to
+ * look out for.
+ */
+#define THEME_VERSION 2
+
+#define METACITY_THEME_FILENAME_FORMAT "metacity-theme-%d.xml"
 
 MetaTheme*
 meta_theme_load (const char *theme_name,
@@ -4262,6 +4267,7 @@ meta_theme_load (const char *theme_name,
   char *theme_file;
   char *theme_dir;
   MetaTheme *retval;
+  guint version;
 
   text = NULL;
   length = 0;
@@ -4273,11 +4279,14 @@ meta_theme_load (const char *theme_name,
   
   if (meta_is_debugging ())
     {
+      gchar *theme_filename = g_strdup_printf (METACITY_THEME_FILENAME_FORMAT,
+                                               THEME_VERSION);
+
       /* Try in themes in our source tree */
       theme_dir = g_build_filename ("./themes", theme_name, NULL);
       
       theme_file = g_build_filename (theme_dir,
-                                     THEME_FILENAME,
+                                     theme_filename,
                                      NULL);
       
       error = NULL;
@@ -4293,12 +4302,19 @@ meta_theme_load (const char *theme_name,
           g_free (theme_file);
           theme_file = NULL;
         }
+      version = THEME_VERSION;
+
+      g_free (theme_filename);
     }
   
-  /* We try in home dir, then system dir for themes */
-  
-  if (text == NULL)
+  /* We try all supported versions from current to oldest */
+  for (version = THEME_VERSION; (version > 0) && (text == NULL); version--)
     {
+      gchar *theme_filename = g_strdup_printf (METACITY_THEME_FILENAME_FORMAT,
+                                               version);
+      
+      /* We try in home dir, then system dir for themes */
+  
       theme_dir = g_build_filename (g_get_home_dir (),
                                     ".themes",
                                     theme_name,
@@ -4306,7 +4322,7 @@ meta_theme_load (const char *theme_name,
                                     NULL);
       
       theme_file = g_build_filename (theme_dir,
-                                     THEME_FILENAME,
+                                     theme_filename,
                                      NULL);
 
       error = NULL;
@@ -4322,36 +4338,45 @@ meta_theme_load (const char *theme_name,
           g_free (theme_file);
           theme_file = NULL;
         }
+
+      if (text == NULL)
+        {
+          theme_dir = g_build_filename (METACITY_DATADIR,
+                                        "themes",
+                                        theme_name,
+                                        THEME_SUBDIR,
+                                        NULL);
+      
+          theme_file = g_build_filename (theme_dir,
+                                         theme_filename,
+                                         NULL);
+
+          error = NULL;
+          if (!g_file_get_contents (theme_file,
+                                    &text,
+                                    &length,
+                                    &error))
+            {
+              meta_topic (META_DEBUG_THEMES, "Failed to read theme from file %s: %s\n",
+                            theme_file, error->message);
+              g_error_free (error);
+              g_free (theme_dir);
+              g_free (theme_file);
+              theme_file = NULL;
+            }
+        }
+
+      g_free (theme_filename);
     }
 
   if (text == NULL)
     {
-      theme_dir = g_build_filename (METACITY_DATADIR,
-                                    "themes",
-                                    theme_name,
-                                    THEME_SUBDIR,
-                                    NULL);
-      
-      theme_file = g_build_filename (theme_dir,
-                                     THEME_FILENAME,
-                                     NULL);
+      g_set_error (err, META_THEME_ERROR, META_THEME_ERROR_FAILED,
+          _("Failed to find a valid file for theme %s\n"),
+          theme_name);
 
-      error = NULL;
-      if (!g_file_get_contents (theme_file,
-                                &text,
-                                &length,
-                                &error))
-        {
-          meta_warning (_("Failed to read theme from file %s: %s\n"),
-                        theme_file, error->message);
-          g_propagate_error (err, error);
-          g_free (theme_file);
-          g_free (theme_dir);
-          return NULL; /* all fallbacks failed */
-        }
+      return NULL; /* all fallbacks failed */
     }
-
-  g_assert (text);
 
   meta_topic (META_DEBUG_THEMES, "Parsing theme file %s\n", theme_file);
 

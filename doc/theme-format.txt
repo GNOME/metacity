@@ -1,6 +1,32 @@
-Docs on the theme format
+Themes are in a simple XML-subset format. There are multiple versions
+of the theme format, and a given theme can support more than one format.
 
-Themes are in a simple XML-subset format.
+Version 1:     THEMEDIR/metacity-1/metacity-theme-1.xml
+  (original metacity format)
+Version 2:     THEMEDIR/metacity-1/metacity-theme-2.xml
+
+The subdirectory name is "metacity-1" in all versions.
+
+As you might expect, older versions of metacity will not understand
+newer theme formats. However, newer versions will use old themes.
+Metacity will always use the newest theme format it understands that
+the X server supports. Some format versions are only supported if you
+have the right X server features.
+
+Each format *requires* the corresponding filename. If you put version
+2 format features in the metacity-1/metacity-theme-1.xml file, then
+metacity will get angry.
+
+This document has separate sections for each format version. You may
+want to read the document in reverse order, since the base features
+are discussed under version 1.
+
+New Features in Theme Format Version 2
+======================================
+(to be decided)
+
+Overview of Theme Format Version 1
+==================================
 
 <?xml version="1.0"?>
 <metacity_theme>
