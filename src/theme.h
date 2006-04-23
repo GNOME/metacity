@@ -131,6 +131,7 @@ struct _MetaFrameGeometry
   GdkRectangle max_rect;
   GdkRectangle min_rect;
   GdkRectangle menu_rect;
+  GdkRectangle shade_rect;
 
 #define MAX_MIDDLE_BACKGROUNDS (MAX_BUTTONS_PER_CORNER - 2)
   GdkRectangle left_left_background;
@@ -424,6 +425,7 @@ typedef enum
   META_BUTTON_TYPE_MAXIMIZE,
   META_BUTTON_TYPE_MINIMIZE,
   META_BUTTON_TYPE_MENU,
+  META_BUTTON_TYPE_SHADE,
   META_BUTTON_TYPE_LAST
 } MetaButtonType;
 
@@ -836,6 +838,5 @@ GtkArrowType          meta_gtk_arrow_from_string       (const char            *s
 const char*           meta_gtk_arrow_to_string         (GtkArrowType           arrow);
 MetaImageFillType     meta_image_fill_type_from_string (const char            *str);
 const char*           meta_image_fill_type_to_string   (MetaImageFillType      fill_type);
-
 
 #endif

@@ -416,7 +416,12 @@ rect_for_function (MetaFrameGeometry *fgeom,
         return &fgeom->close_rect;
       else
         return NULL;
-    case META_BUTTON_FUNCTION_LAST:
+    case META_BUTTON_FUNCTION_SHADE:
+      if (flags & META_FRAME_ALLOWS_SHADE)
+        return &fgeom->shade_rect;
+      else
+        return NULL;
+     case META_BUTTON_FUNCTION_LAST:
       return NULL;
     }
 
@@ -608,10 +613,16 @@ meta_frame_layout_calc_geometry (const MetaFrameLayout  *layout,
         break; /* Everything fits, bail out */
       
       /* Otherwise we need to shave out a button. Shave
-       * min, max, close, then menu (menu is most useful);
+       * shade, min, max, close, then menu (menu is most useful);
        * prefer the default button locations.
        */
       if (strip_button (left_func_rects, left_bg_rects,
+                        &n_left, &fgeom->shade_rect))
+        continue;
+      else if (strip_button (right_func_rects, right_bg_rects,
+                             &n_right, &fgeom->shade_rect))
+        continue;
+      else if (strip_button (left_func_rects, left_bg_rects,
                         &n_left, &fgeom->min_rect))
         continue;
       else if (strip_button (right_func_rects, right_bg_rects,
@@ -3871,6 +3882,10 @@ button_rect (MetaButtonType           type,
       *rect = fgeom->close_rect;
       break;
 
+     case META_BUTTON_TYPE_SHADE:
+      *rect = fgeom->shade_rect;
+      break;
+
     case META_BUTTON_TYPE_MAXIMIZE:
       *rect = fgeom->max_rect;
       break;
@@ -5150,6 +5165,8 @@ meta_button_type_from_string (const char *str)
     return META_BUTTON_TYPE_MINIMIZE;
   else if (strcmp ("menu", str) == 0)
     return META_BUTTON_TYPE_MENU;
+   else if (strcmp ("shade", str) == 0 && META_THEME_ALLOWS(META_THEME_SHADE_BUTTONS))
+    return META_BUTTON_TYPE_SHADE;
   else if (strcmp ("left_left_background", str) == 0)
     return META_BUTTON_TYPE_LEFT_LEFT_BACKGROUND;
   else if (strcmp ("left_middle_background", str) == 0)
@@ -5177,6 +5194,8 @@ meta_button_type_to_string (MetaButtonType type)
       return "maximize";
     case META_BUTTON_TYPE_MINIMIZE:
       return "minimize";
+    case META_BUTTON_TYPE_SHADE:
+      return "shade";
     case META_BUTTON_TYPE_MENU:
       return "menu";
     case META_BUTTON_TYPE_LEFT_LEFT_BACKGROUND:

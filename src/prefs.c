@@ -1379,7 +1379,11 @@ button_function_from_string (const char *str)
     return META_BUTTON_FUNCTION_MAXIMIZE;
   else if (strcmp (str, "close") == 0)
     return META_BUTTON_FUNCTION_CLOSE;
-  else
+  else if (strcmp (str, "shade") == 0 &&
+      META_THEME_ALLOWS (META_THEME_SHADE_BUTTONS))
+    return META_BUTTON_FUNCTION_SHADE;
+  else 
+    /* don't know; give up */
     return META_BUTTON_FUNCTION_LAST;
 }
 

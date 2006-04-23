@@ -129,7 +129,8 @@ typedef enum
   META_GRAB_OP_CLICKING_MAXIMIZE,
   META_GRAB_OP_CLICKING_UNMAXIMIZE,
   META_GRAB_OP_CLICKING_DELETE,
-  META_GRAB_OP_CLICKING_MENU
+  META_GRAB_OP_CLICKING_MENU,
+  META_GRAB_OP_CLICKING_SHADE
 } MetaGrabOp;
 
 typedef enum
@@ -226,9 +227,15 @@ typedef enum
   META_BUTTON_FUNCTION_MINIMIZE,
   META_BUTTON_FUNCTION_MAXIMIZE,
   META_BUTTON_FUNCTION_CLOSE,
+  META_BUTTON_FUNCTION_SHADE,
   META_BUTTON_FUNCTION_LAST
 } MetaButtonFunction;
 
+/* Hmm. Strictly speaking, we're not supposed to change the
+ * interpretation of theme-1, but the max number of buttons
+ * in one corner is equal to the number of buttons in theme-2
+ * in both theme formats. :(
+ */
 #define MAX_BUTTONS_PER_CORNER META_BUTTON_FUNCTION_LAST
 
 typedef struct _MetaButtonLayout MetaButtonLayout;
@@ -255,5 +262,16 @@ struct _MetaButtonLayout
   (xcoord) <  ((rect).x + (rect).width) &&  \
   (ycoord) >= (rect).y &&                   \
   (ycoord) <  ((rect).y + (rect).height))
+
+/* Features present only in some theme versions */
+
+/* FIXME */
+#define META_THEME_ALLOWS(feature) (2 >= feature)
+
+/* Each feature is defined to be equal to the theme version
+ *  * in which it was introduced.
+ *   */
+#define META_THEME_SHADE_BUTTONS 2
+
 
 #endif
