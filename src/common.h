@@ -270,11 +270,4 @@ struct _MetaButtonLayout
 /* FIXME */
 #define META_THEME_ALLOWS(feature) (2 >= feature)
 
-/* Each feature is defined to be equal to the theme version
- * in which it was introduced.
- */
-#define META_THEME_SHADE_BUTTONS 2
-#define META_THEME_ABOVE_BUTTONS 2
-#define META_THEME_STICK_BUTTONS 2
-
 #endif

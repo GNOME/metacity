@@ -3289,6 +3289,18 @@ parse_style_element (GMarkupParseContext  *context,
           return;
         }
 
+      if (meta_theme_earliest_version_with_button (info->button_type) >
+          info->format_version)
+        {
+          set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
+                     _("Button function \"%s\" does not exist in this version (%d, need %d)"),
+                     function,
+                     info->format_version,
+                     meta_theme_earliest_version_with_button (info->button_type)
+                     );
+          return;
+        }
+
       info->button_state = meta_button_state_from_string (state);
       if (info->button_state == META_BUTTON_STATE_LAST)
         {
@@ -3961,6 +3973,7 @@ end_element_handler (GMarkupParseContext *context,
       g_assert (info->style);
 
       if (!meta_frame_style_validate (info->style,
+                                      info->format_version,
                                       error))
         {
           add_context_to_error (error, context);
@@ -4377,6 +4390,8 @@ meta_theme_load (const char *theme_name,
 
       return NULL; /* all fallbacks failed */
     }
+
+  info.format_version = version+1;
 
   meta_topic (META_DEBUG_THEMES, "Parsing theme file %s\n", theme_file);
 

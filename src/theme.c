@@ -3820,6 +3820,7 @@ get_button (MetaFrameStyle *style,
 
 gboolean
 meta_frame_style_validate (MetaFrameStyle    *style,
+                           guint              current_theme_version,
                            GError           **error)
 {
   int i, j;
@@ -3834,7 +3835,10 @@ meta_frame_style_validate (MetaFrameStyle    *style,
         {
           for (j = 0; j < META_BUTTON_STATE_LAST; j++)
             {
-              if (get_button (style, i, j) == NULL)
+            meta_warning("Checking button %d for theme version %d\n", j, current_theme_version);
+              if (get_button (style, i, j) == NULL &&
+                  meta_theme_earliest_version_with_button (j) <= current_theme_version
+                  )
                 {
                   g_set_error (error, META_THEME_ERROR,
                                META_THEME_ERROR_FAILED,
@@ -5177,11 +5181,11 @@ meta_button_type_from_string (const char *str)
     return META_BUTTON_TYPE_MINIMIZE;
   else if (strcmp ("menu", str) == 0)
     return META_BUTTON_TYPE_MENU;
-  else if (strcmp ("shade", str) == 0 && META_THEME_ALLOWS(META_THEME_SHADE_BUTTONS))
+  else if (strcmp ("shade", str) == 0)
     return META_BUTTON_TYPE_SHADE;
-  else if (strcmp ("above", str) == 0 && META_THEME_ALLOWS(META_THEME_ABOVE_BUTTONS))
+  else if (strcmp ("above", str) == 0)
     return META_BUTTON_TYPE_ABOVE;
-  else if (strcmp ("stick", str) == 0 && META_THEME_ALLOWS(META_THEME_STICK_BUTTONS))
+  else if (strcmp ("stick", str) == 0)
     return META_BUTTON_TYPE_STICK;
   else if (strcmp ("left_left_background", str) == 0)
     return META_BUTTON_TYPE_LEFT_LEFT_BACKGROUND;
@@ -6043,3 +6047,31 @@ draw_bg_gradient_composite (const MetaTextureSpec *bg,
     }
 }
 #endif
+
+guint
+meta_theme_earliest_version_with_button (MetaButtonType type)
+{
+  switch (type)
+    {
+    case META_BUTTON_TYPE_CLOSE:
+    case META_BUTTON_TYPE_MAXIMIZE:
+    case META_BUTTON_TYPE_MINIMIZE:
+    case META_BUTTON_TYPE_MENU:
+    case META_BUTTON_TYPE_LEFT_LEFT_BACKGROUND:
+    case META_BUTTON_TYPE_LEFT_MIDDLE_BACKGROUND:
+    case META_BUTTON_TYPE_LEFT_RIGHT_BACKGROUND:
+    case META_BUTTON_TYPE_RIGHT_LEFT_BACKGROUND:
+    case META_BUTTON_TYPE_RIGHT_MIDDLE_BACKGROUND:
+    case META_BUTTON_TYPE_RIGHT_RIGHT_BACKGROUND:
+      return 1;
+      
+    case META_BUTTON_TYPE_SHADE:
+    case META_BUTTON_TYPE_ABOVE:
+    case META_BUTTON_TYPE_STICK:
+      return 2;
+
+    default:
+      meta_warning("Unknown button %d\n", type);
+      return 1; 
+    }
+}

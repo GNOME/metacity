@@ -1647,7 +1647,8 @@ meta_frames_button_release_event    (GtkWidget           *widget,
           if (point_in_control (frames, frame,
                                 META_FRAME_CONTROL_ABOVE,
                                 event->x, event->y))
-            /*meta_window_make_above (meta_display_lookup_x_window (gdk_display, frame->window))*/;
+            meta_window_make_above (meta_display_lookup_x_window (
+                  meta_display_for_x_display (gdk_display), frame->xwindow));
           redraw_control (frames, frame,
                           META_FRAME_CONTROL_ABOVE);
           end_grab = TRUE;
@@ -1657,7 +1658,8 @@ meta_frames_button_release_event    (GtkWidget           *widget,
           if (point_in_control (frames, frame,
                                 META_FRAME_CONTROL_UNABOVE,
                                 event->x, event->y))
-            /*meta_window_unmake_above (meta_display_lookup_x_window (gdk_display, frame->window))*/;
+            meta_window_unmake_above (meta_display_lookup_x_window (
+                  meta_display_for_x_display (gdk_display), frame->xwindow));
           redraw_control (frames, frame,
                           META_FRAME_CONTROL_ABOVE);
           end_grab = TRUE;
@@ -2539,8 +2541,15 @@ get_control (MetaFrames *frames,
 
   if (POINT_IN_RECT (x, y, fgeom.above_rect))
     {
-      /* XXX FIXME find whether we're above */
-      return META_FRAME_CONTROL_ABOVE;
+      MetaWindow *our_window =
+        meta_display_lookup_x_window (
+          meta_display_for_x_display (gdk_display),
+          frame->xwindow);
+
+      if (our_window->wm_state_above)
+        return META_FRAME_CONTROL_UNABOVE;
+      else
+        return META_FRAME_CONTROL_ABOVE;
     }
 
   if (POINT_IN_RECT (x, y, fgeom.stick_rect))

@@ -695,6 +695,7 @@ void meta_frame_style_draw (MetaFrameStyle          *style,
 
 
 gboolean       meta_frame_style_validate (MetaFrameStyle    *style,
+                                          guint              current_theme_version,
                                           GError           **error);
 
 MetaFrameStyleSet* meta_frame_style_set_new   (MetaFrameStyleSet *parent);
@@ -842,5 +843,7 @@ GtkArrowType          meta_gtk_arrow_from_string       (const char            *s
 const char*           meta_gtk_arrow_to_string         (GtkArrowType           arrow);
 MetaImageFillType     meta_image_fill_type_from_string (const char            *str);
 const char*           meta_image_fill_type_to_string   (MetaImageFillType      fill_type);
+
+guint meta_theme_earliest_version_with_button (MetaButtonType type);
 
 #endif
