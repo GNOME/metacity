@@ -30,6 +30,7 @@
 #include "fixedtip.h"
 #include "theme.h"
 #include "prefs.h"
+#include "window.h"
 
 #ifdef HAVE_SHAPE
 #include <X11/extensions/shape.h>
@@ -1100,6 +1101,21 @@ show_tip_now (MetaFrames *frames)
     case META_FRAME_CONTROL_SHADE:
       tiptext = _("Roll Up Window");
       break;
+    case META_FRAME_CONTROL_UNSHADE:
+      tiptext = _("Unroll Window");
+      break;
+    case META_FRAME_CONTROL_ABOVE:
+      tiptext = _("Keep Window On Top");
+      break;
+    case META_FRAME_CONTROL_UNABOVE:
+      tiptext = _("Remove Window From Top");
+      break;
+    case META_FRAME_CONTROL_STICK:
+      tiptext = _("Stick Window On All Workspaces");
+      break;
+    case META_FRAME_CONTROL_UNSTICK:
+      tiptext = _("Put Window On Only One Workspace");
+      break;
     case META_FRAME_CONTROL_RESIZE_SE:
       break;
     case META_FRAME_CONTROL_RESIZE_S:
@@ -1309,6 +1325,11 @@ meta_frames_button_press_event (GtkWidget      *widget,
        control == META_FRAME_CONTROL_MINIMIZE ||
        control == META_FRAME_CONTROL_DELETE ||
        control == META_FRAME_CONTROL_SHADE ||
+       control == META_FRAME_CONTROL_UNSHADE ||
+       control == META_FRAME_CONTROL_ABOVE ||
+       control == META_FRAME_CONTROL_UNABOVE ||
+       control == META_FRAME_CONTROL_STICK ||
+       control == META_FRAME_CONTROL_UNSTICK ||
        control == META_FRAME_CONTROL_MENU))
     {
       MetaGrabOp op = META_GRAB_OP_NONE;
@@ -1332,6 +1353,21 @@ meta_frames_button_press_event (GtkWidget      *widget,
           break;
         case META_FRAME_CONTROL_SHADE:
           op = META_GRAB_OP_CLICKING_SHADE;
+          break;
+        case META_FRAME_CONTROL_UNSHADE:
+          op = META_GRAB_OP_CLICKING_UNSHADE;
+          break;
+        case META_FRAME_CONTROL_ABOVE:
+          op = META_GRAB_OP_CLICKING_ABOVE;
+          break;
+        case META_FRAME_CONTROL_UNABOVE:
+          op = META_GRAB_OP_CLICKING_UNABOVE;
+          break;
+        case META_FRAME_CONTROL_STICK:
+          op = META_GRAB_OP_CLICKING_STICK;
+          break;
+        case META_FRAME_CONTROL_UNSTICK:
+          op = META_GRAB_OP_CLICKING_UNSTICK;
           break;
         default:
           g_assert_not_reached ();
@@ -1588,19 +1624,63 @@ meta_frames_button_release_event    (GtkWidget           *widget,
           break;
 
         case META_GRAB_OP_CLICKING_SHADE:
-          {
-            MetaFrameFlags flags;
+          if (point_in_control (frames, frame,
+                                META_FRAME_CONTROL_SHADE,
+                                event->x, event->y))
+            meta_core_shade (gdk_display, frame->xwindow);
+          redraw_control (frames, frame,
+                          META_FRAME_CONTROL_SHADE);
+          end_grab = TRUE;
+          break;
+ 
+        case META_GRAB_OP_CLICKING_UNSHADE:
+          if (point_in_control (frames, frame,
+                                META_FRAME_CONTROL_UNSHADE,
+                                event->x, event->y))
+            meta_core_unshade (gdk_display, frame->xwindow);
+          redraw_control (frames, frame,
+                          META_FRAME_CONTROL_SHADE);
+          end_grab = TRUE;
+          break;
 
-            flags = meta_core_get_frame_flags (gdk_display, frame->xwindow);
+        case META_GRAB_OP_CLICKING_ABOVE:
+          if (point_in_control (frames, frame,
+                                META_FRAME_CONTROL_ABOVE,
+                                event->x, event->y))
+            /*meta_window_make_above (meta_display_lookup_x_window (gdk_display, frame->window))*/;
+          redraw_control (frames, frame,
+                          META_FRAME_CONTROL_ABOVE);
+          end_grab = TRUE;
+          break;
+ 
+        case META_GRAB_OP_CLICKING_UNABOVE:
+          if (point_in_control (frames, frame,
+                                META_FRAME_CONTROL_UNABOVE,
+                                event->x, event->y))
+            /*meta_window_unmake_above (meta_display_lookup_x_window (gdk_display, frame->window))*/;
+          redraw_control (frames, frame,
+                          META_FRAME_CONTROL_ABOVE);
+          end_grab = TRUE;
+          break;
 
-            if (flags & META_FRAME_SHADED)
-              meta_core_unshade (gdk_display,
-                                 frame->xwindow);
-            else
-              meta_core_shade (gdk_display,
-                               frame->xwindow);
-            end_grab = TRUE;
-          }
+        case META_GRAB_OP_CLICKING_STICK:
+          if (point_in_control (frames, frame,
+                                META_FRAME_CONTROL_STICK,
+                                event->x, event->y))
+            meta_core_stick (gdk_display, frame->xwindow);
+          redraw_control (frames, frame,
+                          META_FRAME_CONTROL_STICK);
+          end_grab = TRUE;
+          break;
+ 
+        case META_GRAB_OP_CLICKING_UNSTICK:
+          if (point_in_control (frames, frame,
+                                META_FRAME_CONTROL_UNSTICK,
+                                event->x, event->y))
+            meta_core_unstick (gdk_display, frame->xwindow);
+          redraw_control (frames, frame,
+                          META_FRAME_CONTROL_STICK);
+          end_grab = TRUE;
           break;
           
         default:
@@ -1644,6 +1724,16 @@ meta_frames_update_prelit_control (MetaFrames      *frames,
       break;
     case META_FRAME_CONTROL_SHADE:
       break;
+    case META_FRAME_CONTROL_UNSHADE:
+      break;
+    case META_FRAME_CONTROL_ABOVE:
+      break;
+    case META_FRAME_CONTROL_UNABOVE:
+      break;
+    case META_FRAME_CONTROL_STICK:
+      break;
+    case META_FRAME_CONTROL_UNSTICK:
+      break;
     case META_FRAME_CONTROL_RESIZE_SE:
       cursor = META_CURSOR_SE_RESIZE;
       break;
@@ -1682,6 +1772,11 @@ meta_frames_update_prelit_control (MetaFrames      *frames,
     case META_FRAME_CONTROL_MAXIMIZE:
     case META_FRAME_CONTROL_DELETE:
     case META_FRAME_CONTROL_SHADE:
+    case META_FRAME_CONTROL_UNSHADE:
+    case META_FRAME_CONTROL_ABOVE:
+    case META_FRAME_CONTROL_UNABOVE:
+    case META_FRAME_CONTROL_STICK:
+    case META_FRAME_CONTROL_UNSTICK:
     case META_FRAME_CONTROL_UNMAXIMIZE:
       /* leave control set */
       break;
@@ -1731,6 +1826,11 @@ meta_frames_motion_notify_event     (GtkWidget           *widget,
     case META_GRAB_OP_CLICKING_MAXIMIZE:
     case META_GRAB_OP_CLICKING_UNMAXIMIZE:
     case META_GRAB_OP_CLICKING_SHADE:
+    case META_GRAB_OP_CLICKING_UNSHADE:
+    case META_GRAB_OP_CLICKING_ABOVE:
+    case META_GRAB_OP_CLICKING_UNABOVE:
+    case META_GRAB_OP_CLICKING_STICK:
+    case META_GRAB_OP_CLICKING_UNSTICK:
       {
         MetaFrameControl control;
         int x, y;
@@ -1745,14 +1845,21 @@ meta_frames_motion_notify_event     (GtkWidget           *widget,
                 grab_op == META_GRAB_OP_CLICKING_MENU) ||
                (control == META_FRAME_CONTROL_DELETE &&
                 grab_op == META_GRAB_OP_CLICKING_DELETE) ||
-               (control == META_FRAME_CONTROL_SHADE &&
-                grab_op == META_GRAB_OP_CLICKING_SHADE) ||
-                (control == META_FRAME_CONTROL_MINIMIZE &&
+               (control == META_FRAME_CONTROL_MINIMIZE &&
                 grab_op == META_GRAB_OP_CLICKING_MINIMIZE) ||
                (control == META_FRAME_CONTROL_MAXIMIZE &&
                 (grab_op == META_GRAB_OP_CLICKING_MAXIMIZE ||
-                 grab_op == META_GRAB_OP_CLICKING_UNMAXIMIZE))))
-          control = META_FRAME_CONTROL_NONE;
+                 grab_op == META_GRAB_OP_CLICKING_UNMAXIMIZE)) ||
+               (control == META_FRAME_CONTROL_SHADE &&
+                (grab_op == META_GRAB_OP_CLICKING_SHADE ||
+                 grab_op == META_GRAB_OP_CLICKING_UNSHADE)) ||
+               (control == META_FRAME_CONTROL_ABOVE &&
+                (grab_op == META_GRAB_OP_CLICKING_ABOVE ||
+                 grab_op == META_GRAB_OP_CLICKING_UNABOVE)) ||
+               (control == META_FRAME_CONTROL_STICK &&
+                (grab_op == META_GRAB_OP_CLICKING_STICK ||
+                 grab_op == META_GRAB_OP_CLICKING_UNSTICK))))
+           control = META_FRAME_CONTROL_NONE;
         
         /* Update prelit control and cursor */
 	meta_frames_update_prelit_control (frames, frame, control);
@@ -2138,6 +2245,36 @@ meta_frames_paint_to_drawable (MetaFrames   *frames,
       else
         button_states[META_BUTTON_TYPE_SHADE] = META_BUTTON_STATE_PRELIGHT;
       break;
+    case META_FRAME_CONTROL_UNSHADE:
+      if (grab_op == META_GRAB_OP_CLICKING_UNSHADE)
+        button_states[META_BUTTON_TYPE_SHADE] = META_BUTTON_STATE_PRESSED;
+      else
+        button_states[META_BUTTON_TYPE_SHADE] = META_BUTTON_STATE_PRELIGHT;
+      break;
+    case META_FRAME_CONTROL_ABOVE:
+      if (grab_op == META_GRAB_OP_CLICKING_ABOVE)
+        button_states[META_BUTTON_TYPE_ABOVE] = META_BUTTON_STATE_PRESSED;
+      else
+        button_states[META_BUTTON_TYPE_ABOVE] = META_BUTTON_STATE_PRELIGHT;
+      break;
+    case META_FRAME_CONTROL_UNABOVE:
+      if (grab_op == META_GRAB_OP_CLICKING_UNABOVE)
+        button_states[META_BUTTON_TYPE_ABOVE] = META_BUTTON_STATE_PRESSED;
+      else
+        button_states[META_BUTTON_TYPE_ABOVE] = META_BUTTON_STATE_PRELIGHT;
+      break;
+    case META_FRAME_CONTROL_STICK:
+      if (grab_op == META_GRAB_OP_CLICKING_STICK)
+        button_states[META_BUTTON_TYPE_STICK] = META_BUTTON_STATE_PRESSED;
+      else
+        button_states[META_BUTTON_TYPE_STICK] = META_BUTTON_STATE_PRELIGHT;
+      break;
+    case META_FRAME_CONTROL_UNSTICK:
+      if (grab_op == META_GRAB_OP_CLICKING_UNSTICK)
+        button_states[META_BUTTON_TYPE_STICK] = META_BUTTON_STATE_PRESSED;
+      else
+        button_states[META_BUTTON_TYPE_STICK] = META_BUTTON_STATE_PRELIGHT;
+      break;
     case META_FRAME_CONTROL_DELETE:
       if (grab_op == META_GRAB_OP_CLICKING_DELETE)
         button_states[META_BUTTON_TYPE_CLOSE] = META_BUTTON_STATE_PRESSED;
@@ -2301,9 +2438,18 @@ control_rect (MetaFrameControl control,
       rect = &fgeom->max_rect;
       break;
     case META_FRAME_CONTROL_SHADE:
+    case META_FRAME_CONTROL_UNSHADE:
       rect = &fgeom->shade_rect;
       break;
-     case META_FRAME_CONTROL_RESIZE_SE:
+    case META_FRAME_CONTROL_ABOVE:
+    case META_FRAME_CONTROL_UNABOVE:
+      rect = &fgeom->above_rect;
+      break;
+    case META_FRAME_CONTROL_STICK:
+    case META_FRAME_CONTROL_UNSTICK:
+      rect = &fgeom->stick_rect;
+      break;
+    case META_FRAME_CONTROL_RESIZE_SE:
       break;
     case META_FRAME_CONTROL_RESIZE_S:
       break;
@@ -2362,9 +2508,6 @@ get_control (MetaFrames *frames,
   if (POINT_IN_RECT (x, y, fgeom.menu_rect))
     return META_FRAME_CONTROL_MENU;
 
-  if (POINT_IN_RECT (x, y, fgeom.shade_rect))
-    return META_FRAME_CONTROL_SHADE;
-
   flags = meta_core_get_frame_flags (gdk_display, frame->xwindow);
   
   has_vert = (flags & META_FRAME_ALLOWS_VERTICAL_RESIZE) != 0;
@@ -2386,7 +2529,29 @@ get_control (MetaFrames *frames,
         return META_FRAME_CONTROL_MAXIMIZE;
     }
       
-  /* South resize always has priority over north resize,
+  if (POINT_IN_RECT (x, y, fgeom.shade_rect))
+    {
+      if (flags & META_FRAME_SHADED)
+        return META_FRAME_CONTROL_UNSHADE;
+      else
+        return META_FRAME_CONTROL_SHADE;
+    }
+
+  if (POINT_IN_RECT (x, y, fgeom.above_rect))
+    {
+      /* XXX FIXME find whether we're above */
+      return META_FRAME_CONTROL_ABOVE;
+    }
+
+  if (POINT_IN_RECT (x, y, fgeom.stick_rect))
+    {
+      if (flags & META_FRAME_STUCK)
+        return META_FRAME_CONTROL_UNSTICK;
+      else
+        return META_FRAME_CONTROL_STICK;
+    }
+
+   /* South resize always has priority over north resize,
    * in case of overlap.
    */
 

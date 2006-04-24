@@ -1382,6 +1382,12 @@ button_function_from_string (const char *str)
   else if (strcmp (str, "shade") == 0 &&
       META_THEME_ALLOWS (META_THEME_SHADE_BUTTONS))
     return META_BUTTON_FUNCTION_SHADE;
+  else if (strcmp (str, "above") == 0 &&
+      META_THEME_ALLOWS (META_THEME_ABOVE_BUTTONS))
+    return META_BUTTON_FUNCTION_ABOVE;
+  else if (strcmp (str, "stick") == 0 &&
+      META_THEME_ALLOWS (META_THEME_STICK_BUTTONS))
+    return META_BUTTON_FUNCTION_STICK;
   else 
     /* don't know; give up */
     return META_BUTTON_FUNCTION_LAST;

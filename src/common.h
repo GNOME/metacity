@@ -130,7 +130,12 @@ typedef enum
   META_GRAB_OP_CLICKING_UNMAXIMIZE,
   META_GRAB_OP_CLICKING_DELETE,
   META_GRAB_OP_CLICKING_MENU,
-  META_GRAB_OP_CLICKING_SHADE
+  META_GRAB_OP_CLICKING_SHADE,
+  META_GRAB_OP_CLICKING_UNSHADE,
+  META_GRAB_OP_CLICKING_ABOVE,
+  META_GRAB_OP_CLICKING_UNABOVE,
+  META_GRAB_OP_CLICKING_STICK,
+  META_GRAB_OP_CLICKING_UNSTICK
 } MetaGrabOp;
 
 typedef enum
@@ -228,14 +233,11 @@ typedef enum
   META_BUTTON_FUNCTION_MAXIMIZE,
   META_BUTTON_FUNCTION_CLOSE,
   META_BUTTON_FUNCTION_SHADE,
+  META_BUTTON_FUNCTION_ABOVE,
+  META_BUTTON_FUNCTION_STICK,
   META_BUTTON_FUNCTION_LAST
 } MetaButtonFunction;
 
-/* Hmm. Strictly speaking, we're not supposed to change the
- * interpretation of theme-1, but the max number of buttons
- * in one corner is equal to the number of buttons in theme-2
- * in both theme formats. :(
- */
 #define MAX_BUTTONS_PER_CORNER META_BUTTON_FUNCTION_LAST
 
 typedef struct _MetaButtonLayout MetaButtonLayout;
@@ -269,9 +271,10 @@ struct _MetaButtonLayout
 #define META_THEME_ALLOWS(feature) (2 >= feature)
 
 /* Each feature is defined to be equal to the theme version
- *  * in which it was introduced.
- *   */
+ * in which it was introduced.
+ */
 #define META_THEME_SHADE_BUTTONS 2
-
+#define META_THEME_ABOVE_BUTTONS 2
+#define META_THEME_STICK_BUTTONS 2
 
 #endif

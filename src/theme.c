@@ -421,6 +421,10 @@ rect_for_function (MetaFrameGeometry *fgeom,
         return &fgeom->shade_rect;
       else
         return NULL;
+    case META_BUTTON_FUNCTION_ABOVE:
+      return &fgeom->above_rect;
+    case META_BUTTON_FUNCTION_STICK:
+      return &fgeom->stick_rect;
      case META_BUTTON_FUNCTION_LAST:
       return NULL;
     }
@@ -3882,8 +3886,16 @@ button_rect (MetaButtonType           type,
       *rect = fgeom->close_rect;
       break;
 
-     case META_BUTTON_TYPE_SHADE:
+    case META_BUTTON_TYPE_SHADE:
       *rect = fgeom->shade_rect;
+      break;
+
+    case META_BUTTON_TYPE_ABOVE:
+      *rect = fgeom->above_rect;
+      break;
+
+    case META_BUTTON_TYPE_STICK:
+      *rect = fgeom->stick_rect;
       break;
 
     case META_BUTTON_TYPE_MAXIMIZE:
@@ -5165,8 +5177,12 @@ meta_button_type_from_string (const char *str)
     return META_BUTTON_TYPE_MINIMIZE;
   else if (strcmp ("menu", str) == 0)
     return META_BUTTON_TYPE_MENU;
-   else if (strcmp ("shade", str) == 0 && META_THEME_ALLOWS(META_THEME_SHADE_BUTTONS))
+  else if (strcmp ("shade", str) == 0 && META_THEME_ALLOWS(META_THEME_SHADE_BUTTONS))
     return META_BUTTON_TYPE_SHADE;
+  else if (strcmp ("above", str) == 0 && META_THEME_ALLOWS(META_THEME_ABOVE_BUTTONS))
+    return META_BUTTON_TYPE_ABOVE;
+  else if (strcmp ("stick", str) == 0 && META_THEME_ALLOWS(META_THEME_STICK_BUTTONS))
+    return META_BUTTON_TYPE_STICK;
   else if (strcmp ("left_left_background", str) == 0)
     return META_BUTTON_TYPE_LEFT_LEFT_BACKGROUND;
   else if (strcmp ("left_middle_background", str) == 0)
@@ -5196,6 +5212,10 @@ meta_button_type_to_string (MetaButtonType type)
       return "minimize";
     case META_BUTTON_TYPE_SHADE:
       return "shade";
+    case META_BUTTON_TYPE_ABOVE:
+      return "above";
+    case META_BUTTON_TYPE_STICK:
+      return "stick";
     case META_BUTTON_TYPE_MENU:
       return "menu";
     case META_BUTTON_TYPE_LEFT_LEFT_BACKGROUND:
