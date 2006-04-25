@@ -82,8 +82,8 @@ typedef struct
   char *theme_file;             /* theme filename */
   char *theme_dir;              /* dir the theme is inside */
   MetaTheme *theme;             /* theme being parsed */
+  guint format_version;         /* version of format of theme file */  
   char *name;                   /* name of named thing being parsed */
-  guint format_version;         /* theme version */
   MetaFrameLayout *layout;      /* layout being parsed if any */
   MetaDrawOpList *op_list;      /* op list being parsed if any */
   MetaDrawOp *op;               /* op being parsed if any */
@@ -450,33 +450,48 @@ static gboolean
 parse_positive_integer (const char          *str,
                         int                 *val,
                         GMarkupParseContext *context,
+                        MetaTheme           *theme,
                         GError             **error)
 {
   char *end;
   long l;
+  int j;
 
   *val = 0;
   
   end = NULL;
   
-  l = strtol (str, &end, 10);
+  /* Is str a constant? */
 
-  if (end == NULL || end == str)
+  if (META_THEME_ALLOWS (theme, META_THEME_UBIQUITOUS_CONSTANTS) &&
+      meta_theme_lookup_int_constant (theme, str, &j))
     {
-      set_error (error, context, G_MARKUP_ERROR,
-                 G_MARKUP_ERROR_PARSE,
-                 _("Could not parse \"%s\" as an integer"),
-                 str);
-      return FALSE;
+      /* Yes. */
+      l = j;
     }
-
-  if (*end != '\0')
+  else
     {
-      set_error (error, context, G_MARKUP_ERROR,
-                 G_MARKUP_ERROR_PARSE,
-                 _("Did not understand trailing characters \"%s\" in string \"%s\""),
-                 end, str);
-      return FALSE;
+      /* No. Let's try parsing it instead. */
+
+      l = strtol (str, &end, 10);
+
+      if (end == NULL || end == str)
+      {
+        set_error (error, context, G_MARKUP_ERROR,
+                   G_MARKUP_ERROR_PARSE,
+                   _("Could not parse \"%s\" as an integer"),
+                   str);
+        return FALSE;
+      }
+
+    if (*end != '\0')
+      {
+        set_error (error, context, G_MARKUP_ERROR,
+                   G_MARKUP_ERROR_PARSE,
+                   _("Did not understand trailing characters \"%s\" in string \"%s\""),
+                   end, str);
+        return FALSE;
+      }
     }
 
   if (l < 0)
@@ -758,7 +773,7 @@ parse_toplevel_element (GMarkupParseContext  *context,
       else
         {
           ival = 0;
-          if (!parse_positive_integer (value, &ival, context, error))
+          if (!parse_positive_integer (value, &ival, context, info->theme, error))
             return;
 
           if (!meta_theme_define_int_constant (info->theme,
@@ -1292,7 +1307,7 @@ parse_distance (GMarkupParseContext  *context,
     }
 
   val = 0;
-  if (!parse_positive_integer (value, &val, context, error))
+  if (!parse_positive_integer (value, &val, context, info->theme, error))
     return;
 
   g_assert (val >= 0); /* yeah, "non-negative" not "positive" get over it */
@@ -1470,19 +1485,19 @@ parse_border (GMarkupParseContext  *context,
     }
 
   top_val = 0;
-  if (!parse_positive_integer (top, &top_val, context, error))
+  if (!parse_positive_integer (top, &top_val, context, info->theme, error))
     return;
 
   bottom_val = 0;
-  if (!parse_positive_integer (bottom, &bottom_val, context, error))
+  if (!parse_positive_integer (bottom, &bottom_val, context, info->theme, error))
     return;
 
   left_val = 0;
-  if (!parse_positive_integer (left, &left_val, context, error))
+  if (!parse_positive_integer (left, &left_val, context, info->theme, error))
     return;
 
   right_val = 0;
-  if (!parse_positive_integer (right, &right_val, context, error))
+  if (!parse_positive_integer (right, &right_val, context, info->theme, error))
     return;
   
   g_assert (info->layout);
@@ -1696,17 +1711,17 @@ parse_draw_op_element (GMarkupParseContext  *context,
       
       dash_on_val = 0;
       if (dash_on_length &&
-          !parse_positive_integer (dash_on_length, &dash_on_val, context, error))
+          !parse_positive_integer (dash_on_length, &dash_on_val, context, info->theme, error))
         return;
 
       dash_off_val = 0;
       if (dash_off_length &&
-          !parse_positive_integer (dash_off_length, &dash_off_val, context, error))
+          !parse_positive_integer (dash_off_length, &dash_off_val, context, info->theme, error))
         return;
 
       width_val = 0;
       if (width &&
-          !parse_positive_integer (width, &width_val, context, error))
+          !parse_positive_integer (width, &width_val, context, info->theme, error))
         return;
 
       /* Check last so we don't have to free it when other
@@ -3290,12 +3305,12 @@ parse_style_element (GMarkupParseContext  *context,
         }
 
       if (meta_theme_earliest_version_with_button (info->button_type) >
-          info->format_version)
+          info->theme->format_version)
         {
           set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
                      _("Button function \"%s\" does not exist in this version (%d, need %d)"),
                      function,
-                     info->format_version,
+                     info->theme->format_version,
                      meta_theme_earliest_version_with_button (info->button_type)
                      );
           return;
@@ -3661,6 +3676,7 @@ start_element_handler (GMarkupParseContext *context,
           info->theme->name = g_strdup (info->theme_name);
           info->theme->filename = g_strdup (info->theme_file);
           info->theme->dirname = g_strdup (info->theme_dir);
+          info->theme->format_version = info->format_version;
           
           push_state (info, STATE_THEME);
         }
@@ -3973,7 +3989,7 @@ end_element_handler (GMarkupParseContext *context,
       g_assert (info->style);
 
       if (!meta_frame_style_validate (info->style,
-                                      info->format_version,
+                                      info->theme->format_version,
                                       error))
         {
           add_context_to_error (error, context);
@@ -4391,9 +4407,8 @@ meta_theme_load (const char *theme_name,
       return NULL; /* all fallbacks failed */
     }
 
-  info.format_version = version+1;
-
   meta_topic (META_DEBUG_THEMES, "Parsing theme file %s\n", theme_file);
+
 
   parse_info_init (&info);
   info.theme_name = theme_name;
@@ -4401,6 +4416,8 @@ meta_theme_load (const char *theme_name,
   /* pass ownership to info so we free it with the info */
   info.theme_file = theme_file;
   info.theme_dir = theme_dir;
+
+  info.format_version = version + 1;
   
   context = g_markup_parse_context_new (&metacity_theme_parser,
                                         0, &info, NULL);
@@ -4423,6 +4440,8 @@ meta_theme_load (const char *theme_name,
   if (context)
     g_markup_parse_context_free (context);
   g_free (text);
+
+  info.theme->format_version = info.format_version;
   
   if (error)
     {

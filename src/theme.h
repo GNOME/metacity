@@ -558,6 +558,7 @@ struct _MetaTheme
   char *copyright;
   char *date;
   char *description;
+  guint format_version;
 
   GHashTable *integer_constants;
   GHashTable *float_constants;
@@ -845,5 +846,10 @@ MetaImageFillType     meta_image_fill_type_from_string (const char            *s
 const char*           meta_image_fill_type_to_string   (MetaImageFillType      fill_type);
 
 guint meta_theme_earliest_version_with_button (MetaButtonType type);
+
+#define META_THEME_ALLOWS(theme, feature) (theme->format_version >= feature)
+
+/* What version of the theme file format were various features introduced in? */
+#define META_THEME_UBIQUITOUS_CONSTANTS 2
 
 #endif

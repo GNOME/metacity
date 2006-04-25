@@ -265,9 +265,4 @@ struct _MetaButtonLayout
   (ycoord) >= (rect).y &&                   \
   (ycoord) <  ((rect).y + (rect).height))
 
-/* Features present only in some theme versions */
-
-/* FIXME */
-#define META_THEME_ALLOWS(feature) (2 >= feature)
-
 #endif
