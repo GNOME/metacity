@@ -3835,9 +3835,8 @@ meta_frame_style_validate (MetaFrameStyle    *style,
         {
           for (j = 0; j < META_BUTTON_STATE_LAST; j++)
             {
-            meta_warning("Checking button %d for theme version %d\n", j, current_theme_version);
               if (get_button (style, i, j) == NULL &&
-                  meta_theme_earliest_version_with_button (j) <= current_theme_version
+                  meta_theme_earliest_version_with_button (i) <= current_theme_version
                   )
                 {
                   g_set_error (error, META_THEME_ERROR,
