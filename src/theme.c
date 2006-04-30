@@ -417,15 +417,32 @@ rect_for_function (MetaFrameGeometry *fgeom,
       else
         return NULL;
     case META_BUTTON_FUNCTION_SHADE:
-      if (flags & META_FRAME_ALLOWS_SHADE)
+      if ((flags & META_FRAME_ALLOWS_SHADE) && !(flags & META_FRAME_SHADED))
         return &fgeom->shade_rect;
       else
         return NULL;
     case META_BUTTON_FUNCTION_ABOVE:
-      return &fgeom->above_rect;
+      if (!(flags & META_FRAME_ABOVE))
+        return &fgeom->above_rect;
+      else
+        return NULL;
     case META_BUTTON_FUNCTION_STICK:
-      return &fgeom->stick_rect;
-     case META_BUTTON_FUNCTION_LAST:
+      if (!(flags & META_FRAME_STUCK))
+        return &fgeom->stick_rect;
+    case META_BUTTON_FUNCTION_UNSHADE:
+      if ((flags & META_FRAME_ALLOWS_SHADE) && (flags & META_FRAME_SHADED))
+        return &fgeom->unshade_rect;
+      else
+        return NULL;
+    case META_BUTTON_FUNCTION_UNABOVE:
+      if (flags & META_FRAME_ABOVE)
+        return &fgeom->unabove_rect;
+      else
+        return NULL;
+    case META_BUTTON_FUNCTION_UNSTICK:
+      if (flags & META_FRAME_STUCK)
+        return &fgeom->unstick_rect;
+    case META_BUTTON_FUNCTION_LAST:
       return NULL;
     }
 
@@ -617,10 +634,22 @@ meta_frame_layout_calc_geometry (const MetaFrameLayout  *layout,
         break; /* Everything fits, bail out */
       
       /* Otherwise we need to shave out a button. Shave
-       * shade, min, max, close, then menu (menu is most useful);
+       * above, stick, shade, min, max, close, then menu (menu is most useful);
        * prefer the default button locations.
        */
       if (strip_button (left_func_rects, left_bg_rects,
+                        &n_left, &fgeom->above_rect))
+        continue;
+      else if (strip_button (right_func_rects, right_bg_rects,
+                             &n_right, &fgeom->above_rect))
+        continue;
+      else if (strip_button (left_func_rects, left_bg_rects,
+                        &n_left, &fgeom->stick_rect))
+        continue;
+      else if (strip_button (right_func_rects, right_bg_rects,
+                             &n_right, &fgeom->stick_rect))
+        continue;
+      else if (strip_button (left_func_rects, left_bg_rects,
                         &n_left, &fgeom->shade_rect))
         continue;
       else if (strip_button (right_func_rects, right_bg_rects,
@@ -3893,12 +3922,24 @@ button_rect (MetaButtonType           type,
       *rect = fgeom->shade_rect;
       break;
 
+    case META_BUTTON_TYPE_UNSHADE:
+      *rect = fgeom->unshade_rect;
+      break;
+
     case META_BUTTON_TYPE_ABOVE:
       *rect = fgeom->above_rect;
       break;
 
+    case META_BUTTON_TYPE_UNABOVE:
+      *rect = fgeom->unabove_rect;
+      break;
+
     case META_BUTTON_TYPE_STICK:
       *rect = fgeom->stick_rect;
+      break;
+
+    case META_BUTTON_TYPE_UNSTICK:
+      *rect = fgeom->unstick_rect;
       break;
 
     case META_BUTTON_TYPE_MAXIMIZE:
@@ -5186,6 +5227,12 @@ meta_button_type_from_string (const char *str)
     return META_BUTTON_TYPE_ABOVE;
   else if (strcmp ("stick", str) == 0)
     return META_BUTTON_TYPE_STICK;
+  else if (strcmp ("unshade", str) == 0)
+    return META_BUTTON_TYPE_UNSHADE;
+  else if (strcmp ("unabove", str) == 0)
+    return META_BUTTON_TYPE_UNABOVE;
+  else if (strcmp ("unstick", str) == 0)
+    return META_BUTTON_TYPE_UNSTICK;
   else if (strcmp ("left_left_background", str) == 0)
     return META_BUTTON_TYPE_LEFT_LEFT_BACKGROUND;
   else if (strcmp ("left_middle_background", str) == 0)
@@ -5214,12 +5261,18 @@ meta_button_type_to_string (MetaButtonType type)
     case META_BUTTON_TYPE_MINIMIZE:
       return "minimize";
     case META_BUTTON_TYPE_SHADE:
-      return "shade";
+     return "shade";
     case META_BUTTON_TYPE_ABOVE:
       return "above";
     case META_BUTTON_TYPE_STICK:
       return "stick";
-    case META_BUTTON_TYPE_MENU:
+    case META_BUTTON_TYPE_UNSHADE:
+      return "unshade";
+    case META_BUTTON_TYPE_UNABOVE:
+      return "unabove";
+    case META_BUTTON_TYPE_UNSTICK:
+      return "unstick";
+     case META_BUTTON_TYPE_MENU:
       return "menu";
     case META_BUTTON_TYPE_LEFT_LEFT_BACKGROUND:
       return "left_left_background";
@@ -6067,6 +6120,9 @@ meta_theme_earliest_version_with_button (MetaButtonType type)
     case META_BUTTON_TYPE_SHADE:
     case META_BUTTON_TYPE_ABOVE:
     case META_BUTTON_TYPE_STICK:
+    case META_BUTTON_TYPE_UNSHADE:
+    case META_BUTTON_TYPE_UNABOVE:
+    case META_BUTTON_TYPE_UNSTICK:
       return 2;
 
     default:

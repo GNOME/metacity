@@ -44,7 +44,8 @@ typedef enum
   META_FRAME_ALLOWS_SHADE             = 1 << 10,
   META_FRAME_ALLOWS_MOVE              = 1 << 11,
   META_FRAME_FULLSCREEN               = 1 << 12,
-  META_FRAME_IS_FLASHING              = 1 << 13
+  META_FRAME_IS_FLASHING              = 1 << 13,
+  META_FRAME_ABOVE                    = 1 << 14
 } MetaFrameFlags;
 
 typedef enum
@@ -235,6 +236,9 @@ typedef enum
   META_BUTTON_FUNCTION_SHADE,
   META_BUTTON_FUNCTION_ABOVE,
   META_BUTTON_FUNCTION_STICK,
+  META_BUTTON_FUNCTION_UNSHADE,
+  META_BUTTON_FUNCTION_UNABOVE,
+  META_BUTTON_FUNCTION_UNSTICK,
   META_BUTTON_FUNCTION_LAST
 } MetaButtonFunction;
 

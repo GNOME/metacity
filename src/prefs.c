@@ -1390,6 +1390,31 @@ button_function_from_string (const char *str)
     return META_BUTTON_FUNCTION_LAST;
 }
 
+static MetaButtonFunction
+button_opposite_function (MetaButtonFunction ofwhat)
+{
+  switch (ofwhat)
+    {
+    case META_BUTTON_FUNCTION_SHADE:
+      return META_BUTTON_FUNCTION_UNSHADE;
+    case META_BUTTON_FUNCTION_UNSHADE:
+      return META_BUTTON_FUNCTION_SHADE;
+
+    case META_BUTTON_FUNCTION_ABOVE:
+      return META_BUTTON_FUNCTION_UNABOVE;
+    case META_BUTTON_FUNCTION_UNABOVE:
+      return META_BUTTON_FUNCTION_ABOVE;
+
+    case META_BUTTON_FUNCTION_STICK:
+      return META_BUTTON_FUNCTION_UNSTICK;
+    case META_BUTTON_FUNCTION_UNSTICK:
+      return META_BUTTON_FUNCTION_STICK;
+
+    default:
+      return META_BUTTON_FUNCTION_LAST;
+    }
+}
+
 static gboolean
 update_button_layout (const char *value)
 {
@@ -1440,6 +1465,11 @@ update_button_layout (const char *value)
               new_layout.left_buttons[i] = f;
               used[f] = TRUE;
               ++i;
+
+              f = button_opposite_function (f);
+
+              if (f != META_BUTTON_FUNCTION_LAST)
+                new_layout.left_buttons[i++] = f;
             }
           else
             {
@@ -1478,7 +1508,12 @@ update_button_layout (const char *value)
               new_layout.right_buttons[i] = f;
               used[f] = TRUE;
               ++i;
-            }
+
+              f = button_opposite_function (f);
+
+              if (f != META_BUTTON_FUNCTION_LAST)
+                new_layout.right_buttons[i++] = f;
+             }
           else
             {
               meta_topic (META_DEBUG_PREFS, "Ignoring unknown or already-used button name \"%s\"\n",

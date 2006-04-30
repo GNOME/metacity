@@ -134,6 +134,9 @@ struct _MetaFrameGeometry
   GdkRectangle shade_rect;
   GdkRectangle above_rect;
   GdkRectangle stick_rect;
+  GdkRectangle unshade_rect;
+  GdkRectangle unabove_rect;
+  GdkRectangle unstick_rect;
 
 #define MAX_MIDDLE_BACKGROUNDS (MAX_BUTTONS_PER_CORNER - 2)
   GdkRectangle left_left_background;
@@ -430,6 +433,9 @@ typedef enum
   META_BUTTON_TYPE_SHADE,
   META_BUTTON_TYPE_ABOVE,
   META_BUTTON_TYPE_STICK,
+  META_BUTTON_TYPE_UNSHADE,
+  META_BUTTON_TYPE_UNABOVE,
+  META_BUTTON_TYPE_UNSTICK,
   META_BUTTON_TYPE_LAST
 } MetaButtonType;
 
