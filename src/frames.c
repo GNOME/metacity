@@ -1629,7 +1629,7 @@ meta_frames_button_release_event    (GtkWidget           *widget,
                                 event->x, event->y))
             meta_core_shade (gdk_display, frame->xwindow);
           redraw_control (frames, frame,
-                          META_FRAME_CONTROL_SHADE);
+                          META_FRAME_CONTROL_UNSHADE);
           end_grab = TRUE;
           break;
  
@@ -1639,7 +1639,7 @@ meta_frames_button_release_event    (GtkWidget           *widget,
                                 event->x, event->y))
             meta_core_unshade (gdk_display, frame->xwindow);
           redraw_control (frames, frame,
-                          META_FRAME_CONTROL_UNSHADE);
+                          META_FRAME_CONTROL_SHADE);
           end_grab = TRUE;
           break;
 
@@ -1650,7 +1650,7 @@ meta_frames_button_release_event    (GtkWidget           *widget,
             meta_window_make_above (meta_display_lookup_x_window (
                   meta_display_for_x_display (gdk_display), frame->xwindow));
           redraw_control (frames, frame,
-                          META_FRAME_CONTROL_ABOVE);
+                          META_FRAME_CONTROL_UNABOVE);
           end_grab = TRUE;
           break;
  
@@ -1661,7 +1661,7 @@ meta_frames_button_release_event    (GtkWidget           *widget,
             meta_window_unmake_above (meta_display_lookup_x_window (
                   meta_display_for_x_display (gdk_display), frame->xwindow));
           redraw_control (frames, frame,
-                          META_FRAME_CONTROL_UNABOVE);
+                          META_FRAME_CONTROL_ABOVE);
           end_grab = TRUE;
           break;
 
@@ -1671,7 +1671,7 @@ meta_frames_button_release_event    (GtkWidget           *widget,
                                 event->x, event->y))
             meta_core_stick (gdk_display, frame->xwindow);
           redraw_control (frames, frame,
-                          META_FRAME_CONTROL_STICK);
+                          META_FRAME_CONTROL_UNSTICK);
           end_grab = TRUE;
           break;
  
@@ -1681,7 +1681,7 @@ meta_frames_button_release_event    (GtkWidget           *widget,
                                 event->x, event->y))
             meta_core_unstick (gdk_display, frame->xwindow);
           redraw_control (frames, frame,
-                          META_FRAME_CONTROL_UNSTICK);
+                          META_FRAME_CONTROL_STICK);
           end_grab = TRUE;
           break;
           
