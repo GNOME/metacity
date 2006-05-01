@@ -98,10 +98,10 @@ struct _MetaFrameLayout
   guint has_title : 1;
 
   /* Round corners */
-  guint top_left_corner_rounded : 1;
-  guint top_right_corner_rounded : 1;
-  guint bottom_left_corner_rounded : 1;
-  guint bottom_right_corner_rounded : 1;
+  guint top_left_corner_rounded_radius;
+  guint top_right_corner_rounded_radius;
+  guint bottom_left_corner_rounded_radius;
+  guint bottom_right_corner_rounded_radius;
 };
 
 /* Calculated actual geometry of the frame */
@@ -148,10 +148,10 @@ struct _MetaFrameGeometry
   /* End of button rects (if changed adjust memset hack) */
   
   /* Round corners */
-  guint top_left_corner_rounded : 1;
-  guint top_right_corner_rounded : 1;
-  guint bottom_left_corner_rounded : 1;
-  guint bottom_right_corner_rounded : 1;
+  guint top_left_corner_rounded_radius;
+  guint top_right_corner_rounded_radius;
+  guint bottom_left_corner_rounded_radius;
+  guint bottom_right_corner_rounded_radius;
 };
 
 typedef enum
@@ -857,5 +857,6 @@ guint meta_theme_earliest_version_with_button (MetaButtonType type);
 
 /* What version of the theme file format were various features introduced in? */
 #define META_THEME_UBIQUITOUS_CONSTANTS 2
+#define META_THEME_VARIED_ROUND_CORNERS 2
 
 #endif

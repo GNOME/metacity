@@ -22,6 +22,7 @@
  */
 
 #include <config.h>
+#include <math.h>
 #include "boxes.h"
 #include "frames.h"
 #include "util.h"
@@ -753,10 +754,10 @@ meta_frames_apply_shapes (MetaFrames *frames,
 
   meta_frames_calc_geometry (frames, frame, &fgeom);
 
-  if (!(fgeom.top_left_corner_rounded ||
-        fgeom.top_right_corner_rounded ||
-        fgeom.bottom_left_corner_rounded ||
-        fgeom.bottom_right_corner_rounded ||
+  if (!(fgeom.top_left_corner_rounded_radius!=0 ||
+        fgeom.top_right_corner_rounded_radius!=0 ||
+        fgeom.bottom_left_corner_rounded_radius!=0 ||
+        fgeom.bottom_right_corner_rounded_radius!=0 ||
         window_has_shape))
     {
       if (frame->shape_applied)
@@ -781,102 +782,72 @@ meta_frames_apply_shapes (MetaFrames *frames,
   
   corners_xregion = XCreateRegion ();
   
-  if (fgeom.top_left_corner_rounded)
+  if (fgeom.top_left_corner_rounded_radius != 0)
     {
-      xrect.x = 0;
-      xrect.y = 0;
-      xrect.width = 5;
-      xrect.height = 1;
-      
-      XUnionRectWithRegion (&xrect, corners_xregion, corners_xregion);
+      const int radius = fgeom.top_left_corner_rounded_radius;
+      int i;
 
-      xrect.y = 1;
-      xrect.width = 3;
-      XUnionRectWithRegion (&xrect, corners_xregion, corners_xregion);
-      
-      xrect.y = 2;
-      xrect.width = 2;
-      XUnionRectWithRegion (&xrect, corners_xregion, corners_xregion);
-
-      xrect.y = 3;
-      xrect.width = 1;
-      xrect.height = 2;
-      XUnionRectWithRegion (&xrect, corners_xregion, corners_xregion);
+      for (i=0; i<radius; i++)
+        {
+          const int width = 1 + (radius - sqrt(radius*radius - (radius-i)*(radius-i)));
+          xrect.x = 0;
+          xrect.y = i;
+          xrect.width = width;
+          xrect.height = 1;
+          
+          XUnionRectWithRegion (&xrect, corners_xregion, corners_xregion);
+        }
     }
 
-  if (fgeom.top_right_corner_rounded)
+  if (fgeom.top_right_corner_rounded_radius != 0)
     {
-      xrect.x = new_window_width - 5;
-      xrect.y = 0;
-      xrect.width = 5;
-      xrect.height = 1;
-      
-      XUnionRectWithRegion (&xrect, corners_xregion, corners_xregion);
+      const int radius = fgeom.top_right_corner_rounded_radius;
+      int i;
 
-      xrect.y = 1;
-      xrect.x = new_window_width - 3;
-      xrect.width = 3;
-      XUnionRectWithRegion (&xrect, corners_xregion, corners_xregion);
-      
-      xrect.y = 2;
-      xrect.x = new_window_width - 2;
-      xrect.width = 2;
-      XUnionRectWithRegion (&xrect, corners_xregion, corners_xregion);
-
-      xrect.y = 3;
-      xrect.x = new_window_width - 1;
-      xrect.width = 1;
-      xrect.height = 2;
-      XUnionRectWithRegion (&xrect, corners_xregion, corners_xregion);
+      for (i=0; i<radius; i++)
+        {
+          const int width = 1 + (radius - sqrt(radius*radius - (radius-i)*(radius-i)));
+          xrect.x = new_window_width - width;
+          xrect.y = i;
+          xrect.width = width;
+          xrect.height = 1;
+          
+          XUnionRectWithRegion (&xrect, corners_xregion, corners_xregion);
+        }
     }
 
-  if (fgeom.bottom_left_corner_rounded)
+  if (fgeom.bottom_left_corner_rounded_radius != 0)
     {
-      xrect.x = 0;
-      xrect.y = new_window_height - 1;
-      xrect.width = 5;
-      xrect.height = 1;
-      
-      XUnionRectWithRegion (&xrect, corners_xregion, corners_xregion);
-      
-      xrect.y = new_window_height - 2;
-      xrect.width = 3;
-      XUnionRectWithRegion (&xrect, corners_xregion, corners_xregion);
-      
-      xrect.y = new_window_height - 3;
-      xrect.width = 2;
-      XUnionRectWithRegion (&xrect, corners_xregion, corners_xregion);
+      const int radius = fgeom.bottom_left_corner_rounded_radius;
+      int i;
 
-      xrect.y = new_window_height - 5;
-      xrect.width = 1;
-      xrect.height = 2;
-      XUnionRectWithRegion (&xrect, corners_xregion, corners_xregion);
+      for (i=0; i<radius; i++)
+        {
+          const int width = 1 + (radius - sqrt(radius*radius - (radius-i)*(radius-i)));
+          xrect.x = 0;
+          xrect.y = new_window_height - i;
+          xrect.width = width;
+          xrect.height = 1;
+          
+          XUnionRectWithRegion (&xrect, corners_xregion, corners_xregion);
+        }
     }
 
-  if (fgeom.bottom_right_corner_rounded)
+  if (fgeom.bottom_right_corner_rounded_radius != 0)
     {
-      xrect.x = new_window_width - 5;
-      xrect.y = new_window_height - 1;
-      xrect.width = 5;
-      xrect.height = 1;
-      
-      XUnionRectWithRegion (&xrect, corners_xregion, corners_xregion);
-      
-      xrect.y = new_window_height - 2;
-      xrect.x = new_window_width - 3;
-      xrect.width = 3;
-      XUnionRectWithRegion (&xrect, corners_xregion, corners_xregion);
-      
-      xrect.y = new_window_height - 3;
-      xrect.x = new_window_width - 2;
-      xrect.width = 2;
-      XUnionRectWithRegion (&xrect, corners_xregion, corners_xregion);
+      const int radius = fgeom.bottom_right_corner_rounded_radius;
+      int i;
 
-      xrect.y = new_window_height - 5;
-      xrect.x = new_window_width - 1;
-      xrect.width = 1;
-      xrect.height = 2;
-      XUnionRectWithRegion (&xrect, corners_xregion, corners_xregion);
+      for (i=0; i<radius; i++)
+        {
+          const int width = 1 + (radius - sqrt(radius*radius - (radius-i)*(radius-i)));
+          xrect.x = new_window_width - width;
+          xrect.y = new_window_height - i;
+          xrect.width = width;
+          xrect.height = 1;
+          
+          XUnionRectWithRegion (&xrect, corners_xregion, corners_xregion);
+        }
     }
   
   window_xregion = XCreateRegion ();
