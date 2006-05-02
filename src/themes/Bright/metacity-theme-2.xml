@@ -188,6 +188,20 @@
         width="ThickLineWidth"/>
 </draw_ops>
 
+<draw_ops name="unshade_button">
+  <line color="gtk:fg[NORMAL]"
+        x1="ButtonIPad"
+        y1="ButtonIPad"
+        x2="width - ButtonIPad-1"
+        y2="ButtonIPad"
+        width="ThickLineWidth"/>
+  <rectangle color="gtk:fg[NORMAL]" filled="false"
+        x="ButtonIPad"
+        y="ButtonIPad*2"
+        width="width - ButtonIPad*2-1"
+        height="height - ButtonIPad*3-1"/>
+</draw_ops>
+
 <draw_ops name="above_button">
   <line color="gtk:fg[NORMAL]"
         x1="ButtonIPad"
@@ -215,6 +229,33 @@
         width="ThickLineWidth"/>
 </draw_ops>
 
+<draw_ops name="unabove_button">
+  <line color="gtk:fg[NORMAL]"
+        x1="ButtonIPad"
+        y1="height/2"
+        x2="ButtonIPad + 2"
+        y2="height/2"
+        width="ThickLineWidth"/>
+  <line color="gtk:fg[NORMAL]"
+        x1="width - ButtonIPad-1"
+        y1="height/2"
+        x2="width - ButtonIPad-3"
+        y2="height/2"
+        width="ThickLineWidth"/>
+  <line color="gtk:fg[NORMAL]"
+        x1="width/2-1"
+        y1="height - ButtonIPad - 2"
+        x2="width/2+1"
+        y2="height - ButtonIPad - 2"
+        width="ThickLineWidth"/>
+  <line color="gtk:fg[NORMAL]"
+        x1="width/2-1"
+        y1="ButtonIPad"
+        x2="width/2+1"
+        y2="ButtonIPad"
+        width="ThickLineWidth"/>
+</draw_ops>
+
 <draw_ops name="stick_button">
   <line color="gtk:fg[NORMAL]"
         x1="ButtonIPad" y1="ButtonIPad"
@@ -222,6 +263,18 @@
   <line color="gtk:fg[NORMAL]"
         x1="ButtonIPad" y1="height/2-1"
         x2="width - ButtonIPad - 2" y2="height/2-1"/>
+</draw_ops>
+
+<draw_ops name="unstick_button">
+  <line color="gtk:fg[NORMAL]"
+        x1="width/2" y1="ButtonIPad"
+        x2="width/2" y2="height - ButtonIPad - 2"/>
+  <line color="gtk:fg[NORMAL]"
+        x1="width/2" y1="height/2-1"
+        x2="width - ButtonIPad - 2" y2="height/2-1"/>
+  <line color="gtk:fg[NORMAL]"
+        x1="width-ButtonIPad-2" y1="height/2-3"
+        x2="width-ButtonIPad-2" y2="height/2+2"/>
 </draw_ops>
 
 <draw_ops name="close_button_normal">
@@ -244,6 +297,16 @@
   <include name="shade_button"/>
 </draw_ops>
 
+<draw_ops name="unshade_button_normal">
+  <include name="button_normal_bg"/>
+  <include name="unshade_button"/>
+</draw_ops>
+
+<draw_ops name="unshade_button_pressed">
+  <include name="button_pressed_bg"/>
+  <include name="unshade_button"/>
+</draw_ops>
+
 <draw_ops name="above_button_normal">
   <include name="button_normal_bg"/>
   <include name="above_button"/>
@@ -254,6 +317,16 @@
   <include name="above_button"/>
 </draw_ops>
 
+<draw_ops name="unabove_button_normal">
+  <include name="button_normal_bg"/>
+  <include name="unabove_button"/>
+</draw_ops>
+
+<draw_ops name="unabove_button_pressed">
+  <include name="button_pressed_bg"/>
+  <include name="unabove_button"/>
+</draw_ops>
+
 <draw_ops name="stick_button_normal">
   <include name="button_normal_bg"/>
   <include name="stick_button"/>
@@ -262,6 +335,16 @@
 <draw_ops name="stick_button_pressed">
   <include name="button_pressed_bg"/>
   <include name="stick_button"/>
+</draw_ops>
+
+<draw_ops name="unstick_button_normal">
+  <include name="button_normal_bg"/>
+  <include name="unstick_button"/>
+</draw_ops>
+
+<draw_ops name="unstick_button_pressed">
+  <include name="button_pressed_bg"/>
+  <include name="unstick_button"/>
 </draw_ops>
 
 <draw_ops name="outer_bevel">
@@ -372,10 +455,16 @@
   <button function="menu" state="pressed" draw_ops="menu_button_pressed"/>
   <button function="shade" state="normal" draw_ops="shade_button_normal"/>
   <button function="shade" state="pressed" draw_ops="shade_button_pressed"/>
+  <button function="unshade" state="normal" draw_ops="unshade_button_normal"/>
+  <button function="unshade" state="pressed" draw_ops="unshade_button_pressed"/>
   <button function="above" state="normal" draw_ops="above_button_normal"/>
   <button function="above" state="pressed" draw_ops="above_button_pressed"/>
+  <button function="unabove" state="normal" draw_ops="unabove_button_normal"/>
+  <button function="unabove" state="pressed" draw_ops="unabove_button_pressed"/>
   <button function="stick" state="normal" draw_ops="stick_button_normal"/>
   <button function="stick" state="pressed" draw_ops="stick_button_pressed"/>
+  <button function="unstick" state="normal" draw_ops="unstick_button_normal"/>
+  <button function="unstick" state="pressed" draw_ops="unstick_button_pressed"/>
 </frame_style>
 
 <frame_style name="normal_focused" geometry="normal" parent="normal_unfocused">
