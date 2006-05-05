@@ -858,5 +858,6 @@ guint meta_theme_earliest_version_with_button (MetaButtonType type);
 /* What version of the theme file format were various features introduced in? */
 #define META_THEME_UBIQUITOUS_CONSTANTS 2
 #define META_THEME_VARIED_ROUND_CORNERS 2
+#define META_THEME_IMAGES_FROM_ICON_THEMES 2
 
 #endif

@@ -4623,7 +4623,8 @@ meta_theme_load_image (MetaTheme  *theme,
   if (pixbuf == NULL)
     {
        
-      if (g_str_has_prefix (filename, "theme:"))
+      if (g_str_has_prefix (filename, "theme:") &&
+          META_THEME_ALLOWS (theme, META_THEME_IMAGES_FROM_ICON_THEMES))
         {
           pixbuf = gtk_icon_theme_load_icon (
               gtk_icon_theme_get_default (),
