@@ -3987,7 +3987,7 @@ meta_frame_style_draw (MetaFrameStyle          *style,
   GdkRectangle left_edge, right_edge, bottom_edge;
   PangoRectangle extents;
   MetaDrawInfo draw_info;
-  
+
   titlebar_rect.x = 0;
   titlebar_rect.y = 0;
   titlebar_rect.width = fgeom->width;
@@ -4613,6 +4613,7 @@ meta_theme_validate (MetaTheme *theme,
 GdkPixbuf*
 meta_theme_load_image (MetaTheme  *theme,
                        const char *filename,
+                       guint size_of_theme_icons,
                        GError    **error)
 {
   GdkPixbuf *pixbuf;
@@ -4629,7 +4630,7 @@ meta_theme_load_image (MetaTheme  *theme,
           pixbuf = gtk_icon_theme_load_icon (
               gtk_icon_theme_get_default (),
               filename+6,
-              48,
+              size_of_theme_icons,
               0,
               error);
           if (pixbuf == NULL) return NULL;

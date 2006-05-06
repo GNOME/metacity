@@ -71,7 +71,9 @@ typedef enum
   /* assigning style sets to windows */
   STATE_WINDOW,
   /* and menu icons */
-  STATE_MENU_ICON
+  STATE_MENU_ICON,
+  /* fallback icons */
+  STATE_FALLBACK
 } ParseState;
 
 typedef struct
@@ -1236,7 +1238,45 @@ parse_toplevel_element (GMarkupParseContext  *context,
 
       push_state (info, STATE_MENU_ICON);
     }
-  else
+  else if (ELEMENT_IS ("fallback"))
+    {
+      const char *icon = NULL;
+      const char *mini_icon = NULL;
+      
+      if (!locate_attributes (context, element_name, attribute_names, attribute_values,
+                              error,
+                              "icon", &icon,
+                              "mini_icon", &mini_icon,
+                              NULL))
+        return;
+
+      if (icon)
+        {
+          if (info->theme->fallback_icon != NULL)
+            {
+              set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
+                         _("Theme already has a fallback icon"));
+              return;
+            }
+
+          info->theme->fallback_icon = meta_theme_load_image(info->theme, icon, 64, error);
+        }
+
+      if (mini_icon)
+        {
+          if (info->theme->fallback_mini_icon != NULL)
+            {
+              set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
+                         _("Theme already has a fallback mini_icon"));
+              return;
+            }
+
+          info->theme->fallback_mini_icon = meta_theme_load_image(info->theme, mini_icon, 16, error);
+        }
+
+      push_state (info, STATE_FALLBACK);
+    }
+   else
     {
       set_error (error, context,
                  G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
@@ -2370,9 +2410,12 @@ parse_draw_op_element (GMarkupParseContext  *context,
         }
       
       /* Check last so we don't have to free it when other
-       * stuff fails
+       * stuff fails.
+       *
+       * If it's a theme image, ask for it at 64px, which is
+       * the largest possible. We scale it anyway.
        */
-      pixbuf = meta_theme_load_image (info->theme, filename, error);
+      pixbuf = meta_theme_load_image (info->theme, filename, 64, error);
 
       if (pixbuf == NULL)
         {
@@ -3824,6 +3867,11 @@ start_element_handler (GMarkupParseContext *context,
                  _("Element <%s> is not allowed inside a <%s> element"),
                  element_name, "window");
       break;
+    case STATE_FALLBACK:
+      set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
+                 _("Element <%s> is not allowed inside a <%s> element"),
+                 element_name, "fallback");
+      break;
     }
 }
 
@@ -4110,6 +4158,10 @@ end_element_handler (GMarkupParseContext *context,
       pop_state (info);
       g_assert (peek_state (info) == STATE_THEME);
       break;
+    case STATE_FALLBACK:
+      pop_state (info);
+      g_assert (peek_state (info) == STATE_THEME);
+      break;
     }
 }
 
@@ -4302,6 +4354,9 @@ text_handler (GMarkupParseContext *context,
     case STATE_WINDOW:
       NO_TEXT ("window");
       break;
+    case STATE_FALLBACK:
+      NO_TEXT ("fallback");
+      break;
     }
 }
 
@@ -4477,7 +4532,7 @@ meta_theme_load (const char *theme_name,
   g_free (text);
 
   info.theme->format_version = info.format_version;
-  
+
   if (error)
     {
       g_propagate_error (err, error);

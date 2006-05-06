@@ -23,6 +23,7 @@
 #include "iconcache.h"
 #include "ui.h"
 #include "errors.h"
+#include "theme.h"
 
 #include <X11/Xatom.h>
 
@@ -828,13 +829,21 @@ meta_read_icons (MetaScreen     *screen,
   if (icon_cache->want_fallback &&
       icon_cache->origin < USING_FALLBACK_ICON)
     {
-      get_fallback_icons (screen,
-                          iconp,
-                          ideal_width,
-                          ideal_height,
-                          mini_iconp,
-                          ideal_mini_width,
-                          ideal_mini_height);
+      MetaTheme *theme = meta_theme_get_current ();
+
+      if (theme->fallback_icon==NULL || theme->fallback_mini_icon==NULL)
+        {
+          get_fallback_icons (screen,
+                              iconp,
+                              ideal_width,
+                              ideal_height,
+                              mini_iconp,
+                              ideal_mini_width,
+                              ideal_mini_height);
+        }
+
+      if (theme->fallback_icon!=NULL) *iconp = theme->fallback_icon;
+      if (theme->fallback_mini_icon!=NULL) *mini_iconp = theme->fallback_mini_icon;
 
       replace_cache (icon_cache, USING_FALLBACK_ICON,
                      *iconp, *mini_iconp);

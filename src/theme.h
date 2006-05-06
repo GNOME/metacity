@@ -575,6 +575,8 @@ struct _MetaTheme
   GHashTable *style_sets_by_name;
   MetaFrameStyleSet *style_sets_by_type[META_FRAME_TYPE_LAST];
   MetaDrawOpList *menu_icons[META_MENU_ICON_TYPE_LAST][N_GTK_STATES];
+
+  GdkPixbuf *fallback_icon, *fallback_mini_icon;
 };
 
 struct _MetaPositionExprEnv
@@ -722,6 +724,7 @@ gboolean   meta_theme_validate (MetaTheme *theme,
                                 GError   **error);
 GdkPixbuf* meta_theme_load_image (MetaTheme  *theme,
                                   const char *filename,
+                                  guint       size_of_theme_icons,
                                   GError    **error);
 
 MetaFrameStyle* meta_theme_get_frame_style (MetaTheme     *theme,
