@@ -24,6 +24,7 @@
 #include "ui.h"
 #include "errors.h"
 #include "theme.h"
+#include "window.h"
 
 #include <X11/Xatom.h>
 
@@ -862,4 +863,25 @@ meta_read_icons (MetaScreen     *screen,
 
   /* found nothing new */
   return FALSE;
+}
+
+void
+meta_invalidate_default_icons (void)
+{
+  GSList *displays, *windows;
+
+  for (displays = meta_displays_list (); displays != NULL; displays = displays->next) {
+
+    for (windows = meta_display_list_windows (displays->data); windows != NULL; windows = windows->next) {
+      
+      MetaWindow *window = (MetaWindow*)windows->data;
+      
+      if (window->icon_cache.origin == USING_FALLBACK_ICON) {
+        clear_icon_cache (&(window->icon_cache), FALSE);
+        meta_window_update_icon_now (window);
+      }
+    }
+
+    g_slist_free (windows);
+  }
 }

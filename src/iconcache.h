@@ -57,6 +57,7 @@ gboolean meta_read_icons         (MetaScreen     *screen,
                                   int             ideal_mini_width,
                                   int             ideal_mini_height);
 
+void meta_invalidate_default_icons (void);
 #endif
 
 

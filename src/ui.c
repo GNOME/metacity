@@ -28,6 +28,7 @@
 #include "menu.h"
 #include "core.h"
 #include "theme.h"
+#include "iconcache.h"
 
 #include "eggaccelerators.h"
 
@@ -731,6 +732,7 @@ meta_ui_set_current_theme (const char *name,
                            gboolean    force_reload)
 {
   meta_theme_set_current (name, force_reload);
+  meta_invalidate_default_icons ();
 }
 
 gboolean

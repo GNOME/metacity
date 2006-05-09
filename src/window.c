@@ -107,7 +107,6 @@ static void meta_window_flush_calc_showing   (MetaWindow *window);
 
 static void meta_window_unqueue_move_resize  (MetaWindow *window);
 
-static void meta_window_update_icon_now (MetaWindow *window);
 static void meta_window_unqueue_update_icon    (MetaWindow *window);
 
 static gboolean queue_calc_showing_func (MetaWindow *window,
@@ -5330,7 +5329,7 @@ redraw_icon (MetaWindow *window)
     meta_ui_queue_frame_draw (window->screen->ui, window->frame->xwindow);
 }
 
-static void
+void
 meta_window_update_icon_now (MetaWindow *window)
 {
   GdkPixbuf *icon;
