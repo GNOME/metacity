@@ -2061,10 +2061,9 @@ update_binding (MetaKeyPref *binding,
                     binding->name,
                     value);
 
-      old_setting = meta_ui_accelerator_name(
-                      binding->keysym,
-                      binding->modifiers);
-      
+      old_setting = meta_ui_accelerator_name (binding->keysym,
+                                              binding->modifiers);
+
       if (!strcmp(old_setting, value))
         {
           /* We were about to set it to the same value
@@ -2073,6 +2072,7 @@ update_binding (MetaKeyPref *binding,
            * meta_ui_accelerator_name. Bail out now
            * so we don't get into an infinite loop.
            */
+           g_free (old_setting);
            return TRUE;
         }
 
