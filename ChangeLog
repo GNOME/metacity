@@ -1,5 +1,11 @@
 2006-05-15  Elijah Newren  <newren gmail com>
 
+	* src/screen.c (reload_xinerama_infos): Patch from
+	jylefort@FreeBSD.org to prevent a crash when changing resolution.
+	Fixes #340847.
+
+2006-05-15  Elijah Newren  <newren gmail com>
+
 	Clear _NET_WM_VISIBLE_NAME (and the ICON_ equivalent) when no
 	longer being used.  Fixes #330671.
 
