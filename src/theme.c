@@ -4178,6 +4178,7 @@ meta_frame_style_draw (MetaFrameStyle          *style,
                   if (op_list)
                     {
                       MetaRectangle m_rect;
+                      
                       m_rect = meta_rect (rect.x, rect.y,
                                           rect.width, rect.height);
                       meta_draw_op_list_draw (op_list,
@@ -4255,10 +4256,12 @@ meta_frame_style_set_unref (MetaFrameStyleSet *style_set)
       int i;
 
       for (i = 0; i < META_FRAME_RESIZE_LAST; i++)
-        free_focus_styles (style_set->normal_styles[i]);
+        {
+          free_focus_styles (style_set->normal_styles[i]);
+          free_focus_styles (style_set->shaded_styles[i]);
+        }
 
       free_focus_styles (style_set->maximized_styles);
-      free_focus_styles (style_set->shaded_styles);
       free_focus_styles (style_set->maximized_and_shaded_styles);
 
       if (style_set->parent)
@@ -4280,47 +4283,53 @@ get_style (MetaFrameStyleSet *style_set,
   
   style = NULL;
 
-  if (state == META_FRAME_STATE_NORMAL)
+  switch (state)
     {
-      style = style_set->normal_styles[resize][focus];
+    case META_FRAME_STATE_NORMAL:
+    case META_FRAME_STATE_SHADED:
+      {
+        if (state == META_FRAME_STATE_SHADED)
+          style = style_set->shaded_styles[resize][focus];
+        else
+          style = style_set->normal_styles[resize][focus];
 
-      /* Try parent if we failed here */
-      if (style == NULL && style_set->parent)
-        style = get_style (style_set->parent, state, resize, focus);
+        /* Try parent if we failed here */
+        if (style == NULL && style_set->parent)
+          style = get_style (style_set->parent, state, resize, focus);
       
-      /* Allow people to omit the vert/horz/none resize modes */
-      if (style == NULL &&
-          resize != META_FRAME_RESIZE_BOTH)
-        style = get_style (style_set, state, META_FRAME_RESIZE_BOTH, focus);
-    }
-  else
-    {
-      MetaFrameStyle **styles;
+        /* Allow people to omit the vert/horz/none resize modes */
+        if (style == NULL &&
+            resize != META_FRAME_RESIZE_BOTH)
+          style = get_style (style_set, state, META_FRAME_RESIZE_BOTH, focus);
+      }
+      break;
+    default:
+      {
+        MetaFrameStyle **styles;
 
-      styles = NULL;
+        styles = NULL;
       
-      switch (state)
-        {
-        case META_FRAME_STATE_SHADED:
-          styles = style_set->shaded_styles;
-          break;
-        case META_FRAME_STATE_MAXIMIZED:
-          styles = style_set->maximized_styles;
-          break;
-        case META_FRAME_STATE_MAXIMIZED_AND_SHADED:
-          styles = style_set->maximized_and_shaded_styles;
-          break;
-        case META_FRAME_STATE_NORMAL:
-        case META_FRAME_STATE_LAST:
-          g_assert_not_reached ();
-          break;
-        }
+        switch (state)
+          {
+          case META_FRAME_STATE_MAXIMIZED:
+            styles = style_set->maximized_styles;
+            break;
+          case META_FRAME_STATE_MAXIMIZED_AND_SHADED:
+            styles = style_set->maximized_and_shaded_styles;
+            break;
+          case META_FRAME_STATE_NORMAL:
+          case META_FRAME_STATE_SHADED:
+          case META_FRAME_STATE_LAST:
+            g_assert_not_reached ();
+            break;
+          }
 
-      style = styles[focus];
+        style = styles[focus];
 
-      /* Try parent if we failed here */
-      if (style == NULL && style_set->parent)
-        style = get_style (style_set->parent, state, resize, focus);      
+        /* Try parent if we failed here */
+        if (style == NULL && style_set->parent)
+          style = get_style (style_set->parent, state, resize, focus);      
+      }
     }
 
   return style;

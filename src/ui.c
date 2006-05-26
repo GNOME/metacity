@@ -87,7 +87,8 @@ filter_func (GdkXEvent *xevent,
     return GDK_FILTER_REMOVE;
   else
     {
-      ef->last_event_serial = ((XEvent*)xevent)->xany.serial;
+      if (ef)
+        ef->last_event_serial = ((XEvent*)xevent)->xany.serial;
       return GDK_FILTER_CONTINUE;
     }
 }

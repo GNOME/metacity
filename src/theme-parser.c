@@ -3525,8 +3525,9 @@ parse_style_set_element (GMarkupParseContext  *context,
           return;
         }
 
-      if (frame_state == META_FRAME_STATE_NORMAL)
+      switch (frame_state)
         {
+        case META_FRAME_STATE_NORMAL:
           if (resize == NULL)
             {
               set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
@@ -3535,7 +3536,6 @@ parse_style_set_element (GMarkupParseContext  *context,
               return;
             }
 
-          
           frame_resize = meta_frame_resize_from_string (resize);
           if (frame_resize == META_FRAME_RESIZE_LAST)
             {
@@ -3544,13 +3544,48 @@ parse_style_set_element (GMarkupParseContext  *context,
                          focus);
               return;
             }
-        }
-      else
-        {
+          
+          break;
+
+        case META_FRAME_STATE_SHADED:
+          if (META_THEME_ALLOWS (info->theme, META_THEME_UNRESIZABLE_SHADED_STYLES))
+            {
+              if (resize == NULL)
+                {
+                  set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
+                             _("No \"resize\" attribute on <%s> element"),
+                             element_name);
+                  return;
+                }
+
+              frame_resize = meta_frame_resize_from_string (resize);
+              if (frame_resize == META_FRAME_RESIZE_LAST)
+                {
+                  set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
+                             _("\"%s\" is not a valid value for resize attribute"),
+                             focus);
+                  return;
+                }
+            }
+          else
+            {
+              if (resize != NULL)
+                {
+                  set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
+                       _("Should not have \"resize\" attribute on <%s> element for maximized/shaded states"),
+                      element_name);
+                  return;
+                }
+
+              frame_resize = META_FRAME_RESIZE_BOTH;
+            }
+          break;
+          
+        default:
           if (resize != NULL)
             {
               set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
-                         _("Should not have \"resize\" attribute on <%s> element for maximized/shaded states"),
+                         _("Should not have \"resize\" attribute on <%s> element for maximized states"),
                          element_name);
               return;
             }
@@ -3583,15 +3618,15 @@ parse_style_set_element (GMarkupParseContext  *context,
           info->style_set->maximized_styles[frame_focus] = frame_style;
           break;
         case META_FRAME_STATE_SHADED:
-          if (info->style_set->shaded_styles[frame_focus])
+          if (info->style_set->shaded_styles[frame_resize][frame_focus])
             {
               set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
-                         _("Style has already been specified for state %s focus %s"),
-                         state, focus);
+                         _("Style has already been specified for state %s resize %s focus %s"),
+                         state, resize, focus);
               return;
             }
           meta_frame_style_ref (frame_style);
-          info->style_set->shaded_styles[frame_focus] = frame_style;
+          info->style_set->shaded_styles[frame_resize][frame_focus] = frame_style;
           break;
         case META_FRAME_STATE_MAXIMIZED_AND_SHADED:
           if (info->style_set->maximized_and_shaded_styles[frame_focus])

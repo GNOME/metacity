@@ -550,7 +550,7 @@ struct _MetaFrameStyleSet
   MetaFrameStyleSet *parent;
   MetaFrameStyle *normal_styles[META_FRAME_RESIZE_LAST][META_FRAME_FOCUS_LAST];
   MetaFrameStyle *maximized_styles[META_FRAME_FOCUS_LAST];
-  MetaFrameStyle *shaded_styles[META_FRAME_FOCUS_LAST];
+  MetaFrameStyle *shaded_styles[META_FRAME_RESIZE_LAST][META_FRAME_FOCUS_LAST];
   MetaFrameStyle *maximized_and_shaded_styles[META_FRAME_FOCUS_LAST];
 };
 
@@ -862,5 +862,6 @@ guint meta_theme_earliest_version_with_button (MetaButtonType type);
 #define META_THEME_UBIQUITOUS_CONSTANTS 2
 #define META_THEME_VARIED_ROUND_CORNERS 2
 #define META_THEME_IMAGES_FROM_ICON_THEMES 2
+#define META_THEME_UNRESIZABLE_SHADED_STYLES 2
 
 #endif
