@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity 2.14.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-14 22:57+0200\n"
-"PO-Revision-Date: 2006-05-01 17:03+0100\n"
+"POT-Creation-Date: 2006-05-27 09:41+0200\n"
+"PO-Revision-Date: 2006-05-15 17:26+0100\n"
 "Last-Translator: Jonathan Ernst <jonathan@ernstfamily.ch>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
@@ -29,9 +29,7 @@ msgstr "Usage : %s\n"
 
 #: ../src/tools/metacity-message.c:176 ../src/util.c:131
 msgid "Metacity was compiled without support for verbose mode\n"
-msgstr ""
-"Metacity a été compilé sans le support du mode bavard (donc moins de "
-"commentaires de la part de l'application)\n"
+msgstr "Metacity a été compilé sans le support du mode bavard\n"
 
 #: ../src/delete.c:64 ../src/delete.c:91 ../src/metacity-dialog.c:71
 #: ../src/theme-parser.c:467
@@ -41,7 +39,7 @@ msgstr "Impossible d'analyser « %s » en tant qu'entier"
 
 #: ../src/delete.c:71 ../src/delete.c:98 ../src/metacity-dialog.c:78
 #: ../src/theme-parser.c:476 ../src/theme-parser.c:530
-#, fuzzy, c-format
+#, c-format
 msgid "Did not understand trailing characters \"%s\" in string \"%s\""
 msgstr "Caractères de fin « %s » non compris dans la chaîne « %s »"
 
@@ -435,7 +433,7 @@ msgstr ""
 "Une chaîne de description de police décrivant une police pour les barres de "
 "titre de fenêtres. La taille de la description ne sera toutefois utilisée "
 "que si l'option titlebar_font_size est réglée sur 0. Cette option est en "
-"outre désactivée si l'option titlebar_uses_desktop_font est réglée sur vrai. "
+"outre désactivée si l'option titlebar_uses_desktop_font est réglée sur VRAI. "
 "Par défaut, titlebar_font est désactivé et Metacity utilise donc la police "
 "du bureau, même si la valeur de titlebar_uses_desktop_font est fausse."
 
@@ -526,10 +524,9 @@ msgstr "Activer la sonnerie visuelle"
 
 #: ../src/metacity.schemas.in.h:17
 msgid "Hide all windows and focus desktop"
-msgstr "Cacher toutes les fenêtres et activer le bureau"
+msgstr "Cacher toutes les fenêtres et donner le focus au bureau"
 
 #: ../src/metacity.schemas.in.h:18
-#, fuzzy
 msgid ""
 "If true, and the focus mode is either \"sloppy\" or \"mouse\" then the "
 "focused window will be automatically raised after a delay (the delay is "
@@ -542,22 +539,26 @@ msgid ""
 "a window during drag and drop (because that results in the application "
 "grabbing the mouse)"
 msgstr ""
-"Si vrai et que le mode d'activation vaut « sloppy » ou « mouse » alors la "
+"Si VRAI et que le mode de focus vaut « sloppy » ou « mouse » alors la "
 "fenêtre active sera automatiquement mise au premier plan après un certain "
 "temps (qui peut être spécifié dans la clé auto_raise_delay). Cette "
 "préférence est nommée de façon imprécise mais conservée pour des raisons de "
 "compatibilité descendante. Afin d'essayer d'être plus clair (au moins pour "
 "ceux qui ont les connaissances techniques nécessaires), sa signification est "
-"« mettre automatiquement au premier plan après une durée pendant laquelle"
-"[...] »"
+"« mettre automatiquement au premier plan à l'échéance d'un événement souris "
+"non capturé dans le mode de focus « sloppy » ou « mouse » ». Ce n'est pas "
+"lié au comporement de clique (c'est-à-dire que ce n'est pas lié à la mise au "
+"premier plan lors du clique ou la mise au premier plan orthogonale). Ce "
+"n'est pas lié à l'entrée dans une fenêtre lors du glisser-déposer (parce que "
+"ceci a comme conséquence que l'application capture la souris)"
 
 #: ../src/metacity.schemas.in.h:19
 msgid ""
 "If true, ignore the titlebar_font option, and use the standard application "
 "font for window titles."
 msgstr ""
-"Si la valeur est vrai, ignore l'option titlebar_font et utilise la police "
-"standard de l'application pour les titres de fenêtres."
+"Si VRAI, ignore l'option titlebar_font et utilise la police standard de "
+"l'application pour les titres de fenêtres."
 
 #: ../src/metacity.schemas.in.h:20
 msgid ""
@@ -568,7 +569,7 @@ msgid ""
 "otherwise be impractical. However, the wireframe feature is disabled when "
 "accessibility is on to avoid weird desktop breakages."
 msgstr ""
-"Si vrai, metacity donnera à l'utilisateur moins de retour d'information et "
+"Si VRAI, metacity donnera à l'utilisateur moins de retour d'information et "
 "diminuera l'impression de « manipulation directe », en utilisant des cadres "
 "en fil de fer, en évitant les animations, ou d'autres moyens. C'est une "
 "réduction significative de convivialité pour beaucoup d'utilisateurs, mais "
@@ -589,13 +590,13 @@ msgid ""
 "details of application-based vs. window-based, e.g. whether to pass through "
 "clicks. Also, application-based mode is largely unimplemented at the moment."
 msgstr ""
-"Si la valeur est vrai, Metacity fonctionne en termes d'applications plutôt "
-"que de fenêtres. Le concept est assez abstrait, mais, en général, une "
-"configuration basée sur les applications est plus proche de Mac OS que de "
-"Windows. Lorsque vous activez une fenêtre en mode basé sur les applications, "
-"toutes les fenêtres de l'application seront mises au premier plan. En outre, "
-"en mode basé sur les applications, les clics de focus ne sont pas transmis "
-"aux fenêtres d'autres applications. L'existence de ce paramètre est assez "
+"Si VRAI, Metacity fonctionne en termes d'applications plutôt que de "
+"fenêtres. Le concept est assez abstrait, mais, en général, une configuration "
+"basée sur les applications est plus proche de Mac OS que de Windows. Lorsque "
+"vous activez une fenêtre en mode basé sur les applications, toutes les "
+"fenêtres de l'application seront mises au premier plan. En outre, en mode "
+"basé sur les applications, les clics de focus ne sont pas transmis aux "
+"fenêtres d'autres applications. L'existence de ce paramètre est assez "
 "douteuse, mais elle est préférable à la définition de paramètres pour tous "
 "les détails spécifiques des modes basés sur les applications/fenêtres, p. "
 "ex. concernant la transmission des clics. Pour l'instant, le mode basé sur "
@@ -604,7 +605,7 @@ msgstr ""
 #: ../src/metacity.schemas.in.h:22
 msgid "If true, trade off usability for less resource usage"
 msgstr ""
-"Si vrai, favorise une faible utilisation des ressources au détriment de la "
+"Si VRAI, favorise une faible utilisation des ressources au détriment de la "
 "convivialité"
 
 #: ../src/metacity.schemas.in.h:23
@@ -1979,7 +1980,7 @@ msgid ""
 "delay is given in thousandths of a second."
 msgstr ""
 "Le délai avant la mise au premier plan de la fenêtre si l'option auto_raise "
-"a la valeur vrai. Il est indiqué en millièmes de secondes."
+"a la valeur VRAI. Il est indiqué en millièmes de secondes."
 
 #: ../src/metacity.schemas.in.h:152
 msgid ""
@@ -3450,13 +3451,13 @@ msgstr "Erreur du gestionnaire de fenêtres : "
 msgid "Application set a bogus _NET_WM_PID %lu\n"
 msgstr "L'application a défini un _NET_WM_PID %lu erronné\n"
 
-#: ../src/window-props.c:233
+#: ../src/window-props.c:237
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (sur %s)"
 
 #. first time through
-#: ../src/window.c:5435
+#: ../src/window.c:5437
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -3472,7 +3473,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/window.c:6063
+#: ../src/window.c:6065
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
