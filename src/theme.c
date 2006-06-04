@@ -4476,17 +4476,6 @@ meta_theme_new (void)
 }
 
 
-static void
-free_menu_ops (MetaDrawOpList *op_lists[META_MENU_ICON_TYPE_LAST][N_GTK_STATES])
-{
-  int i, j;
-
-  for (i = 0; i < META_MENU_ICON_TYPE_LAST; i++)
-    for (j = 0; j < N_GTK_STATES; j++)
-      if (op_lists[i][j])
-        meta_draw_op_list_unref (op_lists[i][j]);
-}
-
 void
 meta_theme_free (MetaTheme *theme)
 {
@@ -4522,27 +4511,8 @@ meta_theme_free (MetaTheme *theme)
     if (theme->style_sets_by_type[i])
       meta_frame_style_set_unref (theme->style_sets_by_type[i]);
 
-  free_menu_ops (theme->menu_icons);
-  
   DEBUG_FILL_STRUCT (theme);
   g_free (theme);
-}
-
-static MetaDrawOpList*
-get_menu_icon (MetaTheme       *theme,
-               MetaMenuIconType type,
-               GtkStateType     state)
-{
-  MetaDrawOpList *op_list;
-
-  op_list = theme->menu_icons[type][state];
-
-  /* We fall back to normal if other states aren't found */
-  if (op_list == NULL &&
-      state != GTK_STATE_NORMAL)
-    return get_menu_icon (theme, type, GTK_STATE_NORMAL);
-  
-  return op_list;
 }
 
 gboolean
@@ -4604,18 +4574,6 @@ meta_theme_validate (MetaTheme *theme,
         return FALSE;          
       }
 
-  for (i = 0; i < META_MENU_ICON_TYPE_LAST; i++)
-    for (j = 0; j < N_GTK_STATES; j++)
-      if (get_menu_icon (theme, i, j) == NULL)
-        {
-          g_set_error (error, META_THEME_ERROR,
-                       META_THEME_ERROR_FAILED,
-                       _("<menu_icon function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> must be specified for this theme"),
-                       meta_menu_icon_type_to_string (i),
-                       meta_gtk_state_to_string (j));
-          return FALSE;
-        }
-  
   return TRUE;
 }
 
@@ -4822,37 +4780,6 @@ meta_theme_draw_frame (MetaTheme              *theme,
                          text_height,
                          button_states,
                          mini_icon, icon);
-}
-
-void
-meta_theme_draw_menu_icon (MetaTheme          *theme,
-                           GtkWidget          *widget,
-                           GdkDrawable        *drawable,
-                           const GdkRectangle *clip,
-                           MetaRectangle       offset_rect,
-                           MetaMenuIconType    type)
-{  
-  MetaDrawInfo info;
-  MetaDrawOpList *op_list;
-  
-  g_return_if_fail (type < META_BUTTON_TYPE_LAST);  
-
-  op_list = get_menu_icon (theme, type,
-                           GTK_WIDGET_STATE (widget));
-  
-  info.mini_icon = NULL;
-  info.icon = NULL;
-  info.title_layout = NULL;
-  info.title_layout_width = 0;
-  info.title_layout_height = 0;
-  info.fgeom = NULL;
-  
-  meta_draw_op_list_draw (op_list,
-                          widget,
-                          drawable,
-                          clip,
-                          &info,
-                          offset_rect);
 }
 
 void
@@ -5312,41 +5239,6 @@ meta_button_type_to_string (MetaButtonType type)
     case META_BUTTON_TYPE_RIGHT_RIGHT_BACKGROUND:
       return "right_right_background";      
     case META_BUTTON_TYPE_LAST:
-      break;
-    }
-
-  return "<unknown>";
-}
-
-MetaMenuIconType
-meta_menu_icon_type_from_string (const char *str)
-{
-  if (strcmp ("close", str) == 0)
-    return META_MENU_ICON_TYPE_CLOSE;
-  else if (strcmp ("maximize", str) == 0)
-    return META_MENU_ICON_TYPE_MAXIMIZE;
-  else if (strcmp ("minimize", str) == 0)
-    return META_MENU_ICON_TYPE_MINIMIZE;
-  else if (strcmp ("unmaximize", str) == 0)
-    return META_MENU_ICON_TYPE_UNMAXIMIZE;
-  else
-    return META_MENU_ICON_TYPE_LAST;
-}
-
-const char*
-meta_menu_icon_type_to_string (MetaMenuIconType type)
-{
-  switch (type)
-    {
-    case META_MENU_ICON_TYPE_CLOSE:
-      return "close";
-    case META_MENU_ICON_TYPE_MAXIMIZE:
-      return "maximize";
-    case META_MENU_ICON_TYPE_MINIMIZE:
-      return "minimize";
-    case META_MENU_ICON_TYPE_UNMAXIMIZE:
-      return "unmaximize";
-    case META_MENU_ICON_TYPE_LAST:
       break;
     }
 

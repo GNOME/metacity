@@ -94,8 +94,6 @@ typedef struct
   MetaFramePiece piece;         /* position of piece being parsed */
   MetaButtonType button_type;   /* type of button/menuitem being parsed */
   MetaButtonState button_state; /* state of button being parsed */
-  MetaMenuIconType menu_icon_type; /* type of menu icon being parsed */
-  GtkStateType menu_icon_state; /* state of menu icon being parsed */
 } ParseInfo;
 
 static void set_error (GError             **err,
@@ -1161,81 +1159,11 @@ parse_toplevel_element (GMarkupParseContext  *context,
     }
   else if (ELEMENT_IS ("menu_icon"))
     {
-      const char *function = NULL;
-      const char *state = NULL;
-      const char *draw_ops = NULL;
-      
-      if (!locate_attributes (context, element_name, attribute_names, attribute_values,
-                              error,
-                              "function", &function,
-                              "state", &state,
-                              "draw_ops", &draw_ops,
-                              NULL))
-        return;
-
-      if (function == NULL)
-        {
-          set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
-                     _("No \"%s\" attribute on <%s> element"),
-                     "function", element_name);
-          return;
-        }
-
-      if (state == NULL)
-        {
-          set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
-                     _("No \"%s\" attribute on <%s> element"),
-                     "state", element_name);
-          return;
-        }
-      
-      info->menu_icon_type = meta_menu_icon_type_from_string (function);
-      if (info->menu_icon_type == META_BUTTON_TYPE_LAST)
-        {
-          set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
-                     _("Unknown function \"%s\" for menu icon"),
-                     function);
-          return;
-        }
-
-      info->menu_icon_state = meta_gtk_state_from_string (state);
-      if (((int) info->menu_icon_state) == -1)
-        {
-          set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
-                     _("Unknown state \"%s\" for menu icon"),
-                     state);
-          return;
-        }
-      
-      if (info->theme->menu_icons[info->menu_icon_type][info->menu_icon_state] != NULL)
-        {
-          set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
-                     _("Theme already has a menu icon for function %s state %s"),
-                     function, state);
-          return;
-        }
-
+      /* Not supported any more, but we have to parse it if they include it,
+       * for backwards compatibility.
+       */
       g_assert (info->op_list == NULL);
       
-      if (draw_ops)
-        {
-          MetaDrawOpList *op_list;
-
-          op_list = meta_theme_lookup_draw_op_list (info->theme,
-                                                    draw_ops);
-
-          if (op_list == NULL)
-            {
-              set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
-                         _("No <draw_ops> with the name \"%s\" has been defined"),
-                         draw_ops);
-              return;
-            }
-
-          meta_draw_op_list_ref (op_list);
-          info->op_list = op_list;
-        }
-
       push_state (info, STATE_MENU_ICON);
     }
   else if (ELEMENT_IS ("fallback"))
@@ -4153,16 +4081,9 @@ end_element_handler (GMarkupParseContext *context,
       break;
     case STATE_MENU_ICON:
       g_assert (info->theme);
-      if (info->op_list == NULL)
+      if (info->op_list != NULL)
         {
-          set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
-                     _("No draw_ops provided for menu icon"));
-        }
-      else
-        {
-          g_assert (info->theme->menu_icons[info->menu_icon_type][info->menu_icon_state] == NULL);
-          info->theme->menu_icons[info->menu_icon_type][info->menu_icon_state] =
-            info->op_list;
+          meta_draw_op_list_unref (info->op_list);
           info->op_list = NULL;
         }
       pop_state (info);

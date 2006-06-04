@@ -574,7 +574,6 @@ struct _MetaTheme
   GHashTable *styles_by_name;
   GHashTable *style_sets_by_name;
   MetaFrameStyleSet *style_sets_by_type[META_FRAME_TYPE_LAST];
-  MetaDrawOpList *menu_icons[META_MENU_ICON_TYPE_LAST][N_GTK_STATES];
 
   GdkPixbuf *fallback_icon, *fallback_mini_icon;
 };
@@ -752,13 +751,6 @@ void meta_theme_draw_frame (MetaTheme              *theme,
                             GdkPixbuf              *mini_icon,
                             GdkPixbuf              *icon);
 
-void meta_theme_draw_menu_icon (MetaTheme          *theme,
-                                GtkWidget          *widget,
-                                GdkDrawable        *drawable,
-                                const GdkRectangle *clip,
-                                MetaRectangle       offset_rect,
-                                MetaMenuIconType    type);
-     
 void meta_theme_get_frame_borders (MetaTheme         *theme,
                                    MetaFrameType      type,
                                    int                text_height,
@@ -831,8 +823,6 @@ MetaButtonState       meta_button_state_from_string    (const char            *s
 const char*           meta_button_state_to_string      (MetaButtonState        state);
 MetaButtonType        meta_button_type_from_string     (const char            *str);
 const char*           meta_button_type_to_string       (MetaButtonType         type);
-MetaMenuIconType      meta_menu_icon_type_from_string  (const char            *str);
-const char*           meta_menu_icon_type_to_string    (MetaMenuIconType       type);
 MetaFramePiece        meta_frame_piece_from_string     (const char            *str);
 const char*           meta_frame_piece_to_string       (MetaFramePiece         piece);
 MetaFrameState        meta_frame_state_from_string     (const char            *str);
