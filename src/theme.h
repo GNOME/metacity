@@ -853,5 +853,6 @@ guint meta_theme_earliest_version_with_button (MetaButtonType type);
 #define META_THEME_VARIED_ROUND_CORNERS 2
 #define META_THEME_IMAGES_FROM_ICON_THEMES 2
 #define META_THEME_UNRESIZABLE_SHADED_STYLES 2
+#define META_THEME_DEGREES_IN_ARCS 2
 
 #endif

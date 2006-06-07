@@ -1862,6 +1862,8 @@ parse_draw_op_element (GMarkupParseContext  *context,
       const char *filled;
       const char *start_angle;
       const char *extent_angle;
+      const char *from;
+      const char *to;
       gboolean filled_val;
       double start_angle_val;
       double extent_angle_val;
@@ -1875,6 +1877,8 @@ parse_draw_op_element (GMarkupParseContext  *context,
                               "filled", &filled,
                               "start_angle", &start_angle,
                               "extent_angle", &extent_angle,
+                              "from", &from,
+                              "to", &to,
                               NULL))
         return;
 
@@ -1913,20 +1917,40 @@ parse_draw_op_element (GMarkupParseContext  *context,
           return;
         }
 
-      if (start_angle == NULL)
+      if (META_THEME_ALLOWS (info->theme, META_THEME_DEGREES_IN_ARCS) )
         {
-          set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
-                     _("No \"start_angle\" attribute on element <%s>"), element_name);
-          return;
+          if (start_angle == NULL && from == NULL)
+            {
+              set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
+                         _("No \"start_angle\" or \"from\" attribute on element <%s>"), element_name);
+              return;
+            }
+
+          if (extent_angle == NULL && to == NULL)
+            {
+              set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
+                         _("No \"extent_angle\" or \"to\" attribute on element <%s>"), element_name);
+              return;
+            }
+        }
+      else
+        {
+          if (start_angle == NULL)
+            {
+              set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
+                         _("No \"start_angle\" attribute on element <%s>"), element_name);
+              return;
+            }
+
+          if (extent_angle == NULL)
+            {
+              set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
+                         _("No \"extent_angle\" attribute on element <%s>"), element_name);
+              return;
+            }
         }
 
-      if (extent_angle == NULL)
-        {
-          set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
-                     _("No \"extent_angle\" attribute on element <%s>"), element_name);
-          return;
-        }
-      
+     
       if (!check_expression (x, FALSE, info->theme, context, error))
         return;
 
@@ -1939,12 +1963,32 @@ parse_draw_op_element (GMarkupParseContext  *context,
       if (!check_expression (height, FALSE, info->theme, context, error))
         return;
 
-      if (!parse_angle (start_angle, &start_angle_val, context, error))
-        return;
-
-      if (!parse_angle (extent_angle, &extent_angle_val, context, error))
-        return;
+      if (start_angle == NULL)
+        {
+          if (!parse_angle (from, &start_angle_val, context, error))
+            return;
+          
+          start_angle_val = (180-start_angle_val)/360.0;
+        }
+      else
+        {
+          if (!parse_angle (start_angle, &start_angle_val, context, error))
+            return;
+        }
       
+      if (extent_angle == NULL)
+        {
+          if (!parse_angle (to, &extent_angle_val, context, error))
+            return;
+          
+          extent_angle_val = ((180-extent_angle_val)/360.0) - start_angle_val;
+        }
+      else
+        {
+           if (!parse_angle (extent_angle, &extent_angle_val, context, error))
+             return;
+        }
+     
       filled_val = FALSE;
       if (filled && !parse_boolean (filled, &filled_val, context, error))
         return;
