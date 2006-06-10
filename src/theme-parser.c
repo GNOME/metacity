@@ -833,11 +833,13 @@ parse_toplevel_element (GMarkupParseContext  *context,
       const char *rounded_top_right = NULL;
       const char *rounded_bottom_left = NULL;
       const char *rounded_bottom_right = NULL;
+      const char *hide_buttons = NULL;
       gboolean has_title_val;
       guint rounded_top_left_val;
       guint rounded_top_right_val;
       guint rounded_bottom_left_val;
       guint rounded_bottom_right_val;
+      gboolean hide_buttons_val;
       double title_scale_val;
       MetaFrameLayout *parent_layout;
 
@@ -849,6 +851,7 @@ parse_toplevel_element (GMarkupParseContext  *context,
                               "rounded_top_right", &rounded_top_right,
                               "rounded_bottom_left", &rounded_bottom_left,
                               "rounded_bottom_right", &rounded_bottom_right,
+                              "hide_buttons", &hide_buttons,
                               NULL))
         return;
 
@@ -864,10 +867,14 @@ parse_toplevel_element (GMarkupParseContext  *context,
       if (has_title && !parse_boolean (has_title, &has_title_val, context, error))
         return;
 
-      rounded_top_left_val = FALSE;
-      rounded_top_right_val = FALSE;
-      rounded_bottom_left_val = FALSE;
-      rounded_bottom_right_val = FALSE;
+      hide_buttons_val = FALSE;
+      if (hide_buttons && !parse_boolean (hide_buttons, &hide_buttons_val, context, error))
+        return;
+
+      rounded_top_left_val = 0;
+      rounded_top_right_val = 0;
+      rounded_bottom_left_val = 0;
+      rounded_bottom_right_val = 0;
 
       if (rounded_top_left && !parse_rounding (rounded_top_left, &rounded_top_left_val, context, info->theme, error))
         return;
@@ -912,6 +919,9 @@ parse_toplevel_element (GMarkupParseContext  *context,
 
       if (has_title) /* only if explicit, otherwise inherit */
         info->layout->has_title = has_title_val;
+
+      if (META_THEME_ALLOWS (info->theme, META_THEME_HIDDEN_BUTTONS) && hide_buttons_val)
+          info->layout->hide_buttons = hide_buttons_val;
 
       if (title_scale)
 	info->layout->title_scale = title_scale_val;

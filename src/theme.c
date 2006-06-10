@@ -560,7 +560,7 @@ meta_frame_layout_calc_geometry (const MetaFrameLayout  *layout,
   /* Init all button rects to 0, lame hack */
   memset (ADDRESS_OF_BUTTON_RECTS (fgeom), '\0',
           LENGTH_OF_BUTTON_RECTS);
-  
+
   n_left = 0;
   n_right = 0;
   for (i = 0; i < MAX_BUTTONS_PER_CORNER; i++)
@@ -570,7 +570,7 @@ meta_frame_layout_calc_geometry (const MetaFrameLayout  *layout,
       right_func_rects[i] = NULL;
 
       /* Try to fill in rects */
-      if (button_layout->left_buttons[i] != META_BUTTON_FUNCTION_LAST)
+      if (button_layout->left_buttons[i] != META_BUTTON_FUNCTION_LAST && !layout->hide_buttons)
         {
           left_func_rects[n_left] = rect_for_function (fgeom, flags,
                                                        button_layout->left_buttons[i]);
@@ -578,7 +578,7 @@ meta_frame_layout_calc_geometry (const MetaFrameLayout  *layout,
             ++n_left;
         }
       
-      if (button_layout->right_buttons[i] != META_BUTTON_FUNCTION_LAST)
+      if (button_layout->right_buttons[i] != META_BUTTON_FUNCTION_LAST && !layout->hide_buttons)
         {
           right_func_rects[n_right] = rect_for_function (fgeom, flags,
                                                          button_layout->right_buttons[i]);

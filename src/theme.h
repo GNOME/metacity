@@ -97,6 +97,9 @@ struct _MetaFrameLayout
   /* Whether title text will be displayed */
   guint has_title : 1;
 
+  /* Whether we should hide the buttons */
+  guint hide_buttons : 1;
+
   /* Round corners */
   guint top_left_corner_rounded_radius;
   guint top_right_corner_rounded_radius;
@@ -854,5 +857,6 @@ guint meta_theme_earliest_version_with_button (MetaButtonType type);
 #define META_THEME_IMAGES_FROM_ICON_THEMES 2
 #define META_THEME_UNRESIZABLE_SHADED_STYLES 2
 #define META_THEME_DEGREES_IN_ARCS 2
+#define META_THEME_HIDDEN_BUTTONS 2
 
 #endif
