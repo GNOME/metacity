@@ -4519,7 +4519,7 @@ gboolean
 meta_theme_validate (MetaTheme *theme,
                      GError   **error)
 {
-  int i, j;
+  int i;
   
   g_return_val_if_fail (theme != NULL, FALSE);
 
@@ -4951,7 +4951,7 @@ meta_theme_define_int_constant (MetaTheme   *theme,
 
   return TRUE;
 }
-
+  
 gboolean
 meta_theme_lookup_int_constant (MetaTheme   *theme,
                                 const char  *name,
@@ -5040,6 +5040,68 @@ meta_theme_lookup_float_constant (MetaTheme   *theme,
       return FALSE;
     }
 }
+
+gboolean
+meta_theme_define_color_constant (MetaTheme   *theme,
+                                  const char  *name,
+                                  const char  *value,
+                                  GError     **error)
+{
+  if (theme->color_constants == NULL)
+    theme->color_constants = g_hash_table_new_full (g_str_hash,
+                                                    g_str_equal,
+                                                    g_free,
+                                                    NULL);
+
+  if (!first_uppercase (name))
+    {
+      g_set_error (error, META_THEME_ERROR, META_THEME_ERROR_FAILED,
+                   _("User-defined constants must begin with a capital letter; \"%s\" does not"),
+                   name);
+      return FALSE;
+    }
+  
+  if (g_hash_table_lookup_extended (theme->color_constants, name, NULL, NULL))
+    {
+      g_set_error (error, META_THEME_ERROR, META_THEME_ERROR_FAILED,
+                   _("Constant \"%s\" has already been defined"),
+                   name);
+      
+      return FALSE;
+    }
+
+  g_hash_table_insert (theme->color_constants,
+                       g_strdup (name),
+                       g_strdup (value));
+
+  return TRUE;
+}
+
+gboolean
+meta_theme_lookup_color_constant (MetaTheme   *theme,
+                                  const char  *name,
+                                  char       **value)
+{
+  char *result;
+
+  *value = NULL;
+  
+  if (theme->color_constants == NULL)
+    return FALSE;
+
+  result = g_hash_table_lookup (theme->color_constants, name);
+
+  if (result)
+    {
+      *value = result;
+      return TRUE;
+    }
+  else
+    {
+      return FALSE;
+    }
+}
+
 
 PangoFontDescription*
 meta_gtk_widget_get_font_desc (GtkWidget *widget,

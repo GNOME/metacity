@@ -571,6 +571,7 @@ struct _MetaTheme
 
   GHashTable *integer_constants;
   GHashTable *float_constants;
+  GHashTable *color_constants;
   GHashTable *images_by_filename;
   GHashTable *layouts_by_name;
   GHashTable *draw_op_lists_by_name;
@@ -806,6 +807,14 @@ gboolean meta_theme_lookup_float_constant (MetaTheme   *theme,
                                            const char  *name,
                                            double      *value);
 
+gboolean meta_theme_define_color_constant (MetaTheme   *theme,
+                                           const char  *name,
+                                           const char  *value,
+                                           GError     **error);
+gboolean meta_theme_lookup_color_constant (MetaTheme   *theme,
+                                           const char  *name,
+                                           char       **value);
+
 char*    meta_theme_replace_constants     (MetaTheme   *theme,
                                            const char  *expr,
                                            GError     **err);
@@ -858,5 +867,6 @@ guint meta_theme_earliest_version_with_button (MetaButtonType type);
 #define META_THEME_UNRESIZABLE_SHADED_STYLES 2
 #define META_THEME_DEGREES_IN_ARCS 2
 #define META_THEME_HIDDEN_BUTTONS 2
+#define META_THEME_COLOR_CONSTANTS 2
 
 #endif

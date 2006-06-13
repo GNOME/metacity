@@ -707,6 +707,25 @@ parse_alpha (const char             *str,
   return TRUE;
 }
 
+static MetaColorSpec*
+parse_color (MetaTheme *theme,
+             const char        *str,
+             GError           **err)
+{
+  char* referent;
+
+  if (META_THEME_ALLOWS(theme, META_THEME_COLOR_CONSTANTS) &&
+      meta_theme_lookup_color_constant (theme, str, &referent))
+    {
+      if (referent)
+        return meta_color_spec_new_from_string (referent, err);
+      
+      /* no need to free referent: it's a pointer into the actual hash table */
+    }
+  
+  return meta_color_spec_new_from_string (str, err);
+}
+
 static gboolean
 parse_title_scale (const char          *str,
                    double              *val,
@@ -765,8 +784,8 @@ parse_toplevel_element (GMarkupParseContext  *context,
     {
       const char *name;
       const char *value;
-      int ival;
-      double dval;
+      int ival = 0;
+      double dval = 0.0;
       
       if (!locate_attributes (context, element_name, attribute_names, attribute_values,
                               error,
@@ -790,11 +809,9 @@ parse_toplevel_element (GMarkupParseContext  *context,
           return;
         }
 
-      if (strchr (value, '.'))
+      if (strchr(value, '.') && parse_double (value, &dval, context, error))
         {
-          dval = 0.0;
-          if (!parse_double (value, &dval, context, error))
-            return;
+          g_clear_error (error);
 
           if (!meta_theme_define_float_constant (info->theme,
                                                  name,
@@ -805,16 +822,27 @@ parse_toplevel_element (GMarkupParseContext  *context,
               return;
             }
         }
-      else
+      else if (parse_positive_integer (value, &ival, context, info->theme, error))
         {
-          ival = 0;
-          if (!parse_positive_integer (value, &ival, context, info->theme, error))
-            return;
+          g_clear_error (error);
 
           if (!meta_theme_define_int_constant (info->theme,
                                                name,
                                                ival,
                                                error))
+            {
+              add_context_to_error (error, context);
+              return;
+            }
+        }
+      else
+        {
+          g_clear_error (error);
+
+          if (!meta_theme_define_color_constant (info->theme,
+                                                 name,
+                                                 value,
+                                                 error))
             {
               add_context_to_error (error, context);
               return;
@@ -1740,7 +1768,7 @@ parse_draw_op_element (GMarkupParseContext  *context,
       /* Check last so we don't have to free it when other
        * stuff fails
        */
-      color_spec = meta_color_spec_new_from_string (color, error);
+      color_spec = parse_color (info->theme, color, error);
       if (color_spec == NULL)
         {
           add_context_to_error (error, context);
@@ -1839,7 +1867,7 @@ parse_draw_op_element (GMarkupParseContext  *context,
       /* Check last so we don't have to free it when other
        * stuff fails
        */
-      color_spec = meta_color_spec_new_from_string (color, error);
+      color_spec = parse_color (info->theme, color, error);
       if (color_spec == NULL)
         {
           add_context_to_error (error, context);
@@ -2006,7 +2034,7 @@ parse_draw_op_element (GMarkupParseContext  *context,
       /* Check last so we don't have to free it when other
        * stuff fails
        */
-      color_spec = meta_color_spec_new_from_string (color, error);
+      color_spec = parse_color (info->theme, color, error);
       if (color_spec == NULL)
         {
           add_context_to_error (error, context);
@@ -2180,7 +2208,7 @@ parse_draw_op_element (GMarkupParseContext  *context,
       /* Check last so we don't have to free it when other
        * stuff fails
        */
-      color_spec = meta_color_spec_new_from_string (color, error);
+      color_spec = parse_color (info->theme, color, error);
       if (color_spec == NULL)
         {
           if (alpha_spec)
@@ -2407,7 +2435,7 @@ parse_draw_op_element (GMarkupParseContext  *context,
 
       if (colorize)
         {
-          colorize_spec = meta_color_spec_new_from_string (colorize, error);
+          colorize_spec = parse_color (info->theme, colorize, error);
           
           if (colorize_spec == NULL)
             {
@@ -2966,7 +2994,7 @@ parse_draw_op_element (GMarkupParseContext  *context,
       /* Check last so we don't have to free it when other
        * stuff fails
        */
-      color_spec = meta_color_spec_new_from_string (color, error);
+      color_spec = parse_color (info->theme, color, error);
       if (color_spec == NULL)
         {
           add_context_to_error (error, context);
@@ -3228,7 +3256,7 @@ parse_gradient_element (GMarkupParseContext  *context,
           return;
         }
 
-      color_spec = meta_color_spec_new_from_string (value, error);
+      color_spec = parse_color (info->theme, value, error);
       if (color_spec == NULL)
         {
           add_context_to_error (error, context);
