@@ -620,7 +620,8 @@ void             meta_frame_layout_calc_geometry (const MetaFrameLayout  *layout
                                                   int                     client_width,
                                                   int                     client_height,
                                                   const MetaButtonLayout *button_layout,
-                                                  MetaFrameGeometry      *fgeom);
+                                                  MetaFrameGeometry      *fgeom,
+                                                  MetaTheme              *theme);
 
 gboolean         meta_frame_layout_validate      (const MetaFrameLayout *layout,
                                                   GError               **error);
@@ -833,7 +834,8 @@ MetaGtkColorComponent meta_color_component_from_string (const char            *s
 const char*           meta_color_component_to_string   (MetaGtkColorComponent  component);
 MetaButtonState       meta_button_state_from_string    (const char            *str);
 const char*           meta_button_state_to_string      (MetaButtonState        state);
-MetaButtonType        meta_button_type_from_string     (const char            *str);
+MetaButtonType        meta_button_type_from_string     (const char            *str,
+                                                        MetaTheme             *theme);
 const char*           meta_button_type_to_string       (MetaButtonType         type);
 MetaFramePiece        meta_frame_piece_from_string     (const char            *str);
 const char*           meta_frame_piece_to_string       (MetaFramePiece         piece);
@@ -861,6 +863,7 @@ guint meta_theme_earliest_version_with_button (MetaButtonType type);
 #define META_THEME_ALLOWS(theme, feature) (theme->format_version >= feature)
 
 /* What version of the theme file format were various features introduced in? */
+#define META_THEME_SHADE_STICK_ABOVE_BUTTONS 2
 #define META_THEME_UBIQUITOUS_CONSTANTS 2
 #define META_THEME_VARIED_ROUND_CORNERS 2
 #define META_THEME_IMAGES_FROM_ICON_THEMES 2

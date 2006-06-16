@@ -3383,7 +3383,7 @@ parse_style_element (GMarkupParseContext  *context,
           return;
         }
       
-      info->button_type = meta_button_type_from_string (function);
+      info->button_type = meta_button_type_from_string (function, info->theme);
       if (info->button_type == META_BUTTON_TYPE_LAST)
         {
           set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
