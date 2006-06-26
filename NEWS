@@ -1,3 +1,26 @@
+2.14.5
+==
+
+Thanks to Dan Sanders, Paolo Borelli, Elijah Newren, and jylefort at
+FreeBSD org for fixes in this release.
+
+ - Raise windows on maximize/unmaximize (Dan) [#335076]
+ - Prevent confirmation windows from causing applications to appear
+   locked when closing the app via the window list (Dan) [#334899]
+ - Plug a small leak (Paolo)
+ - prevent long titles from "sticking" in the tasklist (Elijah) [#330671]
+ - prevent a crash when changing resolution (jylefort) [#340847]
+
+Translations
+  tangi.bzh (br), Jordi Mallach (ca), Rhys Jones (cy), Pema Geyleg (dz),
+  Kostas Papadimas (el), Iñaki Larrañaga Murgoitio (eu), Jonathan Ernst
+  (fr), Ignacio Casal Quinteiro (gl), Ankit Patel (gu), Gabor Kelemen (hu),
+  Mohammad DAMT (id), Luca Ferretti (it), Žygimantas Beručka (lt), Tino
+  Meinen (nl), Åsmund Skjæveland (nn), Gora Mohanty (or), 
+  Gnome PL Team (pl), Laurent Dhima (sq), Theppitak Karoonboonyanan (th),
+  Maxim Dziumanenko (uk), Clytie Siddall (vi), Funda Wang (zh_CN), Woodman
+  Tuen (zh_HK), Woodman Tuen (zh_TW)
+
 2.14.3
 ==
 
