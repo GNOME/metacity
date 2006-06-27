@@ -504,6 +504,9 @@ struct _MetaFrameStyle
   MetaDrawOpList *buttons[META_BUTTON_TYPE_LAST][META_BUTTON_STATE_LAST];
   MetaDrawOpList *pieces[META_FRAME_PIECE_LAST];
   MetaFrameLayout *layout;
+  MetaColorSpec *window_background_color; /* can be NULL to use the standard
+                                             GTK theme engine */
+  guint8 window_background_alpha; /* 0=transparent; 255=opaque */
 };
 
 /* Kinds of frame...
@@ -871,5 +874,6 @@ guint meta_theme_earliest_version_with_button (MetaButtonType type);
 #define META_THEME_DEGREES_IN_ARCS 2
 #define META_THEME_HIDDEN_BUTTONS 2
 #define META_THEME_COLOR_CONSTANTS 2
+#define META_THEME_FRAME_BACKGROUNDS 2
 
 #endif

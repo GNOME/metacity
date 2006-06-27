@@ -3786,6 +3786,9 @@ meta_frame_style_new (MetaFrameStyle *parent)
 
   style->refcount = 1;
 
+  /* Default alpha is fully opaque */
+  style->window_background_alpha = 255;
+
   style->parent = parent;
   if (parent)
     meta_frame_style_ref (parent);
@@ -3832,6 +3835,9 @@ meta_frame_style_unref (MetaFrameStyle *style)
 
       if (style->layout)
         meta_frame_layout_unref (style->layout);
+
+      if (style->window_background_color)
+        meta_color_spec_free (style->window_background_color);
 
       /* we hold a reference to any parent style */
       if (style->parent)

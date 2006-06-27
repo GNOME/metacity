@@ -2336,16 +2336,54 @@ static void
 meta_frames_set_window_background (MetaFrames   *frames,
                                    MetaUIFrame  *frame)
 {
-  gtk_style_set_background (GTK_WIDGET (frames)->style,
-                            frame->window, GTK_STATE_NORMAL);
+  MetaFrameFlags flags;
+  MetaFrameType type;
+  MetaFrameStyle *style;
 
-#if 0
-  /* This is what we want for transparent background */
-  {
-    col.pixel = 0;
-    gdk_window_set_background (window, &col);
-  }
-#endif
+  /* FIXME: These two lines are executed three times in different places,
+   * once here and once in each meta_core_get_frame_*.
+   */
+  MetaDisplay *display = meta_display_for_x_display (gdk_display);
+  MetaWindow *window = meta_display_lookup_x_window (display, frame->xwindow);
+
+  if (window != NULL)
+    {
+      flags = meta_core_get_frame_flags (gdk_display, frame->xwindow);
+      type = meta_core_get_frame_type (gdk_display, frame->xwindow);
+      style = meta_theme_get_frame_style (meta_theme_get_current (),
+                                          type, flags);
+    }
+
+  if (window == NULL || style->window_background_color == NULL)
+    {
+      gtk_style_set_background (GTK_WIDGET (frames)->style,
+                                frame->window, GTK_STATE_NORMAL);
+    }
+  else
+    {
+      GdkColor color;
+      GdkVisual *visual;
+
+      meta_color_spec_render (style->window_background_color,
+                              GTK_WIDGET (frames),
+                              &color);
+
+      /* Fill in color.pixel */
+
+      gdk_rgb_find_color (gtk_widget_get_colormap (GTK_WIDGET (frames)),
+                          &color);
+
+      /* Set A in ARGB to window_background_alpha, if we have ARGB */
+
+      visual = gtk_widget_get_visual (GTK_WIDGET (frames));
+      if (visual->depth == 32) /* we have ARGB */
+        {
+          color.pixel = (color.pixel & 0xffffff) &
+            style->window_background_alpha << 24;
+        }
+
+      gdk_window_set_background (frame->window, &color);
+    }
 }
 
 static gboolean
