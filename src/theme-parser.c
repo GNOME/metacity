@@ -673,17 +673,14 @@ parse_alpha (const char             *str,
       
       if (!parse_double (split[i], &v, context, error))
         {
-          set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
-                     _("Could not parse \"%s\" as a floating point number"),
-                     split[i]);
-          
+          /* clear up, but don't set error: it was set by parse_double */
           g_strfreev (split);
           meta_alpha_gradient_spec_free (spec);
           
           return FALSE;
         }
 
-      if (v < (0.0 - 1e6) || v > (1.0 + 1e6))
+      if (v < (0.0 - 1e-6) || v > (1.0 + 1e-6))
         {
           set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
                      _("Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g\n"),
@@ -1008,6 +1005,8 @@ parse_toplevel_element (GMarkupParseContext  *context,
       const char *name = NULL;
       const char *parent = NULL;
       const char *geometry = NULL;
+      const char *background = NULL;
+      const char *alpha = NULL;
       MetaFrameStyle *parent_style;
       MetaFrameLayout *layout;
 
@@ -1015,6 +1014,8 @@ parse_toplevel_element (GMarkupParseContext  *context,
                               error,
                               "name", &name, "parent", &parent,
                               "geometry", &geometry,
+                              "background", &background,
+                              "alpha", &alpha,
                               NULL))
         return;
 
@@ -1078,6 +1079,38 @@ parse_toplevel_element (GMarkupParseContext  *context,
       g_assert (info->style->layout == NULL);
       meta_frame_layout_ref (layout);
       info->style->layout = layout;
+
+      if (background != NULL && META_THEME_ALLOWS (info->theme, META_THEME_FRAME_BACKGROUNDS))
+        {
+          info->style->window_background_color = meta_color_spec_new_from_string(background, error);
+          if (!info->style->window_background_color) return;
+
+          if (alpha != NULL)
+            {
+            
+               gboolean success;
+               MetaAlphaGradientSpec *alpha_vector;
+               
+               g_clear_error (error);
+               /* fortunately, we already have a routine to parse alpha values,
+                * though it produces a vector of them, which is a superset of
+                * what we want.
+                */
+               success = parse_alpha (alpha, &alpha_vector, context, error); 
+               if (!success) return;
+
+               /* alpha_vector->alphas must contain at least one element */
+               info->style->window_background_alpha = alpha_vector->alphas[0];
+
+               meta_alpha_gradient_spec_free (alpha_vector);
+            }
+        }
+      else if (alpha != NULL)
+        {
+          set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
+                     _("You must specify a background for an alpha value to be meaningful"));
+          return;
+        }
 
       meta_theme_insert_style (info->theme, name, info->style);
 
@@ -3561,23 +3594,25 @@ parse_style_set_element (GMarkupParseContext  *context,
           if (META_THEME_ALLOWS (info->theme, META_THEME_UNRESIZABLE_SHADED_STYLES))
             {
               if (resize == NULL)
+                /* In state="normal" we would complain here. But instead we accept
+                 * not having a resize attribute and default to resize="both", since
+                 * that most closely mimics what we did in v1, and thus people can
+                 * upgrade a theme to v2 without as much hassle.
+                 */
+                frame_resize = META_FRAME_RESIZE_BOTH;
+              else
                 {
-                  set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
-                             _("No \"resize\" attribute on <%s> element"),
-                             element_name);
-                  return;
-                }
-
-              frame_resize = meta_frame_resize_from_string (resize);
-              if (frame_resize == META_FRAME_RESIZE_LAST)
-                {
-                  set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
-                             _("\"%s\" is not a valid value for resize attribute"),
-                             focus);
-                  return;
+                  frame_resize = meta_frame_resize_from_string (resize);
+                  if (frame_resize == META_FRAME_RESIZE_LAST)
+                    {
+                      set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
+                                 _("\"%s\" is not a valid value for resize attribute"),
+                                 focus);
+                      return;
+                    }
                 }
             }
-          else
+          else /* v1 theme */
             {
               if (resize != NULL)
                 {
@@ -3587,6 +3622,7 @@ parse_style_set_element (GMarkupParseContext  *context,
                   return;
                 }
 
+              /* resize="both" is equivalent to the old behaviour */
               frame_resize = META_FRAME_RESIZE_BOTH;
             }
           break;
