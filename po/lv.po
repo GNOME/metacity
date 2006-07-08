@@ -1,24 +1,22 @@
-# translation of metacity.gnome-2-14.lv2.po to Latvian
-# translation of metacity.HEAD.lv.po to Latvian
+# translation of lv.po to Latvian
 # metaciy for Latvian.
 # Copyright (C) 2002, 2006 Free Software Foundation, Inc.
+#
 # Peteris Krisjanis <pecisk@inbox.lv>, 2002.
 # Raivis Dejus <orvils@gmail.com>, 2006.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: metacity.gnome-2-14.lv2\n"
+"Project-Id-Version: lv\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-06-11 23:10+0200\n"
-"PO-Revision-Date: 2006-06-08 18:41+0300\n"
+"POT-Creation-Date: 2006-07-08 13:43+0300\n"
+"PO-Revision-Date: 2006-07-08 13:50+0300\n"
 "Last-Translator: Raivis Dejus <orvils@gmail.com>\n"
 "Language-Team: Latvian <locale@laka.lv>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10.2\n"
-"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
-"2);\n"
+"X-Generator: KBabel 1.11.2\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
 #: ../src/tools/metacity-message.c:150
 #, c-format
@@ -53,8 +51,7 @@ msgstr "Kļūda lasot no dialoga displeja procesa: %s\n"
 
 #: ../src/delete.c:345
 #, c-format
-msgid ""
-"Error launching metacity-dialog to ask about killing an application: %s\n"
+msgid "Error launching metacity-dialog to ask about killing an application: %s\n"
 msgstr ""
 "Kļūda palaižot metacity-dialogu, lai pavaicātu par šīs aplikācijas "
 "nokaušanu: %s\n"
@@ -110,8 +107,7 @@ msgstr "Atjaunot Logu"
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
 "binding\n"
-msgstr ""
-"Kāda cita programma jau lieto taustiņu %s ar modifcētājiem %x kā sasaisti\n"
+msgstr "Kāda cita programma jau lieto taustiņu %s ar modifcētājiem %x kā sasaisti\n"
 
 #: ../src/keybindings.c:2534
 #, c-format
@@ -173,10 +169,8 @@ msgstr "Neizdevās noskanēt tēmu direktoriju: %s\n"
 
 #: ../src/main.c:455
 #, c-format
-msgid ""
-"Could not find a theme! Be sure %s exists and contains the usual themes."
-msgstr ""
-"Nevaru atrast tēmu! Pārliecinies, vai %s eksisē un satur parastās tēmas."
+msgid "Could not find a theme! Be sure %s exists and contains the usual themes."
+msgstr "Nevaru atrast tēmu! Pārliecinies, vai %s eksisē un satur parastās tēmas."
 
 #: ../src/main.c:527
 #, c-format
@@ -363,8 +357,7 @@ msgid "The window \"%s\" is not responding."
 msgstr "Logs \"%s\" nereaģē."
 
 #: ../src/metacity-dialog.c:119
-msgid ""
-"Forcing this application to quit will cause you to lose any unsaved changes."
+msgid "Forcing this application to quit will cause you to lose any unsaved changes."
 msgstr ""
 "Šīs programmas piesiedu aizvēršana novedīs pie nesaglabāto izmaiņu "
 "zaudēšanas."
@@ -495,8 +488,7 @@ msgstr ""
 
 #: ../src/metacity.schemas.in.h:15
 msgid "Disable misfeatures that are required by old or broken applications"
-msgstr ""
-"Deaktivizēt nepilnības, kas nepieciešamas vecām vai sabojātām aplikācijām"
+msgstr "Deaktivizēt nepilnības, kas nepieciešamas vecām vai sabojātām aplikācijām"
 
 #: ../src/metacity.schemas.in.h:16
 msgid "Enable Visual Bell"
@@ -518,7 +510,7 @@ msgid ""
 "not related to raise-on-click/orthogonal-raise). It is unrelated to entering "
 "a window during drag and drop (because that results in the application "
 "grabbing the mouse)"
-msgstr ""
+msgstr "Ja patiess un fokusēšanās režīms ir \"sloppy\" vai \"mouse\" fokusētais logs tiks automātiksi aktivizēts pēc norādītā nogaides laika (nogaides laiks tiek norādīts ar auto_raise_delay vērtību). Šī iespēja ir slikti nosaukta, un tiek saglabāta, lai nodrošinātu atgriezenisku savietojamību. Lai visu kaut nedaud izskaidrotu, tās nozīme ir \"automātiksi aktivizēt logu pēc norādītā noaides laika, ko ir izraisījusi nesavāktas peles ienākšana sloppy vai mouse fokusēšanās režīmos\". Tas nav saistīts ar kliksķināšanu vai ieiešanu loga apgabalā vilkšanas un nomešanas laikā."
 
 #: ../src/metacity.schemas.in.h:19
 msgid ""
@@ -621,8 +613,7 @@ msgstr "Pārvietoties atpakaļ starp paneļiem un darba virsmu nekavējoties"
 
 #: ../src/metacity.schemas.in.h:31
 msgid "Move backwards between panels and the desktop with popup"
-msgstr ""
-"Pārvietoties atpakaļ starp paneļiem un darba virsmu, lietojot izlecējlogu"
+msgstr "Pārvietoties atpakaļ starp paneļiem un darba virsmu, lietojot izlecējlogu"
 
 #: ../src/metacity.schemas.in.h:32
 msgid "Move backwards between windows immediately"
@@ -2110,8 +2101,7 @@ msgstr ""
 
 #: ../src/screen.c:443
 #, c-format
-msgid ""
-"Could not acquire window manager selection on screen %d display \"%s\"\n"
+msgid "Could not acquire window manager selection on screen %d display \"%s\"\n"
 msgstr "Nevarēju iegūt logu pārvaldnieka izvēli ekrāna %d displejā \"%s\"\n"
 
 #: ../src/screen.c:501
@@ -2240,8 +2230,7 @@ msgstr "Leņķim jābūt starp 0.0 un 360.0, bija %g\n"
 #: ../src/theme-parser.c:638
 #, c-format
 msgid "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g\n"
-msgstr ""
-"Alfa jābūt starp 0.0 (neredzams) un 1.0 (pinlnībā necaurredzams), bija %g\n"
+msgstr "Alfa jābūt starp 0.0 (neredzams) un 1.0 (pinlnībā necaurredzams), bija %g\n"
 
 #: ../src/theme-parser.c:684
 #, c-format
@@ -2343,10 +2332,8 @@ msgstr "Nav \"value\" atribūta elementam <%s>"
 
 #: ../src/theme-parser.c:1320 ../src/theme-parser.c:1334
 #: ../src/theme-parser.c:1393
-msgid ""
-"Cannot specify both button_width/button_height and aspect ratio for buttons"
-msgstr ""
-"Nevar noteikt abus button_width/button_height un skata proporciju pogām"
+msgid "Cannot specify both button_width/button_height and aspect ratio for buttons"
+msgstr "Nevar noteikt abus button_width/button_height un skata proporciju pogām"
 
 #: ../src/theme-parser.c:1343
 #, c-format
@@ -2655,10 +2642,8 @@ msgstr "Visattālākajam elementam tēmā jābūt <metacity_theme> nevis <%s>"
 
 #: ../src/theme-parser.c:3679
 #, c-format
-msgid ""
-"Element <%s> is not allowed inside a name/author/date/description element"
-msgstr ""
-"Elements <%s> netiek atļauts iekš name/author/date/description elementa"
+msgid "Element <%s> is not allowed inside a name/author/date/description element"
+msgstr "Elements <%s> netiek atļauts iekš name/author/date/description elementa"
 
 #: ../src/theme-parser.c:3684
 #, c-format
@@ -2667,10 +2652,8 @@ msgstr "Elements <%s> netiek atļauts iekš <constant> elementa"
 
 #: ../src/theme-parser.c:3696
 #, c-format
-msgid ""
-"Element <%s> is not allowed inside a distance/border/aspect_ratio element"
-msgstr ""
-"Elements <%s> netiek atļauts iekš distance/border/aspect_ratio elementa"
+msgid "Element <%s> is not allowed inside a distance/border/aspect_ratio element"
+msgstr "Elements <%s> netiek atļauts iekš distance/border/aspect_ratio elementa"
 
 #: ../src/theme-parser.c:3718
 #, c-format
@@ -3015,10 +2998,8 @@ msgstr "Alfa vērtība \"%s\" sapludinātajā krāsā nav starp 0.0 un 1.0"
 
 #: ../src/theme.c:1104
 #, c-format
-msgid ""
-"Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
-msgstr ""
-"Ēnošanas formāts ir \"shade/base_color/factor\", \"%s\" neatbilst formātam"
+msgid "Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
+msgstr "Ēnošanas formāts ir \"shade/base_color/factor\", \"%s\" neatbilst formātam"
 
 #: ../src/theme.c:1115
 #, c-format
@@ -3045,8 +3026,7 @@ msgstr "Koordinētā izteiksme satur rakstzīmi '%s', kas nav atļauta"
 msgid ""
 "Coordinate expression contains floating point number '%s' which could not be "
 "parsed"
-msgstr ""
-"Koordinētā izteiksme satur peldošā punkta numuru '%s', kas nevar tikt parsēts"
+msgstr "Koordinētā izteiksme satur peldošā punkta numuru '%s', kas nevar tikt parsēts"
 
 #: ../src/theme.c:1457
 #, c-format
@@ -3058,8 +3038,7 @@ msgstr "Koordinētā izteiksme satur vērtību '%s', kas nevar tikt pasrēta"
 msgid ""
 "Coordinate expression contained unknown operator at the start of this text: "
 "\"%s\""
-msgstr ""
-"Koordinētā izteiksme saturēja nezināmu operātoru šī teksta sākumā: \"%s\""
+msgstr "Koordinētā izteiksme saturēja nezināmu operātoru šī teksta sākumā: \"%s\""
 
 #: ../src/theme.c:1581
 msgid "Coordinate expression was empty or not understood"
@@ -3070,17 +3049,13 @@ msgid "Coordinate expression results in division by zero"
 msgstr "Koordinētā izteiksme noved pie dalīšanas ar nulli"
 
 #: ../src/theme.c:1776
-msgid ""
-"Coordinate expression tries to use mod operator on a floating-point number"
-msgstr ""
-"Koordinētā izteiksme mēģina lietot mod operātoru uz peldošā punkta numura"
+msgid "Coordinate expression tries to use mod operator on a floating-point number"
+msgstr "Koordinētā izteiksme mēģina lietot mod operātoru uz peldošā punkta numura"
 
 #: ../src/theme.c:1832
 #, c-format
-msgid ""
-"Coordinate expression has an operator \"%s\" where an operand was expected"
-msgstr ""
-"Koordinētajai izteiksmei ir operātors \"%s\", kur tika gaidīts operands"
+msgid "Coordinate expression has an operator \"%s\" where an operand was expected"
+msgstr "Koordinētajai izteiksmei ir operātors \"%s\", kur tika gaidīts operands"
 
 #: ../src/theme.c:1841
 msgid "Coordinate expression had an operand where an operator was expected"
@@ -3110,8 +3085,7 @@ msgstr ""
 
 #: ../src/theme.c:2007
 msgid "Coordinate expression had a close parenthesis with no open parenthesis"
-msgstr ""
-"Koordinētajai izteiksmei bija aizvērtās iekavas bez nevienas atvērtās iekavas"
+msgstr "Koordinētajai izteiksmei bija aizvērtās iekavas bez nevienas atvērtās iekavas"
 
 #: ../src/theme.c:2069
 #, c-format
@@ -3120,8 +3094,7 @@ msgstr "Koordinētajai izteiksmei bija nezināms mainīgais vai konstante \"%s\"
 
 #: ../src/theme.c:2126
 msgid "Coordinate expression had an open parenthesis with no close parenthesis"
-msgstr ""
-"Koordinētajai izteiksmei bija atvērtās iekavas bez nevienas aizvērtās iekavas"
+msgstr "Koordinētajai izteiksmei bija atvērtās iekavas bez nevienas aizvērtās iekavas"
 
 #: ../src/theme.c:2137
 msgid "Coordinate expression doesn't seem to have any operators or operands"
@@ -3143,10 +3116,8 @@ msgstr ""
 
 #: ../src/theme.c:4360 ../src/theme.c:4392
 #, c-format
-msgid ""
-"Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
-msgstr ""
-"Iztrūkst <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"jebkas\"/>"
+msgid "Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
+msgstr "Iztrūkst <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"jebkas\"/>"
 
 #: ../src/theme.c:4443
 #, c-format
@@ -3179,10 +3150,8 @@ msgstr ""
 
 #: ../src/theme.c:5046 ../src/theme.c:5108
 #, c-format
-msgid ""
-"User-defined constants must begin with a capital letter; \"%s\" does not"
-msgstr ""
-"Lietotāja definētajām konstantēm jāsākas ar lielo burtu; \"%s\" nesākas"
+msgid "User-defined constants must begin with a capital letter; \"%s\" does not"
+msgstr "Lietotāja definētajām konstantēm jāsākas ar lielo burtu; \"%s\" nesākas"
 
 #: ../src/theme.c:5054 ../src/theme.c:5116
 #, c-format
@@ -3278,18 +3247,6 @@ msgstr "Rekvizīts %s logā 0x%lx saturēja nederīgu UTF-8\n"
 
 #: ../src/xprops.c:482
 #, c-format
-msgid ""
-"Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
-msgstr ""
-"Rekvizīts %slogā 0x%lx saturēja nederīgu UTF-8 priekšmetam %d no saraksta\n"
+msgid "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
+msgstr "Rekvizīts %slogā 0x%lx saturēja nederīgu UTF-8 priekšmetam %d no saraksta\n"
 
-#~ msgid ""
-#~ "If true, and the focus mode is either \"sloppy\" or \"mouse\" then the "
-#~ "focused window will be automatically raised after a delay (the delay is "
-#~ "specified by the auto_raise_delay key)."
-#~ msgstr ""
-#~ "Ja patiess un fokusēšanas režīms ir vai nu \"paviršs\" vai \"pele\", tad "
-#~ "fokusetais logs tiks automātiski aktivizēts pēc aiztures (aizture tiek "
-#~ "noteikta ar auto_raise_delay taustiņu). Tas nebūs saistīts ar loga "
-#~ "aktivizēšanu pēc tam, kad uz to tiek uzklikšķināts vai arī ja tajā tiek "
-#~ "kaut kas ievilkts."
