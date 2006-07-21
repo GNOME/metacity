@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the metacity package.
 #
 # maintainer: Christophe Fergeau <teuf@users.sourceforge.net>, 2002.
-# Christophe Merlet (RedFox) <redfox@redfoxcenter.org>, 2002-2005.
+# Christophe Merlet (RedFox) <redfox@redfoxcenter.org>, 2002-2006.
 # Sun G11n <gnome_int_l10n@ireland.sun.com>, 2002.
 # Guy CLOTILDE <guy.clotilde@wanadoo.fr>, 2002.
 # Baptiste Mille-Mathias <baptiste@mille-mathias.info>, 2004.
@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity 2.14.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-27 09:41+0200\n"
-"PO-Revision-Date: 2006-05-15 17:26+0100\n"
+"POT-Creation-Date: 2006-07-21 18:26+0200\n"
+"PO-Revision-Date: 2006-07-21 18:26+0200\n"
 "Last-Translator: Jonathan Ernst <jonathan@ernstfamily.ch>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr ""
 #: ../src/tools/metacity-message.c:150
 #, c-format
 msgid "Usage: %s\n"
-msgstr "Usage : %s\n"
+msgstr "Utilisation : %s\n"
 
 #: ../src/tools/metacity-message.c:176 ../src/util.c:131
 msgid "Metacity was compiled without support for verbose mode\n"
@@ -623,6 +623,17 @@ msgid ""
 "from pagers, may also raise windows when this option is false. This option "
 "is currently disabled in click-to-focus mode."
 msgstr ""
+"Beaucoup d'actions (par exemple cliquer dans le secteur client, déplacer ou "
+"redimensionner la fenêtre) ont normalement comme effet secondaire de faire "
+"passer la fenêtre sur les autres. Définissez cette option comme FAUX pour "
+"découpler le montage des fenêtres des autres interactions utilisateur. Si "
+"FAUX, les fenêtres peuvent encore être montées par ALT+clic gauche n'importe "
+"où sur la fenêtre ou un clic normal sur les décorations de fenêtre (pour "
+"autant que ces clics ne sont pas utilisés pour commencer une opération de "
+"déplacement ou de redimensionnement). Les messages spéciaux, tels que les "
+"demandes d'activation des pagers, peuvent également monter les fenêtres "
+"quand cette option est définie à FAUX. Cette option est actuellement "
+"désactivée dans le mode clic-pour-focus."
 
 #: ../src/metacity.schemas.in.h:25
 msgid "Maximize window"
@@ -2926,7 +2937,6 @@ msgid "/_Windows"
 msgstr "/_Fenêtres"
 
 #: ../src/theme-viewer.c:73
-#, fuzzy
 msgid "/Windows/tearoff"
 msgstr "/Fenêtres/tearoff"
 
@@ -3512,13 +3522,3 @@ msgid ""
 msgstr ""
 "La propriété %s de la fenêtre 0x%lx contient un code UTF-8 non valide pour "
 "l'élément %d dans la liste\n"
-
-#~ msgid ""
-#~ "If true, and the focus mode is either \"sloppy\" or \"mouse\" then the "
-#~ "focused window will be automatically raised after a delay (the delay is "
-#~ "specified by the auto_raise_delay key)."
-#~ msgstr ""
-#~ "Si la valeur est vrai et si le mode de focus est « sloppy » (« coulé ») "
-#~ "ou « mouse » (« souris »), la fenêtre active sera automatiquement mise au "
-#~ "premier plan après un délai (qui est spécifié par la touche "
-#~ "auto_raise_delay)."
