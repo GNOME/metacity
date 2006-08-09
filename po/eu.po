@@ -1,5 +1,4 @@
-# translation of eu.po to Basque
-# translation of metacity.HEAD.po to basque
+# translation of metacity.po to basque
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 # Hizkuntza Politikarako Sailburuordetza <hizpol@ej-gv.es>, 2004.
@@ -9,15 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-20 18:33+0000\n"
-"PO-Revision-Date: 2006-04-20 18:47+0000\n"
+"POT-Creation-Date: 2006-08-09 18:04+0000\n"
+"PO-Revision-Date: 2006-08-09 18:04+0000\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.10.2\n"
-"Plural-Forms: Plural-Forms: Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../src/tools/metacity-message.c:150
 #, c-format
@@ -520,13 +519,16 @@ msgid ""
 "a window during drag and drop (because that results in the application "
 "grabbing the mouse)"
 msgstr ""
-"Egia bada, eta foku mota \"sloppy\" edo \"mouse\" bada, enfokatutako leihoa automatikoki "
-"goratuko da atzerapen baten ondoren (atzerapena auto_raise_delay gakoan zehazten da). "
-"Hobespenk honen izena ez da oso esanguratsua, baina atzerako bateragarritasuna "
-"mantentzen du. Argiago azaltzeko, \"goratu leihoa automatikoki sloppy edo mouse moduan "
-"saguaren sarrerakabiarazitako atzerapen bati jarrituz\" (ejum! agian oso teknikoa izan da). "
-"Ez du zerikusirik botoia sakatzearen ekintzarekin (ez dauka zerikusirik 'raise-on-click/orthogonal-raise'rekin). Ezta arrastatu eta jaregitean sartzen den leihoarekin ere "
-"(honen ondorioz saguaz jabetzen den aplikazioan gertatzen baita)."
+"Egia bada, eta foku mota \"sloppy\" edo \"mouse\" bada, enfokatutako leihoa "
+"automatikoki goratuko da atzerapen baten ondoren (atzerapena "
+"auto_raise_delay gakoan zehazten da). Hobespenk honen izena ez da oso "
+"esanguratsua, baina atzerako bateragarritasuna mantentzen du. Argiago "
+"azaltzeko, \"goratu leihoa automatikoki sloppy edo mouse moduan saguaren "
+"sarrerakabiarazitako atzerapen bati jarrituz\" (ejum! agian oso teknikoa "
+"izan da). Ez du zerikusirik botoia sakatzearen ekintzarekin (ez dauka "
+"zerikusirik 'raise-on-click/orthogonal-raise'rekin). Ezta arrastatu eta "
+"jaregitean sartzen den leihoarekin ere (honen ondorioz saguaz jabetzen den "
+"aplikazioan gertatzen baita)."
 
 #: ../src/metacity.schemas.in.h:19
 msgid ""
@@ -595,13 +597,16 @@ msgid ""
 "from pagers, may also raise windows when this option is false. This option "
 "is currently disabled in click-to-focus mode."
 msgstr ""
-"Ekintza askok (adib. bezeroaren arean klik egitean, leihoa mugitzean edo tamainaz "
-"aldatzean) normalean leihoa goratzen dute alboko eragin gisa. Ezarri aukera hau faltsu "
-"balioarekin erabiltzailearen beste interakzioek leihoa ez goratzeko. Faltsua balioarekin "
-"leihoa goratu ahalko da Alt+saguaren-ezker-pultsazioa sakatuz edo klik normal batekin "
-"leihoaren dekorazioan (suposatzen da horrelako klik-ak ez direla erabiltzen "
-"lekuz edo tamainaz aldatzeko eragiketak hasteko). Mezu bereziek, bilagailuen eskaeren aktibazioa bezalakoek, ere leihoak goratuko dituzte nahiz eta aukeraren balioa faltsua izan. Unean aukera "
-"hau desgaituta dago 'click-to-focus' moduan."
+"Ekintza askok (adib. bezeroaren arean klik egitean, leihoa mugitzean edo "
+"tamainaz aldatzean) normalean leihoa goratzen dute alboko eragin gisa. "
+"Ezarri aukera hau faltsu balioarekin erabiltzailearen beste interakzioek "
+"leihoa ez goratzeko. Faltsua balioarekin leihoa goratu ahalko da Alt"
+"+saguaren-ezker-pultsazioa sakatuz edo klik normal batekin leihoaren "
+"dekorazioan (suposatzen da horrelako klik-ak ez direla erabiltzen lekuz edo "
+"tamainaz aldatzeko eragiketak hasteko). Mezu bereziek, bilagailuen eskaeren "
+"aktibazioa bezalakoek, ere leihoak goratuko dituzte nahiz eta aukeraren "
+"balioa faltsua izan. Unean aukera hau desgaituta dago 'click-to-focus' "
+"moduan."
 
 #: ../src/metacity.schemas.in.h:25
 msgid "Maximize window"
@@ -1951,10 +1956,10 @@ msgid ""
 "mode, and \"strict\" results in windows started from a terminal not being "
 "given focus."
 msgstr ""
-"Aukera honek erabakitzen du sortu berri diren leihoek nola lortzen duten fokua "
-"kontrolatzen du. Bi balio erabil daitezke: \"smart\" balioak erabiltzailearen "
-"foku normalaren modua aplikatzen du, eta \"strict\" balioak terminal "
-"batetik abiarazitako leihoei fokua ez ematea adierazten du."
+"Aukera honek erabakitzen du sortu berri diren leihoek nola lortzen duten "
+"fokua kontrolatzen du. Bi balio erabil daitezke: \"smart\" balioak "
+"erabiltzailearen foku normalaren modua aplikatzen du, eta \"strict\" balioak "
+"terminal batetik abiarazitako leihoei fokua ez ematea adierazten du."
 
 #: ../src/metacity.schemas.in.h:161
 msgid "Toggle always on top state"
@@ -2001,7 +2006,9 @@ msgstr "Soinu bisualaren mota"
 
 #: ../src/metacity.schemas.in.h:170
 msgid "Whether raising should be a side-effect of other user interactions"
-msgstr "Goratzean alboko eraginik izango duen erabiltzailearen beste interakzioetan edo ez."
+msgstr ""
+"Goratzean alboko eraginik izango duen erabiltzailearen beste interakzioetan "
+"edo ez."
 
 #: ../src/metacity.schemas.in.h:171
 msgid "Window focus mode"
@@ -3224,13 +3231,13 @@ msgstr "Leiho-kudeatzailearen errorea: "
 msgid "Application set a bogus _NET_WM_PID %lu\n"
 msgstr "Aplikazioak _NET_WM_PID %lu faltsua ezarri du\n"
 
-#: ../src/window-props.c:233
+#: ../src/window-props.c:237
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (%s)"
 
 #. first time through
-#: ../src/window.c:5435
+#: ../src/window.c:5437
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -3246,7 +3253,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/window.c:6063
+#: ../src/window.c:6065
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
