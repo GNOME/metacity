@@ -1,5 +1,10 @@
 2006-09-18  Elijah Newren  <newren gmail com>
 
+	* src/window.c (meta_window_show): Patch from Jens Granseuer to
+	fix c89 cleanness, again.  #356631.
+
+2006-09-18  Elijah Newren  <newren gmail com>
+
 	* src/ui.c (filter_func): avoid a compilation warning by making
 	sure to return something.  #348067
 
