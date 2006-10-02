@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity 2.9.91\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-13 21:27+0200\n"
-"PO-Revision-Date: 2006-09-13 21:49+0200\n"
+"POT-Creation-Date: 2006-10-02 03:24+0200\n"
+"PO-Revision-Date: 2006-10-02 03:24+0200\n"
 "Last-Translator: Jordi Mallach <jordi@sindominio.net>\n"
 "Language-Team: Softcatalà <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -26,30 +26,30 @@ msgstr "Forma d'ús: %s\n"
 msgid "Metacity was compiled without support for verbose mode\n"
 msgstr "Metacity es va compilar sense suport per al mode detallat\n"
 
-#: ../src/delete.c:64 ../src/delete.c:91 ../src/metacity-dialog.c:48
+#: ../src/delete.c:65 ../src/delete.c:92 ../src/metacity-dialog.c:48
 #: ../src/theme-parser.c:467
 #, c-format
 msgid "Could not parse \"%s\" as an integer"
 msgstr "No s'ha pogut analitzar «%s» com a enter"
 
-#: ../src/delete.c:71 ../src/delete.c:98 ../src/metacity-dialog.c:55
+#: ../src/delete.c:72 ../src/delete.c:99 ../src/metacity-dialog.c:55
 #: ../src/theme-parser.c:476 ../src/theme-parser.c:530
 #, c-format
 msgid "Did not understand trailing characters \"%s\" in string \"%s\""
 msgstr "No s'entenen els caràcters finals «%s» de la cadena «%s»"
 
-#: ../src/delete.c:129
+#: ../src/delete.c:130
 #, c-format
 msgid "Failed to parse message \"%s\" from dialog process\n"
 msgstr "És impossible d'analitzar «%s» des del procés de diàleg\n"
 
-#: ../src/delete.c:264
+#: ../src/delete.c:265
 #, c-format
 msgid "Error reading from dialog display process: %s\n"
 msgstr ""
 "S'ha produït un error en llegir del procés de la pantalla de diàleg: %s\n"
 
-#: ../src/delete.c:345
+#: ../src/delete.c:346
 #, c-format
 msgid ""
 "Error launching metacity-dialog to ask about killing an application: %s\n"
@@ -58,7 +58,7 @@ msgstr ""
 "la \n"
 "finalització d'una aplicació: %s\n"
 
-#: ../src/delete.c:453
+#: ../src/delete.c:454
 #, c-format
 msgid "Failed to get hostname: %s\n"
 msgstr "S'ha produït un error en obtenir el nom de l'ordinador central: %s\n"
@@ -182,7 +182,7 @@ msgstr ""
 "No s'ha trobat cap tema. Assegureu-vos que %s existeix i conté els temes "
 "habituals."
 
-#: ../src/main.c:424
+#: ../src/main.c:426
 #, c-format
 msgid "Failed to restart: %s\n"
 msgstr "No s'ha pogut reiniciar: %s\n"
@@ -869,7 +869,7 @@ msgstr "Fes una captura de pantalla"
 
 #: ../src/metacity.schemas.in.h:90
 msgid "Take a screenshot of a window"
-msgstr "Obtén una captura de pantalla d'una finestra"
+msgstr "Fes una captura de pantalla d'una finestra"
 
 #: ../src/metacity.schemas.in.h:91
 msgid ""
@@ -2168,12 +2168,12 @@ msgstr ""
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: ../src/screen.c:403
+#: ../src/screen.c:404
 #, c-format
 msgid "Screen %d on display '%s' is invalid\n"
 msgstr "La pantalla %d en la visualització '%s' no és vàlida\n"
 
-#: ../src/screen.c:419
+#: ../src/screen.c:420
 #, c-format
 msgid ""
 "Screen %d on display \"%s\" already has a window manager; try using the --"
@@ -2182,7 +2182,7 @@ msgstr ""
 "La pantalla %d en la visualització «%s» ja té un gestor de finestres; proveu "
 "l'opció --replace per a reemplaçar el gestor de finestres actual.\n"
 
-#: ../src/screen.c:443
+#: ../src/screen.c:444
 #, c-format
 msgid ""
 "Could not acquire window manager selection on screen %d display \"%s\"\n"
@@ -2190,12 +2190,12 @@ msgstr ""
 "No s'ha pogut adquirir la selecció del gestor de finestres en la pantalla %d "
 "visualització «%s»\n"
 
-#: ../src/screen.c:501
+#: ../src/screen.c:502
 #, c-format
 msgid "Screen %d on display \"%s\" already has a window manager\n"
 msgstr "La pantalla %d en la visualització «%s» ja té un gestor de finestres\n"
 
-#: ../src/screen.c:705
+#: ../src/screen.c:707
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "No s'ha pogut alliberar la pantalla %d en la visualització «%s»\n"
@@ -3309,24 +3309,24 @@ msgstr "Avís del gestor de finestres: "
 msgid "Window manager error: "
 msgstr "Error del gestor de finestres: "
 
-#: ../src/window-props.c:169
+#: ../src/window-props.c:170
 #, c-format
 msgid "Application set a bogus _NET_WM_PID %lu\n"
 msgstr "L'aplicació ha definit un _NET_WM_PID %lu fals\n"
 
-#: ../src/window-props.c:237
+#: ../src/window-props.c:238
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (a %s)"
 
-#: ../src/window-props.c:1177
+#: ../src/window-props.c:1182
 #, c-format
 msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
 msgstr ""
 "WM_TRANSIENT_FOR no vàlid per a la finestra 0x%lx especificat per a %s.\n"
 
 #. first time through
-#: ../src/window.c:5289
+#: ../src/window.c:5358
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -3342,7 +3342,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/window.c:5885
+#: ../src/window.c:5954
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
