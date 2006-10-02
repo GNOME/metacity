@@ -1,3 +1,22 @@
+2.16.3
+======
+
+Thanks to Jens Granseuer and Elijah Newren for improvements in this release.
+
+  - fix another C89 vs. C99 issue (Jens) [#356631]
+  - fix longstanding focus bug with mouse focus (not sloppy focus) and
+    popup override redirect windows, such as mozilla's/firefox's
+    location bar autocompletion, causing nasty flickering and lost
+    keystrokes (Elijah) [#357695]
+  - prevent a crash when closing apps run remotely over ssh (Elijah)
+    [#358514]
+  - ignore edge resistance for size-increment windows when resizing
+    with the keyboard (Elijah) [#346782]
+
+Translators
+  Vladimir Petkov (bg), Jordi Mallach (ca), Ivar Smolin (et), Luca
+  Ferretti (it)
+
 2.16.2
 ======
 
@@ -5,15 +24,11 @@ Thanks to Eljah Newren, Maik Beckmann, Christian Hamar, Thomas Andersen,
 and Bruno Boaventura de Olevira for changes in this release.
 
   - partial audit to fix timestamp usage (partly fixes #355180) (Elijah)
-
   - remove compilation warnings (#355876) (Maik); (#355490) (Bruno);
     (#355489) (Bruno).
-
   - automatic detection of stable/unstable in configure script
     (#356122) (Christian/Elijah)
-
   - make windows be stacked correctly before showing them (#332385) (Thomas)
-
   - use guint32 for timestamps (#348305) (Elijah)
 
 Translators

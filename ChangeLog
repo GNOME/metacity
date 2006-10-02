@@ -1,5 +1,9 @@
 2006-10-02  Elijah Newren  <newren gmail com>
 
+        * NEWS: 2.16.3 release
+
+2006-10-02  Elijah Newren  <newren gmail com>
+
 	Ignore edge resistance for size-increment windows when resizing
 	with the keyboard.  #346782.
 
