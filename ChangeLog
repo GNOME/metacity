@@ -1,5 +1,9 @@
 2006-10-02  Elijah Newren  <newren gmail com>
 
+	* configure.in: post-release bump to 2.16.5
+
+2006-10-02  Elijah Newren  <newren gmail com>
+
         * NEWS: 2.16.3 release
 
 2006-10-02  Elijah Newren  <newren gmail com>
