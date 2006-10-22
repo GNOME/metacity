@@ -1,3 +1,7 @@
+2006-10-2  Christophe Merlet  <redfox@redfoxcenter.org>
+
+	* fr.po: Updated French translation.
+
 2006-10-02  Josep Puigdemont i Casamajó  <josep.puigdemont@gmail.com>
 
 	* ca.po: Updated Catalan translation.
@@ -110,7 +114,7 @@
 
 	* mr.po: Added the file and updated Marathi translation.
 	* LINGUAS: Added an entry for Marathi(mr).
-	
+
 2006-09-03  Christophe Merlet  <redfox@redfoxcenter.org>
 
 	* fr.po: Updated French translation from
