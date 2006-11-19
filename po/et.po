@@ -1,9 +1,9 @@
 # Metacity eesti tõlge.
 # Estonian translation of Metacity
-# 
+#
 # Copyright (C) 2004-2005 The Free Software Foundation
 # This file is distributed under the same license as the metacity package.
-# 
+#
 # Tõivo Leedjärv <toivo@linux.ee>, 2004.
 # Ivar Smolin <okul@linux.ee>, 2005, 2006.
 #
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: metacity 2.16\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-11-18 17:11+0100\n"
-"PO-Revision-Date: 2006-09-08 08:00+0300\n"
+"PO-Revision-Date: 2006-11-18 21:31+0200\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
@@ -90,15 +90,15 @@ msgstr "Aknamenüü"
 
 #: ../src/frames.c:1095
 msgid "Minimize Window"
-msgstr "Minimeeri aken"
+msgstr "Akna minimeerimine"
 
 #: ../src/frames.c:1098
 msgid "Maximize Window"
-msgstr "Maksimeeri aken"
+msgstr "Akna maksimeerimine"
 
 #: ../src/frames.c:1101
 msgid "Unmaximize Window"
-msgstr "Taasta akna suurus"
+msgstr "Akna suuruse taastamine"
 
 #: ../src/keybindings.c:1031
 #, c-format
@@ -440,7 +440,7 @@ msgstr ""
 
 #: ../src/metacity.schemas.in.h:9
 msgid "Close window"
-msgstr "Sulge aken"
+msgstr "Akna sulgemine"
 
 #: ../src/metacity.schemas.in.h:10
 msgid "Commands to run in response to keybindings"
@@ -682,15 +682,14 @@ msgid "Number of workspaces"
 msgstr "Tööalade arv"
 
 #: ../src/metacity.schemas.in.h:63
-#, fuzzy
 msgid ""
 "Number of workspaces. Must be more than zero, and has a fixed maximum to "
 "prevent making the desktop unusable by accidentally asking for too many "
 "workspaces."
 msgstr ""
 "Tööalade arv. Peab olema suurem kui null ja omab fikseeritud "
-"maksimaalsuurust (selleks, et ära hoida kogemata töölaua õhkulaskmist peale "
-"34 miljoni tööala küsimist)."
+"maksimaalsuurust, et ära hoida kogemata töölaua rikkumist liiga paljude "
+"tööalade eraldamise tagajärjel."
 
 #: ../src/metacity.schemas.in.h:64
 msgid "Raise obscured window, otherwise lower"
@@ -2257,23 +2256,23 @@ msgstr ""
 
 #: ../src/theme-parser.c:4106
 msgid "<name> specified twice for this theme"
-msgstr ""
+msgstr "Selle teema jaoks on <name> määratud kaks korda"
 
 #: ../src/theme-parser.c:4117
 msgid "<author> specified twice for this theme"
-msgstr ""
+msgstr "Selle teema jaoks on <author> määratud kaks korda"
 
 #: ../src/theme-parser.c:4128
 msgid "<copyright> specified twice for this theme"
-msgstr ""
+msgstr "Selle teema jaoks on <copyright> määratud kaks korda"
 
 #: ../src/theme-parser.c:4139
 msgid "<date> specified twice for this theme"
-msgstr ""
+msgstr "Selle teema jaoks on <date> määratud kaks korda"
 
 #: ../src/theme-parser.c:4150
 msgid "<description> specified twice for this theme"
-msgstr ""
+msgstr "Selle teema jaoks on <description> määratud kaks korda"
 
 #: ../src/theme-parser.c:4345
 #, c-format
