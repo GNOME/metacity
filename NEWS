@@ -1,3 +1,15 @@
+2.16.5
+======
+
+Thanks to Dan Mick for improvements in this release.
+
+  - fix problem with strict focus mode (Dan) [#361054]
+
+Translators
+  Khaled Hosny (ar), Ihar Hrachyshka (be), Ivar Smolin (et)
+  Christophe Merlet (RedFox) (fr), Yuval Tanny (he),
+  Marek Stepien (pl), Mugurel Tudor (ro)
+
 2.16.3
 ======
 

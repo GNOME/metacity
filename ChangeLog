@@ -1,3 +1,7 @@
+2006-10-02  Thomas Thurman  <thomas@thurman.org.uk>
+
+        * NEWS: 2.16.5 release
+
 2006-10-30  Dan Mick  <dan.mick@sun.com>
 
         * src/window.c: (__window_is_terminal): Fix strict focus
