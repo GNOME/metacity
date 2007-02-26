@@ -1,3 +1,21 @@
+2.17.8
+======
+
+Thanks to Jaap A. Haitsma, Linus Torvalds and Kjartan Maraas
+for improvements in this release.
+
+   - Change icon in the "kill window" dialog because the old
+     one was removed from GNOME (Jaap)
+   - refactor the code which handles mouse events on the title
+     bar (Linus)
+   - Add MAINTAINERS to EXTRA_DIST (Kjartan)
+
+Translations
+  Alexander Shopov (bg), Jakub Friedl (cs), Hendrik Richter (de),
+  Ivar Smolin (et), Ilkka Tuohela (fi), Robert-André Mauchin (fr),
+  Changwoo Ryu (ko), Marek Stepien (pl), Duarte Loreto (pt),
+  Maxim Dziumanenko (uk)
+
 2.17.5
 ======
 
