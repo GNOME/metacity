@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-05 15:58-0300\n"
-"PO-Revision-Date: 2007-03-05 15:59-0300\n"
+"POT-Creation-Date: 2007-03-09 03:44-0300\n"
+"PO-Revision-Date: 2007-03-09 03:27-0300\n"
 "Last-Translator: raulpereira <contato@raulpereira.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-l10n-br@listas.cipsga.org.br>\n"
 "MIME-Version: 1.0\n"
@@ -68,7 +68,7 @@ msgstr "Falha ao obter o nome da máquina: %s\n"
 #: ../src/display.c:346
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
-msgstr "Falha ao abrir a exibição \"%s\" do X Window System\n"
+msgstr "Falha ao abrir o dispositivo \"%s\" do X Window System\n"
 
 #: ../src/errors.c:271
 #, c-format
@@ -77,14 +77,14 @@ msgid ""
 "most likely the X server was shut down or you killed/destroyed\n"
 "the window manager.\n"
 msgstr ""
-"A conexão com a exibição \"%s\" foi perdida;\n"
+"A conexão com o dispositivo \"%s\" foi perdida;\n"
 "provavelmente o servidor X foi desligado ou você matou/destruiu\n"
 "o gerenciador de janelas.\n"
 
 #: ../src/errors.c:278
 #, c-format
 msgid "Fatal IO error %d (%s) on display '%s'.\n"
-msgstr "Erro fatal de E/S %d (%s) na exibição \"%s\".\n"
+msgstr "Erro fatal de E/S %d (%s) no dispositivo \"%s\".\n"
 
 #: ../src/frames.c:1062
 msgid "Close Window"
@@ -185,7 +185,7 @@ msgstr "Especificar o ID do gerenciador de sessões"
 
 #: ../src/main.c:188
 msgid "X Display to use"
-msgstr "Exibição do X a ser utilizada"
+msgstr "Dispositivo do X a ser usado"
 
 #: ../src/main.c:194
 msgid "Initialize session from savefile"
@@ -2430,7 +2430,7 @@ msgstr "%d x %d"
 #: ../src/screen.c:406
 #, c-format
 msgid "Screen %d on display '%s' is invalid\n"
-msgstr "A tela %d na exibição \"%s\" é inválida\n"
+msgstr "A tela %d no dispositivo \"%s\" é inválida\n"
 
 #: ../src/screen.c:422
 #, c-format
@@ -2438,26 +2438,26 @@ msgid ""
 "Screen %d on display \"%s\" already has a window manager; try using the --"
 "replace option to replace the current window manager.\n"
 msgstr ""
-"A tela %d na exibição \"%s\" já possui um gerenciador de janelas; tente usar "
-"a opção --replace para substituir o gerenciador de janelas atual.\n"
+"A tela %d no dispositivo \"%s\" já possui um gerenciador de janelas; tente "
+"usar a opção --replace para substituir o gerenciador de janelas atual.\n"
 
 #: ../src/screen.c:446
 #, c-format
 msgid ""
 "Could not acquire window manager selection on screen %d display \"%s\"\n"
 msgstr ""
-"Não foi possível obter a seleção do gerenciador de janelas na exibição \"%2$s"
-"\" da tela %1$d\n"
+"Não foi possível obter a seleção do gerenciador de janelas no dispositivo \"%"
+"2$s\" da tela %1$d\n"
 
 #: ../src/screen.c:504
 #, c-format
 msgid "Screen %d on display \"%s\" already has a window manager\n"
-msgstr "A tela %d na exibição \"%s\" já possui um gerenciador de janelas\n"
+msgstr "A tela %d no dispositivo \"%s\" já possui um gerenciador de janelas\n"
 
 #: ../src/screen.c:709
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
-msgstr "Não foi possível liberar a tela %d na exibição \"%s\"\n"
+msgstr "Não foi possível liberar a tela %d no dispositivo \"%s\"\n"
 
 #: ../src/session.c:837 ../src/session.c:844
 #, c-format
