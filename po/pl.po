@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-07 00:35+0100\n"
+"POT-Creation-Date: 2007-03-10 19:53+0100\n"
 "PO-Revision-Date: 2007-03-03 00:33+0100\n"
 "Last-Translator: wadim dziedzic <wdziedzic@aviary.pl>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -947,11 +947,11 @@ msgstr "Brzęczyk systemowy jest słyszalny"
 
 #: ../src/metacity.schemas.in.h:97
 msgid "Take a screenshot"
-msgstr "Pobierz zrzut ekranu"
+msgstr "Pobranie zrzutu ekranu"
 
 #: ../src/metacity.schemas.in.h:98
 msgid "Take a screenshot of a window"
-msgstr "Pobiera zrzut ekranu"
+msgstr "Pobranie zrzutu okna"
 
 #: ../src/metacity.schemas.in.h:99
 msgid ""
