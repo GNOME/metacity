@@ -1,5 +1,9 @@
 2007-03-12  Elijah Newren  <newren gmail com>
 
+	* configure.in: post-release version bump to 2.18.1
+
+2007-03-12  Elijah Newren  <newren gmail com>
+
 	* NEWS:
 	* README:
 	* configure.in:
