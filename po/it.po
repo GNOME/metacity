@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity 2.16.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-15 10:09+0100\n"
-"PO-Revision-Date: 2007-03-15 10:08+0100\n"
+"POT-Creation-Date: 2007-03-24 14:07+0100\n"
+"PO-Revision-Date: 2007-03-24 14:13+0100\n"
 "Last-Translator: Luca Ferretti <elle.uca@libero.it>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
@@ -284,7 +284,7 @@ msgstr "Sposta sull'area di lavoro a d_estra"
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/menu.c:98
 msgid "Move to Workspace _Up"
-msgstr "Sposta sull'area di lavoro il a_lto"
+msgstr "Sposta sull'area di lavoro in a_lto"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/menu.c:100
@@ -756,37 +756,30 @@ msgid "Move window to east side of screen"
 msgstr "Sposta la finestra verso il lato est dello schermo"
 
 #: ../src/metacity.schemas.in.h:50
-#, fuzzy
 msgid "Move window to north side of screen"
-msgstr "Sposta la finestra verso il lato nord"
+msgstr "Sposta la finestra sul lato nord dello schermo"
 
 #: ../src/metacity.schemas.in.h:51
-#, fuzzy
 msgid "Move window to north-east corner"
-msgstr "Sposta la finestra verso l'angolo nord-est"
+msgstr "Sposta la finestra sull'angolo nord-est"
 
 #: ../src/metacity.schemas.in.h:52
-#, fuzzy
 msgid "Move window to north-west corner"
-msgstr "Sposta la finestra verso l'angolo nord-ovest"
+msgstr "Sposta la finestra sull'angolo nord-ovest"
 
 #: ../src/metacity.schemas.in.h:53
-#, fuzzy
 msgid "Move window to south side of screen"
-msgstr "Sposta la finestra verso il lato sud dello schermo"
+msgstr "Sposta la finestra sul lato sud dello schermo"
 
 #: ../src/metacity.schemas.in.h:54
-#, fuzzy
 msgid "Move window to south-east corner"
-msgstr "Sposta la finestra verso l'angolo sud-est"
+msgstr "Sposta la finestra sull'angolo sud-est"
 
 #: ../src/metacity.schemas.in.h:55
-#, fuzzy
 msgid "Move window to south-west corner"
-msgstr "Sposta la finestra verso l'angolo sud-ovest"
+msgstr "Sposta la finestra sull'angolo sud-ovest"
 
 #: ../src/metacity.schemas.in.h:56
-#, fuzzy
 msgid "Move window to west side of screen"
 msgstr "Sposta la finestra sul lato ovest dello schermo"
 
@@ -2075,7 +2068,6 @@ msgstr ""
 "speciale \"disabled\", allora non c'è alcuna scorciatoia per questa azione."
 
 #: ../src/metacity.schemas.in.h:174
-#, fuzzy
 msgid ""
 "This keybinding moves a window against the north (top) side of the screen. "
 "The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1"
@@ -2083,15 +2075,9 @@ msgid ""
 "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
-msgstr ""
-"Scorciatoia per portare una finestra sotto le altre. Il formato è \"&lt;"
-"Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito "
-"l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo "
-"\"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa "
-"speciale \"disabled\", allora non c'è alcuna scorciatoia per questa azione."
+msgstr "Scorciatoia per spostare una finestra sul lato nord (alto) dello schermo. Il formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled\", allora non c'è alcuna scorciatoia per questa azione."
 
 #: ../src/metacity.schemas.in.h:175
-#, fuzzy
 msgid ""
 "This keybinding moves a window into the east (right) side of the screen. The "
 "format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
@@ -2099,15 +2085,9 @@ msgid ""
 "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
-msgstr ""
-"Scorciatoia per portare una finestra sotto le altre. Il formato è \"&lt;"
-"Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito "
-"l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo "
-"\"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa "
-"speciale \"disabled\", allora non c'è alcuna scorciatoia per questa azione."
+msgstr "Scorciatoia per spostare una finestra sul lato est (destro) dello schermo. Il formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled\", allora non c'è alcuna scorciatoia per questa azione."
 
 #: ../src/metacity.schemas.in.h:176
-#, fuzzy
 msgid ""
 "This keybinding moves a window into the north-east (top right) corner of the "
 "screen. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;"
@@ -2115,15 +2095,9 @@ msgid ""
 "and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you "
 "set the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
-msgstr ""
-"Scorciatoia per portare una finestra sotto le altre. Il formato è \"&lt;"
-"Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito "
-"l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo "
-"\"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa "
-"speciale \"disabled\", allora non c'è alcuna scorciatoia per questa azione."
+msgstr "Scorciatoia per spostare una finestra nell'angolo nord-est (superiore destro) dello schermo. Il formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled\", allora non c'è alcuna scorciatoia per questa azione."
 
 #: ../src/metacity.schemas.in.h:177
-#, fuzzy
 msgid ""
 "This keybinding moves a window into the north-west (top left) corner of the "
 "screen. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;"
@@ -2131,15 +2105,9 @@ msgid ""
 "and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you "
 "set the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
-msgstr ""
-"Scorciatoia per portare una finestra sotto le altre. Il formato è \"&lt;"
-"Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito "
-"l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo "
-"\"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa "
-"speciale \"disabled\", allora non c'è alcuna scorciatoia per questa azione."
+msgstr "Scorciatoia per spostare una finestra nell'angolo nord-ovest (inferiore sinistro) dello schermo. Il formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled\", allora non c'è alcuna scorciatoia per questa azione."
 
 #: ../src/metacity.schemas.in.h:178
-#, fuzzy
 msgid ""
 "This keybinding moves a window into the south (bottom) side of the screen. "
 "The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1"
@@ -2147,15 +2115,9 @@ msgid ""
 "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
-msgstr ""
-"Scorciatoia per portare una finestra sotto le altre. Il formato è \"&lt;"
-"Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito "
-"l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo "
-"\"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa "
-"speciale \"disabled\", allora non c'è alcuna scorciatoia per questa azione."
+msgstr "Scorciatoia per spostare una finestra sul lato sud (inferiore) dello schermo. Il formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled\", allora non c'è alcuna scorciatoia per questa azione."
 
 #: ../src/metacity.schemas.in.h:179
-#, fuzzy
 msgid ""
 "This keybinding moves a window into the south-east (bottom right) corner of "
 "the screen. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;"
@@ -2163,15 +2125,9 @@ msgid ""
 "and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you "
 "set the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
-msgstr ""
-"Scorciatoia per portare una finestra sotto le altre. Il formato è \"&lt;"
-"Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito "
-"l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo "
-"\"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa "
-"speciale \"disabled\", allora non c'è alcuna scorciatoia per questa azione."
+msgstr "Scorciatoia per spostare una finestra nell'angolo sud-est (inferiore destro) dello schermo. Il formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled\", allora non c'è alcuna scorciatoia per questa azione."
 
 #: ../src/metacity.schemas.in.h:180
-#, fuzzy
 msgid ""
 "This keybinding moves a window into the south-west (bottom left) corner of "
 "the screen. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;"
@@ -2179,15 +2135,9 @@ msgid ""
 "and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you "
 "set the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
-msgstr ""
-"Scorciatoia per portare una finestra sotto le altre. Il formato è \"&lt;"
-"Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito "
-"l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo "
-"\"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa "
-"speciale \"disabled\", allora non c'è alcuna scorciatoia per questa azione."
+msgstr "Scorciatoia per spostare una finestra nell'angolo sud-ovest (inferiore sinistro) dello schermo. Il formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled\", allora non c'è alcuna scorciatoia per questa azione."
 
 #: ../src/metacity.schemas.in.h:181
-#, fuzzy
 msgid ""
 "This keybinding moves a window into the west (left) side of the screen. The "
 "format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
@@ -2195,12 +2145,7 @@ msgid ""
 "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the "
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
-msgstr ""
-"Scorciatoia per portare una finestra sotto le altre. Il formato è \"&lt;"
-"Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito "
-"l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo "
-"\"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa "
-"speciale \"disabled\", allora non c'è alcuna scorciatoia per questa azione."
+msgstr "Scorciatoia per spostare una finestra sul lato ovest (sinistro) dello schermo. Il formato è \"&lt;Control$gt;a\" oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di lettere maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled\", allora non c'è alcuna scorciatoia per questa azione."
 
 #: ../src/metacity.schemas.in.h:182
 msgid ""
