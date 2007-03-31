@@ -1,3 +1,11 @@
+2007-03-30  Elijah Newren  <newren gmail com>
+
+	* src/display.c (meta_display_open,
+	  meta_display_get_current_time_roundtrip):
+	* src/display.h (struct _MetaDisplay):
+	create a dedicated timestamp pinging window instead of reusing
+	display->leader_window; see bug 354213 comments 24-30
+
 2007-03-12  Elijah Newren  <newren gmail com>
 
 	* configure.in: post-release version bump to 2.18.1

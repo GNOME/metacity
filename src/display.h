@@ -85,6 +85,7 @@ struct _MetaDisplay
   Display *xdisplay;
 
   Window leader_window;
+  Window timestamp_pinging_window;
   
   Atom atom_net_wm_name;
   Atom atom_wm_protocols;

@@ -502,6 +502,7 @@ meta_display_open (void)
    * created in screen_new
    */
   display->leader_window = None;
+  display->timestamp_pinging_window = None;
 
   display->xinerama_cache_invalidated = TRUE;
 
@@ -684,6 +685,13 @@ meta_display_open (void)
 
     timestamp = event.xproperty.time;
   }
+
+  /* Make a little window used only for pinging the server for timestamps; note
+   * that meta_create_offscreen_window already selects for PropertyChangeMask.
+   */
+  display->timestamp_pinging_window =
+    meta_create_offscreen_window (display->xdisplay,
+                                  DefaultRootWindow (display->xdisplay));
 
   display->last_focus_time = timestamp;
   display->last_user_time = timestamp;
@@ -1192,11 +1200,11 @@ meta_display_get_current_time_roundtrip (MetaDisplay *display)
        * would use it as a property. The type doesn't matter.
        */
       XChangeProperty (display->xdisplay,
-                       display->leader_window,
+                       display->timestamp_pinging_window,
                        XA_PRIMARY, XA_STRING, 8,
                        PropModeAppend, NULL, 0);
       XWindowEvent (display->xdisplay,
-                    display->leader_window,
+                    display->timestamp_pinging_window,
                     PropertyChangeMask,
                     &property_event);
 
