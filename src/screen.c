@@ -434,7 +434,10 @@ meta_screen_new (MetaDisplay *display,
         current_wm_sn_owner = None; /* don't wait for it to die later on */
     }
 
-  new_wm_sn_owner = meta_create_offscreen_window (xdisplay, xroot);
+  /* We need SelectionClear and SelectionRequest events on the new_wm_sn_owner,
+   * but those cannot be masked, so we only need NoEventMask.
+   */
+  new_wm_sn_owner = meta_create_offscreen_window (xdisplay, xroot, NoEventMask);
 
   manager_timestamp = timestamp;
   
@@ -577,10 +580,10 @@ meta_screen_new (MetaDisplay *display,
   meta_screen_set_cursor (screen, META_CURSOR_DEFAULT);
 
   /* Handle creating a no_focus_window for this screen */  
-  screen->no_focus_window = meta_create_offscreen_window (display->xdisplay,
-                                                          screen->xroot);
-  XSelectInput (display->xdisplay, screen->no_focus_window,
-                FocusChangeMask | KeyPressMask | KeyReleaseMask);
+  screen->no_focus_window =
+    meta_create_offscreen_window (display->xdisplay,
+                                  screen->xroot,
+                                  FocusChangeMask|KeyPressMask|KeyReleaseMask);
   XMapWindow (display->xdisplay, screen->no_focus_window);
   /* Done with no_focus_window stuff */
   
@@ -1815,7 +1818,8 @@ meta_screen_update_workspace_names (MetaScreen *screen)
 
 Window
 meta_create_offscreen_window (Display *xdisplay,
-                              Window   parent)
+                              Window   parent,
+                              long     valuemask)
 {
   XSetWindowAttributes attrs;
 
@@ -1824,7 +1828,7 @@ meta_create_offscreen_window (Display *xdisplay,
    * (but on a display we are managing at least one screen for)
    */
   attrs.override_redirect = True;
-  attrs.event_mask = PropertyChangeMask;
+  attrs.event_mask = valuemask;
   
   return XCreateWindow (xdisplay,
                         parent,
