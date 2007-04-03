@@ -82,6 +82,7 @@ static void        save_state         (void);
 static char*       load_state         (const char *previous_save_file);
 static void        regenerate_save_file (void);
 static const char* full_save_file       (void);
+static const char* base_save_file       (void);
 static void        warn_about_lame_clients_and_finish_interact (gboolean shutdown);
 
 /* This is called when data is available on an ICE connection.  */
