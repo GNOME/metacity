@@ -1,3 +1,16 @@
+2.16.8
+======
+
+This release is being made to fix a bug breaking some QT apps.  Thanks
+to Bradley Hughes from Trolltech for a good testcase (and a lot of
+patience).
+
+  - send synthetic configure notify events in response to appropriate
+    MapRequest events too (Elijah) [#322840]
+
+Translators
+  Ihar Hrachyshka (be@latin), Ignacio Casal Quinteiro (gl), Marek Stepien (pl)
+
 2.16.5
 ======
 
