@@ -1,3 +1,26 @@
+2.18.1
+======
+
+This release fixes a bug breaking some QT apps (thanks to Bradley
+Hughes for a good test case and lots of patience) a hang with gtk
+trunk (not that we expect many to use stable tarball releases of
+metacity and bleeding edge versions of gtk together), and a couple
+other odds and ends.
+
+  - prevent nasty metacity/gdk interactions causing hangs with gtk
+    trunk (Elijah) [offshoots of #354213]
+  - avoid some crashes when dragging windows partially offscreen
+    (Elijah) [#353513]
+  - avoid mousenav vs. keynav focus problems with the run application
+    dialog in mouse/sloppy focus modes (Elijah) [#374752]
+  - send synthetic configure notify events in response to appropriate
+    MapRequest events too (Elijah) [#322840]
+
+Translators
+  Ihar Hrachyshka (be@latin), sonam pelden (dz), Jorge González (es), Ivar
+  Smolin (et), Iñaki Larrañaga Murgoitio (eu), Ignacio Casal Quinteiro (gl),
+  Gabor Kelemen (hu), Luca Ferretti (it)
+
 2.18.0
 ======
 
@@ -49,6 +72,7 @@ Translations
 
 2.17.3
 ======
+
 Thanks to Christof Krüger, Federico Mena Quintero, Bruno Boaventura,
 and Björn Lindqvist for improvements in this release.
 
