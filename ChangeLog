@@ -1,3 +1,9 @@
+2007-04-08  Arthur Taylor  <theycallhimart@gmail.com>
+
+        * src/frames.c (meta_frames_apply_shapes): adjusted the rounded
+          corners so that they fit nicely with the arcs around them.
+	  Fixes #399373.
+
 2007-04-04  Elijah Newren  <newren gmail com>
 
 	* configure.in: post-release version bump to 2.18.2
