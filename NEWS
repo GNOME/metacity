@@ -1,3 +1,12 @@
+2.18.2
+======
+
+This release fixes a bug with missing pixels in themes with rounded
+corners.
+
+Translators
+  Ignacio Casal Quinteiro (gl), Espen Stefansen (nb)
+
 2.18.1
 ======
 
