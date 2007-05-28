@@ -1,3 +1,9 @@
+2007-05-28  Elijah Newren  <newren gmail com>
+
+        * src/place.c (meta_window_place): do not auto-maximize windows
+        larger than the workarea in only a single direction.  Fixes
+        #419810.
+
 2007-04-16  Elijah Newren  <newren gmail com>
 
 	Prevent metacity from "forgetting" which machine a window is on.
