@@ -1,5 +1,9 @@
 2007-05-28  Elijah Newren  <newren gmail com>
 
+        * NEWS: 2.18.3 release.
+
+2007-05-28  Elijah Newren  <newren gmail com>
+
         * src/place.c (meta_window_place): do not auto-maximize windows
         larger than the workarea in only a single direction.  Fixes
         #419810.

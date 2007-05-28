@@ -1,3 +1,14 @@
+2.18.3
+======
+
+  - Prevent metacity from "forgetting" which machine a window is
+    on (Elijah) [#418552]
+  - Do not auto-maximize windows larger than the workarea in only a
+    single direction (Elijah) [#419810]
+
+Translators
+  Ask Hjorth Larsen (da), Funda Wang (zh_CN)
+
 2.18.2
 ======
 
