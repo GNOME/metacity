@@ -1,3 +1,12 @@
+2.18.5
+======
+
+This release fixes a problem with KDE applications appearing to
+request attention when the user switched workspaces.
+
+ - Only activate windows which change their startup ID if the
+    new ID differs from the old.  (Thomas) [#400167]
+
 2.18.3
 ======
 
