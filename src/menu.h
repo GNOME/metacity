@@ -26,6 +26,9 @@
 
 #include <gtk/gtk.h>
 #include "frames.h"
+#ifdef MPX
+#include "devices.h"
+#endif
 
 /* Stock icons */
 #define METACITY_STOCK_DELETE   "metacity-delete"
@@ -43,6 +46,18 @@ struct _MetaWindowMenu
   MetaMenuOp insensitive;
 };
 
+#ifdef MPX
+MetaWindowMenu* meta_window_menu_new      (MetaFrames         *frames,
+                                           MetaMenuOp          ops,
+                                           MetaMenuOp          insensitive,
+					   MetaDevices	      *devices,
+                                           Window              client_xwindow,
+                                           unsigned long       active_workspace,
+                                           int                 n_workspaces,
+                                           MetaWindowMenuFunc  func,
+                                           gpointer            data);
+
+#else
 MetaWindowMenu* meta_window_menu_new      (MetaFrames         *frames,
                                            MetaMenuOp          ops,
                                            MetaMenuOp          insensitive,
@@ -51,6 +66,7 @@ MetaWindowMenu* meta_window_menu_new      (MetaFrames         *frames,
                                            int                 n_workspaces,
                                            MetaWindowMenuFunc  func,
                                            gpointer            data);
+#endif
 void            meta_window_menu_popup    (MetaWindowMenu     *menu,
                                            int                 root_x,
                                            int                 root_y,

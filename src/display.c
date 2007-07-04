@@ -798,6 +798,99 @@ meta_display_open (void)
 
   if (meta_prefs_get_compositing_manager ())
     enable_compositor (display);
+
+#ifdef MPX
+  {
+    /* Check to see the available input devices */
+
+    XDeviceInfo *devsInfo, *devInfo, *auxDevsInfo, *auxDevInfo;
+    int howManyDevices, i, j;
+
+    XID pDevId;
+    XDevice *kDev;
+    XDevice *open;
+    MetaDevices *d;
+
+    d = &display->devices;
+
+    /* We should register ourselves as the pairing client here, and also as
+     * the access control manager too.
+     * XXX XRegisterPairingClient, XGrabAccessControl */
+
+    d->mice = g_malloc(sizeof(XID) * DEFAULT_INPUT_ARRAY_SIZE);
+    d->keyboards = g_malloc(sizeof(XID) * DEFAULT_INPUT_ARRAY_SIZE);
+    d->pairedPointers = g_malloc(sizeof(XID) * DEFAULT_INPUT_ARRAY_SIZE);
+
+    d->miceUsed = 0;
+    d->miceSize = DEFAULT_INPUT_ARRAY_SIZE;
+    d->keybsUsed = 0;
+    d->keybsSize = DEFAULT_INPUT_ARRAY_SIZE;
+
+    devsInfo = XListInputDevices(display->xdisplay, &howManyDevices);
+    for (i = 0; i < howManyDevices; i++)
+      {
+	devInfo = &devsInfo[i];
+
+	if (devInfo->use == IsXExtensionKeyboard)
+	  {
+	    if (d->keybsUsed == d->keybsSize)
+	      {
+		/* FIXME This is broken! See comment in devices.h! */
+		d->keyboards = g_realloc (d->keyboards, 
+		       sizeof(XID) * (d->keybsSize + DEFAULT_INPUT_ARRAY_SIZE));
+		d->pairedPointers = g_realloc(d->pairedPointers,
+		       sizeof(XID) * (d->keybsSize + DEFAULT_INPUT_ARRAY_SIZE));
+		d->keybsSize += DEFAULT_INPUT_ARRAY_SIZE;
+	      }
+
+	    meta_warning("opening deivce id %d, name %s\n", 
+	    		 (int)devInfo->id, devInfo->name); /* XXX */
+	    kDev = XOpenDevice(display->xdisplay, devInfo->id);
+	    d->keyboards[d->keybsUsed].xdev = kDev;
+	    d->keyboards[d->keybsUsed].name = 
+	    				   g_strdup_printf("%s", devInfo->name);
+
+	    XGetPairedPointer(display->xdisplay, kDev, (int *) &pDevId);
+	    meta_warning("opening device id %d\n", 
+	                 (int)pDevId); /* XXX */
+	    open = XOpenDevice(display->xdisplay, pDevId);
+	    d->pairedPointers[d->keybsUsed].xdev = open;
+
+	    /* Look in the device list for a device with the id pDevId
+	     * and then find its name */
+	    auxDevsInfo = devsInfo;
+	    for (j = 0; j < howManyDevices; j++)
+	      {
+		auxDevInfo = &auxDevsInfo[j];
+		if (auxDevInfo->id == pDevId)
+		  break;
+
+	      }
+	    d->pairedPointers[d->keybsUsed].name = 
+				        g_strdup_printf("%s", auxDevInfo->name);
+	    d->keybsUsed++;
+	    meta_warning("   name = %s\n", auxDevInfo->name); /* XXX */
+	  }
+	else if (devInfo->use == IsXExtensionPointer)
+	  {
+	    if (d->miceUsed == d->miceSize)
+	      {
+	        d->mice = g_realloc(d->mice, 
+	      		sizeof(XID) * (d->miceSize + DEFAULT_INPUT_ARRAY_SIZE));
+		d->miceSize += DEFAULT_INPUT_ARRAY_SIZE;
+	      }
+	    meta_warning("opening device id %d, name %s\n", 
+	    	         (int)devInfo->id, devInfo->name); /* XXX */
+	    open = XOpenDevice(display->xdisplay, devInfo->id);
+	    d->mice[d->miceUsed].xdev = open;
+	    d->mice[d->miceUsed].name = g_strdup_printf("%s", devInfo->name);
+	    d->miceUsed++;
+	  }
+      }
+    XFreeDeviceList(devsInfo);
+
+  }
+#endif
   
   /* Done opening new display */
   display->display_opening = FALSE;

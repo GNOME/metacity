@@ -608,4 +608,9 @@ void meta_window_unset_demands_attention (MetaWindow *window);
 
 void meta_window_update_icon_now (MetaWindow *window);
 
+#ifdef MPX
+void meta_window_set_client_pointer (Display *xdisplay, MetaWindow *window,
+				     MetaDevInfo *dev);
+#endif
+
 #endif

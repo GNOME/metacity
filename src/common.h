@@ -69,10 +69,20 @@ typedef enum
   META_MENU_OP_MOVE_RIGHT  = 1 << 14,
   META_MENU_OP_MOVE_UP     = 1 << 15,
   META_MENU_OP_MOVE_DOWN   = 1 << 16,
+#ifdef MPX
+  META_MENU_OP_RECOVER	   = 1 << 17,
+  META_MENU_OP_CLIENT_POINTER = 1 << 18,
+#else
   META_MENU_OP_RECOVER     = 1 << 17
+#endif
 } MetaMenuOp;
 
 typedef struct _MetaWindowMenu MetaWindowMenu;
+
+
+#ifdef MPX
+/* This was defined here so I don't need to include devices.h on this file */
+typedef struct _MetaDevInfo MetaDevInfo;
 
 typedef void (* MetaWindowMenuFunc) (MetaWindowMenu *menu,
                                      Display        *xdisplay,
@@ -80,7 +90,18 @@ typedef void (* MetaWindowMenuFunc) (MetaWindowMenu *menu,
                                      guint32         timestamp,
                                      MetaMenuOp      op,
                                      int             workspace,
+				     MetaDevInfo    *pointer,
                                      gpointer        data);
+
+#else
+typedef void (* MetaWindowMenuFunc) (MetaWindowMenu *menu,
+                                     Display        *xdisplay,
+                                     Window          client_xwindow,
+                                     guint32         timestamp,
+                                     MetaMenuOp      op,
+                                     int             workspace,
+                                     gpointer        data);
+#endif
 
 /* when changing this enum, there are various switch statements
  * you have to update

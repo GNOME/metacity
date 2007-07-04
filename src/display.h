@@ -37,6 +37,10 @@
 #include "common.h"
 #include "boxes.h"
 
+#ifdef MPX
+#include "devices.h"
+#endif
+
 #ifdef HAVE_STARTUP_NOTIFICATION
 #include <libsn/sn.h>
 #endif
@@ -371,6 +375,10 @@ struct _MetaDisplay
 #define META_DISPLAY_HAS_RENDER(display) ((display)->have_render)
 #else
 #define META_DISPLAY_HAS_RENDER(display) FALSE
+#endif
+
+#ifdef MPX
+  MetaDevices devices;
 #endif
 };
 

@@ -315,6 +315,18 @@ meta_ui_set_frame_title (MetaUI     *ui,
 }
 
 MetaWindowMenu*
+#ifdef MPX
+meta_ui_window_menu_new  (MetaUI             *ui,
+                          Window              client_xwindow,
+                          MetaMenuOp          ops,
+                          MetaMenuOp          insensitive,
+			  MetaDevices	     *devices,
+                          unsigned long       active_workspace,
+                          int                 n_workspaces,
+                          MetaWindowMenuFunc  func,
+                          gpointer            data)
+
+#else
 meta_ui_window_menu_new  (MetaUI             *ui,
                           Window              client_xwindow,
                           MetaMenuOp          ops,
@@ -323,13 +335,26 @@ meta_ui_window_menu_new  (MetaUI             *ui,
                           int                 n_workspaces,
                           MetaWindowMenuFunc  func,
                           gpointer            data)
+#endif
 {
+
+#ifdef MPX
+  return meta_window_menu_new (ui->frames,
+                               ops, insensitive,
+			       devices,
+                               client_xwindow,
+                               active_workspace,
+                               n_workspaces,
+                               func, data);
+
+#else
   return meta_window_menu_new (ui->frames,
                                ops, insensitive,
                                client_xwindow,
                                active_workspace,
                                n_workspaces,
                                func, data);
+#endif
 }
 
 void

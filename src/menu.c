@@ -137,11 +137,20 @@ menu_closed (GtkMenu *widget,
   menu = data;
 
   meta_frames_notify_menu_hide (menu->frames);
+#ifdef MPX
+  (* menu->func) (menu, gdk_display,
+                  menu->client_xwindow,
+                  gtk_get_current_event_time (),
+                  0, 0, 0,
+                  menu->data);
+
+#else
   (* menu->func) (menu, gdk_display,
                   menu->client_xwindow,
                   gtk_get_current_event_time (),
                   0, 0,
                   menu->data);
+#endif
   
   /* menu may now be freed */
 }
@@ -156,6 +165,17 @@ activate_cb (GtkWidget *menuitem, gpointer data)
   md = data;
 
   meta_frames_notify_menu_hide (md->menu->frames);
+#ifdef MPX
+  (* md->menu->func) (md->menu, gdk_display,
+                      md->menu->client_xwindow,
+                      gtk_get_current_event_time (),
+                      md->op,
+                      GPOINTER_TO_INT (g_object_get_data (G_OBJECT (menuitem),
+                                                          "workspace")),
+		      g_object_get_data (G_OBJECT (menuitem), "device"),
+                      md->menu->data);
+
+#else
   (* md->menu->func) (md->menu, gdk_display,
                       md->menu->client_xwindow,
                       gtk_get_current_event_time (),
@@ -163,6 +183,7 @@ activate_cb (GtkWidget *menuitem, gpointer data)
                       GPOINTER_TO_INT (g_object_get_data (G_OBJECT (menuitem),
                                                           "workspace")),
                       md->menu->data);
+#endif
 
   /* menu may now be freed */
 }
@@ -311,6 +332,17 @@ menu_item_new (MenuItem *menuitem, int workspace_id)
 }
 
 MetaWindowMenu*
+#ifdef MPX
+meta_window_menu_new   (MetaFrames         *frames,
+                        MetaMenuOp          ops,
+                        MetaMenuOp          insensitive,
+			MetaDevices	   *devices,
+                        Window              client_xwindow,
+                        unsigned long       active_workspace,
+                        int                 n_workspaces,
+                        MetaWindowMenuFunc  func,
+                        gpointer            data)
+#else
 meta_window_menu_new   (MetaFrames         *frames,
                         MetaMenuOp          ops,
                         MetaMenuOp          insensitive,
@@ -319,6 +351,7 @@ meta_window_menu_new   (MetaFrames         *frames,
                         int                 n_workspaces,
                         MetaWindowMenuFunc  func,
                         gpointer            data)
+#endif
 {
   int i;
   MetaWindowMenu *menu;
@@ -476,6 +509,77 @@ meta_window_menu_new   (MetaFrames         *frames,
   
   g_signal_connect (menu->menu, "selection_done",
                     G_CALLBACK (menu_closed), menu);  
+
+#ifdef MPX
+
+  {
+    GtkWidget *submenu;
+    GtkWidget *submenuitem;
+
+    MenuItem sep = { 0, MENU_ITEM_SEPARATOR, NULL, FALSE, NULL };
+    submenu = gtk_menu_new();
+    submenuitem = menu_item_new (&sep, -1);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu->menu), submenuitem);
+    gtk_widget_show (submenuitem);
+  }
+
+  {
+    /* SetClientPointer menu */
+    Display *display;
+
+    GtkWidget *submenu;
+    GtkWidget *submenuitem;
+    XID clientPtr;
+
+    MenuItem select_client_pointer = {
+      0, MENU_ITEM_NORMAL, NULL,
+      FALSE, N_("Select Client Pointer")
+    };
+
+    submenu = gtk_menu_new ();
+    submenuitem = menu_item_new (&select_client_pointer, -1);
+    gtk_menu_item_set_submenu (GTK_MENU_ITEM (submenuitem), submenu);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu->menu), submenuitem);
+    gtk_widget_show (submenuitem);
+
+    display = gdk_x11_drawable_get_xdisplay (GTK_WIDGET (frames)->window);
+
+    /* Someone might have changed the clientPointer! */
+    XGetClientPointer(display, client_xwindow, (int *)&clientPtr);
+    meta_warning("my mouse is %d\n", (int) clientPtr); /* XXX */
+
+    for (i = 0; i < devices->miceUsed; i++) {
+
+      MenuItem moveitem;
+      MenuData *md;
+      GtkWidget *mi;
+
+      moveitem.type = MENU_ITEM_RADIOBUTTON;
+      moveitem.op = META_MENU_OP_CLIENT_POINTER;
+      moveitem.label = devices->mice[i].name;
+      meta_warning("name = %s\n", moveitem.label);
+      /* XXX gotta make radiobuttons appear as checked!
+      moveitem.checked = (clientPtr == `this guy`) ? 1 : 0; */
+      mi = menu_item_new (&moveitem, i+1);
+
+      md = g_new (MenuData, 1);
+      md->menu = menu;
+      md->op = META_MENU_OP_CLIENT_POINTER;
+      g_object_set_data (G_OBJECT(mi),
+                         "device",
+                         &devices->mice[i]);
+      gtk_signal_connect_full (GTK_OBJECT (mi),
+                               "activate",
+                               GTK_SIGNAL_FUNC (activate_cb),
+                               NULL,
+                               md,
+                               g_free, FALSE, FALSE);
+
+      gtk_menu_shell_append (GTK_MENU_SHELL (submenu), mi);
+      gtk_widget_show (mi);
+    }
+  }
+#endif
 
   return menu;
 }

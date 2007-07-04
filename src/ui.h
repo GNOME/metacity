@@ -26,6 +26,9 @@
 
 /* Don't include gtk.h or gdk.h here */
 #include "common.h"
+#ifdef MPX
+#include "devices.h"
+#endif
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <glib.h>
@@ -118,6 +121,18 @@ void meta_ui_set_frame_title (MetaUI *ui,
 void meta_ui_repaint_frame (MetaUI *ui,
                             Window xwindow);
 
+#ifdef MPX
+MetaWindowMenu* meta_ui_window_menu_new   (MetaUI             *ui,
+                                           Window              client_xwindow,
+                                           MetaMenuOp          ops,
+                                           MetaMenuOp          insensitive,
+					   MetaDevices	      *devices,
+                                           unsigned long       active_workspace,
+                                           int                 n_workspaces,
+                                           MetaWindowMenuFunc  func,
+                                           gpointer            data);
+
+#else
 MetaWindowMenu* meta_ui_window_menu_new   (MetaUI             *ui,
                                            Window              client_xwindow,
                                            MetaMenuOp          ops,
@@ -126,6 +141,7 @@ MetaWindowMenu* meta_ui_window_menu_new   (MetaUI             *ui,
                                            int                 n_workspaces,
                                            MetaWindowMenuFunc  func,
                                            gpointer            data);
+#endif
 void            meta_ui_window_menu_popup (MetaWindowMenu     *menu,
                                            int                 root_x,
                                            int                 root_y,

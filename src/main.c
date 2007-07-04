@@ -246,7 +246,7 @@ main (int argc, char **argv)
 
   if (setlocale (LC_ALL, "") == NULL)
     meta_warning ("Locale not understood by C library, internationalization will not work\n");
-  
+
   sigemptyset (&empty_mask);
   act.sa_handler = SIG_IGN;
   act.sa_mask    = empty_mask;

@@ -6259,6 +6259,30 @@ recalc_window_features (MetaWindow *window)
    */
 }
 
+#ifdef MPX
+void
+meta_window_set_client_pointer (Display *xdisplay, MetaWindow *window,
+				MetaDevInfo *dev)
+{
+  meta_warning("Changing client pointer to %s\n", dev->name); /* XXX */
+  XSetClientPointer(xdisplay, window->xwindow, dev->xdev);
+
+  return;
+}
+#endif
+
+#ifdef MPX
+static void
+menu_callback (MetaWindowMenu *menu,
+               Display        *xdisplay,
+               Window          client_xwindow,
+               guint32         timestamp,
+               MetaMenuOp      op,
+               int             workspace_index,
+	       MetaDevInfo    *device,
+               gpointer        data)
+
+#else
 static void
 menu_callback (MetaWindowMenu *menu,
                Display        *xdisplay,
@@ -6267,6 +6291,7 @@ menu_callback (MetaWindowMenu *menu,
                MetaMenuOp      op,
                int             workspace_index,
                gpointer        data)
+#endif
 {
   MetaDisplay *display;
   MetaWindow *window;
@@ -6369,6 +6394,12 @@ menu_callback (MetaWindowMenu *menu,
         case META_MENU_OP_RECOVER:
           meta_window_shove_titlebar_onscreen (window);
           break;
+
+#ifdef MPX
+	case META_MENU_OP_CLIENT_POINTER:
+	  meta_window_set_client_pointer (xdisplay, window, device);
+	  break;
+#endif
           
         case 0:
           /* nothing */
@@ -6515,6 +6546,18 @@ meta_window_show_menu (MetaWindow *window,
     return;
   
   menu =
+#ifdef MPX
+    meta_ui_window_menu_new (window->screen->ui,
+                             window->xwindow,
+                             ops,
+                             insensitive,
+			     &window->display->devices,
+                             meta_window_get_net_wm_desktop (window),
+                             meta_screen_get_n_workspaces (window->screen),
+                             menu_callback,
+                             NULL);
+
+#else
     meta_ui_window_menu_new (window->screen->ui,
                              window->xwindow,
                              ops,
@@ -6522,7 +6565,8 @@ meta_window_show_menu (MetaWindow *window,
                              meta_window_get_net_wm_desktop (window),
                              meta_screen_get_n_workspaces (window->screen),
                              menu_callback,
-                             NULL); 
+                             NULL);
+#endif
 
   window->display->window_menu = menu;
   window->display->window_with_menu = window;
