@@ -49,6 +49,10 @@
 #include <X11/Xatom.h>
 #include <string.h>
 
+#ifdef MPX
+#include <stdlib.h>
+#endif
+
 #ifdef HAVE_SHAPE
 #include <X11/extensions/shape.h>
 #endif
@@ -6264,11 +6268,65 @@ void
 meta_window_set_client_pointer (Display *xdisplay, MetaWindow *window,
 				MetaDevInfo *dev)
 {
-  meta_warning("Changing client pointer to %s\n", dev->name); /* XXX */
   XSetClientPointer(xdisplay, window->xwindow, dev->xdev);
 
   return;
 }
+
+void
+meta_window_change_access (Display *xdisplay, MetaWindow *window,
+			   MetaDevInfo *dev)
+{
+
+  /* Metacity's behavior is: we always play with deny lists. According to
+   * xserver/dix/access.c:250, permit lists have priority over deny lists. So,
+   * if applications want to overwrite metacity's settings, they must use the
+   * "permit" lists. Metacity also sets NO default rule. */
+  int rule, nperm, ndeny, i, allowed;
+  XID *perm, *deny;
+
+  /* Read menu.c:~605 comments about calling XQueryWindowAccess evertytime */
+  XQueryWindowAccess(xdisplay, window->xwindow, &rule, &perm, &nperm, &deny,
+  		     &ndeny);
+
+  allowed = 1;
+  for (i = 0; i < ndeny; i++)
+    {
+      if (! allowed)
+	/* We already know that we are going to have to remove the device from
+	 * the list, so let's do it now! */
+	deny[i-1] = deny[i];
+      if (dev->xdev->device_id == deny[i])
+        allowed = 0;
+    }
+
+  if (XGrabAccessControl(xdisplay))
+    {
+      if (allowed)
+        {
+	  /* Put him into the deny list! */
+	  /* XXX We're reallocating something allocated by xlib can't is be
+	   * dangerous? Had no problem until now... */
+	  deny = (XID *) realloc (deny, sizeof(XID) * ndeny +1);
+	  deny[ndeny] = dev->xdev->device_id;
+          XDenyDevices(xdisplay, window->xwindow, deny, ndeny +1);
+        }
+      else
+	{
+	  /* Remove him from the deny list! */
+          XDenyDevices(xdisplay, window->xwindow, deny, ndeny -1);
+	}
+      XUngrabAccessControl(xdisplay);
+    }
+  else
+    meta_warning("Couldn't grab access control!\n");
+
+  XFree(perm); /* This one can be XFree'd */
+  XFree(deny); /* This one was (probably) reallocated by realloc! */
+
+  return;
+}
+
 #endif
 
 #ifdef MPX
@@ -6398,6 +6456,10 @@ menu_callback (MetaWindowMenu *menu,
 #ifdef MPX
 	case META_MENU_OP_CLIENT_POINTER:
 	  meta_window_set_client_pointer (xdisplay, window, device);
+	  break;
+
+	case META_MENU_OP_ALLOW_ACCESS:
+	  meta_window_change_access (xdisplay, window, device);
 	  break;
 #endif
           

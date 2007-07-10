@@ -813,9 +813,8 @@ meta_display_open (void)
 
     d = &display->devices;
 
-    /* We should register ourselves as the pairing client here, and also as
-     * the access control manager too.
-     * XXX XRegisterPairingClient, XGrabAccessControl */
+    /* We should register ourselves as the pairing client here
+     * XXX XRegisterPairingClient */
 
     d->mice = g_malloc(sizeof(XID) * DEFAULT_INPUT_ARRAY_SIZE);
     d->keyboards = g_malloc(sizeof(XID) * DEFAULT_INPUT_ARRAY_SIZE);
@@ -850,7 +849,7 @@ meta_display_open (void)
 	    d->keyboards[d->keybsUsed].name = 
 	    				   g_strdup_printf("%s", devInfo->name);
 
-	    XGetPairedPointer(display->xdisplay, kDev, (int *) &pDevId);
+	    XGetPairedPointer(display->xdisplay, kDev, &pDevId);
 	    meta_warning("opening device id %d\n", 
 	                 (int)pDevId); /* XXX */
 	    open = XOpenDevice(display->xdisplay, pDevId);

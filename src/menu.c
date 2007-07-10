@@ -513,18 +513,16 @@ meta_window_menu_new   (MetaFrames         *frames,
 #ifdef MPX
 
   {
-    GtkWidget *submenu;
-    GtkWidget *submenuitem;
-
+    GtkWidget *mi;
     MenuItem sep = { 0, MENU_ITEM_SEPARATOR, NULL, FALSE, NULL };
-    submenu = gtk_menu_new();
-    submenuitem = menu_item_new (&sep, -1);
-    gtk_menu_shell_append (GTK_MENU_SHELL (menu->menu), submenuitem);
-    gtk_widget_show (submenuitem);
+    mi = menu_item_new(&sep, -1);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu->menu), mi);
+    gtk_widget_show (mi);
   }
 
   {
     /* SetClientPointer menu */
+
     Display *display;
 
     GtkWidget *submenu;
@@ -533,7 +531,7 @@ meta_window_menu_new   (MetaFrames         *frames,
 
     MenuItem select_client_pointer = {
       0, MENU_ITEM_NORMAL, NULL,
-      FALSE, N_("Select Client Pointer")
+      FALSE, N_("Client pointer")
     };
 
     submenu = gtk_menu_new ();
@@ -545,40 +543,160 @@ meta_window_menu_new   (MetaFrames         *frames,
     display = gdk_x11_drawable_get_xdisplay (GTK_WIDGET (frames)->window);
 
     /* Someone might have changed the clientPointer! */
-    XGetClientPointer(display, client_xwindow, (int *)&clientPtr);
-    meta_warning("my mouse is %d\n", (int) clientPtr); /* XXX */
+    XGetClientPointer(display, client_xwindow, &clientPtr);
 
-    for (i = 0; i < devices->miceUsed; i++) {
+    for (i = 0; i < devices->miceUsed; i++)
+      {
 
-      MenuItem moveitem;
-      MenuData *md;
+        MenuItem setcpitem;
+        MenuData *md;
+        GtkWidget *mi;
+
+        setcpitem.type = MENU_ITEM_RADIOBUTTON;
+        setcpitem.op = META_MENU_OP_CLIENT_POINTER;
+        setcpitem.label = devices->mice[i].name;
+        mi = menu_item_new (&setcpitem, i+1);
+        gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (mi),
+                       (clientPtr == devices->mice[i].xdev->device_id) ? 1 : 0);
+
+        md = g_new (MenuData, 1);
+        md->menu = menu;
+        md->op = META_MENU_OP_CLIENT_POINTER;
+        g_object_set_data (G_OBJECT(mi),
+                           "device",
+                           &devices->mice[i]);
+        gtk_signal_connect_full (GTK_OBJECT (mi),
+                                 "activate",
+                                 GTK_SIGNAL_FUNC (activate_cb),
+                                 NULL,
+                                 md,
+                                 g_free, FALSE, FALSE);
+
+        gtk_menu_shell_append (GTK_MENU_SHELL (submenu), mi);
+        gtk_widget_show (mi);
+      }
+  }
+
+  {
+    /* Enable devices menu */
+    Display *display;
+
+    GtkWidget *submenu;
+    GtkWidget *submenuitem;
+
+    int rule, nperm, ndeny, j;
+    XID *perm, *deny;
+
+    int allowed;
+
+    MenuItem allowed_devices = {
+      0, MENU_ITEM_NORMAL, NULL,
+      FALSE, N_("Allowed devices")
+    };
+
+    submenu = gtk_menu_new ();
+    submenuitem = menu_item_new (&allowed_devices, -1);
+    gtk_menu_item_set_submenu (GTK_MENU_ITEM (submenuitem), submenu);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu->menu), submenuitem);
+    gtk_widget_show (submenuitem);
+
+    display = gdk_x11_drawable_get_xdisplay (GTK_WIDGET (frames)->window);
+
+    /* Gotta know which device has access to the window... Currently, we're
+     * doing this by calling XQueryWindowAccess everytime. But maybe we could
+     * store information on the windows. The problem is that if a client makes a
+     * change, we won't be able to discover (will we? do we have an xevent for
+     * it?) */
+    XQueryWindowAccess(display, client_xwindow, &rule, &perm, &nperm, 
+                       &deny, &ndeny);
+
+    for (i = 0; i < devices->miceUsed; i++)
+      {
+
+        /* Add the mice to the menu */
+        MenuItem alwdevitem;
+        MenuData *md;
+        GtkWidget *mi;
+
+        alwdevitem.type = MENU_ITEM_CHECKBOX;
+        alwdevitem.op = META_MENU_OP_ALLOW_ACCESS;
+        alwdevitem.label = devices->mice[i].name;
+        mi = menu_item_new (&alwdevitem, i+1);
+	allowed = 1;
+	for (j = 0; j < ndeny; j++)
+	  if (devices->mice[i].xdev->device_id == deny[j] )
+	    allowed = 0;
+        gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (mi), allowed);
+
+        md = g_new (MenuData, 1);
+        md->menu = menu;
+        md->op = META_MENU_OP_ALLOW_ACCESS;
+        g_object_set_data (G_OBJECT(mi),
+                           "device",
+                           &devices->mice[i]);
+        gtk_signal_connect_full (GTK_OBJECT (mi),
+                                 "activate",
+                                 GTK_SIGNAL_FUNC (activate_cb),
+                                 NULL,
+                                 md,
+                                 g_free, FALSE, FALSE);
+
+        gtk_menu_shell_append (GTK_MENU_SHELL (submenu), mi);
+        gtk_widget_show (mi);
+
+      }
+
+
+    /* Add a separator */
+    {
       GtkWidget *mi;
-
-      moveitem.type = MENU_ITEM_RADIOBUTTON;
-      moveitem.op = META_MENU_OP_CLIENT_POINTER;
-      moveitem.label = devices->mice[i].name;
-      meta_warning("name = %s\n", moveitem.label);
-      /* XXX gotta make radiobuttons appear as checked!
-      moveitem.checked = (clientPtr == `this guy`) ? 1 : 0; */
-      mi = menu_item_new (&moveitem, i+1);
-
-      md = g_new (MenuData, 1);
-      md->menu = menu;
-      md->op = META_MENU_OP_CLIENT_POINTER;
-      g_object_set_data (G_OBJECT(mi),
-                         "device",
-                         &devices->mice[i]);
-      gtk_signal_connect_full (GTK_OBJECT (mi),
-                               "activate",
-                               GTK_SIGNAL_FUNC (activate_cb),
-                               NULL,
-                               md,
-                               g_free, FALSE, FALSE);
-
+      MenuItem sep = { 0, MENU_ITEM_SEPARATOR, NULL, FALSE, NULL };
+      mi = menu_item_new(&sep, -1);
       gtk_menu_shell_append (GTK_MENU_SHELL (submenu), mi);
       gtk_widget_show (mi);
     }
+
+    for (i = 0; i < devices->keybsUsed; i++)
+      {
+
+        /* Add the keyboards to the menu */
+        MenuItem alwdevitem;
+        MenuData *md;
+        GtkWidget *mi;
+
+        alwdevitem.type = MENU_ITEM_CHECKBOX;
+        alwdevitem.op = META_MENU_OP_ALLOW_ACCESS;
+        alwdevitem.label = devices->keyboards[i].name;
+        mi = menu_item_new (&alwdevitem, i+1);
+
+	allowed = 1;
+	for (j = 0; j < ndeny; j++)
+	  if (devices->keyboards[i].xdev->device_id == deny[j] )
+	    allowed = 0;
+        gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (mi), allowed);
+
+        md = g_new (MenuData, 1);
+        md->menu = menu;
+        md->op = META_MENU_OP_ALLOW_ACCESS;
+        g_object_set_data (G_OBJECT(mi),
+                           "device",
+                           &devices->keyboards[i]);
+        gtk_signal_connect_full (GTK_OBJECT (mi),
+                                 "activate",
+                                 GTK_SIGNAL_FUNC (activate_cb),
+                                 NULL,
+                                 md,
+                                 g_free, FALSE, FALSE);
+
+        gtk_menu_shell_append (GTK_MENU_SHELL (submenu), mi);
+        gtk_widget_show (mi);
+
+      }
+      XFree(perm);
+      XFree(deny);
+
   }
+
 #endif
 
   return menu;

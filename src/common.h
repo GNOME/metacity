@@ -52,28 +52,29 @@ typedef enum
 
 typedef enum
 {
-  META_MENU_OP_DELETE      = 1 << 0,
-  META_MENU_OP_MINIMIZE    = 1 << 1,
-  META_MENU_OP_UNMAXIMIZE  = 1 << 2,
-  META_MENU_OP_MAXIMIZE    = 1 << 3,
-  META_MENU_OP_UNSHADE     = 1 << 4,
-  META_MENU_OP_SHADE       = 1 << 5,
-  META_MENU_OP_UNSTICK     = 1 << 6,
-  META_MENU_OP_STICK       = 1 << 7,
-  META_MENU_OP_WORKSPACES  = 1 << 8,
-  META_MENU_OP_MOVE        = 1 << 9,
-  META_MENU_OP_RESIZE      = 1 << 10,
-  META_MENU_OP_ABOVE       = 1 << 11,
-  META_MENU_OP_UNABOVE     = 1 << 12,
-  META_MENU_OP_MOVE_LEFT   = 1 << 13,
-  META_MENU_OP_MOVE_RIGHT  = 1 << 14,
-  META_MENU_OP_MOVE_UP     = 1 << 15,
-  META_MENU_OP_MOVE_DOWN   = 1 << 16,
+  META_MENU_OP_DELETE         = 1 << 0,
+  META_MENU_OP_MINIMIZE       = 1 << 1,
+  META_MENU_OP_UNMAXIMIZE     = 1 << 2,
+  META_MENU_OP_MAXIMIZE       = 1 << 3,
+  META_MENU_OP_UNSHADE        = 1 << 4,
+  META_MENU_OP_SHADE          = 1 << 5,
+  META_MENU_OP_UNSTICK        = 1 << 6,
+  META_MENU_OP_STICK          = 1 << 7,
+  META_MENU_OP_WORKSPACES     = 1 << 8,
+  META_MENU_OP_MOVE           = 1 << 9,
+  META_MENU_OP_RESIZE         = 1 << 10,
+  META_MENU_OP_ABOVE          = 1 << 11,
+  META_MENU_OP_UNABOVE        = 1 << 12,
+  META_MENU_OP_MOVE_LEFT      = 1 << 13,
+  META_MENU_OP_MOVE_RIGHT     = 1 << 14,
+  META_MENU_OP_MOVE_UP        = 1 << 15,
+  META_MENU_OP_MOVE_DOWN      = 1 << 16,
 #ifdef MPX
-  META_MENU_OP_RECOVER	   = 1 << 17,
+  META_MENU_OP_RECOVER	      = 1 << 17,
   META_MENU_OP_CLIENT_POINTER = 1 << 18,
+  META_MENU_OP_ALLOW_ACCESS   = 1 << 19
 #else
-  META_MENU_OP_RECOVER     = 1 << 17
+  META_MENU_OP_RECOVER        = 1 << 17
 #endif
 } MetaMenuOp;
 

@@ -611,6 +611,8 @@ void meta_window_update_icon_now (MetaWindow *window);
 #ifdef MPX
 void meta_window_set_client_pointer (Display *xdisplay, MetaWindow *window,
 				     MetaDevInfo *dev);
+void meta_window_change_access (Display *xdisplay, MetaWindow *window,
+				MetaDevInfo *dev);
 #endif
 
 #endif

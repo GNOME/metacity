@@ -594,7 +594,7 @@ meta_frames_manage_window (MetaFrames *frames,
    */
   
   meta_core_grab_buttons (gdk_display, frame->xwindow);
-  
+
   g_hash_table_replace (frames->frames, &frame->xwindow, frame);
 }
 

@@ -481,6 +481,12 @@ meta_core_get_menu_accelerator (MetaMenuOp           menu_op,
 {
   const char *name;
 
+  /* #ifdef MPX
+   * FIXME:
+   * warning: enumeration value 'META_MENU_OP_CLIENT_POINTER' not handled in
+   * switch. (the same for META_MENU_OP_ALLOW_DEVICES)
+   * #endif */
+
   name = NULL;
   
   switch (menu_op)
