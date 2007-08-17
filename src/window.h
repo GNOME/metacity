@@ -354,6 +354,10 @@ struct _MetaWindow
 
   /* maintained by group.c */
   MetaGroup *group;
+
+  MetaDevInfo **focused_devices; /* Should it be XID? */
+  int focused_devices_used;
+  int focused_devices_size;
 };
 
 /* These differ from window->has_foo_func in that they consider
@@ -372,11 +376,13 @@ struct _MetaWindow
 
 MetaWindow* meta_window_new                (MetaDisplay *display,
                                             Window       xwindow,
-                                            gboolean     must_be_viewable);
+                                            gboolean     must_be_viewable,
+					    MetaDevInfo *dev);
 MetaWindow* meta_window_new_with_attrs     (MetaDisplay *display,
                                             Window       xwindow,
                                             gboolean     must_be_viewable,
-                                            XWindowAttributes *attrs);
+                                            XWindowAttributes *attrs,
+					    MetaDevInfo *dev);
 void        meta_window_free               (MetaWindow  *window,
                                             guint32      timestamp);
 void        meta_window_calc_showing       (MetaWindow  *window);
@@ -385,17 +391,21 @@ void        meta_window_queue              (MetaWindow  *window,
 void        meta_window_minimize           (MetaWindow  *window);
 void        meta_window_unminimize         (MetaWindow  *window);
 void        meta_window_maximize           (MetaWindow        *window,
+					    MetaDevInfo       *dev,
                                             MetaMaximizeFlags  directions);
 void        meta_window_maximize_internal  (MetaWindow        *window,
                                             MetaMaximizeFlags  directions,
                                             MetaRectangle     *saved_rect);
 void        meta_window_unmaximize         (MetaWindow        *window,
+					    MetaDevInfo       *dev,
                                             MetaMaximizeFlags  directions);
 void        meta_window_make_above         (MetaWindow  *window);
 void        meta_window_unmake_above       (MetaWindow  *window);
 void        meta_window_shade              (MetaWindow  *window,
+					    MetaDevInfo *dev,
                                             guint32      timestamp);
 void        meta_window_unshade            (MetaWindow  *window,
+					    MetaDevInfo *dev,
                                             guint32      timestamp);
 void        meta_window_change_workspace   (MetaWindow  *window,
                                             MetaWorkspace *workspace);
@@ -403,30 +413,39 @@ void        meta_window_stick              (MetaWindow  *window);
 void        meta_window_unstick            (MetaWindow  *window);
 
 void        meta_window_activate           (MetaWindow  *window,
+					    MetaDevInfo *dev,
                                             guint32      current_time);
 void        meta_window_activate_with_workspace  (MetaWindow    *window,
+						  MetaDevInfo   *dev,
                                                   guint32        current_time,
                                                   MetaWorkspace *workspace);   
-void        meta_window_make_fullscreen_internal (MetaWindow    *window);
-void        meta_window_make_fullscreen    (MetaWindow  *window);
-void        meta_window_unmake_fullscreen  (MetaWindow  *window);
+void        meta_window_make_fullscreen_internal (MetaWindow    *window,
+					          MetaDevInfo   *dev);
+void        meta_window_make_fullscreen    (MetaWindow  *window,
+					    MetaDevInfo *dev);
+void        meta_window_unmake_fullscreen  (MetaWindow  *window,
+					    MetaDevInfo *dev);
 
 /* args to move are window pos, not frame pos */
 void        meta_window_move               (MetaWindow  *window,
+					    MetaDevInfo *dev,
                                             gboolean     user_op,
                                             int          root_x_nw,
                                             int          root_y_nw);
 void        meta_window_resize             (MetaWindow  *window,
+					    MetaDevInfo *dev,
                                             gboolean     user_op,
                                             int          w,
                                             int          h);
 void        meta_window_move_resize        (MetaWindow  *window,
+					    MetaDevInfo *dev,
                                             gboolean     user_op,
                                             int          root_x_nw,
                                             int          root_y_nw,
                                             int          w,
                                             int          h);
 void        meta_window_resize_with_gravity (MetaWindow  *window,
+					     MetaDevInfo *dev,
                                              gboolean     user_op,
                                              int          w,
                                              int          h,
@@ -489,6 +508,7 @@ void        meta_window_delete             (MetaWindow  *window,
                                             guint32      timestamp);
 void        meta_window_kill               (MetaWindow  *window);
 void        meta_window_focus              (MetaWindow  *window,
+					    MetaDevInfo *dev,
                                             guint32      timestamp);
 void        meta_window_raise              (MetaWindow  *window);
 void        meta_window_lower              (MetaWindow  *window);
@@ -501,13 +521,14 @@ void meta_window_send_icccm_message (MetaWindow *window,
                                      guint32     timestamp);
 
 
-void     meta_window_move_resize_request(MetaWindow *window,
-                                         guint       value_mask,
-                                         int         gravity,
-                                         int         x,
-                                         int         y,
-                                         int         width,
-                                         int         height);
+void   meta_window_move_resize_request (MetaWindow  *window,
+					MetaDevInfo *dev,
+                                        guint        value_mask,
+                                        int          gravity,
+                                        int          x,
+                                        int          y,
+                                        int          width,
+                                        int          height);
 gboolean meta_window_configure_request (MetaWindow *window,
                                         XEvent     *event);
 gboolean meta_window_property_notify   (MetaWindow *window,
@@ -528,7 +549,8 @@ void meta_window_show_menu (MetaWindow *window,
                             guint32     timestamp);
 
 gboolean meta_window_titlebar_is_onscreen    (MetaWindow *window);
-void     meta_window_shove_titlebar_onscreen (MetaWindow *window);
+void     meta_window_shove_titlebar_onscreen (MetaWindow *window,
+					      MetaDevInfo *dev);
 
 void meta_window_set_gravity (MetaWindow *window,
                               int         gravity);
@@ -577,10 +599,11 @@ void     meta_window_foreach_ancestor         (MetaWindow            *window,
 MetaWindow* meta_window_find_root_ancestor    (MetaWindow *window);
 
 
-void meta_window_begin_grab_op (MetaWindow *window,
-                                MetaGrabOp  op,
-                                gboolean    frame_action,
-                                guint32     timestamp);
+void meta_window_begin_grab_op (MetaWindow  *window,
+				MetaDevInfo *dev,
+                                MetaGrabOp   op,
+                                gboolean     frame_action,
+                                guint32      timestamp);
 
 void meta_window_update_keyboard_resize (MetaWindow *window,
                                          gboolean    update_cursor);

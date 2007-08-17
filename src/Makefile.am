@@ -23,6 +23,7 @@ metacity_SOURCES= 				\
 	core.c					\
 	core.h					\
 	delete.c				\
+	devices.c				\
 	devices.h				\
 	display.c				\
 	display.h				\
@@ -112,8 +113,9 @@ libmetacity_private_la_SOURCES=	\
 	theme-parser.h		\
 	util.c			\
 	util.h			\
-	common.h		\
-	devices.h
+	devices.c		\
+	devices.h		\
+	common.h		
 
 libmetacity_private_la_LDFLAGS = -no-undefined
 libmetacity_private_la_LIBADD  = @METACITY_LIBS@

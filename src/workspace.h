@@ -90,6 +90,7 @@ void meta_workspace_get_work_area_all_xineramas (MetaWorkspace *workspace,
                                                  MetaRectangle *area);
 
 void meta_workspace_focus_default_window (MetaWorkspace *workspace,
+					  MetaDevInfo   *dev,
                                           MetaWindow    *not_this_one,
                                           guint32        timestamp);
 

@@ -805,7 +805,9 @@ reload_net_startup_id (MetaWindow    *window,
         if (window->initial_workspace_set)
           workspace = meta_screen_get_workspace_by_index (window->screen, window->initial_workspace);
     
-        meta_window_activate_with_workspace (window, timestamp, workspace);
+        meta_window_activate_with_workspace (window, 
+	                      /* XXX */ &window->display->devices->keyboards[0],
+						timestamp, workspace);
       }
   }
   

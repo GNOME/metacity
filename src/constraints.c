@@ -183,7 +183,8 @@ static void setup_constraint_info        (ConstraintInfo      *info,
                                           MetaMoveResizeFlags  flags,
                                           int                  resize_gravity,
                                           const MetaRectangle *orig,
-                                          MetaRectangle       *new);
+                                          MetaRectangle       *new,
+					  MetaDevInfo         *dev);
 static void place_window_if_needed       (MetaWindow     *window,
                                           ConstraintInfo *info);
 static void update_onscreen_requirements (MetaWindow     *window,
@@ -266,7 +267,8 @@ meta_window_constrain (MetaWindow          *window,
                        MetaMoveResizeFlags  flags,
                        int                  resize_gravity,
                        const MetaRectangle *orig,
-                       MetaRectangle       *new)
+                       MetaRectangle       *new,
+		       MetaDevInfo         *dev)
 {
   ConstraintInfo info;
   ConstraintPriority priority = PRIORITY_MINIMUM;
@@ -289,7 +291,8 @@ meta_window_constrain (MetaWindow          *window,
                          flags,
                          resize_gravity,
                          orig,
-                         new);
+                         new,
+			 dev);
   place_window_if_needed (window, &info);
 
   while (!satisfied && priority <= PRIORITY_MAXIMUM) {
@@ -331,7 +334,8 @@ setup_constraint_info (ConstraintInfo      *info,
                        MetaMoveResizeFlags  flags,
                        int                  resize_gravity,
                        const MetaRectangle *orig,
-                       MetaRectangle       *new)
+                       MetaRectangle       *new,
+		       MetaDevInfo         *dev)
 {
   const MetaXineramaScreenInfo *xinerama_info;
   MetaWorkspace *cur_workspace;
@@ -415,7 +419,7 @@ setup_constraint_info (ConstraintInfo      *info,
                   "Treating resize request of legacy application %s as a "
                   "fullscreen request\n",
                   window->desc);
-      meta_window_make_fullscreen_internal (window);
+      meta_window_make_fullscreen_internal (window, dev);
     }
 
   /* Log all this information for debugging */

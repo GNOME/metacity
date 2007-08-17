@@ -500,8 +500,8 @@ meta_screen_new (MetaDisplay *display,
                 SubstructureRedirectMask | SubstructureNotifyMask |
                 ColormapChangeMask | PropertyChangeMask |
                 LeaveWindowMask | EnterWindowMask |
-                KeyPressMask | KeyReleaseMask |
-                FocusChangeMask | StructureNotifyMask |
+/*                KeyPressMask | KeyReleaseMask | */
+/*                FocusChangeMask | */StructureNotifyMask |
 #ifdef HAVE_COMPOSITE_EXTENSIONS
                 ExposureMask |
 #endif
@@ -515,7 +515,44 @@ meta_screen_new (MetaDisplay *display,
       
       return NULL;
     }
-  
+
+  XEventClass *evclasses;
+  int nclasses = 0;
+  int idev;
+
+  evclasses = g_new(XEventClass, display->devices->keybsUsed * 4);
+
+  for (idev = 0; idev < display->devices->keybsUsed; idev++)
+    {
+      DeviceKeyPress   (display->devices->keyboards[idev].xdev,
+      		        display->dev_key_press_type,
+			evclasses[nclasses]);
+      nclasses++;
+      if (display->dev_key_press_type == 0)
+	{
+	  meta_warning("MAPUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUULULULULU\n");
+	  meta_warning("MAPUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUULULULULU\n");
+	  meta_warning("MAPUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUULULULULU\n");
+	  meta_warning("MAPUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUULULULULU\n");
+	  sleep (5);
+	}
+      DeviceKeyRelease (display->devices->keyboards[idev].xdev,
+      			display->dev_key_release_type,
+			evclasses[nclasses]);
+      nclasses++;
+      DeviceFocusIn    (display->devices->keyboards[idev].xdev,
+      		        display->dev_focus_in_type,
+			evclasses[nclasses]);
+      nclasses++;
+      DeviceFocusOut   (display->devices->keyboards[idev].xdev,
+      			display->dev_focus_out_type,
+			evclasses[nclasses]);
+      nclasses++;
+    }
+
+  XSelectExtensionEvent (xdisplay, xroot, evclasses, nclasses);
+  /* g_free evclasses XXX */
+
   screen = g_new (MetaScreen, 1);
   screen->closing = 0;
   
@@ -624,7 +661,9 @@ meta_screen_new (MetaDisplay *display,
 
   screen->all_keys_grabbed = FALSE;
   screen->keys_grabbed = FALSE;
-  meta_screen_grab_keys (screen);
+
+  for (idev = 0; idev < display->devices->keybsUsed; idev++)
+    meta_screen_grab_keys (screen, &display->devices->keyboards[idev]);
 
   screen->ui = meta_ui_new (screen->display->xdisplay,
                             screen->xscreen);
@@ -670,6 +709,8 @@ meta_screen_free (MetaScreen *screen,
   MetaDisplay *display;
   XGCValues gc_values = { 0 };
 
+  int idev;
+
   display = screen->display;
 
   screen->closing += 1;
@@ -686,7 +727,8 @@ meta_screen_free (MetaScreen *screen,
   
   meta_prefs_remove_listener (prefs_changed_callback, screen);
   
-  meta_screen_ungrab_keys (screen);
+  for (idev = 0; idev < display->devices->keybsUsed; idev++)
+    meta_screen_ungrab_keys (screen, &display->devices->keyboards[idev]);
 
 #ifdef HAVE_STARTUP_NOTIFICATION
   g_slist_foreach (screen->startup_sequences,
@@ -807,9 +849,11 @@ meta_screen_manage_all_windows (MetaScreen *screen)
   for (list = windows; list != NULL; list = list->next)
     {
       WindowInfo *info = list->data;
-
+      /* FIXME: we just don't know what keyboard we should associate with each
+       * window... That is a really really big problem... */
       meta_window_new_with_attrs (screen->display, info->xwindow, TRUE,
-				  &info->attrs);
+				  &info->attrs,
+				  &screen->display->devices->keyboards[0]);
     }
   meta_stack_thaw (screen->stack);
 
@@ -1388,7 +1432,8 @@ meta_screen_ensure_workspace_popup (MetaScreen *screen)
 }
 
 MetaWindow*
-meta_screen_get_mouse_window (MetaScreen  *screen,
+meta_screen_get_mouse_window (MetaDevInfo *dev,
+			      MetaScreen  *screen,
                               MetaWindow  *not_this_one)
 {
   MetaWindow *window;
@@ -1396,12 +1441,28 @@ meta_screen_get_mouse_window (MetaScreen  *screen,
   int root_x_return, root_y_return;
   int win_x_return, win_y_return;
   unsigned int mask_return;
+  Bool shared;
   
   if (not_this_one)
     meta_topic (META_DEBUG_FOCUS,
                 "Focusing mouse window excluding %s\n", not_this_one->desc);
 
   meta_error_trap_push (screen->display);
+
+  XQueryDevicePointer (screen->display->xdisplay,
+  		       dev->xdev,
+                       screen->xroot,
+                       &root_return,
+                       &child_return,
+                       &root_x_return,
+                       &root_y_return,
+                       &win_x_return,
+                       &win_y_return,
+                       &mask_return,
+		       &shared);
+
+#if 0
+#warning XQueryPointer
   XQueryPointer (screen->display->xdisplay,
                  screen->xroot,
                  &root_return,
@@ -1411,6 +1472,7 @@ meta_screen_get_mouse_window (MetaScreen  *screen,
                  &win_x_return,
                  &win_y_return,
                  &mask_return);
+#endif
   meta_error_trap_pop (screen->display, TRUE);
 
   window = meta_stack_get_default_focus_window_at_point (screen->stack,
@@ -1526,8 +1588,9 @@ meta_screen_get_natural_xinerama_list (MetaScreen *screen,
     {
       visited[i] = FALSE;
     }
-
-  current = meta_screen_get_current_xinerama (screen);
+  /* XXX XXX XXX XXX TODO FIXME PORN */
+  current = meta_screen_get_current_xinerama (screen,
+                                            &screen->display->devices->mice[0]);
   xinerama_queue = g_queue_new ();
   g_queue_push_tail (xinerama_queue, (gpointer) current);
   visited[current->number] = TRUE;
@@ -1594,7 +1657,7 @@ meta_screen_get_natural_xinerama_list (MetaScreen *screen,
 }
 
 const MetaXineramaScreenInfo*
-meta_screen_get_current_xinerama (MetaScreen *screen)
+meta_screen_get_current_xinerama (MetaScreen *screen, MetaDevInfo *dev)
 {
   if (screen->n_xinerama_infos == 1)
     return &screen->xinerama_infos[0];
@@ -1609,10 +1672,27 @@ meta_screen_get_current_xinerama (MetaScreen *screen)
       unsigned int mask_return;
       int i;
       MetaRectangle pointer_position;
+      Bool shared;
       
       screen->display->xinerama_cache_invalidated = FALSE;
       
       pointer_position.width = pointer_position.height = 1;
+
+      XQueryDevicePointer (screen->display->xdisplay,
+      			   dev->xdev,
+                           screen->xroot,
+                           &root_return,
+                           &child_return,
+                           &pointer_position.x,
+                           &pointer_position.y,
+                           &win_x_return,
+                           &win_y_return,
+                           &mask_return,
+			   &shared);
+
+
+#if 0
+#warning XQueryPointer
       XQueryPointer (screen->display->xdisplay,
                      screen->xroot,
                      &root_return,
@@ -1622,6 +1702,7 @@ meta_screen_get_current_xinerama (MetaScreen *screen)
                      &win_x_return,
                      &win_y_return,
                      &mask_return);
+#endif
 
       screen->last_xinerama_index = 0;
       for (i = 0; i < screen->n_xinerama_infos; i++)
@@ -1825,7 +1906,16 @@ meta_create_offscreen_window (Display *xdisplay,
                               Window   parent,
                               long     valuemask)
 {
+
+  Window xwin;
+
   XSetWindowAttributes attrs;
+
+  XEventClass *evclasses;
+  int nclasses = 0;
+  int idev;
+
+  MetaDisplay *display = meta_display_for_x_display (xdisplay);
 
   /* we want to be override redirect because sometimes we
    * create a window on a screen we aren't managing.
@@ -1834,7 +1924,56 @@ meta_create_offscreen_window (Display *xdisplay,
   attrs.override_redirect = True;
   attrs.event_mask = valuemask;
   
-  return XCreateWindow (xdisplay,
+  evclasses = g_new(XEventClass, display->devices->keybsUsed * 4);
+
+  for (idev = 0; idev < display->devices->keybsUsed; idev++)
+    {
+      if (valuemask & KeyPressMask)
+	{
+          DeviceKeyPress   (display->devices->keyboards[idev].xdev,
+      		            display->dev_key_press_type,
+			    evclasses[nclasses]);
+          nclasses++;
+	  if (display->dev_key_press_type == 0)
+	    {
+	      meta_warning("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUULULULULU\n");
+	      meta_warning("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUULULULULU\n");
+	      meta_warning("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUULULULULU\n");
+	      meta_warning("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUULULULULU\n");
+	      sleep (5);
+	    }
+ 
+	}
+      if (valuemask & KeyReleaseMask)
+	{
+          DeviceKeyRelease (display->devices->keyboards[idev].xdev,
+      			    display->dev_key_release_type,
+			    evclasses[nclasses]);
+          nclasses++;
+	}
+      if (valuemask & FocusChangeMask)
+	{
+          DeviceFocusIn    (display->devices->keyboards[idev].xdev,
+      		            display->dev_focus_in_type,
+			    evclasses[nclasses]);
+          nclasses++;
+          DeviceFocusOut   (display->devices->keyboards[idev].xdev,
+      			    display->dev_focus_out_type,
+			    evclasses[nclasses]);
+          nclasses++;
+	}
+    }
+
+  if (valuemask & KeyPressMask)
+    attrs.event_mask |= ~KeyPressMask;
+
+  if (valuemask & KeyReleaseMask)
+    attrs.event_mask |= ~KeyReleaseMask;
+  
+  if (valuemask & FocusChangeMask)
+    attrs.event_mask |= ~FocusChangeMask;
+   
+  xwin = XCreateWindow (xdisplay,
                         parent,
                         -100, -100, 1, 1,
                         0,
@@ -1843,6 +1982,11 @@ meta_create_offscreen_window (Display *xdisplay,
                         (Visual *)CopyFromParent,
                         CWOverrideRedirect | CWEventMask,
                         &attrs);
+
+  XSelectExtensionEvent (xdisplay, xwin, evclasses, nclasses);
+  /* g_free evclasses XXX */
+
+  return xwin;
 }
 
 static void
@@ -2308,6 +2452,7 @@ meta_screen_show_desktop (MetaScreen *screen,
                           guint32     timestamp)
 {
   GList *windows;
+  int idev;
 
   if (screen->active_workspace->showing_desktop)
     return;
@@ -2327,7 +2472,9 @@ meta_screen_show_desktop (MetaScreen *screen,
       if (w->screen == screen  && 
           w->type == META_WINDOW_DESKTOP)
         {
-          meta_window_focus (w, timestamp);
+	  /* XXX make a mru for each device!!!!!!!! FIXME TODO*/
+	  for (idev = 0; idev < w->display->devices->miceUsed; idev++)
+	    meta_window_focus (w, &w->display->devices->mice[idev], timestamp);
           break;
         }
       

@@ -504,7 +504,10 @@ meta_window_present_delete_dialog (MetaWindow *window, guint32 timestamp)
               w->res_class &&
               g_strcasecmp (w->res_class, "metacity-dialog") == 0)
             {
-              meta_window_activate (w, timestamp);
+	      /* XXX use the window's current focus!!! */
+              meta_window_activate (w, 
+	      			    &window->display->devices->keyboards[0],
+				    timestamp);
               break;
             }
           

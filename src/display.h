@@ -52,7 +52,7 @@
 #define meta_XFree(p) do { if ((p)) XFree ((p)); } while (0)
 
 typedef struct MetaCompositor  MetaCompositor;
-typedef struct _MetaDisplay    MetaDisplay;
+/* typedef struct _MetaDisplay    MetaDisplay; XXX */
 typedef struct _MetaFrame      MetaFrame;
 typedef struct _MetaKeyBinding MetaKeyBinding;
 typedef struct _MetaScreen     MetaScreen;
@@ -192,7 +192,7 @@ struct _MetaDisplay
   /* This is the actual window from focus events,
    * not the one we last set
    */
-  MetaWindow *focus_window;
+  MetaWindow *focus_window; /* XXX Make this per-device */
 
   /* window we are expecting a FocusIn event for or the current focus
    * window if we are not expecting any FocusIn/FocusOut events; not
@@ -201,9 +201,9 @@ struct _MetaDisplay
    * time is sent to meta_display_set_input_focus_window, though that
    * would be a programming error).  See bug 154598 for more info.
    */
-  MetaWindow *expected_focus_window;
+  MetaWindow *expected_focus_window; /* XXX Make this per-device */
 
-  /* last timestamp passed to XSetInputFocus */
+  /* last timestamp passed to XSetDeviceFocus */
   guint32 last_focus_time;
 
   /* last user interaction time in any app */
@@ -268,6 +268,7 @@ struct _MetaDisplay
   int         grab_latest_motion_y;
   gulong      grab_mask;
   guint       grab_have_pointer : 1;
+  guint	      grab_grabbed_pointer : 1;
   guint       grab_have_keyboard : 1;
   guint       grab_wireframe_active : 1;
   guint       grab_was_cancelled : 1;    /* Only used in wireframe mode */
@@ -378,7 +379,17 @@ struct _MetaDisplay
 #endif
 
 #ifdef MPX
-  MetaDevices devices;
+  int dev_btn_press_type;
+  int dev_btn_release_type;
+  int dev_motion_notify_type;
+  int dev_ptr_motion_hint_type;
+  int dev_focus_in_type;
+  int dev_focus_out_type;
+  int dev_key_press_type;
+  int dev_key_release_type;
+  int dev_enter_notify_type;
+  int dev_leave_notify_type;
+  MetaDevices *devices;
 #endif
 };
 
@@ -449,7 +460,15 @@ GSList*      meta_displays_list          (void);
 
 Cursor         meta_display_create_x_cursor (MetaDisplay *display,
                                              MetaCursor   cursor);
-
+#ifdef MPX
+void     meta_display_set_grab_op_cursor (MetaDisplay *display,
+                                          MetaScreen  *screen,
+					  MetaDevInfo *dev,
+                                          MetaGrabOp   op,
+                                          gboolean     change_pointer,
+                                          Window       grab_xwindow,
+                                          guint32      timestamp);
+#else
 void     meta_display_set_grab_op_cursor (MetaDisplay *display,
                                           MetaScreen  *screen,
                                           MetaGrabOp   op,
@@ -457,6 +476,22 @@ void     meta_display_set_grab_op_cursor (MetaDisplay *display,
                                           Window       grab_xwindow,
                                           guint32      timestamp);
 
+#endif
+
+#ifdef MPX
+gboolean meta_display_begin_grab_op (MetaDisplay *display,
+                                     MetaScreen  *screen,
+				     MetaDevInfo *dev,
+                                     MetaWindow  *window,
+                                     MetaGrabOp   op,
+                                     gboolean     pointer_already_grabbed,
+                                     gboolean     frame_action,
+                                     int          button,
+                                     gulong       modmask,
+                                     guint32      timestamp,
+                                     int          root_x,
+                                     int          root_y);
+#else
 gboolean meta_display_begin_grab_op (MetaDisplay *display,
                                      MetaScreen  *screen,
                                      MetaWindow  *window,
@@ -468,21 +503,27 @@ gboolean meta_display_begin_grab_op (MetaDisplay *display,
                                      guint32      timestamp,
                                      int          root_x,
                                      int          root_y);
+#endif
 void     meta_display_end_grab_op   (MetaDisplay *display,
+				     MetaDevInfo *dev,
                                      guint32      timestamp);
 
 void    meta_display_check_threshold_reached (MetaDisplay *display,
                                               int          x,
                                               int          y);
 void     meta_display_grab_window_buttons    (MetaDisplay *display,
-                                              Window       xwindow);
+                                              Window       xwindow,
+					      MetaDevInfo *dev);
 void     meta_display_ungrab_window_buttons  (MetaDisplay *display,
-                                              Window       xwindow);
+                                              Window       xwindow,
+					      MetaDevInfo *dev);
 
 void meta_display_grab_focus_window_button   (MetaDisplay *display,
-                                              MetaWindow  *window);
+                                              MetaWindow  *window,
+					      MetaDevInfo *dev);
 void meta_display_ungrab_focus_window_button (MetaDisplay *display,
-                                              MetaWindow  *window);
+                                              MetaWindow  *window,
+					      MetaDevInfo *dev);
 
 /* Next two functions are defined in edge-resistance.c */
 void meta_display_compute_resistance_and_snapping_edges (MetaDisplay *display);
@@ -567,18 +608,33 @@ gboolean meta_display_focus_sentinel_clear (MetaDisplay *display);
  * whether a window should be allowed to be focused should depend
  * on user_time events (see bug 167358, comment 15 in particular)
  */
-void meta_display_set_input_focus_window   (MetaDisplay *display, 
+#ifdef MPX
+void meta_display_set_input_focus_window   (MetaDisplay *display,
+					    MetaDevInfo *dev,
                                             MetaWindow  *window,
                                             gboolean     focus_frame,
                                             guint32      timestamp);
+#else
+void meta_display_set_input_focus_window   (MetaDisplay *display,
+                                            MetaWindow  *window,
+                                            gboolean     focus_frame,
+                                            guint32      timestamp);
+#endif
 
 /* meta_display_focus_the_no_focus_window is called when the
  * designated no_focus_window should be focused, but is otherwise the
  * same as meta_display_set_input_focus_window
  */
-void meta_display_focus_the_no_focus_window (MetaDisplay *display, 
+#ifdef MPX
+void meta_display_focus_the_no_focus_window (MetaDisplay *display,
+					     MetaDevInfo *dev,
                                              MetaScreen  *screen,
                                              guint32      timestamp);
+#else
+void meta_display_focus_the_no_focus_window (MetaDisplay *display,
+                                             MetaScreen  *screen,
+                                             guint32      timestamp);
+#endif
 
 void meta_display_queue_autoraise_callback  (MetaDisplay *display,
                                              MetaWindow  *window);

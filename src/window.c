@@ -45,6 +45,7 @@
 #include "constraints.h"
 #include "compositor.h"
 #include "effects.h"
+#include "devices.h"
 
 #include <X11/Xatom.h>
 #include <string.h>
@@ -81,6 +82,7 @@ static void     meta_window_hide          (MetaWindow     *window);
 static void     meta_window_save_rect         (MetaWindow    *window);
 
 static void meta_window_move_resize_internal (MetaWindow         *window,
+					      MetaDevInfo        *dev,
                                               MetaMoveResizeFlags flags,
                                               int                 resize_gravity,
                                               int                 root_x_nw,
@@ -92,11 +94,13 @@ static void     ensure_mru_position_after (MetaWindow *window,
                                            MetaWindow *after_this_one);
 
 
-static void meta_window_move_resize_now (MetaWindow  *window);
+static void meta_window_move_resize_now (MetaWindow  *window,
+					 MetaDevInfo *dev);
 
 static void meta_window_unqueue (MetaWindow *window, guint queuebits);
 
 static void     update_move           (MetaWindow   *window,
+				       MetaDevInfo  *dev,
                                        gboolean      snap,
                                        int           x,
                                        int           y);
@@ -115,10 +119,19 @@ static gboolean queue_calc_showing_func (MetaWindow *window,
                                          void       *data);
 
 static void meta_window_apply_session_info (MetaWindow                  *window,
-                                            const MetaWindowSessionInfo *info);
+                                            const MetaWindowSessionInfo *info,
+					    MetaDevInfo                 *dev);
 
 static void unmaximize_window_before_freeing (MetaWindow        *window);
 static void unminimize_window_and_all_transient_parents (MetaWindow *window);
+
+static void meta_window_add_focused_device    (MetaWindow *window,
+					       MetaDevInfo *kbdDev);
+static void meta_window_remove_focused_device (MetaWindow *window,
+					       MetaDevInfo *kbdDev);
+static gboolean meta_window_focused_by_dev    (MetaWindow *window,
+				               MetaDevInfo *kbdDev);
+ 
 
 /* Idle handlers for the three queues. The "data" parameter in each case
  * will be a GINT_TO_POINTER of the index into the queue arrays to use.
@@ -129,6 +142,8 @@ static void unminimize_window_and_all_transient_parents (MetaWindow *window);
 static gboolean idle_calc_showing (gpointer data);
 static gboolean idle_move_resize (gpointer data);
 static gboolean idle_update_icon (gpointer data);
+
+/* XXX: declare window_activate!!! */
 
 #ifdef WITH_VERBOSE_MODE
 static const char*
@@ -197,7 +212,8 @@ maybe_leave_show_desktop_mode (MetaWindow *window)
 MetaWindow*
 meta_window_new (MetaDisplay *display,
                  Window       xwindow,
-                 gboolean     must_be_viewable)
+                 gboolean     must_be_viewable,
+		 MetaDevInfo *dev)
 {
   XWindowAttributes attrs;
   MetaWindow *window;
@@ -221,7 +237,7 @@ meta_window_new (MetaDisplay *display,
       return NULL;
     }
   window = meta_window_new_with_attrs (display, xwindow,
-                                       must_be_viewable, &attrs);
+                                       must_be_viewable, &attrs, dev);
 
 
   meta_error_trap_pop (display, FALSE);
@@ -234,7 +250,8 @@ MetaWindow*
 meta_window_new_with_attrs (MetaDisplay       *display,
                             Window             xwindow,
                             gboolean           must_be_viewable,
-                            XWindowAttributes *attrs)
+                            XWindowAttributes *attrs,
+			    MetaDevInfo       *dev)
 {
   MetaWindow *window;
   GSList *tmp;
@@ -244,7 +261,7 @@ meta_window_new_with_attrs (MetaDisplay       *display,
   MetaMoveResizeFlags flags;
 #define N_INITIAL_PROPS 18
   Atom initial_props[N_INITIAL_PROPS];
-  int i;
+  int i, idev;
   gboolean has_shape;
 
   g_assert (attrs != NULL);
@@ -585,6 +602,10 @@ meta_window_new_with_attrs (MetaDisplay       *display,
   initial_props[i++] = XA_WM_TRANSIENT_FOR;
   initial_props[i++] = display->atom_net_wm_user_time_window;
   g_assert (N_INITIAL_PROPS == i);
+
+  window->focused_devices = g_new (MetaDevInfo*, DEFAULT_INPUT_ARRAY_SIZE);
+  window->focused_devices_used = 0;
+  window->focused_devices_size = DEFAULT_INPUT_ARRAY_SIZE;
   
   meta_window_reload_properties (window, initial_props, N_INITIAL_PROPS);
   
@@ -621,9 +642,18 @@ meta_window_new_with_attrs (MetaDisplay       *display,
   if (window->decorated)
     meta_window_ensure_frame (window);
 
-  meta_window_grab_keys (window);
-  meta_display_grab_window_buttons (window->display, window->xwindow);
-  meta_display_grab_focus_window_button (window->display, window);
+  for (idev = 0; idev < display->devices->keybsUsed; idev++)
+    {
+      meta_window_grab_keys (window, &display->devices->keyboards[idev]);
+    }
+
+  for (idev = 0; idev < display->devices->miceUsed; idev++)
+    {
+      meta_display_grab_window_buttons (window->display, window->xwindow,
+      				        &display->devices->mice[idev]);
+      meta_display_grab_focus_window_button (window->display, window,
+      					     &display->devices->mice[idev]);
+    }
 
   if (window->type == META_WINDOW_DESKTOP ||
       window->type == META_WINDOW_DOCK)
@@ -727,6 +757,7 @@ meta_window_new_with_attrs (MetaDisplay       *display,
   flags =
     META_IS_CONFIGURE_REQUEST | META_IS_MOVE_ACTION | META_IS_RESIZE_ACTION;
   meta_window_move_resize_internal (window,
+  				    dev,
                                     flags,
                                     window->size_hints.win_gravity,
                                     window->size_hints.x,
@@ -742,7 +773,7 @@ meta_window_new_with_attrs (MetaDisplay       *display,
 
     if (info)
       {
-        meta_window_apply_session_info (window, info);
+        meta_window_apply_session_info (window, info, dev);
         meta_window_release_saved_state (info);
       }
   }
@@ -787,7 +818,8 @@ meta_window_new_with_attrs (MetaDisplay       *display,
 /* This function should only be called from the end of meta_window_new_with_attrs () */
 static void
 meta_window_apply_session_info (MetaWindow *window,
-                                const MetaWindowSessionInfo *info)
+                                const MetaWindowSessionInfo *info,
+				MetaDevInfo *dev)
 {
   if (info->stack_position_set)
     {
@@ -816,7 +848,7 @@ meta_window_apply_session_info (MetaWindow *window,
       
       if (window->has_maximize_func && info->maximized)
         {
-          meta_window_maximize (window, 
+          meta_window_maximize (window, dev,
                                 META_MAXIMIZE_HORIZONTAL |
                                 META_MAXIMIZE_VERTICAL);
 
@@ -917,6 +949,7 @@ meta_window_apply_session_info (MetaWindow *window,
       
       flags = META_DO_GRAVITY_ADJUST | META_IS_MOVE_ACTION | META_IS_RESIZE_ACTION;
       meta_window_move_resize_internal (window,
+      					dev,
                                         flags,
                                         window->size_hints.win_gravity,
                                         x, y, w, h);
@@ -928,6 +961,7 @@ meta_window_free (MetaWindow  *window,
                   guint32      timestamp)
 {
   GList *tmp;
+  int idev;
   
   meta_verbose ("Unmanaging 0x%lx\n", window->xwindow);
 
@@ -978,19 +1012,24 @@ meta_window_free (MetaWindow  *window,
       meta_topic (META_DEBUG_FOCUS,
                   "Focusing default window since we're unmanaging %s\n",
                   window->desc);
-      meta_workspace_focus_default_window (window->screen->active_workspace,
-                                           window,
-                                           timestamp);
+      for (idev = 0; idev < window->focused_devices_used; idev++)
+        meta_workspace_focus_default_window (window->screen->active_workspace,
+	                                     window->focused_devices[idev],
+                                             window,
+                                             timestamp);
     }
   else if (window->display->expected_focus_window == window)
     {
+      /* XXX Read display.h:206 */
       meta_topic (META_DEBUG_FOCUS,
                   "Focusing default window since expected focus window freed %s\n",
                   window->desc);
       window->display->expected_focus_window = NULL;
-      meta_workspace_focus_default_window (window->screen->active_workspace,
-                                           window,
-                                           timestamp);
+      for (idev = 0; idev < window->display->devices->keybsUsed; idev++)
+        meta_workspace_focus_default_window (window->screen->active_workspace,
+	                             &window->display->devices->keyboards[idev],
+                                             window,
+                                             timestamp);
     }
   else
     {
@@ -1011,7 +1050,7 @@ meta_window_free (MetaWindow  *window,
     }
   
   if (window->display->grab_window == window)
-    meta_display_end_grab_op (window->display, timestamp);
+    meta_display_end_grab_op (window->display, NULL, timestamp);
 
   g_assert (window->display->grab_window != window);
   
@@ -1092,10 +1131,15 @@ meta_window_free (MetaWindow  *window,
       meta_error_trap_pop (window->display, FALSE);
     }
 
-  meta_window_ungrab_keys (window);
-  meta_display_ungrab_window_buttons (window->display, window->xwindow);
-  meta_display_ungrab_focus_window_button (window->display, window);
-  
+  for (idev = 0; idev < window->display->devices->keybsUsed; idev++)
+    {
+      meta_window_ungrab_keys (window,
+    			       &window->display->devices->keyboards[idev]);
+      meta_display_ungrab_window_buttons (window->display, window->xwindow,
+      				    &window->display->devices->keyboards[idev]);
+      meta_display_ungrab_focus_window_button (window->display, window,
+      				    &window->display->devices->keyboards[idev]);
+    }
   meta_display_unregister_x_window (window->display, window->xwindow);
   
 
@@ -1372,6 +1416,8 @@ static void
 finish_minimize (const MetaEffect *effect,
 		 gpointer	   data)
 {
+  int idev;
+
   MetaWindow *window = data;
   /* FIXME: It really sucks to put timestamp pinging here; it'd
    * probably make more sense in implement_showing() so that it's at
@@ -1384,9 +1430,11 @@ finish_minimize (const MetaEffect *effect,
   meta_window_hide (window);
   if (window->has_focus)
     {
-      meta_workspace_focus_default_window (window->screen->active_workspace,
-                                           window, 
-                                           timestamp);
+      for (idev = 0; idev < window->focused_devices_used; idev++)
+        meta_workspace_focus_default_window (window->screen->active_workspace,
+      					     window->focused_devices[idev],
+                                             window, 
+                                             timestamp);
     }
 }
 
@@ -2006,8 +2054,10 @@ meta_window_show (MetaWindow *window)
                       "window %s which isn't being focused.  Unfocusing the "
                       "ancestor.\n",
                       focus_window->desc, window->desc);
-
+          /* XXX we should make the keyboard that triggered the event (or paired
+	   * with the pointer that triggered the event) recive the focus!!! */
           meta_display_focus_the_no_focus_window (window->display,
+	  			   /* XXX */ &window->display->devices->mice[0],
                                                   window->screen,
                                                   timestamp);
         }
@@ -2030,7 +2080,8 @@ meta_window_show (MetaWindow *window)
        * show the window.
        */
       window->calc_placement = TRUE;
-      meta_window_move_resize_now (window);
+      meta_window_move_resize_now (window, 
+      			 /* XXX */ &window->display->devices->keyboards[0]);
       window->calc_placement = FALSE;
 
       /* don't ever do the initial position constraint thing again.
@@ -2179,7 +2230,9 @@ meta_window_show (MetaWindow *window)
       window->showing_for_first_time = FALSE;
       if (takes_focus_on_map)
         {                
-          meta_window_focus (window, timestamp);
+          /* XXX we should make the keyboard that triggered the event (or paired
+	   * with the pointer that triggered the event) recive the focus!!! */
+          meta_window_focus (window, &window->display->devices->mice[0], timestamp); /* XXX XXX XXX XXX */
         }
       else
         {
@@ -2403,6 +2456,7 @@ meta_window_maximize_internal (MetaWindow        *window,
 
 void
 meta_window_maximize (MetaWindow        *window,
+		      MetaDevInfo 	*dev,
                       MetaMaximizeFlags  directions)
 {
   /* At least one of the two directions ought to be set */
@@ -2424,7 +2478,7 @@ meta_window_maximize (MetaWindow        *window,
            */
           guint32 timestamp = 
             meta_display_get_current_time_roundtrip (window->display);
-          meta_window_unshade (window, timestamp);
+          meta_window_unshade (window, dev, timestamp);
         }
       
       /* if the window hasn't been placed yet, we'll maximize it then
@@ -2474,6 +2528,7 @@ unmaximize_window_before_freeing (MetaWindow        *window)
        * therefore move_resize the window to saved_rect here
        * before closing it. */
       meta_window_move_resize (window,
+                     /* XXX */ &window->display->devices->keyboards[0],
                                FALSE,
                                window->saved_rect.x,
                                window->saved_rect.y,
@@ -2484,6 +2539,7 @@ unmaximize_window_before_freeing (MetaWindow        *window)
 
 void
 meta_window_unmaximize (MetaWindow        *window,
+			MetaDevInfo       *dev,
                         MetaMaximizeFlags  directions)
 {
   /* At least one of the two directions ought to be set */
@@ -2544,6 +2600,7 @@ meta_window_unmaximize (MetaWindow        *window,
         }
 
       meta_window_move_resize (window,
+      			       dev,
                                FALSE,
                                target_rect.x,
                                target_rect.y,
@@ -2579,7 +2636,7 @@ meta_window_unmake_above (MetaWindow  *window)
 }
 
 void
-meta_window_make_fullscreen_internal (MetaWindow  *window)
+meta_window_make_fullscreen_internal (MetaWindow  *window, MetaDevInfo *dev)
 {
   if (!window->fullscreen)
     {
@@ -2593,7 +2650,7 @@ meta_window_make_fullscreen_internal (MetaWindow  *window)
            */
           guint32 timestamp = 
             meta_display_get_current_time_roundtrip (window->display);
-          meta_window_unshade (window, timestamp);
+          meta_window_unshade (window, dev, timestamp);
         }
 
       meta_window_save_rect (window);
@@ -2612,11 +2669,12 @@ meta_window_make_fullscreen_internal (MetaWindow  *window)
 }
 
 void
-meta_window_make_fullscreen (MetaWindow  *window)
+meta_window_make_fullscreen (MetaWindow  *window,
+			     MetaDevInfo *dev)
 {
   if (!window->fullscreen)
     {
-      meta_window_make_fullscreen_internal (window);
+      meta_window_make_fullscreen_internal (window, dev);
       /* move_resize with new constraints
        */
       meta_window_queue(window, META_QUEUE_MOVE_RESIZE);
@@ -2624,7 +2682,8 @@ meta_window_make_fullscreen (MetaWindow  *window)
 }
 
 void
-meta_window_unmake_fullscreen (MetaWindow  *window)
+meta_window_unmake_fullscreen (MetaWindow  *window,
+			       MetaDevInfo *dev)
 {
   if (window->fullscreen)
     {
@@ -2642,6 +2701,7 @@ meta_window_unmake_fullscreen (MetaWindow  *window)
       ensure_size_hints_satisfied (&target_rect, &window->size_hints);
 
       meta_window_move_resize (window,
+      			       dev,
                                FALSE,
                                target_rect.x,
                                target_rect.y,
@@ -2657,6 +2717,7 @@ meta_window_unmake_fullscreen (MetaWindow  *window)
 
 void
 meta_window_shade (MetaWindow  *window,
+		   MetaDevInfo *dev,
                    guint32      timestamp)
 {
   meta_topic (META_DEBUG_WINDOW_OPS,
@@ -2697,7 +2758,7 @@ meta_window_shade (MetaWindow  *window,
       meta_topic (META_DEBUG_FOCUS,
                   "Re-focusing window %s after shading it\n",
                   window->desc);
-      meta_window_focus (window, timestamp);
+      meta_window_focus (window, dev, timestamp);
       
       set_net_wm_state (window);
     }
@@ -2705,6 +2766,7 @@ meta_window_shade (MetaWindow  *window,
 
 void
 meta_window_unshade (MetaWindow  *window,
+		     MetaDevInfo *dev,
                      guint32      timestamp)
 {
   meta_topic (META_DEBUG_WINDOW_OPS,
@@ -2718,7 +2780,7 @@ meta_window_unshade (MetaWindow  *window,
       meta_topic (META_DEBUG_FOCUS,
                   "Focusing window %s after unshading it\n",
                   window->desc);
-      meta_window_focus (window, timestamp);
+      meta_window_focus (window, dev, timestamp);
 
       set_net_wm_state (window);
     }
@@ -2743,7 +2805,8 @@ static void
 window_activate (MetaWindow     *window,
                  guint32         timestamp,
                  MetaClientType  source_indication,
-                 MetaWorkspace  *workspace)
+                 MetaWorkspace  *workspace,
+		 MetaDevInfo    *dev)
 {
   gboolean can_ignore_outdated_timestamps;
   meta_topic (META_DEBUG_FOCUS,
@@ -2791,7 +2854,7 @@ window_activate (MetaWindow     *window,
     meta_window_change_workspace (window, workspace);
   
   if (window->shaded)
-    meta_window_unshade (window, timestamp);
+    meta_window_unshade (window, dev, timestamp);
 
   unminimize_window_and_all_transient_parents (window);
 
@@ -2802,7 +2865,7 @@ window_activate (MetaWindow     *window,
   meta_topic (META_DEBUG_FOCUS,
               "Focusing window %s due to activation\n",
               window->desc);
-  meta_window_focus (window, timestamp);
+  meta_window_focus (window, dev, timestamp);
 }
 
 /* This function exists since most of the functionality in window_activate
@@ -2811,17 +2874,19 @@ window_activate (MetaWindow     *window,
  */
 void
 meta_window_activate (MetaWindow     *window,
+		      MetaDevInfo    *dev,
                       guint32         timestamp)
 {
   /* We're not really a pager, but the behavior we want is the same as if
    * we were such.  If we change the pager behavior later, we could revisit
    * this and just add extra flags to window_activate.
    */
-  window_activate (window, timestamp, META_CLIENT_TYPE_PAGER, NULL);
+  window_activate (window, timestamp, META_CLIENT_TYPE_PAGER, NULL, dev);
 }
 
 void
 meta_window_activate_with_workspace (MetaWindow     *window,
+				     MetaDevInfo    *dev,
                                      guint32         timestamp,
                                      MetaWorkspace  *workspace)
 {
@@ -2829,7 +2894,7 @@ meta_window_activate_with_workspace (MetaWindow     *window,
    * we were such.  If we change the pager behavior later, we could revisit
    * this and just add extra flags to window_activate.
    */
-  window_activate (window, timestamp, META_CLIENT_TYPE_APPLICATION, workspace);
+  window_activate (window, timestamp, META_CLIENT_TYPE_APPLICATION, workspace, dev);
 }
 
 /* Manually fix all the weirdness explained in the big comment at the
@@ -3010,6 +3075,7 @@ send_sync_request (MetaWindow *window)
 
 static void
 meta_window_move_resize_internal (MetaWindow          *window,
+				  MetaDevInfo         *dev,
                                   MetaMoveResizeFlags  flags,
                                   int                  gravity,
                                   int                  root_x_nw,
@@ -3142,7 +3208,8 @@ meta_window_move_resize_internal (MetaWindow          *window,
                          flags,
                          gravity,
                          &old_rect,
-                         &new_rect);
+                         &new_rect,
+			 dev);
 
   w = new_rect.width;
   h = new_rect.height;
@@ -3468,6 +3535,7 @@ meta_window_move_resize_internal (MetaWindow          *window,
 
 void
 meta_window_resize (MetaWindow  *window,
+		    MetaDevInfo *dev,
                     gboolean     user_op,
                     int          w,
                     int          h)
@@ -3479,6 +3547,7 @@ meta_window_resize (MetaWindow  *window,
   
   flags = (user_op ? META_IS_USER_ACTION : 0) | META_IS_RESIZE_ACTION;
   meta_window_move_resize_internal (window,
+  				    dev,
                                     flags,
                                     NorthWestGravity,
                                     x, y, w, h);
@@ -3486,6 +3555,7 @@ meta_window_resize (MetaWindow  *window,
 
 void
 meta_window_move (MetaWindow  *window,
+		  MetaDevInfo *dev,
                   gboolean     user_op,
                   int          root_x_nw,
                   int          root_y_nw)
@@ -3493,6 +3563,7 @@ meta_window_move (MetaWindow  *window,
   MetaMoveResizeFlags flags = 
     (user_op ? META_IS_USER_ACTION : 0) | META_IS_MOVE_ACTION;
   meta_window_move_resize_internal (window,
+  				    dev,
                                     flags,
                                     NorthWestGravity,
                                     root_x_nw, root_y_nw,
@@ -3502,6 +3573,7 @@ meta_window_move (MetaWindow  *window,
 
 void
 meta_window_move_resize (MetaWindow  *window,
+			 MetaDevInfo *dev,
                          gboolean     user_op,
                          int          root_x_nw,
                          int          root_y_nw,
@@ -3512,6 +3584,7 @@ meta_window_move_resize (MetaWindow  *window,
     (user_op ? META_IS_USER_ACTION : 0) | 
     META_IS_MOVE_ACTION | META_IS_RESIZE_ACTION;
   meta_window_move_resize_internal (window,
+  				    dev,
                                     flags,
                                     NorthWestGravity,
                                     root_x_nw, root_y_nw,
@@ -3519,7 +3592,8 @@ meta_window_move_resize (MetaWindow  *window,
 }
 
 void
-meta_window_resize_with_gravity (MetaWindow *window,
+meta_window_resize_with_gravity (MetaWindow  *window,
+				 MetaDevInfo *dev,
                                  gboolean     user_op,
                                  int          w,
                                  int          h,
@@ -3532,19 +3606,21 @@ meta_window_resize_with_gravity (MetaWindow *window,
   
   flags = (user_op ? META_IS_USER_ACTION : 0) | META_IS_RESIZE_ACTION;
   meta_window_move_resize_internal (window,
+  				    dev,
                                     flags,
                                     gravity,
                                     x, y, w, h);
 }
 
 static void
-meta_window_move_resize_now (MetaWindow  *window)
+meta_window_move_resize_now (MetaWindow  *window,
+			     MetaDevInfo *dev)
 {
   /* If constraints have changed then we want to snap back to wherever
    * the user had the window.  We use user_rect for this reason.  See
    * also bug 426519 comment 3.
    */
-  meta_window_move_resize (window, FALSE,
+  meta_window_move_resize (window, dev, FALSE,
                            window->user_rect.x,
                            window->user_rect.y,
                            window->user_rect.width,
@@ -3579,7 +3655,8 @@ idle_move_resize (gpointer data)
       window = tmp->data;
 
       /* As a side effect, sets window->move_resize_queued = FALSE */
-      meta_window_move_resize_now (window); 
+      meta_window_move_resize_now (window,
+      			 /* XXX */ &window->display->devices->keyboards[0]); 
       
       tmp = tmp->next;
     }
@@ -3904,6 +3981,7 @@ get_modal_transient (MetaWindow *window)
 /* XXX META_EFFECT_FOCUS */
 void
 meta_window_focus (MetaWindow  *window,
+		   MetaDevInfo *dev,
                    guint32      timestamp)
 {  
   MetaWindow *modal_transient;
@@ -3960,6 +4038,7 @@ meta_window_focus (MetaWindow  *window,
           meta_topic (META_DEBUG_FOCUS,
                       "Focusing frame of %s\n", window->desc);
           meta_display_set_input_focus_window (window->display,
+	  				       dev,
                                                window,
                                                TRUE,
                                                timestamp);
@@ -3973,6 +4052,7 @@ meta_window_focus (MetaWindow  *window,
                       "Setting input focus on %s since input = true\n",
                       window->desc);
           meta_display_set_input_focus_window (window->display,
+	  				       dev,
                                                window,
                                                FALSE,
                                                timestamp);
@@ -4319,13 +4399,14 @@ meta_window_send_icccm_message (MetaWindow *window,
 }
 
 void
-meta_window_move_resize_request (MetaWindow *window,
-                                 guint       value_mask,
-                                 int         gravity,
-                                 int         new_x,
-                                 int         new_y,
-                                 int         new_width,
-                                 int         new_height)
+meta_window_move_resize_request (MetaWindow  *window,
+				 MetaDevInfo *dev,
+                                 guint        value_mask,
+                                 int          gravity,
+                                 int          new_x,
+                                 int          new_y,
+                                 int          new_width,
+                                 int          new_height)
 {
   int x, y, width, height;
   gboolean allow_position_change;
@@ -4462,7 +4543,8 @@ meta_window_move_resize_request (MetaWindow *window,
     flags |= META_IS_RESIZE_ACTION;
 
   if (flags & (META_IS_MOVE_ACTION | META_IS_RESIZE_ACTION))
-    meta_window_move_resize_internal (window, 
+    meta_window_move_resize_internal (window,
+    				      dev,
                                       flags,
                                       gravity,
                                       x,
@@ -4497,6 +4579,7 @@ meta_window_configure_request (MetaWindow *window,
     window->border_width = event->xconfigurerequest.border_width;
 
   meta_window_move_resize_request(window,
+  			/* XXX */ &window->display->devices->keyboards[0],
                                   event->xconfigurerequest.value_mask,
                                   window->size_hints.win_gravity,
                                   event->xconfigurerequest.x,
@@ -4698,10 +4781,17 @@ meta_window_client_message (MetaWindow *window,
 
           shade = (action == _NET_WM_STATE_ADD ||
                    (action == _NET_WM_STATE_TOGGLE && !window->shaded));
+	  /* Stupid protocol has no device indication; of course,
+	   * shading sucks anyway so who really cares that we're forced
+	   * to guess which device is it? */
           if (shade && window->has_shade_func)
-            meta_window_shade (window, timestamp);
+            meta_window_shade (window, 
+	    		       &window->display->devices->keyboards[0],
+			       timestamp);
           else
-            meta_window_unshade (window, timestamp);
+            meta_window_unshade (window, 
+	    			 &window->display->devices->keyboards[0],
+				 timestamp);
         }
 
       if (first == display->atom_net_wm_state_fullscreen ||
@@ -4712,9 +4802,11 @@ meta_window_client_message (MetaWindow *window,
           make_fullscreen = (action == _NET_WM_STATE_ADD ||
                              (action == _NET_WM_STATE_TOGGLE && !window->fullscreen));
           if (make_fullscreen && window->has_fullscreen_func)
-            meta_window_make_fullscreen (window);
+            meta_window_make_fullscreen (window,
+	    			       &window->display->devices->keyboards[0]);
           else
-            meta_window_unmake_fullscreen (window);
+            meta_window_unmake_fullscreen (window,
+	    			       &window->display->devices->keyboards[0]);
         }
       
       if (first == display->atom_net_wm_state_maximized_horz ||
@@ -4729,13 +4821,17 @@ meta_window_client_message (MetaWindow *window,
             {
               if (meta_prefs_get_raise_on_click ())
                 meta_window_raise (window);
-              meta_window_maximize (window, META_MAXIMIZE_HORIZONTAL);
+              meta_window_maximize (window, 
+	    			    &window->display->devices->keyboards[0],
+	      			    META_MAXIMIZE_HORIZONTAL);
             }
           else
             {
               if (meta_prefs_get_raise_on_click ())
                 meta_window_raise (window);
-              meta_window_unmaximize (window, META_MAXIMIZE_HORIZONTAL);
+              meta_window_unmaximize (window, 
+	    			      &window->display->devices->keyboards[0],
+	      			      META_MAXIMIZE_HORIZONTAL);
             }
         }
 
@@ -4751,13 +4847,17 @@ meta_window_client_message (MetaWindow *window,
             {
               if (meta_prefs_get_raise_on_click ())
                 meta_window_raise (window);
-              meta_window_maximize (window, META_MAXIMIZE_VERTICAL);
+              meta_window_maximize (window, 
+	       			    &window->display->devices->keyboards[0],
+	                            META_MAXIMIZE_VERTICAL);
             }
           else
             {
               if (meta_prefs_get_raise_on_click ())
                 meta_window_raise (window);
-              meta_window_unmaximize (window, META_MAXIMIZE_VERTICAL);
+              meta_window_unmaximize (window, 
+	    			      &window->display->devices->keyboards[0],
+	      			      META_MAXIMIZE_VERTICAL);
             }
         }
 
@@ -4915,7 +5015,8 @@ meta_window_client_message (MetaWindow *window,
           ((window->has_move_func && op == META_GRAB_OP_KEYBOARD_MOVING) ||
            (window->has_resize_func && op == META_GRAB_OP_KEYBOARD_RESIZING_UNKNOWN)))
         {
-          meta_window_begin_grab_op (window, op, frame_action, timestamp);
+	  /* XXX XXX XXX XXX */
+          meta_window_begin_grab_op (window, NULL, op, frame_action, timestamp);
         }
       else if (op != META_GRAB_OP_NONE &&
                ((window->has_move_func && op == META_GRAB_OP_MOVING) ||
@@ -4931,18 +5032,31 @@ meta_window_client_message (MetaWindow *window,
               int x, y, query_root_x, query_root_y;
               Window root, child;
               guint mask;
+	      Bool shared;
 
               /* The race conditions in this _NET_WM_MOVERESIZE thing
                * are mind-boggling
                */
               mask = 0;
               meta_error_trap_push (window->display);
+
+              XQueryDevicePointer (window->display->xdisplay,
+	      		 /* XXX */ window->display->devices->mice[0].xdev,
+                                   window->xwindow,
+                                   &root, &child,
+                                   &query_root_x, &query_root_y,
+                                   &x, &y,
+                                   &mask, &shared);
+      
+#if 0
+#warning XQueryPointer here!
               XQueryPointer (window->display->xdisplay,
                              window->xwindow,
                              &root, &child,
                              &query_root_x, &query_root_y,
                              &x, &y,
                              &mask);
+#endif
               meta_error_trap_pop (window->display, TRUE);
 
               if (mask & Button1Mask)
@@ -4961,6 +5075,7 @@ meta_window_client_message (MetaWindow *window,
                           "Beginning move/resize with button = %d\n", button);
               meta_display_begin_grab_op (window->display,
                                           window->screen,
+			      /* XXX */  &window->display->devices->mice[0],
                                           window,
                                           op,
                                           FALSE,
@@ -4988,6 +5103,7 @@ meta_window_client_message (MetaWindow *window,
         gravity = window->size_hints.win_gravity;
 
       meta_window_move_resize_request(window,
+      				      &window->display->devices->keyboards[0],
                                       value_mask,
                                       gravity,
                                       event->xclient.data.l[1],  // x
@@ -5019,7 +5135,8 @@ meta_window_client_message (MetaWindow *window,
           timestamp = meta_display_get_current_time (display);
         }
 
-      window_activate (window, timestamp, source_indication, NULL);
+      window_activate (window, timestamp, source_indication, NULL,
+      		       &window->display->devices->keyboards[0]); /* XXX */
       return TRUE;
     }
   
@@ -5030,6 +5147,8 @@ gboolean
 meta_window_notify_focus (MetaWindow *window,
                           XEvent     *event)
 {
+
+  meta_warning("METAWINDOWNOTIFYFOCUSMETAWINDOWNOTIFYFOCUSMETAWINDOWNOTIFY\n");
   /* note the event can be on either the window or the frame,
    * we focus the frame for shaded windows
    */
@@ -5044,27 +5163,39 @@ meta_window_notify_focus (MetaWindow *window,
    * the focus window tracking.
    *
    * The problem is that keybindings for windows are done with
-   * XGrabKey, which means focus_window disappears and the front of
+   * XGrabDeviceKey, which means focus_window disappears and the front of
    * the MRU list gets confused from what the user expects once a
    * keybinding is used.
-   */  
+   */
+/* XXX This function can receive UnmapNotify, DeviceFocusIn or DeviceFocusOut!
+ * Remove all its "xany" !!! */
+  XDeviceFocusChangeEvent *xdfce;
+  MetaDevInfo *dev;
+
+  if (event->type != UnmapNotify)
+    {
+      xdfce = (XDeviceFocusChangeEvent *)event;
+      dev = meta_devices_find_keyboard_by_id(window->display, xdfce->deviceid);
+    }
+#ifndef MPX /* uber XXX */
   meta_topic (META_DEBUG_FOCUS,
               "Focus %s event received on %s 0x%lx (%s) "
               "mode %s detail %s\n",
-              event->type == FocusIn ? "in" :
-              event->type == FocusOut ? "out" :
+              event->type == window->display->dev_focus_in_type ? "in" :
+              event->type == window->display->dev_focus_out_type ? "out" :
               event->type == UnmapNotify ? "unmap" :
               "???",
-              window->desc, event->xany.window,
-              event->xany.window == window->xwindow ?
+              window->desc, xdfce->window,
+              xdfce->window == window->xwindow ?
               "client window" :
-              (window->frame && event->xany.window == window->frame->xwindow) ?
+              (window->frame && xdfce->window == window->frame->xwindow) ?
               "frame window" :
               "unknown window",
               event->type != UnmapNotify ?
-              meta_event_mode_to_string (event->xfocus.mode) : "n/a",
+              meta_event_mode_to_string (xdfce->mode) : "n/a",
               event->type != UnmapNotify ?
-              meta_event_detail_to_string (event->xfocus.detail) : "n/a");
+              meta_event_detail_to_string (xdfce->detail) : "n/a");
+#endif
 
   /* FIXME our pointer tracking is broken; see how
    * gtk+/gdk/x11/gdkevents-x11.c or XFree86/xc/programs/xterm/misc.c
@@ -5084,27 +5215,28 @@ meta_window_notify_focus (MetaWindow *window,
    *
    * http://bugzilla.gnome.org/show_bug.cgi?id=90382
    */
-  
-  if ((event->type == FocusIn ||
-       event->type == FocusOut) &&
-      (event->xfocus.mode == NotifyGrab ||
-       event->xfocus.mode == NotifyUngrab ||
+  if ((event->type == window->display->dev_focus_in_type ||
+       event->type == window->display->dev_focus_out_type) &&
+      (xdfce->mode == NotifyGrab ||
+       xdfce->mode == NotifyUngrab ||
        /* From WindowMaker, ignore all funky pointer root events */
-       event->xfocus.detail > NotifyNonlinearVirtual))
+       xdfce->detail > NotifyNonlinearVirtual))
     {
       meta_topic (META_DEBUG_FOCUS,
                   "Ignoring focus event generated by a grab or other weirdness\n");
       return TRUE;
     }
-    
-  if (event->type == FocusIn)
+
+  if (event->type == window->display->dev_focus_in_type)
     {
-      if (window != window->display->focus_window)
+//      if (window != window->display->focus_window)
+      if (! meta_window_focused_by_dev(window, dev))
         {
           meta_topic (META_DEBUG_FOCUS,
                       "* Focus --> %s\n", window->desc);
-          window->display->focus_window = window;
-          window->has_focus = TRUE;
+          window->display->focus_window = window; /* XXX devices.h:195 */
+//          window->has_focus = TRUE;
+	  meta_window_add_focused_device (window, dev);
 
           /* Move to the front of the focusing workspace's MRU list.
            * We should only be "removing" it from the MRU list if it's
@@ -5149,14 +5281,17 @@ meta_window_notify_focus (MetaWindow *window,
            * causing the client to get funky enter/leave events.
            */
           if (meta_prefs_get_focus_mode () == META_FOCUS_MODE_CLICK)
-            meta_display_ungrab_focus_window_button (window->display, window);
+            meta_display_ungrab_focus_window_button (window->display,
+	    					     window,
+			         meta_devices_find_paired_mouse(window->display,
+			                                 dev->xdev->device_id));
         }
     }
-  else if (event->type == FocusOut ||
+  else if (event->type == window->display->dev_focus_out_type ||
            event->type == UnmapNotify)
     {
-      if (event->type == FocusOut &&
-          event->xfocus.detail == NotifyInferior)
+      if (event->type == window->display->dev_focus_out_type &&
+          xdfce->detail == NotifyInferior)
         {
           /* This event means the client moved focus to a subwindow */
           meta_topic (META_DEBUG_FOCUS,
@@ -5165,7 +5300,8 @@ meta_window_notify_focus (MetaWindow *window,
           return TRUE;
         }
       
-      if (window == window->display->focus_window)
+//      if (window == window->display->focus_window) /* XXX */
+      if (meta_window_focused_by_dev(window, dev))
         {
           meta_topic (META_DEBUG_FOCUS,
                       "%s is now the previous focus window due to being focused out or unmapped\n",
@@ -5174,8 +5310,9 @@ meta_window_notify_focus (MetaWindow *window,
           meta_topic (META_DEBUG_FOCUS,
                       "* Focus --> NULL (was %s)\n", window->desc);
           
-          window->display->focus_window = NULL;
-          window->has_focus = FALSE;
+          window->display->focus_window = NULL; /* XXX */
+//          window->has_focus = FALSE;
+	  meta_window_remove_focused_device (window, dev);
           if (window->frame)
             meta_frame_queue_draw (window->frame);
 
@@ -5189,7 +5326,10 @@ meta_window_notify_focus (MetaWindow *window,
 
           /* Re-grab for click to focus, if necessary */
           if (meta_prefs_get_focus_mode () == META_FOCUS_MODE_CLICK)
-            meta_display_grab_focus_window_button (window->display, window);
+            meta_display_grab_focus_window_button (window->display,
+	    					   window, 
+		                 meta_devices_find_paired_mouse(window->display,
+		                                         dev->xdev->device_id));
        }
     }
 
@@ -5984,7 +6124,10 @@ recalc_window_type (MetaWindow *window)
       /* update stacking constraints */
       meta_window_update_layer (window);
 
-      meta_window_grab_keys (window);
+      int idev;
+      for (idev = 0; idev < window->display->devices->keybsUsed; idev++)
+        meta_window_grab_keys (window,
+			       &window->display->devices->keyboards[idev]);
     }
 }
 
@@ -6337,7 +6480,7 @@ menu_callback (MetaWindowMenu *menu,
                guint32         timestamp,
                MetaMenuOp      op,
                int             workspace_index,
-	       MetaDevInfo    *device,
+	       MetaDevInfo    *device, /* change to 'dev' ? */
                gpointer        data)
 
 #else
@@ -6376,22 +6519,24 @@ menu_callback (MetaWindowMenu *menu,
 
         case META_MENU_OP_UNMAXIMIZE:
           meta_window_unmaximize (window,
+	  			  device,
                                   META_MAXIMIZE_HORIZONTAL |
                                   META_MAXIMIZE_VERTICAL);
           break;
       
         case META_MENU_OP_MAXIMIZE:
           meta_window_maximize (window,
+	  			device,
                                 META_MAXIMIZE_HORIZONTAL |
                                 META_MAXIMIZE_VERTICAL);
           break;
 
         case META_MENU_OP_UNSHADE:
-          meta_window_unshade (window, timestamp);
+          meta_window_unshade (window, device, timestamp);
           break;
       
         case META_MENU_OP_SHADE:
-          meta_window_shade (window, timestamp);
+          meta_window_shade (window, device, timestamp);
           break;
       
         case META_MENU_OP_MOVE_LEFT:
@@ -6437,6 +6582,7 @@ menu_callback (MetaWindowMenu *menu,
 
         case META_MENU_OP_MOVE:
           meta_window_begin_grab_op (window,
+				     device,
                                      META_GRAB_OP_KEYBOARD_MOVING,
                                      TRUE,
                                      timestamp);
@@ -6444,13 +6590,14 @@ menu_callback (MetaWindowMenu *menu,
 
         case META_MENU_OP_RESIZE:
           meta_window_begin_grab_op (window,
+	  			     device,
                                      META_GRAB_OP_KEYBOARD_RESIZING_UNKNOWN,
                                      TRUE,
                                      timestamp);
           break;
 
         case META_MENU_OP_RECOVER:
-          meta_window_shove_titlebar_onscreen (window);
+          meta_window_shove_titlebar_onscreen (window, device);
           break;
 
 #ifdef MPX
@@ -6613,7 +6760,7 @@ meta_window_show_menu (MetaWindow *window,
                              window->xwindow,
                              ops,
                              insensitive,
-			     &window->display->devices,
+			     window->display->devices,
                              meta_window_get_net_wm_desktop (window),
                              meta_screen_get_n_workspaces (window->screen),
                              menu_callback,
@@ -6639,7 +6786,8 @@ meta_window_show_menu (MetaWindow *window,
 }
 
 void
-meta_window_shove_titlebar_onscreen (MetaWindow *window)
+meta_window_shove_titlebar_onscreen (MetaWindow *window,
+				     MetaDevInfo *dev)
 {
   MetaRectangle  outer_rect;
   GList         *onscreen_region;
@@ -6677,6 +6825,7 @@ meta_window_shove_titlebar_onscreen (MetaWindow *window)
   newx = outer_rect.x + window->frame->child_x;
   newy = outer_rect.y + window->frame->child_y;
   meta_window_move_resize (window,
+  			   dev,
                            FALSE,
                            newx,
                            newy,
@@ -6826,6 +6975,7 @@ update_move_timeout (gpointer data)
   MetaWindow *window = data;
 
   update_move (window, 
+     /* XXX */ &window->display->devices->keyboards[0],
                window->display->grab_last_user_action_was_snap,
                window->display->grab_latest_motion_x,
                window->display->grab_latest_motion_y);
@@ -6835,6 +6985,7 @@ update_move_timeout (gpointer data)
 
 static void
 update_move (MetaWindow  *window,
+	     MetaDevInfo *dev,
              gboolean     snap,
              int          x,
              int          y)
@@ -6903,7 +7054,7 @@ update_move (MetaWindow  *window,
       display->grab_anchor_root_x = x;
       display->grab_anchor_root_y = y;
 
-      meta_window_unmaximize (window,
+      meta_window_unmaximize (window, dev,
                               META_MAXIMIZE_HORIZONTAL |
                               META_MAXIMIZE_VERTICAL);
 
@@ -6947,7 +7098,7 @@ update_move (MetaWindow  *window,
                   window->user_rect.x = window->saved_rect.x;
                   window->user_rect.y = window->saved_rect.y;
 
-                  meta_window_unmaximize (window,
+                  meta_window_unmaximize (window, dev,
                                           META_MAXIMIZE_HORIZONTAL |
                                           META_MAXIMIZE_VERTICAL);
                 }
@@ -6957,7 +7108,7 @@ update_move (MetaWindow  *window,
               display->grab_anchor_root_y = y;
               window->shaken_loose = FALSE;
               
-              meta_window_maximize (window,
+              meta_window_maximize (window, dev,
                                     META_MAXIMIZE_HORIZONTAL |
                                     META_MAXIMIZE_VERTICAL);
 
@@ -7001,7 +7152,7 @@ update_move (MetaWindow  *window,
                                   display->grab_wireframe_rect.width,
                                   display->grab_wireframe_rect.height);
   else
-    meta_window_move (window, TRUE, new_x, new_y);
+    meta_window_move (window, dev, TRUE, new_x, new_y);
 }
 
 static gboolean
@@ -7235,7 +7386,9 @@ update_resize (MetaWindow *window,
        * are actually different from what we had before.
        */
       if (old.width != new_w || old.height != new_h)
-        meta_window_resize_with_gravity (window, TRUE, new_w, new_h, gravity);
+        meta_window_resize_with_gravity (window,
+	      /* XXX Really not this */ &window->display->devices->keyboards[0],
+				         TRUE, new_w, new_h, gravity);
     }
 
   /* Store the latest resize time, if we actually resized. */
@@ -7273,18 +7426,32 @@ check_use_this_motion_notify (MetaWindow *window,
 {
   EventScannerData esd;
   XEvent useless;
+#ifdef MPX
+  XDeviceMotionEvent *xdme;
+
+  xdme = (XDeviceMotionEvent *) event;
+#endif
 
   /* This code is copied from Owen's GDK code. */
   
   if (window->display->grab_motion_notify_time != 0)
     {
       /* == is really the right test, but I'm all for paranoia */
+#ifdef MPX
+      if (window->display->grab_motion_notify_time <=
+          xdme->time)
+#else
       if (window->display->grab_motion_notify_time <=
           event->xmotion.time)
+#endif
         {
           meta_topic (META_DEBUG_RESIZING,
                       "Arrived at event with time %u (waiting for %u), using it\n",
-                      (unsigned int)event->xmotion.time,
+#ifdef MPX
+		      (unsigned int)xdme->time,
+#else                
+		      (unsigned int)event->xmotion.time,
+#endif
                       window->display->grab_motion_notify_time);
           window->display->grab_motion_notify_time = 0;
           return TRUE;
@@ -7372,7 +7539,100 @@ meta_window_handle_mouse_grab_op_event (MetaWindow *window,
         }
     }
 #endif /* HAVE_XSYNC */
-  
+ 
+#ifdef MPX
+  if (event->type == window->display->dev_btn_release_type)
+    {
+      XDeviceButtonEvent *xdbe; /* XXX declare this somewhere else? */
+#if 0
+      MetaDevInfo *dev;
+      int idev;
+
+      xdbe = (XDeviceButtonReleasedEvent *) event;
+      for (idev = 0; idev < window->display->devices->keybsUsed; idev++)
+	if (xdbe->deviceid == window->display->devices->keyboards[idev].xdev->device_id)
+	  dev = &window->display->devices->keyboards[idev];
+#endif
+
+      MetaDevInfo *dev;
+
+      xdbe = (XDeviceButtonReleasedEvent *) event;
+      dev = meta_devices_find_mouse_by_id (window->display, xdbe->deviceid);
+
+      meta_display_check_threshold_reached (window->display,
+                                            xdbe->x_root,
+                                            xdbe->y_root);
+      /* If the user was snap moving then ignore the button release
+       * because they may have let go of shift before releasing the
+       * mouse button and they almost certainly do not want a
+       * non-snapped movement to occur from the button release.
+       */
+      if (!window->display->grab_last_user_action_was_snap)
+        {
+          if (meta_grab_op_is_moving (window->display->grab_op))
+            {
+              if (xdbe->root == window->screen->xroot)
+                update_move (window, dev, xdbe->state & ShiftMask,
+                             xdbe->x_root, xdbe->y_root);
+            }
+          else if (meta_grab_op_is_resizing (window->display->grab_op))
+            {
+              if (xdbe->root == window->screen->xroot)
+                update_resize (window,
+                               xdbe->state & ShiftMask,
+                               xdbe->x_root,
+                               xdbe->y_root,
+                               TRUE);
+	      if (window->display->compositor)
+		meta_compositor_set_updates (window->display->compositor, window, TRUE);
+            }
+        }
+
+      meta_display_end_grab_op (window->display, dev, xdbe->time);
+    }
+  else if (event->type == window->display->dev_motion_notify_type)
+    {
+      MetaDevInfo *dev, *pairedKeyb;
+      XDeviceMotionEvent *xdme; /* XXX declare this somewhere else? */
+      xdme = (XDeviceMotionEvent *) event;
+
+      dev = meta_devices_find_mouse_by_id (window->display, xdme->deviceid);
+      pairedKeyb = meta_devices_find_paired_keyboard (window->display,
+      						      xdme->deviceid);
+
+//      meta_warning("xdme->x_root = %d, xdme->y_root = %d, xdme->x = %d, xdme->y = %d\n", xdme->x_root, xdme->y_root, xdme->x, xdme->y);
+      meta_display_check_threshold_reached (window->display,
+                                            xdme->x_root,
+                                            xdme->y_root);
+      if (meta_grab_op_is_moving (window->display->grab_op))
+        {
+          if (xdme->root == window->screen->xroot)
+            {
+              if (check_use_this_motion_notify (window,
+                                                event))
+                update_move (window,
+			     pairedKeyb,
+                             xdme->state & ShiftMask,
+                             xdme->x_root,
+                             xdme->y_root);
+            }
+        }
+      else if (meta_grab_op_is_resizing (window->display->grab_op))
+        {
+          if (xdme->root == window->screen->xroot)
+            {
+              if (check_use_this_motion_notify (window,
+                                                event))
+                update_resize (window,
+                               xdme->state & ShiftMask,
+                               xdme->x_root,
+                               xdme->y_root,
+                               FALSE);
+            }
+        }
+    }
+
+#else
   switch (event->type)
     {
     case ButtonRelease:
@@ -7407,7 +7667,6 @@ meta_window_handle_mouse_grab_op_event (MetaWindow *window,
 
       meta_display_end_grab_op (window->display, event->xbutton.time);
       break;    
-
     case MotionNotify:
       meta_display_check_threshold_reached (window->display,
                                             event->xmotion.x_root,
@@ -7442,6 +7701,7 @@ meta_window_handle_mouse_grab_op_event (MetaWindow *window,
     default:
       break;
     }
+#endif
 }
 
 void
@@ -7750,6 +8010,7 @@ warp_grab_pointer (MetaWindow          *window,
                    int                 *x,
                    int                 *y)
 {
+/* XXX XXX XXX XXX XXX XXX */
   MetaRectangle  rect;
   MetaDisplay   *display;
 
@@ -7863,10 +8124,11 @@ warp_grab_pointer (MetaWindow          *window,
 }
 
 void
-meta_window_begin_grab_op (MetaWindow *window,
-                           MetaGrabOp  op,
-                           gboolean    frame_action,
-                           guint32     timestamp)
+meta_window_begin_grab_op (MetaWindow  *window,
+			   MetaDevInfo *dev,
+                           MetaGrabOp   op,
+                           gboolean     frame_action,
+                           guint32      timestamp)
 {
   int x, y;
 
@@ -7875,6 +8137,7 @@ meta_window_begin_grab_op (MetaWindow *window,
 
   meta_display_begin_grab_op (window->display,
                               window->screen,
+			      dev,
                               window,
                               op,
                               FALSE,
@@ -7897,10 +8160,12 @@ meta_window_update_keyboard_resize (MetaWindow *window,
 
   if (update_cursor)
     {
+      meta_warning("meta_window_update_keyboard_resize()\n");
       guint32 timestamp;
       /* FIXME: Using CurrentTime is really bad mojo */
       timestamp = CurrentTime;
       meta_display_set_grab_op_cursor (window->display,
+      				       NULL,
                                        NULL,
                                        window->display->grab_op,
                                        TRUE,
@@ -8103,4 +8368,118 @@ meta_window_unset_demands_attention (MetaWindow *window)
   
   window->wm_state_demands_attention = FALSE;
   set_net_wm_state (window);
+}
+
+/* XXX declare these prototypes somewhere! */
+
+void
+meta_window_add_focused_device (MetaWindow *window, MetaDevInfo *kbdDev)
+{
+
+  meta_warning("Trying to add device named %s to window...\n", kbdDev->name);
+  int i;
+
+  if (window->focused_devices_used == window->focused_devices_size)
+    {
+      window->focused_devices = g_renew(MetaDevInfo*,
+    				        window->focused_devices,
+    				        window->focused_devices_size + 
+				        DEFAULT_INPUT_ARRAY_SIZE);
+      window->focused_devices_size += DEFAULT_INPUT_ARRAY_SIZE;
+    }
+
+  /* REMOVE THIS AFTER TESTING */
+  {
+    if (window->has_focus && (window->focused_devices_used == 0))
+      meta_warning("window->has_focus && (window->focused_devices_used == 0");
+    if ((!window->has_focus) && (window->focused_devices_used > 0))
+      meta_warning("(!window->has_focus()) && (window->focused_devices_used > 0");
+
+    for (i = 0; i < window->focused_devices_used; i++)
+      meta_warning("Window focused by %s\n", window->focused_devices[i]->name);
+
+
+  }
+  /* XXX I could compare: window->focused_devices[i] with kbdDev, it access
+   * less memmory, but I don't like the idea of comparing pointers */
+  for (i = 0; i < window->focused_devices_used; i++)
+    if (window->focused_devices[i]->xdev->device_id == kbdDev->xdev->device_id)
+      {
+	meta_warning("This device already focuses the window!\n");
+        return;
+      }
+
+  window->has_focus = TRUE;
+
+  window->focused_devices[window->focused_devices_used] = kbdDev;
+  window->focused_devices_used++;
+
+  meta_warning("window->focused_devices_used = %d\n", window->focused_devices_used);
+
+  meta_warning("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD\n");
+}
+
+void
+meta_window_remove_focused_device (MetaWindow *window, MetaDevInfo *kbdDev)
+{
+  int i, j;
+
+  meta_warning("Trying to remove device named %s from window...\n", kbdDev->name);
+
+  /* REMOVE THIS AFTER TESTING */
+  {
+    if (window->has_focus && (window->focused_devices_used == 0))
+      meta_warning("window->has_focus && (window->focused_devices_used == 0");
+    if ((!window->has_focus) && (window->focused_devices_used > 0))
+      meta_warning("(!window->has_focus()) && (window->focused_devices_used > 0");
+
+    for (i = 0; i < window->focused_devices_used; i++)
+      meta_warning("Window focused by %s\n", window->focused_devices[i]->name);
+  }
+
+  if (window->focused_devices_used == 0 || (!window->has_focus))
+    {
+      meta_warning("unfocusing a non-focused window!\n");
+      return;
+    }
+
+  /* XXX find a better algorithm than O(N) */
+  for (i = 0; i < window->focused_devices_used; i++)
+    {
+      if (window->focused_devices[i]->xdev->device_id ==kbdDev->xdev->device_id)
+        {
+	  for (j = i; j < (window->focused_devices_used - 1); j++)
+	    window->focused_devices[j] = window->focused_devices[j+1];
+          break;
+        }
+    }
+
+  if (i == window->focused_devices_used)
+    {
+      meta_warning("trying to unfocus the window with a device that already"
+      		   " doesn't focus it!\n");
+      return;
+    }
+
+  window->focused_devices_used--;
+  
+  if (window->focused_devices_used == 0)
+    window->has_focus = FALSE;
+
+  meta_warning("window->focused_devices_used = %d\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n", window->focused_devices_used);
+
+  meta_warning("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB\n");
+}
+
+gboolean
+meta_window_focused_by_dev (MetaWindow *window, MetaDevInfo *kbdDev)
+{
+  int i;
+
+  for (i = 0; i < window->focused_devices_used; i++)
+    if (window->focused_devices[i]->xdev->device_id == kbdDev->xdev->device_id)
+      return TRUE;
+
+   return FALSE;
+
 }

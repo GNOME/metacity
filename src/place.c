@@ -135,7 +135,9 @@ find_next_cascade (MetaWindow *window,
    * of NW corner of window frame.
    */
 
-  current = meta_screen_get_current_xinerama (window->screen);
+  /* XXX */
+  current = meta_screen_get_current_xinerama (window->screen,
+  				            &window->display->devices->mice[0]);
   meta_window_get_work_area_for_xinerama (window, current->number, &work_area);
 
   cascade_x = MAX (0, work_area.x);
@@ -790,7 +792,9 @@ meta_window_place (MetaWindow        *window,
       int w, h;
 
       /* Warning, this function is a round trip! */
-      xi = meta_screen_get_current_xinerama (window->screen);
+      /* Warning, this is an XXX! */
+      xi = meta_screen_get_current_xinerama (window->screen,
+                                            &window->display->devices->mice[0]);
 
       w = xi->rect.width;
       h = xi->rect.height;
@@ -835,7 +839,9 @@ meta_window_place (MetaWindow        *window,
   }
 
   /* Warning, this is a round trip! */
-  xi = meta_screen_get_current_xinerama (window->screen);
+  /* Warning, this is an XXX! */
+  xi = meta_screen_get_current_xinerama (window->screen,
+  					 &window->display->devices->mice[0]);
   
   /* "Origin" placement algorithm */
   x = xi->rect.x;

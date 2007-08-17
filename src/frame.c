@@ -33,14 +33,16 @@
 #include <X11/extensions/Xrender.h>
 #endif
 
+#ifdef MPX
 #define EVENT_MASK (SubstructureRedirectMask |                     \
                     StructureNotifyMask | SubstructureNotifyMask | \
                     ExposureMask |                                 \
-                    ButtonPressMask | ButtonReleaseMask |          \
-                    PointerMotionMask | PointerMotionHintMask |    \
-                    EnterWindowMask | LeaveWindowMask |            \
-                    FocusChangeMask |                              \
+/*                    PointerMotionMask | PointerMotionHintMask |*/    \
+/*                    EnterWindowMask | LeaveWindowMask |     */       \
+/*                    FocusChangeMask |  */                            \
                     ColormapChangeMask)
+
+#endif
 
 void
 meta_window_ensure_frame (MetaWindow *window)
@@ -97,9 +99,11 @@ meta_window_ensure_frame (MetaWindow *window)
     visual = window->xvisual;
   else
     visual = NULL;
-  
+
+#ifdef MPX
   frame->xwindow = meta_ui_create_frame_window (window->screen->ui,
                                                 window->display->xdisplay,
+						window->display->devices,
                                                 visual,
                                                 frame->rect.x,
                                                 frame->rect.y,
@@ -107,10 +111,89 @@ meta_window_ensure_frame (MetaWindow *window)
 						frame->rect.height,
 						frame->window->screen->number);
 
+#endif
+
   meta_verbose ("Frame for %s is 0x%lx\n", frame->window->desc, frame->xwindow);
   attrs.event_mask = EVENT_MASK;
   XChangeWindowAttributes (window->display->xdisplay,
 			   frame->xwindow, CWEventMask, &attrs);
+#ifdef MPX
+  meta_warning("vo pega os eventos...\n");
+
+  XEventClass *evclasses;
+  int nclasses = 0;
+  int idev;
+
+  evclasses = g_new(XEventClass,
+  		    window->display->devices->miceUsed  * 6 + 
+		    window->display->devices->keybsUsed * 2);
+//  meta_warning("window->display->devices->miceUsed = %d\n",
+//  		window->display->devices->miceUsed);
+  for (idev = 0; idev < window->display->devices->miceUsed; idev++)
+    {
+//      meta_warning("nclasses == %d\n", nclasses);
+      DeviceButtonPress       (window->display->devices->mice[idev].xdev,
+      			       window->display->dev_btn_press_type,
+			       evclasses[nclasses]);
+      nclasses++;
+      meta_warning("window->display->dev_btn_press_type = %d\n", window->display->dev_btn_press_type);
+//      meta_warning("nclasses == %d\n", nclasses);
+      DeviceButtonRelease     (window->display->devices->mice[idev].xdev,
+      			       window->display->dev_btn_release_type,
+			       evclasses[nclasses]);
+      nclasses++;
+      meta_warning("window->display->dev_btn_release_type = %d\n", window->display->dev_btn_release_type);
+//      meta_warning("nclasses == %d\n", nclasses);
+      DeviceMotionNotify      (window->display->devices->mice[idev].xdev,
+      			       window->display->dev_motion_notify_type,
+			       evclasses[nclasses]);
+      nclasses++;
+      meta_warning("window->display->dev_motion_notify_type = %d\n", window->display->dev_motion_notify_type);
+//      meta_warning("nclasses == %d\n", nclasses);
+      DevicePointerMotionHint (window->display->devices->mice[idev].xdev,
+      			       window->display->dev_ptr_motion_hint_type,
+			       evclasses[nclasses]);
+      nclasses++;
+      meta_warning("window->display->dev_ptr_motion_hint_type = %d\n", window->display->dev_ptr_motion_hint_type);
+//      meta_warning("nclasses == %d\n", nclasses);
+      DeviceEnterNotify       (window->display->devices->mice[idev].xdev,
+      			       window->display->dev_enter_notify_type,
+			       evclasses[nclasses]);
+      nclasses++;
+      meta_warning("window->display->dev_enter_notify_type = %d\n", window->display->dev_enter_notify_type);
+//      meta_warning("nclasses == %d\n", nclasses);
+      DeviceLeaveNotify       (window->display->devices->mice[idev].xdev,
+      			       window->display->dev_leave_notify_type,
+			       evclasses[nclasses]);
+      nclasses++;
+      meta_warning("window->display->dev_leave_notify_type = %d\n", window->display->dev_leave_notify_type);
+//      meta_warning("nclasses == %d\n", nclasses);
+
+    }
+      /* XXX Should these be called with the keybs as arguments? */
+  for (idev = 0; idev < window->display->devices->miceUsed; idev++)
+    {
+      DeviceFocusIn           (window->display->devices->keyboards[idev].xdev,
+      			       window->display->dev_focus_in_type,
+			       evclasses[nclasses]);
+      nclasses++;
+      meta_warning("window->display->dev_focus_in_type = %d\n", window->display->dev_focus_in_type);
+//      meta_warning("nclasses == %d\n", nclasses);
+      DeviceFocusOut          (window->display->devices->keyboards[idev].xdev,
+      			       window->display->dev_focus_out_type,
+			       evclasses[nclasses]);
+      nclasses++;
+      meta_warning("window->display->dev_focus_out_type = %d\n", window->display->dev_focus_out_type);
+
+    }
+
+//      meta_warning("nclasses == %d\n", nclasses);
+  XSelectExtensionEvent(window->display->xdisplay, frame->xwindow, 
+			evclasses, nclasses);
+  meta_warning("selected the events! stored them in display 0x%x\n", window->display);
+
+  /* g_free(evclasses); XXX */
+#endif
   
   meta_display_register_x_window (window->display, &frame->xwindow, window);
 
@@ -158,7 +241,8 @@ meta_window_ensure_frame (MetaWindow *window)
                              window->title);
 
   /* Move keybindings to frame instead of window */
-  meta_window_grab_keys (window);
+  for (idev = 0; idev < window->display->devices->keybsUsed; idev++)
+    meta_window_grab_keys (window, &window->display->devices->keyboards[idev]);
 
   /* Shape mask */
   meta_ui_apply_frame_shape (frame->window->screen->ui,
@@ -175,6 +259,7 @@ void
 meta_window_destroy_frame (MetaWindow *window)
 {
   MetaFrame *frame;
+  int idev;
   
   if (window->frame == NULL)
     return;
@@ -218,7 +303,8 @@ meta_window_destroy_frame (MetaWindow *window)
   window->frame = NULL;
 
   /* Move keybindings to window instead of frame */
-  meta_window_grab_keys (window);
+  for (idev = 0; idev < window->display->devices->keybsUsed; idev++)
+    meta_window_grab_keys (window, &window->display->devices->keyboards[idev]);
   
   g_free (frame);
   

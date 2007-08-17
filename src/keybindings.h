@@ -26,24 +26,43 @@
 
 #include "display.h"
 #include "window.h"
+#include "devices.h"
 
 void     meta_display_init_keys             (MetaDisplay *display);
 void     meta_display_shutdown_keys         (MetaDisplay *display);
-void     meta_screen_grab_keys              (MetaScreen  *screen);
-void     meta_screen_ungrab_keys            (MetaScreen  *screen);
+void     meta_screen_grab_keys              (MetaScreen  *screen,
+					     MetaDevInfo *dev);
+void     meta_screen_ungrab_keys            (MetaScreen  *screen, 
+					     MetaDevInfo *dev);
+#ifdef MPX
+gboolean meta_screen_grab_all_keys          (MetaScreen  *screen,
+					     MetaDevInfo *dev,
+                                             guint32      timestamp);
+#else
 gboolean meta_screen_grab_all_keys          (MetaScreen  *screen,
                                              guint32      timestamp);
-void     meta_screen_ungrab_all_keys        (MetaScreen  *screen, 
+#endif
+void     meta_screen_ungrab_all_keys        (MetaScreen  *screen,
+					     MetaDevInfo *dev,
                                              guint32      timestamp);
-void     meta_window_grab_keys              (MetaWindow  *window);
-void     meta_window_ungrab_keys            (MetaWindow  *window);
+void     meta_window_grab_keys              (MetaWindow  *window,
+					     MetaDevInfo *dev);
+void     meta_window_ungrab_keys            (MetaWindow  *window,
+					     MetaDevInfo *dev);
+#ifdef MPX
+gboolean meta_window_grab_all_keys          (MetaWindow  *window,
+					     MetaDevInfo *dev,
+                                             guint32      timestamp);
+#else
 gboolean meta_window_grab_all_keys          (MetaWindow  *window,
                                              guint32      timestamp);
+#endif
 void     meta_window_ungrab_all_keys        (MetaWindow  *window,
+					     MetaDevInfo *dev,
                                              guint32      timestamp);
-void     meta_display_process_key_event     (MetaDisplay *display,
-                                             MetaWindow  *window,
-                                             XEvent      *event);
+void     meta_display_process_key_event     (MetaDisplay     *display,
+                                             MetaWindow      *window,
+                                             XDeviceKeyEvent *xdke);
 void     meta_set_keybindings_disabled      (gboolean     setting);
 void     meta_display_process_mapping_event (MetaDisplay *display,
                                              XEvent      *event);

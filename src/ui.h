@@ -75,6 +75,17 @@ void meta_ui_get_frame_geometry (MetaUI *ui,
                                  Window frame_xwindow,
                                  int *top_height, int *bottom_height,
                                  int *left_width, int *right_width);
+#ifdef MPX
+Window meta_ui_create_frame_window (MetaUI *ui,
+                                    Display *xdisplay,
+				    MetaDevices *devices,
+                                    Visual *xvisual,
+				    gint x,
+				    gint y,
+				    gint width,
+				    gint height,
+				    gint screen_no);
+#else
 Window meta_ui_create_frame_window (MetaUI *ui,
                                     Display *xdisplay,
                                     Visual *xvisual,
@@ -83,6 +94,7 @@ Window meta_ui_create_frame_window (MetaUI *ui,
 				    gint width,
 				    gint height,
 				    gint screen_no);
+#endif
 void meta_ui_destroy_frame_window (MetaUI *ui,
 				   Window  xwindow);
 void meta_ui_move_resize_frame (MetaUI *ui,

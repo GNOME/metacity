@@ -84,6 +84,8 @@ typedef struct _MetaWindowMenu MetaWindowMenu;
 #ifdef MPX
 /* This was defined here so I don't need to include devices.h on this file */
 typedef struct _MetaDevInfo MetaDevInfo;
+/* XXX */
+typedef struct _MetaDisplay MetaDisplay;
 
 typedef void (* MetaWindowMenuFunc) (MetaWindowMenu *menu,
                                      Display        *xdisplay,

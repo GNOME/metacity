@@ -25,6 +25,7 @@
 
 #include <config.h>
 #include <math.h>
+#include <string.h>
 #include "boxes.h"
 #include "frames.h"
 #include "util.h"
@@ -35,12 +36,21 @@
 #include "prefs.h"
 #include "errors.h"
 #include "ui.h"
+#include "devices.h"
 
 #ifdef HAVE_SHAPE
 #include <X11/extensions/shape.h>
 #endif
 
 #define DEFAULT_INNER_BUTTON_BORDER 3
+
+/* XXX */
+struct _tipInfo {
+  MetaFrames *frames;
+  MetaDevInfo *dev;
+};
+
+typedef struct _tipInfo meta_tip_info;
 
 static void meta_frames_class_init (MetaFramesClass *klass);
 static void meta_frames_init       (MetaFrames      *frames);
@@ -563,9 +573,10 @@ meta_frames_new (int screen_number)
 }
 
 void
-meta_frames_manage_window (MetaFrames *frames,
-                           Window      xwindow,
-                           GdkWindow  *window)
+meta_frames_manage_window (MetaFrames  *frames,
+                           Window       xwindow,
+                           GdkWindow   *window,
+			   MetaDevices *devices)
 {
   MetaUIFrame *frame;
 
@@ -593,7 +604,10 @@ meta_frames_manage_window (MetaFrames *frames,
    * and meta_ui_create_frame_window() return to meta_window_ensure_frame().
    */
   
-  meta_core_grab_buttons (gdk_display, frame->xwindow);
+  int idev;
+  for (idev = 0; idev < devices->miceUsed; idev++)
+    meta_core_grab_buttons (gdk_display, frame->xwindow,
+    			    &devices->mice[idev]);
 
   g_hash_table_replace (frames->frames, &frame->xwindow, frame);
 }
@@ -1047,7 +1061,7 @@ meta_frames_repaint_frame (MetaFrames *frames,
 }
 
 static void
-show_tip_now (MetaFrames *frames)
+show_tip_now (meta_tip_info *tip_info)
 {
   const char *tiptext;
   MetaUIFrame *frame;
@@ -1055,17 +1069,34 @@ show_tip_now (MetaFrames *frames)
   Window root, child;
   guint mask;
   MetaFrameControl control;
+  Bool shared;
+  
+  MetaFrames *frames = tip_info->frames;
+  MetaDevInfo *dev = tip_info->dev;
   
   frame = frames->last_motion_frame;
   if (frame == NULL)
     return;
 
+  XQueryDevicePointer (gdk_display,
+  		       dev->xdev,
+                       frame->xwindow,
+                       &root, &child,
+                       &root_x, &root_y,
+                       &x, &y,
+                       &mask,
+		       &shared);
+
+
+#if 0
+#warning XQueryPointer
   XQueryPointer (gdk_display,
                  frame->xwindow,
                  &root, &child,
                  &root_x, &root_y,
                  &x, &y,
                  &mask);
+#endif
   
   control = get_control (frames, frame, x, y);
   
@@ -1161,24 +1192,31 @@ show_tip_now (MetaFrames *frames)
 static gboolean
 tip_timeout_func (gpointer data)
 {
-  MetaFrames *frames;
+  meta_tip_info *tip_info;
 
-  frames = data;
+  tip_info = data;
 
-  show_tip_now (frames);
+  show_tip_now (tip_info);
 
   return FALSE;
 }
 
 #define TIP_DELAY 450
 static void
-queue_tip (MetaFrames *frames)
+queue_tip (MetaFrames *frames, MetaDevInfo *dev)
 {
+  meta_tip_info *tip_info;
+
+  tip_info = g_new(meta_tip_info, 1);
+
+  tip_info->frames = frames;
+  tip_info->dev = dev;
+
   clear_tip (frames);
   
   frames->tooltip_timeout = g_timeout_add (TIP_DELAY,
                                            tip_timeout_func,
-                                           frames);  
+                                           tip_info);  
 }
 
 static void
@@ -1214,7 +1252,14 @@ meta_frame_titlebar_event (MetaUIFrame    *frame,
                            int            action)
 {
   MetaFrameFlags flags;
+  MetaDevInfo *dev;
   
+  meta_warning("meta_frame_titlebar_event(): device->name = %s\n",
+  	       event->device->name);
+
+  dev = meta_devices_find_mouse_by_name(meta_display_for_x_display(gdk_display),
+  					event->device->name);
+
   switch (action)
     {
     case META_ACTION_TITLEBAR_TOGGLE_SHADE:
@@ -1227,10 +1272,12 @@ meta_frame_titlebar_event (MetaUIFrame    *frame,
           {
             if (flags & META_FRAME_SHADED)
               meta_core_unshade (gdk_display,
+	      			 dev,
                                  frame->xwindow,
                                  event->time);
             else
               meta_core_shade (gdk_display,
+	      		       dev,
                                frame->xwindow,
                                event->time);
           }
@@ -1245,7 +1292,7 @@ meta_frame_titlebar_event (MetaUIFrame    *frame,
         
         if (flags & META_FRAME_ALLOWS_MAXIMIZE)
           {
-            meta_core_toggle_maximize (gdk_display, frame->xwindow);
+            meta_core_toggle_maximize (gdk_display, dev, frame->xwindow);
           }
       }
       break;
@@ -1269,12 +1316,14 @@ meta_frame_titlebar_event (MetaUIFrame    *frame,
     
     case META_ACTION_TITLEBAR_LOWER:
       meta_core_user_lower_and_unfocus (gdk_display,
+      					dev,
                                         frame->xwindow,
                                         event->time);
       break;
 
     case META_ACTION_TITLEBAR_MENU:
       meta_core_show_window_menu (gdk_display,
+      				  dev,
                                   frame->xwindow,
                                   event->x_root,
                                   event->y_root,
@@ -1320,10 +1369,24 @@ static gboolean
 meta_frames_button_press_event (GtkWidget      *widget,
                                 GdkEventButton *event)
 {
+
+  meta_warning("meta_frames_button_press_event(): device = %s\n", 
+              event->device->name);
+
   MetaUIFrame *frame;
   MetaFrames *frames;
   MetaFrameControl control;
-  
+  MetaDisplay *display;
+  MetaDevInfo *dev;
+  MetaDevInfo *pairedKeyb;
+
+  display = meta_display_for_x_display (gdk_display); /* did I put this here? XXX if I did, remove and put inside find_by_id! */
+ 
+  dev = meta_devices_find_mouse_by_name (display,
+  					 event->device->name);
+  pairedKeyb = meta_devices_find_paired_keyboard (display,
+  						  dev->xdev->device_id);
+
   frames = META_FRAMES (widget);
 
   /* Remember that the display may have already done something with this event.
@@ -1347,6 +1410,7 @@ meta_frames_button_press_event (GtkWidget      *widget,
                   "Focusing window with frame 0x%lx due to button 1 press\n",
                   frame->xwindow);
       meta_core_user_focus (gdk_display,
+                            pairedKeyb,
                             frame->xwindow,
                             event->time);      
     }
@@ -1424,7 +1488,11 @@ meta_frames_button_press_event (GtkWidget      *widget,
           break;
         }
 
+
+/*       if (dev == NULL)
+	  meta_warning("could not find the mouse!! bad ugly error!\n"); */
       meta_core_begin_grab_op (gdk_display,
+      			       dev,
                                frame->xwindow,
                                op,
                                TRUE,
@@ -1457,6 +1525,7 @@ meta_frames_button_press_event (GtkWidget      *widget,
             dx += rect->width;
 
           meta_core_show_window_menu (gdk_display,
+	  			      dev,
                                       frame->xwindow,
                                       rect->x + dx,
                                       rect->y + rect->height + dy,
@@ -1516,13 +1585,16 @@ meta_frames_button_press_event (GtkWidget      *widget,
 
       if (!titlebar_is_onscreen)
         meta_core_show_window_menu (gdk_display,
+				    dev,
                                     frame->xwindow,
                                     event->x_root,
                                     event->y_root,
                                     event->button,
                                     event->time);
-      else
+      else {
+	meta_warning("chamando meta_core_begin_grab_op de onde eu quero\n");
         meta_core_begin_grab_op (gdk_display,
+				 dev,
                                  frame->xwindow,
                                  op,
                                  TRUE,
@@ -1532,6 +1604,7 @@ meta_frames_button_press_event (GtkWidget      *widget,
                                  event->time,
                                  event->x_root,
                                  event->y_root);
+      }
     }
   else if (control == META_FRAME_CONTROL_TITLE &&
            event->button == 1)
@@ -1545,6 +1618,7 @@ meta_frames_button_press_event (GtkWidget      *widget,
       if (flags & META_FRAME_ALLOWS_MOVE)
         {          
           meta_core_begin_grab_op (gdk_display,
+	  			   dev,
                                    frame->xwindow,
                                    META_GRAB_OP_MOVING,
                                    TRUE,
@@ -1571,6 +1645,12 @@ meta_frames_button_press_event (GtkWidget      *widget,
 void
 meta_frames_notify_menu_hide (MetaFrames *frames)
 {
+  /* Begin XXX */
+  MetaDisplay *display;
+
+  display = meta_display_for_x_display (gdk_display);
+  /* End XXX */
+
   if (meta_core_get_grab_op (gdk_display) ==
       META_GRAB_OP_CLICKING_MENU)
     {
@@ -1588,7 +1668,9 @@ meta_frames_notify_menu_hide (MetaFrames *frames)
             {
               redraw_control (frames, frame,
                               META_FRAME_CONTROL_MENU);
-              meta_core_end_grab_op (gdk_display, CurrentTime);
+              meta_core_end_grab_op (gdk_display,
+	      			     &display->devices->mice[0], 
+				     CurrentTime);
             }
         }
     }
@@ -1601,7 +1683,21 @@ meta_frames_button_release_event    (GtkWidget           *widget,
   MetaUIFrame *frame;
   MetaFrames *frames;
   MetaGrabOp op;
-  
+  MetaDisplay *display;
+  MetaDevInfo *dev;
+
+  display = meta_display_for_x_display (gdk_display);
+#if 0
+  int idev;
+  for (idev = 0; idev < display->devices->miceUsed; idev++)
+    if (strcmp(event->device->name, display->devices->mice[idev].name) == 0)
+       metaDev = &display->devices->mice[idev];
+  /* XXX */
+  if (metaDev == NULL)
+    meta_warning("metaDev == null!! problema t meta_frames_button_release\n");
+#endif
+  dev = meta_devices_find_mouse_by_name (display, event->device->name);
+    
   frames = META_FRAMES (widget);
   
   frame = meta_frames_lookup_window (frames, GDK_WINDOW_XID (event->window));
@@ -1632,74 +1728,78 @@ meta_frames_button_release_event    (GtkWidget           *widget,
           if (control == META_FRAME_CONTROL_MINIMIZE)
             meta_core_minimize (gdk_display, frame->xwindow);
           
-          meta_core_end_grab_op (gdk_display, event->time);
+          meta_core_end_grab_op (gdk_display, dev, event->time);
           break;
 
         case META_GRAB_OP_CLICKING_MAXIMIZE:
           if (control == META_FRAME_CONTROL_MAXIMIZE)
-            meta_core_maximize (gdk_display, frame->xwindow);
+	    /* Should we use the mouse or the keyboard? */
+            meta_core_maximize (gdk_display, 
+	    			meta_devices_find_paired_keyboard(display, 
+				                          dev->xdev->device_id),
+				frame->xwindow);
           
-          meta_core_end_grab_op (gdk_display, event->time);
+          meta_core_end_grab_op (gdk_display, dev, event->time);
           break;
 
         case META_GRAB_OP_CLICKING_UNMAXIMIZE:
           if (control == META_FRAME_CONTROL_UNMAXIMIZE)
-            meta_core_unmaximize (gdk_display, frame->xwindow);
+            meta_core_unmaximize (gdk_display, dev, frame->xwindow);
           
-          meta_core_end_grab_op (gdk_display, event->time);
+          meta_core_end_grab_op (gdk_display, dev, event->time);
           break;
           
         case META_GRAB_OP_CLICKING_DELETE:
           if (control == META_FRAME_CONTROL_DELETE)
             meta_core_delete (gdk_display, frame->xwindow, event->time);
           
-          meta_core_end_grab_op (gdk_display, event->time);
+          meta_core_end_grab_op (gdk_display, dev, event->time);
           break;
           
         case META_GRAB_OP_CLICKING_MENU:
-          meta_core_end_grab_op (gdk_display, event->time);
+          meta_core_end_grab_op (gdk_display, dev, event->time);
           break;
 
         case META_GRAB_OP_CLICKING_SHADE:
           if (control == META_FRAME_CONTROL_SHADE)
-            meta_core_shade (gdk_display, frame->xwindow, event->time);
+            meta_core_shade (gdk_display, dev, frame->xwindow, event->time);
           
-          meta_core_end_grab_op (gdk_display, event->time);
+          meta_core_end_grab_op (gdk_display, dev, event->time);
           break;
  
         case META_GRAB_OP_CLICKING_UNSHADE:
           if (control == META_FRAME_CONTROL_UNSHADE)
-            meta_core_unshade (gdk_display, frame->xwindow, event->time);
+            meta_core_unshade (gdk_display, dev, frame->xwindow, event->time);
 
-          meta_core_end_grab_op (gdk_display, event->time);
+          meta_core_end_grab_op (gdk_display, dev, event->time);
           break;
 
         case META_GRAB_OP_CLICKING_ABOVE:
           if (control == META_FRAME_CONTROL_ABOVE)
             meta_core_make_above (gdk_display, frame->xwindow);
           
-          meta_core_end_grab_op (gdk_display, event->time);
+          meta_core_end_grab_op (gdk_display, dev, event->time);
           break;
  
         case META_GRAB_OP_CLICKING_UNABOVE:
           if (control == META_FRAME_CONTROL_UNABOVE)
             meta_core_unmake_above (gdk_display, frame->xwindow);
 
-          meta_core_end_grab_op (gdk_display, event->time);
+          meta_core_end_grab_op (gdk_display, dev, event->time);
           break;
 
         case META_GRAB_OP_CLICKING_STICK:
           if (control == META_FRAME_CONTROL_STICK)
             meta_core_stick (gdk_display, frame->xwindow);
 
-          meta_core_end_grab_op (gdk_display, event->time);
+          meta_core_end_grab_op (gdk_display, dev, event->time);
           break;
  
         case META_GRAB_OP_CLICKING_UNSTICK:
           if (control == META_FRAME_CONTROL_UNSTICK)
             meta_core_unstick (gdk_display, frame->xwindow);
 
-          meta_core_end_grab_op (gdk_display, event->time);
+          meta_core_end_grab_op (gdk_display, dev, event->time);
           break;
           
         default:
@@ -1832,6 +1932,10 @@ meta_frames_motion_notify_event     (GtkWidget           *widget,
   MetaUIFrame *frame;
   MetaFrames *frames;
   MetaGrabOp grab_op;
+  MetaDevInfo *dev;
+
+  dev = meta_devices_find_mouse_by_name(meta_display_for_x_display(gdk_display),
+  				        event->device->name);
   
   frames = META_FRAMES (widget);
   
@@ -1860,9 +1964,20 @@ meta_frames_motion_notify_event     (GtkWidget           *widget,
     case META_GRAB_OP_CLICKING_UNSTICK:
       {
         MetaFrameControl control;
+
+	int x, y, root_x, root_y;
+	Window root, child;
+	guint mask;
+	Bool shared;
+
+	XQueryDevicePointer (gdk_display, dev->xdev, frame->xwindow,
+			     &root, &child, &root_x, &root_y, &x, &y,
+			     &mask, &shared);
+#if 0
         int x, y;
-        
+#warning gdk_window_get_pointer        
         gdk_window_get_pointer (frame->window, &x, &y, NULL);
+#endif
 
         /* Control is set to none unless it matches
          * the current grab
@@ -1901,16 +2016,27 @@ meta_frames_motion_notify_event     (GtkWidget           *widget,
     case META_GRAB_OP_NONE:
       {
         MetaFrameControl control;
+
+	int x, y, root_x, root_y;
+	Window root, child;
+	guint mask;
+	Bool shared;
+
+	XQueryDevicePointer (gdk_display, dev->xdev, frame->xwindow,
+			     &root, &child, &root_x, &root_y, &x, &y,
+			     &mask, &shared);
+#if 0
         int x, y;
-        
+#warning gdk_window_get_pointer        
         gdk_window_get_pointer (frame->window, &x, &y, NULL);
+#endif
 
         control = get_control (frames, frame, x, y);
 
         /* Update prelit control and cursor */
         meta_frames_update_prelit_control (frames, frame, control);
         
-        queue_tip (frames);
+        queue_tip (frames, dev);
       }
       break;
 

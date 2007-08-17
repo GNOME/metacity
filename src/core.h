@@ -96,42 +96,51 @@ void meta_core_queue_frame_resize (Display *xdisplay,
                                    Window frame_xwindow);
 
 /* Move as a result of user operation */
-void meta_core_user_move    (Display *xdisplay,
-                             Window   frame_xwindow,
-                             int      x,
-                             int      y);
-void meta_core_user_resize  (Display *xdisplay,
-                             Window   frame_xwindow,
-                             int      gravity,
-                             int      width,
-                             int      height);
+void meta_core_user_move    (Display     *xdisplay,
+			     MetaDevInfo *dev,
+                             Window       frame_xwindow,
+                             int          x,
+                             int          y);
+void meta_core_user_resize  (Display     *xdsplay,
+			     MetaDevInfo *dev,
+                             Window       frame_xwindow,
+                             int          gravity,
+                             int          width,
+                             int          height);
 
 void meta_core_user_raise   (Display *xdisplay,
                              Window   frame_xwindow);
-void meta_core_user_lower_and_unfocus (Display *xdisplay,
-                                       Window   frame_xwindow,
-                                       guint32  timestamp);
+void meta_core_user_lower_and_unfocus (Display     *xdisplay,
+				       MetaDevInfo *dev,
+                                       Window       frame_xwindow,
+                                       guint32      timestamp);
 
-void meta_core_user_focus   (Display *xdisplay,
-                             Window   frame_xwindow,
-                             guint32  timestamp);
+void meta_core_user_focus   (Display     *xdisplay,
+			     MetaDevInfo *dev,
+                             Window       frame_xwindow,
+                             guint32      timestamp);
 
 void meta_core_minimize         (Display *xdisplay,
                                  Window   frame_xwindow);
-void meta_core_toggle_maximize  (Display *xdisplay,
-                                 Window   frame_xwindow);
-void meta_core_unmaximize       (Display *xdisplay,
-                                 Window   frame_xwindow);
-void meta_core_maximize         (Display *xdisplay,
-                                 Window   frame_xwindow);
+void meta_core_toggle_maximize  (Display     *xdisplay,
+				 MetaDevInfo *dev,
+                                 Window       frame_xwindow);
+void meta_core_unmaximize       (Display     *xdisplay,
+				 MetaDevInfo *dev,
+                                 Window       frame_xwindow);
+void meta_core_maximize         (Display     *xdisplay, 
+				 MetaDevInfo *dev,
+                                 Window       frame_xwindow);
 void meta_core_delete           (Display *xdisplay,
                                  Window   frame_xwindow,
                                  guint32  timestamp);
-void meta_core_unshade          (Display *xdisplay,
-                                 Window   frame_xwindow,
-                                 guint32  timestamp);
-void meta_core_shade            (Display *xdisplay,
-                                 Window   frame_xwindow,
+void meta_core_unshade          (Display     *xdisplay,
+				 MetaDevInfo *dev,
+                                 Window       frame_xwindow,
+                                 guint32      timestamp);
+void meta_core_shade            (Display     *xdisplay,
+				 MetaDevInfo *dev,
+                                 Window       frame_xwindow,
                                  guint32  timestamp);
 void meta_core_unstick          (Display *xdisplay,
                                  Window   frame_xwindow);
@@ -153,37 +162,41 @@ const char* meta_core_get_workspace_name_with_index (Display *xdisplay,
                                                      Window xroot,
                                                      int    index);
 
-void meta_core_show_window_menu (Display *xdisplay,
-                                 Window   frame_xwindow,
-                                 int      root_x,
-                                 int      root_y,
-                                 int      button,
-                                 guint32  timestamp);
+void meta_core_show_window_menu (Display     *xdisplay,
+				 MetaDevInfo *dev,
+                                 Window       frame_xwindow,
+                                 int          root_x,
+                                 int          root_y,
+                                 int          button,
+                                 guint32      timestamp);
 
 void meta_core_get_menu_accelerator (MetaMenuOp           menu_op,
                                      int                  workspace,
                                      unsigned int        *keysym,
                                      MetaVirtualModifier *modifiers);
 
-gboolean   meta_core_begin_grab_op (Display    *xdisplay,
-                                    Window      frame_xwindow,
-                                    MetaGrabOp  op,
-                                    gboolean    pointer_already_grabbed,
-                                    gboolean    frame_action,
-                                    int         button,
-                                    gulong      modmask,
-                                    guint32     timestamp,
-                                    int         root_x,
-                                    int         root_y);
-void       meta_core_end_grab_op   (Display    *xdisplay,
-                                    guint32     timestamp);
+gboolean   meta_core_begin_grab_op (Display     *xdisplay,
+				    MetaDevInfo *dev,
+                                    Window       frame_xwindow,
+                                    MetaGrabOp   op,
+                                    gboolean     pointer_already_grabbed,
+                                    gboolean     frame_action,
+                                    int          button,
+                                    gulong       modmask,
+                                    guint32      timestamp,
+                                    int          root_x,
+                                    int          root_y);
+void       meta_core_end_grab_op   (Display     *xdisplay,
+				    MetaDevInfo *xdev,
+                                    guint32      timestamp);
 MetaGrabOp meta_core_get_grab_op     (Display    *xdisplay);
 Window     meta_core_get_grab_frame  (Display   *xdisplay);
 int        meta_core_get_grab_button (Display  *xdisplay);
 
 
-void       meta_core_grab_buttons  (Display *xdisplay,
-                                    Window   frame_xwindow);
+void       meta_core_grab_buttons  (Display     *xdisplay,
+                                    Window       frame_xwindow,
+				    MetaDevInfo *dev);
 
 void       meta_core_set_screen_cursor (Display *xdisplay,
                                         Window   frame_on_screen,

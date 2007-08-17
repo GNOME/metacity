@@ -28,6 +28,7 @@
 #include <gdk/gdkx.h>
 #include "common.h"
 #include "theme.h"
+#include "devices.h"
 
 typedef enum
 {
@@ -114,9 +115,10 @@ GType        meta_frames_get_type               (void) G_GNUC_CONST;
 
 MetaFrames *meta_frames_new (int screen_number);
 
-void meta_frames_manage_window (MetaFrames *frames,
-                                Window      xwindow,
-				GdkWindow  *window);
+void meta_frames_manage_window (MetaFrames  *frames,
+                                Window       xwindow,
+				GdkWindow   *window,
+				MetaDevices *devices);
 void meta_frames_unmanage_window (MetaFrames *frames,
                                   Window      xwindow);
 void meta_frames_set_title (MetaFrames *frames,

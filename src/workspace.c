@@ -333,7 +333,9 @@ meta_workspace_activate_with_focus (MetaWorkspace *workspace,
 
   if (focus_this)
     {
-      meta_window_focus (focus_this, timestamp);
+      meta_window_focus (focus_this, 
+      			 &focus_this->display->devices->keyboards[0], /* XXX */
+			 timestamp);
       meta_window_raise (focus_this);
     }
   else if (move_window)
@@ -343,7 +345,9 @@ meta_workspace_activate_with_focus (MetaWorkspace *workspace,
   else
     {
       meta_topic (META_DEBUG_FOCUS, "Focusing default window on new workspace\n");
-      meta_workspace_focus_default_window (workspace, NULL, timestamp);
+      meta_workspace_focus_default_window (workspace,
+                          /* XXX */ &focus_this->display->devices->keyboards[0],
+      					   NULL, timestamp);
     }
 }
 
@@ -780,6 +784,7 @@ meta_workspace_get_name (MetaWorkspace *workspace)
 
 void
 meta_workspace_focus_default_window (MetaWorkspace *workspace,
+				     MetaDevInfo   *dev,
                                      MetaWindow    *not_this_one,
                                      guint32        timestamp)
 {
@@ -796,7 +801,8 @@ meta_workspace_focus_default_window (MetaWorkspace *workspace,
   else
     {
       MetaWindow * window;
-      window = meta_screen_get_mouse_window (workspace->screen, not_this_one);
+      window = meta_screen_get_mouse_window (dev, workspace->screen,
+      					     not_this_one);
       if (window &&
           window->type != META_WINDOW_DOCK &&
           window->type != META_WINDOW_DESKTOP)
@@ -818,7 +824,9 @@ meta_workspace_focus_default_window (MetaWorkspace *workspace,
             {
               meta_topic (META_DEBUG_FOCUS,
                           "Focusing mouse window %s\n", window->desc);
-              meta_window_focus (window, timestamp);
+              meta_window_focus (window, 
+	      			 &window->display->devices->keyboards[0],
+				 timestamp);
             }
 
           if (workspace->screen->display->autoraise_window != window &&
@@ -836,6 +844,7 @@ meta_workspace_focus_default_window (MetaWorkspace *workspace,
                       "Setting focus to no_focus_window, since no valid "
                       "window to focus found.\n");
           meta_display_focus_the_no_focus_window (workspace->screen->display,
+                  /* XXX */  &workspace->screen->display->devices->keyboards[0],
                                                   workspace->screen,
                                                   timestamp);
         }
@@ -883,7 +892,9 @@ focus_ancestor_or_mru_window (MetaWorkspace *workspace,
                       "Focusing %s, ancestor of %s\n", 
                       ancestor->desc, not_this_one->desc);
       
-          meta_window_focus (ancestor, timestamp);
+          meta_window_focus (ancestor, 
+	           /* XXX */ &ancestor->display->devices->keyboards[0],
+	 		     timestamp);
 
           /* Also raise the window if in click-to-focus */
           if (meta_prefs_get_focus_mode () == META_FOCUS_MODE_CLICK)
@@ -929,7 +940,9 @@ focus_ancestor_or_mru_window (MetaWorkspace *workspace,
       meta_topic (META_DEBUG_FOCUS,
                   "Focusing workspace MRU window %s\n", window->desc);
       
-      meta_window_focus (window, timestamp);
+      meta_window_focus (window, 
+               /* XXX */ &window->display->devices->keyboards[0],
+      			 timestamp);
 
       /* Also raise the window if in click-to-focus */
       if (meta_prefs_get_focus_mode () == META_FOCUS_MODE_CLICK)
@@ -939,6 +952,7 @@ focus_ancestor_or_mru_window (MetaWorkspace *workspace,
     {
       meta_topic (META_DEBUG_FOCUS, "No MRU window to focus found; focusing no_focus_window.\n");
       meta_display_focus_the_no_focus_window (workspace->screen->display,
+                   /* XXX */ &workspace->screen->display->devices->keyboards[0],
                                               workspace->screen,
                                               timestamp);
     }

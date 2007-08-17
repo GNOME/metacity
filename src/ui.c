@@ -153,6 +153,18 @@ meta_ui_get_frame_geometry (MetaUI *ui,
 }
 
 Window
+#ifdef MPX
+meta_ui_create_frame_window (MetaUI *ui,
+                             Display *xdisplay,
+			     MetaDevices *devices,
+                             Visual *xvisual,
+			     gint x,
+			     gint y,
+			     gint width,
+			     gint height,
+			     gint screen_no)
+
+#else
 meta_ui_create_frame_window (MetaUI *ui,
                              Display *xdisplay,
                              Visual *xvisual,
@@ -161,6 +173,7 @@ meta_ui_create_frame_window (MetaUI *ui,
 			     gint width,
 			     gint height,
 			     gint screen_no)
+#endif
 {
   GdkDisplay *display = gdk_x11_lookup_xdisplay (xdisplay);
   GdkScreen *screen = gdk_display_get_screen (display, screen_no);
@@ -169,7 +182,7 @@ meta_ui_create_frame_window (MetaUI *ui,
   GdkWindow *window;
   GdkVisual *visual;
   GdkColormap *cmap = gdk_screen_get_default_colormap (screen);
-  
+ 
   /* Default depth/visual handles clients with weird visuals; they can
    * always be children of the root depth/visual obviously, but
    * e.g. DRI games can't be children of a parent that has the same
@@ -215,8 +228,48 @@ meta_ui_create_frame_window (MetaUI *ui,
 
   gdk_window_resize (window, width, height);
   
-  meta_frames_manage_window (ui->frames, GDK_WINDOW_XID (window), window);
+  meta_frames_manage_window (ui->frames, GDK_WINDOW_XID (window),
+  			     window, devices);
 
+#ifdef MPX
+  GList *devslist, *j;
+  int i;
+
+  devslist = gdk_devices_list();
+
+  /* We're gonna need to know which mouse clicked the window... */
+  for (i = 0; i < devices->miceUsed; i++)
+    {
+      for (j = devslist; j != NULL; j = j->next)
+	{
+//	  meta_warning("devices->mice[i].name = %s | j->data->name = %s\n",
+//	  	       devices->mice[i].name, ((GdkDevice*)(j->data))->name);
+	  if (strcmp( ((GdkDevice*)(j->data))->name,
+	              devices->mice[i].name) == 0)
+	    {
+	      meta_warning("selecting mouse name %s (%s) for gdk events.\n",
+	      		   devices->mice[i].name, ((GdkDevice*)(j->data))->name);
+	      gdk_device_set_mode(((GdkDevice*)(j->data)), GDK_MODE_RAW);
+	      break;
+	    }
+	}
+      if (j == NULL)
+	meta_warning("WARNING!! "
+	             "Device %s has not been selected for gdk events!\n",
+		     devices->mice[i].name);
+    }
+
+    gdk_input_set_extension_events (window,
+				    GDK_EXPOSURE_MASK | GDK_BUTTON_PRESS_MASK |
+				    GDK_BUTTON_RELEASE_MASK |
+				    GDK_POINTER_MOTION_MASK | 
+				    GDK_POINTER_MOTION_HINT_MASK |
+				    GDK_ENTER_NOTIFY_MASK |
+				    GDK_LEAVE_NOTIFY_MASK |
+				    GDK_FOCUS_CHANGE_MASK,
+				    GDK_EXTENSION_EVENTS_ALL);
+
+#endif
   return GDK_WINDOW_XID (window);
 }
 

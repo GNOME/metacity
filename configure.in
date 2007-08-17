@@ -558,5 +558,6 @@ if test $(( $(echo $METACITY_MINOR_VERSION) %2)) == "1"; then
    echo -n "Use 2.$stable_version.x for stable "
    echo    "(gnome-2-$stable_version branch in CVS)"
 else
-   echo "This is the stable branch of metacity"
+   echo "This is an UNSTABLE branch of metacity"
+   echo "Code is still ugly. A lot of things will be changed"
 fi

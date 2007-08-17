@@ -29,6 +29,7 @@
 #include <X11/extensions/XInput.h>
 
 #include "common.h"
+/* #include "display.h"  XXX ? */
 
 /* By default, the MetaDevInfo lists have size 8. Almost no client has more
  * than 8 mice or keyboards... */
@@ -36,7 +37,11 @@
 #define DEFAULT_INPUT_ARRAY_SIZE 8
 
 typedef struct _MetaDevices MetaDevices;
+
 /* typedef struct _MetaDevInfo MetaDevInfo; This guy was declared at common.h */
+
+/* TODO: create MetaPtrInfo and MetaKbdInfo, so that you can differentiate it
+ * and force correct type using in function prototypes */
 
 struct _MetaDevInfo
 {
@@ -51,11 +56,28 @@ struct _MetaDevices
   int miceSize;
 
   MetaDevInfo *keyboards;
-  int keybsUsed;
-  int keybsSize;
+  int keybsUsed; /* XXX :%s/keybsUsed/kbdsUsed/g or something else? */
+  int keybsSize; /* I don't like "keybs" */
   MetaDevInfo *pairedPointers;
 };
 
+MetaDevInfo* meta_devices_find_mouse_by_name   (MetaDisplay *display, 
+                                                gchar       *name);
+
+MetaDevInfo* meta_devices_find_mouse_by_id     (MetaDisplay *display,
+                                                XID          id);
+
+MetaDevInfo* meta_devices_find_keyboard_by_id  (MetaDisplay *display,
+                                                XID         id);
+
+MetaDevInfo* meta_devices_find_paired_mouse    (MetaDisplay *display,
+						XID          id);
+
+MetaDevInfo* meta_devices_find_paired_keyboard (MetaDisplay *display,
+						XID          id);
+
+#else
+#error "This branch will ONLY compile if you enable --enable-mpx!"
 #endif
 
 #endif
