@@ -55,16 +55,16 @@ typedef struct MetaCompositor  MetaCompositor;
 /* typedef struct _MetaDisplay    MetaDisplay; XXX */
 typedef struct _MetaFrame      MetaFrame;
 typedef struct _MetaKeyBinding MetaKeyBinding;
-typedef struct _MetaScreen     MetaScreen;
+//typedef struct _MetaScreen     MetaScreen;
 typedef struct _MetaStack      MetaStack;
 typedef struct _MetaUISlave    MetaUISlave;
-typedef struct _MetaWindow     MetaWindow;
+//typedef struct _MetaWindow     MetaWindow;
 typedef struct _MetaWorkspace  MetaWorkspace;
 
 typedef struct _MetaWindowPropHooks MetaWindowPropHooks;
 typedef struct _MetaGroupPropHooks  MetaGroupPropHooks;
 
-typedef struct MetaEdgeResistanceData MetaEdgeResistanceData;
+//typedef struct MetaEdgeResistanceData MetaEdgeResistanceData;
 
 typedef void (* MetaWindowPingFunc) (MetaDisplay *display,
 				     Window       xwindow,
@@ -254,7 +254,7 @@ struct _MetaDisplay
 
   /* Alt+click button grabs */
   unsigned int window_grab_modifiers;
-  
+//#if 0  
   /* current window operation */
   MetaGrabOp  grab_op;
   MetaScreen *grab_screen;
@@ -286,6 +286,7 @@ struct _MetaDisplay
   GList*      grab_old_window_stacking;
   MetaEdgeResistanceData *grab_edge_resistance_data;
   unsigned int grab_last_user_action_was_snap;
+//#endif
 
   /* we use property updates as sentinels for certain window focus events
    * to avoid some race conditions on EnterNotify events

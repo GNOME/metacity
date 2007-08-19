@@ -171,7 +171,7 @@ meta_window_ensure_frame (MetaWindow *window)
 
     }
       /* XXX Should these be called with the keybs as arguments? */
-  for (idev = 0; idev < window->display->devices->miceUsed; idev++)
+  for (idev = 0; idev < window->display->devices->keybsUsed; idev++)
     {
       DeviceFocusIn           (window->display->devices->keyboards[idev].xdev,
       			       window->display->dev_focus_in_type,

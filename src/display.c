@@ -533,8 +533,8 @@ meta_display_open (void)
   {
     /* Check to see the available input devices */
 
-    XDeviceInfo *devsInfo, *devInfo, *auxDevsInfo, *auxDevInfo;
-    int howManyDevices, i, j;
+    XDeviceInfo *devsInfo, *devInfo;
+    int howManyDevices, i;
 
     XID pDevId;
     XDevice *kDev;
@@ -548,8 +548,8 @@ meta_display_open (void)
     /* We should register ourselves as the pairing client here
      * XXX XRegisterPairingClient */
 
-    d->mice = g_malloc(sizeof(XID) * DEFAULT_INPUT_ARRAY_SIZE);
-    d->keyboards = g_malloc(sizeof(XID) * DEFAULT_INPUT_ARRAY_SIZE);
+    d->mice = g_malloc(sizeof(MetaDevInfo) * DEFAULT_INPUT_ARRAY_SIZE);
+    d->keyboards = g_malloc(sizeof(MetaDevInfo) * DEFAULT_INPUT_ARRAY_SIZE);
     d->pairedPointers = g_malloc(sizeof(XID) * DEFAULT_INPUT_ARRAY_SIZE);
 
     d->miceUsed = 0;
@@ -566,9 +566,8 @@ meta_display_open (void)
 	  {
 	    if (d->keybsUsed == d->keybsSize)
 	      {
-		/* FIXME This is broken! See comment in devices.h! */
 		d->keyboards = g_realloc (d->keyboards, 
-		       sizeof(XID) * (d->keybsSize + DEFAULT_INPUT_ARRAY_SIZE));
+	       sizeof(MetaDevInfo) * (d->keybsSize + DEFAULT_INPUT_ARRAY_SIZE));
 		d->pairedPointers = g_realloc(d->pairedPointers,
 		       sizeof(XID) * (d->keybsSize + DEFAULT_INPUT_ARRAY_SIZE));
 		d->keybsSize += DEFAULT_INPUT_ARRAY_SIZE;
@@ -580,36 +579,21 @@ meta_display_open (void)
 	    d->keyboards[d->keybsUsed].xdev = kDev;
 	    d->keyboards[d->keybsUsed].name = 
 	    				   g_strdup_printf("%s", devInfo->name);
+	    d->keyboards[d->keybsUsed].grab_op = NULL;
 
 	    XGetPairedPointer(display->xdisplay, kDev, &pDevId);
-	    meta_warning("opening paired device id %d\n", 
-	                 (int)pDevId); /* XXX */
-	    open = XOpenDevice(display->xdisplay, pDevId);
-	    d->pairedPointers[d->keybsUsed].xdev = open;
+	    d->pairedPointers[d->keybsUsed] = pDevId;
+	    meta_warning("     its paired device has id %d\n",
+	    		 (int)pDevId);
 
-	    /* Look in the device list for a device with the id pDevId
-	     * and then find its name */
-	    auxDevsInfo = devsInfo;
-	    for (j = 0; j < howManyDevices; j++)
-	      {
-		auxDevInfo = &auxDevsInfo[j];
-		if (auxDevInfo->id == pDevId)
-		  break;
-
-	      }
-	    /* XXX if howManyDevices < 1, auxDevInfo is invalid and we will
-	     * segfault here... */
-	    d->pairedPointers[d->keybsUsed].name = 
-				        g_strdup_printf("%s", auxDevInfo->name);
 	    d->keybsUsed++;
-	    meta_warning("   device name = %s\n", auxDevInfo->name); /* XXX */
 	  }
 	else if (devInfo->use == IsXExtensionPointer)
 	  {
 	    if (d->miceUsed == d->miceSize)
 	      {
 	        d->mice = g_realloc(d->mice, 
-	      		sizeof(XID) * (d->miceSize + DEFAULT_INPUT_ARRAY_SIZE));
+	      	sizeof(MetaDevInfo) * (d->miceSize + DEFAULT_INPUT_ARRAY_SIZE));
 		d->miceSize += DEFAULT_INPUT_ARRAY_SIZE;
 	      }
 	    meta_warning("opening device id %d, name %s\n", 
@@ -617,6 +601,7 @@ meta_display_open (void)
 	    open = XOpenDevice(display->xdisplay, devInfo->id);
 	    d->mice[d->miceUsed].xdev = open;
 	    d->mice[d->miceUsed].name = g_strdup_printf("%s", devInfo->name);
+	    d->mice[d->miceUsed].grab_op = NULL;
 	    d->miceUsed++;
 	  }
       }
@@ -1574,7 +1559,7 @@ event_callback (XEvent   *event,
       XDeviceButtonPressedEvent *xdbe;
       xdbe = (XDeviceButtonPressedEvent *)event;
       meta_warning("event_callback: XDeviceButtonPress received... XID = %d\n",
-      		   xdbe->deviceid);
+      		   (int)xdbe->deviceid);
 //      return 0;
     }
 /* XXX */
@@ -2818,6 +2803,10 @@ event_get_modified_window (MetaDisplay *display,
         }
 #endif
 
+      if (event->type == display->dev_key_press_type)
+	return ((XDeviceKeyPressedEvent *)event)->window;
+      if (event->type == display->dev_key_release_type)
+	return ((XDeviceKeyReleasedEvent *)event)->window;
       if (event->type == display->dev_btn_press_type)
 	return ((XDeviceButtonPressedEvent *)event)->window;
       else if (event->type == display->dev_btn_release_type)
@@ -3578,9 +3567,9 @@ meta_display_set_grab_op_cursor (MetaDisplay *display,
 
       DeviceButtonPress   (dev->xdev, display->dev_btn_press_type, 
       			   evclasses[0]); /* XXX use 0!! */
-//      meta_warning("display->dev_btn_press_type = %d\n", display->dev_btn_press_type);
-//      if (display->dev_btn_press_type == 0)
-//	meta_warning("AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII\n");
+      //meta_warning("display->dev_btn_press_type = %d\n", display->dev_btn_press_type);
+      if (display->dev_btn_press_type == 0)
+	meta_warning("HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE\n");
       DeviceButtonRelease (dev->xdev, display->dev_btn_release_type,
       			   evclasses[1]);
       DeviceMotionNotify  (dev->xdev, display->dev_motion_notify_type,
@@ -4164,7 +4153,7 @@ meta_change_button_grab (MetaDisplay *display,
 	   DeviceButtonPress       (dev->xdev, display->dev_btn_press_type, 
 	  		            evclasses[0]);
 
-//           meta_warning("display->dev_btn_press_type = %d\n", display->dev_btn_press_type);
+           //meta_warning("display->dev_btn_press_type = %d\n", display->dev_btn_press_type);
 	   if (display->dev_btn_press_type == 0)
 	     meta_warning("DOOOOOOOOOOODOOOOOOOOOOCAAAAAAACAAAAAAAAA!!\n");
 	   DeviceButtonRelease     (dev->xdev, display->dev_btn_release_type, 

@@ -84,8 +84,11 @@ typedef struct _MetaWindowMenu MetaWindowMenu;
 #ifdef MPX
 /* This was defined here so I don't need to include devices.h on this file */
 typedef struct _MetaDevInfo MetaDevInfo;
-/* XXX */
+/* Stuff moved from display.h to here!  */
 typedef struct _MetaDisplay MetaDisplay;
+typedef struct _MetaScreen  MetaScreen;
+typedef struct _MetaWindow  MetaWindow;
+typedef struct MetaEdgeResistanceData MetaEdgeResistanceData;
 
 typedef void (* MetaWindowMenuFunc) (MetaWindowMenu *menu,
                                      Display        *xdisplay,
@@ -109,6 +112,7 @@ typedef void (* MetaWindowMenuFunc) (MetaWindowMenu *menu,
 /* when changing this enum, there are various switch statements
  * you have to update
  */
+/* There is now one operation per device pair! Remember! */
 typedef enum
 {
   META_GRAB_OP_NONE,

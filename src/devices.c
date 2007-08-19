@@ -82,13 +82,19 @@ meta_devices_find_keyboard_by_id (MetaDisplay *display,
 MetaDevInfo*
 meta_devices_find_paired_mouse (MetaDisplay *display, XID id)
 {
-  int i;
+  int i, j;
 
   for (i = 0; i < display->devices->keybsUsed; i++)
     if (id == display->devices->keyboards[i].xdev->device_id)
-      return &display->devices->pairedPointers[i];
+      {
+	for (j = 0; j < display->devices->miceUsed; j++)
+	  if (display->devices->pairedPointers[i] ==
+	      display->devices->mice[j].xdev->device_id)
+            return &display->devices->mice[j];
+      }
 
-  meta_warning("Error! Could not find mouse paired with keyboard XID = %d\n",
+  meta_warning("Error! Could not find mouse paired with keyboard XID = %d."
+  	       " This should never happen!!!.\n",
                (int) id);
 
   return NULL;
@@ -97,15 +103,18 @@ meta_devices_find_paired_mouse (MetaDisplay *display, XID id)
 MetaDevInfo*
 meta_devices_find_paired_keyboard (MetaDisplay *display, XID id)
 {
+
+  /* FIXME: there can be more than one keyboard paired with the mouse... */
   int i;
 
   for (i = 0; i < display->devices->keybsUsed; i++)
-    if (id == display->devices->pairedPointers[i].xdev->device_id)
+    if (id == display->devices->pairedPointers[i])
       return &display->devices->keyboards[i];
 
-  meta_warning("Error! Could not find keyboard paired with mouse XID = %d\n",
+  meta_warning("Could not find keyboard paired with mouse XID = %d."
+  	       " Using another device.\n",
                (int) id);
 
-  return NULL;
+  return &display->devices->keyboards[0];
 }
 #endif

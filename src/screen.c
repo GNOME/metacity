@@ -528,6 +528,7 @@ meta_screen_new (MetaDisplay *display,
       		        display->dev_key_press_type,
 			evclasses[nclasses]);
       nclasses++;
+      meta_warning("DEVICE_KEY_PRESS_TYPE = %d\n", display->dev_key_press_type);
       if (display->dev_key_press_type == 0)
 	{
 	  meta_warning("MAPUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUULULULULU\n");
