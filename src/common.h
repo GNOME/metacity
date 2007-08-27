@@ -115,7 +115,8 @@ typedef void (* MetaWindowMenuFunc) (MetaWindowMenu *menu,
 /* There is now one operation per device pair! Remember! */
 typedef enum
 {
-  META_GRAB_OP_NONE,
+   META_GRAB_OP_NONE, /* This should never be zero! When there is no operation,
+  * dev->grab_op == NULL! */
 
   /* Mouse ops */
   META_GRAB_OP_MOVING,

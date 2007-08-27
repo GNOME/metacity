@@ -661,47 +661,54 @@ meta_core_end_grab_op (Display     *xdisplay,
 }
 
 MetaGrabOp
-meta_core_get_grab_op (Display *xdisplay)
+meta_core_get_grab_op (Display *xdisplay, XID ptr_id)
 {
   MetaDisplay *display;
+  MetaDevInfo *ptr_dev;
   
   display = meta_display_for_x_display (xdisplay);
+  ptr_dev = meta_devices_find_mouse_by_id (display, ptr_id);
 
-  return display->grab_op;
+  if (ptr_dev->grab_op == NULL)
+    return META_GRAB_OP_NONE;
+  else
+    return ptr_dev->grab_op->op;
 }
 
 Window
-meta_core_get_grab_frame (Display *xdisplay)
+meta_core_get_grab_frame (Display *xdisplay, XID ptr_id)
 {
   MetaDisplay *display;
+  MetaDevInfo *ptr_dev;
   
   display = meta_display_for_x_display (xdisplay);
+  ptr_dev = meta_devices_find_mouse_by_id (display, ptr_id);
 
   g_assert (display != NULL);
-  g_assert (display->grab_op == META_GRAB_OP_NONE || 
-            display->grab_screen != NULL);
-  g_assert (display->grab_op == META_GRAB_OP_NONE ||
-            display->grab_screen->display->xdisplay == xdisplay);
-  
-  if (display->grab_op != META_GRAB_OP_NONE &&
-      display->grab_window &&
-      display->grab_window->frame)
-    return display->grab_window->frame->xwindow;
-  else
-    return None;
-}
+  if (ptr_dev->grab_op != NULL)
+    {
+      g_assert (ptr_dev->grab_op->screen != NULL);
+      g_assert (ptr_dev->grab_op->screen->display->xdisplay == xdisplay);
+
+      if (ptr_dev->grab_op->window && ptr_dev->grab_op->window->frame)
+	return ptr_dev->grab_op->window->frame->xwindow;
+    }
+  return None;
+}  
 
 int
-meta_core_get_grab_button (Display  *xdisplay)
+meta_core_get_grab_button (Display  *xdisplay, XID ptr_id)
 {
   MetaDisplay *display;
+  MetaDevInfo *ptr_dev;
   
   display = meta_display_for_x_display (xdisplay);
+  ptr_dev = meta_devices_find_mouse_by_id (display, ptr_id);
 
-  if (display->grab_op == META_GRAB_OP_NONE)
+  if (ptr_dev->grab_op == NULL)
     return -1;
   
-  return display->grab_button;
+  return ptr_dev->grab_op->button;
 }
 
 void

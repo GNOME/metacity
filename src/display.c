@@ -376,14 +376,14 @@ meta_display_open (void)
   display->autoraise_window = NULL;
   display->focus_window = NULL;
   display->expected_focus_window = NULL;
-  display->grab_old_window_stacking = NULL;
+//  display->grab_old_window_stacking = NULL;
 
   display->mouse_mode = TRUE; /* Only relevant for mouse or sloppy focus */
   display->allow_terminal_deactivation = TRUE; /* Only relevant for when a
                                                   terminal has the focus */
 
 #ifdef HAVE_XSYNC
-  display->grab_sync_request_alarm = None;
+//  display->grab_sync_request_alarm = None;
 #endif
   
   /* FIXME copy the checks from GDK probably */
@@ -629,20 +629,20 @@ meta_display_open (void)
   display->current_time = CurrentTime;
   display->sentinel_counter = 0;
 
-  display->grab_resize_timeout_id = 0;
-  display->grab_have_keyboard = FALSE;
+//  display->grab_resize_timeout_id = 0;
+//  display->grab_have_keyboard = FALSE;
   
 #ifdef HAVE_XKB  
   display->last_bell_time = 0;
 #endif
 
-  display->grab_op = META_GRAB_OP_NONE;
-  display->grab_wireframe_active = FALSE;
-  display->grab_window = NULL;
-  display->grab_screen = NULL;
-  display->grab_resize_popup = NULL;
+//  display->grab_op = META_GRAB_OP_NONE;
+//  display->grab_wireframe_active = FALSE;
+//  display->grab_window = NULL;
+//  display->grab_screen = NULL;
+//  display->grab_resize_popup = NULL;
 
-  display->grab_edge_resistance_data = NULL;
+//  display->grab_edge_resistance_data = NULL;
 
 #ifdef HAVE_XSYNC
   {
@@ -995,6 +995,7 @@ void
 meta_display_close (MetaDisplay *display,
                     guint32      timestamp)
 {
+  int idev;
   GSList *tmp;
 
   if (display->error_traps > 0)
@@ -1006,8 +1007,17 @@ meta_display_close (MetaDisplay *display,
   
   meta_display_remove_autoraise_callback (display);
 
-  if (display->grab_old_window_stacking)
-    g_list_free (display->grab_old_window_stacking);
+
+  for (idev = 0; idev < display->devices->miceUsed; idev++)
+    {
+      if (display->devices->mice[idev].grab_op)
+        {
+          if (display->devices->mice[idev].grab_op->old_window_stacking)
+            g_list_free 
+	            (display->devices->mice[idev].grab_op->old_window_stacking);
+	  g_free (display->devices->mice[idev].grab_op);
+	}
+    }
   
   /* Stop caring about events */
   meta_ui_remove_event_func (display->xdisplay,
@@ -1558,13 +1568,12 @@ event_callback (XEvent   *event,
     {
       XDeviceButtonPressedEvent *xdbe;
       xdbe = (XDeviceButtonPressedEvent *)event;
-      meta_warning("event_callback: XDeviceButtonPress received... XID = %d\n",
-      		   (int)xdbe->deviceid);
+//      meta_warning("event_callback: XDeviceButtonPress received... XID = %d\n",
+//      		   (int)xdbe->deviceid);
 //      return 0;
     }
 /* XXX */
 
-#ifdef MPX
   if (event->type == display->dev_btn_press_type)
     {
       xdbe = (XDeviceButtonPressedEvent *) event;
@@ -1573,15 +1582,6 @@ event_callback (XEvent   *event,
 	  xdbe->button == 5)
 	return FALSE;
     }
-#else
-  if (event->type == ButtonPress)
-    {
-      /* filter out scrollwheel */
-      if (event->xbutton.button == 4 ||
-	  event->xbutton.button == 5)
-	return FALSE;
-    }
-#endif
   else if (event->type == UnmapNotify)
     {
       if (meta_ui_window_should_not_cause_focus (display->xdisplay,
@@ -1593,16 +1593,29 @@ event_callback (XEvent   *event,
                       event->xany.serial);
         }
     }
+#ifdef MPX
+  else if (event->type == display->dev_leave_notify_type &&
+           ((XDeviceCrossingEvent*)event)->mode == NotifyUngrab &&
+           modified == display->ungrab_should_not_cause_focus_window)
+    {
+      add_ignored_serial (display, ((XDeviceCrossingEvent*)event)->serial);
+      meta_topic (META_DEBUG_FOCUS,
+                  "Adding LeaveNotify serial %lu to ignored focus serials\n",
+                  ((XDeviceCrossingEvent*)event)->serial);
+    }
+
+#else
   else if (event->type == LeaveNotify &&
            event->xcrossing.mode == NotifyUngrab &&
            modified == display->ungrab_should_not_cause_focus_window)
     {
+      /* XXX! Use MPX! */
       add_ignored_serial (display, event->xany.serial);
       meta_topic (META_DEBUG_FOCUS,
                   "Adding LeaveNotify serial %lu to ignored focus serials\n",
                   event->xany.serial);
     }
-
+#endif
   if (modified != None)
     window = meta_display_lookup_x_window (display, modified);
   else
@@ -1636,15 +1649,20 @@ event_callback (XEvent   *event,
 
 #ifdef HAVE_XSYNC
   if (META_DISPLAY_HAS_XSYNC (display) && 
-      event->type == (display->xsync_event_base + XSyncAlarmNotify) &&
-      ((XSyncAlarmNotifyEvent*)event)->alarm == display->grab_sync_request_alarm)
+      event->type == (display->xsync_event_base + XSyncAlarmNotify))
     {
-      filter_out_event = TRUE; /* GTK doesn't want to see this really */
-      
-      if (display->grab_op != META_GRAB_OP_NONE &&
-          display->grab_window != NULL &&
-          grab_op_is_mouse (display->grab_op))
-	meta_window_handle_mouse_grab_op_event (display->grab_window, event);
+      int idev;
+
+      for (idev = 0; idev < display->devices->miceUsed; idev++)
+	if (display->devices->mice[idev].grab_op)
+          if (((XSyncAlarmNotifyEvent*)event)->alarm ==
+	      display->devices->mice[idev].grab_op->sync_request_alarm)
+            {
+              filter_out_event = TRUE; /* GTK doesn't want to see this really */
+	      if (display->devices->mice[idev].grab_op->window != NULL &&
+		  grab_op_is_mouse(display->devices->mice[idev].grab_op->op))
+	        meta_window_handle_mouse_grab_op_event (display->devices->mice[idev].grab_op->window, event);
+            }
     }
 #endif /* HAVE_XSYNC */
 
@@ -1849,6 +1867,7 @@ event_callback (XEvent   *event,
     case DestroyNotify:
       if (window)
         {
+	  int idev;
           /* FIXME: It sucks that DestroyNotify events don't come with
            * a timestamp; could we do something better here?  Maybe X
            * will change one day?
@@ -1856,9 +1875,12 @@ event_callback (XEvent   *event,
           guint32 timestamp;
           timestamp = meta_display_get_current_time_roundtrip (display);
 
-          if (display->grab_op != META_GRAB_OP_NONE &&
-              display->grab_window == window)
-            meta_display_end_grab_op (display, NULL, timestamp);
+          for (idev = 0; idev < display->devices->miceUsed; idev++)
+	    if (display->devices->mice[idev].grab_op)
+	      if (display->devices->mice[idev].grab_op->window == window)
+                meta_display_end_grab_op (display,
+					  &display->devices->mice[idev],
+					  timestamp);
           
           if (frame_was_receiver)
             {
@@ -1879,6 +1901,8 @@ event_callback (XEvent   *event,
     case UnmapNotify:
       if (window)
         {
+	  int idev;
+
           /* FIXME: It sucks that UnmapNotify events don't come with
            * a timestamp; could we do something better here?  Maybe X
            * will change one day?
@@ -1886,11 +1910,14 @@ event_callback (XEvent   *event,
           guint32 timestamp;
           timestamp = meta_display_get_current_time_roundtrip (display);
 
-          if (display->grab_op != META_GRAB_OP_NONE &&
-              display->grab_window == window &&
-              ((window->frame == NULL) || !window->frame->mapped))
-            meta_display_end_grab_op (display, NULL, timestamp); /* XXX ? */
-      
+          for (idev = 0; idev < display->devices->miceUsed; idev++)
+	    if (display->devices->mice[idev].grab_op)
+	      if (display->devices->mice[idev].grab_op->window == window &&
+		  ((window->frame == NULL) || !window->frame->mapped))
+                meta_display_end_grab_op (display,
+					  &display->devices->mice[idev],
+					  timestamp);
+
           if (!frame_was_receiver)
             {
               if (window->unmaps_pending == 0)
@@ -2137,7 +2164,9 @@ event_callback (XEvent   *event,
                     }
 
                   if (workspace)
-                    meta_workspace_activate (workspace, time);
+                    meta_workspace_activate (workspace,
+		                   /* XXX */ &display->devices->keyboards[0],
+		    			     time);
                   else
                     meta_verbose ("Don't know about workspace %d\n", space);
                 }
@@ -2273,34 +2302,39 @@ event_callback (XEvent   *event,
       xdbe = (XDeviceButtonEvent *) event;
       dev = meta_devices_find_mouse_by_id (display, xdbe->deviceid);
 
-      if ((window &&
-           grab_op_is_mouse (display->grab_op) &&
-           display->grab_button != (int) xdbe->button &&
-           display->grab_window == window) ||
-          grab_op_is_keyboard (display->grab_op))
+      if (dev->grab_op)
         {
-          meta_topic (META_DEBUG_WINDOW_OPS,
-                      "Ending grab op %u on window %s due to button press\n",
-                      display->grab_op,
-                      (display->grab_window ?
-                       display->grab_window->desc : 
-                       "none"));
-          if (GRAB_OP_IS_WINDOW_SWITCH (display->grab_op))
+          if ((window &&
+               grab_op_is_mouse (dev->grab_op->op) &&
+               dev->grab_op->button != (int) xdbe->button &&
+               dev->grab_op->window == window) ||
+              grab_op_is_keyboard (dev->grab_op->op))
             {
-              MetaScreen *screen;
-              meta_topic (META_DEBUG_WINDOW_OPS, 
-                          "Syncing to old stack positions.\n");
-              screen = 
-                meta_display_screen_for_root (display, xdbe->window);
-              meta_stack_set_positions (screen->stack,
-                                        display->grab_old_window_stacking);
-            }
+              meta_topic (META_DEBUG_WINDOW_OPS,
+                          "Ending grab op %u on device %s window %s due to"
+			  " button press\n",
+                          dev->grab_op->op,
+			  dev->name,
+                          (dev->grab_op->window ?
+                           dev->grab_op->window->desc : 
+                           "none"));
+              if (GRAB_OP_IS_WINDOW_SWITCH (dev->grab_op->op))
+                {
+                  MetaScreen *screen;
+                  meta_topic (META_DEBUG_WINDOW_OPS, 
+                              "Syncing to old stack positions.\n");
+                  screen = 
+                    meta_display_screen_for_root (display, xdbe->window);
+                  meta_stack_set_positions (screen->stack,
+                                            dev->grab_op->old_window_stacking);
+                }
 
-            meta_display_end_grab_op (display,
-	    			      dev,
-                                      xdbe->time);
+                meta_display_end_grab_op (display,
+  	    			          dev,
+                                          xdbe->time);
+            }
         }
-      else if (window && display->grab_op == META_GRAB_OP_NONE)
+      else if (window && dev->grab_op == NULL)
         {
           gboolean begin_move = FALSE;
           unsigned int grab_mask;
@@ -2469,20 +2503,33 @@ event_callback (XEvent   *event,
      }
   else if (event->type == display->dev_btn_release_type)
     {
-       meta_warning("recived XDeviceButtonRelease (where is the button press?)\n");
-       if (display->grab_window == window &&
-           grab_op_is_mouse (display->grab_op))
-         meta_window_handle_mouse_grab_op_event (window, event);
+//       meta_warning("recived XDeviceButtonRelease (where is the button press?)\n");
+
+       MetaDevInfo *ptr_dev;
+
+       ptr_dev = meta_devices_find_mouse_by_id (display, 
+       				((XDeviceButtonReleasedEvent*)event)->deviceid);
+       if (ptr_dev->grab_op)
+         if (ptr_dev->grab_op->window == window &&
+             grab_op_is_mouse (ptr_dev->grab_op->op))
+           meta_window_handle_mouse_grab_op_event (window, event);
     }
   else if (event->type == display->dev_motion_notify_type)
     {
 //       meta_warning("recived XDeviceMotionNotify! display->grab_op = %d, display->grab_window = 0x%x, window = 0x%x\n", display->grab_op, (int)display->grab_window, (int)window);
-       if (display->grab_window == window &&
-           grab_op_is_mouse (display->grab_op))
-         {
-//	   meta_warning("chamando meta_window_handle_mouse_grab_op_event\n");
-           meta_window_handle_mouse_grab_op_event (window, event);
-	 }
+
+       MetaDevInfo *ptr_dev;
+
+       ptr_dev = meta_devices_find_mouse_by_id (display, 
+       				        ((XDeviceMotionEvent*)event)->deviceid);
+
+       if (ptr_dev->grab_op)
+         if (ptr_dev->grab_op->window == window &&
+             grab_op_is_mouse (ptr_dev->grab_op->op))
+           {
+//	     meta_warning("calling meta_window_handle_mouse_grab_op_event\n");
+             meta_window_handle_mouse_grab_op_event (window, event);
+	   }
     }
   else if (event->type == display->dev_focus_in_type || 
            event->type == display->dev_focus_out_type)
@@ -2550,28 +2597,20 @@ event_callback (XEvent   *event,
   else if (event->type == display->dev_enter_notify_type)
     {
       XDeviceCrossingEvent *xdce;
-
-      xdce = (XDeviceCrossingEvent *)event;
-#if 0
-      int idev;
       MetaDevInfo *dev;
 
-      /* XXX make a meta_devices_get_pointer_by_id */
-      for (idev = 0; idev < display->devices->miceUsed; idev++)
-	if (xdce->deviceid == display->devices->mice[idev].xdev->device_id)
-	  dev = &display->devices->mice[idev];
-#endif
-     MetaDevInfo *dev;
-     dev = meta_devices_find_mouse_by_id (display, xdce->deviceid);
+      xdce = (XDeviceCrossingEvent *)event;
+      dev = meta_devices_find_mouse_by_id (display, xdce->deviceid);
 
-//      meta_warning("got a DeviceEnterNotify event!!! woohoo!!!\n");
-      if (display->grab_window == window &&
-          grab_op_is_mouse (display->grab_op))
-        {
-	  /* Wtf???? This does nothing! */
-          meta_window_handle_mouse_grab_op_event (window, event);
-          break;
-        }
+      //meta_warning("got a DeviceEnterNotify event!!! woohoo!!!\n");
+      if (dev->grab_op)
+        if (dev->grab_op->window == window &&
+            grab_op_is_mouse (dev->grab_op->op))
+          {
+	    /* XXX Wtf???? This does nothing! FIXME */
+            meta_window_handle_mouse_grab_op_event (window, event);
+            break;
+          }
 
       /* If the mouse switches screens, active the default window on the new
        * screen; this will make keybindings and workspace-launched items
@@ -2663,23 +2702,20 @@ event_callback (XEvent   *event,
   else if (event->type == display->dev_leave_notify_type)
     {
       XDeviceCrossingEvent *xdce;
+      MetaDevInfo *ptr_dev;
 
       xdce = (XDeviceCrossingEvent *)event;
 
-//      int idev;
-//      MetaDevInfo *dev;
-
-      /* XXX make a meta_devices_get_pointer_by_id */
-//      for (idev = 0; idev < display->devices->miceUsed; idev++)
-//	if (xdce->deviceid == display->devices->mice[idev].xdev->device_id)
-//	  dev = &display->devices->mice[idev];
-
 //      meta_warning("got a DeviceLeaveNotify event!!! woohoo!!!\n");
 
+      ptr_dev = meta_devices_find_mouse_by_id (display, xdce->deviceid);
 
-      if (display->grab_window == window &&
-          grab_op_is_mouse (display->grab_op))
-        meta_window_handle_mouse_grab_op_event (window, event);
+      if (ptr_dev->grab_op)
+        {
+          if (ptr_dev->grab_op->window == window &&
+              grab_op_is_mouse (ptr_dev->grab_op->op))
+            meta_window_handle_mouse_grab_op_event (window, event);
+	}
       else if (window != NULL)
         {
           if (window->type == META_WINDOW_DOCK &&
@@ -2805,9 +2841,9 @@ event_get_modified_window (MetaDisplay *display,
 
       if (event->type == display->dev_key_press_type)
 	return ((XDeviceKeyPressedEvent *)event)->window;
-      if (event->type == display->dev_key_release_type)
+      else if (event->type == display->dev_key_release_type)
 	return ((XDeviceKeyReleasedEvent *)event)->window;
-      if (event->type == display->dev_btn_press_type)
+      else if (event->type == display->dev_btn_press_type)
 	return ((XDeviceButtonPressedEvent *)event)->window;
       else if (event->type == display->dev_btn_release_type)
 	return ((XDeviceButtonReleasedEvent *)event)->window;
@@ -2889,6 +2925,30 @@ event_get_time (MetaDisplay *display,
     case CirculateRequest:
     case MappingNotify:
     default:
+      if (event->type == display->dev_key_press_type)
+        return ((XDeviceKeyPressedEvent *)event)->time;
+      else if (event->type == display->dev_key_release_type)
+        return ((XDeviceKeyReleasedEvent *)event)->time;
+      else if (event->type == display->dev_btn_press_type)
+        return ((XDeviceButtonPressedEvent *)event)->time;
+      else if (event->type == display->dev_btn_release_type)
+        return ((XDeviceButtonReleasedEvent *)event)->time;
+      else if (event->type == display->dev_motion_notify_type)
+        return ((XDeviceMotionEvent *)event)->time;
+      else if (event->type == display->dev_ptr_motion_hint_type)
+        {
+          meta_warning("received dev_ptr_motion_hint_type event!"
+                       " returning NULL for its time!\n");
+          return None;
+        }
+      else if (event->type == display->dev_enter_notify_type)
+        return ((XDeviceEnterWindowEvent *)event)->time;
+      else if (event->type == display->dev_leave_notify_type)
+        return ((XDeviceLeaveWindowEvent *)event)->time;
+      else if (event->type == display->dev_focus_in_type)
+        return ((XDeviceFocusInEvent *)event)->time;
+      else if (event->type == display->dev_focus_out_type)
+        return ((XDeviceFocusOutEvent *)event)->time; 
       return CurrentTime;
     }
 }
@@ -3552,8 +3612,8 @@ meta_display_set_grab_op_cursor (MetaDisplay *display,
         {
           meta_topic (META_DEBUG_WINDOW_OPS,
                       "Error trapped from XChangeActivePointerGrab()\n");
-          if (display->grab_have_pointer)
-            display->grab_have_pointer = FALSE;
+          if (dev->grab_op->have_pointer)
+            dev->grab_op->have_pointer = FALSE;
         }
     }
   else
@@ -3561,7 +3621,6 @@ meta_display_set_grab_op_cursor (MetaDisplay *display,
       g_assert (screen != NULL);
 
       meta_error_trap_push (display);
-#ifdef MPX
       /* XXX: EnterWindowMask, LeaveWindowMask */
       XEventClass evclasses[5];
 
@@ -3583,31 +3642,26 @@ meta_display_set_grab_op_cursor (MetaDisplay *display,
 //      meta_warning("going to XExtendedGrabDevice now for device named %s\n",
 //      		   dev->name);
 
-      if (XExtendedGrabDevice (display->xdisplay, /* dpy */
-	  		dev->xdev,	          /* dev */
-                        grab_xwindow,		  /* grab_win */
-                        GrabModeAsync,		  /* device_mode */
-                        False,                    /* ownerEvents */
-                        screen->xroot, 		  /* confineTo */
-			cursor,		          /* cursor */
-                        5,                      /* event_count */
-                        evclasses,                /* event_list */
-                        0,                        /* generic_event_count */
-			NULL) == GrabSuccess )    /* generic_events */
-#endif
+      if (XExtendedGrabDevice (display->xdisplay,     /* dpy */
+	  		       dev->xdev,	      /* dev */
+                               grab_xwindow,	      /* grab_win */
+                               GrabModeAsync,	      /* device_mode */
+                               False,                 /* ownerEvents */
+                               screen->xroot, 	      /* confineTo */
+			       cursor,		      /* cursor */
+                               5,                     /* event_count */
+                               evclasses,             /* event_list */
+                               0,                     /* generic_event_count */
+			       NULL) == GrabSuccess ) /* generic_events */
         {
-          display->grab_have_pointer = TRUE;
-#ifdef MPX
+          dev->grab_op->have_pointer = TRUE;
 	  meta_topic (META_DEBUG_WINDOW_OPS,
 	  	      "XExtendedGrabDevice() returned GrabSuccess\n");
-#endif
         }
       else
         {
-#ifdef MPX
 	  meta_topic (META_DEBUG_WINDOW_OPS,
 	  	      "XExtendedGrabDevice() failed!\n");
-#endif
         }
       meta_error_trap_pop (display, TRUE);
     }
@@ -3635,10 +3689,11 @@ meta_display_begin_grab_op (MetaDisplay *display,
                             int          root_y)
 {
 
-  meta_warning("meta_display_begin_grab_op called for device named %s\n",
-  	       dev->name);
+//  meta_warning("meta_display_begin_grab_op called for device named %s\n",
+//  	       dev->name);
 
   {
+    /* XXX Debug-only code!!! Don't release this! */
     int i;
     for (i = 0; i < display->devices->keybsUsed; i++)
       if (dev->xdev->device_id == display->devices->keyboards[i].xdev->device_id)
@@ -3663,30 +3718,35 @@ meta_display_begin_grab_op (MetaDisplay *display,
     }
   
 /*  meta_topic (META_DEBUG_WINDOW_OPS, */
-    meta_warning(
-              "Doing grab op %u on window %s button %d pointer already grabbed: %d pointer pos %d,%d\n",
-              op, window ? window->desc : "none", button, pointer_already_grabbed,
-              root_x, root_y);
+    meta_warning("Doing grab op %u on device %s window %s button %d pointer"
+                 " already grabbed: %d pointer pos %d,%d\n",
+                 op, dev->name, window ? window->desc : "none", 
+	         button, pointer_already_grabbed,
+                 root_x, root_y);
   
-  if (display->grab_op != META_GRAB_OP_NONE)
+  if (dev->grab_op != NULL)
     {
-      meta_warning ("Attempt to perform window operation %u on window %s when operation %u on %s already in effect\n",
-                    op, window ? window->desc : "none", display->grab_op,
-                    display->grab_window ? display->grab_window->desc : "none");
+      meta_warning ("Attempt to perform window operation %u on device %s"
+      		    " window %s when operation %u on %s already in effect\n",
+                    op, dev->name, window ? window->desc : "none",
+		    dev->grab_op->op,
+                    dev->grab_op->window ? dev->grab_op->window->desc : "none");
       return FALSE;
     }
+
+  dev->grab_op = g_new0 (MetaGrabOpInfo, 1);
 
   if (window &&
       (meta_grab_op_is_moving (op) || meta_grab_op_is_resizing (op)))
     {
-      meta_warning("moving or resizing!\n");
+//      meta_warning("moving or resizing!\n");
       if (meta_prefs_get_raise_on_click ())
         meta_window_raise (window);
       else
         {
-          display->grab_initial_x = root_x;
-          display->grab_initial_y = root_y;
-          display->grab_threshold_movement_reached = FALSE;
+          dev->grab_op->initial_x = root_x;
+          dev->grab_op->initial_y = root_y;
+          dev->grab_op->threshold_movement_reached = FALSE;
         }
     }
 
@@ -3701,17 +3761,15 @@ meta_display_begin_grab_op (MetaDisplay *display,
   else
     grab_xwindow = screen->xroot;
 
-  display->grab_have_pointer = FALSE;
-  
   if (pointer_already_grabbed)
-    display->grab_have_pointer = TRUE;
+    dev->grab_op->have_pointer = TRUE;
+  else
+    dev->grab_op->have_pointer = FALSE;
 
-#ifdef MPX
   meta_display_set_grab_op_cursor (display, screen, dev, op, FALSE, 
   				   grab_xwindow, timestamp);
-#endif
 
-  if (!display->grab_have_pointer)
+  if (!dev->grab_op->have_pointer)
     {
       meta_topic (META_DEBUG_WINDOW_OPS,
                   "XExtendedGrabDevice() failed\n");
@@ -3721,84 +3779,83 @@ meta_display_begin_grab_op (MetaDisplay *display,
   /* Grab keys for keyboard ops and mouse move/resizes; see #126497 */
   if (grab_op_is_keyboard (op) || grab_op_is_mouse_only (op))
     {
-#ifdef MPX
-      MetaDevInfo *keybDev;
+      MetaDevInfo *paired_kbd;
 
-      keybDev = meta_devices_find_paired_keyboard (display, 
-      						   dev->xdev->device_id);
-#endif
+      paired_kbd = meta_devices_find_paired_keyboard (display, 
+      						      dev->xdev->device_id);
 
       if (window)
-        display->grab_have_keyboard =
-#ifdef MPX
-                     meta_window_grab_all_keys (window, keybDev, timestamp);
-#endif
-
+        dev->grab_op->have_keyboard = meta_window_grab_all_keys (window,
+								 paired_kbd,
+								 timestamp);
       else
-        display->grab_have_keyboard =
-#ifdef MPX
-                     meta_screen_grab_all_keys (screen, dev, timestamp);
-#endif
-      
-      if (!display->grab_have_keyboard)
+        dev->grab_op->have_keyboard = meta_screen_grab_all_keys (screen,
+								 paired_kbd,
+								 timestamp);
+      /* XXX: make paired_kbd = dev->grab_op here??? */
+      if (!dev->grab_op->have_keyboard)
         {
-	    meta_warning(
-/*          meta_topic (META_DEBUG_WINDOW_OPS, */
-                      "grabbing all keys failed, ungrabbing pointer\n");
-          XUngrabDevice (display->xdisplay, dev->xdev, timestamp);
-          display->grab_have_pointer = FALSE;
-          return FALSE;
+	   meta_warning (
+/*           meta_topic (META_DEBUG_WINDOW_OPS, */
+                       "grabbing all keys failed, ungrabbing pointer\n");
+           XExtendedUngrabDevice (display->xdisplay, dev->xdev);
+           dev->grab_op->have_pointer = FALSE;
+	   g_free(dev->grab_op);
+	   dev->grab_op = NULL;
+           return FALSE;
         }
+      else
+        paired_kbd->grab_op = dev->grab_op;
     }
   
-  display->grab_op = op;
-  display->grab_window = window;
-  display->grab_screen = screen;
-  display->grab_xwindow = grab_xwindow;
-  display->grab_button = button;
-  display->grab_mask = modmask;
-  display->grab_anchor_root_x = root_x;
-  display->grab_anchor_root_y = root_y;
-  display->grab_latest_motion_x = root_x;
-  display->grab_latest_motion_y = root_y;
-  display->grab_last_moveresize_time.tv_sec = 0;
-  display->grab_last_moveresize_time.tv_usec = 0;
-  display->grab_motion_notify_time = 0;
-  display->grab_old_window_stacking = NULL;
+  dev->grab_op->op = op;
+  dev->grab_op->window = window;
+  dev->grab_op->screen = screen;
+  dev->grab_op->xwindow = grab_xwindow;
+  dev->grab_op->button = button;
+  dev->grab_op->mask = modmask;
+  dev->grab_op->anchor_root_x = root_x;
+  dev->grab_op->anchor_root_y = root_y;
+  dev->grab_op->latest_motion_x = root_x;
+  dev->grab_op->latest_motion_y = root_y;
+  dev->grab_op->last_moveresize_time.tv_sec = 0;
+  dev->grab_op->last_moveresize_time.tv_usec = 0;
+  dev->grab_op->motion_notify_time = 0;
+  dev->grab_op->old_window_stacking = NULL;
 #ifdef HAVE_XSYNC
-  display->grab_sync_request_alarm = None;
-  display->grab_last_user_action_was_snap = FALSE;
+  dev->grab_op->sync_request_alarm = None;
+  dev->grab_op->last_user_action_was_snap = FALSE;
 #endif
-  display->grab_was_cancelled = FALSE;
-  display->grab_frame_action = frame_action;
+  dev->grab_op->was_cancelled = FALSE;
+  dev->grab_op->frame_action = frame_action;
 
-  if (display->grab_resize_timeout_id)
+  if (dev->grab_op->resize_timeout_id)
     {
-      g_source_remove (display->grab_resize_timeout_id);
-      display->grab_resize_timeout_id = 0;
+      g_source_remove (dev->grab_op->resize_timeout_id);
+      dev->grab_op->resize_timeout_id = 0;
     }
 	
-  if (display->grab_window)
+  if (dev->grab_op->window)
     {
-      meta_window_get_client_root_coords (display->grab_window,
-                                          &display->grab_initial_window_pos);
-      display->grab_anchor_window_pos = display->grab_initial_window_pos;
+      meta_window_get_client_root_coords (dev->grab_op->window,
+                                          &dev->grab_op->initial_window_pos);
+      dev->grab_op->anchor_window_pos = dev->grab_op->initial_window_pos;
 
-      display->grab_wireframe_active =
+      dev->grab_op->wireframe_active =
         (meta_prefs_get_reduced_resources () && !meta_prefs_get_gnome_accessibility ())  && 
-        (meta_grab_op_is_resizing (display->grab_op) ||
-         meta_grab_op_is_moving (display->grab_op));
+        (meta_grab_op_is_resizing (dev->grab_op->op) ||
+         meta_grab_op_is_moving (dev->grab_op->op));
       
-      if (display->grab_wireframe_active)
+      if (dev->grab_op->wireframe_active)
         {
-          meta_window_calc_showing (display->grab_window);
-          meta_window_begin_wireframe (window);
+          meta_window_calc_showing (dev->grab_op->window);
+          meta_window_begin_wireframe (window, dev);
         }
       
 #ifdef HAVE_XSYNC
-      if (!display->grab_wireframe_active &&
-          meta_grab_op_is_resizing (display->grab_op) &&
-          display->grab_window->sync_request_counter != None)
+      if (!dev->grab_op->wireframe_active &&
+          meta_grab_op_is_resizing (dev->grab_op->op) &&
+          dev->grab_op->window->sync_request_counter != None)
         {
           XSyncAlarmAttributes values;
 	  XSyncValue init;
@@ -3812,17 +3869,17 @@ meta_display_begin_grab_op (MetaDisplay *display,
 	  
 	  XSyncIntToValue (&init, 0);
 	  XSyncSetCounter (display->xdisplay,
-			   display->grab_window->sync_request_counter, init);
+			   dev->grab_op->window->sync_request_counter, init);
 	  
-	  display->grab_window->sync_request_serial = 0;
-	  display->grab_window->sync_request_time.tv_sec = 0;
-	  display->grab_window->sync_request_time.tv_usec = 0;
+	  dev->grab_op->window->sync_request_serial = 0;
+	  dev->grab_op->window->sync_request_time.tv_sec = 0;
+	  dev->grab_op->window->sync_request_time.tv_usec = 0;
 	  
-          values.trigger.counter = display->grab_window->sync_request_counter;
+          values.trigger.counter = dev->grab_op->window->sync_request_counter;
           values.trigger.value_type = XSyncAbsolute;
           values.trigger.test_type = XSyncPositiveTransition;
           XSyncIntToValue (&values.trigger.wait_value,
-			   display->grab_window->sync_request_serial + 1);
+			   dev->grab_op->window->sync_request_serial + 1);
 	  
           /* After triggering, increment test_value by this.
            * (NOT wait_value above)
@@ -3832,21 +3889,21 @@ meta_display_begin_grab_op (MetaDisplay *display,
           /* we want events (on by default anyway) */
           values.events = True;
           
-          display->grab_sync_request_alarm = XSyncCreateAlarm (display->xdisplay,
-                                                         XSyncCACounter |
-                                                         XSyncCAValueType |
-                                                         XSyncCAValue |
-                                                         XSyncCATestType |
-                                                         XSyncCADelta |
-                                                         XSyncCAEvents,
-                                                         &values);
+          dev->grab_op->sync_request_alarm = XSyncCreateAlarm(display->xdisplay,
+                                                              XSyncCACounter |
+                                                              XSyncCAValueType |
+                                                              XSyncCAValue |
+                                                              XSyncCATestType |
+                                                              XSyncCADelta |
+                                                              XSyncCAEvents,
+                                                              &values);
 
           if (meta_error_trap_pop_with_return (display, FALSE) != Success)
-	    display->grab_sync_request_alarm = None;
+	    dev->grab_op->sync_request_alarm = None;
 
           meta_topic (META_DEBUG_RESIZING,
                       "Created update alarm 0x%lx\n",
-                      display->grab_sync_request_alarm);
+                      dev->grab_op->sync_request_alarm);
         }
 #endif
     }
@@ -3854,30 +3911,33 @@ meta_display_begin_grab_op (MetaDisplay *display,
 meta_warning(
 /*  meta_topic (META_DEBUG_WINDOW_OPS, */
               "Grab op %u on window %s successful\n",
-              display->grab_op, window ? window->desc : "(null)");
+              dev->grab_op->op, window ? window->desc : "(null)");
 
-  g_assert (display->grab_window != NULL || display->grab_screen != NULL);
-  g_assert (display->grab_op != META_GRAB_OP_NONE);
+  g_assert (dev->grab_op->window != NULL || dev->grab_op->screen != NULL);
+/*  g_assert (display->grab_op != META_GRAB_OP_NONE); XXX */
+/*  g_assert (display->grab_op != META_GRAB_OP_UNUSED);  XXX */
+  /* XXX No need to assert dev->grab_op, because we would have already
+   * segfaulted if it didn't exist... */
 
   /* If this is a move or resize, cache the window edges for
    * resistance/snapping
    */
-  if (meta_grab_op_is_resizing (display->grab_op) || 
-      meta_grab_op_is_moving (display->grab_op))
+  if (meta_grab_op_is_resizing (dev->grab_op->op) || 
+      meta_grab_op_is_moving (dev->grab_op->op))
     {
       meta_topic (META_DEBUG_WINDOW_OPS,
                   "Computing edges to resist-movement or snap-to for %s.\n",
                   window->desc);
-      meta_display_compute_resistance_and_snapping_edges (display);
+      meta_display_compute_resistance_and_snapping_edges (dev);
     }
 
   /* Save the old stacking */
-  if (GRAB_OP_IS_WINDOW_SWITCH (display->grab_op))
+  if (GRAB_OP_IS_WINDOW_SWITCH (dev->grab_op->op))
     {
       meta_topic (META_DEBUG_WINDOW_OPS,
                   "Saving old stack positions; old pointer was %p.\n",
-                  display->grab_old_window_stacking);
-      display->grab_old_window_stacking = 
+                  dev->grab_op->old_window_stacking);
+      dev->grab_op->old_window_stacking = 
         meta_stack_get_positions (screen->stack);
     }
 
@@ -3923,9 +3983,9 @@ meta_warning(
       break;
     }
 
-  if (display->grab_window)
+  if (dev->grab_op->window)
     {
-      meta_window_refresh_resize_popup (display->grab_window);
+      meta_window_refresh_resize_popup (dev->grab_op->window, dev);
     }
   
   return TRUE;
@@ -3937,24 +3997,34 @@ meta_display_end_grab_op (MetaDisplay *display,
                           guint32      timestamp)
 {
 
-//  meta_warning("meta_display_end_grab_op called for device named %s\n",
-//  	       dev->name);
+  meta_warning("meta_display_end_grab_op called for device named %s\n",
+  	       dev->name);
 
   MetaDevInfo *pairedKbd;
 
   meta_topic (META_DEBUG_WINDOW_OPS,
-              "Ending grab op %u at time %u\n", display->grab_op, timestamp);
+              "Ending grab op %u device %s at time %u\n",
+	      dev->grab_op->op, dev->name, timestamp);
   
-  if (display->grab_op == META_GRAB_OP_NONE)
+  if (dev->grab_op == NULL)
     return;
 
-  if (display->grab_window != NULL)
-    display->grab_window->shaken_loose = FALSE;
+  {
+    /* debugging only!!!!!! */
+    if (dev->grab_op->op == META_GRAB_OP_NONE)
+      {
+        meta_warning("found META_GRAB_OP_NONE!!!!!!!\n");
+        sleep (60);
+      }
+  }
+
+  if (dev->grab_op->window != NULL)
+    dev->grab_op->window->shaken_loose = FALSE;
   
-  if (display->grab_window != NULL &&
+  if (dev->grab_op->window != NULL &&
       !meta_prefs_get_raise_on_click () &&
-      (meta_grab_op_is_moving (display->grab_op) ||
-       meta_grab_op_is_resizing (display->grab_op)))
+      (meta_grab_op_is_moving (dev->grab_op->op) ||
+       meta_grab_op_is_resizing (dev->grab_op->op)))
     {
       /* Only raise the window in orthogonal raise
        * ('do-not-raise-on-click') mode if the user didn't try to move
@@ -3962,142 +4032,146 @@ meta_display_end_grab_op (MetaDisplay *display,
        * For raise on click mode, the window was raised at the
        * beginning of the grab_op.
        */
-      if (!display->grab_threshold_movement_reached)
-        meta_window_raise (display->grab_window);
+      if (!dev->grab_op->threshold_movement_reached)
+        meta_window_raise (dev->grab_op->window);
     }
 
-  if (GRAB_OP_IS_WINDOW_SWITCH (display->grab_op) ||
-      display->grab_op == META_GRAB_OP_KEYBOARD_WORKSPACE_SWITCHING)
+  if (GRAB_OP_IS_WINDOW_SWITCH (dev->grab_op->op) ||
+      dev->grab_op->op == META_GRAB_OP_KEYBOARD_WORKSPACE_SWITCHING)
     {
-      meta_ui_tab_popup_free (display->grab_screen->tab_popup);
-      display->grab_screen->tab_popup = NULL;
+      meta_ui_tab_popup_free (dev->grab_op->screen->tab_popup);
+      dev->grab_op->screen->tab_popup = NULL;
 
       /* If the ungrab here causes an EnterNotify, ignore it for
        * sloppy focus
        */
-      display->ungrab_should_not_cause_focus_window = display->grab_xwindow;
+      display->ungrab_should_not_cause_focus_window = dev->grab_op->xwindow;
     }
   
   /* If this was a move or resize clear out the edge cache */
-  if (meta_grab_op_is_resizing (display->grab_op) || 
-      meta_grab_op_is_moving (display->grab_op))
+  if (meta_grab_op_is_resizing (dev->grab_op->op) || 
+      meta_grab_op_is_moving (dev->grab_op->op))
     {
       meta_topic (META_DEBUG_WINDOW_OPS,
                   "Clearing out the edges for resistance/snapping");
-      meta_display_cleanup_edges (display);
+      meta_display_cleanup_edges (dev);
     }
 
-  if (display->grab_old_window_stacking != NULL)
+  if (dev->grab_op->old_window_stacking != NULL)
     {
       meta_topic (META_DEBUG_WINDOW_OPS,
                   "Clearing out the old stack position, which was %p.\n",
-                  display->grab_old_window_stacking);
-      g_list_free (display->grab_old_window_stacking);
-      display->grab_old_window_stacking = NULL;
+                  dev->grab_op->old_window_stacking);
+      g_list_free (dev->grab_op->old_window_stacking);
+      dev->grab_op->old_window_stacking = NULL;
     }
 
-  if (display->grab_wireframe_active)
+  if (dev->grab_op->wireframe_active)
     {
-      display->grab_wireframe_active = FALSE;
-      meta_window_end_wireframe (display->grab_window);
+      dev->grab_op->wireframe_active = FALSE;
+      meta_window_end_wireframe (dev->grab_op->window, dev);
 
-      if (!display->grab_was_cancelled)
+      if (!dev->grab_op->was_cancelled)
         {
-          if (meta_grab_op_is_moving (display->grab_op))
-            meta_window_move (display->grab_window,
+          if (meta_grab_op_is_moving (dev->grab_op->op))
+            meta_window_move (dev->grab_op->window,
 	    		      dev,
                               TRUE,
-                              display->grab_wireframe_rect.x,
-                              display->grab_wireframe_rect.y);
-          if (meta_grab_op_is_resizing (display->grab_op))
-            meta_window_resize_with_gravity (display->grab_window,
+                              dev->grab_op->wireframe_rect.x,
+                              dev->grab_op->wireframe_rect.y);
+          if (meta_grab_op_is_resizing (dev->grab_op->op))
+            meta_window_resize_with_gravity (dev->grab_op->window,
 	    				     dev,
                                              TRUE,
-                                             display->grab_wireframe_rect.width,
-                                             display->grab_wireframe_rect.height,
-                                             meta_resize_gravity_from_grab_op (display->grab_op));
+                                             dev->grab_op->wireframe_rect.width,
+                                            dev->grab_op->wireframe_rect.height,
+                           meta_resize_gravity_from_grab_op (dev->grab_op->op));
         }
-      meta_window_calc_showing (display->grab_window);
+      meta_window_calc_showing (dev->grab_op->window);
     }
 
   if (display->compositor &&
-      display->grab_window &&
-      grab_op_is_mouse (display->grab_op) && 
-      meta_grab_op_is_moving (display->grab_op))
+      dev->grab_op->window &&
+      grab_op_is_mouse (dev->grab_op->op) && 
+      meta_grab_op_is_moving (dev->grab_op->op))
     {
       meta_compositor_end_move (display->compositor,
-				display->grab_window);
+				dev->grab_op->window);
     }
   
-  if (display->grab_have_pointer)
+  if (dev->grab_op->have_pointer)
     {
       meta_topic (META_DEBUG_WINDOW_OPS,
-                  "Ungrabbing pointer with timestamp %u\n", timestamp);
+                  "Ungrabbing pointer %s with timestamp %u\n",
+		  dev->name, timestamp);
       XExtendedUngrabDevice (display->xdisplay, dev->xdev);
     }
 
-  if (display->grab_have_keyboard)
+  if (dev->grab_op->have_keyboard)
     {
-#if 0
-      int idev;
-      for (idev = 0; idev < display->devices->keybsUsed; idev++)
-	if (&display->devices->pairedPointers[idev] == dev)
-	  pairedKbd = &display->devices->keyboards[idev];
-      if (pairedKbd == NULL)
-	meta_warning("we have a pointer with no associated keyboard!!\n"); /* XXX */
-#endif
+      /* XXX: there can be more than one keyboard paired with the same mouse! */
       pairedKbd = meta_devices_find_paired_keyboard (display, 
       						     dev->xdev->device_id);
       meta_topic (META_DEBUG_WINDOW_OPS,
                   "Ungrabbing all keys timestamp %u\n", timestamp);
-      if (display->grab_window)
-        meta_window_ungrab_all_keys (display->grab_window, 
+      if (dev->grab_op->window)
+        meta_window_ungrab_all_keys (dev->grab_op->window, 
 				     pairedKbd, timestamp);
       else
-        meta_screen_ungrab_all_keys (display->grab_screen, 
+        meta_screen_ungrab_all_keys (dev->grab_op->screen, 
 				     pairedKbd, timestamp);
+
+      pairedKbd->grab_op = NULL;
     }
 
 #ifdef HAVE_XSYNC
-  if (display->grab_sync_request_alarm != None)
+  if (dev->grab_op->sync_request_alarm != None)
     {
       XSyncDestroyAlarm (display->xdisplay,
-                         display->grab_sync_request_alarm);
-      display->grab_sync_request_alarm = None;
+                         dev->grab_op->sync_request_alarm);
+      dev->grab_op->sync_request_alarm = None;
     }
 #endif /* HAVE_XSYNC */
   
-  display->grab_window = NULL;
-  display->grab_screen = NULL;
-  display->grab_xwindow = None;
-  display->grab_op = META_GRAB_OP_NONE;
+  dev->grab_op->window = NULL;
+  dev->grab_op->screen = NULL;
+  dev->grab_op->xwindow = None;
+/*  dev->grab_op->op = META_GRAB_OP_NONE; */
 
-  if (display->grab_resize_popup)
+  if (dev->grab_op->resize_popup)
     {
-      meta_ui_resize_popup_free (display->grab_resize_popup);
-      display->grab_resize_popup = NULL;
+      meta_ui_resize_popup_free (dev->grab_op->resize_popup);
+      dev->grab_op->resize_popup = NULL;
     }
 
-  if (display->grab_resize_timeout_id)
+  if (dev->grab_op->resize_timeout_id)
     {
-      g_source_remove (display->grab_resize_timeout_id);
-      display->grab_resize_timeout_id = 0;
+      g_source_remove (dev->grab_op->resize_timeout_id);
+      dev->grab_op->resize_timeout_id = 0;
     }
+
+  g_free (dev->grab_op);
+  dev->grab_op = NULL;
 }
 
 void
 meta_display_check_threshold_reached (MetaDisplay *display,
+				      MetaDevInfo *ptr_dev,
                                       int          x,
                                       int          y)
 {
   /* Don't bother doing the check again if we've already reached the threshold */
-  if (meta_prefs_get_raise_on_click () ||
-      display->grab_threshold_movement_reached)
-    return;
 
-  if (ABS (display->grab_initial_x - x) >= 8 ||
-      ABS (display->grab_initial_y - y) >= 8)
-    display->grab_threshold_movement_reached = TRUE;
+  if (ptr_dev->grab_op)
+    {
+      if (meta_prefs_get_raise_on_click () ||
+          ptr_dev->grab_op->threshold_movement_reached)
+        return;
+
+      if (ABS (ptr_dev->grab_op->initial_x - x) >= 8 ||
+          ABS (ptr_dev->grab_op->initial_y - y) >= 8)
+        ptr_dev->grab_op->threshold_movement_reached = TRUE;
+    }
 }
 
 static void

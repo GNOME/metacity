@@ -272,6 +272,7 @@ meta_workspace_queue_calc_showing  (MetaWorkspace *workspace)
 
 void
 meta_workspace_activate_with_focus (MetaWorkspace *workspace,
+				    MetaDevInfo   *kbd_dev,
                                     MetaWindow    *focus_this,
                                     guint32        timestamp)
 {
@@ -302,9 +303,9 @@ meta_workspace_activate_with_focus (MetaWorkspace *workspace,
     return;
 
   move_window = NULL;
-  if (workspace->screen->display->grab_op == META_GRAB_OP_MOVING ||
-      workspace->screen->display->grab_op == META_GRAB_OP_KEYBOARD_MOVING)
-    move_window = workspace->screen->display->grab_window;
+  if (kbd_dev->grab_op->op == META_GRAB_OP_MOVING ||
+      kbd_dev->grab_op->op == META_GRAB_OP_KEYBOARD_MOVING)
+    move_window = kbd_dev->grab_op->window;
       
   if (move_window != NULL)
     {
@@ -333,8 +334,9 @@ meta_workspace_activate_with_focus (MetaWorkspace *workspace,
 
   if (focus_this)
     {
+      meta_warning("this should be a kbd: %s\n", kbd_dev->name);
       meta_window_focus (focus_this, 
-      			 &focus_this->display->devices->keyboards[0], /* XXX */
+      			 kbd_dev,
 			 timestamp);
       meta_window_raise (focus_this);
     }
@@ -346,16 +348,17 @@ meta_workspace_activate_with_focus (MetaWorkspace *workspace,
     {
       meta_topic (META_DEBUG_FOCUS, "Focusing default window on new workspace\n");
       meta_workspace_focus_default_window (workspace,
-                          /* XXX */ &focus_this->display->devices->keyboards[0],
+                          		   kbd_dev,
       					   NULL, timestamp);
     }
 }
 
 void
 meta_workspace_activate (MetaWorkspace *workspace,
+			 MetaDevInfo   *dev,
                          guint32        timestamp)
 {
-  meta_workspace_activate_with_focus (workspace, NULL, timestamp);
+  meta_workspace_activate_with_focus (workspace, dev, NULL, timestamp);
 }
 
 int

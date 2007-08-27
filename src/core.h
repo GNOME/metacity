@@ -175,23 +175,26 @@ void meta_core_get_menu_accelerator (MetaMenuOp           menu_op,
                                      unsigned int        *keysym,
                                      MetaVirtualModifier *modifiers);
 
-gboolean   meta_core_begin_grab_op (Display     *xdisplay,
-				    MetaDevInfo *dev,
-                                    Window       frame_xwindow,
-                                    MetaGrabOp   op,
-                                    gboolean     pointer_already_grabbed,
-                                    gboolean     frame_action,
-                                    int          button,
-                                    gulong       modmask,
-                                    guint32      timestamp,
-                                    int          root_x,
-                                    int          root_y);
-void       meta_core_end_grab_op   (Display     *xdisplay,
-				    MetaDevInfo *xdev,
-                                    guint32      timestamp);
-MetaGrabOp meta_core_get_grab_op     (Display    *xdisplay);
-Window     meta_core_get_grab_frame  (Display   *xdisplay);
-int        meta_core_get_grab_button (Display  *xdisplay);
+gboolean   meta_core_begin_grab_op (Display      *xdisplay,
+				    MetaDevInfo  *dev,
+                                    Window        frame_xwindow,
+                                    MetaGrabOp    op,
+                                    gboolean      pointer_already_grabbed,
+                                    gboolean      frame_action,
+                                    int           button,
+                                    gulong        modmask,
+                                    guint32       timestamp,
+                                    int           root_x,
+                                    int           root_y);
+void       meta_core_end_grab_op   (Display      *xdisplay,
+				    MetaDevInfo  *xdev,
+                                    guint32       timestamp);
+MetaGrabOp meta_core_get_grab_op     (Display    *xdisplay,
+				      XID         ptr_id);
+Window     meta_core_get_grab_frame  (Display    *xdisplay,
+				      XID         ptr_id);
+int        meta_core_get_grab_button (Display    *xdisplay,
+				      XID         ptr_id);
 
 
 void       meta_core_grab_buttons  (Display     *xdisplay,

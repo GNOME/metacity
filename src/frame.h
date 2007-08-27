@@ -75,7 +75,8 @@ void meta_frame_calc_geometry      (MetaFrame         *frame,
 void meta_frame_sync_to_window     (MetaFrame         *frame,
                                     int                gravity,
                                     gboolean           need_move,
-                                    gboolean           need_resize);
+                                    gboolean           need_resize,
+				    MetaWindow        *grab_window);
 
 void meta_frame_set_screen_cursor (MetaFrame	*frame,
 				   MetaCursor	cursor);

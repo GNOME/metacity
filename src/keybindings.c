@@ -1229,10 +1229,10 @@ ungrab_all_keys (MetaDisplay *display,
 void
 meta_screen_grab_keys (MetaScreen *screen, MetaDevInfo *dev)
 {
-  if (screen->all_keys_grabbed)
+  if (meta_devices_list_is_member (&screen->all_keys_grabbed, dev))
     return;
 
-  if (screen->keys_grabbed)
+  if (meta_devices_list_is_member (&screen->keys_grabbed, dev))
     return;
 
   grab_keys (dev,
@@ -1240,34 +1240,34 @@ meta_screen_grab_keys (MetaScreen *screen, MetaDevInfo *dev)
              screen->display->n_screen_bindings,
              screen->display, screen->xroot);
 
-  screen->keys_grabbed = TRUE;
+  meta_devices_list_add (&screen->keys_grabbed, dev);
 }
 
 void
 meta_screen_ungrab_keys (MetaScreen *screen, MetaDevInfo *dev)
 {
-  if (screen->keys_grabbed)
+  if (meta_devices_list_is_member (&screen->keys_grabbed, dev))
     {
       ungrab_all_keys (screen->display, dev, screen->xroot);
-      screen->keys_grabbed = FALSE;
+      meta_devices_list_remove (&screen->keys_grabbed, dev);
     }
 }
 
 void
 meta_window_grab_keys (MetaWindow  *window, MetaDevInfo *dev)
 {
-  if (window->all_keys_grabbed)
+  if (meta_devices_list_is_member(&window->all_keys_grabbed, dev))
     return;
 
   if (window->type == META_WINDOW_DOCK)
     {
-      if (window->keys_grabbed)
+      if (meta_devices_list_is_member(&window->keys_grabbed, dev))
         ungrab_all_keys (window->display, dev, window->xwindow);
-      window->keys_grabbed = FALSE;
+      meta_devices_list_remove (&window->keys_grabbed, dev);
       return;
     }
   
-  if (window->keys_grabbed)
+  if (meta_devices_list_is_member (&window->keys_grabbed, dev))
     {
       if (window->frame && !window->grab_on_frame)
         ungrab_all_keys (window->display, dev, window->xwindow);
@@ -1284,14 +1284,14 @@ meta_window_grab_keys (MetaWindow  *window, MetaDevInfo *dev)
              window->display,
              window->frame ? window->frame->xwindow : window->xwindow);
 
-  window->keys_grabbed = TRUE;
+  meta_devices_list_add (&window->keys_grabbed, dev);
   window->grab_on_frame = window->frame != NULL;
 }
 
 void
 meta_window_ungrab_keys (MetaWindow *window, MetaDevInfo *dev)
 {
-  if (window->keys_grabbed)
+  if (meta_devices_list_is_member (&window->keys_grabbed, dev))
     {
       if (window->grab_on_frame &&
           window->frame != NULL)
@@ -1301,7 +1301,7 @@ meta_window_ungrab_keys (MetaWindow *window, MetaDevInfo *dev)
         ungrab_all_keys (window->display, dev,
                          window->xwindow);
 
-      window->keys_grabbed = FALSE;
+      meta_devices_list_remove (&window->keys_grabbed, dev);
     }
 }
 
@@ -1349,7 +1349,6 @@ grab_keyboard (MetaDisplay *display,
 
 #ifdef MPX
   /* XXX No event classes?? */
-#warning grabbing stuff with no evclasses
   grab_status = XGrabDevice (display->xdisplay,
   			     dev->xdev,
 			     xwindow,
@@ -1403,26 +1402,22 @@ ungrab_keyboard (MetaDisplay *display,
 }
 
 gboolean
-#ifdef MPX
 meta_screen_grab_all_keys (MetaScreen *screen, MetaDevInfo *dev,
 			   guint32 timestamp)
-#else
-meta_screen_grab_all_keys (MetaScreen *screen, guint32 timestamp)
-#endif
 {
   gboolean retval;
 
-  if (screen->all_keys_grabbed)
+  if (meta_devices_list_is_member(&screen->all_keys_grabbed, dev))
     return FALSE;
   
-  if (screen->keys_grabbed)
+  if (meta_devices_list_is_member(&screen->keys_grabbed, dev))
     meta_screen_ungrab_keys (screen, dev);
 
   meta_topic (META_DEBUG_KEYBINDINGS,
-              "Grabbing all keys on RootWindow\n");
+              "Grabbing all keys on RootWindow for device %s\n", dev->name);
   retval = grab_keyboard (screen->display, dev, screen->xroot, timestamp);
   if (retval)
-    screen->all_keys_grabbed = TRUE;
+    meta_devices_list_add (&screen->all_keys_grabbed, dev);
   else
     meta_screen_grab_keys (screen, dev);
 
@@ -1434,12 +1429,12 @@ meta_screen_ungrab_all_keys (MetaScreen *screen,
 			     MetaDevInfo *dev,
 			     guint32 timestamp)
 {
-  if (screen->all_keys_grabbed)
+  if (meta_devices_list_is_member (&screen->all_keys_grabbed, dev))
     {
       ungrab_keyboard (screen->display, dev, timestamp);
 
-      screen->all_keys_grabbed = FALSE;
-      screen->keys_grabbed = FALSE;
+      meta_devices_list_remove (&screen->all_keys_grabbed, dev);
+      meta_devices_list_remove (&screen->keys_grabbed, dev);
 
       /* Re-establish our standard bindings */
       meta_screen_grab_keys (screen, dev);
@@ -1447,22 +1442,17 @@ meta_screen_ungrab_all_keys (MetaScreen *screen,
 }
 
 gboolean
-#ifdef MPX
 meta_window_grab_all_keys (MetaWindow  *window,
 			   MetaDevInfo *dev,
                            guint32      timestamp)
-#else
-meta_window_grab_all_keys (MetaWindow  *window,
-                           guint32      timestamp)
-#endif
 {
   Window grabwindow;
   gboolean retval;
   
-  if (window->all_keys_grabbed)
+  if (meta_devices_list_is_member (&window->all_keys_grabbed, dev))
     return FALSE;
   
-  if (window->keys_grabbed)
+  if (meta_devices_list_is_member (&window->keys_grabbed, dev))
     meta_window_ungrab_keys (window, dev);
 
   /* Make sure the window is focused, otherwise the grab
@@ -1477,15 +1467,11 @@ meta_window_grab_all_keys (MetaWindow  *window,
 
   meta_topic (META_DEBUG_KEYBINDINGS,
               "Grabbing all keys on window %s\n", window->desc);
-#ifdef MPX
   retval = grab_keyboard (window->display, dev, grabwindow, timestamp);
-#else
-  retval = grab_keyboard (window->display, grabwindow, timestamp);
-#endif
   if (retval)
     {
-      window->keys_grabbed = FALSE;
-      window->all_keys_grabbed = TRUE;
+      meta_devices_list_remove (&window->keys_grabbed, dev);
+      meta_devices_list_add (&window->all_keys_grabbed, dev);
       window->grab_on_frame = window->frame != NULL;
     }
 
@@ -1499,13 +1485,13 @@ meta_window_ungrab_all_keys (MetaWindow  *window,
 {
 
 
-  if (window->all_keys_grabbed)
+  if (meta_devices_list_is_member (&window->all_keys_grabbed, dev))
     {
       ungrab_keyboard (window->display, dev, timestamp);
 
       window->grab_on_frame = FALSE;
-      window->all_keys_grabbed = FALSE;
-      window->keys_grabbed = FALSE;
+      meta_devices_list_remove (&window->all_keys_grabbed, dev);
+      meta_devices_list_remove (&window->keys_grabbed, dev);
 
       /* Re-establish our standard bindings */
       meta_window_grab_keys (window, dev);
@@ -1817,7 +1803,9 @@ meta_display_process_key_event (MetaDisplay     *display,
               str ? str : "none", xdke->state,
               window ? window->desc : "(no window)");
 
-  all_keys_grabbed = window ? window->all_keys_grabbed : screen->all_keys_grabbed;
+  all_keys_grabbed = window ? 
+  		    meta_devices_list_is_member(&window->all_keys_grabbed, dev):
+		    meta_devices_list_is_member(&screen->all_keys_grabbed, dev);
   if (!all_keys_grabbed)
     {
       /* Do the normal keybindings */
@@ -1835,7 +1823,7 @@ meta_display_process_key_event (MetaDisplay     *display,
       return;
     }
 
-  if (display->grab_op == META_GRAB_OP_NONE)
+  if (dev->grab_op == NULL)
     return;    
 
   /* If we get here we have a global grab, because
@@ -1845,10 +1833,10 @@ meta_display_process_key_event (MetaDisplay     *display,
   
   handled = FALSE;
 
-  if (window ? (window == display->grab_window) :
-               (screen == display->grab_screen))
+  if (window ? (window == dev->grab_op->window) :
+               (screen == dev->grab_op->screen))
     {
-      switch (display->grab_op)
+      switch (dev->grab_op->op)
         {
         case META_GRAB_OP_MOVING:
         case META_GRAB_OP_RESIZING_SE:
@@ -1916,8 +1904,8 @@ meta_display_process_key_event (MetaDisplay     *display,
   if (!handled)
     {
       meta_topic (META_DEBUG_KEYBINDINGS,
-                  "Ending grab op %u on key event sym %s\n",
-                  display->grab_op, XKeysymToString (keysym));
+                  "Ending grab op %u on device %s key event sym %s\n",
+                  dev->grab_op->op, dev->name, XKeysymToString (keysym));
       meta_display_end_grab_op (display, 
       			        dev,
 				xdke->time);
@@ -1953,16 +1941,16 @@ process_mouse_move_resize_grab (MetaDisplay     *display,
 			      dev,
                               META_MAXIMIZE_HORIZONTAL |
                               META_MAXIMIZE_VERTICAL);
-      else if (!display->grab_wireframe_active)
-        meta_window_move_resize (display->grab_window,
+      else if (!dev->grab_op->wireframe_active)
+        meta_window_move_resize (dev->grab_op->window,
 				 dev,
                                  TRUE,
-                                 display->grab_initial_window_pos.x,
-                                 display->grab_initial_window_pos.y,
-                                 display->grab_initial_window_pos.width,
-                                 display->grab_initial_window_pos.height);
+                                 dev->grab_op->initial_window_pos.x,
+                                 dev->grab_op->initial_window_pos.y,
+                                 dev->grab_op->initial_window_pos.width,
+                                 dev->grab_op->initial_window_pos.height);
       else
-        display->grab_was_cancelled = TRUE;
+        dev->grab_op->was_cancelled = TRUE;
 
       /* End grab, since this was an "unhandled" keypress */
       return FALSE;
@@ -2000,10 +1988,10 @@ process_keyboard_move_grab (MetaDisplay     *display,
   if (is_modifier (display, xdke->keycode))
     return TRUE;
 
-  if (display->grab_wireframe_active)
+  if (dev->grab_op->wireframe_active)
     {
-      x = display->grab_wireframe_rect.x;
-      y = display->grab_wireframe_rect.y;
+      x = dev->grab_op->wireframe_rect.x;
+      y = dev->grab_op->wireframe_rect.y;
     }
   else
     {
@@ -2036,16 +2024,16 @@ process_keyboard_move_grab (MetaDisplay     *display,
 			      dev,
                               META_MAXIMIZE_HORIZONTAL |
                               META_MAXIMIZE_VERTICAL);
-      else if (!display->grab_wireframe_active)
-        meta_window_move_resize (display->grab_window,
+      else if (!dev->grab_op->wireframe_active)
+        meta_window_move_resize (dev->grab_op->window,
 				 dev,
                                  TRUE,
-                                 display->grab_initial_window_pos.x,
-                                 display->grab_initial_window_pos.y,
-                                 display->grab_initial_window_pos.width,
-                                 display->grab_initial_window_pos.height);
+                                 dev->grab_op->initial_window_pos.x,
+                                 dev->grab_op->initial_window_pos.y,
+                                 dev->grab_op->initial_window_pos.width,
+                                 dev->grab_op->initial_window_pos.height);
       else
-        display->grab_was_cancelled = TRUE;
+        dev->grab_op->was_cancelled = TRUE;
     }
   
   /* When moving by increments, we still snap to edges if the move
@@ -2096,12 +2084,13 @@ process_keyboard_move_grab (MetaDisplay     *display,
                   "Computed new window location %d,%d due to keypress\n",
                   x, y);
 
-      if (display->grab_wireframe_active)
-        old_rect = display->grab_wireframe_rect;
+      if (dev->grab_op->wireframe_active)
+        old_rect = dev->grab_op->wireframe_rect;
       else
         meta_window_get_client_root_coords (window, &old_rect);
 
-      meta_window_edge_resistance_for_move (window, 
+      meta_window_edge_resistance_for_move (window,
+      					    dev, 
                                             old_rect.x,
                                             old_rect.y,
                                             &x,
@@ -2110,18 +2099,18 @@ process_keyboard_move_grab (MetaDisplay     *display,
                                             smart_snap,
                                             TRUE);
 
-      if (display->grab_wireframe_active)
+      if (dev->grab_op->wireframe_active)
         {
-          meta_window_update_wireframe (window, x, y,
-                                        display->grab_wireframe_rect.width,
-                                        display->grab_wireframe_rect.height);
+          meta_window_update_wireframe (window, dev, x, y,
+                                        dev->grab_op->wireframe_rect.width,
+                                        dev->grab_op->wireframe_rect.height);
         }
       else
         {
           meta_window_move (window, dev, TRUE, x, y);
         }
       
-      meta_window_update_keyboard_move (window);
+      meta_window_update_keyboard_move (dev, window);
     }
 
   return handled;
@@ -2135,31 +2124,37 @@ process_keyboard_resize_grab_op_change (MetaDisplay     *display,
                                         KeySym           keysym)
 {
   gboolean handled;
+  MetaDevInfo *dev;
+
+  dev = meta_devices_find_keyboard_by_id (display, xdke->deviceid);
+
+  if (!dev->grab_op)
+    return FALSE;
 
   handled = FALSE;
-  switch (display->grab_op)
+  switch (dev->grab_op->op)
     {
     case META_GRAB_OP_KEYBOARD_RESIZING_UNKNOWN:
       switch (keysym)
         {
         case XK_Up:
         case XK_KP_Up:
-          display->grab_op = META_GRAB_OP_KEYBOARD_RESIZING_N;          
+          dev->grab_op->op = META_GRAB_OP_KEYBOARD_RESIZING_N;          
           handled = TRUE;
           break;
         case XK_Down:
         case XK_KP_Down:
-          display->grab_op = META_GRAB_OP_KEYBOARD_RESIZING_S;
+          dev->grab_op->op = META_GRAB_OP_KEYBOARD_RESIZING_S;
           handled = TRUE;
           break;
         case XK_Left:
         case XK_KP_Left:
-          display->grab_op = META_GRAB_OP_KEYBOARD_RESIZING_W;
+          dev->grab_op->op = META_GRAB_OP_KEYBOARD_RESIZING_W;
           handled = TRUE;
           break;
         case XK_Right:
         case XK_KP_Right:
-          display->grab_op = META_GRAB_OP_KEYBOARD_RESIZING_E;
+          dev->grab_op->op = META_GRAB_OP_KEYBOARD_RESIZING_E;
           handled = TRUE;
           break;
         }
@@ -2170,12 +2165,12 @@ process_keyboard_resize_grab_op_change (MetaDisplay     *display,
         {
         case XK_Left:
         case XK_KP_Left:
-          display->grab_op = META_GRAB_OP_KEYBOARD_RESIZING_W;
+          dev->grab_op->op = META_GRAB_OP_KEYBOARD_RESIZING_W;
           handled = TRUE;
           break;
         case XK_Right:
         case XK_KP_Right:
-          display->grab_op = META_GRAB_OP_KEYBOARD_RESIZING_E;
+          dev->grab_op->op = META_GRAB_OP_KEYBOARD_RESIZING_E;
           handled = TRUE;
           break;
         }
@@ -2186,12 +2181,12 @@ process_keyboard_resize_grab_op_change (MetaDisplay     *display,
         {
         case XK_Left:
         case XK_KP_Left:
-          display->grab_op = META_GRAB_OP_KEYBOARD_RESIZING_W;
+          dev->grab_op->op = META_GRAB_OP_KEYBOARD_RESIZING_W;
           handled = TRUE;
           break;
         case XK_Right:
         case XK_KP_Right:
-          display->grab_op = META_GRAB_OP_KEYBOARD_RESIZING_E;
+          dev->grab_op->op = META_GRAB_OP_KEYBOARD_RESIZING_E;
           handled = TRUE;
           break;
         }
@@ -2202,12 +2197,12 @@ process_keyboard_resize_grab_op_change (MetaDisplay     *display,
         {
         case XK_Up:
         case XK_KP_Up:
-          display->grab_op = META_GRAB_OP_KEYBOARD_RESIZING_N;          
+          dev->grab_op->op = META_GRAB_OP_KEYBOARD_RESIZING_N;          
           handled = TRUE;
           break;
         case XK_Down:
         case XK_KP_Down:
-          display->grab_op = META_GRAB_OP_KEYBOARD_RESIZING_S;
+          dev->grab_op->op = META_GRAB_OP_KEYBOARD_RESIZING_S;
           handled = TRUE;
           break;
         }
@@ -2218,12 +2213,12 @@ process_keyboard_resize_grab_op_change (MetaDisplay     *display,
         {
         case XK_Up:
         case XK_KP_Up:
-          display->grab_op = META_GRAB_OP_KEYBOARD_RESIZING_N; 
+          dev->grab_op->op = META_GRAB_OP_KEYBOARD_RESIZING_N; 
           handled = TRUE;
           break;
         case XK_Down:
         case XK_KP_Down:
-          display->grab_op = META_GRAB_OP_KEYBOARD_RESIZING_S;
+          dev->grab_op->op = META_GRAB_OP_KEYBOARD_RESIZING_S;
           handled = TRUE;
           break;
         }
@@ -2242,7 +2237,7 @@ process_keyboard_resize_grab_op_change (MetaDisplay     *display,
 
   if (handled)
     {
-      meta_window_update_keyboard_resize (window, TRUE);
+      meta_window_update_keyboard_resize (dev, window, TRUE);
       return TRUE; 
     }
 
@@ -2283,16 +2278,16 @@ process_keyboard_resize_grab (MetaDisplay     *display,
        * we need to avoid moveresizing to the position of the
        * wireframe.
        */
-      if (!display->grab_wireframe_active)
-        meta_window_move_resize (display->grab_window,
+      if (!dev->grab_op->wireframe_active)
+        meta_window_move_resize (dev->grab_op->window,
 				 dev,
                                  TRUE,
-                                 display->grab_initial_window_pos.x,
-                                 display->grab_initial_window_pos.y,
-                                 display->grab_initial_window_pos.width,
-                                 display->grab_initial_window_pos.height);
+                                 dev->grab_op->initial_window_pos.x,
+                                 dev->grab_op->initial_window_pos.y,
+                                 dev->grab_op->initial_window_pos.width,
+                                 dev->grab_op->initial_window_pos.height);
       else
-        display->grab_was_cancelled = TRUE;
+        dev->grab_op->was_cancelled = TRUE;
 
       return FALSE;
     }
@@ -2301,10 +2296,10 @@ process_keyboard_resize_grab (MetaDisplay     *display,
                                               xdke, keysym))
     return TRUE;
 
-  if (display->grab_wireframe_active)
+  if (dev->grab_op->wireframe_active)
     {
-      width = display->grab_wireframe_rect.width;
-      height = display->grab_wireframe_rect.height;
+      width = dev->grab_op->wireframe_rect.width;
+      height = dev->grab_op->wireframe_rect.height;
     }
   else
     {
@@ -2312,7 +2307,7 @@ process_keyboard_resize_grab (MetaDisplay     *display,
       height = window->rect.height;
     }
 
-  gravity = meta_resize_gravity_from_grab_op (display->grab_op);
+  gravity = meta_resize_gravity_from_grab_op (dev->grab_op->op);
 
   smart_snap = (xdke->state & ShiftMask) != 0;
   
@@ -2475,13 +2470,14 @@ process_keyboard_resize_grab (MetaDisplay     *display,
                   "%dx%d, gravity %s\n",
                   width, height, meta_gravity_to_string (gravity));
       
-      if (display->grab_wireframe_active)
-        old_rect = display->grab_wireframe_rect;
+      if (dev->grab_op->wireframe_active)
+        old_rect = dev->grab_op->wireframe_rect;
       else
         old_rect = window->rect;  /* Don't actually care about x,y */
 
       /* Do any edge resistance/snapping */
       meta_window_edge_resistance_for_resize (window,
+      					      dev,
                                               old_rect.width,
                                               old_rect.height,
                                               &width,
@@ -2491,15 +2487,15 @@ process_keyboard_resize_grab (MetaDisplay     *display,
                                               smart_snap,
                                               TRUE);
 
-      if (display->grab_wireframe_active)
+      if (dev->grab_op->wireframe_active)
         {
           MetaRectangle new_position;
-          meta_rectangle_resize_with_gravity (&display->grab_wireframe_rect, 
+          meta_rectangle_resize_with_gravity (&dev->grab_op->wireframe_rect, 
                                               &new_position,
                                               gravity,
                                               width,
                                               height);
-          meta_window_update_wireframe (window, 
+          meta_window_update_wireframe (window, dev,
                                         new_position.x,
                                         new_position.y,
                                         new_position.width, 
@@ -2518,7 +2514,7 @@ process_keyboard_resize_grab (MetaDisplay     *display,
                                              height,
                                              gravity);
         }
-      meta_window_update_keyboard_resize (window, FALSE);
+      meta_window_update_keyboard_resize (dev, window, FALSE);
     }
 
   return handled;
@@ -2526,16 +2522,16 @@ process_keyboard_resize_grab (MetaDisplay     *display,
 
 static gboolean
 end_keyboard_grab (MetaDisplay *display,
+		   MetaDevInfo *dev,
 		   unsigned int keycode)
 {
-#warning change end_keyboard_grab prototype? I think no...
 #ifdef HAVE_XKB
   if (display->xkb_base_event_type > 0)
     {
       unsigned int primary_modifier;
       XkbStateRec state;
   
-      primary_modifier = get_primary_modifier (display, display->grab_mask);
+      primary_modifier = get_primary_modifier (display, dev->grab_op->mask);
       
       XkbGetState (display->xdisplay, XkbUseCoreKbd, &state);
 
@@ -2545,7 +2541,7 @@ end_keyboard_grab (MetaDisplay *display,
   else
 #endif
     {
-      if (keycode_is_primary_modifier (display, keycode, display->grab_mask))
+      if (keycode_is_primary_modifier (display, keycode, dev->grab_op->mask))
 	return TRUE;
     }
 
@@ -2565,24 +2561,16 @@ process_tab_grab (MetaDisplay     *display,
   Window      prev_xwindow;
   MetaWindow *prev_window;
   MetaDevInfo *dev;
-#if 0
-    int idev;
-
-  xdke = (XDeviceKeyEvent *)event;
-
-  for (idev = 0; idev < display->devices->keybsUsed; idev++)
-    if (display->devices->keyboards[idev].xdev->device_id == xdke->deviceid)
-      dev = &display->devices->keyboards[idev];
-#endif
+ 
   dev = meta_devices_find_keyboard_by_id (display, xdke->deviceid);
 
-  if (screen != display->grab_screen)
+  if (screen != dev->grab_op->screen)
     return FALSE;
 
   g_return_val_if_fail (screen->tab_popup != NULL, FALSE);
 
   if (xdke->type == display->dev_key_release_type &&
-      end_keyboard_grab (display, xdke->keycode))
+      end_keyboard_grab (display, dev, xdke->keycode))
     {
       /* We're done, move to the new window. */
       Window target_xwindow;
@@ -2632,7 +2620,7 @@ process_tab_grab (MetaDisplay     *display,
   action = display_get_keybinding_action (display,
                                           keysym,
                                           xdke->keycode,
-                                          display->grab_mask);
+                                          dev->grab_op->mask);
 
   /* Cancel when alt-Escape is pressed during using alt-Tab, and vice
    * versa.
@@ -2646,7 +2634,7 @@ process_tab_grab (MetaDisplay     *display,
       /* CYCLE_* are traditionally Escape-based actions,
        * and should cancel traditionally Tab-based ones.
        */
-       switch (display->grab_op)
+       switch (dev->grab_op->op)
         {
         case META_GRAB_OP_KEYBOARD_ESCAPING_NORMAL:
         case META_GRAB_OP_KEYBOARD_ESCAPING_DOCK:
@@ -2663,7 +2651,7 @@ process_tab_grab (MetaDisplay     *display,
       /* SWITCH_* are traditionally Tab-based actions,
        * and should cancel traditionally Escape-based ones.
        */
-      switch (display->grab_op)
+      switch (dev->grab_op->op)
         {
         case META_GRAB_OP_KEYBOARD_TABBING_NORMAL:
         case META_GRAB_OP_KEYBOARD_TABBING_DOCK:
@@ -2674,7 +2662,7 @@ process_tab_grab (MetaDisplay     *display,
            * we'd previously raised and unminimized.
            */
           meta_stack_set_positions (screen->stack,
-                                    screen->display->grab_old_window_stacking);
+                                    dev->grab_op->old_window_stacking);
           if (prev_window && prev_window->tab_unminimized)
             {
               meta_window_minimize (prev_window);
@@ -2687,7 +2675,7 @@ process_tab_grab (MetaDisplay     *display,
     case META_KEYBINDING_ACTION_CYCLE_GROUP_BACKWARD:
     case META_KEYBINDING_ACTION_SWITCH_GROUP:
     case META_KEYBINDING_ACTION_SWITCH_GROUP_BACKWARD:
-      switch (display->grab_op)
+      switch (dev->grab_op->op)
         {
         case META_GRAB_OP_KEYBOARD_ESCAPING_GROUP:
         case META_GRAB_OP_KEYBOARD_TABBING_GROUP:
@@ -2758,7 +2746,7 @@ process_tab_grab (MetaDisplay     *display,
           MetaWindow *target_window;
 
           meta_stack_set_positions (screen->stack,
-                                    display->grab_old_window_stacking);
+                                    dev->grab_op->old_window_stacking);
 
           target_xwindow =
             (Window) meta_ui_tab_popup_get_selected (screen->tab_popup);
@@ -2788,7 +2776,7 @@ process_tab_grab (MetaDisplay     *display,
       meta_topic (META_DEBUG_KEYBINDINGS, 
                   "Syncing to old stack positions.\n");
       meta_stack_set_positions (screen->stack,
-                                screen->display->grab_old_window_stacking);
+                                dev->grab_op->old_window_stacking);
 
       if (prev_window && prev_window->tab_unminimized)
         {
@@ -2809,6 +2797,7 @@ handle_activate_workspace (MetaDisplay     *display,
 {
   int which;
   MetaWorkspace *workspace;
+  MetaDevInfo   *dev;
   
   which = GPOINTER_TO_INT (binding->handler->data);
  
@@ -2825,7 +2814,8 @@ handle_activate_workspace (MetaDisplay     *display,
   
   if (workspace)
     {
-      meta_workspace_activate (workspace, xdke->time);
+      dev = meta_devices_find_keyboard_by_id (display, xdke->deviceid);
+      meta_workspace_activate (workspace, dev, xdke->time);
     }
   else
     {
@@ -3213,27 +3203,19 @@ process_workspace_switch_grab (MetaDisplay     *display,
                                KeySym           keysym)
 {
   MetaWorkspace *workspace;
-#if 0
-  XDeviceKeyEvent *xdke;
-  MetaDevInfo *dev;
-  int idev;
-
-  if (screen != display->grab_screen)
-    return FALSE;
-
-  xdke = (XDeviceKeyEvent *)event;
-  for (idev = 0; idev < display->devices->keybsUsed; idev++)
-    if (xdke->deviceid == display->devices->keyboards[idev].xdev->device_id)
-      dev = &display->devices->keyboards[idev];
-#endif
   MetaDevInfo *dev;
 
   dev = meta_devices_find_keyboard_by_id (display, xdke->deviceid);
 
+  if (!dev->grab_op)
+    return FALSE;
+  if (screen != dev->grab_op->screen)
+    return FALSE;
+
   g_return_val_if_fail (screen->tab_popup != NULL, FALSE);
 
   if (xdke->type == display->dev_key_release_type &&
-      end_keyboard_grab (display, xdke->keycode))
+      end_keyboard_grab (display, dev, xdke->keycode))
     {
       /* We're done, move to the new workspace. */
       MetaWorkspace *target_workspace;
@@ -3287,7 +3269,7 @@ process_workspace_switch_grab (MetaDisplay     *display,
       action = display_get_keybinding_action (display,
                                               keysym,
                                               xdke->keycode,
-                                              display->grab_mask);
+                                              dev->grab_op->mask);
 
       switch (action)
         {
@@ -3326,7 +3308,7 @@ process_workspace_switch_grab (MetaDisplay     *display,
           meta_topic (META_DEBUG_KEYBINDINGS,
                       "Activating target workspace\n");
 
-          meta_workspace_activate (target_workspace, xdke->time);
+          meta_workspace_activate (target_workspace, dev, xdke->time);
 
           return TRUE; /* we already ended the grab */
         }
@@ -3859,6 +3841,7 @@ do_handle_move_to_workspace  (MetaDisplay     *display,
 {
   int which;
   MetaWorkspace *workspace;
+  MetaDevInfo   *dev;
   
   which = GPOINTER_TO_INT (binding->handler->data);
 
@@ -3886,7 +3869,9 @@ do_handle_move_to_workspace  (MetaDisplay     *display,
                       "Resetting mouse_mode to FALSE due to "
                       "do_handle_move_to_workspace() call with flip set.\n");
           workspace->screen->display->mouse_mode = FALSE;
+	  dev = meta_devices_find_keyboard_by_id (display, xdke->deviceid);
           meta_workspace_activate_with_focus (workspace,
+	  				      dev,
                                               window,
                                               xdke->time);
         }
@@ -4061,7 +4046,7 @@ handle_workspace_switch  (MetaDisplay     *display,
           meta_display_end_grab_op (display, pairedPtr, xdke->time);
         }
       
-      meta_workspace_activate (next, xdke->time);
+      meta_workspace_activate (next, kbdDev, xdke->time);
 
       if (grabbed_before_release)
         {

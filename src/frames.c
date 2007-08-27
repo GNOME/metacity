@@ -25,7 +25,7 @@
 
 #include <config.h>
 #include <math.h>
-#include <string.h>
+#include <string.h> /* I used to use strcmp here! Now I don't anymore! Remove?*/
 #include "boxes.h"
 #include "frames.h"
 #include "util.h"
@@ -1370,8 +1370,8 @@ meta_frames_button_press_event (GtkWidget      *widget,
                                 GdkEventButton *event)
 {
 
-  meta_warning("meta_frames_button_press_event(): device = %s\n", 
-              event->device->name);
+//  meta_warning("meta_frames_button_press_event(): device = %s\n", 
+//              event->device->name);
 
   MetaUIFrame *frame;
   MetaFrames *frames;
@@ -1429,7 +1429,7 @@ meta_frames_button_press_event (GtkWidget      *widget,
       return meta_frame_double_click_event (frame, event);
     }
 
-  if (meta_core_get_grab_op (gdk_display) !=
+  if (meta_core_get_grab_op (gdk_display, dev->xdev->device_id) !=
       META_GRAB_OP_NONE)
     return FALSE; /* already up to something */  
 
@@ -1511,6 +1511,9 @@ meta_frames_button_press_event (GtkWidget      *widget,
           MetaFrameGeometry fgeom;
           GdkRectangle *rect;
           int dx, dy;
+
+	  meta_warning("META_GRAB_OP_CLICKING_MENU for device %s\n",
+	  	        dev->name);
           
           meta_frames_calc_geometry (frames, frame, &fgeom);
           
@@ -1592,7 +1595,6 @@ meta_frames_button_press_event (GtkWidget      *widget,
                                     event->button,
                                     event->time);
       else {
-	meta_warning("chamando meta_core_begin_grab_op de onde eu quero\n");
         meta_core_begin_grab_op (gdk_display,
 				 dev,
                                  frame->xwindow,
@@ -1647,16 +1649,23 @@ meta_frames_notify_menu_hide (MetaFrames *frames)
 {
   /* Begin XXX */
   MetaDisplay *display;
+  int idev;
+  MetaDevInfo *dev;
 
   display = meta_display_for_x_display (gdk_display);
+
+  /* gotta find who clicked the menu... */
+  for (idev = 0; idev < display->devices->miceUsed; idev++)
+    if (meta_core_get_grab_op (gdk_display, display->devices->mice[idev].xdev->device_id) == META_GRAB_OP_CLICKING_MENU)
+      dev = &display->devices->mice[idev];
   /* End XXX */
 
-  if (meta_core_get_grab_op (gdk_display) ==
+  if (meta_core_get_grab_op (gdk_display, dev->xdev->device_id) == /* XXX already done this! */
       META_GRAB_OP_CLICKING_MENU)
     {
       Window grab_frame;
 
-      grab_frame = meta_core_get_grab_frame (gdk_display);
+      grab_frame = meta_core_get_grab_frame (gdk_display, dev->xdev->device_id);
 
       if (grab_frame != None)
         {
@@ -1669,7 +1678,7 @@ meta_frames_notify_menu_hide (MetaFrames *frames)
               redraw_control (frames, frame,
                               META_FRAME_CONTROL_MENU);
               meta_core_end_grab_op (gdk_display,
-	      			     &display->devices->mice[0], 
+	      			     dev, 
 				     CurrentTime);
             }
         }
@@ -1687,15 +1696,6 @@ meta_frames_button_release_event    (GtkWidget           *widget,
   MetaDevInfo *dev;
 
   display = meta_display_for_x_display (gdk_display);
-#if 0
-  int idev;
-  for (idev = 0; idev < display->devices->miceUsed; idev++)
-    if (strcmp(event->device->name, display->devices->mice[idev].name) == 0)
-       metaDev = &display->devices->mice[idev];
-  /* XXX */
-  if (metaDev == NULL)
-    meta_warning("metaDev == null!! problema t meta_frames_button_release\n");
-#endif
   dev = meta_devices_find_mouse_by_name (display, event->device->name);
     
   frames = META_FRAMES (widget);
@@ -1706,7 +1706,7 @@ meta_frames_button_release_event    (GtkWidget           *widget,
 
   clear_tip (frames);
 
-  op = meta_core_get_grab_op (gdk_display);
+  op = meta_core_get_grab_op (gdk_display, dev->xdev->device_id);
 
   if (op == META_GRAB_OP_NONE)
     return FALSE;
@@ -1715,8 +1715,8 @@ meta_frames_button_release_event    (GtkWidget           *widget,
    * involving frame controls). Window ops that don't require a
    * frame are handled in the Xlib part of the code, display.c/window.c
    */
-  if (frame->xwindow == meta_core_get_grab_frame (gdk_display) &&
-      ((int) event->button) == meta_core_get_grab_button (gdk_display))
+  if (frame->xwindow == meta_core_get_grab_frame (gdk_display, dev->xdev->device_id) &&
+      ((int) event->button) == meta_core_get_grab_button (gdk_display, dev->xdev->device_id))
     {
       MetaFrameControl control;
 
@@ -1947,7 +1947,7 @@ meta_frames_motion_notify_event     (GtkWidget           *widget,
 
   frames->last_motion_frame = frame;
 
-  grab_op = meta_core_get_grab_op (gdk_display);
+  grab_op = meta_core_get_grab_op (gdk_display, dev->xdev->device_id);
   
   switch (grab_op)
     {
@@ -2365,10 +2365,23 @@ meta_frames_paint_to_drawable (MetaFrames   *frames,
   for (i = 0; i < META_BUTTON_TYPE_LAST; i++)
     button_states[i] = META_BUTTON_STATE_NORMAL;
 
-  grab_frame = meta_core_get_grab_frame (gdk_display);
-  grab_op = meta_core_get_grab_op (gdk_display);
-  if (grab_frame != frame->xwindow)
-    grab_op = META_GRAB_OP_NONE;
+//  grab_frame = meta_core_get_grab_frame (gdk_display);
+//  grab_op = meta_core_get_grab_op (gdk_display);
+  
+  /* Check if we have any operation on this frame */
+  int idev = 0;
+  MetaDisplay *display;
+  
+  grab_op = META_GRAB_OP_NONE;
+  display = meta_display_for_x_display (gdk_display);
+  for (idev = 0; idev < display->devices->miceUsed; idev++)
+    if (display->devices->mice[idev].grab_op)
+      if (meta_core_get_grab_frame(display->xdisplay, display->devices->mice[idev].xdev->device_id) == frame->xwindow)
+	grab_op = display->devices->mice[idev].grab_op->op;
+  /* XXX: if there is more than one operation on this screen, we won't know! */
+
+//  if (grab_frame != frame->xwindow)
+//    grab_op = META_GRAB_OP_NONE;
   
   /* Set prelight state */
   switch (frame->prelit_control)

@@ -27,6 +27,7 @@
 #include "window.h"
 
 void        meta_window_edge_resistance_for_move   (MetaWindow  *window,
+						    MetaDevInfo *dev,
                                                     int          old_x,
                                                     int          old_y,
                                                     int         *new_x,
@@ -35,6 +36,7 @@ void        meta_window_edge_resistance_for_move   (MetaWindow  *window,
                                                     gboolean     snap,
                                                     gboolean     is_keyboard_op);
 void        meta_window_edge_resistance_for_resize (MetaWindow  *window,
+						    MetaDevInfo *dev,
                                                     int          old_width,
                                                     int          old_height,
                                                     int         *new_width,

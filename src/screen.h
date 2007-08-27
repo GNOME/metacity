@@ -110,8 +110,10 @@ struct _MetaScreen
   MetaScreenCorner starting_corner;
   guint vertical_workspaces : 1;
   
-  guint keys_grabbed : 1;
-  guint all_keys_grabbed : 1;
+//  guint keys_grabbed : 1;
+//  guint all_keys_grabbed : 1;
+  MetaDevList keys_grabbed;
+  MetaDevList all_keys_grabbed;
   
   int closing;
 

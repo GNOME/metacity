@@ -118,7 +118,7 @@ meta_window_ensure_frame (MetaWindow *window)
   XChangeWindowAttributes (window->display->xdisplay,
 			   frame->xwindow, CWEventMask, &attrs);
 #ifdef MPX
-  meta_warning("vo pega os eventos...\n");
+  meta_warning("i'll get the events...\n");
 
   XEventClass *evclasses;
   int nclasses = 0;
@@ -190,7 +190,7 @@ meta_window_ensure_frame (MetaWindow *window)
 //      meta_warning("nclasses == %d\n", nclasses);
   XSelectExtensionEvent(window->display->xdisplay, frame->xwindow, 
 			evclasses, nclasses);
-  meta_warning("selected the events! stored them in display 0x%x\n", window->display);
+  meta_warning("selected the events! stored them in display 0x%x\n", (int)window->display);
 
   /* g_free(evclasses); XXX */
 #endif
@@ -413,10 +413,11 @@ update_shape (MetaFrame *frame)
 }
 
 void
-meta_frame_sync_to_window (MetaFrame *frame,
-                           int        resize_gravity,
-                           gboolean   need_move,
-                           gboolean   need_resize)
+meta_frame_sync_to_window (MetaFrame  *frame,
+                           int         resize_gravity,
+                           gboolean    need_move,
+                           gboolean    need_resize,
+			   MetaWindow *grab_window)
 {
   if (!(need_move || need_resize))
     {
@@ -466,8 +467,7 @@ meta_frame_sync_to_window (MetaFrame *frame,
       /* If we're interactively resizing the frame, repaint
        * it immediately so we don't start to lag.
        */
-      if (frame->window->display->grab_window ==
-          frame->window)
+      if (grab_window == frame->window)
         meta_ui_repaint_frame (frame->window->screen->ui,
                                frame->xwindow);
     }

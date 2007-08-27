@@ -655,13 +655,17 @@ meta_screen_new (MetaDisplay *display,
   /* Screens must have at least one workspace at all times,
    * so create that required workspace.
    */
-  meta_workspace_activate (meta_workspace_new (screen), timestamp);
+  meta_workspace_activate (meta_workspace_new (screen),
+  			   &display->devices->keyboards[0], /* XXX */
+			   timestamp);
   update_num_workspaces (screen, timestamp);
   
   set_workspace_names (screen);
 
-  screen->all_keys_grabbed = FALSE;
-  screen->keys_grabbed = FALSE;
+//  screen->all_keys_grabbed = FALSE;
+//  screen->keys_grabbed = FALSE;
+  meta_devices_list_create (&screen->all_keys_grabbed);
+  meta_devices_list_create (&screen->keys_grabbed);
 
   for (idev = 0; idev < display->devices->keybsUsed; idev++)
     meta_screen_grab_keys (screen, &display->devices->keyboards[idev]);
@@ -694,7 +698,9 @@ meta_screen_new (MetaDisplay *display,
                                                 current_workspace);
     
     if (space != NULL)
-      meta_workspace_activate (space, timestamp);
+      meta_workspace_activate (space,
+      			       &display->devices->keyboards[0], /* XXX */
+			       timestamp);
   }
 
   meta_verbose ("Added screen %d ('%s') root 0x%lx\n",
@@ -1198,7 +1204,9 @@ update_num_workspaces (MetaScreen *screen,
     }
 
   if (need_change_space)
-    meta_workspace_activate (last_remaining, timestamp);
+    meta_workspace_activate (last_remaining,
+    			     &screen->display->devices->keyboards[0], /* XXX */
+    			     timestamp);
 
   /* Should now be safe to free the workspaces */
   tmp = extras;

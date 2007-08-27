@@ -249,9 +249,11 @@ struct _MetaWindow
   guint is_in_queues : NUMBER_OF_QUEUES;
  
   /* Used by keybindings.c */
-  guint keys_grabbed : 1;     /* normal keybindings grabbed */
+//  guint keys_grabbed : 1;     /* normal keybindings grabbed */
   guint grab_on_frame : 1;    /* grabs are on the frame */
-  guint all_keys_grabbed : 1; /* AnyKey grabbed */
+//  guint all_keys_grabbed : 1; /* AnyKey grabbed */
+  MetaDevList keys_grabbed;
+  MetaDevList all_keys_grabbed;
   
   /* Set if the reason for unmanaging the window is that
    * it was withdrawn
@@ -358,6 +360,15 @@ struct _MetaWindow
   MetaDevInfo **focused_devices; /* Should it be XID? */
   int focused_devices_used;
   int focused_devices_size;
+};
+
+/* XXX Should put this here? Should do otherway? */
+typedef struct _ResizeMoveTimeoutData ResizeMoveTimeoutData;
+
+struct _ResizeMoveTimeoutData
+{
+  MetaWindow  *window;
+  MetaDevInfo *dev;
 };
 
 /* These differ from window->has_foo_func in that they consider
@@ -496,13 +507,16 @@ void        meta_window_get_outer_rect       (const MetaWindow *window,
 void        meta_window_get_xor_rect         (MetaWindow          *window,
                                               const MetaRectangle *grab_wireframe_rect,
                                               MetaRectangle       *xor_rect);
-void        meta_window_begin_wireframe (MetaWindow *window);
-void        meta_window_update_wireframe (MetaWindow *window,
-                                          int         x,
-                                          int         y,
-                                          int         width,
-                                          int         height);
-void        meta_window_end_wireframe (MetaWindow *window);
+void        meta_window_begin_wireframe (MetaWindow  *window,
+					 MetaDevInfo *dev);
+void        meta_window_update_wireframe (MetaWindow  *window,
+					  MetaDevInfo *dev,
+                                          int          x,
+                                          int          y,
+                                          int          width,
+                                          int          height);
+void        meta_window_end_wireframe (MetaWindow  *window,
+				       MetaDevInfo *dev);
 
 void        meta_window_delete             (MetaWindow  *window,
                                             guint32      timestamp);
@@ -584,7 +598,7 @@ gboolean meta_window_same_application (MetaWindow *window,
 #define META_WINDOW_IN_GROUP_TAB_CHAIN(w, g) \
   (((w)->input || (w)->take_focus) && (!g || meta_window_get_group(w)==g))
 
-void meta_window_refresh_resize_popup (MetaWindow *window);
+void meta_window_refresh_resize_popup (MetaWindow *window, MetaDevInfo *dev);
 
 void meta_window_free_delete_dialog (MetaWindow *window);
 
@@ -605,9 +619,11 @@ void meta_window_begin_grab_op (MetaWindow  *window,
                                 gboolean     frame_action,
                                 guint32      timestamp);
 
-void meta_window_update_keyboard_resize (MetaWindow *window,
-                                         gboolean    update_cursor);
-void meta_window_update_keyboard_move   (MetaWindow *window);
+void meta_window_update_keyboard_resize (MetaDevInfo *dev,
+					 MetaWindow  *window,
+                                         gboolean     update_cursor);
+void meta_window_update_keyboard_move   (MetaDevInfo *dev,
+					 MetaWindow  *window);
 
 void meta_window_update_layer (MetaWindow *window);
 

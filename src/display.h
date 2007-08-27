@@ -254,7 +254,7 @@ struct _MetaDisplay
 
   /* Alt+click button grabs */
   unsigned int window_grab_modifiers;
-//#if 0  
+#if 0  
   /* current window operation */
   MetaGrabOp  grab_op;
   MetaScreen *grab_screen;
@@ -286,7 +286,7 @@ struct _MetaDisplay
   GList*      grab_old_window_stacking;
   MetaEdgeResistanceData *grab_edge_resistance_data;
   unsigned int grab_last_user_action_was_snap;
-//#endif
+#endif
 
   /* we use property updates as sentinels for certain window focus events
    * to avoid some race conditions on EnterNotify events
@@ -297,11 +297,13 @@ struct _MetaDisplay
   int         xkb_base_event_type;
   guint32     last_bell_time;
 #endif
+#if 0
 #ifdef HAVE_XSYNC
   /* alarm monitoring client's _NET_WM_SYNC_REQUEST_COUNTER */
   XSyncAlarm  grab_sync_request_alarm;
 #endif
   int	      grab_resize_timeout_id;
+#endif
 
   /* Keybindings stuff */
   MetaKeyBinding *screen_bindings;
@@ -510,6 +512,7 @@ void     meta_display_end_grab_op   (MetaDisplay *display,
                                      guint32      timestamp);
 
 void    meta_display_check_threshold_reached (MetaDisplay *display,
+					      MetaDevInfo *ptr_dev,
                                               int          x,
                                               int          y);
 void     meta_display_grab_window_buttons    (MetaDisplay *display,
@@ -527,8 +530,8 @@ void meta_display_ungrab_focus_window_button (MetaDisplay *display,
 					      MetaDevInfo *dev);
 
 /* Next two functions are defined in edge-resistance.c */
-void meta_display_compute_resistance_and_snapping_edges (MetaDisplay *display);
-void meta_display_cleanup_edges                         (MetaDisplay *display);
+void meta_display_compute_resistance_and_snapping_edges (MetaDevInfo *dev);
+void meta_display_cleanup_edges                         (MetaDevInfo *dev);
 
 /* make a request to ensure the event serial has changed */
 void     meta_display_increment_event_serial (MetaDisplay *display);

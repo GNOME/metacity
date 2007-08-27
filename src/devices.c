@@ -117,4 +117,78 @@ meta_devices_find_paired_keyboard (MetaDisplay *display, XID id)
 
   return &display->devices->keyboards[0];
 }
+
+/* This is used to manage lists of devices...
+ * XXX We should decide a definitive way to do this...
+ * I don't like this one... */
+
+/* XXX We need performance!! Change these into macros?? */
+
+void
+meta_devices_list_create (MetaDevList *list)
+{
+  list->devices = g_new (MetaDevInfo*, DEFAULT_INPUT_ARRAY_SIZE);
+  list->used = 0;
+  list->size = DEFAULT_INPUT_ARRAY_SIZE;
+}
+
+void
+meta_devices_list_destroy (MetaDevList *list)
+{
+  g_free (list->devices);
+}
+
+gboolean
+meta_devices_list_add (MetaDevList *list, MetaDevInfo *dev)
+{
+  int i;
+
+  for (i = 0; i < list->used; i++)
+    if (list->devices[i]->xdev->device_id == dev->xdev->device_id)
+      return FALSE;
+
+  if (list->used == list->size)
+    {
+      list->devices = g_renew(MetaDevInfo*,
+    			      list->devices,
+			      list->size + DEFAULT_INPUT_ARRAY_SIZE);
+      list->size += DEFAULT_INPUT_ARRAY_SIZE;
+    }
+
+
+  list->devices[list->used] = dev;
+  list->used++;
+
+  return TRUE;
+}
+
+gboolean
+meta_devices_list_remove (MetaDevList *list, MetaDevInfo *dev)
+{
+  int i, j;
+
+  for (i = 0; i < list->used; i++)
+    if (list->devices[i]->xdev->device_id == dev->xdev->device_id)
+      {
+	for (j = i; j < (list->used -1); j++)
+	  list->devices[j] = list->devices[j+1];
+	list->used--;
+	return TRUE;
+      }
+
+  return FALSE;
+}
+
+gboolean
+meta_devices_list_is_member (MetaDevList *list, MetaDevInfo *dev)
+{
+  int i;
+
+  for (i = 0; i < list->used; i++)
+    if (list->devices[i]->xdev->device_id == dev->xdev->device_id)
+      return TRUE;
+
+  return FALSE;
+}
+
 #endif
