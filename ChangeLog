@@ -1,3 +1,8 @@
+2007-10-28  Owen Taylor  <otaylor@redhat.com>
+
+	* src/window.c (meta_window_new_with_attrs): Don't immediately
+	unminimize an initially iconic window (#491090)
+
 2007-10-28  Jans Granseuer  <jensgr@gmx.net>
 
         * src/preview-widget.c (meta_preview_finalize): Free title of
