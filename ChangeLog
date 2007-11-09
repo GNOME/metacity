@@ -1,3 +1,13 @@
+2007-11-09  Federico Mena Quintero  <federico@novell.com>
+
+	Merged from trunk:
+
+	* src/window-props.c (reload_net_wm_user_time_window): Fix typo;
+	the arguments to meta_window_reload_property_from_xwindow() were
+	reversed.  This is why the wm_user_time wasn't getting initialized
+	properly from the _NET_WM_USER_TIME_WINDOW.  Fixes part of 
+	http://bugzilla.gnome.org/show_bug.cgi?id=488468
+
 2007-10-28  Owen Taylor  <otaylor@redhat.com>
 
 	* src/window.c (meta_window_new_with_attrs): Don't immediately
