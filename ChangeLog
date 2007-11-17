@@ -1,3 +1,7 @@
+2007-11-17  Elijah Newren  <newren gmail com>
+
+	* NEWS: 2.20.1 release
+
 2007-11-09  Elijah Newren  <newren gmail com>
 
         * src/window.c (meta_window_new_with_attrs): If a window is

@@ -1,3 +1,28 @@
+2.20.1
+======
+
+Thanks to Alex Turner, Jens Granseuer, Owen Taylor, Federico Mena
+Quintero, and Elijah Newren for improvements in this release.
+
+ - Fix markup parsing problems with long titles for the alt-tab popup
+   (Alex) [#360274]
+ - Fix memory leak in widget previewer (Jens) [#469682]
+ - Don't immediately unminimize an initially iconic window (Owen)
+   [#491090]
+ - Fix argument reversal breaking timestamp retreival and focus
+   stealing prevention (Federico) [#488468]
+ - Improve heuristic for focus stealing prevention with transients
+   when no timestamp is available (Elijah) [#488468]
+
+Translations
+  Djihed Afifi (ar), Metin Amiroff (az), Alexander Shopov (bg), Jordi
+  Mallach (ca), David Lodge (en_GB), Jorge González (es), Iñaki Larrañaga
+  Murgoitio (eu), Alastair McKinstry (ga), Ankit Patel (gu), Rajesh
+  Ranjan (hi), "Last-Translator: auto\n" (hr), Changwoo Ryu (ko), Raivis
+  Dejus (lv), Wouter Bolsterlee (nl), Gora Mohanty (or), ASB (pa), wadim
+  dziedzic (pl), Og Maciel (pt_BR), Duarte Loreto (pt), Peter Tuhársky (sk),
+  Maxim Dziumanenko (uk), Funda Wang (zh_CN)
+
 2.20.0
 ======
 
