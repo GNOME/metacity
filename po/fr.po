@@ -3397,7 +3397,7 @@ msgid ""
 "seconds wall clock time including X server resources (%g milliseconds per "
 "frame)\n"
 msgstr ""
-"%d cadres furent dessinés en %g secondes du coté client (%g millisecondes "
+"%d cadres furent dessinés en %g secondes du côté client (%g millisecondes "
 "par cadre) et %g secondes passées dans les ressources du serveur X (%g "
 "millisecondes par cadre)\n"
 
