@@ -9,21 +9,19 @@
 # Stanislav Visnovsky <visnovsky@kde.org>, 2003.
 # Marcel Telka <marcel@telka.sk>, 2005.
 # Peter Tuharsky <tuharsky@misbb.sk>, 2007.
+# Pavol Šimo <palo.simo@gmail.com>, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: sk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-15 16:11+0200\n"
-"PO-Revision-Date: 2007-09-14 15:59+0100\n"
-"Last-Translator: Peter Tuhársky <tuharsky@misbb.sk>\n"
+"POT-Creation-Date: 2007-10-03 03:39+0100\n"
+"PO-Revision-Date: 2007-11-17 21:42+0100\n"
+"Last-Translator: Pavol Šimo <palo.simo@gmail.com>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
-"Plural-Forms: nplurals=3; plural= (n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Poedit-Language: Slovak\n"
-"X-Poedit-Country: SLOVAKIA\n"
+"Plural-Forms: nplurals=3; plural= (n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;"
 
 #: ../src/50-metacity-desktop-key.xml.in.h:1
 msgid "Desktop"
@@ -227,7 +225,7 @@ msgstr "Nepodarilo znovu spustiť: %s\n"
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/menu.c:70
 msgid "Mi_nimize"
-msgstr "_Minimalizovať"
+msgstr "Mi_nimalizovať"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/menu.c:72
@@ -237,7 +235,7 @@ msgstr "Ma_ximalizovať"
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/menu.c:74
 msgid "Unma_ximize"
-msgstr "_Odmaximalizovať"
+msgstr "Zrušiť ma_ximalizáciu"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/menu.c:76
@@ -252,12 +250,12 @@ msgstr "_Rozbaliť"
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/menu.c:80
 msgid "_Move"
-msgstr "_Presunúť"
+msgstr "Pre_miestniť"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/menu.c:82
 msgid "_Resize"
-msgstr "Zmeniť _veľkosť"
+msgstr "Zmeniť veľko_sť"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/menu.c:84
@@ -273,7 +271,7 @@ msgstr "Vždy na _vrchu"
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/menu.c:91
 msgid "_Always on Visible Workspace"
-msgstr "_Vždy na viditeľnej pracovnej ploche"
+msgstr "Vž_dy na viditeľnej pracovnej ploche"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/menu.c:93
@@ -283,7 +281,7 @@ msgstr "_Len na tejto pracovnej ploche"
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/menu.c:95
 msgid "Move to Workspace _Left"
-msgstr "Presunúť na pracovnú plochu _vľavo"
+msgstr "Presunúť na pracovnú plochu vľav_o"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/menu.c:97
@@ -322,7 +320,7 @@ msgstr "Pracovná plocha %s%d"
 
 #: ../src/menu.c:390
 msgid "Move to Another _Workspace"
-msgstr "Presunúť na inú _pracovnú plochu"
+msgstr "P_resunúť na inú pracovnú plochu"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the shift key. If the text on this key isn't typically
@@ -3614,3 +3612,4 @@ msgid ""
 msgstr ""
 "Vlastnosť %s pre okno 0x%lx obsahuje neplatné UTF-8 pre položku %d v "
 "zozname\n"
+
