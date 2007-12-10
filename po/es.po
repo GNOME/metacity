@@ -8,10 +8,10 @@
 # Jorge González <jorgegonz@svn.gnome.org>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: metacity.HEAD.es\n"
+"Project-Id-Version: metacity.gnome-2-20.es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-07 03:38+0100\n"
-"PO-Revision-Date: 2007-08-07 12:18+0200\n"
+"POT-Creation-Date: 2007-10-03 03:39+0100\n"
+"PO-Revision-Date: 2007-12-10 16:19+0100\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -235,7 +235,7 @@ msgstr "Ma_ximizar"
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/menu.c:74
 msgid "Unma_ximize"
-msgstr "_Restaurar"
+msgstr "Desma_ximizar"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/menu.c:76
@@ -255,7 +255,7 @@ msgstr "_Mover"
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/menu.c:82
 msgid "_Resize"
-msgstr "Re_dimensionar"
+msgstr "_Redimensionar"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/menu.c:84
@@ -271,7 +271,7 @@ msgstr "Siempre _encima"
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/menu.c:91
 msgid "_Always on Visible Workspace"
-msgstr "_Siempre en el área de trabajo visible"
+msgstr "Siempre en el área de trabajo _visible"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/menu.c:93
@@ -291,7 +291,7 @@ msgstr "Mover al área de trabajo de la _derecha"
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/menu.c:99
 msgid "Move to Workspace _Up"
-msgstr "Mover al área de trabajo de a_rriba"
+msgstr "Mover al área de trabajo de _arriba"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/menu.c:101
@@ -3657,7 +3657,7 @@ msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
 msgstr "WM_TRANSIENT_FOR inválido para la ventana 0x%lx especificada para %s.\n"
 
 #. first time through
-#: ../src/window.c:5540
+#: ../src/window.c:5551
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -3673,7 +3673,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/window.c:6105
+#: ../src/window.c:6116
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
