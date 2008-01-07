@@ -1,3 +1,14 @@
+2.20.2
+======
+
+Thanks to Karsten Bräckelmann for improvements in this release.
+
+  * Remove a circular dependency (Karsten) [#482730]
+
+Translations
+  Jorge González (es), Vincent Untz (fr), Rodrigo Flores (pt_BR),
+  Pavol Šimo (sk)
+
 2.20.1
 ======
 
