@@ -12,15 +12,14 @@ msgstr ""
 "Project-Id-Version: metacity.HEAD.ar\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-01-31 08:09+0000\n"
-"PO-Revision-Date: 2008-01-13 01:49+0200\n"
+"PO-Revision-Date: 2008-02-01 01:04+0200\n"
 "Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms:  nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n>=3 && "
-"n<=10 ? 3 : n>=11 && n<=99 ? 4 : 5;\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: ../src/50-metacity-desktop-key.xml.in.h:1
 msgid "Desktop"
@@ -60,8 +59,7 @@ msgstr "خطأ أثناء القراءة من عملية عرض الحوار: %s
 
 #: ../src/core/delete.c:350
 #, c-format
-msgid ""
-"Error launching metacity-dialog to ask about killing an application: %s\n"
+msgid "Error launching metacity-dialog to ask about killing an application: %s\n"
 msgstr "خطأ في إطلاق حوار مِتسِتي للسؤال حول قتل تطبيق: %s\n"
 
 #: ../src/core/delete.c:459
@@ -87,7 +85,7 @@ msgid ""
 "the window manager.\n"
 msgstr ""
 "فقدت الاتصال بالعرض '%s';\n"
-"من المحتمل ان خادم X اغلق أو انك\n"
+"من المحتمل أن خادم X اغلق أو انك\n"
 "قتلت/دمرت مدير النوافذ.\n"
 
 #: ../src/core/errors.c:278
@@ -118,7 +116,7 @@ msgid "No terminal command has been defined.\n"
 msgstr "لم يُعرّف أمر طرفيّة.\n"
 
 #: ../src/core/main.c:112
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "metacity %s\n"
 "Copyright (C) 2001-2008 Havoc Pennington, Red Hat, Inc., and others\n"
@@ -127,13 +125,13 @@ msgid ""
 "PARTICULAR PURPOSE.\n"
 msgstr ""
 "مِتسِتي %s\n"
-"حقوق النسخ  (C) 2001-2002 Havoc Pennington, Red Hat, Inc., and others\n"
+"حقوق النشر  2001-2008 Havoc Pennington، ردهات، وآخرون\n"
 "هذا برنامج حر، راجع المصدر لشروط النسخ. لا يوجد أي ضمان، و لا ضمان بيع و لا "
 "مناسبة لأي هدف.\n"
 
 #: ../src/core/main.c:239
 msgid "Disable connection to session manager"
-msgstr "عطّل الإتصال بمدير الجلسة"
+msgstr "عطّل الاتصال بمدير الجلسة"
 
 #: ../src/core/main.c:245
 msgid "Replace the running window manager with Metacity"
@@ -166,8 +164,7 @@ msgstr "فشلت قراءة دليل السِمات : %s\n"
 
 #: ../src/core/main.c:441
 #, c-format
-msgid ""
-"Could not find a theme! Be sure %s exists and contains the usual themes.\n"
+msgid "Could not find a theme! Be sure %s exists and contains the usual themes.\n"
 msgstr "تعذّر ايجاد سِمة! تأكد من وجود %s و احتواءه على السِمات معتادة.\n"
 
 #: ../src/core/main.c:513
@@ -199,8 +196,7 @@ msgstr "مفتاح GConf \"%s\" مضبوط لنوع غير صحيح\n"
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
 "modifier\n"
-msgstr ""
-"\"%s\" الموجود في قاعدة بايانات الإعدادات ليس قيمة سليمة لمغير أزرار الفأرة\n"
+msgstr "\"%s\" الموجود في قاعدة بايانات الإعدادات ليس قيمة سليمة لمغير أزرار الفأرة\n"
 
 #: ../src/core/prefs.c:1127 ../src/core/prefs.c:1148 ../src/core/prefs.c:1705
 #, c-format
@@ -283,8 +279,7 @@ msgstr ""
 
 #: ../src/core/screen.c:453
 #, c-format
-msgid ""
-"Could not acquire window manager selection on screen %d display \"%s\"\n"
+msgid "Could not acquire window manager selection on screen %d display \"%s\"\n"
 msgstr "لا يمكن الحصول على اختيار مدير النوافذ على الشاشة %d العرض \"%s\"\n"
 
 #: ../src/core/screen.c:511
@@ -367,8 +362,7 @@ msgstr "عنصر مجهول %s"
 msgid ""
 "Error launching metacity-dialog to warn about apps that don't support "
 "session management: %s\n"
-msgstr ""
-"خطأ عند إطلاق حوار مِتسِتي للتحذير من تطبيقات التي لا تدعم إدارة الجلسة: %s\n"
+msgstr "خطأ عند إطلاق حوار مِتسِتي للتحذير من تطبيقات التي لا تدعم إدارة الجلسة: %s\n"
 
 #: ../src/core/util.c:98
 #, c-format
@@ -469,10 +463,8 @@ msgstr "الخاصية %s على النافذة 0x%lx تحتوي UTF-8 غير ص
 
 #: ../src/core/xprops.c:484
 #, c-format
-msgid ""
-"Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
-msgstr ""
-"الخاصية %s على النافذة 0x%lx تحتوي UTF-8 غير صحيح للعنصر %d في القائمة\n"
+msgid "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
+msgstr "الخاصية %s على النافذة 0x%lx تحتوي UTF-8 غير صحيح للعنصر %d في القائمة\n"
 
 #: ../src/metacity.desktop.in.h:1
 msgid "Metacity"
@@ -2662,8 +2654,7 @@ msgstr "لا صفة \"قيمة\" على العنصر <%s>"
 
 #: ../src/ui/theme-parser.c:1411 ../src/ui/theme-parser.c:1425
 #: ../src/ui/theme-parser.c:1484
-msgid ""
-"Cannot specify both button_width/button_height and aspect ratio for buttons"
+msgid "Cannot specify both button_width/button_height and aspect ratio for buttons"
 msgstr "لا يمكن تخصيص button_width/button_height و نسبة الجانب للأزرار"
 
 #: ../src/ui/theme-parser.c:1434
@@ -2951,8 +2942,7 @@ msgstr "لا يجب أن تكون صفة \"التحجيم\" على عنصر <%s>
 
 #: ../src/ui/theme-parser.c:3662
 #, c-format
-msgid ""
-"Should not have \"resize\" attribute on <%s> element for maximized states"
+msgid "Should not have \"resize\" attribute on <%s> element for maximized states"
 msgstr "لا يجب أن تكون صفة \"التحجيم\" على عنصر <%s> لحالات التكبير"
 
 #: ../src/ui/theme-parser.c:3676 ../src/ui/theme-parser.c:3698
@@ -2996,8 +2986,7 @@ msgstr "يجب أن يكون أخرج عنصر في السِمة <metacity_theme
 
 #: ../src/ui/theme-parser.c:3892
 #, c-format
-msgid ""
-"Element <%s> is not allowed inside a name/author/date/description element"
+msgid "Element <%s> is not allowed inside a name/author/date/description element"
 msgstr "العنصر <%s> غير مسموح به داخل عنصر اسم/كاتب/تاريخ/وصف"
 
 #: ../src/ui/theme-parser.c:3897
@@ -3007,8 +2996,7 @@ msgstr "العنصر <%s> غير مسموح به داخل عنصر <constant>"
 
 #: ../src/ui/theme-parser.c:3909
 #, c-format
-msgid ""
-"Element <%s> is not allowed inside a distance/border/aspect_ratio element"
+msgid "Element <%s> is not allowed inside a distance/border/aspect_ratio element"
 msgstr "العنصر <%s> غير مسموح به داخل عنصر مسافة/حد/aspect_ratio"
 
 #: ../src/ui/theme-parser.c:3931
@@ -3350,10 +3338,8 @@ msgstr "قيمة الشفافية \"%s\" في اللون المخلوط ليست
 
 #: ../src/ui/theme.c:1251
 #, c-format
-msgid ""
-"Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
-msgstr ""
-"تهيئة التظليل هي \"تظليل/اللون_الأساسي/العامل\"، \"%s\" لا يناسب التهيئة"
+msgid "Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
+msgstr "تهيئة التظليل هي \"تظليل/اللون_الأساسي/العامل\"، \"%s\" لا يناسب التهيئة"
 
 #: ../src/ui/theme.c:1262
 #, c-format
@@ -3406,14 +3392,12 @@ msgstr "تعبير الإحداثيّات ينتُج عند القسمة على 
 
 #: ../src/ui/theme.c:1943
 #, c-format
-msgid ""
-"Coordinate expression tries to use mod operator on a floating-point number"
+msgid "Coordinate expression tries to use mod operator on a floating-point number"
 msgstr "تعبير الإحداثيّاتيّات يحاول استعمال مقسوم mod على عدد فاصلة متحرّكة"
 
 #: ../src/ui/theme.c:1999
 #, c-format
-msgid ""
-"Coordinate expression has an operator \"%s\" where an operand was expected"
+msgid "Coordinate expression has an operator \"%s\" where an operand was expected"
 msgstr "تعبير الإحداثيّات له مقسوم \"%s\" بالرغم من ترقبه قاسم"
 
 #: ../src/ui/theme.c:2008
@@ -3474,10 +3458,8 @@ msgstr ""
 
 #: ../src/ui/theme.c:4609 ../src/ui/theme.c:4634
 #, c-format
-msgid ""
-"Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
-msgstr ""
-"<frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/> مفقود"
+msgid "Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
+msgstr "<frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/> مفقود"
 
 #: ../src/ui/theme.c:4678
 #, c-format
@@ -3501,10 +3483,8 @@ msgstr ""
 
 #: ../src/ui/theme.c:5207 ../src/ui/theme.c:5269 ../src/ui/theme.c:5332
 #, c-format
-msgid ""
-"User-defined constants must begin with a capital letter; \"%s\" does not"
-msgstr ""
-"الثوابت المعرفة من طرف المستخدم يجب أن تبدأ بحروف كبيرة، \"%s\" لا يبدأ بذلك"
+msgid "User-defined constants must begin with a capital letter; \"%s\" does not"
+msgstr "الثوابت المعرفة من طرف المستخدم يجب أن تبدأ بحروف كبيرة، \"%s\" لا يبدأ بذلك"
 
 #: ../src/ui/theme.c:5215 ../src/ui/theme.c:5277 ../src/ui/theme.c:5340
 #, c-format
@@ -3515,3 +3495,4 @@ msgstr "عُرِّف الثابت \"%s\" بالفعل"
 #, c-format
 msgid "Usage: %s\n"
 msgstr "الاستخدام: %s\n"
+
