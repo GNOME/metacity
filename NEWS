@@ -1,3 +1,15 @@
+2.21.21
+=======
+
+Thanks to Thomas Wood for improvements in this version.
+
+  - Allow shaped windows in the preview widget. (Thomas)
+
+Translations
+  Khaled Hosny (ar), Ihar Hrachyshka (be@latin), Ilkka Tuohela (fi), Claude
+  Paroz (fr), Ignacio Casal Quinteiro (gl), Changwoo Ryu (ko), Wouter
+  Bolsterlee (nl), Jonh Wendell (pt_BR)
+
 2.21.13
 =======
 
