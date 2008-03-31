@@ -1,36 +1,36 @@
+# translation of tr.po to Turkish
 # Turkish translation of metacity.
 # Copyright (C) 2003 Free Software Foundation.
 # This file is distributed under the same license as the metacity package.
-# Sinan İmamoğlu <sinan@myrealbox.com>, 2003.
-# Baris Cicek <baris@teamforce.name.tr>, 2004, 2005.
 #
+# Sinan İmamoğlu <sinan@myrealbox.com>, 2003.
+# Baris Cicek <baris@teamforce.name.tr>, 2004, 2005, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: metacity\n"
+"Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-01-27 00:47+0200\n"
-"PO-Revision-Date: 2005-09-01 00:07+0200\n"
+"POT-Creation-Date: 2008-03-31 13:55+0300\n"
+"PO-Revision-Date: 2008-03-31 13:55+0300\n"
 "Last-Translator: Baris Cicek <baris@teamforce.name.tr>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.9.1\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=1; plural=0;\n"
 
 #: ../src/50-metacity-desktop-key.xml.in.h:1
-#, fuzzy
 msgid "Desktop"
-msgstr "üst"
+msgstr "Masaüstü"
 
 #: ../src/50-metacity-key.xml.in.h:1
-#, fuzzy
 msgid "Window Management"
-msgstr "Pencere yöneticisi: "
+msgstr "Pencere Yönetimi"
 
 #: ../src/core/core.c:206
 #, c-format
 msgid "Unknown window information request: %d"
-msgstr ""
+msgstr "Bilinmeyen pencere bilgi isteği: %d"
 
 #: ../src/core/delete.c:67 ../src/core/delete.c:94
 #: ../src/ui/metacity-dialog.c:50 ../src/ui/theme-parser.c:481
@@ -71,7 +71,7 @@ msgstr "Makine adı alınamadı: %s\n"
 #: ../src/core/display.c:256
 #, c-format
 msgid "Missing %s extension required for compositing"
-msgstr ""
+msgstr "Kompozisyon için gerekli olan %s eklentisi eksik"
 
 #: ../src/core/display.c:438
 #, c-format
@@ -121,7 +121,7 @@ msgid "No terminal command has been defined.\n"
 msgstr "Hiçbir termina komutu tanımlanmamış.\n"
 
 #: ../src/core/main.c:112
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "metacity %s\n"
 "Copyright (C) 2001-2008 Havoc Pennington, Red Hat, Inc., and others\n"
@@ -130,7 +130,7 @@ msgid ""
 "PARTICULAR PURPOSE.\n"
 msgstr ""
 "metacity %s\n"
-"Telif Hakkı (C) 2001-2002 Havoc Pennington, Red Hat, Inc., ve başkaları\n"
+"Telif Hakkı (C) 2001-2008 Havoc Pennington, Red Hat, Inc., ve başkaları\n"
 "Bu, özgür yazılımdır; telif koşullarını öğrenmek için kaynak koda bakın.\n"
 "Hiç bir garantisi, BELİRLİ BİR AMACA UYGUNLUĞU için dahi, YOKTUR.\n"
 
@@ -160,7 +160,7 @@ msgstr "Sürümü yazdır"
 
 #: ../src/core/main.c:274
 msgid "Make X calls synchronous"
-msgstr ""
+msgstr "X çağrılarını eşazamanlı yap"
 
 #: ../src/core/main.c:425
 #, c-format
@@ -168,12 +168,12 @@ msgid "Failed to scan themes directory: %s\n"
 msgstr "Tema dizini taranırken hata oluştu: %s\n"
 
 #: ../src/core/main.c:441
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not find a theme! Be sure %s exists and contains the usual themes.\n"
 msgstr ""
-"Hiç tema bulunamadı! %s dizininin var olduğundan ve bildiğimiz temaları "
-"içerdiğinden emin olun."
+"Hiç tema bulunamadı! %s varlığından ve bildiğimiz temaları içerdiğinden emin "
+"olun.\n"
 
 #: ../src/core/main.c:513
 #, c-format
@@ -181,9 +181,9 @@ msgid "Failed to restart: %s\n"
 msgstr "Yeniden başlatılamadı: %s\n"
 
 #: ../src/core/prefs.c:434
-#, fuzzy, c-format
+#, c-format
 msgid "Type of %s was not integer"
-msgstr "\"%s\" bir tamsayı olarak ayrıştırılamadı"
+msgstr "%s türü tamsayı değil"
 
 #: ../src/core/prefs.c:572 ../src/core/prefs.c:600 ../src/core/prefs.c:616
 #: ../src/core/prefs.c:632 ../src/core/prefs.c:648 ../src/core/prefs.c:664
@@ -214,13 +214,13 @@ msgid "GConf key '%s' is set to an invalid value\n"
 msgstr "'%s' GConf anahtarına geçersiz bir değer atanmış\n"
 
 #: ../src/core/prefs.c:1277
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%d stored in GConf key %s is not a reasonable cursor_size; must be in the "
 "range 1..128\n"
 msgstr ""
-"%2$s GConf anahtarında saklı %1$d değeri geçerli bir çalışma alanı sayısı "
-"değil; şu anki üst sınır: %3$d\n"
+"%2$s GConf anahtarında saklı %1$d değeri geçerli bir imleç_boyutu değil; "
+"1..128 aralığında olmalı\n"
 
 #: ../src/core/prefs.c:1357
 #, c-format
@@ -421,19 +421,19 @@ msgid "Window manager error: "
 msgstr "Pencere yöneticisi hatası: "
 
 #: ../src/core/window-props.c:192
-#, fuzzy, c-format
+#, c-format
 msgid "Application set a bogus _NET_WM_PID %lu\n"
-msgstr "Uygulama _NET_WM_PID'e geçersiz %ld değerini atadı\n"
+msgstr "Uygulama geçersiz _NET_WM_PID %lu atadı\n"
 
 #: ../src/core/window-props.c:324
 #, c-format
 msgid "%s (on %s)"
-msgstr ""
+msgstr "%s (%s üzerinde)"
 
 #: ../src/core/window-props.c:1406
 #, c-format
 msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
-msgstr ""
+msgstr "Geçersiz WM_TRANSIENT_FOR pencere 0x%lx belirtilen %s.\n"
 
 #. first time through
 #: ../src/core/window.c:5650
@@ -500,7 +500,6 @@ msgstr ""
 "(Henüz uygulanmamış) Gezinme, pencerelere göre değil uygulamalara göre işler"
 
 #: ../src/metacity.schemas.in.h:2
-#, fuzzy
 msgid ""
 "A font description string describing a font for window titlebars. The size "
 "from the description will only be used if the titlebar_font_size option is "
@@ -511,24 +510,19 @@ msgstr ""
 "Bu tanımın boyut kısmı yalnızca titlebar_font_size (başlık çubuğu yazıtipi "
 "boyutu) seçeneği 0'a ayarlıysa kullanılacaktır. Ayrıca eğer "
 "titlebar_uses_desktop_font (başlık çubuğu masaüstü yazıtipini kullanır) "
-"seçeneği seçilmişse bu seçenek kapalı kabul edilir. Öntanımlı olarak, "
-"titlebar_font anahtarına değer atanmaz, böylece titlebar_uses_desktop_font "
-"seçeneği seçili değilse bile Metacity masaüstü yazıtipini yedek olarak "
-"kullanacaktır."
+"seçeneği seçilmişse bu seçenek kapalı kabul edilir."
 
 #: ../src/metacity.schemas.in.h:3
 msgid "Action on title bar double-click"
 msgstr "Başlık çubuğuna çift tıklandığındaki eylem"
 
 #: ../src/metacity.schemas.in.h:4
-#, fuzzy
 msgid "Action on title bar middle-click"
-msgstr "Başlık çubuğuna çift tıklandığındaki eylem"
+msgstr "Başlık çubuğuna orta tuşla tıklandığındaki eylem"
 
 #: ../src/metacity.schemas.in.h:5
-#, fuzzy
 msgid "Action on title bar right-click"
-msgstr "Başlık çubuğuna çift tıklandığındaki eylem"
+msgstr "Başlık çubuğuna sağ tıklandığındaki eylem"
 
 #: ../src/metacity.schemas.in.h:6
 msgid "Activate window menu"
@@ -580,11 +574,11 @@ msgstr "Tuş bağlarına yanıt olarak çalıştırılacak komutlar"
 
 #: ../src/metacity.schemas.in.h:13
 msgid "Compositing Manager"
-msgstr ""
+msgstr "Kompozisyon Yöneticisi"
 
 #: ../src/metacity.schemas.in.h:14
 msgid "Control how new windows get focus"
-msgstr ""
+msgstr "Yeni pencerelerin nasıl odaklanacağının kontrolü"
 
 #: ../src/metacity.schemas.in.h:15
 msgid "Current theme"
@@ -596,7 +590,7 @@ msgstr "Kendiliğinden yükseltme seçeneği için milisaniye olarak gecikme"
 
 #: ../src/metacity.schemas.in.h:17
 msgid "Determines whether Metacity is a compositing manager."
-msgstr ""
+msgstr "Metacity'nin bir kompozisyon yöneticisi olmasına karar verir."
 
 #: ../src/metacity.schemas.in.h:18
 msgid ""
@@ -619,7 +613,6 @@ msgid "Hide all windows and focus desktop"
 msgstr "Tüm pencereleri gizleyip masaüstüne odaklan"
 
 #: ../src/metacity.schemas.in.h:22
-#, fuzzy
 msgid ""
 "If set to true, and the focus mode is either \"sloppy\" or \"mouse\" then "
 "the focused window will be automatically raised after a delay specified by "
@@ -628,7 +621,9 @@ msgid ""
 msgstr ""
 "Eğer seçiliyse, ve odaklama kipi \"sloppy\" ya da \"mouse\" ise odaklanan "
 "pencere belirli bir süre sonra kendiliğinden üste çıkar (bu süre "
-"auto_raise_delay anahtarıyla belirlenir)."
+"auto_raise_delay anahtarıyla belirlenir). Bu bir pencereye üste çıkarmak "
+"için tıklamak ya da sürükle ve bırak sırasında pencere sınırlarına girmek "
+"ile alakalı değildir."
 
 #: ../src/metacity.schemas.in.h:23
 msgid ""
@@ -639,7 +634,6 @@ msgstr ""
 "standart uygulama yazıtipi kullanılır."
 
 #: ../src/metacity.schemas.in.h:24
-#, fuzzy
 msgid ""
 "If true, metacity will give the user less feedback by using wireframes, "
 "avoiding animations, or other means. This is a significant reduction in "
@@ -650,12 +644,12 @@ msgstr ""
 "Eğer seçiliyse, metacity tel çerçeveleri kullanarak, canlandırma "
 "kullanmayarak ve diğer şekillerde, kullanıcıya daha az geri bildirim verip "
 "daha az \"doğrudan işlem\"e imkan verir. Bu bir çok kullanıcı için "
-"kullanılabilirlikte belirgin biz azalmaya neden olur, ancak aksi halde "
+"kullanılabilirlikte belirgin biz azalmaya neden olur, ama aksi halde "
 "kullanışsız olacak terminal sunucuları ve diğer eski uygulamalar için "
-"işleyebilirlik sağlayabilir."
+"işleyebilirlik sağlayabilir. Ancak tel çerçeve özelliği erişilebilirlik açık "
+"olduğunda etkisizleştirilecek."
 
 #: ../src/metacity.schemas.in.h:25
-#, fuzzy
 msgid ""
 "If true, then Metacity works in terms of applications rather than windows. "
 "The concept is a bit abstract, but in general an application-based setup is "
@@ -670,11 +664,7 @@ msgstr ""
 "çalışma Windows'tan çok Mac'takine benzer. Uygulama temelli kipte bir "
 "pencereye odaklandığınızda o uygulamanın bütün pencereleri yükseltilir. "
 "Ayrıca bu kipte odaklama amaçlı tıklamalar odaklamadan sonra bir de "
-"uygulamaya geçilmez. Böyle bir ayarın varlığı sorgulamaya açıktır; ama "
-"böylesi, uygulama tabanlı ve pencere tabanlı kiplerin her biri için bütün "
-"ayrıntıları için teker teker ayarlara (örn: tıklamalar uygulamaya geçilsin "
-"mi?) sahip olmaktan iyidir. Uygulama tabanlı kipin büyük bölümü henüz "
-"tamamlanmadı."
+"uygulamaya geçilmez. Uygulama tabanlı kipin büyük bölümü henüz tamamlanmadı."
 
 #: ../src/metacity.schemas.in.h:26
 msgid "If true, trade off usability for less resource usage"
@@ -693,6 +683,12 @@ msgid ""
 "actions, and ignore raise requests generated by applications. See http://"
 "bugzilla.gnome.org/show_bug.cgi?id=445447#c6."
 msgstr ""
+"Bir çok eylem (örn. istemci alanına tıklayarak pencereyi taşımak ve yeniden "
+"boyutlandırmak) normalde yan etki olarak pencereyi yukarı çıkartır. Bu "
+"seçeneği false olarak işaretlemek, şiddetle önerilmemektedir, diğer "
+"kullanıcı eylemlerini ayıracak ve uygulamalar tarafından yapılan yukarı "
+"çıkartma isteklerini yok sayacaktır. http://bugzilla.gnome.org/show_bug.cgi?"
+"id=445447#c6 hata raporuna bakın."
 
 #: ../src/metacity.schemas.in.h:29
 msgid "Maximize window"
@@ -727,14 +723,12 @@ msgid "Move backwards between windows immediately"
 msgstr "Pencereler arası geri geçişi anında yap"
 
 #: ../src/metacity.schemas.in.h:37
-#, fuzzy
 msgid "Move backwards between windows of an application immediately"
-msgstr "Pencereler arası geri geçişi anında yap"
+msgstr "Uygulamanın pencereleri arasında geriye doğru anında geç"
 
 #: ../src/metacity.schemas.in.h:38
-#, fuzzy
 msgid "Move backwards between windows of an application with popup"
-msgstr "Panellerle masaüstü arasındaki geri geçişi beliren pencere ile yap"
+msgstr "Uygulamanın pencereleri arasında geriye doğru beliren pencere ile geç"
 
 #: ../src/metacity.schemas.in.h:39
 msgid "Move between panels and the desktop immediately"
@@ -749,14 +743,12 @@ msgid "Move between windows immediately"
 msgstr "Pencereler arası geçişi anında yap"
 
 #: ../src/metacity.schemas.in.h:42
-#, fuzzy
 msgid "Move between windows of an application immediately"
-msgstr "Pencereler arası geçişi anında yap"
+msgstr "Uygulamanın pencereleri arsında anında geç"
 
 #: ../src/metacity.schemas.in.h:43
-#, fuzzy
 msgid "Move between windows of an application with popup"
-msgstr "Pencereler arası geçişi beliren pencere ile yap"
+msgstr "Uygulamanın pencereleri arasında beliren pencere ile geç"
 
 #: ../src/metacity.schemas.in.h:44
 msgid "Move between windows with popup"
@@ -787,44 +779,36 @@ msgid "Move window one workspace up"
 msgstr "Pencereyi üstteki çalışma alanına taşı"
 
 #: ../src/metacity.schemas.in.h:51
-#, fuzzy
 msgid "Move window to east side of screen"
-msgstr "Pencereyi çalışma alanı 1'e taşı"
+msgstr "Pencereyi ekranın doğu tarafına taşı"
 
 #: ../src/metacity.schemas.in.h:52
-#, fuzzy
 msgid "Move window to north side of screen"
-msgstr "Pencereyi çalışma alanı 1'e taşı"
+msgstr "Pencereyi ekranın kuzey tarafına taşı"
 
 #: ../src/metacity.schemas.in.h:53
-#, fuzzy
 msgid "Move window to north-east corner"
-msgstr "Pencereyi çalışma alanı 1'e taşı"
+msgstr "Pencereyi ekranın kuzey-doğu tarafına taşı"
 
 #: ../src/metacity.schemas.in.h:54
-#, fuzzy
 msgid "Move window to north-west corner"
-msgstr "Pencereyi çalışma alanı 1'e taşı"
+msgstr "Pencereyi ekranın kuzey-batı tarafına taşı"
 
 #: ../src/metacity.schemas.in.h:55
-#, fuzzy
 msgid "Move window to south side of screen"
-msgstr "Pencereyi çalışma alanı 1'e taşı"
+msgstr "Pencereyi ekranın güney tarafına taşı"
 
 #: ../src/metacity.schemas.in.h:56
-#, fuzzy
 msgid "Move window to south-east corner"
-msgstr "Pencereyi çalışma alanı 1'e taşı"
+msgstr "Pencereyi ekranın güney-doğu tarafına taşı"
 
 #: ../src/metacity.schemas.in.h:57
-#, fuzzy
 msgid "Move window to south-west corner"
-msgstr "Pencereyi çalışma alanı 1'e taşı"
+msgstr "Pencereyi ekranın güney-batı tarafına taşı"
 
 #: ../src/metacity.schemas.in.h:58
-#, fuzzy
 msgid "Move window to west side of screen"
-msgstr "Pencereyi çalışma alanı 1'e taşı"
+msgstr "Pencereyi ekranın batı tarafına taşı"
 
 #: ../src/metacity.schemas.in.h:59
 msgid "Move window to workspace 1"
@@ -883,15 +867,14 @@ msgid "Number of workspaces"
 msgstr "Çalışma alanlarının sayısı"
 
 #: ../src/metacity.schemas.in.h:73
-#, fuzzy
 msgid ""
 "Number of workspaces. Must be more than zero, and has a fixed maximum to "
 "prevent making the desktop unusable by accidentally asking for too many "
 "workspaces."
 msgstr ""
-"Çalışma alanlarının sayısı. Sıfırdan büyük olmalıdır ve bir üst sınırı "
-"vardır (ki yanlışlıkla 34 milyon çalışma alanı talep edip masaüstünüze zarar "
-"vermenizi önleyebilsin)."
+"Çalışma alanlarının sayısı. Sıfırdan büyük olmalıdır ve yanlışlıkla çok "
+"fazla sayıda çalışma alanı talep edip masaüstünü kullanışsız hale "
+"getirmenizi engellemek için bir üst sınırı vardır."
 
 #: ../src/metacity.schemas.in.h:74
 msgid "Raise obscured window, otherwise lower"
@@ -928,6 +911,11 @@ msgid ""
 "which gives a more consistent user interface, provided one does not need to "
 "run any misbehaving applications."
 msgstr ""
+"Bazı uygulamalar belirtimleri pencere yöneticisinin yanlış işlemesine sebep "
+"olacak şekilde göz ardı ederler. Bu seçenek Metacity'i sıkı bir şekilde "
+"doğru kipe sokar, bu şayet kullanıcının hatalı işleyen bir uygulama "
+"çalıştırmaya ihtiyacı yoksa kullanıcı arayüzünün daha tutarlı olmasını "
+"sağlar."
 
 #: ../src/metacity.schemas.in.h:82
 msgid "Switch to workspace 1"
@@ -1662,7 +1650,6 @@ msgstr ""
 "olarakatarsanız, o eylem için tuş bağı yapılmamış olur."
 
 #: ../src/metacity.schemas.in.h:147
-#, fuzzy
 msgid ""
 "The keybinding used to move focus backwards between windows of an "
 "application without a popup window. Holding \"shift\" together with this "
@@ -1673,16 +1660,14 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "Odağın pencereler arasındaki ters yönde geçişini beliren pencere olmadan "
-"taşımak üzere atanmış tuş bağı. (Geleneksel olarak &lt;Alt&gt;Escape) Bu tuş "
-"bağını kullanırken \"shift\" tuşu basılı tutulursa haraket yönü tersine "
-"döner. Biçimi şunun gibi olmalıdır: \"&lt;Control&gt;a\" ya da \"&lt;"
-"Shift&gt;&lt;Alt&gt;F1\". Ayrıştırıcı büyük veya küçük harf farkı gözetmez; "
-"ayrıca \"&lt;Ctl&gt;\" ya da \"&lt;Ctrl&gt;\" gibi kısaltmalara izin verir. "
-"Seçeneğe \"disabled\" özel dizgisini değer olarak atarsanız, o eylem için "
-"tuş bağı yapılmamış olur."
+"taşımak üzere atanmış tuş bağı. Bu tuş bağını kullanırken \"shift\" tuşu "
+"basılı tutulursa haraket yönü tersine döner. Biçimi şunun gibi olmalıdır: "
+"\"&lt;Control&gt;a\" ya da \"&lt;Shift&gt;&lt;Alt&gt;F1\". Ayrıştırıcı büyük "
+"veya küçük harf farkı gözetmez; ayrıca \"&lt;Ctl&gt;\" ya da \"&lt;Ctrl&gt;"
+"\" gibi kısaltmalara izin verir. Seçeneğe \"disabled\" özel dizgisini değer "
+"olarak atarsanız, o eylem için tuş bağı yapılmamış olur."
 
 #: ../src/metacity.schemas.in.h:148
-#, fuzzy
 msgid ""
 "The keybinding used to move focus backwards between windows of an "
 "application, using a popup window. Holding \"shift\" together with this "
@@ -1693,13 +1678,12 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "Odağın pencereler arasındaki ters yönde geçişini beliren pencere "
-"aracılığıyla taşımak üzere atanmış tuş bağı. (Geleneksel olarak &lt;Alt&gt;"
-"Escape) Bu tuş bağını kullanırken \"shift\" tuşu basılı tutulursa haraket "
-"yönü tersine döner. Biçimi şunun gibi olmalıdır: \"&lt;Control&gt;a\" ya da "
-"\"&lt;Shift&gt;&lt;Alt&gt;F1\". Ayrıştırıcı büyük veya küçük harf farkı "
-"gözetmez; ayrıca \"&lt;Ctl&gt;\" ya da \"&lt;Ctrl&gt;\" gibi kısaltmalara "
-"izin verir. Seçeneğe \"disabled\" özel dizgisini değer olarak atarsanız, o "
-"eylem için tuş bağı yapılmamış olur."
+"aracılığıyla taşımak üzere atanmış tuş bağı. Bu tuş bağını kullanırken "
+"\"shift\" tuşu basılı tutulursa haraket yönü tersine döner. Biçimi şunun "
+"gibi olmalıdır: \"&lt;Control&gt;a\" ya da \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
+"Ayrıştırıcı büyük veya küçük harf farkı gözetmez; ayrıca \"&lt;Ctl&gt;\" ya "
+"da \"&lt;Ctrl&gt;\" gibi kısaltmalara izin verir. Seçeneğe \"disabled\" özel "
+"dizgisini değer olarak atarsanız, o eylem için tuş bağı yapılmamış olur."
 
 #: ../src/metacity.schemas.in.h:149
 msgid ""
@@ -1772,7 +1756,6 @@ msgstr ""
 "olarakatarsanız, o eylem için tuş bağı yapılmamış olur."
 
 #: ../src/metacity.schemas.in.h:153
-#, fuzzy
 msgid ""
 "The keybinding used to move focus between windows of an application without "
 "a popup window. Holding the \"shift\" key while using this binding reverses "
@@ -1783,16 +1766,14 @@ msgid ""
 "then there will be no keybinding for this action."
 msgstr ""
 "Odağın pencereler arasındaki geçişini beliren pencere olmadan taşımak üzere "
-"atanmış tuş bağı. (Geleneksel olarak &lt;Alt&gt;Escape) Bu tuş bileşimini "
-"kullanırken \"shift\" tuşu basılı tutulursa haraket yönü tersine döner. "
-"Biçimi şunun gibi olmalıdır: \"&lt;Control&gt;a\" ya da \"&lt;Shift&gt;&lt;"
-"Alt&gt;F1\". Ayrıştırıcı büyük veya küçük harf farkı gözetmez; ayrıca \"&lt;"
-"Ctl&gt;\" ya da \"&lt;Ctrl&gt;\" gibi kısaltmalara izin verir. Seçeneğe "
-"\"disabled\" özel dizgisini değer olarak atarsanız, o eylem için tuş bağı "
-"yapılmamış olur."
+"atanmış tuş bağı. Bu tuş bileşimini kullanırken \"shift\" tuşu basılı "
+"tutulursa haraket yönü tersine döner. Biçimi şunun gibi olmalıdır: \"&lt;"
+"Control&gt;a\" ya da \"&lt;Shift&gt;&lt;Alt&gt;F1\". Ayrıştırıcı büyük veya "
+"küçük harf farkı gözetmez; ayrıca \"&lt;Ctl&gt;\" ya da \"&lt;Ctrl&gt;\" "
+"gibi kısaltmalara izin verir. Seçeneğe \"disabled\" özel dizgisini değer "
+"olarak atarsanız, o eylem için tuş bağı yapılmamış olur."
 
 #: ../src/metacity.schemas.in.h:154
-#, fuzzy
 msgid ""
 "The keybinding used to move focus between windows of an application, using a "
 "popup window. (Traditionally &lt;Alt&gt;F6) Holding the \"shift\" key while "
@@ -1803,13 +1784,12 @@ msgid ""
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
 "Odağın pencereler arasındaki geçişini beliren pencere aracılığıyla taşımak "
-"üzere atanmış tuş bağı. (Geleneksel olarak &lt;Alt&gt;Escape) Bu tuş "
-"bileşimini kullanırken \"shift\" tuşu basılı tutulursa haraket yönü tersine "
-"döner. Biçimi şunun gibi olmalıdır: \"&lt;Control&gt;a\" ya da \"&lt;"
-"Shift&gt;&lt;Alt&gt;F1\". Ayrıştırıcı büyük veya küçük harf farkı gözetmez; "
-"ayrıca \"&lt;Ctl&gt;\" ya da \"&lt;Ctrl&gt;\" gibi kısaltmalara izin verir. "
-"Seçeneğe \"disabled\" özel dizgisini değer olarak atarsanız, o eylem için "
-"tuş bağı yapılmamış olur."
+"üzere atanmış tuş bağı. Bu tuş bileşimini kullanırken \"shift\" tuşu basılı "
+"tutulursa haraket yönü tersine döner. Biçimi şunun gibi olmalıdır: \"&lt;"
+"Control&gt;a\" ya da \"&lt;Shift&gt;&lt;Alt&gt;F1\". Ayrıştırıcı büyük veya "
+"küçük harf farkı gözetmez; ayrıca \"&lt;Ctl&gt;\" ya da \"&lt;Ctrl&gt;\" "
+"gibi kısaltmalara izin verir. Seçeneğe \"disabled\" özel dizgisini değer "
+"olarak atarsanız, o eylem için tuş bağı yapılmamış olur."
 
 #: ../src/metacity.schemas.in.h:155
 msgid ""
@@ -2056,7 +2036,6 @@ msgid "The window screenshot command"
 msgstr "Pencere ekran görüntüsü komutu"
 
 #: ../src/metacity.schemas.in.h:174
-#, fuzzy
 msgid ""
 "This keybinding changes whether a window is above or below other windows. If "
 "the window is covered by another one, it raises the window above all others, "
@@ -2091,7 +2070,6 @@ msgstr ""
 "dizgisini değer olarak atarsanız, o eylem için tuş bağı yapılmamış olur."
 
 #: ../src/metacity.schemas.in.h:176
-#, fuzzy
 msgid ""
 "This keybinding moves a window against the north (top) side of the screen. "
 "The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1"
@@ -2100,14 +2078,13 @@ msgid ""
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
 msgstr ""
-"Bu tuş bağı pencereyi diğerlerinin altına indirir. Biçimi şunun gibi "
+"Bu tuş bağı pencereyi ekranın kuzey (üst) kenarına taşır. Biçimi şunun gibi "
 "olmalıdır: \"&lt;Control&gt;a\" ya da \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
 "Ayrıştırıcı büyük veya küçük harf farkı gözetmez; ayrıca \"&lt;Ctl&gt;\" ya "
 "da \"&lt;Ctrl&gt;\" gibi kısaltmalara izin verir. Seçeneğe \"disabled\" özel "
 "dizgisini değer olarak atarsanız, o eylem için tuş bağı yapılmamış olur."
 
 #: ../src/metacity.schemas.in.h:177
-#, fuzzy
 msgid ""
 "This keybinding moves a window into the east (right) side of the screen. The "
 "format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
@@ -2116,14 +2093,13 @@ msgid ""
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
 msgstr ""
-"Bu tuş bağı pencereyi diğerlerinin altına indirir. Biçimi şunun gibi "
+"Bu tuş bağı pencereyi ekranın doğu (sağ) kenarına taşır. Biçimi şunun gibi "
 "olmalıdır: \"&lt;Control&gt;a\" ya da \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
 "Ayrıştırıcı büyük veya küçük harf farkı gözetmez; ayrıca \"&lt;Ctl&gt;\" ya "
 "da \"&lt;Ctrl&gt;\" gibi kısaltmalara izin verir. Seçeneğe \"disabled\" özel "
 "dizgisini değer olarak atarsanız, o eylem için tuş bağı yapılmamış olur."
 
 #: ../src/metacity.schemas.in.h:178
-#, fuzzy
 msgid ""
 "This keybinding moves a window into the north-east (top right) corner of the "
 "screen. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;"
@@ -2132,14 +2108,13 @@ msgid ""
 "set the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
 msgstr ""
-"Bu tuş bağı pencereyi diğerlerinin altına indirir. Biçimi şunun gibi "
-"olmalıdır: \"&lt;Control&gt;a\" ya da \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
-"Ayrıştırıcı büyük veya küçük harf farkı gözetmez; ayrıca \"&lt;Ctl&gt;\" ya "
-"da \"&lt;Ctrl&gt;\" gibi kısaltmalara izin verir. Seçeneğe \"disabled\" özel "
-"dizgisini değer olarak atarsanız, o eylem için tuş bağı yapılmamış olur."
+"Bu tuş bağı pencereyi ekranın kuzey-doğu (sağ üst) kenarına taşır. Biçimi "
+"şunun gibi olmalıdır: \"&lt;Control&gt;a\" ya da \"&lt;Shift&gt;&lt;Alt&gt;F1"
+"\". Ayrıştırıcı büyük veya küçük harf farkı gözetmez; ayrıca \"&lt;Ctl&gt;\" "
+"ya da \"&lt;Ctrl&gt;\" gibi kısaltmalara izin verir. Seçeneğe \"disabled\" "
+"özel dizgisini değer olarak atarsanız, o eylem için tuş bağı yapılmamış olur."
 
 #: ../src/metacity.schemas.in.h:179
-#, fuzzy
 msgid ""
 "This keybinding moves a window into the north-west (top left) corner of the "
 "screen. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;"
@@ -2148,14 +2123,13 @@ msgid ""
 "set the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
 msgstr ""
-"Bu tuş bağı pencereyi diğerlerinin altına indirir. Biçimi şunun gibi "
-"olmalıdır: \"&lt;Control&gt;a\" ya da \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
-"Ayrıştırıcı büyük veya küçük harf farkı gözetmez; ayrıca \"&lt;Ctl&gt;\" ya "
-"da \"&lt;Ctrl&gt;\" gibi kısaltmalara izin verir. Seçeneğe \"disabled\" özel "
-"dizgisini değer olarak atarsanız, o eylem için tuş bağı yapılmamış olur."
+"Bu tuş bağı pencereyi ekranın kuzey-batı (sol üst) kenarına taşır. Biçimi "
+"şunun gibi olmalıdır: \"&lt;Control&gt;a\" ya da \"&lt;Shift&gt;&lt;Alt&gt;F1"
+"\". Ayrıştırıcı büyük veya küçük harf farkı gözetmez; ayrıca \"&lt;Ctl&gt;\" "
+"ya da \"&lt;Ctrl&gt;\" gibi kısaltmalara izin verir. Seçeneğe \"disabled\" "
+"özel dizgisini değer olarak atarsanız, o eylem için tuş bağı yapılmamış olur."
 
 #: ../src/metacity.schemas.in.h:180
-#, fuzzy
 msgid ""
 "This keybinding moves a window into the south (bottom) side of the screen. "
 "The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1"
@@ -2164,14 +2138,13 @@ msgid ""
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
 msgstr ""
-"Bu tuş bağı pencereyi diğerlerinin altına indirir. Biçimi şunun gibi "
+"Bu tuş bağı pencereyi ekranın güney (alt) kenarına taşır. Biçimi şunun gibi "
 "olmalıdır: \"&lt;Control&gt;a\" ya da \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
 "Ayrıştırıcı büyük veya küçük harf farkı gözetmez; ayrıca \"&lt;Ctl&gt;\" ya "
 "da \"&lt;Ctrl&gt;\" gibi kısaltmalara izin verir. Seçeneğe \"disabled\" özel "
 "dizgisini değer olarak atarsanız, o eylem için tuş bağı yapılmamış olur."
 
 #: ../src/metacity.schemas.in.h:181
-#, fuzzy
 msgid ""
 "This keybinding moves a window into the south-east (bottom right) corner of "
 "the screen. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;"
@@ -2180,14 +2153,13 @@ msgid ""
 "set the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
 msgstr ""
-"Bu tuş bağı pencereyi diğerlerinin altına indirir. Biçimi şunun gibi "
-"olmalıdır: \"&lt;Control&gt;a\" ya da \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
-"Ayrıştırıcı büyük veya küçük harf farkı gözetmez; ayrıca \"&lt;Ctl&gt;\" ya "
-"da \"&lt;Ctrl&gt;\" gibi kısaltmalara izin verir. Seçeneğe \"disabled\" özel "
-"dizgisini değer olarak atarsanız, o eylem için tuş bağı yapılmamış olur."
+"Bu tuş bağı pencereyi ekranın güney-doğu (sağ alt) kenarına taşır. Biçimi "
+"şunun gibi olmalıdır: \"&lt;Control&gt;a\" ya da \"&lt;Shift&gt;&lt;Alt&gt;F1"
+"\". Ayrıştırıcı büyük veya küçük harf farkı gözetmez; ayrıca \"&lt;Ctl&gt;\" "
+"ya da \"&lt;Ctrl&gt;\" gibi kısaltmalara izin verir. Seçeneğe \"disabled\" "
+"özel dizgisini değer olarak atarsanız, o eylem için tuş bağı yapılmamış olur."
 
 #: ../src/metacity.schemas.in.h:182
-#, fuzzy
 msgid ""
 "This keybinding moves a window into the south-west (bottom left) corner of "
 "the screen. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;"
@@ -2196,14 +2168,13 @@ msgid ""
 "set the option to the special string \"disabled\", then there will be no "
 "keybinding for this action."
 msgstr ""
-"Bu tuş bağı pencereyi diğerlerinin altına indirir. Biçimi şunun gibi "
-"olmalıdır: \"&lt;Control&gt;a\" ya da \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
-"Ayrıştırıcı büyük veya küçük harf farkı gözetmez; ayrıca \"&lt;Ctl&gt;\" ya "
-"da \"&lt;Ctrl&gt;\" gibi kısaltmalara izin verir. Seçeneğe \"disabled\" özel "
-"dizgisini değer olarak atarsanız, o eylem için tuş bağı yapılmamış olur."
+"Bu tuş bağı pencereyi ekranın güney-batı (sol alt) kenarına taşır. Biçimi "
+"şunun gibi olmalıdır: \"&lt;Control&gt;a\" ya da \"&lt;Shift&gt;&lt;Alt&gt;F1"
+"\". Ayrıştırıcı büyük veya küçük harf farkı gözetmez; ayrıca \"&lt;Ctl&gt;\" "
+"ya da \"&lt;Ctrl&gt;\" gibi kısaltmalara izin verir. Seçeneğe \"disabled\" "
+"özel dizgisini değer olarak atarsanız, o eylem için tuş bağı yapılmamış olur."
 
 #: ../src/metacity.schemas.in.h:183
-#, fuzzy
 msgid ""
 "This keybinding moves a window into the west (left) side of the screen. The "
 "format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
@@ -2212,7 +2183,7 @@ msgid ""
 "option to the special string \"disabled\", then there will be no keybinding "
 "for this action."
 msgstr ""
-"Bu tuş bağı pencereyi diğerlerinin altına indirir. Biçimi şunun gibi "
+"Bu tuş bağı pencereyi ekranın batı (sol) kenarına taşır. Biçimi şunun gibi "
 "olmalıdır: \"&lt;Control&gt;a\" ya da \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
 "Ayrıştırıcı büyük veya küçük harf farkı gözetmez; ayrıca \"&lt;Ctl&gt;\" ya "
 "da \"&lt;Ctrl&gt;\" gibi kısaltmalara izin verir. Seçeneğe \"disabled\" özel "
@@ -2265,7 +2236,6 @@ msgstr ""
 "tuş bağı yapılmamış olur."
 
 #: ../src/metacity.schemas.in.h:187
-#, fuzzy
 msgid ""
 "This option determines the effects of double-clicking on the title bar. "
 "Current valid options are 'toggle_shade', which will shade/unshade the "
@@ -2275,10 +2245,10 @@ msgid ""
 msgstr ""
 "Bu seçenek başlık çubuğuna çift tıklamanın ne yapacağını belirler. Geçerli "
 "seçenekler: 'toggle_shade' pencereyi toplar/yayar, 'toggle_maximize' ekranı "
-"kaplatır/simge durumuna getirir."
+"kaplatır/simge durumuna getirir, 'minimize' pencereyi küçültür ve 'none' "
+"hiçbir şey yapmaz."
 
 #: ../src/metacity.schemas.in.h:188
-#, fuzzy
 msgid ""
 "This option determines the effects of middle-clicking on the title bar. "
 "Current valid options are 'toggle_shade', which will shade/unshade the "
@@ -2286,12 +2256,12 @@ msgid ""
 "'minimize' which will minimize the window, and 'none' which will not do "
 "anything."
 msgstr ""
-"Bu seçenek başlık çubuğuna çift tıklamanın ne yapacağını belirler. Geçerli "
-"seçenekler: 'toggle_shade' pencereyi toplar/yayar, 'toggle_maximize' ekranı "
-"kaplatır/simge durumuna getirir."
+"Bu seçenek başlık çubuğuna orta tuşla tıklamanın ne yapacağını belirler. "
+"Geçerli seçenekler: 'toggle_shade' pencereyi toplar/yayar, 'toggle_maximize' "
+"ekranı kaplatır/simge durumuna getirir, 'minimize' pencereyi küçültür ve "
+"'none' hiçbir şey yapmaz."
 
 #: ../src/metacity.schemas.in.h:189
-#, fuzzy
 msgid ""
 "This option determines the effects of right-clicking on the title bar. "
 "Current valid options are 'toggle_shade', which will shade/unshade the "
@@ -2299,9 +2269,10 @@ msgid ""
 "'minimize' which will minimize the window, and 'none' which will not do "
 "anything."
 msgstr ""
-"Bu seçenek başlık çubuğuna çift tıklamanın ne yapacağını belirler. Geçerli "
-"seçenekler: 'toggle_shade' pencereyi toplar/yayar, 'toggle_maximize' ekranı "
-"kaplatır/simge durumuna getirir."
+"Bu seçenek başlık çubuğuna sağ tuşla tıklamanın ne yapacağını belirler. "
+"Geçerli seçenekler: 'toggle_shade' pencereyi toplar/yayar, 'toggle_maximize' "
+"ekranı kaplatır/simge durumuna getirir, 'minimize' pencereyi küçültür ve "
+"'none' hiçbir şey yapmaz."
 
 #: ../src/metacity.schemas.in.h:190
 msgid ""
@@ -2310,6 +2281,10 @@ msgid ""
 "mode, and \"strict\" results in windows started from a terminal not being "
 "given focus."
 msgstr ""
+"Bu seçenek yeni oluşturulan pencerelerin odaklanmak için ek kontroller "
+"sağlar. İki geçerli değeri vardır; \"smart\" kullanıcının normal odak kipine "
+"uygulanır ve \"strict\" uçbirimden başlatılan uygulamaların odaklanmaması "
+"ile sonuçlanır."
 
 #: ../src/metacity.schemas.in.h:191
 msgid "Toggle always on top state"
@@ -2332,15 +2307,14 @@ msgid "Toggle window on all workspaces"
 msgstr "Pencerenin tüm çalışma alanlarında oluşunu aç veya kapat"
 
 #: ../src/metacity.schemas.in.h:196
-#, fuzzy
 msgid ""
 "Turns on a visual indication when an application or the system issues a "
 "'bell' or 'beep'; useful for the hard-of-hearing and for use in noisy "
 "environments."
 msgstr ""
 "Bir uygulama veya sistem 'zil' ya da 'bip' uygulamak istediginde görsel "
-"uyarıcıları da açar; duymanın zor olduğu gürültülü ortamlar için ve 'sesli "
-"zil' kapalı iken çok kullanışlıdır."
+"uyarıcıları da açar; duymanın zor olduğu gürültülü ortamlar için çok "
+"kullanışlıdır."
 
 #: ../src/metacity.schemas.in.h:197
 msgid "Unmaximize window"
@@ -2356,7 +2330,7 @@ msgstr "Görsel Zil Türü"
 
 #: ../src/metacity.schemas.in.h:200
 msgid "Whether raising should be a side-effect of other user interactions"
-msgstr ""
+msgstr "Yukarı çıkartmanın diğer kullanıcı etkileşimleri için yan etki olması"
 
 #: ../src/metacity.schemas.in.h:201
 msgid "Window focus mode"
@@ -2387,32 +2361,28 @@ msgid "Unmaximize Window"
 msgstr "Pencereyi Büyültmeyi Geri Al"
 
 #: ../src/ui/frames.c:1092
-#, fuzzy
 msgid "Roll Up Window"
-msgstr "Yukarı _Sar"
+msgstr "Pencereyi Yukarı Sar"
 
 #: ../src/ui/frames.c:1095
-#, fuzzy
 msgid "Unroll Window"
-msgstr "Pencereyi Kapat"
+msgstr "Pencereyi Geri Sar"
 
 #: ../src/ui/frames.c:1098
 msgid "Keep Window On Top"
-msgstr ""
+msgstr "Pencereyi Üstte Tut"
 
 #: ../src/ui/frames.c:1101
 msgid "Remove Window From Top"
-msgstr ""
+msgstr "Pencereyi Üstten Kaldır"
 
 #: ../src/ui/frames.c:1104
-#, fuzzy
 msgid "Always On Visible Workspace"
-msgstr "Her _Zaman Görünen Çalışma Alanında"
+msgstr "Her Zaman Görünen Çalışma Alanında"
 
 #: ../src/ui/frames.c:1107
-#, fuzzy
 msgid "Put Window On Only One Workspace"
-msgstr "Pencerenin tüm çalışma alanlarında oluşunu aç veya kapat"
+msgstr "Pencereyi Sadece Bir Çalışma Alanına Yerleştir"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:70
@@ -2437,7 +2407,7 @@ msgstr "Yukarı _Sar"
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:78
 msgid "_Unroll"
-msgstr "_Sarmayı geri al"
+msgstr "_Sarmayı Geri Al"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:80
@@ -2452,18 +2422,18 @@ msgstr "_Yeniden Boyutlandır"
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:84
 msgid "Move Titlebar On_screen"
-msgstr ""
+msgstr "Başlık Çubuğunu _Ekranda Taşı"
 
 #. separator
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:87 ../src/ui/menu.c:89
 msgid "Always on _Top"
-msgstr ""
+msgstr "Her Zaman Ü_stte"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:91
 msgid "_Always on Visible Workspace"
-msgstr "Her _Zaman Görünen Çalışma Alanında"
+msgstr "Her Zaman _Görünen Çalışma Alanında"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:93
@@ -2478,7 +2448,7 @@ msgstr "_Soldaki Çalışma Alanına Taşı"
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:97
 msgid "Move to Workspace R_ight"
-msgstr "Sağ_daki Çalışma Alanına Taşı"
+msgstr "S_ağdaki Çalışma Alanına Taşı"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:99
@@ -2601,19 +2571,21 @@ msgid "Mod5"
 msgstr "Mod5"
 
 #: ../src/ui/metacity-dialog.c:90
-#, fuzzy, c-format
+#, c-format
 msgid "\"%s\" is not responding."
-msgstr "\"%s\" penceresi cevap vermiyor."
+msgstr "\"%s\" cevap vermiyor."
 
 #: ../src/ui/metacity-dialog.c:97
 msgid ""
 "You may choose to wait a short while for it to continue or force the "
 "application to quit entirely."
 msgstr ""
+"Uygulamanın devam etmesi için bir müddet bekleyi seçebilirsiniz ya d a "
+"uygulamanın tamamen çıkması için onu zorlayabilirsiniz."
 
 #: ../src/ui/metacity-dialog.c:107
 msgid "_Wait"
-msgstr ""
+msgstr "_Bekle"
 
 #: ../src/ui/metacity-dialog.c:109
 msgid "_Force Quit"
@@ -2740,7 +2712,7 @@ msgstr "<%s>, ya bir geometri ya da geometrisi olan bir üst öğe belirtmeli"
 
 #: ../src/ui/theme-parser.c:1112
 msgid "You must specify a background for an alpha value to be meaningful"
-msgstr ""
+msgstr "Arkaplanı anlamlı olabilmesi için bir alfa değeri ile belirtmelisiniz"
 
 #: ../src/ui/theme-parser.c:1203
 #, c-format
@@ -2759,11 +2731,11 @@ msgstr "\"%s\" pencere türünün önceden atanmış bir biçem kümesi var"
 
 #: ../src/ui/theme-parser.c:1258
 msgid "Theme already has a fallback icon"
-msgstr ""
+msgstr "Temanın zaten bir son çare simgesi var"
 
 #: ../src/ui/theme-parser.c:1270
 msgid "Theme already has a fallback mini_icon"
-msgstr ""
+msgstr "Tema zaten bir en son durum mini_icon'a sahip"
 
 #: ../src/ui/theme-parser.c:1283 ../src/ui/theme-parser.c:1347
 #: ../src/ui/theme-parser.c:1636 ../src/ui/theme-parser.c:3285
@@ -2893,14 +2865,16 @@ msgid "No \"height\" attribute on element <%s>"
 msgstr "<%s> öğesinde \"height\" (boy) özniteliği yok"
 
 #: ../src/ui/theme-parser.c:1998
-#, fuzzy, c-format
+#, c-format
 msgid "No \"start_angle\" or \"from\" attribute on element <%s>"
-msgstr "<%s> öğesinde \"start_angle\" (başlama açısı) özniteliği yok"
+msgstr ""
+"<%s> öğesinde \"start_angle\" (başlama açısı) ya da \"from\" özniteliği yok"
 
 #: ../src/ui/theme-parser.c:2005
-#, fuzzy, c-format
+#, c-format
 msgid "No \"extent_angle\" or \"to\" attribute on element <%s>"
-msgstr "<%s> öğesinde \"extent_angle\" (genişletme açısı) özniteliği yok"
+msgstr ""
+"<%s> öğesinde \"extent_angle\" (genişletme açısı) ya da \"to\" özniteliği yok"
 
 #: ../src/ui/theme-parser.c:2014
 #, c-format
@@ -3022,7 +2996,7 @@ msgstr "Düğme için geçersiz işlev \"%s\""
 #: ../src/ui/theme-parser.c:3459
 #, c-format
 msgid "Button function \"%s\" does not exist in this version (%d, need %d)"
-msgstr ""
+msgstr "Düğme işlevi \"%s\" bu sürümde mevcut değil (%d, gereken %d)"
 
 #: ../src/ui/theme-parser.c:3471
 #, c-format
@@ -3079,12 +3053,11 @@ msgstr ""
 "bulunmamalı"
 
 #: ../src/ui/theme-parser.c:3662
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Should not have \"resize\" attribute on <%s> element for maximized states"
 msgstr ""
-"<%s> öğesinin büyütülmüş/toplanmış durumlarında \"resize\" özniteliği "
-"bulunmamalı"
+"<%s> öğesinin büyütülmüş durumlarında \"resize\" özniteliği bulunmamalı"
 
 #: ../src/ui/theme-parser.c:3676 ../src/ui/theme-parser.c:3698
 #, c-format
@@ -3190,9 +3163,9 @@ msgid "<description> specified twice for this theme"
 msgstr "Bu temada <description> iki kez belirtilmiş"
 
 #: ../src/ui/theme-parser.c:4636
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to find a valid file for theme %s\n"
-msgstr "fdopen() günlük dosyası %s açılamadı: %s\n"
+msgstr "Tema %s için geçerli bir dosya bulunamadı\n"
 
 #: ../src/ui/theme-parser.c:4692
 #, c-format
@@ -3588,9 +3561,9 @@ msgstr ""
 "Kordinat ifadesi bilinmeyen bir değişken ya da sabit olan \"%s\" içeriyor"
 
 #: ../src/ui/theme.c:2268
-#, fuzzy, c-format
+#, c-format
 msgid "Coordinate expression parser overflowed its buffer."
-msgstr "Kordinat ifadesi boş ya da anlaşılamadı"
+msgstr "Kordinat belirtim ayrıştırıcısı tamponundan taştı."
 
 #: ../src/ui/theme.c:2297
 #, c-format
@@ -3608,9 +3581,9 @@ msgid "Coordinate expression doesn't seem to have any operators or operands"
 msgstr "Kordinat ifadesi göründüğü kadarıyla ne işleç ne de işlenen içeriyor"
 
 #: ../src/ui/theme.c:2574 ../src/ui/theme.c:2594 ../src/ui/theme.c:2614
-#, fuzzy, c-format
+#, c-format
 msgid "Theme contained an expression that resulted in an error: %s\n"
-msgstr "Temanın içerdiği \"%s\" ifadesi hata ile sonuçlandı: %s\n"
+msgstr "Tema bir hata ile sonuçlanan ifadeye sahip: %s\n"
 
 #: ../src/ui/theme.c:4133
 #, c-format
@@ -3664,74 +3637,3 @@ msgstr "\"%s\" sabit değeri zaten tanımlanmış"
 #, c-format
 msgid "Usage: %s\n"
 msgstr "Kullanım: %s\n"
-
-#~ msgid "On _Top"
-#~ msgstr "En Ü_ste"
-
-#~ msgid ""
-#~ "Forcing this application to quit will cause you to lose any unsaved "
-#~ "changes."
-#~ msgstr ""
-#~ "Bu uygulamayı sonlandırmak kaydetmediğiniz değişikliklerin kaybolmasına "
-#~ "sebep olacaktır."
-
-#~ msgid ""
-#~ "Some applications break specifications in ways that result in window "
-#~ "manager misfeatures. For example, ideally Metacity would place all "
-#~ "dialogs in a consistent position with respect to their parent window. "
-#~ "This requires ignoring application-specified positions for dialogs. But "
-#~ "some versions of Java/Swing mark their popup menus as dialogs, so "
-#~ "Metacity has to disable dialog positioning to allow menus to work in "
-#~ "broken Java applications. There are several other examples like this. "
-#~ "This option puts Metacity in full-on Correct mode, which perhaps gives a "
-#~ "moderately nicer UI if you don't need to run any broken apps. Sadly, "
-#~ "workarounds must be enabled by default; the real world is an ugly place. "
-#~ "Some of the workarounds are workarounds for limitations in the "
-#~ "specifications themselves, so sometimes a bug in no-workarounds mode "
-#~ "won't be fixable without amending a spec."
-#~ msgstr ""
-#~ "Bazı uygulamalar belirtimlere uymayarak pencere yöneticisini yanlış "
-#~ "işlemek durumunda bırakır. Örneğin, ideal koşullarda Metacity tüm "
-#~ "iletişim kutularını üst pencerelerine göre tutarlı bir biçimde "
-#~ "yerleştirir. Bunun için uygulamaların iletişim kutularına yönelik "
-#~ "belirttikleri konumları gözardı etmesi gerekir. Ancak Java/Swing'in bazı "
-#~ "sürümleri beliren menülerini iletişim kutusu gibi tanıtıyor, bu yüzden "
-#~ "Metacity bu hatalı Java uygulamalarının çalışabilmesi için iletişim "
-#~ "kutusu konumlandırmasını geçersiz kılmak durumunda kalıyor. Bu seçenek "
-#~ "Metacity'i tümüyle doğru çalışacağı kipe geçirir, böylece eğer hatalı "
-#~ "uygulamaları kullanmanız gerekmiyorsa biraz daha hoş bir arabirime "
-#~ "kavuşmuş olursunuz. Ne yazık ki bu incelikli çözümler öntanımlı olarak "
-#~ "açık olmak zorunda; çünkü gerçek dünya o kadar toz pembe değil. Bu "
-#~ "incelikli çözümlerin bir kısmı belirtimlerin kendi eksikliklerine "
-#~ "yöneliktir, yani bazen tam doğru kipteki bir hata yeni bir belirtim "
-#~ "olmadan çözülemez."
-
-#~ msgid "Unknown function \"%s\" for menu icon"
-#~ msgstr "Menü simgesi için bilinmeyen işlev \"%s\""
-
-#~ msgid "Unknown state \"%s\" for menu icon"
-#~ msgstr "Menü simgesi için bilinmeyen durum \"%s\""
-
-#~ msgid "Theme already has a menu icon for function %s state %s"
-#~ msgstr "Temada %s işlevi, %s durumu için zaten bir menü simgesi var"
-
-#~ msgid "No draw_ops provided for menu icon"
-#~ msgstr "Menü simgesi için hiç draw_ops sağlanmamış"
-
-#~ msgid "Failed to read theme from file %s: %s\n"
-#~ msgstr "Tema, %s dosyasından okunamadı: %s\n"
-
-#~ msgid ""
-#~ "Coordinate expression parser overflowed its buffer, this is really a "
-#~ "Metacity bug, but are you sure you need a huge expression like that?"
-#~ msgstr ""
-#~ "Kordinat ifadesi ayrıştırıcısı arabelleği taştı; bu aslında Metacity'nin "
-#~ "bir hatası, ancak böylesine dev bir ifadeye gereksinim duyduğunuzdan emin "
-#~ "misiniz?"
-
-#~ msgid ""
-#~ "<menu_icon function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> must be "
-#~ "specified for this theme"
-#~ msgstr ""
-#~ "Bu temada <menu_icon function=\"%s\" state=\"%s\" draw_ops=\"her neyse\"/"
-#~ "> belirtilmek zorunda"
