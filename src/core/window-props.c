@@ -842,6 +842,37 @@ reload_update_counter (MetaWindow    *window,
     }
 }
 
+#ifdef USING_TESTING
+
+static void
+init_metacity_testing (MetaDisplay   *display,
+                       Atom           property,
+                       MetaPropValue *value)
+{
+  value->type = META_PROP_VALUE_UTF8;
+  value->atom = display->atom__METACITY_TESTING;
+}
+
+static void
+reload_metacity_testing (MetaWindow    *window,
+                         MetaPropValue *value)
+{
+  if (value->type == META_PROP_VALUE_UTF8 &&
+      value->v.str != NULL &&
+      strlen(value->v.str) >= 2 &&
+      value->v.str[1] == '?')
+    {
+      meta_warning ("Okay, we have a testing request on window %lx saying %s.\n", window->xwindow, value->v.str);
+
+      /* Use a dummy answer for now */
+      meta_prop_set_utf8_string_hint (window->display,
+                                      window->xwindow,
+                                      window->display->atom__METACITY_TESTING,
+                                      "A=2");
+      XSync (window->display->xdisplay, False); /* push everything through */
+    }
+}
+#endif /* USING_TESTING */
 
 static void
 init_normal_hints (MetaDisplay   *display,
@@ -1440,7 +1471,11 @@ reload_transient_for (MetaWindow    *window,
     meta_window_queue (window, META_QUEUE_MOVE_RESIZE);
 }
 
+#ifdef USING_TESTING
+#define N_HOOKS 27
+#else
 #define N_HOOKS 26
+#endif /* USING_TESTING */
 
 void
 meta_display_init_window_prop_hooks (MetaDisplay *display)
@@ -1584,6 +1619,13 @@ meta_display_init_window_prop_hooks (MetaDisplay *display)
   hooks[i].init_func = init_net_wm_user_time_window;
   hooks[i].reload_func = reload_net_wm_user_time_window;
   ++i;
+
+#ifdef USING_TESTING
+  hooks[i].property = display->atom__METACITY_TESTING;
+  hooks[i].init_func = init_metacity_testing;
+  hooks[i].reload_func = reload_metacity_testing;
+  ++i;
+#endif
 
   if (i != N_HOOKS)
     {

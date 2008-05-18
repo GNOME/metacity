@@ -5492,6 +5492,20 @@ process_property_notify (MetaWindow     *window,
                                                 xid,
                                                 atom__NET_WM_USER_TIME);
     }
+  else if (event->atom == window->display->atom__METACITY_TESTING)
+    {
+#ifdef USING_TESTING
+
+      meta_verbose ("Property notify on %s for _METACITY_TESTING\n", window->desc);
+      
+      meta_window_reload_property (window,
+                                   window->display->atom__METACITY_TESTING);
+
+#else /* USING_TESTING */
+      meta_warning("Received _METACITY_TESTING message"
+         " but testing is turned off");
+#endif /* USING_TESTING */
+    }
 
   return TRUE;
 }
