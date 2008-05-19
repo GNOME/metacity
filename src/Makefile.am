@@ -56,6 +56,8 @@ metacity_SOURCES= 				\
 	core/session.h				\
 	core/stack.c				\
 	core/stack.h				\
+	core/testing.c                          \
+	core/testing.h                          \
 	core/util.c				\
 	include/util.h				\
 	core/window-props.c			\

@@ -39,6 +39,11 @@
 #define HOST_NAME_MAX 255
 #endif
 
+#ifdef USING_TESTING
+#include "testing.h"
+#endif /* USING_TESTING */
+
+
 typedef void (* InitValueFunc)   (MetaDisplay   *display,
                                   Atom           property,
                                   MetaPropValue *value);
@@ -862,14 +867,30 @@ reload_metacity_testing (MetaWindow    *window,
       strlen(value->v.str) >= 2 &&
       value->v.str[1] == '?')
     {
-      meta_warning ("Okay, we have a testing request on window %lx saying %s.\n", window->xwindow, value->v.str);
+      char *answer = meta_testing_notify (value->v.str[0], value->v.str+2);
 
-      /* Use a dummy answer for now */
+      char *result;
+
+      if (answer!=NULL)
+        {
+          result = g_strdup_printf ("%c=%s", value->v.str[0], answer);
+        }
+      else
+        {
+          /* Universal error code: */
+          result = g_strdup ("?=?");
+        }
+                                
       meta_prop_set_utf8_string_hint (window->display,
                                       window->xwindow,
                                       window->display->atom__METACITY_TESTING,
-                                      "A=2");
+                                      result);
+
+      /* FIXME: Does it work without this? */
       XSync (window->display->xdisplay, False); /* push everything through */
+
+      g_free (answer);
+      g_free (result);
     }
 }
 #endif /* USING_TESTING */
