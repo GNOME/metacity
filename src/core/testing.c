@@ -33,9 +33,11 @@
 static GSList *handlers = NULL;
 
 void
-meta_testing_register (MetaTestingHandler *handler)
+meta_testing_register (MetaTestingHandler handler)
 {
   handlers = g_slist_prepend (handlers, handler);
+
+  g_warning ("New testing handler registered: %p\n", handler);
 }
 
 char *
@@ -51,20 +53,27 @@ meta_testing_notify (char type, char *details)
   
   GSList *cursor = handlers;
 
+  g_warning ("We are notifying.\n");
+  g_warning ("The type is %c and the details are [%s].\n", type, details);
+  
   while (cursor)
     {
       char *possible_result;
+      MetaTestingHandler handler = (MetaTestingHandler) cursor->data;
 
-      possible_result = (*((MetaTestingHandler*)cursor->data)) (type, details);
+      g_warning ("What about %p?\n", handler);
+      possible_result = (*handler) (type, details);
 
       if (possible_result)
         {
+          g_warning ("Yes.  The answer is [%s].\n", possible_result);
           return possible_result;
         }
 
       cursor = g_slist_next (cursor);
     }
 
+  g_warning ("No.  Giving up with the testing.\n");
   return NULL; /* Give up. */
 
 }

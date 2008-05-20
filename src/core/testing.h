@@ -48,7 +48,7 @@ typedef char* (* MetaTestingHandler) (char type, char *details);
  *
  * \param handler  The handler.
  */
-void meta_testing_register (MetaTestingHandler *handler);
+void meta_testing_register (MetaTestingHandler handler);
 
 /**
  * After a __METACITY_TESTING property has been set, this function runs

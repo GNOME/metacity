@@ -51,7 +51,7 @@ def query_window_manager (type, details):
 
     return result[2:]
 
-query = '1'
+query = 'B /apps/metacity/general/disable_workarounds 1'
 
 print 'Querying window manager with the query: ',query
-print 'Received result: ',query_window_manager ('A', query)
+print 'Received result: ',query_window_manager ('C', query)

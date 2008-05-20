@@ -32,6 +32,10 @@
 #include <string.h>
 #include <stdlib.h>
 
+#ifdef USING_TESTING
+#include "testing.h"
+#endif /* USING_TESTING */
+
 #define MAX_REASONABLE_WORKSPACES 36
 
 #define MAX_COMMANDS (32 + NUM_EXTRA_COMMANDS)
@@ -125,6 +129,11 @@ static gboolean update_command            (const char  *name,
 static gboolean update_workspace_name     (const char  *name,
                                            const char  *value);
 static gboolean update_cursor_size        (int size);
+
+static void handle_configuration_update (const char *key,
+                                         GConfValue *value);
+
+static char* prefs_testing_handler (char type, char *details);
 
 static void change_notify (GConfClient    *client,
                            guint           cnxn_id,
@@ -913,6 +922,15 @@ meta_prefs_init (void)
   /* workspace names */
   init_workspace_names ();
 
+#ifdef USING_TESTING
+
+  meta_warning ("We could call %p or %p\n", prefs_testing_handler, change_notify);
+
+  /* testing, if we're doing testing */
+  meta_testing_register (prefs_testing_handler);
+
+#endif /* USING_TESTING */
+
 }
 
 #ifdef HAVE_GCONF
@@ -924,18 +942,77 @@ gboolean (*preference_update_handler[]) (const gchar*, GConfValue*) = {
   NULL
 };
 
+#ifdef USING_TESTING
+static char*
+prefs_testing_handler (char type, char *details)
+{
+#ifdef HAVE_GCONF
+  GConfValue value;
+  char *space_position = NULL;
+  char *key = NULL;  
+
+  if (type!='C' || strlen(details)<3 || details[1]!=' ')
+    return NULL;
+
+  space_position = strchr (details+2, ' ');
+
+  if (space_position==NULL || *(space_position+1)==0)
+    return NULL;
+
+  key = g_strndup (details+2, (space_position-details)-2);
+
+  meta_warning ("Key is [%s], value is [%s]\n", key, space_position+1);
+
+  /* FIXME: Does gconf_value_set_* set the type too? */
+  switch (details[0])
+    {
+    case 'I':
+      value.type = GCONF_VALUE_INT;
+      /* gconf_value_set_int (value, xxx atoi or something FIXME */
+      break;
+
+    case 'S':
+      value.type = GCONF_VALUE_STRING;
+      break;
+
+    case 'B':
+      value.type = GCONF_VALUE_BOOL;
+      gconf_valu
+      break;
+
+    default:
+      meta_verbose ("Strange configuration type: %s\n", details);
+      return NULL;
+    }
+
+  handle_configuration_update (key, &value);
+
+  return g_strdup("Y"); /* success */
+
+#else /* HAVE_GCONF */
+
+  return g_strdup("N"); /* impossible! */
+
+#endif /* HAVE_GCONF */
+
+}
+#endif /* USING_TESTING */
+
 static void
 change_notify (GConfClient    *client,
                guint           cnxn_id,
                GConfEntry     *entry,
                gpointer        user_data)
 {
-  const char *key;
-  GConfValue *value;
+  handle_configuration_update (gconf_entry_get_key (entry),
+                               gconf_entry_get_value (entry));
+}
+
+static void
+handle_configuration_update (const char *key,
+                             GConfValue *value)
+{
   gint i=0;
-  
-  key = gconf_entry_get_key (entry);
-  value = gconf_entry_get_value (entry);
 
   /* First, search for a handler that might know what to do. */
 
