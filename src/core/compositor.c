@@ -1290,7 +1290,7 @@ add_repair (MetaDisplay *display)
   if (compositor->repaint_id > 0)
     return;
 
-#if 0
+#if 1
   compositor->repaint_id = g_idle_add_full (G_PRIORITY_HIGH_IDLE,
                                             compositor_idle_cb, compositor,
                                             NULL);
@@ -2330,11 +2330,11 @@ show_overlay_window (MetaScreen *screen,
 #endif
 }
 
-#if 0
 static void
 hide_overlay_window (MetaScreen *screen,
                      Window      cow)
 {
+#ifdef HAVE_COW
   MetaDisplay *display = screen->display;
   XserverRegion region;
 
@@ -2343,8 +2343,8 @@ hide_overlay_window (MetaScreen *screen,
                               cow, ShapeBounding,
                               0, 0, region);
   XFixesDestroyRegion (display->xdisplay, region);
-}
 #endif
+}
 
 static Window
 get_output_window (MetaScreen *screen)
@@ -2460,6 +2460,8 @@ meta_compositor_unmanage_screen (MetaCompositor *compositor,
 
   info = screen->compositor_data;
 
+  hide_overlay_window (screen, info->output);
+
   /* Destroy the windows */
   for (index = info->windows; index; index = index->next) 
     {
@@ -2480,6 +2482,10 @@ meta_compositor_unmanage_screen (MetaCompositor *compositor,
   XCompositeUnredirectSubwindows (display->xdisplay, screen->xroot,
                                   CompositeRedirectManual);
   meta_screen_unset_cm_selection (screen);
+
+#ifdef HAVE_COW
+  XCompositeReleaseOverlayWindow (display->xdisplay, info->output);
+#endif
 
   g_free (info);
   screen->compositor_data = NULL;
