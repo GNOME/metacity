@@ -27,6 +27,7 @@ import re
 import sys
 import commands
 import time
+import commands
 
 def report_error(message):
   print message
@@ -102,7 +103,13 @@ def version_numbers():
 
           if version_value in versions:
             try:
-              version['micro_next'] = versions[versions.index(version_value)+1]
+              version_index = versions.index(version_value)+1
+
+              if versions[version_index] == version['micro']:
+                # work around metacity giving "1" twice
+                version_index += 1
+
+              version['micro_next'] = versions[version_index]
             except:
               report_error("You gave a list of micro version numbers, but we've used them up!")
           else:
@@ -116,6 +123,7 @@ def version_numbers():
 
   version['string'] = '%(major)s.%(minor)s.%(micro)s' % (version)
   version['filename'] = '%(name)s-%(string)s.tar.gz' % (version)
+
   return version
 
 def check_file_does_not_exist(version):
@@ -123,7 +131,7 @@ def check_file_does_not_exist(version):
     report_error("Sorry, you already have a file called %s! Please delete it or move it first." % (version['filename']))
 
 def is_date(str):
-  return len(str)>3 and str[4]=='-'
+  return len(str)>4 and str[4]=='-'
 
 def scan_changelog(version):
   changelog = file("ChangeLog").readlines()
@@ -135,7 +143,8 @@ def scan_changelog(version):
   for line in changelog:
     if is_date(line):
       release_date = line[:10]
-    if "Post-release bump to %s.%s.%s." % (version['major'], version['minor'], version['micro']) in line:
+
+    if "Post-release bump to" in line:
       changelog = changelog[:changelog.index(line)+1]
       break
 
@@ -144,11 +153,23 @@ def scan_changelog(version):
   entries = []
 
   def assumed_surname(name):
+    if name=='': return ''
     # might get more complicated later, but for now...
-    return name.split()[-1]
+    parts = name.split()
+    if len(parts)==0:
+      return '?'
+    elif len(parts)==1:
+      return parts[0]
+    else:
+      return name.split()[-1]
 
   def assumed_forename(name):
-    return name.split()[0]
+    if name=='': return ''
+    parts = name.split()
+    if len(parts)==0:
+      return '?'
+    else:
+      return parts[0]
 
   bug_re = re.compile('bug \#?(\d+)', re.IGNORECASE)
   hash_re = re.compile('\#(\d+)')
@@ -236,11 +257,23 @@ def edit_news_entry(version):
 
   def translator_name(language):
     name = 'unknown'
-    for line in file('po/%s.po' % (language)).readlines():
+
+    if ',' in language:
+      language = language[:language.find(',')].replace('.po','')
+
+    filename = 'po/%s.po' % (language)
+
+    if not os.access(filename, os.F_OK):
+      # Never mind the translator being unknown, we don't even
+      # know about the language!
+      return 'Mystery translator (%s)'  % (language)
+
+    for line in file(filename).readlines():
       match = last_translator_re.search(line)
       if match:
         name = match.group(1).rstrip().lstrip()
         break
+
     return "%s (%s)" % (name, language)
 
   thanks += '\nTranslations\n'
@@ -260,13 +293,17 @@ def edit_news_entry(version):
   tmp.close()
 
   os.system(favourite_editor()+' +6 %s ' % (filename))
+  # FIXME: if they abort, would be useful to abort here too
 
   # Write it out to NEWS
+
+  version['announcement'] = ''
 
   news_tmp = open('NEWS.tmp', 'a')
   for line in open(filename, 'r').readlines():
     if line=='' or line[0]!='#':
       news_tmp.write(line)
+      version['announcement'] += line
 
   for line in open('NEWS').readlines():
     news_tmp.write(line)
@@ -329,6 +366,9 @@ def tag_the_release(version):
   if os.system("svn cp -m release . svn+ssh://svn.gnome.org/svn/%(name)s/tags/%(ucname)s_%(major)s_%(minor)s_%(micro)s" % (version))!=0:
     report_error("Could not tag; bailing.")
 
+def md5s(version):
+  return commands.getstatusoutput('ssh master.gnome.org "cd /ftp/pub/GNOME/sources/%(name)s/%(major)s.%(minor)s/;md5sum $(name)s-%(major)s.%(minor)s.%(micro)s.tar*"' % (version))
+
 def main():
   get_up_to_date()
   check_we_are_up_to_date()
@@ -339,6 +379,7 @@ def main():
   tag_the_release(version)
   increment_version(version)
   upload(version)
+  print version['announcement']
   print "-- Done --"
 
 if __name__=='__main__':

@@ -1,3 +1,18 @@
+2.22.1
+======
+
+Thanks to Iain Holmes for improvements in this version.
+
+  - Idle repainting in compositor (Iain) 
+  - Allow compositor to be disabled correctly (backport from
+    trunk) (Iain) (#526770)
+
+Translations
+  Jordi Mallach (ca), Kenneth Nielsen (da), Kostas Papadimas (el), David
+  Lodge (en_GB), Jorge González (es), Ivar Smolin (et), Yuval Tanny\n (he), Gabor
+  Kelemen (hu), Žygimantas Beručka (lt), Eskild Hustvedt (nn), Vasiliy
+  Faronov (ru), Dr.T.Vasudevan (ta), Theppitak Karoonboonyanan (th), Baris
+  Cicek (tr), Maxim Dziumanenko (uk), Clytie Siddall (vi)
 2.22.0
 ======
 
