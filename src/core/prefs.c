@@ -947,45 +947,47 @@ static char*
 prefs_testing_handler (char type, char *details)
 {
 #ifdef HAVE_GCONF
-  GConfValue value;
+  GConfValue *value;
+  GConfValueType value_type;
   char *space_position = NULL;
+  char *value_as_string = NULL;
   char *key = NULL;  
 
-  if (type!='C' || strlen(details)<3 || details[1]!=' ')
+  if (type!='C')
     return NULL;
 
-  space_position = strchr (details+2, ' ');
+  space_position = strchr (details, ' ');
 
   if (space_position==NULL || *(space_position+1)==0)
     return NULL;
 
-  key = g_strndup (details+2, (space_position-details)-2);
+  key = g_strndup (details, space_position-details);
 
-  meta_warning ("Key is [%s], value is [%s]\n", key, space_position+1);
+  value_as_string = space_position+1;
 
-  /* FIXME: Does gconf_value_set_* set the type too? */
-  switch (details[0])
+  if (value_as_string[0]=='T' || value_as_string[0]=='F' ||
+      value_as_string[0]=='t' || value_as_string[0]=='f')
+    value_type = GCONF_VALUE_BOOL;
+  else if ((value_as_string[0]>='0' && value_as_string[0]<='9') ||
+           value_as_string[0]=='-')
+    value_type = GCONF_VALUE_INT;
+  else if (value_as_string[0]=='"')
     {
-    case 'I':
-      value.type = GCONF_VALUE_INT;
-      /* gconf_value_set_int (value, xxx atoi or something FIXME */
-      break;
-
-    case 'S':
-      value.type = GCONF_VALUE_STRING;
-      break;
-
-    case 'B':
-      value.type = GCONF_VALUE_BOOL;
-      gconf_valu
-      break;
-
-    default:
-      meta_verbose ("Strange configuration type: %s\n", details);
+      value_as_string++;
+      value_type = GCONF_VALUE_STRING;
+    }
+  else
+    {
+      meta_warning ("Type couldn't be guessed from %s.\n", value_as_string);
       return NULL;
     }
 
-  handle_configuration_update (key, &value);
+  /* We should probably get a GError back here */
+  value = gconf_value_new_from_string (value_type, value_as_string, NULL);
+
+  handle_configuration_update (key, value);
+
+  gconf_value_free (value);
 
   return g_strdup("Y"); /* success */
 
