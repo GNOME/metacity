@@ -319,7 +319,7 @@ def build_it_all(version):
 
   # FIXME: These should use os.system
 
-  if os.spawnl(os.P_WAIT, './autogen.sh', './autogen.sh') != 0:
+  if os.spawnl(os.P_WAIT, './autogen.sh', './autogen.sh', '--prefix', autogen_prefix) != 0:
     print 'autogen failed'
     sys.exit(255)
     
