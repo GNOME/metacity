@@ -21,24 +21,61 @@
 #
 
 import sys
+import inspect
 import getopt
+
+class Test(object):
+    """Grandfather of all tests.  (Yes, I know about the 'unittest'
+    module; I think what we're doing here isn't terribly similar.)"""
+    # If when we get this working I'm shown to be wrong, well,
+    # that's fine too.
+    pass
+
+tests_by_name = {}
+tests_by_bug_number = {}
 
 #################
 #
 #  These belong in a file, one of several in a subdirectory
 #  which gets scanned, so we can easily do plugins, and so
 #  we get precompilation.
+#
+#  There will be class decorators in Python 2.6, but until
+#  we get them, we will make do with adding the classes to
+#  dictionaries directly.
 
-build_tests = {
-    'ansi':          {'c':         ['-ansi']},
-    'gconfoff':      {'configure': ['--disable-gconf']},
-    'compositoroff': {'configure': ['--disable-compositor']},
-    'teston':        {'configure': ['--enable-testing']},
-}
+class BuildTest(Test):
+    "Convenience class to build others around"
 
-# XXX Fixme, but we'll check this in first:
-# We need to make all these subclasses of a build test subclass of
-# a test class.
+    # FIXME: nts: what differs, *params, **params
+    def run_build(**params):
+        pass
+
+class test_ansi(BuildTest):
+    def run(self):
+        return self.run_build(c='ansi')
+
+class test_gconfoff(BuildTest):
+    def run(self):
+        return self.run_build(configure='--disable-gconf')
+
+class test_compositoroff(BuildTest):
+    def run(self):
+        return self.run_build(configure='--disable-compositor')
+
+class test_teston(BuildTest):
+    def run(self):
+        return self.run_build(configure='--enable-testing')
+
+class test_distcheck(BuildTest):
+    def run(self):
+        return self.run_build(action='distcheck')
+
+# Populate tests_by_name by introspection
+for (name, klass) in inspect.getmembers(sys.modules['__main__']):
+    if not name.startswith('test_'): continue
+
+    tests_by_name[name[5:]] = klass
 
 #################
 #
@@ -58,12 +95,17 @@ def show_help():
     print '  -h    Show this help and exit'
     print '  -l    List all known tests and exit'
     print '  -r=n  Use revision n, or directory n as pristine'
+    print '          (defaults to /usr/local/src/metacity if you have it)'
     print
 
 def show_tests():
     print 'Build tests:'
-    for test in build_tests:
-        print '     %s' % (test)
+    for name in tests_by_name.keys():
+        test = tests_by_name[name]
+        if test.__doc__:
+            print '     %s - %s' % (name, test.__doc__)
+        else:
+            print '     %s' % (name)
 
     print
     print 'Unit tests:'
