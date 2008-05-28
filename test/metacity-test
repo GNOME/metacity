@@ -23,6 +23,8 @@
 import sys
 import inspect
 import getopt
+import os
+import tempfile
 
 class Test(object):
     """Grandfather of all tests.  (Yes, I know about the 'unittest'
@@ -33,6 +35,13 @@ class Test(object):
 
 tests_by_name = {}
 tests_by_bug_number = {}
+
+pristine_copy = '/usr/local/src/metacity'
+
+def run(command):
+    "Executes a command.  It's here so we can toggle dry runs."
+    print 'Run %s' % command
+    return os.system(command)
 
 #################
 #
@@ -47,28 +56,35 @@ tests_by_bug_number = {}
 class BuildTest(Test):
     "Convenience class to build others around"
 
-    # FIXME: nts: what differs, *params, **params
-    def run_build(**params):
-        pass
+    def run_build(self, **params):
+        print 'Here we are.', params
+        print 'We would:'
+        temp_directory = tempfile.mkdtemp(prefix='metatest_')
+        if run('cp -LpR %s %s' % (pristine_copy, temp_directory))!=0:
+            print 'There were errors during copying (your repository is probably'
+            print 'a little untidy).  Please go and tidy up and then come back.'
+            return False
+        print temp_directory
+        return True
 
 class test_ansi(BuildTest):
-    def run(self):
+    def run(self, **params):
         return self.run_build(c='ansi')
 
 class test_gconfoff(BuildTest):
-    def run(self):
+    def run(self, **params):
         return self.run_build(configure='--disable-gconf')
 
 class test_compositoroff(BuildTest):
-    def run(self):
+    def run(self, **params):
         return self.run_build(configure='--disable-compositor')
 
 class test_teston(BuildTest):
-    def run(self):
+    def run(self, **params):
         return self.run_build(configure='--enable-testing')
 
 class test_distcheck(BuildTest):
-    def run(self):
+    def run(self, **params):
         return self.run_build(action='distcheck')
 
 # Populate tests_by_name by introspection
@@ -92,7 +108,7 @@ def show_help():
     print '  -h    Show this help and exit'
     print '  -l    List all known tests and exit'
     print '  -r=n  Use revision n, or directory n as pristine'
-    print '          (defaults to /usr/local/src/metacity if you have it)'
+    print '          (defaults to %s if you have it)' % pristine_copy
     print
 
 def show_tests():
@@ -126,6 +142,9 @@ def main():
         show_help()
     elif ('-l', '') in opts:
         show_tests()
+    elif ('-r', '') in opts:
+        print 'Sorry, actual parsing of -r isn\'t written yet; use %s.' % pristine_copy
+        sys.exit(1)
     elif not testlist:
         print "Warning: You didn't specify any tests to run."
     else:
@@ -162,7 +181,20 @@ def main():
                     temp[test] = tests_by_name[test]
             tests_to_run = temp
 
-        print tests_to_run
+        # okay, kick it off
+        for name in tests_to_run.keys():
+            sys.stdout.write('%s... ' % name)
+            test = tests_to_run[name]()
+            try:
+                result = test.run()
+                if result:
+                    print 'PASS'
+                else:
+                    print 'FAIL'
+            except Exception, e:
+                # obviously not good
+                print 'FAIL (%s)' % e
+            
 
 if __name__=='__main__':
     main()
