@@ -81,9 +81,6 @@ for (name, klass) in inspect.getmembers(sys.modules['__main__']):
 #
 #  And back in the ordinary world...
 
-def run_test(testname):
-    print 'Running test ',testname
-
 def show_help():
     print '  --- metacity-test ---  a test system for metacity.'
     print 'There are three kinds of test: unit, regression, or build.'
@@ -133,15 +130,39 @@ def main():
         print "Warning: You didn't specify any tests to run."
     else:
         # Later we need to add
-        #  - all, allbut
         #  - .foo = all with the tag "foo"
         #  - .build, etc., which are implicit tags
         #  - for regression tests, selection by bug number
         #  - very simple dependencies (you need the output of a particular build
         #    test before you can run a given unit test on it!)
 
+        tests_to_run = {}
+        tests_that_dont_exist = []
+
+        switch_polarity = 0
+
         for test in testlist:
-            run_test(test)
+            if test in ('all', 'allbut'):
+                switch_polarity = 1
+            elif tests_by_name.has_key(test):
+                tests_to_run[test] = tests_by_name[test]
+            else:
+                tests_that_dont_exist.append(test)
+
+        if tests_that_dont_exist:
+            print 'You asked for these tests which don\'t exist:', ' '.join(tests_that_dont_exist)
+            print 'Stopping now until you decide what you really want.'
+            print 'Try the -l option, maybe.'
+            sys.exit(1)
+
+        if switch_polarity:
+            temp = {}
+            for test in tests_by_name.keys():
+                if not tests_to_run.has_key(test):
+                    temp[test] = tests_by_name[test]
+            tests_to_run = temp
+
+        print tests_to_run
 
 if __name__=='__main__':
     main()
