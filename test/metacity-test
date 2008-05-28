@@ -41,7 +41,9 @@ pristine_copy = '/usr/local/src/metacity'
 def run(command):
     "Executes a command.  It's here so we can toggle dry runs."
     print 'Run %s' % command
-    return os.system(command)
+    result = os.system(command)
+    print 'Return result of %s was %d' % (command, result)
+    return result == 0
 
 #################
 #
@@ -57,14 +59,47 @@ class BuildTest(Test):
     "Convenience class to build others around"
 
     def run_build(self, **params):
+        """Generalised routine to attempt to build Metacity.
+
+        Parameters are:
+        action = (string)  -- run "make (string)" rather than "make"
+        autogen = (string) -- opts for autogen (or its kids)
+        c = (string) -- C flags
+        """
         print 'Here we are.', params
         print 'We would:'
-        temp_directory = tempfile.mkdtemp(prefix='metatest_')
-        if run('cp -LpR %s %s' % (pristine_copy, temp_directory))!=0:
-            print 'There were errors during copying (your repository is probably'
-            print 'a little untidy).  Please go and tidy up and then come back.'
+        working_directory = pristine_copy
+        if False:
+            # This is an idea I had about copying everything into /tmp
+            # so we could work with -r being a r/o directory.
+            # It slows everything down to turn it on by default, though.
+            # XXX allow people to turn it on.
+            temp_directory = tempfile.mkdtemp(prefix='metatest_')
+            if run('cp -LpR %s %s' % (pristine_copy, temp_directory))!=0:
+                print 'There were errors during copying (your repository is probably'
+                print 'a little untidy).  Please go and tidy up and then come back.'
+                return False
+            working_directory = temp_directory
+
+        makefile = os.path.join(working_directory, 'Makefile')
+
+        os.chdir (working_directory)
+
+        if os.path.lexists (makefile):
+            if not run ("make distclean"):
+                print 'Could not clean up; this is bad'
+                return False
+        else:
+            print 'No need to distclean'
+
+        autogen_opts = ''
+        if params.has_key ('autogen'):
+            autogen_opts = params['autogen']
+
+        if not run('./autogen.sh %s' % autogen_opts):
+            print 'Autogen failed; can\'t really go on from here.'
             return False
-        print temp_directory
+
         return True
 
 class test_ansi(BuildTest):
@@ -73,15 +108,15 @@ class test_ansi(BuildTest):
 
 class test_gconfoff(BuildTest):
     def run(self, **params):
-        return self.run_build(configure='--disable-gconf')
+        return self.run_build(autogen='--disable-gconf')
 
 class test_compositoroff(BuildTest):
     def run(self, **params):
-        return self.run_build(configure='--disable-compositor')
+        return self.run_build(autogen='--disable-compositor')
 
 class test_teston(BuildTest):
     def run(self, **params):
-        return self.run_build(configure='--enable-testing')
+        return self.run_build(autogen='--enable-testing')
 
 class test_distcheck(BuildTest):
     def run(self, **params):
