@@ -406,15 +406,22 @@ make_shadow (MetaDisplay *display,
   MetaCompScreen *info = screen->compositor_data;
   XImage *ximage;
   guchar *data;
-  int msize = info->gaussian_map->size;
+  int msize, swidth, sheight, centre;
   int ylimit, xlimit;
-  int swidth = width + msize;
-  int sheight = height + msize;
-  int centre = msize / 2;
   int x, y;
   guchar d;
   int x_diff;
   int opacity_int = (int)(opacity * 25);
+
+  if (info==NULL)
+    {
+      return NULL;
+    }
+
+  msize = info->gaussian_map->size;
+  swidth = width + msize;
+  sheight = height + msize;
+  centre = msize/2;
 
   data = g_malloc (swidth * sheight * sizeof (guchar));
 
@@ -727,6 +734,11 @@ create_root_buffer (MetaScreen *screen)
   Visual *visual;
   int depth, screen_width, screen_height, screen_number;
 
+  if (info==NULL)
+    {
+      return None;
+    }
+
   screen_width = screen->rect.width;
   screen_height = screen->rect.height;
   screen_number = screen->number;
@@ -771,6 +783,11 @@ paint_root (MetaScreen *screen,
 static gboolean
 window_has_shadow (MetaCompWindow *cw)
 {
+  if ((MetaCompScreen *)cw->screen->compositor_data==NULL)
+    {
+      return FALSE;
+    }
+
   if (((MetaCompScreen *)cw->screen->compositor_data)->have_shadows == FALSE) 
     return FALSE;
 
@@ -948,6 +965,11 @@ paint_dock_shadows (MetaScreen   *screen,
   MetaCompScreen *info = screen->compositor_data;
   GSList *d;
 
+  if (info==NULL)
+    {
+      return;
+    }
+
   for (d = info->dock_windows; d; d = d->next) 
     {
       MetaCompWindow *cw = d->data;
@@ -986,6 +1008,11 @@ paint_windows (MetaScreen   *screen,
   Window xroot;
   MetaCompWindow *cw;
   XserverRegion paint_region, desktop_region;
+
+  if (info==NULL)
+    {
+      return;
+    }
 
   screen_width = screen->rect.width;
   screen_height = screen->rect.height;
@@ -1242,6 +1269,11 @@ repair_screen (MetaScreen *screen)
   MetaCompScreen *info = screen->compositor_data;
   MetaDisplay *display = screen->display;
 
+  if (info==NULL)
+    {
+      return;
+    }
+
   if (info->all_damage != None) 
     {
       meta_error_trap_push (display);
@@ -1309,6 +1341,11 @@ add_damage (MetaScreen     *screen,
 {
   MetaDisplay *display = screen->display;
   MetaCompScreen *info = screen->compositor_data;
+
+  if (info==NULL)
+    {
+      return;
+    }
 
 //  dump_xserver_region ("add_damage", display, damage);
 
@@ -1451,7 +1488,7 @@ free_win (MetaCompWindow *cw,
 
       /* The window may not have been added to the list in this case,
          but we can check anyway */
-      if (cw->type == META_COMP_WINDOW_DOCK)
+      if (info!=NULL && cw->type == META_COMP_WINDOW_DOCK)
         info->dock_windows = g_slist_remove (info->dock_windows, cw);
 
       g_free (cw);
@@ -1497,7 +1534,7 @@ unmap_win (MetaDisplay *display,
   MetaCompWindow *cw = find_window_for_screen (screen, id);
   MetaCompScreen *info = screen->compositor_data;
 
-  if (cw == NULL) 
+  if (cw == NULL || info == NULL)
     {
       return;
     }
@@ -1730,9 +1767,13 @@ destroy_win (MetaDisplay *display,
     }
   
   info = screen->compositor_data;
-  info->windows = g_list_remove (info->windows, (gconstpointer) cw);
-  g_hash_table_remove (info->windows_by_xid, (gpointer) xwindow);
-  
+
+  if (info!=NULL)
+    {
+      info->windows = g_list_remove (info->windows, (gconstpointer) cw);
+      g_hash_table_remove (info->windows_by_xid, (gpointer) xwindow);
+    }
+
   free_win (cw, TRUE);
 }
 
@@ -1747,6 +1788,11 @@ restack_win (MetaCompWindow *cw,
 
   screen = cw->screen;
   info = screen->compositor_data;
+
+  if (info==NULL)
+    {
+      return;
+    }
 
   sibling = g_list_find (info->windows, (gconstpointer) cw);
   next = g_list_next (sibling);
@@ -1903,7 +1949,10 @@ resize_win (MetaCompWindow *cw,
   dump_xserver_region ("resize_win", display, damage);
   add_damage (screen, damage);
 
-  info->clip_changed = TRUE;
+  if (info!=NULL)
+    {
+      info->clip_changed = TRUE;
+    }
 }
 
 /* event processors must all be called with an error trap in place */
@@ -1933,7 +1982,10 @@ process_circulate_notify (MetaCompositor  *compositor,
     above = None;
   restack_win (cw, above);
 
-  info->clip_changed = TRUE;
+  if (info!=NULL)
+    {
+      info->clip_changed = TRUE;
+    }
 
 #ifdef USE_IDLE_REPAINT
   add_repair (compositor->display);
@@ -1987,6 +2039,12 @@ process_configure_notify (MetaCompositor  *compositor,
         return;
 
       info = screen->compositor_data;
+
+      if (info==NULL)
+        {
+          return;
+        }
+
       if (info->root_buffer)
         {
           XRenderFreePicture (display->xdisplay, info->root_buffer);
@@ -2018,7 +2076,7 @@ process_property_notify (MetaCompositor *compositor,
           if (screen)
             {
               MetaCompScreen *info = screen->compositor_data;
-              if (info->root_tile)
+              if (info!=NULL && info->root_tile)
                 {
                   XClearArea (display->xdisplay, screen->xroot,
                               0, 0, 0, 0, TRUE);

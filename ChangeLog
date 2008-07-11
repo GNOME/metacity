@@ -1,19 +1,8 @@
-2008-05-27  Thomas Thurman  <tthurman@gnome.org>
+2008-07-10  Thomas Thurman  <tthurman@gnome.org>
 
-        * NEWS: 2.22.1 release.
-
-2008-05-26  Thomas Thurman  <tthurman@gnome.org>
-
-        * NEWS: 2.22.1 release.
-
-2008-05-26  Thomas Thurman  <tthurman@gnome.org>
-
-        * NEWS: 2.22.1 release.
-
-2008-05-26  Thomas Thurman  <tthurman@gnome.org>
-
-        * NEWS: 2.22.1 release.
-
+        * src/core/compositor.c:  Add checks for the compositor being null.
+	Backporting r3751 from 2.23.  Closes #530702.
+	
 2008-05-26  Thomas Thurman  <tthurman@gnome.org>
 
         * NEWS: 2.22.1 release.
