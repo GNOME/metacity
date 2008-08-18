@@ -1,3 +1,16 @@
+2.23.144
+========
+
+Thanks to Ted Percival and Eric Piel for improvements in this version.
+
+  - Fix memory allocation problem in struts (Eric) (probably #468075)
+  - Ensure windows which start maximised know where to jump back
+    to, so they don't warp to other screens (Ted) (#504692)
+
+Translations
+  Khaled Hosny (ar), Petr Kovar (cs), Ilkka Tuohela (fi), Ignacio Casal
+  Quinteiro (gl), Duarte Loreto (pt), Djavan Fagundes (pt_BR)
+
 2.23.89
 =======
 
