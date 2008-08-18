@@ -1,5 +1,11 @@
 2008-08-18  Thomas Thurman  <tthurman@gnome.org>
 
+        * configure.in: undo erroneous earlier version number change
+          (it doesn't bump to 2.24 until we actually ship, even
+          though this is the 2.24 branch)
+
+2008-08-18  Thomas Thurman  <tthurman@gnome.org>
+
         * Cherrypick bugfixes from trunk.
 
 2008-08-18  Eric Piel  <e.a.b.piel@tudelft.nl>
