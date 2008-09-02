@@ -1,3 +1,15 @@
+2.23.233
+========
+
+Thanks to Baptiste Mille-Mathias, and Thomas Thurman for improvements in this
+version.
+
+  - Move desktop file according to policy change (Thomas) (#549479)
+  - Update default icon to a Tango style pixmap (Baptiste) (#548377)
+
+Translations
+  Iñaki Larrañaga Murgoitio (eu), Laurent Dhima (sq), Clytie Siddall (vi)
+
 2.23.144
 ========
 

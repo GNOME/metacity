@@ -1,5 +1,9 @@
 2008-09-02  Thomas Thurman  <tthurman@gnome.org>
 
+        * NEWS: 2.23.233 release.
+
+2008-09-02  Thomas Thurman  <tthurman@gnome.org>
+
         Desktop file moved, according to policy change.  Closes #549479.
 
         * src/metacity.desktop.in: Don't display the desktop file
