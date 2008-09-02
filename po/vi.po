@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity GNOME TRUNK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-05-12 23:36+0000\n"
-"PO-Revision-Date: 2008-06-01 23:15+0930\n"
+"POT-Creation-Date: 2008-08-14 04:06+0000\n"
+"PO-Revision-Date: 2008-09-02 15:42+0700\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -30,18 +30,14 @@ msgstr "Quản lý cửa sổ"
 msgid "Unknown window information request: %d"
 msgstr "Yêu cầu thông tin cửa sổ không rõ : %d"
 
-#: ../src/core/delete.c:70
-#: ../src/core/delete.c:97
-#: ../src/ui/metacity-dialog.c:50
-#: ../src/ui/theme-parser.c:481
+#: ../src/core/delete.c:70 ../src/core/delete.c:97
+#: ../src/ui/metacity-dialog.c:50 ../src/ui/theme-parser.c:481
 #, c-format
 msgid "Could not parse \"%s\" as an integer"
 msgstr "Không thể phân tích « %s » thành một số nguyên."
 
-#: ../src/core/delete.c:77
-#: ../src/core/delete.c:104
-#: ../src/ui/metacity-dialog.c:57
-#: ../src/ui/theme-parser.c:490
+#: ../src/core/delete.c:77 ../src/core/delete.c:104
+#: ../src/ui/metacity-dialog.c:57 ../src/ui/theme-parser.c:490
 #: ../src/ui/theme-parser.c:545
 #, c-format
 msgid "Did not understand trailing characters \"%s\" in string \"%s\""
@@ -80,7 +76,7 @@ msgstr "Thiếu phần mở rộng %s cần thiết để sắp thành phần"
 msgid "Failed to open X Window System display '%s'\n"
 msgstr "Lỗi mở bộ trình bày Hệ thống Cửa sổ X « %s ».\n"
 
-#: ../src/core/errors.c:271
+#: ../src/core/errors.c:272
 #, c-format
 msgid ""
 "Lost connection to the display '%s';\n"
@@ -91,7 +87,7 @@ msgstr ""
 "thường là do trình phục vụ X bị ngừng hoạt động hoặc \n"
 "bạn đã buộc chấm dứt hoạt động bộ quản lý cửa sổ.\n"
 
-#: ../src/core/errors.c:278
+#: ../src/core/errors.c:279
 #, c-format
 msgid "Fatal IO error %d (%s) on display '%s'.\n"
 msgstr "Lỗi gõ/xuất nghiêm trọng %d (%s) trên bộ trình bày « %s ».\n"
@@ -104,18 +100,18 @@ msgid ""
 msgstr ""
 "Một chương trình khác đã dùng phím « %s » với phím bổ trợ «%x» như là tổ hợp.\n"
 
-#: ../src/core/keybindings.c:2722
+#: ../src/core/keybindings.c:2729
 #, c-format
 msgid "Error launching metacity-dialog to print an error about a command: %s\n"
 msgstr ""
 "Gặp lỗi khi khởi chạy «metacity-dialog» để in thông báo lỗi về lệnh: %s\n"
 
-#: ../src/core/keybindings.c:2827
+#: ../src/core/keybindings.c:2834
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "Không có lệnh «%d» nào được định nghĩa.\n"
 
-#: ../src/core/keybindings.c:3855
+#: ../src/core/keybindings.c:3862
 #, c-format
 msgid "No terminal command has been defined.\n"
 msgstr "Không có lệnh thiết bị cuối nào được định nghĩa.\n"
@@ -181,9 +177,6 @@ msgstr ""
 msgid "Failed to restart: %s\n"
 msgstr "Lỗi khởi động lại: %s\n"
 
-#: ../src/core/prefs.c:450
-#: ../src/core/prefs.c:564
-#, c-format
 #.
 #. * We found it, but it was invalid.  Complain.
 #. *
@@ -192,31 +185,25 @@ msgstr "Lỗi khởi động lại: %s\n"
 #. * (We know the old value, so we can look up a suitable string in
 #. * the symtab.)
 #.
+#: ../src/core/prefs.c:502 ../src/core/prefs.c:654
+#, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
 msgstr "Khóa GConf « %s » được đặt giá trị không hợp lệ\n"
 
-#: ../src/core/prefs.c:537
-#: ../src/core/prefs.c:611
-#: ../src/core/prefs.c:659
-#: ../src/core/prefs.c:965
-#: ../src/core/prefs.c:983
-#: ../src/core/prefs.c:999
-#: ../src/core/prefs.c:1018
-#: ../src/core/prefs.c:1034
-#: ../src/core/prefs.c:1051
-#: ../src/core/prefs.c:1068
-#: ../src/core/prefs.c:1084
-#: ../src/core/prefs.c:1100
+#: ../src/core/prefs.c:583 ../src/core/prefs.c:823
+#, c-format
+msgid "%d stored in GConf key %s is out of range %d to %d\n"
+msgstr "%d được lưu trong khóa GConf %s nằm ngoài phạm vi từ %d đến %d\n"
+
+#: ../src/core/prefs.c:627 ../src/core/prefs.c:701 ../src/core/prefs.c:749
+#: ../src/core/prefs.c:813 ../src/core/prefs.c:1108 ../src/core/prefs.c:1124
+#: ../src/core/prefs.c:1143 ../src/core/prefs.c:1159 ../src/core/prefs.c:1176
+#: ../src/core/prefs.c:1192
 #, c-format
 msgid "GConf key \"%s\" is set to an invalid type\n"
 msgstr "Khóa GConf « %s » được đặt kiểu sai\n"
 
-#: ../src/core/prefs.c:860
-#, c-format
-msgid "Type of %s was not integer"
-msgstr "%s có kiểu không phải số nguyên"
-
-#: ../src/core/prefs.c:1169
+#: ../src/core/prefs.c:1262
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -224,21 +211,12 @@ msgstr ""
 "Khả năng chỉnh sửa cho các ứng dụng không theo chuẩn đã đã tắt. Vài ứng dụng "
 "có thể sẽ xử sự không đúng.\n"
 
-#: ../src/core/prefs.c:1224
-#, c-format
-msgid ""
-"%d stored in GConf key %s is not a reasonable cursor_size; must be in the "
-"range 1..128\n"
-msgstr ""
-"« %d » được lưu trong khóa GConf « %s » không phải là một « cursor_size » (kích "
-"cỡ con chạy) hợp lý; phải nằm trong phạm vi (1..128)\n"
-
-#: ../src/core/prefs.c:1250
+#: ../src/core/prefs.c:1332
 #, c-format
 msgid "Could not parse font description \"%s\" from GConf key %s\n"
 msgstr "Không thể phân tách mô tả phông chữ « %s » từ khóa GConf « %s ».\n"
 
-#: ../src/core/prefs.c:1310
+#: ../src/core/prefs.c:1392
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -247,33 +225,17 @@ msgstr ""
 "Tìm thấy « %s » trong cơ sở dữ liệu cấu hình không phải giá trị hợp lệ cho bộ "
 "biến đổi nút chuột.\n"
 
-#: ../src/core/prefs.c:1589
-#, c-format
-msgid ""
-"%d stored in GConf key %s is not a reasonable number of workspaces, current "
-"maximum is %d\n"
-msgstr ""
-"«%d» được lưu trong khóa GConf « %s » không phải là một con số hợp lý cho số "
-"vùng làm việc, hiện thời tối đa là «%d».\n"
-
-#: ../src/core/prefs.c:1633
-#, c-format
-msgid "%d stored in GConf key %s is out of range 0 to %d\n"
-msgstr "«%d» được lưu trong khóa GConf « %s » nằm ngoài phạm vi từ 0 tới «%d».\n"
-
-#: ../src/core/prefs.c:1764
+#: ../src/core/prefs.c:1809
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr "Gặp lỗi khi đặt số vùng làm việc là %d: %s\n"
 
-#: ../src/core/prefs.c:2129
-#: ../src/core/prefs.c:2641
+#: ../src/core/prefs.c:2174 ../src/core/prefs.c:2686
 #, c-format
 msgid "Workspace %d"
 msgstr "Vùng làm việc %d"
 
-#: ../src/core/prefs.c:2159
-#: ../src/core/prefs.c:2332
+#: ../src/core/prefs.c:2204 ../src/core/prefs.c:2377
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -282,7 +244,7 @@ msgstr ""
 "Tìm thấy « %s » trong cơ sở dữ liệu cấu hình không phải giá trị hợp lệ cho tổ "
 "hợp phím « %s ».\n"
 
-#: ../src/core/prefs.c:2722
+#: ../src/core/prefs.c:2767
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr "Gặp lỗi khi đặt tên cho vùng làm việc «%d» thành « %s »: %s\n"
@@ -319,8 +281,7 @@ msgstr "Màn hình %d trên bộ trình bày « %s » đã có bộ quản lý c
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "Không thể giải phóng Màn hình %d trên bộ trình bày « %s ».\n"
 
-#: ../src/core/session.c:837
-#: ../src/core/session.c:844
+#: ../src/core/session.c:837 ../src/core/session.c:844
 #, c-format
 msgid "Could not create directory '%s': %s\n"
 msgstr "Không thể tạo thư mục « %s »: %s\n"
@@ -340,9 +301,9 @@ msgstr "Gặp lỗi khi ghi tập tin phiên làm việc « %s »: %s\n"
 msgid "Error closing session file '%s': %s\n"
 msgstr "Gặp lỗi khi đóng tập tin phiên làm việc « %s »: %s\n"
 
+#. oh, just give up
 #: ../src/core/session.c:1093
 #, c-format
-#. oh, just give up
 msgid "Failed to read saved session file %s: %s\n"
 msgstr "Lỗi đọc tập tin phiên làm việc đã lưu %s: %s\n"
 
@@ -366,8 +327,7 @@ msgstr "Thuộc tính lạ « %s » trên phần tử <metacity_session>."
 msgid "nested <window> tag"
 msgstr "thẻ <window> lồng nhau"
 
-#: ../src/core/session.c:1269
-#: ../src/core/session.c:1301
+#: ../src/core/session.c:1269 ../src/core/session.c:1301
 #, c-format
 msgid "Unknown attribute %s on <window> element"
 msgstr "Thuộc tính lạ « %s » trên phần tử <window>"
@@ -411,8 +371,7 @@ msgstr "Lỗi fdopen() tập tin ghi lưu %s: %s\n"
 msgid "Opened log file %s\n"
 msgstr "Đã mở tập tin ghi lưu %s.\n"
 
-#: ../src/core/util.c:136
-#: ../src/tools/metacity-message.c:176
+#: ../src/core/util.c:136 ../src/tools/metacity-message.c:176
 #, c-format
 msgid "Metacity was compiled without support for verbose mode\n"
 msgstr "Metacity đã được biên dịch không hỗ trợ phương thức chi tiết.\n"
@@ -433,24 +392,24 @@ msgstr "Cảnh báo bộ quản lý cửa sổ: "
 msgid "Window manager error: "
 msgstr "Lỗi bộ quản lý cửa sổ: "
 
-#: ../src/core/window-props.c:195
+#: ../src/core/window-props.c:206
 #, c-format
 msgid "Application set a bogus _NET_WM_PID %lu\n"
 msgstr "Ứng dụng đã đặt « _NET_WM_PID » giả %lu.\n"
 
-#: ../src/core/window-props.c:327
+#: ../src/core/window-props.c:338
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (trên %s)"
 
-#: ../src/core/window-props.c:1409
+#: ../src/core/window-props.c:1420
 #, c-format
 msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
 msgstr "Cửa sổ « WM_TRANSIENT_FOR » không hợp lệ 0x%lx được xác định cho %s.\n"
 
-#: ../src/core/window.c:5670
-#, c-format
 #. first time through
+#: ../src/core/window.c:5648
+#, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
 "window as specified in the ICCCM.\n"
@@ -458,8 +417,6 @@ msgstr ""
 "Cửa sổ « %s » tự đặt « SM_CLIENT_ID » cho chính nó, thay vì đặt trên cửa sổ « "
 "WM_CLIENT_LEADER » như quy định trong ICCCM.\n"
 
-#: ../src/core/window.c:6235
-#, c-format
 #. We ignore mwm_has_resize_func because WM_NORMAL_HINTS is the
 #. * authoritative source for that info. Some apps such as mplayer or
 #. * xine disable resize via MWM but not WM_NORMAL_HINTS, but that
@@ -467,6 +424,8 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
+#: ../src/core/window.c:6213
+#, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
 "d x %d and max size %d x %d; this doesn't make much sense.\n"
@@ -557,10 +516,13 @@ msgid ""
 "without breaking older versions. A special spacer tag can be used to insert "
 "some space between two adjacent buttons."
 msgstr ""
-"Bố trí các nút trên thanh tiêu đề. Giá trị nên là một chuỗi như là « menu:minimize,maximize,close » (trình đơn:cực tiểu hóa,cực đại hóa,đóng), dấu hai chấm tách góc trái ra khỏi góc phải cửa sổ, tên các nút được cách nhau bởi dấu phẩy. "
-"Không cho phép nút đúp nào. Tên nút không rõ sẽ được bỏ qua để cho các nút "
-"tiếp tục được bổ sung vào các phiên bản tiếp theo của metacity mà không phá "
-"vỡ phiên bản cũ. Một thẻ phân cách đặc biệt có thể được dùng để chèn khoảng cách vào giữa hai nút kề nhau."
+"Bố trí các nút trên thanh tiêu đề. Giá trị nên là một chuỗi như là « menu:"
+"minimize,maximize,close » (trình đơn:cực tiểu hóa,cực đại hóa,đóng), dấu hai "
+"chấm tách góc trái ra khỏi góc phải cửa sổ, tên các nút được cách nhau bởi "
+"dấu phẩy. Không cho phép nút đúp nào. Tên nút không rõ sẽ được bỏ qua để cho "
+"các nút tiếp tục được bổ sung vào các phiên bản tiếp theo của metacity mà "
+"không phá vỡ phiên bản cũ. Một thẻ phân cách đặc biệt có thể được dùng để "
+"chèn khoảng cách vào giữa hai nút kề nhau."
 
 #: ../src/metacity.schemas.in.h:9
 msgid "Automatically raises the focused window"
@@ -2244,12 +2206,12 @@ msgstr ""
 "Tùy chọn hợp lệ hiện thời là:\n"
 " • toggle_shade\t\ttạo bóng/thôi tạo bóng cửa sổ\n"
 " • toggle_maximize\tphóng to/thôi phóng to cửa sổ\n"
-" • toggle_maximize_horizontally		phóng to cửa sổ theo chiều ngang\n"
-" • toggle_maximize_vertically		phóng to cửa sổ theo chiều dọc\n"
+" • toggle_maximize_horizontally\t\tphóng to cửa sổ theo chiều ngang\n"
+" • toggle_maximize_vertically\t\tphóng to cửa sổ theo chiều dọc\n"
 " • minimize\t\t\tthu nhỏ cửa sổ\n"
-" • shade						cuộn cửa sổ lên\n"
-" • menu						hiển thị trình đơn cửa sổ\n"
-" • lower						đặt cửa sổ vào nền sau các cửa sổ khác\n"
+" • shade\t\t\t\t\t\tcuộn cửa sổ lên\n"
+" • menu\t\t\t\t\t\thiển thị trình đơn cửa sổ\n"
+" • lower\t\t\t\t\t\tđặt cửa sổ vào nền sau các cửa sổ khác\n"
 " • none\t\t\t\tkhông làm gì."
 
 #: ../src/metacity.schemas.in.h:188
@@ -2263,16 +2225,16 @@ msgid ""
 "will display the window menu, 'lower' which will put the window behind all "
 "the others, and 'none' which will not do anything."
 msgstr ""
-"Tùy chọn này quyết định tác dụng của việc nhấn-giữa chuột trên thanh tiêu đề. Tùy "
-"chọn hợp lệ hiện thời là:\n"
+"Tùy chọn này quyết định tác dụng của việc nhấn-giữa chuột trên thanh tiêu "
+"đề. Tùy chọn hợp lệ hiện thời là:\n"
 " • toggle_shade\t\ttạo bóng/thôi tạo bóng cửa sổ\n"
 " • toggle_maximize\tphóng to/thôi phóng to cửa sổ\n"
-" • toggle_maximize_horizontally		phóng to cửa sổ theo chiều ngang\n"
-" • toggle_maximize_vertically		phóng to cửa sổ theo chiều dọc\n"
+" • toggle_maximize_horizontally\t\tphóng to cửa sổ theo chiều ngang\n"
+" • toggle_maximize_vertically\t\tphóng to cửa sổ theo chiều dọc\n"
 " • minimize\t\t\tthu nhỏ cửa sổ\n"
-" • shade						cuộn cửa sổ lên\n"
-" • menu						hiển thị trình đơn cửa sổ\n"
-" • lower						đặt cửa sổ vào nền sau các cửa sổ khác\n"
+" • shade\t\t\t\t\t\tcuộn cửa sổ lên\n"
+" • menu\t\t\t\t\t\thiển thị trình đơn cửa sổ\n"
+" • lower\t\t\t\t\t\tđặt cửa sổ vào nền sau các cửa sổ khác\n"
 " • none\t\t\t\tkhông làm gì."
 
 #: ../src/metacity.schemas.in.h:189
@@ -2290,12 +2252,12 @@ msgstr ""
 "Tùy chọn hợp lệ hiện thời là:\n"
 " • toggle_shade\t\ttạo bóng/thôi tạo bóng cửa sổ\n"
 " • toggle_maximize\tphóng to/thôi phóng to cửa sổ\n"
-" • toggle_maximize_horizontally		phóng to cửa sổ theo chiều ngang\n"
-" • toggle_maximize_vertically		phóng to cửa sổ theo chiều dọc\n"
+" • toggle_maximize_horizontally\t\tphóng to cửa sổ theo chiều ngang\n"
+" • toggle_maximize_vertically\t\tphóng to cửa sổ theo chiều dọc\n"
 " • minimize\t\t\tthu nhỏ cửa sổ\n"
-" • shade						cuộn cửa sổ lên\n"
-" • menu						hiển thị trình đơn cửa sổ\n"
-" • lower						đặt cửa sổ vào nền sau các cửa sổ khác\n"
+" • shade\t\t\t\t\t\tcuộn cửa sổ lên\n"
+" • menu\t\t\t\t\t\thiển thị trình đơn cửa sổ\n"
+" • lower\t\t\t\t\t\tđặt cửa sổ vào nền sau các cửa sổ khác\n"
 " • none\t\t\t\tkhông làm gì."
 
 #: ../src/metacity.schemas.in.h:190
@@ -2409,86 +2371,85 @@ msgstr "Luôn nằm trong vùng làm việc có thể thấy"
 msgid "Put Window On Only One Workspace"
 msgstr "Đặt cửa sổ trên chỉ một vùng làm việc"
 
-#: ../src/ui/menu.c:70
 #. Translators: Translate this string the same way as you do in libwnck!
+#: ../src/ui/menu.c:70
 msgid "Mi_nimize"
 msgstr "Th_u nhỏ"
 
-#: ../src/ui/menu.c:72
 #. Translators: Translate this string the same way as you do in libwnck!
+#: ../src/ui/menu.c:72
 msgid "Ma_ximize"
 msgstr "_Phóng to"
 
-#: ../src/ui/menu.c:74
 #. Translators: Translate this string the same way as you do in libwnck!
+#: ../src/ui/menu.c:74
 msgid "Unma_ximize"
 msgstr "_Bỏ phóng to"
 
-#: ../src/ui/menu.c:76
 #. Translators: Translate this string the same way as you do in libwnck!
+#: ../src/ui/menu.c:76
 msgid "Roll _Up"
 msgstr "Cuộn _lên"
 
-#: ../src/ui/menu.c:78
 #. Translators: Translate this string the same way as you do in libwnck!
+#: ../src/ui/menu.c:78
 msgid "_Unroll"
 msgstr "_Bỏ cuộn"
 
-#: ../src/ui/menu.c:80
 #. Translators: Translate this string the same way as you do in libwnck!
+#: ../src/ui/menu.c:80
 msgid "_Move"
 msgstr "_Di chuyển"
 
-#: ../src/ui/menu.c:82
 #. Translators: Translate this string the same way as you do in libwnck!
+#: ../src/ui/menu.c:82
 msgid "_Resize"
 msgstr "Đổi _cỡ"
 
-#: ../src/ui/menu.c:84
 #. Translators: Translate this string the same way as you do in libwnck!
+#: ../src/ui/menu.c:84
 msgid "Move Titlebar On_screen"
 msgstr "Chuyển Thanh Tựa Đề trên _màn hình"
 
-#: ../src/ui/menu.c:87
-#: ../src/ui/menu.c:89
 #. separator
 #. Translators: Translate this string the same way as you do in libwnck!
+#: ../src/ui/menu.c:87 ../src/ui/menu.c:89
 msgid "Always on _Top"
 msgstr "Luôn ở _trên"
 
-#: ../src/ui/menu.c:91
 #. Translators: Translate this string the same way as you do in libwnck!
+#: ../src/ui/menu.c:91
 msgid "_Always on Visible Workspace"
 msgstr "_Chỉ trong vùng làm việc có thể thấy"
 
-#: ../src/ui/menu.c:93
 #. Translators: Translate this string the same way as you do in libwnck!
+#: ../src/ui/menu.c:93
 msgid "_Only on This Workspace"
 msgstr "Chỉ trong vùng làm việc _này"
 
-#: ../src/ui/menu.c:95
 #. Translators: Translate this string the same way as you do in libwnck!
+#: ../src/ui/menu.c:95
 msgid "Move to Workspace _Left"
 msgstr "Chuyển sang vùng làm việc bên t_rái"
 
-#: ../src/ui/menu.c:97
 #. Translators: Translate this string the same way as you do in libwnck!
+#: ../src/ui/menu.c:97
 msgid "Move to Workspace R_ight"
 msgstr "Chuyển sang vùng làm việc bên _phải"
 
-#: ../src/ui/menu.c:99
 #. Translators: Translate this string the same way as you do in libwnck!
+#: ../src/ui/menu.c:99
 msgid "Move to Workspace _Up"
 msgstr "Chuyển sang vùng làm việc bên _trên"
 
-#: ../src/ui/menu.c:101
 #. Translators: Translate this string the same way as you do in libwnck!
+#: ../src/ui/menu.c:101
 msgid "Move to Workspace _Down"
 msgstr "Chuyển sang vùng làm việc bên _dưới"
 
-#: ../src/ui/menu.c:105
 #. separator
 #. Translators: Translate this string the same way as you do in libwnck!
+#: ../src/ui/menu.c:105
 msgid "_Close"
 msgstr "Đón_g"
 
@@ -2512,100 +2473,100 @@ msgid "Move to Another _Workspace"
 msgstr "Chuyển sang Vùng làm việc _khác"
 
 # Name: don't translate / Tên: đừng dịch
-#: ../src/ui/metaaccellabel.c:105
 #. This is the text that should appear next to menu accelerators
 #. * that use the shift key. If the text on this key isn't typically
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
+#: ../src/ui/metaaccellabel.c:105
 msgid "Shift"
 msgstr "Shift"
 
 # Name: don't translate / Tên: đừng dịch
-#: ../src/ui/metaaccellabel.c:111
 #. This is the text that should appear next to menu accelerators
 #. * that use the control key. If the text on this key isn't typically
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
+#: ../src/ui/metaaccellabel.c:111
 msgid "Ctrl"
 msgstr "Ctrl"
 
 # Name: don't translate / Tên: đừng dịch
-#: ../src/ui/metaaccellabel.c:117
 #. This is the text that should appear next to menu accelerators
 #. * that use the alt key. If the text on this key isn't typically
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
+#: ../src/ui/metaaccellabel.c:117
 msgid "Alt"
 msgstr "Alt"
 
 # Name: don't translate / Tên: đừng dịch
-#: ../src/ui/metaaccellabel.c:123
 #. This is the text that should appear next to menu accelerators
 #. * that use the meta key. If the text on this key isn't typically
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
+#: ../src/ui/metaaccellabel.c:123
 msgid "Meta"
 msgstr "Meta"
 
-#: ../src/ui/metaaccellabel.c:129
 #. This is the text that should appear next to menu accelerators
 #. * that use the super key. If the text on this key isn't typically
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
+#: ../src/ui/metaaccellabel.c:129
 msgid "Super"
 msgstr "Cao cấp"
 
-#: ../src/ui/metaaccellabel.c:135
 #. This is the text that should appear next to menu accelerators
 #. * that use the hyper key. If the text on this key isn't typically
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
+#: ../src/ui/metaaccellabel.c:135
 msgid "Hyper"
 msgstr "Cao"
 
 # Name: don't translate / Tên: đừng dịch
-#: ../src/ui/metaaccellabel.c:141
 #. This is the text that should appear next to menu accelerators
 #. * that use the mod2 key. If the text on this key isn't typically
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
+#: ../src/ui/metaaccellabel.c:141
 msgid "Mod2"
 msgstr "Mod2"
 
 # Name: don't translate / Tên: đừng dịch
-#: ../src/ui/metaaccellabel.c:147
 #. This is the text that should appear next to menu accelerators
 #. * that use the mod3 key. If the text on this key isn't typically
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
+#: ../src/ui/metaaccellabel.c:147
 msgid "Mod3"
 msgstr "Mod3"
 
 # Name: don't translate / Tên: đừng dịch
-#: ../src/ui/metaaccellabel.c:153
 #. This is the text that should appear next to menu accelerators
 #. * that use the mod4 key. If the text on this key isn't typically
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
+#: ../src/ui/metaaccellabel.c:153
 msgid "Mod4"
 msgstr "Mod4"
 
 # Name: don't translate / Tên: đừng dịch
-#: ../src/ui/metaaccellabel.c:159
 #. This is the text that should appear next to menu accelerators
 #. * that use the mod5 key. If the text on this key isn't typically
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
+#: ../src/ui/metaaccellabel.c:159
 msgid "Mod5"
 msgstr "Mod5"
 
@@ -2659,8 +2620,7 @@ msgstr ""
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: ../src/ui/theme-parser.c:227
-#: ../src/ui/theme-parser.c:245
+#: ../src/ui/theme-parser.c:227 ../src/ui/theme-parser.c:245
 #, c-format
 msgid "Line %d character %d: %s"
 msgstr "Dòng %d ký tự %d: %s"
@@ -2670,8 +2630,7 @@ msgstr "Dòng %d ký tự %d: %s"
 msgid "Attribute \"%s\" repeated twice on the same <%s> element"
 msgstr "Thuộc tính « %s » lặp hai lần trên cùng phần tử <%s>."
 
-#: ../src/ui/theme-parser.c:414
-#: ../src/ui/theme-parser.c:439
+#: ../src/ui/theme-parser.c:414 ../src/ui/theme-parser.c:439
 #, c-format
 msgid "Attribute \"%s\" is invalid on <%s> element in this context"
 msgstr "Thuộc tính « %s » không hợp lệ trên phần tử <%s> trong ngữ cảnh này."
@@ -2686,14 +2645,12 @@ msgstr "Số nguyên %ld phải là số dương"
 msgid "Integer %ld is too large, current max is %d"
 msgstr "Số nguyên %ld quá lớn, giá trị tối đa hiện thời là %d"
 
-#: ../src/ui/theme-parser.c:536
-#: ../src/ui/theme-parser.c:652
+#: ../src/ui/theme-parser.c:536 ../src/ui/theme-parser.c:652
 #, c-format
 msgid "Could not parse \"%s\" as a floating point number"
 msgstr "Không thể phân tích « %s » thành số với điểm phù động."
 
-#: ../src/ui/theme-parser.c:567
-#: ../src/ui/theme-parser.c:595
+#: ../src/ui/theme-parser.c:567 ../src/ui/theme-parser.c:595
 #, c-format
 msgid "Boolean values must be \"true\" or \"false\" not \"%s\""
 msgstr ""
@@ -2726,32 +2683,23 @@ msgstr ""
 " • x-large\t\tlớn lắm\n"
 " • xx-large\t\tto lớn.\n"
 
-#: ../src/ui/theme-parser.c:795
-#: ../src/ui/theme-parser.c:803
-#: ../src/ui/theme-parser.c:885
-#: ../src/ui/theme-parser.c:982
-#: ../src/ui/theme-parser.c:1024
-#: ../src/ui/theme-parser.c:1135
-#: ../src/ui/theme-parser.c:1185
-#: ../src/ui/theme-parser.c:1193
-#: ../src/ui/theme-parser.c:3093
-#: ../src/ui/theme-parser.c:3184
-#: ../src/ui/theme-parser.c:3191
-#: ../src/ui/theme-parser.c:3198
+#: ../src/ui/theme-parser.c:795 ../src/ui/theme-parser.c:803
+#: ../src/ui/theme-parser.c:885 ../src/ui/theme-parser.c:982
+#: ../src/ui/theme-parser.c:1024 ../src/ui/theme-parser.c:1135
+#: ../src/ui/theme-parser.c:1185 ../src/ui/theme-parser.c:1193
+#: ../src/ui/theme-parser.c:3093 ../src/ui/theme-parser.c:3184
+#: ../src/ui/theme-parser.c:3191 ../src/ui/theme-parser.c:3198
 #, c-format
 msgid "No \"%s\" attribute on <%s> element"
 msgstr "Không có thuộc tính « %s » trong phần tử <%s>."
 
-#: ../src/ui/theme-parser.c:919
-#: ../src/ui/theme-parser.c:990
-#: ../src/ui/theme-parser.c:1032
-#: ../src/ui/theme-parser.c:1143
+#: ../src/ui/theme-parser.c:919 ../src/ui/theme-parser.c:990
+#: ../src/ui/theme-parser.c:1032 ../src/ui/theme-parser.c:1143
 #, c-format
 msgid "<%s> name \"%s\" used a second time"
 msgstr "<%s> tên « %s » được dùng lần hai"
 
-#: ../src/ui/theme-parser.c:931
-#: ../src/ui/theme-parser.c:1044
+#: ../src/ui/theme-parser.c:931 ../src/ui/theme-parser.c:1044
 #: ../src/ui/theme-parser.c:1155
 #, c-format
 msgid "<%s> parent \"%s\" has not been defined"
@@ -2794,35 +2742,27 @@ msgstr "Sắc thái đã có biểu tượng dự phòng"
 msgid "Theme already has a fallback mini_icon"
 msgstr "Sắc thái đã có biểu tượng mini dự phòng"
 
-#: ../src/ui/theme-parser.c:1283
-#: ../src/ui/theme-parser.c:1347
-#: ../src/ui/theme-parser.c:1636
-#: ../src/ui/theme-parser.c:3285
-#: ../src/ui/theme-parser.c:3339
-#: ../src/ui/theme-parser.c:3511
-#: ../src/ui/theme-parser.c:3727
-#: ../src/ui/theme-parser.c:3765
-#: ../src/ui/theme-parser.c:3803
-#: ../src/ui/theme-parser.c:3841
+#: ../src/ui/theme-parser.c:1283 ../src/ui/theme-parser.c:1347
+#: ../src/ui/theme-parser.c:1636 ../src/ui/theme-parser.c:3285
+#: ../src/ui/theme-parser.c:3339 ../src/ui/theme-parser.c:3511
+#: ../src/ui/theme-parser.c:3727 ../src/ui/theme-parser.c:3765
+#: ../src/ui/theme-parser.c:3803 ../src/ui/theme-parser.c:3841
 #, c-format
 msgid "Element <%s> is not allowed below <%s>"
 msgstr "Không cho phép phần tử <%s> dưới <%s>."
 
-#: ../src/ui/theme-parser.c:1373
-#: ../src/ui/theme-parser.c:1460
+#: ../src/ui/theme-parser.c:1373 ../src/ui/theme-parser.c:1460
 #: ../src/ui/theme-parser.c:1530
 #, c-format
 msgid "No \"name\" attribute on element <%s>"
 msgstr "Không có thuộc tính «name» (tên) trong phần tử <%s>."
 
-#: ../src/ui/theme-parser.c:1380
-#: ../src/ui/theme-parser.c:1467
+#: ../src/ui/theme-parser.c:1380 ../src/ui/theme-parser.c:1467
 #, c-format
 msgid "No \"value\" attribute on element <%s>"
 msgstr "Không có thuộc tính «value» (giá trị) trong phần tử <%s>."
 
-#: ../src/ui/theme-parser.c:1411
-#: ../src/ui/theme-parser.c:1425
+#: ../src/ui/theme-parser.c:1411 ../src/ui/theme-parser.c:1425
 #: ../src/ui/theme-parser.c:1484
 msgid ""
 "Cannot specify both button_width/button_height and aspect ratio for buttons"
@@ -2865,10 +2805,8 @@ msgstr "Không có thuộc tính «right» (bên phải) trong phần tử <%s>.
 msgid "Border \"%s\" is unknown"
 msgstr "Biên « %s » không biết."
 
-#: ../src/ui/theme-parser.c:1736
-#: ../src/ui/theme-parser.c:1850
-#: ../src/ui/theme-parser.c:1961
-#: ../src/ui/theme-parser.c:2192
+#: ../src/ui/theme-parser.c:1736 ../src/ui/theme-parser.c:1850
+#: ../src/ui/theme-parser.c:1961 ../src/ui/theme-parser.c:2192
 #: ../src/ui/theme-parser.c:3023
 #, c-format
 msgid "No \"color\" attribute on element <%s>"
@@ -2879,8 +2817,7 @@ msgstr "Không có thuộc tính «color» (màu) trong phần tử <%s>."
 msgid "No \"x1\" attribute on element <%s>"
 msgstr "Không có thuộc tính «x1» trong phần tử <%s>."
 
-#: ../src/ui/theme-parser.c:1750
-#: ../src/ui/theme-parser.c:2864
+#: ../src/ui/theme-parser.c:1750 ../src/ui/theme-parser.c:2864
 #, c-format
 msgid "No \"y1\" attribute on element <%s>"
 msgstr "Không có thuộc tính «y1» trong phần tử <%s>"
@@ -2890,62 +2827,43 @@ msgstr "Không có thuộc tính «y1» trong phần tử <%s>"
 msgid "No \"x2\" attribute on element <%s>"
 msgstr "Không có thuộc tính «x2» trong phần tử <%s>"
 
-#: ../src/ui/theme-parser.c:1764
-#: ../src/ui/theme-parser.c:2871
+#: ../src/ui/theme-parser.c:1764 ../src/ui/theme-parser.c:2871
 #, c-format
 msgid "No \"y2\" attribute on element <%s>"
 msgstr "Không có thuộc tính «y2» trong phần tử <%s>."
 
-#: ../src/ui/theme-parser.c:1857
-#: ../src/ui/theme-parser.c:1968
-#: ../src/ui/theme-parser.c:2117
-#: ../src/ui/theme-parser.c:2199
-#: ../src/ui/theme-parser.c:2306
-#: ../src/ui/theme-parser.c:2408
-#: ../src/ui/theme-parser.c:2630
-#: ../src/ui/theme-parser.c:2758
-#: ../src/ui/theme-parser.c:2857
-#: ../src/ui/theme-parser.c:2934
+#: ../src/ui/theme-parser.c:1857 ../src/ui/theme-parser.c:1968
+#: ../src/ui/theme-parser.c:2117 ../src/ui/theme-parser.c:2199
+#: ../src/ui/theme-parser.c:2306 ../src/ui/theme-parser.c:2408
+#: ../src/ui/theme-parser.c:2630 ../src/ui/theme-parser.c:2758
+#: ../src/ui/theme-parser.c:2857 ../src/ui/theme-parser.c:2934
 #: ../src/ui/theme-parser.c:3030
 #, c-format
 msgid "No \"x\" attribute on element <%s>"
 msgstr "Không có thuộc tính «x» trong phần tử <%s>."
 
-#: ../src/ui/theme-parser.c:1864
-#: ../src/ui/theme-parser.c:1975
-#: ../src/ui/theme-parser.c:2124
-#: ../src/ui/theme-parser.c:2206
-#: ../src/ui/theme-parser.c:2313
-#: ../src/ui/theme-parser.c:2415
-#: ../src/ui/theme-parser.c:2637
-#: ../src/ui/theme-parser.c:2765
-#: ../src/ui/theme-parser.c:2941
-#: ../src/ui/theme-parser.c:3037
+#: ../src/ui/theme-parser.c:1864 ../src/ui/theme-parser.c:1975
+#: ../src/ui/theme-parser.c:2124 ../src/ui/theme-parser.c:2206
+#: ../src/ui/theme-parser.c:2313 ../src/ui/theme-parser.c:2415
+#: ../src/ui/theme-parser.c:2637 ../src/ui/theme-parser.c:2765
+#: ../src/ui/theme-parser.c:2941 ../src/ui/theme-parser.c:3037
 #, c-format
 msgid "No \"y\" attribute on element <%s>"
 msgstr "Không có thuộc tính «y» trong phần tử <%s>."
 
-#: ../src/ui/theme-parser.c:1871
-#: ../src/ui/theme-parser.c:1982
-#: ../src/ui/theme-parser.c:2131
-#: ../src/ui/theme-parser.c:2213
-#: ../src/ui/theme-parser.c:2320
-#: ../src/ui/theme-parser.c:2422
-#: ../src/ui/theme-parser.c:2644
-#: ../src/ui/theme-parser.c:2772
+#: ../src/ui/theme-parser.c:1871 ../src/ui/theme-parser.c:1982
+#: ../src/ui/theme-parser.c:2131 ../src/ui/theme-parser.c:2213
+#: ../src/ui/theme-parser.c:2320 ../src/ui/theme-parser.c:2422
+#: ../src/ui/theme-parser.c:2644 ../src/ui/theme-parser.c:2772
 #: ../src/ui/theme-parser.c:2948
 #, c-format
 msgid "No \"width\" attribute on element <%s>"
 msgstr "Không có thuộc tính «width» (độ rộng) trong phần tử <%s>."
 
-#: ../src/ui/theme-parser.c:1878
-#: ../src/ui/theme-parser.c:1989
-#: ../src/ui/theme-parser.c:2138
-#: ../src/ui/theme-parser.c:2220
-#: ../src/ui/theme-parser.c:2327
-#: ../src/ui/theme-parser.c:2429
-#: ../src/ui/theme-parser.c:2651
-#: ../src/ui/theme-parser.c:2779
+#: ../src/ui/theme-parser.c:1878 ../src/ui/theme-parser.c:1989
+#: ../src/ui/theme-parser.c:2138 ../src/ui/theme-parser.c:2220
+#: ../src/ui/theme-parser.c:2327 ../src/ui/theme-parser.c:2429
+#: ../src/ui/theme-parser.c:2651 ../src/ui/theme-parser.c:2779
 #: ../src/ui/theme-parser.c:2955
 #, c-format
 msgid "No \"height\" attribute on element <%s>"
@@ -2995,21 +2913,18 @@ msgstr "Không thể hiểu giá trị « %s » (loại thang độ)."
 msgid "No \"filename\" attribute on element <%s>"
 msgstr "Không có thuộc tính «filename» (tên tập tin) trong phần tử <%s>."
 
-#: ../src/ui/theme-parser.c:2461
-#: ../src/ui/theme-parser.c:2980
+#: ../src/ui/theme-parser.c:2461 ../src/ui/theme-parser.c:2980
 #, c-format
 msgid "Did not understand fill type \"%s\" for <%s> element"
 msgstr "Không hiểu loại tô « %s » cho phần tử <%s>."
 
-#: ../src/ui/theme-parser.c:2609
-#: ../src/ui/theme-parser.c:2744
+#: ../src/ui/theme-parser.c:2609 ../src/ui/theme-parser.c:2744
 #: ../src/ui/theme-parser.c:2850
 #, c-format
 msgid "No \"state\" attribute on element <%s>"
 msgstr "Không có thuộc tính «state» (tính trạng) trong phần tử <%s>."
 
-#: ../src/ui/theme-parser.c:2616
-#: ../src/ui/theme-parser.c:2751
+#: ../src/ui/theme-parser.c:2616 ../src/ui/theme-parser.c:2751
 #, c-format
 msgid "No \"shadow\" attribute on element <%s>"
 msgstr "Không có thuộc tính «shadow» trong phần tử <%s>"
@@ -3019,15 +2934,13 @@ msgstr "Không có thuộc tính «shadow» trong phần tử <%s>"
 msgid "No \"arrow\" attribute on element <%s>"
 msgstr "Không có thuộc tính «arrow» (mũi tên) trong phần tử <%s>."
 
-#: ../src/ui/theme-parser.c:2676
-#: ../src/ui/theme-parser.c:2800
+#: ../src/ui/theme-parser.c:2676 ../src/ui/theme-parser.c:2800
 #: ../src/ui/theme-parser.c:2891
 #, c-format
 msgid "Did not understand state \"%s\" for <%s> element"
 msgstr "Không hiểu trạng thái « %s » của phần tử <%s>."
 
-#: ../src/ui/theme-parser.c:2686
-#: ../src/ui/theme-parser.c:2810
+#: ../src/ui/theme-parser.c:2686 ../src/ui/theme-parser.c:2810
 #, c-format
 msgid "Did not understand shadow \"%s\" for <%s> element"
 msgstr "Không hiểu bóng « %s » của phần tử <%s>."
@@ -3037,14 +2950,12 @@ msgstr "Không hiểu bóng « %s » của phần tử <%s>."
 msgid "Did not understand arrow \"%s\" for <%s> element"
 msgstr "Không hiểu mũi tên « %s » của phần tử <%s>."
 
-#: ../src/ui/theme-parser.c:3120
-#: ../src/ui/theme-parser.c:3237
+#: ../src/ui/theme-parser.c:3120 ../src/ui/theme-parser.c:3237
 #, c-format
 msgid "No <draw_ops> called \"%s\" has been defined"
 msgstr "Không có <draw_ops> nào gọi là « %s » được định nghĩa."
 
-#: ../src/ui/theme-parser.c:3132
-#: ../src/ui/theme-parser.c:3249
+#: ../src/ui/theme-parser.c:3132 ../src/ui/theme-parser.c:3249
 #, c-format
 msgid "Including draw_ops \"%s\" here would create a circular reference"
 msgstr "Bao gồm |draw_ops| « %s » ở đây sẽ tạo tham chiếu vòng."
@@ -3069,8 +2980,7 @@ msgstr "Vị trí lạ « %s » trong phần khung."
 msgid "Frame style already has a piece at position %s"
 msgstr "Kiểu khung đã có một phần tại vị trí %s."
 
-#: ../src/ui/theme-parser.c:3405
-#: ../src/ui/theme-parser.c:3496
+#: ../src/ui/theme-parser.c:3405 ../src/ui/theme-parser.c:3496
 #, c-format
 msgid "No <draw_ops> with the name \"%s\" has been defined"
 msgstr "Chưa định nghĩa <draw_ops> với tên « %s »."
@@ -3080,8 +2990,7 @@ msgstr "Chưa định nghĩa <draw_ops> với tên « %s »."
 msgid "No \"function\" attribute on <%s> element"
 msgstr "Không có thuộc tính «function» (chức năng) trong phần tử <%s>."
 
-#: ../src/ui/theme-parser.c:3441
-#: ../src/ui/theme-parser.c:3557
+#: ../src/ui/theme-parser.c:3441 ../src/ui/theme-parser.c:3557
 #, c-format
 msgid "No \"state\" attribute on <%s> element"
 msgstr "Không có thuộc tính «state» (tính trạng) trong phần tử <%s>."
@@ -3136,8 +3045,7 @@ msgstr "Chưa định nghĩa kiểu dáng « %s »."
 msgid "No \"resize\" attribute on <%s> element"
 msgstr "Không có thuộc tính «resize» (đổi cỡ) trong phần tử <%s>."
 
-#: ../src/ui/theme-parser.c:3614
-#: ../src/ui/theme-parser.c:3637
+#: ../src/ui/theme-parser.c:3614 ../src/ui/theme-parser.c:3637
 #, c-format
 msgid "\"%s\" is not a valid value for resize attribute"
 msgstr "« %s » không phải là giá trị đổi cỡ hợp lệ."
@@ -3159,15 +3067,13 @@ msgstr ""
 "Nên có thuộc tính \"resize\" (đổi cỡ) trên phần tử <%s> cho trạng thái phóng "
 "to."
 
-#: ../src/ui/theme-parser.c:3676
-#: ../src/ui/theme-parser.c:3698
+#: ../src/ui/theme-parser.c:3676 ../src/ui/theme-parser.c:3698
 #, c-format
 msgid "Style has already been specified for state %s resize %s focus %s"
 msgstr ""
 "Kiểu dạng đã được xác định cho trạng thái « %s » đổi cỡ « %s » tiêu điểm « %s »."
 
-#: ../src/ui/theme-parser.c:3687
-#: ../src/ui/theme-parser.c:3709
+#: ../src/ui/theme-parser.c:3687 ../src/ui/theme-parser.c:3709
 #, c-format
 msgid "Style has already been specified for state %s focus %s"
 msgstr "Kiểu dạng đã được xác định cho trạng thái « %s » tiêu điểm « %s »."
@@ -3228,10 +3134,8 @@ msgstr ""
 msgid "Element <%s> is not allowed inside a draw operation element"
 msgstr "Không cho phép phần tử <%s> nằm trong phần tử thao tác vẽ."
 
-#: ../src/ui/theme-parser.c:3941
-#: ../src/ui/theme-parser.c:3971
-#: ../src/ui/theme-parser.c:3976
-#: ../src/ui/theme-parser.c:3981
+#: ../src/ui/theme-parser.c:3941 ../src/ui/theme-parser.c:3971
+#: ../src/ui/theme-parser.c:3976 ../src/ui/theme-parser.c:3981
 #, c-format
 msgid "Element <%s> is not allowed inside a <%s> element"
 msgstr "Không cho phép phần tử <%s> nằm trong phần tử <%s>."
@@ -3279,157 +3183,157 @@ msgstr "Lỗi tìm tập tin hợp lệ của sắc thái %s\n"
 msgid "Theme file %s did not contain a root <metacity_theme> element"
 msgstr "Tập tin sắc thái « %s » không chứa phần tử gốc <metacity_theme>."
 
-#: ../src/ui/theme-viewer.c:74
+#: ../src/ui/theme-viewer.c:75
 msgid "/_Windows"
 msgstr "/_Cửa sổ"
 
-#: ../src/ui/theme-viewer.c:75
+#: ../src/ui/theme-viewer.c:76
 msgid "/Windows/tearoff"
 msgstr "/Cửa sổ/chia cắt"
 
-#: ../src/ui/theme-viewer.c:76
+#: ../src/ui/theme-viewer.c:77
 msgid "/Windows/_Dialog"
 msgstr "/Cửa sổ/_Hộp thoại"
 
-#: ../src/ui/theme-viewer.c:77
+#: ../src/ui/theme-viewer.c:78
 msgid "/Windows/_Modal dialog"
 msgstr "/Cửa sổ/Hộp thoại _cách thức"
 
-#: ../src/ui/theme-viewer.c:78
+#: ../src/ui/theme-viewer.c:79
 msgid "/Windows/_Utility"
 msgstr "/Cửa sổ/_Tiện ích"
 
-#: ../src/ui/theme-viewer.c:79
+#: ../src/ui/theme-viewer.c:80
 msgid "/Windows/_Splashscreen"
 msgstr "/Cửa sổ/_Màn hình giật gân"
 
-#: ../src/ui/theme-viewer.c:80
+#: ../src/ui/theme-viewer.c:81
 msgid "/Windows/_Top dock"
 msgstr "/Cửa sổ/Neo đỉ_nh"
 
-#: ../src/ui/theme-viewer.c:81
+#: ../src/ui/theme-viewer.c:82
 msgid "/Windows/_Bottom dock"
 msgstr "/Cửa sổ/Neo đá_y"
 
-#: ../src/ui/theme-viewer.c:82
+#: ../src/ui/theme-viewer.c:83
 msgid "/Windows/_Left dock"
 msgstr "/Cửa sổ/Neo t_rái"
 
-#: ../src/ui/theme-viewer.c:83
+#: ../src/ui/theme-viewer.c:84
 msgid "/Windows/_Right dock"
 msgstr "/Cửa sổ/Neo _phải"
 
-#: ../src/ui/theme-viewer.c:84
+#: ../src/ui/theme-viewer.c:85
 msgid "/Windows/_All docks"
 msgstr "/Cửa sổ/Mọi neo"
 
-#: ../src/ui/theme-viewer.c:85
+#: ../src/ui/theme-viewer.c:86
 msgid "/Windows/Des_ktop"
 msgstr "/Cửa sổ/Màn hình _nền"
 
-#: ../src/ui/theme-viewer.c:134
+#: ../src/ui/theme-viewer.c:135
 msgid "Open another one of these windows"
 msgstr "Mở cái khác trong những cửa sổ này"
 
-#: ../src/ui/theme-viewer.c:141
+#: ../src/ui/theme-viewer.c:142
 msgid "This is a demo button with an 'open' icon"
 msgstr "Đây là nút biểu diễn với biểu tượng «mở»"
 
-#: ../src/ui/theme-viewer.c:148
+#: ../src/ui/theme-viewer.c:149
 msgid "This is a demo button with a 'quit' icon"
 msgstr "Đây là nút biểu diễn với biểu tượng «thoát»"
 
-#: ../src/ui/theme-viewer.c:241
+#: ../src/ui/theme-viewer.c:242
 msgid "This is a sample message in a sample dialog"
 msgstr "Đây là thông điệp mẫu trong hộp thoại mẫu"
 
-#: ../src/ui/theme-viewer.c:324
+#: ../src/ui/theme-viewer.c:325
 #, c-format
 msgid "Fake menu item %d\n"
 msgstr "Mục trình đơn giả «%d»\n"
 
-#: ../src/ui/theme-viewer.c:358
+#: ../src/ui/theme-viewer.c:359
 msgid "Border-only window"
 msgstr "Cửa sổ chỉ có viền"
 
-#: ../src/ui/theme-viewer.c:360
+#: ../src/ui/theme-viewer.c:361
 msgid "Bar"
 msgstr "Thanh"
 
-#: ../src/ui/theme-viewer.c:377
+#: ../src/ui/theme-viewer.c:378
 msgid "Normal Application Window"
 msgstr "Cửa sổ ứng dụng thông thường"
 
-#: ../src/ui/theme-viewer.c:381
+#: ../src/ui/theme-viewer.c:382
 msgid "Dialog Box"
 msgstr "Hộp thoại"
 
-#: ../src/ui/theme-viewer.c:385
+#: ../src/ui/theme-viewer.c:386
 msgid "Modal Dialog Box"
 msgstr "Hộp thoại cách thức"
 
-#: ../src/ui/theme-viewer.c:389
+#: ../src/ui/theme-viewer.c:390
 msgid "Utility Palette"
 msgstr "Bảng chọn tiện ích"
 
-#: ../src/ui/theme-viewer.c:393
+#: ../src/ui/theme-viewer.c:394
 msgid "Torn-off Menu"
 msgstr "Trình đơn tách rời"
 
-#: ../src/ui/theme-viewer.c:397
+#: ../src/ui/theme-viewer.c:398
 msgid "Border"
 msgstr "Viền"
 
-#: ../src/ui/theme-viewer.c:725
+#: ../src/ui/theme-viewer.c:726
 #, c-format
 msgid "Button layout test %d"
 msgstr "Thử Bố cục nút «%d»"
 
-#: ../src/ui/theme-viewer.c:754
+#: ../src/ui/theme-viewer.c:755
 #, c-format
 msgid "%g milliseconds to draw one window frame"
 msgstr "%g mili giây để vẽ một khung cửa sổ"
 
-#: ../src/ui/theme-viewer.c:797
+#: ../src/ui/theme-viewer.c:798
 #, c-format
 msgid "Usage: metacity-theme-viewer [THEMENAME]\n"
 msgstr "Cách dùng: metacity-theme-viewer [TÊN_SẮC_THÁI]\n"
 
-#: ../src/ui/theme-viewer.c:804
+#: ../src/ui/theme-viewer.c:805
 #, c-format
 msgid "Error loading theme: %s\n"
 msgstr "Gặp lỗi khi tải sắc thái: %s\n"
 
-#: ../src/ui/theme-viewer.c:810
+#: ../src/ui/theme-viewer.c:811
 #, c-format
 msgid "Loaded theme \"%s\" in %g seconds\n"
 msgstr "Tải sắc thái « %s » trong %g giây.\n"
 
-#: ../src/ui/theme-viewer.c:833
+#: ../src/ui/theme-viewer.c:852
 msgid "Normal Title Font"
 msgstr "Phông chữ Tựa đề thường"
 
-#: ../src/ui/theme-viewer.c:839
+#: ../src/ui/theme-viewer.c:858
 msgid "Small Title Font"
 msgstr "Phông chữ Tựa đề nhỏ"
 
-#: ../src/ui/theme-viewer.c:845
+#: ../src/ui/theme-viewer.c:864
 msgid "Large Title Font"
 msgstr "Phông chữ Tựa đề lớn"
 
-#: ../src/ui/theme-viewer.c:850
+#: ../src/ui/theme-viewer.c:869
 msgid "Button Layouts"
 msgstr "Bố cục nút"
 
-#: ../src/ui/theme-viewer.c:855
+#: ../src/ui/theme-viewer.c:874
 msgid "Benchmark"
 msgstr "Điểm chuẩn"
 
-#: ../src/ui/theme-viewer.c:902
+#: ../src/ui/theme-viewer.c:921
 msgid "Window Title Goes Here"
 msgstr "Tựa đề Cửa sổ ở đây"
 
-#: ../src/ui/theme-viewer.c:1006
+#: ../src/ui/theme-viewer.c:1025
 #, c-format
 msgid ""
 "Drew %d frames in %g client-side seconds (%g milliseconds per frame) and %g "
@@ -3440,39 +3344,39 @@ msgstr ""
 "giây thời gian đồng hồ tường gồm tiềm năng trình phục vụ X (%g mili giây cho "
 "mỗi khung).\n"
 
-#: ../src/ui/theme-viewer.c:1225
+#: ../src/ui/theme-viewer.c:1244
 msgid "position expression test returned TRUE but set error"
 msgstr "việc thử ra biểu thức vị trí đã trả lời ĐÚNG nhưng đặt lỗi"
 
-#: ../src/ui/theme-viewer.c:1227
+#: ../src/ui/theme-viewer.c:1246
 msgid "position expression test returned FALSE but didn't set error"
 msgstr "việc thử ra biểu thức vị trí đã trả lời KHÔNG ĐÚNG nhưng không đặt lỗi"
 
-#: ../src/ui/theme-viewer.c:1231
+#: ../src/ui/theme-viewer.c:1250
 msgid "Error was expected but none given"
 msgstr "Ngờ lỗi nhưng không có"
 
-#: ../src/ui/theme-viewer.c:1233
+#: ../src/ui/theme-viewer.c:1252
 #, c-format
 msgid "Error %d was expected but %d given"
 msgstr "Ngờ lỗi «%d» nhưng có «%d»"
 
-#: ../src/ui/theme-viewer.c:1239
+#: ../src/ui/theme-viewer.c:1258
 #, c-format
 msgid "Error not expected but one was returned: %s"
 msgstr "Gặp lỗi « %s » bất ngờ"
 
-#: ../src/ui/theme-viewer.c:1243
+#: ../src/ui/theme-viewer.c:1262
 #, c-format
 msgid "x value was %d, %d was expected"
 msgstr "giá trị x là«%d», mong đợi giá trị «%d»"
 
-#: ../src/ui/theme-viewer.c:1246
+#: ../src/ui/theme-viewer.c:1265
 #, c-format
 msgid "y value was %d, %d was expected"
 msgstr "giá trị y là «%d», mong đợi giá trị «%d»"
 
-#: ../src/ui/theme-viewer.c:1311
+#: ../src/ui/theme-viewer.c:1330
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr ""
@@ -3566,7 +3470,7 @@ msgstr "Không thể phân tích giá trị alpha « %s » trong màu pha trộn
 msgid "Alpha value \"%s\" in blended color is not between 0.0 and 1.0"
 msgstr "Giá trị alpha « %s » trong màu pha trộn không nằm giữa 0.0 và 1.0."
 
-#: ../src/ui/theme.c:1285
+#: ../src/ui/theme.c:1284
 #, c-format
 msgid ""
 "Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
@@ -3574,39 +3478,39 @@ msgstr ""
 "Dạng thức bóng là « shade/base_color/factor » (bóng/màu cơ bản/hệ số), « %s » "
 "không tuân theo dạng thức đó."
 
-#: ../src/ui/theme.c:1296
+#: ../src/ui/theme.c:1295
 #, c-format
 msgid "Could not parse shade factor \"%s\" in shaded color"
 msgstr "Không thể phân tích hệ số bóng « %s » trong màu bóng."
 
-#: ../src/ui/theme.c:1306
+#: ../src/ui/theme.c:1305
 #, c-format
 msgid "Shade factor \"%s\" in shaded color is negative"
 msgstr "Có hệ số bóng âm « %s » trong màu bóng."
 
-#: ../src/ui/theme.c:1336
+#: ../src/ui/theme.c:1334
 #, c-format
 msgid "Could not parse color \"%s\""
 msgstr "Không thể phân tích màu « %s »."
 
-#: ../src/ui/theme.c:1594
+#: ../src/ui/theme.c:1584
 #, c-format
 msgid "Coordinate expression contains character '%s' which is not allowed"
 msgstr "Biểu thức tọa độ chứa ký tự « %s » không được phép."
 
-#: ../src/ui/theme.c:1621
+#: ../src/ui/theme.c:1611
 #, c-format
 msgid ""
 "Coordinate expression contains floating point number '%s' which could not be "
 "parsed"
 msgstr "Biểu thức tọa độ chứa số với điểm phù động « %s » không thể phân tích."
 
-#: ../src/ui/theme.c:1635
+#: ../src/ui/theme.c:1625
 #, c-format
 msgid "Coordinate expression contains integer '%s' which could not be parsed"
 msgstr "Biểu thức tọa độ chứa số nguyên « %s » không thể phân tích."
 
-#: ../src/ui/theme.c:1757
+#: ../src/ui/theme.c:1747
 #, c-format
 msgid ""
 "Coordinate expression contained unknown operator at the start of this text: "
@@ -3615,42 +3519,40 @@ msgstr ""
 "Biểu thức tọa độ chứa toán tử lạ tại đầu văn bản: \n"
 "« %s »"
 
-#: ../src/ui/theme.c:1814
+#: ../src/ui/theme.c:1804
 #, c-format
 msgid "Coordinate expression was empty or not understood"
 msgstr "Biểu thức tọa độ rỗng hoặc không thể hiểu."
 
-#: ../src/ui/theme.c:1925
-#: ../src/ui/theme.c:1935
-#: ../src/ui/theme.c:1969
+#: ../src/ui/theme.c:1915 ../src/ui/theme.c:1925 ../src/ui/theme.c:1959
 #, c-format
 msgid "Coordinate expression results in division by zero"
 msgstr "Biểu thức tọa độ gây ra lỗi chia cho không."
 
-#: ../src/ui/theme.c:1977
+#: ../src/ui/theme.c:1967
 #, c-format
 msgid ""
 "Coordinate expression tries to use mod operator on a floating-point number"
 msgstr "Biểu thức tọa độ thử dùng toán tử «mod» với số với điểm phụ động."
 
-#: ../src/ui/theme.c:2033
+#: ../src/ui/theme.c:2023
 #, c-format
 msgid ""
 "Coordinate expression has an operator \"%s\" where an operand was expected"
 msgstr "Biểu thức tọa độ có toán tử « %s », nơi lẽ ra phải là một toán hạng."
 
-#: ../src/ui/theme.c:2042
+#: ../src/ui/theme.c:2032
 #, c-format
 msgid "Coordinate expression had an operand where an operator was expected"
 msgstr "Biểu thức tọa đổ có toán hạng nơi lẽ ra phải là toán tử."
 
-#: ../src/ui/theme.c:2050
+#: ../src/ui/theme.c:2040
 #, c-format
 msgid "Coordinate expression ended with an operator instead of an operand"
 msgstr ""
 "Biểu thức tọa độ kết thúc bằng toán tử trong khi lẽ ra phải là toán hạng."
 
-#: ../src/ui/theme.c:2060
+#: ../src/ui/theme.c:2050
 #, c-format
 msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
@@ -3659,40 +3561,37 @@ msgstr ""
 "Biểu thức tọa độ có toán tử «%c» theo sau toán tử «%c» mà không có toán hạng ở "
 "giữa."
 
-#: ../src/ui/theme.c:2207
-#: ../src/ui/theme.c:2248
+#: ../src/ui/theme.c:2197 ../src/ui/theme.c:2238
 #, c-format
 msgid "Coordinate expression had unknown variable or constant \"%s\""
 msgstr "Biểu thức tọa độ có biến hoặc hằng lạ « %s »."
 
-#: ../src/ui/theme.c:2302
+#: ../src/ui/theme.c:2292
 #, c-format
 msgid "Coordinate expression parser overflowed its buffer."
 msgstr "Bộ phân tách biểu thức tọa độ đã tràn bộ đệm."
 
-#: ../src/ui/theme.c:2331
+#: ../src/ui/theme.c:2321
 #, c-format
 msgid "Coordinate expression had a close parenthesis with no open parenthesis"
 msgstr "Biểu thức tọa độ có dấu đóng ngoặc mà thiếu dấu mở ngoặc."
 
-#: ../src/ui/theme.c:2395
+#: ../src/ui/theme.c:2385
 #, c-format
 msgid "Coordinate expression had an open parenthesis with no close parenthesis"
 msgstr "Biểu thức tọa độ có dấu mở ngoặc nhưng thiếu dấu đóng ngoặc."
 
-#: ../src/ui/theme.c:2406
+#: ../src/ui/theme.c:2396
 #, c-format
 msgid "Coordinate expression doesn't seem to have any operators or operands"
 msgstr "Biểu thức tọa độ không có bất kỳ toán tử hay toán hạng nào."
 
-#: ../src/ui/theme.c:2608
-#: ../src/ui/theme.c:2628
-#: ../src/ui/theme.c:2648
+#: ../src/ui/theme.c:2598 ../src/ui/theme.c:2618 ../src/ui/theme.c:2638
 #, c-format
 msgid "Theme contained an expression that resulted in an error: %s\n"
 msgstr "Sắc thái chứa một biểu thức gây ra lỗi: %s\n"
 
-#: ../src/ui/theme.c:4167
+#: ../src/ui/theme.c:4157
 #, c-format
 msgid ""
 "<button function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> must be "
@@ -3701,28 +3600,24 @@ msgstr ""
 "<button function=\"%s\" state=\"%s\" draw_ops=\"gì đó\"/> phải xác định cho "
 "kiểu dáng khung này."
 
-#: ../src/ui/theme.c:4643
-#: ../src/ui/theme.c:4668
+#: ../src/ui/theme.c:4633 ../src/ui/theme.c:4658
 #, c-format
 msgid ""
 "Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
 msgstr "Thiếu <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"gì đó\"/>"
 
-#: ../src/ui/theme.c:4712
+#: ../src/ui/theme.c:4702
 #, c-format
 msgid "Failed to load theme \"%s\": %s\n"
 msgstr "Lỗi nạp sắc thái « %s »: %s\n"
 
-#: ../src/ui/theme.c:4838
-#: ../src/ui/theme.c:4845
-#: ../src/ui/theme.c:4852
-#: ../src/ui/theme.c:4859
-#: ../src/ui/theme.c:4866
+#: ../src/ui/theme.c:4828 ../src/ui/theme.c:4835 ../src/ui/theme.c:4842
+#: ../src/ui/theme.c:4849 ../src/ui/theme.c:4856
 #, c-format
 msgid "No <%s> set for theme \"%s\""
 msgstr "Chưa đặt <%s> cho sắc thái « %s »."
 
-#: ../src/ui/theme.c:4874
+#: ../src/ui/theme.c:4864
 #, c-format
 msgid ""
 "No frame style set for window type \"%s\" in theme \"%s\", add a <window "
@@ -3731,17 +3626,13 @@ msgstr ""
 "Chưa đặt kiểu khung cho loại cửa sổ « %s » trong sắc thái « %s », hãy thêm "
 "phần tử <window type=\"%s\" style_set=\"gì đó\"/>."
 
-#: ../src/ui/theme.c:5241
-#: ../src/ui/theme.c:5303
-#: ../src/ui/theme.c:5366
+#: ../src/ui/theme.c:5231 ../src/ui/theme.c:5293 ../src/ui/theme.c:5356
 #, c-format
 msgid ""
 "User-defined constants must begin with a capital letter; \"%s\" does not"
 msgstr "Hằng tự định nghĩa phải bắt đầu bằng ký tự hoa; « %s » không phải."
 
-#: ../src/ui/theme.c:5249
-#: ../src/ui/theme.c:5311
-#: ../src/ui/theme.c:5374
+#: ../src/ui/theme.c:5239 ../src/ui/theme.c:5301 ../src/ui/theme.c:5364
 #, c-format
 msgid "Constant \"%s\" has already been defined"
 msgstr "Hằng « %s » đã được định nghĩa."
@@ -3750,3 +3641,20 @@ msgstr "Hằng « %s » đã được định nghĩa."
 #, c-format
 msgid "Usage: %s\n"
 msgstr "Cách dùng: %s\n"
+
+#~ msgid "Type of %s was not integer"
+#~ msgstr "%s có kiểu không phải số nguyên"
+
+#~ msgid ""
+#~ "%d stored in GConf key %s is not a reasonable cursor_size; must be in the "
+#~ "range 1..128\n"
+#~ msgstr ""
+#~ "« %d » được lưu trong khóa GConf « %s » không phải là một « cursor_size "
+#~ "» (kích cỡ con chạy) hợp lý; phải nằm trong phạm vi (1..128)\n"
+
+#~ msgid ""
+#~ "%d stored in GConf key %s is not a reasonable number of workspaces, "
+#~ "current maximum is %d\n"
+#~ msgstr ""
+#~ "«%d» được lưu trong khóa GConf « %s » không phải là một con số hợp lý cho "
+#~ "số vùng làm việc, hiện thời tối đa là «%d».\n"
