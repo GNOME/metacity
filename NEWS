@@ -1,3 +1,14 @@
+2.23.377
+========
+
+Entirely a bugfix release.  Thanks to Thomas Thurman for improvements
+in this version.
+
+  - Removed invalid "Window Manager" group at request of Matthias Clasen.
+
+Translations
+  Clytie Siddall (vi)
+
 2.23.233
 ========
 
