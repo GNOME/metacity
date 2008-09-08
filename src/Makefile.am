@@ -192,7 +192,7 @@ VARIABLES=default_icon_data $(srcdir)/default_icon.png \
           stock_delete_data $(srcdir)/stock_delete.png
 
 BUILT_SOURCES = inlinepixbufs.h
-CLEANFILES = inlinepixbufs.h metacity.desktop metacity.schemas 50-metacity-desktop-key.xml 50-metacity-key.xml
+CLEANFILES = inlinepixbufs.h metacity.desktop metacity-wm.desktop metacity.schemas 50-metacity-desktop-key.xml 50-metacity-key.xml
 
 inlinepixbufs.h: $(IMAGES)
 	$(GDK_PIXBUF_CSOURCE) --raw --build-list $(VARIABLES) >$(srcdir)/inlinepixbufs.h
