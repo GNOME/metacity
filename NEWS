@@ -1,3 +1,14 @@
+2.23.610
+========
+
+Thanks to Vincent Untz for improvements in this version.
+
+  - Install both kinds of desktop file (Vincent) (#549479)
+
+Translations
+  David Lodge (en_GB), Claude Paroz (fr), Seán de Búrca (ga), \n (ta), Funda
+  Wang (zh_CN)
+
 2.23.377
 ========
 
