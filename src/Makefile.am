@@ -154,12 +154,17 @@ testboxes_LDADD= @METACITY_LIBS@
 testgradient_LDADD= @METACITY_LIBS@
 testasyncgetprop_LDADD= @METACITY_LIBS@
 
+@INTLTOOL_DESKTOP_RULE@
+
 desktopfilesdir=$(datadir)/applications
 desktopfiles_in_files=metacity.desktop.in
 desktopfiles_files=$(desktopfiles_in_files:.desktop.in=.desktop)
 desktopfiles_DATA = $(desktopfiles_files)
 
-@INTLTOOL_DESKTOP_RULE@
+wmpropertiesdir=$(datadir)/gnome/wm-properties
+wmproperties_in_files=metacity-wm.desktop.in
+wmproperties_files=$(wmproperties_in_files:.desktop.in=.desktop)
+wmproperties_DATA = $(wmproperties_files)
 
 schemadir   = @GCONF_SCHEMA_FILE_DIR@
 schema_in_files = metacity.schemas.in

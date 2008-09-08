@@ -1,3 +1,10 @@
+2008-09-08  Vincent Untz  <vuntz@gnome.org>
+
+        Desktop file installed in both places.
+
+        * src/Makefile.am: install both kinds of desktop file
+        * src/metacity-wm.desktop.in: desktop file for gnome/wm-properties
+
 2008-09-03  Thomas Thurman  <tthurman@gnome.org>
 
         * configure.in: Post-release bump to 2.23.610.
