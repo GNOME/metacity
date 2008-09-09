@@ -1,3 +1,14 @@
+2.23.610
+========
+
+Thanks to Thomas Thurman and Vincent Untz for improvements in this version.
+
+  - Fixes to desktop files (Thomas, Vincent) (#549479)
+
+Translations
+  David Lodge (en_GB), Claude Paroz (fr), Seán de Búrca (ga),
+  Tirumurthi Vasudevan (ta), Funda Wang (zh_CN)
+
 2.23.377
 ========
 
