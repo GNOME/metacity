@@ -202,8 +202,10 @@ pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libmetacity-private.pc
 
 EXTRA_DIST=$(desktopfiles_files) 	\
+	$(wmproperties_files)         \
 	$(IMAGES) $(schema_DATA) 	\
 	$(desktopfiles_in_files)	\
+	$(wmproperties_in_files)	\
 	$(schema_in_files)		\
 	$(xml_in_files)			\
 	libmetacity-private.pc.in
