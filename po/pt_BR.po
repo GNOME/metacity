@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-07-25 02:12+0000\n"
-"PO-Revision-Date: 2008-08-13 11:30-0300\n"
+"PO-Revision-Date: 2008-09-13 23:32-0300\n"
 "Last-Translator: Djavan Fagundes <dnoway@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-l10n-br@listas.cipsga.org.br>\n"
 "MIME-Version: 1.0\n"
@@ -2691,8 +2691,7 @@ msgid ""
 "restarted manually next time you log in."
 msgstr ""
 "Estas janelas não oferecem suporte para a opção \"salvar configuração atual"
-"\" e precisarão ser reiniciadas manualmente na próxima vez que você efetuar "
-"login."
+"\" e precisarão ser reiniciadas manualmente quando você reiniciar a sessão."
 
 #: ../src/ui/metacity-dialog.c:310
 #, c-format
