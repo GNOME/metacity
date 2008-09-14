@@ -4,7 +4,7 @@
 # Evandro Fernandes Giovanini <evandrofg@ig.com.br>, 2002, 2003, 2006.
 # Gustavo Noronha Silva <kov@debian.org>, 2004.
 # Alexandre Folle de Menezes <afmenez@terra.com.br>, 2005.
-# Leonardo Ferreira Fontenelle <leo.fontenelle@gmail.com>, 2007.
+# Leonardo Ferreira Fontenelle <leo.fontenelle@gmail.com>, 2007, 2008.
 # Raul Pereira <contato@raulpereira.com>, 2007.
 # Og Maciel <ogmaciel@gnome.org>, 2007.
 # Rodrigo Flores <rodrigomarquesflores@gmail.com>, 2007.
@@ -2847,8 +2847,8 @@ msgstr "Nenhum atributo \"valor\" no elemento <%s>"
 msgid ""
 "Cannot specify both button_width/button_height and aspect ratio for buttons"
 msgstr ""
-"Não é possível especificar largura_de_botão/altura_de_botão e a taxa de "
-"proporção dos botões"
+"Não é possível especificar tanto a taxa de proporção quanto \"button_width\" "
+"e \"button_height\""
 
 #: ../src/ui/theme-parser.c:1434
 #, c-format
