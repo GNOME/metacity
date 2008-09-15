@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity.HEAD.ar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-29 02:20+0100\n"
+"POT-Creation-Date: 2008-09-15 10:45+0100\n"
 "PO-Revision-Date: 2008-01-13 01:49+0200\n"
 "Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
@@ -29,6 +29,10 @@ msgstr "سطح المكتب"
 #: ../src/50-metacity-key.xml.in.h:1
 msgid "Window Management"
 msgstr "إدارة النوافذ"
+
+#: ../src/metacity-wm.desktop.in.h:1 ../src/metacity.desktop.in.h:1
+msgid "Metacity"
+msgstr "مِتسِتي"
 
 #: ../src/core/core.c:206
 #, c-format
@@ -402,7 +406,7 @@ msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
 msgstr "نافذة WM_TRANSIENT_FOR  0x%lx غير صحيحة ل %s.\n"
 
 #. first time through
-#: ../src/core/window.c:5648
+#: ../src/core/window.c:5664
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -418,7 +422,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/core/window.c:6213
+#: ../src/core/window.c:6229
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
@@ -453,10 +457,6 @@ msgid ""
 "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
 msgstr ""
 "الخاصية %s على النافذة 0x%lx تحتوي UTF-8 غير صحيح للعنصر %d في القائمة\n"
-
-#: ../src/metacity.desktop.in.h:1
-msgid "Metacity"
-msgstr "مِتسِتي"
 
 #: ../src/metacity.schemas.in.h:1
 msgid "(Not implemented) Navigation works in terms of applications not windows"
@@ -506,7 +506,7 @@ msgid ""
 msgstr ""
 "تنظيم الأزرار على شريط العنوان. يجب أن تكون القيمة سلسلة،مثل\"menu:minimize,"
 "maximize,close\" ،الفاصل يفصل الجانب الأيسر للنافذة عن الجانب الأيمن، كما "
-"تفصل أسماء الأزرار بفواصل. نسخ الأزرار ممنوع. يقع تجاهل الأزرار الغير معروفة "
+"تفصل أسماء الأزرار بفواصل. نسخ الأزرار ممنوع. يقع تجاهل الأزرار غير المعروفة "
 "حتى يمكن اضافتها لاصدارات ميتاستي القادمة دون كسر الاصدارات القديمة."
 
 #: ../src/metacity.schemas.in.h:9
@@ -759,7 +759,7 @@ msgstr "انقل النافذة للزاوية جنوب-غرب الشاشة"
 
 #: ../src/metacity.schemas.in.h:58
 msgid "Move window to west side of screen"
-msgstr "انقل النافذة للجانب الغربي من الشاشة"
+msgstr "انقل النافذة للجانب ألغربي من الشاشة"
 
 #: ../src/metacity.schemas.in.h:59
 msgid "Move window to workspace 1"
@@ -2220,7 +2220,7 @@ msgstr ""
 
 #: ../src/metacity.schemas.in.h:197
 msgid "Unmaximize window"
-msgstr "الغي تكبير النّافذة"
+msgstr "ألغي تكبير النّافذة"
 
 #: ../src/metacity.schemas.in.h:198
 msgid "Use standard system font in window titles"
@@ -2260,7 +2260,7 @@ msgstr "كبّر النافذة"
 
 #: ../src/ui/frames.c:1089
 msgid "Unmaximize Window"
-msgstr "الغي تكبير النافذة"
+msgstr "ألغي تكبير النافذة"
 
 #: ../src/ui/frames.c:1092
 msgid "Roll Up Window"
@@ -2268,7 +2268,7 @@ msgstr "لُفّ النافذة الأعلى"
 
 #: ../src/ui/frames.c:1095
 msgid "Unroll Window"
-msgstr "الغى لفّ النافذة"
+msgstr "ألغى لفّ النافذة"
 
 #: ../src/ui/frames.c:1098
 msgid "Keep Window On Top"
@@ -2299,7 +2299,7 @@ msgstr "_كبّر"
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:74
 msgid "Unma_ximize"
-msgstr "الغي التكبي_ر"
+msgstr "ألغي التكبي_ر"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:76
@@ -3514,6 +3514,33 @@ msgstr "عُرِّف الثابت \"%s\" بالفعل"
 #, c-format
 msgid "Usage: %s\n"
 msgstr "الاستخدام: %s\n"
+
+#, fuzzy
+#~ msgid "Turn compositing on"
+#~ msgstr "مدير التركيب"
+
+#, fuzzy
+#~ msgid "Error setting compositor status: %s\n"
+#~ msgstr "خطأ عند تعيين اسم مساحة العمل %d لـ \"%s\": %s\n"
+
+#, fuzzy
+#~ msgid "Move window to center of screen"
+#~ msgstr "انقل النافذة للجانب الشرقي من الشاشة"
+
+#, fuzzy
+#~ msgid ""
+#~ "This keybinding moves a window into the center of the screen. The format "
+#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
+#~ "parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
+#~ "keybinding for this action."
+#~ msgstr ""
+#~ "ارتباط المفتاح هذا ينقل نافذة باتجاه غرب (يسار) الشاشة.. النّسق شبيهٌ بـ "
+#~ "\"&lt;Control&gt;a\" أو \"&lt;Shift&gt;&lt;Alt&gt;F1\". المحلّل مرنٌ نوعًا "
+#~ "ما و يسمح بحروفٍ كبيرة أو صغيرة، و كذلك الاختصارات مثل \"&lt;Ctl&gt;\" و "
+#~ "\"&lt;Ctrl&gt;\". إذا ضبطت الخيار للسّلسلة الخاصّة \"disabled\"، فلن يكون "
+#~ "هناك رابط مفتاحٍ لهذا الإجراء."
 
 #~ msgid "Type of %s was not integer"
 #~ msgstr "نوع %s لم يكن عددا صحيحا"
