@@ -7,19 +7,20 @@
 # Abdulaziz Al-Arfaj <alarfaj0@yahoo.com>, 2004.
 # Djihed Afifi <djihed@gmail.com>, 2006.
 # Khaled Hosny <khaledhosny@eglug.org>, 2006, 2007, 2008.
+# Anas Afif Emad <anas.e87@gmail.com>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity.HEAD.ar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-15 10:45+0100\n"
-"PO-Revision-Date: 2008-01-13 01:49+0200\n"
-"Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
+"POT-Creation-Date: 2008-09-21 12:56+0100\n"
+"PO-Revision-Date: 2008-09-20 17:40+0200\n"
+"Last-Translator: Anas Afif Emad <anas.e87@gmail.com>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms:  nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n>=3 && "
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n>=3 && "
 "n<=10 ? 3 : n>=11 && n<=99 ? 4 : 5;\n"
 
 #: ../src/50-metacity-desktop-key.xml.in.h:1
@@ -76,7 +77,7 @@ msgstr "فشل تلقي اسم المضيف: %s\n"
 #: ../src/core/display.c:256
 #, c-format
 msgid "Missing %s extension required for compositing"
-msgstr "الامتداد %s مفقود، لكنه مطلوب للتمازج"
+msgstr "الامتداد %s مفقود، لكنه مطلوب للتركيب"
 
 #: ../src/core/display.c:334
 #, c-format
@@ -122,7 +123,7 @@ msgid "No terminal command has been defined.\n"
 msgstr "لم يُعرّف أمر طرفيّة.\n"
 
 #: ../src/core/main.c:115
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "metacity %s\n"
 "Copyright (C) 2001-2008 Havoc Pennington, Red Hat, Inc., and others\n"
@@ -131,9 +132,9 @@ msgid ""
 "PARTICULAR PURPOSE.\n"
 msgstr ""
 "مِتسِتي %s\n"
-"حقوق النسخ  (C) 2001-2002 Havoc Pennington, Red Hat, Inc., and others\n"
-"هذا برنامج حر، راجع المصدر لشروط النسخ. لا يوجد أي ضمان، و لا ضمان بيع و لا "
-"مناسبة لأي هدف.\n"
+"حقوق النسخ  (C) 2001-2008 Havoc Pennington, Red Hat, Inc., and others\n"
+"هذا برنامج حر، راجع المصدر لشروط النسخ.\n"
+"لا يوجد أي ضمان: و لا حتى ضمان قابلية التسويق أو المناسبة لأي هدف.\n"
 
 #: ../src/core/main.c:242
 msgid "Disable connection to session manager"
@@ -193,9 +194,9 @@ msgid "GConf key '%s' is set to an invalid value\n"
 msgstr "مفتاح GConf '%s' مضبوط لقيمة غير صحيحة\n"
 
 #: ../src/core/prefs.c:583 ../src/core/prefs.c:823
-#, fuzzy, c-format
+#, c-format
 msgid "%d stored in GConf key %s is out of range %d to %d\n"
-msgstr "%d المحفوظ في مفتاح GConf %s خارج المدى من 0 إلى %d\n"
+msgstr "%d المحفوظ في مفتاح GConf %s خارج المدى من %d إلى %d\n"
 
 #: ../src/core/prefs.c:627 ../src/core/prefs.c:701 ../src/core/prefs.c:749
 #: ../src/core/prefs.c:813 ../src/core/prefs.c:1108 ../src/core/prefs.c:1124
@@ -494,7 +495,6 @@ msgid "Arrangement of buttons on the titlebar"
 msgstr "تنظيم الأزرار على شريط العنوان"
 
 #: ../src/metacity.schemas.in.h:8
-#, fuzzy
 msgid ""
 "Arrangement of buttons on the titlebar. The value should be a string, such "
 "as \"menu:minimize,maximize,spacer,close\"; the colon separates the left "
@@ -504,10 +504,12 @@ msgid ""
 "without breaking older versions. A special spacer tag can be used to insert "
 "some space between two adjacent buttons."
 msgstr ""
-"تنظيم الأزرار على شريط العنوان. يجب أن تكون القيمة سلسلة،مثل\"menu:minimize,"
-"maximize,close\" ،الفاصل يفصل الجانب الأيسر للنافذة عن الجانب الأيمن، كما "
-"تفصل أسماء الأزرار بفواصل. نسخ الأزرار ممنوع. يقع تجاهل الأزرار غير المعروفة "
-"حتى يمكن اضافتها لاصدارات ميتاستي القادمة دون كسر الاصدارات القديمة."
+"تنظيم الأزرار على شريط العنوان. يجب أن تكون القيمة سلسلة نصيّة،مثل\"menu:"
+"minimize,maximize,spacer,close\"; تفصل النقطتان فوق بعضهما الجانب الأيسر "
+"للنافذة عن الجانب الأيمن، كما تُفصل أسماء الأزرار بفواصل. لا يسمح بالنسخ "
+"المطابقة للأزرار. يتم تجاهل الأزرار غير المعروفة حتى يمكن إضافة الأزرار إلى "
+"الإصدارادت المستقبلية من ميتاسيتي دون كسر الإصدارات القديمة. يمكن استخدام "
+"وسم فاصل خاص لإقحام فراغ بين زرين متجاورين."
 
 #: ../src/metacity.schemas.in.h:9
 msgid "Automatically raises the focused window"
@@ -2128,7 +2130,6 @@ msgstr ""
 "مفتاحٍ لهذا الإجراء."
 
 #: ../src/metacity.schemas.in.h:187
-#, fuzzy
 msgid ""
 "This option determines the effects of double-clicking on the title bar. "
 "Current valid options are 'toggle_shade', which will shade/unshade the "
@@ -2139,13 +2140,15 @@ msgid ""
 "will display the window menu, 'lower' which will put the window behind all "
 "the others, and 'none' which will not do anything."
 msgstr ""
-"هذا الخيار يحدد نتائج النقر المزدوج على شريط العنواين. الخيارات الممكنة "
-"حاليا هي 'toggle_shaded'، مما سيخفي/يلغي إخفاء النافذة،  'toggle_maximized' "
-"مما سيكبر/يلغي تكبير النافذة، 'minimize' لإخفاء النافذة، و  'none' لعدم فعل "
-"أي شيء."
+"هذا الخيار يحدد نتائج النقر المزدوج على شريط العنوان. الخيارات الممكنة حاليا "
+"هي 'toggle_shaded'، مما سيخفي/يلغي إخفاء النافذة،  'toggle_maximized' مما "
+"سيكبر/يلغي تكبير النافذة، 'minimize' لإخفاء النافذة، و "
+"'toggle_maximize_horizontally' و 'toggle_maximize_vertically' اللذان سيقومان "
+"بتكبير/إلغاء تكبير النافذة بالاتجاه المحدد فقط، 'minimize' سيقوم بتصغير "
+"النافذة،  'shade' سيلف النافذة إلى الأعلى، 'menu' سيعرض قائمة النافذة، "
+"'lower' سيضع النافذة خلف بقية النوافذ، و 'none' لن يفعل أي شيء."
 
 #: ../src/metacity.schemas.in.h:188
-#, fuzzy
 msgid ""
 "This option determines the effects of middle-clicking on the title bar. "
 "Current valid options are 'toggle_shade', which will shade/unshade the "
@@ -2156,13 +2159,15 @@ msgid ""
 "will display the window menu, 'lower' which will put the window behind all "
 "the others, and 'none' which will not do anything."
 msgstr ""
-"هذا الخيار يحدد نتائج النقر الأوسط على شريط العنواين. الخيارات المقبولة "
-"حاليا هي 'toggle_shaded'، مما سيخفي/يلغي إخفاء النافذة،  'toggle_maximized' "
-"مما سيكبر/يلغي تكبير النافذة، 'minimize' لإخفاء النافذة، و  'none' لعدم فعل "
-"أي شيء."
+"هذا الخيار يحدد نتائج النقر الأوسط على شريط العنوان. الخيارات الممكنة حاليا "
+"هي 'toggle_shaded'، مما سيخفي/يلغي إخفاء النافذة،  'toggle_maximized' مما "
+"سيكبر/يلغي تكبير النافذة، 'minimize' لإخفاء النافذة، و "
+"'toggle_maximize_horizontally' و 'toggle_maximize_vertically' اللذان سيقومان "
+"بتكبير/إلغاء تكبير النافذة بالاتجاه المحدد فقط، 'minimize' سيقوم بتصغير "
+"النافذة،  'shade' سيلف النافذة إلى الأعلى، 'menu' سيعرض قائمة النافذة، "
+"'lower' سيضع النافذة خلف بقية النوافذ، و 'none' لن يفعل أي شيء."
 
 #: ../src/metacity.schemas.in.h:189
-#, fuzzy
 msgid ""
 "This option determines the effects of right-clicking on the title bar. "
 "Current valid options are 'toggle_shade', which will shade/unshade the "
@@ -2173,10 +2178,13 @@ msgid ""
 "will display the window menu, 'lower' which will put the window behind all "
 "the others, and 'none' which will not do anything."
 msgstr ""
-"هذا الخيار يحدد نتائج النقر الأيمن على شريط العنواين. الخيارات الممكنة حاليا "
+"هذا الخيار يحدد نتائج النقر الأيمن على شريط العنوان. الخيارات الممكنة حاليا "
 "هي 'toggle_shaded'، مما سيخفي/يلغي إخفاء النافذة،  'toggle_maximized' مما "
-"سيكبر/يلغي تكبير النافذة، 'minimize' لإخفاء النافذة، و  'none' لعدم فعل أي "
-"شيء."
+"سيكبر/يلغي تكبير النافذة، 'minimize' لإخفاء النافذة، و "
+"'toggle_maximize_horizontally' و 'toggle_maximize_vertically' اللذان سيقومان "
+"بتكبير/إلغاء تكبير النافذة بالاتجاه المحدد فقط، 'minimize' سيقوم بتصغير "
+"النافذة،  'shade' سيلف النافذة إلى الأعلى، 'menu' سيعرض قائمة النافذة، "
+"'lower' سيضع النافذة خلف بقية النوافذ، و 'none' لن يفعل أي شيء."
 
 #: ../src/metacity.schemas.in.h:190
 msgid ""
@@ -2369,9 +2377,9 @@ msgid "_Close"
 msgstr "ا_غلق"
 
 #: ../src/ui/menu.c:203
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %d%n"
-msgstr "مساحة العمل %d"
+msgstr "مساحة العمل %d%n"
 
 #: ../src/ui/menu.c:213
 #, c-format
@@ -3515,19 +3523,18 @@ msgstr "عُرِّف الثابت \"%s\" بالفعل"
 msgid "Usage: %s\n"
 msgstr "الاستخدام: %s\n"
 
-#, fuzzy
 #~ msgid "Turn compositing on"
-#~ msgstr "مدير التركيب"
+#~ msgstr "شغّل التركيب"
 
-#, fuzzy
+#~ msgid "Turn compositing off"
+#~ msgstr "أوقف التركيب"
+
 #~ msgid "Error setting compositor status: %s\n"
-#~ msgstr "خطأ عند تعيين اسم مساحة العمل %d لـ \"%s\": %s\n"
+#~ msgstr "خطأ عند إعداد حالة المركّب: %s\n"
 
-#, fuzzy
 #~ msgid "Move window to center of screen"
-#~ msgstr "انقل النافذة للجانب الشرقي من الشاشة"
+#~ msgstr "انقل النافذة إلى مركز الشاشة"
 
-#, fuzzy
 #~ msgid ""
 #~ "This keybinding moves a window into the center of the screen. The format "
 #~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
@@ -3536,11 +3543,11 @@ msgstr "الاستخدام: %s\n"
 #~ "the option to the special string \"disabled\", then there will be no "
 #~ "keybinding for this action."
 #~ msgstr ""
-#~ "ارتباط المفتاح هذا ينقل نافذة باتجاه غرب (يسار) الشاشة.. النّسق شبيهٌ بـ "
-#~ "\"&lt;Control&gt;a\" أو \"&lt;Shift&gt;&lt;Alt&gt;F1\". المحلّل مرنٌ نوعًا "
-#~ "ما و يسمح بحروفٍ كبيرة أو صغيرة، و كذلك الاختصارات مثل \"&lt;Ctl&gt;\" و "
-#~ "\"&lt;Ctrl&gt;\". إذا ضبطت الخيار للسّلسلة الخاصّة \"disabled\"، فلن يكون "
-#~ "هناك رابط مفتاحٍ لهذا الإجراء."
+#~ "ارتباط المفتاح هذا ينقل نافذة إلى مركز الشاشة.. النّسق شبيهٌ بـ \"&lt;"
+#~ "Control&gt;a\" أو \"&lt;Shift&gt;&lt;Alt&gt;F1\". المحلّل مرنٌ نوعًا ما و "
+#~ "يسمح بحروفٍ كبيرة أو صغيرة، و كذلك الاختصارات مثل \"&lt;Ctl&gt;\" و \"&lt;"
+#~ "Ctrl&gt;\". إذا ضَبطتَ الخيار للسّلسلة الخاصّة \"disabled\"، فلن يكون هناك "
+#~ "رابط مفتاحٍ لهذا الإجراء."
 
 #~ msgid "Type of %s was not integer"
 #~ msgstr "نوع %s لم يكن عددا صحيحا"
