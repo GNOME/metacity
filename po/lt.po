@@ -1,17 +1,17 @@
-# translation of lt.po to Lithuanian
+# translation of lt to Lithuanian
 # Lithuanian translation of metacity.
-# Copyright (C) 2003-2006, 2007 Free Software Foundation, Inc.
+# Copyright (C) 2003-2006, 2007, 2008 Free Software Foundation, Inc.
 #
 #
 # Tomas Kuliavas <tokul@users.sourceforge.net>, 2003.
 # Žygimantas Beručka <zygis@gnome.org>, 2004-2007.
-# Gintautas Miliauskas <gintas@akl.lt>, 2007.
+# Gintautas Miliauskas <gintas@akl.lt>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: lt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-13 01:31+0300\n"
-"PO-Revision-Date: 2008-09-13 01:31+0300\n"
+"POT-Creation-Date: 2008-09-21 04:11+0300\n"
+"PO-Revision-Date: 2008-09-21 04:13+0300\n"
 "Last-Translator: Žygimantas Beručka <zygis@gnome.org>\n"
 "Language-Team: Lithuanian <gnome-lt@lists.akl.lt>\n"
 "MIME-Version: 1.0\n"
@@ -19,6 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%"
 "100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: ../src/50-metacity-desktop-key.xml.in.h:1
 msgid "Desktop"
@@ -389,19 +390,19 @@ msgstr "Metacity buvo sukompiliuota be išsamaus veikimo veiksenos\n"
 
 #: ../src/core/util.c:236
 msgid "Window manager: "
-msgstr "Langų valdyklė:"
+msgstr "Langų valdyklė: "
 
 #: ../src/core/util.c:388
 msgid "Bug in window manager: "
-msgstr "Klaida langų valdyklėje:"
+msgstr "Klaida langų valdyklėje: "
 
 #: ../src/core/util.c:421
 msgid "Window manager warning: "
-msgstr "Langų valdyklės perspėjimas:"
+msgstr "Langų valdyklės perspėjimas: "
 
 #: ../src/core/util.c:449
 msgid "Window manager error: "
-msgstr "Langų valdyklės klaida:"
+msgstr "Langų valdyklės klaida: "
 
 #: ../src/core/window-props.c:206
 #, c-format
@@ -568,8 +569,7 @@ msgstr "Esama tema"
 
 #: ../src/metacity.schemas.in.h:16
 msgid "Delay in milliseconds for the auto raise option"
-msgstr ""
-"Uždelsimas milisekundėmis prieš suveikiant automatinio lango iškėlimui."
+msgstr "Uždelsimas milisekundėmis prieš suveikiant automatinio lango iškėlimui"
 
 #: ../src/metacity.schemas.in.h:17
 msgid "Determines whether Metacity is a compositing manager."
@@ -2022,7 +2022,7 @@ msgstr ""
 
 #: ../src/metacity.schemas.in.h:168
 msgid "The name of a workspace."
-msgstr "Darbalaukio vardas"
+msgstr "Darbalaukio vardas."
 
 #: ../src/metacity.schemas.in.h:169
 msgid "The screenshot command"
@@ -3707,59 +3707,3 @@ msgstr "Konstanta „%s“ jau aprašyta"
 #, c-format
 msgid "Usage: %s\n"
 msgstr "Naudojimas: %s\n"
-
-#~ msgid ""
-#~ "Setting this option to false can lead to buggy behavior, so users are "
-#~ "strongly discouraged from changing it from the default of true. Many "
-#~ "actions (e.g. clicking in the client area, moving or resizing the window) "
-#~ "normally raise the window as a side-effect. Set this option to false to "
-#~ "decouple raising from other user actions. Even when this option is false, "
-#~ "windows can still be raised by an alt-left-click anywhere on the window, "
-#~ "a normal click on the window decorations, or by special messages from "
-#~ "pagers, such as activation requests from tasklist applets. This option is "
-#~ "currently disabled in click-to-focus mode. Note that the list of ways to "
-#~ "raise windows when raise_on_click is false does not include programmatic "
-#~ "requests from applications to raise windows; such requests will be "
-#~ "ignored regardless of the reason for the request. If you are an "
-#~ "application developer and have a user complaining that your application "
-#~ "does not work with this setting disabled, tell them it is _their_ fault "
-#~ "for breaking their window manager and that they need to change this "
-#~ "option back to true or live with the bug they requested. See also http://"
-#~ "bugzilla.gnome.org/show_bug.cgi?id=445447#c6."
-#~ msgstr ""
-#~ "Nustačius šią parinktį į neigiamą reikšmę, programa gali veikti "
-#~ "nekorektiškai, todėl naudojamas labai rekomenduojama nekeisti jos "
-#~ "numatytosios teigiamos reikšmės. Daugelio veiksmų (pvz., spustelėjimo "
-#~ "kliento srityje, lango perkėlimo arba dydžio keitimo) pašalinis efektas "
-#~ "paprastai bus lango iškėlimas. Nustatykite šią parinktį į neigiamą, kad "
-#~ "atskirtumėte iškėlimą nuo kitų naudotojo veiksmų. Netgi jeigu ši "
-#~ "parinktis neigiama, langus vistiek galima iškelti laikant Alt ir "
-#~ "spustelėjus kairiuoju mygtuku bet kurią lango vietą, paprastai "
-#~ "spustelėjus lango dekoracijas, arba specialiais pranešimais, pvz., "
-#~ "aktyvavimo užklausomis iš užduočių sąrašo įtaisų. Šiuo metu ši parinktis "
-#~ "yra išjungta aktyvinimo spustelint veiksenoje. Atminkite, kad tarp langų "
-#~ "iškėlimo būdų, kai raise_on_click reikšmė yra neigiama, nėra programinių "
-#~ "užklausų iškelti langą iš programų; tokių užklausų bus nepaisoma, "
-#~ "nepaisant jų priežasties. Jeigu esate programos kūrėjas ir jūsų "
-#~ "naudotojai skundžiasi, kad jūsų programa neveikia, kai šis parametras "
-#~ "išjungtas, pasakykite jiems, kad tai _jų_ kaltė, kad sugadino savo langų "
-#~ "valdyklę ir, kad jie turi atkurti šią parinktį atgal į teigiamą arba ir "
-#~ "toliau gyventi su klaida, dėl kurios skundžiasi. Taip pat žiūrėkite "
-#~ "http://bugzilla.gnome.org/show_bug.cgi?id=445447#c6."
-
-#~ msgid "Type of %s was not integer"
-#~ msgstr "%s tipas buvo ne sveikasis skaičius"
-
-#~ msgid ""
-#~ "%d stored in GConf key %s is not a reasonable cursor_size; must be in the "
-#~ "range 1..128\n"
-#~ msgstr ""
-#~ "%d saugoma GConf rakte %s yra nenuosaikus cursor_size; turi būti nuo 1 "
-#~ "iki 128\n"
-
-#~ msgid ""
-#~ "%d stored in GConf key %s is not a reasonable number of workspaces, "
-#~ "current maximum is %d\n"
-#~ msgstr ""
-#~ "%d reikšmė saugoma GConf rakte %s nurodo nepriimtina darbalaukų skaičių, "
-#~ "šiuo metu maksimali reikšmė yra %d\n"
