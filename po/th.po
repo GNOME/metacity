@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-10 11:37+0700\n"
-"PO-Revision-Date: 2008-07-10 11:40+0700\n"
+"POT-Creation-Date: 2008-09-21 15:38+0700\n"
+"PO-Revision-Date: 2008-09-21 15:40+0700\n"
 "Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -27,6 +27,10 @@ msgstr "พื้นโต๊ะ"
 #: ../src/50-metacity-key.xml.in.h:1
 msgid "Window Management"
 msgstr "การจัดการหน้าต่าง"
+
+#: ../src/metacity-wm.desktop.in.h:1 ../src/metacity.desktop.in.h:1
+msgid "Metacity"
+msgstr "Metacity"
 
 #: ../src/core/core.c:206
 #, c-format
@@ -397,7 +401,7 @@ msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
 msgstr "ค่า WM_TRANSIENT_FOR หน้าต่าง 0x%lx ที่กำหนดให้กับ %s ใช้ไม่ได้\n"
 
 #. first time through
-#: ../src/core/window.c:5648
+#: ../src/core/window.c:5664
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -413,7 +417,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/core/window.c:6213
+#: ../src/core/window.c:6229
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
@@ -448,10 +452,6 @@ msgid ""
 "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
 msgstr ""
 "คุณสมบัติ %s ของหน้าต่าง 0x%lx มีค่าที่ไม่ใช่ UTF-8 ที่ถูกต้องสำหรับหัวข้อที่ %d ในรายการ\n"
-
-#: ../src/metacity.desktop.in.h:1
-msgid "Metacity"
-msgstr "Metacity"
 
 #: ../src/metacity.schemas.in.h:1
 msgid "(Not implemented) Navigation works in terms of applications not windows"
@@ -653,7 +653,7 @@ msgstr "ขยายหน้าต่างเต็มด้านสูง"
 
 #: ../src/metacity.schemas.in.h:32
 msgid "Minimize window"
-msgstr "ย่อหน้าต่างหาย"
+msgstr "ย่อเก็บหน้าต่าง"
 
 #: ../src/metacity.schemas.in.h:33
 msgid "Modifier to use for modified window click actions"
@@ -1305,7 +1305,7 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"ปุ่มลัดสำหรับย่อหน้าต่างหาย  รูปแบบคือ \"&lt;Control&gt;a\" หรือ \"&lt;Shift&gt;&lt;"
+"ปุ่มลัดสำหรับย่อเก็บหน้าต่าง  รูปแบบคือ \"&lt;Control&gt;a\" หรือ \"&lt;Shift&gt;&lt;"
 "Alt&gt;F1\"  ตัวอ่านค่าคีย์ไม่สนใจว่าเป็นตัวพิมพ์ใหญ่หรือเล็ก และเข้าใจชื่อย่อ เช่น \"&lt;"
 "Ctl&gt;\" และ \"&lt;Ctrl&gt;\"  คุณสามารถตั้งค่าตัวเลือกเป็น \"disabled\" ได้ "
 "ถ้าไม่ต้องการปุ่มลัดสำหรับปฏิบัติการนี้"
@@ -2221,7 +2221,7 @@ msgstr "เมนูหน้าต่าง"
 
 #: ../src/ui/frames.c:1083
 msgid "Minimize Window"
-msgstr "ย่อหน้าต่างหาย"
+msgstr "ย่อเก็บหน้าต่าง"
 
 #: ../src/ui/frames.c:1086
 msgid "Maximize Window"
@@ -2258,7 +2258,7 @@ msgstr "วางหน้าต่างบนพื้นที่ทำงา
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:70
 msgid "Mi_nimize"
-msgstr "ย่_อหาย"
+msgstr "ย่_อเก็บ"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:72
