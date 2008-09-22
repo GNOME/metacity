@@ -1,3 +1,9 @@
+2008-09-22  Thomas Thurman  <tthurman@gnome.org>
+
+        * src/core/workspace.c: Fix small memory leak
+          found by Matthias Clasen which was in trunk but
+          not stable. (#549952)
+
 2008-09-09  Thomas Thurman  <tthurman@gnome.org>
 
         * configure.in: Post-release bump to 2.23.987.
