@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity 2.18\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-18 00:48+0200\n"
-"PO-Revision-Date: 2008-09-17 19:08+0200\n"
+"POT-Creation-Date: 2008-09-27 18:24+0200\n"
+"PO-Revision-Date: 2008-09-19 08:06ope\n"
 "Last-Translator: David Planella <david.planella@gmail.com>\n"
 "Language-Team: Softcatalà <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -75,7 +75,7 @@ msgstr "S'ha produït un error en obtenir el nom de l'ordinador central: %s\n"
 #: ../src/core/display.c:256
 #, c-format
 msgid "Missing %s extension required for compositing"
-msgstr "Manca l'extensió %s necessària per als efectes digitals"
+msgstr "Manca l'extensió %s necessària per a la composició"
 
 #: ../src/core/display.c:334
 #, c-format
@@ -562,10 +562,9 @@ msgstr "Tanca la finestra"
 msgid "Commands to run in response to keybindings"
 msgstr "Ordres a executar en resposta a vinculacions de tecles"
 
-# compositing workstation: taula d'efectes digitals (TERMCAT, josep)
 #: ../src/metacity.schemas.in.h:13
 msgid "Compositing Manager"
-msgstr "Gestor d'efectes digitals"
+msgstr "Gestor de composició"
 
 #: ../src/metacity.schemas.in.h:14
 msgid "Control how new windows get focus"
@@ -581,7 +580,7 @@ msgstr "Retard en mil·lisegons per a l'opció d'alçat automàtic"
 
 #: ../src/metacity.schemas.in.h:17
 msgid "Determines whether Metacity is a compositing manager."
-msgstr "Determina si el Metacity és un gestor d'efectes digitals."
+msgstr "Determina si el Metacity és un gestor de composició."
 
 #: ../src/metacity.schemas.in.h:18
 msgid ""
