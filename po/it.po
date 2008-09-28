@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: metacity 2.21.x\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-09-28 16:23+0200\n"
-"PO-Revision-Date: 2008-09-28 16:25+0200\n"
+"PO-Revision-Date: 2008-09-28 16:34+0200\n"
 "Last-Translator: Luca Ferretti <elle.uca@libero.it>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
@@ -2492,11 +2492,13 @@ msgstr "Poni la finestra su una sola area di lavoro"
 msgid "Mi_nimize"
 msgstr "_Minimizza"
 
+# mantenere in sync con libwnck
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:72
 msgid "Ma_ximize"
 msgstr "Ma_ssimizza"
 
+# mantenere in sync con libwnck
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:74
 msgid "Unma_ximize"
@@ -2513,11 +2515,14 @@ msgid "_Unroll"
 msgstr "Sr_otola"
 
 # GNOME-2-24
+# mantenere in sync con libwnck
+#
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:80
 msgid "_Move"
 msgstr "M_uovi"
 
+# mantenere in sync con libwnck
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:82
 msgid "_Resize"
@@ -2528,6 +2533,7 @@ msgstr "_Ridimensiona"
 msgid "Move Titlebar On_screen"
 msgstr "Muovi barra del titolo su _schermo"
 
+# mantenere in sync con libwnck
 #. separator
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:87 ../src/ui/menu.c:89
@@ -2535,36 +2541,50 @@ msgid "Always on _Top"
 msgstr "Sempre in _primo piano"
 
 # GNOME-2-24
+# mantenere in sync con libwnck
+#
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:91
 msgid "_Always on Visible Workspace"
-msgstr "Sempre sull'area di lavoro _visibile"
+msgstr "Sempre su area di lavoro _visibile"
 
+# mantenere in sync con libwnck
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:93
 msgid "_Only on This Workspace"
 msgstr "Solo su _questa area di lavoro"
 
+# GNOME-2-24
+# mantenere in sync con libwnck
+#
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:95
 msgid "Move to Workspace _Left"
-msgstr "Sposta sull'area di lavoro a sin_istra"
+msgstr "Sposta su area di lavoro a s_inistra"
 
+# mantenere in sync con libwnck
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:97
 msgid "Move to Workspace R_ight"
-msgstr "Sposta sull'area di lavoro a d_estra"
+msgstr "Sposta su area di lavoro a d_estra"
 
+# GNOME-2-24
+# mantenere in sync con libwnck
+#
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:99
 msgid "Move to Workspace _Up"
-msgstr "Sposta sull'area di lavoro in a_lto"
+msgstr "Sposta su area di lavoro in alt_o"
 
+# GNOME-2-24
+# mantenere in sync con libwnck
+#
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:101
 msgid "Move to Workspace _Down"
-msgstr "Sposta sull'area di lavoro in _basso"
+msgstr "Sposta su area di lavoro in _basso"
 
+# mantenere in sync con libwnck
 #. separator
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:105
@@ -2572,16 +2592,20 @@ msgid "_Close"
 msgstr "_Chiudi"
 
 # GNOME-2-24
+# mantenere in sync con libwnck
+#
 #: ../src/ui/menu.c:203
 #, c-format
 msgid "Workspace %d%n"
 msgstr "Area di lavoro %d%n"
 
+# mantenere in sync con libwnck
 #: ../src/ui/menu.c:213
 #, c-format
 msgid "Workspace 1_0"
 msgstr "Area di lavoro 1_0"
 
+# mantenere in sync con libwnck
 #: ../src/ui/menu.c:215
 #, c-format
 msgid "Workspace %s%d"
