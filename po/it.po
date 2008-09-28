@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity 2.21.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-14 12:33+0200\n"
-"PO-Revision-Date: 2008-07-14 12:33+0200\n"
+"POT-Creation-Date: 2008-09-28 16:23+0200\n"
+"PO-Revision-Date: 2008-09-28 16:25+0200\n"
 "Last-Translator: Luca Ferretti <elle.uca@libero.it>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
@@ -26,6 +26,10 @@ msgstr "Ambiente grafico"
 #: ../src/50-metacity-key.xml.in.h:1
 msgid "Window Management"
 msgstr "Gestione finestre"
+
+#: ../src/metacity-wm.desktop.in.h:1 ../src/metacity.desktop.in.h:1
+msgid "Metacity"
+msgstr "Metacity"
 
 # GNOME-2-20
 #
@@ -429,7 +433,7 @@ msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
 msgstr "Specificato un WM_TRANSIENT_FOR finestra 0x%lx non valido per %s.\n"
 
 #. first time through
-#: ../src/core/window.c:5648
+#: ../src/core/window.c:5664
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -445,7 +449,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/core/window.c:6213
+#: ../src/core/window.c:6229
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
@@ -483,10 +487,6 @@ msgid ""
 msgstr ""
 "La proprietà %s della finestra 0x%lx contiene UTF-8 non valido per "
 "l'elemento %d nella lista\n"
-
-#: ../src/metacity.desktop.in.h:1
-msgid "Metacity"
-msgstr "Metacity"
 
 #: ../src/metacity.schemas.in.h:1
 msgid "(Not implemented) Navigation works in terms of applications not windows"
@@ -2512,10 +2512,11 @@ msgstr "Arr_otola"
 msgid "_Unroll"
 msgstr "Sr_otola"
 
+# GNOME-2-24
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:80
 msgid "_Move"
-msgstr "_Muovi"
+msgstr "M_uovi"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:82
@@ -2533,10 +2534,11 @@ msgstr "Muovi barra del titolo su _schermo"
 msgid "Always on _Top"
 msgstr "Sempre in _primo piano"
 
+# GNOME-2-24
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:91
 msgid "_Always on Visible Workspace"
-msgstr "S_empre sull'area di lavoro visibile"
+msgstr "Sempre sull'area di lavoro _visibile"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:93
@@ -2585,9 +2587,10 @@ msgstr "Area di lavoro 1_0"
 msgid "Workspace %s%d"
 msgstr "Area di lavoro %s%d"
 
+# GNOME-2-24
 #: ../src/ui/menu.c:395
 msgid "Move to Another _Workspace"
-msgstr "Sposta su altra area di _lavoro"
+msgstr "Sposta su _altra area di lavoro"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the shift key. If the text on this key isn't typically
@@ -2693,9 +2696,10 @@ msgstr ""
 "È possibile scegliere di attendere un po' lasciando che l'applicazioni "
 "continui, oppure forzare la terminazione dell'applicazione."
 
+# GNOME-2-24
 #: ../src/ui/metacity-dialog.c:107
 msgid "_Wait"
-msgstr "A_ttendi"
+msgstr "_Attendi"
 
 #: ../src/ui/metacity-dialog.c:109
 msgid "_Force Quit"
