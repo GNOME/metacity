@@ -8,10 +8,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: metacity trunk\n"
+"Project-Id-Version: metacity gnome-2-24\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-06-16 23:03+0300\n"
-"PO-Revision-Date: 2008-06-16 18:03+0300\n"
+"POT-Creation-Date: 2008-09-29 22:53+0300\n"
+"PO-Revision-Date: 2008-09-29 22:52+0300\n"
 "Last-Translator: Yavor Doganov <yavor@gnu.org>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "MIME-Version: 1.0\n"
@@ -26,6 +26,10 @@ msgstr "Работен плот"
 #: ../src/50-metacity-key.xml.in.h:1
 msgid "Window Management"
 msgstr "Управление на прозорци"
+
+#: ../src/metacity-wm.desktop.in.h:1 ../src/metacity.desktop.in.h:1
+msgid "Metacity"
+msgstr "Metacity"
 
 #: ../src/core/core.c:206
 #, c-format
@@ -131,10 +135,10 @@ msgid ""
 msgstr ""
 "metacity %s\n"
 "Авторски права (C) 2001-2008 Havoc Pennington, Red Hat, Inc., и други\n"
-"Това е свободен софтуер, прегледайте изходния код относно условията за "
-"разпространение.\n"
-"Не получавате НИКАКВА гаранция, дори и ПРЕПОРЪКА или СЪОТВЕТСТВИЕ ЗА КАКВИТО "
-"И ДА Е ЦЕЛИ.\n"
+"Тази програма (metacity) е свободен софтуер, прегледайте изходния код "
+"относно условията за разпространение.\n"
+"Тази програма се разпространява БЕЗ НИКАКВИ ГАРАНЦИИ, дори и за ПРОДАЖБА или "
+"СЪОТВЕТСТВИЕ С КАКВАТО И ДА Е УПОТРЕБА.\n"
 
 #: ../src/core/main.c:242
 msgid "Disable connection to session manager"
@@ -192,26 +196,26 @@ msgstr "Неуспех при рестартиране: %s\n"
 #. * (We know the old value, so we can look up a suitable string in
 #. * the symtab.)
 #.
-#: ../src/core/prefs.c:496 ../src/core/prefs.c:648
+#: ../src/core/prefs.c:502 ../src/core/prefs.c:654
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
 msgstr "Ключът на GConf — „%s“ е с невалидна стойност\n"
 
-#: ../src/core/prefs.c:577 ../src/core/prefs.c:817
+#: ../src/core/prefs.c:583 ../src/core/prefs.c:823
 #, c-format
 msgid "%d stored in GConf key %s is out of range %d to %d\n"
 msgstr ""
 "Стойността %d записана в ключа на GConf — %s е извън обхвата от %d÷%d\n"
 
-#: ../src/core/prefs.c:621 ../src/core/prefs.c:695 ../src/core/prefs.c:743
-#: ../src/core/prefs.c:807 ../src/core/prefs.c:1101 ../src/core/prefs.c:1117
-#: ../src/core/prefs.c:1136 ../src/core/prefs.c:1152 ../src/core/prefs.c:1169
-#: ../src/core/prefs.c:1185
+#: ../src/core/prefs.c:627 ../src/core/prefs.c:701 ../src/core/prefs.c:749
+#: ../src/core/prefs.c:813 ../src/core/prefs.c:1108 ../src/core/prefs.c:1124
+#: ../src/core/prefs.c:1143 ../src/core/prefs.c:1159 ../src/core/prefs.c:1176
+#: ../src/core/prefs.c:1192
 #, c-format
 msgid "GConf key \"%s\" is set to an invalid type\n"
 msgstr "Ключът на GConf — „%s“ е от невалиден вид\n"
 
-#: ../src/core/prefs.c:1255
+#: ../src/core/prefs.c:1262
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -219,14 +223,14 @@ msgstr ""
 "Триковете за развалените програми са изключени. Някои програми могат да са с "
 "неправилно поведение.\n"
 
-#: ../src/core/prefs.c:1325
+#: ../src/core/prefs.c:1332
 #, c-format
 msgid "Could not parse font description \"%s\" from GConf key %s\n"
 msgstr ""
 "Описанието на шрифт „%s“ от ключа на GConf — %s, не може да бъде "
 "анализирано\n"
 
-#: ../src/core/prefs.c:1385
+#: ../src/core/prefs.c:1392
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -235,17 +239,17 @@ msgstr ""
 "„%s“, който е открит в базата от данни с настройките, не е валиден "
 "модификатор на бутон на мишката\n"
 
-#: ../src/core/prefs.c:1799
+#: ../src/core/prefs.c:1809
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr "Грешка при задаване на броя на работни места да е %d: %s\n"
 
-#: ../src/core/prefs.c:2164 ../src/core/prefs.c:2676
+#: ../src/core/prefs.c:2174 ../src/core/prefs.c:2686
 #, c-format
 msgid "Workspace %d"
 msgstr "Работен плот %d"
 
-#: ../src/core/prefs.c:2194 ../src/core/prefs.c:2367
+#: ../src/core/prefs.c:2204 ../src/core/prefs.c:2377
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -254,7 +258,7 @@ msgstr ""
 "Низът „%s“ открит в базата от данни с настройки е невалиден за стойност на "
 "клавишната комбинация „%s“\n"
 
-#: ../src/core/prefs.c:2757
+#: ../src/core/prefs.c:2767
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr "Грешка при задаване на името на работното място %d да е „%s“: %s\n"
@@ -419,7 +423,7 @@ msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
 msgstr "За %2$s е указан неправилен WM_TRANSIENT_FOR, прозорец 0x%1$lx.\n"
 
 #. first time through
-#: ../src/core/window.c:5674
+#: ../src/core/window.c:5664
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -435,7 +439,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/core/window.c:6239
+#: ../src/core/window.c:6229
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
@@ -472,10 +476,6 @@ msgid ""
 msgstr ""
 "Свойството %s на прозореца 0x%lx съдържа невалиден UTF-8 за елемента %d в "
 "списъка\n"
-
-#: ../src/metacity.desktop.in.h:1
-msgid "Metacity"
-msgstr "Metacity"
 
 #: ../src/metacity.schemas.in.h:1
 msgid "(Not implemented) Navigation works in terms of applications not windows"
@@ -3193,157 +3193,157 @@ msgstr "Неуспех при намирането на валиден файл 
 msgid "Theme file %s did not contain a root <metacity_theme> element"
 msgstr "Файлът-тема %s не съдържа коренов <metacity_theme> елемент"
 
-#: ../src/ui/theme-viewer.c:74
+#: ../src/ui/theme-viewer.c:75
 msgid "/_Windows"
 msgstr "/_Прозорци"
 
-#: ../src/ui/theme-viewer.c:75
+#: ../src/ui/theme-viewer.c:76
 msgid "/Windows/tearoff"
 msgstr "/Прозорци/откъсване"
 
-#: ../src/ui/theme-viewer.c:76
+#: ../src/ui/theme-viewer.c:77
 msgid "/Windows/_Dialog"
 msgstr "/Прозорци/_Диалогов"
 
-#: ../src/ui/theme-viewer.c:77
+#: ../src/ui/theme-viewer.c:78
 msgid "/Windows/_Modal dialog"
 msgstr "/Прозорци/_Модален диалогов"
 
-#: ../src/ui/theme-viewer.c:78
+#: ../src/ui/theme-viewer.c:79
 msgid "/Windows/_Utility"
 msgstr "/Прозорци/_Инструмент"
 
-#: ../src/ui/theme-viewer.c:79
+#: ../src/ui/theme-viewer.c:80
 msgid "/Windows/_Splashscreen"
 msgstr "/Прозорци/_Стартиращ екран"
 
-#: ../src/ui/theme-viewer.c:80
+#: ../src/ui/theme-viewer.c:81
 msgid "/Windows/_Top dock"
 msgstr "/Прозорци/_Горен док"
 
-#: ../src/ui/theme-viewer.c:81
+#: ../src/ui/theme-viewer.c:82
 msgid "/Windows/_Bottom dock"
 msgstr "/Прозорци/_Долен док"
 
-#: ../src/ui/theme-viewer.c:82
+#: ../src/ui/theme-viewer.c:83
 msgid "/Windows/_Left dock"
 msgstr "/Прозорци/_Ляв док"
 
-#: ../src/ui/theme-viewer.c:83
+#: ../src/ui/theme-viewer.c:84
 msgid "/Windows/_Right dock"
 msgstr "/Прозорци/_Десен док"
 
-#: ../src/ui/theme-viewer.c:84
+#: ../src/ui/theme-viewer.c:85
 msgid "/Windows/_All docks"
 msgstr "/Прозорци/_Всички докове"
 
-#: ../src/ui/theme-viewer.c:85
+#: ../src/ui/theme-viewer.c:86
 msgid "/Windows/Des_ktop"
 msgstr "/Прозорци/Работен _плот"
 
-#: ../src/ui/theme-viewer.c:134
+#: ../src/ui/theme-viewer.c:135
 msgid "Open another one of these windows"
 msgstr "Отваряне на някой друг от тези прозорци"
 
-#: ../src/ui/theme-viewer.c:141
+#: ../src/ui/theme-viewer.c:142
 msgid "This is a demo button with an 'open' icon"
 msgstr "Това е демонстрационен бутон с икона „отваряне“"
 
-#: ../src/ui/theme-viewer.c:148
+#: ../src/ui/theme-viewer.c:149
 msgid "This is a demo button with a 'quit' icon"
 msgstr "Това е демо бутон с икона „изход“"
 
-#: ../src/ui/theme-viewer.c:241
+#: ../src/ui/theme-viewer.c:242
 msgid "This is a sample message in a sample dialog"
 msgstr "Това е примерно съобщение в примерен диалогов прозорец"
 
-#: ../src/ui/theme-viewer.c:324
+#: ../src/ui/theme-viewer.c:325
 #, c-format
 msgid "Fake menu item %d\n"
 msgstr "Фалшив обект на менюто %d\n"
 
-#: ../src/ui/theme-viewer.c:358
+#: ../src/ui/theme-viewer.c:359
 msgid "Border-only window"
 msgstr "Прозорец само с граници"
 
-#: ../src/ui/theme-viewer.c:360
+#: ../src/ui/theme-viewer.c:361
 msgid "Bar"
 msgstr "Лента"
 
-#: ../src/ui/theme-viewer.c:377
+#: ../src/ui/theme-viewer.c:378
 msgid "Normal Application Window"
 msgstr "Нормален прозорец на програма"
 
-#: ../src/ui/theme-viewer.c:381
+#: ../src/ui/theme-viewer.c:382
 msgid "Dialog Box"
 msgstr "Диалогова кутия"
 
-#: ../src/ui/theme-viewer.c:385
+#: ../src/ui/theme-viewer.c:386
 msgid "Modal Dialog Box"
 msgstr "Модална диалогова кутия"
 
-#: ../src/ui/theme-viewer.c:389
+#: ../src/ui/theme-viewer.c:390
 msgid "Utility Palette"
 msgstr "Палитра на инструментите"
 
-#: ../src/ui/theme-viewer.c:393
+#: ../src/ui/theme-viewer.c:394
 msgid "Torn-off Menu"
 msgstr "Откъсване на менюто"
 
-#: ../src/ui/theme-viewer.c:397
+#: ../src/ui/theme-viewer.c:398
 msgid "Border"
 msgstr "Граница"
 
-#: ../src/ui/theme-viewer.c:725
+#: ../src/ui/theme-viewer.c:726
 #, c-format
 msgid "Button layout test %d"
 msgstr "Тест за подредбата на бутоните %d"
 
-#: ../src/ui/theme-viewer.c:754
+#: ../src/ui/theme-viewer.c:755
 #, c-format
 msgid "%g milliseconds to draw one window frame"
 msgstr "%g милисекунди за да изрисува една прозоречна рамка"
 
-#: ../src/ui/theme-viewer.c:797
+#: ../src/ui/theme-viewer.c:798
 #, c-format
 msgid "Usage: metacity-theme-viewer [THEMENAME]\n"
 msgstr "Употреба: metacity-theme-viewer [ИМЕНАТЕМАТА]\n"
 
-#: ../src/ui/theme-viewer.c:804
+#: ../src/ui/theme-viewer.c:805
 #, c-format
 msgid "Error loading theme: %s\n"
 msgstr "Грешка при зареждането на темата: %s\n"
 
-#: ../src/ui/theme-viewer.c:810
+#: ../src/ui/theme-viewer.c:811
 #, c-format
 msgid "Loaded theme \"%s\" in %g seconds\n"
 msgstr "Темата „%s“ е заредена за %g секунди\n"
 
-#: ../src/ui/theme-viewer.c:833
+#: ../src/ui/theme-viewer.c:852
 msgid "Normal Title Font"
 msgstr "Нормален шрифт на заглавието"
 
-#: ../src/ui/theme-viewer.c:839
+#: ../src/ui/theme-viewer.c:858
 msgid "Small Title Font"
 msgstr "Малък шрифт на заглавието"
 
-#: ../src/ui/theme-viewer.c:845
+#: ../src/ui/theme-viewer.c:864
 msgid "Large Title Font"
 msgstr "Голям шрифт на заглавието"
 
-#: ../src/ui/theme-viewer.c:850
+#: ../src/ui/theme-viewer.c:869
 msgid "Button Layouts"
 msgstr "Изглед на бутоните"
 
-#: ../src/ui/theme-viewer.c:855
+#: ../src/ui/theme-viewer.c:874
 msgid "Benchmark"
 msgstr "Статистика"
 
-#: ../src/ui/theme-viewer.c:902
+#: ../src/ui/theme-viewer.c:921
 msgid "Window Title Goes Here"
 msgstr "Тук се поставя заглавието на прозорците"
 
-#: ../src/ui/theme-viewer.c:1006
+#: ../src/ui/theme-viewer.c:1025
 #, c-format
 msgid ""
 "Drew %d frames in %g client-side seconds (%g milliseconds per frame) and %g "
@@ -3354,43 +3354,43 @@ msgstr ""
 "на кадър) и %g секунди нормално време, което включва ресурси от страна на "
 "сървъра X (по %g милисекунди на кадър)\n"
 
-#: ../src/ui/theme-viewer.c:1225
+#: ../src/ui/theme-viewer.c:1244
 msgid "position expression test returned TRUE but set error"
 msgstr ""
 "изразът за проверка на разположението върна TRUE, но зададе състояние за "
 "грешка"
 
-#: ../src/ui/theme-viewer.c:1227
+#: ../src/ui/theme-viewer.c:1246
 msgid "position expression test returned FALSE but didn't set error"
 msgstr ""
 "изразът за проверка на разположението върна FALSE, но не зададе състояние за "
 "грешка"
 
-#: ../src/ui/theme-viewer.c:1231
+#: ../src/ui/theme-viewer.c:1250
 msgid "Error was expected but none given"
 msgstr "Очакваше се грешка, но не беше дадена никаква"
 
-#: ../src/ui/theme-viewer.c:1233
+#: ../src/ui/theme-viewer.c:1252
 #, c-format
 msgid "Error %d was expected but %d given"
 msgstr "Очакваше се грешка %d, но беше дадена %d"
 
-#: ../src/ui/theme-viewer.c:1239
+#: ../src/ui/theme-viewer.c:1258
 #, c-format
 msgid "Error not expected but one was returned: %s"
 msgstr "Не се очакваше грешка, но беше върната една: %s"
 
-#: ../src/ui/theme-viewer.c:1243
+#: ../src/ui/theme-viewer.c:1262
 #, c-format
 msgid "x value was %d, %d was expected"
 msgstr "стойността на x бе %d, а се очакваше %d"
 
-#: ../src/ui/theme-viewer.c:1246
+#: ../src/ui/theme-viewer.c:1265
 #, c-format
 msgid "y value was %d, %d was expected"
 msgstr "стойността y бе %d, а се очакваше %d"
 
-#: ../src/ui/theme-viewer.c:1311
+#: ../src/ui/theme-viewer.c:1330
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr "%d координатен израз обработен за %g секунди (%g секунди средно)\n"
