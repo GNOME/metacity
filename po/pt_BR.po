@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-25 02:12+0000\n"
+"POT-Creation-Date: 2008-09-14 14:42+0000\n"
 "PO-Revision-Date: 2008-09-13 23:32-0300\n"
 "Last-Translator: Djavan Fagundes <dnoway@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-l10n-br@listas.cipsga.org.br>\n"
@@ -31,6 +31,10 @@ msgstr "Área de trabalho"
 #: ../src/50-metacity-key.xml.in.h:1
 msgid "Window Management"
 msgstr "Gerenciador de janelas"
+
+#: ../src/metacity-wm.desktop.in.h:1 ../src/metacity.desktop.in.h:1
+msgid "Metacity"
+msgstr "Metacity"
 
 #: ../src/core/core.c:206
 #, c-format
@@ -77,7 +81,7 @@ msgstr "Falha ao obter o nome da máquina: %s\n"
 #: ../src/core/display.c:256
 #, c-format
 msgid "Missing %s extension required for compositing"
-msgstr "Extensão %s necessária para composição não encontrada"
+msgstr "Extensão %s necessária para composição em falta"
 
 #: ../src/core/display.c:334
 #, c-format
@@ -180,7 +184,7 @@ msgstr "Falha ao varrer a pasta de temas: %s\n"
 msgid ""
 "Could not find a theme! Be sure %s exists and contains the usual themes.\n"
 msgstr ""
-"Nenhum tema encontrado! Verifique se %s existe e contém os temas comuns.\n"
+"Não foi possível localizar um tema! Verifique se %s existe e contém os temas comuns.\n"
 
 #: ../src/core/main.c:500
 #, c-format
@@ -421,7 +425,7 @@ msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
 msgstr "Janela WM_TRANSIENT_FOR inválida 0x%lx especificada para %s.\n"
 
 #. first time through
-#: ../src/core/window.c:5648
+#: ../src/core/window.c:5664
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -437,7 +441,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/core/window.c:6213
+#: ../src/core/window.c:6229
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
@@ -475,10 +479,6 @@ msgid ""
 msgstr ""
 "A propriedade %s na janela 0x%lx continha UTF-8 inválido para o item %d da "
 "lista\n"
-
-#: ../src/metacity.desktop.in.h:1
-msgid "Metacity"
-msgstr "Metacity"
 
 #: ../src/metacity.schemas.in.h:1
 msgid "(Not implemented) Navigation works in terms of applications not windows"
