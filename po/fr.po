@@ -1,5 +1,5 @@
 # French translation of metacity.
-# Copyright (C) 2002-2006 Free Software Foundation, Inc.
+# Copyright (C) 2002-2008 Free Software Foundation, Inc.
 # This file is distributed under the same license as the metacity package.
 #
 # Christophe Fergeau <teuf@users.sourceforge.net>, 2002.
@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: metacity gnome-2-24\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-09-06 11:19+0200\n"
-"PO-Revision-Date: 2008-09-06 11:36+0200\n"
+"PO-Revision-Date: 2008-10-11 22:46+0200\n"
 "Last-Translator: Claude Paroz <claude@2xlibre.net>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
@@ -712,7 +712,7 @@ msgstr "Maximiser la fenêtre verticalement"
 
 #: ../src/metacity.schemas.in.h:32
 msgid "Minimize window"
-msgstr "Minimiser la fenêtre"
+msgstr "Réduire la fenêtre"
 
 #: ../src/metacity.schemas.in.h:33
 msgid "Modifier to use for modified window click actions"
@@ -1422,7 +1422,7 @@ msgid ""
 "Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
 "\"disabled\", then there will be no keybinding for this action."
 msgstr ""
-"La combinaison de touches utilisée pour minimiser une fenêtre. Le format "
+"La combinaison de touches utilisée pour réduire une fenêtre. Le format "
 "ressemble à ceci : « &lt;Control&gt;a » ou « &lt;Shift&gt;&lt;Alt&gt;F1 ». "
 "L'analyseur est assez souple et permet d'utiliser des majuscules ou des "
 "minuscules et des abréviations telles que « &lt;Ctl&gt; » et « &lt;Ctrl&gt; ». "
@@ -2462,7 +2462,7 @@ msgstr ""
 
 #: ../src/metacity.schemas.in.h:197
 msgid "Unmaximize window"
-msgstr "Annuler la maximisation de la fenêtre"
+msgstr "Restaurer la fenêtre"
 
 #: ../src/metacity.schemas.in.h:198
 msgid "Use standard system font in window titles"
@@ -2496,7 +2496,7 @@ msgstr "Menu Fenêtre"
 
 #: ../src/ui/frames.c:1083
 msgid "Minimize Window"
-msgstr "Minimiser la fenêtre"
+msgstr "Réduire la fenêtre"
 
 #: ../src/ui/frames.c:1086
 msgid "Maximize Window"
@@ -2504,7 +2504,7 @@ msgstr "Maximiser la fenêtre"
 
 #: ../src/ui/frames.c:1089
 msgid "Unmaximize Window"
-msgstr "Démaximiser la fenêtre"
+msgstr "Restaurer la fenêtre"
 
 #: ../src/ui/frames.c:1092
 msgid "Roll Up Window"
@@ -2533,7 +2533,7 @@ msgstr "Mettre la fenêtre sur un seul espace de travail"
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:70
 msgid "Mi_nimize"
-msgstr "Mi_nimiser"
+msgstr "Réd_uire"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:72
@@ -2543,7 +2543,7 @@ msgstr "Ma_ximiser"
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:74
 msgid "Unma_ximize"
-msgstr "Déma_ximiser"
+msgstr "R_estaurer"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:76
