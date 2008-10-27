@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-14 14:42+0000\n"
+"POT-Creation-Date: 2008-10-27 12:07-0400\n"
 "PO-Revision-Date: 2008-09-13 23:32-0300\n"
 "Last-Translator: Djavan Fagundes <dnoway@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-l10n-br@listas.cipsga.org.br>\n"
@@ -184,7 +184,8 @@ msgstr "Falha ao varrer a pasta de temas: %s\n"
 msgid ""
 "Could not find a theme! Be sure %s exists and contains the usual themes.\n"
 msgstr ""
-"Não foi possível localizar um tema! Verifique se %s existe e contém os temas comuns.\n"
+"Não foi possível localizar um tema! Verifique se %s existe e contém os temas "
+"comuns.\n"
 
 #: ../src/core/main.c:500
 #, c-format
@@ -2524,22 +2525,22 @@ msgstr "_Apenas neste espaço de trabalho"
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:95
 msgid "Move to Workspace _Left"
-msgstr "Mover para espaço de trabalho _esquerda"
+msgstr "Mover para o espaço de trabalho á _esquerda"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:97
 msgid "Move to Workspace R_ight"
-msgstr "Mover para Espaço de Trabalho D_ireita"
+msgstr "Mover para o espaço de trabalho à d_ireita"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:99
 msgid "Move to Workspace _Up"
-msgstr "Mover para espaço de trabalho _acima"
+msgstr "Mover para o espaço de trabalho _acima"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:101
 msgid "Move to Workspace _Down"
-msgstr "Mover para Espaço de Trabalho A_baixo"
+msgstr "Mover para o espaço de trabalho a_baixo"
 
 #. separator
 #. Translators: Translate this string the same way as you do in libwnck!
