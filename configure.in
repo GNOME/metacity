@@ -158,6 +158,11 @@ AC_ARG_ENABLE(shape,
                  [disable metacity's use of the shaped window extension]),,
   enable_shape=auto)
 
+AC_ARG_ENABLE(veracity,
+  AC_HELP_STRING([--enable-veracity],
+                 [enable metacity test suite]),,
+  enable_veracity=auto)
+
 ## try definining HAVE_BACKTRACE
 AC_CHECK_HEADERS(execinfo.h, [AC_CHECK_FUNCS(backtrace)])
 
@@ -239,6 +244,15 @@ if test x$have_xcomposite = xyes; then
 else
   echo "Building without compositing manager"
 fi
+
+if test x$enable_veracity = xyes; then
+  METACITY_PC_MODULES="$METACITY_PC_MODULES guile-1.8"
+  echo "Building test suite"
+  use_veracity=yes
+else
+  use_veracity=no
+fi
+AM_CONDITIONAL(BUILD_TESTS, test x$build_tests = xyes)
 
 ## if no compositor, still possibly enable render
 if test x$have_xcomposite = xno; then
@@ -501,7 +515,10 @@ src/wm-tester/Makefile
 src/libmetacity-private.pc
 src/tools/Makefile
 src/themes/Makefile
+$veracity_makefile
 po/Makefile.in
+test/Makefile
+test/veracity/Makefile
 ])
 
 AC_OUTPUT
@@ -540,6 +557,8 @@ metacity-$VERSION:
 	Xsync:                    ${found_xsync}
 	Render:                   ${have_xrender}
 	Xcursor:                  ${have_xcursor}
+
+        Build test suite:         ${use_veracity}
 "
 
 METACITY_MINOR_VERSION=metacity_minor_version

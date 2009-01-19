@@ -1,5 +1,5 @@
 
-SUBDIRS=src po doc
+SUBDIRS=src po doc test
 
 EXTRA_DIST = HACKING MAINTAINERS rationales.txt \
 	intltool-extract.in intltool-merge.in intltool-update.in
