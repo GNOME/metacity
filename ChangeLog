@@ -1,5 +1,11 @@
 2009-01-21  Thomas Thurman  <tthurman@gnome.org>
 
+        fix up Makefile.am a little.
+
+	* test/veracity/Makefile.am:
+
+2009-01-21  Thomas Thurman  <tthurman@gnome.org>
+
         and again
 
 	* test/Makefile.am:
