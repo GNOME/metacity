@@ -1,3 +1,22 @@
+2009-01-21  Thomas Thurman  <tthurman@gnome.org>
+
+        added bones of Veracity test suite
+
+	* test/veracity/Makefile.am:
+	* test/veracity/TODO:
+	* test/veracity/unit/reparent.js:
+	* test/veracity/unit/reparent.scm:
+	* test/veracity/veracity.c:
+	* test/veracity (added):
+	* test/veracity/unit (added):
+	* test/veracity/unit/reparent.scm (added):
+	* test/veracity/unit/reparent.js (added):
+	* test/veracity/build (added):
+	* test/veracity/stress (added):
+	* test/veracity/TODO (added):
+	* test/veracity/veracity.c (added):
+	* test/veracity/Makefile.am (added):
+
 2009-01-10  Thomas Thurman  <tthurman@gnome.org>
 
 	* src/ui/theme.[ch]: add meta_theme_draw_frame_by_name, which

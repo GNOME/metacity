@@ -1,0 +1,6 @@
+Replace gconf_test with actual gconf setting code.  Check types.
+Command-line switches.
+Iterate over all in directory unless one was specified.
+Pick display number sensibly.
+Implement (listen) to call its argument with every X event until it returns false.
+Wrap call to Xephyr with Xvfb (except if they specify -V).
