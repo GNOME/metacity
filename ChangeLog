@@ -1,5 +1,12 @@
 2009-01-21  Thomas Thurman  <tthurman@gnome.org>
 
+        and again
+
+	* test/Makefile.am:
+	* test/Makefile.am (added):
+
+2009-01-21  Thomas Thurman  <tthurman@gnome.org>
+
         added bones of Veracity test suite
 
 	* test/veracity/Makefile.am:
