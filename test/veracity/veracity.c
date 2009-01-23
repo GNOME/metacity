@@ -30,6 +30,8 @@
 #include <strings.h>
 #include <stdlib.h>
 #include <gconf/gconf.h>
+#include <glib.h>
+#include <gtk/gtk.h>
 
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
@@ -147,8 +149,8 @@ gconf_test (char *test)
 static void
 die (const char *reason)
 {
-  fprintf (stderr, "Fatal error: %s\n", reason);
-  exit (255);
+  g_error ("Fatal error: %s\n", reason);
+  exit (EXIT_FAILURE);
 }
 
 static void
@@ -160,9 +162,7 @@ start_dbus_daemon ()
   ssize_t size;
 
   if (pipe (pipes)==-1)
-    {
-      die ("Can't create pipes to talk to dbus");
-    }
+    die ("Can't create pipes to talk to dbus");
 
   if (!(dbus_daemon = fork()))
     {
@@ -292,16 +292,43 @@ finish ()
   XCloseDisplay (current_display);
 }
 
+gboolean list = FALSE;
+gboolean naked = FALSE;
+
+static GOptionEntry entries[] =
+  {
+    { "list-tests", 'l', 0, G_OPTION_ARG_NONE, &list, "List all available tests", NULL },
+    { "naked", 'n', 0, G_OPTION_ARG_NONE, &naked, "Don't hide the X server when it runs", NULL },
+    { NULL }
+  };
+
 int
 main (int argc, char *argv[])
 {
-  start ();
+  GError *error = NULL;
+  GOptionContext *context = g_option_context_new ("- test metacity");
 
-  run_test ("001-reparent.scm");
+  g_option_context_add_main_entries (context, entries, /*GETTEXT_PACKAGE*/"veracity");
+  g_option_context_add_group (context, gtk_get_option_group (TRUE));
+  if (!g_option_context_parse (context, &argc, &argv, &error))
+    die (error->message);
 
-  finish ();
+  if (list)
+    {
+      die ("List mode not implemented.");
+    }
+  else
+    {
+      start ();
 
-  /* I'm making a note here: HUGE SUCCESS. */
-  exit(EXIT_SUCCESS);
+      run_test ("unit/reparent.scm");
+
+      finish ();
+
+      /* I'm making a note here: HUGE SUCCESS. */
+      exit(EXIT_SUCCESS);
+    }
+
+  exit(EXIT_FAILURE);
 }
 
