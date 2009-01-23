@@ -252,7 +252,7 @@ if test x$enable_veracity = xyes; then
 else
   use_veracity=no
 fi
-AM_CONDITIONAL(BUILD_TESTS, test x$build_tests = xyes)
+AM_CONDITIONAL(BUILD_TESTS, test x$enable_veracity = xyes)
 
 ## if no compositor, still possibly enable render
 if test x$have_xcomposite = xno; then

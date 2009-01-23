@@ -18,11 +18,18 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
  * 02111-1307, USA.
  */
+
+#define _SVID_SOURCE
+#define _POSIX_C_SOURCE 200112L
+
 #include <stdio.h>
 #include <libguile.h>
 #include <guile/gh.h>
 #include <sys/types.h>
 #include <signal.h>
+#include <strings.h>
+#include <stdlib.h>
+#include <gconf/gconf.h>
 
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
@@ -30,7 +37,7 @@
 #include <X11/Intrinsic.h>
 #include <X11/StringDefs.h>
 
-#include <gconf/gconf.h>
+#include <gconf/gconf-client.h>
 
 int x_server = 0; /* PID of the tame X server */
 int window_manager = 0; /* PID of the window manager */
@@ -40,6 +47,10 @@ int gconf_daemon = 0;
 Display *current_display = NULL;
 
 gboolean verbose = FALSE;
+
+SCM make_window(void);
+SCM parent(SCM raw_window);
+SCM make_window(void);
 
 SCM
 make_window()
@@ -68,8 +79,6 @@ SCM
 parent(SCM raw_window)
 {
   Window window = gh_scm2int (raw_window);
-  Display *display;
-  Window w;
   Window root_return;
   Window parent_return;
   Window *children_return;
@@ -103,6 +112,7 @@ start_wm ()
   /* have to wait a moment here while metacity starts up */
   sleep(2);
 
+  return SCM_BOOL(1);
 }
 
 static SCM
@@ -112,6 +122,10 @@ key_event ()
    * Based around some public domain code by Adam Pierce
    * http://www.doctort.org/adam/nerd-notes/x11-fake-keypress-event.html
    */
+
+  /* FIXME */
+
+  return SCM_BOOL(1);
 }
 
 static void
@@ -131,15 +145,24 @@ gconf_test (char *test)
 }
 
 static void
+die (const char *reason)
+{
+  fprintf (stderr, "Fatal error: %s\n", reason);
+  exit (255);
+}
+
+static void
 start_dbus_daemon ()
 {
-  FILE *dbus_input;
   int pipes[2];
   char text[10240];
   char *cursor = text;
   ssize_t size;
 
-  pipe (pipes);
+  if (pipe (pipes)==-1)
+    {
+      die ("Can't create pipes to talk to dbus");
+    }
 
   if (!(dbus_daemon = fork()))
     {
@@ -177,7 +200,7 @@ start_gconf_daemon ()
   gconf_test ("Atlanta");
 }
 
-void
+static void
 start_x_server ()
 {
   /* FIXME: Pick a sane number automagically */
@@ -217,7 +240,7 @@ start_guile ()
   scm_c_define_gsubr("parent", 1, 0, 0, parent);
   scm_c_define_gsubr("start-wm", 0, 0, 0, start_wm);
   scm_c_define_gsubr("key-event", 2, 0, 0, key_event);
-  scm_c_define_gsubr("gconf-set!", 2, 0, 0, gconf_set);
+  /* scm_c_define_gsubr("gconf-set!", 2, 0, 0, gconf_set); */
 }
 
 static void
@@ -238,14 +261,14 @@ run_test (char *name)
   printf("%20s: ", name);
   fflush(stdout);
 
-  // Load the scheme function definitions
+  /* Load the scheme function definitions */
   scm_c_primitive_load (name);
 
   SCM result = scm_c_eval_string("(test)");
 
   if (scm_is_string (result))
     {
-      int length;
+      unsigned int length;
       char *raw_text = gh_scm2newstr (result, &length);
       printf ("FAIL (%s)\n", raw_text);
       free (raw_text);

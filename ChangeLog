@@ -1,3 +1,12 @@
+2009-01-22  Thomas Thurman  <tthurman@gnome.org>
+
+        Fix autotools thanks to Andreas Dalsgaard;
+        fix veracity.c to let it compile under our setup.
+
+	* configure.in:
+	* test/veracity/Makefile.am:
+	* test/veracity/veracity.c:
+
 2009-01-21  Thomas Thurman  <tthurman@gnome.org>
 
         fix up Makefile.am a little.

@@ -2,14 +2,10 @@ if BUILD_TESTS
 
 @INTLTOOL_DESKTOP_RULE@
 
-#INCLUDES=@METACITY_WINDOW_DEMO_CFLAGS@ @METACITY_MESSAGE_CFLAGS@ \
-#	-DMETACITY_ICON_DIR=\"$(pkgdatadir)/icons\" \
-#	-DMETACITY_LOCALEDIR=\"$(prefix)/@DATADIRNAME@/locale\"
+INCLUDES=@METACITY_CFLAGS@
 
 veracity_SOURCES= 				\
 	veracity.c
-
-bin_PROGRAMS=veracity
 
 ## don't install the test suite
 noinst_PROGRAMS=veracity
