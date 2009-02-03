@@ -1,5 +1,14 @@
 2009-02-02  Thomas Thurman  <tthurman@gnome.org>
 
+        and the actual parsing code!
+
+	* src/ui/rpn.c:
+	* src/ui/rpn.h:
+	* src/ui/rpn.c (added):
+	* src/ui/rpn.h (added):
+
+2009-02-02  Thomas Thurman  <tthurman@gnome.org>
+
         Basic work for a possible RPN-based parser which is
         (slightly) faster and (hopefully) clearer than the
         existing one; uses GScanner for tokenising; works
