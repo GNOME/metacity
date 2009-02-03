@@ -96,6 +96,8 @@ metacity_SOURCES= 				\
 	ui/theme.h				\
 	ui/themewidget.c			\
 	ui/themewidget.h			\
+	ui/rpn.c				\
+	ui/rpn.h				\
 	ui/ui.c					\
 	include/all-keybindings.h
 
@@ -114,6 +116,8 @@ libmetacity_private_la_SOURCES=			\
 	ui/preview-widget.h			\
 	ui/theme-parser.c			\
 	ui/theme-parser.h			\
+	ui/rpn.c				\
+	ui/rpn.h				\
 	ui/theme.c				\
 	ui/theme.h
 

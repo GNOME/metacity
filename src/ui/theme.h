@@ -42,6 +42,7 @@ typedef struct _MetaFrameGeometry MetaFrameGeometry;
 typedef struct _MetaTheme MetaTheme;
 typedef struct _MetaPositionExprEnv MetaPositionExprEnv;
 typedef struct _MetaDrawInfo MetaDrawInfo;
+typedef enum MetaToken MetaToken;
 
 #define META_THEME_ERROR (g_quark_from_static_string ("meta-theme-error"))
 
@@ -330,87 +331,6 @@ typedef enum
   META_DRAW_TILE
 } MetaDrawType;
 
-typedef enum
-{
-  POS_TOKEN_INT,
-  POS_TOKEN_DOUBLE,
-  POS_TOKEN_OPERATOR,
-  POS_TOKEN_VARIABLE,
-  POS_TOKEN_OPEN_PAREN,
-  POS_TOKEN_CLOSE_PAREN
-} PosTokenType;
-
-typedef enum
-{
-  POS_OP_NONE,
-  POS_OP_ADD,
-  POS_OP_SUBTRACT,
-  POS_OP_MULTIPLY,
-  POS_OP_DIVIDE,
-  POS_OP_MOD,
-  POS_OP_MAX,
-  POS_OP_MIN
-} PosOperatorType;
-
-/**
- * A token, as output by the tokeniser.
- *
- * \ingroup tokenizer
- */
-typedef struct
-{
-  PosTokenType type;
-
-  union
-  {
-    struct {
-      int val;
-    } i;
-
-    struct {
-      double val;
-    } d;
-
-    struct {
-      PosOperatorType op;
-    } o;
-
-    struct {
-      char *name;
-      GQuark name_quark;
-    } v;
-
-  } d;
-} PosToken;
-
-/**
- * A computed expression in our simple vector drawing language.
- * While it appears to take the form of a tree, this is actually
- * merely a list; concerns such as precedence of operators are
- * currently recomputed on every recalculation.
- *
- * Created by meta_draw_spec_new(), destroyed by meta_draw_spec_free().
- * pos_eval() fills this with ...FIXME. Are tokens a tree or a list?
- * \ingroup parser
- */
-typedef struct _MetaDrawSpec
-{
-  /**
-   * If this spec is constant, this is the value of the constant;
-   * otherwise it is zero.
-   */
-  int value;
-  
-  /** A list of tokens in the expression. */
-  PosToken *tokens;
-
-  /** How many tokens are in the tokens list. */
-  int n_tokens;
-
-  /** Does the expression contain any variables? */
-  gboolean constant : 1;
-} MetaDrawSpec;
-
 /**
  * A single drawing operation in our simple vector drawing language.
  */
@@ -426,65 +346,65 @@ struct _MetaDrawOp
       int dash_on_length;
       int dash_off_length;
       int width;
-      MetaDrawSpec *x1;
-      MetaDrawSpec *y1;
-      MetaDrawSpec *x2;
-      MetaDrawSpec *y2;
+      MetaToken *x1;
+      MetaToken *y1;
+      MetaToken *x2;
+      MetaToken *y2;
     } line;
 
     struct {
       MetaColorSpec *color_spec;
       gboolean filled;
-      MetaDrawSpec *x;
-      MetaDrawSpec *y;
-      MetaDrawSpec *width;
-      MetaDrawSpec *height;
+      MetaToken *x;
+      MetaToken *y;
+      MetaToken *width;
+      MetaToken *height;
     } rectangle;
 
     struct {
       MetaColorSpec *color_spec;
       gboolean filled;
-      MetaDrawSpec *x;
-      MetaDrawSpec *y;
-      MetaDrawSpec *width;
-      MetaDrawSpec *height;
+      MetaToken *x;
+      MetaToken *y;
+      MetaToken *width;
+      MetaToken *height;
       double start_angle;
       double extent_angle;
     } arc;
 
     struct {
-      MetaDrawSpec *x;
-      MetaDrawSpec *y;
-      MetaDrawSpec *width;
-      MetaDrawSpec *height;
+      MetaToken *x;
+      MetaToken *y;
+      MetaToken *width;
+      MetaToken *height;
     } clip;
     
     struct {
       MetaColorSpec *color_spec;
       MetaAlphaGradientSpec *alpha_spec;
-      MetaDrawSpec *x;
-      MetaDrawSpec *y;
-      MetaDrawSpec *width;
-      MetaDrawSpec *height;
+      MetaToken *x;
+      MetaToken *y;
+      MetaToken *width;
+      MetaToken *height;
     } tint;
 
     struct {
       MetaGradientSpec *gradient_spec;
       MetaAlphaGradientSpec *alpha_spec;
-      MetaDrawSpec *x;
-      MetaDrawSpec *y;
-      MetaDrawSpec *width;
-      MetaDrawSpec *height;
+      MetaToken *x;
+      MetaToken *y;
+      MetaToken *width;
+      MetaToken *height;
     } gradient;
 
     struct {
       MetaColorSpec *colorize_spec;
       MetaAlphaGradientSpec *alpha_spec;
       GdkPixbuf *pixbuf;
-      MetaDrawSpec *x;
-      MetaDrawSpec *y;
-      MetaDrawSpec *width;
-      MetaDrawSpec *height;
+      MetaToken *x;
+      MetaToken *y;
+      MetaToken *width;
+      MetaToken *height;
 
       guint32 colorize_cache_pixel;
       GdkPixbuf *colorize_cache_pixbuf;
@@ -499,61 +419,61 @@ struct _MetaDrawOp
       GtkArrowType arrow;
       gboolean filled;
 
-      MetaDrawSpec *x;
-      MetaDrawSpec *y;
-      MetaDrawSpec *width;
-      MetaDrawSpec *height;
+      MetaToken *x;
+      MetaToken *y;
+      MetaToken *width;
+      MetaToken *height;
     } gtk_arrow;
 
     struct {
       GtkStateType state;
       GtkShadowType shadow;
-      MetaDrawSpec *x;
-      MetaDrawSpec *y;
-      MetaDrawSpec *width;
-      MetaDrawSpec *height;
+      MetaToken *x;
+      MetaToken *y;
+      MetaToken *width;
+      MetaToken *height;
     } gtk_box;
 
     struct {
       GtkStateType state;
-      MetaDrawSpec *x;
-      MetaDrawSpec *y1;
-      MetaDrawSpec *y2;  
+      MetaToken *x;
+      MetaToken *y1;
+      MetaToken *y2;  
     } gtk_vline;
 
     struct {
       MetaAlphaGradientSpec *alpha_spec;
-      MetaDrawSpec *x;
-      MetaDrawSpec *y;
-      MetaDrawSpec *width;
-      MetaDrawSpec *height;
+      MetaToken *x;
+      MetaToken *y;
+      MetaToken *width;
+      MetaToken *height;
       MetaImageFillType fill_type;
     } icon;
 
     struct {
       MetaColorSpec *color_spec;
-      MetaDrawSpec *x;
-      MetaDrawSpec *y;
+      MetaToken *x;
+      MetaToken *y;
     } title;
 
     struct {
       MetaDrawOpList *op_list;
-      MetaDrawSpec *x;
-      MetaDrawSpec *y;
-      MetaDrawSpec *width;
-      MetaDrawSpec *height;
+      MetaToken *x;
+      MetaToken *y;
+      MetaToken *width;
+      MetaToken *height;
     } op_list;
 
     struct {
       MetaDrawOpList *op_list;
-      MetaDrawSpec *x;
-      MetaDrawSpec *y;
-      MetaDrawSpec *width;
-      MetaDrawSpec *height;
-      MetaDrawSpec *tile_xoffset;
-      MetaDrawSpec *tile_yoffset;
-      MetaDrawSpec *tile_width;
-      MetaDrawSpec *tile_height;
+      MetaToken *x;
+      MetaToken *y;
+      MetaToken *width;
+      MetaToken *height;
+      MetaToken *tile_xoffset;
+      MetaToken *tile_yoffset;
+      MetaToken *tile_width;
+      MetaToken *tile_height;
     } tile;
     
   } data;
@@ -865,20 +785,19 @@ void             meta_frame_layout_calc_geometry (const MetaFrameLayout  *layout
 gboolean         meta_frame_layout_validate      (const MetaFrameLayout *layout,
                                                   GError               **error);
 
-gboolean meta_parse_position_expression (MetaDrawSpec               *spec,
+gboolean meta_parse_position_expression (MetaToken               *spec,
                                          const MetaPositionExprEnv  *env,
                                          int                        *x_return,
                                          int                        *y_return,
                                          GError                    **err);
-gboolean meta_parse_size_expression     (MetaDrawSpec               *spec,
+gboolean meta_parse_size_expression     (MetaToken               *spec,
                                          const MetaPositionExprEnv  *env,
                                          int                        *val_return,
                                          GError                    **err);
 
-MetaDrawSpec* meta_draw_spec_new (MetaTheme  *theme,
+MetaToken* meta_draw_spec_new (MetaTheme  *theme,
                                   const char *expr,
                                   GError    **error);
-void          meta_draw_spec_free (MetaDrawSpec *spec);
 
 MetaColorSpec* meta_color_spec_new             (MetaColorSpecType  type);
 MetaColorSpec* meta_color_spec_new_from_string (const char        *str,
@@ -1128,10 +1047,12 @@ gboolean meta_theme_lookup_color_constant (MetaTheme   *theme,
                                            const char  *name,
                                            char       **value);
 
+#if 0
 gboolean     meta_theme_replace_constants     (MetaTheme    *theme,
                                                PosToken     *tokens,
                                                int           n_tokens,
                                                GError      **err);
+#endif
 
 /* random stuff */
 

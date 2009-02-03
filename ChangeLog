@@ -1,3 +1,16 @@
+2009-02-02  Thomas Thurman  <tthurman@gnome.org>
+
+        Basic work for a possible RPN-based parser which is
+        (slightly) faster and (hopefully) clearer than the
+        existing one; uses GScanner for tokenising; works
+        on all themes tested, but doesn't use GError etc
+        properly yet.
+
+	* src/Makefile.am:
+	* src/ui/theme-parser.c:
+	* src/ui/theme.c:
+	* src/ui/theme.h:
+
 2009-02-01  Thomas Thurman  <tthurman@gnome.org>
 
         * configure.in: Post-release bump to 2.25.233.
