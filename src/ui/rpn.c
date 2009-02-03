@@ -60,6 +60,14 @@ enum MetaToken {
   META_TOKEN_DIVIDE,
   META_TOKEN_MIN,
   META_TOKEN_MAX,
+  /**
+   * HALVE is an optimisation: it halves its first argument, since
+   * division is slow and bitshifting is fast, and halving is something
+   * that's very common in themes.  It's still a binary operator,
+   * to save us having to invent unary operators for this one case.
+   * The second argument (which should be 2) is thrown away.
+   */
+  META_TOKEN_HALVE,
   META_TOKEN_OPEN, /* only during parse */
   META_TOKEN_CLOSE, /* only during parse */
   /* Variables, which are treated as 0-ary operators */
@@ -93,6 +101,7 @@ meta_token_as_string (MetaToken token)
 	case META_TOKEN_DIVIDE: return g_strdup_printf ("/");
 	case META_TOKEN_MIN: return g_strdup_printf ("`min`");
 	case META_TOKEN_MAX: return g_strdup_printf ("`max`");
+	case META_TOKEN_HALVE: return g_strdup_printf ("/(halve)");
 	case META_TOKEN_OPEN: return g_strdup_printf ("(");
 	case META_TOKEN_CLOSE: return g_strdup_printf (")");
 
@@ -169,6 +178,7 @@ static guint64 multiply(guint64 a, guint64 b) { return a*(b>>SCALE_BITS); }
 static guint64 divide(guint64 a, guint64 b) { return b==0?0:a/(b>>SCALE_BITS); }
 static guint64 min(guint64 a, guint64 b) { return a<b?a:b; }
 static guint64 max(guint64 a, guint64 b) { return a>b?a:b; }
+static guint64 halve(guint64 a, guint64 b) { return a>>1; }
 
 static guint64 get_width(const MetaPositionExprEnv *env) { return env->rect.width; }
 static guint64 get_height(const MetaPositionExprEnv *env) { return env->rect.height; }
@@ -204,6 +214,7 @@ const TokenHandler handlers[] = {
   { divide, NULL },
   { min, NULL },
   { max, NULL },
+  { halve, NULL },
   { NULL }, /* OPEN */
   { NULL }, /* CLOSE */
 #define name_token(t) { NULL, get_##t },
@@ -284,6 +295,12 @@ accept (MetaToken *output, gint *output_pointer, MetaToken item)
       if (*output_pointer>STACK_SIZE)
           meta_bug ("Parse stack overflow"); /* FIXME THIS IS BAD */
 
+      /* Special case: */
+      if (item==META_TOKEN_DIVIDE &&
+          *output_pointer != 0 &&
+          output[(*output_pointer)-1]==2<<SCALE_BITS)
+        item = META_TOKEN_HALVE;
+
       token_verbose ("Accept", item);
       output[(*output_pointer)++] = item;
     }
@@ -296,6 +313,7 @@ precedence (MetaToken token)
     {
     case META_TOKEN_MULTIPLY:
     case META_TOKEN_DIVIDE:
+    case META_TOKEN_HALVE:
       return 4;
     case META_TOKEN_ADD:
     case META_TOKEN_SUBTRACT:
@@ -565,20 +583,6 @@ meta_rpn_parse (MetaTheme *theme,
   result[result_pointer++] = META_TOKEN_DONE;
 
   g_scanner_destroy (scanner);
-
-  /*FIXME MetaPositionExprEnv env;
-
-  env.rect.width=10;
-  env.rect.height=10;
-  int r=0;
-
-    meta_rpn_eval (result, &env, 
-      &r, NULL);*/
-
-  /*
-  meta_bug ("Okay, hold it there: %s %d",
-            meta_token_list_as_string (result), r);
-  */
 
   return g_memdup (result, sizeof(MetaToken)*result_pointer);
 }

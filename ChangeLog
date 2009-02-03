@@ -1,5 +1,9 @@
 2009-02-02  Thomas Thurman  <tthurman@gnome.org>
 
+	* src/ui/rpn.c: added gratuitous "halve" operation
+
+2009-02-02  Thomas Thurman  <tthurman@gnome.org>
+
         and the actual parsing code!
 
 	* src/ui/rpn.c:
