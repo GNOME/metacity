@@ -1,7 +1,13 @@
+2009-07-06  Ori Avtalion  <ori@avtalion.name>
+
+	* src/core/window-props.c: fix problem where the previous
+        code ignored callbacks for properties whose values weren't
+        looked up.  Closes #572573.
+
 2009-03-16  Thomas Thurman  <tthurman@gnome.org>
-
+	 
         * NEWS: 2.26.0 release.
-
+	
 2009-02-04  Neil Jagdish Patel  <njpatel@gmail.com>
 
 	* src/core/frame.c: queue resize on window undecorate
