@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: metacity.gnome-2-26.kn\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=metacity&component=general\n"
 "POT-Creation-Date: 2009-02-05 16:08+0000\n"
-"PO-Revision-Date: 2009-04-15 23:27+0530\n"
+"PO-Revision-Date: 2009-04-28 15:42+0530\n"
 "Last-Translator: Shankar Prasad <svenkate@redhat.com>\n"
 "Language-Team: Kannada <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1524,6 +1524,8 @@ msgid ""
 "GTK color specification must have the state in brackets, e.g. gtk:fg[NORMAL] "
 "where NORMAL is the state; could not parse \"%s\""
 msgstr ""
+"GTK ಬಣ್ಣವನ್ನು ಸೂಚಿಸುವಿಕೆಗಾಗಿ ಸ್ಥಿತಿಯಲ್ಲಿ ಆವರಣ ಚಿಹ್ನೆಯು ಇರಬೇಕು, ಉದಾ. gtk:"
+"fg[NORMAL] ಆಗಿರುತ್ತದೆ, ಇಲ್ಲಿ NORMAL ಸ್ಥಿತಿಯನ್ನು ಸೂಚಿಸುತ್ತದೆ; \"%s\" ಅನ್ನು ಪಾರ್ಸ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಿಲ್ಲ"
 
 #: ../src/ui/theme.c:1160
 #, c-format
@@ -1531,6 +1533,8 @@ msgid ""
 "GTK color specification must have a close bracket after the state, e.g. gtk:"
 "fg[NORMAL] where NORMAL is the state; could not parse \"%s\""
 msgstr ""
+"GTK ಬಣ್ಣವನ್ನು ಸೂಚಿಸುವಿಕೆಗಾಗಿ ಸ್ಥಿತಿಯ ನಂತರ ಮುಚ್ಚಲಾದ ಒಂದು ಆವರಣ ಚಿಹ್ನೆಯನ್ನು ಸೂಚಿಸಬೇಕು, ಉದಾ. gtk:"
+"fg[NORMAL] ಆಗಿರುತ್ತದೆ, ಇಲ್ಲಿ NORMAL ಸ್ಥಿತಿಯನ್ನು ಸೂಚಿಸುತ್ತದೆ; \"%s\" ಅನ್ನು ಪಾರ್ಸ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಿಲ್ಲ"
 
 #: ../src/ui/theme.c:1171
 #, c-format
@@ -1547,32 +1551,32 @@ msgstr "ಬಣ್ಣ ವಿವರಣೆಯಲ್ಲಿನ ಬಣ್ಣದ ಘಟ
 msgid ""
 "Blend format is \"blend/bg_color/fg_color/alpha\", \"%s\" does not fit the "
 "format"
-msgstr ""
+msgstr "ಮಿಶ್ರಗೊಳಿಕಾ ವಿನ್ಯಾಸ \"blend/bg_color/fg_color/alpha\", \"%s\" ವಿನ್ಯಾಸಕ್ಕೆ ಹೊಂದಿಕೆಯಾಗುತ್ತಿಲ್ಲ"
 
 #: ../src/ui/theme.c:1225
 #, c-format
 msgid "Could not parse alpha value \"%s\" in blended color"
-msgstr ""
+msgstr "ಮಿಶ್ರಗೊಳಿಸಲಾದ ಬಣ್ಣದಲ್ಲಿ ಆಲ್ಫಾ ಮೌಲ್ಯ \"%s\" ಅನ್ನು ಪಾರ್ಸ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಿಲ್ಲ"
 
 #: ../src/ui/theme.c:1235
 #, c-format
 msgid "Alpha value \"%s\" in blended color is not between 0.0 and 1.0"
-msgstr ""
+msgstr "ಮಿಶ್ರ ಮಾಡಲಾದ ಬಣ್ಣದ ಆಲ್ಫಾ  ಮೌಲ್ಯವು \"%s\" ವು 0.0 ಹಾಗು 1.0 ಯ ನಡುವಿನಲ್ಲಿ ಇಲ್ಲ"
 
 #: ../src/ui/theme.c:1282
 #, c-format
 msgid "Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
-msgstr ""
+msgstr "ಮಬ್ಬು ವಿನ್ಯಾಸ \"shade/base_color/factor\", \"%s\" ವಿನ್ಯಾಸಕ್ಕೆ ಸರಿಹೊಂದುತ್ತಿಲ್ಲ"
 
 #: ../src/ui/theme.c:1293
 #, c-format
 msgid "Could not parse shade factor \"%s\" in shaded color"
-msgstr ""
+msgstr "ಮಬ್ಬುಗೊಳಿಸಲಾದ ಬಣ್ಣದ ಮಬ್ಬುಗೊಳಿಕಾ ಅಂಶ \"%s\" ಅನ್ನು ಪಾರ್ಸ್ ಮಾಡಲಾಗಿಲ್ಲ"
 
 #: ../src/ui/theme.c:1303
 #, c-format
 msgid "Shade factor \"%s\" in shaded color is negative"
-msgstr ""
+msgstr "ಮಬ್ಬುಗೊಳಿಸಲಾದ ಬಣ್ಣದಲ್ಲಿನ ಮಬ್ಬುಗೊಳಿಸುವ ಅಂಶ \"%s\" ಋಣವಾಗಿದೆ"
 
 #: ../src/ui/theme.c:1332
 #, c-format
@@ -1582,19 +1586,19 @@ msgstr "ಬಣ್ಣ \"%s\" ಅನ್ನು ಪಾರ್ಸ್ ಮಾಡಲು �
 #: ../src/ui/theme.c:1582
 #, c-format
 msgid "Coordinate expression contains character '%s' which is not allowed"
-msgstr ""
+msgstr "ಅನುಮತಿ ಇರದೆ ಇರುವಂತಹ ಅಕ್ಷರವನ್ನು '%s' ಅನ್ನು ಅಕ್ಷಾಂಶ ಎಕ್ಸ್‌ಪ್ರೆಶನ್‌ ಹೊಂದಿದೆ"
 
 #: ../src/ui/theme.c:1609
 #, c-format
 msgid ""
 "Coordinate expression contains floating point number '%s' which could not be "
 "parsed"
-msgstr ""
+msgstr "ಪಾರ್ಸ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗದೆ ಇರುವಂತಹ ತೇಲುವ ಬಿಂದು (ಫ್ಲೋಟಿಂಗ್ ಪಾಯಿಂಟ್‌) ಸಂಖ್ಯೆ '%s' ಅನ್ನು ಅಕ್ಷಾಂಶ ಎಕ್ಸ್‌ಪ್ರೆಶನ್‌ ಹೊಂದಿದೆ"
 
 #: ../src/ui/theme.c:1623
 #, c-format
 msgid "Coordinate expression contains integer '%s' which could not be parsed"
-msgstr ""
+msgstr "ಪಾರ್ಸ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗದೆ ಇರುವಂತಹ ಪೂರ್ಣಾಂಕ '%s' ಅನ್ನು ಅಕ್ಷಾಂಶ ಎಕ್ಸ್‌ಪ್ರೆಶನ್‌ ಹೊಂದಿದೆ"
 
 #: ../src/ui/theme.c:1745
 #, c-format
@@ -1602,11 +1606,13 @@ msgid ""
 "Coordinate expression contained unknown operator at the start of this text: "
 "\"%s\""
 msgstr ""
+"ಅಕ್ಷಾಂಶ ಎಕ್ಸ್‌ಪ್ರೆಶನ್‌ನಲ್ಲಿನ ಪಠ್ಯದ ಆರಂಭದಲ್ಲಿ ಗೊತ್ತಿರದ ಆಪರೇಟರ್ ಅನ್ನು ಹೊಂದಿದೆ: "
+"\"%s\""
 
 #: ../src/ui/theme.c:1802
 #, c-format
 msgid "Coordinate expression was empty or not understood"
-msgstr ""
+msgstr "ಅಕ್ಷಾಂಶ ಎಕ್ಸ್‌ಪ್ರೆಶನ್‌ ಖಾಲಿ ಇದೆ ಅಥವ ಅರ್ಥ ಮಾಡಿಕೊಳ್ಳಲು ಸಾಧ್ಯವಾಗಿಲ್ಲ"
 
 #: ../src/ui/theme.c:1913 ../src/ui/theme.c:1923 ../src/ui/theme.c:1957
 #, c-format
@@ -1616,22 +1622,22 @@ msgstr ""
 #: ../src/ui/theme.c:1965
 #, c-format
 msgid "Coordinate expression tries to use mod operator on a floating-point number"
-msgstr ""
+msgstr "ಅಕ್ಷಾಂಶ ಎಕ್ಸ್‌ಪ್ರೆಶನ್‌ ಒಂದು ತೇಲುವ-ಬಿಂದು ಸಂಖ್ಯೆಯಲ್ಲಿ mod ಆಪರೇಟರ್ ಅನ್ನು ಬಳಸಲು ಪ್ರಯತ್ನಿಸಿದೆ"
 
 #: ../src/ui/theme.c:2021
 #, c-format
 msgid "Coordinate expression has an operator \"%s\" where an operand was expected"
-msgstr ""
+msgstr "ಅಕ್ಷಾಂಶ ಎಕ್ಸ್‌ಪ್ರೆಶನ್‌ನಲ್ಲಿ ಎಲ್ಲಿ operand ಅನ್ನು ನಿರೀಕ್ಷಿಸಲಾಗಿತ್ತೊ ಅಲ್ಲಿ ಒಂದು ಆಪರೇಟರ್ \"%s\" ಇದೆ"
 
 #: ../src/ui/theme.c:2030
 #, c-format
 msgid "Coordinate expression had an operand where an operator was expected"
-msgstr ""
+msgstr "ಅಕ್ಷಾಂಶ ಎಕ್ಸ್‌ಪ್ರೆಶನ್‌ನಲ್ಲಿ ಎಲ್ಲಿ ಆಪರೇಟರ್ ಅನ್ನು ನಿರೀಕ್ಷಿಸಲಾಗಿತ್ತೊ ಅಲ್ಲಿ ಒಂದು operand ಇದೆ"
 
 #: ../src/ui/theme.c:2038
 #, c-format
 msgid "Coordinate expression ended with an operator instead of an operand"
-msgstr ""
+msgstr "ಅಕ್ಷಾಂಶ ಎಕ್ಸ್‌ಪ್ರೆಶನ್ ಒಂದು operand ಬದಲಿಗೆ ಆಪರೇಟರಿನೊಂದಿಗೆ ಅಂತ್ಯಗೊಂಡಿದೆ"
 
 #: ../src/ui/theme.c:2048
 #, c-format
@@ -1639,6 +1645,8 @@ msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
 "operand in between"
 msgstr ""
+"ಅಕ್ಷಾಂಶ ಎಕ್ಸ್‌ಪ್ರೆಶನ್‌ ಆಪೇರೇಟರ್ \"%c\" ಹಾಗು ಅಪರೇಟರ್ \"%c\" ಅನ್ನು ಹೊಂದಿದೆ ಆದರೆ ನಡುವೆ ಯಾವುದೆ "
+"operand ಅನ್ನು ಹೊಂದಿಲ್ಲ"
 
 #: ../src/ui/theme.c:2195 ../src/ui/theme.c:2236
 #, c-format
@@ -1648,7 +1656,7 @@ msgstr ""
 #: ../src/ui/theme.c:2290
 #, c-format
 msgid "Coordinate expression parser overflowed its buffer."
-msgstr ""
+msgstr "ಅಕ್ಷಾಂಶ ಎಕ್ಸ್‌ಪ್ರೆಶನ್ ಪಾರ್ಸರ್ ತನ್ನ ಬಫರಿನ ಮಿತಿಯನ್ನು ಮೀರಿದೆ."
 
 #: ../src/ui/theme.c:2319
 #, c-format
@@ -1718,7 +1726,7 @@ msgstr "\"%s\" ಸ್ತಿರಾಂಕವು ಈಗಾಗಲೆ ಸೂಚಿತ
 #. * on an XML element was not in fact found.
 #.
 #: ../src/ui/theme-parser.c:202
-#, fuzzy, c-format
+#, c-format
 #| msgid "No \"x\" attribute on element <%s>"
 msgid "No \"%s\" attribute on element <%s>"
 msgstr "<%s> ಅಂಶಕ್ಕಾಗಿ ಯಾವುದೆ \"%s\" ಗುಣವಿಶೇಷವಿಲ್ಲ"
@@ -1729,13 +1737,12 @@ msgid "Line %d character %d: %s"
 msgstr "ಸಾಲು %d ಅಕ್ಷರ %d: %s"
 
 #: ../src/ui/theme-parser.c:413
-#, fuzzy, c-format
+#, c-format
 msgid "Attribute \"%s\" repeated twice on the same <%s> element"
 msgstr "ಗುಣವಿಶೇಷ \"%s\" ಅನ್ನು ಒಂದೇ <%s> ಅಂಶದಲ್ಲಿ ಎರಡು ಬಾರಿ ಮರುಕಳಿಸಲಾಗಿದೆ"
 
 #: ../src/ui/theme-parser.c:437 ../src/ui/theme-parser.c:480
 #, c-format
-#, fuzzy
 msgid "Attribute \"%s\" is invalid on <%s> element in this context"
 msgstr "ಗುಣವಿಶೇಷ \"%s\" ವು ಈ ಸನ್ನಿವೇಶದಲ್ಲಿನ <%s> ಅಂಶದಲ್ಲಿ ಅಮಾನ್ಯವಾಗಿದೆ"
 
@@ -1752,7 +1759,7 @@ msgstr "%ld ಪೂರ್ಣಾಂಕವು ಬಹಳ ದೊಡ್ಡದಾಗಿ
 #: ../src/ui/theme-parser.c:577 ../src/ui/theme-parser.c:693
 #, c-format
 msgid "Could not parse \"%s\" as a floating point number"
-msgstr ""
+msgstr "\"%s\" ಅನ್ನು ಒಂದು ತೇಲುವ ಬಿಂದು (ಫ್ಲೋಟಿಂಗ್ ಪಾಯಿಂಟ್‌) ಸಂಖ್ಯೆಯಾಗಿ ಪಾರ್ಸ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಿಲ್ಲ"
 
 #: ../src/ui/theme-parser.c:608 ../src/ui/theme-parser.c:636
 #, c-format
@@ -1775,6 +1782,8 @@ msgid ""
 "Invalid title scale \"%s\" (must be one of xx-small,x-small,small,medium,"
 "large,x-large,xx-large)\n"
 msgstr ""
+"ಅಮಾನ್ಯವಾದ ಶೀರ್ಷಿಕೆ ಅಳತೆ \"%s\" (ಇದು xx-small,x-small,small,medium,"
+"large,x-large,xx-large ಗಳಲ್ಲಿ ಒಂದನ್ನು ಹೊಂದಿರಬೇಕು)\n"
 
 #: ../src/ui/theme-parser.c:936 ../src/ui/theme-parser.c:999
 #: ../src/ui/theme-parser.c:1033 ../src/ui/theme-parser.c:1136
@@ -1800,22 +1809,22 @@ msgstr ""
 
 #: ../src/ui/theme-parser.c:1113
 msgid "You must specify a background for an alpha value to be meaningful"
-msgstr ""
+msgstr "ಒಂದು ಆಲ್ಫಾ ಮೌಲ್ಯವು ಅರ್ಥಬದ್ಧವಾಗಿರಬೇಕೆಂದರೆ ನೀವು ಅದಕ್ಕಾಗಿ ಒಂದು ಹಿನ್ನಲೆಯನ್ನು ಸೂಚಿಸಬೇಕು"
 
 #: ../src/ui/theme-parser.c:1180
 #, c-format
 msgid "Unknown type \"%s\" on <%s> element"
-msgstr ""
+msgstr "ಗೊತ್ತಿರದ ಬಗೆ \"%s\", <%s> ಘಟಕದಲ್ಲಿ"
 
 #: ../src/ui/theme-parser.c:1191
 #, c-format
 msgid "Unknown style_set \"%s\" on <%s> element"
-msgstr ""
+msgstr "ಗೊತ್ತಿರದ style_set \"%s\", <%s> ಘಟಕದಲ್ಲಿ"
 
 #: ../src/ui/theme-parser.c:1199
 #, c-format
 msgid "Window type \"%s\" has already been assigned a style set"
-msgstr ""
+msgstr "ವಿಂಡೋ ಬಗೆ \"%s\" ಈಗಾಗಲೆ ಶೈಲಿ ಜೋಡಿಯನ್ನು ನಿಯೋಜಿಸಿದೆ"
 
 #: ../src/ui/theme-parser.c:1229 ../src/ui/theme-parser.c:1293
 #: ../src/ui/theme-parser.c:1519 ../src/ui/theme-parser.c:2732
@@ -1831,7 +1840,7 @@ msgstr "ಅಂಶ <%s> ಕ್ಕೆ <%s> ನ ಕೆಳಗೆ ಅನುಮತಿ 
 msgid ""
 "Cannot specify both \"button_width\"/\"button_height\" and \"aspect_ratio\" "
 "for buttons"
-msgstr ""
+msgstr "ಗುಂಡಿಗಳಿಗಾಗಿ \"button_width\"/\"button_height\" ಹಾಗು \"aspect_ratio\" ಇವೆರಡನ್ನೂ ಸೂಚಿಸಲಾಗಿಲ್ಲ"
 
 #: ../src/ui/theme-parser.c:1366
 #, c-format
@@ -1887,27 +1896,27 @@ msgstr "\"%s\" ಬಾಣದ ಗುರುತನ್ನು <%s> ಘಟಕಕ್ಕ�
 #: ../src/ui/theme-parser.c:2588 ../src/ui/theme-parser.c:2684
 #, c-format
 msgid "No <draw_ops> called \"%s\" has been defined"
-msgstr ""
+msgstr "ಯಾವುದೆ <draw_ops> ಕರೆ \"%s\" ಅನ್ನು ಸೂಚಿಸಲಾಗಿಲ್ಲ"
 
 #: ../src/ui/theme-parser.c:2600 ../src/ui/theme-parser.c:2696
 #, c-format
 msgid "Including draw_ops \"%s\" here would create a circular reference"
-msgstr ""
+msgstr "ಇಲ್ಲಿ draw_ops \"%s\" ಅನ್ನು ಸೇರಿಸುವುದರಿಂದ ಒಂದು ವೃತ್ತಾಕಾರದ ಉಲ್ಲೇಖವನ್ನು ನಿರ್ಮಿಸುತ್ತದೆ"
 
 #: ../src/ui/theme-parser.c:2811
 #, c-format
 msgid "Unknown position \"%s\" for frame piece"
-msgstr ""
+msgstr "ಚೌಕಟ್ಟು ಅಂಶಕ್ಕಾಗಿ ತಿಳಿಯದ ಸ್ಥಾನ \"%s\""
 
 #: ../src/ui/theme-parser.c:2819
 #, c-format
 msgid "Frame style already has a piece at position %s"
-msgstr ""
+msgstr "%s ಸ್ಥಾನದಲ್ಲಿ ಚೌಕಟ್ಟು ಶೈಲಿಯು ಈಗಾಗಲೆ ಅಸ್ತಿತ್ವದಲ್ಲಿದೆ"
 
 #: ../src/ui/theme-parser.c:2836 ../src/ui/theme-parser.c:2911
 #, c-format
 msgid "No <draw_ops> with the name \"%s\" has been defined"
-msgstr ""
+msgstr "\"%s\" ಹೆಸರಿನ ಯಾವುದೆ <draw_ops> ಆಯ್ಕೆಯನ್ನು ಸೂಚಿಸಲಾಗಿಲ್ಲ"
 
 #: ../src/ui/theme-parser.c:2865
 #, c-format
@@ -1927,7 +1936,7 @@ msgstr "\"%s\" ಗುಂಡಿಗಾಗಿ ಗೊತ್ತಿರದ ಸ್ಥಿ
 #: ../src/ui/theme-parser.c:2894
 #, c-format
 msgid "Frame style already has a button for function %s state %s"
-msgstr ""
+msgstr "ಸ್ಥಿತಿ %s ಗಮನ %s ಕ್ಕಾಗಿ ಚೌಕಟ್ಟು ಶೈಲಿಯಲ್ಲಿ ಒಂದು ಗುಂಡಿಯನ್ನು ಈಗಾಗಲೆ ಸೂಚಿಸಲಾಗಿದೆ"
 
 #: ../src/ui/theme-parser.c:2965
 #, c-format
@@ -1954,22 +1963,22 @@ msgstr "\"%s\" ಯು ಗಾತ್ರ ಬದಲಾವಣೆ ಗುಣ ವಿಶ�
 msgid ""
 "Should not have \"resize\" attribute on <%s> element for maximized/shaded "
 "states"
-msgstr ""
+msgstr "ಗರಿಷ್ಟಗೊಳಿಸಲಾದ/ಮಬ್ಬುಗೊಳಿಸಲಾದ ಸ್ಥಿತಿಗಳಿಗಾಗಿ <%s> ಅಂಶದಲ್ಲಿ \"resize\" ಗುಣವಿಶೇಷವು ಇರುವಂತಿಲ್ಲ"
 
 #: ../src/ui/theme-parser.c:3053
 #, c-format
 msgid "Should not have \"resize\" attribute on <%s> element for maximized states"
-msgstr ""
+msgstr "ಗರಿಷ್ಟಗೊಳಿಸಲಾದ ಸ್ಥಿತಿಗಳಿಗಾಗಿ <%s> ಅಂಶದಲ್ಲಿ \"resize\" ಗುಣವಿಶೇಷವು ಇರುವಂತಿಲ್ಲ"
 
 #: ../src/ui/theme-parser.c:3067 ../src/ui/theme-parser.c:3089
 #, c-format
 msgid "Style has already been specified for state %s resize %s focus %s"
-msgstr ""
+msgstr "ಸ್ಥಿತಿ %s ಗಾತ್ರ ಬದಲಾವಣೆ %s ಗಮನ %s ಕ್ಕಾಗಿ ಶೈಲಿಯನ್ನು ಈಗಾಗಲೆ ಸೂಚಿಸಲಾಗಿದೆ"
 
 #: ../src/ui/theme-parser.c:3078 ../src/ui/theme-parser.c:3100
 #, c-format
 msgid "Style has already been specified for state %s focus %s"
-msgstr ""
+msgstr "ಸ್ಥಿತಿ %s ಗಮನ %s ಕ್ಕಾಗಿ ಶೈಲಿಯನ್ನು ಈಗಾಗಲೆ ಸೂಚಿಸಲಾಗಿದೆ"
 
 #: ../src/ui/theme-parser.c:3139
 msgid ""
@@ -1992,7 +2001,7 @@ msgstr ""
 #: ../src/ui/theme-parser.c:3263
 #, c-format
 msgid "Outermost element in theme must be <metacity_theme> not <%s>"
-msgstr ""
+msgstr "ಅತ್ಯಂತ ಹೊರಗಿನ ಪರಿಸರವಿನ್ಯಾಸವು <metacity_theme> ಆಗಿರಬೇಕೆ ಹೊರತು <%s> ಅಲ್ಲ"
 
 #: ../src/ui/theme-parser.c:3283
 #, c-format
@@ -2022,11 +2031,11 @@ msgstr "<%s> ಘಟಕಕ್ಕೆ ಒಂದು <%s> ಘಟಕದ ಒಳಗೆ �
 
 #: ../src/ui/theme-parser.c:3594
 msgid "No draw_ops provided for frame piece"
-msgstr ""
+msgstr "ಚೌಕಟ್ಟಿನ ಅಂಶಕ್ಕಾಗಿ ಯಾವುದೆ draw_ops ಅನ್ನು ಒದಗಿಸಲಾಗಿಲ್ಲ"
 
 #: ../src/ui/theme-parser.c:3609
 msgid "No draw_ops provided for button"
-msgstr ""
+msgstr "ಗುಂಡಿಗಾಗಿ ಯಾವುದೆ draw_ops ಅನ್ನು ಒದಗಿಸಲಾಗಿಲ್ಲ"
 
 #: ../src/ui/theme-parser.c:3661
 #, c-format
@@ -2150,11 +2159,11 @@ msgstr "ಸಂವಾದ ಪೆಟ್ಟಿಗೆ"
 
 #: ../src/ui/theme-viewer.c:386
 msgid "Modal Dialog Box"
-msgstr ""
+msgstr "ಮೋಡಲ್ ಸಂವಾದ ಪೆಟ್ಟಿಗೆ"
 
 #: ../src/ui/theme-viewer.c:390
 msgid "Utility Palette"
-msgstr ""
+msgstr "ಸವಲತ್ತುಗಳ ಫಲಕ"
 
 #: ../src/ui/theme-viewer.c:394
 msgid "Torn-off Menu"
@@ -2223,11 +2232,11 @@ msgstr ""
 
 #: ../src/ui/theme-viewer.c:1244
 msgid "position expression test returned TRUE but set error"
-msgstr ""
+msgstr "ಸ್ಥಾನದ ಎಕ್ಸ್‌ಪ್ರೆಶನ್‌ ಪರೀಕ್ಷೆಯು TRUE ಅನ್ನು ಮರಳಿಸಿದೆ ಆದರೆ ಅದು ದೋಷವನ್ನು ಸೂಚಿಸಿಲ್ಲ"
 
 #: ../src/ui/theme-viewer.c:1246
 msgid "position expression test returned FALSE but didn't set error"
-msgstr ""
+msgstr "ಸ್ಥಾನದ ಎಕ್ಸ್‌ಪ್ರೆಶನ್‌ ಪರೀಕ್ಷೆಯು FALSE ಅನ್ನು ಮರಳಿಸಿದೆ ಆದರೆ ಅದು ದೋಷವನ್ನು ಸೂಚಿಸಿಲ್ಲ"
 
 #: ../src/ui/theme-viewer.c:1250
 msgid "Error was expected but none given"
@@ -2256,5 +2265,5 @@ msgstr "y ಮೌಲ್ಯವು %d ಆಗಿದೆ, %d ಅನ್ನು ನಿರ
 #: ../src/ui/theme-viewer.c:1330
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
-msgstr ""
+msgstr "%d ಅಕ್ಷಾಂಶ ಎಕ್ಸ್‌ಪ್ರೆಶನ್‌ಗಳನ್ನು %g ಸೆಕೆಂಡುಗಳಲ್ಲಿ ಪಾರ್ಸ್ ಮಾಡಲಾಗಿದೆ (ಸರಾಸರಿ %g ಸೆಕೆಂಡುಗಳು)\n"
 
