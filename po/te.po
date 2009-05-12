@@ -1,14 +1,14 @@
-# translation of metacity.gnome-2-26.po to Telugu
+# translation of metacity.gnome-2-26.te.po to Telugu
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Krishna Babu K <kkrothap@redhat.com>, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: metacity.gnome-2-26\n"
+"Project-Id-Version: metacity.gnome-2-26.te\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=metacity&component=general\n"
-"POT-Creation-Date: 2009-03-10 17:09+0000\n"
-"PO-Revision-Date: 2009-03-11 13:29+0530\n"
+"POT-Creation-Date: 2009-04-28 14:16+0000\n"
+"PO-Revision-Date: 2009-05-12 17:48+0530\n"
 "Last-Translator: Krishna Babu K <kkrothap@redhat.com>\n"
 "Language-Team: Telugu <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,6 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n\n"
+"\n"
+"\n"
 
 #: ../src/50-metacity-desktop-key.xml.in.h:1
 msgid "Desktop"
@@ -28,50 +30,50 @@ msgstr "విండో నిర్వహణ"
 #: ../src/core/core.c:206
 #, c-format
 msgid "Unknown window information request: %d"
-msgstr ""
+msgstr "తెలియని విండో సమాచార అభ్యర్ధన: %d"
 
 #: ../src/core/delete.c:70 ../src/core/delete.c:97
 #: ../src/ui/metacity-dialog.c:50 ../src/ui/theme-parser.c:522
 #, c-format
 msgid "Could not parse \"%s\" as an integer"
-msgstr ""
+msgstr "\"%s\" వొక యింటీజర్‌లా పార్శ్ చేయలేము"
 
 #: ../src/core/delete.c:77 ../src/core/delete.c:104
 #: ../src/ui/metacity-dialog.c:57 ../src/ui/theme-parser.c:531
 #: ../src/ui/theme-parser.c:586
 #, c-format
 msgid "Did not understand trailing characters \"%s\" in string \"%s\""
-msgstr ""
+msgstr "ట్రెయిలింగ్ అక్షరములు \"%s\"ను స్ట్రింగు \"%s\" నందు అర్దముచేసుకోలేదు"
 
 #: ../src/core/delete.c:135
 #, c-format
 msgid "Failed to parse message \"%s\" from dialog process\n"
-msgstr ""
+msgstr "సందేశము \"%s\"ను డైలాగ్ కార్యక్రమమునుండి పార్శ్ చేయుటకు విఫలమైంది\n"
 
 #: ../src/core/delete.c:253
 #, c-format
 msgid "Error reading from dialog display process: %s\n"
-msgstr ""
+msgstr "డైలాగ్ ప్రదర్శన కార్యక్రమమునుండి చదువుటలో దోషము: %s\n"
 
 #: ../src/core/delete.c:336
 #, c-format
 msgid "Error launching metacity-dialog to ask about killing an application: %s\n"
-msgstr ""
+msgstr "అనువర్తనమును అంతముచేయుట గురించి అడుగుటకు మెటాసిటి-డైలాగ్ దించుటలో దోషము: %s\n"
 
 #: ../src/core/delete.c:445
 #, c-format
 msgid "Failed to get hostname: %s\n"
-msgstr ""
+msgstr "హోస్టునామము పొందుటలో విఫలమైంది: %s\n"
 
 #: ../src/core/display.c:256
 #, c-format
 msgid "Missing %s extension required for compositing"
-msgstr ""
+msgstr "కంపోజిటింగ్ కొరకు తప్పిపోయిన %s పొడిగింపు అవసరమైంది"
 
 #: ../src/core/display.c:334
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
-msgstr ""
+msgstr "X విండో సిస్టమ్ ప్రదర్శన '%s' తెరుచుటకు విఫలమైంది\n"
 
 #: ../src/core/errors.c:272
 #, c-format
@@ -80,18 +82,21 @@ msgid ""
 "most likely the X server was shut down or you killed/destroyed\n"
 "the window manager.\n"
 msgstr ""
+"ప్రదర్శన '%s'కు అనుసంధానమును కోల్పోయింది;\n"
+"సాదారణంగా X సేవిక మూసివేయబడింది లేదా మీరు విండో నిర్వాహికను అంతము/నాశనము\n"
+"చేసివుంటారు.\n"
 
 #: ../src/core/errors.c:279
 #, c-format
 msgid "Fatal IO error %d (%s) on display '%s'.\n"
-msgstr ""
+msgstr "ఫాటల్ IO దోషము %d (%s) ప్రదర్శన '%s' పైన.\n"
 
 #: ../src/core/keybindings.c:680
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
 "binding\n"
-msgstr ""
+msgstr "వేరే యితర ప్రోగ్రామ్ యిప్పటికే కీ %sను సవరణిలు %xతో బందనం వలె వుపయోగిస్తోంది\n"
 
 #. Displayed when a keybinding which is
 #. * supposed to launch a program fails.
@@ -103,16 +108,19 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"అక్కడ వొక దోషము నడుచుచున్నది <tt>%s</tt>:\n"
+"\n"
+"%s"
 
 #: ../src/core/keybindings.c:2381
 #, c-format
 msgid "No command %d has been defined.\n"
-msgstr ""
+msgstr "ఏ ఆదేశము %d నిర్వచించబడిలేదు.\n"
 
 #: ../src/core/keybindings.c:3335
 #, c-format
 msgid "No terminal command has been defined.\n"
-msgstr ""
+msgstr "ఎటువంటి టెర్మినల్ ఆదేశము నిర్వచించబడిలేదు.\n"
 
 #: ../src/core/main.c:116
 #, c-format
@@ -123,6 +131,11 @@ msgid ""
 "There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A "
 "PARTICULAR PURPOSE.\n"
 msgstr ""
+"మెటాసి %s\n"
+"కాపీరైట్ (C) 2001-2008 Havoc Pennington, Red Hat, Inc., మరియు యితరులు\n"
+"యిది వుచిత సాఫ్టువేర్; నకలు నియమాల కొరకు మూలాన్ని చూడండి.\n"
+"వ్యాపారము కొరకుగాని లేదా వొక ప్రత్యేక ప్రయోజనము కొరకు వుపయోగపడుతుంది గాని;"
+"అక్కడ యెటువంటి వారెంటి లేదు.\n"
 
 #: ../src/core/main.c:253
 msgid "Disable connection to session manager"
@@ -130,7 +143,7 @@ msgstr "సెషన్ నిర్వాహికకు అనుసంధా�
 
 #: ../src/core/main.c:259
 msgid "Replace the running window manager with Metacity"
-msgstr ""
+msgstr "నడుచుచున్న విండో నిర్వాహికను మెటాసిటితో పునఃస్థాపించుము"
 
 #: ../src/core/main.c:265
 msgid "Specify session management ID"
@@ -138,11 +151,11 @@ msgstr "సెషన్ నిర్వహణా IDను తెలుపుమ�
 
 #: ../src/core/main.c:270
 msgid "X Display to use"
-msgstr ""
+msgstr "ఉపయోగించుటకు X ప్రదర్శన"
 
 #: ../src/core/main.c:276
 msgid "Initialize session from savefile"
-msgstr ""
+msgstr "విభాగమును దాచినదస్త్రమునుండి సిద్దముచేయుము"
 
 #: ../src/core/main.c:282
 msgid "Print version"
@@ -154,26 +167,28 @@ msgstr "Xపిలుపులను కాలనియమితం చేయు
 
 #: ../src/core/main.c:294
 msgid "Turn compositing on"
-msgstr ""
+msgstr "కంపోజిటింగ్‌ను ఆన్ చేయుము"
 
 #: ../src/core/main.c:300
 msgid "Turn compositing off"
-msgstr ""
+msgstr "కంపోజిటింగ్‌ను ఆఫ్ చేయుము"
 
 #: ../src/core/main.c:478
 #, c-format
 msgid "Failed to scan themes directory: %s\n"
-msgstr ""
+msgstr "థీమ్స్ డైరెక్టరీను స్కాను చేయుటకు విఫలమైంది: %s\n"
 
 #: ../src/core/main.c:494
 #, c-format
 msgid "Could not find a theme! Be sure %s exists and contains the usual themes.\n"
 msgstr ""
+"ఒక థీమ్‌ను కనుగొనలేక పోయింది! %s వుండునట్లు మరియు అది సాదారణ థీమ్సును కలిగివుండునట్లు "
+"చూచుకొనుము.\n"
 
 #: ../src/core/main.c:550
 #, c-format
 msgid "Failed to restart: %s\n"
-msgstr ""
+msgstr "పునఃప్రారంభమునకు విఫలమైంది: %s\n"
 
 #.
 #. * We found it, but it was invalid.  Complain.
@@ -189,47 +204,49 @@ msgstr ""
 #: ../src/core/prefs.c:505 ../src/core/prefs.c:660
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
-msgstr ""
+msgstr "GConf కీ '%s' అనునది చెల్లని విలువునకు అమర్చబడింది\n"
 
 #: ../src/core/prefs.c:586 ../src/core/prefs.c:829
 #, c-format
 msgid "%d stored in GConf key %s is out of range %d to %d\n"
-msgstr ""
+msgstr "GConf కీ %2$s నందు నిల్వవున్న %1$d విస్తృతి %3$d నుండి %4$dను దాటిపోయింది\n"
 
 #: ../src/core/prefs.c:630 ../src/core/prefs.c:707 ../src/core/prefs.c:755
 #: ../src/core/prefs.c:819 ../src/core/prefs.c:1112 ../src/core/prefs.c:1128
 #: ../src/core/prefs.c:1145 ../src/core/prefs.c:1161
 #, c-format
 msgid "GConf key \"%s\" is set to an invalid type\n"
-msgstr ""
+msgstr "GConf కీ \"%s\" చెల్లని రకమునకు అమర్చబడింది\n"
 
 #: ../src/core/prefs.c:1231
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
 msgstr ""
+"విరిగిపోయిన అనువర్తనములకు పరిష్కారములు అచేతనము చేయబడినవి. కొన్ని అనువర్తనములు "
+"సరిగా ప్రవర్తించక పోవచ్చును.\n"
 
 #: ../src/core/prefs.c:1302
 #, c-format
 msgid "Could not parse font description \"%s\" from GConf key %s\n"
-msgstr ""
+msgstr "ఫాంటు వివరణ \"%s\"ను GConf కీ %sనుండి పార్శ్ చేయలేక పోయింది\n"
 
 #: ../src/core/prefs.c:1364
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
 "modifier\n"
-msgstr ""
+msgstr "ఆకృతీకరణ డాటాబేస్ నందు కనిపించిన \"%s\" మౌస్ బటన్ సవరణికి చెల్లునటువంటి విలువ కాదు\n"
 
 #: ../src/core/prefs.c:1782
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
-msgstr ""
+msgstr "పనిస్థలముల సంఖ్యను %dకు అమర్చుటలో దోషము: %s\n"
 
 #: ../src/core/prefs.c:1971 ../src/core/prefs.c:2474
 #, c-format
 msgid "Workspace %d"
-msgstr ""
+msgstr "పనిస్థలము %d"
 
 #: ../src/core/prefs.c:2001 ../src/core/prefs.c:2179
 #, c-format
@@ -237,21 +254,23 @@ msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
 "\"%s\"\n"
 msgstr ""
+"ఆకృతీకరణ డాటాబేస్ నందు కనిపించిన \"%s\" అనునది కీబందనము \"%s\" కొరకు "
+"చెల్లునటువంటి విలువకాదు\n"
 
 #: ../src/core/prefs.c:2555
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
-msgstr ""
+msgstr "పనిస్థలము %dకు \"%s\" నామము అమర్చుటలో దోషము: %s\n"
 
 #: ../src/core/prefs.c:2753
 #, c-format
 msgid "Error setting compositor status: %s\n"
-msgstr ""
+msgstr "కంపోజిటర్ స్థితిని అమర్చుటలో దోషము: %s\n"
 
 #: ../src/core/screen.c:350
 #, c-format
 msgid "Screen %d on display '%s' is invalid\n"
-msgstr ""
+msgstr "తెర %d ప్రదర్శన '%s' నందలిది చెల్లనిది\n"
 
 #: ../src/core/screen.c:366
 #, c-format
@@ -259,21 +278,23 @@ msgid ""
 "Screen %d on display \"%s\" already has a window manager; try using the --"
 "replace option to replace the current window manager.\n"
 msgstr ""
+"తెర %d ప్రదర్శన \"%s\" నందలిది యిప్పటికే విండో నిర్వాహికను కలిగివుంది; ప్రస్తుత విండో "
+"నిర్వాహికను పునఃస్థాపించుటకు --replace ఐచ్చికాన్ని ప్రయత్నించుము.\n"
 
 #: ../src/core/screen.c:393
 #, c-format
 msgid "Could not acquire window manager selection on screen %d display \"%s\"\n"
-msgstr ""
+msgstr "తెర %d ప్రదర్శన \"%s\" పైన విండో నిర్వాహిక యెంపికను పొందలేక పోయింది\n"
 
 #: ../src/core/screen.c:451
 #, c-format
 msgid "Screen %d on display \"%s\" already has a window manager\n"
-msgstr ""
+msgstr "తెర %d ప్రదర్శన \"%s\"పైన యిప్పటికే విండో నిర్వాహికను కలిగివుంది\n"
 
 #: ../src/core/screen.c:661
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
-msgstr ""
+msgstr "తెర %d ప్రదర్శన \"%s\"పైన విడుదల చేయలేకపోయింది\n"
 
 #. Translators: Please don't translate "Control", "Shift", etc, since these
 #. * are hardcoded (in gtk/gtkaccelgroup.c; it's not metacity's fault).
@@ -288,6 +309,12 @@ msgid ""
 "special string \"disabled\", then there will be no keybinding for this "
 "action."
 msgstr ""
+"ఫార్మాట్ అనునది \"<Control>a\" వలె లేదా <Shift><Alt>F1\" వలె వుంటుంది.\n"
+"\n"
+"పార్శర్ అనునది అనువైనదిగా వుంటుంది మరియు చిన్న మరియు పెద్ద అక్షరములను "
+"అనుమతిస్తుంది, మరియు \"<Ctrl>\" మరియు \"<Ctrl>\" వంటి పొట్టిరూపాలను కూడా "
+"అనుమతిస్తుంది. మీరు ఐచ్చికాన్ని ప్రత్యేక స్ట్రింగు \"disabled\"కు అమర్చినట్లైతే, అప్పుడు ఈ "
+"చర్యకు యెటువంటి కీబందనము వుండదు."
 
 #: ../src/core/schema-bindings.c:177
 msgid ""
@@ -301,59 +328,70 @@ msgid ""
 "This keybinding may be reversed by holding down the \"shift\" key; "
 "therefore, \"shift\" cannot be one of the keys it uses."
 msgstr ""
+"ఫార్మాట్ అనునది \"<Control>a\" వలె లేదా <Shift><Alt>F1\" వలె వుంటుంది.\n"
+"\n"
+"పార్శర్ అనునది అనువైనదిగా వుంటుంది మరియు చిన్న మరియు పెద్ద అక్షరములను "
+"అనుమతిస్తుంది, మరియు \"<Ctrl>\" మరియు \"<Ctrl>\" వంటి పొట్టిరూపాలను కూడా "
+"అనుమతిస్తుంది. మీరు ఐచ్చికాన్ని ప్రత్యేక స్ట్రింగు \"disabled\"కు అమర్చినట్లైతే, అప్పుడు ఈ "
+"చర్యకు యెటువంటి కీబందనము వుండదు.\n"
+"\n"
+"ఈ కీబందనము \"shift\" కీను పట్టివుంచడం వలన వ్యతిరేకము కావచ్చును; "
+"అందువలన, ఇది వుపయోగించు కీలలో \"shift\" వుండకూడదు."
 
 #: ../src/core/session.c:837 ../src/core/session.c:844
 #, c-format
 msgid "Could not create directory '%s': %s\n"
-msgstr ""
+msgstr "డైరెక్టరీ '%s'ను సృష్టించలేక పోయింది: %s\n"
 
 #: ../src/core/session.c:854
 #, c-format
 msgid "Could not open session file '%s' for writing: %s\n"
-msgstr ""
+msgstr "విభాగపు దస్త్రము '%s'ను వ్రాయుట కొరకు తెరువలేక పోయింది: %s\n"
 
 #: ../src/core/session.c:995
 #, c-format
 msgid "Error writing session file '%s': %s\n"
-msgstr ""
+msgstr "విభాగపు దస్త్రము '%s'ను వ్రాయుటలో దోషము: %s\n"
 
 #: ../src/core/session.c:1000
 #, c-format
 msgid "Error closing session file '%s': %s\n"
-msgstr ""
+msgstr "విభాగపు దస్త్రము '%s'ను మూయుటలో దోషము: %s\n"
 
 #. oh, just give up
 #: ../src/core/session.c:1093
 #, c-format
 msgid "Failed to read saved session file %s: %s\n"
-msgstr ""
+msgstr "దాచిన విభాగపు దస్త్రము చదువుటకు విఫలమైంది %s: %s\n"
 
 #: ../src/core/session.c:1132
 #, c-format
 msgid "Failed to parse saved session file: %s\n"
-msgstr ""
+msgstr "దాచిన విభాగపు దస్త్రమును పార్శ్ చేయుటకు విఫలమైంది: %s\n"
 
 #: ../src/core/session.c:1181
 #, c-format
 msgid "<metacity_session> attribute seen but we already have the session ID"
 msgstr ""
+"<metacity_session> యాట్రిబ్యూట్ చూడబడింది అయితే మనము యిప్పటికే విభాగపు IDను "
+"కలిగివున్నాము"
 
 #: ../src/core/session.c:1194 ../src/core/session.c:1269
 #: ../src/core/session.c:1301 ../src/core/session.c:1373
 #: ../src/core/session.c:1433
 #, c-format
 msgid "Unknown attribute %s on <%s> element"
-msgstr ""
+msgstr "తెలియని యాట్రిబ్యూట్ %s మూలకం <%s> పైన"
 
 #: ../src/core/session.c:1211
 #, c-format
 msgid "nested <window> tag"
-msgstr ""
+msgstr "పునరావృత <window> టాగ్"
 
 #: ../src/core/session.c:1453
 #, c-format
 msgid "Unknown element %s"
-msgstr ""
+msgstr "తెలియని మూలకం %s"
 
 #: ../src/core/session.c:1879
 #, c-format
@@ -361,42 +399,44 @@ msgid ""
 "Error launching metacity-dialog to warn about apps that don't support "
 "session management: %s\n"
 msgstr ""
+"విభాగపు నిర్వహణను మద్దతించనటువంటి అనువర్తనముల గురించి వారించుటకు "
+"మెటాసిటి-డైలాగును దించుటలో దోషము: %s\n"
 
 #: ../src/core/util.c:101
 #, c-format
 msgid "Failed to open debug log: %s\n"
-msgstr ""
+msgstr "డీబగ్ లాగ్ తెరుచుటలో విఫలమైంది: %s\n"
 
 #: ../src/core/util.c:111
 #, c-format
 msgid "Failed to fdopen() log file %s: %s\n"
-msgstr ""
+msgstr "లాగ్ దస్త్రము %sను fdopen() చెయుటకు విఫలమైంది: %s\n"
 
 #: ../src/core/util.c:117
 #, c-format
 msgid "Opened log file %s\n"
-msgstr ""
+msgstr "తెరిచిన లాగ్ దస్త్రము %s\n"
 
 #: ../src/core/util.c:136 ../src/tools/metacity-message.c:176
 #, c-format
 msgid "Metacity was compiled without support for verbose mode\n"
-msgstr ""
+msgstr "వెర్బోస్ రీతికి మద్దతులేకుండా మెటాసిటి నిర్వర్తించబడింది\n"
 
 #: ../src/core/util.c:236
 msgid "Window manager: "
-msgstr ""
+msgstr "విండో నిర్వాహిక: "
 
 #: ../src/core/util.c:388
 msgid "Bug in window manager: "
-msgstr ""
+msgstr "విండో నిర్వాహిక నందు బగ్: "
 
 #: ../src/core/util.c:421
 msgid "Window manager warning: "
-msgstr ""
+msgstr "విండో నిర్వాహిక హెచ్చరిక: "
 
 #: ../src/core/util.c:449
 msgid "Window manager error: "
-msgstr ""
+msgstr "విండో నిర్వాహిక దోషము: "
 
 #. Translators: This is the title used on dialog boxes
 #. eof all-keybindings.h
@@ -412,6 +452,8 @@ msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
 "window as specified in the ICCCM.\n"
 msgstr ""
+"ICCCM నందు తెలుపబడినట్లు WM_CLIENT_LEADER విండోపైన కాకుండా, విండో %s అనునది "
+"SM_CLIENT_IDను దానిపైనే అమర్చినది.\n"
 
 #. We ignore mwm_has_resize_func because WM_NORMAL_HINTS is the
 #. * authoritative source for that info. Some apps such as mplayer or
@@ -426,21 +468,24 @@ msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
 "d x %d and max size %d x %d; this doesn't make much sense.\n"
 msgstr ""
+"విండో %s అనునది అది పునఃపరిమాణం అవలేదు అనే MWM హింటును అమర్చినది, అయితే "
+"కనిష్ట పరిమాణమును %d x %dగా మరియు గరిష్ట పరిమాణమును %d x %dగా అమర్చినది;"
+"యిది అంత అర్దవంతంగా లేదు.\n"
 
 #: ../src/core/window-props.c:260
 #, c-format
 msgid "Application set a bogus _NET_WM_PID %lu\n"
-msgstr ""
+msgstr "అనువర్తనము బూటకపు _NET_WM_PID %lu అమర్చినది\n"
 
 #: ../src/core/window-props.c:377
 #, c-format
 msgid "%s (on %s)"
-msgstr ""
+msgstr "%s (%s పైన)"
 
 #: ../src/core/window-props.c:1358
 #, c-format
 msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
-msgstr ""
+msgstr "చెల్లని WM_TRANSIENT_FOR విండో 0x%lx అనునది %s కొరకు తెలుపబడింది.\n"
 
 #: ../src/core/xprops.c:155
 #, c-format
@@ -451,184 +496,189 @@ msgid ""
 "This is most likely an application bug, not a window manager bug.\n"
 "The window has title=\"%s\" class=\"%s\" name=\"%s\"\n"
 msgstr ""
+"విండో 0x%lx లక్షణం %s కలిగివుంది\n"
+"అది రకము %sను ఫార్మాట్ %dను కలిగివుండాలి\n"
+"యదార్ధంగా రకము %s ఫార్మాట్ %d n_items %d కలిగివుంది.\n"
+"ఇది సాదారణంగా వొక అనువర్తనపు బగ్, విండో నిర్వాహిక బగ్ కాదు.\n"
+"విండో title=\"%s\" class=\"%s\" name=\"%s\" కలిగివుంది\n"
 
 #: ../src/core/xprops.c:401
 #, c-format
 msgid "Property %s on window 0x%lx contained invalid UTF-8\n"
-msgstr ""
+msgstr "లక్షణం %s విం‍డో 0x%lx పైన చెల్లని UTF-8 కలిగివుంది\n"
 
 #: ../src/core/xprops.c:484
 #, c-format
 msgid "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
-msgstr ""
+msgstr "లక్షణం %s విండో 0x%lx పైన చెల్లని UTF-8ను జాబితానందలి %d అంశముకొరకు కలిగివుంది\n"
 
 #: ../src/include/all-keybindings.h:88
 msgid "Switch to workspace 1"
-msgstr ""
+msgstr "పనిస్థలము 1కు మారుము"
 
 #: ../src/include/all-keybindings.h:90
 msgid "Switch to workspace 2"
-msgstr ""
+msgstr "పనిస్థలము 2కు మారుము"
 
 #: ../src/include/all-keybindings.h:92
 msgid "Switch to workspace 3"
-msgstr ""
+msgstr "పనిస్థలము 3కు మారుము"
 
 #: ../src/include/all-keybindings.h:94
 msgid "Switch to workspace 4"
-msgstr ""
+msgstr "పనిస్థలము 4కు మారుము"
 
 #: ../src/include/all-keybindings.h:96
 msgid "Switch to workspace 5"
-msgstr ""
+msgstr "పనిస్థలము 5కు మారుము"
 
 #: ../src/include/all-keybindings.h:98
 msgid "Switch to workspace 6"
-msgstr ""
+msgstr "పనిస్థలము 6కు మారుము"
 
 #: ../src/include/all-keybindings.h:100
 msgid "Switch to workspace 7"
-msgstr ""
+msgstr "పనిస్థలము 7కు మారుము"
 
 #: ../src/include/all-keybindings.h:102
 msgid "Switch to workspace 8"
-msgstr ""
+msgstr "పనిస్థలము 8కు మారుము"
 
 #: ../src/include/all-keybindings.h:104
 msgid "Switch to workspace 9"
-msgstr ""
+msgstr "పనిస్థలము 9కు మారుము"
 
 #: ../src/include/all-keybindings.h:106
 msgid "Switch to workspace 10"
-msgstr ""
+msgstr "పనిస్థలము 10కు మారుము"
 
 #: ../src/include/all-keybindings.h:108
 msgid "Switch to workspace 11"
-msgstr ""
+msgstr "పనిస్థలము 11కు మారుము"
 
 #: ../src/include/all-keybindings.h:110
 msgid "Switch to workspace 12"
-msgstr ""
+msgstr "పనిస్థలము 12కు మారుము"
 
 #: ../src/include/all-keybindings.h:122
 msgid "Switch to workspace on the left of the current workspace"
-msgstr ""
+msgstr "ప్రస్తుత పనిస్థలమునకు ఎడమవైపుని పనిస్థలమునకు మారుము"
 
 #: ../src/include/all-keybindings.h:126
 msgid "Switch to workspace on the right of the current workspace"
-msgstr ""
+msgstr "ప్రస్తుత పనిస్థలమునకు కుడివైపుని పనిస్థలమునకు మారుము"
 
 #: ../src/include/all-keybindings.h:130
 msgid "Switch to workspace above the current workspace"
-msgstr ""
+msgstr "ప్రస్తుత పనిస్థలమునకు పైని పనిస్థలమునకు మార్చుము"
 
 #: ../src/include/all-keybindings.h:134
 msgid "Switch to workspace below the current workspace"
-msgstr ""
+msgstr "ప్రస్తుత పనిస్థలమునకు క్రింది పనిస్థలమునకు మార్చుము"
 
 #: ../src/include/all-keybindings.h:150
 msgid "Move between windows of an application, using a popup window"
-msgstr ""
+msgstr "అనువర్తనము యొక్క విండోలమద్య కదులుము, పాపప్ విండో వుపయోగించి"
 
 #: ../src/include/all-keybindings.h:153
 msgid "Move backward between windows of an application, using a popup window"
-msgstr ""
+msgstr "అనువర్తనము యొక్క విండోలమద్య వెనుకకు కదులుము, పాపప్ విండో వుపయోగించి"
 
 #: ../src/include/all-keybindings.h:157
 msgid "Move between windows, using a popup window"
-msgstr ""
+msgstr "విండోల మద్య కదులుము, పాపప్ విండో వుపయోగించి"
 
 #: ../src/include/all-keybindings.h:160
 msgid "Move backward between windows, using a popup window"
-msgstr ""
+msgstr "విండోల మద్య వెనుకకు కదులుము, పాపప్ విండో వుపయోగించి"
 
 #: ../src/include/all-keybindings.h:163
 msgid "Move between panels and the desktop, using a popup window"
-msgstr ""
+msgstr "ప్యానల్సు మరియు డెస్కుటాపు మధ్యన కదులుము, పాపప్ విండో వుపయోగించి"
 
 #: ../src/include/all-keybindings.h:166
 msgid "Move backward between panels and the desktop, using a popup window"
-msgstr ""
+msgstr "ప్యానల్సు మరియు డెస్కుటాపు మద్యన వెనుకకు కదులుము, పాపప్ విండో వుపయోగించి"
 
 #: ../src/include/all-keybindings.h:171
 msgid "Move between windows of an application immediately"
-msgstr ""
+msgstr "అనువర్తనము యొక్క విండోలమద్య తక్షణమే కదులుము"
 
 #: ../src/include/all-keybindings.h:174
 msgid "Move backward between windows of an application immediately"
-msgstr ""
+msgstr "అనువర్తనము యొక్క విండోలమద్య వెనుకకు తక్షణమే కదులుము"
 
 #: ../src/include/all-keybindings.h:177
 msgid "Move between windows immediately"
-msgstr ""
+msgstr "విండోల మధ్య తక్షణమే కదులుము"
 
 #: ../src/include/all-keybindings.h:180
 msgid "Move backward between windows immediately"
-msgstr ""
+msgstr "విండోల మద్యన వెనుకకు తక్షణమే కదులుము"
 
 #: ../src/include/all-keybindings.h:183
 msgid "Move between panels and the desktop immediately"
-msgstr ""
+msgstr "ప్యానల్సు మరియు డెస్కుటాపు మద్యన తక్షణమే కదులుము"
 
 #: ../src/include/all-keybindings.h:186
 msgid "Move backward between panels and the desktop immediately"
-msgstr ""
+msgstr "ప్యానల్సు మరియు డెస్కుటాపు మద్యన వెనుకకు తక్షణమే కదులుము"
 
 #: ../src/include/all-keybindings.h:191
 msgid "Hide all normal windows and set focus to the desktop"
-msgstr ""
+msgstr "అన్ని సాదారణ విండోలను మరుగున వుంచుము మరియు దృష్టిని డెస్కుటాపునకు వుంచుము"
 
 #: ../src/include/all-keybindings.h:194
 msgid "Show the panel's main menu"
-msgstr ""
+msgstr "ప్యానల్ యొక్క ముఖ్యమెనూను చూపుము"
 
 #: ../src/include/all-keybindings.h:197
 msgid "Show the panel's \"Run Application\" dialog box"
-msgstr ""
+msgstr "ప్యానల్ యొక్క \"అనువర్తనము నడుపు\" డైలాగ్ పెట్టెను చూపుము"
 
 #: ../src/include/all-keybindings.h:238
 msgid "Take a screenshot"
-msgstr ""
+msgstr "తెరపట్టును తీయుము"
 
 #: ../src/include/all-keybindings.h:240
 msgid "Take a screenshot of a window"
-msgstr ""
+msgstr "విండోయొక్క తెరపట్టును తీయుము"
 
 #: ../src/include/all-keybindings.h:242
 msgid "Run a terminal"
-msgstr ""
+msgstr "టెర్మినల్ నడుపుము"
 
 #: ../src/include/all-keybindings.h:257
 msgid "Activate the window menu"
-msgstr ""
+msgstr "విండో మెనూను క్రియాశీలముచేయుము"
 
 #: ../src/include/all-keybindings.h:260
 msgid "Toggle fullscreen mode"
-msgstr ""
+msgstr "పూర్తితెర రీతిని మార్చుము"
 
 #: ../src/include/all-keybindings.h:262
 msgid "Toggle maximization state"
-msgstr ""
+msgstr "గరిష్ట స్థితికి మార్చుము"
 
 #: ../src/include/all-keybindings.h:264
 msgid "Toggle whether a window will always be visible over other windows"
-msgstr ""
+msgstr "ఒక విండో యెల్లప్పుడూ యితర విండోలపై కనబడుతూవుంటే మార్చుము"
 
 #: ../src/include/all-keybindings.h:266
 msgid "Maximize window"
-msgstr ""
+msgstr "విండో పెద్దదిచేయి"
 
 #: ../src/include/all-keybindings.h:268
 msgid "Restore window"
-msgstr ""
+msgstr "విండో పూర్వస్థితికి వుంచుము"
 
 #: ../src/include/all-keybindings.h:270
 msgid "Toggle shaded state"
-msgstr ""
+msgstr "షేడెడ్ స్థితిని మార్చుము"
 
 #: ../src/include/all-keybindings.h:272
 msgid "Minimize window"
-msgstr ""
+msgstr "విండో చిన్నది చేయుము"
 
 #: ../src/include/all-keybindings.h:274
 msgid "Close window"
@@ -636,139 +686,139 @@ msgstr "గవాక్షమును మూయుము"
 
 #: ../src/include/all-keybindings.h:276
 msgid "Move window"
-msgstr ""
+msgstr "విండో కదుల్చుము"
 
 #: ../src/include/all-keybindings.h:278
 msgid "Resize window"
-msgstr ""
+msgstr "విండో పూర్వస్థితికి వుంచుము"
 
 #: ../src/include/all-keybindings.h:281
 msgid "Toggle whether window is on all workspaces or just one"
-msgstr ""
+msgstr "విండో అన్ని పనిస్థలములపై వన్నా లేక వొకటే వున్నా మార్చుము"
 
 #: ../src/include/all-keybindings.h:285
 msgid "Move window to workspace 1"
-msgstr ""
+msgstr "విండోను పనిస్థలము 1కు కదుల్చుము"
 
 #: ../src/include/all-keybindings.h:288
 msgid "Move window to workspace 2"
-msgstr ""
+msgstr "విండోను పనిస్థలము 2కు కదుల్చుము"
 
 #: ../src/include/all-keybindings.h:291
 msgid "Move window to workspace 3"
-msgstr ""
+msgstr "విండోను పనిస్థలము 3కు కదుల్చుము"
 
 #: ../src/include/all-keybindings.h:294
 msgid "Move window to workspace 4"
-msgstr ""
+msgstr "విండోను పనిస్థలము 4కు కదుల్చుము"
 
 #: ../src/include/all-keybindings.h:297
 msgid "Move window to workspace 5"
-msgstr ""
+msgstr "విండోను పనిస్థలము 5కు కదుల్చుము"
 
 #: ../src/include/all-keybindings.h:300
 msgid "Move window to workspace 6"
-msgstr ""
+msgstr "విండోను పనిస్థలము 6కు కదుల్చుము"
 
 #: ../src/include/all-keybindings.h:303
 msgid "Move window to workspace 7"
-msgstr ""
+msgstr "విండోను పనిస్థలము 7కు కదుల్చుము"
 
 #: ../src/include/all-keybindings.h:306
 msgid "Move window to workspace 8"
-msgstr ""
+msgstr "విండోను పనిస్థలము 8కు కదుల్చుము"
 
 #: ../src/include/all-keybindings.h:309
 msgid "Move window to workspace 9"
-msgstr ""
+msgstr "విండోను పనిస్థలము 9కు కదుల్చుము"
 
 #: ../src/include/all-keybindings.h:312
 msgid "Move window to workspace 10"
-msgstr ""
+msgstr "విండోను పనిస్థలము 10కు కదుల్చుము"
 
 #: ../src/include/all-keybindings.h:315
 msgid "Move window to workspace 11"
-msgstr ""
+msgstr "విండోను పనిస్థలము 11కు కదుల్చుము"
 
 #: ../src/include/all-keybindings.h:318
 msgid "Move window to workspace 12"
-msgstr ""
+msgstr "విండోను పనిస్థలము 12కు కదుల్చుము"
 
 #: ../src/include/all-keybindings.h:330
 msgid "Move window one workspace to the left"
-msgstr ""
+msgstr "విండోను వొక పనిస్థలము ఎడమనకు కదుల్చుము"
 
 #: ../src/include/all-keybindings.h:333
 msgid "Move window one workspace to the right"
-msgstr ""
+msgstr "విండోను వొక పనిస్థలము కుడికు కదుల్చుము"
 
 #: ../src/include/all-keybindings.h:336
 msgid "Move window one workspace up"
-msgstr ""
+msgstr "విండోను వొక పనిస్థలము పైనకు కదుల్చుము"
 
 #: ../src/include/all-keybindings.h:339
 msgid "Move window one workspace down"
-msgstr ""
+msgstr "విండోను వొక పనిస్థలము క్రిందనకు కదుల్చుము"
 
 #: ../src/include/all-keybindings.h:342
 msgid "Raise window if it's covered by another window, otherwise lower it"
-msgstr ""
+msgstr "ఒక విండో వేరొక విండోతో కప్పివుంటే దానిని వృద్దిచేయుము, లేదా దానిని తగ్గించుము"
 
 #: ../src/include/all-keybindings.h:344
 msgid "Raise window above other windows"
-msgstr ""
+msgstr "విండోను యితర విండోలపైన వృద్దిచేయుము"
 
 #: ../src/include/all-keybindings.h:346
 msgid "Lower window below other windows"
-msgstr ""
+msgstr "విండోను క్రింది యితర విండోలకు తగ్గించుము"
 
 #: ../src/include/all-keybindings.h:350
 msgid "Maximize window vertically"
-msgstr ""
+msgstr "విండోను నిలువుగా పెద్దదిచేయుము"
 
 #: ../src/include/all-keybindings.h:354
 msgid "Maximize window horizontally"
-msgstr ""
+msgstr "విండోను అడ్డముగా పెద్దదిచేయుము"
 
 #: ../src/include/all-keybindings.h:358
 msgid "Move window to north-west (top left) corner"
-msgstr ""
+msgstr "విండోను ఉత్తర-పశ్చిమం (పైఎడమ) మూలకు కదుల్చుము"
 
 #: ../src/include/all-keybindings.h:361
 msgid "Move window to north-east (top right) corner"
-msgstr ""
+msgstr "విండోను ఉత్తర-తూర్పు (పైకుడి) మూలకు కదుల్చుము"
 
 #: ../src/include/all-keybindings.h:364
 msgid "Move window to south-west (bottom left) corner"
-msgstr ""
+msgstr "విండోను దక్షిణ-పశ్చిమం (క్రింది ఎడమ) మూలకు కదుల్చుము"
 
 #: ../src/include/all-keybindings.h:367
 msgid "Move window to south-east (bottom right) corner"
-msgstr ""
+msgstr "విండోను దక్షిణ-తూర్పు (క్రింది కుడి) మూలకు కదుల్చుము"
 
 #: ../src/include/all-keybindings.h:371
 msgid "Move window to north (top) side of screen"
-msgstr ""
+msgstr "విండోను ఉత్తరం (పైన)కు కదుల్చుము"
 
 #: ../src/include/all-keybindings.h:374
 msgid "Move window to south (bottom) side of screen"
-msgstr ""
+msgstr "విండోను దక్షిణ (క్రింది)నకు కదుల్చుము"
 
 #: ../src/include/all-keybindings.h:377
 msgid "Move window to east (right) side of screen"
-msgstr ""
+msgstr "విండోను తూర్పు (కుడి) వైపునకు కదుల్చుము"
 
 #: ../src/include/all-keybindings.h:380
 msgid "Move window to west (left) side of screen"
-msgstr ""
+msgstr "విండోను పశ్చిమ (ఎడమ) వైపునకు కదుల్చుము"
 
 #: ../src/include/all-keybindings.h:383
 msgid "Move window to center of screen"
-msgstr ""
+msgstr "విండోను కేంద్రమునకు కదుల్చుము"
 
 #: ../src/metacity.schemas.in.in.h:1
 msgid "(Not implemented) Navigation works in terms of applications not windows"
-msgstr ""
+msgstr "(యింకా అభివృద్దిపరచలేదు) నావిగేషన్ అనునది అనువర్తనములను అనుసరిస్తుంది విండోలనుకాదు"
 
 #: ../src/metacity.schemas.in.in.h:2
 msgid ""
@@ -777,22 +827,26 @@ msgid ""
 "set to 0. Also, this option is disabled if the titlebar_uses_desktop_font "
 "option is set to true."
 msgstr ""
+"ఒక ఫాంటు వివరణ స్ట్రింగ్ విండో శీర్షికపట్టీల కొరకు ఫాంటును వివరిస్తుంది. "
+"titlebar_font_size ఐచ్చికము 0కు అమర్చితేనే వివరణనుండి పరిమాణం "
+"వుపయోగించబడుతుంది. titlebar_uses_desktop_font ఐచ్చికము సత్యంకు "
+"అమర్చితేనే ఈ ఐచ్చికము అచేతనము చేయబడతుంది."
 
 #: ../src/metacity.schemas.in.in.h:3
 msgid "Action on title bar double-click"
-msgstr ""
+msgstr "శీర్షిక పట్టీ రెండుసార్లు-నొక్కినప్పుడు జరుగవలసిన చర్య"
 
 #: ../src/metacity.schemas.in.in.h:4
 msgid "Action on title bar middle-click"
-msgstr ""
+msgstr "శీర్షిక పట్టీ మద్యనొక్కు-నొక్కినప్పుడు జరుగవలసిన చర్య"
 
 #: ../src/metacity.schemas.in.in.h:5
 msgid "Action on title bar right-click"
-msgstr ""
+msgstr "శీర్షిక పట్టీ కుడి-నొక్కు నొక్కినప్పుడు జరుగవలసిన చర్య"
 
 #: ../src/metacity.schemas.in.in.h:6
 msgid "Arrangement of buttons on the titlebar"
-msgstr ""
+msgstr "శీర్షికపట్టీపై బటన్సు అమరిక"
 
 #: ../src/metacity.schemas.in.in.h:7
 msgid ""
@@ -804,10 +858,16 @@ msgid ""
 "without breaking older versions. A special spacer tag can be used to insert "
 "some space between two adjacent buttons."
 msgstr ""
+"శీర్షిక పట్టీపై బటన్సు అమరిక. విలువ స్ట్రింగై వుండాలి,\"menu:minimize,maximize,spacer,close\" "
+"వంటివి; కోలన్ అనునది విండోయొక్క ఎడమ మూలను కుడి మూలనుండి వేరుచేస్తుంది, మరియు "
+"బటన్ నామములు కామాతో వేరుచేయబడునవి. నకిలీ బటన్సు అనుమతించబడవు. తెలియని బటన్సు "
+"వదిలివేయబడతాయి అలా బటన్సు భవిష్య మెటాసిటి వర్షన్లనందు పాత వర్షన్లను బ్రేక్ చేయకుండా "
+"జతచేయగలుగుతాము. రెండు పక్కపక్క బటన్లకు మద్యన స్పేస్‌ను చేర్చుటకు వొక ప్రత్యేక స్పేసర్ టాగ్ "
+"వుపయోగించబడుతుంది."
 
 #: ../src/metacity.schemas.in.in.h:8
 msgid "Automatically raises the focused window"
-msgstr ""
+msgstr "దృష్టివుంచిన విండోను స్వయంచాలకంగా రెట్టింపుచేస్తుంది"
 
 #: ../src/metacity.schemas.in.in.h:9
 msgid ""
@@ -817,44 +877,50 @@ msgid ""
 "\"mouse_button_resize\" key. Modifier is expressed as \"&lt;Alt&gt;\" or "
 "\"&lt;Super&gt;\" for example."
 msgstr ""
+"ఈ సవరణి కీను పట్టివుంచినప్పుడు విండోపైన నొక్కుటవలన విండో కదులును (ఎడమ నొక్కుకు), "
+"విండో పునఃపరిమాణం జరుగును ( మద్య నొక్కుకు), లేదా విండో మెనూ చూపును (కుడి నొక్కుకు). "
+"ఎడమ మరియు కుడి ఆపరేషన్లు మార్చుకొనవచ్చును \"mouse_button_resize\" కీను వుపయోగించి. "
+"ఉదాహరణకు సవరణి \"&lt;Alt&gt;\" లేదా \"&lt;Super&gt;\"గా తెలియజేయటమైనది."
 
 #: ../src/metacity.schemas.in.in.h:10
 msgid "Commands to run in response to keybindings"
-msgstr ""
+msgstr "కీబందనములకు స్పందనగా నడుపుటకు ఆదేశములు"
 
 #: ../src/metacity.schemas.in.in.h:11
 msgid "Compositing Manager"
-msgstr ""
+msgstr "కంపోజిటింగ్ నిర్వాహిక"
 
 #: ../src/metacity.schemas.in.in.h:12
 msgid "Control how new windows get focus"
-msgstr ""
+msgstr "కొత్త విండోలు యెలా దృష్టిని పొందవలెనో నియంత్రిస్తుంది"
 
 #: ../src/metacity.schemas.in.in.h:13
 msgid "Current theme"
-msgstr ""
+msgstr "ప్రస్తుత థీమ్"
 
 #: ../src/metacity.schemas.in.in.h:14
 msgid "Delay in milliseconds for the auto raise option"
-msgstr ""
+msgstr "స్వయంచాలకంగా రెట్టింపగు ఐచ్చికం కొరకు ఆలస్యం మిల్లిసెకనులలో"
 
 #: ../src/metacity.schemas.in.in.h:15
 msgid "Determines whether Metacity is a compositing manager."
-msgstr ""
+msgstr "మెటాసిటి కంపోజిటింగ్ నిర్వాహిక అవునోకాదో నిర్ధారిస్తుంది."
 
 #: ../src/metacity.schemas.in.in.h:16
 msgid ""
 "Determines whether applications or the system can generate audible 'beeps'; "
 "may be used in conjunction with 'visual bell' to allow silent 'beeps'."
 msgstr ""
+"వినబడే 'బీప్‌లను' జనియింపచేయవలసింది అనువర్తనములో లేక సిస్టమో నిర్ణయిస్తుంది; "
+"నిశ్శబ్ద 'బీప్‌లను' అనుమతించుటకు 'విజువల్ బెల్'తో కంజక్షన్ నందు వినియోగించవచ్చు."
 
 #: ../src/metacity.schemas.in.in.h:17
 msgid "Disable misfeatures that are required by old or broken applications"
-msgstr ""
+msgstr "పాత లేక విరిగిన అనువర్తనములకు అవసరమైన తగనిసౌలభ్యాలను అచేతనము చేయుము"
 
 #: ../src/metacity.schemas.in.in.h:18
 msgid "Enable Visual Bell"
-msgstr ""
+msgstr "విజువల్ బెల్ చేతనముచేయుము"
 
 #: ../src/metacity.schemas.in.in.h:19
 msgid ""
@@ -863,12 +929,18 @@ msgid ""
 "the auto_raise_delay key. This is not related to clicking on a window to "
 "raise it, nor to entering a window during drag-and-drop."
 msgstr ""
+"సత్యమునకు అమర్చితే, మరియు దృష్టి రీతి \"sloppy\" లేదా \"mouse\" అయితే అప్పుడు "
+"దృష్టిపెట్టిన విండో auto_raise_delay కీ ద్వారా తెలుపబడిన సమయం తర్వాత స్వయంచాలకంగా "
+"రెట్టింపుచేయబడుతుంది. లాగి-మరియు-వదులునప్పుడు విండోను ప్రవేశపెట్టుట లేక, రెట్టింపు "
+"చేయుటకు విండోపై నొక్కుట మొదలగువాటికి సంభందించినది కాదు."
 
 #: ../src/metacity.schemas.in.in.h:20
 msgid ""
 "If true, ignore the titlebar_font option, and use the standard application "
 "font for window titles."
 msgstr ""
+"సత్యమైతే, విండో శీర్షికల కొరకు titlebar_font ఐచ్చికాన్ని వదిలివేసి, విండో శీర్షికల కొరకు "
+"ప్రామాణిక అనువర్తనము ఫాంటును వుపయోగించుము."
 
 #: ../src/metacity.schemas.in.in.h:21
 msgid ""
@@ -892,19 +964,19 @@ msgstr ""
 
 #: ../src/metacity.schemas.in.in.h:23
 msgid "If true, trade off usability for less resource usage"
-msgstr ""
+msgstr "సత్యమైతే, తక్కువ వనరుల వినియోగముకు తగ్గించును"
 
 #: ../src/metacity.schemas.in.in.h:24
 msgid "Modifier to use for modified window click actions"
-msgstr ""
+msgstr "సవరించిన విండో నొక్కు చర్యలకు వుపయోగించటానికి సవరణి"
 
 #: ../src/metacity.schemas.in.in.h:25
 msgid "Name of workspace"
-msgstr ""
+msgstr "పనిస్థలము నామము"
 
 #: ../src/metacity.schemas.in.in.h:26
 msgid "Number of workspaces"
-msgstr ""
+msgstr "పనిస్థలముల సంఖ్య"
 
 #: ../src/metacity.schemas.in.in.h:27
 msgid ""
@@ -912,10 +984,12 @@ msgid ""
 "prevent making the desktop unusable by accidentally asking for too many "
 "workspaces."
 msgstr ""
+"పనిస్థలముల సంఖ్య. తప్పక సున్నాకన్నా యెక్కువ వుండాలి, మరియు ప్రమాదవశాత్తు మరీ యెక్కువ "
+"పనిస్థలములను అడుగుటద్వారా డెస్కుటాపును అవినియోగపరచకుండా నిర్ధిష్ట గరిష్టాన్ని కలిగివుండాలి."
 
 #: ../src/metacity.schemas.in.in.h:28
 msgid "Run a defined command"
-msgstr ""
+msgstr "నిర్వచించిన ఆదేశమును నడుపుము"
 
 #: ../src/metacity.schemas.in.in.h:29
 msgid ""
@@ -956,7 +1030,7 @@ msgstr ""
 
 #: ../src/metacity.schemas.in.in.h:32
 msgid "System Bell is Audible"
-msgstr ""
+msgstr "సిస్టమ్ బెల్ వినబడుతోంది"
 
 #: ../src/metacity.schemas.in.in.h:33
 msgid ""
@@ -1001,23 +1075,25 @@ msgstr ""
 
 #: ../src/metacity.schemas.in.in.h:38
 msgid "The name of a workspace."
-msgstr ""
+msgstr "పనిస్థలము నామము"
 
 #: ../src/metacity.schemas.in.in.h:39
 msgid "The screenshot command"
-msgstr ""
+msgstr "తెరపట్టు(స్క్రీన్‌షాట్) ఆదేశము"
 
 #: ../src/metacity.schemas.in.in.h:40
 msgid ""
 "The theme determines the appearance of window borders, titlebar, and so "
 "forth."
-msgstr ""
+msgstr "విండో హద్దులు, శీర్షికపట్టీ, మరియు మిగతావి కనిపించు విధానాన్ని థీమ్ నిర్ణయిస్తుంది."
 
 #: ../src/metacity.schemas.in.in.h:41
 msgid ""
 "The time delay before raising a window if auto_raise is set to true. The "
 "delay is given in thousandths of a second."
 msgstr ""
+"auto_raise సత్యమునకు అమర్చినట్లైతే విండో రెట్టింపు చేయుటకు ముందుగా పట్టవలసిన "
+"సమయం. పట్టేసమయం సెకనులో వెయ్యోవంతులలో యివ్వాలి."
 
 #: ../src/metacity.schemas.in.in.h:42
 msgid ""
@@ -1030,7 +1106,7 @@ msgstr ""
 
 #: ../src/metacity.schemas.in.in.h:43
 msgid "The window screenshot command"
-msgstr ""
+msgstr "విండో తెరపట్టు(స్క్రీన్‌షాట్) ఆదేశము"
 
 #: ../src/metacity.schemas.in.in.h:44
 msgid ""
@@ -1085,32 +1161,32 @@ msgstr ""
 
 #: ../src/metacity.schemas.in.in.h:49
 msgid "Use standard system font in window titles"
-msgstr ""
+msgstr "విండో శీర్షికలనందు ప్రామాణిక సిస్టమ్ ఫాంటును వుపయోగించుము"
 
 #: ../src/metacity.schemas.in.in.h:50
 msgid "Visual Bell Type"
-msgstr ""
+msgstr "విజువల్ బెల్ రకము"
 
 #: ../src/metacity.schemas.in.in.h:51
 msgid "Whether raising should be a side-effect of other user interactions"
-msgstr ""
+msgstr "రెట్టింపు కావడం అనునది యితర వినియోగదారి యింటరాక్షన్సుకు ఉప-ప్రభావంలా వుండాలా"
 
 #: ../src/metacity.schemas.in.in.h:52
 msgid "Whether to resize with the right button"
-msgstr ""
+msgstr "కుడి బటన్‌తో పునఃపరిమాణము చేయాలా"
 
 #: ../src/metacity.schemas.in.in.h:53
 msgid "Window focus mode"
-msgstr ""
+msgstr "విండో దృష్టి రీతి"
 
 #: ../src/metacity.schemas.in.in.h:54
 msgid "Window title font"
-msgstr ""
+msgstr "విండో శీర్షిక ఫాంటు"
 
 #: ../src/tools/metacity-message.c:150
 #, c-format
 msgid "Usage: %s\n"
-msgstr ""
+msgstr "వినియోగము: %s\n"
 
 #: ../src/ui/frames.c:1118
 msgid "Close Window"
@@ -1118,43 +1194,43 @@ msgstr "గవాక్షమును మూసివేయు"
 
 #: ../src/ui/frames.c:1121
 msgid "Window Menu"
-msgstr ""
+msgstr "విండో మెనూ"
 
 #: ../src/ui/frames.c:1124
 msgid "Minimize Window"
-msgstr ""
+msgstr "విండోను క్రిందకుమూయుము"
 
 #: ../src/ui/frames.c:1127
 msgid "Maximize Window"
-msgstr ""
+msgstr "విండోను పెద్దదిచేయుము"
 
 #: ../src/ui/frames.c:1130
 msgid "Restore Window"
-msgstr ""
+msgstr "విండోను పూర్వస్థితికి వుంచుము"
 
 #: ../src/ui/frames.c:1133
 msgid "Roll Up Window"
-msgstr ""
+msgstr "విండోను చుట్టుము"
 
 #: ../src/ui/frames.c:1136
 msgid "Unroll Window"
-msgstr ""
+msgstr "విండో చుట్టుతీయుము"
 
 #: ../src/ui/frames.c:1139
 msgid "Keep Window On Top"
-msgstr ""
+msgstr "విండోను పైన వుంచుము"
 
 #: ../src/ui/frames.c:1142
 msgid "Remove Window From Top"
-msgstr ""
+msgstr "విండోను పైననుండి తీసివేయుము"
 
 #: ../src/ui/frames.c:1145
 msgid "Always On Visible Workspace"
-msgstr ""
+msgstr "ఎల్లప్పుడూ కనిపిస్తున్న పనిస్థలము"
 
 #: ../src/ui/frames.c:1148
 msgid "Put Window On Only One Workspace"
-msgstr ""
+msgstr "విండో వొక పనిస్థలమునందు మాత్రమే వుంచుము"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:70
@@ -1174,12 +1250,12 @@ msgstr "గరిష్టీకరించకు"
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:76
 msgid "Roll _Up"
-msgstr ""
+msgstr "చుట్టుము (_U)"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:78
 msgid "_Unroll"
-msgstr ""
+msgstr "చుట్టుతీయుము (_U)"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:80
@@ -1194,23 +1270,23 @@ msgstr "పున: పరిమాణము(_R)"
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:84
 msgid "Move Titlebar On_screen"
-msgstr ""
+msgstr "శీర్షికపట్టీను తెరపైనకు కదుపుము (_s)"
 
 #. separator
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:87 ../src/ui/menu.c:89
 msgid "Always on _Top"
-msgstr ""
+msgstr "ఎల్లప్పుడూ పైన వుంచుము (_T)"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:91
 msgid "_Always on Visible Workspace"
-msgstr ""
+msgstr "ఎల్లప్పుడూ కనిపిస్తున్న పనిస్థలమునందు (_A)"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:93
 msgid "_Only on This Workspace"
-msgstr ""
+msgstr "ఈ పనిస్థలమునందు మాత్రమే (_O)"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:95
@@ -1241,17 +1317,17 @@ msgstr "మూయుము (_C)"
 #: ../src/ui/menu.c:203
 #, c-format
 msgid "Workspace %d%n"
-msgstr ""
+msgstr "పనిస్థలము %d%n"
 
 #: ../src/ui/menu.c:213
 #, c-format
 msgid "Workspace 1_0"
-msgstr ""
+msgstr "పనిస్థలము 1_0"
 
 #: ../src/ui/menu.c:215
 #, c-format
 msgid "Workspace %s%d"
-msgstr ""
+msgstr "పనిస్థలము %s%d"
 
 #: ../src/ui/menu.c:395
 msgid "Move to Another _Workspace"
@@ -1318,7 +1394,7 @@ msgstr "హైపర్"
 #.
 #: ../src/ui/metaaccellabel.c:140
 msgid "Mod2"
-msgstr ""
+msgstr "Mod2"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the mod3 key. If the text on this key isn't typically
@@ -1327,7 +1403,7 @@ msgstr ""
 #.
 #: ../src/ui/metaaccellabel.c:146
 msgid "Mod3"
-msgstr ""
+msgstr "Mod3"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the mod4 key. If the text on this key isn't typically
@@ -1336,7 +1412,7 @@ msgstr ""
 #.
 #: ../src/ui/metaaccellabel.c:152
 msgid "Mod4"
-msgstr ""
+msgstr "Mod4"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the mod5 key. If the text on this key isn't typically
@@ -1345,18 +1421,20 @@ msgstr ""
 #.
 #: ../src/ui/metaaccellabel.c:158
 msgid "Mod5"
-msgstr ""
+msgstr "Mod5"
 
 #: ../src/ui/metacity-dialog.c:90
 #, c-format
 msgid "\"%s\" is not responding."
-msgstr ""
+msgstr "\"%s\" స్పందించుటలేదు."
 
 #: ../src/ui/metacity-dialog.c:97
 msgid ""
 "You may choose to wait a short while for it to continue or force the "
 "application to quit entirely."
 msgstr ""
+"మీరు దానిని కొనసాగించుటకు కొంత సమయం వేచివుండవచ్చు లేదా అనువర్తనమును "
+"మొత్తం మూసివేయుటకు బలవంతం చేయవచ్చు."
 
 #: ../src/ui/metacity-dialog.c:107
 msgid "_Wait"
@@ -1364,7 +1442,7 @@ msgstr "_ఆగుము"
 
 #: ../src/ui/metacity-dialog.c:109
 msgid "_Force Quit"
-msgstr ""
+msgstr "బలవంతపు నిష్క్రమణ (_F)"
 
 #: ../src/ui/metacity-dialog.c:206
 msgid "Title"
@@ -1379,6 +1457,8 @@ msgid ""
 "These windows do not support \"save current setup\" and will have to be "
 "restarted manually next time you log in."
 msgstr ""
+"ఈ విండోలు \"ప్రస్తుత అమర్పును దాయి\" ఐచ్చికమును మద్దతునీయవు అందువలన మీరు "
+"తరువాతి సారి లాగినైనప్పుడు మానవీయంగా ప్రారంభించవలసి వుంటుంది."
 
 #: ../src/ui/metacity-dialog.c:310
 #, c-format
@@ -1386,6 +1466,8 @@ msgid ""
 "There was an error running \"%s\":\n"
 "%s."
 msgstr ""
+"అక్కడు వొక దోషము నడుచుచున్నది \"%s\":\n"
+"%s."
 
 #. Translators: This represents the size of a window.  The first number is
 #. * the width of the window and the second is the height.
@@ -1393,15 +1475,15 @@ msgstr ""
 #: ../src/ui/resizepopup.c:113
 #, c-format
 msgid "%d x %d"
-msgstr ""
+msgstr "%d x %d"
 
 #: ../src/ui/theme.c:254
 msgid "top"
-msgstr ""
+msgstr "పైనకు"
 
 #: ../src/ui/theme.c:256
 msgid "bottom"
-msgstr ""
+msgstr "క్రిందకు"
 
 #: ../src/ui/theme.c:258
 msgid "left"
@@ -1414,27 +1496,27 @@ msgstr "కుడి"
 #: ../src/ui/theme.c:287
 #, c-format
 msgid "frame geometry does not specify \"%s\" dimension"
-msgstr ""
+msgstr "చట్రపు జామెట్రీ \"%s\" కొలతను తెలుపుటలేదు"
 
 #: ../src/ui/theme.c:306
 #, c-format
 msgid "frame geometry does not specify dimension \"%s\" for border \"%s\""
-msgstr ""
+msgstr "చట్రపు జామెట్రీ కొలత \"%s\"ను హద్దు \"%s\" కొరకు తెలుపుటలేదు"
 
 #: ../src/ui/theme.c:343
 #, c-format
 msgid "Button aspect ratio %g is not reasonable"
-msgstr ""
+msgstr "బటన్ యాస్పెక్ట్ నిష్పత్తి %g తగినట్లుగా లేదు"
 
 #: ../src/ui/theme.c:355
 #, c-format
 msgid "Frame geometry does not specify size of buttons"
-msgstr ""
+msgstr "చట్రపు జామెట్రీ బటన్సు యొక్క పరిమాణమును తెలుపుటలేదు"
 
 #: ../src/ui/theme.c:1020
 #, c-format
 msgid "Gradients should have at least two colors"
-msgstr ""
+msgstr "గ్రేడియంట్లు కనీసం రెండు రంగులను కలిగివుండాలి"
 
 #: ../src/ui/theme.c:1146
 #, c-format
@@ -1442,6 +1524,8 @@ msgid ""
 "GTK color specification must have the state in brackets, e.g. gtk:fg[NORMAL] "
 "where NORMAL is the state; could not parse \"%s\""
 msgstr ""
+"GTK రంగు విశదీకరణ తప్పక స్థితిని బ్రాకెట్లనందు కలిగివుండాలి, ఉ.దా. gtk:fg[NORMAL] "
+"యిచట NORMAL అంటే స్థితి; \"%s\" పార్శ్ చేయలేదు"
 
 #: ../src/ui/theme.c:1160
 #, c-format
@@ -1449,11 +1533,13 @@ msgid ""
 "GTK color specification must have a close bracket after the state, e.g. gtk:"
 "fg[NORMAL] where NORMAL is the state; could not parse \"%s\""
 msgstr ""
+"GTK రంగు విశదీకరణము తప్పక దగ్గిరి బ్రాకెట్‌ను స్థితి తర్వాత గలిగివుండాలి, ఉ.దా. gtk:"
+"fg[NORMAL] యిచట NORMAL అనునది స్థితి, \"%s\" పార్శ్ చేయలేదు"
 
 #: ../src/ui/theme.c:1171
 #, c-format
 msgid "Did not understand state \"%s\" in color specification"
-msgstr ""
+msgstr "స్థితి \"%s\"ను రంగు విశదీకరణనందు అర్ధముచేసికొనలేదు"
 
 #: ../src/ui/theme.c:1184
 #, c-format
