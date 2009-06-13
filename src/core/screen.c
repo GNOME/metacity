@@ -592,6 +592,7 @@ meta_screen_new (MetaDisplay *display,
   screen->tile_preview_timeout_id = 0;
 
   screen->stack = meta_stack_new (screen);
+  screen->stack_tracker = meta_stack_tracker_new (screen);
 
   meta_prefs_add_listener (prefs_changed_callback, screen);
 
@@ -665,6 +666,7 @@ meta_screen_free (MetaScreen *screen,
   meta_ui_free (screen->ui);
 
   meta_stack_free (screen->stack);
+  meta_stack_tracker_free (screen->stack_tracker);
 
   meta_error_trap_push (screen->display);
   XSelectInput (screen->display->xdisplay, screen->xroot, 0);

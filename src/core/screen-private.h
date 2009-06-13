@@ -34,6 +34,7 @@
 #include "display-private.h"
 #include "screen.h"
 #include <X11/Xutil.h>
+#include "stack-tracker.h"
 #include "ui.h"
 
 typedef struct _MetaXineramaScreenInfo MetaXineramaScreenInfo;
@@ -91,6 +92,7 @@ struct _MetaScreen
   GList *workspaces;
 
   MetaStack *stack;
+  MetaStackTracker *stack_tracker;
 
   MetaCursor current_cursor;
 

@@ -82,6 +82,8 @@ metacity_SOURCES= 				\
 	core/session.h				\
 	core/stack.c				\
 	core/stack.h				\
+	core/stack-tracker.c			\
+	core/stack-tracker.h			\
 	core/window-props.c			\
 	core/window-props.h			\
 	core/window.c				\

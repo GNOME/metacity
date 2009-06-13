@@ -77,7 +77,8 @@ Window meta_ui_create_frame_window (MetaUI  *ui,
                                     gint     x,
                                     gint     y,
                                     gint     width,
-                                    gint     height);
+                                    gint     height,
+                                    gulong  *create_serial);
 
 void meta_ui_destroy_frame_window (MetaUI *ui,
 				   Window  xwindow);

@@ -355,7 +355,8 @@ meta_ui_create_frame_window (MetaUI  *ui,
                              gint     x,
                              gint     y,
                              gint     width,
-                             gint     height)
+                             gint     height,
+                             gulong  *create_serial)
 {
   GdkScreen *screen = gdk_screen_get_default ();
   GdkWindowAttr attrs;
@@ -400,6 +401,12 @@ meta_ui_create_frame_window (MetaUI  *ui,
 
   attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
 
+  /* We make an assumption that gdk_window_new() is going to call
+   * XCreateWindow as it's first operation; this seems to be true currently
+   * as long as you pass in a colormap.
+   */
+  if (create_serial)
+    *create_serial = XNextRequest (xdisplay);
   window =
     gdk_window_new (gdk_screen_get_root_window(screen),
 		    &attrs, attributes_mask);

@@ -83,6 +83,7 @@ meta_window_ensure_frame (MetaWindow *window)
 {
   MetaFrame *frame;
   XSetWindowAttributes attrs;
+  gulong create_serial;
 
   if (window->frame)
     return;
@@ -117,7 +118,12 @@ meta_window_ensure_frame (MetaWindow *window)
                                                 frame->rect.x,
                                                 frame->rect.y,
                                                 frame->rect.width,
-                                                frame->rect.height);
+                                                frame->rect.height,
+                                                &create_serial);
+
+  meta_stack_tracker_record_add (window->screen->stack_tracker,
+                                 frame->xwindow,
+                                 create_serial);
 
   meta_verbose ("Frame for %s is 0x%lx\n", frame->window->desc, frame->xwindow);
   attrs.event_mask = EVENT_MASK;
@@ -147,6 +153,10 @@ meta_window_ensure_frame (MetaWindow *window)
   /* window was reparented to this position */
   window->rect.x = 0;
   window->rect.y = 0;
+
+  meta_stack_tracker_record_remove (window->screen->stack_tracker,
+                                    window->xwindow,
+                                    XNextRequest (window->display->xdisplay));
 
   XReparentWindow (window->display->xdisplay,
                    window->xwindow,
@@ -214,6 +224,11 @@ meta_window_destroy_frame (MetaWindow *window)
                   "Incrementing unmaps_pending on %s for reparent back to root\n", window->desc);
       window->unmaps_pending += 1;
     }
+
+  meta_stack_tracker_record_add (window->screen->stack_tracker,
+                                 window->xwindow,
+                                 XNextRequest (window->display->xdisplay));
+
   XReparentWindow (window->display->xdisplay,
                    window->xwindow,
                    window->screen->xroot,
