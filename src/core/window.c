@@ -774,6 +774,13 @@ meta_window_new_with_attrs (MetaDisplay       *display,
   /* Sync stack changes */
   meta_stack_thaw (window->screen->stack);
 
+  /* Usually the we'll have queued a stack sync anyways, because we've
+   * added a new frame window or restacked. But if an undecorated
+   * window is mapped, already stacked in the right place, then we
+   * might need to do this explicitly.
+   */
+  meta_stack_tracker_queue_sync_stack (window->screen->stack_tracker);
+
   /* disable show desktop mode unless we're a desktop component */
   maybe_leave_show_desktop_mode (window);
 
@@ -1080,6 +1087,12 @@ meta_window_free (MetaWindow  *window,
 
   if (window->frame)
     meta_window_destroy_frame (window);
+
+  /* If an undecorated window is being withdrawn, that will change the
+   * stack as presented to the compositing manager, without actually
+   * changing the stacking order of X windows.
+   */
+  meta_stack_tracker_queue_sync_stack (window->screen->stack_tracker);
 
   if (window->withdrawn)
     {

@@ -830,6 +830,9 @@ meta_screen_composite_all_windows (MetaScreen *screen)
 
   g_list_foreach (windows, (GFunc)g_free, NULL);
   g_list_free (windows);
+
+  /* initialize the compositor's view of the stacking order */
+  meta_stack_tracker_sync_stack (screen->stack_tracker);
 }
 
 MetaScreen*

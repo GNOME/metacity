@@ -21,6 +21,7 @@
 
 #include <string.h>
 
+#include "meta-compositor.h"
 #include "screen-private.h"
 #include "stack-tracker.h"
 #include "util.h"
@@ -126,6 +127,11 @@ struct _MetaStackTracker
    * on requests we've made subsequent to server_stack
    */
   GArray *predicted_stack;
+
+  /* Idle function used to sync the compositor's view of the window
+   * stack up with our best guess before a frame is drawn.
+   */
+  guint sync_stack_idle;
 };
 
 static void
@@ -209,7 +215,8 @@ find_window (GArray *stack,
   return -1;
 }
 
-static void
+/* Returns TRUE if stack was changed */
+static gboolean
 move_window_above (GArray *stack,
                    Window  window,
                    int     old_pos,
@@ -223,6 +230,8 @@ move_window_above (GArray *stack,
         g_array_index (stack, Window, i) = g_array_index (stack, Window, i + 1);
 
       g_array_index (stack, Window, above_pos) = window;
+
+      return TRUE;
     }
   else if (old_pos > above_pos + 1)
     {
@@ -230,10 +239,15 @@ move_window_above (GArray *stack,
         g_array_index (stack, Window, i) = g_array_index (stack, Window, i - 1);
 
       g_array_index (stack, Window, above_pos + 1) = window;
+
+      return TRUE;
     }
+  else
+    return FALSE;
 }
 
-static void
+/* Returns TRUE if stack was changed */
+static gboolean
 meta_stack_op_apply (MetaStackOp *op,
                      GArray      *stack)
 {
@@ -246,12 +260,13 @@ meta_stack_op_apply (MetaStackOp *op,
           {
             g_warning ("STACK_OP_ADD: window %#lx already in stack",
                        op->add.window);
-            return;
+            return FALSE;
           }
 
         g_array_append_val (stack, op->add.window);
-        break;
+        return TRUE;
       }
+      break;
     case STACK_OP_REMOVE:
       {
         int old_pos = find_window (stack, op->remove.window);
@@ -259,12 +274,13 @@ meta_stack_op_apply (MetaStackOp *op,
           {
             g_warning ("STACK_OP_REMOVE: window %#lx not in stack",
                        op->remove.window);
-            return;
+            return FALSE;
           }
 
         g_array_remove_index (stack, old_pos);
-        break;
+        return TRUE;
       }
+      break;
     case STACK_OP_RAISE_ABOVE:
       {
         int old_pos = find_window (stack, op->raise_above.window);
@@ -273,7 +289,7 @@ meta_stack_op_apply (MetaStackOp *op,
           {
             g_warning ("STACK_OP_RAISE_ABOVE: window %#lx not in stack",
                        op->raise_above.window);
-            return;
+            return FALSE;
           }
 
         if (op->raise_above.sibling != None)
@@ -283,7 +299,7 @@ meta_stack_op_apply (MetaStackOp *op,
               {
                 g_warning ("STACK_OP_RAISE_ABOVE: sibling window %#lx not in stack",
                            op->raise_above.sibling);
-                return;
+                return FALSE;
               }
           }
         else
@@ -291,9 +307,9 @@ meta_stack_op_apply (MetaStackOp *op,
             above_pos = -1;
           }
 
-        move_window_above (stack, op->raise_above.window, old_pos, above_pos);
-        break;
+        return move_window_above (stack, op->raise_above.window, old_pos, above_pos);
       }
+      break;
     case STACK_OP_LOWER_BELOW:
       {
         int old_pos = find_window (stack, op->lower_below.window);
@@ -302,7 +318,7 @@ meta_stack_op_apply (MetaStackOp *op,
           {
             g_warning ("STACK_OP_LOWER_BELOW: window %#lx not in stack",
                        op->lower_below.window);
-            return;
+            return FALSE;
           }
 
         if (op->lower_below.sibling != None)
@@ -312,7 +328,7 @@ meta_stack_op_apply (MetaStackOp *op,
               {
                 g_warning ("STACK_OP_LOWER_BELOW: sibling window %#lx not in stack",
                            op->lower_below.sibling);
-                return;
+                return FALSE;
               }
 
             above_pos = below_pos - 1;
@@ -322,12 +338,15 @@ meta_stack_op_apply (MetaStackOp *op,
             above_pos = stack->len - 1;
           }
 
-        move_window_above (stack, op->lower_below.window, old_pos, above_pos);
-        break;
+        return move_window_above (stack, op->lower_below.window, old_pos, above_pos);
       }
+      break;
     default:
       break;
     }
+
+  g_assert_not_reached ();
+  return FALSE;
 }
 
 static GArray *
@@ -369,6 +388,9 @@ meta_stack_tracker_new (MetaScreen *screen)
 void
 meta_stack_tracker_free (MetaStackTracker *tracker)
 {
+  if (tracker->sync_stack_idle)
+    g_source_remove (tracker->sync_stack_idle);
+
   g_array_free (tracker->server_stack, TRUE);
   if (tracker->predicted_stack)
     g_array_free (tracker->predicted_stack, TRUE);
@@ -384,8 +406,10 @@ stack_tracker_queue_request (MetaStackTracker *tracker,
 {
   meta_stack_op_dump (op, "Queueing: ", "\n");
   g_queue_push_tail (tracker->queued_requests, op);
-  if (tracker->predicted_stack)
-    meta_stack_op_apply (op, tracker->predicted_stack);
+  if (!tracker->predicted_stack ||
+      meta_stack_op_apply (op, tracker->predicted_stack))
+    meta_stack_tracker_queue_sync_stack (tracker);
+
   meta_stack_tracker_dump (tracker);
 }
 
@@ -511,6 +535,8 @@ stack_tracker_event_received (MetaStackTracker *tracker,
     }
 
   meta_stack_tracker_dump (tracker);
+
+  meta_stack_tracker_queue_sync_stack (tracker);
 }
 
 void
@@ -629,4 +655,74 @@ meta_stack_tracker_get_stack (MetaStackTracker *tracker,
     *windows = (Window *)stack->data;
   if (n_windows)
     *n_windows = stack->len;
+}
+
+/**
+ * meta_stack_tracker_sync_stack:
+ * @tracker: a #MetaStackTracker
+ *
+ * Informs the compositor of the current stacking order of windows,
+ * based on the predicted view maintained by the #MetaStackTracker.
+ */
+void
+meta_stack_tracker_sync_stack (MetaStackTracker *tracker)
+{
+  GList *meta_windows;
+  Window *windows;
+  int n_windows;
+  int i;
+
+  if (tracker->sync_stack_idle)
+    {
+      g_source_remove (tracker->sync_stack_idle);
+      tracker->sync_stack_idle = 0;
+    }
+
+  meta_stack_tracker_get_stack (tracker, &windows, &n_windows);
+
+  meta_windows = NULL;
+  for (i = 0; i < n_windows; i++)
+    {
+      MetaWindow *meta_window;
+
+      meta_window = meta_display_lookup_x_window (tracker->screen->display,
+                                                  windows[i]);
+      if (meta_window)
+        meta_windows = g_list_prepend (meta_windows, meta_window);
+    }
+
+  meta_compositor_sync_stack (tracker->screen->display->compositor, meta_windows);
+  g_list_free (meta_windows);
+}
+
+static gboolean
+stack_tracker_sync_stack_idle (gpointer data)
+{
+  meta_stack_tracker_sync_stack (data);
+
+  return FALSE;
+}
+
+/**
+ * meta_stack_tracker_queue_sync_stack:
+ * @tracker: a #MetaStackTracker
+ *
+ * Queue informing the compositor of the new stacking order before the
+ * next redraw. (See meta_stack_tracker_sync_stack()). This is called
+ * internally when the stack of X windows changes, but also needs be
+ * called directly when we an undecorated window is first shown or
+ * withdrawn since the compositor's stacking order (which contains only
+ * the windows that have a corresponding MetaWindow) will change without
+ * any change to the stacking order of the X windows, if we are creating
+ * or destroying MetaWindows.
+ */
+void
+meta_stack_tracker_queue_sync_stack (MetaStackTracker *tracker)
+{
+  if (tracker->sync_stack_idle == 0)
+    {
+      tracker->sync_stack_idle = g_idle_add_full (META_PRIORITY_BEFORE_REDRAW,
+                                                  stack_tracker_sync_stack_idle,
+                                                  tracker, NULL);
+    }
 }
