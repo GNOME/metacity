@@ -734,8 +734,10 @@ meta_window_new_with_attrs (MetaDisplay       *display,
    * and thus constraints may try to auto-fullscreen it which also
    * means restacking it.
    */
-  meta_stack_add (window->screen->stack,
-                  window);
+  if (!window->override_redirect)
+    meta_stack_add (window->screen->stack, window);
+  else
+    window->layer = META_LAYER_OVERRIDE_REDIRECT; /* otherwise set by MetaStack */
 
   /* Put our state back where it should be,
    * passing TRUE for is_configure_request, ICCCM says
@@ -1083,7 +1085,8 @@ meta_window_free (MetaWindow  *window,
     }
 #endif
 
-  meta_stack_remove (window->screen->stack, window);
+  if (!window->override_redirect)
+    meta_stack_remove (window->screen->stack, window);
 
   if (window->frame)
     meta_window_destroy_frame (window);
