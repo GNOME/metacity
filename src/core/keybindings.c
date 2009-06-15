@@ -467,7 +467,7 @@ regrab_key_bindings (MetaDisplay *display)
   meta_screen_ungrab_keys (display->screen);
   meta_screen_grab_keys (display->screen);
 
-  windows = meta_display_list_windows (display);
+  windows = meta_display_list_windows (display, META_LIST_DEFAULT);
   tmp = windows;
   while (tmp != NULL)
     {

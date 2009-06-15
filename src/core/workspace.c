@@ -484,7 +484,8 @@ meta_workspace_list_windows (MetaWorkspace *workspace)
   GSList *tmp;
   GList *workspace_windows;
 
-  display_windows = meta_display_list_windows (workspace->screen->display);
+  display_windows = meta_display_list_windows (workspace->screen->display,
+                                               META_LIST_DEFAULT);
 
   workspace_windows = NULL;
   tmp = display_windows;

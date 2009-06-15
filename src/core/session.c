@@ -880,7 +880,7 @@ save_state (void)
   fprintf (outfile, "<metacity_session id=\"%s\">\n",
            client_id);
 
-  windows = meta_display_list_windows (meta_get_display ());
+  windows = meta_display_list_windows (meta_get_display (), META_LIST_DEFAULT);
   stack_position = 0;
 
   windows = g_slist_sort (windows, meta_display_stack_cmp);
@@ -1758,7 +1758,7 @@ warn_about_lame_clients_and_finish_interact (gboolean shutdown)
   GSList *columns = NULL;
   GPid pid;
 
-  windows = meta_display_list_windows (meta_get_display ());
+  windows = meta_display_list_windows (meta_get_display (), META_LIST_DEFAULT);
   tmp = windows;
   while (tmp != NULL)
     {
