@@ -71,12 +71,13 @@ typedef struct MetaWindowPropHooks
   ReloadValueFunc   reload_func;
 } MetaWindowPropHooks;
 
-static void init_prop_value            (MetaDisplay   *display,
-                                        Atom           property,
-                                        MetaPropValue *value);
-static void reload_prop_value          (MetaWindow    *window,
-                                        MetaPropValue *value,
-                                        gboolean       initial);
+static void init_prop_value            (MetaDisplay         *display,
+                                        MetaWindowPropHooks *hooks,
+                                        MetaPropValue       *value);
+static void reload_prop_value          (MetaWindow          *window,
+                                        MetaWindowPropHooks *hooks,
+                                        MetaPropValue       *value,
+                                        gboolean             initial);
 static MetaWindowPropHooks* find_hooks (MetaDisplay *display,
                                         Atom         property);
 
@@ -130,7 +131,8 @@ meta_window_reload_properties_from_xwindow (MetaWindow *window,
   i = 0;
   while (i < n_properties)
     {
-      init_prop_value (window->display, properties[i], &values[i]);
+      MetaWindowPropHooks *hooks = find_hooks (window->display, properties[i]);
+      init_prop_value (window->display, hooks, &values[i]);
       ++i;
     }
   
@@ -140,7 +142,8 @@ meta_window_reload_properties_from_xwindow (MetaWindow *window,
   i = 0;
   while (i < n_properties)
     {
-      reload_prop_value (window, &values[i], initial);
+      MetaWindowPropHooks *hooks = find_hooks (window->display, properties[i]);
+      reload_prop_value (window, hooks, &values[i], initial);
       
       ++i;
     }
@@ -152,12 +155,10 @@ meta_window_reload_properties_from_xwindow (MetaWindow *window,
 
 /* Fill in the MetaPropValue used to get the value of "property" */
 static void
-init_prop_value (MetaDisplay   *display,
-                 Atom           property,
-                 MetaPropValue *value)
-{
-  MetaWindowPropHooks *hooks = find_hooks (display, property);
-    
+init_prop_value (MetaDisplay         *display,
+                 MetaWindowPropHooks *hooks,
+                 MetaPropValue       *value)
+{ 
   if (!hooks || hooks->type == META_PROP_VALUE_INVALID)
     {
       value->type = META_PROP_VALUE_INVALID;
@@ -166,17 +167,16 @@ init_prop_value (MetaDisplay   *display,
   else
     {
       value->type = hooks->type;
-      value->atom = property;
+      value->atom = hooks->property;
     }
 }
 
 static void
-reload_prop_value (MetaWindow    *window,
-                   MetaPropValue *value,
-                   gboolean       initial)
+reload_prop_value (MetaWindow          *window,
+                   MetaWindowPropHooks *hooks,
+                   MetaPropValue       *value,
+                   gboolean             initial)
 {
-  MetaWindowPropHooks *hooks = find_hooks (window->display, value->atom);
-
   if (hooks && hooks->reload_func != NULL)
     (* hooks->reload_func) (window, value, initial);
 }
