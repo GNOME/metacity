@@ -2300,7 +2300,7 @@ msgstr "_Lukk"
 #: ../src/ui/menu.c:203
 #, c-format
 msgid "Workspace %d%n"
-msgstr "Arbeidsflate %d"
+msgstr "Arbeidsflate %d%n"
 
 #: ../src/ui/menu.c:213
 #, c-format
