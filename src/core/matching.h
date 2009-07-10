@@ -27,36 +27,8 @@
 #include "common.h"
 #include "window.h"
 
-/**
- * Represents the position of a given window on a display.
- */
-typedef struct
-{
-  gint x;
-  gint y;
-  guint width;
-  guint height;
-  guint workspace;
-  /* XXX should we store gravity? */
-  /* FIXME: also:
-
-  guint on_all_workspaces : 1;
-  guint minimized : 1;
-  guint maximized : 1;
-
-  guint stack_position_set : 1;
-  guint geometry_set : 1;
-  guint on_all_workspaces_set : 1;
-  guint minimized_set : 1;
-  guint maximized_set : 1;
-  guint saved_rect_set : 1;
-  */
-
-
-} MetaMatching;
-
 /* XXX rename to meta_window_... now the first param is a window */
-MetaMatching* meta_matching_load_from_role (MetaWindow *window, gchar *role);
+void meta_matching_load_from_role (MetaWindow *window, gchar *role);
 
 void meta_matching_save_to_role (MetaWindow *window, gchar *role);
 

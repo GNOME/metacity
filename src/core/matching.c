@@ -41,13 +41,12 @@ load_matching_data (void)
   /* FIXME: would be helpful to add a leading comment */
 }
 
-MetaMatching*
+void
 meta_matching_load_from_role (MetaWindow *window, gchar *role)
 {
   load_matching_data ();
 
   /* stub */
-  return NULL;
 }
 
 void
