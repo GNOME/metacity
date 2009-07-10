@@ -55,9 +55,21 @@ get_window_role (MetaWindow *window)
 void
 meta_matching_load_from_role (MetaWindow *window)
 {
+  gint x, y, w, h;
+  gchar *role = get_window_role (window);
+
+  if (!role)
+      return;
+
   load_matching_data ();
 
-  /* stub */
+  /* FIXME error checking */
+  x = g_key_file_get_integer (matching_keyfile, role, "x", NULL);
+  y = g_key_file_get_integer (matching_keyfile, role, "y", NULL);
+  w = g_key_file_get_integer (matching_keyfile, role, "w", NULL);
+  h = g_key_file_get_integer (matching_keyfile, role, "h", NULL);
+
+  
 }
 
 void
