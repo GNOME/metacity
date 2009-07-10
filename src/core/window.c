@@ -3293,7 +3293,6 @@ meta_window_move_resize_internal (MetaWindow          *window,
   if ((flags & (META_IS_MOVE_ACTION | META_IS_RESIZE_ACTION)) == 
       META_IS_RESIZE_ACTION)
     { 
-      g_warning ("Only resizing\n");
       meta_rectangle_resize_with_gravity (&old_rect,
                                           &new_rect,
                                           gravity,
@@ -3306,7 +3305,6 @@ meta_window_move_resize_internal (MetaWindow          *window,
     }
   else if (is_configure_request || do_gravity_adjust)
     {      
-      g_warning ("Adjst for gravity\n");
       adjust_for_gravity (window,
                           window->frame ? &fgeom : NULL,
                           /* configure request coords assume
@@ -3571,7 +3569,7 @@ meta_window_move_resize_internal (MetaWindow          *window,
       {
         int newx, newy;
         meta_window_get_position (window, &newx, &newy);
-        meta_warning (/*META_DEBUG_GEOMETRY,*/
+        meta_topic (META_DEBUG_GEOMETRY,
                     "Syncing new client geometry %d,%d %dx%d, border: %s pos: %s size: %s\n",
                     newx, newy,
                     window->rect.width, window->rect.height,
@@ -3626,7 +3624,7 @@ meta_window_move_resize_internal (MetaWindow          *window,
     {
       int newx, newy;
       meta_window_get_position (window, &newx, &newy);
-      meta_warning (/*META_DEBUG_GEOMETRY,*/
+      meta_topic (META_DEBUG_GEOMETRY,
                   "New size/position %d,%d %dx%d (user %d,%d %dx%d)\n",
                   newx, newy, window->rect.width, window->rect.height,
                   window->user_rect.x, window->user_rect.y,
