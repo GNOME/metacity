@@ -25,6 +25,7 @@
 #define META_MATCHING_H
 
 #include "common.h"
+#include "window.h"
 
 /**
  * Represents the position of a given window on a display.
@@ -54,9 +55,10 @@ typedef struct
 
 } MetaMatching;
 
-MetaMatching* meta_matching_load_from_role (gchar *role);
+/* XXX rename to meta_window_... now the first param is a window */
+MetaMatching* meta_matching_load_from_role (MetaWindow *window, gchar *role);
 
-void meta_matching_save_to_role (gchar *role, MetaMatching *matching);
+void meta_matching_save_to_role (MetaWindow *window, gchar *role);
 
 void meta_matching_save_all (void);
 

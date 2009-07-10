@@ -22,6 +22,7 @@
  */
 
 #include "matching.h"
+#include "window-private.h"
 
 /**
  * We currently keep this information in a GKeyFile.
@@ -41,7 +42,7 @@ load_matching_data (void)
 }
 
 MetaMatching*
-meta_matching_load_from_role (gchar *role)
+meta_matching_load_from_role (MetaWindow *window, gchar *role)
 {
   load_matching_data ();
 
@@ -50,20 +51,21 @@ meta_matching_load_from_role (gchar *role)
 }
 
 void
-meta_matching_save_to_role (gchar *role, MetaMatching *matching)
+meta_matching_save_to_role (MetaWindow *window, gchar *role)
 {
-  g_assert (matching);
+  gint x, y, w, h;
 
   if (!role)
     return;
 
   load_matching_data ();
 
-  g_key_file_set_integer (matching_keyfile, role, "x", matching->x);
-  g_key_file_set_integer (matching_keyfile, role, "y", matching->y);
-  g_key_file_set_integer (matching_keyfile, role, "w", matching->width);
-  g_key_file_set_integer (matching_keyfile, role, "h", matching->height);
-  g_key_file_set_integer (matching_keyfile, role, "d", matching->workspace);
+  meta_window_get_geometry (window, &x, &y, &w, &h);
+
+  g_key_file_set_integer (matching_keyfile, role, "x", x);
+  g_key_file_set_integer (matching_keyfile, role, "y", y);
+  g_key_file_set_integer (matching_keyfile, role, "w", w);
+  g_key_file_set_integer (matching_keyfile, role, "h", h);
 
   meta_matching_save_all ();
 }
