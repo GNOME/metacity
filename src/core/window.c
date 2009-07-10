@@ -45,6 +45,7 @@
 #include "constraints.h"
 #include "compositor.h"
 #include "effects.h"
+#include "matching.h"
 
 #include <X11/Xatom.h>
 #include <string.h>
@@ -970,8 +971,19 @@ meta_window_free (MetaWindow  *window,
                   guint32      timestamp)
 {
   GList *tmp;
+  MetaMatching matching;
+  int x, y, w, h;
   
   meta_verbose ("Unmanaging 0x%lx\n", window->xwindow);
+
+  /* XXX would be better to pass in a window! */
+  meta_window_get_geometry (window, &x, &y, &w, &h);
+  matching.x = x;
+  matching.y = y;
+  matching.width = w;
+  matching.height = h;
+  matching.workspace = 177; /* dummy for now */
+  meta_matching_save_to_role ("dummy", &matching);
 
   if (window->display->compositor)
     meta_compositor_free_window (window->display->compositor, window);

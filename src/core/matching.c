@@ -23,20 +23,66 @@
 
 #include "matching.h"
 
-MetaMatching* meta_matching_load_from_role (gchar *role)
+/**
+ * We currently keep this information in a GKeyFile.
+ * This is just for an example and may change.
+ */
+GKeyFile *matching_keyfile = NULL;
+
+static void
+load_matching_data (void)
 {
+  if (matching_keyfile)
+    return;
+
+  /* load it, or... (stub) */
+  matching_keyfile = g_key_file_new ();
+  /* FIXME: would be helpful to add a leading comment */
+}
+
+MetaMatching*
+meta_matching_load_from_role (gchar *role)
+{
+  load_matching_data ();
+
   /* stub */
   return NULL;
 }
 
-void meta_matching_save_to_role (gchar *role, MetaMatching *matching)
+void
+meta_matching_save_to_role (gchar *role, MetaMatching *matching)
 {
-  /* stub */
+  g_assert (matching);
+
+  if (!role)
+    return;
+
+  load_matching_data ();
+
+  g_key_file_set_integer (matching_keyfile, role, "x", matching->x);
+  g_key_file_set_integer (matching_keyfile, role, "y", matching->y);
+  g_key_file_set_integer (matching_keyfile, role, "w", matching->width);
+  g_key_file_set_integer (matching_keyfile, role, "h", matching->height);
+  g_key_file_set_integer (matching_keyfile, role, "d", matching->workspace);
+
+  meta_matching_save_all ();
 }
 
-void meta_matching_save_all (void)
+void
+meta_matching_save_all (void)
 {
-  /* stub */
+  char *data = NULL;
+
+  load_matching_data ();
+
+  data = g_key_file_to_data (matching_keyfile, NULL, NULL);
+
+  g_file_set_contents ("/tmp/metacity-matching.conf",
+                       data,
+                       -1,
+                       NULL);
+
+  g_free (data);
 }
 
 /* eof matching.c */

@@ -35,7 +35,23 @@ typedef struct
   gint y;
   guint width;
   guint height;
-  guint desktop;
+  guint workspace;
+  /* XXX should we store gravity? */
+  /* FIXME: also:
+
+  guint on_all_workspaces : 1;
+  guint minimized : 1;
+  guint maximized : 1;
+
+  guint stack_position_set : 1;
+  guint geometry_set : 1;
+  guint on_all_workspaces_set : 1;
+  guint minimized_set : 1;
+  guint maximized_set : 1;
+  guint saved_rect_set : 1;
+  */
+
+
 } MetaMatching;
 
 MetaMatching* meta_matching_load_from_role (gchar *role);
