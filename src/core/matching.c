@@ -56,7 +56,10 @@ meta_matching_save_to_role (MetaWindow *window)
   gchar *role = window->role;
 
   if (!role)
-    return;
+    {
+      g_warning ("No role: aborting\n");
+      return;
+    }
 
   load_matching_data ();
 
