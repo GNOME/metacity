@@ -35,6 +35,13 @@
  * This is just for an example and may change.
  */
 GKeyFile *matching_keyfile = NULL;
+gchar *matching_keyfile_filename = NULL;
+
+static void
+matching_ensure_filename (void)
+{
+  matching_keyfile_filename = g_strdup ("/tmp/metacity-matching-2.conf");
+}
 
 static void
 load_matching_data (void)
@@ -42,9 +49,20 @@ load_matching_data (void)
   if (matching_keyfile)
     return;
 
-  /* load it, or... (stub) */
   matching_keyfile = g_key_file_new ();
-  /* FIXME: would be helpful to add a leading comment */
+  matching_ensure_filename ();
+
+  if (!g_key_file_load_from_file (matching_keyfile,
+                                 matching_keyfile_filename,
+                                 G_KEY_FILE_KEEP_COMMENTS,
+                                 NULL))
+    {
+      /* couldn't load, so prep the empty one for first use */
+      g_key_file_set_comment (matching_keyfile,
+                              NULL, NULL,
+                              "A set of window positions used by Metacity.",
+                              NULL);
+    }
 }
 
 static gchar*
@@ -79,6 +97,7 @@ meta_matching_load_from_role (MetaWindow *window)
   w = g_key_file_get_integer (matching_keyfile, role, "w", NULL);
   h = g_key_file_get_integer (matching_keyfile, role, "h", NULL);
 
+  /* FIXME this sets the position of the *client* window, not the frame */
   meta_window_move_resize (window,
                            FALSE,
                            x, y, w, h);
@@ -111,10 +130,11 @@ meta_matching_save_all (void)
   char *data = NULL;
 
   load_matching_data ();
-
+  matching_ensure_filename ();
+  
   data = g_key_file_to_data (matching_keyfile, NULL, NULL);
 
-  g_file_set_contents ("/tmp/metacity-matching.conf",
+  g_file_set_contents (matching_keyfile_filename,
                        data,
                        -1,
                        NULL);
