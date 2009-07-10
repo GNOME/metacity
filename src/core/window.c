@@ -974,7 +974,7 @@ meta_window_free (MetaWindow  *window,
   
   meta_verbose ("Unmanaging 0x%lx\n", window->xwindow);
 
-  meta_matching_save_to_role (window, "dummy2");
+  meta_matching_save_to_role (window);
 
   if (window->display->compositor)
     meta_compositor_free_window (window->display->compositor, window);

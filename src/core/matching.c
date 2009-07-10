@@ -42,7 +42,7 @@ load_matching_data (void)
 }
 
 void
-meta_matching_load_from_role (MetaWindow *window, gchar *role)
+meta_matching_load_from_role (MetaWindow *window)
 {
   load_matching_data ();
 
@@ -50,9 +50,10 @@ meta_matching_load_from_role (MetaWindow *window, gchar *role)
 }
 
 void
-meta_matching_save_to_role (MetaWindow *window, gchar *role)
+meta_matching_save_to_role (MetaWindow *window)
 {
   gint x, y, w, h;
+  gchar *role = window->role;
 
   if (!role)
     return;

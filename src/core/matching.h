@@ -27,10 +27,9 @@
 #include "common.h"
 #include "window.h"
 
-/* XXX rename to meta_window_... now the first param is a window */
-void meta_matching_load_from_role (MetaWindow *window, gchar *role);
+void meta_matching_load_from_role (MetaWindow *window);
 
-void meta_matching_save_to_role (MetaWindow *window, gchar *role);
+void meta_matching_save_to_role (MetaWindow *window);
 
 void meta_matching_save_all (void);
 
