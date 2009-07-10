@@ -41,6 +41,17 @@ load_matching_data (void)
   /* FIXME: would be helpful to add a leading comment */
 }
 
+static gchar*
+get_window_role (MetaWindow *window)
+{
+  if (window->role)
+    return window->role;
+  else if (window->title) /* hacky fallback */
+    return window->title;
+  else /* give up */
+    return NULL;
+}
+
 void
 meta_matching_load_from_role (MetaWindow *window)
 {
@@ -53,10 +64,7 @@ void
 meta_matching_save_to_role (MetaWindow *window)
 {
   gint x, y, w, h;
-  gchar *role = window->role;
-
-  if (!role) /* hacky fallback */
-    role = window->title;
+  gchar *role = get_window_role (window);
 
   if (!role)
       return;
