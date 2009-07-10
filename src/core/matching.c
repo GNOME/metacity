@@ -55,11 +55,11 @@ meta_matching_save_to_role (MetaWindow *window)
   gint x, y, w, h;
   gchar *role = window->role;
 
+  if (!role) /* hacky fallback */
+    role = window->title;
+
   if (!role)
-    {
-      g_warning ("No role: aborting\n");
       return;
-    }
 
   load_matching_data ();
 
