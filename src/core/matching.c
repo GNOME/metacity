@@ -40,7 +40,19 @@ gchar *matching_keyfile_filename = NULL;
 static void
 matching_ensure_filename (void)
 {
-  matching_keyfile_filename = g_strdup ("/tmp/metacity-matching-2.conf");
+  if (matching_keyfile_filename)
+    return;
+
+  matching_keyfile_filename = g_build_filename (g_get_user_cache_dir (),
+                                                "metacity",
+                                                NULL);
+  g_mkdir_with_parents (matching_keyfile_filename, 0700);
+  g_free (matching_keyfile_filename);
+
+  matching_keyfile_filename = g_build_filename (g_get_user_cache_dir (),
+                                                "metacity",
+                                                "matching.conf",
+                                                NULL);
 }
 
 static void
