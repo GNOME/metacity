@@ -79,8 +79,6 @@ meta_matching_load_from_role (MetaWindow *window)
   w = g_key_file_get_integer (matching_keyfile, role, "w", NULL);
   h = g_key_file_get_integer (matching_keyfile, role, "h", NULL);
 
-  g_warning ("So we got %d %d %d %d\n", x, y, w, h);
-
   meta_window_move_resize (window,
                            FALSE,
                            x, y, w, h);
