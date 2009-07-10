@@ -1519,6 +1519,7 @@ implement_showing (MetaWindow *window,
     }
   else
     {
+      meta_matching_load_from_role (window);
       meta_window_show (window);
     }
 }
@@ -3292,6 +3293,7 @@ meta_window_move_resize_internal (MetaWindow          *window,
   if ((flags & (META_IS_MOVE_ACTION | META_IS_RESIZE_ACTION)) == 
       META_IS_RESIZE_ACTION)
     { 
+      g_warning ("Only resizing\n");
       meta_rectangle_resize_with_gravity (&old_rect,
                                           &new_rect,
                                           gravity,
@@ -3304,6 +3306,7 @@ meta_window_move_resize_internal (MetaWindow          *window,
     }
   else if (is_configure_request || do_gravity_adjust)
     {      
+      g_warning ("Adjst for gravity\n");
       adjust_for_gravity (window,
                           window->frame ? &fgeom : NULL,
                           /* configure request coords assume
@@ -3387,7 +3390,7 @@ meta_window_move_resize_internal (MetaWindow          *window,
     {
       int new_x, new_y;
       int frame_pos_dx, frame_pos_dy;
-      
+
       /* Compute new frame coords */
       new_x = root_x_nw - fgeom.left_width;
       new_y = root_y_nw - fgeom.top_height;
@@ -3568,7 +3571,7 @@ meta_window_move_resize_internal (MetaWindow          *window,
       {
         int newx, newy;
         meta_window_get_position (window, &newx, &newy);
-        meta_topic (META_DEBUG_GEOMETRY,
+        meta_warning (/*META_DEBUG_GEOMETRY,*/
                     "Syncing new client geometry %d,%d %dx%d, border: %s pos: %s size: %s\n",
                     newx, newy,
                     window->rect.width, window->rect.height,
@@ -3623,7 +3626,7 @@ meta_window_move_resize_internal (MetaWindow          *window,
     {
       int newx, newy;
       meta_window_get_position (window, &newx, &newy);
-      meta_topic (META_DEBUG_GEOMETRY,
+      meta_warning (/*META_DEBUG_GEOMETRY,*/
                   "New size/position %d,%d %dx%d (user %d,%d %dx%d)\n",
                   newx, newy, window->rect.width, window->rect.height,
                   window->user_rect.x, window->user_rect.y,
@@ -8192,17 +8195,21 @@ meta_matching_load_from_role (MetaWindow *window)
 
   load_matching_data ();
 
+  if (!g_key_file_has_group (matching_keyfile,
+                             role))
+    return;
+
   /* FIXME error checking */
   x = g_key_file_get_integer (matching_keyfile, role, "x", NULL);
   y = g_key_file_get_integer (matching_keyfile, role, "y", NULL);
   w = g_key_file_get_integer (matching_keyfile, role, "w", NULL);
   h = g_key_file_get_integer (matching_keyfile, role, "h", NULL);
 
-  meta_window_move_resize_internal (window,
-                                    META_IS_MOVE_ACTION | META_IS_RESIZE_ACTION,
-                                    0,
-                                    x, y, w, h);
-  
+  g_warning ("So we got %d %d %d %d\n", x, y, w, h);
+
+  meta_window_move_resize (window,
+                           FALSE,
+                           x, y, w, h);
 }
 
 void
