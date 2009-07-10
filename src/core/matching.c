@@ -22,93 +22,9 @@
  */
 
 #include "matching.h"
+#include "constraints.h"
 #include "window-private.h"
 
-/**
- * We currently keep this information in a GKeyFile.
- * This is just for an example and may change.
- */
-GKeyFile *matching_keyfile = NULL;
-
-static void
-load_matching_data (void)
-{
-  if (matching_keyfile)
-    return;
-
-  /* load it, or... (stub) */
-  matching_keyfile = g_key_file_new ();
-  /* FIXME: would be helpful to add a leading comment */
-}
-
-static gchar*
-get_window_role (MetaWindow *window)
-{
-  if (window->role)
-    return window->role;
-  else if (window->title) /* hacky fallback */
-    return window->title;
-  else /* give up */
-    return NULL;
-}
-
-void
-meta_matching_load_from_role (MetaWindow *window)
-{
-  gint x, y, w, h;
-  gchar *role = get_window_role (window);
-
-  if (!role)
-      return;
-
-  load_matching_data ();
-
-  /* FIXME error checking */
-  x = g_key_file_get_integer (matching_keyfile, role, "x", NULL);
-  y = g_key_file_get_integer (matching_keyfile, role, "y", NULL);
-  w = g_key_file_get_integer (matching_keyfile, role, "w", NULL);
-  h = g_key_file_get_integer (matching_keyfile, role, "h", NULL);
-
-  
-}
-
-void
-meta_matching_save_to_role (MetaWindow *window)
-{
-  gint x, y, w, h;
-  gchar *role = get_window_role (window);
-
-  if (!role)
-      return;
-
-  load_matching_data ();
-
-  meta_window_get_geometry (window, &x, &y, &w, &h);
-
-  g_key_file_set_integer (matching_keyfile, role, "x", x);
-  g_key_file_set_integer (matching_keyfile, role, "y", y);
-  g_key_file_set_integer (matching_keyfile, role, "w", w);
-  g_key_file_set_integer (matching_keyfile, role, "h", h);
-
-  meta_matching_save_all ();
-}
-
-void
-meta_matching_save_all (void)
-{
-  char *data = NULL;
-
-  load_matching_data ();
-
-  data = g_key_file_to_data (matching_keyfile, NULL, NULL);
-
-  g_file_set_contents ("/tmp/metacity-matching.conf",
-                       data,
-                       -1,
-                       NULL);
-
-  g_free (data);
-}
 
 /* eof matching.c */
 
