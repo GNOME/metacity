@@ -1,0 +1,9 @@
+In order:
+
+1. Basic matching                                         - done
+2. Add workspace support                                  -
+3. Add some flags: minimised, various kinds of maximised  -
+4. Save only on WM exit, not every time                   -
+5. Manage storage ourselves, not using a keyfile          -
+6. Configure is done too late; make it before mapping     -
+7. Remove matching on window title                        -
