@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity 2.24\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-22 09:51+0200\n"
-"PO-Revision-Date: 2009-04-22 09:52+0200\n"
+"POT-Creation-Date: 2009-08-07 18:58+0200\n"
+"PO-Revision-Date: 2009-08-07 18:58+0200\n"
 "Last-Translator: David Planella <david.planella@gmail.com>\n"
 "Language-Team: Softcatalà <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -490,17 +490,17 @@ msgstr ""
 "redimensionable, però estableix una mida mínima %d x %d i una mida màxima %d "
 "x %d; açò no té massa sentit.\n"
 
-#: ../src/core/window-props.c:260
+#: ../src/core/window-props.c:234
 #, c-format
 msgid "Application set a bogus _NET_WM_PID %lu\n"
 msgstr "L'aplicació ha definit un _NET_WM_PID %lu fals\n"
 
-#: ../src/core/window-props.c:377
+#: ../src/core/window-props.c:351
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (a %s)"
 
-#: ../src/core/window-props.c:1358
+#: ../src/core/window-props.c:1332
 #, c-format
 msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
 msgstr ""
@@ -2298,23 +2298,23 @@ msgstr "/Finestres/_Pantalla flaix"
 
 #: ../src/ui/theme-viewer.c:81
 msgid "/Windows/_Top dock"
-msgstr "/Finestres/Anclatge _superior"
+msgstr "/Finestres/Ancoratge _superior"
 
 #: ../src/ui/theme-viewer.c:82
 msgid "/Windows/_Bottom dock"
-msgstr "/Finestres/Anclatge _inferior"
+msgstr "/Finestres/Ancoratge _inferior"
 
 #: ../src/ui/theme-viewer.c:83
 msgid "/Windows/_Left dock"
-msgstr "/Finestres/Anclatge es_querre"
+msgstr "/Finestres/Ancoratge es_querre"
 
 #: ../src/ui/theme-viewer.c:84
 msgid "/Windows/_Right dock"
-msgstr "/Finestres/Anclatge d_ret"
+msgstr "/Finestres/Ancoratge d_ret"
 
 #: ../src/ui/theme-viewer.c:85
 msgid "/Windows/_All docks"
-msgstr "/Finestres/_Tots els anclatges"
+msgstr "/Finestres/_Tots els ancoratges"
 
 #: ../src/ui/theme-viewer.c:86
 msgid "/Windows/Des_ktop"
