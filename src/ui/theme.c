@@ -1,5 +1,104 @@
 /* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
 
+#include "theme.h"
+
+MetaTheme*
+meta_theme_get_current (void)
+{
+  /* stub */
+}
+
+void
+meta_theme_set_current (const char *name,
+                        gboolean    force_reload)
+{
+  /* stub */
+}
+
+MetaFrameStyle*
+meta_theme_get_frame_style (MetaTheme     *theme,
+                            MetaFrameType  type,
+                            MetaFrameFlags flags)
+{
+  /* stub */
+}
+
+double
+meta_theme_get_title_scale (MetaTheme     *theme,
+                            MetaFrameType  type,
+                            MetaFrameFlags flags)
+{
+  /* stub */
+}
+
+void
+meta_theme_draw_frame_with_style (MetaTheme              *theme,
+                                  GtkStyle               *style_gtk,
+                                  GtkWidget              *widget,
+                                  GdkDrawable            *drawable,
+                                  const GdkRectangle     *clip,
+                                  int                     x_offset,
+                                  int                     y_offset,
+                                  MetaFrameType           type,
+                                  MetaFrameFlags          flags,
+                                  int                     client_width,
+                                  int                     client_height,
+                                  PangoLayout            *title_layout,
+                                  int                     text_height,
+                                  const MetaButtonLayout *button_layout,
+                                  MetaButtonState         button_states[META_BUTTON_TYPE_LAST],
+                                  GdkPixbuf              *mini_icon,
+                                  GdkPixbuf              *icon)
+{
+  /* stub */
+}
+
+void
+meta_theme_get_frame_borders (MetaTheme         *theme,
+                              MetaFrameType      type,
+                              int                text_height,
+                              MetaFrameFlags     flags,
+                              int               *top_height,
+                              int               *bottom_height,
+                              int               *left_width,
+                              int               *right_width)
+{
+  /* stub */
+}
+
+void
+meta_theme_calc_geometry (MetaTheme              *theme,
+                          MetaFrameType           type,
+                          int                     text_height,
+                          MetaFrameFlags          flags,
+                          int                     client_width,
+                          int                     client_height,
+                          const MetaButtonLayout *button_layout,
+                          MetaFrameGeometry      *fgeom)
+{
+  /* stub */
+}
+
+PangoFontDescription*
+meta_gtk_widget_get_font_desc        (GtkWidget            *widget,
+                                      double                scale,
+                                      const PangoFontDescription *override)
+{
+  /* stub */
+}
+
+int
+meta_pango_font_desc_get_text_height (const PangoFontDescription *font_desc,
+                                      PangoContext         *context)
+{
+  /* stub */
+}
+
+#if 0
+/****************************************************************/
+
+
+
 /* Metacity Theme Rendering */
 
 /*
@@ -6632,3 +6731,4 @@ meta_theme_earliest_version_with_button (MetaButtonType type)
       return 1; 
     }
 }
+#endif

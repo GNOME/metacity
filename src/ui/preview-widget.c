@@ -28,6 +28,7 @@
 #include <gtk/gtk.h>
 #include "preview-widget.h"
 
+#if 0 /* temp FIXME */
 static void     meta_preview_class_init    (MetaPreviewClass *klass);
 static void     meta_preview_init          (MetaPreview      *preview);
 static void     meta_preview_size_request  (GtkWidget        *widget,
@@ -39,10 +40,12 @@ static gboolean meta_preview_expose        (GtkWidget        *widget,
 static void     meta_preview_finalize      (GObject          *object);
 
 static GtkWidgetClass *parent_class;
+#endif
 
 GType
 meta_preview_get_type (void)
 {
+#if 0 /* temp FIXME */
   static GType preview_type = 0;
 
   if (!preview_type)
@@ -63,7 +66,11 @@ meta_preview_get_type (void)
     }
 
   return preview_type;
+#endif
+  return 0;
 }
+
+#if 0 /* temp FIXME */
 
 static void
 meta_preview_class_init (MetaPreviewClass *class)
@@ -332,7 +339,9 @@ meta_preview_size_allocate (GtkWidget         *widget,
       gtk_widget_size_allocate (GTK_BIN (widget)->child, &child_allocation);
     }
 }
+#endif
 
+#if 0 /* temp FIXME */
 static void
 clear_cache (MetaPreview *preview)
 {
@@ -347,11 +356,13 @@ clear_cache (MetaPreview *preview)
   preview->top_height = -1;
   preview->bottom_height = -1;
 }
+#endif
 
 void
 meta_preview_set_theme (MetaPreview    *preview,
                         MetaTheme      *theme)
 {
+#if 0 /* temp FIXME */
   g_return_if_fail (META_IS_PREVIEW (preview));
 
   preview->theme = theme;
@@ -359,12 +370,14 @@ meta_preview_set_theme (MetaPreview    *preview,
   clear_cache (preview);
 
   gtk_widget_queue_resize (GTK_WIDGET (preview));
+#endif
 }
 
 void
 meta_preview_set_title (MetaPreview    *preview,
                         const char     *title)
 {
+#if 0 /* temp FIXME */
   g_return_if_fail (META_IS_PREVIEW (preview));
 
   g_free (preview->title);
@@ -373,12 +386,14 @@ meta_preview_set_title (MetaPreview    *preview,
   clear_cache (preview);
 
   gtk_widget_queue_resize (GTK_WIDGET (preview));
+#endif
 }
 
 void
 meta_preview_set_frame_type (MetaPreview    *preview,
                              MetaFrameType   type)
 {
+#if 0 /* temp FIXME */
   g_return_if_fail (META_IS_PREVIEW (preview));
 
   preview->type = type;
@@ -386,12 +401,14 @@ meta_preview_set_frame_type (MetaPreview    *preview,
   clear_cache (preview);
 
   gtk_widget_queue_resize (GTK_WIDGET (preview));
+#endif
 }
 
 void
 meta_preview_set_frame_flags (MetaPreview    *preview,
                               MetaFrameFlags  flags)
 {
+#if 0 /* temp FIXME */
   g_return_if_fail (META_IS_PREVIEW (preview));
 
   preview->flags = flags;
@@ -399,22 +416,26 @@ meta_preview_set_frame_flags (MetaPreview    *preview,
   clear_cache (preview);
 
   gtk_widget_queue_resize (GTK_WIDGET (preview));
+#endif
 }
 
 void
 meta_preview_set_button_layout (MetaPreview            *preview,
                                 const MetaButtonLayout *button_layout)
 {
+#if 0 /* temp FIXME */
   g_return_if_fail (META_IS_PREVIEW (preview));
   
   preview->button_layout = *button_layout;  
   
   gtk_widget_queue_draw (GTK_WIDGET (preview));
+#endif
 }
 
 GdkPixbuf*
 meta_preview_get_icon (void)
 {
+#if 0 /* temp FIXME */
   static GdkPixbuf *default_icon = NULL;
 
   if (default_icon == NULL)
@@ -443,11 +464,14 @@ meta_preview_get_icon (void)
     }
   
   return default_icon;
+#endif
+  return NULL; /* stub */
 }
 
 GdkPixbuf*
 meta_preview_get_mini_icon (void)
 {
+#if 0 /* temp FIXME */
   static GdkPixbuf *default_icon = NULL;
 
   if (default_icon == NULL)
@@ -476,11 +500,14 @@ meta_preview_get_mini_icon (void)
     }
   
   return default_icon;
+#endif
+  return NULL; /* stub */
 }
 
 GdkRegion *
 meta_preview_get_clip_region (MetaPreview *preview, gint new_window_width, gint new_window_height)
 {
+#if 0 /* temp FIXME */
   GdkRectangle xrect;
   GdkRegion *corners_xregion, *window_xregion;
   gint flags;
@@ -588,6 +615,8 @@ meta_preview_get_clip_region (MetaPreview *preview, gint new_window_width, gint 
   gdk_region_destroy (corners_xregion);
 
   return window_xregion;
+#endif
+  return NULL; /* stub */
 }
 
 

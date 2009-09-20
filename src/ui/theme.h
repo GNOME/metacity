@@ -29,6 +29,167 @@
 #include "common.h"
 #include <gtk/gtk.h>
 
+typedef enum
+{
+  /* Ordered so that background is drawn first */
+  META_BUTTON_TYPE_LEFT_LEFT_BACKGROUND,
+  META_BUTTON_TYPE_LEFT_MIDDLE_BACKGROUND,
+  META_BUTTON_TYPE_LEFT_RIGHT_BACKGROUND,
+  META_BUTTON_TYPE_RIGHT_LEFT_BACKGROUND,
+  META_BUTTON_TYPE_RIGHT_MIDDLE_BACKGROUND,
+  META_BUTTON_TYPE_RIGHT_RIGHT_BACKGROUND,
+  META_BUTTON_TYPE_CLOSE,
+  META_BUTTON_TYPE_MAXIMIZE,
+  META_BUTTON_TYPE_MINIMIZE,
+  META_BUTTON_TYPE_MENU,
+  META_BUTTON_TYPE_SHADE,
+  META_BUTTON_TYPE_ABOVE,
+  META_BUTTON_TYPE_STICK,
+  META_BUTTON_TYPE_UNSHADE,
+  META_BUTTON_TYPE_UNABOVE,
+  META_BUTTON_TYPE_UNSTICK,
+  META_BUTTON_TYPE_LAST
+} MetaButtonType;
+
+typedef enum
+{
+  META_BUTTON_STATE_NORMAL,
+  META_BUTTON_STATE_PRESSED,
+  META_BUTTON_STATE_PRELIGHT,
+  META_BUTTON_STATE_LAST
+} MetaButtonState;
+
+/**
+ * The computed size of a button (really just a way of tying its
+ * visible and clickable areas together).
+ * The reason for two different rectangles here is Fitts' law & maximized
+ * windows; see bug #97703 for more details.
+ */
+typedef struct
+{
+  /** The screen area where the button's image is drawn */
+  GdkRectangle visible;
+  /** The screen area where the button can be activated by clicking */
+  GdkRectangle clickable;
+} MetaButtonSpace;
+
+/**
+ * Calculated actual geometry of the frame
+ */
+typedef struct
+{
+  int left_width;
+  int right_width;
+  int top_height;
+  int bottom_height;
+
+  int width;
+  int height;  
+
+  GdkRectangle title_rect;
+
+  int left_titlebar_edge;
+  int right_titlebar_edge;
+  int top_titlebar_edge;
+  int bottom_titlebar_edge;
+
+  /* used for a memset hack */
+#define ADDRESS_OF_BUTTON_RECTS(fgeom) (((char*)(fgeom)) + G_STRUCT_OFFSET (MetaFrameGeometry, close_rect))
+#define LENGTH_OF_BUTTON_RECTS (G_STRUCT_OFFSET (MetaFrameGeometry, right_right_background) + sizeof (GdkRectangle) - G_STRUCT_OFFSET (MetaFrameGeometry, close_rect))
+  
+  /* The button rects (if changed adjust memset hack) */
+  MetaButtonSpace close_rect;
+  MetaButtonSpace max_rect;
+  MetaButtonSpace min_rect;
+  MetaButtonSpace menu_rect;
+  MetaButtonSpace shade_rect;
+  MetaButtonSpace above_rect;
+  MetaButtonSpace stick_rect;
+  MetaButtonSpace unshade_rect;
+  MetaButtonSpace unabove_rect;
+  MetaButtonSpace unstick_rect;
+
+#define MAX_MIDDLE_BACKGROUNDS (MAX_BUTTONS_PER_CORNER - 2)
+  GdkRectangle left_left_background;
+  GdkRectangle left_middle_backgrounds[MAX_MIDDLE_BACKGROUNDS];
+  GdkRectangle left_right_background;
+  GdkRectangle right_left_background;
+  GdkRectangle right_middle_backgrounds[MAX_MIDDLE_BACKGROUNDS];
+  GdkRectangle right_right_background;
+  /* End of button rects (if changed adjust memset hack) */
+  
+  /* Round corners */
+  guint top_left_corner_rounded_radius;
+  guint top_right_corner_rounded_radius;
+  guint bottom_left_corner_rounded_radius;
+  guint bottom_right_corner_rounded_radius;
+} MetaFrameGeometry;
+
+typedef struct {
+  gboolean dummy;
+} MetaTheme;
+
+typedef struct {
+  gboolean dummy;
+} MetaFrameStyle;
+
+MetaTheme* meta_theme_get_current (void);
+void       meta_theme_set_current (const char *name,
+                                   gboolean    force_reload);
+
+MetaFrameStyle* meta_theme_get_frame_style (MetaTheme     *theme,
+                                            MetaFrameType  type,
+                                            MetaFrameFlags flags);
+
+double meta_theme_get_title_scale (MetaTheme     *theme,
+                                   MetaFrameType  type,
+                                   MetaFrameFlags flags);
+
+void meta_theme_draw_frame_with_style (MetaTheme              *theme,
+                                       GtkStyle               *style_gtk,
+                                       GtkWidget              *widget,
+                                       GdkDrawable            *drawable,
+                                       const GdkRectangle     *clip,
+                                       int                     x_offset,
+                                       int                     y_offset,
+                                       MetaFrameType           type,
+                                       MetaFrameFlags          flags,
+                                       int                     client_width,
+                                       int                     client_height,
+                                       PangoLayout            *title_layout,
+                                       int                     text_height,
+                                       const MetaButtonLayout *button_layout,
+                                       MetaButtonState         button_states[META_BUTTON_TYPE_LAST],
+                                       GdkPixbuf              *mini_icon,
+                                       GdkPixbuf              *icon);
+
+void meta_theme_get_frame_borders (MetaTheme         *theme,
+                                   MetaFrameType      type,
+                                   int                text_height,
+                                   MetaFrameFlags     flags,
+                                   int               *top_height,
+                                   int               *bottom_height,
+                                   int               *left_width,
+                                   int               *right_width);
+
+void meta_theme_calc_geometry (MetaTheme              *theme,
+                               MetaFrameType           type,
+                               int                     text_height,
+                               MetaFrameFlags          flags,
+                               int                     client_width,
+                               int                     client_height,
+                               const MetaButtonLayout *button_layout,
+                               MetaFrameGeometry      *fgeom);
+
+PangoFontDescription* meta_gtk_widget_get_font_desc        (GtkWidget            *widget,
+                                                            double                scale,
+							    const PangoFontDescription *override);
+int                   meta_pango_font_desc_get_text_height (const PangoFontDescription *font_desc,
+                                                            PangoContext         *context);
+
+/****************************************************************/
+
+#if 0 /* let's see how much we get to keep */
 typedef struct _MetaFrameStyle MetaFrameStyle;
 typedef struct _MetaFrameStyleSet MetaFrameStyleSet;
 typedef struct _MetaDrawOp MetaDrawOp;
@@ -1186,5 +1347,7 @@ guint meta_theme_earliest_version_with_button (MetaButtonType type);
 #define META_THEME_HIDDEN_BUTTONS 2
 #define META_THEME_COLOR_CONSTANTS 2
 #define META_THEME_FRAME_BACKGROUNDS 2
+
+#endif
 
 #endif
