@@ -6,6 +6,7 @@ MetaTheme*
 meta_theme_get_current (void)
 {
   /* stub */
+  return NULL;
 }
 
 void
@@ -21,6 +22,7 @@ meta_theme_get_frame_style (MetaTheme     *theme,
                             MetaFrameFlags flags)
 {
   /* stub */
+  return NULL;
 }
 
 double
@@ -29,6 +31,7 @@ meta_theme_get_title_scale (MetaTheme     *theme,
                             MetaFrameFlags flags)
 {
   /* stub */
+  return 0.0;
 }
 
 void
@@ -85,6 +88,7 @@ meta_gtk_widget_get_font_desc        (GtkWidget            *widget,
                                       const PangoFontDescription *override)
 {
   /* stub */
+  return NULL;
 }
 
 int
@@ -92,6 +96,7 @@ meta_pango_font_desc_get_text_height (const PangoFontDescription *font_desc,
                                       PangoContext         *context)
 {
   /* stub */
+  return 0;
 }
 
 #if 0

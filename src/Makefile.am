@@ -90,8 +90,6 @@ metacity_SOURCES= 				\
 	include/resizepopup.h			\
 	ui/tabpopup.c				\
 	include/tabpopup.h				\
-	ui/theme-parser.c			\
-	ui/theme-parser.h			\
 	ui/theme.c				\
 	ui/theme.h				\
 	ui/themewidget.c			\
@@ -112,8 +110,6 @@ libmetacity_private_la_SOURCES=			\
 	include/common.h			\
 	ui/preview-widget.c			\
 	ui/preview-widget.h			\
-	ui/theme-parser.c			\
-	ui/theme-parser.h			\
 	ui/theme.c				\
 	ui/theme.h
 
@@ -128,11 +124,10 @@ libmetacityinclude_HEADERS =			\
 	include/util.h				\
 	include/common.h			\
 	ui/preview-widget.h			\
-	ui/theme-parser.h			\
 	ui/theme.h
 
-metacity_theme_viewer_SOURCES=  \
-	ui/theme-viewer.c
+#metacity_theme_viewer_SOURCES=  \
+#	ui/theme-viewer.c
 
 schema_bindings_SOURCES =       \
         core/schema-bindings.c			\
@@ -143,11 +138,11 @@ metacity.schemas.in: schema_bindings ${srcdir}/metacity.schemas.in.in
 	@echo Generating keybinding schemas... ${srcdir}/metacity.schemas.in.in
 	${builddir}/schema_bindings ${srcdir}/metacity.schemas.in.in ${builddir}/metacity.schemas.in
 
-bin_PROGRAMS=metacity metacity-theme-viewer
+bin_PROGRAMS=metacity # metacity-theme-viewer
 
 EFENCE=
 metacity_LDADD=@METACITY_LIBS@ $(EFENCE)
-metacity_theme_viewer_LDADD= @METACITY_LIBS@ libmetacity-private.la
+#metacity_theme_viewer_LDADD= @METACITY_LIBS@ libmetacity-private.la
 
 testboxes_SOURCES=include/util.h core/util.c include/boxes.h core/boxes.c core/testboxes.c
 testgradient_SOURCES=ui/gradient.h ui/gradient.c ui/testgradient.c

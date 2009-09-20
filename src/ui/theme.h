@@ -59,6 +59,11 @@ typedef enum
   META_BUTTON_STATE_LAST
 } MetaButtonState;
 
+typedef struct
+{
+  gboolean dummy;
+} MetaColorSpec;
+
 /**
  * The computed size of a button (really just a way of tying its
  * visible and clickable areas together).
@@ -131,6 +136,13 @@ typedef struct {
 
 typedef struct {
   gboolean dummy;
+
+  /**
+   * Background colour of the window. Only present in theme formats
+   * 2 and above. Can be NULL to use the standard GTK theme engine.
+   */
+  MetaColorSpec *window_background_color;
+
 } MetaFrameStyle;
 
 MetaTheme* meta_theme_get_current (void);
