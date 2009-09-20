@@ -151,7 +151,21 @@ typedef struct {
 
 } MetaFrameStyle;
 
+/**
+ * Returns the current theme.
+ *
+ * \return the current theme.
+ */
 MetaTheme* meta_theme_get_current (void);
+
+/**
+ * Sets the current theme.
+ *
+ * \param name  The name of the theme.
+ * \param force_reload  If false, and the named theme is the current
+ *                      theme, nothing will happen.  If true, the
+ *                      named theme will always be loaded.
+ */
 void       meta_theme_set_current (const char *name,
                                    gboolean    force_reload);
 
