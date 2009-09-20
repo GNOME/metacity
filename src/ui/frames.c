@@ -2546,6 +2546,10 @@ meta_frames_set_window_background (MetaFrames   *frames,
       GdkColor color;
       GdkVisual *visual;
 
+#if 0
+      /* FIXME FIXME FIXME
+       * Need to pull the background colour out of the theme here.
+       */
       meta_color_spec_render (style->window_background_color,
                               GTK_WIDGET (frames),
                               &color);
@@ -2565,6 +2569,7 @@ meta_frames_set_window_background (MetaFrames   *frames,
         }
 
       gdk_window_set_background (frame->window, &color);
+#endif
     }
   else
     {
