@@ -59,6 +59,8 @@ typedef enum
   META_BUTTON_STATE_LAST
 } MetaButtonState;
 
+/* FIXME: Should move theme struct definitions into theme.c */
+
 typedef struct
 {
   gboolean dummy;
@@ -140,6 +142,10 @@ typedef struct {
   /**
    * Background colour of the window. Only present in theme formats
    * 2 and above. Can be NULL to use the standard GTK theme engine.
+   *
+   * FIXME: This is the only place that code outside the theme
+   * subsystem accesses the internals of a struct within it;
+   * this should change.
    */
   MetaColorSpec *window_background_color;
 
