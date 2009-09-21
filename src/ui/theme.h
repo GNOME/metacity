@@ -169,14 +169,56 @@ MetaTheme* meta_theme_get_current (void);
 void       meta_theme_set_current (const char *name,
                                    gboolean    force_reload);
 
+/**
+ * Returns a style object representing the configuration of
+ * window borders in a given theme in a given situation.
+ *
+ * \bug This is probably unnecessary.  The framestyle isn't
+ *      passed in to the drawing function at all.  Look into
+ *      removing this.
+ *
+ * \param theme  a theme
+ * \param type   the type of window: normal, dialogue, etc.
+ * \param flags  the situation: shaded, with focus, etc.
+ */
 MetaFrameStyle* meta_theme_get_frame_style (MetaTheme     *theme,
                                             MetaFrameType  type,
                                             MetaFrameFlags flags);
 
+/**
+ * Returns how much the title should be scaled.
+ *
+ * \bug This should probably be an operation on a MetaFrameStyle.
+ * \bug Copper should do this in-house!
+ *
+ * \param theme  a theme
+ * \param type   the type of window: normal, dialogue, etc.
+ * \param flags  the situation: shaded, with focus, etc.
+ */
 double meta_theme_get_title_scale (MetaTheme     *theme,
                                    MetaFrameType  type,
                                    MetaFrameFlags flags);
 
+/**
+ * Draws window borders according to a given theme.
+ *
+ * \param theme             a theme
+ * \param style_gtk         a GTK style, used to style GTK operations
+ * \param widget            (??) investigate
+ * \param drawable          where to draw the borders
+ * \param clip              do not draw outside this rectangle
+ * \param x_offset          (??) offset X by this many pixels
+ * \param y_offset          (??) offset Y by this many pixels
+ * \param type              the type of window: normal, dialogue, etc.
+ * \param flags             the situation: shaded, with focus, etc.
+ * \param title_layout      Pango layout to draw the title
+ * \param text_height text  height (??) in pixels? points?
+ * \param button_layout     layout of buttons (?? format?)
+ * \param button_states     whether any of the buttons are
+ *                          prelighted or pressed
+ * \param mini_icon         the icon to use (small version)
+ * \param icon              the icon to use (ordinary version)
+ */
 void meta_theme_draw_frame_with_style (MetaTheme              *theme,
                                        GtkStyle               *style_gtk,
                                        GtkWidget              *widget,
@@ -195,6 +237,21 @@ void meta_theme_draw_frame_with_style (MetaTheme              *theme,
                                        GdkPixbuf              *mini_icon,
                                        GdkPixbuf              *icon);
 
+/**
+ * Finds the sizes of each size of the window borders for a given theme
+ * in a given situation.
+ *
+ * \bug  Why is this not part of calculating the geometry?
+ *
+ * \param theme          the theme
+ * \param type           the type of window: normal, dialogue, etc
+ * \param text_height    height of the text (??) in points? pixels?
+ * \param flags          the situation: shaded, with focus, etc.
+ * \param top_height     receives the border size
+ * \param bottom_height  receives the border size
+ * \param left_width     receives the border size
+ * \param right_width    receives the border size
+ */
 void meta_theme_get_frame_borders (MetaTheme         *theme,
                                    MetaFrameType      type,
                                    int                text_height,
@@ -204,6 +261,18 @@ void meta_theme_get_frame_borders (MetaTheme         *theme,
                                    int               *left_width,
                                    int               *right_width);
 
+/**
+ * Given a theme and a situation, finds a MetaFrameGeometry.
+ *
+ * \param theme          the theme
+ * \param type           the type of window: normal, dialogue, etc
+ * \param text_height    height of the text (??) in points? pixels?
+ * \param flags          the situation: shaded, with focus, etc.
+ * \param client_width   width of the client window
+ * \param client_height  height of the client window
+ * \param button_layout  receives the layout of the buttons
+ * \param fgeom          receives the geometry.
+ */
 void meta_theme_calc_geometry (MetaTheme              *theme,
                                MetaFrameType           type,
                                int                     text_height,
@@ -212,6 +281,10 @@ void meta_theme_calc_geometry (MetaTheme              *theme,
                                int                     client_height,
                                const MetaButtonLayout *button_layout,
                                MetaFrameGeometry      *fgeom);
+
+/****************************************************************/
+
+/* Random stuff that doesn't really belong here */
 
 PangoFontDescription* meta_gtk_widget_get_font_desc        (GtkWidget            *widget,
                                                             double                scale,
