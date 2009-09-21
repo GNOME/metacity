@@ -2,6 +2,10 @@
 
 #include "theme.h"
 
+struct _MetaTheme {
+  gboolean dummy;
+};
+
 MetaTheme*
 meta_theme_get_current (void)
 {

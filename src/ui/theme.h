@@ -132,9 +132,7 @@ typedef struct
   guint bottom_right_corner_rounded_radius;
 } MetaFrameGeometry;
 
-typedef struct {
-  gboolean dummy;
-} MetaTheme;
+typedef struct _MetaTheme MetaTheme;
 
 typedef struct {
   gboolean dummy;
