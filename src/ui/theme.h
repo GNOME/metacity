@@ -270,7 +270,7 @@ void meta_theme_get_frame_borders (MetaTheme         *theme,
  * \param flags          the situation: shaded, with focus, etc.
  * \param client_width   width of the client window
  * \param client_height  height of the client window
- * \param button_layout  receives the layout of the buttons
+ * \param button_layout  the layout of the buttons
  * \param fgeom          receives the geometry.
  */
 void meta_theme_calc_geometry (MetaTheme              *theme,
