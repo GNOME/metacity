@@ -6,11 +6,12 @@ struct _MetaTheme {
   gboolean dummy;
 };
 
+MetaTheme the_theme;
+
 MetaTheme*
 meta_theme_get_current (void)
 {
-  /* stub */
-  return NULL;
+  return &the_theme;
 }
 
 void
@@ -18,6 +19,7 @@ meta_theme_set_current (const char *name,
                         gboolean    force_reload)
 {
   /* stub */
+  g_warning ("THEMES: Setting theme to %s\n", name);
 }
 
 MetaFrameStyle*
@@ -25,8 +27,13 @@ meta_theme_get_frame_style (MetaTheme     *theme,
                             MetaFrameType  type,
                             MetaFrameFlags flags)
 {
-  /* stub */
-  return NULL;
+  /* stub FIXME */
+  /* FIXME of course this leaks like crazy, but it's a stub */
+  MetaFrameStyle *style;
+
+  style = g_new0 (MetaFrameStyle, 1);
+
+  return style;
 }
 
 double
@@ -34,8 +41,8 @@ meta_theme_get_title_scale (MetaTheme     *theme,
                             MetaFrameType  type,
                             MetaFrameFlags flags)
 {
-  /* stub */
-  return 0.0;
+  /* stub: return sensible default value */
+  return 1.0;
 }
 
 void
@@ -71,6 +78,28 @@ meta_theme_get_frame_borders (MetaTheme         *theme,
                               int               *right_width)
 {
   /* stub */
+  *top_height = 20;
+  *bottom_height = 20;
+  *left_width = 20;
+  *right_width = 20;
+}
+
+#define MAX_MIDDLE_BACKGROUNDS (MAX_BUTTONS_PER_CORNER - 2)
+
+static void
+clear_rect(GdkRectangle *r)
+{
+  r->x = 0;
+  r->y = 0;
+  r->width = 20;
+  r->height = 20;
+}
+
+static void
+clear_bs(MetaButtonSpace *bs)
+{
+  clear_rect(&(bs->clickable));
+  clear_rect(&(bs->visible));
 }
 
 void
@@ -83,16 +112,72 @@ meta_theme_calc_geometry (MetaTheme              *theme,
                           const MetaButtonLayout *button_layout,
                           MetaFrameGeometry      *fgeom)
 {
+  int i;
+
   /* stub */
+  fgeom->left_width = 20;
+  fgeom->right_width = 20;
+  fgeom->top_height = 20;
+  fgeom->bottom_height = 20;
+
+  fgeom->width = 40+client_width;
+  fgeom->height = 40+client_height;
+
+  clear_rect (&(fgeom->title_rect));
+
+  fgeom->left_titlebar_edge=0;
+  fgeom->right_titlebar_edge=0;
+  fgeom->top_titlebar_edge=0;
+  fgeom->bottom_titlebar_edge=0;
+
+  clear_bs (&(fgeom->close_rect));
+  clear_bs (&(fgeom->max_rect));
+  clear_bs (&(fgeom->min_rect));
+  clear_bs (&(fgeom->menu_rect));
+  clear_bs (&(fgeom->shade_rect));
+  clear_bs (&(fgeom->above_rect));
+  clear_bs (&(fgeom->stick_rect));
+  clear_bs (&(fgeom->unshade_rect));
+  clear_bs (&(fgeom->unabove_rect));
+  clear_bs (&(fgeom->unstick_rect));
+
+  clear_rect (&(fgeom->left_left_background));
+  for (i=0; i<MAX_MIDDLE_BACKGROUNDS; i++)
+    clear_rect (&(fgeom->left_middle_backgrounds[i]));
+  clear_rect (&(fgeom->left_right_background));
+  clear_rect (&(fgeom->right_left_background));
+  for (i=0; i<MAX_MIDDLE_BACKGROUNDS; i++)
+    clear_rect (&(fgeom->right_middle_backgrounds[i]));
+  clear_rect (&(fgeom->right_right_background));
+  
+  fgeom->top_left_corner_rounded_radius = 5;
+  fgeom->top_right_corner_rounded_radius = 5;
+  fgeom->bottom_left_corner_rounded_radius = 5;
+  fgeom->bottom_right_corner_rounded_radius = 5;
 }
 
+/*
+ * This would be a stub, but actually the original code is
+ * just what we need anyway.
+ */
 PangoFontDescription*
 meta_gtk_widget_get_font_desc        (GtkWidget            *widget,
                                       double                scale,
                                       const PangoFontDescription *override)
 {
-  /* stub */
-  return NULL;
+  PangoFontDescription *font_desc;
+  
+  g_return_val_if_fail (GTK_WIDGET_REALIZED (widget), NULL);
+
+  font_desc = pango_font_description_copy (widget->style->font_desc);
+
+  if (override)
+    pango_font_description_merge (font_desc, override, TRUE);
+
+  pango_font_description_set_size (font_desc,
+                                   MAX (pango_font_description_get_size (font_desc) * scale, 1));
+
+  return font_desc;
 }
 
 int
