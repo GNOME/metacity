@@ -130,9 +130,26 @@ meta_theme_get_current (void)
   return the_theme;
 }
 
+/**
+ * Filters image URLs.
+ * 
+ * Currently, we accept two kinds of image URLs:
+ *  - "wm:icon", which is the current window icon
+ *  - "file:NAME" which loads images from the theme directory.
+ *    This may be abbreviated to just NAME.
+ */
+static char *
+cowbell_url (GSList const	*args,
+             void		*user_data)
+{
+  /* stub */
+
+  return g_strdup ("/usr/share/icons/gnome/24x24/actions/gtk-edit.png");
+}
+
 static ccss_function_t const cowbell_functions[] = 
 {
-  /* { "url",	url,	NULL }, */
+  { "url",	cowbell_url,	NULL },
   { NULL }
 };
 
