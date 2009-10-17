@@ -11,7 +11,7 @@ struct _MetaTheme {
   gboolean dummy;
 };
 
-MetaTheme the_theme;
+MetaTheme *the_theme = NULL;
 
 /****************************************************************/
 
@@ -42,7 +42,7 @@ CopperClasses parents[] =
     CC_LAST
   };
 
-char *copper_classnames[] =
+char *cowbell_classnames[] =
   {
     NULL,
     "content", "titlebar",
@@ -54,17 +54,80 @@ char *copper_classnames[] =
 typedef struct
 {
   ccss_node_t basic;
-  CopperClasses copper_class;
+  CopperClasses cowbell_class;
 } CopperNode;
 
-CopperNode copper_nodes[CC_LAST];
+CopperNode cowbell_nodes[CC_LAST];
+
+/****************************************************************/
+
+static char const*
+cowbell_get_type (ccss_node_t const *self)
+{
+  g_warning ("It's %s", self->type_name);
+  return self->type_name;
+}
+
+static ptrdiff_t
+cowbell_get_instance (ccss_node_t const *self)
+{
+  return self->instance;
+}
+
+static char const*
+cowbell_get_style (ccss_node_t const *self) {
+  return self->inline_style;
+}
+
+static ccss_node_t*
+cowbell_get_container (ccss_node_t const *self)
+{
+  CopperClasses candidate = parents[((CopperNode*)self)->cowbell_class];
+
+  if (candidate==CC_LAST)
+    return NULL;
+  else
+    /* or should we allocate a new one? */
+    return (ccss_node_t*) &(cowbell_nodes[candidate]);
+}
+
+static const char*
+cowbell_get_class (ccss_node_t const *self)
+{
+  return cowbell_classnames[((CopperNode*)self)->cowbell_class];
+}
+
+static ccss_node_class_t cowbell_node_class = {
+  .get_type               = (ccss_node_get_type_f) cowbell_get_type,
+  .get_instance           = (ccss_node_get_instance_f) cowbell_get_instance,
+  .get_style              = (ccss_node_get_style_f) cowbell_get_style,
+  .get_container          = (ccss_node_get_container_f) cowbell_get_container,
+  .get_class              = (ccss_node_get_class_f) cowbell_get_class
+};
+
+/****************************************************************/
+
+static void
+cowbell_initialise_classes (void)
+{
+  int i;
+
+  for (i=0; i<CC_LAST; i++)
+    {
+      ccss_node_init ((ccss_node_t*) &cowbell_nodes[i], &cowbell_node_class);
+      cowbell_nodes[i].basic.type_name = names[i];
+      cowbell_nodes[i].basic.instance = 0;
+      cowbell_nodes[i].basic.inline_style = NULL;
+      cowbell_nodes[i].cowbell_class = i;
+    }
+}
 
 /****************************************************************/
 
 MetaTheme*
 meta_theme_get_current (void)
 {
-  return &the_theme;
+  return the_theme;
 }
 
 void
@@ -72,6 +135,14 @@ meta_theme_set_current (const char *name,
                         gboolean    force_reload)
 {
   /* stub */
+
+  if (!the_theme)
+    {
+      cowbell_initialise_classes ();
+
+      the_theme = g_new0 (MetaTheme, 1);
+    }
+
   g_warning ("THEMES: Setting theme to %s\n", name);
 }
 
