@@ -1,12 +1,65 @@
 /* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
 
 #include "theme.h"
+#include <string.h>
+#include <stdlib.h>
+#include <cairo.h>
+#include <ccss-cairo/ccss-cairo.h>
+#include <gtk/gtk.h>
 
 struct _MetaTheme {
   gboolean dummy;
 };
 
 MetaTheme the_theme;
+
+/****************************************************************/
+
+/* Our little hierarchy */
+typedef enum _CopperClasses {
+  CC_FRAME,
+  CC_CONTENT, CC_TITLEBAR,
+  CC_MENU, CC_TITLE, CC_MINIMIZE, CC_MAXIMIZE, CC_CLOSE,
+  CC_FILLER,
+  CC_LAST
+} CopperClasses;
+
+char *names[] =
+  {
+    "frame",
+    "area", "area",
+    "button", "title", "button", "button", "button",
+    "area",
+    "last"
+  };
+
+CopperClasses parents[] =
+  {
+    CC_LAST,
+    CC_FRAME, CC_FRAME,
+    CC_TITLEBAR, CC_TITLEBAR, CC_TITLEBAR, CC_TITLEBAR, CC_TITLEBAR,
+    CC_TITLEBAR,
+    CC_LAST
+  };
+
+char *copper_classnames[] =
+  {
+    NULL,
+    "content", "titlebar",
+    "menu", NULL, "minimize", "maximize", "close",
+    "filler",
+    NULL
+  };
+
+typedef struct
+{
+  ccss_node_t basic;
+  CopperClasses copper_class;
+} CopperNode;
+
+CopperNode copper_nodes[CC_LAST];
+
+/****************************************************************/
 
 MetaTheme*
 meta_theme_get_current (void)
