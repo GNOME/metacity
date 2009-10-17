@@ -130,11 +130,20 @@ meta_theme_get_current (void)
   return the_theme;
 }
 
+static ccss_function_t const cowbell_functions[] = 
+{
+  /* { "url",	url,	NULL }, */
+  { NULL }
+};
+
 void
 meta_theme_set_current (const char *name,
                         gboolean    force_reload)
 {
   /* stub */
+
+  ccss_grammar_t        *grammar;
+  ccss_stylesheet_t	*stylesheet;
 
   if (!the_theme)
     {
@@ -142,6 +151,12 @@ meta_theme_set_current (const char *name,
 
       the_theme = g_new0 (MetaTheme, 1);
     }
+
+  grammar = ccss_cairo_grammar_create ();
+  ccss_grammar_add_functions (grammar, cowbell_functions);
+  stylesheet = ccss_grammar_create_stylesheet_from_file (grammar,
+                                                         "/home/tthurman/.themes/Human/Human.css",
+                                                         NULL);
 
   g_warning ("THEMES: Setting theme to %s\n", name);
 }
