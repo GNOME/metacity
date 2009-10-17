@@ -206,6 +206,242 @@ meta_theme_get_title_scale (MetaTheme     *theme,
   return 1.0;
 }
 
+static gboolean
+get_number_from_style (ccss_style_t *style,
+		       char *element,
+		       int *dummy,
+		       int *original_value)
+{
+  double d = 0.0;
+  gboolean result;
+
+  result = ccss_style_get_double (style, element, &d);
+
+  if (original_value)
+    *original_value = d;
+
+  return result;
+}
+
+static void
+reduce_by_padding_borders_and_margins (ccss_stylesheet_t *stylesheet,
+				       CopperClasses style_id,
+				       int *x, int *y, int *w, int *h,
+				       gboolean honour_margins,
+				       gboolean reverse)
+{
+  ccss_style_t *style = ccss_stylesheet_query (stylesheet,
+					       (ccss_node_t*) &cowbell_nodes[style_id]);
+  int bt=0, br=0, bb=0, bl=0, pt=0, pr=0, pb=0, pl=0;
+
+  if (!style) return;
+
+  /* FIXME this is silly; libccss should do this for us */
+  /* FIXME maybe it does if we get the property rather than the number */
+  if (get_number_from_style (style, "border-width",    NULL, &bl))
+    {
+      bt = br = bb = bl;
+    }
+  else
+    {
+      get_number_from_style (style, "border-top-width",     NULL, &bt);
+      get_number_from_style (style, "border-right-width",   NULL, &br);
+      get_number_from_style (style, "border-bottom-width",  NULL, &bb);
+      get_number_from_style (style, "border-left-width",    NULL, &bl);
+    }
+
+  if (get_number_from_style (style, "padding",    NULL, &pl))
+    {
+      pt = pr = pb = pl;
+    }
+  else
+    {
+      get_number_from_style (style, "padding-top",          NULL, &pt);
+      get_number_from_style (style, "padding-right",        NULL, &pr);
+      get_number_from_style (style, "padding-bottom",       NULL, &pb);
+      get_number_from_style (style, "padding-left",         NULL, &pl);
+    }
+
+  /* FIXME honour honour_margins */
+
+  bt += pt;
+  br += pr;
+  bb += pb;
+  bl += pl;
+
+  if (reverse)
+    {
+      if (x) *x -= bl;
+      if (y) *y -= bt;
+      if (w) *w += (bl+br);
+      if (h) *h += (bt+bb);
+    }
+  else
+    {
+      if (x) *x += bl;
+      if (y) *y += bt;
+      if (w) *w -= (bl+br);
+      if (h) *h -= (bt+bb);
+    }
+
+  ccss_style_destroy (style);
+}
+
+static gint
+draw_rectangle (ccss_stylesheet_t *stylesheet,
+		cairo_t *cr,
+		CopperClasses style_id,
+		int x, int y, int w, int h,
+		gboolean honour_margins,
+		gboolean from_the_right,
+		PangoLayout *layout)
+{
+  ccss_style_t *style = ccss_stylesheet_query (stylesheet,
+					       (ccss_node_t*) &cowbell_nodes[style_id]);
+  int full_width;
+  int horizontal_margin = 0;
+
+  if (!style) return 0;
+
+  if (honour_margins)
+    {
+      int mn, mt, mr, mb, ml;
+      /* FIXME: Setting just "margin" doesn't work
+       * because libccss doesn't know about margins.
+       */
+      get_number_from_style (style, "margin",              NULL, &mn);
+      if (mn)
+	{
+	  /* FIXME this is broken; "margin" may have multiple values */
+	  mt = mr = mb = ml = mn;
+	}
+      else
+	{
+	  get_number_from_style (style, "margin-top",          NULL, &mt);
+	  get_number_from_style (style, "margin-right",        NULL, &mr);
+	  get_number_from_style (style, "margin-bottom",       NULL, &mb);
+	  get_number_from_style (style, "margin-left",         NULL, &ml);
+	}
+
+      x += ml;
+      y += mt;
+      horizontal_margin = ml+mr;
+      h -= (mt+mb);
+    }
+
+  if (w==0)
+    {
+      int height, width;
+
+      get_number_from_style (style, "height", NULL, &height);
+      get_number_from_style (style, "width",  NULL, &width);
+
+      if (height!=0 && width!=0)
+	{
+	  int min_w, max_w;
+	  double scale = ((double)h/(double)height);
+
+	  w = (int) ((double)width) * scale;
+
+	  get_number_from_style (style, "min-width", NULL, &min_w);
+	  get_number_from_style (style, "max-width", NULL, &max_w);
+
+	  if (max_w && w>max_w && max_w>min_w) w = max_w;
+	  if (w<min_w) w = min_w;
+	}
+    }
+
+  full_width = w+ horizontal_margin;
+
+  if (from_the_right)
+    x -= full_width;
+
+  ccss_cairo_style_draw_rectangle (style, cr, x, y, w, h);
+
+  if (layout)
+    {
+      reduce_by_padding_borders_and_margins (stylesheet, CC_TITLE,
+					     &x, &y, &w, &h,
+					     TRUE, FALSE);
+      /*
+       * we should maybe undo the translate later, but
+       * we're always the last one to use this context anyway
+       */
+      cairo_translate (cr, x, y);
+
+      pango_cairo_show_layout (cr, layout);
+    }
+
+  ccss_style_destroy (style);
+
+  return full_width;
+}
+
+static PangoLayout*
+cowbell_title_text (ccss_stylesheet_t *stylesheet,
+	    cairo_t *cr,
+	    char *text)
+{
+  PangoLayout			 *layout;
+  PangoAttrList *attrs = NULL;
+  ccss_style_t *style = ccss_stylesheet_query (stylesheet,
+					       (ccss_node_t*) &cowbell_nodes[CC_TITLE]);
+  char *align;
+  ccss_color_t const *colour;
+
+  layout = pango_cairo_create_layout (cr);
+
+  attrs = pango_attr_list_new ();
+
+  /* We have to handle CSS text properties ourselves here because
+   * libccss doesn't know how to render them yet.  We don't try
+   * to do all the funky effects like shadows and so on,
+   * unfortunately.
+   */
+
+  if (ccss_style_get_property (style, "color",
+			       (const ccss_property_base_t**) &colour))
+    {
+      pango_attr_list_insert (attrs,
+			      pango_attr_foreground_new
+			      ((int)65535.0*colour->red,
+			       (int)65535.0*colour->green,
+			       (int)65535.0*colour->blue));
+    }
+  
+  /* Alignment */
+  
+  if (ccss_style_get_string (style, "text-align", &align))
+    {
+      if (strcmp (align, "left")==0)
+	{
+	  pango_layout_set_alignment (layout, PANGO_ALIGN_LEFT);
+	}
+      else if (strcmp (align, "center")==0)
+	{
+	  pango_layout_set_alignment (layout, PANGO_ALIGN_CENTER);
+	}
+      else if (strcmp (align, "right")==0)
+	{
+	  pango_layout_set_alignment (layout, PANGO_ALIGN_RIGHT);
+	}
+      else
+	/* FIXME: "align" contains garbage if it's undefined;
+	 * is there an easy way of checking?
+	 */
+	g_warning ("Unknown alignment: %s", align);
+    }
+
+  pango_layout_set_attributes (layout, attrs);
+
+  /* The actual text */
+  pango_layout_set_text (layout, text, -1);
+
+  ccss_style_destroy (style);
+
+  return layout;
+}
+
 void
 meta_theme_draw_frame_with_style (MetaTheme              *theme,
                                   GtkStyle               *style_gtk,
@@ -226,6 +462,96 @@ meta_theme_draw_frame_with_style (MetaTheme              *theme,
                                   GdkPixbuf              *icon)
 {
   /* stub */
+
+  cairo_t *cr = gdk_cairo_create (drawable);
+  ccss_stylesheet_t *stylesheet = theme->stylesheet;
+
+  int x = 0;
+  int y = 0;
+  int w = client_width;
+  int h = client_height;
+
+  PangoRectangle text_extents;
+
+  int titlebar_height;
+
+  CopperClasses left_buttons[] = {CC_MENU, CC_LAST};
+  CopperClasses right_buttons[] = {CC_CLOSE, CC_MAXIMIZE, CC_MINIMIZE, CC_LAST};
+  CopperClasses *cursor;
+  int leftpos, rightpos;
+
+  PangoLayout *layout = cowbell_title_text (stylesheet, cr, "Badgers");
+
+  pango_layout_get_pixel_extents (layout, NULL, &text_extents);
+  reduce_by_padding_borders_and_margins (stylesheet, CC_TITLE,
+					 &text_extents.x, &text_extents.y,
+					 &text_extents.width,
+					 &text_extents.height,
+					 TRUE, TRUE);
+
+  titlebar_height = text_extents.height;
+
+  reduce_by_padding_borders_and_margins (stylesheet, CC_TITLEBAR,
+					 NULL, NULL, NULL,
+				         &titlebar_height,
+					 TRUE, TRUE);
+
+  draw_rectangle (stylesheet, cr, CC_FRAME, x, y, w, h, FALSE, FALSE, NULL);
+
+  reduce_by_padding_borders_and_margins (stylesheet, CC_FRAME, &x, &y, &w, &h, FALSE, FALSE);
+
+  draw_rectangle (stylesheet, cr, CC_TITLEBAR, x, y, w, titlebar_height, TRUE, FALSE, NULL);
+
+  draw_rectangle (stylesheet, cr, CC_CONTENT,  x, y+titlebar_height, w, h-titlebar_height, TRUE, FALSE, NULL);
+
+  h = titlebar_height;
+
+  reduce_by_padding_borders_and_margins (stylesheet, CC_TITLEBAR, &x, &y, &w, &h, TRUE, FALSE);
+
+  cursor = left_buttons;
+  leftpos = x;
+  while (*cursor != CC_LAST)
+    {
+      leftpos += draw_rectangle (stylesheet, cr, *cursor, leftpos, y, 0, h, TRUE, FALSE, NULL);
+      cursor++;
+    }
+
+  cursor = right_buttons;
+  rightpos = x+w;
+  while (*cursor != CC_LAST)
+    {
+      rightpos -= draw_rectangle (stylesheet, cr, *cursor,    rightpos, y, 0, h, TRUE, TRUE, NULL);
+      cursor++;
+    }
+
+  switch (pango_layout_get_alignment (layout))
+    {
+    case PANGO_ALIGN_LEFT:
+      x = leftpos;
+      draw_rectangle (stylesheet, cr, CC_FILLER, leftpos+text_extents.width, y,
+		      (rightpos-leftpos)-text_extents.width, h, TRUE, FALSE, NULL);
+      break;
+    case PANGO_ALIGN_CENTER:
+      x = leftpos + ((rightpos-leftpos)/2 - text_extents.width);
+      draw_rectangle (stylesheet, cr, CC_FILLER, leftpos, y,
+		      x-leftpos, h, TRUE, FALSE, NULL);
+      draw_rectangle (stylesheet, cr, CC_FILLER, x+text_extents.width, y,
+		      rightpos-(x+text_extents.width), h, TRUE, FALSE, NULL);
+      break;
+    case PANGO_ALIGN_RIGHT:
+      x = rightpos - text_extents.width;
+      draw_rectangle (stylesheet, cr, CC_FILLER, leftpos, y,
+		      rightpos-(leftpos-text_extents.width), h, TRUE, FALSE, NULL);
+      break;
+    default:
+      g_error ("Unknown alignment");
+    }
+
+  draw_rectangle (stylesheet, cr, CC_TITLE, x, y, text_extents.width, h, TRUE, FALSE, layout);
+
+  g_object_unref (G_OBJECT (layout));
+
+  cairo_destroy (cr);
 }
 
 void
