@@ -8,7 +8,8 @@
 #include <gtk/gtk.h>
 
 struct _MetaTheme {
-  gboolean dummy;
+  ccss_grammar_t        *grammar;
+  ccss_stylesheet_t	*stylesheet;
 };
 
 MetaTheme *the_theme = NULL;
@@ -159,21 +160,25 @@ meta_theme_set_current (const char *name,
 {
   /* stub */
 
-  ccss_grammar_t        *grammar;
-  ccss_stylesheet_t	*stylesheet;
-
   if (!the_theme)
     {
       cowbell_initialise_classes ();
 
       the_theme = g_new0 (MetaTheme, 1);
     }
+  else
+    {
+      ccss_stylesheet_destroy (the_theme->stylesheet);
+      ccss_grammar_destroy (the_theme->grammar);
+    }
 
-  grammar = ccss_cairo_grammar_create ();
-  ccss_grammar_add_functions (grammar, cowbell_functions);
-  stylesheet = ccss_grammar_create_stylesheet_from_file (grammar,
-                                                         "/home/tthurman/.themes/Human/Human.css",
-                                                         NULL);
+  the_theme->grammar = ccss_cairo_grammar_create ();
+  ccss_grammar_add_functions (the_theme->grammar,
+                              cowbell_functions);
+  the_theme->stylesheet =
+    ccss_grammar_create_stylesheet_from_file (the_theme->grammar,
+                                              "/home/tthurman/.themes/Human/Human.css",
+                                              NULL);
 
   g_warning ("THEMES: Setting theme to %s\n", name);
 }
