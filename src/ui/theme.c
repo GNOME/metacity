@@ -143,9 +143,23 @@ static char *
 cowbell_url (GSList const	*args,
              void		*user_data)
 {
-  /* stub */
+  /* stub which actually works in most cases (for me) but is stupid */
+  /* what we need is to store the path in the theme object */
+  /* also to check if the file exists! */
 
-  return g_strdup ("/usr/share/icons/gnome/24x24/actions/gtk-edit.png");
+  char *filename = NULL;
+
+  g_return_val_if_fail (args && args->data, NULL);
+  filename = (char*) args->data;
+
+  if (strcmp (filename, "wm:icon")==0)
+    {
+      return g_strdup_printf ("file:///usr/share/icons/gnome/24x24/actions/gtk-edit.png");
+    }
+  else
+    {
+      return g_strdup_printf ("file:///home/tthurman/.themes/Human/%s", filename);
+    }
 }
 
 static ccss_function_t const cowbell_functions[] = 
