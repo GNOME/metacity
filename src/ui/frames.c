@@ -2084,9 +2084,15 @@ generate_pixmap (MetaFrames *frames,
 
   region = gdk_region_rectangle (&rectangle);
 
+  g_warning ("Generate pixmap (FIXME: PUT THIS BACK IN)\n");
+  /*
+
+    FIXME:
+    Temporarily commented out
+
   meta_frames_paint_to_drawable (frames, frame, result, region,
                                  -rectangle.x, -rectangle.y);
-
+  */
   gdk_region_destroy (region);
 
   return result;
@@ -2273,7 +2279,8 @@ meta_frames_expose_event (GtkWidget           *widget,
   pixels = get_cache (frames, frame);
 
   cached_pixels_draw (pixels, frame->window, region);
-  
+
+  g_warning ("Expose event\n");
   clip_to_screen (region, frame);
   meta_frames_paint_to_drawable (frames, frame, frame->window, region, 0, 0);
 
@@ -2417,7 +2424,7 @@ meta_frames_paint_to_drawable (MetaFrames   *frames,
 
   meta_prefs_get_button_layout (&button_layout);
 
-  if (G_LIKELY (GDK_IS_WINDOW (drawable)))
+  if (0) /* G_LIKELY (GDK_IS_WINDOW (drawable))) */
     {
       /* A window; happens about 2/3 of the time */
 
@@ -2502,6 +2509,7 @@ meta_frames_paint_to_drawable (MetaFrames   *frames,
     {
       /* Not a window; happens about 1/3 of the time */
 
+      g_warning("Painting\n");
       meta_theme_draw_frame_with_style (meta_theme_get_current (),
                                         frame->style,
                                         widget,

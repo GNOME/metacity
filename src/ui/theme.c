@@ -14,6 +14,9 @@ struct _MetaTheme {
 
 MetaTheme *the_theme = NULL;
 
+/* temporarily: */
+#define SILLY_BORDER_SIZE 20
+
 /****************************************************************/
 
 /* Our little hierarchy */
@@ -482,8 +485,8 @@ meta_theme_draw_frame_with_style (MetaTheme              *theme,
 
   int x = 0;
   int y = 0;
-  int w = client_width;
-  int h = client_height;
+  int w = client_width + SILLY_BORDER_SIZE * 2;
+  int h = client_height + SILLY_BORDER_SIZE * 2;
 
   PangoRectangle text_extents;
 
@@ -579,10 +582,10 @@ meta_theme_get_frame_borders (MetaTheme         *theme,
                               int               *right_width)
 {
   /* stub */
-  *top_height = 20;
-  *bottom_height = 20;
-  *left_width = 20;
-  *right_width = 20;
+  *top_height = SILLY_BORDER_SIZE;
+  *bottom_height = SILLY_BORDER_SIZE;
+  *left_width = SILLY_BORDER_SIZE;
+  *right_width = SILLY_BORDER_SIZE;
 }
 
 #define MAX_MIDDLE_BACKGROUNDS (MAX_BUTTONS_PER_CORNER - 2)
@@ -592,8 +595,8 @@ clear_rect(GdkRectangle *r)
 {
   r->x = 0;
   r->y = 0;
-  r->width = 20;
-  r->height = 20;
+  r->width = SILLY_BORDER_SIZE;
+  r->height = SILLY_BORDER_SIZE;
 }
 
 static void
@@ -616,10 +619,10 @@ meta_theme_calc_geometry (MetaTheme              *theme,
   int i;
 
   /* stub */
-  fgeom->left_width = 20;
-  fgeom->right_width = 20;
-  fgeom->top_height = 20;
-  fgeom->bottom_height = 20;
+  fgeom->left_width = SILLY_BORDER_SIZE;
+  fgeom->right_width = SILLY_BORDER_SIZE;
+  fgeom->top_height = SILLY_BORDER_SIZE;
+  fgeom->bottom_height = SILLY_BORDER_SIZE;
 
   fgeom->width = 40+client_width;
   fgeom->height = 40+client_height;
