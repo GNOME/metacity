@@ -693,6 +693,7 @@ meta_theme_get_frame_borders (MetaTheme         *theme,
 
 #define MAX_MIDDLE_BACKGROUNDS (MAX_BUTTONS_PER_CORNER - 2)
 
+/* FIXME: This is a dummy function used to stub meta_theme_calc_geometry */
 static void
 clear_rect(GdkRectangle *r)
 {
@@ -702,6 +703,7 @@ clear_rect(GdkRectangle *r)
   r->height = SILLY_BORDER_SIZE;
 }
 
+/* FIXME: This is a dummy function used to stub meta_theme_calc_geometry */
 static void
 clear_bs(MetaButtonSpace *bs)
 {
