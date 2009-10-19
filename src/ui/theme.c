@@ -586,13 +586,21 @@ cowbell_get_edge_sizes (ccss_style_t *style,
   *right = SILLY_BORDER_SIZE;
 }
 
+/**
+ * Returns the style to use with the given type and flags.
+ * When you're done with it, call ccss_style_destroy (style).
+ * (FIXME: Currently always returns the plain style.)
+ */
 static ccss_style_t *
 cowbell_get_current_style (MetaTheme *theme,
                            MetaFrameType type,
-                           MetaFrameFlags flags)
+                           MetaFrameFlags flags,
+                           CopperClasses style_id)
 {
-  /* stub */
-  return NULL;
+  ccss_stylesheet_t *stylesheet = theme->stylesheet;
+
+  return ccss_stylesheet_query (stylesheet,
+                                (ccss_node_t*) &cowbell_nodes[style_id]);
 }
 
 void
@@ -608,13 +616,15 @@ meta_theme_get_frame_borders (MetaTheme         *theme,
   /* stub */
   ccss_style_t *style;
 
-  style = cowbell_get_current_style (theme, type, flags);
+  style = cowbell_get_current_style (theme, type, flags, CC_FRAME);
 
   cowbell_get_edge_sizes (NULL, TRUE,
                           top_height,
                           bottom_height,
                           left_width,
                           right_width);
+
+  ccss_style_destroy (style);
 }
 
 #define MAX_MIDDLE_BACKGROUNDS (MAX_BUTTONS_PER_CORNER - 2)
@@ -650,7 +660,7 @@ meta_theme_calc_geometry (MetaTheme              *theme,
   int i;
   ccss_style_t *style;
 
-  style = cowbell_get_current_style (theme, type, flags);
+  style = cowbell_get_current_style (theme, type, flags, CC_FRAME);
 
   cowbell_get_edge_sizes (style,
                           TRUE,
@@ -658,6 +668,8 @@ meta_theme_calc_geometry (MetaTheme              *theme,
                           &(fgeom->bottom_height),
                           &(fgeom->left_width),
                           &(fgeom->right_width));
+
+  ccss_style_destroy (style);
 
   fgeom->width = 40+client_width;
   fgeom->height = 40+client_height;
