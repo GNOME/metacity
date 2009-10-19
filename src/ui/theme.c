@@ -764,6 +764,7 @@ meta_theme_calc_geometry (MetaTheme              *theme,
   clear_bs (&(fgeom->unabove_rect));
   clear_bs (&(fgeom->unstick_rect));
 
+  /* Pieces.  Are these really necessary? */
   clear_rect (&(fgeom->left_left_background));
   for (i=0; i<MAX_MIDDLE_BACKGROUNDS; i++)
     clear_rect (&(fgeom->left_middle_backgrounds[i]));
@@ -773,6 +774,7 @@ meta_theme_calc_geometry (MetaTheme              *theme,
     clear_rect (&(fgeom->right_middle_backgrounds[i]));
   clear_rect (&(fgeom->right_right_background));
   
+  /* Rounded corners; need to pick these up from the CSS.  FIXME. */
   fgeom->top_left_corner_rounded_radius = 5;
   fgeom->top_right_corner_rounded_radius = 5;
   fgeom->bottom_left_corner_rounded_radius = 5;
