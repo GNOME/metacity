@@ -602,7 +602,10 @@ cowbell_get_current_style (MetaTheme *theme,
  * \param right  Receives the size of the right edge.
  */
 static void
-cowbell_get_edge_sizes (ccss_style_t *style,
+cowbell_get_edge_sizes (MetaTheme *theme,
+                        MetaFrameType type,
+                        MetaFrameFlags flags,
+                        CopperClasses style_id,
                         gboolean ignore_padding,
                         int *top,
                         int *bottom,
@@ -620,6 +623,7 @@ cowbell_get_edge_sizes (ccss_style_t *style,
   };
   double results[4] = {0.0, 0.0, 0.0, 0.0};
   double fallback = 0.0;
+  ccss_style_t *style = cowbell_get_current_style (theme, type, flags, style_id);
 
   if (ignore_padding)
     start = 1;
@@ -661,6 +665,8 @@ cowbell_get_edge_sizes (ccss_style_t *style,
   if (bottom) *bottom += (int) results[1];
   if (left) *left += (int) results[2];
   if (right) *right += (int) results[3];
+
+  ccss_style_destroy (style);
 }
 
 void
@@ -673,23 +679,17 @@ meta_theme_get_frame_borders (MetaTheme         *theme,
                               int               *left_width,
                               int               *right_width)
 {
-  /* stub */
-  ccss_style_t *style;
-
   *top_height = 0;
   *bottom_height = 0;
   *left_width = 0;
   *right_width = 0;
 
-  style = cowbell_get_current_style (theme, type, flags, CC_FRAME);
-
-  cowbell_get_edge_sizes (style, TRUE,
+  cowbell_get_edge_sizes (theme, type, flags, CC_FRAME,
+                          TRUE,
                           top_height,
                           bottom_height,
                           left_width,
                           right_width);
-
-  ccss_style_destroy (style);
 }
 
 #define MAX_MIDDLE_BACKGROUNDS (MAX_BUTTONS_PER_CORNER - 2)
@@ -723,23 +723,18 @@ meta_theme_calc_geometry (MetaTheme              *theme,
   /* stub */
 
   int i;
-  ccss_style_t *style;
-
-  style = cowbell_get_current_style (theme, type, flags, CC_FRAME);
 
   fgeom->top_height = 0;
   fgeom->bottom_height = 0;
   fgeom->left_width = 0;
   fgeom->right_width = 0;
 
-  cowbell_get_edge_sizes (style,
+  cowbell_get_edge_sizes (theme, type, flags, CC_FRAME,
                           TRUE,
                           &(fgeom->top_height),
                           &(fgeom->bottom_height),
                           &(fgeom->left_width),
                           &(fgeom->right_width));
-
-  ccss_style_destroy (style);
 
   fgeom->width = 40+client_width;
   fgeom->height = 40+client_height;
