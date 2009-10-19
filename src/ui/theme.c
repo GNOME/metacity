@@ -394,20 +394,16 @@ draw_rectangle (ccss_stylesheet_t *stylesheet,
   return full_width;
 }
 
-#if 0
-static PangoLayout*
-cowbell_title_text (ccss_stylesheet_t *stylesheet,
-	    cairo_t *cr,
-	    char *text)
+static void
+cowbell_style_title_text (ccss_stylesheet_t *stylesheet,
+                          PangoLayout *layout,
+                          cairo_t *cr)
 {
-  PangoLayout			 *layout;
   PangoAttrList *attrs = NULL;
   ccss_style_t *style = ccss_stylesheet_query (stylesheet,
 					       (ccss_node_t*) &cowbell_nodes[CC_TITLE]);
   char *align;
   ccss_color_t const *colour;
-
-  layout = pango_cairo_create_layout (cr);
 
   attrs = pango_attr_list_new ();
 
@@ -452,15 +448,9 @@ cowbell_title_text (ccss_stylesheet_t *stylesheet,
 
   pango_layout_set_attributes (layout, attrs);
 
-  /* The actual text */
-  pango_layout_set_text (layout, text, -1);
-
   ccss_style_destroy (style);
   pango_attr_list_unref (attrs);
-
-  return layout;
 }
-#endif
 
 void
 meta_theme_draw_frame_with_style (MetaTheme              *theme,
@@ -500,7 +490,7 @@ meta_theme_draw_frame_with_style (MetaTheme              *theme,
   CopperClasses *cursor;
   int leftpos, rightpos;
 
-  /*  PangoLayout *layout = cowbell_title_text (stylesheet, cr, "Badgers");*/
+  cowbell_style_title_text (stylesheet, title_layout, cr);
 
   pango_layout_get_pixel_extents (title_layout, NULL, &text_extents);
   reduce_by_padding_borders_and_margins (stylesheet, CC_TITLE,
