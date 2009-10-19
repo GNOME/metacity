@@ -455,6 +455,7 @@ cowbell_title_text (ccss_stylesheet_t *stylesheet,
   pango_layout_set_text (layout, text, -1);
 
   ccss_style_destroy (style);
+  pango_attr_list_unref (attrs);
 
   return layout;
 }
