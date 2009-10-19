@@ -721,18 +721,16 @@ meta_theme_calc_geometry (MetaTheme              *theme,
 {
   /* stub */
 
-  int i;
+  gint i;
 
-  fgeom->top_height = 0;
-  fgeom->bottom_height = 0;
-  fgeom->left_width = 0;
-  fgeom->right_width = 0;
-
-  cowbell_get_edge_sizes (theme, type, flags, CC_FRAME,
-                          &(fgeom->top_height),
-                          &(fgeom->bottom_height),
-                          &(fgeom->left_width),
-                          &(fgeom->right_width));
+  /* see if we can write meta_theme_calc_geometry in terms of
+   * meta_theme_get_frame_borders
+   */
+  meta_theme_get_frame_borders (theme, type, text_height, flags,
+                                &(fgeom->top_height),
+                                &(fgeom->bottom_height),
+                                &(fgeom->left_width),
+                                &(fgeom->right_width));
 
   fgeom->width = 40+client_width;
   fgeom->height = 40+client_height;
