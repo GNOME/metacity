@@ -572,6 +572,23 @@ meta_theme_draw_frame_with_style (MetaTheme              *theme,
 }
 
 /**
+ * Returns the style to use with the given type and flags.
+ * When you're done with it, call ccss_style_destroy (style).
+ * (FIXME: Currently always returns the plain style.)
+ */
+static ccss_style_t *
+cowbell_get_current_style (MetaTheme *theme,
+                           MetaFrameType type,
+                           MetaFrameFlags flags,
+                           CopperClasses style_id)
+{
+  ccss_stylesheet_t *stylesheet = theme->stylesheet;
+
+  return ccss_stylesheet_query (stylesheet,
+                                (ccss_node_t*) &cowbell_nodes[style_id]);
+}
+
+/**
  * Finds the size of the edges (borders, margins, and optionally padding) of
  * an element with a given CSS style.  Any of the out parameters can be NULL
  * in order not to receive the value; if they are not, the answer will be
@@ -644,23 +661,6 @@ cowbell_get_edge_sizes (ccss_style_t *style,
   if (bottom) *bottom += (int) results[1];
   if (left) *left += (int) results[2];
   if (right) *right += (int) results[3];
-}
-
-/**
- * Returns the style to use with the given type and flags.
- * When you're done with it, call ccss_style_destroy (style).
- * (FIXME: Currently always returns the plain style.)
- */
-static ccss_style_t *
-cowbell_get_current_style (MetaTheme *theme,
-                           MetaFrameType type,
-                           MetaFrameFlags flags,
-                           CopperClasses style_id)
-{
-  ccss_stylesheet_t *stylesheet = theme->stylesheet;
-
-  return ccss_stylesheet_query (stylesheet,
-                                (ccss_node_t*) &cowbell_nodes[style_id]);
 }
 
 void
