@@ -572,11 +572,14 @@ meta_theme_draw_frame_with_style (MetaTheme              *theme,
 }
 
 static void
-cowbell_get_edge_sizes (int *top,
+cowbell_get_edge_sizes (ccss_style_t *style,
+                        gboolean ignore_padding,
+                        int *top,
                         int *bottom,
                         int *left,
                         int *right)
 {
+  /* stub */
   *top = SILLY_BORDER_SIZE;
   *bottom = SILLY_BORDER_SIZE;
   *left = SILLY_BORDER_SIZE;
@@ -595,7 +598,8 @@ meta_theme_get_frame_borders (MetaTheme         *theme,
                               int               *right_width)
 {
   /* stub */
-  cowbell_get_edge_sizes (top_height,
+  cowbell_get_edge_sizes (NULL, TRUE,
+                          top_height,
                           bottom_height,
                           left_width,
                           right_width);
@@ -632,7 +636,8 @@ meta_theme_calc_geometry (MetaTheme              *theme,
   int i;
 
   /* stub */
-  cowbell_get_edge_sizes (&(fgeom->top_height),
+  cowbell_get_edge_sizes (NULL, TRUE,
+                          &(fgeom->top_height),
                           &(fgeom->bottom_height),
                           &(fgeom->left_width),
                           &(fgeom->right_width));
