@@ -743,8 +743,8 @@ meta_theme_calc_geometry (MetaTheme              *theme,
                                 &(fgeom->left_width),
                                 &(fgeom->right_width));
 
-  fgeom->width = 40+client_width;
-  fgeom->height = 40+client_height;
+  fgeom->width = client_width+(fgeom->top_height)+(fgeom->bottom_height);
+  fgeom->height = client_height+(fgeom->left_width)+(fgeom->right_width);
 
   clear_rect (&(fgeom->title_rect));
 
