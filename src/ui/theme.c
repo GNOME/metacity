@@ -699,6 +699,9 @@ meta_theme_get_frame_borders (MetaTheme         *theme,
   cowbell_get_edge_sizes (theme, type, flags, CC_TITLEBAR,
                           top_height, top_height, NULL, NULL);
 
+  cowbell_get_edge_sizes (theme, type, flags, CC_TITLE,
+                          top_height, top_height, NULL, NULL);
+
   if (top_height)
     {
       *top_height += text_height;
