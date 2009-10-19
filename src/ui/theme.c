@@ -478,8 +478,9 @@ meta_theme_draw_frame_with_style (MetaTheme              *theme,
 
   int x = 0;
   int y = 0;
-  int w = client_width + SILLY_BORDER_SIZE * 2;
-  int h = client_height + SILLY_BORDER_SIZE * 2;
+  int w = client_width;
+  int h = client_height;
+  int te, be, le, re;
 
   PangoRectangle text_extents;
 
@@ -489,6 +490,11 @@ meta_theme_draw_frame_with_style (MetaTheme              *theme,
   CopperClasses right_buttons[] = {CC_CLOSE, CC_MAXIMIZE, CC_MINIMIZE, CC_LAST};
   CopperClasses *cursor;
   int leftpos, rightpos;
+
+  meta_theme_get_frame_borders (theme, type, text_height, flags,
+                                &te, &be, &le, &re);
+  w += le+re;
+  h += te+be;
 
   cowbell_style_title_text (stylesheet, title_layout, cr);
 
