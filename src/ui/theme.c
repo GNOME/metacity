@@ -394,6 +394,7 @@ draw_rectangle (ccss_stylesheet_t *stylesheet,
   return full_width;
 }
 
+#if 0
 static PangoLayout*
 cowbell_title_text (ccss_stylesheet_t *stylesheet,
 	    cairo_t *cr,
@@ -459,6 +460,7 @@ cowbell_title_text (ccss_stylesheet_t *stylesheet,
 
   return layout;
 }
+#endif
 
 void
 meta_theme_draw_frame_with_style (MetaTheme              *theme,
@@ -498,9 +500,9 @@ meta_theme_draw_frame_with_style (MetaTheme              *theme,
   CopperClasses *cursor;
   int leftpos, rightpos;
 
-  PangoLayout *layout = cowbell_title_text (stylesheet, cr, "Badgers");
+  /*  PangoLayout *layout = cowbell_title_text (stylesheet, cr, "Badgers");*/
 
-  pango_layout_get_pixel_extents (layout, NULL, &text_extents);
+  pango_layout_get_pixel_extents (title_layout, NULL, &text_extents);
   reduce_by_padding_borders_and_margins (stylesheet, CC_TITLE,
 					 &text_extents.x, &text_extents.y,
 					 &text_extents.width,
@@ -542,7 +544,7 @@ meta_theme_draw_frame_with_style (MetaTheme              *theme,
       cursor++;
     }
 
-  switch (pango_layout_get_alignment (layout))
+  switch (pango_layout_get_alignment (title_layout))
     {
     case PANGO_ALIGN_LEFT:
       x = leftpos;
@@ -565,9 +567,7 @@ meta_theme_draw_frame_with_style (MetaTheme              *theme,
       g_error ("Unknown alignment");
     }
 
-  draw_rectangle (stylesheet, cr, CC_TITLE, x, y, text_extents.width, h, TRUE, FALSE, layout);
-
-  g_object_unref (G_OBJECT (layout));
+  draw_rectangle (stylesheet, cr, CC_TITLE, x, y, text_extents.width, h, TRUE, FALSE, title_layout);
 
   cairo_destroy (cr);
 }
