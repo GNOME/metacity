@@ -571,6 +571,17 @@ meta_theme_draw_frame_with_style (MetaTheme              *theme,
   cairo_destroy (cr);
 }
 
+/**
+ * Finds the size of the edges (optionally padding, borders, and margins) of
+ * an element with a given CSS style.
+ *
+ * \param style  The style.
+ * \param ignore_padding  Whether to ignore padding in the calculation.
+ * \param top    Receives the size of the top edge.
+ * \param bottom Receives the size of the bottom edge.
+ * \param left   Receives the size of the left edge.
+ * \param right  Receives the size of the right edge.
+ */
 static void
 cowbell_get_edge_sizes (ccss_style_t *style,
                         gboolean ignore_padding,
