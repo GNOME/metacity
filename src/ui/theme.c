@@ -572,8 +572,10 @@ meta_theme_draw_frame_with_style (MetaTheme              *theme,
 }
 
 /**
- * Finds the size of the edges (optionally padding, borders, and margins) of
- * an element with a given CSS style.
+ * Finds the size of the edges (borders, margins, and optionally padding) of
+ * an element with a given CSS style.  Any of the out parameters can be NULL
+ * in order not to receive the value; if they are not, the answer will be
+ * added to the current value, rather than replacing it.
  *
  * \param style  The style.
  * \param ignore_padding  Whether to ignore padding in the calculation.
@@ -638,10 +640,10 @@ cowbell_get_edge_sizes (ccss_style_t *style,
 
   g_warning ("Results are: T=%f B=%f L=%f R=%f\n", results[0], results[1], results[2], results[3]);
 
-  *top = (int) results[0];
-  *bottom = (int) results[1];
-  *left = (int) results[2];
-  *right = (int) results[3];
+  if (top) *top += (int) results[0];
+  if (bottom) *bottom += (int) results[1];
+  if (left) *left += (int) results[2];
+  if (right) *right += (int) results[3];
 }
 
 /**
@@ -673,6 +675,11 @@ meta_theme_get_frame_borders (MetaTheme         *theme,
 {
   /* stub */
   ccss_style_t *style;
+
+  *top_height = 0;
+  *bottom_height = 0;
+  *left_width = 0;
+  *right_width = 0;
 
   style = cowbell_get_current_style (theme, type, flags, CC_FRAME);
 
@@ -719,6 +726,11 @@ meta_theme_calc_geometry (MetaTheme              *theme,
   ccss_style_t *style;
 
   style = cowbell_get_current_style (theme, type, flags, CC_FRAME);
+
+  fgeom->top_height = 0;
+  fgeom->bottom_height = 0;
+  fgeom->left_width = 0;
+  fgeom->right_width = 0;
 
   cowbell_get_edge_sizes (style,
                           TRUE,
