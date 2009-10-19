@@ -590,11 +590,58 @@ cowbell_get_edge_sizes (ccss_style_t *style,
                         int *left,
                         int *right)
 {
-  /* stub */
-  *top = SILLY_BORDER_SIZE;
-  *bottom = SILLY_BORDER_SIZE;
-  *left = SILLY_BORDER_SIZE;
-  *right = SILLY_BORDER_SIZE;
+  double d;
+  gboolean fallback_known;
+  gint i, j, start;
+  /* We are called far too often to mess around with string splicing */
+  gchar *properties[3][5] = {
+    {"padding-top-width", "padding-bottom-width", "padding-left-width", "padding-right-width", "padding-width"},
+    {"border-top-width", "border-bottom-width", "border-left-width", "border-right-width", "border-width"},
+    {"margin-top-width", "margin-bottom-width", "margin-left-width", "margin-right-width", "margin-width"},
+  };
+  double results[4] = {0.0, 0.0, 0.0, 0.0};
+  double fallback = 0.0;
+
+  if (ignore_padding)
+    start = 1;
+  else
+    start = 0;
+
+  for (i=start; i<3; i++)
+    {
+      fallback_known = FALSE;
+      for (j=0; j<4; j++)
+        {
+          if (ccss_style_get_double (style, properties[i][j], &d))
+            {
+              /* it exists under foo-direction-width */
+              results[j] += d;
+            }
+          else
+            {
+              /* it doesn't exist under foo-direction-width;
+               * try foo-width
+               */
+              if (!fallback_known)
+                {
+                  /* we haven't cached it yet */
+                  fallback_known = TRUE;
+                  if (!ccss_style_get_double (style, properties[i][4], &fallback))
+                    {
+                      fallback = 0.0;
+                    }
+                }
+              results[j] += fallback;
+            }
+        }
+    }
+
+  g_warning ("Results are: T=%f B=%f L=%f R=%f\n", results[0], results[1], results[2], results[3]);
+
+  *top = (int) results[0];
+  *bottom = (int) results[1];
+  *left = (int) results[2];
+  *right = (int) results[3];
 }
 
 /**
@@ -629,7 +676,7 @@ meta_theme_get_frame_borders (MetaTheme         *theme,
 
   style = cowbell_get_current_style (theme, type, flags, CC_FRAME);
 
-  cowbell_get_edge_sizes (NULL, TRUE,
+  cowbell_get_edge_sizes (style, TRUE,
                           top_height,
                           bottom_height,
                           left_width,
