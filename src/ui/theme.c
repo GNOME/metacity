@@ -587,7 +587,9 @@ cowbell_get_edge_sizes (ccss_style_t *style,
 }
 
 static ccss_style_t *
-cowbell_get_current_style ()
+cowbell_get_current_style (MetaTheme *theme,
+                           MetaFrameType type,
+                           MetaFrameFlags flags)
 {
   /* stub */
   return NULL;
