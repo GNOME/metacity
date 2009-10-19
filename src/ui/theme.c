@@ -689,6 +689,21 @@ meta_theme_get_frame_borders (MetaTheme         *theme,
                           bottom_height,
                           left_width,
                           right_width);
+
+  cowbell_get_edge_sizes (theme, type, flags, CC_CONTENT,
+                          top_height,
+                          bottom_height,
+                          left_width,
+                          right_width);
+
+  cowbell_get_edge_sizes (theme, type, flags, CC_TITLEBAR,
+                          top_height, top_height, NULL, NULL);
+
+  if (top_height)
+    {
+      *top_height += text_height;
+      g_warning ("At end: %d pixels (text height is %d)\n", *top_height, text_height);
+    }
 }
 
 #define MAX_MIDDLE_BACKGROUNDS (MAX_BUTTONS_PER_CORNER - 2)
