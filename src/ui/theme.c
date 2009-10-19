@@ -809,12 +809,31 @@ meta_gtk_widget_get_font_desc        (GtkWidget            *widget,
   return font_desc;
 }
 
+
+/**
+ * Returns the height of the letters in a particular font.
+ *
+ * \param font_desc  the font
+ * \param context  the context of the font
+ * \return  the height of the letters
+ */
 int
 meta_pango_font_desc_get_text_height (const PangoFontDescription *font_desc,
                                       PangoContext         *context)
 {
-  /* stub */
-  return 0;
+  PangoFontMetrics *metrics;
+  PangoLanguage *lang;
+  int retval;
+
+  lang = pango_context_get_language (context);
+  metrics = pango_context_get_metrics (context, font_desc, lang);
+
+  retval = PANGO_PIXELS (pango_font_metrics_get_ascent (metrics) + 
+                         pango_font_metrics_get_descent (metrics));
+  
+  pango_font_metrics_unref (metrics);
+  
+  return retval;
 }
 
 #if 0
