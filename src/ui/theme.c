@@ -571,6 +571,19 @@ meta_theme_draw_frame_with_style (MetaTheme              *theme,
   cairo_destroy (cr);
 }
 
+static void
+cowbell_get_edge_sizes (int *top,
+                        int *bottom,
+                        int *left,
+                        int *right)
+{
+  *top = SILLY_BORDER_SIZE;
+  *bottom = SILLY_BORDER_SIZE;
+  *left = SILLY_BORDER_SIZE;
+  *right = SILLY_BORDER_SIZE;
+}
+
+
 void
 meta_theme_get_frame_borders (MetaTheme         *theme,
                               MetaFrameType      type,
@@ -582,10 +595,10 @@ meta_theme_get_frame_borders (MetaTheme         *theme,
                               int               *right_width)
 {
   /* stub */
-  *top_height = SILLY_BORDER_SIZE;
-  *bottom_height = SILLY_BORDER_SIZE;
-  *left_width = SILLY_BORDER_SIZE;
-  *right_width = SILLY_BORDER_SIZE;
+  cowbell_get_edge_sizes (top_height,
+                          bottom_height,
+                          left_width,
+                          right_width);
 }
 
 #define MAX_MIDDLE_BACKGROUNDS (MAX_BUTTONS_PER_CORNER - 2)
@@ -619,10 +632,10 @@ meta_theme_calc_geometry (MetaTheme              *theme,
   int i;
 
   /* stub */
-  fgeom->left_width = SILLY_BORDER_SIZE;
-  fgeom->right_width = SILLY_BORDER_SIZE;
-  fgeom->top_height = SILLY_BORDER_SIZE;
-  fgeom->bottom_height = SILLY_BORDER_SIZE;
+  cowbell_get_edge_sizes (&(fgeom->top_height),
+                          &(fgeom->bottom_height),
+                          &(fgeom->left_width),
+                          &(fgeom->right_width));
 
   fgeom->width = 40+client_width;
   fgeom->height = 40+client_height;
