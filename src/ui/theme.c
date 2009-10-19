@@ -606,7 +606,6 @@ cowbell_get_edge_sizes (MetaTheme *theme,
                         MetaFrameType type,
                         MetaFrameFlags flags,
                         CopperClasses style_id,
-                        gboolean ignore_padding,
                         int *top,
                         int *bottom,
                         int *left,
@@ -617,15 +616,16 @@ cowbell_get_edge_sizes (MetaTheme *theme,
   gint i, j, start;
   /* We are called far too often to mess around with string splicing */
   gchar *properties[3][5] = {
-    {"padding-top-width", "padding-bottom-width", "padding-left-width", "padding-right-width", "padding-width"},
-    {"border-top-width", "border-bottom-width", "border-left-width", "border-right-width", "border-width"},
     {"margin-top-width", "margin-bottom-width", "margin-left-width", "margin-right-width", "margin-width"},
+    {"border-top-width", "border-bottom-width", "border-left-width", "border-right-width", "border-width"},
+    {"padding-top-width", "padding-bottom-width", "padding-left-width", "padding-right-width", "padding-width"},
   };
   double results[4] = {0.0, 0.0, 0.0, 0.0};
   double fallback = 0.0;
   ccss_style_t *style = cowbell_get_current_style (theme, type, flags, style_id);
 
-  if (ignore_padding)
+  if (style_id==CC_FRAME)
+    /* the frame has no margin */
     start = 1;
   else
     start = 0;
@@ -685,7 +685,6 @@ meta_theme_get_frame_borders (MetaTheme         *theme,
   *right_width = 0;
 
   cowbell_get_edge_sizes (theme, type, flags, CC_FRAME,
-                          TRUE,
                           top_height,
                           bottom_height,
                           left_width,
@@ -730,7 +729,6 @@ meta_theme_calc_geometry (MetaTheme              *theme,
   fgeom->right_width = 0;
 
   cowbell_get_edge_sizes (theme, type, flags, CC_FRAME,
-                          TRUE,
                           &(fgeom->top_height),
                           &(fgeom->bottom_height),
                           &(fgeom->left_width),
