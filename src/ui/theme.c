@@ -586,6 +586,12 @@ cowbell_get_edge_sizes (ccss_style_t *style,
   *right = SILLY_BORDER_SIZE;
 }
 
+static ccss_style_t *
+cowbell_get_current_style ()
+{
+  /* stub */
+  return NULL;
+}
 
 void
 meta_theme_get_frame_borders (MetaTheme         *theme,
@@ -598,6 +604,10 @@ meta_theme_get_frame_borders (MetaTheme         *theme,
                               int               *right_width)
 {
   /* stub */
+  ccss_style_t *style;
+
+  style = cowbell_get_current_style (theme, type, flags);
+
   cowbell_get_edge_sizes (NULL, TRUE,
                           top_height,
                           bottom_height,
@@ -633,10 +643,15 @@ meta_theme_calc_geometry (MetaTheme              *theme,
                           const MetaButtonLayout *button_layout,
                           MetaFrameGeometry      *fgeom)
 {
-  int i;
-
   /* stub */
-  cowbell_get_edge_sizes (NULL, TRUE,
+
+  int i;
+  ccss_style_t *style;
+
+  style = cowbell_get_current_style (theme, type, flags);
+
+  cowbell_get_edge_sizes (style,
+                          TRUE,
                           &(fgeom->top_height),
                           &(fgeom->bottom_height),
                           &(fgeom->left_width),
