@@ -418,6 +418,8 @@ meta_theme_draw_frame_with_style (MetaTheme              *theme,
                                        fgeom.areas[i].y,
                                        fgeom.areas[i].width,
                                        fgeom.areas[i].height);
+
+      ccss_style_destroy (style);
     }
 
   /* may be worth moving this inline? */
