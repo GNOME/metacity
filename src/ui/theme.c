@@ -643,7 +643,9 @@ cowbell_get_button_width (MetaTheme              *theme,
   double width=0.0, height=0.0;
   ccss_style_t *style = cowbell_get_current_style (theme, type, flags, button);
   double aspect_ratio;
+  double result;
 
+  /* FIXME: maybe check these are ordered correctly */
   ccss_style_get_double (style, "min-width", &min_width);
   ccss_style_get_double (style, "max-width", &max_width);
 
@@ -676,7 +678,12 @@ cowbell_get_button_width (MetaTheme              *theme,
 
   /* FIXME honour min/max width */
 
-  return (int) (width / aspect_ratio);
+  result = width / aspect_ratio;
+
+  if (min_width!=0 && result<min_width) result = min_width;
+  if (max_width!=0 && result>max_width) result = max_width;
+
+  return (int) result;
 }
 
 void
