@@ -639,8 +639,44 @@ cowbell_get_button_width (MetaTheme              *theme,
                           CopperClasses           button,
                           int                     button_height)
 {
-  /* stub */
-  return button_height;
+  double min_width=0.0, max_width=0.0;
+  double width=0.0, height=0.0;
+  ccss_style_t *style = cowbell_get_current_style (theme, type, flags, button);
+  double aspect_ratio;
+
+  ccss_style_get_double (style, "min-width", &min_width);
+  ccss_style_get_double (style, "max-width", &max_width);
+
+  if (min_width!=0.0 && min_width==max_width)
+    {
+      /* gosh, that was easy. */
+      return (int) min_width;
+    }
+
+  ccss_style_get_double (style, "width",  &width);
+  ccss_style_get_double (style, "height", &height);
+  
+  if (width==0.0 || height==0.0)
+    {
+      /* They didn't specify a width or height for the button.
+       *
+       * Ultimately I want to stop at this point and check for the
+       * background image, and default to its dimensions.  But
+       * for now, let's assume it's square.
+       */
+      aspect_ratio = 1.0;
+
+      /* Warn them.  This could be more informative... */
+      g_warning ("Button found with missing width or height");
+    }
+  else
+    {
+      aspect_ratio = width/height;
+    }
+
+  /* FIXME honour min/max width */
+
+  return (int) (width / aspect_ratio);
 }
 
 void
@@ -764,9 +800,6 @@ meta_theme_calc_geometry (MetaTheme              *theme,
   for (i=CC_BUTTON_FIRST; i<=CC_BUTTON_LAST; i++)
     {
       fgeom->areas[i].height = button_height;
-      /* FIXME!! This needs to be worked out from the
-       * aspect ratio, BUT for now we are assuming
-       * all buttons are square. */
       fgeom->areas[i].width = cowbell_get_button_width (theme, type, flags,
                                                         i,
                                                         button_height);
