@@ -140,6 +140,10 @@ typedef struct
 
 CopperNode cowbell_nodes[CC_LAST];
 
+static void cowbell_style_title_text (ccss_stylesheet_t *stylesheet,
+                                      PangoLayout *layout,
+                                      cairo_t *cr);
+
 /****************************************************************/
 
 static char const*
@@ -400,6 +404,11 @@ draw_rectangle (ccss_stylesheet_t *stylesheet,
   if (honour_margins)
     {
       int mn, mt, mr, mb, ml;
+
+      /*
+       * FIXME: Is all this still really necessary?
+       */
+
       /* FIXME: Setting just "margin" doesn't work
        * because libccss doesn't know about margins.
        */
@@ -452,18 +461,20 @@ draw_rectangle (ccss_stylesheet_t *stylesheet,
 
   ccss_cairo_style_draw_rectangle (style, cr, x, y, w, h);
 
-  if (layout)
+  if (style_id==CC_TITLE)
     {
+      /* may be worth moving this inline? */
+      cowbell_style_title_text (stylesheet, layout, cr);
+
+      /* XXX use edges, not RBPBAM */
       reduce_by_padding_borders_and_margins (stylesheet, CC_TITLE,
 					     &x, &y, &w, &h,
 					     TRUE, FALSE);
-      /*
-       * we should maybe undo the translate later, but
-       * we're always the last one to use this context anyway
-       */
       cairo_translate (cr, x, y);
 
       pango_cairo_show_layout (cr, layout);
+
+      cairo_translate (cr, -x, -y);
     }
 
   ccss_style_destroy (style);
@@ -547,6 +558,40 @@ meta_theme_draw_frame_with_style (MetaTheme              *theme,
                                   MetaButtonState         button_states[META_BUTTON_TYPE_LAST],
                                   GdkPixbuf              *mini_icon,
                                   GdkPixbuf              *icon)
+{
+  cairo_t *cr = gdk_cairo_create (drawable);
+  ccss_stylesheet_t *stylesheet = theme->stylesheet;
+  /* FIXME: Check whether all the callers of this function
+   * have a copy of this already.  If they do, they should
+   * pass it in and save us having to calculate it twice.
+   */
+  MetaFrameGeometry fgeom;
+  int i;
+
+  meta_theme_calc_geometry (theme, type, text_height, flags,
+                            client_width, client_height,
+                            button_layout,
+                            &fgeom);
+
+  for (i=0; i<CC_LAST; i++)
+    {
+      draw_rectangle (stylesheet, cr, i,
+                      fgeom.areas[i].x,
+                      fgeom.areas[i].y,
+                      fgeom.areas[i].width,
+                      fgeom.areas[i].height,
+                      i != CC_FRAME /* honour_margins */,
+                      FALSE, /* from_the_right: this is going away */
+                      title_layout);
+
+    }
+}
+
+#if 0
+
+/* This is the old code from Copper.  We are now using the calculations
+ * we have to do anyway in geometry.
+ */
 {
   /* stub */
 
@@ -644,6 +689,8 @@ meta_theme_draw_frame_with_style (MetaTheme              *theme,
 
   cairo_destroy (cr);
 }
+
+#endif /* 0 */
 
 /**
  * Returns the style to use with the given type and flags.
