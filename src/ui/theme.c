@@ -771,8 +771,6 @@ meta_theme_calc_geometry (MetaTheme              *theme,
                           const MetaButtonLayout *button_layout,
                           MetaFrameGeometry      *fgeom)
 {
-  /* stub */
-
   int i;
 
   /* FIXME FIXME FIXME */
@@ -857,6 +855,22 @@ meta_theme_calc_geometry (MetaTheme              *theme,
     fgeom->areas[CC_TITLE].bottom_edge +
     fgeom->areas[CC_TITLEBAR].bottom_edge;
 
+  /* Now the titlebar. */
+  fgeom->areas[CC_TITLE].x =
+    fgeom->areas[CC_FRAME].left_edge +
+    fgeom->areas[CC_TITLEBAR].left_edge;
+  fgeom->areas[CC_TITLE].y =
+    fgeom->areas[CC_FRAME].top_edge +
+    fgeom->areas[CC_TITLEBAR].top_edge;
+  fgeom->areas[CC_TITLE].width =
+    /* This is the most it can be; we'll possibly subtract from it */
+    fgeom->areas[CC_CONTENT].width;
+  fgeom->areas[CC_TITLE].height =
+    text_height; /* obviously */
+
+  /* And finally, the buttons. */
+  /* ... */
+
   /*
     Memo to self: identifiers are:
   CC_FRAME,
@@ -868,6 +882,12 @@ meta_theme_calc_geometry (MetaTheme              *theme,
   CC_FILLER,
   */
 
+  /* We are not yet doing CC_FILLER. */
+  fgeom->areas[CC_FILLER].x =
+    fgeom->areas[CC_FILLER].y =
+    fgeom->areas[CC_FILLER].width =
+    fgeom->areas[CC_FILLER].height =
+    0;
 
   /****************************************************************/
   /* Old stuff that needs rewriting is below here                 */
