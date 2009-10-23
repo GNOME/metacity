@@ -81,6 +81,8 @@ typedef struct
   GdkRectangle clickable;
 } MetaButtonSpace;
 
+typedef struct _CowbellArea CowbellArea;
+
 /**
  * Calculated actual geometry of the frame
  */
@@ -100,6 +102,8 @@ typedef struct
   int right_titlebar_edge;
   int top_titlebar_edge;
   int bottom_titlebar_edge;
+
+  CowbellArea *areas;
 
   /* used for a memset hack */
 #define ADDRESS_OF_BUTTON_RECTS(fgeom) (((char*)(fgeom)) + G_STRUCT_OFFSET (MetaFrameGeometry, close_rect))

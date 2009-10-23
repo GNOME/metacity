@@ -7,6 +7,25 @@
 #include <ccss-cairo/ccss-cairo.h>
 #include <gtk/gtk.h>
 
+struct _CowbellArea {
+  /**
+   * Sizes of padding (except for the frame) plus
+   * borders plus margins.
+   */
+  int top_edge;
+  int left_edge;
+  int bottom_edge;
+  int right_edge;
+
+  /**
+   * The position of the area.
+   */
+  int x;
+  int y;
+  int width;
+  int height;
+};
+
 struct _MetaTheme {
   ccss_grammar_t        *grammar;
   ccss_stylesheet_t	*stylesheet;
@@ -749,6 +768,11 @@ meta_theme_calc_geometry (MetaTheme              *theme,
                           MetaFrameGeometry      *fgeom)
 {
   /* stub */
+
+  /* FIXME FIXME FIXME */
+  /* This will cause leaks.  We must provide a constructor and destructor fn. */
+  g_free (fgeom->areas);
+  fgeom->areas = g_new0 (CowbellArea, CC_LAST);
 
   /* see if we can write meta_theme_calc_geometry in terms of
    * meta_theme_get_frame_borders
