@@ -117,6 +117,7 @@ typedef struct
   MetaButtonSpace unabove_rect;
   MetaButtonSpace unstick_rect;
 
+#if 0
 #define MAX_MIDDLE_BACKGROUNDS (MAX_BUTTONS_PER_CORNER - 2)
   GdkRectangle left_left_background;
   GdkRectangle left_middle_backgrounds[MAX_MIDDLE_BACKGROUNDS];
@@ -125,6 +126,7 @@ typedef struct
   GdkRectangle right_middle_backgrounds[MAX_MIDDLE_BACKGROUNDS];
   GdkRectangle right_right_background;
   /* End of button rects (if changed adjust memset hack) */
+#endif
   
   /* Round corners */
   guint top_left_corner_rounded_radius;
