@@ -7,6 +7,10 @@
 #include <ccss-cairo/ccss-cairo.h>
 #include <gtk/gtk.h>
 
+/**
+ * Coordinates and sizes of part of the window.
+ * Only used within this file.
+ */
 struct _CowbellArea {
   /**
    * Sizes of padding (except for the frame) plus
@@ -769,10 +773,30 @@ meta_theme_calc_geometry (MetaTheme              *theme,
 {
   /* stub */
 
+  int i;
+
   /* FIXME FIXME FIXME */
-  /* This will cause leaks.  We must provide a constructor and destructor fn. */
-  g_free (fgeom->areas);
+  /* This will LEAK.  We must provide a constructor and destructor fn. */
   fgeom->areas = g_new0 (CowbellArea, CC_LAST);
+
+  /* First of all, we need to calculate the edges for each style. */
+  for (i=0; i<CC_LAST; i++)
+    {
+      /* We may want to do this inline if we end up not calling
+       * it from anywhere but here.
+       */
+      cowbell_get_edge_sizes (theme, type, flags,
+                              i,
+                              &(fgeom->areas->top_edge),
+                              &(fgeom->areas->bottom_edge),
+                              &(fgeom->areas->left_edge),
+                              &(fgeom->areas->right_edge));
+    }
+
+
+  /****************************************************************/
+  /* Old stuff that needs rewriting is below here                 */
+  /****************************************************************/
 
   /* see if we can write meta_theme_calc_geometry in terms of
    * meta_theme_get_frame_borders
