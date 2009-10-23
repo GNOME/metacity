@@ -144,6 +144,15 @@ static void cowbell_style_title_text (ccss_stylesheet_t *stylesheet,
                                       PangoLayout *layout,
                                       cairo_t *cr);
 
+static void cowbell_get_edge_sizes (MetaTheme *theme,
+                                    MetaFrameType type,
+                                    MetaFrameFlags flags,
+                                    CopperClasses style_id,
+                                    int *top,
+                                    int *bottom,
+                                    int *left,
+                                    int *right);
+
 /****************************************************************/
 
 static char const*
@@ -385,6 +394,10 @@ reduce_by_padding_borders_and_margins (ccss_stylesheet_t *stylesheet,
   ccss_style_destroy (style);
 }
 
+/*
+ * FIXME: This is only called in one place;
+ * shd possibly be inlined
+ */
 static gint
 draw_rectangle (ccss_stylesheet_t *stylesheet,
 		cairo_t *cr,
@@ -461,6 +474,7 @@ draw_rectangle (ccss_stylesheet_t *stylesheet,
 
   ccss_cairo_style_draw_rectangle (style, cr, x, y, w, h);
 
+  /* FIXME do this in the caller */
   if (style_id==CC_TITLE)
     {
       /* may be worth moving this inline? */
@@ -470,6 +484,7 @@ draw_rectangle (ccss_stylesheet_t *stylesheet,
       reduce_by_padding_borders_and_margins (stylesheet, CC_TITLE,
 					     &x, &y, &w, &h,
 					     TRUE, FALSE);
+
       cairo_translate (cr, x, y);
 
       pango_cairo_show_layout (cr, layout);
