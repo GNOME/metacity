@@ -1089,37 +1089,8 @@ meta_theme_calc_geometry (MetaTheme              *theme,
   fill_button_rect (&(fgeom->unabove_rect), CC_UNABOVE,  fgeom);
   fill_button_rect (&(fgeom->unstick_rect), CC_UNSTICK,  fgeom);
 
-#if 0
-  /* see if we can write meta_theme_calc_geometry in terms of
-   * meta_theme_get_frame_borders
-   */
-  meta_theme_get_frame_borders (theme, type, text_height, flags,
-                                &(fgeom->top_height),
-                                &(fgeom->bottom_height),
-                                &(fgeom->left_width),
-                                &(fgeom->right_width));
-
-  fgeom->width = client_width+(fgeom->top_height)+(fgeom->bottom_height);
-  fgeom->height = client_height+(fgeom->left_width)+(fgeom->right_width);
-
-  clear_rect (&(fgeom->title_rect));
-
-  fgeom->left_titlebar_edge=0;
-  fgeom->right_titlebar_edge=0;
-  fgeom->top_titlebar_edge=0;
-  fgeom->bottom_titlebar_edge=0;
-
-  clear_bs (&(fgeom->close_rect));
-  clear_bs (&(fgeom->max_rect));
-  clear_bs (&(fgeom->min_rect));
-  clear_bs (&(fgeom->menu_rect));
-  clear_bs (&(fgeom->shade_rect));
-  clear_bs (&(fgeom->above_rect));
-  clear_bs (&(fgeom->stick_rect));
-  clear_bs (&(fgeom->unshade_rect));
-  clear_bs (&(fgeom->unabove_rect));
-  clear_bs (&(fgeom->unstick_rect));
-#endif
+  /****************************************************************/
+  /* Old code which needs replacing: */
   
   /* Rounded corners; need to pick these up from the CSS.  FIXME. */
   fgeom->top_left_corner_rounded_radius = 5;
