@@ -804,26 +804,44 @@ meta_theme_calc_geometry (MetaTheme              *theme,
   /* The width is simply the width of the content area, plus the edges
    * of the content area and frame. */
   fgeom->areas[CC_FRAME].width =
-    client_width +
-    fgeom->areas[CC_CONTENT].left_edge +
-    fgeom->areas[CC_CONTENT].right_edge +
     fgeom->areas[CC_FRAME].left_edge +
+    fgeom->areas[CC_CONTENT].left_edge +
+    client_width +
+    fgeom->areas[CC_CONTENT].right_edge +
     fgeom->areas[CC_FRAME].right_edge;
   /* The height is the height of those elements, plus the height of the
    * title and its edges, and the edges of the titlebar area.
    */
   fgeom->areas[CC_FRAME].height =
-    client_height +
-    fgeom->areas[CC_CONTENT].top_edge +
-    fgeom->areas[CC_CONTENT].bottom_edge +
     fgeom->areas[CC_FRAME].top_edge +
-    fgeom->areas[CC_FRAME].bottom_edge +
-    text_height +
-    fgeom->areas[CC_TITLE].top_edge +
-    fgeom->areas[CC_TITLE].bottom_edge +
     fgeom->areas[CC_TITLEBAR].top_edge +
+    fgeom->areas[CC_TITLE].top_edge +
+    text_height +
+    fgeom->areas[CC_TITLE].bottom_edge +
+    fgeom->areas[CC_TITLEBAR].bottom_edge +
+    fgeom->areas[CC_CONTENT].top_edge +
+    client_height +
+    fgeom->areas[CC_CONTENT].bottom_edge +
+    fgeom->areas[CC_FRAME].bottom_edge;
+
+  /* Next, the content area. */
+  fgeom->areas[CC_CONTENT].x = fgeom->areas[CC_FRAME].left_edge;
+  fgeom->areas[CC_CONTENT].y =
+    fgeom->areas[CC_FRAME].top_edge +
+    fgeom->areas[CC_TITLEBAR].top_edge +
+    fgeom->areas[CC_TITLE].top_edge +
+    text_height +
+    fgeom->areas[CC_TITLE].bottom_edge +
     fgeom->areas[CC_TITLEBAR].bottom_edge;
-    
+  fgeom->areas[CC_CONTENT].width =
+    fgeom->areas[CC_CONTENT].left_edge +
+    client_width +
+    fgeom->areas[CC_CONTENT].right_edge;
+  fgeom->areas[CC_CONTENT].height =
+    fgeom->areas[CC_CONTENT].top_edge +
+    client_height +
+    fgeom->areas[CC_CONTENT].bottom_edge;
+
   /*
     Memo to self: identifiers are:
   CC_FRAME,
