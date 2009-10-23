@@ -646,6 +646,8 @@ meta_theme_calc_geometry (MetaTheme              *theme,
   int button_height, button_y;
   int x;
 
+  /* FIXME - We may want to cache the style objects in "areas" */
+
   /* FIXME FIXME FIXME */
   /* This will LEAK.  We must provide a constructor and destructor fn. */
   fgeom->areas = g_new0 (CowbellArea, CC_LAST);
