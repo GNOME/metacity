@@ -991,6 +991,11 @@ meta_theme_calc_geometry (MetaTheme              *theme,
     fgeom->areas[CC_CONTENT].left_edge +
     fgeom->areas[CC_FRAME].left_edge;
 
+  fgeom->width =
+    fgeom->areas[CC_FRAME].width;
+
+  fgeom->height =
+    fgeom->areas[CC_FRAME].height;
 
 #if 0
   /* see if we can write meta_theme_calc_geometry in terms of
