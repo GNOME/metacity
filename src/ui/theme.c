@@ -733,8 +733,6 @@ cowbell_get_edge_sizes (MetaTheme *theme,
         }
     }
 
-  g_warning ("Results are: T=%f B=%f L=%f R=%f\n", results[0], results[1], results[2], results[3]);
-
   if (top) *top += (int) results[0];
   if (bottom) *bottom += (int) results[1];
   if (left) *left += (int) results[2];
@@ -1020,6 +1018,19 @@ meta_theme_calc_geometry (MetaTheme              *theme,
       /* so allocate it */
       x -= fgeom->areas[copper_class_for_button(button)].width;
       fgeom->areas[copper_class_for_button(button)].x = x;
+    }
+
+  /* Now find the ones we didn't use, and zero them out */
+  for (i=CC_BUTTON_FIRST; i<=CC_BUTTON_LAST; i++)
+    {
+      if (fgeom->areas[i].x==-1)
+        {
+          fgeom->areas[i].x =
+            fgeom->areas[i].y =
+            fgeom->areas[i].width =
+            fgeom->areas[i].height =
+            0;
+        }
     }
 
   /* We are not yet doing CC_FILLER. */
