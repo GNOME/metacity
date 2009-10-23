@@ -632,6 +632,17 @@ fill_button_rect (MetaButtonSpace *button,
   button->clickable.height = button->visible.height;
 }
 
+static int
+cowbell_get_button_width (MetaTheme              *theme,
+                          MetaFrameType           type,
+                          MetaFrameFlags          flags,
+                          CopperClasses           button,
+                          int                     button_height)
+{
+  /* stub */
+  return button_height;
+}
+
 void
 meta_theme_calc_geometry (MetaTheme              *theme,
                           MetaFrameType           type,
@@ -756,7 +767,9 @@ meta_theme_calc_geometry (MetaTheme              *theme,
       /* FIXME!! This needs to be worked out from the
        * aspect ratio, BUT for now we are assuming
        * all buttons are square. */
-      fgeom->areas[i].width = button_height;
+      fgeom->areas[i].width = cowbell_get_button_width (theme, type, flags,
+                                                        i,
+                                                        button_height);
       fgeom->areas[i].x = -1; /* dummy value, to check
                                * for when we haven't allocated it
                                */
