@@ -779,7 +779,7 @@ meta_theme_calc_geometry (MetaTheme              *theme,
   /* This will LEAK.  We must provide a constructor and destructor fn. */
   fgeom->areas = g_new0 (CowbellArea, CC_LAST);
 
-  /* First of all, we need to calculate the edges for each style. */
+  /* First of all, we need to calculate the edges for each element. */
   for (i=0; i<CC_LAST; i++)
     {
       /* We may want to do this inline if we end up not calling
@@ -787,11 +787,53 @@ meta_theme_calc_geometry (MetaTheme              *theme,
        */
       cowbell_get_edge_sizes (theme, type, flags,
                               i,
-                              &(fgeom->areas->top_edge),
-                              &(fgeom->areas->bottom_edge),
-                              &(fgeom->areas->left_edge),
-                              &(fgeom->areas->right_edge));
+                              &(fgeom->areas[i].top_edge),
+                              &(fgeom->areas[i].bottom_edge),
+                              &(fgeom->areas[i].left_edge),
+                              &(fgeom->areas[i].right_edge));
     }
+
+  /* Now let's look at the coordinates for each element. */
+  /* FIXME: For now, we are assuming that the clickable and visible
+   * areas of a button are the same.  We need to distinguish them
+   * eventually. */
+
+  /* Let's begin with the frame. */
+  fgeom->areas[CC_FRAME].x = 0; /* It necessarily starts at the top left... */
+  fgeom->areas[CC_FRAME].y = 0;
+  /* The width is simply the width of the content area, plus the edges
+   * of the content area and frame. */
+  fgeom->areas[CC_FRAME].width =
+    client_width +
+    fgeom->areas[CC_CONTENT].left_edge +
+    fgeom->areas[CC_CONTENT].right_edge +
+    fgeom->areas[CC_FRAME].left_edge +
+    fgeom->areas[CC_FRAME].right_edge;
+  /* The height is the height of those elements, plus the height of the
+   * title and its edges, and the edges of the titlebar area.
+   */
+  fgeom->areas[CC_FRAME].height =
+    client_height +
+    fgeom->areas[CC_CONTENT].top_edge +
+    fgeom->areas[CC_CONTENT].bottom_edge +
+    fgeom->areas[CC_FRAME].top_edge +
+    fgeom->areas[CC_FRAME].bottom_edge +
+    text_height +
+    fgeom->areas[CC_TITLE].top_edge +
+    fgeom->areas[CC_TITLE].bottom_edge +
+    fgeom->areas[CC_TITLEBAR].top_edge +
+    fgeom->areas[CC_TITLEBAR].bottom_edge;
+    
+  /*
+    Memo to self: identifiers are:
+  CC_FRAME,
+  CC_CONTENT, CC_TITLEBAR,
+  CC_MENU, CC_TITLE,
+  CC_MINIMIZE, CC_MAXIMIZE, CC_CLOSE,
+  CC_SHADE, CC_ABOVE, CC_STICK,
+  CC_UNSHADE, CC_UNABOVE, CC_UNSTICK,
+  CC_FILLER,
+  */
 
 
   /****************************************************************/
