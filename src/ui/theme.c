@@ -1,6 +1,7 @@
 /* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
 
 #include "theme.h"
+#include "util.h"
 #include <string.h>
 #include <stdlib.h>
 #include <cairo.h>
@@ -766,6 +767,43 @@ clear_bs(MetaButtonSpace *bs)
   clear_rect(&(bs->visible));
 }
 
+/**
+ * This annoying function exists because we have
+ * several enums which describe buttons, and we
+ * need to map between them.
+ */
+static CopperClasses
+copper_class_for_button (int button)
+{
+  switch (button)
+    {
+    case META_BUTTON_FUNCTION_MENU:
+      return CC_MENU;
+    case META_BUTTON_FUNCTION_MINIMIZE:
+      return CC_MINIMIZE;
+    case META_BUTTON_FUNCTION_MAXIMIZE:
+      return CC_MAXIMIZE;
+    case META_BUTTON_FUNCTION_CLOSE:
+      return CC_CLOSE;
+    case META_BUTTON_FUNCTION_SHADE:
+      return CC_SHADE;
+    case META_BUTTON_FUNCTION_ABOVE:
+      return CC_ABOVE;
+    case META_BUTTON_FUNCTION_STICK:
+      return CC_STICK;
+    case META_BUTTON_FUNCTION_UNSHADE:
+      return CC_UNSHADE;
+    case META_BUTTON_FUNCTION_UNABOVE:
+      return CC_UNABOVE;
+    case META_BUTTON_FUNCTION_UNSTICK:
+      return CC_UNSTICK;
+    default:
+      /* there is no way we should ever get here */
+      meta_bug ("Unknown button type.");
+      return CC_MENU;
+    }
+}
+
 void
 meta_theme_calc_geometry (MetaTheme              *theme,
                           MetaFrameType           type,
@@ -777,6 +815,8 @@ meta_theme_calc_geometry (MetaTheme              *theme,
                           MetaFrameGeometry      *fgeom)
 {
   int i;
+  int button_height, button_y;
+  int x;
 
   /* FIXME FIXME FIXME */
   /* This will LEAK.  We must provide a constructor and destructor fn. */
@@ -874,7 +914,72 @@ meta_theme_calc_geometry (MetaTheme              *theme,
     text_height; /* obviously */
 
   /* And finally, the buttons. */
-  /* ... */
+  /* Just work out the width, height, and y coord first... */
+  button_height = fgeom->areas[CC_TITLEBAR].height -
+        (fgeom->areas[CC_TITLEBAR].top_edge +
+         fgeom->areas[CC_TITLEBAR].bottom_edge);
+  button_y = fgeom->areas[CC_TITLEBAR].y +
+    fgeom->areas[CC_TITLEBAR].top_edge;
+  for (i=CC_BUTTON_FIRST; i<=CC_BUTTON_LAST; i++)
+    {
+      fgeom->areas[i].height = button_height;
+      /* FIXME!! This needs to be worked out from the
+       * aspect ratio, BUT for now we are assuming
+       * all buttons are square. */
+      fgeom->areas[i].width = button_height;
+      fgeom->areas[i].x = -1; /* dummy value, to check
+                               * for when we haven't allocated it
+                               */
+      fgeom->areas[i].y = button_y;
+    }
+
+  /* FIXME:
+   * Here we need to nuke any buttons (and the title)
+   * that make the contents of the titlebar wider than
+   * it can be.
+   */
+
+  /* And now allocate the buttons as necessary. */
+  /* FIXME: We are not honouring spacers.
+   * They should possibly be removed anyway.
+   */
+
+  /* The left-hand side */
+
+  x = fgeom->areas[CC_TITLEBAR].x +
+    fgeom->areas[CC_TITLEBAR].left_edge;
+
+  for (i=0; i<MAX_BUTTONS_PER_CORNER; i++)
+    {
+      int button = button_layout->left_buttons[i];
+
+      if (button == META_BUTTON_FUNCTION_LAST)
+        continue;
+
+      /* so allocate it */
+      fgeom->areas[copper_class_for_button(button)].x = x;
+      x += fgeom->areas[copper_class_for_button(button)].width;
+    }
+
+  /* The right-hand side */
+
+  x = fgeom->areas[CC_TITLEBAR].x +
+    (fgeom->areas[CC_TITLEBAR].width -
+     (fgeom->areas[CC_TITLEBAR].left_edge +
+      fgeom->areas[CC_TITLEBAR].right_edge));
+
+  for (i=0; i<MAX_BUTTONS_PER_CORNER; i++)
+    {
+      int button = button_layout->right_buttons[i];
+
+      if (button == META_BUTTON_FUNCTION_LAST)
+        continue;
+
+      /* so allocate it */
+      x -= fgeom->areas[copper_class_for_button(button)].width;
+      fgeom->areas[copper_class_for_button(button)].x = x;
+    }
+
 
   /*
     Memo to self: identifiers are:
