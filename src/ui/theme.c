@@ -46,10 +46,13 @@ MetaTheme *the_theme = NULL;
 typedef enum _CopperClasses {
   CC_FRAME,
   CC_CONTENT, CC_TITLEBAR,
-  CC_MENU, CC_TITLE,
+  CC_TITLE,
+  CC_MENU,
+  CC_BUTTON_FIRST = CC_MENU,
   CC_MINIMIZE, CC_MAXIMIZE, CC_CLOSE,
   CC_SHADE, CC_ABOVE, CC_STICK,
   CC_UNSHADE, CC_UNABOVE, CC_UNSTICK,
+  CC_BUTTON_LAST = CC_UNSTICK,
   CC_FILLER,
   CC_LAST
 } CopperClasses;
@@ -58,7 +61,8 @@ char *names[] =
   {
     "frame",
     "area", "area",
-    "button", "title",
+    "title",
+    "button",
     "button", "button", "button",
     "button", "button", "button",
     "button", "button", "button",
@@ -82,7 +86,8 @@ char *cowbell_classnames[] =
   {
     NULL,
     "content", "titlebar",
-    "menu", NULL,
+    NULL,
+    "menu",
     "minimize", "maximize", "close",
     "shade", "above", "stick",
     "unshade", "unabove", "unstick",
