@@ -997,6 +997,15 @@ meta_theme_calc_geometry (MetaTheme              *theme,
   fgeom->height =
     fgeom->areas[CC_FRAME].height;
 
+  fgeom->title_rect.x =
+    fgeom->areas[CC_TITLE].x;
+  fgeom->title_rect.y =
+    fgeom->areas[CC_TITLE].y;
+  fgeom->title_rect.width =
+    fgeom->areas[CC_TITLE].width;
+  fgeom->title_rect.height =
+    fgeom->areas[CC_TITLE].height;
+
 #if 0
   /* see if we can write meta_theme_calc_geometry in terms of
    * meta_theme_get_frame_borders
