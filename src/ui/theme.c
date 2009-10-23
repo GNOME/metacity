@@ -330,70 +330,6 @@ get_number_from_style (ccss_style_t *style,
   return result;
 }
 
-static void
-reduce_by_padding_borders_and_margins (ccss_stylesheet_t *stylesheet,
-				       CopperClasses style_id,
-				       int *x, int *y, int *w, int *h,
-				       gboolean honour_margins,
-				       gboolean reverse)
-{
-  ccss_style_t *style = ccss_stylesheet_query (stylesheet,
-					       (ccss_node_t*) &cowbell_nodes[style_id]);
-  int bt=0, br=0, bb=0, bl=0, pt=0, pr=0, pb=0, pl=0;
-
-  if (!style) return;
-
-  /* FIXME this is silly; libccss should do this for us */
-  /* FIXME maybe it does if we get the property rather than the number */
-  if (get_number_from_style (style, "border-width",    NULL, &bl))
-    {
-      bt = br = bb = bl;
-    }
-  else
-    {
-      get_number_from_style (style, "border-top-width",     NULL, &bt);
-      get_number_from_style (style, "border-right-width",   NULL, &br);
-      get_number_from_style (style, "border-bottom-width",  NULL, &bb);
-      get_number_from_style (style, "border-left-width",    NULL, &bl);
-    }
-
-  if (get_number_from_style (style, "padding",    NULL, &pl))
-    {
-      pt = pr = pb = pl;
-    }
-  else
-    {
-      get_number_from_style (style, "padding-top",          NULL, &pt);
-      get_number_from_style (style, "padding-right",        NULL, &pr);
-      get_number_from_style (style, "padding-bottom",       NULL, &pb);
-      get_number_from_style (style, "padding-left",         NULL, &pl);
-    }
-
-  /* FIXME honour honour_margins */
-
-  bt += pt;
-  br += pr;
-  bb += pb;
-  bl += pl;
-
-  if (reverse)
-    {
-      if (x) *x -= bl;
-      if (y) *y -= bt;
-      if (w) *w += (bl+br);
-      if (h) *h += (bt+bb);
-    }
-  else
-    {
-      if (x) *x += bl;
-      if (y) *y += bt;
-      if (w) *w -= (bl+br);
-      if (h) *h -= (bt+bb);
-    }
-
-  ccss_style_destroy (style);
-}
-
 /*
  * FIXME: This is only called in one place;
  * shd possibly be inlined
@@ -473,24 +409,6 @@ draw_rectangle (ccss_stylesheet_t *stylesheet,
     x -= full_width;
 
   ccss_cairo_style_draw_rectangle (style, cr, x, y, w, h);
-
-  /* FIXME do this in the caller */
-  if (style_id==CC_TITLE)
-    {
-      /* may be worth moving this inline? */
-      cowbell_style_title_text (stylesheet, layout, cr);
-
-      /* XXX use edges, not RBPBAM */
-      reduce_by_padding_borders_and_margins (stylesheet, CC_TITLE,
-					     &x, &y, &w, &h,
-					     TRUE, FALSE);
-
-      cairo_translate (cr, x, y);
-
-      pango_cairo_show_layout (cr, layout);
-
-      cairo_translate (cr, -x, -y);
-    }
 
   ccss_style_destroy (style);
 
@@ -600,6 +518,17 @@ meta_theme_draw_frame_with_style (MetaTheme              *theme,
                       title_layout);
 
     }
+
+  /* may be worth moving this inline? */
+  cowbell_style_title_text (stylesheet, title_layout, cr);
+
+  cairo_translate (cr,
+                   fgeom.areas[CC_TITLE].x + fgeom.areas[CC_TITLE].left_edge,
+                   fgeom.areas[CC_TITLE].y + fgeom.areas[CC_TITLE].top_edge);
+
+  pango_cairo_show_layout (cr, title_layout);
+
+  cairo_destroy (cr);
 }
 
 /**
