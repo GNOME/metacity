@@ -346,7 +346,7 @@ draw_rectangle (ccss_stylesheet_t *stylesheet,
 					       (ccss_node_t*) &cowbell_nodes[style_id]);
   int horizontal_margin = 0;
 
-  if (!style) return;
+  if (!style || w==0 || h==0) return;
 
   if (honour_margins)
     {
