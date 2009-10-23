@@ -817,7 +817,7 @@ copper_class_for_button (int button)
       return CC_UNSTICK;
     default:
       /* there is no way we should ever get here */
-      meta_bug ("Unknown button type.");
+      meta_bug ("Unknown button type. %d", button);
       return CC_MENU;
     }
 }
@@ -996,7 +996,7 @@ meta_theme_calc_geometry (MetaTheme              *theme,
       int button = button_layout->left_buttons[i];
 
       if (button == META_BUTTON_FUNCTION_LAST)
-        continue;
+        break;
 
       /* so allocate it */
       fgeom->areas[copper_class_for_button(button)].x = x;
@@ -1015,7 +1015,7 @@ meta_theme_calc_geometry (MetaTheme              *theme,
       int button = button_layout->right_buttons[i];
 
       if (button == META_BUTTON_FUNCTION_LAST)
-        continue;
+        break;
 
       /* so allocate it */
       x -= fgeom->areas[copper_class_for_button(button)].width;
@@ -1088,6 +1088,16 @@ meta_theme_calc_geometry (MetaTheme              *theme,
   fill_button_rect (&(fgeom->unshade_rect), CC_UNSHADE,  fgeom);
   fill_button_rect (&(fgeom->unabove_rect), CC_UNABOVE,  fgeom);
   fill_button_rect (&(fgeom->unstick_rect), CC_UNSTICK,  fgeom);
+
+  for (i=0; i<CC_LAST; i++)
+    {
+      g_warning("%20s %8d %8d %8d %8d",
+                cowbell_human_names[i],
+                fgeom->areas[i].x,
+                fgeom->areas[i].y,
+                fgeom->areas[i].width,
+                fgeom->areas[i].height);
+    }
 
   /****************************************************************/
   /* Old code which needs replacing: */
