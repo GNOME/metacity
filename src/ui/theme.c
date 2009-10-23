@@ -1006,6 +1006,16 @@ meta_theme_calc_geometry (MetaTheme              *theme,
   fgeom->title_rect.height =
     fgeom->areas[CC_TITLE].height;
 
+  /* Are these correct? */
+  fgeom->top_titlebar_edge =
+    fgeom->areas[CC_TITLEBAR].left_edge;
+  fgeom->right_titlebar_edge =
+    fgeom->areas[CC_TITLEBAR].right_edge;
+  fgeom->bottom_titlebar_edge =
+    fgeom->areas[CC_TITLEBAR].bottom_edge;
+  fgeom->left_titlebar_edge =
+    fgeom->areas[CC_TITLEBAR].left_edge;
+
 #if 0
   /* see if we can write meta_theme_calc_geometry in terms of
    * meta_theme_get_frame_borders
