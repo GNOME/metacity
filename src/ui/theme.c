@@ -58,6 +58,11 @@ typedef enum _CopperClasses {
   CC_LAST
 } CopperClasses;
 
+/**
+ * The element names of each CopperClass.
+ *
+ * \bug For heaven's sake change the identifier
+ */
 char *names[] =
   {
     "frame",
@@ -71,6 +76,10 @@ char *names[] =
     "last"
   };
 
+/**
+ * The parent class of each CopperClass, or
+ * CC_LAST if it has none.
+ */
 CopperClasses parents[] =
   {
     CC_LAST,
@@ -83,6 +92,10 @@ CopperClasses parents[] =
     CC_LAST
   };
 
+/**
+ * The class (in the CSS sense) of each
+ * CopperClass, or NULL if it has none.
+ */
 char *cowbell_classnames[] =
   {
     NULL,
@@ -93,6 +106,29 @@ char *cowbell_classnames[] =
     "shade", "above", "stick",
     "unshade", "unabove", "unstick",
     "filler",
+    NULL
+  };
+
+/**
+ * Names of each CopperClass, for debugging.
+ */
+char *cowbell_human_names[] =
+  {
+    "Frame",
+    "Content area",
+    "Titlebar",
+    "Title",
+    "Menu button",
+    "Min",
+    "Max",
+    "Close",
+    "Shade",
+    "Above",
+    "Stick",
+    "Unshade",
+    "Unabove",
+    "Unstick",
+    "Filler",
     NULL
   };
 
