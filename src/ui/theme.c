@@ -334,21 +334,19 @@ get_number_from_style (ccss_style_t *style,
  * FIXME: This is only called in one place;
  * shd possibly be inlined
  */
-static gint
+static void
 draw_rectangle (ccss_stylesheet_t *stylesheet,
 		cairo_t *cr,
 		CopperClasses style_id,
 		int x, int y, int w, int h,
 		gboolean honour_margins,
-		gboolean from_the_right,
 		PangoLayout *layout)
 {
   ccss_style_t *style = ccss_stylesheet_query (stylesheet,
 					       (ccss_node_t*) &cowbell_nodes[style_id]);
-  int full_width;
   int horizontal_margin = 0;
 
-  if (!style) return 0;
+  if (!style) return;
 
   if (honour_margins)
     {
@@ -403,16 +401,9 @@ draw_rectangle (ccss_stylesheet_t *stylesheet,
 	}
     }
 
-  full_width = w+ horizontal_margin;
-
-  if (from_the_right)
-    x -= full_width;
-
   ccss_cairo_style_draw_rectangle (style, cr, x, y, w, h);
 
   ccss_style_destroy (style);
-
-  return full_width;
 }
 
 static void
@@ -514,7 +505,6 @@ meta_theme_draw_frame_with_style (MetaTheme              *theme,
                       fgeom.areas[i].width,
                       fgeom.areas[i].height,
                       i != CC_FRAME /* honour_margins */,
-                      FALSE, /* from_the_right: this is going away */
                       title_layout);
 
     }
