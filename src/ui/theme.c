@@ -824,7 +824,6 @@ meta_theme_get_frame_borders (MetaTheme         *theme,
   if (top_height)
     {
       *top_height += text_height;
-      g_warning ("At end: %d pixels (text height is %d)\n", *top_height, text_height);
     }
 }
 
@@ -1147,6 +1146,7 @@ meta_theme_calc_geometry (MetaTheme              *theme,
   fill_button_rect (&(fgeom->unabove_rect), CC_UNABOVE,  fgeom);
   fill_button_rect (&(fgeom->unstick_rect), CC_UNSTICK,  fgeom);
 
+#if 0
   for (i=0; i<CC_LAST; i++)
     {
       g_warning("%20s %8d %8d %8d %8d",
@@ -1156,6 +1156,7 @@ meta_theme_calc_geometry (MetaTheme              *theme,
                 fgeom->areas[i].width,
                 fgeom->areas[i].height);
     }
+#endif
 
   /****************************************************************/
   /* Old code which needs replacing: */
