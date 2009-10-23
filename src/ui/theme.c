@@ -825,7 +825,8 @@ meta_theme_calc_geometry (MetaTheme              *theme,
     fgeom->areas[CC_FRAME].bottom_edge;
 
   /* Next, the content area. */
-  fgeom->areas[CC_CONTENT].x = fgeom->areas[CC_FRAME].left_edge;
+  fgeom->areas[CC_CONTENT].x =
+    fgeom->areas[CC_FRAME].left_edge;
   fgeom->areas[CC_CONTENT].y =
     fgeom->areas[CC_FRAME].top_edge +
     fgeom->areas[CC_TITLEBAR].top_edge +
@@ -841,6 +842,20 @@ meta_theme_calc_geometry (MetaTheme              *theme,
     fgeom->areas[CC_CONTENT].top_edge +
     client_height +
     fgeom->areas[CC_CONTENT].bottom_edge;
+
+  /* Next, the titlebar. */
+  fgeom->areas[CC_TITLEBAR].x =
+    fgeom->areas[CC_FRAME].left_edge;
+  fgeom->areas[CC_TITLEBAR].y =
+    fgeom->areas[CC_FRAME].top_edge;
+  fgeom->areas[CC_TITLEBAR].width =
+    fgeom->areas[CC_CONTENT].width;
+  fgeom->areas[CC_TITLEBAR].height =
+    fgeom->areas[CC_TITLEBAR].top_edge +
+    fgeom->areas[CC_TITLE].top_edge +
+    text_height +
+    fgeom->areas[CC_TITLE].bottom_edge +
+    fgeom->areas[CC_TITLEBAR].bottom_edge;
 
   /*
     Memo to self: identifiers are:
