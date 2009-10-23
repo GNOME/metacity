@@ -786,6 +786,30 @@ copper_class_for_button (int button)
     }
 }
 
+/**
+ * Fills the public record of a button's dimensions
+ * using data from private members.  If we used an
+ * enum for the public members, this wouldn't be necessary.
+ *
+ * \bug Does not distinguish clickable and visible areas.
+ *      Should we still do this with Cowbell?
+ */
+static void
+fill_button_rect (MetaButtonSpace *button,
+                  CopperClasses cclass,
+                  MetaFrameGeometry *fgeom)
+{
+  button->visible.x      = fgeom->areas[cclass].x;
+  button->visible.y      = fgeom->areas[cclass].y;
+  button->visible.width  = fgeom->areas[cclass].width;
+  button->visible.height = fgeom->areas[cclass].height;
+  
+  button->clickable.x      = button->visible.x;
+  button->clickable.y      = button->visible.y;
+  button->clickable.width  = button->visible.width;
+  button->clickable.height = button->visible.height;
+}
+
 void
 meta_theme_calc_geometry (MetaTheme              *theme,
                           MetaFrameType           type,
@@ -1015,6 +1039,19 @@ meta_theme_calc_geometry (MetaTheme              *theme,
     fgeom->areas[CC_TITLEBAR].bottom_edge;
   fgeom->left_titlebar_edge =
     fgeom->areas[CC_TITLEBAR].left_edge;
+
+  /* I'll take "places we should have used an enum" for 25 */
+
+  fill_button_rect (&(fgeom->close_rect),   CC_CLOSE,    fgeom);
+  fill_button_rect (&(fgeom->max_rect),     CC_MAXIMIZE, fgeom);
+  fill_button_rect (&(fgeom->min_rect),     CC_MINIMIZE, fgeom);
+  fill_button_rect (&(fgeom->menu_rect),    CC_MENU,     fgeom);
+  fill_button_rect (&(fgeom->shade_rect),   CC_SHADE,    fgeom);
+  fill_button_rect (&(fgeom->above_rect),   CC_ABOVE,    fgeom);
+  fill_button_rect (&(fgeom->stick_rect),   CC_STICK,    fgeom);
+  fill_button_rect (&(fgeom->unshade_rect), CC_UNSHADE,  fgeom);
+  fill_button_rect (&(fgeom->unabove_rect), CC_UNABOVE,  fgeom);
+  fill_button_rect (&(fgeom->unstick_rect), CC_UNSTICK,  fgeom);
 
 #if 0
   /* see if we can write meta_theme_calc_geometry in terms of
