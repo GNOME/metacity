@@ -749,24 +749,6 @@ meta_theme_get_frame_borders (MetaTheme         *theme,
 
 #define MAX_MIDDLE_BACKGROUNDS (MAX_BUTTONS_PER_CORNER - 2)
 
-/* FIXME: This is a dummy function used to stub meta_theme_calc_geometry */
-static void
-clear_rect(GdkRectangle *r)
-{
-  r->x = 0;
-  r->y = 0;
-  r->width = SILLY_BORDER_SIZE;
-  r->height = SILLY_BORDER_SIZE;
-}
-
-/* FIXME: This is a dummy function used to stub meta_theme_calc_geometry */
-static void
-clear_bs(MetaButtonSpace *bs)
-{
-  clear_rect(&(bs->clickable));
-  clear_rect(&(bs->visible));
-}
-
 /**
  * This annoying function exists because we have
  * several enums which describe buttons, and we
@@ -980,18 +962,6 @@ meta_theme_calc_geometry (MetaTheme              *theme,
       fgeom->areas[copper_class_for_button(button)].x = x;
     }
 
-
-  /*
-    Memo to self: identifiers are:
-  CC_FRAME,
-  CC_CONTENT, CC_TITLEBAR,
-  CC_MENU, CC_TITLE,
-  CC_MINIMIZE, CC_MAXIMIZE, CC_CLOSE,
-  CC_SHADE, CC_ABOVE, CC_STICK,
-  CC_UNSHADE, CC_UNABOVE, CC_UNSTICK,
-  CC_FILLER,
-  */
-
   /* We are not yet doing CC_FILLER. */
   fgeom->areas[CC_FILLER].x =
     fgeom->areas[CC_FILLER].y =
@@ -999,10 +969,30 @@ meta_theme_calc_geometry (MetaTheme              *theme,
     fgeom->areas[CC_FILLER].height =
     0;
 
-  /****************************************************************/
-  /* Old stuff that needs rewriting is below here                 */
-  /****************************************************************/
+  /* Now we have our own private information.
+   * Let's copy the necessary parts into the public members
+   * of our struct.
+   */
 
+  fgeom->top_height =
+    fgeom->areas[CC_FRAME].top_edge +
+    fgeom->areas[CC_TITLEBAR].height +
+    fgeom->areas[CC_CONTENT].top_edge;
+
+  fgeom->right_width =
+    fgeom->areas[CC_CONTENT].right_edge +
+    fgeom->areas[CC_FRAME].right_edge;
+
+  fgeom->bottom_height =
+    fgeom->areas[CC_CONTENT].bottom_edge +
+    fgeom->areas[CC_FRAME].bottom_edge;
+
+  fgeom->left_width =
+    fgeom->areas[CC_CONTENT].left_edge +
+    fgeom->areas[CC_FRAME].left_edge;
+
+
+#if 0
   /* see if we can write meta_theme_calc_geometry in terms of
    * meta_theme_get_frame_borders
    */
@@ -1032,6 +1022,7 @@ meta_theme_calc_geometry (MetaTheme              *theme,
   clear_bs (&(fgeom->unshade_rect));
   clear_bs (&(fgeom->unabove_rect));
   clear_bs (&(fgeom->unstick_rect));
+#endif
   
   /* Rounded corners; need to pick these up from the CSS.  FIXME. */
   fgeom->top_left_corner_rounded_radius = 5;
