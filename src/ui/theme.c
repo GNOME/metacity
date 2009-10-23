@@ -313,26 +313,9 @@ meta_theme_get_title_scale (MetaTheme     *theme,
   return 1.0;
 }
 
-static gboolean
-get_number_from_style (ccss_style_t *style,
-		       char *element,
-		       int *dummy,
-		       int *original_value)
-{
-  double d = 0.0;
-  gboolean result;
-
-  result = ccss_style_get_double (style, element, &d);
-
-  if (original_value)
-    *original_value = d;
-
-  return result;
-}
-
 /*
  * FIXME: This is only called in one place;
- * shd possibly be inlined
+ * shd be inlined
  */
 static void
 draw_rectangle (ccss_stylesheet_t *stylesheet,
@@ -344,62 +327,7 @@ draw_rectangle (ccss_stylesheet_t *stylesheet,
 {
   ccss_style_t *style = ccss_stylesheet_query (stylesheet,
 					       (ccss_node_t*) &cowbell_nodes[style_id]);
-  int horizontal_margin = 0;
-
   if (!style || w==0 || h==0) return;
-
-  if (honour_margins)
-    {
-      int mn, mt, mr, mb, ml;
-
-      /*
-       * FIXME: Is all this still really necessary?
-       */
-
-      /* FIXME: Setting just "margin" doesn't work
-       * because libccss doesn't know about margins.
-       */
-      get_number_from_style (style, "margin",              NULL, &mn);
-      if (mn)
-	{
-	  /* FIXME this is broken; "margin" may have multiple values */
-	  mt = mr = mb = ml = mn;
-	}
-      else
-	{
-	  get_number_from_style (style, "margin-top",          NULL, &mt);
-	  get_number_from_style (style, "margin-right",        NULL, &mr);
-	  get_number_from_style (style, "margin-bottom",       NULL, &mb);
-	  get_number_from_style (style, "margin-left",         NULL, &ml);
-	}
-
-      x += ml;
-      y += mt;
-      horizontal_margin = ml+mr;
-      h -= (mt+mb);
-    }
-
-  if (w==0)
-    {
-      int height, width;
-
-      get_number_from_style (style, "height", NULL, &height);
-      get_number_from_style (style, "width",  NULL, &width);
-
-      if (height!=0 && width!=0)
-	{
-	  int min_w, max_w;
-	  double scale = ((double)h/(double)height);
-
-	  w = (int) ((double)width) * scale;
-
-	  get_number_from_style (style, "min-width", NULL, &min_w);
-	  get_number_from_style (style, "max-width", NULL, &max_w);
-
-	  if (max_w && w>max_w && max_w>min_w) w = max_w;
-	  if (w<min_w) w = min_w;
-	}
-    }
 
   ccss_cairo_style_draw_rectangle (style, cr, x, y, w, h);
 
