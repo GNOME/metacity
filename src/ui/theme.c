@@ -313,27 +313,6 @@ meta_theme_get_title_scale (MetaTheme     *theme,
   return 1.0;
 }
 
-/*
- * FIXME: This is only called in one place;
- * shd be inlined
- */
-static void
-draw_rectangle (ccss_stylesheet_t *stylesheet,
-		cairo_t *cr,
-		CopperClasses style_id,
-		int x, int y, int w, int h,
-		gboolean honour_margins,
-		PangoLayout *layout)
-{
-  ccss_style_t *style = ccss_stylesheet_query (stylesheet,
-					       (ccss_node_t*) &cowbell_nodes[style_id]);
-  if (!style || w==0 || h==0) return;
-
-  ccss_cairo_style_draw_rectangle (style, cr, x, y, w, h);
-
-  ccss_style_destroy (style);
-}
-
 static void
 cowbell_style_title_text (ccss_stylesheet_t *stylesheet,
                           PangoLayout *layout,
@@ -427,14 +406,18 @@ meta_theme_draw_frame_with_style (MetaTheme              *theme,
 
   for (i=0; i<CC_LAST; i++)
     {
-      draw_rectangle (stylesheet, cr, i,
-                      fgeom.areas[i].x,
-                      fgeom.areas[i].y,
-                      fgeom.areas[i].width,
-                      fgeom.areas[i].height,
-                      i != CC_FRAME /* honour_margins */,
-                      title_layout);
+      ccss_style_t *style = ccss_stylesheet_query (stylesheet,
+                                                   (ccss_node_t*) &cowbell_nodes[i]);
+      if (!style ||
+          fgeom.areas[i].width == 0 ||
+          fgeom.areas[i].height == 0)
+        continue;
 
+      ccss_cairo_style_draw_rectangle (style, cr,
+                                       fgeom.areas[i].x,
+                                       fgeom.areas[i].y,
+                                       fgeom.areas[i].width,
+                                       fgeom.areas[i].height);
     }
 
   /* may be worth moving this inline? */
