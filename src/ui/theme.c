@@ -676,8 +676,6 @@ cowbell_get_button_width (MetaTheme              *theme,
       aspect_ratio = width/height;
     }
 
-  /* FIXME honour min/max width */
-
   result = width / aspect_ratio;
 
   if (min_width!=0 && result<min_width) result = min_width;
