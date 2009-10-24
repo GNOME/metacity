@@ -833,13 +833,19 @@ meta_theme_calc_geometry (MetaTheme              *theme,
   for (i=0; i<MAX_BUTTONS_PER_CORNER; i++)
     {
       int button = button_layout->left_buttons[i];
+      CopperClasses cc;
 
       if (button == META_BUTTON_FUNCTION_LAST)
         break;
 
+      cc = copper_class_for_button(button);
+
       /* so allocate it */
-      fgeom->areas[copper_class_for_button(button)].x = x;
-      x += fgeom->areas[copper_class_for_button(button)].width;
+      fgeom->areas[cc].x = x;
+      x += fgeom->areas[cc].width;
+
+      fgeom->areas[CC_TITLE].x += fgeom->areas[cc].width;
+      fgeom->areas[CC_TITLE].width -= fgeom->areas[cc].width;
     }
 
   /* The right-hand side */
@@ -852,13 +858,18 @@ meta_theme_calc_geometry (MetaTheme              *theme,
   for (i=0; i<MAX_BUTTONS_PER_CORNER; i++)
     {
       int button = button_layout->right_buttons[i];
+      CopperClasses cc;
 
       if (button == META_BUTTON_FUNCTION_LAST)
         break;
 
+      cc = copper_class_for_button(button);
+
       /* so allocate it */
       x -= fgeom->areas[copper_class_for_button(button)].width;
       fgeom->areas[copper_class_for_button(button)].x = x;
+
+      fgeom->areas[CC_TITLE].width -= fgeom->areas[cc].width;
     }
 
   /* Now find the ones we didn't use, and zero them out */
