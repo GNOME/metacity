@@ -855,13 +855,16 @@ meta_theme_calc_geometry (MetaTheme              *theme,
      (fgeom->areas[CC_TITLEBAR].left_edge +
       fgeom->areas[CC_TITLEBAR].right_edge));
 
-  for (i=0; i<MAX_BUTTONS_PER_CORNER; i++)
+  /* we want to go over them backwards */
+  i=0;
+  while (i+1<MAX_BUTTONS_PER_CORNER &&
+         button_layout->right_buttons[i]!=META_BUTTON_FUNCTION_LAST)
+    i++;
+
+  for (i--; i>=0; i--)
     {
       int button = button_layout->right_buttons[i];
       CopperClasses cc;
-
-      if (button == META_BUTTON_FUNCTION_LAST)
-        break;
 
       cc = copper_class_for_button(button);
 
