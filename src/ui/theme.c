@@ -23,6 +23,14 @@ struct _CowbellArea {
   int right_edge;
 
   /**
+   * Sizes of *just* the margins.
+   */
+  int top_margin;
+  int left_margin;
+  int bottom_margin;
+  int right_margin;
+
+  /**
    * The position of the area.
    */
   int x;
@@ -151,7 +159,11 @@ static void cowbell_get_edge_sizes (MetaTheme *theme,
                                     int *top,
                                     int *bottom,
                                     int *left,
-                                    int *right);
+                                    int *right,
+                                    int *top_margin,
+                                    int *bottom_margin,
+                                    int *left_margin,
+                                    int *right_margin);
 
 /****************************************************************/
 
@@ -472,7 +484,11 @@ cowbell_get_edge_sizes (MetaTheme *theme,
                         int *top,
                         int *bottom,
                         int *left,
-                        int *right)
+                        int *right,
+                        int *top_margin,
+                        int *bottom_margin,
+                        int *left_margin,
+                        int *right_margin)
 {
   double d;
   gboolean fallback_known;
@@ -488,8 +504,15 @@ cowbell_get_edge_sizes (MetaTheme *theme,
   ccss_style_t *style = cowbell_get_current_style (theme, type, flags, style_id);
 
   if (style_id==CC_FRAME)
-    /* the frame has no margin */
-    start = 1;
+    {
+      /* the frame has no margin */
+      start = 1;
+
+      if (top_margin) *top_margin = 0;
+      if (bottom_margin) *bottom_margin = 0;
+      if (left_margin) *left_margin = 0;
+      if (right_margin) *right_margin = 0;
+    }
   else
     start = 0;
 
@@ -520,6 +543,17 @@ cowbell_get_edge_sizes (MetaTheme *theme,
               results[j] += fallback;
             }
         }
+
+      if (i==0)
+        {
+          /* we have just checked the first entry,
+           * which is the margin
+           */
+          if (top_margin) *top_margin = (int) results[0];
+          if (bottom_margin) *bottom_margin = (int) results[1];
+          if (left_margin) *left_margin = (int) results[2];
+          if (right_margin) *right_margin = (int) results[3];
+        }
     }
 
   if (top) *top += (int) results[0];
@@ -549,19 +583,23 @@ meta_theme_get_frame_borders (MetaTheme         *theme,
                           top_height,
                           bottom_height,
                           left_width,
-                          right_width);
+                          right_width,
+                          NULL, NULL, NULL, NULL);
 
   cowbell_get_edge_sizes (theme, type, flags, CC_CONTENT,
                           top_height,
                           bottom_height,
                           left_width,
-                          right_width);
+                          right_width,
+                          NULL, NULL, NULL, NULL);
 
   cowbell_get_edge_sizes (theme, type, flags, CC_TITLEBAR,
-                          top_height, top_height, NULL, NULL);
+                          top_height, top_height, NULL, NULL,
+                          NULL, NULL, NULL, NULL);
 
   cowbell_get_edge_sizes (theme, type, flags, CC_TITLE,
-                          top_height, top_height, NULL, NULL);
+                          top_height, top_height, NULL, NULL,
+                          NULL, NULL, NULL, NULL);
 
   if (top_height)
     {
@@ -715,7 +753,11 @@ meta_theme_calc_geometry (MetaTheme              *theme,
                               &(fgeom->areas[i].top_edge),
                               &(fgeom->areas[i].bottom_edge),
                               &(fgeom->areas[i].left_edge),
-                              &(fgeom->areas[i].right_edge));
+                              &(fgeom->areas[i].right_edge),
+                              &(fgeom->areas[i].top_margin),
+                              &(fgeom->areas[i].bottom_margin),
+                              &(fgeom->areas[i].left_margin),
+                              &(fgeom->areas[i].right_margin));
     }
 
   /* Now let's look at the coordinates for each element. */
