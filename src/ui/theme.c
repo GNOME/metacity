@@ -420,16 +420,25 @@ meta_theme_draw_frame_with_style (MetaTheme              *theme,
     {
       ccss_style_t *style = ccss_stylesheet_query (stylesheet,
                                                    (ccss_node_t*) &cowbell_nodes[i]);
-      if (!style ||
-          fgeom.areas[i].width == 0 ||
-          fgeom.areas[i].height == 0)
+      int x = fgeom.areas[i].x;
+      int y = fgeom.areas[i].y;
+      int width = fgeom.areas[i].width;
+      int height = fgeom.areas[i].height;
+
+      if (!style)
         continue;
 
-      ccss_cairo_style_draw_rectangle (style, cr,
-                                       fgeom.areas[i].x,
-                                       fgeom.areas[i].y,
-                                       fgeom.areas[i].width,
-                                       fgeom.areas[i].height);
+      meta_warning ("%d", fgeom.areas[i].left_margin);
+
+      x += fgeom.areas[i].left_margin;
+      width -= (fgeom.areas[i].left_margin + fgeom.areas[i].right_margin);
+      y += fgeom.areas[i].top_margin;
+      height -= (fgeom.areas[i].top_margin + fgeom.areas[i].bottom_margin);
+
+      if (width > 0 && height > 0)
+        ccss_cairo_style_draw_rectangle (style, cr,
+                                         x, y,
+                                         width, height);
 
       ccss_style_destroy (style);
     }
