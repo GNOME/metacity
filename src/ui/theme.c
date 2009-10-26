@@ -428,8 +428,6 @@ meta_theme_draw_frame_with_style (MetaTheme              *theme,
       if (!style)
         continue;
 
-      meta_warning ("%d", fgeom.areas[i].left_margin);
-
       x += fgeom.areas[i].left_margin;
       width -= (fgeom.areas[i].left_margin + fgeom.areas[i].right_margin);
       y += fgeom.areas[i].top_margin;
@@ -859,6 +857,13 @@ meta_theme_calc_geometry (MetaTheme              *theme,
       fgeom->areas[i].width = cowbell_get_button_width (theme, type, flags,
                                                         i,
                                                         button_height);
+      fgeom->areas[i].width +=
+        fgeom->areas[i].left_margin +
+        fgeom->areas[i].right_margin;
+      /*
+       * but we do not adjust the height; setting top and bottom
+       * margins on a button just compresses the button
+       */
       fgeom->areas[i].x = -1; /* dummy value, to check
                                * for when we haven't allocated it
                                */
