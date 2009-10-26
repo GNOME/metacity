@@ -360,7 +360,7 @@ cowbell_style_title_text (ccss_stylesheet_t *stylesheet,
   
   if (ccss_style_get_string (style, "text-align", &align))
     {
-      if (strcmp (align, "left")==0)
+      if (strcmp (align, "left")==0 || strcmp (align, "justify")==0)
 	{
 	  pango_layout_set_alignment (layout, PANGO_ALIGN_LEFT);
 	}
