@@ -770,7 +770,7 @@ meta_theme_calc_geometry (MetaTheme              *theme,
     }
 
   /* Now let's look at the coordinates for each element. */
-  /* FIXME: For now, we are assuming that the clickable and visible
+  /* For now, we are assuming that the clickable and visible
    * areas of a button are the same.  We need to distinguish them
    * eventually. */
 
