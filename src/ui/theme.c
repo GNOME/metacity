@@ -294,6 +294,7 @@ meta_theme_set_current (const char *name,
   the_theme->grammar = ccss_cairo_grammar_create ();
   ccss_grammar_add_functions (the_theme->grammar,
                               cowbell_functions);
+  /* FIXME this should not still be a stub */
   the_theme->stylesheet =
     ccss_grammar_create_stylesheet_from_file (the_theme->grammar,
                                               "/home/tthurman/.themes/Human/Human.css",
@@ -321,6 +322,7 @@ meta_theme_get_title_scale (MetaTheme     *theme,
                             MetaFrameType  type,
                             MetaFrameFlags flags)
 {
+  /* stub FIXME */
   /* stub: return sensible default value */
   return 1.0;
 }
