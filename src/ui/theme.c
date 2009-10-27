@@ -422,10 +422,6 @@ meta_theme_draw_frame_with_style (MetaTheme              *theme,
 {
   cairo_t *cr = gdk_cairo_create (drawable);
   ccss_stylesheet_t *stylesheet = theme->stylesheet;
-  /* FIXME: Check whether all the callers of this function
-   * have a copy of this already.  If they do, they should
-   * pass it in and save us having to calculate it twice.
-   */
   MetaFrameGeometry fgeom;
   int i;
 
