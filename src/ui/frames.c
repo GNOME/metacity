@@ -458,7 +458,7 @@ meta_frames_ensure_layout (MetaFrames  *frames,
   GtkWidget *widget;
   MetaFrameFlags flags;
   MetaFrameType type;
-  MetaFrameStyle *style;
+  MetaTheme *current;
   
   g_return_if_fail (GTK_WIDGET_REALIZED (frames));
 
@@ -469,10 +469,11 @@ meta_frames_ensure_layout (MetaFrames  *frames,
                  META_CORE_GET_FRAME_TYPE, &type,
                  META_CORE_GET_END);
 
-  style = meta_theme_get_frame_style (meta_theme_get_current (),
-                                      type, flags);
+  current = meta_theme_get_current ();
 
-  if (style != frame->cache_style)
+  if (frame->cache_theme != current ||
+      frame->cache_frametype != type ||
+      frame->cache_frameflags != flags)
     {
       if (frame->layout)
         {
@@ -486,7 +487,9 @@ meta_frames_ensure_layout (MetaFrames  *frames,
         }
     }
 
-  frame->cache_style = style;
+  frame->cache_theme = current;
+  frame->cache_frametype = type;
+  frame->cache_frameflags = flags;
   
   if (frame->layout == NULL)
     {
@@ -618,7 +621,10 @@ meta_frames_manage_window (MetaFrames *frames,
   /* Don't set event mask here, it's in frame.c */
   
   frame->xwindow = xwindow;
-  frame->cache_style = NULL;
+  frame->cache_theme = NULL;
+  /* set these to zero; they will be ignored since cache_theme is NULL */
+  frame->cache_frameflags = 0;
+  frame->cache_frametype = 0;
   frame->layout = NULL;
   frame->text_height = -1;
   frame->title = NULL;
@@ -2534,7 +2540,9 @@ meta_frames_set_window_background (MetaFrames   *frames,
 {
   MetaFrameFlags flags;
   MetaFrameType type;
+#if 0
   MetaFrameStyle *style;
+#endif
   gboolean frame_exists;
 
   meta_core_get (gdk_display, frame->xwindow,
@@ -2543,6 +2551,7 @@ meta_frames_set_window_background (MetaFrames   *frames,
                  META_CORE_GET_FRAME_TYPE, &type,
                  META_CORE_GET_END);
 
+#if 0
   if (frame_exists)
     {
       style = meta_theme_get_frame_style (meta_theme_get_current (),
@@ -2551,7 +2560,6 @@ meta_frames_set_window_background (MetaFrames   *frames,
 
   if (frame_exists && style->window_background_color != NULL)
     {
-#if 0
       GdkColor color;
       GdkVisual *visual;
 
@@ -2577,9 +2585,9 @@ meta_frames_set_window_background (MetaFrames   *frames,
         }
 
       gdk_window_set_background (frame->window, &color);
-#endif
     }
   else
+#endif
     {
       gtk_style_set_background (frame->style,
                                 frame->window, GTK_STATE_NORMAL);

@@ -323,20 +323,6 @@ meta_theme_set_current (const char *name,
   g_free (css_path);
 }
 
-MetaFrameStyle*
-meta_theme_get_frame_style (MetaTheme     *theme,
-                            MetaFrameType  type,
-                            MetaFrameFlags flags)
-{
-  /* stub FIXME */
-  /* FIXME of course this leaks like crazy, but it's a stub */
-  MetaFrameStyle *style;
-
-  style = g_new0 (MetaFrameStyle, 1);
-
-  return style;
-}
-
 double
 meta_theme_get_title_scale (MetaTheme     *theme,
                             MetaFrameType  type,

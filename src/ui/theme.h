@@ -141,21 +141,6 @@ typedef struct
 
 typedef struct _MetaTheme MetaTheme;
 
-typedef struct {
-  gboolean dummy;
-
-  /**
-   * Background colour of the window. Only present in theme formats
-   * 2 and above. Can be NULL to use the standard GTK theme engine.
-   *
-   * FIXME: This is the only place that code outside the theme
-   * subsystem accesses the internals of a struct within it;
-   * this should change.
-   */
-  MetaColorSpec *window_background_color;
-
-} MetaFrameStyle;
-
 /**
  * Returns the current theme.
  *
@@ -173,22 +158,6 @@ MetaTheme* meta_theme_get_current (void);
  */
 void       meta_theme_set_current (const char *name,
                                    gboolean    force_reload);
-
-/**
- * Returns a style object representing the configuration of
- * window borders in a given theme in a given situation.
- *
- * \bug This is probably unnecessary.  The framestyle isn't
- *      passed in to the drawing function at all.  Look into
- *      removing this.
- *
- * \param theme  a theme
- * \param type   the type of window: normal, dialogue, etc.
- * \param flags  the situation: shaded, with focus, etc.
- */
-MetaFrameStyle* meta_theme_get_frame_style (MetaTheme     *theme,
-                                            MetaFrameType  type,
-                                            MetaFrameFlags flags);
 
 /**
  * Returns how much the title should be scaled.

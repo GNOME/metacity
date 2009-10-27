@@ -76,7 +76,9 @@ struct _MetaUIFrame
   Window xwindow;
   GdkWindow *window;
   GtkStyle *style;
-  MetaFrameStyle *cache_style;
+  MetaTheme *cache_theme;
+  MetaFrameFlags cache_frameflags;
+  MetaFrameType cache_frametype;
   PangoLayout *layout;
   int text_height;
   char *title; /* NULL once we have a layout */
