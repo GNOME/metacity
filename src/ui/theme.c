@@ -466,6 +466,26 @@ meta_theme_draw_frame_with_style (MetaTheme              *theme,
                    fgeom.areas[CC_TITLE].x + fgeom.areas[CC_TITLE].left_edge,
                    fgeom.areas[CC_TITLE].y + fgeom.areas[CC_TITLE].top_edge);
 
+  pango_layout_set_width (title_layout, fgeom.areas[CC_TITLE].width);
+  pango_layout_set_height (title_layout, fgeom.areas[CC_TITLE].height);
+
+  switch (pango_layout_get_alignment (title_layout))
+    {
+    case PANGO_ALIGN_RIGHT:
+      cairo_translate (cr,
+                       fgeom.areas[CC_TITLE].width,
+                       0);
+      break;
+    case PANGO_ALIGN_CENTER:
+      cairo_translate (cr,
+                       fgeom.areas[CC_TITLE].width/2,
+                       0);
+      break;
+    default:
+      /* nothing */
+      break;
+    }
+
   pango_cairo_show_layout (cr, title_layout);
 
   cairo_destroy (cr);
