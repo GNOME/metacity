@@ -387,10 +387,12 @@ cowbell_style_title_text (ccss_stylesheet_t *stylesheet,
 	  pango_layout_set_alignment (layout, PANGO_ALIGN_RIGHT);
 	}
       else
-	/* FIXME: "align" contains garbage if it's undefined;
-	 * is there an easy way of checking?
-	 */
 	g_warning ("Unknown alignment: %s", align);
+    }
+  else
+    {
+      /* default to centring the text */
+      pango_layout_set_alignment (layout, PANGO_ALIGN_CENTER);
     }
 
   pango_layout_set_attributes (layout, attrs);
