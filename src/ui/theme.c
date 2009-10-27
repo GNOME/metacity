@@ -328,8 +328,16 @@ meta_theme_get_title_scale (MetaTheme     *theme,
                             MetaFrameType  type,
                             MetaFrameFlags flags)
 {
-  /* stub FIXME */
-  /* stub: return sensible default value */
+  /*
+   * In v2 themes, the theme authors had the option of
+   * asking for various sizes to scale the text by:
+   *
+   *    xx-small,x-small,small,medium,large,x-large,xx-large
+   *
+   * We don't currently support any of these, and we
+   * pretend that it's always given as "medium".
+   */
+
   return 1.0;
 }
 
