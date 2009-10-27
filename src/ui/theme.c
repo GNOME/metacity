@@ -254,23 +254,24 @@ cowbell_url (GSList const	*args,
   /* also to check if the file exists! */
 
   char *filename = NULL;
+  MetaTheme **theme = (MetaTheme**) user_data;
 
   g_return_val_if_fail (args && args->data, NULL);
   filename = (char*) args->data;
 
   if (strcmp (filename, "wm:icon")==0)
     {
-      return g_strdup_printf ("file:///usr/share/icons/gnome/24x24/actions/gtk-edit.png");
+      return g_strdup ("file:///usr/share/icons/gnome/24x24/actions/gtk-edit.png");
     }
   else
     {
-      return g_strdup_printf ("file:///home/tthurman/.themes/Human/%s", filename);
+      return g_strdup_printf ("file://%s/%s", (*theme)->directory, filename);
     }
 }
 
 static ccss_function_t const cowbell_functions[] = 
 {
-  { "url",	cowbell_url,	NULL },
+  { "url",	cowbell_url,	&the_theme },
   { NULL }
 };
 
