@@ -42,6 +42,7 @@ struct _CowbellArea {
 struct _MetaTheme {
   ccss_grammar_t        *grammar;
   ccss_stylesheet_t	*stylesheet;
+  gchar                 *directory;
 };
 
 MetaTheme *the_theme = NULL;
@@ -279,6 +280,8 @@ meta_theme_set_current (const char *name,
 {
   /* stub */
 
+  char *css_filename, *css_path;
+
   if (!the_theme)
     {
       cowbell_initialise_classes ();
@@ -289,18 +292,34 @@ meta_theme_set_current (const char *name,
     {
       ccss_stylesheet_destroy (the_theme->stylesheet);
       ccss_grammar_destroy (the_theme->grammar);
+      g_free (the_theme->directory);
     }
 
   the_theme->grammar = ccss_cairo_grammar_create ();
   ccss_grammar_add_functions (the_theme->grammar,
                               cowbell_functions);
-  /* FIXME this should not still be a stub */
+
+  the_theme->directory =
+    g_build_filename (g_get_home_dir (),
+                      ".themes",
+                      name,
+                      NULL);
+
+  g_warning ("Target is %s", the_theme->directory);
+
+  css_filename = g_strdup_printf ("%s.css", name);
+
+  css_path = g_build_filename (the_theme->directory,
+                               css_filename,
+                               NULL);
+  g_free (css_filename);
+
   the_theme->stylesheet =
     ccss_grammar_create_stylesheet_from_file (the_theme->grammar,
-                                              "/home/tthurman/.themes/Human/Human.css",
+                                              css_path,
                                               NULL);
 
-  g_warning ("THEMES: Setting theme to %s\n", name);
+  g_free (css_path);
 }
 
 MetaFrameStyle*
@@ -771,7 +790,7 @@ meta_theme_calc_geometry (MetaTheme              *theme,
 
   /* Now let's look at the coordinates for each element. */
   /* For now, we are assuming that the clickable and visible
-   * areas of a button are the same.  We need to distinguish them
+   * areas of a button are the same.  We may need to distinguish them
    * eventually. */
 
   /* Let's begin with the frame. */
