@@ -963,7 +963,7 @@ meta_theme_calc_geometry (MetaTheme              *theme,
     fgeom->areas[CC_TITLE].bottom_edge +
     fgeom->areas[CC_TITLEBAR].bottom_edge;
 
-  /* Now the titlebar. */
+  /* Now the title. */
   fgeom->areas[CC_TITLE].x =
     fgeom->areas[CC_FRAME].left_edge +
     fgeom->areas[CC_TITLEBAR].left_edge;
