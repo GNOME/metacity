@@ -349,7 +349,18 @@ void
 meta_theme_set_current (const char *name,
                         gboolean    force_reload)
 {
-  /* stub */
+  /*
+   * TODO: This does not check in $prefix/share/themes;
+   * only in ~/.themes.
+   */
+
+  /*
+   * Rationale for CSS filename:
+   * v1/v2 used to call all the themes metacity-theme-N.xml.
+   * This meant you couldn't put a group of them in the same
+   * directory to compare them.  Therefore, we put the theme
+   * name in the filename: Human.css, etc.
+   */
 
   char *css_filename, *css_path;
 
