@@ -288,10 +288,21 @@ cowbell_get_attribute (ccss_node_t const *self,
                 }
             }
         }
-
-      /* giving up here */
-      return NULL;
     }
+
+  /* try some odd rare ones */
+
+  if (strcmp(name, "cowbell1")==0)
+    {
+      return g_strdup ("1");
+    }
+  else if (strcmp(name, "wm")==0)
+    {
+      return g_strdup ("metacity");
+    }
+
+  /* giving up here */
+  return NULL;
 }
 
 static ccss_node_class_t cowbell_node_class = {
