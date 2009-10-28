@@ -2286,7 +2286,6 @@ meta_frames_expose_event (GtkWidget           *widget,
 
   cached_pixels_draw (pixels, frame->window, region);
 
-  g_warning ("Expose event\n");
   clip_to_screen (region, frame);
   meta_frames_paint_to_drawable (frames, frame, frame->window, region, 0, 0);
 
@@ -2430,108 +2429,20 @@ meta_frames_paint_to_drawable (MetaFrames   *frames,
 
   meta_prefs_get_button_layout (&button_layout);
 
-  if (0) /* G_LIKELY (GDK_IS_WINDOW (drawable))) */
-    {
-      /* A window; happens about 2/3 of the time */
-
-      GdkRectangle area, *areas;
-      int n_areas;
-      int screen_width, screen_height;
-      GdkRegion *edges, *tmp_region;
-      int top, bottom, left, right;
- 
-      /* Repaint each side of the frame */
-
-      meta_theme_get_frame_borders (meta_theme_get_current (),
-                             type, frame->text_height, flags, 
-                             &top, &bottom, &left, &right);
-
-      meta_core_get (gdk_display, frame->xwindow,
-                     META_CORE_GET_SCREEN_WIDTH, &screen_width,
-                     META_CORE_GET_SCREEN_HEIGHT, &screen_height,
-                     META_CORE_GET_END);
-
-      edges = gdk_region_copy (region);
-
-      /* Punch out the client area */
-
-      area.x = left;
-      area.y = top;
-      area.width = w;
-      area.height = h;
-      tmp_region = gdk_region_rectangle (&area);
-      gdk_region_subtract (edges, tmp_region);
-      gdk_region_destroy (tmp_region);
-
-      /* Now draw remaining portion of region */
-
-      gdk_region_get_rectangles (edges, &areas, &n_areas);
-
-      for (i = 0; i < n_areas; i++)
-        {
-          /* Bug 399529: clamp areas[i] so that it doesn't go too far
-           * off the edge of the screen. This works around a GDK bug
-           * which makes gdk_window_begin_paint_rect cause an X error
-           * if the window is insanely huge. If the client is a GDK program
-           * and does this, it will still probably cause an X error in that
-           * program, but the last thing we want is for Metacity to crash
-           * because it attempted to decorate the silly window.
-           */
-
-          areas[i].x = MAX (areas[i].x, -DECORATING_BORDER); 
-          areas[i].y = MAX (areas[i].y, -DECORATING_BORDER); 
-          if (areas[i].x+areas[i].width  > screen_width  + DECORATING_BORDER)
-            areas[i].width  = MIN (0, screen_width  - areas[i].x);
-          if (areas[i].y+areas[i].height > screen_height + DECORATING_BORDER)
-            areas[i].height = MIN (0, screen_height - areas[i].y);
-
-          /* Okay, so let's start painting. */
-
-          gdk_window_begin_paint_rect (drawable, &areas[i]);
-
-          meta_theme_draw_frame_with_style (meta_theme_get_current (),
-            frame->style,
-            widget,
-            drawable,
-            NULL, /* &areas[i], */
-            x_offset, y_offset,
-            type,
-            flags,
-            w, h,
-            frame->layout,
-            frame->text_height,
-            &button_layout,
-            button_states,
-            mini_icon, icon);
-
-          gdk_window_end_paint (drawable);
-        }
-
-      g_free (areas);
-      gdk_region_destroy (edges);
-
-    }
-  else
-    {
-      /* Not a window; happens about 1/3 of the time */
-
-      g_warning("Painting\n");
-      meta_theme_draw_frame_with_style (meta_theme_get_current (),
-                                        frame->style,
-                                        widget,
-                                        drawable,
-                                        NULL,
-                                        x_offset, y_offset,
-                                        type,
-                                        flags,
-                                        w, h,
-                                        frame->layout,
-                                        frame->text_height,
-                                        &button_layout,
-                                        button_states,
-                                        mini_icon, icon);
-    }
-
+  meta_theme_draw_frame_with_style (meta_theme_get_current (),
+                                    frame->style,
+                                    widget,
+                                    drawable,
+                                    NULL,
+                                    x_offset, y_offset,
+                                    type,
+                                    flags,
+                                    w, h,
+                                    frame->layout,
+                                    frame->text_height,
+                                    &button_layout,
+                                    button_states,
+                                    mini_icon, icon);
 }
 
 static void
