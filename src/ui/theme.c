@@ -387,8 +387,6 @@ meta_theme_set_current (const char *name,
                       name,
                       NULL);
 
-  g_warning ("Target is %s", the_theme->directory);
-
   css_filename = g_strdup_printf ("%s.css", name);
 
   css_path = g_build_filename (the_theme->directory,
