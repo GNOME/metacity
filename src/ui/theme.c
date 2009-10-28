@@ -145,6 +145,9 @@ typedef struct
 {
   ccss_node_t basic;
   CopperClasses cowbell_class;
+  /* the next two make no sense for any class but CC_FRAME */
+  MetaFrameType type;
+  MetaFrameFlags flags;
 } CopperNode;
 
 CopperNode cowbell_nodes[CC_LAST];
@@ -183,6 +186,7 @@ cowbell_get_instance (ccss_node_t const *self)
 
 static char const*
 cowbell_get_style (ccss_node_t const *self) {
+  /* this is always ""; why don't we just return ""? */
   return self->inline_style;
 }
 
@@ -204,12 +208,99 @@ cowbell_get_class (ccss_node_t const *self)
   return cowbell_classnames[((CopperNode*)self)->cowbell_class];
 }
 
+/* Attributes of nodes representing windows */
+typedef struct {
+  const char *name;
+  MetaFrameFlags flag;
+} MetaFrameFlagName;
+
+/*
+ * Rationale for attribute names:
+ *  - The verb should be lexically identical at all times.
+ *    (So we shouldn't have "can-stick", "is-stuck".)
+ *    Otherwise people who aren't native English speakers
+ *    might get confused.
+ *  - The class name should nevertheless read as an
+ *    English phrase.
+ */
+
+MetaFrameFlagName meta_flag_names[] = {
+  { "can-be-closed", META_FRAME_ALLOWS_DELETE },
+  { "can-have-menu", META_FRAME_ALLOWS_MENU },
+  { "can-be-minimized", META_FRAME_ALLOWS_MINIMIZE },
+  { "can-be-maximized", META_FRAME_ALLOWS_MAXIMIZE },
+  { "can-be-vertically-resized", META_FRAME_ALLOWS_VERTICAL_RESIZE },
+  { "can-be-horizontally-resized", META_FRAME_ALLOWS_HORIZONTAL_RESIZE },
+  { "is-focused", META_FRAME_HAS_FOCUS },
+  { "is-shaded", META_FRAME_SHADED },
+  { "is-stuck", META_FRAME_STUCK },
+  { "is-maximized", META_FRAME_MAXIMIZED },
+  { "can-be-shaded", META_FRAME_ALLOWS_SHADE },
+  { "can-be-moved", META_FRAME_ALLOWS_MOVE },
+  { "is-fullscreen", META_FRAME_FULLSCREEN },
+  { "is-flashing", META_FRAME_IS_FLASHING },
+  { "is-above", META_FRAME_ABOVE },
+  { NULL, 0 }
+};
+
+static char*
+cowbell_get_attribute (ccss_node_t const *self,
+                       char const *name)
+{
+  CopperNode *copper = (CopperNode*) self;
+
+  if (strcmp(name, "type")==0)
+    {
+      /* Pretty simple: just look up the type. */
+      switch (copper->type)
+        {
+        case META_FRAME_TYPE_NORMAL:
+          return g_strdup ("normal");
+        case META_FRAME_TYPE_DIALOG:
+          return g_strdup ("dialog");
+        case META_FRAME_TYPE_MODAL_DIALOG:
+          return g_strdup ("modal-dialog");
+        case META_FRAME_TYPE_UTILITY:
+          return g_strdup ("utility");
+        case META_FRAME_TYPE_MENU:
+          return g_strdup ("menu");
+        case META_FRAME_TYPE_BORDER:
+          return g_strdup ("border");
+        default:
+          return g_strdup ("unknown");      
+        }
+    }
+  else
+    {
+      /* So try the flag names. */
+      MetaFrameFlagName *cursor;
+      for (cursor = meta_flag_names; cursor->name; cursor++)
+        {
+          if (strcmp (name, cursor->name)==0)
+            {
+              if (copper->flags & cursor->flag)
+                {
+                  return g_strdup ("1");
+                }
+              else
+                {
+                  return g_strdup ("0");
+                }
+            }
+        }
+
+      /* giving up here */
+      return NULL;
+    }
+}
+
 static ccss_node_class_t cowbell_node_class = {
   .get_type               = (ccss_node_get_type_f) cowbell_get_type,
   .get_instance           = (ccss_node_get_instance_f) cowbell_get_instance,
   .get_style              = (ccss_node_get_style_f) cowbell_get_style,
   .get_container          = (ccss_node_get_container_f) cowbell_get_container,
-  .get_class              = (ccss_node_get_class_f) cowbell_get_class
+  .get_class              = (ccss_node_get_class_f) cowbell_get_class,
+  .get_attribute          = (ccss_node_get_attribute_f) cowbell_get_attribute,
 };
 
 /****************************************************************/
@@ -448,9 +539,11 @@ meta_theme_draw_frame_with_style (MetaTheme              *theme,
       height -= (fgeom.areas[i].top_margin + fgeom.areas[i].bottom_margin);
 
       if (width > 0 && height > 0)
-        ccss_cairo_style_draw_rectangle (style, cr,
-                                         x, y,
-                                         width, height);
+        {
+          ccss_cairo_style_draw_rectangle (style, cr,
+                                           x, y,
+                                           width, height);
+        }
 
       ccss_style_destroy (style);
     }
@@ -490,7 +583,10 @@ meta_theme_draw_frame_with_style (MetaTheme              *theme,
 /**
  * Returns the style to use with the given type and flags.
  * When you're done with it, call ccss_style_destroy (style).
- * (FIXME: Currently always returns the plain style.)
+ *
+ * Be warned: this function is not threadsafe.  It modifies
+ * a static copy of the node hierarchy in order to set the
+ * attributes of the frame.
  */
 static ccss_style_t *
 cowbell_get_current_style (MetaTheme *theme,
@@ -499,9 +595,19 @@ cowbell_get_current_style (MetaTheme *theme,
                            CopperClasses style_id)
 {
   ccss_stylesheet_t *stylesheet = theme->stylesheet;
+  ccss_style_t *result;
 
-  return ccss_stylesheet_query (stylesheet,
-                                (ccss_node_t*) &cowbell_nodes[style_id]);
+  /*
+   * Possibly we should set attributes on everything,
+   * not just the frame.
+   */
+  cowbell_nodes[CC_FRAME].type = type;
+  cowbell_nodes[CC_FRAME].flags = flags;
+
+  result = ccss_stylesheet_query (stylesheet,
+                                  (ccss_node_t*) &cowbell_nodes[style_id]);
+
+  return result;
 }
 
 /**
