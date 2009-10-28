@@ -841,9 +841,13 @@ cowbell_get_button_width (MetaTheme              *theme,
   double aspect_ratio;
   double result;
 
-  /* FIXME: maybe check these are ordered correctly */
   ccss_style_get_double (style, "min-width", &min_width);
   ccss_style_get_double (style, "max-width", &max_width);
+
+  if (min_width > max_width)
+    {
+      min_width = max_width;
+    }
 
   if (min_width!=0.0 && min_width==max_width)
     {
