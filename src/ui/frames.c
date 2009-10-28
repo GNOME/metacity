@@ -2090,15 +2090,9 @@ generate_pixmap (MetaFrames *frames,
 
   region = gdk_region_rectangle (&rectangle);
 
-  g_warning ("Generate pixmap (FIXME: PUT THIS BACK IN)\n");
-  /*
-
-    FIXME:
-    Temporarily commented out
-
   meta_frames_paint_to_drawable (frames, frame, result, region,
                                  -rectangle.x, -rectangle.y);
-  */
+
   gdk_region_destroy (region);
 
   return result;
