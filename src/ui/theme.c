@@ -1237,14 +1237,40 @@ meta_theme_calc_geometry (MetaTheme              *theme,
     }
 #endif
 
-  /****************************************************************/
-  /* Old code which needs replacing: */
-  
-  /* Rounded corners; need to pick these up from the CSS.  FIXME. */
-  fgeom->top_left_corner_rounded_radius = 5;
-  fgeom->top_right_corner_rounded_radius = 5;
-  fgeom->bottom_left_corner_rounded_radius = 5;
-  fgeom->bottom_right_corner_rounded_radius = 5;
+  /* Finally, pick up the rounded corners. */
+  {
+    double d;
+    int default_radius;
+    ccss_style_t *style = ccss_stylesheet_query (theme->stylesheet,
+                                                 (ccss_node_t*) &cowbell_nodes[CC_FRAME]);
+   
+    if (ccss_style_get_double (style, "border-radius", &d))
+      default_radius = (int) d;
+    else
+      default_radius = 0;
+    
+    if (ccss_style_get_double (style, "border-top-left-radius", &d))
+      fgeom->top_left_corner_rounded_radius = (int) d;
+    else
+      fgeom->top_left_corner_rounded_radius = default_radius;
+    
+    if (ccss_style_get_double (style, "border-top-right-radius", &d))
+      fgeom->top_right_corner_rounded_radius = (int) d;
+    else
+      fgeom->top_right_corner_rounded_radius = default_radius;
+    
+    if (ccss_style_get_double (style, "border-bottom-left-radius", &d))
+      fgeom->bottom_left_corner_rounded_radius = (int) d;
+    else
+      fgeom->bottom_left_corner_rounded_radius = default_radius;
+    
+    if (ccss_style_get_double (style, "border-bottom-right-radius", &d))
+      fgeom->bottom_right_corner_rounded_radius = (int) d;
+    else
+      fgeom->bottom_right_corner_rounded_radius = default_radius;
+
+  ccss_style_destroy (style);
+  }
 }
 
 /*
