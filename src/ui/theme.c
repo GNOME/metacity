@@ -92,6 +92,23 @@ char *cowbell_human_names[] =
     NULL
   };
 
+/**
+ * Sometimes there are too many buttons to show in the space
+ * on the titlebar; this is the order in which they should
+ * be removed. The menu button should be the last
+ * to go, since you can do any of the other operations using it.
+ */
+gint meta_theme_button_priorities[] = {
+  CC_ABOVE,
+  CC_STICK,
+  CC_SHADE,
+  CC_MINIMIZE,
+  CC_MAXIMIZE,
+  CC_CLOSE,
+  CC_MENU,
+  CC_LAST
+};
+
 typedef struct
 {
   ccss_node_t basic;
@@ -845,6 +862,8 @@ meta_theme_calc_geometry (MetaTheme              *theme,
                           const MetaButtonLayout *button_layout,
                           MetaFrameGeometry      *fgeom)
 {
+  const int allocated_left = -1;
+  const int allocated_right = -2;
   int i;
   int button_height, button_y;
   int x;
@@ -955,6 +974,16 @@ meta_theme_calc_geometry (MetaTheme              *theme,
          fgeom->areas[CC_TITLEBAR].bottom_edge);
   button_y = fgeom->areas[CC_TITLEBAR].y +
     fgeom->areas[CC_TITLEBAR].top_edge;
+
+  /*
+   * We temporarily use two magic negative values
+   * for fgeom->areas[n].x:
+   *
+   *  allocated_left -- allocated on the left
+   *  allocated_right -- allocated on the right
+   *  and zero means not allocated at all.
+   */
+
   for (i=CC_BUTTON_FIRST; i<=CC_BUTTON_LAST; i++)
     {
       fgeom->areas[i].height = button_height;
@@ -968,21 +997,83 @@ meta_theme_calc_geometry (MetaTheme              *theme,
        * but we do not adjust the height; setting top and bottom
        * margins on a button just compresses the button
        */
-      fgeom->areas[i].x = -1; /* dummy value, to check
-                               * for when we haven't allocated it
-                               */
+      fgeom->areas[i].x = 0;
       fgeom->areas[i].y = button_y;
     }
 
-  /* FIXME:
-   * Here we need to nuke any buttons (and the title)
-   * that make the contents of the titlebar wider than
-   * it can be.
+  /*
+   * If the total width is too wide,
+   * knock out some of the buttons, in priority order.
    */
 
+  {
+    int total_width = 0;
+    int available_width =
+      fgeom->areas[CC_TITLEBAR].width -
+      (fgeom->areas[CC_TITLEBAR].left_edge +
+       fgeom->areas[CC_TITLEBAR].right_edge);
+
+    for (i=0; i<MAX_BUTTONS_PER_CORNER; i++)
+      {
+        int button = button_layout->left_buttons[i];
+        CopperClasses cc;
+
+        if (button == META_BUTTON_FUNCTION_LAST)
+          break;
+
+        cc = copper_class_for_button(button);
+        total_width += fgeom->areas[cc].width;
+        fgeom->areas[cc].x = allocated_left;
+      }
+
+    for (i=0; i<MAX_BUTTONS_PER_CORNER; i++)
+      {
+        int button = button_layout->right_buttons[i];
+        CopperClasses cc;
+
+        if (button == META_BUTTON_FUNCTION_LAST)
+          break;
+
+        cc = copper_class_for_button(button);
+        total_width += fgeom->areas[cc].width;
+        fgeom->areas[cc].x = allocated_right;
+      }
+
+    i=0;
+    while (total_width > available_width &&
+           meta_theme_button_priorities[i]!=CC_LAST)
+      {
+        CopperClasses button = meta_theme_button_priorities[i];
+
+        if (fgeom->areas[button].x < 0)
+          {
+            total_width -= fgeom->areas[button].width;
+
+            fgeom->areas[button].x =
+              fgeom->areas[button].y =
+              fgeom->areas[button].width =
+              fgeom->areas[button].height =
+              0;
+          }
+
+        i++;
+      }
+  }
+    
+
   /* And now allocate the buttons as necessary. */
-  /* FIXME: We are not honouring spacers.
+
+  /*
+   * We are not honouring spacers.
    * They should possibly be removed anyway.
+   */
+
+  /*
+   * It's probably a little silly to loop over button_layout again
+   * since we've already done it, but we do it this way at present
+   * to get the ordering right.  TODO: Perhaps we need a separate array
+   * that holds 0 if a button isn't displayed, and descending/ascending
+   * +ve or -ve values for its ordering on the left or right side.
    */
 
   /* The left-hand side */
@@ -999,6 +1090,10 @@ meta_theme_calc_geometry (MetaTheme              *theme,
         break;
 
       cc = copper_class_for_button(button);
+
+      if (fgeom->areas[cc].x==0)
+        /* must have been knocked out */
+        continue;
 
       /* so allocate it */
       fgeom->areas[cc].x = x;
@@ -1028,9 +1123,13 @@ meta_theme_calc_geometry (MetaTheme              *theme,
 
       cc = copper_class_for_button(button);
 
+      if (fgeom->areas[cc].x==0)
+        /* must have been knocked out */
+        continue;
+
       /* so allocate it */
-      x -= fgeom->areas[copper_class_for_button(button)].width;
-      fgeom->areas[copper_class_for_button(button)].x = x;
+      x -= fgeom->areas[cc].width;
+      fgeom->areas[cc].x = x;
 
       fgeom->areas[CC_TITLE].width -= fgeom->areas[cc].width;
     }
@@ -1038,7 +1137,7 @@ meta_theme_calc_geometry (MetaTheme              *theme,
   /* Now find the ones we didn't use, and zero them out */
   for (i=CC_BUTTON_FIRST; i<=CC_BUTTON_LAST; i++)
     {
-      if (fgeom->areas[i].x==-1)
+      if (fgeom->areas[i].x < 0)
         {
           fgeom->areas[i].x =
             fgeom->areas[i].y =
