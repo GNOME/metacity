@@ -16,9 +16,6 @@ struct _MetaTheme {
 
 MetaTheme *the_theme = NULL;
 
-/* temporarily: */
-#define SILLY_BORDER_SIZE 20
-
 /****************************************************************/
 
 /**
