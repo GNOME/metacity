@@ -81,7 +81,61 @@ typedef struct
   GdkRectangle clickable;
 } MetaButtonSpace;
 
-typedef struct _CowbellArea CowbellArea;
+/**
+ * The elements which can be styled using CSS.
+ *
+ * (I didn't want to make these publicly visible,
+ * but the alternative would have been to make "areas"
+ * in MetaFrameGeometry a pointer, which would have
+ * required us to add destructors everywhere it was
+ * used.)
+ */
+typedef enum _CopperClasses {
+  CC_FRAME,
+  CC_CONTENT, CC_TITLEBAR,
+  CC_TITLE,
+  CC_MENU,
+  CC_BUTTON_FIRST = CC_MENU,
+  CC_MINIMIZE, CC_MAXIMIZE, CC_CLOSE,
+  CC_SHADE, CC_ABOVE, CC_STICK,
+  CC_UNSHADE, CC_UNABOVE, CC_UNSTICK,
+  CC_BUTTON_LAST = CC_UNSTICK,
+  CC_FILLER,
+  CC_LAST
+} CopperClasses;
+
+/**
+ * Coordinates and sizes of part of the window.
+ * Only used within theme.c.
+ * See comment on CopperClasses for what this
+ * is doing here.
+ */
+typedef struct _CowbellArea {
+  /**
+   * Sizes of padding (except for the frame) plus
+   * borders plus margins.
+   */
+  int top_edge;
+  int left_edge;
+  int bottom_edge;
+  int right_edge;
+
+  /**
+   * Sizes of *just* the margins.
+   */
+  int top_margin;
+  int left_margin;
+  int bottom_margin;
+  int right_margin;
+
+  /**
+   * The position of the area.
+   */
+  int x;
+  int y;
+  int width;
+  int height;
+} CowbellArea;
 
 /**
  * Calculated actual geometry of the frame
@@ -103,7 +157,7 @@ typedef struct
   int top_titlebar_edge;
   int bottom_titlebar_edge;
 
-  CowbellArea *areas;
+  CowbellArea areas[CC_LAST];
 
   /* used for a memset hack */
 #define ADDRESS_OF_BUTTON_RECTS(fgeom) (((char*)(fgeom)) + G_STRUCT_OFFSET (MetaFrameGeometry, close_rect))

@@ -8,37 +8,6 @@
 #include <ccss-cairo/ccss-cairo.h>
 #include <gtk/gtk.h>
 
-/**
- * Coordinates and sizes of part of the window.
- * Only used within this file.
- */
-struct _CowbellArea {
-  /**
-   * Sizes of padding (except for the frame) plus
-   * borders plus margins.
-   */
-  int top_edge;
-  int left_edge;
-  int bottom_edge;
-  int right_edge;
-
-  /**
-   * Sizes of *just* the margins.
-   */
-  int top_margin;
-  int left_margin;
-  int bottom_margin;
-  int right_margin;
-
-  /**
-   * The position of the area.
-   */
-  int x;
-  int y;
-  int width;
-  int height;
-};
-
 struct _MetaTheme {
   ccss_grammar_t        *grammar;
   ccss_stylesheet_t	*stylesheet;
@@ -51,21 +20,6 @@ MetaTheme *the_theme = NULL;
 #define SILLY_BORDER_SIZE 20
 
 /****************************************************************/
-
-/* Our little hierarchy */
-typedef enum _CopperClasses {
-  CC_FRAME,
-  CC_CONTENT, CC_TITLEBAR,
-  CC_TITLE,
-  CC_MENU,
-  CC_BUTTON_FIRST = CC_MENU,
-  CC_MINIMIZE, CC_MAXIMIZE, CC_CLOSE,
-  CC_SHADE, CC_ABOVE, CC_STICK,
-  CC_UNSHADE, CC_UNABOVE, CC_UNSTICK,
-  CC_BUTTON_LAST = CC_UNSTICK,
-  CC_FILLER,
-  CC_LAST
-} CopperClasses;
 
 /**
  * The element names of each CopperClass.
@@ -900,9 +854,7 @@ meta_theme_calc_geometry (MetaTheme              *theme,
 
   /* TODO - We may want to cache the style objects in "areas" */
 
-  /* FIXME FIXME FIXME */
-  /* This will LEAK.  We must provide a constructor and destructor fn. */
-  fgeom->areas = g_new0 (CowbellArea, CC_LAST);
+  memset (&(fgeom->areas), 0, sizeof(fgeom->areas));
 
   /* First of all, we need to calculate the edges for each element. */
   for (i=0; i<CC_LAST; i++)
