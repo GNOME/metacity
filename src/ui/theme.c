@@ -528,6 +528,12 @@ meta_theme_draw_frame_with_style (MetaTheme              *theme,
 
       if (width > 0 && height > 0)
         {
+          /*
+          meta_warning ("Plotting %s at %d %d %dx%d\n",
+                        cowbell_human_names[i],
+                        x, y, width, height);
+          */
+
           ccss_cairo_style_draw_rectangle (style, cr,
                                            x, y,
                                            width, height);
@@ -873,6 +879,7 @@ meta_theme_calc_geometry (MetaTheme              *theme,
 {
   const int allocated_left = -1;
   const int allocated_right = -2;
+  const int allocated_not = -3;
   int i;
   int button_height, button_y;
   int x;
@@ -990,7 +997,7 @@ meta_theme_calc_geometry (MetaTheme              *theme,
    *
    *  allocated_left -- allocated on the left
    *  allocated_right -- allocated on the right
-   *  and zero means not allocated at all.
+   *  allocated_not -- not allocated at all.
    */
 
   for (i=CC_BUTTON_FIRST; i<=CC_BUTTON_LAST; i++)
@@ -1006,7 +1013,7 @@ meta_theme_calc_geometry (MetaTheme              *theme,
        * but we do not adjust the height; setting top and bottom
        * margins on a button just compresses the button
        */
-      fgeom->areas[i].x = 0;
+      fgeom->areas[i].x = allocated_not;
       fgeom->areas[i].y = button_y;
     }
 
@@ -1054,7 +1061,8 @@ meta_theme_calc_geometry (MetaTheme              *theme,
       {
         CopperClasses button = meta_theme_button_priorities[i];
 
-        if (fgeom->areas[button].x < 0)
+        if (fgeom->areas[button].x == allocated_left ||
+            fgeom->areas[button].x == allocated_right)
           {
             total_width -= fgeom->areas[button].width;
 
@@ -1146,7 +1154,7 @@ meta_theme_calc_geometry (MetaTheme              *theme,
   /* Now find the ones we didn't use, and zero them out */
   for (i=CC_BUTTON_FIRST; i<=CC_BUTTON_LAST; i++)
     {
-      if (fgeom->areas[i].x < 0)
+      if (fgeom->areas[i].x == allocated_not)
         {
           fgeom->areas[i].x =
             fgeom->areas[i].y =
