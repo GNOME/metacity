@@ -1,0 +1,42 @@
+/*
+ * METACITY CSS SUNSHINE THEME
+ * Author: Thomas Thurman
+ * Design: Firinel Thurman
+ * Copyright (c) 2009 Collabora Ltd
+ * Released under the GNU GPL v2 or any later version at your option.
+ */
+
+frame {
+    border-radius: 3px;
+    background-color: #c37004;
+    border: 1px #000 solid;
+}
+
+title {
+   color: #ffce63;
+   text-align: left;
+}
+
+area.titlebar {
+    border-top: 2px;
+    border-bottom: 2px;
+}
+
+button {
+    width: 200px;
+    height: 200px;
+
+    background-image: url('blank.png');
+    background-size: contain;
+
+    margin-left-width: 5px;
+    margin-right-width: 5px;
+}
+
+button.menu { background-image: url('menu.png'); }
+button.close { background-image: url('close.png'); }
+button.maximize { background-image: url('max.png'); }
+button.minimize { background-image: url('min.png'); }
+button.shade { background-image: url('shade.png'); }
+button.stick { background-image: url('stick.png'); }
+button.above { background-image: url('above.png'); }
