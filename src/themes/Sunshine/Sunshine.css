@@ -7,6 +7,17 @@
  */
 
 frame {
+
+    -dc-title: "Sunshine";
+    -dc-description: "A simple orange theme";
+    -dc-creator: "Thomas Thurman";
+    -dc-contributor: "Firinel Thurman";
+    -dc-publisher: "The GNOME Foundation";
+    -dc-rights: "http://www.gnu.org/licenses/gpl-2.0.html";
+    -dc-rightsholder: "Collabora Ltd";
+    -dc-date: "2009-10-28";
+    -dc-identifier: "http://blogs.gnome.org/metacity/2009/10/29/sunshine/";
+
     border-radius: 3px;
     background-color: #c37004;
     border: 1px #000 solid;
