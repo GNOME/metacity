@@ -1,0 +1,877 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<article>
+  <articleinfo>
+    <title>Using Cowbell</title>
+    <subtitle>The CSS on window borders experimental layout language</subtitle>
+    <author>
+      <firstname>Thomas</firstname>
+      <surname>Thurman</surname>
+      <affiliation><orgname>Collabora Ltd</orgname></affiliation>
+    </author>
+  </articleinfo>
+
+  <section id="credits">
+    <title>Credits</title>
+    
+    <para>Many thanks go to those without whom you would not be reading this document:</para>
+
+    <itemizedlist>
+      <listitem><para><ulink url="http://www.collabora.co.uk">Collabora Ltd</ulink>, who supported this work and allowed me to
+	  build most of it on work time;</para></listitem>
+      <listitem><para>Danielle Madeley, who at GUADEC 2009
+	  first suggested the use of CSS on
+	  window borders.</para></listitem>
+      <listitem><para>Robert Staudinger, who developed libccss, which does
+	  all the parsing and some of the rendering.</para></listitem>
+      <listitem><para><ulink url="http://www.hoasm.org/IVM/Tallis.html">Thomas Tallis</ulink>, whose motet
+	  <ulink url="http://www.youtube.com/watch?v=7Cn7ZW8ts3Y"><foreignphrase lang="la">Spem in alium</foreignphrase></ulink> became
+	  something of a signature tune for the development of this project.</para></listitem>
+    </itemizedlist>
+  </section>
+
+<!--
+  <section>
+    <title>Why CSS?</title>
+
+    <para>...</para>
+
+    <section><title>Why not metacity-theme-n.xml?</title>
+    <para>...</para>
+    </section>
+
+    <section><title>Why not SVG?</title>
+    <para>...</para>
+    </section>
+
+    <section><title>What do other window managers do?</title>
+    <para>...</para>
+    </section>
+
+  </section>
+-->
+
+  <section id="primer">
+    <title>Getting started</title>
+
+    <para>
+      Please bear in mind that Cowbell is still alpha quality software.
+      It may not always be the epitome of stability.
+    </para>
+
+    <section id="example"><title>An example</title>
+    <para>
+      Let's begin with an example of a Cowbell theme file:
+    </para>
+
+    <programlisting>
+/*
+ * METACITY CSS SUNSHINE THEME
+ * Author: Thomas Thurman
+ * Design: Firinel Thurman
+ * Copyright (c) 2009 Collabora Ltd
+ * Released under the GNU GPL v2 or any later version at your option.
+ */
+
+frame {
+
+    -dc-title: "Sunshine";
+    -dc-description: "A simple orange theme";
+    -dc-creator: "Thomas Thurman";
+    -dc-contributor: "Firinel Thurman";
+    -dc-publisher: "The GNOME Foundation";
+    -dc-rights: "http://www.gnu.org/licenses/gpl-2.0.html";
+    -dc-rightsholder: "Collabora Ltd";
+    -dc-date: "2009-10-28";
+    -dc-identifier: "http://blogs.gnome.org/metacity/2009/10/29/sunshine/";
+
+    border-radius: 3px;
+    background-color: #c37004;
+    border: 1px #000 solid;
+}
+
+title {
+   color: #ffce63;
+   text-align: left;
+}
+
+area.titlebar {
+    border-top: 2px;
+    border-bottom: 2px;
+}
+
+button {
+    width: 200px;
+    height: 200px;
+
+    background-image: url('blank.png');
+    background-size: contain;
+
+    margin-left-width: 5px;
+    margin-right-width: 5px;
+}
+
+button.menu { background-image: url('menu.png'); }
+button.close { background-image: url('close.png'); }
+button.maximize { background-image: url('max.png'); }
+button.minimize { background-image: url('min.png'); }
+button.shade { background-image: url('shade.png'); }
+button.stick { background-image: url('stick.png'); }
+button.above { background-image: url('above.png'); }
+</programlisting>
+    
+      <mediaobject>
+	<imageobject>
+	  <imagedata fileref="sunshine.png" format="PNG"/>
+	</imageobject>
+	<caption>
+	  <para>
+	    When you run this through Cowbell, the result looks like this.
+	  </para>
+	</caption>
+      </mediaobject>
+
+    </section>
+
+    <section id="yoursystem"><title>How to get Cowbell on your own system</title>
+
+    <itemizedlist>
+      <listitem>
+	<para>Download, compile, and install metacity-cowbell.</para>
+      </listitem>
+
+      <listitem>
+	<para>Copy the contents of the
+	  <filename>src/themes/Sunshine</filename>
+	  directory to
+	  <filename>~/.themes/Sunshine/cowbell/</filename>.</para>
+      </listitem>
+
+      <listitem>
+	<para>Set the current theme to be "Sunshine" in
+	  <filename>/apps/metacity/general/theme</filename>.
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>Start Metacity.  If you want to ensure the stability of
+	  your own system's environment, run Metacity inside Xephyr.</para>
+      </listitem>
+
+    </itemizedlist>
+
+    </section>
+
+  </section>
+
+  <section id="format">
+    <title>The file format</title>
+
+    <para>
+      Cowbell theme files are expressed in CSS.
+      CSS was originally designed for styling web pages.
+      If you are not familiar with CSS, please read
+      <ulink url="http://www.w3.org/MarkUp/Guide/Style">Dave Raggett's introduction to CSS</ulink>
+      before you continue reading this document.
+    </para>
+
+    <para>
+      CSS has traditionally been used to style other documents.
+      However, when you use CSS to style window borders,
+      you should forget the idea of a document which you are styling.
+      Instead, you are styling an abstract data structure.
+    </para>
+
+    <para>
+      The structure will always contain the same set of elements
+      in roughly the same relationship to one another.
+      Here is <ulink url="elements.svg">a diagram of those relationships</ulink>.
+    </para>
+
+      <mediaobject>
+	<imageobject>
+	  <imagedata fileref="elements.png" format="PNG"/>
+	</imageobject>
+	<caption>
+	  <para>
+	    Relationships between
+	    the Cowbell elements.
+	  </para>
+	</caption>
+      </mediaobject>
+
+    <section id="rules"><title>Rules for all elements</title>
+    <para>Any element can be styled using:</para>
+    <itemizedlist>
+      <listitem>
+	<para>
+	  Border settings, including radius values for rounding.
+	  However, a few border styles are not supported by libccss and
+	  therefore not by Cowbell.
+	</para>
+      </listitem>
+      <listitem>
+	<para>
+	  Padding settings.
+	</para>
+      </listitem>
+      <listitem>
+	<para>
+	  Margin settings.
+	  However, margin settings on the frame would be nonsensical
+	  and are therefore ignored.
+	</para>
+      </listitem>
+      <listitem>
+	<para>
+	  Background settings.
+	</para>
+      </listitem>
+    </itemizedlist>      
+    </section>
+
+    <section id="framerules"><title>Rules for the frame</title>
+      <para>
+	If you set a border radius on the frame,
+	the window itself will gain rounded edges.
+	Non-circular elliptical edges are not yet supported.
+      </para>
+      <para>
+	The <literal>frame</literal> element also carries
+	the metadata; see <xref linkend="metadata"/>.
+      </para>
+
+      <para>
+	The frame also holds attributes: see <xref linkend="attrs"/>.
+      </para>
+    </section>
+
+    <section id="titlerules"><title>Rules for the title</title>
+      <para>
+	The <literal>title</literal> element is the
+	only element which contains stylable content.
+	You may set values for <literal>text-align</literal>,
+	<literal>color</literal>, and so on.
+	Later, we will add support for CSS3-specific rules such as
+	<literal>text-shadow</literal> and
+	<literal>text-outline</literal>.
+      </para>
+
+      <para>
+	The choice of font is not under theme control.
+	Any attempt to set it will be ignored.
+      </para>
+
+      <para>
+	The old theme format allowed themes to give
+	a scaling factor for the font size (ranging
+	from <literal>xx-small</literal> to
+	<literal>xx-large</literal>).
+	This is no longer supported, although
+	perhaps it should be.
+      </para>
+
+      <para>
+	There is currently no provision for a theme
+	not to show a title.  This will be possible
+	in a future release (see <xref linkend="notitle"/>).
+      </para>
+    </section>
+
+    <section id="buttonrules"><title>Rules for buttons</title>
+    <para>
+      Buttons may be distinguished by their class.
+      Here is <ulink url="buttons.svg">a diagram of the available button class names and functions:</ulink>
+    </para>
+    
+    <mediaobject>
+      <imageobject>
+	<imagedata fileref="buttons.png" format="PNG"/>
+      </imageobject>
+      <caption>
+	<para>
+	  The available button class names and functions.
+	</para>
+      </caption>
+    </mediaobject>
+
+    <para>
+      The order, choice, and alignment of buttons is not under theme control.
+    </para>
+
+    <para>
+      Buttons are the only elements whose width and height can be set in the CSS.
+      However, these only serve to establish an aspect ratio.
+      The height of all buttons will change if the height of the titlebar changes.
+      It is an error not to specify width and height for a button.
+      (In the future, they should have some sensible default.)
+      This requirement is most easily satisfied by writing a rule for the
+      generic <literal>button</literal> element which specifies width and height,
+      and then overriding as necessary.
+    </para>
+
+    <para>
+      If a button's width must be constrained, then
+      <literal>min-width</literal> or
+      <literal>max-width</literal> or both may be specified.
+    </para>
+
+    <para>
+      The standard version of the theme format allows
+      the user to specify a special blank button called "spacer"
+      which does nothing.  This is not supported in Cowbell.
+      It should be possible to emulate it using CSS overrides
+      (see <xref linkend="gconfcss"/>).
+    </para>
+
+    <para>
+      It is possible that extra buttons beyond the classes given above
+      may one day be allowed.  See <xref linkend="morebuttons"/>.
+    </para>
+
+    </section>
+
+    <section id="attrs"><title>Using attributes</title>
+      <para>
+	The frame is the only element which holds attributes.
+	If you try to read the attributes of other elements, the behaviour
+	is undefined.  Instead, use the descendant selector.  For example,
+	to give the focused window a red titlebar and all others a
+	blue titlebar:
+      </para>
+      <programlisting>
+	frame[is-focused="1"] area.titlebar { background-color: red; }
+	frame[is-focused="0"] area.titlebar { background-color: blue; }
+      </programlisting>
+      
+      <para>
+	The attributes fall into three groups:
+      </para>
+
+      <itemizedlist>
+	<listitem><para>Power attributes say whether a particular action is possible.</para></listitem>
+	<listitem><para>State attributes say whether the frame is in a particular state.</para></listitem>
+	<listitem><para>Metadata attributes give simple information about the rendering application.</para></listitem>
+      </itemizedlist>
+
+      <para>
+	The metadata attributes are:
+      </para>
+
+      <itemizedlist>
+	<listitem><para><literal>wm</literal> gives the name of the window manager; Metacity sets "<literal>metacity</literal>".</para></listitem>
+	<listitem><para><literal>cowbell1</literal> is set to "<literal>1</literal>" for anything implementing this specification
+	    or a superset of it.</para></listitem>
+      </itemizedlist>
+
+      <para>
+	All the other attributes are booleans.  They are set to "0" for false, and "1" for true.
+      </para>
+
+      <table>
+	<title>State and power attributes on the frame</title>
+	<tgroup cols="3">
+	  <thead>
+	    <row>
+	      <entry>Action</entry>
+	      <entry>State attribute</entry>
+	      <entry>Power attribute</entry>
+	    </row>
+	  </thead>
+
+	  <tbody>
+	<row><entry>Show the menu</entry><entry>Not available</entry><entry><literal>can-have-menu</literal></entry></row>
+	<row><entry>Close</entry><entry>Not available: all windows are unclosed</entry><entry><literal>can-be-closed</literal></entry></row>
+	<row><entry>Maximise</entry><entry><literal>is-maximized</literal></entry><entry><literal>can-be-maximized</literal></entry></row>
+	<row><entry>Minimized</entry><entry>Not available: minimised windows are not decorated</entry><entry><literal>can-be-minimized</literal></entry></row>
+	<row><entry>Shade</entry><entry><literal>is-shaded</literal></entry><entry><literal>can-be-shaded</literal></entry></row>
+	<row><entry>Stick</entry><entry><literal>is-stuck</literal></entry><entry>Not available: all windows can be stuck</entry></row>
+	<row><entry>Above</entry><entry><literal>is-above</literal></entry><entry>Not available: all windows can float above</entry></row>
+	<row><entry>Horizontal resize</entry><entry>Not available</entry><entry><literal>can-be-horizontally-resized</literal></entry></row>
+	<row><entry>Vertical resize</entry><entry>Not available</entry><entry><literal>can-be-vertically-resized</literal></entry></row>
+	<row><entry>Move</entry><entry>Not available</entry><entry><literal>can-be-moved</literal></entry></row>
+	<row><entry>Fullscreen (rather pointless; may remove)</entry><entry><literal>is-fullscreen</literal></entry><entry>Not available</entry></row>
+	<row><entry>Mark as needing attention</entry><entry><literal>is-flashing</literal></entry><entry>Not available</entry></row>
+	</tbody>
+	</tgroup>
+      </table>
+
+      <para>
+	Beware of two common mistakes with attributes:
+      </para>
+
+      <itemizedlist>
+	<listitem><para>
+	    Do not write
+	    <programlisting>
+	      frame[is-maximised] { ... }
+	    </programlisting>
+	    because this tests whether the frame <emphasis>has</emphasis> an attribute called
+	    <literal>is-maximised</literal>, which it always does.
+	</para></listitem>
+	<listitem><para>
+	    Do not write
+	    <programlisting>
+	      frame[is-maximised=1] { ... }
+	    </programlisting>
+	    because this is invalid CSS, and a conforming parser must ignore the whole rule.
+	    Instead, write
+	    <programlisting>
+	      frame[is-maximised="1"] { ... }
+	    </programlisting>
+	</para></listitem>
+      </itemizedlist>
+
+    </section>
+
+    <section id="urls"><title>URLs</title>
+      <para>
+	Two kinds of URLs are accepted, for example,
+	as arguments to <literal>background-image</literal>:
+      </para>
+
+      <itemizedlist>
+	<listitem><para>
+	    <literal>wm:</literal>; only in
+	    <literal>wm:icon</literal>, which yields the
+	    icon of the application which owns the
+	    current window.
+	</para></listitem>
+
+	<listitem><para>
+	    <literal>file:</literal>, for a PNG file
+	    in the same directory as the CSS file.
+	    Do not use JPEG; libccss does not like it.
+	    Do not attempt to use files from other directories.
+	    The "<literal>file:</literal>" part of the name
+	    may be omitted.
+	</para></listitem>
+
+      </itemizedlist>
+
+      <para>
+	There is no access to HTTP or similar remote protocols.
+      </para>
+
+      <para>
+	libccss appears to require the target of URLs to be
+	an actual file on disk.  Because of this,
+	<literal>wm:icon</literal> always returns
+	the same image at present.  This will be fixed in
+	a later release.
+      </para>
+      
+      <para>
+	See also the discussion of the Single File Doctrine
+	in <xref linkend="single"/>, which will affect use
+	of URLs.
+      </para>
+    </section>
+
+    <section id="units"><title>Units</title>
+
+      <para>
+	At present, the only unit which is known to work well
+	is pixels (<literal>px</literal>).
+      </para>
+
+      <para>
+	In the future, other units may be available.  Millimetres
+	(<literal>mm</literal>) would be especially useful:
+	for example, they would permit us to add a border to
+	all windows with a given width regardless of the
+	screen resolution.
+	</para>
+      
+    </section>
+      
+  </section>
+
+  <section id="metadata">
+    <title>ISO 15836 (Dublin Core) metadata</title>
+
+    <para>
+      Theme metadata is specified according to ISO 15836
+      (<ulink url="http://dublincore.org/">Dublin Core</ulink>).
+      There appears to be no prior attempt to
+      embed Dublin Core information into CSS,
+      so we need to invent a method.
+    </para>
+
+    <para>
+      Each of the following should be set against the
+      <literal>frame</literal> object with no other
+      selectors.  See the listing in <xref linkend="primer"/>
+      for an example.
+    </para>
+
+    <para>
+      At some point, Cowbell will check basic metadata
+      information and refuse to load themes where
+      it is lacking.  See <xref linkend="dcparse"/>.
+    </para>
+
+    <section><title>Core elements which should be used</title>
+    <para>
+      <itemizedlist>
+
+	<listitem><para><literal>-dc-title</literal>:
+	  a human-readable title for this stylesheet.
+	  Example: "Sunshine".
+	</para></listitem>
+
+	<listitem><para><literal>-dc-description</literal>:
+	  a human-readable description for this stylesheet.
+	  Example: "A happy orange theme".
+	</para></listitem>
+
+	<listitem><para><literal>-dc-source</literal>:
+	  a human-readable description of the source of this stylesheet.
+	  Example: "Original stylesheet", or "Based on a Metacity theme
+	  by Daniel Borgmann".
+	</para></listitem>
+
+	<listitem><para><literal>-dc-relation</literal>:
+	  it is not clear whether this should be used to express "Requires"
+	  or "IsBasedOn".  For now, assume "IsBasedOn" and give the
+	  permalink of the source theme, if any.
+	</para></listitem>
+
+	<listitem><para><literal>-dc-creator</literal>:
+	  name or URL of the theme's creator.
+	  (The Dublin Core specification says that names are
+	  preferable to URLs, but URLs seem preferable in
+	  this application.)
+	</para></listitem>
+
+	<listitem><para><literal>-dc-publisher</literal>:
+	  name or URL of the theme's publisher, if any.
+	</para></listitem>
+
+	<listitem><para><literal>-dc-rights</literal>:
+	  URL to the theme's licence.
+	</para></listitem>
+
+	<listitem><para><literal>-dc-rightsholder</literal>:
+	  name or URL of the copyright holder.
+	</para></listitem>
+
+	<listitem><para><literal>-dc-date</literal>:
+	  date of modification, in "YYYY-MM-DD" format.
+	  This serves as a version number.
+	</para></listitem>
+
+	<listitem><para><literal>-dc-identifier</literal>:
+	  a permalink for the theme.
+	</para></listitem>
+
+	<listitem><para><literal>-dc-provenance</literal>:
+	  an explanation of the reasons for the theme's existence;
+	  optional.
+	</para></listitem>
+
+      </itemizedlist>
+    </para>
+    </section>
+
+    <section><title>Core elements which are constant and may be omitted</title>
+      <itemizedlist>
+	<listitem><para><literal>-dc-type</literal>: always "Software".</para></listitem>
+	<listitem><para><literal>-dc-format</literal>: always "text/css".</para></listitem>
+      </itemizedlist>
+    </section>
+
+    <section><title>Core elements which are not appropriate</title>
+      <itemizedlist>
+	<listitem><para><literal>-dc-subject</literal>: themes do not concern any subject.</para></listitem>
+	<listitem><para><literal>-dc-coverage</literal>.</para></listitem>
+	<listitem><para><literal>-dc-audience</literal>.</para></listitem>
+	<listitem><para><literal>-dc-instructionalMethod</literal>.</para></listitem>
+	<listitem><para><literal>-dc-accrualMethod</literal>.</para></listitem>
+	<listitem><para><literal>-dc-accrualPeriodicy</literal>.</para></listitem>
+	<listitem><para><literal>-dc-accrualPolicy</literal>.</para></listitem>
+      </itemizedlist>
+    </section>
+
+  </section>
+
+  <section>
+    <title>Contribute!</title>
+
+    <para>
+      You are encouraged to build CSS themes of your own,
+      and to look for bugs.  When you do either, let us
+      know.  We will fix the bugs and create a theme library.
+    </para>
+
+    <para>
+      Porting themes from other formats is also encouraged.
+    </para>
+  </section>
+
+  <section>
+    <title>The future</title>
+
+    <para>There are many paths in the future of this project.
+      Some or all of them may be taken.
+      The readers are invited to advocate for any they favour,
+      and to suggest others.</para>
+
+    <section><title>Buttons: do what I mean</title>
+    <para>
+      Almost every Cowbell CSS file contains a series of
+      predictable rules, one for each button:
+    </para>
+    <programlisting>
+      button.menu { width:200px; height:200px; background-image: url('menu.png'); }
+      button.close { width:200px; height:200px; background-image: url('close.png'); }
+      button.maximize { width:200px; height:200px; background-image: url('maximize.png'); }
+      button.minimize { width:200px; height:200px; background-image: url('minimize.png'); }
+      button.shade { width:200px; height:200px; background-image: url('shade.png'); }
+      button.stick { width:200px; height:200px; background-image: url('stick.png'); }
+      button.above { width:200px; height:200px; background-image: url('above.png'); }
+    </programlisting>
+    <para>
+      It would make sense for Cowbell to check whether there were files named
+      <filename>button-*.png</filename> in the theme directory, and for each one
+      assume such a rule automatically.  Rules in the theme would override such
+      implicit rules.
+    </para>
+    </section>
+
+    <section id="single"><title>Single file doctrine</title>
+    <para>
+      Metacity themes are currently shipped in a zipfile
+      or tarball, which must be unpacked before use.
+      It may be more helpful if they can be used in the
+      shipping format.
+    </para>
+
+    <para>
+      This may be accomplished by allowing Metacity to
+      read files out of tarballs.
+    </para>
+
+    <para>
+      It is also possible that we can use
+      <ulink url="http://tools.ietf.org/html/rfc2397">data: URLs</ulink>
+      in order to keep all referents in the same file.
+      Code for this is already written but is not shipping.
+    </para>
+
+    </section>
+
+    <section id="pseudo"><title>Pseudoclasses</title>
+      <para>
+	There is currently no way for buttons to change
+	their appearance when pressed or prelighted.
+	This could clearly be achieved using the
+	<literal>:hover</literal>
+	and
+	<literal>:active</literal>
+	pseudoclasses.  This functionality is not
+	present in the current version; it will be
+	in a later version.
+      </para>
+    </section>
+
+    <section id="debug"><title>Debugging signals</title>
+    <para>
+      It would be helpful if a particular signal made
+      Metacity dump its parse tree of the CSS of the
+      current theme, and the calculated coordinates
+      of all the elements.  This would also be useful
+      in writing automated tests.
+    </para>
+    </section>
+
+    <section id="frenkle"><title>Frenkle: an editor</title>
+    <para>
+      There are plans for a simple interactive editor
+      which will allow you to change the colours, alignment,
+      and so on on the fly.
+    </para>
+    </section>
+
+    <section id="notitle"><title>Allowing the title to be absent</title>
+    <para>
+      In a future release, it will be possible for themes to
+      show no title.  This will make themes such as
+      <ulink url="http://www.kryogenix.org/days/2009/01/01/my-window-theme">Prelude</ulink>
+      possible under Cowbell.
+    </para>
+
+    <para>
+      This will be acheived as follows:
+    </para>
+    <programlisting>
+      title { display: none; }
+      area.titlebar { height: 15px; }
+    </programlisting>
+    <para>
+      The height of <literal>area.titlebar</literal> will default to some
+      sensible value.
+    </para>
+    </section>
+
+    <section id="nobutton"><title>Allowing buttons to be absent</title>
+    <para>
+      Similarly, it should be possible to remove buttons using <literal>display: none;</literal>.
+      This would allow use of the common pattern where unfocused windows have no controls.
+    </para>
+    </section>
+
+    <section id="dcparse"><title>Metadata parsing</title>
+    <para>
+      Metacity should parse the theme's metadata (see <xref linkend="metadata"/>)
+      and refuse to load a theme where it is missing or clearly erroneous.
+    </para>
+    </section>
+
+    <section id="colours"><title>More colours</title>
+    <para>
+      At present, only literal colours can be used.  We need to support colours
+      based on the GTK theme as well.
+    </para>
+    </section>
+
+    <section id="cascades"><title>Cascades</title>
+      <para>
+	It may make sense to allow themes to inherit settings from other themes.
+	This would introduce dependency problems, however.
+      </para>
+    </section>
+
+    <section id="filters"><title>Filters</title>
+    <para>
+      Internet Explorer has a custom CSS property called
+      <literal>-ms-filter</literal> that allows various
+      graphical effects to be added to elements.  We should
+      do something similar.  In particular, we need:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+	<para>
+	  <literal>-cowbell-color</literal> to alter the
+	  hue of an element.  This would allow images to be
+	  altered to fit a theme's colour scheme, even if that
+	  colour scheme was based on GTK colours and so unknown
+	  when the theme was written.  Something similar to
+	  this is present in the standard Metacity theme format.
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  <literal>-cowbell-blur</literal> to blur an element.
+	  This could be used to emphasise that a window is unfocused.
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  <literal>-cowbell-flip</literal>, or
+	  <literal>-cowbell-mirror</literal>, or
+	  <literal>-cowbell-rotate</literal>, so that
+	  images do not have to be supplied separately
+	  for each edge or corner.
+	</para>
+      </listitem>
+    </itemizedlist>
+
+    </section>
+
+    <section id="morebuttons"><title>Extra buttons</title>
+      <para>
+	The window manager is capable of adding other buttons than
+	the standard seven, but this has never been done in the past
+	because instructions for drawing them
+	would need to be added to every theme.
+      </para>
+
+      <para>
+	Now that buttons are identified by their classes,
+	it is possible that some file format defining new buttons
+	could supply CSS supplemental to each theme,
+	describing how to draw the new button.
+	If the theme already described how to draw such a button,
+	it would take priority.
+      </para>
+
+      <para>
+	Some possible uses for extra buttons:
+      </para>
+
+      <itemizedlist>
+	<listitem><para>
+	    "Take a screenshot of this window."
+	</para></listitem>
+	<listitem><para>
+	    "Take a screencast of this window."
+	</para></listitem>
+	<listitem><para>
+	    "Collaborate." (Share this window with someone else
+	    across the network.)
+	</para></listitem>
+	<listitem><para>
+	    <ulink url="http://blogs.gnome.org/metacity/2008/12/23/notifisation/">"Notifise."</ulink>
+	    Some people would like to distinguish the action of closing a main window
+	    (and quitting the application) from the action of sending a window to the
+	    notification area, both of which are commonly done using the Close button.
+	</para></listitem>
+      </itemizedlist>
+
+      <para>
+	In case extra buttons are in use,
+	themes should ensure that unknown buttons degrade
+	gracefully.
+      </para>
+      
+    </section>
+
+    <section id="filler"><title><literal>area.filler</literal></title>
+    <para>
+      It has been suggested that an extra <literal>area</literal>
+      could be added to fill in the space to the right of left-justified
+      titles, to the right of left-justified titles, and either side
+      of centred titles.
+      The class of this <literal>area</literal> would be
+      <literal>filler</literal>.
+    </para>
+
+    <para>
+      This would allow, for example, background decorations to tile
+      a whole number of times yet not run under the title.
+    </para>
+    </section>
+
+    <section id="gconfcss"><title>CSS in GConf</title>
+    <para>
+      It should be possible either to give overriding CSS in GConf,
+      or to specify an overriding stylesheet.
+    </para>
+    </section>
+
+    <section id="kinds"><title>Of both kinds</title>
+      <para>
+	Cowbell-enabled Metacity only supports Cowbell themes,
+	and standard Metacity only supports standard themes.
+	When Cowbell is merged, it is intended that the final
+	version will support both kinds.
+      </para>
+    </section>
+
+    <section id="otherwms"><title>Other window managers</title>
+      <para>
+	It has always been the intention to design a method of
+	styling window borders using CSS which can be adopted by
+	multple window managers.  Mutter is an obvious candidate,
+	but KWin and others could also be fertile targets for
+	ports.
+      </para>
+    </section>
+
+  </section>
+
+</article>
