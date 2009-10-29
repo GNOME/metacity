@@ -345,14 +345,31 @@ button.above { background-image: url('above.png'); }
       </programlisting>
       
       <para>
-	The attributes fall into three groups:
+	The attributes fall into four groups:
       </para>
 
       <itemizedlist>
 	<listitem><para>Power attributes say whether a particular action is possible.</para></listitem>
 	<listitem><para>State attributes say whether the frame is in a particular state.</para></listitem>
+	<listitem><para>The <literal>type</literal> attribute gives information about the type of a frame's window.</para></listitem>
 	<listitem><para>Metadata attributes give simple information about the rendering application.</para></listitem>
       </itemizedlist>
+
+      <para>
+	The possible values for the
+	<literal>type</literal>
+	attribute are:
+        <literal>normal</literal>,
+        <literal>dialog</literal>,
+        <literal>modal-dialog</literal>,
+        <literal>utility</literal>,
+        <literal>menu</literal>, and
+        <literal>border</literal>.
+	(It can theoretically also be
+        <literal>unknown</literal>,
+	but this should never happen in practice.)
+      </para>
+
 
       <para>
 	The metadata attributes are:
@@ -866,7 +883,7 @@ button.above { background-image: url('above.png'); }
       <para>
 	It has always been the intention to design a method of
 	styling window borders using CSS which can be adopted by
-	multple window managers.  Mutter is an obvious candidate,
+	multiple window managers.  Mutter is an obvious candidate,
 	but KWin and others could also be fertile targets for
 	ports.
       </para>
