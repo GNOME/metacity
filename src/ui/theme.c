@@ -319,10 +319,6 @@ static char *
 cowbell_url (GSList const	*args,
              void		*user_data)
 {
-  /* stub which actually works in most cases (for me) but is stupid */
-  /* what we need is to store the path in the theme object */
-  /* also to check if the file exists! */
-
   char *filename = NULL;
   MetaTheme **theme = (MetaTheme**) user_data;
 
@@ -398,6 +394,10 @@ meta_theme_set_current (const char *name,
     ccss_grammar_create_stylesheet_from_file (the_theme->grammar,
                                               css_path,
                                               NULL);
+
+#if 0
+  ccss_stylesheet_dump (the_theme->stylesheet);
+#endif
 
   g_free (css_path);
 }
