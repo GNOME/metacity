@@ -381,6 +381,7 @@ meta_theme_set_current (const char *name,
     g_build_filename (g_get_home_dir (),
                       ".themes",
                       name,
+                      "cowbell",
                       NULL);
 
   css_filename = g_strdup_printf ("%s.css", name);
@@ -388,12 +389,18 @@ meta_theme_set_current (const char *name,
   css_path = g_build_filename (the_theme->directory,
                                css_filename,
                                NULL);
+
   g_free (css_filename);
 
   the_theme->stylesheet =
     ccss_grammar_create_stylesheet_from_file (the_theme->grammar,
                                               css_path,
                                               NULL);
+
+  /*
+   * TODO: Bad things will happen if the file doesn't exist;
+   * we should abort here if it doesn't.
+   */
 
 #if 0
   ccss_stylesheet_dump (the_theme->stylesheet);
