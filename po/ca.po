@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity 2.24\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-07 18:58+0200\n"
-"PO-Revision-Date: 2009-08-07 18:58+0200\n"
+"POT-Creation-Date: 2009-11-05 00:28+0100\n"
+"PO-Revision-Date: 2009-11-05 00:29+0100\n"
 "Last-Translator: David Planella <david.planella@gmail.com>\n"
 "Language-Team: Softcatalà <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -287,7 +287,7 @@ msgstr ""
 #: ../src/core/screen.c:350
 #, c-format
 msgid "Screen %d on display '%s' is invalid\n"
-msgstr "La pantalla %d en la visualització '%s' no és vàlida\n"
+msgstr "La pantalla %d en la visualització «%s» no és vàlida\n"
 
 #: ../src/core/screen.c:366
 #, c-format
@@ -1198,7 +1198,7 @@ msgid ""
 "The time delay before raising a window if auto_raise is set to true. The "
 "delay is given in thousandths of a second."
 msgstr ""
-"El retard de temps abans d'alçar una finestra si auto_raise és establer a "
+"El retard de temps abans d'alçar una finestra si auto_raise és establert a "
 "«true». El retard es dóna en mil·lèssimes de segon."
 
 #: ../src/metacity.schemas.in.in.h:42
@@ -1747,7 +1747,7 @@ msgstr "No s'ha pogut analitzar el color «%s»"
 #: ../src/ui/theme.c:1582
 #, c-format
 msgid "Coordinate expression contains character '%s' which is not allowed"
-msgstr "L'expressió coordinada conté el caràcter '%s', el qual no és permès"
+msgstr "L'expressió coordinada conté el caràcter «%s», el qual no és permès"
 
 #: ../src/ui/theme.c:1609
 #, c-format
@@ -1755,13 +1755,13 @@ msgid ""
 "Coordinate expression contains floating point number '%s' which could not be "
 "parsed"
 msgstr ""
-"L'expressió coordinada conté el número '%s' de punt flotant el qual no es "
+"L'expressió coordinada conté el número «%s» de punt flotant el qual no es "
 "pot analitzar"
 
 #: ../src/ui/theme.c:1623
 #, c-format
 msgid "Coordinate expression contains integer '%s' which could not be parsed"
-msgstr "L'expressió coordinada conté l'enter '%s' el qual no es pot analitzar"
+msgstr "L'expressió coordinada conté l'enter «%s» el qual no es pot analitzar"
 
 #: ../src/ui/theme.c:1745
 #, c-format
