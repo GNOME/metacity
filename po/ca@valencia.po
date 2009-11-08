@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity 2.24\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-05 00:28+0100\n"
-"PO-Revision-Date: 2009-10-29 17:05+0100\n"
+"POT-Creation-Date: 2009-11-08 12:54+0100\n"
+"PO-Revision-Date: 2009-11-06 23:06+0100\n"
 "Last-Translator: Carles Ferrando Garcia <carles.ferrando@gmail.com>\n"
 "Language-Team: Catalan (Valencià) <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -131,7 +131,7 @@ msgid "No terminal command has been defined.\n"
 msgstr "No s'ha definit cap orde de terminal.\n"
 
 #: ../src/core/main.c:116
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "metacity %s\n"
 "Copyright (C) 2001-2008 Havoc Pennington, Red Hat, Inc., and others\n"
@@ -140,7 +140,7 @@ msgid ""
 "PARTICULAR PURPOSE.\n"
 msgstr ""
 "metacity %s\n"
-"Copyright (C) 2001-%s Havoc Pennington, Red Hat, Inc., i d'altres\n"
+"Copyright (C) 2001-2008 Havoc Pennington, Red Hat, Inc., i d'altres\n"
 "Això és programari lliure; vegeu els fitxers de codi font per a conèixer-ne\n"
 "les condicions de còpia.\n"
 "No hi ha CAP garantia; ni tan sols la garantia implícita de COMERCIABILITAT\n"
@@ -322,7 +322,6 @@ msgstr "No s'ha pogut alliberar la pantalla %d en la visualització «%s»\n"
 #. * "disabled" must also stay as it is.
 #.
 #: ../src/core/schema-bindings.c:169
-#, fuzzy
 msgid ""
 "The format looks like \"<Control>a\" or <Shift><Alt>F1\".\n"
 "\n"
@@ -338,7 +337,6 @@ msgstr ""
 "«disabled» (inhabilitat), no hi haurà cap vinculació per a esta acció."
 
 #: ../src/core/schema-bindings.c:177
-#, fuzzy
 msgid ""
 "The format looks like \"<Control>a\" or <Shift><Alt>F1\".\n"
 "\n"
@@ -1586,15 +1584,12 @@ msgid "\"%s\" is not responding."
 msgstr "«%s» no està responent."
 
 #: ../src/ui/metacity-dialog.c:97
-#, fuzzy
 msgid ""
 "You may choose to wait a short while for it to continue or force the "
 "application to quit entirely."
 msgstr ""
-"<big><b><tt>%s</tt> no està responent.</b></big>\n"
-"\n"
-"<i>Podeu esperar un moment per a veure si continua o forçar la eixida "
-"completa de l'aplicació.</i>"
+"Podeu esperar un moment per a veure si continua o forçar l'eixida completa "
+"de l'aplicació."
 
 #: ../src/ui/metacity-dialog.c:107
 msgid "_Wait"
@@ -1613,7 +1608,6 @@ msgid "Class"
 msgstr "Classe"
 
 #: ../src/ui/metacity-dialog.c:244
-#, fuzzy
 msgid ""
 "These windows do not support \"save current setup\" and will have to be "
 "restarted manually next time you log in."
@@ -2247,9 +2241,8 @@ msgid "No text is allowed inside element <%s>"
 msgstr "No es permet cap text dins de l'element <%s>"
 
 #: ../src/ui/theme-parser.c:3716
-#, fuzzy
 msgid "<name> specified twice for this theme"
-msgstr "S'ha especificat <date> dues vegades per a aquest tema"
+msgstr "S'ha especificat <name> dues vegades per a este tema"
 
 #: ../src/ui/theme-parser.c:3727
 msgid "<author> specified twice for this theme"
