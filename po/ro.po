@@ -3,21 +3,23 @@
 # This file is distributed under the same license as the metacity package.
 # Mugurel Tudor <mugurelu@gnome.ro>, 2002-2004, 2005, 2006, 2007.
 # Adi Roiban https://launchpad.net/~adiroiban, 2008, 2009
-# Lucian Adrian Grijincu <lucian.grijincu@gmail.com>, 2009
+# Lucian Adrian Grijincu <lucian.grijincu@gmail.com>, 2009, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity.HEAD.ro\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&component=general\n"
-"POT-Creation-Date: 2009-11-20 16:39+0000\n"
-"PO-Revision-Date: 2009-09-14 00:10+0300\n"
+"POT-Creation-Date: 2010-02-10 21:23+0000\n"
+"PO-Revision-Date: 2010-02-12 22:59+0300\n"
 "Last-Translator: Lucian Adrian Grijincu <lucian.grijincu@gmail.com>\n"
-"Language-Team: Gnome Romanian Team <gnomero-list@lists.sourceforge.net>\n"
+"Language-Team: Romanian GNOME Team <gnomero-list@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ro\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2);;\n"
+"X-Generator: Virtaal 0.5.2\n"
 
 #: ../src/50-metacity-desktop-key.xml.in.h:1
 msgid "Desktop"
@@ -36,28 +38,29 @@ msgstr "Eveniment bip"
 msgid "Unknown window information request: %d"
 msgstr "Cerere necunoscută de informație pentru fereastră: %d"
 
+#. Translators: %s is a window title
 #: ../src/core/delete.c:96
 #, c-format
-msgid ""
-"<big><b><tt>%s</tt> is not responding.</b></big>\n"
-"\n"
-"<i>You may choose to wait a short while for it to continue or force the "
-"application to quit entirely.</i>"
-msgstr ""
-"<big><b><tt>%s</tt> nu răspunde.</b></big>\n"
-"\n"
-"<i>Puteți aștepta încă puțin pentru a continua sau puteți forța închiderea "
-"completă a aplicației.</i>"
+msgid "<tt>%s</tt> is not responding."
+msgstr "<tt>%s</tt> nu răspunde."
 
-#: ../src/core/delete.c:107
+#: ../src/core/delete.c:101
+msgid ""
+"You may choose to wait a short while for it to continue or force the "
+"application to quit entirely."
+msgstr ""
+"Puteți aștepta încă puțin pentru a continua sau puteți forța închiderea "
+"completă a aplicației."
+
+#: ../src/core/delete.c:110
 msgid "_Wait"
 msgstr "_Așteaptă"
 
-#: ../src/core/delete.c:107
+#: ../src/core/delete.c:110
 msgid "_Force Quit"
 msgstr "_Forțează închiderea"
 
-#: ../src/core/delete.c:204
+#: ../src/core/delete.c:208
 #, c-format
 msgid "Failed to get hostname: %s\n"
 msgstr "Nu s-a putut obține numele calculatorului gazdă: %s\n"
@@ -178,12 +181,12 @@ msgstr ""
 "Nu desena pe tot ecranul ferestrele care sunt maximizate, dar care nu au "
 "decorații"
 
-#: ../src/core/main.c:526
+#: ../src/core/main.c:528
 #, c-format
 msgid "Failed to scan themes directory: %s\n"
 msgstr "Nu s-a putut citi dosarul de teme: %s\n"
 
-#: ../src/core/main.c:542
+#: ../src/core/main.c:544
 #, c-format
 msgid ""
 "Could not find a theme! Be sure %s exists and contains the usual themes.\n"
@@ -191,7 +194,7 @@ msgstr ""
 "Nu s-a putut găsi o temă ! Asigurați-vă că %s există și conține temele "
 "uzuale.\n"
 
-#: ../src/core/main.c:601
+#: ../src/core/main.c:603
 #, c-format
 msgid "Failed to restart: %s\n"
 msgstr "Eșuare la repornire: %s\n"
@@ -207,24 +210,24 @@ msgstr "Eșuare la repornire: %s\n"
 #. * (Empty comment follows so the translators don't see this.)
 #.
 #.
-#: ../src/core/prefs.c:506 ../src/core/prefs.c:661
+#: ../src/core/prefs.c:508 ../src/core/prefs.c:663
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
 msgstr "Cheia GConf „%s” este definită la o valoare nevalidă\n"
 
-#: ../src/core/prefs.c:587 ../src/core/prefs.c:830
+#: ../src/core/prefs.c:589 ../src/core/prefs.c:832
 #, c-format
 msgid "%d stored in GConf key %s is out of range %d to %d\n"
 msgstr "%d stocat în cheia GConf %s este în afara intervalului %d la %d\n"
 
-#: ../src/core/prefs.c:631 ../src/core/prefs.c:708 ../src/core/prefs.c:756
-#: ../src/core/prefs.c:820 ../src/core/prefs.c:1113 ../src/core/prefs.c:1129
-#: ../src/core/prefs.c:1146 ../src/core/prefs.c:1162
+#: ../src/core/prefs.c:633 ../src/core/prefs.c:710 ../src/core/prefs.c:758
+#: ../src/core/prefs.c:822 ../src/core/prefs.c:1115 ../src/core/prefs.c:1131
+#: ../src/core/prefs.c:1148 ../src/core/prefs.c:1164
 #, c-format
 msgid "GConf key \"%s\" is set to an invalid type\n"
 msgstr "Cheia GConf „%s” este definită la o valoare nevalidă\n"
 
-#: ../src/core/prefs.c:1232
+#: ../src/core/prefs.c:1234
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -232,12 +235,12 @@ msgstr ""
 "Soluțiile de compromis pentru aplicațiile problematice sunt dezactivate. "
 "Există posibilitatea ca unele aplicații să nu se comporte corect.\n"
 
-#: ../src/core/prefs.c:1303
+#: ../src/core/prefs.c:1305
 #, c-format
 msgid "Could not parse font description \"%s\" from GConf key %s\n"
 msgstr "Nu s-a putut analiza descrierea fontului „%s” din cheia GConf %s\n"
 
-#: ../src/core/prefs.c:1365
+#: ../src/core/prefs.c:1367
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -246,17 +249,17 @@ msgstr ""
 "„%s” găsită în configurație nu este o cheie validă pentru modificatorul "
 "butonului de maus\n"
 
-#: ../src/core/prefs.c:1786
+#: ../src/core/prefs.c:1788
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr "Eroare la definirea numărului de ecrane la %d: %s\n"
 
-#: ../src/core/prefs.c:1975 ../src/core/prefs.c:2478
+#: ../src/core/prefs.c:1953 ../src/core/prefs.c:2456
 #, c-format
 msgid "Workspace %d"
 msgstr "Spațiul de lucru %d"
 
-#: ../src/core/prefs.c:2005 ../src/core/prefs.c:2183
+#: ../src/core/prefs.c:1983 ../src/core/prefs.c:2161
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -265,12 +268,12 @@ msgstr ""
 "„%s” găsită în configurație nu este o cheie validă pentru combinația de "
 "taste „%s”\n"
 
-#: ../src/core/prefs.c:2559
+#: ../src/core/prefs.c:2537
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr "Eroare la definirea numelui spațiului de lucru %d la „%s”: %s\n"
 
-#: ../src/core/prefs.c:2763
+#: ../src/core/prefs.c:2741
 #, c-format
 msgid "Error setting compositor status: %s\n"
 msgstr "Eroare la stabilirea stării compozitorului: %s\n"
@@ -350,60 +353,60 @@ msgstr ""
 "Această combinație poate fi inversată apăsând tasta „Shift”; din această "
 "cauză, tasta „Shift” nu poate fi folosită în combinație."
 
-#: ../src/core/session.c:846 ../src/core/session.c:853
+#: ../src/core/session.c:850 ../src/core/session.c:857
 #, c-format
 msgid "Could not create directory '%s': %s\n"
 msgstr "Nu s-a putut crea dosarul „%s”: %s\n"
 
-#: ../src/core/session.c:863
+#: ../src/core/session.c:867
 #, c-format
 msgid "Could not open session file '%s' for writing: %s\n"
 msgstr "Nu s-a putut deschide fișierul de sesiune „%s” pentru scriere: %s\n"
 
-#: ../src/core/session.c:1004
+#: ../src/core/session.c:1008
 #, c-format
 msgid "Error writing session file '%s': %s\n"
 msgstr "Eroare la scrierea fișierului de sesiune „%s”: %s\n"
 
-#: ../src/core/session.c:1009
+#: ../src/core/session.c:1013
 #, c-format
 msgid "Error closing session file '%s': %s\n"
 msgstr "Eroare la închiderea fișierului de sesiune „%s”: %s\n"
 
 #. oh, just give up
-#: ../src/core/session.c:1102
+#: ../src/core/session.c:1106
 #, c-format
 msgid "Failed to read saved session file %s: %s\n"
 msgstr "Nu s-a putut citi fișierul sesiunii salvate %s: %s\n"
 
-#: ../src/core/session.c:1141
+#: ../src/core/session.c:1145
 #, c-format
 msgid "Failed to parse saved session file: %s\n"
 msgstr "Nu s-a putut analiza fișierul sesiunii salvate: %s\n"
 
-#: ../src/core/session.c:1190
+#: ../src/core/session.c:1194
 #, c-format
 msgid "<metacity_session> attribute seen but we already have the session ID"
 msgstr "atributul <metacity_session> a fost văzut dar avem deja ID-ul sesiunii"
 
-#: ../src/core/session.c:1203 ../src/core/session.c:1278
-#: ../src/core/session.c:1310 ../src/core/session.c:1382
-#: ../src/core/session.c:1442
+#: ../src/core/session.c:1207 ../src/core/session.c:1282
+#: ../src/core/session.c:1314 ../src/core/session.c:1386
+#: ../src/core/session.c:1446
 #, c-format
 msgid "Unknown attribute %s on <%s> element"
 msgstr "Atribut necunoscut %s al elementului <%s>"
 
-#: ../src/core/session.c:1220
+#: ../src/core/session.c:1224
 #, c-format
 msgid "nested <window> tag"
 msgstr "etichetă imbricată <window>"
 
-#: ../src/core/session.c:1462
+#: ../src/core/session.c:1466
 #, c-format
 msgid "Unknown element %s"
 msgstr "Element necunoscut %s"
 
-#: ../src/core/session.c:1814
+#: ../src/core/session.c:1818
 msgid ""
 "These windows do not support &quot;save current setup&quot; and will have to "
 "be restarted manually next time you log in."
@@ -456,7 +459,7 @@ msgid "Metacity"
 msgstr "Metacity"
 
 #. first time through
-#: ../src/core/window.c:5630
+#: ../src/core/window.c:5642
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -472,7 +475,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/core/window.c:6195
+#: ../src/core/window.c:6207
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
@@ -513,7 +516,7 @@ msgstr "%s (drept %s)"
 msgid "%s (as another user)"
 msgstr "%s (drept un alt utilizator)"
 
-#: ../src/core/window-props.c:1429
+#: ../src/core/window-props.c:1430
 #, c-format
 msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
 msgstr ""
@@ -915,15 +918,15 @@ msgstr "Ridică automat fereastra focalizată"
 msgid ""
 "Clicking a window while holding down this modifier key will move the window "
 "(left click), resize the window (middle click), or show the window menu "
-"(right click). The left and right operations may be swapped using the "
-"\"mouse_button_resize\" key. Modifier is expressed as \"&lt;Alt&gt;\" or "
-"\"&lt;Super&gt;\" for example."
+"(right click). The middle and right click operations may be swapped using "
+"the \"resize_with_right_button\" key. Modifier is expressed as \"&lt;Alt&gt;"
+"\" or \"&lt;Super&gt;\" for example."
 msgstr ""
 "Apăsând pe o fereastră în timp ce țineți apăsat această tastă modificatoare "
 "va mișca fereastra (clic stânga), redimensiona fereastra (clic central) sau "
-"va arăta meniul ferestrei (clic dreapta). Operațiile stânga/dreapta pot fi "
-"inversate folosind tasta „mouse_button_resize”. Modificatorul este exprimat "
-"ca „&lt;Alt&gt;” sau „&lt;Super&gt;”, de exemplu."
+"va arăta meniul ferestrei (clic dreapta). Operațiile clic mijloc și dreapta "
+"pot fi inversate folosind tasta „resize_with_right_button”. Modificatorul "
+"este exprimat ca „&lt;Alt&gt;” sau „&lt;Super&gt;”, de exemplu."
 
 #: ../src/metacity.schemas.in.in.h:10
 msgid "Commands to run in response to keybindings"
@@ -2265,109 +2268,97 @@ msgstr "/Ferestre/Atașează to_ate"
 msgid "/Windows/Des_ktop"
 msgstr "/Ferestre/Des_ktop"
 
-#: ../src/ui/theme-viewer.c:136
-msgid "Open another one of these windows"
-msgstr "Deschide încă o fereastră"
-
-#: ../src/ui/theme-viewer.c:143
-msgid "This is a demo button with an 'open' icon"
-msgstr "Acesta este un buton demo cu o iconiță „deschide”"
-
-#: ../src/ui/theme-viewer.c:150
-msgid "This is a demo button with a 'quit' icon"
-msgstr "Acesta este un buton demo cu o iconiță „renunță”"
-
-#: ../src/ui/theme-viewer.c:243
+#: ../src/ui/theme-viewer.c:244
 msgid "This is a sample message in a sample dialog"
 msgstr "Acesta este un mesaj de test într-un dialog de test"
 
-#: ../src/ui/theme-viewer.c:326
+#: ../src/ui/theme-viewer.c:327
 #, c-format
 msgid "Fake menu item %d\n"
 msgstr "Element fals de meniu %d\n"
 
-#: ../src/ui/theme-viewer.c:360
+#: ../src/ui/theme-viewer.c:361
 msgid "Border-only window"
 msgstr "Fereastră doar cu margine"
 
-#: ../src/ui/theme-viewer.c:362
+#: ../src/ui/theme-viewer.c:363
 msgid "Bar"
 msgstr "Bară"
 
-#: ../src/ui/theme-viewer.c:379
+#: ../src/ui/theme-viewer.c:380
 msgid "Normal Application Window"
 msgstr "Fereastră normală de aplicație"
 
-#: ../src/ui/theme-viewer.c:383
+#: ../src/ui/theme-viewer.c:384
 msgid "Dialog Box"
 msgstr "Fereastră de dialog"
 
-#: ../src/ui/theme-viewer.c:387
+#: ../src/ui/theme-viewer.c:388
 msgid "Modal Dialog Box"
 msgstr "Fereastră modală de dialog"
 
-#: ../src/ui/theme-viewer.c:391
+#: ../src/ui/theme-viewer.c:392
 msgid "Utility Palette"
 msgstr "Paletă utilitară"
 
-#: ../src/ui/theme-viewer.c:395
+#: ../src/ui/theme-viewer.c:396
 msgid "Torn-off Menu"
 msgstr "Meniu Torn-off"
 
-#: ../src/ui/theme-viewer.c:399
+#: ../src/ui/theme-viewer.c:400
 msgid "Border"
 msgstr "Margine"
 
-#: ../src/ui/theme-viewer.c:727
+#: ../src/ui/theme-viewer.c:728
 #, c-format
 msgid "Button layout test %d"
 msgstr "Aranjament de test pentru buton %d"
 
-#: ../src/ui/theme-viewer.c:756
+#: ../src/ui/theme-viewer.c:757
 #, c-format
 msgid "%g milliseconds to draw one window frame"
 msgstr "%g milisecunde pentru a afișa un cadru de fereastră"
 
-#: ../src/ui/theme-viewer.c:799
+#: ../src/ui/theme-viewer.c:800
 #, c-format
 msgid "Usage: metacity-theme-viewer [THEMENAME]\n"
 msgstr "Utilizare: metacity-theme-viewer [NUME TEMĂ]\n"
 
-#: ../src/ui/theme-viewer.c:806
+#: ../src/ui/theme-viewer.c:807
 #, c-format
 msgid "Error loading theme: %s\n"
 msgstr "Eroare la încărcarea temei: %s\n"
 
-#: ../src/ui/theme-viewer.c:812
+#: ../src/ui/theme-viewer.c:813
 #, c-format
 msgid "Loaded theme \"%s\" in %g seconds\n"
 msgstr "S-a încărcat tema „%s“ în %g secunde\n"
 
-#: ../src/ui/theme-viewer.c:853
+#: ../src/ui/theme-viewer.c:854
 msgid "Normal Title Font"
 msgstr "Font pentru titlu normal"
 
-#: ../src/ui/theme-viewer.c:859
+#: ../src/ui/theme-viewer.c:860
 msgid "Small Title Font"
 msgstr "Font pentru titlu mic"
 
-#: ../src/ui/theme-viewer.c:865
+#: ../src/ui/theme-viewer.c:866
 msgid "Large Title Font"
 msgstr "Font pentru titlu mare"
 
-#: ../src/ui/theme-viewer.c:870
+#: ../src/ui/theme-viewer.c:871
 msgid "Button Layouts"
 msgstr "Aranjamente butoane"
 
-#: ../src/ui/theme-viewer.c:875
+#: ../src/ui/theme-viewer.c:876
 msgid "Benchmark"
 msgstr "Test de performanță"
 
-#: ../src/ui/theme-viewer.c:922
+#: ../src/ui/theme-viewer.c:923
 msgid "Window Title Goes Here"
 msgstr "Titlul de fereastră vine aici"
 
-#: ../src/ui/theme-viewer.c:1026
+#: ../src/ui/theme-viewer.c:1027
 #, c-format
 msgid ""
 "Drew %d frames in %g client-side seconds (%g milliseconds per frame) and %g "
@@ -2378,41 +2369,50 @@ msgstr ""
 "și %g secunde consumate de proces incluzând resursele serverului X (%g "
 "milisecunde pe cadru)\n"
 
-#: ../src/ui/theme-viewer.c:1245
+#: ../src/ui/theme-viewer.c:1246
 msgid "position expression test returned TRUE but set error"
 msgstr "testul de poziție a returnat TRUE dar a setat eroare"
 
-#: ../src/ui/theme-viewer.c:1247
+#: ../src/ui/theme-viewer.c:1248
 msgid "position expression test returned FALSE but didn't set error"
 msgstr "testul de poziție a returnat FALSE dar nu a setat eroarea"
 
-#: ../src/ui/theme-viewer.c:1251
+#: ../src/ui/theme-viewer.c:1252
 msgid "Error was expected but none given"
 msgstr "A fost așteptată o eroare, dar nu a fost furnizată"
 
-#: ../src/ui/theme-viewer.c:1253
+#: ../src/ui/theme-viewer.c:1254
 #, c-format
 msgid "Error %d was expected but %d given"
 msgstr "Eroarea %d a fost așteptată dar a fost furnizată %d"
 
-#: ../src/ui/theme-viewer.c:1259
+#: ../src/ui/theme-viewer.c:1260
 #, c-format
 msgid "Error not expected but one was returned: %s"
 msgstr "Eroare neașteptată a fost returnată: %s"
 
-#: ../src/ui/theme-viewer.c:1263
+#: ../src/ui/theme-viewer.c:1264
 #, c-format
 msgid "x value was %d, %d was expected"
 msgstr "valoarea x a fost %d, %d fiind așteptată"
 
-#: ../src/ui/theme-viewer.c:1266
+#: ../src/ui/theme-viewer.c:1267
 #, c-format
 msgid "y value was %d, %d was expected"
 msgstr "valoarea y a fost %d, %d fiind așteptată"
 
-#: ../src/ui/theme-viewer.c:1331
+#: ../src/ui/theme-viewer.c:1332
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr ""
 "Expresiile pentru coordonate %d parsate în %g secunde (o medie de %g "
 "secunde)\n"
+
+#~ msgid "Open another one of these windows"
+#~ msgstr "Deschide încă o fereastră"
+
+#~ msgid "This is a demo button with an 'open' icon"
+#~ msgstr "Acesta este un buton demo cu o iconiță „deschide”"
+
+#~ msgid "This is a demo button with a 'quit' icon"
+#~ msgstr "Acesta este un buton demo cu o iconiță „renunță”"
