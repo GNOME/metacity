@@ -905,12 +905,12 @@ msgid ""
 msgstr ""
 "இந்த விசையை அழுத்திக்கொண்டே சாளரத்தில் மேல் க்ளிக் செய்து சாளரத்தை நகர்த்தவும் (இடது "
 "க்ளிக்), அளவு மாற்ற (மைய க்ளிக்), அல்லது மெனுவைகாட்ட(வலது க்ளிக்). மைய, வலது "
-"பயன்பாடுகளை \"resize_with_right_button\\" விசையை கொண்டு இட மாற்றலாம்.  மாற்றி உதாரணமாக  "
-"\"&lt;Alt&gt; \" அல்லது  \"&lt;Super&gt;\" என் காட்டப்படும் "
+"பயன்பாடுகளை \"resize_with_right_button\" விசையை கொண்டு இட மாற்றலாம்.  மாற்றி உதாரணமாக  "
+"\"&lt;Alt&gt;\" or \"&lt;Super&gt;\" என காட்டப்படும் "
 
 #: ../src/metacity.schemas.in.in.h:10
 msgid "Commands to run in response to keybindings"
-msgstr "பதிக் கீபைண்டிங்கை இயக்க கட்டளை"
+msgstr "கீபைண்டிங்களுக்கு இணங்க இயக்க கட்டளைகள்"
 
 #: ../src/metacity.schemas.in.in.h:11
 msgid "Compositing Manager"
