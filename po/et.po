@@ -7,7 +7,7 @@
 #
 # Tõivo Leedjärv <toivo linux ee>, 2004.
 # Ivar Smolin <okul linux ee>, 2005, 2006, 2009, 2010.
-# Mattias Põldaru <mahfiaz gmail com>, 2008, 2009.
+# Mattias Põldaru <mahfiaz gmail com>, 2008-2010.
 #
 msgid ""
 msgstr ""
@@ -15,8 +15,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&component=general\n"
 "POT-Creation-Date: 2010-01-21 21:34+0000\n"
-"PO-Revision-Date: 2010-01-31 09:57+0200\n"
-"Last-Translator: Ivar Smolin <okul@linux.ee>\n"
+"PO-Revision-Date: 2010-02-25 17:24+0300\n"
+"Last-Translator: Mattias Põldaru <mahfiaz gmail com>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -385,8 +385,8 @@ msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
 "window as specified in the ICCCM.\n"
 msgstr ""
-"Aken %s määrab SM_CLIENT_ID endale, selle asemel et  määrata see "
-"WM_CLIENT_LEADER aknale nagu seda kirjeldab ICCCM.\n"
+"Aken %s määrab SM_CLIENT_ID endale, selle asemel, et määrata see "
+"WM_CLIENT_LEADER aknale, nagu seda kirjeldab ICCCM.\n"
 
 #. We ignore mwm_has_resize_func because WM_NORMAL_HINTS is the
 #. * authoritative source for that info. Some apps such as mplayer or
@@ -506,49 +506,49 @@ msgid "Switch to workspace below the current workspace"
 msgstr "Lülitumine selle tööala all olevale tööalale"
 
 msgid "Move between windows of an application, using a popup window"
-msgstr "Liigu rakenduse akende vahel, hüpikaknaga"
+msgstr "Rakenduse akende vahel liikumine, hüpikaknaga"
 
 msgid "Move backward between windows of an application, using a popup window"
-msgstr "Liigu rakenduse akende vahel tagasisuunas, hüpikaknaga"
+msgstr "Rakenduse akende vahel tagasisuunas liikumine, hüpikaknaga"
 
 msgid "Move between windows, using a popup window"
-msgstr "Liigu akende vahel, hüpikaknaga"
+msgstr "Akende vahel liikumine, hüpikaknaga"
 
 msgid "Move backward between windows, using a popup window"
-msgstr "Liigu akende vahel tagasisuunas, hüpikaknaga"
+msgstr "Akende vahel tagasisuunas liikumine, hüpikaknaga"
 
 msgid "Move between panels and the desktop, using a popup window"
-msgstr "Liigu paneelide ja töölaua vahel, hüpikaknaga"
+msgstr "Paneelide ja töölaua vahel liikumine, hüpikaknaga"
 
 msgid "Move backward between panels and the desktop, using a popup window"
-msgstr "Liigu tagasisuunas paneelide ja töölaua vahel, hüpikaknaga"
+msgstr "Paneelide ja töölaua vahel tagasisuunas liikumine, hüpikaknaga"
 
 msgid "Move between windows of an application immediately"
-msgstr "Liigu koheselt rakenduse akende vahel"
+msgstr "Rakenduse akende vahel kohenene liikumine"
 
 msgid "Move backward between windows of an application immediately"
-msgstr "Liigu koheselt rakenduse akende vahel tagasisuunas"
+msgstr "Rakenduse akende vahel kohenene tagasisuunas liikumine"
 
 msgid "Move between windows immediately"
-msgstr "Liigu koheselt akende vahel"
+msgstr "Akende vahel kohenene liikumine"
 
 msgid "Move backward between windows immediately"
-msgstr "Liigu koheselt akende vahel tagasisuunas"
+msgstr "Akende vahel kohenene tagasisuunas liikumine"
 
 msgid "Move between panels and the desktop immediately"
-msgstr "Liigu koheselt paneeli ja töölaua vahel"
+msgstr "Paneeli ja töölaua vahel kohenene liikumine"
 
 msgid "Move backward between panels and the desktop immediately"
-msgstr "Liigu koheselt tagasisuunas paneelide ja töölaua vahel"
+msgstr "Paneeli ja töölaua vahel kohenene tagasisuunas liikumine"
 
 msgid "Hide all normal windows and set focus to the desktop"
-msgstr "Peida kõik tavalised aknad ja fokuseeri töölaud"
+msgstr "Tavaliste akende peitmine ja töölaua fokuseerimine"
 
 msgid "Show the panel's main menu"
 msgstr "Paneeli peamenüü näitamine"
 
 msgid "Show the panel's \"Run Application\" dialog box"
-msgstr "Paneeli dialoogi \"Käivita rakendus\" näitamine"
+msgstr "Paneeli dialoogi \"Rakenduse käivitamine\" näitamine"
 
 msgid "Take a screenshot"
 msgstr "Kuvatõmmise võtmine"
@@ -569,16 +569,16 @@ msgid "Toggle maximization state"
 msgstr "Maksimeeritud oleku sisse- ja väljalülitamine"
 
 msgid "Toggle whether a window will always be visible over other windows"
-msgstr "Lüliti määrab, kas aken on alati teiste akende kohal nähtav"
+msgstr "Alati kõige pealmiseks olemise sisse- ja väljalülitamine"
 
 msgid "Maximize window"
 msgstr "Akna maksimeerimine"
 
 msgid "Restore window"
-msgstr "Taasta akna suurus"
+msgstr "Akna suuruse taastamine"
 
 msgid "Toggle shaded state"
-msgstr "Varjutatud oleku lüliti"
+msgstr "Varjutatud oleku sisse- ja väljalülitamine"
 
 msgid "Minimize window"
 msgstr "Akna minimeerimine"
@@ -587,13 +587,13 @@ msgid "Close window"
 msgstr "Akna sulgemine"
 
 msgid "Move window"
-msgstr "Teisalda aken"
+msgstr "Akna liigutamine"
 
 msgid "Resize window"
-msgstr "Muuda akna suurust"
+msgstr "Akna suuruse muutmine"
 
 msgid "Toggle whether window is on all workspaces or just one"
-msgstr "Lüliti määrab, kas aken on kõigil tööaladel või ainult ühel"
+msgstr "Akna määramine ühele või kõigile tööaladele"
 
 msgid "Move window to workspace 1"
 msgstr "Akna tõstmine 1. tööalale"
@@ -644,43 +644,43 @@ msgid "Move window one workspace down"
 msgstr "Akna tõstmine ühe tööala võrra allapoole"
 
 msgid "Raise window if it's covered by another window, otherwise lower it"
-msgstr "Tõsta aken, kui seda katab teine aken, muul juhul vii tahapoole"
+msgstr "Akna tõstmine, kui seda katab teine aken, või taha viimine"
 
 msgid "Raise window above other windows"
 msgstr "Akna tõstmine teiste akende kohale"
 
 msgid "Lower window below other windows"
-msgstr "Saada aken teiste taha"
+msgstr "Akna viimine teiste taha"
 
 msgid "Maximize window vertically"
-msgstr "Maksimeeri aken vertikaalselt"
+msgstr "Akna maksimeerimine vertikaalselt"
 
 msgid "Maximize window horizontally"
-msgstr "Maksimeeri aken horisontaalselt"
+msgstr "Akna maksimeerimine horisontaalselt"
 
 msgid "Move window to north-west (top left) corner"
-msgstr "Akna tõstmine ekraani loodepoolsesse (ülemisse vasakusse) nurka"
+msgstr "Akna tõstmine ekraani loodenurka (ülemisse vasakusse)"
 
 msgid "Move window to north-east (top right) corner"
-msgstr "Akna tõstmine ekraani kirdepoolsesse (ülemisse paremasse) nurka"
+msgstr "Akna tõstmine ekraani kirdenurka (ülemisse paremasse)"
 
 msgid "Move window to south-west (bottom left) corner"
-msgstr "Akna tõstmine ekraani edelapoolsesse (alumisse vasakusse) nurka"
+msgstr "Akna tõstmine ekraani edelanurka (alumisse vasakusse)"
 
 msgid "Move window to south-east (bottom right) corner"
-msgstr "Akna tõstmine ekraani kagupoolsesse (alumisse paremasse) nurka"
+msgstr "Akna tõstmine ekraani kagunurka (alumisse paremasse)"
 
 msgid "Move window to north (top) side of screen"
-msgstr "Akna tõstmine ekraani põhjapoolsesse (ülemisse) serva"
+msgstr "Akna tõstmine ekraani põhjakülge (ülemisse)"
 
 msgid "Move window to south (bottom) side of screen"
-msgstr "Akna tõstmine ekraani lõunapoolsesse (alumisse) serva"
+msgstr "Akna tõstmine ekraani lõunakülge (alumisse)"
 
 msgid "Move window to east (right) side of screen"
-msgstr "Akna tõstmine ekraani idapoolsesse (paremasse) serva"
+msgstr "Akna tõstmine ekraani idakülge (paremasse)"
 
 msgid "Move window to west (left) side of screen"
-msgstr "Akna tõstmine ekraani läänepoolsesse (vasakusse) serva"
+msgstr "Akna tõstmine ekraani läänekülge (vasakusse)"
 
 msgid "Move window to center of screen"
 msgstr "Akna tõstmine ekraani keskele"
@@ -1081,7 +1081,7 @@ msgid "Whether raising should be a side-effect of other user interactions"
 msgstr "Kas akna tõstmine peaks kaasnema kasutaja teiste tegevustega"
 
 msgid "Whether to resize with the right button"
-msgstr "Paremklahv muudab suurust"
+msgstr "Kas paremklahv muudab suurust"
 
 msgid "Window focus mode"
 msgstr "Aknafookuse režiim"
