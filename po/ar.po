@@ -4,22 +4,22 @@
 # Arafat Medini <lumina@silverpen.de>, 2003.
 # Abdulaziz Al-Arfaj <alarfaj0@yahoo.com>, 2004.
 # Djihed Afifi <djihed@gmail.com>, 2006.
-# Khaled Hosny <khaledhosny@eglug.org>, 2006, 2007, 2008, 2009.
+# Khaled Hosny <khaledhosny@eglug.org>, 2006, 2007, 2008, 2009, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity.HEAD.ar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-29 10:59+0200\n"
-"PO-Revision-Date: 2009-11-28 05:57+0300\n"
+"POT-Creation-Date: 2010-03-03 20:02+0200\n"
+"PO-Revision-Date: 2010-03-03 20:02+0300\n"
 "Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
-"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-"X-Generator: Virtaal 0.5.0-rc1\n"
+"X-Generator: Virtaal 0.5.2\n"
 
 #: ../src/50-metacity-desktop-key.xml.in.h:1
 msgid "Desktop"
@@ -38,28 +38,27 @@ msgstr "حدث الجرس"
 msgid "Unknown window information request: %d"
 msgstr "طلب مجهول لمعلومات نافذة: %d"
 
-#: ../src/core/delete.c:104
+#. Translators: %s is a window title
+#: ../src/core/delete.c:96
 #, c-format
-msgid ""
-"<big><b><tt>%s</tt> is not responding.</b></big>\n"
-"\n"
-"<i>You may choose to wait a short while for it to continue or force the "
-"application to quit entirely.</i>"
-msgstr ""
-"‏<big><b><tt>%s</tt> لا يستجيب.</b></big>\n"
-"\n"
-"<i>ربما ترغب في الانتظار قليلا ليُكمِل أو إجبار التطبيق على الإنهاء "
-"كُلّية.</i>"
+msgid "<tt>%s</tt> is not responding."
+msgstr "<tt>%s</tt> لا يستجيب"
 
-#: ../src/core/delete.c:115
+#: ../src/core/delete.c:101
+msgid ""
+"You may choose to wait a short while for it to continue or force the "
+"application to quit entirely."
+msgstr "ربما ترغب في الانتظار قليلا ليُكمِل أو إجبار التطبيق على الإنهاء كُلّية."
+
+#: ../src/core/delete.c:110
 msgid "_Wait"
 msgstr "ا_نتظر"
 
-#: ../src/core/delete.c:115
+#: ../src/core/delete.c:110
 msgid "_Force Quit"
 msgstr "أ_جبر الإنهاء"
 
-#: ../src/core/delete.c:216
+#: ../src/core/delete.c:208
 #, c-format
 msgid "Failed to get hostname: %s\n"
 msgstr "فشل جلب اسم المضيف: %s\n"
@@ -121,7 +120,7 @@ msgstr "لم يُعرّف أمر %d.\n"
 msgid "No terminal command has been defined.\n"
 msgstr "لم يُعرّف أمر طرفيّة.\n"
 
-#: ../src/core/main.c:130
+#: ../src/core/main.c:131
 #, c-format
 msgid ""
 "metacity %s\n"
@@ -135,59 +134,59 @@ msgstr ""
 "هذا برنامج حر، راجع المصدر لشروط النسخ.\n"
 "لا يوجد أي ضمان: و لا حتى ضمان قابلية التسويق أو المناسبة لأي هدف.\n"
 
-#: ../src/core/main.c:268
+#: ../src/core/main.c:269
 msgid "Disable connection to session manager"
 msgstr "عطّل الاتصال بمدير الجلسة"
 
-#: ../src/core/main.c:274
+#: ../src/core/main.c:275
 msgid "Replace the running window manager with Metacity"
 msgstr "استبدل مدير النوافذ الذي يعمل بمِتسِتي"
 
-#: ../src/core/main.c:280
+#: ../src/core/main.c:281
 msgid "Specify session management ID"
 msgstr "حدّد رقم هويّة إدارة الجلسة"
 
-#: ../src/core/main.c:285
+#: ../src/core/main.c:286
 msgid "X Display to use"
 msgstr "معراض س الذي سيستعمل"
 
-#: ../src/core/main.c:291
+#: ../src/core/main.c:292
 msgid "Initialize session from savefile"
 msgstr "ابدأ الجلسة من ملف محفوظ"
 
-#: ../src/core/main.c:297
+#: ../src/core/main.c:298
 msgid "Print version"
 msgstr "اطبع الإصدارة"
 
-#: ../src/core/main.c:303
+#: ../src/core/main.c:304
 msgid "Make X calls synchronous"
 msgstr "اجعل نداءات X متزامنة"
 
-#: ../src/core/main.c:309
+#: ../src/core/main.c:310
 msgid "Turn compositing on"
 msgstr "فعّل المزج"
 
-#: ../src/core/main.c:315
+#: ../src/core/main.c:316
 msgid "Turn compositing off"
 msgstr "عطّل المزج"
 
-#: ../src/core/main.c:321
+#: ../src/core/main.c:322
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
-msgstr ""
+msgstr "لا تنشئ نوافذ تملأ الشاشة وبدون حواف"
 
-#: ../src/core/main.c:543
+#: ../src/core/main.c:528
 #, c-format
 msgid "Failed to scan themes directory: %s\n"
 msgstr "فشلت قراءة دليل السِمات : %s\n"
 
-#: ../src/core/main.c:559
+#: ../src/core/main.c:544
 #, c-format
 msgid ""
 "Could not find a theme! Be sure %s exists and contains the usual themes.\n"
 msgstr "تعذّر إيجاد سِمة! تأكد من وجود %s و احتواءه على السِمات معتادة.\n"
 
-#: ../src/core/main.c:618
+#: ../src/core/main.c:603
 #, c-format
 msgid "Failed to restart: %s\n"
 msgstr "فشلت إعادة التشغيل: %s\n"
@@ -203,24 +202,24 @@ msgstr "فشلت إعادة التشغيل: %s\n"
 #. * (Empty comment follows so the translators don't see this.)
 #.
 #.
-#: ../src/core/prefs.c:506 ../src/core/prefs.c:661
+#: ../src/core/prefs.c:508 ../src/core/prefs.c:663
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
 msgstr "مفتاح GConf '%s' مضبوط لقيمة غير صحيحة\n"
 
-#: ../src/core/prefs.c:587 ../src/core/prefs.c:830
-#, fuzzy, c-format
+#: ../src/core/prefs.c:589 ../src/core/prefs.c:832
+#, c-format
 msgid "%d stored in GConf key %s is out of range %d to %d\n"
-msgstr "%d المحفوظ في مفتاح GConf %s خارج المدى من 0 إلى %d\n"
+msgstr "%d المحفوظ في مفتاح GConf %s خارج المدى من %d إلى %d\n"
 
-#: ../src/core/prefs.c:631 ../src/core/prefs.c:708 ../src/core/prefs.c:756
-#: ../src/core/prefs.c:820 ../src/core/prefs.c:1113 ../src/core/prefs.c:1129
-#: ../src/core/prefs.c:1146 ../src/core/prefs.c:1162
+#: ../src/core/prefs.c:633 ../src/core/prefs.c:710 ../src/core/prefs.c:758
+#: ../src/core/prefs.c:822 ../src/core/prefs.c:1115 ../src/core/prefs.c:1131
+#: ../src/core/prefs.c:1148 ../src/core/prefs.c:1164
 #, c-format
 msgid "GConf key \"%s\" is set to an invalid type\n"
 msgstr "مفتاح GConf \"%s\" مضبوط لنوع غير صحيح\n"
 
-#: ../src/core/prefs.c:1232
+#: ../src/core/prefs.c:1234
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -228,12 +227,12 @@ msgstr ""
 "عطّلت الحلول الجزئيّة للتطبيقات المعطوبة . ربما لن تتصرف بعض التطبيقات "
 "بسلامة.\n"
 
-#: ../src/core/prefs.c:1303
+#: ../src/core/prefs.c:1305
 #, c-format
 msgid "Could not parse font description \"%s\" from GConf key %s\n"
 msgstr "لا يمكن تحليل وصف الخط \"%s\" من مفتاح GConf %s\n"
 
-#: ../src/core/prefs.c:1365
+#: ../src/core/prefs.c:1367
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -241,17 +240,17 @@ msgid ""
 msgstr ""
 "\"%s\" الموجود في قاعدة بيانات الإعدادات ليس قيمة سليمة لمغير أزرار الفأرة\n"
 
-#: ../src/core/prefs.c:1786
+#: ../src/core/prefs.c:1788
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr "خطأ عند تعيين عدد مساحات العمل لـ %d: %s\n"
 
-#: ../src/core/prefs.c:1975 ../src/core/prefs.c:2478
+#: ../src/core/prefs.c:1953 ../src/core/prefs.c:2456
 #, c-format
 msgid "Workspace %d"
 msgstr "مساحة العمل %d"
 
-#: ../src/core/prefs.c:2005 ../src/core/prefs.c:2183
+#: ../src/core/prefs.c:1983 ../src/core/prefs.c:2161
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -260,15 +259,15 @@ msgstr ""
 "\"%s\" الموجود في قاعدة بيانات الإعدادات ليس قيمة سليمة لارتباط المفتاح \"%s"
 "\"\n"
 
-#: ../src/core/prefs.c:2559
+#: ../src/core/prefs.c:2537
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr "خطأ عند تعيين اسم مساحة العمل %d لـ \"%s\": %s\n"
 
-#: ../src/core/prefs.c:2763
-#, fuzzy, c-format
+#: ../src/core/prefs.c:2741
+#, c-format
 msgid "Error setting compositor status: %s\n"
-msgstr "خطأ عند تعيين اسم مساحة العمل %d لـ \"%s\": %s\n"
+msgstr "خطأ عند ضبط حالة مدير التركيب: %s\n"
 
 #: ../src/core/screen.c:357
 #, c-format
@@ -277,9 +276,11 @@ msgstr "الشاشة %d على العرض '%s' غير صحيحة\n"
 
 #: ../src/core/screen.c:373
 #, c-format
-msgid "Screen %d on display \"%s\" already has a window manager; try using the "
-"--replace option to replace the current window manager.\n"
-msgstr "الشاشة %d على العرض \"%s\" لها مدير نوافذ بالفعل، حاول استعمال خيار التبديل "
+msgid ""
+"Screen %d on display \"%s\" already has a window manager; try using the --"
+"replace option to replace the current window manager.\n"
+msgstr ""
+"الشاشة %d على العرض \"%s\" لها مدير نوافذ بالفعل، حاول استعمال خيار التبديل "
 "--replace لتحُلّ محلّ مدير النوافذ الحالي.\n"
 
 #: ../src/core/screen.c:400
@@ -303,7 +304,6 @@ msgstr "لا يمكن ترك الشاشة %d على العرض \"%s\"\n"
 #. * "disabled" must also stay as it is.
 #.
 #: ../src/core/schema-bindings.c:169
-#, fuzzy
 msgid ""
 "The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
 "\n"
@@ -320,7 +320,6 @@ msgstr ""
 "رابط مفتاحٍ لهذا الإجراء."
 
 #: ../src/core/schema-bindings.c:177
-#, fuzzy
 msgid ""
 "The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
 "\n"
@@ -342,60 +341,60 @@ msgstr ""
 "يمكن عكس هذا الارتباط بضغط مفتاح \"shift\"، لذا لا يمكن أن يكون \"shift\" "
 "أحد هذه المفاتيح."
 
-#: ../src/core/session.c:845 ../src/core/session.c:852
+#: ../src/core/session.c:850 ../src/core/session.c:857
 #, c-format
 msgid "Could not create directory '%s': %s\n"
 msgstr "لا يمكن انشاء الدليل '%s': %s\n"
 
-#: ../src/core/session.c:862
+#: ../src/core/session.c:867
 #, c-format
 msgid "Could not open session file '%s' for writing: %s\n"
 msgstr "لا يمكن فتح ملف الجلسة '%s' لكتابة: %s\n"
 
-#: ../src/core/session.c:1003
+#: ../src/core/session.c:1008
 #, c-format
 msgid "Error writing session file '%s': %s\n"
 msgstr "خطأ عند كتابة ملف الجلسة '%s': %s\n"
 
-#: ../src/core/session.c:1008
+#: ../src/core/session.c:1013
 #, c-format
 msgid "Error closing session file '%s': %s\n"
 msgstr "خطأ عند غلق ملف الجلسة '%s': %s\n"
 
 #. oh, just give up
-#: ../src/core/session.c:1101
+#: ../src/core/session.c:1106
 #, c-format
 msgid "Failed to read saved session file %s: %s\n"
 msgstr "خطأ عند قراءة ملف الجلسة المحفوظ '%s': %s\n"
 
-#: ../src/core/session.c:1140
+#: ../src/core/session.c:1145
 #, c-format
 msgid "Failed to parse saved session file: %s\n"
 msgstr "خطأ عند تحليل ملف الجلسة المحفوظ: %s\n"
 
-#: ../src/core/session.c:1189
+#: ../src/core/session.c:1194
 #, c-format
 msgid "<metacity_session> attribute seen but we already have the session ID"
 msgstr "صفة <metacity_session> مرئية لكن لدينا هوية الجلسة بالفعل"
 
-#: ../src/core/session.c:1202 ../src/core/session.c:1277
-#: ../src/core/session.c:1309 ../src/core/session.c:1381
-#: ../src/core/session.c:1441
+#: ../src/core/session.c:1207 ../src/core/session.c:1282
+#: ../src/core/session.c:1314 ../src/core/session.c:1386
+#: ../src/core/session.c:1446
 #, c-format
 msgid "Unknown attribute %s on <%s> element"
 msgstr "صفة مجهولة %s على عنصر <%s>"
 
-#: ../src/core/session.c:1219
+#: ../src/core/session.c:1224
 #, c-format
 msgid "nested <window> tag"
 msgstr "وسْم <window> معشّش"
 
-#: ../src/core/session.c:1461
+#: ../src/core/session.c:1466
 #, c-format
 msgid "Unknown element %s"
 msgstr "عنصر مجهول %s"
 
-#: ../src/core/session.c:1812
+#: ../src/core/session.c:1818
 msgid ""
 "These windows do not support &quot;save current setup&quot; and will have to "
 "be restarted manually next time you log in."
@@ -403,39 +402,39 @@ msgstr ""
 "هذه النوافذ لا تدعم &quot;احفظ الضبط الحالي&quot; يجب إعادة تشغيلها يدويا "
 "عند التسجيل المرة القادمة."
 
-#: ../src/core/util.c:103
+#: ../src/core/util.c:101
 #, c-format
 msgid "Failed to open debug log: %s\n"
 msgstr "فشل فتح سِجِلّ التنقيح: %s\n"
 
-#: ../src/core/util.c:113
+#: ../src/core/util.c:111
 #, c-format
 msgid "Failed to fdopen() log file %s: %s\n"
 msgstr "فشل fdopen() ملف الرسائل %s: %s\n"
 
-#: ../src/core/util.c:119
+#: ../src/core/util.c:117
 #, c-format
 msgid "Opened log file %s\n"
 msgstr "فُتِح ملف السِّجِل %s\n"
 
-#: ../src/core/util.c:138 ../src/tools/metacity-message.c:176
+#: ../src/core/util.c:136 ../src/tools/metacity-message.c:176
 #, c-format
 msgid "Metacity was compiled without support for verbose mode\n"
 msgstr "جُمِّع مِتسِتي دون دعم للنمط المطنب\n"
 
-#: ../src/core/util.c:238
+#: ../src/core/util.c:236
 msgid "Window manager: "
 msgstr "مدير النوافذ: "
 
-#: ../src/core/util.c:390
+#: ../src/core/util.c:388
 msgid "Bug in window manager: "
 msgstr "علّة في مدير النوافذ: "
 
-#: ../src/core/util.c:423
+#: ../src/core/util.c:421
 msgid "Window manager warning: "
 msgstr "تحذير مدير النوافذ: "
 
-#: ../src/core/util.c:451
+#: ../src/core/util.c:449
 msgid "Window manager error: "
 msgstr "خطأ مدير النوافذ: "
 
@@ -447,7 +446,7 @@ msgid "Metacity"
 msgstr "مِتسِتي"
 
 #. first time through
-#: ../src/core/window.c:5630
+#: ../src/core/window.c:5642
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -463,7 +462,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/core/window.c:6195
+#: ../src/core/window.c:6207
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
@@ -487,23 +486,23 @@ msgstr "%s (على %s)"
 #: ../src/core/window-props.c:420
 #, c-format
 msgid "%s (as superuser)"
-msgstr ""
+msgstr "%s (مستخدم فائق)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine
 #: ../src/core/window-props.c:438
-#, fuzzy, c-format
+#, c-format
 msgid "%s (as %s)"
-msgstr "%s (على %s)"
+msgstr "%s (مستخدم %s)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine, whose name we don't know
 #: ../src/core/window-props.c:444
 #, c-format
 msgid "%s (as another user)"
-msgstr ""
+msgstr "%s (مستخدم آخر)"
 
-#: ../src/core/window-props.c:1429
+#: ../src/core/window-props.c:1430
 #, c-format
 msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
 msgstr "نافذة WM_TRANSIENT_FOR  0x%lx غير صحيحة ل %s.\n"
@@ -871,7 +870,6 @@ msgid "Arrangement of buttons on the titlebar"
 msgstr "تنظيم الأزرار على شريط العنوان"
 
 #: ../src/metacity.schemas.in.in.h:7
-#, fuzzy
 msgid ""
 "Arrangement of buttons on the titlebar. The value should be a string, such "
 "as \"menu:minimize,maximize,spacer,close\"; the colon separates the left "
@@ -881,11 +879,12 @@ msgid ""
 "without breaking older versions. A special spacer tag can be used to insert "
 "some space between two adjacent buttons."
 msgstr ""
-"تنظيم الأزرار على شريط العنوان. يجب أن تكون القيمة "
-"سلسلة،مثل\"menu:minimize,maximize,close\" ،الفاصل يفصل الجانب الأيسر للنافذة "
-"عن الجانب الأيمن، كما تفصل أسماء الأزرار بفواصل. نسخ الأزرار ممنوع. يقع "
-"تجاهل الأزرار غير المعروفة حتى يمكن إضافتها لإصدارات متستي القادمة دون كسر "
-"الإصدارات القديمة."
+"تنظيم الأزرار على شريط العنوان. يجب أن تكون القيمة سلسلة نصيّة،مثل\"menu:"
+"minimize,maximize,spacer,close\"; تفصل النقطتان فوق بعضهما الجانب الأيسر "
+"للنافذة عن الجانب الأيمن، كما تُفصل أسماء الأزرار بفواصل. لا يسمح بالنسخ "
+"المطابقة للأزرار. يتم تجاهل الأزرار غير المعروفة حتى يمكن إضافة الأزرار إلى "
+"الإصدارادت المستقبلية من ميتاسيتي دون كسر الإصدارات القديمة. يمكن استخدام "
+"وسم فاصل خاص لإقحام فراغ بين زرين متجاورين."
 
 #: ../src/metacity.schemas.in.in.h:8
 msgid "Automatically raises the focused window"
@@ -896,9 +895,9 @@ msgstr "ارفع النافذة المركزة آليا"
 msgid ""
 "Clicking a window while holding down this modifier key will move the window "
 "(left click), resize the window (middle click), or show the window menu "
-"(right click). The left and right operations may be swapped using the "
-"\"mouse_button_resize\" key. Modifier is expressed as \"&lt;Alt&gt;\" or "
-"\"&lt;Super&gt;\" for example."
+"(right click). The middle and right click operations may be swapped using "
+"the \"resize_with_right_button\" key. Modifier is expressed as \"&lt;Alt&gt;"
+"\" or \"&lt;Super&gt;\" for example."
 msgstr ""
 "نقر نافذة عند الضغط على مفتاح التغيير هذا سينقل النافذة (نقر أيسر) أو يحجم "
 "النافذة (نقر أوسط)، أو يظهر قائمة النافذة (نقر أيمن). المغير يعبر عنه بـ "
@@ -1035,19 +1034,19 @@ msgid ""
 "(e.g. clicking in the client area, moving or resizing the window) normally "
 "raise the window as a side-effect. Setting this option to false, which is "
 "strongly discouraged, will decouple raising from other user actions, and "
-"ignore raise requests generated by applications. See "
-"http://bugzilla.gnome.org/show_bug.cgi?id=445447#c6. Even when this option "
-"is false, windows can still be raised by an alt-left-click anywhere on the "
-"window, a normal click on the window decorations, or by special messages "
-"from pagers, such as activation requests from tasklist applets. This option "
-"is currently disabled in click-to-focus mode. Note that the list of ways to "
-"raise windows when raise_on_click is false does not include programmatic "
-"requests from applications to raise windows; such requests will be ignored "
-"regardless of the reason for the request. If you are an application "
-"developer and have a user complaining that your application does not work "
-"with this setting disabled, tell them it is _their_ fault for breaking their "
-"window manager and that they need to change this option back to true or "
-"live with the \"bug\" they requested."
+"ignore raise requests generated by applications. See http://bugzilla.gnome."
+"org/show_bug.cgi?id=445447#c6. Even when this option is false, windows can "
+"still be raised by an alt-left-click anywhere on the window, a normal click "
+"on the window decorations, or by special messages from pagers, such as "
+"activation requests from tasklist applets. This option is currently disabled "
+"in click-to-focus mode. Note that the list of ways to raise windows when "
+"raise_on_click is false does not include programmatic requests from "
+"applications to raise windows; such requests will be ignored regardless of "
+"the reason for the request. If you are an application developer and have a "
+"user complaining that your application does not work with this setting "
+"disabled, tell them it is _their_ fault for breaking their window manager "
+"and that they need to change this option back to true or live with the \"bug"
+"\" they requested."
 msgstr ""
 
 #: ../src/metacity.schemas.in.in.h:31
@@ -1161,7 +1160,6 @@ msgid "The window screenshot command"
 msgstr "أمر لقطة النافذة"
 
 #: ../src/metacity.schemas.in.in.h:44
-#, fuzzy
 msgid ""
 "This option determines the effects of double-clicking on the title bar. "
 "Current valid options are 'toggle_shade', which will shade/unshade the "
@@ -1172,13 +1170,15 @@ msgid ""
 "will display the window menu, 'lower' which will put the window behind all "
 "the others, and 'none' which will not do anything."
 msgstr ""
-"هذا الخيار يحدد نتائج النقر المزدوج على شريط العنواين. الخيارات الممكنة "
-"حاليا هي 'toggle_shaded'، مما سيخفي/يلغي إخفاء النافذة،  'toggle_maximized' "
-"مما سيكبر/يلغي تكبير النافذة، 'minimize' لإخفاء النافذة، و  'none' لعدم فعل "
-"أي شيء."
+"هذا الخيار يحدد نتائج النقر المزدوج على شريط العنوان. الخيارات الممكنة حاليا "
+"هي 'toggle_shaded'، مما سيخفي/يلغي إخفاء النافذة،  'toggle_maximized' مما "
+"سيكبر/يلغي تكبير النافذة، 'minimize' لإخفاء النافذة، و "
+"'toggle_maximize_horizontally' و 'toggle_maximize_vertically' اللذان سيقومان "
+"بتكبير/إلغاء تكبير النافذة بالاتجاه المحدد فقط، 'minimize' سيقوم بتصغير "
+"النافذة،  'shade' سيلف النافذة إلى الأعلى، 'menu' سيعرض قائمة النافذة، "
+"'lower' سيضع النافذة خلف بقية النوافذ، و 'none' لن يفعل أي شيء."
 
 #: ../src/metacity.schemas.in.in.h:45
-#, fuzzy
 msgid ""
 "This option determines the effects of middle-clicking on the title bar. "
 "Current valid options are 'toggle_shade', which will shade/unshade the "
@@ -1189,13 +1189,15 @@ msgid ""
 "will display the window menu, 'lower' which will put the window behind all "
 "the others, and 'none' which will not do anything."
 msgstr ""
-"هذا الخيار يحدد نتائج النقر الأوسط على شريط العنواين. الخيارات المقبولة "
-"حاليا هي 'toggle_shaded'، مما سيخفي/يلغي إخفاء النافذة،  'toggle_maximized' "
-"مما سيكبر/يلغي تكبير النافذة، 'minimize' لإخفاء النافذة، و  'none' لعدم فعل "
-"أي شيء."
+"هذا الخيار يحدد نتائج النقر الأوسط على شريط العنوان. الخيارات الممكنة حاليا "
+"هي 'toggle_shaded'، مما سيخفي/يلغي إخفاء النافذة،  'toggle_maximized' مما "
+"سيكبر/يلغي تكبير النافذة، 'minimize' لإخفاء النافذة، و "
+"'toggle_maximize_horizontally' و 'toggle_maximize_vertically' اللذان سيقومان "
+"بتكبير/إلغاء تكبير النافذة بالاتجاه المحدد فقط، 'minimize' سيقوم بتصغير "
+"النافذة،  'shade' سيلف النافذة إلى الأعلى، 'menu' سيعرض قائمة النافذة، "
+"'lower' سيضع النافذة خلف بقية النوافذ، و 'none' لن يفعل أي شيء."
 
 #: ../src/metacity.schemas.in.in.h:46
-#, fuzzy
 msgid ""
 "This option determines the effects of right-clicking on the title bar. "
 "Current valid options are 'toggle_shade', which will shade/unshade the "
@@ -1206,10 +1208,13 @@ msgid ""
 "will display the window menu, 'lower' which will put the window behind all "
 "the others, and 'none' which will not do anything."
 msgstr ""
-"هذا الخيار يحدد نتائج النقر الأيمن على شريط العنواين. الخيارات الممكنة حاليا "
+"هذا الخيار يحدد نتائج النقر الأيمن على شريط العنوان. الخيارات الممكنة حاليا "
 "هي 'toggle_shaded'، مما سيخفي/يلغي إخفاء النافذة،  'toggle_maximized' مما "
-"سيكبر/يلغي تكبير النافذة، 'minimize' لإخفاء النافذة، و  'none' لعدم فعل أي "
-"شيء."
+"سيكبر/يلغي تكبير النافذة، 'minimize' لإخفاء النافذة، و "
+"'toggle_maximize_horizontally' و 'toggle_maximize_vertically' اللذان سيقومان "
+"بتكبير/إلغاء تكبير النافذة بالاتجاه المحدد فقط، 'minimize' سيقوم بتصغير "
+"النافذة،  'shade' سيلف النافذة إلى الأعلى، 'menu' سيعرض قائمة النافذة، "
+"'lower' سيضع النافذة خلف بقية النوافذ، و 'none' لن يفعل أي شيء."
 
 #: ../src/metacity.schemas.in.in.h:47
 msgid ""
@@ -1876,11 +1881,11 @@ msgstr "العنصر <%s> غير مسموح به تحت <%s>"
 
 #: ../src/ui/theme-parser.c:1343 ../src/ui/theme-parser.c:1357
 #: ../src/ui/theme-parser.c:1402
-#, fuzzy
 msgid ""
-"Cannot specify both \"button_width\"/\"button_height\" and \"aspect_ratio\" for "
-"buttons"
-msgstr "لا يمكن تخصيص button_width/button_height و نسبة الجانب للأزرار"
+"Cannot specify both \"button_width\"/\"button_height\" and \"aspect_ratio\" "
+"for buttons"
+msgstr ""
+"لا يمكن تخصيص \"button_width\"/\"button_height\" و \"aspect_ratio\" للأزرار"
 
 #: ../src/ui/theme-parser.c:1366
 #, c-format
@@ -2156,109 +2161,97 @@ msgstr "/نوافذ/جميع المرسات"
 msgid "/Windows/Des_ktop"
 msgstr "/نوافذ/ال_مكتب"
 
-#: ../src/ui/theme-viewer.c:136
-msgid "Open another one of these windows"
-msgstr "افتح نافذة أخرى من هذه النوافذ"
-
-#: ../src/ui/theme-viewer.c:143
-msgid "This is a demo button with an 'open' icon"
-msgstr "هذا زر عرض بأيقونة 'افتح'"
-
-#: ../src/ui/theme-viewer.c:150
-msgid "This is a demo button with a 'quit' icon"
-msgstr "هذا زر عرض بأيقونة 'انهي'"
-
-#: ../src/ui/theme-viewer.c:243
+#: ../src/ui/theme-viewer.c:244
 msgid "This is a sample message in a sample dialog"
 msgstr "هذا رسالة عيّنة في حوار عيّنة"
 
-#: ../src/ui/theme-viewer.c:326
+#: ../src/ui/theme-viewer.c:327
 #, c-format
 msgid "Fake menu item %d\n"
 msgstr "عنصر قائمة مستعار %d\n"
 
-#: ../src/ui/theme-viewer.c:360
+#: ../src/ui/theme-viewer.c:361
 msgid "Border-only window"
 msgstr "نافذة ذات حدود فقط"
 
-#: ../src/ui/theme-viewer.c:362
+#: ../src/ui/theme-viewer.c:363
 msgid "Bar"
 msgstr "شريط"
 
-#: ../src/ui/theme-viewer.c:379
+#: ../src/ui/theme-viewer.c:380
 msgid "Normal Application Window"
 msgstr "نافذة تطبيق عادية"
 
-#: ../src/ui/theme-viewer.c:383
+#: ../src/ui/theme-viewer.c:384
 msgid "Dialog Box"
 msgstr "صندوق حوار"
 
-#: ../src/ui/theme-viewer.c:387
+#: ../src/ui/theme-viewer.c:388
 msgid "Modal Dialog Box"
 msgstr "صندوق حوار سائد"
 
-#: ../src/ui/theme-viewer.c:391
+#: ../src/ui/theme-viewer.c:392
 msgid "Utility Palette"
 msgstr "لوحة الأدوات"
 
-#: ../src/ui/theme-viewer.c:395
+#: ../src/ui/theme-viewer.c:396
 msgid "Torn-off Menu"
 msgstr "قائمة مفصولة"
 
-#: ../src/ui/theme-viewer.c:399
+#: ../src/ui/theme-viewer.c:400
 msgid "Border"
 msgstr "حد"
 
-#: ../src/ui/theme-viewer.c:727
+#: ../src/ui/theme-viewer.c:728
 #, c-format
 msgid "Button layout test %d"
 msgstr "تجربة تصميم الأزرار %d"
 
-#: ../src/ui/theme-viewer.c:756
+#: ../src/ui/theme-viewer.c:757
 #, c-format
 msgid "%g milliseconds to draw one window frame"
 msgstr "%g ملي ثانية لرسم إظار واحد للنافذة"
 
-#: ../src/ui/theme-viewer.c:799
+#: ../src/ui/theme-viewer.c:800
 #, c-format
 msgid "Usage: metacity-theme-viewer [THEMENAME]\n"
 msgstr "الإستعمال: metacity-theme-viewer [THEMENAME]\n"
 
-#: ../src/ui/theme-viewer.c:806
+#: ../src/ui/theme-viewer.c:807
 #, c-format
 msgid "Error loading theme: %s\n"
 msgstr "خطأ عند تحميل السِمة: %s\n"
 
-#: ../src/ui/theme-viewer.c:812
+#: ../src/ui/theme-viewer.c:813
 #, c-format
 msgid "Loaded theme \"%s\" in %g seconds\n"
 msgstr "حُمِّلت السِمة \"%s\" في %g ثواني\n"
 
-#: ../src/ui/theme-viewer.c:853
+#: ../src/ui/theme-viewer.c:854
 msgid "Normal Title Font"
 msgstr "خط عنوان عادي"
 
-#: ../src/ui/theme-viewer.c:859
+#: ../src/ui/theme-viewer.c:860
 msgid "Small Title Font"
 msgstr "خط عنوان صغير"
 
-#: ../src/ui/theme-viewer.c:865
+#: ../src/ui/theme-viewer.c:866
 msgid "Large Title Font"
 msgstr "خط عنوان كبير"
 
-#: ../src/ui/theme-viewer.c:870
+#: ../src/ui/theme-viewer.c:871
 msgid "Button Layouts"
 msgstr "تصاميم الأزرار"
 
-#: ../src/ui/theme-viewer.c:875
+#: ../src/ui/theme-viewer.c:876
 msgid "Benchmark"
 msgstr "علامة إهتداء"
 
-#: ../src/ui/theme-viewer.c:922
+#: ../src/ui/theme-viewer.c:923
 msgid "Window Title Goes Here"
 msgstr "عنوان النافذة يكون هنا"
 
-#: ../src/ui/theme-viewer.c:1026
+#: ../src/ui/theme-viewer.c:1027
 #, c-format
 msgid ""
 "Drew %d frames in %g client-side seconds (%g milliseconds per frame) and %g "
@@ -2268,42 +2261,51 @@ msgstr ""
 "دفعت %d إطارات في %g ثوان بإتجاه العميل (%g ملي ثانية لكل إطار) و %g ثواني "
 "بوقت ساعة حائطية مع مصادر خادوم X (%g ملي ثانية لكل إطار)\n"
 
-#: ../src/ui/theme-viewer.c:1245
+#: ../src/ui/theme-viewer.c:1246
 msgid "position expression test returned TRUE but set error"
 msgstr "أرجع إختبار تعبير الموقع TRUE لكنه لم يكتشف الخطأ"
 
-#: ../src/ui/theme-viewer.c:1247
+#: ../src/ui/theme-viewer.c:1248
 msgid "position expression test returned FALSE but didn't set error"
 msgstr "أرجع إختبار تعبير الموقع خطأ لكنه لم يكتشف الخطأ"
 
-#: ../src/ui/theme-viewer.c:1251
+#: ../src/ui/theme-viewer.c:1252
 msgid "Error was expected but none given"
 msgstr "تُرُقِّب خطأ لكن لم يعطى أي خطأ"
 
-#: ../src/ui/theme-viewer.c:1253
+#: ../src/ui/theme-viewer.c:1254
 #, c-format
 msgid "Error %d was expected but %d given"
 msgstr "تُرقّب %d لكن أعطى %d"
 
-#: ../src/ui/theme-viewer.c:1259
+#: ../src/ui/theme-viewer.c:1260
 #, c-format
 msgid "Error not expected but one was returned: %s"
 msgstr "لم يُترقب خطأ لكنه أرجع واحدًا: %s"
 
-#: ../src/ui/theme-viewer.c:1263
+#: ../src/ui/theme-viewer.c:1264
 #, c-format
 msgid "x value was %d, %d was expected"
 msgstr "قيمة س كانت %d، تُرُقِّب %d"
 
-#: ../src/ui/theme-viewer.c:1266
+#: ../src/ui/theme-viewer.c:1267
 #, c-format
 msgid "y value was %d, %d was expected"
 msgstr "قيمة ص كانت %d، تُرُقَِب %d"
 
-#: ../src/ui/theme-viewer.c:1331
+#: ../src/ui/theme-viewer.c:1332
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr "حُلِّلت %d تعابير الإحداثيات في %g ثواني (بمعدّل %g ثوان)\n"
+
+#~ msgid "Open another one of these windows"
+#~ msgstr "افتح نافذة أخرى من هذه النوافذ"
+
+#~ msgid "This is a demo button with an 'open' icon"
+#~ msgstr "هذا زر عرض بأيقونة 'افتح'"
+
+#~ msgid "This is a demo button with a 'quit' icon"
+#~ msgstr "هذا زر عرض بأيقونة 'انهي'"
 
 #~ msgid "Failed to parse message \"%s\" from dialog process\n"
 #~ msgstr "فشل تحليل الرسالة \"%s\" من عملية الحوار\n"
@@ -3436,9 +3438,6 @@ msgstr "حُلِّلت %d تعابير الإحداثيات في %g ثواني (
 
 #~ msgid "Unmaximize Window"
 #~ msgstr "ألغي تكبير النافذة"
-
-#~ msgid "\"%s\" is not responding."
-#~ msgstr "\"%s\" لا يستجيب"
 
 #~ msgid "Title"
 #~ msgstr "العنوان"
