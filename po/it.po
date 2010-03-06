@@ -1,16 +1,16 @@
 # Italian translation of Metacity.
 # This file is distributed under the same license as metacity package
-# Copyright (C) 2002,2003,2004,2005,2006,2007,2008,2009 Free Software Foundation, Inc.
+# Copyright (C) 2002,2003,2004,2005,2006,2007,2008,2009,2010 Free Software Foundation, Inc.
 # Pier Luigi Fiorini <plfiorini@libero.it>, 2002.
 # Lapo Calamandrei <lapo.calamandrei@virgilio.it>, 2003.
-# Luca Ferretti <elle.uca@libero.it>, 2004,2005,2006,2007,2008,2009.
+# Luca Ferretti <lferrett@gnome.org>, 2004,2005,2006,2007,2008,2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: metacity 2.27.x\n"
+"Project-Id-Version: metacity 2.29.x\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=metacity&component=general\n"
-"POT-Creation-Date: 2009-08-24 17:51+0000\n"
-"PO-Revision-Date: 2009-08-28 09:51+0200\n"
-"Last-Translator: Luca Ferretti <elle.uca@libero.it>\n"
+"POT-Creation-Date: 2010-01-21 21:34+0000\n"
+"PO-Revision-Date: 2010-03-06 01:19+0100\n"
+"Last-Translator: Luca Ferretti <lferrett@gnome.org>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -35,28 +35,32 @@ msgstr "Evento campanella"
 msgid "Unknown window information request: %d"
 msgstr "Richiesta informazioni finestra sconosciuta: %d"
 
-#: ../src/core/delete.c:104
+#. Translators: %s is a window title
+#: ../src/core/delete.c:96
 #, c-format
-msgid ""
-"<big><b><tt>%s</tt> is not responding.</b></big>\n"
-"\n"
-"<i>You may choose to wait a short while for it to continue or force the "
-"application to quit entirely.</i>"
-msgstr ""
-"<big><b>Nessuna risposta da<tt>%s</tt>.</b></big>\n"
-"\n"
-"<i>È possibile scegliere di attendere un po' lasciando che l'applicazione "
-"continui, oppure forzare la terminazione dell'applicazione.</i>"
+msgid "<tt>%s</tt> is not responding."
+msgstr "Nessuna risposta da<tt>%s</tt>."
 
-#: ../src/core/delete.c:115
+#: ../src/core/delete.c:101
+#| msgid ""
+#| "<big><b><tt>%s</tt> is not responding.</b></big>\n"
+#| "\n"
+#| "<i>You may choose to wait a short while for it to continue or force the "
+#| "application to quit entirely.</i>"
+msgid ""
+"You may choose to wait a short while for it to continue or force the "
+"application to quit entirely."
+msgstr "È possibile scegliere di attendere un po' lasciando che l'applicazione continui, oppure forzare la terminazione dell'applicazione."
+
+#: ../src/core/delete.c:110
 msgid "_Wait"
 msgstr "_Attendi"
 
-#: ../src/core/delete.c:115
+#: ../src/core/delete.c:110
 msgid "_Force Quit"
 msgstr "_Forza uscita"
 
-#: ../src/core/delete.c:216
+#: ../src/core/delete.c:208
 #, c-format
 msgid "Failed to get hostname: %s\n"
 msgstr "Recupero del nome host non riuscito: %s\n"
@@ -121,7 +125,7 @@ msgstr "Non è stato definito alcuno comando %d.\n"
 msgid "No terminal command has been defined.\n"
 msgstr "Non è stato definito alcun comando di terminale.\n"
 
-#: ../src/core/main.c:130
+#: ../src/core/main.c:131
 #, c-format
 msgid ""
 "metacity %s\n"
@@ -136,53 +140,55 @@ msgstr ""
 "NON è fornita alcuna garanzia; neanche di COMMERCIABILITÀ o\n"
 "APPLICABILITÀ PER UNO SCOPO PARTICOLARE.\n"
 
-#: ../src/core/main.c:268
+#: ../src/core/main.c:269
 msgid "Disable connection to session manager"
 msgstr "Disabilita la connessione al gestore di sessione"
 
-#: ../src/core/main.c:274
+#: ../src/core/main.c:275
 msgid "Replace the running window manager with Metacity"
 msgstr "Sostituisce il window manager in esecuzione con Metacity"
 
-#: ../src/core/main.c:280
+#: ../src/core/main.c:281
 msgid "Specify session management ID"
 msgstr "Specifica l'ID di gestione sessione"
 
-#: ../src/core/main.c:285
+#: ../src/core/main.c:286
 msgid "X Display to use"
 msgstr "Display X da usare"
 
-#: ../src/core/main.c:291
+#: ../src/core/main.c:292
 msgid "Initialize session from savefile"
 msgstr "Inizializza la sessione da file salvato"
 
-#: ../src/core/main.c:297
+#: ../src/core/main.c:298
 msgid "Print version"
 msgstr "Stampa la versione"
 
-#: ../src/core/main.c:303
+#: ../src/core/main.c:304
 msgid "Make X calls synchronous"
 msgstr "Rende le chiamate X sincrone"
 
-#: ../src/core/main.c:309
+#: ../src/core/main.c:310
 msgid "Turn compositing on"
 msgstr "Attiva il compositing"
 
-#: ../src/core/main.c:315
+#: ../src/core/main.c:316
 msgid "Turn compositing off"
 msgstr "Disattiva il compositing"
 
-#: ../src/core/main.c:321
+#: ../src/core/main.c:322
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
-msgstr "Non rendere a schermo intero le finestre che sono massimizzate e che non hanno decorazioni"
+msgstr ""
+"Non rendere a schermo intero le finestre che sono massimizzate e che non "
+"hanno decorazioni"
 
-#: ../src/core/main.c:543
+#: ../src/core/main.c:528
 #, c-format
 msgid "Failed to scan themes directory: %s\n"
 msgstr "Scansione della directory dei temi non riuscita: %s\n"
 
-#: ../src/core/main.c:559
+#: ../src/core/main.c:544
 #, c-format
 msgid ""
 "Could not find a theme! Be sure %s exists and contains the usual themes.\n"
@@ -190,7 +196,7 @@ msgstr ""
 "Non è stato trovato alcun tema. Assicurarsi che %s esista e contenga i temi "
 "standard.\n"
 
-#: ../src/core/main.c:618
+#: ../src/core/main.c:603
 #, c-format
 msgid "Failed to restart: %s\n"
 msgstr "Riavvio non riuscito: %s\n"
@@ -316,13 +322,6 @@ msgstr "Impossibile rilasciare lo schermo %d sul display «%s»\n"
 #. * "disabled" must also stay as it is.
 #.
 #: ../src/core/schema-bindings.c:169
-#| msgid ""
-#| "The format looks like \"<Control>a\" or <Shift><Alt>F1\".\n"
-#| "\n"
-#| "The parser is fairly liberal and allows lower or upper case, and also "
-#| "abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to "
-#| "the special string \"disabled\", then there will be no keybinding for "
-#| "this action."
 msgid ""
 "The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
 "\n"
@@ -339,16 +338,6 @@ msgstr ""
 "alcuna associazione di tasti per questa azione."
 
 #: ../src/core/schema-bindings.c:177
-#| msgid ""
-#| "The format looks like \"<Control>a\" or <Shift><Alt>F1\".\n"
-#| "\n"
-#| "The parser is fairly liberal and allows lower or upper case, and also "
-#| "abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to "
-#| "the special string \"disabled\", then there will be no keybinding for "
-#| "this action.\n"
-#| "\n"
-#| "This keybinding may be reversed by holding down the \"shift\" key; "
-#| "therefore, \"shift\" cannot be one of the keys it uses."
 msgid ""
 "The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
 "\n"
@@ -362,61 +351,66 @@ msgid ""
 msgstr ""
 "Il formato è tipo \"<Control>a\" o \"<Shift><Alt>F1\".\n"
 "\n"
-"Senza particolari restrizioni, è consentito l'utilizzo di lettere maiuscole e minuscole, così come abbreviazioni come \"<Ctl>\" o \"<Ctrl>\". Se l'opzione è impostata alla stringa speciale \"disabled\", allora non c'è alcuna associazione di tasti per questa azione.\n"
+"Senza particolari restrizioni, è consentito l'utilizzo di lettere maiuscole "
+"e minuscole, così come abbreviazioni come \"<Ctl>\" o \"<Ctrl>\". Se "
+"l'opzione è impostata alla stringa speciale \"disabled\", allora non c'è "
+"alcuna associazione di tasti per questa azione.\n"
 "\n"
-"Questa associazioni di tasti può essere invertita tenendo premuto il tasto \"Maiusc\"; per questo motivo \"<Shift>\" non può essere incluso nei tasti da usare."
+"Questa associazioni di tasti può essere invertita tenendo premuto il tasto "
+"\"Maiusc\"; per questo motivo \"<Shift>\" non può essere incluso nei tasti "
+"da usare."
 
-#: ../src/core/session.c:845 ../src/core/session.c:852
+#: ../src/core/session.c:850 ../src/core/session.c:857
 #, c-format
 msgid "Could not create directory '%s': %s\n"
 msgstr "Impossibile creare la directory «%s»: %s\n"
 
-#: ../src/core/session.c:862
+#: ../src/core/session.c:867
 #, c-format
 msgid "Could not open session file '%s' for writing: %s\n"
 msgstr "Impossibile aprire il file di sessione «%s» in scrittura: %s\n"
 
-#: ../src/core/session.c:1003
+#: ../src/core/session.c:1008
 #, c-format
 msgid "Error writing session file '%s': %s\n"
 msgstr "Errore nello scrivere il file di sessione «%s»: %s\n"
 
-#: ../src/core/session.c:1008
+#: ../src/core/session.c:1013
 #, c-format
 msgid "Error closing session file '%s': %s\n"
 msgstr "Errore nel chiudere il file di sessione «%s»: %s\n"
 
 #. oh, just give up
-#: ../src/core/session.c:1101
+#: ../src/core/session.c:1106
 #, c-format
 msgid "Failed to read saved session file %s: %s\n"
 msgstr "Lettura del file della sessione %s non riuscita: %s\n"
 
-#: ../src/core/session.c:1140
+#: ../src/core/session.c:1145
 #, c-format
 msgid "Failed to parse saved session file: %s\n"
 msgstr "Analisi del file della sessione salvato non riuscita: %s\n"
 
-#: ../src/core/session.c:1189
+#: ../src/core/session.c:1194
 #, c-format
 msgid "<metacity_session> attribute seen but we already have the session ID"
 msgstr ""
 "Attributo <metacity_session> individuato, ma è già presente un ID della "
 "sessione"
 
-#: ../src/core/session.c:1202 ../src/core/session.c:1277
-#: ../src/core/session.c:1309 ../src/core/session.c:1381
-#: ../src/core/session.c:1441
+#: ../src/core/session.c:1207 ../src/core/session.c:1282
+#: ../src/core/session.c:1314 ../src/core/session.c:1386
+#: ../src/core/session.c:1446
 #, c-format
 msgid "Unknown attribute %s on <%s> element"
 msgstr "Attributo %s sconosciuto per l'elemento <%s>"
 
-#: ../src/core/session.c:1219
+#: ../src/core/session.c:1224
 #, c-format
 msgid "nested <window> tag"
 msgstr "tag <window> annidato"
 
-#: ../src/core/session.c:1461
+#: ../src/core/session.c:1466
 #, c-format
 msgid "Unknown element %s"
 msgstr "Elemento %s sconosciuto"
@@ -424,7 +418,7 @@ msgstr "Elemento %s sconosciuto"
 # aggiunto funzione
 # si riferisce a quella cosa di gnome-session
 # che però non funziona più dalla 2.24
-#: ../src/core/session.c:1812
+#: ../src/core/session.c:1818
 msgid ""
 "These windows do not support &quot;save current setup&quot; and will have to "
 "be restarted manually next time you log in."
@@ -432,40 +426,40 @@ msgstr ""
 "Queste finestre non supportano la funzione &quot;salva impostazioni "
 "attuali&quot; e dovranno essere riavviate manualmente al prossimo accesso."
 
-#: ../src/core/util.c:103
+#: ../src/core/util.c:101
 #, c-format
 msgid "Failed to open debug log: %s\n"
 msgstr "Apertura nel file di registro di debug non riuscita: %s\n"
 
-#: ../src/core/util.c:113
+#: ../src/core/util.c:111
 #, c-format
 msgid "Failed to fdopen() log file %s: %s\n"
 msgstr "Esecuzione di fdopen() sul file di registro %s non riuscita: %s\n"
 
-#: ../src/core/util.c:119
+#: ../src/core/util.c:117
 #, c-format
 msgid "Opened log file %s\n"
 msgstr "File di registro %s aperto\n"
 
-#: ../src/core/util.c:138 ../src/tools/metacity-message.c:176
+#: ../src/core/util.c:136 ../src/tools/metacity-message.c:176
 #, c-format
 msgid "Metacity was compiled without support for verbose mode\n"
 msgstr ""
 "Metacity è stato compilato escludendo il supporto per la modalità prolissa\n"
 
-#: ../src/core/util.c:238
+#: ../src/core/util.c:236
 msgid "Window manager: "
 msgstr "Window manager: "
 
-#: ../src/core/util.c:390
+#: ../src/core/util.c:388
 msgid "Bug in window manager: "
 msgstr "Bug nel window manager: "
 
-#: ../src/core/util.c:423
+#: ../src/core/util.c:421
 msgid "Window manager warning: "
 msgstr "Avviso del window manager: "
 
-#: ../src/core/util.c:451
+#: ../src/core/util.c:449
 msgid "Window manager error: "
 msgstr "Errore del window manager: "
 
@@ -477,7 +471,7 @@ msgid "Metacity"
 msgstr "Metacity"
 
 #. first time through
-#: ../src/core/window.c:5627
+#: ../src/core/window.c:5642
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -493,7 +487,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/core/window.c:6192
+#: ../src/core/window.c:6207
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
@@ -536,7 +530,7 @@ msgstr "%s (come altro utente)"
 
 # Sì, direi che è oscuro  -Luca
 #
-#: ../src/core/window-props.c:1429
+#: ../src/core/window-props.c:1430
 #, c-format
 msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
 msgstr "Specificato un WM_TRANSIENT_FOR finestra 0x%lx non valido per %s.\n"
@@ -950,19 +944,19 @@ msgstr "Solleva automaticamente la finestra col focus"
 
 # Mi sa che l'originale è sbagliato aperto un bug
 #: ../src/metacity.schemas.in.in.h:9
+#| msgid ""
+#| "Clicking a window while holding down this modifier key will move the "
+#| "window (left click), resize the window (middle click), or show the window "
+#| "menu (right click). The left and right operations may be swapped using "
+#| "the \"mouse_button_resize\" key. Modifier is expressed as \"&lt;Alt&gt;\" "
+#| "or \"&lt;Super&gt;\" for example."
 msgid ""
 "Clicking a window while holding down this modifier key will move the window "
 "(left click), resize the window (middle click), or show the window menu "
-"(right click). The left and right operations may be swapped using the "
-"\"mouse_button_resize\" key. Modifier is expressed as \"&lt;Alt&gt;\" or "
-"\"&lt;Super&gt;\" for example."
-msgstr ""
-"Facendo clic su una finestra mentre viene tenuto premuto questo tasto "
-"modificatore, è possibile muovere la finestra (clic-sinistro), "
-"ridimensionare la finestra (clic-centrale) o visualizzare il menù finestra "
-"(clic-destro). Le operazioni col sinistro e destro possono essere invertite "
-"usando la chiave \"mouse_button_resize\". Il modificatore è espresso come "
-"\"&lt;Alt&gt;\" o \"&lt;Super&gt;\"."
+"(right click). The middle and right click operations may be swapped using "
+"the \"resize_with_right_button\" key. Modifier is expressed as \"&lt;Alt&gt;"
+"\" or \"&lt;Super&gt;\" for example."
+msgstr "Facendo clic su una finestra mentre viene tenuto premuto questo tasto modificatore è possibile muovere la finestra (clic sinistro), ridimensionare la finestra (clic centrale) o visualizzare il menù finestra (clic destro). Le operazioni con il clic centrale e destro possono essere invertite usando la chiave \"resize_with_right_button\". Il modificatore è espresso come \"&lt;Alt&gt;\" o \"&lt;Super&gt;\"."
 
 #: ../src/metacity.schemas.in.in.h:10
 msgid "Commands to run in response to keybindings"
@@ -2367,109 +2361,97 @@ msgstr "/Finestre/Tutti i doc_k"
 msgid "/Windows/Des_ktop"
 msgstr "/Finestre/D_esktop"
 
-#: ../src/ui/theme-viewer.c:136
-msgid "Open another one of these windows"
-msgstr "Apre un'altra di queste finestre"
-
-#: ../src/ui/theme-viewer.c:143
-msgid "This is a demo button with an 'open' icon"
-msgstr "Questo è un pulsante di prova con un'icona «Apri»"
-
-#: ../src/ui/theme-viewer.c:150
-msgid "This is a demo button with a 'quit' icon"
-msgstr "Questo è un pulsante di prova con un'icona «Esci»"
-
-#: ../src/ui/theme-viewer.c:243
+#: ../src/ui/theme-viewer.c:244
 msgid "This is a sample message in a sample dialog"
 msgstr "Questo è un messaggio d'esempio in una finestra di dialogo d'esempio"
 
-#: ../src/ui/theme-viewer.c:326
+#: ../src/ui/theme-viewer.c:327
 #, c-format
 msgid "Fake menu item %d\n"
 msgstr "Voce di menu finta n.%d\n"
 
-#: ../src/ui/theme-viewer.c:360
+#: ../src/ui/theme-viewer.c:361
 msgid "Border-only window"
 msgstr "Finestra solo-bordo"
 
-#: ../src/ui/theme-viewer.c:362
+#: ../src/ui/theme-viewer.c:363
 msgid "Bar"
 msgstr "Barra"
 
-#: ../src/ui/theme-viewer.c:379
+#: ../src/ui/theme-viewer.c:380
 msgid "Normal Application Window"
 msgstr "Finestra applicazione normale"
 
-#: ../src/ui/theme-viewer.c:383
+#: ../src/ui/theme-viewer.c:384
 msgid "Dialog Box"
 msgstr "Casella di dialogo"
 
-#: ../src/ui/theme-viewer.c:387
+#: ../src/ui/theme-viewer.c:388
 msgid "Modal Dialog Box"
 msgstr "Casella di dialogo modale"
 
-#: ../src/ui/theme-viewer.c:391
+#: ../src/ui/theme-viewer.c:392
 msgid "Utility Palette"
 msgstr "Tavolozza di utilità"
 
-#: ../src/ui/theme-viewer.c:395
+#: ../src/ui/theme-viewer.c:396
 msgid "Torn-off Menu"
 msgstr "Menù staccato"
 
-#: ../src/ui/theme-viewer.c:399
+#: ../src/ui/theme-viewer.c:400
 msgid "Border"
 msgstr "Bordo"
 
-#: ../src/ui/theme-viewer.c:727
+#: ../src/ui/theme-viewer.c:728
 #, c-format
 msgid "Button layout test %d"
 msgstr "Test n.%d disposizione pulsanti"
 
-#: ../src/ui/theme-viewer.c:756
+#: ../src/ui/theme-viewer.c:757
 #, c-format
 msgid "%g milliseconds to draw one window frame"
 msgstr "%g millisecondi per disegnare una cornice di finestra"
 
-#: ../src/ui/theme-viewer.c:799
+#: ../src/ui/theme-viewer.c:800
 #, c-format
 msgid "Usage: metacity-theme-viewer [THEMENAME]\n"
 msgstr "Uso: metacity-theme-viewer [NOME_TEMA]\n"
 
-#: ../src/ui/theme-viewer.c:806
+#: ../src/ui/theme-viewer.c:807
 #, c-format
 msgid "Error loading theme: %s\n"
 msgstr "Errore nel caricare il tema: %s\n"
 
-#: ../src/ui/theme-viewer.c:812
+#: ../src/ui/theme-viewer.c:813
 #, c-format
 msgid "Loaded theme \"%s\" in %g seconds\n"
 msgstr "Tema «%s» caricato in %g secondi\n"
 
-#: ../src/ui/theme-viewer.c:853
+#: ../src/ui/theme-viewer.c:854
 msgid "Normal Title Font"
 msgstr "Carattere titolo normale"
 
-#: ../src/ui/theme-viewer.c:859
+#: ../src/ui/theme-viewer.c:860
 msgid "Small Title Font"
 msgstr "Carattere titolo piccolo"
 
-#: ../src/ui/theme-viewer.c:865
+#: ../src/ui/theme-viewer.c:866
 msgid "Large Title Font"
 msgstr "Carattere titolo grande"
 
-#: ../src/ui/theme-viewer.c:870
+#: ../src/ui/theme-viewer.c:871
 msgid "Button Layouts"
 msgstr "Disposizione pulsanti"
 
-#: ../src/ui/theme-viewer.c:875
+#: ../src/ui/theme-viewer.c:876
 msgid "Benchmark"
 msgstr "Prestazioni"
 
-#: ../src/ui/theme-viewer.c:922
+#: ../src/ui/theme-viewer.c:923
 msgid "Window Title Goes Here"
 msgstr "Qui va il titolo della finestra"
 
-#: ../src/ui/theme-viewer.c:1026
+#: ../src/ui/theme-viewer.c:1027
 #, c-format
 msgid ""
 "Drew %d frames in %g client-side seconds (%g milliseconds per frame) and %g "
@@ -2480,41 +2462,50 @@ msgstr ""
 "e %g secondi di wall clock time, incluse le risorse del server X (%g "
 "millisecondi per cornice)\n"
 
-#: ../src/ui/theme-viewer.c:1245
+#: ../src/ui/theme-viewer.c:1246
 msgid "position expression test returned TRUE but set error"
 msgstr "test espressione posizione ha restituito TRUE, ma impostato errore"
 
-#: ../src/ui/theme-viewer.c:1247
+#: ../src/ui/theme-viewer.c:1248
 msgid "position expression test returned FALSE but didn't set error"
 msgstr ""
 "test espressione posizione ha restituito FALSE, ma non ha impostato errore"
 
-#: ../src/ui/theme-viewer.c:1251
+#: ../src/ui/theme-viewer.c:1252
 msgid "Error was expected but none given"
 msgstr "Errore atteso, ma non fornito"
 
-#: ../src/ui/theme-viewer.c:1253
+#: ../src/ui/theme-viewer.c:1254
 #, c-format
 msgid "Error %d was expected but %d given"
 msgstr "Atteso errore %d, ma fornito %d"
 
-#: ../src/ui/theme-viewer.c:1259
+#: ../src/ui/theme-viewer.c:1260
 #, c-format
 msgid "Error not expected but one was returned: %s"
 msgstr "Errore non atteso, ma è stato restituito: %s"
 
-#: ../src/ui/theme-viewer.c:1263
+#: ../src/ui/theme-viewer.c:1264
 #, c-format
 msgid "x value was %d, %d was expected"
 msgstr "valore x era %d, era atteso %d"
 
-#: ../src/ui/theme-viewer.c:1266
+#: ../src/ui/theme-viewer.c:1267
 #, c-format
 msgid "y value was %d, %d was expected"
 msgstr "valore y era %d, era atteso %d"
 
-#: ../src/ui/theme-viewer.c:1331
+#: ../src/ui/theme-viewer.c:1332
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr ""
 "%d espressioni di coordinate analizzate in %g secondi (%g secondi in media)\n"
+
+#~ msgid "Open another one of these windows"
+#~ msgstr "Apre un'altra di queste finestre"
+
+#~ msgid "This is a demo button with an 'open' icon"
+#~ msgstr "Questo è un pulsante di prova con un'icona «Apri»"
+
+#~ msgid "This is a demo button with a 'quit' icon"
+#~ msgstr "Questo è un pulsante di prova con un'icona «Esci»"
