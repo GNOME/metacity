@@ -5,14 +5,14 @@
 # Tino Meinen <a.t.meinen@chello.nl>, 2003–2004, 2006, 2008.
 # Reinout van Schouwen <reinouts@gnome.org>, 2003–2007.
 # Michiel Sikkes <michiels@gnome.org>, 2005.
-# Wouter Bolsterlee <wbolster@gnome.org>, 2006–2009.
+# Wouter Bolsterlee <wbolster@gnome.org>, 2006–2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-16 19:36+0100\n"
-"PO-Revision-Date: 2009-02-16 19:37+0100\n"
+"POT-Creation-Date: 2010-03-20 17:32+0100\n"
+"PO-Revision-Date: 2010-03-20 17:32+0100\n"
 "Last-Translator: Wouter Bolsterlee <wbolster@gnome.org>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
@@ -28,33 +28,38 @@ msgstr "Werkblad"
 msgid "Window Management"
 msgstr "Vensterbeheer"
 
+#: ../src/core/bell.c:294
+msgid "Bell event"
+msgstr "Bel-evenement"
+
 #: ../src/core/core.c:206
 #, c-format
 msgid "Unknown window information request: %d"
 msgstr "Onbekende vensterinformatieaanvraag: %d"
 
-#: ../src/core/delete.c:104
+#. Translators: %s is a window title
+#: ../src/core/delete.c:96
 #, c-format
-msgid ""
-"<big><b><tt>%s</tt> is not responding.</b></big>\n"
-"\n"
-"<i>You may choose to wait a short while for it to continue or force the "
-"application to quit entirely.</i>"
-msgstr ""
-"<big><b><tt>%s</tt> reageert niet.</b></big>\n"
-"\n"
-"<i>U kunt ervoor kiezen even te wachten totdat het doorgaat of de toepassing "
-"dwingen om helemaal af te sluiten.</i>"
+msgid "<tt>%s</tt> is not responding."
+msgstr "<tt>%s</tt> reageert niet."
 
-#: ../src/core/delete.c:115 ../src/ui/metacity-dialog.c:107
+#: ../src/core/delete.c:101
+msgid ""
+"You may choose to wait a short while for it to continue or force the "
+"application to quit entirely."
+msgstr ""
+"U kunt ervoor kiezen even te wachten totdat het doorgaat of de toepassing "
+"dwingen om helemaal af te sluiten."
+
+#: ../src/core/delete.c:110
 msgid "_Wait"
 msgstr "_Wachten"
 
-#: ../src/core/delete.c:115 ../src/ui/metacity-dialog.c:109
+#: ../src/core/delete.c:110
 msgid "_Force Quit"
 msgstr "Ge_forceerd afsluiten"
 
-#: ../src/core/delete.c:216
+#: ../src/core/delete.c:208
 #, c-format
 msgid "Failed to get hostname: %s\n"
 msgstr "Ophalen hostnaam mislukt: %s\n"
@@ -119,7 +124,7 @@ msgstr "Er is geen opdracht %d gedefinieerd.\n"
 msgid "No terminal command has been defined.\n"
 msgstr "Er is geen opdracht voor de terminal gedefinieerd.\n"
 
-#: ../src/core/main.c:130
+#: ../src/core/main.c:131
 #, c-format
 msgid ""
 "metacity %s\n"
@@ -135,50 +140,57 @@ msgstr ""
 "EEN BEPAALD DOEL.\n"
 
 # te zien via: metacity --help
-#: ../src/core/main.c:267
+#: ../src/core/main.c:269
 msgid "Disable connection to session manager"
 msgstr "Schakel de verbinding met het sessiebeheer uit"
 
 # met:"'t" ipv "het" past het net op 1 regel in gnome-terminal
-#: ../src/core/main.c:273
+#: ../src/core/main.c:275
 msgid "Replace the running window manager with Metacity"
 msgstr "Vervang 't huidige schermbeheerprogramma door Metacity"
 
-#: ../src/core/main.c:279
+#: ../src/core/main.c:281
 msgid "Specify session management ID"
 msgstr "Specificeer de ID van het sessiebeheer"
 
-#: ../src/core/main.c:284
+#: ../src/core/main.c:286
 msgid "X Display to use"
 msgstr "De te gebruiken X-weergave"
 
-#: ../src/core/main.c:290
+#: ../src/core/main.c:292
 msgid "Initialize session from savefile"
 msgstr "Initialiseer de sessie middels een opslagbestand"
 
-#: ../src/core/main.c:296
+#: ../src/core/main.c:298
 msgid "Print version"
 msgstr "Toon versie-informatie"
 
-#: ../src/core/main.c:302
+#: ../src/core/main.c:304
 msgid "Make X calls synchronous"
 msgstr "Zorg dat X-aanroepen synchroon zijn"
 
 # technotalk
-#: ../src/core/main.c:308
+#: ../src/core/main.c:310
 msgid "Turn compositing on"
 msgstr "‘Compositing’ inschakelen"
 
-#: ../src/core/main.c:314
+#: ../src/core/main.c:316
 msgid "Turn compositing off"
 msgstr "‘Compositing’ uitschakelen"
 
-#: ../src/core/main.c:536
+#: ../src/core/main.c:322
+msgid ""
+"Don't make fullscreen windows that are maximized and have no decorations"
+msgstr ""
+"Geen gemaximaliseerde vensters op het volledige scherm maken zonder "
+"vensterdecoratie"
+
+#: ../src/core/main.c:528
 #, c-format
 msgid "Failed to scan themes directory: %s\n"
 msgstr "Kon themamap niet scannen: %s\n"
 
-#: ../src/core/main.c:552
+#: ../src/core/main.c:544
 #, c-format
 msgid ""
 "Could not find a theme! Be sure %s exists and contains the usual themes.\n"
@@ -186,7 +198,7 @@ msgstr ""
 "Kon geen thema vinden! Zorg ervoor dat %s bestaat en de gebruikelijke "
 "thema's bevat.\n"
 
-#: ../src/core/main.c:608
+#: ../src/core/main.c:603
 #, c-format
 msgid "Failed to restart: %s\n"
 msgstr "Herstarten mislukt: %s\n"
@@ -202,24 +214,24 @@ msgstr "Herstarten mislukt: %s\n"
 #. * (Empty comment follows so the translators don't see this.)
 #.
 #.
-#: ../src/core/prefs.c:505 ../src/core/prefs.c:660
+#: ../src/core/prefs.c:508 ../src/core/prefs.c:663
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
 msgstr "GConf-sleutel '%s' is ingesteld op een ongeldige waarde\n"
 
-#: ../src/core/prefs.c:586 ../src/core/prefs.c:829
+#: ../src/core/prefs.c:589 ../src/core/prefs.c:832
 #, c-format
 msgid "%d stored in GConf key %s is out of range %d to %d\n"
 msgstr "%d opgeslagen in GConf-sleutel %s valt buiten het bereik %d tot %d\n"
 
-#: ../src/core/prefs.c:630 ../src/core/prefs.c:707 ../src/core/prefs.c:755
-#: ../src/core/prefs.c:819 ../src/core/prefs.c:1112 ../src/core/prefs.c:1128
-#: ../src/core/prefs.c:1145 ../src/core/prefs.c:1161
+#: ../src/core/prefs.c:633 ../src/core/prefs.c:710 ../src/core/prefs.c:758
+#: ../src/core/prefs.c:822 ../src/core/prefs.c:1115 ../src/core/prefs.c:1131
+#: ../src/core/prefs.c:1148 ../src/core/prefs.c:1164
 #, c-format
 msgid "GConf key \"%s\" is set to an invalid type\n"
 msgstr "GConf-sleutel ‘%s’ is op een ongeldig type ingesteld\n"
 
-#: ../src/core/prefs.c:1231
+#: ../src/core/prefs.c:1234
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -227,12 +239,12 @@ msgstr ""
 "Werkoplossing voor gebroken toepassingen uitgezet. Bepaalde toepassingen "
 "zullen niet naar behoren functioneren.\n"
 
-#: ../src/core/prefs.c:1302
+#: ../src/core/prefs.c:1305
 #, c-format
 msgid "Could not parse font description \"%s\" from GConf key %s\n"
 msgstr "Kon lettertypebeschrijving ‘%s’ niet verwerken van Gconf-sleutel %s\n"
 
-#: ../src/core/prefs.c:1364
+#: ../src/core/prefs.c:1367
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -241,17 +253,17 @@ msgstr ""
 "‘%s’, gevonden in de configuratiedatabase, is geen geldige waarde voor de "
 "muisknop-optietoets\n"
 
-#: ../src/core/prefs.c:1782
+#: ../src/core/prefs.c:1788
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr "Fout bij het instellen van het aantal werkbladen op %d: %s\n"
 
-#: ../src/core/prefs.c:1971 ../src/core/prefs.c:2474
+#: ../src/core/prefs.c:1953 ../src/core/prefs.c:2456
 #, c-format
 msgid "Workspace %d"
 msgstr "Werkblad %d"
 
-#: ../src/core/prefs.c:2001 ../src/core/prefs.c:2179
+#: ../src/core/prefs.c:1983 ../src/core/prefs.c:2161
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -260,22 +272,22 @@ msgstr ""
 "‘%s’ in de configuratiedatabase is geen geldige waarde voor toetsbinding ‘%"
 "s’\n"
 
-#: ../src/core/prefs.c:2555
+#: ../src/core/prefs.c:2537
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr "Fout bij het instellen van de naam voor werkblad %d op ‘%s’: %s\n"
 
-#: ../src/core/prefs.c:2753
+#: ../src/core/prefs.c:2741
 #, c-format
 msgid "Error setting compositor status: %s\n"
 msgstr "Fout bij het instellen van ‘compositor’-status: %s\n"
 
-#: ../src/core/screen.c:350
+#: ../src/core/screen.c:357
 #, c-format
 msgid "Screen %d on display '%s' is invalid\n"
 msgstr "Scherm %d op display '%s' is ongeldig\n"
 
-#: ../src/core/screen.c:366
+#: ../src/core/screen.c:373
 #, c-format
 msgid ""
 "Screen %d on display \"%s\" already has a window manager; try using the --"
@@ -284,18 +296,18 @@ msgstr ""
 "Scherm %d op display ‘%s’ heeft al een windowmanager; probeer de optie: --"
 "replace te gebruiken om de huidige windowmanager te vervangen.\n"
 
-#: ../src/core/screen.c:393
+#: ../src/core/screen.c:400
 #, c-format
 msgid ""
 "Could not acquire window manager selection on screen %d display \"%s\"\n"
 msgstr "Kon windowmanager-selectie niet verkrijgen op scherm %d display ‘%s’\n"
 
-#: ../src/core/screen.c:451
+#: ../src/core/screen.c:458
 #, c-format
 msgid "Screen %d on display \"%s\" already has a window manager\n"
 msgstr "Scherm %d op display ‘%s’ heeft al een windowmanager\n"
 
-#: ../src/core/screen.c:661
+#: ../src/core/screen.c:668
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "Kon scherm %d op display ‘%s’ niet vrijmaken\n"
@@ -306,7 +318,7 @@ msgstr "Kon scherm %d op display ‘%s’ niet vrijmaken\n"
 #.
 #: ../src/core/schema-bindings.c:169
 msgid ""
-"The format looks like \"<Control>a\" or <Shift><Alt>F1\".\n"
+"The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
 "\n"
 "The parser is fairly liberal and allows lower or upper case, and also "
 "abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to the "
@@ -321,7 +333,7 @@ msgstr ""
 
 #: ../src/core/schema-bindings.c:177
 msgid ""
-"The format looks like \"<Control>a\" or <Shift><Alt>F1\".\n"
+"The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
 "\n"
 "The parser is fairly liberal and allows lower or upper case, and also "
 "abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to the "
@@ -339,114 +351,113 @@ msgstr ""
 "Deze sneltoets kan omgekeerd worden door de Shift-toets ingedrukt te houden. "
 "Om die reden mag Shift geen onderdeel uitmaken van de toetscombinatie."
 
-#: ../src/core/session.c:845 ../src/core/session.c:852
+#: ../src/core/session.c:850 ../src/core/session.c:857
 #, c-format
 msgid "Could not create directory '%s': %s\n"
 msgstr "Kon map '%s' niet aanmaken: %s\n"
 
-#: ../src/core/session.c:862
+#: ../src/core/session.c:867
 #, c-format
 msgid "Could not open session file '%s' for writing: %s\n"
 msgstr "Kon sessiebestand '%s' niet openen voor schrijven: %s\n"
 
-#: ../src/core/session.c:1003
+#: ../src/core/session.c:1008
 #, c-format
 msgid "Error writing session file '%s': %s\n"
 msgstr "Fout bij schrijven sessiebestand '%s': %s\n"
 
-#: ../src/core/session.c:1008
+#: ../src/core/session.c:1013
 #, c-format
 msgid "Error closing session file '%s': %s\n"
 msgstr "Fout bij sluiten sessiebestand '%s': %s\n"
 
 #. oh, just give up
-#: ../src/core/session.c:1101
+#: ../src/core/session.c:1106
 #, c-format
 msgid "Failed to read saved session file %s: %s\n"
 msgstr "Lezen van opgeslagen sessiebestand %s mislukt: %s\n"
 
-#: ../src/core/session.c:1140
+#: ../src/core/session.c:1145
 #, c-format
 msgid "Failed to parse saved session file: %s\n"
 msgstr "Verwerken van opgeslagen sessiebestand mislukt: %s\n"
 
-#: ../src/core/session.c:1189
+#: ../src/core/session.c:1194
 #, c-format
 msgid "<metacity_session> attribute seen but we already have the session ID"
 msgstr ""
 "<metacity_session>-attribuut opgemerkt maar we hebben reeds de sessie-ID"
 
-#: ../src/core/session.c:1202 ../src/core/session.c:1277
-#: ../src/core/session.c:1309 ../src/core/session.c:1381
-#: ../src/core/session.c:1441
+#: ../src/core/session.c:1207 ../src/core/session.c:1282
+#: ../src/core/session.c:1314 ../src/core/session.c:1386
+#: ../src/core/session.c:1446
 #, c-format
 msgid "Unknown attribute %s on <%s> element"
 msgstr "Onbekend attribuut ‘%s’ op <%s>-element"
 
-#: ../src/core/session.c:1219
+#: ../src/core/session.c:1224
 #, c-format
 msgid "nested <window> tag"
 msgstr "ingebedde <window>-markering"
 
-#: ../src/core/session.c:1461
+#: ../src/core/session.c:1466
 #, c-format
 msgid "Unknown element %s"
 msgstr "Onbekend element %s"
 
-#: ../src/core/session.c:1887
-#, c-format
+#: ../src/core/session.c:1818
 msgid ""
-"Error launching metacity-dialog to warn about apps that don't support "
-"session management: %s\n"
+"These windows do not support &quot;save current setup&quot; and will have to "
+"be restarted manually next time you log in."
 msgstr ""
-"Fout bij opstarten metacity-dialoogvenster waarin wordt gewaarschuwd voor "
-"toepassingen die sessie-management niet ondersteunen: %s\n"
+"Deze vensters ondersteunen het opslaan van de huidige instellingen niet en "
+"zullen bij een volgende sessie opnieuw moeten worden opgestart."
 
-#: ../src/core/util.c:103
+#: ../src/core/util.c:101
 #, c-format
 msgid "Failed to open debug log: %s\n"
 msgstr "Debug-logboek openen mislukt: %s\n"
 
-#: ../src/core/util.c:113
+#: ../src/core/util.c:111
 #, c-format
 msgid "Failed to fdopen() log file %s: %s\n"
 msgstr "Logboek %s openen via fdopen() mislukt: %s\n"
 
-#: ../src/core/util.c:119
+#: ../src/core/util.c:117
 #, c-format
 msgid "Opened log file %s\n"
 msgstr "Logboek %s geopend\n"
 
-#: ../src/core/util.c:138 ../src/tools/metacity-message.c:176
+#: ../src/core/util.c:136 ../src/tools/metacity-message.c:176
 #, c-format
 msgid "Metacity was compiled without support for verbose mode\n"
 msgstr "Metacity is gecompileerd zonder ondersteuning voor verbose-mode\n"
 
-#: ../src/core/util.c:238
+#: ../src/core/util.c:236
 msgid "Window manager: "
 msgstr "Windowmanager:"
 
-#: ../src/core/util.c:390
+#: ../src/core/util.c:388
 msgid "Bug in window manager: "
 msgstr "Fout in windowmanager:"
 
-#: ../src/core/util.c:423
+#: ../src/core/util.c:421
 msgid "Window manager warning: "
 msgstr "Windowmanager waarschuwing:"
 
-#: ../src/core/util.c:451
+#: ../src/core/util.c:449
 msgid "Window manager error: "
 msgstr "Windowmanager fout:"
 
 #. Translators: This is the title used on dialog boxes
 #. eof all-keybindings.h
-#: ../src/core/util.c:581 ../src/metacity.desktop.in.h:1
+#: ../src/core/util.c:570 ../src/metacity.desktop.in.h:1
 #: ../src/metacity-wm.desktop.in.h:1
 msgid "Metacity"
 msgstr "Metacity"
 
 #. first time through
-#: ../src/core/window.c:5627
+#: ../src/core/window.c:5642
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -462,7 +473,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/core/window.c:6192
+#: ../src/core/window.c:6207
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
@@ -472,17 +483,38 @@ msgstr ""
 "stelt wel min-grootte %d x %d en max-grootte %d x %d in; dit is niet "
 "logisch.\n"
 
-#: ../src/core/window-props.c:260
+#: ../src/core/window-props.c:244
 #, c-format
 msgid "Application set a bogus _NET_WM_PID %lu\n"
 msgstr "Toepassing heeft een overbodige _NET_WM_PID %lu ingesteld\n"
 
-#: ../src/core/window-props.c:377
+#. Translators: the title of a window from another machine
+#: ../src/core/window-props.c:388
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (op %s)"
 
-#: ../src/core/window-props.c:1358
+#. Simple case-- don't bother to look it up.  It's root.
+#: ../src/core/window-props.c:420
+#, c-format
+msgid "%s (as superuser)"
+msgstr "%s (als beheerder)"
+
+#. Translators: the title of a window owned by another user
+#. * on this machine
+#: ../src/core/window-props.c:438
+#, c-format
+msgid "%s (as %s)"
+msgstr "%s (als %s)"
+
+#. Translators: the title of a window owned by another user
+#. * on this machine, whose name we don't know
+#: ../src/core/window-props.c:444
+#, c-format
+msgid "%s (as another user)"
+msgstr "%s (als een andere gebruiker)"
+
+#: ../src/core/window-props.c:1430
 #, c-format
 msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
 msgstr "Ongeldig WM_TRANSIENT_FOR venster 0x%lx opgegeven voor %s.\n"
@@ -884,16 +916,16 @@ msgstr "Verhoogt automatisch het aandachtsvenster"
 msgid ""
 "Clicking a window while holding down this modifier key will move the window "
 "(left click), resize the window (middle click), or show the window menu "
-"(right click). The left and right operations may be swapped using the "
-"\"mouse_button_resize\" key. Modifier is expressed as \"&lt;Alt&gt;\" or "
-"\"&lt;Super&gt;\" for example."
+"(right click). The middle and right click operations may be swapped using "
+"the \"resize_with_right_button\" key. Modifier is expressed as \"&lt;Alt&gt;"
+"\" or \"&lt;Super&gt;\" for example."
 msgstr ""
 "Klikken op een venster tijdens het inhouden van deze toets zal dit venster "
 "verplaatsen (linker muisknop), de grootte van het venster aanpassen "
 "(middelste muisknop), of het venstermenu tonen (rechter muisknop). De acties "
 "van de middelste en rechtermuisknop kunnen omgewisseld worden met de sleutel "
-"‘mouse_button_resize’. De toets dient opgegeven met bijvoorbeeld ‘&lt;"
-"Alt&gt;’ of ‘&lt;Super&gt;’."
+"‘resize_with_right_button’. De Modifier-toets kan opgegeven worden met "
+"bijvoorbeeld ‘&lt;Alt&gt;’ of ‘&lt;Super&gt;’."
 
 #: ../src/metacity.schemas.in.in.h:10
 msgid "Commands to run in response to keybindings"
@@ -1544,55 +1576,6 @@ msgstr "Mod4"
 msgid "Mod5"
 msgstr "Mod5"
 
-#: ../src/ui/metacity-dialog.c:50 ../src/ui/theme-parser.c:522
-#, c-format
-msgid "Could not parse \"%s\" as an integer"
-msgstr "Kon ‘%s’ niet verwerken als geheel getal"
-
-#: ../src/ui/metacity-dialog.c:57 ../src/ui/theme-parser.c:531
-#: ../src/ui/theme-parser.c:586
-#, c-format
-msgid "Did not understand trailing characters \"%s\" in string \"%s\""
-msgstr "Niet begrepen: de laatste tekens ‘%s’ in ‘%s’"
-
-#: ../src/ui/metacity-dialog.c:90
-#, c-format
-msgid "\"%s\" is not responding."
-msgstr "‘%s’ reageert niet."
-
-#: ../src/ui/metacity-dialog.c:97
-msgid ""
-"You may choose to wait a short while for it to continue or force the "
-"application to quit entirely."
-msgstr ""
-"U kunt ervoor kiezen even te wachten totdat het doorgaat of de toepassing "
-"dwingen om helemaal af te sluiten."
-
-#: ../src/ui/metacity-dialog.c:206
-msgid "Title"
-msgstr "Titel"
-
-#: ../src/ui/metacity-dialog.c:218
-msgid "Class"
-msgstr "Klasse"
-
-#: ../src/ui/metacity-dialog.c:244
-msgid ""
-"These windows do not support \"save current setup\" and will have to be "
-"restarted manually next time you log in."
-msgstr ""
-"Deze vensters ondersteunen niet ‘huidige instellingen opslaan’ en zullen bij "
-"een volgende sessie opnieuw moeten worden opgestart."
-
-#: ../src/ui/metacity-dialog.c:310
-#, c-format
-msgid ""
-"There was an error running \"%s\":\n"
-"%s."
-msgstr ""
-"Er trad een fout op bij het uitvoeren van ‘%s’:\n"
-"%s."
-
 #. Translators: This represents the size of a window.  The first number is
 #. * the width of the window and the second is the height.
 #.
@@ -1894,6 +1877,16 @@ msgstr "Attribuut ‘%s’ twee keer herhaald op hetzelfde <%s>-element"
 #, c-format
 msgid "Attribute \"%s\" is invalid on <%s> element in this context"
 msgstr "Attribuut ‘%s’ is ongeldig op een <%s>-element in deze context"
+
+#: ../src/ui/theme-parser.c:522
+#, c-format
+msgid "Could not parse \"%s\" as an integer"
+msgstr "Kon ‘%s’ niet verwerken als geheel getal"
+
+#: ../src/ui/theme-parser.c:531 ../src/ui/theme-parser.c:586
+#, c-format
+msgid "Did not understand trailing characters \"%s\" in string \"%s\""
+msgstr "Niet begrepen: de laatste tekens ‘%s’ in ‘%s’"
 
 #: ../src/ui/theme-parser.c:541
 #, c-format
@@ -2283,109 +2276,97 @@ msgstr "/Vensters/Alle panelen"
 msgid "/Windows/Des_ktop"
 msgstr "/Vensters/_Bureaublad"
 
-#: ../src/ui/theme-viewer.c:135
-msgid "Open another one of these windows"
-msgstr "Nog zo'n venster openen"
-
-#: ../src/ui/theme-viewer.c:142
-msgid "This is a demo button with an 'open' icon"
-msgstr "Dit is een demoknop met een 'openen'-pictogram"
-
-#: ../src/ui/theme-viewer.c:149
-msgid "This is a demo button with a 'quit' icon"
-msgstr "Dit is een demoknop met een 'afsluiten'-pictogram"
-
-#: ../src/ui/theme-viewer.c:242
+#: ../src/ui/theme-viewer.c:244
 msgid "This is a sample message in a sample dialog"
 msgstr "Dit is een voorbeeldbericht in een voorbeelddialoogvenster"
 
-#: ../src/ui/theme-viewer.c:325
+#: ../src/ui/theme-viewer.c:327
 #, c-format
 msgid "Fake menu item %d\n"
 msgstr "Nepmenu-item %d\n"
 
-#: ../src/ui/theme-viewer.c:359
+#: ../src/ui/theme-viewer.c:361
 msgid "Border-only window"
 msgstr "Venster met alleen randen"
 
-#: ../src/ui/theme-viewer.c:361
+#: ../src/ui/theme-viewer.c:363
 msgid "Bar"
 msgstr "Balk"
 
-#: ../src/ui/theme-viewer.c:378
+#: ../src/ui/theme-viewer.c:380
 msgid "Normal Application Window"
 msgstr "Normaal programmavenster"
 
-#: ../src/ui/theme-viewer.c:382
+#: ../src/ui/theme-viewer.c:384
 msgid "Dialog Box"
 msgstr "Dialoogvenster"
 
-#: ../src/ui/theme-viewer.c:386
+#: ../src/ui/theme-viewer.c:388
 msgid "Modal Dialog Box"
 msgstr "Blokkerend dialoogvenster"
 
-#: ../src/ui/theme-viewer.c:390
+#: ../src/ui/theme-viewer.c:392
 msgid "Utility Palette"
 msgstr "Gereedschapskist"
 
-#: ../src/ui/theme-viewer.c:394
+#: ../src/ui/theme-viewer.c:396
 msgid "Torn-off Menu"
 msgstr "Losgescheurd menu"
 
-#: ../src/ui/theme-viewer.c:398
+#: ../src/ui/theme-viewer.c:400
 msgid "Border"
 msgstr "Rand"
 
-#: ../src/ui/theme-viewer.c:726
+#: ../src/ui/theme-viewer.c:728
 #, c-format
 msgid "Button layout test %d"
 msgstr "Knoppenopmaaktest %d"
 
-#: ../src/ui/theme-viewer.c:755
+#: ../src/ui/theme-viewer.c:757
 #, c-format
 msgid "%g milliseconds to draw one window frame"
 msgstr "%g milliseconden om een vensterraamwerk te tekenen"
 
-#: ../src/ui/theme-viewer.c:798
+#: ../src/ui/theme-viewer.c:800
 #, c-format
 msgid "Usage: metacity-theme-viewer [THEMENAME]\n"
 msgstr "Gebruik: metacity-theme-viewer [THEMANAAM]\n"
 
-#: ../src/ui/theme-viewer.c:805
+#: ../src/ui/theme-viewer.c:807
 #, c-format
 msgid "Error loading theme: %s\n"
 msgstr "Fout bij laden van thema: %s\n"
 
-#: ../src/ui/theme-viewer.c:811
+#: ../src/ui/theme-viewer.c:813
 #, c-format
 msgid "Loaded theme \"%s\" in %g seconds\n"
 msgstr "Thema ‘%s’ in %g seconden geladen\n"
 
-#: ../src/ui/theme-viewer.c:852
+#: ../src/ui/theme-viewer.c:854
 msgid "Normal Title Font"
 msgstr "Lettertype voor normale titel"
 
-#: ../src/ui/theme-viewer.c:858
+#: ../src/ui/theme-viewer.c:860
 msgid "Small Title Font"
 msgstr "Lettertype voor kleine titel"
 
-#: ../src/ui/theme-viewer.c:864
+#: ../src/ui/theme-viewer.c:866
 msgid "Large Title Font"
 msgstr "Lettertype voor grote titel"
 
-#: ../src/ui/theme-viewer.c:869
+#: ../src/ui/theme-viewer.c:871
 msgid "Button Layouts"
 msgstr "Knoppenopmaak"
 
-#: ../src/ui/theme-viewer.c:874
+#: ../src/ui/theme-viewer.c:876
 msgid "Benchmark"
 msgstr "Benchmark"
 
-#: ../src/ui/theme-viewer.c:921
+#: ../src/ui/theme-viewer.c:923
 msgid "Window Title Goes Here"
 msgstr "Hier komt de titel"
 
-#: ../src/ui/theme-viewer.c:1025
+#: ../src/ui/theme-viewer.c:1027
 #, c-format
 msgid ""
 "Drew %d frames in %g client-side seconds (%g milliseconds per frame) and %g "
@@ -2396,44 +2377,84 @@ msgstr ""
 "en %g seconden op wandklok inclusief X serverbronnen (%g milliseconden per "
 "frame)\n"
 
-#: ../src/ui/theme-viewer.c:1244
+#: ../src/ui/theme-viewer.c:1246
 msgid "position expression test returned TRUE but set error"
 msgstr "positie-expressietest gaf WAAR terug, maar gaf wel een fout"
 
-#: ../src/ui/theme-viewer.c:1246
+#: ../src/ui/theme-viewer.c:1248
 msgid "position expression test returned FALSE but didn't set error"
 msgstr "positie-expressietest gaf ONWAAR terug, maar gaf geen fout"
 
-#: ../src/ui/theme-viewer.c:1250
+#: ../src/ui/theme-viewer.c:1252
 msgid "Error was expected but none given"
 msgstr "Fout verwacht maar niet ontvangen"
 
-#: ../src/ui/theme-viewer.c:1252
+#: ../src/ui/theme-viewer.c:1254
 #, c-format
 msgid "Error %d was expected but %d given"
 msgstr "Fout %d verwacht maar %d gekregen"
 
-#: ../src/ui/theme-viewer.c:1258
+#: ../src/ui/theme-viewer.c:1260
 #, c-format
 msgid "Error not expected but one was returned: %s"
 msgstr "Geen fout verwacht maar kreeg wel een fout: %s"
 
-#: ../src/ui/theme-viewer.c:1262
+#: ../src/ui/theme-viewer.c:1264
 #, c-format
 msgid "x value was %d, %d was expected"
 msgstr "x-waarde is %d, %d verwacht"
 
-#: ../src/ui/theme-viewer.c:1265
+#: ../src/ui/theme-viewer.c:1267
 #, c-format
 msgid "y value was %d, %d was expected"
 msgstr "y-waarde is %d, %d verwacht"
 
-#: ../src/ui/theme-viewer.c:1330
+#: ../src/ui/theme-viewer.c:1332
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr ""
 "%d coördinatenexpressies verwerkt in %g seconden (gemiddelde van %g "
 "seconden)\n"
+
+#~ msgid ""
+#~ "<big><b><tt>%s</tt> is not responding.</b></big>\n"
+#~ "\n"
+#~ "<i>You may choose to wait a short while for it to continue or force the "
+#~ "application to quit entirely.</i>"
+#~ msgstr ""
+#~ "<big><b><tt>%s</tt> reageert niet.</b></big>\n"
+#~ "\n"
+#~ "<i>U kunt ervoor kiezen even te wachten totdat het doorgaat of de "
+#~ "toepassing dwingen om helemaal af te sluiten.</i>"
+
+#~ msgid ""
+#~ "Error launching metacity-dialog to warn about apps that don't support "
+#~ "session management: %s\n"
+#~ msgstr ""
+#~ "Fout bij opstarten metacity-dialoogvenster waarin wordt gewaarschuwd voor "
+#~ "toepassingen die sessie-management niet ondersteunen: %s\n"
+
+#~ msgid "Title"
+#~ msgstr "Titel"
+
+#~ msgid "Class"
+#~ msgstr "Klasse"
+
+#~ msgid ""
+#~ "There was an error running \"%s\":\n"
+#~ "%s."
+#~ msgstr ""
+#~ "Er trad een fout op bij het uitvoeren van ‘%s’:\n"
+#~ "%s."
+
+#~ msgid "Open another one of these windows"
+#~ msgstr "Nog zo'n venster openen"
+
+#~ msgid "This is a demo button with an 'open' icon"
+#~ msgstr "Dit is een demoknop met een 'openen'-pictogram"
+
+#~ msgid "This is a demo button with a 'quit' icon"
+#~ msgstr "Dit is een demoknop met een 'afsluiten'-pictogram"
 
 #~ msgid "Failed to parse message \"%s\" from dialog process\n"
 #~ msgstr "Verwerken bericht ‘%s’ van dialoogvenster-proces mislukt\n"
