@@ -3,14 +3,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 #
 # Hizkuntza Politikarako Sailburuordetza <hizpol@ej-gv.es>, 2004.
-# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2004, 2005, 2006, 2008, 2009.
+# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2004, 2005, 2006, 2008, 2009, 2010.
 # Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-08-27 17:32+0200\n"
-"PO-Revision-Date: 2009-08-27 17:35+0200\n"
+"PO-Revision-Date: 2010-03-24 12:38+0100\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
@@ -47,7 +47,7 @@ msgid ""
 msgstr ""
 "<big><b><tt>%s</tt>(eÇ)k ez du erantzuten.</b></big>\n"
 "\n"
-"<i>Aukeratu piskatean zai egotea aplikazioak jarraitzeko edo derrigortu "
+"<i>Aukeratu piskatean zain egotea aplikazioak jarraitzeko edo derrigortu "
 "aplikazioa erabat ixtea.</i>"
 
 #: ../src/core/delete.c:115
@@ -706,7 +706,7 @@ msgstr "Txandakatu bildutako egoera"
 
 #: ../src/include/all-keybindings.h:272
 msgid "Minimize window"
-msgstr "Ikonotu leihoa"
+msgstr "Minimizatu leihoa"
 
 #: ../src/include/all-keybindings.h:274
 msgid "Close window"
@@ -987,7 +987,7 @@ msgid ""
 "the wireframe feature is disabled when accessibility is on."
 msgstr ""
 "Egia bada, metacity-k erabiltzaileari informazio eta \"zuzeneko kudeaketa\" "
-"zentzu gutxiago eskainiko dio, wireframe-ak erabiliz, animazioak sahiestuz, "
+"zentzu gutxiago eskainiko dio, burdin-hariak erabiliz, animazioak saihestuz, "
 "e.a. Erabiltzaile askorentzako honek erabilgarritasuna gutxiagotzen du, "
 "baina heredatutako aplikazioak eta terminal-zerbitzariak funtzionatzea "
 "baimendu dezake, beste kasuetan ezinezkoa izango zatekeena. Hala ere, "
@@ -1075,8 +1075,8 @@ msgid ""
 "and that they need to change this option back to true or live with the \"bug"
 "\" they requested."
 msgstr ""
-"Aukera hau faltsua gisa ezartzen bada protaera akastun batera eraman "
-"lezakenez, erabiltzaileei ez zaie gomendatzen balio lehenetsia (egia) "
+"Aukera hau faltsua gisa ezartzen bada portaera akastun batera eraman "
+"lezakeenez, erabiltzaileei ez zaie gomendatzen balio lehenetsia (egia) "
 "aldatzea. Ekintza askok (adib. bezeroaren arean klik egitea, leihoa lekuz "
 "edo tamainaz aldatzea) normalean leihoa goratzen du bigarren mailako eragin "
 "gisa. Ezarpen hau faltsua gisa ezartzen bada, ez egitea biziki gomendatzen "
@@ -1086,16 +1086,16 @@ msgstr ""
 "hau faltsua izan, leihoak goratu daitezke leihoko edozein lekutan Alt tekla "
 "sakatuta dagoela saguaren ezkerreko botoiarekin klik eginez gero, edo "
 "leihoaren dekorazioetan klik arrunta eginez, edo aplikazioen mezu bereziak ."
-"Nahiz eta aukera hau faltsua izan, leihoak orainrik goratu daitezke leihoko "
+"Nahiz eta aukera hau faltsua izan, leihoak oraindik goratu daitezke leihoko "
 "beste edozein lekutan Alt+Ezkerrarekin klik egitean, klik normala leihoko "
-"dekorazioetan edo ataza-zerrenden appletaren bezalako eskakizunen mezu "
-"bereziengatik. Aukera hau desgaituta dago click-to-focus moduan.Jakin ezazu "
+"dekorazioetan edo ataza-zerrenden miniaplikazioaren bezalako eskakizunen mezu "
+"bereziengatik. Aukera hau desgaituta dago click-to-focus moduan. Jakin ezazu "
 "leihoa goratzeko moduen zerrenda raise_on_click faltsua denean ez du "
 "programazioko eskaerarik aplikazioetatik leihoak goratzeko, eta horrelako "
 "eskaerei ezikusi egingo zaie eskaeraren arrazoiari jaramonik egin gabe."
-"Aplikazio garatzailea bazara, eta eta erabiltzaile batzuk kexan badabiltzate "
+"Aplikazio garatzailea bazara, eta eta erabiltzaile batzuk kexan badabiltza "
 "zure aplikazioak ez duela funtzionatzen ezarpen hau desgaituta dagoela, "
-"esaiezu beraiei _beraien_ ankasartzea dela leiho-kudeatzailea hausteagatik "
+"esaiezu beraiei _beraien_ hanka-sartzea dela leiho-kudeatzailea hausteagatik "
 "eta aukera hau TRUE gisa ezarri behar dutela edo bizi daitezela \"akatsarekin"
 "\" betirako."
 
@@ -1311,7 +1311,7 @@ msgstr "Soinu bisual mota"
 
 #: ../src/metacity.schemas.in.in.h:51
 msgid "Whether raising should be a side-effect of other user interactions"
-msgstr "Goratzean albo-ondoriorik izango duen aplikazioengain edo ez."
+msgstr "Goratzean albo-ondoriorik izango duen erabiltzailearen beste elkarreraginetan edo ez."
 
 #: ../src/metacity.schemas.in.in.h:52
 msgid "Whether to resize with the right button"
@@ -1340,7 +1340,7 @@ msgstr "Leiho-menua"
 
 #: ../src/ui/frames.c:1124
 msgid "Minimize Window"
-msgstr "Ikonotu leihoa"
+msgstr "Minimizatu leihoa"
 
 #: ../src/ui/frames.c:1127
 msgid "Maximize Window"
@@ -1377,7 +1377,7 @@ msgstr "Jarri leihoa laneko area bakar batean"
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:70
 msgid "Mi_nimize"
-msgstr "_Ikonotu"
+msgstr "M_inimizatu"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:72
@@ -2215,23 +2215,23 @@ msgstr "/Leihoak/_Harrerako pantaila"
 
 #: ../src/ui/theme-viewer.c:81
 msgid "/Windows/_Top dock"
-msgstr "/Leihoak/_Goiko atrakea"
+msgstr "/Leihoak/_Goiko atrakagarria"
 
 #: ../src/ui/theme-viewer.c:82
 msgid "/Windows/_Bottom dock"
-msgstr "/Leihoak/_Azpiko atrakea"
+msgstr "/Leihoak/_Azpiko atrakagarria"
 
 #: ../src/ui/theme-viewer.c:83
 msgid "/Windows/_Left dock"
-msgstr "/Leihoak/E_zkerreko atrakea"
+msgstr "/Leihoak/E_zkerreko atrakagarria"
 
 #: ../src/ui/theme-viewer.c:84
 msgid "/Windows/_Right dock"
-msgstr "/Leihoak/E_skuineko atrakea"
+msgstr "/Leihoak/E_skuineko atrakagarria"
 
 #: ../src/ui/theme-viewer.c:85
 msgid "/Windows/_All docks"
-msgstr "/Leihoak/Atrake _denak"
+msgstr "/Leihoak/Atrakagarri _denak"
 
 #: ../src/ui/theme-viewer.c:86
 msgid "/Windows/Des_ktop"
