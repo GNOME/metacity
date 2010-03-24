@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-03-15 11:53+0100\n"
-"PO-Revision-Date: 2010-03-24 12:31+0100\n"
+"PO-Revision-Date: 2010-03-24 12:41+0100\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
@@ -990,7 +990,7 @@ msgid ""
 "the wireframe feature is disabled when accessibility is on."
 msgstr ""
 "Egia bada, metacity-k erabiltzaileari informazio eta \"zuzeneko kudeaketa\" "
-"zentzu gutxiago eskainiko dio, burdin-hariak erabiliz, animazioak sahiestuz, "
+"zentzu gutxiago eskainiko dio, burdin-hariak erabiliz, animazioak saihestuz, "
 "e.a. Erabiltzaile askorentzako honek erabilgarritasuna gutxiagotzen du, "
 "baina heredatutako aplikazioak eta terminal-zerbitzariak funtzionatzea "
 "baimendu dezake, beste kasuetan ezinezkoa izango zatekeena. Hala ere, "
@@ -1674,12 +1674,12 @@ msgstr ""
 #: ../src/ui/theme.c:1293
 #, c-format
 msgid "Could not parse shade factor \"%s\" in shaded color"
-msgstr "Ezin da analizatu \"%s\" itzal-faktorea itzaldutako kolorean"
+msgstr "Ezin da analizatu \"%s\" itzal-faktorea itzaldun kolorean"
 
 #: ../src/ui/theme.c:1303
 #, c-format
 msgid "Shade factor \"%s\" in shaded color is negative"
-msgstr "Itzaldutako kolorean \"%s\" itzal-faktorea negatiboa da"
+msgstr "Itzaldun kolorean \"%s\" itzal-faktorea negatiboa da"
 
 #: ../src/ui/theme.c:1332
 #, c-format
