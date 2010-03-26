@@ -7,10 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-06 17:37+0200\n"
-"PO-Revision-Date: 2010-01-06 11:58+0300\n"
+"POT-Creation-Date: 2010-03-26 16:11+0200\n"
+"PO-Revision-Date: 2010-03-26 11:58+0300\n"
 "Last-Translator: Maxim Dziumanenko <dziumanenko@gmail.com>\n"
-"Language-Team: ukrainian <Ukrainian <uk@li.org>\n"
+"Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -43,8 +43,7 @@ msgid ""
 "You may choose to wait a short while for it to continue or force the "
 "application to quit entirely."
 msgstr ""
-"Можете трошки зачекати відновлення активності або примусово закрити "
-"програму."
+"Можете трошки зачекати відновлення активності або примусово закрити програму."
 
 #: ../src/core/delete.c:110
 msgid "_Wait"
@@ -205,25 +204,25 @@ msgstr "Збій перезапуску: %s\n"
 #. * (Empty comment follows so the translators don't see this.)
 #.
 #.
-#: ../src/core/prefs.c:506 ../src/core/prefs.c:661
+#: ../src/core/prefs.c:508 ../src/core/prefs.c:663
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
 msgstr "Ключ GConf \"%s\" встановлено у неправильний тип\n"
 
-#: ../src/core/prefs.c:587 ../src/core/prefs.c:830
+#: ../src/core/prefs.c:589 ../src/core/prefs.c:832
 #, c-format
 msgid "%d stored in GConf key %s is out of range %d to %d\n"
 msgstr ""
 "Значення %d встановлене у ключі GConf %s не лежить у межах від %d до %d\n"
 
-#: ../src/core/prefs.c:631 ../src/core/prefs.c:708 ../src/core/prefs.c:756
-#: ../src/core/prefs.c:820 ../src/core/prefs.c:1113 ../src/core/prefs.c:1129
-#: ../src/core/prefs.c:1146 ../src/core/prefs.c:1162
+#: ../src/core/prefs.c:633 ../src/core/prefs.c:710 ../src/core/prefs.c:758
+#: ../src/core/prefs.c:822 ../src/core/prefs.c:1115 ../src/core/prefs.c:1131
+#: ../src/core/prefs.c:1148 ../src/core/prefs.c:1164
 #, c-format
 msgid "GConf key \"%s\" is set to an invalid type\n"
 msgstr "Ключ GConf \"%s\" встановлено у неправильний тип\n"
 
-#: ../src/core/prefs.c:1232
+#: ../src/core/prefs.c:1234
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -231,12 +230,12 @@ msgstr ""
 "Трюк для роботи із зіпсованими програмами вимкнено. Деякі додатки можуть "
 "поводитись неправильно.\n"
 
-#: ../src/core/prefs.c:1303
+#: ../src/core/prefs.c:1305
 #, c-format
 msgid "Could not parse font description \"%s\" from GConf key %s\n"
 msgstr "Неможливо проаналізувати опис шрифту \"%s\" у ключі GConf %s\n"
 
-#: ../src/core/prefs.c:1365
+#: ../src/core/prefs.c:1367
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -245,17 +244,17 @@ msgstr ""
 "У базі даних конфігурації знайдено \"%s\" - що не є правильним значенням "
 "модифікатора клавіші миші.\n"
 
-#: ../src/core/prefs.c:1786
+#: ../src/core/prefs.c:1788
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr "Помилка встановлення кількості робочих областей у %d: %s\n"
 
-#: ../src/core/prefs.c:1975 ../src/core/prefs.c:2478
+#: ../src/core/prefs.c:1953 ../src/core/prefs.c:2456
 #, c-format
 msgid "Workspace %d"
 msgstr "Робоча область %d"
 
-#: ../src/core/prefs.c:2005 ../src/core/prefs.c:2183
+#: ../src/core/prefs.c:1983 ../src/core/prefs.c:2161
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -264,12 +263,12 @@ msgstr ""
 "Знайдене у конфігураційній базі даних значення \"%s\" не є правильним "
 "записом комбінації клавіш \"%s\"\n"
 
-#: ../src/core/prefs.c:2559
+#: ../src/core/prefs.c:2537
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr "Помилка встановлення назви робочої області %d у \"%s\": %s\n"
 
-#: ../src/core/prefs.c:2763
+#: ../src/core/prefs.c:2741
 #, c-format
 msgid "Error setting compositor status: %s\n"
 msgstr "Помилка встановлення стану менеджера композиції: %s\n"
@@ -345,62 +344,62 @@ msgstr ""
 "встановити у спеціальне значення \"disabled\", то для цієї дії не буде "
 "призначено комбінації клавіш."
 
-#: ../src/core/session.c:846 ../src/core/session.c:853
+#: ../src/core/session.c:850 ../src/core/session.c:857
 #, c-format
 msgid "Could not create directory '%s': %s\n"
 msgstr "Не вдається створити каталог \"%s\": %s\n"
 
-#: ../src/core/session.c:863
+#: ../src/core/session.c:867
 #, c-format
 msgid "Could not open session file '%s' for writing: %s\n"
 msgstr "Не вдається відкрити для запису файл сеансу \"%s\": %s\n"
 
-#: ../src/core/session.c:1004
+#: ../src/core/session.c:1008
 #, c-format
 msgid "Error writing session file '%s': %s\n"
 msgstr "Помилка запису файлу сеансу \"%s\": %s\n"
 
-#: ../src/core/session.c:1009
+#: ../src/core/session.c:1013
 #, c-format
 msgid "Error closing session file '%s': %s\n"
 msgstr "Помилка закриття файлу сеансу \"%s\": %s\n"
 
 #. oh, just give up
-#: ../src/core/session.c:1102
+#: ../src/core/session.c:1106
 #, c-format
 msgid "Failed to read saved session file %s: %s\n"
 msgstr "Збій під час зчитування збереженого файлу сеансу \"%s\": %s\n"
 
-#: ../src/core/session.c:1141
+#: ../src/core/session.c:1145
 #, c-format
 msgid "Failed to parse saved session file: %s\n"
 msgstr "Збій аналізування збереженого файлу сеансу: %s\n"
 
-#: ../src/core/session.c:1190
+#: ../src/core/session.c:1194
 #, c-format
 msgid "<metacity_session> attribute seen but we already have the session ID"
 msgstr ""
 "було прочитано атрибут <metacity_session>, але ідентифікатор сеансу вже було "
 "встановлено"
 
-#: ../src/core/session.c:1203 ../src/core/session.c:1278
-#: ../src/core/session.c:1310 ../src/core/session.c:1382
-#: ../src/core/session.c:1442
+#: ../src/core/session.c:1207 ../src/core/session.c:1282
+#: ../src/core/session.c:1314 ../src/core/session.c:1386
+#: ../src/core/session.c:1446
 #, c-format
 msgid "Unknown attribute %s on <%s> element"
 msgstr "Невідома ознака %s у елементі <%s>"
 
-#: ../src/core/session.c:1220
+#: ../src/core/session.c:1224
 #, c-format
 msgid "nested <window> tag"
 msgstr "вкладений елемент <window>"
 
-#: ../src/core/session.c:1462
+#: ../src/core/session.c:1466
 #, c-format
 msgid "Unknown element %s"
 msgstr "Невідомий елемент %s"
 
-#: ../src/core/session.c:1814
+#: ../src/core/session.c:1818
 msgid ""
 "These windows do not support &quot;save current setup&quot; and will have to "
 "be restarted manually next time you log in."
@@ -453,7 +452,7 @@ msgid "Metacity"
 msgstr "Метасіті"
 
 #. first time through
-#: ../src/core/window.c:5630
+#: ../src/core/window.c:5642
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -469,7 +468,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/core/window.c:6195
+#: ../src/core/window.c:6207
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
@@ -510,7 +509,7 @@ msgstr "%s (від %s)"
 msgid "%s (as another user)"
 msgstr "%s (від іншого користувача)"
 
-#: ../src/core/window-props.c:1429
+#: ../src/core/window-props.c:1430
 #, c-format
 msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
 msgstr "Неправильний параметр WM_TRANSIENT_FOR вікна 0x%lx вказано для %s.\n"
@@ -910,15 +909,15 @@ msgstr "Автоматично піднімати вікно з фокусом �
 msgid ""
 "Clicking a window while holding down this modifier key will move the window "
 "(left click), resize the window (middle click), or show the window menu "
-"(right click). The left and right operations may be swapped using the "
-"\"mouse_button_resize\" key. Modifier is expressed as \"&lt;Alt&gt;\" or "
-"\"&lt;Super&gt;\" for example."
+"(right click). The middle and right click operations may be swapped using "
+"the \"resize_with_right_button\" key. Modifier is expressed as \"&lt;Alt&gt;"
+"\" or \"&lt;Super&gt;\" for example."
 msgstr ""
 "Клацання кнопкою миші по вікну з утриманням натиснутою клавіші-модифікатора "
 "призведе до пересування вікна (лівою кнопкою), зміни розмірів (середньою "
 "кнопкою), або показу меню вікна (правою кнопкою). Функції лівої та середньої "
-"кнопок міняються, якщо утримується клавіша \"mouse_button_resize\". "
-"Модифікатор записується наприклад так  \"&lt;Alt&gt;\" або \"&lt;Super&gt;\""
+"кнопок міняються, якщо увімкнено параметр «resize_with_right_button». "
+"Модифікатор визначається, наприклад, як «&lt;Alt&gt;» чи «&lt;Super&gt;»."
 
 #: ../src/metacity.schemas.in.in.h:10
 msgid "Commands to run in response to keybindings"
@@ -2251,109 +2250,97 @@ msgstr "б/Вікна/Всі _доки"
 msgid "/Windows/Des_ktop"
 msgstr "/Вікна/_Робочий стіл"
 
-#: ../src/ui/theme-viewer.c:136
-msgid "Open another one of these windows"
-msgstr "Відкрити інше вікно"
-
-#: ../src/ui/theme-viewer.c:143
-msgid "This is a demo button with an 'open' icon"
-msgstr "Це демонстраційна кнопка із значком відкривання"
-
-#: ../src/ui/theme-viewer.c:150
-msgid "This is a demo button with a 'quit' icon"
-msgstr "Це демонстраційна кнопка із значком виходу"
-
-#: ../src/ui/theme-viewer.c:243
+#: ../src/ui/theme-viewer.c:244
 msgid "This is a sample message in a sample dialog"
 msgstr "Це зразок повідомлення у зразковому діалозі"
 
-#: ../src/ui/theme-viewer.c:326
+#: ../src/ui/theme-viewer.c:327
 #, c-format
 msgid "Fake menu item %d\n"
 msgstr "Фальшивий елемент меню %d\n"
 
-#: ../src/ui/theme-viewer.c:360
+#: ../src/ui/theme-viewer.c:361
 msgid "Border-only window"
 msgstr "Вікно лише з рамкою"
 
-#: ../src/ui/theme-viewer.c:362
+#: ../src/ui/theme-viewer.c:363
 msgid "Bar"
 msgstr "Прямокутник"
 
-#: ../src/ui/theme-viewer.c:379
+#: ../src/ui/theme-viewer.c:380
 msgid "Normal Application Window"
 msgstr "Звичайне вікно програми"
 
-#: ../src/ui/theme-viewer.c:383
+#: ../src/ui/theme-viewer.c:384
 msgid "Dialog Box"
 msgstr "Діалог"
 
-#: ../src/ui/theme-viewer.c:387
+#: ../src/ui/theme-viewer.c:388
 msgid "Modal Dialog Box"
 msgstr "Модальний діалог"
 
-#: ../src/ui/theme-viewer.c:391
+#: ../src/ui/theme-viewer.c:392
 msgid "Utility Palette"
 msgstr "Допоміжна палітра"
 
-#: ../src/ui/theme-viewer.c:395
+#: ../src/ui/theme-viewer.c:396
 msgid "Torn-off Menu"
 msgstr "Відірване меню"
 
-#: ../src/ui/theme-viewer.c:399
+#: ../src/ui/theme-viewer.c:400
 msgid "Border"
 msgstr "Рамка"
 
-#: ../src/ui/theme-viewer.c:727
+#: ../src/ui/theme-viewer.c:728
 #, c-format
 msgid "Button layout test %d"
 msgstr "Перевірка розташування кнопок %d"
 
-#: ../src/ui/theme-viewer.c:756
+#: ../src/ui/theme-viewer.c:757
 #, c-format
 msgid "%g milliseconds to draw one window frame"
 msgstr "%g мс для малювання однієї рамки вікна"
 
-#: ../src/ui/theme-viewer.c:799
+#: ../src/ui/theme-viewer.c:800
 #, c-format
 msgid "Usage: metacity-theme-viewer [THEMENAME]\n"
 msgstr "Використання: metacity-theme-viewer [НАЗВА_ТЕМИ]\n"
 
-#: ../src/ui/theme-viewer.c:806
+#: ../src/ui/theme-viewer.c:807
 #, c-format
 msgid "Error loading theme: %s\n"
 msgstr "Помилка завантаження теми: %s\n"
 
-#: ../src/ui/theme-viewer.c:812
+#: ../src/ui/theme-viewer.c:813
 #, c-format
 msgid "Loaded theme \"%s\" in %g seconds\n"
 msgstr "Завантажено тему \"%s\" за %g с\n"
 
-#: ../src/ui/theme-viewer.c:853
+#: ../src/ui/theme-viewer.c:854
 msgid "Normal Title Font"
 msgstr "Звичайний шрифт заголовка"
 
-#: ../src/ui/theme-viewer.c:859
+#: ../src/ui/theme-viewer.c:860
 msgid "Small Title Font"
 msgstr "Малий шрифт заголовка"
 
-#: ../src/ui/theme-viewer.c:865
+#: ../src/ui/theme-viewer.c:866
 msgid "Large Title Font"
 msgstr "Великий шрифт заголовка"
 
-#: ../src/ui/theme-viewer.c:870
+#: ../src/ui/theme-viewer.c:871
 msgid "Button Layouts"
 msgstr "Розташування кнопок"
 
-#: ../src/ui/theme-viewer.c:875
+#: ../src/ui/theme-viewer.c:876
 msgid "Benchmark"
 msgstr "Продуктивність"
 
-#: ../src/ui/theme-viewer.c:922
+#: ../src/ui/theme-viewer.c:923
 msgid "Window Title Goes Here"
 msgstr "Тут буде заголовок вікна"
 
-#: ../src/ui/theme-viewer.c:1026
+#: ../src/ui/theme-viewer.c:1027
 #, c-format
 msgid ""
 "Drew %d frames in %g client-side seconds (%g milliseconds per frame) and %g "
@@ -2363,43 +2350,52 @@ msgstr ""
 "Намальовано %d рамок за %g с клієнтського часу (%g мс на рамку) і %g с "
 "календарного часу, включаючи ресурси сервера X Window (%g мс на кадр)\n"
 
-#: ../src/ui/theme-viewer.c:1245
+#: ../src/ui/theme-viewer.c:1246
 msgid "position expression test returned TRUE but set error"
 msgstr ""
 "перевірка виразу позиції повернула значення ІСТИНА, але встановила помилку"
 
-#: ../src/ui/theme-viewer.c:1247
+#: ../src/ui/theme-viewer.c:1248
 msgid "position expression test returned FALSE but didn't set error"
 msgstr ""
 "перевірка виразу позиції повернула значення ХИБНІСТЬ, але не встановила "
 "помилки"
 
-#: ../src/ui/theme-viewer.c:1251
+#: ../src/ui/theme-viewer.c:1252
 msgid "Error was expected but none given"
 msgstr "Очікувалась помилка, але її не трапилось"
 
-#: ../src/ui/theme-viewer.c:1253
+#: ../src/ui/theme-viewer.c:1254
 #, c-format
 msgid "Error %d was expected but %d given"
 msgstr "Очікувалась помилка %d, але трапилась помилка %d"
 
-#: ../src/ui/theme-viewer.c:1259
+#: ../src/ui/theme-viewer.c:1260
 #, c-format
 msgid "Error not expected but one was returned: %s"
 msgstr "Помилка не очікувалась, але її повернуто: %s"
 
-#: ../src/ui/theme-viewer.c:1263
+#: ../src/ui/theme-viewer.c:1264
 #, c-format
 msgid "x value was %d, %d was expected"
 msgstr "Значення X було %d, а очікувалось ― %d"
 
-#: ../src/ui/theme-viewer.c:1266
+#: ../src/ui/theme-viewer.c:1267
 #, c-format
 msgid "y value was %d, %d was expected"
 msgstr "Значення Y було %d, а очікувалось ― %d"
 
-#: ../src/ui/theme-viewer.c:1331
+#: ../src/ui/theme-viewer.c:1332
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr ""
 "%d координатних виразів проаналізовано за %g с (середнє значення: %g c)\n"
+
+#~ msgid "Open another one of these windows"
+#~ msgstr "Відкрити інше вікно"
+
+#~ msgid "This is a demo button with an 'open' icon"
+#~ msgstr "Це демонстраційна кнопка із значком відкривання"
+
+#~ msgid "This is a demo button with a 'quit' icon"
+#~ msgstr "Це демонстраційна кнопка із значком виходу"
