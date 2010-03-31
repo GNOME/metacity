@@ -6385,9 +6385,12 @@ menu_callback (MetaWindowMenu *menu,
     {
       meta_verbose ("Menu op %u on %s\n", op, window->desc);
       
-      /* op can be 0 for none */
       switch (op)
         {
+        case META_MENU_OP_NONE:
+          /* nothing */
+          break;
+
         case META_MENU_OP_DELETE:
           meta_window_delete (window, timestamp);
           break;
@@ -6475,10 +6478,6 @@ menu_callback (MetaWindowMenu *menu,
           meta_window_shove_titlebar_onscreen (window);
           break;
           
-        case 0:
-          /* nothing */
-          break;
-          
         default:
           meta_warning (G_STRLOC": Unknown window op\n");
           break;
@@ -6529,8 +6528,8 @@ meta_window_show_menu (MetaWindow *window,
       window->display->window_with_menu = NULL;
     }
 
-  ops = 0;
-  insensitive = 0;
+  ops = META_MENU_OP_NONE;
+  insensitive = META_MENU_OP_NONE;
 
   ops |= (META_MENU_OP_DELETE | META_MENU_OP_MINIMIZE | META_MENU_OP_MOVE | META_MENU_OP_RESIZE);
 
