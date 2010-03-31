@@ -1,3 +1,27 @@
+2.30.0
+======
+
+Thanks to Owen Taylor, Didier Roche, and Dominique Leuenberger for improvements
+in this version.
+
+ - Fix typo when checking the result of getpwuid (Owen)
+ - Revert new default cycle_group keybinding to Alt-grave (Didier)
+ - Fix build with gcc 4.5 (Dominique)
+
+Translations
+  Khaled Hosny (ar), Sadia Afroz (bn), David Planella (ca), Reşat SABIQ (crh),
+  Petr Kovar (cs), Ask Hjorth Larsen (da), Mario Blättermann (de),
+  Kostas Papadimas (el), Thomas Thurman (en@shaw), Bruce Cowan (en_GB),
+  Mattias Põldaru (et), Iñaki Larrañaga Murgoitio (eu), Tommi Vainikainen (fi),
+  Bruno Brouard (fr), Fran Diéguez (gl), Gabor Kelemen (hu),
+  Luca Ferretti (it), Changwoo Ryu (ko), Gintautas Miliauskas (lt),
+  Ani Peter (ml), Wouter Bolsterlee (nl), A S Alam (pa), Piotr Drąg (pl),
+  Duarte Loreto (pt), Ísis Binder (pt_BR), Lucian Adrian Grijincu (ro),
+  Alexander Saprykin (ru), Pavol Šimo (sk), Matej Urbančič (sl),
+  Горан Ракић (sr), Goran Rakić (sr@latin), Daniel Nylander (sv),
+  Dr,T,Vasudevan (ta), Theppitak Karoonboonyanan (th), Maxim Dziumanenko (uk),
+  Chao-Hsiung Liao (zh_HK), Chao-Hsiung Liao (zh_TW)
+
 2.28.1
 ======
 
