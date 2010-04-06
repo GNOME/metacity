@@ -1,3 +1,13 @@
+2.30.1
+======
+
+Thanks to Edward Sheldrake for the crash fix in this version.
+
+ - Fix crash when right-clicking on window frame (Edward)
+
+Translations
+  David Planella (ca), Reşat SABIQ (crh)
+
 2.30.0
 ======
 
