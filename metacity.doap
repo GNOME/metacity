@@ -5,6 +5,7 @@
   xmlns:dc="http://purl.org/dc/elements/1.1/"
   xmlns="http://usefulinc.com/ns/doap#"
   xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:gnome="http://api.gnome.org/doap-extensions#"
   xmlns:admin="http://webns.net/mvcb/">
 
  <name>The Metacity Window Manager</name>
@@ -62,6 +63,7 @@ Many window managers are like Marshmallow Froot Loops; Metacity is like Cheerios
   <foaf:Person>
      <foaf:name>Thomas Thurman</foaf:name>
      <foaf:mbox rdf:resource="mailto:tthurman@gnome.org"/>
+     <gnome:userid>tthurman</gnome:userid>
   </foaf:Person>
  </maintainer>
 
