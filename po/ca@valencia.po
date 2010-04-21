@@ -4,17 +4,16 @@
 # Softcatala <info@softcatala.org>, 2002.
 # Jesús Moreno <jmmolas@wanadoo.es>, 2002.
 # Jordi Mallach <jordi@sindominio.net>, 2003, 2004, 2005, 2006, 2007, 2008.
-# David Planella <david.planella@gmail.com>, 2008, 2009.
+# David Planella <david.planella@gmail.com>, 2008, 2009, 2010.
 #
-# Carles Ferrando Garcia <carles.ferrando@gmail.com>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity 2.24\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-05 00:20+0100\n"
-"PO-Revision-Date: 2009-10-29 17:05+0100\n"
-"Last-Translator: Carles Ferrando Garcia <carles.ferrando@gmail.com>\n"
-"Language-Team: Catalan (Valencià) <tradgnome@softcatala.org>\n"
+"POT-Creation-Date: 2010-04-21 22:59+0200\n"
+"PO-Revision-Date: 2010-04-02 18:43+0200\n"
+"Last-Translator: David Planella <david.planella@gmail.com>\n"
+"Language-Team: Softcatalà <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -36,28 +35,29 @@ msgstr "Esdeveniment de to del sistema"
 msgid "Unknown window information request: %d"
 msgstr "Es desconeix la informació demanada sobre la finestra: %d"
 
-#: ../src/core/delete.c:104
+#. Translators: %s is a window title
+#: ../src/core/delete.c:96
 #, c-format
-msgid ""
-"<big><b><tt>%s</tt> is not responding.</b></big>\n"
-"\n"
-"<i>You may choose to wait a short while for it to continue or force the "
-"application to quit entirely.</i>"
-msgstr ""
-"<big><b><tt>%s</tt> no està responent.</b></big>\n"
-"\n"
-"<i>Podeu esperar un moment per a veure si continua o forçar la eixida "
-"completa de l'aplicació.</i>"
+msgid "<tt>%s</tt> is not responding."
+msgstr "<tt>%s</tt> no està responent."
 
-#: ../src/core/delete.c:115
+#: ../src/core/delete.c:101
+msgid ""
+"You may choose to wait a short while for it to continue or force the "
+"application to quit entirely."
+msgstr ""
+"Podeu esperar un moment per veure si continua o forçar l'eixida completa de "
+"l'aplicació."
+
+#: ../src/core/delete.c:110
 msgid "_Wait"
 msgstr "_Espera"
 
-#: ../src/core/delete.c:115
+#: ../src/core/delete.c:110
 msgid "_Force Quit"
 msgstr "_Força'n l'eixida"
 
-#: ../src/core/delete.c:216
+#: ../src/core/delete.c:208
 #, c-format
 msgid "Failed to get hostname: %s\n"
 msgstr "S'ha produït un error en obtindre el nom de l'ordinador central: %s\n"
@@ -81,7 +81,7 @@ msgid ""
 "the window manager.\n"
 msgstr ""
 "S'ha perdut la connexió amb la pantalla «%s»;\n"
-"és molt probable que el servidor X s'haja aturat o que hagueu finalitzat/\n"
+"és molt probable que el servidor X s'haja aturat o que hàgeu finalitzat/\n"
 "destruït el gestor de finestres.\n"
 
 #: ../src/core/errors.c:279
@@ -110,7 +110,7 @@ msgid ""
 msgstr ""
 "S'ha produït un error en executar <tt>%s</tt>:\n"
 "\n"
-"%s."
+"%s"
 
 #: ../src/core/keybindings.c:2383
 #, c-format
@@ -122,7 +122,7 @@ msgstr "No s'ha definit cap orde %d.\n"
 msgid "No terminal command has been defined.\n"
 msgstr "No s'ha definit cap orde de terminal.\n"
 
-#: ../src/core/main.c:130
+#: ../src/core/main.c:131
 #, c-format
 msgid ""
 "metacity %s\n"
@@ -133,60 +133,60 @@ msgid ""
 msgstr ""
 "metacity %s\n"
 "Copyright (C) 2001-%s Havoc Pennington, Red Hat, Inc., i d'altres\n"
-"Això és programari lliure; vegeu els fitxers de codi font per a conèixer-ne\n"
+"Això és programari lliure; vegeu els fitxers de codi font per conèixer-ne\n"
 "les condicions de còpia.\n"
 "No hi ha CAP garantia; ni tan sols la garantia implícita de COMERCIABILITAT\n"
 "o ADEQUACIÓ A PER UN PROPÒSIT PARTICULAR.\n"
 
-#: ../src/core/main.c:268
+#: ../src/core/main.c:269
 msgid "Disable connection to session manager"
 msgstr "Inhabilita la connexió al gestor de sessions"
 
-#: ../src/core/main.c:274
+#: ../src/core/main.c:275
 msgid "Replace the running window manager with Metacity"
-msgstr "Reemplaça el gestor de finestres en execució per el Metacity"
+msgstr "Reemplaça el gestor de finestres en execució pel Metacity"
 
-#: ../src/core/main.c:280
+#: ../src/core/main.c:281
 msgid "Specify session management ID"
 msgstr "Especifica l'ID de gestió de sessió"
 
-#: ../src/core/main.c:285
+#: ../src/core/main.c:286
 msgid "X Display to use"
-msgstr "Visualització X per a usar"
+msgstr "Visualització de l'X a utilitzar"
 
-#: ../src/core/main.c:291
+#: ../src/core/main.c:292
 msgid "Initialize session from savefile"
 msgstr "Inicialitza la sessió des del fitxer alçat"
 
-#: ../src/core/main.c:297
+#: ../src/core/main.c:298
 msgid "Print version"
-msgstr "Escriu versió"
+msgstr "Mostra la versió"
 
-#: ../src/core/main.c:303
+#: ../src/core/main.c:304
 msgid "Make X calls synchronous"
 msgstr "Fes que les crides a l'X siguen síncrones"
 
-#: ../src/core/main.c:309
+#: ../src/core/main.c:310
 msgid "Turn compositing on"
 msgstr "Habilita la composició"
 
-#: ../src/core/main.c:315
+#: ../src/core/main.c:316
 msgid "Turn compositing off"
 msgstr "Inhabilita la composició"
 
-#: ../src/core/main.c:321
+#: ../src/core/main.c:322
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr ""
 "No crees finestres a pantalla completa que estiguen maximitzades i no "
 "tinguen decoracions"
 
-#: ../src/core/main.c:543
+#: ../src/core/main.c:528
 #, c-format
 msgid "Failed to scan themes directory: %s\n"
 msgstr "No s'ha pogut analitzar el directori de temes: %s\n"
 
-#: ../src/core/main.c:559
+#: ../src/core/main.c:544
 #, c-format
 msgid ""
 "Could not find a theme! Be sure %s exists and contains the usual themes.\n"
@@ -194,7 +194,7 @@ msgstr ""
 "No s'ha trobat cap tema. Assegureu-vos que %s existeix i conté els temes "
 "habituals.\n"
 
-#: ../src/core/main.c:618
+#: ../src/core/main.c:603
 #, c-format
 msgid "Failed to restart: %s\n"
 msgstr "No s'ha pogut reiniciar: %s\n"
@@ -210,25 +210,25 @@ msgstr "No s'ha pogut reiniciar: %s\n"
 #. * (Empty comment follows so the translators don't see this.)
 #.
 #.
-#: ../src/core/prefs.c:506 ../src/core/prefs.c:661
+#: ../src/core/prefs.c:508 ../src/core/prefs.c:663
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
 msgstr "La clau GConf «%s» està establerta a un valor no vàlid\n"
 
-#: ../src/core/prefs.c:587 ../src/core/prefs.c:830
+#: ../src/core/prefs.c:589 ../src/core/prefs.c:832
 #, c-format
 msgid "%d stored in GConf key %s is out of range %d to %d\n"
 msgstr ""
 "%d, emmagatzemat a la clau GConf %s, està fora de l'interval de %d a %d\n"
 
-#: ../src/core/prefs.c:631 ../src/core/prefs.c:708 ../src/core/prefs.c:756
-#: ../src/core/prefs.c:820 ../src/core/prefs.c:1113 ../src/core/prefs.c:1129
-#: ../src/core/prefs.c:1146 ../src/core/prefs.c:1162
+#: ../src/core/prefs.c:633 ../src/core/prefs.c:710 ../src/core/prefs.c:758
+#: ../src/core/prefs.c:822 ../src/core/prefs.c:1115 ../src/core/prefs.c:1131
+#: ../src/core/prefs.c:1148 ../src/core/prefs.c:1164
 #, c-format
 msgid "GConf key \"%s\" is set to an invalid type\n"
 msgstr "La clau «%s» del Gconf està establerta a un tipus no vàlid\n"
 
-#: ../src/core/prefs.c:1232
+#: ../src/core/prefs.c:1234
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -236,14 +236,14 @@ msgstr ""
 "Les solucions temporals per a aplicacions amb errors estan inhabilitades. "
 "Pot ser que certes aplicacions no funcionen correctament.\n"
 
-#: ../src/core/prefs.c:1303
+#: ../src/core/prefs.c:1305
 #, c-format
 msgid "Could not parse font description \"%s\" from GConf key %s\n"
 msgstr ""
 "No s'ha pogut analitzar la descripció de tipus de lletra «%s» de la clau "
 "GConf %s\n"
 
-#: ../src/core/prefs.c:1365
+#: ../src/core/prefs.c:1367
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -252,18 +252,18 @@ msgstr ""
 "«%s», trobat a la base de dades de la configuració, no és un valor vàlid per "
 "al modificador del botó del ratolí\n"
 
-#: ../src/core/prefs.c:1786
+#: ../src/core/prefs.c:1788
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr ""
 "S'ha produït un error en establir el nombre d'espais de treball a %d: %s\n"
 
-#: ../src/core/prefs.c:1975 ../src/core/prefs.c:2478
+#: ../src/core/prefs.c:1953 ../src/core/prefs.c:2456
 #, c-format
 msgid "Workspace %d"
 msgstr "Espai de treball %d"
 
-#: ../src/core/prefs.c:2005 ../src/core/prefs.c:2183
+#: ../src/core/prefs.c:1983 ../src/core/prefs.c:2161
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -272,13 +272,13 @@ msgstr ""
 "«%s» trobat a la base de dades de la configuració no és un valor vàlid per a "
 "la vinculació de tecla «%s»\n"
 
-#: ../src/core/prefs.c:2559
+#: ../src/core/prefs.c:2537
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr ""
 "S'ha produït un error en establir el nom de l'espai de treball %d a «%s»: %s\n"
 
-#: ../src/core/prefs.c:2763
+#: ../src/core/prefs.c:2741
 #, c-format
 msgid "Error setting compositor status: %s\n"
 msgstr ""
@@ -296,7 +296,7 @@ msgid ""
 "replace option to replace the current window manager.\n"
 msgstr ""
 "La pantalla %d en la visualització «%s» ja té un gestor de finestres; proveu "
-"l'opció --replace per a reemplaçar el gestor de finestres actual.\n"
+"l'opció --replace per reemplaçar el gestor de finestres actual.\n"
 
 #: ../src/core/screen.c:400
 #, c-format
@@ -356,62 +356,62 @@ msgstr ""
 "Esta vinculació es pot invertir en prémer la tecla «Shift»; de manera que no "
 "es podrà utilitzar la tecla «Shift»."
 
-#: ../src/core/session.c:845 ../src/core/session.c:852
+#: ../src/core/session.c:850 ../src/core/session.c:857
 #, c-format
 msgid "Could not create directory '%s': %s\n"
 msgstr "No s'ha pogut crear el directori «%s»: %s\n"
 
-#: ../src/core/session.c:862
+#: ../src/core/session.c:867
 #, c-format
 msgid "Could not open session file '%s' for writing: %s\n"
 msgstr "No s'ha pogut obrir el fitxer de sessió «%s» per a l'escriptura: %s\n"
 
-#: ../src/core/session.c:1003
+#: ../src/core/session.c:1008
 #, c-format
 msgid "Error writing session file '%s': %s\n"
 msgstr "S'ha produït un error en escriure el fitxer de sessió «%s»: %s\n"
 
-#: ../src/core/session.c:1008
+#: ../src/core/session.c:1013
 #, c-format
 msgid "Error closing session file '%s': %s\n"
 msgstr "S'ha produït un error en tancar el fitxer de sessió «%s»: %s\n"
 
 #. oh, just give up
-#: ../src/core/session.c:1101
+#: ../src/core/session.c:1106
 #, c-format
 msgid "Failed to read saved session file %s: %s\n"
 msgstr "No s'ha pogut llegir el fitxer de sessió «%s» alçat: %s\n"
 
-#: ../src/core/session.c:1140
+#: ../src/core/session.c:1145
 #, c-format
 msgid "Failed to parse saved session file: %s\n"
 msgstr "No s'ha pogut analitzar el fitxer de sessió alçat: %s\n"
 
-#: ../src/core/session.c:1189
+#: ../src/core/session.c:1194
 #, c-format
 msgid "<metacity_session> attribute seen but we already have the session ID"
 msgstr ""
 "S'ha vist l'atribut <metacity_session> però encara hi ha l'identificador de "
 "sessió"
 
-#: ../src/core/session.c:1202 ../src/core/session.c:1277
-#: ../src/core/session.c:1309 ../src/core/session.c:1381
-#: ../src/core/session.c:1441
+#: ../src/core/session.c:1207 ../src/core/session.c:1282
+#: ../src/core/session.c:1314 ../src/core/session.c:1386
+#: ../src/core/session.c:1446
 #, c-format
 msgid "Unknown attribute %s on <%s> element"
 msgstr "Atribut %s desconegut a l'element <%s>"
 
-#: ../src/core/session.c:1219
+#: ../src/core/session.c:1224
 #, c-format
 msgid "nested <window> tag"
 msgstr "etiqueta <window> imbricada"
 
-#: ../src/core/session.c:1461
+#: ../src/core/session.c:1466
 #, c-format
 msgid "Unknown element %s"
 msgstr "Element %s desconegut"
 
-#: ../src/core/session.c:1812
+#: ../src/core/session.c:1818
 msgid ""
 "These windows do not support &quot;save current setup&quot; and will have to "
 "be restarted manually next time you log in."
@@ -419,39 +419,39 @@ msgstr ""
 "Estes finestres no admeten la funció «alça la configuració actual» i s'hauran "
 "de reiniciar manualment la pròxima vegada que entreu."
 
-#: ../src/core/util.c:103
+#: ../src/core/util.c:101
 #, c-format
 msgid "Failed to open debug log: %s\n"
 msgstr "No s'ha pogut obrir el registre de depuració: %s\n"
 
-#: ../src/core/util.c:113
+#: ../src/core/util.c:111
 #, c-format
 msgid "Failed to fdopen() log file %s: %s\n"
 msgstr "No s'ha pogut executar fdopen() sobre el fitxer de registre %s: %s\n"
 
-#: ../src/core/util.c:119
+#: ../src/core/util.c:117
 #, c-format
 msgid "Opened log file %s\n"
 msgstr "S'ha obert el fitxer de registre %s\n"
 
-#: ../src/core/util.c:138 ../src/tools/metacity-message.c:176
+#: ../src/core/util.c:136 ../src/tools/metacity-message.c:176
 #, c-format
 msgid "Metacity was compiled without support for verbose mode\n"
 msgstr "Metacity es va compilar sense compatibilitat per al mode detallat\n"
 
-#: ../src/core/util.c:238
+#: ../src/core/util.c:236
 msgid "Window manager: "
 msgstr "Gestor de finestres: "
 
-#: ../src/core/util.c:390
+#: ../src/core/util.c:388
 msgid "Bug in window manager: "
 msgstr "Error en el gestor de finestres: "
 
-#: ../src/core/util.c:423
+#: ../src/core/util.c:421
 msgid "Window manager warning: "
 msgstr "Avís del gestor de finestres: "
 
-#: ../src/core/util.c:451
+#: ../src/core/util.c:449
 msgid "Window manager error: "
 msgstr "Error del gestor de finestres: "
 
@@ -463,14 +463,14 @@ msgid "Metacity"
 msgstr "Metacity"
 
 #. first time through
-#: ../src/core/window.c:5630
+#: ../src/core/window.c:5642
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
 "window as specified in the ICCCM.\n"
 msgstr ""
 "La finestra %s estableix SM_CLIENT_ID en ella mateixa, en comptes del "
-"WM_CLIENT_LEADER, tal i com s'especifica a ICCCM.\n"
+"WM_CLIENT_LEADER, tal com s'especifica a ICCCM.\n"
 
 #. We ignore mwm_has_resize_func because WM_NORMAL_HINTS is the
 #. * authoritative source for that info. Some apps such as mplayer or
@@ -479,7 +479,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/core/window.c:6195
+#: ../src/core/window.c:6207
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
@@ -520,7 +520,7 @@ msgstr "%s (com a %s)"
 msgid "%s (as another user)"
 msgstr "%s (com a un altre usuari)"
 
-#: ../src/core/window-props.c:1429
+#: ../src/core/window-props.c:1430
 #, c-format
 msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
 msgstr ""
@@ -541,7 +541,6 @@ msgstr ""
 "És molt possible que siga un error en l'aplicació, no pas del gestor de "
 "finestres.\n"
 "La finestra té el títol=«%s» classe=«%s» nom=«%s»\n"
-"\n"
 
 #: ../src/core/xprops.c:401
 #, c-format
@@ -914,7 +913,7 @@ msgstr ""
 "separen amb comes. No es permeten botons duplicats. Els botons desconeguts "
 "es descartaran sense cap notificació, de manera que es puguen afegir botons "
 "en futures versions del Metacity sense trencar les versions antigues. Es pot "
-"afegir una etiqueta especial d'espaiament («spacer») per a inserir una "
+"afegir una etiqueta especial d'espaiament («spacer») per inserir una "
 "determinada quantitat d'espai entre dos botons adjacents."
 
 #: ../src/metacity.schemas.in.in.h:8
@@ -925,16 +924,16 @@ msgstr "Alça automàticament la finestra amb el focus"
 msgid ""
 "Clicking a window while holding down this modifier key will move the window "
 "(left click), resize the window (middle click), or show the window menu "
-"(right click). The left and right operations may be swapped using the "
-"\"mouse_button_resize\" key. Modifier is expressed as \"&lt;Alt&gt;\" or "
-"\"&lt;Super&gt;\" for example."
+"(right click). The middle and right click operations may be swapped using "
+"the \"resize_with_right_button\" key. Modifier is expressed as \"&lt;Alt&gt;"
+"\" or \"&lt;Super&gt;\" for example."
 msgstr ""
 "Si es fa clic en una finestra mentre es manté esta tecla modificadora "
 "premuda, es mourà la finestra (botó esquerre), redimensionarà la finestra "
-"(botó central) o mostrarà el menú de la finestra (botó dret). Les operacions "
-"de la dreta i de l'esquerra es poden intercanviar amb la clau "
-"«mouse_button_resize». El modificador s'expressa com a «&lt;Alt;&gt;» o com a "
-"«&lt;Super&gt;», per exemple."
+"(botó del mig) o mostrarà el menú de la finestra (botó dret). Les operacions "
+"de fer clic amb el botó del mig i el secundari es poden intercanviar amb la "
+"clau «resize_with_right_button». El modificador s'expressa com a «&lt;Alt;"
+"&gt;» o com a «&lt;Super&gt;», per exemple."
 
 #: ../src/metacity.schemas.in.in.h:10
 msgid "Commands to run in response to keybindings"
@@ -966,7 +965,7 @@ msgid ""
 "may be used in conjunction with 'visual bell' to allow silent 'beeps'."
 msgstr ""
 "Determina si les aplicacions o el sistema poden generar «sons» audibles; es "
-"pot utilitzar en conjunció amb «visual bell» per a permetre «sons» silenciosos."
+"pot utilitzar en conjunció amb «visual bell» per permetre «sons» silenciosos."
 
 #: ../src/metacity.schemas.in.in.h:17
 msgid "Disable misfeatures that are required by old or broken applications"
@@ -985,19 +984,19 @@ msgid ""
 "the auto_raise_delay key. This is not related to clicking on a window to "
 "raise it, nor to entering a window during drag-and-drop."
 msgstr ""
-"Si és cert, i el mode del focus és «sloppy» o «mouse», aleshores la finestra "
-"amb el focus s'alçarà automàticament després d'un retard, que s'especifica a "
-"la clau auto_raise_delay. Això no està relacionat en l'acció de fer clic a "
-"una finestra per a alçar-la, ni tampoc en entrar en una finestra en "
-"arrossegar i deixar anar."
+"Si és «true» (cert), i el mode del focus és «sloppy» o «mouse», aleshores la "
+"finestra amb el focus s'alçarà automàticament després d'un retard, que "
+"s'especifica a la clau auto_raise_delay. Això no està relacionat en l'acció "
+"de fer clic a una finestra per alçar-la, ni tampoc en entrar en una finestra "
+"en arrossegar i deixar anar."
 
 #: ../src/metacity.schemas.in.in.h:20
 msgid ""
 "If true, ignore the titlebar_font option, and use the standard application "
 "font for window titles."
 msgstr ""
-"Si és veritat, ignora l'opció titlebar_font i utilitza el tipus de lletra de "
-"les aplicacions estàndard per als títols de les finestres."
+"Si és «true» (cert), ignora l'opció titlebar_font i utilitza el tipus de "
+"lletra de les aplicacions estàndard per als títols de les finestres."
 
 #: ../src/metacity.schemas.in.in.h:21
 msgid ""
@@ -1007,11 +1006,12 @@ msgid ""
 "working, and may also be a useful tradeoff for terminal servers. However, "
 "the wireframe feature is disabled when accessibility is on."
 msgstr ""
-"Sí és cert, el metacity donarà a l'usuari menys informació utilitzant marcs "
-"amb fils, evitant les animacions o altres mitjans. Això implica una reducció "
-"significativa en usabilitat per a molts usuaris, però pot permetre a algunes "
-"aplicacions velles i servidors de terminal. No obstant, la funcionalitat "
-"dels marcs amb fils es desactiva quan l'accessibilitat està habilitada."
+"Si és «true» (cert), el Metacity donarà a l'usuari menys informació "
+"utilitzant marcs amb fils, evitant les animacions o altres mitjans. Això "
+"implica una reducció significativa en usabilitat per a molts usuaris, però "
+"pot permetre a algunes aplicacions velles i servidors de terminal. No "
+"obstant, la funcionalitat dels marcs amb fils es desactiva quan "
+"l'accessibilitat està habilitada."
 
 #: ../src/metacity.schemas.in.in.h:22
 msgid ""
@@ -1023,9 +1023,9 @@ msgid ""
 "windows in other applications. Application-based mode is, however, largely "
 "unimplemented at the moment."
 msgstr ""
-"Si és cert, el Metacity treballarà en termes d'aplicacions, en comptes de "
-"finestres. El concepte és una mica abstracte, però en general, una "
-"configuració basada en aplicacions és més paregut als Mac i menys com el "
+"Si és «true» (cert), el Metacity treballarà en termes d'aplicacions, en "
+"comptes de finestres. El concepte és una mica abstracte, però en general, "
+"una configuració basada en aplicacions és més paregut als Mac i menys com el "
 "Windows. Quan teniu el focus en una finestra en el mode basat en "
 "aplicacions, totes les finestres en l'aplicació s'alçaran. A més a més, en "
 "el mode basat en aplicacions, els clics de focus no es passen a les "
@@ -1034,7 +1034,7 @@ msgstr ""
 
 #: ../src/metacity.schemas.in.in.h:23
 msgid "If true, trade off usability for less resource usage"
-msgstr "Si és vertader, sacrifica usabilitat per a usar menys recursos"
+msgstr "Si és «true» (cert), sacrifica usabilitat per usar menys recursos"
 
 #: ../src/metacity.schemas.in.in.h:24
 msgid "Modifier to use for modified window click actions"
@@ -1055,8 +1055,8 @@ msgid ""
 "workspaces."
 msgstr ""
 "El nombre d'espais de treball. Ha de ser més gran que zero, i té un màxim "
-"fixe per a prevenir la destrucció accidental del vostre escriptori si "
-"demaneu massa espais de treball."
+"fix per prevenir la destrucció accidental del vostre escriptori si demaneu "
+"massa espais de treball."
 
 #: ../src/metacity.schemas.in.in.h:28
 msgid "Run a defined command"
@@ -1068,10 +1068,10 @@ msgid ""
 "middle button while holding down the key given in \"mouse_button_modifier\"; "
 "set it to false to make it work the opposite way around."
 msgstr ""
-"Establiu-lo a «true» (cert) per a canviar la mida amb el botó secundari i "
-"mostrar un menú amb el botó central mentre es prem la tecla especificada al "
+"Establiu-lo a «true» (cert) per canviar la mida amb el botó secundari i "
+"mostrar un menú amb el botó del mig mentre es prema la tecla especificada al "
 "paràmetre «mouse_button_modifier». Establiu-lo a «false» (fals) perquè "
-"funcione a l'inversa."
+"funcione a la inversa."
 
 #: ../src/metacity.schemas.in.in.h:30
 msgid ""
@@ -1100,19 +1100,20 @@ msgstr ""
 "del client, moure o canviar la mida de la finestra) normalment alcen la "
 "finestra com a efecte secundari. Si establiu esta opció a fals -cosa molt "
 "poc recomanable- se separarà l'alçament de la finestra d'altres accions de "
-"l'usuari i s'ignoraran les sol·licituds d'alçament que generen opció siga "
-"falsa, encara es poden alçar les finestres amb alt-clic-esquerra en "
-"qualsevol lloc de la finestra, amb un clic a les decoracions de la finestra, "
-"o amb un missatge especial dels paginadors, com ara sol·licituds d'activació "
-"des de les miniaplicacions de la llista de finestres. Esta opció està "
-"inhabilitada en el mode d'alçar les finestres amb clic. Fixeu-vos que les "
-"diverses maneres d'alçar les finestres quan «raise_on_click» és fals no "
-"inclouen les peticions programades de les aplicacions per a alçar finestres; "
-"estes peticions s'ignoraran siga quin siga el motiu. Si desenvolupeu "
-"aplicacions i un usuari es queixa que l'aplicació no funciona quan este "
-"paràmetre està inhabilitat, digueu-li que es culpa _seua_ per haver trencat "
-"el gestor de finestres, i que ha de tornar a canviar esta opció a «true» o "
-"conviure amb l'error."
+"l'usuari i s'ignoraran les sol·licituds d'alçament que generin les "
+"aplicacions. Vegeu l'informe d'error http://bugzilla.gnome.org/show_bug.cgi?"
+"id=445447#c6. Fins i tot quan esta opció siga falsa, encara es poden alçar "
+"les finestres amb alt-clic-esquerra en qualsevol lloc de la finestra, amb un "
+"clic a les decoracions de la finestra, o amb un missatge especial dels "
+"paginadors, com ara sol·licituds d'activació des de les miniaplicacions de "
+"la llista de finestres. Esta opció està inhabilitada en el mode d'alçar les "
+"finestres amb clic. Fixeu-vos que les diverses maneres d'alçar les finestres "
+"quan «raise_on_click» és fals no inclouen les peticions programades de les "
+"aplicacions per alçar finestres; estes peticions s'ignoraran siga quin siga "
+"el motiu. Si desenvolupeu aplicacions i un usuari es queixa que l'aplicació "
+"no funciona quan este paràmetre està inhabilitat, digueu-li que es culpa "
+"_seua_ per haver trencat el gestor de finestres, i que ha de tornar a "
+"canviar esta opció a «true» o conviure amb l'error."
 
 #: ../src/metacity.schemas.in.in.h:31
 msgid ""
@@ -1122,7 +1123,7 @@ msgid ""
 "run any misbehaving applications."
 msgstr ""
 "Algunes aplicacions no fan cas de les especificacions que poden fer que el "
-"gestor de finestres no responga correctament. Esta opció fa que el Metacity "
+"gestor de finestres no respongui correctament. Esta opció fa que el Metacity "
 "es pose en un mode rigorosament correcte, que proporciona una interfície "
 "d'usuari més consistent, sempre que no s'hagen d'executar aplicacions que no "
 "actuen correctament."
@@ -1141,12 +1142,12 @@ msgid ""
 "is unknown (as is usually the case for the default \"system beep\"), the "
 "currently focused window's titlebar is flashed."
 msgstr ""
-"Li diu al Metacity com implementar la indicació visual de que s'ha tocat la "
-"campana del sistema, o l'indicador de campana d'un altra aplicació. "
+"Li diu al Metacity com implementar la indicació visual que s'ha tocat la "
+"campana del sistema, o l'indicador de campana d'una altra aplicació. "
 "Actualment, hi ha dos valors vàlids, «fullscreen», que fa un flaix blanc i "
 "negre en tota la pantalla, i «frame_flash», que causa que la barra del títol "
 "de l'aplicació que ha enviat el senyal de campana faça un flaix. Si no se "
-"sap quina aplicació ha enviat el senyal de campana, com sol pasar per als "
+"sap quina aplicació ha enviat el senyal de campana, com sol passar per als "
 "«sons del sistema» per defecte, la barra del títol de la finestra que tinga "
 "el focus en aquell moment rep un flaix."
 
@@ -1166,7 +1167,7 @@ msgid ""
 "keybinding which causes the command specified by this setting to be invoked."
 msgstr ""
 "La clau /apps/metacity/global_keybindings/run_command_screenshot estableix "
-"una vinculació de tecles que fa que s'invoque l'orde especificada en esta "
+"una vinculació de tecles que fa que s'invoqui l'orde especificada en esta "
 "configuració."
 
 #: ../src/metacity.schemas.in.in.h:36
@@ -1176,7 +1177,7 @@ msgid ""
 "be invoked."
 msgstr ""
 "La clau /apps/metacity/global_keybindings/run_command_window_screenshot "
-"estableix una vinculació de tecles que fa que s'invoque l'orde especificada "
+"estableix una vinculació de tecles que fa que s'invoqui l'orde especificada "
 "en esta configuració."
 
 #: ../src/metacity.schemas.in.in.h:37
@@ -1209,14 +1210,14 @@ msgid ""
 "forth."
 msgstr ""
 "El tema determina l'aspecte dels contorns de les finestres, la barra del "
-"títol, etc..."
+"títol, etc."
 
 #: ../src/metacity.schemas.in.in.h:41
 msgid ""
 "The time delay before raising a window if auto_raise is set to true. The "
 "delay is given in thousandths of a second."
 msgstr ""
-"El retard de temps abans d'alçar una finestra si auto_raise és establert a "
+"El retard de temps abans d'alçar una finestra si auto_raise és establit a "
 "«true». El retard es dóna en mil·lèssimes de segon."
 
 #: ../src/metacity.schemas.in.in.h:42
@@ -1228,8 +1229,8 @@ msgid ""
 "unfocused when the mouse leaves the window."
 msgstr ""
 "El mode de focus de la finestra indica com s'activen les finestres. Té tres "
-"valors possibles; «click» vol dir que cal fer clic a les finestres per a "
-"donar-los el focus, «sloppy» vol dir que les finestres reben el focus quan el "
+"valors possibles; «click» vol dir que cal fer clic a les finestres per donar-"
+"los el focus, «sloppy» vol dir que les finestres reben el focus quan el "
 "punter hi entra a dins, i «mouse» vol dir que les finestres s'enfoquen quan "
 "el punter hi entra a dins, i es desenfoquen quan el punter abandona la "
 "finestra."
@@ -1316,7 +1317,7 @@ msgid ""
 msgstr ""
 "Esta opció proporciona control adicional sobre com les finestres noves "
 "obtenen el focus. Té dos valors possibles: «smart», que aplica el focus "
-"normal d'usuari, i «strict», que fa que no es done el focus a les finestres "
+"normal d'usuari, i «strict», que fa que no es doni el focus a les finestres "
 "que s'inicien des d'un terminal."
 
 #: ../src/metacity.schemas.in.in.h:48
@@ -1396,7 +1397,7 @@ msgstr "Matín la finestra per damunt"
 
 #: ../src/ui/frames.c:1142
 msgid "Remove Window From Top"
-msgstr "Trau la finestra de damunt"
+msgstr "Treu la finestra de damunt"
 
 #: ../src/ui/frames.c:1145
 msgid "Always On Visible Workspace"
@@ -1460,7 +1461,7 @@ msgstr "Sempre a l'espai de treball _visible"
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:93
 msgid "_Only on This Workspace"
-msgstr "N_omés en este espai de treball"
+msgstr "Només en _este espai de treball"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:95
@@ -1955,12 +1956,12 @@ msgstr "<%s> amb nom «%s» s'ha utilitzat dues vegades"
 #: ../src/ui/theme-parser.c:1148
 #, c-format
 msgid "<%s> parent \"%s\" has not been defined"
-msgstr "el pare de <%s>, «%s», no s'ha definit"
+msgstr "El pare de <%s>, «%s», no s'ha definit"
 
 #: ../src/ui/theme-parser.c:1058
 #, c-format
 msgid "<%s> geometry \"%s\" has not been defined"
-msgstr "la geometria de <%s>, «%s», no s'ha definit"
+msgstr "La geometria de <%s>, «%s», no s'ha definit"
 
 #: ../src/ui/theme-parser.c:1071
 #, c-format
@@ -2155,7 +2156,7 @@ msgid ""
 msgstr ""
 "No es pot tindre dos draw_ops per a un element <piece> (el tema ha "
 "especificat un atribut draw_ops i també un element <draw_ops>, o ha "
-"especificat ambdós elements) "
+"especificat ambdós elements)"
 
 #: ../src/ui/theme-parser.c:3185
 msgid ""
@@ -2288,109 +2289,97 @@ msgstr "/Finestres/_Tots els ancoratges"
 msgid "/Windows/Des_ktop"
 msgstr "/Finestres/_Escriptori"
 
-#: ../src/ui/theme-viewer.c:136
-msgid "Open another one of these windows"
-msgstr "Obri una altra d'estes finestres"
-
-#: ../src/ui/theme-viewer.c:143
-msgid "This is a demo button with an 'open' icon"
-msgstr "Este és un botó de prova amb una icona «obri»"
-
-#: ../src/ui/theme-viewer.c:150
-msgid "This is a demo button with a 'quit' icon"
-msgstr "Este és un botó de prova amb una icona de «ix»"
-
-#: ../src/ui/theme-viewer.c:243
+#: ../src/ui/theme-viewer.c:244
 msgid "This is a sample message in a sample dialog"
 msgstr "Este és un exemple de missatge en un diàleg d'exemple"
 
-#: ../src/ui/theme-viewer.c:326
+#: ../src/ui/theme-viewer.c:327
 #, c-format
 msgid "Fake menu item %d\n"
 msgstr "Element fals de menú %d\n"
 
-#: ../src/ui/theme-viewer.c:360
+#: ../src/ui/theme-viewer.c:361
 msgid "Border-only window"
 msgstr "Finestra amb només contorn"
 
-#: ../src/ui/theme-viewer.c:362
+#: ../src/ui/theme-viewer.c:363
 msgid "Bar"
 msgstr "Barra"
 
-#: ../src/ui/theme-viewer.c:379
+#: ../src/ui/theme-viewer.c:380
 msgid "Normal Application Window"
 msgstr "Finestra d'aplicació normal"
 
-#: ../src/ui/theme-viewer.c:383
+#: ../src/ui/theme-viewer.c:384
 msgid "Dialog Box"
 msgstr "Caixa de diàleg"
 
-#: ../src/ui/theme-viewer.c:387
+#: ../src/ui/theme-viewer.c:388
 msgid "Modal Dialog Box"
 msgstr "Caixa de diàleg modal"
 
-#: ../src/ui/theme-viewer.c:391
+#: ../src/ui/theme-viewer.c:392
 msgid "Utility Palette"
 msgstr "Paleta d'utilitat"
 
-#: ../src/ui/theme-viewer.c:395
+#: ../src/ui/theme-viewer.c:396
 msgid "Torn-off Menu"
 msgstr "Menú arrossegable"
 
-#: ../src/ui/theme-viewer.c:399
+#: ../src/ui/theme-viewer.c:400
 msgid "Border"
 msgstr "Contorn"
 
-#: ../src/ui/theme-viewer.c:727
+#: ../src/ui/theme-viewer.c:728
 #, c-format
 msgid "Button layout test %d"
 msgstr "Prova de disposició de botons %d"
 
-#: ../src/ui/theme-viewer.c:756
+#: ../src/ui/theme-viewer.c:757
 #, c-format
 msgid "%g milliseconds to draw one window frame"
-msgstr "%g mil·lisegons per a dibuixar un marc de finestra"
+msgstr "%g mil·lisegons per dibuixar un marc de finestra"
 
-#: ../src/ui/theme-viewer.c:799
+#: ../src/ui/theme-viewer.c:800
 #, c-format
 msgid "Usage: metacity-theme-viewer [THEMENAME]\n"
 msgstr "Forma d'ús: metacity-theme-viewer [NOMDELTEMA]\n"
 
-#: ../src/ui/theme-viewer.c:806
+#: ../src/ui/theme-viewer.c:807
 #, c-format
 msgid "Error loading theme: %s\n"
 msgstr "S'ha produït un error en carregar el tema: %s\n"
 
-#: ../src/ui/theme-viewer.c:812
+#: ../src/ui/theme-viewer.c:813
 #, c-format
 msgid "Loaded theme \"%s\" in %g seconds\n"
 msgstr "S'ha carregat el tema «%s» en %g segons\n"
 
-#: ../src/ui/theme-viewer.c:853
+#: ../src/ui/theme-viewer.c:854
 msgid "Normal Title Font"
 msgstr "Tipus de lletra per a títol normal"
 
-#: ../src/ui/theme-viewer.c:859
+#: ../src/ui/theme-viewer.c:860
 msgid "Small Title Font"
 msgstr "Tipus de lletra per a títol petit"
 
-#: ../src/ui/theme-viewer.c:865
+#: ../src/ui/theme-viewer.c:866
 msgid "Large Title Font"
 msgstr "Tipus de lletra per a títol gran"
 
-#: ../src/ui/theme-viewer.c:870
+#: ../src/ui/theme-viewer.c:871
 msgid "Button Layouts"
 msgstr "Disposicions de botons"
 
-#: ../src/ui/theme-viewer.c:875
+#: ../src/ui/theme-viewer.c:876
 msgid "Benchmark"
 msgstr "Test de referència"
 
-#: ../src/ui/theme-viewer.c:922
+#: ../src/ui/theme-viewer.c:923
 msgid "Window Title Goes Here"
 msgstr "El títol de la finestra va ací"
 
-#: ../src/ui/theme-viewer.c:1026
+#: ../src/ui/theme-viewer.c:1027
 #, c-format
 msgid ""
 "Drew %d frames in %g client-side seconds (%g milliseconds per frame) and %g "
@@ -2401,44 +2390,53 @@ msgstr ""
 "%g segons de rellotge inclosos els recursos del servidor d'X (%g "
 "mil·lisegons per marc)\n"
 
-#: ../src/ui/theme-viewer.c:1245
+#: ../src/ui/theme-viewer.c:1246
 msgid "position expression test returned TRUE but set error"
 msgstr "La prova d'expressió de posició ha tornat TRUE però ha establit error"
 
-#: ../src/ui/theme-viewer.c:1247
+#: ../src/ui/theme-viewer.c:1248
 msgid "position expression test returned FALSE but didn't set error"
 msgstr ""
 "La prova d'expressió de posició ha tornat FALSE però no ha establit error"
 
-#: ../src/ui/theme-viewer.c:1251
+#: ../src/ui/theme-viewer.c:1252
 msgid "Error was expected but none given"
 msgstr "S'esperava un error però no s'ha donat cap"
 
-#: ../src/ui/theme-viewer.c:1253
+#: ../src/ui/theme-viewer.c:1254
 #, c-format
 msgid "Error %d was expected but %d given"
 msgstr "S'esperava l'error %d però s'ha donat %d"
 
-#: ../src/ui/theme-viewer.c:1259
+#: ../src/ui/theme-viewer.c:1260
 #, c-format
 msgid "Error not expected but one was returned: %s"
 msgstr "No s'esperava cap error però s'ha tornat un: %s"
 
-#: ../src/ui/theme-viewer.c:1263
+#: ../src/ui/theme-viewer.c:1264
 #, c-format
 msgid "x value was %d, %d was expected"
 msgstr "El valor x ha sigut %d, i s'esperava %d"
 
-#: ../src/ui/theme-viewer.c:1266
+#: ../src/ui/theme-viewer.c:1267
 #, c-format
 msgid "y value was %d, %d was expected"
 msgstr "El valor y ha sigut %d, i s'esperava %d"
 
-#: ../src/ui/theme-viewer.c:1331
+#: ../src/ui/theme-viewer.c:1332
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr ""
 "%d expressions de coordenades analitzades en %g segons (%g segons de mitja)\n"
+
+#~ msgid "Open another one of these windows"
+#~ msgstr "Obre una altra d'aquestes finestres"
+
+#~ msgid "This is a demo button with an 'open' icon"
+#~ msgstr "Aquest és un botó de prova amb una icona «obre»"
+
+#~ msgid "This is a demo button with a 'quit' icon"
+#~ msgstr "Aquest és un botó de prova amb una icona de «surt»"
 
 #~ msgid "Failed to parse message \"%s\" from dialog process\n"
 #~ msgstr "No s'ha pogut analitzar el missatge «%s» des del procés de diàleg\n"
@@ -2460,9 +2458,6 @@ msgstr ""
 #~ msgstr ""
 #~ "S'ha produït un error en executar el metacity-dialog per a avisar sobre "
 #~ "aplicacions que no admeten la gestió de sessions: %s\n"
-
-#~ msgid "\"%s\" is not responding."
-#~ msgstr "«%s» no està responent."
 
 #~ msgid "Title"
 #~ msgstr "Títol"
@@ -3863,7 +3858,7 @@ msgstr ""
 #~ "changes."
 #~ msgstr ""
 #~ "Si forceu la sortida d'aquesta aplicació, se'n perdran els canvis que "
-#~ "hagueu desat."
+#~ "hàgiu desat."
 
 #~ msgid "Unknown function \"%s\" for menu icon"
 #~ msgstr "Funció «%s» desconeguda per a la icona de menú"
