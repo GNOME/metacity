@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: metacity 2.29.x\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=metacity&component=general\n"
 "POT-Creation-Date: 2010-01-21 21:34+0000\n"
-"PO-Revision-Date: 2010-03-06 01:19+0100\n"
+"PO-Revision-Date: 2010-04-21 14:07+0200\n"
 "Last-Translator: Luca Ferretti <lferrett@gnome.org>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
@@ -39,7 +39,7 @@ msgstr "Richiesta informazioni finestra sconosciuta: %d"
 #: ../src/core/delete.c:96
 #, c-format
 msgid "<tt>%s</tt> is not responding."
-msgstr "Nessuna risposta da<tt>%s</tt>."
+msgstr "Nessuna risposta da <tt>%s</tt>."
 
 #: ../src/core/delete.c:101
 #| msgid ""
