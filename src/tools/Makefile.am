@@ -26,7 +26,7 @@ noinst_PROGRAMS=metacity-mag metacity-grayscale
 
 metacity_message_LDADD= @METACITY_MESSAGE_LIBS@
 metacity_window_demo_LDADD= @METACITY_WINDOW_DEMO_LIBS@
-metacity_mag_LDADD= @METACITY_WINDOW_DEMO_LIBS@
+metacity_mag_LDADD= @METACITY_WINDOW_DEMO_LIBS@ -lm
 metacity_grayscale_LDADD = @METACITY_WINDOW_DEMO_LIBS@
 
 EXTRA_DIST=$(icon_DATA)
