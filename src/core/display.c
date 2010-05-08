@@ -4319,7 +4319,7 @@ find_tab_forward (MetaDisplay   *display,
     }
 
   tmp = workspace->mru_list;
-  while (tmp != start)
+  while (tmp != start && tmp != NULL)
     {
       MetaWindow *window = tmp->data;
 
