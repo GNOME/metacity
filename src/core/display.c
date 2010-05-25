@@ -4002,8 +4002,8 @@ meta_set_syncing (gboolean setting)
   if (setting != is_syncing)
     {
       is_syncing = setting;
-
-      XSynchronize (meta_get_display ()->xdisplay, is_syncing);
+      if (meta_get_display ())
+        XSynchronize (meta_get_display ()->xdisplay, is_syncing);
     }
 }
 
