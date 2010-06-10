@@ -77,6 +77,7 @@ draw_window (GtkWidget                   *widget,
   int icon_x, icon_y, icon_w, icon_h;
   gboolean is_active;
   GdkColor *color;
+  GtkStyle *style;
 
   is_active = win->is_active;
   
@@ -84,10 +85,11 @@ draw_window (GtkWidget                   *widget,
   cairo_rectangle (cr, winrect->x, winrect->y, winrect->width, winrect->height);
   cairo_clip (cr);
 
+  style = gtk_widget_get_style (widget);
   if (is_active)
-    color = &widget->style->light[state];
+    color = &style->light[state];
   else
-    color = &widget->style->bg[state];
+    color = &style->bg[state];
   cairo_set_source_rgb (cr,
                         color->red / 65535.,
                         color->green / 65535.,
@@ -143,9 +145,9 @@ draw_window (GtkWidget                   *widget,
     }
           
   if (is_active)
-    color = &widget->style->fg[state];
+    color = &style->fg[state];
   else
-    color = &widget->style->fg[state];
+    color = &style->fg[state];
 
   cairo_set_source_rgb (cr,
                         color->red / 65535.,
@@ -193,7 +195,7 @@ wnck_draw_workspace (GtkWidget                   *widget,
   if (workspace_background)
     {
       gdk_draw_pixbuf (drawable,
-                       GTK_WIDGET (widget)->style->dark_gc[state],
+                       gtk_widget_get_style (GTK_WIDGET (widget))->dark_gc[state],
                        workspace_background,
                        0, 0,
                        x, y,
@@ -205,8 +207,8 @@ wnck_draw_workspace (GtkWidget                   *widget,
     {
       cairo_t *cr;
       
-      cr = gdk_cairo_create (widget->window);
-      gdk_cairo_set_source_color (cr, &widget->style->dark[state]);
+      cr = gdk_cairo_create (gtk_widget_get_window (widget));
+      gdk_cairo_set_source_color (cr, &gtk_widget_get_style (widget)->dark[state]);
       cairo_rectangle (cr, x, y, width, height);
       cairo_fill (cr);
       cairo_destroy (cr);
