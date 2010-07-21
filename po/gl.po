@@ -1,10 +1,5 @@
-# translation of metacity-master-po-gl-37635.po to Galician
-# translation of metacity.HEAD.gl.po to
-# translation of metacity.HEAD.gl.po to
-# Galician translation of Metacity, a tiny WM for GNOME.
+# translation of metacity.HEAD.gl.po to Galician translation of Metacity, a tiny WM for GNOME.
 # Copyright (C) 2001, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
-#
-#
 #
 # Manuel A. Fernández Montecelo <manuel@sindominio.net>, 2001, 2005.
 # Ignacio Casal Quinteiro <nacho.resa@gmail.com>, 2005, 2006.
@@ -19,15 +14,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity-master-po-gl-37635\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-20 01:03+0200\n"
-"PO-Revision-Date: 2010-06-20 01:08+0200\n"
+"POT-Creation-Date: 2010-07-21 14:09+0200\n"
+"PO-Revision-Date: 2010-07-21 14:10+0200\n"
 "Last-Translator: Fran Diéguez <frandieguez@ubuntu.com>\n"
-"Language-Team: Galician <gnome@g11.net>\n"
+"Language-Team: Galician <gnome-gl-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: gl\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\\\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
 #: ../src/50-metacity-desktop-key.xml.in.h:1
@@ -2429,15 +2424,3 @@ msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr ""
 "%d expresións de coordenadas interpretadas en %g segundos (%g segundos de "
 "media)\n"
-
-#~ msgid "Failed to read saved session file %s: %s\n"
-#~ msgstr "Produciuse un fallo ao ler o ficheiro de sesión gardado %s: %s\n"
-
-#~ msgid "Open another one of these windows"
-#~ msgstr "Abrir outra destas xanelas"
-
-#~ msgid "This is a demo button with an 'open' icon"
-#~ msgstr "Este é un botón de demostración cunha icona 'abrir'"
-
-#~ msgid "This is a demo button with a 'quit' icon"
-#~ msgstr "Este é un botón de demostración cunha icona 'saír'"
