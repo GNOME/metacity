@@ -15,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&component=general\n"
 "POT-Creation-Date: 2010-07-21 12:10+0000\n"
-"PO-Revision-Date: 2010-07-24 20:05+0800\n"
+"PO-Revision-Date: 2010-07-24 20:31+0800\n"
 "Last-Translator: Jessica Ban <bancage@gmail.com>\n"
 "Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -314,7 +314,6 @@ msgstr ""
 "该选项设置为特殊字符串“disabled”，那么此操作将没有按键组合。"
 
 #: ../src/core/schema-bindings.c:177
-#, fuzzy
 msgid ""
 "The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
 "\n"
@@ -874,7 +873,6 @@ msgid "Automatically raises the focused window"
 msgstr "自动提升获得焦点的窗口"
 
 #: ../src/metacity.schemas.in.in.h:9
-#, fuzzy
 msgid ""
 "Clicking a window while holding down this modifier key will move the window "
 "(left click), resize the window (middle click), or show the window menu "
