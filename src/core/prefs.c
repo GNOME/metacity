@@ -1929,6 +1929,10 @@ init_commands (void)
 static void
 init_workspace_names (void)
 {
+  int i;
+  for (i = 0; i < MAX_REASONABLE_WORKSPACES; i++)
+    workspace_names[i] = NULL;
+
 #ifdef HAVE_GCONF
   GSList *list, *l;
   const char *str_val;
@@ -1947,14 +1951,15 @@ init_workspace_names (void)
       gconf_entry_free (entry);
     }
   g_slist_free (list);
-#else
-  int i;
+#endif /* HAVE_GCONF */
+
+  /* initialise any we didn't see */
   for (i = 0; i < MAX_REASONABLE_WORKSPACES; i++)
-    workspace_names[i] = g_strdup_printf (_("Workspace %d"), i + 1);
+    if (workspace_names[i]==NULL)
+      workspace_names[i] = g_strdup_printf (_("Workspace %d"), i + 1);
 
   meta_topic (META_DEBUG_PREFS,
               "Initialized workspace names\n");
-#endif /* HAVE_GCONF */
 }
 
 static gboolean
