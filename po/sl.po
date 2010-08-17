@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=metacity&component=general\n"
 "POT-Creation-Date: 2010-01-26 00:30+0000\n"
-"PO-Revision-Date: 2010-08-17 08:36+0100\n"
+"PO-Revision-Date: 2010-08-17 14:36+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -895,14 +895,12 @@ msgid "If true, ignore the titlebar_font option, and use the standard applicatio
 msgstr "Izbrana možnost omogoča, da se prezre možnost pisave nazivne vrstice okna in uporabi privzeto pisavo programov."
 
 #: ../src/metacity.schemas.in.in.h:21
-#, fuzzy
 msgid "If true, metacity will give the user less feedback by using wireframes, avoiding animations, or other means. This is a significant reduction in usability for many users, but may allow legacy applications to continue working, and may also be a useful tradeoff for terminal servers. However, the wireframe feature is disabled when accessibility is on."
-msgstr "Izbrana možnost omogoča, da bo metacity uporabniku nudil manj odzivov z uporabo žičnih okvirjev, ukinitvijo animacij in na druge načine. Uporabnost za večino uporabnikov se bo zmanjšala, število delujočih programov se lahko poveča, izbira pa je primerna tudi za terminalske strežnike. Kljub temu je možnost žičnih okvirjev onemogočena pri uporabi možnosti dostopnosti."
+msgstr "Izbrana možnost omogoča, da bo program uporabniku podal manj odzivov z uporabo žičnih okvirjev z ukinjanjem animacij in na druge načine. To predstavlja občutno  zmanjševanje uporabnosti za večino uporabnikov, število delujočih programov pa se lahko poveča, izbira pa je primerna tudi za terminalske strežnike. Kljub temu je možnost žičnih okvirjev onemogočena pri uporabi dostopnosti."
 
 #: ../src/metacity.schemas.in.in.h:22
-#, fuzzy
 msgid "If true, then Metacity works in terms of applications rather than windows. The concept is a bit abstract, but in general an application-based setup is more like the Mac and less like Windows. When you focus a window in application-based mode, all the windows in the application will be raised. Also, in application-based mode, focus clicks are not passed through to windows in other applications. Application-based mode is, however, largely unimplemented at the moment."
-msgstr "Izbrana možnost omogoča, da Metacity deluje s konceptom programov namesto s konceptom oken. Ta koncept je nekoliko abstrakten, a je v splošnem značilen za Mace in manj za Windows. Ko je okno postavljeno v žarišče v programskem konceptu, se vsa okna programa dvignejo. Prav tako se v programskem načinu kliki za fokus ne prenesejo na ostale programe. Programski način v veliki meri še ni implementiran."
+msgstr "Izbrana možnost omogoča, da program prednostno obravnava program kot celoto in ne okna programa. Ta možnost je nekoliko abstraktna in je pomensko značilna za okolje Mac in manj za Windows. Ko je okno postavljeno v žarišče v programskem načinu, se vsa okna programa dvignejo. Prav tako se v tem načinu kliki z miško ne prenesejo na okna ostalih programov. Programski način v veliki meri še ni dokončno razvit."
 
 #: ../src/metacity.schemas.in.in.h:23
 msgid "If true, trade off usability for less resource usage"
@@ -1813,7 +1811,7 @@ msgstr "Predmet <%s> ne sme imeti atributa \"resize\" za razpeta stanja"
 #: ../src/ui/theme-parser.c:3097
 #, c-format
 msgid "Style has already been specified for state %s resize %s focus %s"
-msgstr "Slog za stanje %s resize %s žarišče %s je bil že naveden"
+msgstr "Slog za stanje %s velikost %s žarišče %s je bil že naveden"
 
 #: ../src/ui/theme-parser.c:3086
 #: ../src/ui/theme-parser.c:3108
@@ -1995,7 +1993,7 @@ msgstr "Preizkus razporeditve gumbov %d"
 #: ../src/ui/theme-viewer.c:757
 #, c-format
 msgid "%g milliseconds to draw one window frame"
-msgstr "%g milisekund za izrisanje ene sličice okna"
+msgstr "%g milisekund za izris ene sličice okna"
 
 #: ../src/ui/theme-viewer.c:800
 #, c-format
@@ -2077,3 +2075,4 @@ msgstr "vrednost y je %d, pričakovana pa je vrednost %d"
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr "%d izjav koordinat razčlenjenih v %g sekundah (%g sekund v povprečju)\n"
+
