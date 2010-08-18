@@ -558,6 +558,8 @@ meta_image_window_set (MetaImageWindow *iw,
                        int              x,
                        int              y)
 {
+  cairo_t *cr;
+
   /* We use a back pixmap to avoid having to handle exposes, because
    * it's really too slow for large clients being minimized, etc.
    * and this way flicker is genuinely zero.
@@ -572,6 +574,10 @@ meta_image_window_set (MetaImageWindow *iw,
                    gdk_pixbuf_get_height (pixbuf),
                    GDK_RGB_DITHER_NORMAL,
                    0, 0);
+  cr = gdk_cairo_create (iw->pixmap);
+  gdk_cairo_set_source_pixbuf (cr, pixbuf, 0, 0);
+  cairo_paint (cr);
+  cairo_destroy (cr);
 
   gdk_window_set_back_pixmap (iw->window->window,
                               iw->pixmap,
@@ -1137,7 +1143,7 @@ meta_ui_get_pixbuf_from_pixmap (Pixmap   pmap)
   
   depth = gdk_drawable_get_depth (GDK_DRAWABLE (gpmap));
   if (depth <= 24)
-    cmap = gdk_screen_get_rgb_colormap (screen);
+    cmap = gdk_screen_get_system_colormap (screen);
   else
     cmap = gdk_screen_get_rgba_colormap (screen);
   
