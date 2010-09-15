@@ -1,3 +1,44 @@
+2.30.2
+======
+
+Thanks to Florian Müllner, Matthias Clasen, Owen W. Taylor,
+Frédéric Péters, Tomislav Vujec, Andre Klapper, Paul Liu,
+Lin Ma, and Tomas Frydrych for improvements in this version.
+
+ - Replace GDK drawing API with cairo (Florian)
+ - Removes usage of gdk_display (Matthias)
+ - Stop confusing GDK's grab tracking (Owen)
+ - Allow building with Gtk+-3.0 (Florian)
+ - Replace deprecated GDK symbols (Florian)
+ - Fixes for compiling with GSeal (Andre)
+ - Fix crash with --sync option (Owen)
+ - Fix very unlikely crasher (Paul)
+ - Remove deprecated Encoding key from desktop files (Frédéric)
+ - Fix memory leak in theme optimisation (Lin Ma)
+ - Use correct timestamp for focus stealing prevention (Tomas)
+ - Don't warn about a missing session file (Tomislav)
+
+Translations:
+    Andika Triwidada (id)
+    Aron Xu (zh_CN)
+    Ask H. Larsen (da)
+    Carles Ferrando (ca@valencia)
+    Francisco Diéguez (gl)
+    Fran Diéguez (gl)
+    Jenny Petoumenou (el)
+    Kjartan Maraas (nb)
+    Kristjan Schmidt (eo)
+    Luca Ferretti (it)
+    Matej Urbančič (sl)
+    Nils-Christoph Fiedler (nds)
+    Peteris Krisjanis (lv)
+    Sandeep Shedmake (mr)
+    Shankar Prasad (kn)
+    Takayuki KUSANO (ja)
+    Thomas Thurman (en@shaw)
+    Yannig Marchegay (oc)
+    Yaron Shahrabani (he)
+
 2.30.1
 ======
 
