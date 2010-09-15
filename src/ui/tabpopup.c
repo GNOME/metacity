@@ -437,7 +437,7 @@ meta_ui_tab_popup_set_showing (MetaTabPopup *popup,
         {
           meta_verbose ("Hiding tab popup window\n");
           gtk_widget_hide (popup->window);
-          meta_core_increment_event_serial (gdk_display);
+          meta_core_increment_event_serial (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
         }
     }
 }
@@ -470,7 +470,7 @@ display_entry (MetaTabPopup *popup,
     {
       /* Do stuff behind gtk's back */
       gdk_window_hide (popup->outline_window->window);
-      meta_core_increment_event_serial (gdk_display);
+      meta_core_increment_event_serial (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
   
       rect = te->rect;
       rect.x = 0;

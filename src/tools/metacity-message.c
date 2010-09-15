@@ -38,9 +38,9 @@ send_restart (void)
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
   xev.xclient.send_event = True;
-  xev.xclient.display = gdk_display;
+  xev.xclient.display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
   xev.xclient.window = gdk_x11_get_default_root_xwindow ();
-  xev.xclient.message_type = XInternAtom (gdk_display,
+  xev.xclient.message_type = XInternAtom (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
                                           "_METACITY_RESTART_MESSAGE",
                                           False);
   xev.xclient.format = 32;
@@ -48,14 +48,14 @@ send_restart (void)
   xev.xclient.data.l[1] = 0;
   xev.xclient.data.l[2] = 0;
 
-  XSendEvent (gdk_display,
+  XSendEvent (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
               gdk_x11_get_default_root_xwindow (),
               False,
 	      SubstructureRedirectMask | SubstructureNotifyMask,
 	      &xev);
 
-  XFlush (gdk_display);
-  XSync (gdk_display, False);
+  XFlush (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
+  XSync (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()), False);
 }
 
 static void
@@ -66,9 +66,9 @@ send_reload_theme (void)
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
   xev.xclient.send_event = True;
-  xev.xclient.display = gdk_display;
+  xev.xclient.display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
   xev.xclient.window = gdk_x11_get_default_root_xwindow ();
-  xev.xclient.message_type = XInternAtom (gdk_display,
+  xev.xclient.message_type = XInternAtom (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
                                           "_METACITY_RELOAD_THEME_MESSAGE",
                                           False);
   xev.xclient.format = 32;
@@ -76,14 +76,14 @@ send_reload_theme (void)
   xev.xclient.data.l[1] = 0;
   xev.xclient.data.l[2] = 0;
 
-  XSendEvent (gdk_display,
+  XSendEvent (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
               gdk_x11_get_default_root_xwindow (),
               False,
 	      SubstructureRedirectMask | SubstructureNotifyMask,
 	      &xev);
 
-  XFlush (gdk_display);
-  XSync (gdk_display, False);
+  XFlush (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
+  XSync (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()), False);
 }
 
 static void
@@ -94,9 +94,9 @@ send_set_keybindings (gboolean enabled)
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
   xev.xclient.send_event = True;
-  xev.xclient.display = gdk_display;
+  xev.xclient.display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
   xev.xclient.window = gdk_x11_get_default_root_xwindow ();
-  xev.xclient.message_type = XInternAtom (gdk_display,
+  xev.xclient.message_type = XInternAtom (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
                                           "_METACITY_SET_KEYBINDINGS_MESSAGE",
                                           False);
   xev.xclient.format = 32;
@@ -104,14 +104,14 @@ send_set_keybindings (gboolean enabled)
   xev.xclient.data.l[1] = 0;
   xev.xclient.data.l[2] = 0;
 
-  XSendEvent (gdk_display,
+  XSendEvent (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
               gdk_x11_get_default_root_xwindow (),
               False,
 	      SubstructureRedirectMask | SubstructureNotifyMask,
 	      &xev);
 
-  XFlush (gdk_display);
-  XSync (gdk_display, False);
+  XFlush (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
+  XSync (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()), False);
 }
 
 #ifdef WITH_VERBOSE_MODE
@@ -123,9 +123,9 @@ send_toggle_verbose (void)
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
   xev.xclient.send_event = True;
-  xev.xclient.display = gdk_display;
+  xev.xclient.display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
   xev.xclient.window = gdk_x11_get_default_root_xwindow ();
-  xev.xclient.message_type = XInternAtom (gdk_display,
+  xev.xclient.message_type = XInternAtom (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
                                           "_METACITY_TOGGLE_VERBOSE",
                                           False);
   xev.xclient.format = 32;
@@ -133,14 +133,14 @@ send_toggle_verbose (void)
   xev.xclient.data.l[1] = 0;
   xev.xclient.data.l[2] = 0;
 
-  XSendEvent (gdk_display,
+  XSendEvent (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
               gdk_x11_get_default_root_xwindow (),
               False,
 	      SubstructureRedirectMask | SubstructureNotifyMask,
 	      &xev);
 
-  XFlush (gdk_display);
-  XSync (gdk_display, False);
+  XFlush (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
+  XSync (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()), False);
 }
 #endif
 

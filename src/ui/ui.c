@@ -67,7 +67,7 @@ meta_ui_init (int *argc, char ***argv)
 Display*
 meta_ui_get_display (void)
 {
-  return gdk_display;
+  return GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
 }
 
 /* We do some of our event handling in frames.c, which expects
@@ -266,6 +266,7 @@ meta_ui_new (Display *xdisplay,
   gdisplay = gdk_x11_lookup_xdisplay (xdisplay);
   g_assert (gdisplay == gdk_display_get_default ());
 
+  g_assert (xdisplay == GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
   ui->frames = meta_frames_new (XScreenNumberOfScreen (screen));
   gtk_widget_realize (GTK_WIDGET (ui->frames));
 
@@ -547,7 +548,7 @@ meta_image_window_set_showing  (MetaImageWindow *iw,
   else
     {
       gtk_widget_hide (iw->window);
-      meta_core_increment_event_serial (gdk_display);
+      meta_core_increment_event_serial (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
     }
 }
 
