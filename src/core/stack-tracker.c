@@ -21,6 +21,7 @@
 
 #include <string.h>
 
+#include "frame-private.h"
 #include "meta-compositor.h"
 #include "screen-private.h"
 #include "stack-tracker.h"
@@ -684,11 +685,26 @@ meta_stack_tracker_sync_stack (MetaStackTracker *tracker)
   for (i = 0; i < n_windows; i++)
     {
       MetaWindow *meta_window;
+      MetaFrame *frame;
 
       meta_window = meta_display_lookup_x_window (tracker->screen->display,
                                                   windows[i]);
-      if (meta_window)
-        meta_windows = g_list_prepend (meta_windows, meta_window);
+
+      if (meta_window == NULL)
+        continue;
+
+      frame = meta_window->frame;
+
+      /* When mapping back from xwindow to MetaWindow we have to be a bit careful;
+       * children of the root could include unmapped windows created by toolkits
+       * for internal purposes, including ones that we have registered in our
+       * XID => window table. (Wine uses a toplevel for _NET_WM_USER_TIME_WINDOW;
+       * see window-prop.c:reload_net_wm_user_time_window() for registration.)
+       */
+      if (windows[i] == meta_window->xwindow || (frame && windows[i] == frame->xwindow))
+        {
+          meta_windows = g_list_prepend (meta_windows, meta_window);
+        }
     }
 
   meta_compositor_sync_stack (tracker->screen->display->compositor, meta_windows);
