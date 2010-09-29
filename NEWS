@@ -1,3 +1,15 @@
+2.30.3
+======
+
+Thanks to Brandon Wright and Vincent Untz for improvements
+in this version.
+
+ - Fix theme breakage (Brandon)
+ - Use -Werror only when --enable-maintainer-mode is used
+
+Translations:
+ Fran Diéguez (gl), Kenneth Nielsen (da).
+
 2.30.2
 ======
 
