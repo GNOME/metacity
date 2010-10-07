@@ -18,7 +18,7 @@ DOC_INCLUDES =
 DOC_FIGURES = 
 
 # The names of any locales for which documentation translations exist:
-DOC_LINGUAS =
+DOC_LINGUAS = de
 
 
 

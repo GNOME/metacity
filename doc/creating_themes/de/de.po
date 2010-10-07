@@ -1,0 +1,448 @@
+# German translation of the metacity themes documentation.
+# Mario Blättermann <mariobl@gnome.org>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: metacity doc\n"
+"POT-Creation-Date: 2010-10-07 22:37+0200\n"
+"PO-Revision-Date: 2010-10-07 22:45+0100\n"
+"Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
+"Language-Team: German <gnome-de@gnome.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
+
+#: ../C/creating-metacity-themes.xml:10(title)
+msgid "Understanding Metacity Themes"
+msgstr "Metacity-Themen im Detail"
+
+#: ../C/creating-metacity-themes.xml:14(firstname)
+msgid "Thomas"
+msgstr "Thomas"
+
+#: ../C/creating-metacity-themes.xml:15(surname)
+msgid "Thurman"
+msgstr "Thurman"
+
+#: ../C/creating-metacity-themes.xml:21(para)
+msgid "We very much appreciate any reports of inaccuracies or other errors in this document. Contributions are also most welcome. Post your suggestions, critiques or addenda to the <ulink url=\"mailto:tthurman@gnome.org\">team</ulink>."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:30(year)
+msgid "2008"
+msgstr "2008"
+
+#: ../C/creating-metacity-themes.xml:31(holder)
+msgid "Thomas Thurman"
+msgstr "Thomas Thurman"
+
+#: ../C/creating-metacity-themes.xml:35(para)
+msgid "Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.2 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. You may obtain a copy of the GNU Free Documentation License from the Free Software Foundation by visiting their Web site or by writing to: Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:47(title)
+msgid "Introduction"
+msgstr "Einführung"
+
+#: ../C/creating-metacity-themes.xml:49(para)
+msgid "This is an article about how to theme Metacity. It is a work in progress, and I have had to dig deeply to find some answers; I may well have made mistakes and I welcome corrections and suggestions."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:50(para)
+msgid "GNOME lets you theme a bunch of different things, but we're only talking about <literal>window border</literal> themes here, which some people call Metacity themes; <ulink url=\"http://en.wikipedia.org/wiki/Metacity#Themes\">Wikipedia begins a sentence</ulink> with \"Despite the incomplete state of Metacity theme development documentation\", and though there <emphasis>is</emphasis><ulink url=\"http://svn.gnome.org/viewvc/metacity/trunk/doc/theme-format.txt?view=markup\">documentation in the source</ulink>, apparently not many people find it, and it's written more for programmers than theme designers. Glynn Foster also wrote <ulink url=\"http://developer.gnome.org/doc/tutorials/metacity/metacity-themes.html\">a very good introduction to Metacity themes</ulink> (<ulink url=\"http://home.arcor.de/rybaczyk/documents/tutorials/metacity/metacity-themes.de.html\">[de]</ulink>) six years ago, but things have changed a little since then. <ulink url=\"http://lists.freedesktop.org/archives/compiz/2006-September/000445.html\">Metacity themes can also be used by Compiz</ulink>, and perhaps by other window managers for all I know."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:52(para)
+msgid "So, a Metacity theme is a set of instructions about how to \"decorate\" (draw the borders around) a window. Presumably you don't want to style all windows identically, so the format lets you specify details for different kinds of window:"
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:57(term)
+msgid "state:"
+msgstr "Status:"
+
+#: ../C/creating-metacity-themes.xml:57(para)
+msgid "Every window must be in exactly one of these states: <literal>normal</literal>, <literal>dialog</literal>, <literal>modal dialog</literal> (i.e. a dialogue which means you can't interact with the rest of the program while it's up), <literal>menu</literal> (torn off from the main application, not that people do that much these days), <literal>utility</literal> (that is, palettes and toolboxes and things), and <literal>border</literal>. X also allows a window to explicitly ask to be undecorated, but of course we don't provide for those in a list of decoration instructions."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:60(term)
+msgid "focused"
+msgstr "fokussiert"
+
+#: ../C/creating-metacity-themes.xml:60(para)
+msgid "Every window is either the active window (which X people call \"focused\"), or it isn't."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:63(term)
+msgid "maximized"
+msgstr "maximiert"
+
+#: ../C/creating-metacity-themes.xml:63(para)
+msgid "Every window is either (fully) maximised (horizontal and vertical only don't count), or it isn't."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:66(term)
+msgid "shaded"
+msgstr "shaded"
+
+#: ../C/creating-metacity-themes.xml:66(para)
+msgid "Every window is either rolled up to show just its titlebar (which techies call \"shaded\" for some reason I can't fathom), or it isn't."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:73(para)
+msgid "<emphasis>If a window is not fully maximised and not shaded,</emphasis> it either allows horizontal resizing, or it doesn't."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:74(para)
+msgid "<emphasis>If a window is not fully maximised and not shaded,</emphasis> it either allows vertical resizing, or it doesn't."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:81(title)
+msgid "What's in the file"
+msgstr "Inhalt der Datei"
+
+#: ../C/creating-metacity-themes.xml:83(para)
+msgid "The files must be called either"
+msgstr "Die Datei muss entweder"
+
+#: ../C/creating-metacity-themes.xml:87(para)
+msgid "~/.themes/<varname>N</varname>/metacity-1/metacity-theme-<varname>V</varname>.xml for a theme used only by you, or"
+msgstr "~/.themes/<varname>N</varname>/metacity-1/metacity-theme-<varname>V</varname>.xml für ein von Ihnen verwendetes Thema heißen, oder"
+
+#: ../C/creating-metacity-themes.xml:89(para)
+msgid "/usr/share/themes/<varname>N</varname>/metacity-1/metacity-theme-<varname>V</varname>.xml for a theme installed for all users."
+msgstr "/usr/share/themes/<varname>N</varname>/metacity-1/metacity-theme-<varname>V</varname>.xml für ein Thema, das für alle Benutzer installiert ist."
+
+#: ../C/creating-metacity-themes.xml:94(para)
+msgid "where <varname>N</varname> is the name of the theme and <varname>V</varname> is the version of the format. Version 2, <ulink url=\"http://svn.gnome.org/viewvc/metacity?view=revision&amp;revision=2973\">introduced in October 2006</ulink>, adds a few extra features, but it's rarely used. Version 1 is the original format. The formats are fixed once they're stable for both backwards and forwards compatibility; <ulink url=\"http://bugzilla.gnome.org/show_bug.cgi?id=482165\">new features</ulink> can't be added without introducing a new version number, which is why improvements come out rarely and in large clumps. <literal>metacity-1</literal> in the names is a fossil and doesn't mean version 1 of anything."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:96(para)
+msgid "The metacity-theme-V.xml files are <ulink url=\"http://blogs.gnome.org/tthurman/2008/02/14/gmarkup/\">GMarkup files</ulink>, which are very similar to XML. For now, you actually have to write these in a text editor or something; you can either start with a blank page, or modify a theme someone else has made. (I am thinking of writing a general theme editor program, but that'll have to wait until I've reduced Metacity's open bug queue a little.) If you want to see a fully-fledged one, you can look at <ulink url=\"http://svn.gnome.org/viewvc/metacity/trunk/src/themes/Atlanta/metacity-theme-1.xml?view=markup\">the current version of \"Atlanta\"</ulink>, one of the simplest themes, but even that is quite complicated-looking at first."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:97(para)
+msgid "So, let's talk about what actually goes inside the files. As in any XML file, &lt;!-- … &gt; are comments. At its most basic, it would go:"
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:100(programlisting)
+#, no-wrap
+msgid ""
+"\n"
+"&lt;metacity_theme&gt;\n"
+"&lt;!-- Helper stuff: --&gt;\n"
+"&lt;info …&gt; &lt;!-- to be explained --&gt;\n"
+"&lt;constant …&gt; &lt;!-- maybe; to be explained --&gt;\n"
+"\n"
+"&lt;draw_ops …&gt; &lt;!-- maybe; to be explained --&gt;\n"
+"\n"
+"&lt;!-- Things we build the top level onto: --&gt;\n"
+"&lt;frame_geometry …&gt; &lt;!-- to be explained --&gt;\n"
+"\n"
+"&lt;frame_style …&gt; &lt;!-- to be explained --&gt;\n"
+"&lt;frame_style_set …&gt; &lt;!-- to be explained --&gt;\n"
+"\n"
+"&lt;!-- And the top level: --&gt;\n"
+"\n"
+"&lt;window type=\"normal\" style_set=\"…\" /&gt;\n"
+"&lt;window type=\"dialog\" style_set=\"…\" /&gt;\n"
+"&lt;window type=\"modal_dialog\" style_set=\"…\" /&gt;\n"
+"\n"
+"&lt;window type=\"menu\" style_set=\"…\" /&gt;\n"
+"&lt;window type=\"utility\" style_set=\"…\" /&gt;\n"
+"&lt;window type=\"border\" style_set=\"…\" /&gt;\n"
+"\n"
+"&lt;/metacity_theme&gt;\n"
+msgstr ""
+"\n"
+"&lt;metacity_theme&gt;\n"
+"&lt;!-- Helper stuff: --&gt;\n"
+"&lt;info …&gt; &lt;!-- to be explained --&gt;\n"
+"&lt;constant …&gt; &lt;!-- maybe; to be explained --&gt;\n"
+"\n"
+"&lt;draw_ops …&gt; &lt;!-- maybe; to be explained --&gt;\n"
+"\n"
+"&lt;!-- Things we build the top level onto: --&gt;\n"
+"&lt;frame_geometry …&gt; &lt;!-- to be explained --&gt;\n"
+"\n"
+"&lt;frame_style …&gt; &lt;!-- to be explained --&gt;\n"
+"&lt;frame_style_set …&gt; &lt;!-- to be explained --&gt;\n"
+"\n"
+"&lt;!-- And the top level: --&gt;\n"
+"\n"
+"&lt;window type=\"normal\" style_set=\"…\" /&gt;\n"
+"&lt;window type=\"dialog\" style_set=\"…\" /&gt;\n"
+"&lt;window type=\"modal_dialog\" style_set=\"…\" /&gt;\n"
+"\n"
+"&lt;window type=\"menu\" style_set=\"…\" /&gt;\n"
+"&lt;window type=\"utility\" style_set=\"…\" /&gt;\n"
+"&lt;window type=\"border\" style_set=\"…\" /&gt;\n"
+"\n"
+"&lt;/metacity_theme&gt;\n"
+
+#: ../C/creating-metacity-themes.xml:131(title)
+msgid "Matching windows"
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:136(term)
+msgid "window"
+msgstr "window"
+
+#: ../C/creating-metacity-themes.xml:136(para)
+msgid "You see that at the top level we have a list of &lt;window&gt; tags, one for each window state we discussed above. The style_set argument of each of these gives the name of a frame_style_set."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:139(term)
+msgid "frame_style_set:"
+msgstr "frame_style_set:"
+
+#: ../C/creating-metacity-themes.xml:139(para)
+msgid "tells Metacity how to draw windows according to whether they're focused or not, maximised or not, shaded or not, and allowing resizing vertically, horizontally, both, or neither. It looks like this:"
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:145(programlisting)
+#, no-wrap
+msgid ""
+"\n"
+"&lt;frame_style_set&gt;\n"
+"&lt;frame focus=\"F\" state=\"S\" resize=\"R\" style=\"N\"/&gt;\n"
+"&lt;frame… /&gt;\n"
+"\n"
+"…\n"
+"&lt;/frame_style_set&gt;\n"
+msgstr ""
+"\n"
+"&lt;frame_style_set&gt;\n"
+"&lt;frame focus=\"F\" state=\"S\" resize=\"R\" style=\"N\"/&gt;\n"
+"&lt;frame… /&gt;\n"
+"\n"
+"…\n"
+"&lt;/frame_style_set&gt;\n"
+
+#: ../C/creating-metacity-themes.xml:155(para)
+msgid "where:"
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:160(term)
+msgid "F"
+msgstr "F"
+
+#: ../C/creating-metacity-themes.xml:160(para)
+msgid "is yes for focused, no for unfocused."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:163(term)
+msgid "S"
+msgstr "S"
+
+#: ../C/creating-metacity-themes.xml:163(para)
+msgid "combines the shaded and maximized flags: normal, maximized, shaded, or maximized_and_shaded."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:166(term)
+msgid "R"
+msgstr "R"
+
+#: ../C/creating-metacity-themes.xml:166(para)
+msgid "represents resize permissions that the window gives us: none, vertical, horizontal, or both. Frame settings for maximised windows, which can't be resized, don't have this attribute."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:171(para)
+msgid "<varname>N</varname> is the name of a <literal>frame_style</literal> to apply to a window which has these attributes."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:174(para)
+msgid "A <literal>frame_style_set</literal> tag may also have a \"parent\" tag, which should be the name of another <literal>frame_style_set</literal>. This means that if Metacity wants to know about a kind of window which that <literal>frame_style_set</literal> doesn't describe, it should look in the parent. Most of the more complicated tags in Metacity theme files also have a \"parent\" attribute which work the same way. This is particularly useful because, taken together, all the <literal>frame_style_set</literal>s in a theme file must be capable of matching every possible kind of window; if a window turns up that they can't match, there will be an error at runtime."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:176(para)
+msgid "Let's recap what we've seen so far. The combination of a <literal>window</literal>, which matches a window's state (normal, dialog, and so forth), with an entry in the corresponding <literal>frame_style_set</literal>, which matches its focus, shadedness, maximisedness, and resize permissions where relevant, will allow you to make a list of rules to match any window against. The next piece of this puzzle lets you specify what Metacity should do with such windows once it's matched them."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:181(title)
+msgid "Actually drawing stuff"
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:183(para)
+msgid "<literal>frame_style:</literal> This is probably the most complicated part of the whole system. A <literal>frame_style</literal> a series of <emphasis><literal>piece</literal></emphasis>s and <emphasis><literal>button</literal></emphasis>s. It looks like this:"
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:186(programlisting)
+#, no-wrap
+msgid ""
+"\n"
+"&lt;frame_style name=\"…\" geometry=\"G\"&gt;\n"
+"&lt;piece position=\"P\"&gt;\n"
+"&lt;draw_ops&gt;\n"
+"&lt;/draw_ops&gt;\n"
+"&lt;/piece&gt;\n"
+"…\n"
+"&lt;button function=\"F\" state=\"S\" draw_ops=\"D\"/&gt;\n"
+"\n"
+"&lt;draw_ops&gt;\n"
+"&lt;/draw_ops&gt;\n"
+"&lt;/button&gt;\n"
+"…\n"
+"&lt;/frame_style&gt;\n"
+msgstr ""
+"\n"
+"&lt;frame_style name=\"…\" geometry=\"G\"&gt;\n"
+"&lt;piece position=\"P\"&gt;\n"
+"&lt;draw_ops&gt;\n"
+"&lt;/draw_ops&gt;\n"
+"&lt;/piece&gt;\n"
+"…\n"
+"&lt;button function=\"F\" state=\"S\" draw_ops=\"D\"/&gt;\n"
+"\n"
+"&lt;draw_ops&gt;\n"
+"&lt;/draw_ops&gt;\n"
+"&lt;/button&gt;\n"
+"…\n"
+"&lt;/frame_style&gt;\n"
+
+#: ../C/creating-metacity-themes.xml:203(para)
+msgid "The <literal>pieces</literal> are pieces of the window frame. When Metacity draws a window frame, it renders its various pieces always in the same order. The bolded parts are all the possible values of P:"
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:207(para)
+msgid "the <literal>entire_background</literal>, covering the whole frame"
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:209(para)
+msgid "the <literal>titlebar</literal>, covering the entire background of the titlebar"
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:210(para)
+msgid "the <literal>titlebar_middle</literal>, the part of the titlebar that doesn't touch its edges"
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:211(para)
+msgid "the <literal>left_titlebar_edge</literal>, <literal>right_titlebar_edge</literal>, <literal>top_titlebar_edge</literal>, and <literal>bottom_titlebar_edge</literal>"
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:213(para)
+msgid "the <literal>title</literal>, just exactly that area which is covered by the text on the titlebar"
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:214(para)
+msgid "the <literal>left_edge</literal>, <literal>right_edge</literal>, and <literal>bottom_edge</literal> of the frame (yes, there is no top_edge: it's identical to top_titlebar_edge, isn't it?)"
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:215(para)
+msgid "the <literal>overlay</literal>, which covers everything– the same as entire_background, but done last instead of first."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:219(para)
+msgid "<emphasis>What</emphasis> Metacity draws in these pieces is decided by the theme. If a <literal>frame_style</literal> or its parents don't specify a particular piece, nothing will be drawn for that piece. You have two ways to specify what to draw: one is that the <literal>piece</literal> tag can have a <literal>draw_ops</literal> tag inside it which lists a sequence of drawing operations in Metacity's custom format. <ulink url=\"http://bugzilla.gnome.org/show_bug.cgi?id=107012\">You might ask why we don't use SVG</ulink>; one answer is that SVG support wasn't very strong when this format was designed, and another answer is that these days you can use SVG all you like; just include it as an image and Metacity will know what to do."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:221(para)
+msgid "An alternative to including a draw_ops tag inside a piece tag is to add a draw_ops attribute to the piece tag. Then you can add a draw_ops tag at top level (inside the metacity_theme tag) with a name attribute, and Metacity will use that. This is useful if you use similar draw_ops over and over."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:222(para)
+msgid "I'm not going to document draw_ops at present, because this is already very long. I will write it up later and link it from here."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:223(para)
+msgid "The <literal>button</literal> tag tells Metacity how, but not where, to draw buttons. Buttons are drawn after all the pieces are finished, and the way to draw them is also given using draw_ops. You ought to provide buttons for all the possible kinds of button; if you don't give one it won't be drawn, which is unfortunate for the user who wants to use it:"
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:227(para)
+msgid "<literal>left_left_background</literal>, <literal>left_middle_background</literal>, and <literal>left_right_background</literal> don't represent buttons as such, but the background behind them, assuming there can be at most three buttons on the left. These days there can be more, so the extra ones also use left_middle_background."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:229(para)
+msgid "<literal>right_left_background</literal>, <literal>right_middle_background</literal>, and <literal>right_right_background</literal> similarly."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:230(para)
+msgid "<literal>close</literal>, <literal>minimize</literal>, <literal>maximize</literal> are the obvious original three buttons."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:231(para)
+msgid "<literal>menu</literal> is the menu button you can click to get a list of actions you can perform on the window."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:233(para)
+msgid "<literal>shade</literal>, <literal>above</literal>, <literal>stick</literal> are similar to the original buttons but only allowed in version 2"
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:234(para)
+msgid "<literal>unshade</literal>, <literal>unabove</literal>, <literal>unstick</literal> are the toggled versions of these buttons. Again, version 2 only."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:239(para)
+msgid "The reason there are toggled versions of shade, above, and stick, and not maximize, is that by the time you get this far you've probably already decided whether you're drawing a maximised window. So if you <emphasis>are</emphasis> drawing a maximised window, you can make the button called \"maximize\" look how you want the restore button to be; otherwise, make it look like you want the maximise button to be."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:240(para)
+msgid "For each button tag you should also set a \"state\" attribute; this time the state is either <literal>normal</literal> (the way you see it most of the time), <literal>pressed</literal>, or <literal>prelight</literal> (this makes the buttons subtly light up when you hover over them). You only really need \"normal\", but the others are good to have too."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:242(para)
+msgid "The \"geometry\" attribute of a <literal>frame_style</literal> tag is the name of a…"
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:247(title)
+msgid "Geometry"
+msgstr "Geometrie"
+
+#: ../C/creating-metacity-themes.xml:249(para)
+msgid "The <literal>geometry</literal> tag defines the sizes of things around the window. It is important, but not easy to explain, and again this file has gone on too long. I'll write it up later."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:254(title)
+msgid "Other things which lie around a file"
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:256(para)
+msgid "The most important other thing in a theme file is the metadata held in the <literal>info</literal> tag. This contains a set of tags each of which contains some text explaining something about the theme itself, in a sort of <ulink url=\"http://en.wikipedia.org/wiki/Dublin_Core\">Dublin Core</ulink> sort of way. (Next time around, we should probably use the actual Dublin Core.) The tags are <literal>name</literal>, <literal>author</literal>, <literal>copyright</literal>, <literal>date</literal>, and <literal>description</literal>."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:258(para)
+msgid "Version 1 of the format had a <literal>menu_icon</literal> tag at top level, which let themes specify the icons beside options in the menu you get from the menu icon. This has become redundant; the icons are taken from the icon theme! The tag can still be used in all formats, but does nothing and is deprecated."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:259(para)
+msgid "Version 2 of the format has a <literal>fallback</literal> tag at top level, which let the theme specify what icon a window should be considered to have if it doesn't provide an icon of its own. This should also be taken from the icon theme, <ulink url=\"http://bugzilla.gnome.org/show_bug.cgi?id=524343\">if anyone fancies fixing it</ulink>, and the tag should also then be deprecated. It shouldn't be hard."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:264(title)
+msgid "When you're working on a theme"
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:266(para)
+msgid "When you're editing a theme, you can view it without using it on the whole desktop using <command>metacity-theme-viewer YourThemeName</command>"
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:268(para)
+msgid "and view it on the whole desktop using <command>gconftool --type=string --set /apps/metacity/general/theme YourThemeName</command>"
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:271(para)
+msgid "Whenever you change the selected theme in GConf, Metacity will load the newly-chosen theme. This is how control-center does it. But when you change a theme, as you're working on it, you might want to ask Metacity to reload the theme which is currently used on the whole desktop to reflect your changes. You can do this using the little-known <command>metacity-message</command> program, with the command <literal>metacity-message reload-theme</literal>. This works by sending the ClientMessage <literal>_METACITY_RELOAD_THEME_MESSAGE</literal> to the root window, in case you're interested."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:273(para)
+msgid "Once you're done with your theme, consider submitting it to <ulink url=\"http://art.gnome.org/themes/metacity/\">the art.gnome.org site</ulink>, or <ulink url=\"http://www.gnome-look.org/index.php?xcontentmode=101\">the gnome-look site</ulink>."
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:278(title)
+msgid "The future"
+msgstr "Die Zukunft"
+
+#: ../C/creating-metacity-themes.xml:280(para)
+msgid "Please feel free to link to this so people don't have to keep asking the basic questions and can start asking the deeper ones. One of the important deeper ones is: where should we go in the future? Since this format is becoming something of a de facto standard between window managers, should we set up some kind of freedesktop.org standards discussion? Would it be useful to spin off Metacity's theme parsing code into a separate, LGPL-licensed library so that other applications could use it more easily?"
+msgstr ""
+
+#: ../C/creating-metacity-themes.xml:281(para)
+msgid "What would a version 3 of this format look like? Could we simplify the window / frame_style_set system? (I can imagine abolishing both, and being able to write <literal>&lt;frame_style for=\"normal+unfocused+maximized\"&gt;…</literal> and having Metacity assume it applied to all resize permissions and shadednesses.) Maybe we should try to do everything with SVG we can? Getting more wild and handwavey, is it worth keeping XML-like? Maybe if other window managers were dealing with the files, .ini-style files would be more universally useful? Or perhaps not. And then of course we need a decent graphical editor for it. I have a few ideas, but if anyone fancies jumping in..."
+msgstr ""
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: ../C/creating-metacity-themes.xml:0(None)
+msgid "translator-credits"
+msgstr "Mario Blättermann <mariobl@gnome.org>, 2010."
+
