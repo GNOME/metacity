@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: metacity.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&component=general\n"
-"POT-Creation-Date: 2010-01-21 21:34+0000\n"
+"POT-Creation-Date: 2010-05-02 15:05+0000\n"
 "PO-Revision-Date: 2010-01-25 19:39+0100\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
@@ -212,25 +212,25 @@ msgstr "No se pudo reiniciar: %s\n"
 #. * (Empty comment follows so the translators don't see this.)
 #.
 #.
-#: ../src/core/prefs.c:506 ../src/core/prefs.c:661
+#: ../src/core/prefs.c:508 ../src/core/prefs.c:663
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
 msgstr "La clave GConf «%s» está configurada con un valor inválido\n"
 
-#: ../src/core/prefs.c:587 ../src/core/prefs.c:830
+#: ../src/core/prefs.c:589 ../src/core/prefs.c:832
 #, c-format
 msgid "%d stored in GConf key %s is out of range %d to %d\n"
 msgstr ""
 "%d almacenado en la clave de GConf %s está fuera de rango %d hasta %d\n"
 
-#: ../src/core/prefs.c:631 ../src/core/prefs.c:708 ../src/core/prefs.c:756
-#: ../src/core/prefs.c:820 ../src/core/prefs.c:1113 ../src/core/prefs.c:1129
-#: ../src/core/prefs.c:1146 ../src/core/prefs.c:1162
+#: ../src/core/prefs.c:633 ../src/core/prefs.c:710 ../src/core/prefs.c:758
+#: ../src/core/prefs.c:822 ../src/core/prefs.c:1115 ../src/core/prefs.c:1131
+#: ../src/core/prefs.c:1148 ../src/core/prefs.c:1164
 #, c-format
 msgid "GConf key \"%s\" is set to an invalid type\n"
 msgstr "La clave GConf «%s» está configurada con un tipo inválido\n"
 
-#: ../src/core/prefs.c:1232
+#: ../src/core/prefs.c:1234
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -238,14 +238,14 @@ msgstr ""
 "Los arreglos para aplicaciones rotas se han deshabilitado. Algunas "
 "aplicaciones podrían no comportarse correctamente.\n"
 
-#: ../src/core/prefs.c:1303
+#: ../src/core/prefs.c:1305
 #, c-format
 msgid "Could not parse font description \"%s\" from GConf key %s\n"
 msgstr ""
 "No se ha podido interpretar la descripción de la tipografía «%s» de la clave "
 "GConf %s\n"
 
-#: ../src/core/prefs.c:1365
+#: ../src/core/prefs.c:1367
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -254,18 +254,18 @@ msgstr ""
 "«%s» encontrado en la base de datos de configuración no es un valor válido "
 "para el modificador del botón del ratón\n"
 
-#: ../src/core/prefs.c:1786
+#: ../src/core/prefs.c:1788
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr ""
 "Ocurrió un error configurando la número de espacios de trabajo para %d: %s\n"
 
-#: ../src/core/prefs.c:1975 ../src/core/prefs.c:2478
+#: ../src/core/prefs.c:1953 ../src/core/prefs.c:2456
 #, c-format
 msgid "Workspace %d"
 msgstr "Área de trabajo %d"
 
-#: ../src/core/prefs.c:2005 ../src/core/prefs.c:2183
+#: ../src/core/prefs.c:1983 ../src/core/prefs.c:2161
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -274,14 +274,14 @@ msgstr ""
 "«%s» encontrado en la base de datos de configuración no es un valor válido "
 "para la combinación de teclas «%s»\n"
 
-#: ../src/core/prefs.c:2559
+#: ../src/core/prefs.c:2537
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr ""
 "Ocurrió un error al establecer el nombre del área de trabajo %d como «%s»: %"
 "s \n"
 
-#: ../src/core/prefs.c:2763
+#: ../src/core/prefs.c:2741
 #, c-format
 msgid "Error setting compositor status: %s\n"
 msgstr "Error al establecer el estado del compositor: %s\n"
@@ -380,42 +380,36 @@ msgstr "Ocurrió un error al escribir en el archivo de sesión «%s»: %s\n"
 msgid "Error closing session file '%s': %s\n"
 msgstr "Ocurrió un error al cerrar el archivo de sesión «%s»: %s\n"
 
-#. oh, just give up
-#: ../src/core/session.c:1106
-#, c-format
-msgid "Failed to read saved session file %s: %s\n"
-msgstr "Ocurrió un error al leer el archivo de sesión guardado %s: %s\n"
-
-#: ../src/core/session.c:1145
+#: ../src/core/session.c:1143
 #, c-format
 msgid "Failed to parse saved session file: %s\n"
 msgstr "Ocurrió un error al interpretar el archivo de sesión guardado: %s\n"
 
-#: ../src/core/session.c:1194
+#: ../src/core/session.c:1192
 #, c-format
 msgid "<metacity_session> attribute seen but we already have the session ID"
 msgstr ""
 "El atributo <metacity_session> ha sido visto pero ya tenemos el ID de la "
 "sesión"
 
-#: ../src/core/session.c:1207 ../src/core/session.c:1282
-#: ../src/core/session.c:1314 ../src/core/session.c:1386
-#: ../src/core/session.c:1446
+#: ../src/core/session.c:1205 ../src/core/session.c:1280
+#: ../src/core/session.c:1312 ../src/core/session.c:1384
+#: ../src/core/session.c:1444
 #, c-format
 msgid "Unknown attribute %s on <%s> element"
 msgstr "Atributo desconocido %s en el elemento <%s>"
 
-#: ../src/core/session.c:1224
+#: ../src/core/session.c:1222
 #, c-format
 msgid "nested <window> tag"
 msgstr "etiqueta <window> anidada"
 
-#: ../src/core/session.c:1466
+#: ../src/core/session.c:1464
 #, c-format
 msgid "Unknown element %s"
 msgstr "Elemento desconocido %s"
 
-#: ../src/core/session.c:1818
+#: ../src/core/session.c:1816
 msgid ""
 "These windows do not support &quot;save current setup&quot; and will have to "
 "be restarted manually next time you log in."
@@ -928,12 +922,6 @@ msgid "Automatically raises the focused window"
 msgstr "Elevar automáticamente la ventana que tiene el foco"
 
 #: ../src/metacity.schemas.in.in.h:9
-#| msgid ""
-#| "Clicking a window while holding down this modifier key will move the "
-#| "window (left click), resize the window (middle click), or show the window "
-#| "menu (right click). The left and right operations may be swapped using "
-#| "the \"mouse_button_resize\" key. Modifier is expressed as \"&lt;Alt&gt;\" "
-#| "or \"&lt;Super&gt;\" for example."
 msgid ""
 "Clicking a window while holding down this modifier key will move the window "
 "(left click), resize the window (middle click), or show the window menu "
@@ -2454,6 +2442,9 @@ msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr ""
 "%d expresiones de coordenadas interpretadas en %g segundos (%g segundos de "
 "media)\n"
+
+#~ msgid "Failed to read saved session file %s: %s\n"
+#~ msgstr "Ocurrió un error al leer el archivo de sesión guardado %s: %s\n"
 
 #~ msgid "Open another one of these windows"
 #~ msgstr "Abrir otra de estas ventanas"
