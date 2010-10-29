@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-27 12:46+0000\n"
+"POT-Creation-Date: 2010-10-29 12:50+0000\n"
 "PO-Revision-Date: 2009-09-09 10:03-0300\n"
 "Last-Translator: Ísis Binder <isis.binder@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
@@ -74,7 +74,7 @@ msgstr "Falha ao obter o nome da máquina: %s\n"
 #: ../src/core/display.c:258
 #, c-format
 msgid "Missing %s extension required for compositing"
-msgstr "Extensão %s necessária para composição em falta"
+msgstr "Extensão %s necessária para composição faltando"
 
 #: ../src/core/display.c:336
 #, c-format
@@ -103,7 +103,7 @@ msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
 "binding\n"
 msgstr ""
-"Algum outro programa já está usando a chave %s com modificadores %x como uma "
+"Algum outro programa já está usando a tecla %s com modificadores %x como uma "
 "tecla de atalho\n"
 
 #. Displayed when a keybinding which is
@@ -152,7 +152,7 @@ msgstr "Desabilitar a conexão com o gerenciador de sessões"
 
 #: ../src/core/main.c:275
 msgid "Replace the running window manager with Metacity"
-msgstr "Substituir o gerenciador de sessões em execução pelo Metacity"
+msgstr "Substituir o gerenciador de janelas em execução pelo Metacity"
 
 #: ../src/core/main.c:281
 msgid "Specify session management ID"
@@ -172,7 +172,7 @@ msgstr "Versão impressa"
 
 #: ../src/core/main.c:304
 msgid "Make X calls synchronous"
-msgstr "Fazer X chamadas síncronas"
+msgstr "Fazer chamadas X em modo síncrono"
 
 #: ../src/core/main.c:310
 msgid "Turn compositing on"
@@ -442,7 +442,7 @@ msgstr "Gerenciador de janelas: "
 
 #: ../src/core/util.c:388
 msgid "Bug in window manager: "
-msgstr "Bug no gerenciador de janelas: "
+msgstr "Erro no gerenciador de janelas: "
 
 #: ../src/core/util.c:421
 msgid "Window manager warning: "
@@ -1453,7 +1453,7 @@ msgstr "_Apenas neste espaço de trabalho"
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:95
 msgid "Move to Workspace _Left"
-msgstr "Mover para o espaço de trabalho á _esquerda"
+msgstr "Mover para o espaço de trabalho à _esquerda"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:97
