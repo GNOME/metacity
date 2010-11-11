@@ -707,4 +707,6 @@ void meta_window_propagate_focus_appearance (MetaWindow *window,
 
 gboolean meta_window_should_attach_to_parent (MetaWindow *window);
 
+MetaFrameType meta_window_get_frame_type (MetaWindow *window);
+
 #endif
