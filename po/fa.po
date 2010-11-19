@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: metacity HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=metacity&component=general\n"
 "POT-Creation-Date: 2010-11-13 23:06+0000\n"
-"PO-Revision-Date: 2010-11-19 18:21+0330\n"
+"PO-Revision-Date: 2010-11-19 19:26+0330\n"
 "Last-Translator: Mahyar Moghimi <mahyar.moqimi@gmail.com>\n"
 "Language-Team: Persian <translate@ifsug.org>\n"
 "MIME-Version: 1.0\n"
@@ -1025,11 +1025,11 @@ msgstr "منوی پنجره"
 
 #: ../src/ui/frames.c:1124
 msgid "Minimize Window"
-msgstr "حداقل کردن پنجره"
+msgstr "کمینه کردن پنجره"
 
 #: ../src/ui/frames.c:1127
 msgid "Maximize Window"
-msgstr "حداکثر کردن پنجره"
+msgstr "بیشینه کردن پنجره"
 
 #: ../src/ui/frames.c:1130
 msgid "Restore Window"
@@ -1062,37 +1062,37 @@ msgstr "پنجره‌ها فقط در یک فضای کاری گذاشته شون
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:70
 msgid "Mi_nimize"
-msgstr "حداقل کردن"
+msgstr "_کمینه کردن"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:72
 msgid "Ma_ximize"
-msgstr "حداکثر کردن"
+msgstr "_بیشینه کردن"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:74
 msgid "Unma_ximize"
-msgstr "ناحداکثر کردن"
+msgstr "_نابیشینه کردن"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:76
 msgid "Roll _Up"
-msgstr "جمع کردن"
+msgstr "_جمع کردن"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:78
 msgid "_Unroll"
-msgstr "پهن کردن"
+msgstr "_پهن کردن"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:80
 msgid "_Move"
-msgstr "جابه‌جایی"
+msgstr "_جابه‌جایی"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:82
 msgid "_Resize"
-msgstr "تغییر اندازه"
+msgstr "_تغییر اندازه"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:84
@@ -1140,7 +1140,7 @@ msgstr "نقل‌مکان به فضای کاری _پایین"
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:105
 msgid "_Close"
-msgstr "بستن"
+msgstr "_بستن"
 
 #: ../src/ui/menu.c:203
 #, c-format
