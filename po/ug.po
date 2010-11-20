@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=metacity&component=general\n"
-"POT-Creation-Date: 2010-10-29 20:41+0000\n"
+"POT-Creation-Date: 2010-11-13 23:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Gheyret Kenji<gheyret@yahoo.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -616,7 +616,7 @@ msgstr ""
 
 #: ../src/include/all-keybindings.h:238
 msgid "Take a screenshot"
-msgstr "رەسىمگە ئالماق"
+msgstr "ئېكران كۆرۈنۈشىنى رەسىمگە ئالىدۇ"
 
 #: ../src/include/all-keybindings.h:240
 msgid "Take a screenshot of a window"
