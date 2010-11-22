@@ -17,6 +17,7 @@ metacity_SOURCES= 				\
 	compositor/compositor-xrender.c		\
 	compositor/compositor-xrender.h		\
 	include/compositor.h			\
+	core/above-tab-keycode.c		\
 	core/constraints.c			\
 	core/constraints.h			\
 	core/core.c				\
