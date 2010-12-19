@@ -36,7 +36,7 @@ msgstr "Yêu cầu thông tin cửa sổ không rõ : %d"
 #: ../src/ui/theme-parser.c:481
 #, c-format
 msgid "Could not parse \"%s\" as an integer"
-msgstr "Không thể phân tích « %s » thành một số nguyên."
+msgstr "Không thể phân tích \"%s\" thành một số nguyên."
 
 #: ../src/core/delete.c:77
 #: ../src/core/delete.c:104
@@ -45,7 +45,7 @@ msgstr "Không thể phân tích « %s » thành một số nguyên."
 #: ../src/ui/theme-parser.c:545
 #, c-format
 msgid "Did not understand trailing characters \"%s\" in string \"%s\""
-msgstr "Không thể hiểu ký tự đuôi « %s » trong chuỗi « %s »."
+msgstr "Không thể hiểu ký tự đuôi \"%s\" trong chuỗi \"%s\"."
 
 #: ../src/core/delete.c:135
 #, c-format
@@ -78,7 +78,7 @@ msgstr "Thiếu phần mở rộng %s cần thiết để sắp thành phần"
 #: ../src/core/display.c:334
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
-msgstr "Lỗi mở bộ trình bày Hệ thống Cửa sổ X « %s ».\n"
+msgstr "Lỗi mở bộ trình bày Hệ thống Cửa sổ X \"%s\".\n"
 
 #: ../src/core/errors.c:271
 #, c-format
@@ -87,14 +87,14 @@ msgid ""
 "most likely the X server was shut down or you killed/destroyed\n"
 "the window manager.\n"
 msgstr ""
-"Mất liên kết với bộ trình bày « %s »;\n"
+"Mất liên kết với bộ trình bày \"%s\";\n"
 "thường là do trình phục vụ X bị ngừng hoạt động hoặc \n"
 "bạn đã buộc chấm dứt hoạt động bộ quản lý cửa sổ.\n"
 
 #: ../src/core/errors.c:278
 #, c-format
 msgid "Fatal IO error %d (%s) on display '%s'.\n"
-msgstr "Lỗi gõ/xuất nghiêm trọng %d (%s) trên bộ trình bày « %s ».\n"
+msgstr "Lỗi nhập/xuất nghiêm trọng %d (%s) trên bộ trình bày \"%s\".\n"
 
 #: ../src/core/keybindings.c:1090
 #, c-format
@@ -102,7 +102,8 @@ msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
 "binding\n"
 msgstr ""
-"Một chương trình khác đã dùng phím « %s » với phím bổ trợ «%x» như là tổ hợp.\n"
+"Một chương trình khác đã dùng phím \"%s\" với phím bổ trợ \"%x\" làm tổ "
+"hợp.\n"
 
 #: ../src/core/keybindings.c:2722
 #, c-format
@@ -113,7 +114,7 @@ msgstr ""
 #: ../src/core/keybindings.c:2827
 #, c-format
 msgid "No command %d has been defined.\n"
-msgstr "Không có lệnh «%d» nào được định nghĩa.\n"
+msgstr "Không có lệnh \"%d\" nào được định nghĩa.\n"
 
 #: ../src/core/keybindings.c:3855
 #, c-format
@@ -137,7 +138,7 @@ msgstr ""
 
 #: ../src/core/main.c:242
 msgid "Disable connection to session manager"
-msgstr "Vô hiệu hóa sự kết nối đến bộ quản lý phiên làm việc"
+msgstr "Vô hiệu hóa kết nối với bộ quản lý phiên làm việc"
 
 #: ../src/core/main.c:248
 msgid "Replace the running window manager with Metacity"
@@ -157,7 +158,7 @@ msgstr "Khởi động phiên làm việc từ tập tin lưu"
 
 #: ../src/core/main.c:271
 msgid "Print version"
-msgstr "In ra phiên bản"
+msgstr "In phiên bản"
 
 #: ../src/core/main.c:277
 msgid "Make X calls synchronous"
@@ -415,7 +416,7 @@ msgstr "Đã mở tập tin ghi lưu %s.\n"
 #: ../src/tools/metacity-message.c:176
 #, c-format
 msgid "Metacity was compiled without support for verbose mode\n"
-msgstr "Metacity đã được biên dịch không hỗ trợ phương thức chi tiết.\n"
+msgstr "Metacity đã được biên dịch không hỗ trợ chế độ chi tiết.\n"
 
 #: ../src/core/util.c:236
 msgid "Window manager: "
@@ -2244,12 +2245,12 @@ msgstr ""
 "Tùy chọn hợp lệ hiện thời là:\n"
 " • toggle_shade\t\ttạo bóng/thôi tạo bóng cửa sổ\n"
 " • toggle_maximize\tphóng to/thôi phóng to cửa sổ\n"
-" • toggle_maximize_horizontally		phóng to cửa sổ theo chiều ngang\n"
-" • toggle_maximize_vertically		phóng to cửa sổ theo chiều dọc\n"
+" • toggle_maximize_horizontally\t\tphóng to cửa sổ theo chiều ngang\n"
+" • toggle_maximize_vertically\t\tphóng to cửa sổ theo chiều dọc\n"
 " • minimize\t\t\tthu nhỏ cửa sổ\n"
-" • shade						cuộn cửa sổ lên\n"
-" • menu						hiển thị trình đơn cửa sổ\n"
-" • lower						đặt cửa sổ vào nền sau các cửa sổ khác\n"
+" • shade\t\t\t\t\t\tcuộn cửa sổ lên\n"
+" • menu\t\t\t\t\t\thiển thị trình đơn cửa sổ\n"
+" • lower\t\t\t\t\t\tđặt cửa sổ vào nền sau các cửa sổ khác\n"
 " • none\t\t\t\tkhông làm gì."
 
 #: ../src/metacity.schemas.in.h:188
@@ -2263,16 +2264,16 @@ msgid ""
 "will display the window menu, 'lower' which will put the window behind all "
 "the others, and 'none' which will not do anything."
 msgstr ""
-"Tùy chọn này quyết định tác dụng của việc nhấn-giữa chuột trên thanh tiêu đề. Tùy "
-"chọn hợp lệ hiện thời là:\n"
+"Tùy chọn này quyết định tác dụng của việc nhấn-giữa chuột trên thanh tiêu "
+"đề. Tùy chọn hợp lệ hiện thời là:\n"
 " • toggle_shade\t\ttạo bóng/thôi tạo bóng cửa sổ\n"
 " • toggle_maximize\tphóng to/thôi phóng to cửa sổ\n"
-" • toggle_maximize_horizontally		phóng to cửa sổ theo chiều ngang\n"
-" • toggle_maximize_vertically		phóng to cửa sổ theo chiều dọc\n"
+" • toggle_maximize_horizontally\t\tphóng to cửa sổ theo chiều ngang\n"
+" • toggle_maximize_vertically\t\tphóng to cửa sổ theo chiều dọc\n"
 " • minimize\t\t\tthu nhỏ cửa sổ\n"
-" • shade						cuộn cửa sổ lên\n"
-" • menu						hiển thị trình đơn cửa sổ\n"
-" • lower						đặt cửa sổ vào nền sau các cửa sổ khác\n"
+" • shade\t\t\t\t\t\tcuộn cửa sổ lên\n"
+" • menu\t\t\t\t\t\thiển thị trình đơn cửa sổ\n"
+" • lower\t\t\t\t\t\tđặt cửa sổ vào nền sau các cửa sổ khác\n"
 " • none\t\t\t\tkhông làm gì."
 
 #: ../src/metacity.schemas.in.h:189
@@ -2290,12 +2291,12 @@ msgstr ""
 "Tùy chọn hợp lệ hiện thời là:\n"
 " • toggle_shade\t\ttạo bóng/thôi tạo bóng cửa sổ\n"
 " • toggle_maximize\tphóng to/thôi phóng to cửa sổ\n"
-" • toggle_maximize_horizontally		phóng to cửa sổ theo chiều ngang\n"
-" • toggle_maximize_vertically		phóng to cửa sổ theo chiều dọc\n"
+" • toggle_maximize_horizontally\t\tphóng to cửa sổ theo chiều ngang\n"
+" • toggle_maximize_vertically\t\tphóng to cửa sổ theo chiều dọc\n"
 " • minimize\t\t\tthu nhỏ cửa sổ\n"
-" • shade						cuộn cửa sổ lên\n"
-" • menu						hiển thị trình đơn cửa sổ\n"
-" • lower						đặt cửa sổ vào nền sau các cửa sổ khác\n"
+" • shade\t\t\t\t\t\tcuộn cửa sổ lên\n"
+" • menu\t\t\t\t\t\thiển thị trình đơn cửa sổ\n"
+" • lower\t\t\t\t\t\tđặt cửa sổ vào nền sau các cửa sổ khác\n"
 " • none\t\t\t\tkhông làm gì."
 
 #: ../src/metacity.schemas.in.h:190
@@ -2391,7 +2392,7 @@ msgstr "Cuộn cửa sổ lên"
 
 #: ../src/ui/frames.c:1095
 msgid "Unroll Window"
-msgstr "Bỏ cuộn cửa sổ"
+msgstr "Thả cửa sổ xuống"
 
 #: ../src/ui/frames.c:1098
 msgid "Keep Window On Top"
@@ -3750,3 +3751,225 @@ msgstr "Hằng « %s » đã được định nghĩa."
 #, c-format
 msgid "Usage: %s\n"
 msgstr "Cách dùng: %s\n"
+
+#~| msgid ""
+#~| "There was an error running \"%s\":\n"
+#~| "%s."
+#~ msgid ""
+#~ "There was an error running <tt>%s</tt>:\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Gặp lỗi khi chạy <tt>%s</tt>:\n"
+#~ "\n"
+#~ "%s"
+
+#~| msgid "Compositing Manager"
+#~ msgid "Turn compositing on"
+#~ msgstr "Bật sắp thành phần"
+
+#~ msgid "Turn compositing off"
+#~ msgstr "Tắt sắp thành phần"
+
+#~| msgid "%d stored in GConf key %s is out of range 0 to %d\n"
+#~ msgid "%d stored in GConf key %s is out of range %d to %d\n"
+#~ msgstr "%d được lưu trong khoá GConf %s nằm ở ngoại phạm vi %d đến %d\n"
+
+#~| msgid "Error setting name for workspace %d to \"%s\": %s\n"
+#~ msgid "Error setting compositor status: %s\n"
+#~ msgstr "Gặp lỗi khi đặt trạng thái về công cụ sắp thành phần: %s\n"
+
+#~| msgid "Unknown attribute %s on <window> element"
+#~ msgid "Unknown attribute %s on <%s> element"
+#~ msgstr "Không nhận ra thuộc tính %s trên phần tử <%s>"
+
+#~| msgid "Switch to workspace on the left"
+#~ msgid "Switch to workspace on the left of the current workspace"
+#~ msgstr "Chuyển sang vùng làm việc bên trái vùng làm việc hiện thời"
+
+#~| msgid "Switch to workspace on the right"
+#~ msgid "Switch to workspace on the right of the current workspace"
+#~ msgstr "Chuyển sang vùng làm việc bên phải vùng làm việc hiện thời"
+
+#~| msgid "Switch to workspace above this one"
+#~ msgid "Switch to workspace above the current workspace"
+#~ msgstr "Chuyển sang vùng làm việc bên trên vùng làm việc hiện thời"
+
+#~| msgid "Switch to workspace below this one"
+#~ msgid "Switch to workspace below the current workspace"
+#~ msgstr "Chuyển sang vùng làm việc bên dưới vùng làm việc hiện thời"
+
+#~| msgid "Move between windows of an application with popup"
+#~ msgid "Move between windows of an application, using a popup window"
+#~ msgstr ""
+#~ "Chuyển giữa các cửa sổ khác nhau của ứng dụng, dùng một cửa sổ tự mở"
+
+#~| msgid "Move backwards between windows of an application with popup"
+#~ msgid ""
+#~ "Move backward between windows of an application, using a popup window"
+#~ msgstr ""
+#~ "Chuyển ngược giữa các cửa sổ khác nhau của ứng dụng, dùng một cửa sổ tự mở"
+
+#~| msgid "Move between windows with popup"
+#~ msgid "Move between windows, using a popup window"
+#~ msgstr "Chuyển giữa các cửa sổ khác nhau, dùng một cửa sổ tự mở"
+
+#~| msgid "Move focus backwards between windows using popup display"
+#~ msgid "Move backward between windows, using a popup window"
+#~ msgstr "Chuyển ngược giữa các cửa sổ khác nhau, dùng một cửa sổ tự mở"
+
+#~| msgid "Move between panels and the desktop with popup"
+#~ msgid "Move between panels and the desktop, using a popup window"
+#~ msgstr "Chuyển giữa các bảng và màn hình nền, dùng một cửa sổ tự mở"
+
+#~| msgid "Move backwards between panels and the desktop with popup"
+#~ msgid "Move backward between panels and the desktop, using a popup window"
+#~ msgstr "Chuyển ngược giữa các bảng và màn hình nền, dùng một cửa sổ tự mở"
+
+#~| msgid "Move backwards between windows of an application immediately"
+#~ msgid "Move backward between windows of an application immediately"
+#~ msgstr "Chuyển ngược ngay giữa các cửa sổ của ứng dụng"
+
+#~| msgid "Move backwards between windows immediately"
+#~ msgid "Move backward between windows immediately"
+#~ msgstr "Chuyển ngược ngay giữa các cửa sổ"
+
+#~| msgid "Hide all windows and focus desktop"
+#~ msgid "Hide all normal windows and set focus to the desktop"
+#~ msgstr "Ẩn mọi của sổ thông thường và đặt tiêu điểm vào màn hình nền"
+
+#~| msgid "Show the panel menu"
+#~ msgid "Show the panel's main menu"
+#~ msgstr "Hiện trình đơn chính của Bảng"
+
+#~| msgid "Show the panel run application dialog"
+#~ msgid "Show the panel's \"Run Application\" dialog box"
+#~ msgstr "Hiện hộp thoại « Chạy ứng dụng » của Bảng"
+
+#~| msgid "Activate window menu"
+#~ msgid "Activate the window menu"
+#~ msgstr "Kích hoạt trình đơn cửa sổ"
+
+#~| msgid "Lower window below other windows"
+#~ msgid "Toggle whether a window will always be visible over other windows"
+#~ msgstr ""
+#~ "Bật/tắt nếu một cửa sổ nào đó lúc nào cũng hiển thị phía trước các cửa sổ "
+#~ "khác"
+
+#~| msgid "Resize window"
+#~ msgid "Restore window"
+#~ msgstr "Phục hồi cửa sổ"
+
+#~| msgid "Toggle window on all workspaces"
+#~ msgid "Toggle whether window is on all workspaces or just one"
+#~ msgstr "Bật/tắt nếu cửa sổ nằm trên mọi vùng làm việc, hay chỉ trên một"
+
+#~| msgid "Raise obscured window, otherwise lower"
+#~ msgid "Raise window if it's covered by another window, otherwise lower it"
+#~ msgstr "Nâng cửa sổ bị cửa sổ khác lấp,  không bị lấp thì hạ nó xuống"
+
+#~| msgid "Move window to north-west corner"
+#~ msgid "Move window to north-west (top left) corner"
+#~ msgstr "Chuyển cửa sổ sang góc tây bắc (trái trên)"
+
+#~| msgid "Move window to north-east corner"
+#~ msgid "Move window to north-east (top right) corner"
+#~ msgstr "Chuyển cửa sổ sang góc đông bắc (phải trên)"
+
+#~| msgid "Move window to south-west corner"
+#~ msgid "Move window to south-west (bottom left) corner"
+#~ msgstr "Chuyển cửa sổ sang góc tây nam (trái dưới)"
+
+#~| msgid "Move window to south-east corner"
+#~ msgid "Move window to south-east (bottom right) corner"
+#~ msgstr "Chuyển cửa sổ sang góc đông nam (phải dưới)"
+
+#~| msgid "Move window to north side of screen"
+#~ msgid "Move window to north (top) side of screen"
+#~ msgstr "Chuyển cửa sổ sang phía bắc (trên) màn hình"
+
+#~| msgid "Move window to south side of screen"
+#~ msgid "Move window to south (bottom) side of screen"
+#~ msgstr "Chuyển cửa sổ sang phía nam (dưới) màn hình"
+
+#~| msgid "Move window to east side of screen"
+#~ msgid "Move window to east (right) side of screen"
+#~ msgstr "Chuyển cửa sổ sang phía đông (phải) màn hình"
+
+#~| msgid "Move window to west side of screen"
+#~ msgid "Move window to west (left) side of screen"
+#~ msgstr "Chuyển cửa sổ sang phía tây (trái) màn hình"
+
+#~| msgid "Move window to east side of screen"
+#~ msgid "Move window to center of screen"
+#~ msgstr "Chuyển cửa sổ vào trung tâm của màn hình"
+
+#~ msgid ""
+#~ "Set this to true to resize with the right button and show a menu with the "
+#~ "middle button while holding down the key given in \"mouse_button_modifier"
+#~ "\"; set it to false to make it work the opposite way around."
+#~ msgstr ""
+#~ "Đặt giá trị này thành Đúng (true) để thay đổi kích cỡ dùng cái nút bên "
+#~ "phải, và hiển thị trình đơn dùng cái nút ở giữa trong khi ấn giữ phím đặt "
+#~ "trong khoá « mouse_button_modifier »; đặt thành Sai (false) thì ngược lại."
+
+#~ msgid ""
+#~ "Setting this option to false can lead to buggy behavior, so users are "
+#~ "strongly discouraged from changing it from the default of true. Many "
+#~ "actions (e.g. clicking in the client area, moving or resizing the window) "
+#~ "normally raise the window as a side-effect. Setting this option to false, "
+#~ "which is strongly discouraged, will decouple raising from other user "
+#~ "actions, and ignore raise requests generated by applications. See http://"
+#~ "bugzilla.gnome.org/show_bug.cgi?id=445447#c6. Even when this option is "
+#~ "false, windows can still be raised by an alt-left-click anywhere on the "
+#~ "window, a normal click on the window decorations, or by special messages "
+#~ "from pagers, such as activation requests from tasklist applets. This "
+#~ "option is currently disabled in click-to-focus mode. Note that the list "
+#~ "of ways to raise windows when raise_on_click is false does not include "
+#~ "programmatic requests from applications to raise windows; such requests "
+#~ "will be ignored regardless of the reason for the request. If you are an "
+#~ "application developer and have a user complaining that your application "
+#~ "does not work with this setting disabled, tell them it is _their_ fault "
+#~ "for breaking their window manager and that they need to change this "
+#~ "option back to true or live with the \"bug\" they requested."
+#~ msgstr ""
+#~ "Đặt tuỳ chọn này thành Sai (false) có thể dẫn tới ứng xử bị lỗi, do đó "
+#~ "rất khuyên người dùng không sửa đổi giá trị mặc định (Đúng: true). Rất "
+#~ "nhiều hành vi khác nhau (v.d. nhấn vào vùng khách, di chuyển hay thay đổi "
+#~ "kích cỡ của cửa sổ) bình thường cũng nâng cửa sổ lên (như một hiệu ứng "
+#~ "khác). Đặt tuỳ chọn này thành sai sẽ tháo chức năng nâng lên ra các hành "
+#~ "vi người dùng khác, và bỏ qua các yêu cầu nâng lên của ứng dụng. Xem lỗi « "
+#~ "http://bugzilla.gnome.org/show_bug.cgi?id=445447#c6 ». Ngay cả khi tuỳ "
+#~ "chọn này bị sai, cửa sổ vẫn còn có thể được nâng lên bằng cách Alt-nhấn "
+#~ "vào bất cứ nơi nào trên cửa sổ, bằng cách nhấn vào một cách thông thường "
+#~ "vào trang trí cửa sổ, hoặc do thông điệp đặc biệt từ bộ dàn trang, v.d. "
+#~ "yêu cầu kích hoạt từ tiểu dụng danh sách công việc. Tuỳ chọn này hiện "
+#~ "thời bị tắt trong chế độ nhấn-để-đặt-tiêu-điểm. Ghi chú rằng danh sách "
+#~ "các phương pháp nâng cửa sổ lên khi « raise_on_click » bị sai không bao "
+#~ "gồm yêu cầu nâng cửa sổ lên kiểu lập trình từ ứng dụng: yêu cầu như vậy "
+#~ "sẽ bị bỏ qua bất chấp lý do gửi yêu cầu. Nếu bạn phát triển ứng dụng và "
+#~ "một người dùng than phiền vì ứng dụng không chạy được với thiết lập này "
+#~ "bị tắt, hãy báo họ vấn đề này do lỗi của họ, vì họ đã phá vỡ trình quản "
+#~ "lý cửa sổ, và họ cần phải phục hồi tuỳ chọn này về Đúng (true), nếu không "
+#~ "thì cứ sử dụng máy tính với « lỗi » này."
+
+#~ msgid "Whether to resize with the right button"
+#~ msgstr "Có nên thay đổi kích cỡ dùng cái nút bên phải hay không"
+
+#~| msgid "Resize window"
+#~ msgid "Restore Window"
+#~ msgstr "Phục hồi Cửa sổ"
+
+#~| msgid "No \"x\" attribute on element <%s>"
+#~ msgid "No \"%s\" attribute on element <%s>"
+#~ msgstr "Không có thuộc tính « %s » trong phần tử <%s>"
+
+#~| msgid ""
+#~| "Cannot specify both button_width/button_height and aspect ratio for "
+#~| "buttons"
+#~ msgid ""
+#~ "Cannot specify both \"button_width\"/\"button_height\" and \"aspect_ratio"
+#~ "\" for buttons"
+#~ msgstr ""
+#~ "Không thể xác định cả hai \"button_width\"/\"button_height\" (chiều rộng/"
+#~ "cao của cái nút) và \"aspect_ratio\" (tỷ lệ hình thể) cho cái nút"
