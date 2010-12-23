@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=metacity&component=general\n"
-"POT-Creation-Date: 2010-11-13 23:06+0000\n"
+"POT-Creation-Date: 2010-11-20 11:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Gheyret Kenji<gheyret@yahoo.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../src/50-metacity-desktop-key.xml.in.h:1
 msgid "Desktop"
-msgstr "ئۈستەليۈزى"
+msgstr "ئۈستەلئۈستى"
 
 #: ../src/50-metacity-key.xml.in.h:1
 msgid "Window Management"
@@ -126,7 +126,7 @@ msgstr ""
 
 #: ../src/core/main.c:269
 msgid "Disable connection to session manager"
-msgstr "ئەڭگىمە باشقۇرغۇغا باغلىنىشنى چەكلە"
+msgstr "ئەڭگىمە باشقۇرغۇچقا باغلىنىشنى چەكلە"
 
 #: ../src/core/main.c:275
 msgid "Replace the running window manager with Metacity"
@@ -596,11 +596,11 @@ msgstr ""
 
 #: ../src/include/all-keybindings.h:183
 msgid "Move between panels and the desktop immediately"
-msgstr "يۈز بىلەن ئۈستەل ئارىسىدا فوكۇس نۇقتىنى دەرھال يۆتكەش"
+msgstr "يۈز بىلەن ئۈستەلئۈستى ئارىسىدا فوكۇس نۇقتىنى دەرھال يۆتكەش"
 
 #: ../src/include/all-keybindings.h:186
 msgid "Move backward between panels and the desktop immediately"
-msgstr "يۈز ۋە ئۈستەل ئارىسىدا فوكۇس نۇقتىنى دەرھال تەتۈر يۆتكەش"
+msgstr "يۈز ۋە ئۈستەلئۈستى ئارىسىدا فوكۇس نۇقتىنى دەرھال تەتۈر يۆتكەش"
 
 #: ../src/include/all-keybindings.h:191
 msgid "Hide all normal windows and set focus to the desktop"
@@ -2015,7 +2015,7 @@ msgstr "/كۆزنەك(W)/ھەممىنى توختاتماسلىق(_A)"
 
 #: ../src/ui/theme-viewer.c:86
 msgid "/Windows/Des_ktop"
-msgstr "/كۆزنەك(W)/ئۈستەل(_K)"
+msgstr "/كۆزنەك(W)/ئۈستەلئۈستى(_K)"
 
 #: ../src/ui/theme-viewer.c:244
 msgid "This is a sample message in a sample dialog"
