@@ -1635,7 +1635,7 @@ msgstr "la geometria del marc no especifica la dimensió «%s» per al contorn �
 #: ../src/ui/theme.c:343
 #, c-format
 msgid "Button aspect ratio %g is not reasonable"
-msgstr "El ràtio d'aspecte dels botons %g no és raonable"
+msgstr "La ràtio d'aspecte dels botons %g no és raonable"
 
 #: ../src/ui/theme.c:355
 #, c-format
@@ -2014,7 +2014,7 @@ msgstr "La distància «%s» és desconeguda"
 #: ../src/ui/theme-parser.c:1411
 #, c-format
 msgid "Aspect ratio \"%s\" is unknown"
-msgstr "El ratio d'aspecte «%s» és desconeguda"
+msgstr "La ratio d'aspecte «%s» és desconeguda"
 
 #: ../src/ui/theme-parser.c:1473
 #, c-format
