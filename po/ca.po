@@ -2014,7 +2014,7 @@ msgstr "La distància «%s» és desconeguda"
 #: ../src/ui/theme-parser.c:1411
 #, c-format
 msgid "Aspect ratio \"%s\" is unknown"
-msgstr "La ratio d'aspecte «%s» és desconeguda"
+msgstr "La ràtio d'aspecte «%s» és desconeguda"
 
 #: ../src/ui/theme-parser.c:1473
 #, c-format
