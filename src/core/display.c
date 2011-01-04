@@ -3271,6 +3271,7 @@ meta_display_begin_grab_op (MetaDisplay *display,
                             int          root_x,
                             int          root_y)
 {
+  MetaWindow *grab_window = NULL;
   Window grab_xwindow;
 
   if (grab_op_is_mouse (op) && meta_grab_op_is_moving (op))
@@ -3307,14 +3308,25 @@ meta_display_begin_grab_op (MetaDisplay *display,
         }
     }
 
+  /* If window is a modal dialog attached to its parent,
+   * grab the parent instead for moving.
+   */
+  if (meta_prefs_get_attach_modal_dialogs () &&
+      window->type == META_WINDOW_MODAL_DIALOG &&
+      meta_grab_op_is_moving (op))
+    grab_window = meta_window_get_transient_for (window);
+
+  if (grab_window == NULL)
+    grab_window = window;
+
   /* FIXME:
    *   If we have no MetaWindow we do our best
    *   and try to do the grab on the RootWindow.
    *   This will fail if anyone else has any
    *   key grab on the RootWindow.
    */
-  if (window)
-    grab_xwindow = window->frame ? window->frame->xwindow : window->xwindow;
+  if (grab_window)
+    grab_xwindow = grab_window->frame ? grab_window->frame->xwindow : grab_window->xwindow;
   else
     grab_xwindow = screen->xroot;
 
@@ -3336,9 +3348,9 @@ meta_display_begin_grab_op (MetaDisplay *display,
   /* Grab keys for keyboard ops and mouse move/resizes; see #126497 */
   if (grab_op_is_keyboard (op) || grab_op_is_mouse_only (op))
     {
-      if (window)
+      if (grab_window)
         display->grab_have_keyboard =
-                     meta_window_grab_all_keys (window, timestamp);
+                     meta_window_grab_all_keys (grab_window, timestamp);
 
       else
         display->grab_have_keyboard =
@@ -3355,7 +3367,7 @@ meta_display_begin_grab_op (MetaDisplay *display,
     }
 
   display->grab_op = op;
-  display->grab_window = window;
+  display->grab_window = grab_window;
   display->grab_screen = screen;
   display->grab_xwindow = grab_xwindow;
   display->grab_button = button;
