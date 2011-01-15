@@ -129,7 +129,7 @@ case "$with_gtk" in
        ;;
 esac
 
-METACITY_PC_MODULES="gtk+-$GTK_API_VERSION >= $GTK_MIN_VERSION pango >= 1.2.0 $CANBERRA_GTK"
+METACITY_PC_MODULES="gtk+-$GTK_API_VERSION >= $GTK_MIN_VERSION pango >= 1.2.0"
 AC_SUBST(GTK_API_VERSION)
 
 AC_ARG_ENABLE(gconf,
@@ -140,6 +140,16 @@ AC_ARG_ENABLE(gconf,
 if test x$enable_gconf = xyes; then
     AC_DEFINE(HAVE_GCONF,1,[Build with gconf support])
     METACITY_PC_MODULES="$METACITY_PC_MODULES gconf-2.0 >= 1.2.0"
+fi
+
+AC_ARG_ENABLE(canberra,
+  AC_HELP_STRING([--disable-canberra],
+                 [disable use of canberra for event sounds, for embedded non-GNOME builds]),,
+  enable_canberra=yes)
+
+if test x$enable_canberra = xyes; then
+    AC_DEFINE(HAVE_CANBERRA,1,[Build with canberra support])
+    METACITY_PC_MODULES="$METACITY_PC_MODULES $CANBERRA_GTK"
 fi
 
 AC_ARG_ENABLE(verbose-mode,
@@ -570,6 +580,7 @@ metacity-$VERSION (using gtk+-${GTK_API_VERSION}):
 	compiler:		  ${CC}
 
 	GConf:                    ${enable_gconf}
+	Canberra:                 ${enable_canberra}
 	XFree86 Xinerama:         ${use_xfree_xinerama}
 	Solaris Xinerama:         ${use_solaris_xinerama}
 	Startup notification:     ${have_startup_notification}
