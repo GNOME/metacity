@@ -58,6 +58,9 @@ static int destroying_windows_disallowed = 0;
 
 static void     update_sm_hints           (MetaWindow     *window);
 static void     update_net_frame_extents  (MetaWindow     *window);
+static void     restack_window            (MetaWindow     *window,
+                                           MetaWindow     *sibling,
+                                           int             direction);
 static void     recalc_window_type        (MetaWindow     *window);
 static void     recalc_window_features    (MetaWindow     *window);
 static void     invalidate_work_areas     (MetaWindow     *window);
@@ -4713,19 +4716,13 @@ meta_window_configure_request (MetaWindow *window,
                                   event->xconfigurerequest.width,
                                   event->xconfigurerequest.height);
       
-  /* Handle stacking. We only handle raises/lowers, mostly because
-   * stack.c really can't deal with anything else.  I guess we'll fix
-   * that if a client turns up that really requires it. Only a very
-   * few clients even require the raise/lower (and in fact all client
-   * attempts to deal with stacking order are essentially broken,
-   * since they have no idea what other clients are involved or how
-   * the stack looks).
-   *
-   * I'm pretty sure no interesting client uses TopIf, BottomIf, or
-   * Opposite anyway, so the only possible missing thing is
-   * Above/Below with a sibling set. For now we just pretend there's
-   * never a sibling set and always do the full raise/lower instead of
-   * the raise-just-above/below-sibling.
+
+  /* Handle stacking. We only handle raises/lowers (both absolute and
+   * relative to siblings), mostly because stack.c really can't deal with
+   * anything else.  I guess we'll fix that if a client turns up that really
+   * requires it. Only a very few clients even require the raise/lower.  I'm
+   * pretty sure no interesting client uses TopIf, BottomIf, or Opposite
+   * anyway.
    */
   if (event->xconfigurerequest.value_mask & CWStackMode)
     {
@@ -4757,19 +4754,15 @@ meta_window_configure_request (MetaWindow *window,
         }
       else
         {
-          switch (event->xconfigurerequest.detail)
+          MetaWindow *sibling = NULL;
+
+          if (event->xconfigurerequest.above != None)
             {
-            case Above:
-              meta_window_raise (window);
-              break;
-            case Below:
-              meta_window_lower (window);
-              break;
-            case TopIf:
-            case BottomIf:
-            case Opposite:
-              break;
+              sibling = meta_display_lookup_x_window (window->display,
+                event->xconfigurerequest.above);
             }
+
+          restack_window(window, sibling, event->xconfigurerequest.detail);
         }
     }      
   
@@ -4795,6 +4788,51 @@ meta_window_property_notify (MetaWindow *window,
 #define _NET_WM_MOVERESIZE_SIZE_KEYBOARD     9
 #define _NET_WM_MOVERESIZE_MOVE_KEYBOARD    10
 #define _NET_WM_MOVERESIZE_CANCEL           11
+
+static void
+restack_window (MetaWindow *window,
+                MetaWindow *sibling,
+                int direction)
+{
+ switch (direction)
+   {
+   case Above:
+     if (sibling)
+       meta_window_stack_just_above (window, sibling);
+     else
+       meta_window_raise (window);
+     break;
+   case Below:
+     if (sibling)
+       meta_window_stack_just_below (window, sibling);
+     else
+       meta_window_lower (window);
+     break;
+   case TopIf:
+   case BottomIf:
+   case Opposite:
+     break;
+   }
+}
+
+static void
+handle_net_restack_window (MetaDisplay* display,
+                           XEvent *event)
+{
+  MetaWindow *window, *sibling = NULL;
+
+  window = meta_display_lookup_x_window (display,
+                                         event->xclient.window);
+
+  if (window)
+    {
+      if (event->xclient.data.l[1])
+        sibling = meta_display_lookup_x_window (display,
+                                                event->xclient.data.l[1]);
+
+      restack_window (window, sibling, event->xclient.data.l[2]);
+    }
+}
 
 gboolean
 meta_window_client_message (MetaWindow *window,
@@ -4823,6 +4861,11 @@ meta_window_client_message (MetaWindow *window,
       meta_window_delete (window, timestamp);
 
       return TRUE;
+    }
+  else if (event->xproperty.atom ==
+           display->atom__NET_RESTACK_WINDOW)
+    {
+      handle_net_restack_window (display, event);
     }
   else if (event->xclient.message_type ==
            display->atom__NET_WM_DESKTOP)
@@ -7993,6 +8036,31 @@ ensure_mru_position_after (MetaWindow *window,
         g_list_insert_before (window->screen->active_workspace->mru_list,
                               after_this_one_position->next,
                               window);
+    }
+}
+
+void
+meta_window_stack_just_above (MetaWindow *window,
+                              MetaWindow *above_this_one)
+{
+  g_return_if_fail (window         != NULL);
+  g_return_if_fail (above_this_one != NULL);
+
+  if (window->stack_position < above_this_one->stack_position)
+    {
+      meta_topic (META_DEBUG_STACK,
+                  "Setting stack position of window %s (%d) to %d (making it above window %s).\n",
+                  window->desc,
+                  window->stack_position,
+                  above_this_one->stack_position,
+                  above_this_one->desc);
+      meta_window_set_stack_position (window, above_this_one->stack_position);
+    }
+  else
+    {
+      meta_topic (META_DEBUG_STACK,
+                  "Window %s  was already above window %s.\n",
+                  window->desc, above_this_one->desc);
     }
 }
 
