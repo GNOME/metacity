@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<KeyListEntries _name="Window Management" wm_name="Metacity" package="metacity">
+<KeyListEntries group="system" _name="Windows" wm_name="Metacity" package="metacity">
 
 	<KeyListEntry
 	name="/apps/metacity/window_keybindings/activate_window_menu" />

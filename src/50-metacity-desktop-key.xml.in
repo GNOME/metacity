@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<KeyListEntries _name="Desktop" wm_name="Metacity" package="metacity">
+<KeyListEntries group="system" _name="Desktop" wm_name="Metacity" package="metacity">
 
 	<KeyListEntry
 	name="/apps/metacity/global_keybindings/panel_run_dialog" />
