@@ -3483,9 +3483,6 @@ meta_display_end_grab_op (MetaDisplay *display,
   if (display->grab_op == META_GRAB_OP_NONE)
     return;
 
-  if (display->grab_window != NULL)
-    display->grab_window->shaken_loose = FALSE;
-  
   if (display->grab_window != NULL &&
       !meta_prefs_get_raise_on_click () &&
       (meta_grab_op_is_moving (display->grab_op) ||

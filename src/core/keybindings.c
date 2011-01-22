@@ -1425,6 +1425,51 @@ meta_display_process_key_event (MetaDisplay *display,
                  !all_keys_grabbed && window);
 }
 
+static void
+process_cancel_grab(MetaDisplay *display,
+                    MetaWindow  *window)
+{
+  /* End move or resize and restore to original state.
+   * In normal cases, we need to do a moveresize now to get the
+   * position back to the original.  In wireframe mode, we just
+   * need to set grab_was_cancelled to true to avoid avoid
+   * moveresizing to the position of the wireframe.
+   */
+  if (!display->grab_wireframe_active)
+    {
+      /* If the window was a maximized window that had been
+       * "shaken loose" we need to remaximize it.
+       *
+       * This needs to be done BEFORE calling meta_window_move_resize
+       * because that function calls constrain_size_increments
+       * which uses window->maximized_horizontally/vertically.
+       * Trying to set a window to grab_initial_window_pos.width
+       * without having maximized_horizontally set, for an originally
+       * horizontally maximized window, can easily fail the
+       * size-increments contrain, causing it to resize the window
+       * based on the current frame size, overwriting the y coordinate
+       * in the process.
+       */
+      if (window->shaken_loose_horizontally ||
+          window->shaken_loose_vertically)
+        meta_window_maximize (window,
+                              (window->shaken_loose_horizontally ?
+                                        META_MAXIMIZE_HORIZONTAL : 0) |
+                              (window->shaken_loose_vertically ?
+                                        META_MAXIMIZE_VERTICAL : 0));
+
+      /* Now it is safe to move it back to where it came from */
+      meta_window_move_resize (display->grab_window,
+                               TRUE,
+                               display->grab_initial_window_pos.x,
+                               display->grab_initial_window_pos.y,
+                               display->grab_initial_window_pos.width,
+                               display->grab_initial_window_pos.height);
+    }
+  else
+    display->grab_was_cancelled = TRUE;
+}
+
 static gboolean
 process_mouse_move_resize_grab (MetaDisplay *display,
                                 MetaScreen  *screen,
@@ -1438,26 +1483,7 @@ process_mouse_move_resize_grab (MetaDisplay *display,
 
   if (keysym == XK_Escape)
     {
-      /* End move or resize and restore to original state.  If the
-       * window was a maximized window that had been "shaken loose" we
-       * need to remaximize it.  In normal cases, we need to do a
-       * moveresize now to get the position back to the original.  In
-       * wireframe mode, we just need to set grab_was_cancelled to tru
-       * to avoid avoid moveresizing to the position of the wireframe.
-       */
-      if (window->shaken_loose)
-        meta_window_maximize (window,
-                              META_MAXIMIZE_HORIZONTAL |
-                              META_MAXIMIZE_VERTICAL);
-      else if (!display->grab_wireframe_active)
-        meta_window_move_resize (display->grab_window,
-                                 TRUE,
-                                 display->grab_initial_window_pos.x,
-                                 display->grab_initial_window_pos.y,
-                                 display->grab_initial_window_pos.width,
-                                 display->grab_initial_window_pos.height);
-      else
-        display->grab_was_cancelled = TRUE;
+      process_cancel_grab (display, window);
 
       /* End grab */
       return FALSE;
@@ -1511,29 +1537,8 @@ process_keyboard_move_grab (MetaDisplay *display,
     incr = NORMAL_INCREMENT;
 
   if (keysym == XK_Escape)
-    {
-      /* End move and restore to original state.  If the window was a
-       * maximized window that had been "shaken loose" we need to
-       * remaximize it.  In normal cases, we need to do a moveresize
-       * now to get the position back to the original.  In wireframe
-       * mode, we just need to set grab_was_cancelled to tru to avoid
-       * avoid moveresizing to the position of the wireframe.
-       */
-      if (window->shaken_loose)
-        meta_window_maximize (window,
-                              META_MAXIMIZE_HORIZONTAL |
-                              META_MAXIMIZE_VERTICAL);
-      else if (!display->grab_wireframe_active)
-        meta_window_move_resize (display->grab_window,
-                                 TRUE,
-                                 display->grab_initial_window_pos.x,
-                                 display->grab_initial_window_pos.y,
-                                 display->grab_initial_window_pos.width,
-                                 display->grab_initial_window_pos.height);
-      else
-        display->grab_was_cancelled = TRUE;
-    }
-  
+    process_cancel_grab (display, window);
+
   /* When moving by increments, we still snap to edges if the move
    * to the edge is smaller than the increment. This is because
    * Shift + arrow to snap is sort of a hidden feature. This way

@@ -129,7 +129,7 @@ typedef struct
   FixedDirections      fixed_directions;
 
   /* work_area_xinerama - current xinerama region minus struts
-   * entire_xinerama    - current xienrama, including strut regions
+   * entire_xinerama    - current xinerama, including strut regions
    */
   MetaRectangle        work_area_xinerama;
   MetaRectangle        entire_xinerama;

@@ -1481,8 +1481,8 @@ meta_screen_get_mouse_window (MetaScreen  *screen,
 }
 
 const MetaXineramaScreenInfo*
-meta_screen_get_xinerama_for_rect (MetaScreen    *screen,
-				   MetaRectangle *rect)
+meta_screen_get_xinerama_for_rect (MetaScreen          *screen,
+                                   const MetaRectangle *rect)
 {
   int i;
   int best_xinerama, xinerama_score;
@@ -1504,6 +1504,40 @@ meta_screen_get_xinerama_for_rect (MetaScreen    *screen,
           if (cur > xinerama_score)
             {
               xinerama_score = cur;
+              best_xinerama = i;
+            }
+        }
+    }
+
+  if (xinerama_score == 0)
+    {
+      /* If no overlapping area is found at all, returning xinerama 0
+       * isn't always the best. For example, if we are on xinerama 1
+       * and we move the window all the way down, then the inner window
+       * shifts completely off the monitor (resulting it getting here
+       * with xinerama_score == 0), yet we want to return xinerama 1
+       * of course and not 0, because that would cause the (still visible)
+       * title bar to jump to a different monitor.
+       *
+       * Try to make a reasonable guess that will make sense in most
+       * practical cases by returning the xinerama with the shortest
+       * distance (using the "Manhattan" metric) between the centers
+       * of rect and the xinerama.
+       */
+      int min_distance = 1000000;
+      int rect_center_x = rect->x + rect->width / 2;
+      int rect_center_y = rect->y + rect->height / 2;
+      for (i = 0; i < screen->n_xinerama_infos; i++)
+        {
+          int xinerama_center_x = screen->xinerama_infos[i].rect.x +
+              screen->xinerama_infos[i].rect.width / 2;
+          int xinerama_center_y = screen->xinerama_infos[i].rect.y +
+              screen->xinerama_infos[i].rect.height / 2;
+          int distance = ABS(rect_center_x - xinerama_center_x) +
+                         ABS(rect_center_y - xinerama_center_y);
+          if (distance < min_distance)
+            {
+              min_distance = distance;
               best_xinerama = i;
             }
         }

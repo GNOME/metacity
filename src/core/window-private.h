@@ -298,8 +298,11 @@ struct _MetaWindow
   /* icon props have changed */
   guint need_reread_icon : 1;
   
-  /* if TRUE, window was maximized at start of current grab op */
-  guint shaken_loose : 1;
+  /* if TRUE, window was maximized, or vertically maximized, at start of current grab op */
+  guint shaken_loose_vertically : 1;
+
+  /* if TRUE, window was horizontally maximized, at start of current grab op */
+  guint shaken_loose_horizontally : 1;
 
   /* if TRUE we have a grab on the focus click buttons */
   guint have_focus_click_grab : 1;

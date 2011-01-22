@@ -166,7 +166,7 @@ MetaWindow*   meta_screen_get_mouse_window     (MetaScreen                 *scre
 
 const MetaXineramaScreenInfo* meta_screen_get_current_xinerama    (MetaScreen    *screen);
 const MetaXineramaScreenInfo* meta_screen_get_xinerama_for_rect   (MetaScreen    *screen,
-                                                                   MetaRectangle *rect);
+                                                                   const MetaRectangle *rect);
 const MetaXineramaScreenInfo* meta_screen_get_xinerama_for_window (MetaScreen    *screen,
                                                                    MetaWindow    *window);
 

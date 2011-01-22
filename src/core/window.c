@@ -494,7 +494,8 @@ meta_window_new_with_attrs (MetaDisplay       *display,
   window->net_wm_user_time_set = FALSE;
   window->user_time_window = None;
   window->calc_placement = FALSE;
-  window->shaken_loose = FALSE;
+  window->shaken_loose_vertically = FALSE;
+  window->shaken_loose_horizontally = FALSE;
   window->have_focus_click_grab = FALSE;
   window->disable_sync = FALSE;
   
@@ -2488,14 +2489,16 @@ meta_window_save_rect (MetaWindow *window)
   if (!(META_WINDOW_MAXIMIZED (window) || window->fullscreen))
     {
       /* save size/pos as appropriate args for move_resize */
-      if (!window->maximized_horizontally)
+      if (!window->maximized_horizontally &&
+          !window->shaken_loose_horizontally)
         {
           window->saved_rect.x      = window->rect.x;
           window->saved_rect.width  = window->rect.width;
           if (window->frame)
             window->saved_rect.x   += window->frame->rect.x;
         }
-      if (!window->maximized_vertically)
+      if (!window->maximized_vertically &&
+          !window->shaken_loose_vertically)
         {
           window->saved_rect.y      = window->rect.y;
           window->saved_rect.height = window->rect.height;
@@ -2533,12 +2536,14 @@ save_user_window_placement (MetaWindow *window)
 
       meta_window_get_client_root_coords (window, &user_rect);
 
-      if (!window->maximized_horizontally)
+      if (!window->maximized_horizontally &&
+          !window->shaken_loose_horizontally)
 	{
 	  window->user_rect.x     = user_rect.x;
 	  window->user_rect.width = user_rect.width;
 	}
-      if (!window->maximized_vertically)
+      if (!window->maximized_vertically &&
+          !window->shaken_loose_vertically)
 	{
 	  window->user_rect.y      = user_rect.y;
 	  window->user_rect.height = user_rect.height;
@@ -2575,6 +2580,10 @@ meta_window_maximize_internal (MetaWindow        *window,
     window->maximized_vertically   || maximize_vertically;
   if (maximize_horizontally || maximize_vertically)
     window->force_save_user_rect = FALSE;
+
+  /* Never have shaken_loose_* set while maximized in any direction. */
+  window->shaken_loose_horizontally = FALSE;
+  window->shaken_loose_vertically = FALSE;
 
   /* Fix for #336850: If the frame shape isn't reapplied, it is
    * possible that the frame will retains its rounded corners. That
@@ -2730,8 +2739,17 @@ meta_window_unmaximize (MetaWindow        *window,
           window->display->grab_anchor_window_pos = target_rect;
         }
 
+      /* An unmaximize is a 'user action' (we pass TRUE here) because it
+       * needs to set user_rect to the new position (being saved_rect).
+       * The reason for that is that we want that a subsequential partial
+       * maximize should react exactly as if the window was brand new:
+       * simply expand from its current position. Without updating
+       * user_rect, it would jump back to where it was before the
+       * unmaximize, which could easily be at coordinate 0 when the last
+       * maximize was in the other direction (or full).
+       */
       meta_window_move_resize (window,
-                               FALSE,
+                               TRUE,
                                target_rect.x,
                                target_rect.y,
                                target_rect.width,
@@ -6892,6 +6910,483 @@ update_move_timeout (gpointer data)
   return FALSE;
 }
 
+/* Transform 'x' into a normalized coordinate relative to the outer
+ * window of 'rect', including its frame (if any).
+ * If x is on the left frame border, this function returns 0,
+ * if x is on the right frame border, 1.0 is returned.
+ */
+static double
+normalized_x (MetaRectangle *rect,
+              MetaFrame     *frame,
+              int           x)
+{
+  return
+      (double)(x - rect->x + (frame ? frame->child_x : 0)) /
+      (rect->width + (frame ? frame->child_x + frame->right_width : 0));
+}
+
+/* Transform 'y' into a normalized coordinate relative to the outer
+ * window of 'rect', including its frame (if any).
+ * If y is on the top frame border, this function returns 0,
+ * if y is on the bottom frame border, 1.0 is returned.
+ */
+static double
+normalized_y (MetaRectangle *rect,
+              MetaFrame     *frame,
+              int           y)
+{
+  return
+      (double)(y - rect->y + (frame ? frame->child_y : 0)) /
+      (rect->height + (frame ? frame->child_y + frame->bottom_height : 0));
+}
+
+static int const NONE = -1;     /* Not equal to an possible monitor number */
+
+/* Check if a window at position new_x, new_y, while the pointer
+ * is at position x, y would maximize to the respective relevant
+ * screen border(s), using a threshold 'snap_threshold'. If so,
+ * set *target_monitor to the monitor that it will be maximized
+ * on, set *target_work_area to the work area of that monitor,
+ * and set *far_side to true if we are against a far right and/or
+ * bottom monitor taking relevant directions into account.
+ * Set *target_monitor to NONE otherwise.
+ * Returns the current monitor.
+ */
+static int
+check_threshold (MetaWindow    *window,
+                 int           snap_threshold,
+                 int           x,
+                 int           y,
+                 const MetaRectangle *new_rect,
+                 gboolean      relevant_x,
+                 gboolean      relevant_y,
+                 int           *target_monitor,
+                 MetaRectangle *target_work_area,
+                 gboolean      *far_side)
+{
+  const MetaXineramaScreenInfo *wxinerama;
+  const MetaXineramaScreenInfo *xinerama_info;
+
+  gboolean target_at_bottom, target_at_right;
+
+  wxinerama = meta_screen_get_xinerama_for_window (window->screen, window);
+
+  /* Where does the window go if we call meta_window_maximize? */
+  xinerama_info = meta_screen_get_xinerama_for_rect (window->screen, new_rect);
+  *target_monitor = xinerama_info->number;
+  meta_window_get_work_area_for_xinerama (window, *target_monitor, target_work_area);
+
+  /* Is the target monitor on the far bottom/right side? */
+  target_at_right =
+      meta_screen_get_xinerama_neighbor(window->screen,
+          *target_monitor, META_SCREEN_LEFT) != NULL &&
+      meta_screen_get_xinerama_neighbor(window->screen,
+          *target_monitor, META_SCREEN_RIGHT) == NULL;
+  target_at_bottom =
+      meta_screen_get_xinerama_neighbor(window->screen,
+          *target_monitor, META_SCREEN_UP) != NULL &&
+      meta_screen_get_xinerama_neighbor(window->screen,
+          *target_monitor, META_SCREEN_DOWN) == NULL;
+
+  if (far_side)
+    /* This means we'll be checking the opposite side of the window */
+    *far_side = (relevant_x && target_at_right) ||
+                (relevant_y && target_at_bottom);
+
+  /* Check that pointer is inside the target work area
+   * and that the window is near the relevant boundary
+   * of that work area. The former to make sure that
+   * after maximization, the pointer is still inside
+   * the window. This check is therefore not necessary
+   * when no maximization takes place in the tested
+   * direction.
+   * If the target monitor is at the bottom or right
+   * then compare the bottom and right edge respecitively,
+   * instead of the top and left side of the window.
+   */
+  if ((window->shaken_loose_horizontally &&
+       !(x >= target_work_area->x &&
+         x < target_work_area->x + target_work_area->width)) ||
+      (window->shaken_loose_vertically &&
+       !(y >= target_work_area->y &&
+         y < target_work_area->y + target_work_area->height)) ||
+      (relevant_x &&
+        (target_at_right ?
+         ABS(new_rect->x + window->saved_rect.width +
+             (window->frame ? window->frame->right_width : 0) -
+             target_work_area->x - target_work_area->width) :
+         ABS(new_rect->x -
+             (window->frame ? window->frame->child_x : 0) -
+             target_work_area->x)) >= snap_threshold) ||
+      (relevant_y &&
+        (target_at_bottom ?
+         ABS(new_rect->y + window->saved_rect.height +
+             (window->frame ? window->frame->bottom_height : 0) -
+             target_work_area->y - target_work_area->height) :
+         ABS(new_rect->y -
+             (window->frame ? window->frame->child_y : 0) -
+             target_work_area->y)) >= snap_threshold))
+    /* Not close to a relevant edge: no maximization. */
+    *target_monitor = NONE;
+
+  /* Return current monitor. */
+  return wxinerama->number;
+}
+
+/* Check if a window, when translated over (dx,dy) from its current
+ * position and with the grab pointer at location (x,y) would
+ * shake loose from being maximized, or would re-maximize when
+ * already being shaken loose. If so, handle it.
+ *
+ * Returns true when this was the case and the move has been handled,
+ * returns false otherwise, in which case nothing has been done.
+ */
+static gboolean
+do_shake_loose(MetaWindow *window,
+               int const x, int const y,
+               int const dx, int const dy)
+{
+  MetaRectangle new_rect;
+  MetaDisplay *display = window->display;
+  int snap_threshold, shake_threshold;
+  gboolean relevant_x, relevant_y;
+  int relevant_delta;
+
+  /* Calculate the new rectangle, if we'd just normally move */
+  new_rect = display->grab_anchor_window_pos;
+  new_rect.x += dx;
+  new_rect.y += dy;
+
+  /* Shake loose (unmaximize) maximized window if dragged beyond the threshold
+   * in the Y direction (or X direction if only maximized horizontally).
+   */
+
+#define DRAG_THRESHOLD_TO_SNAP_THRESHOLD_FACTOR 4
+#define SHAKE_THRESHOLD 256
+  snap_threshold =
+      DRAG_THRESHOLD_TO_SNAP_THRESHOLD_FACTOR *
+      meta_ui_get_drag_threshold (window->screen->ui);
+  shake_threshold = SHAKE_THRESHOLD;
+    
+  /* Keep track of which directions are relevant (sensitive to the threshold) */
+  relevant_y = window->maximized_vertically || window->shaken_loose_vertically;
+  /* When shaking loose a fully maximized window, we demand that the
+   * vertical threshold is reached (and only the vertical threshold).
+   */
+  relevant_x = !relevant_y &&
+      (window->maximized_horizontally || window->shaken_loose_horizontally);
+  /* At this point at most one of relevant_x or relevant_y is set. */
+
+  relevant_delta = relevant_y ? dy : dx;
+
+  /* If the window is maximized, see if we need to shake it loose. */
+  if ((window->maximized_vertically || window->maximized_horizontally) &&
+      ABS(relevant_delta) >= shake_threshold)
+    {
+      MetaRectangle new_saved_rect = window->saved_rect;
+
+      /* 'saved_rect' should contain the rectangle that we unmaximize to.
+       * Overwrite it here so that the subsequent call to
+       * meta_window_unmaximize will put the window in a sane postion
+       * relative to the current pointer.
+       *
+       * "Sane" meaning the following:
+       * 1) The pointer should remain inside the window (including frame).
+       * 2) The result should be such that the window is not within or close
+       *    to the threshold (causing it rapidly to be maximized again).
+       * 3) If possible, it should be as close as possible to a point
+       *    proportionally equivalent to where it was initially at the
+       *    beginning of the grab.
+       *
+       * 1)
+       * The initial grab position should always be inside, or on
+       * the frame of a window -- otherwise it cannot be grabbed.
+       * After (un)maximization, the grab positions are updated;
+       * Point 1 guarantees that also then the grab position remains
+       * inside or on the frame of the window.
+       *
+       * 2)
+       * Stability is achieved as follows: if the pointer is moving
+       * to the right - then no special measures are needed in practise
+       * because the threshold sensitive left-border of a window will
+       * only move FURTHER away from the left edge of a monitor when
+       * unmaximizing (shrinking). However, when moving a horizontally
+       * maximized window to the left, it can easily happen moving it
+       * just a few pixels further it (un)maximizes again, not a pretty
+       * sight. Therefore, unmaximizing is prohibited if moving the
+       * mouse further in the same direction will cause it to be
+       * maximized again on the same monitor.
+       *
+       * 3)
+       * Great care has been taken to keep the pointer at the SAME
+       * place inside the unmaximized window, every time it is un-
+       * maximized again. This is done by putting the pointer
+       * proportionally at the same place inside the window when
+       * maximizing, and moving the window here such that again
+       * that same proportionality is maintained. The proportionality
+       * is thus a constant factor -- this is also nice for the eye
+       * when jumping from unmaximized to maximized or back.
+       */
+
+      /* Move the window to the pointer: this block sets new_rect_x and
+       * new_rect_y, candidate values for saved_rect before unmazimizing.
+       */
+      double prop_x_factor =
+          normalized_x(&display->grab_anchor_window_pos,
+                       window->frame,
+                       display->grab_anchor_root_x);
+      double prop_y_factor =
+          normalized_y(&display->grab_anchor_window_pos,
+                       window->frame,
+                       display->grab_anchor_root_y);
+      int frame_left = window->frame ? window->frame->child_x : 0;
+      int frame_top = window->frame ? window->frame->child_y : 0;
+      int frame_dx = window->frame ?
+          (window->frame->child_x + window->frame->right_width) : 0;
+      int frame_dy = window->frame ?
+          (window->frame->child_y + window->frame->bottom_height) : 0;
+      int saved_full_width = window->saved_rect.width + frame_dx;
+      int saved_full_height = window->saved_rect.height + frame_dy;
+
+      /* Horizontal placement proportionally equivalent to grab position */
+      new_saved_rect.x = x - saved_full_width * prop_x_factor + frame_left;
+
+      /* Vertical placement proportionally equivalent to grab position */
+      new_saved_rect.y = y - saved_full_height * prop_y_factor + frame_top;
+
+      /* These two variables are initialized to avoid a compiler warning.
+       * They are assigned a value by the call to check_threshold.
+       */
+      int target_monitor = 0;
+      MetaRectangle target_work_area = { 0 };
+      int current_monitor;
+      gboolean far_side;
+
+      /* Remember which directions were shaken loose.
+       * These values are used by check_threshold.
+       */
+      window->shaken_loose_vertically = window->maximized_vertically;
+      window->shaken_loose_horizontally = window->maximized_horizontally;
+
+      current_monitor =
+          check_threshold(window,
+                          snap_threshold,
+                          x, y,
+                          &new_saved_rect,
+                          relevant_x, relevant_y,
+                          &target_monitor, &target_work_area, &far_side);
+
+      /* Now check if we fulfill point 2. */
+      if (/* Inhibit maximization to the same monitor as we are already on */
+          target_monitor != current_monitor &&
+          /* Allow immediate maximization to a different monitor */
+          (target_monitor != NONE ||
+           /* Do not unmaximize the window if that means that it will
+            * maximize again on the same monitor if we continue to move
+            * in that same direction. */
+           /* Target is not on the far side? */
+           (!far_side &&
+            (relevant_delta > 0 ||      /* Moving away from threshold? */
+             /* New position is beyond threshold? */
+             ((!relevant_x ||
+               new_saved_rect.x < display->grab_anchor_window_pos.x) &&
+              (!relevant_y ||
+               new_saved_rect.y < display->grab_anchor_window_pos.y)))) ||
+           /* Target is on the far side? */
+           (far_side &&
+            (relevant_delta < 0 ||      /* Moving away from threshold? */
+             /* New position is beyond threshold? */
+             ((!relevant_x ||
+               new_saved_rect.x + window->saved_rect.width >
+                   display->grab_anchor_window_pos.x +
+                   display->grab_anchor_window_pos.width) &&
+              (!relevant_y ||
+               new_saved_rect.y + window->saved_rect.height >
+                   display->grab_anchor_window_pos.y +
+                   display->grab_anchor_window_pos.height))))
+          ))
+        {
+          /* Keep a copy of saved_rect. */
+          MetaRectangle restore_saved_rect = window->saved_rect;
+
+          /* Reinitialize grab positions to new (unmaximized) position. */
+          display->grab_anchor_root_x = x;
+          display->grab_anchor_root_y = y;
+          display->grab_anchor_window_pos.x = new_saved_rect.x;
+          display->grab_anchor_window_pos.y = new_saved_rect.y;
+
+          /* Unmaximize the window to new_saved_rect */
+          window->saved_rect = new_saved_rect;
+          meta_window_unmaximize (window,
+                                  META_MAXIMIZE_HORIZONTAL |
+                                  META_MAXIMIZE_VERTICAL);
+          window->saved_rect = restore_saved_rect;
+
+          /* At this point, shaken_loose_* is set and maximized_* both unset. */
+          return TRUE;
+        }
+
+      /* Abort shaking loose */
+      window->shaken_loose_vertically = FALSE;
+      window->shaken_loose_horizontally = FALSE;
+    }
+  /* If the window has been shaken loose, see if we need to remaximize
+   * it again, possibly on an other xinerama monitor.
+   */
+  else if (window->shaken_loose_vertically || window->shaken_loose_horizontally)
+    {
+      /* These two variables are initialized to avoid a compiler warning.
+       * They are assigned a value by the call to check_threshold.
+       */
+      int target_monitor = 0;
+      MetaRectangle target_work_area = { 0 };
+
+      check_threshold(window,
+                      snap_threshold,
+                      x, y,
+                      &new_rect,
+                      relevant_x, relevant_y,
+                      &target_monitor, &target_work_area, NULL);
+
+      if (target_monitor != NONE)
+        {
+          int new_ptr_x, new_ptr_y;
+          MetaRectangle* rect_ptr = &window->saved_rect;
+
+          /* Move the saved_rect and user_rect to the target monitor that
+           * we maximize on, so the user isn't surprised on a later unmaximize.
+           * Also see the note below point 9 of comment #4 of bug #356715.
+           */
+          for(;;)
+          {
+            const MetaXineramaScreenInfo *xinerama_info_rect;
+
+            xinerama_info_rect =
+                meta_screen_get_xinerama_for_rect (window->screen,
+                                                   rect_ptr);
+
+            if (xinerama_info_rect->number != target_monitor)
+              {
+                /* Move rect_ptr to the target monitor, because we demand
+                 * that unmaximizing a window never switches monitor.
+                 */
+                rect_ptr->x +=
+                    window->screen->xinerama_infos[target_monitor].rect.x -
+                    xinerama_info_rect->rect.x;
+                rect_ptr->y +=
+                    window->screen->xinerama_infos[target_monitor].rect.y -
+                    xinerama_info_rect->rect.y;
+
+                /* Make sure that the rect will be visible on the new
+                 * monitor (it might not, because the target monitor is
+                 * smaller.
+                 */
+                if (!meta_rectangle_overlap(rect_ptr,
+                                            &target_work_area))
+                  {
+                    /* If not visible - move it to the top-left position. */
+                    rect_ptr->x = target_work_area.x;
+                    rect_ptr->y = target_work_area.y;
+                    if (window->frame)
+                      {
+                        rect_ptr->x += window->frame->child_x;
+                        rect_ptr->y += window->frame->child_y;
+                      }
+                  }
+              }
+
+            if (rect_ptr == &window->user_rect)
+              break;
+            rect_ptr = &window->user_rect;
+          }
+
+          /* Reinitialize initial grab positions for newly maximized windows */
+          new_ptr_x = x;
+          if (window->shaken_loose_horizontally)
+            {
+              double prop_x_factor =
+                  normalized_x(&display->grab_anchor_window_pos,
+                               window->frame,
+                               display->grab_anchor_root_x);
+              display->grab_anchor_window_pos.x = target_work_area.x;
+              display->grab_anchor_window_pos.width = target_work_area.width;
+              if (window->frame)
+                {
+                  display->grab_anchor_window_pos.x += window->frame->child_x;
+                  display->grab_anchor_window_pos.width -=
+                      window->frame->child_x + window->frame->right_width;
+                }
+
+              /* Move the pointer to keep the same proportional
+               * position inside the window. */
+              new_ptr_x = target_work_area.x + prop_x_factor * target_work_area.width;
+              display->grab_last_user_action_was_snap = TRUE;
+            }
+          else
+            display->grab_anchor_window_pos.x = new_rect.x;
+          new_ptr_y = y;
+          if (window->shaken_loose_vertically)
+            {
+              double prop_y_factor =
+                  normalized_y(&display->grab_anchor_window_pos,
+                               window->frame,
+                               display->grab_anchor_root_y);
+              display->grab_anchor_window_pos.y = target_work_area.y;
+              display->grab_anchor_window_pos.height = target_work_area.height;
+              if (window->frame)
+                {
+                  display->grab_anchor_window_pos.y += window->frame->child_y;
+                  display->grab_anchor_window_pos.height -=
+                      window->frame->child_y + window->frame->bottom_height;
+                }
+              /* Move the pointer to keep the same proportional
+               * position inside the window. */
+              new_ptr_y = target_work_area.y + prop_y_factor * target_work_area.height;
+              display->grab_last_user_action_was_snap = TRUE;
+            }
+          else
+            display->grab_anchor_window_pos.y = new_rect.y;
+
+          /* Update state. This resets shaken_loose_*. */
+          meta_window_maximize_internal (window, 
+                                         (window->shaken_loose_horizontally ?
+                                          META_MAXIMIZE_HORIZONTAL : 0) |
+                                         (window->shaken_loose_vertically ?
+                                          META_MAXIMIZE_VERTICAL : 0),
+                                         &window->saved_rect);
+          meta_window_queue(window, META_QUEUE_MOVE_RESIZE);
+
+          display->grab_anchor_root_x = new_ptr_x;
+          display->grab_anchor_root_y = new_ptr_y;
+
+          /* Move the pointer so that we start fresh with a 'pull' of 0 */
+          if (new_ptr_x != x || new_ptr_y != y)
+            {
+              meta_error_trap_push (display);
+
+              meta_topic (META_DEBUG_WINDOW_OPS,
+                          "Warping pointer to %d,%d\n", new_ptr_x, new_ptr_y);
+
+              display->grab_latest_motion_x = new_ptr_x;
+              display->grab_latest_motion_y = new_ptr_y;
+
+              XWarpPointer (display->xdisplay,
+                            None,
+                            window->screen->xroot,
+                            0, 0, 0, 0, 
+                            new_ptr_x, new_ptr_y);
+
+              meta_error_trap_pop (display, FALSE);
+            }
+
+          /* At this point maximize_* is set and shaken_loose* both unset. */
+          return TRUE;
+        }
+    }
+
+  return FALSE;
+}
+
 static void
 update_move (MetaWindow  *window,
              gboolean     snap,
@@ -6901,17 +7396,20 @@ update_move (MetaWindow  *window,
   int dx, dy;
   int new_x, new_y;
   MetaRectangle old;
-  int shake_threshold;
   MetaDisplay *display = window->display;
   
+  /* x,y is the current position of the pointer */
   display->grab_latest_motion_x = x;
   display->grab_latest_motion_y = y;
-  
+
+  /* grab_anchor_root_x,grab_anchor_root_y was the position
+   * of pointer at the time the grab operation began (mouse
+   * button pressed), or since the last (un)maximize (shake
+   * loose and subsequential remaximize).
+   * dx,dy is the movement since.
+   */
   dx = x - display->grab_anchor_root_x;
   dy = y - display->grab_anchor_root_y;
-
-  new_x = display->grab_anchor_window_pos.x + dx;
-  new_y = display->grab_anchor_window_pos.y + dy;
 
   meta_verbose ("x,y = %d,%d anchor ptr %d,%d anchor pos %d,%d dx,dy %d,%d\n",
                 x, y,
@@ -6928,102 +7426,17 @@ update_move (MetaWindow  *window,
   if (dx == 0 && dy == 0)
     return;
 
-  /* shake loose (unmaximize) maximized window if dragged beyond the threshold
-   * in the Y direction. You can't pull a window loose via X motion.
+  /* Handle (un)maximization thresholds */
+  if (do_shake_loose(window, x, y, dx, dy))
+    return;
+
+  /* grab_anchor_window_pos contains the coordinates of the top-left
+   * of the client window (the inner window) of when the grab began,
+   * or since the last (un)maximize.
+   * Set new_x,new_y to the new position.
    */
-
-#define DRAG_THRESHOLD_TO_SHAKE_THRESHOLD_FACTOR 6
-  shake_threshold = meta_ui_get_drag_threshold (window->screen->ui) *
-    DRAG_THRESHOLD_TO_SHAKE_THRESHOLD_FACTOR;
-    
-  if (META_WINDOW_MAXIMIZED (window) && ABS (dy) >= shake_threshold)
-    {
-      double prop;
-
-      /* Shake loose */
-      window->shaken_loose = TRUE;
-                  
-      /* move the unmaximized window to the cursor */
-      prop = 
-        ((double)(x - display->grab_initial_window_pos.x)) / 
-        ((double)display->grab_initial_window_pos.width);
-
-      display->grab_initial_window_pos.x = 
-        x - window->saved_rect.width * prop;
-      display->grab_initial_window_pos.y = y;
-
-      if (window->frame)
-        {
-          display->grab_initial_window_pos.y += window->frame->child_y / 2;
-        }
-
-      window->saved_rect.x = display->grab_initial_window_pos.x;
-      window->saved_rect.y = display->grab_initial_window_pos.y;
-      display->grab_anchor_root_x = x;
-      display->grab_anchor_root_y = y;
-
-      meta_window_unmaximize (window,
-                              META_MAXIMIZE_HORIZONTAL |
-                              META_MAXIMIZE_VERTICAL);
-
-      return;
-    }
-  /* remaximize window on an other xinerama monitor if window has
-   * been shaken loose or it is still maximized (then move straight)
-   */
-  else if (window->shaken_loose || META_WINDOW_MAXIMIZED (window))
-    {
-      const MetaXineramaScreenInfo *wxinerama;
-      MetaRectangle work_area;
-      int monitor;
-
-      wxinerama = meta_screen_get_xinerama_for_window (window->screen, window);
-
-      for (monitor = 0; monitor < window->screen->n_xinerama_infos; monitor++)
-        {
-          meta_window_get_work_area_for_xinerama (window, monitor, &work_area);
-
-          /* check if cursor is near the top of a xinerama work area */ 
-          if (x >= work_area.x &&
-              x < (work_area.x + work_area.width) &&
-              y >= work_area.y &&
-              y < (work_area.y + shake_threshold))
-            {
-              /* move the saved rect if window will become maximized on an
-               * other monitor so user isn't surprised on a later unmaximize
-               */
-              if (wxinerama->number != monitor)
-                {
-                  window->saved_rect.x = work_area.x;
-                  window->saved_rect.y = work_area.y;
-                  
-                  if (window->frame) 
-                    {
-                      window->saved_rect.x += window->frame->child_x;
-                      window->saved_rect.y += window->frame->child_y;
-                    }
-
-                  window->user_rect.x = window->saved_rect.x;
-                  window->user_rect.y = window->saved_rect.y;
-
-                  meta_window_unmaximize (window,
-                                          META_MAXIMIZE_HORIZONTAL |
-                                          META_MAXIMIZE_VERTICAL);
-                }
-
-              display->grab_initial_window_pos = work_area;
-              display->grab_anchor_root_x = x;
-              display->grab_anchor_root_y = y;
-              window->shaken_loose = FALSE;
-              
-              meta_window_maximize (window,
-                                    META_MAXIMIZE_HORIZONTAL |
-                                    META_MAXIMIZE_VERTICAL);
-
-              return;
-            }
-        }
-    }
+  new_x = display->grab_anchor_window_pos.x + dx;
+  new_y = display->grab_anchor_window_pos.y + dy;
 
   if (display->grab_wireframe_active)
     old = display->grab_wireframe_rect;
@@ -7464,6 +7877,12 @@ meta_window_handle_mouse_grab_op_event (MetaWindow *window,
             }
         }
 
+      if (window->shaken_loose_vertically || window->shaken_loose_horizontally)
+      {
+        window->shaken_loose_vertically = FALSE;
+        window->shaken_loose_horizontally = FALSE;
+        save_user_window_placement(window);
+      }
       meta_display_end_grab_op (window->display, event->xbutton.time);
       break;    
 
