@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity-master-po-gl-37635\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-19 15:00+0100\n"
-"PO-Revision-Date: 2011-01-19 15:00+0100\n"
+"POT-Creation-Date: 2011-01-27 01:01+0100\n"
+"PO-Revision-Date: 2011-01-26 15:30+0100\n"
 "Last-Translator: Fran Diéguez <frandieguez@ubuntu.com>\n"
 "Language-Team: Galician <gnome-gl-list@gnome.org>\n"
 "Language: gl\n"
@@ -670,7 +670,7 @@ msgstr "Moverse inmediatamente cara a atrás entre os paneis e o escritorio"
 
 #: ../src/include/all-keybindings.h:191
 msgid "Hide all normal windows and set focus to the desktop"
-msgstr "Ocultar todas as xanelas normais e cambiar o foco ao escritorio"
+msgstr "Agochar todas as xanelas normais e cambiar o foco ao escritorio"
 
 #: ../src/include/all-keybindings.h:194
 msgid "Show the panel's main menu"
@@ -1099,7 +1099,7 @@ msgid ""
 msgstr ""
 "Definir esta opción como false pode conducir a un comportamento incorrecto, "
 "así que lle recomendamos encarecidamente aos usuarios que non cambien a "
-"opción true predefinida. Moitas accións, como por exemplo premer na área "
+"opción true predeterminada. Moitas accións, como por exemplo premer na área "
 "cliente ou mover e redimensionar a xanela, normalmente elevan a xanela como "
 "efecto colateral. Definindo esta opción como false, o que se desaconsella "
 "encarecidamente, pódese desacoplar a elevación para outras accións do "
@@ -1152,7 +1152,7 @@ msgstr ""
 "toda a pantalla e «frame_flash» que provoca que a barra de títulos da xanela "
 "de aplicativos que enviou o sinal de campá escintile. Se o aplicativo que "
 "enviou o ton de campá é descoñecido (como é normalmente para o «ton de aviso "
-"do sistema» predefinido), a barra de título da xanela actual enfocada "
+"do sistema» predeterminado), a barra de título da xanela actual enfocada "
 "escintilará."
 
 #: ../src/metacity.schemas.in.in.h:34
@@ -1718,14 +1718,15 @@ msgid ""
 "Coordinate expression contains floating point number '%s' which could not be "
 "parsed"
 msgstr ""
-"A expresión de coordenadas contén un número de coma flotante «%s» que non se "
-"puido analizar"
+"A expresión de coordenadas contén un número de coma flotante «%s» que non "
+"foi posíbel analizar"
 
 #: ../src/ui/theme.c:1628
 #, c-format
 msgid "Coordinate expression contains integer '%s' which could not be parsed"
 msgstr ""
-"A expresión de coordenadas contén un enteiro «%s» que non se puido analizar"
+"A expresión de coordenadas contén un enteiro «%s» que non foi posíbel "
+"analizar"
 
 #: ../src/ui/theme.c:1750
 #, c-format
@@ -2228,7 +2229,7 @@ msgstr "<%s> especificada dúas veces para este tema"
 #: ../src/ui/theme-parser.c:4040
 #, c-format
 msgid "Failed to find a valid file for theme %s\n"
-msgstr "Non se encontrou ningún ficheiro válido para o tema %s\n"
+msgstr "Non se atopou ningún ficheiro válido para o tema %s\n"
 
 #: ../src/ui/theme-parser.c:4096
 #, c-format
