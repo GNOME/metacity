@@ -4723,7 +4723,7 @@ process_selection_clear (MetaDisplay   *display,
       meta_verbose ("Got selection clear for screen %d on display %s\n",
                     screen->number, display->name);
       
-      meta_display_unmanage_screen (&display, 
+      meta_display_unmanage_screen (display, 
                                     screen,
                                     event->xselectionclear.time);
 
