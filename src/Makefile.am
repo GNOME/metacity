@@ -180,7 +180,13 @@ schema_DATA = $(schema_in_files:.schemas.in=.schemas)
 @INTLTOOL_XML_NOMERGE_RULE@
 
 xmldir       = @GNOME_KEYBINDINGS_KEYSDIR@
-xml_in_files = 50-metacity-desktop-key.xml.in 50-metacity-key.xml.in
+xml_in_files = \
+	50-metacity-launchers.xml.in	\
+	50-metacity-navigation.xml.in	\
+	50-metacity-screenshot.xml.in	\
+	50-metacity-system.xml.in	\
+	50-metacity-windows.xml.in
+
 xml_DATA     = $(xml_in_files:.xml.in=.xml)
 
 @INTLTOOL_SCHEMAS_RULE@
@@ -198,7 +204,7 @@ VARIABLES=stock_maximize_data $(srcdir)/stock_maximize.png \
           stock_delete_data $(srcdir)/stock_delete.png
 
 BUILT_SOURCES = inlinepixbufs.h
-CLEANFILES = inlinepixbufs.h metacity.desktop metacity-wm.desktop metacity.schemas metacity.schemas.in 50-metacity-desktop-key.xml 50-metacity-key.xml
+CLEANFILES = inlinepixbufs.h metacity.desktop metacity-wm.desktop metacity.schemas metacity.schemas.in 50-metacity-launchers.xml 50-metacity-navigation.xml 50-metacity-screenshot.xml 50-metacity-system.xml 50-metacity-windows.xml
 
 inlinepixbufs.h: $(IMAGES)
 	$(GDK_PIXBUF_CSOURCE) --raw --build-list $(VARIABLES) >$(srcdir)/inlinepixbufs.h

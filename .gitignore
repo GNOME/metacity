@@ -126,8 +126,11 @@ po/zh_HK.gmo
 po/zh_TW.gmo
 src/.deps/
 src/.libs/
-src/50-metacity-desktop-key.xml
-src/50-metacity-key.xml
+src/50-metacity-launchers.xml
+src/50-metacity-navigation.xml
+src/50-metacity-screenshot.xml
+src/50-metacity-system.xml
+src/50-metacity-windows.xml
 src/Makefile
 src/Makefile.in
 src/async-getprop.o

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<KeyListEntries group="system" _name="Screen Shots" wm_name="Metacity" package="metacity">
+
+	<KeyListEntry
+	name="/apps/metacity/global_keybindings/run_command_screenshot" />
+
+	<KeyListEntry
+	name="/apps/metacity/global_keybindings/run_command_window_screenshot" />
+
+</KeyListEntries>
+
