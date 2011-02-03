@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity-master-po-gl-37635\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-27 01:01+0100\n"
-"PO-Revision-Date: 2011-01-26 15:30+0100\n"
+"POT-Creation-Date: 2011-02-03 10:43+0100\n"
+"PO-Revision-Date: 2011-02-03 10:43+0100\n"
 "Last-Translator: Fran Diéguez <frandieguez@ubuntu.com>\n"
 "Language-Team: Galician <gnome-gl-list@gnome.org>\n"
 "Language: gl\n"
@@ -25,11 +25,23 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: ../src/50-metacity-desktop-key.xml.in.h:1
-msgid "Desktop"
-msgstr "Escritorio"
+#: ../src/50-metacity-launchers.xml.in.h:1
+msgid "Launchers"
+msgstr "Iniciadores"
 
-#: ../src/50-metacity-key.xml.in.h:1
+#: ../src/50-metacity-navigation.xml.in.h:1
+msgid "Navigation"
+msgstr "Navegación"
+
+#: ../src/50-metacity-screenshot.xml.in.h:1
+msgid "Screen Shots"
+msgstr "Capturas de pantalla"
+
+#: ../src/50-metacity-system.xml.in.h:1
+msgid "System"
+msgstr "Sistema"
+
+#: ../src/50-metacity-windows.xml.in.h:1
 msgid "Windows"
 msgstr "Xanelas"
 
@@ -196,7 +208,7 @@ msgstr "Produciuse un fallo ao analizar o directorio de temas: %s\n"
 msgid ""
 "Could not find a theme! Be sure %s exists and contains the usual themes.\n"
 msgstr ""
-"Non foi posíbel encontrar ningún tema! Asegúrese de que %s existe e de que "
+"Non foi posíbel atopar ningún tema! Asegúrese de que %s existe e de que "
 "contén os temas habituais.\n"
 
 #: ../src/core/main.c:602
@@ -253,8 +265,8 @@ msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
 "modifier\n"
 msgstr ""
-"«%s» encontrado na base de datos de configuración non é un valor válido para "
-"o modificador do botón do rato\n"
+"«%s» atopado na base de datos de configuración non é un valor válido para o "
+"modificador do botón do rato\n"
 
 #: ../src/core/prefs.c:1788
 #, c-format
@@ -273,8 +285,8 @@ msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
 "\"%s\"\n"
 msgstr ""
-"«%s» encontrado na base de datos de configuración non é un valor válido para "
-"a combinación de teclas «%s»\n"
+"«%s» atopado na base de datos de configuración non é un valor válido para a "
+"combinación de teclas «%s»\n"
 
 #: ../src/core/prefs.c:2542
 #, c-format
@@ -362,54 +374,54 @@ msgstr ""
 "\"shift\"; polo tanto, a tecla \"shift\" non poderá ser unha das teclas "
 "usadas."
 
-#: ../src/core/session.c:850 ../src/core/session.c:857
+#: ../src/core/session.c:842 ../src/core/session.c:849
 #, c-format
 msgid "Could not create directory '%s': %s\n"
 msgstr "Non foi posíbel crear o directorio «%s»: %s\n"
 
-#: ../src/core/session.c:867
+#: ../src/core/session.c:859
 #, c-format
 msgid "Could not open session file '%s' for writing: %s\n"
 msgstr "Non foi posíbel abrir o ficheiro de sesión «%s» para escritura: %s\n"
 
-#: ../src/core/session.c:1008
+#: ../src/core/session.c:1000
 #, c-format
 msgid "Error writing session file '%s': %s\n"
 msgstr "Produciuse un erro ao escribir o ficheiro de sesión «%s»: %s\n"
 
-#: ../src/core/session.c:1013
+#: ../src/core/session.c:1005
 #, c-format
 msgid "Error closing session file '%s': %s\n"
 msgstr "Produciuse un erro ao pechar o ficheiro de sesión «%s»: %s\n"
 
-#: ../src/core/session.c:1143
+#: ../src/core/session.c:1135
 #, c-format
 msgid "Failed to parse saved session file: %s\n"
 msgstr "Produciuse un fallo ao analizar o ficheiro de sesión gardado: %s\n"
 
-#: ../src/core/session.c:1192
+#: ../src/core/session.c:1184
 #, c-format
 msgid "<metacity_session> attribute seen but we already have the session ID"
 msgstr "O atributo <metacity_session> foi visto mais xa temos o ID de sesión"
 
-#: ../src/core/session.c:1205 ../src/core/session.c:1280
-#: ../src/core/session.c:1312 ../src/core/session.c:1384
-#: ../src/core/session.c:1444
+#: ../src/core/session.c:1197 ../src/core/session.c:1272
+#: ../src/core/session.c:1304 ../src/core/session.c:1376
+#: ../src/core/session.c:1436
 #, c-format
 msgid "Unknown attribute %s on <%s> element"
 msgstr "Atributo descoñecido %s no elemento <%s>"
 
-#: ../src/core/session.c:1222
+#: ../src/core/session.c:1214
 #, c-format
 msgid "nested <window> tag"
 msgstr "etiqueta <window> aniñada"
 
-#: ../src/core/session.c:1464
+#: ../src/core/session.c:1456
 #, c-format
 msgid "Unknown element %s"
 msgstr "Elemento descoñecido %s"
 
-#: ../src/core/session.c:1816
+#: ../src/core/session.c:1808
 msgid ""
 "These windows do not support &quot;save current setup&quot; and will have to "
 "be restarted manually next time you log in."
@@ -461,7 +473,7 @@ msgid "Metacity"
 msgstr "Metacity"
 
 #. first time through
-#: ../src/core/window.c:5660
+#: ../src/core/window.c:5704
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -477,7 +489,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/core/window.c:6225
+#: ../src/core/window.c:6269
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size "
@@ -1351,47 +1363,47 @@ msgstr "Tipo de letra do título da xanela"
 msgid "Usage: %s\n"
 msgstr "Uso: %s\n"
 
-#: ../src/ui/frames.c:1118
+#: ../src/ui/frames.c:1120
 msgid "Close Window"
 msgstr "Pechar a xanela"
 
-#: ../src/ui/frames.c:1121
+#: ../src/ui/frames.c:1123
 msgid "Window Menu"
 msgstr "Menú da xanela"
 
-#: ../src/ui/frames.c:1124
+#: ../src/ui/frames.c:1126
 msgid "Minimize Window"
 msgstr "Minimizar a xanela"
 
-#: ../src/ui/frames.c:1127
+#: ../src/ui/frames.c:1129
 msgid "Maximize Window"
 msgstr "Maximizar a xanela"
 
-#: ../src/ui/frames.c:1130
+#: ../src/ui/frames.c:1132
 msgid "Restore Window"
 msgstr "Restaurar a xanela"
 
-#: ../src/ui/frames.c:1133
+#: ../src/ui/frames.c:1135
 msgid "Roll Up Window"
 msgstr "Pregar a xanela"
 
-#: ../src/ui/frames.c:1136
+#: ../src/ui/frames.c:1138
 msgid "Unroll Window"
 msgstr "Despregar a xanela"
 
-#: ../src/ui/frames.c:1139
+#: ../src/ui/frames.c:1141
 msgid "Keep Window On Top"
 msgstr "Manter a xanela na parte superior"
 
-#: ../src/ui/frames.c:1142
+#: ../src/ui/frames.c:1144
 msgid "Remove Window From Top"
 msgstr "Quitar a xanela da parte superior"
 
-#: ../src/ui/frames.c:1145
+#: ../src/ui/frames.c:1147
 msgid "Always On Visible Workspace"
 msgstr "Sempre no espazo de traballo visíbel"
 
-#: ../src/ui/frames.c:1148
+#: ../src/ui/frames.c:1150
 msgid "Put Window On Only One Workspace"
 msgstr "Pór a xanela nun só espazo de traballo"
 
@@ -2425,6 +2437,9 @@ msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr ""
 "%d expresións de coordenadas interpretadas en %g segundos (%g segundos de "
 "media)\n"
+
+#~ msgid "Desktop"
+#~ msgstr "Escritorio"
 
 #~ msgid "Window Management"
 #~ msgstr "Xestión de xanelas"
