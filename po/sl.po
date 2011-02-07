@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=metacity&component=general\n"
-"POT-Creation-Date: 2011-01-20 18:26+0000\n"
-"PO-Revision-Date: 2011-01-21 20:30+0100\n"
-"Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
+"POT-Creation-Date: 2011-02-02 23:06+0000\n"
+"PO-Revision-Date: 2011-02-03 08:45+0100\n"
+"Last-Translator: Matej Urbančič <matej.urban@gmail.com>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -23,11 +23,23 @@ msgstr ""
 "X-Poedit-Country: SLOVENIA\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: ../src/50-metacity-desktop-key.xml.in.h:1
-msgid "Desktop"
-msgstr "Namizje"
+#: ../src/50-metacity-launchers.xml.in.h:1
+msgid "Launchers"
+msgstr "Zaganjalniki"
 
-#: ../src/50-metacity-key.xml.in.h:1
+#: ../src/50-metacity-navigation.xml.in.h:1
+msgid "Navigation"
+msgstr "Krmarjenje"
+
+#: ../src/50-metacity-screenshot.xml.in.h:1
+msgid "Screen Shots"
+msgstr "Zajete slike"
+
+#: ../src/50-metacity-system.xml.in.h:1
+msgid "System"
+msgstr "Sistem"
+
+#: ../src/50-metacity-windows.xml.in.h:1
 msgid "Windows"
 msgstr "Okna"
 
@@ -318,59 +330,59 @@ msgstr ""
 "\n"
 "Tipkovno bližnjico je lahko povrnete s pritiskom tipke \"shift\" zato tipka \"shift\" ne more biti del tipkovne bližnjice."
 
-#: ../src/core/session.c:850
-#: ../src/core/session.c:857
+#: ../src/core/session.c:842
+#: ../src/core/session.c:849
 #, c-format
 msgid "Could not create directory '%s': %s\n"
 msgstr "Ni mogoče ustvariti mape '%s': %s\n"
 
 # G:2 K:0 O:0
-#: ../src/core/session.c:867
+#: ../src/core/session.c:859
 #, c-format
 msgid "Could not open session file '%s' for writing: %s\n"
 msgstr "Ni mogoče odpreti datoteke seje '%s' za pisanje: %s\n"
 
-#: ../src/core/session.c:1008
+#: ../src/core/session.c:1000
 #, c-format
 msgid "Error writing session file '%s': %s\n"
 msgstr "Napaka med zapisovanjem datoteke seje '%s': %s\n"
 
-#: ../src/core/session.c:1013
+#: ../src/core/session.c:1005
 #, c-format
 msgid "Error closing session file '%s': %s\n"
 msgstr "Napaka med zapiranjem datoteke seje '%s': %s\n"
 
-#: ../src/core/session.c:1143
+#: ../src/core/session.c:1135
 #, c-format
 msgid "Failed to parse saved session file: %s\n"
 msgstr "Ni mogoče razčleniti datoteke shranjene seje: %s\n"
 
-#: ../src/core/session.c:1192
+#: ../src/core/session.c:1184
 #, c-format
 msgid "<metacity_session> attribute seen but we already have the session ID"
 msgstr "atribut <metacity_session> je bil viden, a mi že imamo ID seje"
 
-#: ../src/core/session.c:1205
-#: ../src/core/session.c:1280
-#: ../src/core/session.c:1312
-#: ../src/core/session.c:1384
-#: ../src/core/session.c:1444
+#: ../src/core/session.c:1197
+#: ../src/core/session.c:1272
+#: ../src/core/session.c:1304
+#: ../src/core/session.c:1376
+#: ../src/core/session.c:1436
 #, c-format
 msgid "Unknown attribute %s on <%s> element"
 msgstr "Neznan atribut %s predmeta <%s>"
 
-#: ../src/core/session.c:1222
+#: ../src/core/session.c:1214
 #, c-format
 msgid "nested <window> tag"
 msgstr "gnezdena oznaka <window>"
 
-#: ../src/core/session.c:1464
+#: ../src/core/session.c:1456
 #, c-format
 msgid "Unknown element %s"
 msgstr "Neznan predmet %s"
 
 # G:2 K:6 O:0
-#: ../src/core/session.c:1816
+#: ../src/core/session.c:1808
 msgid "These windows do not support &quot;save current setup&quot; and will have to be restarted manually next time you log in."
 msgstr "Ta okna ne podpirajo možnosti &quot;shranjevanja trenutnih nastavitev&quot;, zato bodo morala biti ob vaši naslednji prijavi znova začeta ročno."
 
@@ -421,7 +433,7 @@ msgid "Metacity"
 msgstr "Metacity"
 
 #. first time through
-#: ../src/core/window.c:5703
+#: ../src/core/window.c:5704
 #, c-format
 msgid "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER window as specified in the ICCCM.\n"
 msgstr "Okno %s nastavi svoj SM_CLIENT_ID, namesto, da bi nastavilo WM_CLIENT_LEADER kot je zavedeno v ICCCM.\n"
@@ -433,7 +445,7 @@ msgstr "Okno %s nastavi svoj SM_CLIENT_ID, namesto, da bi nastavilo WM_CLIENT_LE
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/core/window.c:6268
+#: ../src/core/window.c:6269
 #, c-format
 msgid "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %d x %d and max size %d x %d; this doesn't make much sense.\n"
 msgstr "Okno %s določi namig MWM, ki pove, da ni mogoče spremeniti velikosti, hkrati pa določi najmanjšo velikost na %d x %d in največjo na %d x %d; vrednost ni smiselna.\n"
@@ -1032,51 +1044,51 @@ msgstr "Pisava naziva okna"
 msgid "Usage: %s\n"
 msgstr "Uporaba: %s\n"
 
-#: ../src/ui/frames.c:1118
+#: ../src/ui/frames.c:1120
 msgid "Close Window"
 msgstr "Zapri okno"
 
 # G:1 K:1 O:0
-#: ../src/ui/frames.c:1121
+#: ../src/ui/frames.c:1123
 msgid "Window Menu"
 msgstr "Meni okna"
 
 # G:0 K:1 O:0
-#: ../src/ui/frames.c:1124
+#: ../src/ui/frames.c:1126
 msgid "Minimize Window"
 msgstr "Skrči okno"
 
-#: ../src/ui/frames.c:1127
+#: ../src/ui/frames.c:1129
 msgid "Maximize Window"
 msgstr "Razpni okno"
 
-#: ../src/ui/frames.c:1130
+#: ../src/ui/frames.c:1132
 msgid "Restore Window"
 msgstr "Obnovi okno"
 
 # G:2 K:0 O:0
-#: ../src/ui/frames.c:1133
+#: ../src/ui/frames.c:1135
 msgid "Roll Up Window"
 msgstr "Zavij okno"
 
-#: ../src/ui/frames.c:1136
+#: ../src/ui/frames.c:1138
 msgid "Unroll Window"
 msgstr "Odvij okno"
 
-#: ../src/ui/frames.c:1139
+#: ../src/ui/frames.c:1141
 msgid "Keep Window On Top"
 msgstr "Ohrani okno na vrhu"
 
-#: ../src/ui/frames.c:1142
+#: ../src/ui/frames.c:1144
 msgid "Remove Window From Top"
 msgstr "Odstrani okno z vrha"
 
 # G:1 K:0 O:0
-#: ../src/ui/frames.c:1145
+#: ../src/ui/frames.c:1147
 msgid "Always On Visible Workspace"
 msgstr "Vedno na vidni delovni površini"
 
-#: ../src/ui/frames.c:1148
+#: ../src/ui/frames.c:1150
 msgid "Put Window On Only One Workspace"
 msgstr "Postavi okno na le eno delovno površino"
 
@@ -2071,6 +2083,8 @@ msgstr "vrednost y je %d, pričakovana pa je vrednost %d"
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr "%d izjav koordinat razčlenjenih v %g sekundah (%g sekund v povprečju)\n"
 
+#~ msgid "Desktop"
+#~ msgstr "Namizje"
 #~ msgid "Window Management"
 #~ msgstr "Upravljanje oken"
 #~ msgid "Failed to read saved session file %s: %s\n"
