@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: metacity master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&component=general\n"
-"POT-Creation-Date: 2011-02-02 23:06+0000\n"
-"PO-Revision-Date: 2011-02-03 10:27+0200\n"
+"POT-Creation-Date: 2011-02-09 18:28+0000\n"
+"PO-Revision-Date: 2011-02-12 18:29+0200\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
@@ -30,7 +30,7 @@ msgstr "Käivitajad"
 msgid "Navigation"
 msgstr "Navigatsioon"
 
-msgid "Screen Shots"
+msgid "Screenshots"
 msgstr "Kuvatõmmised"
 
 msgid "System"
@@ -498,62 +498,74 @@ msgstr "Lülitumine 11. tööalale"
 msgid "Switch to workspace 12"
 msgstr "Lülitumine 12. tööalale"
 
-msgid "Switch to workspace on the left of the current workspace"
-msgstr "Lülitumine sellest tööalast vasakul olevale tööalale"
+msgid "Move to workspace left"
+msgstr "Tõstmine vasakpoolsele tööalale"
 
-msgid "Switch to workspace on the right of the current workspace"
-msgstr "Lülitumine sellest tööalast paremal olevale tööalale"
+msgid "Move to workspace right"
+msgstr "Tõstmine parempoolsele tööalale"
 
-msgid "Switch to workspace above the current workspace"
-msgstr "Lülitumine selle tööala kohal olevale tööalale"
+msgid "Move to workspace above"
+msgstr "Tõstmine vasakpoolsele tööalale"
 
-msgid "Switch to workspace below the current workspace"
-msgstr "Lülitumine selle tööala all olevale tööalale"
+msgid "Move to workspace below"
+msgstr "Tõstmine alumisele tööalale"
 
-msgid "Move between windows of an application, using a popup window"
-msgstr "Rakenduse akende vahel liikumine, hüpikaknaga"
-
-msgid "Move backward between windows of an application, using a popup window"
-msgstr "Rakenduse akende vahel tagasisuunas liikumine, hüpikaknaga"
-
-msgid "Move between windows, using a popup window"
-msgstr "Akende vahel liikumine, hüpikaknaga"
-
-msgid "Move backward between windows, using a popup window"
-msgstr "Akende vahel tagasisuunas liikumine, hüpikaknaga"
-
-msgid "Move between panels and the desktop, using a popup window"
-msgstr "Paneelide ja töölaua vahel liikumine, hüpikaknaga"
-
-msgid "Move backward between panels and the desktop, using a popup window"
-msgstr "Paneelide ja töölaua vahel tagasisuunas liikumine, hüpikaknaga"
-
-msgid "Move between windows of an application immediately"
+#, fuzzy
+#| msgid "Move between windows of an application immediately"
+msgid "Switch windows of an application"
 msgstr "Rakenduse akende vahel kohenene liikumine"
 
-msgid "Move backward between windows of an application immediately"
-msgstr "Rakenduse akende vahel kohenene tagasisuunas liikumine"
+#, fuzzy
+#| msgid "Move between windows of an application immediately"
+msgid "Reverse switch windows of an application"
+msgstr "Rakenduse akende vahel kohenene liikumine"
 
-msgid "Move between windows immediately"
-msgstr "Akende vahel kohenene liikumine"
+msgid "Switch applications"
+msgstr ""
 
-msgid "Move backward between windows immediately"
-msgstr "Akende vahel kohenene tagasisuunas liikumine"
+msgid "Reverse switch applications"
+msgstr ""
 
-msgid "Move between panels and the desktop immediately"
-msgstr "Paneeli ja töölaua vahel kohenene liikumine"
+msgid "Switch system controls"
+msgstr ""
 
-msgid "Move backward between panels and the desktop immediately"
-msgstr "Paneeli ja töölaua vahel kohenene tagasisuunas liikumine"
+msgid "Reverse switch system controls"
+msgstr ""
 
-msgid "Hide all normal windows and set focus to the desktop"
+#, fuzzy
+#| msgid "Move between windows of an application immediately"
+msgid "Switch windows of an app directly"
+msgstr "Rakenduse akende vahel kohenene liikumine"
+
+#, fuzzy
+#| msgid "Move between windows of an application immediately"
+msgid "Reverse switch windows of an app directly"
+msgstr "Rakenduse akende vahel kohenene liikumine"
+
+msgid "Switch windows directly"
+msgstr ""
+
+msgid "Reverse switch windows directly"
+msgstr ""
+
+msgid "Switch system controls directly"
+msgstr ""
+
+msgid "Reverse switch system controls directly"
+msgstr ""
+
+#, fuzzy
+#| msgid "Hide all normal windows and set focus to the desktop"
+msgid "Hide all normal windows"
 msgstr "Tavaliste akende peitmine ja töölaua fokuseerimine"
 
-msgid "Show the panel's main menu"
-msgstr "Paneeli peamenüü näitamine"
+msgid "Show the activities overview"
+msgstr ""
 
-msgid "Show the panel's \"Run Application\" dialog box"
-msgstr "Paneeli dialoogi \"Rakenduse käivitamine\" näitamine"
+#, fuzzy
+#| msgid "Show the panel's main menu"
+msgid "Show the run command prompt"
+msgstr "Paneeli peamenüü näitamine"
 
 msgid "Take a screenshot"
 msgstr "Kuvatõmmise võtmine"
@@ -561,7 +573,9 @@ msgstr "Kuvatõmmise võtmine"
 msgid "Take a screenshot of a window"
 msgstr "Kuvatõmmise võtmine aknast"
 
-msgid "Run a terminal"
+#, fuzzy
+#| msgid "Run a terminal"
+msgid "Launch Terminal"
 msgstr "Terminali käivitamine"
 
 msgid "Activate the window menu"
@@ -573,8 +587,8 @@ msgstr "Täisekraanivaate sisse- ja väljalülitamine"
 msgid "Toggle maximization state"
 msgstr "Maksimeeritud oleku sisse- ja väljalülitamine"
 
-msgid "Toggle whether a window will always be visible over other windows"
-msgstr "Alati kõige pealmiseks olemise sisse- ja väljalülitamine"
+msgid "Toggle window always appearing on top"
+msgstr ""
 
 msgid "Maximize window"
 msgstr "Akna maksimeerimine"
@@ -597,7 +611,9 @@ msgstr "Akna liigutamine"
 msgid "Resize window"
 msgstr "Akna suuruse muutmine"
 
-msgid "Toggle whether window is on all workspaces or just one"
+#, fuzzy
+#| msgid "Toggle whether window is on all workspaces or just one"
+msgid "Toggle window on all workspaces or one"
 msgstr "Akna määramine ühele või kõigile tööaladele"
 
 msgid "Move window to workspace 1"
@@ -648,7 +664,9 @@ msgstr "Akna tõstmine ühe tööala võrra ülespoole"
 msgid "Move window one workspace down"
 msgstr "Akna tõstmine ühe tööala võrra allapoole"
 
-msgid "Raise window if it's covered by another window, otherwise lower it"
+#, fuzzy
+#| msgid "Raise window if it's covered by another window, otherwise lower it"
+msgid "Raise window if covered, otherwise lower it"
 msgstr "Akna tõstmine, kui seda katab teine aken, või taha viimine"
 
 msgid "Raise window above other windows"
@@ -663,28 +681,44 @@ msgstr "Akna maksimeerimine vertikaalselt"
 msgid "Maximize window horizontally"
 msgstr "Akna maksimeerimine horisontaalselt"
 
-msgid "Move window to north-west (top left) corner"
+#, fuzzy
+#| msgid "Move window to north-west (top left) corner"
+msgid "Move window to top left corner"
 msgstr "Akna tõstmine ekraani loodenurka (ülemisse vasakusse)"
 
-msgid "Move window to north-east (top right) corner"
+#, fuzzy
+#| msgid "Move window to north-east (top right) corner"
+msgid "Move window to top right corner"
 msgstr "Akna tõstmine ekraani kirdenurka (ülemisse paremasse)"
 
-msgid "Move window to south-west (bottom left) corner"
+#, fuzzy
+#| msgid "Move window to south-west (bottom left) corner"
+msgid "Move window to bottom left corner"
 msgstr "Akna tõstmine ekraani edelanurka (alumisse vasakusse)"
 
-msgid "Move window to south-east (bottom right) corner"
+#, fuzzy
+#| msgid "Move window to south-east (bottom right) corner"
+msgid "Move window to bottom right corner"
 msgstr "Akna tõstmine ekraani kagunurka (alumisse paremasse)"
 
-msgid "Move window to north (top) side of screen"
-msgstr "Akna tõstmine ekraani põhjakülge (ülemisse)"
+#, fuzzy
+#| msgid "Move window to center of screen"
+msgid "Move window to top edge of screen"
+msgstr "Akna tõstmine ekraani keskele"
 
-msgid "Move window to south (bottom) side of screen"
+#, fuzzy
+#| msgid "Move window to south (bottom) side of screen"
+msgid "Move window to bottom edge of screen"
 msgstr "Akna tõstmine ekraani lõunakülge (alumisse)"
 
-msgid "Move window to east (right) side of screen"
+#, fuzzy
+#| msgid "Move window to east (right) side of screen"
+msgid "Move window to right side of screen"
 msgstr "Akna tõstmine ekraani idakülge (paremasse)"
 
-msgid "Move window to west (left) side of screen"
+#, fuzzy
+#| msgid "Move window to west (left) side of screen"
+msgid "Move window to left side of screen"
 msgstr "Akna tõstmine ekraani läänekülge (vasakusse)"
 
 msgid "Move window to center of screen"
@@ -1945,6 +1979,61 @@ msgstr "y väärtus oli %d, oodati väärtust %d"
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr ""
 "%d koordinaatide avaldis töödeldi %g sekundiga (keskmine %g sekundit)\n"
+
+#~ msgid "Switch to workspace on the left of the current workspace"
+#~ msgstr "Lülitumine sellest tööalast vasakul olevale tööalale"
+
+#~ msgid "Switch to workspace on the right of the current workspace"
+#~ msgstr "Lülitumine sellest tööalast paremal olevale tööalale"
+
+#~ msgid "Switch to workspace above the current workspace"
+#~ msgstr "Lülitumine selle tööala kohal olevale tööalale"
+
+#~ msgid "Switch to workspace below the current workspace"
+#~ msgstr "Lülitumine selle tööala all olevale tööalale"
+
+#~ msgid "Move between windows of an application, using a popup window"
+#~ msgstr "Rakenduse akende vahel liikumine, hüpikaknaga"
+
+#~ msgid ""
+#~ "Move backward between windows of an application, using a popup window"
+#~ msgstr "Rakenduse akende vahel tagasisuunas liikumine, hüpikaknaga"
+
+#~ msgid "Move between windows, using a popup window"
+#~ msgstr "Akende vahel liikumine, hüpikaknaga"
+
+#~ msgid "Move backward between windows, using a popup window"
+#~ msgstr "Akende vahel tagasisuunas liikumine, hüpikaknaga"
+
+#~ msgid "Move between panels and the desktop, using a popup window"
+#~ msgstr "Paneelide ja töölaua vahel liikumine, hüpikaknaga"
+
+#~ msgid "Move backward between panels and the desktop, using a popup window"
+#~ msgstr "Paneelide ja töölaua vahel tagasisuunas liikumine, hüpikaknaga"
+
+#~ msgid "Move backward between windows of an application immediately"
+#~ msgstr "Rakenduse akende vahel kohenene tagasisuunas liikumine"
+
+#~ msgid "Move between windows immediately"
+#~ msgstr "Akende vahel kohenene liikumine"
+
+#~ msgid "Move backward between windows immediately"
+#~ msgstr "Akende vahel kohenene tagasisuunas liikumine"
+
+#~ msgid "Move between panels and the desktop immediately"
+#~ msgstr "Paneeli ja töölaua vahel kohenene liikumine"
+
+#~ msgid "Move backward between panels and the desktop immediately"
+#~ msgstr "Paneeli ja töölaua vahel kohenene tagasisuunas liikumine"
+
+#~ msgid "Show the panel's \"Run Application\" dialog box"
+#~ msgstr "Paneeli dialoogi \"Rakenduse käivitamine\" näitamine"
+
+#~ msgid "Toggle whether a window will always be visible over other windows"
+#~ msgstr "Alati kõige pealmiseks olemise sisse- ja väljalülitamine"
+
+#~ msgid "Move window to north (top) side of screen"
+#~ msgstr "Akna tõstmine ekraani põhjakülge (ülemisse)"
 
 #~ msgid "Desktop"
 #~ msgstr "Töölaud"
