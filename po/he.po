@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-04 08:59+0200\n"
-"PO-Revision-Date: 2011-02-04 08:59+0200\n"
+"POT-Creation-Date: 2011-02-12 00:45+0200\n"
+"PO-Revision-Date: 2011-02-12 11:16+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgid "Navigation"
 msgstr "ניווט"
 
 #: ../src/50-metacity-screenshot.xml.in.h:1
-msgid "Screen Shots"
+msgid "Screenshots"
 msgstr "צילומי מסך"
 
 #: ../src/50-metacity-system.xml.in.h:1
@@ -592,258 +592,258 @@ msgid "Switch to workspace 12"
 msgstr "מעבר למרחב עבודה 12"
 
 #: ../src/include/all-keybindings.h:122
-msgid "Switch to workspace on the left of the current workspace"
-msgstr "Switch to workspace on the left of the current workspace"
+msgid "Move to workspace left"
+msgstr "העברה למרחב העבודה לשמאל"
 
 #: ../src/include/all-keybindings.h:126
-msgid "Switch to workspace on the right of the current workspace"
-msgstr "Switch to workspace on the right of the current workspace"
+msgid "Move to workspace right"
+msgstr "העברה למרחב העבודה לימין"
 
 #: ../src/include/all-keybindings.h:130
-msgid "Switch to workspace above the current workspace"
-msgstr "Switch to workspace above the current workspace"
+msgid "Move to workspace above"
+msgstr "העברה למרחב העבודה שמלמעלה"
 
 #: ../src/include/all-keybindings.h:134
-msgid "Switch to workspace below the current workspace"
-msgstr "Switch to workspace below the current workspace"
+msgid "Move to workspace below"
+msgstr "העברה למרחב העבודה שמלמטה"
 
 #: ../src/include/all-keybindings.h:150
-msgid "Move between windows of an application, using a popup window"
-msgstr "Move between windows of an application, using a popup window"
+msgid "Switch windows of an application"
+msgstr "החלפה בין חלונות של יישום"
 
 #: ../src/include/all-keybindings.h:153
-msgid "Move backward between windows of an application, using a popup window"
-msgstr "Move backward between windows of an application, using a popup window"
+msgid "Reverse switch windows of an application"
+msgstr "היפוך החלפת החלונות של יישום"
 
-#: ../src/include/all-keybindings.h:157
-msgid "Move between windows, using a popup window"
-msgstr "Move between windows, using a popup window"
+#: ../src/include/all-keybindings.h:156
+msgid "Switch applications"
+msgstr "החלפה בין יישומים"
 
-#: ../src/include/all-keybindings.h:160
-msgid "Move backward between windows, using a popup window"
-msgstr "Move backward between windows, using a popup window"
+#: ../src/include/all-keybindings.h:159
+msgid "Reverse switch applications"
+msgstr "היפוך ההחלפה בין יישומים"
 
-#: ../src/include/all-keybindings.h:163
-msgid "Move between panels and the desktop, using a popup window"
-msgstr "Move between panels and the desktop, using a popup window"
+#: ../src/include/all-keybindings.h:162
+msgid "Switch system controls"
+msgstr "החלפה בין פקדי המערכת"
 
-#: ../src/include/all-keybindings.h:166
-msgid "Move backward between panels and the desktop, using a popup window"
-msgstr "Move backward between panels and the desktop, using a popup window"
+#: ../src/include/all-keybindings.h:165
+msgid "Reverse switch system controls"
+msgstr "היפוך ההחלפה בין פקדי המערכת"
 
-#: ../src/include/all-keybindings.h:171
-msgid "Move between windows of an application immediately"
-msgstr "Move between windows of an application immediately"
+#: ../src/include/all-keybindings.h:169
+msgid "Switch windows of an app directly"
+msgstr "החלפת חלונות של יישום באופן ישיר"
 
-#: ../src/include/all-keybindings.h:174
-msgid "Move backward between windows of an application immediately"
-msgstr "Move backward between windows of an application immediately"
+#: ../src/include/all-keybindings.h:172
+msgid "Reverse switch windows of an app directly"
+msgstr "היפוך החלפת החלונות של יישום באופן ישיר"
 
-#: ../src/include/all-keybindings.h:177
-msgid "Move between windows immediately"
-msgstr "Move between windows immediately"
+#: ../src/include/all-keybindings.h:175
+msgid "Switch windows directly"
+msgstr "החלפת החלונות באופן ישיר"
 
-#: ../src/include/all-keybindings.h:180
-msgid "Move backward between windows immediately"
-msgstr "Move backward between windows immediately"
+#: ../src/include/all-keybindings.h:178
+msgid "Reverse switch windows directly"
+msgstr "היפוך החלפת החלונות באופן ישיר"
 
-#: ../src/include/all-keybindings.h:183
-msgid "Move between panels and the desktop immediately"
-msgstr "Move between panels and the desktop immediately"
+#: ../src/include/all-keybindings.h:181
+msgid "Switch system controls directly"
+msgstr "החלפת פקדי המערכת באופן ישיר"
 
-#: ../src/include/all-keybindings.h:186
-msgid "Move backward between panels and the desktop immediately"
-msgstr "Move backward between panels and the desktop immediately"
+#: ../src/include/all-keybindings.h:184
+msgid "Reverse switch system controls directly"
+msgstr "היפוך החלפת פקדי המערכת באופן ישיר"
 
-#: ../src/include/all-keybindings.h:191
-msgid "Hide all normal windows and set focus to the desktop"
-msgstr "Hide all normal windows and set focus to the desktop"
+#: ../src/include/all-keybindings.h:189
+msgid "Hide all normal windows"
+msgstr "הסתרת כל החלונות הרגילים"
 
-#: ../src/include/all-keybindings.h:194
-msgid "Show the panel's main menu"
-msgstr "הצגת התפריט הראשי של הלוח"
+#: ../src/include/all-keybindings.h:192
+msgid "Show the activities overview"
+msgstr "הצגת סקירת הפעילויות"
 
-#: ../src/include/all-keybindings.h:197
-msgid "Show the panel's \"Run Application\" dialog box"
-msgstr "הצגת תיבת הדו־שיח \"הפעלת יישומים\" של הלוח"
+#: ../src/include/all-keybindings.h:195
+msgid "Show the run command prompt"
+msgstr "הצגת הבקשה להרצת פקודה"
 
-#: ../src/include/all-keybindings.h:238
+#: ../src/include/all-keybindings.h:236
 msgid "Take a screenshot"
 msgstr "צילום המסך"
 
-#: ../src/include/all-keybindings.h:240
+#: ../src/include/all-keybindings.h:238
 msgid "Take a screenshot of a window"
 msgstr "צילום החלון"
 
-#: ../src/include/all-keybindings.h:242
-msgid "Run a terminal"
+#: ../src/include/all-keybindings.h:240
+msgid "Launch Terminal"
 msgstr "הפעלת מסוף"
 
-#: ../src/include/all-keybindings.h:257
+#: ../src/include/all-keybindings.h:255
 msgid "Activate the window menu"
 msgstr "הפעלת החלון הפעיל"
 
-#: ../src/include/all-keybindings.h:260
+#: ../src/include/all-keybindings.h:258
 msgid "Toggle fullscreen mode"
 msgstr "הפעלה/כיבוי מצב מסך מלא"
 
-#: ../src/include/all-keybindings.h:262
+#: ../src/include/all-keybindings.h:260
 msgid "Toggle maximization state"
 msgstr "הפעלה/כיבוי מצב הגדלה"
 
-#: ../src/include/all-keybindings.h:264
-msgid "Toggle whether a window will always be visible over other windows"
-msgstr "החלפת מצב האם חלון תמיד יהיה גלוי מעל חלונות אחרים"
+#: ../src/include/all-keybindings.h:262
+msgid "Toggle window always appearing on top"
+msgstr "החלפת מצב הצגת החלון כעליון תמיד"
 
-#: ../src/include/all-keybindings.h:266
+#: ../src/include/all-keybindings.h:264
 msgid "Maximize window"
 msgstr "הגדלת חלון"
 
-#: ../src/include/all-keybindings.h:268
+#: ../src/include/all-keybindings.h:266
 msgid "Restore window"
 msgstr "שחזור חלון"
 
-#: ../src/include/all-keybindings.h:270
+#: ../src/include/all-keybindings.h:268
 msgid "Toggle shaded state"
 msgstr "החלפת מצב ההצללה"
 
-#: ../src/include/all-keybindings.h:272
+#: ../src/include/all-keybindings.h:270
 msgid "Minimize window"
 msgstr "מזעור חלון"
 
-#: ../src/include/all-keybindings.h:274
+#: ../src/include/all-keybindings.h:272
 msgid "Close window"
 msgstr "סגירת חלון"
 
-#: ../src/include/all-keybindings.h:276
+#: ../src/include/all-keybindings.h:274
 msgid "Move window"
 msgstr "הזזת חלון"
 
-#: ../src/include/all-keybindings.h:278
+#: ../src/include/all-keybindings.h:276
 msgid "Resize window"
 msgstr "שינוי גודל חלון"
 
-#: ../src/include/all-keybindings.h:281
-msgid "Toggle whether window is on all workspaces or just one"
+#: ../src/include/all-keybindings.h:279
+msgid "Toggle window on all workspaces or one"
 msgstr "החלפת המצב בין האם החלון מופיע במרחב עבודה אחד או בכולם"
 
-#: ../src/include/all-keybindings.h:285
+#: ../src/include/all-keybindings.h:283
 msgid "Move window to workspace 1"
 msgstr "העברה למרחב עבודה 1"
 
-#: ../src/include/all-keybindings.h:288
+#: ../src/include/all-keybindings.h:286
 msgid "Move window to workspace 2"
 msgstr "העברה למרחב עבודה 2"
 
-#: ../src/include/all-keybindings.h:291
+#: ../src/include/all-keybindings.h:289
 msgid "Move window to workspace 3"
 msgstr "העברה למרחב עבודה 3"
 
-#: ../src/include/all-keybindings.h:294
+#: ../src/include/all-keybindings.h:292
 msgid "Move window to workspace 4"
 msgstr "העברה למרחב עבודה 4"
 
-#: ../src/include/all-keybindings.h:297
+#: ../src/include/all-keybindings.h:295
 msgid "Move window to workspace 5"
 msgstr "העברה למרחב עבודה 5"
 
-#: ../src/include/all-keybindings.h:300
+#: ../src/include/all-keybindings.h:298
 msgid "Move window to workspace 6"
 msgstr "העברה למרחב עבודה 6"
 
-#: ../src/include/all-keybindings.h:303
+#: ../src/include/all-keybindings.h:301
 msgid "Move window to workspace 7"
 msgstr "העברה למרחב עבודה 7"
 
-#: ../src/include/all-keybindings.h:306
+#: ../src/include/all-keybindings.h:304
 msgid "Move window to workspace 8"
 msgstr "העברה למרחב עבודה 8"
 
-#: ../src/include/all-keybindings.h:309
+#: ../src/include/all-keybindings.h:307
 msgid "Move window to workspace 9"
 msgstr "העברה למרחב עבודה 9"
 
-#: ../src/include/all-keybindings.h:312
+#: ../src/include/all-keybindings.h:310
 msgid "Move window to workspace 10"
 msgstr "העברה למרחב עבודה 10"
 
-#: ../src/include/all-keybindings.h:315
+#: ../src/include/all-keybindings.h:313
 msgid "Move window to workspace 11"
 msgstr "העברה למרחב עבודה 11"
 
-#: ../src/include/all-keybindings.h:318
+#: ../src/include/all-keybindings.h:316
 msgid "Move window to workspace 12"
 msgstr "העברה למרחב עבודה 12"
 
-#: ../src/include/all-keybindings.h:330
+#: ../src/include/all-keybindings.h:328
 msgid "Move window one workspace to the left"
 msgstr "העברת החלון לשולחן העבודה שמשמאל"
 
-#: ../src/include/all-keybindings.h:333
+#: ../src/include/all-keybindings.h:331
 msgid "Move window one workspace to the right"
 msgstr "העברת החלון לשולחן העבודה שמימין"
 
-#: ../src/include/all-keybindings.h:336
+#: ../src/include/all-keybindings.h:334
 msgid "Move window one workspace up"
 msgstr "העברת החלון לשולחן העבודה שמלמעלה"
 
-#: ../src/include/all-keybindings.h:339
+#: ../src/include/all-keybindings.h:337
 msgid "Move window one workspace down"
 msgstr "העברת החלון לשולחן העבודה שמלמטה"
 
-#: ../src/include/all-keybindings.h:342
-msgid "Raise window if it's covered by another window, otherwise lower it"
-msgstr "הגבהת החלון אם הוא מכוסה על ידי חלון אחר, אחרת יש להנמיכו"
+#: ../src/include/all-keybindings.h:340
+msgid "Raise window if covered, otherwise lower it"
+msgstr "הגבהת החלון אם הוא מכוסה, אחרת יש להנמיכו"
 
-#: ../src/include/all-keybindings.h:344
+#: ../src/include/all-keybindings.h:342
 msgid "Raise window above other windows"
 msgstr "הגבהת החלון מעל לחלונות אחרים"
 
-#: ../src/include/all-keybindings.h:346
+#: ../src/include/all-keybindings.h:344
 msgid "Lower window below other windows"
 msgstr "הנמכת החלון מתחת לחלונות אחרים"
 
-#: ../src/include/all-keybindings.h:350
+#: ../src/include/all-keybindings.h:348
 msgid "Maximize window vertically"
 msgstr "הגדלת החלון אנכית"
 
-#: ../src/include/all-keybindings.h:354
+#: ../src/include/all-keybindings.h:352
 msgid "Maximize window horizontally"
 msgstr "הגדלת החלון אופקית"
 
-#: ../src/include/all-keybindings.h:358
-msgid "Move window to north-west (top left) corner"
-msgstr "הזזת החלון לפינה הצפון–מערבית (שמאלית עליונה) של המסך"
+#: ../src/include/all-keybindings.h:356
+msgid "Move window to top left corner"
+msgstr "הזזת החלון לפינה השמאלית העליונה"
 
-#: ../src/include/all-keybindings.h:361
-msgid "Move window to north-east (top right) corner"
-msgstr "הזזת החלון לפינה הצפון–מזרחית (ימנית עליונה) של המסך"
+#: ../src/include/all-keybindings.h:359
+msgid "Move window to top right corner"
+msgstr "הזזת החלון לפינה הימנית העליונה"
 
-#: ../src/include/all-keybindings.h:364
-msgid "Move window to south-west (bottom left) corner"
-msgstr "הזזת החלון לפינה הדרום–מערבית (שמאלית תחתונה) של המסך"
+#: ../src/include/all-keybindings.h:362
+msgid "Move window to bottom left corner"
+msgstr "הזזת החלון לפינה השמאלית התחתונה"
 
-#: ../src/include/all-keybindings.h:367
-msgid "Move window to south-east (bottom right) corner"
-msgstr "הזזת החלון לפינה הדרום–מזרחית (ימנית תחתונה) של המסך"
+#: ../src/include/all-keybindings.h:365
+msgid "Move window to bottom right corner"
+msgstr "הזזת החלון לפינה הימנית התחתונה"
 
-#: ../src/include/all-keybindings.h:371
-msgid "Move window to north (top) side of screen"
-msgstr "הזזת החלון לצד הצפוני (עליון) של המסך"
+#: ../src/include/all-keybindings.h:369
+msgid "Move window to top edge of screen"
+msgstr "הזזת החלון לצד העליון של המסך"
 
-#: ../src/include/all-keybindings.h:374
-msgid "Move window to south (bottom) side of screen"
-msgstr "הזזת החלון לצד הדרומי (תחתון) של המסך"
+#: ../src/include/all-keybindings.h:372
+msgid "Move window to bottom edge of screen"
+msgstr "הזזת החלון לצד התחתון של המסך"
 
-#: ../src/include/all-keybindings.h:377
-msgid "Move window to east (right) side of screen"
-msgstr "הזזת החלון לצד המזרחי (ימין) של המסך"
+#: ../src/include/all-keybindings.h:375
+msgid "Move window to right side of screen"
+msgstr "הזזת החלון לצד הימני של המסך"
 
-#: ../src/include/all-keybindings.h:380
-msgid "Move window to west (left) side of screen"
-msgstr "הזזת החלון לצד המערבי (שמאל) של המסך"
+#: ../src/include/all-keybindings.h:378
+msgid "Move window to left side of screen"
+msgstr "הזזת החלון לצד השמאלי של המסך"
 
-#: ../src/include/all-keybindings.h:383
+#: ../src/include/all-keybindings.h:381
 msgid "Move window to center of screen"
 msgstr "הזזת החלון למרכז המסך"
 
@@ -2370,6 +2370,62 @@ msgstr "y value was %d, %d was expected"
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 
+#~ msgid "Switch to workspace on the left of the current workspace"
+#~ msgstr "Switch to workspace on the left of the current workspace"
+
+#~ msgid "Switch to workspace on the right of the current workspace"
+#~ msgstr "Switch to workspace on the right of the current workspace"
+
+#~ msgid "Switch to workspace above the current workspace"
+#~ msgstr "Switch to workspace above the current workspace"
+
+#~ msgid "Switch to workspace below the current workspace"
+#~ msgstr "Switch to workspace below the current workspace"
+
+#~ msgid "Move between windows of an application, using a popup window"
+#~ msgstr "Move between windows of an application, using a popup window"
+
+#~ msgid ""
+#~ "Move backward between windows of an application, using a popup window"
+#~ msgstr ""
+#~ "Move backward between windows of an application, using a popup window"
+
+#~ msgid "Move between windows, using a popup window"
+#~ msgstr "Move between windows, using a popup window"
+
+#~ msgid "Move backward between windows, using a popup window"
+#~ msgstr "Move backward between windows, using a popup window"
+
+#~ msgid "Move between panels and the desktop, using a popup window"
+#~ msgstr "Move between panels and the desktop, using a popup window"
+
+#~ msgid "Move backward between panels and the desktop, using a popup window"
+#~ msgstr "Move backward between panels and the desktop, using a popup window"
+
+#~ msgid "Move backward between windows of an application immediately"
+#~ msgstr "Move backward between windows of an application immediately"
+
+#~ msgid "Move between windows immediately"
+#~ msgstr "Move between windows immediately"
+
+#~ msgid "Move backward between windows immediately"
+#~ msgstr "Move backward between windows immediately"
+
+#~ msgid "Move between panels and the desktop immediately"
+#~ msgstr "Move between panels and the desktop immediately"
+
+#~ msgid "Move backward between panels and the desktop immediately"
+#~ msgstr "Move backward between panels and the desktop immediately"
+
+#~ msgid "Show the panel's \"Run Application\" dialog box"
+#~ msgstr "הצגת תיבת הדו־שיח \"הפעלת יישומים\" של הלוח"
+
+#~ msgid "Toggle whether a window will always be visible over other windows"
+#~ msgstr "החלפת מצב האם חלון תמיד יהיה גלוי מעל חלונות אחרים"
+
+#~ msgid "Move window to north (top) side of screen"
+#~ msgstr "הזזת החלון לצד הצפוני (עליון) של המסך"
+
 #~ msgid "Desktop"
 #~ msgstr "שולחן עבודה"
 
@@ -3617,9 +3673,6 @@ msgstr "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 #~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
 #~ "the option to the special string \"disabled\", then there will be no "
 #~ "keybinding for this action."
-
-#~ msgid "Toggle always on top state"
-#~ msgstr "Toggle always on top state"
 
 #~ msgid "Unmaximize window"
 #~ msgstr "Unmaximize window"
