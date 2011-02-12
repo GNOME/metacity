@@ -6,17 +6,17 @@
 # Héctor García Álvarez <hector@scouts-es.org>, 2001.
 # Pablo Gonzalo del Campo <pablodc@bigfoot.com>,2002,2003.
 # Francisco Javier F. Serrador <serrador@cvs.gnome.org>, 2004, 2005, 2006.
-# Jorge González <jorgegonz@svn.gnome.org>, 2007, 2008, 2009, 2010.
 # Daniel Mustieles <daniel.mustieles@gmail.com>, 2011.
+# Jorge González <jorgegonz@svn.gnome.org>, 2007, 2008, 2009, 2010, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&component=general\n"
-"POT-Creation-Date: 2011-02-05 09:10+0000\n"
-"PO-Revision-Date: 2011-02-06 11:30+0100\n"
-"Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
+"POT-Creation-Date: 2011-02-09 18:28+0000\n"
+"PO-Revision-Date: 2011-02-12 13:33+0100\n"
+"Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,7 +33,8 @@ msgid "Navigation"
 msgstr "Navegación"
 
 #: ../src/50-metacity-screenshot.xml.in.h:1
-msgid "Screen Shots"
+#| msgid "Screen Shots"
+msgid "Screenshots"
 msgstr "Capturas de pantalla"
 
 #: ../src/50-metacity-system.xml.in.h:1
@@ -616,35 +617,28 @@ msgid "Switch to workspace 12"
 msgstr "Cambiar al área de trabajo 12"
 
 #: ../src/include/all-keybindings.h:122
-#| msgid "Move to Workspace _Left"
 msgid "Move to workspace left"
 msgstr "Mover al área de trabajo de la izquierda"
 
 #: ../src/include/all-keybindings.h:126
-#| msgid "Move to Workspace R_ight"
 msgid "Move to workspace right"
 msgstr "Mover al área de trabajo de la derecha"
 
 #: ../src/include/all-keybindings.h:130
-#| msgid "Move to Workspace _Left"
 msgid "Move to workspace above"
 msgstr "Mover al área de trabajo de la arriba"
 
 #: ../src/include/all-keybindings.h:134
-#| msgid "Move to Workspace _Down"
 msgid "Move to workspace below"
 msgstr "Mover al área de trabajo de abajo"
 
 #: ../src/include/all-keybindings.h:150
-#| msgid "Move between windows of an application immediately"
 msgid "Switch windows of an application"
 msgstr "Moverse entre las ventanas de una aplicación"
 
 #: ../src/include/all-keybindings.h:153
-#, fuzzy
-#| msgid "Move between windows of an application immediately"
 msgid "Reverse switch windows of an application"
-msgstr "Moverse entre las ventanas de una aplicación inmediatamente"
+msgstr "Invertir el cambio entre ventanas de una aplicación"
 
 #: ../src/include/all-keybindings.h:156
 msgid "Switch applications"
@@ -652,58 +646,52 @@ msgstr "Moverse entre aplicaciones"
 
 #: ../src/include/all-keybindings.h:159
 msgid "Reverse switch applications"
-msgstr ""
+msgstr "Invertir el cambio entre aplicaciones"
 
 #: ../src/include/all-keybindings.h:162
 msgid "Switch system controls"
-msgstr ""
+msgstr "Cambiar entre controles del sistema"
 
 #: ../src/include/all-keybindings.h:165
 msgid "Reverse switch system controls"
-msgstr ""
+msgstr "Invertir el cambio entre controles del sistema"
 
 #: ../src/include/all-keybindings.h:169
-#, fuzzy
-#| msgid "Move between windows of an application immediately"
 msgid "Switch windows of an app directly"
-msgstr "Moverse entre las ventanas de una aplicación inmediatamente"
+msgstr "Moverse entre las ventanas de una aplicación directamente"
 
 #: ../src/include/all-keybindings.h:172
-#, fuzzy
-#| msgid "Move between windows of an application immediately"
 msgid "Reverse switch windows of an app directly"
-msgstr "Moverse entre las ventanas de una aplicación inmediatamente"
+msgstr "Invertir el cambio entre ventanas de una aplicación directamente"
 
 #: ../src/include/all-keybindings.h:175
 msgid "Switch windows directly"
-msgstr ""
+msgstr "Cambiar ventanas directamente"
 
 #: ../src/include/all-keybindings.h:178
 msgid "Reverse switch windows directly"
-msgstr ""
+msgstr "Invertir el cambio entre ventanas directamente"
 
 #: ../src/include/all-keybindings.h:181
 msgid "Switch system controls directly"
-msgstr ""
+msgstr "Moverse entre los controles del sistema directamente"
 
 #: ../src/include/all-keybindings.h:184
 msgid "Reverse switch system controls directly"
-msgstr ""
+msgstr "Invertir el cambio entre controles del sistema directamente"
 
 #: ../src/include/all-keybindings.h:189
-#| msgid "Hide all normal windows and set focus to the desktop"
 msgid "Hide all normal windows"
 msgstr "Ocultar todas las ventanas normales"
 
 #: ../src/include/all-keybindings.h:192
 msgid "Show the activities overview"
-msgstr ""
+msgstr "Mostrar el resumen de actividades"
 
 #: ../src/include/all-keybindings.h:195
-#, fuzzy
 #| msgid "Show the panel's main menu"
 msgid "Show the run command prompt"
-msgstr "Mostrar el menú principal del panel"
+msgstr "Mostrar el elemento «ejecutar comando»"
 
 #: ../src/include/all-keybindings.h:236
 msgid "Take a screenshot"
@@ -714,7 +702,6 @@ msgid "Take a screenshot of a window"
 msgstr "Capturar una ventana"
 
 #: ../src/include/all-keybindings.h:240
-#| msgid "Run a terminal"
 msgid "Launch Terminal"
 msgstr "Lanzar una terminal"
 
@@ -731,7 +718,6 @@ msgid "Toggle maximization state"
 msgstr "Cambiar el estado de maximización"
 
 #: ../src/include/all-keybindings.h:262
-#| msgid "Toggle always on top state"
 msgid "Toggle window always appearing on top"
 msgstr "Cambiar el estado de la ventana de siempre encima"
 
@@ -764,11 +750,8 @@ msgid "Resize window"
 msgstr "Redimensionar la ventana"
 
 #: ../src/include/all-keybindings.h:279
-#, fuzzy
-#| msgid "Toggle whether window is on all workspaces or just one"
 msgid "Toggle window on all workspaces or one"
-msgstr ""
-"Conmutar si la ventana aparece en todas las áreas de trabajo o sólo en una"
+msgstr "Conmutar la ventana en todas las áreas de trabajo o sólo en una"
 
 #: ../src/include/all-keybindings.h:283
 msgid "Move window to workspace 1"
@@ -835,7 +818,6 @@ msgid "Move window one workspace down"
 msgstr "Bajar la ventana un área de trabajo"
 
 #: ../src/include/all-keybindings.h:340
-#| msgid "Raise window if it's covered by another window, otherwise lower it"
 msgid "Raise window if covered, otherwise lower it"
 msgstr "Levantar la ventana si está cubierta, minimizarla en otro caso"
 
@@ -856,42 +838,34 @@ msgid "Maximize window horizontally"
 msgstr "Maximizar la ventana horizontalmente"
 
 #: ../src/include/all-keybindings.h:356
-#| msgid "Move window to north-west (top left) corner"
 msgid "Move window to top left corner"
 msgstr "Mover la ventana a la esquina superior izquierda"
 
 #: ../src/include/all-keybindings.h:359
-#| msgid "Move window to north-east (top right) corner"
 msgid "Move window to top right corner"
 msgstr "Mover la ventana a la esquina superior derecha"
 
 #: ../src/include/all-keybindings.h:362
-#| msgid "Move window to south-west (bottom left) corner"
 msgid "Move window to bottom left corner"
 msgstr "Mover la ventana a la esquina inferior izquierda"
 
 #: ../src/include/all-keybindings.h:365
-#| msgid "Move window to south-east (bottom right) corner"
 msgid "Move window to bottom right corner"
 msgstr "Mover la ventana a la esquina inferior derecha"
 
 #: ../src/include/all-keybindings.h:369
-#| msgid "Move window to center of screen"
 msgid "Move window to top edge of screen"
 msgstr "Mover la ventana al borde superior de la pantalla"
 
 #: ../src/include/all-keybindings.h:372
-#| msgid "Move window to south (bottom) side of screen"
 msgid "Move window to bottom edge of screen"
 msgstr "Mover la ventana al borde inferior de la pantalla"
 
 #: ../src/include/all-keybindings.h:375
-#| msgid "Move window to east (right) side of screen"
 msgid "Move window to right side of screen"
 msgstr "Mover la ventana al lado derecho de la pantalla"
 
 #: ../src/include/all-keybindings.h:378
-#| msgid "Move window to west (left) side of screen"
 msgid "Move window to left side of screen"
 msgstr "Mover la ventana al lado izquierdo de la pantalla"
 
