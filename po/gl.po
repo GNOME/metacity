@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity-master-po-gl-37635\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-06 00:03+0100\n"
-"PO-Revision-Date: 2011-02-06 00:09+0100\n"
+"POT-Creation-Date: 2011-02-13 14:48+0100\n"
+"PO-Revision-Date: 2011-02-13 14:50+0100\n"
 "Last-Translator: Fran Diéguez <frandieguez@ubuntu.com>\n"
 "Language-Team: Galician <gnome-gl-list@gnome.org>\n"
 "Language: gl\n"
@@ -34,7 +34,7 @@ msgid "Navigation"
 msgstr "Navegación"
 
 #: ../src/50-metacity-screenshot.xml.in.h:1
-msgid "Screen Shots"
+msgid "Screenshots"
 msgstr "Capturas de pantalla"
 
 #: ../src/50-metacity-system.xml.in.h:1
@@ -646,37 +646,35 @@ msgstr "Cambiar entre aplicativos ao revés"
 
 #: ../src/include/all-keybindings.h:162
 msgid "Switch system controls"
-msgstr ""
+msgstr "Cambiar entre os controles do sistema"
 
 #: ../src/include/all-keybindings.h:165
 msgid "Reverse switch system controls"
-msgstr ""
+msgstr "Inverter o cambio entre controles do sistema"
 
 #: ../src/include/all-keybindings.h:169
-#, fuzzy
 msgid "Switch windows of an app directly"
-msgstr "Moverse inmediatamente entre xanelas dun aplicativo"
+msgstr "Moverse entre as xanelas dun aplicativo directamente"
 
 #: ../src/include/all-keybindings.h:172
-#, fuzzy
 msgid "Reverse switch windows of an app directly"
-msgstr "Moverse inmediatamente entre xanelas dun aplicativo"
+msgstr "Inverter o cambio entre xanelas dun aplicativo directamente"
 
 #: ../src/include/all-keybindings.h:175
 msgid "Switch windows directly"
-msgstr ""
+msgstr "Cambiar xanelas directamente"
 
 #: ../src/include/all-keybindings.h:178
 msgid "Reverse switch windows directly"
-msgstr ""
+msgstr "Inverter o cambio entre xanelas directamente"
 
 #: ../src/include/all-keybindings.h:181
 msgid "Switch system controls directly"
-msgstr ""
+msgstr "Moverse entre os controles do sistema directamente"
 
 #: ../src/include/all-keybindings.h:184
 msgid "Reverse switch system controls directly"
-msgstr ""
+msgstr "Inverter o cambio entre controles do sistema directamente"
 
 #: ../src/include/all-keybindings.h:189
 msgid "Hide all normal windows"
