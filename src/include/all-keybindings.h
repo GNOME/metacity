@@ -146,7 +146,7 @@ keybind (switch_to_workspace_down, handle_switch_to_workspace,
  */
 
 keybind (switch_group,              handle_switch,        META_TAB_LIST_GROUP,
-         BINDING_REVERSES,       NULL,
+         BINDING_REVERSES,       "<Alt>Above_Tab",
         _("Switch windows of an application"))
 keybind (switch_group_backward,    handle_switch,        META_TAB_LIST_GROUP,
          REVERSES_AND_REVERSED,  NULL,
@@ -165,7 +165,7 @@ keybind (switch_panels_backward,   handle_switch,        META_TAB_LIST_DOCKS,
          _("Reverse switch system controls"))
 
 keybind (cycle_group,               handle_cycle,         META_TAB_LIST_GROUP,
-        BINDING_REVERSES,        "<Alt>Above_Tab",
+        BINDING_REVERSES,        "<Alt>F6",
         _("Switch windows of an app directly"))
 keybind (cycle_group_backward,     handle_cycle,         META_TAB_LIST_GROUP,
         REVERSES_AND_REVERSED,   NULL,
