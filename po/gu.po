@@ -1,13 +1,13 @@
-# translation of metacity.master.gu.po to Gujarati
+# translation of gu.po to Gujarati
 # Ankit Patel <ankit644@yahoo.com>, 2005, 2006.
 # Ankit Patel <ankit@redhat.com>, 2007, 2009.
-# Sweta Kothari <swkothar@redhat.com>, 2009.
+# Sweta Kothari <swkothar@redhat.com>, 2009, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: metacity.master.gu\n"
+"Project-Id-Version: gu\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=metacity&component=general\n"
-"POT-Creation-Date: 2009-08-24 17:51+0000\n"
-"PO-Revision-Date: 2009-09-09 15:49+0530\n"
+"POT-Creation-Date: 2011-02-09 18:28+0000\n"
+"PO-Revision-Date: 2011-02-18 11:31+0530\n"
 "Last-Translator: Sweta Kothari <swkothar@redhat.com>\n"
 "Language-Team: Gujarati\n"
 "MIME-Version: 1.0\n"
@@ -28,15 +28,29 @@ msgstr ""
 "\n"
 "\n"
 
-#: ../src/50-metacity-desktop-key.xml.in.h:1
-msgid "Desktop"
-msgstr "ડેસ્કટોપ"
+#: ../src/50-metacity-launchers.xml.in.h:1
+msgid "Launchers"
+msgstr ""
 
-#: ../src/50-metacity-key.xml.in.h:1
-msgid "Window Management"
-msgstr "વિન્ડો વ્યવસ્થાપન"
+#: ../src/50-metacity-navigation.xml.in.h:1
+msgid "Navigation"
+msgstr ""
 
-#: ../src/core/bell.c:294
+#: ../src/50-metacity-screenshot.xml.in.h:1
+#| msgid "Take a screenshot"
+msgid "Screenshots"
+msgstr "સ્ક્રીનશોટ"
+
+#: ../src/50-metacity-system.xml.in.h:1
+msgid "System"
+msgstr "સિસ્ટમ"
+
+#: ../src/50-metacity-windows.xml.in.h:1
+#| msgid "/_Windows"
+msgid "Windows"
+msgstr "વિન્ડો"
+
+#: ../src/core/bell.c:299
 msgid "Bell event"
 msgstr "Bell ઘટના"
 
@@ -45,28 +59,37 @@ msgstr "Bell ઘટના"
 msgid "Unknown window information request: %d"
 msgstr "અજ્ઞાત વિન્ડો જાણકારી અરજી: %d"
 
-#: ../src/core/delete.c:104
+#. Translators: %s is a window title
+#: ../src/core/delete.c:96
 #, c-format
+msgid "<tt>%s</tt> is not responding."
+msgstr "<tt>%s</tt> જવાબ આપી રહ્યુ નથી."
+
+#: ../src/core/delete.c:101
+#, fuzzy
+#| msgid ""
+#| "<big><b><tt>%s</tt> is not responding.</b></big>\n"
+#| "\n"
+#| "<i>You may choose to wait a short while for it to continue or force the "
+#| "application to quit entirely.</i>"
 msgid ""
-"<big><b><tt>%s</tt> is not responding.</b></big>\n"
-"\n"
-"<i>You may choose to wait a short while for it to continue or force the "
-"application to quit entirely.</i>"
+"You may choose to wait a short while for it to continue or force the "
+"application to quit entirely."
 msgstr ""
 "<big><b><tt>%s</tt> એ જવાબ આપી રહ્યુ નથી.</b></big>\n"
 "\n"
 "<i>તેને ચાલુ રાખવા માટે અથવા કાર્યક્રમને સંપૂર્ણપણે બંધ થઈ જવા માટે તમે થોડો સમય રાહ જોવાનું "
 "પસંદ કરી શકશો.</i>"
 
-#: ../src/core/delete.c:115
+#: ../src/core/delete.c:110
 msgid "_Wait"
 msgstr "રાહ જુઓ (_W)"
 
-#: ../src/core/delete.c:115
+#: ../src/core/delete.c:110
 msgid "_Force Quit"
 msgstr "જબરદસ્તી બહાર કાઢો (_F)"
 
-#: ../src/core/delete.c:216
+#: ../src/core/delete.c:208
 #, c-format
 msgid "Failed to get hostname: %s\n"
 msgstr "યજમાનનું નામ મેળવવામાં નિષ્ફળ: %s\n"
@@ -97,7 +120,7 @@ msgstr ""
 msgid "Fatal IO error %d (%s) on display '%s'.\n"
 msgstr "ઘાતક IO ભૂલ %d (%s) %s ડિસ્પ્લે પર.\n"
 
-#: ../src/core/keybindings.c:680
+#: ../src/core/keybindings.c:729
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
@@ -107,7 +130,7 @@ msgstr "કોઈ બીજો કાર્યક્રમ પહેલેથી
 #. Displayed when a keybinding which is
 #. * supposed to launch a program fails.
 #.
-#: ../src/core/keybindings.c:2294
+#: ../src/core/keybindings.c:2343
 #, c-format
 msgid ""
 "There was an error running <tt>%s</tt>:\n"
@@ -118,17 +141,17 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/core/keybindings.c:2383
+#: ../src/core/keybindings.c:2432
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "કોઈ આદેશ %d વ્યાખ્યાયિત કરાયો નથી.\n"
 
-#: ../src/core/keybindings.c:3337
+#: ../src/core/keybindings.c:3386
 #, c-format
 msgid "No terminal command has been defined.\n"
 msgstr "કોઈ ટર્મિનલ આદેશ વ્યાખ્યાયિત નથી.\n"
 
-#: ../src/core/main.c:130
+#: ../src/core/main.c:131
 #, c-format
 msgid ""
 "metacity %s\n"
@@ -143,57 +166,57 @@ msgstr ""
 "There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A "
 "PARTICULAR PURPOSE.\n"
 
-#: ../src/core/main.c:268
+#: ../src/core/main.c:269
 msgid "Disable connection to session manager"
 msgstr "સત્ર વ્યવસ્થાપકનું જોડાણ નિષ્ક્રિય કરો"
 
-#: ../src/core/main.c:274
+#: ../src/core/main.c:275
 msgid "Replace the running window manager with Metacity"
 msgstr "ચાલી રહેલ વિન્ડો વ્યવસ્થાપક મેટાસીટી વડે બદલો"
 
-#: ../src/core/main.c:280
+#: ../src/core/main.c:281
 msgid "Specify session management ID"
 msgstr "સત્ર વ્યવસ્થાપન ID સ્પષ્ટ કરો"
 
-#: ../src/core/main.c:285
+#: ../src/core/main.c:286
 msgid "X Display to use"
 msgstr "વાપરવા માટેનું X ડિસ્પ્લે"
 
-#: ../src/core/main.c:291
+#: ../src/core/main.c:292
 msgid "Initialize session from savefile"
 msgstr "સંગ્રહાયેલ ફાઈલમાંથી સત્રનો પ્રારંભ કરો"
 
-#: ../src/core/main.c:297
+#: ../src/core/main.c:298
 msgid "Print version"
 msgstr "છાપન આવૃત્તિ"
 
-#: ../src/core/main.c:303
+#: ../src/core/main.c:304
 msgid "Make X calls synchronous"
 msgstr "X કોલ સુમેળ રીતે કરો"
 
-#: ../src/core/main.c:309
+#: ../src/core/main.c:310
 msgid "Turn compositing on"
 msgstr "કમ્પોઝીટીંગ ચાલુ કરો"
 
-#: ../src/core/main.c:315
+#: ../src/core/main.c:316
 msgid "Turn compositing off"
 msgstr "કમ્પોઝીટીંગ બંધ કરો"
 
-#: ../src/core/main.c:321
+#: ../src/core/main.c:322
 msgid "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr "સંપૂર્ણસ્ક્રીન વિન્ડોને બનાવો નહિં કે જે મહત્તમ થયેલ છે અને સુશોભિત નથી"
 
-#: ../src/core/main.c:543
+#: ../src/core/main.c:527
 #, c-format
 msgid "Failed to scan themes directory: %s\n"
 msgstr "થીમની ડિરેક્ટરી જોવામાં નિષ્ફળ: %s\n"
 
-#: ../src/core/main.c:559
+#: ../src/core/main.c:543
 #, c-format
 msgid "Could not find a theme! Be sure %s exists and contains the usual themes.\n"
 msgstr "થીમ શોધી શકાઈ નહિં! ખાતરી કરો કે %s અસ્તિત્વ ધરાવે છે અને તેમાં સામાન્ય થીમ છે.\n"
 
-#: ../src/core/main.c:618
+#: ../src/core/main.c:602
 #, c-format
 msgid "Failed to restart: %s\n"
 msgstr "ફરીથી શરુ કરવામાં નિષ્ફળ: %s\n"
@@ -209,24 +232,24 @@ msgstr "ફરીથી શરુ કરવામાં નિષ્ફળ: %s\n
 #. * (Empty comment follows so the translators don't see this.)
 #.
 #.
-#: ../src/core/prefs.c:506 ../src/core/prefs.c:661
+#: ../src/core/prefs.c:508 ../src/core/prefs.c:663
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
 msgstr "જીકોન્ફ કી '%s' એ અયોગ્ય કિંમતમાં ગોઠવાયેલી છે\n"
 
-#: ../src/core/prefs.c:587 ../src/core/prefs.c:830
+#: ../src/core/prefs.c:589 ../src/core/prefs.c:832
 #, c-format
 msgid "%d stored in GConf key %s is out of range %d to %d\n"
 msgstr "%d એ GConf કી %s માં સંગ્રહાયેલ છે જે વિસ્તાર %d થી %d ની બહાર છે\n"
 
-#: ../src/core/prefs.c:631 ../src/core/prefs.c:708 ../src/core/prefs.c:756
-#: ../src/core/prefs.c:820 ../src/core/prefs.c:1113 ../src/core/prefs.c:1129
-#: ../src/core/prefs.c:1146 ../src/core/prefs.c:1162
+#: ../src/core/prefs.c:633 ../src/core/prefs.c:710 ../src/core/prefs.c:758
+#: ../src/core/prefs.c:822 ../src/core/prefs.c:1115 ../src/core/prefs.c:1131
+#: ../src/core/prefs.c:1148 ../src/core/prefs.c:1164
 #, c-format
 msgid "GConf key \"%s\" is set to an invalid type\n"
 msgstr "જીકોન્ફ કી \"%s\" એ અયોગ્ય પ્રકારમાં ગોઠવાયેલી છે\n"
 
-#: ../src/core/prefs.c:1232
+#: ../src/core/prefs.c:1234
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -234,41 +257,41 @@ msgstr ""
 "બગડેલા કાર્યક્રમો માટે આસપાસના કાર્યો નિષ્ક્રિય કરેલા છે. કદાચ કેટલાક કાર્યક્રમો યોગ્ય "
 "રીતે નહિ વર્તતા હોય.\n"
 
-#: ../src/core/prefs.c:1303
+#: ../src/core/prefs.c:1305
 #, c-format
 msgid "Could not parse font description \"%s\" from GConf key %s\n"
 msgstr "\"%s\" ફોન્ટના વર્ણનને જીકોન્ફ કી %s માંથી પદચ્છેદ કરી શકાતા નથી\n"
 
-#: ../src/core/prefs.c:1365
+#: ../src/core/prefs.c:1367
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
 "modifier\n"
 msgstr "માઉસ બટનની કિંમત બદલવા માટે રુપરેખાના ડેટાબેઝમાંથી મળેલ કિંમત \"%s\" એ યોગ્ય નથી\n"
 
-#: ../src/core/prefs.c:1786
+#: ../src/core/prefs.c:1788
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr "કામ કરવાની જગ્યાની સંખ્યા %d નક્કી કરવામાં ભૂલ થઈ: %s\n"
 
-#: ../src/core/prefs.c:1975 ../src/core/prefs.c:2478
+#: ../src/core/prefs.c:1959 ../src/core/prefs.c:2461
 #, c-format
 msgid "Workspace %d"
 msgstr "કામ કરવાની જગ્યા %d"
 
-#: ../src/core/prefs.c:2005 ../src/core/prefs.c:2183
+#: ../src/core/prefs.c:1988 ../src/core/prefs.c:2166
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
 "\"%s\"\n"
 msgstr "કી જોડાણ \"%s\" માટે રુપરેખાના ડેટાબેઝ \"%s\" માં મળેલ કિંમત યોગ્ય નથી\n"
 
-#: ../src/core/prefs.c:2559
+#: ../src/core/prefs.c:2542
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr "કામ કરવાની જગ્યા %d ને \"%s\" નું નામ બદલવામાં ભૂલ થઈ: %s\n"
 
-#: ../src/core/prefs.c:2763
+#: ../src/core/prefs.c:2746
 #, c-format
 msgid "Error setting compositor status: %s\n"
 msgstr "કમ્પોઝીટર પરિસ્થિતિ સુયોજીત કરવામાં ભૂલ: %s\n"
@@ -307,13 +330,6 @@ msgstr "સ્ક્રીન %d કે જે ડિસ્પ્લે \"%s\" �
 #. * "disabled" must also stay as it is.
 #.
 #: ../src/core/schema-bindings.c:169
-#| msgid ""
-#| "The format looks like \"<Control>a\" or <Shift><Alt>F1\".\n"
-#| "\n"
-#| "The parser is fairly liberal and allows lower or upper case, and also "
-#| "abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to "
-#| "the special string \"disabled\", then there will be no keybinding for "
-#| "this action."
 msgid ""
 "The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
 "\n"
@@ -329,16 +345,6 @@ msgstr ""
 "સુયોજીત કરો, તો પછી ત્યાં આ ક્રિયા માટે કોઈ કીબાઈન્ડીંગ હશે નહિં."
 
 #: ../src/core/schema-bindings.c:177
-#| msgid ""
-#| "The format looks like \"<Control>a\" or <Shift><Alt>F1\".\n"
-#| "\n"
-#| "The parser is fairly liberal and allows lower or upper case, and also "
-#| "abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to "
-#| "the special string \"disabled\", then there will be no keybinding for "
-#| "this action.\n"
-#| "\n"
-#| "This keybinding may be reversed by holding down the \"shift\" key; "
-#| "therefore, \"shift\" cannot be one of the keys it uses."
 msgid ""
 "The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
 "\n"
@@ -359,100 +365,94 @@ msgstr ""
 "આ કીબાઈન્ડીંગ \"shift\" કીને પકડી રાખવાથી આરક્ષિત રહેશે; તેથી, \"shift\" એ કીઓમાંની "
 "એક હોઈ શકે નહિં કે જેને તે વાપરે."
 
-#: ../src/core/session.c:845 ../src/core/session.c:852
+#: ../src/core/session.c:842 ../src/core/session.c:849
 #, c-format
 msgid "Could not create directory '%s': %s\n"
 msgstr "ડિરેક્ટરી '%s' બનાવી શકાતી નથી: %s\n"
 
-#: ../src/core/session.c:862
+#: ../src/core/session.c:859
 #, c-format
 msgid "Could not open session file '%s' for writing: %s\n"
 msgstr "સત્રની ફાઈલ '%s' ને લખવા માટે ખોલી શકાતી નથી: %s\n"
 
-#: ../src/core/session.c:1003
+#: ../src/core/session.c:1000
 #, c-format
 msgid "Error writing session file '%s': %s\n"
 msgstr "સત્રની ફાઈલ '%s' ને લખવામાં ભૂલ: %s\n"
 
-#: ../src/core/session.c:1008
+#: ../src/core/session.c:1005
 #, c-format
 msgid "Error closing session file '%s': %s\n"
 msgstr "સત્રની ફાઈલ '%s' ને બંધ કરવામાં ભૂલ: %s\n"
 
-#. oh, just give up
-#: ../src/core/session.c:1101
-#, c-format
-msgid "Failed to read saved session file %s: %s\n"
-msgstr "સંગ્રહિત સત્રની ફાઈલ '%s' ને વાંચવામાં ભૂલ: %s\n"
-
-#: ../src/core/session.c:1140
+#: ../src/core/session.c:1135
 #, c-format
 msgid "Failed to parse saved session file: %s\n"
 msgstr "સંગ્રહિત સત્રની ફાઈલ ને પદચ્છેદ કરવામાં ભૂલ: %s\n"
 
-#: ../src/core/session.c:1189
+#: ../src/core/session.c:1184
 #, c-format
 msgid "<metacity_session> attribute seen but we already have the session ID"
 msgstr "<metacity_session> લક્ષણ દેખાય છે પરંતુ આપણી પાસે પહેલેથી જ સત્ર ID છે"
 
-#: ../src/core/session.c:1202 ../src/core/session.c:1277
-#: ../src/core/session.c:1309 ../src/core/session.c:1381
-#: ../src/core/session.c:1441
+#: ../src/core/session.c:1197 ../src/core/session.c:1272
+#: ../src/core/session.c:1304 ../src/core/session.c:1376
+#: ../src/core/session.c:1436
 #, c-format
 msgid "Unknown attribute %s on <%s> element"
 msgstr "અજ્ઞાત લક્ષણ %s એ ઘટક <%s> પર"
 
-#: ../src/core/session.c:1219
+#: ../src/core/session.c:1214
 #, c-format
 msgid "nested <window> tag"
 msgstr "પુનરાવર્તિત <window> નિશાની"
 
-#: ../src/core/session.c:1461
+#: ../src/core/session.c:1456
 #, c-format
 msgid "Unknown element %s"
 msgstr "અજાણી વસ્તુ %s"
 
-#: ../src/core/session.c:1812
+#: ../src/core/session.c:1808
 msgid ""
 "These windows do not support &quot;save current setup&quot; and will have to "
 "be restarted manually next time you log in."
 msgstr ""
-"આ વિન્ડો &quot;વર્તમાન સુયોજનનો સંગ્રહ કરો&quot; ને આધાર આપતી નથી અને બીજી વખત તમે પ્રવેશ "
-"કરો ત્યારે જાતે જ ફરી શરુ કરવું પડશે."
+"આ વિન્ડો &quot;વર્તમાન સુયોજનનો સંગ્રહ કરો&quot; ને આધાર આપતી નથી અને બીજી વખત તમે "
+"પ્રવેશ કરો ત્યારે જાતે જ ફરી શરુ કરવું પડશે."
 
-#: ../src/core/util.c:103
+#: ../src/core/util.c:101
 #, c-format
 msgid "Failed to open debug log: %s\n"
 msgstr "ભૂલ શોધવા માટેનું નોંધપત્ર ખોલવામાં નિષ્ફળ: %s\n"
 
-#: ../src/core/util.c:113
+#: ../src/core/util.c:111
 #, c-format
 msgid "Failed to fdopen() log file %s: %s\n"
 msgstr "fdopen() નોંધપત્ર ફાઈલ %s ખોલવામાં નિષ્ફળ: %s\n"
 
-#: ../src/core/util.c:119
+#: ../src/core/util.c:117
 #, c-format
 msgid "Opened log file %s\n"
 msgstr "પ્રવેશ ફાઈલ %s ખૂલેલી છે\n"
 
-#: ../src/core/util.c:138 ../src/tools/metacity-message.c:176
+#: ../src/core/util.c:136 ../src/tools/metacity-message.c:176
 #, c-format
 msgid "Metacity was compiled without support for verbose mode\n"
 msgstr "મેટાસીટીને વર્ણનિય પદ્ધતિના આધાર વગર કમ્પાઈલ કરાયુ હતુ\n"
 
-#: ../src/core/util.c:238
+#: ../src/core/util.c:236
 msgid "Window manager: "
 msgstr "વિન્ડો વ્યવસ્થાપક: "
 
-#: ../src/core/util.c:390
+#: ../src/core/util.c:388
 msgid "Bug in window manager: "
 msgstr "વિન્ડો વ્યવસ્થાપકમાં ભૂલ: "
 
-#: ../src/core/util.c:423
+#: ../src/core/util.c:421
 msgid "Window manager warning: "
 msgstr "વિન્ડો વ્યવસ્થાપકની ચેતવણી: "
 
-#: ../src/core/util.c:451
+#: ../src/core/util.c:449
 msgid "Window manager error: "
 msgstr "વિન્ડો વ્યવસ્થાપકની ભૂલ: "
 
@@ -464,7 +464,7 @@ msgid "Metacity"
 msgstr "મેટાસીટી"
 
 #. first time through
-#: ../src/core/window.c:5627
+#: ../src/core/window.c:5704
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -480,7 +480,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/core/window.c:6192
+#: ../src/core/window.c:6269
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
@@ -520,7 +520,7 @@ msgstr "%s (%s તરીકે)"
 msgid "%s (as another user)"
 msgstr "%s (બીજા વપરાશકર્તા તરીકે)"
 
-#: ../src/core/window-props.c:1429
+#: ../src/core/window-props.c:1430
 #, c-format
 msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
 msgstr "અયોગ્ય WM_TRANSIENT_FOR વિન્ડો 0x%lx એ %s માટે સ્પષ્ટ થયેલ છે.\n"
@@ -599,258 +599,282 @@ msgid "Switch to workspace 12"
 msgstr "કામ કરવાની જગ્યા ૧૨ માં જાઓ"
 
 #: ../src/include/all-keybindings.h:122
-msgid "Switch to workspace on the left of the current workspace"
-msgstr "વર્તમાન કામ કરવાની જગ્યાની ડાબી બાજુની કામ કરવાની જગ્યામાં બદલાવ"
+#| msgid "Move to Workspace _Left"
+msgid "Move to workspace left"
+msgstr "ડાબી કામ કરવાની જગ્યામાં ખસો"
 
 #: ../src/include/all-keybindings.h:126
-msgid "Switch to workspace on the right of the current workspace"
-msgstr "વર્તમાન કામ કરવાની જગ્યાની જમણી બાજુની કામ કરવાની જગ્યામાં બદલાવ"
+#| msgid "Move to Workspace R_ight"
+msgid "Move to workspace right"
+msgstr "જમણી કામ કરવાની જગ્યામાં ખસો"
 
 #: ../src/include/all-keybindings.h:130
-msgid "Switch to workspace above the current workspace"
-msgstr "વર્તમાન કામ કરવાની જગ્યાની ઉપરની કામ કરવાની જગ્યામાં બદલાવ"
+#| msgid "Move to Workspace _Left"
+msgid "Move to workspace above"
+msgstr "ઉપરની કામ કરવાની જગ્યામાં ખસો (_L)"
 
 #: ../src/include/all-keybindings.h:134
-msgid "Switch to workspace below the current workspace"
-msgstr "વર્તમાન કામ કરવાની જગ્યાની નીચેની કામ કરવાની જગ્યામાં બદલાવ"
+#| msgid "Move to Workspace _Down"
+msgid "Move to workspace below"
+msgstr "નીચેની કામ કરવાની જગ્યામાં ખસો (_D)"
 
 #: ../src/include/all-keybindings.h:150
-msgid "Move between windows of an application, using a popup window"
-msgstr "કાર્યક્રમની વિન્ડોમાં ખસો, પોપઅપ વિન્ડોની મદદથી"
+#| msgid "Move between windows of an application immediately"
+msgid "Switch windows of an application"
+msgstr "કાર્યક્રમની વિન્ડોને બદલો"
 
 #: ../src/include/all-keybindings.h:153
-msgid "Move backward between windows of an application, using a popup window"
-msgstr "કાર્યક્રમની વિન્ડો વચ્ચે પાછળ ખસો, પોપઅપ વિન્ડોની મદદથી"
-
-#: ../src/include/all-keybindings.h:157
-msgid "Move between windows, using a popup window"
-msgstr "વિન્ડો વચ્ચે ખસો, પોપઅપ વિન્ડોની મદદથી"
-
-#: ../src/include/all-keybindings.h:160
-msgid "Move backward between windows, using a popup window"
-msgstr "વિન્ડો વચ્ચે પાછળ ખસો, પોપઅપ વિન્ડોની મદદથી"
-
-#: ../src/include/all-keybindings.h:163
-msgid "Move between panels and the desktop, using a popup window"
-msgstr "પેનલો અને ડેસ્કટોપ વચ્ચે ખસો, પોપઅપ વિન્ડોની મદદથી"
-
-#: ../src/include/all-keybindings.h:166
-msgid "Move backward between panels and the desktop, using a popup window"
-msgstr "પેનલો અને ડેસ્કટોપ વચ્ચે પાછળ ખસો, પોપઅપ વિન્ડોની મદદથી"
-
-#: ../src/include/all-keybindings.h:171
-msgid "Move between windows of an application immediately"
+#, fuzzy
+#| msgid "Move between windows of an application immediately"
+msgid "Reverse switch windows of an application"
 msgstr "કાર્યક્રમની વિન્ડો વચ્ચે તુરંત જ ખસેડો"
 
-#: ../src/include/all-keybindings.h:174
-msgid "Move backward between windows of an application immediately"
-msgstr "કાર્યક્રમની વિન્ડો વચ્ચે તુરંત જ પાછળ ખસો"
+#: ../src/include/all-keybindings.h:156
+msgid "Switch applications"
+msgstr "કાર્યક્રમોને બદલો"
 
-#: ../src/include/all-keybindings.h:177
-msgid "Move between windows immediately"
-msgstr "તરત જ બધી વિન્ડો વચ્ચે ખસો"
+#: ../src/include/all-keybindings.h:159
+msgid "Reverse switch applications"
+msgstr ""
 
-#: ../src/include/all-keybindings.h:180
-msgid "Move backward between windows immediately"
-msgstr "વિન્ડો વચ્ચે પાછળ તરત જ ખસો"
+#: ../src/include/all-keybindings.h:162
+msgid "Switch system controls"
+msgstr "સિસ્ટમ નિયંત્રણોને બદલો "
 
-#: ../src/include/all-keybindings.h:183
-msgid "Move between panels and the desktop immediately"
-msgstr "તરત જ પેનલ તથા ડેસ્કટોપ વચ્ચે ખસો"
+#: ../src/include/all-keybindings.h:165
+msgid "Reverse switch system controls"
+msgstr ""
 
-#: ../src/include/all-keybindings.h:186
-msgid "Move backward between panels and the desktop immediately"
-msgstr "તરત જ પેનલ તથા ડેસ્કટોપ વચ્ચે પાછા ફરો"
+#: ../src/include/all-keybindings.h:169
+#, fuzzy
+#| msgid "Move between windows of an application immediately"
+msgid "Switch windows of an app directly"
+msgstr "કાર્યક્રમની વિન્ડો વચ્ચે તુરંત જ ખસેડો"
 
-#: ../src/include/all-keybindings.h:191
-msgid "Hide all normal windows and set focus to the desktop"
-msgstr "બધી સામાન્ય વિન્ડો છુપાવો અને ડેસ્કટોપને ફોકસ સુયોજીત કરો"
+#: ../src/include/all-keybindings.h:172
+#, fuzzy
+#| msgid "Move between windows of an application immediately"
+msgid "Reverse switch windows of an app directly"
+msgstr "કાર્યક્રમની વિન્ડો વચ્ચે તુરંત જ ખસેડો"
 
-#: ../src/include/all-keybindings.h:194
-msgid "Show the panel's main menu"
-msgstr "પેનલનું મુખ્ય મેનુ બતાવો"
+#: ../src/include/all-keybindings.h:175
+msgid "Switch windows directly"
+msgstr "સીધુ જ વિન્ડોને બદલો"
 
-#: ../src/include/all-keybindings.h:197
-msgid "Show the panel's \"Run Application\" dialog box"
-msgstr "પેનલનો \"કાર્યક્રમ ચલાવો\" સંવાદ બોક્સ બતાવો"
+#: ../src/include/all-keybindings.h:178
+msgid "Reverse switch windows directly"
+msgstr ""
 
-#: ../src/include/all-keybindings.h:238
+#: ../src/include/all-keybindings.h:181
+msgid "Switch system controls directly"
+msgstr "સીધુ જ સિસ્ટમ નિયંત્રણોને બદલો"
+
+#: ../src/include/all-keybindings.h:184
+msgid "Reverse switch system controls directly"
+msgstr ""
+
+#: ../src/include/all-keybindings.h:189
+#| msgid "Hide all normal windows and set focus to the desktop"
+msgid "Hide all normal windows"
+msgstr "બધા સામાન્ય વિન્ડોને છુપાડો"
+
+#: ../src/include/all-keybindings.h:192
+msgid "Show the activities overview"
+msgstr "પ્રવૃત્તિઓની ઝાંખીને બતાવો"
+
+#: ../src/include/all-keybindings.h:195
+#| msgid "Show the panel's main menu"
+msgid "Show the run command prompt"
+msgstr "ચાલતા આદેશ પ્રોમ્પ્ટને બતાવો"
+
+#: ../src/include/all-keybindings.h:236
 msgid "Take a screenshot"
 msgstr "ફોટો લો"
 
-#: ../src/include/all-keybindings.h:240
+#: ../src/include/all-keybindings.h:238
 msgid "Take a screenshot of a window"
 msgstr "વિન્ડોનો ફોટો લો"
 
-#: ../src/include/all-keybindings.h:242
-msgid "Run a terminal"
-msgstr "ટર્મિનલમાં ચલાવો"
+#: ../src/include/all-keybindings.h:240
+#| msgid "Run a terminal"
+msgid "Launch Terminal"
+msgstr "ટર્મિનલ શરૂ કરો"
 
-#: ../src/include/all-keybindings.h:257
+#: ../src/include/all-keybindings.h:255
 msgid "Activate the window menu"
 msgstr "વિન્ડો મેનુ સક્રિય કરો"
 
-#: ../src/include/all-keybindings.h:260
+#: ../src/include/all-keybindings.h:258
 msgid "Toggle fullscreen mode"
 msgstr "આખી સ્ક્રીન કરવાની સ્થિતિમાં ફેરબદલી"
 
-#: ../src/include/all-keybindings.h:262
+#: ../src/include/all-keybindings.h:260
 msgid "Toggle maximization state"
 msgstr "મહત્તમ કરવાની સ્થિતિમાં ફેરબદલી"
 
-#: ../src/include/all-keybindings.h:264
-msgid "Toggle whether a window will always be visible over other windows"
-msgstr "શું વિન્ડો હંમેશા અન્ય વિન્ડો ઉપર દેખાતી રહેશે તે બદલો"
+#: ../src/include/all-keybindings.h:262
+msgid "Toggle window always appearing on top"
+msgstr "ટૉગલ વિન્ડો હંમેશા ટોચ પર દેખાય છે"
 
-#: ../src/include/all-keybindings.h:266
+#: ../src/include/all-keybindings.h:264
 msgid "Maximize window"
 msgstr "વિન્ડોને મહત્તમ સ્થિતિમાં લાવો"
 
-#: ../src/include/all-keybindings.h:268
+#: ../src/include/all-keybindings.h:266
 msgid "Restore window"
 msgstr "વિન્ડો પુનઃસંગ્રહિત કરો"
 
-#: ../src/include/all-keybindings.h:270
+#: ../src/include/all-keybindings.h:268
 msgid "Toggle shaded state"
 msgstr "છાયાંકિત કરવાની સ્થિતિમાં ફેરબદલી"
 
-#: ../src/include/all-keybindings.h:272
+#: ../src/include/all-keybindings.h:270
 msgid "Minimize window"
 msgstr "વિન્ડોને ન્યૂનત્તમ સ્થિતિમાં લાવો"
 
-#: ../src/include/all-keybindings.h:274
+#: ../src/include/all-keybindings.h:272
 msgid "Close window"
 msgstr "વિન્ડો બંધ કરો"
 
-#: ../src/include/all-keybindings.h:276
+#: ../src/include/all-keybindings.h:274
 msgid "Move window"
 msgstr "વિન્ડોને ખસાડો"
 
-#: ../src/include/all-keybindings.h:278
+#: ../src/include/all-keybindings.h:276
 msgid "Resize window"
 msgstr "વિન્ડોનુ માપ બદલો"
 
-#: ../src/include/all-keybindings.h:281
-msgid "Toggle whether window is on all workspaces or just one"
-msgstr "શું વિન્ડો એ બધી કામ કરવાની જગ્યાઓ ઉપર છે કે ખાલી એક પર છે તે બદલો"
+#: ../src/include/all-keybindings.h:279
+#| msgid "Toggle whether window is on all workspaces or just one"
+msgid "Toggle window on all workspaces or one"
+msgstr "બધી કામ કરવાની જગ્યાઓ ઉપર છે કે ખાલી એક પર ટૉગલ વિન્ડો"
 
-#: ../src/include/all-keybindings.h:285
+#: ../src/include/all-keybindings.h:283
 msgid "Move window to workspace 1"
 msgstr "વિન્ડોને કામ કરવાની જગ્યા ૧ માં લઈ જાઓ"
 
-#: ../src/include/all-keybindings.h:288
+#: ../src/include/all-keybindings.h:286
 msgid "Move window to workspace 2"
 msgstr "વિન્ડોને કામ કરવાની જગ્યા ૨ માં લઈ જાઓ"
 
-#: ../src/include/all-keybindings.h:291
+#: ../src/include/all-keybindings.h:289
 msgid "Move window to workspace 3"
 msgstr "વિન્ડોને કામ કરવાની જગ્યા ૩ માં લઈ જાઓ"
 
-#: ../src/include/all-keybindings.h:294
+#: ../src/include/all-keybindings.h:292
 msgid "Move window to workspace 4"
 msgstr "વિન્ડોને કામ કરવાની જગ્યા ૪ માં લઈ જાઓ"
 
-#: ../src/include/all-keybindings.h:297
+#: ../src/include/all-keybindings.h:295
 msgid "Move window to workspace 5"
 msgstr "વિન્ડોને કામ કરવાની જગ્યા ૫ માં લઈ જાઓ"
 
-#: ../src/include/all-keybindings.h:300
+#: ../src/include/all-keybindings.h:298
 msgid "Move window to workspace 6"
 msgstr "વિન્ડોને કામ કરવાની જગ્યા ૬ માં લઈ જાઓ"
 
-#: ../src/include/all-keybindings.h:303
+#: ../src/include/all-keybindings.h:301
 msgid "Move window to workspace 7"
 msgstr "વિન્ડોને કામ કરવાની જગ્યા ૭ માં લઈ જાઓ"
 
-#: ../src/include/all-keybindings.h:306
+#: ../src/include/all-keybindings.h:304
 msgid "Move window to workspace 8"
 msgstr "વિન્ડોને કામ કરવાની જગ્યા ૮ માં લઈ જાઓ"
 
-#: ../src/include/all-keybindings.h:309
+#: ../src/include/all-keybindings.h:307
 msgid "Move window to workspace 9"
 msgstr "વિન્ડોને કામ કરવાની જગ્યા ૯ માં લઈ જાઓ"
 
-#: ../src/include/all-keybindings.h:312
+#: ../src/include/all-keybindings.h:310
 msgid "Move window to workspace 10"
 msgstr "વિન્ડોને કામ કરવાની જગ્યા ૧૦ માં લઈ જાઓ"
 
-#: ../src/include/all-keybindings.h:315
+#: ../src/include/all-keybindings.h:313
 msgid "Move window to workspace 11"
 msgstr "વિન્ડોને કામ કરવાની જગ્યા ૧૧ માં લઈ જાઓ"
 
-#: ../src/include/all-keybindings.h:318
+#: ../src/include/all-keybindings.h:316
 msgid "Move window to workspace 12"
 msgstr "વિન્ડોને કામ કરવાની જગ્યા ૧૨ માં લઈ જાઓ"
 
-#: ../src/include/all-keybindings.h:330
+#: ../src/include/all-keybindings.h:328
 msgid "Move window one workspace to the left"
 msgstr "વિન્ડોને ડાબી બાજુની કામ કરવાની જગ્યામાં લાવો"
 
-#: ../src/include/all-keybindings.h:333
+#: ../src/include/all-keybindings.h:331
 msgid "Move window one workspace to the right"
 msgstr "વિન્ડોને જમણી બાજુની કામ કરવાની જગ્યામાં લાવો"
 
-#: ../src/include/all-keybindings.h:336
+#: ../src/include/all-keybindings.h:334
 msgid "Move window one workspace up"
 msgstr "વિન્ડોને ઉપરની બાજુની કામ કરવાની જગ્યામાં લાવો"
 
-#: ../src/include/all-keybindings.h:339
+#: ../src/include/all-keybindings.h:337
 msgid "Move window one workspace down"
 msgstr "વિન્ડોને નીચેની કામ કરવાની જગ્ચામાં લાવો"
 
-#: ../src/include/all-keybindings.h:342
-msgid "Raise window if it's covered by another window, otherwise lower it"
-msgstr "જો વિન્ડો અન્ય વિન્ડો દ્વારા આવરાયેલ હોય, અથવા તેની નીચે હોય તો તેને વધારો"
+#: ../src/include/all-keybindings.h:340
+#| msgid "Raise window if it's covered by another window, otherwise lower it"
+msgid "Raise window if covered, otherwise lower it"
+msgstr "જો વિન્ડો આવરાયેલ હોય, અથવા તેની નીચે હોય તો તેને વધારો"
 
-#: ../src/include/all-keybindings.h:344
+#: ../src/include/all-keybindings.h:342
 msgid "Raise window above other windows"
 msgstr "વિન્ડોને બીજી બધી વિન્ડોની ઉપર લાવો"
 
-#: ../src/include/all-keybindings.h:346
+#: ../src/include/all-keybindings.h:344
 msgid "Lower window below other windows"
 msgstr "બીજી વિન્ડો નીચેની વિન્ડોને નાની કરો"
 
-#: ../src/include/all-keybindings.h:350
+#: ../src/include/all-keybindings.h:348
 msgid "Maximize window vertically"
 msgstr "વિન્ડોને ઉભી દિશામાં મોટી કરો"
 
-#: ../src/include/all-keybindings.h:354
+#: ../src/include/all-keybindings.h:352
 msgid "Maximize window horizontally"
 msgstr "વિન્ડોને આડી દિશામાં મોટી કરો"
 
-#: ../src/include/all-keybindings.h:358
-msgid "Move window to north-west (top left) corner"
-msgstr "વિન્ડોને ઉત્તર-પશ્ચિમ (ટોચે ડાબે) ખૂણે ખસેડો"
+#: ../src/include/all-keybindings.h:356
+#| msgid "Move window to north-west (top left) corner"
+msgid "Move window to top left corner"
+msgstr "વિન્ડોને ઊંચે ડાબે ખૂણે ખસેડો"
 
-#: ../src/include/all-keybindings.h:361
-msgid "Move window to north-east (top right) corner"
-msgstr "વિન્ડોને ઉત્તર-પૂર્વ (ટોચે જમણે) ખૂણે ખસેડો"
+#: ../src/include/all-keybindings.h:359
+#| msgid "Move window to north-east (top right) corner"
+msgid "Move window to top right corner"
+msgstr "વિન્ડોને ટોચે જમણે ખૂણે ખસેડો"
 
-#: ../src/include/all-keybindings.h:364
-msgid "Move window to south-west (bottom left) corner"
-msgstr "વિન્ડોને દક્ષિણ-પશ્ચિમ (તળિયે ડાબે) ખૂણે ખસેડો"
+#: ../src/include/all-keybindings.h:362
+#| msgid "Move window to south-west (bottom left) corner"
+msgid "Move window to bottom left corner"
+msgstr "વિન્ડોને તળિયે ડાબે ખૂણે ખસેડો"
 
-#: ../src/include/all-keybindings.h:367
-msgid "Move window to south-east (bottom right) corner"
-msgstr "વિન્ડોને દક્ષિણ-પૂર્વ (તળિયે જમણે) ખૂણે ખસેડો"
+#: ../src/include/all-keybindings.h:365
+#| msgid "Move window to south-east (bottom right) corner"
+msgid "Move window to bottom right corner"
+msgstr "વિન્ડોને તળિયે જમણે ખૂણે ખસેડો"
 
-#: ../src/include/all-keybindings.h:371
-msgid "Move window to north (top) side of screen"
-msgstr "વિન્ડોને સ્ક્રીનની ઉત્તર (ટોચ) બાજુએ ખસેડો"
+#: ../src/include/all-keybindings.h:369
+#| msgid "Move window to center of screen"
+msgid "Move window to top edge of screen"
+msgstr "વિન્ડોને સ્ક્રીનની ટોચની બાજુએ ખસેડો"
 
-#: ../src/include/all-keybindings.h:374
-msgid "Move window to south (bottom) side of screen"
-msgstr "વિન્ડોને સ્ક્રીનની દક્ષિણ (તળિયે) બાજુએ ખસેડો"
+#: ../src/include/all-keybindings.h:372
+#| msgid "Move window to south (bottom) side of screen"
+msgid "Move window to bottom edge of screen"
+msgstr "વિન્ડોને સ્ક્રીનની તળિયે બાજુએ ખસેડો"
 
-#: ../src/include/all-keybindings.h:377
-msgid "Move window to east (right) side of screen"
-msgstr "વિન્ડોને સ્ક્રીનની પૂર્વ (જમણી) બાજુએ ખસેડો"
+#: ../src/include/all-keybindings.h:375
+#| msgid "Move window to east (right) side of screen"
+msgid "Move window to right side of screen"
+msgstr "વિન્ડોને સ્ક્રીનની જમણી બાજુએ ખસેડો"
 
-#: ../src/include/all-keybindings.h:380
-msgid "Move window to west (left) side of screen"
-msgstr "વિન્ડોને સ્ક્રીનની પશ્ચિમ (ડાબી) બાજુએ ખસેડો"
+#: ../src/include/all-keybindings.h:378
+#| msgid "Move window to west (left) side of screen"
+msgid "Move window to left side of screen"
+msgstr "વિન્ડોને સ્ક્રીનની ડાબી બાજુએ ખસેડો"
 
-#: ../src/include/all-keybindings.h:383
+#: ../src/include/all-keybindings.h:381
 msgid "Move window to center of screen"
 msgstr "વિન્ડોને સ્ક્રીનના કેન્દ્રમાં ખસેડો"
 
@@ -907,12 +931,19 @@ msgid "Automatically raises the focused window"
 msgstr "પ્રકાશન વિન્ડોને આપોઆપ મોટી કરે છે"
 
 #: ../src/metacity.schemas.in.in.h:9
+#, fuzzy
+#| msgid ""
+#| "Clicking a window while holding down this modifier key will move the "
+#| "window (left click), resize the window (middle click), or show the window "
+#| "menu (right click). The left and right operations may be swapped using "
+#| "the \"mouse_button_resize\" key. Modifier is expressed as \"&lt;Alt&gt;\" "
+#| "or \"&lt;Super&gt;\" for example."
 msgid ""
 "Clicking a window while holding down this modifier key will move the window "
 "(left click), resize the window (middle click), or show the window menu "
-"(right click). The left and right operations may be swapped using the "
-"\"mouse_button_resize\" key. Modifier is expressed as \"&lt;Alt&gt;\" or "
-"\"&lt;Super&gt;\" for example."
+"(right click). The middle and right click operations may be swapped using "
+"the \"resize_with_right_button\" key. Modifier is expressed as \"&lt;Alt&gt;"
+"\" or \"&lt;Super&gt;\" for example."
 msgstr ""
 "આ સુધારક કી દબાવી રાખીને વિન્ડો પર ક્લિક કરવાનું વિન્ડોને ખસેડશે (ડાબું ક્લિક), વિન્ડોનું "
 "માપ બદલશે (જમણું ક્લિક), અથવા વિન્ડો મેનુ બતાવશે (જમણું ક્લિક). ડાબી અને જમણી પ્રક્રિયાઓ "
@@ -1302,47 +1333,47 @@ msgstr "વિન્ડોના શીર્ષકના ફોન્ટ"
 msgid "Usage: %s\n"
 msgstr "વપરાશ: %s\n"
 
-#: ../src/ui/frames.c:1118
+#: ../src/ui/frames.c:1120
 msgid "Close Window"
 msgstr "વિન્ડો બંધ કરો"
 
-#: ../src/ui/frames.c:1121
+#: ../src/ui/frames.c:1123
 msgid "Window Menu"
 msgstr "વિન્ડોનું મેનુ"
 
-#: ../src/ui/frames.c:1124
+#: ../src/ui/frames.c:1126
 msgid "Minimize Window"
 msgstr "વિન્ડોને ન્યૂનત્તમ સ્થિતિમાં લાવો"
 
-#: ../src/ui/frames.c:1127
+#: ../src/ui/frames.c:1129
 msgid "Maximize Window"
 msgstr "વિન્ડોને મહત્તમ સ્થિતિમાં લાવો"
 
-#: ../src/ui/frames.c:1130
+#: ../src/ui/frames.c:1132
 msgid "Restore Window"
 msgstr "વિન્ડો પુનઃસંગ્રહો"
 
-#: ../src/ui/frames.c:1133
+#: ../src/ui/frames.c:1135
 msgid "Roll Up Window"
 msgstr "વિન્ડો વીંટી લો"
 
-#: ../src/ui/frames.c:1136
+#: ../src/ui/frames.c:1138
 msgid "Unroll Window"
 msgstr "વિન્ડોનું વીંટેલુ પાછુ લો"
 
-#: ../src/ui/frames.c:1139
+#: ../src/ui/frames.c:1141
 msgid "Keep Window On Top"
 msgstr "વિન્ડોને ટોચે રાખો"
 
-#: ../src/ui/frames.c:1142
+#: ../src/ui/frames.c:1144
 msgid "Remove Window From Top"
 msgstr "વિન્ડોને ટોચથી દૂર કરો"
 
-#: ../src/ui/frames.c:1145
+#: ../src/ui/frames.c:1147
 msgid "Always On Visible Workspace"
 msgstr "હંમેશા દૃશ્ય કામ કરવાની જગ્યા પર"
 
-#: ../src/ui/frames.c:1148
+#: ../src/ui/frames.c:1150
 msgid "Put Window On Only One Workspace"
 msgstr "વિન્ડોને માત્ર એક કાર્યસ્થળ પર મૂકો"
 
@@ -1545,48 +1576,48 @@ msgstr "Mod5"
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: ../src/ui/theme.c:254
+#: ../src/ui/theme.c:255
 msgid "top"
 msgstr "ઉપર"
 
-#: ../src/ui/theme.c:256
+#: ../src/ui/theme.c:257
 msgid "bottom"
 msgstr "નીચે"
 
-#: ../src/ui/theme.c:258
+#: ../src/ui/theme.c:259
 msgid "left"
 msgstr "ડાબે"
 
-#: ../src/ui/theme.c:260
+#: ../src/ui/theme.c:261
 msgid "right"
 msgstr "જમણે"
 
-#: ../src/ui/theme.c:287
+#: ../src/ui/theme.c:288
 #, c-format
 msgid "frame geometry does not specify \"%s\" dimension"
 msgstr "ચોકઠાની ભૂમિતિ માપ \"%s\" સ્પષ્ટ કરતી નથી"
 
-#: ../src/ui/theme.c:306
+#: ../src/ui/theme.c:307
 #, c-format
 msgid "frame geometry does not specify dimension \"%s\" for border \"%s\""
 msgstr "ચોકઠાની ભૂમિતિ કિનારી \"%s\" માટે માપ \"%s\" સ્પષ્ટ કરતી નથી"
 
-#: ../src/ui/theme.c:343
+#: ../src/ui/theme.c:344
 #, c-format
 msgid "Button aspect ratio %g is not reasonable"
 msgstr "બટન માટે ધારેલુ પ્રમાણ %g એ વ્યવસ્થિત નથી"
 
-#: ../src/ui/theme.c:355
+#: ../src/ui/theme.c:356
 #, c-format
 msgid "Frame geometry does not specify size of buttons"
 msgstr "ચોકઠાની ભૂમિતિ બટનોનું માપ સ્પષ્ટ કરતી નથી"
 
-#: ../src/ui/theme.c:1020
+#: ../src/ui/theme.c:1058
 #, c-format
 msgid "Gradients should have at least two colors"
 msgstr "ઢાળમાં ઓછામાં ઓછા બે રંગ હોવા જોઈએ"
 
-#: ../src/ui/theme.c:1146
+#: ../src/ui/theme.c:1184
 #, c-format
 msgid ""
 "GTK color specification must have the state in brackets, e.g. gtk:fg[NORMAL] "
@@ -1595,7 +1626,7 @@ msgstr ""
 "GTK રંગના સ્પષ્ટીકરણમાં કૌંસમાં સ્થિતિ હોવી જોઈએ દા.ત. gtk:fg[NORMAL] જ્યાં NORMAL "
 "સ્થિતિ છે; \"%s\" નો પદચ્છેદ કરી શકાય નહિં"
 
-#: ../src/ui/theme.c:1160
+#: ../src/ui/theme.c:1198
 #, c-format
 msgid ""
 "GTK color specification must have a close bracket after the state, e.g. gtk:"
@@ -1604,145 +1635,145 @@ msgstr ""
 "GTK રંગના સ્પષ્ટીકરણમાં સ્થિતિ પછી કૌંસ બંધ થવો જોઈએ દા.ત. gtk:fg[NORMAL] જ્યાં "
 "NORMAL સ્થિતિ છે; \"%s\" નો પદચ્છેદ કરી શકાય નહિં"
 
-#: ../src/ui/theme.c:1171
+#: ../src/ui/theme.c:1209
 #, c-format
 msgid "Did not understand state \"%s\" in color specification"
 msgstr "રંગના સ્પષ્ટીકરણમાં સ્થિતિ \"%s\" સમજી શકાઈ નહિં"
 
-#: ../src/ui/theme.c:1184
+#: ../src/ui/theme.c:1222
 #, c-format
 msgid "Did not understand color component \"%s\" in color specification"
 msgstr "રંગના સ્પષ્ટીકરણમાં રંગની વસ્તુ \"%s\" સમજી શકાયો નહિં"
 
-#: ../src/ui/theme.c:1214
+#: ../src/ui/theme.c:1252
 #, c-format
 msgid ""
 "Blend format is \"blend/bg_color/fg_color/alpha\", \"%s\" does not fit the "
 "format"
 msgstr "\"blend/bg_color/fg_color/alpha\" એ મિશ્રિત માળખું છે, \"%s\" માળખામાં બેસતું નથી "
 
-#: ../src/ui/theme.c:1225
+#: ../src/ui/theme.c:1263
 #, c-format
 msgid "Could not parse alpha value \"%s\" in blended color"
 msgstr "મિશ્રિત રંગમાં આલ્ફાની કિંમત \"%s\" નું પદચ્છેદ કરી શકાતુ નથી"
 
-#: ../src/ui/theme.c:1235
+#: ../src/ui/theme.c:1273
 #, c-format
 msgid "Alpha value \"%s\" in blended color is not between 0.0 and 1.0"
 msgstr "મિશ્રિત રંગમાં આલ્ફાની કિંમત \"%s\" ૦.૦ અને ૧.૦ ની વચ્ચે નથી"
 
-#: ../src/ui/theme.c:1282
+#: ../src/ui/theme.c:1320
 #, c-format
 msgid "Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
 msgstr "છાયાનું માળખું \"shade/base_color/factor\" છે, \"%s\" માળખામાં બેસતુ નથી"
 
-#: ../src/ui/theme.c:1293
+#: ../src/ui/theme.c:1331
 #, c-format
 msgid "Could not parse shade factor \"%s\" in shaded color"
 msgstr "છાયાંકિત રંગમાં છાયાનો અવયવ \"%s\" નું પદચ્છેદ કરી શકાતુ નથી"
 
-#: ../src/ui/theme.c:1303
+#: ../src/ui/theme.c:1341
 #, c-format
 msgid "Shade factor \"%s\" in shaded color is negative"
 msgstr "છાયાનો અવયવ \"%s\" છાયાના રંગમાં ઋણ છે"
 
-#: ../src/ui/theme.c:1332
+#: ../src/ui/theme.c:1370
 #, c-format
 msgid "Could not parse color \"%s\""
 msgstr "રંગ \"%s\" નુ પદચ્છેદ કરી શકાતુ નથી"
 
-#: ../src/ui/theme.c:1582
+#: ../src/ui/theme.c:1624
 #, c-format
 msgid "Coordinate expression contains character '%s' which is not allowed"
 msgstr "યામાક્ષ સમીકરણ અક્ષર '%s' ધરાવે છે જે સ્વીકાર્ય નથી"
 
-#: ../src/ui/theme.c:1609
+#: ../src/ui/theme.c:1651
 #, c-format
 msgid ""
 "Coordinate expression contains floating point number '%s' which could not be "
 "parsed"
 msgstr "યામાક્ષ સમીકરણ અપૂર્ણાંક સંખ્યા '%s' ધરાવે છે જેનું પદચ્છેદ કરી શકાતું નથી"
 
-#: ../src/ui/theme.c:1623
+#: ../src/ui/theme.c:1665
 #, c-format
 msgid "Coordinate expression contains integer '%s' which could not be parsed"
 msgstr "યામાક્ષ સમીકરણ પૂર્ણાંક સંખ્યા '%s' ધરાવે છે જેનું પદચ્છેદ કરી શકાતું નથી"
 
-#: ../src/ui/theme.c:1745
+#: ../src/ui/theme.c:1787
 #, c-format
 msgid ""
 "Coordinate expression contained unknown operator at the start of this text: "
 "\"%s\""
 msgstr "યામાક્ષ સમીકરણમાં આ લખાણની શરુઆતમાં અજાણ્યા કારકો ધરાવે છે: \"%s\""
 
-#: ../src/ui/theme.c:1802
+#: ../src/ui/theme.c:1844
 #, c-format
 msgid "Coordinate expression was empty or not understood"
 msgstr "યામાક્ષ સમીકરણ ખાલી છે અથવા સમજી શકાય એવું નથી"
 
-#: ../src/ui/theme.c:1913 ../src/ui/theme.c:1923 ../src/ui/theme.c:1957
+#: ../src/ui/theme.c:1955 ../src/ui/theme.c:1965 ../src/ui/theme.c:1999
 #, c-format
 msgid "Coordinate expression results in division by zero"
 msgstr "યામાક્ષ સમીકરણ શૂન્ય વડે ભાગાકારમાં પરિણમશે"
 
-#: ../src/ui/theme.c:1965
+#: ../src/ui/theme.c:2007
 #, c-format
 msgid "Coordinate expression tries to use mod operator on a floating-point number"
 msgstr "યામાક્ષ સમીકરણ અપૂર્ણાંક સંખ્યાની ઉપર શેષ કારકનો ઉપયોગ કરવાનો પ્રયત્ન કરે છે"
 
-#: ../src/ui/theme.c:2021
+#: ../src/ui/theme.c:2063
 #, c-format
 msgid "Coordinate expression has an operator \"%s\" where an operand was expected"
 msgstr "યામાક્ષ સમીકરણ માટે \"%s\" કારક છે જેના માટે ઓપરન્ડ હોવા જોઈએ"
 
-#: ../src/ui/theme.c:2030
+#: ../src/ui/theme.c:2072
 #, c-format
 msgid "Coordinate expression had an operand where an operator was expected"
 msgstr "યામાક્ષ સમીકરણમાં ઓપરન્ડ છે જ્યાં કારક હોવુ જોઈતું હતું"
 
-#: ../src/ui/theme.c:2038
+#: ../src/ui/theme.c:2080
 #, c-format
 msgid "Coordinate expression ended with an operator instead of an operand"
 msgstr "યામાક્ષ સમીકરણનો અંત ઓપરન્ડની જગ્યાએ કારકથી થાય છે"
 
-#: ../src/ui/theme.c:2048
+#: ../src/ui/theme.c:2090
 #, c-format
 msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
 "operand in between"
 msgstr "યામાક્ષ સમીકરણમાં \"%c\" કારક પછી તરત જ \"%c\" કારક છે જેમની વચ્ચે કોઈ ઓપરન્ડ નથી"
 
-#: ../src/ui/theme.c:2195 ../src/ui/theme.c:2236
+#: ../src/ui/theme.c:2237 ../src/ui/theme.c:2278
 #, c-format
 msgid "Coordinate expression had unknown variable or constant \"%s\""
 msgstr "યામાક્ષ સમીકરણમાં અજાણ્યો ચલ કે અચલ \"%s\" છે"
 
-#: ../src/ui/theme.c:2290
+#: ../src/ui/theme.c:2332
 #, c-format
 msgid "Coordinate expression parser overflowed its buffer."
 msgstr "યામાક્ષ સમીકરણ પદચ્છેદકે તેનું બફર ઓવરફ્લો કરી નાંખ્યું."
 
-#: ../src/ui/theme.c:2319
+#: ../src/ui/theme.c:2361
 #, c-format
 msgid "Coordinate expression had a close parenthesis with no open parenthesis"
 msgstr "યામાક્ષ સમીકરણ પાસે ખુલ્લા કૌંસની વગર જ બંધ કૌંસ છે"
 
-#: ../src/ui/theme.c:2383
+#: ../src/ui/theme.c:2425
 #, c-format
 msgid "Coordinate expression had an open parenthesis with no close parenthesis"
 msgstr "યામાક્ષ સમીકરણ પાસે બંધ કૌંસની વગર જ ખુલ્લો કૌંસ હતો"
 
-#: ../src/ui/theme.c:2394
+#: ../src/ui/theme.c:2436
 #, c-format
 msgid "Coordinate expression doesn't seem to have any operators or operands"
 msgstr "યામાક્ષ સમીકરણમાં કોઈ કારક કે ઓપરન્ડ હોય તેવુ લાગતુ નથી"
 
-#: ../src/ui/theme.c:2596 ../src/ui/theme.c:2616 ../src/ui/theme.c:2636
+#: ../src/ui/theme.c:2640 ../src/ui/theme.c:2660 ../src/ui/theme.c:2680
 #, c-format
 msgid "Theme contained an expression that resulted in an error: %s\n"
 msgstr "થીમે સમાવેલ સમીકરણને કારણે ભૂલમાં પરિણમ્યું: %s\n"
 
-#: ../src/ui/theme.c:4203
+#: ../src/ui/theme.c:4315
 #, c-format
 msgid ""
 "<button function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> must be "
@@ -1751,23 +1782,23 @@ msgstr ""
 "આ માળખાની શૈલી માટે <button function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/"
 "> સ્પષ્ટ કરેલી હોવી જરુરી છે"
 
-#: ../src/ui/theme.c:4711 ../src/ui/theme.c:4736
+#: ../src/ui/theme.c:4827 ../src/ui/theme.c:4852
 #, c-format
 msgid "Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
 msgstr "<frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/> ખોવાય છે"
 
-#: ../src/ui/theme.c:4780
+#: ../src/ui/theme.c:4896
 #, c-format
 msgid "Failed to load theme \"%s\": %s\n"
 msgstr "થીમ \"%s\" લાવવામાં નિષ્ફળ: %s\n"
 
-#: ../src/ui/theme.c:4910 ../src/ui/theme.c:4917 ../src/ui/theme.c:4924
-#: ../src/ui/theme.c:4931 ../src/ui/theme.c:4938
+#: ../src/ui/theme.c:5026 ../src/ui/theme.c:5033 ../src/ui/theme.c:5040
+#: ../src/ui/theme.c:5047 ../src/ui/theme.c:5054
 #, c-format
 msgid "No <%s> set for theme \"%s\""
 msgstr "કોઈ <%s> ગોઠવણ થીમ \"%s\" માટે નથી"
 
-#: ../src/ui/theme.c:4946
+#: ../src/ui/theme.c:5062
 #, c-format
 msgid ""
 "No frame style set for window type \"%s\" in theme \"%s\", add a <window "
@@ -1776,12 +1807,12 @@ msgstr ""
 "થીમ \"%s\" માં વિન્ડોના પ્રકાર \"%s\" માટે કોઈ માળખાની શૈલી ગોઠવાયેલી નથી, <window "
 "type=\"%s\" style_set=\"whatever\"/> વસ્તુ ઊમેરો"
 
-#: ../src/ui/theme.c:5389 ../src/ui/theme.c:5451 ../src/ui/theme.c:5514
+#: ../src/ui/theme.c:5505 ../src/ui/theme.c:5567 ../src/ui/theme.c:5630
 #, c-format
 msgid "User-defined constants must begin with a capital letter; \"%s\" does not"
 msgstr "વપરાશકર્તા દ્વારા વ્યાખ્યાયિત અચલો મોટા અક્ષરથી જ શરુ થવા જોઈએ; \"%s\" નહિં"
 
-#: ../src/ui/theme.c:5397 ../src/ui/theme.c:5459 ../src/ui/theme.c:5522
+#: ../src/ui/theme.c:5513 ../src/ui/theme.c:5575 ../src/ui/theme.c:5638
 #, c-format
 msgid "Constant \"%s\" has already been defined"
 msgstr "અચલ \"%s\" પહેલેથી જ વ્યાખ્યાયિત છે"
@@ -2188,109 +2219,97 @@ msgstr "/વિન્ડોઝ/બધા ડોક (_A)"
 msgid "/Windows/Des_ktop"
 msgstr "/વિન્ડોઝ/ડેસ્કટોપ (_k)"
 
-#: ../src/ui/theme-viewer.c:136
-msgid "Open another one of these windows"
-msgstr "આ બધી વિન્ડોમાંથી બીજી વિન્ડો ખોલો"
-
-#: ../src/ui/theme-viewer.c:143
-msgid "This is a demo button with an 'open' icon"
-msgstr "આ ડેમો બટન 'ખોલો' ચિહ્ન સાથે છે"
-
-#: ../src/ui/theme-viewer.c:150
-msgid "This is a demo button with a 'quit' icon"
-msgstr "આ ડેમો બટન 'બહાર નીકળો' ચિહ્ન સાથે છે"
-
-#: ../src/ui/theme-viewer.c:243
+#: ../src/ui/theme-viewer.c:244
 msgid "This is a sample message in a sample dialog"
 msgstr "આ નમબના સંવાદમાં સરળ સંદેશો છે"
 
-#: ../src/ui/theme-viewer.c:326
+#: ../src/ui/theme-viewer.c:327
 #, c-format
 msgid "Fake menu item %d\n"
 msgstr "ખોટી મેનુ વસ્તુ %d\n"
 
-#: ../src/ui/theme-viewer.c:360
+#: ../src/ui/theme-viewer.c:361
 msgid "Border-only window"
 msgstr "વિન્ડો માટે માત્ર કિનારી"
 
-#: ../src/ui/theme-viewer.c:362
+#: ../src/ui/theme-viewer.c:363
 msgid "Bar"
 msgstr "પટ્ટી"
 
-#: ../src/ui/theme-viewer.c:379
+#: ../src/ui/theme-viewer.c:380
 msgid "Normal Application Window"
 msgstr "કાર્યક્રમની સામાન્ય વિન્ડો"
 
-#: ../src/ui/theme-viewer.c:383
+#: ../src/ui/theme-viewer.c:384
 msgid "Dialog Box"
 msgstr "સંવાદ પેટી"
 
-#: ../src/ui/theme-viewer.c:387
+#: ../src/ui/theme-viewer.c:388
 msgid "Modal Dialog Box"
 msgstr "નમુના સંવાદ પેટી"
 
-#: ../src/ui/theme-viewer.c:391
+#: ../src/ui/theme-viewer.c:392
 msgid "Utility Palette"
 msgstr "ઉપયોગિતા પેલેટ"
 
-#: ../src/ui/theme-viewer.c:395
+#: ../src/ui/theme-viewer.c:396
 msgid "Torn-off Menu"
 msgstr "કાઢી નાખેલ મેનુ"
 
-#: ../src/ui/theme-viewer.c:399
+#: ../src/ui/theme-viewer.c:400
 msgid "Border"
 msgstr "કિનારી"
 
-#: ../src/ui/theme-viewer.c:727
+#: ../src/ui/theme-viewer.c:728
 #, c-format
 msgid "Button layout test %d"
 msgstr "બટનના દેખાવની ચકાસણી %d"
 
-#: ../src/ui/theme-viewer.c:756
+#: ../src/ui/theme-viewer.c:757
 #, c-format
 msgid "%g milliseconds to draw one window frame"
 msgstr "એક વિન્ડોનું ચોકઠુ દોરવા માટે %g મિલિસેકન્ડો"
 
-#: ../src/ui/theme-viewer.c:799
+#: ../src/ui/theme-viewer.c:800
 #, c-format
 msgid "Usage: metacity-theme-viewer [THEMENAME]\n"
 msgstr "વપરાશઃ  મેટાસીટી-થીમ-દર્શક [થીમનુ નામ]\n"
 
-#: ../src/ui/theme-viewer.c:806
+#: ../src/ui/theme-viewer.c:807
 #, c-format
 msgid "Error loading theme: %s\n"
 msgstr "થીમ લાવવામાં ભૂલ: %s\n"
 
-#: ../src/ui/theme-viewer.c:812
+#: ../src/ui/theme-viewer.c:813
 #, c-format
 msgid "Loaded theme \"%s\" in %g seconds\n"
 msgstr "લવાયેલ થીમ \"%s\" %g સેકન્ડોમાં\n"
 
-#: ../src/ui/theme-viewer.c:853
+#: ../src/ui/theme-viewer.c:854
 msgid "Normal Title Font"
 msgstr "સામાન્ય શીર્ષક ફોન્ટ"
 
-#: ../src/ui/theme-viewer.c:859
+#: ../src/ui/theme-viewer.c:860
 msgid "Small Title Font"
 msgstr "નાના શીર્ષક ફોન્ટ"
 
-#: ../src/ui/theme-viewer.c:865
+#: ../src/ui/theme-viewer.c:866
 msgid "Large Title Font"
 msgstr "મોટા શીર્ષક ફોન્ટ"
 
-#: ../src/ui/theme-viewer.c:870
+#: ../src/ui/theme-viewer.c:871
 msgid "Button Layouts"
 msgstr "બટનના દેખાવો"
 
-#: ../src/ui/theme-viewer.c:875
+#: ../src/ui/theme-viewer.c:876
 msgid "Benchmark"
 msgstr "બેન્ચમાર્ક"
 
-#: ../src/ui/theme-viewer.c:922
+#: ../src/ui/theme-viewer.c:923
 msgid "Window Title Goes Here"
 msgstr "વિન્ડોનુ શીર્ષક અંહિ જાય છે"
 
-#: ../src/ui/theme-viewer.c:1026
+#: ../src/ui/theme-viewer.c:1027
 #, c-format
 msgid ""
 "Drew %d frames in %g client-side seconds (%g milliseconds per frame) and %g "
@@ -2300,39 +2319,39 @@ msgstr ""
 "ડ્રિયુ %d ચોકઠાંઓ %g ક્લાઈન્ટ બાજુની સેકન્ડો (%g મિલિસેકન્ડો પ્રતિ ચોકઠાએ) અને %g દિવાલ "
 "ઘડિયાળના સમયની સેકન્ડો X સર્વર સ્રોતોને સમાવીને (%g મિલિસેકન્ડો પ્રતિ ચોકઠાએ)\n"
 
-#: ../src/ui/theme-viewer.c:1245
+#: ../src/ui/theme-viewer.c:1246
 msgid "position expression test returned TRUE but set error"
 msgstr "જગ્યા સમીકરણ ચકાસણી સાચુ મોકલશે પરંતુ ભૂલ સુયોજિત કરશે"
 
-#: ../src/ui/theme-viewer.c:1247
+#: ../src/ui/theme-viewer.c:1248
 msgid "position expression test returned FALSE but didn't set error"
 msgstr "જગ્યા સમીકરણ ચકાસણી બૂલ મોકલશે પરંતુ ભૂલ સુયોજિત કરતું નથી"
 
-#: ../src/ui/theme-viewer.c:1251
+#: ../src/ui/theme-viewer.c:1252
 msgid "Error was expected but none given"
 msgstr "ભૂલ થવાની સંભાવના હતી પરંતુ કંઈ અપાયુ નથી"
 
-#: ../src/ui/theme-viewer.c:1253
+#: ../src/ui/theme-viewer.c:1254
 #, c-format
 msgid "Error %d was expected but %d given"
 msgstr "ભૂલ %d થવાની સંભાવના હતી પરંતુ %d અપાયુ"
 
-#: ../src/ui/theme-viewer.c:1259
+#: ../src/ui/theme-viewer.c:1260
 #, c-format
 msgid "Error not expected but one was returned: %s"
 msgstr "ભૂલ થવાની સંભાવના હતી પરંતુ એક મોકલાયુ હતું: %s"
 
-#: ../src/ui/theme-viewer.c:1263
+#: ../src/ui/theme-viewer.c:1264
 #, c-format
 msgid "x value was %d, %d was expected"
 msgstr "x કિંમત %d હતી, %d ની ઈચ્છા હતી"
 
-#: ../src/ui/theme-viewer.c:1266
+#: ../src/ui/theme-viewer.c:1267
 #, c-format
 msgid "y value was %d, %d was expected"
 msgstr "y કિંમત %d હતી, %d ની ઈચ્છા હતી"
 
-#: ../src/ui/theme-viewer.c:1331
+#: ../src/ui/theme-viewer.c:1332
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr "%d યામાક્ષ સમીકરણ %g સેકન્ડોમાં પદચ્છેદ થયુ (સરેરાશ %g સેકન્ડો)\n"
