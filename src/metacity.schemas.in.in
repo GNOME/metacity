@@ -45,7 +45,7 @@
       <applyto>/apps/metacity/general/button_layout</applyto>
       <owner>metacity</owner>
       <type>string</type>
-      <default>menu:minimize,maximize,close</default>
+      <default>:minimize,maximize,close</default>
       <locale name="C">
          <short>Arrangement of buttons on the titlebar</short>
          <long>
