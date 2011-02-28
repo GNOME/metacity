@@ -4,33 +4,46 @@
 #
 # Peteris Krisjanis <pecisk@inbox.lv>, 2002.
 # Raivis Dejus <orvils@gmail.com>, 2006, 2007, 2009.
-# Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>, 2009.
+# Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>, 2009, 2011.
 # Anita Reitere <nitalynx@gmail.com>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: lv\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug."
 "cgi?product=metacity&component=general\n"
-"POT-Creation-Date: 2010-03-25 08:53+0000\n"
-"PO-Revision-Date: 2010-04-06 10:46+0300\n"
-"Last-Translator: Anita Reitere <nitalynx@gmail.com>\n"
-"Language-Team: Latviešu <kde-i18n-doc@kde.org>\n"
+"POT-Creation-Date: 2011-02-04 17:29+0000\n"
+"PO-Revision-Date: 2011-02-07 11:10+0200\n"
+"Last-Translator: Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>\n"
+"Language-Team: Latvian <lata-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.1\n"
 "Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
 
-#: ../src/50-metacity-desktop-key.xml.in.h:1
-msgid "Desktop"
-msgstr "Darbvirsma"
+#: ../src/50-metacity-launchers.xml.in.h:1
+msgid "Launchers"
+msgstr "Palaidēji"
 
-#: ../src/50-metacity-key.xml.in.h:1
-msgid "Window Management"
-msgstr "Logu pārvaldība"
+#: ../src/50-metacity-navigation.xml.in.h:1
+msgid "Navigation"
+msgstr "Navigācija"
 
-#: ../src/core/bell.c:294
+#: ../src/50-metacity-screenshot.xml.in.h:1
+msgid "Screen Shots"
+msgstr "Ekrānattēli"
+
+#: ../src/50-metacity-system.xml.in.h:1
+msgid "System"
+msgstr "Sistēma"
+
+#: ../src/50-metacity-windows.xml.in.h:1
+#| msgid "/_Windows"
+msgid "Windows"
+msgstr "Windows"
+
+#: ../src/core/bell.c:299
 msgid "Bell event"
 msgstr "Zvana notikums"
 
@@ -42,16 +55,10 @@ msgstr "Nezināms logu informācijas pieprasījums: %d"
 #. Translators: %s is a window title
 #: ../src/core/delete.c:96
 #, c-format
-#| msgid "\"%s\" is not responding."
 msgid "<tt>%s</tt> is not responding."
 msgstr "<tt>%s</tt> nereaģē."
 
 #: ../src/core/delete.c:101
-#| msgid ""
-#| "<big><b><tt>%s</tt> is not responding.</b></big>\n"
-#| "\n"
-#| "<i>You may choose to wait a short while for it to continue or force the "
-#| "application to quit entirely.</i>"
 msgid ""
 "You may choose to wait a short while for it to continue or force the "
 "application to quit entirely."
@@ -98,7 +105,7 @@ msgstr ""
 msgid "Fatal IO error %d (%s) on display '%s'.\n"
 msgstr "Fatāla IO kļūda %d (%s) displejā '%s'.\n"
 
-#: ../src/core/keybindings.c:680
+#: ../src/core/keybindings.c:729
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
@@ -109,7 +116,7 @@ msgstr ""
 #. Displayed when a keybinding which is
 #. * supposed to launch a program fails.
 #.
-#: ../src/core/keybindings.c:2294
+#: ../src/core/keybindings.c:2343
 #, c-format
 msgid ""
 "There was an error running <tt>%s</tt>:\n"
@@ -120,12 +127,12 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/core/keybindings.c:2383
+#: ../src/core/keybindings.c:2432
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "Komanda %d nav definēta.\n"
 
-#: ../src/core/keybindings.c:3337
+#: ../src/core/keybindings.c:3386
 #, c-format
 msgid "No terminal command has been defined.\n"
 msgstr "Termināla komandas nav definētas.\n"
@@ -186,12 +193,12 @@ msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr "Neveidot pilnekrāna logus, kuri ir maksimizēti un bez noformējuma"
 
-#: ../src/core/main.c:528
+#: ../src/core/main.c:527
 #, c-format
 msgid "Failed to scan themes directory: %s\n"
 msgstr "Neizdevās noskanēt tēmu direktoriju: %s\n"
 
-#: ../src/core/main.c:544
+#: ../src/core/main.c:543
 #, c-format
 msgid ""
 "Could not find a theme! Be sure %s exists and contains the usual themes.\n"
@@ -199,7 +206,7 @@ msgstr ""
 "Neizdevās atrast tēmu! Pārliecinieties, ka %s eksistē un satur parastās "
 "tēmas.\n"
 
-#: ../src/core/main.c:603
+#: ../src/core/main.c:602
 #, c-format
 msgid "Failed to restart: %s\n"
 msgstr "Neizdevās pārstartēt: %s\n"
@@ -259,12 +266,12 @@ msgstr ""
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr "Kļūda, iestatot darbvietu daudzumu uz %d: %s\n"
 
-#: ../src/core/prefs.c:1953 ../src/core/prefs.c:2456
+#: ../src/core/prefs.c:1959 ../src/core/prefs.c:2461
 #, c-format
 msgid "Workspace %d"
 msgstr "Darbvieta %d"
 
-#: ../src/core/prefs.c:1983 ../src/core/prefs.c:2161
+#: ../src/core/prefs.c:1988 ../src/core/prefs.c:2166
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -273,12 +280,12 @@ msgstr ""
 "\"%s\", kas atrasta konfigurācijas datubāzē, nav derīga vērtība "
 "taustiņsasaistei \"%s\"\n"
 
-#: ../src/core/prefs.c:2537
+#: ../src/core/prefs.c:2542
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr "Kļūda, iestatot darbvietas %d nosaukumu uz \"%s\": %s\n"
 
-#: ../src/core/prefs.c:2741
+#: ../src/core/prefs.c:2746
 #, c-format
 msgid "Error setting compositor status: %s\n"
 msgstr "Kļūda, iestatot kompozicionētāja statusu: %s\n"
@@ -329,8 +336,8 @@ msgstr ""
 "Formāts izskatās kā \"<Control>a\" vai \"<Shift><Alt>F1\".\n"
 "\n"
 "Parsēšana ir diezgan liberāla un pieļauj lielos un mazos burtus, arī "
-"saīsinājumus, tādus kā \"<Ctl>\" un \"<Ctrl>\". Ja ierakstīsiet šeit "
-"īpašo virkni \"disabled\", šai darbībai nebūs taustiņsasaistes."
+"saīsinājumus, tādus kā \"<Ctl>\" un \"<Ctrl>\". Ja ierakstīsiet šeit īpašo "
+"virkni \"disabled\", šai darbībai nebūs taustiņsasaistes."
 
 #: ../src/core/schema-bindings.c:177
 msgid ""
@@ -347,66 +354,60 @@ msgstr ""
 "Formāts izskatās kā \"<Control>a\" vai \"<Shift><Alt>F1\".\n"
 "\n"
 "Parsēšana ir diezgan liberāla un pieļauj lielos un mazos burtus, arī "
-"saīsinājumus, tādus kā \"<Ctl>\" un \"<Ctrl>\". Ja ierakstīsiet šeit "
-"īpašo virkni \"disabled\", šai darbībai nebūs taustiņsasaistes.\n"
+"saīsinājumus, tādus kā \"<Ctl>\" un \"<Ctrl>\". Ja ierakstīsiet šeit īpašo "
+"virkni \"disabled\", šai darbībai nebūs taustiņsasaistes.\n"
 "\n"
 "Šo taustiņsaiti var apvērst, turot nospiestu \"shift\" taustiņu, tāpēc "
 "\"shift\" taustiņu tajā nevar lietot."
 
-#: ../src/core/session.c:850 ../src/core/session.c:857
+#: ../src/core/session.c:842 ../src/core/session.c:849
 #, c-format
 msgid "Could not create directory '%s': %s\n"
 msgstr "Neizdevās izveidot mapi '%s': %s\n"
 
-#: ../src/core/session.c:867
+#: ../src/core/session.c:859
 #, c-format
 msgid "Could not open session file '%s' for writing: %s\n"
 msgstr "Neizdevās atvērt sesijas failu '%s' rakstīšanai: %s\n"
 
-#: ../src/core/session.c:1008
+#: ../src/core/session.c:1000
 #, c-format
 msgid "Error writing session file '%s': %s\n"
 msgstr "Kļūda, ierakstot sesijas failu '%s': %s\n"
 
-#: ../src/core/session.c:1013
+#: ../src/core/session.c:1005
 #, c-format
 msgid "Error closing session file '%s': %s\n"
 msgstr "Kļūda, aizverot sesijas failu '%s': %s\n"
 
-#. oh, just give up
-#: ../src/core/session.c:1106
-#, c-format
-msgid "Failed to read saved session file %s: %s\n"
-msgstr "Neizdevās nolasīt saglabāto sesijas failu %s: %s\n"
-
-#: ../src/core/session.c:1145
+#: ../src/core/session.c:1135
 #, c-format
 msgid "Failed to parse saved session file: %s\n"
 msgstr "Kļūda, parsējot saglabāto sesijas failu: %s\n"
 
-#: ../src/core/session.c:1194
+#: ../src/core/session.c:1184
 #, c-format
 msgid "<metacity_session> attribute seen but we already have the session ID"
 msgstr "<metacity_session> atribūts pamanīts, bet mums jau ir sesijas ID"
 
-#: ../src/core/session.c:1207 ../src/core/session.c:1282
-#: ../src/core/session.c:1314 ../src/core/session.c:1386
-#: ../src/core/session.c:1446
+#: ../src/core/session.c:1197 ../src/core/session.c:1272
+#: ../src/core/session.c:1304 ../src/core/session.c:1376
+#: ../src/core/session.c:1436
 #, c-format
 msgid "Unknown attribute %s on <%s> element"
 msgstr "Nezināms atribūts %s <%s> elementam"
 
-#: ../src/core/session.c:1224
+#: ../src/core/session.c:1214
 #, c-format
 msgid "nested <window> tag"
 msgstr "ligzdota <window> birka"
 
-#: ../src/core/session.c:1466
+#: ../src/core/session.c:1456
 #, c-format
 msgid "Unknown element %s"
 msgstr "Nezināms elements %s"
 
-#: ../src/core/session.c:1818
+#: ../src/core/session.c:1808
 msgid ""
 "These windows do not support &quot;save current setup&quot; and will have to "
 "be restarted manually next time you log in."
@@ -458,7 +459,7 @@ msgid "Metacity"
 msgstr "Metacity"
 
 #. first time through
-#: ../src/core/window.c:5642
+#: ../src/core/window.c:5704
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -474,15 +475,14 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/core/window.c:6207
+#: ../src/core/window.c:6269
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
 "d x %d and max size %d x %d; this doesn't make much sense.\n"
 msgstr ""
-"Logs %s iestata MWM padomu, ka tā izmērs nav maināms, bet iestata "
-"minimālo izmēru %d x %d un maksimālo izmēru %d x %d; tas ir diezgan dīvaini."
-"\n"
+"Logs %s iestata MWM padomu, ka tā izmērs nav maināms, bet iestata minimālo "
+"izmēru %d x %d un maksimālo izmēru %d x %d; tas ir diezgan dīvaini.\n"
 
 #: ../src/core/window-props.c:244
 #, c-format
@@ -596,259 +596,279 @@ msgid "Switch to workspace 12"
 msgstr "Pārslēgties uz 12. darbvietu"
 
 #: ../src/include/all-keybindings.h:122
-msgid "Switch to workspace on the left of the current workspace"
-msgstr "Pārslēgties uz darbvietu pa kreisi no pašreizējās"
+#| msgid "Move to Workspace _Left"
+msgid "Move to workspace left"
+msgstr "Pārvietot uz darbvietu pa kreisi"
 
 #: ../src/include/all-keybindings.h:126
-msgid "Switch to workspace on the right of the current workspace"
-msgstr "Pārslēgties uz darbvietu pa labi no pašreizējās"
+#| msgid "Move to Workspace R_ight"
+msgid "Move to workspace right"
+msgstr "Pārvietot uz darbvietu pa labi"
 
 #: ../src/include/all-keybindings.h:130
-msgid "Switch to workspace above the current workspace"
-msgstr "Pārslēgties uz darbvietu virs pašreizējās"
+#| msgid "Move to Workspace _Left"
+msgid "Move to workspace above"
+msgstr "Pārvietot uz darbvietu uz augšu"
 
 #: ../src/include/all-keybindings.h:134
-msgid "Switch to workspace below the current workspace"
-msgstr "Pārslēgties uz darbvietu zem pašreizējās"
+#| msgid "Move to Workspace _Down"
+msgid "Move to workspace below"
+msgstr "Pārvietot uz darbvietu zemāk"
 
 #: ../src/include/all-keybindings.h:150
-msgid "Move between windows of an application, using a popup window"
-msgstr "Pārvietoties starp lietotnes logiem, lietojot izlecošo logu"
+#| msgid "Move between windows of an application immediately"
+msgid "Switch windows of an application"
+msgstr "Pārslēgt lietotnes logus"
 
 #: ../src/include/all-keybindings.h:153
-msgid "Move backward between windows of an application, using a popup window"
-msgstr "Pārvietoties atpakaļ starp lietotnes logiem, lietojot izlecošo logu"
+#| msgid "Move between windows of an application immediately"
+msgid "Reverse switch windows of an application"
+msgstr "Pārslēgt lietotnes logus pretēji"
 
-#: ../src/include/all-keybindings.h:157
-msgid "Move between windows, using a popup window"
-msgstr "Pārvietoties starp logiem, lietojot izlecošo logu"
+#: ../src/include/all-keybindings.h:156
+msgid "Switch applications"
+msgstr "Pārslēgt lietotnes"
 
-#: ../src/include/all-keybindings.h:160
-msgid "Move backward between windows, using a popup window"
-msgstr "Pārvietoties atpakaļ starp logiem, lietojot izlecošo logu"
+#: ../src/include/all-keybindings.h:159
+msgid "Reverse switch applications"
+msgstr "Pārslēgt lietotnes pretēji"
 
-#: ../src/include/all-keybindings.h:163
-msgid "Move between panels and the desktop, using a popup window"
-msgstr "Pārvietoties starp paneļiem un darbvirsmu, lietojot izlecošo logu"
+#: ../src/include/all-keybindings.h:162
+msgid "Switch system controls"
+msgstr "Pārslēgt sistēmas vadīklas"
 
-#: ../src/include/all-keybindings.h:166
-msgid "Move backward between panels and the desktop, using a popup window"
-msgstr ""
-"Pārvietoties atpakaļ starp paneļiem un darbvirsmu, lietojot izlecošo logu"
+#: ../src/include/all-keybindings.h:165
+msgid "Reverse switch system controls"
+msgstr "Pārslēgt sistēmas vadīklas pretēji"
 
-#: ../src/include/all-keybindings.h:171
-msgid "Move between windows of an application immediately"
-msgstr "Nekavējoties pārvietoties starp lietotņu logiem"
+#: ../src/include/all-keybindings.h:169
+#| msgid "Move between windows of an application immediately"
+msgid "Switch windows of an app directly"
+msgstr "Pārslēgt lietotnes logu tieši"
 
-#: ../src/include/all-keybindings.h:174
-msgid "Move backward between windows of an application immediately"
-msgstr "Nekavējoties pārvietoties atpakaļ starp lietotņu logiem"
+#: ../src/include/all-keybindings.h:172
+#| msgid "Move between windows of an application immediately"
+msgid "Reverse switch windows of an app directly"
+msgstr "Pārslēgt lietotnes logu tieši apgriezti"
 
-#: ../src/include/all-keybindings.h:177
-msgid "Move between windows immediately"
-msgstr "Pārvietoties starp logiem nekavējoties"
+#: ../src/include/all-keybindings.h:175
+msgid "Switch windows directly"
+msgstr "Pārslēgt logu tieši"
 
-#: ../src/include/all-keybindings.h:180
-msgid "Move backward between windows immediately"
-msgstr "Nekavējoties pārvietoties atpakaļ starp logiem"
+#: ../src/include/all-keybindings.h:178
+msgid "Reverse switch windows directly"
+msgstr "Pārslēgt logu tieši apgriezti"
 
-#: ../src/include/all-keybindings.h:183
-msgid "Move between panels and the desktop immediately"
-msgstr "Nekavējoties pārvietoties starp paneļiem un darbvirsmu"
+#: ../src/include/all-keybindings.h:181
+msgid "Switch system controls directly"
+msgstr "Pārslēgt sistēmas vadīklas tieši"
 
-#: ../src/include/all-keybindings.h:186
-msgid "Move backward between panels and the desktop immediately"
-msgstr "Nekavējoties pārvietoties atpakaļ starp paneļiem un darbvirsmu"
+#: ../src/include/all-keybindings.h:184
+msgid "Reverse switch system controls directly"
+msgstr "Pārslēgt sistēmas vadīklas tieši pretēji"
 
-#: ../src/include/all-keybindings.h:191
-msgid "Hide all normal windows and set focus to the desktop"
-msgstr "Paslēpt visus logus un fokusēties uz darbvirsmu"
+#: ../src/include/all-keybindings.h:189
+#| msgid "Hide all normal windows and set focus to the desktop"
+msgid "Hide all normal windows"
+msgstr "Slēpt visus parastos logus"
 
-#: ../src/include/all-keybindings.h:194
-msgid "Show the panel's main menu"
-msgstr "Parāda paneļa galveno izvēlni"
+#: ../src/include/all-keybindings.h:192
+msgid "Show the activities overview"
+msgstr "Rādīt aktivitāšu pārskatu"
 
-#: ../src/include/all-keybindings.h:197
-msgid "Show the panel's \"Run Application\" dialog box"
-msgstr "Parāda paneļa \"lietotņu palaišanas\" logu"
+#: ../src/include/all-keybindings.h:195
+#| msgid "Show the panel's main menu"
+msgid "Show the run command prompt"
+msgstr "Rādīt palaišanas komandrindu"
 
-#: ../src/include/all-keybindings.h:238
+#: ../src/include/all-keybindings.h:236
 msgid "Take a screenshot"
 msgstr "Uzņemt ekrānattēlu"
 
-#: ../src/include/all-keybindings.h:240
+#: ../src/include/all-keybindings.h:238
 msgid "Take a screenshot of a window"
 msgstr "Uzņemt loga ekrānattēlu"
 
-#: ../src/include/all-keybindings.h:242
-msgid "Run a terminal"
+#: ../src/include/all-keybindings.h:240
+#| msgid "Run a terminal"
+msgid "Launch Terminal"
 msgstr "Palaist termināli"
 
-#: ../src/include/all-keybindings.h:257
+#: ../src/include/all-keybindings.h:255
 msgid "Activate the window menu"
 msgstr "Aktivizēt loga izvēlni"
 
-#: ../src/include/all-keybindings.h:260
+#: ../src/include/all-keybindings.h:258
 msgid "Toggle fullscreen mode"
 msgstr "Pārslēgt pilnekrāna režīmu"
 
-#: ../src/include/all-keybindings.h:262
+#: ../src/include/all-keybindings.h:260
 msgid "Toggle maximization state"
 msgstr "Pārslēgt maksimizācijas stāvokli"
 
-#: ../src/include/all-keybindings.h:264
-msgid "Toggle whether a window will always be visible over other windows"
-msgstr "Pārslēdz to, vai logs vienmēr redzams virs citiem logiem"
+#: ../src/include/all-keybindings.h:262
+msgid "Toggle window always appearing on top"
+msgstr "Pārslēgt loga atrašanos vienmēr virspusē"
 
-#: ../src/include/all-keybindings.h:266
+#: ../src/include/all-keybindings.h:264
 msgid "Maximize window"
 msgstr "Maksimizēt logu"
 
-#: ../src/include/all-keybindings.h:268
+#: ../src/include/all-keybindings.h:266
 msgid "Restore window"
 msgstr "Atjaunot logu"
 
-#: ../src/include/all-keybindings.h:270
+#: ../src/include/all-keybindings.h:268
 msgid "Toggle shaded state"
 msgstr "Pārslēgt ēnoto stāvokli"
 
-#: ../src/include/all-keybindings.h:272
+#: ../src/include/all-keybindings.h:270
 msgid "Minimize window"
 msgstr "Minimizēt logu"
 
-#: ../src/include/all-keybindings.h:274
+#: ../src/include/all-keybindings.h:272
 msgid "Close window"
 msgstr "Aizvērt logu"
 
-#: ../src/include/all-keybindings.h:276
+#: ../src/include/all-keybindings.h:274
 msgid "Move window"
 msgstr "Pārvietot logu"
 
-#: ../src/include/all-keybindings.h:278
+#: ../src/include/all-keybindings.h:276
 msgid "Resize window"
 msgstr "Mainīt loga izmēru"
 
-#: ../src/include/all-keybindings.h:281
-msgid "Toggle whether window is on all workspaces or just one"
-msgstr "Pārslēgt, vai logs ir redzams visās darbvirsmās vai tikai vienā"
+#: ../src/include/all-keybindings.h:279
+#| msgid "Toggle whether window is on all workspaces or just one"
+msgid "Toggle window on all workspaces or one"
+msgstr "Pārslēgt loga redzamību visās darbvirsmās vai tikai vienā"
 
-#: ../src/include/all-keybindings.h:285
+#: ../src/include/all-keybindings.h:283
 msgid "Move window to workspace 1"
 msgstr "Pārvietot logu uz 1. darbvietu"
 
-#: ../src/include/all-keybindings.h:288
+#: ../src/include/all-keybindings.h:286
 msgid "Move window to workspace 2"
 msgstr "Pārvietot logu uz 2. darbvietu"
 
-#: ../src/include/all-keybindings.h:291
+#: ../src/include/all-keybindings.h:289
 msgid "Move window to workspace 3"
 msgstr "Pārvietot logu uz 3. darbvietu"
 
-#: ../src/include/all-keybindings.h:294
+#: ../src/include/all-keybindings.h:292
 msgid "Move window to workspace 4"
 msgstr "Pārvietot logu uz 4. darbvietu"
 
-#: ../src/include/all-keybindings.h:297
+#: ../src/include/all-keybindings.h:295
 msgid "Move window to workspace 5"
 msgstr "Pārvietot logu uz 5. darbvietu"
 
-#: ../src/include/all-keybindings.h:300
+#: ../src/include/all-keybindings.h:298
 msgid "Move window to workspace 6"
 msgstr "Pārvietot logu uz 6. darbvietu"
 
-#: ../src/include/all-keybindings.h:303
+#: ../src/include/all-keybindings.h:301
 msgid "Move window to workspace 7"
 msgstr "Pārvietot logu uz 7. darbvietu"
 
-#: ../src/include/all-keybindings.h:306
+#: ../src/include/all-keybindings.h:304
 msgid "Move window to workspace 8"
 msgstr "Pārvietot logu uz 8. darbvietu"
 
-#: ../src/include/all-keybindings.h:309
+#: ../src/include/all-keybindings.h:307
 msgid "Move window to workspace 9"
 msgstr "Pārvietot logu uz 9. darbvietu"
 
-#: ../src/include/all-keybindings.h:312
+#: ../src/include/all-keybindings.h:310
 msgid "Move window to workspace 10"
 msgstr "Pārvietot logu uz 10. darbvietu"
 
-#: ../src/include/all-keybindings.h:315
+#: ../src/include/all-keybindings.h:313
 msgid "Move window to workspace 11"
 msgstr "Pārvietot logu uz 11. darbvietu"
 
-#: ../src/include/all-keybindings.h:318
+#: ../src/include/all-keybindings.h:316
 msgid "Move window to workspace 12"
 msgstr "Pārvietot logu uz 12. darbvietu"
 
-#: ../src/include/all-keybindings.h:330
+#: ../src/include/all-keybindings.h:328
 msgid "Move window one workspace to the left"
 msgstr "Pārvietot logu vienu darbvietu pa kreisi"
 
-#: ../src/include/all-keybindings.h:333
+#: ../src/include/all-keybindings.h:331
 msgid "Move window one workspace to the right"
 msgstr "Pārvietot logu vienu darbvietu pa labi"
 
-#: ../src/include/all-keybindings.h:336
+#: ../src/include/all-keybindings.h:334
 msgid "Move window one workspace up"
 msgstr "Pārvietot logu vienu darbvietu augšup"
 
-#: ../src/include/all-keybindings.h:339
+#: ../src/include/all-keybindings.h:337
 msgid "Move window one workspace down"
 msgstr "Pārvietot logu vienu darbvietu lejup"
 
-#: ../src/include/all-keybindings.h:342
-msgid "Raise window if it's covered by another window, otherwise lower it"
-msgstr "Pacelt logu, ja to aizsedz kāds cits, citādi pazemināt"
+#: ../src/include/all-keybindings.h:340
+#| msgid "Raise window if it's covered by another window, otherwise lower it"
+msgid "Raise window if covered, otherwise lower it"
+msgstr "Pacelt logu, ja to aizsedz, citādi pazemināt"
 
-#: ../src/include/all-keybindings.h:344
+#: ../src/include/all-keybindings.h:342
 msgid "Raise window above other windows"
 msgstr "Pacelt logu virs citiem logiem"
 
-#: ../src/include/all-keybindings.h:346
+#: ../src/include/all-keybindings.h:344
 msgid "Lower window below other windows"
 msgstr "Pazemināt logu zem citiem logiem"
 
-#: ../src/include/all-keybindings.h:350
+#: ../src/include/all-keybindings.h:348
 msgid "Maximize window vertically"
 msgstr "Maksimizēt logu vertikāli"
 
-#: ../src/include/all-keybindings.h:354
+#: ../src/include/all-keybindings.h:352
 msgid "Maximize window horizontally"
 msgstr "Maksimizēt logu horizontāli"
 
-#: ../src/include/all-keybindings.h:358
-msgid "Move window to north-west (top left) corner"
-msgstr "Pārvietot logu uz ekrāna ziemeļrietumu (augšējo kreiso) stūri"
+#: ../src/include/all-keybindings.h:356
+#| msgid "Move window to north-west (top left) corner"
+msgid "Move window to top left corner"
+msgstr "Pārvietot logu uz ekrāna augšējo kreiso stūri"
 
-#: ../src/include/all-keybindings.h:361
-msgid "Move window to north-east (top right) corner"
-msgstr "Pārvietot logu uz ekrāna ziemeļaustrumu (augšējo labo) stūri"
+#: ../src/include/all-keybindings.h:359
+#| msgid "Move window to north-east (top right) corner"
+msgid "Move window to top right corner"
+msgstr "Pārvietot logu uz ekrāna augšējo labo stūri"
 
-#: ../src/include/all-keybindings.h:364
-msgid "Move window to south-west (bottom left) corner"
-msgstr "Pārvietot logu uz ekrāna dienvidrietumu (apakšējo kreiso) stūri"
+#: ../src/include/all-keybindings.h:362
+#| msgid "Move window to south-west (bottom left) corner"
+msgid "Move window to bottom left corner"
+msgstr "Pārvietot logu uz ekrāna apakšējo kreiso stūri"
 
-#: ../src/include/all-keybindings.h:367
-msgid "Move window to south-east (bottom right) corner"
-msgstr "Pārvietot logu uz ekrāna dienvidaustrumu (apakšējo labo) stūri"
+#: ../src/include/all-keybindings.h:365
+#| msgid "Move window to south-east (bottom right) corner"
+msgid "Move window to bottom right corner"
+msgstr "Pārvietot logu uz ekrāna apakšējo labo stūri"
 
-#: ../src/include/all-keybindings.h:371
-msgid "Move window to north (top) side of screen"
-msgstr "Pārvietot logu uz ekrāna ziemeļu (augšējo) malu"
+#: ../src/include/all-keybindings.h:369
+#| msgid "Move window to center of screen"
+msgid "Move window to top edge of screen"
+msgstr "Pārvietot logu uz ekrāna augšējo malu"
 
-#: ../src/include/all-keybindings.h:374
-msgid "Move window to south (bottom) side of screen"
-msgstr "Pārvietot logu uz ekrāna dienvidu (apakšējo) malu"
+#: ../src/include/all-keybindings.h:372
+#| msgid "Move window to south (bottom) side of screen"
+msgid "Move window to bottom edge of screen"
+msgstr "Pārvietot logu uz ekrāna apakšējo malu"
 
-#: ../src/include/all-keybindings.h:377
-msgid "Move window to east (right) side of screen"
-msgstr "Pārvietot logu uz ekrāna austrumu (labo) malu"
+#: ../src/include/all-keybindings.h:375
+#| msgid "Move window to east (right) side of screen"
+msgid "Move window to right side of screen"
+msgstr "Pārvietot logu uz ekrāna labo malu"
 
-#: ../src/include/all-keybindings.h:380
-msgid "Move window to west (left) side of screen"
-msgstr "Pārvietot logu uz ekrāna rietumu (kreiso) malu"
+#: ../src/include/all-keybindings.h:378
+#| msgid "Move window to west (left) side of screen"
+msgid "Move window to left side of screen"
+msgstr "Pārvietot logu uz ekrāna kreiso malu"
 
-#: ../src/include/all-keybindings.h:383
+#: ../src/include/all-keybindings.h:381
 msgid "Move window to center of screen"
 msgstr "Pārvietot logu uz ekrāna centru"
 
@@ -906,12 +926,6 @@ msgid "Automatically raises the focused window"
 msgstr "Automātiski pacelt fokusēto logu"
 
 #: ../src/metacity.schemas.in.in.h:9
-#| msgid ""
-#| "Clicking a window while holding down this modifier key will move the "
-#| "window (left click), resize the window (middle click), or show the window "
-#| "menu (right click). The left and right operations may be swapped using "
-#| "the \"mouse_button_resize\" key. Modifier is expressed as \"&lt;Alt&gt;\" "
-#| "or \"&lt;Super&gt;\" for example."
 msgid ""
 "Clicking a window while holding down this modifier key will move the window "
 "(left click), resize the window (middle click), or show the window menu "
@@ -922,8 +936,8 @@ msgstr ""
 "Klikšķis uz loga, turot nospiestu šo taustiņu, pārvietos logu (kreisais "
 "klikšķis), mainīs loga izmēru (vidējais klikšķis) vai parādīs loga izvēlni "
 "(labais klikšķis). Kreisās un labās darbības var mainīt vietām ar "
-"\"mouse_button_resize\" atslēgu. Šo taustiņu apzīmē, piemēram, "
-"\"&lt;Alt&gt;\" vai \"&lt;Super&gt;\"."
+"\"mouse_button_resize\" atslēgu. Šo taustiņu apzīmē, piemēram, \"&lt;Alt&gt;"
+"\" vai \"&lt;Super&gt;\"."
 
 #: ../src/metacity.schemas.in.in.h:10
 msgid "Commands to run in response to keybindings"
@@ -982,8 +996,8 @@ msgid ""
 "If true, ignore the titlebar_font option, and use the standard application "
 "font for window titles."
 msgstr ""
-"Ja patiess, ignorēt titlebar_font iespēju un lietot standarta lietotņu "
-"fontu logu nosaukumiem."
+"Ja patiess, ignorēt titlebar_font iespēju un lietot standarta lietotņu fontu "
+"logu nosaukumiem."
 
 #: ../src/metacity.schemas.in.in.h:21
 msgid ""
@@ -1082,9 +1096,9 @@ msgstr ""
 "(klikšķināšana klienta laukumā, loga izmēra maiņa vai pārvietošana u.c.) "
 "parasti arī paceļ logu. Šīs vērtības iestatīšana par aplamu, kas ir ļoti "
 "nevēlams, atraus logu pacelšanu no citām lietotāju darbībām un ignorēs "
-"lietotņu pieprasījumus. Skatiet http://bugzilla.gnome.org/show_bug."
-"cgi?id=445447#c6. Logu vēl aizvien varēs pacelt ar Alt-kreiso-klikšķi uz "
-"loga, parasto klikšķi uz loga apdares vai ar speciālu ziņojumu no lapotāja, "
+"lietotņu pieprasījumus. Skatiet http://bugzilla.gnome.org/show_bug.cgi?"
+"id=445447#c6. Logu vēl aizvien varēs pacelt ar Alt-kreiso-klikšķi uz loga, "
+"parasto klikšķi uz loga apdares vai ar speciālu ziņojumu no lapotāja, "
 "piemēram, aktivēšanas pieprasījumu no uzdevumu saraksta sīklietotnēm. Šī "
 "opcija pašreiz ir atslēgta klikšķa fokusa režīmā. Ņemiet vērā: kad "
 "raise_on_click ir \"false\", lietotņu programmatiskie pieprasījumi pacelt "
@@ -1133,8 +1147,8 @@ msgid ""
 "will execute command_N."
 msgstr ""
 "Atslēgas /apps/metacity/global_keybindings/run_command_N definē "
-"taustiņsasaistes, kas atbilst šīm komandām. Taustiņsasaiste "
-"run_command_N palaidīs command_N."
+"taustiņsasaistes, kas atbilst šīm komandām. Taustiņsasaiste run_command_N "
+"palaidīs command_N."
 
 #: ../src/metacity.schemas.in.in.h:35
 msgid ""
@@ -1162,9 +1176,9 @@ msgid ""
 "\"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled\", "
 "then there will be no keybinding for this action."
 msgstr ""
-"Taustiņsasaiste, kas palaiž atbilstoši numurēto komandu no "
-"/apps/metacity/keybinding_commands. Formāts izskatās kā \"&lt;Control&gt;a\" "
-"vai \"&lt;Shift&gt;&lt;Alt&gt;F1. Parseris pieļauj lielos un mazos burtus un "
+"Taustiņsasaiste, kas palaiž atbilstoši numurēto komandu no /apps/metacity/"
+"keybinding_commands. Formāts izskatās kā \"&lt;Control&gt;a\" vai \"&lt;"
+"Shift&gt;&lt;Alt&gt;F1. Parseris pieļauj lielos un mazos burtus un "
 "saīsinājumus, tādus kā \"&lt;Ctl&gt;\" vai \"&lt;Ctrl&gt;\". Ja ierakstīsiet "
 "šeit \"disabled\", šai darbībai nebūs taustiņsasaistes."
 
@@ -1274,8 +1288,8 @@ msgid ""
 msgstr ""
 "Šī vērtība nodrošina papildu kontroli pār to, kā jaunizveidotie logi tiek "
 "aktivizēti. Tai ir divas iespējamas vērtības: \"smart\" izmanto standarta "
-"aktivizēšanas iestatījumus, \"strict\" nosaka, ka no komandrindas "
-"palaistie logi netiks aktivizēti."
+"aktivizēšanas iestatījumus, \"strict\" nosaka, ka no komandrindas palaistie "
+"logi netiks aktivizēti."
 
 #: ../src/metacity.schemas.in.in.h:48
 msgid ""
@@ -1315,47 +1329,47 @@ msgstr "Loga virsraksta fonts"
 msgid "Usage: %s\n"
 msgstr "Lietošana: %s\n"
 
-#: ../src/ui/frames.c:1118
+#: ../src/ui/frames.c:1120
 msgid "Close Window"
 msgstr "Aizvērt logu"
 
-#: ../src/ui/frames.c:1121
+#: ../src/ui/frames.c:1123
 msgid "Window Menu"
 msgstr "Loga izvēlne"
 
-#: ../src/ui/frames.c:1124
+#: ../src/ui/frames.c:1126
 msgid "Minimize Window"
 msgstr "Minimizēt logu"
 
-#: ../src/ui/frames.c:1127
+#: ../src/ui/frames.c:1129
 msgid "Maximize Window"
 msgstr "Maksimizēt logu"
 
-#: ../src/ui/frames.c:1130
+#: ../src/ui/frames.c:1132
 msgid "Restore Window"
 msgstr "Atjaunot logu"
 
-#: ../src/ui/frames.c:1133
+#: ../src/ui/frames.c:1135
 msgid "Roll Up Window"
 msgstr "Uzrullēt logu"
 
-#: ../src/ui/frames.c:1136
+#: ../src/ui/frames.c:1138
 msgid "Unroll Window"
 msgstr "Norullēt logu"
 
-#: ../src/ui/frames.c:1139
+#: ../src/ui/frames.c:1141
 msgid "Keep Window On Top"
 msgstr "Turēt logu virspusē"
 
-#: ../src/ui/frames.c:1142
+#: ../src/ui/frames.c:1144
 msgid "Remove Window From Top"
 msgstr "Aizvākt logu no virspuses"
 
-#: ../src/ui/frames.c:1145
+#: ../src/ui/frames.c:1147
 msgid "Always On Visible Workspace"
 msgstr "Vienmēr redzamajā darbvietā"
 
-#: ../src/ui/frames.c:1148
+#: ../src/ui/frames.c:1150
 msgid "Put Window On Only One Workspace"
 msgstr "Turēt logu tikai vienā darbvietā"
 
@@ -1558,48 +1572,48 @@ msgstr "Mod5"
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: ../src/ui/theme.c:254
+#: ../src/ui/theme.c:255
 msgid "top"
 msgstr "augša"
 
-#: ../src/ui/theme.c:256
+#: ../src/ui/theme.c:257
 msgid "bottom"
 msgstr "apakša"
 
-#: ../src/ui/theme.c:258
+#: ../src/ui/theme.c:259
 msgid "left"
 msgstr "pa kreisi"
 
-#: ../src/ui/theme.c:260
+#: ../src/ui/theme.c:261
 msgid "right"
 msgstr "pa labi"
 
-#: ../src/ui/theme.c:287
+#: ../src/ui/theme.c:288
 #, c-format
 msgid "frame geometry does not specify \"%s\" dimension"
 msgstr "rāmja ģeometrija nenosaka \"%s\" dimensiju"
 
-#: ../src/ui/theme.c:306
+#: ../src/ui/theme.c:307
 #, c-format
 msgid "frame geometry does not specify dimension \"%s\" for border \"%s\""
 msgstr "rāmja ģeometrija nenosaka dimensiju \"%s\" robežai \"%s\""
 
-#: ../src/ui/theme.c:343
+#: ../src/ui/theme.c:344
 #, c-format
 msgid "Button aspect ratio %g is not reasonable"
 msgstr "Pogas samērs %g nav saprātīgs"
 
-#: ../src/ui/theme.c:355
+#: ../src/ui/theme.c:356
 #, c-format
 msgid "Frame geometry does not specify size of buttons"
 msgstr "Rāmja ģeometrija nenosaka pogu izmēru"
 
-#: ../src/ui/theme.c:1020
+#: ../src/ui/theme.c:1058
 #, c-format
 msgid "Gradients should have at least two colors"
 msgstr "Krāsu pārejās ir jābūt vismaz divām krāsām"
 
-#: ../src/ui/theme.c:1146
+#: ../src/ui/theme.c:1184
 #, c-format
 msgid ""
 "GTK color specification must have the state in brackets, e.g. gtk:fg[NORMAL] "
@@ -1608,7 +1622,7 @@ msgstr ""
 "GTK krāsas specifikācijā ir jābūt stāvoklim iekavās, piem., gtk:fg[NORMAL], "
 "kur NORMAL ir stāvoklis; neizdevās parsēt \"%s\""
 
-#: ../src/ui/theme.c:1160
+#: ../src/ui/theme.c:1198
 #, c-format
 msgid ""
 "GTK color specification must have a close bracket after the state, e.g. gtk:"
@@ -1617,17 +1631,17 @@ msgstr ""
 "GTK krāsas specifikācijā ir jābūt kvadrātiekavām pēc stāvokļa, piem., gtk:fg"
 "[NORMAL], kur NORMAL ir stāvoklis; neizdevās parsēt \"%s\""
 
-#: ../src/ui/theme.c:1171
+#: ../src/ui/theme.c:1209
 #, c-format
 msgid "Did not understand state \"%s\" in color specification"
 msgstr "Nesaprotams stāvoklis \"%s\" krāsas specifikācijā"
 
-#: ../src/ui/theme.c:1184
+#: ../src/ui/theme.c:1222
 #, c-format
 msgid "Did not understand color component \"%s\" in color specification"
 msgstr "Nesaprotams krāsas komponents \"%s\" krāsas specifikācijā"
 
-#: ../src/ui/theme.c:1214
+#: ../src/ui/theme.c:1252
 #, c-format
 msgid ""
 "Blend format is \"blend/bg_color/fg_color/alpha\", \"%s\" does not fit the "
@@ -1636,96 +1650,96 @@ msgstr ""
 "Saplūšanas formāts ir \"blend/bg_color/fg_color/alpha\", \"%s\" neatbilst "
 "formātam"
 
-#: ../src/ui/theme.c:1225
+#: ../src/ui/theme.c:1263
 #, c-format
 msgid "Could not parse alpha value \"%s\" in blended color"
 msgstr "Neizdevās parsēt alfa vērtību \"%s\" sapludinātajā krāsā"
 
-#: ../src/ui/theme.c:1235
+#: ../src/ui/theme.c:1273
 #, c-format
 msgid "Alpha value \"%s\" in blended color is not between 0.0 and 1.0"
 msgstr "Alfa vērtība \"%s\" sapludinātajā krāsā nav starp 0.0 un 1.0"
 
-#: ../src/ui/theme.c:1282
+#: ../src/ui/theme.c:1320
 #, c-format
 msgid ""
 "Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
 msgstr ""
 "Ēnošanas formāts ir \"shade/base_color/factor\", \"%s\" neatbilst formātam"
 
-#: ../src/ui/theme.c:1293
+#: ../src/ui/theme.c:1331
 #, c-format
 msgid "Could not parse shade factor \"%s\" in shaded color"
 msgstr "Neizdevās parsēt ēnas faktoru \"%s\" ēnotajā krāsā"
 
-#: ../src/ui/theme.c:1303
+#: ../src/ui/theme.c:1341
 #, c-format
 msgid "Shade factor \"%s\" in shaded color is negative"
 msgstr "Ēnošanas faktors \"%s\" ēnotajā krāsā ir negatīvs"
 
-#: ../src/ui/theme.c:1332
+#: ../src/ui/theme.c:1370
 #, c-format
 msgid "Could not parse color \"%s\""
 msgstr "Neizdevās parsēt krāsu \"%s\""
 
-#: ../src/ui/theme.c:1582
+#: ../src/ui/theme.c:1624
 #, c-format
 msgid "Coordinate expression contains character '%s' which is not allowed"
 msgstr "Koordinātu izteiksme satur rakstzīmi '%s', kas nav atļauta"
 
-#: ../src/ui/theme.c:1609
+#: ../src/ui/theme.c:1651
 #, c-format
 msgid ""
 "Coordinate expression contains floating point number '%s' which could not be "
 "parsed"
 msgstr "Koordinātu izteiksme satur neparsējamu peldošā punkta skaitli '%s'"
 
-#: ../src/ui/theme.c:1623
+#: ../src/ui/theme.c:1665
 #, c-format
 msgid "Coordinate expression contains integer '%s' which could not be parsed"
 msgstr "Koordinātu izteiksme satur neparsējamu veselu skaitli '%s'"
 
-#: ../src/ui/theme.c:1745
+#: ../src/ui/theme.c:1787
 #, c-format
 msgid ""
 "Coordinate expression contained unknown operator at the start of this text: "
 "\"%s\""
 msgstr "Koordinātu izteiksme satur nezināmu operatoru šī teksta sākumā: \"%s\""
 
-#: ../src/ui/theme.c:1802
+#: ../src/ui/theme.c:1844
 #, c-format
 msgid "Coordinate expression was empty or not understood"
 msgstr "Koordinātu izteiksme bija tukša vai nesaprasta"
 
-#: ../src/ui/theme.c:1913 ../src/ui/theme.c:1923 ../src/ui/theme.c:1957
+#: ../src/ui/theme.c:1955 ../src/ui/theme.c:1965 ../src/ui/theme.c:1999
 #, c-format
 msgid "Coordinate expression results in division by zero"
 msgstr "Koordinātu izteiksme noved pie dalīšanas ar nulli"
 
-#: ../src/ui/theme.c:1965
+#: ../src/ui/theme.c:2007
 #, c-format
 msgid ""
 "Coordinate expression tries to use mod operator on a floating-point number"
 msgstr ""
 "Koordinātu izteiksme mēģina lietot mod operatoru uz peldošā punkta skaitļa"
 
-#: ../src/ui/theme.c:2021
+#: ../src/ui/theme.c:2063
 #, c-format
 msgid ""
 "Coordinate expression has an operator \"%s\" where an operand was expected"
 msgstr "Koordinātu izteiksmei ir operators \"%s\", kur tika gaidīts operands"
 
-#: ../src/ui/theme.c:2030
+#: ../src/ui/theme.c:2072
 #, c-format
 msgid "Coordinate expression had an operand where an operator was expected"
 msgstr "Koordinātu izteiksmei bija operands, kur tika gaidīts operators"
 
-#: ../src/ui/theme.c:2038
+#: ../src/ui/theme.c:2080
 #, c-format
 msgid "Coordinate expression ended with an operator instead of an operand"
 msgstr "Koordinātu izteiksme beidzās ar operatoru, nevis ar operandu"
 
-#: ../src/ui/theme.c:2048
+#: ../src/ui/theme.c:2090
 #, c-format
 msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
@@ -1734,39 +1748,39 @@ msgstr ""
 "Koordinātu izteiksmē ir operatoram \"%c\" sekojošais operators \"%c\" bez "
 "operanda to starpā"
 
-#: ../src/ui/theme.c:2195 ../src/ui/theme.c:2236
+#: ../src/ui/theme.c:2237 ../src/ui/theme.c:2278
 #, c-format
 msgid "Coordinate expression had unknown variable or constant \"%s\""
 msgstr "Koordinātu izteiksmē bija nezināms mainīgais vai konstante \"%s\""
 
-#: ../src/ui/theme.c:2290
+#: ../src/ui/theme.c:2332
 #, c-format
 msgid "Coordinate expression parser overflowed its buffer."
 msgstr "Koordinātu izteiksme pārpildīja parsera buferi."
 
-#: ../src/ui/theme.c:2319
+#: ../src/ui/theme.c:2361
 #, c-format
 msgid "Coordinate expression had a close parenthesis with no open parenthesis"
 msgstr ""
 "Koordinātu izteiksmei bija aizvērtās iekavas bez nevienas atvērtās iekavas"
 
-#: ../src/ui/theme.c:2383
+#: ../src/ui/theme.c:2425
 #, c-format
 msgid "Coordinate expression had an open parenthesis with no close parenthesis"
 msgstr ""
 "Koordinātu izteiksmei bija atvērtās iekavas bez nevienas aizvērtās iekavas"
 
-#: ../src/ui/theme.c:2394
+#: ../src/ui/theme.c:2436
 #, c-format
 msgid "Coordinate expression doesn't seem to have any operators or operands"
 msgstr "Šķiet, ka koordinātu izteiksmē nav ne operatoru, ne operandu"
 
-#: ../src/ui/theme.c:2596 ../src/ui/theme.c:2616 ../src/ui/theme.c:2636
+#: ../src/ui/theme.c:2640 ../src/ui/theme.c:2660 ../src/ui/theme.c:2680
 #, c-format
 msgid "Theme contained an expression that resulted in an error: %s\n"
 msgstr "Tēma saturēja izteiksmi, kas noveda pie kļūdas: %s\n"
 
-#: ../src/ui/theme.c:4203
+#: ../src/ui/theme.c:4315
 #, c-format
 msgid ""
 "<button function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> must be "
@@ -1775,42 +1789,41 @@ msgstr ""
 "<button function=\"%s\" state=\"%s\" draw_ops=\"jebkas\"/> jābūt noteiktam "
 "šajā rāmja stilā"
 
-#: ../src/ui/theme.c:4711 ../src/ui/theme.c:4736
+#: ../src/ui/theme.c:4827 ../src/ui/theme.c:4852
 #, c-format
 msgid ""
 "Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
 msgstr ""
 "Iztrūkst <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"jebkas\"/>"
 
-#: ../src/ui/theme.c:4780
+#: ../src/ui/theme.c:4896
 #, c-format
 msgid "Failed to load theme \"%s\": %s\n"
 msgstr "Neizdevās ielādēt tēmu \"%s\": %s\n"
 
-#: ../src/ui/theme.c:4910 ../src/ui/theme.c:4917 ../src/ui/theme.c:4924
-#: ../src/ui/theme.c:4931 ../src/ui/theme.c:4938
+#: ../src/ui/theme.c:5026 ../src/ui/theme.c:5033 ../src/ui/theme.c:5040
+#: ../src/ui/theme.c:5047 ../src/ui/theme.c:5054
 #, c-format
 msgid "No <%s> set for theme \"%s\""
 msgstr "Nav iestatīts <%s> tēmai \"%s\""
 
-#: ../src/ui/theme.c:4946
+#: ../src/ui/theme.c:5062
 #, c-format
 msgid ""
 "No frame style set for window type \"%s\" in theme \"%s\", add a <window "
 "type=\"%s\" style_set=\"whatever\"/> element"
 msgstr ""
 "Nav rāmja stila kopas loga tipam \"%s\" tēmā \"%s\"; pievienojiet <window "
-"type="
-"\"%s\" style_set=\"jebkas\"/> elementu"
+"type=\"%s\" style_set=\"jebkas\"/> elementu"
 
-#: ../src/ui/theme.c:5389 ../src/ui/theme.c:5451 ../src/ui/theme.c:5514
+#: ../src/ui/theme.c:5505 ../src/ui/theme.c:5567 ../src/ui/theme.c:5630
 #, c-format
 msgid ""
 "User-defined constants must begin with a capital letter; \"%s\" does not"
 msgstr ""
 "Lietotāja definētajām konstantēm jāsākas ar lielo burtu; \"%s\" nesākas"
 
-#: ../src/ui/theme.c:5397 ../src/ui/theme.c:5459 ../src/ui/theme.c:5522
+#: ../src/ui/theme.c:5513 ../src/ui/theme.c:5575 ../src/ui/theme.c:5638
 #, c-format
 msgid "Constant \"%s\" has already been defined"
 msgstr "Konstante \"%s\" jau tikusi definēta"
@@ -1885,8 +1898,8 @@ msgid ""
 "Invalid title scale \"%s\" (must be one of xx-small,x-small,small,medium,"
 "large,x-large,xx-large)\n"
 msgstr ""
-"Nederīgs virsraksta mērogs \"%s\" (var būt: xx-small,x-small,small,"
-"medium,large,x-large,xx-large)\n"
+"Nederīgs virsraksta mērogs \"%s\" (var būt: xx-small,x-small,small,medium,"
+"large,x-large,xx-large)\n"
 
 #: ../src/ui/theme-parser.c:936 ../src/ui/theme-parser.c:999
 #: ../src/ui/theme-parser.c:1033 ../src/ui/theme-parser.c:1136
@@ -2361,6 +2374,71 @@ msgstr "y vērtība bija %d, tika gaidīta %d"
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr "%d koordinātas izteiksme noparsēta %g sekundēs (vidēji %g sekundēs)\n"
+
+#~ msgid "Desktop"
+#~ msgstr "Darbvirsma"
+
+#~ msgid "Window Management"
+#~ msgstr "Logu pārvaldība"
+
+#~ msgid "Failed to read saved session file %s: %s\n"
+#~ msgstr "Neizdevās nolasīt saglabāto sesijas failu %s: %s\n"
+
+#~ msgid "Switch to workspace on the left of the current workspace"
+#~ msgstr "Pārslēgties uz darbvietu pa kreisi no pašreizējās"
+
+#~ msgid "Switch to workspace on the right of the current workspace"
+#~ msgstr "Pārslēgties uz darbvietu pa labi no pašreizējās"
+
+#~ msgid "Switch to workspace above the current workspace"
+#~ msgstr "Pārslēgties uz darbvietu virs pašreizējās"
+
+#~ msgid "Switch to workspace below the current workspace"
+#~ msgstr "Pārslēgties uz darbvietu zem pašreizējās"
+
+#~ msgid "Move between windows of an application, using a popup window"
+#~ msgstr "Pārvietoties starp lietotnes logiem, lietojot izlecošo logu"
+
+#~ msgid ""
+#~ "Move backward between windows of an application, using a popup window"
+#~ msgstr "Pārvietoties atpakaļ starp lietotnes logiem, lietojot izlecošo logu"
+
+#~ msgid "Move between windows, using a popup window"
+#~ msgstr "Pārvietoties starp logiem, lietojot izlecošo logu"
+
+#~ msgid "Move backward between windows, using a popup window"
+#~ msgstr "Pārvietoties atpakaļ starp logiem, lietojot izlecošo logu"
+
+#~ msgid "Move between panels and the desktop, using a popup window"
+#~ msgstr "Pārvietoties starp paneļiem un darbvirsmu, lietojot izlecošo logu"
+
+#~ msgid "Move backward between panels and the desktop, using a popup window"
+#~ msgstr ""
+#~ "Pārvietoties atpakaļ starp paneļiem un darbvirsmu, lietojot izlecošo logu"
+
+#~ msgid "Move backward between windows of an application immediately"
+#~ msgstr "Nekavējoties pārvietoties atpakaļ starp lietotņu logiem"
+
+#~ msgid "Move between windows immediately"
+#~ msgstr "Pārvietoties starp logiem nekavējoties"
+
+#~ msgid "Move backward between windows immediately"
+#~ msgstr "Nekavējoties pārvietoties atpakaļ starp logiem"
+
+#~ msgid "Move between panels and the desktop immediately"
+#~ msgstr "Nekavējoties pārvietoties starp paneļiem un darbvirsmu"
+
+#~ msgid "Move backward between panels and the desktop immediately"
+#~ msgstr "Nekavējoties pārvietoties atpakaļ starp paneļiem un darbvirsmu"
+
+#~ msgid "Show the panel's \"Run Application\" dialog box"
+#~ msgstr "Parāda paneļa \"lietotņu palaišanas\" logu"
+
+#~ msgid "Toggle whether a window will always be visible over other windows"
+#~ msgstr "Pārslēdz to, vai logs vienmēr redzams virs citiem logiem"
+
+#~ msgid "Move window to north (top) side of screen"
+#~ msgstr "Pārvietot logu uz ekrāna ziemeļu (augšējo) malu"
 
 #~ msgid "Open another one of these windows"
 #~ msgstr "Atvērt vēl vienu no šiem logiem"
