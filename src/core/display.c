@@ -2268,7 +2268,7 @@ event_callback (XEvent   *event,
                 {
                   meta_verbose ("Received set keybindings request = %d\n",
                                 (int) event->xclient.data.l[0]);
-                  meta_set_keybindings_disabled (!event->xclient.data.l[0]);
+                  meta_set_keybindings_disabled (display, !event->xclient.data.l[0]);
                 }
               else if (event->xclient.message_type ==
                        display->atom__METACITY_TOGGLE_VERBOSE)

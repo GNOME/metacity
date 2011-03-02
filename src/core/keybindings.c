@@ -817,6 +817,9 @@ meta_screen_grab_keys (MetaScreen *screen)
   if (screen->keys_grabbed)
     return;
 
+  if (all_bindings_disabled)
+    return;
+
   grab_keys (screen->display->key_bindings,
              screen->display->n_key_bindings,
              screen->display, screen->xroot,
@@ -839,6 +842,9 @@ void
 meta_window_grab_keys (MetaWindow  *window)
 {
   if (window->all_keys_grabbed)
+    return;
+
+  if (all_bindings_disabled)
     return;
 
   if (window->type == META_WINDOW_DOCK)
@@ -3356,9 +3362,11 @@ handle_set_spew_mark (MetaDisplay    *display,
 }
 
 void
-meta_set_keybindings_disabled (gboolean setting)
+meta_set_keybindings_disabled (MetaDisplay *display,
+                               gboolean     setting)
 {
   all_bindings_disabled = setting;
+  regrab_key_bindings (display);
   meta_topic (META_DEBUG_KEYBINDINGS,
               "Keybindings %s\n", all_bindings_disabled ? "disabled" : "enabled");
 }
