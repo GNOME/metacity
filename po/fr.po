@@ -12,30 +12,42 @@
 # Robert-André Mauchin <zebob.m@gmail.com>, 2007. 
 # Stéphane Raimbault <stephane.raimbault@gmail.com>, 2007.
 # Claude Paroz <claude@2xlibre.net>, 2008-2009.
-# Bruno Brouard <annoa.b@gmail.com>, 2010
+# Bruno Brouard <annoa.b@gmail.com>, 2010-2011
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&component=general\n"
-"POT-Creation-Date: 2010-01-21 21:34+0000\n"
-"PO-Revision-Date: 2009-09-04 21:31+0200\n"
-"Last-Translator: Bruno Brouard <annoa.b@gmail.com>\n"
+"POT-Creation-Date: 2011-02-28 22:52+0000\n"
+"PO-Revision-Date: 2011-03-02 18:00+0200\n"
+"Last-Translator: Alain Lojewski <allomervan@gmail.com>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/50-metacity-desktop-key.xml.in.h:1
-msgid "Desktop"
-msgstr "Bureau"
+#: ../src/50-metacity-launchers.xml.in.h:1
+msgid "Launchers"
+msgstr "Lanceurs"
 
-#: ../src/50-metacity-key.xml.in.h:1
-msgid "Window Management"
-msgstr "Gestion des fenêtres"
+#: ../src/50-metacity-navigation.xml.in.h:1
+msgid "Navigation"
+msgstr "Navigation"
 
-#: ../src/core/bell.c:294
+#: ../src/50-metacity-screenshot.xml.in.h:1
+msgid "Screenshots"
+msgstr "Captures d'écran"
+
+#: ../src/50-metacity-system.xml.in.h:1
+msgid "System"
+msgstr "Système"
+
+#: ../src/50-metacity-windows.xml.in.h:1
+msgid "Windows"
+msgstr "Fenêtres"
+
+#: ../src/core/bell.c:299
 msgid "Bell event"
 msgstr "Évènement sonnerie"
 
@@ -55,7 +67,7 @@ msgid ""
 "You may choose to wait a short while for it to continue or force the "
 "application to quit entirely."
 msgstr ""
-"Vous pouvez attendre un instant pour continuer ou insister pour quitter "
+"Vous pouvez attendre un instant pour continuer ou forcer à quitter "
 "l'application."
 
 #: ../src/core/delete.c:110
@@ -97,7 +109,7 @@ msgstr ""
 msgid "Fatal IO error %d (%s) on display '%s'.\n"
 msgstr "Erreur fatale d'E/S %d (%s) sur le visuel « %s ».\n"
 
-#: ../src/core/keybindings.c:680
+#: ../src/core/keybindings.c:729
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
@@ -109,7 +121,7 @@ msgstr ""
 #. Displayed when a keybinding which is
 #. * supposed to launch a program fails.
 #.
-#: ../src/core/keybindings.c:2294
+#: ../src/core/keybindings.c:2343
 #, c-format
 msgid ""
 "There was an error running <tt>%s</tt>:\n"
@@ -120,12 +132,12 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/core/keybindings.c:2383
+#: ../src/core/keybindings.c:2432
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "Aucune commande %d n'a été définie.\n"
 
-#: ../src/core/keybindings.c:3337
+#: ../src/core/keybindings.c:3386
 #, c-format
 msgid "No terminal command has been defined.\n"
 msgstr "Aucune commande de terminal n'a été définie.\n"
@@ -190,12 +202,12 @@ msgstr ""
 "Ne pas mettre en plein écran des fenêtres qui sont maximisées et ne "
 "possèdent pas de décorations"
 
-#: ../src/core/main.c:528
+#: ../src/core/main.c:527
 #, c-format
 msgid "Failed to scan themes directory: %s\n"
 msgstr "Le parcours du répertoire de thèmes a échoué : %s\n"
 
-#: ../src/core/main.c:544
+#: ../src/core/main.c:543
 #, c-format
 msgid ""
 "Could not find a theme! Be sure %s exists and contains the usual themes.\n"
@@ -203,7 +215,7 @@ msgstr ""
 "Impossible de trouver un thème ! Assurez-vous que %s existe et contient les "
 "thèmes habituels.\n"
 
-#: ../src/core/main.c:603
+#: ../src/core/main.c:602
 #, c-format
 msgid "Failed to restart: %s\n"
 msgstr "Impossible de redémarrer : %s\n"
@@ -219,24 +231,24 @@ msgstr "Impossible de redémarrer : %s\n"
 #. * (Empty comment follows so the translators don't see this.)
 #.
 #.
-#: ../src/core/prefs.c:506 ../src/core/prefs.c:661
+#: ../src/core/prefs.c:508 ../src/core/prefs.c:663
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
 msgstr "La valeur de la clé GConf « %s » n'est pas valide\n"
 
-#: ../src/core/prefs.c:587 ../src/core/prefs.c:830
+#: ../src/core/prefs.c:589 ../src/core/prefs.c:832
 #, c-format
 msgid "%d stored in GConf key %s is out of range %d to %d\n"
 msgstr "%d enregistré dans la clé GConf %s n'est pas compris entre %d et %d\n"
 
-#: ../src/core/prefs.c:631 ../src/core/prefs.c:708 ../src/core/prefs.c:756
-#: ../src/core/prefs.c:820 ../src/core/prefs.c:1113 ../src/core/prefs.c:1129
-#: ../src/core/prefs.c:1146 ../src/core/prefs.c:1162
+#: ../src/core/prefs.c:633 ../src/core/prefs.c:710 ../src/core/prefs.c:758
+#: ../src/core/prefs.c:822 ../src/core/prefs.c:1115 ../src/core/prefs.c:1131
+#: ../src/core/prefs.c:1148 ../src/core/prefs.c:1164
 #, c-format
 msgid "GConf key \"%s\" is set to an invalid type\n"
 msgstr "Le type de la clé GConf « %s » n'est pas valide\n"
 
-#: ../src/core/prefs.c:1232
+#: ../src/core/prefs.c:1234
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -244,13 +256,13 @@ msgstr ""
 "Solutions de rechange désactivées pour les applications endommagées. "
 "Certaines applications peuvent ne pas se comporter correctement.\n"
 
-#: ../src/core/prefs.c:1303
+#: ../src/core/prefs.c:1305
 #, c-format
 msgid "Could not parse font description \"%s\" from GConf key %s\n"
 msgstr ""
 "Impossible d'analyser la description de police « %s » depuis la clé GConf %s\n"
 
-#: ../src/core/prefs.c:1365
+#: ../src/core/prefs.c:1367
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -259,17 +271,17 @@ msgstr ""
 "« %s » trouvée dans la base de données de configuration n'est pas une valeur "
 "correcte pour le bouton de souris\n"
 
-#: ../src/core/prefs.c:1786
+#: ../src/core/prefs.c:1788
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
 msgstr "Erreur de définition du nombre d'espaces de travail sur %d : %s\n"
 
-#: ../src/core/prefs.c:1975 ../src/core/prefs.c:2478
+#: ../src/core/prefs.c:1959 ../src/core/prefs.c:2461
 #, c-format
 msgid "Workspace %d"
 msgstr "Espace de travail %d"
 
-#: ../src/core/prefs.c:2005 ../src/core/prefs.c:2183
+#: ../src/core/prefs.c:1988 ../src/core/prefs.c:2166
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -278,13 +290,13 @@ msgstr ""
 "« %s » trouvé dans la base de données de configuration n'est pas une valeur "
 "correcte pour la combinaison de touches « %s »\n"
 
-#: ../src/core/prefs.c:2559
+#: ../src/core/prefs.c:2542
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
 msgstr ""
 "Erreur dans la définition du nom pour l'espace de travail %d à « %s » : %s\n"
 
-#: ../src/core/prefs.c:2763
+#: ../src/core/prefs.c:2746
 #, c-format
 msgid "Error setting compositor status: %s\n"
 msgstr "Erreur dans la définition de l'état de la composition : %s\n"
@@ -364,62 +376,56 @@ msgstr ""
 "touche « Maj ». Par conséquent, « Maj » ne peut pas faire partie de cette "
 "combinaison."
 
-#: ../src/core/session.c:850 ../src/core/session.c:857
+#: ../src/core/session.c:842 ../src/core/session.c:849
 #, c-format
 msgid "Could not create directory '%s': %s\n"
 msgstr "Impossible de créer le répertoire « %s » : %s\n"
 
-#: ../src/core/session.c:867
+#: ../src/core/session.c:859
 #, c-format
 msgid "Could not open session file '%s' for writing: %s\n"
 msgstr "Impossible d'ouvrir le fichier de session « %s » en écriture : %s\n"
 
-#: ../src/core/session.c:1008
+#: ../src/core/session.c:1000
 #, c-format
 msgid "Error writing session file '%s': %s\n"
 msgstr "Erreur lors de l'écriture du fichier de session « %s » : %s\n"
 
-#: ../src/core/session.c:1013
+#: ../src/core/session.c:1005
 #, c-format
 msgid "Error closing session file '%s': %s\n"
 msgstr "Erreur lors de la fermeture du fichier de session « %s » : %s\n"
 
-#. oh, just give up
-#: ../src/core/session.c:1106
-#, c-format
-msgid "Failed to read saved session file %s: %s\n"
-msgstr "La lecture du fichier de session enregistré %s a échoué : %s\n"
-
-#: ../src/core/session.c:1145
+#: ../src/core/session.c:1135
 #, c-format
 msgid "Failed to parse saved session file: %s\n"
 msgstr "L'analyse du fichier de session enregistré a échoué : %s\n"
 
-#: ../src/core/session.c:1194
+#: ../src/core/session.c:1184
 #, c-format
 msgid "<metacity_session> attribute seen but we already have the session ID"
 msgstr ""
 "L'attribut <metacity_session> a été trouvé, mais nous possédons déjà l'ID de "
 "session"
 
-#: ../src/core/session.c:1207 ../src/core/session.c:1282
-#: ../src/core/session.c:1314 ../src/core/session.c:1386
-#: ../src/core/session.c:1446
+#: ../src/core/session.c:1197 ../src/core/session.c:1272
+#: ../src/core/session.c:1304 ../src/core/session.c:1376
+#: ../src/core/session.c:1436
 #, c-format
 msgid "Unknown attribute %s on <%s> element"
 msgstr "Attribut %s inconnu sur l'élément <%s>"
 
-#: ../src/core/session.c:1224
+#: ../src/core/session.c:1214
 #, c-format
 msgid "nested <window> tag"
 msgstr "balise <window> imbriquée"
 
-#: ../src/core/session.c:1466
+#: ../src/core/session.c:1456
 #, c-format
 msgid "Unknown element %s"
 msgstr "Élément %s inconnu"
 
-#: ../src/core/session.c:1818
+#: ../src/core/session.c:1808
 msgid ""
 "These windows do not support &quot;save current setup&quot; and will have to "
 "be restarted manually next time you log in."
@@ -472,7 +478,7 @@ msgid "Metacity"
 msgstr "Metacity"
 
 #. first time through
-#: ../src/core/window.c:5642
+#: ../src/core/window.c:5704
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -488,7 +494,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/core/window.c:6207
+#: ../src/core/window.c:6269
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
@@ -613,274 +619,259 @@ msgid "Switch to workspace 12"
 msgstr "Passer à l'espace de travail 12"
 
 #: ../src/include/all-keybindings.h:122
-msgid "Switch to workspace on the left of the current workspace"
-msgstr "Passer à l'espace de travail à gauche de l'espace actuel"
+msgid "Move to workspace left"
+msgstr "Déplacer vers l'espace de travail de gauche"
 
 #: ../src/include/all-keybindings.h:126
-msgid "Switch to workspace on the right of the current workspace"
-msgstr "Passer à l'espace de travail à droite de l'espace actuel"
+msgid "Move to workspace right"
+msgstr "Déplacer vers l'espace de travail de droite"
 
 #: ../src/include/all-keybindings.h:130
-msgid "Switch to workspace above the current workspace"
-msgstr "Passer à l'espace de travail au-dessus de l'espace actuel"
+msgid "Move to workspace above"
+msgstr "Déplacer vers l'espace de travail du dessus"
 
 #: ../src/include/all-keybindings.h:134
-msgid "Switch to workspace below the current workspace"
-msgstr "Passer à l'espace de travail au-dessous de l'espace actuel"
+msgid "Move to workspace below"
+msgstr "Déplacer vers l'espace de travail du dessous"
 
 #: ../src/include/all-keybindings.h:150
-msgid "Move between windows of an application, using a popup window"
-msgstr ""
-"Se déplacer entre les fenêtres d'une application via une fenêtre de premier "
-"plan"
+msgid "Switch windows of an application"
+msgstr "Changer de fenêtre d'une application"
 
 #: ../src/include/all-keybindings.h:153
-msgid "Move backward between windows of an application, using a popup window"
-msgstr ""
-"Se déplacer en arrière entre les fenêtres d'une application via une fenêtre "
-"de premier plan"
+msgid "Reverse switch windows of an application"
+msgstr "Retourner à la fenêtre précédente d'une application"
 
-#: ../src/include/all-keybindings.h:157
-msgid "Move between windows, using a popup window"
-msgstr "Se déplacer entre les fenêtres via une fenêtre de premier plan"
+#: ../src/include/all-keybindings.h:156
+msgid "Switch applications"
+msgstr "Changer d'application"
 
-#: ../src/include/all-keybindings.h:160
-msgid "Move backward between windows, using a popup window"
-msgstr ""
-"Se déplacer en arrière entre les fenêtres via une fenêtre de premier plan"
+#: ../src/include/all-keybindings.h:159
+msgid "Reverse switch applications"
+msgstr "Revenir à l'application précédente"
 
-#: ../src/include/all-keybindings.h:163
-msgid "Move between panels and the desktop, using a popup window"
-msgstr ""
-"Se déplacer entre les tableaux de bord et le bureau via une fenêtre de "
-"premier plan"
+#: ../src/include/all-keybindings.h:162
+msgid "Switch system controls"
+msgstr "Changer les contrôles système"
 
-#: ../src/include/all-keybindings.h:166
-msgid "Move backward between panels and the desktop, using a popup window"
-msgstr ""
-"Se déplacer en arrière entre les tableaux de bord et le bureau via une "
-"fenêtre de premier plan"
+#: ../src/include/all-keybindings.h:165
+msgid "Reverse switch system controls"
+msgstr "Revenir aux contrôles système précédents"
 
-#: ../src/include/all-keybindings.h:171
-msgid "Move between windows of an application immediately"
-msgstr "Se déplacer immédiatement entre les fenêtres d'une application"
+#: ../src/include/all-keybindings.h:169
+msgid "Switch windows of an app directly"
+msgstr "Changer de fenêtre d'une application directement"
 
-#: ../src/include/all-keybindings.h:174
-msgid "Move backward between windows of an application immediately"
-msgstr ""
-"Se déplacer immédiatement en arrière entre les fenêtres d'une application"
+#: ../src/include/all-keybindings.h:172
+msgid "Reverse switch windows of an app directly"
+msgstr "Revenir à la fenêtre précédente d'une application directement"
 
-#: ../src/include/all-keybindings.h:177
-msgid "Move between windows immediately"
-msgstr "Se déplacer entre les fenêtres directement"
+#: ../src/include/all-keybindings.h:175
+msgid "Switch windows directly"
+msgstr "Changer de fenêtre directement"
 
-#: ../src/include/all-keybindings.h:180
-msgid "Move backward between windows immediately"
-msgstr "Se déplacer en arrière entre les fenêtres immédiatement"
+#: ../src/include/all-keybindings.h:178
+msgid "Reverse switch windows directly"
+msgstr "Revenir à la fenêtre précédente directement"
 
-#: ../src/include/all-keybindings.h:183
-msgid "Move between panels and the desktop immediately"
-msgstr "Se déplacer entre les tableaux de bord et le bureau immédiatement"
+#: ../src/include/all-keybindings.h:181
+msgid "Switch system controls directly"
+msgstr "Changer les contrôles système directement"
 
-#: ../src/include/all-keybindings.h:186
-msgid "Move backward between panels and the desktop immediately"
-msgstr ""
-"Se déplacer en arrière entre les tableaux de bord et le bureau immédiatement"
+#: ../src/include/all-keybindings.h:184
+msgid "Reverse switch system controls directly"
+msgstr "Revenir aux contrôles système précédents directement"
 
-#: ../src/include/all-keybindings.h:191
-msgid "Hide all normal windows and set focus to the desktop"
-msgstr "Masquer toutes les fenêtres normales et donner le focus au bureau"
+#: ../src/include/all-keybindings.h:189
+msgid "Hide all normal windows"
+msgstr "Masquer toutes les fenêtres normales"
 
-#: ../src/include/all-keybindings.h:194
-msgid "Show the panel's main menu"
-msgstr "Afficher le menu principal du tableau de bord"
+#: ../src/include/all-keybindings.h:192
+msgid "Show the activities overview"
+msgstr "Afficher l'aperçu des activités"
 
-#: ../src/include/all-keybindings.h:197
-msgid "Show the panel's \"Run Application\" dialog box"
-msgstr ""
-"Afficher la boîte de dialogue « Lancer une application » du tableau de bord"
+#: ../src/include/all-keybindings.h:195
+msgid "Show the run command prompt"
+msgstr "Afficher la fenêtre pour lancer une commande"
 
-#: ../src/include/all-keybindings.h:238
+#: ../src/include/all-keybindings.h:236
 msgid "Take a screenshot"
 msgstr "Prendre une capture d'écran"
 
-#: ../src/include/all-keybindings.h:240
+#: ../src/include/all-keybindings.h:238
 msgid "Take a screenshot of a window"
 msgstr "Prendre une capture de la fenêtre"
 
-#: ../src/include/all-keybindings.h:242
-msgid "Run a terminal"
+#: ../src/include/all-keybindings.h:240
+msgid "Launch Terminal"
 msgstr "Lancer un terminal"
 
-#: ../src/include/all-keybindings.h:257
+#: ../src/include/all-keybindings.h:255
 msgid "Activate the window menu"
 msgstr "Activer le menu fenêtre"
 
-#: ../src/include/all-keybindings.h:260
+#: ../src/include/all-keybindings.h:258
 msgid "Toggle fullscreen mode"
 msgstr "Basculer en mode plein écran"
 
-#: ../src/include/all-keybindings.h:262
+#: ../src/include/all-keybindings.h:260
 msgid "Toggle maximization state"
 msgstr "Basculer l'état d'agrandissement"
 
-#: ../src/include/all-keybindings.h:264
-msgid "Toggle whether a window will always be visible over other windows"
-msgstr ""
-"Active ou désactive la propriété d'une fenêtre d'être toujours au premier "
-"plan"
+#: ../src/include/all-keybindings.h:262
+msgid "Toggle window always appearing on top"
+msgstr "Basculer la fenêtre en mode toujours au dessus"
 
-#: ../src/include/all-keybindings.h:266
+#: ../src/include/all-keybindings.h:264
 msgid "Maximize window"
 msgstr "Maximiser la fenêtre"
 
-#: ../src/include/all-keybindings.h:268
+#: ../src/include/all-keybindings.h:266
 msgid "Restore window"
 msgstr "Restaurer la fenêtre"
 
-#: ../src/include/all-keybindings.h:270
+#: ../src/include/all-keybindings.h:268
 msgid "Toggle shaded state"
 msgstr "Basculer l'état de repli"
 
-#: ../src/include/all-keybindings.h:272
+#: ../src/include/all-keybindings.h:270
 msgid "Minimize window"
 msgstr "Réduire la fenêtre"
 
-#: ../src/include/all-keybindings.h:274
+#: ../src/include/all-keybindings.h:272
 msgid "Close window"
 msgstr "Fermer la fenêtre"
 
-#: ../src/include/all-keybindings.h:276
+#: ../src/include/all-keybindings.h:274
 msgid "Move window"
 msgstr "Déplacer la fenêtre"
 
-#: ../src/include/all-keybindings.h:278
+#: ../src/include/all-keybindings.h:276
 msgid "Resize window"
 msgstr "Redimensionner la fenêtre"
 
-#: ../src/include/all-keybindings.h:281
-msgid "Toggle whether window is on all workspaces or just one"
+#: ../src/include/all-keybindings.h:279
+msgid "Toggle window on all workspaces or one"
 msgstr "Placer la fenêtre sur tous les espaces de travail, ou sur un seul"
 
-#: ../src/include/all-keybindings.h:285
+#: ../src/include/all-keybindings.h:283
 msgid "Move window to workspace 1"
 msgstr "Déplacer la fenêtre vers l'espace de travail 1"
 
-#: ../src/include/all-keybindings.h:288
+#: ../src/include/all-keybindings.h:286
 msgid "Move window to workspace 2"
 msgstr "Déplacer la fenêtre vers l'espace de travail 2"
 
-#: ../src/include/all-keybindings.h:291
+#: ../src/include/all-keybindings.h:289
 msgid "Move window to workspace 3"
 msgstr "Déplacer la fenêtre vers l'espace de travail 3"
 
-#: ../src/include/all-keybindings.h:294
+#: ../src/include/all-keybindings.h:292
 msgid "Move window to workspace 4"
 msgstr "Déplacer la fenêtre vers l'espace de travail 4"
 
-#: ../src/include/all-keybindings.h:297
+#: ../src/include/all-keybindings.h:295
 msgid "Move window to workspace 5"
 msgstr "Déplacer la fenêtre vers l'espace de travail 5"
 
-#: ../src/include/all-keybindings.h:300
+#: ../src/include/all-keybindings.h:298
 msgid "Move window to workspace 6"
 msgstr "Déplacer la fenêtre vers l'espace de travail 6"
 
-#: ../src/include/all-keybindings.h:303
+#: ../src/include/all-keybindings.h:301
 msgid "Move window to workspace 7"
 msgstr "Déplacer la fenêtre vers l'espace de travail 7"
 
-#: ../src/include/all-keybindings.h:306
+#: ../src/include/all-keybindings.h:304
 msgid "Move window to workspace 8"
 msgstr "Déplacer la fenêtre vers l'espace de travail 8"
 
-#: ../src/include/all-keybindings.h:309
+#: ../src/include/all-keybindings.h:307
 msgid "Move window to workspace 9"
 msgstr "Déplacer la fenêtre vers l'espace de travail 9"
 
-#: ../src/include/all-keybindings.h:312
+#: ../src/include/all-keybindings.h:310
 msgid "Move window to workspace 10"
 msgstr "Déplacer la fenêtre vers l'espace de travail 10"
 
-#: ../src/include/all-keybindings.h:315
+#: ../src/include/all-keybindings.h:313
 msgid "Move window to workspace 11"
 msgstr "Déplacer la fenêtre vers l'espace de travail 11"
 
-#: ../src/include/all-keybindings.h:318
+#: ../src/include/all-keybindings.h:316
 msgid "Move window to workspace 12"
 msgstr "Déplacer la fenêtre vers l'espace de travail 12"
 
-#: ../src/include/all-keybindings.h:330
+#: ../src/include/all-keybindings.h:328
 msgid "Move window one workspace to the left"
 msgstr "Déplacer la fenêtre d'un espace de travail vers la gauche"
 
-#: ../src/include/all-keybindings.h:333
+#: ../src/include/all-keybindings.h:331
 msgid "Move window one workspace to the right"
 msgstr "Déplacer la fenêtre d'un espace de travail vers la droite"
 
-#: ../src/include/all-keybindings.h:336
+#: ../src/include/all-keybindings.h:334
 msgid "Move window one workspace up"
 msgstr "Déplacer la fenêtre d'un espace de travail vers le haut"
 
-#: ../src/include/all-keybindings.h:339
+#: ../src/include/all-keybindings.h:337
 msgid "Move window one workspace down"
 msgstr "Déplacer la fenêtre d'un espace de travail vers le bas"
 
-#: ../src/include/all-keybindings.h:342
-msgid "Raise window if it's covered by another window, otherwise lower it"
+#: ../src/include/all-keybindings.h:340
+msgid "Raise window if covered, otherwise lower it"
 msgstr ""
-"Mettre la fenêtre au premier plan si elle est cachée par une autre fenêtre, "
-"sinon en arrière-plan"
+"Mettre la fenêtre au premier plan si elle est cachée, sinon à l'arrière-plan"
 
-#: ../src/include/all-keybindings.h:344
+#: ../src/include/all-keybindings.h:342
 msgid "Raise window above other windows"
 msgstr "Mettre la fenêtre au premier plan"
 
-#: ../src/include/all-keybindings.h:346
+#: ../src/include/all-keybindings.h:344
 msgid "Lower window below other windows"
 msgstr "Mettre la fenêtre sous les autres fenêtres"
 
-#: ../src/include/all-keybindings.h:350
+#: ../src/include/all-keybindings.h:348
 msgid "Maximize window vertically"
 msgstr "Maximiser la fenêtre verticalement"
 
-#: ../src/include/all-keybindings.h:354
+#: ../src/include/all-keybindings.h:352
 msgid "Maximize window horizontally"
 msgstr "Maximiser la fenêtre horizontalement"
 
-#: ../src/include/all-keybindings.h:358
-msgid "Move window to north-west (top left) corner"
-msgstr "Déplacer la fenêtre vers le coin nord-ouest (en haut à gauche)"
+#: ../src/include/all-keybindings.h:356
+msgid "Move window to top left corner"
+msgstr "Déplacer la fenêtre vers le coin supérieur gauche"
 
-#: ../src/include/all-keybindings.h:361
-msgid "Move window to north-east (top right) corner"
-msgstr "Déplacer la fenêtre vers le coin nord-est (en haut à droite)"
+#: ../src/include/all-keybindings.h:359
+msgid "Move window to top right corner"
+msgstr "Déplacer la fenêtre vers le coin supérieur droit"
 
-#: ../src/include/all-keybindings.h:364
-msgid "Move window to south-west (bottom left) corner"
-msgstr "Déplacer la fenêtre vers le coin sud-ouest (en bas à gauche)"
+#: ../src/include/all-keybindings.h:362
+msgid "Move window to bottom left corner"
+msgstr "Déplacer la fenêtre vers le coin inférieur gauche"
 
-#: ../src/include/all-keybindings.h:367
-msgid "Move window to south-east (bottom right) corner"
-msgstr "Déplacer la fenêtre vers le coin sud-est (en bas à droite)"
+#: ../src/include/all-keybindings.h:365
+msgid "Move window to bottom right corner"
+msgstr "Déplacer la fenêtre vers le coin inférieur droit"
 
-#: ../src/include/all-keybindings.h:371
-msgid "Move window to north (top) side of screen"
-msgstr "Déplacer la fenêtre vers le côté nord de l'écran (en haut)"
+#: ../src/include/all-keybindings.h:369
+msgid "Move window to top edge of screen"
+msgstr "Déplacer la fenêtre vers le bord supérieur de l'écran"
 
-#: ../src/include/all-keybindings.h:374
-msgid "Move window to south (bottom) side of screen"
-msgstr "Déplacer la fenêtre vers le côté sud de l'écran (en bas)"
+#: ../src/include/all-keybindings.h:372
+msgid "Move window to bottom edge of screen"
+msgstr "Déplacer la fenêtre vers le bord inférieur de l'écran"
 
-#: ../src/include/all-keybindings.h:377
-msgid "Move window to east (right) side of screen"
-msgstr "Déplacer la fenêtre vers le côté est de l'écran (à droite)"
+#: ../src/include/all-keybindings.h:375
+msgid "Move window to right side of screen"
+msgstr "Déplacer la fenêtre vers le bord droit de l'écran"
 
-#: ../src/include/all-keybindings.h:380
-msgid "Move window to west (left) side of screen"
-msgstr "Déplacer la fenêtre vers le côté ouest de l'écran (à gauche)"
+#: ../src/include/all-keybindings.h:378
+msgid "Move window to left side of screen"
+msgstr "Déplacer la fenêtre vers le bord gauche de l'écran"
 
-#: ../src/include/all-keybindings.h:383
+#: ../src/include/all-keybindings.h:381
 msgid "Move window to center of screen"
 msgstr "Déplacer la fenêtre au centre de l'écran"
 
@@ -953,8 +944,8 @@ msgstr ""
 "déplacera la fenêtre (clic gauche), redimensionnera la fenêtre (clic du "
 "milieu), ou affichera le menu de la fenêtre (clic droit). Les opérations "
 "milieu et droite peuvent être inversées en utilisant la clé "
-"« resize_with_right_button ». Le modificateur est défini comme « &lt;Alt&gt; » ou "
-"« &lt;Super&gt; » par exemple."
+"« resize_with_right_button ». Le modificateur est défini comme « &lt;Alt&gt; » "
+"ou « &lt;Super&gt; » par exemple."
 
 #: ../src/metacity.schemas.in.in.h:10
 msgid "Commands to run in response to keybindings"
@@ -1007,10 +998,10 @@ msgid ""
 "the auto_raise_delay key. This is not related to clicking on a window to "
 "raise it, nor to entering a window during drag-and-drop."
 msgstr ""
-"Si VRAI et que le mode de focus est soit « sloppy » soit « mouse » alors la "
-"fenêtre qui a le focus est automatiquement mis au premier plan après un "
-"délai indiqué par la clé auto_raise_delay. Ceci n'est pas similaire à "
-"cliquer sur une fenêtre pour la mettre au premier plan, ni à déplacer une "
+"Si VRAI, et que le mode de focus est soit « sloppy » soit « mouse », alors la "
+"fenêtre active est automatiquement mise au premier plan après un délai "
+"indiqué par la clé auto_raise_delay. Ceci n'a pas de rapport avec le clic "
+"sur une fenêtre pour la mettre au premier plan, ni avec le déplacement d'une "
 "fenêtre durant un glisser-déposer."
 
 #: ../src/metacity.schemas.in.in.h:20
@@ -1033,9 +1024,9 @@ msgstr ""
 "utilisant des contours en fil de fer, évitant des animations ou autres "
 "fioritures. Ceci signifie une baisse d'ergonomie pour beaucoup "
 "d'utilisateurs mais peut permettre aux vieilles applications de continuer à "
-"fonctionner, et peut aussi être utile au serveurs de terminaux X pour "
-"améliorer les performances. Cependant, la fonction fil de fer est désactivé "
-"lorsque l'accessibilité est activé."
+"fonctionner et peut aussi être utile au serveurs de terminaux X pour "
+"améliorer les performances. Cependant, la fonction fil de fer est désactivée "
+"lorsque l'accessibilité est activée."
 
 #: ../src/metacity.schemas.in.in.h:22
 msgid ""
@@ -1137,7 +1128,7 @@ msgstr ""
 "« focus-au-clic ». Notez que la liste des méthodes pour amener une fenêtre au "
 "premier plan quand « raise_on_click » est à « false » ne comporte pas les "
 "demandes programmées par des applications pour amener une fenêtre au premier "
-"plan ; ces demandes seront ignorées, peu importe leur raison.  Si vous "
+"plan ; ces demandes seront ignorées, peu importe leur raison. Si vous "
 "développez une application et que des utilisateurs se plaignent que votre "
 "application ne fonctionne pas avec ce paramètre désactivé, dites-leur que "
 "c'est de *leur* faute et qu'ils ont cassé leur gestionnaire de fenêtres, "
@@ -1337,8 +1328,8 @@ msgid ""
 msgstr ""
 "Cette option fournit un contrôle supplémentaire sur la façon dont les "
 "nouvelles fenêtres deviennent actives. Elle a deux valeurs "
-"possible: « smart » qui correspond au mode d'activation utilisateur normal et "
-"« strict » qui n'active pas les fenêtre démarrées depuis un terminal."
+"possibles : « smart » qui correspond au mode d'activation utilisateur normal "
+"et « strict » qui n'active pas les fenêtres démarrées depuis un terminal."
 
 #: ../src/metacity.schemas.in.in.h:48
 msgid ""
@@ -1381,47 +1372,47 @@ msgstr "Police de titre des fenêtres"
 msgid "Usage: %s\n"
 msgstr "Utilisation : %s\n"
 
-#: ../src/ui/frames.c:1118
+#: ../src/ui/frames.c:1120
 msgid "Close Window"
 msgstr "Fermer la fenêtre"
 
-#: ../src/ui/frames.c:1121
+#: ../src/ui/frames.c:1123
 msgid "Window Menu"
 msgstr "Menu Fenêtre"
 
-#: ../src/ui/frames.c:1124
+#: ../src/ui/frames.c:1126
 msgid "Minimize Window"
 msgstr "Réduire la fenêtre"
 
-#: ../src/ui/frames.c:1127
+#: ../src/ui/frames.c:1129
 msgid "Maximize Window"
 msgstr "Maximiser la fenêtre"
 
-#: ../src/ui/frames.c:1130
+#: ../src/ui/frames.c:1132
 msgid "Restore Window"
 msgstr "Restaurer la fenêtre"
 
-#: ../src/ui/frames.c:1133
+#: ../src/ui/frames.c:1135
 msgid "Roll Up Window"
 msgstr "Replier la fenêtre"
 
-#: ../src/ui/frames.c:1136
+#: ../src/ui/frames.c:1138
 msgid "Unroll Window"
 msgstr "Déplier la fenêtre"
 
-#: ../src/ui/frames.c:1139
+#: ../src/ui/frames.c:1141
 msgid "Keep Window On Top"
 msgstr "Garder la fenêtre au premier plan"
 
-#: ../src/ui/frames.c:1142
+#: ../src/ui/frames.c:1144
 msgid "Remove Window From Top"
 msgstr "Enlever la fenêtre du premier plan"
 
-#: ../src/ui/frames.c:1145
+#: ../src/ui/frames.c:1147
 msgid "Always On Visible Workspace"
 msgstr "Toujours sur l'espace de travail visible"
 
-#: ../src/ui/frames.c:1148
+#: ../src/ui/frames.c:1150
 msgid "Put Window On Only One Workspace"
 msgstr "Mettre la fenêtre sur un seul espace de travail"
 
@@ -1624,49 +1615,49 @@ msgstr "Mod5"
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: ../src/ui/theme.c:254
+#: ../src/ui/theme.c:255
 msgid "top"
 msgstr "haut"
 
-#: ../src/ui/theme.c:256
+#: ../src/ui/theme.c:257
 msgid "bottom"
 msgstr "bas"
 
-#: ../src/ui/theme.c:258
+#: ../src/ui/theme.c:259
 msgid "left"
 msgstr "gauche"
 
-#: ../src/ui/theme.c:260
+#: ../src/ui/theme.c:261
 msgid "right"
 msgstr "droite"
 
-#: ../src/ui/theme.c:287
+#: ../src/ui/theme.c:288
 #, c-format
 msgid "frame geometry does not specify \"%s\" dimension"
 msgstr "la géométrie du cadre n'indique pas la dimension « %s »"
 
-#: ../src/ui/theme.c:306
+#: ../src/ui/theme.c:307
 #, c-format
 msgid "frame geometry does not specify dimension \"%s\" for border \"%s\""
 msgstr ""
 "la géométrie du cadre n'indique pas la dimension « %s » pour la bordure « %s »"
 
-#: ../src/ui/theme.c:343
+#: ../src/ui/theme.c:344
 #, c-format
 msgid "Button aspect ratio %g is not reasonable"
 msgstr "La proportion du bouton %g n'est pas raisonnable"
 
-#: ../src/ui/theme.c:355
+#: ../src/ui/theme.c:356
 #, c-format
 msgid "Frame geometry does not specify size of buttons"
 msgstr "La géométrie du cadre n'indique pas la taille des boutons"
 
-#: ../src/ui/theme.c:1020
+#: ../src/ui/theme.c:1058
 #, c-format
 msgid "Gradients should have at least two colors"
 msgstr "Les dégradés doivent comporter au moins deux couleurs"
 
-#: ../src/ui/theme.c:1146
+#: ../src/ui/theme.c:1184
 #, c-format
 msgid ""
 "GTK color specification must have the state in brackets, e.g. gtk:fg[NORMAL] "
@@ -1675,7 +1666,7 @@ msgstr ""
 "La spécification de couleur GTK doit présenter l'état entre crochets, p. ex. "
 "gtk:fg[NORMAL] où NORMAL est l'état ; impossible d'analyser « %s »"
 
-#: ../src/ui/theme.c:1160
+#: ../src/ui/theme.c:1198
 #, c-format
 msgid ""
 "GTK color specification must have a close bracket after the state, e.g. gtk:"
@@ -1685,39 +1676,39 @@ msgstr ""
 "l'état, p. ex. gtk:fg[NORMAL] où NORMAL est l'état ; impossible d'analyser « %"
 "s »"
 
-#: ../src/ui/theme.c:1171
+#: ../src/ui/theme.c:1209
 #, c-format
 msgid "Did not understand state \"%s\" in color specification"
 msgstr "Impossible de comprendre l'état « %s » dans la spécification de couleur"
 
-#: ../src/ui/theme.c:1184
+#: ../src/ui/theme.c:1222
 #, c-format
 msgid "Did not understand color component \"%s\" in color specification"
 msgstr ""
 "Impossible de comprendre le composant de couleur « %s » dans la spécification "
 "de couleur"
 
-#: ../src/ui/theme.c:1214
+#: ../src/ui/theme.c:1252
 #, c-format
 msgid ""
 "Blend format is \"blend/bg_color/fg_color/alpha\", \"%s\" does not fit the "
 "format"
 msgstr ""
 "Le format de mélange est « blend/bg_color/fg_color/alpha », « %s » ne "
-"correspond pas à ce format ."
+"correspond pas à ce format."
 
-#: ../src/ui/theme.c:1225
+#: ../src/ui/theme.c:1263
 #, c-format
 msgid "Could not parse alpha value \"%s\" in blended color"
 msgstr "Impossible d'analyser la valeur alpha « %s » en couleur mélangée"
 
-#: ../src/ui/theme.c:1235
+#: ../src/ui/theme.c:1273
 #, c-format
 msgid "Alpha value \"%s\" in blended color is not between 0.0 and 1.0"
 msgstr ""
 "La valeur alpha « %s » en couleur mélangée n'est pas comprise entre 0,0 et 1,0"
 
-#: ../src/ui/theme.c:1282
+#: ../src/ui/theme.c:1320
 #, c-format
 msgid ""
 "Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
@@ -1725,29 +1716,29 @@ msgstr ""
 "Le format d'ombre est « shade/base_color/factor », « %s » ne correspond pas au "
 "format"
 
-#: ../src/ui/theme.c:1293
+#: ../src/ui/theme.c:1331
 #, c-format
 msgid "Could not parse shade factor \"%s\" in shaded color"
 msgstr "Impossible d'analyser le facteur d'ombre « %s » en couleur ombrée"
 
-#: ../src/ui/theme.c:1303
+#: ../src/ui/theme.c:1341
 #, c-format
 msgid "Shade factor \"%s\" in shaded color is negative"
 msgstr "Le facteur d'ombre « %s » en couleur ombrée est négatif"
 
-#: ../src/ui/theme.c:1332
+#: ../src/ui/theme.c:1370
 #, c-format
 msgid "Could not parse color \"%s\""
 msgstr "Impossible d'analyser la couleur « %s »"
 
-#: ../src/ui/theme.c:1582
+#: ../src/ui/theme.c:1624
 #, c-format
 msgid "Coordinate expression contains character '%s' which is not allowed"
 msgstr ""
 "L'expression de la coordonnée contient le caractère « %s » qui n'est pas "
 "autorisé"
 
-#: ../src/ui/theme.c:1609
+#: ../src/ui/theme.c:1651
 #, c-format
 msgid ""
 "Coordinate expression contains floating point number '%s' which could not be "
@@ -1756,14 +1747,14 @@ msgstr ""
 "L'expression de la coordonnée contient la valeur en virgule flottante « %s » "
 "qui ne peut pas être analysée"
 
-#: ../src/ui/theme.c:1623
+#: ../src/ui/theme.c:1665
 #, c-format
 msgid "Coordinate expression contains integer '%s' which could not be parsed"
 msgstr ""
 "L'expression de la coordonnée contient l'entier « %s » qui n'a pas pu être "
 "analysé"
 
-#: ../src/ui/theme.c:1745
+#: ../src/ui/theme.c:1787
 #, c-format
 msgid ""
 "Coordinate expression contained unknown operator at the start of this text: "
@@ -1772,17 +1763,17 @@ msgstr ""
 "L'expression de la coordonnée contenait un opérateur inconnu au début de ce "
 "texte : « %s »"
 
-#: ../src/ui/theme.c:1802
+#: ../src/ui/theme.c:1844
 #, c-format
 msgid "Coordinate expression was empty or not understood"
 msgstr "L'expression de la coordonnée était vide ou incomprise"
 
-#: ../src/ui/theme.c:1913 ../src/ui/theme.c:1923 ../src/ui/theme.c:1957
+#: ../src/ui/theme.c:1955 ../src/ui/theme.c:1965 ../src/ui/theme.c:1999
 #, c-format
 msgid "Coordinate expression results in division by zero"
 msgstr "L'expression de la coordonnée entraîne une division par zéro"
 
-#: ../src/ui/theme.c:1965
+#: ../src/ui/theme.c:2007
 #, c-format
 msgid ""
 "Coordinate expression tries to use mod operator on a floating-point number"
@@ -1790,7 +1781,7 @@ msgstr ""
 "L'expression de la coordonnée tente d'utiliser l'opérateur mod sur une "
 "valeur en virgule flottante"
 
-#: ../src/ui/theme.c:2021
+#: ../src/ui/theme.c:2063
 #, c-format
 msgid ""
 "Coordinate expression has an operator \"%s\" where an operand was expected"
@@ -1798,20 +1789,20 @@ msgstr ""
 "L'expression de la coordonnée a un opérateur « %s » là où un opérande était "
 "attendu"
 
-#: ../src/ui/theme.c:2030
+#: ../src/ui/theme.c:2072
 #, c-format
 msgid "Coordinate expression had an operand where an operator was expected"
 msgstr ""
 "L'expression de la coordonnée a un opérande là où un opérateur était attendu"
 
-#: ../src/ui/theme.c:2038
+#: ../src/ui/theme.c:2080
 #, c-format
 msgid "Coordinate expression ended with an operator instead of an operand"
 msgstr ""
 "L'expression de la coordonnée était terminée par un opérateur au lieu d'un "
 "opérande"
 
-#: ../src/ui/theme.c:2048
+#: ../src/ui/theme.c:2090
 #, c-format
 msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
@@ -1820,46 +1811,46 @@ msgstr ""
 "L'expression de la coordonnée a un opérateur « %c » suivant l'opérateur « %c » "
 "sans opérande entre eux"
 
-#: ../src/ui/theme.c:2195 ../src/ui/theme.c:2236
+#: ../src/ui/theme.c:2237 ../src/ui/theme.c:2278
 #, c-format
 msgid "Coordinate expression had unknown variable or constant \"%s\""
 msgstr ""
 "L'expression de la coordonnée possède une variable ou constante inconnue « %"
 "s »"
 
-#: ../src/ui/theme.c:2290
+#: ../src/ui/theme.c:2332
 #, c-format
 msgid "Coordinate expression parser overflowed its buffer."
 msgstr ""
 "L'analyseur d'expression de coordonnées a dépassé la capacité de son tampon."
 
-#: ../src/ui/theme.c:2319
+#: ../src/ui/theme.c:2361
 #, c-format
 msgid "Coordinate expression had a close parenthesis with no open parenthesis"
 msgstr ""
 "L'expression de la coordonnée comporte une parenthèse de fermeture, mais pas "
 "de parenthèse d'ouverture"
 
-#: ../src/ui/theme.c:2383
+#: ../src/ui/theme.c:2425
 #, c-format
 msgid "Coordinate expression had an open parenthesis with no close parenthesis"
 msgstr ""
 "L'expression de la coordonnée comporte une parenthèse d'ouverture, mais pas "
 "de parenthèse de fermeture"
 
-#: ../src/ui/theme.c:2394
+#: ../src/ui/theme.c:2436
 #, c-format
 msgid "Coordinate expression doesn't seem to have any operators or operands"
 msgstr ""
 "L'expression de la coordonnée ne semble pas comprendre d'opérateur ni "
 "d'opérande"
 
-#: ../src/ui/theme.c:2596 ../src/ui/theme.c:2616 ../src/ui/theme.c:2636
+#: ../src/ui/theme.c:2640 ../src/ui/theme.c:2660 ../src/ui/theme.c:2680
 #, c-format
 msgid "Theme contained an expression that resulted in an error: %s\n"
 msgstr "Le thème contient une expression qui a entraîné une erreur : %s\n"
 
-#: ../src/ui/theme.c:4203
+#: ../src/ui/theme.c:4315
 #, c-format
 msgid ""
 "<button function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> must be "
@@ -1868,25 +1859,25 @@ msgstr ""
 "<button function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> doit être "
 "indiqué pour ce style de cadre"
 
-#: ../src/ui/theme.c:4711 ../src/ui/theme.c:4736
+#: ../src/ui/theme.c:4827 ../src/ui/theme.c:4852
 #, c-format
 msgid ""
 "Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
 msgstr ""
 "<frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/> manquant"
 
-#: ../src/ui/theme.c:4780
+#: ../src/ui/theme.c:4896
 #, c-format
 msgid "Failed to load theme \"%s\": %s\n"
 msgstr "Impossible de charger le thème « %s » : %s\n"
 
-#: ../src/ui/theme.c:4910 ../src/ui/theme.c:4917 ../src/ui/theme.c:4924
-#: ../src/ui/theme.c:4931 ../src/ui/theme.c:4938
+#: ../src/ui/theme.c:5026 ../src/ui/theme.c:5033 ../src/ui/theme.c:5040
+#: ../src/ui/theme.c:5047 ../src/ui/theme.c:5054
 #, c-format
 msgid "No <%s> set for theme \"%s\""
 msgstr "Aucun <%s> défini pour le thème « %s »"
 
-#: ../src/ui/theme.c:4946
+#: ../src/ui/theme.c:5062
 #, c-format
 msgid ""
 "No frame style set for window type \"%s\" in theme \"%s\", add a <window "
@@ -1895,7 +1886,7 @@ msgstr ""
 "Aucun style de cadre défini pour le type de fenêtre « %s » dans le thème « %"
 "s », ajoutez un élément <window type=\"%s\" style_set=\"whatever\"/>"
 
-#: ../src/ui/theme.c:5389 ../src/ui/theme.c:5451 ../src/ui/theme.c:5514
+#: ../src/ui/theme.c:5505 ../src/ui/theme.c:5567 ../src/ui/theme.c:5630
 #, c-format
 msgid ""
 "User-defined constants must begin with a capital letter; \"%s\" does not"
@@ -1903,7 +1894,7 @@ msgstr ""
 "Les constantes définies par l'utilisateur doivent commencer par une "
 "majuscule ; « %s » commence par une minuscule"
 
-#: ../src/ui/theme.c:5397 ../src/ui/theme.c:5459 ../src/ui/theme.c:5522
+#: ../src/ui/theme.c:5513 ../src/ui/theme.c:5575 ../src/ui/theme.c:5638
 #, c-format
 msgid "Constant \"%s\" has already been defined"
 msgstr "La constante « %s » a déjà été définie"
@@ -1980,7 +1971,7 @@ msgid ""
 "large,x-large,xx-large)\n"
 msgstr ""
 "Échelle de titre non valide « %s » (elle doit avoir l'une des valeurs "
-"suivantes : xx-small, x-small, small, medium,large, x-large, xx-large)\n"
+"suivantes : xx-small, x-small, small, medium, large, x-large, xx-large)\n"
 
 #: ../src/ui/theme-parser.c:936 ../src/ui/theme-parser.c:999
 #: ../src/ui/theme-parser.c:1033 ../src/ui/theme-parser.c:1136
@@ -2478,12 +2469,3 @@ msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr ""
 "%d expressions de coordonnées analysées en %g secondes (%g secondes en "
 "moyenne)\n"
-
-#~ msgid "Open another one of these windows"
-#~ msgstr "Ouvrir une autre de ces fenêtres"
-
-#~ msgid "This is a demo button with an 'open' icon"
-#~ msgstr "C'est un bouton de démonstration avec une icône « Ouvrir »"
-
-#~ msgid "This is a demo button with a 'quit' icon"
-#~ msgstr "C'est un bouton de démonstration avec une icône « Quitter »"
