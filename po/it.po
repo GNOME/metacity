@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: metacity 2.29.x\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-02-18 14:13+0100\n"
-"PO-Revision-Date: 2011-02-18 14:27+0100\n"
+"PO-Revision-Date: 2011-03-04 02:27+0100\n"
 "Last-Translator: Luca Ferretti <lferrett@gnome.org>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "Language: it\n"
@@ -634,55 +634,53 @@ msgstr "Sposta su spazio di lavoro in alto"
 msgid "Move to workspace below"
 msgstr "Sposta su spazio di lavoro in basso"
 
-# NOTA, NOTA, NOTA
-# attiva è traduzione per il momento sperimentale
 #: ../src/include/all-keybindings.h:150
 msgid "Switch windows of an application"
-msgstr "Attiva le finestre di una applicazione"
+msgstr "Evidenzia le finestre di un'applicazione"
 
 #: ../src/include/all-keybindings.h:153
 msgid "Reverse switch windows of an application"
-msgstr "Attiva le finestre di una applicazione, in senso inverso"
+msgstr "Evidenza le finestre di un'applicazione, in senso inverso"
 
 #: ../src/include/all-keybindings.h:156
 msgid "Switch applications"
-msgstr "Attiva le applicazioni"
+msgstr "Evidenzia le applicazioni"
 
 #: ../src/include/all-keybindings.h:159
 msgid "Reverse switch applications"
-msgstr "Attiva le applicazioni, in serso inverso"
+msgstr "Evidenzia le applicazioni, in serso inverso"
 
 #: ../src/include/all-keybindings.h:162
 msgid "Switch system controls"
-msgstr "Attiva i controlli di sistema"
+msgstr "Evidenzia i controlli di sistema"
 
 #: ../src/include/all-keybindings.h:165
 msgid "Reverse switch system controls"
-msgstr "Attiva i controlli di sistema, in senso inverso"
+msgstr "Evidenzia i controlli di sistema, in senso inverso"
 
 #: ../src/include/all-keybindings.h:169
 msgid "Switch windows of an app directly"
-msgstr "Attiva direttamente le finestre di una applicazione"
+msgstr "Evidenzia direttamente le finestre di una applicazione"
 
 #: ../src/include/all-keybindings.h:172
 msgid "Reverse switch windows of an app directly"
-msgstr "Attiva direttamente le finestre di una applicazione, in senso inverso"
+msgstr "Evidenzia direttamente le finestre di una applicazione, in senso inverso"
 
 #: ../src/include/all-keybindings.h:175
 msgid "Switch windows directly"
-msgstr "Avviva direttamente le finestre"
+msgstr "Evidenzia direttamente le finestre"
 
 #: ../src/include/all-keybindings.h:178
 msgid "Reverse switch windows directly"
-msgstr "Attiva direttamente le finestre, in senso inverso"
+msgstr "Evidenzi direttamente le finestre, in senso inverso"
 
 #: ../src/include/all-keybindings.h:181
 msgid "Switch system controls directly"
-msgstr "Attiva direttamente i controlli di sistema"
+msgstr "Evidenzia direttamente i controlli di sistema"
 
 #: ../src/include/all-keybindings.h:184
 msgid "Reverse switch system controls directly"
-msgstr "Attiva direttamente i controlli di sistema, in senso inverso"
+msgstr "Evidenzia direttamente i controlli di sistema, in senso inverso"
 
 #: ../src/include/all-keybindings.h:189
 msgid "Hide all normal windows"
@@ -706,7 +704,7 @@ msgstr "Cattura una schermata di una finestra"
 
 #: ../src/include/all-keybindings.h:240
 msgid "Launch Terminal"
-msgstr "Lancio il terminale"
+msgstr "Lancia il terminale"
 
 #: ../src/include/all-keybindings.h:255
 msgid "Activate the window menu"
