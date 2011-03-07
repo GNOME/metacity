@@ -6,14 +6,15 @@
 # Raivis Dejus <orvils@gmail.com>, 2006, 2007, 2009.
 # Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>, 2009, 2011.
 # Anita Reitere <nitalynx@gmail.com>, 2010.
+# Rudolfs <rudolfs.mazurs@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: lv\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug."
 "cgi?product=metacity&component=general\n"
-"POT-Creation-Date: 2011-02-04 17:29+0000\n"
-"PO-Revision-Date: 2011-02-07 11:10+0200\n"
-"Last-Translator: Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>\n"
+"POT-Creation-Date: 2011-03-05 23:31+0000\n"
+"PO-Revision-Date: 2011-03-07 13:59+0200\n"
+"Last-Translator: Rudolfs <rudolfs.mazurs@gmail.com>\n"
 "Language-Team: Latvian <lata-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,7 +32,8 @@ msgid "Navigation"
 msgstr "Navigācija"
 
 #: ../src/50-metacity-screenshot.xml.in.h:1
-msgid "Screen Shots"
+#| msgid "Screen Shots"
+msgid "Screenshots"
 msgstr "Ekrānattēli"
 
 #: ../src/50-metacity-system.xml.in.h:1
@@ -39,7 +41,6 @@ msgid "System"
 msgstr "Sistēma"
 
 #: ../src/50-metacity-windows.xml.in.h:1
-#| msgid "/_Windows"
 msgid "Windows"
 msgstr "Windows"
 
@@ -596,32 +597,26 @@ msgid "Switch to workspace 12"
 msgstr "Pārslēgties uz 12. darbvietu"
 
 #: ../src/include/all-keybindings.h:122
-#| msgid "Move to Workspace _Left"
 msgid "Move to workspace left"
 msgstr "Pārvietot uz darbvietu pa kreisi"
 
 #: ../src/include/all-keybindings.h:126
-#| msgid "Move to Workspace R_ight"
 msgid "Move to workspace right"
 msgstr "Pārvietot uz darbvietu pa labi"
 
 #: ../src/include/all-keybindings.h:130
-#| msgid "Move to Workspace _Left"
 msgid "Move to workspace above"
 msgstr "Pārvietot uz darbvietu uz augšu"
 
 #: ../src/include/all-keybindings.h:134
-#| msgid "Move to Workspace _Down"
 msgid "Move to workspace below"
 msgstr "Pārvietot uz darbvietu zemāk"
 
 #: ../src/include/all-keybindings.h:150
-#| msgid "Move between windows of an application immediately"
 msgid "Switch windows of an application"
 msgstr "Pārslēgt lietotnes logus"
 
 #: ../src/include/all-keybindings.h:153
-#| msgid "Move between windows of an application immediately"
 msgid "Reverse switch windows of an application"
 msgstr "Pārslēgt lietotnes logus pretēji"
 
@@ -642,12 +637,10 @@ msgid "Reverse switch system controls"
 msgstr "Pārslēgt sistēmas vadīklas pretēji"
 
 #: ../src/include/all-keybindings.h:169
-#| msgid "Move between windows of an application immediately"
 msgid "Switch windows of an app directly"
 msgstr "Pārslēgt lietotnes logu tieši"
 
 #: ../src/include/all-keybindings.h:172
-#| msgid "Move between windows of an application immediately"
 msgid "Reverse switch windows of an app directly"
 msgstr "Pārslēgt lietotnes logu tieši apgriezti"
 
@@ -668,7 +661,6 @@ msgid "Reverse switch system controls directly"
 msgstr "Pārslēgt sistēmas vadīklas tieši pretēji"
 
 #: ../src/include/all-keybindings.h:189
-#| msgid "Hide all normal windows and set focus to the desktop"
 msgid "Hide all normal windows"
 msgstr "Slēpt visus parastos logus"
 
@@ -677,7 +669,6 @@ msgid "Show the activities overview"
 msgstr "Rādīt aktivitāšu pārskatu"
 
 #: ../src/include/all-keybindings.h:195
-#| msgid "Show the panel's main menu"
 msgid "Show the run command prompt"
 msgstr "Rādīt palaišanas komandrindu"
 
@@ -690,7 +681,6 @@ msgid "Take a screenshot of a window"
 msgstr "Uzņemt loga ekrānattēlu"
 
 #: ../src/include/all-keybindings.h:240
-#| msgid "Run a terminal"
 msgid "Launch Terminal"
 msgstr "Palaist termināli"
 
@@ -739,7 +729,6 @@ msgid "Resize window"
 msgstr "Mainīt loga izmēru"
 
 #: ../src/include/all-keybindings.h:279
-#| msgid "Toggle whether window is on all workspaces or just one"
 msgid "Toggle window on all workspaces or one"
 msgstr "Pārslēgt loga redzamību visās darbvirsmās vai tikai vienā"
 
@@ -808,7 +797,6 @@ msgid "Move window one workspace down"
 msgstr "Pārvietot logu vienu darbvietu lejup"
 
 #: ../src/include/all-keybindings.h:340
-#| msgid "Raise window if it's covered by another window, otherwise lower it"
 msgid "Raise window if covered, otherwise lower it"
 msgstr "Pacelt logu, ja to aizsedz, citādi pazemināt"
 
@@ -829,42 +817,34 @@ msgid "Maximize window horizontally"
 msgstr "Maksimizēt logu horizontāli"
 
 #: ../src/include/all-keybindings.h:356
-#| msgid "Move window to north-west (top left) corner"
 msgid "Move window to top left corner"
 msgstr "Pārvietot logu uz ekrāna augšējo kreiso stūri"
 
 #: ../src/include/all-keybindings.h:359
-#| msgid "Move window to north-east (top right) corner"
 msgid "Move window to top right corner"
 msgstr "Pārvietot logu uz ekrāna augšējo labo stūri"
 
 #: ../src/include/all-keybindings.h:362
-#| msgid "Move window to south-west (bottom left) corner"
 msgid "Move window to bottom left corner"
 msgstr "Pārvietot logu uz ekrāna apakšējo kreiso stūri"
 
 #: ../src/include/all-keybindings.h:365
-#| msgid "Move window to south-east (bottom right) corner"
 msgid "Move window to bottom right corner"
 msgstr "Pārvietot logu uz ekrāna apakšējo labo stūri"
 
 #: ../src/include/all-keybindings.h:369
-#| msgid "Move window to center of screen"
 msgid "Move window to top edge of screen"
 msgstr "Pārvietot logu uz ekrāna augšējo malu"
 
 #: ../src/include/all-keybindings.h:372
-#| msgid "Move window to south (bottom) side of screen"
 msgid "Move window to bottom edge of screen"
 msgstr "Pārvietot logu uz ekrāna apakšējo malu"
 
 #: ../src/include/all-keybindings.h:375
-#| msgid "Move window to east (right) side of screen"
 msgid "Move window to right side of screen"
 msgstr "Pārvietot logu uz ekrāna labo malu"
 
 #: ../src/include/all-keybindings.h:378
-#| msgid "Move window to west (left) side of screen"
 msgid "Move window to left side of screen"
 msgstr "Pārvietot logu uz ekrāna kreiso malu"
 
