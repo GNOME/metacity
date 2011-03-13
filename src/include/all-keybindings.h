@@ -185,7 +185,7 @@ keybind (cycle_panels_backward,    handle_cycle,         META_TAB_LIST_DOCKS,
 
 /***********************************/
 
-keybind (show_desktop, handle_show_desktop, 0, 0, "<Control><Alt>d",
+keybind (show_desktop, handle_show_desktop, 0, 0, NULL,
       _("Hide all normal windows"))
 keybind (panel_main_menu, handle_panel,
        META_KEYBINDING_ACTION_PANEL_MAIN_MENU, 0, "<Alt>F1",
@@ -266,7 +266,7 @@ keybind (unmaximize, handle_unmaximize, 0, BINDING_PER_WINDOW, "<Alt>F5",
         _("Restore window"))
 keybind (toggle_shaded, handle_toggle_shaded, 0, BINDING_PER_WINDOW, NULL,
         _("Toggle shaded state"))
-keybind (minimize, handle_minimize, 0, BINDING_PER_WINDOW, "<Alt>F9",
+keybind (minimize, handle_minimize, 0, BINDING_PER_WINDOW, NULL,
         _("Minimize window"))
 keybind (close, handle_close, 0, BINDING_PER_WINDOW, "<Alt>F4",
         _("Close window"))
