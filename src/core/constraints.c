@@ -142,6 +142,11 @@ typedef struct
   GList  *usable_xinerama_region;
 } ConstraintInfo;
 
+static gboolean do_screen_and_xinerama_relative_constraints (MetaWindow     *window,
+                                                             GList          *region_spanning_rectangles,
+                                                             ConstraintInfo *info,
+                                                             gboolean        check_only);
+
 static gboolean constrain_modal_dialog       (MetaWindow         *window,
                                               ConstraintInfo     *info,
                                               ConstraintPriority  priority,
@@ -848,7 +853,13 @@ constrain_modal_dialog (MetaWindow         *window,
 
   info->current.y = y;
   info->current.x = x;
-  return TRUE;
+
+  /* The calculated position above may need adjustment to make sure the
+   * dialog does not end up partially off-screen */
+  return do_screen_and_xinerama_relative_constraints (window,
+                                                      info->usable_screen_region,
+                                                      info,
+                                                      check_only);
 }
 
 static gboolean
