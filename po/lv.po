@@ -9,18 +9,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lv\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug."
-"cgi?product=metacity&component=general\n"
-"POT-Creation-Date: 2011-02-04 17:29+0000\n"
-"PO-Revision-Date: 2011-02-07 11:10+0200\n"
-"Last-Translator: Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=metaci"
+"ty&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2011-03-17 15:16+0000\n"
+"PO-Revision-Date: 2011-03-10 21:57+0200\n"
+"Last-Translator: Rudolfs <rudolfs.mazurs@gmail.com>\n"
 "Language-Team: Latvian <lata-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.1\n"
-"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
+"X-Generator: Lokalize 1.1\n"
 
 #: ../src/50-metacity-launchers.xml.in.h:1
 msgid "Launchers"
@@ -31,7 +31,8 @@ msgid "Navigation"
 msgstr "Navigācija"
 
 #: ../src/50-metacity-screenshot.xml.in.h:1
-msgid "Screen Shots"
+#| msgid "Screen Shots"
+msgid "Screenshots"
 msgstr "Ekrānattēli"
 
 #: ../src/50-metacity-system.xml.in.h:1
@@ -39,7 +40,6 @@ msgid "System"
 msgstr "Sistēma"
 
 #: ../src/50-metacity-windows.xml.in.h:1
-#| msgid "/_Windows"
 msgid "Windows"
 msgstr "Windows"
 
@@ -110,8 +110,7 @@ msgstr "Fatāla IO kļūda %d (%s) displejā '%s'.\n"
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
 "binding\n"
-msgstr ""
-"Kāda cita programma jau lieto taustiņu %s ar modificētājiem %x kā sasaisti\n"
+msgstr "Kāda cita programma jau lieto taustiņu %s ar modificētājiem %x kā sasaisti\n"
 
 #. Displayed when a keybinding which is
 #. * supposed to launch a program fails.
@@ -202,8 +201,7 @@ msgstr "Neizdevās noskanēt tēmu direktoriju: %s\n"
 #, c-format
 msgid ""
 "Could not find a theme! Be sure %s exists and contains the usual themes.\n"
-msgstr ""
-"Neizdevās atrast tēmu! Pārliecinieties, ka %s eksistē un satur parastās "
+msgstr "Neizdevās atrast tēmu! Pārliecinieties, ka %s eksistē un satur parastās "
 "tēmas.\n"
 
 #: ../src/core/main.c:602
@@ -243,8 +241,7 @@ msgstr "GConf atslēga \"%s\" ir iestatīta uz nederīgu tipu\n"
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
-msgstr ""
-"Apvedceļi bojātām lietotnēm atslēgti. Dažas lietotnes var neuzvesties "
+msgstr "Apvedceļi bojātām lietotnēm atslēgti. Dažas lietotnes var neuzvesties "
 "pareizi.\n"
 
 #: ../src/core/prefs.c:1305
@@ -257,8 +254,7 @@ msgstr "Neizdevās parsēt fonta aprakstu \"%s\" no GConf atslēgas %s\n"
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
 "modifier\n"
-msgstr ""
-"\"%s\", kas atrasta konfigurācijas datubāzē, nav derīga vērtība peles pogas "
+msgstr "\"%s\", kas atrasta konfigurācijas datubāzē, nav derīga vērtība peles pogas "
 "modifikatoram\n"
 
 #: ../src/core/prefs.c:1788
@@ -276,8 +272,7 @@ msgstr "Darbvieta %d"
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
 "\"%s\"\n"
-msgstr ""
-"\"%s\", kas atrasta konfigurācijas datubāzē, nav derīga vērtība "
+msgstr "\"%s\", kas atrasta konfigurācijas datubāzē, nav derīga vērtība "
 "taustiņsasaistei \"%s\"\n"
 
 #: ../src/core/prefs.c:2542
@@ -300,9 +295,8 @@ msgstr "Ekrāna %d displejs \"%s\" ir nederīgs\n"
 msgid ""
 "Screen %d on display \"%s\" already has a window manager; try using the --"
 "replace option to replace the current window manager.\n"
-msgstr ""
-"Ekrāna %d displejam \"%s\" jau ir logu pārvaldnieks; mēģiniet lietot --"
-"replace iespēju, lai aizvietotu pašreizējo logu pārvaldnieku.\n"
+msgstr "Ekrāna %d displejam \"%s\" jau ir logu pārvaldnieks; mēģiniet lietot --replace "
+"iespēju, lai aizvietotu pašreizējo logu pārvaldnieku.\n"
 
 #: ../src/core/screen.c:400
 #, c-format
@@ -357,8 +351,8 @@ msgstr ""
 "saīsinājumus, tādus kā \"<Ctl>\" un \"<Ctrl>\". Ja ierakstīsiet šeit īpašo "
 "virkni \"disabled\", šai darbībai nebūs taustiņsasaistes.\n"
 "\n"
-"Šo taustiņsaiti var apvērst, turot nospiestu \"shift\" taustiņu, tāpēc "
-"\"shift\" taustiņu tajā nevar lietot."
+"Šo taustiņsaiti var apvērst, turot nospiestu \"shift\" taustiņu, tāpēc \"shift\" "
+"taustiņu tajā nevar lietot."
 
 #: ../src/core/session.c:842 ../src/core/session.c:849
 #, c-format
@@ -464,8 +458,7 @@ msgstr "Metacity"
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
 "window as specified in the ICCCM.\n"
-msgstr ""
-"Logs %s iestata SM_CLIENT_ID pats sev, nevis WM_CLIENT_LEADER logam kā "
+msgstr "Logs %s iestata SM_CLIENT_ID pats sev, nevis WM_CLIENT_LEADER logam kā "
 "norādīts ICCCM.\n"
 
 #. We ignore mwm_has_resize_func because WM_NORMAL_HINTS is the
@@ -480,8 +473,7 @@ msgstr ""
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
 "d x %d and max size %d x %d; this doesn't make much sense.\n"
-msgstr ""
-"Logs %s iestata MWM padomu, ka tā izmērs nav maināms, bet iestata minimālo "
+msgstr "Logs %s iestata MWM padomu, ka tā izmērs nav maināms, bet iestata minimālo "
 "izmēru %d x %d un maksimālo izmēru %d x %d; tas ir diezgan dīvaini.\n"
 
 #: ../src/core/window-props.c:244
@@ -544,8 +536,7 @@ msgstr "Rekvizīts %s logā 0x%lx saturēja nederīgu UTF-8\n"
 #, c-format
 msgid ""
 "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
-msgstr ""
-"Rekvizīts %slogā 0x%lx saturēja nederīgu UTF-8 priekšmetam %d no saraksta\n"
+msgstr "Rekvizīts %slogā 0x%lx saturēja nederīgu UTF-8 priekšmetam %d no saraksta\n"
 
 #: ../src/include/all-keybindings.h:88
 msgid "Switch to workspace 1"
@@ -596,32 +587,26 @@ msgid "Switch to workspace 12"
 msgstr "Pārslēgties uz 12. darbvietu"
 
 #: ../src/include/all-keybindings.h:122
-#| msgid "Move to Workspace _Left"
 msgid "Move to workspace left"
 msgstr "Pārvietot uz darbvietu pa kreisi"
 
 #: ../src/include/all-keybindings.h:126
-#| msgid "Move to Workspace R_ight"
 msgid "Move to workspace right"
 msgstr "Pārvietot uz darbvietu pa labi"
 
 #: ../src/include/all-keybindings.h:130
-#| msgid "Move to Workspace _Left"
 msgid "Move to workspace above"
 msgstr "Pārvietot uz darbvietu uz augšu"
 
 #: ../src/include/all-keybindings.h:134
-#| msgid "Move to Workspace _Down"
 msgid "Move to workspace below"
 msgstr "Pārvietot uz darbvietu zemāk"
 
 #: ../src/include/all-keybindings.h:150
-#| msgid "Move between windows of an application immediately"
 msgid "Switch windows of an application"
 msgstr "Pārslēgt lietotnes logus"
 
 #: ../src/include/all-keybindings.h:153
-#| msgid "Move between windows of an application immediately"
 msgid "Reverse switch windows of an application"
 msgstr "Pārslēgt lietotnes logus pretēji"
 
@@ -642,12 +627,10 @@ msgid "Reverse switch system controls"
 msgstr "Pārslēgt sistēmas vadīklas pretēji"
 
 #: ../src/include/all-keybindings.h:169
-#| msgid "Move between windows of an application immediately"
 msgid "Switch windows of an app directly"
 msgstr "Pārslēgt lietotnes logu tieši"
 
 #: ../src/include/all-keybindings.h:172
-#| msgid "Move between windows of an application immediately"
 msgid "Reverse switch windows of an app directly"
 msgstr "Pārslēgt lietotnes logu tieši apgriezti"
 
@@ -668,7 +651,6 @@ msgid "Reverse switch system controls directly"
 msgstr "Pārslēgt sistēmas vadīklas tieši pretēji"
 
 #: ../src/include/all-keybindings.h:189
-#| msgid "Hide all normal windows and set focus to the desktop"
 msgid "Hide all normal windows"
 msgstr "Slēpt visus parastos logus"
 
@@ -677,7 +659,6 @@ msgid "Show the activities overview"
 msgstr "Rādīt aktivitāšu pārskatu"
 
 #: ../src/include/all-keybindings.h:195
-#| msgid "Show the panel's main menu"
 msgid "Show the run command prompt"
 msgstr "Rādīt palaišanas komandrindu"
 
@@ -690,7 +671,6 @@ msgid "Take a screenshot of a window"
 msgstr "Uzņemt loga ekrānattēlu"
 
 #: ../src/include/all-keybindings.h:240
-#| msgid "Run a terminal"
 msgid "Launch Terminal"
 msgstr "Palaist termināli"
 
@@ -739,7 +719,6 @@ msgid "Resize window"
 msgstr "Mainīt loga izmēru"
 
 #: ../src/include/all-keybindings.h:279
-#| msgid "Toggle whether window is on all workspaces or just one"
 msgid "Toggle window on all workspaces or one"
 msgstr "Pārslēgt loga redzamību visās darbvirsmās vai tikai vienā"
 
@@ -808,7 +787,6 @@ msgid "Move window one workspace down"
 msgstr "Pārvietot logu vienu darbvietu lejup"
 
 #: ../src/include/all-keybindings.h:340
-#| msgid "Raise window if it's covered by another window, otherwise lower it"
 msgid "Raise window if covered, otherwise lower it"
 msgstr "Pacelt logu, ja to aizsedz, citādi pazemināt"
 
@@ -829,42 +807,34 @@ msgid "Maximize window horizontally"
 msgstr "Maksimizēt logu horizontāli"
 
 #: ../src/include/all-keybindings.h:356
-#| msgid "Move window to north-west (top left) corner"
 msgid "Move window to top left corner"
 msgstr "Pārvietot logu uz ekrāna augšējo kreiso stūri"
 
 #: ../src/include/all-keybindings.h:359
-#| msgid "Move window to north-east (top right) corner"
 msgid "Move window to top right corner"
 msgstr "Pārvietot logu uz ekrāna augšējo labo stūri"
 
 #: ../src/include/all-keybindings.h:362
-#| msgid "Move window to south-west (bottom left) corner"
 msgid "Move window to bottom left corner"
 msgstr "Pārvietot logu uz ekrāna apakšējo kreiso stūri"
 
 #: ../src/include/all-keybindings.h:365
-#| msgid "Move window to south-east (bottom right) corner"
 msgid "Move window to bottom right corner"
 msgstr "Pārvietot logu uz ekrāna apakšējo labo stūri"
 
 #: ../src/include/all-keybindings.h:369
-#| msgid "Move window to center of screen"
 msgid "Move window to top edge of screen"
 msgstr "Pārvietot logu uz ekrāna augšējo malu"
 
 #: ../src/include/all-keybindings.h:372
-#| msgid "Move window to south (bottom) side of screen"
 msgid "Move window to bottom edge of screen"
 msgstr "Pārvietot logu uz ekrāna apakšējo malu"
 
 #: ../src/include/all-keybindings.h:375
-#| msgid "Move window to east (right) side of screen"
 msgid "Move window to right side of screen"
 msgstr "Pārvietot logu uz ekrāna labo malu"
 
 #: ../src/include/all-keybindings.h:378
-#| msgid "Move window to west (left) side of screen"
 msgid "Move window to left side of screen"
 msgstr "Pārvietot logu uz ekrāna kreiso malu"
 
@@ -913,13 +883,13 @@ msgid ""
 "without breaking older versions. A special spacer tag can be used to insert "
 "some space between two adjacent buttons."
 msgstr ""
-"Pogu kārtība virsrakstjoslā. Vērtībai jābūt virknei, tādai kā \"menu:"
-"minimize,maximize,close\"; kols atdala kreiso loga stūri no labā stūra un "
-"pogu nosaukumi ir komatu atdalīti. Dublētas pogas netiek pieļautas. Nezināmi "
-"pogu nosaukumi tiek klusi ignorēti, tādējādi pogas var tikt pievienotas "
-"turpmākās metacity versijās, nesabojājot vecākas versijas. Speciālas "
-"atstarpju birkas var izmantot, lai ievietotu atstarpes starp blakus esošām "
-"pogām."
+"Pogu kārtība virsrakstjoslā. Vērtībai jābūt virknei, tādai kā "
+"\"menu:minimize,maximize,close\"; kols atdala kreiso loga stūri no labā stūra "
+"un pogu nosaukumi ir komatu atdalīti. Dublētas pogas netiek pieļautas. "
+"Nezināmi pogu nosaukumi tiek klusi ignorēti, tādējādi pogas var tikt "
+"pievienotas turpmākās metacity versijās, nesabojājot vecākas versijas. "
+"Speciālas atstarpju birkas var izmantot, lai ievietotu atstarpes starp "
+"blakus esošām pogām."
 
 #: ../src/metacity.schemas.in.in.h:8
 msgid "Automatically raises the focused window"
@@ -936,8 +906,8 @@ msgstr ""
 "Klikšķis uz loga, turot nospiestu šo taustiņu, pārvietos logu (kreisais "
 "klikšķis), mainīs loga izmēru (vidējais klikšķis) vai parādīs loga izvēlni "
 "(labais klikšķis). Kreisās un labās darbības var mainīt vietām ar "
-"\"mouse_button_resize\" atslēgu. Šo taustiņu apzīmē, piemēram, \"&lt;Alt&gt;"
-"\" vai \"&lt;Super&gt;\"."
+"\"mouse_button_resize\" atslēgu. Šo taustiņu apzīmē, piemēram, \"&lt;Alt&gt;\" "
+"vai \"&lt;Super&gt;\"."
 
 #: ../src/metacity.schemas.in.in.h:10
 msgid "Commands to run in response to keybindings"
@@ -1067,8 +1037,7 @@ msgid ""
 msgstr ""
 "Iestatiet to uz patiesu, lai mainītu izmēru ar labo pogu un rādītu izvēlni "
 "ar vidējo pogu, kamēr tur nospiestu taustiņu, kurš ir norādīts atslēgā "
-"\"mouse_button_modifier\"; iestatiet to uz nepatiesu, lai tas strādātu "
-"otrādi."
+"\"mouse_button_modifier\"; iestatiet to uz nepatiesu, lai tas strādātu otrādi."
 
 #: ../src/metacity.schemas.in.in.h:30
 msgid ""
@@ -1091,21 +1060,21 @@ msgid ""
 "and that they need to change this option back to true or live with the \"bug"
 "\" they requested."
 msgstr ""
-"Šīs opcijas pārslēgšana no \"true\" uz \"false\" var izraisīt kļūdainu "
-"darbību, tāpēc lietotājiem labāk to neaiztikt. Daudzas darbības "
-"(klikšķināšana klienta laukumā, loga izmēra maiņa vai pārvietošana u.c.) "
-"parasti arī paceļ logu. Šīs vērtības iestatīšana par aplamu, kas ir ļoti "
-"nevēlams, atraus logu pacelšanu no citām lietotāju darbībām un ignorēs "
-"lietotņu pieprasījumus. Skatiet http://bugzilla.gnome.org/show_bug.cgi?"
-"id=445447#c6. Logu vēl aizvien varēs pacelt ar Alt-kreiso-klikšķi uz loga, "
-"parasto klikšķi uz loga apdares vai ar speciālu ziņojumu no lapotāja, "
-"piemēram, aktivēšanas pieprasījumu no uzdevumu saraksta sīklietotnēm. Šī "
-"opcija pašreiz ir atslēgta klikšķa fokusa režīmā. Ņemiet vērā: kad "
-"raise_on_click ir \"false\", lietotņu programmatiskie pieprasījumi pacelt "
-"logu nestrādās. Tie tiks ignorēti neatkarīgi no pieprasījuma iemesla. Ja jūs "
-"esat izstrādātājs un saņemat sūdzību, ka jūsu lietotne nedarbojas, kad šī "
-"opcija ir \"false\", iesakiet lietotājam atlikt to atpakaļ uz \"true\" vai "
-"sadzīvot ar \"false\" iestatījuma paredzēto rezultātu."
+"Šīs opcijas pārslēgšana no \"true\" uz \"false\" var izraisīt kļūdainu darbību, "
+"tāpēc lietotājiem labāk to neaiztikt. Daudzas darbības (klikšķināšana "
+"klienta laukumā, loga izmēra maiņa vai pārvietošana u.c.) parasti arī paceļ "
+"logu. Šīs vērtības iestatīšana par aplamu, kas ir ļoti nevēlams, atraus logu "
+"pacelšanu no citām lietotāju darbībām un ignorēs lietotņu pieprasījumus. "
+"Skatiet http://bugzilla.gnome.org/show_bug.cgi?id=445447#c6. Logu vēl "
+"aizvien varēs pacelt ar Alt-kreiso-klikšķi uz loga, parasto klikšķi uz loga "
+"apdares vai ar speciālu ziņojumu no lapotāja, piemēram, aktivēšanas "
+"pieprasījumu no uzdevumu saraksta sīklietotnēm. Šī opcija pašreiz ir "
+"atslēgta klikšķa fokusa režīmā. Ņemiet vērā: kad raise_on_click ir \"false\", "
+"lietotņu programmatiskie pieprasījumi pacelt logu nestrādās. Tie tiks "
+"ignorēti neatkarīgi no pieprasījuma iemesla. Ja jūs esat izstrādātājs un "
+"saņemat sūdzību, ka jūsu lietotne nedarbojas, kad šī opcija ir \"false\", "
+"iesakiet lietotājam atlikt to atpakaļ uz \"true\" vai sadzīvot ar \"false\" "
+"iestatījuma paredzēto rezultātu."
 
 #: ../src/metacity.schemas.in.in.h:31
 msgid ""
@@ -1176,9 +1145,9 @@ msgid ""
 "\"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled\", "
 "then there will be no keybinding for this action."
 msgstr ""
-"Taustiņsasaiste, kas palaiž atbilstoši numurēto komandu no /apps/metacity/"
-"keybinding_commands. Formāts izskatās kā \"&lt;Control&gt;a\" vai \"&lt;"
-"Shift&gt;&lt;Alt&gt;F1. Parseris pieļauj lielos un mazos burtus un "
+"Taustiņsasaiste, kas palaiž atbilstoši numurēto komandu no "
+"/apps/metacity/keybinding_commands. Formāts izskatās kā \"&lt;Control&gt;a\" "
+"vai \"&lt;Shift&gt;&lt;Alt&gt;F1. Parseris pieļauj lielos un mazos burtus un "
 "saīsinājumus, tādus kā \"&lt;Ctl&gt;\" vai \"&lt;Ctrl&gt;\". Ja ierakstīsiet "
 "šeit \"disabled\", šai darbībai nebūs taustiņsasaistes."
 
@@ -1215,8 +1184,8 @@ msgstr ""
 "Loga fokusēšanās režīms nosaka, kā logi tiek aktivizēti. Tam ir trīs "
 "iespējamās vērtības: \"klikšķis\" nozīmē, ka uz logiem ir jāuzklikšķina, lai "
 "tos fokusētu, \"paviršs\" nozīmē , ka logi tiek fokusēti, kad pele slīd tiem "
-"pāri, un \"pele\" nozīmē, ka logi tiek fokusēti, kad pele slīd logam pāri, "
-"un atfokusēti, kad pele pamet logu."
+"pāri, un \"pele\" nozīmē, ka logi tiek fokusēti, kad pele slīd logam pāri, un "
+"atfokusēti, kad pele pamet logu."
 
 #: ../src/metacity.schemas.in.in.h:43
 msgid "The window screenshot command"
@@ -1628,8 +1597,8 @@ msgid ""
 "GTK color specification must have a close bracket after the state, e.g. gtk:"
 "fg[NORMAL] where NORMAL is the state; could not parse \"%s\""
 msgstr ""
-"GTK krāsas specifikācijā ir jābūt kvadrātiekavām pēc stāvokļa, piem., gtk:fg"
-"[NORMAL], kur NORMAL ir stāvoklis; neizdevās parsēt \"%s\""
+"GTK krāsas specifikācijā ir jābūt kvadrātiekavām pēc stāvokļa, piem., "
+"gtk:fg[NORMAL], kur NORMAL ir stāvoklis; neizdevās parsēt \"%s\""
 
 #: ../src/ui/theme.c:1209
 #, c-format
@@ -1664,8 +1633,7 @@ msgstr "Alfa vērtība \"%s\" sapludinātajā krāsā nav starp 0.0 un 1.0"
 #, c-format
 msgid ""
 "Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
-msgstr ""
-"Ēnošanas formāts ir \"shade/base_color/factor\", \"%s\" neatbilst formātam"
+msgstr "Ēnošanas formāts ir \"shade/base_color/factor\", \"%s\" neatbilst formātam"
 
 #: ../src/ui/theme.c:1331
 #, c-format
@@ -1786,15 +1754,14 @@ msgid ""
 "<button function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> must be "
 "specified for this frame style"
 msgstr ""
-"<button function=\"%s\" state=\"%s\" draw_ops=\"jebkas\"/> jābūt noteiktam "
-"šajā rāmja stilā"
+"<button function=\"%s\" state=\"%s\" draw_ops=\"jebkas\"/> jābūt noteiktam šajā "
+"rāmja stilā"
 
 #: ../src/ui/theme.c:4827 ../src/ui/theme.c:4852
 #, c-format
 msgid ""
 "Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
-msgstr ""
-"Iztrūkst <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"jebkas\"/>"
+msgstr "Iztrūkst <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"jebkas\"/>"
 
 #: ../src/ui/theme.c:4896
 #, c-format
@@ -1813,15 +1780,14 @@ msgid ""
 "No frame style set for window type \"%s\" in theme \"%s\", add a <window "
 "type=\"%s\" style_set=\"whatever\"/> element"
 msgstr ""
-"Nav rāmja stila kopas loga tipam \"%s\" tēmā \"%s\"; pievienojiet <window "
-"type=\"%s\" style_set=\"jebkas\"/> elementu"
+"Nav rāmja stila kopas loga tipam \"%s\" tēmā \"%s\"; pievienojiet <window type=\""
+"%s\" style_set=\"jebkas\"/> elementu"
 
 #: ../src/ui/theme.c:5505 ../src/ui/theme.c:5567 ../src/ui/theme.c:5630
 #, c-format
 msgid ""
 "User-defined constants must begin with a capital letter; \"%s\" does not"
-msgstr ""
-"Lietotāja definētajām konstantēm jāsākas ar lielo burtu; \"%s\" nesākas"
+msgstr "Lietotāja definētajām konstantēm jāsākas ar lielo burtu; \"%s\" nesākas"
 
 #: ../src/ui/theme.c:5513 ../src/ui/theme.c:5575 ../src/ui/theme.c:5638
 #, c-format
@@ -1889,17 +1855,15 @@ msgstr "Leņķim jābūt starp 0.0 un 360.0, bija %g\n"
 #: ../src/ui/theme-parser.c:726
 #, c-format
 msgid "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g\n"
-msgstr ""
-"Alfa jābūt starp 0.0 (neredzams) un 1.0 (pilnībā necaurredzams), bija %g\n"
+msgstr "Alfa jābūt starp 0.0 (neredzams) un 1.0 (pilnībā necaurredzams), bija %g\n"
 
 #: ../src/ui/theme-parser.c:791
 #, c-format
 msgid ""
 "Invalid title scale \"%s\" (must be one of xx-small,x-small,small,medium,"
 "large,x-large,xx-large)\n"
-msgstr ""
-"Nederīgs virsraksta mērogs \"%s\" (var būt: xx-small,x-small,small,medium,"
-"large,x-large,xx-large)\n"
+msgstr "Nederīgs virsraksta mērogs \"%s\" (var būt: xx-"
+"small,x-small,small,medium,large,x-large,xx-large)\n"
 
 #: ../src/ui/theme-parser.c:936 ../src/ui/theme-parser.c:999
 #: ../src/ui/theme-parser.c:1033 ../src/ui/theme-parser.c:1136
@@ -1957,8 +1921,7 @@ msgid ""
 "Cannot specify both \"button_width\"/\"button_height\" and \"aspect_ratio\" "
 "for buttons"
 msgstr ""
-"Nevar noteikt gan \"button_width\"/\"button_height\", gan \"aspect_ratio\" "
-"pogām"
+"Nevar noteikt gan \"button_width\"/\"button_height\", gan \"aspect_ratio\" pogām"
 
 #: ../src/ui/theme-parser.c:1366
 #, c-format
@@ -2333,8 +2296,7 @@ msgid ""
 "Drew %d frames in %g client-side seconds (%g milliseconds per frame) and %g "
 "seconds wall clock time including X server resources (%g milliseconds per "
 "frame)\n"
-msgstr ""
-"Uzzīmēju %d kadrus %g klienta puses sekundēs (%g milisekundes uz kadru) un %"
+msgstr "Uzzīmēju %d kadrus %g klienta puses sekundēs (%g milisekundes uz kadru) un %"
 "g sekundēs pēc ierastā laika, ieskaitot X servera resursus (%g milisekundes "
 "uz kadru)\n"
 
