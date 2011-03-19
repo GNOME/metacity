@@ -1627,6 +1627,29 @@ reload_transient_for (MetaWindow    *window,
     meta_window_queue (window, META_QUEUE_MOVE_RESIZE);
 }
 
+static void
+reload_gtk_theme_variant (MetaWindow    *window,
+                          MetaPropValue *value,
+                          gboolean       initial)
+{
+  char *requested_variant = NULL;
+  char *current_variant = window->gtk_theme_variant;
+
+  if (value->type != META_PROP_VALUE_INVALID)
+    {
+      requested_variant = value->v.str;
+      meta_verbose ("Requested \"%s\" theme variant for window %s.\n",
+                    requested_variant, window->desc);
+    }
+
+  if (g_strcmp0 (requested_variant, current_variant) != 0)
+    {
+      g_free (current_variant);
+
+      window->gtk_theme_variant = g_strdup (requested_variant);
+    }
+}
+
 /**
  * Initialises the property hooks system.  Each row in the table named "hooks"
  * represents an action to take when a property is found on a newly-created
@@ -1745,6 +1768,12 @@ meta_display_init_window_prop_hooks (MetaDisplay *display)
       XA_WM_TRANSIENT_FOR,
       META_PROP_VALUE_WINDOW,
       reload_transient_for,
+      LOAD_INIT
+    },
+    {
+      display->atom__GTK_THEME_VARIANT,
+      META_PROP_VALUE_UTF8,
+      reload_gtk_theme_variant,
       LOAD_INIT
     },
     {
