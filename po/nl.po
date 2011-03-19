@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-19 00:55+0100\n"
-"PO-Revision-Date: 2011-03-19 00:54+0100\n"
+"POT-Creation-Date: 2011-03-19 16:01+0100\n"
+"PO-Revision-Date: 2011-03-19 16:01+0100\n"
 "Last-Translator: Wouter Bolsterlee <wbolster@gnome.org>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "Language: nl\n"
@@ -157,7 +157,6 @@ msgstr ""
 msgid "Disable connection to session manager"
 msgstr "Schakel de verbinding met het sessiebeheer uit"
 
-# met:"'t" ipv "het" past het net op 1 regel in gnome-terminal
 #: ../src/core/main.c:275
 msgid "Replace the running window manager with Metacity"
 msgstr "De huidige toepassing voor vensterbeheer vervangen door Metacity"
@@ -2248,7 +2247,7 @@ msgstr "/Vensters/_Dialoogvenster"
 
 #: ../src/ui/theme-viewer.c:78
 msgid "/Windows/_Modal dialog"
-msgstr "/Vensters/_Modaal dialoogvenster"
+msgstr "/Vensters/_Blokkerend dialoogvenster"
 
 #: ../src/ui/theme-viewer.c:79
 msgid "/Windows/_Utility"
@@ -2268,11 +2267,11 @@ msgstr "/Vensters/_Onderpaneel"
 
 #: ../src/ui/theme-viewer.c:83
 msgid "/Windows/_Left dock"
-msgstr "/Vensters/_Linker paneel"
+msgstr "/Vensters/Paneel _links"
 
 #: ../src/ui/theme-viewer.c:84
 msgid "/Windows/_Right dock"
-msgstr "/Vensters/_Rechter paneel"
+msgstr "/Vensters/Paneel _rechts"
 
 #: ../src/ui/theme-viewer.c:85
 msgid "/Windows/_All docks"
