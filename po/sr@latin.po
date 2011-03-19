@@ -1,33 +1,47 @@
 # Serbian translation of metacity
 # Courtesy of Prevod.org team (http://prevod.org/) -- 2003 - 2009.
-#
 # This file is distributed under the same license as the metacity package.
-#
 # Maintainer: Goran Rakić <grakic@devbase.net>
 # Reviewed on 2005-09-03 by: Danilo Šegan <danilo@prevod.org>"
-#
+# Miroslav Nikolić <miroslavnikolic@rocketmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=metacity&component=general\n"
-"POT-Creation-Date: 2010-01-21 21:34+0000\n"
-"PO-Revision-Date: 2010-03-24 01:37+0100\n"
-"Last-Translator: Goran Rakić <grakic@devbase.net>\n"
-"Language-Team: Serbian (sr) <gnom@prevod.org>\n"
+"product=metacity&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2011-03-17 18:03+0000\n"
+"PO-Revision-Date: 2011-03-13 22:06+0200\n"
+"Last-Translator: Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
+"Language-Team: Serbian <gnom@prevod.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: sr\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Virtaal 0.5.2\n"
 
-#: ../src/50-metacity-desktop-key.xml.in.h:1
-msgid "Desktop"
-msgstr "Radna površina"
+#: ../src/50-metacity-launchers.xml.in.h:1
+msgid "Launchers"
+msgstr "Pokretači"
 
-#: ../src/50-metacity-key.xml.in.h:1
-msgid "Window Management"
-msgstr "Upravljanje prozorima"
+#: ../src/50-metacity-navigation.xml.in.h:1
+msgid "Navigation"
+msgstr "Navigacija"
 
-#: ../src/core/bell.c:294
+#: ../src/50-metacity-screenshot.xml.in.h:1
+msgid "Screenshots"
+msgstr "Snimci ekrana"
+
+#: ../src/50-metacity-system.xml.in.h:1
+msgid "System"
+msgstr "Sistem"
+
+#: ../src/50-metacity-windows.xml.in.h:1
+msgid "Windows"
+msgstr "Prozori"
+
+#: ../src/core/bell.c:299
 msgid "Bell event"
 msgstr "Zvonce"
 
@@ -39,16 +53,10 @@ msgstr "Zahtevana je nepoznata informacija o prozoru: %d"
 #. Translators: %s is a window title
 #: ../src/core/delete.c:96
 #, c-format
-#| msgid "\"%s\" is not responding."
 msgid "<tt>%s</tt> is not responding."
 msgstr "<tt>%s</tt> ne daje odziv."
 
 #: ../src/core/delete.c:101
-#| msgid ""
-#| "<big><b><tt>%s</tt> is not responding.</b></big>\n"
-#| "\n"
-#| "<i>You may choose to wait a short while for it to continue or force the "
-#| "application to quit entirely.</i>"
 msgid ""
 "You may choose to wait a short while for it to continue or force the "
 "application to quit entirely."
@@ -67,7 +75,7 @@ msgstr "_Primoraj izlaz"
 #: ../src/core/delete.c:208
 #, c-format
 msgid "Failed to get hostname: %s\n"
-msgstr "Nisam uspeo da saznam ime kompjutera: %s\n"
+msgstr "Nisam uspeo da saznam ime računara: %s\n"
 
 #: ../src/core/display.c:258
 #, c-format
@@ -77,7 +85,7 @@ msgstr "Nedostaje potreban kompozitni dodatak %s"
 #: ../src/core/display.c:336
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
-msgstr "Nisam uspeo da otvorim X Window System  ekran „%s“\n"
+msgstr "Nisam uspeo da otvorim ekran sistema H prozora „%s“\n"
 
 #: ../src/core/errors.c:272
 #, c-format
@@ -87,15 +95,15 @@ msgid ""
 "the window manager.\n"
 msgstr ""
 "Izgubio sam vezu sa ekranom „%s“;\n"
-"najverovatnije je da je Iks server ugašen ili da ste ubili\n"
-"menadžer prozora.\n"
+"najverovatnije je da je Iks server ugašen ili da ste ubili/uništili\n"
+"upravnika prozora.\n"
 
 #: ../src/core/errors.c:279
 #, c-format
 msgid "Fatal IO error %d (%s) on display '%s'.\n"
 msgstr "Kobna greška sa izlazom/ulazom: %d (%s) na ekranu „%s“.\n"
 
-#: ../src/core/keybindings.c:680
+#: ../src/core/keybindings.c:729
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
@@ -107,7 +115,7 @@ msgstr ""
 #. Displayed when a keybinding which is
 #. * supposed to launch a program fails.
 #.
-#: ../src/core/keybindings.c:2294
+#: ../src/core/keybindings.c:2343
 #, c-format
 msgid ""
 "There was an error running <tt>%s</tt>:\n"
@@ -118,12 +126,12 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/core/keybindings.c:2383
+#: ../src/core/keybindings.c:2432
 #, c-format
 msgid "No command %d has been defined.\n"
-msgstr "Nije definisana komanda %d.\n"
+msgstr "Nije definisana komanda „%d“.\n"
 
-#: ../src/core/keybindings.c:3337
+#: ../src/core/keybindings.c:3386
 #, c-format
 msgid "No terminal command has been defined.\n"
 msgstr "Nije definisana naredba terminala.\n"
@@ -138,67 +146,67 @@ msgid ""
 "PARTICULAR PURPOSE.\n"
 msgstr ""
 "metasiti %s\n"
-"Sva prava zadržana (C) 2001–%s Havoc Pennington, Red Hat, Inc., i ostali\n"
+"Autorska preva (C) 2001–%s Havoc Pennington, Red Hat, Inc., i ostali\n"
 "Ovo je slobodan program; pogledajte izvorni kod za uslove korišćenja.\n"
-"Nikakva garancija NE postoji; čak ni garancija o podobnosti za određenu "
-"namenu.\n"
+"Nema NIKAKVE garancije; čak ni o TRŽIŠNOJ VREDNOSTI ili PRILAGOĐENOSTI "
+"ODREĐENOJ NAMENI.\n"
 
 #: ../src/core/main.c:269
 msgid "Disable connection to session manager"
-msgstr "Onemogući vezu sa upravnikom sesije"
+msgstr "Onemogućava vezu sa upravnikom sesije"
 
 #: ../src/core/main.c:275
 msgid "Replace the running window manager with Metacity"
-msgstr "Zameni tekućeg upravnika prozorima Metasitijem"
+msgstr "Menja tekućeg upravnika prozorima Metasitijem"
 
 #: ../src/core/main.c:281
 msgid "Specify session management ID"
-msgstr "Navedi ID za upravljanje sesijom"
+msgstr "Navodi ID za upravljanje sesijom"
 
 #: ../src/core/main.c:286
 msgid "X Display to use"
-msgstr "Željeni X ekran"
+msgstr "Koji će X ekran biti korišćen"
 
 #: ../src/core/main.c:292
 msgid "Initialize session from savefile"
-msgstr "Koristi sesiju iz datoteke"
+msgstr "Pokreće sesiju iz datoteke čuvanja"
 
 #: ../src/core/main.c:298
 msgid "Print version"
-msgstr "Ispiši izdanje"
+msgstr "Ispisuje izdanje"
 
 #: ../src/core/main.c:304
 msgid "Make X calls synchronous"
-msgstr "Sinhronizuj X-ove pozive"
+msgstr "Sinhronizuje X pozive"
 
 #: ../src/core/main.c:310
 msgid "Turn compositing on"
-msgstr "Uključi kompoziciju"
+msgstr "Uključuje kompoziciju"
 
 #: ../src/core/main.c:316
 msgid "Turn compositing off"
-msgstr "Isključi kompoziciju"
+msgstr "Isključuje kompoziciju"
 
 #: ../src/core/main.c:322
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr ""
-"Ne postavljaj preko celog ekrana prozore koji nisu uvećani i ne poseduju okvir"
+"Ne postavlja preko celog ekrana prozore koji nisu uvećani i ne poseduju okvir"
 
-#: ../src/core/main.c:528
+#: ../src/core/main.c:527
 #, c-format
 msgid "Failed to scan themes directory: %s\n"
 msgstr "Nisam uspeo da pročitam direktorijum tema: %s\n"
 
-#: ../src/core/main.c:544
+#: ../src/core/main.c:543
 #, c-format
 msgid ""
 "Could not find a theme! Be sure %s exists and contains the usual themes.\n"
 msgstr ""
-"Nisam mogao da pronđem temu! Proverite da %s postoji i da sadrži uobičajne "
+"Ne mogu da pronađem temu! Proverite da „%s“ postoji i da sadrži uobičajene "
 "teme.\n"
 
-#: ../src/core/main.c:603
+#: ../src/core/main.c:602
 #, c-format
 msgid "Failed to restart: %s\n"
 msgstr "Nisam uspeo da se ponovo pokrenem: %s\n"
@@ -214,68 +222,68 @@ msgstr "Nisam uspeo da se ponovo pokrenem: %s\n"
 #. * (Empty comment follows so the translators don't see this.)
 #.
 #.
-#: ../src/core/prefs.c:506 ../src/core/prefs.c:661
+#: ../src/core/prefs.c:508 ../src/core/prefs.c:663
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
 msgstr "Ključ „%s“ u gnom podešavanjima je podešen na nepropisnu vrednost\n"
 
-#: ../src/core/prefs.c:587 ../src/core/prefs.c:830
+#: ../src/core/prefs.c:589 ../src/core/prefs.c:832
 #, c-format
 msgid "%d stored in GConf key %s is out of range %d to %d\n"
-msgstr "%d sačuvan u ključu %s je izvan opdega od %d do %d\n"
+msgstr "„%d“ sačuvan u ključu „%s“ je izvan opsega od %d do %d\n"
 
-#: ../src/core/prefs.c:631 ../src/core/prefs.c:708 ../src/core/prefs.c:756
-#: ../src/core/prefs.c:820 ../src/core/prefs.c:1113 ../src/core/prefs.c:1129
-#: ../src/core/prefs.c:1146 ../src/core/prefs.c:1162
+#: ../src/core/prefs.c:633 ../src/core/prefs.c:710 ../src/core/prefs.c:758
+#: ../src/core/prefs.c:822 ../src/core/prefs.c:1115 ../src/core/prefs.c:1131
+#: ../src/core/prefs.c:1148 ../src/core/prefs.c:1164
 #, c-format
 msgid "GConf key \"%s\" is set to an invalid type\n"
 msgstr "Ključ „%s“ u gnom podešavanjima je podešen na nepropisni tip\n"
 
-#: ../src/core/prefs.c:1232
+#: ../src/core/prefs.c:1234
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
 msgstr ""
-"Kompromisi za loše programe su isključeni. Neke aplikacije se mogu ponašati "
+"Rešenja za oštećene programe su isključena. Neke aplikacije se mogu ponašati "
 "čudno.\n"
 
-#: ../src/core/prefs.c:1303
+#: ../src/core/prefs.c:1305
 #, c-format
 msgid "Could not parse font description \"%s\" from GConf key %s\n"
-msgstr "Nisam mogao da obradim opis „%s“ iz ključa %s u gnom podešavanjima\n"
+msgstr "Ne mogu da obradim opis „%s“ iz ključa „%s“ u gnom podešavanjima\n"
 
-#: ../src/core/prefs.c:1365
+#: ../src/core/prefs.c:1367
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
 "modifier\n"
 msgstr ""
-"“%s“ je pronađen u bazi podešavanja što nije ispravna vrednost za tipku koja "
+"„%s“ je pronađen u bazi podešavanja što nije ispravna vrednost za tipku koja "
 "menja ponašanje tastera miša\n"
 
-#: ../src/core/prefs.c:1786
+#: ../src/core/prefs.c:1788
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
-msgstr "Greška prilikom postavljanja broja radnih površina na %d: %s\n"
+msgstr "Greška prilikom postavljanja broja radnih prostora na %d: %s\n"
 
-#: ../src/core/prefs.c:1975 ../src/core/prefs.c:2478
+#: ../src/core/prefs.c:1959 ../src/core/prefs.c:2461
 #, c-format
 msgid "Workspace %d"
-msgstr "%d. radni prostor"
+msgstr "Radni prostor br. %d"
 
-#: ../src/core/prefs.c:2005 ../src/core/prefs.c:2183
+#: ../src/core/prefs.c:1988 ../src/core/prefs.c:2166
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
 "\"%s\"\n"
-msgstr "“%s“ iz baze sa podešavanjima nije ispravna kombinacija tastera „%s“\n"
+msgstr "„%s“ iz baze sa podešavanjima nije ispravna kombinacija tastera „%s“\n"
 
-#: ../src/core/prefs.c:2559
+#: ../src/core/prefs.c:2542
 #, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
-msgstr "Greška prilikom postavljanja imena za radnu površinu %d u „%s“: %s\n"
+msgstr "Greška prilikom postavljanja imena radne površine %d u „%s“: %s\n"
 
-#: ../src/core/prefs.c:2763
+#: ../src/core/prefs.c:2746
 #, c-format
 msgid "Error setting compositor status: %s\n"
 msgstr "Greška pri postavljanju stanja kompozitora: %s\n"
@@ -283,7 +291,7 @@ msgstr "Greška pri postavljanju stanja kompozitora: %s\n"
 #: ../src/core/screen.c:357
 #, c-format
 msgid "Screen %d on display '%s' is invalid\n"
-msgstr "Prikaz %d na ekranu „%s“ nije ispravan\n"
+msgstr "Prikaz „%d“ na ekranu „%s“ nije ispravan\n"
 
 #: ../src/core/screen.c:373
 #, c-format
@@ -291,25 +299,24 @@ msgid ""
 "Screen %d on display \"%s\" already has a window manager; try using the --"
 "replace option to replace the current window manager.\n"
 msgstr ""
-"Prikaz %d na ekranu „%s“ već ima pokrenut menadžer prozora; pokušajte da "
-"koristite --replace opciju kako biste zamenili trenutni menadžer prozora.\n"
+"Prikaz „%d“ na ekranu „%s“ već ima upravnika prozora; pokušajte da koristite "
+"opciju „--replace“ da zamenite trenutnog upravnika prozora.\n"
 
 #: ../src/core/screen.c:400
 #, c-format
 msgid ""
 "Could not acquire window manager selection on screen %d display \"%s\"\n"
-msgstr ""
-"Nisam mogao da dobijem izbor menadžera prozora na prikazu %d erkana „%s“\n"
+msgstr "Ne mogu da dobijem izbor upravnika prozora na prikazu %d erkana „%s“\n"
 
 #: ../src/core/screen.c:458
 #, c-format
 msgid "Screen %d on display \"%s\" already has a window manager\n"
-msgstr "Prikaz %d na ekranu „%s“ već ima menadžer prozora\n"
+msgstr "Prikaz %d na ekranu „%s“ već ima upravnika prozora\n"
 
 #: ../src/core/screen.c:668
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
-msgstr "Nisam mogao da ispustim prikaz %d na ekranu „%s“\n"
+msgstr "Ne mogu da otpustim prikaz %d na ekranu „%s“\n"
 
 #. Translators: Please don't translate "Control", "Shift", etc, since these
 #. * are hardcoded (in gtk/gtkaccelgroup.c; it's not metacity's fault).
@@ -351,95 +358,89 @@ msgstr ""
 "Možete obrnuti kombinaciju tastera pritiskom na „<Shift>“, pa taster "
 "„<Shift>“ ne može biti jedan od onih koje ovde koriste."
 
-#: ../src/core/session.c:850 ../src/core/session.c:857
+#: ../src/core/session.c:842 ../src/core/session.c:849
 #, c-format
 msgid "Could not create directory '%s': %s\n"
-msgstr "Nisam mogao da napravim direktorijum „%s“: %s\n"
+msgstr "Ne mogu da napravim direktorijum „%s“: %s\n"
 
-#: ../src/core/session.c:867
+#: ../src/core/session.c:859
 #, c-format
 msgid "Could not open session file '%s' for writing: %s\n"
-msgstr "Nisam mogao da otvorim datoteku sesije „%s“ za upis: %s\n"
+msgstr "Ne mogu da otvorim datoteku sesije „%s“ za upis: %s\n"
 
-#: ../src/core/session.c:1008
+#: ../src/core/session.c:1000
 #, c-format
 msgid "Error writing session file '%s': %s\n"
-msgstr "Greška prilikom upisa u datoteku sesije '%s': %s\n"
+msgstr "Greška prilikom zapisivanja datoteke sesije „%s“: %s\n"
 
-#: ../src/core/session.c:1013
+#: ../src/core/session.c:1005
 #, c-format
 msgid "Error closing session file '%s': %s\n"
-msgstr "Greška prilikom zatvaranja datoteke sesije '%s': %s\n"
+msgstr "Greška prilikom zatvaranja datoteke sesije „%s“: %s\n"
 
-#. oh, just give up
-#: ../src/core/session.c:1106
-#, c-format
-msgid "Failed to read saved session file %s: %s\n"
-msgstr "Nisam uspeo da pročitam sačuvanu datoteku sesije %s: %s\n"
-
-#: ../src/core/session.c:1145
+#: ../src/core/session.c:1135
 #, c-format
 msgid "Failed to parse saved session file: %s\n"
 msgstr "Nisam uspeo da obradim sačuvanu datoteku sesije: %s\n"
 
-#: ../src/core/session.c:1194
+#: ../src/core/session.c:1184
 #, c-format
 msgid "<metacity_session> attribute seen but we already have the session ID"
 msgstr ""
 "<metacity_session> atribut je primećen ali mi već imamo indetifikaciju sesije"
 
-#: ../src/core/session.c:1207 ../src/core/session.c:1282
-#: ../src/core/session.c:1314 ../src/core/session.c:1386
-#: ../src/core/session.c:1446
+#: ../src/core/session.c:1197 ../src/core/session.c:1272
+#: ../src/core/session.c:1304 ../src/core/session.c:1376
+#: ../src/core/session.c:1436
 #, c-format
 msgid "Unknown attribute %s on <%s> element"
-msgstr "Nepoznat atribut %s u <%s> elementu"
+msgstr "Nepoznat atribut „%s“ u <%s> elementu"
 
-#: ../src/core/session.c:1224
+#: ../src/core/session.c:1214
 #, c-format
 msgid "nested <window> tag"
 msgstr "ugnježden <window> element"
 
-#: ../src/core/session.c:1466
+#: ../src/core/session.c:1456
 #, c-format
 msgid "Unknown element %s"
-msgstr "Nepoznat element %s"
+msgstr "Nepoznat element „%s“"
 
-#: ../src/core/session.c:1818
+#: ../src/core/session.c:1808
 msgid ""
 "These windows do not support &quot;save current setup&quot; and will have to "
 "be restarted manually next time you log in."
 msgstr ""
-"Ovi prozori ne podržavaju mogućnost „snimi trenutna podešavanja“ pa ćete "
-"morati da ih ručno ponovo pokrenete kada se sledeći put prijavite."
+"Ovi prozori ne podržavaju mogućnost „sačuvaj trenutna podešavanja“ pa ćete "
+"morati ručno da ih ponovo pokrenete kada se sledeći put prijavite."
 
 #: ../src/core/util.c:101
 #, c-format
 msgid "Failed to open debug log: %s\n"
-msgstr "Nisam uspeo da otvorim istorijat grešaka: %s\n"
+msgstr "Nisam uspeo da otvorim dnevnik grešaka: %s\n"
 
 #: ../src/core/util.c:111
 #, c-format
 msgid "Failed to fdopen() log file %s: %s\n"
-msgstr "Nisam uspeo da fdopen() datoteku sa istorijatom %s: %s\n"
+msgstr "Nisam uspeo da „fdopen()“ datoteku dnevnika „%s“: %s\n"
 
 #: ../src/core/util.c:117
 #, c-format
 msgid "Opened log file %s\n"
-msgstr "Otvorena datoteka sa istorijatom %s\n"
+msgstr "Otvorena je datoteka dnevnika „%s“\n"
 
 #: ../src/core/util.c:136 ../src/tools/metacity-message.c:176
 #, c-format
 msgid "Metacity was compiled without support for verbose mode\n"
-msgstr "Metasiti je preveden bez podrške za obaveštajni način rada\n"
+msgstr "Metasiti je preveden bez podrške za opširni režim\n"
 
 #: ../src/core/util.c:236
 msgid "Window manager: "
-msgstr "Menadžer prozora:"
+msgstr "Upravnik prozora: "
 
 #: ../src/core/util.c:388
 msgid "Bug in window manager: "
-msgstr "Greška u menadžeru prozora: "
+msgstr "Greška u upravniku prozora: "
 
 #: ../src/core/util.c:421
 msgid "Window manager warning: "
@@ -447,7 +448,7 @@ msgstr "Upozorenje upravnika prozora: "
 
 #: ../src/core/util.c:449
 msgid "Window manager error: "
-msgstr "Greška menadžera prozora: "
+msgstr "Greška upravnika prozora: "
 
 #. Translators: This is the title used on dialog boxes
 #. eof all-keybindings.h
@@ -457,14 +458,14 @@ msgid "Metacity"
 msgstr "Metasiti"
 
 #. first time through
-#: ../src/core/window.c:5642
+#: ../src/core/window.c:5704
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
 "window as specified in the ICCCM.\n"
 msgstr ""
-"Prozor %s je postavio SM_CLIENT_ID na samog sebe umesto na  WM_CLIENT_LEADER "
-"prozor kao što je navedeno u ICCCM.\n"
+"Prozor „%s“ je postavio „SM_CLIENT_ID“ na samom sebi umesto na prozoru "
+"„WM_CLIENT_LEADER“ kao što je navedeno u ICCCM.\n"
 
 #. We ignore mwm_has_resize_func because WM_NORMAL_HINTS is the
 #. * authoritative source for that info. Some apps such as mplayer or
@@ -473,15 +474,15 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/core/window.c:6207
+#: ../src/core/window.c:6269
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
 "d x %d and max size %d x %d; this doesn't make much sense.\n"
 msgstr ""
-"Prozor %s je postavio MWM što nagoveštava da nije promenljive veličine, ali "
-"je postaviominimalnu veličinu %d x %d i maksimalnu veličinu %d x %d što nema "
-"mnogo smisla.\n"
+"Prozor „%s“ je postavio „MWM“ što nagoveštava da nije promenljive veličine, "
+"ali je postavio minimalnu veličinu %d x %d i maksimalnu veličinu %d x %d što "
+"nema mnogo smisla.\n"
 
 #: ../src/core/window-props.c:244
 #, c-format
@@ -530,329 +531,329 @@ msgid ""
 msgstr ""
 "Prozor 0x%lx ima osobinu %s\n"
 "tako da je očekivano da ima tip %s format %d,\n"
-"a zapravoand ima tip %s format %d n_items %d.\n"
-"Ovo je najverovatnije greška u programu, a ne u menadžeru prozora.\n"
-"Prozor ima naslov=\"%s\" klasa=\"%s\" ime=\"%s\"\n"
+"a zapravo ima tip %s format %d n_items %d.\n"
+"Ovo je najverovatnije greška programa, a ne upravnika prozora.\n"
+"Prozor ima naslov=„%s“ klasu=„%s“ ime=„%s“\n"
 
 #: ../src/core/xprops.c:401
 #, c-format
 msgid "Property %s on window 0x%lx contained invalid UTF-8\n"
-msgstr "Osobina %s prozora 0x%lx sadrži neispravan UTF-8\n"
+msgstr "Osobina „%s“ prozora 0x%lx sadrži neispravan UTF-8\n"
 
 #: ../src/core/xprops.c:484
 #, c-format
 msgid ""
 "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
 msgstr ""
-"Osobina %s prozora 0x%lx sadrži neispravan UTF-8 za stavku %d u listi\n"
+"Osobina „%s“ prozora 0x%lx sadrži neispravan UTF-8 za stavku „%d“ na spisku\n"
 
 #: ../src/include/all-keybindings.h:88
 msgid "Switch to workspace 1"
-msgstr "Prebaci se na radni prostor 1"
+msgstr "Prebacuje se na radni prostor 1"
 
 #: ../src/include/all-keybindings.h:90
 msgid "Switch to workspace 2"
-msgstr "Prebaci se na radni prostor 2"
+msgstr "Prebacuje se na radni prostor 2"
 
 #: ../src/include/all-keybindings.h:92
 msgid "Switch to workspace 3"
-msgstr "Prebaci se na radni prostor 3"
+msgstr "Prebacuje se na radni prostor 3"
 
 #: ../src/include/all-keybindings.h:94
 msgid "Switch to workspace 4"
-msgstr "Prebaci se na radni prostor 4"
+msgstr "Prebacuje se na radni prostor 4"
 
 #: ../src/include/all-keybindings.h:96
 msgid "Switch to workspace 5"
-msgstr "Prebaci se na radni prostor 5"
+msgstr "Prebacuje se na radni prostor 5"
 
 #: ../src/include/all-keybindings.h:98
 msgid "Switch to workspace 6"
-msgstr "Prebaci se na radni prostor 6"
+msgstr "Prebacuje se na radni prostor 6"
 
 #: ../src/include/all-keybindings.h:100
 msgid "Switch to workspace 7"
-msgstr "Prebaci se na radni prostor 7"
+msgstr "Prebacuje se na radni prostor 7"
 
 #: ../src/include/all-keybindings.h:102
 msgid "Switch to workspace 8"
-msgstr "Prebaci se na radni prostor 8"
+msgstr "Prebacuje se na radni prostor 8"
 
 #: ../src/include/all-keybindings.h:104
 msgid "Switch to workspace 9"
-msgstr "Prebaci se na radni prostor 9"
+msgstr "Prebacuje se na radni prostor 9"
 
 #: ../src/include/all-keybindings.h:106
 msgid "Switch to workspace 10"
-msgstr "Prebaci se na radni prostor 10"
+msgstr "Prebacuje se na radni prostor 10"
 
 #: ../src/include/all-keybindings.h:108
 msgid "Switch to workspace 11"
-msgstr "Prebaci se na radni prostor 11"
+msgstr "Prebacuje se na radni prostor 11"
 
 #: ../src/include/all-keybindings.h:110
 msgid "Switch to workspace 12"
-msgstr "Prebaci se na radni prostor 12"
+msgstr "Prebacuje se na radni prostor 12"
 
 #: ../src/include/all-keybindings.h:122
-msgid "Switch to workspace on the left of the current workspace"
-msgstr "Prebaci se na radni prostor na levo"
+msgid "Move to workspace left"
+msgstr "Premešta na radni prostor levo"
 
 #: ../src/include/all-keybindings.h:126
-msgid "Switch to workspace on the right of the current workspace"
-msgstr "Prebaci se na radni prostor na desno"
+msgid "Move to workspace right"
+msgstr "Premešta na radni prostor desno"
 
 #: ../src/include/all-keybindings.h:130
-msgid "Switch to workspace above the current workspace"
-msgstr "Prebaci se na radni prostor iznad ovog"
+msgid "Move to workspace above"
+msgstr "Premešta na radni prostor iznad"
 
 #: ../src/include/all-keybindings.h:134
-msgid "Switch to workspace below the current workspace"
-msgstr "Prebaci se na radni prostor ispod ovog"
+msgid "Move to workspace below"
+msgstr "Premešta na radni prostor ispod"
 
 #: ../src/include/all-keybindings.h:150
-msgid "Move between windows of an application, using a popup window"
-msgstr "Premesti između prozora programa uz iskakanje"
+msgid "Switch windows of an application"
+msgstr "Prebacuje prozor programa"
 
 #: ../src/include/all-keybindings.h:153
-msgid "Move backward between windows of an application, using a popup window"
-msgstr "Premesti unazad između prozora programa uz iskakanje"
+msgid "Reverse switch windows of an application"
+msgstr "Obrće prebacivanje prozora programa"
 
-#: ../src/include/all-keybindings.h:157
-msgid "Move between windows, using a popup window"
-msgstr "Premesti između prozora uz iskakanje"
+#: ../src/include/all-keybindings.h:156
+msgid "Switch applications"
+msgstr "Prebacuje programe"
 
-#: ../src/include/all-keybindings.h:160
-msgid "Move backward between windows, using a popup window"
-msgstr "Premesti unazad između prozora uz iskakanje"
+#: ../src/include/all-keybindings.h:159
+msgid "Reverse switch applications"
+msgstr "Obrće prebacivanje programa"
 
-#: ../src/include/all-keybindings.h:163
-msgid "Move between panels and the desktop, using a popup window"
-msgstr "Premesti između panela i radne površine uz iskakanje"
+#: ../src/include/all-keybindings.h:162
+msgid "Switch system controls"
+msgstr "Prebacuje kontrole sistema"
 
-#: ../src/include/all-keybindings.h:166
-msgid "Move backward between panels and the desktop, using a popup window"
-msgstr "Premesti unazad između panela i radne površine uz iskakanje"
+#: ../src/include/all-keybindings.h:165
+msgid "Reverse switch system controls"
+msgstr "Obrće prebacivanje kontrola sistema"
 
-#: ../src/include/all-keybindings.h:171
-msgid "Move between windows of an application immediately"
-msgstr "Premesti odmah između prozora programa"
+#: ../src/include/all-keybindings.h:169
+msgid "Switch windows of an app directly"
+msgstr "Prebacuje prozore programa direktno"
 
-#: ../src/include/all-keybindings.h:174
-msgid "Move backward between windows of an application immediately"
-msgstr "Premesti odmah unazad između prozora programa"
+#: ../src/include/all-keybindings.h:172
+msgid "Reverse switch windows of an app directly"
+msgstr "Obrće prebacivanje prozora programa direktno"
 
-#: ../src/include/all-keybindings.h:177
-msgid "Move between windows immediately"
-msgstr "Premesti odmah između prozora"
+#: ../src/include/all-keybindings.h:175
+msgid "Switch windows directly"
+msgstr "Prebacuje prozore direktno"
 
-#: ../src/include/all-keybindings.h:180
-msgid "Move backward between windows immediately"
-msgstr "Premesti odmah unazad između prozora"
+#: ../src/include/all-keybindings.h:178
+msgid "Reverse switch windows directly"
+msgstr "Obrće prebacivanje prozora direktno"
 
-#: ../src/include/all-keybindings.h:183
-msgid "Move between panels and the desktop immediately"
-msgstr "Premesti odmah između panela i radne površine"
+#: ../src/include/all-keybindings.h:181
+msgid "Switch system controls directly"
+msgstr "Prebacuje kontrole sistema direktno"
 
-#: ../src/include/all-keybindings.h:186
-msgid "Move backward between panels and the desktop immediately"
-msgstr "Premesti odmah unazad između panela i radne površine"
+#: ../src/include/all-keybindings.h:184
+msgid "Reverse switch system controls directly"
+msgstr "Obrće prebacivanje kontrola sistema direktno"
 
-#: ../src/include/all-keybindings.h:191
-msgid "Hide all normal windows and set focus to the desktop"
-msgstr "Sakrij sve obične prozore i prikaži radnu površinu"
+#: ../src/include/all-keybindings.h:189
+msgid "Hide all normal windows"
+msgstr "Skriva sve obične prozore"
 
-#: ../src/include/all-keybindings.h:194
-msgid "Show the panel's main menu"
-msgstr "Prikaži glavni meni panela"
+#: ../src/include/all-keybindings.h:192
+msgid "Show the activities overview"
+msgstr "Prikazuje pregled aktivnosti"
 
-#: ../src/include/all-keybindings.h:197
-msgid "Show the panel's \"Run Application\" dialog box"
-msgstr "Prikaži prozorče za pokretanje programa u panelu"
+#: ../src/include/all-keybindings.h:195
+msgid "Show the run command prompt"
+msgstr "Prikazuje prompt za pokretanje naredbe"
+
+#: ../src/include/all-keybindings.h:236
+msgid "Take a screenshot"
+msgstr "Pravi snimak ekrana"
 
 #: ../src/include/all-keybindings.h:238
-msgid "Take a screenshot"
-msgstr "Uzmi snimak ekrana"
+msgid "Take a screenshot of a window"
+msgstr "Pravi snimak prozora"
 
 #: ../src/include/all-keybindings.h:240
-msgid "Take a screenshot of a window"
-msgstr "Uzmi snimak prozora"
+msgid "Launch Terminal"
+msgstr "Pokreće terminal"
 
-#: ../src/include/all-keybindings.h:242
-msgid "Run a terminal"
-msgstr "Pokreni terminal"
-
-#: ../src/include/all-keybindings.h:257
+#: ../src/include/all-keybindings.h:255
 msgid "Activate the window menu"
-msgstr "Aktiviraj meni prozora"
+msgstr "Aktivira meni prozora"
+
+#: ../src/include/all-keybindings.h:258
+msgid "Toggle fullscreen mode"
+msgstr "Isključuje/uključuje prikaz preko celog ekrana"
 
 #: ../src/include/all-keybindings.h:260
-msgid "Toggle fullscreen mode"
-msgstr "Isključi/uključi prikaz preko celog ekrana"
+msgid "Toggle maximization state"
+msgstr "Isključuje/uključuje stanje uvećanja"
 
 #: ../src/include/all-keybindings.h:262
-msgid "Toggle maximization state"
-msgstr "Promeni stanje uvećanja"
+msgid "Toggle window always appearing on top"
+msgstr "Isključuje/uključuje prikazivanje prozora uvek na vrhu"
 
 #: ../src/include/all-keybindings.h:264
-msgid "Toggle whether a window will always be visible over other windows"
-msgstr "Određuje da li se prozor uvek prikazuje iznad ostalih"
+msgid "Maximize window"
+msgstr "Uvećava prozor"
 
 #: ../src/include/all-keybindings.h:266
-msgid "Maximize window"
-msgstr "Uvećaj prozor"
+msgid "Restore window"
+msgstr "Vraća veličinu prozora"
 
 #: ../src/include/all-keybindings.h:268
-msgid "Restore window"
-msgstr "Vrati veličinu prozoru"
+msgid "Toggle shaded state"
+msgstr "Isključuje/uključuje stanje zasenčenosti"
 
 #: ../src/include/all-keybindings.h:270
-msgid "Toggle shaded state"
-msgstr "Promeni stanje zasenčenosti"
+msgid "Minimize window"
+msgstr "Umanjuje prozor"
 
 #: ../src/include/all-keybindings.h:272
-msgid "Minimize window"
-msgstr "Umanji prozor"
+msgid "Close window"
+msgstr "Zatvara prozor"
 
 #: ../src/include/all-keybindings.h:274
-msgid "Close window"
-msgstr "Zatvori prozor"
+msgid "Move window"
+msgstr "Premešta prozor"
 
 #: ../src/include/all-keybindings.h:276
-msgid "Move window"
-msgstr "Premesti prozor"
-
-#: ../src/include/all-keybindings.h:278
 msgid "Resize window"
-msgstr "Promeni veličinu prozoru"
+msgstr "Menja veličinu prozora"
 
-#: ../src/include/all-keybindings.h:281
-msgid "Toggle whether window is on all workspaces or just one"
-msgstr "Prikazuje prozor na svim ili samo na jednoj radnoj površi"
+#: ../src/include/all-keybindings.h:279
+msgid "Toggle window on all workspaces or one"
+msgstr "Prikazuje prozor na svim radnim prostorima ili samo na jednom"
 
-#: ../src/include/all-keybindings.h:285
+#: ../src/include/all-keybindings.h:283
 msgid "Move window to workspace 1"
-msgstr "Premesti prozor na radni prostor broj 1"
+msgstr "Premešta prozor na radni prostor broj 1"
 
-#: ../src/include/all-keybindings.h:288
+#: ../src/include/all-keybindings.h:286
 msgid "Move window to workspace 2"
-msgstr "Premesti prozor na radni prostor broj 2"
+msgstr "Premešta prozor na radni prostor broj 2"
 
-#: ../src/include/all-keybindings.h:291
+#: ../src/include/all-keybindings.h:289
 msgid "Move window to workspace 3"
-msgstr "Premesti prozor na radni prostor broj 3"
+msgstr "Premešta prozor na radni prostor broj 3"
 
-#: ../src/include/all-keybindings.h:294
+#: ../src/include/all-keybindings.h:292
 msgid "Move window to workspace 4"
-msgstr "Premesti prozor na radni prostor broj 4"
+msgstr "Premešta prozor na radni prostor broj 4"
 
-#: ../src/include/all-keybindings.h:297
+#: ../src/include/all-keybindings.h:295
 msgid "Move window to workspace 5"
-msgstr "Premesti prozor na radni prostor broj 5"
+msgstr "Premešta prozor na radni prostor broj 5"
 
-#: ../src/include/all-keybindings.h:300
+#: ../src/include/all-keybindings.h:298
 msgid "Move window to workspace 6"
-msgstr "Premesti prozor na radni prostor broj 6"
+msgstr "Premešta prozor na radni prostor broj 6"
 
-#: ../src/include/all-keybindings.h:303
+#: ../src/include/all-keybindings.h:301
 msgid "Move window to workspace 7"
-msgstr "Premesti prozor na radni prostor broj 7"
+msgstr "Premešta prozor na radni prostor broj 7"
 
-#: ../src/include/all-keybindings.h:306
+#: ../src/include/all-keybindings.h:304
 msgid "Move window to workspace 8"
-msgstr "Premesti prozor na radni prostor broj 8"
+msgstr "Premešta prozor na radni prostor broj 8"
 
-#: ../src/include/all-keybindings.h:309
+#: ../src/include/all-keybindings.h:307
 msgid "Move window to workspace 9"
-msgstr "Premesti prozor na radni prostor broj 9"
+msgstr "Premešta prozor na radni prostor broj 9"
 
-#: ../src/include/all-keybindings.h:312
+#: ../src/include/all-keybindings.h:310
 msgid "Move window to workspace 10"
-msgstr "Premesti prozor na radni prostor broj 10"
+msgstr "Premešta prozor na radni prostor broj 10"
 
-#: ../src/include/all-keybindings.h:315
+#: ../src/include/all-keybindings.h:313
 msgid "Move window to workspace 11"
-msgstr "Premesti prozor na radni prostor broj 11"
+msgstr "Premešta prozor na radni prostor broj 11"
 
-#: ../src/include/all-keybindings.h:318
+#: ../src/include/all-keybindings.h:316
 msgid "Move window to workspace 12"
-msgstr "Premesti prozor na radni prostor broj 12"
+msgstr "Premešta prozor na radni prostor broj 12"
 
-#: ../src/include/all-keybindings.h:330
+#: ../src/include/all-keybindings.h:328
 msgid "Move window one workspace to the left"
-msgstr "Premesti prozor za jedan sledeći radni prostor ulevo"
+msgstr "Premešta prozor jedan radni prostor ulevo"
 
-#: ../src/include/all-keybindings.h:333
+#: ../src/include/all-keybindings.h:331
 msgid "Move window one workspace to the right"
-msgstr "Premesti prozor za jedan sledeći radni prostor udesno"
+msgstr "Premešta prozor jedan radni prostor udesno"
 
-#: ../src/include/all-keybindings.h:336
+#: ../src/include/all-keybindings.h:334
 msgid "Move window one workspace up"
-msgstr "Premesti prozor za jedan radni prostor na gore"
+msgstr "Premešta prozor jedan radni prostor na gore"
 
-#: ../src/include/all-keybindings.h:339
+#: ../src/include/all-keybindings.h:337
 msgid "Move window one workspace down"
-msgstr "Premesti prozor za jedan radni prostor na dole"
+msgstr "Premešta prozor jedan radni prostor na dole"
+
+#: ../src/include/all-keybindings.h:340
+msgid "Raise window if covered, otherwise lower it"
+msgstr "Izdiže prozor ukoliko ga drugi prozor zaklanja, u protivnom ga spušta"
 
 #: ../src/include/all-keybindings.h:342
-msgid "Raise window if it's covered by another window, otherwise lower it"
-msgstr "Podigni prozor ukoliko ga drugi prozor zaklanja, u protivnom ga spusti"
+msgid "Raise window above other windows"
+msgstr "Izdiže prozor iznad ostalih prozora"
 
 #: ../src/include/all-keybindings.h:344
-msgid "Raise window above other windows"
-msgstr "Podigni prozor iznad ostalih prozora"
-
-#: ../src/include/all-keybindings.h:346
 msgid "Lower window below other windows"
-msgstr "Spusti prozor ispod ostalih prozora"
+msgstr "Spušta prozor ispod ostalih prozora"
 
-#: ../src/include/all-keybindings.h:350
+#: ../src/include/all-keybindings.h:348
 msgid "Maximize window vertically"
-msgstr "Uvećaj prozor vertikalno"
+msgstr "Uvećava prozor vertikalno"
 
-#: ../src/include/all-keybindings.h:354
+#: ../src/include/all-keybindings.h:352
 msgid "Maximize window horizontally"
-msgstr "Uvećaj prozor horizontalno"
+msgstr "Uvećava prozor horizontalno"
 
-#: ../src/include/all-keybindings.h:358
-msgid "Move window to north-west (top left) corner"
-msgstr "Premesti prozor u gornji, levi ćošak"
+#: ../src/include/all-keybindings.h:356
+msgid "Move window to top left corner"
+msgstr "Premešta prozor u gornji levi ćošak"
 
-#: ../src/include/all-keybindings.h:361
-msgid "Move window to north-east (top right) corner"
-msgstr "Premesti prozor u gornji, desni ćošak"
+#: ../src/include/all-keybindings.h:359
+msgid "Move window to top right corner"
+msgstr "Premešta prozor u gornji desni ćošak"
 
-#: ../src/include/all-keybindings.h:364
-msgid "Move window to south-west (bottom left) corner"
-msgstr "Premesti prozor u donji, levi ćošak"
+#: ../src/include/all-keybindings.h:362
+msgid "Move window to bottom left corner"
+msgstr "Premešta prozor u donji levi ćošak"
 
-#: ../src/include/all-keybindings.h:367
-msgid "Move window to south-east (bottom right) corner"
-msgstr "Premesti prozor u donji, desni ćošak"
+#: ../src/include/all-keybindings.h:365
+msgid "Move window to bottom right corner"
+msgstr "Premešta prozor u donji desni ćošak"
 
-#: ../src/include/all-keybindings.h:371
-msgid "Move window to north (top) side of screen"
-msgstr "Premesti prozor u vrh ekrana"
+#: ../src/include/all-keybindings.h:369
+msgid "Move window to top edge of screen"
+msgstr "Premešta prozor na sredinu ekrana"
 
-#: ../src/include/all-keybindings.h:374
-msgid "Move window to south (bottom) side of screen"
-msgstr "Premesti prozor u dno ekrana"
+#: ../src/include/all-keybindings.h:372
+msgid "Move window to bottom edge of screen"
+msgstr "Premešta prozor na dno ekrana"
 
-#: ../src/include/all-keybindings.h:377
-msgid "Move window to east (right) side of screen"
-msgstr "Premesti prozor uz desnu ivicu ekrana"
+#: ../src/include/all-keybindings.h:375
+msgid "Move window to right side of screen"
+msgstr "Premešta prozor uz desnu ivicu ekrana"
 
-#: ../src/include/all-keybindings.h:380
-msgid "Move window to west (left) side of screen"
-msgstr "Premesti prozor uz levu ivicu ekrana"
+#: ../src/include/all-keybindings.h:378
+msgid "Move window to left side of screen"
+msgstr "Premešta prozor uz levu ivicu ekrana"
 
-#: ../src/include/all-keybindings.h:383
+#: ../src/include/all-keybindings.h:381
 msgid "Move window to center of screen"
-msgstr "Premesti prozor na sredinu ekrana"
+msgstr "Premešta prozor na sredinu ekrana"
 
 #: ../src/metacity.schemas.in.in.h:1
 msgid "(Not implemented) Navigation works in terms of applications not windows"
-msgstr "(Nije ugrađeno) Navigacija radi u kontekstu programa, ne i prozora"
+msgstr "(Nije primenjeno) Navigacija radi u kontekstu programa a ne prozora"
 
 #: ../src/metacity.schemas.in.in.h:2
 msgid ""
@@ -862,9 +863,9 @@ msgid ""
 "option is set to true."
 msgstr ""
 "Niz karaktera koji opisuje slovni lik za naslovnu liniju prozora. Veličina "
-"iz opisa će biti korišćena samo ako je opcija titlebar_font_size podešena na "
-"0. Takođe, ova opcija je isključena ako je opcijatitlebar_uses_desktop_font "
-"postavljena na „true“."
+"iz opisa će biti korišćena samo ako je opcija „titlebar_font_size“ podešena "
+"na 0. Takođe, ova opcija je isključena ako je opcija "
+"„titlebar_uses_desktop_font“ postavljena na tačno."
 
 #: ../src/metacity.schemas.in.in.h:3
 msgid "Action on title bar double-click"
@@ -880,7 +881,7 @@ msgstr "Akcija za desni klik na traku sa naslovom"
 
 #: ../src/metacity.schemas.in.in.h:6
 msgid "Arrangement of buttons on the titlebar"
-msgstr "Raspored dugmića na liniji sa naslovom"
+msgstr "Raspored dugmića na traci naslova"
 
 #: ../src/metacity.schemas.in.in.h:7
 msgid ""
@@ -892,25 +893,19 @@ msgid ""
 "without breaking older versions. A special spacer tag can be used to insert "
 "some space between two adjacent buttons."
 msgstr ""
-"Raspored dugmića na naslovnoj liniji. Vrednost treba da bude niz karaktera, "
-"kao na primer „menu:minimize,maximize,close“; dve tačke razdvajaju levi ugao "
-"prozora od desnog, a dugmići su razdvojeni zapetama. Dupliranje dugmića nije "
-"dozvoljeno. Nepoznata imena dugmića se ignorišu tako da dugmići koji u "
-"budućnosti budu dodati u metasiti ne razbiju podešavanja starijih izdanja. "
-"Mogu se koristiti specijalne oznaka za razdvajanje kako bi se napravilo mesta "
-"između dva susedna dugmeta."
+"Raspored dugmića na traci naslova. Vrednost treba da bude niz karaktera, kao "
+"na primer: „menu:minimize,maximize,close“; dve tačke razdvajaju levi ugao "
+"prozora od desnog, a dugmići su razdvojeni zarezima. Dupliranje dugmića nije "
+"dozvoljeno. Nepoznata imena dugmića se zanemaruju tako da dugmići u "
+"budućnosti mogu da budu dodati u metasiti a da ne naruše podešavanja starijih "
+"izdanja. Mogu se koristiti specijalne oznaka za razdvajanje kako bi se "
+"napravilo mesta između dva susedna dugmeta."
 
 #: ../src/metacity.schemas.in.in.h:8
 msgid "Automatically raises the focused window"
-msgstr "Automatski podigni prozor sa fokusom"
+msgstr "Automatski podiže prozor sa fokusom"
 
 #: ../src/metacity.schemas.in.in.h:9
-#| msgid ""
-#| "Clicking a window while holding down this modifier key will move the "
-#| "window (left click), resize the window (middle click), or show the window "
-#| "menu (right click). The left and right operations may be swapped using "
-#| "the \"mouse_button_resize\" key. Modifier is expressed as \"&lt;Alt&gt;\" "
-#| "or \"&lt;Super&gt;\" for example."
 msgid ""
 "Clicking a window while holding down this modifier key will move the window "
 "(left click), resize the window (middle click), or show the window menu "
@@ -926,7 +921,7 @@ msgstr ""
 
 #: ../src/metacity.schemas.in.in.h:10
 msgid "Commands to run in response to keybindings"
-msgstr "Komanda koju treba pokrenuti kao odgovor na pritisak tastera"
+msgstr "Naredba koja će biti pokrenuta kao odgovor prečice tastature"
 
 #: ../src/metacity.schemas.in.in.h:11
 msgid "Compositing Manager"
@@ -934,7 +929,7 @@ msgstr "Kompozitni upravnik"
 
 #: ../src/metacity.schemas.in.in.h:12
 msgid "Control how new windows get focus"
-msgstr "Kako novi prozor dobija fokus"
+msgstr "Kontroliše kako novi prozor dobija fokus"
 
 #: ../src/metacity.schemas.in.in.h:13
 msgid "Current theme"
@@ -958,11 +953,12 @@ msgstr ""
 
 #: ../src/metacity.schemas.in.in.h:17
 msgid "Disable misfeatures that are required by old or broken applications"
-msgstr "Isključi loše mogućnosti koje su obavezne za stare ili loše programe"
+msgstr ""
+"Isključuje loše mogućnosti koje su zatražili stari ili oštećeni programi"
 
 #: ../src/metacity.schemas.in.in.h:18
 msgid "Enable Visual Bell"
-msgstr "Omogući vizuelne zvuke"
+msgstr "Omogućuje vizuelne zvuke"
 
 #: ../src/metacity.schemas.in.in.h:19
 msgid ""
@@ -971,18 +967,18 @@ msgid ""
 "the auto_raise_delay key. This is not related to clicking on a window to "
 "raise it, nor to entering a window during drag-and-drop."
 msgstr ""
-"Ako je tačno, a način fokusa je ili „sloppy“ ili „mouse“ onda će prozor u "
-"fokusu biti automatski podignut nakon isteka vremenskog perioda (koji je "
-"podešen preko auto_raise_delay ključa). Ovo nije povezano sa podizanjem "
-"prozora klikom, niti sa fokusiranjem u toku povuci-i-ispusti."
+"Ako je postavljeno na tačno, a način fokusa je ili „sloppy“ ili „mouse“ onda "
+"će prozor u fokusu biti automatski podignut nakon isteka vremenskog perioda "
+"(koji je podešen preko „auto_raise_delay“ ključa). Ovo nije povezano sa "
+"podizanjem prozora na klik, niti sa fokusiranjem u toku prevuci-i-ispusti."
 
 #: ../src/metacity.schemas.in.in.h:20
 msgid ""
 "If true, ignore the titlebar_font option, and use the standard application "
 "font for window titles."
 msgstr ""
-"Ako je tačno, ignoriše se opcija titlebar_font, i metasiti će koristiti "
-"standardan slovni lik programa za slovni lik naslova prozora."
+"Ako je izabrano, ignoriše se opcija „titlebar_font“, i metasiti će koristiti "
+"standardan slovni lik programa za naslov prozora."
 
 #: ../src/metacity.schemas.in.in.h:21
 msgid ""
@@ -992,7 +988,7 @@ msgid ""
 "working, and may also be a useful tradeoff for terminal servers. However, "
 "the wireframe feature is disabled when accessibility is on."
 msgstr ""
-"Ako je postavljeno, Metasiti će korisniku prikazati manje podataka i manje "
+"Ako je izabrano, Metasiti će korisniku prikazati manje podataka i manje "
 "osećaja o „neposrednom upravljanju“, upotrebom linija, izbegavanjem animacija "
 "ili drugim sredstvima. Ovo je značajni nedostatak po pitanju upotrebljivosti "
 "za mnoge korisnike, ali može omogućiti starim programima i terminalskim "
@@ -1009,17 +1005,16 @@ msgid ""
 "windows in other applications. Application-based mode is, however, largely "
 "unimplemented at the moment."
 msgstr ""
-"Ako je tačno, metasiti rada u kontekstu programa, a ne prozora. Koncept je "
-"pomalo čudan, ali u opštem slučaju postavke bazirane na programu su više "
-"slične Mac sistemu, a manje slične Windows sistemu. Kada postavite prozor u "
+"Ako je izabrano, Metasiti radi u kontekstu programa, a ne prozora. Koncept "
+"je pomalo čudan, ali u opštem slučaju postavke bazirane na programu su više "
+"slične Mak sistemu, a manje slične Vindovs sistemu. Kada postavite prozor u "
 "fokus u ovom načinu rada, svi prozori te aplikacije će biti podignuti. "
 "Takođe, u ovom načinu rada, fokusni klik se ne šalje prozorima drugih "
-"programa. Takođe ovaj način rada je uveliko nedovršen u  sadašnjim verzijama."
+"programa. Takođe ovaj način rada je uveliko nedovršen u sadašnjim verzijama."
 
 #: ../src/metacity.schemas.in.in.h:23
 msgid "If true, trade off usability for less resource usage"
-msgstr ""
-"Ukoliko je postavljeno, žrtvuj upotrebljivost zarad upotrebe manje resursa"
+msgstr "Ako je izabrano, trampi upotrebljivost zarad manje upotrebe resursa"
 
 #: ../src/metacity.schemas.in.in.h:24
 msgid "Modifier to use for modified window click actions"
@@ -1045,7 +1040,7 @@ msgstr ""
 
 #: ../src/metacity.schemas.in.in.h:28
 msgid "Run a defined command"
-msgstr "Pokreni definisanu komandu"
+msgstr "Pokreće definisanu naredbu"
 
 #: ../src/metacity.schemas.in.in.h:29
 msgid ""
@@ -1053,10 +1048,9 @@ msgid ""
 "middle button while holding down the key given in \"mouse_button_modifier\"; "
 "set it to false to make it work the opposite way around."
 msgstr ""
-"Postavite na „true“ za promenu veličine prozora desnim tasterom i prikaz "
-"menija srednjim tasterom uz držanje zadatog tastera preko ključa "
-"„mouse_button_modifier“. Postavite na „false“ kako bi koristili obrnut "
-"raspored tastera."
+"Izaberite ovo da promenite veličinu prozora desnim tasterom i prikažete meni "
+"srednjim tasterom uz držanje tastera zadatog u ključu „mouse_button_modifier“. "
+"Poništite izbor da koristite obrnut raspored tastera."
 
 #: ../src/metacity.schemas.in.in.h:30
 msgid ""
@@ -1079,24 +1073,24 @@ msgid ""
 "and that they need to change this option back to true or live with the \"bug"
 "\" they requested."
 msgstr ""
-"Postavljanje ove opcije na „false“ (netačno) može prouzrokovati neispravno "
-"ponašanje programa, pa nije preporučljivo. Mnoge naredbe (npr. klik usred "
-"oblasti klijenta, pomeranje ili promena veličine prozora) obično ujedno i "
-"podižu prozor. Isključivanjem ove opcije će razdvojiti podizanje prozora od "
-"ostalih radnji i zanemariti zahteve za podizanje prozora od strane programa. "
-"Pogledajte http://bugzilla.gnome.org/show_bug.cgi?id=445447#c6. Čak i "
-"ukoliko isključite ovu opciju, prozore možete podići levim klikom unutar "
-"prozora uz držanje tastera Alt, običnim klikom na naslovnu liniju prozora ili "
-"preko posebnih poruka iz prebacivača radnih površina (kao što je uključivanje "
-"zahteva iz programčeta sa spiskom zadataka). Ova opcija je trenutno "
-"isključena u režimu „click-to-focus“ (klik za fokus). Spisak načina za "
-"podizanje prozora kada je „raise_on_click“ (podigni na klik) postavljen na "
-"„false“ (netačno) ne uključuje zahteve iz programa za podizanje prozora, pa će "
-"takvi zahtevi biti zanemareni bez obzira na na razlog. Ukoliko pišete "
-"sopstveni program i dobijete primedbe od strane korisnika kako vaš program "
-"ne radi po isključivanju ove opcije, kažite im da je njihova krivica za "
-"neispravan rad upravnika prozorima i da vrate opciju na „true“ (tačno) ili "
-"da se naviknu na propratne pojave."
+"Poništavanje ove opcije može prouzrokovati neispravno ponašanje programa, tako "
+"da nije preporučljivo. Mnoge radnje (npr. klik usred oblasti klijenta, "
+"pomeranje ili promena veličine prozora) obično ujedno i izdižu prozor. "
+"Isključivanje ove opcije, a što se ne preporučuje, će izdvojiti podizanje "
+"prozora od ostalih radnji i zanemariće programske zahteve za izdizanje "
+"prozora. Pogledajte „http://bugzilla.gnome.org/show_bug.cgi?id=445447#c6“. "
+"Čak i ukoliko je ova opcija isključena, prozore možete izdizati levim klikom "
+"bilo gde unutar prozora uz držanje tastera Alt, običnim klikom na naslovnu "
+"liniju prozora ili preko posebnih poruka iz prebacivača radnih površina (kao "
+"što je uključivanje zahteva iz programčeta sa spiskom zadataka). Ova opcija je "
+"trenutno isključena u režimu „click-to-focus“ (klik za fokus). Spisak načina "
+"za podizanje prozora kada je isključeno „raise_on_click“ (podigni na klik) ne "
+"uključuje zahteve iz programa za podizanje prozora, te će takvi zahtevi biti "
+"zanemareni bez obzira na razlog. Ukoliko pišete sopstveni program i dobijete "
+"primedbe od strane korisnika kako vaš program ne radi sa ovom opcijom "
+"isključenom, recite im da je njihova krivica za neispravan rad upravnika "
+"prozorima i da ponovo izaberu ovu opciju ili da se naviknu na propratne "
+"pojave."
 
 #: ../src/metacity.schemas.in.in.h:31
 msgid ""
@@ -1105,9 +1099,9 @@ msgid ""
 "which gives a more consistent user interface, provided one does not need to "
 "run any misbehaving applications."
 msgstr ""
-"Neki programi ne poštuju specifikacije na način koji vodi do toga da "
-"upravnik prozora ne može da funkcioniše. Ovo podešavanje postavlja Metasiti u "
-"strog režim rada koji doprinosi pravilnijem ponašanju, pod uslovom da se ne "
+"Neki programi ne poštuju specifikacije na način koji dovodi do neispravnog "
+"funkcionisanja upravnika prozora. Ovo podešavanje postavlja Metasiti u strog "
+"režim rada koji doprinosi pravilnijem ponašanju, pod uslovom da se ne "
 "pokušava pokretanje neispravnih programa."
 
 #: ../src/metacity.schemas.in.in.h:32
@@ -1124,12 +1118,12 @@ msgid ""
 "is unknown (as is usually the case for the default \"system beep\"), the "
 "currently focused window's titlebar is flashed."
 msgstr ""
-"Naređuje Metasitiju da prikaže nešto kada zazvoni sistemsko zvonce ili neki "
-"drugi program zazvoni. Trenutno su moguće dve vrednosti, „fullscreen“ kojim "
-"ceo ekran treperi crno-belo, i „frame_flash“ kada treperi samo naslovna "
-"linija prozora koji je zazvonio. Ukoliko nije poznat program koji je "
-"zazvonio (kao što je to obično slučaj sa „sistemskim zvoncetom“), trepereće "
-"naslovna linija prozora koji je trenutno u žiži."
+"Govori Metasitiju kako da sprovede vizuelnu indikaciju kada sistemsko zvonce "
+"ili neki drugi indikator programa zazvoni. Trenutno su moguće dve vrednosti, "
+"„fullscreen“ kojim ceo ekran treperi crno-belo, i „frame_flash“ kada treperi "
+"samo naslovna linija prozora koji je zazvonio. Ukoliko nije poznat program "
+"koji je zazvonio (kao što je to obično slučaj sa „sistemskim zvoncetom“), "
+"trepereće naslovna linija prozora koji je trenutno u žiži."
 
 #: ../src/metacity.schemas.in.in.h:34
 msgid ""
@@ -1137,17 +1131,17 @@ msgid ""
 "that correspond to these commands. Pressing the keybinding for run_command_N "
 "will execute command_N."
 msgstr ""
-"Ključ /apps/metacity/global_keybindings/run_command_N definiše tastere koji "
-"odgovaraju ovim komandama. Pritiskom kombinacije tastera za pokreni_komadu_N "
-"će izvršiti komandu_N."
+"Ključ „/apps/metacity/global_keybindings/run_command_N“ definiše kombinacije "
+"tastera koje odgovaraju ovim naredbama. Pritiskom kombinacije tastera za "
+"pokreni_naredbu_N će izvršiti naredbu_N."
 
 #: ../src/metacity.schemas.in.in.h:35
 msgid ""
 "The /apps/metacity/global_keybindings/run_command_screenshot key defines a "
 "keybinding which causes the command specified by this setting to be invoked."
 msgstr ""
-"Ključ /apps/metacity/global_keybindings/run_command_N definiše funkciju "
-"tastera kojim se pokreće naredba navedena pomoću njega."
+"Ključ „/apps/metacity/global_keybindings/run_command_N“ definiše kombinaciju "
+"tastera koja pokreće naredbu navedenu ovim podešavanjem."
 
 #: ../src/metacity.schemas.in.in.h:36
 msgid ""
@@ -1155,8 +1149,8 @@ msgid ""
 "defines a keybinding which causes the command specified by this setting to "
 "be invoked."
 msgstr ""
-"Ključ /apps/metacity/global_keybindings/run_command_window_screenshot "
-"definiše funkciju tastera kojim se pokreće naredba navedena pomoću njega."
+"Ključ „/apps/metacity/global_keybindings/run_command_window_screenshot“ "
+"definiše kombinaciju tastera koja pokreće naredbu navedenu ovim podešavanjem."
 
 # bug: missing dot (.) after keybinding_commands?
 #: ../src/metacity.schemas.in.in.h:37
@@ -1168,8 +1162,8 @@ msgid ""
 "\"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled\", "
 "then there will be no keybinding for this action."
 msgstr ""
-"Kombinacije tastera koji pokreću odgovarajuće označenu komandu u /apps/"
-"metacity/keybinding_commands ključu. Oblik zapisa je „&lt;Control&gt;a“ ili "
+"Kombinacija tastera koja pokreće odgovarajuće označenu naredbu u „/apps/"
+"metacity/keybinding_commands“ ključu. Oblik zapisa je „&lt;Control&gt;a“ ili "
 "„&lt;Shift&gt;&lt;Alt&gt;F1“. Program za obradu je dosta slobodan i "
 "dozvoljava velika ili mala slova, kao i skraćenice poput „&lt;Ctl&gt;“ ili "
 "„&lt; Ctrl&gt;“. Ako podesite opciju na naročiti niz znakova „disabled“, "
@@ -1177,7 +1171,7 @@ msgstr ""
 
 #: ../src/metacity.schemas.in.in.h:38
 msgid "The name of a workspace."
-msgstr "Ime radne površine."
+msgstr "Ime radnog prostora."
 
 #: ../src/metacity.schemas.in.in.h:39
 msgid "The screenshot command"
@@ -1195,8 +1189,8 @@ msgid ""
 "The time delay before raising a window if auto_raise is set to true. The "
 "delay is given in thousandths of a second."
 msgstr ""
-"Vremenski period pre podizanja prozora ako je opcija auto_raise postavljena na "
-"„true“. Period se izražava u hiljaditim delovima sekunde."
+"Vremenski period pre podizanja prozora ako je opcija „auto_raise“ izabrana. "
+"Period se izražava u hiljaditim delovima sekunde."
 
 #: ../src/metacity.schemas.in.in.h:42
 msgid ""
@@ -1206,15 +1200,15 @@ msgid ""
 "and \"mouse\" means windows are focused when the mouse enters the window and "
 "unfocused when the mouse leaves the window."
 msgstr ""
-"Fokus prozora podešava kako će prozori biti aktivirani. Ima tri moguće "
-"vrednosti „click“ znači da prozor mora biti selektovan da bi dobio fokus, "
-"„sloppy“ znači da prozor dobija fokus kada pokazivač miša uđe u prozor i "
-"„mouse“ štp znači da će prozor biti fokusitan kada pokazivačka strelica miša "
-"uđe u prozor i biti defokusiran kada strelica izađe iz prozora."
+"Režim fokusiranja prozora pokazuje kako će prozori biti aktivirani. Ima tri "
+"moguće vrednosti: „click“ — znači da prozor mora biti kliknut da bi dobio "
+"fokus, „sloppy“ — znači da prozor dobija fokus kada pokazivač miša uđe u "
+"prozor i „mouse“ — znači da će prozor biti fokusiran kada pokazivačka "
+"strelica miša uđe u prozor i biti defokusiran kada strelica izađe iz prozora."
 
 #: ../src/metacity.schemas.in.in.h:43
 msgid "The window screenshot command"
-msgstr "Naredba za uzimanje snimka prozora"
+msgstr "Naredba za pravljenje snimka prozora"
 
 #: ../src/metacity.schemas.in.in.h:44
 msgid ""
@@ -1228,13 +1222,13 @@ msgid ""
 "the others, and 'none' which will not do anything."
 msgstr ""
 "Ova mogućnost određuje efekat duplog klika na naslovnu liniju prozora. "
-"Trenutno ispravni su „toggle_shade“ što će zamotati/odmotati prozor, "
-"„toggle_maximize“ što će uvećati ili poništiti uvećanje prozora, "
-"„toggle_maximize_horizontally“ i „toggle_maximize_vertically“, što će "
-"uvećati ili poništiti uvećanje prozora samo u horizontalno ili uspravno, "
-"„minimize“ što će umanjiti prozor, „shade“ što će zamotat prozor, „menu“ što "
-"će prikazati meni prozora, „lower“ što će postaviti prozor iza ostalih i "
-"„none“ čime se ne obavlja nikakva radnja."
+"Trenutno ispravne opcije su: „toggle_shade“ — što će zamotati/odmotati "
+"prozor, „toggle_maximize“ — što će uvećati ili poništiti uvećanje prozora, "
+"„toggle_maximize_horizontally“ i „toggle_maximize_vertically“ — što će "
+"uvećati ili poništiti uvećanje prozora samo horizontalno ili uspravno, "
+"„minimize“ — što će umanjiti prozor, „shade“ — što će zamotati prozor, „menu“ "
+"— što će prikazati meni prozora, „lower“ — što će postaviti prozor iza "
+"ostalih i „none“ — čime se ne obavlja nikakva radnja."
 
 #: ../src/metacity.schemas.in.in.h:45
 msgid ""
@@ -1248,13 +1242,13 @@ msgid ""
 "the others, and 'none' which will not do anything."
 msgstr ""
 "Ova mogućnost određuje efekat srednjeg klika na naslovnu liniju prozora. "
-"Trenutno ispravni su „toggle_shade“ što će zamotati/odmotati prozor, "
-"„toggle_maximize“ što će uvećati ili poništiti uvećanje prozora, "
-"„toggle_maximize_horizontally“ i „toggle_maximize_vertically“, što će "
-"uvećati ili poništiti uvećanje prozora samo u horizontalno ili uspravno, "
-"„minimize“ što će umanjiti prozor, „shade“ što će zamotat prozor, „menu“ što "
-"će prikazati meni prozora, „lower“ što će postaviti prozor iza ostalih i "
-"„none“ čime se ne obavlja nikakva radnja."
+"Trenutno ispravne opcije su: „toggle_shade“ — što će zamotati/odmotati "
+"prozor, „toggle_maximize“ — što će uvećati ili poništiti uvećanje prozora, "
+"„toggle_maximize_horizontally“ i „toggle_maximize_vertically“ — što će "
+"uvećati ili poništiti uvećanje prozora samo horizontalno ili uspravno, "
+"„minimize“ — što će umanjiti prozor, „shade“ — što će zamotati prozor, „menu“ "
+"— što će prikazati meni prozora, „lower“ — što će postaviti prozor iza "
+"ostalih i „none“ — čime se ne obavlja nikakva radnja."
 
 #: ../src/metacity.schemas.in.in.h:46
 msgid ""
@@ -1268,13 +1262,13 @@ msgid ""
 "the others, and 'none' which will not do anything."
 msgstr ""
 "Ova mogućnost određuje efekat desnog klika na naslovnu liniju prozora. "
-"Trenutno ispravni su „toggle_shade“ što će zamotati/odmotati prozor, "
-"„toggle_maximize“ što će uvećati ili poništiti uvećanje prozora, "
-"„toggle_maximize_horizontally“ i „toggle_maximize_vertically“, što će "
-"uvećati ili poništiti uvećanje prozora samo u horizontalno ili uspravno, "
-"„minimize“ što će umanjiti prozor, „shade“ što će zamotat prozor, „menu“ što "
-"će prikazati meni prozora, „lower“ što će postaviti prozor iza ostalih i "
-"„none“ čime se ne obavlja nikakva radnja."
+"Trenutno ispravne opcije su: „toggle_shade“ — što će zamotati/odmotati "
+"prozor, „toggle_maximize“ — što će uvećati ili poništiti uvećanje prozora, "
+"„toggle_maximize_horizontally“ i „toggle_maximize_vertically“ — što će "
+"uvećati ili poništiti uvećanje prozora samo horizontalno ili uspravno, "
+"„minimize“ — što će umanjiti prozor, „shade“ — što će zamotati prozor, „menu“ "
+"— što će prikazati meni prozora, „lower“ — što će postaviti prozor iza "
+"ostalih i „none“ — čime se ne obavlja nikakva radnja."
 
 #: ../src/metacity.schemas.in.in.h:47
 msgid ""
@@ -1284,8 +1278,8 @@ msgid ""
 "given focus."
 msgstr ""
 "Ova opcija pruža dodatnu kontrolu nad načinom na koji novi prozori ulaze u "
-"fokus. Ima dve moguće vrednosti: „smart“ postavlja normalni režim fokusa i "
-"„strict“ kada prozori pokrenuti iz komandne linije ne ulaze u fokus."
+"fokus. Ima dve moguće vrednosti: „smart“ — postavlja normalni režim fokusa i "
+"„strict“ — kada prozori pokrenuti iz komandne linije ne ulaze u fokus."
 
 #: ../src/metacity.schemas.in.in.h:48
 msgid ""
@@ -1312,7 +1306,7 @@ msgstr ""
 
 #: ../src/metacity.schemas.in.in.h:52
 msgid "Whether to resize with the right button"
-msgstr "Da li da promeni veličinu desnim tasterom"
+msgstr "Da li će promeniti veličinu desnim tasterom"
 
 #: ../src/metacity.schemas.in.in.h:53
 msgid "Window focus mode"
@@ -1327,89 +1321,89 @@ msgstr "Slovni lik naslova prozora"
 msgid "Usage: %s\n"
 msgstr "Upotreba: %s\n"
 
-#: ../src/ui/frames.c:1118
+#: ../src/ui/frames.c:1120
 msgid "Close Window"
 msgstr "Zatvori prozor"
 
-#: ../src/ui/frames.c:1121
+#: ../src/ui/frames.c:1123
 msgid "Window Menu"
 msgstr "Meni prozora"
 
-#: ../src/ui/frames.c:1124
+#: ../src/ui/frames.c:1126
 msgid "Minimize Window"
 msgstr "Umanji prozor"
 
-#: ../src/ui/frames.c:1127
+#: ../src/ui/frames.c:1129
 msgid "Maximize Window"
 msgstr "Uvećaj prozor"
 
-#: ../src/ui/frames.c:1130
+#: ../src/ui/frames.c:1132
 msgid "Restore Window"
 msgstr "Vrati veličinu prozoru"
 
-#: ../src/ui/frames.c:1133
+#: ../src/ui/frames.c:1135
 msgid "Roll Up Window"
 msgstr "Zamotaj prozor"
 
-#: ../src/ui/frames.c:1136
+#: ../src/ui/frames.c:1138
 msgid "Unroll Window"
 msgstr "Odmotaj prozor"
 
-#: ../src/ui/frames.c:1139
+#: ../src/ui/frames.c:1141
 msgid "Keep Window On Top"
-msgstr "Stavi prozor iznad ostalih"
+msgstr "Stavi prozor u prvi plan"
 
-#: ../src/ui/frames.c:1142
+#: ../src/ui/frames.c:1144
 msgid "Remove Window From Top"
-msgstr "Skloni prozor sa vrha"
+msgstr "Skloni prozor iz prvog plana"
 
-#: ../src/ui/frames.c:1145
+#: ../src/ui/frames.c:1147
 msgid "Always On Visible Workspace"
-msgstr "Uvek na prikazanoj radnoj površini"
+msgstr "Uvek na prikazanom radnom prostoru"
 
-#: ../src/ui/frames.c:1148
+#: ../src/ui/frames.c:1150
 msgid "Put Window On Only One Workspace"
-msgstr "Stavi prozor samo na jednu radnu površinu"
+msgstr "Stavi prozor samo na jedan radni prostor"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:70
 msgid "Mi_nimize"
-msgstr "Umanji"
+msgstr "U_manji"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:72
 msgid "Ma_ximize"
-msgstr "Uvećaj"
+msgstr "U_većaj"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:74
 msgid "Unma_ximize"
-msgstr "Poništi uvećanje"
+msgstr "Poni_šti uvećanje"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:76
 msgid "Roll _Up"
-msgstr "Zamotaj"
+msgstr "Z_amotaj"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:78
 msgid "_Unroll"
-msgstr "Odmotaj"
+msgstr "O_dmotaj"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:80
 msgid "_Move"
-msgstr "Pomeri"
+msgstr "_Premesti"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:82
 msgid "_Resize"
-msgstr "Promeni veličinu"
+msgstr "P_romeni veličinu"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:84
 msgid "Move Titlebar On_screen"
-msgstr "Premesti naslovnu liniju na ekran"
+msgstr "Premesti _naslovnu liniju na ekran"
 
 #. separator
 #. Translators: Translate this string the same way as you do in libwnck!
@@ -1420,38 +1414,38 @@ msgstr "Uvek iznad os_talih"
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:91
 msgid "_Always on Visible Workspace"
-msgstr "_Uvek na prikazanoj radnoj površini"
+msgstr "_Uvek na prikazanom radnom prostoru"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:93
 msgid "_Only on This Workspace"
-msgstr "Samo na _ovoj radnoj površini"
+msgstr "Samo na _ovom radnom prostoru"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:95
 msgid "Move to Workspace _Left"
-msgstr "Premesti na _levi radni prostor"
+msgstr "Premesti na radni prostor _levo"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:97
 msgid "Move to Workspace R_ight"
-msgstr "Premesti na _desni radni prostor"
+msgstr "Premesti na radni prostor _desno"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:99
 msgid "Move to Workspace _Up"
-msgstr "Premesti na radni prostor _iznad"
+msgstr "Premesti na radni prostor i_znad"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:101
 msgid "Move to Workspace _Down"
-msgstr "Premesti na radni prostor is_pod"
+msgstr "Premesti na radni prostor i_spod"
 
 #. separator
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:105
 msgid "_Close"
-msgstr "Zatvori"
+msgstr "_Zatvori"
 
 #: ../src/ui/menu.c:203
 #, c-format
@@ -1461,12 +1455,12 @@ msgstr "Radni prostor %d%n"
 #: ../src/ui/menu.c:213
 #, c-format
 msgid "Workspace 1_0"
-msgstr "1_0. radni prostor"
+msgstr "1_0° radni prostor"
 
 #: ../src/ui/menu.c:215
 #, c-format
 msgid "Workspace %s%d"
-msgstr "%s%d. radni prostor"
+msgstr "%s%d° radni prostor"
 
 #: ../src/ui/menu.c:395
 msgid "Move to Another _Workspace"
@@ -1479,7 +1473,7 @@ msgstr "Premesti na drugi _radni prostor"
 #.
 #: ../src/ui/metaaccellabel.c:104
 msgid "Shift"
-msgstr "Shift"
+msgstr "Šift"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the control key. If the text on this key isn't typically
@@ -1570,76 +1564,76 @@ msgstr "Mod5"
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: ../src/ui/theme.c:254
+#: ../src/ui/theme.c:255
 msgid "top"
 msgstr "gornju"
 
-#: ../src/ui/theme.c:256
+#: ../src/ui/theme.c:257
 msgid "bottom"
 msgstr "donju"
 
-#: ../src/ui/theme.c:258
+#: ../src/ui/theme.c:259
 msgid "left"
 msgstr "levu"
 
-#: ../src/ui/theme.c:260
+#: ../src/ui/theme.c:261
 msgid "right"
 msgstr "desnu"
 
-#: ../src/ui/theme.c:287
+#: ../src/ui/theme.c:288
 #, c-format
 msgid "frame geometry does not specify \"%s\" dimension"
 msgstr "geometrija okvira ne podešava „%s“ dimenziju"
 
-#: ../src/ui/theme.c:306
+#: ../src/ui/theme.c:307
 #, c-format
 msgid "frame geometry does not specify dimension \"%s\" for border \"%s\""
 msgstr "geometrija okvira ne podešava „%s“ dimenziju za ivicu „%s“"
 
-#: ../src/ui/theme.c:343
+#: ../src/ui/theme.c:344
 #, c-format
 msgid "Button aspect ratio %g is not reasonable"
-msgstr "Odnos dugmeta %g nije razuman"
+msgstr "Odnos razmere dugmeta %g nije razuman"
 
-#: ../src/ui/theme.c:355
+#: ../src/ui/theme.c:356
 #, c-format
 msgid "Frame geometry does not specify size of buttons"
 msgstr "Geometrija okvira ne podešava veličinu dugmića"
 
-#: ../src/ui/theme.c:1020
+#: ../src/ui/theme.c:1058
 #, c-format
 msgid "Gradients should have at least two colors"
 msgstr "Gradijenti moraju imati najmanje dve boje"
 
-#: ../src/ui/theme.c:1146
+#: ../src/ui/theme.c:1184
 #, c-format
 msgid ""
 "GTK color specification must have the state in brackets, e.g. gtk:fg[NORMAL] "
 "where NORMAL is the state; could not parse \"%s\""
 msgstr ""
-"Specifikacija GTK boje mora imati navedeno stanje u zagradi, na primer gtk:fg"
-"[NORMAL] gde je NORMAL stanje; ne mogu da obradim „%s“"
+"Specifikacija GTK boje mora imati navedeno stanje u zagradi, na primer „gtk:fg"
+"[NORMAL]“ gde je „NORMAL“ stanje; ne mogu da obradim „%s“"
 
-#: ../src/ui/theme.c:1160
+#: ../src/ui/theme.c:1198
 #, c-format
 msgid ""
 "GTK color specification must have a close bracket after the state, e.g. gtk:"
 "fg[NORMAL] where NORMAL is the state; could not parse \"%s\""
 msgstr ""
-"Specifikacija GTK boje mora imati navedeno stanje u zagradi, na primer gtk:fg"
-"[NORMAL] gde je NORMAL stanje; ne mogu da obradim „%s“"
+"Specifikacija GTK boje mora imati navedeno stanje u zagradi, na primer „gtk:fg"
+"[NORMAL]“ gde je „NORMAL“ stanje; ne mogu da obradim „%s“"
 
-#: ../src/ui/theme.c:1171
+#: ../src/ui/theme.c:1209
 #, c-format
 msgid "Did not understand state \"%s\" in color specification"
-msgstr "Nisam mogao da razumem stanje „%s“ u specifikaciji boje"
+msgstr "Ne mogu da razumem stanje „%s“ u specifikaciji boje"
 
-#: ../src/ui/theme.c:1184
+#: ../src/ui/theme.c:1222
 #, c-format
 msgid "Did not understand color component \"%s\" in color specification"
-msgstr "Nisam mogao da razumem deo boje „%s“ u specifikaciji boje"
+msgstr "Ne mogu da razumem deo boje „%s“ u specifikaciji boje"
 
-#: ../src/ui/theme.c:1214
+#: ../src/ui/theme.c:1252
 #, c-format
 msgid ""
 "Blend format is \"blend/bg_color/fg_color/alpha\", \"%s\" does not fit the "
@@ -1648,55 +1642,56 @@ msgstr ""
 "Format blende je „blend/bg_color/fg_color/alpha“, „%s“ se ne uklapa u "
 "traženi format zapisa"
 
-#: ../src/ui/theme.c:1225
+#: ../src/ui/theme.c:1263
 #, c-format
 msgid "Could not parse alpha value \"%s\" in blended color"
-msgstr "Nisam mogao da obradim alfa vrednost „%s“ u blendi boje"
+msgstr "Ne mogu da obradim alfa vrednost „%s“ u blendi boje"
 
-#: ../src/ui/theme.c:1235
+#: ../src/ui/theme.c:1273
 #, c-format
 msgid "Alpha value \"%s\" in blended color is not between 0.0 and 1.0"
 msgstr "Alfa vrednost „%s“ u blendi boje nije između 0.0 i 1.0"
 
-#: ../src/ui/theme.c:1282
+#: ../src/ui/theme.c:1320
 #, c-format
 msgid ""
 "Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
 msgstr "Format senke je „shade/base_color/factor“, „%s“ se ne uklapa u format"
 
-#: ../src/ui/theme.c:1293
+#: ../src/ui/theme.c:1331
 #, c-format
 msgid "Could not parse shade factor \"%s\" in shaded color"
-msgstr "Nisam mogao da obradim faktor senke „%s“ u osenčenoj boji"
+msgstr "Ne mogu da obradim faktor senke „%s“ u osenčenoj boji"
 
-#: ../src/ui/theme.c:1303
+#: ../src/ui/theme.c:1341
 #, c-format
 msgid "Shade factor \"%s\" in shaded color is negative"
 msgstr "Faktor senke „%s“ u osenčenoj boji je negativan"
 
-#: ../src/ui/theme.c:1332
+#: ../src/ui/theme.c:1370
 #, c-format
 msgid "Could not parse color \"%s\""
-msgstr "Nisam mogao da obradim boju „%s“"
+msgstr "Ne mogu da obradim boju „%s“"
 
-#: ../src/ui/theme.c:1582
+#: ../src/ui/theme.c:1624
 #, c-format
 msgid "Coordinate expression contains character '%s' which is not allowed"
-msgstr "Izraz koordinata sadrži karakter „%s“ što nije dozvoljeno"
+msgstr "Izraz sa koordinatama sadrži znak „%s“ što nije dozvoljeno"
 
-#: ../src/ui/theme.c:1609
+#: ../src/ui/theme.c:1651
 #, c-format
 msgid ""
 "Coordinate expression contains floating point number '%s' which could not be "
 "parsed"
-msgstr "Izraz koordinata sadrži decimalni broj „%s“ što ne može biti obrađeno"
+msgstr ""
+"Izraz sa koordinatama sadrži decimalni broj „%s“ što ne može biti obrađeno"
 
-#: ../src/ui/theme.c:1623
+#: ../src/ui/theme.c:1665
 #, c-format
 msgid "Coordinate expression contains integer '%s' which could not be parsed"
-msgstr "Izraz koordinata sadrži celi broj „%s“ što ne može biti obrađeno"
+msgstr "Izraz sa koordinatama sadrži celi broj „%s“ što ne može biti obrađeno"
 
-#: ../src/ui/theme.c:1745
+#: ../src/ui/theme.c:1787
 #, c-format
 msgid ""
 "Coordinate expression contained unknown operator at the start of this text: "
@@ -1704,17 +1699,17 @@ msgid ""
 msgstr ""
 "Izraz sa koordinatama sadrži nepoznati operator na početku ovog teksta: „%s“"
 
-#: ../src/ui/theme.c:1802
+#: ../src/ui/theme.c:1844
 #, c-format
 msgid "Coordinate expression was empty or not understood"
 msgstr "Izraz sa koordinatama je bio prazan ili nerazumljiv"
 
-#: ../src/ui/theme.c:1913 ../src/ui/theme.c:1923 ../src/ui/theme.c:1957
+#: ../src/ui/theme.c:1955 ../src/ui/theme.c:1965 ../src/ui/theme.c:1999
 #, c-format
 msgid "Coordinate expression results in division by zero"
-msgstr "Izraz sa koordinatama vodi deljenju sa nulom"
+msgstr "Izraz sa koordinatama rezultira u deljenju nulom"
 
-#: ../src/ui/theme.c:1965
+#: ../src/ui/theme.c:2007
 #, c-format
 msgid ""
 "Coordinate expression tries to use mod operator on a floating-point number"
@@ -1722,62 +1717,62 @@ msgstr ""
 "Izraz sa koordinatam pokušava da koristi operator ostatka pri deljenju za "
 "decimalni broj"
 
-#: ../src/ui/theme.c:2021
+#: ../src/ui/theme.c:2063
 #, c-format
 msgid ""
 "Coordinate expression has an operator \"%s\" where an operand was expected"
 msgstr "Izraz sa koordinatama ima operator „%s“ gde je očekivan operand"
 
-#: ../src/ui/theme.c:2030
+#: ../src/ui/theme.c:2072
 #, c-format
 msgid "Coordinate expression had an operand where an operator was expected"
-msgstr "Izraz sa koordinarama ima operand gde je očekivan operator"
+msgstr "Izraz sa koordinatama imaše operand gde je očekivan operator"
 
-#: ../src/ui/theme.c:2038
+#: ../src/ui/theme.c:2080
 #, c-format
 msgid "Coordinate expression ended with an operator instead of an operand"
-msgstr "Izraz sa koordinarama je završio sa operatorom umesto sa operandom"
+msgstr "Izraz sa koordinatama je završio sa operatorom umesto sa operandom"
 
-#: ../src/ui/theme.c:2048
+#: ../src/ui/theme.c:2090
 #, c-format
 msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
 "operand in between"
 msgstr ""
-"Izraz sa koordinatama ima operator „%c“, a zatim operator „%c“ bez opeanda "
+"Izraz sa koordinatama ima operator „%c“, a zatim operator „%c“ bez operanda "
 "između"
 
-#: ../src/ui/theme.c:2195 ../src/ui/theme.c:2236
+#: ../src/ui/theme.c:2237 ../src/ui/theme.c:2278
 #, c-format
 msgid "Coordinate expression had unknown variable or constant \"%s\""
 msgstr "Izraz sa koordinatama ima nepoznatu promenljivu ili konstanti „%s“"
 
-#: ../src/ui/theme.c:2290
+#: ../src/ui/theme.c:2332
 #, c-format
 msgid "Coordinate expression parser overflowed its buffer."
 msgstr "Izraz sa koordinatama je bio preveliki za smeštaj i obradu"
 
-#: ../src/ui/theme.c:2319
+#: ../src/ui/theme.c:2361
 #, c-format
 msgid "Coordinate expression had a close parenthesis with no open parenthesis"
 msgstr "Izraz sa koordinatama ima zatvorene zagrade bez otvorenih zagrada"
 
-#: ../src/ui/theme.c:2383
+#: ../src/ui/theme.c:2425
 #, c-format
 msgid "Coordinate expression had an open parenthesis with no close parenthesis"
-msgstr "Izraz sa koordinatama ima otvorene zagrade bez zatvorenih zagrada"
+msgstr "Izraz sa koordinatama ima otvorenu zagradu bez zatvorene zagrade"
 
-#: ../src/ui/theme.c:2394
+#: ../src/ui/theme.c:2436
 #, c-format
 msgid "Coordinate expression doesn't seem to have any operators or operands"
-msgstr "Izraz sa koordinatama nema ni jedan operator ili operand"
+msgstr "Izraz sa koordinatama izgleda da nema ni jedan operator ili operand"
 
-#: ../src/ui/theme.c:2596 ../src/ui/theme.c:2616 ../src/ui/theme.c:2636
+#: ../src/ui/theme.c:2640 ../src/ui/theme.c:2660 ../src/ui/theme.c:2680
 #, c-format
 msgid "Theme contained an expression that resulted in an error: %s\n"
 msgstr "Tema sadrži izraz koji rezultira greškom: %s\n"
 
-#: ../src/ui/theme.c:4203
+#: ../src/ui/theme.c:4315
 #, c-format
 msgid ""
 "<button function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> must be "
@@ -1786,41 +1781,40 @@ msgstr ""
 "<button function=\"%s\" state=\"%s\" draw_ops=\"bilo šta\"/> mora biti "
 "naveden za ovaj stil okvira"
 
-#: ../src/ui/theme.c:4711 ../src/ui/theme.c:4736
+#: ../src/ui/theme.c:4827 ../src/ui/theme.c:4852
 #, c-format
 msgid ""
 "Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
-msgstr ""
-"Nedostaje <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"bilo šta\"/>"
+msgstr "Nedostaje <frame state=„%s“ resize=„%s“ focus=„%s“ style=„bilo šta“/>"
 
-#: ../src/ui/theme.c:4780
+#: ../src/ui/theme.c:4896
 #, c-format
 msgid "Failed to load theme \"%s\": %s\n"
 msgstr "Nisam uspeo da učitam temu „%s“: %s\n"
 
-#: ../src/ui/theme.c:4910 ../src/ui/theme.c:4917 ../src/ui/theme.c:4924
-#: ../src/ui/theme.c:4931 ../src/ui/theme.c:4938
+#: ../src/ui/theme.c:5026 ../src/ui/theme.c:5033 ../src/ui/theme.c:5040
+#: ../src/ui/theme.c:5047 ../src/ui/theme.c:5054
 #, c-format
 msgid "No <%s> set for theme \"%s\""
 msgstr "Nije definisan element <%s> za temu „%s“"
 
-#: ../src/ui/theme.c:4946
+#: ../src/ui/theme.c:5062
 #, c-format
 msgid ""
 "No frame style set for window type \"%s\" in theme \"%s\", add a <window "
 "type=\"%s\" style_set=\"whatever\"/> element"
 msgstr ""
 "Nije podešen stil okvira za prozor tipa „%s“ u temi „%s“. Dodajte <window "
-"type=\"%s\" style_set=\"bilo šta\"/> element."
+"type=„%s“ style_set=„bilo šta“/> element."
 
-#: ../src/ui/theme.c:5389 ../src/ui/theme.c:5451 ../src/ui/theme.c:5514
+#: ../src/ui/theme.c:5505 ../src/ui/theme.c:5567 ../src/ui/theme.c:5630
 #, c-format
 msgid ""
 "User-defined constants must begin with a capital letter; \"%s\" does not"
 msgstr ""
 "Korisnički definisane konstante moraju početi velikim slovom; „%s“ ne počinje"
 
-#: ../src/ui/theme.c:5397 ../src/ui/theme.c:5459 ../src/ui/theme.c:5522
+#: ../src/ui/theme.c:5513 ../src/ui/theme.c:5575 ../src/ui/theme.c:5638
 #, c-format
 msgid "Constant \"%s\" has already been defined"
 msgstr "Konstanta „%s“ je već definisana"
@@ -1836,7 +1830,7 @@ msgstr "Nije definisan „%s“ atribut u elementu <%s>"
 #: ../src/ui/theme-parser.c:231 ../src/ui/theme-parser.c:249
 #, c-format
 msgid "Line %d character %d: %s"
-msgstr "Linija %d karakter %d: %s"
+msgstr "Linija %d znak %d: %s"
 
 #: ../src/ui/theme-parser.c:413
 #, c-format
@@ -1851,27 +1845,27 @@ msgstr "Atribut „%s“ je neispravan u elementu <%s> u ovom kontekstu"
 #: ../src/ui/theme-parser.c:522
 #, c-format
 msgid "Could not parse \"%s\" as an integer"
-msgstr "Nisam mogao da izdvojim „%s“ kao celobrojnu vrednost"
+msgstr "Ne mogu da izdvojim „%s“ kao celobrojnu vrednost"
 
 #: ../src/ui/theme-parser.c:531 ../src/ui/theme-parser.c:586
 #, c-format
 msgid "Did not understand trailing characters \"%s\" in string \"%s\""
-msgstr "Nisam razumeo vodeće karaktere „%s“ u nizu karaktera „%s“"
+msgstr "Nisam razumeo vodeće znake „%s“ u nizu znakova „%s“"
 
 #: ../src/ui/theme-parser.c:541
 #, c-format
 msgid "Integer %ld must be positive"
-msgstr "Celi broj %ld mora biti pozitivna"
+msgstr "Ceo broj %ld mora biti pozitivan"
 
 #: ../src/ui/theme-parser.c:549
 #, c-format
 msgid "Integer %ld is too large, current max is %d"
-msgstr "Celi broj %ld je previš veliki, trenutni maksimum je %d"
+msgstr "Ceo broj %ld je previše veliki, trenutni maksimum je %d"
 
 #: ../src/ui/theme-parser.c:577 ../src/ui/theme-parser.c:693
 #, c-format
 msgid "Could not parse \"%s\" as a floating point number"
-msgstr "Nisam mogao da obradim „%s“ kao decimalni broj"
+msgstr "Ne mogu da obradim „%s“ kao decimalni broj"
 
 #: ../src/ui/theme-parser.c:608 ../src/ui/theme-parser.c:636
 #, c-format
@@ -1899,183 +1893,183 @@ msgstr ""
 "Netačno skaliranje naslova „%s“ (mora biti jedan od sledećih: xx-small,x-"
 "small,small,medium,large,x-large,xx-large)\n"
 
-#: ../src/ui/theme-parser.c:936 ../src/ui/theme-parser.c:999
-#: ../src/ui/theme-parser.c:1033 ../src/ui/theme-parser.c:1136
+#: ../src/ui/theme-parser.c:947 ../src/ui/theme-parser.c:1010
+#: ../src/ui/theme-parser.c:1044 ../src/ui/theme-parser.c:1147
 #, c-format
 msgid "<%s> name \"%s\" used a second time"
 msgstr "<%s> ime „%s“ je korišćeno po drugi put"
 
-#: ../src/ui/theme-parser.c:948 ../src/ui/theme-parser.c:1045
-#: ../src/ui/theme-parser.c:1148
+#: ../src/ui/theme-parser.c:959 ../src/ui/theme-parser.c:1056
+#: ../src/ui/theme-parser.c:1159
 #, c-format
 msgid "<%s> parent \"%s\" has not been defined"
 msgstr "<%s> stariji „%s“ nije definisan"
 
-#: ../src/ui/theme-parser.c:1058
+#: ../src/ui/theme-parser.c:1069
 #, c-format
 msgid "<%s> geometry \"%s\" has not been defined"
 msgstr "<%s> geometrija „%s“ nije definisana"
 
-#: ../src/ui/theme-parser.c:1071
+#: ../src/ui/theme-parser.c:1082
 #, c-format
 msgid "<%s> must specify either a geometry or a parent that has a geometry"
 msgstr ""
 "<%s> mora biti navedena ili geometrija ili stariji element koji ima "
 "geometriju"
 
-#: ../src/ui/theme-parser.c:1113
+#: ../src/ui/theme-parser.c:1124
 msgid "You must specify a background for an alpha value to be meaningful"
 msgstr "Morate navesti pozadinu da bi alfa vrednost imala smisla"
 
-#: ../src/ui/theme-parser.c:1180
+#: ../src/ui/theme-parser.c:1191
 #, c-format
 msgid "Unknown type \"%s\" on <%s> element"
 msgstr "Nepoznat tip „%s“ u elementu <%s>"
 
-#: ../src/ui/theme-parser.c:1191
+#: ../src/ui/theme-parser.c:1202
 #, c-format
 msgid "Unknown style_set \"%s\" on <%s> element"
-msgstr "Nepoznat style_set „%s“ u elementu <%s>"
+msgstr "Nepoznat „style_set“ „%s“ u elementu <%s>"
 
-#: ../src/ui/theme-parser.c:1199
+#: ../src/ui/theme-parser.c:1210
 #, c-format
 msgid "Window type \"%s\" has already been assigned a style set"
-msgstr "Tipu prozora „%s“ je već dodeljen set stila"
+msgstr "Tipu prozora „%s“ je već dodeljen skup stila"
 
-#: ../src/ui/theme-parser.c:1229 ../src/ui/theme-parser.c:1293
-#: ../src/ui/theme-parser.c:1519 ../src/ui/theme-parser.c:2740
-#: ../src/ui/theme-parser.c:2786 ../src/ui/theme-parser.c:2934
-#: ../src/ui/theme-parser.c:3126 ../src/ui/theme-parser.c:3164
-#: ../src/ui/theme-parser.c:3202 ../src/ui/theme-parser.c:3240
+#: ../src/ui/theme-parser.c:1240 ../src/ui/theme-parser.c:1304
+#: ../src/ui/theme-parser.c:1530 ../src/ui/theme-parser.c:2751
+#: ../src/ui/theme-parser.c:2797 ../src/ui/theme-parser.c:2945
+#: ../src/ui/theme-parser.c:3137 ../src/ui/theme-parser.c:3175
+#: ../src/ui/theme-parser.c:3213 ../src/ui/theme-parser.c:3251
 #, c-format
 msgid "Element <%s> is not allowed below <%s>"
 msgstr "Element <%s> nije dozvoljen ispod <%s>"
 
-#: ../src/ui/theme-parser.c:1343 ../src/ui/theme-parser.c:1357
-#: ../src/ui/theme-parser.c:1402
+#: ../src/ui/theme-parser.c:1354 ../src/ui/theme-parser.c:1368
+#: ../src/ui/theme-parser.c:1413
 msgid ""
 "Cannot specify both \"button_width\"/\"button_height\" and \"aspect_ratio\" "
 "for buttons"
 msgstr "Ne mogu da podesim i širinu/visinu i razmeru dugmadi"
 
-#: ../src/ui/theme-parser.c:1366
+#: ../src/ui/theme-parser.c:1377
 #, c-format
 msgid "Distance \"%s\" is unknown"
 msgstr "Udaljenost „%s“ je nepoznata"
 
-#: ../src/ui/theme-parser.c:1411
+#: ../src/ui/theme-parser.c:1422
 #, c-format
 msgid "Aspect ratio \"%s\" is unknown"
-msgstr "Odnos „%s je nepoznat"
+msgstr "Odnos razmere „%s je nepoznat"
 
-#: ../src/ui/theme-parser.c:1473
+#: ../src/ui/theme-parser.c:1484
 #, c-format
 msgid "Border \"%s\" is unknown"
 msgstr "Ivica „%s“ je nepoznata"
 
-#: ../src/ui/theme-parser.c:1784
+#: ../src/ui/theme-parser.c:1795
 #, c-format
 msgid "No \"start_angle\" or \"from\" attribute on element <%s>"
 msgstr "Nije definisan „start_angle“ ili „from“ atribut u elementu <%s>"
 
-#: ../src/ui/theme-parser.c:1791
+#: ../src/ui/theme-parser.c:1802
 #, c-format
 msgid "No \"extent_angle\" or \"to\" attribute on element <%s>"
 msgstr "Nije definisan „extent_angle“ ili „to“ atribut u elementu <%s>"
 
-#: ../src/ui/theme-parser.c:2031
+#: ../src/ui/theme-parser.c:2042
 #, c-format
 msgid "Did not understand value \"%s\" for type of gradient"
 msgstr "Nisam razumeo vrednost „%s“ kao tip gradijenta"
 
-#: ../src/ui/theme-parser.c:2109 ../src/ui/theme-parser.c:2484
+#: ../src/ui/theme-parser.c:2120 ../src/ui/theme-parser.c:2495
 #, c-format
 msgid "Did not understand fill type \"%s\" for <%s> element"
 msgstr "Nisam razumeo tip popunjavanja površine „%s“ u elementu <%s>"
 
-#: ../src/ui/theme-parser.c:2276 ../src/ui/theme-parser.c:2359
-#: ../src/ui/theme-parser.c:2422
+#: ../src/ui/theme-parser.c:2287 ../src/ui/theme-parser.c:2370
+#: ../src/ui/theme-parser.c:2433
 #, c-format
 msgid "Did not understand state \"%s\" for <%s> element"
 msgstr "Nisam razumeo stanje „%s“ u elementu <%s>"
 
-#: ../src/ui/theme-parser.c:2286 ../src/ui/theme-parser.c:2369
+#: ../src/ui/theme-parser.c:2297 ../src/ui/theme-parser.c:2380
 #, c-format
 msgid "Did not understand shadow \"%s\" for <%s> element"
 msgstr "Nisam razumeo senku „%s“ u elementu <%s>"
 
-#: ../src/ui/theme-parser.c:2296
+#: ../src/ui/theme-parser.c:2307
 #, c-format
 msgid "Did not understand arrow \"%s\" for <%s> element"
 msgstr "Nisam razumeo strelicu „%s“ u elementu <%s>"
 
-#: ../src/ui/theme-parser.c:2596 ../src/ui/theme-parser.c:2692
+#: ../src/ui/theme-parser.c:2607 ../src/ui/theme-parser.c:2703
 #, c-format
 msgid "No <draw_ops> called \"%s\" has been defined"
 msgstr "Nije definisan <draw_ops> označen kao „%s“"
 
-#: ../src/ui/theme-parser.c:2608 ../src/ui/theme-parser.c:2704
+#: ../src/ui/theme-parser.c:2619 ../src/ui/theme-parser.c:2715
 #, c-format
 msgid "Including draw_ops \"%s\" here would create a circular reference"
-msgstr "Uključivanje elementa draw_ops „%s“ovde bi napravilo kružnu referencu"
+msgstr "Uključivanje elementa „draw_ops“ „%s“ovde bi napravilo kružnu referencu"
 
-#: ../src/ui/theme-parser.c:2819
+#: ../src/ui/theme-parser.c:2830
 #, c-format
 msgid "Unknown position \"%s\" for frame piece"
 msgstr "Nepoznata pozicija „%s“ za deo okvira"
 
-#: ../src/ui/theme-parser.c:2827
+#: ../src/ui/theme-parser.c:2838
 #, c-format
 msgid "Frame style already has a piece at position %s"
-msgstr "Stil okvira ceć ima deo na pozicji %s"
+msgstr "Stil okvira već ima deo na poziciji %s"
 
-#: ../src/ui/theme-parser.c:2844 ../src/ui/theme-parser.c:2919
+#: ../src/ui/theme-parser.c:2855 ../src/ui/theme-parser.c:2930
 #, c-format
 msgid "No <draw_ops> with the name \"%s\" has been defined"
 msgstr "Nije definisan <draw_ops> sa imenom „%s“"
 
-#: ../src/ui/theme-parser.c:2873
+#: ../src/ui/theme-parser.c:2884
 #, c-format
 msgid "Unknown function \"%s\" for button"
 msgstr "Nepoznata funkcija „%s“ za dugme"
 
-#: ../src/ui/theme-parser.c:2882
+#: ../src/ui/theme-parser.c:2893
 #, c-format
 msgid "Button function \"%s\" does not exist in this version (%d, need %d)"
 msgstr ""
 "Funkcija „%s“ za dugme ne postoji u ovoj verziji (verzija %d, a treba vam %d)"
 
-#: ../src/ui/theme-parser.c:2894
+#: ../src/ui/theme-parser.c:2905
 #, c-format
 msgid "Unknown state \"%s\" for button"
 msgstr "Nepoznato stanje „%s“ za dugme"
 
-#: ../src/ui/theme-parser.c:2902
+#: ../src/ui/theme-parser.c:2913
 #, c-format
 msgid "Frame style already has a button for function %s state %s"
 msgstr "Stil okvira već ima dugme sa funkcijom %s i stanjem %s"
 
-#: ../src/ui/theme-parser.c:2973
+#: ../src/ui/theme-parser.c:2984
 #, c-format
 msgid "\"%s\" is not a valid value for focus attribute"
-msgstr "„%s“ nije dozvoljena vrednost za atribut focus"
+msgstr "„%s“ nije dozvoljena vrednost za atribut fokusa (focus)"
 
-#: ../src/ui/theme-parser.c:2982
+#: ../src/ui/theme-parser.c:2993
 #, c-format
 msgid "\"%s\" is not a valid value for state attribute"
-msgstr "„%s“ nije dozvoljena vrednost za atribut state"
+msgstr "„%s“ nije dozvoljena vrednost za atribut stanja (state)"
 
-#: ../src/ui/theme-parser.c:2992
+#: ../src/ui/theme-parser.c:3003
 #, c-format
 msgid "A style called \"%s\" has not been defined"
 msgstr "Stil „%s“ nije definisan"
 
-#: ../src/ui/theme-parser.c:3013 ../src/ui/theme-parser.c:3036
+#: ../src/ui/theme-parser.c:3024 ../src/ui/theme-parser.c:3047
 #, c-format
 msgid "\"%s\" is not a valid value for resize attribute"
-msgstr "„%s“ nije dozvoljena vrednost za atribut resize"
+msgstr "„%s“ nije dozvoljena vrednost za atribut promene veličine (resize)"
 
-#: ../src/ui/theme-parser.c:3047
+#: ../src/ui/theme-parser.c:3058
 #, c-format
 msgid ""
 "Should not have \"resize\" attribute on <%s> element for maximized/shaded "
@@ -2084,111 +2078,112 @@ msgstr ""
 "Nikako ne treba imati „resize“ atribut u elementu <%s> za uvećana/zasenčena "
 "stanja"
 
-#: ../src/ui/theme-parser.c:3061
+#: ../src/ui/theme-parser.c:3072
 #, c-format
 msgid ""
 "Should not have \"resize\" attribute on <%s> element for maximized states"
 msgstr ""
 "Nikako ne treba imati „resize“ atribut u elementu <%s> za uvećana stanja"
 
-#: ../src/ui/theme-parser.c:3075 ../src/ui/theme-parser.c:3097
-#, c-format
-msgid "Style has already been specified for state %s resize %s focus %s"
-msgstr "Stil je već naveden za stanje %s uvećanje %s fokus %s"
-
 #: ../src/ui/theme-parser.c:3086 ../src/ui/theme-parser.c:3108
 #, c-format
-msgid "Style has already been specified for state %s focus %s"
-msgstr "Stil je već naveden za stanje %s fokus %s"
+msgid "Style has already been specified for state %s resize %s focus %s"
+msgstr "Stil je već naveden za stanje „%s“ uvećanje „%s“ fokus „%s“"
 
-#: ../src/ui/theme-parser.c:3147
+#: ../src/ui/theme-parser.c:3097 ../src/ui/theme-parser.c:3119
+#, c-format
+msgid "Style has already been specified for state %s focus %s"
+msgstr "Stil je već naveden za stanje „%s“ fokus „“%s"
+
+#: ../src/ui/theme-parser.c:3158
 msgid ""
 "Can't have a two draw_ops for a <piece> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
 msgstr ""
-"Ne mogu postojati dva draw_ops-a za element <piece> (tema navodi draw_ops "
+"Ne mogu postojati dva „draw_ops“ za element <piece> (tema navodi „draw_ops“ "
 "atribut i <draw_ops> element, ili navodi dva elementa)"
 
-#: ../src/ui/theme-parser.c:3185
+#: ../src/ui/theme-parser.c:3196
 msgid ""
 "Can't have a two draw_ops for a <button> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
 msgstr ""
-"Ne mogu postojati dva draw_ops-a za element <button> (tema navodi draw_ops "
+"Ne mogu postojati dva „draw_ops“ za element <button> (tema navodi „draw_ops“ "
 "atribut i <draw_ops> element, ili navodi dva elementa)"
 
-#: ../src/ui/theme-parser.c:3223
+#: ../src/ui/theme-parser.c:3234
 msgid ""
 "Can't have a two draw_ops for a <menu_icon> element (theme specified a "
 "draw_ops attribute and also a <draw_ops> element, or specified two elements)"
 msgstr ""
-"Ne mogu postojati dva draw_ops-a za element <menu_icon> (tema navodi "
-"draw_ops atribut i <draw_ops> element, ili navodi dva elementa)"
+"Ne mogu postojati dva „draw_ops“ za element <menu_icon> (tema navodi "
+"„draw_ops“ atribut i <draw_ops> element, ili navodi dva elementa)"
 
-#: ../src/ui/theme-parser.c:3271
+#: ../src/ui/theme-parser.c:3282
 #, c-format
 msgid "Outermost element in theme must be <metacity_theme> not <%s>"
 msgstr "Najstariji element teme mora biti <metacity_theme>, a ne <%s>"
 
-#: ../src/ui/theme-parser.c:3291
+#: ../src/ui/theme-parser.c:3302
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a name/author/date/description element"
 msgstr ""
-"Element <%s> nije dozvoljen unutar elemenata name, author, date i description"
+"Element <%s> nije dozvoljen unutar elemenata „name, author, date i "
+"description“"
 
-#: ../src/ui/theme-parser.c:3296
+#: ../src/ui/theme-parser.c:3307
 #, c-format
 msgid "Element <%s> is not allowed inside a <constant> element"
 msgstr "Element <%s> nije dozvoljen unutar elementa <constant>"
 
-#: ../src/ui/theme-parser.c:3308
+#: ../src/ui/theme-parser.c:3319
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a distance/border/aspect_ratio element"
 msgstr ""
-"Element <%s> nije dozvoljen unutar elemenata distance, border i aspect_ratio"
+"Element <%s> nije dozvoljen unutar elemenata „distance, border i aspect_ratio“"
 
-#: ../src/ui/theme-parser.c:3330
+#: ../src/ui/theme-parser.c:3341
 #, c-format
 msgid "Element <%s> is not allowed inside a draw operation element"
 msgstr "Element <%s> nije dozvoljen unutar elemenata operacija crtanja"
 
-#: ../src/ui/theme-parser.c:3340 ../src/ui/theme-parser.c:3370
-#: ../src/ui/theme-parser.c:3375 ../src/ui/theme-parser.c:3380
+#: ../src/ui/theme-parser.c:3351 ../src/ui/theme-parser.c:3381
+#: ../src/ui/theme-parser.c:3386 ../src/ui/theme-parser.c:3391
 #, c-format
 msgid "Element <%s> is not allowed inside a <%s> element"
 msgstr "Element <%s> nije dozvoljen unutar <%s> elementa"
 
-#: ../src/ui/theme-parser.c:3602
+#: ../src/ui/theme-parser.c:3613
 msgid "No draw_ops provided for frame piece"
-msgstr "Nije naveden draw_ops za deo okvira"
+msgstr "Nije naveden „draw_ops“ za deo okvira"
 
-#: ../src/ui/theme-parser.c:3617
+#: ../src/ui/theme-parser.c:3628
 msgid "No draw_ops provided for button"
-msgstr "Nije naveden draw_ops dugme"
+msgstr "Nije naveden „draw_ops“ za dugme"
 
-#: ../src/ui/theme-parser.c:3669
+#: ../src/ui/theme-parser.c:3680
 #, c-format
 msgid "No text is allowed inside element <%s>"
 msgstr "Nije dozvoljen tekst unutar elementa <%s>"
 
-#: ../src/ui/theme-parser.c:3724 ../src/ui/theme-parser.c:3736
-#: ../src/ui/theme-parser.c:3748 ../src/ui/theme-parser.c:3760
-#: ../src/ui/theme-parser.c:3772
+#: ../src/ui/theme-parser.c:3735 ../src/ui/theme-parser.c:3747
+#: ../src/ui/theme-parser.c:3759 ../src/ui/theme-parser.c:3771
+#: ../src/ui/theme-parser.c:3783
 #, c-format
 msgid "<%s> specified twice for this theme"
 msgstr "Element <%s> je naveden dva puta u ovoj temi"
 
-#: ../src/ui/theme-parser.c:4040
+#: ../src/ui/theme-parser.c:4051
 #, c-format
 msgid "Failed to find a valid file for theme %s\n"
-msgstr "Nisam uspeo da pronađem ispravnu datoteku za temu %s\n"
+msgstr "Nisam uspeo da pronađem ispravnu datoteku za temu „%s“\n"
 
-#: ../src/ui/theme-parser.c:4096
+#: ../src/ui/theme-parser.c:4107
 #, c-format
 msgid "Theme file %s did not contain a root <metacity_theme> element"
-msgstr "Datoteka sa temom %s ne sadrži korenski <metacity_theme> element"
+msgstr "Datoteka sa temom „%s“ ne sadrži korenski <metacity_theme> element"
 
 #: ../src/ui/theme-viewer.c:75
 msgid "/_Windows"
@@ -2293,7 +2288,7 @@ msgstr "%g milisekundi za iscrtavanje okvira jednog prozora"
 #: ../src/ui/theme-viewer.c:800
 #, c-format
 msgid "Usage: metacity-theme-viewer [THEMENAME]\n"
-msgstr "Upotreba: metacity-theme-viewer [IME-TEME]\n"
+msgstr "Upotreba: „metacity-theme-viewer“ [IME-TEME]\n"
 
 #: ../src/ui/theme-viewer.c:807
 #, c-format
@@ -2304,19 +2299,19 @@ msgstr "Greška prilikom učitavanja teme: %s\n"
 #: ../src/ui/theme-viewer.c:813
 #, c-format
 msgid "Loaded theme \"%s\" in %g seconds\n"
-msgstr "Učitana tema „%s“ za %g sekundi\n"
+msgstr "Učitana tema „%s“ za %g sekunde\n"
 
 #: ../src/ui/theme-viewer.c:854
 msgid "Normal Title Font"
-msgstr "Običan naslovni slovni lik"
+msgstr "Običan slovni lik naslova"
 
 #: ../src/ui/theme-viewer.c:860
 msgid "Small Title Font"
-msgstr "Mali naslovni slovni lik"
+msgstr "Mali slovni lik naslova"
 
 #: ../src/ui/theme-viewer.c:866
 msgid "Large Title Font"
-msgstr "Veliki naslovni slovni lik"
+msgstr "Veliki slovni lik naslova"
 
 #: ../src/ui/theme-viewer.c:871
 msgid "Button Layouts"
@@ -2357,28 +2352,92 @@ msgstr "Očekivana je greška, ali ona nije data"
 #: ../src/ui/theme-viewer.c:1254
 #, c-format
 msgid "Error %d was expected but %d given"
-msgstr "Očekivana je greška %d, ali je data %d"
+msgstr "Očekivana je greška „%d“, ali je data „%d“"
 
 #: ../src/ui/theme-viewer.c:1260
 #, c-format
 msgid "Error not expected but one was returned: %s"
-msgstr "Greška nije očekivana, ali je vraćena: %s"
+msgstr "Greška nije očekivana, ali je vraćena jedna: %s"
 
 #: ../src/ui/theme-viewer.c:1264
 #, c-format
 msgid "x value was %d, %d was expected"
-msgstr "x vrednost je bila %d, %d, a očekivana je"
+msgstr "x vrednost je bila „%d“, a očekivana je „%d“"
 
 #: ../src/ui/theme-viewer.c:1267
 #, c-format
 msgid "y value was %d, %d was expected"
-msgstr "y vrednost je bila %d, %d, a očekivana je"
+msgstr "y vrednost je bila „%d“, a očekivana je „%d“"
 
 # bug: plural-forms
 #: ../src/ui/theme-viewer.c:1332
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
-msgstr "%d izraza koordinata obrađeno za %g sekundi (prosek %g sekundi)\n"
+msgstr "%d izraza koordinata je obrađeno za %g sekunde (prosek %g sekunde)\n"
+
+#~ msgid "Desktop"
+#~ msgstr "Radna površina"
+
+#~ msgid "Window Management"
+#~ msgstr "Upravljanje prozorima"
+
+#~ msgid "Failed to read saved session file %s: %s\n"
+#~ msgstr "Nisam uspeo da pročitam sačuvanu datoteku sesije %s: %s\n"
+
+#~ msgid "Switch to workspace on the left of the current workspace"
+#~ msgstr "Prebaci se na radni prostor na levo"
+
+#~ msgid "Switch to workspace on the right of the current workspace"
+#~ msgstr "Prebaci se na radni prostor na desno"
+
+#~ msgid "Switch to workspace above the current workspace"
+#~ msgstr "Prebaci se na radni prostor iznad ovog"
+
+#~ msgid "Switch to workspace below the current workspace"
+#~ msgstr "Prebaci se na radni prostor ispod ovog"
+
+#~ msgid "Move between windows of an application, using a popup window"
+#~ msgstr "Premesti između prozora programa uz iskakanje"
+
+#~ msgid ""
+#~ "Move backward between windows of an application, using a popup window"
+#~ msgstr "Premesti unazad između prozora programa uz iskakanje"
+
+#~ msgid "Move between windows, using a popup window"
+#~ msgstr "Premesti između prozora uz iskakanje"
+
+#~ msgid "Move backward between windows, using a popup window"
+#~ msgstr "Premesti unazad između prozora uz iskakanje"
+
+#~ msgid "Move between panels and the desktop, using a popup window"
+#~ msgstr "Premesti između panela i radne površine uz iskakanje"
+
+#~ msgid "Move backward between panels and the desktop, using a popup window"
+#~ msgstr "Premesti unazad između panela i radne površine uz iskakanje"
+
+#~ msgid "Move backward between windows of an application immediately"
+#~ msgstr "Premesti odmah unazad između prozora programa"
+
+#~ msgid "Move between windows immediately"
+#~ msgstr "Premesti odmah između prozora"
+
+#~ msgid "Move backward between windows immediately"
+#~ msgstr "Premesti odmah unazad između prozora"
+
+#~ msgid "Move between panels and the desktop immediately"
+#~ msgstr "Premesti odmah između panela i radne površine"
+
+#~ msgid "Move backward between panels and the desktop immediately"
+#~ msgstr "Premesti odmah unazad između panela i radne površine"
+
+#~ msgid "Show the panel's \"Run Application\" dialog box"
+#~ msgstr "Prikaži prozorče za pokretanje programa u panelu"
+
+#~ msgid "Toggle whether a window will always be visible over other windows"
+#~ msgstr "Određuje da li se prozor uvek prikazuje iznad ostalih"
+
+#~ msgid "Move window to north (top) side of screen"
+#~ msgstr "Premesti prozor u vrh ekrana"
 
 #~ msgid "Open another one of these windows"
 #~ msgstr "Otvori neki drugi od ovih prozora"
@@ -3620,9 +3679,6 @@ msgstr "%d izraza koordinata obrađeno za %g sekundi (prosek %g sekundi)\n"
 #~ "ili mala slova, kao i skraćenice poput „&lt;Ctl&gt;“ ili „&lt; Ctrl&gt;“. "
 #~ "Ako podesite opciju na naročiti niz znakova „disabled“, onda neće biti "
 #~ "korišćena nijedna kombinacija tastera za ovu akciju."
-
-#~ msgid "Toggle always on top state"
-#~ msgstr "Izmeni da li je uvek na vrhu"
 
 #~ msgid "Unmaximize window"
 #~ msgstr "Poništi uvećanje prozora"
