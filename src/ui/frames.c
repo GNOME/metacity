@@ -1046,6 +1046,20 @@ meta_frames_set_title (MetaFrames *frames,
 }
 
 void
+meta_frames_update_frame_style (MetaFrames *frames,
+                                Window      xwindow)
+{
+  MetaUIFrame *frame;
+
+  frame = meta_frames_lookup_window (frames, xwindow);
+
+  g_assert (frame);
+
+  meta_frames_attach_style (frames, frame);
+  invalidate_whole_window (frames, frame);
+}
+
+void
 meta_frames_repaint_frame (MetaFrames *frames,
                            Window      xwindow)
 {
