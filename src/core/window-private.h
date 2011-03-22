@@ -39,6 +39,7 @@
 #include "stack.h"
 #include "iconcache.h"
 #include <X11/Xutil.h>
+#include <cairo.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 
 typedef struct _MetaGroup MetaGroup;
@@ -314,6 +315,9 @@ struct _MetaWindow
 
   /* if TRUE, application is buggy and SYNC resizing is turned off */
   guint disable_sync : 1;
+
+  /* if non-NULL, the bounds of the window frame */
+  cairo_region_t *frame_bounds;
 
   /* Note: can be NULL */
   GSList *struts;
