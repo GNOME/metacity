@@ -226,6 +226,22 @@ is_our_xwindow (MetaDisplay       *display,
   return FALSE;
 }
 
+gboolean
+meta_window_should_attach_to_parent (MetaWindow *window)
+{
+  MetaWindow *parent;
+
+  if (!meta_prefs_get_attach_modal_dialogs () ||
+      window->type != META_WINDOW_MODAL_DIALOG)
+    return FALSE;
+
+  parent = meta_window_get_transient_for (window);
+  if (!parent)
+    return FALSE;
+
+  return TRUE;
+}
+
 MetaWindow*
 meta_window_new (MetaDisplay *display,
                  Window       xwindow,
@@ -496,6 +512,7 @@ meta_window_new (MetaDisplay *display,
   window->shaken_loose = FALSE;
   window->have_focus_click_grab = FALSE;
   window->disable_sync = FALSE;
+  window->attached = FALSE;
   window->frame_bounds = NULL;
 
   window->unmaps_pending = 0;
@@ -639,6 +656,10 @@ meta_window_new (MetaDisplay *display,
       window->net_wm_user_time =
         meta_display_get_current_time_roundtrip (window->display);
   }
+
+  window->attached = meta_window_should_attach_to_parent (window);
+  if (window->attached)
+    recalc_window_features (window);
 
   if (window->decorated)
     meta_window_ensure_frame (window);
@@ -975,6 +996,24 @@ meta_window_apply_session_info (MetaWindow *window,
     }
 }
 
+static gboolean
+detach_foreach_func (MetaWindow *window,
+                     void       *data)
+{
+  GList **children = data;
+  MetaWindow *parent;
+
+  if (window->attached)
+    {
+      /* Only return the immediate children of the window being unmanaged */
+      parent = meta_window_get_transient_for (window);
+      if (parent->unmanaging)
+        *children = g_list_prepend (*children, window);
+    }
+
+  return TRUE;
+}
+
 void
 meta_window_free (MetaWindow  *window,
                   guint32      timestamp)
@@ -997,6 +1036,21 @@ meta_window_free (MetaWindow  *window,
               window->desc);
 
   window->unmanaging = TRUE;
+
+  if (meta_prefs_get_attach_modal_dialogs ())
+    {
+      GList *attached_children = NULL, *iter;
+
+      /* Detach any attached dialogs by unmapping and letting them
+       * be remapped after @window is destroyed.
+       */
+      meta_window_foreach_transient (window,
+                                     detach_foreach_func,
+                                     &attached_children);
+      for (iter = attached_children; iter; iter = iter->next)
+        meta_window_free (iter->data, timestamp);
+      g_list_free (attached_children);
+    }
 
   if (window->fullscreen)
     {
@@ -1151,8 +1205,12 @@ meta_window_free (MetaWindow  *window,
           meta_error_trap_pop (window->display);
         }
 
-      /* And we need to be sure the window is mapped so other WMs
-       * know that it isn't Withdrawn
+      /* If we're unmanaging a window that is not withdrawn, then
+       * either (a) mutter is exiting, in which case we need to map
+       * the window so the next WM will know that it's not Withdrawn,
+       * or (b) we want to create a new MetaWindow to replace the
+       * current one, which will happen automatically if we re-map
+       * the X Window.
        */
       meta_error_trap_push (window->display);
       XMapWindow (window->display->xdisplay,
@@ -3347,12 +3405,10 @@ send_sync_request (MetaWindow *window)
 }
 
 static gboolean
-move_attached_dialog (MetaWindow *window,
-                      void       *data)
+maybe_move_attached_dialog (MetaWindow *window,
+                            void       *data)
 {
-  MetaWindow *parent = meta_window_get_transient_for (window);
-
-  if (window->type == META_WINDOW_MODAL_DIALOG && parent)
+  if (meta_window_is_attached_dialog (window))
     /* It ignores x,y for such a dialog */
     meta_window_move (window, FALSE, 0, 0);
 
@@ -3820,8 +3876,7 @@ meta_window_move_resize_internal (MetaWindow          *window,
       window->frame_bounds = NULL;
     }
 
-  if (meta_prefs_get_attach_modal_dialogs ())
-    meta_window_foreach_transient (window, move_attached_dialog, NULL);
+  meta_window_foreach_transient (window, maybe_move_attached_dialog, NULL);
 }
 
 void
@@ -5644,14 +5699,11 @@ meta_window_propagate_focus_appearance (MetaWindow *window,
 {
   MetaWindow *child, *parent, *focus_window;
 
-  if (!meta_prefs_get_attach_modal_dialogs ())
-    return;
-
   focus_window = window->display->focus_window;
 
   child = window;
   parent = meta_window_get_transient_for (child);
-  while (parent && (!focused || child->type == META_WINDOW_MODAL_DIALOG))
+  while (parent && (!focused || meta_window_is_attached_dialog (child)))
     {
       gboolean child_focus_state_changed;
 
@@ -6690,10 +6742,8 @@ recalc_window_features (MetaWindow *window)
   if (window->type == META_WINDOW_TOOLBAR)
     window->decorated = FALSE;
 
-  if (window->type == META_WINDOW_MODAL_DIALOG && meta_prefs_get_attach_modal_dialogs ())
-    {
-      window->border_only = TRUE;
-    }
+  if (meta_window_is_attached_dialog (window))
+    window->border_only = TRUE;
 
   if (window->type == META_WINDOW_DESKTOP ||
       window->type == META_WINDOW_DOCK ||
@@ -7594,9 +7644,7 @@ update_resize (MetaWindow *window,
    * size changes apply to both sides, so that the dialog
    * remains centered to the parent.
    */
-  if (window->type == META_WINDOW_MODAL_DIALOG &&
-      meta_prefs_get_attach_modal_dialogs () &&
-      meta_window_get_transient_for (window) != NULL)
+  if (meta_window_is_attached_dialog (window))
     dx *= 2;
 
   new_w = window->display->grab_anchor_window_pos.width;
@@ -8915,4 +8963,20 @@ meta_window_get_frame_bounds (MetaWindow *window)
     }
 
   return window->frame_bounds;
+}
+
+/**
+ * meta_window_is_attached_dialog:
+ * @window: a #MetaWindow
+ *
+ * Tests if @window is should be attached to its parent window.
+ * (If the "attach_modal_dialogs" option is not enabled, this will
+ * always return %FALSE.)
+ *
+ * Return value: whether @window should be attached to its parent
+ */
+gboolean
+meta_window_is_attached_dialog (MetaWindow *window)
+{
+  return window->attached;
 }

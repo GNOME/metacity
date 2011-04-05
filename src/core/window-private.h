@@ -323,6 +323,9 @@ struct _MetaWindow
   /* if TRUE, application is buggy and SYNC resizing is turned off */
   guint disable_sync : 1;
 
+  /* if TRUE, window is attached to its parent */
+  guint attached : 1;
+
   /* if non-NULL, the bounds of the window frame */
   cairo_region_t *frame_bounds;
 
@@ -690,5 +693,7 @@ void meta_window_configure_notify (MetaWindow      *window,
 
 void meta_window_propagate_focus_appearance (MetaWindow *window,
                                              gboolean    focused);
+
+gboolean meta_window_should_attach_to_parent (MetaWindow *window);
 
 #endif

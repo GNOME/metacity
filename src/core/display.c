@@ -3311,8 +3311,7 @@ meta_display_begin_grab_op (MetaDisplay *display,
   /* If window is a modal dialog attached to its parent,
    * grab the parent instead for moving.
    */
-  if (meta_prefs_get_attach_modal_dialogs () &&
-      window->type == META_WINDOW_MODAL_DIALOG &&
+  if (window && meta_window_is_attached_dialog (window) &&
       meta_grab_op_is_moving (op))
     grab_window = meta_window_get_transient_for (window);
 
@@ -5032,33 +5031,6 @@ prefs_changed_callback (MetaPreference pref,
   else if (pref == META_PREF_COMPOSITING_MANAGER)
     {
       update_compositor (display, TRUE);
-    }
-  else if (pref == META_PREF_ATTACH_MODAL_DIALOGS)
-    {
-      GSList *windows;
-      GSList *tmp;
-
-      windows = meta_display_list_windows (display, META_LIST_DEFAULT);
-
-      for (tmp = windows; tmp != NULL; tmp = tmp->next)
-        {
-          MetaWindow *w = tmp->data;
-          MetaWindow *parent = meta_window_get_transient_for (w);
-          meta_window_recalc_features (w);
-
-          if (w->type == META_WINDOW_MODAL_DIALOG && parent)
-            {
-              int x, y;
-              /* Forcing a call to move_resize() does two things: first, it handles
-               * resizing the dialog frame window to the correct size when we remove
-               * or add the decorations. Second, it will take care of positioning the
-               * dialog as "attached" to the parent when we turn the preference on
-               * via the constrain_modal_dialog() constraint.
-               **/
-              meta_window_get_position (w, &x, &y);
-              meta_window_move (w, FALSE, x, y);
-            }
-        }
     }
 }
 
