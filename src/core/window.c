@@ -5635,7 +5635,7 @@ meta_window_propagate_focus_appearance (MetaWindow *window,
 
   child = window;
   parent = meta_window_get_transient_for (child);
-  while (child->type == META_WINDOW_MODAL_DIALOG && parent)
+  while (parent && (!focused || child->type == META_WINDOW_MODAL_DIALOG))
     {
       gboolean child_focus_state_changed;
 
@@ -5654,7 +5654,8 @@ meta_window_propagate_focus_appearance (MetaWindow *window,
           parent->attached_focus_window = NULL;
         }
 
-      if (child_focus_state_changed && !parent->has_focus)
+      if (child_focus_state_changed && !parent->has_focus &&
+          parent != window->display->expected_focus_window)
         {
           meta_window_appears_focused_changed (parent);
         }
