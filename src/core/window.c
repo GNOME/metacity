@@ -1112,22 +1112,14 @@ meta_window_free (MetaWindow  *window,
       meta_workspace_focus_default_window (window->screen->active_workspace,
                                            NULL, timestamp);
     }
-  else if (window->display->expected_focus_window == window)
-    {
-      meta_topic (META_DEBUG_FOCUS,
-                  "Focusing default window since expected focus window freed %s\n",
-                  window->desc);
-      window->display->expected_focus_window = NULL;
-      meta_workspace_focus_default_window (window->screen->active_workspace,
-                                           window,
-                                           timestamp);
-    }
   else
     {
       meta_topic (META_DEBUG_FOCUS,
                   "Unmanaging window %s which doesn't currently have focus\n",
                   window->desc);
     }
+
+  g_assert (window->display->focus_window != window);
 
   if (window->struts)
     {
@@ -1144,12 +1136,6 @@ meta_window_free (MetaWindow  *window,
     meta_display_end_grab_op (window->display, timestamp);
 
   g_assert (window->display->grab_window != window);
-
-  if (window->display->focus_window == window)
-    {
-      window->display->focus_window = NULL;
-      meta_compositor_set_active_window (window->display->compositor, NULL);
-    }
 
   if (window->maximized_horizontally || window->maximized_vertically)
     unmaximize_window_before_freeing (window);
@@ -4522,10 +4508,10 @@ meta_window_focus (MetaWindow  *window,
           meta_topic (META_DEBUG_FOCUS,
                       "Sending WM_TAKE_FOCUS to %s since take_focus = true\n",
                       window->desc);
-          meta_window_send_icccm_message (window,
-                                          window->display->atom_WM_TAKE_FOCUS,
-                                          timestamp);
-          window->display->expected_focus_window = window;
+
+          meta_display_request_take_focus (window->display,
+                                           window,
+                                           timestamp);
         }
     }
 
@@ -5103,7 +5089,7 @@ meta_window_configure_request (MetaWindow *window,
   if (event->xconfigurerequest.value_mask & CWStackMode)
     {
       MetaWindow *active_window;
-      active_window = window->display->expected_focus_window;
+      active_window = window->display->focus_window;
       if (meta_prefs_get_disable_workarounds ())
         {
           meta_topic (META_DEBUG_STACK,
@@ -5746,8 +5732,7 @@ meta_window_propagate_focus_appearance (MetaWindow *window,
           parent->attached_focus_window = NULL;
         }
 
-      if (child_focus_state_changed && !parent->has_focus &&
-          parent != window->display->expected_focus_window)
+      if (child_focus_state_changed && !parent->has_focus)
         {
           meta_window_appears_focused_changed (parent);
         }
@@ -5757,21 +5742,13 @@ meta_window_propagate_focus_appearance (MetaWindow *window,
     }
 }
 
-static void
+void
 meta_window_set_focused_internal (MetaWindow *window,
                                   gboolean    focused)
 {
   if (focused)
     {
-      if (window == window->display->focus_window)
-        return;
-
-      meta_topic (META_DEBUG_FOCUS,
-                  "* Focus --> %s\n", window->desc);
-      window->display->focus_window = window;
       window->has_focus = TRUE;
-
-      meta_compositor_set_active_window (window->display->compositor, window);
 
       /* Move to the front of the focusing workspace's MRU list.
        * We should only be "removing" it from the MRU list if it's
@@ -5833,22 +5810,9 @@ meta_window_set_focused_internal (MetaWindow *window,
     }
   else
     {
-      if (window != window->display->focus_window)
-        return;
-
-      meta_topic (META_DEBUG_FOCUS,
-                  "%s is now the previous focus window due to being focused out or unmapped\n",
-                  window->desc);
-
-      meta_topic (META_DEBUG_FOCUS,
-                  "* Focus --> NULL (was %s)\n", window->desc);
-
       meta_window_propagate_focus_appearance (window, FALSE);
 
-      window->display->focus_window = NULL;
       window->has_focus = FALSE;
-
-      meta_compositor_set_active_window (window->display->compositor, NULL);
 
       if (!window->attached_focus_window)
         meta_window_appears_focused_changed (window);
@@ -5865,119 +5829,6 @@ meta_window_set_focused_internal (MetaWindow *window,
           !meta_prefs_get_raise_on_click ())
         meta_display_grab_focus_window_button (window->display, window);
     }
-}
-
-void
-meta_window_lost_focus (MetaWindow *window)
-{
-  meta_window_set_focused_internal (window, FALSE);
-}
-
-gboolean
-meta_window_notify_focus (MetaWindow *window,
-                          XEvent     *event)
-{
-  /* note the event can be on either the window or the frame,
-   * we focus the frame for shaded windows
-   */
-
-  /* The event can be FocusIn, FocusOut, or UnmapNotify.
-   * On UnmapNotify we have to pretend it's focus out,
-   * because we won't get a focus out if it occurs, apparently.
-   */
-
-  /* We ignore grabs, though this is questionable.
-   * It may be better to increase the intelligence of
-   * the focus window tracking.
-   *
-   * The problem is that keybindings for windows are done with
-   * XGrabKey, which means focus_window disappears and the front of
-   * the MRU list gets confused from what the user expects once a
-   * keybinding is used.
-   */
-  meta_topic (META_DEBUG_FOCUS,
-              "Focus %s event received on %s 0x%lx (%s) "
-              "mode %s detail %s\n",
-              event->type == FocusIn ? "in" :
-              event->type == FocusOut ? "out" :
-              event->type == UnmapNotify ? "unmap" :
-              "???",
-              window->desc, event->xany.window,
-              event->xany.window == window->xwindow ?
-              "client window" :
-              (window->frame && event->xany.window == window->frame->xwindow) ?
-              "frame window" :
-              "unknown window",
-              event->type != UnmapNotify ?
-              meta_event_mode_to_string (event->xfocus.mode) : "n/a",
-              event->type != UnmapNotify ?
-              meta_event_detail_to_string (event->xfocus.detail) : "n/a");
-
-  /* FIXME our pointer tracking is broken; see how
-   * gtk+/gdk/x11/gdkevents-x11.c or XFree86/xc/programs/xterm/misc.c
-   * handle it for the correct way.  In brief you need to track
-   * pointer focus and regular focus, and handle EnterNotify in
-   * PointerRoot mode with no window manager.  However as noted above,
-   * accurate focus tracking will break things because we want to keep
-   * windows "focused" when using keybindings on them, and also we
-   * sometimes "focus" a window by focusing its frame or
-   * no_focus_window; so this all needs rethinking massively.
-   *
-   * My suggestion is to change it so that we clearly separate
-   * actual keyboard focus tracking using the xterm algorithm,
-   * and metacity's "pretend" focus window, and go through all
-   * the code and decide which one should be used in each place;
-   * a hard bit is deciding on a policy for that.
-   *
-   * http://bugzilla.gnome.org/show_bug.cgi?id=90382
-   */
-
-  if ((event->type == FocusIn ||
-       event->type == FocusOut) &&
-      (event->xfocus.mode == NotifyGrab ||
-       event->xfocus.mode == NotifyUngrab ||
-       /* From WindowMaker, ignore all funky pointer root events */
-       event->xfocus.detail > NotifyNonlinearVirtual))
-    {
-      meta_topic (META_DEBUG_FOCUS,
-                  "Ignoring focus event generated by a grab or other weirdness\n");
-      return TRUE;
-    }
-
-  if (event->type == FocusIn)
-    {
-      if (window->override_redirect)
-        {
-          window->display->focus_window = NULL;
-          meta_compositor_set_active_window (window->display->compositor, NULL);
-
-          return FALSE;
-        }
-      else
-        {
-          meta_window_set_focused_internal (window, TRUE);
-        }
-    }
-  else if (event->type == FocusOut)
-    {
-      if (event->xfocus.detail == NotifyInferior)
-        {
-          /* This event means the client moved focus to a subwindow */
-          meta_topic (META_DEBUG_FOCUS,
-                      "Ignoring focus out on %s with NotifyInferior\n",
-                      window->desc);
-          return TRUE;
-        }
-      else
-        {
-          meta_window_set_focused_internal (window, FALSE);
-        }
-    }
-
-  /* Now set _NET_ACTIVE_WINDOW hint */
-  meta_display_update_active_window_hint (window->display);
-
-  return FALSE;
 }
 
 static gboolean
