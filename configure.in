@@ -112,7 +112,7 @@ dnl This used to purport to allow compilation against gtk3, but it doesn't actua
 dnl work; see https://bugzilla.gnome.org/show_bug.cgi?id=650513
 with_gtk=2.0
 GTK_API_VERSION=2.0
-GTK_MIN_VERSION=2.20.0
+GTK_MIN_VERSION=2.24.0
 GIO_MIN_VERSION=2.25.10
 CANBERRA_GTK=libcanberra-gtk
 
