@@ -204,8 +204,6 @@ struct _MetaDisplay
   int         xkb_base_event_type;
   guint32     last_bell_time;
 #endif
-  /* alarm monitoring client's _NET_WM_SYNC_REQUEST_COUNTER */
-  XSyncAlarm  grab_sync_request_alarm;
   int	      grab_resize_timeout_id;
 
   /* Keybindings stuff */
@@ -326,6 +324,15 @@ void        meta_display_register_x_window   (MetaDisplay *display,
                                               MetaWindow  *window);
 void        meta_display_unregister_x_window (MetaDisplay *display,
                                               Window       xwindow);
+
+MetaWindow* meta_display_lookup_sync_alarm     (MetaDisplay *display,
+                                                XSyncAlarm   alarm);
+void        meta_display_register_sync_alarm   (MetaDisplay *display,
+                                                XSyncAlarm  *alarmp,
+                                                MetaWindow  *window);
+void        meta_display_unregister_sync_alarm (MetaDisplay *display,
+                                                XSyncAlarm   alarm);
+
 /* Return whether the xwindow is a no focus window for any of the screens */
 gboolean    meta_display_xwindow_is_a_no_focus_window (MetaDisplay *display,
                                                        Window xwindow);

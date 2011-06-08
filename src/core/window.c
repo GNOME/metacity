@@ -434,6 +434,7 @@ meta_window_new (MetaDisplay    *display,
   window->sync_request_serial = 0;
   window->sync_request_time.tv_sec = 0;
   window->sync_request_time.tv_usec = 0;
+  window->sync_request_alarm = None;
 
   window->screen = display->screen;
 
@@ -1166,6 +1167,8 @@ meta_window_free (MetaWindow  *window,
 
   if (!window->override_redirect)
     meta_stack_remove (window->screen->stack, window);
+
+  meta_window_destroy_sync_request_alarm (window);
 
   if (window->frame)
     {
@@ -3436,6 +3439,76 @@ static_gravity_works (MetaDisplay *display)
   return display->static_gravity_works;
 }
 
+void
+meta_window_create_sync_request_alarm (MetaWindow *window)
+{
+  XSyncAlarmAttributes values;
+  XSyncValue init;
+
+  if (window->sync_request_counter == None ||
+      window->sync_request_alarm != None)
+    return;
+
+  meta_error_trap_push (window->display);
+
+  /* Set the counter to 0, so we know that the application's
+   * responses to the client messages will always trigger
+   * a PositiveTransition
+   */
+  XSyncIntToValue (&init, 0);
+  XSyncSetCounter (window->display->xdisplay,
+                   window->sync_request_counter, init);
+  window->sync_request_serial = 0;
+
+  values.trigger.counter = window->sync_request_counter;
+  values.trigger.test_type = XSyncPositiveTransition;
+
+  /* Initialize to one greater than the current value */
+  values.trigger.value_type = XSyncRelative;
+  XSyncIntToValue (&values.trigger.wait_value, 1);
+
+  /* After triggering, increment test_value by this until
+   * until the test condition is false */
+  XSyncIntToValue (&values.delta, 1);
+
+  /* we want events (on by default anyway) */
+  values.events = True;
+
+  window->sync_request_alarm = XSyncCreateAlarm (window->display->xdisplay,
+                                                 XSyncCACounter |
+                                                 XSyncCAValueType |
+                                                 XSyncCAValue |
+                                                 XSyncCATestType |
+                                                 XSyncCADelta |
+                                                 XSyncCAEvents,
+                                                 &values);
+
+  if (meta_error_trap_pop_with_return (window->display) == Success)
+    {
+      meta_display_register_sync_alarm (window->display,
+                                        &window->sync_request_alarm,
+                                        window);
+    }
+  else
+    {
+      window->sync_request_alarm = None;
+      window->sync_request_counter = None;
+    }
+}
+
+void
+meta_window_destroy_sync_request_alarm (MetaWindow *window)
+{
+  if (window->sync_request_alarm != None)
+    {
+      /* Has to be unregistered _before_ clearing the structure field */
+      meta_display_unregister_sync_alarm (window->display, window->sync_request_alarm);
+
+      XSyncDestroyAlarm (window->display->xdisplay, window->sync_request_alarm);
+      window->sync_request_alarm = None;
+    }
+}
+
 static void
 send_sync_request (MetaWindow *window)
 {
@@ -3872,8 +3945,9 @@ meta_window_move_resize_internal (MetaWindow          *window,
 
       meta_error_trap_push (window->display);
 
-      if (window->sync_request_counter != None &&
-          window->display->grab_sync_request_alarm != None &&
+      if (window == window->display->grab_window &&
+          window->sync_request_counter != None &&
+          window->sync_request_alarm != None &&
           window->sync_request_time.tv_usec == 0 &&
           window->sync_request_time.tv_sec == 0)
         {
@@ -7247,7 +7321,7 @@ check_moveresize_frequency (MetaWindow *window,
   g_get_current_time (&current_time);
 
   if (!window->disable_sync &&
-      window->display->grab_sync_request_alarm != None)
+      window->sync_request_alarm != None)
     {
       if (window->sync_request_time.tv_sec != 0 ||
           window->sync_request_time.tv_usec != 0)

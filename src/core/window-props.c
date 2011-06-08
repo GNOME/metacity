@@ -1004,6 +1004,8 @@ reload_update_counter (MetaWindow    *window,
     {
       XSyncCounter counter = value->v.xcounter;
 
+      meta_window_destroy_sync_request_alarm (window);
+
       window->sync_request_counter = counter;
       meta_verbose ("Window has _NET_WM_SYNC_REQUEST_COUNTER 0x%lx\n",
                     window->sync_request_counter);
