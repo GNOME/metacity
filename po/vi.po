@@ -1,6 +1,6 @@
 # Vietnamese translation for Metacity.
 # Copyright © 2008 GNOME i18n Project for Vietnamese.
-# Nguyễn Thái Ngọc Duy <pclouds@gmail.com>, 2002-2004, 2007, 2008.
+# Nguyễn Thái Ngọc Duy <pclouds@gmail.com>, 2002-2004, 2007, 2008, 2011.
 # Clytie Siddall <clytie@riverland.net.au>, 2005-2008.
 #
 msgid ""
@@ -9,8 +9,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&component=general\n"
 "POT-Creation-Date: 2011-02-09 18:28+0000\n"
-"PO-Revision-Date: 2011-06-09 19:54+0700\n"
-"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
+"PO-Revision-Date: 2011-06-09 20:06+0700\n"
+"Last-Translator: Nguyễn Thái Ngọc Duy <pclouds@gmail.com>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,31 +20,29 @@ msgstr ""
 
 #: ../src/50-metacity-launchers.xml.in.h:1
 msgid "Launchers"
-msgstr ""
+msgstr "Bộ phóng"
 
 #: ../src/50-metacity-navigation.xml.in.h:1
 msgid "Navigation"
-msgstr ""
+msgstr "Di chuyển"
 
 #: ../src/50-metacity-screenshot.xml.in.h:1
-#, fuzzy
 #| msgid "Take a screenshot"
 msgid "Screenshots"
-msgstr "Chụp hình"
+msgstr "Hình chụp"
 
 #: ../src/50-metacity-system.xml.in.h:1
 msgid "System"
-msgstr ""
+msgstr "Hệ thống"
 
 #: ../src/50-metacity-windows.xml.in.h:1
-#, fuzzy
 #| msgid "/_Windows"
 msgid "Windows"
-msgstr "/_Cửa sổ"
+msgstr "Cửa sổ"
 
 #: ../src/core/bell.c:299
 msgid "Bell event"
-msgstr ""
+msgstr "Sự kiện kêu bíp"
 
 #: ../src/core/core.c:206
 #, c-format
@@ -53,10 +51,10 @@ msgstr "Yêu cầu thông tin cửa sổ không rõ : %d"
 
 #. Translators: %s is a window title
 #: ../src/core/delete.c:96
-#, fuzzy, c-format
+#, c-format
 #| msgid "\"%s\" is not responding."
 msgid "<tt>%s</tt> is not responding."
-msgstr "\"%s\" không trả lời."
+msgstr "<tt>%s</tt> không trả lời."
 
 #: ../src/core/delete.c:101
 msgid ""
@@ -137,7 +135,7 @@ msgid "No terminal command has been defined.\n"
 msgstr "Không có lệnh thiết bị cuối nào được định nghĩa.\n"
 
 #: ../src/core/main.c:131
-#, fuzzy, c-format
+#, c-format
 #| msgid ""
 #| "metacity %s\n"
 #| "Copyright (C) 2001-2008 Havoc Pennington, Red Hat, Inc., and others\n"
@@ -152,7 +150,7 @@ msgid ""
 "PARTICULAR PURPOSE.\n"
 msgstr ""
 "metacity %s\n"
-"Tác quyền © 2001-2008 của Havoc Pennington, Red Hat, Inc., và người khác.\n"
+"Tác quyền © 2001-%s của Havoc Pennington, Red Hat, Inc., và người khác.\n"
 "Chương trình này là phần mềm tự do; xem mã nguồn để tìm điều kiện sao chép.\n"
 "KHÔNG CÓ BẢO HÀNH GÌ CẢ, THẬM CHÍ KHÔNG CÓ BẢO ĐẢM ĐƯỢC NGỤ Ý KHẢ NĂNG BÁN "
 "HAY KHẢ NĂNG LÀM ĐƯỢC VIỆC DỨT KHOÁT.\n"
@@ -196,7 +194,7 @@ msgstr "Tắt sắp thành phần"
 #: ../src/core/main.c:322
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
-msgstr ""
+msgstr "Không tạo cửa sổ toàn màn hình (lớn tối đa và không có đường viền)"
 
 #: ../src/core/main.c:527
 #, c-format
@@ -332,7 +330,6 @@ msgstr "Không thể giải phóng Màn hình %d trên bộ trình bày « %s »
 #. * "disabled" must also stay as it is.
 #.
 #: ../src/core/schema-bindings.c:169
-#, fuzzy
 #| msgid ""
 #| "The keybinding used to close a window. The format looks like \"&lt;"
 #| "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -348,14 +345,13 @@ msgid ""
 "special string \"disabled\", then there will be no keybinding for this "
 "action."
 msgstr ""
-"Tổ hợp phím dùng để đóng cửa sổ. Dạng thức tương tự như \"&lt;Control&gt;a\" "
-"hoặc \"&lt;Shift&gt;&lt;Alt&gt;F1\". Bộ phân tích hiểu cả chữ hoa lẫn chữ "
-"thường, và cả những từ viết tắt như \"&lt;Ctl&gt;\" và \"&lt;Ctrl&gt;\". Nếu "
-"bạn đặt tùy chọn là chuỗi đặc biệt «disabled» thì sẽ không có tổ hợp phím "
-"nào thực hiện hành động này."
+"Dạng thức tương tự như \"<Control>a\" hoặc \"<Shift><Alt>F1\".\n"
+"\n"
+"Bộ phân tích hiểu cả chữ hoa lẫn chữ thường, và cả những từ viết tắt như "
+"\"<Ctl>\" và \"<Ctrl>\". Nếu bạn đặt tùy chọn là chuỗi đặc biệt "
+"'disabled' (tắt) thì sẽ không có tổ hợp phím nào thực hiện hành động này."
 
 #: ../src/core/schema-bindings.c:177
-#, fuzzy
 #| msgid ""
 #| "The keybinding used to close a window. The format looks like \"&lt;"
 #| "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
@@ -374,11 +370,11 @@ msgid ""
 "This keybinding may be reversed by holding down the \"shift\" key; "
 "therefore, \"shift\" cannot be one of the keys it uses."
 msgstr ""
-"Tổ hợp phím dùng để đóng cửa sổ. Dạng thức tương tự như \"&lt;Control&gt;a\" "
-"hoặc \"&lt;Shift&gt;&lt;Alt&gt;F1\". Bộ phân tích hiểu cả chữ hoa lẫn chữ "
-"thường, và cả những từ viết tắt như \"&lt;Ctl&gt;\" và \"&lt;Ctrl&gt;\". Nếu "
-"bạn đặt tùy chọn là chuỗi đặc biệt «disabled» thì sẽ không có tổ hợp phím "
-"nào thực hiện hành động này."
+"Dạng thức tương tự như \"<Control>a\" hoặc \"<Shift><Alt>F1\".\n"
+"\n"
+"Bộ phân tích hiểu cả chữ hoa lẫn chữ thường, và cả những từ viết tắt như "
+"\"<Ctl>\" và \"<Ctrl>\". Nếu bạn đặt tùy chọn là chuỗi đặc biệt "
+"'disabled' (tắt) thì sẽ không có tổ hợp phím nào thực hiện hành động này."
 
 #: ../src/core/session.c:842 ../src/core/session.c:849
 #, c-format
@@ -428,7 +424,6 @@ msgid "Unknown element %s"
 msgstr "Phần tử lạ « %s »"
 
 #: ../src/core/session.c:1808
-#, fuzzy
 #| msgid ""
 #| "These windows do not support \"save current setup\" and will have to be "
 #| "restarted manually next time you log in."
@@ -436,8 +431,8 @@ msgid ""
 "These windows do not support &quot;save current setup&quot; and will have to "
 "be restarted manually next time you log in."
 msgstr ""
-"Những cửa sổ này không hỗ trợ «lưu thiết lập hiện thời» và sẽ phải khởi động "
-"lại bằng tay lần kế bạn đăng nhập."
+"Những cửa sổ này không hỗ trợ \"lưu thiết lập hiện thời\" và sẽ phải khởi "
+"động lại bằng tay lần kế bạn đăng nhập."
 
 #: ../src/core/util.c:101
 #, c-format
@@ -525,12 +520,12 @@ msgstr "%s (trên %s)"
 #: ../src/core/window-props.c:420
 #, c-format
 msgid "%s (as superuser)"
-msgstr ""
+msgstr "%s (như siêu người dùng)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine
 #: ../src/core/window-props.c:438
-#, fuzzy, c-format
+#, c-format
 #| msgid "%s (on %s)"
 msgid "%s (as %s)"
 msgstr "%s (trên %s)"
@@ -540,7 +535,7 @@ msgstr "%s (trên %s)"
 #: ../src/core/window-props.c:444
 #, c-format
 msgid "%s (as another user)"
-msgstr ""
+msgstr "%s (như người dùng khác)"
 
 #: ../src/core/window-props.c:1430
 #, c-format
@@ -624,100 +619,90 @@ msgid "Switch to workspace 12"
 msgstr "Chuyển sang vùng làm việc 12"
 
 #: ../src/include/all-keybindings.h:122
-#, fuzzy
 #| msgid "Move to Workspace _Left"
 msgid "Move to workspace left"
-msgstr "Chuyển sang vùng làm việc bên t_rái"
+msgstr "Chuyển sang vùng làm việc bên trái"
 
 #: ../src/include/all-keybindings.h:126
-#, fuzzy
 #| msgid "Move to Workspace R_ight"
 msgid "Move to workspace right"
-msgstr "Chuyển sang vùng làm việc bên _phải"
+msgstr "Chuyển sang vùng làm việc bên phải"
 
 #: ../src/include/all-keybindings.h:130
-#, fuzzy
 #| msgid "Move to Workspace _Left"
 msgid "Move to workspace above"
-msgstr "Chuyển sang vùng làm việc bên t_rái"
+msgstr "Chuyển sang vùng làm việc bên trên"
 
 #: ../src/include/all-keybindings.h:134
-#, fuzzy
 #| msgid "Move to Workspace _Down"
 msgid "Move to workspace below"
-msgstr "Chuyển sang vùng làm việc bên _dưới"
+msgstr "Chuyển sang vùng làm việc bên dưới"
 
 #: ../src/include/all-keybindings.h:150
-#, fuzzy
 #| msgid "Move between windows of an application with popup"
 msgid "Switch windows of an application"
-msgstr "Di chuyển giữa các cửa sổ của ứng dụng với điều bật lên"
+msgstr "Chuyển cửa sổ cùng ứng dụng"
 
 #: ../src/include/all-keybindings.h:153
-#, fuzzy
 #| msgid "Move between windows of an application with popup"
 msgid "Reverse switch windows of an application"
-msgstr "Di chuyển giữa các cửa sổ của ứng dụng với điều bật lên"
+msgstr "Chuyển ngược cửa sổ cùng ứng dụng"
 
 #: ../src/include/all-keybindings.h:156
 msgid "Switch applications"
-msgstr ""
+msgstr "Chuyển ứng dụng"
 
 #: ../src/include/all-keybindings.h:159
 msgid "Reverse switch applications"
-msgstr ""
+msgstr "Chuyển ngược ứng dụng"
 
 #: ../src/include/all-keybindings.h:162
 msgid "Switch system controls"
-msgstr ""
+msgstr "Chuyển điều khiển hệ thống"
 
 #: ../src/include/all-keybindings.h:165
 msgid "Reverse switch system controls"
-msgstr ""
+msgstr "Chuyển đảo điều khiển hệ thống"
 
 #: ../src/include/all-keybindings.h:169
-#, fuzzy
 #| msgid "Move between windows of an application immediately"
 msgid "Switch windows of an app directly"
-msgstr "Di chuyển ngay giữa các cửa sổ của ứng dụng"
+msgstr "Chuyển trực tiếp cửa sổ cùng ứng dụng"
 
 #: ../src/include/all-keybindings.h:172
-#, fuzzy
 #| msgid "Move between windows of an application immediately"
 msgid "Reverse switch windows of an app directly"
-msgstr "Di chuyển ngay giữa các cửa sổ của ứng dụng"
+msgstr "Chuyển ngược trực tiếp cửa sổ cùng ứng dụng"
 
 #: ../src/include/all-keybindings.h:175
 msgid "Switch windows directly"
-msgstr ""
+msgstr "Chuyển cửa sổ trực tiếp"
 
 #: ../src/include/all-keybindings.h:178
 msgid "Reverse switch windows directly"
-msgstr ""
+msgstr "Chuyển đảo cửa sổ trực tiếp"
 
 #: ../src/include/all-keybindings.h:181
 msgid "Switch system controls directly"
-msgstr ""
+msgstr "Chuyển điều khiển hệ thống trực tiếp"
 
 #: ../src/include/all-keybindings.h:184
 msgid "Reverse switch system controls directly"
-msgstr ""
+msgstr "Chuyển đảo điều khiển hệ thống trực tiếp"
 
 #: ../src/include/all-keybindings.h:189
-#, fuzzy
 #| msgid "Hide all normal windows and set focus to the desktop"
 msgid "Hide all normal windows"
-msgstr "Ẩn mọi của sổ thông thường và đặt tiêu điểm vào màn hình nền"
+msgstr "Ẩn mọi cửa sổ thông thường"
 
 #: ../src/include/all-keybindings.h:192
 msgid "Show the activities overview"
-msgstr ""
+msgstr "Hiện tổng quan hoạt động"
 
 #: ../src/include/all-keybindings.h:195
-#, fuzzy
 #| msgid "Show the panel's main menu"
 msgid "Show the run command prompt"
-msgstr "Hiện trình đơn chính của Bảng"
+msgstr "Hiện trình đơn chính của bảng"
 
 #: ../src/include/all-keybindings.h:236
 msgid "Take a screenshot"
@@ -728,10 +713,9 @@ msgid "Take a screenshot of a window"
 msgstr "Chụp hình cửa sổ"
 
 #: ../src/include/all-keybindings.h:240
-#, fuzzy
 #| msgid "Run a terminal"
 msgid "Launch Terminal"
-msgstr "Chạy thiết bị cuối"
+msgstr "Chạy cửa sổ dòng lệnh"
 
 #: ../src/include/all-keybindings.h:255
 msgid "Activate the window menu"
@@ -746,10 +730,9 @@ msgid "Toggle maximization state"
 msgstr "Bật tắt trạng thái phóng to"
 
 #: ../src/include/all-keybindings.h:262
-#, fuzzy
 #| msgid "Toggle always on top state"
 msgid "Toggle window always appearing on top"
-msgstr "Bật/Tắt trạng thái luôn nổi"
+msgstr "Bật/Tắt trạng thái luôn hiển thị"
 
 #: ../src/include/all-keybindings.h:264
 msgid "Maximize window"
@@ -780,10 +763,9 @@ msgid "Resize window"
 msgstr "Đổi cỡ cửa sổ"
 
 #: ../src/include/all-keybindings.h:279
-#, fuzzy
 #| msgid "Toggle window on all workspaces"
 msgid "Toggle window on all workspaces or one"
-msgstr "Chốt cửa sổ trên mọi vùng làm việc"
+msgstr "Bật/Tắt cửa sổ trên mọi vùng làm việc"
 
 #: ../src/include/all-keybindings.h:283
 msgid "Move window to workspace 1"
@@ -850,10 +832,9 @@ msgid "Move window one workspace down"
 msgstr "Chuyển cửa sổ xuống vùng làm việc dưới"
 
 #: ../src/include/all-keybindings.h:340
-#, fuzzy
 #| msgid "Raise window if it's covered by another window, otherwise lower it"
 msgid "Raise window if covered, otherwise lower it"
-msgstr "Nâng cửa sổ bị cửa sổ khác lấp,  không bị lấp thì hạ nó xuống"
+msgstr "Nâng cửa sổ bị cửa sổ khác che khuất, không thì hạ nó xuống"
 
 #: ../src/include/all-keybindings.h:342
 msgid "Raise window above other windows"
@@ -872,52 +853,44 @@ msgid "Maximize window horizontally"
 msgstr "Phóng to cửa sổ theo chiều ngang"
 
 #: ../src/include/all-keybindings.h:356
-#, fuzzy
 #| msgid "Move window to north-west (top left) corner"
 msgid "Move window to top left corner"
-msgstr "Chuyển cửa sổ sang góc tây bắc (trái trên)"
+msgstr "Chuyển cửa sổ sang góc trên bên trái"
 
 #: ../src/include/all-keybindings.h:359
-#, fuzzy
 #| msgid "Move window to north-east (top right) corner"
 msgid "Move window to top right corner"
-msgstr "Chuyển cửa sổ sang góc đông bắc (phải trên)"
+msgstr "Chuyển cửa sổ sang góc trên bên phải"
 
 #: ../src/include/all-keybindings.h:362
-#, fuzzy
 #| msgid "Move window to south-west (bottom left) corner"
 msgid "Move window to bottom left corner"
-msgstr "Chuyển cửa sổ sang góc tây nam (trái dưới)"
+msgstr "Chuyển cửa sổ sang góc dưới bên trái"
 
 #: ../src/include/all-keybindings.h:365
-#, fuzzy
 #| msgid "Move window to south-east (bottom right) corner"
 msgid "Move window to bottom right corner"
-msgstr "Chuyển cửa sổ sang góc đông nam (phải dưới)"
+msgstr "Chuyển cửa sổ sang góc dưới bên phải"
 
 #: ../src/include/all-keybindings.h:369
-#, fuzzy
 #| msgid "Move window to east side of screen"
 msgid "Move window to top edge of screen"
-msgstr "Chuyển cửa sổ sang phía đông màn hình"
+msgstr "Chuyển cửa sổ lên cạnh trên màn hình"
 
 #: ../src/include/all-keybindings.h:372
-#, fuzzy
 #| msgid "Move window to south (bottom) side of screen"
 msgid "Move window to bottom edge of screen"
-msgstr "Chuyển cửa sổ sang phía nam (dưới) màn hình"
+msgstr "Chuyển cửa sổ lên cạnh dưới màn hình"
 
 #: ../src/include/all-keybindings.h:375
-#, fuzzy
 #| msgid "Move window to north side of screen"
 msgid "Move window to right side of screen"
-msgstr "Chuyển cửa sổ sang phía bắc màn hình"
+msgstr "Chuyển cửa sổ lên cạnh phải màn hình"
 
 #: ../src/include/all-keybindings.h:378
-#, fuzzy
 #| msgid "Move window to east side of screen"
 msgid "Move window to left side of screen"
-msgstr "Chuyển cửa sổ sang phía đông màn hình"
+msgstr "Chuyển cửa sổ lên cạnh trái màn hình"
 
 #: ../src/include/all-keybindings.h:381
 msgid "Move window to center of screen"
@@ -981,7 +954,6 @@ msgid "Automatically raises the focused window"
 msgstr "Tự động hiển thị cửa sổ có tiêu điểm"
 
 #: ../src/metacity.schemas.in.in.h:9
-#, fuzzy
 #| msgid ""
 #| "Clicking a window while holding down this modifier key will move the "
 #| "window (left click), resize the window (middle click), or show the window "
@@ -996,8 +968,10 @@ msgid ""
 msgstr ""
 "Nhấn chuột lên một cửa sổ trong khi đang giữ phím biến đổi này sẽ di chuyển "
 "cửa sổ (nút chuột trái), đặt lại kích thước cửa sổ (nút chuột giữa), hoặc "
-"hiện trình đơn cửa sổ (nút chuột phải). Phím biến đổi được tạo như \"&lt;"
-"Alt&gt;\" hay \"&lt;Super&gt;\" để làm ví dụ."
+"hiện trình đơn cửa sổ (nút chuột phải). Thao tác nút giửa và phải có thể "
+"được hoán đổi bằng khoá \"resize_with_right_button\" (đổi kích thước với "
+"phím phải). Phím biến đổi được thể hiện như, ví dụ, \"<Alt>;\" hay \"<Super>"
+"\"."
 
 #: ../src/metacity.schemas.in.in.h:10
 msgid "Commands to run in response to keybindings"
@@ -2288,10 +2262,10 @@ msgstr "Không cho phép chữ nằm trong <%s>."
 #: ../src/ui/theme-parser.c:3724 ../src/ui/theme-parser.c:3736
 #: ../src/ui/theme-parser.c:3748 ../src/ui/theme-parser.c:3760
 #: ../src/ui/theme-parser.c:3772
-#, fuzzy, c-format
+#, c-format
 #| msgid "<name> specified twice for this theme"
 msgid "<%s> specified twice for this theme"
-msgstr "<name> (tên) được xác định hai lần trong sắc thái này."
+msgstr "<%s> được xác định hai lần trong sắc thái này"
 
 #: ../src/ui/theme-parser.c:4040
 #, c-format
