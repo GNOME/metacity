@@ -1,3 +1,20 @@
+Version 2.34.1
+==============
+
+ - Fix crash in meta_display_get_above_tab_keycode (Adam Jackson)
+ - Disable keybindings message should ungrab keys (Daniel Drake)
+ - Remove --with-gtk configure flag as metacity only builds against gtk2 (Colin
+   Walters)
+ - Build fix for FreeBSD: Include sys/wait.h as described in POSIX specs (Alexis Ballier)
+ - Various small build system changes (William Jon McCann, Olav Vitters)
+
+Translations:
+    Carles Ferrando (ca@valencia)
+    Jiro Matsuzawa (ja)
+    Kristjan SCHMIDT (eo)
+    Nguyễn Thái Ngọc Duy (vi)
+    Tommi Vainikainen (fi)
+
 ==============
 Version 2.34.0
 ==============
