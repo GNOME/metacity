@@ -8,8 +8,7 @@
   xmlns:gnome="http://api.gnome.org/doap-extensions#"
   xmlns:admin="http://webns.net/mvcb/">
 
- <name>The Metacity Window Manager</name>
- <shortname>Metacity</shortname>
+ <name xml:lang="en">Metacity</name>
 
  <!-- It's a blog.  Metacity has no homepage. -->
  <homepage rdf:resource="http://blogs.gnome.org/metacity/" />
