@@ -14,7 +14,7 @@ AC_INIT([metacity], [metacity_version],
 AC_CONFIG_SRCDIR(src/core/display.c)
 AC_CONFIG_HEADERS(config.h)
 
-AM_INIT_AUTOMAKE
+AM_INIT_AUTOMAKE([1.11.1 no-dist-gzip dist-xz])
 AM_MAINTAINER_MODE
 
 # Honor aclocal flags
