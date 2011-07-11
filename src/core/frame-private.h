@@ -57,6 +57,12 @@ void     meta_frame_queue_draw              (MetaFrame  *frame);
 
 MetaFrameFlags meta_frame_get_flags (MetaFrame *frame);
 
+void meta_frame_get_corner_radiuses (MetaFrame *frame,
+                                     float     *top_left,
+                                     float     *top_right,
+                                     float     *bottom_left,
+                                     float     *bottom_right);
+
 gboolean meta_frame_sync_to_window (MetaFrame         *frame,
                                     int                gravity,
                                     gboolean           need_move,
