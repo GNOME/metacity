@@ -239,7 +239,31 @@ meta_window_should_attach_to_parent (MetaWindow *window)
   if (!parent)
     return FALSE;
 
-  return TRUE;
+  switch (parent->type)
+    {
+    case META_WINDOW_NORMAL:
+    case META_WINDOW_DIALOG:
+    case META_WINDOW_MODAL_DIALOG:
+      return TRUE;
+
+    case META_WINDOW_MENU:
+    case META_WINDOW_UTILITY:
+    case META_WINDOW_DESKTOP:
+    case META_WINDOW_DOCK:
+    case META_WINDOW_TOOLBAR:
+    case META_WINDOW_SPLASHSCREEN:
+    case META_WINDOW_DROPDOWN_MENU:
+    case META_WINDOW_POPUP_MENU:
+    case META_WINDOW_TOOLTIP:
+    case META_WINDOW_NOTIFICATION:
+    case META_WINDOW_COMBO:
+    case META_WINDOW_DND:
+    case META_WINDOW_OVERRIDE_OTHER:
+    default:
+      break;
+    }
+
+  return FALSE;
 }
 
 MetaWindow*
