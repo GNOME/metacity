@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity.master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-02 20:43+0300\n"
-"PO-Revision-Date: 2011-09-02 20:43+0300\n"
+"POT-Creation-Date: 2011-09-04 19:14+0300\n"
+"PO-Revision-Date: 2011-09-04 19:15+0300\n"
 "Last-Translator: Ігар Грачышка <ihar.hrachyshka@gmail.com>\n"
 "Language-Team: Belarusian <i18n-bel-gnome@googlegroups.com>\n"
 "Language: be\n"
@@ -79,7 +79,7 @@ msgstr ""
 #: ../src/core/display.c:336
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
-msgstr "Не ўдалося адчыніць X-дысплей аконнай сістэмы \"%s\"\n"
+msgstr "Не ўдалося адкрыць X-дысплей аконнай сістэмы \"%s\"\n"
 
 #: ../src/core/errors.c:272
 #, c-format
@@ -347,7 +347,7 @@ msgstr "Не ўдалося стварыць каталог \"%s\": %s\n"
 #: ../src/core/session.c:859
 #, c-format
 msgid "Could not open session file '%s' for writing: %s\n"
-msgstr "Не ўдалося адчыніць файл сеанса \"%s\" для запісу: %s\n"
+msgstr "Не ўдалося адкрыць файл сеанса \"%s\" для запісу: %s\n"
 
 #: ../src/core/session.c:1000
 #, c-format
@@ -357,7 +357,7 @@ msgstr "Не ўдалося запісаць файл сеанса \"%s\": %s\n"
 #: ../src/core/session.c:1005
 #, c-format
 msgid "Error closing session file '%s': %s\n"
-msgstr "Не ўдалося зачыніць файл сеанса \"%s\": %s\n"
+msgstr "Не ўдалося закрыць файл сеанса \"%s\": %s\n"
 
 #: ../src/core/session.c:1135
 #, c-format
@@ -398,7 +398,7 @@ msgstr ""
 #: ../src/core/util.c:101
 #, c-format
 msgid "Failed to open debug log: %s\n"
-msgstr "Не ўдалося адчыніць адладачны журнал: %s\n"
+msgstr "Не ўдалося адкрыць адладачны журнал: %s\n"
 
 #: ../src/core/util.c:111
 #, c-format
@@ -408,7 +408,7 @@ msgstr "Не ўдалося выканаць fdopen() для журнальна�
 #: ../src/core/util.c:117
 #, c-format
 msgid "Opened log file %s\n"
-msgstr "Журнальны файл %s адчынены\n"
+msgstr "Журнальны файл %s адкрыты\n"
 
 #: ../src/core/util.c:136 ../src/tools/metacity-message.c:176
 #, c-format
@@ -672,7 +672,7 @@ msgstr "Запусціць тэрмінал"
 
 #: ../src/include/all-keybindings.h:255
 msgid "Activate the window menu"
-msgstr "Адчыніць меню акна"
+msgstr "Адкрыць меню акна"
 
 #: ../src/include/all-keybindings.h:258
 msgid "Toggle fullscreen mode"
@@ -704,7 +704,7 @@ msgstr "Мінімалізаваць акно"
 
 #: ../src/include/all-keybindings.h:272
 msgid "Close window"
-msgstr "Зачыніць акно"
+msgstr "Закрыць акно"
 
 #: ../src/include/all-keybindings.h:274
 msgid "Move window"
@@ -968,7 +968,7 @@ msgstr ""
 
 #: ../src/metacity.schemas.in.in.h:24
 msgid "Modifier to use for modified window click actions"
-msgstr "Клавіша-мадыфікатар для пстрычкоў у вокны"
+msgstr "Клавіша-мадыфікатар для пстрычак у вокны"
 
 #: ../src/metacity.schemas.in.in.h:25
 msgid "Name of workspace"
@@ -1186,7 +1186,7 @@ msgstr "Правілы выкарыстання: %s\n"
 
 #: ../src/ui/frames.c:1120
 msgid "Close Window"
-msgstr "Зачыніць акно"
+msgstr "Закрыць акно"
 
 #: ../src/ui/frames.c:1123
 msgid "Window Menu"
@@ -1308,7 +1308,7 @@ msgstr "Перамясціць на прасторы працы з_нізу"
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:105
 msgid "_Close"
-msgstr "_Зачыніць акно"
+msgstr "_Закрыць акно"
 
 #: ../src/ui/menu.c:203
 #, c-format
