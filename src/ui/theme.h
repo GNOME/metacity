@@ -874,6 +874,7 @@ void             meta_frame_layout_unref         (MetaFrameLayout       *layout)
 void             meta_frame_layout_get_borders   (const MetaFrameLayout *layout,
                                                   int                    text_height,
                                                   MetaFrameFlags         flags,
+                                                  MetaFrameType          type,
                                                   MetaFrameBorders      *borders);
 
 gboolean         meta_frame_layout_validate      (const MetaFrameLayout *layout,

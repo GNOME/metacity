@@ -405,6 +405,7 @@ void
 meta_frame_layout_get_borders (const MetaFrameLayout *layout,
                                int                    text_height,
                                MetaFrameFlags         flags,
+                               MetaFrameType          type,
                                MetaFrameBorders      *borders)
 {
   int buttons_height, title_height;
@@ -438,6 +439,9 @@ meta_frame_layout_get_borders (const MetaFrameLayout *layout,
   borders->invisible.right = layout->invisible_border.right;
   borders->invisible.bottom = layout->invisible_border.bottom;
   borders->invisible.top = layout->invisible_border.top;
+
+  if (type == META_FRAME_TYPE_ATTACHED)
+    borders->invisible.top = 0;
 
   borders->total.left = borders->invisible.left + borders->visible.left;
   borders->total.right = borders->invisible.right + borders->visible.right;
@@ -617,6 +621,7 @@ meta_frame_layout_calc_geometry (const MetaFrameLayout  *layout,
                                  int                     client_width,
                                  int                     client_height,
                                  const MetaButtonLayout *button_layout,
+                                 MetaFrameType           type,
                                  MetaFrameGeometry      *fgeom,
                                  MetaTheme              *theme)
 {
@@ -642,6 +647,7 @@ meta_frame_layout_calc_geometry (const MetaFrameLayout  *layout,
 
   meta_frame_layout_get_borders (layout, text_height,
                                  flags,
+                                 type,
                                  &borders);
 
   fgeom->borders = borders;
@@ -5455,6 +5461,7 @@ meta_theme_draw_frame (MetaTheme              *theme,
                                    flags,
                                    client_width, client_height,
                                    button_layout,
+                                   type,
                                    &fgeom,
                                    theme);
 
@@ -5491,6 +5498,7 @@ meta_theme_get_frame_borders (MetaTheme        *theme,
   meta_frame_layout_get_borders (style->layout,
                                  text_height,
                                  flags,
+                                 type,
                                  borders);
 }
 
@@ -5519,6 +5527,7 @@ meta_theme_calc_geometry (MetaTheme              *theme,
                                    flags,
                                    client_width, client_height,
                                    button_layout,
+                                   type,
                                    fgeom,
                                    theme);
 }
