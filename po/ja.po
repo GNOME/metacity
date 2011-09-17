@@ -6,21 +6,21 @@
 # Yukihiro Nakai <nakai@gnome.gr.jp>, 2003.
 # Satoru SATOH <ss@gnome.gr.jp>, 2006.
 # Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>, 2009-2011.
-# Jiro Matsuzawa <matsuzawa.jr@gmail.com>, 2011.
+# Jiro Matsuzawa <jmatsuzawa@src.gnome.org>, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-04-04 22:13+0000\n"
-"PO-Revision-Date: 2011-04-25 01:46+0900\n"
-"Last-Translator: Jiro Matsuzawa <matsuzawa.jr@gmail.com>\n"
+"POT-Creation-Date: 2011-09-04 16:15+0000\n"
+"PO-Revision-Date: 2011-09-11 08:23+0900\n"
+"Last-Translator: Jiro Matsuzawa <jmatsuzawa@src.gnome.org>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
-"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
 
 #: ../src/50-metacity-launchers.xml.in.h:1
 msgid "Launchers"
@@ -96,8 +96,8 @@ msgid ""
 "the window manager.\n"
 msgstr ""
 "ディスプレイ '%s' への接続が切れました。\n"
-"おそらくXサーバがシャットダウンしたか、\n"
-"ウィンドウ・マネージャが強制終了/破棄されたようです。\n"
+"おそらくXサーバーがシャットダウンしたか、\n"
+"ウィンドウ・マネージャーが強制終了/破棄されたようです。\n"
 
 #: ../src/core/errors.c:279
 #, c-format
@@ -116,7 +116,7 @@ msgstr ""
 #. Displayed when a keybinding which is
 #. * supposed to launch a program fails.
 #.
-#: ../src/core/keybindings.c:2343
+#: ../src/core/keybindings.c:2349
 #, c-format
 msgid ""
 "There was an error running <tt>%s</tt>:\n"
@@ -127,12 +127,12 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/core/keybindings.c:2432
+#: ../src/core/keybindings.c:2438
 #, c-format
 msgid "No command %d has been defined.\n"
 msgstr "コマンド %d は定義されていません。\n"
 
-#: ../src/core/keybindings.c:3386
+#: ../src/core/keybindings.c:3394
 #, c-format
 msgid "No terminal command has been defined.\n"
 msgstr "端末を起動するコマンドが定義されていません。\n"
@@ -155,11 +155,11 @@ msgstr ""
 
 #: ../src/core/main.c:269
 msgid "Disable connection to session manager"
-msgstr "セッション・マネージャに接続しない"
+msgstr "セッション・マネージャーに接続しない"
 
 #: ../src/core/main.c:275
 msgid "Replace the running window manager with Metacity"
-msgstr "実行中のウィンドウ・マネージャを Metacity で置き換える"
+msgstr "実行中のウィンドウ・マネージャーを Metacity で置き換える"
 
 #: ../src/core/main.c:281
 msgid "Specify session management ID"
@@ -183,11 +183,11 @@ msgstr "Xの呼び出しを同期する"
 
 #: ../src/core/main.c:310
 msgid "Turn compositing on"
-msgstr "合成マネージャをオン"
+msgstr "合成マネージャーをオン"
 
 #: ../src/core/main.c:316
 msgid "Turn compositing off"
-msgstr "合成マネージャをオフ"
+msgstr "合成マネージャーをオフ"
 
 #: ../src/core/main.c:322
 msgid ""
@@ -197,7 +197,7 @@ msgstr "最大化されて、装飾のないフルスクリーンのウィンド
 #: ../src/core/main.c:527
 #, c-format
 msgid "Failed to scan themes directory: %s\n"
-msgstr "テーマ・フォルダのスキャンに失敗しました: %s\n"
+msgstr "テーマ・フォルダーのスキャンに失敗しました: %s\n"
 
 #: ../src/core/main.c:543
 #, c-format
@@ -302,24 +302,24 @@ msgid ""
 "Screen %d on display \"%s\" already has a window manager; try using the --"
 "replace option to replace the current window manager.\n"
 msgstr ""
-"ディスプレイ \"%2$s\" 上のスクリーン %1$d はすでにウィンドウマネージャを持っ"
-"ています; 現在のウィンドウマネージャを上書きするために--replace オプションの"
-"使用を試してください。\n"
+"ディスプレイ \"%2$s\" 上のスクリーン %1$d はすでにウィンドウマネージャーを"
+"持っています; 現在のウィンドウマネージャーを上書きするために--replace オプ"
+"ションの使用を試してください。\n"
 
 #: ../src/core/screen.c:400
 #, c-format
 msgid ""
 "Could not acquire window manager selection on screen %d display \"%s\"\n"
 msgstr ""
-"ディスプレイ \"%2$s\" 上のスクリーン %1$d でウィンドウマネージャの選択を取得"
-"できませんでした\n"
+"ディスプレイ \"%2$s\" 上のスクリーン %1$d でウィンドウマネージャーの選択を取"
+"得できませんでした\n"
 
 #: ../src/core/screen.c:458
 #, c-format
 msgid "Screen %d on display \"%s\" already has a window manager\n"
 msgstr ""
-"ディスプレイ \"%2$s\" 上のスクリーン %1$d はすでにウィンドウマネージャを持っ"
-"ています\n"
+"ディスプレイ \"%2$s\" 上のスクリーン %1$d はすでにウィンドウマネージャーを"
+"持っています\n"
 
 #: ../src/core/screen.c:668
 #, c-format
@@ -445,19 +445,19 @@ msgstr "この metacity は詳細ログ・モードをサポートしていま�
 
 #: ../src/core/util.c:236
 msgid "Window manager: "
-msgstr "ウィンドウ・マネージャ: "
+msgstr "ウィンドウ・マネージャー: "
 
 #: ../src/core/util.c:388
 msgid "Bug in window manager: "
-msgstr "ウィンドウ・マネージャのバグ: "
+msgstr "ウィンドウ・マネージャーのバグ: "
 
 #: ../src/core/util.c:421
 msgid "Window manager warning: "
-msgstr "ウィンドウ・マネージャの警告: "
+msgstr "ウィンドウ・マネージャーの警告: "
 
 #: ../src/core/util.c:449
 msgid "Window manager error: "
-msgstr "ウィンドウ・マネージャのエラー: "
+msgstr "ウィンドウ・マネージャーのエラー: "
 
 #. Translators: This is the title used on dialog boxes
 #. eof all-keybindings.h
@@ -486,8 +486,8 @@ msgstr ""
 #: ../src/core/window.c:6269
 #, c-format
 msgid ""
-"Window %s sets an MWM hint indicating it isn't resizable, but sets min size "
-"%d x %d and max size %d x %d; this doesn't make much sense.\n"
+"Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
+"d x %d and max size %d x %d; this doesn't make much sense.\n"
 msgstr ""
 "ウィンドウ %s はリサイズ可能ではない MWM ヒント指示を設定していますが、最小サ"
 "イズ %d x %d と最大サイズ %d x %dも設定しています。これはあまり意味がありませ"
@@ -508,7 +508,7 @@ msgstr "%s (%s)"
 #: ../src/core/window-props.c:420
 #, c-format
 msgid "%s (as superuser)"
-msgstr "%s (スーパーユーザで)"
+msgstr "%s (スーパーユーザーで)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine
@@ -522,7 +522,7 @@ msgstr "%s (%s で)"
 #: ../src/core/window-props.c:444
 #, c-format
 msgid "%s (as another user)"
-msgstr "%s (他のユーザで)"
+msgstr "%s (他のユーザーで)"
 
 #: ../src/core/window-props.c:1430
 #, c-format
@@ -542,7 +542,7 @@ msgstr ""
 "ウィンドウ 0x%1$lx には type %5$s format %6$d n_items %7$d のプロパティ\n"
 "%2$s が指定されていますが、実際には type %3$s format %4$d であることを\n"
 "期待されています。これは、ほとんどの場合、アプリケーションのバグであり、\n"
-"ウィンドウマネージャのバグではありません。\n"
+"ウィンドウマネージャーのバグではありません。\n"
 "ウィンドウの属性は title=\"%8$s\" class=\"%9$s\" name=\"%10$s\"です。\n"
 
 #: ../src/core/xprops.c:401
@@ -935,7 +935,7 @@ msgstr "キーバインドの応答で走らせるコマンド"
 
 #: ../src/metacity.schemas.in.in.h:11
 msgid "Compositing Manager"
-msgstr "合成マネージャ"
+msgstr "合成マネージャー"
 
 #: ../src/metacity.schemas.in.in.h:12
 msgid "Control how new windows get focus"
@@ -951,7 +951,7 @@ msgstr "自動的に前に出すオプションの遅延時間 (ミリ秒)"
 
 #: ../src/metacity.schemas.in.in.h:15
 msgid "Determines whether Metacity is a compositing manager."
-msgstr "Metacity が合成マネージャになれるかどうかです。"
+msgstr "Metacity が合成マネージャーになれるかどうかです。"
 
 #: ../src/metacity.schemas.in.in.h:16
 msgid ""
@@ -981,8 +981,8 @@ msgstr ""
 "この値が TRUE でかつフォーカス・モードが \"sloppy\" または \"mouse\" の場合、"
 "フォーカスを取得したウィンドウは auto_raise_delay キーに指定した時間が経過し"
 "た後に自動的に前面に表示されます。これはウィンドウをクリックして前面に表示す"
-"る場合とは関係はなく、ドラッグ・アンド・ドロップ中にポインタがウィンドウ内に"
-"入った場合とも関係はありません。"
+"る場合とは関係はなく、ドラッグ・アンド・ドロップ中にポインターがウィンドウ内"
+"に入った場合とも関係はありません。"
 
 #: ../src/metacity.schemas.in.in.h:20
 msgid ""
@@ -1001,11 +1001,11 @@ msgid ""
 "the wireframe feature is disabled when accessibility is on."
 msgstr ""
 "この値が TRUE の場合、Metacity はワイヤフレームを使ったり、アニメーションをし"
-"なくなったりするなど、ユーザへのフィードバックが少なくなり、\"直感的な操作\" "
-"という点でもその操作性が落ちます。これは多くのユーザにとってユーザビリティの"
-"重大な低下につながりますが、そうしないと操作に困るような旧式のアプリケーショ"
-"ンやターミナル・サーバもうまく使えるようになります。しかしながら、アクセシビ"
-"リティの機能が有効な場合はワイヤフレームの機能は無効になります。"
+"なくなったりするなど、ユーザーへのフィードバックが少なくなり、\"直感的な操作"
+"\" という点でもその操作性が落ちます。これは多くのユーザーにとってユーザビリ"
+"ティの重大な低下につながりますが、そうしないと操作に困るような旧式のアプリ"
+"ケーションやターミナル・サーバーもうまく使えるようになります。しかしながら、"
+"アクセシビリティの機能が有効な場合はワイヤフレームの機能は無効になります。"
 
 #: ../src/metacity.schemas.in.in.h:22
 msgid ""
@@ -1095,15 +1095,16 @@ msgstr ""
 "show_bug.cgi?id=445447#c6 をご覧ください。このオプションが FALSE であっても、"
 "ウィンドウ中の任意の場所でのALT + 左クリック、ウィンドウの装飾での通常のク"
 "リック、タスクリスト・アプレットからのアクティベーション・リクエストといった"
-"ページャからの特別なメッセージによって前面に出すことができます。このオプショ"
-"ンは click-to-focus モードでは現在、無効になっています。raise_on_click が "
-"FALSE の時にウィンドウを前面に出すこれらの方法には、アプリケーションからウィ"
-"ンドウの前面への移動をプログラム中で要求することは含まれていません。そのよう"
-"な要求は要求の理由を問わず無視されます。もしアプリケーションの開発者であれ"
-"ば、この設定を無効にすることでうまく動作しないとユーザが不満を延べたのであれ"
-"ば、それはウィンドウ・マネージャを壊すように設定した「ユーザの」責任であると"
-"伝え、このオプションを TRUE にすべきと言ってあげてください。あるいは、ユーザ"
-"の要求による「バグ」とつきあって生きていくよう言ってあげてください。"
+"ページャーからの特別なメッセージによって前面に出すことができます。このオプ"
+"ションは click-to-focus モードでは現在、無効になっています。raise_on_click "
+"が FALSE の時にウィンドウを前面に出すこれらの方法には、アプリケーションから"
+"ウィンドウの前面への移動をプログラム中で要求することは含まれていません。その"
+"ような要求は要求の理由を問わず無視されます。もしアプリケーションの開発者であ"
+"れば、この設定を無効にすることでうまく動作しないとユーザーが不満を延べたので"
+"あれば、それはウィンドウ・マネージャーを壊すように設定した「ユーザーの」責任"
+"であると伝え、このオプションを TRUE にすべきと言ってあげてください。あるい"
+"は、ユーザーの要求による「バグ」とつきあって生きていくよう言ってあげてくださ"
+"い。"
 
 #: ../src/metacity.schemas.in.in.h:31
 msgid ""
@@ -1112,10 +1113,10 @@ msgid ""
 "which gives a more consistent user interface, provided one does not need to "
 "run any misbehaving applications."
 msgstr ""
-"いくつかのアプリケーションではウィンドウ・マネージャの間違った動きや機能の結"
-"果、仕様を無視します。このオプションは Metacity を厳格に正しいモードにし、さ"
-"らに一貫したユーザ・インタフェースを提供することで、何かおかしな動きをするア"
-"プリケーションを実行することがないようにします。"
+"いくつかのアプリケーションではウィンドウ・マネージャーの間違った動きや機能の"
+"結果、仕様を無視します。このオプションは Metacity を厳格に正しいモードにし、"
+"さらに一貫したユーザー・インターフェースを提供することで、何かおかしな動きを"
+"するアプリケーションを実行することがないようにします。"
 
 #: ../src/metacity.schemas.in.in.h:32
 msgid "System Bell is Audible"
@@ -1291,7 +1292,7 @@ msgid ""
 "given focus."
 msgstr ""
 "このオプションを使い、新しく生成したウィンドウに対して、どのようにフォーカス"
-"を与えるかを制御します。設定可能なオプション: \"smart\" (ユーザが定義した"
+"を与えるかを制御します。設定可能なオプション: \"smart\" (ユーザーが定義した"
 "フォーカス・モードを適用します)、\"strict\" (端末から起動したアプリのウィンド"
 "ウにはフォーカスを与えないようにします)"
 
@@ -1302,8 +1303,8 @@ msgid ""
 "environments."
 msgstr ""
 "アプリケーションもしくはシステムが 'ベル' や 'ビープ' を鳴らしたときに、視覚"
-"的に通知するようにします。難聴のユーザや騒々しい環境で作業するユーザには便利"
-"です。"
+"的に通知するようにします。難聴のユーザーや騒々しい環境で作業するユーザーには"
+"便利です。"
 
 #: ../src/metacity.schemas.in.in.h:49
 msgid "Use standard system font in window titles"
@@ -1315,7 +1316,7 @@ msgstr "視覚的なベルの種類"
 
 #: ../src/metacity.schemas.in.in.h:51
 msgid "Whether raising should be a side-effect of other user interactions"
-msgstr "他のユーザ操作による副作用としてウィンドウを前面に出すかどうか"
+msgstr "他のユーザー操作による副作用としてウィンドウを前面に出すかどうか"
 
 #: ../src/metacity.schemas.in.in.h:52
 msgid "Whether to resize with the right button"
@@ -1825,7 +1826,8 @@ msgstr ""
 #, c-format
 msgid ""
 "User-defined constants must begin with a capital letter; \"%s\" does not"
-msgstr "ユーザ定義の定数は大文字で始まらなければなりません; \"%s\" は違います"
+msgstr ""
+"ユーザー定義の定数は大文字で始まらなければなりません; \"%s\" は違います"
 
 #: ../src/ui/theme.c:5513 ../src/ui/theme.c:5575 ../src/ui/theme.c:5638
 #, c-format
@@ -1895,8 +1897,8 @@ msgstr "角度は 0.0 から 360.0 の間でなければなりませんが、%g 
 #, c-format
 msgid "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g\n"
 msgstr ""
-"アルファ値は 0.0 (不可視)と 1.0 (完全に不透明) の間でなければなりません"
-"が、%g でした\n"
+"アルファ値は 0.0 (不可視)と 1.0 (完全に不透明) の間でなければなりませんが、%"
+"g でした\n"
 
 #: ../src/ui/theme-parser.c:791
 #, c-format
@@ -2356,7 +2358,7 @@ msgid ""
 "frame)\n"
 msgstr ""
 "%d フレームをクライアント側で %g秒 (1フレームにつき %gミリ秒)、実時間ではX"
-"サーバのリソースを含めて %g秒 (1フレームにつき %gミリ秒)で描画しました\n"
+"サーバーのリソースを含めて %g秒 (1フレームにつき %gミリ秒)で描画しました\n"
 
 #: ../src/ui/theme-viewer.c:1246
 msgid "position expression test returned TRUE but set error"
@@ -2518,9 +2520,9 @@ msgstr "%d個の座標式を %g秒 (平均 %g秒) で解析しました\n"
 #~ "通常、いろいろな操作 (例: クライアントの領域をクリックしたり、ウィンドウの"
 #~ "移動や大きさの変更など) はその副作用としてウィンドウを前面に出します。この"
 #~ "オプションを FALSE にすると、これの効果を強制的に無効にします。すなわち、"
-#~ "ユーザ操作とウィンドウを前面に出す機能を切り離して、アプリケーションが要求"
-#~ "する前面に出す機能を無視するようになります。詳細は http://bugzilla.gnome."
-#~ "org/show_bug.cgi?id=445447#c6 を参照してください。"
+#~ "ユーザー操作とウィンドウを前面に出す機能を切り離して、アプリケーションが要"
+#~ "求する前面に出す機能を無視するようになります。詳細は http://bugzilla."
+#~ "gnome.org/show_bug.cgi?id=445447#c6 を参照してください。"
 
 #~ msgid ""
 #~ "The keybinding that switches to the workspace above the current "
@@ -2759,11 +2761,11 @@ msgstr "%d個の座標式を %g秒 (平均 %g秒) で解析しました\n"
 #~ "this action."
 #~ msgstr ""
 #~ "ウィンドウメニューをアクティブにするために使うキーバインドを指定します。"
-#~ "フォーマットは \"&lt;Control&gt;a\" あるいは \"&lt;Shift&gt;&lt;Alt&gt;"
-#~ "F1\" のようにします。パーサは完全に自由で大文字や小文字を許可します。そし"
-#~ "て \"&lt;Ctl&gt;\" や \"&lt;Ctrl&gt;\" のような省略もできます。もし特別な"
-#~ "文字 \"disabled\" をオプションに設定した場合は、この動作のキーバインドはな"
-#~ "くなります。"
+#~ "フォーマットは \"&lt;Control&gt;a\" あるいは \"&lt;Shift&gt;&lt;Alt&gt;F1"
+#~ "\" のようにします。パーサは完全に自由で大文字や小文字を許可します。そして "
+#~ "\"&lt;Ctl&gt;\" や \"&lt;Ctrl&gt;\" のような省略もできます。もし特別な文"
+#~ "字 \"disabled\" をオプションに設定した場合は、この動作のキーバインドはなく"
+#~ "なります。"
 
 #~ msgid ""
 #~ "The keybinding used to enter \"move mode\" and begin moving a window "
@@ -3335,11 +3337,11 @@ msgstr "%d個の座標式を %g秒 (平均 %g秒) で解析しました\n"
 #~ "this action."
 #~ msgstr ""
 #~ "シェード/非シェードの状態を切り替えるために使うキーバインドを指定します。"
-#~ "フォーマットは \"&lt;Control&gt;a\" あるいは \"&lt;Shift&gt;&lt;Alt&gt;"
-#~ "F1\" のようにします。パーサは完全に自由で大文字や小文字を許可します。そし"
-#~ "て \"&lt;Ctl&gt;\" や \"&lt;Ctrl&gt;\" のような省略もできます。もし特別な"
-#~ "文字 \"disabled\" をオプションに設定した場合は、この動作のキーバインドはな"
-#~ "くなります。"
+#~ "フォーマットは \"&lt;Control&gt;a\" あるいは \"&lt;Shift&gt;&lt;Alt&gt;F1"
+#~ "\" のようにします。パーサは完全に自由で大文字や小文字を許可します。そして "
+#~ "\"&lt;Ctl&gt;\" や \"&lt;Ctrl&gt;\" のような省略もできます。もし特別な文"
+#~ "字 \"disabled\" をオプションに設定した場合は、この動作のキーバインドはなく"
+#~ "なります。"
 
 #~ msgid ""
 #~ "The keybinding used to toggle whether the window is on all workspaces or "
@@ -3380,11 +3382,11 @@ msgstr "%d個の座標式を %g秒 (平均 %g秒) で解析しました\n"
 #~ "no keybinding for this action."
 #~ msgstr ""
 #~ "パネルの \"コマンドを実行\" ダイアログを表示するキーバインドを指定します。"
-#~ "フォーマットは \"&lt;Control&gt;a\" あるいは \"&lt;Shift&gt;&lt;Alt&gt;"
-#~ "F1\" のようにします。パーサは完全に自由で大文字や小文字を許可します。そし"
-#~ "て \"&lt;Ctl&gt;\" や \"&lt;Ctrl&gt;\" のような省略もできます。もし特別な"
-#~ "文字 \"disabled\" をオプションに設定した場合は、この動作のキーバインドはな"
-#~ "くなります。"
+#~ "フォーマットは \"&lt;Control&gt;a\" あるいは \"&lt;Shift&gt;&lt;Alt&gt;F1"
+#~ "\" のようにします。パーサは完全に自由で大文字や小文字を許可します。そして "
+#~ "\"&lt;Ctl&gt;\" や \"&lt;Ctrl&gt;\" のような省略もできます。もし特別な文"
+#~ "字 \"disabled\" をオプションに設定した場合は、この動作のキーバインドはなく"
+#~ "なります。"
 
 #~ msgid ""
 #~ "The keybinding which invokes a terminal. The format looks like \"&lt;"
@@ -3494,10 +3496,10 @@ msgstr "%d個の座標式を %g秒 (平均 %g秒) で解析しました\n"
 
 #~ msgid ""
 #~ "This keybinding moves a window into the east (right) side of the screen. "
-#~ "The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;"
-#~ "F1\". The parser is fairly liberal and allows lower or upper case, and "
-#~ "also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you "
-#~ "set the option to the special string \"disabled\", then there will be no "
+#~ "The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1"
+#~ "\". The parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
 #~ "keybinding for this action."
 #~ msgstr ""
 #~ "ウィンドウを画面の右側へ移動する際のキーバインドを指定します。フォーマット"
@@ -3578,10 +3580,10 @@ msgstr "%d個の座標式を %g秒 (平均 %g秒) で解析しました\n"
 
 #~ msgid ""
 #~ "This keybinding moves a window into the west (left) side of the screen. "
-#~ "The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;"
-#~ "F1\". The parser is fairly liberal and allows lower or upper case, and "
-#~ "also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you "
-#~ "set the option to the special string \"disabled\", then there will be no "
+#~ "The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1"
+#~ "\". The parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
+#~ "the option to the special string \"disabled\", then there will be no "
 #~ "keybinding for this action."
 #~ msgstr ""
 #~ "ウィンドウを画面の左側へ移動する際のキーバインドを指定します。フォーマット"
