@@ -698,7 +698,7 @@ msgstr "Capturar imagem da tela de uma janela"
 
 #: ../src/include/all-keybindings.h:240
 msgid "Launch Terminal"
-msgstr "Terminal de Lançamento"
+msgstr "Lançar terminal"
 
 #: ../src/include/all-keybindings.h:255
 msgid "Activate the window menu"
