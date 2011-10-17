@@ -13,9 +13,9 @@ msgstr ""
 "Project-Id-Version: metacity master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-10-16 16:14+0000\n"
-"PO-Revision-Date: 2011-10-17 03:55+0900\n"
-"Last-Translator: OKANO Takayoshi <kano@na.rim.or.jp>\n"
+"POT-Creation-Date: 2011-10-17 00:29+0000\n"
+"PO-Revision-Date: 2011-10-18 00:45+0900\n"
+"Last-Translator: Jiro Matsuzawa <jmatsuzawa@src.gnome.org>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -102,7 +102,7 @@ msgstr ""
 #: ../src/core/errors.c:279
 #, c-format
 msgid "Fatal IO error %d (%s) on display '%s'.\n"
-msgstr "致命的なIOエラー %d (%s) - ディスプレイ '%s' が発生しました。\n"
+msgstr "ディスプレイ '%3$s' で致命的なIOエラー %1$d (%2$s) が発生しました。\n"
 
 #: ../src/core/keybindings.c:729
 #, c-format
@@ -259,7 +259,8 @@ msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
 "modifier\n"
 msgstr ""
-"GConf の \"%s\" はマウス・ボタンの修飾キーとして妥当な値ではありません\n"
+"設定データベース中の \"%s\" はマウスボタンの修飾キーとして妥当な値ではありま"
+"せん\n"
 
 #: ../src/core/prefs.c:1788
 #, c-format
@@ -277,8 +278,7 @@ msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
 "\"%s\"\n"
 msgstr ""
-"設定データベースで発見した \"%s\" はキーバインド \"%s\" に有効な値ではありま"
-"せん\n"
+"設定データベース中の \"%s\" はキーバインド \"%s\" に有効な値ではありません\n"
 
 #: ../src/core/prefs.c:2542
 #, c-format
@@ -341,7 +341,7 @@ msgid ""
 msgstr ""
 "フォーマットは \"<Control>a\" あるいは \"<Shift><Alt>F1\" のようにします。\n"
 "\n"
-"パーサはとてもに寛容で大文字や小文字を許可します。そして \"<Ctl>\" や "
+"パーサーはとても寛容で大文字や小文字を許可します。そして \"<Ctl>\" や "
 "\"<Ctrl>\" のような省略もできます。もし特別な文字 \"disabled\" をオプションに"
 "設定した場合は、この動作のキーバインドはなくなります。"
 
@@ -359,7 +359,7 @@ msgid ""
 msgstr ""
 "フォーマットは \"<Control>a\" あるいは \"<Shift><Alt>F1\" のようにします。\n"
 "\n"
-"パーサはとてもに寛容で大文字や小文字を許可します。そして \"<Ctl>\" や "
+"パーサーはとても寛容で大文字や小文字を許可します。そして \"<Ctl>\" や "
 "\"<Ctrl>\" のような省略もできます。もし特別な文字 \"disabled\" をオプションに"
 "設定した場合は、この動作のキーバインドはなくなります。\n"
 "\n"
@@ -375,7 +375,7 @@ msgstr "ディレクトリ '%s' を作成できませんでした : %s\n"
 #, c-format
 msgid "Could not open session file '%s' for writing: %s\n"
 msgstr ""
-"書き込みのためのセッションファイル '%s' をオープンできませんでした: %s\n"
+"セッションファイル '%s' に書きこもうとオープンしましたが失敗しました: %s\n"
 
 #: ../src/core/session.c:1000
 #, c-format
@@ -395,8 +395,7 @@ msgstr "保存されたセッションファイルの解析に失敗しました
 #: ../src/core/session.c:1184
 #, c-format
 msgid "<metacity_session> attribute seen but we already have the session ID"
-msgstr ""
-"<metacity_session> 属性は見られますが、すでにセッションIDを持っています"
+msgstr "<metacity_session> 属性がありますが、すでにセッションIDを持っています"
 
 #: ../src/core/session.c:1197 ../src/core/session.c:1272
 #: ../src/core/session.c:1304 ../src/core/session.c:1376
@@ -473,8 +472,8 @@ msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
 "window as specified in the ICCCM.\n"
 msgstr ""
-"ウィンドウ %s は ICCCM で指定されてたような WM_CLIENT_LEADER ウィンドウの代わ"
-"りに自分自身で SM_CLIENT_ID を設定しています\n"
+"ウィンドウ %s は ICCCM で指定されていたような WM_CLIENT_LEADER ウィンドウの代"
+"わりに自分自身で SM_CLIENT_ID を設定しています\n"
 
 #. We ignore mwm_has_resize_func because WM_NORMAL_HINTS is the
 #. * authoritative source for that info. Some apps such as mplayer or
@@ -1178,10 +1177,10 @@ msgid ""
 msgstr ""
 "/apps/metacity/keybinding_commands に対応する数字のコマンドを実行するキーバイ"
 "ンドを指定します。フォーマットは \"&lt;Control&gt;a\" や \"&lt;Shift&gt;&lt;"
-"Alt&gt;F1\" のようにします。パーサは完全に自由で大文字や小文字を許可します。"
-"そして \"&lt;Ctl&gt;\" や \"&lt;Ctrl&gt;\" のような省略もできます。もし特別な"
-"文字 \"disabled\" をオプションに設定した場合は、この動作のキーバインドはなく"
-"なります。"
+"Alt&gt;F1\" のようにします。パーサーはとても寛容で大文字や小文字を許可しま"
+"す。そして \"&lt;Ctl&gt;\" や \"&lt;Ctrl&gt;\" のような省略もできます。もし特"
+"別な文字 \"disabled\" をオプションに設定した場合は、この動作のキーバインドは"
+"なくなります。"
 
 #: ../src/metacity.schemas.in.in.h:38
 msgid "The name of a workspace."
@@ -2198,7 +2197,7 @@ msgstr "エレメント <%s> の内側にテキストは許可されません"
 #: ../src/ui/theme-parser.c:3783
 #, c-format
 msgid "<%s> specified twice for this theme"
-msgstr "このテーマで <%s> が二回指定しました"
+msgstr "このテーマで <%s> を二回指定しました"
 
 #: ../src/ui/theme-parser.c:4051
 #, c-format
