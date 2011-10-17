@@ -13,9 +13,9 @@ msgstr ""
 "Project-Id-Version: metacity master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-10-07 14:55+0000\n"
-"PO-Revision-Date: 2011-10-16 16:37+0900\n"
-"Last-Translator: Jiro Matsuzawa <jmatsuzawa@src.gnome.org>\n"
+"POT-Creation-Date: 2011-10-16 16:14+0000\n"
+"PO-Revision-Date: 2011-10-17 03:55+0900\n"
+"Last-Translator: OKANO Takayoshi <kano@na.rim.or.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1146,7 +1146,7 @@ msgid ""
 "that correspond to these commands. Pressing the keybinding for run_command_N "
 "will execute command_N."
 msgstr ""
-"/apps/metacity/global_keybindings/runs_command_N キーは、これらのコマンドに対"
+"/apps/metacity/global_keybindings/run_command_N キーは、これらのコマンドに対"
 "応するキーバインドを定義します。run_command_N のキーバインドを押すとcommand_N"
 "が実行されます。"
 
@@ -1155,8 +1155,8 @@ msgid ""
 "The /apps/metacity/global_keybindings/run_command_screenshot key defines a "
 "keybinding which causes the command specified by this setting to be invoked."
 msgstr ""
-"/apps/metacity/global_keybindings/runs_command_screenshot キーは。この設定で"
-"実行するよう指定されたコマンドに対応するキーバインドを定義します。"
+"/apps/metacity/global_keybindings/run_command_screenshot キーは、この設定で実"
+"行するよう指定されたコマンドに対応するキーバインドを定義します。"
 
 #: ../src/metacity.schemas.in.in.h:36
 msgid ""
@@ -1164,7 +1164,7 @@ msgid ""
 "defines a keybinding which causes the command specified by this setting to "
 "be invoked."
 msgstr ""
-"/apps/metacity/global_keybindings/runs_command_window_screenshot キーは、この"
+"/apps/metacity/global_keybindings/run_command_window_screenshot キーは、この"
 "設定で実行するよう指定されたコマンドに対応するキーバインドを定義します。"
 
 #: ../src/metacity.schemas.in.in.h:37
@@ -1677,7 +1677,7 @@ msgstr ""
 #: ../src/ui/theme.c:1331
 #, c-format
 msgid "Could not parse shade factor \"%s\" in shaded color"
-msgstr "シェードカラーのシェード係数 \"%s\" をパスできませんでした"
+msgstr "シェードカラーのシェード係数 \"%s\" を解析できませんでした"
 
 #: ../src/ui/theme.c:1341
 #, c-format
