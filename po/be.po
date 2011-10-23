@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity.master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-04 19:14+0300\n"
-"PO-Revision-Date: 2011-09-04 19:15+0300\n"
+"POT-Creation-Date: 2011-10-24 01:34+0300\n"
+"PO-Revision-Date: 2011-10-24 01:34+0300\n"
 "Last-Translator: Ігар Грачышка <ihar.hrachyshka@gmail.com>\n"
 "Language-Team: Belarusian <i18n-bel-gnome@googlegroups.com>\n"
 "Language: be\n"
@@ -2197,116 +2197,3 @@ msgstr ""
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr ""
-
-#~ msgid ""
-#~ "Another compositing manager is already running on screen %i on display "
-#~ "\"%s\"."
-#~ msgstr ""
-#~ "Іншы кампазітны кіраўнік вокнаў ужо абслугоўвае экран %i дысплея \"%s\"."
-
-#~ msgid "Switch to workspace on the left of the current workspace"
-#~ msgstr "Перайсці ў прастору працы злева ад дзейнай"
-
-#~ msgid "Switch to workspace on the right of the current workspace"
-#~ msgstr "Перайсці ў прастору працы справа ад дзейнай"
-
-#~ msgid "Switch to workspace above the current workspace"
-#~ msgstr "Перайсці ў прастору працы зверху ад дзейнай"
-
-#~ msgid "Switch to workspace below the current workspace"
-#~ msgstr "Перайсці ў прастору працы знізу ад дзейнай"
-
-#~ msgid "Move between windows of an application, using a popup window"
-#~ msgstr "Перамяшчацца паміж вокнамі праграмы з дапамогай выплыўнога акенца"
-
-#~ msgid ""
-#~ "Move backward between windows of an application, using a popup window"
-#~ msgstr ""
-#~ "Перамяшчацца паміж вокнамі праграмы ў адваротным кірунку з дапамогай "
-#~ "выплыўнога акенца"
-
-#~ msgid "Move between windows, using a popup window"
-#~ msgstr "Перамяшчацца паміж вокнамі з дапамогай выплыўнога акенца"
-
-#~ msgid "Move backward between windows, using a popup window"
-#~ msgstr ""
-#~ "Перамяшчацца паміж вокнамі ў адваротным кірунку з дапамогай выплыўнога "
-#~ "акенца"
-
-#~ msgid "Move between panels and the desktop, using a popup window"
-#~ msgstr "Перамяшчацца паміж панэлямі і сталом з дапамогай выплыўнога акенца"
-
-#~ msgid "Move backward between panels and the desktop, using a popup window"
-#~ msgstr ""
-#~ "Перамяшчацца паміж панэлямі і сталом у адваротным кірунку з дапамогай "
-#~ "выплыўнога акенца"
-
-#~ msgid "Move backward between windows of an application immediately"
-#~ msgstr "Імгненна перамяшчацца паміж вокнамі праграмы ў адваротным кірунку"
-
-#~ msgid "Move between windows immediately"
-#~ msgstr "Імгненна перамяшчацца паміж вокнамі"
-
-#~ msgid "Move backward between windows immediately"
-#~ msgstr "Імгненна перамяшчацца паміж вокнамі ў адваротным кірунку"
-
-#~ msgid "Move between panels and the desktop immediately"
-#~ msgstr "Імгненна перамяшчацца паміж панэлямі і сталом"
-
-#~ msgid "Move backward between panels and the desktop immediately"
-#~ msgstr "Імгненна перамяшчацца паміж панэлямі і сталом у адваротным кірунку"
-
-#~ msgid "Show the panel's \"Run Application\" dialog box"
-#~ msgstr "Паказаць дыялогавае акенца \"Запуск праграмы\""
-
-#~ msgid "Start or stop recording the session"
-#~ msgstr "Пачаць або спыніць запіс сеанса"
-
-#~ msgid "Toggle whether a window will always be visible over other windows"
-#~ msgstr "Перамяніць, ці будзе акно заўсёды ўзнятае над астатнімі"
-
-#~ msgid "Move window to north (top) side of screen"
-#~ msgstr "Перамясціць акно да верхняга берага экрана"
-
-#~ msgid "Application is not responding."
-#~ msgstr "Праграма не адказвае на запыты."
-
-#~ msgid "Comma-separated list of compositor plugins"
-#~ msgstr "Спіс плугінаў кампазітнага вываду, падзеленых коскамі"
-
-#~ msgid "GConf key %s is already in use and can't be used to override %s\n"
-#~ msgstr ""
-#~ "GConf-ключ %s ужо выкарыстоўваецца і не можа быць ужытым для заслоны "
-#~ "значэння %s\n"
-
-#~ msgid "Can't override GConf key, %s not found\n"
-#~ msgstr "Не ўдалося засланіць значэнне GConf-ключа, ключ %s не знойдзены\n"
-
-#~ msgid "Mutter"
-#~ msgstr "Mutter"
-
-#~ msgid "WM_TRANSIENT_FOR window 0x%lx for %s would create loop.\n"
-#~ msgstr "WM_TRANSIENT_FOR акно 0x%lx для %s стварыла б цыкл.\n"
-
-#~ msgid "Attach modal dialogs"
-#~ msgstr "Прычапляць мадальныя дыялогавыя акенцы"
-
-#~ msgid ""
-#~ "Determines whether hidden windows (i.e., minimized windows and windows on "
-#~ "other workspaces than the current one) should be kept alive."
-#~ msgstr ""
-#~ "Вызначае, ці трэба захоўваць дзейнымі схаваныя вокны (напрыклад, "
-#~ "мінімалізаваныя або вокны з іншых прастор працы)."
-
-#~ msgid ""
-#~ "Determines whether workspace switching should happen for windows on all "
-#~ "monitors or only for windows on the primary monitor."
-#~ msgstr ""
-#~ "Вызначае, ці трэба пераменьваць прасторы працы для вокнаў на ўсіх "
-#~ "маніторах або толькі на першым."
-
-#~ msgid "Live Hidden Windows"
-#~ msgstr "Дзейныя схаваныя вокны"
-
-#~ msgid "Workspaces only on primary"
-#~ msgstr "Працоўныя прасторы толькі на галоўным экране"
