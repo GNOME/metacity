@@ -1,56 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<KeyListEntries group="system" _name="Windows" wm_name="Metacity" package="metacity">
+<KeyListEntries schema="org.gnome.desktop.wm.keybindings"
+                group="system"
+                _name="Windows"
+                wm_name="Metacity"
+                package="gsettings-desktop-schemas">
 
-	<KeyListEntry
-	name="/apps/metacity/window_keybindings/activate_window_menu" />
+	<KeyListEntry name="activate-window-menu" _description="Activate the window menu"/>
 
-	<KeyListEntry
-	name="/apps/metacity/window_keybindings/toggle_fullscreen" />
+	<KeyListEntry name="toggle-fullscreen" _description="Toggle fullscreen mode"/>
 
-	<KeyListEntry
-	name="/apps/metacity/window_keybindings/toggle_maximized" />
+	<KeyListEntry name="toggle-maximized" _description="Toggle maximization state"/>
 
-	<KeyListEntry
-	name="/apps/metacity/window_keybindings/maximize" />
+	<KeyListEntry name="maximize" _description="Maximize window"/>
 
-	<KeyListEntry
-	name="/apps/metacity/window_keybindings/unmaximize" />
+	<KeyListEntry name="unmaximize" _description="Restore window"/>
 
-	<KeyListEntry
-	name="/apps/metacity/window_keybindings/toggle_shaded" />
+	<KeyListEntry name="toggle-shaded" _description="Toggle shaded state"/>
 
-	<KeyListEntry
-	name="/apps/metacity/window_keybindings/close" />
+	<KeyListEntry name="close" _description="Close window"/>
 
-	<KeyListEntry
-	name="/apps/metacity/window_keybindings/minimize" />
+	<KeyListEntry name="minimize" _description="Minimize window"/>
 
-	<KeyListEntry
-	name="/apps/metacity/window_keybindings/begin_move" />
+	<KeyListEntry name="begin-move" _description="Move window"/>
 
-	<KeyListEntry
-	name="/apps/metacity/window_keybindings/begin_resize" />
+	<KeyListEntry name="begin-resize" _description="Resize window"/>
 
-	<KeyListEntry
-	name="/apps/metacity/window_keybindings/toggle_on_all_workspaces"
-	value="1"
-	key="/apps/metacity/general/num_workspaces"
-	comparison="gt" />
+	<KeyListEntry name="toggle-on-all-workspaces"
+	              _description="Toggle window on all workspaces or one"/>
 
-	<KeyListEntry
-	name="/apps/metacity/window_keybindings/raise_or_lower" />
+	<KeyListEntry name="raise-or-lower" _description="Raise window if covered, otherwise lower it"/>
 
-	<KeyListEntry
-	name="/apps/metacity/window_keybindings/raise" />
+	<KeyListEntry name="raise" _description="Raise window above other windows"/>
 
-	<KeyListEntry
-	name="/apps/metacity/window_keybindings/lower" />
+	<KeyListEntry name="lower" _description="Lower window below other windows"/>
 
-	<KeyListEntry
-	name="/apps/metacity/window_keybindings/maximize_vertically" />
+	<KeyListEntry name="maximize-vertically" _description="Maximize window vertically"/>
 
-	<KeyListEntry
-	name="/apps/metacity/window_keybindings/maximize_horizontally" />
+	<KeyListEntry name="maximize-horizontally" _description="Maximize window horizontally"/>
 
 </KeyListEntries>
 

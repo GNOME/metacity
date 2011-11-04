@@ -136,14 +136,12 @@ libmetacityinclude_HEADERS =			\
 metacity_theme_viewer_SOURCES=  \
 	ui/theme-viewer.c
 
-schema_bindings_SOURCES =       \
-        core/schema-bindings.c			\
-	metacity.schemas.in.in
+gsettings_SCHEMAS = org.gnome.metacity.gschema.xml
+@INTLTOOL_XML_NOMERGE_RULE@
+@GSETTINGS_RULES@
 
-schema_bindings_LDADD = @METACITY_LIBS@
-metacity.schemas.in: schema_bindings ${srcdir}/metacity.schemas.in.in
-	@echo Generating keybinding schemas... ${srcdir}/metacity.schemas.in.in
-	$(AM_V_GEN)${builddir}/schema_bindings ${srcdir}/metacity.schemas.in.in ${builddir}/metacity.schemas.in
+convertdir = $(datadir)/GConf/gsettings/
+convert_DATA = $(srcdir)/metacity-schemas.convert
 
 bin_PROGRAMS=metacity metacity-theme-viewer
 
@@ -155,7 +153,7 @@ testboxes_SOURCES=include/util.h core/util.c include/boxes.h core/boxes.c core/t
 testgradient_SOURCES=ui/gradient.h ui/gradient.c ui/testgradient.c
 testasyncgetprop_SOURCES=core/async-getprop.h core/async-getprop.c core/testasyncgetprop.c
 
-noinst_PROGRAMS=testboxes testgradient testasyncgetprop schema_bindings
+noinst_PROGRAMS=testboxes testgradient testasyncgetprop
 
 testboxes_LDADD= @METACITY_LIBS@
 testgradient_LDADD= @METACITY_LIBS@
@@ -173,17 +171,9 @@ wmproperties_in_files=metacity-wm.desktop.in
 wmproperties_files=$(wmproperties_in_files:.desktop.in=.desktop)
 wmproperties_DATA = $(wmproperties_files)
 
-schemadir   = @GCONF_SCHEMA_FILE_DIR@
-schema_in_files = metacity.schemas.in
-schema_DATA = $(schema_in_files:.schemas.in=.schemas)
-
-@INTLTOOL_XML_NOMERGE_RULE@
-
 xmldir       = @GNOME_KEYBINDINGS_KEYSDIR@
 xml_in_files = \
-	50-metacity-launchers.xml.in	\
 	50-metacity-navigation.xml.in	\
-	50-metacity-screenshot.xml.in	\
 	50-metacity-system.xml.in	\
 	50-metacity-windows.xml.in
 
@@ -191,20 +181,13 @@ xml_DATA     = $(xml_in_files:.xml.in=.xml)
 
 @INTLTOOL_SCHEMAS_RULE@
 
-if GCONF_SCHEMAS_INSTALL
-install-data-local:
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schema_DATA)
-else
-install-data-local:
-endif
-
 IMAGES=stock_maximize.png stock_minimize.png stock_delete.png
 VARIABLES=stock_maximize_data $(srcdir)/stock_maximize.png \
           stock_minimize_data $(srcdir)/stock_minimize.png \
           stock_delete_data $(srcdir)/stock_delete.png
 
 BUILT_SOURCES = inlinepixbufs.h
-CLEANFILES = inlinepixbufs.h metacity.desktop metacity-wm.desktop metacity.schemas metacity.schemas.in 50-metacity-launchers.xml 50-metacity-navigation.xml 50-metacity-screenshot.xml 50-metacity-system.xml 50-metacity-windows.xml
+CLEANFILES = inlinepixbufs.h metacity.desktop metacity-wm.desktop org.gnome.metacity.gschema.xml 50-metacity-launchers.xml 50-metacity-navigation.xml 50-metacity-screenshot.xml 50-metacity-system.xml 50-metacity-windows.xml
 
 inlinepixbufs.h: $(IMAGES)
 	$(AM_V_GEN)$(GDK_PIXBUF_CSOURCE) --raw --build-list $(VARIABLES) >$(srcdir)/inlinepixbufs.h
@@ -213,12 +196,12 @@ pkgconfigdir = $(libdir)/pkgconfig
 
 pkgconfig_DATA = libmetacity-private.pc
 
-EXTRA_DIST=$(desktopfiles_files) 	\
-	$(wmproperties_files)         \
-	$(IMAGES) $(schema_DATA) 	\
-	$(desktopfiles_in_files)	\
-	$(wmproperties_in_files)	\
-	$(schema_in_files)		\
-	$(xml_in_files)			\
+EXTRA_DIST=$(desktopfiles_files)	 	\
+	$(wmproperties_files)			\
+	$(IMAGES)		 		\
+	$(desktopfiles_in_files)		\
+	$(wmproperties_in_files)		\
+	org.gnome.metacity.gschema.xml.in	\
+	$(xml_in_files)				\
 	libmetacity-private.pc.in
 

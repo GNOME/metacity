@@ -7,14 +7,14 @@ To turn the compositor on initially, you need to pass --enable-compositor to
 the configure script. This will introduce a dependence on libcm, which you
 can get from <URL:http://ftp.gnome.org/pub/GNOME/sources/libcm/>.
 
-When Metacity is compiled, you will need to turn the compositor on in gconf
+When Metacity is compiled, you will need to turn the compositor on in gsettings
 for it to have any effect. You will find the boolean switch at
 
-   /apps/metacity/general/compositing_manager
+   org.gnome.metacity compositing-manager
 
 When that's done, you can set some environment variables before you launch
 Metacity to influence how the compositor works. These will eventually become
-configuration options or gconf options when they grow up. Define them to any
+configuration options or gsettings options when they grow up. Define them to any
 value to turn them on; leave them undefined to turn them off. Currently the
 options you can set are:
 

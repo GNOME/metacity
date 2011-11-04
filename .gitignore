@@ -177,8 +177,8 @@ src/metacity
 src/metacity-theme-viewer
 src/metacity-wm.desktop
 src/metacity.desktop
-src/metacity.schemas
-src/metacity.schemas.in
+src/org.gnome.metacity.gschema.valid
+src/org.gnome.metacity.gschema.xml
 src/place.o
 src/prefs.o
 src/resizepopup.o

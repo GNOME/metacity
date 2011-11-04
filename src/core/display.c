@@ -1704,7 +1704,7 @@ event_callback (XEvent   *event,
                * in application-based mode, and the different
                * app is not a dock or desktop, eat the focus click.
                */
-              if (meta_prefs_get_focus_mode () == META_FOCUS_MODE_CLICK &&
+              if (meta_prefs_get_focus_mode () == G_DESKTOP_FOCUS_MODE_CLICK &&
                   meta_prefs_get_application_based () &&
                   !window->has_focus &&
                   window->type != META_WINDOW_DOCK &&
@@ -1783,8 +1783,8 @@ event_callback (XEvent   *event,
         {
           switch (meta_prefs_get_focus_mode ())
             {
-            case META_FOCUS_MODE_SLOPPY:
-            case META_FOCUS_MODE_MOUSE:
+            case G_DESKTOP_FOCUS_MODE_SLOPPY:
+            case G_DESKTOP_FOCUS_MODE_MOUSE:
               display->mouse_mode = TRUE;
               if (window->type != META_WINDOW_DOCK &&
                   window->type != META_WINDOW_DESKTOP)
@@ -1822,7 +1822,7 @@ event_callback (XEvent   *event,
                * alternative mechanism works great.
                */
               if (window->type == META_WINDOW_DESKTOP &&
-                  meta_prefs_get_focus_mode() == META_FOCUS_MODE_MOUSE &&
+                  meta_prefs_get_focus_mode() == G_DESKTOP_FOCUS_MODE_MOUSE &&
                   display->expected_focus_window != NULL)
                 {
                   meta_topic (META_DEBUG_FOCUS,
@@ -1834,7 +1834,7 @@ event_callback (XEvent   *event,
                                                           event->xcrossing.time);
                 }
               break;
-            case META_FOCUS_MODE_CLICK:
+            case G_DESKTOP_FOCUS_MODE_CLICK:
               break;
             }
           

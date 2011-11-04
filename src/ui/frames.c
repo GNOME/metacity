@@ -1259,7 +1259,7 @@ meta_frame_titlebar_event (MetaUIFrame    *frame,
   
   switch (action)
     {
-    case META_ACTION_TITLEBAR_TOGGLE_SHADE:
+    case G_DESKTOP_TITLEBAR_ACTION_TOGGLE_SHADE:
       {
         meta_core_get (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()), frame->xwindow,
                        META_CORE_GET_FRAME_FLAGS, &flags,
@@ -1279,7 +1279,7 @@ meta_frame_titlebar_event (MetaUIFrame    *frame,
       }
       break;          
       
-    case META_ACTION_TITLEBAR_TOGGLE_MAXIMIZE:
+    case G_DESKTOP_TITLEBAR_ACTION_TOGGLE_MAXIMIZE:
       {
         meta_core_get (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()), frame->xwindow,
                        META_CORE_GET_FRAME_FLAGS, &flags,
@@ -1292,7 +1292,7 @@ meta_frame_titlebar_event (MetaUIFrame    *frame,
       }
       break;
 
-    case META_ACTION_TITLEBAR_TOGGLE_MAXIMIZE_HORIZONTALLY:
+    case G_DESKTOP_TITLEBAR_ACTION_TOGGLE_MAXIMIZE_HORIZONTALLY:
       {
         meta_core_get (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()), frame->xwindow,
                        META_CORE_GET_FRAME_FLAGS, &flags,
@@ -1305,7 +1305,7 @@ meta_frame_titlebar_event (MetaUIFrame    *frame,
       }
       break;
 
-    case META_ACTION_TITLEBAR_TOGGLE_MAXIMIZE_VERTICALLY:
+    case G_DESKTOP_TITLEBAR_ACTION_TOGGLE_MAXIMIZE_VERTICALLY:
       {
         meta_core_get (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()), frame->xwindow,
                        META_CORE_GET_FRAME_FLAGS, &flags,
@@ -1318,7 +1318,7 @@ meta_frame_titlebar_event (MetaUIFrame    *frame,
       }
       break;
 
-    case META_ACTION_TITLEBAR_MINIMIZE:
+    case G_DESKTOP_TITLEBAR_ACTION_MINIMIZE:
       {
         meta_core_get (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()), frame->xwindow,
                        META_CORE_GET_FRAME_FLAGS, &flags,
@@ -1331,26 +1331,23 @@ meta_frame_titlebar_event (MetaUIFrame    *frame,
       }
       break;
 
-    case META_ACTION_TITLEBAR_NONE:
+    case G_DESKTOP_TITLEBAR_ACTION_NONE:
       /* Yaay, a sane user that doesn't use that other weird crap! */
       break;
     
-    case META_ACTION_TITLEBAR_LOWER:
+    case G_DESKTOP_TITLEBAR_ACTION_LOWER:
       meta_core_user_lower_and_unfocus (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
                                         frame->xwindow,
                                         event->time);
       break;
 
-    case META_ACTION_TITLEBAR_MENU:
+    case G_DESKTOP_TITLEBAR_ACTION_MENU:
       meta_core_show_window_menu (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
                                   frame->xwindow,
                                   event->x_root,
                                   event->y_root,
                                   event->button,
                                   event->time);
-      break;
-
-    case META_ACTION_TITLEBAR_LAST:
       break;
     }
   

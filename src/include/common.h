@@ -1,6 +1,9 @@
 /* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
 
-/* Metacity common types shared by core.h and ui.h */
+/* Metacity common types shared by core.h and ui.h
+ *
+ * PLEASE KEEP IN SYNC WITH GSETTINGS SCHEMAS!
+ */
 
 /* 
  * Copyright (C) 2001 Havoc Pennington
@@ -157,32 +160,6 @@ typedef enum
   META_CURSOR_BUSY
 
 } MetaCursor;
-
-typedef enum
-{
-  META_FOCUS_MODE_CLICK,
-  META_FOCUS_MODE_SLOPPY,
-  META_FOCUS_MODE_MOUSE
-} MetaFocusMode;
-
-typedef enum
-{
-  META_FOCUS_NEW_WINDOWS_SMART,
-  META_FOCUS_NEW_WINDOWS_STRICT
-} MetaFocusNewWindows;
-
-typedef enum
-{
-  META_ACTION_TITLEBAR_TOGGLE_SHADE,
-  META_ACTION_TITLEBAR_TOGGLE_MAXIMIZE,
-  META_ACTION_TITLEBAR_TOGGLE_MAXIMIZE_HORIZONTALLY,
-  META_ACTION_TITLEBAR_TOGGLE_MAXIMIZE_VERTICALLY,
-  META_ACTION_TITLEBAR_MINIMIZE,
-  META_ACTION_TITLEBAR_NONE,
-  META_ACTION_TITLEBAR_LOWER,
-  META_ACTION_TITLEBAR_MENU,
-  META_ACTION_TITLEBAR_LAST
-} MetaActionTitlebar;
 
 typedef enum
 {

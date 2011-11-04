@@ -1,0 +1,3 @@
+[org.gnome.metacity]
+compositing-manager = /apps/metacity/general/compositing_manager
+reduced-resources = /apps/metacity/general/reduced_resources

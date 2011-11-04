@@ -131,7 +131,7 @@ bell_flash_screen (MetaDisplay *display,
       XFreeGC (display->xdisplay, gc);
     }
 
-  if (meta_prefs_get_focus_mode () != META_FOCUS_MODE_CLICK &&
+  if (meta_prefs_get_focus_mode () != G_DESKTOP_FOCUS_MODE_CLICK &&
       !display->mouse_mode)
     meta_display_increment_focus_sentinel (display);
   XFlush (display->xdisplay);
@@ -265,13 +265,13 @@ bell_visual_notify (MetaDisplay *display,
 {
   switch (meta_prefs_get_visual_bell_type ()) 
     {
-    case META_VISUAL_BELL_FULLSCREEN_FLASH:
+    case G_DESKTOP_VISUAL_BELL_FULLSCREEN_FLASH:
       bell_flash_fullscreen (display, xkb_ev);
       break;
-    case META_VISUAL_BELL_FRAME_FLASH:
+    case G_DESKTOP_VISUAL_BELL_FRAME_FLASH:
       bell_flash_frame (display, xkb_ev); /* does nothing yet */
       break;
-    case META_VISUAL_BELL_INVALID:
+    case G_DESKTOP_VISUAL_BELL_NONE:
       /* do nothing */
       break;
     }
@@ -281,9 +281,8 @@ void
 meta_bell_notify (MetaDisplay *display, 
 		  XkbAnyEvent *xkb_ev)
 {
-  /* flash something */
-  if (meta_prefs_get_visual_bell ()) 
-    bell_visual_notify (display, xkb_ev);
+  /* flash something if appropriate */
+  bell_visual_notify (display, xkb_ev);
 
   if (meta_prefs_bell_is_audible ()) 
     {
