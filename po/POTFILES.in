@@ -1,8 +1,6 @@
 # List of source files containing translatable strings.
 # Please keep this file sorted alphabetically.
-src/50-metacity-launchers.xml.in
 src/50-metacity-navigation.xml.in
-src/50-metacity-screenshot.xml.in
 src/50-metacity-system.xml.in
 src/50-metacity-windows.xml.in
 src/core/bell.c
@@ -16,18 +14,18 @@ src/core/prefs.c
 src/core/screen.c
 src/core/session.c
 src/core/util.c
-src/core/window-props.c
 src/core/window.c
+src/core/window-props.c
 src/core/xprops.c
-src/metacity-wm.desktop.in
 src/metacity.desktop.in
+src/metacity-wm.desktop.in
 src/org.gnome.metacity.gschema.xml.in
 src/tools/metacity-message.c
 src/ui/frames.c
 src/ui/menu.c
 src/ui/metaaccellabel.c
 src/ui/resizepopup.c
+src/ui/theme.c
 src/ui/theme-parser.c
 src/ui/theme-viewer.c
-src/ui/theme.c
 
