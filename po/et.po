@@ -13,15 +13,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=metacity&component=general\n"
-"POT-Creation-Date: 2011-02-09 18:28+0000\n"
-"PO-Revision-Date: 2011-02-12 18:29+0200\n"
-"Last-Translator: Ivar Smolin <okul@linux.ee>\n"
+"product=metacity&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2011-10-23 22:34+0000\n"
+"PO-Revision-Date: 2011-03-31 00:23+0300\n"
+"Last-Translator: Mattias Põldaru <mahfiaz@gmail.com>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
+"Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: et\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Launchers"
@@ -510,62 +510,50 @@ msgstr "Tõstmine vasakpoolsele tööalale"
 msgid "Move to workspace below"
 msgstr "Tõstmine alumisele tööalale"
 
-#, fuzzy
-#| msgid "Move between windows of an application immediately"
 msgid "Switch windows of an application"
-msgstr "Rakenduse akende vahel kohenene liikumine"
+msgstr "Rakenduse akende vahel vahetamine"
 
-#, fuzzy
-#| msgid "Move between windows of an application immediately"
 msgid "Reverse switch windows of an application"
-msgstr "Rakenduse akende vahel kohenene liikumine"
+msgstr "Rakenduse akende vahetamine tagasisuunas"
 
 msgid "Switch applications"
-msgstr ""
+msgstr "Rakenduste vahetamine"
 
 msgid "Reverse switch applications"
-msgstr ""
+msgstr "Rakenduste vahetamine tagasisuunas"
 
 msgid "Switch system controls"
-msgstr ""
+msgstr "Süsteemi valitsate vahetamine"
 
 msgid "Reverse switch system controls"
-msgstr ""
+msgstr "Süsteemi valitsate vahetamine tagasisuunas"
 
-#, fuzzy
-#| msgid "Move between windows of an application immediately"
 msgid "Switch windows of an app directly"
-msgstr "Rakenduse akende vahel kohenene liikumine"
+msgstr "Rakenduse akende kohenene vahetamine"
 
-#, fuzzy
-#| msgid "Move between windows of an application immediately"
 msgid "Reverse switch windows of an app directly"
-msgstr "Rakenduse akende vahel kohenene liikumine"
+msgstr "Rakenduse akende kohenene vahetamine tagasisuunas"
 
 msgid "Switch windows directly"
-msgstr ""
+msgstr "Akende otsevahetus"
 
 msgid "Reverse switch windows directly"
-msgstr ""
+msgstr "Akende otsevahetus tagasisuunas"
 
 msgid "Switch system controls directly"
-msgstr ""
+msgstr "Süsteemi valitsate otsevahetus"
 
 msgid "Reverse switch system controls directly"
-msgstr ""
+msgstr "Süsteemi valitsate otsevahetus tagasisuunas"
 
-#, fuzzy
-#| msgid "Hide all normal windows and set focus to the desktop"
 msgid "Hide all normal windows"
-msgstr "Tavaliste akende peitmine ja töölaua fokuseerimine"
+msgstr "Tavaliste akende peitmine"
 
 msgid "Show the activities overview"
-msgstr ""
+msgstr "Tegevuste kokkuvõtte kuvamine"
 
-#, fuzzy
-#| msgid "Show the panel's main menu"
 msgid "Show the run command prompt"
-msgstr "Paneeli peamenüü näitamine"
+msgstr "Käivitamise käsurea kuvamine"
 
 msgid "Take a screenshot"
 msgstr "Kuvatõmmise võtmine"
@@ -573,8 +561,6 @@ msgstr "Kuvatõmmise võtmine"
 msgid "Take a screenshot of a window"
 msgstr "Kuvatõmmise võtmine aknast"
 
-#, fuzzy
-#| msgid "Run a terminal"
 msgid "Launch Terminal"
 msgstr "Terminali käivitamine"
 
@@ -588,7 +574,7 @@ msgid "Toggle maximization state"
 msgstr "Maksimeeritud oleku sisse- ja väljalülitamine"
 
 msgid "Toggle window always appearing on top"
-msgstr ""
+msgstr "Akna alati pealmisena ilmumise lüliti"
 
 msgid "Maximize window"
 msgstr "Akna maksimeerimine"
@@ -611,8 +597,6 @@ msgstr "Akna liigutamine"
 msgid "Resize window"
 msgstr "Akna suuruse muutmine"
 
-#, fuzzy
-#| msgid "Toggle whether window is on all workspaces or just one"
 msgid "Toggle window on all workspaces or one"
 msgstr "Akna määramine ühele või kõigile tööaladele"
 
@@ -664,10 +648,8 @@ msgstr "Akna tõstmine ühe tööala võrra ülespoole"
 msgid "Move window one workspace down"
 msgstr "Akna tõstmine ühe tööala võrra allapoole"
 
-#, fuzzy
-#| msgid "Raise window if it's covered by another window, otherwise lower it"
 msgid "Raise window if covered, otherwise lower it"
-msgstr "Akna tõstmine, kui seda katab teine aken, või taha viimine"
+msgstr "Akna tõstmine, kui seda katab teine aken, muul juhul taha viimine"
 
 msgid "Raise window above other windows"
 msgstr "Akna tõstmine teiste akende kohale"
@@ -681,45 +663,29 @@ msgstr "Akna maksimeerimine vertikaalselt"
 msgid "Maximize window horizontally"
 msgstr "Akna maksimeerimine horisontaalselt"
 
-#, fuzzy
-#| msgid "Move window to north-west (top left) corner"
 msgid "Move window to top left corner"
-msgstr "Akna tõstmine ekraani loodenurka (ülemisse vasakusse)"
+msgstr "Akna tõstmine ekraani ülemisse vasakusse nurka"
 
-#, fuzzy
-#| msgid "Move window to north-east (top right) corner"
 msgid "Move window to top right corner"
-msgstr "Akna tõstmine ekraani kirdenurka (ülemisse paremasse)"
+msgstr "Akna tõstmine ekraani ülemisse paremasse nurka"
 
-#, fuzzy
-#| msgid "Move window to south-west (bottom left) corner"
 msgid "Move window to bottom left corner"
-msgstr "Akna tõstmine ekraani edelanurka (alumisse vasakusse)"
+msgstr "Akna tõstmine ekraani alumisse vasakusse nurka"
 
-#, fuzzy
-#| msgid "Move window to south-east (bottom right) corner"
 msgid "Move window to bottom right corner"
-msgstr "Akna tõstmine ekraani kagunurka (alumisse paremasse)"
+msgstr "Akna tõstmine ekraani alumisse paremasse nurka"
 
-#, fuzzy
-#| msgid "Move window to center of screen"
 msgid "Move window to top edge of screen"
-msgstr "Akna tõstmine ekraani keskele"
+msgstr "Akna tõstmine ekraani ülemisse külge"
 
-#, fuzzy
-#| msgid "Move window to south (bottom) side of screen"
 msgid "Move window to bottom edge of screen"
-msgstr "Akna tõstmine ekraani lõunakülge (alumisse)"
+msgstr "Akna tõstmine ekraani alumisse külge"
 
-#, fuzzy
-#| msgid "Move window to east (right) side of screen"
 msgid "Move window to right side of screen"
-msgstr "Akna tõstmine ekraani idakülge (paremasse)"
+msgstr "Akna tõstmine ekraani paremasse külge"
 
-#, fuzzy
-#| msgid "Move window to west (left) side of screen"
 msgid "Move window to left side of screen"
-msgstr "Akna tõstmine ekraani läänekülge (vasakusse)"
+msgstr "Akna tõstmine ekraani vasakusse külge"
 
 msgid "Move window to center of screen"
 msgstr "Akna tõstmine ekraani keskele"
