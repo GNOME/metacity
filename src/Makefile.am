@@ -141,7 +141,7 @@ gsettings_SCHEMAS = org.gnome.metacity.gschema.xml
 @GSETTINGS_RULES@
 
 convertdir = $(datadir)/GConf/gsettings/
-convert_DATA = $(srcdir)/metacity-schemas.convert
+convert_DATA = metacity-schemas.convert
 
 bin_PROGRAMS=metacity metacity-theme-viewer
 
@@ -201,6 +201,7 @@ EXTRA_DIST=$(desktopfiles_files)	 	\
 	$(IMAGES)		 		\
 	$(desktopfiles_in_files)		\
 	$(wmproperties_in_files)		\
+	metacity-schemas.convert		\
 	org.gnome.metacity.gschema.xml.in	\
 	$(xml_in_files)				\
 	libmetacity-private.pc.in
