@@ -201,6 +201,7 @@ void meta_prefs_get_window_binding (const char          *name,
                                     unsigned int        *keysym,
                                     MetaVirtualModifier *modifiers);
 
+gboolean           meta_prefs_get_visual_bell      (void);
 gboolean           meta_prefs_bell_is_audible      (void);
 GDesktopVisualBellType meta_prefs_get_visual_bell_type (void);
 

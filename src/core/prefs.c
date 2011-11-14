@@ -80,6 +80,7 @@ static gboolean application_based = FALSE;
 static gboolean disable_workarounds = FALSE;
 static gboolean auto_raise = FALSE;
 static gboolean auto_raise_delay = 500;
+static gboolean bell_is_visible = FALSE;
 static gboolean bell_is_audible = TRUE;
 static gboolean reduced_resources = FALSE;
 static gboolean gnome_accessibility = FALSE;
@@ -286,6 +287,14 @@ static MetaBoolPreference preferences_bool[] =
         META_PREF_AUTO_RAISE,
       },
       &auto_raise,
+      FALSE,
+    },
+    {
+      { "visual-bell",
+        SCHEMA_GENERAL,
+        META_PREF_VISUAL_BELL,
+      },
+      &bell_is_visible, /* FIXME: change the name: it's confusing */
       FALSE,
     },
     {
@@ -1653,6 +1662,12 @@ void
 meta_prefs_get_button_layout (MetaButtonLayout *button_layout_p)
 {
   *button_layout_p = button_layout;
+}
+
+gboolean
+meta_prefs_get_visual_bell (void)
+{
+  return bell_is_visible;
 }
 
 gboolean
