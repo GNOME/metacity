@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-10 10:31+0100\n"
-"PO-Revision-Date: 2011-02-10 10:37+0100\n"
+"POT-Creation-Date: 2011-11-25 09:15+0100\n"
+"PO-Revision-Date: 2011-11-25 09:15+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -16,27 +16,183 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/50-metacity-launchers.xml.in.h:1
-msgid "Launchers"
-msgstr "Programstartare"
-
 #: ../src/50-metacity-navigation.xml.in.h:1
+msgid "Hide all normal windows"
+msgstr "Dölj alla normala fönster"
+
+#: ../src/50-metacity-navigation.xml.in.h:2
+msgid "Move to workspace above"
+msgstr "Flytta till arbetsyta ovanför"
+
+#: ../src/50-metacity-navigation.xml.in.h:3
+msgid "Move to workspace below"
+msgstr "Flytta till arbetsyta nedanför"
+
+#: ../src/50-metacity-navigation.xml.in.h:4
+msgid "Move to workspace left"
+msgstr "Flytta till arbetsyta till vänster"
+
+#: ../src/50-metacity-navigation.xml.in.h:5
+msgid "Move to workspace right"
+msgstr "Flytta till arbetsyta till höger"
+
+#: ../src/50-metacity-navigation.xml.in.h:6
+msgid "Move window one workspace down"
+msgstr "Flytta fönster en arbetsyta nedåt"
+
+#: ../src/50-metacity-navigation.xml.in.h:7
+msgid "Move window one workspace to the left"
+msgstr "Flytta fönster en arbetsyta åt vänster"
+
+#: ../src/50-metacity-navigation.xml.in.h:8
+msgid "Move window one workspace to the right"
+msgstr "Flytta fönster en arbetsyta åt höger"
+
+#: ../src/50-metacity-navigation.xml.in.h:9
+msgid "Move window one workspace up"
+msgstr "Flytta fönster en arbetsyta uppåt"
+
+#: ../src/50-metacity-navigation.xml.in.h:10
+msgid "Move window to workspace 1"
+msgstr "Flytta fönster till arbetsyta 1"
+
+#: ../src/50-metacity-navigation.xml.in.h:11
+msgid "Move window to workspace 2"
+msgstr "Flytta fönster till arbetsyta 2"
+
+#: ../src/50-metacity-navigation.xml.in.h:12
+msgid "Move window to workspace 3"
+msgstr "Flytta fönster till arbetsyta 3"
+
+#: ../src/50-metacity-navigation.xml.in.h:13
+msgid "Move window to workspace 4"
+msgstr "Flytta fönster till arbetsyta 4"
+
+#: ../src/50-metacity-navigation.xml.in.h:14
 msgid "Navigation"
 msgstr "Navigation"
 
-#: ../src/50-metacity-screenshot.xml.in.h:1
-msgid "Screenshots"
-msgstr "Skärmbilder"
+#: ../src/50-metacity-navigation.xml.in.h:15
+msgid "Switch applications"
+msgstr "Växla program"
+
+#: ../src/50-metacity-navigation.xml.in.h:16
+msgid "Switch system controls"
+msgstr "Växla systemkontroller"
+
+#: ../src/50-metacity-navigation.xml.in.h:17
+msgid "Switch system controls directly"
+msgstr "Växla systemkontroller direkt"
+
+#: ../src/50-metacity-navigation.xml.in.h:18
+msgid "Switch to workspace 1"
+msgstr "Växla till arbetsyta 1"
+
+#: ../src/50-metacity-navigation.xml.in.h:19
+msgid "Switch to workspace 2"
+msgstr "Växla till arbetsyta 2"
+
+#: ../src/50-metacity-navigation.xml.in.h:20
+msgid "Switch to workspace 3"
+msgstr "Växla till arbetsyta 3"
+
+#: ../src/50-metacity-navigation.xml.in.h:21
+msgid "Switch to workspace 4"
+msgstr "Växla till arbetsyta 4"
+
+#: ../src/50-metacity-navigation.xml.in.h:22
+msgid "Switch windows directly"
+msgstr "Växla fönster direkt"
+
+#: ../src/50-metacity-navigation.xml.in.h:23
+msgid "Switch windows of an app directly"
+msgstr "Växla fönster för ett program direkt"
+
+#: ../src/50-metacity-navigation.xml.in.h:24
+msgid "Switch windows of an application"
+msgstr "Växla fönster för ett program"
 
 #: ../src/50-metacity-system.xml.in.h:1
+msgid "Show the activities overview"
+msgstr "Visa aktivitetsöversikt"
+
+#: ../src/50-metacity-system.xml.in.h:2
+msgid "Show the run command prompt"
+msgstr "Visa Kör kommando-dialogen"
+
+#: ../src/50-metacity-system.xml.in.h:3
 msgid "System"
 msgstr "System"
 
 #: ../src/50-metacity-windows.xml.in.h:1
+msgid "Activate the window menu"
+msgstr "Aktivera fönstermenyn"
+
+#: ../src/50-metacity-windows.xml.in.h:2
+msgid "Close window"
+msgstr "Stäng fönster"
+
+#: ../src/50-metacity-windows.xml.in.h:3
+msgid "Lower window below other windows"
+msgstr "Sänk fönster under andra fönster"
+
+#: ../src/50-metacity-windows.xml.in.h:4
+msgid "Maximize window"
+msgstr "Maximera fönster"
+
+#: ../src/50-metacity-windows.xml.in.h:5
+msgid "Maximize window horizontally"
+msgstr "Maximera fönster horisontellt"
+
+#: ../src/50-metacity-windows.xml.in.h:6
+msgid "Maximize window vertically"
+msgstr "Maximera fönster vertikalt"
+
+#: ../src/50-metacity-windows.xml.in.h:7
+msgid "Minimize window"
+msgstr "Minimera fönster"
+
+#: ../src/50-metacity-windows.xml.in.h:8
+msgid "Move window"
+msgstr "Flytta fönster"
+
+#: ../src/50-metacity-windows.xml.in.h:9
+msgid "Raise window above other windows"
+msgstr "Höj fönstret över andra fönster"
+
+#: ../src/50-metacity-windows.xml.in.h:10
+msgid "Raise window if covered, otherwise lower it"
+msgstr "Höj fönstret om det skyms av ett annat fönster, sänk det annars"
+
+#: ../src/50-metacity-windows.xml.in.h:11
+msgid "Resize window"
+msgstr "Ändra storlek på fönster"
+
+#: ../src/50-metacity-windows.xml.in.h:12
+msgid "Restore window"
+msgstr "Återställ fönster"
+
+#: ../src/50-metacity-windows.xml.in.h:13
+msgid "Toggle fullscreen mode"
+msgstr "Växla helskärmsläge"
+
+#: ../src/50-metacity-windows.xml.in.h:14
+msgid "Toggle maximization state"
+msgstr "Växla maximeringstillstånd"
+
+#: ../src/50-metacity-windows.xml.in.h:15
+msgid "Toggle shaded state"
+msgstr "Växla upprullat tillstånd"
+
+#: ../src/50-metacity-windows.xml.in.h:16
+msgid "Toggle window on all workspaces or one"
+msgstr "Växla fönster på alla arbetsytor eller bara en"
+
+#: ../src/50-metacity-windows.xml.in.h:17
 msgid "Windows"
 msgstr "Fönster"
 
-#: ../src/core/bell.c:299
+#: ../src/core/bell.c:296
 msgid "Bell event"
 msgstr "Ljudhändelse"
 
@@ -98,30 +254,6 @@ msgstr "Ödesdigert IO-fel %d (%s) på display \"%s\".\n"
 #, c-format
 msgid "Some other program is already using the key %s with modifiers %x as a binding\n"
 msgstr "Ett annat program använder redan tangenten %s med modifierarna %x som en bindning\n"
-
-#. Displayed when a keybinding which is
-#. * supposed to launch a program fails.
-#.
-#: ../src/core/keybindings.c:2343
-#, c-format
-msgid ""
-"There was an error running <tt>%s</tt>:\n"
-"\n"
-"%s"
-msgstr ""
-"Ett fel uppstod vid körning av <tt>%s</tt>:\n"
-"\n"
-"%s"
-
-#: ../src/core/keybindings.c:2432
-#, c-format
-msgid "No command %d has been defined.\n"
-msgstr "Inget kommando %d har definierats.\n"
-
-#: ../src/core/keybindings.c:3386
-#, c-format
-msgid "No terminal command has been defined.\n"
-msgstr "Inget terminalkommando har definierats.\n"
 
 #: ../src/core/main.c:131
 #, c-format
@@ -191,82 +323,29 @@ msgstr "Kunde inte hitta ett tema! Försäkra dig om att %s finns och innehålle
 msgid "Failed to restart: %s\n"
 msgstr "Misslyckades med att starta om: %s\n"
 
-#.
-#. * We found it, but it was invalid.  Complain.
-#. *
-#. * FIXME: This replicates the original behaviour, but in the future
-#. * we might consider reverting invalid keys to their original values.
-#. * (We know the old value, so we can look up a suitable string in
-#. * the symtab.)
-#. *
-#. * (Empty comment follows so the translators don't see this.)
-#.
-#.
-#: ../src/core/prefs.c:508
-#: ../src/core/prefs.c:663
-#, c-format
-msgid "GConf key '%s' is set to an invalid value\n"
-msgstr "GConf-nyckeln \"%s\" är satt till ett ogiltigt värde\n"
-
-#: ../src/core/prefs.c:589
-#: ../src/core/prefs.c:832
-#, c-format
-msgid "%d stored in GConf key %s is out of range %d to %d\n"
-msgstr "%d lagrad i GConf-nyckeln %s är inte i intervallet %d till %d\n"
-
-# SUN CHANGED MESSAGE
-#: ../src/core/prefs.c:633
-#: ../src/core/prefs.c:710
-#: ../src/core/prefs.c:758
-#: ../src/core/prefs.c:822
-#: ../src/core/prefs.c:1115
-#: ../src/core/prefs.c:1131
-#: ../src/core/prefs.c:1148
-#: ../src/core/prefs.c:1164
-#, c-format
-msgid "GConf key \"%s\" is set to an invalid type\n"
-msgstr "GConf-nyckeln \"%s\" är satt till en ogiltig typ\n"
-
-#: ../src/core/prefs.c:1234
+#: ../src/core/prefs.c:880
 msgid "Workarounds for broken applications disabled. Some applications may not behave properly.\n"
 msgstr "Fixar för trasiga program är inaktiverade. En del program fungerar kanske inte korrekt.\n"
 
-#: ../src/core/prefs.c:1305
+#: ../src/core/prefs.c:949
 #, c-format
-msgid "Could not parse font description \"%s\" from GConf key %s\n"
-msgstr "Kunde inte tolka typsnittsbeskrivningen \"%s\" från GConf-nyckeln %s\n"
+msgid "Could not parse font description \"%s\" from GSettings key %s\n"
+msgstr "Kunde inte tolka typsnittsbeskrivningen \"%s\" från GSettings-nyckeln %s\n"
 
-#: ../src/core/prefs.c:1367
+#: ../src/core/prefs.c:1015
 #, c-format
 msgid "\"%s\" found in configuration database is not a valid value for mouse button modifier\n"
 msgstr "\"%s\" som hittades i konfigurationsdatabasen är inte ett giltigt värde för musknappsmodifierare\n"
 
-#: ../src/core/prefs.c:1788
-#, c-format
-msgid "Error setting number of workspaces to %d: %s\n"
-msgstr "Fel vid inställning av antalet arbetsytor till %d: %s\n"
-
-#: ../src/core/prefs.c:1959
-#: ../src/core/prefs.c:2461
-#, c-format
-msgid "Workspace %d"
-msgstr "Arbetsyta %d"
-
-#: ../src/core/prefs.c:1988
-#: ../src/core/prefs.c:2166
+#: ../src/core/prefs.c:1494
 #, c-format
 msgid "\"%s\" found in configuration database is not a valid value for keybinding \"%s\"\n"
 msgstr "\"%s\" som hittades i konfigurationsdatabasen är inte ett giltigt värde för tangentbindningen \"%s\"\n"
 
-#: ../src/core/prefs.c:2542
+#: ../src/core/prefs.c:1601
 #, c-format
-msgid "Error setting name for workspace %d to \"%s\": %s\n"
-msgstr "Fel vid inställning av namnet på arbetsyta %d till \"%s\": %s\n"
-
-#: ../src/core/prefs.c:2746
-#, c-format
-msgid "Error setting compositor status: %s\n"
-msgstr "Fel vid inställning av status för compositor: %s\n"
+msgid "Workspace %d"
+msgstr "Arbetsyta %d"
 
 #: ../src/core/screen.c:357
 #, c-format
@@ -292,34 +371,6 @@ msgstr "Skärm %d på display \"%s\" har redan en fönsterhanterare\n"
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "Kunde inte släppa skärm %d på display \"%s\"\n"
-
-#. Translators: Please don't translate "Control", "Shift", etc, since these
-#. * are hardcoded (in gtk/gtkaccelgroup.c; it's not metacity's fault).
-#. * "disabled" must also stay as it is.
-#.
-#: ../src/core/schema-bindings.c:169
-msgid ""
-"The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
-"\n"
-"The parser is fairly liberal and allows lower or upper case, and also abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to the special string \"disabled\", then there will be no keybinding for this action."
-msgstr ""
-"Formatet ser ut som \"<Control>a\" eller \"<Shift><Alt>F1\".\n"
-"\n"
-"Tolken är ganska tillåtande och tillåter gemener och versaler och även förkortningar som \"<Ctl>\" och \"<Ctrl>\". Om du ställer in alternativet till specialsträngen \"disabled\" kommer det inte att finnas någon tangentbindning för denna åtgärd."
-
-#: ../src/core/schema-bindings.c:177
-msgid ""
-"The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
-"\n"
-"The parser is fairly liberal and allows lower or upper case, and also abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to the special string \"disabled\", then there will be no keybinding for this action.\n"
-"\n"
-"This keybinding may be reversed by holding down the \"shift\" key; therefore, \"shift\" cannot be one of the keys it uses."
-msgstr ""
-"Formatet ser ut som \"<Control>a\" eller \"<Shift><Alt>F1\".\n"
-"\n"
-"Tolken är ganska tillåtande och tillåter gemener och versaler och även förkortningar som \"<Ctl>\" och \"<Ctrl>\". Om du ställer in alternativet till specialsträngen \"disabled\" kommer det inte att finnas någon tangentbindning för denna åtgärd.\n"
-"\n"
-"Denna tangentbindning kan omvändas genom att hålla ner \"shift\"-tangenten; därför kan inte \"shift\" vara en av de tangenter som används."
 
 #: ../src/core/session.c:842
 #: ../src/core/session.c:849
@@ -414,7 +465,6 @@ msgid "Window manager error: "
 msgstr "Fönsterhanterarfel: "
 
 #. Translators: This is the title used on dialog boxes
-#. eof all-keybindings.h
 #: ../src/core/util.c:570
 #: ../src/metacity.desktop.in.h:1
 #: ../src/metacity-wm.desktop.in.h:1
@@ -500,528 +550,21 @@ msgstr "Egenskap %s på fönster 0x%lx innehöll ogiltig UTF-8\n"
 msgid "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
 msgstr "Egenskap %s på fönster 0x%lx innehöll ogiltig UTF-8 för objekt %d i listan\n"
 
-#: ../src/include/all-keybindings.h:88
-msgid "Switch to workspace 1"
-msgstr "Växla till arbetsyta 1"
-
-#: ../src/include/all-keybindings.h:90
-msgid "Switch to workspace 2"
-msgstr "Växla till arbetsyta 2"
-
-#: ../src/include/all-keybindings.h:92
-msgid "Switch to workspace 3"
-msgstr "Växla till arbetsyta 3"
-
-#: ../src/include/all-keybindings.h:94
-msgid "Switch to workspace 4"
-msgstr "Växla till arbetsyta 4"
-
-#: ../src/include/all-keybindings.h:96
-msgid "Switch to workspace 5"
-msgstr "Växla till arbetsyta 5"
-
-#: ../src/include/all-keybindings.h:98
-msgid "Switch to workspace 6"
-msgstr "Växla till arbetsyta 6"
-
-#: ../src/include/all-keybindings.h:100
-msgid "Switch to workspace 7"
-msgstr "Växla till arbetsyta 7"
-
-#: ../src/include/all-keybindings.h:102
-msgid "Switch to workspace 8"
-msgstr "Växla till arbetsyta 8"
-
-#: ../src/include/all-keybindings.h:104
-msgid "Switch to workspace 9"
-msgstr "Växla till arbetsyta 9"
-
-#: ../src/include/all-keybindings.h:106
-msgid "Switch to workspace 10"
-msgstr "Växla till arbetsyta 10"
-
-#: ../src/include/all-keybindings.h:108
-msgid "Switch to workspace 11"
-msgstr "Växla till arbetsyta 11"
-
-#: ../src/include/all-keybindings.h:110
-msgid "Switch to workspace 12"
-msgstr "Växla till arbetsyta 12"
-
-#: ../src/include/all-keybindings.h:122
-msgid "Move to workspace left"
-msgstr "Flytta till arbetsyta till vänster"
-
-#: ../src/include/all-keybindings.h:126
-msgid "Move to workspace right"
-msgstr "Flytta till arbetsyta till höger"
-
-#: ../src/include/all-keybindings.h:130
-msgid "Move to workspace above"
-msgstr "Flytta till arbetsyta ovanför"
-
-#: ../src/include/all-keybindings.h:134
-msgid "Move to workspace below"
-msgstr "Flytta till arbetsyta nedanför"
-
-#: ../src/include/all-keybindings.h:150
-msgid "Switch windows of an application"
-msgstr "Växla fönster för ett program"
-
-#: ../src/include/all-keybindings.h:153
-msgid "Reverse switch windows of an application"
-msgstr "Omvänd växling av fönster för ett program"
-
-#: ../src/include/all-keybindings.h:156
-msgid "Switch applications"
-msgstr "Växla program"
-
-#: ../src/include/all-keybindings.h:159
-msgid "Reverse switch applications"
-msgstr "Omvänd växling av program"
-
-#: ../src/include/all-keybindings.h:162
-msgid "Switch system controls"
-msgstr "Växla systemkontroller"
-
-#: ../src/include/all-keybindings.h:165
-msgid "Reverse switch system controls"
-msgstr "Omvänd växling av systemkontroller"
-
-#: ../src/include/all-keybindings.h:169
-msgid "Switch windows of an app directly"
-msgstr "Växla fönster för ett program direkt"
-
-#: ../src/include/all-keybindings.h:172
-msgid "Reverse switch windows of an app directly"
-msgstr "Omvänd växling av fönster för ett program direkt"
-
-#: ../src/include/all-keybindings.h:175
-msgid "Switch windows directly"
-msgstr "Växla fönster direkt"
-
-#: ../src/include/all-keybindings.h:178
-msgid "Reverse switch windows directly"
-msgstr "Omvänd växling av fönster direkt"
-
-#: ../src/include/all-keybindings.h:181
-msgid "Switch system controls directly"
-msgstr "Växla systemkontroller direkt"
-
-#: ../src/include/all-keybindings.h:184
-msgid "Reverse switch system controls directly"
-msgstr "Omvänd växling av systemkontroller direkt"
-
-#: ../src/include/all-keybindings.h:189
-msgid "Hide all normal windows"
-msgstr "Dölj alla normala fönster"
-
-#: ../src/include/all-keybindings.h:192
-msgid "Show the activities overview"
-msgstr "Visa aktivitetsöversikt"
-
-#: ../src/include/all-keybindings.h:195
-msgid "Show the run command prompt"
-msgstr "Visa Kör kommando-dialogen"
-
-#: ../src/include/all-keybindings.h:236
-msgid "Take a screenshot"
-msgstr "Ta en skärmdump"
-
-#: ../src/include/all-keybindings.h:238
-msgid "Take a screenshot of a window"
-msgstr "Ta en skärmdump av ett fönster"
-
-#: ../src/include/all-keybindings.h:240
-msgid "Launch Terminal"
-msgstr "Starta terminal"
-
-#: ../src/include/all-keybindings.h:255
-msgid "Activate the window menu"
-msgstr "Aktivera fönstermenyn"
-
-#: ../src/include/all-keybindings.h:258
-msgid "Toggle fullscreen mode"
-msgstr "Växla helskärmsläge"
-
-#: ../src/include/all-keybindings.h:260
-msgid "Toggle maximization state"
-msgstr "Växla maximeringstillstånd"
-
-#: ../src/include/all-keybindings.h:262
-msgid "Toggle window always appearing on top"
-msgstr "Växla så att fönster alltid visas överst"
-
-#: ../src/include/all-keybindings.h:264
-msgid "Maximize window"
-msgstr "Maximera fönster"
-
-#: ../src/include/all-keybindings.h:266
-msgid "Restore window"
-msgstr "Återställ fönster"
-
-#: ../src/include/all-keybindings.h:268
-msgid "Toggle shaded state"
-msgstr "Växla upprullat tillstånd"
-
-#: ../src/include/all-keybindings.h:270
-msgid "Minimize window"
-msgstr "Minimera fönster"
-
-#: ../src/include/all-keybindings.h:272
-msgid "Close window"
-msgstr "Stäng fönster"
-
-#: ../src/include/all-keybindings.h:274
-msgid "Move window"
-msgstr "Flytta fönster"
-
-#: ../src/include/all-keybindings.h:276
-msgid "Resize window"
-msgstr "Ändra storlek på fönster"
-
-#: ../src/include/all-keybindings.h:279
-msgid "Toggle window on all workspaces or one"
-msgstr "Växla fönster på alla arbetsytor eller bara en"
-
-#: ../src/include/all-keybindings.h:283
-msgid "Move window to workspace 1"
-msgstr "Flytta fönster till arbetsyta 1"
-
-#: ../src/include/all-keybindings.h:286
-msgid "Move window to workspace 2"
-msgstr "Flytta fönster till arbetsyta 2"
-
-#: ../src/include/all-keybindings.h:289
-msgid "Move window to workspace 3"
-msgstr "Flytta fönster till arbetsyta 3"
-
-#: ../src/include/all-keybindings.h:292
-msgid "Move window to workspace 4"
-msgstr "Flytta fönster till arbetsyta 4"
-
-#: ../src/include/all-keybindings.h:295
-msgid "Move window to workspace 5"
-msgstr "Flytta fönster till arbetsyta 5"
-
-#: ../src/include/all-keybindings.h:298
-msgid "Move window to workspace 6"
-msgstr "Flytta fönster till arbetsyta 6"
-
-#: ../src/include/all-keybindings.h:301
-msgid "Move window to workspace 7"
-msgstr "Flytta fönster till arbetsyta 7"
-
-#: ../src/include/all-keybindings.h:304
-msgid "Move window to workspace 8"
-msgstr "Flytta fönster till arbetsyta 8"
-
-#: ../src/include/all-keybindings.h:307
-msgid "Move window to workspace 9"
-msgstr "Flytta fönster till arbetsyta 9"
-
-#: ../src/include/all-keybindings.h:310
-msgid "Move window to workspace 10"
-msgstr "Flytta fönster till arbetsyta 10"
-
-#: ../src/include/all-keybindings.h:313
-msgid "Move window to workspace 11"
-msgstr "Flytta fönster till arbetsyta 11"
-
-#: ../src/include/all-keybindings.h:316
-msgid "Move window to workspace 12"
-msgstr "Flytta fönster till arbetsyta 12"
-
-#: ../src/include/all-keybindings.h:328
-msgid "Move window one workspace to the left"
-msgstr "Flytta fönster en arbetsyta åt vänster"
-
-#: ../src/include/all-keybindings.h:331
-msgid "Move window one workspace to the right"
-msgstr "Flytta fönster en arbetsyta åt höger"
-
-#: ../src/include/all-keybindings.h:334
-msgid "Move window one workspace up"
-msgstr "Flytta fönster en arbetsyta uppåt"
-
-#: ../src/include/all-keybindings.h:337
-msgid "Move window one workspace down"
-msgstr "Flytta fönster en arbetsyta nedåt"
-
-#: ../src/include/all-keybindings.h:340
-msgid "Raise window if covered, otherwise lower it"
-msgstr "Höj fönstret om det skyms av ett annat fönster, sänk det annars"
-
-#: ../src/include/all-keybindings.h:342
-msgid "Raise window above other windows"
-msgstr "Höj fönstret över andra fönster"
-
-#: ../src/include/all-keybindings.h:344
-msgid "Lower window below other windows"
-msgstr "Sänk fönster under andra fönster"
-
-#: ../src/include/all-keybindings.h:348
-msgid "Maximize window vertically"
-msgstr "Maximera fönster vertikalt"
-
-#: ../src/include/all-keybindings.h:352
-msgid "Maximize window horizontally"
-msgstr "Maximera fönster horisontellt"
-
-#: ../src/include/all-keybindings.h:356
-msgid "Move window to top left corner"
-msgstr "Flytta fönstret till övre vänstra hörnet"
-
-#: ../src/include/all-keybindings.h:359
-msgid "Move window to top right corner"
-msgstr "Flytta fönstret till övre högra hörnet"
-
-#: ../src/include/all-keybindings.h:362
-msgid "Move window to bottom left corner"
-msgstr "Flytta fönstret till nedre vänstra hörnet"
-
-#: ../src/include/all-keybindings.h:365
-msgid "Move window to bottom right corner"
-msgstr "Flytta fönstret till nedre högra hörnet"
-
-#: ../src/include/all-keybindings.h:369
-msgid "Move window to top edge of screen"
-msgstr "Flytta fönstret till övre sidan av skärmen"
-
-#: ../src/include/all-keybindings.h:372
-msgid "Move window to bottom edge of screen"
-msgstr "Flytta fönstret till nedre sidan av skärmen"
-
-#: ../src/include/all-keybindings.h:375
-msgid "Move window to right side of screen"
-msgstr "Flytta fönstret till högra sidan av skärmen"
-
-#: ../src/include/all-keybindings.h:378
-msgid "Move window to left side of screen"
-msgstr "Flytta fönstret till vänstra sidan av skärmen"
-
-#: ../src/include/all-keybindings.h:381
-msgid "Move window to center of screen"
-msgstr "Flytta fönstret till mitten av skärmen"
-
-#: ../src/metacity.schemas.in.in.h:1
-msgid "(Not implemented) Navigation works in terms of applications not windows"
-msgstr "(Inte implementerat) Navigering fungerar i termer av program, inte fönster"
-
-#: ../src/metacity.schemas.in.in.h:2
-msgid "A font description string describing a font for window titlebars. The size from the description will only be used if the titlebar_font_size option is set to 0. Also, this option is disabled if the titlebar_uses_desktop_font option is set to true."
-msgstr "En typsnittsbeskrivningssträng som beskriver ett typsnitt för fönstertitelrader. Storleken från beskrivningen kommer dock endast att användas om alternativet titlebar_font_size är ställt till 0. Dessutom är detta alternativ inaktiverat om alternativet titlebar_uses_desktop_font är sant."
-
-#: ../src/metacity.schemas.in.in.h:3
-msgid "Action on title bar double-click"
-msgstr "Åtgärd vid dubbelklick på titelraden"
-
-#: ../src/metacity.schemas.in.in.h:4
-msgid "Action on title bar middle-click"
-msgstr "Åtgärd vid mittenklick på titellisten"
-
-#: ../src/metacity.schemas.in.in.h:5
-msgid "Action on title bar right-click"
-msgstr "Åtgärd vid högerklick på titellisten"
-
-#: ../src/metacity.schemas.in.in.h:6
-msgid "Arrangement of buttons on the titlebar"
-msgstr "Knapparrangemang på titalraden"
-
-#: ../src/metacity.schemas.in.in.h:7
-msgid "Arrangement of buttons on the titlebar. The value should be a string, such as \"menu:minimize,maximize,spacer,close\"; the colon separates the left corner of the window from the right corner, and the button names are comma-separated. Duplicate buttons are not allowed. Unknown button names are silently ignored so that buttons can be added in future metacity versions without breaking older versions. A special spacer tag can be used to insert some space between two adjacent buttons."
-msgstr "Arrangemang av knapparna på titelraden. Värdet måste vara en sträng som till exempel \"menu:minimize,maximize,close\"; kolonet skiljer det vänstra hörnet från det högra hörnet, och knappnamnen är kommaseparerade. Två knappar av samma typ är inte tillåtet. Okända knappnamn ignoreras helt och hållet så att knappar kan läggas till i framtida versioner utan att gamla versioner går sönder. En speciell utfyllnadstagg kan användas för att infoga utrymme mellan två närliggande knappar."
-
-#: ../src/metacity.schemas.in.in.h:8
-msgid "Automatically raises the focused window"
-msgstr "Höjer automatiskt det fokuserade fönstret"
-
-#: ../src/metacity.schemas.in.in.h:9
-msgid "Clicking a window while holding down this modifier key will move the window (left click), resize the window (middle click), or show the window menu (right click). The middle and right click operations may be swapped using the \"resize_with_right_button\" key. Modifier is expressed as \"&lt;Alt&gt;\" or \"&lt;Super&gt;\" for example."
-msgstr "Att klicka ett fönster samtidigt som denna modifierartangent hålls ned kommer att flytta fönstret (vänsterklick), ändra storlek på fönstret (mittenklick) eller visa fönstermenyn (högerklick). Vänster- och högerklicksåtgärder kan växlas med nyckeln \"resize_with_right_button\". Modifierare uttrycks som till exempel \"&lt;Alt&gt;\" eller \"&lt;Super&gt;\"."
-
-#: ../src/metacity.schemas.in.in.h:10
-msgid "Commands to run in response to keybindings"
-msgstr "Kommandon att köra som svar på tangentbindningar"
-
-#: ../src/metacity.schemas.in.in.h:11
+#: ../src/org.gnome.metacity.gschema.xml.in.h:1
 msgid "Compositing Manager"
 msgstr "Compositinghanterare"
 
-#: ../src/metacity.schemas.in.in.h:12
-msgid "Control how new windows get focus"
-msgstr "Kontrollera hur nya fönster får fokus"
-
-#: ../src/metacity.schemas.in.in.h:13
-msgid "Current theme"
-msgstr "Aktuellt tema"
-
-#: ../src/metacity.schemas.in.in.h:14
-msgid "Delay in milliseconds for the auto raise option"
-msgstr "Fördröjning i millisekunder "
-
-#: ../src/metacity.schemas.in.in.h:15
+#: ../src/org.gnome.metacity.gschema.xml.in.h:2
 msgid "Determines whether Metacity is a compositing manager."
 msgstr "Fastställer huruvida Metacity är en compositinghanterare."
 
-#: ../src/metacity.schemas.in.in.h:16
-msgid "Determines whether applications or the system can generate audible 'beeps'; may be used in conjunction with 'visual bell' to allow silent 'beeps'."
-msgstr "Avgör huruvida program eller systemet kan generera ljudliga \"pip\". Kan användas tillsammans med \"visual bell\" för att tillåta tysta \"pip\"."
-
-# SUN CHANGED MESSAGE
-#: ../src/metacity.schemas.in.in.h:17
-msgid "Disable misfeatures that are required by old or broken applications"
-msgstr "Inaktivera felaktiga egenskaper som krävs av gamla eller felaktiga program"
-
-#: ../src/metacity.schemas.in.in.h:18
-msgid "Enable Visual Bell"
-msgstr "Använd visuell signal"
-
-#: ../src/metacity.schemas.in.in.h:19
-msgid "If set to true, and the focus mode is either \"sloppy\" or \"mouse\" then the focused window will be automatically raised after a delay specified by the auto_raise_delay key. This is not related to clicking on a window to raise it, nor to entering a window during drag-and-drop."
-msgstr "Om sant, och om fokusläget antingen är \"sloppy\" eller \"mouse\", kommer det fokuserade fönstret att automatiskt höjas efter en fördröjning (fördröjningen anges av nyckeln auto_raise_delay). Detta är inte relaterat till att klicka på ett fönster för att höja det, inte heller att gå in i ett fönster med drag-och-släpp."
-
-#: ../src/metacity.schemas.in.in.h:20
-msgid "If true, ignore the titlebar_font option, and use the standard application font for window titles."
-msgstr "Om sant ignoreras alternativet titlebar_font och standardtypsnittet för program används för fönstertitlar."
-
-#: ../src/metacity.schemas.in.in.h:21
+#: ../src/org.gnome.metacity.gschema.xml.in.h:3
 msgid "If true, metacity will give the user less feedback by using wireframes, avoiding animations, or other means. This is a significant reduction in usability for many users, but may allow legacy applications to continue working, and may also be a useful tradeoff for terminal servers. However, the wireframe feature is disabled when accessibility is on."
 msgstr "Om detta är sant kommer metacity att ge användaren mindre återkoppling genom att använda trådramar, undvika animationer, och andra sätt. Detta är en betydande minskning av användbarheten för många användare, men kan tillåta äldre program och terminalservrar att fungera i de fall de annars skulle varit olämpliga. Funktionaliteten med trådramar är dock inaktiverad då tillgänglighet är på."
 
-# SUN CHANGED MESSAGE
-#: ../src/metacity.schemas.in.in.h:22
-msgid "If true, then Metacity works in terms of applications rather than windows. The concept is a bit abstract, but in general an application-based setup is more like the Mac and less like Windows. When you focus a window in application-based mode, all the windows in the application will be raised. Also, in application-based mode, focus clicks are not passed through to windows in other applications. Application-based mode is, however, largely unimplemented at the moment."
-msgstr "Om sant fungerar Metacity i termer av program, inte av fönster. Konceptet är ganska abstrakt, men i regel fungerar en programbaserad konfiguration mer likt Mac och mindre likt Windows. När du fokuserar ett fönster i programbaserat läge kommer alla fönster i programmet att höjas. Dessutom skickas fokusklick inte vidare till fönster i andra program då programbaserat läge används. Dessutom är programbaserat läge till stor del oimplementerat just nu."
-
-#: ../src/metacity.schemas.in.in.h:23
+#: ../src/org.gnome.metacity.gschema.xml.in.h:4
 msgid "If true, trade off usability for less resource usage"
 msgstr "Om sant kommer användbarhet att åsidosättas till förmån för mindre resursanvändning"
-
-#: ../src/metacity.schemas.in.in.h:24
-msgid "Modifier to use for modified window click actions"
-msgstr "Modifierare att använda för modifierade fönsterklickåtgärder"
-
-#: ../src/metacity.schemas.in.in.h:25
-msgid "Name of workspace"
-msgstr "Namn på arbetsyta"
-
-#: ../src/metacity.schemas.in.in.h:26
-msgid "Number of workspaces"
-msgstr "Antal arbetsytor"
-
-#: ../src/metacity.schemas.in.in.h:27
-msgid "Number of workspaces. Must be more than zero, and has a fixed maximum to prevent making the desktop unusable by accidentally asking for too many workspaces."
-msgstr "Antal arbetsytor. Måste vara större än noll, och har ett fast maxvärde för att förhindra att skrivbordet förstörs genom att för många arbetsytor begärs av misstag."
-
-#: ../src/metacity.schemas.in.in.h:28
-msgid "Run a defined command"
-msgstr "Kör ett angivet kommando"
-
-#: ../src/metacity.schemas.in.in.h:29
-msgid "Set this to true to resize with the right button and show a menu with the middle button while holding down the key given in \"mouse_button_modifier\"; set it to false to make it work the opposite way around."
-msgstr "Ställ in detta till sant för att ändra storlek med högerknappen och visa en meny med mittenknappen när tangenten, som angivits i \"mouse_button_modifier\", hålls ner; ställ in till falskt för att göra det motsatta."
-
-#: ../src/metacity.schemas.in.in.h:30
-msgid "Setting this option to false can lead to buggy behavior, so users are strongly discouraged from changing it from the default of true. Many actions (e.g. clicking in the client area, moving or resizing the window) normally raise the window as a side-effect. Setting this option to false, which is strongly discouraged, will decouple raising from other user actions, and ignore raise requests generated by applications. See http://bugzilla.gnome.org/show_bug.cgi?id=445447#c6. Even when this option is false, windows can still be raised by an alt-left-click anywhere on the window, a normal click on the window decorations, or by special messages from pagers, such as activation requests from tasklist applets. This option is currently disabled in click-to-focus mode. Note that the list of ways to raise windows when raise_on_click is false does not include programmatic requests from applications to raise windows; such requests will be ignored regardless of the reason for the request. If you are an application developer and have a user complaining that your application does not work with this setting disabled, tell them it is _their_ fault for breaking their window manager and that they need to change this option back to true or live with the \"bug\" they requested."
-msgstr "Ställa in detta alternativ till falskt kan leda till ett felaktigt beteende, så därför rekommenderas användarna att inte ändra det från standardvärdet, vilket är sant. Många åtgärder (t.ex. klicka i klientområdet, flytta eller ändra storlek på fönstret) höjer normalt sett fönstret som en sidoeffekt. Ställa in detta alternativ till falskt, vilket inte rekommenderas, kan koppla loss höjningen från andra användaråtgärder och ignorera höjningsbegäran som genereras av program. Se http://bugzilla.gnome.org/show_bug.cgi?id=445447#c6. Även när detta alternativ är falskt kan fönster fortfarande höjas genom Alt-vänster-klick någonstans i fönstret, ett vanligt klick på fönstrets dekoration eller genom speciella meddelanden från visare, såsom en aktiveringsbegäran från panelprogram. Detta alternativ är för närvarande inaktiverat i klicka-för-fokus-läget. Observera att listan över sätt att höja fönster när raise_on_click är falskt inte inkluderar programmatiska begäran från program för att höja fönster; sådana begäran kommer att ignoreras oavsett anledningen till begäran. Om du är en programutvecklare och har en användare som klagar på att ditt program inte fungerar med denna inställning inaktiverad så kan du informera dem om att det är _deras_ fel att deras fönsterhanterare är trasig och att de behöver ändra detta alternativ till sant eller leva med \"felet\" som de begärde."
-
-#: ../src/metacity.schemas.in.in.h:31
-msgid "Some applications disregard specifications in ways that result in window manager misfeatures. This option puts Metacity in a rigorously correct mode, which gives a more consistent user interface, provided one does not need to run any misbehaving applications."
-msgstr "Vissa program bortser från specifikationerna vilket resulterar i att fönsterhanteraren inte fungerar som den ska. Detta alternativ försätter Metacity i ett mycket korrekt läge, vilket ger ett mer konsistent användargränssnitt, om man inte behöver köra några program som inte sköter sig."
-
-#: ../src/metacity.schemas.in.in.h:32
-msgid "System Bell is Audible"
-msgstr "Systemsignalen är ljudlig"
-
-#: ../src/metacity.schemas.in.in.h:33
-msgid "Tells Metacity how to implement the visual indication that the system bell or another application 'bell' indicator has been rung. Currently there are two valid values, \"fullscreen\", which causes a fullscreen white-black flash, and \"frame_flash\" which causes the titlebar of the application which sent the bell signal to flash. If the application which sent the bell is unknown (as is usually the case for the default \"system beep\"), the currently focused window's titlebar is flashed."
-msgstr "Talar om för Metacity hur den synliga indikeringen att systemsignalen eller en annan programsignal har ljudit ska implementeras. För tillfället finns det två giltiga värden, \"fullscreen\", som genererar en svartvit blinkning i helskärmsformat, och \"frame_flash\" som gör att titelraden på programmet som skickade signalen blinkar. Om programmet som skickade signalen är okänd (vilket normalt är fallet för \"standardsystempipet\"), blinkas titelraden på det för tillfället fokuserade fönstret."
-
-#: ../src/metacity.schemas.in.in.h:34
-msgid "The /apps/metacity/global_keybindings/run_command_N keys define keybindings that correspond to these commands. Pressing the keybinding for run_command_N will execute command_N."
-msgstr "Nycklarna /apps/metacity/global_keybindings/run_command_N anger tangentbindningar som motsvarar dessa kommandon. Att trycka tangentbindningen för run_command_N kommer att köra command_N."
-
-#: ../src/metacity.schemas.in.in.h:35
-msgid "The /apps/metacity/global_keybindings/run_command_screenshot key defines a keybinding which causes the command specified by this setting to be invoked."
-msgstr "Nyckeln /apps/metacity/global_keybindings/run_command_screenshot anger en tangentbindning som gör att kommandot som anges av denna inställning anropas."
-
-#: ../src/metacity.schemas.in.in.h:36
-msgid "The /apps/metacity/global_keybindings/run_command_window_screenshot key defines a keybinding which causes the command specified by this setting to be invoked."
-msgstr "Nyckeln /apps/metacity/global_keybindings/run_command_window_screenshot anger en tangentbindning som gör att kommandot som anges av denna inställning anropas."
-
-#: ../src/metacity.schemas.in.in.h:37
-msgid "The keybinding that runs the correspondingly-numbered command in /apps/metacity/keybinding_commands The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled\", then there will be no keybinding for this action."
-msgstr "Tangentbindningen som kör det på motsvarande sätt numrerade kommandot i /apps/metacity/keybinding_commands. Formatet ser ut som \"&lt;Control&gt;a\" eller \"&lt;Shift&gt;&lt;Alt&gt;F1\". Tolken är ganska tillåtande och tillåter gemener och versaler och även förkortningar som \"&lt;Ctl&gt;\" och \"&lt;Ctrl&gt;\". Om du ställer in alternativet till specialsträngen \"disabled\" kommer det inte att finnas en tangentbindning för denna åtgärd."
-
-#: ../src/metacity.schemas.in.in.h:38
-msgid "The name of a workspace."
-msgstr "Namnet på en arbetsyta."
-
-#: ../src/metacity.schemas.in.in.h:39
-msgid "The screenshot command"
-msgstr "Kommando för att fånga skärmbild"
-
-#: ../src/metacity.schemas.in.in.h:40
-msgid "The theme determines the appearance of window borders, titlebar, and so forth."
-msgstr "Temat avgör utseendet på fönsterramar, titelrader, och så vidare."
-
-#: ../src/metacity.schemas.in.in.h:41
-msgid "The time delay before raising a window if auto_raise is set to true. The delay is given in thousandths of a second."
-msgstr "Tidsfördröjningen innan ett fönster höjs om auto_raise är sant. Fördröjningen ges i tusendelar av en sekund."
-
-# SUN CHANGED MESSAGE
-#: ../src/metacity.schemas.in.in.h:42
-msgid "The window focus mode indicates how windows are activated. It has three possible values; \"click\" means windows must be clicked in order to focus them, \"sloppy\" means windows are focused when the mouse enters the window, and \"mouse\" means windows are focused when the mouse enters the window and unfocused when the mouse leaves the window."
-msgstr "Fönsterfokusläget anger hur fönster ska aktiveras. Det har tre möjliga värden; \"click\" betyder att fönster måste klickas på för att de ska få fokus, \"sloppy\" betyder att fönster fokuseras då muspekaren hamnar i fönstret, och \"mouse\" betyder att fönster fokuseras då muspekaren hamnar i fönstret och förlorar fokus då muspekaren lämnar fönstret."
-
-#: ../src/metacity.schemas.in.in.h:43
-msgid "The window screenshot command"
-msgstr "Kommando för att fånga skärmbild av ett fönster"
-
-#: ../src/metacity.schemas.in.in.h:44
-msgid "This option determines the effects of double-clicking on the title bar. Current valid options are 'toggle_shade', which will shade/unshade the window, 'toggle_maximize' which will maximize/unmaximize the window, 'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will maximize/unmaximize the window in that direction only, 'minimize' which will minimize the window, 'shade' which will roll the window up, 'menu' which will display the window menu, 'lower' which will put the window behind all the others, and 'none' which will not do anything."
-msgstr "Detta alternativ bestämmer effekterna av dubbelklick på titelraden. Aktuella giltiga alternativ är \"toggle_shade\" som kommer att rulla upp/rulla ned fönstret, \"toggle_maximize\" som kommer att maximera/avmaximera fönstret, \"toggle_maximize_horizontally\" och \"toggle_maximize_vertically\" som kommer att maximera/avmaximera fönstret endast i den riktningen, \"minimize\" kommer kommer att minimera fönstret, \"shade\" kommer att rulla upp fönstret, \"menu\" kommer att visa fönstermenyn, \"lower\" som kommer att lägga fönstret bakom alla andra, samt \"none\" som inte gör något."
-
-#: ../src/metacity.schemas.in.in.h:45
-msgid "This option determines the effects of middle-clicking on the title bar. Current valid options are 'toggle_shade', which will shade/unshade the window, 'toggle_maximize' which will maximize/unmaximize the window, 'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will maximize/unmaximize the window in that direction only, 'minimize' which will minimize the window, 'shade' which will roll the window up, 'menu' which will display the window menu, 'lower' which will put the window behind all the others, and 'none' which will not do anything."
-msgstr "Detta alternativ bestämmer effekterna av mittenklick på titellisten. Aktuella giltiga alternativ är \"toggle_shade\" som kommer att rulla upp/rulla ned fönstret, \"toggle_maximize\" som kommer att maximera/avmaximera fönstret, \"toggle_maximize_horizontally\" och \"toggle_maximize_vertically\" som kommer att maximera/avmaximera fönstret endast i den riktningen, \"minimize\" kommer kommer att minimera fönstret, \"shade\" kommer att rulla upp fönstret, \"menu\" kommer att visa fönstermenyn, \"lower\" som kommer att lägga fönstret bakom alla andra, samt \"none\" som inte gör något."
-
-#: ../src/metacity.schemas.in.in.h:46
-msgid "This option determines the effects of right-clicking on the title bar. Current valid options are 'toggle_shade', which will shade/unshade the window, 'toggle_maximize' which will maximize/unmaximize the window, 'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will maximize/unmaximize the window in that direction only, 'minimize' which will minimize the window, 'shade' which will roll the window up, 'menu' which will display the window menu, 'lower' which will put the window behind all the others, and 'none' which will not do anything."
-msgstr "Detta alternativ bestämmer effekterna av högerklick på titellisten. Aktuella giltiga alternativ är \"toggle_shade\" som kommer att rulla upp/rulla ned fönstret, \"toggle_maximize\" som kommer att maximera/avmaximera fönstret, \"toggle_maximize_horizontally\" och \"toggle_maximize_vertically\" som kommer att maximera/avmaximera fönstret endast i den riktningen, \"minimize\" kommer kommer att minimera fönstret, \"shade\" kommer att rulla upp fönstret, \"menu\" kommer att visa fönstermenyn, \"lower\" som kommer att lägga fönstret bakom alla andra, samt \"none\" som inte gör något."
-
-#: ../src/metacity.schemas.in.in.h:47
-msgid "This option provides additional control over how newly created windows get focus. It has two possible values; \"smart\" applies the user's normal focus mode, and \"strict\" results in windows started from a terminal not being given focus."
-msgstr "Detta alternativ tillhandahåller ytterligare kontroll över hur nyligen skapade fönster får fokus. Det har två möjliga värden; \"smart\" som verkställer användarens normala fokusläge, och \"strict\" som resulterar i att fönster som startar från en terminal inte ges fokus."
-
-#: ../src/metacity.schemas.in.in.h:48
-msgid "Turns on a visual indication when an application or the system issues a 'bell' or 'beep'; useful for the hard-of-hearing and for use in noisy environments."
-msgstr "Slår på en synlig indikering då ett program eller systemet sänder ut en signal eller \"pip\". Användbart för hörselskadade eller för användning i bullriga miljöer."
-
-#: ../src/metacity.schemas.in.in.h:49
-msgid "Use standard system font in window titles"
-msgstr "Använd standardsystemtypsnitt i fönstertitlar"
-
-#: ../src/metacity.schemas.in.in.h:50
-msgid "Visual Bell Type"
-msgstr "Typ av visuell signal"
-
-#: ../src/metacity.schemas.in.in.h:51
-msgid "Whether raising should be a side-effect of other user interactions"
-msgstr "Huruvida höjning ska vara en sidoeffekt av andra användarinteraktioner"
-
-#: ../src/metacity.schemas.in.in.h:52
-msgid "Whether to resize with the right button"
-msgstr "Huruvida högerknappen ändrar storlek"
-
-#: ../src/metacity.schemas.in.in.h:53
-msgid "Window focus mode"
-msgstr "Fönsterfokusläge"
-
-#: ../src/metacity.schemas.in.in.h:54
-msgid "Window title font"
-msgstr "Typsnitt för fönstertitel"
 
 #: ../src/tools/metacity-message.c:150
 #, c-format
@@ -1578,294 +1121,294 @@ msgstr "Alfavärdet måste vara mellan 0,0 (osynligt) och 1,0 (helt synligt), va
 msgid "Invalid title scale \"%s\" (must be one of xx-small,x-small,small,medium,large,x-large,xx-large)\n"
 msgstr "Ogiltig titelskala \"%s\" (måste vara ett av xx-small,x-small,small,medium,large,x-large,xx-large)\n"
 
-#: ../src/ui/theme-parser.c:936
-#: ../src/ui/theme-parser.c:999
-#: ../src/ui/theme-parser.c:1033
-#: ../src/ui/theme-parser.c:1136
+#: ../src/ui/theme-parser.c:947
+#: ../src/ui/theme-parser.c:1010
+#: ../src/ui/theme-parser.c:1044
+#: ../src/ui/theme-parser.c:1147
 #, c-format
 msgid "<%s> name \"%s\" used a second time"
 msgstr "<%s>-namnet \"%s\" använt en andra gång"
 
-#: ../src/ui/theme-parser.c:948
-#: ../src/ui/theme-parser.c:1045
-#: ../src/ui/theme-parser.c:1148
+#: ../src/ui/theme-parser.c:959
+#: ../src/ui/theme-parser.c:1056
+#: ../src/ui/theme-parser.c:1159
 #, c-format
 msgid "<%s> parent \"%s\" has not been defined"
 msgstr "<%s>-föräldern \"%s\" har inte definierats"
 
-#: ../src/ui/theme-parser.c:1058
+#: ../src/ui/theme-parser.c:1069
 #, c-format
 msgid "<%s> geometry \"%s\" has not been defined"
 msgstr "<%s>-geometrin \"%s\" har inte definierats"
 
-#: ../src/ui/theme-parser.c:1071
+#: ../src/ui/theme-parser.c:1082
 #, c-format
 msgid "<%s> must specify either a geometry or a parent that has a geometry"
 msgstr "<%s> måste ange antingen en geometri eller en förälder som har en geometri"
 
-#: ../src/ui/theme-parser.c:1113
+#: ../src/ui/theme-parser.c:1124
 msgid "You must specify a background for an alpha value to be meaningful"
 msgstr "Du måste ange en bakgrund för att ett alfavärde ska vara meningsfullt"
 
 # SUN CHANGED MESSAGE
-#: ../src/ui/theme-parser.c:1180
+#: ../src/ui/theme-parser.c:1191
 #, c-format
 msgid "Unknown type \"%s\" on <%s> element"
 msgstr "Okänd typ \"%s\" i <%s>-element"
 
 # SUN CHANGED MESSAGE
-#: ../src/ui/theme-parser.c:1191
+#: ../src/ui/theme-parser.c:1202
 #, c-format
 msgid "Unknown style_set \"%s\" on <%s> element"
 msgstr "Okänt style_set \"%s\" i <%s>-element"
 
-#: ../src/ui/theme-parser.c:1199
+#: ../src/ui/theme-parser.c:1210
 #, c-format
 msgid "Window type \"%s\" has already been assigned a style set"
 msgstr "Fönstertypen \"%s\" har redan tilldelats en stilsamling"
 
-#: ../src/ui/theme-parser.c:1229
-#: ../src/ui/theme-parser.c:1293
-#: ../src/ui/theme-parser.c:1519
-#: ../src/ui/theme-parser.c:2740
-#: ../src/ui/theme-parser.c:2786
-#: ../src/ui/theme-parser.c:2934
-#: ../src/ui/theme-parser.c:3126
-#: ../src/ui/theme-parser.c:3164
-#: ../src/ui/theme-parser.c:3202
-#: ../src/ui/theme-parser.c:3240
+#: ../src/ui/theme-parser.c:1240
+#: ../src/ui/theme-parser.c:1304
+#: ../src/ui/theme-parser.c:1530
+#: ../src/ui/theme-parser.c:2751
+#: ../src/ui/theme-parser.c:2797
+#: ../src/ui/theme-parser.c:2945
+#: ../src/ui/theme-parser.c:3137
+#: ../src/ui/theme-parser.c:3175
+#: ../src/ui/theme-parser.c:3213
+#: ../src/ui/theme-parser.c:3251
 #, c-format
 msgid "Element <%s> is not allowed below <%s>"
 msgstr "Elementet <%s> är inte tillåtet under <%s>"
 
-#: ../src/ui/theme-parser.c:1343
-#: ../src/ui/theme-parser.c:1357
-#: ../src/ui/theme-parser.c:1402
+#: ../src/ui/theme-parser.c:1354
+#: ../src/ui/theme-parser.c:1368
+#: ../src/ui/theme-parser.c:1413
 msgid "Cannot specify both \"button_width\"/\"button_height\" and \"aspect_ratio\" for buttons"
 msgstr "Kan inte ange både \"button_width\"/\"button_height\" och \"aspect_ratio\" för knappar"
 
-#: ../src/ui/theme-parser.c:1366
+#: ../src/ui/theme-parser.c:1377
 #, c-format
 msgid "Distance \"%s\" is unknown"
 msgstr "Avståndet \"%s\" är okänt"
 
-#: ../src/ui/theme-parser.c:1411
+#: ../src/ui/theme-parser.c:1422
 #, c-format
 msgid "Aspect ratio \"%s\" is unknown"
 msgstr "Förhållandet \"%s\" är okänt"
 
-#: ../src/ui/theme-parser.c:1473
+#: ../src/ui/theme-parser.c:1484
 #, c-format
 msgid "Border \"%s\" is unknown"
 msgstr "Ramen \"%s\" är okänd"
 
 # SUN CHANGED MESSAGE
-#: ../src/ui/theme-parser.c:1784
+#: ../src/ui/theme-parser.c:1795
 #, c-format
 msgid "No \"start_angle\" or \"from\" attribute on element <%s>"
 msgstr "Inget \"start_angle\"- eller \"from\"-attribut i element <%s>"
 
 # SUN CHANGED MESSAGE
-#: ../src/ui/theme-parser.c:1791
+#: ../src/ui/theme-parser.c:1802
 #, c-format
 msgid "No \"extent_angle\" or \"to\" attribute on element <%s>"
 msgstr "Inget \"extent_angle\"- eller \"to\"-attribut i element <%s>"
 
-#: ../src/ui/theme-parser.c:2031
+#: ../src/ui/theme-parser.c:2042
 #, c-format
 msgid "Did not understand value \"%s\" for type of gradient"
 msgstr "Förstod inte värdet \"%s\" för toningstyp"
 
-#: ../src/ui/theme-parser.c:2109
-#: ../src/ui/theme-parser.c:2484
+#: ../src/ui/theme-parser.c:2120
+#: ../src/ui/theme-parser.c:2495
 #, c-format
 msgid "Did not understand fill type \"%s\" for <%s> element"
 msgstr "Förstod inte fyllnadstypen \"%s\" för <%s>-element"
 
-#: ../src/ui/theme-parser.c:2276
-#: ../src/ui/theme-parser.c:2359
-#: ../src/ui/theme-parser.c:2422
+#: ../src/ui/theme-parser.c:2287
+#: ../src/ui/theme-parser.c:2370
+#: ../src/ui/theme-parser.c:2433
 #, c-format
 msgid "Did not understand state \"%s\" for <%s> element"
 msgstr "Förstod inte tillståndet \"%s\" för <%s>-element"
 
-#: ../src/ui/theme-parser.c:2286
-#: ../src/ui/theme-parser.c:2369
+#: ../src/ui/theme-parser.c:2297
+#: ../src/ui/theme-parser.c:2380
 #, c-format
 msgid "Did not understand shadow \"%s\" for <%s> element"
 msgstr "Förstod inte skuggan \"%s\" för <%s>-element"
 
-#: ../src/ui/theme-parser.c:2296
+#: ../src/ui/theme-parser.c:2307
 #, c-format
 msgid "Did not understand arrow \"%s\" for <%s> element"
 msgstr "Förstod inte pilen \"%s\" för <%s>-element"
 
-#: ../src/ui/theme-parser.c:2596
-#: ../src/ui/theme-parser.c:2692
+#: ../src/ui/theme-parser.c:2607
+#: ../src/ui/theme-parser.c:2703
 #, c-format
 msgid "No <draw_ops> called \"%s\" has been defined"
 msgstr "Inget <draw_ops> anropat \"%s\" har definierats"
 
-#: ../src/ui/theme-parser.c:2608
-#: ../src/ui/theme-parser.c:2704
+#: ../src/ui/theme-parser.c:2619
+#: ../src/ui/theme-parser.c:2715
 #, c-format
 msgid "Including draw_ops \"%s\" here would create a circular reference"
 msgstr "Att inkludera draw_ops \"%s\" här skulle skapa en cirkulärreferens"
 
-#: ../src/ui/theme-parser.c:2819
+#: ../src/ui/theme-parser.c:2830
 #, c-format
 msgid "Unknown position \"%s\" for frame piece"
 msgstr "Okänd position \"%s\" för ramdel"
 
-#: ../src/ui/theme-parser.c:2827
+#: ../src/ui/theme-parser.c:2838
 #, c-format
 msgid "Frame style already has a piece at position %s"
 msgstr "Ramstilen har redan en del vid position %s"
 
-#: ../src/ui/theme-parser.c:2844
-#: ../src/ui/theme-parser.c:2919
+#: ../src/ui/theme-parser.c:2855
+#: ../src/ui/theme-parser.c:2930
 #, c-format
 msgid "No <draw_ops> with the name \"%s\" has been defined"
 msgstr "Inget <draw_ops> med namnet \"%s\" har definierats"
 
-#: ../src/ui/theme-parser.c:2873
+#: ../src/ui/theme-parser.c:2884
 #, c-format
 msgid "Unknown function \"%s\" for button"
 msgstr "Okänd funktion \"%s\" för knapp"
 
-#: ../src/ui/theme-parser.c:2882
+#: ../src/ui/theme-parser.c:2893
 #, c-format
 msgid "Button function \"%s\" does not exist in this version (%d, need %d)"
 msgstr "Knappfunktionen \"%s\" finns inte i den här versionen (%d, behöver %d)"
 
-#: ../src/ui/theme-parser.c:2894
+#: ../src/ui/theme-parser.c:2905
 #, c-format
 msgid "Unknown state \"%s\" for button"
 msgstr "Okänt tillstånd \"%s\" för knapp"
 
-#: ../src/ui/theme-parser.c:2902
+#: ../src/ui/theme-parser.c:2913
 #, c-format
 msgid "Frame style already has a button for function %s state %s"
 msgstr "Ramstilen har redan en knapp för funktionen %s tillstånd %s"
 
-#: ../src/ui/theme-parser.c:2973
+#: ../src/ui/theme-parser.c:2984
 #, c-format
 msgid "\"%s\" is not a valid value for focus attribute"
 msgstr "\"%s\" är inte ett tillåtet värde för fokusattribut"
 
-#: ../src/ui/theme-parser.c:2982
+#: ../src/ui/theme-parser.c:2993
 #, c-format
 msgid "\"%s\" is not a valid value for state attribute"
 msgstr "\"%s\" är inte ett giltigt värde på tillståndsattribut"
 
-#: ../src/ui/theme-parser.c:2992
+#: ../src/ui/theme-parser.c:3003
 #, c-format
 msgid "A style called \"%s\" has not been defined"
 msgstr "En stil med namnet \"%s\" har inte definierats"
 
-#: ../src/ui/theme-parser.c:3013
-#: ../src/ui/theme-parser.c:3036
+#: ../src/ui/theme-parser.c:3024
+#: ../src/ui/theme-parser.c:3047
 #, c-format
 msgid "\"%s\" is not a valid value for resize attribute"
 msgstr "\"%s\" är inte ett giltigt värde för storleksändringsattribut"
 
 # SUN CHANGED MESSAGE
-#: ../src/ui/theme-parser.c:3047
+#: ../src/ui/theme-parser.c:3058
 #, c-format
 msgid "Should not have \"resize\" attribute on <%s> element for maximized/shaded states"
 msgstr "Bör inte ha \"resize\"-attribut i <%s>-element för maximerad/upprullat tillstånd"
 
 # SUN CHANGED MESSAGE
-#: ../src/ui/theme-parser.c:3061
+#: ../src/ui/theme-parser.c:3072
 #, c-format
 msgid "Should not have \"resize\" attribute on <%s> element for maximized states"
 msgstr "Bör inte ha \"resize\"-attribut i <%s>-element för maximerade tillstånd"
 
-#: ../src/ui/theme-parser.c:3075
-#: ../src/ui/theme-parser.c:3097
+#: ../src/ui/theme-parser.c:3086
+#: ../src/ui/theme-parser.c:3108
 #, c-format
 msgid "Style has already been specified for state %s resize %s focus %s"
 msgstr "Stilen har redan angivits för tillståndet %s storleksändring %s fokus %s"
 
-#: ../src/ui/theme-parser.c:3086
-#: ../src/ui/theme-parser.c:3108
+#: ../src/ui/theme-parser.c:3097
+#: ../src/ui/theme-parser.c:3119
 #, c-format
 msgid "Style has already been specified for state %s focus %s"
 msgstr "Stilen har redan angivits för tillståndet %s fokus %s"
 
-#: ../src/ui/theme-parser.c:3147
+#: ../src/ui/theme-parser.c:3158
 msgid "Can't have a two draw_ops for a <piece> element (theme specified a draw_ops attribute and also a <draw_ops> element, or specified two elements)"
 msgstr "Kan inte ha två draw_ops för ett <piece>-element (temat angav ett draw_ops-attribut och även ett <draw_ops>-element, eller angav två element)"
 
-#: ../src/ui/theme-parser.c:3185
+#: ../src/ui/theme-parser.c:3196
 msgid "Can't have a two draw_ops for a <button> element (theme specified a draw_ops attribute and also a <draw_ops> element, or specified two elements)"
 msgstr "Kan inte ha två draw_ops för ett <button>-element (temat angav ett draw_ops-attribut och även ett <draw_ops>-element, eller angav två element)"
 
-#: ../src/ui/theme-parser.c:3223
+#: ../src/ui/theme-parser.c:3234
 msgid "Can't have a two draw_ops for a <menu_icon> element (theme specified a draw_ops attribute and also a <draw_ops> element, or specified two elements)"
 msgstr "Kan inte ha två draw_ops för ett <menu_icon>-element (temat angav ett draw_ops-attribut och även ett <draw_ops>-element, eller angav två element)"
 
-#: ../src/ui/theme-parser.c:3271
+#: ../src/ui/theme-parser.c:3282
 #, c-format
 msgid "Outermost element in theme must be <metacity_theme> not <%s>"
 msgstr "Yttersta elementet i temat måste vara <metacity_theme>, inte <%s>"
 
-#: ../src/ui/theme-parser.c:3291
+#: ../src/ui/theme-parser.c:3302
 #, c-format
 msgid "Element <%s> is not allowed inside a name/author/date/description element"
 msgstr "Elementet <%s> är inte tillåtet inuti ett namn-/författare-/datum-/beskrivningselement"
 
-#: ../src/ui/theme-parser.c:3296
+#: ../src/ui/theme-parser.c:3307
 #, c-format
 msgid "Element <%s> is not allowed inside a <constant> element"
 msgstr "Elementet <%s> är inte tillåtet inuti ett <constant>-element"
 
-#: ../src/ui/theme-parser.c:3308
+#: ../src/ui/theme-parser.c:3319
 #, c-format
 msgid "Element <%s> is not allowed inside a distance/border/aspect_ratio element"
 msgstr "Elementet <%s> är inte tillåtet inuti ett distance/border/aspect_ratio-element"
 
-#: ../src/ui/theme-parser.c:3330
+#: ../src/ui/theme-parser.c:3341
 #, c-format
 msgid "Element <%s> is not allowed inside a draw operation element"
 msgstr "Elementet <%s> är inte tillåtet inuti ett ritningsåtgärdselement"
 
-#: ../src/ui/theme-parser.c:3340
-#: ../src/ui/theme-parser.c:3370
-#: ../src/ui/theme-parser.c:3375
-#: ../src/ui/theme-parser.c:3380
+#: ../src/ui/theme-parser.c:3351
+#: ../src/ui/theme-parser.c:3381
+#: ../src/ui/theme-parser.c:3386
+#: ../src/ui/theme-parser.c:3391
 #, c-format
 msgid "Element <%s> is not allowed inside a <%s> element"
 msgstr "Elementet <%s> är inte tillåtet inuti ett <%s>-element"
 
-#: ../src/ui/theme-parser.c:3602
+#: ../src/ui/theme-parser.c:3613
 msgid "No draw_ops provided for frame piece"
 msgstr "Inget draw_ops tillhandahålls för ramdel"
 
-#: ../src/ui/theme-parser.c:3617
+#: ../src/ui/theme-parser.c:3628
 msgid "No draw_ops provided for button"
 msgstr "Inget draw_ops tillhandahålls för knappen"
 
-#: ../src/ui/theme-parser.c:3669
+#: ../src/ui/theme-parser.c:3680
 #, c-format
 msgid "No text is allowed inside element <%s>"
 msgstr "Ingen text är tillåten inuti elementet <%s>"
 
-#: ../src/ui/theme-parser.c:3724
-#: ../src/ui/theme-parser.c:3736
-#: ../src/ui/theme-parser.c:3748
-#: ../src/ui/theme-parser.c:3760
-#: ../src/ui/theme-parser.c:3772
+#: ../src/ui/theme-parser.c:3735
+#: ../src/ui/theme-parser.c:3747
+#: ../src/ui/theme-parser.c:3759
+#: ../src/ui/theme-parser.c:3771
+#: ../src/ui/theme-parser.c:3783
 #, c-format
 msgid "<%s> specified twice for this theme"
 msgstr "<%s> är angiven två gånger för detta tema"
 
-#: ../src/ui/theme-parser.c:4040
+#: ../src/ui/theme-parser.c:4051
 #, c-format
 msgid "Failed to find a valid file for theme %s\n"
 msgstr "Misslyckades med att hitta en giltig fil för temat %s\n"
 
-#: ../src/ui/theme-parser.c:4096
+#: ../src/ui/theme-parser.c:4107
 #, c-format
 msgid "Theme file %s did not contain a root <metacity_theme> element"
 msgstr "Temafilen %s innehöll inte ett <metacity_theme>-rotelement"
@@ -2050,89 +1593,29 @@ msgstr "y-värdet var %d, %d förväntades"
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr "%d koordinatuttryck tolkades på %g sekunder (%g sekunder i medelvärde)\n"
 
-#~ msgid "Desktop"
-#~ msgstr "Skrivbord"
-#~ msgid "Switch to workspace on the left of the current workspace"
-#~ msgstr "Växla till arbetsytan till vänster om den aktuella arbetsytan"
-#~ msgid "Switch to workspace on the right of the current workspace"
-#~ msgstr "Växla till arbetsytan till höger om den aktuella arbetsytan"
-#~ msgid "Switch to workspace above the current workspace"
-#~ msgstr "Växla till arbetsytan ovanför den aktuella arbetsytan"
-#~ msgid "Switch to workspace below the current workspace"
-#~ msgstr "Växla till arbetsytan nedanför den aktuella arbetsytan"
-#~ msgid "Move between windows of an application, using a popup window"
-#~ msgstr "Flytta mellan ett programs fönster med ett popupfönster"
-#~ msgid ""
-#~ "Move backward between windows of an application, using a popup window"
-#~ msgstr ""
-#~ "Flytta baklänges mellan ett programs fönster, med hjälp av ett "
-#~ "popupfönster"
-#~ msgid "Move between windows, using a popup window"
-#~ msgstr "Flytta mellan fönster genom ett popupfönster"
-#~ msgid "Move backward between windows, using a popup window"
-#~ msgstr "Flytta baklänges mellan fönster, med hjälp av ett popupfönster"
-#~ msgid "Move between panels and the desktop, using a popup window"
-#~ msgstr "Flytta mellan paneler och skrivbordet med ett popupfönster"
-#~ msgid "Move backward between panels and the desktop, using a popup window"
-#~ msgstr ""
-#~ "Flytta baklänges mellan paneler och skrivbordet, med hjälp av ett "
-#~ "popupfönster"
-#~ msgid "Move backward between windows of an application immediately"
-#~ msgstr "Flytta baklänges mellan ett programs fönster omedelbart"
-#~ msgid "Move between windows immediately"
-#~ msgstr "Flytta mellan fönster omedelbart"
-#~ msgid "Move backward between windows immediately"
-#~ msgstr "Flytta baklänges mellan fönster omedelbart"
-#~ msgid "Move between panels and the desktop immediately"
-#~ msgstr "Flytta mellan paneler och skrivbordet omedelbart"
-#~ msgid "Move backward between panels and the desktop immediately"
-#~ msgstr "Flytta baklänges mellan paneler och skrivbordet omedelbart"
-#~ msgid "Show the panel's \"Run Application\" dialog box"
-#~ msgstr "Visa panelens \"Kör program\"-dialogruta"
-#~ msgid "Toggle whether a window will always be visible over other windows"
-#~ msgstr ""
-#~ "Växla huruvida ett fönster alltid kommer att vara synlig över andra "
-#~ "fönster"
-#~ msgid "Move window to north (top) side of screen"
-#~ msgstr "Flytta fönstret till norra (övre) sidan av skärmen"
-#~ msgid "Window Management"
-#~ msgstr "Fönsterhantering"
-#~ msgid "Failed to read saved session file %s: %s\n"
-#~ msgstr "Misslyckades med att läsa sparad sessionsfil %s: %s\n"
-#~ msgid "Open another one of these windows"
-#~ msgstr "Öppna ytterligare ett över dessa fönster"
-#~ msgid "This is a demo button with an 'open' icon"
-#~ msgstr "Detta är en exempelknapp med en \"öppna\"-ikon"
-#~ msgid "This is a demo button with a 'quit' icon"
-#~ msgstr "Detta är en exempelknapp med en \"avsluta\"-ikon"
-#~ msgid ""
-#~ "<big><b><tt>%s</tt> is not responding.</b></big>\n"
-#~ "\n"
-#~ "<i>You may choose to wait a short while for it to continue or force the "
-#~ "application to quit entirely.</i>"
-#~ msgstr ""
-#~ "<big><b><tt>%s</tt> svarar inte.</b></big>\n"
-#~ "\n"
-#~ "<i>Du kan välja att vänta en kort stund på det för att fortsätta eller "
-#~ "tvinga programmet att helt avslutas.</i>"
-#~ msgid ""
-#~ "Error launching metacity-dialog to warn about apps that don't support "
-#~ "session management: %s\n"
-#~ msgstr ""
-#~ "Fel vid start av metacity-dialog för att varna om program som inte stöder "
-#~ "sessionshantering: %s\n"
-#~ msgid "Title"
-#~ msgstr "Titel"
-#~ msgid "Class"
-#~ msgstr "Klass"
-#~ msgid ""
-#~ "There was an error running \"%s\":\n"
-#~ "%s."
-#~ msgstr ""
-#~ "Ett fel uppstod vid körning av \"%s\":\n"
-#~ "%s."
-#~ msgid "Failed to parse message \"%s\" from dialog process\n"
-#~ msgstr "Misslyckades med att tolka meddelandet \"%s\" från dialogprocess\n"
-#~ msgid "Error reading from dialog display process: %s\n"
-#~ msgstr "Fel vid läsning från dialogvisningsprocess: %s\n"
+#~ msgid "Launchers"
+#~ msgstr "Programstartare"
 
+#~ msgid "Screenshots"
+#~ msgstr "Skärmbilder"
+
+#~ msgid ""
+#~ "There was an error running <tt>%s</tt>:\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Ett fel uppstod vid körning av <tt>%s</tt>:\n"
+#~ "\n"
+#~ "%s"
+
+#~ msgid "No command %d has been defined.\n"
+#~ msgstr "Inget kommando %d har definierats.\n"
+
+#~ msgid "No terminal command has been defined.\n"
+#~ msgstr "Inget terminalkommando har definierats.\n"
+
+#~ msgid "GConf key '%s' is set to an invalid value\n"
+#~ msgstr "GConf-nyckeln \"%s\" är satt till ett ogiltigt värde\n"
+
+#~ msgid "%d stored in GConf key %s is out of range %d to %d\n"
+#~ msgstr "%d lagrad i GConf-nyckeln %s är inte i intervallet %d till %d\n"
