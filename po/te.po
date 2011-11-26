@@ -1,53 +1,203 @@
 # translation of metacity.master.te.po to Telugu
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) 2011 Metacity
+# This file is distributed under the same license as the metacity package.
 #
-# Hari krishna <hari@swecha.net>, 2011.
 # Krishna Babu K <kkrothap@redhat.com>, 2009.
-
+# Hari krishna <hari@swecha.net>, 2011.
+# Praveen Illa <mail2ipn@gmail.com>, 2011.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity.master.te\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=metacity&component=general\n"
-"POT-Creation-Date: 2011-02-09 18:28+0000\n"
-"PO-Revision-Date: 2009-09-11 15:11+0530\n"
-"Last-Translator: Hari krishna <hari@swecha.net>\n"
-"Language-Team: Telugu <en@li.org>\n"
+"product=metacity&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2011-11-18 22:20+0000\n"
+"PO-Revision-Date: 2011-11-26 23:16+0530\n"
+"Last-Translator: Praveen Illa <mail2ipn@gmail.com>\n"
+"Language-Team: Telugu <indlinux-telugu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"\n"
-
-#: ../src/50-metacity-launchers.xml.in.h:1
-msgid "Launchers"
-msgstr "ప్రయోగవేదికలు"
 
 #: ../src/50-metacity-navigation.xml.in.h:1
-msgid "Navigation"
-msgstr "విహరించునది"
+msgid "Hide all normal windows"
+msgstr "అన్ని సాధారణ విండోలను దాయి"
 
-#: ../src/50-metacity-screenshot.xml.in.h:1
-msgid "Screenshots"
-msgstr "తెరపట్టులు"
+#: ../src/50-metacity-navigation.xml.in.h:2
+msgid "Move to workspace above"
+msgstr "పనిచేస్తున్న చోటునుండీ ఎడమవైపుకు కదులు"
+
+#: ../src/50-metacity-navigation.xml.in.h:3
+msgid "Move to workspace below"
+msgstr "పనిచేస్తున్న చోటునుండీ కదులు "
+
+#: ../src/50-metacity-navigation.xml.in.h:4
+msgid "Move to workspace left"
+msgstr "పనిచేస్తున్న చోటునుండీ ఎడమవైపుకు కదులు "
+
+#: ../src/50-metacity-navigation.xml.in.h:5
+msgid "Move to workspace right"
+msgstr "పనిచేస్తున్న చోటునుండీ కుడివైపుకు కదులు "
+
+#: ../src/50-metacity-navigation.xml.in.h:6
+msgid "Move window one workspace down"
+msgstr "విండోను వొక పనిస్థలము క్రిందనకు కదుల్చుము"
+
+#: ../src/50-metacity-navigation.xml.in.h:7
+msgid "Move window one workspace to the left"
+msgstr "విండోను వొక పనిస్థలము ఎడమనకు కదుల్చుము"
+
+#: ../src/50-metacity-navigation.xml.in.h:8
+msgid "Move window one workspace to the right"
+msgstr "విండోను వొక పనిస్థలము కుడికు కదుల్చుము"
+
+#: ../src/50-metacity-navigation.xml.in.h:9
+msgid "Move window one workspace up"
+msgstr "విండోను వొక పనిస్థలము పైనకు కదుల్చుము"
+
+#: ../src/50-metacity-navigation.xml.in.h:10
+msgid "Move window to workspace 1"
+msgstr "విండోను పనిస్థలము 1కు కదుల్చుము"
+
+#: ../src/50-metacity-navigation.xml.in.h:11
+msgid "Move window to workspace 2"
+msgstr "విండోను పనిస్థలము 2కు కదుల్చుము"
+
+#: ../src/50-metacity-navigation.xml.in.h:12
+msgid "Move window to workspace 3"
+msgstr "విండోను పనిస్థలము 3కు కదుల్చుము"
+
+#: ../src/50-metacity-navigation.xml.in.h:13
+msgid "Move window to workspace 4"
+msgstr "విండోను పనిస్థలము 4కు కదుల్చుము"
+
+#: ../src/50-metacity-navigation.xml.in.h:14
+msgid "Navigation"
+msgstr "విహారణ"
+
+#: ../src/50-metacity-navigation.xml.in.h:15
+msgid "Switch applications"
+msgstr "అనువర్తనాలను మార్చు"
+
+#: ../src/50-metacity-navigation.xml.in.h:16
+msgid "Switch system controls"
+msgstr "వ్యవస్థ నియంత్రణల మీట"
+
+#: ../src/50-metacity-navigation.xml.in.h:17
+msgid "Switch system controls directly"
+msgstr "సూటిగా వ్యవస్థ నియంత్రణ కు మీట"
+
+#: ../src/50-metacity-navigation.xml.in.h:18
+msgid "Switch to workspace 1"
+msgstr "పనిస్థలము 1కు మారుము"
+
+#: ../src/50-metacity-navigation.xml.in.h:19
+msgid "Switch to workspace 2"
+msgstr "పనిస్థలము 2కు మారుము"
+
+#: ../src/50-metacity-navigation.xml.in.h:20
+msgid "Switch to workspace 3"
+msgstr "పనిస్థలము 3కు మారుము"
+
+#: ../src/50-metacity-navigation.xml.in.h:21
+msgid "Switch to workspace 4"
+msgstr "పనిస్థలము 4కు మారుము"
+
+#: ../src/50-metacity-navigation.xml.in.h:22
+msgid "Switch windows directly"
+msgstr "సూటిగా విండోకు మీట"
+
+#: ../src/50-metacity-navigation.xml.in.h:23
+msgid "Switch windows of an app directly"
+msgstr "అనువర్తనము యొక్క విండోలమద్య సూటిగా కదులుము"
+
+#: ../src/50-metacity-navigation.xml.in.h:24
+msgid "Switch windows of an application"
+msgstr "అనువర్తనము యొక్క విండోలమద్య  కదులుము"
 
 #: ../src/50-metacity-system.xml.in.h:1
+msgid "Show the activities overview"
+msgstr "కార్యకలాపాల పై పై పరిశీలనను చూపుము"
+
+#: ../src/50-metacity-system.xml.in.h:2
+msgid "Show the run command prompt"
+msgstr "రన్ కమాండు మెనూను చూపుము"
+
+#: ../src/50-metacity-system.xml.in.h:3
 msgid "System"
 msgstr "వ్యవస్ధ"
 
 #: ../src/50-metacity-windows.xml.in.h:1
+msgid "Activate the window menu"
+msgstr "విండో మెనూను క్రియాశీలముచేయుము"
+
+#: ../src/50-metacity-windows.xml.in.h:2
+msgid "Close window"
+msgstr "విండోను మూసివేయి"
+
+#: ../src/50-metacity-windows.xml.in.h:3
+msgid "Lower window below other windows"
+msgstr "విండోను క్రింది యితర విండోలకు తగ్గించుము"
+
+#: ../src/50-metacity-windows.xml.in.h:4
+msgid "Maximize window"
+msgstr "విండో పెద్దదిచేయి"
+
+#: ../src/50-metacity-windows.xml.in.h:5
+msgid "Maximize window horizontally"
+msgstr "విండోను అడ్డముగా పెద్దదిచేయుము"
+
+#: ../src/50-metacity-windows.xml.in.h:6
+msgid "Maximize window vertically"
+msgstr "విండోను నిలువుగా పెద్దదిచేయుము"
+
+#: ../src/50-metacity-windows.xml.in.h:7
+msgid "Minimize window"
+msgstr "విండో చిన్నదిచేయి"
+
+#: ../src/50-metacity-windows.xml.in.h:8
+msgid "Move window"
+msgstr "విండోను కదుపు"
+
+#: ../src/50-metacity-windows.xml.in.h:9
+msgid "Raise window above other windows"
+msgstr "విండోను యితర విండోలపైన వృద్దిచేయుము"
+
+#: ../src/50-metacity-windows.xml.in.h:10
+msgid "Raise window if covered, otherwise lower it"
+msgstr "ఒక విండో  కప్పివుంటే దానిని వృద్దిచేయుము, లేదా దానిని తగ్గించుము"
+
+#: ../src/50-metacity-windows.xml.in.h:11
+msgid "Resize window"
+msgstr "విండో పూర్వస్థితికి వుంచుము"
+
+#: ../src/50-metacity-windows.xml.in.h:12
+msgid "Restore window"
+msgstr "విండో పూర్వస్థితికి వుంచుము"
+
+#: ../src/50-metacity-windows.xml.in.h:13
+msgid "Toggle fullscreen mode"
+msgstr "పూర్తితెర రీతిని మార్చుము"
+
+#: ../src/50-metacity-windows.xml.in.h:14
+msgid "Toggle maximization state"
+msgstr "గరిష్ట స్థితికి మార్చుము"
+
+#: ../src/50-metacity-windows.xml.in.h:15
+msgid "Toggle shaded state"
+msgstr "షేడెడ్ స్థితిని మార్చుము"
+
+#: ../src/50-metacity-windows.xml.in.h:16
+msgid "Toggle window on all workspaces or one"
+msgstr "విండో అన్ని పనిస్థలములపై వన్నా లేక వొకటి  వున్నా మార్చుము"
+
+#: ../src/50-metacity-windows.xml.in.h:17
 msgid "Windows"
 msgstr "/విండోస్ "
 
-#: ../src/core/bell.c:299
+#: ../src/core/bell.c:296
 msgid "Bell event"
 msgstr "బెల్ ఘటన"
 
@@ -72,7 +222,7 @@ msgstr ""
 
 #: ../src/core/delete.c:110
 msgid "_Wait"
-msgstr "ఆగుము (_W)"
+msgstr "వేచివుండండి (_W)"
 
 #: ../src/core/delete.c:110
 msgid "_Force Quit"
@@ -116,30 +266,6 @@ msgid ""
 "binding\n"
 msgstr "వేరే యితర ప్రోగ్రామ్ యిప్పటికే కీ %sను సవరణిలు %xతో బందనం వలె వుపయోగిస్తోంది\n"
 
-#. Displayed when a keybinding which is
-#. * supposed to launch a program fails.
-#.
-#: ../src/core/keybindings.c:2343
-#, c-format
-msgid ""
-"There was an error running <tt>%s</tt>:\n"
-"\n"
-"%s"
-msgstr ""
-"అక్కడ వొక దోషము నడుచుచున్నది <tt>%s</tt>:\n"
-"\n"
-"%s"
-
-#: ../src/core/keybindings.c:2432
-#, c-format
-msgid "No command %d has been defined.\n"
-msgstr "ఏ ఆదేశము %d నిర్వచించబడిలేదు.\n"
-
-#: ../src/core/keybindings.c:3386
-#, c-format
-msgid "No terminal command has been defined.\n"
-msgstr "ఎటువంటి టెర్మినల్ ఆదేశము నిర్వచించబడిలేదు.\n"
-
 #: ../src/core/main.c:131
 #, c-format
 msgid ""
@@ -177,7 +303,7 @@ msgstr "విభాగమును దాచినదస్త్రమున�
 
 #: ../src/core/main.c:298
 msgid "Print version"
-msgstr "వివరణము ముద్రించు"
+msgstr "రూపాంతరాన్ని ముద్రించు"
 
 #: ../src/core/main.c:304
 msgid "Make X calls synchronous"
@@ -212,37 +338,9 @@ msgstr ""
 #: ../src/core/main.c:602
 #, c-format
 msgid "Failed to restart: %s\n"
-msgstr "పునఃప్రారంభమునకు విఫలమైంది: %s\n"
+msgstr "పునఃప్రారంభించుటలో విఫలమైంది: %s\n"
 
-#.
-#. * We found it, but it was invalid.  Complain.
-#. *
-#. * FIXME: This replicates the original behaviour, but in the future
-#. * we might consider reverting invalid keys to their original values.
-#. * (We know the old value, so we can look up a suitable string in
-#. * the symtab.)
-#. *
-#. * (Empty comment follows so the translators don't see this.)
-#.
-#.
-#: ../src/core/prefs.c:508 ../src/core/prefs.c:663
-#, c-format
-msgid "GConf key '%s' is set to an invalid value\n"
-msgstr "GConf కీ '%s' అనునది చెల్లని విలువునకు అమర్చబడింది\n"
-
-#: ../src/core/prefs.c:589 ../src/core/prefs.c:832
-#, c-format
-msgid "%d stored in GConf key %s is out of range %d to %d\n"
-msgstr "GConf కీ %2$s నందు నిల్వవున్న %1$d విస్తృతి %3$d నుండి %4$dను దాటిపోయింది\n"
-
-#: ../src/core/prefs.c:633 ../src/core/prefs.c:710 ../src/core/prefs.c:758
-#: ../src/core/prefs.c:822 ../src/core/prefs.c:1115 ../src/core/prefs.c:1131
-#: ../src/core/prefs.c:1148 ../src/core/prefs.c:1164
-#, c-format
-msgid "GConf key \"%s\" is set to an invalid type\n"
-msgstr "GConf కీ \"%s\" చెల్లని రకమునకు అమర్చబడింది\n"
-
-#: ../src/core/prefs.c:1234
+#: ../src/core/prefs.c:880
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -250,29 +348,20 @@ msgstr ""
 "విరిగిపోయిన అనువర్తనములకు పరిష్కారములు అచేతనము చేయబడినవి. కొన్ని అనువర్తనములు సరిగా ప్రవర్తించక "
 "పోవచ్చును.\n"
 
-#: ../src/core/prefs.c:1305
-#, c-format
-msgid "Could not parse font description \"%s\" from GConf key %s\n"
+#: ../src/core/prefs.c:949
+#, fuzzy, c-format
+#| msgid "Could not parse font description \"%s\" from GConf key %s\n"
+msgid "Could not parse font description \"%s\" from GSettings key %s\n"
 msgstr "ఫాంటు వివరణ \"%s\"ను GConf కీ %sనుండి పార్శ్ చేయలేక పోయింది\n"
 
-#: ../src/core/prefs.c:1367
+#: ../src/core/prefs.c:1015
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
 "modifier\n"
 msgstr "ఆకృతీకరణ డాటాబేస్ నందు కనిపించిన \"%s\" మౌస్ బటన్ సవరణికి చెల్లునటువంటి విలువ కాదు\n"
 
-#: ../src/core/prefs.c:1788
-#, c-format
-msgid "Error setting number of workspaces to %d: %s\n"
-msgstr "పనిస్థలముల సంఖ్యను %dకు అమర్చుటలో దోషము: %s\n"
-
-#: ../src/core/prefs.c:1959 ../src/core/prefs.c:2461
-#, c-format
-msgid "Workspace %d"
-msgstr "పనిస్థలము %d"
-
-#: ../src/core/prefs.c:1988 ../src/core/prefs.c:2166
+#: ../src/core/prefs.c:1494
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -281,15 +370,10 @@ msgstr ""
 "ఆకృతీకరణ డాటాబేస్ నందు కనిపించిన \"%s\" అనునది కీబందనము \"%s\" కొరకు చెల్లునటువంటి "
 "విలువకాదు\n"
 
-#: ../src/core/prefs.c:2542
+#: ../src/core/prefs.c:1601
 #, c-format
-msgid "Error setting name for workspace %d to \"%s\": %s\n"
-msgstr "పనిస్థలము %dకు \"%s\" నామము అమర్చుటలో దోషము: %s\n"
-
-#: ../src/core/prefs.c:2746
-#, c-format
-msgid "Error setting compositor status: %s\n"
-msgstr "కంపోజిటర్ స్థితిని అమర్చుటలో దోషము: %s\n"
+msgid "Workspace %d"
+msgstr "పనిస్థలము %d"
 
 #: ../src/core/screen.c:357
 #, c-format
@@ -320,46 +404,6 @@ msgstr "తెర %d ప్రదర్శన \"%s\"పైన యిప్పట
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "తెర %d ప్రదర్శన \"%s\"పైన విడుదల చేయలేకపోయింది\n"
-
-#. Translators: Please don't translate "Control", "Shift", etc, since these
-#. * are hardcoded (in gtk/gtkaccelgroup.c; it's not metacity's fault).
-#. * "disabled" must also stay as it is.
-#.
-#: ../src/core/schema-bindings.c:169
-msgid ""
-"The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
-"\n"
-"The parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action."
-msgstr ""
-"ఫార్మాట్ అనునది \"<Control>a\" వలె లేదా <Shift><Alt>F1\" వలె వుంటుంది.\n"
-"\n"
-"పార్శర్ అనునది అనువైనదిగా వుంటుంది మరియు చిన్న మరియు పెద్ద అక్షరములను అనుమతిస్తుంది, మరియు "
-"\"<Ctrl>\" మరియు \"<Ctrl>\" వంటి పొట్టిరూపాలను కూడా అనుమతిస్తుంది. మీరు ఐచ్చికాన్ని ప్రత్యేక "
-"స్ట్రింగు \"disabled\"కు అమర్చినట్లైతే, అప్పుడు ఈ చర్యకు యెటువంటి కీబందనము వుండదు."
-
-#: ../src/core/schema-bindings.c:177
-msgid ""
-"The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
-"\n"
-"The parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action.\n"
-"\n"
-"This keybinding may be reversed by holding down the \"shift\" key; "
-"therefore, \"shift\" cannot be one of the keys it uses."
-msgstr ""
-"ఫార్మాట్ అనునది \"<Control>a\" వలె లేదా <Shift><Alt>F1\" వలె వుంటుంది.\n"
-"\n"
-"పార్శర్ అనునది అనువైనదిగా వుంటుంది మరియు చిన్న మరియు పెద్ద అక్షరములను అనుమతిస్తుంది, మరియు "
-"\"<Ctrl>\" మరియు \"<Ctrl>\" వంటి పొట్టిరూపాలను కూడా అనుమతిస్తుంది. మీరు ఐచ్చికాన్ని ప్రత్యేక "
-"స్ట్రింగు \"disabled\"కు అమర్చినట్లైతే, అప్పుడు ఈ చర్యకు యెటువంటి కీబందనము వుండదు.\n"
-"\n"
-"ఈ కీబందనము \"shift\" కీను పట్టివుంచడం వలన వ్యతిరేకము కావచ్చును; అందువలన, ఇది వుపయోగించు "
-"కీలలో \"shift\" వుండకూడదు."
 
 #: ../src/core/session.c:842 ../src/core/session.c:849
 #, c-format
@@ -429,7 +473,7 @@ msgstr "లాగ్ దస్త్రము %sను fdopen() చెయుట�
 #: ../src/core/util.c:117
 #, c-format
 msgid "Opened log file %s\n"
-msgstr "తెరిచిన లాగ్ దస్త్రము %s\n"
+msgstr "తెరిచిన చిట్టా ఫైల్ %s\n"
 
 #: ../src/core/util.c:136 ../src/tools/metacity-message.c:176
 #, c-format
@@ -438,22 +482,21 @@ msgstr "వెర్బోస్ రీతికి మద్దతులేక�
 
 #: ../src/core/util.c:236
 msgid "Window manager: "
-msgstr "విండో నిర్వాహిక: "
+msgstr "విండో నిర్వాహకం: "
 
 #: ../src/core/util.c:388
 msgid "Bug in window manager: "
-msgstr "విండో నిర్వాహిక నందు బగ్: "
+msgstr "విండో నిర్వాహకం నందు బగ్: "
 
 #: ../src/core/util.c:421
 msgid "Window manager warning: "
-msgstr "విండో నిర్వాహిక హెచ్చరిక: "
+msgstr "విండో నిర్వాహకం హెచ్చరిక: "
 
 #: ../src/core/util.c:449
 msgid "Window manager error: "
-msgstr "విండో నిర్వాహిక దోషము: "
+msgstr "విండో నిర్వాహకం దోషము: "
 
 #. Translators: This is the title used on dialog boxes
-#. eof all-keybindings.h
 #: ../src/core/util.c:570 ../src/metacity.desktop.in.h:1
 #: ../src/metacity-wm.desktop.in.h:1
 msgid "Metacity"
@@ -479,8 +522,8 @@ msgstr ""
 #: ../src/core/window.c:6269
 #, c-format
 msgid ""
-"Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
-"d x %d and max size %d x %d; this doesn't make much sense.\n"
+"Window %s sets an MWM hint indicating it isn't resizable, but sets min size "
+"%d x %d and max size %d x %d; this doesn't make much sense.\n"
 msgstr ""
 "విండో %s అనునది అది పునఃపరిమాణం అవలేదు అనే MWM హింటును అమర్చినది, అయితే కనిష్ట పరిమాణమును %d x "
 "%dగా మరియు గరిష్ట పరిమాణమును %d x %dగా అమర్చినది;యిది అంత అర్దవంతంగా లేదు.\n"
@@ -547,435 +590,15 @@ msgid ""
 "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
 msgstr "లక్షణం %s విండో 0x%lx పైన చెల్లని UTF-8ను జాబితానందలి %d అంశముకొరకు కలిగివుంది\n"
 
-#: ../src/include/all-keybindings.h:88
-msgid "Switch to workspace 1"
-msgstr "పనిస్థలము 1కు మారుము"
-
-#: ../src/include/all-keybindings.h:90
-msgid "Switch to workspace 2"
-msgstr "పనిస్థలము 2కు మారుము"
-
-#: ../src/include/all-keybindings.h:92
-msgid "Switch to workspace 3"
-msgstr "పనిస్థలము 3కు మారుము"
-
-#: ../src/include/all-keybindings.h:94
-msgid "Switch to workspace 4"
-msgstr "పనిస్థలము 4కు మారుము"
-
-#: ../src/include/all-keybindings.h:96
-msgid "Switch to workspace 5"
-msgstr "పనిస్థలము 5కు మారుము"
-
-#: ../src/include/all-keybindings.h:98
-msgid "Switch to workspace 6"
-msgstr "పనిస్థలము 6కు మారుము"
-
-#: ../src/include/all-keybindings.h:100
-msgid "Switch to workspace 7"
-msgstr "పనిస్థలము 7కు మారుము"
-
-#: ../src/include/all-keybindings.h:102
-msgid "Switch to workspace 8"
-msgstr "పనిస్థలము 8కు మారుము"
-
-#: ../src/include/all-keybindings.h:104
-msgid "Switch to workspace 9"
-msgstr "పనిస్థలము 9కు మారుము"
-
-#: ../src/include/all-keybindings.h:106
-msgid "Switch to workspace 10"
-msgstr "పనిస్థలము 10కు మారుము"
-
-#: ../src/include/all-keybindings.h:108
-msgid "Switch to workspace 11"
-msgstr "పనిస్థలము 11కు మారుము"
-
-#: ../src/include/all-keybindings.h:110
-msgid "Switch to workspace 12"
-msgstr "పనిస్థలము 12కు మారుము"
-
-#: ../src/include/all-keybindings.h:122
-msgid "Move to workspace left"
-msgstr "పనిచేస్తున్న చోటునుండీ ఎడమవైపుకు కదులు "
-
-#: ../src/include/all-keybindings.h:126
-msgid "Move to workspace right"
-msgstr "పనిచేస్తున్న చోటునుండీ కుడివైపుకు కదులు "
-
-#: ../src/include/all-keybindings.h:130
-msgid "Move to workspace above"
-msgstr "పనిచేస్తున్న చోటునుండీ ఎడమవైపుకు కదులు "
-
-#: ../src/include/all-keybindings.h:134
-msgid "Move to workspace below"
-msgstr "పనిచేస్తున్న చోటునుండీ కదులు "
-
-#: ../src/include/all-keybindings.h:150
-msgid "Switch windows of an application"
-msgstr "అనువర్తనము యొక్క విండోలమద్య  కదులుము"
-
-#: ../src/include/all-keybindings.h:153
-msgid "Reverse switch windows of an application"
-msgstr "అనువర్తనము యొక్క విండోలమద్య  ప్రత్యస్థగా కదులుము"
-
-#: ../src/include/all-keybindings.h:156
-msgid "Switch applications"
-msgstr "కార్యక్షేత్రములు మీట"
-
-#: ../src/include/all-keybindings.h:159
-msgid "Reverse switch applications"
-msgstr "ప్రత్యస్ధ కార్యక్షేత్రముల మీట"
-
-#: ../src/include/all-keybindings.h:162
-msgid "Switch system controls"
-msgstr "నియంత్రణా వ్యవస్థ మీట"
-
-#: ../src/include/all-keybindings.h:165
-msgid "Reverse switch system controls"
-msgstr "ప్రత్యస్ధ నియంత్రణా వ్యవస్థ మీట"
-
-#: ../src/include/all-keybindings.h:169
-msgid "Switch windows of an app directly"
-msgstr "అనువర్తనము యొక్క విండోలమద్య సూటిగా కదులుము"
-
-#: ../src/include/all-keybindings.h:172
-msgid "Reverse switch windows of an app directly"
-msgstr "అనువర్తనము యొక్క విండోలమద్య ప్రత్యస్థగా కదులుము"
-
-#: ../src/include/all-keybindings.h:175
-msgid "Switch windows directly"
-msgstr "సూటిగా గవాక్షముకు మీట"
-
-#: ../src/include/all-keybindings.h:178
-msgid "Reverse switch windows directly"
-msgstr "ప్రత్యస్ధ సూటిగా గవాక్షముకు మీట"
-
-#: ../src/include/all-keybindings.h:181
-msgid "Switch system controls directly"
-msgstr "సూటిగా వ్యవస్థ నియంత్రణ కు మీట"
-
-#: ../src/include/all-keybindings.h:184
-msgid "Reverse switch system controls directly"
-msgstr "ప్రత్యస్థ సూటిగా వ్యవస్థ నియంత్రణ కు మీట"
-
-#: ../src/include/all-keybindings.h:189
-msgid "Hide all normal windows"
-msgstr "అన్ని సాదారణ విండోలను మరుగున వుంచుము "
-
-#: ../src/include/all-keybindings.h:192
-msgid "Show the activities overview"
-msgstr ""
-
-#: ../src/include/all-keybindings.h:195
-msgid "Show the run command prompt"
-msgstr "రన్ కమాండు మెనూను చూపుము"
-
-#: ../src/include/all-keybindings.h:236
-msgid "Take a screenshot"
-msgstr "తెరపట్టును తీయుము"
-
-#: ../src/include/all-keybindings.h:238
-msgid "Take a screenshot of a window"
-msgstr "విండోయొక్క తెరపట్టును తీయుము"
-
-#: ../src/include/all-keybindings.h:240
-msgid "Launch Terminal"
-msgstr "టెర్మినల్ ప్రయోగింపుము"
-
-#: ../src/include/all-keybindings.h:255
-msgid "Activate the window menu"
-msgstr "విండో మెనూను క్రియాశీలముచేయుము"
-
-#: ../src/include/all-keybindings.h:258
-msgid "Toggle fullscreen mode"
-msgstr "పూర్తితెర రీతిని మార్చుము"
-
-#: ../src/include/all-keybindings.h:260
-msgid "Toggle maximization state"
-msgstr "గరిష్ట స్థితికి మార్చుము"
-
-#: ../src/include/all-keybindings.h:262
-msgid "Toggle window always appearing on top"
-msgstr "మారిన కిటికి , ఎల్లపుడూ మీద భాగమునే కనిపించును"
-
-#: ../src/include/all-keybindings.h:264
-msgid "Maximize window"
-msgstr "విండో పెద్దదిచేయి"
-
-#: ../src/include/all-keybindings.h:266
-msgid "Restore window"
-msgstr "విండో పూర్వస్థితికి వుంచుము"
-
-#: ../src/include/all-keybindings.h:268
-msgid "Toggle shaded state"
-msgstr "షేడెడ్ స్థితిని మార్చుము"
-
-#: ../src/include/all-keybindings.h:270
-msgid "Minimize window"
-msgstr "విండో చిన్నది చేయుము"
-
-#: ../src/include/all-keybindings.h:272
-msgid "Close window"
-msgstr "గవాక్షమును మూయుము"
-
-#: ../src/include/all-keybindings.h:274
-msgid "Move window"
-msgstr "విండో కదుల్చుము"
-
-#: ../src/include/all-keybindings.h:276
-msgid "Resize window"
-msgstr "విండో పూర్వస్థితికి వుంచుము"
-
-#: ../src/include/all-keybindings.h:279
-msgid "Toggle window on all workspaces or one"
-msgstr "విండో అన్ని పనిస్థలములపై వన్నా లేక వొకటి  వున్నా మార్చుము"
-
-#: ../src/include/all-keybindings.h:283
-msgid "Move window to workspace 1"
-msgstr "విండోను పనిస్థలము 1కు కదుల్చుము"
-
-#: ../src/include/all-keybindings.h:286
-msgid "Move window to workspace 2"
-msgstr "విండోను పనిస్థలము 2కు కదుల్చుము"
-
-#: ../src/include/all-keybindings.h:289
-msgid "Move window to workspace 3"
-msgstr "విండోను పనిస్థలము 3కు కదుల్చుము"
-
-#: ../src/include/all-keybindings.h:292
-msgid "Move window to workspace 4"
-msgstr "విండోను పనిస్థలము 4కు కదుల్చుము"
-
-#: ../src/include/all-keybindings.h:295
-msgid "Move window to workspace 5"
-msgstr "విండోను పనిస్థలము 5కు కదుల్చుము"
-
-#: ../src/include/all-keybindings.h:298
-msgid "Move window to workspace 6"
-msgstr "విండోను పనిస్థలము 6కు కదుల్చుము"
-
-#: ../src/include/all-keybindings.h:301
-msgid "Move window to workspace 7"
-msgstr "విండోను పనిస్థలము 7కు కదుల్చుము"
-
-#: ../src/include/all-keybindings.h:304
-msgid "Move window to workspace 8"
-msgstr "విండోను పనిస్థలము 8కు కదుల్చుము"
-
-#: ../src/include/all-keybindings.h:307
-msgid "Move window to workspace 9"
-msgstr "విండోను పనిస్థలము 9కు కదుల్చుము"
-
-#: ../src/include/all-keybindings.h:310
-msgid "Move window to workspace 10"
-msgstr "విండోను పనిస్థలము 10కు కదుల్చుము"
-
-#: ../src/include/all-keybindings.h:313
-msgid "Move window to workspace 11"
-msgstr "విండోను పనిస్థలము 11కు కదుల్చుము"
-
-#: ../src/include/all-keybindings.h:316
-msgid "Move window to workspace 12"
-msgstr "విండోను పనిస్థలము 12కు కదుల్చుము"
-
-#: ../src/include/all-keybindings.h:328
-msgid "Move window one workspace to the left"
-msgstr "విండోను వొక పనిస్థలము ఎడమనకు కదుల్చుము"
-
-#: ../src/include/all-keybindings.h:331
-msgid "Move window one workspace to the right"
-msgstr "విండోను వొక పనిస్థలము కుడికు కదుల్చుము"
-
-#: ../src/include/all-keybindings.h:334
-msgid "Move window one workspace up"
-msgstr "విండోను వొక పనిస్థలము పైనకు కదుల్చుము"
-
-#: ../src/include/all-keybindings.h:337
-msgid "Move window one workspace down"
-msgstr "విండోను వొక పనిస్థలము క్రిందనకు కదుల్చుము"
-
-#: ../src/include/all-keybindings.h:340
-msgid "Raise window if covered, otherwise lower it"
-msgstr "ఒక విండో  కప్పివుంటే దానిని వృద్దిచేయుము, లేదా దానిని తగ్గించుము"
-
-#: ../src/include/all-keybindings.h:342
-msgid "Raise window above other windows"
-msgstr "విండోను యితర విండోలపైన వృద్దిచేయుము"
-
-#: ../src/include/all-keybindings.h:344
-msgid "Lower window below other windows"
-msgstr "విండోను క్రింది యితర విండోలకు తగ్గించుము"
-
-#: ../src/include/all-keybindings.h:348
-msgid "Maximize window vertically"
-msgstr "విండోను నిలువుగా పెద్దదిచేయుము"
-
-#: ../src/include/all-keybindings.h:352
-msgid "Maximize window horizontally"
-msgstr "విండోను అడ్డముగా పెద్దదిచేయుము"
-
-#: ../src/include/all-keybindings.h:356
-msgid "Move window to top left corner"
-msgstr "విండోను పైఎడమ  మూలకు కదుల్చుము"
-
-#: ../src/include/all-keybindings.h:359
-msgid "Move window to top right corner"
-msgstr "విండోను పైకుడి  మూలకు కదుల్చుము"
-
-#: ../src/include/all-keybindings.h:362
-msgid "Move window to bottom left corner"
-msgstr "విండోను క్రింది ఎడమ  మూలకు కదుల్చుము"
-
-#: ../src/include/all-keybindings.h:365
-msgid "Move window to bottom right corner"
-msgstr "విండోను క్రింది కుడి  మూలకు కదుల్చుము"
-
-#: ../src/include/all-keybindings.h:369
-msgid "Move window to top edge of screen"
-msgstr "విండోను పైచివరకు కదుల్చుము"
-
-#: ../src/include/all-keybindings.h:372
-msgid "Move window to bottom edge of screen"
-msgstr "విండోను క్రింది నకు కదుల్చుము"
-
-#: ../src/include/all-keybindings.h:375
-msgid "Move window to right side of screen"
-msgstr "విండోను కుడి  వైపునకు కదుల్చుము"
-
-#: ../src/include/all-keybindings.h:378
-msgid "Move window to left side of screen"
-msgstr "విండోను ఎడమ  వైపునకు కదుల్చుము"
-
-#: ../src/include/all-keybindings.h:381
-msgid "Move window to center of screen"
-msgstr "విండోను కేంద్రమునకు కదుల్చుము"
-
-#: ../src/metacity.schemas.in.in.h:1
-msgid "(Not implemented) Navigation works in terms of applications not windows"
-msgstr "(యింకా అభివృద్దిపరచలేదు) నావిగేషన్ అనునది అనువర్తనములను అనుసరిస్తుంది విండోలనుకాదు"
-
-#: ../src/metacity.schemas.in.in.h:2
-msgid ""
-"A font description string describing a font for window titlebars. The size "
-"from the description will only be used if the titlebar_font_size option is "
-"set to 0. Also, this option is disabled if the titlebar_uses_desktop_font "
-"option is set to true."
-msgstr ""
-"ఒక ఫాంటు వివరణ స్ట్రింగ్ విండో శీర్షికపట్టీల కొరకు ఫాంటును వివరిస్తుంది. titlebar_font_size "
-"ఐచ్చికము 0కు అమర్చితేనే వివరణనుండి పరిమాణం వుపయోగించబడుతుంది. titlebar_uses_desktop_font "
-"ఐచ్చికము సత్యంకు అమర్చితేనే ఈ ఐచ్చికము అచేతనము చేయబడతుంది."
-
-#: ../src/metacity.schemas.in.in.h:3
-msgid "Action on title bar double-click"
-msgstr "శీర్షిక పట్టీ రెండుసార్లు-నొక్కినప్పుడు జరుగవలసిన చర్య"
-
-#: ../src/metacity.schemas.in.in.h:4
-msgid "Action on title bar middle-click"
-msgstr "శీర్షిక పట్టీ మద్యనొక్కు-నొక్కినప్పుడు జరుగవలసిన చర్య"
-
-#: ../src/metacity.schemas.in.in.h:5
-msgid "Action on title bar right-click"
-msgstr "శీర్షిక పట్టీ కుడి-నొక్కు నొక్కినప్పుడు జరుగవలసిన చర్య"
-
-#: ../src/metacity.schemas.in.in.h:6
-msgid "Arrangement of buttons on the titlebar"
-msgstr "శీర్షికపట్టీపై బటన్సు అమరిక"
-
-#: ../src/metacity.schemas.in.in.h:7
-msgid ""
-"Arrangement of buttons on the titlebar. The value should be a string, such "
-"as \"menu:minimize,maximize,spacer,close\"; the colon separates the left "
-"corner of the window from the right corner, and the button names are comma-"
-"separated. Duplicate buttons are not allowed. Unknown button names are "
-"silently ignored so that buttons can be added in future metacity versions "
-"without breaking older versions. A special spacer tag can be used to insert "
-"some space between two adjacent buttons."
-msgstr ""
-"శీర్షిక పట్టీపై బటన్సు అమరిక. విలువ స్ట్రింగై వుండాలి,\"menu:minimize,maximize,spacer,close"
-"\" వంటివి; కోలన్ అనునది విండోయొక్క ఎడమ మూలను కుడి మూలనుండి వేరుచేస్తుంది, మరియు బటన్ నామములు "
-"కామాతో వేరుచేయబడునవి. నకిలీ బటన్సు అనుమతించబడవు. తెలియని బటన్సు వదిలివేయబడతాయి అలా బటన్సు భవిష్య "
-"మెటాసిటి వర్షన్లనందు పాత వర్షన్లను బ్రేక్ చేయకుండా జతచేయగలుగుతాము. రెండు పక్కపక్క బటన్లకు మద్యన "
-"స్పేస్‌ను చేర్చుటకు వొక ప్రత్యేక స్పేసర్ టాగ్ వుపయోగించబడుతుంది."
-
-#: ../src/metacity.schemas.in.in.h:8
-msgid "Automatically raises the focused window"
-msgstr "దృష్టివుంచిన విండోను స్వయంచాలకంగా రెట్టింపుచేస్తుంది"
-
-#: ../src/metacity.schemas.in.in.h:9
-msgid ""
-"Clicking a window while holding down this modifier key will move the window "
-"(left click), resize the window (middle click), or show the window menu "
-"(right click). The middle and right click operations may be swapped using "
-"the \"mouse_button_resize\" key. Modifier is expressed as \"&lt;Alt&gt;"
-"\" or \"&lt;Super&gt;\" for example."
-msgstr ""
-"ఈ సవరణి కీను పట్టివుంచినప్పుడు విండోపైన నొక్కుటవలన విండో కదులును (ఎడమ నొక్కుకు), విండో "
-"పునఃపరిమాణం జరుగును ( మద్య నొక్కుకు), లేదా విండో మెనూ చూపును (కుడి నొక్కుకు). మధ్య మరియు "
-"కుడి ఆపరేషన్లు మార్చుకొనవచ్చును \"mouse_button_resize\" కీను వుపయోగించి. ఉదాహరణకు సవరణి "
-"\"&lt;Alt&gt;\" లేదా \"&lt;Super&gt;\"గా తెలియజేయటమైనది."
-
-#: ../src/metacity.schemas.in.in.h:10
-msgid "Commands to run in response to keybindings"
-msgstr "కీబందనములకు స్పందనగా నడుపుటకు ఆదేశములు"
-
-#: ../src/metacity.schemas.in.in.h:11
+#: ../src/org.gnome.metacity.gschema.xml.in.h:1
 msgid "Compositing Manager"
 msgstr "కంపోజిటింగ్ నిర్వాహిక"
 
-#: ../src/metacity.schemas.in.in.h:12
-msgid "Control how new windows get focus"
-msgstr "కొత్త విండోలు యెలా దృష్టిని పొందవలెనో నియంత్రిస్తుంది"
-
-#: ../src/metacity.schemas.in.in.h:13
-msgid "Current theme"
-msgstr "ప్రస్తుత థీమ్"
-
-#: ../src/metacity.schemas.in.in.h:14
-msgid "Delay in milliseconds for the auto raise option"
-msgstr "స్వయంచాలకంగా రెట్టింపగు ఐచ్చికం కొరకు ఆలస్యం మిల్లిసెకనులలో"
-
-#: ../src/metacity.schemas.in.in.h:15
+#: ../src/org.gnome.metacity.gschema.xml.in.h:2
 msgid "Determines whether Metacity is a compositing manager."
 msgstr "మెటాసిటి కంపోజిటింగ్ నిర్వాహిక అవునోకాదో నిర్ధారిస్తుంది."
 
-#: ../src/metacity.schemas.in.in.h:16
-msgid ""
-"Determines whether applications or the system can generate audible 'beeps'; "
-"may be used in conjunction with 'visual bell' to allow silent 'beeps'."
-msgstr ""
-"వినబడే 'బీప్‌లను' జనియింపచేయవలసింది అనువర్తనములో లేక సిస్టమో నిర్ణయిస్తుంది; నిశ్శబ్ద 'బీప్‌లను' "
-"అనుమతించుటకు 'విజువల్ బెల్'తో కంజక్షన్ నందు వినియోగించవచ్చు."
-
-#: ../src/metacity.schemas.in.in.h:17
-msgid "Disable misfeatures that are required by old or broken applications"
-msgstr "పాత లేక విరిగిన అనువర్తనములకు అవసరమైన తగనిసౌలభ్యాలను అచేతనము చేయుము"
-
-#: ../src/metacity.schemas.in.in.h:18
-msgid "Enable Visual Bell"
-msgstr "విజువల్ బెల్ చేతనముచేయుము"
-
-#: ../src/metacity.schemas.in.in.h:19
-msgid ""
-"If set to true, and the focus mode is either \"sloppy\" or \"mouse\" then "
-"the focused window will be automatically raised after a delay specified by "
-"the auto_raise_delay key. This is not related to clicking on a window to "
-"raise it, nor to entering a window during drag-and-drop."
-msgstr ""
-"సత్యమునకు అమర్చితే, మరియు దృష్టి రీతి \"sloppy\" లేదా \"mouse\" అయితే అప్పుడు దృష్టిపెట్టిన విండో "
-"auto_raise_delay కీ ద్వారా తెలుపబడిన సమయం తర్వాత స్వయంచాలకంగా రెట్టింపుచేయబడుతుంది. లాగి-మరియు-"
-"వదులునప్పుడు విండోను ప్రవేశపెట్టుట లేక, రెట్టింపు చేయుటకు విండోపై నొక్కుట మొదలగువాటికి సంభందించినది "
-"కాదు."
-
-#: ../src/metacity.schemas.in.in.h:20
-msgid ""
-"If true, ignore the titlebar_font option, and use the standard application "
-"font for window titles."
-msgstr ""
-"సత్యమైతే, విండో శీర్షికల కొరకు titlebar_font ఐచ్చికాన్ని వదిలివేసి, విండో శీర్షికల కొరకు ప్రామాణిక "
-"అనువర్తనము ఫాంటును వుపయోగించుము."
-
-#: ../src/metacity.schemas.in.in.h:21
+#: ../src/org.gnome.metacity.gschema.xml.in.h:3
 msgid ""
 "If true, metacity will give the user less feedback by using wireframes, "
 "avoiding animations, or other means. This is a significant reduction in "
@@ -988,303 +611,9 @@ msgstr ""
 "అనువర్తనములు పనిచేయుటకు అనుమతినిస్తుంది, మరియు టెర్మినల్ సేవికలు అమ్ముడుపోవుటకు వుపయోగపడవచ్చు. "
 "ఏమైనప్పటికి, వైర్‌ఫ్రేమ్ సౌలభ్యము యాక్సెస్‌బిలిటి ఆనైవున్నప్పుడు అచేతనము చేయబడుతుంది."
 
-#: ../src/metacity.schemas.in.in.h:22
-msgid ""
-"If true, then Metacity works in terms of applications rather than windows. "
-"The concept is a bit abstract, but in general an application-based setup is "
-"more like the Mac and less like Windows. When you focus a window in "
-"application-based mode, all the windows in the application will be raised. "
-"Also, in application-based mode, focus clicks are not passed through to "
-"windows in other applications. Application-based mode is, however, largely "
-"unimplemented at the moment."
-msgstr ""
-"నిజమైతే, మెటాసిటి విండోలకన్నా అనువర్తనముల పట్ల పనిచేస్తుంది. ఈ విషయం కొంచెం సంక్షిప్తంగా వుటుంది, "
-"సాదారణంగా అనువర్తన-ఆధారిత అమర్పు అంటే ఎక్కువగా Macవలె తక్కువగా Windowsవలె వుంటుంది. అనువర్తన-"
-"ఆదారిత రీతిలో మీరు విండోపైన సూచికవుంచితే, ఆ అనువర్తనములోని అన్ని విండోలు లెగువబడతాయి. ఇంకా, అనువర్తన-"
-"ఆధారిత రీతినందు, దృష్టిసారించి(ఫోకస్) నొక్కేనొక్కులు యితర అనువర్తనములలోని విండోలకు వెళ్ళవు. ఏమైనప్పటికి, "
-"అనువర్తన-ఆధారిత రీతి యింకా పెద్దగా అభివృద్ది పరచబడలేదు."
-
-#: ../src/metacity.schemas.in.in.h:23
+#: ../src/org.gnome.metacity.gschema.xml.in.h:4
 msgid "If true, trade off usability for less resource usage"
 msgstr "సత్యమైతే, తక్కువ వనరుల వినియోగముకు తగ్గించును"
-
-#: ../src/metacity.schemas.in.in.h:24
-msgid "Modifier to use for modified window click actions"
-msgstr "సవరించిన విండో నొక్కు చర్యలకు వుపయోగించటానికి సవరణి"
-
-#: ../src/metacity.schemas.in.in.h:25
-msgid "Name of workspace"
-msgstr "పనిస్థలము నామము"
-
-#: ../src/metacity.schemas.in.in.h:26
-msgid "Number of workspaces"
-msgstr "పనిస్థలముల సంఖ్య"
-
-#: ../src/metacity.schemas.in.in.h:27
-msgid ""
-"Number of workspaces. Must be more than zero, and has a fixed maximum to "
-"prevent making the desktop unusable by accidentally asking for too many "
-"workspaces."
-msgstr ""
-"పనిస్థలముల సంఖ్య. తప్పక సున్నాకన్నా యెక్కువ వుండాలి, మరియు ప్రమాదవశాత్తు మరీ యెక్కువ పనిస్థలములను "
-"అడుగుటద్వారా డెస్కుటాపును అవినియోగపరచకుండా నిర్ధిష్ట గరిష్టాన్ని కలిగివుండాలి."
-
-#: ../src/metacity.schemas.in.in.h:28
-msgid "Run a defined command"
-msgstr "నిర్వచించిన ఆదేశమును నడుపుము"
-
-#: ../src/metacity.schemas.in.in.h:29
-msgid ""
-"Set this to true to resize with the right button and show a menu with the "
-"middle button while holding down the key given in \"mouse_button_modifier\"; "
-"set it to false to make it work the opposite way around."
-msgstr ""
-"\"mouse_button_modifier\" నందు యిచ్చిన కీను నొక్కివుంచినప్పుడు కుడి బటన్‌తో పునఃపరిమాణము "
-"చేయుటకు మరియు మద్య బటన్‌తో మెనూను చూపుటకు దీనిని నిజానికి అమర్చుము; ఇందుకు వ్యతిరేకంగా పనిచేయుటకు "
-"దీనిని అసత్యమునకు అమర్చుము."
-
-#: ../src/metacity.schemas.in.in.h:30
-msgid ""
-"Setting this option to false can lead to buggy behavior, so users are "
-"strongly discouraged from changing it from the default of true. Many actions "
-"(e.g. clicking in the client area, moving or resizing the window) normally "
-"raise the window as a side-effect. Setting this option to false, which is "
-"strongly discouraged, will decouple raising from other user actions, and "
-"ignore raise requests generated by applications. See http://bugzilla.gnome."
-"org/show_bug.cgi?id=445447#c6. Even when this option is false, windows can "
-"still be raised by an alt-left-click anywhere on the window, a normal click "
-"on the window decorations, or by special messages from pagers, such as "
-"activation requests from tasklist applets. This option is currently disabled "
-"in click-to-focus mode. Note that the list of ways to raise windows when "
-"raise_on_click is false does not include programmatic requests from "
-"applications to raise windows; such requests will be ignored regardless of "
-"the reason for the request. If you are an application developer and have a "
-"user complaining that your application does not work with this setting "
-"disabled, tell them it is _their_ fault for breaking their window manager "
-"and that they need to change this option back to true or live with the \"bug"
-"\" they requested."
-msgstr ""
-"ఈ ఐచ్చికాన్ని అసత్యమునకు మార్చుటవలన బగ్గీ ప్రవర్తనకు కారణమౌతుంది, అందువలన వినియోగదారులు దీనిని "
-"మార్చకుండా వుండుట గట్టిగా సిఫార్సు చేయడమైంది. (ఉ.దా. క్లైంట్ ఏరియాలో నొక్కుట, విండోను కదుల్చుట లేదా "
-"పునఃపరిమాణం చేయుట) వంటి చాలా చర్యలు సాదారణంగా విండోను వుప-ప్రభావంగా లేవనెత్తుతాయి. http://"
-"bugzilla.gnome.org/show_bug.cgi?id=445447#c6 ను చూడండి. ఈ ఐచ్చికం అసత్యంగా "
-"వున్నాకూడా, విండో పైన యెక్కడైనా alt-ఎడమ-నొక్కు నొక్కితే అది లేవనెత్తబడుతుంది, విండో అలంకరణలపై మామూలుగా "
-"నొక్కినా లెవనెత్తబడతుంది, లేదా పేజర్లనుండి ప్రత్యేక సందేశాలు వచ్చినా (కర్తవ్యజాబితా ఆప్లెట్స్ నుండి "
-"క్రియాశీలపరచమని అభ్యర్దనలు) వచ్చినా సరే. దృష్టి-సారించుటక-నొక్కు రీతిలో ఈ ఐచ్చికము ప్రస్తుతం "
-"అచేతనంగావుంది. నొక్కినప్పుడు-లేవనెత్తు అనునది అసత్యంగా వున్నప్పుడు విండో లేవనెత్తుటకు గల మార్గాలు "
-"అనువర్తనాలనుండి ప్రోగ్రామెటిక్ అభ్యర్ధనలను కలిగి వుండవు. మీరు వొక అనువర్తన అభివృద్దికారి అయివుండి ఈ "
-"అమరిక అచేతనపరచుట వలన మీ అనువర్తనమును కంపైల్ చేయలేని వినియోగదారిని కలిగివుంటే, వారు వారి విండోమేనేజర్‌ను "
-"బ్రేక్ చేయుట _వారి_తప్పని చెప్పండి మరియు ఈ ఐచ్చికాన్ని వారు సత్యమునకు అమర్చాలి లేదా వారు అభ్యర్దించిన \"బగ్"
-"\"తో వుండాలి."
-
-#: ../src/metacity.schemas.in.in.h:31
-msgid ""
-"Some applications disregard specifications in ways that result in window "
-"manager misfeatures. This option puts Metacity in a rigorously correct mode, "
-"which gives a more consistent user interface, provided one does not need to "
-"run any misbehaving applications."
-msgstr ""
-"కొన్ని అనువర్తనముల అసంబర్ధ విశదీకరణలు విండో నిర్వాహిక తప్పుగా ప్రవర్తించటకు కారణం కావచ్చు. ఈ "
-"ఐచ్చికము మెటాసిటి ఖచ్చితముగా సరైన రీతిలో వుండునట్లు చేస్తుంది, అది మరింత స్థిరమైన వినియోగదారి యింటర్ఫేసును "
-"అందిస్తుంది, తద్వారా తప్పుగా ప్రవర్తించే అనువర్తనములు నడుపవలసిన అవసరం వుండదు."
-
-#: ../src/metacity.schemas.in.in.h:32
-msgid "System Bell is Audible"
-msgstr "సిస్టమ్ బెల్ వినబడుతోంది"
-
-#: ../src/metacity.schemas.in.in.h:33
-msgid ""
-"Tells Metacity how to implement the visual indication that the system bell "
-"or another application 'bell' indicator has been rung. Currently there are "
-"two valid values, \"fullscreen\", which causes a fullscreen white-black "
-"flash, and \"frame_flash\" which causes the titlebar of the application "
-"which sent the bell signal to flash. If the application which sent the bell "
-"is unknown (as is usually the case for the default \"system beep\"), the "
-"currently focused window's titlebar is flashed."
-msgstr ""
-"సిస్టమ్ బెల్ కాని లేదా యితర అనువర్తనము బెల్ కాని మ్రోగినప్పుడు మెటాసిటి దృశ్య సూచనను యెలా అభివృద్దిపరచాలో "
-"తెలియచేస్తుంది. ప్రస్తుతం రెండు విధానాలు వున్నాయి, \"పూర్తితెర\", యిది తెరమొత్తం తెలుపు-నలుపు "
-"మెరుపులు యిస్తుంది, మరియు \"చట్రము-ఫ్లాష్\" యిది గంట మ్రోగించిన అనువర్తనము యొక్క శీర్షికపట్టీను "
-"మెరిపిస్తుంది. ఒకవేళ గంటను మ్రోగించిన అనువర్తనము తెలియకపోతే (సాదారణంగా అప్రమేయ \"సిస్టమ్ బీప్\" "
-"వంటిది), ప్రస్తుతం వున్న విండోయొక్క శీర్షికపట్టీ మెరుస్తుంది."
-
-#: ../src/metacity.schemas.in.in.h:34
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_N keys define keybindings "
-"that correspond to these commands. Pressing the keybinding for run_command_N "
-"will execute command_N."
-msgstr ""
-"ఈ ఆదేశాలకు చెందినటువంటి కీ బందనాలను /apps/metacity/global_keybindings/run_command_N "
-"కీలు నిర్వచిస్తాయి. run_command_N కొరకు కీబందనమును వత్తుట అనేది command_Nను నిర్వర్తిస్తుంది."
-
-#: ../src/metacity.schemas.in.in.h:35
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_screenshot key defines a "
-"keybinding which causes the command specified by this setting to be invoked."
-msgstr ""
-"ఈ అమరికద్వారా తెలుపబడిన ఆదేశము ప్రేరేపించబడుటకు కారణమగు కీబందనాన్ని /apps/metacity/"
-"global_keybindings/run_command_screenshot కీ నిర్వచిస్తుంది."
-
-#: ../src/metacity.schemas.in.in.h:36
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_window_screenshot key "
-"defines a keybinding which causes the command specified by this setting to "
-"be invoked."
-msgstr ""
-"ఈ అమరికద్వారా తెలుపబడిన ఆదేశము ప్రేరేపించబడుటకు కారణమగు కీబందనాన్ని /apps/metacity/"
-"global_keybindings/run_command_window_screenshot కీ నిర్వచిస్తుంది."
-
-#: ../src/metacity.schemas.in.in.h:37
-msgid ""
-"The keybinding that runs the correspondingly-numbered command in /apps/"
-"metacity/keybinding_commands The format looks like \"&lt;Control&gt;a\" or "
-"\"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows "
-"lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and "
-"\"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled\", "
-"then there will be no keybinding for this action."
-msgstr ""
-"/apps/metacity/keybinding_commands నందు సంభందిత-సంఖ్యగల ఆదేశమును నడిపే కీబందనము "
-"ఫార్మాట్ చూడటానికి యిలా వుంటుంది \"&lt;Control&gt;a\" లేదా \"&lt;Shift&gt;&lt;Alt&gt;F1"
-"\". పార్శర్ చక్కగా పనిచేస్తుంది మరియు చిన్న మరియు పెద్ద అక్షరాలను అనుమతిస్తుంది, \"&lt;Ctl&gt;\" "
-"మరియు\"&lt;Ctrl&gt;\" వంటి అబ్రివేషన్లను కూడా అనుమతిస్తుంది. మీరు ఐచ్చికాన్ని ప్రత్యేక స్ట్రింగ్ "
-"\"disabled\"కు అమర్చితే అప్పుడు ఈ చర్య కొరకు యెటువంటి కీబందనం వుండదు."
-
-#: ../src/metacity.schemas.in.in.h:38
-msgid "The name of a workspace."
-msgstr "పనిస్థలము నామము"
-
-#: ../src/metacity.schemas.in.in.h:39
-msgid "The screenshot command"
-msgstr "తెరపట్టు(స్క్రీన్‌షాట్) ఆదేశము"
-
-#: ../src/metacity.schemas.in.in.h:40
-msgid ""
-"The theme determines the appearance of window borders, titlebar, and so "
-"forth."
-msgstr "విండో హద్దులు, శీర్షికపట్టీ, మరియు మిగతావి కనిపించు విధానాన్ని థీమ్ నిర్ణయిస్తుంది."
-
-#: ../src/metacity.schemas.in.in.h:41
-msgid ""
-"The time delay before raising a window if auto_raise is set to true. The "
-"delay is given in thousandths of a second."
-msgstr ""
-"auto_raise సత్యమునకు అమర్చినట్లైతే విండో రెట్టింపు చేయుటకు ముందుగా పట్టవలసిన సమయం. పట్టేసమయం "
-"సెకనులో వెయ్యోవంతులలో యివ్వాలి."
-
-#: ../src/metacity.schemas.in.in.h:42
-msgid ""
-"The window focus mode indicates how windows are activated. It has three "
-"possible values; \"click\" means windows must be clicked in order to focus "
-"them, \"sloppy\" means windows are focused when the mouse enters the window, "
-"and \"mouse\" means windows are focused when the mouse enters the window and "
-"unfocused when the mouse leaves the window."
-msgstr ""
-"విండో సూచిక రీతి విండోలు యెలా క్రియాశీలం చేయబడతాయో సూచిస్తుంది. ఇది మూడు విలువలను కలిగివుంది; \"click"
-"\" అంటే విండోలను సూచించుటకు వాటిని తప్పక నొక్కవలెను, \"sloppy\" మౌస్ విండోలనందు ప్రవేశించగానే "
-"విండోలు సూచించబడతాయి, మరియు \"mouse\" అంటే మౌస్ విండోల నందు ప్రవేశించగానే సూచించబడతాయి మౌస్ "
-"విండోలనుండి బయటకురాగానే సూచనను కోల్పోతాయి."
-
-#: ../src/metacity.schemas.in.in.h:43
-msgid "The window screenshot command"
-msgstr "విండో తెరపట్టు(స్క్రీన్‌షాట్) ఆదేశము"
-
-#: ../src/metacity.schemas.in.in.h:44
-msgid ""
-"This option determines the effects of double-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"ఈ ఐచ్చికము శీర్షిక పట్టీపైన రెండు-పర్యాయాలు నొక్కినప్పుడు ప్రభావాలను నిర్ణయిస్తుంది. ప్రస్తుతం "
-"చెల్లునటువంటి విలువలు 'toggle_shade', యిది విండోను షేడ్/అన్‌షేడ్ చేస్తుంది, "
-"'toggle_maximize_horizontally' మరియు 'toggle_maximize_vertically' యిది ఆదేదిశలో "
-"విండోను పెద్దది/చిన్నది చేస్తుంది, 'minimize' యిది విండోను చిన్నది చేస్తుంది, 'shade' యిది విండోను పైకి "
-"చుడుతుంది, 'menu' యిది విండో మెనూను ప్రదర్శింప చేస్తుంది, 'lower' యిది విండోను యితర విండోల వెనుక "
-"వుంచుతుంది, మరియు 'none' యిది ఏమీ చేయదు."
-
-#: ../src/metacity.schemas.in.in.h:45
-msgid ""
-"This option determines the effects of middle-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"ఈ ఐచ్చికము శీర్షిక పట్టీపైన మద్య-నొక్కు నొక్కినప్పుడు ప్రభావాలను నిర్ణయిస్తుంది. ప్రస్తుతం చెల్లునటువంటి "
-"విలువలు 'toggle_shade', యిది విండోను షేడ్/అన్‌షేడ్ చేస్తుంది, "
-"'toggle_maximize_horizontally' మరియు 'toggle_maximize_vertically' యిది ఆదేదిశలో "
-"విండోను పెద్దది/చిన్నది చేస్తుంది, 'minimize' యిది విండోను చిన్నది చేస్తుంది, 'shade' యిది విండోను పైకి "
-"చుడుతుంది, 'menu' యిది విండో మెనూను ప్రదర్శింప చేస్తుంది, 'lower' యిది విండోను యితర విండోల వెనుక "
-"వుంచుతుంది, మరియు 'none' యిది ఏమీ చేయదు."
-
-#: ../src/metacity.schemas.in.in.h:46
-msgid ""
-"This option determines the effects of right-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"ఈ ఐచ్చికము శీర్షిక పట్టీపైన కుడి-నొక్కు నొక్కినప్పుడు ప్రభావాలను నిర్ణయిస్తుంది. ప్రస్తుతం చెల్లునటువంటి "
-"విలువలు 'toggle_shade', యిది విండోను షేడ్/అన్‌షేడ్ చేస్తుంది, "
-"'toggle_maximize_horizontally' మరియు 'toggle_maximize_vertically' యిది ఆదేదిశలో "
-"విండోను పెద్దది/చిన్నది చేస్తుంది, 'minimize' యిది విండోను చిన్నది చేస్తుంది, 'shade' యిది విండోను పైకి "
-"చుడుతుంది, 'menu' యిది విండో మెనూను ప్రదర్శింప చేస్తుంది, 'lower' యిది విండోను యితర విండోల వెనుక "
-"వుంచుతుంది, మరియు 'none' యిది ఏమీ చేయదు."
-
-#: ../src/metacity.schemas.in.in.h:47
-msgid ""
-"This option provides additional control over how newly created windows get "
-"focus. It has two possible values; \"smart\" applies the user's normal focus "
-"mode, and \"strict\" results in windows started from a terminal not being "
-"given focus."
-msgstr ""
-"కొత్తగా సృష్టించబడిన విండోలు యెలా సూచన పొందుతున్నాయి అనేదానిపై ఈ ఐచ్చికము అదనపు నియంత్రణను యిస్తుంది. "
-"ఇది రెండు విలువలను కలిగివుంది; \"smart\" వినియోగదారి యొక్క సాదారణ సూచనరీతిని ఆపాదిస్తుంది, మరియు "
-"\"strict\" టెర్మినల్ నుండి ప్రారంభించబడిన విండోలు సూచించబడకుండా చేస్తుంది."
-
-#: ../src/metacity.schemas.in.in.h:48
-msgid ""
-"Turns on a visual indication when an application or the system issues a "
-"'bell' or 'beep'; useful for the hard-of-hearing and for use in noisy "
-"environments."
-msgstr ""
-"అనువర్తనము లేదా సిస్టమ్ 'గంటను' లేదా 'బీప్'ను మ్రోగించనప్పుడు దృశ్య సంకేతమును ఆన్ చేస్తుంది; "
-"వినుట-కష్టతరం అయినవాళ్ళకు మరియు శబ్ధపూరిత వాతావరణంలో వున్న వారికి వుపయోగకరంగా వుటుంది."
-
-#: ../src/metacity.schemas.in.in.h:49
-msgid "Use standard system font in window titles"
-msgstr "విండో శీర్షికలనందు ప్రామాణిక సిస్టమ్ ఫాంటును వుపయోగించుము"
-
-#: ../src/metacity.schemas.in.in.h:50
-msgid "Visual Bell Type"
-msgstr "విజువల్ బెల్ రకము"
-
-#: ../src/metacity.schemas.in.in.h:51
-msgid "Whether raising should be a side-effect of other user interactions"
-msgstr "రెట్టింపు కావడం అనునది యితర వినియోగదారి యింటరాక్షన్సుకు ఉప-ప్రభావంలా వుండాలా"
-
-#: ../src/metacity.schemas.in.in.h:52
-msgid "Whether to resize with the right button"
-msgstr "కుడి బటన్‌తో పునఃపరిమాణము చేయాలా"
-
-#: ../src/metacity.schemas.in.in.h:53
-msgid "Window focus mode"
-msgstr "విండో దృష్టి రీతి"
-
-#: ../src/metacity.schemas.in.in.h:54
-msgid "Window title font"
-msgstr "విండో శీర్షిక ఫాంటు"
 
 #: ../src/tools/metacity-message.c:150
 #, c-format
@@ -1293,7 +622,7 @@ msgstr "వినియోగము: %s\n"
 
 #: ../src/ui/frames.c:1120
 msgid "Close Window"
-msgstr "గవాక్షమును మూసివేయు"
+msgstr "విండోను మూసివేయి"
 
 #: ../src/ui/frames.c:1123
 msgid "Window Menu"
@@ -1338,17 +667,17 @@ msgstr "విండో వొక పనిస్థలమునందు మా
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:70
 msgid "Mi_nimize"
-msgstr "క్రిందకుచిన్నదిచేయి (_n)"
+msgstr "కనిష్టీకరించు (_n)"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:72
 msgid "Ma_ximize"
-msgstr "పెద్దదిచేయి (_x)"
+msgstr "గరిష్టీకరించు (_x)"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:74
 msgid "Unma_ximize"
-msgstr "పెద్దదిచేయకు (_x)"
+msgstr "గరిష్టీకరించవద్దు (_x)"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:76
@@ -1368,7 +697,7 @@ msgstr "జరుపు(_M)"
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:82
 msgid "_Resize"
-msgstr "పున: పరిమాణము(_R)"
+msgstr "పరిమాణం మార్చు (_R)"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:84
@@ -1856,58 +1185,58 @@ msgstr ""
 "చెల్లని శీర్షిక స్కేల్ \"%s\" (తప్పక వీటిలో వొకటిగా వుండాలి xx-small,x-small,small,medium,"
 "large,x-large,xx-large)\n"
 
-#: ../src/ui/theme-parser.c:936 ../src/ui/theme-parser.c:999
-#: ../src/ui/theme-parser.c:1033 ../src/ui/theme-parser.c:1136
+#: ../src/ui/theme-parser.c:947 ../src/ui/theme-parser.c:1010
+#: ../src/ui/theme-parser.c:1044 ../src/ui/theme-parser.c:1147
 #, c-format
 msgid "<%s> name \"%s\" used a second time"
 msgstr "<%s> నామము \"%s\" రెండవసారి వుపయోగించబడింది"
 
-#: ../src/ui/theme-parser.c:948 ../src/ui/theme-parser.c:1045
-#: ../src/ui/theme-parser.c:1148
+#: ../src/ui/theme-parser.c:959 ../src/ui/theme-parser.c:1056
+#: ../src/ui/theme-parser.c:1159
 #, c-format
 msgid "<%s> parent \"%s\" has not been defined"
 msgstr "<%s> మాత్రుక(పేరెంట్) \"%s\" నిర్వచింపబడిలేదు"
 
-#: ../src/ui/theme-parser.c:1058
+#: ../src/ui/theme-parser.c:1069
 #, c-format
 msgid "<%s> geometry \"%s\" has not been defined"
 msgstr "<%s> జియోమెట్రీ \"%s\" నిర్వచింపబడిలేదు"
 
-#: ../src/ui/theme-parser.c:1071
+#: ../src/ui/theme-parser.c:1082
 #, c-format
 msgid "<%s> must specify either a geometry or a parent that has a geometry"
 msgstr "<%s> తప్పక జియెమెట్రీను లేదా జియెమెట్రీను కలిగివున్న మాత్రుకను తెలుపవలెను"
 
-#: ../src/ui/theme-parser.c:1113
+#: ../src/ui/theme-parser.c:1124
 msgid "You must specify a background for an alpha value to be meaningful"
 msgstr "అల్ఫా విలువ అర్ధవంతంగా వుండుటకు మీరు తప్పక బ్యాక్‌గ్రౌండును తెలుపవలెను"
 
-#: ../src/ui/theme-parser.c:1180
+#: ../src/ui/theme-parser.c:1191
 #, c-format
 msgid "Unknown type \"%s\" on <%s> element"
 msgstr "తెలియని రకము \"%s\" మూలకం <%s> పైన"
 
-#: ../src/ui/theme-parser.c:1191
+#: ../src/ui/theme-parser.c:1202
 #, c-format
 msgid "Unknown style_set \"%s\" on <%s> element"
 msgstr "తెలియని style_set \"%s\" మూలకం <%s> పైన"
 
-#: ../src/ui/theme-parser.c:1199
+#: ../src/ui/theme-parser.c:1210
 #, c-format
 msgid "Window type \"%s\" has already been assigned a style set"
 msgstr "విండో రకము \"%s\"కు యిప్పటికే వొక శైలి అమర్చబడింది"
 
-#: ../src/ui/theme-parser.c:1229 ../src/ui/theme-parser.c:1293
-#: ../src/ui/theme-parser.c:1519 ../src/ui/theme-parser.c:2740
-#: ../src/ui/theme-parser.c:2786 ../src/ui/theme-parser.c:2934
-#: ../src/ui/theme-parser.c:3126 ../src/ui/theme-parser.c:3164
-#: ../src/ui/theme-parser.c:3202 ../src/ui/theme-parser.c:3240
+#: ../src/ui/theme-parser.c:1240 ../src/ui/theme-parser.c:1304
+#: ../src/ui/theme-parser.c:1530 ../src/ui/theme-parser.c:2751
+#: ../src/ui/theme-parser.c:2797 ../src/ui/theme-parser.c:2945
+#: ../src/ui/theme-parser.c:3137 ../src/ui/theme-parser.c:3175
+#: ../src/ui/theme-parser.c:3213 ../src/ui/theme-parser.c:3251
 #, c-format
 msgid "Element <%s> is not allowed below <%s>"
 msgstr "<%s> మూల వస్తువు <%s> క్రింద అనుమతించబడవు"
 
-#: ../src/ui/theme-parser.c:1343 ../src/ui/theme-parser.c:1357
-#: ../src/ui/theme-parser.c:1402
+#: ../src/ui/theme-parser.c:1354 ../src/ui/theme-parser.c:1368
+#: ../src/ui/theme-parser.c:1413
 msgid ""
 "Cannot specify both \"button_width\"/\"button_height\" and \"aspect_ratio\" "
 "for buttons"
@@ -1915,123 +1244,123 @@ msgstr ""
 "బటన్ల కొరకు \"button_width\"/\"button_height\" మరియు \"aspect_ratio\" రెంటిని "
 "తెలుపలేదు"
 
-#: ../src/ui/theme-parser.c:1366
+#: ../src/ui/theme-parser.c:1377
 #, c-format
 msgid "Distance \"%s\" is unknown"
 msgstr "\"%s\" దూరం తెలియనిది"
 
-#: ../src/ui/theme-parser.c:1411
+#: ../src/ui/theme-parser.c:1422
 #, c-format
 msgid "Aspect ratio \"%s\" is unknown"
 msgstr "ఏస్పెక్ట్ రేషియో \"%s\" తెలియనిది"
 
-#: ../src/ui/theme-parser.c:1473
+#: ../src/ui/theme-parser.c:1484
 #, c-format
 msgid "Border \"%s\" is unknown"
 msgstr "హద్దు \"%s\" తెలియనిది"
 
-#: ../src/ui/theme-parser.c:1784
+#: ../src/ui/theme-parser.c:1795
 #, c-format
 msgid "No \"start_angle\" or \"from\" attribute on element <%s>"
 msgstr "మూలకం <%s> పైన యెటువంటి \"start_angle\" లేదా \"from\" యాట్రిబ్యూట్ లేదు"
 
-#: ../src/ui/theme-parser.c:1791
+#: ../src/ui/theme-parser.c:1802
 #, c-format
 msgid "No \"extent_angle\" or \"to\" attribute on element <%s>"
 msgstr "మూలకం <%s> పైన యెటువంటి \"extent_angle\" లేదా \"to\" యాట్రిబ్యూట్ లేదు"
 
-#: ../src/ui/theme-parser.c:2031
+#: ../src/ui/theme-parser.c:2042
 #, c-format
 msgid "Did not understand value \"%s\" for type of gradient"
 msgstr "గ్రేడియంట్ రకమునకు \"%s\" విలువ అర్దము కాలేదు"
 
-#: ../src/ui/theme-parser.c:2109 ../src/ui/theme-parser.c:2484
+#: ../src/ui/theme-parser.c:2120 ../src/ui/theme-parser.c:2495
 #, c-format
 msgid "Did not understand fill type \"%s\" for <%s> element"
 msgstr "ఫిల్ రకము \"%s\"ను మూలకం <%s> కొరకు అర్దము కాలేదు"
 
-#: ../src/ui/theme-parser.c:2276 ../src/ui/theme-parser.c:2359
-#: ../src/ui/theme-parser.c:2422
+#: ../src/ui/theme-parser.c:2287 ../src/ui/theme-parser.c:2370
+#: ../src/ui/theme-parser.c:2433
 #, c-format
 msgid "Did not understand state \"%s\" for <%s> element"
 msgstr "స్థితి \"%s\" మూలకం <%s> కొరకు అర్దము కాలేదు"
 
-#: ../src/ui/theme-parser.c:2286 ../src/ui/theme-parser.c:2369
+#: ../src/ui/theme-parser.c:2297 ../src/ui/theme-parser.c:2380
 #, c-format
 msgid "Did not understand shadow \"%s\" for <%s> element"
 msgstr "షాడో \"%s\" మూలకం <%s> కొరకు అర్దము కాలేదు"
 
-#: ../src/ui/theme-parser.c:2296
+#: ../src/ui/theme-parser.c:2307
 #, c-format
 msgid "Did not understand arrow \"%s\" for <%s> element"
 msgstr "ఏరో \"%s\" మూలకం <%s> కొరకు అర్దము కాలేదు"
 
-#: ../src/ui/theme-parser.c:2596 ../src/ui/theme-parser.c:2692
+#: ../src/ui/theme-parser.c:2607 ../src/ui/theme-parser.c:2703
 #, c-format
 msgid "No <draw_ops> called \"%s\" has been defined"
 msgstr "ఏ <draw_ops> పిలువబడిన \"%s\" నిర్వచింపబడలేదు"
 
-#: ../src/ui/theme-parser.c:2608 ../src/ui/theme-parser.c:2704
+#: ../src/ui/theme-parser.c:2619 ../src/ui/theme-parser.c:2715
 #, c-format
 msgid "Including draw_ops \"%s\" here would create a circular reference"
 msgstr "draw_ops \"%s\" కలుపుకొని యిక్కడ ఆవృత సంప్రదింపును సృష్టించేది"
 
-#: ../src/ui/theme-parser.c:2819
+#: ../src/ui/theme-parser.c:2830
 #, c-format
 msgid "Unknown position \"%s\" for frame piece"
 msgstr "చట్రము ముక్క కొరకు తెలియని స్థానము \"%s\""
 
-#: ../src/ui/theme-parser.c:2827
+#: ../src/ui/theme-parser.c:2838
 #, c-format
 msgid "Frame style already has a piece at position %s"
 msgstr "చట్రము శైలి యిప్పటికే స్థానము %s వద్ద ముక్కను కలిగివుంది"
 
-#: ../src/ui/theme-parser.c:2844 ../src/ui/theme-parser.c:2919
+#: ../src/ui/theme-parser.c:2855 ../src/ui/theme-parser.c:2930
 #, c-format
 msgid "No <draw_ops> with the name \"%s\" has been defined"
 msgstr "ఎటువంటి <draw_ops> నామము \"%s\"తో నిర్వచింపబడిలేవు"
 
-#: ../src/ui/theme-parser.c:2873
+#: ../src/ui/theme-parser.c:2884
 #, c-format
 msgid "Unknown function \"%s\" for button"
 msgstr "బటన్ కొరకు తెలియని ప్రమేయం \"%s\""
 
-#: ../src/ui/theme-parser.c:2882
+#: ../src/ui/theme-parser.c:2893
 #, c-format
 msgid "Button function \"%s\" does not exist in this version (%d, need %d)"
 msgstr "బటన్ ప్రమేయం \"%s\" ఈ వర్షన్ (%d, %d అవసరము) నందు లేదు"
 
-#: ../src/ui/theme-parser.c:2894
+#: ../src/ui/theme-parser.c:2905
 #, c-format
 msgid "Unknown state \"%s\" for button"
 msgstr "బటన్ కొరకు తెలియని స్థితి \"%s\""
 
-#: ../src/ui/theme-parser.c:2902
+#: ../src/ui/theme-parser.c:2913
 #, c-format
 msgid "Frame style already has a button for function %s state %s"
 msgstr "ప్రమేయం %s స్థితి %s కొరకు చట్రము శైలి యిప్పటికే బటన్ కలిగివుంది"
 
-#: ../src/ui/theme-parser.c:2973
+#: ../src/ui/theme-parser.c:2984
 #, c-format
 msgid "\"%s\" is not a valid value for focus attribute"
 msgstr "\"%s\" అనునది ఫోకస్ యాట్రిబ్యూట్‌నకు చెల్లునటువంటి విలువ కాదు"
 
-#: ../src/ui/theme-parser.c:2982
+#: ../src/ui/theme-parser.c:2993
 #, c-format
 msgid "\"%s\" is not a valid value for state attribute"
 msgstr "\"%s\" అనునది స్థితి యాట్రిబ్యూట్‌నకు చెల్లునటువంటి విలువకాదు"
 
-#: ../src/ui/theme-parser.c:2992
+#: ../src/ui/theme-parser.c:3003
 #, c-format
 msgid "A style called \"%s\" has not been defined"
 msgstr "\"%s\" అని పిలువబడే శైలి యింకా నిర్వచింపబడిలేదు"
 
-#: ../src/ui/theme-parser.c:3013 ../src/ui/theme-parser.c:3036
+#: ../src/ui/theme-parser.c:3024 ../src/ui/theme-parser.c:3047
 #, c-format
 msgid "\"%s\" is not a valid value for resize attribute"
 msgstr "పునఃపరిమాణ యాట్రిబ్యూట్‌నకు \"%s\" చెల్లునటువంటి విలువకాదు"
 
-#: ../src/ui/theme-parser.c:3047
+#: ../src/ui/theme-parser.c:3058
 #, c-format
 msgid ""
 "Should not have \"resize\" attribute on <%s> element for maximized/shaded "
@@ -2039,23 +1368,23 @@ msgid ""
 msgstr ""
 "మూలకం <%s> పైన పెద్దదిచేయబడిన/షేడ్‌చేయబడిన స్థితుల కొరకు \"resize\" యాట్రిబ్యూట్‌ను కలిగివుండ కూడదు"
 
-#: ../src/ui/theme-parser.c:3061
+#: ../src/ui/theme-parser.c:3072
 #, c-format
 msgid ""
 "Should not have \"resize\" attribute on <%s> element for maximized states"
 msgstr "మూలకం <%s> పైన పెద్దదిచేయబడిన స్థితి కొరకు \"resize\" యాట్రిబ్యూట్‌ను కలిగివుండ కూడదు"
 
-#: ../src/ui/theme-parser.c:3075 ../src/ui/theme-parser.c:3097
+#: ../src/ui/theme-parser.c:3086 ../src/ui/theme-parser.c:3108
 #, c-format
 msgid "Style has already been specified for state %s resize %s focus %s"
 msgstr "స్థితి %s పునఃపరిమాణము %s ఫోకస్ %s కొరకు శైలి యిప్పటికే తెలుపబడింది"
 
-#: ../src/ui/theme-parser.c:3086 ../src/ui/theme-parser.c:3108
+#: ../src/ui/theme-parser.c:3097 ../src/ui/theme-parser.c:3119
 #, c-format
 msgid "Style has already been specified for state %s focus %s"
 msgstr "స్థితి %s ఫోకస్ %s కొరకు స్థితి యిప్పటికే తెలుపబడింది"
 
-#: ../src/ui/theme-parser.c:3147
+#: ../src/ui/theme-parser.c:3158
 msgid ""
 "Can't have a two draw_ops for a <piece> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
@@ -2063,7 +1392,7 @@ msgstr ""
 "రెండు draw_opsను <piece> మూలకంకు (draw_ops యాట్రిబ్యూట్ తెలిపిన థీమ్ మరియు <draw_ops> "
 "మూలకం, లేదా తెలుపబడిన రెండు మూలకాలు) కలిగివుండలేదు"
 
-#: ../src/ui/theme-parser.c:3185
+#: ../src/ui/theme-parser.c:3196
 msgid ""
 "Can't have a two draw_ops for a <button> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
@@ -2071,7 +1400,7 @@ msgstr ""
 "రెండు draw_opsను <button> మూలకంకు (draw_ops యాట్రిబ్యూట్ తెలిపిన థీమ్ మరియు <draw_ops> "
 "మూలకం, లేదా తెలుపబడిన రెండు మూలకాలు) కలిగివుండలేదు"
 
-#: ../src/ui/theme-parser.c:3223
+#: ../src/ui/theme-parser.c:3234
 msgid ""
 "Can't have a two draw_ops for a <menu_icon> element (theme specified a "
 "draw_ops attribute and also a <draw_ops> element, or specified two elements)"
@@ -2079,65 +1408,65 @@ msgstr ""
 "రెండు draw_opsను <menu_icon> మూలకంకు (draw_ops యాట్రిబ్యూట్ తెలిపిన థీమ్ మరియు "
 "<draw_ops> మూలకం, లేదా తెలుపబడిన రెండు మూలకాలు) కలిగివుండలేదు"
 
-#: ../src/ui/theme-parser.c:3271
+#: ../src/ui/theme-parser.c:3282
 #, c-format
 msgid "Outermost element in theme must be <metacity_theme> not <%s>"
 msgstr "థీమ్ నందు బయటి మూలకం <metacity_theme> <%s> కాకూడదు"
 
-#: ../src/ui/theme-parser.c:3291
+#: ../src/ui/theme-parser.c:3302
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a name/author/date/description element"
 msgstr "మూలకం <%s> అనునది name/author/date/description మూలకంనందు అనుమతించబడదు"
 
-#: ../src/ui/theme-parser.c:3296
+#: ../src/ui/theme-parser.c:3307
 #, c-format
 msgid "Element <%s> is not allowed inside a <constant> element"
 msgstr "మూలకం <%s> అనునది <constant> మూలకంనందు అనుమతించబడదు"
 
-#: ../src/ui/theme-parser.c:3308
+#: ../src/ui/theme-parser.c:3319
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a distance/border/aspect_ratio element"
 msgstr "మూలకం <%s> అనునది distance/border/aspect_ratio మూలకంనందు అనుమతించబడదు"
 
-#: ../src/ui/theme-parser.c:3330
+#: ../src/ui/theme-parser.c:3341
 #, c-format
 msgid "Element <%s> is not allowed inside a draw operation element"
 msgstr "మూలకము <%s> అనునది డ్రా ఆపరేషన్ మూలకంనందు అనుమతించబడదు"
 
-#: ../src/ui/theme-parser.c:3340 ../src/ui/theme-parser.c:3370
-#: ../src/ui/theme-parser.c:3375 ../src/ui/theme-parser.c:3380
+#: ../src/ui/theme-parser.c:3351 ../src/ui/theme-parser.c:3381
+#: ../src/ui/theme-parser.c:3386 ../src/ui/theme-parser.c:3391
 #, c-format
 msgid "Element <%s> is not allowed inside a <%s> element"
 msgstr "మూల వస్తువు <%s> లోపలికి అనుమతించబడదు ఒక <%s> మూల వస్తువు"
 
-#: ../src/ui/theme-parser.c:3602
+#: ../src/ui/theme-parser.c:3613
 msgid "No draw_ops provided for frame piece"
 msgstr "చట్రపు ముక్క కొరకు యెటువంటి draw_ops అందివ్వబడలేదు"
 
-#: ../src/ui/theme-parser.c:3617
+#: ../src/ui/theme-parser.c:3628
 msgid "No draw_ops provided for button"
 msgstr "బటన్ కొరకు యెటువంటి draw_ops అందివ్వబడలేదు"
 
-#: ../src/ui/theme-parser.c:3669
+#: ../src/ui/theme-parser.c:3680
 #, c-format
 msgid "No text is allowed inside element <%s>"
 msgstr "<%s> మూల వస్తువు లోపల ఎటువంటి పాఠం అనుమతించబడదు"
 
-#: ../src/ui/theme-parser.c:3724 ../src/ui/theme-parser.c:3736
-#: ../src/ui/theme-parser.c:3748 ../src/ui/theme-parser.c:3760
-#: ../src/ui/theme-parser.c:3772
+#: ../src/ui/theme-parser.c:3735 ../src/ui/theme-parser.c:3747
+#: ../src/ui/theme-parser.c:3759 ../src/ui/theme-parser.c:3771
+#: ../src/ui/theme-parser.c:3783
 #, c-format
 msgid "<%s> specified twice for this theme"
 msgstr "ఈ థీమ్ కొరకు <%s> రెండుసార్లు తెలుపబడింది"
 
-#: ../src/ui/theme-parser.c:4040
+#: ../src/ui/theme-parser.c:4051
 #, c-format
 msgid "Failed to find a valid file for theme %s\n"
 msgstr "థీమ్ %s కొరకు విలువైన ఫైలును కనుగొనుటలో విఫలమైంది\n"
 
-#: ../src/ui/theme-parser.c:4096
+#: ../src/ui/theme-parser.c:4107
 #, c-format
 msgid "Theme file %s did not contain a root <metacity_theme> element"
 msgstr "థీమ్ ఫైలు %s అనునది root <metacity_theme> మూలకం కలిగిలేదు"
@@ -2326,6 +1655,548 @@ msgstr "y విలువ %d, %d కావలసివుంది"
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr "%d కోఆర్డినేట్ సమీకరణాలు %g సెకనులలో(%g సెకనులు సగటున) పార్శ్ చేయబడినవి\n"
+
+#~ msgid "Launchers"
+#~ msgstr "ప్రయోగవేదికలు"
+
+#~ msgid "Screenshots"
+#~ msgstr "తెరపట్టులు"
+
+#~ msgid ""
+#~ "There was an error running <tt>%s</tt>:\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "అక్కడ వొక దోషము నడుచుచున్నది <tt>%s</tt>:\n"
+#~ "\n"
+#~ "%s"
+
+#~ msgid "No command %d has been defined.\n"
+#~ msgstr "ఏ ఆదేశము %d నిర్వచించబడిలేదు.\n"
+
+#~ msgid "No terminal command has been defined.\n"
+#~ msgstr "ఎటువంటి టెర్మినల్ ఆదేశము నిర్వచించబడిలేదు.\n"
+
+#~ msgid "GConf key '%s' is set to an invalid value\n"
+#~ msgstr "GConf కీ '%s' అనునది చెల్లని విలువునకు అమర్చబడింది\n"
+
+#~ msgid "%d stored in GConf key %s is out of range %d to %d\n"
+#~ msgstr "GConf కీ %2$s నందు నిల్వవున్న %1$d విస్తృతి %3$d నుండి %4$dను దాటిపోయింది\n"
+
+#~ msgid "GConf key \"%s\" is set to an invalid type\n"
+#~ msgstr "GConf కీ \"%s\" చెల్లని రకమునకు అమర్చబడింది\n"
+
+#~ msgid "Error setting number of workspaces to %d: %s\n"
+#~ msgstr "పనిస్థలముల సంఖ్యను %dకు అమర్చుటలో దోషము: %s\n"
+
+#~ msgid "Error setting name for workspace %d to \"%s\": %s\n"
+#~ msgstr "పనిస్థలము %dకు \"%s\" నామము అమర్చుటలో దోషము: %s\n"
+
+#~ msgid "Error setting compositor status: %s\n"
+#~ msgstr "కంపోజిటర్ స్థితిని అమర్చుటలో దోషము: %s\n"
+
+#~ msgid ""
+#~ "The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
+#~ "\n"
+#~ "The parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to "
+#~ "the special string \"disabled\", then there will be no keybinding for "
+#~ "this action."
+#~ msgstr ""
+#~ "ఫార్మాట్ అనునది \"<Control>a\" వలె లేదా <Shift><Alt>F1\" వలె వుంటుంది.\n"
+#~ "\n"
+#~ "పార్శర్ అనునది అనువైనదిగా వుంటుంది మరియు చిన్న మరియు పెద్ద అక్షరములను అనుమతిస్తుంది, మరియు "
+#~ "\"<Ctrl>\" మరియు \"<Ctrl>\" వంటి పొట్టిరూపాలను కూడా అనుమతిస్తుంది. మీరు ఐచ్చికాన్ని ప్రత్యేక "
+#~ "స్ట్రింగు \"disabled\"కు అమర్చినట్లైతే, అప్పుడు ఈ చర్యకు యెటువంటి కీబందనము వుండదు."
+
+#~ msgid ""
+#~ "The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
+#~ "\n"
+#~ "The parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to "
+#~ "the special string \"disabled\", then there will be no keybinding for "
+#~ "this action.\n"
+#~ "\n"
+#~ "This keybinding may be reversed by holding down the \"shift\" key; "
+#~ "therefore, \"shift\" cannot be one of the keys it uses."
+#~ msgstr ""
+#~ "ఫార్మాట్ అనునది \"<Control>a\" వలె లేదా <Shift><Alt>F1\" వలె వుంటుంది.\n"
+#~ "\n"
+#~ "పార్శర్ అనునది అనువైనదిగా వుంటుంది మరియు చిన్న మరియు పెద్ద అక్షరములను అనుమతిస్తుంది, మరియు "
+#~ "\"<Ctrl>\" మరియు \"<Ctrl>\" వంటి పొట్టిరూపాలను కూడా అనుమతిస్తుంది. మీరు ఐచ్చికాన్ని ప్రత్యేక "
+#~ "స్ట్రింగు \"disabled\"కు అమర్చినట్లైతే, అప్పుడు ఈ చర్యకు యెటువంటి కీబందనము వుండదు.\n"
+#~ "\n"
+#~ "ఈ కీబందనము \"shift\" కీను పట్టివుంచడం వలన వ్యతిరేకము కావచ్చును; అందువలన, ఇది "
+#~ "వుపయోగించు కీలలో \"shift\" వుండకూడదు."
+
+#~ msgid "Switch to workspace 5"
+#~ msgstr "పనిస్థలము 5కు మారుము"
+
+#~ msgid "Switch to workspace 6"
+#~ msgstr "పనిస్థలము 6కు మారుము"
+
+#~ msgid "Switch to workspace 7"
+#~ msgstr "పనిస్థలము 7కు మారుము"
+
+#~ msgid "Switch to workspace 8"
+#~ msgstr "పనిస్థలము 8కు మారుము"
+
+#~ msgid "Switch to workspace 9"
+#~ msgstr "పనిస్థలము 9కు మారుము"
+
+#~ msgid "Switch to workspace 10"
+#~ msgstr "పనిస్థలము 10కు మారుము"
+
+#~ msgid "Switch to workspace 11"
+#~ msgstr "పనిస్థలము 11కు మారుము"
+
+#~ msgid "Switch to workspace 12"
+#~ msgstr "పనిస్థలము 12కు మారుము"
+
+#~ msgid "Reverse switch windows of an application"
+#~ msgstr "అనువర్తనము యొక్క విండోలమద్య  ప్రత్యస్థగా కదులుము"
+
+#~ msgid "Reverse switch applications"
+#~ msgstr "ప్రత్యస్ధ కార్యక్షేత్రముల మీట"
+
+#~ msgid "Reverse switch system controls"
+#~ msgstr "ప్రత్యస్ధ నియంత్రణా వ్యవస్థ మీట"
+
+#~ msgid "Reverse switch windows of an app directly"
+#~ msgstr "అనువర్తనము యొక్క విండోలమద్య ప్రత్యస్థగా కదులుము"
+
+#~ msgid "Reverse switch windows directly"
+#~ msgstr "ప్రత్యస్ధ సూటిగా గవాక్షముకు మీట"
+
+#~ msgid "Reverse switch system controls directly"
+#~ msgstr "ప్రత్యస్థ సూటిగా వ్యవస్థ నియంత్రణ కు మీట"
+
+#~ msgid "Take a screenshot"
+#~ msgstr "తెరపట్టును తీయుము"
+
+#~ msgid "Take a screenshot of a window"
+#~ msgstr "విండోయొక్క తెరపట్టును తీయుము"
+
+#~ msgid "Launch Terminal"
+#~ msgstr "టెర్మినల్ ప్రయోగింపుము"
+
+#~ msgid "Toggle window always appearing on top"
+#~ msgstr "మారిన కిటికి , ఎల్లపుడూ మీద భాగమునే కనిపించును"
+
+#~ msgid "Move window to workspace 5"
+#~ msgstr "విండోను పనిస్థలము 5కు కదుల్చుము"
+
+#~ msgid "Move window to workspace 6"
+#~ msgstr "విండోను పనిస్థలము 6కు కదుల్చుము"
+
+#~ msgid "Move window to workspace 7"
+#~ msgstr "విండోను పనిస్థలము 7కు కదుల్చుము"
+
+#~ msgid "Move window to workspace 8"
+#~ msgstr "విండోను పనిస్థలము 8కు కదుల్చుము"
+
+#~ msgid "Move window to workspace 9"
+#~ msgstr "విండోను పనిస్థలము 9కు కదుల్చుము"
+
+#~ msgid "Move window to workspace 10"
+#~ msgstr "విండోను పనిస్థలము 10కు కదుల్చుము"
+
+#~ msgid "Move window to workspace 11"
+#~ msgstr "విండోను పనిస్థలము 11కు కదుల్చుము"
+
+#~ msgid "Move window to workspace 12"
+#~ msgstr "విండోను పనిస్థలము 12కు కదుల్చుము"
+
+#~ msgid "Move window to top left corner"
+#~ msgstr "విండోను పైఎడమ  మూలకు కదుల్చుము"
+
+#~ msgid "Move window to top right corner"
+#~ msgstr "విండోను పైకుడి  మూలకు కదుల్చుము"
+
+#~ msgid "Move window to bottom left corner"
+#~ msgstr "విండోను క్రింది ఎడమ  మూలకు కదుల్చుము"
+
+#~ msgid "Move window to bottom right corner"
+#~ msgstr "విండోను క్రింది కుడి  మూలకు కదుల్చుము"
+
+#~ msgid "Move window to top edge of screen"
+#~ msgstr "విండోను పైచివరకు కదుల్చుము"
+
+#~ msgid "Move window to bottom edge of screen"
+#~ msgstr "విండోను క్రింది నకు కదుల్చుము"
+
+#~ msgid "Move window to right side of screen"
+#~ msgstr "విండోను కుడి  వైపునకు కదుల్చుము"
+
+#~ msgid "Move window to left side of screen"
+#~ msgstr "విండోను ఎడమ  వైపునకు కదుల్చుము"
+
+#~ msgid "Move window to center of screen"
+#~ msgstr "విండోను కేంద్రమునకు కదుల్చుము"
+
+#~ msgid ""
+#~ "(Not implemented) Navigation works in terms of applications not windows"
+#~ msgstr "(యింకా అభివృద్దిపరచలేదు) నావిగేషన్ అనునది అనువర్తనములను అనుసరిస్తుంది విండోలనుకాదు"
+
+#~ msgid ""
+#~ "A font description string describing a font for window titlebars. The "
+#~ "size from the description will only be used if the titlebar_font_size "
+#~ "option is set to 0. Also, this option is disabled if the "
+#~ "titlebar_uses_desktop_font option is set to true."
+#~ msgstr ""
+#~ "ఒక ఫాంటు వివరణ స్ట్రింగ్ విండో శీర్షికపట్టీల కొరకు ఫాంటును వివరిస్తుంది. titlebar_font_size "
+#~ "ఐచ్చికము 0కు అమర్చితేనే వివరణనుండి పరిమాణం వుపయోగించబడుతుంది. "
+#~ "titlebar_uses_desktop_font ఐచ్చికము సత్యంకు అమర్చితేనే ఈ ఐచ్చికము అచేతనము చేయబడతుంది."
+
+#~ msgid "Action on title bar double-click"
+#~ msgstr "శీర్షిక పట్టీ రెండుసార్లు-నొక్కినప్పుడు జరుగవలసిన చర్య"
+
+#~ msgid "Action on title bar middle-click"
+#~ msgstr "శీర్షిక పట్టీ మద్యనొక్కు-నొక్కినప్పుడు జరుగవలసిన చర్య"
+
+#~ msgid "Action on title bar right-click"
+#~ msgstr "శీర్షిక పట్టీ కుడి-నొక్కు నొక్కినప్పుడు జరుగవలసిన చర్య"
+
+#~ msgid "Arrangement of buttons on the titlebar"
+#~ msgstr "శీర్షికపట్టీపై బటన్సు అమరిక"
+
+#~ msgid ""
+#~ "Arrangement of buttons on the titlebar. The value should be a string, "
+#~ "such as \"menu:minimize,maximize,spacer,close\"; the colon separates the "
+#~ "left corner of the window from the right corner, and the button names are "
+#~ "comma-separated. Duplicate buttons are not allowed. Unknown button names "
+#~ "are silently ignored so that buttons can be added in future metacity "
+#~ "versions without breaking older versions. A special spacer tag can be "
+#~ "used to insert some space between two adjacent buttons."
+#~ msgstr ""
+#~ "శీర్షిక పట్టీపై బటన్సు అమరిక. విలువ స్ట్రింగై వుండాలి,\"menu:minimize,maximize,spacer,"
+#~ "close\" వంటివి; కోలన్ అనునది విండోయొక్క ఎడమ మూలను కుడి మూలనుండి వేరుచేస్తుంది, మరియు బటన్ "
+#~ "నామములు కామాతో వేరుచేయబడునవి. నకిలీ బటన్సు అనుమతించబడవు. తెలియని బటన్సు వదిలివేయబడతాయి అలా "
+#~ "బటన్సు భవిష్య మెటాసిటి వర్షన్లనందు పాత వర్షన్లను బ్రేక్ చేయకుండా జతచేయగలుగుతాము. రెండు పక్కపక్క "
+#~ "బటన్లకు మద్యన స్పేస్‌ను చేర్చుటకు వొక ప్రత్యేక స్పేసర్ టాగ్ వుపయోగించబడుతుంది."
+
+#~ msgid "Automatically raises the focused window"
+#~ msgstr "దృష్టివుంచిన విండోను స్వయంచాలకంగా రెట్టింపుచేస్తుంది"
+
+#~ msgid ""
+#~ "Clicking a window while holding down this modifier key will move the "
+#~ "window (left click), resize the window (middle click), or show the window "
+#~ "menu (right click). The middle and right click operations may be swapped "
+#~ "using the \"mouse_button_resize\" key. Modifier is expressed as \"&lt;"
+#~ "Alt&gt;\" or \"&lt;Super&gt;\" for example."
+#~ msgstr ""
+#~ "ఈ సవరణి కీను పట్టివుంచినప్పుడు విండోపైన నొక్కుటవలన విండో కదులును (ఎడమ నొక్కుకు), విండో "
+#~ "పునఃపరిమాణం జరుగును ( మద్య నొక్కుకు), లేదా విండో మెనూ చూపును (కుడి నొక్కుకు). మధ్య మరియు "
+#~ "కుడి ఆపరేషన్లు మార్చుకొనవచ్చును \"mouse_button_resize\" కీను వుపయోగించి. ఉదాహరణకు "
+#~ "సవరణి \"&lt;Alt&gt;\" లేదా \"&lt;Super&gt;\"గా తెలియజేయటమైనది."
+
+#~ msgid "Commands to run in response to keybindings"
+#~ msgstr "కీబందనములకు స్పందనగా నడుపుటకు ఆదేశములు"
+
+#~ msgid "Control how new windows get focus"
+#~ msgstr "కొత్త విండోలు యెలా దృష్టిని పొందవలెనో నియంత్రిస్తుంది"
+
+#~ msgid "Current theme"
+#~ msgstr "ప్రస్తుత థీమ్"
+
+#~ msgid "Delay in milliseconds for the auto raise option"
+#~ msgstr "స్వయంచాలకంగా రెట్టింపగు ఐచ్చికం కొరకు ఆలస్యం మిల్లిసెకనులలో"
+
+#~ msgid ""
+#~ "Determines whether applications or the system can generate audible "
+#~ "'beeps'; may be used in conjunction with 'visual bell' to allow silent "
+#~ "'beeps'."
+#~ msgstr ""
+#~ "వినబడే 'బీప్‌లను' జనియింపచేయవలసింది అనువర్తనములో లేక సిస్టమో నిర్ణయిస్తుంది; నిశ్శబ్ద 'బీప్‌లను' "
+#~ "అనుమతించుటకు 'విజువల్ బెల్'తో కంజక్షన్ నందు వినియోగించవచ్చు."
+
+#~ msgid "Disable misfeatures that are required by old or broken applications"
+#~ msgstr "పాత లేక విరిగిన అనువర్తనములకు అవసరమైన తగనిసౌలభ్యాలను అచేతనము చేయుము"
+
+#~ msgid "Enable Visual Bell"
+#~ msgstr "విజువల్ బెల్ చేతనముచేయుము"
+
+#~ msgid ""
+#~ "If set to true, and the focus mode is either \"sloppy\" or \"mouse\" then "
+#~ "the focused window will be automatically raised after a delay specified "
+#~ "by the auto_raise_delay key. This is not related to clicking on a window "
+#~ "to raise it, nor to entering a window during drag-and-drop."
+#~ msgstr ""
+#~ "సత్యమునకు అమర్చితే, మరియు దృష్టి రీతి \"sloppy\" లేదా \"mouse\" అయితే అప్పుడు దృష్టిపెట్టిన "
+#~ "విండో auto_raise_delay కీ ద్వారా తెలుపబడిన సమయం తర్వాత స్వయంచాలకంగా రెట్టింపుచేయబడుతుంది. "
+#~ "లాగి-మరియు-వదులునప్పుడు విండోను ప్రవేశపెట్టుట లేక, రెట్టింపు చేయుటకు విండోపై నొక్కుట మొదలగువాటికి "
+#~ "సంభందించినది కాదు."
+
+#~ msgid ""
+#~ "If true, ignore the titlebar_font option, and use the standard "
+#~ "application font for window titles."
+#~ msgstr ""
+#~ "సత్యమైతే, విండో శీర్షికల కొరకు titlebar_font ఐచ్చికాన్ని వదిలివేసి, విండో శీర్షికల కొరకు ప్రామాణిక "
+#~ "అనువర్తనము ఫాంటును వుపయోగించుము."
+
+#~ msgid ""
+#~ "If true, then Metacity works in terms of applications rather than "
+#~ "windows. The concept is a bit abstract, but in general an application-"
+#~ "based setup is more like the Mac and less like Windows. When you focus a "
+#~ "window in application-based mode, all the windows in the application will "
+#~ "be raised. Also, in application-based mode, focus clicks are not passed "
+#~ "through to windows in other applications. Application-based mode is, "
+#~ "however, largely unimplemented at the moment."
+#~ msgstr ""
+#~ "నిజమైతే, మెటాసిటి విండోలకన్నా అనువర్తనముల పట్ల పనిచేస్తుంది. ఈ విషయం కొంచెం సంక్షిప్తంగా వుటుంది, "
+#~ "సాదారణంగా అనువర్తన-ఆధారిత అమర్పు అంటే ఎక్కువగా Macవలె తక్కువగా Windowsవలె వుంటుంది. "
+#~ "అనువర్తన-ఆదారిత రీతిలో మీరు విండోపైన సూచికవుంచితే, ఆ అనువర్తనములోని అన్ని విండోలు లెగువబడతాయి. "
+#~ "ఇంకా, అనువర్తన-ఆధారిత రీతినందు, దృష్టిసారించి(ఫోకస్) నొక్కేనొక్కులు యితర అనువర్తనములలోని విండోలకు "
+#~ "వెళ్ళవు. ఏమైనప్పటికి, అనువర్తన-ఆధారిత రీతి యింకా పెద్దగా అభివృద్ది పరచబడలేదు."
+
+#~ msgid "Modifier to use for modified window click actions"
+#~ msgstr "సవరించిన విండో నొక్కు చర్యలకు వుపయోగించటానికి సవరణి"
+
+#~ msgid "Name of workspace"
+#~ msgstr "పనిస్థలము నామము"
+
+#~ msgid "Number of workspaces"
+#~ msgstr "పనిస్థలముల సంఖ్య"
+
+#~ msgid ""
+#~ "Number of workspaces. Must be more than zero, and has a fixed maximum to "
+#~ "prevent making the desktop unusable by accidentally asking for too many "
+#~ "workspaces."
+#~ msgstr ""
+#~ "పనిస్థలముల సంఖ్య. తప్పక సున్నాకన్నా యెక్కువ వుండాలి, మరియు ప్రమాదవశాత్తు మరీ యెక్కువ "
+#~ "పనిస్థలములను అడుగుటద్వారా డెస్కుటాపును అవినియోగపరచకుండా నిర్ధిష్ట గరిష్టాన్ని కలిగివుండాలి."
+
+#~ msgid "Run a defined command"
+#~ msgstr "నిర్వచించిన ఆదేశమును నడుపుము"
+
+#~ msgid ""
+#~ "Set this to true to resize with the right button and show a menu with the "
+#~ "middle button while holding down the key given in \"mouse_button_modifier"
+#~ "\"; set it to false to make it work the opposite way around."
+#~ msgstr ""
+#~ "\"mouse_button_modifier\" నందు యిచ్చిన కీను నొక్కివుంచినప్పుడు కుడి బటన్‌తో పునఃపరిమాణము "
+#~ "చేయుటకు మరియు మద్య బటన్‌తో మెనూను చూపుటకు దీనిని నిజానికి అమర్చుము; ఇందుకు వ్యతిరేకంగా "
+#~ "పనిచేయుటకు దీనిని అసత్యమునకు అమర్చుము."
+
+#~ msgid ""
+#~ "Setting this option to false can lead to buggy behavior, so users are "
+#~ "strongly discouraged from changing it from the default of true. Many "
+#~ "actions (e.g. clicking in the client area, moving or resizing the window) "
+#~ "normally raise the window as a side-effect. Setting this option to false, "
+#~ "which is strongly discouraged, will decouple raising from other user "
+#~ "actions, and ignore raise requests generated by applications. See http://"
+#~ "bugzilla.gnome.org/show_bug.cgi?id=445447#c6. Even when this option is "
+#~ "false, windows can still be raised by an alt-left-click anywhere on the "
+#~ "window, a normal click on the window decorations, or by special messages "
+#~ "from pagers, such as activation requests from tasklist applets. This "
+#~ "option is currently disabled in click-to-focus mode. Note that the list "
+#~ "of ways to raise windows when raise_on_click is false does not include "
+#~ "programmatic requests from applications to raise windows; such requests "
+#~ "will be ignored regardless of the reason for the request. If you are an "
+#~ "application developer and have a user complaining that your application "
+#~ "does not work with this setting disabled, tell them it is _their_ fault "
+#~ "for breaking their window manager and that they need to change this "
+#~ "option back to true or live with the \"bug\" they requested."
+#~ msgstr ""
+#~ "ఈ ఐచ్చికాన్ని అసత్యమునకు మార్చుటవలన బగ్గీ ప్రవర్తనకు కారణమౌతుంది, అందువలన వినియోగదారులు దీనిని "
+#~ "మార్చకుండా వుండుట గట్టిగా సిఫార్సు చేయడమైంది. (ఉ.దా. క్లైంట్ ఏరియాలో నొక్కుట, విండోను కదుల్చుట లేదా "
+#~ "పునఃపరిమాణం చేయుట) వంటి చాలా చర్యలు సాదారణంగా విండోను వుప-ప్రభావంగా లేవనెత్తుతాయి. http://"
+#~ "bugzilla.gnome.org/show_bug.cgi?id=445447#c6 ను చూడండి. ఈ ఐచ్చికం అసత్యంగా "
+#~ "వున్నాకూడా, విండో పైన యెక్కడైనా alt-ఎడమ-నొక్కు నొక్కితే అది లేవనెత్తబడుతుంది, విండో అలంకరణలపై "
+#~ "మామూలుగా నొక్కినా లెవనెత్తబడతుంది, లేదా పేజర్లనుండి ప్రత్యేక సందేశాలు వచ్చినా (కర్తవ్యజాబితా ఆప్లెట్స్ "
+#~ "నుండి క్రియాశీలపరచమని అభ్యర్దనలు) వచ్చినా సరే. దృష్టి-సారించుటక-నొక్కు రీతిలో ఈ ఐచ్చికము ప్రస్తుతం "
+#~ "అచేతనంగావుంది. నొక్కినప్పుడు-లేవనెత్తు అనునది అసత్యంగా వున్నప్పుడు విండో లేవనెత్తుటకు గల "
+#~ "మార్గాలు అనువర్తనాలనుండి ప్రోగ్రామెటిక్ అభ్యర్ధనలను కలిగి వుండవు. మీరు వొక అనువర్తన అభివృద్దికారి "
+#~ "అయివుండి ఈ అమరిక అచేతనపరచుట వలన మీ అనువర్తనమును కంపైల్ చేయలేని వినియోగదారిని కలిగివుంటే, వారు "
+#~ "వారి విండోమేనేజర్‌ను బ్రేక్ చేయుట _వారి_తప్పని చెప్పండి మరియు ఈ ఐచ్చికాన్ని వారు సత్యమునకు అమర్చాలి లేదా "
+#~ "వారు అభ్యర్దించిన \"బగ్\"తో వుండాలి."
+
+#~ msgid ""
+#~ "Some applications disregard specifications in ways that result in window "
+#~ "manager misfeatures. This option puts Metacity in a rigorously correct "
+#~ "mode, which gives a more consistent user interface, provided one does not "
+#~ "need to run any misbehaving applications."
+#~ msgstr ""
+#~ "కొన్ని అనువర్తనముల అసంబర్ధ విశదీకరణలు విండో నిర్వాహిక తప్పుగా ప్రవర్తించటకు కారణం కావచ్చు. ఈ "
+#~ "ఐచ్చికము మెటాసిటి ఖచ్చితముగా సరైన రీతిలో వుండునట్లు చేస్తుంది, అది మరింత స్థిరమైన వినియోగదారి "
+#~ "యింటర్ఫేసును అందిస్తుంది, తద్వారా తప్పుగా ప్రవర్తించే అనువర్తనములు నడుపవలసిన అవసరం వుండదు."
+
+#~ msgid "System Bell is Audible"
+#~ msgstr "సిస్టమ్ బెల్ వినబడుతోంది"
+
+#~ msgid ""
+#~ "Tells Metacity how to implement the visual indication that the system "
+#~ "bell or another application 'bell' indicator has been rung. Currently "
+#~ "there are two valid values, \"fullscreen\", which causes a fullscreen "
+#~ "white-black flash, and \"frame_flash\" which causes the titlebar of the "
+#~ "application which sent the bell signal to flash. If the application which "
+#~ "sent the bell is unknown (as is usually the case for the default \"system "
+#~ "beep\"), the currently focused window's titlebar is flashed."
+#~ msgstr ""
+#~ "సిస్టమ్ బెల్ కాని లేదా యితర అనువర్తనము బెల్ కాని మ్రోగినప్పుడు మెటాసిటి దృశ్య సూచనను యెలా "
+#~ "అభివృద్దిపరచాలో తెలియచేస్తుంది. ప్రస్తుతం రెండు విధానాలు వున్నాయి, \"పూర్తితెర\", యిది తెరమొత్తం "
+#~ "తెలుపు-నలుపు మెరుపులు యిస్తుంది, మరియు \"చట్రము-ఫ్లాష్\" యిది గంట మ్రోగించిన అనువర్తనము "
+#~ "యొక్క శీర్షికపట్టీను మెరిపిస్తుంది. ఒకవేళ గంటను మ్రోగించిన అనువర్తనము తెలియకపోతే (సాదారణంగా అప్రమేయ "
+#~ "\"సిస్టమ్ బీప్\" వంటిది), ప్రస్తుతం వున్న విండోయొక్క శీర్షికపట్టీ మెరుస్తుంది."
+
+#~ msgid ""
+#~ "The /apps/metacity/global_keybindings/run_command_N keys define "
+#~ "keybindings that correspond to these commands. Pressing the keybinding "
+#~ "for run_command_N will execute command_N."
+#~ msgstr ""
+#~ "ఈ ఆదేశాలకు చెందినటువంటి కీ బందనాలను /apps/metacity/global_keybindings/"
+#~ "run_command_N కీలు నిర్వచిస్తాయి. run_command_N కొరకు కీబందనమును వత్తుట అనేది "
+#~ "command_Nను నిర్వర్తిస్తుంది."
+
+#~ msgid ""
+#~ "The /apps/metacity/global_keybindings/run_command_screenshot key defines "
+#~ "a keybinding which causes the command specified by this setting to be "
+#~ "invoked."
+#~ msgstr ""
+#~ "ఈ అమరికద్వారా తెలుపబడిన ఆదేశము ప్రేరేపించబడుటకు కారణమగు కీబందనాన్ని /apps/metacity/"
+#~ "global_keybindings/run_command_screenshot కీ నిర్వచిస్తుంది."
+
+#~ msgid ""
+#~ "The /apps/metacity/global_keybindings/run_command_window_screenshot key "
+#~ "defines a keybinding which causes the command specified by this setting "
+#~ "to be invoked."
+#~ msgstr ""
+#~ "ఈ అమరికద్వారా తెలుపబడిన ఆదేశము ప్రేరేపించబడుటకు కారణమగు కీబందనాన్ని /apps/metacity/"
+#~ "global_keybindings/run_command_window_screenshot కీ నిర్వచిస్తుంది."
+
+#~ msgid ""
+#~ "The keybinding that runs the correspondingly-numbered command in /apps/"
+#~ "metacity/keybinding_commands The format looks like \"&lt;Control&gt;a\" "
+#~ "or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and "
+#~ "allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
+#~ "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
+#~ "\"disabled\", then there will be no keybinding for this action."
+#~ msgstr ""
+#~ "/apps/metacity/keybinding_commands నందు సంభందిత-సంఖ్యగల ఆదేశమును నడిపే కీబందనము "
+#~ "ఫార్మాట్ చూడటానికి యిలా వుంటుంది \"&lt;Control&gt;a\" లేదా \"&lt;Shift&gt;&lt;Alt&gt;"
+#~ "F1\". పార్శర్ చక్కగా పనిచేస్తుంది మరియు చిన్న మరియు పెద్ద అక్షరాలను అనుమతిస్తుంది, \"&lt;"
+#~ "Ctl&gt;\" మరియు\"&lt;Ctrl&gt;\" వంటి అబ్రివేషన్లను కూడా అనుమతిస్తుంది. మీరు ఐచ్చికాన్ని "
+#~ "ప్రత్యేక స్ట్రింగ్ \"disabled\"కు అమర్చితే అప్పుడు ఈ చర్య కొరకు యెటువంటి కీబందనం వుండదు."
+
+#~ msgid "The name of a workspace."
+#~ msgstr "పనిస్థలము నామము"
+
+#~ msgid "The screenshot command"
+#~ msgstr "తెరపట్టు(స్క్రీన్‌షాట్) ఆదేశము"
+
+#~ msgid ""
+#~ "The theme determines the appearance of window borders, titlebar, and so "
+#~ "forth."
+#~ msgstr "విండో హద్దులు, శీర్షికపట్టీ, మరియు మిగతావి కనిపించు విధానాన్ని థీమ్ నిర్ణయిస్తుంది."
+
+#~ msgid ""
+#~ "The time delay before raising a window if auto_raise is set to true. The "
+#~ "delay is given in thousandths of a second."
+#~ msgstr ""
+#~ "auto_raise సత్యమునకు అమర్చినట్లైతే విండో రెట్టింపు చేయుటకు ముందుగా పట్టవలసిన సమయం. "
+#~ "పట్టేసమయం సెకనులో వెయ్యోవంతులలో యివ్వాలి."
+
+#~ msgid ""
+#~ "The window focus mode indicates how windows are activated. It has three "
+#~ "possible values; \"click\" means windows must be clicked in order to "
+#~ "focus them, \"sloppy\" means windows are focused when the mouse enters "
+#~ "the window, and \"mouse\" means windows are focused when the mouse enters "
+#~ "the window and unfocused when the mouse leaves the window."
+#~ msgstr ""
+#~ "విండో సూచిక రీతి విండోలు యెలా క్రియాశీలం చేయబడతాయో సూచిస్తుంది. ఇది మూడు విలువలను కలిగివుంది; "
+#~ "\"click\" అంటే విండోలను సూచించుటకు వాటిని తప్పక నొక్కవలెను, \"sloppy\" మౌస్ విండోలనందు "
+#~ "ప్రవేశించగానే విండోలు సూచించబడతాయి, మరియు \"mouse\" అంటే మౌస్ విండోల నందు ప్రవేశించగానే "
+#~ "సూచించబడతాయి మౌస్ విండోలనుండి బయటకురాగానే సూచనను కోల్పోతాయి."
+
+#~ msgid "The window screenshot command"
+#~ msgstr "విండో తెరపట్టు(స్క్రీన్‌షాట్) ఆదేశము"
+
+#~ msgid ""
+#~ "This option determines the effects of double-clicking on the title bar. "
+#~ "Current valid options are 'toggle_shade', which will shade/unshade the "
+#~ "window, 'toggle_maximize' which will maximize/unmaximize the window, "
+#~ "'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which "
+#~ "will maximize/unmaximize the window in that direction only, 'minimize' "
+#~ "which will minimize the window, 'shade' which will roll the window up, "
+#~ "'menu' which will display the window menu, 'lower' which will put the "
+#~ "window behind all the others, and 'none' which will not do anything."
+#~ msgstr ""
+#~ "ఈ ఐచ్చికము శీర్షిక పట్టీపైన రెండు-పర్యాయాలు నొక్కినప్పుడు ప్రభావాలను నిర్ణయిస్తుంది. ప్రస్తుతం "
+#~ "చెల్లునటువంటి విలువలు 'toggle_shade', యిది విండోను షేడ్/అన్‌షేడ్ చేస్తుంది, "
+#~ "'toggle_maximize_horizontally' మరియు 'toggle_maximize_vertically' యిది ఆదేదిశలో "
+#~ "విండోను పెద్దది/చిన్నది చేస్తుంది, 'minimize' యిది విండోను చిన్నది చేస్తుంది, 'shade' యిది విండోను "
+#~ "పైకి చుడుతుంది, 'menu' యిది విండో మెనూను ప్రదర్శింప చేస్తుంది, 'lower' యిది విండోను యితర "
+#~ "విండోల వెనుక వుంచుతుంది, మరియు 'none' యిది ఏమీ చేయదు."
+
+#~ msgid ""
+#~ "This option determines the effects of middle-clicking on the title bar. "
+#~ "Current valid options are 'toggle_shade', which will shade/unshade the "
+#~ "window, 'toggle_maximize' which will maximize/unmaximize the window, "
+#~ "'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which "
+#~ "will maximize/unmaximize the window in that direction only, 'minimize' "
+#~ "which will minimize the window, 'shade' which will roll the window up, "
+#~ "'menu' which will display the window menu, 'lower' which will put the "
+#~ "window behind all the others, and 'none' which will not do anything."
+#~ msgstr ""
+#~ "ఈ ఐచ్చికము శీర్షిక పట్టీపైన మద్య-నొక్కు నొక్కినప్పుడు ప్రభావాలను నిర్ణయిస్తుంది. ప్రస్తుతం "
+#~ "చెల్లునటువంటి విలువలు 'toggle_shade', యిది విండోను షేడ్/అన్‌షేడ్ చేస్తుంది, "
+#~ "'toggle_maximize_horizontally' మరియు 'toggle_maximize_vertically' యిది ఆదేదిశలో "
+#~ "విండోను పెద్దది/చిన్నది చేస్తుంది, 'minimize' యిది విండోను చిన్నది చేస్తుంది, 'shade' యిది విండోను "
+#~ "పైకి చుడుతుంది, 'menu' యిది విండో మెనూను ప్రదర్శింప చేస్తుంది, 'lower' యిది విండోను యితర "
+#~ "విండోల వెనుక వుంచుతుంది, మరియు 'none' యిది ఏమీ చేయదు."
+
+#~ msgid ""
+#~ "This option determines the effects of right-clicking on the title bar. "
+#~ "Current valid options are 'toggle_shade', which will shade/unshade the "
+#~ "window, 'toggle_maximize' which will maximize/unmaximize the window, "
+#~ "'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which "
+#~ "will maximize/unmaximize the window in that direction only, 'minimize' "
+#~ "which will minimize the window, 'shade' which will roll the window up, "
+#~ "'menu' which will display the window menu, 'lower' which will put the "
+#~ "window behind all the others, and 'none' which will not do anything."
+#~ msgstr ""
+#~ "ఈ ఐచ్చికము శీర్షిక పట్టీపైన కుడి-నొక్కు నొక్కినప్పుడు ప్రభావాలను నిర్ణయిస్తుంది. ప్రస్తుతం "
+#~ "చెల్లునటువంటి విలువలు 'toggle_shade', యిది విండోను షేడ్/అన్‌షేడ్ చేస్తుంది, "
+#~ "'toggle_maximize_horizontally' మరియు 'toggle_maximize_vertically' యిది ఆదేదిశలో "
+#~ "విండోను పెద్దది/చిన్నది చేస్తుంది, 'minimize' యిది విండోను చిన్నది చేస్తుంది, 'shade' యిది విండోను "
+#~ "పైకి చుడుతుంది, 'menu' యిది విండో మెనూను ప్రదర్శింప చేస్తుంది, 'lower' యిది విండోను యితర "
+#~ "విండోల వెనుక వుంచుతుంది, మరియు 'none' యిది ఏమీ చేయదు."
+
+#~ msgid ""
+#~ "This option provides additional control over how newly created windows "
+#~ "get focus. It has two possible values; \"smart\" applies the user's "
+#~ "normal focus mode, and \"strict\" results in windows started from a "
+#~ "terminal not being given focus."
+#~ msgstr ""
+#~ "కొత్తగా సృష్టించబడిన విండోలు యెలా సూచన పొందుతున్నాయి అనేదానిపై ఈ ఐచ్చికము అదనపు నియంత్రణను "
+#~ "యిస్తుంది. ఇది రెండు విలువలను కలిగివుంది; \"smart\" వినియోగదారి యొక్క సాదారణ సూచనరీతిని "
+#~ "ఆపాదిస్తుంది, మరియు \"strict\" టెర్మినల్ నుండి ప్రారంభించబడిన విండోలు సూచించబడకుండా చేస్తుంది."
+
+#~ msgid ""
+#~ "Turns on a visual indication when an application or the system issues a "
+#~ "'bell' or 'beep'; useful for the hard-of-hearing and for use in noisy "
+#~ "environments."
+#~ msgstr ""
+#~ "అనువర్తనము లేదా సిస్టమ్ 'గంటను' లేదా 'బీప్'ను మ్రోగించనప్పుడు దృశ్య సంకేతమును ఆన్ చేస్తుంది; "
+#~ "వినుట-కష్టతరం అయినవాళ్ళకు మరియు శబ్ధపూరిత వాతావరణంలో వున్న వారికి వుపయోగకరంగా వుటుంది."
+
+#~ msgid "Use standard system font in window titles"
+#~ msgstr "విండో శీర్షికలనందు ప్రామాణిక సిస్టమ్ ఫాంటును వుపయోగించుము"
+
+#~ msgid "Visual Bell Type"
+#~ msgstr "విజువల్ బెల్ రకము"
+
+#~ msgid "Whether raising should be a side-effect of other user interactions"
+#~ msgstr "రెట్టింపు కావడం అనునది యితర వినియోగదారి యింటరాక్షన్సుకు ఉప-ప్రభావంలా వుండాలా"
+
+#~ msgid "Whether to resize with the right button"
+#~ msgstr "కుడి బటన్‌తో పునఃపరిమాణము చేయాలా"
+
+#~ msgid "Window focus mode"
+#~ msgstr "విండో దృష్టి రీతి"
+
+#~ msgid "Window title font"
+#~ msgstr "విండో శీర్షిక ఫాంటు"
 
 #~ msgid "Desktop"
 #~ msgstr "రంగస్థలం"
