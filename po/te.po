@@ -12,7 +12,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2011-11-18 22:20+0000\n"
-"PO-Revision-Date: 2011-11-26 23:16+0530\n"
+"PO-Revision-Date: 2011-11-26 23:21+0530\n"
 "Last-Translator: Praveen Illa <mail2ipn@gmail.com>\n"
 "Language-Team: Telugu <indlinux-telugu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -349,10 +349,10 @@ msgstr ""
 "పోవచ్చును.\n"
 
 #: ../src/core/prefs.c:949
-#, fuzzy, c-format
+#, c-format
 #| msgid "Could not parse font description \"%s\" from GConf key %s\n"
 msgid "Could not parse font description \"%s\" from GSettings key %s\n"
-msgstr "ఫాంటు వివరణ \"%s\"ను GConf కీ %sనుండి పార్శ్ చేయలేక పోయింది\n"
+msgstr "ఫాంటు వివరణ \"%s\"ను జిసెట్టింగుల కీ %s నుండి పార్శ్ చేయలేకపోయింది\n"
 
 #: ../src/core/prefs.c:1015
 #, c-format
