@@ -56,7 +56,7 @@
 #define SCHEMA_GENERAL         "org.gnome.desktop.wm.preferences"
 #define SCHEMA_METACITY        "org.gnome.metacity"
 #define SCHEMA_INTERFACE       "org.gnome.desktop.interface"
-#define SCHEMA_BINDINGS        "org.gnome.wm.keybindings"
+#define SCHEMA_BINDINGS        "org.gnome.desktop.wm.keybindings"
 
 #define SETTINGS(s) g_hash_table_lookup (settings_schemas, (s))
 
