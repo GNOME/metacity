@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-19 16:01+0100\n"
-"PO-Revision-Date: 2011-03-19 16:01+0100\n"
+"POT-Creation-Date: 2011-12-03 21:18+0100\n"
+"PO-Revision-Date: 2011-12-03 21:18+0100\n"
 "Last-Translator: Wouter Bolsterlee <wbolster@gnome.org>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "Language: nl\n"
@@ -21,27 +21,185 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../src/50-metacity-launchers.xml.in.h:1
-msgid "Launchers"
-msgstr "Starters"
-
 #: ../src/50-metacity-navigation.xml.in.h:1
+msgid "Hide all normal windows"
+msgstr "Alle normale vensters verbergen"
+
+#: ../src/50-metacity-navigation.xml.in.h:2
+msgid "Move to workspace above"
+msgstr "Verplaatsen naar werkblad hierboven"
+
+#: ../src/50-metacity-navigation.xml.in.h:3
+msgid "Move to workspace below"
+msgstr "Verplaatsen naar werkblad hieronder"
+
+#: ../src/50-metacity-navigation.xml.in.h:4
+msgid "Move to workspace left"
+msgstr "Verplaatsen naar werkblad links"
+
+#: ../src/50-metacity-navigation.xml.in.h:5
+msgid "Move to workspace right"
+msgstr "Verplaatsen naar werkblad rechts"
+
+#: ../src/50-metacity-navigation.xml.in.h:6
+msgid "Move window one workspace down"
+msgstr "Venster één werkblad naar beneden verplaatsen"
+
+#: ../src/50-metacity-navigation.xml.in.h:7
+msgid "Move window one workspace to the left"
+msgstr "Venster één werkblad naar links verplaatsen"
+
+#: ../src/50-metacity-navigation.xml.in.h:8
+msgid "Move window one workspace to the right"
+msgstr "Venster één werkblad naar rechts verplaatsen"
+
+#: ../src/50-metacity-navigation.xml.in.h:9
+msgid "Move window one workspace up"
+msgstr "Venster één werkblad naar boven verplaatsen"
+
+#: ../src/50-metacity-navigation.xml.in.h:10
+msgid "Move window to workspace 1"
+msgstr "Venster verplaatsen naar werkblad 1"
+
+#: ../src/50-metacity-navigation.xml.in.h:11
+msgid "Move window to workspace 2"
+msgstr "Venster verplaatsen naar werkblad 2"
+
+#: ../src/50-metacity-navigation.xml.in.h:12
+msgid "Move window to workspace 3"
+msgstr "Venster verplaatsen naar werkblad 3"
+
+#: ../src/50-metacity-navigation.xml.in.h:13
+msgid "Move window to workspace 4"
+msgstr "Venster verplaatsen naar werkblad 4"
+
+#: ../src/50-metacity-navigation.xml.in.h:14
 msgid "Navigation"
 msgstr "Navigatie"
 
-#: ../src/50-metacity-screenshot.xml.in.h:1
-msgid "Screenshots"
-msgstr "Schermafdrukken"
+#: ../src/50-metacity-navigation.xml.in.h:15
+msgid "Switch applications"
+msgstr "Tussen toepassingen schakelen"
+
+# Vrij vertaald (Wouter Bolsterlee)
+#: ../src/50-metacity-navigation.xml.in.h:16
+msgid "Switch system controls"
+msgstr "Systeemschermen wisselen"
+
+# Vrij vertaald (Wouter Bolsterlee)
+#: ../src/50-metacity-navigation.xml.in.h:17
+msgid "Switch system controls directly"
+msgstr "Direct tussen systeemschermen schakelen"
+
+#: ../src/50-metacity-navigation.xml.in.h:18
+msgid "Switch to workspace 1"
+msgstr "Schakelen naar werkblad 1"
+
+#: ../src/50-metacity-navigation.xml.in.h:19
+msgid "Switch to workspace 2"
+msgstr "Schakelen naar werkblad 2"
+
+#: ../src/50-metacity-navigation.xml.in.h:20
+msgid "Switch to workspace 3"
+msgstr "Schakelen naar werkblad 3"
+
+#: ../src/50-metacity-navigation.xml.in.h:21
+msgid "Switch to workspace 4"
+msgstr "Schakelen naar werkblad 4"
+
+#: ../src/50-metacity-navigation.xml.in.h:22
+msgid "Switch windows directly"
+msgstr "Direct tussen vensters schakelen"
+
+#: ../src/50-metacity-navigation.xml.in.h:23
+msgid "Switch windows of an app directly"
+msgstr "Direct wisselen van venster binnen een toepassing"
+
+#: ../src/50-metacity-navigation.xml.in.h:24
+msgid "Switch windows of an application"
+msgstr "Wisselen van venster binnen een toepassing"
 
 #: ../src/50-metacity-system.xml.in.h:1
+msgid "Show the activities overview"
+msgstr "Het activiteitenoverzicht tonen"
+
+#: ../src/50-metacity-system.xml.in.h:2
+msgid "Show the run command prompt"
+msgstr "Het opdrachtregelvenster tonen"
+
+#: ../src/50-metacity-system.xml.in.h:3
 msgid "System"
 msgstr "Systeem"
 
 #: ../src/50-metacity-windows.xml.in.h:1
+msgid "Activate the window menu"
+msgstr "Venstermenu activeren"
+
+#: ../src/50-metacity-windows.xml.in.h:2
+msgid "Close window"
+msgstr "Venster sluiten"
+
+#: ../src/50-metacity-windows.xml.in.h:3
+msgid "Lower window below other windows"
+msgstr "Venster achter andere vensters brengen"
+
+#: ../src/50-metacity-windows.xml.in.h:4
+msgid "Maximize window"
+msgstr "Venster maximaliseren"
+
+#: ../src/50-metacity-windows.xml.in.h:5
+msgid "Maximize window horizontally"
+msgstr "Een venster horizontaal maximaliseren"
+
+#: ../src/50-metacity-windows.xml.in.h:6
+msgid "Maximize window vertically"
+msgstr "Een venster verticaal maximaliseren"
+
+#: ../src/50-metacity-windows.xml.in.h:7
+msgid "Minimize window"
+msgstr "Venster minimaliseren"
+
+#: ../src/50-metacity-windows.xml.in.h:8
+msgid "Move window"
+msgstr "Venster verplaatsen"
+
+#: ../src/50-metacity-windows.xml.in.h:9
+msgid "Raise window above other windows"
+msgstr "Venster voor andere vensters brengen"
+
+#: ../src/50-metacity-windows.xml.in.h:10
+msgid "Raise window if covered, otherwise lower it"
+msgstr "Deels bedekte vensters naar voren halen of anders naar achter halen"
+
+#: ../src/50-metacity-windows.xml.in.h:11
+msgid "Resize window"
+msgstr "Vensterafmetingen veranderen"
+
+#: ../src/50-metacity-windows.xml.in.h:12
+msgid "Restore window"
+msgstr "Venster herstellen"
+
+#: ../src/50-metacity-windows.xml.in.h:13
+msgid "Toggle fullscreen mode"
+msgstr "Volledig scherm-modus omschakelen"
+
+#: ../src/50-metacity-windows.xml.in.h:14
+msgid "Toggle maximization state"
+msgstr "Maximalisatie in- of uitschakelen"
+
+#: ../src/50-metacity-windows.xml.in.h:15
+msgid "Toggle shaded state"
+msgstr "Oprollen in- of uitschakelen"
+
+#: ../src/50-metacity-windows.xml.in.h:16
+msgid "Toggle window on all workspaces or one"
+msgstr "‘Venster is op alle werkbladen zichtbaar’ in- of uitschakelen"
+
+#: ../src/50-metacity-windows.xml.in.h:17
 msgid "Windows"
 msgstr "Vensters"
 
-#: ../src/core/bell.c:299
+#: ../src/core/bell.c:296
 msgid "Bell event"
 msgstr "Bel-evenement"
 
@@ -112,30 +270,6 @@ msgid ""
 msgstr ""
 "Een ander programma gebruikt reeds de %s-toets met controletoets %x als "
 "sneltoets\n"
-
-#. Displayed when a keybinding which is
-#. * supposed to launch a program fails.
-#.
-#: ../src/core/keybindings.c:2343
-#, c-format
-msgid ""
-"There was an error running <tt>%s</tt>:\n"
-"\n"
-"%s"
-msgstr ""
-"Er trad een fout op bij het uitvoeren van <tt>%s</tt>:\n"
-"\n"
-"%s."
-
-#: ../src/core/keybindings.c:2432
-#, c-format
-msgid "No command %d has been defined.\n"
-msgstr "Er is geen opdracht %d gedefinieerd.\n"
-
-#: ../src/core/keybindings.c:3386
-#, c-format
-msgid "No terminal command has been defined.\n"
-msgstr "Er is geen opdracht voor de terminal gedefinieerd.\n"
 
 #: ../src/core/main.c:131
 #, c-format
@@ -215,35 +349,7 @@ msgstr ""
 msgid "Failed to restart: %s\n"
 msgstr "Herstarten mislukt: %s\n"
 
-#.
-#. * We found it, but it was invalid.  Complain.
-#. *
-#. * FIXME: This replicates the original behaviour, but in the future
-#. * we might consider reverting invalid keys to their original values.
-#. * (We know the old value, so we can look up a suitable string in
-#. * the symtab.)
-#. *
-#. * (Empty comment follows so the translators don't see this.)
-#.
-#.
-#: ../src/core/prefs.c:508 ../src/core/prefs.c:663
-#, c-format
-msgid "GConf key '%s' is set to an invalid value\n"
-msgstr "GConf-sleutel '%s' is ingesteld op een ongeldige waarde\n"
-
-#: ../src/core/prefs.c:589 ../src/core/prefs.c:832
-#, c-format
-msgid "%d stored in GConf key %s is out of range %d to %d\n"
-msgstr "%d opgeslagen in GConf-sleutel %s valt buiten het bereik %d tot %d\n"
-
-#: ../src/core/prefs.c:633 ../src/core/prefs.c:710 ../src/core/prefs.c:758
-#: ../src/core/prefs.c:822 ../src/core/prefs.c:1115 ../src/core/prefs.c:1131
-#: ../src/core/prefs.c:1148 ../src/core/prefs.c:1164
-#, c-format
-msgid "GConf key \"%s\" is set to an invalid type\n"
-msgstr "GConf-sleutel ‘%s’ is op een ongeldig type ingesteld\n"
-
-#: ../src/core/prefs.c:1234
+#: ../src/core/prefs.c:880
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -251,12 +357,12 @@ msgstr ""
 "Werkoplossing voor gebroken toepassingen uitgezet. Bepaalde toepassingen "
 "zullen niet naar behoren functioneren.\n"
 
-#: ../src/core/prefs.c:1305
+#: ../src/core/prefs.c:949
 #, c-format
-msgid "Could not parse font description \"%s\" from GConf key %s\n"
-msgstr "Kon lettertypebeschrijving ‘%s’ niet lezen uit GConf-sleutel %s\n"
+msgid "Could not parse font description \"%s\" from GSettings key %s\n"
+msgstr "Kon lettertypebeschrijving ‘%s’ niet lezen uit GSettings-sleutel %s\n"
 
-#: ../src/core/prefs.c:1367
+#: ../src/core/prefs.c:1015
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -265,17 +371,7 @@ msgstr ""
 "‘%s’, gevonden in de configuratiedatabase, is geen geldige waarde voor de "
 "muisknop-optietoets\n"
 
-#: ../src/core/prefs.c:1788
-#, c-format
-msgid "Error setting number of workspaces to %d: %s\n"
-msgstr "Fout bij het instellen van het aantal werkbladen op %d: %s\n"
-
-#: ../src/core/prefs.c:1959 ../src/core/prefs.c:2461
-#, c-format
-msgid "Workspace %d"
-msgstr "Werkblad %d"
-
-#: ../src/core/prefs.c:1988 ../src/core/prefs.c:2166
+#: ../src/core/prefs.c:1494
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -283,15 +379,10 @@ msgid ""
 msgstr ""
 "‘%s’ in de configuratiedatabase is geen geldige waarde voor sneltoets ‘%s’\n"
 
-#: ../src/core/prefs.c:2542
+#: ../src/core/prefs.c:1601
 #, c-format
-msgid "Error setting name for workspace %d to \"%s\": %s\n"
-msgstr "Fout bij het instellen van de naam voor werkblad %d op ‘%s’: %s\n"
-
-#: ../src/core/prefs.c:2746
-#, c-format
-msgid "Error setting compositor status: %s\n"
-msgstr "Fout bij het instellen van ‘compositor’-status: %s\n"
+msgid "Workspace %d"
+msgstr "Werkblad %d"
 
 #: ../src/core/screen.c:357
 #, c-format
@@ -323,45 +414,6 @@ msgstr "Scherm %d op display ‘%s’ heeft al een ‘window manager’\n"
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "Kon scherm %d op display ‘%s’ niet vrijmaken\n"
-
-#. Translators: Please don't translate "Control", "Shift", etc, since these
-#. * are hardcoded (in gtk/gtkaccelgroup.c; it's not metacity's fault).
-#. * "disabled" must also stay as it is.
-#.
-#: ../src/core/schema-bindings.c:169
-msgid ""
-"The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
-"\n"
-"The parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action."
-msgstr ""
-"Het formaat ziet eruit als ‘<Control>a’ of ‘<Shift><Alt>F1’.\n"
-"\n"
-"Hierbij zijn zowel kleine als hoofdletters toegestaan, evenals afkortingen "
-"zoals ‘<Ctl>’ en ‘<Ctrl>’. Indien u de optie instelt op de speciale waarde "
-"‘disabled’, dan zal deze actie geen sneltoets hebben."
-
-#: ../src/core/schema-bindings.c:177
-msgid ""
-"The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
-"\n"
-"The parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action.\n"
-"\n"
-"This keybinding may be reversed by holding down the \"shift\" key; "
-"therefore, \"shift\" cannot be one of the keys it uses."
-msgstr ""
-"Het formaat ziet eruit als ‘<Control>a’ of ‘<Shift><Alt>F1’.\n"
-"\n"
-"Hierbij zijn zowel kleine als hoofdletters toegestaan, evenals afkortingen "
-"zoals ‘<Ctl>’ en ‘<Ctrl>’. Indien u de optie instelt op de speciale waarde "
-"‘disabled’, dan zal deze actie geen sneltoets hebben.\n"
-"Deze sneltoets kan omgekeerd worden door de Shift-toets ingedrukt te houden. "
-"Om die reden mag Shift geen onderdeel uitmaken van de toetscombinatie."
 
 #: ../src/core/session.c:842 ../src/core/session.c:849
 #, c-format
@@ -456,7 +508,6 @@ msgid "Window manager error: "
 msgstr "Fout van vensterbeheer:"
 
 #. Translators: This is the title used on dialog boxes
-#. eof all-keybindings.h
 #: ../src/core/util.c:570 ../src/metacity.desktop.in.h:1
 #: ../src/metacity-wm.desktop.in.h:1
 msgid "Metacity"
@@ -554,449 +605,16 @@ msgstr ""
 "Eigenschap %s bij venster 0x%lx bevat ongeldige UTF-8 voor item %d van de "
 "lijst\n"
 
-#: ../src/include/all-keybindings.h:88
-msgid "Switch to workspace 1"
-msgstr "Schakelen naar werkblad 1"
-
-#: ../src/include/all-keybindings.h:90
-msgid "Switch to workspace 2"
-msgstr "Schakelen naar werkblad 2"
-
-#: ../src/include/all-keybindings.h:92
-msgid "Switch to workspace 3"
-msgstr "Schakelen naar werkblad 3"
-
-#: ../src/include/all-keybindings.h:94
-msgid "Switch to workspace 4"
-msgstr "Schakelen naar werkblad 4"
-
-#: ../src/include/all-keybindings.h:96
-msgid "Switch to workspace 5"
-msgstr "Schakelen naar werkblad 5"
-
-#: ../src/include/all-keybindings.h:98
-msgid "Switch to workspace 6"
-msgstr "Schakelen naar werkblad 6"
-
-#: ../src/include/all-keybindings.h:100
-msgid "Switch to workspace 7"
-msgstr "Schakelen naar werkblad 7"
-
-#: ../src/include/all-keybindings.h:102
-msgid "Switch to workspace 8"
-msgstr "Schakelen naar werkblad 8"
-
-#: ../src/include/all-keybindings.h:104
-msgid "Switch to workspace 9"
-msgstr "Schakelen naar werkblad 9"
-
-#: ../src/include/all-keybindings.h:106
-msgid "Switch to workspace 10"
-msgstr "Schakelen naar werkblad 10"
-
-#: ../src/include/all-keybindings.h:108
-msgid "Switch to workspace 11"
-msgstr "Schakelen naar werkblad 11"
-
-#: ../src/include/all-keybindings.h:110
-msgid "Switch to workspace 12"
-msgstr "Schakelen naar werkblad 12"
-
-#: ../src/include/all-keybindings.h:122
-msgid "Move to workspace left"
-msgstr "Verplaatsen naar werkblad links"
-
-#: ../src/include/all-keybindings.h:126
-msgid "Move to workspace right"
-msgstr "Verplaatsen naar werkblad rechts"
-
-#: ../src/include/all-keybindings.h:130
-msgid "Move to workspace above"
-msgstr "Verplaatsen naar werkblad hierboven"
-
-#: ../src/include/all-keybindings.h:134
-msgid "Move to workspace below"
-msgstr "Verplaatsen naar werkblad hieronder"
-
-#: ../src/include/all-keybindings.h:150
-msgid "Switch windows of an application"
-msgstr "Wisselen van venster binnen een toepassing"
-
-#: ../src/include/all-keybindings.h:153
-msgid "Reverse switch windows of an application"
-msgstr "Achterwaarts wisselen van venster binnen een toepassing"
-
-#: ../src/include/all-keybindings.h:156
-msgid "Switch applications"
-msgstr "Tussen toepassingen schakelen"
-
-#: ../src/include/all-keybindings.h:159
-msgid "Reverse switch applications"
-msgstr "Achterwaarts tussen toepassingen schakelen"
-
-# Vrij vertaald (Wouter Bolsterlee)
-#: ../src/include/all-keybindings.h:162
-msgid "Switch system controls"
-msgstr "Systeemschermen wisselen"
-
-#: ../src/include/all-keybindings.h:165
-msgid "Reverse switch system controls"
-msgstr "Achterwaarts tussen systeemschermen schakelen"
-
-#: ../src/include/all-keybindings.h:169
-msgid "Switch windows of an app directly"
-msgstr "Direct wisselen van venster binnen een toepassing"
-
-#: ../src/include/all-keybindings.h:172
-msgid "Reverse switch windows of an app directly"
-msgstr "Direct achterwaarts wisselen van venster binnen een toepassing"
-
-#: ../src/include/all-keybindings.h:175
-msgid "Switch windows directly"
-msgstr "Direct tussen vensters schakelen"
-
-#: ../src/include/all-keybindings.h:178
-msgid "Reverse switch windows directly"
-msgstr "Direct achterwaarts tussen vensters schakelen"
-
-# Vrij vertaald (Wouter Bolsterlee)
-#: ../src/include/all-keybindings.h:181
-msgid "Switch system controls directly"
-msgstr "Direct tussen systeemschermen schakelen"
-
-# Vrij vertaald (Wouter Bolsterlee)
-#: ../src/include/all-keybindings.h:184
-msgid "Reverse switch system controls directly"
-msgstr "Direct achterwaarts tussen systeemschermen schakelen"
-
-#: ../src/include/all-keybindings.h:189
-msgid "Hide all normal windows"
-msgstr "Alle normale vensters verbergen"
-
-#: ../src/include/all-keybindings.h:192
-msgid "Show the activities overview"
-msgstr "Het activiteitenoverzicht tonen"
-
-#: ../src/include/all-keybindings.h:195
-msgid "Show the run command prompt"
-msgstr "Het opdrachtregelvenster tonen"
-
-#: ../src/include/all-keybindings.h:236
-msgid "Take a screenshot"
-msgstr "Een schermafdruk maken"
-
-#: ../src/include/all-keybindings.h:238
-msgid "Take a screenshot of a window"
-msgstr "Een schermafdruk van een venster maken"
-
-#: ../src/include/all-keybindings.h:240
-msgid "Launch Terminal"
-msgstr "Terminal opstarten"
-
-#: ../src/include/all-keybindings.h:255
-msgid "Activate the window menu"
-msgstr "Venstermenu activeren"
-
-#: ../src/include/all-keybindings.h:258
-msgid "Toggle fullscreen mode"
-msgstr "Volledig scherm-modus omschakelen"
-
-#: ../src/include/all-keybindings.h:260
-msgid "Toggle maximization state"
-msgstr "Maximalisatie in- of uitschakelen"
-
-#: ../src/include/all-keybindings.h:262
-msgid "Toggle window always appearing on top"
-msgstr "Altijd bovenop in- of uitschakelen"
-
-#: ../src/include/all-keybindings.h:264
-msgid "Maximize window"
-msgstr "Venster maximaliseren"
-
-#: ../src/include/all-keybindings.h:266
-msgid "Restore window"
-msgstr "Venster herstellen"
-
-#: ../src/include/all-keybindings.h:268
-msgid "Toggle shaded state"
-msgstr "Oprollen in- of uitschakelen"
-
-#: ../src/include/all-keybindings.h:270
-msgid "Minimize window"
-msgstr "Venster minimaliseren"
-
-#: ../src/include/all-keybindings.h:272
-msgid "Close window"
-msgstr "Venster sluiten"
-
-#: ../src/include/all-keybindings.h:274
-msgid "Move window"
-msgstr "Venster verplaatsen"
-
-#: ../src/include/all-keybindings.h:276
-msgid "Resize window"
-msgstr "Vensterafmetingen veranderen"
-
-#: ../src/include/all-keybindings.h:279
-msgid "Toggle window on all workspaces or one"
-msgstr "‘Venster is op alle werkbladen zichtbaar’ in- of uitschakelen"
-
-#: ../src/include/all-keybindings.h:283
-msgid "Move window to workspace 1"
-msgstr "Venster verplaatsen naar werkblad 1"
-
-#: ../src/include/all-keybindings.h:286
-msgid "Move window to workspace 2"
-msgstr "Venster verplaatsen naar werkblad 2"
-
-#: ../src/include/all-keybindings.h:289
-msgid "Move window to workspace 3"
-msgstr "Venster verplaatsen naar werkblad 3"
-
-#: ../src/include/all-keybindings.h:292
-msgid "Move window to workspace 4"
-msgstr "Venster verplaatsen naar werkblad 4"
-
-#: ../src/include/all-keybindings.h:295
-msgid "Move window to workspace 5"
-msgstr "Venster verplaatsen naar werkblad 5"
-
-#: ../src/include/all-keybindings.h:298
-msgid "Move window to workspace 6"
-msgstr "Venster verplaatsen naar werkblad 6"
-
-#: ../src/include/all-keybindings.h:301
-msgid "Move window to workspace 7"
-msgstr "Venster verplaatsen naar werkblad 7"
-
-#: ../src/include/all-keybindings.h:304
-msgid "Move window to workspace 8"
-msgstr "Venster verplaatsen naar werkblad 8"
-
-#: ../src/include/all-keybindings.h:307
-msgid "Move window to workspace 9"
-msgstr "Venster verplaatsen naar werkblad 9"
-
-#: ../src/include/all-keybindings.h:310
-msgid "Move window to workspace 10"
-msgstr "Venster verplaatsen naar werkblad 10"
-
-#: ../src/include/all-keybindings.h:313
-msgid "Move window to workspace 11"
-msgstr "Venster verplaatsen naar werkblad 11"
-
-#: ../src/include/all-keybindings.h:316
-msgid "Move window to workspace 12"
-msgstr "Venster verplaatsen naar werkblad 12"
-
-#: ../src/include/all-keybindings.h:328
-msgid "Move window one workspace to the left"
-msgstr "Venster één werkblad naar links verplaatsen"
-
-#: ../src/include/all-keybindings.h:331
-msgid "Move window one workspace to the right"
-msgstr "Venster één werkblad naar rechts verplaatsen"
-
-#: ../src/include/all-keybindings.h:334
-msgid "Move window one workspace up"
-msgstr "Venster één werkblad naar boven verplaatsen"
-
-#: ../src/include/all-keybindings.h:337
-msgid "Move window one workspace down"
-msgstr "Venster één werkblad naar beneden verplaatsen"
-
-#: ../src/include/all-keybindings.h:340
-msgid "Raise window if covered, otherwise lower it"
-msgstr "Deels bedekte vensters naar voren halen of anders naar achter halen"
-
-#: ../src/include/all-keybindings.h:342
-msgid "Raise window above other windows"
-msgstr "Venster voor andere vensters brengen"
-
-#: ../src/include/all-keybindings.h:344
-msgid "Lower window below other windows"
-msgstr "Venster achter andere vensters brengen"
-
-#: ../src/include/all-keybindings.h:348
-msgid "Maximize window vertically"
-msgstr "Een venster verticaal maximaliseren"
-
-#: ../src/include/all-keybindings.h:352
-msgid "Maximize window horizontally"
-msgstr "Een venster horizontaal maximaliseren"
-
-#: ../src/include/all-keybindings.h:356
-msgid "Move window to top left corner"
-msgstr "Venster naar de linker bovenhoek verplaatsen"
-
-#: ../src/include/all-keybindings.h:359
-msgid "Move window to top right corner"
-msgstr "Venster naar de rechter bovenhoek verplaatsen"
-
-#: ../src/include/all-keybindings.h:362
-msgid "Move window to bottom left corner"
-msgstr "Venster naar de linker onderhoek verplaatsen"
-
-#: ../src/include/all-keybindings.h:365
-msgid "Move window to bottom right corner"
-msgstr "Venster naar de rechter onderhoek verplaatsen"
-
-#: ../src/include/all-keybindings.h:369
-msgid "Move window to top edge of screen"
-msgstr "Venster naar de bovenzijde van het scherm verplaatsen"
-
-#: ../src/include/all-keybindings.h:372
-msgid "Move window to bottom edge of screen"
-msgstr "Venster naar de onderzijde van het scherm verplaatsen"
-
-#: ../src/include/all-keybindings.h:375
-msgid "Move window to right side of screen"
-msgstr "Venster naar de rechterzijde van het scherm verplaatsen"
-
-#: ../src/include/all-keybindings.h:378
-msgid "Move window to left side of screen"
-msgstr "Venster naar de linkerzijde van het scherm verplaatsen"
-
-#: ../src/include/all-keybindings.h:381
-msgid "Move window to center of screen"
-msgstr "Venster naar het midden van het scherm verplaatsen"
-
-#: ../src/metacity.schemas.in.in.h:1
-msgid "(Not implemented) Navigation works in terms of applications not windows"
-msgstr ""
-"(Niet geïmplementeerd) Navigatie werkt in termen van toepassingen, niet "
-"vensters"
-
-#: ../src/metacity.schemas.in.in.h:2
-msgid ""
-"A font description string describing a font for window titlebars. The size "
-"from the description will only be used if the titlebar_font_size option is "
-"set to 0. Also, this option is disabled if the titlebar_uses_desktop_font "
-"option is set to true."
-msgstr ""
-"Een lettertypebeschrijving voor het lettertype van de venstertitels. De "
-"grootte uit de beschrijving zal echter alleen worden gebruikt als "
-"‘titlebar_font_size’ op 0 is gezet. Tevens is deze optie uitgezet als "
-"‘titlebar_uses_desktop_font’ is ingeschakeld."
-
-#: ../src/metacity.schemas.in.in.h:3
-msgid "Action on title bar double-click"
-msgstr "Actie bij titelbalk-dubbelklik"
-
-#: ../src/metacity.schemas.in.in.h:4
-msgid "Action on title bar middle-click"
-msgstr "Actie bij titelbalk-klik met middelste muisknop"
-
-#: ../src/metacity.schemas.in.in.h:5
-msgid "Action on title bar right-click"
-msgstr "Actie bij titelbalk-klik met rechter muisknop"
-
-#: ../src/metacity.schemas.in.in.h:6
-msgid "Arrangement of buttons on the titlebar"
-msgstr "Schikking van de knoppen op de titelbalk"
-
-#: ../src/metacity.schemas.in.in.h:7
-msgid ""
-"Arrangement of buttons on the titlebar. The value should be a string, such "
-"as \"menu:minimize,maximize,spacer,close\"; the colon separates the left "
-"corner of the window from the right corner, and the button names are comma-"
-"separated. Duplicate buttons are not allowed. Unknown button names are "
-"silently ignored so that buttons can be added in future metacity versions "
-"without breaking older versions. A special spacer tag can be used to insert "
-"some space between two adjacent buttons."
-msgstr ""
-"Schikking van de knoppen op de titelbalk. De waarde moet een tekenreeks zijn "
-"zoals: ‘menu:minimize,maximize,spacer,close’; de punt-komma scheidt de "
-"linkerhoek van het venster met de rechterhoek, de knop-namen zijn gescheiden "
-"door komma's. Dubbele knoppen zijn niet toegestaan. Onbekende knop-namen "
-"worden genegeerd zodat in toekomstige versies van metacity, knoppen kunnen "
-"worden toegevoegd zonder oudere versies te breken. De waarde ‘spacer’ kan "
-"gebruikt worden om ruimte tussen twee naastgelegen knoppen te creëren."
-
-#: ../src/metacity.schemas.in.in.h:8
-msgid "Automatically raises the focused window"
-msgstr "Verhoogt automatisch het aandachtsvenster"
-
-#: ../src/metacity.schemas.in.in.h:9
-msgid ""
-"Clicking a window while holding down this modifier key will move the window "
-"(left click), resize the window (middle click), or show the window menu "
-"(right click). The middle and right click operations may be swapped using "
-"the \"resize_with_right_button\" key. Modifier is expressed as \"&lt;Alt&gt;"
-"\" or \"&lt;Super&gt;\" for example."
-msgstr ""
-"Klikken op een venster tijdens het inhouden van deze toets zal dit venster "
-"verplaatsen (linker muisknop), de grootte van het venster aanpassen "
-"(middelste muisknop), of het venstermenu tonen (rechter muisknop). De acties "
-"van de middelste en rechtermuisknop kunnen omgewisseld worden met de sleutel "
-"‘resize_with_right_button’. De Modifier-toets kan opgegeven worden met "
-"bijvoorbeeld ‘&lt;Alt&gt;’ of ‘&lt;Super&gt;’."
-
-#: ../src/metacity.schemas.in.in.h:10
-msgid "Commands to run in response to keybindings"
-msgstr "Opdrachten die worden uitgevoerd bij sneltoetsen"
-
 # technotalk
-#: ../src/metacity.schemas.in.in.h:11
+#: ../src/org.gnome.metacity.gschema.xml.in.h:1
 msgid "Compositing Manager"
 msgstr "Compositing manager"
 
-#: ../src/metacity.schemas.in.in.h:12
-msgid "Control how new windows get focus"
-msgstr "Beheren hoe nieuwe vensters aandacht krijgen"
-
-#: ../src/metacity.schemas.in.in.h:13
-msgid "Current theme"
-msgstr "Huidig thema"
-
-#: ../src/metacity.schemas.in.in.h:14
-msgid "Delay in milliseconds for the auto raise option"
-msgstr "Vertraging in milliseconden alvorens automatisch naar voren te halen"
-
-#: ../src/metacity.schemas.in.in.h:15
+#: ../src/org.gnome.metacity.gschema.xml.in.h:2
 msgid "Determines whether Metacity is a compositing manager."
 msgstr "Bepaalt of Metacity een 'compositing manager' is"
 
-#: ../src/metacity.schemas.in.in.h:16
-msgid ""
-"Determines whether applications or the system can generate audible 'beeps'; "
-"may be used in conjunction with 'visual bell' to allow silent 'beeps'."
-msgstr ""
-"Bepaalt of toepassingen of het systeem hoorbare ‘piepjes’ kan genereren; kan "
-"samen met 'visuele bel' gebruikt worden om geluidloze ‘piepjes’ mogelijk te "
-"maken."
-
-#: ../src/metacity.schemas.in.in.h:17
-msgid "Disable misfeatures that are required by old or broken applications"
-msgstr ""
-"Misfeatures uitzetten die vereist zijn voor oude of kapotte toepassingen"
-
-#: ../src/metacity.schemas.in.in.h:18
-msgid "Enable Visual Bell"
-msgstr "Visuele bel gebruiken"
-
-#: ../src/metacity.schemas.in.in.h:19
-msgid ""
-"If set to true, and the focus mode is either \"sloppy\" or \"mouse\" then "
-"the focused window will be automatically raised after a delay specified by "
-"the auto_raise_delay key. This is not related to clicking on a window to "
-"raise it, nor to entering a window during drag-and-drop."
-msgstr ""
-"Indien waar, en de aandachtsmodus is ofwel ‘sloppy’ of ‘mouse’, dan zal het "
-"venster met aandacht na een bepaalde tijd, die ingesteld kan worden met de "
-"‘auto_raise_delay’-sleutel. Dit heeft geen invloed bij het aanklikken van "
-"een venster om het naar voren te halen en heeft ook geen invloed bij het "
-"slepen en loslaten van items op het venster."
-
-#: ../src/metacity.schemas.in.in.h:20
-msgid ""
-"If true, ignore the titlebar_font option, and use the standard application "
-"font for window titles."
-msgstr ""
-"Indien waar, de ‘titlebar_font’-optie negeren, en het standaard toepassings-"
-"font gebruiken voor venstertitels."
-
-#: ../src/metacity.schemas.in.in.h:21
+#: ../src/org.gnome.metacity.gschema.xml.in.h:3
 msgid ""
 "If true, metacity will give the user less feedback by using wireframes, "
 "avoiding animations, or other means. This is a significant reduction in "
@@ -1011,335 +629,9 @@ msgstr ""
 "terminal servers gewerkt wordt. Echter, de raamwerk functie is gedeactiveerd "
 "indien toegankelijkheid geactiveerd is."
 
-#: ../src/metacity.schemas.in.in.h:22
-msgid ""
-"If true, then Metacity works in terms of applications rather than windows. "
-"The concept is a bit abstract, but in general an application-based setup is "
-"more like the Mac and less like Windows. When you focus a window in "
-"application-based mode, all the windows in the application will be raised. "
-"Also, in application-based mode, focus clicks are not passed through to "
-"windows in other applications. Application-based mode is, however, largely "
-"unimplemented at the moment."
-msgstr ""
-"Indien waar, werkt Metacity in termen van toepassingen in plaats van "
-"vensters. Het concept is ietwat abstract, maar een toepassing-gebaseerde "
-"opstelling lijkt meer op een Macintosch dan op Windows. Als u een venster "
-"aandacht geeft in toepassing-gebaseerde modus, zullen alle vensters van de "
-"toepassing verhoogd worden. Tevens geldt dat aandachts-klikken niet worden "
-"doorgegeven naar vensters in andere toepassingen. De toepassing-gebaseerde "
-"modus is echter voor een groot deel nog niet geïmplementeerd."
-
-#: ../src/metacity.schemas.in.in.h:23
+#: ../src/org.gnome.metacity.gschema.xml.in.h:4
 msgid "If true, trade off usability for less resource usage"
 msgstr "Indien waar, bruikbaarheid inwisselen voor efficiënt bronnengebruik"
-
-#: ../src/metacity.schemas.in.in.h:24
-msgid "Modifier to use for modified window click actions"
-msgstr "Controletoets voor aangepaste klikacties op het venster"
-
-#: ../src/metacity.schemas.in.in.h:25
-msgid "Name of workspace"
-msgstr "Werkbladnaam"
-
-#: ../src/metacity.schemas.in.in.h:26
-msgid "Number of workspaces"
-msgstr "Aantal werkbladen"
-
-#: ../src/metacity.schemas.in.in.h:27
-msgid ""
-"Number of workspaces. Must be more than zero, and has a fixed maximum to "
-"prevent making the desktop unusable by accidentally asking for too many "
-"workspaces."
-msgstr ""
-"Aantal werkbladen. Moet groter zijn dan nul, en heeft een vast maximum om te "
-"voorkomen dat u per ongeluk uw werkomgeving vernietigt, door te vragen om te "
-"veel werkbladen."
-
-#: ../src/metacity.schemas.in.in.h:28
-msgid "Run a defined command"
-msgstr "Voorgedefinieerde opdracht uitvoeren"
-
-# Zeer vrij vertaald (Wouter Bolsterlee)
-#: ../src/metacity.schemas.in.in.h:29
-msgid ""
-"Set this to true to resize with the right button and show a menu with the "
-"middle button while holding down the key given in \"mouse_button_modifier\"; "
-"set it to false to make it work the opposite way around."
-msgstr ""
-"Indien ingeschakeld vensters met de rechtermuisknop van grootte veranderd "
-"worden en verschijnt met de middelste muisknop het venstermenu (deze "
-"functies werken alleen als de toets opgegeven in ‘mouse_button_modifier’ "
-"ingehouden wordt). Indien uitgeschakeld werkt het andersom: rechtermuisknop "
-"geeft een menu, middelste muisknop voor afmetingen wijzigen."
-
-# Pfff… http://bugzilla.gnome.org/show_bug.cgi?id=572051 (Wouter Bolsterlee)
-#: ../src/metacity.schemas.in.in.h:30
-msgid ""
-"Setting this option to false can lead to buggy behavior, so users are "
-"strongly discouraged from changing it from the default of true. Many actions "
-"(e.g. clicking in the client area, moving or resizing the window) normally "
-"raise the window as a side-effect. Setting this option to false, which is "
-"strongly discouraged, will decouple raising from other user actions, and "
-"ignore raise requests generated by applications. See http://bugzilla.gnome."
-"org/show_bug.cgi?id=445447#c6. Even when this option is false, windows can "
-"still be raised by an alt-left-click anywhere on the window, a normal click "
-"on the window decorations, or by special messages from pagers, such as "
-"activation requests from tasklist applets. This option is currently disabled "
-"in click-to-focus mode. Note that the list of ways to raise windows when "
-"raise_on_click is false does not include programmatic requests from "
-"applications to raise windows; such requests will be ignored regardless of "
-"the reason for the request. If you are an application developer and have a "
-"user complaining that your application does not work with this setting "
-"disabled, tell them it is _their_ fault for breaking their window manager "
-"and that they need to change this option back to true or live with the \"bug"
-"\" they requested."
-msgstr ""
-"Uitschakelen van deze optie kan tot vreemd gedrag leiden, dus het wordt "
-"sterk afgeraden de standaardwaarde (ingeschakeld) te veranderen. Vele "
-"acties, zoals het klikken in een venster of het verplaatsen en van grootte "
-"veranderen van een venster, halen normaal gesproken het venster naar voren. "
-"Als deze optie uitgeschakeld wordt, hetgeen sterk afgeraden wordt, zal het "
-"naar voren en naar achter halen van vensters loskoppelen van andere "
-"gebruikersinteracties en ook verzoeken tot naar voren halen door "
-"toepassingen negeren. Zie ook http://bugzilla.gnome.org/show_bug.cgi?"
-"id=445447#c6. Ook als deze optie uitgeschakeld is kunnen vensters omhoog "
-"gehaald worden met een Alt-linkerklik waar dan ook op het venster, een "
-"normale klik op de vensterrand, of door speciale verzoeken zoals "
-"bijvoorbeeld door een vensterlijst op het paneel. Deze optie is momenteel "
-"uitgeschakeld indien ‘klikken voor vensteraandacht’ is ingeschakeld. Bla bla "
-"bla… http://bugzilla.gnome.org/show_bug.cgi?id=572051"
-
-#: ../src/metacity.schemas.in.in.h:31
-msgid ""
-"Some applications disregard specifications in ways that result in window "
-"manager misfeatures. This option puts Metacity in a rigorously correct mode, "
-"which gives a more consistent user interface, provided one does not need to "
-"run any misbehaving applications."
-msgstr ""
-"Sommige toepassingen houden geen rekening met specificaties die als "
-"resultaat hebben dat de vensterbeheerder niet met deze toepassingen om kan "
-"gaan. Deze optie zorgt ervoor dat Metacity in een streng correctie modus  "
-"werkt, die ervoor zorgt dat er een consistentere gebruiksomgeving ontstaat. "
-"Deze optie heeft echter alleen resultaat als er geen applicaties worden "
-"gedraaid die zich niet aan de specificaties houden."
-
-#: ../src/metacity.schemas.in.in.h:32
-msgid "System Bell is Audible"
-msgstr "Systeembel is hoorbaar"
-
-#: ../src/metacity.schemas.in.in.h:33
-msgid ""
-"Tells Metacity how to implement the visual indication that the system bell "
-"or another application 'bell' indicator has been rung. Currently there are "
-"two valid values, \"fullscreen\", which causes a fullscreen white-black "
-"flash, and \"frame_flash\" which causes the titlebar of the application "
-"which sent the bell signal to flash. If the application which sent the bell "
-"is unknown (as is usually the case for the default \"system beep\"), the "
-"currently focused window's titlebar is flashed."
-msgstr ""
-"Vertelt Metacity hoe de de visuele indicatie dat de systeembel of een andere "
-"toepassings-bel is afgegaan, moet worden geimplementeerd. Momenteel zijn er "
-"twee geldige waardes, ‘fullscreen’, wat een zwart-witte flits over hele "
-"beelscherm geeft, of ‘frame_flash’ waarbij de titelbalk opflitst van de "
-"toepassing die het belsignaal gaf. Als de toepassing die het belletje gaf "
-"onbekend is (wat meestal het geval is bij de standaard ‘systeem-piep’), zal "
-"de titelbalk van het huidige scherm dat de focus heeft opflitsen."
-
-#: ../src/metacity.schemas.in.in.h:34
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_N keys define keybindings "
-"that correspond to these commands. Pressing the keybinding for run_command_N "
-"will execute command_N."
-msgstr ""
-"De sleutels: /apps/metacity/global_keybindings/run_command_N definiëren "
-"toetskoppelingen die corresponderen met deze opdrachten. Het intoetsen van "
-"de sneltoets voor ‘run_command_N’ zal de opdracht ‘command_N’ uitvoeren."
-
-#: ../src/metacity.schemas.in.in.h:35
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_screenshot key defines a "
-"keybinding which causes the command specified by this setting to be invoked."
-msgstr ""
-"De sleutel ‘/apps/metacity/global_keybindings/run_command_screenshot’ "
-"definieert een sneltoets waardoor de opdracht in deze instelling wordt "
-"uitgevoerd."
-
-#: ../src/metacity.schemas.in.in.h:36
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_window_screenshot key "
-"defines a keybinding which causes the command specified by this setting to "
-"be invoked."
-msgstr ""
-"De sleutel ‘/apps/metacity/global_keybindings/run_command_window_screenshot’ "
-"definieert een sneltoets waardoor de opdracht in deze instelling wordt "
-"uitgevoerd."
-
-#: ../src/metacity.schemas.in.in.h:37
-msgid ""
-"The keybinding that runs the correspondingly-numbered command in /apps/"
-"metacity/keybinding_commands The format looks like \"&lt;Control&gt;a\" or "
-"\"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows "
-"lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and "
-"\"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled\", "
-"then there will be no keybinding for this action."
-msgstr ""
-"De sneltoets die de overeenkomstig genummerde opdracht in ‘/apps/metacity/"
-"keybinding_commands’ uitvoert. Het formaat ziet eruit als ‘&lt;Control&gt;a’ "
-"of ‘&lt;Shift&gt;&lt;Alt&gt;F1’. Hierbij zijn kleine- en hoofdletters "
-"toegestaan, evenals afkortingen zoals ‘&lt;Ctl&gt;’ en ‘&lt;Ctrl&gt;’. "
-"Indien u de optie instelt op de speciale waarde ‘disabled’, dan zal deze "
-"actie geen sneltoets kennen."
-
-#: ../src/metacity.schemas.in.in.h:38
-msgid "The name of a workspace."
-msgstr "De naam van een werkblad."
-
-#: ../src/metacity.schemas.in.in.h:39
-msgid "The screenshot command"
-msgstr "De opdracht voor schermafdruk"
-
-#: ../src/metacity.schemas.in.in.h:40
-msgid ""
-"The theme determines the appearance of window borders, titlebar, and so "
-"forth."
-msgstr ""
-"Het thema bepaalt het uiterlijk van vensterranden, titelbalk, enzovoort."
-
-#: ../src/metacity.schemas.in.in.h:41
-msgid ""
-"The time delay before raising a window if auto_raise is set to true. The "
-"delay is given in thousandths of a second."
-msgstr ""
-"De wachttijd alvorens een venster naar voren te halen als ‘auto_raise’ op "
-"'true' staat. De wachttijd is gegeven in duizendsten van seconden."
-
-#: ../src/metacity.schemas.in.in.h:42
-msgid ""
-"The window focus mode indicates how windows are activated. It has three "
-"possible values; \"click\" means windows must be clicked in order to focus "
-"them, \"sloppy\" means windows are focused when the mouse enters the window, "
-"and \"mouse\" means windows are focused when the mouse enters the window and "
-"unfocused when the mouse leaves the window."
-msgstr ""
-"De vesteraandachtmodus geeft de wijze van vensteractivatie aan. Er zijn drie "
-"mogelijke waarden; ‘click’ betekent dat vensters moeten worden aangeklikt om "
-"ze aandacht te geven, ‘sloppy’ betekent dat vensters aandacht krijgen "
-"wanneer de muisaanwijzer het venster binnenkomt, en ‘mouse’ betekent dat "
-"vensters aandacht krijgen wanneer de muisaanwijzer het venster binnenkomt en "
-"aandacht verliezen wanneer de muisaanwijzer het venster verlaat."
-
-#: ../src/metacity.schemas.in.in.h:43
-msgid "The window screenshot command"
-msgstr "De opdracht voor venster-schermafdruk"
-
-#: ../src/metacity.schemas.in.in.h:44
-msgid ""
-"This option determines the effects of double-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"Deze optie bepaalt het effect van dubbelklikken op de titelbalk. Geldige "
-"waardes zijn ‘toggle_shade’, die het venster laat oprollen/afrollen, "
-"‘toggle_maximize’ die het venster maximaliseert/herstelt, "
-"‘toggle_maximize_horizontally' en ‘toggle_maximize_vertically’ die het "
-"venster alleen horizontaal of verticaal maximaliseren/herstellen, ‘minimize’ "
-"die het venster minimaliseert, ‘shade’ die het venster oprolt, ‘menu’ die "
-"het venstermenu toont, ‘lower’ die het venster achter alle andere vensters "
-"zet,  en ‘none’ om niets te doen."
-
-#: ../src/metacity.schemas.in.in.h:45
-msgid ""
-"This option determines the effects of middle-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"Deze optie bepaalt het effect van klikken op de titelbalk met de middelste "
-"muisknop. Geldige waardes zijn ‘toggle_shade’, die het venster laat oprollen/"
-"afrollen, ‘toggle_maximize’ die het venster maximaliseert/herstelt, "
-"‘toggle_maximize_horizontally' en ‘toggle_maximize_vertically’ die het "
-"venster alleen horizontaal of verticaal maximaliseren/herstellen, ‘minimize’ "
-"die het venster minimaliseert, ‘shade’ die het venster oprolt, ‘menu’ die "
-"het venstermenu toont, ‘lower’ die het venster achter alle andere vensters "
-"zet,  en ‘none’ om niets te doen."
-
-#: ../src/metacity.schemas.in.in.h:46
-msgid ""
-"This option determines the effects of right-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"Deze optie bepaalt het effect van klikken op de titelbalk met de rechter "
-"muisknop. Geldige waardes zijn ‘toggle_shade’, die het venster laat oprollen/"
-"afrollen, ‘toggle_maximize’ die het venster maximaliseert/herstelt, "
-"‘toggle_maximize_horizontally' en ‘toggle_maximize_vertically’ die het "
-"venster alleen horizontaal of verticaal maximaliseren/herstellen, ‘minimize’ "
-"die het venster minimaliseert, ‘shade’ die het venster oprolt, ‘menu’ die "
-"het venstermenu toont, ‘lower’ die het venster achter alle andere vensters "
-"zet,  en ‘none’ om niets te doen."
-
-#: ../src/metacity.schemas.in.in.h:47
-msgid ""
-"This option provides additional control over how newly created windows get "
-"focus. It has two possible values; \"smart\" applies the user's normal focus "
-"mode, and \"strict\" results in windows started from a terminal not being "
-"given focus."
-msgstr ""
-"Deze optie geeft aanvullende beheermogelijkheden over de methode waarmee "
-"nieuwe vensters aandacht krijgen. Er zijn twee mogelijke waarden: ‘smart’ "
-"zorgt ervoor dat de normale methode wordt gebruikt; ‘strict’ zorgt ervoor "
-"dat vensters die vanuit een terminalvenster gestart worden geen aandacht "
-"krijgen."
-
-#: ../src/metacity.schemas.in.in.h:48
-msgid ""
-"Turns on a visual indication when an application or the system issues a "
-"'bell' or 'beep'; useful for the hard-of-hearing and for use in noisy "
-"environments."
-msgstr ""
-"Geeft een zichtbare indicatie wanneer een toepassing of het systeem een "
-"'bel' of 'piep' geeft; handig voor slechthorenden of voor gebruik in "
-"omgevingen met veel lawaai."
-
-#: ../src/metacity.schemas.in.in.h:49
-msgid "Use standard system font in window titles"
-msgstr "Standaard systeemlettertype gebruiken in venstertitels"
-
-#: ../src/metacity.schemas.in.in.h:50
-msgid "Visual Bell Type"
-msgstr "Visuele bel type"
-
-#: ../src/metacity.schemas.in.in.h:51
-msgid "Whether raising should be a side-effect of other user interactions"
-msgstr ""
-"Of het naar voren brengen een bijeffect is van andere gebruikersinteracties"
-
-#: ../src/metacity.schemas.in.in.h:52
-msgid "Whether to resize with the right button"
-msgstr ""
-"Of de rechtermuisknop gebruikt wordt het wijzigen van vensterafmetingen"
-
-#: ../src/metacity.schemas.in.in.h:53
-msgid "Window focus mode"
-msgstr "Vensteraandacht-modus"
-
-#: ../src/metacity.schemas.in.in.h:54
-msgid "Window title font"
-msgstr "Venstertitellettertype"
 
 #: ../src/tools/metacity-message.c:150
 #, c-format
@@ -2420,3 +1712,596 @@ msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr ""
 "%d coördinatenexpressies verwerkt in %g seconden (gemiddelde van %g "
 "seconden)\n"
+
+#~ msgid "Launchers"
+#~ msgstr "Starters"
+
+#~ msgid "Screenshots"
+#~ msgstr "Schermafdrukken"
+
+#~ msgid ""
+#~ "There was an error running <tt>%s</tt>:\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Er trad een fout op bij het uitvoeren van <tt>%s</tt>:\n"
+#~ "\n"
+#~ "%s."
+
+#~ msgid "No command %d has been defined.\n"
+#~ msgstr "Er is geen opdracht %d gedefinieerd.\n"
+
+#~ msgid "No terminal command has been defined.\n"
+#~ msgstr "Er is geen opdracht voor de terminal gedefinieerd.\n"
+
+#~ msgid "GConf key '%s' is set to an invalid value\n"
+#~ msgstr "GConf-sleutel '%s' is ingesteld op een ongeldige waarde\n"
+
+#~ msgid "%d stored in GConf key %s is out of range %d to %d\n"
+#~ msgstr ""
+#~ "%d opgeslagen in GConf-sleutel %s valt buiten het bereik %d tot %d\n"
+
+#~ msgid "GConf key \"%s\" is set to an invalid type\n"
+#~ msgstr "GConf-sleutel ‘%s’ is op een ongeldig type ingesteld\n"
+
+#~ msgid "Error setting number of workspaces to %d: %s\n"
+#~ msgstr "Fout bij het instellen van het aantal werkbladen op %d: %s\n"
+
+#~ msgid "Error setting name for workspace %d to \"%s\": %s\n"
+#~ msgstr "Fout bij het instellen van de naam voor werkblad %d op ‘%s’: %s\n"
+
+#~ msgid "Error setting compositor status: %s\n"
+#~ msgstr "Fout bij het instellen van ‘compositor’-status: %s\n"
+
+#~ msgid ""
+#~ "The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
+#~ "\n"
+#~ "The parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to "
+#~ "the special string \"disabled\", then there will be no keybinding for "
+#~ "this action."
+#~ msgstr ""
+#~ "Het formaat ziet eruit als ‘<Control>a’ of ‘<Shift><Alt>F1’.\n"
+#~ "\n"
+#~ "Hierbij zijn zowel kleine als hoofdletters toegestaan, evenals "
+#~ "afkortingen zoals ‘<Ctl>’ en ‘<Ctrl>’. Indien u de optie instelt op de "
+#~ "speciale waarde ‘disabled’, dan zal deze actie geen sneltoets hebben."
+
+#~ msgid ""
+#~ "The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
+#~ "\n"
+#~ "The parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to "
+#~ "the special string \"disabled\", then there will be no keybinding for "
+#~ "this action.\n"
+#~ "\n"
+#~ "This keybinding may be reversed by holding down the \"shift\" key; "
+#~ "therefore, \"shift\" cannot be one of the keys it uses."
+#~ msgstr ""
+#~ "Het formaat ziet eruit als ‘<Control>a’ of ‘<Shift><Alt>F1’.\n"
+#~ "\n"
+#~ "Hierbij zijn zowel kleine als hoofdletters toegestaan, evenals "
+#~ "afkortingen zoals ‘<Ctl>’ en ‘<Ctrl>’. Indien u de optie instelt op de "
+#~ "speciale waarde ‘disabled’, dan zal deze actie geen sneltoets hebben.\n"
+#~ "Deze sneltoets kan omgekeerd worden door de Shift-toets ingedrukt te "
+#~ "houden. Om die reden mag Shift geen onderdeel uitmaken van de "
+#~ "toetscombinatie."
+
+#~ msgid "Switch to workspace 5"
+#~ msgstr "Schakelen naar werkblad 5"
+
+#~ msgid "Switch to workspace 6"
+#~ msgstr "Schakelen naar werkblad 6"
+
+#~ msgid "Switch to workspace 7"
+#~ msgstr "Schakelen naar werkblad 7"
+
+#~ msgid "Switch to workspace 8"
+#~ msgstr "Schakelen naar werkblad 8"
+
+#~ msgid "Switch to workspace 9"
+#~ msgstr "Schakelen naar werkblad 9"
+
+#~ msgid "Switch to workspace 10"
+#~ msgstr "Schakelen naar werkblad 10"
+
+#~ msgid "Switch to workspace 11"
+#~ msgstr "Schakelen naar werkblad 11"
+
+#~ msgid "Switch to workspace 12"
+#~ msgstr "Schakelen naar werkblad 12"
+
+#~ msgid "Reverse switch windows of an application"
+#~ msgstr "Achterwaarts wisselen van venster binnen een toepassing"
+
+#~ msgid "Reverse switch applications"
+#~ msgstr "Achterwaarts tussen toepassingen schakelen"
+
+#~ msgid "Reverse switch system controls"
+#~ msgstr "Achterwaarts tussen systeemschermen schakelen"
+
+#~ msgid "Reverse switch windows of an app directly"
+#~ msgstr "Direct achterwaarts wisselen van venster binnen een toepassing"
+
+#~ msgid "Reverse switch windows directly"
+#~ msgstr "Direct achterwaarts tussen vensters schakelen"
+
+# Vrij vertaald (Wouter Bolsterlee)
+#~ msgid "Reverse switch system controls directly"
+#~ msgstr "Direct achterwaarts tussen systeemschermen schakelen"
+
+#~ msgid "Take a screenshot"
+#~ msgstr "Een schermafdruk maken"
+
+#~ msgid "Take a screenshot of a window"
+#~ msgstr "Een schermafdruk van een venster maken"
+
+#~ msgid "Launch Terminal"
+#~ msgstr "Terminal opstarten"
+
+#~ msgid "Toggle window always appearing on top"
+#~ msgstr "Altijd bovenop in- of uitschakelen"
+
+#~ msgid "Move window to workspace 5"
+#~ msgstr "Venster verplaatsen naar werkblad 5"
+
+#~ msgid "Move window to workspace 6"
+#~ msgstr "Venster verplaatsen naar werkblad 6"
+
+#~ msgid "Move window to workspace 7"
+#~ msgstr "Venster verplaatsen naar werkblad 7"
+
+#~ msgid "Move window to workspace 8"
+#~ msgstr "Venster verplaatsen naar werkblad 8"
+
+#~ msgid "Move window to workspace 9"
+#~ msgstr "Venster verplaatsen naar werkblad 9"
+
+#~ msgid "Move window to workspace 10"
+#~ msgstr "Venster verplaatsen naar werkblad 10"
+
+#~ msgid "Move window to workspace 11"
+#~ msgstr "Venster verplaatsen naar werkblad 11"
+
+#~ msgid "Move window to workspace 12"
+#~ msgstr "Venster verplaatsen naar werkblad 12"
+
+#~ msgid "Move window to top left corner"
+#~ msgstr "Venster naar de linker bovenhoek verplaatsen"
+
+#~ msgid "Move window to top right corner"
+#~ msgstr "Venster naar de rechter bovenhoek verplaatsen"
+
+#~ msgid "Move window to bottom left corner"
+#~ msgstr "Venster naar de linker onderhoek verplaatsen"
+
+#~ msgid "Move window to bottom right corner"
+#~ msgstr "Venster naar de rechter onderhoek verplaatsen"
+
+#~ msgid "Move window to top edge of screen"
+#~ msgstr "Venster naar de bovenzijde van het scherm verplaatsen"
+
+#~ msgid "Move window to bottom edge of screen"
+#~ msgstr "Venster naar de onderzijde van het scherm verplaatsen"
+
+#~ msgid "Move window to right side of screen"
+#~ msgstr "Venster naar de rechterzijde van het scherm verplaatsen"
+
+#~ msgid "Move window to left side of screen"
+#~ msgstr "Venster naar de linkerzijde van het scherm verplaatsen"
+
+#~ msgid "Move window to center of screen"
+#~ msgstr "Venster naar het midden van het scherm verplaatsen"
+
+#~ msgid ""
+#~ "(Not implemented) Navigation works in terms of applications not windows"
+#~ msgstr ""
+#~ "(Niet geïmplementeerd) Navigatie werkt in termen van toepassingen, niet "
+#~ "vensters"
+
+#~ msgid ""
+#~ "A font description string describing a font for window titlebars. The "
+#~ "size from the description will only be used if the titlebar_font_size "
+#~ "option is set to 0. Also, this option is disabled if the "
+#~ "titlebar_uses_desktop_font option is set to true."
+#~ msgstr ""
+#~ "Een lettertypebeschrijving voor het lettertype van de venstertitels. De "
+#~ "grootte uit de beschrijving zal echter alleen worden gebruikt als "
+#~ "‘titlebar_font_size’ op 0 is gezet. Tevens is deze optie uitgezet als "
+#~ "‘titlebar_uses_desktop_font’ is ingeschakeld."
+
+#~ msgid "Action on title bar double-click"
+#~ msgstr "Actie bij titelbalk-dubbelklik"
+
+#~ msgid "Action on title bar middle-click"
+#~ msgstr "Actie bij titelbalk-klik met middelste muisknop"
+
+#~ msgid "Action on title bar right-click"
+#~ msgstr "Actie bij titelbalk-klik met rechter muisknop"
+
+#~ msgid "Arrangement of buttons on the titlebar"
+#~ msgstr "Schikking van de knoppen op de titelbalk"
+
+#~ msgid ""
+#~ "Arrangement of buttons on the titlebar. The value should be a string, "
+#~ "such as \"menu:minimize,maximize,spacer,close\"; the colon separates the "
+#~ "left corner of the window from the right corner, and the button names are "
+#~ "comma-separated. Duplicate buttons are not allowed. Unknown button names "
+#~ "are silently ignored so that buttons can be added in future metacity "
+#~ "versions without breaking older versions. A special spacer tag can be "
+#~ "used to insert some space between two adjacent buttons."
+#~ msgstr ""
+#~ "Schikking van de knoppen op de titelbalk. De waarde moet een tekenreeks "
+#~ "zijn zoals: ‘menu:minimize,maximize,spacer,close’; de punt-komma scheidt "
+#~ "de linkerhoek van het venster met de rechterhoek, de knop-namen zijn "
+#~ "gescheiden door komma's. Dubbele knoppen zijn niet toegestaan. Onbekende "
+#~ "knop-namen worden genegeerd zodat in toekomstige versies van metacity, "
+#~ "knoppen kunnen worden toegevoegd zonder oudere versies te breken. De "
+#~ "waarde ‘spacer’ kan gebruikt worden om ruimte tussen twee naastgelegen "
+#~ "knoppen te creëren."
+
+#~ msgid "Automatically raises the focused window"
+#~ msgstr "Verhoogt automatisch het aandachtsvenster"
+
+#~ msgid ""
+#~ "Clicking a window while holding down this modifier key will move the "
+#~ "window (left click), resize the window (middle click), or show the window "
+#~ "menu (right click). The middle and right click operations may be swapped "
+#~ "using the \"resize_with_right_button\" key. Modifier is expressed as "
+#~ "\"&lt;Alt&gt;\" or \"&lt;Super&gt;\" for example."
+#~ msgstr ""
+#~ "Klikken op een venster tijdens het inhouden van deze toets zal dit "
+#~ "venster verplaatsen (linker muisknop), de grootte van het venster "
+#~ "aanpassen (middelste muisknop), of het venstermenu tonen (rechter "
+#~ "muisknop). De acties van de middelste en rechtermuisknop kunnen "
+#~ "omgewisseld worden met de sleutel ‘resize_with_right_button’. De Modifier-"
+#~ "toets kan opgegeven worden met bijvoorbeeld ‘&lt;Alt&gt;’ of ‘&lt;"
+#~ "Super&gt;’."
+
+#~ msgid "Commands to run in response to keybindings"
+#~ msgstr "Opdrachten die worden uitgevoerd bij sneltoetsen"
+
+#~ msgid "Control how new windows get focus"
+#~ msgstr "Beheren hoe nieuwe vensters aandacht krijgen"
+
+#~ msgid "Current theme"
+#~ msgstr "Huidig thema"
+
+#~ msgid "Delay in milliseconds for the auto raise option"
+#~ msgstr ""
+#~ "Vertraging in milliseconden alvorens automatisch naar voren te halen"
+
+#~ msgid ""
+#~ "Determines whether applications or the system can generate audible "
+#~ "'beeps'; may be used in conjunction with 'visual bell' to allow silent "
+#~ "'beeps'."
+#~ msgstr ""
+#~ "Bepaalt of toepassingen of het systeem hoorbare ‘piepjes’ kan genereren; "
+#~ "kan samen met 'visuele bel' gebruikt worden om geluidloze ‘piepjes’ "
+#~ "mogelijk te maken."
+
+#~ msgid "Disable misfeatures that are required by old or broken applications"
+#~ msgstr ""
+#~ "Misfeatures uitzetten die vereist zijn voor oude of kapotte toepassingen"
+
+#~ msgid "Enable Visual Bell"
+#~ msgstr "Visuele bel gebruiken"
+
+#~ msgid ""
+#~ "If set to true, and the focus mode is either \"sloppy\" or \"mouse\" then "
+#~ "the focused window will be automatically raised after a delay specified "
+#~ "by the auto_raise_delay key. This is not related to clicking on a window "
+#~ "to raise it, nor to entering a window during drag-and-drop."
+#~ msgstr ""
+#~ "Indien waar, en de aandachtsmodus is ofwel ‘sloppy’ of ‘mouse’, dan zal "
+#~ "het venster met aandacht na een bepaalde tijd, die ingesteld kan worden "
+#~ "met de ‘auto_raise_delay’-sleutel. Dit heeft geen invloed bij het "
+#~ "aanklikken van een venster om het naar voren te halen en heeft ook geen "
+#~ "invloed bij het slepen en loslaten van items op het venster."
+
+#~ msgid ""
+#~ "If true, ignore the titlebar_font option, and use the standard "
+#~ "application font for window titles."
+#~ msgstr ""
+#~ "Indien waar, de ‘titlebar_font’-optie negeren, en het standaard "
+#~ "toepassings-font gebruiken voor venstertitels."
+
+#~ msgid ""
+#~ "If true, then Metacity works in terms of applications rather than "
+#~ "windows. The concept is a bit abstract, but in general an application-"
+#~ "based setup is more like the Mac and less like Windows. When you focus a "
+#~ "window in application-based mode, all the windows in the application will "
+#~ "be raised. Also, in application-based mode, focus clicks are not passed "
+#~ "through to windows in other applications. Application-based mode is, "
+#~ "however, largely unimplemented at the moment."
+#~ msgstr ""
+#~ "Indien waar, werkt Metacity in termen van toepassingen in plaats van "
+#~ "vensters. Het concept is ietwat abstract, maar een toepassing-gebaseerde "
+#~ "opstelling lijkt meer op een Macintosch dan op Windows. Als u een venster "
+#~ "aandacht geeft in toepassing-gebaseerde modus, zullen alle vensters van "
+#~ "de toepassing verhoogd worden. Tevens geldt dat aandachts-klikken niet "
+#~ "worden doorgegeven naar vensters in andere toepassingen. De toepassing-"
+#~ "gebaseerde modus is echter voor een groot deel nog niet geïmplementeerd."
+
+#~ msgid "Modifier to use for modified window click actions"
+#~ msgstr "Controletoets voor aangepaste klikacties op het venster"
+
+#~ msgid "Name of workspace"
+#~ msgstr "Werkbladnaam"
+
+#~ msgid "Number of workspaces"
+#~ msgstr "Aantal werkbladen"
+
+#~ msgid ""
+#~ "Number of workspaces. Must be more than zero, and has a fixed maximum to "
+#~ "prevent making the desktop unusable by accidentally asking for too many "
+#~ "workspaces."
+#~ msgstr ""
+#~ "Aantal werkbladen. Moet groter zijn dan nul, en heeft een vast maximum om "
+#~ "te voorkomen dat u per ongeluk uw werkomgeving vernietigt, door te vragen "
+#~ "om te veel werkbladen."
+
+#~ msgid "Run a defined command"
+#~ msgstr "Voorgedefinieerde opdracht uitvoeren"
+
+# Zeer vrij vertaald (Wouter Bolsterlee)
+#~ msgid ""
+#~ "Set this to true to resize with the right button and show a menu with the "
+#~ "middle button while holding down the key given in \"mouse_button_modifier"
+#~ "\"; set it to false to make it work the opposite way around."
+#~ msgstr ""
+#~ "Indien ingeschakeld vensters met de rechtermuisknop van grootte veranderd "
+#~ "worden en verschijnt met de middelste muisknop het venstermenu (deze "
+#~ "functies werken alleen als de toets opgegeven in ‘mouse_button_modifier’ "
+#~ "ingehouden wordt). Indien uitgeschakeld werkt het andersom: "
+#~ "rechtermuisknop geeft een menu, middelste muisknop voor afmetingen "
+#~ "wijzigen."
+
+# Pfff… http://bugzilla.gnome.org/show_bug.cgi?id=572051 (Wouter Bolsterlee)
+#~ msgid ""
+#~ "Setting this option to false can lead to buggy behavior, so users are "
+#~ "strongly discouraged from changing it from the default of true. Many "
+#~ "actions (e.g. clicking in the client area, moving or resizing the window) "
+#~ "normally raise the window as a side-effect. Setting this option to false, "
+#~ "which is strongly discouraged, will decouple raising from other user "
+#~ "actions, and ignore raise requests generated by applications. See http://"
+#~ "bugzilla.gnome.org/show_bug.cgi?id=445447#c6. Even when this option is "
+#~ "false, windows can still be raised by an alt-left-click anywhere on the "
+#~ "window, a normal click on the window decorations, or by special messages "
+#~ "from pagers, such as activation requests from tasklist applets. This "
+#~ "option is currently disabled in click-to-focus mode. Note that the list "
+#~ "of ways to raise windows when raise_on_click is false does not include "
+#~ "programmatic requests from applications to raise windows; such requests "
+#~ "will be ignored regardless of the reason for the request. If you are an "
+#~ "application developer and have a user complaining that your application "
+#~ "does not work with this setting disabled, tell them it is _their_ fault "
+#~ "for breaking their window manager and that they need to change this "
+#~ "option back to true or live with the \"bug\" they requested."
+#~ msgstr ""
+#~ "Uitschakelen van deze optie kan tot vreemd gedrag leiden, dus het wordt "
+#~ "sterk afgeraden de standaardwaarde (ingeschakeld) te veranderen. Vele "
+#~ "acties, zoals het klikken in een venster of het verplaatsen en van "
+#~ "grootte veranderen van een venster, halen normaal gesproken het venster "
+#~ "naar voren. Als deze optie uitgeschakeld wordt, hetgeen sterk afgeraden "
+#~ "wordt, zal het naar voren en naar achter halen van vensters loskoppelen "
+#~ "van andere gebruikersinteracties en ook verzoeken tot naar voren halen "
+#~ "door toepassingen negeren. Zie ook http://bugzilla.gnome.org/show_bug.cgi?"
+#~ "id=445447#c6. Ook als deze optie uitgeschakeld is kunnen vensters omhoog "
+#~ "gehaald worden met een Alt-linkerklik waar dan ook op het venster, een "
+#~ "normale klik op de vensterrand, of door speciale verzoeken zoals "
+#~ "bijvoorbeeld door een vensterlijst op het paneel. Deze optie is momenteel "
+#~ "uitgeschakeld indien ‘klikken voor vensteraandacht’ is ingeschakeld. Bla "
+#~ "bla bla… http://bugzilla.gnome.org/show_bug.cgi?id=572051"
+
+#~ msgid ""
+#~ "Some applications disregard specifications in ways that result in window "
+#~ "manager misfeatures. This option puts Metacity in a rigorously correct "
+#~ "mode, which gives a more consistent user interface, provided one does not "
+#~ "need to run any misbehaving applications."
+#~ msgstr ""
+#~ "Sommige toepassingen houden geen rekening met specificaties die als "
+#~ "resultaat hebben dat de vensterbeheerder niet met deze toepassingen om "
+#~ "kan gaan. Deze optie zorgt ervoor dat Metacity in een streng correctie "
+#~ "modus  werkt, die ervoor zorgt dat er een consistentere gebruiksomgeving "
+#~ "ontstaat. Deze optie heeft echter alleen resultaat als er geen "
+#~ "applicaties worden gedraaid die zich niet aan de specificaties houden."
+
+#~ msgid "System Bell is Audible"
+#~ msgstr "Systeembel is hoorbaar"
+
+#~ msgid ""
+#~ "Tells Metacity how to implement the visual indication that the system "
+#~ "bell or another application 'bell' indicator has been rung. Currently "
+#~ "there are two valid values, \"fullscreen\", which causes a fullscreen "
+#~ "white-black flash, and \"frame_flash\" which causes the titlebar of the "
+#~ "application which sent the bell signal to flash. If the application which "
+#~ "sent the bell is unknown (as is usually the case for the default \"system "
+#~ "beep\"), the currently focused window's titlebar is flashed."
+#~ msgstr ""
+#~ "Vertelt Metacity hoe de de visuele indicatie dat de systeembel of een "
+#~ "andere toepassings-bel is afgegaan, moet worden geimplementeerd. "
+#~ "Momenteel zijn er twee geldige waardes, ‘fullscreen’, wat een zwart-witte "
+#~ "flits over hele beelscherm geeft, of ‘frame_flash’ waarbij de titelbalk "
+#~ "opflitst van de toepassing die het belsignaal gaf. Als de toepassing die "
+#~ "het belletje gaf onbekend is (wat meestal het geval is bij de standaard "
+#~ "‘systeem-piep’), zal de titelbalk van het huidige scherm dat de focus "
+#~ "heeft opflitsen."
+
+#~ msgid ""
+#~ "The /apps/metacity/global_keybindings/run_command_N keys define "
+#~ "keybindings that correspond to these commands. Pressing the keybinding "
+#~ "for run_command_N will execute command_N."
+#~ msgstr ""
+#~ "De sleutels: /apps/metacity/global_keybindings/run_command_N definiëren "
+#~ "toetskoppelingen die corresponderen met deze opdrachten. Het intoetsen "
+#~ "van de sneltoets voor ‘run_command_N’ zal de opdracht ‘command_N’ "
+#~ "uitvoeren."
+
+#~ msgid ""
+#~ "The /apps/metacity/global_keybindings/run_command_screenshot key defines "
+#~ "a keybinding which causes the command specified by this setting to be "
+#~ "invoked."
+#~ msgstr ""
+#~ "De sleutel ‘/apps/metacity/global_keybindings/run_command_screenshot’ "
+#~ "definieert een sneltoets waardoor de opdracht in deze instelling wordt "
+#~ "uitgevoerd."
+
+#~ msgid ""
+#~ "The /apps/metacity/global_keybindings/run_command_window_screenshot key "
+#~ "defines a keybinding which causes the command specified by this setting "
+#~ "to be invoked."
+#~ msgstr ""
+#~ "De sleutel ‘/apps/metacity/global_keybindings/"
+#~ "run_command_window_screenshot’ definieert een sneltoets waardoor de "
+#~ "opdracht in deze instelling wordt uitgevoerd."
+
+#~ msgid ""
+#~ "The keybinding that runs the correspondingly-numbered command in /apps/"
+#~ "metacity/keybinding_commands The format looks like \"&lt;Control&gt;a\" "
+#~ "or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and "
+#~ "allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
+#~ "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
+#~ "\"disabled\", then there will be no keybinding for this action."
+#~ msgstr ""
+#~ "De sneltoets die de overeenkomstig genummerde opdracht in ‘/apps/metacity/"
+#~ "keybinding_commands’ uitvoert. Het formaat ziet eruit als ‘&lt;Control&gt;"
+#~ "a’ of ‘&lt;Shift&gt;&lt;Alt&gt;F1’. Hierbij zijn kleine- en hoofdletters "
+#~ "toegestaan, evenals afkortingen zoals ‘&lt;Ctl&gt;’ en ‘&lt;Ctrl&gt;’. "
+#~ "Indien u de optie instelt op de speciale waarde ‘disabled’, dan zal deze "
+#~ "actie geen sneltoets kennen."
+
+#~ msgid "The name of a workspace."
+#~ msgstr "De naam van een werkblad."
+
+#~ msgid "The screenshot command"
+#~ msgstr "De opdracht voor schermafdruk"
+
+#~ msgid ""
+#~ "The theme determines the appearance of window borders, titlebar, and so "
+#~ "forth."
+#~ msgstr ""
+#~ "Het thema bepaalt het uiterlijk van vensterranden, titelbalk, enzovoort."
+
+#~ msgid ""
+#~ "The time delay before raising a window if auto_raise is set to true. The "
+#~ "delay is given in thousandths of a second."
+#~ msgstr ""
+#~ "De wachttijd alvorens een venster naar voren te halen als ‘auto_raise’ op "
+#~ "'true' staat. De wachttijd is gegeven in duizendsten van seconden."
+
+#~ msgid ""
+#~ "The window focus mode indicates how windows are activated. It has three "
+#~ "possible values; \"click\" means windows must be clicked in order to "
+#~ "focus them, \"sloppy\" means windows are focused when the mouse enters "
+#~ "the window, and \"mouse\" means windows are focused when the mouse enters "
+#~ "the window and unfocused when the mouse leaves the window."
+#~ msgstr ""
+#~ "De vesteraandachtmodus geeft de wijze van vensteractivatie aan. Er zijn "
+#~ "drie mogelijke waarden; ‘click’ betekent dat vensters moeten worden "
+#~ "aangeklikt om ze aandacht te geven, ‘sloppy’ betekent dat vensters "
+#~ "aandacht krijgen wanneer de muisaanwijzer het venster binnenkomt, en "
+#~ "‘mouse’ betekent dat vensters aandacht krijgen wanneer de muisaanwijzer "
+#~ "het venster binnenkomt en aandacht verliezen wanneer de muisaanwijzer het "
+#~ "venster verlaat."
+
+#~ msgid "The window screenshot command"
+#~ msgstr "De opdracht voor venster-schermafdruk"
+
+#~ msgid ""
+#~ "This option determines the effects of double-clicking on the title bar. "
+#~ "Current valid options are 'toggle_shade', which will shade/unshade the "
+#~ "window, 'toggle_maximize' which will maximize/unmaximize the window, "
+#~ "'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which "
+#~ "will maximize/unmaximize the window in that direction only, 'minimize' "
+#~ "which will minimize the window, 'shade' which will roll the window up, "
+#~ "'menu' which will display the window menu, 'lower' which will put the "
+#~ "window behind all the others, and 'none' which will not do anything."
+#~ msgstr ""
+#~ "Deze optie bepaalt het effect van dubbelklikken op de titelbalk. Geldige "
+#~ "waardes zijn ‘toggle_shade’, die het venster laat oprollen/afrollen, "
+#~ "‘toggle_maximize’ die het venster maximaliseert/herstelt, "
+#~ "‘toggle_maximize_horizontally' en ‘toggle_maximize_vertically’ die het "
+#~ "venster alleen horizontaal of verticaal maximaliseren/herstellen, "
+#~ "‘minimize’ die het venster minimaliseert, ‘shade’ die het venster oprolt, "
+#~ "‘menu’ die het venstermenu toont, ‘lower’ die het venster achter alle "
+#~ "andere vensters zet,  en ‘none’ om niets te doen."
+
+#~ msgid ""
+#~ "This option determines the effects of middle-clicking on the title bar. "
+#~ "Current valid options are 'toggle_shade', which will shade/unshade the "
+#~ "window, 'toggle_maximize' which will maximize/unmaximize the window, "
+#~ "'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which "
+#~ "will maximize/unmaximize the window in that direction only, 'minimize' "
+#~ "which will minimize the window, 'shade' which will roll the window up, "
+#~ "'menu' which will display the window menu, 'lower' which will put the "
+#~ "window behind all the others, and 'none' which will not do anything."
+#~ msgstr ""
+#~ "Deze optie bepaalt het effect van klikken op de titelbalk met de "
+#~ "middelste muisknop. Geldige waardes zijn ‘toggle_shade’, die het venster "
+#~ "laat oprollen/afrollen, ‘toggle_maximize’ die het venster maximaliseert/"
+#~ "herstelt, ‘toggle_maximize_horizontally' en ‘toggle_maximize_vertically’ "
+#~ "die het venster alleen horizontaal of verticaal maximaliseren/herstellen, "
+#~ "‘minimize’ die het venster minimaliseert, ‘shade’ die het venster oprolt, "
+#~ "‘menu’ die het venstermenu toont, ‘lower’ die het venster achter alle "
+#~ "andere vensters zet,  en ‘none’ om niets te doen."
+
+#~ msgid ""
+#~ "This option determines the effects of right-clicking on the title bar. "
+#~ "Current valid options are 'toggle_shade', which will shade/unshade the "
+#~ "window, 'toggle_maximize' which will maximize/unmaximize the window, "
+#~ "'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which "
+#~ "will maximize/unmaximize the window in that direction only, 'minimize' "
+#~ "which will minimize the window, 'shade' which will roll the window up, "
+#~ "'menu' which will display the window menu, 'lower' which will put the "
+#~ "window behind all the others, and 'none' which will not do anything."
+#~ msgstr ""
+#~ "Deze optie bepaalt het effect van klikken op de titelbalk met de rechter "
+#~ "muisknop. Geldige waardes zijn ‘toggle_shade’, die het venster laat "
+#~ "oprollen/afrollen, ‘toggle_maximize’ die het venster maximaliseert/"
+#~ "herstelt, ‘toggle_maximize_horizontally' en ‘toggle_maximize_vertically’ "
+#~ "die het venster alleen horizontaal of verticaal maximaliseren/herstellen, "
+#~ "‘minimize’ die het venster minimaliseert, ‘shade’ die het venster oprolt, "
+#~ "‘menu’ die het venstermenu toont, ‘lower’ die het venster achter alle "
+#~ "andere vensters zet,  en ‘none’ om niets te doen."
+
+#~ msgid ""
+#~ "This option provides additional control over how newly created windows "
+#~ "get focus. It has two possible values; \"smart\" applies the user's "
+#~ "normal focus mode, and \"strict\" results in windows started from a "
+#~ "terminal not being given focus."
+#~ msgstr ""
+#~ "Deze optie geeft aanvullende beheermogelijkheden over de methode waarmee "
+#~ "nieuwe vensters aandacht krijgen. Er zijn twee mogelijke waarden: ‘smart’ "
+#~ "zorgt ervoor dat de normale methode wordt gebruikt; ‘strict’ zorgt ervoor "
+#~ "dat vensters die vanuit een terminalvenster gestart worden geen aandacht "
+#~ "krijgen."
+
+#~ msgid ""
+#~ "Turns on a visual indication when an application or the system issues a "
+#~ "'bell' or 'beep'; useful for the hard-of-hearing and for use in noisy "
+#~ "environments."
+#~ msgstr ""
+#~ "Geeft een zichtbare indicatie wanneer een toepassing of het systeem een "
+#~ "'bel' of 'piep' geeft; handig voor slechthorenden of voor gebruik in "
+#~ "omgevingen met veel lawaai."
+
+#~ msgid "Use standard system font in window titles"
+#~ msgstr "Standaard systeemlettertype gebruiken in venstertitels"
+
+#~ msgid "Visual Bell Type"
+#~ msgstr "Visuele bel type"
+
+#~ msgid "Whether raising should be a side-effect of other user interactions"
+#~ msgstr ""
+#~ "Of het naar voren brengen een bijeffect is van andere "
+#~ "gebruikersinteracties"
+
+#~ msgid "Whether to resize with the right button"
+#~ msgstr ""
+#~ "Of de rechtermuisknop gebruikt wordt het wijzigen van vensterafmetingen"
+
+#~ msgid "Window focus mode"
+#~ msgstr "Vensteraandacht-modus"
+
+#~ msgid "Window title font"
+#~ msgstr "Venstertitellettertype"
