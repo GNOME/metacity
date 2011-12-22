@@ -2,22 +2,26 @@
 # Asturian translation for metacity
 # Copyright (c) 2007 Rosetta Contributors and Canonical Ltd 2007
 # This file is distributed under the same license as the metacity package.
-#
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2007.
-# Xose S. Puente <xspuente@gmail.com>, 2007.
+# Xandru Armesto <xandru@softastur.org>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-10 09:33+0100\n"
-"PO-Revision-Date: 2009-02-10 02:58+0100\n"
-"Last-Translator: Mikel González <dangerous_piper@softastur.org>\n"
-"Language-Team: Asturian <gnome@softastur.org>\n"
+"Report-Msgid-Bugs-To: "
+"http://bugzilla.gnome.org/enter_bug.cgi?product=metacity&component=general\n"
+"POT-Creation-Date: 2010-03-24 11:39+0000\n"
+"PO-Revision-Date: 2011-12-22 19:35+0200\n"
+"Last-Translator: Xandru Armesto <xandru@softastur.org>\n"
+"Language-Team: Softastur alministradores@softastur.org\n"
+"Language: ast\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-02-10 01:24+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.7.0\n"
+"X-Launchpad-Export-Date: 2011-10-24 12:36+0000\n"
+"X-Project-Style: gnome\n"
+"X-Poedit-Language: Asturian\n"
+"X-Poedit-SourceCharset: utf-8\n"
 
 #: ../src/50-metacity-desktop-key.xml.in.h:1
 msgid "Desktop"
@@ -36,30 +40,30 @@ msgstr "Petición d'información ventana desconocida: %d"
 #: ../src/ui/metacity-dialog.c:50 ../src/ui/theme-parser.c:522
 #, c-format
 msgid "Could not parse \"%s\" as an integer"
-msgstr "Nun puede intrepretase \"%s\" como un enteru"
+msgstr "Nun pue interpretase \"%s\" como un enteru"
 
 #: ../src/core/delete.c:77 ../src/core/delete.c:104
 #: ../src/ui/metacity-dialog.c:57 ../src/ui/theme-parser.c:531
 #: ../src/ui/theme-parser.c:586
 #, c-format
 msgid "Did not understand trailing characters \"%s\" in string \"%s\""
-msgstr "Nun s'entienden caracteres \"%s\" en cadena \"%s\""
+msgstr "Nun s'entienden caráuteres \"%s\" en cadena \"%s\""
 
 #: ../src/core/delete.c:135
 #, c-format
 msgid "Failed to parse message \"%s\" from dialog process\n"
-msgstr "Falló analizar mensaxe \"%s\" dende'l procesu de diálogu\n"
+msgstr ""
 
 #: ../src/core/delete.c:253
 #, c-format
 msgid "Error reading from dialog display process: %s\n"
-msgstr "Fallu lleendo dende'l procesu amosar diálogu: %s\n"
+msgstr ""
 
 #: ../src/core/delete.c:336
 #, c-format
 msgid ""
 "Error launching metacity-dialog to ask about killing an application: %s\n"
-msgstr "Fallu llanzando metacity-dialog pa matar una aplicación: %s\n"
+msgstr ""
 
 #: ../src/core/delete.c:445
 #, c-format
@@ -83,9 +87,9 @@ msgid ""
 "most likely the X server was shut down or you killed/destroyed\n"
 "the window manager.\n"
 msgstr ""
-"Conesión perdía al amosar '%s';\n"
-"seguramente'l servidor X fue apagáu o mataste/desaniciaste\n"
-"el xestor de ventanos.\n"
+"Conexón perdida al amosar '%s';\n"
+"seguramente'l sirvidor X s'apagó o mataste/desaniciaste\n"
+"el xestor de ventanes.\n"
 
 #: ../src/core/errors.c:279
 #, c-format
@@ -97,8 +101,7 @@ msgstr "Error fatal IO %d (%s) na visualización '%s'.\n"
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
 "binding\n"
-msgstr ""
-"Algún otru programa ya ta usando la tecla %s colos modificadores %x como "
+msgstr "Dalgún otru programa yá ta usando la tecla %s colos modificadores %x como "
 "combinación\n"
 
 #. Displayed when a keybinding which is
@@ -118,12 +121,12 @@ msgstr ""
 #: ../src/core/keybindings.c:2381
 #, c-format
 msgid "No command %d has been defined.\n"
-msgstr "Comandu %d nun definíu.\n"
+msgstr "Comandu %d non definíu.\n"
 
 #: ../src/core/keybindings.c:3335
 #, c-format
 msgid "No terminal command has been defined.\n"
-msgstr "Comandu de terminal nun definíu.\n"
+msgstr "Comandu de terminal non definíu.\n"
 
 #: ../src/core/main.c:116
 #, c-format
@@ -134,11 +137,6 @@ msgid ""
 "There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A "
 "PARTICULAR PURPOSE.\n"
 msgstr ""
-"metacity %s\n"
-"Copyright (C) 2001-2008 Havoc Pennington, Red Hat, Inc., and others\n"
-"This is free software; see the source for copying conditions.\n"
-"There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A "
-"PARTICULAR PURPOSE.\n"
 
 #: ../src/core/main.c:253
 msgid "Disable connection to session manager"
@@ -158,7 +156,7 @@ msgstr "Usar X Display"
 
 #: ../src/core/main.c:276
 msgid "Initialize session from savefile"
-msgstr "Entamar sesión dende archivu guardáu"
+msgstr "Entamar sesión dende ficheru guardáu"
 
 #: ../src/core/main.c:282
 msgid "Print version"
@@ -185,12 +183,12 @@ msgstr "Falló escanear directoriu de temes: %s\n"
 #, c-format
 msgid ""
 "Could not find a theme! Be sure %s exists and contains the usual themes.\n"
-msgstr "¡Nun atopáu un tema! Tate seguru qu'esiste %s y contien un tema.\n"
+msgstr "¡Nun s'atopó un tema! Asegúrate de qu'esiste %s y contién un tema.\n"
 
 #: ../src/core/main.c:550
 #, c-format
 msgid "Failed to restart: %s\n"
-msgstr "Falló reiniciu. %s\n"
+msgstr "Falló reaniciu. %s\n"
 
 #.
 #. * We found it, but it was invalid.  Complain.
@@ -206,66 +204,62 @@ msgstr "Falló reiniciu. %s\n"
 #: ../src/core/prefs.c:505 ../src/core/prefs.c:660
 #, c-format
 msgid "GConf key '%s' is set to an invalid value\n"
-msgstr "Clave GConf  '%s' ta puesta a un valor nun válidu\n"
+msgstr "Clave GConf  '%s' ta puesta a un valor non válidu\n"
 
 #: ../src/core/prefs.c:586 ../src/core/prefs.c:829
 #, c-format
 msgid "%d stored in GConf key %s is out of range %d to %d\n"
-msgstr "%d Clave Gconf almacenada en %s está fuera de rangu %d a %d\n"
+msgstr "%d Clave Gconf almacenada en %s ta fuera de rangu %d a %d\n"
 
 #: ../src/core/prefs.c:630 ../src/core/prefs.c:707 ../src/core/prefs.c:755
 #: ../src/core/prefs.c:819 ../src/core/prefs.c:1112 ../src/core/prefs.c:1128
 #: ../src/core/prefs.c:1145 ../src/core/prefs.c:1161
 #, c-format
 msgid "GConf key \"%s\" is set to an invalid type\n"
-msgstr "Tecla GConf \"%s\" establecida a un tipo nun válido\n"
+msgstr "Tecla GConf \"%s\" afitada a un tipu non válidu\n"
 
 #: ../src/core/prefs.c:1231
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
-msgstr ""
-"Desactivaos los arreglos pa aplicaciones rotes. Delles aplicaciones pueden "
-"nun comportase correutamente.\n"
+msgstr "Desactivaos los arreglos p'aplicaciones rotes. Delles aplicaciones puen nun "
+"comportase correutamente.\n"
 
 #: ../src/core/prefs.c:1302
 #, c-format
 msgid "Could not parse font description \"%s\" from GConf key %s\n"
-msgstr ""
-"Nun puede analizase descripción de la fonte \"%s\" dende calve GConf %s\n"
+msgstr "Nun pue analizase descripción de la fonte \"%s\" dende calve GConf %s\n"
 
 #: ../src/core/prefs.c:1364
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
 "modifier\n"
-msgstr ""
-"Atopáu \"%s\" en base de datos de configuración nun ye un valor válidu pal "
+msgstr "Atopáu \"%s\" en base de datos de configuración nun ye un valor válidu pal "
 "modificador botón mur\n"
 
 #: ../src/core/prefs.c:1782
 #, c-format
 msgid "Error setting number of workspaces to %d: %s\n"
-msgstr "Error axustando númberu d'arees de trabayu a %d: %s\n"
+msgstr "Error axustando númberu d'árees de trabayu a %d: %s\n"
 
 #: ../src/core/prefs.c:1971 ../src/core/prefs.c:2474
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %d"
-msgstr "Mover al Espaciu de Trabayu S_uperior"
+msgstr "Espaciu de Trabayu %d"
 
 #: ../src/core/prefs.c:2001 ../src/core/prefs.c:2179
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
 "\"%s\"\n"
-msgstr ""
-"\"%s\" atopau na base de datos de configuración nun ye un valor válidu pa la "
+msgstr "\"%s\" atopáu na base de datos de configuración nun ye un valor válidu pa la "
 "combinación de tecles \"%s\"\n"
 
 #: ../src/core/prefs.c:2555
-#, fuzzy, c-format
+#, c-format
 msgid "Error setting name for workspace %d to \"%s\": %s\n"
-msgstr "Fallu estableciendo nome pal Escritoriu %d a \"%s\": %s\n"
+msgstr "Error axustando nome pal área de trabayu %d a \"%s\": %s\n"
 
 #: ../src/core/prefs.c:2753
 #, c-format
@@ -282,27 +276,25 @@ msgstr "Pantalla %d visualizada '%s' nun ye válida\n"
 msgid ""
 "Screen %d on display \"%s\" already has a window manager; try using the --"
 "replace option to replace the current window manager.\n"
-msgstr ""
-"La pantalla %d del visor '%s' ya tien un xestor de ventanos; tenta usar la "
-"opción --replace pa cambear el xestor de ventanos actual.\n"
+msgstr "La pantalla %d del visor '%s' yá tien un xestor de ventanes; intenta usar la "
+"opción --replace pa camudar el xestor de ventanes actual.\n"
 
 #: ../src/core/screen.c:393
 #, c-format
 msgid ""
 "Could not acquire window manager selection on screen %d display \"%s\"\n"
-msgstr ""
-"Nun puede algamase xestor ventaos seleccionáu na pantalla %d amosada en \"%s"
-"\"\n"
+msgstr "Nun pue algamase'l xestor de ventanes seleicionáu na pantalla %d amosada en "
+"\"%s\"\n"
 
 #: ../src/core/screen.c:451
 #, c-format
 msgid "Screen %d on display \"%s\" already has a window manager\n"
-msgstr "Pantalla %d amosada en \"%s\" ya tien un xestor de ventanos manager\n"
+msgstr "Pantalla %d amosada en \"%s\" yá tien un xestor de ventanes manager\n"
 
 #: ../src/core/screen.c:661
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
-msgstr "Nun puede lliberase la pantalla %d amosada en \"%s\"\n"
+msgstr "Nun pue lliberase la pantalla %d amosada en \"%s\"\n"
 
 #. Translators: Please don't translate "Control", "Shift", etc, since these
 #. * are hardcoded (in gtk/gtkaccelgroup.c; it's not metacity's fault).
@@ -317,12 +309,6 @@ msgid ""
 "special string \"disabled\", then there will be no keybinding for this "
 "action."
 msgstr ""
-"El formatu parezse a «<Control>a» o «<Shift><Alt>F1».\n"
-"\n"
-"L'intérprete ye enforma lliberal y permite tantu mayúscules como minúscules "
-"arriendes d'abreviatures como por exemplu «<Ctl>» y «<Ctrl>». Si configura "
-"esta opción cola cadena especial «disabled» entós nun habrá combinación de "
-"tecles pa esta aición."
 
 #: ../src/core/schema-bindings.c:177
 msgid ""
@@ -336,25 +322,16 @@ msgid ""
 "This keybinding may be reversed by holding down the \"shift\" key; "
 "therefore, \"shift\" cannot be one of the keys it uses."
 msgstr ""
-"El formatu se parezse a «<Control>a» o «<Shift><Alt>F1»\n"
-"\n"
-"L'intérprete ye enforma lliberal y permite tantu mayúscules como minúscules "
-"arriendes d'abreviatures como por exemplu «<Ctl>» y «<Ctrl>». Si configura "
-"esta opción cola cadena especial «disabled» entós nun habrá combinación de "
-"tecles pa esta aición.\n"
-"\n"
-"Esta combinación de tecles pue invertise calteniendo calcada la tecla "
-"«Mayús»; por ello «Mayús» nun pue ser una de les tecles de la combinación."
 
 #: ../src/core/session.c:837 ../src/core/session.c:844
 #, c-format
 msgid "Could not create directory '%s': %s\n"
-msgstr "Nun puede crease directoriu '%s': %s\n"
+msgstr "Nun pue crease'l directoriu '%s': %s\n"
 
 #: ../src/core/session.c:854
 #, c-format
 msgid "Could not open session file '%s' for writing: %s\n"
-msgstr "Nun puede abrise ficheru de sesión '%s' pa escribir: %s\n"
+msgstr "Nun pue abrise'l ficheru de sesión '%s' pa escribir: %s\n"
 
 #: ../src/core/session.c:995
 #, c-format
@@ -370,7 +347,7 @@ msgstr "Fallu zarrando ficheru sesión '%s':%s\n"
 #: ../src/core/session.c:1093
 #, c-format
 msgid "Failed to read saved session file %s: %s\n"
-msgstr "Falló lleer el ficheru de sesión guardáu %s: %s\n"
+msgstr "Fallu al lleer el ficheru de sesión guardáu %s: %s\n"
 
 #: ../src/core/session.c:1132
 #, c-format
@@ -405,8 +382,6 @@ msgid ""
 "Error launching metacity-dialog to warn about apps that don't support "
 "session management: %s\n"
 msgstr ""
-"Fallu llanzando metacity-dialog p'alvertir acerca d'aplicaciones que nun "
-"soporten xestor de sesión: %s\n"
 
 #: ../src/core/util.c:101
 #, c-format
@@ -421,20 +396,20 @@ msgstr "Falló ficheru rexistru actividá fdopen() %s: %s\n"
 #: ../src/core/util.c:117
 #, c-format
 msgid "Opened log file %s\n"
-msgstr "Abiertu archivu log %s\n"
+msgstr "Abiertu ficheru log %s\n"
 
 #: ../src/core/util.c:136 ../src/tools/metacity-message.c:176
 #, c-format
 msgid "Metacity was compiled without support for verbose mode\n"
-msgstr "Metacity fue compiláu ensín soporte pal modu testu\n"
+msgstr "Metacity compilóse ensin soporte pal modu testu\n"
 
 #: ../src/core/util.c:236
 msgid "Window manager: "
-msgstr "Xestor ventanes "
+msgstr "Xestor de ventanes "
 
 #: ../src/core/util.c:388
 msgid "Bug in window manager: "
-msgstr "Error en xestor ventanes "
+msgstr "Fallu en xestor ventanes "
 
 #: ../src/core/util.c:421
 msgid "Window manager warning: "
@@ -442,7 +417,7 @@ msgstr "Alerta xestor ventanes: "
 
 #: ../src/core/util.c:449
 msgid "Window manager error: "
-msgstr "Error xestor ventanes: "
+msgstr "Fallu xestor ventanes: "
 
 #. Translators: This is the title used on dialog boxes
 #. eof all-keybindings.h
@@ -457,9 +432,8 @@ msgstr "Metacity"
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
 "window as specified in the ICCCM.\n"
-msgstr ""
-"El ventanu %s llanta SM_CLIENT_ID sobre elli mesmu, en vez de llantalu "
-"sobre'l ventanu WM_CLIENT_LEADER como amuesa en l'ICCCM.\n"
+msgstr "La ventana %s llanta SM_CLIENT_ID sobre ella mesma, en vez de llantala sobre "
+"la ventana WM_CLIENT_LEADER como amuesa en l'ICCCM.\n"
 
 #. We ignore mwm_has_resize_func because WM_NORMAL_HINTS is the
 #. * authoritative source for that info. Some apps such as mplayer or
@@ -473,25 +447,24 @@ msgstr ""
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
 "d x %d and max size %d x %d; this doesn't make much sense.\n"
-msgstr ""
-"El ventanu %s llanta un índiz MWM qu'amuesa que nun ye redimensionable, pero "
+msgstr "La ventana %s llanta un índiz MWM qu'amuesa que nun ye redimensionable, pero "
 "llanta un tamañu mínimu de %d x %d y un tamañu máximu de %d x %d ; lo que "
-"nun tien munchu sentíu.\n"
+"nun tien munchu xacíu.\n"
 
-#: ../src/core/window-props.c:260
+#: ../src/core/window-props.c:234
 #, c-format
 msgid "Application set a bogus _NET_WM_PID %lu\n"
-msgstr "Aplicación establez una falsa  _NET_WM_PID %lu\n"
+msgstr "L'aplicación afita una falsa  _NET_WM_PID %lu\n"
 
-#: ../src/core/window-props.c:377
+#: ../src/core/window-props.c:351
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (en %s)"
 
-#: ../src/core/window-props.c:1358
+#: ../src/core/window-props.c:1332
 #, c-format
 msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
-msgstr "Ventanu nun válidu WM_TRANSIENT_FOR pa 0x%lx especificao pa %s.\n"
+msgstr "Ventana non válida WM_TRANSIENT_FOR pa 0x%lx especificada pa %s.\n"
 
 #: ../src/core/xprops.c:155
 #, c-format
@@ -502,24 +475,23 @@ msgid ""
 "This is most likely an application bug, not a window manager bug.\n"
 "The window has title=\"%s\" class=\"%s\" name=\"%s\"\n"
 msgstr ""
-"El ventanu 0x%lx tien la propiedá %s\n"
+"La ventana 0x%lx tien la propiedá %s\n"
 "que tendría tener el tipu %s y el formatu %d\n"
 "y tien el tipu %s y el formatu %d n_items %d\n"
-"Quiciabes seya un erru de l'aplicación y non del xestor\n"
-"de ventanos.\n"
-"El títulu del ventanu ye=\"%s\" la so triba=\"%s\" y el so nome=\"%s\"\n"
+"Quiciabes seya un fallu de l'aplicación y non del xestor\n"
+"de ventanes.\n"
+"El títulu de la ventana ye=\"%s\" la so triba=\"%s\" y el so nome=\"%s\"\n"
 
 #: ../src/core/xprops.c:401
 #, c-format
 msgid "Property %s on window 0x%lx contained invalid UTF-8\n"
-msgstr "Propiedá en ventanu %s contíen 0x%lx UTF-8 nun válidu\n"
+msgstr "Propiedá en ventana %s contíen 0x%lx UTF-8 non válidu\n"
 
 #: ../src/core/xprops.c:484
 #, c-format
 msgid ""
 "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
-msgstr ""
-"La propiedá %s del ventanu 0x%lx contien un códigu UTF-8 non válidu pal "
+msgstr "La propiedá %s de la ventana 0x%lx contién un códigu UTF-8 non válidu pal "
 "elementu %d na llista\n"
 
 #: ../src/include/all-keybindings.h:88
@@ -613,7 +585,7 @@ msgstr "Retroceder ente los paneles y escritoriu usando un ventanu emerxente"
 
 #: ../src/include/all-keybindings.h:171
 msgid "Move between windows of an application immediately"
-msgstr "Mover de secute ente ventanos"
+msgstr "Mover de secute ente ventanes"
 
 #: ../src/include/all-keybindings.h:174
 msgid "Move backward between windows of an application immediately"
@@ -636,7 +608,6 @@ msgid "Move backward between panels and the desktop immediately"
 msgstr "Mover de secute p'atrás ente paneles y l'escritoriu"
 
 #: ../src/include/all-keybindings.h:191
-#, fuzzy
 msgid "Hide all normal windows and set focus to the desktop"
 msgstr "Anubrir toles ventanes normales y dar focu al fondu del escritoriu"
 
@@ -666,11 +637,11 @@ msgstr "Activar el menú de la ventana"
 
 #: ../src/include/all-keybindings.h:260
 msgid "Toggle fullscreen mode"
-msgstr "Camudar a modu pantalla completa"
+msgstr "Camudar a mou pantalla completa"
 
 #: ../src/include/all-keybindings.h:262
 msgid "Toggle maximization state"
-msgstr "Camudar a estáu maximizáu"
+msgstr "Conmutar l'estáu maximizáu"
 
 #: ../src/include/all-keybindings.h:264
 msgid "Toggle whether a window will always be visible over other windows"
@@ -762,7 +733,7 @@ msgstr "Mover ventana un espaciu de trabayu a manzorga"
 
 #: ../src/include/all-keybindings.h:333
 msgid "Move window one workspace to the right"
-msgstr "Mover ventana un espaciu de trabayu a derecha"
+msgstr "Mover ventana un espaciu de trabayu a madrecha"
 
 #: ../src/include/all-keybindings.h:336
 msgid "Move window one workspace up"
@@ -779,11 +750,11 @@ msgstr ""
 
 #: ../src/include/all-keybindings.h:344
 msgid "Raise window above other windows"
-msgstr "Poner el ventanu en primer planu"
+msgstr "Poner la ventana en primer planu"
 
 #: ../src/include/all-keybindings.h:346
 msgid "Lower window below other windows"
-msgstr "Ventanu más baxu per debaxo d'otros ventanos"
+msgstr "Ventana más baxa per debaxo d'otres ventanes"
 
 #: ../src/include/all-keybindings.h:350
 msgid "Maximize window vertically"
@@ -832,8 +803,8 @@ msgstr "Mover la ventana al centru de la pantalla"
 #: ../src/metacity.schemas.in.in.h:1
 msgid "(Not implemented) Navigation works in terms of applications not windows"
 msgstr ""
-"(Non imprementao) La navegación furrula en términos d'aplicaciones y non de "
-"ventanos"
+"(Non implementao) La navegación furrula en términos d'aplicaciones y non de "
+"ventanes"
 
 #: ../src/metacity.schemas.in.in.h:2
 msgid ""
@@ -843,7 +814,7 @@ msgid ""
 "option is set to true."
 msgstr ""
 "Una cadena de descripción de la triba de lletra que describe un tipu de "
-"lletra pa los títulos de los ventanos. El tamañu d'una descripción sólo "
+"lletra pa los títulos de los ventanes. El tamañu d'una descripción sólo "
 "s'emplegará si la opción titlebar_font_size ta definida como 0; asina mesmo, "
 "esta opción tamién tará deshabilitada si la opción "
 "titlebar_uses_desktop_font ta configurada como verdadera"
@@ -854,11 +825,11 @@ msgstr "Aición al facer doble click na barra de títulu"
 
 #: ../src/metacity.schemas.in.in.h:4
 msgid "Action on title bar middle-click"
-msgstr "Ación click central na barra títulu"
+msgstr "Aición click central na barra títulu"
 
 #: ../src/metacity.schemas.in.in.h:5
 msgid "Action on title bar right-click"
-msgstr "Ación click drecho na barra títulu"
+msgstr "Aición click derechu na barra títulu"
 
 #: ../src/metacity.schemas.in.in.h:6
 msgid "Arrangement of buttons on the titlebar"
@@ -874,21 +845,20 @@ msgid ""
 "without breaking older versions. A special spacer tag can be used to insert "
 "some space between two adjacent buttons."
 msgstr ""
-"Distribución de botones na barra de títulos. El valor tien que de una "
-"cadena, como \"menu:minimize,maximize,spacer,close\"; los dos puntos "
-"separten la esquina esquierda de la ventana de la esquina drecha y los nomes "
-"de los botones tan separtaos por comes. Nun se permiten botones duplicaos. "
-"Los nomes desconocíos de botones inórense ensin avisar, d'esta miente esos "
-"botones pueden amestase en versiones futures de Metacity ensin desiguar les "
-"versiones más antigües. Puede emplegase una etiqueta espaciadora pa inxertar "
+"Distribución de botones na barra de títulos. El valor tien de ser una "
+"cadena, como \"menu:minimize,maximize,spacer,close\"; los dos puntos separten "
+"la esquina esquierda de la ventana de la esquina drecha y los nomes de los "
+"botones tan separtaos por comes. Nun se permiten botones duplicaos. Los "
+"nomes desconocíos de botones inórense ensin avisar, d'esta miente esos "
+"botones puen amestase en versiones futures de Metacity ensin desiguar les "
+"versiones más antigües. Pue emplegase una etiqueta espaciadora pa inxertar "
 "dellos espacios entre dos botones que tean xuntos."
 
 #: ../src/metacity.schemas.in.in.h:8
 msgid "Automatically raises the focused window"
-msgstr "Automáticamente sube la ventana enfocada"
+msgstr "Automáticamente xube la ventana enfocada"
 
 #: ../src/metacity.schemas.in.in.h:9
-#, fuzzy
 msgid ""
 "Clicking a window while holding down this modifier key will move the window "
 "(left click), resize the window (middle click), or show the window menu "
@@ -896,14 +866,10 @@ msgid ""
 "\"mouse_button_resize\" key. Modifier is expressed as \"&lt;Alt&gt;\" or "
 "\"&lt;Super&gt;\" for example."
 msgstr ""
-"Al calcar sobre un ventanu calteniendo calcada esta tecla camudadora "
-"moveráse'l ventanu (botón izquierdu), redimensionaráse'l ventanu (botón "
-"central), o amosaráse'l menú del ventanu (botón drechu). El camudador "
-"espresaráse como &lt;Alt&gt;\" or \"&lt;Super&gt;\" por exemplu."
 
 #: ../src/metacity.schemas.in.in.h:10
 msgid "Commands to run in response to keybindings"
-msgstr "Comando que s'executen en respuesta a xuniones de tecles"
+msgstr "Comandos que s'executen en rempuesta a xuniones de tecles"
 
 #: ../src/metacity.schemas.in.in.h:11
 msgid "Compositing Manager"
@@ -923,21 +889,22 @@ msgstr "Espera en milisegundos pa la opción d'alzar l'audiu"
 
 #: ../src/metacity.schemas.in.in.h:15
 msgid "Determines whether Metacity is a compositing manager."
-msgstr "Determina cuando Metacity ye un xestor compuestu."
+msgstr "Determina si Metacity ye un xestor compuestu."
 
 #: ../src/metacity.schemas.in.in.h:16
 msgid ""
 "Determines whether applications or the system can generate audible 'beeps'; "
 "may be used in conjunction with 'visual bell' to allow silent 'beeps'."
 msgstr ""
-"Determina si les aplicaciones o'l sistema pueden xenerar «bips» audibles; "
-"podría emplegase a comuña con «la campana visual» pa permitir «bips» "
+"Determina si les aplicaciones o'l sistema puen xenerar «bips» audibles; "
+"podría emplegase en conxunción con «la campana visual» pa permitir «bips» "
 "silenciosos."
 
 #: ../src/metacity.schemas.in.in.h:17
 msgid "Disable misfeatures that are required by old or broken applications"
 msgstr ""
-"Desactiva los axustes necesarios pa les aplicaciónes vieyes o mal encadarmaes"
+"Desactiva los axustes necesarios pa les aplicaciónes vieyes o mal "
+"encadarmaes"
 
 #: ../src/metacity.schemas.in.in.h:18
 msgid "Enable Visual Bell"
@@ -950,18 +917,18 @@ msgid ""
 "the auto_raise_delay key. This is not related to clicking on a window to "
 "raise it, nor to entering a window during drag-and-drop."
 msgstr ""
-"Si ta establecíu a «true» y el mou del focu ye «sloppy» o «mouse» entós el "
-"ventanu col focu llevantaráse automáticamente tres un retardu especificáu "
-"auto_raise_delay. Esto nun tien que ver con calcar nun ventanu pa "
-"llevantalu, nin con entrar nun ventanu nuna operación d'arrastrar y soltar."
+"Si ta afitao a «true» y el mou del focu ye «sloppy» o «mouse» entós el "
+"ventanu col focu llevantaráse automáticamente tres d'un retardu especificáu "
+"auto_raise_delay. Esto nun tien que ver con calcar nuna ventana pa "
+"llevantala, nin con entrar nuna ventana nuna operación d'arrastrar y soltar."
 
 #: ../src/metacity.schemas.in.in.h:20
 msgid ""
 "If true, ignore the titlebar_font option, and use the standard application "
 "font for window titles."
 msgstr ""
-"Si ta activao, ignorar la opción titlebar_font, y usar l'aplicación standard "
-"pa fontes del títulu del ventanu."
+"Si ta activao, inorar la opción titlebar_font, y usar l'aplicación standard "
+"pa fontes del títulu de la ventana."
 
 #: ../src/metacity.schemas.in.in.h:21
 msgid ""
@@ -974,9 +941,9 @@ msgstr ""
 "Si ye verdadero, metacity dará al usuariu menos información y menos "
 "sensación de manipulación, emplegando marcos d'alambre, torgando animaciones "
 "o otros medios. Esto ye una reducción grande n'usabilidá pa munchos "
-"usuarios, pero puede permitir furrular a les aplicaciones heredaes y "
-"servidores de terminal cuanto d'otra manera nun sería posible. Por embargu, "
-"la carauterística de marcos d'alambre desactívase cuando l'accesibilidá ta "
+"usuarios, pero pue permitir furrular a les aplicaciones heriedaes y "
+"servidores de terminal cuanto d'otra manera nun sería posible. Sicaśi, la "
+"carauterística de marcos d'alambre desactívase cuando l'accesibilidá ta "
 "activada."
 
 #: ../src/metacity.schemas.in.in.h:22
@@ -992,19 +959,19 @@ msgstr ""
 "Si ye verdá, entós Metacity furrula en términos d'aplicaciones en vez de "
 "ventanes. El conceutu ye un pocu abstrautu, pero en xeneral una "
 "configuración sofitada en aplicaciones aseméyase más a un Mac y menos a "
-"Windows. Cuando enfoca un ventanu nel mou sofitáu en aplicación tolos "
-"ventanos na aplicación xuben. Tamién nel mou sofitáu en aplicación, les "
-"pulsaciones del focu nun se pasen pelos ventano n'otres aplicaciones. El mou "
-"sofitáu en aplicaciones ta, por embargu, ensin implementar abondo nesti "
+"Windows. Cuando enfoca una ventana nel mou sofitáu n'aplicación toles "
+"ventanes n'aplicación xuben. Tamién nel mou sofitáu n'aplicación, les "
+"pulsaciones del focu nun se pasen peles ventanes n'otres aplicaciones. El "
+"mou sofitáu en aplicaciones ta, por embargu, ensin implementar abondo nesti "
 "momentu."
 
 #: ../src/metacity.schemas.in.in.h:23
 msgid "If true, trade off usability for less resource usage"
-msgstr "Si activo, intenta menos usabilidá pa aforrar recursos"
+msgstr "Si activu, intenta menos usabilidá p'aforrar recursos"
 
 #: ../src/metacity.schemas.in.in.h:24
 msgid "Modifier to use for modified window click actions"
-msgstr "Modificador a usar pa les aiciones de calcar ventanes modificades"
+msgstr "Modificador a usar pa les aiciones de calcar ventanes modificaes"
 
 #: ../src/metacity.schemas.in.in.h:25
 msgid "Name of workspace"
@@ -1021,8 +988,8 @@ msgid ""
 "workspaces."
 msgstr ""
 "Númberu d'estayes de trabayu. Tien de ser mayor que cero, y tien un máximu "
-"fixu pa prevenir la inutilización del escritoriu al pedir, ensin querelo, "
-"demasiaes estayes de trabayu."
+"fixu pa prevenir la inutilización del escritoriu al pidir, ensin querelo, "
+"abondes estayes de trabayu."
 
 #: ../src/metacity.schemas.in.in.h:28
 msgid "Run a defined command"
@@ -1034,6 +1001,10 @@ msgid ""
 "middle button while holding down the key given in \"mouse_button_modifier\"; "
 "set it to false to make it work the opposite way around."
 msgstr ""
+"Afita esto como verdadero pa redimensionar col botón drechu y amosar un menú "
+"col botón central mientres aprietes la tecla conseñada en "
+"\"mouse_button_modifier\"; afítalo como falso pa facer que funcione al "
+"contrario."
 
 #: ../src/metacity.schemas.in.in.h:30
 msgid ""
@@ -1060,21 +1031,21 @@ msgstr ""
 "mou que s'encamienta a los usuarios que nun la camuden del valor «true». "
 "Munches aiciones (ex. calcar nel área del veceru, mover o redimensionar la "
 "ventana) xeneralmente llevanten la ventana como efeutu collateral. Axustar "
-"esti valor a «false», daqué desaconseyao, desacoplará'l llevantáu de les "
-"otres aiciones del usuariu ya inorará les piticiones de llevantar que "
-"xeneren les aplicaciones. Consulte http://bugzilla.gnome.org/show_bug.cgi?"
-"id=445447#c6. Inclusu cuando esta opción ye «false», les ventanes entá puen "
-"llevantase calcando col botón esquierdu del mur sobro cualesquier parte de "
-"la ventana, una calcación normal na decoración de la ventana, o por mensaxes "
-"especiales de dalguna aplicación, talo como les peticiones d'activación de "
-"les miniaplicaciones de llistes de xeres. Anguaño esta opción ta desactivada "
-"nel mou calcar pa dar el focu. Note que la llista de formes de llevantar "
+"esti valor a «false», desaconséyase, desacoplará'l llevantáu de les otres "
+"aiciones del usuariu ya inorará les piticiones de llevantar que xeneren les "
+"aplicaciones. Consulta http://bugzilla.gnome.org/show_bug.cgi?id=445447#c6. "
+"Inclusu cuando esta opción ye «false», les ventanes entá puen llevantase "
+"calcando col botón esquierdu del mur sobro cualesquier parte de la ventana, "
+"una pulsación normal na decoración de la ventana, o por mensaxes especiales "
+"de dalguna aplicación, talo como les peticiones d'activación de les "
+"miniaplicaciones de llistes de xeres. Anguaño esta opción ta desactivada nel "
+"mou calcar pa dar el focu. Nota que la llista de formes de llevantar "
 "ventanes cuando raise_on_click ta a «false» nun inclúi piticiones programaes "
 "de les aplicaciones pa llevantar les ventanes; tales piticiones inórense "
-"independientemente del motivu de la pitición. Si ye un desendolcador "
-"d'aplicaciones y tien un usuariu quexándose de que la so aplicación nun "
-"furrula con esti axuste desactiváu, díga-y que ye'l _so_ problema (de élli) "
-"por frañar el xestor de ventanes y que tien de camudar la opción a «true» o "
+"independientemente del motivu de la pitición. Si yes un desendolcador "
+"d'aplicaciones y tienes un usuariu quexándose de que la so aplicación nun "
+"furrula con esti axuste desactiváu, notifíca-y que un problema de _so_ , por "
+"frañar el xestor de ventanes y que tien de camudar la opción a «true» o "
 "vivir col fallu que solicitó."
 
 #: ../src/metacity.schemas.in.in.h:31
@@ -1086,7 +1057,7 @@ msgid ""
 msgstr ""
 "Delles aplicaciones nun faen casu de les especificaciones en formes que "
 "resulten en comportamientu incorreutu del xestor de ventanes. Esta opción "
-"pon a Metacity n'un mou percorrechu, lo que da un interfaz d'usuariu más "
+"pon a Metacity nun mou percorrechu, lo que da un interfaz d'usuariu más "
 "consistente, porque ún nun tien qu'arrancar denguna aplicación que nun "
 "furrule."
 
@@ -1104,14 +1075,14 @@ msgid ""
 "is unknown (as is usually the case for the default \"system beep\"), the "
 "currently focused window's titlebar is flashed."
 msgstr ""
-"Diz-y a Metacity como implementar la indicación visual de que la campana del "
-"sistema o la campana d'indicación d'otra aplicación sonaron. Anguaño hi dos "
-"valores válidos, «fullscreen», que causa un ceguñu en blancu y negru en tola "
-"pantalla y  «frame_flash» que causa que la barra de títulos de la ventana de "
-"l'aplicación, que mandó la señal de campana, ceguñe. Si l'aplicación que "
-"mandó la campana ye desconocida (como pasa davezu pal «bip del sistema» "
-"predetermináu). la barra de títulos de la ventana actual que tenga'l foco "
-"ceguñará."
+"Dí-y a Metacity cómo implementar la indicación visual de que la campana del "
+"sistema o la campana d'indicación d'otra aplicación sonaron. Anguaño hai dos "
+"valores válidos, «fullscreen», que causa un ceguñu en blancu y prietu en "
+"tola pantalla y  «frame_flash» que causa que la barra de títulos de la "
+"ventana de l'aplicación, que mandó la señal de campana, ceguñe. Si "
+"l'aplicación que mandó la campana ye desconocida (como pasa davezu pal «bip "
+"del sistema» predetermináu), la barra de títulos de la ventana actual que "
+"tenga'l foco ceguñará."
 
 #: ../src/metacity.schemas.in.in.h:34
 msgid ""
@@ -1151,12 +1122,12 @@ msgid ""
 "\"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled\", "
 "then there will be no keybinding for this action."
 msgstr ""
-"La combinación de tecles qu'executa'l comandu numberáu correspondiente en /"
-"apps/metacity/keybinding_commands. El formatu vese como «&lt;Control&gt;a» o "
-"«&lt;Mayús&gt;&lt;Alt&gt;F1». L'intérprete ye bastante lliberal y permite "
+"La combinación de tecles qu'executa'l comandu numberáu correspondiente en "
+"/apps/metacity/keybinding_commands. El formatu vese como «&lt;Control&gt;a» "
+"o «&lt;Mayús&gt;&lt;Alt&gt;F1». L'intérprete ye bastante lliberal y permite "
 "tanto mayúscules como minúscules arriendes d'abreviatures como por exemplu "
-"«&lt;Ctl&gt;» y «&lt;Ctrl&gt;». Si configura esta opción cola cadena especial "
-"«disabled» entós nun habrá combinación de tecles pa esa aición."
+"«&lt;Ctl&gt;» y «&lt;Ctrl&gt;». Si configures esta opción cola cadena "
+"especial «disabled» entós nun habrá combinación de tecles pa esa aición."
 
 #: ../src/metacity.schemas.in.in.h:38
 msgid "The name of a workspace."
@@ -1171,14 +1142,15 @@ msgid ""
 "The theme determines the appearance of window borders, titlebar, and so "
 "forth."
 msgstr ""
-"El tema determina l'apariencia de bordes de ventanos, barres título y resto."
+"El tema determina l'aspeutu de berbesos de ventanes, barres de títulu y "
+"demás."
 
 #: ../src/metacity.schemas.in.in.h:41
 msgid ""
 "The time delay before raising a window if auto_raise is set to true. The "
 "delay is given in thousandths of a second."
 msgstr ""
-"El retardu enantes d'abrir un ventanu si «auto_rise» ta configuráu como "
+"El retardu enantes d'abrir un ventanu si «auto_raise» ta configuráu como "
 "verdaderu. El retardu ta especificáu en milésimes de segundu."
 
 #: ../src/metacity.schemas.in.in.h:42
@@ -1193,7 +1165,7 @@ msgstr ""
 "tres valores posibles; «click» significa que la ventana tien qu'esbillase pa "
 "obtener el focu, «sloppy» significa qué ventanes obtienen el focu cuando'l "
 "mur entra na ventana y «mouse» significa que les ventanes obtienen el focu "
-"cuando'l ratón mur na ventana y piérdenlu cuando'l mur sal de la ventana."
+"cuando'l mur entra na ventana y piérdenlu cuando'l mur sal de la ventana."
 
 #: ../src/metacity.schemas.in.in.h:43
 msgid "The window screenshot command"
@@ -1213,11 +1185,11 @@ msgstr ""
 "Esta opción determina los efeutos de calcar dos vegaes na barra de títulos. "
 "Les opciones válides anguaño son «toggle_shade», qu'endolca/desendolca la "
 "ventana, «toggle_maximized» que maximiza/regulariza la ventana, "
-"«toggle_maximize_horizontally» y «toggle_maximize_vertically» que maximiza/"
-"regulariza la ventana sólo nesa direición, «minimize» que minimiza la "
-"ventana, «shade» qu'endolca la ventana faza arriba, «menu» qu'amuesa la "
+"«toggle_maximize_horizontally» y «toggle_maximize_vertically» que "
+"maximiza/regulariza la ventana sólo nesa direición, «minimize» que minimiza "
+"la ventana, «shade» qu'endolca la ventana faza arriba, «menu» qu'amuesa la "
 "ventana de menú, «lower» que llanta la ventana tres de toles otres y «none» "
-"que fai nada."
+"que nun fai un res."
 
 #: ../src/metacity.schemas.in.in.h:45
 msgid ""
@@ -1231,13 +1203,13 @@ msgid ""
 "the others, and 'none' which will not do anything."
 msgstr ""
 "Esta opción determina los efeutos de calcar col botón central na barra de "
-"títulos. Les opciones válides anguaño son «toggle_shade», qu'endolca/"
-"desendolca la ventana, «toggle_maximized» que maximiza/regulariza la ventana, "
-"«toggle_maximize_horizontally» y «toggle_maximize_vertically» que maximiza/"
-"regulariza la ventana sólo nesa direición, «minimize» que minimiza la "
-"ventana, «shade» qu'endolca la ventana faza arriba, «menu» qu'amuesa la "
-"ventana de menú, «lower» que llanta la ventana tres de toles otres y «none» "
-"que fai nada."
+"títulos. Les opciones válides anguaño son «toggle_shade», "
+"qu'endolca/desendolca la ventana, «toggle_maximized» que maximiza/regulariza "
+"la ventana, «toggle_maximize_horizontally» y «toggle_maximize_vertically» "
+"que maximiza/regulariza la ventana sólo nesa direición, «minimize» que "
+"minimiza la ventana, «shade» qu'endolca la ventana faza arriba, «menu» "
+"qu'amuesa la ventana de menú, «lower» que llanta la ventana tres de toles "
+"otres y «none» que nun fai un res."
 
 #: ../src/metacity.schemas.in.in.h:46
 msgid ""
@@ -1251,13 +1223,13 @@ msgid ""
 "the others, and 'none' which will not do anything."
 msgstr ""
 "Esta opción determina los efeutos de calcar col botón drechu na barra de "
-"títulos. Les opciones válides anguaño son «toggle_shade», qu'endolca/"
-"desendolca la ventana, «toggle_maximized» que maximiza/regulariza la ventana, "
-"«toggle_maximize_horizontally» y «toggle_maximize_vertically» que maximiza/"
-"regulariza la ventana sólo nesa direición, «minimize» que minimiza la "
-"ventana, «shade» qu'endolca la ventana faza arriba, «menu» qu'amuesa la "
-"ventana de menú, «lower» que llanta la ventana tres de toles otres y «none» "
-"que fai nada."
+"títulos. Les opciones válides anguaño son «toggle_shade», "
+"qu'endolca/desendolca la ventana, «toggle_maximized» que maximiza/regulariza "
+"la ventana, «toggle_maximize_horizontally» y «toggle_maximize_vertically» "
+"que maximiza/regulariza la ventana sólo nesa direición, «minimize» que "
+"minimiza la ventana, «shade» qu'endolca la ventana faza arriba, «menu» "
+"qu'amuesa la ventana de menú, «lower» que llanta la ventana tres de toles "
+"otres y «none» que nun fai un res."
 
 #: ../src/metacity.schemas.in.in.h:47
 msgid ""
@@ -1266,10 +1238,10 @@ msgid ""
 "mode, and \"strict\" results in windows started from a terminal not being "
 "given focus."
 msgstr ""
-"Esta opción apurre control adicional sobre cómo los ventanos que se crearon "
+"Esta opción apurre control adicional sobre cómo les ventanes que se crearon "
 "fai poco obtienen focu. Tien dos valores posibles: «smart» aplica'l mou de "
-"focu normal del usuariu, y «strict» fai que los ventano entamaes dende un "
-"terminal nun se-yos dea focu."
+"focu normal del usuariu, y «strict» fai que a les ventanes aniciaes dende un "
+"terminal nun se-yos dea'l focu."
 
 #: ../src/metacity.schemas.in.in.h:48
 msgid ""
@@ -1283,7 +1255,7 @@ msgstr ""
 
 #: ../src/metacity.schemas.in.in.h:49
 msgid "Use standard system font in window titles"
-msgstr "Usar fonte sistema estándard nos títulos de ventana"
+msgstr "Usar fonte sistema estándar nos títulos de ventana"
 
 #: ../src/metacity.schemas.in.in.h:50
 msgid "Visual Bell Type"
@@ -1297,11 +1269,11 @@ msgstr ""
 
 #: ../src/metacity.schemas.in.in.h:52
 msgid "Whether to resize with the right button"
-msgstr ""
+msgstr "Conseña si se tien de redimensionar col botón drechu"
 
 #: ../src/metacity.schemas.in.in.h:53
 msgid "Window focus mode"
-msgstr "Modo foco ventana"
+msgstr "Mou focu ventana"
 
 #: ../src/metacity.schemas.in.in.h:54
 msgid "Window title font"
@@ -1342,11 +1314,11 @@ msgstr "Desendolcar ventanu"
 
 #: ../src/ui/frames.c:1139
 msgid "Keep Window On Top"
-msgstr "Mantener Ventana Enrriba"
+msgstr "Caltener Ventana Enriba"
 
 #: ../src/ui/frames.c:1142
 msgid "Remove Window From Top"
-msgstr "Desaniciar Ventana d'Enrriba"
+msgstr "Desaniciar Ventana d'Enriba"
 
 #: ../src/ui/frames.c:1145
 msgid "Always On Visible Workspace"
@@ -1354,7 +1326,7 @@ msgstr "Siempre Visible nel Espaciu de Trabayu"
 
 #: ../src/ui/frames.c:1148
 msgid "Put Window On Only One Workspace"
-msgstr "Poner la ventana sólo nun área de trabayu"
+msgstr "Poner la ventana namái nun área de trabayu"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:70
@@ -1379,7 +1351,7 @@ msgstr "Enrollar"
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:78
 msgid "_Unroll"
-msgstr "Desenrrollar"
+msgstr "Desenrollar"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:80
@@ -1410,12 +1382,12 @@ msgstr "Siempre Visible nel Esp_aciu de Trabayu"
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:93
 msgid "_Only on This Workspace"
-msgstr "Sól_o nesti Espaciu de Trabayu"
+msgstr "Namá_i nesti Espaciu de Trabayu"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:95
 msgid "Move to Workspace _Left"
-msgstr "Moverl al Espaciu de Trabayu I_zquierdu"
+msgstr "Mover al Espaciu de Trabayu I_zquierdu"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: ../src/ui/menu.c:97
@@ -1441,17 +1413,17 @@ msgstr "_Zarrar"
 #: ../src/ui/menu.c:203
 #, c-format
 msgid "Workspace %d%n"
-msgstr ""
+msgstr "Espaciu de Trabayu %d%n"
 
 #: ../src/ui/menu.c:213
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace 1_0"
-msgstr "Mover al Espaciu de Trabayu S_uperior"
+msgstr "Espaciu de Trabayu 1_0"
 
 #: ../src/ui/menu.c:215
 #, c-format
 msgid "Workspace %s%d"
-msgstr ""
+msgstr "Espaciu de Trabayu %s%d"
 
 #: ../src/ui/menu.c:395
 msgid "Move to Another _Workspace"
@@ -1550,14 +1522,14 @@ msgstr "Mod5"
 #: ../src/ui/metacity-dialog.c:90
 #, c-format
 msgid "\"%s\" is not responding."
-msgstr "\"%s\" nun ta respondiendo."
+msgstr ""
 
 #: ../src/ui/metacity-dialog.c:97
 msgid ""
 "You may choose to wait a short while for it to continue or force the "
 "application to quit entirely."
 msgstr ""
-"Pue elexir esperar un intre pa que continúe o forciar a la aplicación a "
+"Pues elexir esperar un momentu pa que continúe o forciar a l'aplicación a "
 "terminar."
 
 #: ../src/ui/metacity-dialog.c:107
@@ -1566,23 +1538,21 @@ msgstr "_Esperar"
 
 #: ../src/ui/metacity-dialog.c:109
 msgid "_Force Quit"
-msgstr "_Forzar Colar"
+msgstr "_Forciar Colar"
 
 #: ../src/ui/metacity-dialog.c:206
 msgid "Title"
-msgstr "Títulu"
+msgstr ""
 
 #: ../src/ui/metacity-dialog.c:218
 msgid "Class"
-msgstr "Clas"
+msgstr ""
 
 #: ../src/ui/metacity-dialog.c:244
 msgid ""
 "These windows do not support \"save current setup\" and will have to be "
 "restarted manually next time you log in."
 msgstr ""
-"Estes ventanes nun sofiten «guardar la configuración actual» y tendrán que "
-"reaniciase manualmente la próxima vegada qu'anicie una sesión."
 
 #: ../src/ui/metacity-dialog.c:310
 #, c-format
@@ -1590,8 +1560,6 @@ msgid ""
 "There was an error running \"%s\":\n"
 "%s."
 msgstr ""
-"Hebo un error executando \"%s\":\n"
-"%s."
 
 #. Translators: This represents the size of a window.  The first number is
 #. * the width of the window and the second is the height.
@@ -1625,8 +1593,7 @@ msgstr "La xeometría del marcu nun especifica la dimensión \"%s\""
 #: ../src/ui/theme.c:306
 #, c-format
 msgid "frame geometry does not specify dimension \"%s\" for border \"%s\""
-msgstr ""
-"La xeometría del marcu nun especifica la dimensión \"%s\" pal borde \"%s\""
+msgstr "La xeometría del marcu nun especifica la dimensión \"%s\" pal borde \"%s\""
 
 #: ../src/ui/theme.c:343
 #, c-format
@@ -1636,7 +1603,7 @@ msgstr "La proporción del botón %g nun ye razonable"
 #: ../src/ui/theme.c:355
 #, c-format
 msgid "Frame geometry does not specify size of buttons"
-msgstr "La xeometría del marcu nun especifica el tamañu de los botones"
+msgstr "La xeometría del marcu nun especifica'l tamañu de los botones"
 
 #: ../src/ui/theme.c:1020
 #, c-format
@@ -1649,9 +1616,8 @@ msgid ""
 "GTK color specification must have the state in brackets, e.g. gtk:fg[NORMAL] "
 "where NORMAL is the state; could not parse \"%s\""
 msgstr ""
-"La especificación de color GTK tien que tener l'estáu entre corchetes, "
-"exemplu. gtk:fg[NORMAL] onde NORMAL ye l'estáu; nun se fue quien a analizar "
-"\"%s\""
+"La especificación de color GTK tien que tener l'estáu ente corchetes, "
+"exemplu. gtk:fg[NORMAL] onde NORMAL ye l'estáu; nun se foi a analizar \"%s\""
 
 #: ../src/ui/theme.c:1160
 #, c-format
@@ -1660,7 +1626,7 @@ msgid ""
 "fg[NORMAL] where NORMAL is the state; could not parse \"%s\""
 msgstr ""
 "La especificación de color GTK tien que tener un corchete zarráu dempués del "
-"estáu, exemplu. gtk:fg[NORMAL] onde NORMAL ye l'estáu; nun se fue quien a "
+"estáu, exemplu. gtk:fg[NORMAL] onde NORMAL ye l'estáu; nun se foi a "
 "interpretar «%s»"
 
 #: ../src/ui/theme.c:1171
@@ -1671,8 +1637,7 @@ msgstr "Nun s'entiende l'estáu \"%s\" na especificación del color"
 #: ../src/ui/theme.c:1184
 #, c-format
 msgid "Did not understand color component \"%s\" in color specification"
-msgstr ""
-"Nun s'entiende'l componente de color \"%s\" na especificación del color"
+msgstr "Nun s'entiende'l componente de color \"%s\" na especificación del color"
 
 #: ../src/ui/theme.c:1214
 #, c-format
@@ -1680,32 +1645,31 @@ msgid ""
 "Blend format is \"blend/bg_color/fg_color/alpha\", \"%s\" does not fit the "
 "format"
 msgstr ""
-"El formatu de mecío ye \"blend/bg_color/fg_color/alpha\", \"%s\" nun "
-"coincide col formatu"
+"El formatu de mecío ye \"blend/bg_color/fg_color/alpha\", \"%s\" nun concasa col "
+"formatu"
 
 #: ../src/ui/theme.c:1225
 #, c-format
 msgid "Could not parse alpha value \"%s\" in blended color"
-msgstr "Nun se pudo analizar el valor alpha \"%s\" nel color entemecío"
+msgstr "Nun pudo analizase'l valor alpha \"%s\" nel color entemecíu"
 
 #: ../src/ui/theme.c:1235
 #, c-format
 msgid "Alpha value \"%s\" in blended color is not between 0.0 and 1.0"
-msgstr "El valor alpha \"%s\" nel color entemecío nun ta entre 0.0 e 1.0"
+msgstr "El valor alpha \"%s\" nel color entemecíu nun ta ente 0.0 e 1.0"
 
 #: ../src/ui/theme.c:1282
 #, c-format
 msgid ""
 "Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
 msgstr ""
-"El formatu de solombreáu ye \"shade/base_color/factor\", \"%s\" nun coincide "
-"col formatu"
+"El formatu de solombreáu ye \"shade/base_color/factor\", \"%s\" nun concasa col "
+"formatu"
 
 #: ../src/ui/theme.c:1293
 #, c-format
 msgid "Could not parse shade factor \"%s\" in shaded color"
-msgstr ""
-"Nun se pudo analizar el factor de solombreáu \"%s\" nel color del solombreáu"
+msgstr "Nun pudo analizase'l factor de solombreáu \"%s\" nel color del solombreáu"
 
 #: ../src/ui/theme.c:1303
 #, c-format
@@ -1715,13 +1679,12 @@ msgstr "El factor de solombreáu \"%s\" nel color solombreáu ye negativu"
 #: ../src/ui/theme.c:1332
 #, c-format
 msgid "Could not parse color \"%s\""
-msgstr "Nun se pudo analizar el color \"%s\""
+msgstr "Nun pudo analizase'l color \"%s\""
 
 #: ../src/ui/theme.c:1582
 #, c-format
 msgid "Coordinate expression contains character '%s' which is not allowed"
-msgstr ""
-"La espresión de coordenaes contién un carácter '%s' que nun ta permitíu"
+msgstr "La espresión de coordenaes contién un carácter '%s' que nun ta permitíu"
 
 #: ../src/ui/theme.c:1609
 #, c-format
@@ -1771,19 +1734,18 @@ msgstr ""
 msgid ""
 "Coordinate expression has an operator \"%s\" where an operand was expected"
 msgstr ""
-"La espresión de coordenaes tien un operador «%s» onde s'esperaba un operandu"
+"La espresión de coordenaes tien un operador «%s» au s'esperaba un operandu"
 
 #: ../src/ui/theme.c:2030
 #, c-format
 msgid "Coordinate expression had an operand where an operator was expected"
-msgstr ""
-"La espresión de coordenaes tien un operandu onde s'esperaba un operador"
+msgstr "La espresión de coordenaes tien un operandu au s'esperaba un operador"
 
 #: ../src/ui/theme.c:2038
 #, c-format
 msgid "Coordinate expression ended with an operator instead of an operand"
 msgstr ""
-"La espresión de coordenaes fina con un operador en vez de con un operandu"
+"La espresión de coordenaes fina con un operador en cuenta de con un operandu"
 
 #: ../src/ui/theme.c:2048
 #, c-format
@@ -1791,8 +1753,8 @@ msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
 "operand in between"
 msgstr ""
-"La espresión de coordenaes tien l'operador «%c» seguíu del operador «%c» ensin "
-"un operandu entre ellos"
+"La espresión de coordenaes tien l'operador «%c» siguíu del operador «%c» "
+"ensin un operandu ente ellos"
 
 #: ../src/ui/theme.c:2195 ../src/ui/theme.c:2236
 #, c-format
@@ -1817,7 +1779,7 @@ msgstr ""
 msgid "Coordinate expression had an open parenthesis with no close parenthesis"
 msgstr ""
 "La espresión de coordenaes tien un paréntesis abiertu ensin un paréntesis "
-"pesllaú"
+"peslláu"
 
 #: ../src/ui/theme.c:2394
 #, c-format
@@ -1828,7 +1790,7 @@ msgstr ""
 #: ../src/ui/theme.c:2596 ../src/ui/theme.c:2616 ../src/ui/theme.c:2636
 #, c-format
 msgid "Theme contained an expression that resulted in an error: %s\n"
-msgstr "El tema contenía una espresión que resultó d'un erru: %s\n"
+msgstr "El tema contenía una espresión que resultó d'un fallu: %s\n"
 
 #: ../src/ui/theme.c:4187
 #, c-format
@@ -1836,20 +1798,19 @@ msgid ""
 "<button function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> must be "
 "specified for this frame style"
 msgstr ""
-"<button function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> tien "
-"qu'especificase pa esti estilu de marcu"
+"<button function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> tien qu'especificase "
+"pa esti estilu de marcu"
 
 #: ../src/ui/theme.c:4695 ../src/ui/theme.c:4720
 #, c-format
 msgid ""
 "Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
-msgstr ""
-"Falta <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
+msgstr "Falta <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
 
 #: ../src/ui/theme.c:4764
 #, c-format
 msgid "Failed to load theme \"%s\": %s\n"
-msgstr "Hebo un erru al cargar el tema «%s»: %s\n"
+msgstr "Hebo un fallu al cargar el tema «%s»: %s\n"
 
 #: ../src/ui/theme.c:4894 ../src/ui/theme.c:4901 ../src/ui/theme.c:4908
 #: ../src/ui/theme.c:4915 ../src/ui/theme.c:4922
@@ -1863,8 +1824,8 @@ msgid ""
 "No frame style set for window type \"%s\" in theme \"%s\", add a <window "
 "type=\"%s\" style_set=\"whatever\"/> element"
 msgstr ""
-"Nun hai un estilu de marcu pa la triba de ventanu «%s» nel tema «%s», añadi un "
-"elementu <window type=\"%s\" style_set=\"whatever\"/>"
+"Nun hai un estilu de marcu pa la triba de ventana «%s» nel tema «%s», "
+"amiesta un elementu <window type=\"%s\" style_set=\"whatever\"/>"
 
 #: ../src/ui/theme.c:5383 ../src/ui/theme.c:5445 ../src/ui/theme.c:5508
 #, c-format
@@ -1910,7 +1871,7 @@ msgstr "Enteru %ld tien que ser positivu"
 #: ../src/ui/theme-parser.c:549
 #, c-format
 msgid "Integer %ld is too large, current max is %d"
-msgstr "Enteru %ld ye mui grande, másimu actualmente ye %d"
+msgstr "Enteru %ld ye mui grande, máximu actualmente ye %d"
 
 #: ../src/ui/theme-parser.c:577 ../src/ui/theme-parser.c:693
 #, c-format
@@ -1920,7 +1881,7 @@ msgstr "Nun pudo interpretase «%s» como un númberu de puntu flotante"
 #: ../src/ui/theme-parser.c:608 ../src/ui/theme-parser.c:636
 #, c-format
 msgid "Boolean values must be \"true\" or \"false\" not \"%s\""
-msgstr "Valores booleanos deben ser \"true\" o \"false\" non \"%s\""
+msgstr "Valores booleanos tienen de ser \"true\" o \"false\" non \"%s\""
 
 #: ../src/ui/theme-parser.c:663
 #, c-format
@@ -1930,8 +1891,7 @@ msgstr "L'ángulu tien de tar ente 0.0 y 360.9, foi %g\n"
 #: ../src/ui/theme-parser.c:726
 #, c-format
 msgid "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g\n"
-msgstr ""
-"El valor d'alfa tien de tar ente 0.0 (invisible) y 1.0 (opacu ensembre), foi "
+msgstr "El valor d'alfa tien de tar ente 0.0 (invisible) y 1.0 (opacu ensembre), foi "
 "%g\n"
 
 #: ../src/ui/theme-parser.c:791
@@ -1939,9 +1899,8 @@ msgstr ""
 msgid ""
 "Invalid title scale \"%s\" (must be one of xx-small,x-small,small,medium,"
 "large,x-large,xx-large)\n"
-msgstr ""
-"Escala de títulu inválida «%s» (tien de ser una de xx-small,x-small,small,"
-"medium,large,x-large,xx-large)\n"
+msgstr "Escala de títulu inválida «%s» (tien de ser una de xx-"
+"small,x-small,small,medium,large,x-large,xx-large)\n"
 
 #: ../src/ui/theme-parser.c:936 ../src/ui/theme-parser.c:999
 #: ../src/ui/theme-parser.c:1033 ../src/ui/theme-parser.c:1136
@@ -1958,7 +1917,7 @@ msgstr "El <%s> padre «%s» nun se definió"
 #: ../src/ui/theme-parser.c:1058
 #, c-format
 msgid "<%s> geometry \"%s\" has not been defined"
-msgstr "<%s> geometría \"%s\" nun defenía"
+msgstr "<%s> xeometría \"%s\" non definida"
 
 #: ../src/ui/theme-parser.c:1071
 #, c-format
@@ -1968,7 +1927,7 @@ msgstr ""
 
 #: ../src/ui/theme-parser.c:1113
 msgid "You must specify a background for an alpha value to be meaningful"
-msgstr "Tienes d'especificar un fondu pa un valor alpha pa que tenga sentíu"
+msgstr "Tienes d'especificar un fondu pa un valor alpha pa que tenga xacíu"
 
 #: ../src/ui/theme-parser.c:1180
 #, c-format
@@ -1983,7 +1942,7 @@ msgstr "style_set desconocíu \"%s\" nel elementu <%s>"
 #: ../src/ui/theme-parser.c:1199
 #, c-format
 msgid "Window type \"%s\" has already been assigned a style set"
-msgstr "La triba de ventanu «%s» yá s'asignó a un conxuntu d'estilu"
+msgstr "La triba de ventana «%s» yá s'asignó a un conxuntu d'estilu"
 
 #: ../src/ui/theme-parser.c:1229 ../src/ui/theme-parser.c:1293
 #: ../src/ui/theme-parser.c:1519 ../src/ui/theme-parser.c:2732
@@ -2000,13 +1959,13 @@ msgid ""
 "Cannot specify both \"button_width\"/\"button_height\" and \"aspect_ratio\" "
 "for buttons"
 msgstr ""
-"Nun pue especificase dambos «button_width»/«button_height» y «aspect ratio» pa "
-"los botones"
+"Nun puen especificase dambos «button_width»/«button_height» y «aspect ratio» "
+"pa los botones"
 
 #: ../src/ui/theme-parser.c:1366
 #, c-format
 msgid "Distance \"%s\" is unknown"
-msgstr "Distancia \"%s\" desconocía"
+msgstr "Distancia \"%s\" desconocida"
 
 #: ../src/ui/theme-parser.c:1411
 #, c-format
@@ -2021,12 +1980,12 @@ msgstr "Borde \"%s\" desconocíu"
 #: ../src/ui/theme-parser.c:1776
 #, c-format
 msgid "No \"start_angle\" or \"from\" attribute on element <%s>"
-msgstr "Ensín atributu \"start_angle\" o \"from\" nel elementu <%s>"
+msgstr "Ensin atributu \"start_angle\" o \"from\" nel elementu <%s>"
 
 #: ../src/ui/theme-parser.c:1783
 #, c-format
 msgid "No \"extent_angle\" or \"to\" attribute on element <%s>"
-msgstr "Ensín atributu \"extent_angle\" o \"to\" nel elementu <%s>"
+msgstr "Ensin atributu \"extent_angle\" o \"to\" nel elementu <%s>"
 
 #: ../src/ui/theme-parser.c:2023
 #, c-format
@@ -2062,7 +2021,7 @@ msgstr "Nun se definió una <draw_ops> llamada «%s»"
 #: ../src/ui/theme-parser.c:2600 ../src/ui/theme-parser.c:2696
 #, c-format
 msgid "Including draw_ops \"%s\" here would create a circular reference"
-msgstr "Incluyir el draw_ops «%s» equí podría criar una referencia circular"
+msgstr "Incluyir el draw_ops «%s» equí podría crear una referencia circular"
 
 #: ../src/ui/theme-parser.c:2811
 #, c-format
@@ -2151,7 +2110,7 @@ msgid ""
 "Can't have a two draw_ops for a <piece> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
 msgstr ""
-"Nun puedes tener dos draw_ops pa un elementu <piece> (el tema especificó un "
+"Nun pues tener dos draw_ops pa un elementu <piece> (el tema especificó un "
 "atributu draws_ops y tamién un elementu <draw_ops> o especificó los dos "
 "elementos)"
 
@@ -2160,7 +2119,7 @@ msgid ""
 "Can't have a two draw_ops for a <button> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
 msgstr ""
-"Nun puedes tener dos draw_ops pa un elementu <button> (el tema especificó un "
+"Nun pues tener dos draw_ops pa un elementu <button> (el tema especificó un "
 "atributu draw_ops y tamién un elementu <draw_ops> o especificó los dos "
 "elementos)"
 
@@ -2169,22 +2128,22 @@ msgid ""
 "Can't have a two draw_ops for a <menu_icon> element (theme specified a "
 "draw_ops attribute and also a <draw_ops> element, or specified two elements)"
 msgstr ""
-"Nun puedes tener dos draw_ops pa un elementu <menu_icon> (el tema especificó "
+"Nun pues tener dos draw_ops pa un elementu <menu_icon> (el tema especificó "
 "un atributu draw_ops y tamién un elementu <draw_ops> o especificó los dos "
 "elementos)"
 
 #: ../src/ui/theme-parser.c:3263
 #, c-format
 msgid "Outermost element in theme must be <metacity_theme> not <%s>"
-msgstr "L'elementu más esternu n'un tema debe ser <metacity_theme> non <%s>"
+msgstr "L'elementu más esternu nun tema tien de ser <metacity_theme> non <%s>"
 
 #: ../src/ui/theme-parser.c:3283
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a name/author/date/description element"
 msgstr ""
-"L'elementu <%s> nun ta permitíu dientro d'un elementu name/author/date/"
-"description"
+"L'elementu <%s> nun ta permitíu dientro d'un elementu "
+"name/author/date/description"
 
 #: ../src/ui/theme-parser.c:3288
 #, c-format
@@ -2196,8 +2155,8 @@ msgstr "L'elementu <%s> nun ta permitíu dientro d'un elementu <constant>"
 msgid ""
 "Element <%s> is not allowed inside a distance/border/aspect_ratio element"
 msgstr ""
-"L'elementu <%s> nun ta permitíu dientro d'un elementu distance/border/"
-"aspect_ratio"
+"L'elementu <%s> nun ta permitíu dientro d'un elementu "
+"distance/border/aspect_ratio"
 
 #: ../src/ui/theme-parser.c:3322
 #, c-format
@@ -2226,23 +2185,23 @@ msgstr "Nun se permite testu dientro del elementu <%s>"
 
 #: ../src/ui/theme-parser.c:3716
 msgid "<name> specified twice for this theme"
-msgstr "<name> especificáu dos vegaes pa esti tema"
+msgstr ""
 
 #: ../src/ui/theme-parser.c:3727
 msgid "<author> specified twice for this theme"
-msgstr "<author> especificáu dos vegaes pa esti tema"
+msgstr ""
 
 #: ../src/ui/theme-parser.c:3738
 msgid "<copyright> specified twice for this theme"
-msgstr "<copyright> especificáu dos vegaes pa esti tema"
+msgstr ""
 
 #: ../src/ui/theme-parser.c:3749
 msgid "<date> specified twice for this theme"
-msgstr "<date> especificada dos vegaes pa esti tema"
+msgstr ""
 
 #: ../src/ui/theme-parser.c:3760
 msgid "<description> specified twice for this theme"
-msgstr "<description> especificada dos vegaes pa esti tema"
+msgstr ""
 
 #: ../src/ui/theme-parser.c:4027
 #, c-format
@@ -2252,11 +2211,11 @@ msgstr "Falló atopar un ficheru válidu pal tema %s\n"
 #: ../src/ui/theme-parser.c:4083
 #, c-format
 msgid "Theme file %s did not contain a root <metacity_theme> element"
-msgstr "L'archivu de tema %s nun contién un elementu raigañu <metacity_theme>"
+msgstr "El ficheru de tema %s nun contién un elementu raigañu <metacity_theme>"
 
 #: ../src/ui/theme-viewer.c:75
 msgid "/_Windows"
-msgstr "/_Ventanu"
+msgstr "/_Ventanes"
 
 #: ../src/ui/theme-viewer.c:76
 msgid "/Windows/tearoff"
@@ -2264,19 +2223,19 @@ msgstr "/Ventanes/tirador"
 
 #: ../src/ui/theme-viewer.c:77
 msgid "/Windows/_Dialog"
-msgstr "/Ventanu/_Diálogu"
+msgstr "/Ventanes/_Diálogu"
 
 #: ../src/ui/theme-viewer.c:78
 msgid "/Windows/_Modal dialog"
-msgstr "/Ventanu/_Diálogu modal"
+msgstr "/Ventanes/_Diálogu modal"
 
 #: ../src/ui/theme-viewer.c:79
 msgid "/Windows/_Utility"
-msgstr "/Ventanu/_Utilidá"
+msgstr "/Ventanes/_Utilidá"
 
 #: ../src/ui/theme-viewer.c:80
 msgid "/Windows/_Splashscreen"
-msgstr "/Ventanu/_Ventanu presentación"
+msgstr "/Ventanes/_Ventana presentación"
 
 #: ../src/ui/theme-viewer.c:81
 msgid "/Windows/_Top dock"
@@ -2284,7 +2243,7 @@ msgstr "/Ventanes/Empotrable _superior"
 
 #: ../src/ui/theme-viewer.c:82
 msgid "/Windows/_Bottom dock"
-msgstr "Ventanes/Empotrable _baxeru"
+msgstr "/Ventanes/Empotrable _baxeru"
 
 #: ../src/ui/theme-viewer.c:83
 msgid "/Windows/_Left dock"
@@ -2316,7 +2275,7 @@ msgstr "Esto ye un botón de demostración con un iconu de salida"
 
 #: ../src/ui/theme-viewer.c:242
 msgid "This is a sample message in a sample dialog"
-msgstr "Esto ye un exemplu de mensaxe en un diálogu d'exemplu"
+msgstr "Esto ye un exemplu de mensaxe nun diálogu d'exemplu"
 
 #: ../src/ui/theme-viewer.c:325
 #, c-format
@@ -2325,7 +2284,7 @@ msgstr "Elementu de menú falsu %d\n"
 
 #: ../src/ui/theme-viewer.c:359
 msgid "Border-only window"
-msgstr "Ventanu sólo borde"
+msgstr "Ventana namái borde"
 
 #: ../src/ui/theme-viewer.c:361
 msgid "Bar"
@@ -2333,7 +2292,7 @@ msgstr "Barra"
 
 #: ../src/ui/theme-viewer.c:378
 msgid "Normal Application Window"
-msgstr "Ventanu Aplicación Normal"
+msgstr "Ventana Aplicación Normal"
 
 #: ../src/ui/theme-viewer.c:382
 msgid "Dialog Box"
@@ -2382,7 +2341,7 @@ msgstr "Cargáu tema \"%s\" en %g segundos\n"
 
 #: ../src/ui/theme-viewer.c:852
 msgid "Normal Title Font"
-msgstr "Tipografía de títulu normal"
+msgstr "Fonte de títulu normal"
 
 #: ../src/ui/theme-viewer.c:858
 msgid "Small Title Font"
@@ -2390,7 +2349,7 @@ msgstr "Fonte de Títulu pequeña"
 
 #: ../src/ui/theme-viewer.c:864
 msgid "Large Title Font"
-msgstr "Tipografía de títulu grande"
+msgstr "Fonte de títulu grande"
 
 #: ../src/ui/theme-viewer.c:869
 msgid "Button Layouts"
@@ -2398,7 +2357,7 @@ msgstr "Distribución de botones"
 
 #: ../src/ui/theme-viewer.c:874
 msgid "Benchmark"
-msgstr "Bancu de prebes"
+msgstr "Bancu de pruebes"
 
 #: ../src/ui/theme-viewer.c:921
 msgid "Window Title Goes Here"
@@ -2410,10 +2369,9 @@ msgid ""
 "Drew %d frames in %g client-side seconds (%g milliseconds per frame) and %g "
 "seconds wall clock time including X server resources (%g milliseconds per "
 "frame)\n"
-msgstr ""
-"Dibuxeste %d marcos en %g segundos del llau del veceru (%g milisegundos por "
-"marcu) y %g segundos de tiempu estándar incluyendo recursos del servidor X (%"
-"g milisegundos por marcu)\n"
+msgstr "Dibuxasti %d marcos en %g segundos del llau del veceru (%g milisegundos por "
+"marcu) y %g segundos de tiempu estándar incluyendo recursos del sirvidor X ("
+"%g milisegundos por marcu)\n"
 
 #: ../src/ui/theme-viewer.c:1244
 msgid "position expression test returned TRUE but set error"
@@ -2430,7 +2388,7 @@ msgstr "Esperábase un fallu, pero nun hebo dengún"
 #: ../src/ui/theme-viewer.c:1252
 #, c-format
 msgid "Error %d was expected but %d given"
-msgstr "Esperábase un fallu %d pero nun hebo el %d"
+msgstr "Esperábase un fallu %d pero obtúvose %d"
 
 #: ../src/ui/theme-viewer.c:1258
 #, c-format
@@ -2450,21 +2408,323 @@ msgstr "el valor y yera %d, esperábase %d"
 #: ../src/ui/theme-viewer.c:1330
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
-msgstr ""
-"%d espresiones de coordenaes interpretaes en %g segundos (%g segundos de "
+msgstr "%d espresiones de coordenaes interpretaes en %g segundos (%g segundos de "
 "media)\n"
 
-#~ msgid "Desk %d"
-#~ msgstr "Escritoriu %d"
+#~ msgid "Bell event"
+#~ msgstr "Eventu de campana"
 
-#~ msgid "Desk %d%n"
-#~ msgstr "Escritoriu %d%n"
+#, c-format
+#~ msgid ""
+#~ "<big><b><tt>%s</tt> is not responding.</b></big>\n"
+#~ "\n"
+#~ "<i>You may choose to wait a short while for it to continue or force the "
+#~ "application to quit entirely.</i>"
+#~ msgstr ""
+#~ "<big><b><tt>%s</tt> nun respuende.</b></big>\n"
+#~ "\n"
+#~ "<i>Escueyi ente esperar pa continuar o forzar pa colar dafechu de "
+#~ "l'aplicación.</i>"
 
-#~ msgid "Desk 1_0"
-#~ msgstr "Escritoriu 1_0"
+#, c-format
+#~ msgid ""
+#~ "metacity %s\n"
+#~ "Copyright (C) 2001-%s Havoc Pennington, Red Hat, Inc., and others\n"
+#~ "This is free software; see the source for copying conditions.\n"
+#~ "There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A "
+#~ "PARTICULAR PURPOSE.\n"
+#~ msgstr ""
+#~ "metacity %s\n"
+#~ "Copyright (C) 2001-%s Havoc Pennington, Red Hat, Inc., and others\n"
+#~ "This is free software; see the source for copying conditions.\n"
+#~ "There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A "
+#~ "PARTICULAR PURPOSE.\n"
 
-#~ msgid "Desk %s%d"
-#~ msgstr "Escritoriu %s%d"
+#~ msgid ""
+#~ "Don't make fullscreen windows that are maximized and have no decorations"
+#~ msgstr ""
+#~ "Nun poner a pantalla completa les ventanes maximizaes que nun tienen "
+#~ "decoración"
 
-#~ msgid "Move backwards between windows immediately"
-#~ msgstr "Mover de secute p'atrás ente ventanes"
+#~ msgid ""
+#~ "The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
+#~ "\n"
+#~ "The parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to the "
+#~ "special string \"disabled\", then there will be no keybinding for this "
+#~ "action."
+#~ msgstr ""
+#~ "El formatu paezse a «<Control>a» o «<Shift><Alt>F1».\n"
+#~ "\n"
+#~ "L'intérprete ye bastante lliberal y permite tanto mayúscules como minúscules "
+#~ "amás d'abreviatures como por exemplu «<Ctl>» y «<Ctrl>». Si configures esta "
+#~ "opción cola cadena especial «disabled» entós nun habrá combinación de "
+#~ "tecles pa esta aición."
+
+#~ msgid ""
+#~ "The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
+#~ "\n"
+#~ "The parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to the "
+#~ "special string \"disabled\", then there will be no keybinding for this "
+#~ "action.\n"
+#~ "\n"
+#~ "This keybinding may be reversed by holding down the \"shift\" key; "
+#~ "therefore, \"shift\" cannot be one of the keys it uses."
+#~ msgstr ""
+#~ "El formatu paezse a «<Control>a» o «<Shift><Alt>F1».\n"
+#~ "\n"
+#~ "L'intérprete ye bastante lliberal y permite tanto mayúscules como minúscules "
+#~ "amás d'abreviatures como por exemplu «<Ctl>» y «<Ctrl>».Si configures esta "
+#~ "opción cola cadena especial «disabled» entós nun habrá combinación de tecles "
+#~ "pa esta aición.\n"
+#~ "\n"
+#~ "Esta combinación de tecles pue invertise calteniendo calcada la tecla "
+#~ "«Mayús»; poro «Mayús» nun pue ser una de las tecles de la combinación."
+
+#~ msgid ""
+#~ "These windows do not support &quot;save current setup&quot; and will have to "
+#~ "be restarted manually next time you log in."
+#~ msgstr ""
+#~ "Estes ventanes nun almiten la opción de &quot;guardar la configuración "
+#~ "actual&quot; asina que tendrás que reaniciales manualmente la próxima vegada "
+#~ "qu'anicies una sesión."
+
+#, c-format
+#~ msgid "%s (as superuser)"
+#~ msgstr "%s (como superususariu)"
+
+#, c-format
+#~ msgid "%s (as %s)"
+#~ msgstr "%s (como %s)"
+
+#, c-format
+#~ msgid "%s (as another user)"
+#~ msgstr "%s (como otru usuariu)"
+
+#, c-format
+#~ msgid "<%s> specified twice for this theme"
+#~ msgstr "<%s> especificáu dos vegaes para esti tema"
+
+#~ msgid "Launchers"
+#~ msgstr "Llanzadores"
+
+#~ msgid "Navigation"
+#~ msgstr "Navegación"
+
+#~ msgid "Screenshots"
+#~ msgstr "Captures de pantalla"
+
+#~ msgid "System"
+#~ msgstr "Sistema"
+
+#~ msgid "Windows"
+#~ msgstr "Ventanes"
+
+#, c-format
+#~ msgid "<tt>%s</tt> is not responding."
+#~ msgstr "<tt>%s</tt> nun ta respondiendo."
+
+#~ msgid "Move to workspace left"
+#~ msgstr "Mover al área de trabayu de la izquierda"
+
+#~ msgid "Move to workspace right"
+#~ msgstr "Mover al área de trabayu de la derecha"
+
+#~ msgid "Move to workspace above"
+#~ msgstr "Mover al área de trabayu d'arriba"
+
+#~ msgid "Move to workspace below"
+#~ msgstr "Mover al área de trabayu d'abaxo"
+
+#~ msgid "Switch windows of an application"
+#~ msgstr "Movese ente les ventanes d'una aplicación"
+
+#~ msgid "Reverse switch windows of an application"
+#~ msgstr "Invertir el cambéu ente ventanes d'una aplicación"
+
+#~ msgid "Switch applications"
+#~ msgstr "Movese ente aplicaciones"
+
+#~ msgid "Reverse switch applications"
+#~ msgstr "Invertir el cambéu ente aplicaciones"
+
+#~ msgid "Switch system controls"
+#~ msgstr "Cambiar ente controles del sistema"
+
+#~ msgid "Reverse switch system controls"
+#~ msgstr "Invertir el cambéu ente controles del sistema"
+
+#~ msgid "Switch windows of an app directly"
+#~ msgstr "Movese ente les ventanes d'una aplicación direutamente"
+
+#~ msgid "Reverse switch windows of an app directly"
+#~ msgstr "Invertir el cambéu ente ventanes d'una aplicación direutamente"
+
+#~ msgid "Switch windows directly"
+#~ msgstr "Cambiar ventanes direutamente"
+
+#~ msgid "Reverse switch windows directly"
+#~ msgstr "Invertir el cambéu ente ventanes direutamente"
+
+#~ msgid "Switch system controls directly"
+#~ msgstr "Movese ente los controles del sistema direutamente"
+
+#~ msgid "Reverse switch system controls directly"
+#~ msgstr "Invertir el cambéu ente controles del sistema direutamente"
+
+#~ msgid "Hide all normal windows"
+#~ msgstr "Anubrir toles ventanes normales"
+
+#~ msgid "Show the activities overview"
+#~ msgstr "Amosar el resume d'actividaes"
+
+#~ msgid "Show the run command prompt"
+#~ msgstr "Amosar l'elementu «executar comando»"
+
+#~ msgid "Launch Terminal"
+#~ msgstr "Llanzar la Terminal"
+
+#~ msgid "Toggle window always appearing on top"
+#~ msgstr "Cambiar l'estáu de la ventana de siempre encima"
+
+#~ msgid "Toggle window on all workspaces or one"
+#~ msgstr "Conmutar la ventana en toles árees de trabayu o namái nuna"
+
+#~ msgid "Raise window if covered, otherwise lower it"
+#~ msgstr "Llevantar la ventana si ta cubierta, minimizala n'otru casu"
+
+#~ msgid "Move window to top left corner"
+#~ msgstr "Mover la ventana a la esquina superior izquierda"
+
+#~ msgid "Move window to top right corner"
+#~ msgstr "Mover la ventana a la esquina superior derecha"
+
+#~ msgid "Move window to bottom left corner"
+#~ msgstr "Mover la ventana a la esquina inferior izquierda"
+
+#~ msgid "Move window to bottom right corner"
+#~ msgstr "Mover la ventana a la esquina inferior derecha"
+
+#~ msgid "Move window to top edge of screen"
+#~ msgstr "Mover la ventana al berbesu superior de la pantalla"
+
+#~ msgid "Move window to bottom edge of screen"
+#~ msgstr "Mover la ventana al berbesu inferior de la pantalla"
+
+#~ msgid "Move window to right side of screen"
+#~ msgstr "Mover la ventana al llau derechu de la pantalla"
+
+#~ msgid "Move window to left side of screen"
+#~ msgstr "Mover la ventana al llau izquierdu de la pantalla"
+
+#~ msgid ""
+#~ "Clicking a window while holding down this modifier key will move the window "
+#~ "(left click), resize the window (middle click), or show the window menu "
+#~ "(right click). The middle and right click operations may be swapped using "
+#~ "the \"resize_with_right_button\" key. Modifier is expressed as \"&lt;Alt&gt;"
+#~ "\" or \"&lt;Super&gt;\" for example."
+#~ msgstr ""
+#~ "Al calcar sobro una ventana calteniendo primida esta tecla modificadora "
+#~ "moveráse la ventana (botón esquierdu), redimensionaráse la ventana (botón "
+#~ "del mediu) o amosaráse'l menú de la ventana (botón drechu). Les operaciones "
+#~ "esquierda y drecha pueden intercambiase usando la tecla modificadora "
+#~ "«resize_with_right_button». El modificador esprésase por exemplu como "
+#~ "«&lt;Alt&gt;» o «&lt;Súper&gt;»."
+
+#, c-format
+#~ msgid "Could not parse font description \"%s\" from GSettings key %s\n"
+#~ msgstr "Nun pue analizase descripción de la fonte \"%s\" dende calve GSettings %s\n"
+
+#~ msgid ""
+#~ "Options from the given configuration file have precedence over GConf ones"
+#~ msgstr ""
+#~ "Les opciones sobre'l ficheru de configuración dau tien preferencia sobre "
+#~ "les de GConf"
+
+#~ msgid "Automatically Maximize Windows"
+#~ msgstr "Maximizar les ventanes automáticamente"
+
+#~ msgid "Capture Before Unmap"
+#~ msgstr "Capturar enantes de desasignar"
+
+#~ msgid "Compositor effects"
+#~ msgstr "Efeutos de compositor"
+
+#~ msgid ""
+#~ "Determines if compositor-related effects are enabled or not. More "
+#~ "specifically, it disables the shadows below windows, the support for "
+#~ "windows opacity and the windows previews in the alt+tab window switcher. "
+#~ "It does not have any effect if compositing_manager is disabled."
+#~ msgstr ""
+#~ "Determina si los efeutos rellacionaos col compositor tán activados o non. "
+#~ "Más específicamente, desactiva la solombra debaxo de les ventanes, el "
+#~ "sofitu pa opacidá de ventanes y les vistes previes de les ventanes nel "
+#~ "conmutador de ventanes alt+tab. Nun tien dengún efeutu si "
+#~ "compositing_manager ta desactiváu."
+
+#~ msgid ""
+#~ "Determines if the workspace switcher enables cycling of workspaces using "
+#~ "keyboard shortcuts. (typically right and left arrow keys). If true and "
+#~ "single row layout, keys will cycle from last to first and first to last "
+#~ "workspace when pressed on first or last workspace. If true and multi-row "
+#~ "layout, keys will cycle left to right, top to bottom and vice versa."
+#~ msgstr ""
+#~ "Determina si l'espaciu de trabayu permite cambiar d'espaciu de trabayu "
+#~ "utilizando atayos de tecláu (normalmente les tecles de desplazamientu "
+#~ "derecha ya esquierda). Si ye verdadera y de diseñu únicu de filera, les "
+#~ "tecles cambiarán del caberu al primeru y del primeru al caberu espaciu de "
+#~ "trabayu cuando se calca nel primer o caberu espaciu de trabayu. Si ye "
+#~ "braero y el diseñu ye multifilera, les tecles cambiarán d'izquierda a "
+#~ "derecha, d'arriba a abaxo y viceversa."
+
+#~ msgid ""
+#~ "Determines if windows should be automatically maximized when shown if "
+#~ "they already cover most of the screen."
+#~ msgstr ""
+#~ "Determina si les ventanes tienen de maximizase automáticamente cuando "
+#~ "s'amuesen si yá cubren la mayoría de la pantalla."
+
+#~ msgid ""
+#~ "Determines whether or not before a window is unmapped (e.g. when it is "
+#~ "sent to another workspace or minimized) a pixmap of the current state of "
+#~ "the window is captured and stored in a property on the window itself. "
+#~ "This allows interested clients (e.g. workspace switchers) to be able to "
+#~ "display previews of any window. Note that this will only work if "
+#~ "compositing_manager is enabled too."
+#~ msgstr ""
+#~ "Determina si enantes d'asignar una ventana (por exemplu, cuando s'unvia a "
+#~ "otru área de trabayu o se minimiza), se captura y almacena un mapa de "
+#~ "píxeles de la situación actual de la ventana, nuna propiedá na mesma "
+#~ "ventana. Esto permite a los veceros interesaos ​​(por exemplu, conmutación "
+#~ "d'espaciu de trabayu) poder amosar vistes previes de cualquier ventana. "
+#~ "Decátate qu'esto namái va funcionar si tamién ta activáu "
+#~ "compositing_manager."
+
+#~ msgid "Set this to false to hide title bars for maximized windows."
+#~ msgstr ""
+#~ "Afítalo en falsu pa tapecer les barres de títulu pa les ventanes "
+#~ "maximizaes."
+
+#~ msgid "Whether to show title bars for maximized windows"
+#~ msgstr "Amosar barres de títulu pa les ventanes maximizaes"
+
+#~ msgid "Workspace Switcher Keyboard Cycle"
+#~ msgstr "Ciclu de tecláu de cambiador d'espaciu de trabayu"
+
+#~ msgid ""
+#~ "Determines whether or not before a window is unmapped (e.g. when it is "
+#~ "sent to another workspace or minimized) a pixmap of the current state of "
+#~ "the window is captured and stored in a property on the window itself. "
+#~ "This allows interested clients (e.g. workspace switchers) to be able to "
+#~ "display previews of any window. Note that this is incompatible with "
+#~ "compositing_manager and will be ignored if compositing_manager is enabled."
+#~ msgstr ""
+#~ "Determina si una ventana ta previamente asignada o non (por exemplu "
+#~ "cuando s'unvia a otru espaciu de trabayu o se minimiza) un mapa de "
+#~ "píxeles del estáu actual de la ventana se captura y atroxa nuna propiedá "
+#~ "na propia ventana. Esto permite a los veceros interesaos (por exemplu los "
+#~ "cambiadores d'espaciu de trabayu) poder amosar vistes previes de "
+#~ "cualesquier ventana. Ten en cuenta qu'esto ye incompatible col "
+#~ "alministrador de composición y va inorase si ta afitáu l'alministrador de "
+#~ "composición."
