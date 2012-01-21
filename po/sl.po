@@ -4,14 +4,14 @@
 #
 # Andraž Tori <andraz.tori1@guest.arnes.si>, 2000.
 # Matjaž Horvat <m@owca.info>, 2006.
-# Matej Urbančič <mateju@svn.gnome.org>, 2007 - 2010.
+# Matej Urbančič <mateju@svn.gnome.org>, 2007 - 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-11-18 22:20+0000\n"
-"PO-Revision-Date: 2011-11-24 15:38+0100\n"
+"POT-Creation-Date: 2012-01-20 12:21+0000\n"
+"PO-Revision-Date: 2012-01-21 21:09+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: \n"
@@ -586,51 +586,51 @@ msgstr "Izbrana možnost omogoča, da, se zmanjša uporabnost in sistemske zahte
 msgid "Usage: %s\n"
 msgstr "Uporaba: %s\n"
 
-#: ../src/ui/frames.c:1120
+#: ../src/ui/frames.c:1114
 msgid "Close Window"
 msgstr "Zapri okno"
 
 # G:1 K:1 O:0
-#: ../src/ui/frames.c:1123
+#: ../src/ui/frames.c:1117
 msgid "Window Menu"
 msgstr "Meni okna"
 
 # G:0 K:1 O:0
-#: ../src/ui/frames.c:1126
+#: ../src/ui/frames.c:1120
 msgid "Minimize Window"
 msgstr "Skrči okno"
 
-#: ../src/ui/frames.c:1129
+#: ../src/ui/frames.c:1123
 msgid "Maximize Window"
 msgstr "Razpni okno"
 
-#: ../src/ui/frames.c:1132
+#: ../src/ui/frames.c:1126
 msgid "Restore Window"
 msgstr "Obnovi okno"
 
 # G:2 K:0 O:0
-#: ../src/ui/frames.c:1135
+#: ../src/ui/frames.c:1129
 msgid "Roll Up Window"
 msgstr "Zavij okno"
 
-#: ../src/ui/frames.c:1138
+#: ../src/ui/frames.c:1132
 msgid "Unroll Window"
 msgstr "Odvij okno"
 
-#: ../src/ui/frames.c:1141
+#: ../src/ui/frames.c:1135
 msgid "Keep Window On Top"
 msgstr "Ohrani okno na vrhu"
 
-#: ../src/ui/frames.c:1144
+#: ../src/ui/frames.c:1138
 msgid "Remove Window From Top"
 msgstr "Odstrani okno z vrha"
 
 # G:1 K:0 O:0
-#: ../src/ui/frames.c:1147
+#: ../src/ui/frames.c:1141
 msgid "Always On Visible Workspace"
 msgstr "Vedno na vidni delovni površini"
 
-#: ../src/ui/frames.c:1150
+#: ../src/ui/frames.c:1144
 msgid "Put Window On Only One Workspace"
 msgstr "Postavi okno na le eno delovno površino"
 
@@ -727,24 +727,24 @@ msgid "_Close"
 msgstr "_Zapri"
 
 # G:1 K:0 O:0
-#: ../src/ui/menu.c:203
+#: ../src/ui/menu.c:205
 #, c-format
 msgid "Workspace %d%n"
 msgstr "Delovna površina %d%n"
 
 # G:1 K:0 O:0
-#: ../src/ui/menu.c:213
+#: ../src/ui/menu.c:215
 #, c-format
 msgid "Workspace 1_0"
 msgstr "Delovna površina 1_0"
 
 # G:2 K:0 O:0
-#: ../src/ui/menu.c:215
+#: ../src/ui/menu.c:217
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Delovna površina %s%d"
 
-#: ../src/ui/menu.c:395
+#: ../src/ui/menu.c:398
 msgid "Move to Another _Workspace"
 msgstr "Premakni na dru_go delovno površino"
 
@@ -753,7 +753,7 @@ msgstr "Premakni na dru_go delovno površino"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:104
+#: ../src/ui/metaaccellabel.c:80
 msgid "Shift"
 msgstr "Shift"
 
@@ -763,7 +763,7 @@ msgstr "Shift"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:110
+#: ../src/ui/metaaccellabel.c:86
 msgid "Ctrl"
 msgstr "Ctrl"
 
@@ -773,7 +773,7 @@ msgstr "Ctrl"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:116
+#: ../src/ui/metaaccellabel.c:92
 msgid "Alt"
 msgstr "Alt"
 
@@ -783,7 +783,7 @@ msgstr "Alt"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:122
+#: ../src/ui/metaaccellabel.c:98
 msgid "Meta"
 msgstr "Meta"
 
@@ -793,7 +793,7 @@ msgstr "Meta"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:128
+#: ../src/ui/metaaccellabel.c:104
 msgid "Super"
 msgstr "Super"
 
@@ -802,7 +802,7 @@ msgstr "Super"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:134
+#: ../src/ui/metaaccellabel.c:110
 msgid "Hyper"
 msgstr "Hiper"
 
@@ -812,7 +812,7 @@ msgstr "Hiper"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:140
+#: ../src/ui/metaaccellabel.c:116
 msgid "Mod2"
 msgstr "Mod2"
 
@@ -821,7 +821,7 @@ msgstr "Mod2"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:146
+#: ../src/ui/metaaccellabel.c:122
 msgid "Mod3"
 msgstr "Mod3"
 
@@ -831,7 +831,7 @@ msgstr "Mod3"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:152
+#: ../src/ui/metaaccellabel.c:128
 msgid "Mod4"
 msgstr "Mod4"
 
@@ -840,7 +840,7 @@ msgstr "Mod4"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:158
+#: ../src/ui/metaaccellabel.c:134
 msgid "Mod5"
 msgstr "Mod5"
 
@@ -1445,185 +1445,202 @@ msgstr "Ni mogoče najti veljavne datoteke za temo %s\n"
 msgid "Theme file %s did not contain a root <metacity_theme> element"
 msgstr "Datoteka teme %s ne vsebuje korenskega predmeta <metacity_theme>"
 
-#: ../src/ui/theme-viewer.c:75
-msgid "/_Windows"
-msgstr "/_Okna"
+#: ../src/ui/theme-viewer.c:99
+msgid "_Windows"
+msgstr "_Okna"
 
-#: ../src/ui/theme-viewer.c:76
-msgid "/Windows/tearoff"
-msgstr "/Okna/odpni"
+#: ../src/ui/theme-viewer.c:100
+msgid "_Dialog"
+msgstr "_Pogovorno okno"
 
-#: ../src/ui/theme-viewer.c:77
-msgid "/Windows/_Dialog"
-msgstr "/Okna/_Pogovorno okno"
+#: ../src/ui/theme-viewer.c:101
+msgid "_Modal dialog"
+msgstr "_Modalno okno"
 
-#: ../src/ui/theme-viewer.c:78
-msgid "/Windows/_Modal dialog"
-msgstr "/Okna/_Modalno okno"
+#: ../src/ui/theme-viewer.c:102
+msgid "_Utility"
+msgstr "_Pripomoček"
 
-#: ../src/ui/theme-viewer.c:79
-msgid "/Windows/_Utility"
-msgstr "/Okna/P_ripomoček"
+#: ../src/ui/theme-viewer.c:103
+msgid "_Splashscreen"
+msgstr "Pre_dstavitveno okno"
 
-#: ../src/ui/theme-viewer.c:80
-msgid "/Windows/_Splashscreen"
-msgstr "/Okna/Pre_dstavitveno okno"
+#: ../src/ui/theme-viewer.c:104
+msgid "_Top dock"
+msgstr "_Zgornje sidro"
 
-#: ../src/ui/theme-viewer.c:81
-msgid "/Windows/_Top dock"
-msgstr "/Okna/_Zgornje sidro"
+#: ../src/ui/theme-viewer.c:105
+msgid "_Bottom dock"
+msgstr "_Spodnje sidro"
 
-#: ../src/ui/theme-viewer.c:82
-msgid "/Windows/_Bottom dock"
-msgstr "/Okna/_Spodnje sidro"
+#: ../src/ui/theme-viewer.c:106
+msgid "_Left dock"
+msgstr "_Levo sidro"
 
-#: ../src/ui/theme-viewer.c:83
-msgid "/Windows/_Left dock"
-msgstr "/Okna/_Levo sidro"
+#: ../src/ui/theme-viewer.c:107
+msgid "_Right dock"
+msgstr "_Desno sidro"
 
-#: ../src/ui/theme-viewer.c:84
-msgid "/Windows/_Right dock"
-msgstr "/Okna/_Desno sidro"
+#: ../src/ui/theme-viewer.c:108
+msgid "_All docks"
+msgstr "_Vsa sidra"
 
-#: ../src/ui/theme-viewer.c:85
-msgid "/Windows/_All docks"
-msgstr "/Okna/_Vsa sidra"
+#: ../src/ui/theme-viewer.c:109
+msgid "Des_ktop"
+msgstr "_Namizje"
 
-#: ../src/ui/theme-viewer.c:86
-msgid "/Windows/Des_ktop"
-msgstr "/Okna/_Namizje"
+#: ../src/ui/theme-viewer.c:115
+msgid "Open another one of these windows"
+msgstr "Odpri drugo izmed teh oken"
 
-#: ../src/ui/theme-viewer.c:244
+#: ../src/ui/theme-viewer.c:117
+msgid "This is a demo button with an 'open' icon"
+msgstr "To je preizkusni gumb z ikono 'odpri'"
+
+#: ../src/ui/theme-viewer.c:119
+msgid "This is a demo button with a 'quit' icon"
+msgstr "To je preizkusni gumb z ikono 'izhod'"
+
+#: ../src/ui/theme-viewer.c:253
 msgid "This is a sample message in a sample dialog"
 msgstr "To je preizkusno sporočilo v pogovornem oknu"
 
-#: ../src/ui/theme-viewer.c:327
+#: ../src/ui/theme-viewer.c:336
 #, c-format
 msgid "Fake menu item %d\n"
 msgstr "Lažni predmet menija %d\n"
 
-#: ../src/ui/theme-viewer.c:361
+#: ../src/ui/theme-viewer.c:370
 msgid "Border-only window"
 msgstr "Okno le z okvirjem"
 
-#: ../src/ui/theme-viewer.c:363
+#: ../src/ui/theme-viewer.c:372
 msgid "Bar"
 msgstr "Vrstica"
 
-#: ../src/ui/theme-viewer.c:380
+#: ../src/ui/theme-viewer.c:389
 msgid "Normal Application Window"
 msgstr "Običajno okno programa"
 
-#: ../src/ui/theme-viewer.c:384
+#: ../src/ui/theme-viewer.c:393
 msgid "Dialog Box"
 msgstr "Pogovorno okno"
 
-#: ../src/ui/theme-viewer.c:388
+#: ../src/ui/theme-viewer.c:397
 msgid "Modal Dialog Box"
 msgstr "Modalno pogovorno okno"
 
-#: ../src/ui/theme-viewer.c:392
+#: ../src/ui/theme-viewer.c:401
 msgid "Utility Palette"
 msgstr "Paleta pripomočkov"
 
-#: ../src/ui/theme-viewer.c:396
+#: ../src/ui/theme-viewer.c:405
 msgid "Torn-off Menu"
 msgstr "Odtrgan meni"
 
-#: ../src/ui/theme-viewer.c:400
+#: ../src/ui/theme-viewer.c:409
 msgid "Border"
 msgstr "Obroba"
 
-#: ../src/ui/theme-viewer.c:728
+#: ../src/ui/theme-viewer.c:737
 #, c-format
 msgid "Button layout test %d"
 msgstr "Preizkus razporeditve gumbov %d"
 
-#: ../src/ui/theme-viewer.c:757
+#: ../src/ui/theme-viewer.c:766
 #, c-format
 msgid "%g milliseconds to draw one window frame"
 msgstr "%g milisekund za izris ene sličice okna"
 
-#: ../src/ui/theme-viewer.c:800
+#: ../src/ui/theme-viewer.c:810
 #, c-format
 msgid "Usage: metacity-theme-viewer [THEMENAME]\n"
 msgstr "Uporaba: metacity-theme-viewer [IMETEME]\n"
 
-#: ../src/ui/theme-viewer.c:807
+#: ../src/ui/theme-viewer.c:817
 #, c-format
 msgid "Error loading theme: %s\n"
 msgstr "Napaka med nalaganjem teme: %s\n"
 
-#: ../src/ui/theme-viewer.c:813
+#: ../src/ui/theme-viewer.c:823
 #, c-format
 msgid "Loaded theme \"%s\" in %g seconds\n"
 msgstr "Tema \"%s\" je bila naložena v %g sekundah\n"
 
-#: ../src/ui/theme-viewer.c:854
+#: ../src/ui/theme-viewer.c:866
 msgid "Normal Title Font"
 msgstr "Običajna pisava naziva"
 
-#: ../src/ui/theme-viewer.c:860
+#: ../src/ui/theme-viewer.c:872
 msgid "Small Title Font"
 msgstr "Majhna pisava naziva"
 
-#: ../src/ui/theme-viewer.c:866
+#: ../src/ui/theme-viewer.c:878
 msgid "Large Title Font"
 msgstr "Velika pisava naziva"
 
-#: ../src/ui/theme-viewer.c:871
+#: ../src/ui/theme-viewer.c:883
 msgid "Button Layouts"
 msgstr "Razpored gumbov"
 
-#: ../src/ui/theme-viewer.c:876
+#: ../src/ui/theme-viewer.c:888
 msgid "Benchmark"
 msgstr "Primerjalni preizkus"
 
-#: ../src/ui/theme-viewer.c:923
+#: ../src/ui/theme-viewer.c:935
 msgid "Window Title Goes Here"
 msgstr "Tukaj je naziv okna"
 
-#: ../src/ui/theme-viewer.c:1027
+#: ../src/ui/theme-viewer.c:1039
 #, c-format
 msgid "Drew %d frames in %g client-side seconds (%g milliseconds per frame) and %g seconds wall clock time including X server resources (%g milliseconds per frame)\n"
 msgstr "Izrisanih je %d sličic v %g sekundah na strani odjemalca (%g milisekund na sličico) in %g sekund v času stenske ure, upoštevajoč sredstva strežnika X (%g milisekund na sličico)\n"
 
-#: ../src/ui/theme-viewer.c:1246
+#: ../src/ui/theme-viewer.c:1258
 msgid "position expression test returned TRUE but set error"
 msgstr "preizkus izjave položaja je vrnil logični PRAV, vendar je nastavil napako"
 
-#: ../src/ui/theme-viewer.c:1248
+#: ../src/ui/theme-viewer.c:1260
 msgid "position expression test returned FALSE but didn't set error"
 msgstr "preizkus izjave položaja je vrnil logični NAPAK, vendar ni nastavil napake"
 
-#: ../src/ui/theme-viewer.c:1252
+#: ../src/ui/theme-viewer.c:1264
 msgid "Error was expected but none given"
 msgstr "Pričakovana je bila napaka, vendar do nje ni prišlo"
 
-#: ../src/ui/theme-viewer.c:1254
+#: ../src/ui/theme-viewer.c:1266
 #, c-format
 msgid "Error %d was expected but %d given"
 msgstr "Pričakovana je bila napaka %d, vrnjena pa je bila %d"
 
-#: ../src/ui/theme-viewer.c:1260
+#: ../src/ui/theme-viewer.c:1272
 #, c-format
 msgid "Error not expected but one was returned: %s"
 msgstr "Napaka ni bila pričakovana, vendar je bila kljub temu vrnjena: %s"
 
-#: ../src/ui/theme-viewer.c:1264
+#: ../src/ui/theme-viewer.c:1276
 #, c-format
 msgid "x value was %d, %d was expected"
 msgstr "vrednost x je %d, pričakovana pa je vrednost %d"
 
-#: ../src/ui/theme-viewer.c:1267
+#: ../src/ui/theme-viewer.c:1279
 #, c-format
 msgid "y value was %d, %d was expected"
 msgstr "vrednost y je %d, pričakovana pa je vrednost %d"
 
-#: ../src/ui/theme-viewer.c:1332
+#: ../src/ui/theme-viewer.c:1344
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr "%d izjav koordinat razčlenjenih v %g sekundah (%g sekund v povprečju)\n"
+
+#~ msgid "/Windows/tearoff"
+#~ msgstr "/Okna/odpni"
+
+#~ msgid "/Windows/_Dialog"
+#~ msgstr "/Okna/_Pogovorno okno"
+
+#~ msgid "/Windows/_Modal dialog"
+#~ msgstr "/Okna/_Modalno okno"
 
 #~ msgid "Launchers"
 #~ msgstr "Zaganjalniki"
