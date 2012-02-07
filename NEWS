@@ -1,3 +1,41 @@
+Version 2.34.2
+==============
+
+ - Port preferences to GSettings (Florian Müllner, Milan Bouchet-Valat, Jason Siefken)
+ - Remove deprecated GTK+ symbols and use accessor functions (Florian Müllner)
+ - Include the default window icon (Matthias Clasen)
+ - Various small build system changes (Javier Jardón, Piotr Drąg, Florian Müllner, Rico Tzschichholz)
+
+Translations:
+    Abduxukur Abdurixit (ug)
+    Kjartan Maraas (nb)
+    Theppitak Karoonboonyanan (th)
+    Ihar Hrachyshka (be)
+    Aurimas Černius (lt)
+    Daniel Mustieles (es)
+    Jiro Matsuzawa (ja)
+    Fabrício Godoy (pt_BR)
+    krishnababu k (te)
+    OKANO Takayoshi (ja)
+    Mario Blättermann (de)
+    Bruce Cowan (en_GB)
+    Mattias Põldaru (et)
+    Fran Diéguez (gl)
+    Marek Černocký (cs)
+    Gil Forcada (ca)
+    Piotr Drąg (pl)
+    Matej Urbančič (sl)
+    Bruno Brouard (fr)
+    Daniel Nylander (sv)
+    Praveen Illa (te)
+    Wouter Bolsterlee (nl)
+    Antonio Fernandes C. Neto (pt_BR)
+    Yaron Shahrabani (he)
+    Xandru Armesto (ast)
+    Alexander Shopov (bg)
+    Chao-Hsiung Liao (zh_HK, zh_TW)
+
+==============
 Version 2.34.1
 ==============
 
