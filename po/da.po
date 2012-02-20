@@ -1,12 +1,12 @@
 # Danish translation of Metacity.
-# Copyright (C) 2002-2009, 2011
+# Copyright (C) 2002-2009, 2011-12.
 # This file is distributed under the same license as the metacity package.
 # Kjartan Maraas <kmaraas@gnome.org>, 2002
 # Keld simonsen <keld@dkuug.dk>, 2002
 # Ole Laursen <olau@hardworking.dk>, 2002.
 # Martin Willemoes Hansen <mwh@sysrq.dk>, 2004, 05.
 # Lasse Bang Mikkelsen <lbm@fatalerror.dk>, 2006.
-# Ask Hjorth Larsen <asklarsen@gmail.com>, 2007, 09, 11.
+# Ask Hjorth Larsen <asklarsen@gmail.com>, 2007, 09, 11, 12.
 # Kenneth Nielsen <k.nielsen81@gmail.com>, 2008.
 #
 # Konventioner:
@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-02 22:36+0200\n"
-"PO-Revision-Date: 2011-04-02 15:43+0200\n"
+"POT-Creation-Date: 2012-02-20 22:36+0100\n"
+"PO-Revision-Date: 2012-02-18 00:11+0100\n"
 "Last-Translator: Ask Hjorth Larsen <asklarsen@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -26,27 +26,183 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/50-metacity-launchers.xml.in.h:1
-msgid "Launchers"
-msgstr "Programstartere"
-
 #: ../src/50-metacity-navigation.xml.in.h:1
+msgid "Hide all normal windows"
+msgstr "Skjul alle normale vinduer"
+
+#: ../src/50-metacity-navigation.xml.in.h:2
+msgid "Move to workspace above"
+msgstr "Flyt til arbejdsområdet over"
+
+#: ../src/50-metacity-navigation.xml.in.h:3
+msgid "Move to workspace below"
+msgstr "Flyt til arbejdsområdet under"
+
+#: ../src/50-metacity-navigation.xml.in.h:4
+msgid "Move to workspace left"
+msgstr "Flyt til arbejdsområdet til venstre"
+
+#: ../src/50-metacity-navigation.xml.in.h:5
+msgid "Move to workspace right"
+msgstr "Flyt til arbejdsområdet til højre"
+
+#: ../src/50-metacity-navigation.xml.in.h:6
+msgid "Move window one workspace down"
+msgstr "Flyt vindue et arbejdsområde ned"
+
+#: ../src/50-metacity-navigation.xml.in.h:7
+msgid "Move window one workspace to the left"
+msgstr "Flyt vindue et arbejdsområde til venstre"
+
+#: ../src/50-metacity-navigation.xml.in.h:8
+msgid "Move window one workspace to the right"
+msgstr "Flyt vindue et arbejdsområde til højre"
+
+#: ../src/50-metacity-navigation.xml.in.h:9
+msgid "Move window one workspace up"
+msgstr "Flyt vindue et arbejdsområde op"
+
+#: ../src/50-metacity-navigation.xml.in.h:10
+msgid "Move window to workspace 1"
+msgstr "Flyt vindue til arbejdsområde 1"
+
+#: ../src/50-metacity-navigation.xml.in.h:11
+msgid "Move window to workspace 2"
+msgstr "Flyt vindue til arbejdsområde 2"
+
+#: ../src/50-metacity-navigation.xml.in.h:12
+msgid "Move window to workspace 3"
+msgstr "Flyt vindue til arbejdsområde 3"
+
+#: ../src/50-metacity-navigation.xml.in.h:13
+msgid "Move window to workspace 4"
+msgstr "Flyt vindue til arbejdsområde 4"
+
+#: ../src/50-metacity-navigation.xml.in.h:14
 msgid "Navigation"
 msgstr "Navigation"
 
-#: ../src/50-metacity-screenshot.xml.in.h:1
-msgid "Screenshots"
-msgstr "Skærmbilleder"
+#: ../src/50-metacity-navigation.xml.in.h:15
+msgid "Switch applications"
+msgstr "Skift mellem programmer"
+
+#: ../src/50-metacity-navigation.xml.in.h:16
+msgid "Switch system controls"
+msgstr "Skift mellem systemkontroller"
+
+#: ../src/50-metacity-navigation.xml.in.h:17
+msgid "Switch system controls directly"
+msgstr "Skift direkte mellem systemkontroller"
+
+#: ../src/50-metacity-navigation.xml.in.h:18
+msgid "Switch to workspace 1"
+msgstr "Skift til arbejdsområde 1"
+
+#: ../src/50-metacity-navigation.xml.in.h:19
+msgid "Switch to workspace 2"
+msgstr "Skift til arbejdsområde 2"
+
+#: ../src/50-metacity-navigation.xml.in.h:20
+msgid "Switch to workspace 3"
+msgstr "Skift til arbejdsområde 3"
+
+#: ../src/50-metacity-navigation.xml.in.h:21
+msgid "Switch to workspace 4"
+msgstr "Skift til arbejdsområde 4"
+
+#: ../src/50-metacity-navigation.xml.in.h:22
+msgid "Switch windows directly"
+msgstr "Skift direkte mellem vinduer"
+
+#: ../src/50-metacity-navigation.xml.in.h:23
+msgid "Switch windows of an app directly"
+msgstr "Skift direkte mellem vinduer i et program"
+
+#: ../src/50-metacity-navigation.xml.in.h:24
+msgid "Switch windows of an application"
+msgstr "Skift mellem vinduer i et program"
 
 #: ../src/50-metacity-system.xml.in.h:1
+msgid "Show the activities overview"
+msgstr "Vis aktivitetsoversigten"
+
+#: ../src/50-metacity-system.xml.in.h:2
+msgid "Show the run command prompt"
+msgstr "Vis kør-kommandoprompten"
+
+#: ../src/50-metacity-system.xml.in.h:3
 msgid "System"
 msgstr "System"
 
 #: ../src/50-metacity-windows.xml.in.h:1
+msgid "Activate the window menu"
+msgstr "Aktivér vinduesmenuen"
+
+#: ../src/50-metacity-windows.xml.in.h:2
+msgid "Close window"
+msgstr "Luk vindue"
+
+#: ../src/50-metacity-windows.xml.in.h:3
+msgid "Lower window below other windows"
+msgstr "Sænk vindue under andre vinduer"
+
+#: ../src/50-metacity-windows.xml.in.h:4
+msgid "Maximize window"
+msgstr "Maksimér vindue"
+
+#: ../src/50-metacity-windows.xml.in.h:5
+msgid "Maximize window horizontally"
+msgstr "Maksimér et vindue vandret"
+
+#: ../src/50-metacity-windows.xml.in.h:6
+msgid "Maximize window vertically"
+msgstr "Maksimér et vindue lodret"
+
+#: ../src/50-metacity-windows.xml.in.h:7
+msgid "Minimize window"
+msgstr "Minimér vindue"
+
+#: ../src/50-metacity-windows.xml.in.h:8
+msgid "Move window"
+msgstr "Flyt vindue"
+
+#: ../src/50-metacity-windows.xml.in.h:9
+msgid "Raise window above other windows"
+msgstr "Hæv vindue over andre vinduer"
+
+#: ../src/50-metacity-windows.xml.in.h:10
+msgid "Raise window if covered, otherwise lower it"
+msgstr "Hæv vindue hvis det er dækket, ellers sænk det"
+
+#: ../src/50-metacity-windows.xml.in.h:11
+msgid "Resize window"
+msgstr "Ændr størrelsen på vindue"
+
+#: ../src/50-metacity-windows.xml.in.h:12
+msgid "Restore window"
+msgstr "Gendan vindue"
+
+#: ../src/50-metacity-windows.xml.in.h:13
+msgid "Toggle fullscreen mode"
+msgstr "Skift fuldskærmstilstand"
+
+#: ../src/50-metacity-windows.xml.in.h:14
+msgid "Toggle maximization state"
+msgstr "Skift maksimeringstilstand"
+
+#: ../src/50-metacity-windows.xml.in.h:15
+msgid "Toggle shaded state"
+msgstr "Skift oprullethed"
+
+#: ../src/50-metacity-windows.xml.in.h:16
+msgid "Toggle window on all workspaces or one"
+msgstr "Skift mellem visning af vindue på alle eller kun et arbejdsområde"
+
+#: ../src/50-metacity-windows.xml.in.h:17
 msgid "Windows"
 msgstr "Vinduer"
 
-#: ../src/core/bell.c:299
+#: ../src/core/bell.c:296
 msgid "Bell event"
 msgstr "Klokkebegivenhed"
 
@@ -115,30 +271,6 @@ msgid ""
 "binding\n"
 msgstr ""
 "Et andet program bruger allerede nøglen %s med modifikatorer %x som binding\n"
-
-#. Displayed when a keybinding which is
-#. * supposed to launch a program fails.
-#.
-#: ../src/core/keybindings.c:2343
-#, c-format
-msgid ""
-"There was an error running <tt>%s</tt>:\n"
-"\n"
-"%s"
-msgstr ""
-"Der opstod en fejl ved kørsel af <tt>%s</tt>:\n"
-"\n"
-"%s"
-
-#: ../src/core/keybindings.c:2432
-#, c-format
-msgid "No command %d has been defined.\n"
-msgstr "Ingen kommando %d er blevet defineret.\n"
-
-#: ../src/core/keybindings.c:3386
-#, c-format
-msgid "No terminal command has been defined.\n"
-msgstr "Ingen terminal-kommando er blevet defineret.\n"
 
 #: ../src/core/main.c:131
 #, c-format
@@ -216,35 +348,7 @@ msgstr ""
 msgid "Failed to restart: %s\n"
 msgstr "Kunne ikke genstarte: %s\n"
 
-#.
-#. * We found it, but it was invalid.  Complain.
-#. *
-#. * FIXME: This replicates the original behaviour, but in the future
-#. * we might consider reverting invalid keys to their original values.
-#. * (We know the old value, so we can look up a suitable string in
-#. * the symtab.)
-#. *
-#. * (Empty comment follows so the translators don't see this.)
-#.
-#.
-#: ../src/core/prefs.c:508 ../src/core/prefs.c:663
-#, c-format
-msgid "GConf key '%s' is set to an invalid value\n"
-msgstr "GConf-nøglen \"%s\" er sat til en ugyldig værdi\n"
-
-#: ../src/core/prefs.c:589 ../src/core/prefs.c:832
-#, c-format
-msgid "%d stored in GConf key %s is out of range %d to %d\n"
-msgstr "%d lagret i GConf-nøgle %s er uden for intervallet %d til %d\n"
-
-#: ../src/core/prefs.c:633 ../src/core/prefs.c:710 ../src/core/prefs.c:758
-#: ../src/core/prefs.c:822 ../src/core/prefs.c:1115 ../src/core/prefs.c:1131
-#: ../src/core/prefs.c:1148 ../src/core/prefs.c:1164
-#, c-format
-msgid "GConf key \"%s\" is set to an invalid type\n"
-msgstr "GConf-nøglen \"%s\" er sat til en ugyldig type\n"
-
-#: ../src/core/prefs.c:1234
+#: ../src/core/prefs.c:880
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -252,13 +356,13 @@ msgstr ""
 "Omgåelser for ødelagte programmer deaktiveret. Nogle programmer opfører sig "
 "måske ikke korrekt.\n"
 
-#: ../src/core/prefs.c:1305
+#: ../src/core/prefs.c:949
 #, c-format
-msgid "Could not parse font description \"%s\" from GConf key %s\n"
+msgid "Could not parse font description \"%s\" from GSettings key %s\n"
 msgstr ""
-"Kunne ikke fortolke skrifttypebeskrivelsen \"%s\" fra GConf-nøglen %s\n"
+"Kunne ikke fortolke skrifttypebeskrivelsen \"%s\" fra GSettings-nøglen %s\n"
 
-#: ../src/core/prefs.c:1367
+#: ../src/core/prefs.c:1015
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -267,17 +371,7 @@ msgstr ""
 "\"%s\" fundet i konfigurationsdatabasen er ikke en gyldig værdi som "
 "museknapsmodifikation\n"
 
-#: ../src/core/prefs.c:1788
-#, c-format
-msgid "Error setting number of workspaces to %d: %s\n"
-msgstr "Fejl under sætning af antallet af arbejdsområder til %d: %s\n"
-
-#: ../src/core/prefs.c:1959 ../src/core/prefs.c:2461
-#, c-format
-msgid "Workspace %d"
-msgstr "Arbejdsområde %d"
-
-#: ../src/core/prefs.c:1988 ../src/core/prefs.c:2166
+#: ../src/core/prefs.c:1494
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -286,15 +380,10 @@ msgstr ""
 "\"%s\" fundet i konfigurationsdatabasen er ikke en gyldig værdi for "
 "tastebindingen \"%s\"\n"
 
-#: ../src/core/prefs.c:2542
+#: ../src/core/prefs.c:1601
 #, c-format
-msgid "Error setting name for workspace %d to \"%s\": %s\n"
-msgstr "Fejl under sætning af navnet for arbejdsområde %d til \"%s\": %s\n"
-
-#: ../src/core/prefs.c:2746
-#, c-format
-msgid "Error setting compositor status: %s\n"
-msgstr "Fejl ved indstilling af status for kompositor: %s\n"
+msgid "Workspace %d"
+msgstr "Arbejdsområde %d"
 
 #: ../src/core/screen.c:357
 #, c-format
@@ -327,45 +416,6 @@ msgstr "Skærm %d på terminal \"%s\" har allerede en vindueshåndtering\n"
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "Kunne ikke frigive skærm %d på terminal \"%s\"\n"
-
-#. Translators: Please don't translate "Control", "Shift", etc, since these
-#. * are hardcoded (in gtk/gtkaccelgroup.c; it's not metacity's fault).
-#. * "disabled" must also stay as it is.
-#.
-#: ../src/core/schema-bindings.c:169
-msgid ""
-"The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
-"\n"
-"The parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action."
-msgstr ""
-"Formatet ser ud som \"<Control>a\" eller \"<Shift><Alt>F1\".\n"
-"\n"
-"Fortolkeren er ikke kræsen og tillader både store og små bogstaver, samt "
-"forkortelser som \"<Ctl>\" og \"<Ctrl>\". Hvis du sætter indstillingen til "
-"den specielle tekststreng \"disabled\", vil der ikke være nogen "
-"tastaturgenvej til denne handling."
-
-#: ../src/core/schema-bindings.c:177
-msgid ""
-"The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
-"\n"
-"The parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action.\n"
-"\n"
-"This keybinding may be reversed by holding down the \"shift\" key; "
-"therefore, \"shift\" cannot be one of the keys it uses."
-msgstr ""
-"Formatet ser ud som \"<Control>a\" eller \"<Shift><Alt>F1\".\n"
-"\n"
-"Fortolkeren er ikke kræsen og tillader både store og små bogstaver, samt "
-"forkortelser som \"<Ctl>\" og \"<Ctrl>\". Hvis du sætter indstillingen til "
-"den specielle tekststreng \"disabled\", vil der ikke være nogen "
-"tastaturgenvej til denne handling."
 
 #: ../src/core/session.c:842 ../src/core/session.c:849
 #, c-format
@@ -459,7 +509,6 @@ msgid "Window manager error: "
 msgstr "Vindueshåndteringsfejl: "
 
 #. Translators: This is the title used on dialog boxes
-#. eof all-keybindings.h
 #: ../src/core/util.c:570 ../src/metacity.desktop.in.h:1
 #: ../src/metacity-wm.desktop.in.h:1
 msgid "Metacity"
@@ -558,443 +607,15 @@ msgstr ""
 "Egenskaben %s for vinduet 0x%lx indeholdt ugyldig UTF-8 for element %d i "
 "listen\n"
 
-#: ../src/include/all-keybindings.h:88
-msgid "Switch to workspace 1"
-msgstr "Skift til arbejdsområde 1"
-
-#: ../src/include/all-keybindings.h:90
-msgid "Switch to workspace 2"
-msgstr "Skift til arbejdsområde 2"
-
-#: ../src/include/all-keybindings.h:92
-msgid "Switch to workspace 3"
-msgstr "Skift til arbejdsområde 3"
-
-#: ../src/include/all-keybindings.h:94
-msgid "Switch to workspace 4"
-msgstr "Skift til arbejdsområde 4"
-
-#: ../src/include/all-keybindings.h:96
-msgid "Switch to workspace 5"
-msgstr "Skift til arbejdsområde 5"
-
-#: ../src/include/all-keybindings.h:98
-msgid "Switch to workspace 6"
-msgstr "Skift til arbejdsområde 6"
-
-#: ../src/include/all-keybindings.h:100
-msgid "Switch to workspace 7"
-msgstr "Skift til arbejdsområde 7"
-
-#: ../src/include/all-keybindings.h:102
-msgid "Switch to workspace 8"
-msgstr "Skift til arbejdsområde 8"
-
-#: ../src/include/all-keybindings.h:104
-msgid "Switch to workspace 9"
-msgstr "Skift til arbejdsområde 9"
-
-#: ../src/include/all-keybindings.h:106
-msgid "Switch to workspace 10"
-msgstr "Skift til arbejdsområde 10"
-
-#: ../src/include/all-keybindings.h:108
-msgid "Switch to workspace 11"
-msgstr "Skift til arbejdsområde 11"
-
-#: ../src/include/all-keybindings.h:110
-msgid "Switch to workspace 12"
-msgstr "Skift til arbejdsområde 12"
-
-#: ../src/include/all-keybindings.h:122
-msgid "Move to workspace left"
-msgstr "Flyt til arbejdsområdet til venstre"
-
-#: ../src/include/all-keybindings.h:126
-msgid "Move to workspace right"
-msgstr "Flyt til arbejdsområdet til højre"
-
-#: ../src/include/all-keybindings.h:130
-msgid "Move to workspace above"
-msgstr "Flyt til arbejdsområdet over"
-
-#: ../src/include/all-keybindings.h:134
-msgid "Move to workspace below"
-msgstr "Flyt til arbejdsområdet under"
-
-#: ../src/include/all-keybindings.h:150
-msgid "Switch windows of an application"
-msgstr "Skift mellem vinduer i et program"
-
-#: ../src/include/all-keybindings.h:153
-msgid "Reverse switch windows of an application"
-msgstr "Skift mellem vinduer i et program omvendt"
-
-#: ../src/include/all-keybindings.h:156
-msgid "Switch applications"
-msgstr "Skift mellem programmer"
-
-# Alle de her "shift something something" må være når man navigerer mellem flere vinduer/programmer/bjælker osv.
-#: ../src/include/all-keybindings.h:159
-msgid "Reverse switch applications"
-msgstr "Skift mellem programmer omvendt"
-
-#: ../src/include/all-keybindings.h:162
-msgid "Switch system controls"
-msgstr "Skift mellem systemkontroller"
-
-#: ../src/include/all-keybindings.h:165
-msgid "Reverse switch system controls"
-msgstr "Skift mellem systemkontroller omvendt"
-
-#: ../src/include/all-keybindings.h:169
-msgid "Switch windows of an app directly"
-msgstr "Skift direkte mellem vinduer i et program"
-
-#: ../src/include/all-keybindings.h:172
-msgid "Reverse switch windows of an app directly"
-msgstr "Skift direkte mellem vinduer i et program omvendt"
-
-#: ../src/include/all-keybindings.h:175
-msgid "Switch windows directly"
-msgstr "Skift direkte mellem vinduer"
-
-#: ../src/include/all-keybindings.h:178
-msgid "Reverse switch windows directly"
-msgstr "Skift direkte mellem vinduer omvendt"
-
-#: ../src/include/all-keybindings.h:181
-msgid "Switch system controls directly"
-msgstr "Skift direkte mellem systemkontroller"
-
-#: ../src/include/all-keybindings.h:184
-msgid "Reverse switch system controls directly"
-msgstr "Skift direkte mellem systemkontroller omvendt"
-
-#: ../src/include/all-keybindings.h:189
-msgid "Hide all normal windows"
-msgstr "Skjul alle normale vinduer"
-
-#: ../src/include/all-keybindings.h:192
-msgid "Show the activities overview"
-msgstr "Vis aktivitetsoversigten"
-
-#: ../src/include/all-keybindings.h:195
-msgid "Show the run command prompt"
-msgstr "Vis kør-kommandoprompten"
-
-#: ../src/include/all-keybindings.h:236
-msgid "Take a screenshot"
-msgstr "Gem skærmbillede"
-
-#: ../src/include/all-keybindings.h:238
-msgid "Take a screenshot of a window"
-msgstr "Gem skærmbillede for et vindue"
-
-#: ../src/include/all-keybindings.h:240
-msgid "Launch Terminal"
-msgstr "Start en terminal"
-
-#: ../src/include/all-keybindings.h:255
-msgid "Activate the window menu"
-msgstr "Aktivér vinduesmenuen"
-
-#: ../src/include/all-keybindings.h:258
-msgid "Toggle fullscreen mode"
-msgstr "Skift fuldskærmstilstand"
-
-#: ../src/include/all-keybindings.h:260
-msgid "Toggle maximization state"
-msgstr "Skift maksimeringstilstand"
-
-#: ../src/include/all-keybindings.h:262
-msgid "Toggle window always appearing on top"
-msgstr "Aktivér/deaktiver vindue altid øverst"
-
-#: ../src/include/all-keybindings.h:264
-msgid "Maximize window"
-msgstr "Maksimér vindue"
-
-#: ../src/include/all-keybindings.h:266
-msgid "Restore window"
-msgstr "Gendan vindue"
-
-#: ../src/include/all-keybindings.h:268
-msgid "Toggle shaded state"
-msgstr "Skift oprullethed"
-
-#: ../src/include/all-keybindings.h:270
-msgid "Minimize window"
-msgstr "Minimér vindue"
-
-#: ../src/include/all-keybindings.h:272
-msgid "Close window"
-msgstr "Luk vindue"
-
-#: ../src/include/all-keybindings.h:274
-msgid "Move window"
-msgstr "Flyt vindue"
-
-#: ../src/include/all-keybindings.h:276
-msgid "Resize window"
-msgstr "Ændr størrelsen på vindue"
-
-#: ../src/include/all-keybindings.h:279
-msgid "Toggle window on all workspaces or one"
-msgstr "Skift mellem visning af vindue på alle eller kun et arbejdsområde"
-
-#: ../src/include/all-keybindings.h:283
-msgid "Move window to workspace 1"
-msgstr "Flyt vindue til arbejdsområde 1"
-
-#: ../src/include/all-keybindings.h:286
-msgid "Move window to workspace 2"
-msgstr "Flyt vindue til arbejdsområde 2"
-
-#: ../src/include/all-keybindings.h:289
-msgid "Move window to workspace 3"
-msgstr "Flyt vindue til arbejdsområde 3"
-
-#: ../src/include/all-keybindings.h:292
-msgid "Move window to workspace 4"
-msgstr "Flyt vindue til arbejdsområde 4"
-
-#: ../src/include/all-keybindings.h:295
-msgid "Move window to workspace 5"
-msgstr "Flyt vindue til arbejdsområde 5"
-
-#: ../src/include/all-keybindings.h:298
-msgid "Move window to workspace 6"
-msgstr "Flyt vindue til arbejdsområde 6"
-
-#: ../src/include/all-keybindings.h:301
-msgid "Move window to workspace 7"
-msgstr "Flyt vindue til arbejdsområde 7"
-
-#: ../src/include/all-keybindings.h:304
-msgid "Move window to workspace 8"
-msgstr "Flyt vindue til arbejdsområde 8"
-
-#: ../src/include/all-keybindings.h:307
-msgid "Move window to workspace 9"
-msgstr "Flyt vindue til arbejdsområde 9"
-
-#: ../src/include/all-keybindings.h:310
-msgid "Move window to workspace 10"
-msgstr "Flyt vindue til arbejdsområde 10"
-
-#: ../src/include/all-keybindings.h:313
-msgid "Move window to workspace 11"
-msgstr "Flyt vindue til arbejdsområde 11"
-
-#: ../src/include/all-keybindings.h:316
-msgid "Move window to workspace 12"
-msgstr "Flyt vindue til arbejdsområde 12"
-
-#: ../src/include/all-keybindings.h:328
-msgid "Move window one workspace to the left"
-msgstr "Flyt vindue et arbejdsområde til venstre"
-
-#: ../src/include/all-keybindings.h:331
-msgid "Move window one workspace to the right"
-msgstr "Flyt vindue et arbejdsområde til højre"
-
-#: ../src/include/all-keybindings.h:334
-msgid "Move window one workspace up"
-msgstr "Flyt vindue et arbejdsområde op"
-
-#: ../src/include/all-keybindings.h:337
-msgid "Move window one workspace down"
-msgstr "Flyt vindue et arbejdsområde ned"
-
-#: ../src/include/all-keybindings.h:340
-msgid "Raise window if covered, otherwise lower it"
-msgstr "Hæv vindue hvis det er dækket, ellers sænk det"
-
-#: ../src/include/all-keybindings.h:342
-msgid "Raise window above other windows"
-msgstr "Hæv vindue over andre vinduer"
-
-#: ../src/include/all-keybindings.h:344
-msgid "Lower window below other windows"
-msgstr "Sænk vindue under andre vinduer"
-
-#: ../src/include/all-keybindings.h:348
-msgid "Maximize window vertically"
-msgstr "Maksimér et vindue lodret"
-
-#: ../src/include/all-keybindings.h:352
-msgid "Maximize window horizontally"
-msgstr "Maksimér et vindue vandret"
-
-#: ../src/include/all-keybindings.h:356
-msgid "Move window to top left corner"
-msgstr "Flyt vindue til øverste venstre hjørne"
-
-#: ../src/include/all-keybindings.h:359
-msgid "Move window to top right corner"
-msgstr "Flyt vindue til øverste højre hjørne"
-
-#: ../src/include/all-keybindings.h:362
-msgid "Move window to bottom left corner"
-msgstr "Flyt vindue til nederste venstre hjørne"
-
-#: ../src/include/all-keybindings.h:365
-msgid "Move window to bottom right corner"
-msgstr "Flyt vindue til nederste højre hjørne"
-
-#: ../src/include/all-keybindings.h:369
-msgid "Move window to top edge of screen"
-msgstr "Flyt vindue til skærmens overkant"
-
-#: ../src/include/all-keybindings.h:372
-msgid "Move window to bottom edge of screen"
-msgstr "Flyt vindue til skærmens underkant"
-
-#: ../src/include/all-keybindings.h:375
-msgid "Move window to right side of screen"
-msgstr "Flyt vindue til skærmens højre side"
-
-#: ../src/include/all-keybindings.h:378
-msgid "Move window to left side of screen"
-msgstr "Flyt vindue til skærmens venstre side"
-
-#: ../src/include/all-keybindings.h:381
-msgid "Move window to center of screen"
-msgstr "Flyt vindue til skærmens centrum"
-
-#: ../src/metacity.schemas.in.in.h:1
-msgid "(Not implemented) Navigation works in terms of applications not windows"
-msgstr "(Ikke implementeret) Navigatering virker med programmer ikke vinduer"
-
-#: ../src/metacity.schemas.in.in.h:2
-msgid ""
-"A font description string describing a font for window titlebars. The size "
-"from the description will only be used if the titlebar_font_size option is "
-"set to 0. Also, this option is disabled if the titlebar_uses_desktop_font "
-"option is set to true."
-msgstr ""
-"En skrifttypebeskrivelsesstreng der beskriver skrifttypen for "
-"vinduestitellinjer. Størrelsen fra beskrivelsen vil dog kun blive brugt hvis "
-"indstillingen \"titlebar_font_size\" er sat til 0. Desuden er denne "
-"indstilling deaktiveret hvis indstillingen \"titlebar_uses_desktop_font\" er "
-"sat til \"true\"."
-
-#: ../src/metacity.schemas.in.in.h:3
-msgid "Action on title bar double-click"
-msgstr "Handling ved dobbeltklik på titellinjen"
-
-#: ../src/metacity.schemas.in.in.h:4
-msgid "Action on title bar middle-click"
-msgstr "Handling ved midterklik på titellinjen"
-
-#: ../src/metacity.schemas.in.in.h:5
-msgid "Action on title bar right-click"
-msgstr "Handling ved højreklik på titellinjen"
-
-#: ../src/metacity.schemas.in.in.h:6
-msgid "Arrangement of buttons on the titlebar"
-msgstr "Arrangeringen af knapper på titellinjen"
-
-#: ../src/metacity.schemas.in.in.h:7
-msgid ""
-"Arrangement of buttons on the titlebar. The value should be a string, such "
-"as \"menu:minimize,maximize,spacer,close\"; the colon separates the left "
-"corner of the window from the right corner, and the button names are comma-"
-"separated. Duplicate buttons are not allowed. Unknown button names are "
-"silently ignored so that buttons can be added in future metacity versions "
-"without breaking older versions. A special spacer tag can be used to insert "
-"some space between two adjacent buttons."
-msgstr ""
-"Arrangeringen af knapper på titellinjen. Værdien skal være en tekststreng, "
-"såsom \"menu:minimize,maximize,spacer,close\"; kolon adskiller venstre "
-"hjørne fra højre hjørne, og knapnavnene er kommaadskilte. Hver knap kan kun "
-"optræde én gang. Ukendte knapnavne ignoreres uden advarsel sådan at "
-"yderligere knapper kan tilføjes i senere versioner af Metacity uden at "
-"ødelægge ældre versioner. Et specielt skillemærke \"spacer\" kan bruges til "
-"at indsætte noget plads mellem to knapper."
-
-#: ../src/metacity.schemas.in.in.h:8
-msgid "Automatically raises the focused window"
-msgstr "Hæv automatisk det fokuserede vindue"
-
-#: ../src/metacity.schemas.in.in.h:9
-msgid ""
-"Clicking a window while holding down this modifier key will move the window "
-"(left click), resize the window (middle click), or show the window menu "
-"(right click). The middle and right click operations may be swapped using "
-"the \"resize_with_right_button\" key. Modifier is expressed as \"&lt;Alt&gt;"
-"\" or \"&lt;Super&gt;\" for example."
-msgstr ""
-"Klik på et vindue mens denne modifikationstast holdes nede vil flytte "
-"vinduet (venstreklik), ændre størrelsen af vinduet (midterklik) eller vise "
-"vinduesmenuen (højreklik). Midter- og højre-kliksoperationerne kan byttes om "
-"ved hjælp af nøglen \"resize_with_right_button\". Modifikationstasten kan f."
-"eks. udtrykkes som \"&lt;Alt&gt;\" eller \"&lt;Super&gt;\"."
-
-#: ../src/metacity.schemas.in.in.h:10
-msgid "Commands to run in response to keybindings"
-msgstr "Kommando der skal køres ved tastegenvej"
-
-#: ../src/metacity.schemas.in.in.h:11
+#: ../src/org.gnome.metacity.gschema.xml.in.h:1
 msgid "Compositing Manager"
 msgstr "Kompositionshåndtering"
 
-#: ../src/metacity.schemas.in.in.h:12
-msgid "Control how new windows get focus"
-msgstr "Indstil måden hvorpå nye vinduer tildeles fokus"
-
-#: ../src/metacity.schemas.in.in.h:13
-msgid "Current theme"
-msgstr "Aktuelt tema"
-
-#: ../src/metacity.schemas.in.in.h:14
-msgid "Delay in milliseconds for the auto raise option"
-msgstr "Ventetid i millisekunder for autohævningsindstillingen"
-
-#: ../src/metacity.schemas.in.in.h:15
+#: ../src/org.gnome.metacity.gschema.xml.in.h:2
 msgid "Determines whether Metacity is a compositing manager."
 msgstr "Bestemmer om Metacity håndterer komposition."
 
-#: ../src/metacity.schemas.in.in.h:16
-msgid ""
-"Determines whether applications or the system can generate audible 'beeps'; "
-"may be used in conjunction with 'visual bell' to allow silent 'beeps'."
-msgstr ""
-"Bestemmer om programmer eller systemet kan generere hørbare bip; kan bruges "
-"sammen med visuelt bip til at opnå lydløse systembip."
-
-#: ../src/metacity.schemas.in.in.h:17
-msgid "Disable misfeatures that are required by old or broken applications"
-msgstr ""
-"Deaktiver uheldige faciliteter der kræves af ældre eller ødelagte programmer"
-
-#: ../src/metacity.schemas.in.in.h:18
-msgid "Enable Visual Bell"
-msgstr "Aktivér visuelt bip"
-
-#: ../src/metacity.schemas.in.in.h:19
-msgid ""
-"If set to true, and the focus mode is either \"sloppy\" or \"mouse\" then "
-"the focused window will be automatically raised after a delay specified by "
-"the auto_raise_delay key. This is not related to clicking on a window to "
-"raise it, nor to entering a window during drag-and-drop."
-msgstr ""
-"Hvis sat til \"true\", og fokustilstanden er enten \"sloppy\" eller \"mouse"
-"\", så vil det fokuserede vindue automatisk hæves efter en ventetid "
-"specificeret af nøglen \"auto_raise_delay\". Dette er ikke relateret til at "
-"klikke på et vindue for at hæve det, ej heller at komme ind i et vindue "
-"under træk-og-slip."
-
-#: ../src/metacity.schemas.in.in.h:20
-msgid ""
-"If true, ignore the titlebar_font option, and use the standard application "
-"font for window titles."
-msgstr ""
-"Hvis sand, ignorér indstillingen titlebar_font og brug standardskrifttypen "
-"for programmer til vinduestitler."
-
-#: ../src/metacity.schemas.in.in.h:21
+#: ../src/org.gnome.metacity.gschema.xml.in.h:3
 msgid ""
 "If true, metacity will give the user less feedback by using wireframes, "
 "avoiding animations, or other means. This is a significant reduction in "
@@ -1008,375 +629,57 @@ msgstr ""
 "til at fungere, samt kan være et brugbart kompromis for terminalservere. "
 "Rammelinje-faciliteten er dog deaktiveret når tilgængelighed er slået til."
 
-#: ../src/metacity.schemas.in.in.h:22
-msgid ""
-"If true, then Metacity works in terms of applications rather than windows. "
-"The concept is a bit abstract, but in general an application-based setup is "
-"more like the Mac and less like Windows. When you focus a window in "
-"application-based mode, all the windows in the application will be raised. "
-"Also, in application-based mode, focus clicks are not passed through to "
-"windows in other applications. Application-based mode is, however, largely "
-"unimplemented at the moment."
-msgstr ""
-"Hvis sand, så arbejder Metacity med programmer i stedet for vinduer. "
-"Konceptet er en smule abstrakt, men generelt er en programbaseret opsætning "
-"mere i retning af Mac og mindre som Windows. Når et vindue fokuseres i den "
-"programbaserede tilstand, vil alle vinduer i programmet blive hævet. Desuden "
-"bliver fokusklik ikke sendt videre til vinduer i andre programmer. I øvrigt "
-"er programbaseret tilstand i øjeblikket for størstedelens vedkommende ikke "
-"implementeret."
-
-#: ../src/metacity.schemas.in.in.h:23
+#: ../src/org.gnome.metacity.gschema.xml.in.h:4
 msgid "If true, trade off usability for less resource usage"
 msgstr "Hvis sand, så formindsk brugbarhed af hensyn til resurseforbrug"
-
-#: ../src/metacity.schemas.in.in.h:24
-msgid "Modifier to use for modified window click actions"
-msgstr "Modifikationstast til brug for modificerede vinduesklikhandlinger"
-
-#: ../src/metacity.schemas.in.in.h:25
-msgid "Name of workspace"
-msgstr "Arbejdsområdets navn"
-
-#: ../src/metacity.schemas.in.in.h:26
-msgid "Number of workspaces"
-msgstr "Antal arbejdsområder"
-
-#: ../src/metacity.schemas.in.in.h:27
-msgid ""
-"Number of workspaces. Must be more than zero, and has a fixed maximum to "
-"prevent making the desktop unusable by accidentally asking for too many "
-"workspaces."
-msgstr ""
-"Antal arbejdsområder. Skal være større end nul og har et fast maksimum for "
-"at forhindre at skrivebordet gøres ubrugeligt ved et uheld ved at antallet "
-"sættes for stort."
-
-#: ../src/metacity.schemas.in.in.h:28
-msgid "Run a defined command"
-msgstr "Kør en defineret kommando"
-
-#: ../src/metacity.schemas.in.in.h:29
-msgid ""
-"Set this to true to resize with the right button and show a menu with the "
-"middle button while holding down the key given in \"mouse_button_modifier\"; "
-"set it to false to make it work the opposite way around."
-msgstr ""
-"Sæt denne til \"true\" for at ændre størrelse med højre knap og vise en menu "
-"med midterste knap mens tasten givet i \"mouse_button_modifier\" holdes "
-"nede; sæt den til \"false\" for at få det til at fungere på modsat vis."
-
-#: ../src/metacity.schemas.in.in.h:30
-msgid ""
-"Setting this option to false can lead to buggy behavior, so users are "
-"strongly discouraged from changing it from the default of true. Many actions "
-"(e.g. clicking in the client area, moving or resizing the window) normally "
-"raise the window as a side-effect. Setting this option to false, which is "
-"strongly discouraged, will decouple raising from other user actions, and "
-"ignore raise requests generated by applications. See http://bugzilla.gnome."
-"org/show_bug.cgi?id=445447#c6. Even when this option is false, windows can "
-"still be raised by an alt-left-click anywhere on the window, a normal click "
-"on the window decorations, or by special messages from pagers, such as "
-"activation requests from tasklist applets. This option is currently disabled "
-"in click-to-focus mode. Note that the list of ways to raise windows when "
-"raise_on_click is false does not include programmatic requests from "
-"applications to raise windows; such requests will be ignored regardless of "
-"the reason for the request. If you are an application developer and have a "
-"user complaining that your application does not work with this setting "
-"disabled, tell them it is _their_ fault for breaking their window manager "
-"and that they need to change this option back to true or live with the \"bug"
-"\" they requested."
-msgstr ""
-"At sætte denne indstilling til false kan føre til fejlagtig opførsel, så "
-"brugere frarådes stærkt at ændre den fra standardværdien, som er true. Mange "
-"handlinger (såsom at klikke i klientområdet, at flytte eller ændre størrelse "
-"på et vindue) vil normalt hæve vinduet som sideeffekt. Sæt denne indstilling "
-"til false for at afkoble hævningen fra de andre brugerhandlinger, og "
-"ignorere hæveforespørgsler genereret af programmer. Se http://bugzilla.gnome."
-"org/show_bug.cgi?id=445447#c6. Selv når denne indstilling er false, kan "
-"vinduer stadig hæves ved at alt-venstreklikke hvor som helst på vinduet, ved "
-"at foretage et normalt klik på vinduesdekorationerne, eller som følge af "
-"specielle signaler fra programskiftere, såsom aktiveringsforespørgsler fra "
-"opgaveliste-panelprogrammer. Denne indstilling er på nuværende tidspunkt "
-"deaktiveret i klik-for-fokus-tilstand. Bemærk at denne liste af måder hvorpå "
-"vinduer kan hæves når raise_on_click er sat til false, ikke inkluderer "
-"programmerbare forespørgsler fra programmer om hævning af vinduer; sådanne "
-"forespørgsler vil blive ignoreret uanset årsagen til forespørgslen. Hvis du "
-"er en applikationsprogrammør og har en bruger, der klager over at dit "
-"program ikke fungerer med denne indstilling slået fra, så fortæl dem at det "
-"er _deres_ skyld idet de misbruger deres vindueshåndtering, og at de skal "
-"ændre denne indstilling tilbage til true, eller leve med den pågældende fejl."
-
-#: ../src/metacity.schemas.in.in.h:31
-msgid ""
-"Some applications disregard specifications in ways that result in window "
-"manager misfeatures. This option puts Metacity in a rigorously correct mode, "
-"which gives a more consistent user interface, provided one does not need to "
-"run any misbehaving applications."
-msgstr ""
-"Visse programmer ignorerer specifikationer således at vindueshåndteringen "
-"kan bringes til fejlagtig opførsel. Denne indstilling sætter Metacity i en "
-"strengt korrekt tilstand, hvilket giver en mere konsistent "
-"brugergrænseflade, såfremt man ikke behøver nogen uartige programmer."
-
-#: ../src/metacity.schemas.in.in.h:32
-msgid "System Bell is Audible"
-msgstr "Systembip er hørbart"
-
-#: ../src/metacity.schemas.in.in.h:33
-msgid ""
-"Tells Metacity how to implement the visual indication that the system bell "
-"or another application 'bell' indicator has been rung. Currently there are "
-"two valid values, \"fullscreen\", which causes a fullscreen white-black "
-"flash, and \"frame_flash\" which causes the titlebar of the application "
-"which sent the bell signal to flash. If the application which sent the bell "
-"is unknown (as is usually the case for the default \"system beep\"), the "
-"currently focused window's titlebar is flashed."
-msgstr ""
-"Angiver hvordan den visuelle indikering af at bip hør lydt skal vises. I "
-"øjeblikket er der to gyldige værdier, \"fullscreen\", som forårsager at hele "
-"skærmen skifter mellem sort og hvid, og \"frame_flash\" som forårsager at "
-"titellinjen for vinduet blinker. Hvis programmet som sendte bippet ikke er "
-"kendt (som det som regel er for standardsystembippet), vil titellinjen for "
-"det aktuelt fokuserede vindue blinke."
-
-#: ../src/metacity.schemas.in.in.h:34
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_N keys define keybindings "
-"that correspond to these commands. Pressing the keybinding for run_command_N "
-"will execute command_N."
-msgstr ""
-"Nøglerne /apps/metacity/global_keybindings/run_command_N definerer "
-"tastebindinger der svarer til disse kommandoer. Ved tryk på tastebindingen "
-"for run_command_N udføres command_N."
-
-#: ../src/metacity.schemas.in.in.h:35
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_screenshot key defines a "
-"keybinding which causes the command specified by this setting to be invoked."
-msgstr ""
-"Nøglen /apps/metacity/global_keybindings/run_command_screenshot definerer en "
-"tastebinding der forårsager at kommandoen for denne indstilling bliver "
-"udført."
-
-#: ../src/metacity.schemas.in.in.h:36
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_window_screenshot key "
-"defines a keybinding which causes the command specified by this setting to "
-"be invoked."
-msgstr ""
-"Nøglen /apps/metacity/global_keybindings/run_command_screenshot_window "
-"definerer en tastebinding der forårsager at kommandoen for denne indstilling "
-"bliver udført."
-
-#: ../src/metacity.schemas.in.in.h:37
-msgid ""
-"The keybinding that runs the correspondingly-numbered command in /apps/"
-"metacity/keybinding_commands The format looks like \"&lt;Control&gt;a\" or "
-"\"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows "
-"lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and "
-"\"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled\", "
-"then there will be no keybinding for this action."
-msgstr ""
-"Denne tastaturgenvej starter den tilsvarende nummererede kommando i /apps/"
-"metacity/keybinding_commands. Formatet ser ud som \"&lt;Control&gt;a\" eller "
-"\"&lt;Skift&gt;&lt;Alt&gt;F1\". Fortolkeren er ikke kræsen og tillader både "
-"store og små bogstaver, samt forkortelser som \"&lt;Ctl&gt;\" og \"&lt;"
-"Ctrl&gt;\". Hvis du sætter indstillingen til den specielle tekststreng "
-"\"disabled\", vil der ikke være nogen tastaturgenvej til denne handling."
-
-#: ../src/metacity.schemas.in.in.h:38
-msgid "The name of a workspace."
-msgstr "Arbejdsområdets navn."
-
-#: ../src/metacity.schemas.in.in.h:39
-msgid "The screenshot command"
-msgstr "Kommando for skærmbillede"
-
-#: ../src/metacity.schemas.in.in.h:40
-msgid ""
-"The theme determines the appearance of window borders, titlebar, and so "
-"forth."
-msgstr "Temaet bestemmer udseendet af vindueskanter, titellinjer osv."
-
-#: ../src/metacity.schemas.in.in.h:41
-msgid ""
-"The time delay before raising a window if auto_raise is set to true. The "
-"delay is given in thousandths of a second."
-msgstr ""
-"Ventetiden før et vindue hæves hvis auto_raise er sat til sand. Tiden "
-"angives i tusinddele af et sekund."
-
-#: ../src/metacity.schemas.in.in.h:42
-msgid ""
-"The window focus mode indicates how windows are activated. It has three "
-"possible values; \"click\" means windows must be clicked in order to focus "
-"them, \"sloppy\" means windows are focused when the mouse enters the window, "
-"and \"mouse\" means windows are focused when the mouse enters the window and "
-"unfocused when the mouse leaves the window."
-msgstr ""
-"Vinduesfokuseringstilstanden fortæller hvordan vinduer aktiveres. Der er tre "
-"mulige værdier: \"click\" betyder at vinduer skal klikkes på for at fokusere "
-"dem, \"sloppy\" betyder at vinduer fokuseres når musen føres ind i vinduet "
-"og \"mouse\" betyder at vinduer fokuseres når musen føres ind i vinduet og "
-"mister fokus igen når musen forlader vinduet."
-
-#: ../src/metacity.schemas.in.in.h:43
-msgid "The window screenshot command"
-msgstr "Kommando for vinduesskærmbillede"
-
-#: ../src/metacity.schemas.in.in.h:44
-msgid ""
-"This option determines the effects of double-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"Angiver hvad der sker når der dobbeltklikkes på titellinjen. Nuværende "
-"gyldige muligheder er \"toggle_shade\" som ruller vinduet op/ned, "
-"\"toggle_maximize\" som skifter mellem maksimeret/normal tilstand for "
-"vinduet, \"toggle_maximize_horizontally\" og \"toggle_maximize_vertically\" "
-"som vil skifte mellem maksimeret og normal tilstand kun i den retning, "
-"\"minimize\" som vil minimere vinduet, \"shade\" som vil rulle vinduet op, "
-"\"menu\" som vil vise vinduesmenuen, \"lower\" som vil placere vinduet bag "
-"alle andre og \"none\" som ingenting gør."
-
-#: ../src/metacity.schemas.in.in.h:45
-msgid ""
-"This option determines the effects of middle-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"Angiver hvad der sker når der midterklikkes på titellinjen. Nuværende "
-"gyldige muligheder er \"toggle_shade\" som ruller vinduet op/ned, "
-"\"toggle_maximize\" som skifter mellem maksimeret/normal tilstand for "
-"vinduet, \"toggle_maximize_horizontally\" og \"toggle_maximize_vertically\" "
-"som vil skifte mellem maksimeret og normal tilstand kun i den retning, "
-"\"minimize\" som vil minimere vinduet, \"shade\" som vil rulle vinduet op, "
-"\"menu\" som vil vise vinduesmenuen, \"lower\" som vil placere vinduet bag "
-"alle andre og \"none\" som ingenting gør."
-
-#: ../src/metacity.schemas.in.in.h:46
-msgid ""
-"This option determines the effects of right-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"Angiver hvad der sker når der højreklikkes på titellinjen. Nuværende gyldige "
-"muligheder er \"toggle_shade\" som ruller vinduet op/ned, \"toggle_maximize"
-"\" som skifter mellem maksimeret/normal tilstand for vinduet, "
-"\"toggle_maximize_horizontally\" og \"toggle_maximize_vertically\" som vil "
-"skifte mellem maksimeret og normal tilstand kun i den retning, \"minimize\" "
-"som vil minimere vinduet, \"shade\" som vil rulle vinduet op, \"menu\" som "
-"vil vise vinduesmenuen, \"lower\" som vil placere vinduet bag alle andre og "
-"\"none\" som ingenting gør."
-
-#: ../src/metacity.schemas.in.in.h:47
-msgid ""
-"This option provides additional control over how newly created windows get "
-"focus. It has two possible values; \"smart\" applies the user's normal focus "
-"mode, and \"strict\" results in windows started from a terminal not being "
-"given focus."
-msgstr ""
-"Denne indstilling giver yderligere kontrol over måden hvorpå nyoprettede "
-"vinduer bringes i fokus. Den har to mulige værdier; \"smart\" anvender "
-"brugerens normale fokusindstillinger, og \"strict\" resulterer i at vinduer "
-"der startes fra en terminal ikke gives fokus."
-
-#: ../src/metacity.schemas.in.in.h:48
-msgid ""
-"Turns on a visual indication when an application or the system issues a "
-"'bell' or 'beep'; useful for the hard-of-hearing and for use in noisy "
-"environments."
-msgstr ""
-"Aktiverer visuel tilkendegivelse idet et program eller systemet udsender et "
-"bip; nyttigt for svagthørende eller til brug i støjende omgivelser."
-
-#: ../src/metacity.schemas.in.in.h:49
-msgid "Use standard system font in window titles"
-msgstr "Benyt standardskrifttypen i vinduestitler"
-
-#: ../src/metacity.schemas.in.in.h:50
-msgid "Visual Bell Type"
-msgstr "Visuel bip-type"
-
-#: ../src/metacity.schemas.in.in.h:51
-msgid "Whether raising should be a side-effect of other user interactions"
-msgstr "Om hævning skal være en bivirkning af andre brugerhændelser"
-
-#: ../src/metacity.schemas.in.in.h:52
-msgid "Whether to resize with the right button"
-msgstr "Om der ændres størrelse med højre tast"
-
-#: ../src/metacity.schemas.in.in.h:53
-msgid "Window focus mode"
-msgstr "Vinduesfokuseringstilstand"
-
-#: ../src/metacity.schemas.in.in.h:54
-msgid "Window title font"
-msgstr "Skrifttype til vinduestitel"
 
 #: ../src/tools/metacity-message.c:150
 #, c-format
 msgid "Usage: %s\n"
 msgstr "Brug: %s\n"
 
-#: ../src/ui/frames.c:1120
+#: ../src/ui/frames.c:1114
 msgid "Close Window"
 msgstr "Luk vindue"
 
-#: ../src/ui/frames.c:1123
+#: ../src/ui/frames.c:1117
 msgid "Window Menu"
 msgstr "Vinduesmenu"
 
-#: ../src/ui/frames.c:1126
+#: ../src/ui/frames.c:1120
 msgid "Minimize Window"
 msgstr "Minimér vindue"
 
-#: ../src/ui/frames.c:1129
+#: ../src/ui/frames.c:1123
 msgid "Maximize Window"
 msgstr "Maksimér vindue"
 
-#: ../src/ui/frames.c:1132
+#: ../src/ui/frames.c:1126
 msgid "Restore Window"
 msgstr "Gendan vindue"
 
 # roll up = sørg for at kun vindues-headeren er synlig.
-#: ../src/ui/frames.c:1135
+#: ../src/ui/frames.c:1129
 msgid "Roll Up Window"
 msgstr "Rul vinduet op"
 
-#: ../src/ui/frames.c:1138
+#: ../src/ui/frames.c:1132
 msgid "Unroll Window"
 msgstr "Rul vinduet ned"
 
-#: ../src/ui/frames.c:1141
+#: ../src/ui/frames.c:1135
 msgid "Keep Window On Top"
 msgstr "Behold vinduet øverst"
 
-#: ../src/ui/frames.c:1144
+#: ../src/ui/frames.c:1138
 msgid "Remove Window From Top"
 msgstr "Fjern vinduet fra toppen"
 
-#: ../src/ui/frames.c:1147
+#: ../src/ui/frames.c:1141
 msgid "Always On Visible Workspace"
 msgstr "Altid på synligt arbejdsområde"
 
-#: ../src/ui/frames.c:1150
+#: ../src/ui/frames.c:1144
 msgid "Put Window On Only One Workspace"
 msgstr "Vis vindue på kun ét arbejdsområde"
 
@@ -1462,22 +765,22 @@ msgstr "Flyt til arbejdsområde _ned"
 msgid "_Close"
 msgstr "_Luk"
 
-#: ../src/ui/menu.c:203
+#: ../src/ui/menu.c:205
 #, c-format
 msgid "Workspace %d%n"
 msgstr "Arbejdsområde %d%n"
 
-#: ../src/ui/menu.c:213
+#: ../src/ui/menu.c:215
 #, c-format
 msgid "Workspace 1_0"
 msgstr "Arbejdsområde 1_0"
 
-#: ../src/ui/menu.c:215
+#: ../src/ui/menu.c:217
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Arbejdsområde %s%d"
 
-#: ../src/ui/menu.c:395
+#: ../src/ui/menu.c:398
 msgid "Move to Another _Workspace"
 msgstr "Flyt til andet _arbejdsområde"
 
@@ -1486,7 +789,7 @@ msgstr "Flyt til andet _arbejdsområde"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:104
+#: ../src/ui/metaaccellabel.c:80
 msgid "Shift"
 msgstr "Skift"
 
@@ -1495,7 +798,7 @@ msgstr "Skift"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:110
+#: ../src/ui/metaaccellabel.c:86
 msgid "Ctrl"
 msgstr "Ctrl"
 
@@ -1504,7 +807,7 @@ msgstr "Ctrl"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:116
+#: ../src/ui/metaaccellabel.c:92
 msgid "Alt"
 msgstr "Alt"
 
@@ -1513,7 +816,7 @@ msgstr "Alt"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:122
+#: ../src/ui/metaaccellabel.c:98
 msgid "Meta"
 msgstr "Meta"
 
@@ -1522,7 +825,7 @@ msgstr "Meta"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:128
+#: ../src/ui/metaaccellabel.c:104
 msgid "Super"
 msgstr "Super"
 
@@ -1531,7 +834,7 @@ msgstr "Super"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:134
+#: ../src/ui/metaaccellabel.c:110
 msgid "Hyper"
 msgstr "Hyper"
 
@@ -1540,7 +843,7 @@ msgstr "Hyper"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:140
+#: ../src/ui/metaaccellabel.c:116
 msgid "Mod2"
 msgstr "Mod2"
 
@@ -1549,7 +852,7 @@ msgstr "Mod2"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:146
+#: ../src/ui/metaaccellabel.c:122
 msgid "Mod3"
 msgstr "Mod3"
 
@@ -1558,7 +861,7 @@ msgstr "Mod3"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:152
+#: ../src/ui/metaaccellabel.c:128
 msgid "Mod4"
 msgstr "Mod4"
 
@@ -1567,7 +870,7 @@ msgstr "Mod4"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:158
+#: ../src/ui/metaaccellabel.c:134
 msgid "Mod5"
 msgstr "Mod5"
 
@@ -2204,145 +1507,153 @@ msgstr "Kunne ikke finde en gyldig fil til temaet %s\n"
 msgid "Theme file %s did not contain a root <metacity_theme> element"
 msgstr "Temafilen %s indeholdt ikke et rodelement <metacity_theme>"
 
-#: ../src/ui/theme-viewer.c:75
-msgid "/_Windows"
-msgstr "/_Vinduer"
+#: ../src/ui/theme-viewer.c:99
+msgid "_Windows"
+msgstr "_Vinduer"
 
-#: ../src/ui/theme-viewer.c:76
-msgid "/Windows/tearoff"
-msgstr "/Vinduer/rivaf"
+#: ../src/ui/theme-viewer.c:100
+msgid "_Dialog"
+msgstr "_Dialog"
 
-#: ../src/ui/theme-viewer.c:77
-msgid "/Windows/_Dialog"
-msgstr "/Vinduer/_Meddelelsevindue"
+#: ../src/ui/theme-viewer.c:101
+msgid "_Modal dialog"
+msgstr "_Modal dialog"
 
-#: ../src/ui/theme-viewer.c:78
-msgid "/Windows/_Modal dialog"
-msgstr "/Vinduer/_Modalt meddelelsevindue"
+#: ../src/ui/theme-viewer.c:102
+msgid "_Utility"
+msgstr "_Værktøj"
 
-#: ../src/ui/theme-viewer.c:79
-msgid "/Windows/_Utility"
-msgstr "/Windows/_Værktøj"
+#: ../src/ui/theme-viewer.c:103
+msgid "_Splashscreen"
+msgstr "_Velkomstskærm"
 
-#: ../src/ui/theme-viewer.c:80
-msgid "/Windows/_Splashscreen"
-msgstr "/Windows/_Velkomstskærm"
+#: ../src/ui/theme-viewer.c:104
+msgid "_Top dock"
+msgstr "_Topdok"
 
-#: ../src/ui/theme-viewer.c:81
-msgid "/Windows/_Top dock"
-msgstr "/Windows/_Topdok"
+#: ../src/ui/theme-viewer.c:105
+msgid "_Bottom dock"
+msgstr "_Bunddok"
 
-#: ../src/ui/theme-viewer.c:82
-msgid "/Windows/_Bottom dock"
-msgstr "/Windows/_Bunddok"
+#: ../src/ui/theme-viewer.c:106
+msgid "_Left dock"
+msgstr "_Venstre dok"
 
-#: ../src/ui/theme-viewer.c:83
-msgid "/Windows/_Left dock"
-msgstr "/Windows/_Venstre dok"
+#: ../src/ui/theme-viewer.c:107
+msgid "_Right dock"
+msgstr "_Højre dok"
 
-#: ../src/ui/theme-viewer.c:84
-msgid "/Windows/_Right dock"
-msgstr "/Windows/_Højre dok"
+#: ../src/ui/theme-viewer.c:108
+msgid "_All docks"
+msgstr "_Alle dokke"
 
-#: ../src/ui/theme-viewer.c:85
-msgid "/Windows/_All docks"
-msgstr "/Windows/_Alle dokke"
+#: ../src/ui/theme-viewer.c:109
+msgid "Des_ktop"
+msgstr "S_krivebord"
 
-#: ../src/ui/theme-viewer.c:86
-msgid "/Windows/Des_ktop"
-msgstr "/Windows/_Skrivebord"
+#: ../src/ui/theme-viewer.c:115
+msgid "Open another one of these windows"
+msgstr "Åbn endnu et af disse vinduer"
 
-#: ../src/ui/theme-viewer.c:244
+#: ../src/ui/theme-viewer.c:117
+msgid "This is a demo button with an 'open' icon"
+msgstr "Dette er en demoknap med et \"åbn\"-ikon"
+
+#: ../src/ui/theme-viewer.c:119
+msgid "This is a demo button with a 'quit' icon"
+msgstr "Dette er en demoknap med et \"afslut\"-ikon"
+
+#: ../src/ui/theme-viewer.c:253
 msgid "This is a sample message in a sample dialog"
 msgstr "Dette er en eksempelbesked i et eksempelmeddelelsevindue"
 
-#: ../src/ui/theme-viewer.c:327
+#: ../src/ui/theme-viewer.c:336
 #, c-format
 msgid "Fake menu item %d\n"
 msgstr "Uægte menupunkt %d\n"
 
-#: ../src/ui/theme-viewer.c:361
+#: ../src/ui/theme-viewer.c:370
 msgid "Border-only window"
 msgstr "Vindue med kun ramme"
 
-#: ../src/ui/theme-viewer.c:363
+#: ../src/ui/theme-viewer.c:372
 msgid "Bar"
 msgstr "Linje"
 
-#: ../src/ui/theme-viewer.c:380
+#: ../src/ui/theme-viewer.c:389
 msgid "Normal Application Window"
 msgstr "Almindeligt programvindue"
 
-#: ../src/ui/theme-viewer.c:384
+#: ../src/ui/theme-viewer.c:393
 msgid "Dialog Box"
 msgstr "Meddelelsevindue"
 
-#: ../src/ui/theme-viewer.c:388
+#: ../src/ui/theme-viewer.c:397
 msgid "Modal Dialog Box"
 msgstr "Modalt meddelelsevindue"
 
-#: ../src/ui/theme-viewer.c:392
+#: ../src/ui/theme-viewer.c:401
 msgid "Utility Palette"
 msgstr "Værktøjspalet"
 
-#: ../src/ui/theme-viewer.c:396
+#: ../src/ui/theme-viewer.c:405
 msgid "Torn-off Menu"
 msgstr "Afrevet menu"
 
-#: ../src/ui/theme-viewer.c:400
+#: ../src/ui/theme-viewer.c:409
 msgid "Border"
 msgstr "Ramme"
 
-#: ../src/ui/theme-viewer.c:728
+#: ../src/ui/theme-viewer.c:737
 #, c-format
 msgid "Button layout test %d"
 msgstr "Knaplayouttest %d"
 
-#: ../src/ui/theme-viewer.c:757
+#: ../src/ui/theme-viewer.c:766
 #, c-format
 msgid "%g milliseconds to draw one window frame"
 msgstr "%g millisekunder for at tegne én vinduesramme"
 
-#: ../src/ui/theme-viewer.c:800
+#: ../src/ui/theme-viewer.c:810
 #, c-format
 msgid "Usage: metacity-theme-viewer [THEMENAME]\n"
 msgstr "Brug: metacity-theme-viewer [TEMANAVN]\n"
 
-#: ../src/ui/theme-viewer.c:807
+#: ../src/ui/theme-viewer.c:817
 #, c-format
 msgid "Error loading theme: %s\n"
 msgstr "Fejl under indlæsning af tema: %s\n"
 
-#: ../src/ui/theme-viewer.c:813
+#: ../src/ui/theme-viewer.c:823
 #, c-format
 msgid "Loaded theme \"%s\" in %g seconds\n"
 msgstr "Indlæste tema \"%s\" på %g sekunder\n"
 
-#: ../src/ui/theme-viewer.c:854
+#: ../src/ui/theme-viewer.c:866
 msgid "Normal Title Font"
 msgstr "Normal titelskrifttype"
 
-#: ../src/ui/theme-viewer.c:860
+#: ../src/ui/theme-viewer.c:872
 msgid "Small Title Font"
 msgstr "Lille titelskrifttype"
 
-#: ../src/ui/theme-viewer.c:866
+#: ../src/ui/theme-viewer.c:878
 msgid "Large Title Font"
 msgstr "Stor titelskrifttype"
 
-#: ../src/ui/theme-viewer.c:871
+#: ../src/ui/theme-viewer.c:883
 msgid "Button Layouts"
 msgstr "Knaplayout"
 
-#: ../src/ui/theme-viewer.c:876
+#: ../src/ui/theme-viewer.c:888
 msgid "Benchmark"
 msgstr "Tidstest"
 
-#: ../src/ui/theme-viewer.c:923
+#: ../src/ui/theme-viewer.c:935
 msgid "Window Title Goes Here"
 msgstr "Vinduestitel er her"
 
-#: ../src/ui/theme-viewer.c:1027
+#: ../src/ui/theme-viewer.c:1039
 #, c-format
 msgid ""
 "Drew %d frames in %g client-side seconds (%g milliseconds per frame) and %g "
@@ -2353,46 +1664,635 @@ msgstr ""
 "sekunders almindelig tid inkl. X-server-resurser (%g millisekunder pr. "
 "ramme)\n"
 
-#: ../src/ui/theme-viewer.c:1246
+#: ../src/ui/theme-viewer.c:1258
 msgid "position expression test returned TRUE but set error"
 msgstr "positionsudtrykstest returnede TRUE, men sat fejl"
 
-#: ../src/ui/theme-viewer.c:1248
+#: ../src/ui/theme-viewer.c:1260
 msgid "position expression test returned FALSE but didn't set error"
 msgstr "positionsudtrykstest returnede FALSE, men satte ikke fejl"
 
-#: ../src/ui/theme-viewer.c:1252
+#: ../src/ui/theme-viewer.c:1264
 msgid "Error was expected but none given"
 msgstr "Fejl var forventet, men ingen givet"
 
-#: ../src/ui/theme-viewer.c:1254
+#: ../src/ui/theme-viewer.c:1266
 #, c-format
 msgid "Error %d was expected but %d given"
 msgstr "Fejl %d var forventet, men %d givet"
 
-#: ../src/ui/theme-viewer.c:1260
+#: ../src/ui/theme-viewer.c:1272
 #, c-format
 msgid "Error not expected but one was returned: %s"
 msgstr "Fejl var ikke forventet, men én blev returneret: %s"
 
-#: ../src/ui/theme-viewer.c:1264
+#: ../src/ui/theme-viewer.c:1276
 #, c-format
 msgid "x value was %d, %d was expected"
 msgstr "x-værdi var %d, %d var forventet"
 
-#: ../src/ui/theme-viewer.c:1267
+#: ../src/ui/theme-viewer.c:1279
 #, c-format
 msgid "y value was %d, %d was expected"
 msgstr "y-værdi var %d, %d var forventet"
 
-#: ../src/ui/theme-viewer.c:1332
+#: ../src/ui/theme-viewer.c:1344
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr ""
 "%d koordinatudtryk fortolket på %g sekunder (%g sekunder i gennemsnit)\n"
 
-#~ msgid "Desktop"
-#~ msgstr "Skrivebord"
+#~ msgid "Launchers"
+#~ msgstr "Programstartere"
+
+#~ msgid "Screenshots"
+#~ msgstr "Skærmbilleder"
+
+#~ msgid ""
+#~ "There was an error running <tt>%s</tt>:\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Der opstod en fejl ved kørsel af <tt>%s</tt>:\n"
+#~ "\n"
+#~ "%s"
+
+#~ msgid "No command %d has been defined.\n"
+#~ msgstr "Ingen kommando %d er blevet defineret.\n"
+
+#~ msgid "No terminal command has been defined.\n"
+#~ msgstr "Ingen terminal-kommando er blevet defineret.\n"
+
+#~ msgid "GConf key '%s' is set to an invalid value\n"
+#~ msgstr "GConf-nøglen \"%s\" er sat til en ugyldig værdi\n"
+
+#~ msgid "%d stored in GConf key %s is out of range %d to %d\n"
+#~ msgstr "%d lagret i GConf-nøgle %s er uden for intervallet %d til %d\n"
+
+#~ msgid "GConf key \"%s\" is set to an invalid type\n"
+#~ msgstr "GConf-nøglen \"%s\" er sat til en ugyldig type\n"
+
+#~ msgid "Error setting number of workspaces to %d: %s\n"
+#~ msgstr "Fejl under sætning af antallet af arbejdsområder til %d: %s\n"
+
+#~ msgid "Error setting name for workspace %d to \"%s\": %s\n"
+#~ msgstr "Fejl under sætning af navnet for arbejdsområde %d til \"%s\": %s\n"
+
+#~ msgid "Error setting compositor status: %s\n"
+#~ msgstr "Fejl ved indstilling af status for kompositor: %s\n"
+
+#~ msgid ""
+#~ "The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
+#~ "\n"
+#~ "The parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to "
+#~ "the special string \"disabled\", then there will be no keybinding for "
+#~ "this action."
+#~ msgstr ""
+#~ "Formatet ser ud som \"<Control>a\" eller \"<Shift><Alt>F1\".\n"
+#~ "\n"
+#~ "Fortolkeren er ikke kræsen og tillader både store og små bogstaver, samt "
+#~ "forkortelser som \"<Ctl>\" og \"<Ctrl>\". Hvis du sætter indstillingen "
+#~ "til den specielle tekststreng \"disabled\", vil der ikke være nogen "
+#~ "tastaturgenvej til denne handling."
+
+#~ msgid ""
+#~ "The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
+#~ "\n"
+#~ "The parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to "
+#~ "the special string \"disabled\", then there will be no keybinding for "
+#~ "this action.\n"
+#~ "\n"
+#~ "This keybinding may be reversed by holding down the \"shift\" key; "
+#~ "therefore, \"shift\" cannot be one of the keys it uses."
+#~ msgstr ""
+#~ "Formatet ser ud som \"<Control>a\" eller \"<Shift><Alt>F1\".\n"
+#~ "\n"
+#~ "Fortolkeren er ikke kræsen og tillader både store og små bogstaver, samt "
+#~ "forkortelser som \"<Ctl>\" og \"<Ctrl>\". Hvis du sætter indstillingen "
+#~ "til den specielle tekststreng \"disabled\", vil der ikke være nogen "
+#~ "tastaturgenvej til denne handling."
+
+#~ msgid "Switch to workspace 5"
+#~ msgstr "Skift til arbejdsområde 5"
+
+#~ msgid "Switch to workspace 6"
+#~ msgstr "Skift til arbejdsområde 6"
+
+#~ msgid "Switch to workspace 7"
+#~ msgstr "Skift til arbejdsområde 7"
+
+#~ msgid "Switch to workspace 8"
+#~ msgstr "Skift til arbejdsområde 8"
+
+#~ msgid "Switch to workspace 9"
+#~ msgstr "Skift til arbejdsområde 9"
+
+#~ msgid "Switch to workspace 10"
+#~ msgstr "Skift til arbejdsområde 10"
+
+#~ msgid "Switch to workspace 11"
+#~ msgstr "Skift til arbejdsområde 11"
+
+#~ msgid "Switch to workspace 12"
+#~ msgstr "Skift til arbejdsområde 12"
+
+#~ msgid "Reverse switch windows of an application"
+#~ msgstr "Skift mellem vinduer i et program omvendt"
+
+# Alle de her "shift something something" må være når man navigerer mellem flere vinduer/programmer/bjælker osv.
+#~ msgid "Reverse switch applications"
+#~ msgstr "Skift mellem programmer omvendt"
+
+#~ msgid "Reverse switch system controls"
+#~ msgstr "Skift mellem systemkontroller omvendt"
+
+#~ msgid "Reverse switch windows of an app directly"
+#~ msgstr "Skift direkte mellem vinduer i et program omvendt"
+
+#~ msgid "Reverse switch windows directly"
+#~ msgstr "Skift direkte mellem vinduer omvendt"
+
+#~ msgid "Reverse switch system controls directly"
+#~ msgstr "Skift direkte mellem systemkontroller omvendt"
+
+#~ msgid "Take a screenshot"
+#~ msgstr "Gem skærmbillede"
+
+#~ msgid "Take a screenshot of a window"
+#~ msgstr "Gem skærmbillede for et vindue"
+
+#~ msgid "Launch Terminal"
+#~ msgstr "Start en terminal"
+
+#~ msgid "Toggle window always appearing on top"
+#~ msgstr "Aktivér/deaktiver vindue altid øverst"
+
+#~ msgid "Move window to workspace 5"
+#~ msgstr "Flyt vindue til arbejdsområde 5"
+
+#~ msgid "Move window to workspace 6"
+#~ msgstr "Flyt vindue til arbejdsområde 6"
+
+#~ msgid "Move window to workspace 7"
+#~ msgstr "Flyt vindue til arbejdsområde 7"
+
+#~ msgid "Move window to workspace 8"
+#~ msgstr "Flyt vindue til arbejdsområde 8"
+
+#~ msgid "Move window to workspace 9"
+#~ msgstr "Flyt vindue til arbejdsområde 9"
+
+#~ msgid "Move window to workspace 10"
+#~ msgstr "Flyt vindue til arbejdsområde 10"
+
+#~ msgid "Move window to workspace 11"
+#~ msgstr "Flyt vindue til arbejdsområde 11"
+
+#~ msgid "Move window to workspace 12"
+#~ msgstr "Flyt vindue til arbejdsområde 12"
+
+#~ msgid "Move window to top left corner"
+#~ msgstr "Flyt vindue til øverste venstre hjørne"
+
+#~ msgid "Move window to top right corner"
+#~ msgstr "Flyt vindue til øverste højre hjørne"
+
+#~ msgid "Move window to bottom left corner"
+#~ msgstr "Flyt vindue til nederste venstre hjørne"
+
+#~ msgid "Move window to bottom right corner"
+#~ msgstr "Flyt vindue til nederste højre hjørne"
+
+#~ msgid "Move window to top edge of screen"
+#~ msgstr "Flyt vindue til skærmens overkant"
+
+#~ msgid "Move window to bottom edge of screen"
+#~ msgstr "Flyt vindue til skærmens underkant"
+
+#~ msgid "Move window to right side of screen"
+#~ msgstr "Flyt vindue til skærmens højre side"
+
+#~ msgid "Move window to left side of screen"
+#~ msgstr "Flyt vindue til skærmens venstre side"
+
+#~ msgid "Move window to center of screen"
+#~ msgstr "Flyt vindue til skærmens centrum"
+
+#~ msgid ""
+#~ "(Not implemented) Navigation works in terms of applications not windows"
+#~ msgstr ""
+#~ "(Ikke implementeret) Navigatering virker med programmer ikke vinduer"
+
+#~ msgid ""
+#~ "A font description string describing a font for window titlebars. The "
+#~ "size from the description will only be used if the titlebar_font_size "
+#~ "option is set to 0. Also, this option is disabled if the "
+#~ "titlebar_uses_desktop_font option is set to true."
+#~ msgstr ""
+#~ "En skrifttypebeskrivelsesstreng der beskriver skrifttypen for "
+#~ "vinduestitellinjer. Størrelsen fra beskrivelsen vil dog kun blive brugt "
+#~ "hvis indstillingen \"titlebar_font_size\" er sat til 0. Desuden er denne "
+#~ "indstilling deaktiveret hvis indstillingen \"titlebar_uses_desktop_font\" "
+#~ "er sat til \"true\"."
+
+#~ msgid "Action on title bar double-click"
+#~ msgstr "Handling ved dobbeltklik på titellinjen"
+
+#~ msgid "Action on title bar middle-click"
+#~ msgstr "Handling ved midterklik på titellinjen"
+
+#~ msgid "Action on title bar right-click"
+#~ msgstr "Handling ved højreklik på titellinjen"
+
+#~ msgid "Arrangement of buttons on the titlebar"
+#~ msgstr "Arrangeringen af knapper på titellinjen"
+
+#~ msgid ""
+#~ "Arrangement of buttons on the titlebar. The value should be a string, "
+#~ "such as \"menu:minimize,maximize,spacer,close\"; the colon separates the "
+#~ "left corner of the window from the right corner, and the button names are "
+#~ "comma-separated. Duplicate buttons are not allowed. Unknown button names "
+#~ "are silently ignored so that buttons can be added in future metacity "
+#~ "versions without breaking older versions. A special spacer tag can be "
+#~ "used to insert some space between two adjacent buttons."
+#~ msgstr ""
+#~ "Arrangeringen af knapper på titellinjen. Værdien skal være en "
+#~ "tekststreng, såsom \"menu:minimize,maximize,spacer,close\"; kolon "
+#~ "adskiller venstre hjørne fra højre hjørne, og knapnavnene er "
+#~ "kommaadskilte. Hver knap kan kun optræde én gang. Ukendte knapnavne "
+#~ "ignoreres uden advarsel sådan at yderligere knapper kan tilføjes i senere "
+#~ "versioner af Metacity uden at ødelægge ældre versioner. Et specielt "
+#~ "skillemærke \"spacer\" kan bruges til at indsætte noget plads mellem to "
+#~ "knapper."
+
+#~ msgid "Automatically raises the focused window"
+#~ msgstr "Hæv automatisk det fokuserede vindue"
+
+#~ msgid ""
+#~ "Clicking a window while holding down this modifier key will move the "
+#~ "window (left click), resize the window (middle click), or show the window "
+#~ "menu (right click). The middle and right click operations may be swapped "
+#~ "using the \"resize_with_right_button\" key. Modifier is expressed as "
+#~ "\"&lt;Alt&gt;\" or \"&lt;Super&gt;\" for example."
+#~ msgstr ""
+#~ "Klik på et vindue mens denne modifikationstast holdes nede vil flytte "
+#~ "vinduet (venstreklik), ændre størrelsen af vinduet (midterklik) eller "
+#~ "vise vinduesmenuen (højreklik). Midter- og højre-kliksoperationerne kan "
+#~ "byttes om ved hjælp af nøglen \"resize_with_right_button\". "
+#~ "Modifikationstasten kan f.eks. udtrykkes som \"&lt;Alt&gt;\" eller \"&lt;"
+#~ "Super&gt;\"."
+
+#~ msgid "Commands to run in response to keybindings"
+#~ msgstr "Kommando der skal køres ved tastegenvej"
+
+#~ msgid "Control how new windows get focus"
+#~ msgstr "Indstil måden hvorpå nye vinduer tildeles fokus"
+
+#~ msgid "Current theme"
+#~ msgstr "Aktuelt tema"
+
+#~ msgid "Delay in milliseconds for the auto raise option"
+#~ msgstr "Ventetid i millisekunder for autohævningsindstillingen"
+
+#~ msgid ""
+#~ "Determines whether applications or the system can generate audible "
+#~ "'beeps'; may be used in conjunction with 'visual bell' to allow silent "
+#~ "'beeps'."
+#~ msgstr ""
+#~ "Bestemmer om programmer eller systemet kan generere hørbare bip; kan "
+#~ "bruges sammen med visuelt bip til at opnå lydløse systembip."
+
+#~ msgid "Disable misfeatures that are required by old or broken applications"
+#~ msgstr ""
+#~ "Deaktiver uheldige faciliteter der kræves af ældre eller ødelagte "
+#~ "programmer"
+
+#~ msgid "Enable Visual Bell"
+#~ msgstr "Aktivér visuelt bip"
+
+#~ msgid ""
+#~ "If set to true, and the focus mode is either \"sloppy\" or \"mouse\" then "
+#~ "the focused window will be automatically raised after a delay specified "
+#~ "by the auto_raise_delay key. This is not related to clicking on a window "
+#~ "to raise it, nor to entering a window during drag-and-drop."
+#~ msgstr ""
+#~ "Hvis sat til \"true\", og fokustilstanden er enten \"sloppy\" eller "
+#~ "\"mouse\", så vil det fokuserede vindue automatisk hæves efter en "
+#~ "ventetid specificeret af nøglen \"auto_raise_delay\". Dette er ikke "
+#~ "relateret til at klikke på et vindue for at hæve det, ej heller at komme "
+#~ "ind i et vindue under træk-og-slip."
+
+#~ msgid ""
+#~ "If true, ignore the titlebar_font option, and use the standard "
+#~ "application font for window titles."
+#~ msgstr ""
+#~ "Hvis sand, ignorér indstillingen titlebar_font og brug "
+#~ "standardskrifttypen for programmer til vinduestitler."
+
+#~ msgid ""
+#~ "If true, then Metacity works in terms of applications rather than "
+#~ "windows. The concept is a bit abstract, but in general an application-"
+#~ "based setup is more like the Mac and less like Windows. When you focus a "
+#~ "window in application-based mode, all the windows in the application will "
+#~ "be raised. Also, in application-based mode, focus clicks are not passed "
+#~ "through to windows in other applications. Application-based mode is, "
+#~ "however, largely unimplemented at the moment."
+#~ msgstr ""
+#~ "Hvis sand, så arbejder Metacity med programmer i stedet for vinduer. "
+#~ "Konceptet er en smule abstrakt, men generelt er en programbaseret "
+#~ "opsætning mere i retning af Mac og mindre som Windows. Når et vindue "
+#~ "fokuseres i den programbaserede tilstand, vil alle vinduer i programmet "
+#~ "blive hævet. Desuden bliver fokusklik ikke sendt videre til vinduer i "
+#~ "andre programmer. I øvrigt er programbaseret tilstand i øjeblikket for "
+#~ "størstedelens vedkommende ikke implementeret."
+
+#~ msgid "Modifier to use for modified window click actions"
+#~ msgstr "Modifikationstast til brug for modificerede vinduesklikhandlinger"
+
+#~ msgid "Name of workspace"
+#~ msgstr "Arbejdsområdets navn"
+
+#~ msgid "Number of workspaces"
+#~ msgstr "Antal arbejdsområder"
+
+#~ msgid ""
+#~ "Number of workspaces. Must be more than zero, and has a fixed maximum to "
+#~ "prevent making the desktop unusable by accidentally asking for too many "
+#~ "workspaces."
+#~ msgstr ""
+#~ "Antal arbejdsområder. Skal være større end nul og har et fast maksimum "
+#~ "for at forhindre at skrivebordet gøres ubrugeligt ved et uheld ved at "
+#~ "antallet sættes for stort."
+
+#~ msgid "Run a defined command"
+#~ msgstr "Kør en defineret kommando"
+
+#~ msgid ""
+#~ "Set this to true to resize with the right button and show a menu with the "
+#~ "middle button while holding down the key given in \"mouse_button_modifier"
+#~ "\"; set it to false to make it work the opposite way around."
+#~ msgstr ""
+#~ "Sæt denne til \"true\" for at ændre størrelse med højre knap og vise en "
+#~ "menu med midterste knap mens tasten givet i \"mouse_button_modifier\" "
+#~ "holdes nede; sæt den til \"false\" for at få det til at fungere på modsat "
+#~ "vis."
+
+#~ msgid ""
+#~ "Setting this option to false can lead to buggy behavior, so users are "
+#~ "strongly discouraged from changing it from the default of true. Many "
+#~ "actions (e.g. clicking in the client area, moving or resizing the window) "
+#~ "normally raise the window as a side-effect. Setting this option to false, "
+#~ "which is strongly discouraged, will decouple raising from other user "
+#~ "actions, and ignore raise requests generated by applications. See http://"
+#~ "bugzilla.gnome.org/show_bug.cgi?id=445447#c6. Even when this option is "
+#~ "false, windows can still be raised by an alt-left-click anywhere on the "
+#~ "window, a normal click on the window decorations, or by special messages "
+#~ "from pagers, such as activation requests from tasklist applets. This "
+#~ "option is currently disabled in click-to-focus mode. Note that the list "
+#~ "of ways to raise windows when raise_on_click is false does not include "
+#~ "programmatic requests from applications to raise windows; such requests "
+#~ "will be ignored regardless of the reason for the request. If you are an "
+#~ "application developer and have a user complaining that your application "
+#~ "does not work with this setting disabled, tell them it is _their_ fault "
+#~ "for breaking their window manager and that they need to change this "
+#~ "option back to true or live with the \"bug\" they requested."
+#~ msgstr ""
+#~ "At sætte denne indstilling til false kan føre til fejlagtig opførsel, så "
+#~ "brugere frarådes stærkt at ændre den fra standardværdien, som er true. "
+#~ "Mange handlinger (såsom at klikke i klientområdet, at flytte eller ændre "
+#~ "størrelse på et vindue) vil normalt hæve vinduet som sideeffekt. Sæt "
+#~ "denne indstilling til false for at afkoble hævningen fra de andre "
+#~ "brugerhandlinger, og ignorere hæveforespørgsler genereret af programmer. "
+#~ "Se http://bugzilla.gnome.org/show_bug.cgi?id=445447#c6. Selv når denne "
+#~ "indstilling er false, kan vinduer stadig hæves ved at alt-venstreklikke "
+#~ "hvor som helst på vinduet, ved at foretage et normalt klik på "
+#~ "vinduesdekorationerne, eller som følge af specielle signaler fra "
+#~ "programskiftere, såsom aktiveringsforespørgsler fra opgaveliste-"
+#~ "panelprogrammer. Denne indstilling er på nuværende tidspunkt deaktiveret "
+#~ "i klik-for-fokus-tilstand. Bemærk at denne liste af måder hvorpå vinduer "
+#~ "kan hæves når raise_on_click er sat til false, ikke inkluderer "
+#~ "programmerbare forespørgsler fra programmer om hævning af vinduer; "
+#~ "sådanne forespørgsler vil blive ignoreret uanset årsagen til "
+#~ "forespørgslen. Hvis du er en applikationsprogrammør og har en bruger, der "
+#~ "klager over at dit program ikke fungerer med denne indstilling slået fra, "
+#~ "så fortæl dem at det er _deres_ skyld idet de misbruger deres "
+#~ "vindueshåndtering, og at de skal ændre denne indstilling tilbage til "
+#~ "true, eller leve med den pågældende fejl."
+
+#~ msgid ""
+#~ "Some applications disregard specifications in ways that result in window "
+#~ "manager misfeatures. This option puts Metacity in a rigorously correct "
+#~ "mode, which gives a more consistent user interface, provided one does not "
+#~ "need to run any misbehaving applications."
+#~ msgstr ""
+#~ "Visse programmer ignorerer specifikationer således at vindueshåndteringen "
+#~ "kan bringes til fejlagtig opførsel. Denne indstilling sætter Metacity i "
+#~ "en strengt korrekt tilstand, hvilket giver en mere konsistent "
+#~ "brugergrænseflade, såfremt man ikke behøver nogen uartige programmer."
+
+#~ msgid "System Bell is Audible"
+#~ msgstr "Systembip er hørbart"
+
+#~ msgid ""
+#~ "Tells Metacity how to implement the visual indication that the system "
+#~ "bell or another application 'bell' indicator has been rung. Currently "
+#~ "there are two valid values, \"fullscreen\", which causes a fullscreen "
+#~ "white-black flash, and \"frame_flash\" which causes the titlebar of the "
+#~ "application which sent the bell signal to flash. If the application which "
+#~ "sent the bell is unknown (as is usually the case for the default \"system "
+#~ "beep\"), the currently focused window's titlebar is flashed."
+#~ msgstr ""
+#~ "Angiver hvordan den visuelle indikering af at bip hør lydt skal vises. I "
+#~ "øjeblikket er der to gyldige værdier, \"fullscreen\", som forårsager at "
+#~ "hele skærmen skifter mellem sort og hvid, og \"frame_flash\" som "
+#~ "forårsager at titellinjen for vinduet blinker. Hvis programmet som sendte "
+#~ "bippet ikke er kendt (som det som regel er for standardsystembippet), vil "
+#~ "titellinjen for det aktuelt fokuserede vindue blinke."
+
+#~ msgid ""
+#~ "The /apps/metacity/global_keybindings/run_command_N keys define "
+#~ "keybindings that correspond to these commands. Pressing the keybinding "
+#~ "for run_command_N will execute command_N."
+#~ msgstr ""
+#~ "Nøglerne /apps/metacity/global_keybindings/run_command_N definerer "
+#~ "tastebindinger der svarer til disse kommandoer. Ved tryk på "
+#~ "tastebindingen for run_command_N udføres command_N."
+
+#~ msgid ""
+#~ "The /apps/metacity/global_keybindings/run_command_screenshot key defines "
+#~ "a keybinding which causes the command specified by this setting to be "
+#~ "invoked."
+#~ msgstr ""
+#~ "Nøglen /apps/metacity/global_keybindings/run_command_screenshot definerer "
+#~ "en tastebinding der forårsager at kommandoen for denne indstilling bliver "
+#~ "udført."
+
+#~ msgid ""
+#~ "The /apps/metacity/global_keybindings/run_command_window_screenshot key "
+#~ "defines a keybinding which causes the command specified by this setting "
+#~ "to be invoked."
+#~ msgstr ""
+#~ "Nøglen /apps/metacity/global_keybindings/run_command_screenshot_window "
+#~ "definerer en tastebinding der forårsager at kommandoen for denne "
+#~ "indstilling bliver udført."
+
+#~ msgid ""
+#~ "The keybinding that runs the correspondingly-numbered command in /apps/"
+#~ "metacity/keybinding_commands The format looks like \"&lt;Control&gt;a\" "
+#~ "or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and "
+#~ "allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
+#~ "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
+#~ "\"disabled\", then there will be no keybinding for this action."
+#~ msgstr ""
+#~ "Denne tastaturgenvej starter den tilsvarende nummererede kommando i /apps/"
+#~ "metacity/keybinding_commands. Formatet ser ud som \"&lt;Control&gt;a\" "
+#~ "eller \"&lt;Skift&gt;&lt;Alt&gt;F1\". Fortolkeren er ikke kræsen og "
+#~ "tillader både store og små bogstaver, samt forkortelser som \"&lt;Ctl&gt;"
+#~ "\" og \"&lt;Ctrl&gt;\". Hvis du sætter indstillingen til den specielle "
+#~ "tekststreng \"disabled\", vil der ikke være nogen tastaturgenvej til "
+#~ "denne handling."
+
+#~ msgid "The name of a workspace."
+#~ msgstr "Arbejdsområdets navn."
+
+#~ msgid "The screenshot command"
+#~ msgstr "Kommando for skærmbillede"
+
+#~ msgid ""
+#~ "The theme determines the appearance of window borders, titlebar, and so "
+#~ "forth."
+#~ msgstr "Temaet bestemmer udseendet af vindueskanter, titellinjer osv."
+
+#~ msgid ""
+#~ "The time delay before raising a window if auto_raise is set to true. The "
+#~ "delay is given in thousandths of a second."
+#~ msgstr ""
+#~ "Ventetiden før et vindue hæves hvis auto_raise er sat til sand. Tiden "
+#~ "angives i tusinddele af et sekund."
+
+#~ msgid ""
+#~ "The window focus mode indicates how windows are activated. It has three "
+#~ "possible values; \"click\" means windows must be clicked in order to "
+#~ "focus them, \"sloppy\" means windows are focused when the mouse enters "
+#~ "the window, and \"mouse\" means windows are focused when the mouse enters "
+#~ "the window and unfocused when the mouse leaves the window."
+#~ msgstr ""
+#~ "Vinduesfokuseringstilstanden fortæller hvordan vinduer aktiveres. Der er "
+#~ "tre mulige værdier: \"click\" betyder at vinduer skal klikkes på for at "
+#~ "fokusere dem, \"sloppy\" betyder at vinduer fokuseres når musen føres ind "
+#~ "i vinduet og \"mouse\" betyder at vinduer fokuseres når musen føres ind i "
+#~ "vinduet og mister fokus igen når musen forlader vinduet."
+
+#~ msgid "The window screenshot command"
+#~ msgstr "Kommando for vinduesskærmbillede"
+
+#~ msgid ""
+#~ "This option determines the effects of double-clicking on the title bar. "
+#~ "Current valid options are 'toggle_shade', which will shade/unshade the "
+#~ "window, 'toggle_maximize' which will maximize/unmaximize the window, "
+#~ "'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which "
+#~ "will maximize/unmaximize the window in that direction only, 'minimize' "
+#~ "which will minimize the window, 'shade' which will roll the window up, "
+#~ "'menu' which will display the window menu, 'lower' which will put the "
+#~ "window behind all the others, and 'none' which will not do anything."
+#~ msgstr ""
+#~ "Angiver hvad der sker når der dobbeltklikkes på titellinjen. Nuværende "
+#~ "gyldige muligheder er \"toggle_shade\" som ruller vinduet op/ned, "
+#~ "\"toggle_maximize\" som skifter mellem maksimeret/normal tilstand for "
+#~ "vinduet, \"toggle_maximize_horizontally\" og \"toggle_maximize_vertically"
+#~ "\" som vil skifte mellem maksimeret og normal tilstand kun i den retning, "
+#~ "\"minimize\" som vil minimere vinduet, \"shade\" som vil rulle vinduet "
+#~ "op, \"menu\" som vil vise vinduesmenuen, \"lower\" som vil placere "
+#~ "vinduet bag alle andre og \"none\" som ingenting gør."
+
+#~ msgid ""
+#~ "This option determines the effects of middle-clicking on the title bar. "
+#~ "Current valid options are 'toggle_shade', which will shade/unshade the "
+#~ "window, 'toggle_maximize' which will maximize/unmaximize the window, "
+#~ "'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which "
+#~ "will maximize/unmaximize the window in that direction only, 'minimize' "
+#~ "which will minimize the window, 'shade' which will roll the window up, "
+#~ "'menu' which will display the window menu, 'lower' which will put the "
+#~ "window behind all the others, and 'none' which will not do anything."
+#~ msgstr ""
+#~ "Angiver hvad der sker når der midterklikkes på titellinjen. Nuværende "
+#~ "gyldige muligheder er \"toggle_shade\" som ruller vinduet op/ned, "
+#~ "\"toggle_maximize\" som skifter mellem maksimeret/normal tilstand for "
+#~ "vinduet, \"toggle_maximize_horizontally\" og \"toggle_maximize_vertically"
+#~ "\" som vil skifte mellem maksimeret og normal tilstand kun i den retning, "
+#~ "\"minimize\" som vil minimere vinduet, \"shade\" som vil rulle vinduet "
+#~ "op, \"menu\" som vil vise vinduesmenuen, \"lower\" som vil placere "
+#~ "vinduet bag alle andre og \"none\" som ingenting gør."
+
+#~ msgid ""
+#~ "This option determines the effects of right-clicking on the title bar. "
+#~ "Current valid options are 'toggle_shade', which will shade/unshade the "
+#~ "window, 'toggle_maximize' which will maximize/unmaximize the window, "
+#~ "'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which "
+#~ "will maximize/unmaximize the window in that direction only, 'minimize' "
+#~ "which will minimize the window, 'shade' which will roll the window up, "
+#~ "'menu' which will display the window menu, 'lower' which will put the "
+#~ "window behind all the others, and 'none' which will not do anything."
+#~ msgstr ""
+#~ "Angiver hvad der sker når der højreklikkes på titellinjen. Nuværende "
+#~ "gyldige muligheder er \"toggle_shade\" som ruller vinduet op/ned, "
+#~ "\"toggle_maximize\" som skifter mellem maksimeret/normal tilstand for "
+#~ "vinduet, \"toggle_maximize_horizontally\" og \"toggle_maximize_vertically"
+#~ "\" som vil skifte mellem maksimeret og normal tilstand kun i den retning, "
+#~ "\"minimize\" som vil minimere vinduet, \"shade\" som vil rulle vinduet "
+#~ "op, \"menu\" som vil vise vinduesmenuen, \"lower\" som vil placere "
+#~ "vinduet bag alle andre og \"none\" som ingenting gør."
+
+#~ msgid ""
+#~ "This option provides additional control over how newly created windows "
+#~ "get focus. It has two possible values; \"smart\" applies the user's "
+#~ "normal focus mode, and \"strict\" results in windows started from a "
+#~ "terminal not being given focus."
+#~ msgstr ""
+#~ "Denne indstilling giver yderligere kontrol over måden hvorpå nyoprettede "
+#~ "vinduer bringes i fokus. Den har to mulige værdier; \"smart\" anvender "
+#~ "brugerens normale fokusindstillinger, og \"strict\" resulterer i at "
+#~ "vinduer der startes fra en terminal ikke gives fokus."
+
+#~ msgid ""
+#~ "Turns on a visual indication when an application or the system issues a "
+#~ "'bell' or 'beep'; useful for the hard-of-hearing and for use in noisy "
+#~ "environments."
+#~ msgstr ""
+#~ "Aktiverer visuel tilkendegivelse idet et program eller systemet udsender "
+#~ "et bip; nyttigt for svagthørende eller til brug i støjende omgivelser."
+
+#~ msgid "Use standard system font in window titles"
+#~ msgstr "Benyt standardskrifttypen i vinduestitler"
+
+#~ msgid "Visual Bell Type"
+#~ msgstr "Visuel bip-type"
+
+#~ msgid "Whether raising should be a side-effect of other user interactions"
+#~ msgstr "Om hævning skal være en bivirkning af andre brugerhændelser"
+
+#~ msgid "Whether to resize with the right button"
+#~ msgstr "Om der ændres størrelse med højre tast"
+
+#~ msgid "Window focus mode"
+#~ msgstr "Vinduesfokuseringstilstand"
+
+#~ msgid "Window title font"
+#~ msgstr "Skrifttype til vinduestitel"
+
+#~ msgid "/Windows/tearoff"
+#~ msgstr "/Vinduer/rivaf"
+
+#~ msgid "/Windows/_Dialog"
+#~ msgstr "/Vinduer/_Meddelelsevindue"
+
+#~ msgid "/Windows/_Modal dialog"
+#~ msgstr "/Vinduer/_Modalt meddelelsevindue"
+
+#~ msgid "/Windows/Des_ktop"
+#~ msgstr "/Windows/_Skrivebord"
 
 #~ msgid "Window Management"
 #~ msgstr "Vindueshåndtering"
@@ -2468,15 +2368,6 @@ msgstr ""
 #~ "\n"
 #~ "<i>Du kan vælge at vente et lille stykke tid på at programmet fortsætter, "
 #~ "eller du kan tvinge programmet til at afslutte fuldstændigt.</i>"
-
-#~ msgid "Open another one of these windows"
-#~ msgstr "Åbn endnu et af disse vinduer"
-
-#~ msgid "This is a demo button with an 'open' icon"
-#~ msgstr "Dette er en demoknap med et \"åbn\"-ikon"
-
-#~ msgid "This is a demo button with a 'quit' icon"
-#~ msgstr "Dette er en demoknap med et \"afslut\"-ikon"
 
 #~ msgid ""
 #~ "Error launching metacity-dialog to warn about apps that don't support "
