@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-08 07:33+0200\n"
-"PO-Revision-Date: 2012-01-08 07:33+0200\n"
+"POT-Creation-Date: 2012-02-21 10:11+0200\n"
+"PO-Revision-Date: 2012-02-21 10:11+0200\n"
 "Last-Translator: Alexander Shopov <ash@kambanaria.org>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "Language: bg\n"
@@ -481,7 +481,7 @@ msgstr "Неуспех при изпълнението на fdopen() върху 
 #: ../src/core/util.c:117
 #, c-format
 msgid "Opened log file %s\n"
-msgstr "Отворен е дневника %s\n"
+msgstr "Отворен е дневникът %s\n"
 
 #: ../src/core/util.c:136 ../src/tools/metacity-message.c:176
 #, c-format
@@ -635,47 +635,47 @@ msgstr ""
 msgid "Usage: %s\n"
 msgstr "Употреба: %s\n"
 
-#: ../src/ui/frames.c:1120
+#: ../src/ui/frames.c:1114
 msgid "Close Window"
 msgstr "Затваряне на прозореца"
 
-#: ../src/ui/frames.c:1123
+#: ../src/ui/frames.c:1117
 msgid "Window Menu"
 msgstr "Меню за прозорците"
 
-#: ../src/ui/frames.c:1126
+#: ../src/ui/frames.c:1120
 msgid "Minimize Window"
 msgstr "Минимизиране на прозореца"
 
-#: ../src/ui/frames.c:1129
+#: ../src/ui/frames.c:1123
 msgid "Maximize Window"
 msgstr "Максимизиране на прозореца"
 
-#: ../src/ui/frames.c:1132
+#: ../src/ui/frames.c:1126
 msgid "Restore Window"
 msgstr "Възстановяване на прозорец"
 
-#: ../src/ui/frames.c:1135
+#: ../src/ui/frames.c:1129
 msgid "Roll Up Window"
 msgstr "Навиване на прозореца"
 
-#: ../src/ui/frames.c:1138
+#: ../src/ui/frames.c:1132
 msgid "Unroll Window"
 msgstr "Развиване на прозореца"
 
-#: ../src/ui/frames.c:1141
+#: ../src/ui/frames.c:1135
 msgid "Keep Window On Top"
 msgstr "Прозорецът да е отгоре"
 
-#: ../src/ui/frames.c:1144
+#: ../src/ui/frames.c:1138
 msgid "Remove Window From Top"
 msgstr "Прозорецът да не е само отгоре"
 
-#: ../src/ui/frames.c:1147
+#: ../src/ui/frames.c:1141
 msgid "Always On Visible Workspace"
 msgstr "Винаги на видимия работен плот"
 
-#: ../src/ui/frames.c:1150
+#: ../src/ui/frames.c:1144
 msgid "Put Window On Only One Workspace"
 msgstr "Прозорецът да се появява само на едно работно място"
 
@@ -761,22 +761,22 @@ msgstr "Преместване в _долния работен плот"
 msgid "_Close"
 msgstr "_Затваряне"
 
-#: ../src/ui/menu.c:203
+#: ../src/ui/menu.c:205
 #, c-format
 msgid "Workspace %d%n"
 msgstr "Работен плот %d%n"
 
-#: ../src/ui/menu.c:213
+#: ../src/ui/menu.c:215
 #, c-format
 msgid "Workspace 1_0"
 msgstr "Работен плот 1_0"
 
-#: ../src/ui/menu.c:215
+#: ../src/ui/menu.c:217
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Работен плот %s%d"
 
-#: ../src/ui/menu.c:395
+#: ../src/ui/menu.c:398
 msgid "Move to Another _Workspace"
 msgstr "Преместване на др_уг работен плот"
 
@@ -785,7 +785,7 @@ msgstr "Преместване на др_уг работен плот"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:104
+#: ../src/ui/metaaccellabel.c:80
 msgid "Shift"
 msgstr "Shift"
 
@@ -794,7 +794,7 @@ msgstr "Shift"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:110
+#: ../src/ui/metaaccellabel.c:86
 msgid "Ctrl"
 msgstr "Ctrl"
 
@@ -803,7 +803,7 @@ msgstr "Ctrl"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:116
+#: ../src/ui/metaaccellabel.c:92
 msgid "Alt"
 msgstr "Alt"
 
@@ -812,7 +812,7 @@ msgstr "Alt"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:122
+#: ../src/ui/metaaccellabel.c:98
 msgid "Meta"
 msgstr "Meta"
 
@@ -821,7 +821,7 @@ msgstr "Meta"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:128
+#: ../src/ui/metaaccellabel.c:104
 msgid "Super"
 msgstr "Super"
 
@@ -830,7 +830,7 @@ msgstr "Super"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:134
+#: ../src/ui/metaaccellabel.c:110
 msgid "Hyper"
 msgstr "Hyper"
 
@@ -839,7 +839,7 @@ msgstr "Hyper"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:140
+#: ../src/ui/metaaccellabel.c:116
 msgid "Mod2"
 msgstr "Mod2"
 
@@ -848,7 +848,7 @@ msgstr "Mod2"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:146
+#: ../src/ui/metaaccellabel.c:122
 msgid "Mod3"
 msgstr "Mod3"
 
@@ -857,7 +857,7 @@ msgstr "Mod3"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:152
+#: ../src/ui/metaaccellabel.c:128
 msgid "Mod4"
 msgstr "Mod4"
 
@@ -866,7 +866,7 @@ msgstr "Mod4"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:158
+#: ../src/ui/metaaccellabel.c:134
 msgid "Mod5"
 msgstr "Mod5"
 
@@ -1510,145 +1510,153 @@ msgstr "Неуспех при намирането на валиден файл 
 msgid "Theme file %s did not contain a root <metacity_theme> element"
 msgstr "Файлът-тема %s не съдържа коренов <metacity_theme> елемент"
 
-#: ../src/ui/theme-viewer.c:75
-msgid "/_Windows"
-msgstr "/_Прозорци"
+#: ../src/ui/theme-viewer.c:99
+msgid "_Windows"
+msgstr "_Прозорци"
 
-#: ../src/ui/theme-viewer.c:76
-msgid "/Windows/tearoff"
-msgstr "/Прозорци/откъсване"
+#: ../src/ui/theme-viewer.c:100
+msgid "_Dialog"
+msgstr "_Диалогов прозорец"
 
-#: ../src/ui/theme-viewer.c:77
-msgid "/Windows/_Dialog"
-msgstr "/Прозорци/_Диалогов"
+#: ../src/ui/theme-viewer.c:101
+msgid "_Modal dialog"
+msgstr "_Модален диалогов прозорец"
 
-#: ../src/ui/theme-viewer.c:78
-msgid "/Windows/_Modal dialog"
-msgstr "/Прозорци/_Модален диалогов"
+#: ../src/ui/theme-viewer.c:102
+msgid "_Utility"
+msgstr "_Инструмент"
 
-#: ../src/ui/theme-viewer.c:79
-msgid "/Windows/_Utility"
-msgstr "/Прозорци/_Инструмент"
+#: ../src/ui/theme-viewer.c:103
+msgid "_Splashscreen"
+msgstr "_Стартиращ екран"
 
-#: ../src/ui/theme-viewer.c:80
-msgid "/Windows/_Splashscreen"
-msgstr "/Прозорци/_Стартиращ екран"
+#: ../src/ui/theme-viewer.c:104
+msgid "_Top dock"
+msgstr "_Горен док"
 
-#: ../src/ui/theme-viewer.c:81
-msgid "/Windows/_Top dock"
-msgstr "/Прозорци/_Горен док"
+#: ../src/ui/theme-viewer.c:105
+msgid "_Bottom dock"
+msgstr "_Долен док"
 
-#: ../src/ui/theme-viewer.c:82
-msgid "/Windows/_Bottom dock"
-msgstr "/Прозорци/_Долен док"
+#: ../src/ui/theme-viewer.c:106
+msgid "_Left dock"
+msgstr "_Ляв док"
 
-#: ../src/ui/theme-viewer.c:83
-msgid "/Windows/_Left dock"
-msgstr "/Прозорци/_Ляв док"
+#: ../src/ui/theme-viewer.c:107
+msgid "_Right dock"
+msgstr "_Десен док"
 
-#: ../src/ui/theme-viewer.c:84
-msgid "/Windows/_Right dock"
-msgstr "/Прозорци/_Десен док"
+#: ../src/ui/theme-viewer.c:108
+msgid "_All docks"
+msgstr "_Всички докове"
 
-#: ../src/ui/theme-viewer.c:85
-msgid "/Windows/_All docks"
-msgstr "/Прозорци/_Всички докове"
+#: ../src/ui/theme-viewer.c:109
+msgid "Des_ktop"
+msgstr "Работен _плот"
 
-#: ../src/ui/theme-viewer.c:86
-msgid "/Windows/Des_ktop"
-msgstr "/Прозорци/Работен _плот"
+#: ../src/ui/theme-viewer.c:115
+msgid "Open another one of these windows"
+msgstr "Отваряне на някой друг от тези прозорци"
 
-#: ../src/ui/theme-viewer.c:244
+#: ../src/ui/theme-viewer.c:117
+msgid "This is a demo button with an 'open' icon"
+msgstr "Това е бутон за демонстрация с икона „отваряне“"
+
+#: ../src/ui/theme-viewer.c:119
+msgid "This is a demo button with a 'quit' icon"
+msgstr "Това е бутон за демонстрация с икона „спиране“"
+
+#: ../src/ui/theme-viewer.c:253
 msgid "This is a sample message in a sample dialog"
 msgstr "Това е примерно съобщение в примерен диалогов прозорец"
 
-#: ../src/ui/theme-viewer.c:327
+#: ../src/ui/theme-viewer.c:336
 #, c-format
 msgid "Fake menu item %d\n"
 msgstr "Фалшив обект на менюто %d\n"
 
-#: ../src/ui/theme-viewer.c:361
+#: ../src/ui/theme-viewer.c:370
 msgid "Border-only window"
 msgstr "Прозорец само с граници"
 
-#: ../src/ui/theme-viewer.c:363
+#: ../src/ui/theme-viewer.c:372
 msgid "Bar"
 msgstr "Лента"
 
-#: ../src/ui/theme-viewer.c:380
+#: ../src/ui/theme-viewer.c:389
 msgid "Normal Application Window"
 msgstr "Нормален прозорец на програма"
 
-#: ../src/ui/theme-viewer.c:384
+#: ../src/ui/theme-viewer.c:393
 msgid "Dialog Box"
-msgstr "Диалогова кутия"
+msgstr "Диалогов прозорец"
 
-#: ../src/ui/theme-viewer.c:388
+#: ../src/ui/theme-viewer.c:397
 msgid "Modal Dialog Box"
-msgstr "Модална диалогова кутия"
+msgstr "Модален диалогов прозорец"
 
-#: ../src/ui/theme-viewer.c:392
+#: ../src/ui/theme-viewer.c:401
 msgid "Utility Palette"
 msgstr "Палитра на инструментите"
 
-#: ../src/ui/theme-viewer.c:396
+#: ../src/ui/theme-viewer.c:405
 msgid "Torn-off Menu"
 msgstr "Откъсване на менюто"
 
-#: ../src/ui/theme-viewer.c:400
+#: ../src/ui/theme-viewer.c:409
 msgid "Border"
 msgstr "Граница"
 
-#: ../src/ui/theme-viewer.c:728
+#: ../src/ui/theme-viewer.c:737
 #, c-format
 msgid "Button layout test %d"
 msgstr "Тест за подредбата на бутоните %d"
 
-#: ../src/ui/theme-viewer.c:757
+#: ../src/ui/theme-viewer.c:766
 #, c-format
 msgid "%g milliseconds to draw one window frame"
 msgstr "%g милисекунди за да изрисува една прозоречна рамка"
 
-#: ../src/ui/theme-viewer.c:800
+#: ../src/ui/theme-viewer.c:810
 #, c-format
 msgid "Usage: metacity-theme-viewer [THEMENAME]\n"
 msgstr "Употреба: metacity-theme-viewer [ИМЕНАТЕМАТА]\n"
 
-#: ../src/ui/theme-viewer.c:807
+#: ../src/ui/theme-viewer.c:817
 #, c-format
 msgid "Error loading theme: %s\n"
 msgstr "Грешка при зареждането на темата: %s\n"
 
-#: ../src/ui/theme-viewer.c:813
+#: ../src/ui/theme-viewer.c:823
 #, c-format
 msgid "Loaded theme \"%s\" in %g seconds\n"
 msgstr "Темата „%s“ е заредена за %g секунди\n"
 
-#: ../src/ui/theme-viewer.c:854
+#: ../src/ui/theme-viewer.c:866
 msgid "Normal Title Font"
 msgstr "Нормален шрифт на заглавието"
 
-#: ../src/ui/theme-viewer.c:860
+#: ../src/ui/theme-viewer.c:872
 msgid "Small Title Font"
 msgstr "Малък шрифт на заглавието"
 
-#: ../src/ui/theme-viewer.c:866
+#: ../src/ui/theme-viewer.c:878
 msgid "Large Title Font"
 msgstr "Голям шрифт на заглавието"
 
-#: ../src/ui/theme-viewer.c:871
+#: ../src/ui/theme-viewer.c:883
 msgid "Button Layouts"
 msgstr "Изглед на бутоните"
 
-#: ../src/ui/theme-viewer.c:876
+#: ../src/ui/theme-viewer.c:888
 msgid "Benchmark"
 msgstr "Статистика"
 
-#: ../src/ui/theme-viewer.c:923
+#: ../src/ui/theme-viewer.c:935
 msgid "Window Title Goes Here"
 msgstr "Тук се поставя заглавието на прозорците"
 
-#: ../src/ui/theme-viewer.c:1027
+#: ../src/ui/theme-viewer.c:1039
 #, c-format
 msgid ""
 "Drew %d frames in %g client-side seconds (%g milliseconds per frame) and %g "
@@ -1659,640 +1667,43 @@ msgstr ""
 "на кадър) и %g секунди нормално време, което включва ресурси от страна на "
 "сървъра X (по %g милисекунди на кадър)\n"
 
-#: ../src/ui/theme-viewer.c:1246
+#: ../src/ui/theme-viewer.c:1258
 msgid "position expression test returned TRUE but set error"
 msgstr ""
 "изразът за проверка на разположението върна TRUE, но зададе състояние за "
 "грешка"
 
-#: ../src/ui/theme-viewer.c:1248
+#: ../src/ui/theme-viewer.c:1260
 msgid "position expression test returned FALSE but didn't set error"
 msgstr ""
 "изразът за проверка на разположението върна FALSE, но не зададе състояние за "
 "грешка"
 
-#: ../src/ui/theme-viewer.c:1252
+#: ../src/ui/theme-viewer.c:1264
 msgid "Error was expected but none given"
 msgstr "Очакваше се грешка, но не беше дадена никаква"
 
-#: ../src/ui/theme-viewer.c:1254
+#: ../src/ui/theme-viewer.c:1266
 #, c-format
 msgid "Error %d was expected but %d given"
 msgstr "Очакваше се грешка %d, но беше дадена %d"
 
-#: ../src/ui/theme-viewer.c:1260
+#: ../src/ui/theme-viewer.c:1272
 #, c-format
 msgid "Error not expected but one was returned: %s"
 msgstr "Не се очакваше грешка, но беше върната една: %s"
 
-#: ../src/ui/theme-viewer.c:1264
+#: ../src/ui/theme-viewer.c:1276
 #, c-format
 msgid "x value was %d, %d was expected"
 msgstr "стойността на x бе %d, а се очакваше %d"
 
-#: ../src/ui/theme-viewer.c:1267
+#: ../src/ui/theme-viewer.c:1279
 #, c-format
 msgid "y value was %d, %d was expected"
 msgstr "стойността y бе %d, а се очакваше %d"
 
-#: ../src/ui/theme-viewer.c:1332
+#: ../src/ui/theme-viewer.c:1344
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr "%d координатен израз обработен за %g секунди (%g секунди средно)\n"
-
-#~ msgid "Launchers"
-#~ msgstr "Стартери"
-
-#~ msgid "Screenshots"
-#~ msgstr "Снимки на екрана"
-
-#~ msgid ""
-#~ "There was an error running <tt>%s</tt>:\n"
-#~ "\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Имаше грешка при изпълнението на <tt>%s</tt>:\n"
-#~ "\n"
-#~ "%s"
-
-#~ msgid "No command %d has been defined.\n"
-#~ msgstr "Не е дефинирана команда %d.\n"
-
-#~ msgid "No terminal command has been defined.\n"
-#~ msgstr "Не е дефинирана команда за терминал.\n"
-
-#~ msgid "GConf key '%s' is set to an invalid value\n"
-#~ msgstr "Ключът на GConf — „%s“ е с невалидна стойност\n"
-
-#~ msgid "%d stored in GConf key %s is out of range %d to %d\n"
-#~ msgstr ""
-#~ "Стойността %d записана в ключа на GConf — %s е извън обхвата от %d÷%d\n"
-
-#~ msgid "GConf key \"%s\" is set to an invalid type\n"
-#~ msgstr "Ключът на GConf — „%s“ е от невалиден вид\n"
-
-#~ msgid "Error setting number of workspaces to %d: %s\n"
-#~ msgstr "Грешка при задаване на броя на работни места да е %d: %s\n"
-
-#~ msgid "Error setting name for workspace %d to \"%s\": %s\n"
-#~ msgstr "Грешка при задаване на името на работното място %d да е „%s“: %s\n"
-
-#~ msgid "Error setting compositor status: %s\n"
-#~ msgstr ""
-#~ "Грешка при задаване на състоянието на мениджъра за наслагването: %s\n"
-
-#~ msgid ""
-#~ "The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
-#~ "\n"
-#~ "The parser is fairly liberal and allows lower or upper case, and also "
-#~ "abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to "
-#~ "the special string \"disabled\", then there will be no keybinding for "
-#~ "this action."
-#~ msgstr ""
-#~ "Форматът е от вида „<Control>a“ или „<Shift><Alt>F1“.\n"
-#~ "\n"
-#~ "Анализиращата програма е доста либерална по отношение на регистъра и "
-#~ "съкращения от вида „<Ctl>“ и „<Ctrl>“. Ако зададете стойността да е "
-#~ "специалният низ „disabled“, това действие няма да има бърз клавиш."
-
-#~ msgid ""
-#~ "The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
-#~ "\n"
-#~ "The parser is fairly liberal and allows lower or upper case, and also "
-#~ "abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to "
-#~ "the special string \"disabled\", then there will be no keybinding for "
-#~ "this action.\n"
-#~ "\n"
-#~ "This keybinding may be reversed by holding down the \"shift\" key; "
-#~ "therefore, \"shift\" cannot be one of the keys it uses."
-#~ msgstr ""
-#~ "Форматът е от вида „<Control>a“ или „<Shift><Alt>F1“.\n"
-#~ "\n"
-#~ "Анализиращата програма е доста либерална по отношение на регистъра и "
-#~ "съкращения от вида „<Ctl>“ и „<Ctrl>“. Ако зададете стойността да е "
-#~ "специалният низ „disabled“, това действие няма да има бърз клавиш."
-
-#~ msgid "Switch to workspace 5"
-#~ msgstr "Превключване към работен плот 5"
-
-#~ msgid "Switch to workspace 6"
-#~ msgstr "Превключване към работен плот 6"
-
-#~ msgid "Switch to workspace 7"
-#~ msgstr "Превключване към работен плот 7"
-
-#~ msgid "Switch to workspace 8"
-#~ msgstr "Превключване към работен плот 8"
-
-#~ msgid "Switch to workspace 9"
-#~ msgstr "Превключване към работен плот 9"
-
-#~ msgid "Switch to workspace 10"
-#~ msgstr "Превключване към работен плот 10"
-
-#~ msgid "Switch to workspace 11"
-#~ msgstr "Превключване към работен плот 11"
-
-#~ msgid "Switch to workspace 12"
-#~ msgstr "Превключване към работен плот 12"
-
-#~ msgid "Reverse switch windows of an application"
-#~ msgstr ""
-#~ "Преместване на фокуса между прозорците на едно приложение в обратен ред"
-
-#~ msgid "Reverse switch applications"
-#~ msgstr "Преместване на фокуса между програмите в обратен ред"
-
-#~ msgid "Reverse switch system controls"
-#~ msgstr "Преместване на фокуса между служебните обекти в обратен ред"
-
-#~ msgid "Reverse switch windows of an app directly"
-#~ msgstr ""
-#~ "Незабавно преместване на фокуса между прозорците на едно приложение в "
-#~ "обратен ред"
-
-#~ msgid "Reverse switch windows directly"
-#~ msgstr "Незабавно преместване на фокуса между програмите в обратен ред"
-
-#~ msgid "Reverse switch system controls directly"
-#~ msgstr ""
-#~ "Незабавно преместване на фокуса между служебните обекти в обратен ред"
-
-#~ msgid "Take a screenshot"
-#~ msgstr "Снимане на екрана"
-
-#~ msgid "Take a screenshot of a window"
-#~ msgstr "Снимка на отделен прозорец"
-
-#~ msgid "Launch Terminal"
-#~ msgstr "Стартиране на терминал"
-
-#~ msgid "Toggle window always appearing on top"
-#~ msgstr "Превключване на състоянието винаги отгоре"
-
-#~ msgid "Move window to workspace 5"
-#~ msgstr "Преместване на прозореца в работен плот 5"
-
-#~ msgid "Move window to workspace 6"
-#~ msgstr "Преместване на прозореца в работен плот 6"
-
-#~ msgid "Move window to workspace 7"
-#~ msgstr "Преместване на прозореца в работен плот 7"
-
-#~ msgid "Move window to workspace 8"
-#~ msgstr "Преместване на прозореца в работен плот 8"
-
-#~ msgid "Move window to workspace 9"
-#~ msgstr "Преместване на прозореца на работен плот 9"
-
-#~ msgid "Move window to workspace 10"
-#~ msgstr "Преместване на прозореца в работен плот 10"
-
-#~ msgid "Move window to workspace 11"
-#~ msgstr "Преместване на прозореца в работен плот 11"
-
-#~ msgid "Move window to workspace 12"
-#~ msgstr "Преместване на прозореца в работен плот 12"
-
-#~ msgid "Move window to top left corner"
-#~ msgstr "Преместване на прозореца в горния ляв ъгъл на екрана"
-
-#~ msgid "Move window to top right corner"
-#~ msgstr "Преместване на прозореца в горния десен ъгъл на екрана"
-
-#~ msgid "Move window to bottom left corner"
-#~ msgstr "Преместване на прозореца в долния ляв ъгъл на екрана"
-
-#~ msgid "Move window to bottom right corner"
-#~ msgstr "Преместване на прозореца в долния десен ъгъл на екрана"
-
-#~ msgid "Move window to top edge of screen"
-#~ msgstr "Преместване на прозореца в горната част на екрана"
-
-#~ msgid "Move window to bottom edge of screen"
-#~ msgstr "Преместване на прозореца в долната част на екрана"
-
-#~ msgid "Move window to right side of screen"
-#~ msgstr "Преместване на прозореца в дясната част на екрана"
-
-#~ msgid "Move window to left side of screen"
-#~ msgstr "Преместване на прозореца в лявата част на екрана"
-
-#~ msgid "Move window to center of screen"
-#~ msgstr "Преместване на прозореца в средата на екрана"
-
-#~ msgid ""
-#~ "(Not implemented) Navigation works in terms of applications not windows"
-#~ msgstr ""
-#~ "Все още не е осъществено: навигацията работи в рамките на програмите, а "
-#~ "не на прозорците"
-
-#~ msgid ""
-#~ "A font description string describing a font for window titlebars. The "
-#~ "size from the description will only be used if the titlebar_font_size "
-#~ "option is set to 0. Also, this option is disabled if the "
-#~ "titlebar_uses_desktop_font option is set to true."
-#~ msgstr ""
-#~ "Низ описващ шрифта за заглавната лента на прозорците. Размерът от "
-#~ "описанието ще се използва, само ако настройката titlebar_font_size е "
-#~ "установена на 0. Тази настройка е неактивна, ако настройката "
-#~ "titlebar_uses_desktop_font е включена."
-
-#~ msgid "Action on title bar double-click"
-#~ msgstr "Действие при двойно натискане върху заглавната лента"
-
-#~ msgid "Action on title bar middle-click"
-#~ msgstr ""
-#~ "Действие при натискане със средния бутон на мишката върху заглавната лента"
-
-#~ msgid "Action on title bar right-click"
-#~ msgstr ""
-#~ "Действие при натискане с десния бутон на мишката върху заглавната лента"
-
-#~ msgid "Arrangement of buttons on the titlebar"
-#~ msgstr "Подредба на бутоните в заглавната лента"
-
-#~ msgid ""
-#~ "Arrangement of buttons on the titlebar. The value should be a string, "
-#~ "such as \"menu:minimize,maximize,spacer,close\"; the colon separates the "
-#~ "left corner of the window from the right corner, and the button names are "
-#~ "comma-separated. Duplicate buttons are not allowed. Unknown button names "
-#~ "are silently ignored so that buttons can be added in future metacity "
-#~ "versions without breaking older versions. A special spacer tag can be "
-#~ "used to insert some space between two adjacent buttons."
-#~ msgstr ""
-#~ "Подредба на бутоните в заглавната лента. Стойността трябва да е низ от "
-#~ "вида „menu:minimize,maximize,spacer,close“. С „:“ се разделят левия от "
-#~ "десния ъгъл на прозореца, а със „,“ — имената на бутоните. Не са "
-#~ "позволени повторения на бутоните. Непознатите имена се игнорират, така че "
-#~ "в бъдещи версии на Metacity да могат да се добавят нови бутони, без да се "
-#~ "пречи на старите версии. Може да се използва специален етикет „spacer“ за "
-#~ "вмъкване на шпация между два съседни бутона."
-
-#~ msgid "Automatically raises the focused window"
-#~ msgstr "Автоматично издигане на фокусирания прозорец"
-
-#~ msgid ""
-#~ "Clicking a window while holding down this modifier key will move the "
-#~ "window (left click), resize the window (middle click), or show the window "
-#~ "menu (right click). The middle and right click operations may be swapped "
-#~ "using the \"resize_with_right_button\" key. Modifier is expressed as "
-#~ "\"&lt;Alt&gt;\" or \"&lt;Super&gt;\" for example."
-#~ msgstr ""
-#~ "Натискането на прозорец, когато този модифициращ клавиш е натиснат, "
-#~ "премества прозореца (ляв бутон на мишката), оразмерява прозореца (среден "
-#~ "бутон) или показва менюто за прозорци (десен бутон). Действието на "
-#~ "средния и десния бутон може да се размени чрез ключа "
-#~ "„mouse_button_resize“. Модификаторът е от вида „&lt;Alt&gt;“ или „&lt;"
-#~ "Super&gt;“ например."
-
-#~ msgid "Commands to run in response to keybindings"
-#~ msgstr "Команди, които да се изпълнят при натискането на бърз клавиш"
-
-#~ msgid "Control how new windows get focus"
-#~ msgstr "Кога новите прозорци получават фокуса"
-
-#~ msgid "Current theme"
-#~ msgstr "Текуща тема"
-
-#~ msgid "Delay in milliseconds for the auto raise option"
-#~ msgstr "Забавяне в милисекунди за настройката за автоматично издигане"
-
-#~ msgid ""
-#~ "Determines whether applications or the system can generate audible "
-#~ "'beeps'; may be used in conjunction with 'visual bell' to allow silent "
-#~ "'beeps'."
-#~ msgstr ""
-#~ "Определя дали програми или системата може да генерират звукови "
-#~ "„бибиткания“. Може да се използва заедно с „визуален звънец“, за да се "
-#~ "позволят тихи „бибиткания“."
-
-#~ msgid "Disable misfeatures that are required by old or broken applications"
-#~ msgstr ""
-#~ "Изключва неправилното поведение изисквано от стари приложения или такива "
-#~ "с грешки"
-
-#~ msgid "Enable Visual Bell"
-#~ msgstr "Включване на визуалния звънец"
-
-#~ msgid ""
-#~ "If set to true, and the focus mode is either \"sloppy\" or \"mouse\" then "
-#~ "the focused window will be automatically raised after a delay specified "
-#~ "by the auto_raise_delay key. This is not related to clicking on a window "
-#~ "to raise it, nor to entering a window during drag-and-drop."
-#~ msgstr ""
-#~ "Ако е зададено като истина и начинът за фокусиране е „sloppy“ или "
-#~ "„mouse“, тогава фокусираният прозорец ще бъде автоматично издигнат след "
-#~ "определен интервал, който е зададен в ключа auto_raise_delay. Това "
-#~ "поведение не е свързано с натискането на бутоните на мишката за "
-#~ "издигането на прозорец, нито с с навлизането на показалеца на мишката при "
-#~ "действие на провлачване и пускане."
-
-#~ msgid ""
-#~ "If true, ignore the titlebar_font option, and use the standard "
-#~ "application font for window titles."
-#~ msgstr ""
-#~ "Ако е зададено като истина, настройката за titlebar_font се игнорира. За "
-#~ "заглавията на прозорците се използва стандартният шрифт за приложенията."
-
-#~ msgid ""
-#~ "If true, then Metacity works in terms of applications rather than "
-#~ "windows. The concept is a bit abstract, but in general an application-"
-#~ "based setup is more like the Mac and less like Windows. When you focus a "
-#~ "window in application-based mode, all the windows in the application will "
-#~ "be raised. Also, in application-based mode, focus clicks are not passed "
-#~ "through to windows in other applications. Application-based mode is, "
-#~ "however, largely unimplemented at the moment."
-#~ msgstr ""
-#~ "Ако е зададено като истина, Metacity работи на базата на приложения, а не "
-#~ "на прозорци. Идеята е малко абстрактна, но като цяло подходът базиран на "
-#~ "приложения е по-близък до Macintosh отколкото до Windows. Когато "
-#~ "фокусирате прозорец при подход базиран на приложения, всички прозорци на "
-#~ "приложението ще се издигнат. При този подход натисканията за фокусиране "
-#~ "не се предават на прозорците на други приложения. На този етап подходът "
-#~ "на базата на приложения още не е осъществен изцяло."
-
-#~ msgid "Modifier to use for modified window click actions"
-#~ msgstr ""
-#~ "Модификатор, който да се ползва за модифицираните действия с натискания "
-#~ "по прозорците"
-
-#~ msgid "Name of workspace"
-#~ msgstr "Име на работния плот"
-
-#~ msgid "Number of workspaces"
-#~ msgstr "Брой работни плотове"
-
-#~ msgid ""
-#~ "Number of workspaces. Must be more than zero, and has a fixed maximum to "
-#~ "prevent making the desktop unusable by accidentally asking for too many "
-#~ "workspaces."
-#~ msgstr ""
-#~ "Брой работни плотове. Трябва да е над 0. Има горна граница (за да се "
-#~ "предотврати случайното разрушаване на средата, ако поискате прекалено "
-#~ "много работни места)."
-
-#~ msgid "Run a defined command"
-#~ msgstr "Изпълняване на определена команда"
-
-#~ msgid ""
-#~ "Set this to true to resize with the right button and show a menu with the "
-#~ "middle button while holding down the key given in \"mouse_button_modifier"
-#~ "\"; set it to false to make it work the opposite way around."
-#~ msgstr ""
-#~ "Ако е зададено като истина, десният бутон на мишката ще преоразмерява, а "
-#~ "менюто ще се показва със средния бутон, когато е натиснат клавиша зададен "
-#~ "в ключа „mouse_button_modifier“. Ако е зададено като лъжа, бутоните са с "
-#~ "разменени функции."
-
-#~ msgid ""
-#~ "Setting this option to false can lead to buggy behavior, so users are "
-#~ "strongly discouraged from changing it from the default of true. Many "
-#~ "actions (e.g. clicking in the client area, moving or resizing the window) "
-#~ "normally raise the window as a side-effect. Setting this option to false, "
-#~ "which is strongly discouraged, will decouple raising from other user "
-#~ "actions, and ignore raise requests generated by applications. See http://"
-#~ "bugzilla.gnome.org/show_bug.cgi?id=445447#c6. Even when this option is "
-#~ "false, windows can still be raised by an alt-left-click anywhere on the "
-#~ "window, a normal click on the window decorations, or by special messages "
-#~ "from pagers, such as activation requests from tasklist applets. This "
-#~ "option is currently disabled in click-to-focus mode. Note that the list "
-#~ "of ways to raise windows when raise_on_click is false does not include "
-#~ "programmatic requests from applications to raise windows; such requests "
-#~ "will be ignored regardless of the reason for the request. If you are an "
-#~ "application developer and have a user complaining that your application "
-#~ "does not work with this setting disabled, tell them it is _their_ fault "
-#~ "for breaking their window manager and that they need to change this "
-#~ "option back to true or live with the \"bug\" they requested."
-#~ msgstr ""
-#~ "Задаването на тази настройка като лъжа може да доведе до поведение с "
-#~ "грешки. Съветът ни е да не променяте стандартната стойност — истина. "
-#~ "Много действия (напр. натискането в клиентската област, местенето или "
-#~ "преоразмеряването на прозореца) обикновено издигат прозореца. Ако "
-#~ "настройката е лъжа, което ние в никакъв случай не препоръчваме, "
-#~ "издигането ще се отдели от самото действие, както и заявките за издигане "
-#~ "от самото приложение ще бъдат пренебрегвани. Вижте http://bugzilla.gnome."
-#~ "org/show_bug.cgi?id=445447#c6. Дори този ключ да е лъжа, прозорците пак "
-#~ "могат да бъдат издигани чрез натискане на Alt + ляв бутон на мишката на "
-#~ "произволно място в прозореца, натискане с левия бутон на мишката по "
-#~ "украсите на прозореца или чрез специални съобщения от пейджърите, "
-#~ "например заявки за предаване на фокус от аплет за списъка с прозорците. "
-#~ "Настройката в момента е изключена в режима за фокусиране чрез натискане "
-#~ "(ключът „focus_mode“ е „click“). Забележете, че начините за издигане на "
-#~ "прозорците, когато ключът „raise_on_click“ е лъжа, не включват "
-#~ "програмните заявки от приложенията за издигане на прозорците. Тези заявки "
-#~ "ще бъдат пренебрегвани независимо от причината за тях. Ако сте "
-#~ "разработчик на приложения и някой потребител ви се оплаче, че програмата "
-#~ "ви не работи, когато ключът е лъжа, кажете им, че вината за това си е "
-#~ "_тяхна_ — те са си настроили мениджъра на прозорци неправилно. Или ще "
-#~ "трябва да върнат стойността да е истина, или ще трябва да приемат "
-#~ "грешката, която сами са си поискали."
-
-#~ msgid ""
-#~ "Some applications disregard specifications in ways that result in window "
-#~ "manager misfeatures. This option puts Metacity in a rigorously correct "
-#~ "mode, which gives a more consistent user interface, provided one does not "
-#~ "need to run any misbehaving applications."
-#~ msgstr ""
-#~ "Някои програми нарушават спецификациите по начини, които предизвикват "
-#~ "грешно поведение на мениджъра на прозорци. Тази настройка кара Metacity "
-#~ "да работи в изцяло правилен режим, което дава малко по-добър "
-#~ "потребителски интерфейс, ако няма да стартирате развалени програми."
-
-#~ msgid "System Bell is Audible"
-#~ msgstr "Системният звънец е звуков"
-
-#~ msgid ""
-#~ "Tells Metacity how to implement the visual indication that the system "
-#~ "bell or another application 'bell' indicator has been rung. Currently "
-#~ "there are two valid values, \"fullscreen\", which causes a fullscreen "
-#~ "white-black flash, and \"frame_flash\" which causes the titlebar of the "
-#~ "application which sent the bell signal to flash. If the application which "
-#~ "sent the bell is unknown (as is usually the case for the default \"system "
-#~ "beep\"), the currently focused window's titlebar is flashed."
-#~ msgstr ""
-#~ "Задава начинът, по който Metacity визуално представя системния звънец или "
-#~ "звънеца на приложение. В момента валидни са следните две стойности: "
-#~ "„fullscreen“, което съответства на черно-бяло премигване на целия екран, "
-#~ "и „frame_flash“, което съответства на премигване на заглавната лента на "
-#~ "приложението, което звънва. Ако приложението, което звънва е неизвестно "
-#~ "(какъвто е най-честия случай при подразбиращият се системен звънец), "
-#~ "премигва заглавната лента на текущо фокусирания прозорец."
-
-#~ msgid ""
-#~ "The /apps/metacity/global_keybindings/run_command_N keys define "
-#~ "keybindings that correspond to these commands. Pressing the keybinding "
-#~ "for run_command_N will execute command_N."
-#~ msgstr ""
-#~ "Ключовете в /apps/metacity/global_keybindings/run_command_N дефинират "
-#~ "клавишни комбинации, съответстващи на тези команди. Натискането на "
-#~ "клавишната комбинация за run_command_N ще изпълни команда command_N."
-
-#~ msgid ""
-#~ "The /apps/metacity/global_keybindings/run_command_screenshot key defines "
-#~ "a keybinding which causes the command specified by this setting to be "
-#~ "invoked."
-#~ msgstr ""
-#~ "Ключът /apps/metacity/global_keybindings/run_command_screenshot определя "
-#~ "бързия клавиш, който при натискането си пуска указаната програма."
-
-#~ msgid ""
-#~ "The /apps/metacity/global_keybindings/run_command_window_screenshot key "
-#~ "defines a keybinding which causes the command specified by this setting "
-#~ "to be invoked."
-#~ msgstr ""
-#~ "Ключът /apps/metacity/global_keybindings/run_command_windows_screenshot "
-#~ "определя бързия клавиш, който при натискането си пуска указаната програма."
-
-#~ msgid ""
-#~ "The keybinding that runs the correspondingly-numbered command in /apps/"
-#~ "metacity/keybinding_commands The format looks like \"&lt;Control&gt;a\" "
-#~ "or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and "
-#~ "allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
-#~ "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
-#~ "\"disabled\", then there will be no keybinding for this action."
-#~ msgstr ""
-#~ "Бързият клавиш, който изпълнява командата със същия номер в /apps/"
-#~ "metacity/keybinding_commands. Форматът е от вида „&lt;Control&gt;a“ или "
-#~ "„&lt;Shift&gt;&lt;Alt&gt;F1“. Анализиращата програма е доста либерална по "
-#~ "отношение на регистъра и съкращения от вида „&lt;Ctl&gt;“ и „&lt;"
-#~ "Ctrl&gt;“. Ако зададете стойността да е специалният низ „disabled“, това "
-#~ "действие няма да има бърз клавиш."
-
-#~ msgid "The name of a workspace."
-#~ msgstr "Името на работния плот."
-
-#~ msgid "The screenshot command"
-#~ msgstr "Команда за снимка на екрана"
-
-#~ msgid ""
-#~ "The theme determines the appearance of window borders, titlebar, and so "
-#~ "forth."
-#~ msgstr ""
-#~ "Темата определя външния вид на рамките на прозорците, заглавната лента и "
-#~ "т.н."
-
-#~ msgid ""
-#~ "The time delay before raising a window if auto_raise is set to true. The "
-#~ "delay is given in thousandths of a second."
-#~ msgstr ""
-#~ "Закъснението в милисекунди преди да се издигне прозорец, ако auto_raise е "
-#~ "истина."
-
-#~ msgid ""
-#~ "The window focus mode indicates how windows are activated. It has three "
-#~ "possible values; \"click\" means windows must be clicked in order to "
-#~ "focus them, \"sloppy\" means windows are focused when the mouse enters "
-#~ "the window, and \"mouse\" means windows are focused when the mouse enters "
-#~ "the window and unfocused when the mouse leaves the window."
-#~ msgstr ""
-#~ "Начинът за фокусиране на прозорци указва как се активират прозорците. Има "
-#~ "три възможни стойности: „click“ означава, че прозорците трябва да бъдат "
-#~ "натиснати с мишката, за да се фокусират, „sloppy“ означава, че прозорците "
-#~ "се фокусират, когато мишката влезе в тях, а „mouse“, че прозорците се "
-#~ "фокусират, когато мишката влезе в тях и губят фокуса, когато мишката "
-#~ "излезе от тях."
-
-#~ msgid "The window screenshot command"
-#~ msgstr "Командата за снимка на екрана"
-
-#~ msgid ""
-#~ "This option determines the effects of double-clicking on the title bar. "
-#~ "Current valid options are 'toggle_shade', which will shade/unshade the "
-#~ "window, 'toggle_maximize' which will maximize/unmaximize the window, "
-#~ "'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which "
-#~ "will maximize/unmaximize the window in that direction only, 'minimize' "
-#~ "which will minimize the window, 'shade' which will roll the window up, "
-#~ "'menu' which will display the window menu, 'lower' which will put the "
-#~ "window behind all the others, and 'none' which will not do anything."
-#~ msgstr ""
-#~ "Тази настройка определя ефекта на двойното натискане с левия бутон на "
-#~ "мишката върху заглавната лента. Засега валидни стойности са "
-#~ "„toggle_shade“, която навива/развива прозореца, „toggle_maximize“, която "
-#~ "максимизира/демаксимизира прозореца, „toggle_maximize_horizontally“ и "
-#~ "„toggle_maximize_vertically“, които максимизират/демаксимират прозореца "
-#~ "само в тази посока, „minimize“, която минимизира прозореца, „shade“, "
-#~ "която навива прозореца, „menu“, която показва менюто на прозореца, "
-#~ "„lower“, която поставя прозореца под всички останали и „none“, която не "
-#~ "прави нищо."
-
-#~ msgid ""
-#~ "This option determines the effects of middle-clicking on the title bar. "
-#~ "Current valid options are 'toggle_shade', which will shade/unshade the "
-#~ "window, 'toggle_maximize' which will maximize/unmaximize the window, "
-#~ "'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which "
-#~ "will maximize/unmaximize the window in that direction only, 'minimize' "
-#~ "which will minimize the window, 'shade' which will roll the window up, "
-#~ "'menu' which will display the window menu, 'lower' which will put the "
-#~ "window behind all the others, and 'none' which will not do anything."
-#~ msgstr ""
-#~ "Тази настройка определя ефекта на натискането със среден бутон на мишката "
-#~ "върху заглавната лента. Засега валидни стойности са „toggle_shade“, която "
-#~ "навива/развива прозореца, „toggle_maximize“, която максимизира/"
-#~ "демаксимизира прозореца, „toggle_maximize_horizontally“ и "
-#~ "„toggle_maximize_vertically“, които максимизират/демаксимират прозореца "
-#~ "само в тази посока, „minimize“, която минимизира прозореца, „shade“, "
-#~ "която навива прозореца, „menu“, която показва менюто на прозореца, "
-#~ "„lower“, която поставя прозореца под всички останали и „none“, която не "
-#~ "прави нищо."
-
-#~ msgid ""
-#~ "This option determines the effects of right-clicking on the title bar. "
-#~ "Current valid options are 'toggle_shade', which will shade/unshade the "
-#~ "window, 'toggle_maximize' which will maximize/unmaximize the window, "
-#~ "'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which "
-#~ "will maximize/unmaximize the window in that direction only, 'minimize' "
-#~ "which will minimize the window, 'shade' which will roll the window up, "
-#~ "'menu' which will display the window menu, 'lower' which will put the "
-#~ "window behind all the others, and 'none' which will not do anything."
-#~ msgstr ""
-#~ "Тази настройка определя ефекта на натискането с десния бутон на мишката "
-#~ "върху заглавната лента. Засега валидни стойности са „toggle_shade“, която "
-#~ "навива/развива прозореца, „toggle_maximize“, която максимизира/"
-#~ "демаксимизира прозореца, „toggle_maximize_horizontally“ и "
-#~ "„toggle_maximize_vertically“, които максимизират/демаксимират прозореца "
-#~ "само в тази посока, „minimize“, която минимизира прозореца, „shade“, "
-#~ "която навива прозореца, „menu“, която показва менюто на прозореца, "
-#~ "„lower“, която поставя прозореца под всички останали и „none“, която не "
-#~ "прави нищо."
-
-#~ msgid ""
-#~ "This option provides additional control over how newly created windows "
-#~ "get focus. It has two possible values; \"smart\" applies the user's "
-#~ "normal focus mode, and \"strict\" results in windows started from a "
-#~ "terminal not being given focus."
-#~ msgstr ""
-#~ "Тази настройка доуточнява, кога новите прозорци получават фокуса. "
-#~ "Възможните стойности са две: „smart“ (хитър) — нормалният начин за "
-#~ "получаване на фокус и „strict“ (стриктен) — прозорците стартирани през "
-#~ "терминал не получават фокуса."
-
-#~ msgid ""
-#~ "Turns on a visual indication when an application or the system issues a "
-#~ "'bell' or 'beep'; useful for the hard-of-hearing and for use in noisy "
-#~ "environments."
-#~ msgstr ""
-#~ "Включва визуална индикация, когато програма или системата се обърнат към "
-#~ "„звънец“ или „бибиткане“. Това е полезно при хора с проблемен слух или "
-#~ "при шумно обкръжение."
-
-#~ msgid "Use standard system font in window titles"
-#~ msgstr ""
-#~ "Използване на стандартния системен шрифт за заглавията на прозорците"
-
-#~ msgid "Visual Bell Type"
-#~ msgstr "Вид визуален звънец"
-
-#~ msgid "Whether raising should be a side-effect of other user interactions"
-#~ msgstr ""
-#~ "Дали издигането трябва да се получава като страничен резултат от други "
-#~ "потребителски действия"
-
-#~ msgid "Whether to resize with the right button"
-#~ msgstr "Дали да се преоразмерява с десния бутон"
-
-#~ msgid "Window focus mode"
-#~ msgstr "Режим на фокусиране на прозорци"
-
-#~ msgid "Window title font"
-#~ msgstr "Шрифт за заглавията на прозорците"
