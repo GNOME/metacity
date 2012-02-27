@@ -6,7 +6,7 @@
 # Dinesh Nadarajah <n_dinesh@yahoo.com>, 2003.
 # Jayaradha N <jaya@pune.redhat.com>, 2004.
 # Felix <ifelix@redhat.com>, 2006.
-# Dr.T.Vasudevan <agnihot3@gmail.com>, 2007, 2009.
+# Dr.T.Vasudevan <agnihot3@gmail.com>, 2007, 2009, 2012.
 # Dr.T.vasudevan <agnihot3@gmail.com>, 2009.
 # I. Felix <ifelix@redhat.com>, 2009.
 # Dr,T,Vasudevan <agnihot3@gmail.com>, 2010, 2011.
@@ -14,41 +14,200 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity.master.ta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-01 06:11+0530\n"
-"PO-Revision-Date: 2011-04-02 11:48+0530\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2012-02-27 17:29+0530\n"
+"PO-Revision-Date: 2012-02-27 17:46+0530\n"
+"Last-Translator: Dr.T.Vasudevan <agnihot3@gmail.com>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "0500\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\\n"
 "\n"
 "\n"
 "\n"
 
-#: ../src/50-metacity-launchers.xml.in.h:1
-msgid "Launchers"
-msgstr "துவக்கிகள்"
-
 #: ../src/50-metacity-navigation.xml.in.h:1
+msgid "Hide all normal windows"
+msgstr "எல்லா வழக்கமான சாளரங்களையும் மறை"
+
+#: ../src/50-metacity-navigation.xml.in.h:2
+msgid "Move to workspace above"
+msgstr "வேலையிடத்தை மேல்பக்கத்திற்கு நகர்த்தவும்"
+
+#: ../src/50-metacity-navigation.xml.in.h:3
+msgid "Move to workspace below"
+msgstr "வேலையிடத்தை கீழே நகர்த்தவும் "
+
+#: ../src/50-metacity-navigation.xml.in.h:4
+msgid "Move to workspace left"
+msgstr "வேலையிடத்தை இடப்பக்கத்திற்கு நகர்த்தவும்"
+
+#: ../src/50-metacity-navigation.xml.in.h:5
+msgid "Move to workspace right"
+msgstr "வேலையிடத்தை வலப்பக்கத்திற்கு நகர்த்தவும்"
+
+#: ../src/50-metacity-navigation.xml.in.h:6
+msgid "Move window one workspace down"
+msgstr "ஒருபணியிடத்திற்கு கீழே சாளரத்தை நகர்த்தவும்"
+
+#: ../src/50-metacity-navigation.xml.in.h:7
+msgid "Move window one workspace to the left"
+msgstr "ஒருபணியிடத்திற்கு இடது பக்கம் சாளரத்தை நகர்த்தவும்"
+
+#: ../src/50-metacity-navigation.xml.in.h:8
+msgid "Move window one workspace to the right"
+msgstr "ஒருபணியிடத்திற்கு வலதுபக்கம் சாளரத்தை நகர்த்தவும்"
+
+#: ../src/50-metacity-navigation.xml.in.h:9
+msgid "Move window one workspace up"
+msgstr "ஒருபணியிடத்திற்கு மேலே சாளரத்தை நகர்த்தவும்"
+
+#: ../src/50-metacity-navigation.xml.in.h:10
+msgid "Move window to workspace 1"
+msgstr "பணியிடம் 1 க்கு சாளரத்தை நகர்த்தவும்"
+
+#: ../src/50-metacity-navigation.xml.in.h:11
+msgid "Move window to workspace 2"
+msgstr "பணியிடம் 2 க்கு சாளரத்தை நகர்த்தவும்"
+
+#: ../src/50-metacity-navigation.xml.in.h:12
+msgid "Move window to workspace 3"
+msgstr "பணியிடம் 3 க்கு சாளரத்தை நகர்த்தவும்"
+
+#: ../src/50-metacity-navigation.xml.in.h:13
+msgid "Move window to workspace 4"
+msgstr "பணியிடம் 4 க்கு சாளரத்தை நகர்த்தவும்"
+
+#: ../src/50-metacity-navigation.xml.in.h:14
 msgid "Navigation"
 msgstr "திசையறிதல்"
 
-#: ../src/50-metacity-screenshot.xml.in.h:1
-msgid "Screenshots"
-msgstr "திரைவெட்டுகள்"
+#: ../src/50-metacity-navigation.xml.in.h:15
+msgid "Switch applications"
+msgstr "பயன்பாடுகளுக்கிடையே மாறவும்"
+
+#: ../src/50-metacity-navigation.xml.in.h:16
+msgid "Switch system controls"
+msgstr "கணினி கட்டுப்பாடுகளை மாற்றவும்"
+
+#: ../src/50-metacity-navigation.xml.in.h:17
+msgid "Switch system controls directly"
+msgstr "கணினி கட்டுப்பாடுகளை நேரடியாக மாற்றவும்"
+
+#: ../src/50-metacity-navigation.xml.in.h:18
+msgid "Switch to workspace 1"
+msgstr "பணியிடம் 1க்கு மாறு"
+
+#: ../src/50-metacity-navigation.xml.in.h:19
+msgid "Switch to workspace 2"
+msgstr "பணியிடம் 2 க்கு மாறு"
+
+#: ../src/50-metacity-navigation.xml.in.h:20
+msgid "Switch to workspace 3"
+msgstr "பணியிடம் 3 க்கு மாறு"
+
+#: ../src/50-metacity-navigation.xml.in.h:21
+msgid "Switch to workspace 4"
+msgstr "பணியிடம் 4 க்கு மாறு"
+
+#: ../src/50-metacity-navigation.xml.in.h:22
+msgid "Switch windows directly"
+msgstr "சாளரங்களிடையே உடனடியாக நகரவும்"
+
+#: ../src/50-metacity-navigation.xml.in.h:23
+msgid "Switch windows of an app directly"
+msgstr "ஒரு பயன்பாட்டின் சாளரங்களிடையே நேரடியாக நகரவும்"
+
+#: ../src/50-metacity-navigation.xml.in.h:24
+msgid "Switch windows of an application"
+msgstr "ஒரு பயன்பாட்டின் சாளரங்களிடையே மாறவும்"
 
 #: ../src/50-metacity-system.xml.in.h:1
+msgid "Show the activities overview"
+msgstr "செயல்பாடுகளின் மேல் பார்வையை காட்டுக"
+
+#: ../src/50-metacity-system.xml.in.h:2
+msgid "Show the run command prompt"
+msgstr "இயக்கு கட்டளையின் தூண்டலைக் காட்டு"
+
+#: ../src/50-metacity-system.xml.in.h:3
 msgid "System"
 msgstr "கணினி"
 
 #: ../src/50-metacity-windows.xml.in.h:1
+msgid "Activate the window menu"
+msgstr "சாளர மெனுவை செயல்படுத்து"
+
+#: ../src/50-metacity-windows.xml.in.h:2
+msgid "Close window"
+msgstr "சாளரம் மூடவும்"
+
+#: ../src/50-metacity-windows.xml.in.h:3
+msgid "Lower window below other windows"
+msgstr "மற்ற சாளரத்திற்கு கீழே சாளரத்தை வைக்கவும்"
+
+#: ../src/50-metacity-windows.xml.in.h:4
+msgid "Maximize window"
+msgstr "சாளரத்தை பெரிதாக்கு"
+
+#: ../src/50-metacity-windows.xml.in.h:5
+msgid "Maximize window horizontally"
+msgstr "சாளரத்தை செங்குத்தாக பெரிதாக்கு "
+
+#: ../src/50-metacity-windows.xml.in.h:6
+msgid "Maximize window vertically"
+msgstr "சாளரத்தை இடவலமாக பெரிதாக்கு "
+
+#: ../src/50-metacity-windows.xml.in.h:7
+msgid "Minimize window"
+msgstr "சாளரத்தை சிறிதாக்கு"
+
+#: ../src/50-metacity-windows.xml.in.h:8
+msgid "Move window"
+msgstr "சாளரத்தை நகர்த்தவும்"
+
+#: ../src/50-metacity-windows.xml.in.h:9
+msgid "Raise window above other windows"
+msgstr "மற்ற சாளரத்திற்கு மேல் இந்த சாளரத்தை உயர்த்து"
+
+#: ../src/50-metacity-windows.xml.in.h:10
+msgid "Raise window if covered, otherwise lower it"
+msgstr "வேறொரு சாளரத்தால் மறைக்கப்பட்டிருந்தால் சாளரத்தை உயர்த்து, அல்லது கீழிறக்கு"
+
+#: ../src/50-metacity-windows.xml.in.h:11
+msgid "Resize window"
+msgstr "சாளரத்தின் அளவை மாற்று"
+
+#: ../src/50-metacity-windows.xml.in.h:12
+msgid "Restore window"
+msgstr "சாளரத்தை மீட்டெடு "
+
+#: ../src/50-metacity-windows.xml.in.h:13
+msgid "Toggle fullscreen mode"
+msgstr "எப்போதும் முழுதிரை பாங்கிற்கு செல்"
+
+#: ../src/50-metacity-windows.xml.in.h:14
+msgid "Toggle maximization state"
+msgstr "எப்போதும் பெரிய சாளர நிலைக்கு செல்"
+
+#: ../src/50-metacity-windows.xml.in.h:15
+msgid "Toggle shaded state"
+msgstr "எப்போதும் நிழை நிலைக்கு செல்"
+
+#: ../src/50-metacity-windows.xml.in.h:16
+msgid "Toggle window on all workspaces or one"
+msgstr ""
+"சாளரம் அனைத்து பணியிடங்களிலும் இருக்குமா அல்லது ஒரே பணியிடத்திலா என்பதை நிலை "
+"மாற்றுகிறது."
+
+#: ../src/50-metacity-windows.xml.in.h:17
 msgid "Windows"
 msgstr "சாளரங்கள்"
 
-#: ../src/core/bell.c:299
+#: ../src/core/bell.c:296
 msgid "Bell event"
 msgstr "மணி நிகழ்ச்சி"
 
@@ -116,30 +275,6 @@ msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
 "binding\n"
 msgstr "விசை %s ஐ மாற்றி  %x ஓடு இணைத்து வேறு நிரல் பயன்படுத்திக்கொண்டிருக்கிறது\n"
-
-#. Displayed when a keybinding which is
-#. * supposed to launch a program fails.
-#.
-#: ../src/core/keybindings.c:2343
-#, c-format
-msgid ""
-"There was an error running <tt>%s</tt>:\n"
-"\n"
-"%s"
-msgstr ""
-"இயக்குவதில் பிழை <tt>%s</tt>:\n"
-"\n"
-"%s"
-
-#: ../src/core/keybindings.c:2432
-#, c-format
-msgid "No command %d has been defined.\n"
-msgstr "கட்டளை %d எதுவும் குறிப்பிடப்படவில்லை.\n"
-
-#: ../src/core/keybindings.c:3386
-#, c-format
-msgid "No terminal command has been defined.\n"
-msgstr "முனைய கட்டளை எதுவும் குறிப்பிடப்படவில்லை.\n"
 
 #: ../src/core/main.c:131
 #, c-format
@@ -213,35 +348,7 @@ msgstr ""
 msgid "Failed to restart: %s\n"
 msgstr "மீண்டும் துவக்குவதில் பிழை: %s\n"
 
-#.
-#. * We found it, but it was invalid.  Complain.
-#. *
-#. * FIXME: This replicates the original behaviour, but in the future
-#. * we might consider reverting invalid keys to their original values.
-#. * (We know the old value, so we can look up a suitable string in
-#. * the symtab.)
-#. *
-#. * (Empty comment follows so the translators don't see this.)
-#.
-#.
-#: ../src/core/prefs.c:508 ../src/core/prefs.c:663
-#, c-format
-msgid "GConf key '%s' is set to an invalid value\n"
-msgstr "GConf விசை '%s' செல்லாத மதிப்பாக அமைக்கப்பட்டுள்ளது\n"
-
-#: ../src/core/prefs.c:589 ../src/core/prefs.c:832
-#, c-format
-msgid "%d stored in GConf key %s is out of range %d to %d\n"
-msgstr "%d GConf விசை %s இல்  சேமிக்கப்பட்டுள்ளது அது வரம்பு கடந்துள்ளது %d  %d க்கு\n"
-
-#: ../src/core/prefs.c:633 ../src/core/prefs.c:710 ../src/core/prefs.c:758
-#: ../src/core/prefs.c:822 ../src/core/prefs.c:1115 ../src/core/prefs.c:1131
-#: ../src/core/prefs.c:1148 ../src/core/prefs.c:1164
-#, c-format
-msgid "GConf key \"%s\" is set to an invalid type\n"
-msgstr "GConf விசை \"%s\" செல்லாத வகை\n"
-
-#: ../src/core/prefs.c:1234
+#: ../src/core/prefs.c:880
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -249,44 +356,29 @@ msgstr ""
 "உடைந்த பயன்பாடுகளின் செயல்பாடு தடைசெய்யப்பட்டது, சில பயன்பாடுகள் சரியாக வேலை "
 "செய்யாது.\n"
 
-#: ../src/core/prefs.c:1305
+#: ../src/core/prefs.c:949
 #, c-format
-msgid "Could not parse font description \"%s\" from GConf key %s\n"
-msgstr "எழுத்துரு விளக்கம் \"%s\" ஐ GConf விசையிலிருந்து பகுக்க முடியவில்லை %s\n"
+msgid "Could not parse font description \"%s\" from GSettings key %s\n"
+msgstr "எழுத்துரு விளக்கம் \"%s\" ஐ ஜிசெட்டிங்ஸ் விசையிலிருந்து பகுக்க முடியவில்லை %s\n"
 
-#: ../src/core/prefs.c:1367
+#: ../src/core/prefs.c:1015
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
 "modifier\n"
 msgstr "அமைப்பு பாங்கில் உள்ள \"%s\" சுட்டி பட்டன் மாற்றியில் செல்லாத மதிப்பு\n"
 
-#: ../src/core/prefs.c:1788
-#, c-format
-msgid "Error setting number of workspaces to %d: %s\n"
-msgstr "பணியிடத்தை அமைப்பதில் பிழை %d: %s\n"
-
-#: ../src/core/prefs.c:1959 ../src/core/prefs.c:2461
-#, c-format
-msgid "Workspace %d"
-msgstr "வேலையிடம் %d"
-
-#: ../src/core/prefs.c:1988 ../src/core/prefs.c:2166
+#: ../src/core/prefs.c:1494
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
 "\"%s\"\n"
 msgstr "\"%s\" அமைப்பு தரவுத்தளத்தில் உள்ள மதிப்பு செல்லாத கீபைன்டிங்\"%s\"\n"
 
-#: ../src/core/prefs.c:2542
+#: ../src/core/prefs.c:1601
 #, c-format
-msgid "Error setting name for workspace %d to \"%s\": %s\n"
-msgstr "பணியிடத்தை %d லிருந்து \"%s\" க்கு மாற்றுவதில் பிழை: %s\n"
-
-#: ../src/core/prefs.c:2746
-#, c-format
-msgid "Error setting compositor status: %s\n"
-msgstr "பலவின் ஆக்க நிலையை அமைப்பதில் பிழை: %s\n"
+msgid "Workspace %d"
+msgstr "வேலையிடம் %d"
 
 #: ../src/core/screen.c:357
 #, c-format
@@ -316,46 +408,6 @@ msgstr "திரை %d யின் காட்சி \"%s\" க்கு ச�
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "திரை %d ஐ விடுவிக்க முடியவில்லை \"%s\"\n"
-
-#. Translators: Please don't translate "Control", "Shift", etc, since these
-#. * are hardcoded (in gtk/gtkaccelgroup.c; it's not metacity's fault).
-#. * "disabled" must also stay as it is.
-#.
-#: ../src/core/schema-bindings.c:169
-msgid ""
-"The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
-"\n"
-"The parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action."
-msgstr ""
-"இதன் அமைப்பு \"<Control>a\" அல்லது  <Shift><Alt>F1\".\n"
-"\n"
-"இதன் பகுப்பி பெரிய மற்றும் சிறிய எழுத்துக்களை அனுமதிப்பதோடு,   \"<Ctl>\" மற்றும்  "
-"\"<Ctrl>\" போன்ற சுருக்கங்களையும் அனுமதிக்கும். \"செயல்படுத்தாதே\" தேர்வை அமைப்பதன் "
-"மூலம் இந்த செயலுக்கு கீபைன்டிங் ஐ நீக்க முடியும்."
-
-#: ../src/core/schema-bindings.c:177
-msgid ""
-"The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
-"\n"
-"The parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action.\n"
-"\n"
-"This keybinding may be reversed by holding down the \"shift\" key; "
-"therefore, \"shift\" cannot be one of the keys it uses."
-msgstr ""
-"இதன் அமைப்பு \"<Control>a\" அல்லது  <Shift><Alt>F1\".\n"
-"\n"
-"இதன் பகுப்பி பெரிய மற்றும் சிறிய எழுத்துக்களை அனுமதிப்பதோடு,   \"<Ctl>\" மற்றும்  "
-"\"<Ctrl>\" போன்ற சுருக்கங்களையும் அனுமதிக்கும். \"செயல்படுத்தாதே\" தேர்வை அமைப்பதன் "
-"மூலம் இந்த செயலுக்கு கீபைன்டிங் ஐ நீக்க முடியும்.\n"
-"\n"
-"இந்த \"shift\" விசையை அழுத்துவதால் இந்த விசை பிணைப்பை மீட்க முடியும்;  \"shift\" "
-"விசை அது பயன்படுத்தப்படும் விசைகளில் ஒன்றாக இருக்க முடியாது."
 
 #: ../src/core/session.c:842 ../src/core/session.c:849
 #, c-format
@@ -449,7 +501,6 @@ msgid "Window manager error: "
 msgstr "சாளர மேலாளர் பிழை"
 
 #. Translators: This is the title used on dialog boxes
-#. eof all-keybindings.h
 #: ../src/core/util.c:570 ../src/metacity.desktop.in.h:1
 #: ../src/metacity-wm.desktop.in.h:1
 msgid "Metacity"
@@ -475,8 +526,8 @@ msgstr ""
 #: ../src/core/window.c:6269
 #, c-format
 msgid ""
-"Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
-"d x %d and max size %d x %d; this doesn't make much sense.\n"
+"Window %s sets an MWM hint indicating it isn't resizable, but sets min size "
+"%d x %d and max size %d x %d; this doesn't make much sense.\n"
 msgstr ""
 "சாளரம் %s MWM அளவு மாற்ற முடியும் என குறிப்பிடுகிறதும் ஆனால் %d x %d மற்றும் அதிக "
 "பட்ச அளவு %d x %d; பொருள் தரும்படி இல்லை.\n"
@@ -542,439 +593,15 @@ msgstr "பண்பு %s சாளரம் 0x%lx செல்லாத UTF-8 
 msgid "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
 msgstr "பண்பு %s சாளரம் 0x%lx செல்லாத UTF-8 உருப்படி %d பட்டியலில் உள்ளது\n"
 
-#: ../src/include/all-keybindings.h:88
-msgid "Switch to workspace 1"
-msgstr "பணியிடம் 1க்கு மாறு"
-
-#: ../src/include/all-keybindings.h:90
-msgid "Switch to workspace 2"
-msgstr "பணியிடம் 2 க்கு மாறு"
-
-#: ../src/include/all-keybindings.h:92
-msgid "Switch to workspace 3"
-msgstr "பணியிடம் 3 க்கு மாறு"
-
-#: ../src/include/all-keybindings.h:94
-msgid "Switch to workspace 4"
-msgstr "பணியிடம் 4 க்கு மாறு"
-
-#: ../src/include/all-keybindings.h:96
-msgid "Switch to workspace 5"
-msgstr "பணியிடம் 5 க்கு மாறு"
-
-#: ../src/include/all-keybindings.h:98
-msgid "Switch to workspace 6"
-msgstr "பணியிடம் 6 க்கு மாறு"
-
-#: ../src/include/all-keybindings.h:100
-msgid "Switch to workspace 7"
-msgstr "பணியிடம் 7 க்கு மாறு"
-
-#: ../src/include/all-keybindings.h:102
-msgid "Switch to workspace 8"
-msgstr "பணியிடம் 8 க்கு மாறு"
-
-#: ../src/include/all-keybindings.h:104
-msgid "Switch to workspace 9"
-msgstr "பணியிடம் 9 க்கு மாறு"
-
-#: ../src/include/all-keybindings.h:106
-msgid "Switch to workspace 10"
-msgstr "பணியிடம் 10 க்கு மாறு"
-
-#: ../src/include/all-keybindings.h:108
-msgid "Switch to workspace 11"
-msgstr "பணியிடம் 11 க்கு மாறு"
-
-#: ../src/include/all-keybindings.h:110
-msgid "Switch to workspace 12"
-msgstr "பணியிடம் 11 க்கு மாறு"
-
-#: ../src/include/all-keybindings.h:122
-msgid "Move to workspace left"
-msgstr "வேலையிடத்தை இடப்பக்கத்திற்கு நகர்த்தவும்"
-
-#: ../src/include/all-keybindings.h:126
-msgid "Move to workspace right"
-msgstr "வேலையிடத்தை வலப்பக்கத்திற்கு நகர்த்தவும்"
-
-#: ../src/include/all-keybindings.h:130
-msgid "Move to workspace above"
-msgstr "வேலையிடத்தை மேல்பக்கத்திற்கு நகர்த்தவும்"
-
-#: ../src/include/all-keybindings.h:134
-msgid "Move to workspace below"
-msgstr "வேலையிடத்தை கீழே நகர்த்தவும் "
-
-#: ../src/include/all-keybindings.h:150
-msgid "Switch windows of an application"
-msgstr "ஒரு பயன்பாட்டின் சாளரங்களிடையே மாறவும்"
-
-#: ../src/include/all-keybindings.h:153
-msgid "Reverse switch windows of an application"
-msgstr "ஒரு பயன்பாட்டின் சாளரங்களிடையே பின்னால் மாறவும்"
-
-#: ../src/include/all-keybindings.h:156
-msgid "Switch applications"
-msgstr "பயன்பாடுகளுக்கிடையே மாறவும்"
-
-#: ../src/include/all-keybindings.h:159
-msgid "Reverse switch applications"
-msgstr "பயன்பாடுகளுக்கிடையே பின்நோக்கி மாறவும்"
-
-#: ../src/include/all-keybindings.h:162
-msgid "Switch system controls"
-msgstr "கணினி கட்டுப்பாடுகளை மாற்றவும்"
-
-#: ../src/include/all-keybindings.h:165
-msgid "Reverse switch system controls"
-msgstr "கணினி கட்டுப்பாடுகளை பின்னோக்கி மாற்றவும்"
-
-#: ../src/include/all-keybindings.h:169
-msgid "Switch windows of an app directly"
-msgstr "ஒரு பயன்பாட்டின் சாளரங்களிடையே நேரடியாக நகரவும்"
-
-#: ../src/include/all-keybindings.h:172
-msgid "Reverse switch windows of an app directly"
-msgstr "ஒரு பயன்பாட்டின் சாளரங்களிடையே பின்னோக்கி உடனடியாக நகரவும்"
-
-#: ../src/include/all-keybindings.h:175
-msgid "Switch windows directly"
-msgstr "சாளரங்களிடையே உடனடியாக நகரவும்"
-
-#: ../src/include/all-keybindings.h:178
-msgid "Reverse switch windows directly"
-msgstr "சாளரங்களிடையே  உடனடியாக நகரவும்"
-
-#: ../src/include/all-keybindings.h:181
-msgid "Switch system controls directly"
-msgstr "கணினி கட்டுப்பாடுகளை நேரடியாக மாற்றவும்"
-
-#: ../src/include/all-keybindings.h:184
-msgid "Reverse switch system controls directly"
-msgstr "கணினி கட்டுப்பாடுகளை நேரடியாக பின்னோக்கி மாற்றவும்"
-
-#: ../src/include/all-keybindings.h:189
-msgid "Hide all normal windows"
-msgstr "எல்லா வழக்கமான சாளரங்களையும் மறை"
-
-#: ../src/include/all-keybindings.h:192
-msgid "Show the activities overview"
-msgstr "செயல்பாடுகளின் மேல் பார்வையை காட்டுக"
-
-#: ../src/include/all-keybindings.h:195
-msgid "Show the run command prompt"
-msgstr "இயக்கு கட்டளையின் தூண்டலைக் காட்டு"
-
-#: ../src/include/all-keybindings.h:236
-msgid "Take a screenshot"
-msgstr "திரைவெட்டை பதிவு செய்"
-
-#: ../src/include/all-keybindings.h:238
-msgid "Take a screenshot of a window"
-msgstr "சாளரத்தின் திரைவெட்டை பதிவு செய்"
-
-#: ../src/include/all-keybindings.h:240
-msgid "Launch Terminal"
-msgstr "முனையம் ஒன்றை துவக்கு"
-
-#: ../src/include/all-keybindings.h:255
-msgid "Activate the window menu"
-msgstr "சாளர மெனுவை செயல்படுத்து"
-
-#: ../src/include/all-keybindings.h:258
-msgid "Toggle fullscreen mode"
-msgstr "எப்போதும் முழுதிரை பாங்கிற்கு செல்"
-
-#: ../src/include/all-keybindings.h:260
-msgid "Toggle maximization state"
-msgstr "எப்போதும் பெரிய சாளர நிலைக்கு செல்"
-
-#: ../src/include/all-keybindings.h:262
-msgid "Toggle window always appearing on top"
-msgstr "எப்போதும் மேலே காணும் சாளரத்தை நிலை மாற்று"
-
-#: ../src/include/all-keybindings.h:264
-msgid "Maximize window"
-msgstr "சாளரத்தை பெரிதாக்கு"
-
-#: ../src/include/all-keybindings.h:266
-msgid "Restore window"
-msgstr "சாளரத்தை மீட்டெடு "
-
-#: ../src/include/all-keybindings.h:268
-msgid "Toggle shaded state"
-msgstr "எப்போதும் நிழை நிலைக்கு செல்"
-
-#: ../src/include/all-keybindings.h:270
-msgid "Minimize window"
-msgstr "சாளரத்தை சிறிதாக்கு"
-
-#: ../src/include/all-keybindings.h:272
-msgid "Close window"
-msgstr "சாளரம் மூடவும்"
-
-#: ../src/include/all-keybindings.h:274
-msgid "Move window"
-msgstr "சாளரத்தை நகர்த்தவும்"
-
-#: ../src/include/all-keybindings.h:276
-msgid "Resize window"
-msgstr "சாளரத்தின் அளவை மாற்று"
-
-#: ../src/include/all-keybindings.h:279
-msgid "Toggle window on all workspaces or one"
-msgstr ""
-"சாளரம் அனைத்து பணியிடங்களிலும் இருக்குமா அல்லது ஒரே பணியிடத்திலா என்பதை நிலை "
-"மாற்றுகிறது."
-
-#: ../src/include/all-keybindings.h:283
-msgid "Move window to workspace 1"
-msgstr "பணியிடம் 1 க்கு சாளரத்தை நகர்த்தவும்"
-
-#: ../src/include/all-keybindings.h:286
-msgid "Move window to workspace 2"
-msgstr "பணியிடம் 2 க்கு சாளரத்தை நகர்த்தவும்"
-
-#: ../src/include/all-keybindings.h:289
-msgid "Move window to workspace 3"
-msgstr "பணியிடம் 3 க்கு சாளரத்தை நகர்த்தவும்"
-
-#: ../src/include/all-keybindings.h:292
-msgid "Move window to workspace 4"
-msgstr "பணியிடம் 4 க்கு சாளரத்தை நகர்த்தவும்"
-
-#: ../src/include/all-keybindings.h:295
-msgid "Move window to workspace 5"
-msgstr "பணியிடம் 5 க்கு சாளரத்தை நகர்த்தவும்"
-
-#: ../src/include/all-keybindings.h:298
-msgid "Move window to workspace 6"
-msgstr "பணியிடம் 6 க்கு சாளரத்தை நகர்த்தவும்"
-
-#: ../src/include/all-keybindings.h:301
-msgid "Move window to workspace 7"
-msgstr "பணியிடம் 7 க்கு சாளரத்தை நகர்த்தவும்"
-
-#: ../src/include/all-keybindings.h:304
-msgid "Move window to workspace 8"
-msgstr "பணியிடம் 8 க்கு சாளரத்தை நகர்த்தவும்"
-
-#: ../src/include/all-keybindings.h:307
-msgid "Move window to workspace 9"
-msgstr "பணியிடம் 9 க்கு சாளரத்தை நகர்த்தவும்"
-
-#: ../src/include/all-keybindings.h:310
-msgid "Move window to workspace 10"
-msgstr "பணியிடம் 10 க்கு சாளரத்தை நகர்த்தவும்"
-
-#: ../src/include/all-keybindings.h:313
-msgid "Move window to workspace 11"
-msgstr "பணியிடம் 11 க்கு சாளரத்தை நகர்த்தவும்"
-
-#: ../src/include/all-keybindings.h:316
-msgid "Move window to workspace 12"
-msgstr "பணியிடம் 12 க்கு சாளரத்தை நகர்த்தவும்"
-
-#: ../src/include/all-keybindings.h:328
-msgid "Move window one workspace to the left"
-msgstr "ஒருபணியிடத்திற்கு இடது பக்கம் சாளரத்தை நகர்த்தவும்"
-
-#: ../src/include/all-keybindings.h:331
-msgid "Move window one workspace to the right"
-msgstr "ஒருபணியிடத்திற்கு வலதுபக்கம் சாளரத்தை நகர்த்தவும்"
-
-#: ../src/include/all-keybindings.h:334
-msgid "Move window one workspace up"
-msgstr "ஒருபணியிடத்திற்கு மேலே சாளரத்தை நகர்த்தவும்"
-
-#: ../src/include/all-keybindings.h:337
-msgid "Move window one workspace down"
-msgstr "ஒருபணியிடத்திற்கு கீழே சாளரத்தை நகர்த்தவும்"
-
-#: ../src/include/all-keybindings.h:340
-msgid "Raise window if covered, otherwise lower it"
-msgstr "வேறொரு சாளரத்தால் மறைக்கப்பட்டிருந்தால் சாளரத்தை உயர்த்து, அல்லது கீழிறக்கு"
-
-#: ../src/include/all-keybindings.h:342
-msgid "Raise window above other windows"
-msgstr "மற்ற சாளரத்திற்கு மேல் இந்த சாளரத்தை உயர்த்து"
-
-#: ../src/include/all-keybindings.h:344
-msgid "Lower window below other windows"
-msgstr "மற்ற சாளரத்திற்கு கீழே சாளரத்தை வைக்கவும்"
-
-#: ../src/include/all-keybindings.h:348
-msgid "Maximize window vertically"
-msgstr "சாளரத்தை இடவலமாக பெரிதாக்கு "
-
-#: ../src/include/all-keybindings.h:352
-msgid "Maximize window horizontally"
-msgstr "சாளரத்தை செங்குத்தாக பெரிதாக்கு "
-
-#: ../src/include/all-keybindings.h:356
-msgid "Move window to top left corner"
-msgstr "மேல் இடது மூலைக்கு சாளரத்தை நகர்த்தவும்"
-
-#: ../src/include/all-keybindings.h:359
-msgid "Move window to top right corner"
-msgstr "மேல் வலது மூலைக்கு சாளரத்தை நகர்த்தவும்"
-
-#: ../src/include/all-keybindings.h:362
-msgid "Move window to bottom left corner"
-msgstr "கீழ் இடது மூலைக்கு சாளரத்தை நகர்த்தவும்"
-
-#: ../src/include/all-keybindings.h:365
-msgid "Move window to bottom right corner"
-msgstr "கீழ் வலது மூலைக்கு சாளரத்தை நகர்த்தவும்"
-
-#: ../src/include/all-keybindings.h:369
-msgid "Move window to top edge of screen"
-msgstr "சாளரத்தை திரையின் மேல் விளிம்புக்கு நகர்த்தவும்"
-
-#: ../src/include/all-keybindings.h:372
-msgid "Move window to bottom edge of screen"
-msgstr "சாளரத்தை திரையின் கீழ் விளிம்புக்கு நகர்த்தவும்"
-
-#: ../src/include/all-keybindings.h:375
-msgid "Move window to right side of screen"
-msgstr "சாளரத்தை திரையின் வலது பக்கம் நகர்த்தவும்"
-
-#: ../src/include/all-keybindings.h:378
-msgid "Move window to left side of screen"
-msgstr "சாளரத்தை திரையின் இடது பக்கம் நகர்த்தவும்"
-
-#: ../src/include/all-keybindings.h:381
-msgid "Move window to center of screen"
-msgstr "சாளரத்தை திரையின் மையத்துக்கு நகர்த்தவும்"
-
-#: ../src/metacity.schemas.in.in.h:1
-msgid "(Not implemented) Navigation works in terms of applications not windows"
-msgstr "(செயல்படுத்தப்படாத) உலாவல் பயன்பாட்டின் படி சாளரத்தின் படி அல்ல"
-
-#: ../src/metacity.schemas.in.in.h:2
-msgid ""
-"A font description string describing a font for window titlebars. The size "
-"from the description will only be used if the titlebar_font_size option is "
-"set to 0. Also, this option is disabled if the titlebar_uses_desktop_font "
-"option is set to true."
-msgstr ""
-"சாளரத்தின் தலைப்புப்பட்டிக்கான  எழுத்துருவை விளக்கும் எழுத்துரு விளக்க சரம். "
-"titlebar_font_size தேர்வில் 0 ஐ அமைத்தால் மட்டும் விளக்க சரத்தில் உள்ள அளவு "
-"பயன்படுத்தப்படும். மேலும் titlebar_uses_desktop_font தேர்வை உண்மை என அமைத்தால் இந்த "
-"தேர்வு செயல்படாது. "
-
-#: ../src/metacity.schemas.in.in.h:3
-msgid "Action on title bar double-click"
-msgstr "தலைப்புப்பட்டியை இரண்டு-சொடுக்கு செய்யும் போது நிகழவேண்டியது"
-
-#: ../src/metacity.schemas.in.in.h:4
-msgid "Action on title bar middle-click"
-msgstr "தலைப்புப்பட்டியை நடு சொடுக்கு செய்யும் போது நிகழவேண்டியது"
-
-#: ../src/metacity.schemas.in.in.h:5
-msgid "Action on title bar right-click"
-msgstr "தலைப்புப்பட்டியை வலது சொடுக்கு செய்யும் போது நிகழவேண்டியது"
-
-#: ../src/metacity.schemas.in.in.h:6
-msgid "Arrangement of buttons on the titlebar"
-msgstr "தலைப்புப்பட்டியில் பட்டன்கள் அடுக்கப்பட்ட நிலை"
-
-#: ../src/metacity.schemas.in.in.h:7
-msgid ""
-"Arrangement of buttons on the titlebar. The value should be a string, such "
-"as \"menu:minimize,maximize,spacer,close\"; the colon separates the left "
-"corner of the window from the right corner, and the button names are comma-"
-"separated. Duplicate buttons are not allowed. Unknown button names are "
-"silently ignored so that buttons can be added in future metacity versions "
-"without breaking older versions. A special spacer tag can be used to insert "
-"some space between two adjacent buttons."
-msgstr ""
-"தலைப்புப்பட்டியில் பட்டன்கள் அடுக்கப்பட்ட நிலை.\"menu:minimize,maximize,spacer,close\" "
-"என மதிப்புகள் இருக்க வேண்டும்; அரைப்புள்ளி சாளரத்தின் இடது மூலையிலிருந்து வலது மூலையை "
-"தனிப்படுத்த பயன்படும். மேலும் பட்டன் பெயர்கள் கமா வால் பிரிக்கப்பட்டிருக்கும் பொய் பட்டனுக்கு "
-"அனுமதி இல்லை. தெரியாத பட்டன் பெயர்கள் பழைய பதிப்புகளை உடைக்காமல் தவிர்க்கப்பட்டு மெட்டா "
-"சிட்டியின் அடுத்த பதிப்பின் சேர்க்கப்படும். இரு அடுத்தடுத்த பட்டன்களின் இடையே கொஞ்சம் "
-"இடைவெளியை நுழைக்க ஒரு விசேஷ குறிப்பை பயன்படுத்தலாம்."
-
-#: ../src/metacity.schemas.in.in.h:8
-msgid "Automatically raises the focused window"
-msgstr "குறிக்கப்பட்ட சாளரத்தை தானாக ஏற்று"
-
-#: ../src/metacity.schemas.in.in.h:9
-msgid ""
-"Clicking a window while holding down this modifier key will move the window "
-"(left click), resize the window (middle click), or show the window menu "
-"(right click). The middle and right click operations may be swapped using "
-"the \"resize_with_right_button\" key. Modifier is expressed as \"&lt;Alt&gt;"
-"\" or \"&lt;Super&gt;\" for example."
-msgstr ""
-"இந்த விசையை அழுத்திக்கொண்டே சாளரத்தில் மேல் க்ளிக் செய்து சாளரத்தை நகர்த்தவும் (இடது "
-"க்ளிக்), அளவு மாற்ற (மைய க்ளிக்), அல்லது மெனுவைகாட்ட(வலது க்ளிக்). மைய, வலது "
-"பயன்பாடுகளை \"resize_with_right_button\" விசையை கொண்டு இட மாற்றலாம்.  மாற்றி "
-"உதாரணமாக  \"&lt;Alt&gt;\" or \"&lt;Super&gt;\" என காட்டப்படும் "
-
-#: ../src/metacity.schemas.in.in.h:10
-msgid "Commands to run in response to keybindings"
-msgstr "கீபைண்டிங்களுக்கு இணங்க இயக்க கட்டளைகள்"
-
-#: ../src/metacity.schemas.in.in.h:11
+#: ../src/org.gnome.metacity.gschema.xml.in.h:1
 msgid "Compositing Manager"
 msgstr "பலவின் ஆக்க மேலாளர்"
 
-#: ../src/metacity.schemas.in.in.h:12
-msgid "Control how new windows get focus"
-msgstr "புதிய சாளரம் எப்படி முன்னிலை பெறும் என கட்டுப்படுத்துகிறது"
-
-#: ../src/metacity.schemas.in.in.h:13
-msgid "Current theme"
-msgstr "தற்போதைய கருப்பொருள்"
-
-#: ../src/metacity.schemas.in.in.h:14
-msgid "Delay in milliseconds for the auto raise option"
-msgstr "தானாக துவக்க தேர்வில் தாமதம் மில்லிசெகண்டில்"
-
-#: ../src/metacity.schemas.in.in.h:15
+#: ../src/org.gnome.metacity.gschema.xml.in.h:2
 msgid "Determines whether Metacity is a compositing manager."
 msgstr "மெட்டாசிட்டி பலவின் ஆக்க மேலாளரா என நிர்ணயிக்கிறது"
 
-#: ../src/metacity.schemas.in.in.h:16
-msgid ""
-"Determines whether applications or the system can generate audible 'beeps'; "
-"may be used in conjunction with 'visual bell' to allow silent 'beeps'."
-msgstr ""
-"கணினி அல்லது பயன்பாட்டால் மணியை காட்டுவதற்கு பதில் கேட்கக்கூடிய ஒலியை உருவாக்க "
-"முடியுமா. "
-
-#: ../src/metacity.schemas.in.in.h:17
-msgid "Disable misfeatures that are required by old or broken applications"
-msgstr "பழைய மற்றும் உடைந்த பயன்பாடுகளாள் செயல்நீக்கம் செய்யப்பட்ட காணாமல் போன வசதிகள்"
-
-#: ../src/metacity.schemas.in.in.h:18
-msgid "Enable Visual Bell"
-msgstr "்சி மணகாட்சியாக ியை செயல்படுத்து"
-
-#: ../src/metacity.schemas.in.in.h:19
-msgid ""
-"If set to true, and the focus mode is either \"sloppy\" or \"mouse\" then "
-"the focused window will be automatically raised after a delay specified by "
-"the auto_raise_delay key. This is not related to clicking on a window to "
-"raise it, nor to entering a window during drag-and-drop."
-msgstr ""
-"உண்மையெனில், குவியும் பாணி \"sloppy\" அல்லது \"mouse\" எனில் சிறிது தாமதத்திற்கு "
-"பிறகு சாளரம் தானாக மேலெழும் (தாமதம் auto_raise_delay விசையால் குறிக்கப்படும்). "
-"இதற்கும் ஒரு சாளரத்தை சொடுக்கி மேலெழச் செய்வதற்கும் அல்லது இழுத்து விடுதலில் ஒரு "
-"சாளரத்தில் நுழைவதற்கும் சம்பந்தமில்லை."
-
-#: ../src/metacity.schemas.in.in.h:20
-msgid ""
-"If true, ignore the titlebar_font option, and use the standard application "
-"font for window titles."
-msgstr ""
-"உண்மையெனில், titlebar_font தேர்வை தவிர்கும். நிலையான எழுத்துருவை சாளர தலைப்பில் "
-"காட்டும்."
-
-#: ../src/metacity.schemas.in.in.h:21
+#: ../src/org.gnome.metacity.gschema.xml.in.h:3
 msgid ""
 "If true, metacity will give the user less feedback by using wireframes, "
 "avoiding animations, or other means. This is a significant reduction in "
@@ -988,361 +615,56 @@ msgstr ""
 "சேவைகள் பாகுபாடு பாராமல் வேலை செய்ய அனுமதிக்கும். எனினும் வயர்ப்ரேம் வசதி அணுகல் தேர்வு "
 "இருப்பின் செயலிழக்கப்படும்."
 
-#: ../src/metacity.schemas.in.in.h:22
-msgid ""
-"If true, then Metacity works in terms of applications rather than windows. "
-"The concept is a bit abstract, but in general an application-based setup is "
-"more like the Mac and less like Windows. When you focus a window in "
-"application-based mode, all the windows in the application will be raised. "
-"Also, in application-based mode, focus clicks are not passed through to "
-"windows in other applications. Application-based mode is, however, largely "
-"unimplemented at the moment."
-msgstr ""
-"உண்மையெனில், மெட்டாசிட்டி சாளரத்தில் இல்லாமல் பயன்பாட்டில் இயங்கும். இந்த கொள்கை சிறிது "
-"சிக்கலானது என்றாலும், மேக் போன்ற பயன்பாடு-சார்ந்த அமைப்புக்கு மிக பயனுள்ளது, சாளரத்தை "
-"பயன்பாடு-சார்ந்து அமைக்கும் போது பயன்பாடோடு தொடர்புடைய சாளரங்கள் மேலெழும்பும்.மேலும் இது "
-"மற்ற சாளரங்களை பாதிக்காது. ஆனால் இதன் அமைப்பு சற்றே கேள்விக்குட்பட்டது. ஆனால் அமைப்புகள் "
-"பயன்பாடு சார்ந்த மற்றும் சாளரம் சார்ந்தவைகளின் விளக்கத்தை தெரிந்துகொள்வது நல்லது. மேலும் "
-"பயன்பாடு-சார்ந்தவை முடிக்கப்படாத நிலையில் உள்ளது"
-
-#: ../src/metacity.schemas.in.in.h:23
+#: ../src/org.gnome.metacity.gschema.xml.in.h:4
 msgid "If true, trade off usability for less resource usage"
 msgstr "உண்மையெனில், குறைவான வளத்தை பயன்படுத்தும்"
-
-#: ../src/metacity.schemas.in.in.h:24
-msgid "Modifier to use for modified window click actions"
-msgstr "சாளர க்ளிக் செயல்பாட்டின் போது பயன்பட வேண்டிய மாற்றி"
-
-#: ../src/metacity.schemas.in.in.h:25
-msgid "Name of workspace"
-msgstr "பணியிடத்தின் பெயர்"
-
-#: ../src/metacity.schemas.in.in.h:26
-msgid "Number of workspaces"
-msgstr "பணியிடங்களின் எண்ணிக்கை"
-
-#: ../src/metacity.schemas.in.in.h:27
-msgid ""
-"Number of workspaces. Must be more than zero, and has a fixed maximum to "
-"prevent making the desktop unusable by accidentally asking for too many "
-"workspaces."
-msgstr ""
-"பணிக்களங்களின் எண். இது பூஜ்யமாக இருக்க வேண்டும்.  அதிகபட்சம் வரையறுக்கப்பட்டு இருக்க "
-"வேண்டும். இல்லாவிடில் தவறுதலாக் மிக அதிக பணிக்களம் கேட்கப்பட்டால் மேல்மேசை பயன்படுத்த "
-"முடியாததாகி விடும்."
-
-#: ../src/metacity.schemas.in.in.h:28
-msgid "Run a defined command"
-msgstr "குறிப்பிட்ட கட்டளையை இயக்கு"
-
-#: ../src/metacity.schemas.in.in.h:29
-msgid ""
-"Set this to true to resize with the right button and show a menu with the "
-"middle button while holding down the key given in \"mouse_button_modifier\"; "
-"set it to false to make it work the opposite way around."
-msgstr ""
-"உண்மை என அமைத்தால் \"mouse_button_modifier\" இல தரப்பட்ட விசையை அழுத்திக்கொண்டு வலது "
-"பட்டனால் அளவை மாற்றலாம், நடு பட்டனால் மெனுவை காட்டலாம்.; இது மாறாக செயல்பட பொய் என அமை."
-
-#: ../src/metacity.schemas.in.in.h:30
-msgid ""
-"Setting this option to false can lead to buggy behavior, so users are "
-"strongly discouraged from changing it from the default of true. Many actions "
-"(e.g. clicking in the client area, moving or resizing the window) normally "
-"raise the window as a side-effect. Setting this option to false, which is "
-"strongly discouraged, will decouple raising from other user actions, and "
-"ignore raise requests generated by applications. See http://bugzilla.gnome."
-"org/show_bug.cgi?id=445447#c6. Even when this option is false, windows can "
-"still be raised by an alt-left-click anywhere on the window, a normal click "
-"on the window decorations, or by special messages from pagers, such as "
-"activation requests from tasklist applets. This option is currently disabled "
-"in click-to-focus mode. Note that the list of ways to raise windows when "
-"raise_on_click is false does not include programmatic requests from "
-"applications to raise windows; such requests will be ignored regardless of "
-"the reason for the request. If you are an application developer and have a "
-"user complaining that your application does not work with this setting "
-"disabled, tell them it is _their_ fault for breaking their window manager "
-"and that they need to change this option back to true or live with the \"bug"
-"\" they requested."
-msgstr ""
-"இந்த தேர்வை அமைத்தல் பிழையான நடத்தையை தரலாம். பயனர் முன்னிருப்பான உண்மை தேர்வை மாற்ற "
-"வேண்டாம் என பலமாக பரிந்துரைக்கப்படுகிறது. சார்ந்தோன் இடத்தில் சொடுக்குதல், சாளர நகர்வு, "
-"மறு அளவாக்கம் ஆகிய பல செயல்கள் சாதாரணமாக சாளரத்தை முன்னிலையாக்கும். மற்ற பயனர் "
-"செயல்களில் இருந்து இணைப்பு நீக்க இந்த தேவை இல்லை என அமைத்தல் -இது வேண்டாம் என பலமாக "
-"பரிந்துரைக்கப்படுகிறது- மற்ற பயனர் செயல்கள் நிரல்களின் வேண்டுதல்கள் ஆகியவை சாளரத்தை "
-"உயர்த்துவதிலிருந்து தடுக்கும். http://bugzilla.gnome.org/show_bug.cgi?"
-"id=445447#c6. ஐ யும் பார்க்கவும்.(அப்படியானாலும் சாளரத்தில் எங்கேயும் ஆல்ட்+ இடது "
-"சொடுக்கு, சாளர அலங்காரத்தில் சொடுக்கு, டாஸ்க்லிஸ்ட் குறுநிரலிலிருந்து செயல்பாடு "
-"வேண்டுகோள் போன்ற விளிப்பான்களிடமிருந்து சிறப்புச்செய்திகள் ஆகியவற்றால் சாளரத்தை "
-"முன்னிலையாக்கலாம்.) இந்த தேர்வு இப்போது ¨முன்னிலைபடுத்த சொடுக்கு¨ பாங்கில் "
-"செயலிழக்கபட்டுள்ளது. raise_on_click தேர்வு இல்லை என அமைக்கப்பட்டால் பாதிக்கப்படும் "
-"வழிகளில் நிரல்களின் வேண்டுதல்கள் இல்லை என அறியவும். அவை எப்போதுமே உதாசீனப்படுத்தப்படும். "
-"நீங்கள் செயல்பாடு உருவாக்குபவர் ஆயின், பயனர் செயல்பாடு வேலை செய்யவில்லை என கூறினால் அவரை "
-"இந்த சாளர மேலாளரை மாற்றியதால் இது நிகழ்ந்தது என்றும் இந்த தேர்வை உண்மை என அமைக்க வேண்டும் "
-"அல்லது பிழையுடன் (\"bug\") வாழ வேண்டும் என கூறுங்கள். "
-
-#: ../src/metacity.schemas.in.in.h:31
-msgid ""
-"Some applications disregard specifications in ways that result in window "
-"manager misfeatures. This option puts Metacity in a rigorously correct mode, "
-"which gives a more consistent user interface, provided one does not need to "
-"run any misbehaving applications."
-msgstr ""
-"சில நிரல்கள் சாளர மேலாளர் குறிப்பிடும் வரையரைகளை மீறுவதால் பிரச்சினைகள் ஏற்படுகிறன. "
-"இந்த தேர்வு மெட்டாசிட்டி ஐ வெகு சரியான பாங்கில் அமைக்கும். இதனால் சரியில்லாத பயன்பாடுகள் "
-"தவிர பயனருக்கு எப்போதுமே சரியான பயன்பாடு இடைமுகம் கிடைக்கும். "
-
-#: ../src/metacity.schemas.in.in.h:32
-msgid "System Bell is Audible"
-msgstr "கணினி ஒலி கேட்கும்படி"
-
-#: ../src/metacity.schemas.in.in.h:33
-msgid ""
-"Tells Metacity how to implement the visual indication that the system bell "
-"or another application 'bell' indicator has been rung. Currently there are "
-"two valid values, \"fullscreen\", which causes a fullscreen white-black "
-"flash, and \"frame_flash\" which causes the titlebar of the application "
-"which sent the bell signal to flash. If the application which sent the bell "
-"is unknown (as is usually the case for the default \"system beep\"), the "
-"currently focused window's titlebar is flashed."
-msgstr ""
-"மணி ஒலிப்பதை காட்சியாக காட்டுவது எப்படி என்பதை மெட்டாசிட்டி குறிப்பிடும். தற்போது "
-"இரண்டு மதிப்புகள் உள்ளது \"முழுதிரை: முழுதிரையும் கருப்பு வெள்ளையாக தெரியும். "
-"\"சட்ட_காட்சி\" தலைப்புப்பட்டியில் பயன்பாட்டின் சின்னம் மணியோசையை அனுப்பும். மணியோசையை "
-"அனுப்பிய பயன்பாடு தெரியாத பயன்பாடு(இது இயல்பான \"கணினி ஒலிக்கு\" பொருந்தும்)"
-
-#: ../src/metacity.schemas.in.in.h:34
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_N keys define keybindings "
-"that correspond to these commands. Pressing the keybinding for run_command_N "
-"will execute command_N."
-msgstr ""
-"/apps/metacity/global_keybindings/run_command_N கீபைன்டிங்கை அதனோடு தொடர்புடைய "
-"கட்டளையோடு இணைக்கும்.இந்த கட்டளைக்காக run_command_N கீபைன்டிங்கை அழுத்துவதால் command_N "
-"இயங்கும்."
-
-#: ../src/metacity.schemas.in.in.h:35
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_screenshot key defines a "
-"keybinding which causes the command specified by this setting to be invoked."
-msgstr ""
-" /apps/metacity/global_keybindings/run_command_screenshot கட்டளை அமைப்பை துவக்க "
-"பயன்படும் கீபைன்டிங்கை குறிக்கும்"
-
-#: ../src/metacity.schemas.in.in.h:36
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_window_screenshot key "
-"defines a keybinding which causes the command specified by this setting to "
-"be invoked."
-msgstr ""
-"The /apps/metacity/global_keybindings/run_command_window_screenshot விசை இந்த "
-"கட்டளை செயல்படுத்த வேண்டிய கீபைன்டிங்கை குறிக்கும்"
-
-#: ../src/metacity.schemas.in.in.h:37
-msgid ""
-"The keybinding that runs the correspondingly-numbered command in /apps/"
-"metacity/keybinding_commands The format looks like \"&lt;Control&gt;a\" or "
-"\"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows "
-"lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and "
-"\"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled\", "
-"then there will be no keybinding for this action."
-msgstr ""
-"கீபைன்டிங் குறிப்பிட்ட எண்ணுள்ள கட்டளையை /apps/metacity/keybinding_commands இல் "
-"இயக்கும். இதன் அமைப்பு \"&lt;Control&gt;a\" அல்லது\"&lt;Shift&gt;&lt;Alt&gt;F1\" "
-"வாக இருக்கும். இதன் பகுப்பி பெரிய மற்றும் சிறிய எழுத்துக்களை அனுமதிப்பதோடு,  \"&lt;"
-"Ctl&gt;\" மற்றும் \"&lt;Ctrl&gt;\".விரிவாக்கங்களை அனுமதிக்கும். \"செயல்படுத்தாதே\" "
-"தேர்வை அமைப்பதன் மூலம் கீபைன்டிங் செயலை கட்டுப்படுத்த முடியும்"
-
-#: ../src/metacity.schemas.in.in.h:38
-msgid "The name of a workspace."
-msgstr "பணியிடத்தின் பெயர்"
-
-#: ../src/metacity.schemas.in.in.h:39
-msgid "The screenshot command"
-msgstr "திரைவெட்டு கட்டளை"
-
-#: ../src/metacity.schemas.in.in.h:40
-msgid ""
-"The theme determines the appearance of window borders, titlebar, and so "
-"forth."
-msgstr "கருப்பொருள் ஓரம், தலைப்புப்பட்டி போன்றவைகளின் தோற்றத்தை கண்டறியும்."
-
-#: ../src/metacity.schemas.in.in.h:41
-msgid ""
-"The time delay before raising a window if auto_raise is set to true. The "
-"delay is given in thousandths of a second."
-msgstr ""
-"(_r)தானாக துவங்குதல் உண்மையென்று அமைக்கப்பட்டால் சாளரம் எடுத்துக்கொள்ளும் தாமத நேரம். "
-"தாமதம் 1000 நொடிகளில் குறிக்கப்பட்டுள்ளது"
-
-#: ../src/metacity.schemas.in.in.h:42
-msgid ""
-"The window focus mode indicates how windows are activated. It has three "
-"possible values; \"click\" means windows must be clicked in order to focus "
-"them, \"sloppy\" means windows are focused when the mouse enters the window, "
-"and \"mouse\" means windows are focused when the mouse enters the window and "
-"unfocused when the mouse leaves the window."
-msgstr ""
-"சாளர துவக்க குறி சாளரங்கள் எவ்வாறு செயல்படுத்தப்படுகிறது என்பதை குறிப்பிடும். இதில் "
-"மூன்றுவித மதிப்புகள் இருக்கும்,\"க்ளிக்\" எனில் க்ளிக் செய்யும் போது சாளரம் குறியை "
-"நகர்த்தும்.\"sloppy\" எனில் சுட்டி சாளரத்தில் நுழையும் போது செயல்படும் மற்றும்  \"mouse"
-"\" எனில் சுட்டி சாளரதில் நுழையும் போது செயல்படும்."
-
-#: ../src/metacity.schemas.in.in.h:43
-msgid "The window screenshot command"
-msgstr "சாளர திரைவெட்டு கட்டளை"
-
-#: ../src/metacity.schemas.in.in.h:44
-msgid ""
-"This option determines the effects of double-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"இந்த தேர்வு தலைப்பு பட்டியில் இரட்டை சொடுக்கு செய்வதின் பலனை நிர்ணயிக்கிறது. இப்போதைய "
-"செல்லுபடியாகும் விருப்பங்கள் 'toggle_shade', -இது சாளரத்தை நிழல் அல்லது நிழலற்றதாக "
-"ஆக்கும். 'toggle_maximize' சாளரத்தை பெரிதாக்கும் அல்லது பெரிதாகியதை மீட்கும், "
-"'toggle_maximize_horizontally' மற்றும் 'toggle_maximize_vertically' என்பது "
-"பெரிதாக்கல்/ சிறியதாக்கலை அந்த திசையில் மட்டும் செய்யும்,'minimize' சாளரத்தை "
-"சிறிதாக்கும் அல்லது சிறிதாக்கியதை மீட்கும், 'shade' சாளரத்தை மேலுக்கு சுருட்டும், "
-"'menu' சாளர மெனுவை காட்டும்,  'lower' சாளரத்தை மற்ற சாளரங்களின் பின்னே இறக்கும்  "
-"மற்றும்  'none' -எதுவும் செய்யாது."
-
-#: ../src/metacity.schemas.in.in.h:45
-msgid ""
-"This option determines the effects of middle-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"இந்த தேர்வு தலைப்பு பட்டியில் நடு சொடுக்கு செய்வதின் பலனை நிர்ணயிக்கிறது. இப்போதைய "
-"செல்லுபடியாகும் விருப்பங்கள் 'toggle_shade', -இது சாளரத்தை நிழல் அல்லது நிழலற்றதாக "
-"ஆக்கும். 'toggle_maximize' சாளரத்தை பெரிதாக்கும் அல்லது பெரிதாகியதை மீட்கும், "
-"'toggle_maximize_horizontally' மற்றும் 'toggle_maximize_vertically' என்பது "
-"பெரிதாக்கல்/ சிறியதாக்கலை அந்த திசையில் மட்டும் செய்யும்,'minimize' சாளரத்தை "
-"சிறிதாக்கும் அல்லது சிறிதாக்கியதை மீட்கும், 'shade' சாளரத்தை மேலுக்கு சுருட்டும், "
-"'menu' சாளர மெனுவை காட்டும்,  'lower' சாளரத்தை மற்ற சாளரங்களின் பின்னே இறக்கும்  "
-"மற்றும்  'none' -எதுவும் செய்யாது."
-
-#: ../src/metacity.schemas.in.in.h:46
-msgid ""
-"This option determines the effects of right-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"இந்த தேர்வு தலைப்பு பட்டியில் வலது சொடுக்கு செய்வதின் பலனை நிர்ணயிக்கிறது. இப்போதைய "
-"செல்லுபடியாகும் விருப்பங்கள் 'toggle_shade', -இது சாளரத்தை நிழல் அல்லது நிழலற்றதாக "
-"ஆக்கும். 'toggle_maximize' சாளரத்தை பெரிதாக்கும் அல்லது பெரிதாகியதை மீட்கும், "
-"'toggle_maximize_horizontally' மற்றும் 'toggle_maximize_vertically' என்பது "
-"பெரிதாக்கல்/ சிறியதாக்கலை அந்த திசையில் மட்டும் செய்யும்,'minimize' சாளரத்தை "
-"சிறிதாக்கும் அல்லது சிறிதாக்கியதை மீட்கும், 'shade' சாளரத்தை மேலுக்கு சுருட்டும், "
-"'menu' சாளர மெனுவை காட்டும்,  'lower' சாளரத்தை மற்ற சாளரங்களின் பின்னே இறக்கும்  "
-"மற்றும்  'none' -எதுவும் செய்யாது."
-
-#: ../src/metacity.schemas.in.in.h:47
-msgid ""
-"This option provides additional control over how newly created windows get "
-"focus. It has two possible values; \"smart\" applies the user's normal focus "
-"mode, and \"strict\" results in windows started from a terminal not being "
-"given focus."
-msgstr ""
-"இந்த தேர்வு புதிதாக உருவாக்கிய சாளரங்கல் மீது மேலும் கூடுதல் கட்டுப்பாடு தருகிறது. "
-"இதில் இரண்டு மதிப்புகள் இருக்கக்கூடும். \"smart\"  என்பது பயனரின் வழக்கமான குவிப்பு "
-"பாங்கை தரும். \"strict\" என்பது முனையத்திலிருந்து துவக்கிய சாளரத்துக்கு முன்னிலை "
-"தராது."
-
-#: ../src/metacity.schemas.in.in.h:48
-msgid ""
-"Turns on a visual indication when an application or the system issues a "
-"'bell' or 'beep'; useful for the hard-of-hearing and for use in noisy "
-"environments."
-msgstr ""
-"கணினி ஒரு பெல் அல்லது பீப் எச்சரிக்கை தரும் போது ஒரு காட்சி குறிப்பை தரும். இது காது "
-"சரியாக கேட்காதவர்களுக்கும் சத்தமான சூழலில் வேலை செய்பவர்களுக்கும் உபயோகமாகும்."
-
-#: ../src/metacity.schemas.in.in.h:49
-msgid "Use standard system font in window titles"
-msgstr "சாளர தலைப்பிம் நிலையான கணினி எழுத்துருவை பயன்படுத்து"
-
-#: ../src/metacity.schemas.in.in.h:50
-msgid "Visual Bell Type"
-msgstr "காட்சி மணி வகை"
-
-#: ../src/metacity.schemas.in.in.h:51
-msgid "Whether raising should be a side-effect of other user interactions"
-msgstr "முன்னிருத்தம் மற்றா பயனர் ஊடாடலுக்கு பக்க விளைவாக இருக்க வேண்டுமா?"
-
-#: ../src/metacity.schemas.in.in.h:52
-msgid "Whether to resize with the right button"
-msgstr "வலது பொத்தானால் மறுஅளவு செய்யவா"
-
-#: ../src/metacity.schemas.in.in.h:53
-msgid "Window focus mode"
-msgstr "சாளர குறி பாங்கு"
-
-#: ../src/metacity.schemas.in.in.h:54
-msgid "Window title font"
-msgstr "சாளர தலைப்பு எழுத்துரு"
 
 #: ../src/tools/metacity-message.c:150
 #, c-format
 msgid "Usage: %s\n"
 msgstr "பயன்பாடு: %s\n"
 
-#: ../src/ui/frames.c:1120
+#: ../src/ui/frames.c:1114
 msgid "Close Window"
 msgstr "சாளரம் மூடவும்"
 
-#: ../src/ui/frames.c:1123
+#: ../src/ui/frames.c:1117
 msgid "Window Menu"
 msgstr "சாளர பட்டி"
 
-#: ../src/ui/frames.c:1126
+#: ../src/ui/frames.c:1120
 msgid "Minimize Window"
 msgstr "சாளரத்தை குறுக்கவும்"
 
-#: ../src/ui/frames.c:1129
+#: ../src/ui/frames.c:1123
 msgid "Maximize Window"
 msgstr "சாளரத்தை பெரிதாக்கவும்"
 
-#: ../src/ui/frames.c:1132
+#: ../src/ui/frames.c:1126
 msgid "Restore Window"
 msgstr "சாளரத்தை மீட்டெடு"
 
-#: ../src/ui/frames.c:1135
+#: ../src/ui/frames.c:1129
 msgid "Roll Up Window"
 msgstr "சாளரத்தை மேலே சுருட்டு"
 
-#: ../src/ui/frames.c:1138
+#: ../src/ui/frames.c:1132
 msgid "Unroll Window"
 msgstr "சாளரம் விரிக்கவும்"
 
-#: ../src/ui/frames.c:1141
+#: ../src/ui/frames.c:1135
 msgid "Keep Window On Top"
 msgstr "சாளரத்தை மேலே வைத்திரு "
 
-#: ../src/ui/frames.c:1144
+#: ../src/ui/frames.c:1138
 msgid "Remove Window From Top"
 msgstr "மேலிருந்து சாளரத்தை நீக்கு  "
 
-#: ../src/ui/frames.c:1147
+#: ../src/ui/frames.c:1141
 msgid "Always On Visible Workspace"
 msgstr "வேலைகளத்தில்  எப்போதும் தெரியும் "
 
-#: ../src/ui/frames.c:1150
+#: ../src/ui/frames.c:1144
 msgid "Put Window On Only One Workspace"
 msgstr "சாளரத்தை ஒரே ஒரு பணியிடத்தில் மட்டும் வைக்கவும்"
 
@@ -1428,22 +750,22 @@ msgstr "வேலையிடத்தின் கீழே நகர்த்�
 msgid "_Close"
 msgstr "மூடவும் (_C)"
 
-#: ../src/ui/menu.c:203
+#: ../src/ui/menu.c:205
 #, c-format
 msgid "Workspace %d%n"
 msgstr "வேலையிடம் %d%n"
 
-#: ../src/ui/menu.c:213
+#: ../src/ui/menu.c:215
 #, c-format
 msgid "Workspace 1_0"
 msgstr "வேலையிடம் 1_0"
 
-#: ../src/ui/menu.c:215
+#: ../src/ui/menu.c:217
 #, c-format
 msgid "Workspace %s%d"
 msgstr "வேலையிடம் %s%d"
 
-#: ../src/ui/menu.c:395
+#: ../src/ui/menu.c:398
 msgid "Move to Another _Workspace"
 msgstr "மற்ற வேலையிடத்திற்கு மாற்றவும் (_W)"
 
@@ -1452,7 +774,7 @@ msgstr "மற்ற வேலையிடத்திற்கு மாற்�
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:104
+#: ../src/ui/metaaccellabel.c:80
 msgid "Shift"
 msgstr "Shift"
 
@@ -1461,7 +783,7 @@ msgstr "Shift"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:110
+#: ../src/ui/metaaccellabel.c:86
 msgid "Ctrl"
 msgstr "Ctrl"
 
@@ -1470,7 +792,7 @@ msgstr "Ctrl"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:116
+#: ../src/ui/metaaccellabel.c:92
 msgid "Alt"
 msgstr "Alt"
 
@@ -1479,7 +801,7 @@ msgstr "Alt"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:122
+#: ../src/ui/metaaccellabel.c:98
 msgid "Meta"
 msgstr "Meta"
 
@@ -1488,7 +810,7 @@ msgstr "Meta"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:128
+#: ../src/ui/metaaccellabel.c:104
 msgid "Super"
 msgstr "Super"
 
@@ -1497,7 +819,7 @@ msgstr "Super"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:134
+#: ../src/ui/metaaccellabel.c:110
 msgid "Hyper"
 msgstr "Hyper"
 
@@ -1506,7 +828,7 @@ msgstr "Hyper"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:140
+#: ../src/ui/metaaccellabel.c:116
 msgid "Mod2"
 msgstr "Mod2"
 
@@ -1515,7 +837,7 @@ msgstr "Mod2"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:146
+#: ../src/ui/metaaccellabel.c:122
 msgid "Mod3"
 msgstr "Mod3"
 
@@ -1524,7 +846,7 @@ msgstr "Mod3"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:152
+#: ../src/ui/metaaccellabel.c:128
 msgid "Mod4"
 msgstr "Mod4"
 
@@ -1533,7 +855,7 @@ msgstr "Mod4"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:158
+#: ../src/ui/metaaccellabel.c:134
 msgid "Mod5"
 msgstr "Mod5"
 
@@ -2142,145 +1464,153 @@ msgstr "%s கருத்துக்கு செல்லுபடியா�
 msgid "Theme file %s did not contain a root <metacity_theme> element"
 msgstr "கருப்பொருள் கோப்பு %s இல் root <metacity_theme> உறுப்பு இல்லை"
 
-#: ../src/ui/theme-viewer.c:75
-msgid "/_Windows"
-msgstr "/_Windows"
+#: ../src/ui/theme-viewer.c:99
+msgid "_Windows"
+msgstr "_W விண்டோஸ்"
 
-#: ../src/ui/theme-viewer.c:76
-msgid "/Windows/tearoff"
-msgstr "/Windows/tearoff"
+#: ../src/ui/theme-viewer.c:100
+msgid "_Dialog"
+msgstr "_D உரையாடல்"
 
-#: ../src/ui/theme-viewer.c:77
-msgid "/Windows/_Dialog"
-msgstr "/Windows/_Dialog"
+#: ../src/ui/theme-viewer.c:101
+msgid "_Modal dialog"
+msgstr "_M மாதிரி உரையாடல்"
 
-#: ../src/ui/theme-viewer.c:78
-msgid "/Windows/_Modal dialog"
-msgstr "/Windows/_Modal dialog"
+#: ../src/ui/theme-viewer.c:102
+msgid "_Utility"
+msgstr "_U பயன்பாடு "
 
-#: ../src/ui/theme-viewer.c:79
-msgid "/Windows/_Utility"
-msgstr "/Windows/_Utility"
+#: ../src/ui/theme-viewer.c:103
+msgid "_Splashscreen"
+msgstr "_S முதல்திரை"
 
-#: ../src/ui/theme-viewer.c:80
-msgid "/Windows/_Splashscreen"
-msgstr "/Windows/_Splashscreen"
+#: ../src/ui/theme-viewer.c:104
+msgid "_Top dock"
+msgstr "_T மேல் தட்டு"
 
-#: ../src/ui/theme-viewer.c:81
-msgid "/Windows/_Top dock"
-msgstr "/Windows/_Top dock"
+#: ../src/ui/theme-viewer.c:105
+msgid "_Bottom dock"
+msgstr "_B கீழ் தட்டு"
 
-#: ../src/ui/theme-viewer.c:82
-msgid "/Windows/_Bottom dock"
-msgstr "/Windows/_Bottom dock"
+#: ../src/ui/theme-viewer.c:106
+msgid "_Left dock"
+msgstr "_L இடது தட்டு"
 
-#: ../src/ui/theme-viewer.c:83
-msgid "/Windows/_Left dock"
-msgstr "/Windows/_Left dock"
+#: ../src/ui/theme-viewer.c:107
+msgid "_Right dock"
+msgstr "_R வலது தட்டு"
 
-#: ../src/ui/theme-viewer.c:84
-msgid "/Windows/_Right dock"
-msgstr "/Windows/_Right dock"
+#: ../src/ui/theme-viewer.c:108
+msgid "_All docks"
+msgstr "_A எல்லா தட்டுக்களும்"
 
-#: ../src/ui/theme-viewer.c:85
-msgid "/Windows/_All docks"
-msgstr "/Windows/_All docks"
+#: ../src/ui/theme-viewer.c:109
+msgid "Des_ktop"
+msgstr "_k மேல்மேசை"
 
-#: ../src/ui/theme-viewer.c:86
-msgid "/Windows/Des_ktop"
-msgstr "/Windows/Des_ktop"
+#: ../src/ui/theme-viewer.c:115
+msgid "Open another one of these windows"
+msgstr "இந்த சாளரத்தின் மற்றுமொரு சாளரம்"
 
-#: ../src/ui/theme-viewer.c:244
+#: ../src/ui/theme-viewer.c:117
+msgid "This is a demo button with an 'open' icon"
+msgstr "இது திற சின்னத்தோடு கூடிய சோதனை பட்டன்"
+
+#: ../src/ui/theme-viewer.c:119
+msgid "This is a demo button with a 'quit' icon"
+msgstr "இது 'வெளிச்செல்' சின்னத்தோடு கூடிய சோதனை பட்டன்"
+
+#: ../src/ui/theme-viewer.c:253
 msgid "This is a sample message in a sample dialog"
 msgstr "இது உதாரண உரையாடல் பெட்டியில் உள்ள உதாரண செய்தி"
 
-#: ../src/ui/theme-viewer.c:327
+#: ../src/ui/theme-viewer.c:336
 #, c-format
 msgid "Fake menu item %d\n"
 msgstr "பெய்யான மெனு உருப்படி %d\n"
 
-#: ../src/ui/theme-viewer.c:361
+#: ../src/ui/theme-viewer.c:370
 msgid "Border-only window"
 msgstr "ஓரம்-மட்டும் சாளரம்"
 
-#: ../src/ui/theme-viewer.c:363
+#: ../src/ui/theme-viewer.c:372
 msgid "Bar"
 msgstr "பட்டி"
 
-#: ../src/ui/theme-viewer.c:380
+#: ../src/ui/theme-viewer.c:389
 msgid "Normal Application Window"
 msgstr "தவறான சாளர பயன்பாடு"
 
-#: ../src/ui/theme-viewer.c:384
+#: ../src/ui/theme-viewer.c:393
 msgid "Dialog Box"
 msgstr "உரையாடல் பெட்டி"
 
-#: ../src/ui/theme-viewer.c:388
+#: ../src/ui/theme-viewer.c:397
 msgid "Modal Dialog Box"
 msgstr "மாதிரி உரையாடல் பெட்டி"
 
-#: ../src/ui/theme-viewer.c:392
+#: ../src/ui/theme-viewer.c:401
 msgid "Utility Palette"
 msgstr "பயன்பாடு மாதிரி"
 
-#: ../src/ui/theme-viewer.c:396
+#: ../src/ui/theme-viewer.c:405
 msgid "Torn-off Menu"
 msgstr "Torn-off மெனு"
 
-#: ../src/ui/theme-viewer.c:400
+#: ../src/ui/theme-viewer.c:409
 msgid "Border"
 msgstr "ஓரம்"
 
-#: ../src/ui/theme-viewer.c:728
+#: ../src/ui/theme-viewer.c:737
 #, c-format
 msgid "Button layout test %d"
 msgstr "பட்டன் உருவரை சோதனை %d"
 
-#: ../src/ui/theme-viewer.c:757
+#: ../src/ui/theme-viewer.c:766
 #, c-format
 msgid "%g milliseconds to draw one window frame"
 msgstr "%g சாளரத்தை வரைய மில்லிசெக்கண்டு"
 
-#: ../src/ui/theme-viewer.c:800
+#: ../src/ui/theme-viewer.c:810
 #, c-format
 msgid "Usage: metacity-theme-viewer [THEMENAME]\n"
 msgstr "பயன்பாடு: metacity-theme-viewer [THEMENAME]\n"
 
-#: ../src/ui/theme-viewer.c:807
+#: ../src/ui/theme-viewer.c:817
 #, c-format
 msgid "Error loading theme: %s\n"
 msgstr "கருப்பொருளை ஏற்றுவதில் பிழை: %s\n"
 
-#: ../src/ui/theme-viewer.c:813
+#: ../src/ui/theme-viewer.c:823
 #, c-format
 msgid "Loaded theme \"%s\" in %g seconds\n"
 msgstr "கருப்பொருள்  \"%s\" %g செகண்டில்\n"
 
-#: ../src/ui/theme-viewer.c:854
+#: ../src/ui/theme-viewer.c:866
 msgid "Normal Title Font"
 msgstr "இயல்பான தலைப்பு எழுத்துரு"
 
-#: ../src/ui/theme-viewer.c:860
+#: ../src/ui/theme-viewer.c:872
 msgid "Small Title Font"
 msgstr "சிறிய தலைப்பு எழுத்துரு"
 
-#: ../src/ui/theme-viewer.c:866
+#: ../src/ui/theme-viewer.c:878
 msgid "Large Title Font"
 msgstr "பெரிய தலைப்பு எழுத்துரு"
 
-#: ../src/ui/theme-viewer.c:871
+#: ../src/ui/theme-viewer.c:883
 msgid "Button Layouts"
 msgstr "பட்டன் உருவரை"
 
-#: ../src/ui/theme-viewer.c:876
+#: ../src/ui/theme-viewer.c:888
 msgid "Benchmark"
 msgstr "நிர்ணயம்"
 
-#: ../src/ui/theme-viewer.c:923
+#: ../src/ui/theme-viewer.c:935
 msgid "Window Title Goes Here"
 msgstr "சாளர தலைப்பு இங்கே"
 
-#: ../src/ui/theme-viewer.c:1027
+#: ../src/ui/theme-viewer.c:1039
 #, c-format
 msgid ""
 "Drew %d frames in %g client-side seconds (%g milliseconds per frame) and %g "
@@ -2290,45 +1620,611 @@ msgstr ""
 "%d சட்டங்கள் %g புரவலனில் செகண்டிலும் (%g சட்டத்தின் மில்லி செக்கண்டு )  %g X சேவகனின் "
 "மூலத்தில் (%g மில்லி செகண்ட் சட்டத்திற்கு)\n"
 
-#: ../src/ui/theme-viewer.c:1246
+#: ../src/ui/theme-viewer.c:1258
 msgid "position expression test returned TRUE but set error"
 msgstr "நிலை கூற்று சோதனை உண்மையை தந்தது ஆனால் பிழை"
 
-#: ../src/ui/theme-viewer.c:1248
+#: ../src/ui/theme-viewer.c:1260
 msgid "position expression test returned FALSE but didn't set error"
 msgstr "நிலை கூற்று சோதனை பொய்யை தந்தது ஆனால் பிழை"
 
-#: ../src/ui/theme-viewer.c:1252
+#: ../src/ui/theme-viewer.c:1264
 msgid "Error was expected but none given"
 msgstr "பிழை எதிர்பார்க்கப்பட்டடு ஆனால் தரப்படவில்லை"
 
-#: ../src/ui/theme-viewer.c:1254
+#: ../src/ui/theme-viewer.c:1266
 #, c-format
 msgid "Error %d was expected but %d given"
 msgstr "பிழை %d எதிர்பார்க்கப்பட்டது %d தரப்படவில்லை"
 
-#: ../src/ui/theme-viewer.c:1260
+#: ../src/ui/theme-viewer.c:1272
 #, c-format
 msgid "Error not expected but one was returned: %s"
 msgstr "பிழை எதிர்பார்க்கப்பட்டடு ஆனால் தரப்படவில்லை: %s"
 
-#: ../src/ui/theme-viewer.c:1264
+#: ../src/ui/theme-viewer.c:1276
 #, c-format
 msgid "x value was %d, %d was expected"
 msgstr "x மதிப்பு %d, %d எதிர்பார்க்கப்பட்டது"
 
-#: ../src/ui/theme-viewer.c:1267
+#: ../src/ui/theme-viewer.c:1279
 #, c-format
 msgid "y value was %d, %d was expected"
 msgstr "y மதிப்பு %d, %d எதிர்பார்க்கப்பட்டது"
 
-#: ../src/ui/theme-viewer.c:1332
+#: ../src/ui/theme-viewer.c:1344
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr "%d அச்சு கூற்று பகுக்கப்பட்டது %g செகண்டில் (%g சராசரி செகண்ட்)\n"
 
-#~ msgid "Desktop"
-#~ msgstr "மேல்மேசை"
+#~ msgid "Launchers"
+#~ msgstr "துவக்கிகள்"
+
+#~ msgid "Screenshots"
+#~ msgstr "திரைவெட்டுகள்"
+
+#~ msgid ""
+#~ "There was an error running <tt>%s</tt>:\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "இயக்குவதில் பிழை <tt>%s</tt>:\n"
+#~ "\n"
+#~ "%s"
+
+#~ msgid "No command %d has been defined.\n"
+#~ msgstr "கட்டளை %d எதுவும் குறிப்பிடப்படவில்லை.\n"
+
+#~ msgid "No terminal command has been defined.\n"
+#~ msgstr "முனைய கட்டளை எதுவும் குறிப்பிடப்படவில்லை.\n"
+
+#~ msgid "GConf key '%s' is set to an invalid value\n"
+#~ msgstr "GConf விசை '%s' செல்லாத மதிப்பாக அமைக்கப்பட்டுள்ளது\n"
+
+#~ msgid "%d stored in GConf key %s is out of range %d to %d\n"
+#~ msgstr ""
+#~ "%d GConf விசை %s இல்  சேமிக்கப்பட்டுள்ளது அது வரம்பு கடந்துள்ளது %d  %d க்கு\n"
+
+#~ msgid "GConf key \"%s\" is set to an invalid type\n"
+#~ msgstr "GConf விசை \"%s\" செல்லாத வகை\n"
+
+#~ msgid "Error setting number of workspaces to %d: %s\n"
+#~ msgstr "பணியிடத்தை அமைப்பதில் பிழை %d: %s\n"
+
+#~ msgid "Error setting name for workspace %d to \"%s\": %s\n"
+#~ msgstr "பணியிடத்தை %d லிருந்து \"%s\" க்கு மாற்றுவதில் பிழை: %s\n"
+
+#~ msgid "Error setting compositor status: %s\n"
+#~ msgstr "பலவின் ஆக்க நிலையை அமைப்பதில் பிழை: %s\n"
+
+#~ msgid ""
+#~ "The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
+#~ "\n"
+#~ "The parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to "
+#~ "the special string \"disabled\", then there will be no keybinding for "
+#~ "this action."
+#~ msgstr ""
+#~ "இதன் அமைப்பு \"<Control>a\" அல்லது  <Shift><Alt>F1\".\n"
+#~ "\n"
+#~ "இதன் பகுப்பி பெரிய மற்றும் சிறிய எழுத்துக்களை அனுமதிப்பதோடு,   \"<Ctl>\" மற்றும்  "
+#~ "\"<Ctrl>\" போன்ற சுருக்கங்களையும் அனுமதிக்கும். \"செயல்படுத்தாதே\" தேர்வை அமைப்பதன் "
+#~ "மூலம் இந்த செயலுக்கு கீபைன்டிங் ஐ நீக்க முடியும்."
+
+#~ msgid ""
+#~ "The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
+#~ "\n"
+#~ "The parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to "
+#~ "the special string \"disabled\", then there will be no keybinding for "
+#~ "this action.\n"
+#~ "\n"
+#~ "This keybinding may be reversed by holding down the \"shift\" key; "
+#~ "therefore, \"shift\" cannot be one of the keys it uses."
+#~ msgstr ""
+#~ "இதன் அமைப்பு \"<Control>a\" அல்லது  <Shift><Alt>F1\".\n"
+#~ "\n"
+#~ "இதன் பகுப்பி பெரிய மற்றும் சிறிய எழுத்துக்களை அனுமதிப்பதோடு,   \"<Ctl>\" மற்றும்  "
+#~ "\"<Ctrl>\" போன்ற சுருக்கங்களையும் அனுமதிக்கும். \"செயல்படுத்தாதே\" தேர்வை அமைப்பதன் "
+#~ "மூலம் இந்த செயலுக்கு கீபைன்டிங் ஐ நீக்க முடியும்.\n"
+#~ "\n"
+#~ "இந்த \"shift\" விசையை அழுத்துவதால் இந்த விசை பிணைப்பை மீட்க முடியும்;  \"shift\" "
+#~ "விசை அது பயன்படுத்தப்படும் விசைகளில் ஒன்றாக இருக்க முடியாது."
+
+#~ msgid "Switch to workspace 5"
+#~ msgstr "பணியிடம் 5 க்கு மாறு"
+
+#~ msgid "Switch to workspace 6"
+#~ msgstr "பணியிடம் 6 க்கு மாறு"
+
+#~ msgid "Switch to workspace 7"
+#~ msgstr "பணியிடம் 7 க்கு மாறு"
+
+#~ msgid "Switch to workspace 8"
+#~ msgstr "பணியிடம் 8 க்கு மாறு"
+
+#~ msgid "Switch to workspace 9"
+#~ msgstr "பணியிடம் 9 க்கு மாறு"
+
+#~ msgid "Switch to workspace 10"
+#~ msgstr "பணியிடம் 10 க்கு மாறு"
+
+#~ msgid "Switch to workspace 11"
+#~ msgstr "பணியிடம் 11 க்கு மாறு"
+
+#~ msgid "Switch to workspace 12"
+#~ msgstr "பணியிடம் 11 க்கு மாறு"
+
+#~ msgid "Reverse switch windows of an application"
+#~ msgstr "ஒரு பயன்பாட்டின் சாளரங்களிடையே பின்னால் மாறவும்"
+
+#~ msgid "Reverse switch applications"
+#~ msgstr "பயன்பாடுகளுக்கிடையே பின்நோக்கி மாறவும்"
+
+#~ msgid "Reverse switch system controls"
+#~ msgstr "கணினி கட்டுப்பாடுகளை பின்னோக்கி மாற்றவும்"
+
+#~ msgid "Reverse switch windows of an app directly"
+#~ msgstr "ஒரு பயன்பாட்டின் சாளரங்களிடையே பின்னோக்கி உடனடியாக நகரவும்"
+
+#~ msgid "Reverse switch windows directly"
+#~ msgstr "சாளரங்களிடையே  உடனடியாக நகரவும்"
+
+#~ msgid "Reverse switch system controls directly"
+#~ msgstr "கணினி கட்டுப்பாடுகளை நேரடியாக பின்னோக்கி மாற்றவும்"
+
+#~ msgid "Take a screenshot"
+#~ msgstr "திரைவெட்டை பதிவு செய்"
+
+#~ msgid "Take a screenshot of a window"
+#~ msgstr "சாளரத்தின் திரைவெட்டை பதிவு செய்"
+
+#~ msgid "Launch Terminal"
+#~ msgstr "முனையம் ஒன்றை துவக்கு"
+
+#~ msgid "Toggle window always appearing on top"
+#~ msgstr "எப்போதும் மேலே காணும் சாளரத்தை நிலை மாற்று"
+
+#~ msgid "Move window to workspace 5"
+#~ msgstr "பணியிடம் 5 க்கு சாளரத்தை நகர்த்தவும்"
+
+#~ msgid "Move window to workspace 6"
+#~ msgstr "பணியிடம் 6 க்கு சாளரத்தை நகர்த்தவும்"
+
+#~ msgid "Move window to workspace 7"
+#~ msgstr "பணியிடம் 7 க்கு சாளரத்தை நகர்த்தவும்"
+
+#~ msgid "Move window to workspace 8"
+#~ msgstr "பணியிடம் 8 க்கு சாளரத்தை நகர்த்தவும்"
+
+#~ msgid "Move window to workspace 9"
+#~ msgstr "பணியிடம் 9 க்கு சாளரத்தை நகர்த்தவும்"
+
+#~ msgid "Move window to workspace 10"
+#~ msgstr "பணியிடம் 10 க்கு சாளரத்தை நகர்த்தவும்"
+
+#~ msgid "Move window to workspace 11"
+#~ msgstr "பணியிடம் 11 க்கு சாளரத்தை நகர்த்தவும்"
+
+#~ msgid "Move window to workspace 12"
+#~ msgstr "பணியிடம் 12 க்கு சாளரத்தை நகர்த்தவும்"
+
+#~ msgid "Move window to top left corner"
+#~ msgstr "மேல் இடது மூலைக்கு சாளரத்தை நகர்த்தவும்"
+
+#~ msgid "Move window to top right corner"
+#~ msgstr "மேல் வலது மூலைக்கு சாளரத்தை நகர்த்தவும்"
+
+#~ msgid "Move window to bottom left corner"
+#~ msgstr "கீழ் இடது மூலைக்கு சாளரத்தை நகர்த்தவும்"
+
+#~ msgid "Move window to bottom right corner"
+#~ msgstr "கீழ் வலது மூலைக்கு சாளரத்தை நகர்த்தவும்"
+
+#~ msgid "Move window to top edge of screen"
+#~ msgstr "சாளரத்தை திரையின் மேல் விளிம்புக்கு நகர்த்தவும்"
+
+#~ msgid "Move window to bottom edge of screen"
+#~ msgstr "சாளரத்தை திரையின் கீழ் விளிம்புக்கு நகர்த்தவும்"
+
+#~ msgid "Move window to right side of screen"
+#~ msgstr "சாளரத்தை திரையின் வலது பக்கம் நகர்த்தவும்"
+
+#~ msgid "Move window to left side of screen"
+#~ msgstr "சாளரத்தை திரையின் இடது பக்கம் நகர்த்தவும்"
+
+#~ msgid "Move window to center of screen"
+#~ msgstr "சாளரத்தை திரையின் மையத்துக்கு நகர்த்தவும்"
+
+#~ msgid ""
+#~ "(Not implemented) Navigation works in terms of applications not windows"
+#~ msgstr "(செயல்படுத்தப்படாத) உலாவல் பயன்பாட்டின் படி சாளரத்தின் படி அல்ல"
+
+#~ msgid ""
+#~ "A font description string describing a font for window titlebars. The "
+#~ "size from the description will only be used if the titlebar_font_size "
+#~ "option is set to 0. Also, this option is disabled if the "
+#~ "titlebar_uses_desktop_font option is set to true."
+#~ msgstr ""
+#~ "சாளரத்தின் தலைப்புப்பட்டிக்கான  எழுத்துருவை விளக்கும் எழுத்துரு விளக்க சரம். "
+#~ "titlebar_font_size தேர்வில் 0 ஐ அமைத்தால் மட்டும் விளக்க சரத்தில் உள்ள அளவு "
+#~ "பயன்படுத்தப்படும். மேலும் titlebar_uses_desktop_font தேர்வை உண்மை என அமைத்தால் இந்த "
+#~ "தேர்வு செயல்படாது. "
+
+#~ msgid "Action on title bar double-click"
+#~ msgstr "தலைப்புப்பட்டியை இரண்டு-சொடுக்கு செய்யும் போது நிகழவேண்டியது"
+
+#~ msgid "Action on title bar middle-click"
+#~ msgstr "தலைப்புப்பட்டியை நடு சொடுக்கு செய்யும் போது நிகழவேண்டியது"
+
+#~ msgid "Action on title bar right-click"
+#~ msgstr "தலைப்புப்பட்டியை வலது சொடுக்கு செய்யும் போது நிகழவேண்டியது"
+
+#~ msgid "Arrangement of buttons on the titlebar"
+#~ msgstr "தலைப்புப்பட்டியில் பட்டன்கள் அடுக்கப்பட்ட நிலை"
+
+#~ msgid ""
+#~ "Arrangement of buttons on the titlebar. The value should be a string, "
+#~ "such as \"menu:minimize,maximize,spacer,close\"; the colon separates the "
+#~ "left corner of the window from the right corner, and the button names are "
+#~ "comma-separated. Duplicate buttons are not allowed. Unknown button names "
+#~ "are silently ignored so that buttons can be added in future metacity "
+#~ "versions without breaking older versions. A special spacer tag can be "
+#~ "used to insert some space between two adjacent buttons."
+#~ msgstr ""
+#~ "தலைப்புப்பட்டியில் பட்டன்கள் அடுக்கப்பட்ட நிலை.\"menu:minimize,maximize,spacer,close"
+#~ "\" என மதிப்புகள் இருக்க வேண்டும்; அரைப்புள்ளி சாளரத்தின் இடது மூலையிலிருந்து வலது "
+#~ "மூலையை தனிப்படுத்த பயன்படும். மேலும் பட்டன் பெயர்கள் கமா வால் பிரிக்கப்பட்டிருக்கும் பொய் "
+#~ "பட்டனுக்கு அனுமதி இல்லை. தெரியாத பட்டன் பெயர்கள் பழைய பதிப்புகளை உடைக்காமல் "
+#~ "தவிர்க்கப்பட்டு மெட்டா சிட்டியின் அடுத்த பதிப்பின் சேர்க்கப்படும். இரு அடுத்தடுத்த "
+#~ "பட்டன்களின் இடையே கொஞ்சம் இடைவெளியை நுழைக்க ஒரு விசேஷ குறிப்பை பயன்படுத்தலாம்."
+
+#~ msgid "Automatically raises the focused window"
+#~ msgstr "குறிக்கப்பட்ட சாளரத்தை தானாக ஏற்று"
+
+#~ msgid ""
+#~ "Clicking a window while holding down this modifier key will move the "
+#~ "window (left click), resize the window (middle click), or show the window "
+#~ "menu (right click). The middle and right click operations may be swapped "
+#~ "using the \"resize_with_right_button\" key. Modifier is expressed as "
+#~ "\"&lt;Alt&gt;\" or \"&lt;Super&gt;\" for example."
+#~ msgstr ""
+#~ "இந்த விசையை அழுத்திக்கொண்டே சாளரத்தில் மேல் க்ளிக் செய்து சாளரத்தை நகர்த்தவும் (இடது "
+#~ "க்ளிக்), அளவு மாற்ற (மைய க்ளிக்), அல்லது மெனுவைகாட்ட(வலது க்ளிக்). மைய, வலது "
+#~ "பயன்பாடுகளை \"resize_with_right_button\" விசையை கொண்டு இட மாற்றலாம்.  மாற்றி "
+#~ "உதாரணமாக  \"&lt;Alt&gt;\" or \"&lt;Super&gt;\" என காட்டப்படும் "
+
+#~ msgid "Commands to run in response to keybindings"
+#~ msgstr "கீபைண்டிங்களுக்கு இணங்க இயக்க கட்டளைகள்"
+
+#~ msgid "Control how new windows get focus"
+#~ msgstr "புதிய சாளரம் எப்படி முன்னிலை பெறும் என கட்டுப்படுத்துகிறது"
+
+#~ msgid "Current theme"
+#~ msgstr "தற்போதைய கருப்பொருள்"
+
+#~ msgid "Delay in milliseconds for the auto raise option"
+#~ msgstr "தானாக துவக்க தேர்வில் தாமதம் மில்லிசெகண்டில்"
+
+#~ msgid ""
+#~ "Determines whether applications or the system can generate audible "
+#~ "'beeps'; may be used in conjunction with 'visual bell' to allow silent "
+#~ "'beeps'."
+#~ msgstr ""
+#~ "கணினி அல்லது பயன்பாட்டால் மணியை காட்டுவதற்கு பதில் கேட்கக்கூடிய ஒலியை உருவாக்க "
+#~ "முடியுமா. "
+
+#~ msgid "Disable misfeatures that are required by old or broken applications"
+#~ msgstr "பழைய மற்றும் உடைந்த பயன்பாடுகளாள் செயல்நீக்கம் செய்யப்பட்ட காணாமல் போன வசதிகள்"
+
+#~ msgid "Enable Visual Bell"
+#~ msgstr "்சி மணகாட்சியாக ியை செயல்படுத்து"
+
+#~ msgid ""
+#~ "If set to true, and the focus mode is either \"sloppy\" or \"mouse\" then "
+#~ "the focused window will be automatically raised after a delay specified "
+#~ "by the auto_raise_delay key. This is not related to clicking on a window "
+#~ "to raise it, nor to entering a window during drag-and-drop."
+#~ msgstr ""
+#~ "உண்மையெனில், குவியும் பாணி \"sloppy\" அல்லது \"mouse\" எனில் சிறிது தாமதத்திற்கு "
+#~ "பிறகு சாளரம் தானாக மேலெழும் (தாமதம் auto_raise_delay விசையால் குறிக்கப்படும்). "
+#~ "இதற்கும் ஒரு சாளரத்தை சொடுக்கி மேலெழச் செய்வதற்கும் அல்லது இழுத்து விடுதலில் ஒரு "
+#~ "சாளரத்தில் நுழைவதற்கும் சம்பந்தமில்லை."
+
+#~ msgid ""
+#~ "If true, ignore the titlebar_font option, and use the standard "
+#~ "application font for window titles."
+#~ msgstr ""
+#~ "உண்மையெனில், titlebar_font தேர்வை தவிர்கும். நிலையான எழுத்துருவை சாளர தலைப்பில் "
+#~ "காட்டும்."
+
+#~ msgid ""
+#~ "If true, then Metacity works in terms of applications rather than "
+#~ "windows. The concept is a bit abstract, but in general an application-"
+#~ "based setup is more like the Mac and less like Windows. When you focus a "
+#~ "window in application-based mode, all the windows in the application will "
+#~ "be raised. Also, in application-based mode, focus clicks are not passed "
+#~ "through to windows in other applications. Application-based mode is, "
+#~ "however, largely unimplemented at the moment."
+#~ msgstr ""
+#~ "உண்மையெனில், மெட்டாசிட்டி சாளரத்தில் இல்லாமல் பயன்பாட்டில் இயங்கும். இந்த கொள்கை சிறிது "
+#~ "சிக்கலானது என்றாலும், மேக் போன்ற பயன்பாடு-சார்ந்த அமைப்புக்கு மிக பயனுள்ளது, சாளரத்தை "
+#~ "பயன்பாடு-சார்ந்து அமைக்கும் போது பயன்பாடோடு தொடர்புடைய சாளரங்கள் மேலெழும்பும்.மேலும் "
+#~ "இது மற்ற சாளரங்களை பாதிக்காது. ஆனால் இதன் அமைப்பு சற்றே கேள்விக்குட்பட்டது. ஆனால் "
+#~ "அமைப்புகள் பயன்பாடு சார்ந்த மற்றும் சாளரம் சார்ந்தவைகளின் விளக்கத்தை தெரிந்துகொள்வது "
+#~ "நல்லது. மேலும் பயன்பாடு-சார்ந்தவை முடிக்கப்படாத நிலையில் உள்ளது"
+
+#~ msgid "Modifier to use for modified window click actions"
+#~ msgstr "சாளர க்ளிக் செயல்பாட்டின் போது பயன்பட வேண்டிய மாற்றி"
+
+#~ msgid "Name of workspace"
+#~ msgstr "பணியிடத்தின் பெயர்"
+
+#~ msgid "Number of workspaces"
+#~ msgstr "பணியிடங்களின் எண்ணிக்கை"
+
+#~ msgid ""
+#~ "Number of workspaces. Must be more than zero, and has a fixed maximum to "
+#~ "prevent making the desktop unusable by accidentally asking for too many "
+#~ "workspaces."
+#~ msgstr ""
+#~ "பணிக்களங்களின் எண். இது பூஜ்யமாக இருக்க வேண்டும்.  அதிகபட்சம் வரையறுக்கப்பட்டு இருக்க "
+#~ "வேண்டும். இல்லாவிடில் தவறுதலாக் மிக அதிக பணிக்களம் கேட்கப்பட்டால் மேல்மேசை பயன்படுத்த "
+#~ "முடியாததாகி விடும்."
+
+#~ msgid "Run a defined command"
+#~ msgstr "குறிப்பிட்ட கட்டளையை இயக்கு"
+
+#~ msgid ""
+#~ "Set this to true to resize with the right button and show a menu with the "
+#~ "middle button while holding down the key given in \"mouse_button_modifier"
+#~ "\"; set it to false to make it work the opposite way around."
+#~ msgstr ""
+#~ "உண்மை என அமைத்தால் \"mouse_button_modifier\" இல தரப்பட்ட விசையை அழுத்திக்கொண்டு "
+#~ "வலது பட்டனால் அளவை மாற்றலாம், நடு பட்டனால் மெனுவை காட்டலாம்.; இது மாறாக செயல்பட "
+#~ "பொய் என அமை."
+
+#~ msgid ""
+#~ "Setting this option to false can lead to buggy behavior, so users are "
+#~ "strongly discouraged from changing it from the default of true. Many "
+#~ "actions (e.g. clicking in the client area, moving or resizing the window) "
+#~ "normally raise the window as a side-effect. Setting this option to false, "
+#~ "which is strongly discouraged, will decouple raising from other user "
+#~ "actions, and ignore raise requests generated by applications. See http://"
+#~ "bugzilla.gnome.org/show_bug.cgi?id=445447#c6. Even when this option is "
+#~ "false, windows can still be raised by an alt-left-click anywhere on the "
+#~ "window, a normal click on the window decorations, or by special messages "
+#~ "from pagers, such as activation requests from tasklist applets. This "
+#~ "option is currently disabled in click-to-focus mode. Note that the list "
+#~ "of ways to raise windows when raise_on_click is false does not include "
+#~ "programmatic requests from applications to raise windows; such requests "
+#~ "will be ignored regardless of the reason for the request. If you are an "
+#~ "application developer and have a user complaining that your application "
+#~ "does not work with this setting disabled, tell them it is _their_ fault "
+#~ "for breaking their window manager and that they need to change this "
+#~ "option back to true or live with the \"bug\" they requested."
+#~ msgstr ""
+#~ "இந்த தேர்வை அமைத்தல் பிழையான நடத்தையை தரலாம். பயனர் முன்னிருப்பான உண்மை தேர்வை மாற்ற "
+#~ "வேண்டாம் என பலமாக பரிந்துரைக்கப்படுகிறது. சார்ந்தோன் இடத்தில் சொடுக்குதல், சாளர "
+#~ "நகர்வு, மறு அளவாக்கம் ஆகிய பல செயல்கள் சாதாரணமாக சாளரத்தை முன்னிலையாக்கும். மற்ற "
+#~ "பயனர் செயல்களில் இருந்து இணைப்பு நீக்க இந்த தேவை இல்லை என அமைத்தல் -இது வேண்டாம் என "
+#~ "பலமாக பரிந்துரைக்கப்படுகிறது- மற்ற பயனர் செயல்கள் நிரல்களின் வேண்டுதல்கள் ஆகியவை "
+#~ "சாளரத்தை உயர்த்துவதிலிருந்து தடுக்கும். http://bugzilla.gnome.org/show_bug.cgi?"
+#~ "id=445447#c6. ஐ யும் பார்க்கவும்.(அப்படியானாலும் சாளரத்தில் எங்கேயும் ஆல்ட்+ இடது "
+#~ "சொடுக்கு, சாளர அலங்காரத்தில் சொடுக்கு, டாஸ்க்லிஸ்ட் குறுநிரலிலிருந்து செயல்பாடு "
+#~ "வேண்டுகோள் போன்ற விளிப்பான்களிடமிருந்து சிறப்புச்செய்திகள் ஆகியவற்றால் சாளரத்தை "
+#~ "முன்னிலையாக்கலாம்.) இந்த தேர்வு இப்போது ¨முன்னிலைபடுத்த சொடுக்கு¨ பாங்கில் "
+#~ "செயலிழக்கபட்டுள்ளது. raise_on_click தேர்வு இல்லை என அமைக்கப்பட்டால் பாதிக்கப்படும் "
+#~ "வழிகளில் நிரல்களின் வேண்டுதல்கள் இல்லை என அறியவும். அவை எப்போதுமே "
+#~ "உதாசீனப்படுத்தப்படும். நீங்கள் செயல்பாடு உருவாக்குபவர் ஆயின், பயனர் செயல்பாடு வேலை "
+#~ "செய்யவில்லை என கூறினால் அவரை இந்த சாளர மேலாளரை மாற்றியதால் இது நிகழ்ந்தது என்றும் "
+#~ "இந்த தேர்வை உண்மை என அமைக்க வேண்டும் அல்லது பிழையுடன் (\"bug\") வாழ வேண்டும் என "
+#~ "கூறுங்கள். "
+
+#~ msgid ""
+#~ "Some applications disregard specifications in ways that result in window "
+#~ "manager misfeatures. This option puts Metacity in a rigorously correct "
+#~ "mode, which gives a more consistent user interface, provided one does not "
+#~ "need to run any misbehaving applications."
+#~ msgstr ""
+#~ "சில நிரல்கள் சாளர மேலாளர் குறிப்பிடும் வரையரைகளை மீறுவதால் பிரச்சினைகள் ஏற்படுகிறன. "
+#~ "இந்த தேர்வு மெட்டாசிட்டி ஐ வெகு சரியான பாங்கில் அமைக்கும். இதனால் சரியில்லாத "
+#~ "பயன்பாடுகள் தவிர பயனருக்கு எப்போதுமே சரியான பயன்பாடு இடைமுகம் கிடைக்கும். "
+
+#~ msgid "System Bell is Audible"
+#~ msgstr "கணினி ஒலி கேட்கும்படி"
+
+#~ msgid ""
+#~ "Tells Metacity how to implement the visual indication that the system "
+#~ "bell or another application 'bell' indicator has been rung. Currently "
+#~ "there are two valid values, \"fullscreen\", which causes a fullscreen "
+#~ "white-black flash, and \"frame_flash\" which causes the titlebar of the "
+#~ "application which sent the bell signal to flash. If the application which "
+#~ "sent the bell is unknown (as is usually the case for the default \"system "
+#~ "beep\"), the currently focused window's titlebar is flashed."
+#~ msgstr ""
+#~ "மணி ஒலிப்பதை காட்சியாக காட்டுவது எப்படி என்பதை மெட்டாசிட்டி குறிப்பிடும். தற்போது "
+#~ "இரண்டு மதிப்புகள் உள்ளது \"முழுதிரை: முழுதிரையும் கருப்பு வெள்ளையாக தெரியும். "
+#~ "\"சட்ட_காட்சி\" தலைப்புப்பட்டியில் பயன்பாட்டின் சின்னம் மணியோசையை அனுப்பும். மணியோசையை "
+#~ "அனுப்பிய பயன்பாடு தெரியாத பயன்பாடு(இது இயல்பான \"கணினி ஒலிக்கு\" பொருந்தும்)"
+
+#~ msgid ""
+#~ "The /apps/metacity/global_keybindings/run_command_N keys define "
+#~ "keybindings that correspond to these commands. Pressing the keybinding "
+#~ "for run_command_N will execute command_N."
+#~ msgstr ""
+#~ "/apps/metacity/global_keybindings/run_command_N கீபைன்டிங்கை அதனோடு "
+#~ "தொடர்புடைய கட்டளையோடு இணைக்கும்.இந்த கட்டளைக்காக run_command_N கீபைன்டிங்கை "
+#~ "அழுத்துவதால் command_N இயங்கும்."
+
+#~ msgid ""
+#~ "The /apps/metacity/global_keybindings/run_command_screenshot key defines "
+#~ "a keybinding which causes the command specified by this setting to be "
+#~ "invoked."
+#~ msgstr ""
+#~ " /apps/metacity/global_keybindings/run_command_screenshot கட்டளை அமைப்பை "
+#~ "துவக்க பயன்படும் கீபைன்டிங்கை குறிக்கும்"
+
+#~ msgid ""
+#~ "The /apps/metacity/global_keybindings/run_command_window_screenshot key "
+#~ "defines a keybinding which causes the command specified by this setting "
+#~ "to be invoked."
+#~ msgstr ""
+#~ "The /apps/metacity/global_keybindings/run_command_window_screenshot விசை "
+#~ "இந்த கட்டளை செயல்படுத்த வேண்டிய கீபைன்டிங்கை குறிக்கும்"
+
+#~ msgid ""
+#~ "The keybinding that runs the correspondingly-numbered command in /apps/"
+#~ "metacity/keybinding_commands The format looks like \"&lt;Control&gt;a\" "
+#~ "or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and "
+#~ "allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
+#~ "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
+#~ "\"disabled\", then there will be no keybinding for this action."
+#~ msgstr ""
+#~ "கீபைன்டிங் குறிப்பிட்ட எண்ணுள்ள கட்டளையை /apps/metacity/keybinding_commands இல் "
+#~ "இயக்கும். இதன் அமைப்பு \"&lt;Control&gt;a\" அல்லது\"&lt;Shift&gt;&lt;Alt&gt;"
+#~ "F1\" வாக இருக்கும். இதன் பகுப்பி பெரிய மற்றும் சிறிய எழுத்துக்களை அனுமதிப்பதோடு,  "
+#~ "\"&lt;Ctl&gt;\" மற்றும் \"&lt;Ctrl&gt;\".விரிவாக்கங்களை அனுமதிக்கும். "
+#~ "\"செயல்படுத்தாதே\" தேர்வை அமைப்பதன் மூலம் கீபைன்டிங் செயலை கட்டுப்படுத்த முடியும்"
+
+#~ msgid "The name of a workspace."
+#~ msgstr "பணியிடத்தின் பெயர்"
+
+#~ msgid "The screenshot command"
+#~ msgstr "திரைவெட்டு கட்டளை"
+
+#~ msgid ""
+#~ "The theme determines the appearance of window borders, titlebar, and so "
+#~ "forth."
+#~ msgstr "கருப்பொருள் ஓரம், தலைப்புப்பட்டி போன்றவைகளின் தோற்றத்தை கண்டறியும்."
+
+#~ msgid ""
+#~ "The time delay before raising a window if auto_raise is set to true. The "
+#~ "delay is given in thousandths of a second."
+#~ msgstr ""
+#~ "(_r)தானாக துவங்குதல் உண்மையென்று அமைக்கப்பட்டால் சாளரம் எடுத்துக்கொள்ளும் தாமத நேரம். "
+#~ "தாமதம் 1000 நொடிகளில் குறிக்கப்பட்டுள்ளது"
+
+#~ msgid ""
+#~ "The window focus mode indicates how windows are activated. It has three "
+#~ "possible values; \"click\" means windows must be clicked in order to "
+#~ "focus them, \"sloppy\" means windows are focused when the mouse enters "
+#~ "the window, and \"mouse\" means windows are focused when the mouse enters "
+#~ "the window and unfocused when the mouse leaves the window."
+#~ msgstr ""
+#~ "சாளர துவக்க குறி சாளரங்கள் எவ்வாறு செயல்படுத்தப்படுகிறது என்பதை குறிப்பிடும். இதில் "
+#~ "மூன்றுவித மதிப்புகள் இருக்கும்,\"க்ளிக்\" எனில் க்ளிக் செய்யும் போது சாளரம் குறியை "
+#~ "நகர்த்தும்.\"sloppy\" எனில் சுட்டி சாளரத்தில் நுழையும் போது செயல்படும் மற்றும்  "
+#~ "\"mouse\" எனில் சுட்டி சாளரதில் நுழையும் போது செயல்படும்."
+
+#~ msgid "The window screenshot command"
+#~ msgstr "சாளர திரைவெட்டு கட்டளை"
+
+#~ msgid ""
+#~ "This option determines the effects of double-clicking on the title bar. "
+#~ "Current valid options are 'toggle_shade', which will shade/unshade the "
+#~ "window, 'toggle_maximize' which will maximize/unmaximize the window, "
+#~ "'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which "
+#~ "will maximize/unmaximize the window in that direction only, 'minimize' "
+#~ "which will minimize the window, 'shade' which will roll the window up, "
+#~ "'menu' which will display the window menu, 'lower' which will put the "
+#~ "window behind all the others, and 'none' which will not do anything."
+#~ msgstr ""
+#~ "இந்த தேர்வு தலைப்பு பட்டியில் இரட்டை சொடுக்கு செய்வதின் பலனை நிர்ணயிக்கிறது. இப்போதைய "
+#~ "செல்லுபடியாகும் விருப்பங்கள் 'toggle_shade', -இது சாளரத்தை நிழல் அல்லது நிழலற்றதாக "
+#~ "ஆக்கும். 'toggle_maximize' சாளரத்தை பெரிதாக்கும் அல்லது பெரிதாகியதை மீட்கும், "
+#~ "'toggle_maximize_horizontally' மற்றும் 'toggle_maximize_vertically' என்பது "
+#~ "பெரிதாக்கல்/ சிறியதாக்கலை அந்த திசையில் மட்டும் செய்யும்,'minimize' சாளரத்தை "
+#~ "சிறிதாக்கும் அல்லது சிறிதாக்கியதை மீட்கும், 'shade' சாளரத்தை மேலுக்கு சுருட்டும், "
+#~ "'menu' சாளர மெனுவை காட்டும்,  'lower' சாளரத்தை மற்ற சாளரங்களின் பின்னே இறக்கும்  "
+#~ "மற்றும்  'none' -எதுவும் செய்யாது."
+
+#~ msgid ""
+#~ "This option determines the effects of middle-clicking on the title bar. "
+#~ "Current valid options are 'toggle_shade', which will shade/unshade the "
+#~ "window, 'toggle_maximize' which will maximize/unmaximize the window, "
+#~ "'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which "
+#~ "will maximize/unmaximize the window in that direction only, 'minimize' "
+#~ "which will minimize the window, 'shade' which will roll the window up, "
+#~ "'menu' which will display the window menu, 'lower' which will put the "
+#~ "window behind all the others, and 'none' which will not do anything."
+#~ msgstr ""
+#~ "இந்த தேர்வு தலைப்பு பட்டியில் நடு சொடுக்கு செய்வதின் பலனை நிர்ணயிக்கிறது. இப்போதைய "
+#~ "செல்லுபடியாகும் விருப்பங்கள் 'toggle_shade', -இது சாளரத்தை நிழல் அல்லது நிழலற்றதாக "
+#~ "ஆக்கும். 'toggle_maximize' சாளரத்தை பெரிதாக்கும் அல்லது பெரிதாகியதை மீட்கும், "
+#~ "'toggle_maximize_horizontally' மற்றும் 'toggle_maximize_vertically' என்பது "
+#~ "பெரிதாக்கல்/ சிறியதாக்கலை அந்த திசையில் மட்டும் செய்யும்,'minimize' சாளரத்தை "
+#~ "சிறிதாக்கும் அல்லது சிறிதாக்கியதை மீட்கும், 'shade' சாளரத்தை மேலுக்கு சுருட்டும், "
+#~ "'menu' சாளர மெனுவை காட்டும்,  'lower' சாளரத்தை மற்ற சாளரங்களின் பின்னே இறக்கும்  "
+#~ "மற்றும்  'none' -எதுவும் செய்யாது."
+
+#~ msgid ""
+#~ "This option determines the effects of right-clicking on the title bar. "
+#~ "Current valid options are 'toggle_shade', which will shade/unshade the "
+#~ "window, 'toggle_maximize' which will maximize/unmaximize the window, "
+#~ "'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which "
+#~ "will maximize/unmaximize the window in that direction only, 'minimize' "
+#~ "which will minimize the window, 'shade' which will roll the window up, "
+#~ "'menu' which will display the window menu, 'lower' which will put the "
+#~ "window behind all the others, and 'none' which will not do anything."
+#~ msgstr ""
+#~ "இந்த தேர்வு தலைப்பு பட்டியில் வலது சொடுக்கு செய்வதின் பலனை நிர்ணயிக்கிறது. இப்போதைய "
+#~ "செல்லுபடியாகும் விருப்பங்கள் 'toggle_shade', -இது சாளரத்தை நிழல் அல்லது நிழலற்றதாக "
+#~ "ஆக்கும். 'toggle_maximize' சாளரத்தை பெரிதாக்கும் அல்லது பெரிதாகியதை மீட்கும், "
+#~ "'toggle_maximize_horizontally' மற்றும் 'toggle_maximize_vertically' என்பது "
+#~ "பெரிதாக்கல்/ சிறியதாக்கலை அந்த திசையில் மட்டும் செய்யும்,'minimize' சாளரத்தை "
+#~ "சிறிதாக்கும் அல்லது சிறிதாக்கியதை மீட்கும், 'shade' சாளரத்தை மேலுக்கு சுருட்டும், "
+#~ "'menu' சாளர மெனுவை காட்டும்,  'lower' சாளரத்தை மற்ற சாளரங்களின் பின்னே இறக்கும்  "
+#~ "மற்றும்  'none' -எதுவும் செய்யாது."
+
+#~ msgid ""
+#~ "This option provides additional control over how newly created windows "
+#~ "get focus. It has two possible values; \"smart\" applies the user's "
+#~ "normal focus mode, and \"strict\" results in windows started from a "
+#~ "terminal not being given focus."
+#~ msgstr ""
+#~ "இந்த தேர்வு புதிதாக உருவாக்கிய சாளரங்கல் மீது மேலும் கூடுதல் கட்டுப்பாடு தருகிறது. "
+#~ "இதில் இரண்டு மதிப்புகள் இருக்கக்கூடும். \"smart\"  என்பது பயனரின் வழக்கமான குவிப்பு "
+#~ "பாங்கை தரும். \"strict\" என்பது முனையத்திலிருந்து துவக்கிய சாளரத்துக்கு முன்னிலை "
+#~ "தராது."
+
+#~ msgid ""
+#~ "Turns on a visual indication when an application or the system issues a "
+#~ "'bell' or 'beep'; useful for the hard-of-hearing and for use in noisy "
+#~ "environments."
+#~ msgstr ""
+#~ "கணினி ஒரு பெல் அல்லது பீப் எச்சரிக்கை தரும் போது ஒரு காட்சி குறிப்பை தரும். இது "
+#~ "காது சரியாக கேட்காதவர்களுக்கும் சத்தமான சூழலில் வேலை செய்பவர்களுக்கும் உபயோகமாகும்."
+
+#~ msgid "Use standard system font in window titles"
+#~ msgstr "சாளர தலைப்பிம் நிலையான கணினி எழுத்துருவை பயன்படுத்து"
+
+#~ msgid "Visual Bell Type"
+#~ msgstr "காட்சி மணி வகை"
+
+#~ msgid "Whether raising should be a side-effect of other user interactions"
+#~ msgstr "முன்னிருத்தம் மற்றா பயனர் ஊடாடலுக்கு பக்க விளைவாக இருக்க வேண்டுமா?"
+
+#~ msgid "Whether to resize with the right button"
+#~ msgstr "வலது பொத்தானால் மறுஅளவு செய்யவா"
+
+#~ msgid "Window focus mode"
+#~ msgstr "சாளர குறி பாங்கு"
+
+#~ msgid "Window title font"
+#~ msgstr "சாளர தலைப்பு எழுத்துரு"
+
+#~ msgid "/Windows/tearoff"
+#~ msgstr "/Windows/tearoff"
+
+#~ msgid "/Windows/_Dialog"
+#~ msgstr "/Windows/_Dialog"
+
+#~ msgid "/Windows/_Modal dialog"
+#~ msgstr "/Windows/_Modal dialog"
+
+#~ msgid "/Windows/Des_ktop"
+#~ msgstr "/Windows/Des_ktop"
 
 #~ msgid "Window Management"
 #~ msgstr "சாளர மேலாண்மை"
@@ -2391,12 +2287,3 @@ msgstr "%d அச்சு கூற்று பகுக்கப்பட்�
 
 #~ msgid "Move window to north (top) side of screen"
 #~ msgstr "சாளரத்தை திரையின் வடக்கே (மேலே) நகர்த்தவும்"
-
-#~ msgid "Open another one of these windows"
-#~ msgstr "இந்த சாளரத்தின் மற்றுமொரு சாளரம்"
-
-#~ msgid "This is a demo button with an 'open' icon"
-#~ msgstr "இது திற சின்னத்தோடு கூடிய சோதனை பட்டன்"
-
-#~ msgid "This is a demo button with a 'quit' icon"
-#~ msgstr "இது 'வெளிச்செல்' சின்னத்தோடு கூடிய சோதனை பட்டன்"
