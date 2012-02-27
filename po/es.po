@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: metacity.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-01-12 16:13+0000\n"
-"PO-Revision-Date: 2012-01-13 16:04+0100\n"
+"POT-Creation-Date: 2012-01-13 15:05+0000\n"
+"PO-Revision-Date: 2012-02-27 13:54+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -178,7 +178,7 @@ msgstr "Redimensionar la ventana"
 
 #: ../src/50-metacity-windows.xml.in.h:12
 msgid "Restore window"
-msgstr "Restablecer la ventana"
+msgstr "Restaurar la ventana"
 
 #: ../src/50-metacity-windows.xml.in.h:13
 msgid "Toggle fullscreen mode"
@@ -1539,57 +1539,46 @@ msgid "Theme file %s did not contain a root <metacity_theme> element"
 msgstr "El archivo de tema %s no contiene un elemento raíz <metacity_theme>"
 
 #: ../src/ui/theme-viewer.c:99
-#| msgid "/_Windows"
 msgid "_Windows"
 msgstr "_Ventanas"
 
 #: ../src/ui/theme-viewer.c:100
-#| msgid "Dialog Box"
 msgid "_Dialog"
 msgstr "_Diálogo"
 
 #: ../src/ui/theme-viewer.c:101
-#| msgid "Modal Dialog Box"
 msgid "_Modal dialog"
 msgstr "Diálogo _modal"
 
 #: ../src/ui/theme-viewer.c:102
-#| msgid "/Windows/_Utility"
 msgid "_Utility"
 msgstr "_Utilidad"
 
 #: ../src/ui/theme-viewer.c:103
-#| msgid "/Windows/_Splashscreen"
 msgid "_Splashscreen"
 msgstr "_Pantalla de inicio"
 
 #: ../src/ui/theme-viewer.c:104
-#| msgid "/Windows/_Top dock"
 msgid "_Top dock"
 msgstr "Empotrable _superior"
 
 #: ../src/ui/theme-viewer.c:105
-#| msgid "/Windows/_Bottom dock"
 msgid "_Bottom dock"
 msgstr "Empotrable _inferior"
 
 #: ../src/ui/theme-viewer.c:106
-#| msgid "/Windows/_Left dock"
 msgid "_Left dock"
 msgstr "Empotrable _izquierdo"
 
 #: ../src/ui/theme-viewer.c:107
-#| msgid "/Windows/_Right dock"
 msgid "_Right dock"
 msgstr "Empotrable de_recho"
 
 #: ../src/ui/theme-viewer.c:108
-#| msgid "/Windows/_All docks"
 msgid "_All docks"
 msgstr "_Todos los empotrables"
 
 #: ../src/ui/theme-viewer.c:109
-#| msgid "Desktop"
 msgid "Des_ktop"
 msgstr "Es_critorio"
 
