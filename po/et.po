@@ -28,7 +28,7 @@ msgid "Hide all normal windows"
 msgstr "Tavaliste akende peitmine"
 
 msgid "Move to workspace above"
-msgstr "Tõstmine vasakpoolsele tööalale"
+msgstr "Tõstmine ülemisele tööalale"
 
 msgid "Move to workspace below"
 msgstr "Tõstmine alumisele tööalale"
