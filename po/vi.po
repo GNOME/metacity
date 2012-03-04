@@ -1,6 +1,6 @@
 # Vietnamese translation for Metacity.
 # Copyright © 2008 GNOME i18n Project for Vietnamese.
-# Nguyễn Thái Ngọc Duy <pclouds@gmail.com>, 2002-2004, 2007, 2008, 2011.
+# Nguyễn Thái Ngọc Duy <pclouds@gmail.com>, 2002-2004, 2007, 2008, 2011-2012.
 # Clytie Siddall <clytie@riverland.net.au>, 2005-2008.
 #
 msgid ""
@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2012-01-12 16:13+0000\n"
-"PO-Revision-Date: 2012-03-04 11:59+0700\n"
+"PO-Revision-Date: 2012-03-04 12:01+0700\n"
 "Last-Translator: Nguyễn Thái Ngọc Duy <pclouds@gmail.com>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -346,10 +346,10 @@ msgstr ""
 "có thể sẽ xử sự không đúng.\n"
 
 #: ../src/core/prefs.c:949
-#, fuzzy, c-format
+#, c-format
 #| msgid "Could not parse font description \"%s\" from GConf key %s\n"
 msgid "Could not parse font description \"%s\" from GSettings key %s\n"
-msgstr "Không thể phân tách mô tả phông chữ « %s » từ khóa GConf « %s ».\n"
+msgstr "Không thể phân tíc mô tả phông \"%s\" từ khóa GSettings \"%s\"\n"
 
 #: ../src/core/prefs.c:1015
 #, c-format
@@ -1066,7 +1066,7 @@ msgstr "Biểu thức tọa độ có biến hoặc hằng lạ « %s »."
 #: ../src/ui/theme.c:2332
 #, c-format
 msgid "Coordinate expression parser overflowed its buffer."
-msgstr "Bộ phân tách biểu thức tọa độ đã tràn bộ đệm."
+msgstr "Bộ phân tích biểu thức tọa độ đã tràn bộ đệm."
 
 #: ../src/ui/theme.c:2361
 #, c-format
@@ -1516,70 +1516,59 @@ msgid "Theme file %s did not contain a root <metacity_theme> element"
 msgstr "Tập tin sắc thái « %s » không chứa phần tử gốc <metacity_theme>."
 
 #: ../src/ui/theme-viewer.c:99
-#, fuzzy
 #| msgid "/_Windows"
 msgid "_Windows"
-msgstr "/_Cửa sổ"
+msgstr "_Cửa sổ"
 
 #: ../src/ui/theme-viewer.c:100
-#, fuzzy
 #| msgid "Dialog Box"
 msgid "_Dialog"
-msgstr "Hộp thoại"
+msgstr "_Hộp thoại"
 
 #: ../src/ui/theme-viewer.c:101
-#, fuzzy
 #| msgid "Modal Dialog Box"
 msgid "_Modal dialog"
-msgstr "Hộp thoại cách thức"
+msgstr "Hộp thoại _cách thức"
 
 #: ../src/ui/theme-viewer.c:102
-#, fuzzy
 #| msgid "/Windows/_Utility"
 msgid "_Utility"
-msgstr "/Cửa sổ/_Tiện ích"
+msgstr "_Tiện ích"
 
 #: ../src/ui/theme-viewer.c:103
-#, fuzzy
 #| msgid "/Windows/_Splashscreen"
 msgid "_Splashscreen"
-msgstr "/Cửa sổ/_Màn hình giật gân"
+msgstr "_Màn hình giật gân"
 
 #: ../src/ui/theme-viewer.c:104
-#, fuzzy
 #| msgid "/Windows/_Top dock"
 msgid "_Top dock"
-msgstr "/Cửa sổ/Neo đỉ_nh"
+msgstr "Neo đỉ_nh"
 
 #: ../src/ui/theme-viewer.c:105
-#, fuzzy
 #| msgid "/Windows/_Bottom dock"
 msgid "_Bottom dock"
-msgstr "/Cửa sổ/Neo đá_y"
+msgstr "Neo đá_y"
 
 #: ../src/ui/theme-viewer.c:106
-#, fuzzy
 #| msgid "/Windows/_Left dock"
 msgid "_Left dock"
-msgstr "/Cửa sổ/Neo t_rái"
+msgstr "Neo t_rái"
 
 #: ../src/ui/theme-viewer.c:107
-#, fuzzy
 #| msgid "/Windows/_Right dock"
 msgid "_Right dock"
-msgstr "/Cửa sổ/Neo _phải"
+msgstr "Neo _phải"
 
 #: ../src/ui/theme-viewer.c:108
-#, fuzzy
 #| msgid "/Windows/_All docks"
 msgid "_All docks"
-msgstr "/Cửa sổ/Mọi neo"
+msgstr "_Mọi neo"
 
 #: ../src/ui/theme-viewer.c:109
-#, fuzzy
 #| msgid "Desktop"
 msgid "Des_ktop"
-msgstr "Màn hình nền"
+msgstr "_Màn hình nền"
 
 #: ../src/ui/theme-viewer.c:115
 msgid "Open another one of these windows"
@@ -1730,7 +1719,7 @@ msgstr "giá trị y là «%d», mong đợi giá trị «%d»"
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr ""
-"phân tách «%d» biểu thức tọa độ trong vòng %g giây (%g giây trung bình).\n"
+"phân tích %d biểu thức tọa độ trong vòng %g giây (%g giây trung bình)\n"
 
 #~ msgid "Launchers"
 #~ msgstr "Bộ phóng"
