@@ -1,14 +1,14 @@
 # Swedish messages for metacity.
-# Copyright (C) 2001-2011 Free Software Foundation, Inc.
+# Copyright (C) 2001-2012 Free Software Foundation, Inc.
 # Christian Rose <menthos@menthos.com>, 2001, 2002, 2003, 2004, 2005.
-# Daniel Nylander <po@danielnylander.se>, 2006, 2007, 2008, 2009, 2010, 2011.
+# Daniel Nylander <po@danielnylander.se>, 2006, 2007, 2008, 2009, 2010, 2011, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-25 09:15+0100\n"
-"PO-Revision-Date: 2011-11-25 09:15+0100\n"
+"POT-Creation-Date: 2012-03-12 18:26+0100\n"
+"PO-Revision-Date: 2012-03-12 18:28+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -17,180 +17,180 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../src/50-metacity-navigation.xml.in.h:1
-msgid "Hide all normal windows"
-msgstr "Dölj alla normala fönster"
-
-#: ../src/50-metacity-navigation.xml.in.h:2
-msgid "Move to workspace above"
-msgstr "Flytta till arbetsyta ovanför"
-
-#: ../src/50-metacity-navigation.xml.in.h:3
-msgid "Move to workspace below"
-msgstr "Flytta till arbetsyta nedanför"
-
-#: ../src/50-metacity-navigation.xml.in.h:4
-msgid "Move to workspace left"
-msgstr "Flytta till arbetsyta till vänster"
-
-#: ../src/50-metacity-navigation.xml.in.h:5
-msgid "Move to workspace right"
-msgstr "Flytta till arbetsyta till höger"
-
-#: ../src/50-metacity-navigation.xml.in.h:6
-msgid "Move window one workspace down"
-msgstr "Flytta fönster en arbetsyta nedåt"
-
-#: ../src/50-metacity-navigation.xml.in.h:7
-msgid "Move window one workspace to the left"
-msgstr "Flytta fönster en arbetsyta åt vänster"
-
-#: ../src/50-metacity-navigation.xml.in.h:8
-msgid "Move window one workspace to the right"
-msgstr "Flytta fönster en arbetsyta åt höger"
-
-#: ../src/50-metacity-navigation.xml.in.h:9
-msgid "Move window one workspace up"
-msgstr "Flytta fönster en arbetsyta uppåt"
-
-#: ../src/50-metacity-navigation.xml.in.h:10
-msgid "Move window to workspace 1"
-msgstr "Flytta fönster till arbetsyta 1"
-
-#: ../src/50-metacity-navigation.xml.in.h:11
-msgid "Move window to workspace 2"
-msgstr "Flytta fönster till arbetsyta 2"
-
-#: ../src/50-metacity-navigation.xml.in.h:12
-msgid "Move window to workspace 3"
-msgstr "Flytta fönster till arbetsyta 3"
-
-#: ../src/50-metacity-navigation.xml.in.h:13
-msgid "Move window to workspace 4"
-msgstr "Flytta fönster till arbetsyta 4"
-
-#: ../src/50-metacity-navigation.xml.in.h:14
 msgid "Navigation"
 msgstr "Navigation"
 
-#: ../src/50-metacity-navigation.xml.in.h:15
+#: ../src/50-metacity-navigation.xml.in.h:2
+msgid "Move window to workspace 1"
+msgstr "Flytta fönster till arbetsyta 1"
+
+#: ../src/50-metacity-navigation.xml.in.h:3
+msgid "Move window to workspace 2"
+msgstr "Flytta fönster till arbetsyta 2"
+
+#: ../src/50-metacity-navigation.xml.in.h:4
+msgid "Move window to workspace 3"
+msgstr "Flytta fönster till arbetsyta 3"
+
+#: ../src/50-metacity-navigation.xml.in.h:5
+msgid "Move window to workspace 4"
+msgstr "Flytta fönster till arbetsyta 4"
+
+#: ../src/50-metacity-navigation.xml.in.h:6
+msgid "Move window one workspace to the left"
+msgstr "Flytta fönster en arbetsyta åt vänster"
+
+#: ../src/50-metacity-navigation.xml.in.h:7
+msgid "Move window one workspace to the right"
+msgstr "Flytta fönster en arbetsyta åt höger"
+
+#: ../src/50-metacity-navigation.xml.in.h:8
+msgid "Move window one workspace up"
+msgstr "Flytta fönster en arbetsyta uppåt"
+
+#: ../src/50-metacity-navigation.xml.in.h:9
+msgid "Move window one workspace down"
+msgstr "Flytta fönster en arbetsyta nedåt"
+
+#: ../src/50-metacity-navigation.xml.in.h:10
 msgid "Switch applications"
 msgstr "Växla program"
 
-#: ../src/50-metacity-navigation.xml.in.h:16
-msgid "Switch system controls"
-msgstr "Växla systemkontroller"
-
-#: ../src/50-metacity-navigation.xml.in.h:17
-msgid "Switch system controls directly"
-msgstr "Växla systemkontroller direkt"
-
-#: ../src/50-metacity-navigation.xml.in.h:18
-msgid "Switch to workspace 1"
-msgstr "Växla till arbetsyta 1"
-
-#: ../src/50-metacity-navigation.xml.in.h:19
-msgid "Switch to workspace 2"
-msgstr "Växla till arbetsyta 2"
-
-#: ../src/50-metacity-navigation.xml.in.h:20
-msgid "Switch to workspace 3"
-msgstr "Växla till arbetsyta 3"
-
-#: ../src/50-metacity-navigation.xml.in.h:21
-msgid "Switch to workspace 4"
-msgstr "Växla till arbetsyta 4"
-
-#: ../src/50-metacity-navigation.xml.in.h:22
-msgid "Switch windows directly"
-msgstr "Växla fönster direkt"
-
-#: ../src/50-metacity-navigation.xml.in.h:23
-msgid "Switch windows of an app directly"
-msgstr "Växla fönster för ett program direkt"
-
-#: ../src/50-metacity-navigation.xml.in.h:24
+#: ../src/50-metacity-navigation.xml.in.h:11
 msgid "Switch windows of an application"
 msgstr "Växla fönster för ett program"
 
+#: ../src/50-metacity-navigation.xml.in.h:12
+msgid "Switch system controls"
+msgstr "Växla systemkontroller"
+
+#: ../src/50-metacity-navigation.xml.in.h:13
+msgid "Switch windows directly"
+msgstr "Växla fönster direkt"
+
+#: ../src/50-metacity-navigation.xml.in.h:14
+msgid "Switch windows of an app directly"
+msgstr "Växla fönster för ett program direkt"
+
+#: ../src/50-metacity-navigation.xml.in.h:15
+msgid "Switch system controls directly"
+msgstr "Växla systemkontroller direkt"
+
+#: ../src/50-metacity-navigation.xml.in.h:16
+msgid "Hide all normal windows"
+msgstr "Dölj alla normala fönster"
+
+#: ../src/50-metacity-navigation.xml.in.h:17
+msgid "Switch to workspace 1"
+msgstr "Växla till arbetsyta 1"
+
+#: ../src/50-metacity-navigation.xml.in.h:18
+msgid "Switch to workspace 2"
+msgstr "Växla till arbetsyta 2"
+
+#: ../src/50-metacity-navigation.xml.in.h:19
+msgid "Switch to workspace 3"
+msgstr "Växla till arbetsyta 3"
+
+#: ../src/50-metacity-navigation.xml.in.h:20
+msgid "Switch to workspace 4"
+msgstr "Växla till arbetsyta 4"
+
+#: ../src/50-metacity-navigation.xml.in.h:21
+msgid "Move to workspace left"
+msgstr "Flytta till arbetsyta till vänster"
+
+#: ../src/50-metacity-navigation.xml.in.h:22
+msgid "Move to workspace right"
+msgstr "Flytta till arbetsyta till höger"
+
+#: ../src/50-metacity-navigation.xml.in.h:23
+msgid "Move to workspace above"
+msgstr "Flytta till arbetsyta ovanför"
+
+#: ../src/50-metacity-navigation.xml.in.h:24
+msgid "Move to workspace below"
+msgstr "Flytta till arbetsyta nedanför"
+
 #: ../src/50-metacity-system.xml.in.h:1
-msgid "Show the activities overview"
-msgstr "Visa aktivitetsöversikt"
+msgid "System"
+msgstr "System"
 
 #: ../src/50-metacity-system.xml.in.h:2
 msgid "Show the run command prompt"
 msgstr "Visa Kör kommando-dialogen"
 
 #: ../src/50-metacity-system.xml.in.h:3
-msgid "System"
-msgstr "System"
+msgid "Show the activities overview"
+msgstr "Visa aktivitetsöversikt"
 
 #: ../src/50-metacity-windows.xml.in.h:1
+msgid "Windows"
+msgstr "Fönster"
+
+#: ../src/50-metacity-windows.xml.in.h:2
 msgid "Activate the window menu"
 msgstr "Aktivera fönstermenyn"
 
-#: ../src/50-metacity-windows.xml.in.h:2
-msgid "Close window"
-msgstr "Stäng fönster"
-
 #: ../src/50-metacity-windows.xml.in.h:3
-msgid "Lower window below other windows"
-msgstr "Sänk fönster under andra fönster"
+msgid "Toggle fullscreen mode"
+msgstr "Växla helskärmsläge"
 
 #: ../src/50-metacity-windows.xml.in.h:4
+msgid "Toggle maximization state"
+msgstr "Växla maximeringstillstånd"
+
+#: ../src/50-metacity-windows.xml.in.h:5
 msgid "Maximize window"
 msgstr "Maximera fönster"
 
-#: ../src/50-metacity-windows.xml.in.h:5
-msgid "Maximize window horizontally"
-msgstr "Maximera fönster horisontellt"
-
 #: ../src/50-metacity-windows.xml.in.h:6
-msgid "Maximize window vertically"
-msgstr "Maximera fönster vertikalt"
+msgid "Restore window"
+msgstr "Återställ fönster"
 
 #: ../src/50-metacity-windows.xml.in.h:7
+msgid "Toggle shaded state"
+msgstr "Växla upprullat tillstånd"
+
+#: ../src/50-metacity-windows.xml.in.h:8
+msgid "Close window"
+msgstr "Stäng fönster"
+
+#: ../src/50-metacity-windows.xml.in.h:9
 msgid "Minimize window"
 msgstr "Minimera fönster"
 
-#: ../src/50-metacity-windows.xml.in.h:8
+#: ../src/50-metacity-windows.xml.in.h:10
 msgid "Move window"
 msgstr "Flytta fönster"
-
-#: ../src/50-metacity-windows.xml.in.h:9
-msgid "Raise window above other windows"
-msgstr "Höj fönstret över andra fönster"
-
-#: ../src/50-metacity-windows.xml.in.h:10
-msgid "Raise window if covered, otherwise lower it"
-msgstr "Höj fönstret om det skyms av ett annat fönster, sänk det annars"
 
 #: ../src/50-metacity-windows.xml.in.h:11
 msgid "Resize window"
 msgstr "Ändra storlek på fönster"
 
 #: ../src/50-metacity-windows.xml.in.h:12
-msgid "Restore window"
-msgstr "Återställ fönster"
-
-#: ../src/50-metacity-windows.xml.in.h:13
-msgid "Toggle fullscreen mode"
-msgstr "Växla helskärmsläge"
-
-#: ../src/50-metacity-windows.xml.in.h:14
-msgid "Toggle maximization state"
-msgstr "Växla maximeringstillstånd"
-
-#: ../src/50-metacity-windows.xml.in.h:15
-msgid "Toggle shaded state"
-msgstr "Växla upprullat tillstånd"
-
-#: ../src/50-metacity-windows.xml.in.h:16
 msgid "Toggle window on all workspaces or one"
 msgstr "Växla fönster på alla arbetsytor eller bara en"
 
+#: ../src/50-metacity-windows.xml.in.h:13
+msgid "Raise window if covered, otherwise lower it"
+msgstr "Höj fönstret om det skyms av ett annat fönster, sänk det annars"
+
+#: ../src/50-metacity-windows.xml.in.h:14
+msgid "Raise window above other windows"
+msgstr "Höj fönstret över andra fönster"
+
+#: ../src/50-metacity-windows.xml.in.h:15
+msgid "Lower window below other windows"
+msgstr "Sänk fönster under andra fönster"
+
+#: ../src/50-metacity-windows.xml.in.h:16
+msgid "Maximize window vertically"
+msgstr "Maximera fönster vertikalt"
+
 #: ../src/50-metacity-windows.xml.in.h:17
-msgid "Windows"
-msgstr "Fönster"
+msgid "Maximize window horizontally"
+msgstr "Maximera fönster horisontellt"
 
 #: ../src/core/bell.c:296
 msgid "Bell event"
@@ -559,59 +559,59 @@ msgid "Determines whether Metacity is a compositing manager."
 msgstr "Fastställer huruvida Metacity är en compositinghanterare."
 
 #: ../src/org.gnome.metacity.gschema.xml.in.h:3
-msgid "If true, metacity will give the user less feedback by using wireframes, avoiding animations, or other means. This is a significant reduction in usability for many users, but may allow legacy applications to continue working, and may also be a useful tradeoff for terminal servers. However, the wireframe feature is disabled when accessibility is on."
-msgstr "Om detta är sant kommer metacity att ge användaren mindre återkoppling genom att använda trådramar, undvika animationer, och andra sätt. Detta är en betydande minskning av användbarheten för många användare, men kan tillåta äldre program och terminalservrar att fungera i de fall de annars skulle varit olämpliga. Funktionaliteten med trådramar är dock inaktiverad då tillgänglighet är på."
-
-#: ../src/org.gnome.metacity.gschema.xml.in.h:4
 msgid "If true, trade off usability for less resource usage"
 msgstr "Om sant kommer användbarhet att åsidosättas till förmån för mindre resursanvändning"
+
+#: ../src/org.gnome.metacity.gschema.xml.in.h:4
+msgid "If true, metacity will give the user less feedback by using wireframes, avoiding animations, or other means. This is a significant reduction in usability for many users, but may allow legacy applications to continue working, and may also be a useful tradeoff for terminal servers. However, the wireframe feature is disabled when accessibility is on."
+msgstr "Om detta är sant kommer metacity att ge användaren mindre återkoppling genom att använda trådramar, undvika animationer, och andra sätt. Detta är en betydande minskning av användbarheten för många användare, men kan tillåta äldre program och terminalservrar att fungera i de fall de annars skulle varit olämpliga. Funktionaliteten med trådramar är dock inaktiverad då tillgänglighet är på."
 
 #: ../src/tools/metacity-message.c:150
 #, c-format
 msgid "Usage: %s\n"
 msgstr "Användning: %s\n"
 
-#: ../src/ui/frames.c:1120
+#: ../src/ui/frames.c:1114
 msgid "Close Window"
 msgstr "Stäng fönster"
 
-#: ../src/ui/frames.c:1123
+#: ../src/ui/frames.c:1117
 msgid "Window Menu"
 msgstr "Fönstermeny"
 
-#: ../src/ui/frames.c:1126
+#: ../src/ui/frames.c:1120
 msgid "Minimize Window"
 msgstr "Minimera fönster"
 
-#: ../src/ui/frames.c:1129
+#: ../src/ui/frames.c:1123
 msgid "Maximize Window"
 msgstr "Maximera fönster"
 
-#: ../src/ui/frames.c:1132
+#: ../src/ui/frames.c:1126
 msgid "Restore Window"
 msgstr "Återställ fönster"
 
-#: ../src/ui/frames.c:1135
+#: ../src/ui/frames.c:1129
 msgid "Roll Up Window"
 msgstr "Rulla upp fönstret"
 
-#: ../src/ui/frames.c:1138
+#: ../src/ui/frames.c:1132
 msgid "Unroll Window"
 msgstr "Rulla tillbaka fönstret"
 
-#: ../src/ui/frames.c:1141
+#: ../src/ui/frames.c:1135
 msgid "Keep Window On Top"
 msgstr "Behåll fönstret överst"
 
-#: ../src/ui/frames.c:1144
+#: ../src/ui/frames.c:1138
 msgid "Remove Window From Top"
 msgstr "Ta bort överliggande fönster"
 
-#: ../src/ui/frames.c:1147
+#: ../src/ui/frames.c:1141
 msgid "Always On Visible Workspace"
 msgstr "Alltid på synlig arbetsyta"
 
-#: ../src/ui/frames.c:1150
+#: ../src/ui/frames.c:1144
 msgid "Put Window On Only One Workspace"
 msgstr "Placera fönstret på endast en arbetsyta"
 
@@ -698,22 +698,22 @@ msgstr "Flytta till arbetsyta _nedanför"
 msgid "_Close"
 msgstr "S_täng"
 
-#: ../src/ui/menu.c:203
+#: ../src/ui/menu.c:205
 #, c-format
 msgid "Workspace %d%n"
 msgstr "Arbetsyta %d%n"
 
-#: ../src/ui/menu.c:213
+#: ../src/ui/menu.c:215
 #, c-format
 msgid "Workspace 1_0"
 msgstr "Arbetsyta 1_0"
 
-#: ../src/ui/menu.c:215
+#: ../src/ui/menu.c:217
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Arbetsyta %s%d"
 
-#: ../src/ui/menu.c:395
+#: ../src/ui/menu.c:398
 msgid "Move to Another _Workspace"
 msgstr "Flytta till en annan _arbetsyta"
 
@@ -722,7 +722,7 @@ msgstr "Flytta till en annan _arbetsyta"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:104
+#: ../src/ui/metaaccellabel.c:80
 msgid "Shift"
 msgstr "Skift"
 
@@ -731,7 +731,7 @@ msgstr "Skift"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:110
+#: ../src/ui/metaaccellabel.c:86
 msgid "Ctrl"
 msgstr "Ctrl"
 
@@ -740,7 +740,7 @@ msgstr "Ctrl"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:116
+#: ../src/ui/metaaccellabel.c:92
 msgid "Alt"
 msgstr "Alt"
 
@@ -749,7 +749,7 @@ msgstr "Alt"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:122
+#: ../src/ui/metaaccellabel.c:98
 msgid "Meta"
 msgstr "Meta"
 
@@ -758,7 +758,7 @@ msgstr "Meta"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:128
+#: ../src/ui/metaaccellabel.c:104
 msgid "Super"
 msgstr "Super"
 
@@ -767,7 +767,7 @@ msgstr "Super"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:134
+#: ../src/ui/metaaccellabel.c:110
 msgid "Hyper"
 msgstr "Hyper"
 
@@ -776,7 +776,7 @@ msgstr "Hyper"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:140
+#: ../src/ui/metaaccellabel.c:116
 msgid "Mod2"
 msgstr "Mod2"
 
@@ -785,7 +785,7 @@ msgstr "Mod2"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:146
+#: ../src/ui/metaaccellabel.c:122
 msgid "Mod3"
 msgstr "Mod3"
 
@@ -794,7 +794,7 @@ msgstr "Mod3"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:152
+#: ../src/ui/metaaccellabel.c:128
 msgid "Mod4"
 msgstr "Mod4"
 
@@ -803,7 +803,7 @@ msgstr "Mod4"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:158
+#: ../src/ui/metaaccellabel.c:134
 msgid "Mod5"
 msgstr "Mod5"
 
@@ -1413,185 +1413,202 @@ msgstr "Misslyckades med att hitta en giltig fil för temat %s\n"
 msgid "Theme file %s did not contain a root <metacity_theme> element"
 msgstr "Temafilen %s innehöll inte ett <metacity_theme>-rotelement"
 
-#: ../src/ui/theme-viewer.c:75
-msgid "/_Windows"
-msgstr "/_Fönster"
+#: ../src/ui/theme-viewer.c:99
+msgid "_Windows"
+msgstr "_Fönster"
 
-#: ../src/ui/theme-viewer.c:76
-msgid "/Windows/tearoff"
-msgstr "/Fönster/avskiljare"
+#: ../src/ui/theme-viewer.c:100
+msgid "_Dialog"
+msgstr "_Dialogruta"
 
-#: ../src/ui/theme-viewer.c:77
-msgid "/Windows/_Dialog"
-msgstr "/Fönster/_Dialogruta"
+#: ../src/ui/theme-viewer.c:101
+msgid "_Modal dialog"
+msgstr "_Modalt dialogfönster"
 
-#: ../src/ui/theme-viewer.c:78
-msgid "/Windows/_Modal dialog"
-msgstr "/Fönster/_Modal dialogruta"
+#: ../src/ui/theme-viewer.c:102
+msgid "_Utility"
+msgstr "Verkt_yg"
 
-#: ../src/ui/theme-viewer.c:79
-msgid "/Windows/_Utility"
-msgstr "/Fönster/_Verktyg"
+#: ../src/ui/theme-viewer.c:103
+msgid "_Splashscreen"
+msgstr "_Startbild"
 
-#: ../src/ui/theme-viewer.c:80
-msgid "/Windows/_Splashscreen"
-msgstr "/Fönster/_Startbild"
+#: ../src/ui/theme-viewer.c:104
+msgid "_Top dock"
+msgstr "_Övre docka"
 
-#: ../src/ui/theme-viewer.c:81
-msgid "/Windows/_Top dock"
-msgstr "/Fönster/_Övre docka"
+#: ../src/ui/theme-viewer.c:105
+msgid "_Bottom dock"
+msgstr "_Nedre docka"
 
-#: ../src/ui/theme-viewer.c:82
-msgid "/Windows/_Bottom dock"
-msgstr "/Fönster/_Nedre docka"
+#: ../src/ui/theme-viewer.c:106
+msgid "_Left dock"
+msgstr "_Vänster docka"
 
-#: ../src/ui/theme-viewer.c:83
-msgid "/Windows/_Left dock"
-msgstr "/Fönster/_Vänster docka"
+#: ../src/ui/theme-viewer.c:107
+msgid "_Right dock"
+msgstr "_Höger docka"
 
-#: ../src/ui/theme-viewer.c:84
-msgid "/Windows/_Right dock"
-msgstr "/Fönster/_Höger docka"
+#: ../src/ui/theme-viewer.c:108
+msgid "_All docks"
+msgstr "_Alla dockor"
 
-#: ../src/ui/theme-viewer.c:85
-msgid "/Windows/_All docks"
-msgstr "/Fönster/_Alla dockor"
+#: ../src/ui/theme-viewer.c:109
+msgid "Des_ktop"
+msgstr "S_krivbord"
 
-#: ../src/ui/theme-viewer.c:86
-msgid "/Windows/Des_ktop"
-msgstr "/Fönster/S_krivbord"
+#: ../src/ui/theme-viewer.c:115
+msgid "Open another one of these windows"
+msgstr "Öppna ett annat av dessa fönster"
 
-#: ../src/ui/theme-viewer.c:244
+#: ../src/ui/theme-viewer.c:117
+msgid "This is a demo button with an 'open' icon"
+msgstr "Detta är en demoknapp med en \"öppna\"-ikon"
+
+#: ../src/ui/theme-viewer.c:119
+msgid "This is a demo button with a 'quit' icon"
+msgstr "Detta är en demoknapp med en \"avsluta\"-ikon"
+
+#: ../src/ui/theme-viewer.c:253
 msgid "This is a sample message in a sample dialog"
 msgstr "Detta är ett exempelmeddelande i en exempelkatalog"
 
-#: ../src/ui/theme-viewer.c:327
+#: ../src/ui/theme-viewer.c:336
 #, c-format
 msgid "Fake menu item %d\n"
 msgstr "Falskt menyobjekt %d\n"
 
-#: ../src/ui/theme-viewer.c:361
+#: ../src/ui/theme-viewer.c:370
 msgid "Border-only window"
 msgstr "Fönster med endast ram"
 
-#: ../src/ui/theme-viewer.c:363
+#: ../src/ui/theme-viewer.c:372
 msgid "Bar"
 msgstr "Rad"
 
-#: ../src/ui/theme-viewer.c:380
+#: ../src/ui/theme-viewer.c:389
 msgid "Normal Application Window"
 msgstr "Normalt programfönster"
 
-#: ../src/ui/theme-viewer.c:384
+#: ../src/ui/theme-viewer.c:393
 msgid "Dialog Box"
 msgstr "Dialogruta"
 
-#: ../src/ui/theme-viewer.c:388
+#: ../src/ui/theme-viewer.c:397
 msgid "Modal Dialog Box"
 msgstr "Modalt dialogfönster"
 
-#: ../src/ui/theme-viewer.c:392
+#: ../src/ui/theme-viewer.c:401
 msgid "Utility Palette"
 msgstr "Verktygspalett"
 
-#: ../src/ui/theme-viewer.c:396
+#: ../src/ui/theme-viewer.c:405
 msgid "Torn-off Menu"
 msgstr "Avtagen meny"
 
-#: ../src/ui/theme-viewer.c:400
+#: ../src/ui/theme-viewer.c:409
 msgid "Border"
 msgstr "Ram"
 
-#: ../src/ui/theme-viewer.c:728
+#: ../src/ui/theme-viewer.c:737
 #, c-format
 msgid "Button layout test %d"
 msgstr "Test %d av knapplayout"
 
-#: ../src/ui/theme-viewer.c:757
+#: ../src/ui/theme-viewer.c:766
 #, c-format
 msgid "%g milliseconds to draw one window frame"
 msgstr "%g millisekunder för att rita en fönsterram"
 
-#: ../src/ui/theme-viewer.c:800
+#: ../src/ui/theme-viewer.c:810
 #, c-format
 msgid "Usage: metacity-theme-viewer [THEMENAME]\n"
 msgstr "Användning: metacity-theme-viewer [TEMANAMN]\n"
 
-#: ../src/ui/theme-viewer.c:807
+#: ../src/ui/theme-viewer.c:817
 #, c-format
 msgid "Error loading theme: %s\n"
 msgstr "Fel vid inläsning av tema: %s\n"
 
-#: ../src/ui/theme-viewer.c:813
+#: ../src/ui/theme-viewer.c:823
 #, c-format
 msgid "Loaded theme \"%s\" in %g seconds\n"
 msgstr "Läste in temat \"%s\" på %g sekunder\n"
 
-#: ../src/ui/theme-viewer.c:854
+#: ../src/ui/theme-viewer.c:866
 msgid "Normal Title Font"
 msgstr "Normalt titeltypsnitt"
 
-#: ../src/ui/theme-viewer.c:860
+#: ../src/ui/theme-viewer.c:872
 msgid "Small Title Font"
 msgstr "Litet titeltypsnitt"
 
-#: ../src/ui/theme-viewer.c:866
+#: ../src/ui/theme-viewer.c:878
 msgid "Large Title Font"
 msgstr "Stort titeltypsnitt"
 
-#: ../src/ui/theme-viewer.c:871
+#: ../src/ui/theme-viewer.c:883
 msgid "Button Layouts"
 msgstr "Knapplayouter"
 
-#: ../src/ui/theme-viewer.c:876
+#: ../src/ui/theme-viewer.c:888
 msgid "Benchmark"
 msgstr "Prestandatest"
 
-#: ../src/ui/theme-viewer.c:923
+#: ../src/ui/theme-viewer.c:935
 msgid "Window Title Goes Here"
 msgstr "Fönstertitel hamnar här"
 
-#: ../src/ui/theme-viewer.c:1027
+#: ../src/ui/theme-viewer.c:1039
 #, c-format
 msgid "Drew %d frames in %g client-side seconds (%g milliseconds per frame) and %g seconds wall clock time including X server resources (%g milliseconds per frame)\n"
 msgstr "Ritade %d ramar på %g sekunder på klientsidan (%g millisekunder per ram) och %g sekunder väggklockstid inklusive X-serverresurser (%g millisekunder per ram)\n"
 
-#: ../src/ui/theme-viewer.c:1246
+#: ../src/ui/theme-viewer.c:1258
 msgid "position expression test returned TRUE but set error"
 msgstr "test av positionsuttryck returnerade SANT men satte fel"
 
-#: ../src/ui/theme-viewer.c:1248
+#: ../src/ui/theme-viewer.c:1260
 msgid "position expression test returned FALSE but didn't set error"
 msgstr "test av positionsuttryck returnerade FALSKT men satte inte fel"
 
-#: ../src/ui/theme-viewer.c:1252
+#: ../src/ui/theme-viewer.c:1264
 msgid "Error was expected but none given"
 msgstr "Fel förväntades men gavs inte"
 
-#: ../src/ui/theme-viewer.c:1254
+#: ../src/ui/theme-viewer.c:1266
 #, c-format
 msgid "Error %d was expected but %d given"
 msgstr "Fel %d förväntades men %d givet"
 
-#: ../src/ui/theme-viewer.c:1260
+#: ../src/ui/theme-viewer.c:1272
 #, c-format
 msgid "Error not expected but one was returned: %s"
 msgstr "Fel förväntades inte men ett returnerades: %s"
 
-#: ../src/ui/theme-viewer.c:1264
+#: ../src/ui/theme-viewer.c:1276
 #, c-format
 msgid "x value was %d, %d was expected"
 msgstr "x-värdet var %d, %d förväntades"
 
-#: ../src/ui/theme-viewer.c:1267
+#: ../src/ui/theme-viewer.c:1279
 #, c-format
 msgid "y value was %d, %d was expected"
 msgstr "y-värdet var %d, %d förväntades"
 
-#: ../src/ui/theme-viewer.c:1332
+#: ../src/ui/theme-viewer.c:1344
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr "%d koordinatuttryck tolkades på %g sekunder (%g sekunder i medelvärde)\n"
+
+#~ msgid "/Windows/tearoff"
+#~ msgstr "/Fönster/avskiljare"
+
+#~ msgid "/Windows/_Dialog"
+#~ msgstr "/Fönster/_Dialogruta"
+
+#~ msgid "/Windows/_Modal dialog"
+#~ msgstr "/Fönster/_Modal dialogruta"
 
 #~ msgid "Launchers"
 #~ msgstr "Programstartare"
