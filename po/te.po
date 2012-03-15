@@ -1,19 +1,19 @@
 # translation of metacity.master.te.po to Telugu
-# Copyright (C) 2011 Metacity
+# Copyright (C) 2012 Swecha Telugu Localisation team
 # This file is distributed under the same license as the metacity package.
 #
 # Krishna Babu K <kkrothap@redhat.com>, 2009.
 # Hari krishna <hari@swecha.net>, 2011.
-# Praveen Illa <mail2ipn@gmail.com>, 2011.
-#
+# Praveen Illa <mail2ipn@gmail.com>, 2011, 2012.
+# Sasi Bhushan Boddepalli <sasi@swecha.net>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity.master.te\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-11-18 22:20+0000\n"
-"PO-Revision-Date: 2011-11-26 23:21+0530\n"
-"Last-Translator: Praveen Illa <mail2ipn@gmail.com>\n"
+"POT-Creation-Date: 2012-01-12 16:13+0000\n"
+"PO-Revision-Date: 2012-03-15 14:08+0530\n"
+"Last-Translator: Sasi Bhushan Boddepalli <sasi@swecha.net>\n"
 "Language-Team: Telugu <indlinux-telugu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -350,7 +350,6 @@ msgstr ""
 
 #: ../src/core/prefs.c:949
 #, c-format
-#| msgid "Could not parse font description \"%s\" from GConf key %s\n"
 msgid "Could not parse font description \"%s\" from GSettings key %s\n"
 msgstr "ఫాంటు వివరణ \"%s\"ను జిసెట్టింగుల కీ %s నుండి పార్శ్ చేయలేకపోయింది\n"
 
@@ -522,8 +521,8 @@ msgstr ""
 #: ../src/core/window.c:6269
 #, c-format
 msgid ""
-"Window %s sets an MWM hint indicating it isn't resizable, but sets min size "
-"%d x %d and max size %d x %d; this doesn't make much sense.\n"
+"Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
+"d x %d and max size %d x %d; this doesn't make much sense.\n"
 msgstr ""
 "విండో %s అనునది అది పునఃపరిమాణం అవలేదు అనే MWM హింటును అమర్చినది, అయితే కనిష్ట పరిమాణమును %d x "
 "%dగా మరియు గరిష్ట పరిమాణమును %d x %dగా అమర్చినది;యిది అంత అర్దవంతంగా లేదు.\n"
@@ -620,47 +619,47 @@ msgstr "సత్యమైతే, తక్కువ వనరుల విన�
 msgid "Usage: %s\n"
 msgstr "వినియోగము: %s\n"
 
-#: ../src/ui/frames.c:1120
+#: ../src/ui/frames.c:1114
 msgid "Close Window"
 msgstr "విండోను మూసివేయి"
 
-#: ../src/ui/frames.c:1123
+#: ../src/ui/frames.c:1117
 msgid "Window Menu"
 msgstr "విండో మెనూ"
 
-#: ../src/ui/frames.c:1126
+#: ../src/ui/frames.c:1120
 msgid "Minimize Window"
 msgstr "విండోను క్రిందకుమూయుము"
 
-#: ../src/ui/frames.c:1129
+#: ../src/ui/frames.c:1123
 msgid "Maximize Window"
 msgstr "విండోను పెద్దదిచేయుము"
 
-#: ../src/ui/frames.c:1132
+#: ../src/ui/frames.c:1126
 msgid "Restore Window"
 msgstr "విండోను పూర్వస్థితికి వుంచుము"
 
-#: ../src/ui/frames.c:1135
+#: ../src/ui/frames.c:1129
 msgid "Roll Up Window"
 msgstr "విండోను చుట్టుము"
 
-#: ../src/ui/frames.c:1138
+#: ../src/ui/frames.c:1132
 msgid "Unroll Window"
 msgstr "విండో చుట్టుతీయుము"
 
-#: ../src/ui/frames.c:1141
+#: ../src/ui/frames.c:1135
 msgid "Keep Window On Top"
 msgstr "విండోను పైన వుంచుము"
 
-#: ../src/ui/frames.c:1144
+#: ../src/ui/frames.c:1138
 msgid "Remove Window From Top"
 msgstr "విండోను పైననుండి తీసివేయుము"
 
-#: ../src/ui/frames.c:1147
+#: ../src/ui/frames.c:1141
 msgid "Always On Visible Workspace"
 msgstr "ఎల్లప్పుడూ కనిపిస్తున్న పనిస్థలము"
 
-#: ../src/ui/frames.c:1150
+#: ../src/ui/frames.c:1144
 msgid "Put Window On Only One Workspace"
 msgstr "విండో వొక పనిస్థలమునందు మాత్రమే వుంచుము"
 
@@ -746,22 +745,22 @@ msgstr "పనిచేస్తున్న చోటునుండీ కి�
 msgid "_Close"
 msgstr "మూయుము (_C)"
 
-#: ../src/ui/menu.c:203
+#: ../src/ui/menu.c:205
 #, c-format
 msgid "Workspace %d%n"
 msgstr "పనిస్థలము %d%n"
 
-#: ../src/ui/menu.c:213
+#: ../src/ui/menu.c:215
 #, c-format
 msgid "Workspace 1_0"
 msgstr "పనిస్థలము 1_0"
 
-#: ../src/ui/menu.c:215
+#: ../src/ui/menu.c:217
 #, c-format
 msgid "Workspace %s%d"
 msgstr "పనిస్థలము %s%d"
 
-#: ../src/ui/menu.c:395
+#: ../src/ui/menu.c:398
 msgid "Move to Another _Workspace"
 msgstr "వేరే పనిచేసెచోటుకి కదులు (_W)"
 
@@ -770,7 +769,7 @@ msgstr "వేరే పనిచేసెచోటుకి కదులు (_W
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:104
+#: ../src/ui/metaaccellabel.c:80
 msgid "Shift"
 msgstr "Shift"
 
@@ -779,7 +778,7 @@ msgstr "Shift"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:110
+#: ../src/ui/metaaccellabel.c:86
 msgid "Ctrl"
 msgstr "Ctrl"
 
@@ -788,7 +787,7 @@ msgstr "Ctrl"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:116
+#: ../src/ui/metaaccellabel.c:92
 msgid "Alt"
 msgstr "ఆల్ట్"
 
@@ -797,7 +796,7 @@ msgstr "ఆల్ట్"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:122
+#: ../src/ui/metaaccellabel.c:98
 msgid "Meta"
 msgstr "Meta"
 
@@ -806,7 +805,7 @@ msgstr "Meta"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:128
+#: ../src/ui/metaaccellabel.c:104
 msgid "Super"
 msgstr "సూపర్"
 
@@ -815,7 +814,7 @@ msgstr "సూపర్"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:134
+#: ../src/ui/metaaccellabel.c:110
 msgid "Hyper"
 msgstr "హైపర్"
 
@@ -824,7 +823,7 @@ msgstr "హైపర్"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:140
+#: ../src/ui/metaaccellabel.c:116
 msgid "Mod2"
 msgstr "Mod2"
 
@@ -833,7 +832,7 @@ msgstr "Mod2"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:146
+#: ../src/ui/metaaccellabel.c:122
 msgid "Mod3"
 msgstr "Mod3"
 
@@ -842,7 +841,7 @@ msgstr "Mod3"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:152
+#: ../src/ui/metaaccellabel.c:128
 msgid "Mod4"
 msgstr "Mod4"
 
@@ -851,7 +850,7 @@ msgstr "Mod4"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:158
+#: ../src/ui/metaaccellabel.c:134
 msgid "Mod5"
 msgstr "Mod5"
 
@@ -1471,145 +1470,164 @@ msgstr "థీమ్ %s కొరకు విలువైన ఫైలును
 msgid "Theme file %s did not contain a root <metacity_theme> element"
 msgstr "థీమ్ ఫైలు %s అనునది root <metacity_theme> మూలకం కలిగిలేదు"
 
-#: ../src/ui/theme-viewer.c:75
-msgid "/_Windows"
-msgstr "/విండోస్ (_W)"
+#: ../src/ui/theme-viewer.c:99
+#| msgid "/_Windows"
+msgid "_Windows"
+msgstr "విండోస్ (_W)"
 
-#: ../src/ui/theme-viewer.c:76
-msgid "/Windows/tearoff"
-msgstr "/Windows/tearoff"
+#: ../src/ui/theme-viewer.c:100
+#| msgid "Dialog Box"
+msgid "_Dialog"
+msgstr "వివరణ పేటిక(_D)"
 
-#: ../src/ui/theme-viewer.c:77
-msgid "/Windows/_Dialog"
-msgstr "/Windows/_Dialog"
+#: ../src/ui/theme-viewer.c:101
+#| msgid "Modal Dialog Box"
+msgid "_Modal dialog"
+msgstr "మోడల్ డైలాగ్ (_M)"
 
-#: ../src/ui/theme-viewer.c:78
-msgid "/Windows/_Modal dialog"
-msgstr "/విండోస్/మోడల్ డైలాగ్ (_M)/విండోస"
+#: ../src/ui/theme-viewer.c:102
+#| msgid "/Windows/_Utility"
+msgid "_Utility"
+msgstr "ప్రయోజన కా(_U)"
 
-#: ../src/ui/theme-viewer.c:79
-msgid "/Windows/_Utility"
-msgstr "/విండోస్/సౌలభ్యము (_U)"
+#: ../src/ui/theme-viewer.c:103
+#| msgid "/Windows/_Splashscreen"
+msgid "_Splashscreen"
+msgstr "స్ప్లాష్‌తెర (_S)"
 
-#: ../src/ui/theme-viewer.c:80
-msgid "/Windows/_Splashscreen"
-msgstr "/విండోస్/స్ప్లాష్‌తెర (_S)"
+#: ../src/ui/theme-viewer.c:104
+#| msgid "/Windows/_Top dock"
+msgid "_Top dock"
+msgstr "పై డాక్ (_T)"
 
-#: ../src/ui/theme-viewer.c:81
-msgid "/Windows/_Top dock"
-msgstr "/విండోస్/పై డాక్ (_T)"
+#: ../src/ui/theme-viewer.c:105
+#| msgid "/Windows/_Bottom dock"
+msgid "_Bottom dock"
+msgstr "క్రింది డాక్ (_B)"
 
-#: ../src/ui/theme-viewer.c:82
-msgid "/Windows/_Bottom dock"
-msgstr "/విండోస్/క్రింది డాక్ (_B)"
+#: ../src/ui/theme-viewer.c:106
+#| msgid "/Windows/_Left dock"
+msgid "_Left dock"
+msgstr "ఎడమ డాక్ (_L)"
 
-#: ../src/ui/theme-viewer.c:83
-msgid "/Windows/_Left dock"
-msgstr "/విండోస్/ఎడమ డాక్ (_L)"
+#: ../src/ui/theme-viewer.c:107
+#| msgid "/Windows/_Right dock"
+msgid "_Right dock"
+msgstr "కుడి డాక్ (_R)"
 
-#: ../src/ui/theme-viewer.c:84
-msgid "/Windows/_Right dock"
-msgstr "/విండోస్/కుడి డాక్ (_R)"
+#: ../src/ui/theme-viewer.c:108
+#| msgid "/Windows/_All docks"
+msgid "_All docks"
+msgstr "అన్ని డాక్‌లు (_A)"
 
-#: ../src/ui/theme-viewer.c:85
-msgid "/Windows/_All docks"
-msgstr "/విండోస్/అన్ని డాక్‌లు (_A)"
+#: ../src/ui/theme-viewer.c:109
+#| msgid "Desktop"
+msgid "Des_ktop"
+msgstr "రంగస్థలం(_k)"
 
-#: ../src/ui/theme-viewer.c:86
-msgid "/Windows/Des_ktop"
-msgstr "/విండోస్/రంగస్థలం (_k)"
+#: ../src/ui/theme-viewer.c:115
+msgid "Open another one of these windows"
+msgstr "ఈ విండోలయొక్క వేరొక దానిని తెరువుము"
 
-#: ../src/ui/theme-viewer.c:244
+#: ../src/ui/theme-viewer.c:117
+msgid "This is a demo button with an 'open' icon"
+msgstr "ఇది 'తెరుచు' ప్రతిమతో వున్న డెమో బటన్"
+
+#: ../src/ui/theme-viewer.c:119
+msgid "This is a demo button with a 'quit' icon"
+msgstr "ఇది 'నిష్క్రమించు' ప్రతిమతో వున్న డెమో బటన్"
+
+#: ../src/ui/theme-viewer.c:253
 msgid "This is a sample message in a sample dialog"
 msgstr "మాదిరి డైలాగునందు యిదివొక మాదిరి సందేశము"
 
-#: ../src/ui/theme-viewer.c:327
+#: ../src/ui/theme-viewer.c:336
 #, c-format
 msgid "Fake menu item %d\n"
 msgstr "బూటకపు మెనూ అంశము %d\n"
 
-#: ../src/ui/theme-viewer.c:361
+#: ../src/ui/theme-viewer.c:370
 msgid "Border-only window"
 msgstr "హద్దు-మాత్రమే విండో"
 
-#: ../src/ui/theme-viewer.c:363
+#: ../src/ui/theme-viewer.c:372
 msgid "Bar"
 msgstr "పట్టీ"
 
-#: ../src/ui/theme-viewer.c:380
+#: ../src/ui/theme-viewer.c:389
 msgid "Normal Application Window"
 msgstr "సాదారణ అనువర్తనపు విండో"
 
-#: ../src/ui/theme-viewer.c:384
+#: ../src/ui/theme-viewer.c:393
 msgid "Dialog Box"
 msgstr "వివరణ పేటిక"
 
-#: ../src/ui/theme-viewer.c:388
+#: ../src/ui/theme-viewer.c:397
 msgid "Modal Dialog Box"
 msgstr "మోడల్ డైలాగ్ బాక్స్"
 
-#: ../src/ui/theme-viewer.c:392
+#: ../src/ui/theme-viewer.c:401
 msgid "Utility Palette"
 msgstr "సౌలభ్యపు పాలెట్"
 
-#: ../src/ui/theme-viewer.c:396
+#: ../src/ui/theme-viewer.c:405
 msgid "Torn-off Menu"
 msgstr "టార్న్-ఆఫ్ మెనూ"
 
-#: ../src/ui/theme-viewer.c:400
+#: ../src/ui/theme-viewer.c:409
 msgid "Border"
 msgstr "సరిహద్దు"
 
-#: ../src/ui/theme-viewer.c:728
+#: ../src/ui/theme-viewer.c:737
 #, c-format
 msgid "Button layout test %d"
 msgstr "బటన్ నమూనా పరిశీలన %d"
 
-#: ../src/ui/theme-viewer.c:757
+#: ../src/ui/theme-viewer.c:766
 #, c-format
 msgid "%g milliseconds to draw one window frame"
 msgstr "ఒక విండో చట్రమును గీయుటకు %g మిల్లీసెకనులు"
 
-#: ../src/ui/theme-viewer.c:800
+#: ../src/ui/theme-viewer.c:810
 #, c-format
 msgid "Usage: metacity-theme-viewer [THEMENAME]\n"
 msgstr "Usage: metacity-theme-viewer [THEMENAME]\n"
 
-#: ../src/ui/theme-viewer.c:807
+#: ../src/ui/theme-viewer.c:817
 #, c-format
 msgid "Error loading theme: %s\n"
 msgstr "థీమ్ లోడుచేయుటలో దోషము: %s\n"
 
-#: ../src/ui/theme-viewer.c:813
+#: ../src/ui/theme-viewer.c:823
 #, c-format
 msgid "Loaded theme \"%s\" in %g seconds\n"
 msgstr "థీమ్ \"%s\" %g సెకనులలో లోడైనది\n"
 
-#: ../src/ui/theme-viewer.c:854
+#: ../src/ui/theme-viewer.c:866
 msgid "Normal Title Font"
 msgstr "సాధారణ శీర్షిక ఫాంటు"
 
-#: ../src/ui/theme-viewer.c:860
+#: ../src/ui/theme-viewer.c:872
 msgid "Small Title Font"
 msgstr "చిన్న శీర్షిక ఫాంటు"
 
-#: ../src/ui/theme-viewer.c:866
+#: ../src/ui/theme-viewer.c:878
 msgid "Large Title Font"
 msgstr "పెద్ద శీర్షిక ఫాంటు"
 
-#: ../src/ui/theme-viewer.c:871
+#: ../src/ui/theme-viewer.c:883
 msgid "Button Layouts"
 msgstr "బటన్ నమూనాలు"
 
-#: ../src/ui/theme-viewer.c:876
+#: ../src/ui/theme-viewer.c:888
 msgid "Benchmark"
 msgstr "బెంట్‌మార్కు"
 
-#: ../src/ui/theme-viewer.c:923
+#: ../src/ui/theme-viewer.c:935
 msgid "Window Title Goes Here"
 msgstr "విండో శీర్షిక యిక్కడకు వెళుతుంది"
 
-#: ../src/ui/theme-viewer.c:1027
+#: ../src/ui/theme-viewer.c:1039
 #, c-format
 msgid ""
 "Drew %d frames in %g client-side seconds (%g milliseconds per frame) and %g "
@@ -1619,42 +1637,54 @@ msgstr ""
 "%d చట్రములను %g క్లైంట్-సైడ్ సెకనులలో (చట్రముకు %g మిల్లీసెకనులు) గీసింది మరియు %g గోడగడియారం "
 "సమయం X సేవిక వనరులతో కలుపుకొని (చట్రమునకు %g మిల్లీసెకనులు)\n"
 
-#: ../src/ui/theme-viewer.c:1246
+#: ../src/ui/theme-viewer.c:1258
 msgid "position expression test returned TRUE but set error"
 msgstr "స్థానపు సమీకరణము పరిశీలన సత్యాన్ని యిచ్చింది అయితే దోషమును అమర్చింది"
 
-#: ../src/ui/theme-viewer.c:1248
+#: ../src/ui/theme-viewer.c:1260
 msgid "position expression test returned FALSE but didn't set error"
 msgstr "స్థానపు సమీకరణము పరిశీలన అసత్యమును యిచ్చింది అయితే దోషమును అమర్చలేదు"
 
-#: ../src/ui/theme-viewer.c:1252
+#: ../src/ui/theme-viewer.c:1264
 msgid "Error was expected but none given"
 msgstr "దోషము రావలసివుంది కాని ఏమీ రాలేదు"
 
-#: ../src/ui/theme-viewer.c:1254
+#: ../src/ui/theme-viewer.c:1266
 #, c-format
 msgid "Error %d was expected but %d given"
 msgstr "దోషము %d రావలసివుంది అయితే %d యివ్వబడింది"
 
-#: ../src/ui/theme-viewer.c:1260
+#: ../src/ui/theme-viewer.c:1272
 #, c-format
 msgid "Error not expected but one was returned: %s"
 msgstr "దోషము రాకూడదు కాని వొకటి వచ్చింది: %s"
 
-#: ../src/ui/theme-viewer.c:1264
+#: ../src/ui/theme-viewer.c:1276
 #, c-format
 msgid "x value was %d, %d was expected"
 msgstr "x విలువ %d, %d కావలసివుంది"
 
-#: ../src/ui/theme-viewer.c:1267
+#: ../src/ui/theme-viewer.c:1279
 #, c-format
 msgid "y value was %d, %d was expected"
 msgstr "y విలువ %d, %d కావలసివుంది"
 
-#: ../src/ui/theme-viewer.c:1332
+#: ../src/ui/theme-viewer.c:1344
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr "%d కోఆర్డినేట్ సమీకరణాలు %g సెకనులలో(%g సెకనులు సగటున) పార్శ్ చేయబడినవి\n"
+
+#~ msgid "/Windows/tearoff"
+#~ msgstr "/Windows/tearoff"
+
+#~ msgid "/Windows/_Dialog"
+#~ msgstr "/Windows/_Dialog"
+
+#~ msgid "/Windows/_Modal dialog"
+#~ msgstr "/విండోస్/మోడల్ డైలాగ్ (_M)/విండోస"
+
+#~ msgid "/Windows/Des_ktop"
+#~ msgstr "/విండోస్/రంగస్థలం (_k)"
 
 #~ msgid "Launchers"
 #~ msgstr "ప్రయోగవేదికలు"
@@ -2198,9 +2228,6 @@ msgstr "%d కోఆర్డినేట్ సమీకరణాలు %g స�
 #~ msgid "Window title font"
 #~ msgstr "విండో శీర్షిక ఫాంటు"
 
-#~ msgid "Desktop"
-#~ msgstr "రంగస్థలం"
-
 #~ msgid "Window Management"
 #~ msgstr "విండో నిర్వహణ"
 
@@ -2261,12 +2288,3 @@ msgstr "%d కోఆర్డినేట్ సమీకరణాలు %g స�
 
 #~ msgid "Move window to north (top) side of screen"
 #~ msgstr "విండోను ఉత్తరం (పైన)కు కదుల్చుము"
-
-#~ msgid "Open another one of these windows"
-#~ msgstr "ఈ విండోలయొక్క వేరొక దానిని తెరువుము"
-
-#~ msgid "This is a demo button with an 'open' icon"
-#~ msgstr "ఇది 'తెరుచు' ప్రతిమతో వున్న డెమో బటన్"
-
-#~ msgid "This is a demo button with a 'quit' icon"
-#~ msgstr "ఇది 'నిష్క్రమించు' ప్రతిమతో వున్న డెమో బటన్"
