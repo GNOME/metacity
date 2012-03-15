@@ -4,14 +4,14 @@
 # This file is distributed under the same license as the metacity.HEAD package.
 #
 # Amanpreet_Singh <amanlinux@netscape.net>, 2004.
-# A S Alam <aalam@users.sf.net>, 2004, 2005,2006,2007, 2009, 2010, 2011.
+# A S Alam <aalam@users.sf.net>, 2004, 2005,2006,2007, 2009, 2010, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity.HEAD\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug."
-"cgi?product=metacity&component=general\n"
-"POT-Creation-Date: 2011-02-09 18:28+0000\n"
-"PO-Revision-Date: 2011-03-26 23:47+0530\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=metacity&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2012-01-12 16:13+0000\n"
+"PO-Revision-Date: 2012-03-15 07:19+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi/Panjabi <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -22,28 +22,183 @@ msgstr ""
 "\n"
 "Language: pa\n"
 
-#: ../src/50-metacity-launchers.xml.in.h:1
-msgid "Launchers"
-msgstr "ਲਾਂਚਰ"
-
 #: ../src/50-metacity-navigation.xml.in.h:1
+msgid "Hide all normal windows"
+msgstr "ਸਭ ਸਧਾਰਨ ਵਿੰਡੋਜ਼ ਓਹਲੇ ਕਰੋ"
+
+#: ../src/50-metacity-navigation.xml.in.h:2
+msgid "Move to workspace above"
+msgstr "ਉੱਤੇ ਵਰਕਸਪੇਸ 'ਚ ਭੇਜੋ"
+
+#: ../src/50-metacity-navigation.xml.in.h:3
+msgid "Move to workspace below"
+msgstr "ਹੇਠਾਂ ਵਰਕਸਪੇਸ 'ਚ ਭੇਜੋ"
+
+#: ../src/50-metacity-navigation.xml.in.h:4
+msgid "Move to workspace left"
+msgstr "ਖੱਬੇ ਵਰਕਸਪੇਸ 'ਚ ਭੇਜੋ"
+
+#: ../src/50-metacity-navigation.xml.in.h:5
+msgid "Move to workspace right"
+msgstr "ਸੱਜੇ ਵਰਕਸਪੇਸ 'ਚ ਭੇਜੋ"
+
+#: ../src/50-metacity-navigation.xml.in.h:6
+msgid "Move window one workspace down"
+msgstr "ਵਿੰਡੋ ਨੂੰ ਇੱਕ ਵਰਕਸਪੇਸ ਹੇਠਾਂ ਲਿਜਾਓ"
+
+#: ../src/50-metacity-navigation.xml.in.h:7
+msgid "Move window one workspace to the left"
+msgstr "ਵਿੰਡੋ ਨੂੰ ਇੱਕ ਵਰਕਸਪੇਸ ਖੱਬੇ ਵੱਲ ਲਿਜਾਓ"
+
+#: ../src/50-metacity-navigation.xml.in.h:8
+msgid "Move window one workspace to the right"
+msgstr "ਵਿੰਡੋ ਨੂੰ ਇੱਕ ਵਰਕਸਪੇਸ ਸੱਜੇ ਵੱਲ ਲਿਜਾਓ"
+
+#: ../src/50-metacity-navigation.xml.in.h:9
+msgid "Move window one workspace up"
+msgstr "ਵਿੰਡੋ ਨੂੰ ਇੱਕ ਵਰਕਸਪੇਸ ਉੱਤੇ ਲਿਜਾਓ"
+
+#: ../src/50-metacity-navigation.xml.in.h:10
+msgid "Move window to workspace 1"
+msgstr "ਵਿੰਡੋ ਨੂੰ ਵਰਕਸਪੇਸ 1 ਵਿੱਚ ਲਿਜਾਓ"
+
+#: ../src/50-metacity-navigation.xml.in.h:11
+msgid "Move window to workspace 2"
+msgstr "ਵਿੰਡੋ ਨੂੰ ਵਰਕਸਪੇਸ 2 ਵਿੱਚ ਲਿਜਾਓ"
+
+#: ../src/50-metacity-navigation.xml.in.h:12
+msgid "Move window to workspace 3"
+msgstr "ਵਿੰਡੋ ਨੂੰ ਵਰਕਸਪੇਸ 3 ਵਿੱਚ ਲਿਜਾਓ"
+
+#: ../src/50-metacity-navigation.xml.in.h:13
+msgid "Move window to workspace 4"
+msgstr "ਵਿੰਡੋ ਨੂੰ ਵਰਕਸਪੇਸ 4 ਵਿੱਚ ਲਿਜਾਓ"
+
+#: ../src/50-metacity-navigation.xml.in.h:14
 msgid "Navigation"
 msgstr "ਨੇਵੀਗੇਸ਼ਨ"
 
-#: ../src/50-metacity-screenshot.xml.in.h:1
-#| msgid "Screen Shots"
-msgid "Screenshots"
-msgstr "ਸਕਰੀਨ ਸ਼ਾਟ"
+#: ../src/50-metacity-navigation.xml.in.h:15
+msgid "Switch applications"
+msgstr "ਐਪਲੀਕੇਸ਼ਨ ਬਦਲੋ"
+
+#: ../src/50-metacity-navigation.xml.in.h:16
+msgid "Switch system controls"
+msgstr "ਸਿਸਟਮ ਕੰਟਰੋਲ ਬਦਲੋ"
+
+#: ../src/50-metacity-navigation.xml.in.h:17
+msgid "Switch system controls directly"
+msgstr "ਸਿਸਟਮ ਕੰਟਰੋਲ ਸਿੱਧੇ ਬਦਲੋ"
+
+#: ../src/50-metacity-navigation.xml.in.h:18
+msgid "Switch to workspace 1"
+msgstr "ਵਰਕਸਪੇਸ 1 ਵਿੱਚ ਜਾਓ"
+
+#: ../src/50-metacity-navigation.xml.in.h:19
+msgid "Switch to workspace 2"
+msgstr "ਵਰਕਸਪੇਸ 2 ਵਿੱਚ ਜਾਓ"
+
+#: ../src/50-metacity-navigation.xml.in.h:20
+msgid "Switch to workspace 3"
+msgstr "ਵਰਕਸਪੇਸ 3 ਵਿੱਚ ਜਾਓ"
+
+#: ../src/50-metacity-navigation.xml.in.h:21
+msgid "Switch to workspace 4"
+msgstr "ਵਰਕਸਪੇਸ 4 ਵਿੱਚ ਜਾਓ"
+
+#: ../src/50-metacity-navigation.xml.in.h:22
+msgid "Switch windows directly"
+msgstr "ਵਿੰਡੋਜ਼ ਸਿੱਧੀਆਂ ਬਦਲੋ"
+
+#: ../src/50-metacity-navigation.xml.in.h:23
+msgid "Switch windows of an app directly"
+msgstr "ਐਪਲੀਕੇਸ਼ਨ ਦੀ ਵਿੰਡੋ ਸਿੱਧੀ ਬਦਲੋ"
+
+#: ../src/50-metacity-navigation.xml.in.h:24
+msgid "Switch windows of an application"
+msgstr "ਐਪਲੀਕੇਸ਼ਨ ਦੀ ਵਿੰਡੋਜ਼ ਬਦਲੋ"
 
 #: ../src/50-metacity-system.xml.in.h:1
+msgid "Show the activities overview"
+msgstr "ਸਰਗਰਮੀ ਸੰਖੇਪ ਜਾਣਕਾਰੀ ਵੇਖੋ"
+
+#: ../src/50-metacity-system.xml.in.h:2
+msgid "Show the run command prompt"
+msgstr "ਕਮਾਂਡ ਚਲਾਉ ਪਰੋਉਟ ਵੇਖੋ"
+
+#: ../src/50-metacity-system.xml.in.h:3
 msgid "System"
 msgstr "ਸਿਸਟਮ"
 
 #: ../src/50-metacity-windows.xml.in.h:1
+msgid "Activate the window menu"
+msgstr "ਐਕਟਿਵ ਵਿੰਡੋ ਮੇਨੂ"
+
+#: ../src/50-metacity-windows.xml.in.h:2
+msgid "Close window"
+msgstr "ਵਿੰਡੋ ਬੰਦ ਕਰੋ"
+
+#: ../src/50-metacity-windows.xml.in.h:3
+msgid "Lower window below other windows"
+msgstr "ਹੋਰ ਵਿੰਡੋ ਹੇਠਾਂ ਥੱਲੇ ਵਾਲੀ ਵਿੰਡੋ"
+
+#: ../src/50-metacity-windows.xml.in.h:4
+msgid "Maximize window"
+msgstr "ਵਿੰਡੋ ਅਧਿਕਤਮ"
+
+#: ../src/50-metacity-windows.xml.in.h:5
+msgid "Maximize window horizontally"
+msgstr "ਵਿੰਡੋ ਖਿਤਿਜੀ ਅਧਿਕਤਮ"
+
+#: ../src/50-metacity-windows.xml.in.h:6
+msgid "Maximize window vertically"
+msgstr "ਵਿੰਡੋ ਲੰਬਕਾਰੀ ਅਧਿਕਤਮ"
+
+#: ../src/50-metacity-windows.xml.in.h:7
+msgid "Minimize window"
+msgstr "ਵਿੰਡੋ ਅਲਪੀਕਰਨ"
+
+#: ../src/50-metacity-windows.xml.in.h:8
+msgid "Move window"
+msgstr "ਵਿੰਡੋ ਹਿਲਾਓ"
+
+#: ../src/50-metacity-windows.xml.in.h:9
+msgid "Raise window above other windows"
+msgstr "ਹੋਰ ਵਿੰਡੋ ਤੋਂ ਉੱਪਰਲੀ ਵਿੰਡੋ ਉਠਾਓ"
+
+#: ../src/50-metacity-windows.xml.in.h:10
+msgid "Raise window if covered, otherwise lower it"
+msgstr "ਵਿੰਡੋ ਉਭਾਰੋ, ਜੇ ਢੱਕੀ ਹੈ, ਨਹੀਂ ਤਾਂ ਹੇਠਾਂ ਭੇਜੋ"
+
+#: ../src/50-metacity-windows.xml.in.h:11
+msgid "Resize window"
+msgstr "ਵਿੰਡੋ ਮੁੜ-ਅਕਾਰ"
+
+#: ../src/50-metacity-windows.xml.in.h:12
+msgid "Restore window"
+msgstr "ਵਿੰਡੋ ਮੁੜ-ਸਟੋਰ"
+
+#: ../src/50-metacity-windows.xml.in.h:13
+msgid "Toggle fullscreen mode"
+msgstr "ਪੂਰੀ ਸਕਰੀਨ ਕਰੋ"
+
+#: ../src/50-metacity-windows.xml.in.h:14
+msgid "Toggle maximization state"
+msgstr "ਅਧਿਕਤਮ ਸਥਿਤੀ ਕਰੋ"
+
+#: ../src/50-metacity-windows.xml.in.h:15
+msgid "Toggle shaded state"
+msgstr "ਰੰਗਤ ਸਥਿਤੀ ਕਰੋ"
+
+#: ../src/50-metacity-windows.xml.in.h:16
+msgid "Toggle window on all workspaces or one"
+msgstr "ਵਿੰਡੋ ਸਭ ਵਰਕਸਪੇਸ ਜਾਂ ਇੱਕ ਵਿੱਚ ਬਦਲੋ"
+
+#: ../src/50-metacity-windows.xml.in.h:17
 msgid "Windows"
 msgstr "ਵਿੰਡੋਜ਼"
 
-#: ../src/core/bell.c:299
+#: ../src/core/bell.c:296
 msgid "Bell event"
 msgstr "ਘੰਟੀ ਈਵੈਂਟ"
 
@@ -111,30 +266,6 @@ msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
 "binding\n"
 msgstr "ਕੋਈ ਹੋਰ ਕਾਰਜ %s ਸਵਿੱਚ ਨੂੰ %x ਸੋਧਕ ਨਾਲ ਪਹਿਲਾਂ ਹੀ ਜੋੜ ਵਾਂਗ ਵਰਤ ਰਿਹਾ ਹੈ\n"
-
-#. Displayed when a keybinding which is
-#. * supposed to launch a program fails.
-#.
-#: ../src/core/keybindings.c:2343
-#, c-format
-msgid ""
-"There was an error running <tt>%s</tt>:\n"
-"\n"
-"%s"
-msgstr ""
-"<tt>%s</tt> ਨੂੰ ਚਲਾਉਣ ਉਪਰੰਤ ਇੱਕ ਗਲਤੀ ਹੈ:\n"
-"\n"
-"%s"
-
-#: ../src/core/keybindings.c:2432
-#, c-format
-msgid "No command %d has been defined.\n"
-msgstr "ਕੋਈ ਕਮਾਂਡ %d ਪਰਭਾਸ਼ਿਤ ਨਹੀ ਕੀਤੀ।\n"
-
-#: ../src/core/keybindings.c:3386
-#, c-format
-msgid "No terminal command has been defined.\n"
-msgstr "ਕੋਈ ਟਰਮੀਨਲ ਕਮਾਂਡ ਪ੍ਰਭਾਸ਼ਿਤ ਨਹੀ ਕੀਤੀ।\n"
 
 #: ../src/core/main.c:131
 #, c-format
@@ -209,47 +340,21 @@ msgstr ""
 msgid "Failed to restart: %s\n"
 msgstr "ਮੁੜ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਅਸਫਲ: %s\n"
 
-#.
-#. * We found it, but it was invalid.  Complain.
-#. *
-#. * FIXME: This replicates the original behaviour, but in the future
-#. * we might consider reverting invalid keys to their original values.
-#. * (We know the old value, so we can look up a suitable string in
-#. * the symtab.)
-#. *
-#. * (Empty comment follows so the translators don't see this.)
-#.
-#.
-#: ../src/core/prefs.c:508 ../src/core/prefs.c:663
-#, c-format
-msgid "GConf key '%s' is set to an invalid value\n"
-msgstr "ਜੀ-ਕਾਨਫ ਸਵਿੱਚ \"%s\" ਨੂੰ ਇੱਕ ਅਯੋਗ ਕੀਮਤ ਦਿੱਤੀ ਗਈ ਹੈ\n"
-
-#: ../src/core/prefs.c:589 ../src/core/prefs.c:832
-#, c-format
-msgid "%d stored in GConf key %s is out of range %d to %d\n"
-msgstr "ਜੀ-ਕਾਨਫ ਸੰਭਾਲੀ %d  ਸਵਿੱਚ %s ਵਿੱਚ ਨਿਸਚਿਤ ਸੀਮਾਂਵਾਂ %d ਤੋਂ %d ਬਾਹਰ ਹੈ\n"
-
-#: ../src/core/prefs.c:633 ../src/core/prefs.c:710 ../src/core/prefs.c:758
-#: ../src/core/prefs.c:822 ../src/core/prefs.c:1115 ../src/core/prefs.c:1131
-#: ../src/core/prefs.c:1148 ../src/core/prefs.c:1164
-#, c-format
-msgid "GConf key \"%s\" is set to an invalid type\n"
-msgstr "ਜੀ-ਕਾਨਫ ਸਵਿੱਚ \"%s\" ਨੂੰ ਇੱਕ ਅਯੋਗ ਕਿਸਮ ਦਿੱਤੀ ਗਈ ਹੈ\n"
-
-#: ../src/core/prefs.c:1234
+#: ../src/core/prefs.c:880
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
 msgstr ""
 "ਭੰਗ ਕਾਰਜ ਵਾਸਤੇ ਕੰਮ ਘੇਰਾ ਅਯੋਗ ਕੀਤਾ ਹੈ। ਕੁਝ ਕਾਰਜ ਚੰਗੀ ਤਰਾਂ ਕੰਮ ਨਹੀਂ ਕਰਦੇ।\n"
 
-#: ../src/core/prefs.c:1305
+#: ../src/core/prefs.c:949
 #, c-format
-msgid "Could not parse font description \"%s\" from GConf key %s\n"
-msgstr "ਜੀ-ਕਾਨਫ ਸਵਿੱਚ \"%s\" ਤੋਂ ਅੱਖਰ ਵੇਰਵਾ \"%s\" ਨੂੰ ਪਾਰਸ ਨਹੀਂ ਕਰ ਸਕਿਆ\n"
+#| msgid "Could not parse font description \"%s\" from GConf key %s\n"
+msgid "Could not parse font description \"%s\" from GSettings key %s\n"
+msgstr ""
+"GSettings ਸਵਿੱਚ \"%2$s\" ਤੋਂ ਫੋਂਟ ਵੇਰਵੇ \"%1$s\" ਨੂੰ ਪਾਰਸ ਨਹੀਂ ਕਰ ਸਕਿਆ\n"
 
-#: ../src/core/prefs.c:1367
+#: ../src/core/prefs.c:1015
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -257,17 +362,7 @@ msgid ""
 msgstr ""
 "ਸੰਰਚਨਾ ਡਾਟਾਬੇਸ ਵਿੱਚ ਲੱਭੀ ਹੋਈ \"%s\" ਮਾਊਸ ਬਟਨ ਸੋਧਕ ਲਈ ਯੋਗ ਕੀਮਤ ਨਹੀਂ ਹੈ\n"
 
-#: ../src/core/prefs.c:1788
-#, c-format
-msgid "Error setting number of workspaces to %d: %s\n"
-msgstr "ਵਰਕਸਪੇਸਾਂ ਦੀ ਗਿਣਤੀ %d ਸੈੱਟ ਕਰਨ ਨਾਲ ਗਲਤੀ: %s\n"
-
-#: ../src/core/prefs.c:1959 ../src/core/prefs.c:2461
-#, c-format
-msgid "Workspace %d"
-msgstr "ਵਰਕਸਪੇਸ %d"
-
-#: ../src/core/prefs.c:1988 ../src/core/prefs.c:2166
+#: ../src/core/prefs.c:1494
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -276,15 +371,10 @@ msgstr ""
 "ਸੰਰਚਨਾ ਡਾਟਾਬੇਸ ਵਿੱਚ  ਲੱਭੀ ਹੋਈ \"%s\" ਸਵਿੱਚ-ਬਾਈਡਿੰਗ \"%s\" ਲਈ ਯੋਗ ਕੀਮਤ ਨਹੀਂ "
 "ਹੈ\n"
 
-#: ../src/core/prefs.c:2542
+#: ../src/core/prefs.c:1601
 #, c-format
-msgid "Error setting name for workspace %d to \"%s\": %s\n"
-msgstr "ਵਰਕਸਪੇਸ %d ਦਾ ਨਾਂ \"%s\" ਸੈੱਟ ਕਰਨ ਵਿੱਚ ਗਲਤੀ:%s\n"
-
-#: ../src/core/prefs.c:2746
-#, c-format
-msgid "Error setting compositor status: %s\n"
-msgstr "ਕੰਪੋਜ਼ਟਰ ਹਾਲਤ ਸੈੱਟ ਕਰਨ ਵਿੱਚ ਗਲਤੀ:%s\n"
+msgid "Workspace %d"
+msgstr "ਵਰਕਸਪੇਸ %d"
 
 #: ../src/core/screen.c:357
 #, c-format
@@ -317,47 +407,6 @@ msgstr "ਸਕਰੀਨ %d ਉੱਤੇ ਡਿਸਪਲੇਅ \"%s\" ਉੱਤ�
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "ਸਕਰੀਨ %d ਉੱਤੇ ਡਿਸਪਲੇਅ \"%s\" ਰੀਲਿਜ਼ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ\n"
-
-#. Translators: Please don't translate "Control", "Shift", etc, since these
-#. * are hardcoded (in gtk/gtkaccelgroup.c; it's not metacity's fault).
-#. * "disabled" must also stay as it is.
-#.
-#: ../src/core/schema-bindings.c:169
-msgid ""
-"The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
-"\n"
-"The parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action."
-msgstr ""
-"ਫਾਰਮੈਟ \"<Control>a\" ਜਾਂ \"<Shift><Alt>F1\" ਵਾਂਗ ਜਾਪਦਾ ਹੈ।\n"
-"\n"
-"ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ "
-"ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ "
-"ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" "
-"ਬਣਾਉਦੇ ਹੋ "
-"ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ-ਬਾਈਡਿੰਗ ਨਹੀਂ ਹੋਵੇਗਾ।"
-
-#: ../src/core/schema-bindings.c:177
-msgid ""
-"The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
-"\n"
-"The parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action.\n"
-"\n"
-"This keybinding may be reversed by holding down the \"shift\" key; "
-"therefore, \"shift\" cannot be one of the keys it uses."
-msgstr ""
-"ਫਾਰਮੈਟ \"<Control>a\" ਜਾਂ \"<Shift><Alt>F1\" ਵਾਂਗ ਜਾਪਦਾ ਹੈ।\n"
-"\n"
-"ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ "
-"ਸੰਖੇਪ ਰਚਨਾ ਵੀ ਜਿਵੇਂ "
-"ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" "
-"ਬਣਾਉਦੇ ਹੋ "
-"ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ-ਬਾਈਡਿੰਗ ਨਹੀਂ ਹੋਵੇਗਾ।"
 
 #: ../src/core/session.c:842 ../src/core/session.c:849
 #, c-format
@@ -452,7 +501,6 @@ msgid "Window manager error: "
 msgstr "ਵਿੰਡੋ ਮੈਨੇਜਰ ਗਲਤੀ: "
 
 #. Translators: This is the title used on dialog boxes
-#. eof all-keybindings.h
 #: ../src/core/util.c:570 ../src/metacity.desktop.in.h:1
 #: ../src/metacity-wm.desktop.in.h:1
 msgid "Metacity"
@@ -548,445 +596,15 @@ msgid ""
 msgstr ""
 "%s ਵਿਸ਼ੇਸ਼ਤਾ 0x%lx ਵਿੰਡੋ ਉੱਤੇ ਵਿੱਚ ਲੜੀ ਵਿਚਲੇ ਮੈਂਬਰ %d ਲਈ ਅਯੋਗ UTF-8 ਸ਼ਾਮਿਲ ਹੈ\n"
 
-#: ../src/include/all-keybindings.h:88
-msgid "Switch to workspace 1"
-msgstr "ਵਰਕਸਪੇਸ 1 ਵਿੱਚ ਜਾਓ"
-
-#: ../src/include/all-keybindings.h:90
-msgid "Switch to workspace 2"
-msgstr "ਵਰਕਸਪੇਸ 2 ਵਿੱਚ ਜਾਓ"
-
-#: ../src/include/all-keybindings.h:92
-msgid "Switch to workspace 3"
-msgstr "ਵਰਕਸਪੇਸ 3 ਵਿੱਚ ਜਾਓ"
-
-#: ../src/include/all-keybindings.h:94
-msgid "Switch to workspace 4"
-msgstr "ਵਰਕਸਪੇਸ 4 ਵਿੱਚ ਜਾਓ"
-
-#: ../src/include/all-keybindings.h:96
-msgid "Switch to workspace 5"
-msgstr "ਵਰਕਸਪੇਸ 5 ਵਿੱਚ ਜਾਓ"
-
-#: ../src/include/all-keybindings.h:98
-msgid "Switch to workspace 6"
-msgstr "ਵਰਕਸਪੇਸ 6 ਵਿੱਚ ਜਾਓ"
-
-#: ../src/include/all-keybindings.h:100
-msgid "Switch to workspace 7"
-msgstr "ਵਰਕਸਪੇਸ 7 ਵਿੱਚ ਜਾਓ"
-
-#: ../src/include/all-keybindings.h:102
-msgid "Switch to workspace 8"
-msgstr "ਵਰਕਸਪੇਸ 8 ਵਿੱਚ ਜਾਓ"
-
-#: ../src/include/all-keybindings.h:104
-msgid "Switch to workspace 9"
-msgstr "ਵਰਕਸਪੇਸ 9 ਵਿੱਚ ਜਾਓ"
-
-#: ../src/include/all-keybindings.h:106
-msgid "Switch to workspace 10"
-msgstr "ਵਰਕਸਪੇਸ 10 ਵਿੱਚ ਜਾਓ"
-
-#: ../src/include/all-keybindings.h:108
-msgid "Switch to workspace 11"
-msgstr "ਵਰਕਸਪੇਸ 11 ਵਿੱਚ ਜਾਓ"
-
-#: ../src/include/all-keybindings.h:110
-msgid "Switch to workspace 12"
-msgstr "ਵਰਕਸਪੇਸ 12 ਵਿੱਚ ਜਾਓ"
-
-#: ../src/include/all-keybindings.h:122
-msgid "Move to workspace left"
-msgstr "ਖੱਬੇ ਵਰਕਸਪੇਸ 'ਚ ਭੇਜੋ"
-
-#: ../src/include/all-keybindings.h:126
-msgid "Move to workspace right"
-msgstr "ਸੱਜੇ ਵਰਕਸਪੇਸ 'ਚ ਭੇਜੋ"
-
-#: ../src/include/all-keybindings.h:130
-msgid "Move to workspace above"
-msgstr "ਉੱਤੇ ਵਰਕਸਪੇਸ 'ਚ ਭੇਜੋ"
-
-#: ../src/include/all-keybindings.h:134
-msgid "Move to workspace below"
-msgstr "ਹੇਠਾਂ ਵਰਕਸਪੇਸ 'ਚ ਭੇਜੋ"
-
-#: ../src/include/all-keybindings.h:150
-msgid "Switch windows of an application"
-msgstr "ਐਪਲੀਕੇਸ਼ਨ ਦੀ ਵਿੰਡੋਜ਼ ਬਦਲੋ"
-
-#: ../src/include/all-keybindings.h:153
-msgid "Reverse switch windows of an application"
-msgstr "ਐਪਲੀਕੇਸ਼ਨ ਦੀ ਵਿੰਡੋ ਬਦਲਣ ਦੀ ਕਾਰਵਾਈ ਵਾਪਸ ਲਵੋ"
-
-#: ../src/include/all-keybindings.h:156
-msgid "Switch applications"
-msgstr "ਐਪਲੀਕੇਸ਼ਨ ਬਦਲੋ"
-
-#: ../src/include/all-keybindings.h:159
-msgid "Reverse switch applications"
-msgstr "ਐਪਲੀਕੇਸ਼ਨ ਬਦਲਣੇ ਵਾਪਸ ਲਵੋ"
-
-#: ../src/include/all-keybindings.h:162
-msgid "Switch system controls"
-msgstr "ਸਿਸਟਮ ਕੰਟਰੋਲ ਬਦਲੋ"
-
-#: ../src/include/all-keybindings.h:165
-msgid "Reverse switch system controls"
-msgstr "ਸਿਸਟਮ ਕੰਟਰੋਲ ਬਦਲਣੇ ਵਾਪਸ ਲਵੋ"
-
-#: ../src/include/all-keybindings.h:169
-msgid "Switch windows of an app directly"
-msgstr "ਐਪਲੀਕੇਸ਼ਨ ਦੀ ਵਿੰਡੋ ਸਿੱਧੀ ਬਦਲੋ"
-
-#: ../src/include/all-keybindings.h:172
-msgid "Reverse switch windows of an app directly"
-msgstr "ਐਪਲੀਕੇਸ਼ਨ ਦੀ ਵਿੰਡੋ ਸਿੱਧੀ ਬਦਲਣ ਨੂੰ ਵਾਪਸ ਲਵੋ"
-
-#: ../src/include/all-keybindings.h:175
-msgid "Switch windows directly"
-msgstr "ਵਿੰਡੋਜ਼ ਸਿੱਧੀਆਂ ਬਦਲੋ"
-
-#: ../src/include/all-keybindings.h:178
-msgid "Reverse switch windows directly"
-msgstr "ਵਿੰਡੋਜ਼ ਦੇ ਸਿੱਧੇ ਬਦਲਣ ਨੂੰ ਵਾਪਸ ਲਵੋ"
-
-#: ../src/include/all-keybindings.h:181
-msgid "Switch system controls directly"
-msgstr "ਸਿਸਟਮ ਕੰਟਰੋਲ ਸਿੱਧੇ ਬਦਲੋ"
-
-#: ../src/include/all-keybindings.h:184
-msgid "Reverse switch system controls directly"
-msgstr "ਸਿਸਟਮ ਕੰਟਰੋਲ ਸਿੱਧੇ ਬਦਲਣੇ ਉਲਟ ਕਰੋ"
-
-#: ../src/include/all-keybindings.h:189
-msgid "Hide all normal windows"
-msgstr "ਸਭ ਸਧਾਰਨ ਵਿੰਡੋਜ਼ ਓਹਲੇ ਕਰੋ"
-
-#: ../src/include/all-keybindings.h:192
-msgid "Show the activities overview"
-msgstr "ਸਰਗਰਮੀ ਸੰਖੇਪ ਜਾਣਕਾਰੀ ਵੇਖੋ"
-
-#: ../src/include/all-keybindings.h:195
-msgid "Show the run command prompt"
-msgstr "ਕਮਾਂਡ ਚਲਾਉ ਪਰੋਉਟ ਵੇਖੋ"
-
-#: ../src/include/all-keybindings.h:236
-msgid "Take a screenshot"
-msgstr "ਇੱਕ ਸਕਰੀਨ-ਸ਼ਾਂਟ ਲਵੋ"
-
-#: ../src/include/all-keybindings.h:238
-msgid "Take a screenshot of a window"
-msgstr "ਵਿੰਡੋ ਦਾ ਸਕਰੀਨ-ਸ਼ਾਟ ਲਵੋ"
-
-#: ../src/include/all-keybindings.h:240
-msgid "Launch Terminal"
-msgstr "ਟਰਮੀਨਲ ਚਲਾਓ"
-
-#: ../src/include/all-keybindings.h:255
-msgid "Activate the window menu"
-msgstr "ਐਕਟਿਵ ਵਿੰਡੋ ਮੇਨੂ"
-
-#: ../src/include/all-keybindings.h:258
-msgid "Toggle fullscreen mode"
-msgstr "ਪੂਰੀ ਸਕਰੀਨ ਕਰੋ"
-
-#: ../src/include/all-keybindings.h:260
-msgid "Toggle maximization state"
-msgstr "ਅਧਿਕਤਮ ਸਥਿਤੀ ਕਰੋ"
-
-#: ../src/include/all-keybindings.h:262
-msgid "Toggle window always appearing on top"
-msgstr "ਹਮੇਸ਼ਾ ਉੱਤੇ ਆਉਣ ਵਾਲੀਆਂ ਵਿੰਡੋਜ਼ ਬਦਲੋ"
-
-#: ../src/include/all-keybindings.h:264
-msgid "Maximize window"
-msgstr "ਵਿੰਡੋ ਅਧਿਕਤਮ"
-
-#: ../src/include/all-keybindings.h:266
-msgid "Restore window"
-msgstr "ਵਿੰਡੋ ਮੁੜ-ਸਟੋਰ"
-
-#: ../src/include/all-keybindings.h:268
-msgid "Toggle shaded state"
-msgstr "ਰੰਗਤ ਸਥਿਤੀ ਕਰੋ"
-
-#: ../src/include/all-keybindings.h:270
-msgid "Minimize window"
-msgstr "ਵਿੰਡੋ ਅਲਪੀਕਰਨ"
-
-#: ../src/include/all-keybindings.h:272
-msgid "Close window"
-msgstr "ਵਿੰਡੋ ਬੰਦ ਕਰੋ"
-
-#: ../src/include/all-keybindings.h:274
-msgid "Move window"
-msgstr "ਵਿੰਡੋ ਹਿਲਾਓ"
-
-#: ../src/include/all-keybindings.h:276
-msgid "Resize window"
-msgstr "ਵਿੰਡੋ ਮੁੜ-ਅਕਾਰ"
-
-#: ../src/include/all-keybindings.h:279
-msgid "Toggle window on all workspaces or one"
-msgstr "ਵਿੰਡੋ ਸਭ ਵਰਕਸਪੇਸ ਜਾਂ ਇੱਕ ਵਿੱਚ ਬਦਲੋ"
-
-#: ../src/include/all-keybindings.h:283
-msgid "Move window to workspace 1"
-msgstr "ਵਿੰਡੋ ਨੂੰ ਵਰਕਸਪੇਸ 1 ਵਿੱਚ ਲਿਜਾਓ"
-
-#: ../src/include/all-keybindings.h:286
-msgid "Move window to workspace 2"
-msgstr "ਵਿੰਡੋ ਨੂੰ ਵਰਕਸਪੇਸ 2 ਵਿੱਚ ਲਿਜਾਓ"
-
-#: ../src/include/all-keybindings.h:289
-msgid "Move window to workspace 3"
-msgstr "ਵਿੰਡੋ ਨੂੰ ਵਰਕਸਪੇਸ 3 ਵਿੱਚ ਲਿਜਾਓ"
-
-#: ../src/include/all-keybindings.h:292
-msgid "Move window to workspace 4"
-msgstr "ਵਿੰਡੋ ਨੂੰ ਵਰਕਸਪੇਸ 4 ਵਿੱਚ ਲਿਜਾਓ"
-
-#: ../src/include/all-keybindings.h:295
-msgid "Move window to workspace 5"
-msgstr "ਵਿੰਡੋ ਨੂੰ ਵਰਕਸਪੇਸ 5 ਵਿੱਚ ਲਿਜਾਓ"
-
-#: ../src/include/all-keybindings.h:298
-msgid "Move window to workspace 6"
-msgstr "ਵਿੰਡੋ ਨੂੰ ਵਰਕਸਪੇਸ 6 ਵਿੱਚ ਲਿਜਾਓ"
-
-#: ../src/include/all-keybindings.h:301
-msgid "Move window to workspace 7"
-msgstr "ਵਿੰਡੋ ਨੂੰ ਵਰਕਸਪੇਸ 7 ਵਿੱਚ ਲਿਜਾਓ"
-
-#: ../src/include/all-keybindings.h:304
-msgid "Move window to workspace 8"
-msgstr "ਵਿੰਡੋ ਨੂੰ ਵਰਕਸਪੇਸ 8 ਵਿੱਚ ਲਿਜਾਓ"
-
-#: ../src/include/all-keybindings.h:307
-msgid "Move window to workspace 9"
-msgstr "ਵਿੰਡੋ ਨੂੰ ਵਰਕਸਪੇਸ 9 ਵਿੱਚ ਲਿਜਾਓ"
-
-#: ../src/include/all-keybindings.h:310
-msgid "Move window to workspace 10"
-msgstr "ਵਿੰਡੋ ਨੂੰ ਵਰਕਸਪੇਸ 10 ਵਿੱਚ ਲਿਜਾਓ"
-
-#: ../src/include/all-keybindings.h:313
-msgid "Move window to workspace 11"
-msgstr "ਵਿੰਡੋ ਨੂੰ ਵਰਕਸਪੇਸ 11 ਵਿੱਚ ਲਿਜਾਓ"
-
-#: ../src/include/all-keybindings.h:316
-msgid "Move window to workspace 12"
-msgstr "ਵਿੰਡੋ ਨੂੰ ਵਰਕਸਪੇਸ 12 ਵਿੱਚ ਲਿਜਾਓ"
-
-#: ../src/include/all-keybindings.h:328
-msgid "Move window one workspace to the left"
-msgstr "ਵਿੰਡੋ ਨੂੰ ਇੱਕ ਵਰਕਸਪੇਸ ਖੱਬੇ ਵੱਲ ਲਿਜਾਓ"
-
-#: ../src/include/all-keybindings.h:331
-msgid "Move window one workspace to the right"
-msgstr "ਵਿੰਡੋ ਨੂੰ ਇੱਕ ਵਰਕਸਪੇਸ ਸੱਜੇ ਵੱਲ ਲਿਜਾਓ"
-
-#: ../src/include/all-keybindings.h:334
-msgid "Move window one workspace up"
-msgstr "ਵਿੰਡੋ ਨੂੰ ਇੱਕ ਵਰਕਸਪੇਸ ਉੱਤੇ ਲਿਜਾਓ"
-
-#: ../src/include/all-keybindings.h:337
-msgid "Move window one workspace down"
-msgstr "ਵਿੰਡੋ ਨੂੰ ਇੱਕ ਵਰਕਸਪੇਸ ਹੇਠਾਂ ਲਿਜਾਓ"
-
-#: ../src/include/all-keybindings.h:340
-msgid "Raise window if covered, otherwise lower it"
-msgstr "ਵਿੰਡੋ ਉਭਾਰੋ, ਜੇ ਢੱਕੀ ਹੈ, ਨਹੀਂ ਤਾਂ ਹੇਠਾਂ ਭੇਜੋ"
-
-#: ../src/include/all-keybindings.h:342
-msgid "Raise window above other windows"
-msgstr "ਹੋਰ ਵਿੰਡੋ ਤੋਂ ਉੱਪਰਲੀ ਵਿੰਡੋ ਉਠਾਓ"
-
-#: ../src/include/all-keybindings.h:344
-msgid "Lower window below other windows"
-msgstr "ਹੋਰ ਵਿੰਡੋ ਹੇਠਾਂ ਥੱਲੇ ਵਾਲੀ ਵਿੰਡੋ"
-
-#: ../src/include/all-keybindings.h:348
-msgid "Maximize window vertically"
-msgstr "ਵਿੰਡੋ ਲੰਬਕਾਰੀ ਅਧਿਕਤਮ"
-
-#: ../src/include/all-keybindings.h:352
-msgid "Maximize window horizontally"
-msgstr "ਵਿੰਡੋ ਖਿਤਿਜੀ ਅਧਿਕਤਮ"
-
-#: ../src/include/all-keybindings.h:356
-msgid "Move window to top left corner"
-msgstr "ਵਿੰਡੋ ਉੱਤੇ ਖੱਬੇ ਕੋਨੇ 'ਚ ਭੇਜੋ"
-
-#: ../src/include/all-keybindings.h:359
-msgid "Move window to top right corner"
-msgstr "ਵਿੰਡੋ ਉੱਤੇ ਸੱਜੇ ਕੋਨੇ 'ਚ ਭੇਜੋ"
-
-#: ../src/include/all-keybindings.h:362
-msgid "Move window to bottom left corner"
-msgstr "ਵਿੰਡੋ ਹੇਠਾਂ ਖੱਬੇ ਕੋਨੇ 'ਚ ਭੇਜੋ"
-
-#: ../src/include/all-keybindings.h:365
-msgid "Move window to bottom right corner"
-msgstr "ਵਿੰਡੋ ਹੇਠਾਂ ਸੱਜੇ ਕੋਨੇ 'ਚ ਭੇਜੋ"
-
-#: ../src/include/all-keybindings.h:369
-msgid "Move window to top edge of screen"
-msgstr "ਵਿੰਡੋ ਉੱਤੇ ਸਕਰੀਨ ਦੇ ਕੋਨੇ 'ਚ ਭੇਜੋ"
-
-#: ../src/include/all-keybindings.h:372
-msgid "Move window to bottom edge of screen"
-msgstr "ਵਿੰਡੋ ਸਕਰੀਨ ਦੇ ਹੇਠਾਂ ਤਲ ਉੱਤੇ ਭੇਜੋ"
-
-#: ../src/include/all-keybindings.h:375
-msgid "Move window to right side of screen"
-msgstr "ਵਿੰਡੋ ਸਕਰੀਨ ਦੇ ਸੱਜੇ ਪਾਸੇ ਭੇਜੋ"
-
-#: ../src/include/all-keybindings.h:378
-msgid "Move window to left side of screen"
-msgstr "ਵਿੰਡੋ ਸਕਰੀਨ ਦੇ ਖੱਬੇ ਪਾਸੇ ਭੇਜੋ"
-
-#: ../src/include/all-keybindings.h:381
-msgid "Move window to center of screen"
-msgstr "ਵਿੰਡੋ ਨੂੰ ਸਕਰੀਨ ਦੇ ਸੈਂਟਰ ਵਿੱਚ ਭੇਜੋ"
-
-#: ../src/metacity.schemas.in.in.h:1
-msgid "(Not implemented) Navigation works in terms of applications not windows"
-msgstr "(ਲਾਗੂ ਨਹੀ ਕੀਤਾ) ਸੰਚਾਲਨ ਕਾਰਜ ਦੇ ਵਿਹਾਰ ਨਾਲ ਕੰਮ ਕਰਦਾ ਹੈ ਨਾ ਕਿ ਵਿੰਡੋ ਦੇ"
-
-#: ../src/metacity.schemas.in.in.h:2
-msgid ""
-"A font description string describing a font for window titlebars. The size "
-"from the description will only be used if the titlebar_font_size option is "
-"set to 0. Also, this option is disabled if the titlebar_uses_desktop_font "
-"option is set to true."
-msgstr ""
-"ਫੋਂਟ ਵੇਰਵਾ ਸਤਰ ਵਿੰਡੋ ਦੀ ਟਾਇਟਲ-ਬਾਰ ਵਾਸਤੇ ਫੋਂਟ ਦਰਸਾਉਂਦੀ ਹੈ। ਵੇਰਵੇ ਵਿਚਲਾ ਆਕਾਰ "
-"ਤਾਂ ਹੀ ਅਸਰ "
-"ਕਰੇਗਾ ਜੇ ਕਿਸੇ ਵੀ ਤਰਾਂ titlebar_font_size ਚੋਣ 0 ਕੀਤੀ ਹੈ। ਇਹ ਚੋਣ ਅਯੋਗ ਵੀ ਹੈ ਜੇ "
-"titlebar_uses_desktop_font ਚੋਣ ਨੂੰ ਯੋਗ ਹੋਈ ਵਰਤਦਾ ਹੈ।"
-
-#: ../src/metacity.schemas.in.in.h:3
-msgid "Action on title bar double-click"
-msgstr "ਟਾਇਟਲ-ਬਾਰ ਉੱਤੇ ਕਿਰਿਆ ਦੋ-ਵਾਰ ਦਬਾਉ"
-
-#: ../src/metacity.schemas.in.in.h:4
-msgid "Action on title bar middle-click"
-msgstr "ਟਾਇਟਲ ਬਾਰ ਉੱਤੇ ਮੱਧ-ਕਲਿੱਕ ਨਾਲ ਐਕਸ਼ਨ"
-
-#: ../src/metacity.schemas.in.in.h:5
-msgid "Action on title bar right-click"
-msgstr "ਟਾਇਟਲ ਬਾਰ ਉੱਤੇ ਸੱਜਾ-ਕਲਿੱਕ ਨਾਲ ਐਕਸ਼ਨ"
-
-#: ../src/metacity.schemas.in.in.h:6
-msgid "Arrangement of buttons on the titlebar"
-msgstr "ਟਾਇਟਲ-ਬਾਰ ਉੱਤੇ ਬਟਨਾਂ ਦੀ ਤਰਤੀਬ"
-
-#: ../src/metacity.schemas.in.in.h:7
-msgid ""
-"Arrangement of buttons on the titlebar. The value should be a string, such "
-"as \"menu:minimize,maximize,spacer,close\"; the colon separates the left "
-"corner of the window from the right corner, and the button names are comma-"
-"separated. Duplicate buttons are not allowed. Unknown button names are "
-"silently ignored so that buttons can be added in future metacity versions "
-"without breaking older versions. A special spacer tag can be used to insert "
-"some space between two adjacent buttons."
-msgstr ""
-"ਟਾਇਟਲ-ਬਾਰ ਉੱਤੇ ਬਟਨਾਂ ਦਾ ਪਰਬੰਧ। ਕੀਮਤ, ਸਤਰ ਹੋਣੀ ਚਾਹੀਦੀ ਹੈ, ਜਿਵੇਂ ਕਿ "
-"\"menu:minimize,"
-"maximize,spacer,close(ਮੇਨੂ:ਛੋਟਾ,ਵੱਡਾ ਬੰਦ)\"; ਕੌਲਨ ਵਿੰਡੋ ਦੇ ਖੱਬੇ ਖੂੰਜੇ ਨੂੰ "
-"ਸੱਜੇ ਤੋਂ ਵੱਖ ਕਰਦਾ ਹੈ,ਅਤੇ "
-"ਬਟਨ ਨਾਂ ਕਾਮੇ ਨਾਲ ਵੱਖ ਹਨ। ਨਕਲੀ ਬਟਨਾਂ ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ। ਅਣਜਾਣ ਬਟਨ ਅਣਡਿੱਠ ਕੀਤੇ "
-"ਜਾਣਗੇ ਤਾਂ ਕਿ "
-"ਬਟਨ, ਮੈਟਾਸਿਟੀ ਦੇ ਪੁਰਾਣੇਵਰਜਨ ਨੂੰ ਤੋੜੇ ਬਿਨਾਂ ਨਵੇਂ ਵਰਜਨ ਵਿੱਚ ਜੋੜੇ ਜਾ ਸਕਣ।"
-
-#: ../src/metacity.schemas.in.in.h:8
-msgid "Automatically raises the focused window"
-msgstr "ਫੋਕਸ ਹੋਈ ਵਿੰਡੋ ਆਟਮੈਟਿਕ ਉਭਾਰੋ"
-
-#: ../src/metacity.schemas.in.in.h:9
-msgid ""
-"Clicking a window while holding down this modifier key will move the window "
-"(left click), resize the window (middle click), or show the window menu "
-"(right click). The middle and right click operations may be swapped using "
-"the \"resize_with_right_button\" key. Modifier is expressed as \"&lt;Alt&gt;"
-"\" or \"&lt;Super&gt;\" for example."
-msgstr ""
-"ਇਸ ਸੋਧਕ ਸਵਿੱਚ ਨੂੰ ਦਬਾ ਕੇ ਵਿੰਡੋ ਉੱਤੇ ਦਬਾਉ ਨਾਲ ਵਿੰਡੋ ਹਿੱਲੇਗੀ (ਖੱਬਾ ਦਬਾਉਣ ਨਾਲ), "
-"ਵਿੰਡੋ ਨੂੰ ਮੁੜ ਆਕਾਰ "
-"ਦਿਓ (ਵਿਚਕਾਰਲਾ ਦਬਾਉਣ ਨਾਲ), ਜਾਂ ਵਿੰਡੋ ਮੇਨੂ ਵਿਖਾਓ (ਸੱਜਾ ਦਬਾਉਣ ਨਾਲ)। ਮੱਧ ਅਤੇ ਸੱਜਾ "
-"ਕਲਿੱਕ "
-"ਓਪਰੇਸ਼ਨ \"resize_with_right_button\" ਨਾਲ ਆਪਸ ਵਿੱਚ ਬਦਲੇ ਜਾ ਸਕਦੇ ਹਨ। ਮੋਡੀਫਾਇਰ "
-"ਉਦਾਹਰਨ "
-"ਵਜੋਂ ਇਸ ਤਰਾਂ ਦਰਸਾਇਆ ਗਿਆ \"&lt;Alt&gt;\" ਜਾਂ \"&lt;Super&gt;\""
-
-#: ../src/metacity.schemas.in.in.h:10
-msgid "Commands to run in response to keybindings"
-msgstr "ਸਵਿੱਚ ਸੰਬੰਧਾਂ ਦੇ ਉੱਤਰ ਵਿਚ ਚੱਲਣ ਵਾਲੀ ਕਮਾਂਡ"
-
-#: ../src/metacity.schemas.in.in.h:11
+#: ../src/org.gnome.metacity.gschema.xml.in.h:1
 msgid "Compositing Manager"
 msgstr "ਕੰਪੋਜਿੰਗ ਮੈਨੇਜਰ"
 
-#: ../src/metacity.schemas.in.in.h:12
-msgid "Control how new windows get focus"
-msgstr "ਕੰਟਰੋਲ ਕਿ ਕਿਵੇਂ ਨਵੀਂ ਵਿੰਡੋ ਫੋਕਸ ਹੋਣ"
-
-#: ../src/metacity.schemas.in.in.h:13
-msgid "Current theme"
-msgstr "ਮੌਜੂਦਾ ਥੀਮ"
-
-#: ../src/metacity.schemas.in.in.h:14
-msgid "Delay in milliseconds for the auto raise option"
-msgstr "ਸਵੈ ਉਠਾਊ ਚੋਣ ਲਈ ਮਿਲੀ ਸਕਿੰਟਾਂ ਵਿੱਚ ਵਕਫਾ"
-
-#: ../src/metacity.schemas.in.in.h:15
+#: ../src/org.gnome.metacity.gschema.xml.in.h:2
 msgid "Determines whether Metacity is a compositing manager."
 msgstr "ਜਾਂਚ ਕਰੋ ਕਿ ਕੀ ਮੈਟਾਸਿਟੀ ਇੱਕ ਕੰਪੋਜਟਿੰਗ ਮੈਨੇਜਰ ਹੈ।"
 
-#: ../src/metacity.schemas.in.in.h:16
-msgid ""
-"Determines whether applications or the system can generate audible 'beeps'; "
-"may be used in conjunction with 'visual bell' to allow silent 'beeps'."
-msgstr ""
-"ਵੇਖੋ ਕਿ ਕੀ ਕਾਰਜ ਜਾਂ ਸਿਸਟਮ ਆਵਾਜ਼ ਵਾਲੀਆਂ 'ਬੀਪਸ' ਪੈਦਾ ਕਰਦਾ ਹੈ; ਜੋ 'ਦਿੱਖ ਘੰਟੀ' ਦੇ "
-"ਸੰਗ ਸ਼ਾਂਤ "
-"'ਬੀਪਸ' ਨੂੰ ਚਲਾਏ।"
-
-#: ../src/metacity.schemas.in.in.h:17
-msgid "Disable misfeatures that are required by old or broken applications"
-msgstr ""
-"ਨਾ ਮੌਜੂਦ ਗੁਣਾਂ ਨੂੰ ਅਯੋਗ ਕਰੋ ਜਿਹੜੇ ਪੁਰਾਣੇ ਜਾਂ ਤੋੜੇ ਕਾਰਜਾਂ ਰਾਹੀਂ ਲੋੜੀਂਦੇ ਹਨ"
-
-#: ../src/metacity.schemas.in.in.h:18
-msgid "Enable Visual Bell"
-msgstr "ਦਿੱਖ ਘੰਟੀ ਯੋਗ ਕਰੋ"
-
-#: ../src/metacity.schemas.in.in.h:19
-msgid ""
-"If set to true, and the focus mode is either \"sloppy\" or \"mouse\" then "
-"the focused window will be automatically raised after a delay specified by "
-"the auto_raise_delay key. This is not related to clicking on a window to "
-"raise it, nor to entering a window during drag-and-drop."
-msgstr ""
-"ਜੇ ਇਹ ਸਹੀਂ ਹੋਵੇ ਤਾਂ ਫੋਕਸ ਢੰਗ ਜਾਂ ਤਾਂ \"ਸਲੋਪੀ\" ਜਾਂ \"ਮਾਊਂਸ\" ਹੁੰਦਾ ਹੈ ਤਾਂ "
-"ਫੋਕਸ ਹੋਇਆ ਵਿੰਡੋ "
-"auto_raise_delay ਕੁੰਜੀ ਵਲੋਂ ਦਿੱਤੇ ਇੱਕ ਅੰਤਰਾਲ ਬਾਅਦ ਆਟੋਮੈਟਿਕ ਹੀ ਉਭਾਰਿਆ ਜਾਵੇਗਾ। "
-"ਇਹ ਉਭਾਰਨ "
-"ਲਈ ਵਿੰਡੋ ਉੱਤੇ ਨਿਰਭਰ ਨਹੀਂ ਹੈ ਅਤੇ ਨਾ ਹੀ ਚੁੱਕਣ ਅਤੇ ਸੁੱਟਣ ਸਮੇਂ ਇੱਕ ਵਿੰਡੋ ਉੱਤੇ ਵੀ "
-"ਨਹੀਂ।"
-
-#: ../src/metacity.schemas.in.in.h:20
-msgid ""
-"If true, ignore the titlebar_font option, and use the standard application "
-"font for window titles."
-msgstr ""
-"ਜੇ ਯੋਗ ਹੈ, ਟਾਇਟਲ-ਬਾਰ ਫੋਟ ਚੋਣ ਨੂੰ ਅਣਡਿੱਠ ਕਰੋ, ਅਤੇ ਵਿੰਡੋ ਟਾਇਟਲ ਵਾਸਤੇ ਸਟੈਂਡਰਡ "
-"ਕਾਰਜ ਅੱਖਰ ਵਰਤੋਂ।"
-
-#: ../src/metacity.schemas.in.in.h:21
+#: ../src/org.gnome.metacity.gschema.xml.in.h:3
 msgid ""
 "If true, metacity will give the user less feedback by using wireframes, "
 "avoiding animations, or other means. This is a significant reduction in "
@@ -1000,398 +618,56 @@ msgstr ""
 "ਟਰਮੀਨਲ ਸਰਵਰਾਂ ਨੂੰ ਕੰਮ "
 "ਕਰਨ ਦੇਵੇਗੀ। ਪਰ ਵਾਇਰਫਰੇਮ ਫੀਚਰ ਆਯੋਗ ਹੋਵੇਗਾ, ਜਦੋਂ ਸਹੂਲਤਾਂ ਨੂੰ ਚਾਲੂ ਕੀਤਾ ਜਾਵੇਗਾ।"
 
-#: ../src/metacity.schemas.in.in.h:22
-msgid ""
-"If true, then Metacity works in terms of applications rather than windows. "
-"The concept is a bit abstract, but in general an application-based setup is "
-"more like the Mac and less like Windows. When you focus a window in "
-"application-based mode, all the windows in the application will be raised. "
-"Also, in application-based mode, focus clicks are not passed through to "
-"windows in other applications. Application-based mode is, however, largely "
-"unimplemented at the moment."
-msgstr ""
-"ਜੇ ਯੋਗ ਹੈ, ਮੈਟਾਸਿਟੀ ਕਾਰਜਾਂ ਦੇ ਰੂਪ 'ਚ ਕੰਮ ਕਰੇਗਾ ਨਾ ਕਿ ਵਿੰਡੋ ਦੇ। ਵਿਚਾਰ ਕੁਝ "
-"ਵੱਖਰਾ ਹੈ, ਪਰ "
-"ਸਾਧਾਰਨ ਤੌਰ ਤੇ ਕਾਰਜ ਤੇ ਆਧਾਰਿਤ ਬਣਾਵਟ ਮੈਕ(Mac) ਦੀ ਤਰਾਂ ਜਿਆਦਾ ਹੈ ਅਤੇ ਵਿੰਡੋ "
-"(Windows) ਵਾਂਗ "
-"ਘੱਟ। ਜਦੋਂ ਤੁਸੀਂ ਵਿੰਡੋ ਨੂੰ ਕਾਰਜ ਆਧਾਰਿਤ ਰੂਪ ਵਿੱਚ ਫੋਕਸ ਕਰਦੇ ਹੋ, ਕਾਰਜ ਵਿਚਲੇ ਸਭ "
-"ਵਿੰਡੋ ਕਾਰਜ ਆਧਾਰਿਤ "
-"ਰੂਪ ਵਿੱਚ ਖੁੱਲਣਗੀਆਂ। ਨਾਲ ਹੀ ਫੋਕਸ ਕਲਿੱਕ ਦੂਜੇ ਕਾਰਜਾਂ ਵਿਚਲੇ ਝਰੋਖਿਆਂ ਵਿੱਚ ਨਹੀਂ "
-"ਜਾਂਦੇ। ਕਾਰਜ ਆਧਾਰਿਤ "
-"ਢੰਗ ਇਸ ਸਮੇਂ ਵੀ ਲਾਗੂ ਨਹੀਂ ਹੈ।"
-
-#: ../src/metacity.schemas.in.in.h:23
+#: ../src/org.gnome.metacity.gschema.xml.in.h:4
 msgid "If true, trade off usability for less resource usage"
 msgstr "ਜੇ ਯੋਗ ਹੈ, ਘੱਟ ਸਰੋਤ ਉਪਯੋਗ ਲਈ ਸਹੂਲਤ ਪੇਸ਼ਾ ਖਤਮ ਕਰੋ"
-
-#: ../src/metacity.schemas.in.in.h:24
-msgid "Modifier to use for modified window click actions"
-msgstr "ਸੋਧੀਆਂ ਵਿੰਡੋ ਦੀਆਂ ਕਲਿੱਕ ਕਾਰਵਾਈਆਂ ਲਈ ਵਰਤਣ ਲਈ ਮੋਡੀਫਾਇਰ"
-
-#: ../src/metacity.schemas.in.in.h:25
-msgid "Name of workspace"
-msgstr "ਵਰਕਸਪੇਸ ਦਾ ਨਾਂ"
-
-#: ../src/metacity.schemas.in.in.h:26
-msgid "Number of workspaces"
-msgstr "ਵਰਕਸਪੇਸ ਦੀ ਗਿਣਤੀ"
-
-#: ../src/metacity.schemas.in.in.h:27
-msgid ""
-"Number of workspaces. Must be more than zero, and has a fixed maximum to "
-"prevent making the desktop unusable by accidentally asking for too many "
-"workspaces."
-msgstr ""
-"ਵਰਕਸਪੇਸ ਦੀ ਗਿਣਤੀ। ਜ਼ੀਰੋ ਤੋਂ ਵੱਧ ਹੋਣੀ ਜਰੂਰੀ ਹੈ,ਅਤੇ ਵੱਧ ਤੋਂ ਵੱਧ ਨਿਯਮਤ ਹੋਣੀ "
-"ਚਾਹੀਦੀ ਹੈ ਤਾਂ ਅਸਧਾਰਨ "
-"ਵਰਕਸਪੇਸ ਪੁੱਛ ਕੇ ਤੁਹਾਡੇ ਡੈਸਕਟਾਪ ਨੂੰ ਖਤਮ ਹੋਣ ਦੀ ਘਟਨਾ ਤੋਂ ਬਚਾਇਆ ਜਾ ਸਕੇ।"
-
-#: ../src/metacity.schemas.in.in.h:28
-msgid "Run a defined command"
-msgstr "ਇੱਕ ਪ੍ਰਭਾਸ਼ਿਤ ਕਮਾਂਡ ਚਲਾਓ"
-
-#: ../src/metacity.schemas.in.in.h:29
-msgid ""
-"Set this to true to resize with the right button and show a menu with the "
-"middle button while holding down the key given in \"mouse_button_modifier\"; "
-"set it to false to make it work the opposite way around."
-msgstr ""
-"ਜੇ ਸਹੀਂ ਕੀਤਾ ਤਾਂ ਸੱਜੇ ਬਟਨ ਨਾਲ ਮੁੜ-ਸਾਈਜ਼ ਕੀਤਾ ਜਾਵੇਗਾ ਅਤੇ ਮੱਧ ਕਲਿੱਕ ਨਾਲ ਮੇਨੂ "
-"ਵੇਖਾਇਆ ਜਾਵੇਗਾ, "
-"ਜਦੋਂ ਕੀ \"mouse_button_modifier\" ਵਿੱਚ ਦਿੱਤੀ ਕੁੰਜੀ ਹੋਲਡ ਕੀਤੀ ਜਾਵੇਗੀ; ਇਸ ਨੂੰ "
-"ਗਲਤ ਰੱਖਣ ਦਾ "
-"ਅਰਥ ਹੈ ਕਿ ਇਸ ਦੇ ਉਲਟ ਕੰਮ ਕਰਨਾ"
-
-#: ../src/metacity.schemas.in.in.h:30
-msgid ""
-"Setting this option to false can lead to buggy behavior, so users are "
-"strongly discouraged from changing it from the default of true. Many actions "
-"(e.g. clicking in the client area, moving or resizing the window) normally "
-"raise the window as a side-effect. Setting this option to false, which is "
-"strongly discouraged, will decouple raising from other user actions, and "
-"ignore raise requests generated by applications. See http://bugzilla.gnome."
-"org/show_bug.cgi?id=445447#c6. Even when this option is false, windows can "
-"still be raised by an alt-left-click anywhere on the window, a normal click "
-"on the window decorations, or by special messages from pagers, such as "
-"activation requests from tasklist applets. This option is currently disabled "
-"in click-to-focus mode. Note that the list of ways to raise windows when "
-"raise_on_click is false does not include programmatic requests from "
-"applications to raise windows; such requests will be ignored regardless of "
-"the reason for the request. If you are an application developer and have a "
-"user complaining that your application does not work with this setting "
-"disabled, tell them it is _their_ fault for breaking their window manager "
-"and that they need to change this option back to true or live with the \"bug"
-"\" they requested."
-msgstr ""
-"ਇਹ ਚੋਣ ਗਲਤ ਕਰਨ ਨਾਲ, ਬੱਡੀ ਰਵੱਈਆ ਆ ਸਕਦਾ ਹੈ ਤਾਂ ਯੂਜ਼ਰਾਂ ਨੂੰ ਇਹ ਠੀਕ ਰੱਖਣ ਦਾ ਸੁਝਾਅ "
-"ਹੀ ਦਿੱਤਾ "
-"ਗਿਆ ਹੈ। ਕੋਈ ਫੰਕਸ਼ਨ (ਜਿਵੇਂ ਕਿ ਕਲਾਈਟ ਖੇਤਰ ਵਿੱਚ ਕਲਿੱਕ ਕਰਨਾ, ਵਿੰਡੋ ਹਿਲਾਉਣੀ ਜਾਂ "
-"ਮੁੜ-ਆਕਾਰ ਕਰਨਾ) "
-"ਸਾਇਡ-ਪਰਭਾਵ ਦੇ ਅਧੀਨ ਵਿੰਡੋ ਉਭਾਰ ਦਿੰਦੇ ਹਨ। ਇਹ ਚੋਣ ਗਲਤ ਕਰਨ ਨਾਲ, ਹੋਰ ਯੂਜ਼ਰ ਐਕਸ਼ਨ "
-"ਤੋਂ ਉਭਾਰਨ ਨੂੰ "
-"ਡਿ-ਕਪਲ ਕਰ ਦਿੰਦੀ ਹੈ। http://bugzilla.gnome.org/show_bug.cgi?id=445447#c6 ਵੇਖੋ। "
-"ਭਾਵੇਂ ਇਹ ਚੋਣ ਗਲਤ ਹੈ, ਵਿੰਡੋ ਨੂੰ ਵਿੰਡੋ ਉੱਤੇ ਕਿਤੇ ਵੀ alt-left-click ਕਰਨ, ਇੱਕ ਆਮ "
-"ਵਿੰਡੋ ਸਜਾਵਟ, ਜਾਂ "
-"ਪੇਜ਼ਰ ਤੋਂ ਖਾਸ ਸੁਨੇਹਿਆਂ ਨਾਲ ਨਾਲ ਉਭਾਰਿਆ ਜਾ ਸਕਦਾ ਹੈ, ਜਿਵੇਂ ਕਿ ਟਾਸਕ-ਲਿਸਟ ਐਪਲਿਟ "
-"ਤੋਂ ਐਕਟੀਵੇਸ਼ਨ "
-"ਮੰਗ। ਇਹ ਚੋਣ ਇਸ ਸਮੇਂ ਕਲਿੱਕ-ਅਤੇ-ਫੋਕਸ ਮੋਡ ਰਾਹੀਂ ਆਯੋਗ ਹੈ। ਯਾਦ ਰੱਖੋ ਕਿ ਵਿੰਡੋ ਨੂੰ "
-"ਉਭਾਰਨ ਦੇ ਢੰਗ ਦੀ "
-"ਲਿਸਟ, ਜਦੋਂ ਕਿ raise_on_click ਗਲਤ ਹੋਵੇ, ਐਪਲੀਕੇਸ਼ਨ ਤੋਂ ਵਿੰਡੋ ਉਭਾਰਨ ਦੀ ਮੰਗ ਵਿੱਚ "
-"ਸ਼ਾਮਲ ਨਹੀਂ ਹੈ, "
-"ਜਿਵੇਂ ਕਿ ਉਸ ਕਿਸਮ ਦੀਆਂ ਮੰਗ ਨੂੰ ਕਾਰਨ ਬਿਨਾਂ ਹੀ ਅਣਡਿੱਠਾ ਕਰ ਦਿੱਤਾ ਜਾਵੇਗਾ। ਜੇ ਤੁਸੀਂ "
-"ਕਾਰਜ ਖੋਜੀ ਹੋ "
-"ਅਤੇ ਯੂਜ਼ਰ ਸ਼ਿਕਾਇਤ ਹੈ ਕਿ ਇਹ ਸੈਟਿੰਗ ਆਯੋਗ ਕਰਨ ਨਾਲ ਤੁਹਾਡੀ ਐਪਲੀਕੇਸ਼ਨ ਕੰਮ ਨਹੀਂ ਕਰਦੀ "
-"ਹੈ ਤਾਂ ਇਹ "
-"ਉਨ੍ਹਾਂ ਦੀ ਗਲਤੀ ਹੈ, ਕਿਉਂਕਿ ਉਨ੍ਹਾਂ ਦਾ ਵਿੰਡੋ ਮੈਨੇਜਰ ਖਰਾਬ ਹੈ ਅਤੇ ਉਨ੍ਹਾਂ ਨੂੰ ਇਹ "
-"ਚੋਣ ਬਦਲ ਕੇ ਠੀਕ ਕਰਨੀ "
-"ਹੋਵੇਗੀ ਜਾਂ ਉਨ੍ਹਾਂ ਨੂੰ ਬੱਗ ਦੇ ਦਿਓ।"
-
-#: ../src/metacity.schemas.in.in.h:31
-msgid ""
-"Some applications disregard specifications in ways that result in window "
-"manager misfeatures. This option puts Metacity in a rigorously correct mode, "
-"which gives a more consistent user interface, provided one does not need to "
-"run any misbehaving applications."
-msgstr ""
-"ਕੁਝ ਕਾਰਜਾਂ ਕੁਝ ਕਾਰਨਾਂ ਕਰਕੇ ਹਦਾਇਤਾਂ ਨੂੰ ਅਣਡਿੱਠਾ ਕਰ ਦਿੰਦੀਆਂ ਹਨ, ਜਿੰਨਾਂ 'ਚ ਵਿੰਡੋ "
-"ਮੈਨੇਜਰ ਗਲਤ "
-"ਫੀਚਰਾਂ ਹੁੰਦੇ ਹਨ। ਇਹ ਚੋਣ ਮੇਟਾਸਿਟੀ ਨੂੰ ਗਲਤ ਢੰਗ ਨੂੰ ਸਹੀਂ ਕਰਨ ਲਿਆ ਹੈ, ਜਿਸ ਨਾਲ "
-"ਯੂਜ਼ਰ ਇੰਟਰਫੇਸ ਲਈ "
-"ਇਕਸਾਰ ਕੰਟਰੋਲ ਰਹਿੰਦਾ ਹੈ, ਜੋ ਕਿ ਗਲਤ ਰਵੱਈਆ ਰੱਖਣ ਵਾਲੇ ਕਾਰਜ ਨੂੰ ਚੱਲਣ ਨਹੀਂ ਦਿੰਦੀ।"
-
-#: ../src/metacity.schemas.in.in.h:32
-msgid "System Bell is Audible"
-msgstr "ਸਿਸਟਮ ਘੰਟੀ ਸੁਣਨਯੋਗ ਹੈ"
-
-#: ../src/metacity.schemas.in.in.h:33
-msgid ""
-"Tells Metacity how to implement the visual indication that the system bell "
-"or another application 'bell' indicator has been rung. Currently there are "
-"two valid values, \"fullscreen\", which causes a fullscreen white-black "
-"flash, and \"frame_flash\" which causes the titlebar of the application "
-"which sent the bell signal to flash. If the application which sent the bell "
-"is unknown (as is usually the case for the default \"system beep\"), the "
-"currently focused window's titlebar is flashed."
-msgstr ""
-"ਮੈਟਾਸਿਟੀ ਨੂੰ ਦੱਸੋ ਕਿ ਦਰਿਸ਼ੀ ਸੰਕੇਤ ਨੂੰ ਕਿਸ ਤਰਾਂ ਲਾਗੂ ਕਰਨਾ ਹੈ ਤਾਂ ਕਿ ਸਿਸਟਮ ਘੰਟੀ "
-"ਜਾਂ ਹੋਰ ਕਾਰਜ "
-"'ਘੰਟੀ' ਸੰਕੇਤਕ ਵੱਜੇ। ਹੁਣ ਇੱਥੇ ਦੋ ਯੋਗ ਕੀਮਤਾਂ ਹਨ, \"ਸਾਰੀ ਸਕਰੀਨ\", ਜੋ ਸਕਰੀਨ ਨੂੰ "
-"ਸਫੈਦ-ਕਾਲਾ "
-"ਲਿਸ਼ਕਾਰਾ ਬਣਾਉਂਦਾ ਹੈ, ਅਤੇ \"ਫਰੇਮ_ਲਿਸ਼ਕਾਰਾ\" ਜੋ ਕਾਰਜ ਦੀ ਟਾਇਟਲ-ਬਾਰ ਜਿਹੜੀ ਘੰਟੀ "
-"ਸੰਕੇਤ ਭੇਜਦੀ "
-"ਹੈ ਨੂੰ ਲਿਸ਼ਕਣ ਦਿੰਦਾ ਹੈ। ਜੇ ਘੰਟੀ ਭੇਜਣ ਵਾਲਾ ਕਾਰਜ ਅਣਪਛਾਤਾ ਹੋਵੇ (ਜਿਵੇਂ ਕਿ ਮੂਲ "
-"\"ਸਿਸਟਮ ਬੀਪ\" "
-"ਹੈ), ਮੌਜੂਦਾ ਫੋਕਸ ਰੱਖੇ ਦੀ ਟਾਇਟਲ-ਬਾਰ ਲਿਸ਼ਕੇਗੀ।"
-
-#: ../src/metacity.schemas.in.in.h:34
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_N keys define keybindings "
-"that correspond to these commands. Pressing the keybinding for run_command_N "
-"will execute command_N."
-msgstr ""
-"/apps/metacity/global_keybindings/run_command_N ਸਵਿੱਚਾਂ ਸਵਿੱਚ-ਬਾਈਡਿੰਗ ਪਰਭਾਸ਼ਿਤ "
-"ਕਰਦੀਆਂ ਹਨ ਜਿਹੜੇ ਕਿ ਉਹਨਾਂ ਕਮਾਂਡਾਂ ਦੇ ਅਨੁਸਾਰੀ ਹਨ। ਚਲਾਓ_ਕਮਾਂਡ_N ਵਾਸਤੇ "
-"ਸਵਿੱਚ-ਬਾਈਡਿੰਗ ਦਬਾਉਣ "
-"ਨਾਲ ਕਮਾਂਡ_N ਚੱਲੇਗੀ।"
-
-#: ../src/metacity.schemas.in.in.h:35
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_screenshot key defines a "
-"keybinding which causes the command specified by this setting to be invoked."
-msgstr ""
-"/apps/metacity/global_keybindings/run_command_screensho ਸਵਿੱਚ, ਸਵਿੱਚ-ਬਾਈਡਿੰਗ "
-"ਪਰਭਾਸ਼ਿਤ ਕਰਦੀ ਹੈ ਜਿਹਨਾ ਨੇ ਇਸ ਸਥਾਪਨ ਰਾਹੀਂ ਦਰਸਾਈ ਕਮਾਂਡ ਨੂੰ ਬੁਲਾਇਆ।"
-
-#: ../src/metacity.schemas.in.in.h:36
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_window_screenshot key "
-"defines a keybinding which causes the command specified by this setting to "
-"be invoked."
-msgstr ""
-"/apps/metacity/global_keybindings/run_command_window_screenshot ਸਵਿੱਚ, ਸਵਿੱਚ "
-"ਬੰਧਨ ਪਰਭਾਸ਼ਿਤ ਕਰਦੀ ਹੈ ਜਿਹਨਾ ਨੇ ਇਸ ਸਥਾਪਨ ਰਾਹੀਂ ਦਰਸਾਈ ਕਮਾਂਡ ਨੂੰ ਬੁਲਾਇਆ।"
-
-#: ../src/metacity.schemas.in.in.h:37
-msgid ""
-"The keybinding that runs the correspondingly-numbered command in /apps/"
-"metacity/keybinding_commands The format looks like \"&lt;Control&gt;a\" or "
-"\"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows "
-"lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and "
-"\"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled\", "
-"then there will be no keybinding for this action."
-msgstr ""
-"ਸਵਿੱਚ-ਬਾਈਡਿੰਗ ਜਿਹੜਾ apps/metacity/keybinding_command ਵਿੱਚ ਅਨੁਸਾਰੀ ਅੰਕਿਤ ਕਮਾਂਡ "
-"ਚਲਾਉਦਾ ਹੈ ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;"
-"Alt&gt;F1।ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ "
-"ਹੈ, ਅਤੇ ਸੰਖੇਪ "
-"ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ "
-"ਚੋਣ \"ਅਯੋਗ"
-"\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ-ਬਾਈਡਿੰਗ ਨਹੀਂ ਹੋਵੇਗਾ।"
-
-#: ../src/metacity.schemas.in.in.h:38
-msgid "The name of a workspace."
-msgstr "ਵਰਕਸਪੇਸ ਦਾ ਨਾਂ ਹੈ।"
-
-#: ../src/metacity.schemas.in.in.h:39
-msgid "The screenshot command"
-msgstr "ਸਕਰੀਨ-ਸ਼ਾਂਟ ਕਮਾਂਡ"
-
-#: ../src/metacity.schemas.in.in.h:40
-msgid ""
-"The theme determines the appearance of window borders, titlebar, and so "
-"forth."
-msgstr "ਥੀਮ ਵਿੰਡੋ ਦੇ ਹਾਸ਼ੀਏ, ਟਾਇਟਲ-ਬਾਰ, ਅਤੇ ਸਾਹਮਣੀ ਦਿੱਖ ਨਿਰਧਾਰਿਤ ਕਰਦਾ ਹੈ।"
-
-#: ../src/metacity.schemas.in.in.h:41
-msgid ""
-"The time delay before raising a window if auto_raise is set to true. The "
-"delay is given in thousandths of a second."
-msgstr ""
-"ਵਿੰਡੋ ਉਠਾਉਣ ਤੋਂ ਪਹਿਲਾਂ ਵਕਫਾ ਜੇ ਸਵੈ-ਉਠਾਊ ਯੋਗ ਕੀਤੀ ਹੈ। ਵਕਫਾ ਸਕਿੰਟ ਦੇ ਹਜਾਰਵੇਂ "
-"ਵਿੱਚ ਦਿੱਤਾ ਹੈ।"
-
-#: ../src/metacity.schemas.in.in.h:42
-msgid ""
-"The window focus mode indicates how windows are activated. It has three "
-"possible values; \"click\" means windows must be clicked in order to focus "
-"them, \"sloppy\" means windows are focused when the mouse enters the window, "
-"and \"mouse\" means windows are focused when the mouse enters the window and "
-"unfocused when the mouse leaves the window."
-msgstr ""
-"ਵਿੰਡੋ ਫੋਕਸ ਮੋਡ ਦਰਸਾਉਦਾ ਹੈ ਕਿ ਵਿੰਡੋ ਕਿਵੇਂ ਸਰਗਰਮ ਕਰਨੀਆਂ ਹਨ। ਇਸ ਦੀਆਂ ਤਿੰਨ ਸੰਭਵ "
-"ਕੀਮਤਾਂ ਹਨ; "
-"\"ਦਬਾਉ\" ਮਤਲਬ ਵਿੰਡੋ ਉਹਨਾਂ ਨੂੰ ਫੋਕਸ ਕਰਨ ਲਈ ਦਬਾਇਆ ਹੋਇਆ \"ਸਲੋਪੀ\" ਮਤਲਬ ਵਿੰਡੋ "
-"ਫੋਕਸ ਹੁੰਦੀਆਂ ਹਨ "
-"ਜਦੋਂ ਮਾਊਸ ਉਹਨਾਂ ਵਿੱਚ ਪਰਵੇਸ਼ ਕਰਦਾ ਹੈ, \"ਮਾਊਸ\" ਮਤਲਬ ਵਿੰਡੋ ਫੋਕਸ ਹੁੰਦੀਆਂ ਹਨ ਜਦੋਂ "
-"ਮਾਊਸ ਉਹਨਾਂ ਵਿੱਚ "
-"ਪਰਵੇਸ਼ ਕਰਦਾ ਹੈ ਅਤੇ ਬਿਨ-ਫੋਕਸ ਹੁੰਦੀਆਂ ਹਨ ਜਦੋਂ ਮਾਊਸ ਝਰੋਖਾ ਛੱਡ ਜਾਂਦਾ ਹੈ।"
-
-#: ../src/metacity.schemas.in.in.h:43
-msgid "The window screenshot command"
-msgstr "ਵਿੰਡੋ ਸਕਰੀਨ-ਸ਼ਾਟ ਕਮਾਂਡ"
-
-#: ../src/metacity.schemas.in.in.h:44
-msgid ""
-"This option determines the effects of double-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"ਇਹ ਚੋਣ ਟਾਇਟਲ-ਬਾਰ ਉੱਤੇ ਦੋ ਵਾਰ ਦਬਾਉ ਦਾ ਪ੍ਰਭਾਵ ਨਿਰਧਾਰਿਤ ਕਰਦੀ ਹੈ। ਮੌਜੂਦ ਯੋਗ ਚੋਣਾਂ "
-"ਹਨ  "
-"'toggle_shade (ਰੰਗਤ_ਬਦਲੋ)', ਜਿਹੜੀ ਵਿੰਡੋ ਨੂੰ ਰੰਗਤ/ਬਿਨਾਂ-ਰੰਗਤ ਕਰਦੀ ਹੈ, ਅਤੇ "
-"'toggle_maximize (ਅਧਿਕਤਮ ਬਦਲੋ)' ਜਿਹੜੀ ਵਿੰਡੋ ਨੂੰ maximize/unmaximize "
-"(ਅਧਿਕਤਮ/ਨਾ-"
-"ਅਧਿਕਤਮ) ਕਰਦੀ ਹੈ, 'toggle_maximize_horizontally' ਅਤੇ "
-"'toggle_maximize_vertically' ਜੋ ਵਿੰਡੋ ਨੂੰ ਉਸ ਦਿਸ਼ਾ ਵਿੱਚ ਵੱਧੋ-ਵੱਧ/ਅਣ-ਵੱਧੋ-ਵੱਧ "
-"ਕਰਦੀ "
-"ਹੈ,'ਅਪਲੀਕਰਨ', ਜੋ ਕਿ ਵਿੰਢੋ ਨੂੰ ਅਪਲੀਕਰਨ ਕਰਦੀ ਹੈ, ਅਤੇ 'ਕੋਈ ਨਹੀਂ' ਕੁਝ ਨਹੀਂ ਕਰੇਗਾ, "
-"'ਮੇਨੂ' ਵਿੰਡੋ ਮੇਨੂ "
-"ਵੇਖਾਏਗਾ, 'ਸ਼ੇਡ' ਵਿੰਡੋ ਰੋਲ ਕਰੇਗਾ, ਅਤੇ 'ਹੇਠਾਂ' ਵਿੰਡੋ ਨੂੰ ਹੋਰ ਵਿੰਡੋ ਹੇਠ ਭੇਜੇਗਾ।"
-
-#: ../src/metacity.schemas.in.in.h:45
-msgid ""
-"This option determines the effects of middle-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"ਇਹ ਚੋਣ ਟਾਇਟਲ-ਬਾਰ ਉੱਤੇ ਮਿਡਲ-ਕਲਿੱਕ ਦਬਾਉ ਦਾ ਪ੍ਰਭਾਵ ਪਛਾਣਦੀ ਹੈ। ਮੌਜੂਦ ਯੋਗ ਚੋਣਾਂ ਹਨ "
-" "
-"'toggle_shade (ਰੰਗਤ_ਬਦਲੋ)', ਜਿਹੜੀ ਵਿੰਡੋ ਨੂੰ ਰੰਗਤ/ਬਿਨਾਂ-ਰੰਗਤ ਕਰਦੀ ਹੈ, ਅਤੇ "
-"'toggle_maximize (ਅਧਿਕਤਮ ਬਦਲੋ)' ਜਿਹੜੀ ਵਿੰਡੋ ਨੂੰ maximize/unmaximize "
-"(ਅਧਿਕਤਮ/ਨਾ-"
-"ਅਧਿਕਤਮ) ਕਰਦੀ ਹੈ, 'toggle_maximize_horizontally' ਅਤੇ "
-"'toggle_maximize_vertically' ਜੋ ਵਿੰਡੋ ਨੂੰ ਉਸ ਦਿਸ਼ਾ ਵਿੱਚ ਵੱਧੋ-ਵੱਧ/ਅਣ-ਵੱਧੋ-ਵੱਧ "
-"ਕਰਦੀ "
-"ਹੈ,'ਅਪਲੀਕਰਨ', ਜੋ ਕਿ ਵਿੰਢੋ ਨੂੰ ਅਪਲੀਕਰਨ ਕਰਦੀ ਹੈ, ਅਤੇ 'ਕੋਈ ਨਹੀਂ' ਕੁਝ ਨਹੀਂ ਕਰੇਗਾ, "
-"'ਮੇਨੂ' ਵਿੰਡੋ ਮੇਨੂ "
-"ਵੇਖਾਏਗਾ, 'ਸ਼ੇਡ' ਵਿੰਡੋ ਰੋਲ ਕਰੇਗਾ, ਅਤੇ 'ਹੇਠਾਂ' ਵਿੰਡੋ ਨੂੰ ਹੋਰ ਵਿੰਡੋ ਹੇਠ ਭੇਜੇਗਾ।"
-
-#: ../src/metacity.schemas.in.in.h:46
-msgid ""
-"This option determines the effects of right-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"ਇਹ ਚੋਣ ਟਾਇਟਲ-ਬਾਰ ਉੱਤੇ ਸੱਜਾ-ਕਲਿੱਕ ਦਬਾਉ ਦਾ ਪ੍ਰਭਾਵ ਪਛਾਣਦੀ ਹੈ। ਮੌਜੂਦ ਯੋਗ ਚੋਣਾਂ ਹਨ "
-" "
-"'toggle_shade (ਰੰਗਤ_ਬਦਲੋ)', ਜਿਹੜੀ ਵਿੰਡੋ ਨੂੰ ਰੰਗਤ/ਬਿਨਾਂ-ਰੰਗਤ ਕਰਦੀ ਹੈ, ਅਤੇ "
-"'toggle_maximize (ਅਧਿਕਤਮ ਬਦਲੋ)' ਜਿਹੜੀ ਵਿੰਡੋ ਨੂੰ maximize/unmaximize "
-"(ਅਧਿਕਤਮ/ਨਾ-"
-"ਅਧਿਕਤਮ) ਕਰਦੀ ਹੈ, 'toggle_maximize_horizontally' ਅਤੇ "
-"'toggle_maximize_vertically' ਜੋ ਵਿੰਡੋ ਨੂੰ ਉਸ ਦਿਸ਼ਾ ਵਿੱਚ ਵੱਧੋ-ਵੱਧ/ਅਣ-ਵੱਧੋ-ਵੱਧ "
-"ਕਰਦੀ "
-"ਹੈ,'ਅਪਲੀਕਰਨ', ਜੋ ਕਿ ਵਿੰਢੋ ਨੂੰ ਅਪਲੀਕਰਨ ਕਰਦੀ ਹੈ, ਅਤੇ 'ਕੋਈ ਨਹੀਂ' ਕੁਝ ਨਹੀਂ ਕਰੇਗਾ, "
-"'ਮੇਨੂ' ਵਿੰਡੋ ਮੇਨੂ "
-"ਵੇਖਾਏਗਾ, 'ਸ਼ੇਡ' ਵਿੰਡੋ ਰੋਲ ਕਰੇਗਾ, ਅਤੇ 'ਹੇਠਾਂ' ਵਿੰਡੋ ਨੂੰ ਹੋਰ ਵਿੰਡੋ ਹੇਠ ਭੇਜੇਗਾ।"
-
-#: ../src/metacity.schemas.in.in.h:47
-msgid ""
-"This option provides additional control over how newly created windows get "
-"focus. It has two possible values; \"smart\" applies the user's normal focus "
-"mode, and \"strict\" results in windows started from a terminal not being "
-"given focus."
-msgstr ""
-"ਇਹ ਚੋਣ ਵੱਧ ਕੰਟਰੋਲ ਦਿੰਦੀ ਹੈ ਕਿ ਨਵਾਂ ਬਣਾਈ ਵਿੰਡੋ ਕਿਵੇਂ ਫੋਕਸ ਲਵੇ। ਦੋ ਸੰਭਵ ਮੁੱਲ "
-"ਹਨ; \"ਸਮਾਰਟ\" "
-"ਸਧਾਰਨ ਯੂਜ਼ਰ ਫੋਕਸ ਢੰਗ ਲਾਗੂ ਕਰਦਾ ਹੈ ਅਤੇ \"ਸਖਤ\" ਨਤੀਜੇ ਵਜੋਂ ਇੱਕ ਟਰਮੀਨਲ ਤੋਂ ਚਾਲੂ "
-"ਹੋਏ ਵਿੰਡੋ ਨੂੰ ਫੋਕਸ "
-"ਨਹੀਂ ਦਿੰਦਾ ਹੈ।"
-
-#: ../src/metacity.schemas.in.in.h:48
-msgid ""
-"Turns on a visual indication when an application or the system issues a "
-"'bell' or 'beep'; useful for the hard-of-hearing and for use in noisy "
-"environments."
-msgstr ""
-"ਦਰਿਸ਼ੀ ਸੰਕੇਤ ਨੂੰ ਯੋਗ ਕਰੋ ਜਦੋਂ ਇੱਕ ਕਾਰਜ ਜਾਂ ਸਿਸਟਮ 'ਘੰਟੀ' ਜਾਂ 'ਬੀਪ' ਦਿੰਦਾ ਹੈ; "
-"ਸੁਣਨ ਦੀ ਮੁਸ਼ਕਿਲ ਲਈ "
-"ਯੂਜ਼ਰ ਅਤੇ ਰੌਲੇ-ਰੱਪੇ ਵਾਲੇ ਮਾਹੌਲ ਵਿੱਚ ਵਰਤਣ ਲਈ, ਜਾਂ ਜਦੋਂ 'ਆਵਾਜ਼ੀ ਘੰਟੀ' ਬੰਦ ਹੋਵੇ।"
-
-#: ../src/metacity.schemas.in.in.h:49
-msgid "Use standard system font in window titles"
-msgstr "ਵਿੰਡੋ ਟਾਇਟਲਾਂ ਵਿੱਚ ਸਟੈਂਡਰਡ ਫੋਟ ਵਰਤੋਂ"
-
-#: ../src/metacity.schemas.in.in.h:50
-msgid "Visual Bell Type"
-msgstr "ਦਿੱਖ ਘੰਟੀ ਕਿਸਮ"
-
-#: ../src/metacity.schemas.in.in.h:51
-msgid "Whether raising should be a side-effect of other user interactions"
-msgstr "ਜਦੋਂ ਵਧਾਇਆ ਜਾਵੇਗਾ ਤਾਂ ਹੋਰ ਯੂਜ਼ਰ ਦਖਲਾਂ ਉੱਤੇ ਗਲਤ ਪਰਭਾਵ ਪਵੇਗਾ"
-
-#: ../src/metacity.schemas.in.in.h:52
-msgid "Whether to resize with the right button"
-msgstr "ਕੀ ਸੱਜੇ ਬਟਨ ਨਾਲ ਮੁੜ-ਸਾਈਜ਼ ਕਰਨਾ ਹੈ"
-
-#: ../src/metacity.schemas.in.in.h:53
-msgid "Window focus mode"
-msgstr "ਵਿੰਡੋ ਫੋਕਸ ਰੂਪ"
-
-#: ../src/metacity.schemas.in.in.h:54
-msgid "Window title font"
-msgstr "ਝਰੋਖਾ ਟਾਇਟਲ ਫੋਟ"
 
 #: ../src/tools/metacity-message.c:150
 #, c-format
 msgid "Usage: %s\n"
 msgstr "ਵਰਤੋਂ: %s\n"
 
-#: ../src/ui/frames.c:1120
+#: ../src/ui/frames.c:1114
 msgid "Close Window"
 msgstr "ਵਿੰਡੋ ਬੰਦ ਕਰੋ"
 
-#: ../src/ui/frames.c:1123
+#: ../src/ui/frames.c:1117
 msgid "Window Menu"
 msgstr "ਵਿੰਡੋ ਮੇਨੂ"
 
-#: ../src/ui/frames.c:1126
+#: ../src/ui/frames.c:1120
 msgid "Minimize Window"
 msgstr "ਵਿੰਡੋ ਅਲਪੀਕਰਨ ਕਰੋ"
 
-#: ../src/ui/frames.c:1129
+#: ../src/ui/frames.c:1123
 msgid "Maximize Window"
 msgstr "ਵਿੰਡੋ ਅਧਿਕਤਮ ਕਰੋ"
 
-#: ../src/ui/frames.c:1132
+#: ../src/ui/frames.c:1126
 msgid "Restore Window"
 msgstr "ਵਿੰਡੋ ਮੁੜ-ਸਟੋਰ ਕਰੋ"
 
-#: ../src/ui/frames.c:1135
+#: ../src/ui/frames.c:1129
 msgid "Roll Up Window"
 msgstr "ਵਿੰਡੋ ਸਮੇਟੋ"
 
-#: ../src/ui/frames.c:1138
+#: ../src/ui/frames.c:1132
 msgid "Unroll Window"
 msgstr "ਵਿੰਡੋ ਫੈਲਾਓ"
 
-#: ../src/ui/frames.c:1141
+#: ../src/ui/frames.c:1135
 msgid "Keep Window On Top"
 msgstr "ਵਿੰਡੋ ਉੱਤੇ ਰੱਖੋ"
 
-#: ../src/ui/frames.c:1144
+#: ../src/ui/frames.c:1138
 msgid "Remove Window From Top"
 msgstr "ਵਿੰਡੋ ਉੱਤੇ ਤੋਂ ਹਟਾਓ"
 
-#: ../src/ui/frames.c:1147
+#: ../src/ui/frames.c:1141
 msgid "Always On Visible Workspace"
 msgstr "ਹਮੇਸ਼ਾ ਉਪਲੱਬਧ ਵਰਕਸਪੇਸ 'ਚ"
 
-#: ../src/ui/frames.c:1150
+#: ../src/ui/frames.c:1144
 msgid "Put Window On Only One Workspace"
 msgstr "ਵਿੰਡੋ ਨੂੰ ਸਿਰਫ਼ ਇੱਕ ਵਰਕਸਪੇਸ ਉੱਤੇ ਰੱਖੋ"
 
@@ -1477,22 +753,22 @@ msgstr "ਵਰਕਸਪੇਸ ਵਿੱਚ ਹੇਠਾਂ ਲੈ ਜਾਓ(_D)"
 msgid "_Close"
 msgstr "ਬੰਦ ਕਰੋ(_C)"
 
-#: ../src/ui/menu.c:203
+#: ../src/ui/menu.c:205
 #, c-format
 msgid "Workspace %d%n"
 msgstr "ਵਰਕਸਪੇਸ %d%n"
 
-#: ../src/ui/menu.c:213
+#: ../src/ui/menu.c:215
 #, c-format
 msgid "Workspace 1_0"
 msgstr "ਵਰਕਸਪੇਸ 1_0"
 
-#: ../src/ui/menu.c:215
+#: ../src/ui/menu.c:217
 #, c-format
 msgid "Workspace %s%d"
 msgstr "ਵਰਕਸਪੇਸ %s%d"
 
-#: ../src/ui/menu.c:395
+#: ../src/ui/menu.c:398
 msgid "Move to Another _Workspace"
 msgstr "ਹੋਰ ਵਰਕਸਪੇਸ ਉੱਤੇ ਭੇਜੋ(_W)"
 
@@ -1501,7 +777,7 @@ msgstr "ਹੋਰ ਵਰਕਸਪੇਸ ਉੱਤੇ ਭੇਜੋ(_W)"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:104
+#: ../src/ui/metaaccellabel.c:80
 msgid "Shift"
 msgstr "Shift"
 
@@ -1510,7 +786,7 @@ msgstr "Shift"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:110
+#: ../src/ui/metaaccellabel.c:86
 msgid "Ctrl"
 msgstr "Ctrl"
 
@@ -1519,7 +795,7 @@ msgstr "Ctrl"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:116
+#: ../src/ui/metaaccellabel.c:92
 msgid "Alt"
 msgstr "Alt"
 
@@ -1528,7 +804,7 @@ msgstr "Alt"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:122
+#: ../src/ui/metaaccellabel.c:98
 msgid "Meta"
 msgstr "Meta"
 
@@ -1537,7 +813,7 @@ msgstr "Meta"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:128
+#: ../src/ui/metaaccellabel.c:104
 msgid "Super"
 msgstr "Super"
 
@@ -1546,7 +822,7 @@ msgstr "Super"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:134
+#: ../src/ui/metaaccellabel.c:110
 msgid "Hyper"
 msgstr "Hyper"
 
@@ -1555,7 +831,7 @@ msgstr "Hyper"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:140
+#: ../src/ui/metaaccellabel.c:116
 msgid "Mod2"
 msgstr "ਮਾਡ2"
 
@@ -1564,7 +840,7 @@ msgstr "ਮਾਡ2"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:146
+#: ../src/ui/metaaccellabel.c:122
 msgid "Mod3"
 msgstr "ਮਾਡ3"
 
@@ -1573,7 +849,7 @@ msgstr "ਮਾਡ3"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:152
+#: ../src/ui/metaaccellabel.c:128
 msgid "Mod4"
 msgstr "ਮਾਡ4"
 
@@ -1582,7 +858,7 @@ msgstr "ਮਾਡ4"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:158
+#: ../src/ui/metaaccellabel.c:134
 msgid "Mod5"
 msgstr "ਮਾਡ5"
 
@@ -1928,58 +1204,58 @@ msgid ""
 msgstr ""
 "ਅਯੋਗ ਟਾਇਟਲ ਪੈਮਾਨਾ \"%s\" (xx-ਛੋਟਾ,x-ਛੋਟਾ,ਛੋਟਾ,ਮੱਧਮ,ਵੱਡਾ,x-ਵੱਡਾ,xx-ਵੱਡਾ)\n"
 
-#: ../src/ui/theme-parser.c:936 ../src/ui/theme-parser.c:999
-#: ../src/ui/theme-parser.c:1033 ../src/ui/theme-parser.c:1136
+#: ../src/ui/theme-parser.c:947 ../src/ui/theme-parser.c:1010
+#: ../src/ui/theme-parser.c:1044 ../src/ui/theme-parser.c:1147
 #, c-format
 msgid "<%s> name \"%s\" used a second time"
 msgstr "<%s> ਨਾਂ \"%s\" ਦੂਜੀ ਵਾਰ ਵਰਤਿਆ ਗਿਆ"
 
-#: ../src/ui/theme-parser.c:948 ../src/ui/theme-parser.c:1045
-#: ../src/ui/theme-parser.c:1148
+#: ../src/ui/theme-parser.c:959 ../src/ui/theme-parser.c:1056
+#: ../src/ui/theme-parser.c:1159
 #, c-format
 msgid "<%s> parent \"%s\" has not been defined"
 msgstr "<%s> ਮੂਲ \"%s\" ਪਰਭਾਸ਼ਿਤ ਨਹੀਂ ਕੀਤਾ ਗਿਆ"
 
-#: ../src/ui/theme-parser.c:1058
+#: ../src/ui/theme-parser.c:1069
 #, c-format
 msgid "<%s> geometry \"%s\" has not been defined"
 msgstr "<%s> ਜੁਮੈਟਰੀ \"%s\" ਪਰਭਾਸ਼ਿਤ ਨਹੀਂ ਕੀਤੀ ਗਈ"
 
-#: ../src/ui/theme-parser.c:1071
+#: ../src/ui/theme-parser.c:1082
 #, c-format
 msgid "<%s> must specify either a geometry or a parent that has a geometry"
 msgstr "<%s> ਜੁਮੈਟਰੀ ਜਾਂ ਜੁਮੈਟਰੀ ਵਾਲੇ ਮੂਲ ਨੂੰ ਦੇਣਾ ਲਾਜ਼ਮੀ ਹੈ"
 
-#: ../src/ui/theme-parser.c:1113
+#: ../src/ui/theme-parser.c:1124
 msgid "You must specify a background for an alpha value to be meaningful"
 msgstr "ਤੁਹਾਨੂੰ ਇੱਕ ਐਲਫ਼ਾ ਮੁੱਲ ਲਈ ਇੱਕ ਬੈਕਗਰਾਊਂਡ ਮੁੱਲ ਦਿਓ, ਜੋ ਕਿ ਮਤਲਬ ਸਿਰ ਹੋਵੇ"
 
-#: ../src/ui/theme-parser.c:1180
+#: ../src/ui/theme-parser.c:1191
 #, c-format
 msgid "Unknown type \"%s\" on <%s> element"
 msgstr "ਅਣਜਾਣ ਕਿਸਮ \"%s\" ਉੱਤੇ <%s> ਐਲੀਮੈਂਟ"
 
-#: ../src/ui/theme-parser.c:1191
+#: ../src/ui/theme-parser.c:1202
 #, c-format
 msgid "Unknown style_set \"%s\" on <%s> element"
 msgstr "ਅਣਜਾਣ ਸਟਾਇਲ_ਸੈੱਟ \"%s\" <%s> ਐਲੀਮੈਂਟ ਉੱਤੇ"
 
-#: ../src/ui/theme-parser.c:1199
+#: ../src/ui/theme-parser.c:1210
 #, c-format
 msgid "Window type \"%s\" has already been assigned a style set"
 msgstr "ਵਿੰਡੋ ਕਿਸਮ \"%s\" ਵਾਸਤੇ ਪਹਿਲਾਂ ਹੀ ਇੱਕ ਸਟਾਇਲ ਸੈੱਟ ਦਿੱਤਾ ਹੈ"
 
-#: ../src/ui/theme-parser.c:1229 ../src/ui/theme-parser.c:1293
-#: ../src/ui/theme-parser.c:1519 ../src/ui/theme-parser.c:2740
-#: ../src/ui/theme-parser.c:2786 ../src/ui/theme-parser.c:2934
-#: ../src/ui/theme-parser.c:3126 ../src/ui/theme-parser.c:3164
-#: ../src/ui/theme-parser.c:3202 ../src/ui/theme-parser.c:3240
+#: ../src/ui/theme-parser.c:1240 ../src/ui/theme-parser.c:1304
+#: ../src/ui/theme-parser.c:1530 ../src/ui/theme-parser.c:2751
+#: ../src/ui/theme-parser.c:2797 ../src/ui/theme-parser.c:2945
+#: ../src/ui/theme-parser.c:3137 ../src/ui/theme-parser.c:3175
+#: ../src/ui/theme-parser.c:3213 ../src/ui/theme-parser.c:3251
 #, c-format
 msgid "Element <%s> is not allowed below <%s>"
 msgstr "<%s> ਐਲੀਮੈਂਟ ਨੂੰ <%s> ਹੇਠਾਂ ਇਜਾਜ਼ਤ ਨਹੀਂ"
 
-#: ../src/ui/theme-parser.c:1343 ../src/ui/theme-parser.c:1357
-#: ../src/ui/theme-parser.c:1402
+#: ../src/ui/theme-parser.c:1354 ../src/ui/theme-parser.c:1368
+#: ../src/ui/theme-parser.c:1413
 msgid ""
 "Cannot specify both \"button_width\"/\"button_height\" and \"aspect_ratio\" "
 "for buttons"
@@ -1988,123 +1264,123 @@ msgstr ""
 "ਨਹੀਂ "
 "ਜਾ ਸਕਦਾ ਹੈ"
 
-#: ../src/ui/theme-parser.c:1366
+#: ../src/ui/theme-parser.c:1377
 #, c-format
 msgid "Distance \"%s\" is unknown"
 msgstr "ਫਾਸਲਾ \"%s\" ਅਣਜਾਣ ਹੈ"
 
-#: ../src/ui/theme-parser.c:1411
+#: ../src/ui/theme-parser.c:1422
 #, c-format
 msgid "Aspect ratio \"%s\" is unknown"
 msgstr "ਅਕਾਰ ਅਨੁਪਾਤ \"%s\" ਅਣਜਾਣ ਹੈ"
 
-#: ../src/ui/theme-parser.c:1473
+#: ../src/ui/theme-parser.c:1484
 #, c-format
 msgid "Border \"%s\" is unknown"
 msgstr "ਬਾਰਡਰ \"%s\" ਅਣਜਾਣ ਹੈ"
 
-#: ../src/ui/theme-parser.c:1784
+#: ../src/ui/theme-parser.c:1795
 #, c-format
 msgid "No \"start_angle\" or \"from\" attribute on element <%s>"
 msgstr "<%s> ਐਲੀਮੈਂਟ ਉੱਤੇ ਕੋਈ \"ਸ਼ੁਰੂ_ਕੋਣ\" ਜਾਂ \"ਇਸ ਤੋਂ\"ਗੁਣ ਨਹੀਂ ਹੈ ।"
 
-#: ../src/ui/theme-parser.c:1791
+#: ../src/ui/theme-parser.c:1802
 #, c-format
 msgid "No \"extent_angle\" or \"to\" attribute on element <%s>"
 msgstr "<%s> ਐਲਿਮੰਟ ਉੱਤੇ ਕੋਈ \"ਸੀਮਾਂ_ਕੋਣ\" ਜਾਂ \"ਵੱਲ\" ਗੁਣ ਨਹੀਂ ਹੈ।"
 
-#: ../src/ui/theme-parser.c:2031
+#: ../src/ui/theme-parser.c:2042
 #, c-format
 msgid "Did not understand value \"%s\" for type of gradient"
 msgstr "ਢਾਲ ਦੇ ਅਨੁਪਾਤ ਦੀ ਕਿਸਮ ਵਾਸਤੇ ਕੀਮਤ \"%s\" ਨਹੀਂ ਸਮਝਿਆ ਹੈ।"
 
-#: ../src/ui/theme-parser.c:2109 ../src/ui/theme-parser.c:2484
+#: ../src/ui/theme-parser.c:2120 ../src/ui/theme-parser.c:2495
 #, c-format
 msgid "Did not understand fill type \"%s\" for <%s> element"
 msgstr "ਐਲੀਮੈਂਟ <%s> ਵਾਸਤੇ ਭਰਨ ਕਿਸਮ \"%s\" ਨਹੀਂ ਸਮਝਿਆ ਹੈ।"
 
-#: ../src/ui/theme-parser.c:2276 ../src/ui/theme-parser.c:2359
-#: ../src/ui/theme-parser.c:2422
+#: ../src/ui/theme-parser.c:2287 ../src/ui/theme-parser.c:2370
+#: ../src/ui/theme-parser.c:2433
 #, c-format
 msgid "Did not understand state \"%s\" for <%s> element"
 msgstr "ਐਲੀਮੈਂਟ <%s> ਲਈ ਸਥਿਤੀ \"%s\" ਨਹੀਂ ਸਮਝਿਆ ਹੈ।"
 
-#: ../src/ui/theme-parser.c:2286 ../src/ui/theme-parser.c:2369
+#: ../src/ui/theme-parser.c:2297 ../src/ui/theme-parser.c:2380
 #, c-format
 msgid "Did not understand shadow \"%s\" for <%s> element"
 msgstr "ਐਲੀਮੈਂਟ <%s> ਲਈ ਪਰਛਾਂਵਾਂ \"%s\" ਨਹੀਂ ਸਮਝਿਆ ਹੈ।"
 
-#: ../src/ui/theme-parser.c:2296
+#: ../src/ui/theme-parser.c:2307
 #, c-format
 msgid "Did not understand arrow \"%s\" for <%s> element"
 msgstr "ਐਲੀਮੈਂਟ <%s> ਲਈ ਤੀਰ \"%s\" ਨਹੀਂ ਸਮਝਿਆ ਹੈ।"
 
-#: ../src/ui/theme-parser.c:2596 ../src/ui/theme-parser.c:2692
+#: ../src/ui/theme-parser.c:2607 ../src/ui/theme-parser.c:2703
 #, c-format
 msgid "No <draw_ops> called \"%s\" has been defined"
 msgstr "ਕੋਈ <draw_ops> \"%s\" ਪਰਭਾਸ਼ਿਤ ਨਹੀਂ ਕੀਤੀ ਹੈ।"
 
-#: ../src/ui/theme-parser.c:2608 ../src/ui/theme-parser.c:2704
+#: ../src/ui/theme-parser.c:2619 ../src/ui/theme-parser.c:2715
 #, c-format
 msgid "Including draw_ops \"%s\" here would create a circular reference"
 msgstr "draw_ops ਦੇ ਨਾਲ \"%s\" ਇੱਥੇ ਗੋਲਾਕਾਰ ਸੰਬੰਧ ਬਣਾਏਗਾ ਹੈ।"
 
-#: ../src/ui/theme-parser.c:2819
+#: ../src/ui/theme-parser.c:2830
 #, c-format
 msgid "Unknown position \"%s\" for frame piece"
 msgstr "ਫਰੇਮ ਟੁਕੜੇ ਲਈ ਅਣਜਾਣੀ ਸਥਿਤੀ \"%s\" ਹੈ।"
 
-#: ../src/ui/theme-parser.c:2827
+#: ../src/ui/theme-parser.c:2838
 #, c-format
 msgid "Frame style already has a piece at position %s"
 msgstr "ਫਰੇਮ ਸਟਾਇਲ ਵਿੱਚ ਪਹਿਲਾਂ ਹੀ %s ਸਥਿਤੀ ਉੱਤੇ ਇੱਕ ਟੁਕੜਾ ਹੈ।"
 
-#: ../src/ui/theme-parser.c:2844 ../src/ui/theme-parser.c:2919
+#: ../src/ui/theme-parser.c:2855 ../src/ui/theme-parser.c:2930
 #, c-format
 msgid "No <draw_ops> with the name \"%s\" has been defined"
 msgstr "\"%s\" ਨਾਂ ਨਾਲ <draw_ops> ਪਰਭਾਸ਼ਿਤ ਨਹੀਂ ਕੀਤੀਆਂ"
 
-#: ../src/ui/theme-parser.c:2873
+#: ../src/ui/theme-parser.c:2884
 #, c-format
 msgid "Unknown function \"%s\" for button"
 msgstr "ਬਟਨ ਲਈ ਅਣਜਾਣ ਕੰਮ \"%s\" ਹੈ।"
 
-#: ../src/ui/theme-parser.c:2882
+#: ../src/ui/theme-parser.c:2893
 #, c-format
 msgid "Button function \"%s\" does not exist in this version (%d, need %d)"
 msgstr "ਬਟਨ ਫੰਕਸ਼ਨ \"%s\" ਇਹ ਵਰਜਨ 'ਚ ਮੌਜੂਦ ਨਹੀਂ ਹੈ (%d, %d ਲੋੜੀਦਾ ਹੈ)"
 
-#: ../src/ui/theme-parser.c:2894
+#: ../src/ui/theme-parser.c:2905
 #, c-format
 msgid "Unknown state \"%s\" for button"
 msgstr "ਬਟਨ ਲਈ ਅਣਜਾਣ ਹਾਲਤ \"%s\"  ਹੈ।"
 
-#: ../src/ui/theme-parser.c:2902
+#: ../src/ui/theme-parser.c:2913
 #, c-format
 msgid "Frame style already has a button for function %s state %s"
 msgstr "ਫਰੇਮ ਸਟਾਇਲ ਵਿੱਚ ਪਹਿਲਾਂ ਹੀ ਕੰਮ %s ਹਾਲਤ %s ਬਟਨ ਹੈ।"
 
-#: ../src/ui/theme-parser.c:2973
+#: ../src/ui/theme-parser.c:2984
 #, c-format
 msgid "\"%s\" is not a valid value for focus attribute"
 msgstr "ਫੋਕਸ ਗੁਣ ਲਈ \"%s\" ਯੋਗ ਕੀਮਤ ਨਹੀਂ ਹੈ।"
 
-#: ../src/ui/theme-parser.c:2982
+#: ../src/ui/theme-parser.c:2993
 #, c-format
 msgid "\"%s\" is not a valid value for state attribute"
 msgstr "ਹਾਲਤ ਗੁਣ ਲਈ \"%s\" ਯੋਗ ਕੀਮਤ ਨਹੀਂ ਹੈ।"
 
-#: ../src/ui/theme-parser.c:2992
+#: ../src/ui/theme-parser.c:3003
 #, c-format
 msgid "A style called \"%s\" has not been defined"
 msgstr "ਇੱਕ ਸਟਾਇਲ \"%s\" ਪਰਭਾਸ਼ਿਤ ਨਹੀਂ ਕੀਤਾ ਹੈ।"
 
-#: ../src/ui/theme-parser.c:3013 ../src/ui/theme-parser.c:3036
+#: ../src/ui/theme-parser.c:3024 ../src/ui/theme-parser.c:3047
 #, c-format
 msgid "\"%s\" is not a valid value for resize attribute"
 msgstr "ਮੁੜ ਆਕਾਰ ਦਿਓ ਗੁਣ ਲਈ \"%s\" ਯੋਗ ਕੀਮਤ ਨਹੀਂ ਹੈ।"
 
-#: ../src/ui/theme-parser.c:3047
+#: ../src/ui/theme-parser.c:3058
 #, c-format
 msgid ""
 "Should not have \"resize\" attribute on <%s> element for maximized/shaded "
@@ -2112,24 +1388,24 @@ msgid ""
 msgstr ""
 "<%s> ਐਲਿਮੰਟ ਉੱਤੇ ਵੱਡਾ/ਰੰਗਤ ਹਾਲਤ ਲਈ \"ਮੁੜ ਆਕਾਰ ਦਿਓ\" ਗੁਣ ਨਹੀਂ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ।"
 
-#: ../src/ui/theme-parser.c:3061
+#: ../src/ui/theme-parser.c:3072
 #, c-format
 msgid ""
 "Should not have \"resize\" attribute on <%s> element for maximized states"
 msgstr ""
 "<%s> ਐਲੀਮੈਂਟ ਲਈ ਵੱਧ ਤੋਂ ਵੱਧ ਹਾਲਤਾਂ ਲਈ \"ਮੁੜ ਆਕਾਰ\" ਗੁਣ ਨਹੀਂ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ।"
 
-#: ../src/ui/theme-parser.c:3075 ../src/ui/theme-parser.c:3097
+#: ../src/ui/theme-parser.c:3086 ../src/ui/theme-parser.c:3108
 #, c-format
 msgid "Style has already been specified for state %s resize %s focus %s"
 msgstr "ਹਾਲਤ %s ਮੁੜ ਅਕਾਰ ਦਿਓ %s ਫੋਕਸ %s ਬਾਰੇ ਸਟਾਇਲ ਪਹਿਲਾਂ ਦਿੱਤਾ ਗਿਆ ਹੈ"
 
-#: ../src/ui/theme-parser.c:3086 ../src/ui/theme-parser.c:3108
+#: ../src/ui/theme-parser.c:3097 ../src/ui/theme-parser.c:3119
 #, c-format
 msgid "Style has already been specified for state %s focus %s"
 msgstr "ਹਾਲਤ %s ਫੋਕਸ %s ਬਾਰੇ ਸਟਾਇਲ ਪਹਿਲਾਂ ਦਿੱਤਾ ਹੈ"
 
-#: ../src/ui/theme-parser.c:3147
+#: ../src/ui/theme-parser.c:3158
 msgid ""
 "Can't have a two draw_ops for a <piece> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
@@ -2138,7 +1414,7 @@ msgstr ""
 "draw_ops> "
 "ਐਲੀਮੈਂਟ ਵੀ ਹੋ ਸਕਦੀ ਹੈ ਜਾਂ ਦੋ ਐਲੀਮੈਂਟ ਦਿੱਤੀਆਂ ਹੋ ਸਕਦੀਆਂ ਹਨ)"
 
-#: ../src/ui/theme-parser.c:3185
+#: ../src/ui/theme-parser.c:3196
 msgid ""
 "Can't have a two draw_ops for a <button> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
@@ -2147,7 +1423,7 @@ msgstr ""
 "draw_ops> "
 "ਐਲੀਮੈਂਟ ਵੀ ਦਿੱਤਾ ਹੈ, ਜਾਂ ਦੋ ਐਲੀਮੈਂਟ ਦਿੱਤੇ ਹਨ)"
 
-#: ../src/ui/theme-parser.c:3223
+#: ../src/ui/theme-parser.c:3234
 msgid ""
 "Can't have a two draw_ops for a <menu_icon> element (theme specified a "
 "draw_ops attribute and also a <draw_ops> element, or specified two elements)"
@@ -2156,23 +1432,23 @@ msgstr ""
 "ਅਤੇ "
 "<draw_ops> ਇਕਾਈਆਂ ਦਿੱਤੀਆਂ ਹਨ, ਜਾਂ ਦੋ ਇਕਾਈਆਂ ਦਿੱਤੀਆਂ ਹਨ)"
 
-#: ../src/ui/theme-parser.c:3271
+#: ../src/ui/theme-parser.c:3282
 #, c-format
 msgid "Outermost element in theme must be <metacity_theme> not <%s>"
 msgstr "ਥੀਮ ਵਿੱਚ ਸਭ ਤੋਂ ਬਾਹਰੀ ਐਲੀਮੈਂਟ <metacity_theme> ਹੋਵੇ <%s> ਨਹੀਂ"
 
-#: ../src/ui/theme-parser.c:3291
+#: ../src/ui/theme-parser.c:3302
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a name/author/date/description element"
 msgstr "<%s> ਐਲੀਮੈਂਟ ਨੂੰ ਨਾਂ/ਲੇਖਕ/ਮਿਤੀ/ਵੇਰਵਾ ਐਲੀਮੈਂਟ ਵਿੱਚ ਇਜਾਜ਼ਤ ਨਹੀਂ ਹੈ"
 
-#: ../src/ui/theme-parser.c:3296
+#: ../src/ui/theme-parser.c:3307
 #, c-format
 msgid "Element <%s> is not allowed inside a <constant> element"
 msgstr "<%s> ਐਲੀਮੈਂਟ ਨੂੰ <constant> ਐਲੀਮੈਂਟ ਵਿੱਚ ਇਜਾਜ਼ਤ ਨਹੀਂ ਹੈ"
 
-#: ../src/ui/theme-parser.c:3308
+#: ../src/ui/theme-parser.c:3319
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a distance/border/aspect_ratio element"
@@ -2180,186 +1456,205 @@ msgstr ""
 "<%s> ਐਲੀਮੈਂਟ ਨੂੰ ਫਾਸਲਾ/ਹਾਸ਼ੀਆ/ਅਕਾਰ ਅਨੁਪਾਤ(aspect_ratio) ਐਲੀਮੈਂਟ ਵਿੱਚ ਇਜਾਜ਼ਤ "
 "ਨਹੀਂ ਹੈ"
 
-#: ../src/ui/theme-parser.c:3330
+#: ../src/ui/theme-parser.c:3341
 #, c-format
 msgid "Element <%s> is not allowed inside a draw operation element"
 msgstr "<%s> ਐਲੀਮੈਂਟ ਨੂੰ ਉਲੀਕ ਕਿਰਿਆ ਐਲੀਮੈਂਟ ਵਿੱਚ ਇਜਾਜ਼ਤ ਨਹੀਂ ਹੈ"
 
-#: ../src/ui/theme-parser.c:3340 ../src/ui/theme-parser.c:3370
-#: ../src/ui/theme-parser.c:3375 ../src/ui/theme-parser.c:3380
+#: ../src/ui/theme-parser.c:3351 ../src/ui/theme-parser.c:3381
+#: ../src/ui/theme-parser.c:3386 ../src/ui/theme-parser.c:3391
 #, c-format
 msgid "Element <%s> is not allowed inside a <%s> element"
 msgstr "<%s> ਐਲੀਮੈਂਟ ਨੂੰ <%s> ਐਲੀਮੈਂਟ ਵਿੱਚ ਇਜਾਜ਼ਤ ਨਹੀਂ ਹੈ"
 
-#: ../src/ui/theme-parser.c:3602
+#: ../src/ui/theme-parser.c:3613
 msgid "No draw_ops provided for frame piece"
 msgstr "ਫਰੇਮ ਟੁਕੜੇ ਲਈ ਕੋਈ draw_ops ਨਹੀਂ ਦਿੱਤੀ ਗਈ"
 
-#: ../src/ui/theme-parser.c:3617
+#: ../src/ui/theme-parser.c:3628
 msgid "No draw_ops provided for button"
 msgstr "ਬਟਨ ਲਈ ਕੋਈ ਉਲੀਕ ਕਿਰਿਆ ਨਹੀ ਦਿੱਤੀ ਗਈ"
 
-#: ../src/ui/theme-parser.c:3669
+#: ../src/ui/theme-parser.c:3680
 #, c-format
 msgid "No text is allowed inside element <%s>"
 msgstr "<%s> ਐਲੀਮੈਂਟ ਵਿੱਚ ਕਿਸੇ ਪਾਠ ਨੂੰ ਇਜਾਜ਼ਤ ਨਹੀਂ"
 
-#: ../src/ui/theme-parser.c:3724 ../src/ui/theme-parser.c:3736
-#: ../src/ui/theme-parser.c:3748 ../src/ui/theme-parser.c:3760
-#: ../src/ui/theme-parser.c:3772
+#: ../src/ui/theme-parser.c:3735 ../src/ui/theme-parser.c:3747
+#: ../src/ui/theme-parser.c:3759 ../src/ui/theme-parser.c:3771
+#: ../src/ui/theme-parser.c:3783
 #, c-format
 msgid "<%s> specified twice for this theme"
 msgstr "ਇਸ ਥੀਮ ਲਈ <%s> ਦੋ ਵਾਰ ਦਿੱਤਾ ਗਿਆ"
 
-#: ../src/ui/theme-parser.c:4040
+#: ../src/ui/theme-parser.c:4051
 #, c-format
 msgid "Failed to find a valid file for theme %s\n"
 msgstr "ਥੀਮ %s ਲਈ ਇੱਕ ਢੁੱਕਵੀਂ ਫਾਇਲ ਲੱਭਣ ਲਈ ਫੇਲ੍ਹ\n"
 
-#: ../src/ui/theme-parser.c:4096
+#: ../src/ui/theme-parser.c:4107
 #, c-format
 msgid "Theme file %s did not contain a root <metacity_theme> element"
 msgstr "ਥੀਮ ਫਾਇਲ %s  root <metacity_theme> ਐਲੀਮੈਂਟ ਵਿੱਚ ਸ਼ਾਮਿਲ ਨਹੀਂ ਸੀ"
 
-#: ../src/ui/theme-viewer.c:75
-msgid "/_Windows"
-msgstr "/ਵਿੰਡੋ(_W)"
+#: ../src/ui/theme-viewer.c:99
+#| msgid "/_Windows"
+msgid "_Windows"
+msgstr "ਵਿੰਡੋ(_W)"
 
-#: ../src/ui/theme-viewer.c:76
-msgid "/Windows/tearoff"
-msgstr "/ਵਿੰਡੋ/ਝਟਕੇ ਨਾਲ ਵੱਖ"
+#: ../src/ui/theme-viewer.c:100
+#| msgid "Dialog Box"
+msgid "_Dialog"
+msgstr "ਡਾਈਲਾਗ(_D)"
 
-#: ../src/ui/theme-viewer.c:77
-msgid "/Windows/_Dialog"
-msgstr "/ਵਿੰਡੋ/ਡਾਈਲਾਗ(_D)"
+#: ../src/ui/theme-viewer.c:101
+#| msgid "Modal Dialog Box"
+msgid "_Modal dialog"
+msgstr "ਮਾਡਲ ਡਾਈਲਾਗ(_M)"
 
-#: ../src/ui/theme-viewer.c:78
-msgid "/Windows/_Modal dialog"
-msgstr "/ਵਿੰਡੋ/ਮਾਡਲ ਡਾਈਲਾਗ(_M)"
+#: ../src/ui/theme-viewer.c:102
+#| msgid "/Windows/_Utility"
+msgid "_Utility"
+msgstr "ਸਹੂਲਤ(_U)"
 
-#: ../src/ui/theme-viewer.c:79
-msgid "/Windows/_Utility"
-msgstr "/ਵਿੰਡੋ/ਸਹੂਲਤ(_U)"
+#: ../src/ui/theme-viewer.c:103
+#| msgid "/Windows/_Splashscreen"
+msgid "_Splashscreen"
+msgstr "ਸਵਾਗਤੀ ਸਕਰੀਨ(_S)"
 
-#: ../src/ui/theme-viewer.c:80
-msgid "/Windows/_Splashscreen"
-msgstr "/ਵਿੰਡੋ/ਸਵਾਗਤੀ ਸਕਰੀਨ(_S)"
+#: ../src/ui/theme-viewer.c:104
+#| msgid "/Windows/_Top dock"
+msgid "_Top dock"
+msgstr "ਉੱਤੇ ਡੌਕ(_T)"
 
-#: ../src/ui/theme-viewer.c:81
-msgid "/Windows/_Top dock"
-msgstr "/ਵਿੰਡੋ/ਉੱਤੇ ਡੌਕ(_T)"
+#: ../src/ui/theme-viewer.c:105
+#| msgid "/Windows/_Bottom dock"
+msgid "_Bottom dock"
+msgstr "ਹੇਠਾਂ ਡੌਕ(_B)"
 
-#: ../src/ui/theme-viewer.c:82
-msgid "/Windows/_Bottom dock"
-msgstr "/ਵਿੰਡੋ/ਹੇਠਾਂ ਡੌਕ(_B)"
+#: ../src/ui/theme-viewer.c:106
+#| msgid "/Windows/_Left dock"
+msgid "_Left dock"
+msgstr "ਖੱਬੇ ਡੌਕ(_L)"
 
-#: ../src/ui/theme-viewer.c:83
-msgid "/Windows/_Left dock"
-msgstr "/ਵਿੰਡੋ/ਖੱਬਾ ਡੌਕ(_L)"
+#: ../src/ui/theme-viewer.c:107
+#| msgid "/Windows/_Right dock"
+msgid "_Right dock"
+msgstr "ਸੱਜੇ ਡੌਕ(_R)"
 
-#: ../src/ui/theme-viewer.c:84
-msgid "/Windows/_Right dock"
-msgstr "/ਵਿੰਡੋ/ਸੱਜਾ ਡੌਕ(_R)"
+#: ../src/ui/theme-viewer.c:108
+#| msgid "/Windows/_All docks"
+msgid "_All docks"
+msgstr "ਸਭ ਡੌਕ(_A)"
 
-#: ../src/ui/theme-viewer.c:85
-msgid "/Windows/_All docks"
-msgstr "/ਵਿੰਡੋ/ਸਾਰੇ ਡੌਕ(_A)"
+#: ../src/ui/theme-viewer.c:109
+#| msgid "Desktop"
+msgid "Des_ktop"
+msgstr "ਡੈਸਕਟਾਪ(_k)"
 
-#: ../src/ui/theme-viewer.c:86
-msgid "/Windows/Des_ktop"
-msgstr "/ਵਿੰਡੋ/ਡੈਸਕਟਾਪ(_k)"
+#: ../src/ui/theme-viewer.c:115
+msgid "Open another one of these windows"
+msgstr "ਇਹਨਾਂ ਵਿੰਡੋਜ਼ ਵਿੱਚੋਂ ਕੋਈ ਹੋਰ ਖੋਲ੍ਹੋ"
 
-#: ../src/ui/theme-viewer.c:244
+#: ../src/ui/theme-viewer.c:117
+msgid "This is a demo button with an 'open' icon"
+msgstr "ਇਹ 'ਖੋਲ੍ਹੋ' ਆਈਕਾਨ ਨਾਲ ਡੈਮੋ ਬਟਨ ਹੈ"
+
+#: ../src/ui/theme-viewer.c:119
+msgid "This is a demo button with a 'quit' icon"
+msgstr "ਇਹ 'ਬਾਹਰ ਜਾਓ' ਆਈਕਾਨ ਨਾਲ ਡੈਮੋ ਬਟਨ ਹੈ"
+
+#: ../src/ui/theme-viewer.c:253
 msgid "This is a sample message in a sample dialog"
 msgstr "ਇਹ ਸੈਂਪਲ ਡਾਈਲਾਗ ਵਿੱਚ ਸੈਂਪਲ ਸੁਨੇਹਾ ਹੈ"
 
-#: ../src/ui/theme-viewer.c:327
+#: ../src/ui/theme-viewer.c:336
 #, c-format
 msgid "Fake menu item %d\n"
 msgstr "ਨਕਲੀ ਮੇਨੂ ਆਈਟਮ %d\n"
 
-#: ../src/ui/theme-viewer.c:361
+#: ../src/ui/theme-viewer.c:370
 msgid "Border-only window"
 msgstr "ਕੇਵਲ ਬਾਰਡਰ ਵਿੰਡੋ"
 
-#: ../src/ui/theme-viewer.c:363
+#: ../src/ui/theme-viewer.c:372
 msgid "Bar"
 msgstr "ਬਾਰ"
 
-#: ../src/ui/theme-viewer.c:380
+#: ../src/ui/theme-viewer.c:389
 msgid "Normal Application Window"
 msgstr "ਸਾਧਾਰਨ ਐਪਲੀਕੇਸ਼ਨ ਵਿੰਡੋ"
 
-#: ../src/ui/theme-viewer.c:384
+#: ../src/ui/theme-viewer.c:393
 msgid "Dialog Box"
 msgstr "ਡਾਈਲਾਗ ਡੱਬਾ"
 
-#: ../src/ui/theme-viewer.c:388
+#: ../src/ui/theme-viewer.c:397
 msgid "Modal Dialog Box"
 msgstr "ਮਾਡਲ ਡਾਈਲਾਗ ਡੱਬਾ"
 
-#: ../src/ui/theme-viewer.c:392
+#: ../src/ui/theme-viewer.c:401
 msgid "Utility Palette"
 msgstr "ਸਹੂਲਤ ਪਲੇਅਟ"
 
-#: ../src/ui/theme-viewer.c:396
+#: ../src/ui/theme-viewer.c:405
 msgid "Torn-off Menu"
 msgstr "ਮੇਨੂ ਵੱਖ ਕਰੋ"
 
-#: ../src/ui/theme-viewer.c:400
+#: ../src/ui/theme-viewer.c:409
 msgid "Border"
 msgstr "ਬਾਰਡਰ"
 
-#: ../src/ui/theme-viewer.c:728
+#: ../src/ui/theme-viewer.c:737
 #, c-format
 msgid "Button layout test %d"
 msgstr "ਬਟਨ ਲੇਆਉਟ ਟੈਸਟ %d"
 
-#: ../src/ui/theme-viewer.c:757
+#: ../src/ui/theme-viewer.c:766
 #, c-format
 msgid "%g milliseconds to draw one window frame"
 msgstr "ਇੱਕ ਵਿੰਡੋ ਫਰੇਮ ਉਲੀਕਣ ਲਈ %g ਮਿਲੀ ਸਕਿੰਟ"
 
-#: ../src/ui/theme-viewer.c:800
+#: ../src/ui/theme-viewer.c:810
 #, c-format
 msgid "Usage: metacity-theme-viewer [THEMENAME]\n"
 msgstr "ਵਰਤੋਂ: metacity-theme-viewer [THEMENAME]\n"
 
-#: ../src/ui/theme-viewer.c:807
+#: ../src/ui/theme-viewer.c:817
 #, c-format
 msgid "Error loading theme: %s\n"
 msgstr "ਥੀਮ ਲੋਡ ਕਰਨ ਵਿੱਚ ਗਲਤੀ: %s\n"
 
-#: ../src/ui/theme-viewer.c:813
+#: ../src/ui/theme-viewer.c:823
 #, c-format
 msgid "Loaded theme \"%s\" in %g seconds\n"
 msgstr "ਥੀਮ \"%s\" ਨੂੰ ਲੋਡ ਕਰਨ ਵਿੱਚ ਲੱਗਾ ਸਮਾਂ %g ਸਕਿੰਟਾਂ ਵਿੱਚ \n"
 
-#: ../src/ui/theme-viewer.c:854
+#: ../src/ui/theme-viewer.c:866
 msgid "Normal Title Font"
 msgstr "ਸਾਧਾਰਨ ਟਾਇਟਲ ਫੋਂਟ"
 
-#: ../src/ui/theme-viewer.c:860
+#: ../src/ui/theme-viewer.c:872
 msgid "Small Title Font"
 msgstr "ਛੋਟੇ ਟਾਇਟਲ ਫੋਂਟ"
 
-#: ../src/ui/theme-viewer.c:866
+#: ../src/ui/theme-viewer.c:878
 msgid "Large Title Font"
 msgstr "ਵੱਡੇ ਟਾਇਟਲ ਫੋਂਟ"
 
-#: ../src/ui/theme-viewer.c:871
+#: ../src/ui/theme-viewer.c:883
 msgid "Button Layouts"
 msgstr "ਬਟਨ ਲੇਆਉਟ"
 
-#: ../src/ui/theme-viewer.c:876
+#: ../src/ui/theme-viewer.c:888
 msgid "Benchmark"
 msgstr "ਬੈਂਚਮਾਰਕ"
 
-#: ../src/ui/theme-viewer.c:923
+#: ../src/ui/theme-viewer.c:935
 msgid "Window Title Goes Here"
 msgstr "ਵਿੰਡੋ ਟਾਇਟਲ ਇੱਥੇ ਹੋਵੇਗਾ"
 
-#: ../src/ui/theme-viewer.c:1027
+#: ../src/ui/theme-viewer.c:1039
 #, c-format
 msgid ""
 "Drew %d frames in %g client-side seconds (%g milliseconds per frame) and %g "
@@ -2370,45 +1665,593 @@ msgstr ""
 "ਸਰਵਰ ਸਮੇਤ %g "
 "ਸਕਿੰਟ ਕੰਧ ਘੜੀ ਸਮਾਂ (%g ਮਿਲੀ ਸਕਿੰਟ ਪ੍ਰਤੀ ਫਰੇਮ)\n"
 
-#: ../src/ui/theme-viewer.c:1246
+#: ../src/ui/theme-viewer.c:1258
 msgid "position expression test returned TRUE but set error"
 msgstr "ਸਥਿਤੀ ਕਥਨ ਜਾਂਚ ਨੇ ਜਵਾਬ ਠੀਕ(TRUE) ਦਿੱਤਾ ਪਰ ਗਲਤੀ ਕੱਢੀ ਹੈ"
 
-#: ../src/ui/theme-viewer.c:1248
+#: ../src/ui/theme-viewer.c:1260
 msgid "position expression test returned FALSE but didn't set error"
 msgstr "ਸਥਿਤੀ ਕਥਨ ਜਾਂਚ ਨੇ ਜਵਾਬ ਗਲਤ(FALSE) ਦਿੱਤਾ ਪਰ ਗਲਤੀ ਨਹੀਂ ਕੱਢੀ ਹੈ"
 
-#: ../src/ui/theme-viewer.c:1252
+#: ../src/ui/theme-viewer.c:1264
 msgid "Error was expected but none given"
 msgstr "ਗਲਤੀ ਦੀ ਉਮੀਦ ਸੀ ਪਰ ਕੋਈ ਵਿਖਾਈ ਨਹੀਂ"
 
-#: ../src/ui/theme-viewer.c:1254
+#: ../src/ui/theme-viewer.c:1266
 #, c-format
 msgid "Error %d was expected but %d given"
 msgstr "ਗਲਤੀ %d ਦੀ ਉਮੀਦ ਸੀ ਪਰ ਵਿਖਾਈ %d"
 
-#: ../src/ui/theme-viewer.c:1260
+#: ../src/ui/theme-viewer.c:1272
 #, c-format
 msgid "Error not expected but one was returned: %s"
 msgstr "ਗਲਤੀ ਦੀ ਉਮੀਦ ਨਹੀਂ ਸੀ ਪਰ ਇੱਕ ਨਿਕਲੀ: %s"
 
-#: ../src/ui/theme-viewer.c:1264
+#: ../src/ui/theme-viewer.c:1276
 #, c-format
 msgid "x value was %d, %d was expected"
 msgstr "x ਕੀਮਤ %d ਹੈ, %d ਦੀ ਉਮੀਦ ਸੀ"
 
-#: ../src/ui/theme-viewer.c:1267
+#: ../src/ui/theme-viewer.c:1279
 #, c-format
 msgid "y value was %d, %d was expected"
 msgstr "y ਕੀਮਤ %d ਸੀ, %d ਦੀ ਉਮੀਦ ਸੀ"
 
-#: ../src/ui/theme-viewer.c:1332
+#: ../src/ui/theme-viewer.c:1344
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr "%d ਸਮਾਨਾਰਥਕ ਕਥਨ ਦੀ ਪਾਰਸ %g ਸਕਿੰਟਾਂ ਵਿੱਚ ਕੀਤੀ (ਔਸਤਨ %g ਸਕਿੰਟ)\n"
 
-#~ msgid "Desktop"
-#~ msgstr "ਡੈਸਕਟਾਪ"
+#~ msgid "Launchers"
+#~ msgstr "ਲਾਂਚਰ"
+
+#~| msgid "Screen Shots"
+#~ msgid "Screenshots"
+#~ msgstr "ਸਕਰੀਨ ਸ਼ਾਟ"
+
+#~ msgid ""
+#~ "There was an error running <tt>%s</tt>:\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "<tt>%s</tt> ਨੂੰ ਚਲਾਉਣ ਉਪਰੰਤ ਇੱਕ ਗਲਤੀ ਹੈ:\n"
+#~ "\n"
+#~ "%s"
+
+#~ msgid "No command %d has been defined.\n"
+#~ msgstr "ਕੋਈ ਕਮਾਂਡ %d ਪਰਭਾਸ਼ਿਤ ਨਹੀ ਕੀਤੀ।\n"
+
+#~ msgid "No terminal command has been defined.\n"
+#~ msgstr "ਕੋਈ ਟਰਮੀਨਲ ਕਮਾਂਡ ਪ੍ਰਭਾਸ਼ਿਤ ਨਹੀ ਕੀਤੀ।\n"
+
+#~ msgid "GConf key '%s' is set to an invalid value\n"
+#~ msgstr "ਜੀ-ਕਾਨਫ ਸਵਿੱਚ \"%s\" ਨੂੰ ਇੱਕ ਅਯੋਗ ਕੀਮਤ ਦਿੱਤੀ ਗਈ ਹੈ\n"
+
+#~ msgid "%d stored in GConf key %s is out of range %d to %d\n"
+#~ msgstr "ਜੀ-ਕਾਨਫ ਸੰਭਾਲੀ %d  ਸਵਿੱਚ %s ਵਿੱਚ ਨਿਸਚਿਤ ਸੀਮਾਂਵਾਂ %d ਤੋਂ %d ਬਾਹਰ ਹੈ\n"
+
+#~ msgid "GConf key \"%s\" is set to an invalid type\n"
+#~ msgstr "ਜੀ-ਕਾਨਫ ਸਵਿੱਚ \"%s\" ਨੂੰ ਇੱਕ ਅਯੋਗ ਕਿਸਮ ਦਿੱਤੀ ਗਈ ਹੈ\n"
+
+#~ msgid "Error setting number of workspaces to %d: %s\n"
+#~ msgstr "ਵਰਕਸਪੇਸਾਂ ਦੀ ਗਿਣਤੀ %d ਸੈੱਟ ਕਰਨ ਨਾਲ ਗਲਤੀ: %s\n"
+
+#~ msgid "Error setting name for workspace %d to \"%s\": %s\n"
+#~ msgstr "ਵਰਕਸਪੇਸ %d ਦਾ ਨਾਂ \"%s\" ਸੈੱਟ ਕਰਨ ਵਿੱਚ ਗਲਤੀ:%s\n"
+
+#~ msgid "Error setting compositor status: %s\n"
+#~ msgstr "ਕੰਪੋਜ਼ਟਰ ਹਾਲਤ ਸੈੱਟ ਕਰਨ ਵਿੱਚ ਗਲਤੀ:%s\n"
+
+#~ msgid ""
+#~ "The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
+#~ "\n"
+#~ "The parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to "
+#~ "the special string \"disabled\", then there will be no keybinding for "
+#~ "this action."
+#~ msgstr ""
+#~ "ਫਾਰਮੈਟ \"<Control>a\" ਜਾਂ \"<Shift><Alt>F1\" ਵਾਂਗ ਜਾਪਦਾ ਹੈ।\n"
+#~ "\n"
+#~ "ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ "
+#~ "ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" "
+#~ "ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ-ਬਾਈਡਿੰਗ ਨਹੀਂ ਹੋਵੇਗਾ।"
+
+#~ msgid ""
+#~ "The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
+#~ "\n"
+#~ "The parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to "
+#~ "the special string \"disabled\", then there will be no keybinding for "
+#~ "this action.\n"
+#~ "\n"
+#~ "This keybinding may be reversed by holding down the \"shift\" key; "
+#~ "therefore, \"shift\" cannot be one of the keys it uses."
+#~ msgstr ""
+#~ "ਫਾਰਮੈਟ \"<Control>a\" ਜਾਂ \"<Shift><Alt>F1\" ਵਾਂਗ ਜਾਪਦਾ ਹੈ।\n"
+#~ "\n"
+#~ "ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ ਰਚਨਾ ਵੀ "
+#~ "ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ \"ਅਯੋਗ\" "
+#~ "ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ-ਬਾਈਡਿੰਗ ਨਹੀਂ ਹੋਵੇਗਾ।"
+
+#~ msgid "Switch to workspace 5"
+#~ msgstr "ਵਰਕਸਪੇਸ 5 ਵਿੱਚ ਜਾਓ"
+
+#~ msgid "Switch to workspace 6"
+#~ msgstr "ਵਰਕਸਪੇਸ 6 ਵਿੱਚ ਜਾਓ"
+
+#~ msgid "Switch to workspace 7"
+#~ msgstr "ਵਰਕਸਪੇਸ 7 ਵਿੱਚ ਜਾਓ"
+
+#~ msgid "Switch to workspace 8"
+#~ msgstr "ਵਰਕਸਪੇਸ 8 ਵਿੱਚ ਜਾਓ"
+
+#~ msgid "Switch to workspace 9"
+#~ msgstr "ਵਰਕਸਪੇਸ 9 ਵਿੱਚ ਜਾਓ"
+
+#~ msgid "Switch to workspace 10"
+#~ msgstr "ਵਰਕਸਪੇਸ 10 ਵਿੱਚ ਜਾਓ"
+
+#~ msgid "Switch to workspace 11"
+#~ msgstr "ਵਰਕਸਪੇਸ 11 ਵਿੱਚ ਜਾਓ"
+
+#~ msgid "Switch to workspace 12"
+#~ msgstr "ਵਰਕਸਪੇਸ 12 ਵਿੱਚ ਜਾਓ"
+
+#~ msgid "Reverse switch windows of an application"
+#~ msgstr "ਐਪਲੀਕੇਸ਼ਨ ਦੀ ਵਿੰਡੋ ਬਦਲਣ ਦੀ ਕਾਰਵਾਈ ਵਾਪਸ ਲਵੋ"
+
+#~ msgid "Reverse switch applications"
+#~ msgstr "ਐਪਲੀਕੇਸ਼ਨ ਬਦਲਣੇ ਵਾਪਸ ਲਵੋ"
+
+#~ msgid "Reverse switch system controls"
+#~ msgstr "ਸਿਸਟਮ ਕੰਟਰੋਲ ਬਦਲਣੇ ਵਾਪਸ ਲਵੋ"
+
+#~ msgid "Reverse switch windows of an app directly"
+#~ msgstr "ਐਪਲੀਕੇਸ਼ਨ ਦੀ ਵਿੰਡੋ ਸਿੱਧੀ ਬਦਲਣ ਨੂੰ ਵਾਪਸ ਲਵੋ"
+
+#~ msgid "Reverse switch windows directly"
+#~ msgstr "ਵਿੰਡੋਜ਼ ਦੇ ਸਿੱਧੇ ਬਦਲਣ ਨੂੰ ਵਾਪਸ ਲਵੋ"
+
+#~ msgid "Reverse switch system controls directly"
+#~ msgstr "ਸਿਸਟਮ ਕੰਟਰੋਲ ਸਿੱਧੇ ਬਦਲਣੇ ਉਲਟ ਕਰੋ"
+
+#~ msgid "Take a screenshot"
+#~ msgstr "ਇੱਕ ਸਕਰੀਨ-ਸ਼ਾਂਟ ਲਵੋ"
+
+#~ msgid "Take a screenshot of a window"
+#~ msgstr "ਵਿੰਡੋ ਦਾ ਸਕਰੀਨ-ਸ਼ਾਟ ਲਵੋ"
+
+#~ msgid "Launch Terminal"
+#~ msgstr "ਟਰਮੀਨਲ ਚਲਾਓ"
+
+#~ msgid "Toggle window always appearing on top"
+#~ msgstr "ਹਮੇਸ਼ਾ ਉੱਤੇ ਆਉਣ ਵਾਲੀਆਂ ਵਿੰਡੋਜ਼ ਬਦਲੋ"
+
+#~ msgid "Move window to workspace 5"
+#~ msgstr "ਵਿੰਡੋ ਨੂੰ ਵਰਕਸਪੇਸ 5 ਵਿੱਚ ਲਿਜਾਓ"
+
+#~ msgid "Move window to workspace 6"
+#~ msgstr "ਵਿੰਡੋ ਨੂੰ ਵਰਕਸਪੇਸ 6 ਵਿੱਚ ਲਿਜਾਓ"
+
+#~ msgid "Move window to workspace 7"
+#~ msgstr "ਵਿੰਡੋ ਨੂੰ ਵਰਕਸਪੇਸ 7 ਵਿੱਚ ਲਿਜਾਓ"
+
+#~ msgid "Move window to workspace 8"
+#~ msgstr "ਵਿੰਡੋ ਨੂੰ ਵਰਕਸਪੇਸ 8 ਵਿੱਚ ਲਿਜਾਓ"
+
+#~ msgid "Move window to workspace 9"
+#~ msgstr "ਵਿੰਡੋ ਨੂੰ ਵਰਕਸਪੇਸ 9 ਵਿੱਚ ਲਿਜਾਓ"
+
+#~ msgid "Move window to workspace 10"
+#~ msgstr "ਵਿੰਡੋ ਨੂੰ ਵਰਕਸਪੇਸ 10 ਵਿੱਚ ਲਿਜਾਓ"
+
+#~ msgid "Move window to workspace 11"
+#~ msgstr "ਵਿੰਡੋ ਨੂੰ ਵਰਕਸਪੇਸ 11 ਵਿੱਚ ਲਿਜਾਓ"
+
+#~ msgid "Move window to workspace 12"
+#~ msgstr "ਵਿੰਡੋ ਨੂੰ ਵਰਕਸਪੇਸ 12 ਵਿੱਚ ਲਿਜਾਓ"
+
+#~ msgid "Move window to top left corner"
+#~ msgstr "ਵਿੰਡੋ ਉੱਤੇ ਖੱਬੇ ਕੋਨੇ 'ਚ ਭੇਜੋ"
+
+#~ msgid "Move window to top right corner"
+#~ msgstr "ਵਿੰਡੋ ਉੱਤੇ ਸੱਜੇ ਕੋਨੇ 'ਚ ਭੇਜੋ"
+
+#~ msgid "Move window to bottom left corner"
+#~ msgstr "ਵਿੰਡੋ ਹੇਠਾਂ ਖੱਬੇ ਕੋਨੇ 'ਚ ਭੇਜੋ"
+
+#~ msgid "Move window to bottom right corner"
+#~ msgstr "ਵਿੰਡੋ ਹੇਠਾਂ ਸੱਜੇ ਕੋਨੇ 'ਚ ਭੇਜੋ"
+
+#~ msgid "Move window to top edge of screen"
+#~ msgstr "ਵਿੰਡੋ ਉੱਤੇ ਸਕਰੀਨ ਦੇ ਕੋਨੇ 'ਚ ਭੇਜੋ"
+
+#~ msgid "Move window to bottom edge of screen"
+#~ msgstr "ਵਿੰਡੋ ਸਕਰੀਨ ਦੇ ਹੇਠਾਂ ਤਲ ਉੱਤੇ ਭੇਜੋ"
+
+#~ msgid "Move window to right side of screen"
+#~ msgstr "ਵਿੰਡੋ ਸਕਰੀਨ ਦੇ ਸੱਜੇ ਪਾਸੇ ਭੇਜੋ"
+
+#~ msgid "Move window to left side of screen"
+#~ msgstr "ਵਿੰਡੋ ਸਕਰੀਨ ਦੇ ਖੱਬੇ ਪਾਸੇ ਭੇਜੋ"
+
+#~ msgid "Move window to center of screen"
+#~ msgstr "ਵਿੰਡੋ ਨੂੰ ਸਕਰੀਨ ਦੇ ਸੈਂਟਰ ਵਿੱਚ ਭੇਜੋ"
+
+#~ msgid ""
+#~ "(Not implemented) Navigation works in terms of applications not windows"
+#~ msgstr "(ਲਾਗੂ ਨਹੀ ਕੀਤਾ) ਸੰਚਾਲਨ ਕਾਰਜ ਦੇ ਵਿਹਾਰ ਨਾਲ ਕੰਮ ਕਰਦਾ ਹੈ ਨਾ ਕਿ ਵਿੰਡੋ ਦੇ"
+
+#~ msgid ""
+#~ "A font description string describing a font for window titlebars. The "
+#~ "size from the description will only be used if the titlebar_font_size "
+#~ "option is set to 0. Also, this option is disabled if the "
+#~ "titlebar_uses_desktop_font option is set to true."
+#~ msgstr ""
+#~ "ਫੋਂਟ ਵੇਰਵਾ ਸਤਰ ਵਿੰਡੋ ਦੀ ਟਾਇਟਲ-ਬਾਰ ਵਾਸਤੇ ਫੋਂਟ ਦਰਸਾਉਂਦੀ ਹੈ। ਵੇਰਵੇ ਵਿਚਲਾ ਆਕਾਰ ਤਾਂ ਹੀ ਅਸਰ "
+#~ "ਕਰੇਗਾ ਜੇ ਕਿਸੇ ਵੀ ਤਰਾਂ titlebar_font_size ਚੋਣ 0 ਕੀਤੀ ਹੈ। ਇਹ ਚੋਣ ਅਯੋਗ ਵੀ ਹੈ ਜੇ "
+#~ "titlebar_uses_desktop_font ਚੋਣ ਨੂੰ ਯੋਗ ਹੋਈ ਵਰਤਦਾ ਹੈ।"
+
+#~ msgid "Action on title bar double-click"
+#~ msgstr "ਟਾਇਟਲ-ਬਾਰ ਉੱਤੇ ਕਿਰਿਆ ਦੋ-ਵਾਰ ਦਬਾਉ"
+
+#~ msgid "Action on title bar middle-click"
+#~ msgstr "ਟਾਇਟਲ ਬਾਰ ਉੱਤੇ ਮੱਧ-ਕਲਿੱਕ ਨਾਲ ਐਕਸ਼ਨ"
+
+#~ msgid "Action on title bar right-click"
+#~ msgstr "ਟਾਇਟਲ ਬਾਰ ਉੱਤੇ ਸੱਜਾ-ਕਲਿੱਕ ਨਾਲ ਐਕਸ਼ਨ"
+
+#~ msgid "Arrangement of buttons on the titlebar"
+#~ msgstr "ਟਾਇਟਲ-ਬਾਰ ਉੱਤੇ ਬਟਨਾਂ ਦੀ ਤਰਤੀਬ"
+
+#~ msgid ""
+#~ "Arrangement of buttons on the titlebar. The value should be a string, "
+#~ "such as \"menu:minimize,maximize,spacer,close\"; the colon separates the "
+#~ "left corner of the window from the right corner, and the button names are "
+#~ "comma-separated. Duplicate buttons are not allowed. Unknown button names "
+#~ "are silently ignored so that buttons can be added in future metacity "
+#~ "versions without breaking older versions. A special spacer tag can be "
+#~ "used to insert some space between two adjacent buttons."
+#~ msgstr ""
+#~ "ਟਾਇਟਲ-ਬਾਰ ਉੱਤੇ ਬਟਨਾਂ ਦਾ ਪਰਬੰਧ। ਕੀਮਤ, ਸਤਰ ਹੋਣੀ ਚਾਹੀਦੀ ਹੈ, ਜਿਵੇਂ ਕਿ \"menu:minimize,"
+#~ "maximize,spacer,close(ਮੇਨੂ:ਛੋਟਾ,ਵੱਡਾ ਬੰਦ)\"; ਕੌਲਨ ਵਿੰਡੋ ਦੇ ਖੱਬੇ ਖੂੰਜੇ ਨੂੰ ਸੱਜੇ ਤੋਂ ਵੱਖ ਕਰਦਾ ਹੈ,"
+#~ "ਅਤੇ ਬਟਨ ਨਾਂ ਕਾਮੇ ਨਾਲ ਵੱਖ ਹਨ। ਨਕਲੀ ਬਟਨਾਂ ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ। ਅਣਜਾਣ ਬਟਨ ਅਣਡਿੱਠ ਕੀਤੇ ਜਾਣਗੇ "
+#~ "ਤਾਂ ਕਿ ਬਟਨ, ਮੈਟਾਸਿਟੀ ਦੇ ਪੁਰਾਣੇਵਰਜਨ ਨੂੰ ਤੋੜੇ ਬਿਨਾਂ ਨਵੇਂ ਵਰਜਨ ਵਿੱਚ ਜੋੜੇ ਜਾ ਸਕਣ।"
+
+#~ msgid "Automatically raises the focused window"
+#~ msgstr "ਫੋਕਸ ਹੋਈ ਵਿੰਡੋ ਆਟਮੈਟਿਕ ਉਭਾਰੋ"
+
+#~ msgid ""
+#~ "Clicking a window while holding down this modifier key will move the "
+#~ "window (left click), resize the window (middle click), or show the window "
+#~ "menu (right click). The middle and right click operations may be swapped "
+#~ "using the \"resize_with_right_button\" key. Modifier is expressed as "
+#~ "\"&lt;Alt&gt;\" or \"&lt;Super&gt;\" for example."
+#~ msgstr ""
+#~ "ਇਸ ਸੋਧਕ ਸਵਿੱਚ ਨੂੰ ਦਬਾ ਕੇ ਵਿੰਡੋ ਉੱਤੇ ਦਬਾਉ ਨਾਲ ਵਿੰਡੋ ਹਿੱਲੇਗੀ (ਖੱਬਾ ਦਬਾਉਣ ਨਾਲ), ਵਿੰਡੋ ਨੂੰ ਮੁੜ "
+#~ "ਆਕਾਰ ਦਿਓ (ਵਿਚਕਾਰਲਾ ਦਬਾਉਣ ਨਾਲ), ਜਾਂ ਵਿੰਡੋ ਮੇਨੂ ਵਿਖਾਓ (ਸੱਜਾ ਦਬਾਉਣ ਨਾਲ)। ਮੱਧ ਅਤੇ ਸੱਜਾ "
+#~ "ਕਲਿੱਕ ਓਪਰੇਸ਼ਨ \"resize_with_right_button\" ਨਾਲ ਆਪਸ ਵਿੱਚ ਬਦਲੇ ਜਾ ਸਕਦੇ ਹਨ। "
+#~ "ਮੋਡੀਫਾਇਰ ਉਦਾਹਰਨ ਵਜੋਂ ਇਸ ਤਰਾਂ ਦਰਸਾਇਆ ਗਿਆ \"&lt;Alt&gt;\" ਜਾਂ \"&lt;Super&gt;\""
+
+#~ msgid "Commands to run in response to keybindings"
+#~ msgstr "ਸਵਿੱਚ ਸੰਬੰਧਾਂ ਦੇ ਉੱਤਰ ਵਿਚ ਚੱਲਣ ਵਾਲੀ ਕਮਾਂਡ"
+
+#~ msgid "Control how new windows get focus"
+#~ msgstr "ਕੰਟਰੋਲ ਕਿ ਕਿਵੇਂ ਨਵੀਂ ਵਿੰਡੋ ਫੋਕਸ ਹੋਣ"
+
+#~ msgid "Current theme"
+#~ msgstr "ਮੌਜੂਦਾ ਥੀਮ"
+
+#~ msgid "Delay in milliseconds for the auto raise option"
+#~ msgstr "ਸਵੈ ਉਠਾਊ ਚੋਣ ਲਈ ਮਿਲੀ ਸਕਿੰਟਾਂ ਵਿੱਚ ਵਕਫਾ"
+
+#~ msgid ""
+#~ "Determines whether applications or the system can generate audible "
+#~ "'beeps'; may be used in conjunction with 'visual bell' to allow silent "
+#~ "'beeps'."
+#~ msgstr ""
+#~ "ਵੇਖੋ ਕਿ ਕੀ ਕਾਰਜ ਜਾਂ ਸਿਸਟਮ ਆਵਾਜ਼ ਵਾਲੀਆਂ 'ਬੀਪਸ' ਪੈਦਾ ਕਰਦਾ ਹੈ; ਜੋ 'ਦਿੱਖ ਘੰਟੀ' ਦੇ ਸੰਗ ਸ਼ਾਂਤ "
+#~ "'ਬੀਪਸ' ਨੂੰ ਚਲਾਏ।"
+
+#~ msgid "Disable misfeatures that are required by old or broken applications"
+#~ msgstr "ਨਾ ਮੌਜੂਦ ਗੁਣਾਂ ਨੂੰ ਅਯੋਗ ਕਰੋ ਜਿਹੜੇ ਪੁਰਾਣੇ ਜਾਂ ਤੋੜੇ ਕਾਰਜਾਂ ਰਾਹੀਂ ਲੋੜੀਂਦੇ ਹਨ"
+
+#~ msgid "Enable Visual Bell"
+#~ msgstr "ਦਿੱਖ ਘੰਟੀ ਯੋਗ ਕਰੋ"
+
+#~ msgid ""
+#~ "If set to true, and the focus mode is either \"sloppy\" or \"mouse\" then "
+#~ "the focused window will be automatically raised after a delay specified "
+#~ "by the auto_raise_delay key. This is not related to clicking on a window "
+#~ "to raise it, nor to entering a window during drag-and-drop."
+#~ msgstr ""
+#~ "ਜੇ ਇਹ ਸਹੀਂ ਹੋਵੇ ਤਾਂ ਫੋਕਸ ਢੰਗ ਜਾਂ ਤਾਂ \"ਸਲੋਪੀ\" ਜਾਂ \"ਮਾਊਂਸ\" ਹੁੰਦਾ ਹੈ ਤਾਂ ਫੋਕਸ ਹੋਇਆ ਵਿੰਡੋ "
+#~ "auto_raise_delay ਕੁੰਜੀ ਵਲੋਂ ਦਿੱਤੇ ਇੱਕ ਅੰਤਰਾਲ ਬਾਅਦ ਆਟੋਮੈਟਿਕ ਹੀ ਉਭਾਰਿਆ ਜਾਵੇਗਾ। ਇਹ "
+#~ "ਉਭਾਰਨ ਲਈ ਵਿੰਡੋ ਉੱਤੇ ਨਿਰਭਰ ਨਹੀਂ ਹੈ ਅਤੇ ਨਾ ਹੀ ਚੁੱਕਣ ਅਤੇ ਸੁੱਟਣ ਸਮੇਂ ਇੱਕ ਵਿੰਡੋ ਉੱਤੇ ਵੀ ਨਹੀਂ।"
+
+#~ msgid ""
+#~ "If true, ignore the titlebar_font option, and use the standard "
+#~ "application font for window titles."
+#~ msgstr ""
+#~ "ਜੇ ਯੋਗ ਹੈ, ਟਾਇਟਲ-ਬਾਰ ਫੋਟ ਚੋਣ ਨੂੰ ਅਣਡਿੱਠ ਕਰੋ, ਅਤੇ ਵਿੰਡੋ ਟਾਇਟਲ ਵਾਸਤੇ ਸਟੈਂਡਰਡ ਕਾਰਜ ਅੱਖਰ ਵਰਤੋਂ।"
+
+#~ msgid ""
+#~ "If true, then Metacity works in terms of applications rather than "
+#~ "windows. The concept is a bit abstract, but in general an application-"
+#~ "based setup is more like the Mac and less like Windows. When you focus a "
+#~ "window in application-based mode, all the windows in the application will "
+#~ "be raised. Also, in application-based mode, focus clicks are not passed "
+#~ "through to windows in other applications. Application-based mode is, "
+#~ "however, largely unimplemented at the moment."
+#~ msgstr ""
+#~ "ਜੇ ਯੋਗ ਹੈ, ਮੈਟਾਸਿਟੀ ਕਾਰਜਾਂ ਦੇ ਰੂਪ 'ਚ ਕੰਮ ਕਰੇਗਾ ਨਾ ਕਿ ਵਿੰਡੋ ਦੇ। ਵਿਚਾਰ ਕੁਝ ਵੱਖਰਾ ਹੈ, ਪਰ "
+#~ "ਸਾਧਾਰਨ ਤੌਰ ਤੇ ਕਾਰਜ ਤੇ ਆਧਾਰਿਤ ਬਣਾਵਟ ਮੈਕ(Mac) ਦੀ ਤਰਾਂ ਜਿਆਦਾ ਹੈ ਅਤੇ ਵਿੰਡੋ (Windows) "
+#~ "ਵਾਂਗ ਘੱਟ। ਜਦੋਂ ਤੁਸੀਂ ਵਿੰਡੋ ਨੂੰ ਕਾਰਜ ਆਧਾਰਿਤ ਰੂਪ ਵਿੱਚ ਫੋਕਸ ਕਰਦੇ ਹੋ, ਕਾਰਜ ਵਿਚਲੇ ਸਭ ਵਿੰਡੋ ਕਾਰਜ "
+#~ "ਆਧਾਰਿਤ ਰੂਪ ਵਿੱਚ ਖੁੱਲਣਗੀਆਂ। ਨਾਲ ਹੀ ਫੋਕਸ ਕਲਿੱਕ ਦੂਜੇ ਕਾਰਜਾਂ ਵਿਚਲੇ ਝਰੋਖਿਆਂ ਵਿੱਚ ਨਹੀਂ ਜਾਂਦੇ। "
+#~ "ਕਾਰਜ ਆਧਾਰਿਤ ਢੰਗ ਇਸ ਸਮੇਂ ਵੀ ਲਾਗੂ ਨਹੀਂ ਹੈ।"
+
+#~ msgid "Modifier to use for modified window click actions"
+#~ msgstr "ਸੋਧੀਆਂ ਵਿੰਡੋ ਦੀਆਂ ਕਲਿੱਕ ਕਾਰਵਾਈਆਂ ਲਈ ਵਰਤਣ ਲਈ ਮੋਡੀਫਾਇਰ"
+
+#~ msgid "Name of workspace"
+#~ msgstr "ਵਰਕਸਪੇਸ ਦਾ ਨਾਂ"
+
+#~ msgid "Number of workspaces"
+#~ msgstr "ਵਰਕਸਪੇਸ ਦੀ ਗਿਣਤੀ"
+
+#~ msgid ""
+#~ "Number of workspaces. Must be more than zero, and has a fixed maximum to "
+#~ "prevent making the desktop unusable by accidentally asking for too many "
+#~ "workspaces."
+#~ msgstr ""
+#~ "ਵਰਕਸਪੇਸ ਦੀ ਗਿਣਤੀ। ਜ਼ੀਰੋ ਤੋਂ ਵੱਧ ਹੋਣੀ ਜਰੂਰੀ ਹੈ,ਅਤੇ ਵੱਧ ਤੋਂ ਵੱਧ ਨਿਯਮਤ ਹੋਣੀ ਚਾਹੀਦੀ ਹੈ ਤਾਂ "
+#~ "ਅਸਧਾਰਨ ਵਰਕਸਪੇਸ ਪੁੱਛ ਕੇ ਤੁਹਾਡੇ ਡੈਸਕਟਾਪ ਨੂੰ ਖਤਮ ਹੋਣ ਦੀ ਘਟਨਾ ਤੋਂ ਬਚਾਇਆ ਜਾ ਸਕੇ।"
+
+#~ msgid "Run a defined command"
+#~ msgstr "ਇੱਕ ਪ੍ਰਭਾਸ਼ਿਤ ਕਮਾਂਡ ਚਲਾਓ"
+
+#~ msgid ""
+#~ "Set this to true to resize with the right button and show a menu with the "
+#~ "middle button while holding down the key given in \"mouse_button_modifier"
+#~ "\"; set it to false to make it work the opposite way around."
+#~ msgstr ""
+#~ "ਜੇ ਸਹੀਂ ਕੀਤਾ ਤਾਂ ਸੱਜੇ ਬਟਨ ਨਾਲ ਮੁੜ-ਸਾਈਜ਼ ਕੀਤਾ ਜਾਵੇਗਾ ਅਤੇ ਮੱਧ ਕਲਿੱਕ ਨਾਲ ਮੇਨੂ ਵੇਖਾਇਆ "
+#~ "ਜਾਵੇਗਾ, ਜਦੋਂ ਕੀ \"mouse_button_modifier\" ਵਿੱਚ ਦਿੱਤੀ ਕੁੰਜੀ ਹੋਲਡ ਕੀਤੀ ਜਾਵੇਗੀ; ਇਸ ਨੂੰ "
+#~ "ਗਲਤ ਰੱਖਣ ਦਾ ਅਰਥ ਹੈ ਕਿ ਇਸ ਦੇ ਉਲਟ ਕੰਮ ਕਰਨਾ"
+
+#~ msgid ""
+#~ "Setting this option to false can lead to buggy behavior, so users are "
+#~ "strongly discouraged from changing it from the default of true. Many "
+#~ "actions (e.g. clicking in the client area, moving or resizing the window) "
+#~ "normally raise the window as a side-effect. Setting this option to false, "
+#~ "which is strongly discouraged, will decouple raising from other user "
+#~ "actions, and ignore raise requests generated by applications. See http://"
+#~ "bugzilla.gnome.org/show_bug.cgi?id=445447#c6. Even when this option is "
+#~ "false, windows can still be raised by an alt-left-click anywhere on the "
+#~ "window, a normal click on the window decorations, or by special messages "
+#~ "from pagers, such as activation requests from tasklist applets. This "
+#~ "option is currently disabled in click-to-focus mode. Note that the list "
+#~ "of ways to raise windows when raise_on_click is false does not include "
+#~ "programmatic requests from applications to raise windows; such requests "
+#~ "will be ignored regardless of the reason for the request. If you are an "
+#~ "application developer and have a user complaining that your application "
+#~ "does not work with this setting disabled, tell them it is _their_ fault "
+#~ "for breaking their window manager and that they need to change this "
+#~ "option back to true or live with the \"bug\" they requested."
+#~ msgstr ""
+#~ "ਇਹ ਚੋਣ ਗਲਤ ਕਰਨ ਨਾਲ, ਬੱਡੀ ਰਵੱਈਆ ਆ ਸਕਦਾ ਹੈ ਤਾਂ ਯੂਜ਼ਰਾਂ ਨੂੰ ਇਹ ਠੀਕ ਰੱਖਣ ਦਾ ਸੁਝਾਅ ਹੀ ਦਿੱਤਾ "
+#~ "ਗਿਆ ਹੈ। ਕੋਈ ਫੰਕਸ਼ਨ (ਜਿਵੇਂ ਕਿ ਕਲਾਈਟ ਖੇਤਰ ਵਿੱਚ ਕਲਿੱਕ ਕਰਨਾ, ਵਿੰਡੋ ਹਿਲਾਉਣੀ ਜਾਂ ਮੁੜ-ਆਕਾਰ "
+#~ "ਕਰਨਾ) ਸਾਇਡ-ਪਰਭਾਵ ਦੇ ਅਧੀਨ ਵਿੰਡੋ ਉਭਾਰ ਦਿੰਦੇ ਹਨ। ਇਹ ਚੋਣ ਗਲਤ ਕਰਨ ਨਾਲ, ਹੋਰ ਯੂਜ਼ਰ ਐਕਸ਼ਨ ਤੋਂ "
+#~ "ਉਭਾਰਨ ਨੂੰ ਡਿ-ਕਪਲ ਕਰ ਦਿੰਦੀ ਹੈ। http://bugzilla.gnome.org/show_bug.cgi?"
+#~ "id=445447#c6 ਵੇਖੋ। ਭਾਵੇਂ ਇਹ ਚੋਣ ਗਲਤ ਹੈ, ਵਿੰਡੋ ਨੂੰ ਵਿੰਡੋ ਉੱਤੇ ਕਿਤੇ ਵੀ alt-left-click ਕਰਨ, "
+#~ "ਇੱਕ ਆਮ ਵਿੰਡੋ ਸਜਾਵਟ, ਜਾਂ ਪੇਜ਼ਰ ਤੋਂ ਖਾਸ ਸੁਨੇਹਿਆਂ ਨਾਲ ਨਾਲ ਉਭਾਰਿਆ ਜਾ ਸਕਦਾ ਹੈ, ਜਿਵੇਂ ਕਿ ਟਾਸਕ-"
+#~ "ਲਿਸਟ ਐਪਲਿਟ ਤੋਂ ਐਕਟੀਵੇਸ਼ਨ ਮੰਗ। ਇਹ ਚੋਣ ਇਸ ਸਮੇਂ ਕਲਿੱਕ-ਅਤੇ-ਫੋਕਸ ਮੋਡ ਰਾਹੀਂ ਆਯੋਗ ਹੈ। ਯਾਦ ਰੱਖੋ ਕਿ "
+#~ "ਵਿੰਡੋ ਨੂੰ ਉਭਾਰਨ ਦੇ ਢੰਗ ਦੀ ਲਿਸਟ, ਜਦੋਂ ਕਿ raise_on_click ਗਲਤ ਹੋਵੇ, ਐਪਲੀਕੇਸ਼ਨ ਤੋਂ ਵਿੰਡੋ "
+#~ "ਉਭਾਰਨ ਦੀ ਮੰਗ ਵਿੱਚ ਸ਼ਾਮਲ ਨਹੀਂ ਹੈ, ਜਿਵੇਂ ਕਿ ਉਸ ਕਿਸਮ ਦੀਆਂ ਮੰਗ ਨੂੰ ਕਾਰਨ ਬਿਨਾਂ ਹੀ ਅਣਡਿੱਠਾ "
+#~ "ਕਰ ਦਿੱਤਾ ਜਾਵੇਗਾ। ਜੇ ਤੁਸੀਂ ਕਾਰਜ ਖੋਜੀ ਹੋ ਅਤੇ ਯੂਜ਼ਰ ਸ਼ਿਕਾਇਤ ਹੈ ਕਿ ਇਹ ਸੈਟਿੰਗ ਆਯੋਗ ਕਰਨ ਨਾਲ "
+#~ "ਤੁਹਾਡੀ ਐਪਲੀਕੇਸ਼ਨ ਕੰਮ ਨਹੀਂ ਕਰਦੀ ਹੈ ਤਾਂ ਇਹ ਉਨ੍ਹਾਂ ਦੀ ਗਲਤੀ ਹੈ, ਕਿਉਂਕਿ ਉਨ੍ਹਾਂ ਦਾ ਵਿੰਡੋ ਮੈਨੇਜਰ "
+#~ "ਖਰਾਬ ਹੈ ਅਤੇ ਉਨ੍ਹਾਂ ਨੂੰ ਇਹ ਚੋਣ ਬਦਲ ਕੇ ਠੀਕ ਕਰਨੀ ਹੋਵੇਗੀ ਜਾਂ ਉਨ੍ਹਾਂ ਨੂੰ ਬੱਗ ਦੇ ਦਿਓ।"
+
+#~ msgid ""
+#~ "Some applications disregard specifications in ways that result in window "
+#~ "manager misfeatures. This option puts Metacity in a rigorously correct "
+#~ "mode, which gives a more consistent user interface, provided one does not "
+#~ "need to run any misbehaving applications."
+#~ msgstr ""
+#~ "ਕੁਝ ਕਾਰਜਾਂ ਕੁਝ ਕਾਰਨਾਂ ਕਰਕੇ ਹਦਾਇਤਾਂ ਨੂੰ ਅਣਡਿੱਠਾ ਕਰ ਦਿੰਦੀਆਂ ਹਨ, ਜਿੰਨਾਂ 'ਚ ਵਿੰਡੋ ਮੈਨੇਜਰ ਗਲਤ "
+#~ "ਫੀਚਰਾਂ ਹੁੰਦੇ ਹਨ। ਇਹ ਚੋਣ ਮੇਟਾਸਿਟੀ ਨੂੰ ਗਲਤ ਢੰਗ ਨੂੰ ਸਹੀਂ ਕਰਨ ਲਿਆ ਹੈ, ਜਿਸ ਨਾਲ ਯੂਜ਼ਰ ਇੰਟਰਫੇਸ ਲਈ "
+#~ "ਇਕਸਾਰ ਕੰਟਰੋਲ ਰਹਿੰਦਾ ਹੈ, ਜੋ ਕਿ ਗਲਤ ਰਵੱਈਆ ਰੱਖਣ ਵਾਲੇ ਕਾਰਜ ਨੂੰ ਚੱਲਣ ਨਹੀਂ ਦਿੰਦੀ।"
+
+#~ msgid "System Bell is Audible"
+#~ msgstr "ਸਿਸਟਮ ਘੰਟੀ ਸੁਣਨਯੋਗ ਹੈ"
+
+#~ msgid ""
+#~ "Tells Metacity how to implement the visual indication that the system "
+#~ "bell or another application 'bell' indicator has been rung. Currently "
+#~ "there are two valid values, \"fullscreen\", which causes a fullscreen "
+#~ "white-black flash, and \"frame_flash\" which causes the titlebar of the "
+#~ "application which sent the bell signal to flash. If the application which "
+#~ "sent the bell is unknown (as is usually the case for the default \"system "
+#~ "beep\"), the currently focused window's titlebar is flashed."
+#~ msgstr ""
+#~ "ਮੈਟਾਸਿਟੀ ਨੂੰ ਦੱਸੋ ਕਿ ਦਰਿਸ਼ੀ ਸੰਕੇਤ ਨੂੰ ਕਿਸ ਤਰਾਂ ਲਾਗੂ ਕਰਨਾ ਹੈ ਤਾਂ ਕਿ ਸਿਸਟਮ ਘੰਟੀ ਜਾਂ ਹੋਰ ਕਾਰਜ "
+#~ "'ਘੰਟੀ' ਸੰਕੇਤਕ ਵੱਜੇ। ਹੁਣ ਇੱਥੇ ਦੋ ਯੋਗ ਕੀਮਤਾਂ ਹਨ, \"ਸਾਰੀ ਸਕਰੀਨ\", ਜੋ ਸਕਰੀਨ ਨੂੰ ਸਫੈਦ-ਕਾਲਾ "
+#~ "ਲਿਸ਼ਕਾਰਾ ਬਣਾਉਂਦਾ ਹੈ, ਅਤੇ \"ਫਰੇਮ_ਲਿਸ਼ਕਾਰਾ\" ਜੋ ਕਾਰਜ ਦੀ ਟਾਇਟਲ-ਬਾਰ ਜਿਹੜੀ ਘੰਟੀ ਸੰਕੇਤ "
+#~ "ਭੇਜਦੀ ਹੈ ਨੂੰ ਲਿਸ਼ਕਣ ਦਿੰਦਾ ਹੈ। ਜੇ ਘੰਟੀ ਭੇਜਣ ਵਾਲਾ ਕਾਰਜ ਅਣਪਛਾਤਾ ਹੋਵੇ (ਜਿਵੇਂ ਕਿ ਮੂਲ \"ਸਿਸਟਮ "
+#~ "ਬੀਪ\" ਹੈ), ਮੌਜੂਦਾ ਫੋਕਸ ਰੱਖੇ ਦੀ ਟਾਇਟਲ-ਬਾਰ ਲਿਸ਼ਕੇਗੀ।"
+
+#~ msgid ""
+#~ "The /apps/metacity/global_keybindings/run_command_N keys define "
+#~ "keybindings that correspond to these commands. Pressing the keybinding "
+#~ "for run_command_N will execute command_N."
+#~ msgstr ""
+#~ "/apps/metacity/global_keybindings/run_command_N ਸਵਿੱਚਾਂ ਸਵਿੱਚ-ਬਾਈਡਿੰਗ ਪਰਭਾਸ਼ਿਤ "
+#~ "ਕਰਦੀਆਂ ਹਨ ਜਿਹੜੇ ਕਿ ਉਹਨਾਂ ਕਮਾਂਡਾਂ ਦੇ ਅਨੁਸਾਰੀ ਹਨ। ਚਲਾਓ_ਕਮਾਂਡ_N ਵਾਸਤੇ ਸਵਿੱਚ-ਬਾਈਡਿੰਗ "
+#~ "ਦਬਾਉਣ ਨਾਲ ਕਮਾਂਡ_N ਚੱਲੇਗੀ।"
+
+#~ msgid ""
+#~ "The /apps/metacity/global_keybindings/run_command_screenshot key defines "
+#~ "a keybinding which causes the command specified by this setting to be "
+#~ "invoked."
+#~ msgstr ""
+#~ "/apps/metacity/global_keybindings/run_command_screensho ਸਵਿੱਚ, ਸਵਿੱਚ-ਬਾਈਡਿੰਗ "
+#~ "ਪਰਭਾਸ਼ਿਤ ਕਰਦੀ ਹੈ ਜਿਹਨਾ ਨੇ ਇਸ ਸਥਾਪਨ ਰਾਹੀਂ ਦਰਸਾਈ ਕਮਾਂਡ ਨੂੰ ਬੁਲਾਇਆ।"
+
+#~ msgid ""
+#~ "The /apps/metacity/global_keybindings/run_command_window_screenshot key "
+#~ "defines a keybinding which causes the command specified by this setting "
+#~ "to be invoked."
+#~ msgstr ""
+#~ "/apps/metacity/global_keybindings/run_command_window_screenshot ਸਵਿੱਚ, "
+#~ "ਸਵਿੱਚ ਬੰਧਨ ਪਰਭਾਸ਼ਿਤ ਕਰਦੀ ਹੈ ਜਿਹਨਾ ਨੇ ਇਸ ਸਥਾਪਨ ਰਾਹੀਂ ਦਰਸਾਈ ਕਮਾਂਡ ਨੂੰ ਬੁਲਾਇਆ।"
+
+#~ msgid ""
+#~ "The keybinding that runs the correspondingly-numbered command in /apps/"
+#~ "metacity/keybinding_commands The format looks like \"&lt;Control&gt;a\" "
+#~ "or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and "
+#~ "allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
+#~ "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
+#~ "\"disabled\", then there will be no keybinding for this action."
+#~ msgstr ""
+#~ "ਸਵਿੱਚ-ਬਾਈਡਿੰਗ ਜਿਹੜਾ apps/metacity/keybinding_command ਵਿੱਚ ਅਨੁਸਾਰੀ ਅੰਕਿਤ ਕਮਾਂਡ "
+#~ "ਚਲਾਉਦਾ ਹੈ ਫਾਰਮੈਟ ਇਸ ਤਰਾਂ ਦਿਸਦਾ ਹੈ \"&lt;Control&gt;a\" ਜਾਂ \"&lt;Shift&gt;&lt;"
+#~ "Alt&gt;F1।ਪਾਰਸਰ ਪੂਰੀ ਤਰਾਂ ਸਿੱਖਿਅਤ ਹੈ ਅਤੇ ਛੋਟੇ ਜਾਂ ਵੱਡੇ ਅੱਖਰਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਸੰਖੇਪ "
+#~ "ਰਚਨਾ ਵੀ ਜਿਵੇਂ ਕਿ \"&lt;Ctl&gt;\" ਅਤੇ \"&lt;Ctrl&gt;\"। ਜੇ ਤੁਸੀਂ ਖਾਸ ਸਤਰ ਦੀ ਚੋਣ "
+#~ "\"ਅਯੋਗ\" ਬਣਾਉਦੇ ਹੋ ਤਾਂ ਇਸ ਕਿਰਿਆ ਵਾਸਤੇ ਕੋਈ ਸਵਿੱਚ-ਬਾਈਡਿੰਗ ਨਹੀਂ ਹੋਵੇਗਾ।"
+
+#~ msgid "The name of a workspace."
+#~ msgstr "ਵਰਕਸਪੇਸ ਦਾ ਨਾਂ ਹੈ।"
+
+#~ msgid "The screenshot command"
+#~ msgstr "ਸਕਰੀਨ-ਸ਼ਾਂਟ ਕਮਾਂਡ"
+
+#~ msgid ""
+#~ "The theme determines the appearance of window borders, titlebar, and so "
+#~ "forth."
+#~ msgstr "ਥੀਮ ਵਿੰਡੋ ਦੇ ਹਾਸ਼ੀਏ, ਟਾਇਟਲ-ਬਾਰ, ਅਤੇ ਸਾਹਮਣੀ ਦਿੱਖ ਨਿਰਧਾਰਿਤ ਕਰਦਾ ਹੈ।"
+
+#~ msgid ""
+#~ "The time delay before raising a window if auto_raise is set to true. The "
+#~ "delay is given in thousandths of a second."
+#~ msgstr ""
+#~ "ਵਿੰਡੋ ਉਠਾਉਣ ਤੋਂ ਪਹਿਲਾਂ ਵਕਫਾ ਜੇ ਸਵੈ-ਉਠਾਊ ਯੋਗ ਕੀਤੀ ਹੈ। ਵਕਫਾ ਸਕਿੰਟ ਦੇ ਹਜਾਰਵੇਂ ਵਿੱਚ ਦਿੱਤਾ ਹੈ।"
+
+#~ msgid ""
+#~ "The window focus mode indicates how windows are activated. It has three "
+#~ "possible values; \"click\" means windows must be clicked in order to "
+#~ "focus them, \"sloppy\" means windows are focused when the mouse enters "
+#~ "the window, and \"mouse\" means windows are focused when the mouse enters "
+#~ "the window and unfocused when the mouse leaves the window."
+#~ msgstr ""
+#~ "ਵਿੰਡੋ ਫੋਕਸ ਮੋਡ ਦਰਸਾਉਦਾ ਹੈ ਕਿ ਵਿੰਡੋ ਕਿਵੇਂ ਸਰਗਰਮ ਕਰਨੀਆਂ ਹਨ। ਇਸ ਦੀਆਂ ਤਿੰਨ ਸੰਭਵ ਕੀਮਤਾਂ ਹਨ; "
+#~ "\"ਦਬਾਉ\" ਮਤਲਬ ਵਿੰਡੋ ਉਹਨਾਂ ਨੂੰ ਫੋਕਸ ਕਰਨ ਲਈ ਦਬਾਇਆ ਹੋਇਆ \"ਸਲੋਪੀ\" ਮਤਲਬ ਵਿੰਡੋ ਫੋਕਸ ਹੁੰਦੀਆਂ "
+#~ "ਹਨ ਜਦੋਂ ਮਾਊਸ ਉਹਨਾਂ ਵਿੱਚ ਪਰਵੇਸ਼ ਕਰਦਾ ਹੈ, \"ਮਾਊਸ\" ਮਤਲਬ ਵਿੰਡੋ ਫੋਕਸ ਹੁੰਦੀਆਂ ਹਨ ਜਦੋਂ ਮਾਊਸ "
+#~ "ਉਹਨਾਂ ਵਿੱਚ ਪਰਵੇਸ਼ ਕਰਦਾ ਹੈ ਅਤੇ ਬਿਨ-ਫੋਕਸ ਹੁੰਦੀਆਂ ਹਨ ਜਦੋਂ ਮਾਊਸ ਝਰੋਖਾ ਛੱਡ ਜਾਂਦਾ ਹੈ।"
+
+#~ msgid "The window screenshot command"
+#~ msgstr "ਵਿੰਡੋ ਸਕਰੀਨ-ਸ਼ਾਟ ਕਮਾਂਡ"
+
+#~ msgid ""
+#~ "This option determines the effects of double-clicking on the title bar. "
+#~ "Current valid options are 'toggle_shade', which will shade/unshade the "
+#~ "window, 'toggle_maximize' which will maximize/unmaximize the window, "
+#~ "'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which "
+#~ "will maximize/unmaximize the window in that direction only, 'minimize' "
+#~ "which will minimize the window, 'shade' which will roll the window up, "
+#~ "'menu' which will display the window menu, 'lower' which will put the "
+#~ "window behind all the others, and 'none' which will not do anything."
+#~ msgstr ""
+#~ "ਇਹ ਚੋਣ ਟਾਇਟਲ-ਬਾਰ ਉੱਤੇ ਦੋ ਵਾਰ ਦਬਾਉ ਦਾ ਪ੍ਰਭਾਵ ਨਿਰਧਾਰਿਤ ਕਰਦੀ ਹੈ। ਮੌਜੂਦ ਯੋਗ ਚੋਣਾਂ ਹਨ  "
+#~ "'toggle_shade (ਰੰਗਤ_ਬਦਲੋ)', ਜਿਹੜੀ ਵਿੰਡੋ ਨੂੰ ਰੰਗਤ/ਬਿਨਾਂ-ਰੰਗਤ ਕਰਦੀ ਹੈ, ਅਤੇ "
+#~ "'toggle_maximize (ਅਧਿਕਤਮ ਬਦਲੋ)' ਜਿਹੜੀ ਵਿੰਡੋ ਨੂੰ maximize/unmaximize (ਅਧਿਕਤਮ/ਨਾ-"
+#~ "ਅਧਿਕਤਮ) ਕਰਦੀ ਹੈ, 'toggle_maximize_horizontally' ਅਤੇ "
+#~ "'toggle_maximize_vertically' ਜੋ ਵਿੰਡੋ ਨੂੰ ਉਸ ਦਿਸ਼ਾ ਵਿੱਚ ਵੱਧੋ-ਵੱਧ/ਅਣ-ਵੱਧੋ-ਵੱਧ ਕਰਦੀ "
+#~ "ਹੈ,'ਅਪਲੀਕਰਨ', ਜੋ ਕਿ ਵਿੰਢੋ ਨੂੰ ਅਪਲੀਕਰਨ ਕਰਦੀ ਹੈ, ਅਤੇ 'ਕੋਈ ਨਹੀਂ' ਕੁਝ ਨਹੀਂ ਕਰੇਗਾ, 'ਮੇਨੂ' ਵਿੰਡੋ "
+#~ "ਮੇਨੂ ਵੇਖਾਏਗਾ, 'ਸ਼ੇਡ' ਵਿੰਡੋ ਰੋਲ ਕਰੇਗਾ, ਅਤੇ 'ਹੇਠਾਂ' ਵਿੰਡੋ ਨੂੰ ਹੋਰ ਵਿੰਡੋ ਹੇਠ ਭੇਜੇਗਾ।"
+
+#~ msgid ""
+#~ "This option determines the effects of middle-clicking on the title bar. "
+#~ "Current valid options are 'toggle_shade', which will shade/unshade the "
+#~ "window, 'toggle_maximize' which will maximize/unmaximize the window, "
+#~ "'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which "
+#~ "will maximize/unmaximize the window in that direction only, 'minimize' "
+#~ "which will minimize the window, 'shade' which will roll the window up, "
+#~ "'menu' which will display the window menu, 'lower' which will put the "
+#~ "window behind all the others, and 'none' which will not do anything."
+#~ msgstr ""
+#~ "ਇਹ ਚੋਣ ਟਾਇਟਲ-ਬਾਰ ਉੱਤੇ ਮਿਡਲ-ਕਲਿੱਕ ਦਬਾਉ ਦਾ ਪ੍ਰਭਾਵ ਪਛਾਣਦੀ ਹੈ। ਮੌਜੂਦ ਯੋਗ ਚੋਣਾਂ ਹਨ  "
+#~ "'toggle_shade (ਰੰਗਤ_ਬਦਲੋ)', ਜਿਹੜੀ ਵਿੰਡੋ ਨੂੰ ਰੰਗਤ/ਬਿਨਾਂ-ਰੰਗਤ ਕਰਦੀ ਹੈ, ਅਤੇ "
+#~ "'toggle_maximize (ਅਧਿਕਤਮ ਬਦਲੋ)' ਜਿਹੜੀ ਵਿੰਡੋ ਨੂੰ maximize/unmaximize (ਅਧਿਕਤਮ/ਨਾ-"
+#~ "ਅਧਿਕਤਮ) ਕਰਦੀ ਹੈ, 'toggle_maximize_horizontally' ਅਤੇ "
+#~ "'toggle_maximize_vertically' ਜੋ ਵਿੰਡੋ ਨੂੰ ਉਸ ਦਿਸ਼ਾ ਵਿੱਚ ਵੱਧੋ-ਵੱਧ/ਅਣ-ਵੱਧੋ-ਵੱਧ ਕਰਦੀ "
+#~ "ਹੈ,'ਅਪਲੀਕਰਨ', ਜੋ ਕਿ ਵਿੰਢੋ ਨੂੰ ਅਪਲੀਕਰਨ ਕਰਦੀ ਹੈ, ਅਤੇ 'ਕੋਈ ਨਹੀਂ' ਕੁਝ ਨਹੀਂ ਕਰੇਗਾ, 'ਮੇਨੂ' ਵਿੰਡੋ "
+#~ "ਮੇਨੂ ਵੇਖਾਏਗਾ, 'ਸ਼ੇਡ' ਵਿੰਡੋ ਰੋਲ ਕਰੇਗਾ, ਅਤੇ 'ਹੇਠਾਂ' ਵਿੰਡੋ ਨੂੰ ਹੋਰ ਵਿੰਡੋ ਹੇਠ ਭੇਜੇਗਾ।"
+
+#~ msgid ""
+#~ "This option determines the effects of right-clicking on the title bar. "
+#~ "Current valid options are 'toggle_shade', which will shade/unshade the "
+#~ "window, 'toggle_maximize' which will maximize/unmaximize the window, "
+#~ "'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which "
+#~ "will maximize/unmaximize the window in that direction only, 'minimize' "
+#~ "which will minimize the window, 'shade' which will roll the window up, "
+#~ "'menu' which will display the window menu, 'lower' which will put the "
+#~ "window behind all the others, and 'none' which will not do anything."
+#~ msgstr ""
+#~ "ਇਹ ਚੋਣ ਟਾਇਟਲ-ਬਾਰ ਉੱਤੇ ਸੱਜਾ-ਕਲਿੱਕ ਦਬਾਉ ਦਾ ਪ੍ਰਭਾਵ ਪਛਾਣਦੀ ਹੈ। ਮੌਜੂਦ ਯੋਗ ਚੋਣਾਂ ਹਨ  "
+#~ "'toggle_shade (ਰੰਗਤ_ਬਦਲੋ)', ਜਿਹੜੀ ਵਿੰਡੋ ਨੂੰ ਰੰਗਤ/ਬਿਨਾਂ-ਰੰਗਤ ਕਰਦੀ ਹੈ, ਅਤੇ "
+#~ "'toggle_maximize (ਅਧਿਕਤਮ ਬਦਲੋ)' ਜਿਹੜੀ ਵਿੰਡੋ ਨੂੰ maximize/unmaximize (ਅਧਿਕਤਮ/ਨਾ-"
+#~ "ਅਧਿਕਤਮ) ਕਰਦੀ ਹੈ, 'toggle_maximize_horizontally' ਅਤੇ "
+#~ "'toggle_maximize_vertically' ਜੋ ਵਿੰਡੋ ਨੂੰ ਉਸ ਦਿਸ਼ਾ ਵਿੱਚ ਵੱਧੋ-ਵੱਧ/ਅਣ-ਵੱਧੋ-ਵੱਧ ਕਰਦੀ "
+#~ "ਹੈ,'ਅਪਲੀਕਰਨ', ਜੋ ਕਿ ਵਿੰਢੋ ਨੂੰ ਅਪਲੀਕਰਨ ਕਰਦੀ ਹੈ, ਅਤੇ 'ਕੋਈ ਨਹੀਂ' ਕੁਝ ਨਹੀਂ ਕਰੇਗਾ, 'ਮੇਨੂ' ਵਿੰਡੋ "
+#~ "ਮੇਨੂ ਵੇਖਾਏਗਾ, 'ਸ਼ੇਡ' ਵਿੰਡੋ ਰੋਲ ਕਰੇਗਾ, ਅਤੇ 'ਹੇਠਾਂ' ਵਿੰਡੋ ਨੂੰ ਹੋਰ ਵਿੰਡੋ ਹੇਠ ਭੇਜੇਗਾ।"
+
+#~ msgid ""
+#~ "This option provides additional control over how newly created windows "
+#~ "get focus. It has two possible values; \"smart\" applies the user's "
+#~ "normal focus mode, and \"strict\" results in windows started from a "
+#~ "terminal not being given focus."
+#~ msgstr ""
+#~ "ਇਹ ਚੋਣ ਵੱਧ ਕੰਟਰੋਲ ਦਿੰਦੀ ਹੈ ਕਿ ਨਵਾਂ ਬਣਾਈ ਵਿੰਡੋ ਕਿਵੇਂ ਫੋਕਸ ਲਵੇ। ਦੋ ਸੰਭਵ ਮੁੱਲ ਹਨ; \"ਸਮਾਰਟ\" "
+#~ "ਸਧਾਰਨ ਯੂਜ਼ਰ ਫੋਕਸ ਢੰਗ ਲਾਗੂ ਕਰਦਾ ਹੈ ਅਤੇ \"ਸਖਤ\" ਨਤੀਜੇ ਵਜੋਂ ਇੱਕ ਟਰਮੀਨਲ ਤੋਂ ਚਾਲੂ ਹੋਏ ਵਿੰਡੋ ਨੂੰ "
+#~ "ਫੋਕਸ ਨਹੀਂ ਦਿੰਦਾ ਹੈ।"
+
+#~ msgid ""
+#~ "Turns on a visual indication when an application or the system issues a "
+#~ "'bell' or 'beep'; useful for the hard-of-hearing and for use in noisy "
+#~ "environments."
+#~ msgstr ""
+#~ "ਦਰਿਸ਼ੀ ਸੰਕੇਤ ਨੂੰ ਯੋਗ ਕਰੋ ਜਦੋਂ ਇੱਕ ਕਾਰਜ ਜਾਂ ਸਿਸਟਮ 'ਘੰਟੀ' ਜਾਂ 'ਬੀਪ' ਦਿੰਦਾ ਹੈ; ਸੁਣਨ ਦੀ ਮੁਸ਼ਕਿਲ "
+#~ "ਲਈ ਯੂਜ਼ਰ ਅਤੇ ਰੌਲੇ-ਰੱਪੇ ਵਾਲੇ ਮਾਹੌਲ ਵਿੱਚ ਵਰਤਣ ਲਈ, ਜਾਂ ਜਦੋਂ 'ਆਵਾਜ਼ੀ ਘੰਟੀ' ਬੰਦ ਹੋਵੇ।"
+
+#~ msgid "Use standard system font in window titles"
+#~ msgstr "ਵਿੰਡੋ ਟਾਇਟਲਾਂ ਵਿੱਚ ਸਟੈਂਡਰਡ ਫੋਟ ਵਰਤੋਂ"
+
+#~ msgid "Visual Bell Type"
+#~ msgstr "ਦਿੱਖ ਘੰਟੀ ਕਿਸਮ"
+
+#~ msgid "Whether raising should be a side-effect of other user interactions"
+#~ msgstr "ਜਦੋਂ ਵਧਾਇਆ ਜਾਵੇਗਾ ਤਾਂ ਹੋਰ ਯੂਜ਼ਰ ਦਖਲਾਂ ਉੱਤੇ ਗਲਤ ਪਰਭਾਵ ਪਵੇਗਾ"
+
+#~ msgid "Whether to resize with the right button"
+#~ msgstr "ਕੀ ਸੱਜੇ ਬਟਨ ਨਾਲ ਮੁੜ-ਸਾਈਜ਼ ਕਰਨਾ ਹੈ"
+
+#~ msgid "Window focus mode"
+#~ msgstr "ਵਿੰਡੋ ਫੋਕਸ ਰੂਪ"
+
+#~ msgid "Window title font"
+#~ msgstr "ਝਰੋਖਾ ਟਾਇਟਲ ਫੋਟ"
+
+#~ msgid "/Windows/tearoff"
+#~ msgstr "/ਵਿੰਡੋ/ਝਟਕੇ ਨਾਲ ਵੱਖ"
+
+#~ msgid "/Windows/_Dialog"
+#~ msgstr "/ਵਿੰਡੋ/ਡਾਈਲਾਗ(_D)"
+
+#~ msgid "/Windows/_Modal dialog"
+#~ msgstr "/ਵਿੰਡੋ/ਮਾਡਲ ਡਾਈਲਾਗ(_M)"
+
+#~ msgid "/Windows/Des_ktop"
+#~ msgstr "/ਵਿੰਡੋ/ਡੈਸਕਟਾਪ(_k)"
 
 #~ msgid "Window Management"
 #~ msgstr "ਵਿੰਡੋ ਮੈਨੇਜ਼ਮੈਂਟ"
@@ -2470,15 +2313,6 @@ msgstr "%d ਸਮਾਨਾਰਥਕ ਕਥਨ ਦੀ ਪਾਰਸ %g ਸਕਿ�
 
 #~ msgid "Move window to north (top) side of screen"
 #~ msgstr "ਵਿੰਡੋ ਨੂੰ ਸਕਰੀਨ ਦੇ ਉੱਤਰੀ ਪਾਸੇ (ਉੱਤੇ) ਭੇਜੋ"
-
-#~ msgid "Open another one of these windows"
-#~ msgstr "ਇਹਨਾਂ ਵਿੰਡੋਜ਼ ਵਿੱਚੋਂ ਕੋਈ ਹੋਰ ਖੋਲ੍ਹੋ"
-
-#~ msgid "This is a demo button with an 'open' icon"
-#~ msgstr "ਇਹ 'ਖੋਲ੍ਹੋ' ਆਈਕਾਨ ਨਾਲ ਡੈਮੋ ਬਟਨ ਹੈ"
-
-#~ msgid "This is a demo button with a 'quit' icon"
-#~ msgstr "ਇਹ 'ਬਾਹਰ ਜਾਓ' ਆਈਕਾਨ ਨਾਲ ਡੈਮੋ ਬਟਨ ਹੈ"
 
 #~ msgid "Failed to parse message \"%s\" from dialog process\n"
 #~ msgstr "ਡਾਈਲਾਗ ਪਰੋਸੈਸ ਵਿੱਚੋਂ \"%s\" ਸੁਨੇਹੇ ਦੀ ਪਾਰਸ ਕਰਨ ਵਿੱਚ ਫੇਲ੍ਹ\n"
