@@ -3,7 +3,7 @@
                 group="system"
                 _name="Navigation"
                 wm_name="Metacity"
-                package="gsettings-desktop-schemas">
+                package="metacity">
 
 	<KeyListEntry name="move-to-workspace-1"
 	              _description="Move window to workspace 1" />

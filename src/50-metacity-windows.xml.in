@@ -3,7 +3,7 @@
                 group="system"
                 _name="Windows"
                 wm_name="Metacity"
-                package="gsettings-desktop-schemas">
+                package="metacity">
 
 	<KeyListEntry name="activate-window-menu" _description="Activate the window menu"/>
 

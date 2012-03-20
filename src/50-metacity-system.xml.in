@@ -3,7 +3,7 @@
                 group="system"
                 _name="System"
                 wm_name="Metacity"
-                package="gsettings-desktop-schemas">
+                package="metacity">
 
 	<KeyListEntry name="panel-run-dialog" _description="Show the run command prompt"/>
 
