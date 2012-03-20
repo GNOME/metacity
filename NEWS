@@ -1,3 +1,39 @@
+Version 2.34.3
+==============
+
+ - Use the correct translation domain in keybinding definitions (Ryan Lortie, Florian Müllner)
+
+Translations:
+    YunQiang Su (zh_CN)
+    Abderrahim Kitouni (ar)
+    Marek Černocký (cs)
+    David Planella (ca)
+    Sasi Bhushan (te)
+    A S Alam (pa)
+    Duarte Loreto (pt)
+    Antonio Fernandes C. Neto (pt_BR)
+    Anita Reitere (lv)
+    Bruce Cowan (en_GB)
+    Daniel Nylander (sv)
+    Timo Jyrinki (fi)
+    Nilamdyuti Goswami (as)
+    Piotr Drąg (pl)
+    Claude Paroz (fr)
+    Seong-ho Cho (ko)
+    Inaki Larranaga Murgoitio (eu)
+    Mario Blättermann (de)
+    Nguyễn Thái Ngọc Duy (vi)
+    Gabor Kelemen (hu)
+    Daniel Mustieles (es)
+    Dr.T.Vasudevan (ta)
+    Kasia Bondarava (be)
+    Alexander Shopov (bg)
+    Ask H. Larsen (da)
+    Мирослав Николић (sr)
+    Yuri Myasoedov (ru)
+    Mattias Põldaru (et)
+
+
 Version 2.34.2
 ==============
 
