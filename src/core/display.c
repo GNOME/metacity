@@ -4385,12 +4385,13 @@ meta_display_get_tab_list (MetaDisplay   *display,
   tab_list = g_list_reverse (tab_list);
 
   {
-    GSList *tmp;
+    GSList *windows, *tmp;
     MetaWindow *l_window;
 
-    tmp = meta_display_list_windows (display);
+    windows = meta_display_list_windows (display);
 
     /* Go through all windows */
+    tmp = windows;
     while (tmp != NULL)
       {
         l_window=tmp->data;
@@ -4406,6 +4407,8 @@ meta_display_get_tab_list (MetaDisplay   *display,
 
         tmp = tmp->next;
       } /* End while tmp!=NULL */
+
+    g_slist_free (windows);
   }
   
   return tab_list;
