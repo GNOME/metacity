@@ -66,6 +66,14 @@ Many window managers are like Marshmallow Froot Loops; Metacity is like Cheerios
   </foaf:Person>
  </maintainer>
 
+ <maintainer>
+  <foaf:Person>
+     <foaf:name>Florian Müllner</foaf:name>
+     <foaf:mbox rdf:resource="mailto:fmuellner@gnome.org"/>
+     <gnome:userid>fmuellner</gnome:userid>
+  </foaf:Person>
+ </maintainer>
+
 	<release><Version>
 	    <name>2.25.1 release</name>
 	    <created>2008-09-01</created>
