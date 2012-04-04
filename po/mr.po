@@ -11,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2012-01-12 16:13+0000\n"
-"PO-Revision-Date: 2012-04-04 10:11+0530\n"
+"PO-Revision-Date: 2012-04-04 10:52+0530\n"
 "Last-Translator: Sandeep Shedmake <sshedmak@redhat.com>\n"
 "Language-Team: Marathi <maajhe-sanganak@freelists.org>\n"
 "MIME-Version: 1.0\n"
@@ -30,22 +30,22 @@ msgstr "साधारण पटलांना लपवा"
 #: ../src/50-metacity-navigation.xml.in.h:2
 #| msgid "Move to Workspace _Left"
 msgid "Move to workspace above"
-msgstr "वरील वर्कस्पेसवर जा"
+msgstr "वरील कार्यक्षेत्रावर जा"
 
 #: ../src/50-metacity-navigation.xml.in.h:3
 #| msgid "Move to Workspace _Down"
 msgid "Move to workspace below"
-msgstr "खालिल वर्कस्पेसवर जा"
+msgstr "खालिल कार्यक्षेत्रावर जा"
 
 #: ../src/50-metacity-navigation.xml.in.h:4
 #| msgid "Move to Workspace _Left"
 msgid "Move to workspace left"
-msgstr "डाव्या वर्कस्पेसवर जा"
+msgstr "डाव्या कार्यक्षेत्रावर जा"
 
 #: ../src/50-metacity-navigation.xml.in.h:5
 #| msgid "Move to Workspace R_ight"
 msgid "Move to workspace right"
-msgstr "उजव्या वर्कस्पेसवर जा"
+msgstr "उजव्या कार्यक्षेत्रावर जा"
 
 #: ../src/50-metacity-navigation.xml.in.h:6
 msgid "Move window one workspace down"
@@ -202,7 +202,7 @@ msgstr "सावलीतील स्थितीत टॉगल करा"
 #: ../src/50-metacity-windows.xml.in.h:16
 #| msgid "Toggle whether window is on all workspaces or just one"
 msgid "Toggle window on all workspaces or one"
-msgstr "पटलास सर्व वर्कस्पेस किंवा एका वर्कस्पेसवर बदल करा"
+msgstr "पटलास सर्व कार्यक्षेत्र किंवा एका कार्यक्षेत्राचा वापर करा"
 
 #: ../src/50-metacity-windows.xml.in.h:17
 #| msgid "/_Windows"
