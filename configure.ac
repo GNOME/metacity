@@ -129,9 +129,6 @@ AC_ARG_ENABLE(render,
                  [disable metacity's use of the RENDER extension]),,
   enable_render=auto)
 
-## try definining HAVE_BACKTRACE
-AC_CHECK_HEADERS(execinfo.h, [AC_CHECK_FUNCS(backtrace)])
-
 AM_GLIB_GNU_GETTEXT
 
 ## here we get the flags we'll actually use
