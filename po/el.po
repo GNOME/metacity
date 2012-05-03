@@ -17,40 +17,195 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity.gnome-2-26\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=metacity&component=general\n"
-"POT-Creation-Date: 2011-03-05 23:31+0000\n"
-"PO-Revision-Date: 2011-03-14 18:52+0200\n"
-"Last-Translator: Jennie Petoumenou <epetoumenou@gmail.com>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-05-03 11:08+0300\n"
+"PO-Revision-Date: 2012-04-23 13:31+0200\n"
+"Last-Translator: Tom Tryfonidis <tomtryf@gmail.com>\n"
 "Language-Team: Greek <team@gnome.gr>\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../src/50-metacity-launchers.xml.in.h:1
-msgid "Launchers"
-msgstr "Εκκινητές"
-
 #: ../src/50-metacity-navigation.xml.in.h:1
+msgid "Hide all normal windows"
+msgstr "Απόκρυψη όλων των κανονικών παραθύρων"
+
+#: ../src/50-metacity-navigation.xml.in.h:2
+msgid "Move to workspace above"
+msgstr "Μετακίνηση στο χώρο εργασίας επάνω"
+
+#: ../src/50-metacity-navigation.xml.in.h:3
+msgid "Move to workspace below"
+msgstr "Μετακίνηση στο χώρο εργασίας κάτω"
+
+#: ../src/50-metacity-navigation.xml.in.h:4
+msgid "Move to workspace left"
+msgstr "Μετακίνηση στο χώρο εργασίας αριστερά"
+
+#: ../src/50-metacity-navigation.xml.in.h:5
+msgid "Move to workspace right"
+msgstr "Μετακίνηση στο χώρο εργασίας δεξιά"
+
+#: ../src/50-metacity-navigation.xml.in.h:6
+msgid "Move window one workspace down"
+msgstr "Μετακίνηση του παραθύρου ένα χώρο εργασίας κάτω"
+
+#: ../src/50-metacity-navigation.xml.in.h:7
+msgid "Move window one workspace to the left"
+msgstr "Μετακίνηση του παραθύρου ένα χώρο εργασίας αριστερά"
+
+#: ../src/50-metacity-navigation.xml.in.h:8
+msgid "Move window one workspace to the right"
+msgstr "Μετακίνηση του παραθύρου ένα χώρο εργασίας δεξιά"
+
+#: ../src/50-metacity-navigation.xml.in.h:9
+msgid "Move window one workspace up"
+msgstr "Μετακίνηση του παραθύρου ένα χώρο εργασίας πάνω"
+
+#: ../src/50-metacity-navigation.xml.in.h:10
+msgid "Move window to workspace 1"
+msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 1"
+
+#: ../src/50-metacity-navigation.xml.in.h:11
+msgid "Move window to workspace 2"
+msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 2"
+
+#: ../src/50-metacity-navigation.xml.in.h:12
+msgid "Move window to workspace 3"
+msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 3"
+
+#: ../src/50-metacity-navigation.xml.in.h:13
+msgid "Move window to workspace 4"
+msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 4"
+
+#: ../src/50-metacity-navigation.xml.in.h:14
 msgid "Navigation"
 msgstr "Πλοήγηση"
 
-#: ../src/50-metacity-screenshot.xml.in.h:1
-#| msgid "Take a screenshot"
-msgid "Screenshots"
-msgstr "Στιγμιότυπα οθόνης"
+#: ../src/50-metacity-navigation.xml.in.h:15
+msgid "Switch applications"
+msgstr "Εναλλαγή εφαρμογών"
+
+#: ../src/50-metacity-navigation.xml.in.h:16
+msgid "Switch system controls"
+msgstr "Εναλλαγή ελέγχων συστήματος"
+
+#: ../src/50-metacity-navigation.xml.in.h:17
+msgid "Switch system controls directly"
+msgstr "Αναστροφή άμεση εναλλαγή ελέγχων συστήματος"
+
+#: ../src/50-metacity-navigation.xml.in.h:18
+msgid "Switch to workspace 1"
+msgstr "Αλλαγή στο χώρο εργασίας 1"
+
+#: ../src/50-metacity-navigation.xml.in.h:19
+msgid "Switch to workspace 2"
+msgstr "Αλλαγή στο χώρο εργασίας 2"
+
+#: ../src/50-metacity-navigation.xml.in.h:20
+msgid "Switch to workspace 3"
+msgstr "Αλλαγή στο χώρο εργασίας 3"
+
+#: ../src/50-metacity-navigation.xml.in.h:21
+msgid "Switch to workspace 4"
+msgstr "Αλλαγή στο χώρο εργασίας 4"
+
+#: ../src/50-metacity-navigation.xml.in.h:22
+msgid "Switch windows directly"
+msgstr "Απευθείας εναλλαγή παραθύρων"
+
+#: ../src/50-metacity-navigation.xml.in.h:23
+msgid "Switch windows of an app directly"
+msgstr "Άμεση εναλλαγή μεταξύ παραθύρων μιας εφαρμογής"
+
+#: ../src/50-metacity-navigation.xml.in.h:24
+msgid "Switch windows of an application"
+msgstr "Άμεση εναλλαγή μεταξύ παραθύρων μιας εφαρμογής"
 
 #: ../src/50-metacity-system.xml.in.h:1
+msgid "Show the activities overview"
+msgstr "Εμφάνιση της επισκόπησης των δραστηριοτήτων"
+
+#: ../src/50-metacity-system.xml.in.h:2
+msgid "Show the run command prompt"
+msgstr "Εμφάνιση της ειδοποίησης της εντολής run"
+
+#: ../src/50-metacity-system.xml.in.h:3
 msgid "System"
 msgstr "Σύστημα"
 
 #: ../src/50-metacity-windows.xml.in.h:1
-#| msgid "/_Windows"
+msgid "Activate the window menu"
+msgstr "Ενεργοποίηση του μενού του παραθύρου"
+
+#: ../src/50-metacity-windows.xml.in.h:2
+msgid "Close window"
+msgstr "Κλείσιμο παραθύρου"
+
+#: ../src/50-metacity-windows.xml.in.h:3
+msgid "Lower window below other windows"
+msgstr "Χαμήλωμα παραθύρου κάτω από τα άλλα παράθυρα"
+
+#: ../src/50-metacity-windows.xml.in.h:4
+msgid "Maximize window"
+msgstr "Μεγιστοποίηση παραθύρου"
+
+#: ../src/50-metacity-windows.xml.in.h:5
+msgid "Maximize window horizontally"
+msgstr "Μεγιστοποίηση ενός παραθύρου οριζόντια"
+
+#: ../src/50-metacity-windows.xml.in.h:6
+msgid "Maximize window vertically"
+msgstr "Μεγιστοποίηση ενός παραθύρου κάθετα"
+
+#: ../src/50-metacity-windows.xml.in.h:7
+msgid "Minimize window"
+msgstr "Ελαχιστοποίηση παραθύρου"
+
+#: ../src/50-metacity-windows.xml.in.h:8
+msgid "Move window"
+msgstr "Μετακίνηση παραθύρου"
+
+#: ../src/50-metacity-windows.xml.in.h:9
+msgid "Raise window above other windows"
+msgstr "Ανασήκωση παραθύρου πάνω από τα άλλα παράθυρα"
+
+#: ../src/50-metacity-windows.xml.in.h:10
+msgid "Raise window if covered, otherwise lower it"
+msgstr ""
+"Ανασήκωση παραθύρου αν καλύπτεται από άλλο παράθυρο, αλλιώς χαμήλωμα του"
+
+#: ../src/50-metacity-windows.xml.in.h:11
+msgid "Resize window"
+msgstr "Αλλαγή μεγέθους παραθύρου"
+
+#: ../src/50-metacity-windows.xml.in.h:12
+msgid "Restore window"
+msgstr "Επαναφορά παραθύρου"
+
+#: ../src/50-metacity-windows.xml.in.h:13
+msgid "Toggle fullscreen mode"
+msgstr "Εναλλαγή κατάστασης πλήρους οθόνης"
+
+#: ../src/50-metacity-windows.xml.in.h:14
+msgid "Toggle maximization state"
+msgstr "Εναλλαγή κατάστασης μεγιστοποίησης"
+
+#: ../src/50-metacity-windows.xml.in.h:15
+msgid "Toggle shaded state"
+msgstr "Εναλλαγή σκιασμένης κατάστασης"
+
+#: ../src/50-metacity-windows.xml.in.h:16
+msgid "Toggle window on all workspaces or one"
+msgstr "Εναλλαγή παραθύρου σε όλες τις επιφάνειες εργασίας ή σε μία"
+
+#: ../src/50-metacity-windows.xml.in.h:17
 msgid "Windows"
 msgstr "Παράθυρα"
 
-#: ../src/core/bell.c:299
+#: ../src/core/bell.c:296
 msgid "Bell event"
 msgstr "Ηχητικό συμβάν κουδουνιού"
 
@@ -122,30 +277,6 @@ msgid ""
 msgstr ""
 "Κάποιο άλλο πρόγραμμα χρησιμοποιεί ήδη το κλειδί %s με μετατροπείς %x ώς "
 "δεσμό\n"
-
-#. Displayed when a keybinding which is
-#. * supposed to launch a program fails.
-#.
-#: ../src/core/keybindings.c:2343
-#, c-format
-msgid ""
-"There was an error running <tt>%s</tt>:\n"
-"\n"
-"%s"
-msgstr ""
-"Σφάλμα κατά την εκτέλεση του <tt>%s</tt>:\n"
-"\n"
-"%s"
-
-#: ../src/core/keybindings.c:2432
-#, c-format
-msgid "No command %d has been defined.\n"
-msgstr "Δεν έχει ορισθεί εντολή %d.\n"
-
-#: ../src/core/keybindings.c:3386
-#, c-format
-msgid "No terminal command has been defined.\n"
-msgstr "Δεν έχει ορισθεί εντολή τερματικού.\n"
 
 #: ../src/core/main.c:131
 #, c-format
@@ -225,36 +356,7 @@ msgstr ""
 msgid "Failed to restart: %s\n"
 msgstr "Αποτυχία επανεκκίνησης: %s\n"
 
-#.
-#. * We found it, but it was invalid.  Complain.
-#. *
-#. * FIXME: This replicates the original behaviour, but in the future
-#. * we might consider reverting invalid keys to their original values.
-#. * (We know the old value, so we can look up a suitable string in
-#. * the symtab.)
-#. *
-#. * (Empty comment follows so the translators don't see this.)
-#.
-#.
-#: ../src/core/prefs.c:508 ../src/core/prefs.c:663
-#, c-format
-msgid "GConf key '%s' is set to an invalid value\n"
-msgstr "Το GConf key '%s'  έχει ορισθεί σε μια μη έγκυρη τιμή\n"
-
-#: ../src/core/prefs.c:589 ../src/core/prefs.c:832
-#, c-format
-msgid "%d stored in GConf key %s is out of range %d to %d\n"
-msgstr ""
-"Το %d που αποθηκεύτηκε στο κλειδί GConf %s είναι εκτός του εύρους %d έως %d\n"
-
-#: ../src/core/prefs.c:633 ../src/core/prefs.c:710 ../src/core/prefs.c:758
-#: ../src/core/prefs.c:822 ../src/core/prefs.c:1115 ../src/core/prefs.c:1131
-#: ../src/core/prefs.c:1148 ../src/core/prefs.c:1164
-#, c-format
-msgid "GConf key \"%s\" is set to an invalid type\n"
-msgstr "Ο τύπος που έχει οριστεί για το κλειδί GConf \"%s\" είναι μη έγκυρος\n"
-
-#: ../src/core/prefs.c:1234
+#: ../src/core/prefs.c:880
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -262,13 +364,13 @@ msgstr ""
 "Οι προσωρινές λύσεις για προβληματικές εφαρμογές έχουν απενεργοποιηθεί. "
 "Μερικές εφαρμογές μπορεί να μη συμπεριφέρονται σωστά.\n"
 
-#: ../src/core/prefs.c:1305
+#: ../src/core/prefs.c:949
 #, c-format
-msgid "Could not parse font description \"%s\" from GConf key %s\n"
+msgid "Could not parse font description \"%s\" from GSettings key %s\n"
 msgstr ""
-"Αδυναμία ανάλυσης περιγραφής γραμματοσειράς \"%s\" από κλειδί GConf %s\n"
+"Αδυναμία ανάλυσης περιγραφής γραμματοσειράς \"%s\" από κλειδί GSettings %s\n"
 
-#: ../src/core/prefs.c:1367
+#: ../src/core/prefs.c:1015
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -277,18 +379,7 @@ msgstr ""
 "Το \"%s\" που βρέθηκε στη βάση δεδομένων ρυθμίσεων δεν είναι μια έγκυρη τιμή "
 "για μετατροπέα κουμπιού ποντικιού\n"
 
-# gconf/gconfd.c:1561
-#: ../src/core/prefs.c:1788
-#, c-format
-msgid "Error setting number of workspaces to %d: %s\n"
-msgstr "Σφάλμα κατά τον ορισμό αριθμού χώρων εργασίας σε  %d: %s\n"
-
-#: ../src/core/prefs.c:1959 ../src/core/prefs.c:2461
-#, c-format
-msgid "Workspace %d"
-msgstr "Χώρος εργασίας %d"
-
-#: ../src/core/prefs.c:1988 ../src/core/prefs.c:2166
+#: ../src/core/prefs.c:1494
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -297,17 +388,10 @@ msgstr ""
 "Το \"%s\" που βρέθηκε στη βάση δεδομένων ρυθμίσεων δεν είναι μια έγκυρη τιμή "
 "για συνδυασμό πλήκτρων\"%s\"\n"
 
-# gconf/gconfd.c:1561
-#: ../src/core/prefs.c:2542
+#: ../src/core/prefs.c:1601
 #, c-format
-msgid "Error setting name for workspace %d to \"%s\": %s\n"
-msgstr "Σφάλμα κατά τον ορισμό ονόματος χώρου εργασίας %d σε \"%s\": %s\n"
-
-# gconf/gconfd.c:1561
-#: ../src/core/prefs.c:2746
-#, c-format
-msgid "Error setting compositor status: %s\n"
-msgstr "Σφάλμα κατά τον ορισμό της κατάστασης του compositor: %s\n"
+msgid "Workspace %d"
+msgstr "Χώρος εργασίας %d"
 
 #: ../src/core/screen.c:357
 #, c-format
@@ -340,49 +424,6 @@ msgstr "Η οθόνη  %d στην προβολή \"%s\" έχει ήδη ένα 
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "Αδυναμία απελευθέρωσης οθόνης %d στην προβολή \"%s\"\n"
-
-#. Translators: Please don't translate "Control", "Shift", etc, since these
-#. * are hardcoded (in gtk/gtkaccelgroup.c; it's not metacity's fault).
-#. * "disabled" must also stay as it is.
-#.
-#: ../src/core/schema-bindings.c:169
-msgid ""
-"The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
-"\n"
-"The parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action."
-msgstr ""
-"Μπορεί να έχει τη μορφή \"<Control>a\" ή \"<Shift><Alt>F1\".\n"
-"\n"
-"Τα κριτήρια ανάλυσης είναι αρκετά ελαστικά· και επιτρέπουν τη χρήση πεζών ή "
-"κεφαλαίων χαρακτήρων, καθώς και συντμήσεων όπως \"<Ctl>\" ή \"<Ctrl>\". Αν "
-"ορίσετε την επιλογή στην τιμή \"ανενεργό\", τότε δεν θα ισχύει καμία "
-"συντόμευση για την ενέργεια."
-
-#: ../src/core/schema-bindings.c:177
-msgid ""
-"The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
-"\n"
-"The parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action.\n"
-"\n"
-"This keybinding may be reversed by holding down the \"shift\" key; "
-"therefore, \"shift\" cannot be one of the keys it uses."
-msgstr ""
-"Μπορεί να έχει τη μορφή \"<Control>a\" ή \"<Shift><Alt>F1\".\n"
-"\n"
-"Τα κριτήρια ανάλυσης είναι αρκετά ελαστικά· επιτρέπουν τη χρήση πεζών ή "
-"κεφαλαίων χαρακτήρων, καθώς και συντμήσεων όπως \"<Ctl>\" ή \"<Ctrl>\". Αν "
-"ορίσετε την επιλογή στην τιμή \"ανενεργό\", τότε δεν θα ισχύει καμία "
-"συντόμευση για την ενέργεια.\n"
-"\n"
-"Αυτή η συντόμευση μπορεί να αντιστραφεί, αν κρατήσετε πατημένο το πλήκτρο "
-"\"shift\". Άρα, στα πλήκτρα της συντόμευσης δεν θα πρέπει να περιλαμβάνεται "
-"το \"shift\"."
 
 # gconf/gconf-internals.c:2333
 #: ../src/core/session.c:842 ../src/core/session.c:849
@@ -484,7 +525,6 @@ msgid "Window manager error: "
 msgstr "Σφάλμα διαχειριστή παραθύρων: "
 
 #. Translators: This is the title used on dialog boxes
-#. eof all-keybindings.h
 #: ../src/core/util.c:570 ../src/metacity.desktop.in.h:1
 #: ../src/metacity-wm.desktop.in.h:1
 msgid "Metacity"
@@ -510,8 +550,8 @@ msgstr ""
 #: ../src/core/window.c:6269
 #, c-format
 msgid ""
-"Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
-"d x %d and max size %d x %d; this doesn't make much sense.\n"
+"Window %s sets an MWM hint indicating it isn't resizable, but sets min size "
+"%d x %d and max size %d x %d; this doesn't make much sense.\n"
 msgstr ""
 "Το παράθυρο %s  όρισε μια συμβουλή  MWM ότι δεν είναι δυνατή η αλλαγή "
 "μεγέθους, αλλά όρισε ελάχιστο μέγεθος  %d x %d και μέγιστο μέγεθος %d x %d; "
@@ -582,468 +622,15 @@ msgstr ""
 "Η ιδιότητα %s στο παράθυρο 0x%lx περιείχε μη έγκυρο UTF-8\n"
 " για το αντικείμενο %d στη λίστα\n"
 
-#: ../src/include/all-keybindings.h:88
-msgid "Switch to workspace 1"
-msgstr "Αλλαγή στο χώρο εργασίας 1"
-
-#: ../src/include/all-keybindings.h:90
-msgid "Switch to workspace 2"
-msgstr "Αλλαγή στο χώρο εργασίας 2"
-
-#: ../src/include/all-keybindings.h:92
-msgid "Switch to workspace 3"
-msgstr "Αλλαγή στο χώρο εργασίας 3"
-
-#: ../src/include/all-keybindings.h:94
-msgid "Switch to workspace 4"
-msgstr "Αλλαγή στο χώρο εργασίας 4"
-
-#: ../src/include/all-keybindings.h:96
-msgid "Switch to workspace 5"
-msgstr "Αλλαγή στο χώρο εργασίας 5"
-
-#: ../src/include/all-keybindings.h:98
-msgid "Switch to workspace 6"
-msgstr "Αλλαγή στο χώρο εργασίας 6"
-
-#: ../src/include/all-keybindings.h:100
-msgid "Switch to workspace 7"
-msgstr "Αλλαγή στο χώρο εργασίας 7"
-
-#: ../src/include/all-keybindings.h:102
-msgid "Switch to workspace 8"
-msgstr "Αλλαγή στο χώρο εργασίας 8"
-
-#: ../src/include/all-keybindings.h:104
-msgid "Switch to workspace 9"
-msgstr "Αλλαγή στο χώρο εργασίας 9"
-
-#: ../src/include/all-keybindings.h:106
-msgid "Switch to workspace 10"
-msgstr "Αλλαγή στο χώρο εργασίας 10"
-
-#: ../src/include/all-keybindings.h:108
-msgid "Switch to workspace 11"
-msgstr "Αλλαγή στο χώρο εργασίας 11"
-
-#: ../src/include/all-keybindings.h:110
-msgid "Switch to workspace 12"
-msgstr "Αλλαγή στο χώρο εργασίας 12"
-
-#: ../src/include/all-keybindings.h:122
-#| msgid "Move to Workspace _Left"
-msgid "Move to workspace left"
-msgstr "Μετακίνηση στο χώρο εργασίας αριστερά"
-
-#: ../src/include/all-keybindings.h:126
-#| msgid "Move to Workspace R_ight"
-msgid "Move to workspace right"
-msgstr "Μετακίνηση στο χώρο εργασίας δεξιά"
-
-#: ../src/include/all-keybindings.h:130
-#| msgid "Move to Workspace _Left"
-msgid "Move to workspace above"
-msgstr "Μετακίνηση στο χώρο εργασίας επάνω"
-
-#: ../src/include/all-keybindings.h:134
-#| msgid "Move to Workspace _Down"
-msgid "Move to workspace below"
-msgstr "Μετακίνηση στο χώρο εργασίας κάτω"
-
-#: ../src/include/all-keybindings.h:150
-#| msgid "Move between windows of an application immediately"
-msgid "Switch windows of an application"
-msgstr "Άμεση εναλλαγή μεταξύ παραθύρων μιας εφαρμογής"
-
-#: ../src/include/all-keybindings.h:153
-#| msgid "Move between windows of an application immediately"
-msgid "Reverse switch windows of an application"
-msgstr "Ανάστροφη εναλλαγή μεταξύ παραθύρων μιας εφαρμογής"
-
-#: ../src/include/all-keybindings.h:156
-msgid "Switch applications"
-msgstr "Εναλλαγή εφαρμογών"
-
-#: ../src/include/all-keybindings.h:159
-msgid "Reverse switch applications"
-msgstr "Αναστροφή εναλλαγής εφαρμογών"
-
-#: ../src/include/all-keybindings.h:162
-msgid "Switch system controls"
-msgstr "Εναλλαγή ελέγχων συστήματος"
-
-#: ../src/include/all-keybindings.h:165
-msgid "Reverse switch system controls"
-msgstr "Αναστροφή εναλλαγής ελέγχων συστήματος"
-
-#: ../src/include/all-keybindings.h:169
-#| msgid "Move between windows of an application immediately"
-msgid "Switch windows of an app directly"
-msgstr "Άμεση εναλλαγή μεταξύ παραθύρων μιας εφαρμογής"
-
-#: ../src/include/all-keybindings.h:172
-#| msgid "Move between windows of an application immediately"
-msgid "Reverse switch windows of an app directly"
-msgstr "Αναστροφή άμεσης εναλλαγής μεταξύ παραθύρων μιας εφαρμογής"
-
-#: ../src/include/all-keybindings.h:175
-msgid "Switch windows directly"
-msgstr "Απευθείας εναλλαγή παραθύρων"
-
-#: ../src/include/all-keybindings.h:178
-msgid "Reverse switch windows directly"
-msgstr "Αναστροφή άμεσης εναλλαγής παραθύρων"
-
-#: ../src/include/all-keybindings.h:181
-msgid "Switch system controls directly"
-msgstr "Αναστροφή άμεση εναλλαγή ελέγχων συστήματος"
-
-#: ../src/include/all-keybindings.h:184
-msgid "Reverse switch system controls directly"
-msgstr "Αναστροφή της άμεσης εναλλαγής των ελέγχων συστήματος"
-
-#: ../src/include/all-keybindings.h:189
-#| msgid "Hide all normal windows and set focus to the desktop"
-msgid "Hide all normal windows"
-msgstr "Απόκρυψη όλων των κανονικών παραθύρων"
-
-#: ../src/include/all-keybindings.h:192
-msgid "Show the activities overview"
-msgstr "Εμφάνιση της επισκόπησης των δραστηριοτήτων"
-
-#: ../src/include/all-keybindings.h:195
-#| msgid "Show the panel's main menu"
-msgid "Show the run command prompt"
-msgstr "Εμφάνιση της ειδοποίησης της εντολής run"
-
-#: ../src/include/all-keybindings.h:236
-msgid "Take a screenshot"
-msgstr "Λήψη στιγμιότυπου οθόνης"
-
-#: ../src/include/all-keybindings.h:238
-msgid "Take a screenshot of a window"
-msgstr "Λήψη στιγμιότυπου ενός παραθύρου"
-
-#: ../src/include/all-keybindings.h:240
-#| msgid "Run a terminal"
-msgid "Launch Terminal"
-msgstr "Εκτέλεση τερματικού"
-
-#: ../src/include/all-keybindings.h:255
-msgid "Activate the window menu"
-msgstr "Ενεργοποίηση του μενού του παραθύρου"
-
-#: ../src/include/all-keybindings.h:258
-msgid "Toggle fullscreen mode"
-msgstr "Εναλλαγή κατάστασης πλήρους οθόνης"
-
-#: ../src/include/all-keybindings.h:260
-msgid "Toggle maximization state"
-msgstr "Εναλλαγή κατάστασης μεγιστοποίησης"
-
-#: ../src/include/all-keybindings.h:262
-msgid "Toggle window always appearing on top"
-msgstr "Το παράθυρο που θα γίνει εναλλαγή να εμφανίζεται πάντα επάνω"
-
-#: ../src/include/all-keybindings.h:264
-msgid "Maximize window"
-msgstr "Μεγιστοποίηση παραθύρου"
-
-#: ../src/include/all-keybindings.h:266
-msgid "Restore window"
-msgstr "Επαναφορά παραθύρου"
-
-#: ../src/include/all-keybindings.h:268
-msgid "Toggle shaded state"
-msgstr "Εναλλαγή σκιασμένης κατάστασης"
-
-#: ../src/include/all-keybindings.h:270
-msgid "Minimize window"
-msgstr "Ελαχιστοποίηση παραθύρου"
-
-#: ../src/include/all-keybindings.h:272
-msgid "Close window"
-msgstr "Κλείσιμο παραθύρου"
-
-#: ../src/include/all-keybindings.h:274
-msgid "Move window"
-msgstr "Μετακίνηση παραθύρου"
-
-#: ../src/include/all-keybindings.h:276
-msgid "Resize window"
-msgstr "Αλλαγή μεγέθους παραθύρου"
-
-#: ../src/include/all-keybindings.h:279
-#| msgid "Toggle whether window is on all workspaces or just one"
-msgid "Toggle window on all workspaces or one"
-msgstr "Εναλλαγή παραθύρου σε όλες τις επιφάνειες εργασίας ή σε μία"
-
-#: ../src/include/all-keybindings.h:283
-msgid "Move window to workspace 1"
-msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 1"
-
-#: ../src/include/all-keybindings.h:286
-msgid "Move window to workspace 2"
-msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 2"
-
-#: ../src/include/all-keybindings.h:289
-msgid "Move window to workspace 3"
-msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 3"
-
-#: ../src/include/all-keybindings.h:292
-msgid "Move window to workspace 4"
-msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 4"
-
-#: ../src/include/all-keybindings.h:295
-msgid "Move window to workspace 5"
-msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 5"
-
-#: ../src/include/all-keybindings.h:298
-msgid "Move window to workspace 6"
-msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 6"
-
-#: ../src/include/all-keybindings.h:301
-msgid "Move window to workspace 7"
-msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 7"
-
-#: ../src/include/all-keybindings.h:304
-msgid "Move window to workspace 8"
-msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 8"
-
-#: ../src/include/all-keybindings.h:307
-msgid "Move window to workspace 9"
-msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 9"
-
-#: ../src/include/all-keybindings.h:310
-msgid "Move window to workspace 10"
-msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 10"
-
-#: ../src/include/all-keybindings.h:313
-msgid "Move window to workspace 11"
-msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 11"
-
-#: ../src/include/all-keybindings.h:316
-msgid "Move window to workspace 12"
-msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 12"
-
-#: ../src/include/all-keybindings.h:328
-msgid "Move window one workspace to the left"
-msgstr "Μετακίνηση του παραθύρου ένα χώρο εργασίας αριστερά"
-
-#: ../src/include/all-keybindings.h:331
-msgid "Move window one workspace to the right"
-msgstr "Μετακίνηση του παραθύρου ένα χώρο εργασίας δεξιά"
-
-#: ../src/include/all-keybindings.h:334
-msgid "Move window one workspace up"
-msgstr "Μετακίνηση του παραθύρου ένα χώρο εργασίας πάνω"
-
-#: ../src/include/all-keybindings.h:337
-msgid "Move window one workspace down"
-msgstr "Μετακίνηση του παραθύρου ένα χώρο εργασίας κάτω"
-
-#: ../src/include/all-keybindings.h:340
-#| msgid "Raise window if it's covered by another window, otherwise lower it"
-msgid "Raise window if covered, otherwise lower it"
-msgstr ""
-"Ανασήκωση παραθύρου αν καλύπτεται από άλλο παράθυρο, αλλιώς χαμήλωμα του"
-
-#: ../src/include/all-keybindings.h:342
-msgid "Raise window above other windows"
-msgstr "Ανασήκωση παραθύρου πάνω από τα άλλα παράθυρα"
-
-#: ../src/include/all-keybindings.h:344
-msgid "Lower window below other windows"
-msgstr "Χαμήλωμα παραθύρου κάτω από τα άλλα παράθυρα"
-
-#: ../src/include/all-keybindings.h:348
-msgid "Maximize window vertically"
-msgstr "Μεγιστοποίηση ενός παραθύρου κάθετα"
-
-#: ../src/include/all-keybindings.h:352
-msgid "Maximize window horizontally"
-msgstr "Μεγιστοποίηση ενός παραθύρου οριζόντια"
-
-#: ../src/include/all-keybindings.h:356
-#| msgid "Move window to north-west (top left) corner"
-msgid "Move window to top left corner"
-msgstr "Μετακίνηση του παραθύρου στην πάνω αριστερή γωνία"
-
-#: ../src/include/all-keybindings.h:359
-#| msgid "Move window to north-east (top right) corner"
-msgid "Move window to top right corner"
-msgstr "Μετακίνηση του παραθύρου στην πάνω δεξιά γωνία"
-
-#: ../src/include/all-keybindings.h:362
-#| msgid "Move window to south-west (bottom left) corner"
-msgid "Move window to bottom left corner"
-msgstr "Μετακίνηση του παραθύρου στην κάτω αριστερή γωνία"
-
-#: ../src/include/all-keybindings.h:365
-#| msgid "Move window to south-east (bottom right) corner"
-msgid "Move window to bottom right corner"
-msgstr "Μετακίνηση παραθύρου στην κάτω δεξιά γωνία"
-
-#: ../src/include/all-keybindings.h:369
-#| msgid "Move window to center of screen"
-msgid "Move window to top edge of screen"
-msgstr "Μετακίνηση παραθύρου στο πάνω άκρο της οθόνης"
-
-#: ../src/include/all-keybindings.h:372
-#| msgid "Move window to south (bottom) side of screen"
-msgid "Move window to bottom edge of screen"
-msgstr "Μετακίνηση παραθύρου στο άνω μέρος της οθόνης"
-
-#: ../src/include/all-keybindings.h:375
-#| msgid "Move window to east (right) side of screen"
-msgid "Move window to right side of screen"
-msgstr "Μετακίνηση παραθύρου στην δεξιά μεριά της οθόνης"
-
-#: ../src/include/all-keybindings.h:378
-#| msgid "Move window to west (left) side of screen"
-msgid "Move window to left side of screen"
-msgstr "Μετακίνηση παραθύρου στην αριστερή μεριά της οθόνης"
-
-#: ../src/include/all-keybindings.h:381
-msgid "Move window to center of screen"
-msgstr "Μετακίνηση παραθύρου στο κέντρο της οθόνης"
-
-#: ../src/metacity.schemas.in.in.h:1
-msgid "(Not implemented) Navigation works in terms of applications not windows"
-msgstr ""
-"(Δεν εφαρμόζεται) Η πλοήγηση λειτουργεί με όρους εφαρμογών και όχι παραθύρων"
-
-#: ../src/metacity.schemas.in.in.h:2
-msgid ""
-"A font description string describing a font for window titlebars. The size "
-"from the description will only be used if the titlebar_font_size option is "
-"set to 0. Also, this option is disabled if the titlebar_uses_desktop_font "
-"option is set to true."
-msgstr ""
-"Ένα αλφαριθμητικό περιγραφής που περιγράφει τη γραμματοσειρά της μπάρας "
-"τίτλου παραθύρου. Το μέγεθος από την περιγραφή θα χρησιμοποιείται μόνο αν η "
-"επιλογή μεγέθους γραμματοσειράς είναι 0. Ακόμα, αυτή η επιλογή "
-"απενεργοποιείται αν η επιλογή titlebar_uses_desktop_font είναι true."
-
-#: ../src/metacity.schemas.in.in.h:3
-msgid "Action on title bar double-click"
-msgstr "Ενέργεια κατά το διπλό κλικ στη μπάρα τίτλου"
-
-#: ../src/metacity.schemas.in.in.h:4
-msgid "Action on title bar middle-click"
-msgstr "Ενέργεια κατά το μεσαίο κλικ στη μπάρα τίτλου"
-
-#: ../src/metacity.schemas.in.in.h:5
-msgid "Action on title bar right-click"
-msgstr "Ενέργεια κατά το δεξί κλικ στη μπάρα τίτλου"
-
-#: ../src/metacity.schemas.in.in.h:6
-msgid "Arrangement of buttons on the titlebar"
-msgstr "Διάταξη των κουμπιών στη μπάρα τίτλου"
-
-#: ../src/metacity.schemas.in.in.h:7
-msgid ""
-"Arrangement of buttons on the titlebar. The value should be a string, such "
-"as \"menu:minimize,maximize,spacer,close\"; the colon separates the left "
-"corner of the window from the right corner, and the button names are comma-"
-"separated. Duplicate buttons are not allowed. Unknown button names are "
-"silently ignored so that buttons can be added in future metacity versions "
-"without breaking older versions. A special spacer tag can be used to insert "
-"some space between two adjacent buttons."
-msgstr ""
-"Διάταξη των κουμπιών στη μπάρα τίτλου. Η τιμή θα πρέπει να είναι "
-"αλφαριθμητικό, όπως \"menu:minimize,maximize,close\", το σημείο χωρίζει την "
-"αριστερή γωνία του παραθύρου από τη δεξιά γωνία, και τα ονόματα κουμπιών "
-"χωρίζονται από κόμμα. Δεν επιτρέπονται διπλά κουμπιά. Άγνωστοι τύποι "
-"κουμπιών αγνοούνται σιωπηλά έτσι ώστε να μπορούν να προστεθούν σε "
-"μελλοντικές εκδόσεις του metacity χωρίς να χαλάνε οι προηγούμενες εκδόσεις. "
-"Μια ειδική ετικέτα πλήκτρου διαστήματος μπορεί να χρησιμοποιηθεί για να "
-"εισάγει κενό ανάμεσα σε δύο παρακείμενα κουμπιά."
-
-#: ../src/metacity.schemas.in.in.h:8
-msgid "Automatically raises the focused window"
-msgstr "Αυτόματη ανασήκωση του εστιασμένου παράθυρου"
-
-#: ../src/metacity.schemas.in.in.h:9
-msgid ""
-"Clicking a window while holding down this modifier key will move the window "
-"(left click), resize the window (middle click), or show the window menu "
-"(right click). The middle and right click operations may be swapped using "
-"the \"resize_with_right_button\" key. Modifier is expressed as \"&lt;Alt&gt;"
-"\" or \"&lt;Super&gt;\" for example."
-msgstr ""
-"Κάνοντας κλικ σε ένα παράθυρο ενώ κρατώντας αυτό το πλήκτρο μετατροπής θα "
-"μετακινηθεί το παράθυρο (αριστερό κλίκ), θα γίνει αλλαγή μεγέθους (μεσαίο "
-"κλικ) ή θα εμφανιστεί το μενού παραθύρου (δεξί κλικ). Οι λειτουργίες για το "
-"μεσαίο και το δεξί πλήκτρο μπορούν να αντιμετατεθούν με χρήση του κλειδιού "
-"\"mouse_button_resize\". Ο μετατροπέας εκφράζεται για παράδειγμα ως  \"&lt;"
-"Alt&gt;\" ή \"&lt;Super&gt;\"."
-
-#: ../src/metacity.schemas.in.in.h:10
-msgid "Commands to run in response to keybindings"
-msgstr "Εντολές που εκτελούνται σε αντιστοίχιση με  συνδυασμούς πλήκτρων"
-
-#: ../src/metacity.schemas.in.in.h:11
+#: ../src/org.gnome.metacity.gschema.xml.in.h:1
 msgid "Compositing Manager"
 msgstr "Διαχειριστής Compositing"
 
-#: ../src/metacity.schemas.in.in.h:12
-msgid "Control how new windows get focus"
-msgstr "Έλεγχος της λήψης εστίασης από τα νέα παράθυρα"
-
-#: ../src/metacity.schemas.in.in.h:13
-msgid "Current theme"
-msgstr "Τρέχον θέμα"
-
-#: ../src/metacity.schemas.in.in.h:14
-msgid "Delay in milliseconds for the auto raise option"
-msgstr "Καθυστέρηση σε ms πριν την αυτόματη ανασήκωση παραθύρων"
-
-#: ../src/metacity.schemas.in.in.h:15
+#: ../src/org.gnome.metacity.gschema.xml.in.h:2
 msgid "Determines whether Metacity is a compositing manager."
 msgstr "Καθορίζει αν το Metacity είναι ένας διαχειριστής compositing"
 
-#: ../src/metacity.schemas.in.in.h:16
-msgid ""
-"Determines whether applications or the system can generate audible 'beeps'; "
-"may be used in conjunction with 'visual bell' to allow silent 'beeps'."
-msgstr ""
-"Καθορίζει αν οι εφαρμογές ή το σύστημα θα δημιουργούν ήχους 'μπιπ', μπορεί "
-"να χρησιμοποιηθεί σε συνδυασμό με το 'οπτικό κουδούνι' για να επιτρέπει "
-"ήσυχα 'μπιπ'."
-
-#: ../src/metacity.schemas.in.in.h:17
-msgid "Disable misfeatures that are required by old or broken applications"
-msgstr ""
-"Απενεργοποίηση κακών λειτουργιών που απαιτούνται από παλιές η χαλασμένες "
-"εφαρμογές"
-
-#: ../src/metacity.schemas.in.in.h:18
-msgid "Enable Visual Bell"
-msgstr "Ενεργοποίηση οπτικού κουδουνιού"
-
-#: ../src/metacity.schemas.in.in.h:19
-msgid ""
-"If set to true, and the focus mode is either \"sloppy\" or \"mouse\" then "
-"the focused window will be automatically raised after a delay specified by "
-"the auto_raise_delay key. This is not related to clicking on a window to "
-"raise it, nor to entering a window during drag-and-drop."
-msgstr ""
-"Αν τεθεί σε true, και η κατάσταση εστίασης είναι \"sloppy\" ή \"mouse\", "
-"τότε το εστιασμένο παράθυρο να ανασηκωθεί αυτόματα μετά από μια καθυστέρηση "
-"που καθορίζεται από το κλειδί auto_raise_delay. Αυτή η λειτουργία δε "
-"σχετίζεται με την ανασήκωση παραθύρου όταν κάνουμε κλικ, ούτε με την εστίαση "
-"παραθύρου κατά τη μετάφορα και απόθεση (drag and drop)."
-
-#: ../src/metacity.schemas.in.in.h:20
-msgid ""
-"If true, ignore the titlebar_font option, and use the standard application "
-"font for window titles."
-msgstr ""
-"Αν true, αγνοείται την επιλογή γραμματοσειράς μπάρας τίτλου, και γίνεται "
-"χρήση των καθορισμένων γραμματοσειρών για τους τίτλους παραθύρων."
-
-#: ../src/metacity.schemas.in.in.h:21
+#: ../src/org.gnome.metacity.gschema.xml.in.h:3
 msgid ""
 "If true, metacity will give the user less feedback by using wireframes, "
 "avoiding animations, or other means. This is a significant reduction in "
@@ -1057,388 +644,57 @@ msgstr ""
 "χρήστες αλλά θα επιτρέψει σε εφαρμογές legacy και εξυπηρετητές τερματικού να "
 "λειτουργήσουν εκεί που δεν μπορούσαν πριν."
 
-#: ../src/metacity.schemas.in.in.h:22
-msgid ""
-"If true, then Metacity works in terms of applications rather than windows. "
-"The concept is a bit abstract, but in general an application-based setup is "
-"more like the Mac and less like Windows. When you focus a window in "
-"application-based mode, all the windows in the application will be raised. "
-"Also, in application-based mode, focus clicks are not passed through to "
-"windows in other applications. Application-based mode is, however, largely "
-"unimplemented at the moment."
-msgstr ""
-"Αν true, τότε το  Metacity  δουλεύει με όρους εφαρμογών αντί για παραθύρων. "
-"Η ιδέα είναι λίγο αφηρημένη αλλά σε γενικές γραμμές μια εγκατάσταση "
-"βασισμένη σε εφαρμογές μοιάζει περισσότερο σε Mac και λιγότερο σε  Windows. "
-"Όταν εστιάζετε σε ένα παράθυρο σε λειτουργία βασισμένη σε εφαρμογές, τα κλικ "
-"εστίασης δε μεταβιβάζονται μέσα από παράθυρα σε άλλες εφαρμογές. Η ύπαρξη "
-"αυτής της ρύθμισης είναι βέβαια κάπως συζητήσιμη. Αλλά είναι καλύτερα να "
-"υπάρχουν ρυθμίσεις για όλες τις λεπτομέρειες. Ακόμα η λειτουργία βασισμένη "
-"σε εφαρμογές δεν έχει εφαρμοστεί ακόμα σε μεγάλο βαθμό."
-
-#: ../src/metacity.schemas.in.in.h:23
+#: ../src/org.gnome.metacity.gschema.xml.in.h:4
 msgid "If true, trade off usability for less resource usage"
 msgstr "An true, ανταλλαγή χρηστικότητας για λιγότερη χρήση πόρων"
-
-#: ../src/metacity.schemas.in.in.h:24
-msgid "Modifier to use for modified window click actions"
-msgstr "Μετατροπέας για χρήση στις τροποποιημένες ενέργειες κλικ παραθύρων"
-
-#: ../src/metacity.schemas.in.in.h:25
-msgid "Name of workspace"
-msgstr "Όνομα χώρου εργασίας"
-
-#: ../src/metacity.schemas.in.in.h:26
-msgid "Number of workspaces"
-msgstr "Αριθμός χώρων εργασίας"
-
-#: ../src/metacity.schemas.in.in.h:27
-msgid ""
-"Number of workspaces. Must be more than zero, and has a fixed maximum to "
-"prevent making the desktop unusable by accidentally asking for too many "
-"workspaces."
-msgstr ""
-"Αριθμός των χώρων εργασίας. Πρέπει να είναι παραπάνω από μηδέν, και έχει ένα "
-"καθορισμένο μέγιστο όριο  (ώστε να αποφευχθεί τυχαία καταστροφή της "
-"επιφάνειας εργασίας με καθορισμό εξωφρενικά πολλών χώρων εργασίας)."
-
-#: ../src/metacity.schemas.in.in.h:28
-msgid "Run a defined command"
-msgstr "Εκτέλεση μιας ορισμένης εντολής φλοιού"
-
-#: ../src/metacity.schemas.in.in.h:29
-msgid ""
-"Set this to true to resize with the right button and show a menu with the "
-"middle button while holding down the key given in \"mouse_button_modifier\"; "
-"set it to false to make it work the opposite way around."
-msgstr ""
-"Καθορίστε ως true για να μπορείτε να αλλάζεται το μέγεθος με το δεξί πλήκτρο "
-"και να εμφανίζεται μενού με το μεσαίο πλήκτρο καθώς έχετε πατημένο το "
-"πλήκτρο που δηλώσατε στο \"mouse_button_modifier\"· καθορίστε σε false για "
-"να έχετε την αντίθετη συμπεριφορά."
-
-#: ../src/metacity.schemas.in.in.h:30
-msgid ""
-"Setting this option to false can lead to buggy behavior, so users are "
-"strongly discouraged from changing it from the default of true. Many actions "
-"(e.g. clicking in the client area, moving or resizing the window) normally "
-"raise the window as a side-effect. Setting this option to false, which is "
-"strongly discouraged, will decouple raising from other user actions, and "
-"ignore raise requests generated by applications. See http://bugzilla.gnome."
-"org/show_bug.cgi?id=445447#c6. Even when this option is false, windows can "
-"still be raised by an alt-left-click anywhere on the window, a normal click "
-"on the window decorations, or by special messages from pagers, such as "
-"activation requests from tasklist applets. This option is currently disabled "
-"in click-to-focus mode. Note that the list of ways to raise windows when "
-"raise_on_click is false does not include programmatic requests from "
-"applications to raise windows; such requests will be ignored regardless of "
-"the reason for the request. If you are an application developer and have a "
-"user complaining that your application does not work with this setting "
-"disabled, tell them it is _their_ fault for breaking their window manager "
-"and that they need to change this option back to true or live with the \"bug"
-"\" they requested."
-msgstr ""
-"Ο καθορισμός αυτής της επιλογής αυτής σε ψευδής μπορεί να οδηγήσει σε "
-"προβληματική συμπεριφορά, οπότε οι χρήστες προτείνεται να μην το αλλάζουν "
-"από την τυπική τιμή αληθής. Πολλές λειτουργίες (π.χ. κλικ μέσα σε ένα "
-"παράθυρο, μετακίνηση ή αλλαγή μεγέθους παραθύρου) τυπικά εγείρουν το "
-"παράθυρο ως παρενέργεια. Ο καθορισμός της επιλογής σε ψευδής, κάτι που δε "
-"συνιστούμε, θα δημιουργήσει αποσύνδεση των αιτημάτων από άλλες ενέργειες "
-"χρηστών και αγνόηση αιτημάτων από τις  εφαρμογές. Δείτε http://bugzilla."
-"gnome.org/show_bug.cgi?id=445447#c6. Ακόμα και όταν αυτή η επιλογή είναι "
-"ψευδής τα παράθυρα μπορούν επίσης να εγερθούν πατώντας alt-left-click "
-"οπουδήποτε στο παράθυρο, ένα κανονικό κλικ στην διακόσμηση του παραθύρου ή "
-"από ειδικά μηνύματα από σελίδες δεδομένων, όπως οι αιτήσεις ενεργοποίησης "
-"από μικροεφαρμογές της γραμμής εργασιών. Αυτή η επιλογή είναι προς το παρόν "
-"απενεργοποιημένη σε κατάσταση κλικ-και-εστίαση. Παρακαλώ σημειώστε ότι η "
-"λίστα με τους τρόπους έγερσης ενός παραθύρου σε κατάσταση κλικ-και-εστίαση "
-"είναι απενεργοποιημένη δεν συμπεριλαμβάνει αιτήσεις προγραμματισμού από "
-"εφαρμογές για έγερση ενός παραθύρου. Τέτοιου είδους αιτήσεις θα αγνοηθούν "
-"ανεξαιρέτου από τον λόγο της αίτησης. Εάν είστε κατασκευαστής λογισμικού και "
-"έχετε παράπονα από χρήστες ότι η εφαρμογή σας δεν δουλεύει σωστά με αυτές "
-"της ρυθμίσεις απενεργοποιημένες, πείτε του ότι είναι _δικό _του _λάθος που "
-"παραβίασαν τον διαχειριστή παραθύρων  και ότι θα πρέπει να αλλάξουν αυτήν "
-"την επιλογή πίσω σε αληθής ή να συνεχίσουν να εργάζονται με το \"σφάλμα\" "
-"που ζήτησαν."
-
-#: ../src/metacity.schemas.in.in.h:31
-msgid ""
-"Some applications disregard specifications in ways that result in window "
-"manager misfeatures. This option puts Metacity in a rigorously correct mode, "
-"which gives a more consistent user interface, provided one does not need to "
-"run any misbehaving applications."
-msgstr ""
-"Some applications disregard specifications in ways that result in window "
-"manager misfeatures. This option puts Metacity in a rigorously correct mode, "
-"which gives a more consistent user interface, provided one does not need to "
-"run any misbehaving applications."
-
-#: ../src/metacity.schemas.in.in.h:32
-msgid "System Bell is Audible"
-msgstr "Το κουδούνι συστήματος είναι ενεργό"
-
-#: ../src/metacity.schemas.in.in.h:33
-msgid ""
-"Tells Metacity how to implement the visual indication that the system bell "
-"or another application 'bell' indicator has been rung. Currently there are "
-"two valid values, \"fullscreen\", which causes a fullscreen white-black "
-"flash, and \"frame_flash\" which causes the titlebar of the application "
-"which sent the bell signal to flash. If the application which sent the bell "
-"is unknown (as is usually the case for the default \"system beep\"), the "
-"currently focused window's titlebar is flashed."
-msgstr ""
-"Επικοινωνεί με το Metacity για τον τρόπο με τον οποίο θα εφαρμόζεται η "
-"οπτική ένδειξη του οπτικού κουδουνιού. Αυτή τη στιγμή υπάρχουν δύο έγκυρες "
-"τιμές \"πλήρης οθόνη\", που δημιουργεί ένα ασπρόμαυρο φλάς σε πλήρη οθόνη, "
-"και  \"φλάς-πλαισίου\" που δημιουργεί ένα ένα αναβόσβημα του τίτλου της "
-"εφαρμογής που έστειλε το κουδούνισμα. Αν η εφαρμογή που έστειλε το "
-"κουδούνισμα είναι άγνωστη (όπως συνήθως συμβαίνει για το προεπιλεγμένο "
-"\"μπιπ συστήματος\") αναβοσβήνει η μπάρα τίτλου του εστιαζόμενου εκείνη τη "
-"στιγμή παραθύρου."
-
-#: ../src/metacity.schemas.in.in.h:34
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_N keys define keybindings "
-"that correspond to these commands. Pressing the keybinding for run_command_N "
-"will execute command_N."
-msgstr ""
-"Τα κλειδιά /apps/metacity/global_keybindings/run_command_N ορίζουν τους "
-"συνδυασμούς πλήκτρων που αντιστοιχούν σε αυτές τις εντολές. Πιέζοντας το "
-"συνδυασμό για run_command_N θα εκτελείται η εντολή_Ν."
-
-#: ../src/metacity.schemas.in.in.h:35
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_screenshot key defines a "
-"keybinding which causes the command specified by this setting to be invoked."
-msgstr ""
-"Το κλειδί /apps/metacity/global_keybindings/run_command_screenshot ορίζει το "
-"συνδυασμό πλήκτρων που αντιστοιχεί σε αυτή την εντολή."
-
-#: ../src/metacity.schemas.in.in.h:36
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_window_screenshot key "
-"defines a keybinding which causes the command specified by this setting to "
-"be invoked."
-msgstr ""
-"Το κλειδί /apps/metacity/global_keybindings/"
-"run_command_window_screenshotορίζει το συνδυασμό πλήκτρων που αντιστοιχεί σε "
-"αυτή την εντολή."
-
-#: ../src/metacity.schemas.in.in.h:37
-msgid ""
-"The keybinding that runs the correspondingly-numbered command in /apps/"
-"metacity/keybinding_commands The format looks like \"&lt;Control&gt;a\" or "
-"\"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows "
-"lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and "
-"\"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled\", "
-"then there will be no keybinding for this action."
-msgstr ""
-"Ο συνδυασμός πλήκτρων που εκτελεί την αντίστοιχη αριθμημένη εντολή στο /apps/"
-"metacity/keybinding_commands. Η διαμόρφωση μοιάζει με \"&lt;Control&gt;a\" ή "
-"\"&lt;Shift&gt;&lt;Alt&gt;F1\"..  Ο διαβιβαστής είναι φιλελεύθερος και "
-"επιτρέπει κεφαλαία και πεζά και συντομεύσεις όπως \"&lt;Ctl&gt;\" και \"&lt;"
-"Ctrl&gt;\".  Αν ορίσετε \"disabled\" δε θα υπάρχει κανένας συνδυασμός "
-"πλήκτρων για αυτή την ενέργεια."
-
-#: ../src/metacity.schemas.in.in.h:38
-msgid "The name of a workspace."
-msgstr "Το όνομα του χώρου εργασίας."
-
-#: ../src/metacity.schemas.in.in.h:39
-msgid "The screenshot command"
-msgstr "Η εντολή λήψης στιγμιότυπου οθόνης"
-
-#: ../src/metacity.schemas.in.in.h:40
-msgid ""
-"The theme determines the appearance of window borders, titlebar, and so "
-"forth."
-msgstr ""
-"Το θέμα καθορίζει την εμφάνιση των περιγραμμάτων παραθύρου, μπάρας τίτλου "
-"κτλ."
-
-#: ../src/metacity.schemas.in.in.h:41
-msgid ""
-"The time delay before raising a window if auto_raise is set to true. The "
-"delay is given in thousandths of a second."
-msgstr ""
-"Η χρονική καθυστέρηση πριν την ανασήκωση ενός παραθύρου αν το auto_raise "
-"είναι true. Η καθυστέρηση δίνεται σε χιλιοστά του δευτερολέπτου."
-
-#: ../src/metacity.schemas.in.in.h:42
-msgid ""
-"The window focus mode indicates how windows are activated. It has three "
-"possible values; \"click\" means windows must be clicked in order to focus "
-"them, \"sloppy\" means windows are focused when the mouse enters the window, "
-"and \"mouse\" means windows are focused when the mouse enters the window and "
-"unfocused when the mouse leaves the window."
-msgstr ""
-"Η λειτουργία εστίασης παραθύρου ορίζει τον τρόπο που θα ενεργοποιούνται τα "
-"παράθυρα. Έχει τρείς πιθανές τιμές: \"click\" σημαίνει οτι πρέπει να γίνεται "
-"κλικ στα παράθυρα για να εστιάζονται, \"sloppy\" σημαίνει ότι τα παράθυρα "
-"εστιάζονται όταν το ποντίκι μπαίνει στο παράθυρο, και \"mouse\"  σημαίνει "
-"ότι τα παράθυρα εστιάζονται όταν το ποντίκι μπαίνει στο παράθυρο και "
-"απεστιάζονται όταν φεύγει."
-
-#: ../src/metacity.schemas.in.in.h:43
-msgid "The window screenshot command"
-msgstr "Η εντολή λήψης στιγμιότυπου παραθύρου"
-
-#: ../src/metacity.schemas.in.in.h:44
-msgid ""
-"This option determines the effects of double-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"Αυτή η επιλογή καθορίζει τα αποτελέσματα του διπλού κλικ στη μπάρα τίτλου. "
-"Οι τρέχουσες έγκυρες επιλογές είναι 'εναλλαγή_σκίαση', που θα σκιάζει/"
-"αποσκιάζει το παράθυρο, 'εναλλαγή_μεγιστοποίηση' που θα μεγιστοποιεί/"
-"απομεγιστοποεί το παράθυρο, εναλλαγή_μεγιστοποίηση_οριζόντια και "
-"εναλλαγή_μεγιστοποίηση_κάθετα που θα μεγιστοποιεί/απομεγιστοποεί το παράθυρο "
-"μόνο σε αυτή την κατεύθυνση, 'ελαχιστοποίηση' που θα ελαχιστοποιεί το "
-"παράθυρο, 'σκίαση' που θα τυλίγει το παράθυρο προς τα πάνω, 'μενού' που θα "
-"εμφανίζει το μενού του παραθύρου, 'χαμήλωμα' που θα βάζει το παράθυρο πίσω "
-"από όλα τα άλλα, και 'καμία' που δεν θα κάνει τίποτα."
-
-#: ../src/metacity.schemas.in.in.h:45
-msgid ""
-"This option determines the effects of middle-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"Αυτή η επιλογή καθορίζει τα αποτελέσματα του μεσαίου κλικ στη μπάρα τίτλου. "
-"Οι τρέχουσες έγκυρες επιλογές είναι 'εναλλαγή_σκίαση', που θα σκιάζει/"
-"αποσκιάζει το παράθυρο, 'εναλλαγή_μεγιστοποίηση' που θα μεγιστοποιεί/"
-"απομεγιστοποεί το παράθυρο, εναλλαγή_μεγιστοποίηση_οριζόντια και "
-"εναλλαγή_μεγιστοποίηση_κάθετα που θα μεγιστοποιεί/απομεγιστοποεί το παράθυρο "
-"μόνο σε αυτή την κατεύθυνση, 'ελαχιστοποίηση' που θα ελαχιστοποιεί το "
-"παράθυρο, 'σκίαση' που θα τυλίγει το παράθυρο προς τα πάνω, 'μενού' που θα "
-"εμφανίζει το μενού του παραθύρου, 'χαμήλωμα' που θα βάζει το παράθυρο πίσω "
-"από όλα τα άλλα, και 'καμία' που δεν θα κάνει τίποτα."
-
-#: ../src/metacity.schemas.in.in.h:46
-msgid ""
-"This option determines the effects of right-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"Αυτή η επιλογή καθορίζει τα αποτελέσματα του δεξιού κλικ στη μπάρα τίτλου. "
-"Οι τρέχουσες έγκυρες επιλογές είναι 'εναλλαγή_σκίαση', που θα σκιάζει/"
-"αποσκιάζει το παράθυρο, 'εναλλαγή_μεγιστοποίηση' που θα μεγιστοποιεί/"
-"απομεγιστοποεί το παράθυρο, εναλλαγή_μεγιστοποίηση_οριζόντια και "
-"εναλλαγή_μεγιστοποίηση_κάθετα που θα μεγιστοποιεί/απομεγιστοποεί το παράθυρο "
-"μόνο σε αυτή την κατεύθυνση, 'ελαχιστοποίηση' που θα ελαχιστοποιεί το "
-"παράθυρο, 'σκίαση' που θα τυλίγει το παράθυρο προς τα πάνω, 'μενού' που θα "
-"εμφανίζει το μενού του παραθύρου, 'χαμήλωμα' που θα βάζει το παράθυρο πίσω "
-"από όλα τα άλλα, και 'καμία' που δεν θα κάνει τίποτα."
-
-#: ../src/metacity.schemas.in.in.h:47
-msgid ""
-"This option provides additional control over how newly created windows get "
-"focus. It has two possible values; \"smart\" applies the user's normal focus "
-"mode, and \"strict\" results in windows started from a terminal not being "
-"given focus."
-msgstr ""
-"This option provides additional control over how newly created windows get "
-"focus. It has two possible values; \"smart\" applies the user's normal focus "
-"mode, and \"strict\" results in windows started from a terminal not being "
-"given focus."
-
-#: ../src/metacity.schemas.in.in.h:48
-msgid ""
-"Turns on a visual indication when an application or the system issues a "
-"'bell' or 'beep'; useful for the hard-of-hearing and for use in noisy "
-"environments."
-msgstr ""
-"Ενεργοποιεί μια οπτική ένδειξη για το πότε η εφαρμογή ή το σύστημα στέλνει "
-"ένα 'κουδούνισμα' ή 'μπιπ'. Είναι χρήσιμο για όσους έχουν προβλήματα ακοής ή "
-"για όσους εργάζονται σε θορυβώδες περιβάλλον."
-
-#: ../src/metacity.schemas.in.in.h:49
-msgid "Use standard system font in window titles"
-msgstr "Χρήση κανονικής γραμματοσειράς συστήματος στους τίτλους παραθύρων."
-
-#: ../src/metacity.schemas.in.in.h:50
-msgid "Visual Bell Type"
-msgstr "Οπτικό είδος κουδουνιού"
-
-#: ../src/metacity.schemas.in.in.h:51
-msgid "Whether raising should be a side-effect of other user interactions"
-msgstr "Αν η ανασήκωση θα έχει παρενέργειες στις άλλες δράσεις του χρήστη"
-
-#: ../src/metacity.schemas.in.in.h:52
-msgid "Whether to resize with the right button"
-msgstr "Αν θα γίνεται αλλαγή μεγέθους με το δεξί κουμπί"
-
-#: ../src/metacity.schemas.in.in.h:53
-msgid "Window focus mode"
-msgstr "Λειτουργία εστίασης παραθύρου"
-
-#: ../src/metacity.schemas.in.in.h:54
-msgid "Window title font"
-msgstr "Γραμματοσειρά τίτλου παραθύρου"
 
 #: ../src/tools/metacity-message.c:150
 #, c-format
 msgid "Usage: %s\n"
 msgstr "Χρήση: %s\n"
 
-#: ../src/ui/frames.c:1120
+#: ../src/ui/frames.c:1114
 msgid "Close Window"
 msgstr "Κλείσιμο παραθύρου"
 
 #
-#: ../src/ui/frames.c:1123
+#: ../src/ui/frames.c:1117
 msgid "Window Menu"
 msgstr "Μενού παραθύρου"
 
-#: ../src/ui/frames.c:1126
+#: ../src/ui/frames.c:1120
 msgid "Minimize Window"
 msgstr "Ελαχιστοποίηση παραθύρου"
 
-#: ../src/ui/frames.c:1129
+#: ../src/ui/frames.c:1123
 msgid "Maximize Window"
 msgstr "Μεγιστοποίηση παραθύρου"
 
-#: ../src/ui/frames.c:1132
+#: ../src/ui/frames.c:1126
 msgid "Restore Window"
 msgstr "Επαναφορά παραθύρου"
 
-#: ../src/ui/frames.c:1135
+#: ../src/ui/frames.c:1129
 msgid "Roll Up Window"
 msgstr "Τύλιγμα παραθύρου προς τα πάνω"
 
-#: ../src/ui/frames.c:1138
+#: ../src/ui/frames.c:1132
 msgid "Unroll Window"
 msgstr "Ξετύλιγμα παραθύρου"
 
-#: ../src/ui/frames.c:1141
+#: ../src/ui/frames.c:1135
 msgid "Keep Window On Top"
 msgstr "Διατήρηση παραθύρου σε πρώτο πλάνο"
 
-#: ../src/ui/frames.c:1144
+#: ../src/ui/frames.c:1138
 msgid "Remove Window From Top"
 msgstr "Απομάκρυνση παραθύρου από το πρώτο πλάνο"
 
-#: ../src/ui/frames.c:1147
+#: ../src/ui/frames.c:1141
 msgid "Always On Visible Workspace"
 msgstr "Πάντοτε σε ορατό χώρο εργασία"
 
-#: ../src/ui/frames.c:1150
+#: ../src/ui/frames.c:1144
 msgid "Put Window On Only One Workspace"
 msgstr "Τοποθέτηση παράθυρου μόνο σε ένα χώρο εργασίας"
 
@@ -1524,22 +780,22 @@ msgstr "Μετακίνηση στο χώρο εργασίας _κάτω"
 msgid "_Close"
 msgstr "_Κλείσιμο"
 
-#: ../src/ui/menu.c:203
+#: ../src/ui/menu.c:205
 #, c-format
 msgid "Workspace %d%n"
 msgstr "Χώρος εργασίας %d%n"
 
-#: ../src/ui/menu.c:213
+#: ../src/ui/menu.c:215
 #, c-format
 msgid "Workspace 1_0"
 msgstr "Χώρος Εργασίας 1_0"
 
-#: ../src/ui/menu.c:215
+#: ../src/ui/menu.c:217
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Χώρος Εργασίας %s%d"
 
-#: ../src/ui/menu.c:395
+#: ../src/ui/menu.c:398
 msgid "Move to Another _Workspace"
 msgstr "Μετακίνηση σε άλλο _χώρο εργασίας"
 
@@ -1548,7 +804,7 @@ msgstr "Μετακίνηση σε άλλο _χώρο εργασίας"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:104
+#: ../src/ui/metaaccellabel.c:80
 msgid "Shift"
 msgstr "Shift"
 
@@ -1557,7 +813,7 @@ msgstr "Shift"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:110
+#: ../src/ui/metaaccellabel.c:86
 msgid "Ctrl"
 msgstr "Ctrl"
 
@@ -1566,7 +822,7 @@ msgstr "Ctrl"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:116
+#: ../src/ui/metaaccellabel.c:92
 msgid "Alt"
 msgstr "Alt"
 
@@ -1575,7 +831,7 @@ msgstr "Alt"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:122
+#: ../src/ui/metaaccellabel.c:98
 msgid "Meta"
 msgstr "Meta"
 
@@ -1584,7 +840,7 @@ msgstr "Meta"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:128
+#: ../src/ui/metaaccellabel.c:104
 msgid "Super"
 msgstr "Super"
 
@@ -1593,7 +849,7 @@ msgstr "Super"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:134
+#: ../src/ui/metaaccellabel.c:110
 msgid "Hyper"
 msgstr "Hyper"
 
@@ -1602,7 +858,7 @@ msgstr "Hyper"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:140
+#: ../src/ui/metaaccellabel.c:116
 msgid "Mod2"
 msgstr "Mod2"
 
@@ -1611,7 +867,7 @@ msgstr "Mod2"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:146
+#: ../src/ui/metaaccellabel.c:122
 msgid "Mod3"
 msgstr "Mod3"
 
@@ -1620,7 +876,7 @@ msgstr "Mod3"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:152
+#: ../src/ui/metaaccellabel.c:128
 msgid "Mod4"
 msgstr "Mod4"
 
@@ -1629,7 +885,7 @@ msgstr "Mod4"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:158
+#: ../src/ui/metaaccellabel.c:134
 msgid "Mod5"
 msgstr "Mod5"
 
@@ -1990,60 +1246,60 @@ msgstr ""
 "Μή έγκυρη κλίμακα τίτλου \"%s\" (θα πρέπει να είναι ενα από xx-small,x-small,"
 "small,medium,large,x-large,xx-large)\n"
 
-#: ../src/ui/theme-parser.c:936 ../src/ui/theme-parser.c:999
-#: ../src/ui/theme-parser.c:1033 ../src/ui/theme-parser.c:1136
+#: ../src/ui/theme-parser.c:947 ../src/ui/theme-parser.c:1010
+#: ../src/ui/theme-parser.c:1044 ../src/ui/theme-parser.c:1147
 #, c-format
 msgid "<%s> name \"%s\" used a second time"
 msgstr "Το <%s> όνομα \"%s\" χρησιμοποιήθηκε για δεύτερη φορά"
 
-#: ../src/ui/theme-parser.c:948 ../src/ui/theme-parser.c:1045
-#: ../src/ui/theme-parser.c:1148
+#: ../src/ui/theme-parser.c:959 ../src/ui/theme-parser.c:1056
+#: ../src/ui/theme-parser.c:1159
 #, c-format
 msgid "<%s> parent \"%s\" has not been defined"
 msgstr "<%s> μητρικό \"%s\" δεν έχει ορισθεί"
 
-#: ../src/ui/theme-parser.c:1058
+#: ../src/ui/theme-parser.c:1069
 #, c-format
 msgid "<%s> geometry \"%s\" has not been defined"
 msgstr "<%s> γεωμετρία \"%s\"  δεν έχει ορισθεί"
 
-#: ../src/ui/theme-parser.c:1071
+#: ../src/ui/theme-parser.c:1082
 #, c-format
 msgid "<%s> must specify either a geometry or a parent that has a geometry"
 msgstr ""
 "<%s> θα πρέπει να καθορίσετε είτε μια γεωμετρία είτε ένα μητρικό που έχει "
 "γεωμετρία"
 
-#: ../src/ui/theme-parser.c:1113
+#: ../src/ui/theme-parser.c:1124
 msgid "You must specify a background for an alpha value to be meaningful"
 msgstr "Πρέπει να καθορίσετε ένα παρασκήνιο για να έχει νόημα μια τιμή άλφα"
 
-#: ../src/ui/theme-parser.c:1180
+#: ../src/ui/theme-parser.c:1191
 #, c-format
 msgid "Unknown type \"%s\" on <%s> element"
 msgstr "Άγνωστος τύπος \"%s\" στο στοιχείο <%s> "
 
-#: ../src/ui/theme-parser.c:1191
+#: ../src/ui/theme-parser.c:1202
 #, c-format
 msgid "Unknown style_set \"%s\" on <%s> element"
 msgstr "Άγνωστος ορισμός τύπου \"%s\" στο στοιχείο <%s> "
 
-#: ../src/ui/theme-parser.c:1199
+#: ../src/ui/theme-parser.c:1210
 #, c-format
 msgid "Window type \"%s\" has already been assigned a style set"
 msgstr "Έχει ορισθεί ήδη ένα στυλ για τον τύπο  παραθύρου  \"%s\""
 
-#: ../src/ui/theme-parser.c:1229 ../src/ui/theme-parser.c:1293
-#: ../src/ui/theme-parser.c:1519 ../src/ui/theme-parser.c:2740
-#: ../src/ui/theme-parser.c:2786 ../src/ui/theme-parser.c:2934
-#: ../src/ui/theme-parser.c:3126 ../src/ui/theme-parser.c:3164
-#: ../src/ui/theme-parser.c:3202 ../src/ui/theme-parser.c:3240
+#: ../src/ui/theme-parser.c:1240 ../src/ui/theme-parser.c:1304
+#: ../src/ui/theme-parser.c:1530 ../src/ui/theme-parser.c:2751
+#: ../src/ui/theme-parser.c:2797 ../src/ui/theme-parser.c:2945
+#: ../src/ui/theme-parser.c:3137 ../src/ui/theme-parser.c:3175
+#: ../src/ui/theme-parser.c:3213 ../src/ui/theme-parser.c:3251
 #, c-format
 msgid "Element <%s> is not allowed below <%s>"
 msgstr "Το στοιχείο <%s> δεν επιτρέπεται κάτω από <%s>"
 
-#: ../src/ui/theme-parser.c:1343 ../src/ui/theme-parser.c:1357
-#: ../src/ui/theme-parser.c:1402
+#: ../src/ui/theme-parser.c:1354 ../src/ui/theme-parser.c:1368
+#: ../src/ui/theme-parser.c:1413
 msgid ""
 "Cannot specify both \"button_width\"/\"button_height\" and \"aspect_ratio\" "
 "for buttons"
@@ -2051,94 +1307,94 @@ msgstr ""
 "Δεν είναι δυνατός ο καθορισμός και \"ύψους_κουμπιού\"/\"πλάτους_κουμπιού\" "
 "και \"αναλογίας_διαστάσεων\" για κουμπιά"
 
-#: ../src/ui/theme-parser.c:1366
+#: ../src/ui/theme-parser.c:1377
 #, c-format
 msgid "Distance \"%s\" is unknown"
 msgstr "Η απόσταση \"%s\" είναι άγνωστη"
 
-#: ../src/ui/theme-parser.c:1411
+#: ../src/ui/theme-parser.c:1422
 #, c-format
 msgid "Aspect ratio \"%s\" is unknown"
 msgstr "Η αναλογία διαστάσεων \"%s\" είναι άγνωστη"
 
-#: ../src/ui/theme-parser.c:1473
+#: ../src/ui/theme-parser.c:1484
 #, c-format
 msgid "Border \"%s\" is unknown"
 msgstr "Περίγραμμα  \"%s\" είναι άγνωστο"
 
-#: ../src/ui/theme-parser.c:1784
+#: ../src/ui/theme-parser.c:1795
 #, c-format
 msgid "No \"start_angle\" or \"from\" attribute on element <%s>"
 msgstr ""
-"Δεν υπάρχει γνώρισμα \"έναρξη γωνίας\"  ή γνώρισμα \"από\" για το στοιχείο <%"
-"s>"
+"Δεν υπάρχει γνώρισμα \"έναρξη γωνίας\"  ή γνώρισμα \"από\" για το στοιχείο <"
+"%s>"
 
-#: ../src/ui/theme-parser.c:1791
+#: ../src/ui/theme-parser.c:1802
 #, c-format
 msgid "No \"extent_angle\" or \"to\" attribute on element <%s>"
 msgstr ""
 "Δεν υπάρχει γνώρισμα \"επέκταση_γωνίας\"  ή γνώρισμα \"σε\" για το στοιχείο <"
 "%s>"
 
-#: ../src/ui/theme-parser.c:2031
+#: ../src/ui/theme-parser.c:2042
 #, c-format
 msgid "Did not understand value \"%s\" for type of gradient"
 msgstr "Δεν έγινε κατανοητή η τιμή \"%s\" για τον τύπο του gradient"
 
-#: ../src/ui/theme-parser.c:2109 ../src/ui/theme-parser.c:2484
+#: ../src/ui/theme-parser.c:2120 ../src/ui/theme-parser.c:2495
 #, c-format
 msgid "Did not understand fill type \"%s\" for <%s> element"
 msgstr "Δεν έγινε κατανοητός ο τύπος γεμίσματος \"%s\" για <%s> στοιχείο"
 
-#: ../src/ui/theme-parser.c:2276 ../src/ui/theme-parser.c:2359
-#: ../src/ui/theme-parser.c:2422
+#: ../src/ui/theme-parser.c:2287 ../src/ui/theme-parser.c:2370
+#: ../src/ui/theme-parser.c:2433
 #, c-format
 msgid "Did not understand state \"%s\" for <%s> element"
 msgstr "Δεν έγινε κατανοητή η κατάσταση \"%s\" για στοιχείο <%s> )"
 
-#: ../src/ui/theme-parser.c:2286 ../src/ui/theme-parser.c:2369
+#: ../src/ui/theme-parser.c:2297 ../src/ui/theme-parser.c:2380
 #, c-format
 msgid "Did not understand shadow \"%s\" for <%s> element"
 msgstr "Δεν έγινε κατανοητή η σκίαση \"%s\" για στοιχείο <%s> "
 
-#: ../src/ui/theme-parser.c:2296
+#: ../src/ui/theme-parser.c:2307
 #, c-format
 msgid "Did not understand arrow \"%s\" for <%s> element"
 msgstr "Δεν έγινε κατανοητό το βέλος \"%s\" για στοιχείο <%s> "
 
-#: ../src/ui/theme-parser.c:2596 ../src/ui/theme-parser.c:2692
+#: ../src/ui/theme-parser.c:2607 ../src/ui/theme-parser.c:2703
 #, c-format
 msgid "No <draw_ops> called \"%s\" has been defined"
 msgstr "Δεν έχουν ορισθεί  <λειτουργίες σχεδίασης> που ονομάζονται \"%s\""
 
-#: ../src/ui/theme-parser.c:2608 ../src/ui/theme-parser.c:2704
+#: ../src/ui/theme-parser.c:2619 ../src/ui/theme-parser.c:2715
 #, c-format
 msgid "Including draw_ops \"%s\" here would create a circular reference"
 msgstr ""
 "Αν συμπεριλάβετε εδώ λειτουργίες σχεδίασης \"%s\" θα δημιουργήσετε μια "
 "κυκλική αναφορά"
 
-#: ../src/ui/theme-parser.c:2819
+#: ../src/ui/theme-parser.c:2830
 #, c-format
 msgid "Unknown position \"%s\" for frame piece"
 msgstr "Άγνωστη θέση  \"%s\" για το κομμάτι πλαισίου"
 
-#: ../src/ui/theme-parser.c:2827
+#: ../src/ui/theme-parser.c:2838
 #, c-format
 msgid "Frame style already has a piece at position %s"
 msgstr "Το στυλ πλαισίου έχει ήδη ένα κομμάτι στην θέση %s"
 
-#: ../src/ui/theme-parser.c:2844 ../src/ui/theme-parser.c:2919
+#: ../src/ui/theme-parser.c:2855 ../src/ui/theme-parser.c:2930
 #, c-format
 msgid "No <draw_ops> with the name \"%s\" has been defined"
 msgstr "δεν έχουν ορισθεί <λειτουργίες σχεδίασης> με το όνομα  \"%s\""
 
-#: ../src/ui/theme-parser.c:2873
+#: ../src/ui/theme-parser.c:2884
 #, c-format
 msgid "Unknown function \"%s\" for button"
 msgstr "Άγνωστη λειτουργία  \"%s\" για το κουμπί"
 
-#: ../src/ui/theme-parser.c:2882
+#: ../src/ui/theme-parser.c:2893
 #, c-format
 msgid "Button function \"%s\" does not exist in this version (%d, need %d)"
 msgstr ""
@@ -2146,38 +1402,38 @@ msgstr ""
 "χρειάζεται %d)"
 
 #
-#: ../src/ui/theme-parser.c:2894
+#: ../src/ui/theme-parser.c:2905
 #, c-format
 msgid "Unknown state \"%s\" for button"
 msgstr "Άγνωστη κατάσταση \"%s\" για το κουμπί"
 
-#: ../src/ui/theme-parser.c:2902
+#: ../src/ui/theme-parser.c:2913
 #, c-format
 msgid "Frame style already has a button for function %s state %s"
 msgstr ""
 "Το στυλ πλαισίου έχει ήδη ένα κουμπί για τη λειτουργία  %s κατάσταση %s"
 
-#: ../src/ui/theme-parser.c:2973
+#: ../src/ui/theme-parser.c:2984
 #, c-format
 msgid "\"%s\" is not a valid value for focus attribute"
 msgstr "\"%s\" δεν είναι έγκυρη τιμή για το γνώρισμα εστίασης"
 
-#: ../src/ui/theme-parser.c:2982
+#: ../src/ui/theme-parser.c:2993
 #, c-format
 msgid "\"%s\" is not a valid value for state attribute"
 msgstr "\"%s\" δεν είναι έγκυρη τιμή για το γνώρισμα κατάστασης"
 
-#: ../src/ui/theme-parser.c:2992
+#: ../src/ui/theme-parser.c:3003
 #, c-format
 msgid "A style called \"%s\" has not been defined"
 msgstr "Ένα στυλ που ονομάζεται \"%s\"  δεν έχει ορισθεί"
 
-#: ../src/ui/theme-parser.c:3013 ../src/ui/theme-parser.c:3036
+#: ../src/ui/theme-parser.c:3024 ../src/ui/theme-parser.c:3047
 #, c-format
 msgid "\"%s\" is not a valid value for resize attribute"
 msgstr "\"%s\" δεν είναι έγκυρη τιμή για το γνώρισμα αλλαγής μεγέθους"
 
-#: ../src/ui/theme-parser.c:3047
+#: ../src/ui/theme-parser.c:3058
 #, c-format
 msgid ""
 "Should not have \"resize\" attribute on <%s> element for maximized/shaded "
@@ -2186,7 +1442,7 @@ msgstr ""
 "Δεν πρέπει να υπάρχει γνώρισμα \"αλλαγή μεγέθους\" στο στοιχείο <%s> για "
 "μεγιστοποιημένες/σκιασμένες καταστάσεις"
 
-#: ../src/ui/theme-parser.c:3061
+#: ../src/ui/theme-parser.c:3072
 #, c-format
 msgid ""
 "Should not have \"resize\" attribute on <%s> element for maximized states"
@@ -2194,18 +1450,18 @@ msgstr ""
 "Δεν πρέπει να υπάρχει γνώρισμα \"αλλαγή μεγέθους\" στο στοιχείο <%s> για "
 "μεγιστοποιημένες καταστάσεις"
 
-#: ../src/ui/theme-parser.c:3075 ../src/ui/theme-parser.c:3097
+#: ../src/ui/theme-parser.c:3086 ../src/ui/theme-parser.c:3108
 #, c-format
 msgid "Style has already been specified for state %s resize %s focus %s"
 msgstr ""
 "Το στυλ έχει ήδη καθορισθεί για κατάσταση %s αλλαγή μεγέθους %s εστίαση %s"
 
-#: ../src/ui/theme-parser.c:3086 ../src/ui/theme-parser.c:3108
+#: ../src/ui/theme-parser.c:3097 ../src/ui/theme-parser.c:3119
 #, c-format
 msgid "Style has already been specified for state %s focus %s"
 msgstr "Το στυλ έχει ήδη καθορισθεί για κατάσταση %s εστίαση %s"
 
-#: ../src/ui/theme-parser.c:3147
+#: ../src/ui/theme-parser.c:3158
 msgid ""
 "Can't have a two draw_ops for a <piece> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
@@ -2214,7 +1470,7 @@ msgstr ""
 "( το θέμα έχει καθορίσει ένα γνώρισμα λειτουργίας σχεδίασης και ακόμα ένα "
 "στοιχείο <λειτουργίες σχεδίασης> ή καθόρισε δύο στοιχεία)"
 
-#: ../src/ui/theme-parser.c:3185
+#: ../src/ui/theme-parser.c:3196
 msgid ""
 "Can't have a two draw_ops for a <button> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
@@ -2223,7 +1479,7 @@ msgstr ""
 "( το θέμα έχει καθορίσει ένα γνώρισμα λειτουργίας σχεδίασης και ακόμα ένα "
 "στοιχείο <λειτουργίες σχεδίασης> ή καθόρισε δύο στοιχεία)"
 
-#: ../src/ui/theme-parser.c:3223
+#: ../src/ui/theme-parser.c:3234
 msgid ""
 "Can't have a two draw_ops for a <menu_icon> element (theme specified a "
 "draw_ops attribute and also a <draw_ops> element, or specified two elements)"
@@ -2232,13 +1488,13 @@ msgstr ""
 "μενού> ( το θέμα έχει καθορίσει ένα γνώρισμα λειτουργίας σχεδίασης και ακόμα "
 "ένα στοιχείο <λειτουργίες σχεδίασης> ή καθόρισε δύο στοιχεία)"
 
-#: ../src/ui/theme-parser.c:3271
+#: ../src/ui/theme-parser.c:3282
 #, c-format
 msgid "Outermost element in theme must be <metacity_theme> not <%s>"
 msgstr ""
 "Το εξώτατο στοιχείο στο θέμα θα πρέπει να είναι <metacity_theme> όχι <%s>"
 
-#: ../src/ui/theme-parser.c:3291
+#: ../src/ui/theme-parser.c:3302
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a name/author/date/description element"
@@ -2246,12 +1502,12 @@ msgstr ""
 "Το στοιχείο  <%s> δεν επιτρέπεται μέσα σε στοιχείο ονόματος/συγγραφέα/"
 "ημερομηνίας/περιγραφής"
 
-#: ../src/ui/theme-parser.c:3296
+#: ../src/ui/theme-parser.c:3307
 #, c-format
 msgid "Element <%s> is not allowed inside a <constant> element"
 msgstr "Το στοιχείο  <%s> δεν επιτρέπεται μέσα σε στοιχείο <constant>"
 
-#: ../src/ui/theme-parser.c:3308
+#: ../src/ui/theme-parser.c:3319
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a distance/border/aspect_ratio element"
@@ -2259,190 +1515,198 @@ msgstr ""
 "Το στοιχείο  <%s> δεν επιτρέπεται μέσα σε στοιχείο απόστασης/περιγράμματος/"
 "aspect_ratio"
 
-#: ../src/ui/theme-parser.c:3330
+#: ../src/ui/theme-parser.c:3341
 #, c-format
 msgid "Element <%s> is not allowed inside a draw operation element"
 msgstr ""
 "Το στοιχείο  <%s> δεν επιτρέπεται μέσα σε στοιχείο λειτουργίας σχεδίασης"
 
-#: ../src/ui/theme-parser.c:3340 ../src/ui/theme-parser.c:3370
-#: ../src/ui/theme-parser.c:3375 ../src/ui/theme-parser.c:3380
+#: ../src/ui/theme-parser.c:3351 ../src/ui/theme-parser.c:3381
+#: ../src/ui/theme-parser.c:3386 ../src/ui/theme-parser.c:3391
 #, c-format
 msgid "Element <%s> is not allowed inside a <%s> element"
 msgstr "Το στοιχείο  <%s> δεν επιτρέπεται μέσα σε στοιχείο <%s>"
 
-#: ../src/ui/theme-parser.c:3602
+#: ../src/ui/theme-parser.c:3613
 msgid "No draw_ops provided for frame piece"
 msgstr "Δεν παρέχονται λειτουργίες σχεδίασης για το κομμάτι πλαισίου"
 
-#: ../src/ui/theme-parser.c:3617
+#: ../src/ui/theme-parser.c:3628
 msgid "No draw_ops provided for button"
 msgstr "Δεν παρέχονται λειτουργίες σχεδίασης για το κουμπί"
 
-#: ../src/ui/theme-parser.c:3669
+#: ../src/ui/theme-parser.c:3680
 #, c-format
 msgid "No text is allowed inside element <%s>"
 msgstr "Δεν επιτρέπεται κείμενο μέσα στο στοιχείο <%s>"
 
-#: ../src/ui/theme-parser.c:3724 ../src/ui/theme-parser.c:3736
-#: ../src/ui/theme-parser.c:3748 ../src/ui/theme-parser.c:3760
-#: ../src/ui/theme-parser.c:3772
+#: ../src/ui/theme-parser.c:3735 ../src/ui/theme-parser.c:3747
+#: ../src/ui/theme-parser.c:3759 ../src/ui/theme-parser.c:3771
+#: ../src/ui/theme-parser.c:3783
 #, c-format
 msgid "<%s> specified twice for this theme"
 msgstr "<%s> έχει ορισθεί δύο φορές για αυτό το θέμα"
 
 # gconf/gconf-internals.c:2416
-#: ../src/ui/theme-parser.c:4040
+#: ../src/ui/theme-parser.c:4051
 #, c-format
 msgid "Failed to find a valid file for theme %s\n"
 msgstr "Αποτυχία εύρεσης ενός έγκυρου αρχείου για το θέμα %s\n"
 
-#: ../src/ui/theme-parser.c:4096
+#: ../src/ui/theme-parser.c:4107
 #, c-format
 msgid "Theme file %s did not contain a root <metacity_theme> element"
 msgstr ""
 "Το αρχείο θέματος  %s δεν περιέχει ένα στοιχείο διαχειριστή <metacity_theme>"
 
-#: ../src/ui/theme-viewer.c:75
-msgid "/_Windows"
-msgstr "/_Παράθυρα"
+#: ../src/ui/theme-viewer.c:99
+msgid "_Windows"
+msgstr "_Παράθυρα"
 
-#: ../src/ui/theme-viewer.c:76
-msgid "/Windows/tearoff"
-msgstr "/Παράθυρα/tearoff"
+#: ../src/ui/theme-viewer.c:100
+msgid "_Dialog"
+msgstr "Παράθυρο _διαλόγου"
 
-#: ../src/ui/theme-viewer.c:77
-msgid "/Windows/_Dialog"
-msgstr "/Παράθυρα/_Διάλογος"
+#: ../src/ui/theme-viewer.c:101
+msgid "_Modal dialog"
+msgstr "Παράθυρο σχη_ματικού διαλόγου"
 
-#: ../src/ui/theme-viewer.c:78
-msgid "/Windows/_Modal dialog"
-msgstr "/Παράθυρα/Σ_χηματικός διάλογος"
+#: ../src/ui/theme-viewer.c:102
+msgid "_Utility"
+msgstr "Ε_φαρμογή"
 
-#: ../src/ui/theme-viewer.c:79
-msgid "/Windows/_Utility"
-msgstr "/Παράθυρα/Ε_φαρμογή"
+#: ../src/ui/theme-viewer.c:103
+msgid "_Splashscreen"
+msgstr "Ο_θόνη έναρξης"
 
-#: ../src/ui/theme-viewer.c:80
-msgid "/Windows/_Splashscreen"
-msgstr "/Παράθυρα/Ο_θόνη έναρξης"
+#: ../src/ui/theme-viewer.c:104
+msgid "_Top dock"
+msgstr "Dock _κορυφής"
 
-#: ../src/ui/theme-viewer.c:81
-msgid "/Windows/_Top dock"
-msgstr "/Παράθυρα/_Top dock"
+#: ../src/ui/theme-viewer.c:105
+msgid "_Bottom dock"
+msgstr "Κά_τω dock"
 
-#: ../src/ui/theme-viewer.c:82
-msgid "/Windows/_Bottom dock"
-msgstr "/Παράθυρα/_Bottom dock"
+#: ../src/ui/theme-viewer.c:106
+msgid "_Left dock"
+msgstr "Α_ριστερό dock"
 
-#: ../src/ui/theme-viewer.c:83
-msgid "/Windows/_Left dock"
-msgstr "/Παράθυρα/_Left dock"
+#: ../src/ui/theme-viewer.c:107
+msgid "_Right dock"
+msgstr "_Δεξί dock"
 
-#: ../src/ui/theme-viewer.c:84
-msgid "/Windows/_Right dock"
-msgstr "/Παράθυρα/_Right dock"
+#: ../src/ui/theme-viewer.c:108
+msgid "_All docks"
+msgstr "_Όλα τα dock"
 
-#: ../src/ui/theme-viewer.c:85
-msgid "/Windows/_All docks"
-msgstr "/Παράθυρα/_All docks"
+#: ../src/ui/theme-viewer.c:109
+msgid "Des_ktop"
+msgstr "Επι_φάνεια εργασίας"
 
-#: ../src/ui/theme-viewer.c:86
-msgid "/Windows/Des_ktop"
-msgstr "/Παράθυρα/Επι_φάνεια εργασίας"
+#: ../src/ui/theme-viewer.c:115
+msgid "Open another one of these windows"
+msgstr "Άνοιγμα ακόμα ενός από αυτά τα παράθυρα"
 
-#: ../src/ui/theme-viewer.c:244
+#: ../src/ui/theme-viewer.c:117
+msgid "This is a demo button with an 'open' icon"
+msgstr "Αυτό είναι ένα κουμπί επίδειξης με ένα εικονίδιο 'άνοιγμα'"
+
+#: ../src/ui/theme-viewer.c:119
+msgid "This is a demo button with a 'quit' icon"
+msgstr "Αυτό είναι ένα κουμπί επίδειξης με ένα εικονίδιο 'έξοδος'"
+
+#: ../src/ui/theme-viewer.c:253
 msgid "This is a sample message in a sample dialog"
 msgstr "Αυτό είναι ένα κείμενο-παράδειγμα σε ένα παραδειγματικό διάλογο"
 
-#: ../src/ui/theme-viewer.c:327
+#: ../src/ui/theme-viewer.c:336
 #, c-format
 msgid "Fake menu item %d\n"
 msgstr "Ψεύτικο αντικείμενο μενού %d\n"
 
-#: ../src/ui/theme-viewer.c:361
+#: ../src/ui/theme-viewer.c:370
 msgid "Border-only window"
 msgstr "Παράθυρο μόνο με πλαίσιο"
 
-#: ../src/ui/theme-viewer.c:363
+#: ../src/ui/theme-viewer.c:372
 msgid "Bar"
 msgstr "Μπάρα"
 
-#: ../src/ui/theme-viewer.c:380
+#: ../src/ui/theme-viewer.c:389
 msgid "Normal Application Window"
 msgstr "Κανονικό παράθυρο εφαρμογής"
 
-#: ../src/ui/theme-viewer.c:384
+#: ../src/ui/theme-viewer.c:393
 msgid "Dialog Box"
 msgstr "Κουτί διαλόγου"
 
-#: ../src/ui/theme-viewer.c:388
+#: ../src/ui/theme-viewer.c:397
 msgid "Modal Dialog Box"
 msgstr "Κουτί σχηματικού διαλόγου"
 
-#: ../src/ui/theme-viewer.c:392
+#: ../src/ui/theme-viewer.c:401
 msgid "Utility Palette"
 msgstr "Παλέτα εφαρμογής"
 
-#: ../src/ui/theme-viewer.c:396
+#: ../src/ui/theme-viewer.c:405
 msgid "Torn-off Menu"
 msgstr "Αποσπώμενο μενού"
 
-#: ../src/ui/theme-viewer.c:400
+#: ../src/ui/theme-viewer.c:409
 msgid "Border"
 msgstr "Πλαίσιο"
 
-#: ../src/ui/theme-viewer.c:728
+#: ../src/ui/theme-viewer.c:737
 #, c-format
 msgid "Button layout test %d"
 msgstr "Δοκιμή διάταξης κουμπιού %d"
 
-#: ../src/ui/theme-viewer.c:757
+#: ../src/ui/theme-viewer.c:766
 #, c-format
 msgid "%g milliseconds to draw one window frame"
 msgstr "%g χιλιοστά δευτερ. για τη σχεδίαση ενός πλαισίου παραθύρου"
 
-#: ../src/ui/theme-viewer.c:800
+#: ../src/ui/theme-viewer.c:810
 #, c-format
 msgid "Usage: metacity-theme-viewer [THEMENAME]\n"
 msgstr "Χρήση: metacity-theme-viewer [THEMENAME]\n"
 
 # gconf/gconf-backend.c:243
-#: ../src/ui/theme-viewer.c:807
+#: ../src/ui/theme-viewer.c:817
 #, c-format
 msgid "Error loading theme: %s\n"
 msgstr "Σφάλμα φόρτωσης θέματος: %s\n"
 
-#: ../src/ui/theme-viewer.c:813
+#: ../src/ui/theme-viewer.c:823
 #, c-format
 msgid "Loaded theme \"%s\" in %g seconds\n"
 msgstr "Το θέμα \"%s\" φορτώθηκε σε %g  δευτερόλεπτα\n"
 
-#: ../src/ui/theme-viewer.c:854
+#: ../src/ui/theme-viewer.c:866
 msgid "Normal Title Font"
 msgstr "Γραμματοσειρά κανονικού τίτλου"
 
-#: ../src/ui/theme-viewer.c:860
+#: ../src/ui/theme-viewer.c:872
 msgid "Small Title Font"
 msgstr "Γραμματοσειρά μικρού τίτλου"
 
-#: ../src/ui/theme-viewer.c:866
+#: ../src/ui/theme-viewer.c:878
 msgid "Large Title Font"
 msgstr "Γραμματοσειρά μεγάλου τίτλου"
 
-#: ../src/ui/theme-viewer.c:871
+#: ../src/ui/theme-viewer.c:883
 msgid "Button Layouts"
 msgstr "Διατάξεις κουμπιού"
 
-#: ../src/ui/theme-viewer.c:876
+#: ../src/ui/theme-viewer.c:888
 msgid "Benchmark"
 msgstr "Benchmark"
 
-#: ../src/ui/theme-viewer.c:923
+#: ../src/ui/theme-viewer.c:935
 msgid "Window Title Goes Here"
 msgstr "Τίτλος παραθύρου εδώ"
 
-#: ../src/ui/theme-viewer.c:1027
+#: ../src/ui/theme-viewer.c:1039
 #, c-format
 msgid ""
 "Drew %d frames in %g client-side seconds (%g milliseconds per frame) and %g "
@@ -2454,127 +1718,44 @@ msgstr ""
 "συμπεριλαμβανομένων και των πόρων του εξυπηρετητή X (%g χιλιοστά ανά "
 "πλαίσιο)\n"
 
-#: ../src/ui/theme-viewer.c:1246
+#: ../src/ui/theme-viewer.c:1258
 msgid "position expression test returned TRUE but set error"
 msgstr "position expression test returned TRUE but set error"
 
-#: ../src/ui/theme-viewer.c:1248
+#: ../src/ui/theme-viewer.c:1260
 msgid "position expression test returned FALSE but didn't set error"
 msgstr "position expression test returned FALSE but didn't set error"
 
-#: ../src/ui/theme-viewer.c:1252
+#: ../src/ui/theme-viewer.c:1264
 msgid "Error was expected but none given"
 msgstr "Error was expected but none given"
 
-#: ../src/ui/theme-viewer.c:1254
+#: ../src/ui/theme-viewer.c:1266
 #, c-format
 msgid "Error %d was expected but %d given"
 msgstr "Error %d was expected but %d given"
 
-#: ../src/ui/theme-viewer.c:1260
+#: ../src/ui/theme-viewer.c:1272
 #, c-format
 msgid "Error not expected but one was returned: %s"
 msgstr "Error not expected but one was returned: %s"
 
-#: ../src/ui/theme-viewer.c:1264
+#: ../src/ui/theme-viewer.c:1276
 #, c-format
 msgid "x value was %d, %d was expected"
 msgstr "x value was %d, %d was expected"
 
-#: ../src/ui/theme-viewer.c:1267
+#: ../src/ui/theme-viewer.c:1279
 #, c-format
 msgid "y value was %d, %d was expected"
 msgstr "y value was %d, %d was expected"
 
-#: ../src/ui/theme-viewer.c:1332
+#: ../src/ui/theme-viewer.c:1344
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr ""
 "οι εκφράσεις συντεταγμένης %d αναλύθηκαν σε %g δευτερόλεπτα (%g δευτερόλεπτα "
 "μέσος όρος)\n"
 
-#~ msgid "Desktop"
-#~ msgstr "Επιφάνεια εργασίας"
-
-#~ msgid "Window Management"
-#~ msgstr "Διαχείριση Παραθύρων"
-
-# gconf/gconf-internals.c:2416
-#~ msgid "Failed to read saved session file %s: %s\n"
-#~ msgstr "Αποτυχία ανάγνωσης αποθηκευμένου αρχείου συνεδρίας %s: %s\n"
-
-#~ msgid "Switch to workspace on the left of the current workspace"
-#~ msgstr "Αλλαγή στο χώρο εργασίας αριστερά του τρέχοντος"
-
-#~ msgid "Switch to workspace on the right of the current workspace"
-#~ msgstr "Αλλαγή στο χώρο εργασίας δεξιά του τρέχοντος"
-
-#~ msgid "Switch to workspace above the current workspace"
-#~ msgstr "Αλλαγή στο χώρο εργασίας πάνω από τον τρέχοντα"
-
-#~ msgid "Switch to workspace below the current workspace"
-#~ msgstr "Αλλαγή στο χώρο εργασίας κάτω από τον τρέχοντα"
-
-#~ msgid "Move between windows of an application, using a popup window"
-#~ msgstr "Εναλλαγή μεταξύ παραθύρων μιας εφαρμογής, με αναδυόμενο παράθυρο"
-
-#~ msgid ""
-#~ "Move backward between windows of an application, using a popup window"
-#~ msgstr ""
-#~ "Εναλλαγή (προς τα πίσω) μεταξύ παραθύρων μιας εφαρμογής, με αναδυόμενο "
-#~ "παράθυρο"
-
-#~ msgid "Move between windows, using a popup window"
-#~ msgstr "Εναλλαγή μεταξύ παραθύρων, με αναδυόμενο παράθυρο"
-
-#~ msgid "Move backward between windows, using a popup window"
-#~ msgstr "Εναλλαγή (προς τα πίσω) μεταξύ παραθύρων, με αναδυόμενο παράθυρο"
-
-#~ msgid "Move between panels and the desktop, using a popup window"
-#~ msgstr ""
-#~ "Εναλλαγή μεταξύ πινάκων εφαρμογών και επιφ. εργασίας, με αναδυόμενο "
-#~ "παράθυρο"
-
-#~ msgid "Move backward between panels and the desktop, using a popup window"
-#~ msgstr ""
-#~ "Εναλλαγή (προς τα πίσω) μεταξύ πινάκων εφαρμογών και επιφ. εργασίας, με "
-#~ "αναδυόμενο παράθυρο"
-
-#~ msgid "Move backward between windows of an application immediately"
-#~ msgstr "Άμεση εναλλαγή (προς τα πίσω) μεταξύ παραθύρων μιας εφαρμογής"
-
-#~ msgid "Move between windows immediately"
-#~ msgstr "Άμεση εναλλαγή μεταξύ παραθύρων"
-
-#~ msgid "Move backward between windows immediately"
-#~ msgstr "Άμεση εναλλαγή (προς τα πίσω) μεταξύ παραθύρων"
-
-#~ msgid "Move between panels and the desktop immediately"
-#~ msgstr "Άμεση εναλλαγή μεταξύ πινάκων εφαρμογών και επιφάνειας εργασίας"
-
-#~ msgid "Move backward between panels and the desktop immediately"
-#~ msgstr ""
-#~ "Άμεση εναλλαγή (προς τα πίσω) μεταξύ πινάκων εφαρμογών και επιφάνειας "
-#~ "εργασίας"
-
-#~ msgid "Show the panel's \"Run Application\" dialog box"
-#~ msgstr "Εμφάνιση του διαλόγου \"Εκτέλεση εφαρμογής\" του πίνακα εφαρμογών"
-
-#~ msgid "Toggle whether a window will always be visible over other windows"
-#~ msgstr ""
-#~ "Εναλλαγή του αν το παράθυρο θα είναι πάντα ορατό πάνω από τα υπόλοιπα"
-
-#~ msgid "Move window to north (top) side of screen"
-#~ msgstr "Μετακίνηση παραθύρου στην πάνω μεριά της οθόνης"
-
-#~ msgid "Open another one of these windows"
-#~ msgstr "Άνοιγμα ακόμα ενός από αυτά τα παράθυρα"
-
-#~ msgid "This is a demo button with an 'open' icon"
-#~ msgstr "Αυτό είναι ένα κουμπί επίδειξης με ένα εικονίδιο 'άνοιγμα'"
-
-#~ msgid "This is a demo button with a 'quit' icon"
-#~ msgstr "Αυτό είναι ένα κουμπί επίδειξης με ένα εικονίδιο 'έξοδος'"
-
-#~ msgid "Failed to parse message \"%s\" from dialog process\n"
-#~ msgstr "Αποτυχία ανάλυσης μηνύματος \"%s\" της διεργασίας διαλόγου\n"
+#~ msgid "Launchers"
+#~ msgstr "Εκκινητές"
