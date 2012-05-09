@@ -3,41 +3,206 @@
 # Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011 Free Software Foundation, Inc.
 # Pier Luigi Fiorini <plfiorini@libero.it>, 2002.
 # Lapo Calamandrei <lapo.calamandrei@virgilio.it>, 2003.
-# Luca Ferretti <lferrett@gnome.org>, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011.
+# Luca Ferretti <lferrett@gnome.org>, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity 2.29.x\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-18 14:13+0100\n"
-"PO-Revision-Date: 2011-03-04 02:27+0100\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=metacity&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2012-05-06 19:31+0000\n"
+"PO-Revision-Date: 2012-05-09 11:39+0200\n"
 "Last-Translator: Luca Ferretti <lferrett@gnome.org>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
-"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: ../src/50-metacity-launchers.xml.in.h:1
-msgid "Launchers"
-msgstr "Lanciatori"
+"Language: it\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
 #: ../src/50-metacity-navigation.xml.in.h:1
 msgid "Navigation"
 msgstr "Navigazione"
 
-#: ../src/50-metacity-screenshot.xml.in.h:1
-msgid "Screenshots"
-msgstr "Schermate"
+# Nota: pur essendo il verbo originale "move" come poco sopra, è stato scelto di
+# usare "Muovi" per l'azione "clic e trascina sulla barra del titolo" e
+# "Sposta" per questa azione
+#: ../src/50-metacity-navigation.xml.in.h:2
+msgid "Move window to workspace 1"
+msgstr "Sposta la finestra sullo spazio di lavoro 1"
+
+#: ../src/50-metacity-navigation.xml.in.h:3
+msgid "Move window to workspace 2"
+msgstr "Sposta la finestra sullo spazio di lavoro 2"
+
+#: ../src/50-metacity-navigation.xml.in.h:4
+msgid "Move window to workspace 3"
+msgstr "Sposta la finestra sullo spazio di lavoro 3"
+
+#: ../src/50-metacity-navigation.xml.in.h:5
+msgid "Move window to workspace 4"
+msgstr "Sposta la finestra sullo spazio di lavoro 4"
+
+#: ../src/50-metacity-navigation.xml.in.h:6
+msgid "Move window one workspace to the left"
+msgstr "Sposta la finestra sullo spazio di lavoro a sinistra"
+
+#: ../src/50-metacity-navigation.xml.in.h:7
+msgid "Move window one workspace to the right"
+msgstr "Sposta la finestra sullo spazio di lavoro a destra"
+
+#: ../src/50-metacity-navigation.xml.in.h:8
+msgid "Move window one workspace up"
+msgstr "Sposta la finestra sullo spazio di lavoro in alto"
+
+#: ../src/50-metacity-navigation.xml.in.h:9
+msgid "Move window one workspace down"
+msgstr "Sposta la finestra sullo spazio di lavoro in basso"
+
+#: ../src/50-metacity-navigation.xml.in.h:10
+msgid "Switch applications"
+msgstr "Evidenzia le applicazioni"
+
+#: ../src/50-metacity-navigation.xml.in.h:11
+msgid "Switch windows of an application"
+msgstr "Evidenzia le finestre di un'applicazione"
+
+#: ../src/50-metacity-navigation.xml.in.h:12
+msgid "Switch system controls"
+msgstr "Evidenzia i controlli di sistema"
+
+#: ../src/50-metacity-navigation.xml.in.h:13
+msgid "Switch windows directly"
+msgstr "Evidenzia direttamente le finestre"
+
+#: ../src/50-metacity-navigation.xml.in.h:14
+msgid "Switch windows of an app directly"
+msgstr "Evidenzia direttamente le finestre di una applicazione"
+
+#: ../src/50-metacity-navigation.xml.in.h:15
+msgid "Switch system controls directly"
+msgstr "Evidenzia direttamente i controlli di sistema"
+
+#: ../src/50-metacity-navigation.xml.in.h:16
+msgid "Hide all normal windows"
+msgstr "Nasconde tutte le finestre normali"
+
+# questo e i successivi presi dallo stesso
+# file vanno a comparire in
+# Preferenze -> Scorciatoie da tastiera
+#: ../src/50-metacity-navigation.xml.in.h:17
+msgid "Switch to workspace 1"
+msgstr "Passa allo spazio di lavoro 1"
+
+#: ../src/50-metacity-navigation.xml.in.h:18
+msgid "Switch to workspace 2"
+msgstr "Passa allo spazio di lavoro 2"
+
+#: ../src/50-metacity-navigation.xml.in.h:19
+msgid "Switch to workspace 3"
+msgstr "Passa allo spazio di lavoro 3"
+
+#: ../src/50-metacity-navigation.xml.in.h:20
+msgid "Switch to workspace 4"
+msgstr "Passa allo spazio di lavoro 4"
+
+#: ../src/50-metacity-navigation.xml.in.h:21
+msgid "Move to workspace left"
+msgstr "Sposta su spazio di lavoro a sinistra"
+
+#: ../src/50-metacity-navigation.xml.in.h:22
+msgid "Move to workspace right"
+msgstr "Sposta su spazio di lavoro a destra"
+
+#: ../src/50-metacity-navigation.xml.in.h:23
+msgid "Move to workspace above"
+msgstr "Sposta su spazio di lavoro in alto"
+
+#: ../src/50-metacity-navigation.xml.in.h:24
+msgid "Move to workspace below"
+msgstr "Sposta su spazio di lavoro in basso"
 
 #: ../src/50-metacity-system.xml.in.h:1
 msgid "System"
 msgstr "Sistema"
 
+#: ../src/50-metacity-system.xml.in.h:2
+msgid "Show the run command prompt"
+msgstr "Mostra il prompt esegui comando"
+
+#: ../src/50-metacity-system.xml.in.h:3
+msgid "Show the activities overview"
+msgstr "Mostra la panoramica delle attività"
+
 #: ../src/50-metacity-windows.xml.in.h:1
 msgid "Windows"
 msgstr "Finestre"
 
-#: ../src/core/bell.c:299
+#: ../src/50-metacity-windows.xml.in.h:2
+msgid "Activate the window menu"
+msgstr "Attiva il menù della finestra"
+
+#: ../src/50-metacity-windows.xml.in.h:3
+msgid "Toggle fullscreen mode"
+msgstr "Commuta la modalità schermo intero"
+
+#: ../src/50-metacity-windows.xml.in.h:4
+msgid "Toggle maximization state"
+msgstr "Commuta lo stato massimizzazione"
+
+#: ../src/50-metacity-windows.xml.in.h:5
+msgid "Maximize window"
+msgstr "Massimizza la finestra"
+
+#: ../src/50-metacity-windows.xml.in.h:6
+msgid "Restore window"
+msgstr "Ripristina la finestra"
+
+#: ../src/50-metacity-windows.xml.in.h:7
+msgid "Toggle shaded state"
+msgstr "Commuta lo stato arrotolato"
+
+#: ../src/50-metacity-windows.xml.in.h:8
+msgid "Close window"
+msgstr "Chiudi la finestra"
+
+#: ../src/50-metacity-windows.xml.in.h:9
+msgid "Minimize window"
+msgstr "Minimizza la finestra"
+
+#: ../src/50-metacity-windows.xml.in.h:10
+msgid "Move window"
+msgstr "Muovi la finestra"
+
+#: ../src/50-metacity-windows.xml.in.h:11
+msgid "Resize window"
+msgstr "Ridimensiona la finestra"
+
+#: ../src/50-metacity-windows.xml.in.h:12
+msgid "Toggle window on all workspaces or one"
+msgstr "Commuta la stato «su tutti gli spazi di lavoro» per la finestra"
+
+#: ../src/50-metacity-windows.xml.in.h:13
+msgid "Raise window if covered, otherwise lower it"
+msgstr "Solleva la finestra è coperta, in caso contrario l'abbassa"
+
+#: ../src/50-metacity-windows.xml.in.h:14
+msgid "Raise window above other windows"
+msgstr "Solleva la finestra sopra le altre finestre"
+
+#: ../src/50-metacity-windows.xml.in.h:15
+msgid "Lower window below other windows"
+msgstr "Abbassa la finestra sotto le altre"
+
+#: ../src/50-metacity-windows.xml.in.h:16
+msgid "Maximize window vertically"
+msgstr "Massimizza verticalmente la finestra"
+
+#: ../src/50-metacity-windows.xml.in.h:17
+msgid "Maximize window horizontally"
+msgstr "Massimizza orizzontalmente la finestra"
+
+#: ../src/core/bell.c:296
 msgid "Bell event"
 msgstr "Evento campanella"
 
@@ -109,31 +274,6 @@ msgid ""
 msgstr ""
 "Qualche altro programma sta già usando il tasto %s con i modificatori %x "
 "come una associazione di tasti\n"
-
-#. Displayed when a keybinding which is
-#. * supposed to launch a program fails.
-#.
-#: ../src/core/keybindings.c:2343
-#, c-format
-msgid ""
-"There was an error running <tt>%s</tt>:\n"
-"\n"
-"%s"
-msgstr ""
-"Si è verificato un errore nell'eseguire <tt>%s</tt>:\n"
-"\n"
-"%s."
-
-#: ../src/core/keybindings.c:2432
-#, c-format
-msgid "No command %d has been defined.\n"
-msgstr "Non è stato definito alcuno comando %d.\n"
-
-# "comando di terminale" o "comando «terminal»" ???
-#: ../src/core/keybindings.c:3386
-#, c-format
-msgid "No terminal command has been defined.\n"
-msgstr "Non è stato definito alcun comando di terminale.\n"
 
 #: ../src/core/main.c:131
 #, c-format
@@ -211,38 +351,7 @@ msgstr ""
 msgid "Failed to restart: %s\n"
 msgstr "Riavvio non riuscito: %s\n"
 
-#.
-#. * We found it, but it was invalid.  Complain.
-#. *
-#. * FIXME: This replicates the original behaviour, but in the future
-#. * we might consider reverting invalid keys to their original values.
-#. * (We know the old value, so we can look up a suitable string in
-#. * the symtab.)
-#. *
-#. * (Empty comment follows so the translators don't see this.)
-#.
-#.
-#: ../src/core/prefs.c:508 ../src/core/prefs.c:663
-#, c-format
-msgid "GConf key '%s' is set to an invalid value\n"
-msgstr "La chiave GConf «%s» è impostata ad un valore non valido\n"
-
-# lasciato "Il valore" iniziale che c'era in precendeza
-#: ../src/core/prefs.c:589 ../src/core/prefs.c:832
-#, c-format
-msgid "%d stored in GConf key %s is out of range %d to %d\n"
-msgstr ""
-"Il valore %d memorizzato nella chiave GConf %s è fuori dall'intervallo da %d "
-"a %d\n"
-
-#: ../src/core/prefs.c:633 ../src/core/prefs.c:710 ../src/core/prefs.c:758
-#: ../src/core/prefs.c:822 ../src/core/prefs.c:1115 ../src/core/prefs.c:1131
-#: ../src/core/prefs.c:1148 ../src/core/prefs.c:1164
-#, c-format
-msgid "GConf key \"%s\" is set to an invalid type\n"
-msgstr "La chiave GConf «%s» è impostata ad un tipo non valido\n"
-
-#: ../src/core/prefs.c:1234
+#: ../src/core/prefs.c:880
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -250,14 +359,14 @@ msgstr ""
 "Disabilitate le funzionalità palliative per la applicazioni difettose. "
 "Alcune applicazioni potrebbero avere comportamenti errati.\n"
 
-#: ../src/core/prefs.c:1305
+#: ../src/core/prefs.c:949
 #, c-format
-msgid "Could not parse font description \"%s\" from GConf key %s\n"
+msgid "Could not parse font description \"%s\" from GSettings key %s\n"
 msgstr ""
-"Impossibile analizzare la descrizione del tipo di carattere «%s» dalla "
-"chiave GConf %s\n"
+"Impossibile analizzare la descrizione del tipo di carattere «%s» dalla chiave "
+"GSettings %s\n"
 
-#: ../src/core/prefs.c:1367
+#: ../src/core/prefs.c:1015
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -266,34 +375,19 @@ msgstr ""
 "Il valore «%s» trovato nel database di configurazione non è valido per il "
 "modificatore del tasto del mouse\n"
 
-#: ../src/core/prefs.c:1788
-#, c-format
-msgid "Error setting number of workspaces to %d: %s\n"
-msgstr "Errore nell'impostare il numero di spazi di lavoro a %d: %s\n"
-
-#: ../src/core/prefs.c:1959 ../src/core/prefs.c:2461
-#, c-format
-msgid "Workspace %d"
-msgstr "Spazio di lavoro %d"
-
-#: ../src/core/prefs.c:1988 ../src/core/prefs.c:2166
+#: ../src/core/prefs.c:1494
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
 "\"%s\"\n"
 msgstr ""
-"Il valore «%s» nel database di configurazione non è valido per "
-"l'associazione di tasti «%s»\n"
+"Il valore «%s» nel database di configurazione non è valido per l'associazione "
+"di tasti «%s»\n"
 
-#: ../src/core/prefs.c:2542
+#: ../src/core/prefs.c:1601
 #, c-format
-msgid "Error setting name for workspace %d to \"%s\": %s\n"
-msgstr "Errore nell'impostare il nome dello spazio di lavoro %d a «%s»: %s\n"
-
-#: ../src/core/prefs.c:2746
-#, c-format
-msgid "Error setting compositor status: %s\n"
-msgstr "Errore nell'impostare lo stato del compositor: %s\n"
+msgid "Workspace %d"
+msgstr "Spazio di lavoro %d"
 
 #: ../src/core/screen.c:357
 #, c-format
@@ -306,8 +400,8 @@ msgid ""
 "Screen %d on display \"%s\" already has a window manager; try using the --"
 "replace option to replace the current window manager.\n"
 msgstr ""
-"Lo schermo %d sul display «%s» ha già un window manager; provare a "
-"utilizzare l'opzione --replace per sostituirlo.\n"
+"Lo schermo %d sul display «%s» ha già un window manager; provare a utilizzare "
+"l'opzione --replace per sostituirlo.\n"
 
 #: ../src/core/screen.c:400
 #, c-format
@@ -326,49 +420,6 @@ msgstr "Lo schermo %d sul display «%s» ha già un window manager\n"
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "Impossibile rilasciare lo schermo %d sul display «%s»\n"
-
-#. Translators: Please don't translate "Control", "Shift", etc, since these
-#. * are hardcoded (in gtk/gtkaccelgroup.c; it's not metacity's fault).
-#. * "disabled" must also stay as it is.
-#.
-#: ../src/core/schema-bindings.c:169
-msgid ""
-"The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
-"\n"
-"The parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action."
-msgstr ""
-"Il formato è tipo \"<Control>a\" o \"<Shift><Alt>F1\".\n"
-"\n"
-"Senza particolari restrizioni, è consentito l'utilizzo di lettere maiuscole "
-"e minuscole, così come abbreviazioni come \"<Ctl>\" o \"<Ctrl>\". Se "
-"l'opzione è impostata alla stringa speciale \"disabled\", allora non c'è "
-"alcuna associazione di tasti per questa azione."
-
-#: ../src/core/schema-bindings.c:177
-msgid ""
-"The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
-"\n"
-"The parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action.\n"
-"\n"
-"This keybinding may be reversed by holding down the \"shift\" key; "
-"therefore, \"shift\" cannot be one of the keys it uses."
-msgstr ""
-"Il formato è tipo \"<Control>a\" o \"<Shift><Alt>F1\".\n"
-"\n"
-"Senza particolari restrizioni, è consentito l'utilizzo di lettere maiuscole "
-"e minuscole, così come abbreviazioni come \"<Ctl>\" o \"<Ctrl>\". Se "
-"l'opzione è impostata alla stringa speciale \"disabled\", allora non c'è "
-"alcuna associazione di tasti per questa azione.\n"
-"\n"
-"Questa associazioni di tasti può essere invertita tenendo premuto il tasto "
-"\"Maiusc\"; per questo motivo \"<Shift>\" non può essere incluso nei tasti "
-"da usare."
 
 #: ../src/core/session.c:842 ../src/core/session.c:849
 #, c-format
@@ -468,7 +519,6 @@ msgid "Window manager error: "
 msgstr "Errore del window manager: "
 
 #. Translators: This is the title used on dialog boxes
-#. eof all-keybindings.h
 #: ../src/core/util.c:570 ../src/metacity.desktop.in.h:1
 #: ../src/metacity-wm.desktop.in.h:1
 msgid "Metacity"
@@ -494,8 +544,8 @@ msgstr ""
 #: ../src/core/window.c:6269
 #, c-format
 msgid ""
-"Window %s sets an MWM hint indicating it isn't resizable, but sets min size "
-"%d x %d and max size %d x %d; this doesn't make much sense.\n"
+"Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
+"d x %d and max size %d x %d; this doesn't make much sense.\n"
 msgstr ""
 "La finestra %s ha impostato un hint MWM indicando che non è "
 "ridimensionabile, ma ha impostato la dimensione minima %d x %d e la "
@@ -567,460 +617,19 @@ msgstr ""
 "La proprietà %s sulla finestra 0x%lx contiene UTF-8 non valido per "
 "l'elemento %d nella lista\n"
 
-# questo e i successivi presi dallo stesso
-# file vanno a comparire in
-# Preferenze -> Scorciatoie da tastiera
-#: ../src/include/all-keybindings.h:88
-msgid "Switch to workspace 1"
-msgstr "Passa allo spazio di lavoro 1"
-
-#: ../src/include/all-keybindings.h:90
-msgid "Switch to workspace 2"
-msgstr "Passa allo spazio di lavoro 2"
-
-#: ../src/include/all-keybindings.h:92
-msgid "Switch to workspace 3"
-msgstr "Passa allo spazio di lavoro 3"
-
-#: ../src/include/all-keybindings.h:94
-msgid "Switch to workspace 4"
-msgstr "Passa allo spazio di lavoro 4"
-
-#: ../src/include/all-keybindings.h:96
-msgid "Switch to workspace 5"
-msgstr "Passa allo spazio di lavoro 5"
-
-#: ../src/include/all-keybindings.h:98
-msgid "Switch to workspace 6"
-msgstr "Passa allo spazio di lavoro 6"
-
-#: ../src/include/all-keybindings.h:100
-msgid "Switch to workspace 7"
-msgstr "Passa allo spazio di lavoro 7"
-
-#: ../src/include/all-keybindings.h:102
-msgid "Switch to workspace 8"
-msgstr "Passa allo spazio di lavoro 8"
-
-#: ../src/include/all-keybindings.h:104
-msgid "Switch to workspace 9"
-msgstr "Passa allo spazio di lavoro 9"
-
-#: ../src/include/all-keybindings.h:106
-msgid "Switch to workspace 10"
-msgstr "Passa allo spazio di lavoro 10"
-
-#: ../src/include/all-keybindings.h:108
-msgid "Switch to workspace 11"
-msgstr "Passa allo spazio di lavoro 11"
-
-#: ../src/include/all-keybindings.h:110
-msgid "Switch to workspace 12"
-msgstr "Passa allo spazio di lavoro 12"
-
-#: ../src/include/all-keybindings.h:122
-msgid "Move to workspace left"
-msgstr "Sposta su spazio di lavoro a sinistra"
-
-#: ../src/include/all-keybindings.h:126
-msgid "Move to workspace right"
-msgstr "Sposta su spazio di lavoro a destra"
-
-#: ../src/include/all-keybindings.h:130
-msgid "Move to workspace above"
-msgstr "Sposta su spazio di lavoro in alto"
-
-#: ../src/include/all-keybindings.h:134
-msgid "Move to workspace below"
-msgstr "Sposta su spazio di lavoro in basso"
-
-#: ../src/include/all-keybindings.h:150
-msgid "Switch windows of an application"
-msgstr "Evidenzia le finestre di un'applicazione"
-
-#: ../src/include/all-keybindings.h:153
-msgid "Reverse switch windows of an application"
-msgstr "Evidenza le finestre di un'applicazione, in senso inverso"
-
-#: ../src/include/all-keybindings.h:156
-msgid "Switch applications"
-msgstr "Evidenzia le applicazioni"
-
-#: ../src/include/all-keybindings.h:159
-msgid "Reverse switch applications"
-msgstr "Evidenzia le applicazioni, in serso inverso"
-
-#: ../src/include/all-keybindings.h:162
-msgid "Switch system controls"
-msgstr "Evidenzia i controlli di sistema"
-
-#: ../src/include/all-keybindings.h:165
-msgid "Reverse switch system controls"
-msgstr "Evidenzia i controlli di sistema, in senso inverso"
-
-#: ../src/include/all-keybindings.h:169
-msgid "Switch windows of an app directly"
-msgstr "Evidenzia direttamente le finestre di una applicazione"
-
-#: ../src/include/all-keybindings.h:172
-msgid "Reverse switch windows of an app directly"
-msgstr "Evidenzia direttamente le finestre di una applicazione, in senso inverso"
-
-#: ../src/include/all-keybindings.h:175
-msgid "Switch windows directly"
-msgstr "Evidenzia direttamente le finestre"
-
-#: ../src/include/all-keybindings.h:178
-msgid "Reverse switch windows directly"
-msgstr "Evidenzi direttamente le finestre, in senso inverso"
-
-#: ../src/include/all-keybindings.h:181
-msgid "Switch system controls directly"
-msgstr "Evidenzia direttamente i controlli di sistema"
-
-#: ../src/include/all-keybindings.h:184
-msgid "Reverse switch system controls directly"
-msgstr "Evidenzia direttamente i controlli di sistema, in senso inverso"
-
-#: ../src/include/all-keybindings.h:189
-msgid "Hide all normal windows"
-msgstr "Nasconde tutte le finestre normali"
-
-#: ../src/include/all-keybindings.h:192
-msgid "Show the activities overview"
-msgstr "Mostra la panoramica delle attività"
-
-#: ../src/include/all-keybindings.h:195
-msgid "Show the run command prompt"
-msgstr "Mostra il prompt esegui comando"
-
-#: ../src/include/all-keybindings.h:236
-msgid "Take a screenshot"
-msgstr "Cattura una schermata"
-
-#: ../src/include/all-keybindings.h:238
-msgid "Take a screenshot of a window"
-msgstr "Cattura una schermata di una finestra"
-
-#: ../src/include/all-keybindings.h:240
-msgid "Launch Terminal"
-msgstr "Lancia il terminale"
-
-#: ../src/include/all-keybindings.h:255
-msgid "Activate the window menu"
-msgstr "Attiva il menù della finestra"
-
-#: ../src/include/all-keybindings.h:258
-msgid "Toggle fullscreen mode"
-msgstr "Commuta la modalità schermo intero"
-
-#: ../src/include/all-keybindings.h:260
-msgid "Toggle maximization state"
-msgstr "Commuta lo stato massimizzazione"
-
-#: ../src/include/all-keybindings.h:262
-msgid "Toggle window always appearing on top"
-msgstr "Commuta lo stato «sempre in primo piano» per al finestra"
-
-#: ../src/include/all-keybindings.h:264
-msgid "Maximize window"
-msgstr "Massimizza la finestra"
-
-#: ../src/include/all-keybindings.h:266
-msgid "Restore window"
-msgstr "Ripristina la finestra"
-
-#: ../src/include/all-keybindings.h:268
-msgid "Toggle shaded state"
-msgstr "Commuta lo stato arrotolato"
-
-#: ../src/include/all-keybindings.h:270
-msgid "Minimize window"
-msgstr "Minimizza la finestra"
-
-#: ../src/include/all-keybindings.h:272
-msgid "Close window"
-msgstr "Chiudi la finestra"
-
-#: ../src/include/all-keybindings.h:274
-msgid "Move window"
-msgstr "Muovi la finestra"
-
-#: ../src/include/all-keybindings.h:276
-msgid "Resize window"
-msgstr "Ridimensiona la finestra"
-
-#: ../src/include/all-keybindings.h:279
-msgid "Toggle window on all workspaces or one"
-msgstr "Commuta la stato «su tutti gli spazi di lavoro» per la finestra"
-
-# Nota: pur essendo il verbo originale "move" come poco sopra, è stato scelto di
-# usare "Muovi" per l'azione "clic e trascina sulla barra del titolo" e
-# "Sposta" per questa azione
-#: ../src/include/all-keybindings.h:283
-msgid "Move window to workspace 1"
-msgstr "Sposta la finestra sullo spazio di lavoro 1"
-
-#: ../src/include/all-keybindings.h:286
-msgid "Move window to workspace 2"
-msgstr "Sposta la finestra sullo spazio di lavoro 2"
-
-#: ../src/include/all-keybindings.h:289
-msgid "Move window to workspace 3"
-msgstr "Sposta la finestra sullo spazio di lavoro 3"
-
-#: ../src/include/all-keybindings.h:292
-msgid "Move window to workspace 4"
-msgstr "Sposta la finestra sullo spazio di lavoro 4"
-
-#: ../src/include/all-keybindings.h:295
-msgid "Move window to workspace 5"
-msgstr "Sposta la finestra sullo spazio di lavoro 5"
-
-#: ../src/include/all-keybindings.h:298
-msgid "Move window to workspace 6"
-msgstr "Sposta la finestra sullo spazio di lavoro 6"
-
-#: ../src/include/all-keybindings.h:301
-msgid "Move window to workspace 7"
-msgstr "Sposta la finestra sullo spazio di lavoro 7"
-
-#: ../src/include/all-keybindings.h:304
-msgid "Move window to workspace 8"
-msgstr "Sposta la finestra sullo spazio di lavoro 8"
-
-#: ../src/include/all-keybindings.h:307
-msgid "Move window to workspace 9"
-msgstr "Sposta la finestra sullo spazio di lavoro 9"
-
-#: ../src/include/all-keybindings.h:310
-msgid "Move window to workspace 10"
-msgstr "Sposta la finestra sullo spazio di lavoro 10"
-
-#: ../src/include/all-keybindings.h:313
-msgid "Move window to workspace 11"
-msgstr "Sposta la finestra sullo spazio di lavoro 11"
-
-#: ../src/include/all-keybindings.h:316
-msgid "Move window to workspace 12"
-msgstr "Sposta la finestra sullo spazio di lavoro 12"
-
-#: ../src/include/all-keybindings.h:328
-msgid "Move window one workspace to the left"
-msgstr "Sposta la finestra sullo spazio di lavoro a sinistra"
-
-#: ../src/include/all-keybindings.h:331
-msgid "Move window one workspace to the right"
-msgstr "Sposta la finestra sullo spazio di lavoro a destra"
-
-#: ../src/include/all-keybindings.h:334
-msgid "Move window one workspace up"
-msgstr "Sposta la finestra sullo spazio di lavoro in alto"
-
-#: ../src/include/all-keybindings.h:337
-msgid "Move window one workspace down"
-msgstr "Sposta la finestra sullo spazio di lavoro in basso"
-
-#: ../src/include/all-keybindings.h:340
-msgid "Raise window if covered, otherwise lower it"
-msgstr "Solleva la finestra è coperta, in caso contrario l'abbassa"
-
-#: ../src/include/all-keybindings.h:342
-msgid "Raise window above other windows"
-msgstr "Solleva la finestra sopra le altre finestre"
-
-#: ../src/include/all-keybindings.h:344
-msgid "Lower window below other windows"
-msgstr "Abbassa la finestra sotto le altre"
-
-#: ../src/include/all-keybindings.h:348
-msgid "Maximize window vertically"
-msgstr "Massimizza verticalmente la finestra"
-
-#: ../src/include/all-keybindings.h:352
-msgid "Maximize window horizontally"
-msgstr "Massimizza orizzontalmente la finestra"
-
-#: ../src/include/all-keybindings.h:356
-msgid "Move window to top left corner"
-msgstr "Muovi la finestra nell'angolo superiore sinistro"
-
-#: ../src/include/all-keybindings.h:359
-msgid "Move window to top right corner"
-msgstr "Muovi la finestra nell'angolo superiore destro"
-
-#: ../src/include/all-keybindings.h:362
-msgid "Move window to bottom left corner"
-msgstr "Muovi la finestra nell'angolo inferiore sinistro"
-
-#: ../src/include/all-keybindings.h:365
-msgid "Move window to bottom right corner"
-msgstr "Muovi la finestra nell'angolo inferiore destro"
-
-#: ../src/include/all-keybindings.h:369
-msgid "Move window to top edge of screen"
-msgstr "Muovi la finestra al bordo superiore dello schermo"
-
-#: ../src/include/all-keybindings.h:372
-msgid "Move window to bottom edge of screen"
-msgstr "Muovi la finestra al bordo inferiore dello schermo"
-
-#: ../src/include/all-keybindings.h:375
-msgid "Move window to right side of screen"
-msgstr "Muovi la finestra sul lato destro dello schermo"
-
-#: ../src/include/all-keybindings.h:378
-msgid "Move window to left side of screen"
-msgstr "Muovi la finestra sul lato sinistro dello schermo"
-
-#: ../src/include/all-keybindings.h:381
-msgid "Move window to center of screen"
-msgstr "Muovi la finestra al centro dello schermo"
-
-#: ../src/metacity.schemas.in.in.h:1
-msgid "(Not implemented) Navigation works in terms of applications not windows"
-msgstr ""
-"(Non implementato) La navigazione funziona a livello applicazione, non a "
-"livello finestra"
-
-# GNOME-2-26
-# allungata un po' rispetto all'originale
-#: ../src/metacity.schemas.in.in.h:2
-msgid ""
-"A font description string describing a font for window titlebars. The size "
-"from the description will only be used if the titlebar_font_size option is "
-"set to 0. Also, this option is disabled if the titlebar_uses_desktop_font "
-"option is set to true."
-msgstr ""
-"Una stringa di descrizione del tipo di carattere che descrive un tipo di "
-"carattere per la barra del titolo della finestra. La dimensione specificata "
-"nella descrizione è usata solo se l'opzione \"titlebar_font_size\" è "
-"impostata a 0. Inoltre, questa opzione è disabilitata se l'opzione "
-"\"titlebar_uses_desktop_font\" è impostata a VERO."
-
-#: ../src/metacity.schemas.in.in.h:3
-msgid "Action on title bar double-click"
-msgstr "Azione per doppio-clic su barra del titolo"
-
-#: ../src/metacity.schemas.in.in.h:4
-msgid "Action on title bar middle-click"
-msgstr "Azione per clic-centrale su barra del titolo"
-
-#: ../src/metacity.schemas.in.in.h:5
-msgid "Action on title bar right-click"
-msgstr "Azione per clic-destro su barra del titolo"
-
-#: ../src/metacity.schemas.in.in.h:6
-msgid "Arrangement of buttons on the titlebar"
-msgstr "Disposizione pulsanti su barra del titolo"
-
-#: ../src/metacity.schemas.in.in.h:7
-msgid ""
-"Arrangement of buttons on the titlebar. The value should be a string, such "
-"as \"menu:minimize,maximize,spacer,close\"; the colon separates the left "
-"corner of the window from the right corner, and the button names are comma-"
-"separated. Duplicate buttons are not allowed. Unknown button names are "
-"silently ignored so that buttons can be added in future metacity versions "
-"without breaking older versions. A special spacer tag can be used to insert "
-"some space between two adjacent buttons."
-msgstr ""
-"Disposizione dei pulsanti sulla barra del titolo. Il valore deve essere una "
-"stringa, tipo \"menu:minimize,maximize,spacer,close\". I due punti separano "
-"l'angolo sinistro della finestra dal destro, i nomi dei pulsanti sono "
-"separati da virgole. Non sono ammessi pulsanti duplicati. I nomi di pulsanti "
-"sconosciuti sono ignorati in silenzio in modo da poter aggiungere nuovi "
-"pulsanti nelle versioni future di metacity, senza precludere la "
-"compatibilità con le versioni più vecchie. Un tag speciale \"spacer\" può "
-"essere usato per inserire dello spazio tra due pulsanti adiacenti."
-
-#: ../src/metacity.schemas.in.in.h:8
-msgid "Automatically raises the focused window"
-msgstr "Solleva automaticamente la finestra col focus"
-
-# Mi sa che l'originale è sbagliato aperto un bug
-#: ../src/metacity.schemas.in.in.h:9
-msgid ""
-"Clicking a window while holding down this modifier key will move the window "
-"(left click), resize the window (middle click), or show the window menu "
-"(right click). The middle and right click operations may be swapped using "
-"the \"resize_with_right_button\" key. Modifier is expressed as \"&lt;Alt&gt;"
-"\" or \"&lt;Super&gt;\" for example."
-msgstr ""
-"Facendo clic su una finestra mentre viene tenuto premuto questo tasto "
-"modificatore è possibile muovere la finestra (clic sinistro), ridimensionare "
-"la finestra (clic centrale) o visualizzare il menù finestra (clic destro). "
-"Le operazioni con il clic centrale e destro possono essere invertite usando "
-"la chiave \"resize_with_right_button\". Il modificatore è espresso come "
-"\"&lt;Alt&gt;\" o \"&lt;Super&gt;\"."
-
-#: ../src/metacity.schemas.in.in.h:10
-msgid "Commands to run in response to keybindings"
-msgstr "Comandi da eseguire in risposta alle associazioni di tasti"
-
-#: ../src/metacity.schemas.in.in.h:11
+#: ../src/org.gnome.metacity.gschema.xml.in.h:1
 msgid "Compositing Manager"
 msgstr "Manager di composizione"
 
-#: ../src/metacity.schemas.in.in.h:12
-msgid "Control how new windows get focus"
-msgstr "Controlla come le nuove finestre ottengono il focus"
-
-#: ../src/metacity.schemas.in.in.h:13
-msgid "Current theme"
-msgstr "Tema corrente"
-
-#: ../src/metacity.schemas.in.in.h:14
-msgid "Delay in milliseconds for the auto raise option"
-msgstr "Ritardo in millisecondi per l'opzione sollevamento automatico"
-
-#: ../src/metacity.schemas.in.in.h:15
+#: ../src/org.gnome.metacity.gschema.xml.in.h:2
 msgid "Determines whether Metacity is a compositing manager."
 msgstr "Determina se Metacity opera come un manager di composizione."
 
-#: ../src/metacity.schemas.in.in.h:16
-msgid ""
-"Determines whether applications or the system can generate audible 'beeps'; "
-"may be used in conjunction with 'visual bell' to allow silent 'beeps'."
-msgstr ""
-"Determina se le applicazioni o il sistema possono generare dei bip udibili; "
-"può essere usato in congiunzione con \"visual_bell\" per consentire dei bip "
-"silenziosi."
+#: ../src/org.gnome.metacity.gschema.xml.in.h:3
+msgid "If true, trade off usability for less resource usage"
+msgstr "Se impostata a VERO, riduce l'usabilità per un minor uso di risorse"
 
-# inadeguate: see http://catb.org/jargon/html/M/misfeature.html
-#: ../src/metacity.schemas.in.in.h:17
-msgid "Disable misfeatures that are required by old or broken applications"
-msgstr ""
-"Disabilita le funzioni inadeguate richieste da applicazioni vecchie o non "
-"funzionanti"
-
-#: ../src/metacity.schemas.in.in.h:18
-msgid "Enable Visual Bell"
-msgstr "Abilita campanella visiva"
-
-# enter messo in modo un po' libero
-#: ../src/metacity.schemas.in.in.h:19
-msgid ""
-"If set to true, and the focus mode is either \"sloppy\" or \"mouse\" then "
-"the focused window will be automatically raised after a delay specified by "
-"the auto_raise_delay key. This is not related to clicking on a window to "
-"raise it, nor to entering a window during drag-and-drop."
-msgstr ""
-"Se impostata a VERO e la modalità di focus è \"sloppy\" o \"mouse\", allora "
-"la finestra con il focus è sollevata automaticamente dopo un ritardo "
-"specificato nella chiave \"auto_raise_delay\". Ciò non ha relazioni con il "
-"fare clic su una finestra per sollevarla, né con il passare sopra una "
-"finestra durante un'operazione di trascinamento."
-
-#: ../src/metacity.schemas.in.in.h:20
-msgid ""
-"If true, ignore the titlebar_font option, and use the standard application "
-"font for window titles."
-msgstr ""
-"Se impostata a VERO, l'opzione \"titlebar_font\" è ignorata e per i titoli "
-"delle finestre viene usato il tipo di carattere predefinito per le "
-"applicazioni."
-
-#: ../src/metacity.schemas.in.in.h:21
+#: ../src/org.gnome.metacity.gschema.xml.in.h:4
 msgid ""
 "If true, metacity will give the user less feedback by using wireframes, "
 "avoiding animations, or other means. This is a significant reduction in "
@@ -1035,346 +644,6 @@ msgstr ""
 "potrebbe essere un buon compromesso per i terminal server. Comunque, la "
 "funzionalità wireframe è disabilitata quando l'accessibilità è in funzione."
 
-#: ../src/metacity.schemas.in.in.h:22
-msgid ""
-"If true, then Metacity works in terms of applications rather than windows. "
-"The concept is a bit abstract, but in general an application-based setup is "
-"more like the Mac and less like Windows. When you focus a window in "
-"application-based mode, all the windows in the application will be raised. "
-"Also, in application-based mode, focus clicks are not passed through to "
-"windows in other applications. Application-based mode is, however, largely "
-"unimplemented at the moment."
-msgstr ""
-"Se impostata a VERO, Metacity funziona in termini di applicazioni invece che "
-"di finestre. Il concetto è un po' astratto, ma in generale una "
-"configurazione basata sulle applicazioni è più simile al Mac che a Windows. "
-"Quando si da il focus a una finestra nella modalità basata sulle "
-"applicazioni, tutte le finestre dell'applicazione vengono sollevate. Inoltre "
-"in questa modalità i clic per l'assegnazione del focus non vengono passati "
-"attraverso le finestre verso altre applicazioni. Al momento però, la "
-"modalità in base alle applicazioni è ampliamente non implementata."
-
-#: ../src/metacity.schemas.in.in.h:23
-msgid "If true, trade off usability for less resource usage"
-msgstr "Se impostata a VERO, riduce l'usabilità per un minor uso di risorse"
-
-#: ../src/metacity.schemas.in.in.h:24
-msgid "Modifier to use for modified window click actions"
-msgstr ""
-"Modificatore da utilizzare per le azioni sulle finestre con i pulsanti del "
-"mouse"
-
-#: ../src/metacity.schemas.in.in.h:25
-msgid "Name of workspace"
-msgstr "Nome dello spazio di lavoro"
-
-#: ../src/metacity.schemas.in.in.h:26
-msgid "Number of workspaces"
-msgstr "Numero di spazi di lavoro"
-
-#: ../src/metacity.schemas.in.in.h:27
-msgid ""
-"Number of workspaces. Must be more than zero, and has a fixed maximum to "
-"prevent making the desktop unusable by accidentally asking for too many "
-"workspaces."
-msgstr ""
-"Numero degli spazi di lavoro. Deve essere maggiore di zero e presenta un "
-"limite massimo prefissato per evitare di rendere l'ambiente grafico "
-"inutilizzabile qualora si richiedano accidentalmente troppi spazi di lavoro."
-
-#: ../src/metacity.schemas.in.in.h:28
-msgid "Run a defined command"
-msgstr "Esegui un comando stabilito"
-
-#: ../src/metacity.schemas.in.in.h:29
-msgid ""
-"Set this to true to resize with the right button and show a menu with the "
-"middle button while holding down the key given in \"mouse_button_modifier\"; "
-"set it to false to make it work the opposite way around."
-msgstr ""
-"Impostare questa opzione a VERO per ridimensionare con il pulsante destro e "
-"mostrare un menù con il pulsante centrale mentre si tiene premuto il tasto "
-"indicato in \"mouse_button_modifier\": impostare a FALSO per farli "
-"funzionare nel modo opposto."
-
-#: ../src/metacity.schemas.in.in.h:30
-msgid ""
-"Setting this option to false can lead to buggy behavior, so users are "
-"strongly discouraged from changing it from the default of true. Many actions "
-"(e.g. clicking in the client area, moving or resizing the window) normally "
-"raise the window as a side-effect. Setting this option to false, which is "
-"strongly discouraged, will decouple raising from other user actions, and "
-"ignore raise requests generated by applications. See http://bugzilla.gnome."
-"org/show_bug.cgi?id=445447#c6. Even when this option is false, windows can "
-"still be raised by an alt-left-click anywhere on the window, a normal click "
-"on the window decorations, or by special messages from pagers, such as "
-"activation requests from tasklist applets. This option is currently disabled "
-"in click-to-focus mode. Note that the list of ways to raise windows when "
-"raise_on_click is false does not include programmatic requests from "
-"applications to raise windows; such requests will be ignored regardless of "
-"the reason for the request. If you are an application developer and have a "
-"user complaining that your application does not work with this setting "
-"disabled, tell them it is _their_ fault for breaking their window manager "
-"and that they need to change this option back to true or live with the \"bug"
-"\" they requested."
-msgstr ""
-"Impostando questa opzione a FALSO può condurre a comportamenti inadeguati, "
-"perciò è fortemente sconsigliato cambiare il valore VERO predefinito. Molte "
-"azioni (per esempio fare clic nell'area client, muovere o ridimensionare la "
-"finestra) hanno come effetto collaterale quello di sollevale la finestra. "
-"Impostando questa opzione a FALSO, cosa fortemente sconsigliata, verrà "
-"disaccoppiato il sollevamento dalle altre azioni utente e verranno ignorate "
-"le richieste di sollevamento generate delle applicazioni. Consultare http://"
-"bugzilla.gnome.org/show_bug.cgi?id=445447#c6. Anche quando questa opzione è "
-"FALSO, le finestre possono ancora essere sollevate da un clic+Alt_sinistro "
-"in un punto qualsiasi della finestra, da un clic normale sulle decorazioni "
-"delle finestre, o da speciali messaggi dai pager, come una richiesta di "
-"attivazione dall'applet Elenco finestre. Questa opzione è attualmente "
-"disabilitata nella modalità clic-per-focus. Notare che l'elenco di modalità "
-"di sollevamento delle finestre quando la chiave \"raise_on_click\" è FALSO "
-"non include le richieste programmatiche da parte delle applicazioni. Se "
-"siete gli sviluppatori di un'applicazione e qualche utente si lamenta che la "
-"vostra applicazione non funziona con questa impostazione disabilitata, fate "
-"loro notare che è un _loro_ difetto causato dall'aver rovinato il loro "
-"window manager e che dovrebbero riportare il valore di questa opzione a VERO "
-"oppure convivere con il \"bug\" che hanno richiesto."
-
-#: ../src/metacity.schemas.in.in.h:31
-msgid ""
-"Some applications disregard specifications in ways that result in window "
-"manager misfeatures. This option puts Metacity in a rigorously correct mode, "
-"which gives a more consistent user interface, provided one does not need to "
-"run any misbehaving applications."
-msgstr ""
-"Alcune applicazioni non rispettano le specifiche a tal punto da avere come "
-"risultato funzionalità inadeguate nel window manager. Questa opzione pone "
-"Metacity in una modalità rigorosamente corretta, che fornisce una "
-"interfaccia utente più coerente, a meno che non si debba eseguire una "
-"qualche applicazione mal funzionante."
-
-#: ../src/metacity.schemas.in.in.h:32
-msgid "System Bell is Audible"
-msgstr "Campanella di sistema udibile"
-
-#: ../src/metacity.schemas.in.in.h:33
-msgid ""
-"Tells Metacity how to implement the visual indication that the system bell "
-"or another application 'bell' indicator has been rung. Currently there are "
-"two valid values, \"fullscreen\", which causes a fullscreen white-black "
-"flash, and \"frame_flash\" which causes the titlebar of the application "
-"which sent the bell signal to flash. If the application which sent the bell "
-"is unknown (as is usually the case for the default \"system beep\"), the "
-"currently focused window's titlebar is flashed."
-msgstr ""
-"Indica a Metacity come implementare l'indicazione visiva che la campanella "
-"di sistema o un altro indicatore \"campanella\" di applicazione sta "
-"suonando. Al momento sono ammessi due valori: \"fullscreen\", che causa un "
-"lampeggio bianco-nero a schermo intero, e \"frame_flash\", che causa il "
-"lampeggio della barra del titolo dell'applicazione che ha inviato il segnale "
-"della campanella. Se l'applicazione che ha inviato la campanella è "
-"sconosciuta (come accade di solito nel caso della campanella di sistema), il "
-"lampeggio avviene sulla finestra che al momento ha il focus."
-
-#: ../src/metacity.schemas.in.in.h:34
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_N keys define keybindings "
-"that correspond to these commands. Pressing the keybinding for run_command_N "
-"will execute command_N."
-msgstr ""
-"Le chiavi /apps/metacity/global_keybindings/run_command_N definiscono le "
-"associazioni di tasti che corrispondono a questi comandi. Premendo "
-"l'associazione di tasti per la chiave \"run_command_N\", viene eseguito il "
-"comando della chiave \"command_N\"."
-
-#: ../src/metacity.schemas.in.in.h:35
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_screenshot key defines a "
-"keybinding which causes the command specified by this setting to be invoked."
-msgstr ""
-"La chiave /apps/metacity/global_keybindings/run_command_screenshot definisce "
-"una associazione di tasti che causa l'invocazione del comando specificato da "
-"questa impostazione."
-
-#: ../src/metacity.schemas.in.in.h:36
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_window_screenshot key "
-"defines a keybinding which causes the command specified by this setting to "
-"be invoked."
-msgstr ""
-"La chiave /apps/metacity/global_keybindings/run_command_window_screenshot "
-"definisce una associazione di tasti che causa l'invocazione del comando "
-"specificato da questa impostazione."
-
-#: ../src/metacity.schemas.in.in.h:37
-msgid ""
-"The keybinding that runs the correspondingly-numbered command in /apps/"
-"metacity/keybinding_commands The format looks like \"&lt;Control&gt;a\" or "
-"\"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows "
-"lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and "
-"\"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled\", "
-"then there will be no keybinding for this action."
-msgstr ""
-"L'associazione di tasti che esegue il comando con numero corrispondente in /"
-"apps/metacity/keybinding_commands. Il formato è \"&lt;Control$gt;a\" oppure "
-"\"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di lettere "
-"maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o \"&lt;"
-"Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale \"disabled\", "
-"allora non c'è alcuna associazione di tasti per questa azione."
-
-#: ../src/metacity.schemas.in.in.h:38
-msgid "The name of a workspace."
-msgstr "Il nome di uno spazio di lavoro."
-
-#: ../src/metacity.schemas.in.in.h:39
-msgid "The screenshot command"
-msgstr "Il comando per schermate"
-
-#: ../src/metacity.schemas.in.in.h:40
-msgid ""
-"The theme determines the appearance of window borders, titlebar, and so "
-"forth."
-msgstr ""
-"Il tema determina l'aspetto dei bordi delle finestre, della barra del titolo "
-"e così via."
-
-#: ../src/metacity.schemas.in.in.h:41
-msgid ""
-"The time delay before raising a window if auto_raise is set to true. The "
-"delay is given in thousandths of a second."
-msgstr ""
-"L'intervallo di tempo in millisecondi prima che la finestra venga sollevata "
-"quando auto_raise è impostato a VERO."
-
-#: ../src/metacity.schemas.in.in.h:42
-msgid ""
-"The window focus mode indicates how windows are activated. It has three "
-"possible values; \"click\" means windows must be clicked in order to focus "
-"them, \"sloppy\" means windows are focused when the mouse enters the window, "
-"and \"mouse\" means windows are focused when the mouse enters the window and "
-"unfocused when the mouse leaves the window."
-msgstr ""
-"La modalità di focus delle finestre indica come vengono attivate le "
-"finestre. I possibili valori sono tre: \"click\" indica che è necessario "
-"fare clic sulle finestre al fine di dare loro il focus, \"sloppy\" indica "
-"che le finestre ottengono il focus quando il puntatore entra nella loro "
-"area, \"mouse\" indica che le finestre ottengono il focus quando il "
-"puntatore entra nella loro area e lo perdono quando abbandona tale area."
-
-#: ../src/metacity.schemas.in.in.h:43
-msgid "The window screenshot command"
-msgstr "Il comando per schermate di finestre"
-
-#: ../src/metacity.schemas.in.in.h:44
-msgid ""
-"This option determines the effects of double-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"Questa opzione determina gli effetti del doppio-clic sulla barra del titolo. "
-"Le opzioni attualmente valide sono \"toggle_shade\" per arrotolare/srotolare "
-"la finestra, \"toggle_maximize\" per  massimizzare/demassimizzare la "
-"finestra, \"toggle_maximize_horizontally\" e \"toggle_maximize_vertically\" "
-"per massimizzare/demassimizzare la finestra solo in una prefissata "
-"direzione, \"minimize\" per minimizzare la finestra, \"shade\" per "
-"arrotolare la finestra, \"menu\" per mostrare il menù finestra, \"lower\" "
-"per collocare la finestra sotto tutte le altre e \"none\" per non compiere "
-"alcuna azione."
-
-#: ../src/metacity.schemas.in.in.h:45
-msgid ""
-"This option determines the effects of middle-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"Questa opzione determina gli effetti del clic-centrale sulla barra del "
-"titolo. Le opzioni attualmente valide sono \"toggle_shade\" per arrotolare/"
-"srotolare la finestra, \"toggle_maximize\" per  massimizzare/demassimizzare "
-"la finestra, \"toggle_maximize_horizontally\" e \"toggle_maximize_vertically"
-"\" per massimizzare/demassimizzare la finestra solo in una prefissata "
-"direzione, \"minimize\" per minimizzare la finestra, \"shade\" per "
-"arrotolare la finestra, \"menu\" per mostrare il menù finestra, \"lower\" "
-"per collocare la finestra sotto tutte le altre e \"none\" per non compiere "
-"alcuna azione."
-
-#: ../src/metacity.schemas.in.in.h:46
-msgid ""
-"This option determines the effects of right-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"Questa opzione determina gli effetti del clic-destro sulla barra del titolo. "
-"Le opzioni attualmente valide sono \"toggle_shade\" per arrotolare/srotolare "
-"la finestra, \"toggle_maximize\" per  massimizzare/demassimizzare la "
-"finestra, \"toggle_maximize_horizontally\" e \"toggle_maximize_vertically\" "
-"per massimizzare/demassimizzare la finestra solo in una prefissata "
-"direzione, \"minimize\" per minimizzare la finestra, \"shade\" per "
-"arrotolare la finestra, \"menu\" per mostrare il menù finestra, \"lower\" "
-"per collocare la finestra sotto tutte le altre e \"none\" per non compiere "
-"alcuna azione."
-
-#: ../src/metacity.schemas.in.in.h:47
-msgid ""
-"This option provides additional control over how newly created windows get "
-"focus. It has two possible values; \"smart\" applies the user's normal focus "
-"mode, and \"strict\" results in windows started from a terminal not being "
-"given focus."
-msgstr ""
-"Questa opzione fornisce un controllo aggiuntivo sul modo in cui le finestre "
-"appena create ottengono il focus. Sono ammessi due valori: \"smart\" per "
-"applicare la normale modalità di focus dell'utente e \"strict\" per non dare "
-"il focus a finestre avviate da un terminale."
-
-#: ../src/metacity.schemas.in.in.h:48
-msgid ""
-"Turns on a visual indication when an application or the system issues a "
-"'bell' or 'beep'; useful for the hard-of-hearing and for use in noisy "
-"environments."
-msgstr ""
-"Attiva un'indicazione visiva quando un'applicazione o il sistema emette un "
-"\"bip\" o \"suona una campanella\"; utile per chi ha problemi d'udito o per "
-"l'uso in ambienti rumorosi."
-
-#: ../src/metacity.schemas.in.in.h:49
-msgid "Use standard system font in window titles"
-msgstr "Usare il carattere di sistema nei titoli delle finestre"
-
-#: ../src/metacity.schemas.in.in.h:50
-msgid "Visual Bell Type"
-msgstr "Tipo campanella visiva"
-
-#: ../src/metacity.schemas.in.in.h:51
-msgid "Whether raising should be a side-effect of other user interactions"
-msgstr ""
-"Indica se sollevare la finestra è un effetto secondario di altre interazioni "
-"utente"
-
-#: ../src/metacity.schemas.in.in.h:52
-msgid "Whether to resize with the right button"
-msgstr "Indica se ridimensionare con il pulsante destro"
-
-#: ../src/metacity.schemas.in.in.h:53
-msgid "Window focus mode"
-msgstr "Modalità di focus delle finestre"
-
-#: ../src/metacity.schemas.in.in.h:54
-msgid "Window title font"
-msgstr "Carattere per il titolo della finestra"
-
 #: ../src/tools/metacity-message.c:150
 #, c-format
 msgid "Usage: %s\n"
@@ -1382,48 +651,48 @@ msgstr "Uso: %s\n"
 
 # Questo e i successivi simili sono tooltip
 # per i pulsanti della cornice.
-#: ../src/ui/frames.c:1120
+#: ../src/ui/frames.c:1114
 msgid "Close Window"
 msgstr "Chiude la finestra"
 
-#: ../src/ui/frames.c:1123
+#: ../src/ui/frames.c:1117
 msgid "Window Menu"
 msgstr "Menù finestra"
 
-#: ../src/ui/frames.c:1126
+#: ../src/ui/frames.c:1120
 msgid "Minimize Window"
 msgstr "Minimizza la finestra"
 
-#: ../src/ui/frames.c:1129
+#: ../src/ui/frames.c:1123
 msgid "Maximize Window"
 msgstr "Massimizza la finestra"
 
 # ==demassimizza
-#: ../src/ui/frames.c:1132
+#: ../src/ui/frames.c:1126
 msgid "Restore Window"
 msgstr "Ripristina la finestra"
 
-#: ../src/ui/frames.c:1135
+#: ../src/ui/frames.c:1129
 msgid "Roll Up Window"
 msgstr "Arrotola la finestra"
 
-#: ../src/ui/frames.c:1138
+#: ../src/ui/frames.c:1132
 msgid "Unroll Window"
 msgstr "Srotola la finestra"
 
-#: ../src/ui/frames.c:1141
+#: ../src/ui/frames.c:1135
 msgid "Keep Window On Top"
 msgstr "Tiene la finestra in primo piano"
 
-#: ../src/ui/frames.c:1144
+#: ../src/ui/frames.c:1138
 msgid "Remove Window From Top"
 msgstr "Rimuove la finestra dalla primo piano"
 
-#: ../src/ui/frames.c:1147
+#: ../src/ui/frames.c:1141
 msgid "Always On Visible Workspace"
 msgstr "Sempre sullo spazio di lavoro visibile"
 
-#: ../src/ui/frames.c:1150
+#: ../src/ui/frames.c:1144
 msgid "Put Window On Only One Workspace"
 msgstr "Pone la finestra su un solo spazio di lavoro"
 
@@ -1523,24 +792,24 @@ msgid "_Close"
 msgstr "_Chiudi"
 
 # mantenere in sync con libwnck
-#: ../src/ui/menu.c:203
+#: ../src/ui/menu.c:205
 #, c-format
 msgid "Workspace %d%n"
 msgstr "Spazio di lavoro %d%n"
 
 # mantenere in sync con libwnck
-#: ../src/ui/menu.c:213
+#: ../src/ui/menu.c:215
 #, c-format
 msgid "Workspace 1_0"
 msgstr "Spazio di lavoro 1_0"
 
 # mantenere in sync con libwnck
-#: ../src/ui/menu.c:215
+#: ../src/ui/menu.c:217
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Spazio di lavoro %s%d"
 
-#: ../src/ui/menu.c:395
+#: ../src/ui/menu.c:398
 msgid "Move to Another _Workspace"
 msgstr "Sposta su _altro spazio di lavoro"
 
@@ -1549,7 +818,7 @@ msgstr "Sposta su _altro spazio di lavoro"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:104
+#: ../src/ui/metaaccellabel.c:80
 msgid "Shift"
 msgstr "Maiusc"
 
@@ -1558,7 +827,7 @@ msgstr "Maiusc"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:110
+#: ../src/ui/metaaccellabel.c:86
 msgid "Ctrl"
 msgstr "Ctrl"
 
@@ -1567,7 +836,7 @@ msgstr "Ctrl"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:116
+#: ../src/ui/metaaccellabel.c:92
 msgid "Alt"
 msgstr "Alt"
 
@@ -1576,7 +845,7 @@ msgstr "Alt"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:122
+#: ../src/ui/metaaccellabel.c:98
 msgid "Meta"
 msgstr "Meta"
 
@@ -1585,7 +854,7 @@ msgstr "Meta"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:128
+#: ../src/ui/metaaccellabel.c:104
 msgid "Super"
 msgstr "Super"
 
@@ -1594,7 +863,7 @@ msgstr "Super"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:134
+#: ../src/ui/metaaccellabel.c:110
 msgid "Hyper"
 msgstr "Hyper"
 
@@ -1603,7 +872,7 @@ msgstr "Hyper"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:140
+#: ../src/ui/metaaccellabel.c:116
 msgid "Mod2"
 msgstr "Mod2"
 
@@ -1612,7 +881,7 @@ msgstr "Mod2"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:146
+#: ../src/ui/metaaccellabel.c:122
 msgid "Mod3"
 msgstr "Mod3"
 
@@ -1621,7 +890,7 @@ msgstr "Mod3"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:152
+#: ../src/ui/metaaccellabel.c:128
 msgid "Mod4"
 msgstr "Mod4"
 
@@ -1630,7 +899,7 @@ msgstr "Mod4"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:158
+#: ../src/ui/metaaccellabel.c:134
 msgid "Mod5"
 msgstr "Mod5"
 
@@ -1738,15 +1007,14 @@ msgstr "Il valore alpha «%s» nel colore sfumato non è compreso tra 0.0 e 1.0"
 msgid ""
 "Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
 msgstr ""
-"Il formato dell'ombreggiatura è «shade/base_color/factor», «%s» non è adatto "
-"a tale formato"
+"Il formato dell'ombreggiatura è «shade/base_color/factor», «%s» non è adatto a "
+"tale formato"
 
 #: ../src/ui/theme.c:1331
 #, c-format
 msgid "Could not parse shade factor \"%s\" in shaded color"
 msgstr ""
-"Impossibile analizzare il fattore di ombreggiatura «%s» nel colore "
-"ombreggiato"
+"Impossibile analizzare il fattore di ombreggiatura «%s» nel colore ombreggiato"
 
 #: ../src/ui/theme.c:1341
 #, c-format
@@ -1762,8 +1030,7 @@ msgstr "Impossibile analizzare il colore «%s»"
 #, c-format
 msgid "Coordinate expression contains character '%s' which is not allowed"
 msgstr ""
-"L'espressione delle coordinate contiene il carattere «%s» che non è "
-"consentito"
+"L'espressione delle coordinate contiene il carattere «%s» che non è consentito"
 
 #: ../src/ui/theme.c:1651
 #, c-format
@@ -1835,8 +1102,8 @@ msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
 "operand in between"
 msgstr ""
-"L'espressione delle coordinate ha l'operatore «%c» seguito dall'operatore "
-"«%c» senza un operando fra i due"
+"L'espressione delle coordinate ha l'operatore «%c» seguito dall'operatore «%c» "
+"senza un operando fra i due"
 
 #: ../src/ui/theme.c:2237 ../src/ui/theme.c:2278
 #, c-format
@@ -1910,16 +1177,16 @@ msgid ""
 "No frame style set for window type \"%s\" in theme \"%s\", add a <window "
 "type=\"%s\" style_set=\"whatever\"/> element"
 msgstr ""
-"Nessuno stile di cornice impostato per il tipo di finestra «%s» nel tema "
-"«%s», aggiungere un elemento <window type=\"%s\" style_set=\"whatever\"/>"
+"Nessuno stile di cornice impostato per il tipo di finestra «%s» nel tema «%s», "
+"aggiungere un elemento <window type=\"%s\" style_set=\"whatever\"/>"
 
 #: ../src/ui/theme.c:5505 ../src/ui/theme.c:5567 ../src/ui/theme.c:5630
 #, c-format
 msgid ""
 "User-defined constants must begin with a capital letter; \"%s\" does not"
 msgstr ""
-"Le costanti definite dall'utente devono iniziare con una lettera maiuscola, "
-"«%s» non lo fa"
+"Le costanti definite dall'utente devono iniziare con una lettera maiuscola, «%"
+"s» non lo fa"
 
 #: ../src/ui/theme.c:5513 ../src/ui/theme.c:5575 ../src/ui/theme.c:5638
 #, c-format
@@ -1957,8 +1224,7 @@ msgstr "Impossibile analizzare «%s» come un intero"
 #: ../src/ui/theme-parser.c:531 ../src/ui/theme-parser.c:586
 #, c-format
 msgid "Did not understand trailing characters \"%s\" in string \"%s\""
-msgstr ""
-"Non sono stati compresi i caratteri  di chiusura «%s» nella stringa «%s»"
+msgstr "Non sono stati compresi i caratteri  di chiusura «%s» nella stringa «%s»"
 
 #: ../src/ui/theme-parser.c:541
 #, c-format
@@ -2002,64 +1268,64 @@ msgstr ""
 "medium,large, x-large, o xx-large)\n"
 
 # element_name, name
-#: ../src/ui/theme-parser.c:936 ../src/ui/theme-parser.c:999
-#: ../src/ui/theme-parser.c:1033 ../src/ui/theme-parser.c:1136
+#: ../src/ui/theme-parser.c:947 ../src/ui/theme-parser.c:1010
+#: ../src/ui/theme-parser.c:1044 ../src/ui/theme-parser.c:1147
 #, c-format
 msgid "<%s> name \"%s\" used a second time"
 msgstr "Nome «%2$s» di <%1$s>  usato una seconda volta"
 
 # element_name, parent
-#: ../src/ui/theme-parser.c:948 ../src/ui/theme-parser.c:1045
-#: ../src/ui/theme-parser.c:1148
+#: ../src/ui/theme-parser.c:959 ../src/ui/theme-parser.c:1056
+#: ../src/ui/theme-parser.c:1159
 #, c-format
 msgid "<%s> parent \"%s\" has not been defined"
 msgstr "Il genitore «%2$s» di <%1$s> non è stato definito"
 
 # element_name, geometry
-#: ../src/ui/theme-parser.c:1058
+#: ../src/ui/theme-parser.c:1069
 #, c-format
 msgid "<%s> geometry \"%s\" has not been defined"
 msgstr "La geometria «%2$s» di <%1$s> non è stata definita"
 
-#: ../src/ui/theme-parser.c:1071
+#: ../src/ui/theme-parser.c:1082
 #, c-format
 msgid "<%s> must specify either a geometry or a parent that has a geometry"
 msgstr "<%s> deve specificare una geometria o un genitore che ha una geometria"
 
-#: ../src/ui/theme-parser.c:1113
+#: ../src/ui/theme-parser.c:1124
 msgid "You must specify a background for an alpha value to be meaningful"
 msgstr ""
 "È necessario specificare uno sfondo per un valore alpha affinché sia "
 "significativo"
 
 # in base al successivo, type dovrebbe essere parola chiave....
-#: ../src/ui/theme-parser.c:1180
+#: ../src/ui/theme-parser.c:1191
 #, c-format
 msgid "Unknown type \"%s\" on <%s> element"
 msgstr "type «%s» sconosciuto nell'elemento <%s>"
 
-#: ../src/ui/theme-parser.c:1191
+#: ../src/ui/theme-parser.c:1202
 #, c-format
 msgid "Unknown style_set \"%s\" on <%s> element"
 msgstr "style_set «%s» sconosciuto nell'elemento <%s>"
 
-#: ../src/ui/theme-parser.c:1199
+#: ../src/ui/theme-parser.c:1210
 #, c-format
 msgid "Window type \"%s\" has already been assigned a style set"
 msgstr ""
 "Al tipo di finestra «%s» è stata già assegnata una impostazione di stile"
 
-#: ../src/ui/theme-parser.c:1229 ../src/ui/theme-parser.c:1293
-#: ../src/ui/theme-parser.c:1519 ../src/ui/theme-parser.c:2740
-#: ../src/ui/theme-parser.c:2786 ../src/ui/theme-parser.c:2934
-#: ../src/ui/theme-parser.c:3126 ../src/ui/theme-parser.c:3164
-#: ../src/ui/theme-parser.c:3202 ../src/ui/theme-parser.c:3240
+#: ../src/ui/theme-parser.c:1240 ../src/ui/theme-parser.c:1304
+#: ../src/ui/theme-parser.c:1530 ../src/ui/theme-parser.c:2751
+#: ../src/ui/theme-parser.c:2797 ../src/ui/theme-parser.c:2945
+#: ../src/ui/theme-parser.c:3137 ../src/ui/theme-parser.c:3175
+#: ../src/ui/theme-parser.c:3213 ../src/ui/theme-parser.c:3251
 #, c-format
 msgid "Element <%s> is not allowed below <%s>"
 msgstr "L'elemento <%s> non è consentito all'interno di <%s>"
 
-#: ../src/ui/theme-parser.c:1343 ../src/ui/theme-parser.c:1357
-#: ../src/ui/theme-parser.c:1402
+#: ../src/ui/theme-parser.c:1354 ../src/ui/theme-parser.c:1368
+#: ../src/ui/theme-parser.c:1413
 msgid ""
 "Cannot specify both \"button_width\"/\"button_height\" and \"aspect_ratio\" "
 "for buttons"
@@ -2067,128 +1333,127 @@ msgstr ""
 "Non è possibile specificare sia \"button_width\"/\"button_height\" che "
 "\"aspect_ratio\" per i pulsanti"
 
-#: ../src/ui/theme-parser.c:1366
+#: ../src/ui/theme-parser.c:1377
 #, c-format
 msgid "Distance \"%s\" is unknown"
 msgstr "La distanza «%s» è sconosciuta"
 
-#: ../src/ui/theme-parser.c:1411
+#: ../src/ui/theme-parser.c:1422
 #, c-format
 msgid "Aspect ratio \"%s\" is unknown"
 msgstr "Le proporzioni «%s» sono sconosciute"
 
-#: ../src/ui/theme-parser.c:1473
+#: ../src/ui/theme-parser.c:1484
 #, c-format
 msgid "Border \"%s\" is unknown"
 msgstr "Il bordo «%s» è sconosciuto"
 
-#: ../src/ui/theme-parser.c:1784
+#: ../src/ui/theme-parser.c:1795
 #, c-format
 msgid "No \"start_angle\" or \"from\" attribute on element <%s>"
 msgstr "Nessun attributo «start_angle» o «from» nell'elemento <%s>"
 
-#: ../src/ui/theme-parser.c:1791
+#: ../src/ui/theme-parser.c:1802
 #, c-format
 msgid "No \"extent_angle\" or \"to\" attribute on element <%s>"
 msgstr "Nessun attributo «extent_angle» o «to» nell'elemento <%s>"
 
-#: ../src/ui/theme-parser.c:2031
+#: ../src/ui/theme-parser.c:2042
 #, c-format
 msgid "Did not understand value \"%s\" for type of gradient"
 msgstr "Valore «%s» incomprensibile per il tipo di gradiente"
 
-#: ../src/ui/theme-parser.c:2109 ../src/ui/theme-parser.c:2484
+#: ../src/ui/theme-parser.c:2120 ../src/ui/theme-parser.c:2495
 #, c-format
 msgid "Did not understand fill type \"%s\" for <%s> element"
 msgstr "Tipo di riempimento «%s» incomprensibile per l'elemento <%s>"
 
-#: ../src/ui/theme-parser.c:2276 ../src/ui/theme-parser.c:2359
-#: ../src/ui/theme-parser.c:2422
+#: ../src/ui/theme-parser.c:2287 ../src/ui/theme-parser.c:2370
+#: ../src/ui/theme-parser.c:2433
 #, c-format
 msgid "Did not understand state \"%s\" for <%s> element"
 msgstr "Stato «%s» incomprensibile per l'elemento <%s>"
 
-#: ../src/ui/theme-parser.c:2286 ../src/ui/theme-parser.c:2369
+#: ../src/ui/theme-parser.c:2297 ../src/ui/theme-parser.c:2380
 #, c-format
 msgid "Did not understand shadow \"%s\" for <%s> element"
 msgstr "Ombra «%s» incomprensibile per l'elemento <%s>"
 
-#: ../src/ui/theme-parser.c:2296
+#: ../src/ui/theme-parser.c:2307
 #, c-format
 msgid "Did not understand arrow \"%s\" for <%s> element"
 msgstr "Freccia «%s» incomprensibile per l'elemento <%s>"
 
-#: ../src/ui/theme-parser.c:2596 ../src/ui/theme-parser.c:2692
+#: ../src/ui/theme-parser.c:2607 ../src/ui/theme-parser.c:2703
 #, c-format
 msgid "No <draw_ops> called \"%s\" has been defined"
 msgstr "Non è stato definito alcun <draw_ops> di nome «%s»"
 
-#: ../src/ui/theme-parser.c:2608 ../src/ui/theme-parser.c:2704
+#: ../src/ui/theme-parser.c:2619 ../src/ui/theme-parser.c:2715
 #, c-format
 msgid "Including draw_ops \"%s\" here would create a circular reference"
 msgstr ""
 "Includendo draw_ops «%s» qui si potrebbe creare un riferimento circolare"
 
 # piece dovrebbe essere parola chiave
-#: ../src/ui/theme-parser.c:2819
+#: ../src/ui/theme-parser.c:2830
 #, c-format
 msgid "Unknown position \"%s\" for frame piece"
 msgstr "Posizione «%s» sconosciuta per il piece di cornice"
 
 # piece dovrebbe essere parola chiave
-#: ../src/ui/theme-parser.c:2827
+#: ../src/ui/theme-parser.c:2838
 #, c-format
 msgid "Frame style already has a piece at position %s"
 msgstr "Lo stile della cornice ha già una piece alla posizione %s"
 
-#: ../src/ui/theme-parser.c:2844 ../src/ui/theme-parser.c:2919
+#: ../src/ui/theme-parser.c:2855 ../src/ui/theme-parser.c:2930
 #, c-format
 msgid "No <draw_ops> with the name \"%s\" has been defined"
 msgstr "Non è stato definito alcun <draw_ops> con il nome «%s»"
 
-#: ../src/ui/theme-parser.c:2873
+#: ../src/ui/theme-parser.c:2884
 #, c-format
 msgid "Unknown function \"%s\" for button"
 msgstr "Funzione «%s» sconosciuta per il pulsante"
 
-#: ../src/ui/theme-parser.c:2882
+#: ../src/ui/theme-parser.c:2893
 #, c-format
 msgid "Button function \"%s\" does not exist in this version (%d, need %d)"
 msgstr ""
-"La funzione di pulsante «%s» non esiste in questa versione (%d, necessaria "
-"%d)"
+"La funzione di pulsante «%s» non esiste in questa versione (%d, necessaria %d)"
 
-#: ../src/ui/theme-parser.c:2894
+#: ../src/ui/theme-parser.c:2905
 #, c-format
 msgid "Unknown state \"%s\" for button"
 msgstr "Stato «%s» sconosciuto per il pulsate"
 
-#: ../src/ui/theme-parser.c:2902
+#: ../src/ui/theme-parser.c:2913
 #, c-format
 msgid "Frame style already has a button for function %s state %s"
 msgstr "Lo stile della cornice ha già un pulsante per la funzione %s stato %s"
 
-#: ../src/ui/theme-parser.c:2973
+#: ../src/ui/theme-parser.c:2984
 #, c-format
 msgid "\"%s\" is not a valid value for focus attribute"
 msgstr "«%s» non è un valore valido per l'attributo focus"
 
-#: ../src/ui/theme-parser.c:2982
+#: ../src/ui/theme-parser.c:2993
 #, c-format
 msgid "\"%s\" is not a valid value for state attribute"
 msgstr "«%s» non è un valore valido per l'attributo state"
 
-#: ../src/ui/theme-parser.c:2992
+#: ../src/ui/theme-parser.c:3003
 #, c-format
 msgid "A style called \"%s\" has not been defined"
 msgstr "Uno stile chiamato «%s» non è stato definito"
 
-#: ../src/ui/theme-parser.c:3013 ../src/ui/theme-parser.c:3036
+#: ../src/ui/theme-parser.c:3024 ../src/ui/theme-parser.c:3047
 #, c-format
 msgid "\"%s\" is not a valid value for resize attribute"
 msgstr "«%s» non è un valore valido per l'attributo resize"
 
-#: ../src/ui/theme-parser.c:3047
+#: ../src/ui/theme-parser.c:3058
 #, c-format
 msgid ""
 "Should not have \"resize\" attribute on <%s> element for maximized/shaded "
@@ -2197,7 +1462,7 @@ msgstr ""
 "Non si dovrebbe avere l'attributo «resize» nell'elemento <%s> per gli stati "
 "maximized/shaded"
 
-#: ../src/ui/theme-parser.c:3061
+#: ../src/ui/theme-parser.c:3072
 #, c-format
 msgid ""
 "Should not have \"resize\" attribute on <%s> element for maximized states"
@@ -2205,17 +1470,17 @@ msgstr ""
 "Non si dovrebbe avere l'attributo «resize» nell'elemento <%s> per gli stati "
 "maximized"
 
-#: ../src/ui/theme-parser.c:3075 ../src/ui/theme-parser.c:3097
+#: ../src/ui/theme-parser.c:3086 ../src/ui/theme-parser.c:3108
 #, c-format
 msgid "Style has already been specified for state %s resize %s focus %s"
 msgstr "Lo stile è stato già specificato per lo stato %s resize %s focus %s"
 
-#: ../src/ui/theme-parser.c:3086 ../src/ui/theme-parser.c:3108
+#: ../src/ui/theme-parser.c:3097 ../src/ui/theme-parser.c:3119
 #, c-format
 msgid "Style has already been specified for state %s focus %s"
 msgstr "Lo stile è stato già specificato per lo stato %s focus %s"
 
-#: ../src/ui/theme-parser.c:3147
+#: ../src/ui/theme-parser.c:3158
 msgid ""
 "Can't have a two draw_ops for a <piece> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
@@ -2224,7 +1489,7 @@ msgstr ""
 "specificato un attributo draw_ops e anche un elemento <draw_ops>, o ha "
 "specificato due elementi)"
 
-#: ../src/ui/theme-parser.c:3185
+#: ../src/ui/theme-parser.c:3196
 msgid ""
 "Can't have a two draw_ops for a <button> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
@@ -2233,7 +1498,7 @@ msgstr ""
 "specificato un attributo draw_ops e anche un elemento <draw_ops>, o ha "
 "specificato due elementi)"
 
-#: ../src/ui/theme-parser.c:3223
+#: ../src/ui/theme-parser.c:3234
 msgid ""
 "Can't have a two draw_ops for a <menu_icon> element (theme specified a "
 "draw_ops attribute and also a <draw_ops> element, or specified two elements)"
@@ -2242,12 +1507,12 @@ msgstr ""
 "specificato un attributo draw_ops e anche un elemento <draw_ops>, o ha "
 "specificato due elementi)"
 
-#: ../src/ui/theme-parser.c:3271
+#: ../src/ui/theme-parser.c:3282
 #, c-format
 msgid "Outermost element in theme must be <metacity_theme> not <%s>"
 msgstr "L'elemento più esterno nel tema deve essere <metacity_theme> not <%s>"
 
-#: ../src/ui/theme-parser.c:3291
+#: ../src/ui/theme-parser.c:3302
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a name/author/date/description element"
@@ -2255,12 +1520,12 @@ msgstr ""
 "L'elemento <%s> non è consentito all'interno di un elemento name/author/date/"
 "description"
 
-#: ../src/ui/theme-parser.c:3296
+#: ../src/ui/theme-parser.c:3307
 #, c-format
 msgid "Element <%s> is not allowed inside a <constant> element"
 msgstr "L'elemento <%s> non è consentito all'interno di un elemento <constant>"
 
-#: ../src/ui/theme-parser.c:3308
+#: ../src/ui/theme-parser.c:3319
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a distance/border/aspect_ratio element"
@@ -2268,189 +1533,197 @@ msgstr ""
 "L'elemento <%s> non è consentito all'interno di un elemento distance/border/"
 "aspect_ratio"
 
-#: ../src/ui/theme-parser.c:3330
+#: ../src/ui/theme-parser.c:3341
 #, c-format
 msgid "Element <%s> is not allowed inside a draw operation element"
 msgstr ""
 "L'elemento <%s> non è consentito all'interno di un elemento relativo "
 "un'operazione di disegno"
 
-#: ../src/ui/theme-parser.c:3340 ../src/ui/theme-parser.c:3370
-#: ../src/ui/theme-parser.c:3375 ../src/ui/theme-parser.c:3380
+#: ../src/ui/theme-parser.c:3351 ../src/ui/theme-parser.c:3381
+#: ../src/ui/theme-parser.c:3386 ../src/ui/theme-parser.c:3391
 #, c-format
 msgid "Element <%s> is not allowed inside a <%s> element"
 msgstr "L'elemento <%s> non è consentito all'interno di un elemento <%s>"
 
 # piece dovrebbe essere parola chiave
-#: ../src/ui/theme-parser.c:3602
+#: ../src/ui/theme-parser.c:3613
 msgid "No draw_ops provided for frame piece"
 msgstr "Nessun draw_ops fornito per il piece di cornice"
 
-#: ../src/ui/theme-parser.c:3617
+#: ../src/ui/theme-parser.c:3628
 msgid "No draw_ops provided for button"
 msgstr "Nessun draw_ops fornito per il pulsante"
 
-#: ../src/ui/theme-parser.c:3669
+#: ../src/ui/theme-parser.c:3680
 #, c-format
 msgid "No text is allowed inside element <%s>"
 msgstr "Il testo non è consentito all'interno dell'elemento <%s>"
 
-#: ../src/ui/theme-parser.c:3724 ../src/ui/theme-parser.c:3736
-#: ../src/ui/theme-parser.c:3748 ../src/ui/theme-parser.c:3760
-#: ../src/ui/theme-parser.c:3772
+#: ../src/ui/theme-parser.c:3735 ../src/ui/theme-parser.c:3747
+#: ../src/ui/theme-parser.c:3759 ../src/ui/theme-parser.c:3771
+#: ../src/ui/theme-parser.c:3783
 #, c-format
 msgid "<%s> specified twice for this theme"
 msgstr "<%s> specificato due volte per questo tema"
 
-#: ../src/ui/theme-parser.c:4040
+#: ../src/ui/theme-parser.c:4051
 #, c-format
 msgid "Failed to find a valid file for theme %s\n"
 msgstr "Ricerca di un file valido per il tema «%s» non riuscita\n"
 
-#: ../src/ui/theme-parser.c:4096
+#: ../src/ui/theme-parser.c:4107
 #, c-format
 msgid "Theme file %s did not contain a root <metacity_theme> element"
 msgstr "Il file di tema «%s» non contiene un elemento radice <metacity_theme>"
 
-#: ../src/ui/theme-viewer.c:75
-msgid "/_Windows"
-msgstr "/_Finestre"
+#: ../src/ui/theme-viewer.c:99
+msgid "_Windows"
+msgstr "_Finestre"
 
-#: ../src/ui/theme-viewer.c:76
-msgid "/Windows/tearoff"
-msgstr "/Finestre/staccatore"
+#: ../src/ui/theme-viewer.c:100
+msgid "_Dialog"
+msgstr "_Dialogo"
 
-#: ../src/ui/theme-viewer.c:77
-msgid "/Windows/_Dialog"
-msgstr "/Finestre/_Dialogo"
+#: ../src/ui/theme-viewer.c:101
+msgid "_Modal dialog"
+msgstr "Dialogo _modale"
 
-#: ../src/ui/theme-viewer.c:78
-msgid "/Windows/_Modal dialog"
-msgstr "/Finestre/Dialogo _modale"
+#: ../src/ui/theme-viewer.c:102
+msgid "_Utility"
+msgstr "_Utilità"
 
-#: ../src/ui/theme-viewer.c:79
-msgid "/Windows/_Utility"
-msgstr "/Finestre/_Utilità"
+#: ../src/ui/theme-viewer.c:103
+msgid "_Splashscreen"
+msgstr "_Schermata d'avvio"
 
-#: ../src/ui/theme-viewer.c:80
-msgid "/Windows/_Splashscreen"
-msgstr "/Finestre/_Schermata d'avvio"
+#: ../src/ui/theme-viewer.c:104
+msgid "_Top dock"
+msgstr "Dock superi_ore"
 
-#: ../src/ui/theme-viewer.c:81
-msgid "/Windows/_Top dock"
-msgstr "/Finestre/Dock superi_ore"
+#: ../src/ui/theme-viewer.c:105
+msgid "_Bottom dock"
+msgstr "Dock in_feriore"
 
-#: ../src/ui/theme-viewer.c:82
-msgid "/Windows/_Bottom dock"
-msgstr "/Finestre/Dock in_feriore"
+#: ../src/ui/theme-viewer.c:106
+msgid "_Left dock"
+msgstr "Dock _sinistro"
 
-#: ../src/ui/theme-viewer.c:83
-msgid "/Windows/_Left dock"
-msgstr "/Finestre/Dock _sinistro"
+#: ../src/ui/theme-viewer.c:107
+msgid "_Right dock"
+msgstr "Dock _destro"
 
-#: ../src/ui/theme-viewer.c:84
-msgid "/Windows/_Right dock"
-msgstr "/Finestre/Dock _destro"
+#: ../src/ui/theme-viewer.c:108
+msgid "_All docks"
+msgstr "Tutti i doc_k"
 
-#: ../src/ui/theme-viewer.c:85
-msgid "/Windows/_All docks"
-msgstr "/Finestre/Tutti i doc_k"
+#: ../src/ui/theme-viewer.c:109
+msgid "Des_ktop"
+msgstr "Des_ktop"
 
-#: ../src/ui/theme-viewer.c:86
-msgid "/Windows/Des_ktop"
-msgstr "/Finestre/D_esktop"
+#: ../src/ui/theme-viewer.c:115
+msgid "Open another one of these windows"
+msgstr "Apre un'altra di queste finestre"
 
-#: ../src/ui/theme-viewer.c:244
+#: ../src/ui/theme-viewer.c:117
+msgid "This is a demo button with an 'open' icon"
+msgstr "Questo è un pulsante demo con una icona \"apri\""
+
+#: ../src/ui/theme-viewer.c:119
+msgid "This is a demo button with a 'quit' icon"
+msgstr "Questo è un pulsante demo con una icona \"esci\""
+
+#: ../src/ui/theme-viewer.c:253
 msgid "This is a sample message in a sample dialog"
 msgstr "Questo è un messaggio d'esempio in una finestra di dialogo d'esempio"
 
-#: ../src/ui/theme-viewer.c:327
+#: ../src/ui/theme-viewer.c:336
 #, c-format
 msgid "Fake menu item %d\n"
 msgstr "Voce di menu finta n.%d\n"
 
-#: ../src/ui/theme-viewer.c:361
+#: ../src/ui/theme-viewer.c:370
 msgid "Border-only window"
 msgstr "Finestra solo-bordo"
 
-#: ../src/ui/theme-viewer.c:363
+#: ../src/ui/theme-viewer.c:372
 msgid "Bar"
 msgstr "Barra"
 
-#: ../src/ui/theme-viewer.c:380
+#: ../src/ui/theme-viewer.c:389
 msgid "Normal Application Window"
 msgstr "Finestra applicazione normale"
 
-#: ../src/ui/theme-viewer.c:384
+#: ../src/ui/theme-viewer.c:393
 msgid "Dialog Box"
 msgstr "Casella di dialogo"
 
-#: ../src/ui/theme-viewer.c:388
+#: ../src/ui/theme-viewer.c:397
 msgid "Modal Dialog Box"
 msgstr "Casella di dialogo modale"
 
-#: ../src/ui/theme-viewer.c:392
+#: ../src/ui/theme-viewer.c:401
 msgid "Utility Palette"
 msgstr "Tavolozza di utilità"
 
-#: ../src/ui/theme-viewer.c:396
+#: ../src/ui/theme-viewer.c:405
 msgid "Torn-off Menu"
 msgstr "Menù staccato"
 
-#: ../src/ui/theme-viewer.c:400
+#: ../src/ui/theme-viewer.c:409
 msgid "Border"
 msgstr "Bordo"
 
-#: ../src/ui/theme-viewer.c:728
+#: ../src/ui/theme-viewer.c:737
 #, c-format
 msgid "Button layout test %d"
 msgstr "Test n.%d disposizione pulsanti"
 
-#: ../src/ui/theme-viewer.c:757
+#: ../src/ui/theme-viewer.c:766
 #, c-format
 msgid "%g milliseconds to draw one window frame"
 msgstr "%g millisecondi per disegnare una cornice di finestra"
 
-#: ../src/ui/theme-viewer.c:800
+#: ../src/ui/theme-viewer.c:810
 #, c-format
 msgid "Usage: metacity-theme-viewer [THEMENAME]\n"
 msgstr "Uso: metacity-theme-viewer [NOME_TEMA]\n"
 
-#: ../src/ui/theme-viewer.c:807
+#: ../src/ui/theme-viewer.c:817
 #, c-format
 msgid "Error loading theme: %s\n"
 msgstr "Errore nel caricare il tema: %s\n"
 
-#: ../src/ui/theme-viewer.c:813
+#: ../src/ui/theme-viewer.c:823
 #, c-format
 msgid "Loaded theme \"%s\" in %g seconds\n"
 msgstr "Tema «%s» caricato in %g secondi\n"
 
-#: ../src/ui/theme-viewer.c:854
+#: ../src/ui/theme-viewer.c:866
 msgid "Normal Title Font"
 msgstr "Carattere titolo normale"
 
-#: ../src/ui/theme-viewer.c:860
+#: ../src/ui/theme-viewer.c:872
 msgid "Small Title Font"
 msgstr "Carattere titolo piccolo"
 
-#: ../src/ui/theme-viewer.c:866
+#: ../src/ui/theme-viewer.c:878
 msgid "Large Title Font"
 msgstr "Carattere titolo grande"
 
-#: ../src/ui/theme-viewer.c:871
+#: ../src/ui/theme-viewer.c:883
 msgid "Button Layouts"
 msgstr "Disposizione pulsanti"
 
-#: ../src/ui/theme-viewer.c:876
+#: ../src/ui/theme-viewer.c:888
 msgid "Benchmark"
 msgstr "Prestazioni"
 
-#: ../src/ui/theme-viewer.c:923
+#: ../src/ui/theme-viewer.c:935
 msgid "Window Title Goes Here"
 msgstr "Qui va il titolo della finestra"
 
-#: ../src/ui/theme-viewer.c:1027
+#: ../src/ui/theme-viewer.c:1039
 #, c-format
 msgid ""
 "Drew %d frames in %g client-side seconds (%g milliseconds per frame) and %g "
@@ -2461,44 +1734,670 @@ msgstr ""
 "e %g secondi di wall clock time, incluse le risorse del server X (%g "
 "millisecondi per cornice)\n"
 
-#: ../src/ui/theme-viewer.c:1246
+#: ../src/ui/theme-viewer.c:1258
 msgid "position expression test returned TRUE but set error"
 msgstr "test espressione posizione ha restituito TRUE, ma impostato errore"
 
-#: ../src/ui/theme-viewer.c:1248
+#: ../src/ui/theme-viewer.c:1260
 msgid "position expression test returned FALSE but didn't set error"
 msgstr ""
 "test espressione posizione ha restituito FALSE, ma non ha impostato errore"
 
-#: ../src/ui/theme-viewer.c:1252
+#: ../src/ui/theme-viewer.c:1264
 msgid "Error was expected but none given"
 msgstr "Errore atteso, ma non fornito"
 
-#: ../src/ui/theme-viewer.c:1254
+#: ../src/ui/theme-viewer.c:1266
 #, c-format
 msgid "Error %d was expected but %d given"
 msgstr "Atteso errore %d, ma fornito %d"
 
-#: ../src/ui/theme-viewer.c:1260
+#: ../src/ui/theme-viewer.c:1272
 #, c-format
 msgid "Error not expected but one was returned: %s"
 msgstr "Errore non atteso, ma è stato restituito: %s"
 
-#: ../src/ui/theme-viewer.c:1264
+#: ../src/ui/theme-viewer.c:1276
 #, c-format
 msgid "x value was %d, %d was expected"
 msgstr "valore x era %d, era atteso %d"
 
-#: ../src/ui/theme-viewer.c:1267
+#: ../src/ui/theme-viewer.c:1279
 #, c-format
 msgid "y value was %d, %d was expected"
 msgstr "valore y era %d, era atteso %d"
 
-#: ../src/ui/theme-viewer.c:1332
+#: ../src/ui/theme-viewer.c:1344
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr ""
 "%d espressioni di coordinate analizzate in %g secondi (%g secondi in media)\n"
+
+#~ msgid "Launchers"
+#~ msgstr "Lanciatori"
+
+#~ msgid "Screenshots"
+#~ msgstr "Schermate"
+
+#~ msgid ""
+#~ "There was an error running <tt>%s</tt>:\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Si è verificato un errore nell'eseguire <tt>%s</tt>:\n"
+#~ "\n"
+#~ "%s."
+
+#~ msgid "No command %d has been defined.\n"
+#~ msgstr "Non è stato definito alcuno comando %d.\n"
+
+# "comando di terminale" o "comando «terminal»" ???
+#~ msgid "No terminal command has been defined.\n"
+#~ msgstr "Non è stato definito alcun comando di terminale.\n"
+
+#~ msgid "GConf key '%s' is set to an invalid value\n"
+#~ msgstr "La chiave GConf «%s» è impostata ad un valore non valido\n"
+
+# lasciato "Il valore" iniziale che c'era in precendeza
+#~ msgid "%d stored in GConf key %s is out of range %d to %d\n"
+#~ msgstr ""
+#~ "Il valore %d memorizzato nella chiave GConf %s è fuori dall'intervallo da "
+#~ "%d a %d\n"
+
+#~ msgid "GConf key \"%s\" is set to an invalid type\n"
+#~ msgstr "La chiave GConf «%s» è impostata ad un tipo non valido\n"
+
+#~ msgid "Error setting number of workspaces to %d: %s\n"
+#~ msgstr "Errore nell'impostare il numero di spazi di lavoro a %d: %s\n"
+
+#~ msgid "Error setting name for workspace %d to \"%s\": %s\n"
+#~ msgstr "Errore nell'impostare il nome dello spazio di lavoro %d a «%s»: %s\n"
+
+#~ msgid "Error setting compositor status: %s\n"
+#~ msgstr "Errore nell'impostare lo stato del compositor: %s\n"
+
+#~ msgid ""
+#~ "The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
+#~ "\n"
+#~ "The parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to "
+#~ "the special string \"disabled\", then there will be no keybinding for "
+#~ "this action."
+#~ msgstr ""
+#~ "Il formato è tipo \"<Control>a\" o \"<Shift><Alt>F1\".\n"
+#~ "\n"
+#~ "Senza particolari restrizioni, è consentito l'utilizzo di lettere "
+#~ "maiuscole e minuscole, così come abbreviazioni come \"<Ctl>\" o \"<Ctrl>"
+#~ "\". Se l'opzione è impostata alla stringa speciale \"disabled\", allora "
+#~ "non c'è alcuna associazione di tasti per questa azione."
+
+#~ msgid ""
+#~ "The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
+#~ "\n"
+#~ "The parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to "
+#~ "the special string \"disabled\", then there will be no keybinding for "
+#~ "this action.\n"
+#~ "\n"
+#~ "This keybinding may be reversed by holding down the \"shift\" key; "
+#~ "therefore, \"shift\" cannot be one of the keys it uses."
+#~ msgstr ""
+#~ "Il formato è tipo \"<Control>a\" o \"<Shift><Alt>F1\".\n"
+#~ "\n"
+#~ "Senza particolari restrizioni, è consentito l'utilizzo di lettere "
+#~ "maiuscole e minuscole, così come abbreviazioni come \"<Ctl>\" o \"<Ctrl>"
+#~ "\". Se l'opzione è impostata alla stringa speciale \"disabled\", allora "
+#~ "non c'è alcuna associazione di tasti per questa azione.\n"
+#~ "\n"
+#~ "Questa associazioni di tasti può essere invertita tenendo premuto il "
+#~ "tasto \"Maiusc\"; per questo motivo \"<Shift>\" non può essere incluso "
+#~ "nei tasti da usare."
+
+#~ msgid "Switch to workspace 5"
+#~ msgstr "Passa allo spazio di lavoro 5"
+
+#~ msgid "Switch to workspace 6"
+#~ msgstr "Passa allo spazio di lavoro 6"
+
+#~ msgid "Switch to workspace 7"
+#~ msgstr "Passa allo spazio di lavoro 7"
+
+#~ msgid "Switch to workspace 8"
+#~ msgstr "Passa allo spazio di lavoro 8"
+
+#~ msgid "Switch to workspace 9"
+#~ msgstr "Passa allo spazio di lavoro 9"
+
+#~ msgid "Switch to workspace 10"
+#~ msgstr "Passa allo spazio di lavoro 10"
+
+#~ msgid "Switch to workspace 11"
+#~ msgstr "Passa allo spazio di lavoro 11"
+
+#~ msgid "Switch to workspace 12"
+#~ msgstr "Passa allo spazio di lavoro 12"
+
+#~ msgid "Reverse switch windows of an application"
+#~ msgstr "Evidenza le finestre di un'applicazione, in senso inverso"
+
+#~ msgid "Reverse switch applications"
+#~ msgstr "Evidenzia le applicazioni, in serso inverso"
+
+#~ msgid "Reverse switch system controls"
+#~ msgstr "Evidenzia i controlli di sistema, in senso inverso"
+
+#~ msgid "Reverse switch windows of an app directly"
+#~ msgstr ""
+#~ "Evidenzia direttamente le finestre di una applicazione, in senso inverso"
+
+#~ msgid "Reverse switch windows directly"
+#~ msgstr "Evidenzi direttamente le finestre, in senso inverso"
+
+#~ msgid "Reverse switch system controls directly"
+#~ msgstr "Evidenzia direttamente i controlli di sistema, in senso inverso"
+
+#~ msgid "Take a screenshot"
+#~ msgstr "Cattura una schermata"
+
+#~ msgid "Take a screenshot of a window"
+#~ msgstr "Cattura una schermata di una finestra"
+
+#~ msgid "Launch Terminal"
+#~ msgstr "Lancia il terminale"
+
+#~ msgid "Toggle window always appearing on top"
+#~ msgstr "Commuta lo stato «sempre in primo piano» per al finestra"
+
+#~ msgid "Move window to workspace 5"
+#~ msgstr "Sposta la finestra sullo spazio di lavoro 5"
+
+#~ msgid "Move window to workspace 6"
+#~ msgstr "Sposta la finestra sullo spazio di lavoro 6"
+
+#~ msgid "Move window to workspace 7"
+#~ msgstr "Sposta la finestra sullo spazio di lavoro 7"
+
+#~ msgid "Move window to workspace 8"
+#~ msgstr "Sposta la finestra sullo spazio di lavoro 8"
+
+#~ msgid "Move window to workspace 9"
+#~ msgstr "Sposta la finestra sullo spazio di lavoro 9"
+
+#~ msgid "Move window to workspace 10"
+#~ msgstr "Sposta la finestra sullo spazio di lavoro 10"
+
+#~ msgid "Move window to workspace 11"
+#~ msgstr "Sposta la finestra sullo spazio di lavoro 11"
+
+#~ msgid "Move window to workspace 12"
+#~ msgstr "Sposta la finestra sullo spazio di lavoro 12"
+
+#~ msgid "Move window to top left corner"
+#~ msgstr "Muovi la finestra nell'angolo superiore sinistro"
+
+#~ msgid "Move window to top right corner"
+#~ msgstr "Muovi la finestra nell'angolo superiore destro"
+
+#~ msgid "Move window to bottom left corner"
+#~ msgstr "Muovi la finestra nell'angolo inferiore sinistro"
+
+#~ msgid "Move window to bottom right corner"
+#~ msgstr "Muovi la finestra nell'angolo inferiore destro"
+
+#~ msgid "Move window to top edge of screen"
+#~ msgstr "Muovi la finestra al bordo superiore dello schermo"
+
+#~ msgid "Move window to bottom edge of screen"
+#~ msgstr "Muovi la finestra al bordo inferiore dello schermo"
+
+#~ msgid "Move window to right side of screen"
+#~ msgstr "Muovi la finestra sul lato destro dello schermo"
+
+#~ msgid "Move window to left side of screen"
+#~ msgstr "Muovi la finestra sul lato sinistro dello schermo"
+
+#~ msgid "Move window to center of screen"
+#~ msgstr "Muovi la finestra al centro dello schermo"
+
+#~ msgid ""
+#~ "(Not implemented) Navigation works in terms of applications not windows"
+#~ msgstr ""
+#~ "(Non implementato) La navigazione funziona a livello applicazione, non a "
+#~ "livello finestra"
+
+# GNOME-2-26
+# allungata un po' rispetto all'originale
+#~ msgid ""
+#~ "A font description string describing a font for window titlebars. The "
+#~ "size from the description will only be used if the titlebar_font_size "
+#~ "option is set to 0. Also, this option is disabled if the "
+#~ "titlebar_uses_desktop_font option is set to true."
+#~ msgstr ""
+#~ "Una stringa di descrizione del tipo di carattere che descrive un tipo di "
+#~ "carattere per la barra del titolo della finestra. La dimensione "
+#~ "specificata nella descrizione è usata solo se l'opzione "
+#~ "\"titlebar_font_size\" è impostata a 0. Inoltre, questa opzione è "
+#~ "disabilitata se l'opzione \"titlebar_uses_desktop_font\" è impostata a "
+#~ "VERO."
+
+#~ msgid "Action on title bar double-click"
+#~ msgstr "Azione per doppio-clic su barra del titolo"
+
+#~ msgid "Action on title bar middle-click"
+#~ msgstr "Azione per clic-centrale su barra del titolo"
+
+#~ msgid "Action on title bar right-click"
+#~ msgstr "Azione per clic-destro su barra del titolo"
+
+#~ msgid "Arrangement of buttons on the titlebar"
+#~ msgstr "Disposizione pulsanti su barra del titolo"
+
+#~ msgid ""
+#~ "Arrangement of buttons on the titlebar. The value should be a string, "
+#~ "such as \"menu:minimize,maximize,spacer,close\"; the colon separates the "
+#~ "left corner of the window from the right corner, and the button names are "
+#~ "comma-separated. Duplicate buttons are not allowed. Unknown button names "
+#~ "are silently ignored so that buttons can be added in future metacity "
+#~ "versions without breaking older versions. A special spacer tag can be "
+#~ "used to insert some space between two adjacent buttons."
+#~ msgstr ""
+#~ "Disposizione dei pulsanti sulla barra del titolo. Il valore deve essere "
+#~ "una stringa, tipo \"menu:minimize,maximize,spacer,close\". I due punti "
+#~ "separano l'angolo sinistro della finestra dal destro, i nomi dei pulsanti "
+#~ "sono separati da virgole. Non sono ammessi pulsanti duplicati. I nomi di "
+#~ "pulsanti sconosciuti sono ignorati in silenzio in modo da poter "
+#~ "aggiungere nuovi pulsanti nelle versioni future di metacity, senza "
+#~ "precludere la compatibilità con le versioni più vecchie. Un tag speciale "
+#~ "\"spacer\" può essere usato per inserire dello spazio tra due pulsanti "
+#~ "adiacenti."
+
+#~ msgid "Automatically raises the focused window"
+#~ msgstr "Solleva automaticamente la finestra col focus"
+
+# Mi sa che l'originale è sbagliato aperto un bug
+#~ msgid ""
+#~ "Clicking a window while holding down this modifier key will move the "
+#~ "window (left click), resize the window (middle click), or show the window "
+#~ "menu (right click). The middle and right click operations may be swapped "
+#~ "using the \"resize_with_right_button\" key. Modifier is expressed as "
+#~ "\"&lt;Alt&gt;\" or \"&lt;Super&gt;\" for example."
+#~ msgstr ""
+#~ "Facendo clic su una finestra mentre viene tenuto premuto questo tasto "
+#~ "modificatore è possibile muovere la finestra (clic sinistro), "
+#~ "ridimensionare la finestra (clic centrale) o visualizzare il menù "
+#~ "finestra (clic destro). Le operazioni con il clic centrale e destro "
+#~ "possono essere invertite usando la chiave \"resize_with_right_button\". "
+#~ "Il modificatore è espresso come \"&lt;Alt&gt;\" o \"&lt;Super&gt;\"."
+
+#~ msgid "Commands to run in response to keybindings"
+#~ msgstr "Comandi da eseguire in risposta alle associazioni di tasti"
+
+#~ msgid "Control how new windows get focus"
+#~ msgstr "Controlla come le nuove finestre ottengono il focus"
+
+#~ msgid "Current theme"
+#~ msgstr "Tema corrente"
+
+#~ msgid "Delay in milliseconds for the auto raise option"
+#~ msgstr "Ritardo in millisecondi per l'opzione sollevamento automatico"
+
+#~ msgid ""
+#~ "Determines whether applications or the system can generate audible "
+#~ "'beeps'; may be used in conjunction with 'visual bell' to allow silent "
+#~ "'beeps'."
+#~ msgstr ""
+#~ "Determina se le applicazioni o il sistema possono generare dei bip "
+#~ "udibili; può essere usato in congiunzione con \"visual_bell\" per "
+#~ "consentire dei bip silenziosi."
+
+# inadeguate: see http://catb.org/jargon/html/M/misfeature.html
+#~ msgid "Disable misfeatures that are required by old or broken applications"
+#~ msgstr ""
+#~ "Disabilita le funzioni inadeguate richieste da applicazioni vecchie o non "
+#~ "funzionanti"
+
+#~ msgid "Enable Visual Bell"
+#~ msgstr "Abilita campanella visiva"
+
+# enter messo in modo un po' libero
+#~ msgid ""
+#~ "If set to true, and the focus mode is either \"sloppy\" or \"mouse\" then "
+#~ "the focused window will be automatically raised after a delay specified "
+#~ "by the auto_raise_delay key. This is not related to clicking on a window "
+#~ "to raise it, nor to entering a window during drag-and-drop."
+#~ msgstr ""
+#~ "Se impostata a VERO e la modalità di focus è \"sloppy\" o \"mouse\", "
+#~ "allora la finestra con il focus è sollevata automaticamente dopo un "
+#~ "ritardo specificato nella chiave \"auto_raise_delay\". Ciò non ha "
+#~ "relazioni con il fare clic su una finestra per sollevarla, né con il "
+#~ "passare sopra una finestra durante un'operazione di trascinamento."
+
+#~ msgid ""
+#~ "If true, ignore the titlebar_font option, and use the standard "
+#~ "application font for window titles."
+#~ msgstr ""
+#~ "Se impostata a VERO, l'opzione \"titlebar_font\" è ignorata e per i "
+#~ "titoli delle finestre viene usato il tipo di carattere predefinito per le "
+#~ "applicazioni."
+
+#~ msgid ""
+#~ "If true, then Metacity works in terms of applications rather than "
+#~ "windows. The concept is a bit abstract, but in general an application-"
+#~ "based setup is more like the Mac and less like Windows. When you focus a "
+#~ "window in application-based mode, all the windows in the application will "
+#~ "be raised. Also, in application-based mode, focus clicks are not passed "
+#~ "through to windows in other applications. Application-based mode is, "
+#~ "however, largely unimplemented at the moment."
+#~ msgstr ""
+#~ "Se impostata a VERO, Metacity funziona in termini di applicazioni invece "
+#~ "che di finestre. Il concetto è un po' astratto, ma in generale una "
+#~ "configurazione basata sulle applicazioni è più simile al Mac che a "
+#~ "Windows. Quando si da il focus a una finestra nella modalità basata sulle "
+#~ "applicazioni, tutte le finestre dell'applicazione vengono sollevate. "
+#~ "Inoltre in questa modalità i clic per l'assegnazione del focus non "
+#~ "vengono passati attraverso le finestre verso altre applicazioni. Al "
+#~ "momento però, la modalità in base alle applicazioni è ampliamente non "
+#~ "implementata."
+
+#~ msgid "Modifier to use for modified window click actions"
+#~ msgstr ""
+#~ "Modificatore da utilizzare per le azioni sulle finestre con i pulsanti "
+#~ "del mouse"
+
+#~ msgid "Name of workspace"
+#~ msgstr "Nome dello spazio di lavoro"
+
+#~ msgid "Number of workspaces"
+#~ msgstr "Numero di spazi di lavoro"
+
+#~ msgid ""
+#~ "Number of workspaces. Must be more than zero, and has a fixed maximum to "
+#~ "prevent making the desktop unusable by accidentally asking for too many "
+#~ "workspaces."
+#~ msgstr ""
+#~ "Numero degli spazi di lavoro. Deve essere maggiore di zero e presenta un "
+#~ "limite massimo prefissato per evitare di rendere l'ambiente grafico "
+#~ "inutilizzabile qualora si richiedano accidentalmente troppi spazi di "
+#~ "lavoro."
+
+#~ msgid "Run a defined command"
+#~ msgstr "Esegui un comando stabilito"
+
+#~ msgid ""
+#~ "Set this to true to resize with the right button and show a menu with the "
+#~ "middle button while holding down the key given in \"mouse_button_modifier"
+#~ "\"; set it to false to make it work the opposite way around."
+#~ msgstr ""
+#~ "Impostare questa opzione a VERO per ridimensionare con il pulsante destro "
+#~ "e mostrare un menù con il pulsante centrale mentre si tiene premuto il "
+#~ "tasto indicato in \"mouse_button_modifier\": impostare a FALSO per farli "
+#~ "funzionare nel modo opposto."
+
+#~ msgid ""
+#~ "Setting this option to false can lead to buggy behavior, so users are "
+#~ "strongly discouraged from changing it from the default of true. Many "
+#~ "actions (e.g. clicking in the client area, moving or resizing the window) "
+#~ "normally raise the window as a side-effect. Setting this option to false, "
+#~ "which is strongly discouraged, will decouple raising from other user "
+#~ "actions, and ignore raise requests generated by applications. See http://"
+#~ "bugzilla.gnome.org/show_bug.cgi?id=445447#c6. Even when this option is "
+#~ "false, windows can still be raised by an alt-left-click anywhere on the "
+#~ "window, a normal click on the window decorations, or by special messages "
+#~ "from pagers, such as activation requests from tasklist applets. This "
+#~ "option is currently disabled in click-to-focus mode. Note that the list "
+#~ "of ways to raise windows when raise_on_click is false does not include "
+#~ "programmatic requests from applications to raise windows; such requests "
+#~ "will be ignored regardless of the reason for the request. If you are an "
+#~ "application developer and have a user complaining that your application "
+#~ "does not work with this setting disabled, tell them it is _their_ fault "
+#~ "for breaking their window manager and that they need to change this "
+#~ "option back to true or live with the \"bug\" they requested."
+#~ msgstr ""
+#~ "Impostando questa opzione a FALSO può condurre a comportamenti "
+#~ "inadeguati, perciò è fortemente sconsigliato cambiare il valore VERO "
+#~ "predefinito. Molte azioni (per esempio fare clic nell'area client, "
+#~ "muovere o ridimensionare la finestra) hanno come effetto collaterale "
+#~ "quello di sollevale la finestra. Impostando questa opzione a FALSO, cosa "
+#~ "fortemente sconsigliata, verrà disaccoppiato il sollevamento dalle altre "
+#~ "azioni utente e verranno ignorate le richieste di sollevamento generate "
+#~ "delle applicazioni. Consultare http://bugzilla.gnome.org/show_bug.cgi?"
+#~ "id=445447#c6. Anche quando questa opzione è FALSO, le finestre possono "
+#~ "ancora essere sollevate da un clic+Alt_sinistro in un punto qualsiasi "
+#~ "della finestra, da un clic normale sulle decorazioni delle finestre, o da "
+#~ "speciali messaggi dai pager, come una richiesta di attivazione "
+#~ "dall'applet Elenco finestre. Questa opzione è attualmente disabilitata "
+#~ "nella modalità clic-per-focus. Notare che l'elenco di modalità di "
+#~ "sollevamento delle finestre quando la chiave \"raise_on_click\" è FALSO "
+#~ "non include le richieste programmatiche da parte delle applicazioni. Se "
+#~ "siete gli sviluppatori di un'applicazione e qualche utente si lamenta che "
+#~ "la vostra applicazione non funziona con questa impostazione disabilitata, "
+#~ "fate loro notare che è un _loro_ difetto causato dall'aver rovinato il "
+#~ "loro window manager e che dovrebbero riportare il valore di questa "
+#~ "opzione a VERO oppure convivere con il \"bug\" che hanno richiesto."
+
+#~ msgid ""
+#~ "Some applications disregard specifications in ways that result in window "
+#~ "manager misfeatures. This option puts Metacity in a rigorously correct "
+#~ "mode, which gives a more consistent user interface, provided one does not "
+#~ "need to run any misbehaving applications."
+#~ msgstr ""
+#~ "Alcune applicazioni non rispettano le specifiche a tal punto da avere "
+#~ "come risultato funzionalità inadeguate nel window manager. Questa opzione "
+#~ "pone Metacity in una modalità rigorosamente corretta, che fornisce una "
+#~ "interfaccia utente più coerente, a meno che non si debba eseguire una "
+#~ "qualche applicazione mal funzionante."
+
+#~ msgid "System Bell is Audible"
+#~ msgstr "Campanella di sistema udibile"
+
+#~ msgid ""
+#~ "Tells Metacity how to implement the visual indication that the system "
+#~ "bell or another application 'bell' indicator has been rung. Currently "
+#~ "there are two valid values, \"fullscreen\", which causes a fullscreen "
+#~ "white-black flash, and \"frame_flash\" which causes the titlebar of the "
+#~ "application which sent the bell signal to flash. If the application which "
+#~ "sent the bell is unknown (as is usually the case for the default \"system "
+#~ "beep\"), the currently focused window's titlebar is flashed."
+#~ msgstr ""
+#~ "Indica a Metacity come implementare l'indicazione visiva che la "
+#~ "campanella di sistema o un altro indicatore \"campanella\" di "
+#~ "applicazione sta suonando. Al momento sono ammessi due valori: "
+#~ "\"fullscreen\", che causa un lampeggio bianco-nero a schermo intero, e "
+#~ "\"frame_flash\", che causa il lampeggio della barra del titolo "
+#~ "dell'applicazione che ha inviato il segnale della campanella. Se "
+#~ "l'applicazione che ha inviato la campanella è sconosciuta (come accade di "
+#~ "solito nel caso della campanella di sistema), il lampeggio avviene sulla "
+#~ "finestra che al momento ha il focus."
+
+#~ msgid ""
+#~ "The /apps/metacity/global_keybindings/run_command_N keys define "
+#~ "keybindings that correspond to these commands. Pressing the keybinding "
+#~ "for run_command_N will execute command_N."
+#~ msgstr ""
+#~ "Le chiavi /apps/metacity/global_keybindings/run_command_N definiscono le "
+#~ "associazioni di tasti che corrispondono a questi comandi. Premendo "
+#~ "l'associazione di tasti per la chiave \"run_command_N\", viene eseguito "
+#~ "il comando della chiave \"command_N\"."
+
+#~ msgid ""
+#~ "The /apps/metacity/global_keybindings/run_command_screenshot key defines "
+#~ "a keybinding which causes the command specified by this setting to be "
+#~ "invoked."
+#~ msgstr ""
+#~ "La chiave /apps/metacity/global_keybindings/run_command_screenshot "
+#~ "definisce una associazione di tasti che causa l'invocazione del comando "
+#~ "specificato da questa impostazione."
+
+#~ msgid ""
+#~ "The /apps/metacity/global_keybindings/run_command_window_screenshot key "
+#~ "defines a keybinding which causes the command specified by this setting "
+#~ "to be invoked."
+#~ msgstr ""
+#~ "La chiave /apps/metacity/global_keybindings/run_command_window_screenshot "
+#~ "definisce una associazione di tasti che causa l'invocazione del comando "
+#~ "specificato da questa impostazione."
+
+#~ msgid ""
+#~ "The keybinding that runs the correspondingly-numbered command in /apps/"
+#~ "metacity/keybinding_commands The format looks like \"&lt;Control&gt;a\" "
+#~ "or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and "
+#~ "allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
+#~ "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
+#~ "\"disabled\", then there will be no keybinding for this action."
+#~ msgstr ""
+#~ "L'associazione di tasti che esegue il comando con numero corrispondente "
+#~ "in /apps/metacity/keybinding_commands. Il formato è \"&lt;Control$gt;a\" "
+#~ "oppure \"&lt;Shift&gt;&lt;Alt&gt;F1\". È consentito l'utilizzo di lettere "
+#~ "maiuscole, minuscole e anche di abbreviazioni tipo \"&lt;Ctl&gt;\" o "
+#~ "\"&lt;Ctrl&gt;\". Se l'opzione è impostata alla stringa speciale "
+#~ "\"disabled\", allora non c'è alcuna associazione di tasti per questa "
+#~ "azione."
+
+#~ msgid "The name of a workspace."
+#~ msgstr "Il nome di uno spazio di lavoro."
+
+#~ msgid "The screenshot command"
+#~ msgstr "Il comando per schermate"
+
+#~ msgid ""
+#~ "The theme determines the appearance of window borders, titlebar, and so "
+#~ "forth."
+#~ msgstr ""
+#~ "Il tema determina l'aspetto dei bordi delle finestre, della barra del "
+#~ "titolo e così via."
+
+#~ msgid ""
+#~ "The time delay before raising a window if auto_raise is set to true. The "
+#~ "delay is given in thousandths of a second."
+#~ msgstr ""
+#~ "L'intervallo di tempo in millisecondi prima che la finestra venga "
+#~ "sollevata quando auto_raise è impostato a VERO."
+
+#~ msgid ""
+#~ "The window focus mode indicates how windows are activated. It has three "
+#~ "possible values; \"click\" means windows must be clicked in order to "
+#~ "focus them, \"sloppy\" means windows are focused when the mouse enters "
+#~ "the window, and \"mouse\" means windows are focused when the mouse enters "
+#~ "the window and unfocused when the mouse leaves the window."
+#~ msgstr ""
+#~ "La modalità di focus delle finestre indica come vengono attivate le "
+#~ "finestre. I possibili valori sono tre: \"click\" indica che è necessario "
+#~ "fare clic sulle finestre al fine di dare loro il focus, \"sloppy\" indica "
+#~ "che le finestre ottengono il focus quando il puntatore entra nella loro "
+#~ "area, \"mouse\" indica che le finestre ottengono il focus quando il "
+#~ "puntatore entra nella loro area e lo perdono quando abbandona tale area."
+
+#~ msgid "The window screenshot command"
+#~ msgstr "Il comando per schermate di finestre"
+
+#~ msgid ""
+#~ "This option determines the effects of double-clicking on the title bar. "
+#~ "Current valid options are 'toggle_shade', which will shade/unshade the "
+#~ "window, 'toggle_maximize' which will maximize/unmaximize the window, "
+#~ "'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which "
+#~ "will maximize/unmaximize the window in that direction only, 'minimize' "
+#~ "which will minimize the window, 'shade' which will roll the window up, "
+#~ "'menu' which will display the window menu, 'lower' which will put the "
+#~ "window behind all the others, and 'none' which will not do anything."
+#~ msgstr ""
+#~ "Questa opzione determina gli effetti del doppio-clic sulla barra del "
+#~ "titolo. Le opzioni attualmente valide sono \"toggle_shade\" per "
+#~ "arrotolare/srotolare la finestra, \"toggle_maximize\" per  massimizzare/"
+#~ "demassimizzare la finestra, \"toggle_maximize_horizontally\" e "
+#~ "\"toggle_maximize_vertically\" per massimizzare/demassimizzare la "
+#~ "finestra solo in una prefissata direzione, \"minimize\" per minimizzare "
+#~ "la finestra, \"shade\" per arrotolare la finestra, \"menu\" per mostrare "
+#~ "il menù finestra, \"lower\" per collocare la finestra sotto tutte le "
+#~ "altre e \"none\" per non compiere alcuna azione."
+
+#~ msgid ""
+#~ "This option determines the effects of middle-clicking on the title bar. "
+#~ "Current valid options are 'toggle_shade', which will shade/unshade the "
+#~ "window, 'toggle_maximize' which will maximize/unmaximize the window, "
+#~ "'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which "
+#~ "will maximize/unmaximize the window in that direction only, 'minimize' "
+#~ "which will minimize the window, 'shade' which will roll the window up, "
+#~ "'menu' which will display the window menu, 'lower' which will put the "
+#~ "window behind all the others, and 'none' which will not do anything."
+#~ msgstr ""
+#~ "Questa opzione determina gli effetti del clic-centrale sulla barra del "
+#~ "titolo. Le opzioni attualmente valide sono \"toggle_shade\" per "
+#~ "arrotolare/srotolare la finestra, \"toggle_maximize\" per  massimizzare/"
+#~ "demassimizzare la finestra, \"toggle_maximize_horizontally\" e "
+#~ "\"toggle_maximize_vertically\" per massimizzare/demassimizzare la "
+#~ "finestra solo in una prefissata direzione, \"minimize\" per minimizzare "
+#~ "la finestra, \"shade\" per arrotolare la finestra, \"menu\" per mostrare "
+#~ "il menù finestra, \"lower\" per collocare la finestra sotto tutte le "
+#~ "altre e \"none\" per non compiere alcuna azione."
+
+#~ msgid ""
+#~ "This option determines the effects of right-clicking on the title bar. "
+#~ "Current valid options are 'toggle_shade', which will shade/unshade the "
+#~ "window, 'toggle_maximize' which will maximize/unmaximize the window, "
+#~ "'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which "
+#~ "will maximize/unmaximize the window in that direction only, 'minimize' "
+#~ "which will minimize the window, 'shade' which will roll the window up, "
+#~ "'menu' which will display the window menu, 'lower' which will put the "
+#~ "window behind all the others, and 'none' which will not do anything."
+#~ msgstr ""
+#~ "Questa opzione determina gli effetti del clic-destro sulla barra del "
+#~ "titolo. Le opzioni attualmente valide sono \"toggle_shade\" per "
+#~ "arrotolare/srotolare la finestra, \"toggle_maximize\" per  massimizzare/"
+#~ "demassimizzare la finestra, \"toggle_maximize_horizontally\" e "
+#~ "\"toggle_maximize_vertically\" per massimizzare/demassimizzare la "
+#~ "finestra solo in una prefissata direzione, \"minimize\" per minimizzare "
+#~ "la finestra, \"shade\" per arrotolare la finestra, \"menu\" per mostrare "
+#~ "il menù finestra, \"lower\" per collocare la finestra sotto tutte le "
+#~ "altre e \"none\" per non compiere alcuna azione."
+
+#~ msgid ""
+#~ "This option provides additional control over how newly created windows "
+#~ "get focus. It has two possible values; \"smart\" applies the user's "
+#~ "normal focus mode, and \"strict\" results in windows started from a "
+#~ "terminal not being given focus."
+#~ msgstr ""
+#~ "Questa opzione fornisce un controllo aggiuntivo sul modo in cui le "
+#~ "finestre appena create ottengono il focus. Sono ammessi due valori: "
+#~ "\"smart\" per applicare la normale modalità di focus dell'utente e "
+#~ "\"strict\" per non dare il focus a finestre avviate da un terminale."
+
+#~ msgid ""
+#~ "Turns on a visual indication when an application or the system issues a "
+#~ "'bell' or 'beep'; useful for the hard-of-hearing and for use in noisy "
+#~ "environments."
+#~ msgstr ""
+#~ "Attiva un'indicazione visiva quando un'applicazione o il sistema emette "
+#~ "un \"bip\" o \"suona una campanella\"; utile per chi ha problemi d'udito "
+#~ "o per l'uso in ambienti rumorosi."
+
+#~ msgid "Use standard system font in window titles"
+#~ msgstr "Usare il carattere di sistema nei titoli delle finestre"
+
+#~ msgid "Visual Bell Type"
+#~ msgstr "Tipo campanella visiva"
+
+#~ msgid "Whether raising should be a side-effect of other user interactions"
+#~ msgstr ""
+#~ "Indica se sollevare la finestra è un effetto secondario di altre "
+#~ "interazioni utente"
+
+#~ msgid "Whether to resize with the right button"
+#~ msgstr "Indica se ridimensionare con il pulsante destro"
+
+#~ msgid "Window focus mode"
+#~ msgstr "Modalità di focus delle finestre"
+
+#~ msgid "Window title font"
+#~ msgstr "Carattere per il titolo della finestra"
+
+#~ msgid "/Windows/tearoff"
+#~ msgstr "/Finestre/staccatore"
+
+#~ msgid "/Windows/_Dialog"
+#~ msgstr "/Finestre/_Dialogo"
+
+#~ msgid "/Windows/_Modal dialog"
+#~ msgstr "/Finestre/Dialogo _modale"
 
 #~ msgid "Switch to workspace on the left of the current workspace"
 #~ msgstr "Passa allo spazio di lavoro a sinistra di quello attuale"
