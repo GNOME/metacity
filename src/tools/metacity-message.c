@@ -114,6 +114,34 @@ send_set_keybindings (gboolean enabled)
   XSync (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()), False);
 }
 
+static void
+send_set_mousemods (gboolean enabled)
+{
+  XEvent xev;
+
+  xev.xclient.type = ClientMessage;
+  xev.xclient.serial = 0;
+  xev.xclient.send_event = True;
+  xev.xclient.display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
+  xev.xclient.window = gdk_x11_get_default_root_xwindow ();
+  xev.xclient.message_type = XInternAtom (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
+                                          "_METACITY_SET_MOUSEMODS_MESSAGE",
+                                          False);
+  xev.xclient.format = 32;
+  xev.xclient.data.l[0] = enabled;
+  xev.xclient.data.l[1] = 0;
+  xev.xclient.data.l[2] = 0;
+
+  XSendEvent (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
+              gdk_x11_get_default_root_xwindow (),
+              False,
+	      SubstructureRedirectMask | SubstructureNotifyMask,
+	      &xev);
+
+  XFlush (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
+  XSync (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()), False);
+}
+
 #ifdef WITH_VERBOSE_MODE
 static void
 send_toggle_verbose (void)
@@ -148,7 +176,7 @@ static void
 usage (void)
 {
   g_printerr (_("Usage: %s\n"),
-              "metacity-message (restart|reload-theme|enable-keybindings|disable-keybindings|toggle-verbose)");
+              "metacity-message (restart|reload-theme|enable-keybindings|disable-keybindings|enable-mouse-button-modifiers|disable-mouse-button-modifiers|toggle-verbose)");
   exit (1);
 }
 
@@ -170,6 +198,10 @@ main (int argc, char **argv)
     send_set_keybindings (TRUE);
   else if (strcmp (argv[1], "disable-keybindings") == 0)
     send_set_keybindings (FALSE);
+  else if (strcmp (argv[1], "enable-mouse-button-modifiers") == 0)
+    send_set_mousemods (TRUE);
+  else if (strcmp (argv[1], "disable-mouse-button-modifiers") == 0)
+    send_set_mousemods (FALSE);
   else if (strcmp (argv[1], "toggle-verbose") == 0)
     {
 #ifndef WITH_VERBOSE_MODE

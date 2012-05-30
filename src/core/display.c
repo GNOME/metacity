@@ -135,6 +135,8 @@ typedef struct
  */
 static MetaDisplay *the_display = NULL;
 
+static gboolean mousemods_disabled = FALSE;
+
 #ifdef WITH_VERBOSE_MODE
 static void   meta_spew_event           (MetaDisplay    *display,
                                          XEvent         *event);
@@ -156,6 +158,9 @@ static void    process_selection_clear   (MetaDisplay   *display,
                                           XEvent        *event);
 
 static void    update_window_grab_modifiers (MetaDisplay *display);
+
+static void    set_mousemods_disabled (MetaDisplay *display,
+                                       gboolean     setting);
 
 static void    prefs_changed_callback    (MetaPreference pref,
                                           void          *data);
@@ -2271,6 +2276,13 @@ event_callback (XEvent   *event,
                   meta_set_keybindings_disabled (display, !event->xclient.data.l[0]);
                 }
               else if (event->xclient.message_type ==
+                       display->atom__METACITY_SET_MOUSEMODS_MESSAGE)
+                {
+                  meta_verbose ("Received set mousemods request = %d\n",
+                                (int) event->xclient.data.l[0]);
+                  set_mousemods_disabled (display, !event->xclient.data.l[0]);
+                }
+              else if (event->xclient.message_type ==
                        display->atom__METACITY_TOGGLE_VERBOSE)
                 {
                   meta_verbose ("Received toggle verbose message\n");
@@ -3701,7 +3713,7 @@ meta_display_grab_window_buttons (MetaDisplay *display,
    * XSync()
    */
 
-  if (display->window_grab_modifiers != 0)
+  if (display->window_grab_modifiers != 0 && !mousemods_disabled)
     {
       gboolean debug = g_getenv ("METACITY_DEBUG_BUTTON_GRABS") != NULL;
       int i;
@@ -3833,6 +3845,15 @@ meta_display_ungrab_focus_window_button (MetaDisplay *display,
 
     window->have_focus_click_grab = FALSE;
   }
+}
+
+static void
+set_mousemods_disabled (MetaDisplay *display,
+                        gboolean     setting)
+{
+  mousemods_disabled = setting;
+  prefs_changed_callback(META_PREF_MOUSE_BUTTON_MODS, display);
+  meta_verbose ("Mouse button modifiers %s\n", mousemods_disabled ? "disabled" : "enabled");
 }
 
 void
