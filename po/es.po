@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: metacity.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-01-13 15:05+0000\n"
+"POT-Creation-Date: 2012-05-09 09:41+0000\n"
 "PO-Revision-Date: 2012-02-27 13:54+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
@@ -25,180 +25,180 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../src/50-metacity-navigation.xml.in.h:1
-msgid "Hide all normal windows"
-msgstr "Ocultar todas las ventanas normales"
-
-#: ../src/50-metacity-navigation.xml.in.h:2
-msgid "Move to workspace above"
-msgstr "Mover al área de trabajo de la arriba"
-
-#: ../src/50-metacity-navigation.xml.in.h:3
-msgid "Move to workspace below"
-msgstr "Mover al área de trabajo de abajo"
-
-#: ../src/50-metacity-navigation.xml.in.h:4
-msgid "Move to workspace left"
-msgstr "Mover al área de trabajo de la izquierda"
-
-#: ../src/50-metacity-navigation.xml.in.h:5
-msgid "Move to workspace right"
-msgstr "Mover al área de trabajo de la derecha"
-
-#: ../src/50-metacity-navigation.xml.in.h:6
-msgid "Move window one workspace down"
-msgstr "Bajar la ventana un área de trabajo"
-
-#: ../src/50-metacity-navigation.xml.in.h:7
-msgid "Move window one workspace to the left"
-msgstr "Mover la ventana un área de trabajo a la izquierda"
-
-#: ../src/50-metacity-navigation.xml.in.h:8
-msgid "Move window one workspace to the right"
-msgstr "Mover la ventana un área de trabajo a la derecha"
-
-#: ../src/50-metacity-navigation.xml.in.h:9
-msgid "Move window one workspace up"
-msgstr "Subir la ventana un área de trabajo"
-
-#: ../src/50-metacity-navigation.xml.in.h:10
-msgid "Move window to workspace 1"
-msgstr "Mover la ventana al área de trabajo 1"
-
-#: ../src/50-metacity-navigation.xml.in.h:11
-msgid "Move window to workspace 2"
-msgstr "Mover la ventana al área de trabajo 2"
-
-#: ../src/50-metacity-navigation.xml.in.h:12
-msgid "Move window to workspace 3"
-msgstr "Mover la ventana al área de trabajo 3"
-
-#: ../src/50-metacity-navigation.xml.in.h:13
-msgid "Move window to workspace 4"
-msgstr "Mover la ventana al área de trabajo 4"
-
-#: ../src/50-metacity-navigation.xml.in.h:14
 msgid "Navigation"
 msgstr "Navegación"
 
-#: ../src/50-metacity-navigation.xml.in.h:15
+#: ../src/50-metacity-navigation.xml.in.h:2
+msgid "Move window to workspace 1"
+msgstr "Mover la ventana al área de trabajo 1"
+
+#: ../src/50-metacity-navigation.xml.in.h:3
+msgid "Move window to workspace 2"
+msgstr "Mover la ventana al área de trabajo 2"
+
+#: ../src/50-metacity-navigation.xml.in.h:4
+msgid "Move window to workspace 3"
+msgstr "Mover la ventana al área de trabajo 3"
+
+#: ../src/50-metacity-navigation.xml.in.h:5
+msgid "Move window to workspace 4"
+msgstr "Mover la ventana al área de trabajo 4"
+
+#: ../src/50-metacity-navigation.xml.in.h:6
+msgid "Move window one workspace to the left"
+msgstr "Mover la ventana un área de trabajo a la izquierda"
+
+#: ../src/50-metacity-navigation.xml.in.h:7
+msgid "Move window one workspace to the right"
+msgstr "Mover la ventana un área de trabajo a la derecha"
+
+#: ../src/50-metacity-navigation.xml.in.h:8
+msgid "Move window one workspace up"
+msgstr "Subir la ventana un área de trabajo"
+
+#: ../src/50-metacity-navigation.xml.in.h:9
+msgid "Move window one workspace down"
+msgstr "Bajar la ventana un área de trabajo"
+
+#: ../src/50-metacity-navigation.xml.in.h:10
 msgid "Switch applications"
 msgstr "Moverse entre aplicaciones"
 
-#: ../src/50-metacity-navigation.xml.in.h:16
-msgid "Switch system controls"
-msgstr "Cambiar entre controles del sistema"
-
-#: ../src/50-metacity-navigation.xml.in.h:17
-msgid "Switch system controls directly"
-msgstr "Moverse entre los controles del sistema directamente"
-
-#: ../src/50-metacity-navigation.xml.in.h:18
-msgid "Switch to workspace 1"
-msgstr "Cambiar al área de trabajo 1"
-
-#: ../src/50-metacity-navigation.xml.in.h:19
-msgid "Switch to workspace 2"
-msgstr "Cambiar al área de trabajo 2"
-
-#: ../src/50-metacity-navigation.xml.in.h:20
-msgid "Switch to workspace 3"
-msgstr "Cambiar al área de trabajo 3"
-
-#: ../src/50-metacity-navigation.xml.in.h:21
-msgid "Switch to workspace 4"
-msgstr "Cambiar al área de trabajo 4"
-
-#: ../src/50-metacity-navigation.xml.in.h:22
-msgid "Switch windows directly"
-msgstr "Cambiar ventanas directamente"
-
-#: ../src/50-metacity-navigation.xml.in.h:23
-msgid "Switch windows of an app directly"
-msgstr "Moverse entre las ventanas de una aplicación directamente"
-
-#: ../src/50-metacity-navigation.xml.in.h:24
+#: ../src/50-metacity-navigation.xml.in.h:11
 msgid "Switch windows of an application"
 msgstr "Moverse entre las ventanas de una aplicación"
 
+#: ../src/50-metacity-navigation.xml.in.h:12
+msgid "Switch system controls"
+msgstr "Cambiar entre controles del sistema"
+
+#: ../src/50-metacity-navigation.xml.in.h:13
+msgid "Switch windows directly"
+msgstr "Cambiar ventanas directamente"
+
+#: ../src/50-metacity-navigation.xml.in.h:14
+msgid "Switch windows of an app directly"
+msgstr "Moverse entre las ventanas de una aplicación directamente"
+
+#: ../src/50-metacity-navigation.xml.in.h:15
+msgid "Switch system controls directly"
+msgstr "Moverse entre los controles del sistema directamente"
+
+#: ../src/50-metacity-navigation.xml.in.h:16
+msgid "Hide all normal windows"
+msgstr "Ocultar todas las ventanas normales"
+
+#: ../src/50-metacity-navigation.xml.in.h:17
+msgid "Switch to workspace 1"
+msgstr "Cambiar al área de trabajo 1"
+
+#: ../src/50-metacity-navigation.xml.in.h:18
+msgid "Switch to workspace 2"
+msgstr "Cambiar al área de trabajo 2"
+
+#: ../src/50-metacity-navigation.xml.in.h:19
+msgid "Switch to workspace 3"
+msgstr "Cambiar al área de trabajo 3"
+
+#: ../src/50-metacity-navigation.xml.in.h:20
+msgid "Switch to workspace 4"
+msgstr "Cambiar al área de trabajo 4"
+
+#: ../src/50-metacity-navigation.xml.in.h:21
+msgid "Move to workspace left"
+msgstr "Mover al área de trabajo de la izquierda"
+
+#: ../src/50-metacity-navigation.xml.in.h:22
+msgid "Move to workspace right"
+msgstr "Mover al área de trabajo de la derecha"
+
+#: ../src/50-metacity-navigation.xml.in.h:23
+msgid "Move to workspace above"
+msgstr "Mover al área de trabajo de la arriba"
+
+#: ../src/50-metacity-navigation.xml.in.h:24
+msgid "Move to workspace below"
+msgstr "Mover al área de trabajo de abajo"
+
 #: ../src/50-metacity-system.xml.in.h:1
-msgid "Show the activities overview"
-msgstr "Mostrar el resumen de actividades"
+msgid "System"
+msgstr "Sistema"
 
 #: ../src/50-metacity-system.xml.in.h:2
 msgid "Show the run command prompt"
 msgstr "Mostrar el elemento «ejecutar comando»"
 
 #: ../src/50-metacity-system.xml.in.h:3
-msgid "System"
-msgstr "Sistema"
+msgid "Show the activities overview"
+msgstr "Mostrar el resumen de actividades"
 
 #: ../src/50-metacity-windows.xml.in.h:1
+msgid "Windows"
+msgstr "Ventanas"
+
+#: ../src/50-metacity-windows.xml.in.h:2
 msgid "Activate the window menu"
 msgstr "Activar el menú de la ventana"
 
-#: ../src/50-metacity-windows.xml.in.h:2
-msgid "Close window"
-msgstr "Cerrar la ventana"
-
 #: ../src/50-metacity-windows.xml.in.h:3
-msgid "Lower window below other windows"
-msgstr "Bajar la ventana por debajo de otras ventanas"
+msgid "Toggle fullscreen mode"
+msgstr "Cambiar a modo de pantalla completa"
 
 #: ../src/50-metacity-windows.xml.in.h:4
+msgid "Toggle maximization state"
+msgstr "Cambiar el estado de maximización"
+
+#: ../src/50-metacity-windows.xml.in.h:5
 msgid "Maximize window"
 msgstr "Maximizar la ventana"
 
-#: ../src/50-metacity-windows.xml.in.h:5
-msgid "Maximize window horizontally"
-msgstr "Maximizar la ventana horizontalmente"
-
 #: ../src/50-metacity-windows.xml.in.h:6
-msgid "Maximize window vertically"
-msgstr "Maximizar la ventana verticalmente"
+msgid "Restore window"
+msgstr "Restaurar la ventana"
 
 #: ../src/50-metacity-windows.xml.in.h:7
+msgid "Toggle shaded state"
+msgstr "Cambiar el estado de enrollado"
+
+#: ../src/50-metacity-windows.xml.in.h:8
+msgid "Close window"
+msgstr "Cerrar la ventana"
+
+#: ../src/50-metacity-windows.xml.in.h:9
 msgid "Minimize window"
 msgstr "Minimizar la ventana"
 
-#: ../src/50-metacity-windows.xml.in.h:8
+#: ../src/50-metacity-windows.xml.in.h:10
 msgid "Move window"
 msgstr "Mover la ventana"
-
-#: ../src/50-metacity-windows.xml.in.h:9
-msgid "Raise window above other windows"
-msgstr "Levanta la ventana por encima de otras ventanas"
-
-#: ../src/50-metacity-windows.xml.in.h:10
-msgid "Raise window if covered, otherwise lower it"
-msgstr "Levantar la ventana si está cubierta, minimizarla en otro caso"
 
 #: ../src/50-metacity-windows.xml.in.h:11
 msgid "Resize window"
 msgstr "Redimensionar la ventana"
 
 #: ../src/50-metacity-windows.xml.in.h:12
-msgid "Restore window"
-msgstr "Restaurar la ventana"
-
-#: ../src/50-metacity-windows.xml.in.h:13
-msgid "Toggle fullscreen mode"
-msgstr "Cambiar a modo de pantalla completa"
-
-#: ../src/50-metacity-windows.xml.in.h:14
-msgid "Toggle maximization state"
-msgstr "Cambiar el estado de maximización"
-
-#: ../src/50-metacity-windows.xml.in.h:15
-msgid "Toggle shaded state"
-msgstr "Cambiar el estado de enrollado"
-
-#: ../src/50-metacity-windows.xml.in.h:16
 msgid "Toggle window on all workspaces or one"
 msgstr "Conmutar la ventana en todas las áreas de trabajo o sólo en una"
 
+#: ../src/50-metacity-windows.xml.in.h:13
+msgid "Raise window if covered, otherwise lower it"
+msgstr "Levantar la ventana si está cubierta, minimizarla en otro caso"
+
+#: ../src/50-metacity-windows.xml.in.h:14
+msgid "Raise window above other windows"
+msgstr "Levanta la ventana por encima de otras ventanas"
+
+#: ../src/50-metacity-windows.xml.in.h:15
+msgid "Lower window below other windows"
+msgstr "Bajar la ventana por debajo de otras ventanas"
+
+#: ../src/50-metacity-windows.xml.in.h:16
+msgid "Maximize window vertically"
+msgstr "Maximizar la ventana verticalmente"
+
 #: ../src/50-metacity-windows.xml.in.h:17
-msgid "Windows"
-msgstr "Ventanas"
+msgid "Maximize window horizontally"
+msgstr "Maximizar la ventana horizontalmente"
 
 #: ../src/core/bell.c:296
 msgid "Bell event"
@@ -579,7 +579,7 @@ msgstr "%s (como otro usuario)"
 #, c-format
 msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
 msgstr ""
-"WM_TRANSIENT_FOR inválido para la ventana 0x%lx especificada para %s.\n"
+"WM_TRANSIENT_FOR no válido para la ventana 0x%lx especificada para %s.\n"
 
 #: ../src/core/xprops.c:155
 #, c-format
@@ -599,14 +599,14 @@ msgstr ""
 #: ../src/core/xprops.c:401
 #, c-format
 msgid "Property %s on window 0x%lx contained invalid UTF-8\n"
-msgstr "La propiedad %s en la ventana 0x%lx contiene UTF-8 inválido\n"
+msgstr "La propiedad %s en la ventana 0x%lx contiene UTF-8 no válido\n"
 
 #: ../src/core/xprops.c:484
 #, c-format
 msgid ""
 "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
 msgstr ""
-"La propiedad %s en la ventana 0x%lx contiene UTF-8 inválido para el elemento "
+"La propiedad %s en la ventana 0x%lx contiene UTF-8 no válido para el elemento "
 "%d de la lista\n"
 
 #: ../src/org.gnome.metacity.gschema.xml.in.h:1
@@ -618,6 +618,10 @@ msgid "Determines whether Metacity is a compositing manager."
 msgstr "Determina si Metacity es un gestor de composición."
 
 #: ../src/org.gnome.metacity.gschema.xml.in.h:3
+msgid "If true, trade off usability for less resource usage"
+msgstr "Si es «true», reducir usabilidad para menos uso de recursos"
+
+#: ../src/org.gnome.metacity.gschema.xml.in.h:4
 msgid ""
 "If true, metacity will give the user less feedback by using wireframes, "
 "avoiding animations, or other means. This is a significant reduction in "
@@ -632,10 +636,6 @@ msgstr ""
 "servidores de terminal cuando de otra forma sería impracticable. Sin "
 "embargo, la característica de marcos de alambre se desactiva cuando la "
 "accesibilidad está activada."
-
-#: ../src/org.gnome.metacity.gschema.xml.in.h:4
-msgid "If true, trade off usability for less resource usage"
-msgstr "Si es «true», reducir usabilidad para menos uso de recursos"
 
 #: ../src/tools/metacity-message.c:150
 #, c-format
@@ -1030,7 +1030,7 @@ msgid ""
 "Coordinate expression contained unknown operator at the start of this text: "
 "\"%s\""
 msgstr ""
-"La expresión de coordenadas contenía un operador inválido al inicio de su "
+"La expresión de coordenadas contenía un operador no válido al inicio de su "
 "texto: «%s»"
 
 #: ../src/ui/theme.c:1844
@@ -1185,7 +1185,7 @@ msgstr "El atributo «%s» se ha repetido dos veces en el mismo elemento <%s>"
 #: ../src/ui/theme-parser.c:437 ../src/ui/theme-parser.c:480
 #, c-format
 msgid "Attribute \"%s\" is invalid on <%s> element in this context"
-msgstr "El atributo «%s» es inválido en el elemento <%s> en este contexto"
+msgstr "El atributo «%s» no es válido en el elemento <%s> en este contexto"
 
 #: ../src/ui/theme-parser.c:522
 #, c-format
@@ -1235,7 +1235,7 @@ msgid ""
 "Invalid title scale \"%s\" (must be one of xx-small,x-small,small,medium,"
 "large,x-large,xx-large)\n"
 msgstr ""
-"Escala de título inválida «%s» (debe ser una de xx-small,x-small,small,medium,"
+"Escalo de título no válido «%s» (debe ser una de xx-small,x-small,small,medium,"
 "large,x-large,xx-large)\n"
 
 #: ../src/ui/theme-parser.c:947 ../src/ui/theme-parser.c:1010
