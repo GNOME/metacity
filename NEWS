@@ -1,3 +1,26 @@
+Version 2.34.5
+==============
+ - Fix memory leak (Pavel Vasin)
+ - Add disable-mouse-button-modifiers message (Daniel Drake)
+
+Translations:
+    Daniel Korostil (uk)
+    Jiro Matsuzawa (ja)
+    Reşat SABIQ (crh)
+    Aurimas Černius (lt)
+    Carles Ferrando (ca@valencia)
+    Arash Mousavi (fa)
+    Kristjan SCHMIDT (eo)
+    Sandeep Sheshrao Shedmake (mr)
+    Jordi Serratosa (ca)
+    Tom Tryfonidis (el)
+    Praveen Illa (te)
+    Luca Ferretti (it)
+    Andika Triwidada (id)
+    Daniel Mustieles (es)
+    Nilamdyuti Goswami (as)
+
+
 Version 2.34.3
 ==============
 
