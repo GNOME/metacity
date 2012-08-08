@@ -25,31 +25,31 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
 msgid "Hide all normal windows"
-msgstr "Tavaliste akende peitmine"
+msgstr "Kõigi tavaliste akende peitmine"
 
 msgid "Move to workspace above"
-msgstr "Tõstmine ülemisele tööalale"
+msgstr "Liikumine ülemisele tööalale"
 
 msgid "Move to workspace below"
-msgstr "Tõstmine alumisele tööalale"
+msgstr "Liikumine alumisele tööalale"
 
 msgid "Move to workspace left"
-msgstr "Tõstmine vasakpoolsele tööalale"
+msgstr "Liikumine vasakpoolsele tööalale"
 
 msgid "Move to workspace right"
-msgstr "Tõstmine parempoolsele tööalale"
+msgstr "Liikumine parempoolsele tööalale"
 
 msgid "Move window one workspace down"
-msgstr "Akna tõstmine ühe tööala võrra allapoole"
+msgstr "Akna tõstmine alumisele tööalale"
 
 msgid "Move window one workspace to the left"
-msgstr "Akna tõstmine ühe tööala võrra vasakule"
+msgstr "Akna tõstmine vasakpoolsele tööalale"
 
 msgid "Move window one workspace to the right"
-msgstr "Akna tõstmine ühe tööala võrra paremale"
+msgstr "Akna tõstmine parempoolsele tööalale"
 
 msgid "Move window one workspace up"
-msgstr "Akna tõstmine ühe tööala võrra ülespoole"
+msgstr "Akna tõstmine ülemisele tööalale"
 
 msgid "Move window to workspace 1"
 msgstr "Akna tõstmine 1. tööalale"
@@ -64,7 +64,7 @@ msgid "Move window to workspace 4"
 msgstr "Akna tõstmine 4. tööalale"
 
 msgid "Navigation"
-msgstr "Navigatsioon"
+msgstr "Navigeerimine"
 
 msgid "Switch applications"
 msgstr "Rakenduste vahetamine"
@@ -76,16 +76,16 @@ msgid "Switch system controls directly"
 msgstr "Süsteemi valitsate otsevahetus"
 
 msgid "Switch to workspace 1"
-msgstr "Lülitumine 1. tööalale"
+msgstr "Liikumine 1. tööalale"
 
 msgid "Switch to workspace 2"
-msgstr "Lülitumine 2. tööalale"
+msgstr "Liikumine 2. tööalale"
 
 msgid "Switch to workspace 3"
-msgstr "Lülitumine 3. tööalale"
+msgstr "Liikumine 3. tööalale"
 
 msgid "Switch to workspace 4"
-msgstr "Lülitumine 4. tööalale"
+msgstr "Liikumine 4. tööalale"
 
 msgid "Switch windows directly"
 msgstr "Akende otsevahetus"
@@ -142,7 +142,7 @@ msgid "Restore window"
 msgstr "Akna suuruse taastamine"
 
 msgid "Toggle fullscreen mode"
-msgstr "Täisekraanivaate sisse- ja väljalülitamine"
+msgstr "Täisekraanvaate sisse- ja väljalülitamine"
 
 msgid "Toggle maximization state"
 msgstr "Maksimeeritud oleku sisse- ja väljalülitamine"
@@ -171,13 +171,13 @@ msgstr "<tt>%s</tt> ei vasta."
 msgid ""
 "You may choose to wait a short while for it to continue or force the "
 "application to quit entirely."
-msgstr "Sa võid natukene selle järel oodata või sundida rakendust lõpetama."
+msgstr "Sa võid natukene selle järel oodata või sundida rakenduse lõpetama."
 
 msgid "_Wait"
 msgstr "_Oota"
 
 msgid "_Force Quit"
-msgstr "_Välju jõuga"
+msgstr "_Sulge jõuga"
 
 #, c-format
 msgid "Failed to get hostname: %s\n"
@@ -198,8 +198,7 @@ msgid ""
 "the window manager.\n"
 msgstr ""
 "Kadus ühendus kuvaga '%s';\n"
-"kõige tõenäolisem, et Xserver suleti või sa kõrvaldasid\n"
-"aknahalduri.\n"
+"tõenäoliselt Xserver suleti või sa kõrvaldasid aknahalduri.\n"
 
 #, c-format
 msgid "Fatal IO error %d (%s) on display '%s'.\n"
@@ -210,8 +209,8 @@ msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
 "binding\n"
 msgstr ""
-"Mõni teine programm juba kasutab klahvi %s koos muuteklahvidega %x "
-"kiirklahvina\n"
+"Mõni teine programm juba kasutab kiirklahvina klahvi %s koos muuteklahvidega "
+"%x\n"
 
 #, c-format
 msgid ""
@@ -247,7 +246,7 @@ msgid "Print version"
 msgstr "Versiooni printimine"
 
 msgid "Make X calls synchronous"
-msgstr "Tee Xi väljakutsedkutsed sünkroonseks"
+msgstr "Tee Xi väljakutsed sünkroonseks"
 
 msgid "Turn compositing on"
 msgstr "Komposiitmontaaž lubatud"
@@ -283,7 +282,7 @@ msgstr ""
 
 #, c-format
 msgid "Could not parse font description \"%s\" from GSettings key %s\n"
-msgstr "Fondi kirjeldust \"%s\" GSettings võtmest %s ei saa töödelda\n"
+msgstr "Fondi kirjeldust \"%s\" GSettings võtmest %s pole võimalik töödelda\n"
 
 #, c-format
 msgid ""
