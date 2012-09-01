@@ -1,30 +1,31 @@
-# translation of metacity.HEAD.gl.po to Galician translation of Metacity, a tiny WM for GNOME.
+# Galician translation of Metacity.
 # Copyright (C) 2001, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
+#
+# Proxecto Trasno - Adaptación do software libre á lingua galega:  Se desexas
+# colaborar connosco, podes atopar máis información en http://www.trasno.net
 #
 # Manuel A. Fernández Montecelo <manuel@sindominio.net>, 2001, 2005.
 # Ignacio Casal Quinteiro <nacho.resa@gmail.com>, 2005, 2006.
 # Ignacio Casal Quinteiro <icq@cvs.gnome.org>, 2007, 2008.
 # Mancomún - Centro de Referencia e Servizos de Software Libre <g11n@mancomun.org>, 2009.
 # Suso Baleato <suso.baleato@xunta.es>, 2009.
-# Francisco Diéguez <fran.dieguez@mabishu.com>, 2009.
 # Antón Méixome <meixome@mancomun.org>, 2009.
-# Fran Diéguez <frandieguez@ubuntu.com>, 2010, 2011.
-# Fran Dieguez <frandieguez@gnome.org>, 2011, 2012.
-#
+# Fran Diéguez <frandieguez@gnome.org>, 2009, 2010, 2011, 2012.
+# Leandro Regueiro <leandro.regueiro@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity-master-po-gl-37635\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-15 01:06+0100\n"
-"PO-Revision-Date: 2012-01-15 01:08+0100\n"
-"Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
+"POT-Creation-Date: 2012-09-01 12:32+0200\n"
+"PO-Revision-Date: 2012-08-17 14:23+0200\n"
+"Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <gnome-l10n-gl@gnome.org>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 1.0\n"
 
 #: ../src/50-metacity-navigation.xml.in.h:1
 msgid "Navigation"
@@ -235,7 +236,7 @@ msgstr "_Forzar a saída"
 #: ../src/core/delete.c:208
 #, c-format
 msgid "Failed to get hostname: %s\n"
-msgstr "Produciuse un fallo ao obter o nome do host: %s\n"
+msgstr "Produciuse un erro ao obter o nome do host: %s\n"
 
 #: ../src/core/display.c:258
 #, c-format
@@ -245,7 +246,7 @@ msgstr "Falta a extensión %s que se require para a composición"
 #: ../src/core/display.c:336
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
-msgstr "Produciuse un fallo ao abrir a pantalla do sistema de xanelas X «%s»\n"
+msgstr "Produciuse un erro ao abrir a pantalla do sistema de xanelas X «%s»\n"
 
 #: ../src/core/errors.c:272
 #, c-format
@@ -334,7 +335,7 @@ msgstr ""
 #: ../src/core/main.c:527
 #, c-format
 msgid "Failed to scan themes directory: %s\n"
-msgstr "Produciuse un fallo ao analizar o directorio de temas: %s\n"
+msgstr "Produciuse un erro ao analizar o directorio de temas: %s\n"
 
 #: ../src/core/main.c:543
 #, c-format
@@ -347,7 +348,7 @@ msgstr ""
 #: ../src/core/main.c:602
 #, c-format
 msgid "Failed to restart: %s\n"
-msgstr "Produciuse un fallo ao reiniciar: %s\n"
+msgstr "Produciuse un erro ao reiniciar: %s\n"
 
 #: ../src/core/prefs.c:880
 msgid ""
@@ -370,8 +371,8 @@ msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
 "modifier\n"
 msgstr ""
-"«%s» atopado na base de datos de configuración non é un valor válido para o "
-"modificador do botón do rato\n"
+"«%s» atopado na base de datos de configuración non é un valor correcto para "
+"o modificador do botón do rato\n"
 
 #: ../src/core/prefs.c:1494
 #, c-format
@@ -379,8 +380,8 @@ msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
 "\"%s\"\n"
 msgstr ""
-"«%s» atopado na base de datos de configuración non é un valor válido para a "
-"combinación de teclas «%s»\n"
+"«%s» atopado na base de datos de configuración non é un valor correcto para "
+"a combinación de teclas «%s»\n"
 
 #: ../src/core/prefs.c:1601
 #, c-format
@@ -442,7 +443,7 @@ msgstr "Produciuse un erro ao pechar o ficheiro de sesión «%s»: %s\n"
 #: ../src/core/session.c:1135
 #, c-format
 msgid "Failed to parse saved session file: %s\n"
-msgstr "Produciuse un fallo ao analizar o ficheiro de sesión gardado: %s\n"
+msgstr "Produciuse un erro ao analizar o ficheiro de sesión gardado: %s\n"
 
 #: ../src/core/session.c:1184
 #, c-format
@@ -477,12 +478,12 @@ msgstr ""
 #: ../src/core/util.c:101
 #, c-format
 msgid "Failed to open debug log: %s\n"
-msgstr "Produciuse un fallo ao abrir o rexistro de depuración: %s\n"
+msgstr "Produciuse un erro ao abrir o rexistro de depuración: %s\n"
 
 #: ../src/core/util.c:111
 #, c-format
 msgid "Failed to fdopen() log file %s: %s\n"
-msgstr "Produciuse un fallo ao facer fdopen() no ficheiro de rexistro %s: %s\n"
+msgstr "Produciuse un erro ao facer fdopen() no ficheiro de rexistro %s: %s\n"
 
 #: ../src/core/util.c:117
 #, c-format
@@ -500,7 +501,7 @@ msgstr "Xestor de xanelas: "
 
 #: ../src/core/util.c:388
 msgid "Bug in window manager: "
-msgstr "Erro no xestor de xanelas: "
+msgstr "Fallo no xestor de xanelas: "
 
 #: ../src/core/util.c:421
 msgid "Window manager warning: "
@@ -592,7 +593,7 @@ msgstr ""
 "A xanela 0x%lx ten a propiedade %s\n"
 "que se esperaba que tivese o tipo %s co formato %d\n"
 "e actualmente ten un tipo %s co formato %d e n_items %d.\n"
-"Isto non parece ser un erro do aplicativo nin do xestor de xanelas.\n"
+"Isto non parece ser un fallo do aplicativo nin do xestor de xanelas.\n"
 "A xanela ten título=«%s» a clase=«%s» e o nome=«%s»\n"
 
 #: ../src/core/xprops.c:401
@@ -674,7 +675,7 @@ msgstr "Manter a xanela na parte superior"
 
 #: ../src/ui/frames.c:1138
 msgid "Remove Window From Top"
-msgstr "Quitar a xanela da parte superior"
+msgstr "Retirar a xanela da parte superior"
 
 #: ../src/ui/frames.c:1141
 msgid "Always On Visible Workspace"
@@ -922,7 +923,7 @@ msgstr "A xeometría do marco non especifica o tamaño dos botóns"
 #: ../src/ui/theme.c:1058
 #, c-format
 msgid "Gradients should have at least two colors"
-msgstr "Os degradados deben ter polo menos dúas cores"
+msgstr "As gradacións deben ter polo menos dúas cores"
 
 #: ../src/ui/theme.c:1184
 #, c-format
@@ -983,7 +984,7 @@ msgstr ""
 #: ../src/ui/theme.c:1331
 #, c-format
 msgid "Could not parse shade factor \"%s\" in shaded color"
-msgstr "Non foi posíbel o factor de sombreado «%s» na cor sombreada"
+msgstr "Non foi posíbel analizar o factor de sombreado «%s» na cor sombreada"
 
 #: ../src/ui/theme.c:1341
 #, c-format
@@ -1124,7 +1125,7 @@ msgstr "Falta <frame state=«%s» resize=«%s» focus=«%s» style=\"whatever\"/
 #: ../src/ui/theme.c:4896
 #, c-format
 msgid "Failed to load theme \"%s\": %s\n"
-msgstr "Produciuse un fallo ao cargar o tema «%s»: %s\n"
+msgstr "Produciuse un erro ao cargar o tema «%s»: %s\n"
 
 #: ../src/ui/theme.c:5026 ../src/ui/theme.c:5033 ../src/ui/theme.c:5040
 #: ../src/ui/theme.c:5047 ../src/ui/theme.c:5054
@@ -1315,7 +1316,7 @@ msgstr "Non hai ningún atributo \"extent_angle\" nin \"to\" no elemento <%s>"
 #: ../src/ui/theme-parser.c:2042
 #, c-format
 msgid "Did not understand value \"%s\" for type of gradient"
-msgstr "Non se entendeu o valor «%s» para o tipo de degradado"
+msgstr "Non se entendeu o valor «%s» para o tipo de gradación"
 
 #: ../src/ui/theme-parser.c:2120 ../src/ui/theme-parser.c:2495
 #, c-format
@@ -1386,12 +1387,12 @@ msgstr "O estilo do marco xa ten un botón para a función %s estado %s"
 #: ../src/ui/theme-parser.c:2984
 #, c-format
 msgid "\"%s\" is not a valid value for focus attribute"
-msgstr "«%s» non é un valor válido para o atributo foco"
+msgstr "«%s» non é un valor correcto para o atributo foco"
 
 #: ../src/ui/theme-parser.c:2993
 #, c-format
 msgid "\"%s\" is not a valid value for state attribute"
-msgstr "«%s» non é un valor válido para o atributo estado"
+msgstr "«%s» non é un valor correcto para o atributo estado"
 
 #: ../src/ui/theme-parser.c:3003
 #, c-format
@@ -1401,7 +1402,7 @@ msgstr "Non se definiu ningún estilo chamado «%s»"
 #: ../src/ui/theme-parser.c:3024 ../src/ui/theme-parser.c:3047
 #, c-format
 msgid "\"%s\" is not a valid value for resize attribute"
-msgstr "«%s» non é un valor válido para o atributo redimensionar"
+msgstr "«%s» non é un valor correcto para o atributo redimensionar"
 
 #: ../src/ui/theme-parser.c:3058
 #, c-format
@@ -1518,7 +1519,7 @@ msgstr "<%s> especificada dúas veces para este tema"
 #: ../src/ui/theme-parser.c:4051
 #, c-format
 msgid "Failed to find a valid file for theme %s\n"
-msgstr "Non se atopou ningún ficheiro válido para o tema %s\n"
+msgstr "Produciuse un erro ao buscar un ficheiro correcto para o tema %s\n"
 
 #: ../src/ui/theme-parser.c:4107
 #, c-format
