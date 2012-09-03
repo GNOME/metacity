@@ -15,11 +15,12 @@ doc/Makefile
 doc/Makefile.in
 doc/creating_themes/*/*.mo
 doc/creating_themes/*/*.xml
+doc/creating_themes/*/*.docbook
+doc/creating_themes/*/*.stamp
 doc/creating_themes/Makefile
 doc/creating_themes/Makefile.in
 doc/man/Makefile
 doc/man/Makefile.in
-gnome-doc-utils.make
 install-sh
 intltool-extract.in
 intltool-merge.in
