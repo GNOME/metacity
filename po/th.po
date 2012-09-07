@@ -1,19 +1,19 @@
 # Thai translation for metacity.
-# Copyright (C) 2003-2011 Free Software Foundation, Inc.
+# Copyright (C) 2003-2012 Free Software Foundation, Inc.
 # This file is distributed under the same license as the metacity package.
 #
 # Phakhinee Thangnithirat <sc442535@angsila.compsci.buu.ac.th>, 2003
 # Chanchai Junlouchai <taz@opentle.org>, 2003
 # Paisa Seeluangsawat <paisa@users.sf.net>, 2004.
-# Theppitak Karoonboonyanan <thep@linux.thai.net>, 2004-2011.
+# Theppitak Karoonboonyanan <thep@linux.thai.net>, 2004-2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=metacity&component=general\n"
-"POT-Creation-Date: 2011-02-09 18:28+0000\n"
-"PO-Revision-Date: 2011-08-14 20:54+0700\n"
+"product=metacity&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2012-04-04 05:24+0000\n"
+"PO-Revision-Date: 2012-09-07 18:08+0700\n"
 "Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -21,27 +21,188 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../src/50-metacity-launchers.xml.in.h:1
-msgid "Launchers"
-msgstr "เรียกโปรแกรม"
-
 #: ../src/50-metacity-navigation.xml.in.h:1
 msgid "Navigation"
 msgstr "ท่องย้าย"
 
-#: ../src/50-metacity-screenshot.xml.in.h:1
-msgid "Screenshots"
-msgstr "จับภาพหน้าจอ"
+#: ../src/50-metacity-navigation.xml.in.h:2
+msgid "Move window to workspace 1"
+msgstr "ย้ายหน้าต่างไปพื้นที่ทำงาน 1"
+
+#: ../src/50-metacity-navigation.xml.in.h:3
+msgid "Move window to workspace 2"
+msgstr "ย้ายหน้าต่างไปพื้นที่ทำงาน 2"
+
+#: ../src/50-metacity-navigation.xml.in.h:4
+msgid "Move window to workspace 3"
+msgstr "ย้ายหน้าต่างไปพื้นที่ทำงาน 3"
+
+#: ../src/50-metacity-navigation.xml.in.h:5
+msgid "Move window to workspace 4"
+msgstr "ย้ายหน้าต่างไปพื้นที่ทำงาน 4"
+
+#: ../src/50-metacity-navigation.xml.in.h:6
+msgid "Move window one workspace to the left"
+msgstr "ย้ายหน้าต่างไปพื้นที่ทำงานด้านซ้าย"
+
+#: ../src/50-metacity-navigation.xml.in.h:7
+msgid "Move window one workspace to the right"
+msgstr "ย้ายหน้าต่างไปพื้นที่ทำงานด้านขวา"
+
+#: ../src/50-metacity-navigation.xml.in.h:8
+msgid "Move window one workspace up"
+msgstr "ย้ายหน้าต่างไปพื้นที่ทำงานด้านบน"
+
+#: ../src/50-metacity-navigation.xml.in.h:9
+msgid "Move window one workspace down"
+msgstr "ย้ายหน้าต่างไปพื้นที่ทำงานด้านล่าง"
+
+#: ../src/50-metacity-navigation.xml.in.h:10
+msgid "Switch applications"
+msgstr "สลับโปรแกรม"
+
+#: ../src/50-metacity-navigation.xml.in.h:11
+msgid "Switch windows of an application"
+msgstr "สลับหน้าต่างภายในโปรแกรม"
+
+#: ../src/50-metacity-navigation.xml.in.h:12
+msgid "Switch system controls"
+msgstr "สลับส่วนควบคุมระบบ"
+
+#: ../src/50-metacity-navigation.xml.in.h:13
+msgid "Switch windows directly"
+msgstr "สลับหน้าต่างโดยตรง"
+
+#: ../src/50-metacity-navigation.xml.in.h:14
+msgid "Switch windows of an app directly"
+msgstr "สลับหน้าต่างภายในโปรแกรมโดยตรง"
+
+#: ../src/50-metacity-navigation.xml.in.h:15
+msgid "Switch system controls directly"
+msgstr "สลับส่วนควบคุมระบบโดยตรง"
+
+#: ../src/50-metacity-navigation.xml.in.h:16
+msgid "Hide all normal windows"
+msgstr "ซ่อนหน้าต่างทั้งหมด"
+
+#: ../src/50-metacity-navigation.xml.in.h:17
+msgid "Switch to workspace 1"
+msgstr "สลับไปพื้นที่ทำงาน 1"
+
+#: ../src/50-metacity-navigation.xml.in.h:18
+msgid "Switch to workspace 2"
+msgstr "สลับไปพื้นที่ทำงาน 2"
+
+#: ../src/50-metacity-navigation.xml.in.h:19
+msgid "Switch to workspace 3"
+msgstr "สลับไปพื้นที่ทำงาน 3"
+
+#: ../src/50-metacity-navigation.xml.in.h:20
+msgid "Switch to workspace 4"
+msgstr "สลับไปพื้นที่ทำงาน 4"
+
+#: ../src/50-metacity-navigation.xml.in.h:21
+msgid "Move to workspace left"
+msgstr "ย้ายไปพื้นที่ทำงานซ้าย"
+
+#: ../src/50-metacity-navigation.xml.in.h:22
+msgid "Move to workspace right"
+msgstr "ย้ายไปพื้นที่ทำงานขวา"
+
+#: ../src/50-metacity-navigation.xml.in.h:23
+msgid "Move to workspace above"
+msgstr "ย้ายไปพื้นที่ทำงานซ้าย"
+
+#: ../src/50-metacity-navigation.xml.in.h:24
+msgid "Move to workspace below"
+msgstr "ย้ายไปพื้นที่ทำงานล่าง"
 
 #: ../src/50-metacity-system.xml.in.h:1
 msgid "System"
 msgstr "ระบบ"
 
+#: ../src/50-metacity-system.xml.in.h:2
+msgid "Show the run command prompt"
+msgstr "แสดงกล่องเรียกคำสั่ง"
+
+#: ../src/50-metacity-system.xml.in.h:3
+msgid "Show the activities overview"
+msgstr "แสดงภาพรวมของกิจกรรมต่างๆ"
+
 #: ../src/50-metacity-windows.xml.in.h:1
 msgid "Windows"
 msgstr "หน้าต่าง"
 
-#: ../src/core/bell.c:299
+#: ../src/50-metacity-windows.xml.in.h:2
+msgid "Activate the window menu"
+msgstr "เปิดเมนูหน้าต่าง"
+
+#: ../src/50-metacity-windows.xml.in.h:3
+msgid "Toggle fullscreen mode"
+msgstr "สลับโหมดเต็มหน้าจอ"
+
+#: ../src/50-metacity-windows.xml.in.h:4
+msgid "Toggle maximization state"
+msgstr "สลับสถานะขยายแผ่"
+
+#: ../src/50-metacity-windows.xml.in.h:5
+msgid "Maximize window"
+msgstr "ขยายแผ่หน้าต่างเต็มพื้นโต๊ะ"
+
+#: ../src/50-metacity-windows.xml.in.h:6
+msgid "Restore window"
+msgstr "คืนขนาดหน้าต่าง"
+
+#: ../src/50-metacity-windows.xml.in.h:7
+msgid "Toggle shaded state"
+msgstr "ม้วน/คลี่หน้าต่าง"
+
+#: ../src/50-metacity-windows.xml.in.h:8
+msgid "Close window"
+msgstr "ปิดหน้าต่าง"
+
+#: ../src/50-metacity-windows.xml.in.h:9
+msgid "Minimize window"
+msgstr "ย่อเก็บหน้าต่าง"
+
+#: ../src/50-metacity-windows.xml.in.h:10
+msgid "Move window"
+msgstr "ย้ายหน้าต่าง"
+
+#: ../src/50-metacity-windows.xml.in.h:11
+msgid "Resize window"
+msgstr "ปรับขนาดหน้าต่าง"
+
+#: ../src/50-metacity-windows.xml.in.h:12
+msgid "Toggle window on all workspaces or one"
+msgstr "สลับการแสดงหน้าต่างบนทุกพื้นที่ทำงานกับบนพื้นที่เดียว"
+
+# Note: This is the longest description in "Shortcut" menu.
+# Should keep it as short as possible, so it doesn't pad the
+# dialog out too wide.
+#
+# The next entry in the list will make this entry clear.
+#: ../src/50-metacity-windows.xml.in.h:13
+msgid "Raise window if covered, otherwise lower it"
+msgstr "ยกหน้าต่างขึ้นถ้าถูกบัง มิฉะนั้นก็เอาลงด้านหลัง"
+
+#: ../src/50-metacity-windows.xml.in.h:14
+msgid "Raise window above other windows"
+msgstr "ยกหน้าต่างขึ้นมาไว้หน้าหน้าต่างอื่นๆ"
+
+#: ../src/50-metacity-windows.xml.in.h:15
+msgid "Lower window below other windows"
+msgstr "ถอยหน้าต่างลงไปใว้หลังหน้าต่างอื่น"
+
+#: ../src/50-metacity-windows.xml.in.h:16
+msgid "Maximize window vertically"
+msgstr "ขยายแผ่หน้าต่างเต็มด้านสูง"
+
+#: ../src/50-metacity-windows.xml.in.h:17
+msgid "Maximize window horizontally"
+msgstr "ขยายแผ่หน้าต่างเต็มด้านกว้าง"
+
+#: ../src/core/bell.c:296
 msgid "Bell event"
 msgstr "เหตุการณ์กระดิ่ง"
 
@@ -107,30 +268,6 @@ msgid ""
 "binding\n"
 msgstr "โปรแกรมอื่นกำลังใช้ปุ่ม %s ร่วมกับปุ่ม %x เป็นปุ่มลัดอยู่แล้ว\n"
 
-#. Displayed when a keybinding which is
-#. * supposed to launch a program fails.
-#.
-#: ../src/core/keybindings.c:2343
-#, c-format
-msgid ""
-"There was an error running <tt>%s</tt>:\n"
-"\n"
-"%s"
-msgstr ""
-"เกิดข้อผิดพลาดขณะเรียก <tt>%s</tt>:\n"
-"\n"
-"%s"
-
-#: ../src/core/keybindings.c:2432
-#, c-format
-msgid "No command %d has been defined.\n"
-msgstr "คำสั่ง %d ยังไม่ได้ถูกกำหนด\n"
-
-#: ../src/core/keybindings.c:3386
-#, c-format
-msgid "No terminal command has been defined.\n"
-msgstr "คำสั่งเปิดเทอร์มินัลยังไม่ได้ถูกกำหนด\n"
-
 # FIXME: Get a lawer to translate the legal clause.
 #: ../src/core/main.c:131
 #, c-format
@@ -177,11 +314,11 @@ msgstr "ให้การเรียกฟังก์ชัน X เป็น
 
 #: ../src/core/main.c:310
 msgid "Turn compositing on"
-msgstr "เปิดใช้การ composite"
+msgstr "เปิดใช้ composite"
 
 #: ../src/core/main.c:316
 msgid "Turn compositing off"
-msgstr "ปิดการ composite"
+msgstr "ปิด composite"
 
 #: ../src/core/main.c:322
 msgid ""
@@ -204,35 +341,7 @@ msgstr "ไม่พบชุดตกแต่ง โปรดตรวจด�
 msgid "Failed to restart: %s\n"
 msgstr "ไม่สามารถเริ่มการทำงานใหม่ของ: %s\n"
 
-#.
-#. * We found it, but it was invalid.  Complain.
-#. *
-#. * FIXME: This replicates the original behaviour, but in the future
-#. * we might consider reverting invalid keys to their original values.
-#. * (We know the old value, so we can look up a suitable string in
-#. * the symtab.)
-#. *
-#. * (Empty comment follows so the translators don't see this.)
-#.
-#.
-#: ../src/core/prefs.c:508 ../src/core/prefs.c:663
-#, c-format
-msgid "GConf key '%s' is set to an invalid value\n"
-msgstr "คีย์ GConf '%s' ถูกตั้งค่าเป็นค่าที่ใช้ไม่ได้\n"
-
-#: ../src/core/prefs.c:589 ../src/core/prefs.c:832
-#, c-format
-msgid "%d stored in GConf key %s is out of range %d to %d\n"
-msgstr "%d ในคีย์ GConf %s ต้องอยู่ระหว่าง %d และ %d\n"
-
-#: ../src/core/prefs.c:633 ../src/core/prefs.c:710 ../src/core/prefs.c:758
-#: ../src/core/prefs.c:822 ../src/core/prefs.c:1115 ../src/core/prefs.c:1131
-#: ../src/core/prefs.c:1148 ../src/core/prefs.c:1164
-#, c-format
-msgid "GConf key \"%s\" is set to an invalid type\n"
-msgstr "คีย์ GConf \"%s\" ถูกตั้งค่าเป็นชนิดที่ใช้ไม่ได้\n"
-
-#: ../src/core/prefs.c:1234
+#: ../src/core/prefs.c:880
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -240,44 +349,29 @@ msgstr ""
 "ปิดการแก้ขัดที่เตรียมไว้สำหรับโปรแกรมเสียๆ บางโปรแกรมแล้ว "
 "ซึ่งอาจทำให้โปรแกรมเหล่านี้ทำงานไม่ปกติ\n"
 
-#: ../src/core/prefs.c:1305
+#: ../src/core/prefs.c:949
 #, c-format
-msgid "Could not parse font description \"%s\" from GConf key %s\n"
-msgstr "ไม่เข้าใจคำบรรยายแบบตัวอักษร \"%s\" จากคีย์ GConf %s\n"
+msgid "Could not parse font description \"%s\" from GSettings key %s\n"
+msgstr "ไม่สามารถแจงคำบรรยายแบบอักษร \"%s\" จากคีย์ %s ของ GSettings\n"
 
-#: ../src/core/prefs.c:1367
+#: ../src/core/prefs.c:1015
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
 "modifier\n"
 msgstr "\"%s\" ที่พบในฐานข้อมูลข้อปรับแต่ง ใช้เป็นปุ่มใช้ร่วมสำหรับเมาส์ไม่ได้\n"
 
-#: ../src/core/prefs.c:1788
-#, c-format
-msgid "Error setting number of workspaces to %d: %s\n"
-msgstr "ไม่สามารถตั้งจำนวนพื้นที่ทำงานเป็น %d: %s\n"
-
-#: ../src/core/prefs.c:1959 ../src/core/prefs.c:2461
-#, c-format
-msgid "Workspace %d"
-msgstr "พื้นที่ทำงาน %d"
-
-#: ../src/core/prefs.c:1988 ../src/core/prefs.c:2166
+#: ../src/core/prefs.c:1494
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
 "\"%s\"\n"
 msgstr "\"%s\" ที่พบในฐานข้อมูลค่าปรับแต่ง ไม่สามารถใช้เป็นปุ่มลัด \"%s\"\n"
 
-#: ../src/core/prefs.c:2542
+#: ../src/core/prefs.c:1601
 #, c-format
-msgid "Error setting name for workspace %d to \"%s\": %s\n"
-msgstr "ไม่สามารถตั้งชื่อพื้นที่ทำงาน %d เป็น %s: %s\n"
-
-#: ../src/core/prefs.c:2746
-#, c-format
-msgid "Error setting compositor status: %s\n"
-msgstr "เกิดข้อผิดพลาดขณะกำหนดสถานะ compositor: %s\n"
+msgid "Workspace %d"
+msgstr "พื้นที่ทำงาน %d"
 
 #: ../src/core/screen.c:357
 #, c-format
@@ -308,44 +402,6 @@ msgstr "สกรีน %d ที่ดิสเพลย์ \"%s\" มีโป
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "ไม่สามารถปล่อยการควบคุมสกรีน %d ที่ดิสเพลย์ \"%s\"\n"
-
-#. Translators: Please don't translate "Control", "Shift", etc, since these
-#. * are hardcoded (in gtk/gtkaccelgroup.c; it's not metacity's fault).
-#. * "disabled" must also stay as it is.
-#.
-#: ../src/core/schema-bindings.c:169
-msgid ""
-"The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
-"\n"
-"The parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action."
-msgstr ""
-"รูปแบบจะอยู่ในรูป \"<Control>a\" หรือ \"<Shift><Alt>F1\"\n"
-"\n"
-"ตัวอ่านค่าคีย์ไม่สนใจว่าเป็นตัวพิมพ์ใหญ่หรือเล็ก และเข้าใจชื่อย่อ เช่น \"<Ctl>\" และ \"<Ctrl>\" "
-"คุณสามารถตั้งค่าตัวเลือกเป็น \"disabled\" ได้ ถ้าไม่ต้องการปุ่มลัดสำหรับปฏิบัติการนี้"
-
-#: ../src/core/schema-bindings.c:177
-msgid ""
-"The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
-"\n"
-"The parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action.\n"
-"\n"
-"This keybinding may be reversed by holding down the \"shift\" key; "
-"therefore, \"shift\" cannot be one of the keys it uses."
-msgstr ""
-"รูปแบบจะอยู่ในรูป \"<Control>a\" หรือ \"<Shift><Alt>F1\"\n"
-"\n"
-"ตัวอ่านค่าคีย์ไม่สนใจว่าเป็นตัวพิมพ์ใหญ่หรือเล็ก และเข้าใจชื่อย่อ เช่น \"<Ctl>\" และ \"<Ctrl>\" "
-"คุณสามารถตั้งค่าตัวเลือกเป็น \"disabled\" ได้ ถ้าไม่ต้องการปุ่มลัดสำหรับปฏิบัติการนี้\n"
-"\n"
-"ปุ่มลัดนี้สามารถย้อนคืนได้ด้วยการกดปุ่ม \"shift\" ค้างไว้; ดังนั้น จึงไม่สามารถใช้ \"shift\" "
-"ประกอบในปุ่มลัดที่ตั้งนี้ได้"
 
 #: ../src/core/session.c:842 ../src/core/session.c:849
 #, c-format
@@ -439,7 +495,6 @@ msgid "Window manager error: "
 msgstr "เกิดข้อผิดพลาดในโปรแกรมจัดการหน้าต่าง: "
 
 #. Translators: This is the title used on dialog boxes
-#. eof all-keybindings.h
 #: ../src/core/util.c:570 ../src/metacity.desktop.in.h:1
 #: ../src/metacity-wm.desktop.in.h:1
 msgid "Metacity"
@@ -534,440 +589,19 @@ msgid ""
 msgstr ""
 "คุณสมบัติ %s ของหน้าต่าง 0x%lx มีค่าที่ไม่ใช่ UTF-8 ที่ถูกต้องสำหรับหัวข้อที่ %d ในรายการ\n"
 
-#: ../src/include/all-keybindings.h:88
-msgid "Switch to workspace 1"
-msgstr "สลับไปพื้นที่ทำงาน 1"
-
-#: ../src/include/all-keybindings.h:90
-msgid "Switch to workspace 2"
-msgstr "สลับไปพื้นที่ทำงาน 2"
-
-#: ../src/include/all-keybindings.h:92
-msgid "Switch to workspace 3"
-msgstr "สลับไปพื้นที่ทำงาน 3"
-
-#: ../src/include/all-keybindings.h:94
-msgid "Switch to workspace 4"
-msgstr "สลับไปพื้นที่ทำงาน 4"
-
-#: ../src/include/all-keybindings.h:96
-msgid "Switch to workspace 5"
-msgstr "สลับไปพื้นที่ทำงาน 5"
-
-#: ../src/include/all-keybindings.h:98
-msgid "Switch to workspace 6"
-msgstr "สลับไปพื้นที่ทำงาน 6"
-
-#: ../src/include/all-keybindings.h:100
-msgid "Switch to workspace 7"
-msgstr "สลับไปพื้นที่ทำงาน 7"
-
-#: ../src/include/all-keybindings.h:102
-msgid "Switch to workspace 8"
-msgstr "สลับไปพื้นที่ทำงาน 8"
-
-#: ../src/include/all-keybindings.h:104
-msgid "Switch to workspace 9"
-msgstr "สลับไปพื้นที่ทำงาน 9"
-
-#: ../src/include/all-keybindings.h:106
-msgid "Switch to workspace 10"
-msgstr "สลับไปพื้นที่ทำงาน 10"
-
-#: ../src/include/all-keybindings.h:108
-msgid "Switch to workspace 11"
-msgstr "สลับไปพื้นที่ทำงาน 11"
-
-#: ../src/include/all-keybindings.h:110
-msgid "Switch to workspace 12"
-msgstr "สลับไปพื้นที่ทำงาน 12"
-
-#: ../src/include/all-keybindings.h:122
-msgid "Move to workspace left"
-msgstr "ย้ายไปพื้นที่ทำงานซ้าย"
-
-#: ../src/include/all-keybindings.h:126
-msgid "Move to workspace right"
-msgstr "ย้ายไปพื้นที่ทำงานขวา"
-
-#: ../src/include/all-keybindings.h:130
-msgid "Move to workspace above"
-msgstr "ย้ายไปพื้นที่ทำงานซ้าย"
-
-#: ../src/include/all-keybindings.h:134
-msgid "Move to workspace below"
-msgstr "ย้ายไปพื้นที่ทำงานล่าง"
-
-#: ../src/include/all-keybindings.h:150
-msgid "Switch windows of an application"
-msgstr "สลับหน้าต่างภายในโปรแกรม"
-
-#: ../src/include/all-keybindings.h:153
-msgid "Reverse switch windows of an application"
-msgstr "สลับหน้าต่างภายในโปรแกรมย้อนทาง"
-
-#: ../src/include/all-keybindings.h:156
-msgid "Switch applications"
-msgstr "สลับโปรแกรม"
-
-#: ../src/include/all-keybindings.h:159
-msgid "Reverse switch applications"
-msgstr "สลับโปรแกรมย้อนทาง"
-
-#: ../src/include/all-keybindings.h:162
-msgid "Switch system controls"
-msgstr "สลับส่วนควบคุมระบบ"
-
-#: ../src/include/all-keybindings.h:165
-msgid "Reverse switch system controls"
-msgstr "สลับส่วนควบคุมระบบย้อนทาง"
-
-#: ../src/include/all-keybindings.h:169
-msgid "Switch windows of an app directly"
-msgstr "สลับหน้าต่างภายในโปรแกรมโดยตรง"
-
-#: ../src/include/all-keybindings.h:172
-msgid "Reverse switch windows of an app directly"
-msgstr "สลับหน้าต่างภายในโปรแกรมโดยตรงย้อนทาง"
-
-#: ../src/include/all-keybindings.h:175
-msgid "Switch windows directly"
-msgstr "สลับหน้าต่างโดยตรง"
-
-#: ../src/include/all-keybindings.h:178
-msgid "Reverse switch windows directly"
-msgstr "สลับหน้าต่างโดยตรงย้อนทาง"
-
-#: ../src/include/all-keybindings.h:181
-msgid "Switch system controls directly"
-msgstr "สลับส่วนควบคุมระบบโดยตรง"
-
-#: ../src/include/all-keybindings.h:184
-msgid "Reverse switch system controls directly"
-msgstr "สลับส่วนควบคุมระบบโดยตรงย้อนทาง"
-
-#: ../src/include/all-keybindings.h:189
-msgid "Hide all normal windows"
-msgstr "ซ่อนหน้าต่างทั้งหมด"
-
-#: ../src/include/all-keybindings.h:192
-msgid "Show the activities overview"
-msgstr "แสดงภาพรวมของกิจกรรมต่างๆ"
-
-#: ../src/include/all-keybindings.h:195
-msgid "Show the run command prompt"
-msgstr "แสดงกล่องเรียกคำสั่ง"
-
-#: ../src/include/all-keybindings.h:236
-msgid "Take a screenshot"
-msgstr "จับภาพหน้าจอ"
-
-#: ../src/include/all-keybindings.h:238
-msgid "Take a screenshot of a window"
-msgstr "จับภาพหน้าต่าง"
-
-#: ../src/include/all-keybindings.h:240
-msgid "Launch Terminal"
-msgstr "เปิดเทอร์มินัล"
-
-#: ../src/include/all-keybindings.h:255
-msgid "Activate the window menu"
-msgstr "เปิดเมนูหน้าต่าง"
-
-#: ../src/include/all-keybindings.h:258
-msgid "Toggle fullscreen mode"
-msgstr "สลับโหมดเต็มหน้าจอ"
-
-#: ../src/include/all-keybindings.h:260
-msgid "Toggle maximization state"
-msgstr "สลับสถานะขยายแผ่"
-
-#: ../src/include/all-keybindings.h:262
-msgid "Toggle window always appearing on top"
-msgstr "สลับการค้างอยู่บนสุดของหน้าต่าง"
-
-#: ../src/include/all-keybindings.h:264
-msgid "Maximize window"
-msgstr "ขยายแผ่หน้าต่างเต็มพื้นโต๊ะ"
-
-#: ../src/include/all-keybindings.h:266
-msgid "Restore window"
-msgstr "คืนขนาดหน้าต่าง"
-
-#: ../src/include/all-keybindings.h:268
-msgid "Toggle shaded state"
-msgstr "ม้วน/คลี่หน้าต่าง"
-
-#: ../src/include/all-keybindings.h:270
-msgid "Minimize window"
-msgstr "ย่อเก็บหน้าต่าง"
-
-#: ../src/include/all-keybindings.h:272
-msgid "Close window"
-msgstr "ปิดหน้าต่าง"
-
-#: ../src/include/all-keybindings.h:274
-msgid "Move window"
-msgstr "ย้ายหน้าต่าง"
-
-#: ../src/include/all-keybindings.h:276
-msgid "Resize window"
-msgstr "ปรับขนาดหน้าต่าง"
-
-#: ../src/include/all-keybindings.h:279
-msgid "Toggle window on all workspaces or one"
-msgstr "สลับการแสดงหน้าต่างบนทุกพื้นที่ทำงานกับบนพื้นที่เดียว"
-
-#: ../src/include/all-keybindings.h:283
-msgid "Move window to workspace 1"
-msgstr "ย้ายหน้าต่างไปพื้นที่ทำงาน 1"
-
-#: ../src/include/all-keybindings.h:286
-msgid "Move window to workspace 2"
-msgstr "ย้ายหน้าต่างไปพื้นที่ทำงาน 2"
-
-#: ../src/include/all-keybindings.h:289
-msgid "Move window to workspace 3"
-msgstr "ย้ายหน้าต่างไปพื้นที่ทำงาน 3"
-
-#: ../src/include/all-keybindings.h:292
-msgid "Move window to workspace 4"
-msgstr "ย้ายหน้าต่างไปพื้นที่ทำงาน 4"
-
-#: ../src/include/all-keybindings.h:295
-msgid "Move window to workspace 5"
-msgstr "ย้ายหน้าต่างไปพื้นที่ทำงาน 5"
-
-#: ../src/include/all-keybindings.h:298
-msgid "Move window to workspace 6"
-msgstr "ย้ายหน้าต่างไปพื้นที่ทำงาน 6"
-
-#: ../src/include/all-keybindings.h:301
-msgid "Move window to workspace 7"
-msgstr "ย้ายหน้าต่างไปพื้นที่ทำงาน 7"
-
-#: ../src/include/all-keybindings.h:304
-msgid "Move window to workspace 8"
-msgstr "ย้ายหน้าต่างไปพื้นที่ทำงาน 8"
-
-#: ../src/include/all-keybindings.h:307
-msgid "Move window to workspace 9"
-msgstr "ย้ายหน้าต่างไปพื้นที่ทำงาน 9"
-
-#: ../src/include/all-keybindings.h:310
-msgid "Move window to workspace 10"
-msgstr "ย้ายหน้าต่างไปพื้นที่ทำงาน 10"
-
-#: ../src/include/all-keybindings.h:313
-msgid "Move window to workspace 11"
-msgstr "ย้ายหน้าต่างไปพื้นที่ทำงาน 11"
-
-#: ../src/include/all-keybindings.h:316
-msgid "Move window to workspace 12"
-msgstr "ย้ายหน้าต่างไปพื้นที่ทำงาน 12"
-
-#: ../src/include/all-keybindings.h:328
-msgid "Move window one workspace to the left"
-msgstr "ย้ายหน้าต่างไปพื้นที่ทำงานด้านซ้าย"
-
-#: ../src/include/all-keybindings.h:331
-msgid "Move window one workspace to the right"
-msgstr "ย้ายหน้าต่างไปพื้นที่ทำงานด้านขวา"
-
-#: ../src/include/all-keybindings.h:334
-msgid "Move window one workspace up"
-msgstr "ย้ายหน้าต่างไปพื้นที่ทำงานด้านบน"
-
-#: ../src/include/all-keybindings.h:337
-msgid "Move window one workspace down"
-msgstr "ย้ายหน้าต่างไปพื้นที่ทำงานด้านล่าง"
-
-# Note: This is the longest description in "Shortcut" menu.
-# Should keep it as short as possible, so it doesn't pad the
-# dialog out too wide.
-#
-# The next entry in the list will make this entry clear.
-#: ../src/include/all-keybindings.h:340
-msgid "Raise window if covered, otherwise lower it"
-msgstr "ยกหน้าต่างขึ้นถ้าถูกบัง มิฉะนั้นก็เอาลงด้านหลัง"
-
-#: ../src/include/all-keybindings.h:342
-msgid "Raise window above other windows"
-msgstr "ยกหน้าต่างขึ้นมาไว้หน้าหน้าต่างอื่นๆ"
-
-#: ../src/include/all-keybindings.h:344
-msgid "Lower window below other windows"
-msgstr "ถอยหน้าต่างลงไปใว้หลังหน้าต่างอื่น"
-
-#: ../src/include/all-keybindings.h:348
-msgid "Maximize window vertically"
-msgstr "ขยายแผ่หน้าต่างเต็มด้านสูง"
-
-#: ../src/include/all-keybindings.h:352
-msgid "Maximize window horizontally"
-msgstr "ขยายแผ่หน้าต่างเต็มด้านกว้าง"
-
-#: ../src/include/all-keybindings.h:356
-msgid "Move window to top left corner"
-msgstr "ย้ายหน้าต่างไปที่มุมบนซ้ายของหน้าจอ"
-
-#: ../src/include/all-keybindings.h:359
-msgid "Move window to top right corner"
-msgstr "ย้ายหน้าต่างไปที่มุมบนขวาของหน้าจอ"
-
-#: ../src/include/all-keybindings.h:362
-msgid "Move window to bottom left corner"
-msgstr "ย้ายหน้าต่างไปที่มุมล่างซ้ายของหน้าจอ"
-
-#: ../src/include/all-keybindings.h:365
-msgid "Move window to bottom right corner"
-msgstr "ย้ายหน้าต่างไปที่มุมล่างขวาของหน้าจอ"
-
-#: ../src/include/all-keybindings.h:369
-msgid "Move window to top edge of screen"
-msgstr "ย้ายหน้าต่างไปที่ขอบบนของหน้าจอ"
-
-#: ../src/include/all-keybindings.h:372
-msgid "Move window to bottom edge of screen"
-msgstr "ย้ายหน้าต่างไปที่ขอบล่างของหน้าจอ"
-
-#: ../src/include/all-keybindings.h:375
-msgid "Move window to right side of screen"
-msgstr "ย้ายหน้าต่างไปที่ด้านขวาของหน้าจอ"
-
-#: ../src/include/all-keybindings.h:378
-msgid "Move window to left side of screen"
-msgstr "ย้ายหน้าต่างไปที่ด้านซ้ายของหน้าจอ"
-
-#: ../src/include/all-keybindings.h:381
-msgid "Move window to center of screen"
-msgstr "ย้ายหน้าต่างไปที่กลางหน้าจอ"
-
-#: ../src/metacity.schemas.in.in.h:1
-msgid "(Not implemented) Navigation works in terms of applications not windows"
-msgstr "(ยังใช้ไม่ได้) เคลื่อนย้ายระหว่างโปรแกรม แทนระหว่างหน้าต่าง"
-
-#: ../src/metacity.schemas.in.in.h:2
-msgid ""
-"A font description string describing a font for window titlebars. The size "
-"from the description will only be used if the titlebar_font_size option is "
-"set to 0. Also, this option is disabled if the titlebar_uses_desktop_font "
-"option is set to true."
-msgstr ""
-"คำบรรยายแบบอักษรสำหรับแถบหัวเรื่องของหน้าต่าง "
-"ขนาดตัวอักษรในคำบรรยายนี้จะมีผลก็ต่อเมื่อตัวเลือก titlebar_font_size มีค่าเป็น 0 นอกจากนี้ "
-"ค่าตัวเลือกนี้จะไม่มีผลถ้าตัวเลือก titlebar_uses_desktop_font มีค่าเป็นจริง"
-
-#: ../src/metacity.schemas.in.in.h:3
-msgid "Action on title bar double-click"
-msgstr "การกระทำเมื่อดับเบิลคลิกที่แถบหัวหน้าต่าง"
-
-#: ../src/metacity.schemas.in.in.h:4
-msgid "Action on title bar middle-click"
-msgstr "การกระทำเมื่อคลิกเมาส์ปุ่มกลางที่แถบหัวหน้าต่าง"
-
-#: ../src/metacity.schemas.in.in.h:5
-msgid "Action on title bar right-click"
-msgstr "การกระทำเมื่อคลิกเมาส์ปุ่มขวาที่แถบหัวหน้าต่าง"
-
-#: ../src/metacity.schemas.in.in.h:6
-msgid "Arrangement of buttons on the titlebar"
-msgstr "การจัดเรียงปุ่มบนแถบหัวหน้าต่าง"
-
-#: ../src/metacity.schemas.in.in.h:7
-msgid ""
-"Arrangement of buttons on the titlebar. The value should be a string, such "
-"as \"menu:minimize,maximize,spacer,close\"; the colon separates the left "
-"corner of the window from the right corner, and the button names are comma-"
-"separated. Duplicate buttons are not allowed. Unknown button names are "
-"silently ignored so that buttons can be added in future metacity versions "
-"without breaking older versions. A special spacer tag can be used to insert "
-"some space between two adjacent buttons."
-msgstr ""
-"การจัดเรียงปุ่มบนแถบหัวหน้าต่าง ค่าของคีย์ควรเป็นข้อความ ตัวอย่างเช่น \"menu:minimize,"
-"maximize,spacer,close\" โดย colon จะแบ่งมุมซ้ายกับมุมขวาของหน้าต่างออกจากกัน "
-"และปุ่มต่างๆ จะคั่นด้วยจุลภาค ห้ามใช้ปุ่มซ้ำกัน ปุ่มที่ไม่รู้จักจะถูกข้ามไป "
-"เพื่อรองรับการเพิ่มปุ่มใหม่ในอนาคตได้โดยไม่ขัดกับ metacity รุ่นเก่า คุณสามารถใช้แท็กพิเศษ "
-"\"spacer\" ในการแทรกช่องว่างระหว่างปุ่มที่อยู่ติดกันได้"
-
-#: ../src/metacity.schemas.in.in.h:8
-msgid "Automatically raises the focused window"
-msgstr "ยกหน้าต่างที่ถูกโฟกัสขึ้นมาด้านหน้าโดยอัตโนมัติ"
-
-#: ../src/metacity.schemas.in.in.h:9
-msgid ""
-"Clicking a window while holding down this modifier key will move the window "
-"(left click), resize the window (middle click), or show the window menu "
-"(right click). The middle and right click operations may be swapped using "
-"the \"resize_with_right_button\" key. Modifier is expressed as \"&lt;Alt&gt;"
-"\" or \"&lt;Super&gt;\" for example."
-msgstr ""
-"การคลิกเมาส์บนหน้าต่างพร้อมกับกดปุ่ม modifier นี้ค้างไว้จะเริ่มย้ายหน้าต่าง (ปุ่มซ้าย) "
-"เปลี่ยนขนาดหน้าต่าง (ปุ่มกลาง) หรือแสดงเมนูหน้าต่าง (ปุ่มขวา) "
-"การใช้ปุ่มกลางหรือขวาอาจสลับได้โดยใช้คีย์ \"resize_with_right_button\" ตัวอย่างการระบุปุ่ม "
-"modifier เช่น \"&lt;Alt&gt;\" หรือ \"&lt;Super&gt;\""
-
-#: ../src/metacity.schemas.in.in.h:10
-msgid "Commands to run in response to keybindings"
-msgstr "คำสั่งที่จะกระทำเมื่อมีการกดปุ่มตาม keybinding ที่กำหนด"
-
-#: ../src/metacity.schemas.in.in.h:11
+#: ../src/org.gnome.metacity.gschema.xml.in.h:1
 msgid "Compositing Manager"
 msgstr "จัดการ Composite"
 
-#: ../src/metacity.schemas.in.in.h:12
-msgid "Control how new windows get focus"
-msgstr "ควบคุมการโฟกัสหน้าต่างใหม่"
-
-#: ../src/metacity.schemas.in.in.h:13
-msgid "Current theme"
-msgstr "ธีมปัจจุบัน"
-
-#: ../src/metacity.schemas.in.in.h:14
-msgid "Delay in milliseconds for the auto raise option"
-msgstr "การหน่วงเวลาในหน่วยมิลลิวินาทีสำหรับการยกหน้าต่างมาด้านหน้าโดยอัตโนมัติ"
-
-#: ../src/metacity.schemas.in.in.h:15
+#: ../src/org.gnome.metacity.gschema.xml.in.h:2
 msgid "Determines whether Metacity is a compositing manager."
 msgstr "กำหนดว่า จะให้ Metacity เป็นผู้จัดการ composite หรือไม่"
 
-#: ../src/metacity.schemas.in.in.h:16
-msgid ""
-"Determines whether applications or the system can generate audible 'beeps'; "
-"may be used in conjunction with 'visual bell' to allow silent 'beeps'."
-msgstr ""
-"ระบุว่าจะให้โปรแกรมหรือระบบส่งเสียง 'บี๊ป' หรือไม่ สามารถใช้ร่วมกับ 'ระฆังภาพ' เพื่อใช้ 'บี๊ป' "
-"แบบเงียบได้"
+#: ../src/org.gnome.metacity.gschema.xml.in.h:3
+msgid "If true, trade off usability for less resource usage"
+msgstr "ถ้าตั้ง จะสละความง่ายในการใช้เพื่อประหยัดทรัพยากร"
 
-#: ../src/metacity.schemas.in.in.h:17
-msgid "Disable misfeatures that are required by old or broken applications"
-msgstr "ปิดคุณสมบัติแก้ขัดที่แก้ปัญหาให้กับโปรแกรมประยุกต์ที่เก่าหรือไม่ทำงาน"
-
-#: ../src/metacity.schemas.in.in.h:18
-msgid "Enable Visual Bell"
-msgstr "ใช้ระฆังภาพ"
-
-#: ../src/metacity.schemas.in.in.h:19
-msgid ""
-"If set to true, and the focus mode is either \"sloppy\" or \"mouse\" then "
-"the focused window will be automatically raised after a delay specified by "
-"the auto_raise_delay key. This is not related to clicking on a window to "
-"raise it, nor to entering a window during drag-and-drop."
-msgstr ""
-"ถ้ามีค่าเป็นจริง และโหมดโฟกัสเป็น \"sloppy\" หรือ \"mouse\" อย่างใดอย่างหนึ่งแล้ว "
-"จะยกหน้าต่างที่ได้โฟกัสขึ้นมาโดยอัตโนมัติ หลังจากหน่วงเวลาเป็นระยะเวลาตามที่ระบุในคีย์ "
-"auto_raise_delay  การยกหน้าต่างดังกล่าว ไม่เกี่ยวกับการคลิกบนหน้าต่างเพื่อยกหน้าต่างขึ้น "
-"หรือการเลื่อนเมาส์เข้าสู่หน้าต่างระหว่างการลากวางแต่อย่างใด"
-
-#: ../src/metacity.schemas.in.in.h:20
-msgid ""
-"If true, ignore the titlebar_font option, and use the standard application "
-"font for window titles."
-msgstr ""
-"ถ้าเป็นจริง จะละเว้นตัวเลือก titlebar_font และใช้แบบอักษรมาตรฐาน "
-"สำหรับแถบหัวเรื่องของหน้าต่าง"
-
-#: ../src/metacity.schemas.in.in.h:21
+#: ../src/org.gnome.metacity.gschema.xml.in.h:4
 msgid ""
 "If true, metacity will give the user less feedback by using wireframes, "
 "avoiding animations, or other means. This is a significant reduction in "
@@ -980,355 +614,52 @@ msgstr ""
 "และอาจช่วยให้การใช้เทอร์มินัลเซิร์ฟเวอร์คล่องตัวขึ้น อย่างไรก็ดี metacity จะไม่ใช้ wireframe "
 "เมื่อเปิดระบบอำนวยการใช้งาน"
 
-#: ../src/metacity.schemas.in.in.h:22
-msgid ""
-"If true, then Metacity works in terms of applications rather than windows. "
-"The concept is a bit abstract, but in general an application-based setup is "
-"more like the Mac and less like Windows. When you focus a window in "
-"application-based mode, all the windows in the application will be raised. "
-"Also, in application-based mode, focus clicks are not passed through to "
-"windows in other applications. Application-based mode is, however, largely "
-"unimplemented at the moment."
-msgstr ""
-"ถ้าเป็นจริง Metacity จะทำงานในหน่วยของโปรแกรมประยุกต์แทนหน่วยของหน้าต่าง "
-"แนวคิดนี้ค่อนข้างเป็นนามธรรม แต่โดยทั่วไปการตั้งค่าแบบนี้จะคล้าย Mac และต่างจากวินโดวส์ "
-"เมื่อคุณโฟกัสหน้าต่างหนึ่งในโหมดโปรแกรมประยุกต์ "
-"หน้าต่างทั้งหมดในโปรแกรมประยุกต์เดียวกันจะถูกยกขึ้นพร้อมกัน นอกจากนี้ ในโหมดโปรแกรมประยุกต์นี้ "
-"การคลิกเพื่อโฟกัสจะไม่ถูกส่งผ่านไปยังหน้าต่างของโปรแกรมประยุกต์อื่นด้วย อย่างไรก็ดี "
-"โหมดโปรแกรมประยุกต์ยังใช้การไม่ได้ในขณะนี้"
-
-#: ../src/metacity.schemas.in.in.h:23
-msgid "If true, trade off usability for less resource usage"
-msgstr "ถ้าตั้ง จะสละความง่ายในการใช้เพื่อประหยัดทรัพยากร"
-
-#: ../src/metacity.schemas.in.in.h:24
-msgid "Modifier to use for modified window click actions"
-msgstr "ปุ่ม modifier เพื่อเปลี่ยนพฤติกรรมการคลิกหน้าต่าง"
-
-#: ../src/metacity.schemas.in.in.h:25
-msgid "Name of workspace"
-msgstr "ชื่อของพื้นที่ทำงาน"
-
-#: ../src/metacity.schemas.in.in.h:26
-msgid "Number of workspaces"
-msgstr "จำนวนพื้นที่ทำงาน"
-
-#: ../src/metacity.schemas.in.in.h:27
-msgid ""
-"Number of workspaces. Must be more than zero, and has a fixed maximum to "
-"prevent making the desktop unusable by accidentally asking for too many "
-"workspaces."
-msgstr ""
-"จำนวนพื้นที่ทำงาน ต้องมากกว่าศูนย์ และมีขีดจำกัดตายตัวอยู่ "
-"เพื่อป้องกันการทำให้เดสก์ท็อปใช้การไม่ได้ด้วยการร้องขอพื้นที่ทำงานมากเกินไปโดยไม่เจตนา"
-
-#: ../src/metacity.schemas.in.in.h:28
-msgid "Run a defined command"
-msgstr "เรียกใช้คำสั่งที่กำหนดไว้"
-
-#: ../src/metacity.schemas.in.in.h:29
-msgid ""
-"Set this to true to resize with the right button and show a menu with the "
-"middle button while holding down the key given in \"mouse_button_modifier\"; "
-"set it to false to make it work the opposite way around."
-msgstr ""
-"กำหนดค่านี้เป็นจริงหากต้องการให้ใช้เมาส์ปุ่มขวาปรับขนาดหน้าต่าง และใช้ปุ่มกลางเปิดเมนู "
-"ในขณะที่กดปุ่มที่กำหนดใน \"mouse_button_modifier\" ค้างไว้; "
-"กำหนดค่านี้เป็นเท็จถ้าต้องการให้ทำในทางกลับกัน"
-
-#: ../src/metacity.schemas.in.in.h:30
-msgid ""
-"Setting this option to false can lead to buggy behavior, so users are "
-"strongly discouraged from changing it from the default of true. Many actions "
-"(e.g. clicking in the client area, moving or resizing the window) normally "
-"raise the window as a side-effect. Setting this option to false, which is "
-"strongly discouraged, will decouple raising from other user actions, and "
-"ignore raise requests generated by applications. See http://bugzilla.gnome."
-"org/show_bug.cgi?id=445447#c6. Even when this option is false, windows can "
-"still be raised by an alt-left-click anywhere on the window, a normal click "
-"on the window decorations, or by special messages from pagers, such as "
-"activation requests from tasklist applets. This option is currently disabled "
-"in click-to-focus mode. Note that the list of ways to raise windows when "
-"raise_on_click is false does not include programmatic requests from "
-"applications to raise windows; such requests will be ignored regardless of "
-"the reason for the request. If you are an application developer and have a "
-"user complaining that your application does not work with this setting "
-"disabled, tell them it is _their_ fault for breaking their window manager "
-"and that they need to change this option back to true or live with the \"bug"
-"\" they requested."
-msgstr ""
-"การกำหนดตัวเลือกนี้เป็นเท็จ อาจทำให้การทำงานผิดพลาด ดังนั้น "
-"จึงไม่ขอแนะนำให้เปลี่ยนค่าจากค่าปกติที่เป็นค่าจริง โดยปกติ ปฏิบัติการหลายอย่าง (เช่น "
-"การคลิกบนพื้นที่ภายในหน้าต่าง การย้ายหรือปรับขนาดหน้าต่าง) จะยกหน้าต่างขึ้นด้วย "
-"ถ้ากำหนดตัวเลือกนี้เป็นเท็จ ซึ่งไม่ขอแนะนำเป็นอย่างยิ่ง จะไม่ยกหน้าต่างเมื่อมีปฏิสัมพันธ์กับผู้ใช้ "
-"และจะไม่สนใจการร้องขอให้ยกหน้าต่างขึ้นจากโปรแกรมต่างๆ ดู http://bugzilla.gnome.org/"
-"show_bug.cgi?id=445447#c6 แต่แม้ตัวเลือกนี้จะเป็นเท็จ ก็ยังสามารถยกหน้าต่างขึ้นได้โดย alt-"
-"คลิกซ้าย ภายในพื้นที่หน้าต่าง หรือคลิกแบบธรรมดาที่กรอบหน้าต่าง "
-"หรือโดยข้อความพิเศษจากโปรแกรมจัดหน้าพื้นโต๊ะ เช่น "
-"การร้องขอกระตุ้นหน้าต่างจากแอพเพล็ตรายการงาน ขณะนี้ "
-"ตัวเลือกนี้จะไม่มีผลถ้าอยู่ในโหมดโฟกัสด้วยการคลิก  สังเกตว่า วิธีการต่างๆ ที่จะยกหน้าต่างขึ้นเมื่อ "
-"raise_on_click เป็นเท็จนี้ ไม่นับรวมการร้องขอจากโปรแกรมเพื่อขอยกหน้าต่างขึ้น "
-"การร้องขอดังกล่าวจะถูกปฏิเสธไม่ว่ากรณีใดๆ ถ้าคุณเป็นนักพัฒนาโปรแกรม "
-"และมีผู้ใช้บ่นว่าโปรแกรมของคุณทำงานผิดพลาดเมื่อปิดค่านี้ ก็บอกเขาได้เลย ว่าเป็นความผิด "
-"_ของเขาเอง_ ที่ทำให้โปรแกรมจัดการหน้าต่างรวน และเขาต้องเปลี่ยนตัวเลือกนี้กลับเป็นค่าจริง "
-"มิฉะนั้น ก็จะต้องอยู่กับ \"บั๊ก\" ที่เขาเรียกร้องต่อไป"
-
-#: ../src/metacity.schemas.in.in.h:31
-msgid ""
-"Some applications disregard specifications in ways that result in window "
-"manager misfeatures. This option puts Metacity in a rigorously correct mode, "
-"which gives a more consistent user interface, provided one does not need to "
-"run any misbehaving applications."
-msgstr ""
-"โปรแกรมบางตัวไม่สนใจข้อกำหนด โดยทำให้โปรแกรมจัดการหน้าต่างต้องทำงานแก้ขัด "
-"ตัวเลือกนี้จะกำหนดให้ Metacity เข้าสู่โหมดการทำงานที่ถูกหลักเกณฑ์อย่างเข้มงวด "
-"ซึ่งจะทำให้การติดต่อผู้ใช้คงเส้นคงวายิ่งขึ้น โดยถือว่าผู้ใช้ไม่จำเป็นต้องเรียกโปรแกรมใดๆ "
-"ที่ประพฤติผิดหลักเกณฑ์"
-
-#: ../src/metacity.schemas.in.in.h:32
-msgid "System Bell is Audible"
-msgstr "เปิดเล่นเสียงระฆังระบบ"
-
-#: ../src/metacity.schemas.in.in.h:33
-msgid ""
-"Tells Metacity how to implement the visual indication that the system bell "
-"or another application 'bell' indicator has been rung. Currently there are "
-"two valid values, \"fullscreen\", which causes a fullscreen white-black "
-"flash, and \"frame_flash\" which causes the titlebar of the application "
-"which sent the bell signal to flash. If the application which sent the bell "
-"is unknown (as is usually the case for the default \"system beep\"), the "
-"currently focused window's titlebar is flashed."
-msgstr ""
-"บอก metacity ว่าจะแสดงออกทางจอภาพอย่างไรเมื่อมีการสั่นระฆังของระบบหรือโปรแกรมประยุกต์ "
-"ค่าที่เป็นไปได้ ณ ขณะนี้มีสองค่า คือ \"fullscreen\" ซึ่งจะวาบจอภาพทั้งจอ และ \"frame_flash"
-"\" ซึ่งจะวาบแถบหัวหน้าต่างของโปรแกรมที่สั่นระฆัง หรือถ้าไม่ปรากฏโปรแกรมที่สั่นระฆัง "
-"(ซึ่งเป็นปกติสำหรับ \"เสียงบี๊ปของระบบ\") ก็จะวาบแถบหัวหน้าต่างของโปรแกรมที่ได้โฟกัสอยู่"
-
-#: ../src/metacity.schemas.in.in.h:34
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_N keys define keybindings "
-"that correspond to these commands. Pressing the keybinding for run_command_N "
-"will execute command_N."
-msgstr ""
-"กำหนดคำสั่งที่จะเรียกจากการกดปุ่มลัดที่กำหนดในคีย์ /apps/metacity/global_keybindings/"
-"run_command_N การกดปุ่มลัดใน run_command_N จะเรียกคำสั่ง command_N"
-
-#: ../src/metacity.schemas.in.in.h:35
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_screenshot key defines a "
-"keybinding which causes the command specified by this setting to be invoked."
-msgstr ""
-"กำหนดคำสั่งที่จะเรียกจากการกดปุ่มลัดที่กำหนดในคีย์ /apps/metacity/global_keybindings/"
-"run_command_screenshot"
-
-#: ../src/metacity.schemas.in.in.h:36
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_window_screenshot key "
-"defines a keybinding which causes the command specified by this setting to "
-"be invoked."
-msgstr ""
-"กำหนดคำสั่งที่จะเรียกจากการกดปุ่มลัดที่กำหนดในคีย์ /apps/metacity/global_keybindings/"
-"run_command_window_screenshot"
-
-#: ../src/metacity.schemas.in.in.h:37
-msgid ""
-"The keybinding that runs the correspondingly-numbered command in /apps/"
-"metacity/keybinding_commands The format looks like \"&lt;Control&gt;a\" or "
-"\"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows "
-"lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and "
-"\"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled\", "
-"then there will be no keybinding for this action."
-msgstr ""
-"ปุ่มลัดสำหรับเรียกคำสั่งใน /apps/metacity/keybinding_commands  รูปแบบคือ \"&lt;"
-"Control&gt;a\" หรือ \"&lt;Shift&gt;&lt;Alt&gt;F1\"  "
-"ตัวอ่านค่าคีย์ไม่สนใจว่าเป็นตัวพิมพ์ใหญ่หรือเล็ก และเข้าใจชื่อย่อ เช่น \"&lt;Ctl&gt;\" และ "
-"\"&lt;Ctrl&gt;\"  คุณสามารถตั้งค่าตัวเลือกเป็น \"disabled\" ได้ "
-"ถ้าไม่ต้องการปุ่มลัดสำหรับปฏิบัติการนี้"
-
-#: ../src/metacity.schemas.in.in.h:38
-msgid "The name of a workspace."
-msgstr "ชื่อของพื้นที่ทำงาน"
-
-#: ../src/metacity.schemas.in.in.h:39
-msgid "The screenshot command"
-msgstr "คำสั่งจับภาพหน้าจอ"
-
-#: ../src/metacity.schemas.in.in.h:40
-msgid ""
-"The theme determines the appearance of window borders, titlebar, and so "
-"forth."
-msgstr "ชุดตกแต่งนี้จะกำหนดลักษณะขอบหน้าต่าง หัวหน้าต่าง ฯลฯ"
-
-#: ../src/metacity.schemas.in.in.h:41
-msgid ""
-"The time delay before raising a window if auto_raise is set to true. The "
-"delay is given in thousandths of a second."
-msgstr "ระยะเวลารอก่อนยกหน้าต่างขึ้นมาด้านหน้า ใช้ถ้า auto_raise ถูกตั้ง ระบุเวลาเป็นมิลลิวินาที"
-
-#: ../src/metacity.schemas.in.in.h:42
-msgid ""
-"The window focus mode indicates how windows are activated. It has three "
-"possible values; \"click\" means windows must be clicked in order to focus "
-"them, \"sloppy\" means windows are focused when the mouse enters the window, "
-"and \"mouse\" means windows are focused when the mouse enters the window and "
-"unfocused when the mouse leaves the window."
-msgstr ""
-"โหมดโฟกัสหน้าต่างกำหนดวิธีการโฟกัสหน้าต่างเพื่อใช้งาน ค่าที่เป็นไปได้มีสามค่า คือ \"click\" "
-"หมายถึงการโฟกัสหน้าต่างด้วยการคลิก, \"sloppy\" "
-"หมายความว่าหน้าต่างจะได้โฟกัสก็ต่อเมื่อเมาส์เคลื่อนเข้าสู่หน้าต่าง, และ\"mouse\" "
-"หมายความว่าหน้าต่างจะได้โฟกัสเมื่อเมาส์เคลื่อนเข้าสู่หน้าต่าง "
-"และเสียโฟกัสเมื่อเมาส์เคลื่อนออกจากหน้าต่าง"
-
-#: ../src/metacity.schemas.in.in.h:43
-msgid "The window screenshot command"
-msgstr "คำสั่งจับภาพหน้าต่าง"
-
-#: ../src/metacity.schemas.in.in.h:44
-msgid ""
-"This option determines the effects of double-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"ตัวเลือกนี้เลือกการปฏิบัติเมื่อดับเบิลคลิกที่แถบหัวหน้าต่าง ค่าตัวเลือกที่เป็นไปได้ในขณะนี้คือ "
-"'toggle_shade' ซึ่งจะม้วนหรือคลี่หน้าต่าง, 'toggle_maximize' "
-"ซึ่งจะขยายแผ่หรือยกเลิกการขยายแผ่หน้าต่างให้เต็มพื้นโต๊ะ, 'toggle_maximize_horizontally' "
-"และ 'toggle_maximize_vertically' "
-"ซึ่งจะขยายแผ่หรือยกเลิกการขยายแผ่หน้าต่างในทิศทางที่กำหนดเท่านั้น, 'minimize' "
-"ซึ่งจะย่อเก็บหน้าต่าง, 'shade' ซึ่งจะม้วนเก็บหน้าต่าง, 'menu' ซึ่งจะแสดงเมนูหน้าต่าง, 'lower' "
-"ซึ่งจะนำหน้าต่างลงไปอยู่หลังหน้าต่างอื่นทั้งหมด, และ 'none' ซึ่งจะไม่ทำอะไรเลย"
-
-#: ../src/metacity.schemas.in.in.h:45
-msgid ""
-"This option determines the effects of middle-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"ตัวเลือกนี้เลือกการปฏิบัติเมื่อคลิกเมาส์ปุ่มกลางที่แถบหัวหน้าต่าง ค่าตัวเลือกที่เป็นไปได้ในขณะนี้คือ "
-"'toggle_shade' ซึ่งจะม้วนหรือคลี่หน้าต่าง, 'toggle_maximize' "
-"ซึ่งจะขยายแผ่หรือยกเลิกการขยายแผ่หน้าต่างให้เต็มพื้นโต๊ะ, 'toggle_maximize_horizontally' "
-"และ 'toggle_maximize_vertically' "
-"ซึ่งจะขยายแผ่หรือยกเลิกการขยายแผ่หน้าต่างในทิศทางที่กำหนดเท่านั้น, 'minimize' "
-"ซึ่งจะย่อเก็บหน้าต่าง, 'shade' ซึ่งจะม้วนเก็บหน้าต่าง, 'menu' ซึ่งจะแสดงเมนูหน้าต่าง, 'lower' "
-"ซึ่งจะนำหน้าต่างลงไปอยู่หลังหน้าต่างอื่นทั้งหมด, และ 'none' ซึ่งจะไม่ทำอะไรเลย"
-
-#: ../src/metacity.schemas.in.in.h:46
-msgid ""
-"This option determines the effects of right-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"ตัวเลือกนี้เลือกการปฏิบัติเมื่อคลิกเมาส์ปุ่มขวาที่แถบหัวหน้าต่าง ค่าตัวเลือกที่เป็นไปได้ในขณะนี้คือ "
-"'toggle_shade' ซึ่งจะม้วนหรือคลี่หน้าต่าง, 'toggle_maximize' "
-"ซึ่งจะขยายแผ่หรือยกเลิกการขยายแผ่หน้าต่างให้เต็มพื้นโต๊ะ, 'toggle_maximize_horizontally' "
-"และ 'toggle_maximize_vertically' "
-"ซึ่งจะขยายแผ่หรือยกเลิกการขยายแผ่หน้าต่างในทิศทางที่กำหนดเท่านั้น, 'minimize' "
-"ซึ่งจะย่อเก็บหน้าต่าง, 'shade' ซึ่งจะม้วนเก็บหน้าต่าง, 'menu' ซึ่งจะแสดงเมนูหน้าต่าง, 'lower' "
-"ซึ่งจะนำหน้าต่างลงไปอยู่หลังหน้าต่างอื่นทั้งหมด, และ 'none' ซึ่งจะไม่ทำอะไรเลย"
-
-#: ../src/metacity.schemas.in.in.h:47
-msgid ""
-"This option provides additional control over how newly created windows get "
-"focus. It has two possible values; \"smart\" applies the user's normal focus "
-"mode, and \"strict\" results in windows started from a terminal not being "
-"given focus."
-msgstr ""
-"ตัวเลือกนี้เพิ่มการควบคุมการโฟกัสหน้าต่างที่สร้างใหม่ ค่าที่เป็นไปได้มีสองค่า คือ \"smart\" "
-"ซึ่งจะใช้วิธีโฟกัสตามปกติของผู้ใช้ และ \"strict\" ซึ่งจะไม่โฟกัสหน้าต่างที่เรียกจากเทอร์มินัล"
-
-#: ../src/metacity.schemas.in.in.h:48
-msgid ""
-"Turns on a visual indication when an application or the system issues a "
-"'bell' or 'beep'; useful for the hard-of-hearing and for use in noisy "
-"environments."
-msgstr ""
-"เปิดใช้การส่งสัญญาณทางภาพเมื่อโปรแกรมหรือระบบสั่นระฆังหรือส่งเสียงบี๊ป "
-"ซึ่งจะมีประโยชน์สำหรับผู้ที่มีปัญหาเรื่องการฟัง หรือใช้ในสภาวะที่จอแจ"
-
-#: ../src/metacity.schemas.in.in.h:49
-msgid "Use standard system font in window titles"
-msgstr "ใช้แบบตัวอักษรปกติของระบบสำหรับหัวหน้าต่าง"
-
-#: ../src/metacity.schemas.in.in.h:50
-msgid "Visual Bell Type"
-msgstr "ชนิดของระฆังภาพ"
-
-#: ../src/metacity.schemas.in.in.h:51
-msgid "Whether raising should be a side-effect of other user interactions"
-msgstr "กำหนดว่าควรยกหน้าต่างขึ้นเมื่อมีปฏิสัมพันธ์กับผู้ใช้หรือไม่"
-
-#: ../src/metacity.schemas.in.in.h:52
-msgid "Whether to resize with the right button"
-msgstr "กำหนดว่าจะปรับขนาดด้วยปุ่มขวาหรือไม่"
-
-#: ../src/metacity.schemas.in.in.h:53
-msgid "Window focus mode"
-msgstr "โหมดโฟกัสหน้าต่าง"
-
-#: ../src/metacity.schemas.in.in.h:54
-msgid "Window title font"
-msgstr "แบบอักษรหัวหน้าต่าง"
-
 #: ../src/tools/metacity-message.c:150
 #, c-format
 msgid "Usage: %s\n"
 msgstr "วิธีใช้: %s\n"
 
-#: ../src/ui/frames.c:1120
+#: ../src/ui/frames.c:1114
 msgid "Close Window"
 msgstr "ปิดหน้าต่าง"
 
-#: ../src/ui/frames.c:1123
+#: ../src/ui/frames.c:1117
 msgid "Window Menu"
 msgstr "เมนูหน้าต่าง"
 
-#: ../src/ui/frames.c:1126
+#: ../src/ui/frames.c:1120
 msgid "Minimize Window"
 msgstr "ย่อเก็บหน้าต่าง"
 
-#: ../src/ui/frames.c:1129
+#: ../src/ui/frames.c:1123
 msgid "Maximize Window"
 msgstr "ขยายแผ่หน้าต่าง"
 
-#: ../src/ui/frames.c:1132
+#: ../src/ui/frames.c:1126
 msgid "Restore Window"
 msgstr "คืนขนาดหน้าต่าง"
 
-#: ../src/ui/frames.c:1135
+#: ../src/ui/frames.c:1129
 msgid "Roll Up Window"
 msgstr "_ม้วนหน้าต่างขึ้น"
 
-#: ../src/ui/frames.c:1138
+#: ../src/ui/frames.c:1132
 msgid "Unroll Window"
 msgstr "คลี่หน้าต่างกลับ"
 
-#: ../src/ui/frames.c:1141
+#: ../src/ui/frames.c:1135
 msgid "Keep Window On Top"
 msgstr "วางหน้าต่างไว้บนสุด"
 
-#: ../src/ui/frames.c:1144
+#: ../src/ui/frames.c:1138
 msgid "Remove Window From Top"
 msgstr "เลิกวางหน้าต่างไว้บนสุด"
 
-#: ../src/ui/frames.c:1147
+#: ../src/ui/frames.c:1141
 msgid "Always On Visible Workspace"
 msgstr "แสดงบนพื้นที่ทำงานเสมอ"
 
-#: ../src/ui/frames.c:1150
+#: ../src/ui/frames.c:1144
 msgid "Put Window On Only One Workspace"
 msgstr "วางหน้าต่างบนพื้นที่ทำงานเดียวเท่านั้น"
 
@@ -1414,22 +745,22 @@ msgstr "ย้ายไปพื้นที่ทำงาน_ล่าง"
 msgid "_Close"
 msgstr "ปิ_ด"
 
-#: ../src/ui/menu.c:203
+#: ../src/ui/menu.c:205
 #, c-format
 msgid "Workspace %d%n"
 msgstr "พื้นที่ทำงาน %d%n"
 
-#: ../src/ui/menu.c:213
+#: ../src/ui/menu.c:215
 #, c-format
 msgid "Workspace 1_0"
 msgstr "พื้นที่ทำงาน 1_0"
 
-#: ../src/ui/menu.c:215
+#: ../src/ui/menu.c:217
 #, c-format
 msgid "Workspace %s%d"
 msgstr "พื้นที่ทำงาน %s%d"
 
-#: ../src/ui/menu.c:395
+#: ../src/ui/menu.c:398
 msgid "Move to Another _Workspace"
 msgstr "ย้ายไป_พื้นที่ทำงานอื่น"
 
@@ -1438,7 +769,7 @@ msgstr "ย้ายไป_พื้นที่ทำงานอื่น"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:104
+#: ../src/ui/metaaccellabel.c:80
 msgid "Shift"
 msgstr "Shift"
 
@@ -1447,7 +778,7 @@ msgstr "Shift"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:110
+#: ../src/ui/metaaccellabel.c:86
 msgid "Ctrl"
 msgstr "Ctrl"
 
@@ -1456,7 +787,7 @@ msgstr "Ctrl"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:116
+#: ../src/ui/metaaccellabel.c:92
 msgid "Alt"
 msgstr "Alt"
 
@@ -1465,7 +796,7 @@ msgstr "Alt"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:122
+#: ../src/ui/metaaccellabel.c:98
 msgid "Meta"
 msgstr "Meta"
 
@@ -1474,7 +805,7 @@ msgstr "Meta"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:128
+#: ../src/ui/metaaccellabel.c:104
 msgid "Super"
 msgstr "Super"
 
@@ -1483,7 +814,7 @@ msgstr "Super"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:134
+#: ../src/ui/metaaccellabel.c:110
 msgid "Hyper"
 msgstr "Hyper"
 
@@ -1492,7 +823,7 @@ msgstr "Hyper"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:140
+#: ../src/ui/metaaccellabel.c:116
 msgid "Mod2"
 msgstr "Mod2"
 
@@ -1501,7 +832,7 @@ msgstr "Mod2"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:146
+#: ../src/ui/metaaccellabel.c:122
 msgid "Mod3"
 msgstr "Mod3"
 
@@ -1510,7 +841,7 @@ msgstr "Mod3"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:152
+#: ../src/ui/metaaccellabel.c:128
 msgid "Mod4"
 msgstr "Mod4"
 
@@ -1519,7 +850,7 @@ msgstr "Mod4"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:158
+#: ../src/ui/metaaccellabel.c:134
 msgid "Mod5"
 msgstr "Mod5"
 
@@ -1852,58 +1183,58 @@ msgstr ""
 "ขนาดหัวหน้าต่าง \"%s\" ใช้ไม่ได้ ตั้งได้เป็น xx-small, x-small, small, medium, large, "
 "x-large, หรือ xx-large\n"
 
-#: ../src/ui/theme-parser.c:936 ../src/ui/theme-parser.c:999
-#: ../src/ui/theme-parser.c:1033 ../src/ui/theme-parser.c:1136
+#: ../src/ui/theme-parser.c:947 ../src/ui/theme-parser.c:1010
+#: ../src/ui/theme-parser.c:1044 ../src/ui/theme-parser.c:1147
 #, c-format
 msgid "<%s> name \"%s\" used a second time"
 msgstr "<%s> ชื่อ \"%s\" ถูกใช้เป็นครั้งที่สอง"
 
-#: ../src/ui/theme-parser.c:948 ../src/ui/theme-parser.c:1045
-#: ../src/ui/theme-parser.c:1148
+#: ../src/ui/theme-parser.c:959 ../src/ui/theme-parser.c:1056
+#: ../src/ui/theme-parser.c:1159
 #, c-format
 msgid "<%s> parent \"%s\" has not been defined"
 msgstr "<%s>: พาเรนต์ \"%s\" ไม่ได้ระบุ"
 
-#: ../src/ui/theme-parser.c:1058
+#: ../src/ui/theme-parser.c:1069
 #, c-format
 msgid "<%s> geometry \"%s\" has not been defined"
 msgstr "<%s>: ค่าเรขาคณิต \"%s\" ไม่ได้ระบุ"
 
-#: ../src/ui/theme-parser.c:1071
+#: ../src/ui/theme-parser.c:1082
 #, c-format
 msgid "<%s> must specify either a geometry or a parent that has a geometry"
 msgstr "<%s> ต้องกำหนดตำแหน่งและขนาด หรือพาเรนต์ที่มี่ตำแหน่งขนาด"
 
-#: ../src/ui/theme-parser.c:1113
+#: ../src/ui/theme-parser.c:1124
 msgid "You must specify a background for an alpha value to be meaningful"
 msgstr "คุณต้องกำหนดสีพื้นหลังเพื่อให้ค่าอัลฟามีความหมาย"
 
-#: ../src/ui/theme-parser.c:1180
+#: ../src/ui/theme-parser.c:1191
 #, c-format
 msgid "Unknown type \"%s\" on <%s> element"
 msgstr "ไม่รู้จักชนิด \"%s\" สำหรับอิลิเมนต์ <%s>"
 
-#: ../src/ui/theme-parser.c:1191
+#: ../src/ui/theme-parser.c:1202
 #, c-format
 msgid "Unknown style_set \"%s\" on <%s> element"
 msgstr "ไม่รู้จัก style_set \"%s\" สำหรับอิลิเมนต์ <%s>"
 
-#: ../src/ui/theme-parser.c:1199
+#: ../src/ui/theme-parser.c:1210
 #, c-format
 msgid "Window type \"%s\" has already been assigned a style set"
 msgstr "ชนิดหน้าต่าง \"%s\" ถูกตั้ง style set ไว้อยู่แล้ว"
 
-#: ../src/ui/theme-parser.c:1229 ../src/ui/theme-parser.c:1293
-#: ../src/ui/theme-parser.c:1519 ../src/ui/theme-parser.c:2740
-#: ../src/ui/theme-parser.c:2786 ../src/ui/theme-parser.c:2934
-#: ../src/ui/theme-parser.c:3126 ../src/ui/theme-parser.c:3164
-#: ../src/ui/theme-parser.c:3202 ../src/ui/theme-parser.c:3240
+#: ../src/ui/theme-parser.c:1240 ../src/ui/theme-parser.c:1304
+#: ../src/ui/theme-parser.c:1530 ../src/ui/theme-parser.c:2751
+#: ../src/ui/theme-parser.c:2797 ../src/ui/theme-parser.c:2945
+#: ../src/ui/theme-parser.c:3137 ../src/ui/theme-parser.c:3175
+#: ../src/ui/theme-parser.c:3213 ../src/ui/theme-parser.c:3251
 #, c-format
 msgid "Element <%s> is not allowed below <%s>"
 msgstr "ไม่อนุญาตให้มีอิลิเมนต์ <%s> ภายใน <%s>"
 
-#: ../src/ui/theme-parser.c:1343 ../src/ui/theme-parser.c:1357
-#: ../src/ui/theme-parser.c:1402
+#: ../src/ui/theme-parser.c:1354 ../src/ui/theme-parser.c:1368
+#: ../src/ui/theme-parser.c:1413
 msgid ""
 "Cannot specify both \"button_width\"/\"button_height\" and \"aspect_ratio\" "
 "for buttons"
@@ -1911,146 +1242,146 @@ msgstr ""
 "ไม่สามารถกำหนดทั้ง \"button_width\"/\"button_height\" กับ \"aspect_ratio\" "
 "ของปุ่มพร้อมกันได้"
 
-#: ../src/ui/theme-parser.c:1366
+#: ../src/ui/theme-parser.c:1377
 #, c-format
 msgid "Distance \"%s\" is unknown"
 msgstr "ไม่รู้จักระยะทาง \"%s\""
 
-#: ../src/ui/theme-parser.c:1411
+#: ../src/ui/theme-parser.c:1422
 #, c-format
 msgid "Aspect ratio \"%s\" is unknown"
 msgstr "ไม่รู้จัก aspect ratio \"%s\""
 
-#: ../src/ui/theme-parser.c:1473
+#: ../src/ui/theme-parser.c:1484
 #, c-format
 msgid "Border \"%s\" is unknown"
 msgstr "ไม่รู้จักเส้นขอบ \"%s\""
 
-#: ../src/ui/theme-parser.c:1784
+#: ../src/ui/theme-parser.c:1795
 #, c-format
 msgid "No \"start_angle\" or \"from\" attribute on element <%s>"
 msgstr "ขาดแอตทริบิวต์ \"start_angle\" หรือ \"from\" ในอิลิเมนต์ <%s>"
 
-#: ../src/ui/theme-parser.c:1791
+#: ../src/ui/theme-parser.c:1802
 #, c-format
 msgid "No \"extent_angle\" or \"to\" attribute on element <%s>"
 msgstr "ขาดแอตทริบิวต์ \"extent_angle\" หรือ \"to\" ในอิลิเมนต์ <%s>"
 
-#: ../src/ui/theme-parser.c:2031
+#: ../src/ui/theme-parser.c:2042
 #, c-format
 msgid "Did not understand value \"%s\" for type of gradient"
 msgstr "ไม่เข้าใจค่า \"%s\" สำหรับชนิดของการไล่ระดับสี"
 
-#: ../src/ui/theme-parser.c:2109 ../src/ui/theme-parser.c:2484
+#: ../src/ui/theme-parser.c:2120 ../src/ui/theme-parser.c:2495
 #, c-format
 msgid "Did not understand fill type \"%s\" for <%s> element"
 msgstr "ไม่เข้าใจชนิดการเติม \"%s\" สำหรับอิลิเมนต์ <%s>"
 
-#: ../src/ui/theme-parser.c:2276 ../src/ui/theme-parser.c:2359
-#: ../src/ui/theme-parser.c:2422
+#: ../src/ui/theme-parser.c:2287 ../src/ui/theme-parser.c:2370
+#: ../src/ui/theme-parser.c:2433
 #, c-format
 msgid "Did not understand state \"%s\" for <%s> element"
 msgstr "ไม่เข้าใจค่า state \"%s\" สำหรับอิลิเมนต์ <%s>"
 
-#: ../src/ui/theme-parser.c:2286 ../src/ui/theme-parser.c:2369
+#: ../src/ui/theme-parser.c:2297 ../src/ui/theme-parser.c:2380
 #, c-format
 msgid "Did not understand shadow \"%s\" for <%s> element"
 msgstr "ไม่เข้าใจค่า shadow \"%s\" สำหรับอิลิเมนต์ <%s>"
 
-#: ../src/ui/theme-parser.c:2296
+#: ../src/ui/theme-parser.c:2307
 #, c-format
 msgid "Did not understand arrow \"%s\" for <%s> element"
 msgstr "ไม่เข้าใจค่า arrow \"%s\" สำหรับอิลิเมนต์ <%s>"
 
-#: ../src/ui/theme-parser.c:2596 ../src/ui/theme-parser.c:2692
+#: ../src/ui/theme-parser.c:2607 ../src/ui/theme-parser.c:2703
 #, c-format
 msgid "No <draw_ops> called \"%s\" has been defined"
 msgstr "ไม่มี <draw_ops> ที่ชื่อ \"%s\" กำหนดไว้"
 
-#: ../src/ui/theme-parser.c:2608 ../src/ui/theme-parser.c:2704
+#: ../src/ui/theme-parser.c:2619 ../src/ui/theme-parser.c:2715
 #, c-format
 msgid "Including draw_ops \"%s\" here would create a circular reference"
 msgstr "การรวม draw_ops \"%s\" ที่นี่จะทำให้เกิดการอ้างอิงแบบวนรอบ"
 
-#: ../src/ui/theme-parser.c:2819
+#: ../src/ui/theme-parser.c:2830
 #, c-format
 msgid "Unknown position \"%s\" for frame piece"
 msgstr "ไม่รู้จักค่า position \"%s\" สำหรับชิ้นส่วนเฟรม"
 
-#: ../src/ui/theme-parser.c:2827
+#: ../src/ui/theme-parser.c:2838
 #, c-format
 msgid "Frame style already has a piece at position %s"
 msgstr "มีรูปแบบเฟรมที่ตำแหน่ง %s อยู่ก่อนแล้ว"
 
-#: ../src/ui/theme-parser.c:2844 ../src/ui/theme-parser.c:2919
+#: ../src/ui/theme-parser.c:2855 ../src/ui/theme-parser.c:2930
 #, c-format
 msgid "No <draw_ops> with the name \"%s\" has been defined"
 msgstr "ยังไม่ได้กำหนด <draw_ops> ชื่อ \"%s\""
 
-#: ../src/ui/theme-parser.c:2873
+#: ../src/ui/theme-parser.c:2884
 #, c-format
 msgid "Unknown function \"%s\" for button"
 msgstr "ไม่รู้จักฟังก์ชัน \"%s\" สำหรับปุ่ม"
 
-#: ../src/ui/theme-parser.c:2882
+#: ../src/ui/theme-parser.c:2893
 #, c-format
 msgid "Button function \"%s\" does not exist in this version (%d, need %d)"
 msgstr "ไม่มีฟังก์ชันปุ่ม \"%s\" ในรุ่นนี้ (%d, ต้องเป็นรุ่น %d ขึ้นไป)"
 
-#: ../src/ui/theme-parser.c:2894
+#: ../src/ui/theme-parser.c:2905
 #, c-format
 msgid "Unknown state \"%s\" for button"
 msgstr "ไม่รู้สถานะ \"%s\" สำหรับปุ่ม"
 
-#: ../src/ui/theme-parser.c:2902
+#: ../src/ui/theme-parser.c:2913
 #, c-format
 msgid "Frame style already has a button for function %s state %s"
 msgstr "รูปแบบเฟรมมีปุ่มสำหรับฟังก์ชัน %s สถานะ %s อยู่ก่อนแล้ว"
 
-#: ../src/ui/theme-parser.c:2973
+#: ../src/ui/theme-parser.c:2984
 #, c-format
 msgid "\"%s\" is not a valid value for focus attribute"
 msgstr "\"%s\" ไม่ใช่ค่าที่ใช้ได้สำหรับแอตทริบิวต์ focus"
 
-#: ../src/ui/theme-parser.c:2982
+#: ../src/ui/theme-parser.c:2993
 #, c-format
 msgid "\"%s\" is not a valid value for state attribute"
 msgstr "\"%s\" ไม่ใช่ค่าที่ใช้ได้สำหรับแอตทริบิวต์ state"
 
-#: ../src/ui/theme-parser.c:2992
+#: ../src/ui/theme-parser.c:3003
 #, c-format
 msgid "A style called \"%s\" has not been defined"
 msgstr "ไม่มีรูปแบบที่ชื่อ \"%s\" กำหนดไว้"
 
-#: ../src/ui/theme-parser.c:3013 ../src/ui/theme-parser.c:3036
+#: ../src/ui/theme-parser.c:3024 ../src/ui/theme-parser.c:3047
 #, c-format
 msgid "\"%s\" is not a valid value for resize attribute"
 msgstr "\"%s\" ไม่ใช่ค่าที่ใช้ได้สำหรับแอตทริบิวต์ resize"
 
-#: ../src/ui/theme-parser.c:3047
+#: ../src/ui/theme-parser.c:3058
 #, c-format
 msgid ""
 "Should not have \"resize\" attribute on <%s> element for maximized/shaded "
 "states"
 msgstr "ไม่ควรมีแอตทริบิวต์ \"resize\" ในอิลิเมนต์ <%s> สำหรับสถานะขยายแผ่/ม้วนเก็บ"
 
-#: ../src/ui/theme-parser.c:3061
+#: ../src/ui/theme-parser.c:3072
 #, c-format
 msgid ""
 "Should not have \"resize\" attribute on <%s> element for maximized states"
 msgstr "ไม่ควรมีแอตทริบิวต์ \"resize\" ในอิลิเมนต์ <%s> สำหรับสถานะขยายแผ่"
 
-#: ../src/ui/theme-parser.c:3075 ../src/ui/theme-parser.c:3097
+#: ../src/ui/theme-parser.c:3086 ../src/ui/theme-parser.c:3108
 #, c-format
 msgid "Style has already been specified for state %s resize %s focus %s"
 msgstr "มีรูปแบบสำหรับ state %s resize %s focus %s กำหนดไว้ก่อนแล้ว"
 
-#: ../src/ui/theme-parser.c:3086 ../src/ui/theme-parser.c:3108
+#: ../src/ui/theme-parser.c:3097 ../src/ui/theme-parser.c:3119
 #, c-format
 msgid "Style has already been specified for state %s focus %s"
 msgstr "มีรูปแบบสำหรับ state %s focus %s กำหนดไว้ก่อนแล้ว"
 
-#: ../src/ui/theme-parser.c:3147
+#: ../src/ui/theme-parser.c:3158
 msgid ""
 "Can't have a two draw_ops for a <piece> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
@@ -2059,7 +1390,7 @@ msgstr ""
 "(ชุดตกแต่งอาจมีการกำหนดทั้งแอตทริบิวต์ draw_ops และอิลิเมนต์ <draw_ops> "
 "หรือไม่ก็กำหนดอิลิเมนต์ซ้อนกันสองตัว)"
 
-#: ../src/ui/theme-parser.c:3185
+#: ../src/ui/theme-parser.c:3196
 msgid ""
 "Can't have a two draw_ops for a <button> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
@@ -2068,7 +1399,7 @@ msgstr ""
 "(ชุดตกแต่งอาจมีการกำหนดทั้งแอตทริบิวต์ draw_ops และอิลิเมนต์ <draw_ops> "
 "หรือไม่ก็กำหนดอิลิเมนต์ซ้อนกันสองตัว)"
 
-#: ../src/ui/theme-parser.c:3223
+#: ../src/ui/theme-parser.c:3234
 msgid ""
 "Can't have a two draw_ops for a <menu_icon> element (theme specified a "
 "draw_ops attribute and also a <draw_ops> element, or specified two elements)"
@@ -2077,208 +1408,216 @@ msgstr ""
 "(ชุดตกแต่งอาจมีการกำหนดทั้งแอตทริบิวต์ draw_ops และอิลิเมนต์ <draw_ops> "
 "หรือไม่ก็กำหนดอิลิเมนต์ซ้อนกันสองตัว)"
 
-#: ../src/ui/theme-parser.c:3271
+#: ../src/ui/theme-parser.c:3282
 #, c-format
 msgid "Outermost element in theme must be <metacity_theme> not <%s>"
 msgstr "อิลิเมนต์ชั้นนอกสุดของชุดตกแต่งต้องเป็น <metacity_theme> ไม่ใช่ <%s>"
 
-#: ../src/ui/theme-parser.c:3291
+#: ../src/ui/theme-parser.c:3302
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a name/author/date/description element"
 msgstr "ไม่อนุญาตให้มีอิลิเมนต์ <%s> ภายในอิลิเมนต์ name/author/date/description"
 
-#: ../src/ui/theme-parser.c:3296
+#: ../src/ui/theme-parser.c:3307
 #, c-format
 msgid "Element <%s> is not allowed inside a <constant> element"
 msgstr "ไม่อนุญาตให้มีอิลิเมนต์ <%s> ภายในอิลิเมนต์ <constant>"
 
-#: ../src/ui/theme-parser.c:3308
+#: ../src/ui/theme-parser.c:3319
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a distance/border/aspect_ratio element"
 msgstr "ไม่อนุญาตให้มีอิลิเมนต์ <%s> ภายในอิลิเมนต์ distance/border/aspect_ratio"
 
-#: ../src/ui/theme-parser.c:3330
+#: ../src/ui/theme-parser.c:3341
 #, c-format
 msgid "Element <%s> is not allowed inside a draw operation element"
 msgstr "ไม่อนุญาตให้มีอิลิเมนต์ <%s> ภายในอิลิเมนต์เกี่ยวกับคำสั่งวาด"
 
-#: ../src/ui/theme-parser.c:3340 ../src/ui/theme-parser.c:3370
-#: ../src/ui/theme-parser.c:3375 ../src/ui/theme-parser.c:3380
+#: ../src/ui/theme-parser.c:3351 ../src/ui/theme-parser.c:3381
+#: ../src/ui/theme-parser.c:3386 ../src/ui/theme-parser.c:3391
 #, c-format
 msgid "Element <%s> is not allowed inside a <%s> element"
 msgstr "ไม่อนุญาตให้มีอิลิเมนต์ <%s> ภายในอิลิเมนต์ <%s>"
 
-#: ../src/ui/theme-parser.c:3602
+#: ../src/ui/theme-parser.c:3613
 msgid "No draw_ops provided for frame piece"
 msgstr "ขาด draw_ops สำหรับชิ้นส่วนเฟรม"
 
-#: ../src/ui/theme-parser.c:3617
+#: ../src/ui/theme-parser.c:3628
 msgid "No draw_ops provided for button"
 msgstr "ขาด draw_ops สำหรับปุ่ม"
 
-#: ../src/ui/theme-parser.c:3669
+#: ../src/ui/theme-parser.c:3680
 #, c-format
 msgid "No text is allowed inside element <%s>"
 msgstr "ไม่อนุญาตให้มีข้อความภายในอิลิเมนต์ <%s>"
 
-#: ../src/ui/theme-parser.c:3724 ../src/ui/theme-parser.c:3736
-#: ../src/ui/theme-parser.c:3748 ../src/ui/theme-parser.c:3760
-#: ../src/ui/theme-parser.c:3772
+#: ../src/ui/theme-parser.c:3735 ../src/ui/theme-parser.c:3747
+#: ../src/ui/theme-parser.c:3759 ../src/ui/theme-parser.c:3771
+#: ../src/ui/theme-parser.c:3783
 #, c-format
 msgid "<%s> specified twice for this theme"
 msgstr "<%s> ถูกระบุซ้ำในชุดตกแต่งนี้"
 
-#: ../src/ui/theme-parser.c:4040
+#: ../src/ui/theme-parser.c:4051
 #, c-format
 msgid "Failed to find a valid file for theme %s\n"
 msgstr "หาแฟ้มที่ใช้การได้สำหรับชุดตกแต่ง %s ไม่พบ\n"
 
-#: ../src/ui/theme-parser.c:4096
+#: ../src/ui/theme-parser.c:4107
 #, c-format
 msgid "Theme file %s did not contain a root <metacity_theme> element"
 msgstr "แฟ้มชุดตกแต่ง %s ไม่มีอิลิเมนต์ราก <metacity_theme>"
 
-#: ../src/ui/theme-viewer.c:75
-msgid "/_Windows"
+#: ../src/ui/theme-viewer.c:99
+msgid "_Windows"
 msgstr "_หน้าต่าง"
 
-#: ../src/ui/theme-viewer.c:76
-msgid "/Windows/tearoff"
-msgstr "/หน้าต่าง/ฉีกออก"
+#: ../src/ui/theme-viewer.c:100
+msgid "_Dialog"
+msgstr "_กล่องโต้ตอบ"
 
-#: ../src/ui/theme-viewer.c:77
-msgid "/Windows/_Dialog"
-msgstr "/หน้าต่าง/โ_ต้ตอบ"
+#: ../src/ui/theme-viewer.c:101
+msgid "_Modal dialog"
+msgstr "กล่องโต้ตอบแบบโ_มดัล"
 
-#: ../src/ui/theme-viewer.c:78
-msgid "/Windows/_Modal dialog"
-msgstr "/หน้าต่าง/โต้ตอบแบบโ_มดอล"
+#: ../src/ui/theme-viewer.c:102
+msgid "_Utility"
+msgstr "_อรรถประโยชน์"
 
-#: ../src/ui/theme-viewer.c:79
-msgid "/Windows/_Utility"
-msgstr "/หน้าต่าง/_อรรถประโยชน์"
+#: ../src/ui/theme-viewer.c:103
+msgid "_Splashscreen"
+msgstr "_ภาพเริ่มโปรแกรม"
 
-#: ../src/ui/theme-viewer.c:80
-msgid "/Windows/_Splashscreen"
-msgstr "/หน้าต่าง/_ภาพเริ่มโปรแกรม"
+#: ../src/ui/theme-viewer.c:104
+msgid "_Top dock"
+msgstr "Dock ด้าน_บน"
 
-#: ../src/ui/theme-viewer.c:81
-msgid "/Windows/_Top dock"
-msgstr "/หน้าต่าง/ท่าเทียบ_บน"
+#: ../src/ui/theme-viewer.c:105
+msgid "_Bottom dock"
+msgstr "Dock ด้าน_ล่าง"
 
-#: ../src/ui/theme-viewer.c:82
-msgid "/Windows/_Bottom dock"
-msgstr "/หน้าต่าง/ท่าเทียบ_ล่าง"
+#: ../src/ui/theme-viewer.c:106
+msgid "_Left dock"
+msgstr "Dock ด้านซ้_าย"
 
-#: ../src/ui/theme-viewer.c:83
-msgid "/Windows/_Left dock"
-msgstr "/หน้าต่าง/ท่าเทียบซ้_าย"
+#: ../src/ui/theme-viewer.c:107
+msgid "_Right dock"
+msgstr "Dock ด้านข_วา"
 
-#: ../src/ui/theme-viewer.c:84
-msgid "/Windows/_Right dock"
-msgstr "/หน้าต่าง/ท่าเทียบข_วา"
+#: ../src/ui/theme-viewer.c:108
+msgid "_All docks"
+msgstr "Dock _ทั้งหมด"
 
-#: ../src/ui/theme-viewer.c:85
-msgid "/Windows/_All docks"
-msgstr "/หน้าต่าง/ท่าเทียบ_ทั้งหมด"
+#: ../src/ui/theme-viewer.c:109
+msgid "Des_ktop"
+msgstr "_พื้นโต๊ะ"
 
-#: ../src/ui/theme-viewer.c:86
-msgid "/Windows/Des_ktop"
-msgstr "/หน้าต่าง/_พื้นโต๊ะ"
+#: ../src/ui/theme-viewer.c:115
+msgid "Open another one of these windows"
+msgstr "เปิดหน้าต่างอย่างนี้อีกบาน"
 
-#: ../src/ui/theme-viewer.c:244
+#: ../src/ui/theme-viewer.c:117
+msgid "This is a demo button with an 'open' icon"
+msgstr "นี่เป็นปุ่มตัวอย่างพร้อมกับไอคอน 'เปิด'"
+
+#: ../src/ui/theme-viewer.c:119
+msgid "This is a demo button with a 'quit' icon"
+msgstr "นี่เป็นปุ่มตัวอย่างพร้อมกับไอคอน 'ออก'"
+
+#: ../src/ui/theme-viewer.c:253
 msgid "This is a sample message in a sample dialog"
 msgstr "นี่เป็นข้อความตัวอย่างในกล่องโต้ตอบตัวอย่าง"
 
-#: ../src/ui/theme-viewer.c:327
+#: ../src/ui/theme-viewer.c:336
 #, c-format
 msgid "Fake menu item %d\n"
 msgstr "รายการเมนูตัวอย่าง %d\n"
 
-#: ../src/ui/theme-viewer.c:361
+#: ../src/ui/theme-viewer.c:370
 msgid "Border-only window"
 msgstr "หน้าต่างที่มีแต่ขอบ"
 
-#: ../src/ui/theme-viewer.c:363
+#: ../src/ui/theme-viewer.c:372
 msgid "Bar"
 msgstr "แถบ"
 
-#: ../src/ui/theme-viewer.c:380
+#: ../src/ui/theme-viewer.c:389
 msgid "Normal Application Window"
 msgstr "หน้าต่างโปรแกรมปกติ"
 
-#: ../src/ui/theme-viewer.c:384
+#: ../src/ui/theme-viewer.c:393
 msgid "Dialog Box"
 msgstr "กล่องโต้ตอบ"
 
-#: ../src/ui/theme-viewer.c:388
+#: ../src/ui/theme-viewer.c:397
 msgid "Modal Dialog Box"
 msgstr "กล่องโต้ตอบแบบโมดัล"
 
-#: ../src/ui/theme-viewer.c:392
+#: ../src/ui/theme-viewer.c:401
 msgid "Utility Palette"
 msgstr "แผงอุปกรณ์"
 
-#: ../src/ui/theme-viewer.c:396
+#: ../src/ui/theme-viewer.c:405
 msgid "Torn-off Menu"
 msgstr "เมนูที่ฉีกออกมา"
 
-#: ../src/ui/theme-viewer.c:400
+#: ../src/ui/theme-viewer.c:409
 msgid "Border"
 msgstr "ขอบ"
 
-#: ../src/ui/theme-viewer.c:728
+#: ../src/ui/theme-viewer.c:737
 #, c-format
 msgid "Button layout test %d"
 msgstr "ทดสอบการเรียงปุ่มครั้งที่ %d"
 
-#: ../src/ui/theme-viewer.c:757
+#: ../src/ui/theme-viewer.c:766
 #, c-format
 msgid "%g milliseconds to draw one window frame"
 msgstr "ใช้เวลา %g มิลลิวินาทีในการวาดหนึ่งเฟรมหน้าต่าง"
 
-#: ../src/ui/theme-viewer.c:800
+#: ../src/ui/theme-viewer.c:810
 #, c-format
 msgid "Usage: metacity-theme-viewer [THEMENAME]\n"
 msgstr "วิธีใช้: metacity-theme-viewer [ชื่อชุดตกแต่ง]\n"
 
-#: ../src/ui/theme-viewer.c:807
+#: ../src/ui/theme-viewer.c:817
 #, c-format
 msgid "Error loading theme: %s\n"
 msgstr "ไม่สามารถโหลดชุดตกแต่ง: %s\n"
 
-#: ../src/ui/theme-viewer.c:813
+#: ../src/ui/theme-viewer.c:823
 #, c-format
 msgid "Loaded theme \"%s\" in %g seconds\n"
 msgstr "อ่านชุดตกแต่ง \"%s\" เสร็จใน %g วินาที\n"
 
-#: ../src/ui/theme-viewer.c:854
+#: ../src/ui/theme-viewer.c:866
 msgid "Normal Title Font"
 msgstr "อักษรหัวหน้าต่างปกติ"
 
-#: ../src/ui/theme-viewer.c:860
+#: ../src/ui/theme-viewer.c:872
 msgid "Small Title Font"
 msgstr "อักษรหัวหน้าต่างเล็ก"
 
-#: ../src/ui/theme-viewer.c:866
+#: ../src/ui/theme-viewer.c:878
 msgid "Large Title Font"
 msgstr "อักษรหัวหน้าต่างใหญ่"
 
-#: ../src/ui/theme-viewer.c:871
+#: ../src/ui/theme-viewer.c:883
 msgid "Button Layouts"
 msgstr "การจัดเรียงปุ่ม"
 
-#: ../src/ui/theme-viewer.c:876
+#: ../src/ui/theme-viewer.c:888
 msgid "Benchmark"
 msgstr "ความเร็ว"
 
-#: ../src/ui/theme-viewer.c:923
+#: ../src/ui/theme-viewer.c:935
 msgid "Window Title Goes Here"
 msgstr "ชื่อหน้าต่างอยู่ตรงนี้"
 
-#: ../src/ui/theme-viewer.c:1027
+#: ../src/ui/theme-viewer.c:1039
 #, c-format
 msgid ""
 "Drew %d frames in %g client-side seconds (%g milliseconds per frame) and %g "
@@ -2288,45 +1627,538 @@ msgstr ""
 "วาด %d เฟรม โดยใช้เวลาที่ไคลเอนท์ทั้งหมด %g วินาที (%g มิลลิวินาทีต่อเฟรม) และ %g "
 "วินาทีตามเวลานาฬิกาจริงซึ่งรวมการติดต่อกับ X เซิร์ฟเวอร์ด้วย (%g มิลลิวินาทีต่อเฟรม)\n"
 
-#: ../src/ui/theme-viewer.c:1246
+#: ../src/ui/theme-viewer.c:1258
 msgid "position expression test returned TRUE but set error"
 msgstr "การทดสอบนิพจน์ตำแหน่งให้ค่าจริง แต่มีรหัสข้อผิดพลาด"
 
-#: ../src/ui/theme-viewer.c:1248
+#: ../src/ui/theme-viewer.c:1260
 msgid "position expression test returned FALSE but didn't set error"
 msgstr "การทดสอบนิพจน์ตำแหน่งให้ค่าเท็จ แต่ไม่มีรหัสข้อผิดพลาด"
 
-#: ../src/ui/theme-viewer.c:1252
+#: ../src/ui/theme-viewer.c:1264
 msgid "Error was expected but none given"
 msgstr "คาดหวังว่าจะเจอข้อผิดพลาด แต่ก็ไม่มีข้อมูล"
 
-#: ../src/ui/theme-viewer.c:1254
+#: ../src/ui/theme-viewer.c:1266
 #, c-format
 msgid "Error %d was expected but %d given"
 msgstr "คาดหวังว่าจะเจอข้อผิดพลาด %d แต่พบข้อผิดพลาด %d แทน"
 
-#: ../src/ui/theme-viewer.c:1260
+#: ../src/ui/theme-viewer.c:1272
 #, c-format
 msgid "Error not expected but one was returned: %s"
 msgstr "ไม่ได้คาดหวังว่าจะเจอข้อผิดพลาด แต่กลับมี: %s"
 
-#: ../src/ui/theme-viewer.c:1264
+#: ../src/ui/theme-viewer.c:1276
 #, c-format
 msgid "x value was %d, %d was expected"
 msgstr "ค่าของ x เป็น %d แต่ที่คาดหวังไว้น่าจะเป็น %d"
 
-#: ../src/ui/theme-viewer.c:1267
+#: ../src/ui/theme-viewer.c:1279
 #, c-format
 msgid "y value was %d, %d was expected"
 msgstr "ค่าของ y เป็น %d แต่ที่คาดหวังไว้น่าจะเป็น %d"
 
-#: ../src/ui/theme-viewer.c:1332
+#: ../src/ui/theme-viewer.c:1344
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr "แจงค่านิพจน์พิกัดทั้งหมด %d นิพจน์ ในเวลา %g วินาที (%g วินาทีโดยเฉลี่ย)\n"
 
-#~ msgid "Desktop"
-#~ msgstr "พื้นโต๊ะ"
+#~ msgid "Launchers"
+#~ msgstr "เรียกโปรแกรม"
+
+#~ msgid "Screenshots"
+#~ msgstr "จับภาพหน้าจอ"
+
+#~ msgid ""
+#~ "There was an error running <tt>%s</tt>:\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "เกิดข้อผิดพลาดขณะเรียก <tt>%s</tt>:\n"
+#~ "\n"
+#~ "%s"
+
+#~ msgid "No command %d has been defined.\n"
+#~ msgstr "คำสั่ง %d ยังไม่ได้ถูกกำหนด\n"
+
+#~ msgid "No terminal command has been defined.\n"
+#~ msgstr "คำสั่งเปิดเทอร์มินัลยังไม่ได้ถูกกำหนด\n"
+
+#~ msgid "GConf key '%s' is set to an invalid value\n"
+#~ msgstr "คีย์ GConf '%s' ถูกตั้งค่าเป็นค่าที่ใช้ไม่ได้\n"
+
+#~ msgid "%d stored in GConf key %s is out of range %d to %d\n"
+#~ msgstr "%d ในคีย์ GConf %s ต้องอยู่ระหว่าง %d และ %d\n"
+
+#~ msgid "GConf key \"%s\" is set to an invalid type\n"
+#~ msgstr "คีย์ GConf \"%s\" ถูกตั้งค่าเป็นชนิดที่ใช้ไม่ได้\n"
+
+#~ msgid "Error setting number of workspaces to %d: %s\n"
+#~ msgstr "ไม่สามารถตั้งจำนวนพื้นที่ทำงานเป็น %d: %s\n"
+
+#~ msgid "Error setting name for workspace %d to \"%s\": %s\n"
+#~ msgstr "ไม่สามารถตั้งชื่อพื้นที่ทำงาน %d เป็น %s: %s\n"
+
+#~ msgid "Error setting compositor status: %s\n"
+#~ msgstr "เกิดข้อผิดพลาดขณะกำหนดสถานะ compositor: %s\n"
+
+#~ msgid ""
+#~ "The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
+#~ "\n"
+#~ "The parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to "
+#~ "the special string \"disabled\", then there will be no keybinding for "
+#~ "this action."
+#~ msgstr ""
+#~ "รูปแบบจะอยู่ในรูป \"<Control>a\" หรือ \"<Shift><Alt>F1\"\n"
+#~ "\n"
+#~ "ตัวอ่านค่าคีย์ไม่สนใจว่าเป็นตัวพิมพ์ใหญ่หรือเล็ก และเข้าใจชื่อย่อ เช่น \"<Ctl>\" และ \"<Ctrl>"
+#~ "\" คุณสามารถตั้งค่าตัวเลือกเป็น \"disabled\" ได้ ถ้าไม่ต้องการปุ่มลัดสำหรับปฏิบัติการนี้"
+
+#~ msgid ""
+#~ "The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
+#~ "\n"
+#~ "The parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to "
+#~ "the special string \"disabled\", then there will be no keybinding for "
+#~ "this action.\n"
+#~ "\n"
+#~ "This keybinding may be reversed by holding down the \"shift\" key; "
+#~ "therefore, \"shift\" cannot be one of the keys it uses."
+#~ msgstr ""
+#~ "รูปแบบจะอยู่ในรูป \"<Control>a\" หรือ \"<Shift><Alt>F1\"\n"
+#~ "\n"
+#~ "ตัวอ่านค่าคีย์ไม่สนใจว่าเป็นตัวพิมพ์ใหญ่หรือเล็ก และเข้าใจชื่อย่อ เช่น \"<Ctl>\" และ \"<Ctrl>"
+#~ "\" คุณสามารถตั้งค่าตัวเลือกเป็น \"disabled\" ได้ ถ้าไม่ต้องการปุ่มลัดสำหรับปฏิบัติการนี้\n"
+#~ "\n"
+#~ "ปุ่มลัดนี้สามารถย้อนคืนได้ด้วยการกดปุ่ม \"shift\" ค้างไว้; ดังนั้น จึงไม่สามารถใช้ \"shift\" "
+#~ "ประกอบในปุ่มลัดที่ตั้งนี้ได้"
+
+#~ msgid "Reverse switch windows of an application"
+#~ msgstr "สลับหน้าต่างภายในโปรแกรมย้อนทาง"
+
+#~ msgid "Reverse switch applications"
+#~ msgstr "สลับโปรแกรมย้อนทาง"
+
+#~ msgid "Reverse switch system controls"
+#~ msgstr "สลับส่วนควบคุมระบบย้อนทาง"
+
+#~ msgid "Reverse switch windows of an app directly"
+#~ msgstr "สลับหน้าต่างภายในโปรแกรมโดยตรงย้อนทาง"
+
+#~ msgid "Reverse switch windows directly"
+#~ msgstr "สลับหน้าต่างโดยตรงย้อนทาง"
+
+#~ msgid "Reverse switch system controls directly"
+#~ msgstr "สลับส่วนควบคุมระบบโดยตรงย้อนทาง"
+
+#~ msgid "Take a screenshot"
+#~ msgstr "จับภาพหน้าจอ"
+
+#~ msgid "Take a screenshot of a window"
+#~ msgstr "จับภาพหน้าต่าง"
+
+#~ msgid "Launch Terminal"
+#~ msgstr "เปิดเทอร์มินัล"
+
+#~ msgid "Toggle window always appearing on top"
+#~ msgstr "สลับการค้างอยู่บนสุดของหน้าต่าง"
+
+#~ msgid "Move window to top left corner"
+#~ msgstr "ย้ายหน้าต่างไปที่มุมบนซ้ายของหน้าจอ"
+
+#~ msgid "Move window to top right corner"
+#~ msgstr "ย้ายหน้าต่างไปที่มุมบนขวาของหน้าจอ"
+
+#~ msgid "Move window to bottom left corner"
+#~ msgstr "ย้ายหน้าต่างไปที่มุมล่างซ้ายของหน้าจอ"
+
+#~ msgid "Move window to bottom right corner"
+#~ msgstr "ย้ายหน้าต่างไปที่มุมล่างขวาของหน้าจอ"
+
+#~ msgid "Move window to top edge of screen"
+#~ msgstr "ย้ายหน้าต่างไปที่ขอบบนของหน้าจอ"
+
+#~ msgid "Move window to bottom edge of screen"
+#~ msgstr "ย้ายหน้าต่างไปที่ขอบล่างของหน้าจอ"
+
+#~ msgid "Move window to right side of screen"
+#~ msgstr "ย้ายหน้าต่างไปที่ด้านขวาของหน้าจอ"
+
+#~ msgid "Move window to left side of screen"
+#~ msgstr "ย้ายหน้าต่างไปที่ด้านซ้ายของหน้าจอ"
+
+#~ msgid "Move window to center of screen"
+#~ msgstr "ย้ายหน้าต่างไปที่กลางหน้าจอ"
+
+#~ msgid ""
+#~ "(Not implemented) Navigation works in terms of applications not windows"
+#~ msgstr "(ยังใช้ไม่ได้) เคลื่อนย้ายระหว่างโปรแกรม แทนระหว่างหน้าต่าง"
+
+#~ msgid ""
+#~ "A font description string describing a font for window titlebars. The "
+#~ "size from the description will only be used if the titlebar_font_size "
+#~ "option is set to 0. Also, this option is disabled if the "
+#~ "titlebar_uses_desktop_font option is set to true."
+#~ msgstr ""
+#~ "คำบรรยายแบบอักษรสำหรับแถบหัวเรื่องของหน้าต่าง "
+#~ "ขนาดตัวอักษรในคำบรรยายนี้จะมีผลก็ต่อเมื่อตัวเลือก titlebar_font_size มีค่าเป็น 0 "
+#~ "นอกจากนี้ ค่าตัวเลือกนี้จะไม่มีผลถ้าตัวเลือก titlebar_uses_desktop_font มีค่าเป็นจริง"
+
+#~ msgid "Action on title bar double-click"
+#~ msgstr "การกระทำเมื่อดับเบิลคลิกที่แถบหัวหน้าต่าง"
+
+#~ msgid "Action on title bar middle-click"
+#~ msgstr "การกระทำเมื่อคลิกเมาส์ปุ่มกลางที่แถบหัวหน้าต่าง"
+
+#~ msgid "Action on title bar right-click"
+#~ msgstr "การกระทำเมื่อคลิกเมาส์ปุ่มขวาที่แถบหัวหน้าต่าง"
+
+#~ msgid "Arrangement of buttons on the titlebar"
+#~ msgstr "การจัดเรียงปุ่มบนแถบหัวหน้าต่าง"
+
+#~ msgid ""
+#~ "Arrangement of buttons on the titlebar. The value should be a string, "
+#~ "such as \"menu:minimize,maximize,spacer,close\"; the colon separates the "
+#~ "left corner of the window from the right corner, and the button names are "
+#~ "comma-separated. Duplicate buttons are not allowed. Unknown button names "
+#~ "are silently ignored so that buttons can be added in future metacity "
+#~ "versions without breaking older versions. A special spacer tag can be "
+#~ "used to insert some space between two adjacent buttons."
+#~ msgstr ""
+#~ "การจัดเรียงปุ่มบนแถบหัวหน้าต่าง ค่าของคีย์ควรเป็นข้อความ ตัวอย่างเช่น \"menu:minimize,"
+#~ "maximize,spacer,close\" โดย colon จะแบ่งมุมซ้ายกับมุมขวาของหน้าต่างออกจากกัน "
+#~ "และปุ่มต่างๆ จะคั่นด้วยจุลภาค ห้ามใช้ปุ่มซ้ำกัน ปุ่มที่ไม่รู้จักจะถูกข้ามไป "
+#~ "เพื่อรองรับการเพิ่มปุ่มใหม่ในอนาคตได้โดยไม่ขัดกับ metacity รุ่นเก่า คุณสามารถใช้แท็กพิเศษ "
+#~ "\"spacer\" ในการแทรกช่องว่างระหว่างปุ่มที่อยู่ติดกันได้"
+
+#~ msgid "Automatically raises the focused window"
+#~ msgstr "ยกหน้าต่างที่ถูกโฟกัสขึ้นมาด้านหน้าโดยอัตโนมัติ"
+
+#~ msgid ""
+#~ "Clicking a window while holding down this modifier key will move the "
+#~ "window (left click), resize the window (middle click), or show the window "
+#~ "menu (right click). The middle and right click operations may be swapped "
+#~ "using the \"resize_with_right_button\" key. Modifier is expressed as "
+#~ "\"&lt;Alt&gt;\" or \"&lt;Super&gt;\" for example."
+#~ msgstr ""
+#~ "การคลิกเมาส์บนหน้าต่างพร้อมกับกดปุ่ม modifier นี้ค้างไว้จะเริ่มย้ายหน้าต่าง (ปุ่มซ้าย) "
+#~ "เปลี่ยนขนาดหน้าต่าง (ปุ่มกลาง) หรือแสดงเมนูหน้าต่าง (ปุ่มขวา) "
+#~ "การใช้ปุ่มกลางหรือขวาอาจสลับได้โดยใช้คีย์ \"resize_with_right_button\" "
+#~ "ตัวอย่างการระบุปุ่ม modifier เช่น \"&lt;Alt&gt;\" หรือ \"&lt;Super&gt;\""
+
+#~ msgid "Commands to run in response to keybindings"
+#~ msgstr "คำสั่งที่จะกระทำเมื่อมีการกดปุ่มตาม keybinding ที่กำหนด"
+
+#~ msgid "Control how new windows get focus"
+#~ msgstr "ควบคุมการโฟกัสหน้าต่างใหม่"
+
+#~ msgid "Delay in milliseconds for the auto raise option"
+#~ msgstr "การหน่วงเวลาในหน่วยมิลลิวินาทีสำหรับการยกหน้าต่างมาด้านหน้าโดยอัตโนมัติ"
+
+#~ msgid ""
+#~ "Determines whether applications or the system can generate audible "
+#~ "'beeps'; may be used in conjunction with 'visual bell' to allow silent "
+#~ "'beeps'."
+#~ msgstr ""
+#~ "ระบุว่าจะให้โปรแกรมหรือระบบส่งเสียง 'บี๊ป' หรือไม่ สามารถใช้ร่วมกับ 'ระฆังภาพ' เพื่อใช้ "
+#~ "'บี๊ป' แบบเงียบได้"
+
+#~ msgid "Disable misfeatures that are required by old or broken applications"
+#~ msgstr "ปิดคุณสมบัติแก้ขัดที่แก้ปัญหาให้กับโปรแกรมประยุกต์ที่เก่าหรือไม่ทำงาน"
+
+#~ msgid "Enable Visual Bell"
+#~ msgstr "ใช้ระฆังภาพ"
+
+#~ msgid ""
+#~ "If set to true, and the focus mode is either \"sloppy\" or \"mouse\" then "
+#~ "the focused window will be automatically raised after a delay specified "
+#~ "by the auto_raise_delay key. This is not related to clicking on a window "
+#~ "to raise it, nor to entering a window during drag-and-drop."
+#~ msgstr ""
+#~ "ถ้ามีค่าเป็นจริง และโหมดโฟกัสเป็น \"sloppy\" หรือ \"mouse\" อย่างใดอย่างหนึ่งแล้ว "
+#~ "จะยกหน้าต่างที่ได้โฟกัสขึ้นมาโดยอัตโนมัติ หลังจากหน่วงเวลาเป็นระยะเวลาตามที่ระบุในคีย์ "
+#~ "auto_raise_delay  การยกหน้าต่างดังกล่าว ไม่เกี่ยวกับการคลิกบนหน้าต่างเพื่อยกหน้าต่างขึ้น "
+#~ "หรือการเลื่อนเมาส์เข้าสู่หน้าต่างระหว่างการลากวางแต่อย่างใด"
+
+#~ msgid ""
+#~ "If true, ignore the titlebar_font option, and use the standard "
+#~ "application font for window titles."
+#~ msgstr ""
+#~ "ถ้าเป็นจริง จะละเว้นตัวเลือก titlebar_font และใช้แบบอักษรมาตรฐาน "
+#~ "สำหรับแถบหัวเรื่องของหน้าต่าง"
+
+#~ msgid ""
+#~ "If true, then Metacity works in terms of applications rather than "
+#~ "windows. The concept is a bit abstract, but in general an application-"
+#~ "based setup is more like the Mac and less like Windows. When you focus a "
+#~ "window in application-based mode, all the windows in the application will "
+#~ "be raised. Also, in application-based mode, focus clicks are not passed "
+#~ "through to windows in other applications. Application-based mode is, "
+#~ "however, largely unimplemented at the moment."
+#~ msgstr ""
+#~ "ถ้าเป็นจริง Metacity จะทำงานในหน่วยของโปรแกรมประยุกต์แทนหน่วยของหน้าต่าง "
+#~ "แนวคิดนี้ค่อนข้างเป็นนามธรรม แต่โดยทั่วไปการตั้งค่าแบบนี้จะคล้าย Mac และต่างจากวินโดวส์ "
+#~ "เมื่อคุณโฟกัสหน้าต่างหนึ่งในโหมดโปรแกรมประยุกต์ "
+#~ "หน้าต่างทั้งหมดในโปรแกรมประยุกต์เดียวกันจะถูกยกขึ้นพร้อมกัน นอกจากนี้ "
+#~ "ในโหมดโปรแกรมประยุกต์นี้ "
+#~ "การคลิกเพื่อโฟกัสจะไม่ถูกส่งผ่านไปยังหน้าต่างของโปรแกรมประยุกต์อื่นด้วย อย่างไรก็ดี "
+#~ "โหมดโปรแกรมประยุกต์ยังใช้การไม่ได้ในขณะนี้"
+
+#~ msgid "Modifier to use for modified window click actions"
+#~ msgstr "ปุ่ม modifier เพื่อเปลี่ยนพฤติกรรมการคลิกหน้าต่าง"
+
+#~ msgid "Name of workspace"
+#~ msgstr "ชื่อของพื้นที่ทำงาน"
+
+#~ msgid "Number of workspaces"
+#~ msgstr "จำนวนพื้นที่ทำงาน"
+
+#~ msgid ""
+#~ "Number of workspaces. Must be more than zero, and has a fixed maximum to "
+#~ "prevent making the desktop unusable by accidentally asking for too many "
+#~ "workspaces."
+#~ msgstr ""
+#~ "จำนวนพื้นที่ทำงาน ต้องมากกว่าศูนย์ และมีขีดจำกัดตายตัวอยู่ "
+#~ "เพื่อป้องกันการทำให้เดสก์ท็อปใช้การไม่ได้ด้วยการร้องขอพื้นที่ทำงานมากเกินไปโดยไม่เจตนา"
+
+#~ msgid "Run a defined command"
+#~ msgstr "เรียกใช้คำสั่งที่กำหนดไว้"
+
+#~ msgid ""
+#~ "Set this to true to resize with the right button and show a menu with the "
+#~ "middle button while holding down the key given in \"mouse_button_modifier"
+#~ "\"; set it to false to make it work the opposite way around."
+#~ msgstr ""
+#~ "กำหนดค่านี้เป็นจริงหากต้องการให้ใช้เมาส์ปุ่มขวาปรับขนาดหน้าต่าง และใช้ปุ่มกลางเปิดเมนู "
+#~ "ในขณะที่กดปุ่มที่กำหนดใน \"mouse_button_modifier\" ค้างไว้; "
+#~ "กำหนดค่านี้เป็นเท็จถ้าต้องการให้ทำในทางกลับกัน"
+
+#~ msgid ""
+#~ "Setting this option to false can lead to buggy behavior, so users are "
+#~ "strongly discouraged from changing it from the default of true. Many "
+#~ "actions (e.g. clicking in the client area, moving or resizing the window) "
+#~ "normally raise the window as a side-effect. Setting this option to false, "
+#~ "which is strongly discouraged, will decouple raising from other user "
+#~ "actions, and ignore raise requests generated by applications. See http://"
+#~ "bugzilla.gnome.org/show_bug.cgi?id=445447#c6. Even when this option is "
+#~ "false, windows can still be raised by an alt-left-click anywhere on the "
+#~ "window, a normal click on the window decorations, or by special messages "
+#~ "from pagers, such as activation requests from tasklist applets. This "
+#~ "option is currently disabled in click-to-focus mode. Note that the list "
+#~ "of ways to raise windows when raise_on_click is false does not include "
+#~ "programmatic requests from applications to raise windows; such requests "
+#~ "will be ignored regardless of the reason for the request. If you are an "
+#~ "application developer and have a user complaining that your application "
+#~ "does not work with this setting disabled, tell them it is _their_ fault "
+#~ "for breaking their window manager and that they need to change this "
+#~ "option back to true or live with the \"bug\" they requested."
+#~ msgstr ""
+#~ "การกำหนดตัวเลือกนี้เป็นเท็จ อาจทำให้การทำงานผิดพลาด ดังนั้น "
+#~ "จึงไม่ขอแนะนำให้เปลี่ยนค่าจากค่าปกติที่เป็นค่าจริง โดยปกติ ปฏิบัติการหลายอย่าง (เช่น "
+#~ "การคลิกบนพื้นที่ภายในหน้าต่าง การย้ายหรือปรับขนาดหน้าต่าง) จะยกหน้าต่างขึ้นด้วย "
+#~ "ถ้ากำหนดตัวเลือกนี้เป็นเท็จ ซึ่งไม่ขอแนะนำเป็นอย่างยิ่ง จะไม่ยกหน้าต่างเมื่อมีปฏิสัมพันธ์กับผู้ใช้ "
+#~ "และจะไม่สนใจการร้องขอให้ยกหน้าต่างขึ้นจากโปรแกรมต่างๆ ดู http://bugzilla.gnome.org/"
+#~ "show_bug.cgi?id=445447#c6 แต่แม้ตัวเลือกนี้จะเป็นเท็จ ก็ยังสามารถยกหน้าต่างขึ้นได้โดย "
+#~ "alt-คลิกซ้าย ภายในพื้นที่หน้าต่าง หรือคลิกแบบธรรมดาที่กรอบหน้าต่าง "
+#~ "หรือโดยข้อความพิเศษจากโปรแกรมจัดหน้าพื้นโต๊ะ เช่น "
+#~ "การร้องขอกระตุ้นหน้าต่างจากแอพเพล็ตรายการงาน ขณะนี้ "
+#~ "ตัวเลือกนี้จะไม่มีผลถ้าอยู่ในโหมดโฟกัสด้วยการคลิก  สังเกตว่า วิธีการต่างๆ ที่จะยกหน้าต่างขึ้นเมื่อ "
+#~ "raise_on_click เป็นเท็จนี้ ไม่นับรวมการร้องขอจากโปรแกรมเพื่อขอยกหน้าต่างขึ้น "
+#~ "การร้องขอดังกล่าวจะถูกปฏิเสธไม่ว่ากรณีใดๆ ถ้าคุณเป็นนักพัฒนาโปรแกรม "
+#~ "และมีผู้ใช้บ่นว่าโปรแกรมของคุณทำงานผิดพลาดเมื่อปิดค่านี้ ก็บอกเขาได้เลย ว่าเป็นความผิด "
+#~ "_ของเขาเอง_ ที่ทำให้โปรแกรมจัดการหน้าต่างรวน และเขาต้องเปลี่ยนตัวเลือกนี้กลับเป็นค่าจริง "
+#~ "มิฉะนั้น ก็จะต้องอยู่กับ \"บั๊ก\" ที่เขาเรียกร้องต่อไป"
+
+#~ msgid ""
+#~ "Some applications disregard specifications in ways that result in window "
+#~ "manager misfeatures. This option puts Metacity in a rigorously correct "
+#~ "mode, which gives a more consistent user interface, provided one does not "
+#~ "need to run any misbehaving applications."
+#~ msgstr ""
+#~ "โปรแกรมบางตัวไม่สนใจข้อกำหนด โดยทำให้โปรแกรมจัดการหน้าต่างต้องทำงานแก้ขัด "
+#~ "ตัวเลือกนี้จะกำหนดให้ Metacity เข้าสู่โหมดการทำงานที่ถูกหลักเกณฑ์อย่างเข้มงวด "
+#~ "ซึ่งจะทำให้การติดต่อผู้ใช้คงเส้นคงวายิ่งขึ้น โดยถือว่าผู้ใช้ไม่จำเป็นต้องเรียกโปรแกรมใดๆ "
+#~ "ที่ประพฤติผิดหลักเกณฑ์"
+
+#~ msgid "System Bell is Audible"
+#~ msgstr "เปิดเล่นเสียงระฆังระบบ"
+
+#~ msgid ""
+#~ "Tells Metacity how to implement the visual indication that the system "
+#~ "bell or another application 'bell' indicator has been rung. Currently "
+#~ "there are two valid values, \"fullscreen\", which causes a fullscreen "
+#~ "white-black flash, and \"frame_flash\" which causes the titlebar of the "
+#~ "application which sent the bell signal to flash. If the application which "
+#~ "sent the bell is unknown (as is usually the case for the default \"system "
+#~ "beep\"), the currently focused window's titlebar is flashed."
+#~ msgstr ""
+#~ "บอก metacity "
+#~ "ว่าจะแสดงออกทางจอภาพอย่างไรเมื่อมีการสั่นระฆังของระบบหรือโปรแกรมประยุกต์ ค่าที่เป็นไปได้ "
+#~ "ณ ขณะนี้มีสองค่า คือ \"fullscreen\" ซึ่งจะวาบจอภาพทั้งจอ และ \"frame_flash\" "
+#~ "ซึ่งจะวาบแถบหัวหน้าต่างของโปรแกรมที่สั่นระฆัง หรือถ้าไม่ปรากฏโปรแกรมที่สั่นระฆัง "
+#~ "(ซึ่งเป็นปกติสำหรับ \"เสียงบี๊ปของระบบ\") ก็จะวาบแถบหัวหน้าต่างของโปรแกรมที่ได้โฟกัสอยู่"
+
+#~ msgid ""
+#~ "The /apps/metacity/global_keybindings/run_command_N keys define "
+#~ "keybindings that correspond to these commands. Pressing the keybinding "
+#~ "for run_command_N will execute command_N."
+#~ msgstr ""
+#~ "กำหนดคำสั่งที่จะเรียกจากการกดปุ่มลัดที่กำหนดในคีย์ /apps/metacity/global_keybindings/"
+#~ "run_command_N การกดปุ่มลัดใน run_command_N จะเรียกคำสั่ง command_N"
+
+#~ msgid ""
+#~ "The /apps/metacity/global_keybindings/run_command_screenshot key defines "
+#~ "a keybinding which causes the command specified by this setting to be "
+#~ "invoked."
+#~ msgstr ""
+#~ "กำหนดคำสั่งที่จะเรียกจากการกดปุ่มลัดที่กำหนดในคีย์ /apps/metacity/global_keybindings/"
+#~ "run_command_screenshot"
+
+#~ msgid ""
+#~ "The /apps/metacity/global_keybindings/run_command_window_screenshot key "
+#~ "defines a keybinding which causes the command specified by this setting "
+#~ "to be invoked."
+#~ msgstr ""
+#~ "กำหนดคำสั่งที่จะเรียกจากการกดปุ่มลัดที่กำหนดในคีย์ /apps/metacity/global_keybindings/"
+#~ "run_command_window_screenshot"
+
+#~ msgid ""
+#~ "The keybinding that runs the correspondingly-numbered command in /apps/"
+#~ "metacity/keybinding_commands The format looks like \"&lt;Control&gt;a\" "
+#~ "or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and "
+#~ "allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
+#~ "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
+#~ "\"disabled\", then there will be no keybinding for this action."
+#~ msgstr ""
+#~ "ปุ่มลัดสำหรับเรียกคำสั่งใน /apps/metacity/keybinding_commands  รูปแบบคือ \"&lt;"
+#~ "Control&gt;a\" หรือ \"&lt;Shift&gt;&lt;Alt&gt;F1\"  "
+#~ "ตัวอ่านค่าคีย์ไม่สนใจว่าเป็นตัวพิมพ์ใหญ่หรือเล็ก และเข้าใจชื่อย่อ เช่น \"&lt;Ctl&gt;\" และ "
+#~ "\"&lt;Ctrl&gt;\"  คุณสามารถตั้งค่าตัวเลือกเป็น \"disabled\" ได้ "
+#~ "ถ้าไม่ต้องการปุ่มลัดสำหรับปฏิบัติการนี้"
+
+#~ msgid "The name of a workspace."
+#~ msgstr "ชื่อของพื้นที่ทำงาน"
+
+#~ msgid "The screenshot command"
+#~ msgstr "คำสั่งจับภาพหน้าจอ"
+
+#~ msgid ""
+#~ "The theme determines the appearance of window borders, titlebar, and so "
+#~ "forth."
+#~ msgstr "ชุดตกแต่งนี้จะกำหนดลักษณะขอบหน้าต่าง หัวหน้าต่าง ฯลฯ"
+
+#~ msgid ""
+#~ "The time delay before raising a window if auto_raise is set to true. The "
+#~ "delay is given in thousandths of a second."
+#~ msgstr ""
+#~ "ระยะเวลารอก่อนยกหน้าต่างขึ้นมาด้านหน้า ใช้ถ้า auto_raise ถูกตั้ง ระบุเวลาเป็นมิลลิวินาที"
+
+#~ msgid ""
+#~ "The window focus mode indicates how windows are activated. It has three "
+#~ "possible values; \"click\" means windows must be clicked in order to "
+#~ "focus them, \"sloppy\" means windows are focused when the mouse enters "
+#~ "the window, and \"mouse\" means windows are focused when the mouse enters "
+#~ "the window and unfocused when the mouse leaves the window."
+#~ msgstr ""
+#~ "โหมดโฟกัสหน้าต่างกำหนดวิธีการโฟกัสหน้าต่างเพื่อใช้งาน ค่าที่เป็นไปได้มีสามค่า คือ \"click\" "
+#~ "หมายถึงการโฟกัสหน้าต่างด้วยการคลิก, \"sloppy\" "
+#~ "หมายความว่าหน้าต่างจะได้โฟกัสก็ต่อเมื่อเมาส์เคลื่อนเข้าสู่หน้าต่าง, และ\"mouse\" "
+#~ "หมายความว่าหน้าต่างจะได้โฟกัสเมื่อเมาส์เคลื่อนเข้าสู่หน้าต่าง "
+#~ "และเสียโฟกัสเมื่อเมาส์เคลื่อนออกจากหน้าต่าง"
+
+#~ msgid "The window screenshot command"
+#~ msgstr "คำสั่งจับภาพหน้าต่าง"
+
+#~ msgid ""
+#~ "This option determines the effects of double-clicking on the title bar. "
+#~ "Current valid options are 'toggle_shade', which will shade/unshade the "
+#~ "window, 'toggle_maximize' which will maximize/unmaximize the window, "
+#~ "'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which "
+#~ "will maximize/unmaximize the window in that direction only, 'minimize' "
+#~ "which will minimize the window, 'shade' which will roll the window up, "
+#~ "'menu' which will display the window menu, 'lower' which will put the "
+#~ "window behind all the others, and 'none' which will not do anything."
+#~ msgstr ""
+#~ "ตัวเลือกนี้เลือกการปฏิบัติเมื่อดับเบิลคลิกที่แถบหัวหน้าต่าง ค่าตัวเลือกที่เป็นไปได้ในขณะนี้คือ "
+#~ "'toggle_shade' ซึ่งจะม้วนหรือคลี่หน้าต่าง, 'toggle_maximize' "
+#~ "ซึ่งจะขยายแผ่หรือยกเลิกการขยายแผ่หน้าต่างให้เต็มพื้นโต๊ะ, "
+#~ "'toggle_maximize_horizontally' และ 'toggle_maximize_vertically' "
+#~ "ซึ่งจะขยายแผ่หรือยกเลิกการขยายแผ่หน้าต่างในทิศทางที่กำหนดเท่านั้น, 'minimize' "
+#~ "ซึ่งจะย่อเก็บหน้าต่าง, 'shade' ซึ่งจะม้วนเก็บหน้าต่าง, 'menu' ซึ่งจะแสดงเมนูหน้าต่าง, "
+#~ "'lower' ซึ่งจะนำหน้าต่างลงไปอยู่หลังหน้าต่างอื่นทั้งหมด, และ 'none' ซึ่งจะไม่ทำอะไรเลย"
+
+#~ msgid ""
+#~ "This option determines the effects of middle-clicking on the title bar. "
+#~ "Current valid options are 'toggle_shade', which will shade/unshade the "
+#~ "window, 'toggle_maximize' which will maximize/unmaximize the window, "
+#~ "'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which "
+#~ "will maximize/unmaximize the window in that direction only, 'minimize' "
+#~ "which will minimize the window, 'shade' which will roll the window up, "
+#~ "'menu' which will display the window menu, 'lower' which will put the "
+#~ "window behind all the others, and 'none' which will not do anything."
+#~ msgstr ""
+#~ "ตัวเลือกนี้เลือกการปฏิบัติเมื่อคลิกเมาส์ปุ่มกลางที่แถบหัวหน้าต่าง ค่าตัวเลือกที่เป็นไปได้ในขณะนี้คือ "
+#~ "'toggle_shade' ซึ่งจะม้วนหรือคลี่หน้าต่าง, 'toggle_maximize' "
+#~ "ซึ่งจะขยายแผ่หรือยกเลิกการขยายแผ่หน้าต่างให้เต็มพื้นโต๊ะ, "
+#~ "'toggle_maximize_horizontally' และ 'toggle_maximize_vertically' "
+#~ "ซึ่งจะขยายแผ่หรือยกเลิกการขยายแผ่หน้าต่างในทิศทางที่กำหนดเท่านั้น, 'minimize' "
+#~ "ซึ่งจะย่อเก็บหน้าต่าง, 'shade' ซึ่งจะม้วนเก็บหน้าต่าง, 'menu' ซึ่งจะแสดงเมนูหน้าต่าง, "
+#~ "'lower' ซึ่งจะนำหน้าต่างลงไปอยู่หลังหน้าต่างอื่นทั้งหมด, และ 'none' ซึ่งจะไม่ทำอะไรเลย"
+
+#~ msgid ""
+#~ "This option determines the effects of right-clicking on the title bar. "
+#~ "Current valid options are 'toggle_shade', which will shade/unshade the "
+#~ "window, 'toggle_maximize' which will maximize/unmaximize the window, "
+#~ "'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which "
+#~ "will maximize/unmaximize the window in that direction only, 'minimize' "
+#~ "which will minimize the window, 'shade' which will roll the window up, "
+#~ "'menu' which will display the window menu, 'lower' which will put the "
+#~ "window behind all the others, and 'none' which will not do anything."
+#~ msgstr ""
+#~ "ตัวเลือกนี้เลือกการปฏิบัติเมื่อคลิกเมาส์ปุ่มขวาที่แถบหัวหน้าต่าง ค่าตัวเลือกที่เป็นไปได้ในขณะนี้คือ "
+#~ "'toggle_shade' ซึ่งจะม้วนหรือคลี่หน้าต่าง, 'toggle_maximize' "
+#~ "ซึ่งจะขยายแผ่หรือยกเลิกการขยายแผ่หน้าต่างให้เต็มพื้นโต๊ะ, "
+#~ "'toggle_maximize_horizontally' และ 'toggle_maximize_vertically' "
+#~ "ซึ่งจะขยายแผ่หรือยกเลิกการขยายแผ่หน้าต่างในทิศทางที่กำหนดเท่านั้น, 'minimize' "
+#~ "ซึ่งจะย่อเก็บหน้าต่าง, 'shade' ซึ่งจะม้วนเก็บหน้าต่าง, 'menu' ซึ่งจะแสดงเมนูหน้าต่าง, "
+#~ "'lower' ซึ่งจะนำหน้าต่างลงไปอยู่หลังหน้าต่างอื่นทั้งหมด, และ 'none' ซึ่งจะไม่ทำอะไรเลย"
+
+#~ msgid ""
+#~ "This option provides additional control over how newly created windows "
+#~ "get focus. It has two possible values; \"smart\" applies the user's "
+#~ "normal focus mode, and \"strict\" results in windows started from a "
+#~ "terminal not being given focus."
+#~ msgstr ""
+#~ "ตัวเลือกนี้เพิ่มการควบคุมการโฟกัสหน้าต่างที่สร้างใหม่ ค่าที่เป็นไปได้มีสองค่า คือ \"smart\" "
+#~ "ซึ่งจะใช้วิธีโฟกัสตามปกติของผู้ใช้ และ \"strict\" ซึ่งจะไม่โฟกัสหน้าต่างที่เรียกจากเทอร์มินัล"
+
+#~ msgid ""
+#~ "Turns on a visual indication when an application or the system issues a "
+#~ "'bell' or 'beep'; useful for the hard-of-hearing and for use in noisy "
+#~ "environments."
+#~ msgstr ""
+#~ "เปิดใช้การส่งสัญญาณทางภาพเมื่อโปรแกรมหรือระบบสั่นระฆังหรือส่งเสียงบี๊ป "
+#~ "ซึ่งจะมีประโยชน์สำหรับผู้ที่มีปัญหาเรื่องการฟัง หรือใช้ในสภาวะที่จอแจ"
+
+#~ msgid "Use standard system font in window titles"
+#~ msgstr "ใช้แบบอักษรปกติของระบบสำหรับหัวหน้าต่าง"
+
+#~ msgid "Visual Bell Type"
+#~ msgstr "ชนิดของระฆังภาพ"
+
+#~ msgid "Whether raising should be a side-effect of other user interactions"
+#~ msgstr "กำหนดว่าควรยกหน้าต่างขึ้นเมื่อมีปฏิสัมพันธ์กับผู้ใช้หรือไม่"
+
+#~ msgid "Whether to resize with the right button"
+#~ msgstr "กำหนดว่าจะปรับขนาดด้วยปุ่มขวาหรือไม่"
+
+#~ msgid "Window focus mode"
+#~ msgstr "โหมดโฟกัสหน้าต่าง"
+
+#~ msgid "Window title font"
+#~ msgstr "แบบอักษรหัวหน้าต่าง"
 
 #~ msgid "Window Management"
 #~ msgstr "การจัดการหน้าต่าง"
@@ -2403,15 +2235,6 @@ msgstr "แจงค่านิพจน์พิกัดทั้งหมด
 #~ "\n"
 #~ "<i>คุณอาจเลือกที่จะรอสักครู่ เพื่อให้โปรแกรมทำงานต่อ หรือจะบังคับโปรแกรมออกทันทีเลยก็ได้</i>"
 
-#~ msgid "Open another one of these windows"
-#~ msgstr "เปิดหน้าต่างอย่างนี้อีกบาน"
-
-#~ msgid "This is a demo button with an 'open' icon"
-#~ msgstr "นี่เป็นปุ่มตัวอย่างพร้อมกับไอคอน 'เปิด'"
-
-#~ msgid "This is a demo button with a 'quit' icon"
-#~ msgstr "นี่เป็นปุ่มตัวอย่างพร้อมกับไอคอน 'ออก'"
-
 #~ msgid ""
 #~ "Error launching metacity-dialog to warn about apps that don't support "
 #~ "session management: %s\n"
@@ -2423,13 +2246,6 @@ msgstr "แจงค่านิพจน์พิกัดทั้งหมด
 
 #~ msgid "Class"
 #~ msgstr "คลาส"
-
-#~ msgid ""
-#~ "There was an error running \"%s\":\n"
-#~ "%s."
-#~ msgstr ""
-#~ "เกิดข้อผิดพลาดขณะใช้ \"%s\":\n"
-#~ "%s."
 
 #~ msgid "Failed to parse message \"%s\" from dialog process\n"
 #~ msgstr "ไม่เข้าใจข้อความ \"%s\" จากโพรเซสกล่องโต้ตอบ\n"
