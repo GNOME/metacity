@@ -1,3 +1,15 @@
+Version 2.34.13
+===============
+
+- Fix minimization problem of iconified windows (Florian Müllner, Daniel Drake)
+
+Translations:
+    Rūdolfs Mazurs (lv)
+    Rajesh Ranjan (hi)
+    Nguyễn Thái Ngọc Duy (vi)
+    Theppitak Karoonboonyanan (th)
+    Piotr Drąg (pl)
+
 Version 2.34.8
 ==============
  - Port themes documentation to yelp-tools (Florian Müllner)
