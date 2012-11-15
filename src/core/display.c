@@ -1028,8 +1028,8 @@ grab_op_is_mouse_only (MetaGrabOp op)
     }
 }
 
-static gboolean
-grab_op_is_mouse (MetaGrabOp op)
+gboolean
+meta_grab_op_is_mouse (MetaGrabOp op)
 {
   switch (op)
     {
@@ -1790,12 +1790,15 @@ event_callback (XEvent   *event,
       event->type == (display->xsync_event_base + XSyncAlarmNotify) &&
       ((XSyncAlarmNotifyEvent*)event)->alarm == display->grab_sync_request_alarm)
     {
-      filter_out_event = TRUE; /* GTK doesn't want to see this really */
+      XSyncValue value;
+      guint64 new_counter_value;
 
-      if (display->grab_op != META_GRAB_OP_NONE &&
-          display->grab_window != NULL &&
-          grab_op_is_mouse (display->grab_op))
-        meta_window_handle_mouse_grab_op_event (display->grab_window, event);
+      value = ((XSyncAlarmNotifyEvent *) event)->counter_value;
+      new_counter_value = XSyncValueLow32 (value) + ((gint64) XSyncValueHigh32 (value) << 32);
+
+      meta_window_update_sync_request_counter (display->grab_window, new_counter_value);
+
+      filter_out_event = TRUE; /* GTK doesn't want to see this really */
     }
 
   if (META_DISPLAY_HAS_SHAPE (display) &&
@@ -1875,7 +1878,7 @@ event_callback (XEvent   *event,
       break;
     case ButtonPress:
       if ((window &&
-           grab_op_is_mouse (display->grab_op) &&
+           meta_grab_op_is_mouse (display->grab_op) &&
            display->grab_button != (int) event->xbutton.button &&
            display->grab_window == window) ||
           grab_op_is_keyboard (display->grab_op))
@@ -2052,17 +2055,17 @@ event_callback (XEvent   *event,
       break;
     case ButtonRelease:
       if (display->grab_window == window &&
-          grab_op_is_mouse (display->grab_op))
+          meta_grab_op_is_mouse (display->grab_op))
         meta_window_handle_mouse_grab_op_event (window, event);
       break;
     case MotionNotify:
       if (display->grab_window == window &&
-          grab_op_is_mouse (display->grab_op))
+          meta_grab_op_is_mouse (display->grab_op))
         meta_window_handle_mouse_grab_op_event (window, event);
       break;
     case EnterNotify:
       if (display->grab_window == window &&
-          grab_op_is_mouse (display->grab_op))
+          meta_grab_op_is_mouse (display->grab_op))
         {
           meta_window_handle_mouse_grab_op_event (window, event);
           break;
@@ -2142,7 +2145,7 @@ event_callback (XEvent   *event,
       break;
     case LeaveNotify:
       if (display->grab_window == window &&
-          grab_op_is_mouse (display->grab_op))
+          meta_grab_op_is_mouse (display->grab_op))
         meta_window_handle_mouse_grab_op_event (window, event);
       else if (window != NULL)
         {
@@ -3516,7 +3519,7 @@ meta_display_begin_grab_op (MetaDisplay *display,
   MetaWindow *grab_window = NULL;
   Window grab_xwindow;
 
-  if (grab_op_is_mouse (op) && meta_grab_op_is_moving (op))
+  if (meta_grab_op_is_mouse (op) && meta_grab_op_is_moving (op))
     {
       meta_compositor_begin_move (display->compositor,
                                   window, &window->rect,
@@ -3910,7 +3913,7 @@ meta_display_end_grab_op (MetaDisplay *display,
     }
 
   if (display->grab_window &&
-      grab_op_is_mouse (display->grab_op) &&
+      meta_grab_op_is_mouse (display->grab_op) &&
       meta_grab_op_is_moving (display->grab_op))
     {
       meta_compositor_end_move (display->compositor, display->grab_window);

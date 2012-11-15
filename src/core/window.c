@@ -7894,10 +7894,12 @@ update_tile_mode (MetaWindow *window)
 }
 
 void
-meta_window_handle_mouse_grab_op_event (MetaWindow *window,
-                                        XEvent     *event)
+meta_window_update_sync_request_counter (MetaWindow *window,
+                                         guint64     new_counter_value)
 {
-  if (event->type == (window->display->xsync_event_base + XSyncAlarmNotify))
+  if (window->display->grab_op != META_GRAB_OP_NONE &&
+      window == window->display->grab_window &&
+      meta_grab_op_is_mouse (window->display->grab_op))
     {
       meta_topic (META_DEBUG_RESIZING,
                   "Alarm event received last motion x = %d y = %d\n",
@@ -7968,7 +7970,12 @@ meta_window_handle_mouse_grab_op_event (MetaWindow *window,
           break;
         }
     }
+}
 
+void
+meta_window_handle_mouse_grab_op_event (MetaWindow *window,
+                                        XEvent     *event)
+{
   switch (event->type)
     {
     case ButtonRelease:
