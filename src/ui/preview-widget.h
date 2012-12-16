@@ -39,6 +39,8 @@ struct _MetaPreview
 {
   GtkBin bin;
 
+  GtkStyleContext *style_context;
+
   MetaTheme *theme;
   char *title;
   MetaFrameType type;
