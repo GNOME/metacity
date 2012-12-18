@@ -258,8 +258,8 @@ struct _MetaButtonLayout
 };
 
 /* should investigate changing these to whatever most apps use */
-#define META_ICON_WIDTH 32
-#define META_ICON_HEIGHT 32
+#define META_ICON_WIDTH 96
+#define META_ICON_HEIGHT 96
 #define META_MINI_ICON_WIDTH 16
 #define META_MINI_ICON_HEIGHT 16
 
