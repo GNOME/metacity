@@ -6606,6 +6606,7 @@ recalc_window_type (MetaWindow *window)
 
   if (old_type != window->type)
     {
+      window->attached = meta_window_should_attach_to_parent (window);
       recalc_window_features (window);
 
       if (!window->override_redirect)
