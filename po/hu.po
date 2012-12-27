@@ -6,42 +6,200 @@
 # Gabor Sari <saga at externet dot hu>, 2003.
 # Laszlo Dvornik <dvornik at gnome dot hu>, 2004.
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011.
+# Balázs Úr <urbalazs at gmail dot com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity master\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-14 19:57+0100\n"
-"PO-Revision-Date: 2011-04-01 22:51+0200\n"
-"Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=metacity&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2012-05-06 19:46+0000\n"
+"PO-Revision-Date: 2012-12-27 20:43+0100\n"
+"Last-Translator: Balázs Úr <urbalazs at gmail dot com>\n"
 "Language-Team: Hungarian <gnome at fsf dot hu>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"Language: \n"
+"X-Generator: Lokalize 1.2\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-
-#: ../src/50-metacity-launchers.xml.in.h:1
-msgid "Launchers"
-msgstr "Parancsikonok"
 
 #: ../src/50-metacity-navigation.xml.in.h:1
 msgid "Navigation"
 msgstr "Navigáció"
 
-#: ../src/50-metacity-screenshot.xml.in.h:1
-msgid "Screenshots"
-msgstr "Képernyőképek"
+#: ../src/50-metacity-navigation.xml.in.h:2
+msgid "Move window to workspace 1"
+msgstr "Ablak áthelyezése az 1. munkaterületre"
+
+#: ../src/50-metacity-navigation.xml.in.h:3
+msgid "Move window to workspace 2"
+msgstr "Ablak áthelyezése a 2. munkaterületre"
+
+#: ../src/50-metacity-navigation.xml.in.h:4
+msgid "Move window to workspace 3"
+msgstr "Ablak áthelyezése a 3. munkaterületre"
+
+#: ../src/50-metacity-navigation.xml.in.h:5
+msgid "Move window to workspace 4"
+msgstr "Ablak áthelyezése a 4. munkaterületre"
+
+#: ../src/50-metacity-navigation.xml.in.h:6
+msgid "Move window one workspace to the left"
+msgstr "Ablak áthelyezése a balra lévő munkaterületre"
+
+#: ../src/50-metacity-navigation.xml.in.h:7
+msgid "Move window one workspace to the right"
+msgstr "Ablak áthelyezése a jobbra lévő munkaterületre"
+
+#: ../src/50-metacity-navigation.xml.in.h:8
+msgid "Move window one workspace up"
+msgstr "Ablak áthelyezése egy munkaterülettel feljebb"
+
+#: ../src/50-metacity-navigation.xml.in.h:9
+msgid "Move window one workspace down"
+msgstr "Ablak áthelyezése egy munkaterülettel lejjebb"
+
+#: ../src/50-metacity-navigation.xml.in.h:10
+msgid "Switch applications"
+msgstr "Váltás az alkalmazások között"
+
+#: ../src/50-metacity-navigation.xml.in.h:11
+msgid "Switch windows of an application"
+msgstr "Váltás egy alkalmazás ablakai között"
+
+#: ../src/50-metacity-navigation.xml.in.h:12
+msgid "Switch system controls"
+msgstr "Váltás a rendszer vezérlői közt"
+
+#: ../src/50-metacity-navigation.xml.in.h:13
+msgid "Switch windows directly"
+msgstr "Váltás az ablakok közt közvetlenül"
+
+#: ../src/50-metacity-navigation.xml.in.h:14
+msgid "Switch windows of an app directly"
+msgstr "Váltás egy alkalmazás ablakai között közvetlenül"
+
+#: ../src/50-metacity-navigation.xml.in.h:15
+msgid "Switch system controls directly"
+msgstr "Váltás a rendszer vezérlői közt közvetlenül"
+
+#: ../src/50-metacity-navigation.xml.in.h:16
+msgid "Hide all normal windows"
+msgstr "Minden normál ablak elrejtése"
+
+#: ../src/50-metacity-navigation.xml.in.h:17
+msgid "Switch to workspace 1"
+msgstr "Átváltás az 1. munkaterületre"
+
+#: ../src/50-metacity-navigation.xml.in.h:18
+msgid "Switch to workspace 2"
+msgstr "Átváltás a 2. munkaterületre"
+
+#: ../src/50-metacity-navigation.xml.in.h:19
+msgid "Switch to workspace 3"
+msgstr "Átváltás a 3. munkaterületre"
+
+#: ../src/50-metacity-navigation.xml.in.h:20
+msgid "Switch to workspace 4"
+msgstr "Átváltás a 4. munkaterületre"
+
+#: ../src/50-metacity-navigation.xml.in.h:21
+msgid "Move to workspace left"
+msgstr "Áthelyezés a bal oldali munkaterületre"
+
+#: ../src/50-metacity-navigation.xml.in.h:22
+msgid "Move to workspace right"
+msgstr "Áthelyezés a jobb oldali munkaterületre"
+
+#: ../src/50-metacity-navigation.xml.in.h:23
+msgid "Move to workspace above"
+msgstr "Áthelyezés a felső munkaterületre"
+
+#: ../src/50-metacity-navigation.xml.in.h:24
+msgid "Move to workspace below"
+msgstr "Áthelyezés az alsó munkaterületre"
 
 #: ../src/50-metacity-system.xml.in.h:1
 msgid "System"
 msgstr "Rendszer"
 
+#: ../src/50-metacity-system.xml.in.h:2
+msgid "Show the run command prompt"
+msgstr "A parancs futtatása ablak megjelenítése"
+
+#: ../src/50-metacity-system.xml.in.h:3
+msgid "Show the activities overview"
+msgstr "A tevékenységek áttekintés megjelenítése"
+
 #: ../src/50-metacity-windows.xml.in.h:1
 msgid "Windows"
 msgstr "Ablakok"
 
-#: ../src/core/bell.c:299
+#: ../src/50-metacity-windows.xml.in.h:2
+msgid "Activate the window menu"
+msgstr "Ablakmenü aktiválása"
+
+#: ../src/50-metacity-windows.xml.in.h:3
+msgid "Toggle fullscreen mode"
+msgstr "Teljes képernyős üzemmód"
+
+#: ../src/50-metacity-windows.xml.in.h:4
+msgid "Toggle maximization state"
+msgstr "Maximalizált állapot átváltása"
+
+#: ../src/50-metacity-windows.xml.in.h:5
+msgid "Maximize window"
+msgstr "Ablak maximalizálása"
+
+#: ../src/50-metacity-windows.xml.in.h:6
+msgid "Restore window"
+msgstr "Ablak visszaállítása"
+
+#: ../src/50-metacity-windows.xml.in.h:7
+msgid "Toggle shaded state"
+msgstr "Felgördített állapot átváltása"
+
+#: ../src/50-metacity-windows.xml.in.h:8
+msgid "Close window"
+msgstr "Ablak bezárása"
+
+#: ../src/50-metacity-windows.xml.in.h:9
+msgid "Minimize window"
+msgstr "Ablak minimalizálása"
+
+#: ../src/50-metacity-windows.xml.in.h:10
+msgid "Move window"
+msgstr "Ablak áthelyezése"
+
+#: ../src/50-metacity-windows.xml.in.h:11
+msgid "Resize window"
+msgstr "Ablak átméretezése"
+
+#: ../src/50-metacity-windows.xml.in.h:12
+msgid "Toggle window on all workspaces or one"
+msgstr "Ablak megjelenítése minden munkaterületen vagy csak az egyiken"
+
+#: ../src/50-metacity-windows.xml.in.h:13
+msgid "Raise window if covered, otherwise lower it"
+msgstr "Fedett ablak előtérbe hozása, egyébként háttérbe küldése"
+
+#: ../src/50-metacity-windows.xml.in.h:14
+msgid "Raise window above other windows"
+msgstr "Ablak más ablakok elé hozása"
+
+#: ../src/50-metacity-windows.xml.in.h:15
+msgid "Lower window below other windows"
+msgstr "Ablak más ablakok mögé küldése"
+
+#: ../src/50-metacity-windows.xml.in.h:16
+msgid "Maximize window vertically"
+msgstr "Ablak függőleges maximalizálása"
+
+#: ../src/50-metacity-windows.xml.in.h:17
+msgid "Maximize window horizontally"
+msgstr "Ablak vízszintes maximalizálása"
+
+#: ../src/core/bell.c:296
 msgid "Bell event"
 msgstr "Csengetés esemény"
 
@@ -113,30 +271,6 @@ msgstr ""
 "Valamely másik program már használja a(z) %s billentyűt %x módosítókkal "
 "összekötve\n"
 
-#. Displayed when a keybinding which is
-#. * supposed to launch a program fails.
-#.
-#: ../src/core/keybindings.c:2343
-#, c-format
-msgid ""
-"There was an error running <tt>%s</tt>:\n"
-"\n"
-"%s"
-msgstr ""
-"Hiba történt a(z) <tt>%s</tt> futtatása közben:\n"
-"\n"
-"%s"
-
-#: ../src/core/keybindings.c:2432
-#, c-format
-msgid "No command %d has been defined.\n"
-msgstr "Nincs %d parancs meghatározva.\n"
-
-#: ../src/core/keybindings.c:3386
-#, c-format
-msgid "No terminal command has been defined.\n"
-msgstr "Nincs terminálparancs meghatározva.\n"
-
 #: ../src/core/main.c:131
 #, c-format
 msgid ""
@@ -189,7 +323,8 @@ msgid "Turn compositing off"
 msgstr "Kompozitálás kikapcsolása"
 
 #: ../src/core/main.c:322
-msgid "Don't make fullscreen windows that are maximized and have no decorations"
+msgid ""
+"Don't make fullscreen windows that are maximized and have no decorations"
 msgstr ""
 "Ne tegye teljes képernyőssé a maximalizált és díszítésekkel nem rendelkező "
 "ablakokat"
@@ -201,7 +336,8 @@ msgstr "Témakönyvtár beolvasása sikertelen: %s\n"
 
 #: ../src/core/main.c:543
 #, c-format
-msgid "Could not find a theme! Be sure %s exists and contains the usual themes.\n"
+msgid ""
+"Could not find a theme! Be sure %s exists and contains the usual themes.\n"
 msgstr ""
 "Nem található téma! Bizonyosodjon meg róla hogy a(z) %s létezik és "
 "tartalmazza a szokásos témákat.\n"
@@ -211,37 +347,7 @@ msgstr ""
 msgid "Failed to restart: %s\n"
 msgstr "Újraindítás sikertelen: %s\n"
 
-#.
-#. * We found it, but it was invalid.  Complain.
-#. *
-#. * FIXME: This replicates the original behaviour, but in the future
-#. * we might consider reverting invalid keys to their original values.
-#. * (We know the old value, so we can look up a suitable string in
-#. * the symtab.)
-#. *
-#. * (Empty comment follows so the translators don't see this.)
-#.
-#.
-#: ../src/core/prefs.c:508 ../src/core/prefs.c:663
-#, c-format
-msgid "GConf key '%s' is set to an invalid value\n"
-msgstr "„%s” GConf kulcs érvénytelen értékre van állítva\n"
-
-#: ../src/core/prefs.c:589 ../src/core/prefs.c:832
-#, c-format
-msgid "%d stored in GConf key %s is out of range %d to %d\n"
-msgstr ""
-"%d, ami a(z) %s GConf kulcsban van tárolva, a tartományon (%d - %d) kívül "
-"van\n"
-
-#: ../src/core/prefs.c:633 ../src/core/prefs.c:710 ../src/core/prefs.c:758
-#: ../src/core/prefs.c:822 ../src/core/prefs.c:1115 ../src/core/prefs.c:1131
-#: ../src/core/prefs.c:1148 ../src/core/prefs.c:1164
-#, c-format
-msgid "GConf key \"%s\" is set to an invalid type\n"
-msgstr "„%s” GConf kulcs érvénytelen típusú\n"
-
-#: ../src/core/prefs.c:1234
+#: ../src/core/prefs.c:880
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -249,14 +355,15 @@ msgstr ""
 "A hibás alkalmazások hibáinak megkerülése nincs engedélyezve. Néhány "
 "alkalmazás lehet, hogy nem fog helyesen működni.\n"
 
-#: ../src/core/prefs.c:1305
+#: ../src/core/prefs.c:949
 #, c-format
-msgid "Could not parse font description \"%s\" from GConf key %s\n"
+#| msgid "Could not parse font description \"%s\" from GConf key %s\n"
+msgid "Could not parse font description \"%s\" from GSettings key %s\n"
 msgstr ""
-"Nem sikerült feldolgozni a(z) „%s” betűkészlet leírását a(z) „%s” GConf "
+"Nem sikerült feldolgozni a(z) „%s” betűkészlet leírását a(z) „%s” GSettings "
 "kulcsból\n"
 
-#: ../src/core/prefs.c:1367
+#: ../src/core/prefs.c:1015
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -265,17 +372,7 @@ msgstr ""
 "A konfigurációs adatbázisban talált „%s” érvénytelen érték az egérgomb "
 "módosítóhoz\n"
 
-#: ../src/core/prefs.c:1788
-#, c-format
-msgid "Error setting number of workspaces to %d: %s\n"
-msgstr "Hiba a munkaterületek számának beállításánál a következőre: %d: %s\n"
-
-#: ../src/core/prefs.c:1959 ../src/core/prefs.c:2461
-#, c-format
-msgid "Workspace %d"
-msgstr "%d. munkaterület"
-
-#: ../src/core/prefs.c:1988 ../src/core/prefs.c:2166
+#: ../src/core/prefs.c:1494
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -284,15 +381,10 @@ msgstr ""
 "A konfigurációs adatbázisban talált „%s” nem érvényes érték a következő "
 "billentyűkombinációhoz: „%s”\n"
 
-#: ../src/core/prefs.c:2542
+#: ../src/core/prefs.c:1601
 #, c-format
-msgid "Error setting name for workspace %d to \"%s\": %s\n"
-msgstr "Hiba a(z) %d. munkaterület nevének beállításánál a következőre: „%s”: %s\n"
-
-#: ../src/core/prefs.c:2746
-#, c-format
-msgid "Error setting compositor status: %s\n"
-msgstr "Hiba a kompozitáló állapotának beállításakor: %s\n"
+msgid "Workspace %d"
+msgstr "%d. munkaterület"
 
 #: ../src/core/screen.c:357
 #, c-format
@@ -310,10 +402,11 @@ msgstr ""
 
 #: ../src/core/screen.c:400
 #, c-format
-msgid "Could not acquire window manager selection on screen %d display \"%s\"\n"
+msgid ""
+"Could not acquire window manager selection on screen %d display \"%s\"\n"
 msgstr ""
-"Nem sikerült beolvasni az ablakkezelő kiválasztását a(z) %d képernyőn a(z) "
-"„%s” megjelenítőn\n"
+"Nem sikerült beolvasni az ablakkezelő kiválasztását a(z) %d képernyőn a(z) „%"
+"s” megjelenítőn\n"
 
 #: ../src/core/screen.c:458
 #, c-format
@@ -324,48 +417,6 @@ msgstr "A(z) %d képernyőnek a(z) „%s” megjelenítőn már van ablakkezelő
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "Nem sikerült elengedni a(z) %d képernyőt a(z) „%s” kijelzőn\n"
-
-#. Translators: Please don't translate "Control", "Shift", etc, since these
-#. * are hardcoded (in gtk/gtkaccelgroup.c; it's not metacity's fault).
-#. * "disabled" must also stay as it is.
-#.
-#: ../src/core/schema-bindings.c:169
-msgid ""
-"The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
-"\n"
-"The parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action."
-msgstr ""
-"Formátuma ehhez hasonló: „<Control>a” vagy „<Shift><Alt>F1”.\n"
-"\n"
-"Az elemző elég liberális, nem érzékeny a kis- és nagybetűkre, valamint "
-"rövidítéseket (mint „<Ctl>” és „<Ctrl>”) is megenged. Az opciót a speciális "
-"„disabled” karakterláncra állítva nem lesz billentyűkombináció társítva "
-"ehhez a művelethez."
-
-#: ../src/core/schema-bindings.c:177
-msgid ""
-"The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
-"\n"
-"The parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action.\n"
-"\n"
-"This keybinding may be reversed by holding down the \"shift\" key; "
-"therefore, \"shift\" cannot be one of the keys it uses."
-msgstr ""
-"Formátuma ehhez hasonló: „<Control>a” vagy „<Shift><Alt>F1”.\n"
-"\n"
-"Az elemző elég liberális, nem érzékeny a kis- és nagybetűkre, valamint "
-"rövidítéseket (mint „<Ctl>” és „<Ctrl>”) is megenged. Az opciót a speciális "
-"„disabled” karakterláncra állítva nem lesz billentyűkombináció társítva "
-"ehhez a művelethez.\n"
-"\n"
-"Ez a billentyűtársítás megfordítható a „Shift” billentyű lenyomásával, így a "
-"„Shift” itt nem használható."
 
 #: ../src/core/session.c:842 ../src/core/session.c:849
 #, c-format
@@ -443,7 +494,8 @@ msgstr "%s naplófájl megnyitva\n"
 #: ../src/core/util.c:136 ../src/tools/metacity-message.c:176
 #, c-format
 msgid "Metacity was compiled without support for verbose mode\n"
-msgstr "A Metacity ablakkezelőt a részletes mód támogatása nélkül fordították\n"
+msgstr ""
+"A Metacity ablakkezelőt a részletes mód támogatása nélkül fordították\n"
 
 #: ../src/core/util.c:236
 msgid "Window manager: "
@@ -462,7 +514,6 @@ msgid "Window manager error: "
 msgstr "Hibaüzenet az ablakkezelőtől: "
 
 #. Translators: This is the title used on dialog boxes
-#. eof all-keybindings.h
 #: ../src/core/util.c:570 ../src/metacity.desktop.in.h:1
 #: ../src/metacity-wm.desktop.in.h:1
 msgid "Metacity"
@@ -488,8 +539,8 @@ msgstr ""
 #: ../src/core/window.c:6269
 #, c-format
 msgid ""
-"Window %s sets an MWM hint indicating it isn't resizable, but sets min size "
-"%d x %d and max size %d x %d; this doesn't make much sense.\n"
+"Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
+"d x %d and max size %d x %d; this doesn't make much sense.\n"
 msgstr ""
 "A(z) %s ablak egy MWM javaslatot állít be, ami szerint nem méretezhető át, "
 "de mégis %d x %d minimális és %d x %d maximális értéket ad meg, amelynek így "
@@ -530,8 +581,8 @@ msgstr "%s (másik felhasználóként)"
 #, c-format
 msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
 msgstr ""
-"Érvénytelen WM_TRANSIENT_FOR ablak (0x%lx) került megadásra a következőhöz: "
-"%s.\n"
+"Érvénytelen WM_TRANSIENT_FOR ablak (0x%lx) került megadásra a következőhöz: %"
+"s.\n"
 
 #: ../src/core/xprops.c:155
 #, c-format
@@ -551,454 +602,32 @@ msgstr ""
 #: ../src/core/xprops.c:401
 #, c-format
 msgid "Property %s on window 0x%lx contained invalid UTF-8\n"
-msgstr "A(z) %s tulajdonság a 0x%lx ablakon érvénytelen UTF-8 adatot tartalmazott\n"
+msgstr ""
+"A(z) %s tulajdonság a 0x%lx ablakon érvénytelen UTF-8 adatot tartalmazott\n"
 
 #: ../src/core/xprops.c:484
 #, c-format
-msgid "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
+msgid ""
+"Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
 msgstr ""
 "A(z) %s tulajdonság a 0x%lx ablakon érvénytelen UTF-8 adatot tartalmazott a "
 "lista %d. elemében\n"
 
-#: ../src/include/all-keybindings.h:88
-msgid "Switch to workspace 1"
-msgstr "Átváltás az 1. munkaterületre"
-
-#: ../src/include/all-keybindings.h:90
-msgid "Switch to workspace 2"
-msgstr "Átváltás a 2. munkaterületre"
-
-#: ../src/include/all-keybindings.h:92
-msgid "Switch to workspace 3"
-msgstr "Átváltás a 3. munkaterületre"
-
-#: ../src/include/all-keybindings.h:94
-msgid "Switch to workspace 4"
-msgstr "Átváltás a 4. munkaterületre"
-
-#: ../src/include/all-keybindings.h:96
-msgid "Switch to workspace 5"
-msgstr "Átváltás az 5. munkaterületre"
-
-#: ../src/include/all-keybindings.h:98
-msgid "Switch to workspace 6"
-msgstr "Átváltás a 6. munkaterületre"
-
-#: ../src/include/all-keybindings.h:100
-msgid "Switch to workspace 7"
-msgstr "Átváltás a 7. munkaterületre"
-
-#: ../src/include/all-keybindings.h:102
-msgid "Switch to workspace 8"
-msgstr "Átváltás a 8. munkaterületre"
-
-#: ../src/include/all-keybindings.h:104
-msgid "Switch to workspace 9"
-msgstr "Átváltás a 9. munkaterületre"
-
-#: ../src/include/all-keybindings.h:106
-msgid "Switch to workspace 10"
-msgstr "Átváltás a 10. munkaterületre"
-
-#: ../src/include/all-keybindings.h:108
-msgid "Switch to workspace 11"
-msgstr "Átváltás a 11. munkaterületre"
-
-#: ../src/include/all-keybindings.h:110
-msgid "Switch to workspace 12"
-msgstr "Átváltás a 12. munkaterületre"
-
-#: ../src/include/all-keybindings.h:122
-msgid "Move to workspace left"
-msgstr "Áthelyezés a bal oldali munkaterületre"
-
-#: ../src/include/all-keybindings.h:126
-msgid "Move to workspace right"
-msgstr "Áthelyezés a jobb oldali munkaterületre"
-
-#: ../src/include/all-keybindings.h:130
-msgid "Move to workspace above"
-msgstr "Áthelyezés a felső munkaterületre"
-
-#: ../src/include/all-keybindings.h:134
-msgid "Move to workspace below"
-msgstr "Áthelyezés az alsó munkaterületre"
-
-#: ../src/include/all-keybindings.h:150
-msgid "Switch windows of an application"
-msgstr "Váltás egy alkalmazás ablakai között"
-
-#: ../src/include/all-keybindings.h:153
-msgid "Reverse switch windows of an application"
-msgstr "Váltás visszafelé egy alkalmazás ablakai között"
-
-#: ../src/include/all-keybindings.h:156
-msgid "Switch applications"
-msgstr "Váltás az alkalmazások között"
-
-#: ../src/include/all-keybindings.h:159
-msgid "Reverse switch applications"
-msgstr "Váltás visszafelé az alkalmazások között"
-
-#: ../src/include/all-keybindings.h:162
-msgid "Switch system controls"
-msgstr "Váltás a rendszer vezérlői közt"
-
-#: ../src/include/all-keybindings.h:165
-msgid "Reverse switch system controls"
-msgstr "Váltás visszafelé a rendszer vezérlői közt"
-
-#: ../src/include/all-keybindings.h:169
-msgid "Switch windows of an app directly"
-msgstr "Váltás egy alkalmazás ablakai között közvetlenül"
-
-#: ../src/include/all-keybindings.h:172
-msgid "Reverse switch windows of an app directly"
-msgstr "Váltás visszafelé egy alkalmazás ablakai között közvetlenül"
-
-#: ../src/include/all-keybindings.h:175
-msgid "Switch windows directly"
-msgstr "Váltás az ablakok közt közvetlenül"
-
-#: ../src/include/all-keybindings.h:178
-msgid "Reverse switch windows directly"
-msgstr "Váltás visszafelé az ablakok közt közvetlenül"
-
-#: ../src/include/all-keybindings.h:181
-msgid "Switch system controls directly"
-msgstr "Váltás a rendszer vezérlői közt közvetlenül"
-
-#: ../src/include/all-keybindings.h:184
-msgid "Reverse switch system controls directly"
-msgstr "Váltás visszafelé a rendszer vezérlői közt közvetlenül"
-
-#: ../src/include/all-keybindings.h:189
-msgid "Hide all normal windows"
-msgstr "Minden normál ablak elrejtése"
-
-#: ../src/include/all-keybindings.h:192
-msgid "Show the activities overview"
-msgstr "A tevékenységek áttekintés megjelenítése"
-
-#: ../src/include/all-keybindings.h:195
-msgid "Show the run command prompt"
-msgstr "A parancs futtatása ablak megjelenítése"
-
-#: ../src/include/all-keybindings.h:236
-msgid "Take a screenshot"
-msgstr "Képernyőkép készítése"
-
-#: ../src/include/all-keybindings.h:238
-msgid "Take a screenshot of a window"
-msgstr "Képernyőkép készítése egy ablakról"
-
-#: ../src/include/all-keybindings.h:240
-msgid "Launch Terminal"
-msgstr "Terminál indítása"
-
-#: ../src/include/all-keybindings.h:255
-msgid "Activate the window menu"
-msgstr "Ablakmenü aktiválása"
-
-#: ../src/include/all-keybindings.h:258
-msgid "Toggle fullscreen mode"
-msgstr "Teljes képernyős üzemmód"
-
-#: ../src/include/all-keybindings.h:260
-msgid "Toggle maximization state"
-msgstr "Maximalizált állapot átváltása"
-
-#: ../src/include/all-keybindings.h:262
-msgid "Toggle window always appearing on top"
-msgstr "Ablak mindig felül történő megjelenésének átváltása"
-
-#: ../src/include/all-keybindings.h:264
-msgid "Maximize window"
-msgstr "Ablak maximalizálása"
-
-#: ../src/include/all-keybindings.h:266
-msgid "Restore window"
-msgstr "Ablak visszaállítása"
-
-#: ../src/include/all-keybindings.h:268
-msgid "Toggle shaded state"
-msgstr "Felgördített állapot átváltása"
-
-#: ../src/include/all-keybindings.h:270
-msgid "Minimize window"
-msgstr "Ablak minimalizálása"
-
-#: ../src/include/all-keybindings.h:272
-msgid "Close window"
-msgstr "Ablak bezárása"
-
-#: ../src/include/all-keybindings.h:274
-msgid "Move window"
-msgstr "Ablak áthelyezése"
-
-#: ../src/include/all-keybindings.h:276
-msgid "Resize window"
-msgstr "Ablak átméretezése"
-
-#: ../src/include/all-keybindings.h:279
-msgid "Toggle window on all workspaces or one"
-msgstr "Ablak megjelenítése minden munkaterületen vagy csak az egyiken"
-
-#: ../src/include/all-keybindings.h:283
-msgid "Move window to workspace 1"
-msgstr "Ablak áthelyezése az 1. munkaterületre"
-
-#: ../src/include/all-keybindings.h:286
-msgid "Move window to workspace 2"
-msgstr "Ablak áthelyezése a 2. munkaterületre"
-
-#: ../src/include/all-keybindings.h:289
-msgid "Move window to workspace 3"
-msgstr "Ablak áthelyezése a 3. munkaterületre"
-
-#: ../src/include/all-keybindings.h:292
-msgid "Move window to workspace 4"
-msgstr "Ablak áthelyezése a 4. munkaterületre"
-
-#: ../src/include/all-keybindings.h:295
-msgid "Move window to workspace 5"
-msgstr "Ablak áthelyezése az 5. munkaterületre"
-
-#: ../src/include/all-keybindings.h:298
-msgid "Move window to workspace 6"
-msgstr "Ablak áthelyezése a 6. munkaterületre"
-
-#: ../src/include/all-keybindings.h:301
-msgid "Move window to workspace 7"
-msgstr "Ablak áthelyezése a 7. munkaterületre"
-
-#: ../src/include/all-keybindings.h:304
-msgid "Move window to workspace 8"
-msgstr "Ablak áthelyezése a 8. munkaterületre"
-
-#: ../src/include/all-keybindings.h:307
-msgid "Move window to workspace 9"
-msgstr "Ablak áthelyezése a 9. munkaterületre"
-
-#: ../src/include/all-keybindings.h:310
-msgid "Move window to workspace 10"
-msgstr "Ablak áthelyezése a 10. munkaterületre"
-
-#: ../src/include/all-keybindings.h:313
-msgid "Move window to workspace 11"
-msgstr "Ablak áthelyezése a 11. munkaterületre"
-
-#: ../src/include/all-keybindings.h:316
-msgid "Move window to workspace 12"
-msgstr "Ablak áthelyezése a 12. munkaterületre"
-
-#: ../src/include/all-keybindings.h:328
-msgid "Move window one workspace to the left"
-msgstr "Ablak áthelyezése a balra lévő munkaterületre"
-
-#: ../src/include/all-keybindings.h:331
-msgid "Move window one workspace to the right"
-msgstr "Ablak áthelyezése a jobbra lévő munkaterületre"
-
-#: ../src/include/all-keybindings.h:334
-msgid "Move window one workspace up"
-msgstr "Ablak áthelyezése egy munkaterülettel feljebb"
-
-#: ../src/include/all-keybindings.h:337
-msgid "Move window one workspace down"
-msgstr "Ablak áthelyezése egy munkaterülettel lejjebb"
-
-#: ../src/include/all-keybindings.h:340
-msgid "Raise window if covered, otherwise lower it"
-msgstr "Fedett ablak előtérbe hozása, egyébként háttérbe küldése"
-
-#: ../src/include/all-keybindings.h:342
-msgid "Raise window above other windows"
-msgstr "Ablak más ablakok elé hozása"
-
-#: ../src/include/all-keybindings.h:344
-msgid "Lower window below other windows"
-msgstr "Ablak más ablakok mögé küldése"
-
-#: ../src/include/all-keybindings.h:348
-msgid "Maximize window vertically"
-msgstr "Ablak függőleges maximalizálása"
-
-#: ../src/include/all-keybindings.h:352
-msgid "Maximize window horizontally"
-msgstr "Ablak vízszintes maximalizálása"
-
-#: ../src/include/all-keybindings.h:356
-msgid "Move window to top left corner"
-msgstr "Ablak áthelyezése a bal felső sarokba"
-
-#: ../src/include/all-keybindings.h:359
-msgid "Move window to top right corner"
-msgstr "Ablak áthelyezése a jobb felső sarokba"
-
-#: ../src/include/all-keybindings.h:362
-msgid "Move window to bottom left corner"
-msgstr "Ablak áthelyezése a bal alsó sarokba"
-
-#: ../src/include/all-keybindings.h:365
-msgid "Move window to bottom right corner"
-msgstr "Ablak áthelyezése a jobb alsó sarokba"
-
-#: ../src/include/all-keybindings.h:369
-msgid "Move window to top edge of screen"
-msgstr "Ablak áthelyezése a képernyő felső oldalához"
-
-#: ../src/include/all-keybindings.h:372
-msgid "Move window to bottom edge of screen"
-msgstr "Ablak áthelyezése a képernyő alsó oldalához"
-
-#: ../src/include/all-keybindings.h:375
-msgid "Move window to right side of screen"
-msgstr "Ablak áthelyezése a képernyő jobb oldalához"
-
-#: ../src/include/all-keybindings.h:378
-msgid "Move window to left side of screen"
-msgstr "Ablak áthelyezése a képernyő bal oldalához"
-
-#: ../src/include/all-keybindings.h:381
-msgid "Move window to center of screen"
-msgstr "Ablak áthelyezése a képernyő közepére"
-
-#: ../src/metacity.schemas.in.in.h:1
-msgid "(Not implemented) Navigation works in terms of applications not windows"
-msgstr ""
-"(Nincs megvalósítva) A navigáció az alkalmazások és nem az ablakok szintjén "
-"működik"
-
-#: ../src/metacity.schemas.in.in.h:2
-msgid ""
-"A font description string describing a font for window titlebars. The size "
-"from the description will only be used if the titlebar_font_size option is "
-"set to 0. Also, this option is disabled if the titlebar_uses_desktop_font "
-"option is set to true."
-msgstr ""
-"Betűkészlet-leíró karakterlánc, amely meghatározza az ablak címsorának "
-"betűkészletét. A leírás méret része csak akkor érvényesül, ha a "
-"titlebar_font_size opció értéke 0. Ez az opció le van tiltva, ha a "
-"titlebar_uses_desktop_font értéke igaz."
-
-#: ../src/metacity.schemas.in.in.h:3
-msgid "Action on title bar double-click"
-msgstr "A címsoron való dupla kattintáskor bekövetkező esemény"
-
-#: ../src/metacity.schemas.in.in.h:4
-msgid "Action on title bar middle-click"
-msgstr "A címsoron való középső gombos kattintáskor bekövetkező esemény"
-
-#: ../src/metacity.schemas.in.in.h:5
-msgid "Action on title bar right-click"
-msgstr "A címsoron való jobb gombos kattintáskor bekövetkező esemény"
-
-#: ../src/metacity.schemas.in.in.h:6
-msgid "Arrangement of buttons on the titlebar"
-msgstr "A gombok elrendezése az ablak címsorában"
-
-#: ../src/metacity.schemas.in.in.h:7
-msgid ""
-"Arrangement of buttons on the titlebar. The value should be a string, such "
-"as \"menu:minimize,maximize,spacer,close\"; the colon separates the left "
-"corner of the window from the right corner, and the button names are comma-"
-"separated. Duplicate buttons are not allowed. Unknown button names are "
-"silently ignored so that buttons can be added in future metacity versions "
-"without breaking older versions. A special spacer tag can be used to insert "
-"some space between two adjacent buttons."
-msgstr ""
-"A címsor gombjainak igazítása. Az értéknek szövegnek kell lennie, mint "
-"például „menu:minimize,maximize,spacer,close”; a kettőspont választja el az "
-"ablak jobb és bal sarkát, a gombneveket pedig vesszők. Kettőzött gombok nem "
-"megengedettek. Az ismeretlen gombnevek jelzés nélkül figyelmen kívül lesznek "
-"hagyva, így a jövőbeli metacity verziókkal készült gombsorok visszafelé "
-"kompatibilisek maradnak. A speciális spacer címkével némi hely szúrható két "
-"szomszédos gomb közé."
-
-#: ../src/metacity.schemas.in.in.h:8
-msgid "Automatically raises the focused window"
-msgstr "Automatikusan előtérbe hozza az aktív ablakot"
-
-#: ../src/metacity.schemas.in.in.h:9
-msgid ""
-"Clicking a window while holding down this modifier key will move the window "
-"(left click), resize the window (middle click), or show the window menu "
-"(right click). The middle and right click operations may be swapped using "
-"the \"resize_with_right_button\" key. Modifier is expressed as \"&lt;Alt&gt;"
-"\" or \"&lt;Super&gt;\" for example."
-msgstr ""
-"Ezen billentyű nyomva tartása mellett az ablakra kattintva az ablak "
-"mozgatható (bal gomb) átméretezhető (középső gomb) vagy megjeleníthető az "
-"ablakmenü (jobb gomb). A bal és jobb műveletek felcserélhetők a "
-"„resize_with_right_button” kulcs segítségével. A módosítót például a "
-"következő módon lehet megadni: „&lt;Alt&gt;” vagy „&lt;Super&gt;”."
-
-#: ../src/metacity.schemas.in.in.h:10
-msgid "Commands to run in response to keybindings"
-msgstr "A billentyűkombinációkra válaszul futtatandó parancsok"
-
-#: ../src/metacity.schemas.in.in.h:11
+#: ../src/org.gnome.metacity.gschema.xml.in.h:1
 msgid "Compositing Manager"
 msgstr "Kompozíciókezelő"
 
-#: ../src/metacity.schemas.in.in.h:12
-msgid "Control how new windows get focus"
-msgstr "Új ablakok fókuszba kerülésének vezérlése"
-
-#: ../src/metacity.schemas.in.in.h:13
-msgid "Current theme"
-msgstr "Jelenlegi téma"
-
-#: ../src/metacity.schemas.in.in.h:14
-msgid "Delay in milliseconds for the auto raise option"
-msgstr "Az automatikus előtérbe hozás opció késleltetése (ezredmásodpercben)"
-
-#: ../src/metacity.schemas.in.in.h:15
+#: ../src/org.gnome.metacity.gschema.xml.in.h:2
 msgid "Determines whether Metacity is a compositing manager."
 msgstr "Meghatározza, hogy a Metacity kompozíciókezelő-e."
 
-#: ../src/metacity.schemas.in.in.h:16
-msgid ""
-"Determines whether applications or the system can generate audible 'beeps'; "
-"may be used in conjunction with 'visual bell' to allow silent 'beeps'."
+#: ../src/org.gnome.metacity.gschema.xml.in.h:3
+msgid "If true, trade off usability for less resource usage"
 msgstr ""
-"Meghatározza, hogy az alkalmazások vagy a rendszer tudnak-e hallható "
-"hangjelzéseket kiadni, hasznos lehet a „látható rendszercsengővel” együtt "
-"alkalmazni, mert ennek segítségével lehetségesek a „néma hangjelzések” is."
+"Ha ez be van állítva, a kisebb erőforrásigény érdekében a könnyű "
+"használhatóságból áldoz fel"
 
-#: ../src/metacity.schemas.in.in.h:17
-msgid "Disable misfeatures that are required by old or broken applications"
-msgstr ""
-"Azon hibás funkciók letiltása, amelyeket régi vagy hibás alkalmazások "
-"használnak"
-
-#: ../src/metacity.schemas.in.in.h:18
-msgid "Enable Visual Bell"
-msgstr "„Látható csipogás” engedélyezése"
-
-#: ../src/metacity.schemas.in.in.h:19
-msgid ""
-"If set to true, and the focus mode is either \"sloppy\" or \"mouse\" then "
-"the focused window will be automatically raised after a delay specified by "
-"the auto_raise_delay key. This is not related to clicking on a window to "
-"raise it, nor to entering a window during drag-and-drop."
-msgstr ""
-"Ha igazra van állítva és a fókuszmód a „sloppy” vagy „mouse” egyike, akkor a "
-"fókuszba került ablak automatikusan az előtérbe lesz hozva az "
-"auto_raise_delay kulcsban megadott késleltetés letelte után. Ez nem "
-"kapcsolódik az ablakra kattintáshoz annak előtérbe hozása érdekében, sem az "
-"ablakra mutatáshoz fogd és ejtsd művelet során."
-
-#: ../src/metacity.schemas.in.in.h:20
-msgid ""
-"If true, ignore the titlebar_font option, and use the standard application "
-"font for window titles."
-msgstr ""
-"Ha igazra van állítva, a titlebar_font opciót figyelmen kívül hagyja, és a "
-"szabvány alkalmazás betűkészletet használja az ablakok címsoraihoz."
-
-#: ../src/metacity.schemas.in.in.h:21
+#: ../src/org.gnome.metacity.gschema.xml.in.h:4
 msgid ""
 "If true, metacity will give the user less feedback by using wireframes, "
 "avoiding animations, or other means. This is a significant reduction in "
@@ -1013,386 +642,52 @@ msgstr ""
 "és terminál kiszolgálóknak is hasznos engedmény lehet. Azonban a drótváz "
 "szolgáltatás ki van kapcsolva, ha az akadálymentesítés be van kapcsolva."
 
-#: ../src/metacity.schemas.in.in.h:22
-msgid ""
-"If true, then Metacity works in terms of applications rather than windows. "
-"The concept is a bit abstract, but in general an application-based setup is "
-"more like the Mac and less like Windows. When you focus a window in "
-"application-based mode, all the windows in the application will be raised. "
-"Also, in application-based mode, focus clicks are not passed through to "
-"windows in other applications. Application-based mode is, however, largely "
-"unimplemented at the moment."
-msgstr ""
-"Ha ez be van állítva, akkor a Metacity inkább az alkalmazások és nem az "
-"ablakok szintjén működik. A koncepció egy kicsit elvont, de összességében az "
-"alkalmazás alapú beállítás inkább mac-es és kevésbé windowsos. Ha fókuszba "
-"kerül valamelyik ablak az alkalmazás alapú módban, akkor az alkalmazás "
-"minden ablaka előtérbe kerül. Szintén ebben az üzemmódban a kattintások nem "
-"jutnak át más alkalmazások ablakain. Az alkalmazás alapú üzemmód azonban "
-"jelenleg nagyrészt nincs megvalósítva."
-
-#: ../src/metacity.schemas.in.in.h:23
-msgid "If true, trade off usability for less resource usage"
-msgstr ""
-"Ha ez be van állítva, a kisebb erőforrásigény érdekében a könnyű "
-"használhatóságból áldoz fel"
-
-#: ../src/metacity.schemas.in.in.h:24
-msgid "Modifier to use for modified window click actions"
-msgstr "Módosító, amellyel a módosított ablakra kattintás műveletek használhatók"
-
-#: ../src/metacity.schemas.in.in.h:25
-msgid "Name of workspace"
-msgstr "Munkaterület neve"
-
-#: ../src/metacity.schemas.in.in.h:26
-msgid "Number of workspaces"
-msgstr "Munkaterületek száma"
-
-#: ../src/metacity.schemas.in.in.h:27
-msgid ""
-"Number of workspaces. Must be more than zero, and has a fixed maximum to "
-"prevent making the desktop unusable by accidentally asking for too many "
-"workspaces."
-msgstr ""
-"A munkaterületek száma. Az értéknek nullánál nagyobbnak kell lennie, és van "
-"egy rögzített maximális érték, amely megakadályozza az asztal "
-"használhatatlanná tételét túl sok munkaterület véletlen beállításával."
-
-#: ../src/metacity.schemas.in.in.h:28
-msgid "Run a defined command"
-msgstr "Megadott parancs futtatása"
-
-#: ../src/metacity.schemas.in.in.h:29
-msgid ""
-"Set this to true to resize with the right button and show a menu with the "
-"middle button while holding down the key given in \"mouse_button_modifier\"; "
-"set it to false to make it work the opposite way around."
-msgstr ""
-"Állítsa igazra a „mouse_button_modifier” kulcsban megadott billentyű "
-"lenyomva tartása közben a jobb gombbal való átméretezéshez és a középső "
-"gombbal a menü megjelenítéséhez, állítsa hamisra az ellentétes működéshez."
-
-#: ../src/metacity.schemas.in.in.h:30
-msgid ""
-"Setting this option to false can lead to buggy behavior, so users are "
-"strongly discouraged from changing it from the default of true. Many actions "
-"(e.g. clicking in the client area, moving or resizing the window) normally "
-"raise the window as a side-effect. Setting this option to false, which is "
-"strongly discouraged, will decouple raising from other user actions, and "
-"ignore raise requests generated by applications. See http://bugzilla.gnome."
-"org/show_bug.cgi?id=445447#c6. Even when this option is false, windows can "
-"still be raised by an alt-left-click anywhere on the window, a normal click "
-"on the window decorations, or by special messages from pagers, such as "
-"activation requests from tasklist applets. This option is currently disabled "
-"in click-to-focus mode. Note that the list of ways to raise windows when "
-"raise_on_click is false does not include programmatic requests from "
-"applications to raise windows; such requests will be ignored regardless of "
-"the reason for the request. If you are an application developer and have a "
-"user complaining that your application does not work with this setting "
-"disabled, tell them it is _their_ fault for breaking their window manager "
-"and that they need to change this option back to true or live with the \"bug"
-"\" they requested."
-msgstr ""
-"Ezen érték hamisra állítása hibás viselkedést eredményezhet, ezért nem "
-"javasolt az alapértelmezett igaz érték módosítása. Számos művelet (például a "
-"kattintás a kliens területén, az ablak mozgatása vagy átméretezése) "
-"mellékhatásként előtérbe hozzák az ablakot. Ezen beállítás - nem javasolt – "
-"hamisra állításával az előtérbe hozást elválaszthatja más felhasználói "
-"műveletektől és figyelmen kívül hagyhatja az alkalmazások által generált "
-"előtérbe hozási kéréseket. Ha ez az érték hamis, az ablakok akkor is "
-"előtérbe hozhatók az Alt+bal gombbal kattintással az ablakban bárhová, "
-"normál kattintással az ablak díszítésein vagy a lapozók speciális "
-"üzeneteivel, például aktiválási kérésekkel a feladatlista "
-"kisalkalmazásoktól. Ez a beállítás jelenleg le van tiltva a „kattintás "
-"fókuszhoz” módban. Ne feledje, hogy az ablakok előtérbe hozási módjainak "
-"listája a „raise_on_click” kulcs hamis értéke esetén nem tartalmazza az "
-"alkalmazások ablak-előtérbe hozási programkéréseit, az ilyen kérések a kérés "
-"okától függetlenül figyelmen kívül maradnak. Ha alkalmazásfejlesztőként a "
-"felhasználói arra panaszkodnak, hogy az alkalmazás nem működik ezen "
-"beállítás letiltásakor, akkor vissza kell állítaniuk ezen beállítás igaz "
-"értékét. További információkért nézze meg a http://bugzilla.gnome.org/"
-"show_bug.cgi?id=445447#c6 oldalt."
-
-#: ../src/metacity.schemas.in.in.h:31
-msgid ""
-"Some applications disregard specifications in ways that result in window "
-"manager misfeatures. This option puts Metacity in a rigorously correct mode, "
-"which gives a more consistent user interface, provided one does not need to "
-"run any misbehaving applications."
-msgstr ""
-"Néhány alkalmazás a szabványokat olyan módon veszi semmibe, hogy az az "
-"ablakkezelő hibás viselkedését okozza. Ez a lehetőség a Metacity-t "
-"kérlelhetetlenül helyes módba kapcsolja, amely sokkal konzisztensebb "
-"felhasználói felületet eredményez, feltéve hogy nem kell hibásan működő "
-"alkalmazásokat futtatnia."
-
-#: ../src/metacity.schemas.in.in.h:32
-msgid "System Bell is Audible"
-msgstr "A rendszer pittyenése hallható"
-
-#: ../src/metacity.schemas.in.in.h:33
-msgid ""
-"Tells Metacity how to implement the visual indication that the system bell "
-"or another application 'bell' indicator has been rung. Currently there are "
-"two valid values, \"fullscreen\", which causes a fullscreen white-black "
-"flash, and \"frame_flash\" which causes the titlebar of the application "
-"which sent the bell signal to flash. If the application which sent the bell "
-"is unknown (as is usually the case for the default \"system beep\"), the "
-"currently focused window's titlebar is flashed."
-msgstr ""
-"Meghatározza, hogy a Metacity hogyan jelenítse meg látható módon, ha a "
-"rendszercsengő (esetleg másik alkalmazás „csengője”) megszólal. Jelenleg két "
-"érvényes értéke van: a „fullscreen”, amely teljes képernyős fekete-fehér "
-"villanását okozza illetve a „frame_flash”, amely a címsor villanását okozza "
-"annál az alkalmazásnál, amely a jelzést kiváltotta. Ha ez az alkalmazás "
-"ismeretlen (amely általános az alapértelmezett „system beep” esetén), akkor "
-"a jelenleg aktív ablak címsora fog felvillanni."
-
-#: ../src/metacity.schemas.in.in.h:34
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_N keys define keybindings "
-"that correspond to these commands. Pressing the keybinding for run_command_N "
-"will execute command_N."
-msgstr ""
-"Az /apps/metacity/global_keybindings/run_command_N határozza meg a "
-"billentyűkombinációkat, amelyek ezekhez a parancsokhoz tartoznak. A "
-"run_command_N-hez tartozó billentyűkombináció lenyomásakor végre lesz hajtva "
-"a command_N."
-
-#: ../src/metacity.schemas.in.in.h:35
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_screenshot key defines a "
-"keybinding which causes the command specified by this setting to be invoked."
-msgstr ""
-"Az /apps/metacity/global_keybindings/run_command_screenshot kulcs definiálja "
-"azt a billentyűkombinációt, amely ezen beállítások által meghatározott "
-"parancsot hívja meg."
-
-#: ../src/metacity.schemas.in.in.h:36
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_window_screenshot key "
-"defines a keybinding which causes the command specified by this setting to "
-"be invoked."
-msgstr ""
-"Az /apps/metacity/global_keybindings/run_command_window_screenshot kulcs "
-"definiálja azt a billentyűkombinációt, amely ezen beállítások által "
-"meghatározott parancsot hívja meg."
-
-#: ../src/metacity.schemas.in.in.h:37
-msgid ""
-"The keybinding that runs the correspondingly-numbered command in /apps/"
-"metacity/keybinding_commands The format looks like \"&lt;Control&gt;a\" or "
-"\"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows "
-"lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and "
-"\"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled\", "
-"then there will be no keybinding for this action."
-msgstr ""
-"Az a billentyűkombináció, amely futtatja a megfelelő számú parancsot az /"
-"apps/metacity/keybinding_commands kulcsból. Formátuma ehhez hasonló: „&lt;"
-"Control&gt;a” vagy „&lt;Shift&gt;&lt;Alt&gt;F1”. Az elemző elég liberális, "
-"nem érzékeny a kis- és nagybetűkre, valamint rövidítéseket (mint „&lt;"
-"Ctl&gt;” és „&lt;Ctrl&gt;”) is megenged. Ha az opciót a speciális „disabled” "
-"karakterláncra állítja be, akkor nem lesz billentyűkombináció társítva ehhez "
-"a művelethez."
-
-#: ../src/metacity.schemas.in.in.h:38
-msgid "The name of a workspace."
-msgstr "A munkaterület neve."
-
-#: ../src/metacity.schemas.in.in.h:39
-msgid "The screenshot command"
-msgstr "A képernyőkép-készítő parancs"
-
-#: ../src/metacity.schemas.in.in.h:40
-msgid ""
-"The theme determines the appearance of window borders, titlebar, and so "
-"forth."
-msgstr "A téma meghatározza az ablakkeretek, a címsor és sok más kinézetét."
-
-#: ../src/metacity.schemas.in.in.h:41
-msgid ""
-"The time delay before raising a window if auto_raise is set to true. The "
-"delay is given in thousandths of a second."
-msgstr ""
-"Késleltetés (ezredmásodpercben) az ablak automatikus előtérbe hozása előtt, "
-"ha az auto_raise engedélyezett."
-
-#: ../src/metacity.schemas.in.in.h:42
-msgid ""
-"The window focus mode indicates how windows are activated. It has three "
-"possible values; \"click\" means windows must be clicked in order to focus "
-"them, \"sloppy\" means windows are focused when the mouse enters the window, "
-"and \"mouse\" means windows are focused when the mouse enters the window and "
-"unfocused when the mouse leaves the window."
-msgstr ""
-"Az ablakfókusz módja jelzi, hogy az ablakokat hogyan tehetőek aktívvá. Három "
-"lehetséges értéke van; „click” azt jelenti, hogy rá kell kattintani az adott "
-"ablakra hogy aktív legyen, „sloppy” azt jelenti, hogy az ablak aktív lesz, "
-"amint az egér az ablak fölé ér és a „mouse” azt jelenti, hogy az ablak aktív "
-"lesz, amint az egér az ablak fölé ér és nem lesz az, ha az egér elhagyja az "
-"ablakot."
-
-#: ../src/metacity.schemas.in.in.h:43
-msgid "The window screenshot command"
-msgstr "Az ablakról képernyőképet készítő parancs"
-
-#: ../src/metacity.schemas.in.in.h:44
-msgid ""
-"This option determines the effects of double-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"Ez az opció határozza meg, hogy mi történjen a címsoron való dupla kattintás "
-"esetén. Jelenleg érvényes opciók a „toggle_shade”, amely hatására az ablak "
-"felgördül/legördül, a „toggle_maximize”, amely hatására teljes képernyős/"
-"eredeti méretű lesz, „toggle_maximize_horizontally” és "
-"„toggle_maximize_vertically”, amelyek hatására az ablak csak vízszintesen/"
-"függőlegesen lesz maximalizálva, „minimize”, amely hatására kis méretű lesz "
-"az ablak, „shade”, amely hatására az ablak felgördül, „menu”, amely "
-"megjeleníti az ablak menüt, „lower”, amely az ablakot a többi ablak mögé "
-"viszi és „none”, amely nem hajt végre semmit."
-
-#: ../src/metacity.schemas.in.in.h:45
-msgid ""
-"This option determines the effects of middle-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"Ez az opció határozza meg, hogy mi történjen a címsoron való középső gombos "
-"kattintás esetén. Jelenleg érvényes opciók a „toggle_shade”, amely hatására "
-"az ablak felgördül/legördül, a „toggle_maximize”, amely hatására teljes "
-"képernyős/eredeti méretű lesz, „toggle_maximize_horizontally” és "
-"„toggle_maximize_vertically”, amelyek hatására az ablak csak vízszintesen/"
-"függőlegesen lesz maximalizálva, „minimize”, amely hatására kis méretű lesz "
-"az ablak, „shade”, amely hatására az ablak felgördül, „menu”, amely "
-"megjeleníti az ablak menüt, „lower”, amely az ablakot a többi ablak mögé "
-"viszi és „none”, amely nem hajt végre semmit."
-
-#: ../src/metacity.schemas.in.in.h:46
-msgid ""
-"This option determines the effects of right-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"Ez az opció határozza meg, hogy mi történjen a címsoron való jobb gombos "
-"kattintás esetén. Jelenleg érvényes opciók a „toggle_shade”, amely hatására "
-"az ablak felgördül/legördül, a „toggle_maximize”, amely hatására teljes "
-"képernyős/eredeti méretű lesz, „toggle_maximize_horizontally” és "
-"„toggle_maximize_vertically”, amelyek hatására az ablak csak vízszintesen/"
-"függőlegesen lesz maximalizálva, „minimize”, amely hatására kis méretű lesz "
-"az ablak, „shade”, amely hatására az ablak felgördül, „menu”, amely "
-"megjeleníti az ablak menüt, „lower”, amely az ablakot a többi ablak mögé "
-"viszi és „none”, amely nem hajt végre semmit."
-
-#: ../src/metacity.schemas.in.in.h:47
-msgid ""
-"This option provides additional control over how newly created windows get "
-"focus. It has two possible values; \"smart\" applies the user's normal focus "
-"mode, and \"strict\" results in windows started from a terminal not being "
-"given focus."
-msgstr ""
-"Ez a beállítás az újonnan létrehozott ablakok fókuszba kerülésének "
-"irányítására biztosít további lehetőséget. Két lehetséges értéke van: a "
-"„smart” (intelligens) a felhasználó normál fókuszmódját alkalmazza, a "
-"„strict” (korlátozott) hatására pedig a terminálból indított ablakok nem "
-"kapnak fókuszt."
-
-#: ../src/metacity.schemas.in.in.h:48
-msgid ""
-"Turns on a visual indication when an application or the system issues a "
-"'bell' or 'beep'; useful for the hard-of-hearing and for use in noisy "
-"environments."
-msgstr ""
-"Látható jelzést ad, amikor egy alkalmazás vagy a rendszer egy „csengést” "
-"vagy „sípolást” bocsát ki; hasznos a nagyothallók számára vagy hangos "
-"környezetben."
-
-#: ../src/metacity.schemas.in.in.h:49
-msgid "Use standard system font in window titles"
-msgstr "A rendszer szabvány betűtípusának használata az ablak címsorában"
-
-#: ../src/metacity.schemas.in.in.h:50
-msgid "Visual Bell Type"
-msgstr "Látható csengetés típusa"
-
-#: ../src/metacity.schemas.in.in.h:51
-msgid "Whether raising should be a side-effect of other user interactions"
-msgstr "Az előtérbe hozás más felhasználói tevékenységek mellékhatása legyen-e"
-
-#: ../src/metacity.schemas.in.in.h:52
-msgid "Whether to resize with the right button"
-msgstr "Átméretezés a jobb egérgombbal"
-
-#: ../src/metacity.schemas.in.in.h:53
-msgid "Window focus mode"
-msgstr "Ablakfókusz módja"
-
-#: ../src/metacity.schemas.in.in.h:54
-msgid "Window title font"
-msgstr "Az ablak címsorának betűtípusa"
-
 #: ../src/tools/metacity-message.c:150
 #, c-format
 msgid "Usage: %s\n"
 msgstr "Használat: %s\n"
 
-#: ../src/ui/frames.c:1120
+#: ../src/ui/frames.c:1118
 msgid "Close Window"
 msgstr "Ablak bezárása"
 
-#: ../src/ui/frames.c:1123
+#: ../src/ui/frames.c:1121
 msgid "Window Menu"
 msgstr "Ablak menü"
 
-#: ../src/ui/frames.c:1126
+#: ../src/ui/frames.c:1124
 msgid "Minimize Window"
 msgstr "Ablak minimalizálása"
 
-#: ../src/ui/frames.c:1129
+#: ../src/ui/frames.c:1127
 msgid "Maximize Window"
 msgstr "Ablak maximalizálása"
 
-#: ../src/ui/frames.c:1132
+#: ../src/ui/frames.c:1130
 msgid "Restore Window"
 msgstr "Ablak visszaállítása"
 
-#: ../src/ui/frames.c:1135
+#: ../src/ui/frames.c:1133
 msgid "Roll Up Window"
 msgstr "Ablak felgördítése"
 
-#: ../src/ui/frames.c:1138
+#: ../src/ui/frames.c:1136
 msgid "Unroll Window"
 msgstr "Ablak lenyitása"
 
-#: ../src/ui/frames.c:1141
+#: ../src/ui/frames.c:1139
 msgid "Keep Window On Top"
 msgstr "Ablak legfelül tartása"
 
-#: ../src/ui/frames.c:1144
+#: ../src/ui/frames.c:1142
 msgid "Remove Window From Top"
 msgstr "Ablak eltávolítása legfelülről"
 
-#: ../src/ui/frames.c:1147
+#: ../src/ui/frames.c:1145
 msgid "Always On Visible Workspace"
 msgstr "Mindig a látható munkaterületen"
 
-#: ../src/ui/frames.c:1150
+#: ../src/ui/frames.c:1148
 msgid "Put Window On Only One Workspace"
 msgstr "Ablak kirakása csak egy munkaterületre"
 
@@ -1687,8 +982,10 @@ msgstr "A(z) „%s” alfa érték a kevert színben nem 0.0 és 1.0 között va
 
 #: ../src/ui/theme.c:1320
 #, c-format
-msgid "Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
-msgstr "Az árnyék formátuma: „shade/base_color/factor”, „%s” nem felel meg ennek"
+msgid ""
+"Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
+msgstr ""
+"Az árnyék formátuma: „shade/base_color/factor”, „%s” nem felel meg ennek"
 
 #: ../src/ui/theme.c:1331
 #, c-format
@@ -1747,12 +1044,15 @@ msgstr "A koordinátakifejezés nullával való osztást okozott."
 
 #: ../src/ui/theme.c:2007
 #, c-format
-msgid "Coordinate expression tries to use mod operator on a floating-point number"
-msgstr "A koordinátakifejezés mod operátort próbált használni lebegőpontos számon"
+msgid ""
+"Coordinate expression tries to use mod operator on a floating-point number"
+msgstr ""
+"A koordinátakifejezés mod operátort próbált használni lebegőpontos számon"
 
 #: ../src/ui/theme.c:2063
 #, c-format
-msgid "Coordinate expression has an operator \"%s\" where an operand was expected"
+msgid ""
+"Coordinate expression has an operator \"%s\" where an operand was expected"
 msgstr "A koordinátakifejezésben egy operandus helyén „%s” operátor volt"
 
 #: ../src/ui/theme.c:2072
@@ -1797,7 +1097,8 @@ msgstr "A koordinátakifejezésben kezdő zárójel szerepelt záró nélkül"
 #: ../src/ui/theme.c:2436
 #, c-format
 msgid "Coordinate expression doesn't seem to have any operators or operands"
-msgstr "A koordinátakifejezésben úgy tűnik nincsenek sem operátorok, sem operandusok"
+msgstr ""
+"A koordinátakifejezésben úgy tűnik nincsenek sem operátorok, sem operandusok"
 
 #: ../src/ui/theme.c:2640 ../src/ui/theme.c:2660 ../src/ui/theme.c:2680
 #, c-format
@@ -1815,8 +1116,10 @@ msgstr ""
 
 #: ../src/ui/theme.c:4827 ../src/ui/theme.c:4852
 #, c-format
-msgid "Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
-msgstr "Hiányzó <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"bármi\"/> elem"
+msgid ""
+"Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
+msgstr ""
+"Hiányzó <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"bármi\"/> elem"
 
 #: ../src/ui/theme.c:4896
 #, c-format
@@ -1840,7 +1143,8 @@ msgstr ""
 
 #: ../src/ui/theme.c:5505 ../src/ui/theme.c:5567 ../src/ui/theme.c:5630
 #, c-format
-msgid "User-defined constants must begin with a capital letter; \"%s\" does not"
+msgid ""
+"User-defined constants must begin with a capital letter; \"%s\" does not"
 msgstr ""
 "A felhasználó által meghatározott konstansoknak nagybetűvel kell kezdődniük, "
 "a(z) „%s” nem ilyen"
@@ -1881,7 +1185,8 @@ msgstr "„%s” nem értelmezhető egész számként"
 #: ../src/ui/theme-parser.c:531 ../src/ui/theme-parser.c:586
 #, c-format
 msgid "Did not understand trailing characters \"%s\" in string \"%s\""
-msgstr "Nem lehetett „%s” zárókaraktereket értelmezni a(z) „%s” karakterláncban"
+msgstr ""
+"Nem lehetett „%s” zárókaraktereket értelmezni a(z) „%s” karakterláncban"
 
 #: ../src/ui/theme-parser.c:541
 #, c-format
@@ -1924,60 +1229,60 @@ msgstr ""
 " „%s” érvénytelen címméret (lehetséges értékek: xx-small,x-small,small,"
 "medium,large,x-large,xx-large)\n"
 
-#: ../src/ui/theme-parser.c:936 ../src/ui/theme-parser.c:999
-#: ../src/ui/theme-parser.c:1033 ../src/ui/theme-parser.c:1136
+#: ../src/ui/theme-parser.c:947 ../src/ui/theme-parser.c:1010
+#: ../src/ui/theme-parser.c:1044 ../src/ui/theme-parser.c:1147
 #, c-format
 msgid "<%s> name \"%s\" used a second time"
 msgstr "<%s> „%s” név másodszor lett használva"
 
-#: ../src/ui/theme-parser.c:948 ../src/ui/theme-parser.c:1045
-#: ../src/ui/theme-parser.c:1148
+#: ../src/ui/theme-parser.c:959 ../src/ui/theme-parser.c:1056
+#: ../src/ui/theme-parser.c:1159
 #, c-format
 msgid "<%s> parent \"%s\" has not been defined"
 msgstr "<%s> „%s” szülő nincs meghatározva"
 
-#: ../src/ui/theme-parser.c:1058
+#: ../src/ui/theme-parser.c:1069
 #, c-format
 msgid "<%s> geometry \"%s\" has not been defined"
 msgstr "<%s> „%s” geometria nincs meghatározva"
 
-#: ../src/ui/theme-parser.c:1071
+#: ../src/ui/theme-parser.c:1082
 #, c-format
 msgid "<%s> must specify either a geometry or a parent that has a geometry"
 msgstr ""
 "<%s> vagy meg kell határozni a geometriát vagy szükség van egy szülőre "
 "aminek van geometriája"
 
-#: ../src/ui/theme-parser.c:1113
+#: ../src/ui/theme-parser.c:1124
 msgid "You must specify a background for an alpha value to be meaningful"
 msgstr "Meg kell adnia egy hátteret, hogy az alfa értéknek értelme legyen"
 
-#: ../src/ui/theme-parser.c:1180
+#: ../src/ui/theme-parser.c:1191
 #, c-format
 msgid "Unknown type \"%s\" on <%s> element"
 msgstr "„%s” típus ismeretlen a(z) <%s> elemen"
 
-#: ../src/ui/theme-parser.c:1191
+#: ../src/ui/theme-parser.c:1202
 #, c-format
 msgid "Unknown style_set \"%s\" on <%s> element"
 msgstr "„%s” ismeretlen style_set a(z) <%s> elemen"
 
-#: ../src/ui/theme-parser.c:1199
+#: ../src/ui/theme-parser.c:1210
 #, c-format
 msgid "Window type \"%s\" has already been assigned a style set"
 msgstr "„%s” ablak típushoz már hozzá van rendelve egy stílus beállítás"
 
-#: ../src/ui/theme-parser.c:1229 ../src/ui/theme-parser.c:1293
-#: ../src/ui/theme-parser.c:1519 ../src/ui/theme-parser.c:2740
-#: ../src/ui/theme-parser.c:2786 ../src/ui/theme-parser.c:2934
-#: ../src/ui/theme-parser.c:3126 ../src/ui/theme-parser.c:3164
-#: ../src/ui/theme-parser.c:3202 ../src/ui/theme-parser.c:3240
+#: ../src/ui/theme-parser.c:1240 ../src/ui/theme-parser.c:1304
+#: ../src/ui/theme-parser.c:1530 ../src/ui/theme-parser.c:2751
+#: ../src/ui/theme-parser.c:2797 ../src/ui/theme-parser.c:2945
+#: ../src/ui/theme-parser.c:3137 ../src/ui/theme-parser.c:3175
+#: ../src/ui/theme-parser.c:3213 ../src/ui/theme-parser.c:3251
 #, c-format
 msgid "Element <%s> is not allowed below <%s>"
 msgstr "<%s> elem nem engedélyezett <%s> alatt"
 
-#: ../src/ui/theme-parser.c:1343 ../src/ui/theme-parser.c:1357
-#: ../src/ui/theme-parser.c:1402
+#: ../src/ui/theme-parser.c:1354 ../src/ui/theme-parser.c:1368
+#: ../src/ui/theme-parser.c:1413
 msgid ""
 "Cannot specify both \"button_width\"/\"button_height\" and \"aspect_ratio\" "
 "for buttons"
@@ -1985,123 +1290,125 @@ msgstr ""
 "Nem lehet egyszerre megadni a gombok „button_width” vagy „button_height” és "
 "az „aspect_ratio” paraméterét"
 
-#: ../src/ui/theme-parser.c:1366
+#: ../src/ui/theme-parser.c:1377
 #, c-format
 msgid "Distance \"%s\" is unknown"
 msgstr "„%s” távolság ismeretlen"
 
-#: ../src/ui/theme-parser.c:1411
+#: ../src/ui/theme-parser.c:1422
 #, c-format
 msgid "Aspect ratio \"%s\" is unknown"
 msgstr "„%s” méretarány ismeretlen"
 
-#: ../src/ui/theme-parser.c:1473
+#: ../src/ui/theme-parser.c:1484
 #, c-format
 msgid "Border \"%s\" is unknown"
 msgstr "„%s” határ ismeretlen"
 
-#: ../src/ui/theme-parser.c:1784
+#: ../src/ui/theme-parser.c:1795
 #, c-format
 msgid "No \"start_angle\" or \"from\" attribute on element <%s>"
 msgstr "A(z) <%s> elemnek nincs „start_angle” vagy „from” attribútuma"
 
-#: ../src/ui/theme-parser.c:1791
+#: ../src/ui/theme-parser.c:1802
 #, c-format
 msgid "No \"extent_angle\" or \"to\" attribute on element <%s>"
 msgstr "A(z) <%s> elemnek nincs „extent_angle” vagy „to” attribútuma"
 
-#: ../src/ui/theme-parser.c:2031
+#: ../src/ui/theme-parser.c:2042
 #, c-format
 msgid "Did not understand value \"%s\" for type of gradient"
 msgstr "Nem sikerült „%s” értéket értelmezni színátmenet típusaként"
 
-#: ../src/ui/theme-parser.c:2109 ../src/ui/theme-parser.c:2484
+#: ../src/ui/theme-parser.c:2120 ../src/ui/theme-parser.c:2495
 #, c-format
 msgid "Did not understand fill type \"%s\" for <%s> element"
 msgstr "Nem sikerült a(z) „%s” fájltípust értelmezni a(z) <%s> elem számára"
 
-#: ../src/ui/theme-parser.c:2276 ../src/ui/theme-parser.c:2359
-#: ../src/ui/theme-parser.c:2422
+#: ../src/ui/theme-parser.c:2287 ../src/ui/theme-parser.c:2370
+#: ../src/ui/theme-parser.c:2433
 #, c-format
 msgid "Did not understand state \"%s\" for <%s> element"
 msgstr "Nem sikerült értelmezni a(z) „%s” állapotot a(z) <%s> elem számára"
 
-#: ../src/ui/theme-parser.c:2286 ../src/ui/theme-parser.c:2369
+#: ../src/ui/theme-parser.c:2297 ../src/ui/theme-parser.c:2380
 #, c-format
 msgid "Did not understand shadow \"%s\" for <%s> element"
 msgstr "Nem sikerült „%s” árnyékot értelmezni a(z) <%s> elem számára"
 
-#: ../src/ui/theme-parser.c:2296
+#: ../src/ui/theme-parser.c:2307
 #, c-format
 msgid "Did not understand arrow \"%s\" for <%s> element"
 msgstr "Nem sikerült értelmezni a(z) „%s” nyilat a(z) <%s> elem számára"
 
-#: ../src/ui/theme-parser.c:2596 ../src/ui/theme-parser.c:2692
+#: ../src/ui/theme-parser.c:2607 ../src/ui/theme-parser.c:2703
 #, c-format
 msgid "No <draw_ops> called \"%s\" has been defined"
 msgstr "Nincsen „%s” nevű <draw_ops> meghatározva"
 
-#: ../src/ui/theme-parser.c:2608 ../src/ui/theme-parser.c:2704
+#: ../src/ui/theme-parser.c:2619 ../src/ui/theme-parser.c:2715
 #, c-format
 msgid "Including draw_ops \"%s\" here would create a circular reference"
 msgstr "„%s” draw_ops ide beépítésével körkörös hivatkozás alakulna ki"
 
-#: ../src/ui/theme-parser.c:2819
+#: ../src/ui/theme-parser.c:2830
 #, c-format
 msgid "Unknown position \"%s\" for frame piece"
 msgstr "„%s” pozíció ismeretlen a keretdarabhoz"
 
-#: ../src/ui/theme-parser.c:2827
+#: ../src/ui/theme-parser.c:2838
 #, c-format
 msgid "Frame style already has a piece at position %s"
 msgstr "A keretstílusnak már van egy darabja a(z) „%s” pozícióban"
 
-#: ../src/ui/theme-parser.c:2844 ../src/ui/theme-parser.c:2919
+#: ../src/ui/theme-parser.c:2855 ../src/ui/theme-parser.c:2930
 #, c-format
 msgid "No <draw_ops> with the name \"%s\" has been defined"
 msgstr "Nincs „%s” nevű <draw_ops> meghatározva"
 
-#: ../src/ui/theme-parser.c:2873
+#: ../src/ui/theme-parser.c:2884
 #, c-format
 msgid "Unknown function \"%s\" for button"
 msgstr "„%s” funkció ismeretlen a gombhoz"
 
-#: ../src/ui/theme-parser.c:2882
+#: ../src/ui/theme-parser.c:2893
 #, c-format
 msgid "Button function \"%s\" does not exist in this version (%d, need %d)"
-msgstr "A(z) „%s” gombfunkció nem létezik ebben a verzióban (%d, szükséges: %d)"
+msgstr ""
+"A(z) „%s” gombfunkció nem létezik ebben a verzióban (%d, szükséges: %d)"
 
-#: ../src/ui/theme-parser.c:2894
+#: ../src/ui/theme-parser.c:2905
 #, c-format
 msgid "Unknown state \"%s\" for button"
 msgstr "„%s” állapot ismeretlen a gombhoz"
 
-#: ../src/ui/theme-parser.c:2902
+#: ../src/ui/theme-parser.c:2913
 #, c-format
 msgid "Frame style already has a button for function %s state %s"
-msgstr "A keretstílusnak már van gombja a(z) „%s” funkcióra a(z) „%s” állapotban"
+msgstr ""
+"A keretstílusnak már van gombja a(z) „%s” funkcióra a(z) „%s” állapotban"
 
-#: ../src/ui/theme-parser.c:2973
+#: ../src/ui/theme-parser.c:2984
 #, c-format
 msgid "\"%s\" is not a valid value for focus attribute"
 msgstr "„%s” érték érvénytelen a fókusz attribútumhoz"
 
-#: ../src/ui/theme-parser.c:2982
+#: ../src/ui/theme-parser.c:2993
 #, c-format
 msgid "\"%s\" is not a valid value for state attribute"
 msgstr "„%s” érték érvénytelen az állapot attribútumhoz"
 
-#: ../src/ui/theme-parser.c:2992
+#: ../src/ui/theme-parser.c:3003
 #, c-format
 msgid "A style called \"%s\" has not been defined"
 msgstr "„%s” nevű stílus nincs meghatározva"
 
-#: ../src/ui/theme-parser.c:3013 ../src/ui/theme-parser.c:3036
+#: ../src/ui/theme-parser.c:3024 ../src/ui/theme-parser.c:3047
 #, c-format
 msgid "\"%s\" is not a valid value for resize attribute"
 msgstr "„%s” érték érvénytelen az átméretezés attribútumhoz"
 
-#: ../src/ui/theme-parser.c:3047
+#: ../src/ui/theme-parser.c:3058
 #, c-format
 msgid ""
 "Should not have \"resize\" attribute on <%s> element for maximized/shaded "
@@ -2110,24 +1417,26 @@ msgstr ""
 "A(z) <%s> elemnek nem szabadna „resize” attribútummal rendelkeznie a teljes "
 "méretű/felgördített állapothoz"
 
-#: ../src/ui/theme-parser.c:3061
+#: ../src/ui/theme-parser.c:3072
 #, c-format
-msgid "Should not have \"resize\" attribute on <%s> element for maximized states"
+msgid ""
+"Should not have \"resize\" attribute on <%s> element for maximized states"
 msgstr ""
 "A(z) <%s> elemnek nem szabadna „resize” attribútummal rendelkeznie a teljes "
 "méretű állapothoz"
 
-#: ../src/ui/theme-parser.c:3075 ../src/ui/theme-parser.c:3097
+#: ../src/ui/theme-parser.c:3086 ../src/ui/theme-parser.c:3108
 #, c-format
 msgid "Style has already been specified for state %s resize %s focus %s"
-msgstr "%s állapothoz, %s átméretezéshez és %s fókuszhoz már meg van határozva stílus"
+msgstr ""
+"%s állapothoz, %s átméretezéshez és %s fókuszhoz már meg van határozva stílus"
 
-#: ../src/ui/theme-parser.c:3086 ../src/ui/theme-parser.c:3108
+#: ../src/ui/theme-parser.c:3097 ../src/ui/theme-parser.c:3119
 #, c-format
 msgid "Style has already been specified for state %s focus %s"
 msgstr "%s állapothoz és %s fókuszhoz már meg van határozva stílus"
 
-#: ../src/ui/theme-parser.c:3147
+#: ../src/ui/theme-parser.c:3158
 msgid ""
 "Can't have a two draw_ops for a <piece> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
@@ -2136,7 +1445,7 @@ msgstr ""
 "draw_ops attribútumot és egy <draw_ops> elemet, vagy két elemet határozott "
 "meg)"
 
-#: ../src/ui/theme-parser.c:3185
+#: ../src/ui/theme-parser.c:3196
 msgid ""
 "Can't have a two draw_ops for a <button> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
@@ -2144,7 +1453,7 @@ msgstr ""
 "Nem lehet két draw_ops-a egy <button> elemnek (a téma meghatározott egy "
 "draw_ops attribútumot és egy <draw_ops> elemet, vagy két elemet)"
 
-#: ../src/ui/theme-parser.c:3223
+#: ../src/ui/theme-parser.c:3234
 msgid ""
 "Can't have a two draw_ops for a <menu_icon> element (theme specified a "
 "draw_ops attribute and also a <draw_ops> element, or specified two elements)"
@@ -2152,63 +1461,67 @@ msgstr ""
 "Nem lehet két draw_ops-a egy <menu_icon> elemnek (a téma meghatározott egy "
 "draw_ops attribútumot és egy <draw_ops> elemet, vagy két elemet)"
 
-#: ../src/ui/theme-parser.c:3271
+#: ../src/ui/theme-parser.c:3282
 #, c-format
 msgid "Outermost element in theme must be <metacity_theme> not <%s>"
 msgstr "A téma legkülső eleme <metacity_theme> kell legyen, nem pedig <%s>"
 
-#: ../src/ui/theme-parser.c:3291
+#: ../src/ui/theme-parser.c:3302
 #, c-format
-msgid "Element <%s> is not allowed inside a name/author/date/description element"
-msgstr "A(z) <%s> elem nem megengedett egy name/author/date/description elemen belül"
+msgid ""
+"Element <%s> is not allowed inside a name/author/date/description element"
+msgstr ""
+"A(z) <%s> elem nem megengedett egy name/author/date/description elemen belül"
 
-#: ../src/ui/theme-parser.c:3296
+#: ../src/ui/theme-parser.c:3307
 #, c-format
 msgid "Element <%s> is not allowed inside a <constant> element"
 msgstr "A(z) <%s> elem nem megengedett egy <constant> elemen belül"
 
-#: ../src/ui/theme-parser.c:3308
+#: ../src/ui/theme-parser.c:3319
 #, c-format
-msgid "Element <%s> is not allowed inside a distance/border/aspect_ratio element"
-msgstr "<%s> elem nem megengedett egy distance/border/aspect_ratio elemen belül"
+msgid ""
+"Element <%s> is not allowed inside a distance/border/aspect_ratio element"
+msgstr ""
+"<%s> elem nem megengedett egy distance/border/aspect_ratio elemen belül"
 
-#: ../src/ui/theme-parser.c:3330
+#: ../src/ui/theme-parser.c:3341
 #, c-format
 msgid "Element <%s> is not allowed inside a draw operation element"
 msgstr "<%s> elem nem megengedett egy rajzoló művelet elemen belül"
 
-#: ../src/ui/theme-parser.c:3340 ../src/ui/theme-parser.c:3370
-#: ../src/ui/theme-parser.c:3375 ../src/ui/theme-parser.c:3380
+#: ../src/ui/theme-parser.c:3351 ../src/ui/theme-parser.c:3381
+#: ../src/ui/theme-parser.c:3386 ../src/ui/theme-parser.c:3391
 #, c-format
 msgid "Element <%s> is not allowed inside a <%s> element"
 msgstr "<%s> elem nem megengedett egy <%s> elemen belül"
 
-#: ../src/ui/theme-parser.c:3602
+#: ../src/ui/theme-parser.c:3613
 msgid "No draw_ops provided for frame piece"
 msgstr "Nincsen draw_ops a keretdarabhoz"
 
-#: ../src/ui/theme-parser.c:3617
+#: ../src/ui/theme-parser.c:3628
 msgid "No draw_ops provided for button"
 msgstr "Nincs draw_ops megadva a gombhoz"
 
-#: ../src/ui/theme-parser.c:3669
+#: ../src/ui/theme-parser.c:3680
 #, c-format
 msgid "No text is allowed inside element <%s>"
 msgstr "Nincs szöveg engedélyezve a(z) <%s> elemen belül"
 
-#: ../src/ui/theme-parser.c:3724 ../src/ui/theme-parser.c:3736
-#: ../src/ui/theme-parser.c:3748 ../src/ui/theme-parser.c:3760
-#: ../src/ui/theme-parser.c:3772
+#: ../src/ui/theme-parser.c:3735 ../src/ui/theme-parser.c:3747
+#: ../src/ui/theme-parser.c:3759 ../src/ui/theme-parser.c:3771
+#: ../src/ui/theme-parser.c:3783
 #, c-format
 msgid "<%s> specified twice for this theme"
 msgstr "<%s> kétszer lett meghatározva ehhez a témához"
 
-#: ../src/ui/theme-parser.c:4040
+#: ../src/ui/theme-parser.c:4051
 #, c-format
 msgid "Failed to find a valid file for theme %s\n"
 msgstr "Nem található érvényes fájl a következő témához: %s\n"
 
-#: ../src/ui/theme-parser.c:4096
+#: ../src/ui/theme-parser.c:4107
 #, c-format
 msgid "Theme file %s did not contain a root <metacity_theme> element"
 msgstr "%s téma fájl nem tartalmaz gyökér <metacity_theme> elemet"
@@ -2368,7 +1681,8 @@ msgstr "a pozíció kifejezés teszt IGAZ értéket adott vissza, de hiba tört�
 
 #: ../src/ui/theme-viewer.c:1248
 msgid "position expression test returned FALSE but didn't set error"
-msgstr "a pozíció kifejezés teszt HAMIS értéket adott vissza, de nem történt hiba"
+msgstr ""
+"a pozíció kifejezés teszt HAMIS értéket adott vissza, de nem történt hiba"
 
 #: ../src/ui/theme-viewer.c:1252
 msgid "Error was expected but none given"
@@ -2401,3 +1715,597 @@ msgstr ""
 "A %d koordináta kifejezések %g másodperc alatt lettek feldolgozva (átlagosan "
 "%g másodperc)\n"
 
+#~ msgid "Launchers"
+#~ msgstr "Parancsikonok"
+
+#~ msgid "Screenshots"
+#~ msgstr "Képernyőképek"
+
+#~ msgid ""
+#~ "There was an error running <tt>%s</tt>:\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Hiba történt a(z) <tt>%s</tt> futtatása közben:\n"
+#~ "\n"
+#~ "%s"
+
+#~ msgid "No command %d has been defined.\n"
+#~ msgstr "Nincs %d parancs meghatározva.\n"
+
+#~ msgid "No terminal command has been defined.\n"
+#~ msgstr "Nincs terminálparancs meghatározva.\n"
+
+#~ msgid "GConf key '%s' is set to an invalid value\n"
+#~ msgstr "„%s” GConf kulcs érvénytelen értékre van állítva\n"
+
+#~ msgid "%d stored in GConf key %s is out of range %d to %d\n"
+#~ msgstr ""
+#~ "%d, ami a(z) %s GConf kulcsban van tárolva, a tartományon (%d - %d) kívül "
+#~ "van\n"
+
+#~ msgid "GConf key \"%s\" is set to an invalid type\n"
+#~ msgstr "„%s” GConf kulcs érvénytelen típusú\n"
+
+#~ msgid "Error setting number of workspaces to %d: %s\n"
+#~ msgstr ""
+#~ "Hiba a munkaterületek számának beállításánál a következőre: %d: %s\n"
+
+#~ msgid "Error setting name for workspace %d to \"%s\": %s\n"
+#~ msgstr ""
+#~ "Hiba a(z) %d. munkaterület nevének beállításánál a következőre: „%s”: %s\n"
+
+#~ msgid "Error setting compositor status: %s\n"
+#~ msgstr "Hiba a kompozitáló állapotának beállításakor: %s\n"
+
+#~ msgid ""
+#~ "The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
+#~ "\n"
+#~ "The parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to "
+#~ "the special string \"disabled\", then there will be no keybinding for "
+#~ "this action."
+#~ msgstr ""
+#~ "Formátuma ehhez hasonló: „<Control>a” vagy „<Shift><Alt>F1”.\n"
+#~ "\n"
+#~ "Az elemző elég liberális, nem érzékeny a kis- és nagybetűkre, valamint "
+#~ "rövidítéseket (mint „<Ctl>” és „<Ctrl>”) is megenged. Az opciót a "
+#~ "speciális „disabled” karakterláncra állítva nem lesz billentyűkombináció "
+#~ "társítva ehhez a művelethez."
+
+#~ msgid ""
+#~ "The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
+#~ "\n"
+#~ "The parser is fairly liberal and allows lower or upper case, and also "
+#~ "abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to "
+#~ "the special string \"disabled\", then there will be no keybinding for "
+#~ "this action.\n"
+#~ "\n"
+#~ "This keybinding may be reversed by holding down the \"shift\" key; "
+#~ "therefore, \"shift\" cannot be one of the keys it uses."
+#~ msgstr ""
+#~ "Formátuma ehhez hasonló: „<Control>a” vagy „<Shift><Alt>F1”.\n"
+#~ "\n"
+#~ "Az elemző elég liberális, nem érzékeny a kis- és nagybetűkre, valamint "
+#~ "rövidítéseket (mint „<Ctl>” és „<Ctrl>”) is megenged. Az opciót a "
+#~ "speciális „disabled” karakterláncra állítva nem lesz billentyűkombináció "
+#~ "társítva ehhez a művelethez.\n"
+#~ "\n"
+#~ "Ez a billentyűtársítás megfordítható a „Shift” billentyű lenyomásával, "
+#~ "így a „Shift” itt nem használható."
+
+#~ msgid "Switch to workspace 5"
+#~ msgstr "Átváltás az 5. munkaterületre"
+
+#~ msgid "Switch to workspace 6"
+#~ msgstr "Átváltás a 6. munkaterületre"
+
+#~ msgid "Switch to workspace 7"
+#~ msgstr "Átváltás a 7. munkaterületre"
+
+#~ msgid "Switch to workspace 8"
+#~ msgstr "Átváltás a 8. munkaterületre"
+
+#~ msgid "Switch to workspace 9"
+#~ msgstr "Átváltás a 9. munkaterületre"
+
+#~ msgid "Switch to workspace 10"
+#~ msgstr "Átváltás a 10. munkaterületre"
+
+#~ msgid "Switch to workspace 11"
+#~ msgstr "Átváltás a 11. munkaterületre"
+
+#~ msgid "Switch to workspace 12"
+#~ msgstr "Átváltás a 12. munkaterületre"
+
+#~ msgid "Reverse switch windows of an application"
+#~ msgstr "Váltás visszafelé egy alkalmazás ablakai között"
+
+#~ msgid "Reverse switch applications"
+#~ msgstr "Váltás visszafelé az alkalmazások között"
+
+#~ msgid "Reverse switch system controls"
+#~ msgstr "Váltás visszafelé a rendszer vezérlői közt"
+
+#~ msgid "Reverse switch windows of an app directly"
+#~ msgstr "Váltás visszafelé egy alkalmazás ablakai között közvetlenül"
+
+#~ msgid "Reverse switch windows directly"
+#~ msgstr "Váltás visszafelé az ablakok közt közvetlenül"
+
+#~ msgid "Reverse switch system controls directly"
+#~ msgstr "Váltás visszafelé a rendszer vezérlői közt közvetlenül"
+
+#~ msgid "Take a screenshot"
+#~ msgstr "Képernyőkép készítése"
+
+#~ msgid "Take a screenshot of a window"
+#~ msgstr "Képernyőkép készítése egy ablakról"
+
+#~ msgid "Launch Terminal"
+#~ msgstr "Terminál indítása"
+
+#~ msgid "Toggle window always appearing on top"
+#~ msgstr "Ablak mindig felül történő megjelenésének átváltása"
+
+#~ msgid "Move window to workspace 5"
+#~ msgstr "Ablak áthelyezése az 5. munkaterületre"
+
+#~ msgid "Move window to workspace 6"
+#~ msgstr "Ablak áthelyezése a 6. munkaterületre"
+
+#~ msgid "Move window to workspace 7"
+#~ msgstr "Ablak áthelyezése a 7. munkaterületre"
+
+#~ msgid "Move window to workspace 8"
+#~ msgstr "Ablak áthelyezése a 8. munkaterületre"
+
+#~ msgid "Move window to workspace 9"
+#~ msgstr "Ablak áthelyezése a 9. munkaterületre"
+
+#~ msgid "Move window to workspace 10"
+#~ msgstr "Ablak áthelyezése a 10. munkaterületre"
+
+#~ msgid "Move window to workspace 11"
+#~ msgstr "Ablak áthelyezése a 11. munkaterületre"
+
+#~ msgid "Move window to workspace 12"
+#~ msgstr "Ablak áthelyezése a 12. munkaterületre"
+
+#~ msgid "Move window to top left corner"
+#~ msgstr "Ablak áthelyezése a bal felső sarokba"
+
+#~ msgid "Move window to top right corner"
+#~ msgstr "Ablak áthelyezése a jobb felső sarokba"
+
+#~ msgid "Move window to bottom left corner"
+#~ msgstr "Ablak áthelyezése a bal alsó sarokba"
+
+#~ msgid "Move window to bottom right corner"
+#~ msgstr "Ablak áthelyezése a jobb alsó sarokba"
+
+#~ msgid "Move window to top edge of screen"
+#~ msgstr "Ablak áthelyezése a képernyő felső oldalához"
+
+#~ msgid "Move window to bottom edge of screen"
+#~ msgstr "Ablak áthelyezése a képernyő alsó oldalához"
+
+#~ msgid "Move window to right side of screen"
+#~ msgstr "Ablak áthelyezése a képernyő jobb oldalához"
+
+#~ msgid "Move window to left side of screen"
+#~ msgstr "Ablak áthelyezése a képernyő bal oldalához"
+
+#~ msgid "Move window to center of screen"
+#~ msgstr "Ablak áthelyezése a képernyő közepére"
+
+#~ msgid ""
+#~ "(Not implemented) Navigation works in terms of applications not windows"
+#~ msgstr ""
+#~ "(Nincs megvalósítva) A navigáció az alkalmazások és nem az ablakok "
+#~ "szintjén működik"
+
+#~ msgid ""
+#~ "A font description string describing a font for window titlebars. The "
+#~ "size from the description will only be used if the titlebar_font_size "
+#~ "option is set to 0. Also, this option is disabled if the "
+#~ "titlebar_uses_desktop_font option is set to true."
+#~ msgstr ""
+#~ "Betűkészlet-leíró karakterlánc, amely meghatározza az ablak címsorának "
+#~ "betűkészletét. A leírás méret része csak akkor érvényesül, ha a "
+#~ "titlebar_font_size opció értéke 0. Ez az opció le van tiltva, ha a "
+#~ "titlebar_uses_desktop_font értéke igaz."
+
+#~ msgid "Action on title bar double-click"
+#~ msgstr "A címsoron való dupla kattintáskor bekövetkező esemény"
+
+#~ msgid "Action on title bar middle-click"
+#~ msgstr "A címsoron való középső gombos kattintáskor bekövetkező esemény"
+
+#~ msgid "Action on title bar right-click"
+#~ msgstr "A címsoron való jobb gombos kattintáskor bekövetkező esemény"
+
+#~ msgid "Arrangement of buttons on the titlebar"
+#~ msgstr "A gombok elrendezése az ablak címsorában"
+
+#~ msgid ""
+#~ "Arrangement of buttons on the titlebar. The value should be a string, "
+#~ "such as \"menu:minimize,maximize,spacer,close\"; the colon separates the "
+#~ "left corner of the window from the right corner, and the button names are "
+#~ "comma-separated. Duplicate buttons are not allowed. Unknown button names "
+#~ "are silently ignored so that buttons can be added in future metacity "
+#~ "versions without breaking older versions. A special spacer tag can be "
+#~ "used to insert some space between two adjacent buttons."
+#~ msgstr ""
+#~ "A címsor gombjainak igazítása. Az értéknek szövegnek kell lennie, mint "
+#~ "például „menu:minimize,maximize,spacer,close”; a kettőspont választja el "
+#~ "az ablak jobb és bal sarkát, a gombneveket pedig vesszők. Kettőzött "
+#~ "gombok nem megengedettek. Az ismeretlen gombnevek jelzés nélkül figyelmen "
+#~ "kívül lesznek hagyva, így a jövőbeli metacity verziókkal készült "
+#~ "gombsorok visszafelé kompatibilisek maradnak. A speciális spacer címkével "
+#~ "némi hely szúrható két szomszédos gomb közé."
+
+#~ msgid "Automatically raises the focused window"
+#~ msgstr "Automatikusan előtérbe hozza az aktív ablakot"
+
+#~ msgid ""
+#~ "Clicking a window while holding down this modifier key will move the "
+#~ "window (left click), resize the window (middle click), or show the window "
+#~ "menu (right click). The middle and right click operations may be swapped "
+#~ "using the \"resize_with_right_button\" key. Modifier is expressed as "
+#~ "\"&lt;Alt&gt;\" or \"&lt;Super&gt;\" for example."
+#~ msgstr ""
+#~ "Ezen billentyű nyomva tartása mellett az ablakra kattintva az ablak "
+#~ "mozgatható (bal gomb) átméretezhető (középső gomb) vagy megjeleníthető az "
+#~ "ablakmenü (jobb gomb). A bal és jobb műveletek felcserélhetők a "
+#~ "„resize_with_right_button” kulcs segítségével. A módosítót például a "
+#~ "következő módon lehet megadni: „&lt;Alt&gt;” vagy „&lt;Super&gt;”."
+
+#~ msgid "Commands to run in response to keybindings"
+#~ msgstr "A billentyűkombinációkra válaszul futtatandó parancsok"
+
+#~ msgid "Control how new windows get focus"
+#~ msgstr "Új ablakok fókuszba kerülésének vezérlése"
+
+#~ msgid "Current theme"
+#~ msgstr "Jelenlegi téma"
+
+#~ msgid "Delay in milliseconds for the auto raise option"
+#~ msgstr ""
+#~ "Az automatikus előtérbe hozás opció késleltetése (ezredmásodpercben)"
+
+#~ msgid ""
+#~ "Determines whether applications or the system can generate audible "
+#~ "'beeps'; may be used in conjunction with 'visual bell' to allow silent "
+#~ "'beeps'."
+#~ msgstr ""
+#~ "Meghatározza, hogy az alkalmazások vagy a rendszer tudnak-e hallható "
+#~ "hangjelzéseket kiadni, hasznos lehet a „látható rendszercsengővel” együtt "
+#~ "alkalmazni, mert ennek segítségével lehetségesek a „néma hangjelzések” is."
+
+#~ msgid "Disable misfeatures that are required by old or broken applications"
+#~ msgstr ""
+#~ "Azon hibás funkciók letiltása, amelyeket régi vagy hibás alkalmazások "
+#~ "használnak"
+
+#~ msgid "Enable Visual Bell"
+#~ msgstr "„Látható csipogás” engedélyezése"
+
+#~ msgid ""
+#~ "If set to true, and the focus mode is either \"sloppy\" or \"mouse\" then "
+#~ "the focused window will be automatically raised after a delay specified "
+#~ "by the auto_raise_delay key. This is not related to clicking on a window "
+#~ "to raise it, nor to entering a window during drag-and-drop."
+#~ msgstr ""
+#~ "Ha igazra van állítva és a fókuszmód a „sloppy” vagy „mouse” egyike, "
+#~ "akkor a fókuszba került ablak automatikusan az előtérbe lesz hozva az "
+#~ "auto_raise_delay kulcsban megadott késleltetés letelte után. Ez nem "
+#~ "kapcsolódik az ablakra kattintáshoz annak előtérbe hozása érdekében, sem "
+#~ "az ablakra mutatáshoz fogd és ejtsd művelet során."
+
+#~ msgid ""
+#~ "If true, ignore the titlebar_font option, and use the standard "
+#~ "application font for window titles."
+#~ msgstr ""
+#~ "Ha igazra van állítva, a titlebar_font opciót figyelmen kívül hagyja, és "
+#~ "a szabvány alkalmazás betűkészletet használja az ablakok címsoraihoz."
+
+#~ msgid ""
+#~ "If true, then Metacity works in terms of applications rather than "
+#~ "windows. The concept is a bit abstract, but in general an application-"
+#~ "based setup is more like the Mac and less like Windows. When you focus a "
+#~ "window in application-based mode, all the windows in the application will "
+#~ "be raised. Also, in application-based mode, focus clicks are not passed "
+#~ "through to windows in other applications. Application-based mode is, "
+#~ "however, largely unimplemented at the moment."
+#~ msgstr ""
+#~ "Ha ez be van állítva, akkor a Metacity inkább az alkalmazások és nem az "
+#~ "ablakok szintjén működik. A koncepció egy kicsit elvont, de összességében "
+#~ "az alkalmazás alapú beállítás inkább mac-es és kevésbé windowsos. Ha "
+#~ "fókuszba kerül valamelyik ablak az alkalmazás alapú módban, akkor az "
+#~ "alkalmazás minden ablaka előtérbe kerül. Szintén ebben az üzemmódban a "
+#~ "kattintások nem jutnak át más alkalmazások ablakain. Az alkalmazás alapú "
+#~ "üzemmód azonban jelenleg nagyrészt nincs megvalósítva."
+
+#~ msgid "Modifier to use for modified window click actions"
+#~ msgstr ""
+#~ "Módosító, amellyel a módosított ablakra kattintás műveletek használhatók"
+
+#~ msgid "Name of workspace"
+#~ msgstr "Munkaterület neve"
+
+#~ msgid "Number of workspaces"
+#~ msgstr "Munkaterületek száma"
+
+#~ msgid ""
+#~ "Number of workspaces. Must be more than zero, and has a fixed maximum to "
+#~ "prevent making the desktop unusable by accidentally asking for too many "
+#~ "workspaces."
+#~ msgstr ""
+#~ "A munkaterületek száma. Az értéknek nullánál nagyobbnak kell lennie, és "
+#~ "van egy rögzített maximális érték, amely megakadályozza az asztal "
+#~ "használhatatlanná tételét túl sok munkaterület véletlen beállításával."
+
+#~ msgid "Run a defined command"
+#~ msgstr "Megadott parancs futtatása"
+
+#~ msgid ""
+#~ "Set this to true to resize with the right button and show a menu with the "
+#~ "middle button while holding down the key given in \"mouse_button_modifier"
+#~ "\"; set it to false to make it work the opposite way around."
+#~ msgstr ""
+#~ "Állítsa igazra a „mouse_button_modifier” kulcsban megadott billentyű "
+#~ "lenyomva tartása közben a jobb gombbal való átméretezéshez és a középső "
+#~ "gombbal a menü megjelenítéséhez, állítsa hamisra az ellentétes működéshez."
+
+#~ msgid ""
+#~ "Setting this option to false can lead to buggy behavior, so users are "
+#~ "strongly discouraged from changing it from the default of true. Many "
+#~ "actions (e.g. clicking in the client area, moving or resizing the window) "
+#~ "normally raise the window as a side-effect. Setting this option to false, "
+#~ "which is strongly discouraged, will decouple raising from other user "
+#~ "actions, and ignore raise requests generated by applications. See http://"
+#~ "bugzilla.gnome.org/show_bug.cgi?id=445447#c6. Even when this option is "
+#~ "false, windows can still be raised by an alt-left-click anywhere on the "
+#~ "window, a normal click on the window decorations, or by special messages "
+#~ "from pagers, such as activation requests from tasklist applets. This "
+#~ "option is currently disabled in click-to-focus mode. Note that the list "
+#~ "of ways to raise windows when raise_on_click is false does not include "
+#~ "programmatic requests from applications to raise windows; such requests "
+#~ "will be ignored regardless of the reason for the request. If you are an "
+#~ "application developer and have a user complaining that your application "
+#~ "does not work with this setting disabled, tell them it is _their_ fault "
+#~ "for breaking their window manager and that they need to change this "
+#~ "option back to true or live with the \"bug\" they requested."
+#~ msgstr ""
+#~ "Ezen érték hamisra állítása hibás viselkedést eredményezhet, ezért nem "
+#~ "javasolt az alapértelmezett igaz érték módosítása. Számos művelet "
+#~ "(például a kattintás a kliens területén, az ablak mozgatása vagy "
+#~ "átméretezése) mellékhatásként előtérbe hozzák az ablakot. Ezen beállítás "
+#~ "- nem javasolt – hamisra állításával az előtérbe hozást elválaszthatja "
+#~ "más felhasználói műveletektől és figyelmen kívül hagyhatja az "
+#~ "alkalmazások által generált előtérbe hozási kéréseket. Ha ez az érték "
+#~ "hamis, az ablakok akkor is előtérbe hozhatók az Alt+bal gombbal "
+#~ "kattintással az ablakban bárhová, normál kattintással az ablak "
+#~ "díszítésein vagy a lapozók speciális üzeneteivel, például aktiválási "
+#~ "kérésekkel a feladatlista kisalkalmazásoktól. Ez a beállítás jelenleg le "
+#~ "van tiltva a „kattintás fókuszhoz” módban. Ne feledje, hogy az ablakok "
+#~ "előtérbe hozási módjainak listája a „raise_on_click” kulcs hamis értéke "
+#~ "esetén nem tartalmazza az alkalmazások ablak-előtérbe hozási "
+#~ "programkéréseit, az ilyen kérések a kérés okától függetlenül figyelmen "
+#~ "kívül maradnak. Ha alkalmazásfejlesztőként a felhasználói arra "
+#~ "panaszkodnak, hogy az alkalmazás nem működik ezen beállítás letiltásakor, "
+#~ "akkor vissza kell állítaniuk ezen beállítás igaz értékét. További "
+#~ "információkért nézze meg a http://bugzilla.gnome.org/show_bug.cgi?"
+#~ "id=445447#c6 oldalt."
+
+#~ msgid ""
+#~ "Some applications disregard specifications in ways that result in window "
+#~ "manager misfeatures. This option puts Metacity in a rigorously correct "
+#~ "mode, which gives a more consistent user interface, provided one does not "
+#~ "need to run any misbehaving applications."
+#~ msgstr ""
+#~ "Néhány alkalmazás a szabványokat olyan módon veszi semmibe, hogy az az "
+#~ "ablakkezelő hibás viselkedését okozza. Ez a lehetőség a Metacity-t "
+#~ "kérlelhetetlenül helyes módba kapcsolja, amely sokkal konzisztensebb "
+#~ "felhasználói felületet eredményez, feltéve hogy nem kell hibásan működő "
+#~ "alkalmazásokat futtatnia."
+
+#~ msgid "System Bell is Audible"
+#~ msgstr "A rendszer pittyenése hallható"
+
+#~ msgid ""
+#~ "Tells Metacity how to implement the visual indication that the system "
+#~ "bell or another application 'bell' indicator has been rung. Currently "
+#~ "there are two valid values, \"fullscreen\", which causes a fullscreen "
+#~ "white-black flash, and \"frame_flash\" which causes the titlebar of the "
+#~ "application which sent the bell signal to flash. If the application which "
+#~ "sent the bell is unknown (as is usually the case for the default \"system "
+#~ "beep\"), the currently focused window's titlebar is flashed."
+#~ msgstr ""
+#~ "Meghatározza, hogy a Metacity hogyan jelenítse meg látható módon, ha a "
+#~ "rendszercsengő (esetleg másik alkalmazás „csengője”) megszólal. Jelenleg "
+#~ "két érvényes értéke van: a „fullscreen”, amely teljes képernyős fekete-"
+#~ "fehér villanását okozza illetve a „frame_flash”, amely a címsor "
+#~ "villanását okozza annál az alkalmazásnál, amely a jelzést kiváltotta. Ha "
+#~ "ez az alkalmazás ismeretlen (amely általános az alapértelmezett „system "
+#~ "beep” esetén), akkor a jelenleg aktív ablak címsora fog felvillanni."
+
+#~ msgid ""
+#~ "The /apps/metacity/global_keybindings/run_command_N keys define "
+#~ "keybindings that correspond to these commands. Pressing the keybinding "
+#~ "for run_command_N will execute command_N."
+#~ msgstr ""
+#~ "Az /apps/metacity/global_keybindings/run_command_N határozza meg a "
+#~ "billentyűkombinációkat, amelyek ezekhez a parancsokhoz tartoznak. A "
+#~ "run_command_N-hez tartozó billentyűkombináció lenyomásakor végre lesz "
+#~ "hajtva a command_N."
+
+#~ msgid ""
+#~ "The /apps/metacity/global_keybindings/run_command_screenshot key defines "
+#~ "a keybinding which causes the command specified by this setting to be "
+#~ "invoked."
+#~ msgstr ""
+#~ "Az /apps/metacity/global_keybindings/run_command_screenshot kulcs "
+#~ "definiálja azt a billentyűkombinációt, amely ezen beállítások által "
+#~ "meghatározott parancsot hívja meg."
+
+#~ msgid ""
+#~ "The /apps/metacity/global_keybindings/run_command_window_screenshot key "
+#~ "defines a keybinding which causes the command specified by this setting "
+#~ "to be invoked."
+#~ msgstr ""
+#~ "Az /apps/metacity/global_keybindings/run_command_window_screenshot kulcs "
+#~ "definiálja azt a billentyűkombinációt, amely ezen beállítások által "
+#~ "meghatározott parancsot hívja meg."
+
+#~ msgid ""
+#~ "The keybinding that runs the correspondingly-numbered command in /apps/"
+#~ "metacity/keybinding_commands The format looks like \"&lt;Control&gt;a\" "
+#~ "or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and "
+#~ "allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
+#~ "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
+#~ "\"disabled\", then there will be no keybinding for this action."
+#~ msgstr ""
+#~ "Az a billentyűkombináció, amely futtatja a megfelelő számú parancsot az /"
+#~ "apps/metacity/keybinding_commands kulcsból. Formátuma ehhez hasonló: „&lt;"
+#~ "Control&gt;a” vagy „&lt;Shift&gt;&lt;Alt&gt;F1”. Az elemző elég "
+#~ "liberális, nem érzékeny a kis- és nagybetűkre, valamint rövidítéseket "
+#~ "(mint „&lt;Ctl&gt;” és „&lt;Ctrl&gt;”) is megenged. Ha az opciót a "
+#~ "speciális „disabled” karakterláncra állítja be, akkor nem lesz "
+#~ "billentyűkombináció társítva ehhez a művelethez."
+
+#~ msgid "The name of a workspace."
+#~ msgstr "A munkaterület neve."
+
+#~ msgid "The screenshot command"
+#~ msgstr "A képernyőkép-készítő parancs"
+
+#~ msgid ""
+#~ "The theme determines the appearance of window borders, titlebar, and so "
+#~ "forth."
+#~ msgstr "A téma meghatározza az ablakkeretek, a címsor és sok más kinézetét."
+
+#~ msgid ""
+#~ "The time delay before raising a window if auto_raise is set to true. The "
+#~ "delay is given in thousandths of a second."
+#~ msgstr ""
+#~ "Késleltetés (ezredmásodpercben) az ablak automatikus előtérbe hozása "
+#~ "előtt, ha az auto_raise engedélyezett."
+
+#~ msgid ""
+#~ "The window focus mode indicates how windows are activated. It has three "
+#~ "possible values; \"click\" means windows must be clicked in order to "
+#~ "focus them, \"sloppy\" means windows are focused when the mouse enters "
+#~ "the window, and \"mouse\" means windows are focused when the mouse enters "
+#~ "the window and unfocused when the mouse leaves the window."
+#~ msgstr ""
+#~ "Az ablakfókusz módja jelzi, hogy az ablakokat hogyan tehetőek aktívvá. "
+#~ "Három lehetséges értéke van; „click” azt jelenti, hogy rá kell kattintani "
+#~ "az adott ablakra hogy aktív legyen, „sloppy” azt jelenti, hogy az ablak "
+#~ "aktív lesz, amint az egér az ablak fölé ér és a „mouse” azt jelenti, hogy "
+#~ "az ablak aktív lesz, amint az egér az ablak fölé ér és nem lesz az, ha az "
+#~ "egér elhagyja az ablakot."
+
+#~ msgid "The window screenshot command"
+#~ msgstr "Az ablakról képernyőképet készítő parancs"
+
+#~ msgid ""
+#~ "This option determines the effects of double-clicking on the title bar. "
+#~ "Current valid options are 'toggle_shade', which will shade/unshade the "
+#~ "window, 'toggle_maximize' which will maximize/unmaximize the window, "
+#~ "'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which "
+#~ "will maximize/unmaximize the window in that direction only, 'minimize' "
+#~ "which will minimize the window, 'shade' which will roll the window up, "
+#~ "'menu' which will display the window menu, 'lower' which will put the "
+#~ "window behind all the others, and 'none' which will not do anything."
+#~ msgstr ""
+#~ "Ez az opció határozza meg, hogy mi történjen a címsoron való dupla "
+#~ "kattintás esetén. Jelenleg érvényes opciók a „toggle_shade”, amely "
+#~ "hatására az ablak felgördül/legördül, a „toggle_maximize”, amely hatására "
+#~ "teljes képernyős/eredeti méretű lesz, „toggle_maximize_horizontally” és "
+#~ "„toggle_maximize_vertically”, amelyek hatására az ablak csak vízszintesen/"
+#~ "függőlegesen lesz maximalizálva, „minimize”, amely hatására kis méretű "
+#~ "lesz az ablak, „shade”, amely hatására az ablak felgördül, „menu”, amely "
+#~ "megjeleníti az ablak menüt, „lower”, amely az ablakot a többi ablak mögé "
+#~ "viszi és „none”, amely nem hajt végre semmit."
+
+#~ msgid ""
+#~ "This option determines the effects of middle-clicking on the title bar. "
+#~ "Current valid options are 'toggle_shade', which will shade/unshade the "
+#~ "window, 'toggle_maximize' which will maximize/unmaximize the window, "
+#~ "'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which "
+#~ "will maximize/unmaximize the window in that direction only, 'minimize' "
+#~ "which will minimize the window, 'shade' which will roll the window up, "
+#~ "'menu' which will display the window menu, 'lower' which will put the "
+#~ "window behind all the others, and 'none' which will not do anything."
+#~ msgstr ""
+#~ "Ez az opció határozza meg, hogy mi történjen a címsoron való középső "
+#~ "gombos kattintás esetén. Jelenleg érvényes opciók a „toggle_shade”, amely "
+#~ "hatására az ablak felgördül/legördül, a „toggle_maximize”, amely hatására "
+#~ "teljes képernyős/eredeti méretű lesz, „toggle_maximize_horizontally” és "
+#~ "„toggle_maximize_vertically”, amelyek hatására az ablak csak vízszintesen/"
+#~ "függőlegesen lesz maximalizálva, „minimize”, amely hatására kis méretű "
+#~ "lesz az ablak, „shade”, amely hatására az ablak felgördül, „menu”, amely "
+#~ "megjeleníti az ablak menüt, „lower”, amely az ablakot a többi ablak mögé "
+#~ "viszi és „none”, amely nem hajt végre semmit."
+
+#~ msgid ""
+#~ "This option determines the effects of right-clicking on the title bar. "
+#~ "Current valid options are 'toggle_shade', which will shade/unshade the "
+#~ "window, 'toggle_maximize' which will maximize/unmaximize the window, "
+#~ "'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which "
+#~ "will maximize/unmaximize the window in that direction only, 'minimize' "
+#~ "which will minimize the window, 'shade' which will roll the window up, "
+#~ "'menu' which will display the window menu, 'lower' which will put the "
+#~ "window behind all the others, and 'none' which will not do anything."
+#~ msgstr ""
+#~ "Ez az opció határozza meg, hogy mi történjen a címsoron való jobb gombos "
+#~ "kattintás esetén. Jelenleg érvényes opciók a „toggle_shade”, amely "
+#~ "hatására az ablak felgördül/legördül, a „toggle_maximize”, amely hatására "
+#~ "teljes képernyős/eredeti méretű lesz, „toggle_maximize_horizontally” és "
+#~ "„toggle_maximize_vertically”, amelyek hatására az ablak csak vízszintesen/"
+#~ "függőlegesen lesz maximalizálva, „minimize”, amely hatására kis méretű "
+#~ "lesz az ablak, „shade”, amely hatására az ablak felgördül, „menu”, amely "
+#~ "megjeleníti az ablak menüt, „lower”, amely az ablakot a többi ablak mögé "
+#~ "viszi és „none”, amely nem hajt végre semmit."
+
+#~ msgid ""
+#~ "This option provides additional control over how newly created windows "
+#~ "get focus. It has two possible values; \"smart\" applies the user's "
+#~ "normal focus mode, and \"strict\" results in windows started from a "
+#~ "terminal not being given focus."
+#~ msgstr ""
+#~ "Ez a beállítás az újonnan létrehozott ablakok fókuszba kerülésének "
+#~ "irányítására biztosít további lehetőséget. Két lehetséges értéke van: a "
+#~ "„smart” (intelligens) a felhasználó normál fókuszmódját alkalmazza, a "
+#~ "„strict” (korlátozott) hatására pedig a terminálból indított ablakok nem "
+#~ "kapnak fókuszt."
+
+#~ msgid ""
+#~ "Turns on a visual indication when an application or the system issues a "
+#~ "'bell' or 'beep'; useful for the hard-of-hearing and for use in noisy "
+#~ "environments."
+#~ msgstr ""
+#~ "Látható jelzést ad, amikor egy alkalmazás vagy a rendszer egy „csengést” "
+#~ "vagy „sípolást” bocsát ki; hasznos a nagyothallók számára vagy hangos "
+#~ "környezetben."
+
+#~ msgid "Use standard system font in window titles"
+#~ msgstr "A rendszer szabvány betűtípusának használata az ablak címsorában"
+
+#~ msgid "Visual Bell Type"
+#~ msgstr "Látható csengetés típusa"
+
+#~ msgid "Whether raising should be a side-effect of other user interactions"
+#~ msgstr ""
+#~ "Az előtérbe hozás más felhasználói tevékenységek mellékhatása legyen-e"
+
+#~ msgid "Whether to resize with the right button"
+#~ msgstr "Átméretezés a jobb egérgombbal"
+
+#~ msgid "Window focus mode"
+#~ msgstr "Ablakfókusz módja"
+
+#~ msgid "Window title font"
+#~ msgstr "Az ablak címsorának betűtípusa"
