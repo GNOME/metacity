@@ -5818,6 +5818,21 @@ meta_window_get_icon_geometry (MetaWindow    *window,
   return FALSE;
 }
 
+void
+meta_window_set_icon_geometry (MetaWindow    *window,
+                               MetaRectangle *rect)
+{
+  if (rect)
+    {
+      window->icon_geometry = *rect;
+      window->icon_geometry_set = TRUE;
+    }
+  else
+    {
+      window->icon_geometry_set = FALSE;
+    }
+}
+
 static Window
 read_client_leader (MetaDisplay *display,
                     Window       xwindow)
