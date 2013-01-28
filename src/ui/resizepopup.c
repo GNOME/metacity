@@ -68,8 +68,6 @@ meta_ui_resize_popup_free (MetaResizePopup *popup)
 static void
 ensure_size_window (MetaResizePopup *popup)
 {
-  GtkWidget *frame;
-
   if (popup->size_window)
     return;
 
@@ -83,11 +81,6 @@ ensure_size_window (MetaResizePopup *popup)
   gtk_window_set_resizable (GTK_WINDOW (popup->size_window),
                             TRUE);
 
-  frame = gtk_frame_new (NULL);
-  gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_OUT);
-
-  gtk_container_add (GTK_CONTAINER (popup->size_window), frame);
-
   popup->size_label = gtk_label_new ("");
 
   gtk_widget_set_margin_start (popup->size_label, 3);
@@ -95,9 +88,10 @@ ensure_size_window (MetaResizePopup *popup)
   gtk_widget_set_margin_top (popup->size_label, 3);
   gtk_widget_set_margin_bottom (popup->size_label, 3);
 
-  gtk_container_add (GTK_CONTAINER (frame), popup->size_label);
+  gtk_container_add (GTK_CONTAINER (popup->size_window),
+                     popup->size_label);
 
-  gtk_widget_show_all (frame);
+  gtk_widget_show (popup->size_label);
 }
 
 static void
