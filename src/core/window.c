@@ -5807,31 +5807,10 @@ gboolean
 meta_window_get_icon_geometry (MetaWindow    *window,
                                MetaRectangle *rect)
 {
-  gulong *geometry = NULL;
-  int nitems;
-
-  if (meta_prop_get_cardinal_list (window->display,
-                                   window->xwindow,
-                                   window->display->atom__NET_WM_ICON_GEOMETRY,
-                                   &geometry, &nitems))
+  if (window->icon_geometry_set)
     {
-      if (nitems != 4)
-        {
-          meta_verbose ("_NET_WM_ICON_GEOMETRY on %s has %d values instead of 4\n",
-                        window->desc, nitems);
-          meta_XFree (geometry);
-          return FALSE;
-        }
-
       if (rect)
-        {
-          rect->x = geometry[0];
-          rect->y = geometry[1];
-          rect->width = geometry[2];
-          rect->height = geometry[3];
-        }
-
-      meta_XFree (geometry);
+        *rect = window->icon_geometry;
 
       return TRUE;
     }

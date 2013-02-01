@@ -346,6 +346,33 @@ reload_gtk_frame_extents (MetaWindow    *window,
 }
 
 static void
+reload_icon_geometry (MetaWindow    *window,
+                      MetaPropValue *value,
+                      gboolean       initial)
+{
+  if (value->type != META_PROP_VALUE_INVALID)
+    {
+      if (value->v.cardinal_list.n_cardinals != 4)
+        {
+          meta_verbose ("_NET_WM_ICON_GEOMETRY on %s has %d values instead of 4\n",
+                        window->desc, value->v.cardinal_list.n_cardinals);
+        }
+      else
+        {
+          window->icon_geometry.x = (int)value->v.cardinal_list.cardinals[0];
+          window->icon_geometry.y = (int)value->v.cardinal_list.cardinals[1];
+          window->icon_geometry.width = (int)value->v.cardinal_list.cardinals[2];
+          window->icon_geometry.height = (int)value->v.cardinal_list.cardinals[3];
+          window->icon_geometry_set = TRUE;
+        }
+    }
+  else
+    {
+      window->icon_geometry_set = FALSE;
+    }
+}
+
+static void
 reload_struts (MetaWindow    *window,
                MetaPropValue *value,
                gboolean       initial)
@@ -1713,6 +1740,12 @@ meta_display_init_window_prop_hooks (MetaDisplay *display)
       META_PROP_VALUE_INVALID,
       reload_kwm_win_icon,
       NONE
+    },
+    {
+      display->atom__NET_WM_ICON_GEOMETRY,
+      META_PROP_VALUE_CARDINAL_LIST,
+      reload_icon_geometry,
+      LOAD_INIT
     },
     {
       display->atom_WM_CLIENT_LEADER,
