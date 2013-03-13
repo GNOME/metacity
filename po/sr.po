@@ -3,45 +3,201 @@
 # This file is distributed under the same license as the metacity package.
 # Maintainer: Горан Ракић <grakic@devbase.net>
 # Reviewed on 2005-09-03 by: Данило Шеган <danilo@prevod.org>"
-# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2011.
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2011, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-03-17 18:03+0000\n"
-"PO-Revision-Date: 2011-03-13 22:06+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=metaci"
+"ty&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2012-12-27 19:43+0000\n"
+"PO-Revision-Date: 2013-03-13 08:33+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
+"Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sr\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Virtaal 0.5.2\n"
-
-#: ../src/50-metacity-launchers.xml.in.h:1
-msgid "Launchers"
-msgstr "Покретачи"
+"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
+"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Project-Style: gnome\n"
 
 #: ../src/50-metacity-navigation.xml.in.h:1
 msgid "Navigation"
 msgstr "Навигација"
 
-#: ../src/50-metacity-screenshot.xml.in.h:1
-msgid "Screenshots"
-msgstr "Снимци екрана"
+#: ../src/50-metacity-navigation.xml.in.h:2
+msgid "Move window to workspace 1"
+msgstr "Премешта прозор на радни простор број 1"
+
+#: ../src/50-metacity-navigation.xml.in.h:3
+msgid "Move window to workspace 2"
+msgstr "Премешта прозор на радни простор број 2"
+
+#: ../src/50-metacity-navigation.xml.in.h:4
+msgid "Move window to workspace 3"
+msgstr "Премешта прозор на радни простор број 3"
+
+#: ../src/50-metacity-navigation.xml.in.h:5
+msgid "Move window to workspace 4"
+msgstr "Премешта прозор на радни простор број 4"
+
+#: ../src/50-metacity-navigation.xml.in.h:6
+msgid "Move window one workspace to the left"
+msgstr "Премешта прозор један радни простор улево"
+
+#: ../src/50-metacity-navigation.xml.in.h:7
+msgid "Move window one workspace to the right"
+msgstr "Премешта прозор један радни простор удесно"
+
+#: ../src/50-metacity-navigation.xml.in.h:8
+msgid "Move window one workspace up"
+msgstr "Премешта прозор један радни простор на горе"
+
+#: ../src/50-metacity-navigation.xml.in.h:9
+msgid "Move window one workspace down"
+msgstr "Премешта прозор један радни простор на доле"
+
+#: ../src/50-metacity-navigation.xml.in.h:10
+msgid "Switch applications"
+msgstr "Пребацује програме"
+
+#: ../src/50-metacity-navigation.xml.in.h:11
+msgid "Switch windows of an application"
+msgstr "Пребацује прозор програма"
+
+#: ../src/50-metacity-navigation.xml.in.h:12
+msgid "Switch system controls"
+msgstr "Пребацује контроле система"
+
+#: ../src/50-metacity-navigation.xml.in.h:13
+msgid "Switch windows directly"
+msgstr "Пребацује прозоре директно"
+
+#: ../src/50-metacity-navigation.xml.in.h:14
+msgid "Switch windows of an app directly"
+msgstr "Пребацује прозоре програма директно"
+
+#: ../src/50-metacity-navigation.xml.in.h:15
+msgid "Switch system controls directly"
+msgstr "Пребацује контроле система директно"
+
+#: ../src/50-metacity-navigation.xml.in.h:16
+msgid "Hide all normal windows"
+msgstr "Скрива све обичне прозоре"
+
+#: ../src/50-metacity-navigation.xml.in.h:17
+msgid "Switch to workspace 1"
+msgstr "Пребацује се на радни простор 1"
+
+#: ../src/50-metacity-navigation.xml.in.h:18
+msgid "Switch to workspace 2"
+msgstr "Пребацује се на радни простор 2"
+
+#: ../src/50-metacity-navigation.xml.in.h:19
+msgid "Switch to workspace 3"
+msgstr "Пребацује се на радни простор 3"
+
+#: ../src/50-metacity-navigation.xml.in.h:20
+msgid "Switch to workspace 4"
+msgstr "Пребацује се на радни простор 4"
+
+#: ../src/50-metacity-navigation.xml.in.h:21
+msgid "Move to workspace left"
+msgstr "Премешта на радни простор лево"
+
+#: ../src/50-metacity-navigation.xml.in.h:22
+msgid "Move to workspace right"
+msgstr "Премешта на радни простор десно"
+
+#: ../src/50-metacity-navigation.xml.in.h:23
+msgid "Move to workspace above"
+msgstr "Премешта на радни простор изнад"
+
+#: ../src/50-metacity-navigation.xml.in.h:24
+msgid "Move to workspace below"
+msgstr "Премешта на радни простор испод"
 
 #: ../src/50-metacity-system.xml.in.h:1
 msgid "System"
 msgstr "Систем"
 
+#: ../src/50-metacity-system.xml.in.h:2
+msgid "Show the run command prompt"
+msgstr "Приказује промпт за покретање наредбе"
+
+#: ../src/50-metacity-system.xml.in.h:3
+msgid "Show the activities overview"
+msgstr "Приказује преглед активности"
+
 #: ../src/50-metacity-windows.xml.in.h:1
 msgid "Windows"
 msgstr "Прозори"
 
-#: ../src/core/bell.c:299
+#: ../src/50-metacity-windows.xml.in.h:2
+msgid "Activate the window menu"
+msgstr "Активира мени прозора"
+
+#: ../src/50-metacity-windows.xml.in.h:3
+msgid "Toggle fullscreen mode"
+msgstr "Искључује/укључује приказ преко целог екрана"
+
+#: ../src/50-metacity-windows.xml.in.h:4
+msgid "Toggle maximization state"
+msgstr "Искључује/укључује стање увећања"
+
+#: ../src/50-metacity-windows.xml.in.h:5
+msgid "Maximize window"
+msgstr "Увећава прозор"
+
+#: ../src/50-metacity-windows.xml.in.h:6
+msgid "Restore window"
+msgstr "Враћа величину прозора"
+
+#: ../src/50-metacity-windows.xml.in.h:7
+msgid "Toggle shaded state"
+msgstr "Искључује/укључује стање засенчености"
+
+#: ../src/50-metacity-windows.xml.in.h:8
+msgid "Close window"
+msgstr "Затвара прозор"
+
+#: ../src/50-metacity-windows.xml.in.h:9
+msgid "Minimize window"
+msgstr "Умањује прозор"
+
+#: ../src/50-metacity-windows.xml.in.h:10
+msgid "Move window"
+msgstr "Премешта прозор"
+
+#: ../src/50-metacity-windows.xml.in.h:11
+msgid "Resize window"
+msgstr "Мења величину прозора"
+
+#: ../src/50-metacity-windows.xml.in.h:12
+msgid "Toggle window on all workspaces or one"
+msgstr "Приказује прозор на свим радним просторима или само на једном"
+
+#: ../src/50-metacity-windows.xml.in.h:13
+msgid "Raise window if covered, otherwise lower it"
+msgstr "Издиже прозор уколико га други прозор заклања, у противном га спушта"
+
+#: ../src/50-metacity-windows.xml.in.h:14
+msgid "Raise window above other windows"
+msgstr "Издиже прозор изнад осталих прозора"
+
+#: ../src/50-metacity-windows.xml.in.h:15
+msgid "Lower window below other windows"
+msgstr "Спушта прозор испод осталих прозора"
+
+#: ../src/50-metacity-windows.xml.in.h:16
+msgid "Maximize window vertically"
+msgstr "Увећава прозор вертикално"
+
+#: ../src/50-metacity-windows.xml.in.h:17
+msgid "Maximize window horizontally"
+msgstr "Увећава прозор хоризонтално"
+
+#: ../src/core/bell.c:296
 msgid "Bell event"
 msgstr "Звонце"
 
@@ -111,30 +267,6 @@ msgid ""
 msgstr ""
 "Неки други програм већ користи тастер %s са измењивачима %x за неку "
 "функцију\n"
-
-#. Displayed when a keybinding which is
-#. * supposed to launch a program fails.
-#.
-#: ../src/core/keybindings.c:2343
-#, c-format
-msgid ""
-"There was an error running <tt>%s</tt>:\n"
-"\n"
-"%s"
-msgstr ""
-"Јавила се грешка при покретању <tt>%s</tt>:\n"
-"\n"
-"%s"
-
-#: ../src/core/keybindings.c:2432
-#, c-format
-msgid "No command %d has been defined.\n"
-msgstr "Није дефинисана команда „%d“.\n"
-
-#: ../src/core/keybindings.c:3386
-#, c-format
-msgid "No terminal command has been defined.\n"
-msgstr "Није дефинисана наредба терминала.\n"
 
 #: ../src/core/main.c:131
 #, c-format
@@ -211,35 +343,7 @@ msgstr ""
 msgid "Failed to restart: %s\n"
 msgstr "Нисам успео да се поново покренем: %s\n"
 
-#.
-#. * We found it, but it was invalid.  Complain.
-#. *
-#. * FIXME: This replicates the original behaviour, but in the future
-#. * we might consider reverting invalid keys to their original values.
-#. * (We know the old value, so we can look up a suitable string in
-#. * the symtab.)
-#. *
-#. * (Empty comment follows so the translators don't see this.)
-#.
-#.
-#: ../src/core/prefs.c:508 ../src/core/prefs.c:663
-#, c-format
-msgid "GConf key '%s' is set to an invalid value\n"
-msgstr "Кључ „%s“ у гном подешавањима је подешен на непрописну вредност\n"
-
-#: ../src/core/prefs.c:589 ../src/core/prefs.c:832
-#, c-format
-msgid "%d stored in GConf key %s is out of range %d to %d\n"
-msgstr "„%d“ сачуван у кључу „%s“ је изван опсега од %d до %d\n"
-
-#: ../src/core/prefs.c:633 ../src/core/prefs.c:710 ../src/core/prefs.c:758
-#: ../src/core/prefs.c:822 ../src/core/prefs.c:1115 ../src/core/prefs.c:1131
-#: ../src/core/prefs.c:1148 ../src/core/prefs.c:1164
-#, c-format
-msgid "GConf key \"%s\" is set to an invalid type\n"
-msgstr "Кључ „%s“ у гном подешавањима је подешен на непрописни тип\n"
-
-#: ../src/core/prefs.c:1234
+#: ../src/core/prefs.c:880
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -247,12 +351,13 @@ msgstr ""
 "Решења за оштећене програме су искључена. Неке апликације се могу понашати "
 "чудно.\n"
 
-#: ../src/core/prefs.c:1305
+#: ../src/core/prefs.c:949
 #, c-format
-msgid "Could not parse font description \"%s\" from GConf key %s\n"
-msgstr "Не могу да обрадим опис „%s“ из кључа „%s“ у гном подешавањима\n"
+#| msgid "Could not parse font description \"%s\" from GConf key %s\n"
+msgid "Could not parse font description \"%s\" from GSettings key %s\n"
+msgstr "Не могу да обрадим опис „%s“ из кључа „%s“ у Гномовим подешавањима\n"
 
-#: ../src/core/prefs.c:1367
+#: ../src/core/prefs.c:1015
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -261,32 +366,17 @@ msgstr ""
 "„%s“ је пронађен у бази подешавања што није исправна вредност за типку која "
 "мења понашање тастера миша\n"
 
-#: ../src/core/prefs.c:1788
-#, c-format
-msgid "Error setting number of workspaces to %d: %s\n"
-msgstr "Грешка приликом постављања броја радних простора на %d: %s\n"
-
-#: ../src/core/prefs.c:1959 ../src/core/prefs.c:2461
-#, c-format
-msgid "Workspace %d"
-msgstr "Радни простор бр. %d"
-
-#: ../src/core/prefs.c:1988 ../src/core/prefs.c:2166
+#: ../src/core/prefs.c:1494
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
 "\"%s\"\n"
 msgstr "„%s“ из базе са подешавањима није исправна комбинација тастера „%s“\n"
 
-#: ../src/core/prefs.c:2542
+#: ../src/core/prefs.c:1601
 #, c-format
-msgid "Error setting name for workspace %d to \"%s\": %s\n"
-msgstr "Грешка приликом постављања имена радне површине %d у „%s“: %s\n"
-
-#: ../src/core/prefs.c:2746
-#, c-format
-msgid "Error setting compositor status: %s\n"
-msgstr "Грешка при постављању стања композитора: %s\n"
+msgid "Workspace %d"
+msgstr "Радни простор бр. %d"
 
 #: ../src/core/screen.c:357
 #, c-format
@@ -317,46 +407,6 @@ msgstr "Приказ %d на екрану „%s“ већ има управни�
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "Не могу да отпустим приказ %d на екрану „%s“\n"
-
-#. Translators: Please don't translate "Control", "Shift", etc, since these
-#. * are hardcoded (in gtk/gtkaccelgroup.c; it's not metacity's fault).
-#. * "disabled" must also stay as it is.
-#.
-#: ../src/core/schema-bindings.c:169
-msgid ""
-"The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
-"\n"
-"The parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action."
-msgstr ""
-"Облик записа је „<Control>a“ или „<Shift><Alt>F1“.\n"
-"\n"
-"Програм за обраду је доста слободан и дозвољава велика или мала слова, као и "
-"скраћенице попут „<Ctl>“ или „<Ctrl>“. Уколико поставите опцију на "
-"„disabled“, неће бити коришћена ниједна комбинација тастера за ову радњу."
-
-#: ../src/core/schema-bindings.c:177
-msgid ""
-"The format looks like \"<Control>a\" or \"<Shift><Alt>F1\".\n"
-"\n"
-"The parser is fairly liberal and allows lower or upper case, and also "
-"abbreviations such as \"<Ctl>\" and \"<Ctrl>\". If you set the option to the "
-"special string \"disabled\", then there will be no keybinding for this "
-"action.\n"
-"\n"
-"This keybinding may be reversed by holding down the \"shift\" key; "
-"therefore, \"shift\" cannot be one of the keys it uses."
-msgstr ""
-"Облик записа је „<Control>“ или „<Shift><Alt>F1“.\n"
-"\n"
-"Програм за обраду је доста слободан и дозвољава велика или мала слова, као и "
-"скраћенице попут „<Ctl>“ или „<Ctrl>“. Уколико поставите опцију на "
-"„disabled“, неће бити коришћена ниједна комбинација тастера за ову радњу.\n"
-"\n"
-"Можете обрнути комбинацију тастера притиском на „<Shift>“, па тастер "
-"„<Shift>“ не може бити један од оних које овде користе."
 
 #: ../src/core/session.c:842 ../src/core/session.c:849
 #, c-format
@@ -451,7 +501,6 @@ msgid "Window manager error: "
 msgstr "Грешка управника прозора: "
 
 #. Translators: This is the title used on dialog boxes
-#. eof all-keybindings.h
 #: ../src/core/util.c:570 ../src/metacity.desktop.in.h:1
 #: ../src/metacity-wm.desktop.in.h:1
 msgid "Metacity"
@@ -477,8 +526,8 @@ msgstr ""
 #: ../src/core/window.c:6269
 #, c-format
 msgid ""
-"Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
-"d x %d and max size %d x %d; this doesn't make much sense.\n"
+"Window %s sets an MWM hint indicating it isn't resizable, but sets min size "
+"%d x %d and max size %d x %d; this doesn't make much sense.\n"
 msgstr ""
 "Прозор „%s“ је поставио „MWM“ што наговештава да није променљиве величине, "
 "али је поставио минималну величину %d x %d и максималну величину %d x %d што "
@@ -547,440 +596,19 @@ msgid ""
 msgstr ""
 "Особина „%s“ прозора 0x%lx садржи неисправан УТФ-8 за ставку „%d“ на списку\n"
 
-#: ../src/include/all-keybindings.h:88
-msgid "Switch to workspace 1"
-msgstr "Пребацује се на радни простор 1"
-
-#: ../src/include/all-keybindings.h:90
-msgid "Switch to workspace 2"
-msgstr "Пребацује се на радни простор 2"
-
-#: ../src/include/all-keybindings.h:92
-msgid "Switch to workspace 3"
-msgstr "Пребацује се на радни простор 3"
-
-#: ../src/include/all-keybindings.h:94
-msgid "Switch to workspace 4"
-msgstr "Пребацује се на радни простор 4"
-
-#: ../src/include/all-keybindings.h:96
-msgid "Switch to workspace 5"
-msgstr "Пребацује се на радни простор 5"
-
-#: ../src/include/all-keybindings.h:98
-msgid "Switch to workspace 6"
-msgstr "Пребацује се на радни простор 6"
-
-#: ../src/include/all-keybindings.h:100
-msgid "Switch to workspace 7"
-msgstr "Пребацује се на радни простор 7"
-
-#: ../src/include/all-keybindings.h:102
-msgid "Switch to workspace 8"
-msgstr "Пребацује се на радни простор 8"
-
-#: ../src/include/all-keybindings.h:104
-msgid "Switch to workspace 9"
-msgstr "Пребацује се на радни простор 9"
-
-#: ../src/include/all-keybindings.h:106
-msgid "Switch to workspace 10"
-msgstr "Пребацује се на радни простор 10"
-
-#: ../src/include/all-keybindings.h:108
-msgid "Switch to workspace 11"
-msgstr "Пребацује се на радни простор 11"
-
-#: ../src/include/all-keybindings.h:110
-msgid "Switch to workspace 12"
-msgstr "Пребацује се на радни простор 12"
-
-#: ../src/include/all-keybindings.h:122
-msgid "Move to workspace left"
-msgstr "Премешта на радни простор лево"
-
-#: ../src/include/all-keybindings.h:126
-msgid "Move to workspace right"
-msgstr "Премешта на радни простор десно"
-
-#: ../src/include/all-keybindings.h:130
-msgid "Move to workspace above"
-msgstr "Премешта на радни простор изнад"
-
-#: ../src/include/all-keybindings.h:134
-msgid "Move to workspace below"
-msgstr "Премешта на радни простор испод"
-
-#: ../src/include/all-keybindings.h:150
-msgid "Switch windows of an application"
-msgstr "Пребацује прозор програма"
-
-#: ../src/include/all-keybindings.h:153
-msgid "Reverse switch windows of an application"
-msgstr "Обрће пребацивање прозора програма"
-
-#: ../src/include/all-keybindings.h:156
-msgid "Switch applications"
-msgstr "Пребацује програме"
-
-#: ../src/include/all-keybindings.h:159
-msgid "Reverse switch applications"
-msgstr "Обрће пребацивање програма"
-
-#: ../src/include/all-keybindings.h:162
-msgid "Switch system controls"
-msgstr "Пребацује контроле система"
-
-#: ../src/include/all-keybindings.h:165
-msgid "Reverse switch system controls"
-msgstr "Обрће пребацивање контрола система"
-
-#: ../src/include/all-keybindings.h:169
-msgid "Switch windows of an app directly"
-msgstr "Пребацује прозоре програма директно"
-
-#: ../src/include/all-keybindings.h:172
-msgid "Reverse switch windows of an app directly"
-msgstr "Обрће пребацивање прозора програма директно"
-
-#: ../src/include/all-keybindings.h:175
-msgid "Switch windows directly"
-msgstr "Пребацује прозоре директно"
-
-#: ../src/include/all-keybindings.h:178
-msgid "Reverse switch windows directly"
-msgstr "Обрће пребацивање прозора директно"
-
-#: ../src/include/all-keybindings.h:181
-msgid "Switch system controls directly"
-msgstr "Пребацује контроле система директно"
-
-#: ../src/include/all-keybindings.h:184
-msgid "Reverse switch system controls directly"
-msgstr "Обрће пребацивање контрола система директно"
-
-#: ../src/include/all-keybindings.h:189
-msgid "Hide all normal windows"
-msgstr "Скрива све обичне прозоре"
-
-#: ../src/include/all-keybindings.h:192
-msgid "Show the activities overview"
-msgstr "Приказује преглед активности"
-
-#: ../src/include/all-keybindings.h:195
-msgid "Show the run command prompt"
-msgstr "Приказује промпт за покретање наредбе"
-
-#: ../src/include/all-keybindings.h:236
-msgid "Take a screenshot"
-msgstr "Прави снимак екрана"
-
-#: ../src/include/all-keybindings.h:238
-msgid "Take a screenshot of a window"
-msgstr "Прави снимак прозора"
-
-#: ../src/include/all-keybindings.h:240
-msgid "Launch Terminal"
-msgstr "Покреће терминал"
-
-#: ../src/include/all-keybindings.h:255
-msgid "Activate the window menu"
-msgstr "Активира мени прозора"
-
-#: ../src/include/all-keybindings.h:258
-msgid "Toggle fullscreen mode"
-msgstr "Искључује/укључује приказ преко целог екрана"
-
-#: ../src/include/all-keybindings.h:260
-msgid "Toggle maximization state"
-msgstr "Искључује/укључује стање увећања"
-
-#: ../src/include/all-keybindings.h:262
-msgid "Toggle window always appearing on top"
-msgstr "Искључује/укључује приказивање прозора увек на врху"
-
-#: ../src/include/all-keybindings.h:264
-msgid "Maximize window"
-msgstr "Увећава прозор"
-
-#: ../src/include/all-keybindings.h:266
-msgid "Restore window"
-msgstr "Враћа величину прозора"
-
-#: ../src/include/all-keybindings.h:268
-msgid "Toggle shaded state"
-msgstr "Искључује/укључује стање засенчености"
-
-#: ../src/include/all-keybindings.h:270
-msgid "Minimize window"
-msgstr "Умањује прозор"
-
-#: ../src/include/all-keybindings.h:272
-msgid "Close window"
-msgstr "Затвара прозор"
-
-#: ../src/include/all-keybindings.h:274
-msgid "Move window"
-msgstr "Премешта прозор"
-
-#: ../src/include/all-keybindings.h:276
-msgid "Resize window"
-msgstr "Мења величину прозора"
-
-#: ../src/include/all-keybindings.h:279
-msgid "Toggle window on all workspaces or one"
-msgstr "Приказује прозор на свим радним просторима или само на једном"
-
-#: ../src/include/all-keybindings.h:283
-msgid "Move window to workspace 1"
-msgstr "Премешта прозор на радни простор број 1"
-
-#: ../src/include/all-keybindings.h:286
-msgid "Move window to workspace 2"
-msgstr "Премешта прозор на радни простор број 2"
-
-#: ../src/include/all-keybindings.h:289
-msgid "Move window to workspace 3"
-msgstr "Премешта прозор на радни простор број 3"
-
-#: ../src/include/all-keybindings.h:292
-msgid "Move window to workspace 4"
-msgstr "Премешта прозор на радни простор број 4"
-
-#: ../src/include/all-keybindings.h:295
-msgid "Move window to workspace 5"
-msgstr "Премешта прозор на радни простор број 5"
-
-#: ../src/include/all-keybindings.h:298
-msgid "Move window to workspace 6"
-msgstr "Премешта прозор на радни простор број 6"
-
-#: ../src/include/all-keybindings.h:301
-msgid "Move window to workspace 7"
-msgstr "Премешта прозор на радни простор број 7"
-
-#: ../src/include/all-keybindings.h:304
-msgid "Move window to workspace 8"
-msgstr "Премешта прозор на радни простор број 8"
-
-#: ../src/include/all-keybindings.h:307
-msgid "Move window to workspace 9"
-msgstr "Премешта прозор на радни простор број 9"
-
-#: ../src/include/all-keybindings.h:310
-msgid "Move window to workspace 10"
-msgstr "Премешта прозор на радни простор број 10"
-
-#: ../src/include/all-keybindings.h:313
-msgid "Move window to workspace 11"
-msgstr "Премешта прозор на радни простор број 11"
-
-#: ../src/include/all-keybindings.h:316
-msgid "Move window to workspace 12"
-msgstr "Премешта прозор на радни простор број 12"
-
-#: ../src/include/all-keybindings.h:328
-msgid "Move window one workspace to the left"
-msgstr "Премешта прозор један радни простор улево"
-
-#: ../src/include/all-keybindings.h:331
-msgid "Move window one workspace to the right"
-msgstr "Премешта прозор један радни простор удесно"
-
-#: ../src/include/all-keybindings.h:334
-msgid "Move window one workspace up"
-msgstr "Премешта прозор један радни простор на горе"
-
-#: ../src/include/all-keybindings.h:337
-msgid "Move window one workspace down"
-msgstr "Премешта прозор један радни простор на доле"
-
-#: ../src/include/all-keybindings.h:340
-msgid "Raise window if covered, otherwise lower it"
-msgstr "Издиже прозор уколико га други прозор заклања, у противном га спушта"
-
-#: ../src/include/all-keybindings.h:342
-msgid "Raise window above other windows"
-msgstr "Издиже прозор изнад осталих прозора"
-
-#: ../src/include/all-keybindings.h:344
-msgid "Lower window below other windows"
-msgstr "Спушта прозор испод осталих прозора"
-
-#: ../src/include/all-keybindings.h:348
-msgid "Maximize window vertically"
-msgstr "Увећава прозор вертикално"
-
-#: ../src/include/all-keybindings.h:352
-msgid "Maximize window horizontally"
-msgstr "Увећава прозор хоризонтално"
-
-#: ../src/include/all-keybindings.h:356
-msgid "Move window to top left corner"
-msgstr "Премешта прозор у горњи леви ћошак"
-
-#: ../src/include/all-keybindings.h:359
-msgid "Move window to top right corner"
-msgstr "Премешта прозор у горњи десни ћошак"
-
-#: ../src/include/all-keybindings.h:362
-msgid "Move window to bottom left corner"
-msgstr "Премешта прозор у доњи леви ћошак"
-
-#: ../src/include/all-keybindings.h:365
-msgid "Move window to bottom right corner"
-msgstr "Премешта прозор у доњи десни ћошак"
-
-#: ../src/include/all-keybindings.h:369
-msgid "Move window to top edge of screen"
-msgstr "Премешта прозор на средину екрана"
-
-#: ../src/include/all-keybindings.h:372
-msgid "Move window to bottom edge of screen"
-msgstr "Премешта прозор на дно екрана"
-
-#: ../src/include/all-keybindings.h:375
-msgid "Move window to right side of screen"
-msgstr "Премешта прозор уз десну ивицу екрана"
-
-#: ../src/include/all-keybindings.h:378
-msgid "Move window to left side of screen"
-msgstr "Премешта прозор уз леву ивицу екрана"
-
-#: ../src/include/all-keybindings.h:381
-msgid "Move window to center of screen"
-msgstr "Премешта прозор на средину екрана"
-
-#: ../src/metacity.schemas.in.in.h:1
-msgid "(Not implemented) Navigation works in terms of applications not windows"
-msgstr "(Није примењено) Навигација ради у контексту програма а не прозора"
-
-#: ../src/metacity.schemas.in.in.h:2
-msgid ""
-"A font description string describing a font for window titlebars. The size "
-"from the description will only be used if the titlebar_font_size option is "
-"set to 0. Also, this option is disabled if the titlebar_uses_desktop_font "
-"option is set to true."
-msgstr ""
-"Низ карактера који описује словни лик за насловну линију прозора. Величина "
-"из описа ће бити коришћена само ако је опција „titlebar_font_size“ подешена "
-"на 0. Такође, ова опција је искључена ако је опција "
-"„titlebar_uses_desktop_font“ постављена на тачно."
-
-#: ../src/metacity.schemas.in.in.h:3
-msgid "Action on title bar double-click"
-msgstr "Акција за дупли клик на траку са насловом"
-
-#: ../src/metacity.schemas.in.in.h:4
-msgid "Action on title bar middle-click"
-msgstr "Акција за средњи клик на траку са насловом"
-
-#: ../src/metacity.schemas.in.in.h:5
-msgid "Action on title bar right-click"
-msgstr "Акција за десни клик на траку са насловом"
-
-#: ../src/metacity.schemas.in.in.h:6
-msgid "Arrangement of buttons on the titlebar"
-msgstr "Распоред дугмића на траци наслова"
-
-#: ../src/metacity.schemas.in.in.h:7
-msgid ""
-"Arrangement of buttons on the titlebar. The value should be a string, such "
-"as \"menu:minimize,maximize,spacer,close\"; the colon separates the left "
-"corner of the window from the right corner, and the button names are comma-"
-"separated. Duplicate buttons are not allowed. Unknown button names are "
-"silently ignored so that buttons can be added in future metacity versions "
-"without breaking older versions. A special spacer tag can be used to insert "
-"some space between two adjacent buttons."
-msgstr ""
-"Распоред дугмића на траци наслова. Вредност треба да буде низ карактера, као "
-"на пример: „menu:minimize,maximize,close“; две тачке раздвајају леви угао "
-"прозора од десног, а дугмићи су раздвојени зарезима. Дуплирање дугмића није "
-"дозвољено. Непозната имена дугмића се занемарују тако да дугмићи у "
-"будућности могу да буду додати у метасити а да не наруше подешавања старијих "
-"издања. Могу се користити специјалне ознака за раздвајање како би се "
-"направило места између два суседна дугмета."
-
-#: ../src/metacity.schemas.in.in.h:8
-msgid "Automatically raises the focused window"
-msgstr "Аутоматски подиже прозор са фокусом"
-
-#: ../src/metacity.schemas.in.in.h:9
-msgid ""
-"Clicking a window while holding down this modifier key will move the window "
-"(left click), resize the window (middle click), or show the window menu "
-"(right click). The middle and right click operations may be swapped using "
-"the \"resize_with_right_button\" key. Modifier is expressed as \"&lt;Alt&gt;"
-"\" or \"&lt;Super&gt;\" for example."
-msgstr ""
-"Клик на прозор за време држања овог тастера ће преместити прозор (леви "
-"клик), променити величину прозора (средњи клик) или приказати мени прозора "
-"(десни клик). Можете заменити леви и десни тастер миша помоћу кључа "
-"„resize_with_right_button“. На пример, тастер може бити „&lt;Алт&gt;“ или "
-"„&lt;Супер&gt;“."
-
-#: ../src/metacity.schemas.in.in.h:10
-msgid "Commands to run in response to keybindings"
-msgstr "Наредба која ће бити покренута као одговор пречице тастатуре"
-
-#: ../src/metacity.schemas.in.in.h:11
+#: ../src/org.gnome.metacity.gschema.xml.in.h:1
 msgid "Compositing Manager"
 msgstr "Композитни управник"
 
-#: ../src/metacity.schemas.in.in.h:12
-msgid "Control how new windows get focus"
-msgstr "Контролише како нови прозор добија фокус"
-
-#: ../src/metacity.schemas.in.in.h:13
-msgid "Current theme"
-msgstr "Тренутна тема"
-
-#: ../src/metacity.schemas.in.in.h:14
-msgid "Delay in milliseconds for the auto raise option"
-msgstr "Временски период у милисекундама за аутоматско подизање прозора"
-
-#: ../src/metacity.schemas.in.in.h:15
+#: ../src/org.gnome.metacity.gschema.xml.in.h:2
 msgid "Determines whether Metacity is a compositing manager."
 msgstr "Одређује да ли је Метасити композитни управник."
 
-#: ../src/metacity.schemas.in.in.h:16
-msgid ""
-"Determines whether applications or the system can generate audible 'beeps'; "
-"may be used in conjunction with 'visual bell' to allow silent 'beeps'."
-msgstr ""
-"Одређује да ли програми или систем могу да пусте звучне сигнале; може се "
-"користити уз „визуелне звуке“ ради дозвољавања тихих звукова."
+#: ../src/org.gnome.metacity.gschema.xml.in.h:3
+msgid "If true, trade off usability for less resource usage"
+msgstr "Ако је изабрано, трампи употребљивост зарад мање употребе ресурса"
 
-#: ../src/metacity.schemas.in.in.h:17
-msgid "Disable misfeatures that are required by old or broken applications"
-msgstr ""
-"Искључује лоше могућности које су затражили стари или оштећени програми"
-
-#: ../src/metacity.schemas.in.in.h:18
-msgid "Enable Visual Bell"
-msgstr "Омогућује визуелне звуке"
-
-#: ../src/metacity.schemas.in.in.h:19
-msgid ""
-"If set to true, and the focus mode is either \"sloppy\" or \"mouse\" then "
-"the focused window will be automatically raised after a delay specified by "
-"the auto_raise_delay key. This is not related to clicking on a window to "
-"raise it, nor to entering a window during drag-and-drop."
-msgstr ""
-"Ако је постављено на тачно, а начин фокуса је или „sloppy“ или „mouse“ онда "
-"ће прозор у фокусу бити аутоматски подигнут након истека временског периода "
-"(који је подешен преко „auto_raise_delay“ кључа). Ово није повезано са "
-"подизањем прозора на клик, нити са фокусирањем у току превуци-и-испусти."
-
-#: ../src/metacity.schemas.in.in.h:20
-msgid ""
-"If true, ignore the titlebar_font option, and use the standard application "
-"font for window titles."
-msgstr ""
-"Ако је изабрано, игнорише се опција „titlebar_font“, и метасити ће користити "
-"стандардан словни лик програма за наслов прозора."
-
-#: ../src/metacity.schemas.in.in.h:21
+#: ../src/org.gnome.metacity.gschema.xml.in.h:4
 msgid ""
 "If true, metacity will give the user less feedback by using wireframes, "
 "avoiding animations, or other means. This is a significant reduction in "
@@ -995,373 +623,52 @@ msgstr ""
 "серверима да раде када би иначе били непрактични. Такође, употреба линија је "
 "онемогућена када је укључена приступачност."
 
-#: ../src/metacity.schemas.in.in.h:22
-msgid ""
-"If true, then Metacity works in terms of applications rather than windows. "
-"The concept is a bit abstract, but in general an application-based setup is "
-"more like the Mac and less like Windows. When you focus a window in "
-"application-based mode, all the windows in the application will be raised. "
-"Also, in application-based mode, focus clicks are not passed through to "
-"windows in other applications. Application-based mode is, however, largely "
-"unimplemented at the moment."
-msgstr ""
-"Ако је изабрано, Метасити ради у контексту програма, а не прозора. Концепт "
-"је помало чудан, али у општем случају поставке базиране на програму су више "
-"сличне Мак систему, а мање сличне Виндовс систему. Када поставите прозор у "
-"фокус у овом начину рада, сви прозори те апликације ће бити подигнути. "
-"Такође, у овом начину рада, фокусни клик се не шаље прозорима других "
-"програма. Такође овај начин рада је увелико недовршен у садашњим верзијама."
-
-#: ../src/metacity.schemas.in.in.h:23
-msgid "If true, trade off usability for less resource usage"
-msgstr "Ако је изабрано, трампи употребљивост зарад мање употребе ресурса"
-
-#: ../src/metacity.schemas.in.in.h:24
-msgid "Modifier to use for modified window click actions"
-msgstr "Типка која ће се користити за промену акције клика на прозор"
-
-#: ../src/metacity.schemas.in.in.h:25
-msgid "Name of workspace"
-msgstr "Име радног простора"
-
-#: ../src/metacity.schemas.in.in.h:26
-msgid "Number of workspaces"
-msgstr "Број радних простора"
-
-#: ../src/metacity.schemas.in.in.h:27
-msgid ""
-"Number of workspaces. Must be more than zero, and has a fixed maximum to "
-"prevent making the desktop unusable by accidentally asking for too many "
-"workspaces."
-msgstr ""
-"Број радних простора. Мора бити већи од нуле, и имати фиксиран максимум како "
-"бисте спречили да случајно уништите радну површину тражећи превише радних "
-"простора."
-
-#: ../src/metacity.schemas.in.in.h:28
-msgid "Run a defined command"
-msgstr "Покреће дефинисану наредбу"
-
-#: ../src/metacity.schemas.in.in.h:29
-msgid ""
-"Set this to true to resize with the right button and show a menu with the "
-"middle button while holding down the key given in \"mouse_button_modifier\"; "
-"set it to false to make it work the opposite way around."
-msgstr ""
-"Изаберите ово да промените величину прозора десним тастером и прикажете мени "
-"средњим тастером уз држање тастера задатог у кључу „mouse_button_modifier“. "
-"Поништите избор да користите обрнут распоред тастера."
-
-#: ../src/metacity.schemas.in.in.h:30
-msgid ""
-"Setting this option to false can lead to buggy behavior, so users are "
-"strongly discouraged from changing it from the default of true. Many actions "
-"(e.g. clicking in the client area, moving or resizing the window) normally "
-"raise the window as a side-effect. Setting this option to false, which is "
-"strongly discouraged, will decouple raising from other user actions, and "
-"ignore raise requests generated by applications. See http://bugzilla.gnome."
-"org/show_bug.cgi?id=445447#c6. Even when this option is false, windows can "
-"still be raised by an alt-left-click anywhere on the window, a normal click "
-"on the window decorations, or by special messages from pagers, such as "
-"activation requests from tasklist applets. This option is currently disabled "
-"in click-to-focus mode. Note that the list of ways to raise windows when "
-"raise_on_click is false does not include programmatic requests from "
-"applications to raise windows; such requests will be ignored regardless of "
-"the reason for the request. If you are an application developer and have a "
-"user complaining that your application does not work with this setting "
-"disabled, tell them it is _their_ fault for breaking their window manager "
-"and that they need to change this option back to true or live with the \"bug"
-"\" they requested."
-msgstr ""
-"Поништавање ове опције може проузроковати неисправно понашање програма, тако "
-"да није препоручљиво. Многе радње (нпр. клик усред области клијента, "
-"померање или промена величине прозора) обично уједно и издижу прозор. "
-"Искључивање ове опције, а што се не препоручује, ће издвојити подизање "
-"прозора од осталих радњи и занемариће програмске захтеве за издизање "
-"прозора. Погледајте „http://bugzilla.gnome.org/show_bug.cgi?id=445447#c6“. "
-"Чак и уколико је ова опција искључена, прозоре можете издизати левим кликом "
-"било где унутар прозора уз држање тастера Алт, обичним кликом на насловну "
-"линију прозора или преко посебних порука из пребацивача радних површина (као "
-"што је укључивање захтева из програмчета са списком задатака). Ова опција је "
-"тренутно искључена у режиму „click-to-focus“ (клик за фокус). Списак начина "
-"за подизање прозора када је искључено „raise_on_click“ (подигни на клик) не "
-"укључује захтеве из програма за подизање прозора, те ће такви захтеви бити "
-"занемарени без обзира на разлог. Уколико пишете сопствени програм и добијете "
-"примедбе од стране корисника како ваш програм не ради са овом опцијом "
-"искљученом, реците им да је њихова кривица за неисправан рад управника "
-"прозорима и да поново изаберу ову опцију или да се навикну на пропратне "
-"појаве."
-
-#: ../src/metacity.schemas.in.in.h:31
-msgid ""
-"Some applications disregard specifications in ways that result in window "
-"manager misfeatures. This option puts Metacity in a rigorously correct mode, "
-"which gives a more consistent user interface, provided one does not need to "
-"run any misbehaving applications."
-msgstr ""
-"Неки програми не поштују спецификације на начин који доводи до неисправног "
-"функционисања управника прозора. Ово подешавање поставља Метасити у строг "
-"режим рада који доприноси правилнијем понашању, под условом да се не "
-"покушава покретање неисправних програма."
-
-#: ../src/metacity.schemas.in.in.h:32
-msgid "System Bell is Audible"
-msgstr "Системско звонце се чује"
-
-#: ../src/metacity.schemas.in.in.h:33
-msgid ""
-"Tells Metacity how to implement the visual indication that the system bell "
-"or another application 'bell' indicator has been rung. Currently there are "
-"two valid values, \"fullscreen\", which causes a fullscreen white-black "
-"flash, and \"frame_flash\" which causes the titlebar of the application "
-"which sent the bell signal to flash. If the application which sent the bell "
-"is unknown (as is usually the case for the default \"system beep\"), the "
-"currently focused window's titlebar is flashed."
-msgstr ""
-"Говори Метаситију како да спроведе визуелну индикацију када системско звонце "
-"или неки други индикатор програма зазвони. Тренутно су могуће две вредности, "
-"„fullscreen“ којим цео екран трепери црно-бело, и „frame_flash“ када трепери "
-"само насловна линија прозора који је зазвонио. Уколико није познат програм "
-"који је зазвонио (као што је то обично случај са „системским звонцетом“), "
-"трепереће насловна линија прозора који је тренутно у жижи."
-
-#: ../src/metacity.schemas.in.in.h:34
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_N keys define keybindings "
-"that correspond to these commands. Pressing the keybinding for run_command_N "
-"will execute command_N."
-msgstr ""
-"Кључ „/apps/metacity/global_keybindings/run_command_N“ дефинише комбинације "
-"тастера које одговарају овим наредбама. Притиском комбинације тастера за "
-"покрени_наредбу_Н ће извршити наредбу_Н."
-
-#: ../src/metacity.schemas.in.in.h:35
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_screenshot key defines a "
-"keybinding which causes the command specified by this setting to be invoked."
-msgstr ""
-"Кључ „/apps/metacity/global_keybindings/run_command_N“ дефинише комбинацију "
-"тастера која покреће наредбу наведену овим подешавањем."
-
-#: ../src/metacity.schemas.in.in.h:36
-msgid ""
-"The /apps/metacity/global_keybindings/run_command_window_screenshot key "
-"defines a keybinding which causes the command specified by this setting to "
-"be invoked."
-msgstr ""
-"Кључ „/apps/metacity/global_keybindings/run_command_window_screenshot“ "
-"дефинише комбинацију тастера која покреће наредбу наведену овим подешавањем."
-
-# bug: missing dot (.) after keybinding_commands?
-#: ../src/metacity.schemas.in.in.h:37
-msgid ""
-"The keybinding that runs the correspondingly-numbered command in /apps/"
-"metacity/keybinding_commands The format looks like \"&lt;Control&gt;a\" or "
-"\"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows "
-"lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and "
-"\"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled\", "
-"then there will be no keybinding for this action."
-msgstr ""
-"Комбинација тастера која покреће одговарајуће означену наредбу у „/apps/"
-"metacity/keybinding_commands“ кључу. Облик записа је „&lt;Control&gt;a“ или "
-"„&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду је доста слободан и "
-"дозвољава велика или мала слова, као и скраћенице попут „&lt;Ctl&gt;“ или "
-"„&lt; Ctrl&gt;“. Ако подесите опцију на нарочити низ знакова „disabled“, "
-"онда неће бити коришћена ниједна комбинација тастера за ову акцију."
-
-#: ../src/metacity.schemas.in.in.h:38
-msgid "The name of a workspace."
-msgstr "Име радног простора."
-
-#: ../src/metacity.schemas.in.in.h:39
-msgid "The screenshot command"
-msgstr "Наредба за снимак екрана"
-
-#: ../src/metacity.schemas.in.in.h:40
-msgid ""
-"The theme determines the appearance of window borders, titlebar, and so "
-"forth."
-msgstr ""
-"Тема утврђује изглед ивица прозора, насловне линије и свега осталог сличног."
-
-#: ../src/metacity.schemas.in.in.h:41
-msgid ""
-"The time delay before raising a window if auto_raise is set to true. The "
-"delay is given in thousandths of a second."
-msgstr ""
-"Временски период пре подизања прозора ако је опција „auto_raise“ изабрана. "
-"Период се изражава у хиљадитим деловима секунде."
-
-#: ../src/metacity.schemas.in.in.h:42
-msgid ""
-"The window focus mode indicates how windows are activated. It has three "
-"possible values; \"click\" means windows must be clicked in order to focus "
-"them, \"sloppy\" means windows are focused when the mouse enters the window, "
-"and \"mouse\" means windows are focused when the mouse enters the window and "
-"unfocused when the mouse leaves the window."
-msgstr ""
-"Режим фокусирања прозора показује како ће прозори бити активирани. Има три "
-"могуће вредности: „click“ — значи да прозор мора бити кликнут да би добио "
-"фокус, „sloppy“ — значи да прозор добија фокус када показивач миша уђе у "
-"прозор и „mouse“ — значи да ће прозор бити фокусиран када показивачка "
-"стрелица миша уђе у прозор и бити дефокусиран када стрелица изађе из прозора."
-
-#: ../src/metacity.schemas.in.in.h:43
-msgid "The window screenshot command"
-msgstr "Наредба за прављење снимка прозора"
-
-#: ../src/metacity.schemas.in.in.h:44
-msgid ""
-"This option determines the effects of double-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"Ова могућност одређује ефекат дуплог клика на насловну линију прозора. "
-"Тренутно исправне опције су: „toggle_shade“ — што ће замотати/одмотати "
-"прозор, „toggle_maximize“ — што ће увећати или поништити увећање прозора, "
-"„toggle_maximize_horizontally“ и „toggle_maximize_vertically“ — што ће "
-"увећати или поништити увећање прозора само хоризонтално или усправно, "
-"„minimize“ — што ће умањити прозор, „shade“ — што ће замотати прозор, „menu“ "
-"— што ће приказати мени прозора, „lower“ — што ће поставити прозор иза "
-"осталих и „none“ — чиме се не обавља никаква радња."
-
-#: ../src/metacity.schemas.in.in.h:45
-msgid ""
-"This option determines the effects of middle-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"Ова могућност одређује ефекат средњег клика на насловну линију прозора. "
-"Тренутно исправне опције су: „toggle_shade“ — што ће замотати/одмотати "
-"прозор, „toggle_maximize“ — што ће увећати или поништити увећање прозора, "
-"„toggle_maximize_horizontally“ и „toggle_maximize_vertically“ — што ће "
-"увећати или поништити увећање прозора само хоризонтално или усправно, "
-"„minimize“ — што ће умањити прозор, „shade“ — што ће замотати прозор, „menu“ "
-"— што ће приказати мени прозора, „lower“ — што ће поставити прозор иза "
-"осталих и „none“ — чиме се не обавља никаква радња."
-
-#: ../src/metacity.schemas.in.in.h:46
-msgid ""
-"This option determines the effects of right-clicking on the title bar. "
-"Current valid options are 'toggle_shade', which will shade/unshade the "
-"window, 'toggle_maximize' which will maximize/unmaximize the window, "
-"'toggle_maximize_horizontally' and 'toggle_maximize_vertically' which will "
-"maximize/unmaximize the window in that direction only, 'minimize' which will "
-"minimize the window, 'shade' which will roll the window up, 'menu' which "
-"will display the window menu, 'lower' which will put the window behind all "
-"the others, and 'none' which will not do anything."
-msgstr ""
-"Ова могућност одређује ефекат десног клика на насловну линију прозора. "
-"Тренутно исправне опције су: „toggle_shade“ — што ће замотати/одмотати "
-"прозор, „toggle_maximize“ — што ће увећати или поништити увећање прозора, "
-"„toggle_maximize_horizontally“ и „toggle_maximize_vertically“ — што ће "
-"увећати или поништити увећање прозора само хоризонтално или усправно, "
-"„minimize“ — што ће умањити прозор, „shade“ — што ће замотати прозор, „menu“ "
-"— што ће приказати мени прозора, „lower“ — што ће поставити прозор иза "
-"осталих и „none“ — чиме се не обавља никаква радња."
-
-#: ../src/metacity.schemas.in.in.h:47
-msgid ""
-"This option provides additional control over how newly created windows get "
-"focus. It has two possible values; \"smart\" applies the user's normal focus "
-"mode, and \"strict\" results in windows started from a terminal not being "
-"given focus."
-msgstr ""
-"Ова опција пружа додатну контролу над начином на који нови прозори улазе у "
-"фокус. Има две могуће вредности: „smart“ — поставља нормални режим фокуса и "
-"„strict“ — када прозори покренути из командне линије не улазе у фокус."
-
-#: ../src/metacity.schemas.in.in.h:48
-msgid ""
-"Turns on a visual indication when an application or the system issues a "
-"'bell' or 'beep'; useful for the hard-of-hearing and for use in noisy "
-"environments."
-msgstr ""
-"Укључује визуелни приказ када програм или систем „зазвони“; корисно у бучним "
-"условима."
-
-#: ../src/metacity.schemas.in.in.h:49
-msgid "Use standard system font in window titles"
-msgstr "Користи стандардни системски словни лик за наслов прозора"
-
-#: ../src/metacity.schemas.in.in.h:50
-msgid "Visual Bell Type"
-msgstr "Врста визелног звонцета"
-
-#: ../src/metacity.schemas.in.in.h:51
-msgid "Whether raising should be a side-effect of other user interactions"
-msgstr ""
-"Да ли подизање прозора треба да буде бочни ефекат неких других корисникових "
-"радњи"
-
-#: ../src/metacity.schemas.in.in.h:52
-msgid "Whether to resize with the right button"
-msgstr "Да ли ће променити величину десним тастером"
-
-#: ../src/metacity.schemas.in.in.h:53
-msgid "Window focus mode"
-msgstr "Начин фокуса прозора"
-
-#: ../src/metacity.schemas.in.in.h:54
-msgid "Window title font"
-msgstr "Словни лик наслова прозора"
-
 #: ../src/tools/metacity-message.c:150
 #, c-format
 msgid "Usage: %s\n"
 msgstr "Употреба: %s\n"
 
-#: ../src/ui/frames.c:1120
+#: ../src/ui/frames.c:1118
 msgid "Close Window"
 msgstr "Затвори прозор"
 
-#: ../src/ui/frames.c:1123
+#: ../src/ui/frames.c:1121
 msgid "Window Menu"
 msgstr "Мени прозора"
 
-#: ../src/ui/frames.c:1126
+#: ../src/ui/frames.c:1124
 msgid "Minimize Window"
 msgstr "Умањи прозор"
 
-#: ../src/ui/frames.c:1129
+#: ../src/ui/frames.c:1127
 msgid "Maximize Window"
 msgstr "Увећај прозор"
 
-#: ../src/ui/frames.c:1132
+#: ../src/ui/frames.c:1130
 msgid "Restore Window"
 msgstr "Врати величину прозору"
 
-#: ../src/ui/frames.c:1135
+#: ../src/ui/frames.c:1133
 msgid "Roll Up Window"
 msgstr "Замотај прозор"
 
-#: ../src/ui/frames.c:1138
+#: ../src/ui/frames.c:1136
 msgid "Unroll Window"
 msgstr "Одмотај прозор"
 
-#: ../src/ui/frames.c:1141
+#: ../src/ui/frames.c:1139
 msgid "Keep Window On Top"
 msgstr "Стави прозор у први план"
 
-#: ../src/ui/frames.c:1144
+#: ../src/ui/frames.c:1142
 msgid "Remove Window From Top"
 msgstr "Склони прозор из првог плана"
 
-#: ../src/ui/frames.c:1147
+#: ../src/ui/frames.c:1145
 msgid "Always On Visible Workspace"
 msgstr "Увек на приказаном радном простору"
 
-#: ../src/ui/frames.c:1150
+#: ../src/ui/frames.c:1148
 msgid "Put Window On Only One Workspace"
 msgstr "Стави прозор само на један радни простор"
 
@@ -2333,8 +1640,8 @@ msgid ""
 "seconds wall clock time including X server resources (%g milliseconds per "
 "frame)\n"
 msgstr ""
-"Нацртао је %d оквира за %g клијентских секунди (%g милисекунди по оквиру) и %"
-"g секунди времена на зидном часовнику укључујући и ресурсе Икс сервера (%g "
+"Нацртао је %d оквира за %g клијентских секунди (%g милисекунди по оквиру) и "
+"%g секунди времена на зидном часовнику укључујући и ресурсе Икс сервера (%g "
 "милисекунди по оквиру)\n"
 
 #: ../src/ui/theme-viewer.c:1246
@@ -2374,1516 +1681,3 @@ msgstr "y вредност је била „%d“, а очекивана је �
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr "%d израза координата је обрађено за %g секунде (просек %g секунде)\n"
-
-#~ msgid "Desktop"
-#~ msgstr "Радна површина"
-
-#~ msgid "Window Management"
-#~ msgstr "Управљање прозорима"
-
-#~ msgid "Failed to read saved session file %s: %s\n"
-#~ msgstr "Нисам успео да прочитам сачувану датотеку сесије %s: %s\n"
-
-#~ msgid "Switch to workspace on the left of the current workspace"
-#~ msgstr "Пребаци се на радни простор на лево"
-
-#~ msgid "Switch to workspace on the right of the current workspace"
-#~ msgstr "Пребаци се на радни простор на десно"
-
-#~ msgid "Switch to workspace above the current workspace"
-#~ msgstr "Пребаци се на радни простор изнад овог"
-
-#~ msgid "Switch to workspace below the current workspace"
-#~ msgstr "Пребаци се на радни простор испод овог"
-
-#~ msgid "Move between windows of an application, using a popup window"
-#~ msgstr "Премести између прозора програма уз искакање"
-
-#~ msgid ""
-#~ "Move backward between windows of an application, using a popup window"
-#~ msgstr "Премести уназад између прозора програма уз искакање"
-
-#~ msgid "Move between windows, using a popup window"
-#~ msgstr "Премести између прозора уз искакање"
-
-#~ msgid "Move backward between windows, using a popup window"
-#~ msgstr "Премести уназад између прозора уз искакање"
-
-#~ msgid "Move between panels and the desktop, using a popup window"
-#~ msgstr "Премести између панела и радне површине уз искакање"
-
-#~ msgid "Move backward between panels and the desktop, using a popup window"
-#~ msgstr "Премести уназад између панела и радне површине уз искакање"
-
-#~ msgid "Move backward between windows of an application immediately"
-#~ msgstr "Премести одмах уназад између прозора програма"
-
-#~ msgid "Move between windows immediately"
-#~ msgstr "Премести одмах између прозора"
-
-#~ msgid "Move backward between windows immediately"
-#~ msgstr "Премести одмах уназад између прозора"
-
-#~ msgid "Move between panels and the desktop immediately"
-#~ msgstr "Премести одмах између панела и радне површине"
-
-#~ msgid "Move backward between panels and the desktop immediately"
-#~ msgstr "Премести одмах уназад између панела и радне површине"
-
-#~ msgid "Show the panel's \"Run Application\" dialog box"
-#~ msgstr "Прикажи прозорче за покретање програма у панелу"
-
-#~ msgid "Toggle whether a window will always be visible over other windows"
-#~ msgstr "Одређује да ли се прозор увек приказује изнад осталих"
-
-#~ msgid "Move window to north (top) side of screen"
-#~ msgstr "Премести прозор у врх екрана"
-
-#~ msgid "Open another one of these windows"
-#~ msgstr "Отвори неки други од ових прозора"
-
-#~ msgid "This is a demo button with an 'open' icon"
-#~ msgstr "Ово је пробно дугме са „отвори“ иконом"
-
-#~ msgid "This is a demo button with a 'quit' icon"
-#~ msgstr "Ово је пробно дугме са „изађи“ иконом"
-
-#~ msgid "Failed to parse message \"%s\" from dialog process\n"
-#~ msgstr "Нисам успео да издвојим поруку „%s“ из прозорчета процеса\n"
-
-#~ msgid "Error reading from dialog display process: %s\n"
-#~ msgstr "Грешка приликом читања из прозорчета процеса: %s\n"
-
-#~ msgid ""
-#~ "Error launching metacity-dialog to ask about killing an application: %s\n"
-#~ msgstr ""
-#~ "Грешка приликом покретања metacity-dialog због упита о убијању програма „%"
-#~ "s“\n"
-
-#~ msgid ""
-#~ "Error launching metacity-dialog to warn about apps that don't support "
-#~ "session management: %s\n"
-#~ msgstr ""
-#~ "Грешка приликом покретања metacity-dialog ради упозорења о програмима "
-#~ "који не подржавају менаџер сесија: %s\n"
-
-#~ msgid "Title"
-#~ msgstr "Наслов"
-
-#~ msgid "Class"
-#~ msgstr "Класа"
-
-#~ msgid ""
-#~ "There was an error running \"%s\":\n"
-#~ "%s."
-#~ msgstr ""
-#~ "Догодила се грешка приликом покретања „%s“:\n"
-#~ "%s."
-
-#~ msgid "<author> specified twice for this theme"
-#~ msgstr "Елемент <author> је наведен два пута у овој теми"
-
-#~ msgid "<copyright> specified twice for this theme"
-#~ msgstr "Елемент <copyright> је наведен два пута у овој теми"
-
-#~ msgid "<date> specified twice for this theme"
-#~ msgstr "Елемент <date> је наведен два пута у овој теми"
-
-#~ msgid "<description> specified twice for this theme"
-#~ msgstr "Елемент <description> је наведен два пута у овој теми"
-
-#~ msgid ""
-#~ "Error launching metacity-dialog to print an error about a command: %s\n"
-#~ msgstr ""
-#~ "Грешка приликом покретања metacity-dialog програма због штампања грешке о "
-#~ "команди: %s\n"
-
-#~ msgid "Unknown attribute %s on <metacity_session> element"
-#~ msgstr "Непознат атрибут %s у <metacity_session> елементу"
-
-#~ msgid "Unknown attribute %s on <maximized> element"
-#~ msgstr "Непознат атрибут %s у <maximized> елементу"
-
-#~ msgid "Unknown attribute %s on <geometry> element"
-#~ msgstr "Непознат атрибут %s у <geometry> елементу"
-
-#~ msgid ""
-#~ "Many actions (e.g. clicking in the client area, moving or resizing the "
-#~ "window) normally raise the window as a side-effect. Setting this option "
-#~ "to false, which is strongly discouraged, will decouple raising from other "
-#~ "user actions, and ignore raise requests generated by applications. See "
-#~ "http://bugzilla.gnome.org/show_bug.cgi?id=445447#c6."
-#~ msgstr ""
-#~ "Многе радње (нпр. притисак на простор програма, премештање или мењање "
-#~ "величине прозора) уобичајено, као споредни ефекат, подижу прозор. "
-#~ "Постављање овог прекидача на истинитосну вредност „false“, што је крајње "
-#~ "непрепоручљиво, ће раздвојити подизање прозора од осталих наредби "
-#~ "корисника и занемарити захтеве за подизање од стране програма. Видите See "
-#~ "http://bugzilla.gnome.org/show_bug.cgi?id=445447#c6 за више детаља."
-
-#~ msgid ""
-#~ "The keybinding that switches to the workspace above the current "
-#~ "workspace. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;"
-#~ "&lt;Alt&gt;F1\". The parser is fairly liberal and allows lower or upper "
-#~ "case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;"
-#~ "\". If you set the option to the special string \"disabled\", then there "
-#~ "will be no keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера која пребацује на радни простор изнад текућег. Облик "
-#~ "записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за "
-#~ "обраду је доста слободан и дозвољава велика или мала слова, као и "
-#~ "скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију "
-#~ "на нарочити низ знакова „disabled“, онда неће бити коришћена ниједна "
-#~ "комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding that switches to the workspace below the current "
-#~ "workspace. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;"
-#~ "&lt;Alt&gt;F1\". The parser is fairly liberal and allows lower or upper "
-#~ "case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;"
-#~ "\". If you set the option to the special string \"disabled\", then there "
-#~ "will be no keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера која пребацује на радни простор испод текућег. Облик "
-#~ "записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за "
-#~ "обраду је доста слободан и дозвољава велика или мала слова, као и "
-#~ "скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију "
-#~ "на нарочити низ знакова „disabled“, онда неће бити коришћена ниједна "
-#~ "комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding that switches to the workspace on the left of the current "
-#~ "workspace. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;"
-#~ "&lt;Alt&gt;F1\". The parser is fairly liberal and allows lower or upper "
-#~ "case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;"
-#~ "\". If you set the option to the special string \"disabled\", then there "
-#~ "will be no keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера која пребацује на радни простор лево од текућег. "
-#~ "Облик записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. "
-#~ "Програм за обраду је доста слободан и дозвољава велика или мала слова, "
-#~ "као и скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите "
-#~ "опцију на нарочити низ знакова „disabled“, онда неће бити коришћена "
-#~ "ниједна комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding that switches to the workspace on the right of the current "
-#~ "workspace. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;"
-#~ "&lt;Alt&gt;F1\". The parser is fairly liberal and allows lower or upper "
-#~ "case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;"
-#~ "\". If you set the option to the special string \"disabled\", then there "
-#~ "will be no keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера која пребацује на радни простор десно од текућег. "
-#~ "Облик записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. "
-#~ "Програм за обраду је доста слободан и дозвољава велика или мала слова, "
-#~ "као и скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите "
-#~ "опцију на нарочити низ знакова „disabled“, онда неће бити коришћена "
-#~ "ниједна комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding that switches to workspace 1. The format looks like \"&lt;"
-#~ "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
-#~ "liberal and allows lower or upper case, and also abbreviations such as "
-#~ "\"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-#~ "special string \"disabled\", then there will be no keybinding for this "
-#~ "action."
-#~ msgstr ""
-#~ "Комбинација тастера која пребацује на радни простор број 1. Облик записа "
-#~ "је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду "
-#~ "је доста слободан и дозвољава велика или мала слова, као и скраћенице "
-#~ "попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију на нарочити "
-#~ "низ знакова „disabled“, онда неће бити коришћена ниједна комбинација "
-#~ "тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding that switches to workspace 10. The format looks like \"&lt;"
-#~ "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
-#~ "liberal and allows lower or upper case, and also abbreviations such as "
-#~ "\"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-#~ "special string \"disabled\", then there will be no keybinding for this "
-#~ "action."
-#~ msgstr ""
-#~ "Комбинација тастера која пребацује на радни простор број 10. Облик записа "
-#~ "је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду "
-#~ "је доста слободан и дозвољава велика или мала слова, као и скраћенице "
-#~ "попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију на нарочити "
-#~ "низ знакова „disabled“, онда неће бити коришћена ниједна комбинација "
-#~ "тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding that switches to workspace 11. The format looks like \"&lt;"
-#~ "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
-#~ "liberal and allows lower or upper case, and also abbreviations such as "
-#~ "\"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-#~ "special string \"disabled\", then there will be no keybinding for this "
-#~ "action."
-#~ msgstr ""
-#~ "Комбинација тастера која пребацује на радни простор број 11. Облик записа "
-#~ "је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду "
-#~ "је доста слободан и дозвољава велика или мала слова, као и скраћенице "
-#~ "попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију на нарочити "
-#~ "низ знакова „disabled“, онда неће бити коришћена ниједна комбинација "
-#~ "тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding that switches to workspace 12. The format looks like \"&lt;"
-#~ "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
-#~ "liberal and allows lower or upper case, and also abbreviations such as "
-#~ "\"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-#~ "special string \"disabled\", then there will be no keybinding for this "
-#~ "action."
-#~ msgstr ""
-#~ "Комбинација тастера која пребацује на радни простор број 12. Облик записа "
-#~ "је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду "
-#~ "је доста слободан и дозвољава велика или мала слова, као и скраћенице "
-#~ "попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију на нарочити "
-#~ "низ знакова „disabled“, онда неће бити коришћена ниједна комбинација "
-#~ "тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding that switches to workspace 2. The format looks like \"&lt;"
-#~ "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
-#~ "liberal and allows lower or upper case, and also abbreviations such as "
-#~ "\"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-#~ "special string \"disabled\", then there will be no keybinding for this "
-#~ "action."
-#~ msgstr ""
-#~ "Комбинација тастера која пребацује на радни простор број 2. Облик записа "
-#~ "је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду "
-#~ "је доста слободан и дозвољава велика или мала слова, као и скраћенице "
-#~ "попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију на нарочити "
-#~ "низ знакова „disabled“, онда неће бити коришћена ниједна комбинација "
-#~ "тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding that switches to workspace 3. The format looks like \"&lt;"
-#~ "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
-#~ "liberal and allows lower or upper case, and also abbreviations such as "
-#~ "\"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-#~ "special string \"disabled\", then there will be no keybinding for this "
-#~ "action."
-#~ msgstr ""
-#~ "Комбинација тастера која пребацује на радни простор број 3. Облик записа "
-#~ "је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду "
-#~ "је доста слободан и дозвољава велика или мала слова, као и скраћенице "
-#~ "попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију на нарочити "
-#~ "низ знакова „disabled“, онда неће бити коришћена ниједна комбинација "
-#~ "тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding that switches to workspace 4. The format looks like \"&lt;"
-#~ "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
-#~ "liberal and allows lower or upper case, and also abbreviations such as "
-#~ "\"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-#~ "special string \"disabled\", then there will be no keybinding for this "
-#~ "action."
-#~ msgstr ""
-#~ "Комбинација тастера која пребацује на радни простор број 4. Облик записа "
-#~ "је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду "
-#~ "је доста слободан и дозвољава велика или мала слова, као и скраћенице "
-#~ "попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију на нарочити "
-#~ "низ знакова „disabled“, онда неће бити коришћена ниједна комбинација "
-#~ "тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding that switches to workspace 5. The format looks like \"&lt;"
-#~ "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
-#~ "liberal and allows lower or upper case, and also abbreviations such as "
-#~ "\"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-#~ "special string \"disabled\", then there will be no keybinding for this "
-#~ "action."
-#~ msgstr ""
-#~ "Комбинација тастера која пребацује на радни простор број 5. Облик записа "
-#~ "је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду "
-#~ "је доста слободан и дозвољава велика или мала слова, као и скраћенице "
-#~ "попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију на нарочити "
-#~ "низ знакова „disabled“, онда неће бити коришћена ниједна комбинација "
-#~ "тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding that switches to workspace 6. The format looks like \"&lt;"
-#~ "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
-#~ "liberal and allows lower or upper case, and also abbreviations such as "
-#~ "\"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-#~ "special string \"disabled\", then there will be no keybinding for this "
-#~ "action."
-#~ msgstr ""
-#~ "Комбинација тастера која пребацује на радни простор број 6. Облик записа "
-#~ "је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду "
-#~ "је доста слободан и дозвољава велика или мала слова, као и скраћенице "
-#~ "попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију на нарочити "
-#~ "низ знакова „disabled“, онда неће бити коришћена ниједна комбинација "
-#~ "тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding that switches to workspace 7. The format looks like \"&lt;"
-#~ "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
-#~ "liberal and allows lower or upper case, and also abbreviations such as "
-#~ "\"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-#~ "special string \"disabled\", then there will be no keybinding for this "
-#~ "action."
-#~ msgstr ""
-#~ "Комбинација тастера која пребацује на радни простор број 7. Облик записа "
-#~ "је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду "
-#~ "је доста слободан и дозвољава велика или мала слова, као и скраћенице "
-#~ "попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију на нарочити "
-#~ "низ знакова „disabled“, онда неће бити коришћена ниједна комбинација "
-#~ "тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding that switches to workspace 8. The format looks like \"&lt;"
-#~ "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
-#~ "liberal and allows lower or upper case, and also abbreviations such as "
-#~ "\"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-#~ "special string \"disabled\", then there will be no keybinding for this "
-#~ "action."
-#~ msgstr ""
-#~ "Комбинација тастера која пребацује на радни простор број 8. Облик записа "
-#~ "је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду "
-#~ "је доста слободан и дозвољава велика или мала слова, као и скраћенице "
-#~ "попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију на нарочити "
-#~ "низ знакова „disabled“, онда неће бити коришћена ниједна комбинација "
-#~ "тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding that switches to workspace 9. The format looks like \"&lt;"
-#~ "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
-#~ "liberal and allows lower or upper case, and also abbreviations such as "
-#~ "\"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-#~ "special string \"disabled\", then there will be no keybinding for this "
-#~ "action."
-#~ msgstr ""
-#~ "Комбинација тастера која пребацује на радни простор број 9. Облик записа "
-#~ "је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду "
-#~ "је доста слободан и дозвољава велика или мала слова, као и скраћенице "
-#~ "попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију на нарочити "
-#~ "низ знакова „disabled“, онда неће бити коришћена ниједна комбинација "
-#~ "тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to activate the window menu. The format looks like "
-#~ "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
-#~ "fairly liberal and allows lower or upper case, and also abbreviations "
-#~ "such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to "
-#~ "the special string \"disabled\", then there will be no keybinding for "
-#~ "this action."
-#~ msgstr ""
-#~ "Комбинација тастера за приказивање менија прозора. Облик записа је „&lt;"
-#~ "Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду је "
-#~ "доста слободан и дозвољава велика или мала слова, као и скраћенице попут "
-#~ "„&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију на нарочити низ "
-#~ "знакова „disabled“, онда неће бити коришћена ниједна комбинација тастера "
-#~ "за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to enter \"move mode\" and begin moving a window "
-#~ "using the keyboard. The format looks like \"&lt;Control&gt;a\" or \"&lt;"
-#~ "Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows lower "
-#~ "or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;"
-#~ "Ctrl&gt;\". If you set the option to the special string \"disabled\", "
-#~ "then there will be no keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера за улазак у „режим премештања“ или за почетак "
-#~ "премештања прозора помоћу тастатуре. Облик записа је „&lt;Control&gt;a“ "
-#~ "или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду је доста слободан и "
-#~ "дозвољава велика или мала слова, као и скраћенице попут „&lt;Ctl&gt;“ или "
-#~ "„&lt; Ctrl&gt;“. Ако подесите опцију на нарочити низ знакова „disabled“, "
-#~ "онда неће бити коришћена ниједна комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to enter \"resize mode\" and begin resizing a window "
-#~ "using the keyboard. The format looks like \"&lt;Control&gt;a\" or \"&lt;"
-#~ "Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows lower "
-#~ "or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;"
-#~ "Ctrl&gt;\". If you set the option to the special string \"disabled\", "
-#~ "then there will be no keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера за улазак у „режим промене величине“ или за почетак "
-#~ "промене величине прозора помоћу тастатуре. Облик записа је „&lt;"
-#~ "Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду је "
-#~ "доста слободан и дозвољава велика или мала слова, као и скраћенице попут "
-#~ "„&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију на нарочити низ "
-#~ "знакова „disabled“, онда неће бити коришћена ниједна комбинација тастера "
-#~ "за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to hide all normal windows and set the focus to the "
-#~ "desktop background. The format looks like \"&lt;Control&gt;a\" or \"&lt;"
-#~ "Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows lower "
-#~ "or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;"
-#~ "Ctrl&gt;\". If you set the option to the special string \"disabled\", "
-#~ "then there will be no keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера за сакривање свих обичних прозора и фокусирање "
-#~ "позадине радне површи. Облик записа је „&lt;Control&gt;a“ или „&lt;"
-#~ "Shift&gt;&lt;Alt&gt;F1“. Програм за обраду је доста слободан и дозвољава "
-#~ "велика или мала слова, као и скраћенице попут „&lt;Ctl&gt;“ или „&lt; "
-#~ "Ctrl&gt;“. Ако подесите опцију на нарочити низ знакова „disabled“, онда "
-#~ "неће бити коришћена ниједна комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to maximize a window. The format looks like \"&lt;"
-#~ "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
-#~ "liberal and allows lower or upper case, and also abbreviations such as "
-#~ "\"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-#~ "special string \"disabled\", then there will be no keybinding for this "
-#~ "action."
-#~ msgstr ""
-#~ "Комбинација тастера за увећавање прозора. Облик записа је „&lt;Control&gt;"
-#~ "a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду је доста слободан "
-#~ "и дозвољава велика или мала слова, као и скраћенице попут „&lt;Ctl&gt;“ "
-#~ "или „&lt; Ctrl&gt;“. Ако подесите опцију на нарочити низ знакова "
-#~ "„disabled“, онда неће бити коришћена ниједна комбинација тастера за ову "
-#~ "акцију."
-
-#~ msgid ""
-#~ "The keybinding used to minimize a window. The format looks like \"&lt;"
-#~ "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
-#~ "liberal and allows lower or upper case, and also abbreviations such as "
-#~ "\"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-#~ "special string \"disabled\", then there will be no keybinding for this "
-#~ "action."
-#~ msgstr ""
-#~ "Комбинација тастера за умањивање прозора. Облик записа је „&lt;Control&gt;"
-#~ "a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду је доста слободан "
-#~ "и дозвољава велика или мала слова, као и скраћенице попут „&lt;Ctl&gt;“ "
-#~ "или „&lt; Ctrl&gt;“. Ако подесите опцију на нарочити низ знакова "
-#~ "„disabled“, онда неће бити коришћена ниједна комбинација тастера за ову "
-#~ "акцију."
-
-#~ msgid ""
-#~ "The keybinding used to move a window one workspace down. The format looks "
-#~ "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser "
-#~ "is fairly liberal and allows lower or upper case, and also abbreviations "
-#~ "such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to "
-#~ "the special string \"disabled\", then there will be no keybinding for "
-#~ "this action."
-#~ msgstr ""
-#~ "Комбинација тастера за пребацивање прозора на радни простор испод. Облик "
-#~ "записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за "
-#~ "обраду је доста слободан и дозвољава велика или мала слова, као и "
-#~ "скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију "
-#~ "на нарочити низ знакова „disabled“, онда неће бити коришћена ниједна "
-#~ "комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to move a window one workspace to the left. The "
-#~ "format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
-#~ "The parser is fairly liberal and allows lower or upper case, and also "
-#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
-#~ "the option to the special string \"disabled\", then there will be no "
-#~ "keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера за пребацивање прозора на радни простор лево. Облик "
-#~ "записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за "
-#~ "обраду је доста слободан и дозвољава велика или мала слова, као и "
-#~ "скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију "
-#~ "на нарочити низ знакова „disabled“, онда неће бити коришћена ниједна "
-#~ "комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to move a window one workspace to the right. The "
-#~ "format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
-#~ "The parser is fairly liberal and allows lower or upper case, and also "
-#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
-#~ "the option to the special string \"disabled\", then there will be no "
-#~ "keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера за пребацивање прозора на радни простор десно. Облик "
-#~ "записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за "
-#~ "обраду је доста слободан и дозвољава велика или мала слова, као и "
-#~ "скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију "
-#~ "на нарочити низ знакова „disabled“, онда неће бити коришћена ниједна "
-#~ "комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to move a window one workspace up. The format looks "
-#~ "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser "
-#~ "is fairly liberal and allows lower or upper case, and also abbreviations "
-#~ "such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to "
-#~ "the special string \"disabled\", then there will be no keybinding for "
-#~ "this action."
-#~ msgstr ""
-#~ "Комбинација тастера за пребацивање прозора на радни простор горе. Облик "
-#~ "записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за "
-#~ "обраду је доста слободан и дозвољава велика или мала слова, као и "
-#~ "скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију "
-#~ "на нарочити низ знакова „disabled“, онда неће бити коришћена ниједна "
-#~ "комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to move a window to workspace 1. The format looks "
-#~ "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser "
-#~ "is fairly liberal and allows lower or upper case, and also abbreviations "
-#~ "such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to "
-#~ "the special string \"disabled\", then there will be no keybinding for "
-#~ "this action."
-#~ msgstr ""
-#~ "Комбинација тастера за пребацивање прозора на радни простор број 1. Облик "
-#~ "записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за "
-#~ "обраду је доста слободан и дозвољава велика или мала слова, као и "
-#~ "скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију "
-#~ "на нарочити низ знакова „disabled“, онда неће бити коришћена ниједна "
-#~ "комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to move a window to workspace 10. The format looks "
-#~ "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser "
-#~ "is fairly liberal and allows lower or upper case, and also abbreviations "
-#~ "such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to "
-#~ "the special string \"disabled\", then there will be no keybinding for "
-#~ "this action."
-#~ msgstr ""
-#~ "Комбинација тастера за пребацивање прозора на радни простор број 10. "
-#~ "Облик записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. "
-#~ "Програм за обраду је доста слободан и дозвољава велика или мала слова, "
-#~ "као и скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите "
-#~ "опцију на нарочити низ знакова „disabled“, онда неће бити коришћена "
-#~ "ниједна комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to move a window to workspace 11. The format looks "
-#~ "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser "
-#~ "is fairly liberal and allows lower or upper case, and also abbreviations "
-#~ "such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to "
-#~ "the special string \"disabled\", then there will be no keybinding for "
-#~ "this action."
-#~ msgstr ""
-#~ "Комбинација тастера за пребацивање прозора на радни простор број 11. "
-#~ "Облик записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. "
-#~ "Програм за обраду је доста слободан и дозвољава велика или мала слова, "
-#~ "као и скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите "
-#~ "опцију на нарочити низ знакова „disabled“, онда неће бити коришћена "
-#~ "ниједна комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to move a window to workspace 12. The format looks "
-#~ "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser "
-#~ "is fairly liberal and allows lower or upper case, and also abbreviations "
-#~ "such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to "
-#~ "the special string \"disabled\", then there will be no keybinding for "
-#~ "this action."
-#~ msgstr ""
-#~ "Комбинација тастера за пребацивање прозора на радни простор број 12. "
-#~ "Облик записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. "
-#~ "Програм за обраду је доста слободан и дозвољава велика или мала слова, "
-#~ "као и скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите "
-#~ "опцију на нарочити низ знакова „disabled“, онда неће бити коришћена "
-#~ "ниједна комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to move a window to workspace 2. The format looks "
-#~ "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser "
-#~ "is fairly liberal and allows lower or upper case, and also abbreviations "
-#~ "such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to "
-#~ "the special string \"disabled\", then there will be no keybinding for "
-#~ "this action."
-#~ msgstr ""
-#~ "Комбинација тастера за пребацивање прозора на радни простор број 2. Облик "
-#~ "записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за "
-#~ "обраду је доста слободан и дозвољава велика или мала слова, као и "
-#~ "скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију "
-#~ "на нарочити низ знакова „disabled“, онда неће бити коришћена ниједна "
-#~ "комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to move a window to workspace 3. The format looks "
-#~ "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser "
-#~ "is fairly liberal and allows lower or upper case, and also abbreviations "
-#~ "such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to "
-#~ "the special string \"disabled\", then there will be no keybinding for "
-#~ "this action."
-#~ msgstr ""
-#~ "Комбинација тастера за пребацивање прозора на радни простор број 3. Облик "
-#~ "записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за "
-#~ "обраду је доста слободан и дозвољава велика или мала слова, као и "
-#~ "скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију "
-#~ "на нарочити низ знакова „disabled“, онда неће бити коришћена ниједна "
-#~ "комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to move a window to workspace 4. The format looks "
-#~ "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser "
-#~ "is fairly liberal and allows lower or upper case, and also abbreviations "
-#~ "such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to "
-#~ "the special string \"disabled\", then there will be no keybinding for "
-#~ "this action."
-#~ msgstr ""
-#~ "Комбинација тастера за пребацивање прозора на радни простор број 4. Облик "
-#~ "записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за "
-#~ "обраду је доста слободан и дозвољава велика или мала слова, као и "
-#~ "скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију "
-#~ "на нарочити низ знакова „disabled“, онда неће бити коришћена ниједна "
-#~ "комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to move a window to workspace 5. The format looks "
-#~ "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser "
-#~ "is fairly liberal and allows lower or upper case, and also abbreviations "
-#~ "such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to "
-#~ "the special string \"disabled\", then there will be no keybinding for "
-#~ "this action."
-#~ msgstr ""
-#~ "Комбинација тастера за пребацивање прозора на радни простор број 5. Облик "
-#~ "записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за "
-#~ "обраду је доста слободан и дозвољава велика или мала слова, као и "
-#~ "скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију "
-#~ "на нарочити низ знакова „disabled“, онда неће бити коришћена ниједна "
-#~ "комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to move a window to workspace 6. The format looks "
-#~ "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser "
-#~ "is fairly liberal and allows lower or upper case, and also abbreviations "
-#~ "such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to "
-#~ "the special string \"disabled\", then there will be no keybinding for "
-#~ "this action."
-#~ msgstr ""
-#~ "Комбинација тастера за пребацивање прозора на радни простор број 6. Облик "
-#~ "записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за "
-#~ "обраду је доста слободан и дозвољава велика или мала слова, као и "
-#~ "скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију "
-#~ "на нарочити низ знакова „disabled“, онда неће бити коришћена ниједна "
-#~ "комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to move a window to workspace 7. The format looks "
-#~ "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser "
-#~ "is fairly liberal and allows lower or upper case, and also abbreviations "
-#~ "such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to "
-#~ "the special string \"disabled\", then there will be no keybinding for "
-#~ "this action."
-#~ msgstr ""
-#~ "Комбинација тастера за пребацивање прозора на радни простор број 7. Облик "
-#~ "записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за "
-#~ "обраду је доста слободан и дозвољава велика или мала слова, као и "
-#~ "скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију "
-#~ "на нарочити низ знакова „disabled“, онда неће бити коришћена ниједна "
-#~ "комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to move a window to workspace 8. The format looks "
-#~ "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser "
-#~ "is fairly liberal and allows lower or upper case, and also abbreviations "
-#~ "such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to "
-#~ "the special string \"disabled\", then there will be no keybinding for "
-#~ "this action."
-#~ msgstr ""
-#~ "Комбинација тастера за пребацивање прозора на радни простор број 8. Облик "
-#~ "записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за "
-#~ "обраду је доста слободан и дозвољава велика или мала слова, као и "
-#~ "скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију "
-#~ "на нарочити низ знакова „disabled“, онда неће бити коришћена ниједна "
-#~ "комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to move a window to workspace 9. The format looks "
-#~ "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser "
-#~ "is fairly liberal and allows lower or upper case, and also abbreviations "
-#~ "such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to "
-#~ "the special string \"disabled\", then there will be no keybinding for "
-#~ "this action."
-#~ msgstr ""
-#~ "Комбинација тастера за пребацивање прозора на радни простор број 9. Облик "
-#~ "записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за "
-#~ "обраду је доста слободан и дозвољава велика или мала слова, као и "
-#~ "скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију "
-#~ "на нарочити низ знакова „disabled“, онда неће бити коришћена ниједна "
-#~ "комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to move focus backwards between panels and the "
-#~ "desktop, using a popup window. The format looks like \"&lt;Control&gt;a\" "
-#~ "or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and "
-#~ "allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
-#~ "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
-#~ "\"disabled\", then there will be no keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера за пребацивање фокуса уназад између панела и радне "
-#~ "површи, помоћу искачућег прозора. Облик записа је „&lt;Control&gt;a“ или "
-#~ "„&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду је доста слободан и "
-#~ "дозвољава велика или мала слова, као и скраћенице попут „&lt;Ctl&gt;“ или "
-#~ "„&lt; Ctrl&gt;“. Ако подесите опцију на нарочити низ знакова „disabled“, "
-#~ "онда неће бити коришћена ниједна комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to move focus backwards between panels and the "
-#~ "desktop, without a popup window. The format looks like \"&lt;Control&gt;a"
-#~ "\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and "
-#~ "allows lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;"
-#~ "\" and \"&lt;Ctrl&gt;\". If you set the option to the special string "
-#~ "\"disabled\", then there will be no keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера за пребацивање фокуса уназад између панела и радне "
-#~ "површи, без искачућег прозора. Облик записа је „&lt;Control&gt;a“ или "
-#~ "„&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду је доста слободан и "
-#~ "дозвољава велика или мала слова, као и скраћенице попут „&lt;Ctl&gt;“ или "
-#~ "„&lt; Ctrl&gt;“. Ако подесите опцију на нарочити низ знакова „disabled“, "
-#~ "онда неће бити коришћена ниједна комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to move focus backwards between windows of an "
-#~ "application without a popup window. Holding \"shift\" together with this "
-#~ "binding makes the direction go forward again. The format looks like \"&lt;"
-#~ "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
-#~ "liberal and allows lower or upper case, and also abbreviations such as "
-#~ "\"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-#~ "special string \"disabled\", then there will be no keybinding for this "
-#~ "action."
-#~ msgstr ""
-#~ "Комбинација тастера за пребацивање фокуса уназад између прозора програма, "
-#~ "без искачућег прозора. Држање „shift“ уз ову пречицу ће ићи опет унапред. "
-#~ "Облик записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. "
-#~ "Програм за обраду је доста слободан и дозвољава велика или мала слова, "
-#~ "као и скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите "
-#~ "опцију на нарочити низ знакова „disabled“, онда неће бити коришћена "
-#~ "ниједна комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to move focus backwards between windows of an "
-#~ "application, using a popup window. Holding \"shift\" together with this "
-#~ "binding makes the direction go forward again. The format looks like \"&lt;"
-#~ "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
-#~ "liberal and allows lower or upper case, and also abbreviations such as "
-#~ "\"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-#~ "special string \"disabled\", then there will be no keybinding for this "
-#~ "action."
-#~ msgstr ""
-#~ "Комбинација тастера за пребацивање фокуса уназад између прозора програма, "
-#~ "помоћу искачућег прозора. Држање „shift“ уз ову пречицу ће ићи опет "
-#~ "унапред. Облик записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;"
-#~ "F1“. Програм за обраду је доста слободан и дозвољава велика или мала "
-#~ "слова, као и скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако "
-#~ "подесите опцију на нарочити низ знакова „disabled“, онда неће бити "
-#~ "коришћена ниједна комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to move focus backwards between windows without a "
-#~ "popup window. Holding \"shift\" together with this binding makes the "
-#~ "direction go forward again. The format looks like \"&lt;Control&gt;a\" or "
-#~ "\"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows "
-#~ "lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and "
-#~ "\"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled"
-#~ "\", then there will be no keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера за пребацивање фокуса уназад између прозора, без "
-#~ "искачућег прозора. Држање „shift“ уз ову пречицу ће ићи опет унапред. "
-#~ "Облик записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. "
-#~ "Програм за обраду је доста слободан и дозвољава велика или мала слова, "
-#~ "као и скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите "
-#~ "опцију на нарочити низ знакова „disabled“, онда неће бити коришћена "
-#~ "ниједна комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to move focus backwards between windows, using a "
-#~ "popup window. Holding \"shift\" together with this binding makes the "
-#~ "direction go forward again. The format looks like \"&lt;Control&gt;a\" or "
-#~ "\"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows "
-#~ "lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and "
-#~ "\"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled"
-#~ "\", then there will be no keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера за пребацивање фокуса уназад између прозора, помоћу "
-#~ "искачућег прозора. Држање „shift“ уз ову пречицу ће ићи опет унапред. "
-#~ "Облик записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. "
-#~ "Програм за обраду је доста слободан и дозвољава велика или мала слова, "
-#~ "као и скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите "
-#~ "опцију на нарочити низ знакова „disabled“, онда неће бити коришћена "
-#~ "ниједна комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to move focus between panels and the desktop, using a "
-#~ "popup window. The format looks like \"&lt;Control&gt;a\" or \"&lt;"
-#~ "Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows lower "
-#~ "or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;"
-#~ "Ctrl&gt;\". If you set the option to the special string \"disabled\", "
-#~ "then there will be no keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера за пребацивање фокуса између панела и радне површи, "
-#~ "помоћу искачућег прозора. Облик записа је „&lt;Control&gt;a“ или „&lt;"
-#~ "Shift&gt;&lt;Alt&gt;F1“. Програм за обраду је доста слободан и дозвољава "
-#~ "велика или мала слова, као и скраћенице попут „&lt;Ctl&gt;“ или „&lt; "
-#~ "Ctrl&gt;“. Ако подесите опцију на нарочити низ знакова „disabled“, онда "
-#~ "неће бити коришћена ниједна комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to move focus between panels and the desktop, without "
-#~ "a popup window. The format looks like \"&lt;Control&gt;a\" or \"&lt;"
-#~ "Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows lower "
-#~ "or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;"
-#~ "Ctrl&gt;\". If you set the option to the special string \"disabled\", "
-#~ "then there will be no keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера за пребацивање фокуса између панела и радне површи, "
-#~ "без искачућег прозора. Облик записа је „&lt;Control&gt;a“ или „&lt;"
-#~ "Shift&gt;&lt;Alt&gt;F1“. Програм за обраду је доста слободан и дозвољава "
-#~ "велика или мала слова, као и скраћенице попут „&lt;Ctl&gt;“ или „&lt; "
-#~ "Ctrl&gt;“. Ако подесите опцију на нарочити низ знакова „disabled“, онда "
-#~ "неће бити коришћена ниједна комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to move focus between windows of an application "
-#~ "without a popup window. Holding the \"shift\" key while using this "
-#~ "binding reverses the direction of movement. The format looks like \"&lt;"
-#~ "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
-#~ "liberal and allows lower or upper case, and also abbreviations such as "
-#~ "\"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-#~ "special string \"disabled\", then there will be no keybinding for this "
-#~ "action."
-#~ msgstr ""
-#~ "Комбинација тастера за пребацивање фокуса између прозора програма, без "
-#~ "искачућег прозора. (Традиционално &lt;Alt&gr;Escape) Држање тастера "
-#~ "„shift“ при употреби ове комбинације обрће смер кретања. Облик записа је "
-#~ "„&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду је "
-#~ "доста слободан и дозвољава велика или мала слова, као и скраћенице попут "
-#~ "„&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију на нарочити низ "
-#~ "знакова „disabled“, онда неће бити коришћена ниједна комбинација тастера "
-#~ "за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to move focus between windows of an application, "
-#~ "using a popup window. (Traditionally &lt;Alt&gt;F6) Holding the \"shift\" "
-#~ "key while using this binding reverses the direction of movement. The "
-#~ "format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
-#~ "The parser is fairly liberal and allows lower or upper case, and also "
-#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
-#~ "the option to the special string \"disabled\", then there will be no "
-#~ "keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера за пребацивање фокуса између прозора програма, помоћу "
-#~ "искачућег прозора. (Традиционално &lt;Alt&gr;Tab) Држање тастера „shift“ "
-#~ "при употреби ове комбинације обрће смер кретања. Облик записа је „&lt;"
-#~ "Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду је "
-#~ "доста слободан и дозвољава велика или мала слова, као и скраћенице попут "
-#~ "„&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију на нарочити низ "
-#~ "знакова „disabled“, онда неће бити коришћена ниједна комбинација тастера "
-#~ "за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to move focus between windows without a popup window. "
-#~ "(Traditionally &lt;Alt&gt;Escape) Holding the \"shift\" key while using "
-#~ "this binding reverses the direction of movement. The format looks like "
-#~ "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
-#~ "fairly liberal and allows lower or upper case, and also abbreviations "
-#~ "such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to "
-#~ "the special string \"disabled\", then there will be no keybinding for "
-#~ "this action."
-#~ msgstr ""
-#~ "Комбинација тастера за пребацивање фокуса између прозора, без искачућег "
-#~ "прозора. (Традиционално &lt;Alt&gr;Escape) Држање тастера „shift“ при "
-#~ "употреби ове комбинације обрће смер кретања. Облик записа је „&lt;"
-#~ "Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду је "
-#~ "доста слободан и дозвољава велика или мала слова, као и скраћенице попут "
-#~ "„&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију на нарочити низ "
-#~ "знакова „disabled“, онда неће бити коришћена ниједна комбинација тастера "
-#~ "за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to move focus between windows, using a popup window. "
-#~ "(Traditionally &lt;Alt&gt;Tab) Holding the \"shift\" key while using this "
-#~ "binding reverses the direction of movement. The format looks like \"&lt;"
-#~ "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
-#~ "liberal and allows lower or upper case, and also abbreviations such as "
-#~ "\"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-#~ "special string \"disabled\", then there will be no keybinding for this "
-#~ "action."
-#~ msgstr ""
-#~ "Комбинација тастера за пребацивање фокуса између прозора, помоћу "
-#~ "искачућег прозора. (Традиционално &lt;Alt&gr;Tab) Држање тастера „shift“ "
-#~ "при употреби ове комбинације обрће смер кретања. Облик записа је „&lt;"
-#~ "Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду је "
-#~ "доста слободан и дозвољава велика или мала слова, као и скраћенице попут "
-#~ "„&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију на нарочити низ "
-#~ "знакова „disabled“, онда неће бити коришћена ниједна комбинација тастера "
-#~ "за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to toggle always on top. A window that is always on "
-#~ "top will always be visible over other overlapping windows. The format "
-#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
-#~ "parser is fairly liberal and allows lower or upper case, and also "
-#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
-#~ "the option to the special string \"disabled\", then there will be no "
-#~ "keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера за укључивање/искључивање да прозор буде увек на "
-#~ "врху.  Прозор који је увек на врху ће се видети и преко осталих "
-#~ "преклапајућих прозора. Облик записа је „&lt;Control&gt;a“ или „&lt;"
-#~ "Shift&gt;&lt;Alt&gt;F1“. Програм за обраду је доста слободан и дозвољава "
-#~ "велика или мала слова, као и скраћенице попут „&lt;Ctl&gt;“ или „&lt; "
-#~ "Ctrl&gt;“. Ако подесите опцију на нарочити низ знакова „disabled“, онда "
-#~ "неће бити коришћена ниједна комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to toggle fullscreen mode. The format looks like "
-#~ "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
-#~ "fairly liberal and allows lower or upper case, and also abbreviations "
-#~ "such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to "
-#~ "the special string \"disabled\", then there will be no keybinding for "
-#~ "this action."
-#~ msgstr ""
-#~ "Комбинација тастера за укључивање/искључивање режима целог екрана. Облик "
-#~ "записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за "
-#~ "обраду је доста слободан и дозвољава велика или мала слова, као и "
-#~ "скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију "
-#~ "на нарочити низ знакова „disabled“, онда неће бити коришћена ниједна "
-#~ "комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to toggle maximization. The format looks like \"&lt;"
-#~ "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
-#~ "liberal and allows lower or upper case, and also abbreviations such as "
-#~ "\"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-#~ "special string \"disabled\", then there will be no keybinding for this "
-#~ "action."
-#~ msgstr ""
-#~ "Комбинација тастера за укључивање/искључивање увећање. Облик записа је "
-#~ "„&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду је "
-#~ "доста слободан и дозвољава велика или мала слова, као и скраћенице попут "
-#~ "„&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију на нарочити низ "
-#~ "знакова „disabled“, онда неће бити коришћена ниједна комбинација тастера "
-#~ "за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to toggle shaded/unshaded state. The format looks "
-#~ "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser "
-#~ "is fairly liberal and allows lower or upper case, and also abbreviations "
-#~ "such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to "
-#~ "the special string \"disabled\", then there will be no keybinding for "
-#~ "this action."
-#~ msgstr ""
-#~ "Комбинација тастера за замотавање/одмотавање. Облик записа је „&lt;"
-#~ "Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду је "
-#~ "доста слободан и дозвољава велика или мала слова, као и скраћенице попут "
-#~ "„&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију на нарочити низ "
-#~ "знакова „disabled“, онда неће бити коришћена ниједна комбинација тастера "
-#~ "за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to toggle whether the window is on all workspaces or "
-#~ "just one. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;"
-#~ "&lt;Alt&gt;F1\". The parser is fairly liberal and allows lower or upper "
-#~ "case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;"
-#~ "\". If you set the option to the special string \"disabled\", then there "
-#~ "will be no keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера за измену да ли је прозор у свим радним просторима "
-#~ "или само у једном. Облик записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;"
-#~ "&lt;Alt&gt;F1“. Програм за обраду је доста слободан и дозвољава велика "
-#~ "или мала слова, као и скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. "
-#~ "Ако подесите опцију на нарочити низ знакова „disabled“, онда неће бити "
-#~ "коришћена ниједна комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding used to unmaximize a window. The format looks like \"&lt;"
-#~ "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
-#~ "liberal and allows lower or upper case, and also abbreviations such as "
-#~ "\"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-#~ "special string \"disabled\", then there will be no keybinding for this "
-#~ "action."
-#~ msgstr ""
-#~ "Комбинација тастера за поништавање увећања прозора. Облик записа је „&lt;"
-#~ "Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду је "
-#~ "доста слободан и дозвољава велика или мала слова, као и скраћенице попут "
-#~ "„&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију на нарочити низ "
-#~ "знакова „disabled“, онда неће бити коришћена ниједна комбинација тастера "
-#~ "за ову акцију."
-
-# bug: s/display's/displays/ (it's not genitive, but a verb as in "it displays")
-#~ msgid ""
-#~ "The keybinding which display's the panel's \"Run Application\" dialog "
-#~ "box. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;"
-#~ "Alt&gt;F1\". The parser is fairly liberal and allows lower or upper case, "
-#~ "and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If "
-#~ "you set the option to the special string \"disabled\", then there will be "
-#~ "no keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера која приказује прозорче панела „Покрени програм“. "
-#~ "Облик записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. "
-#~ "Програм за обраду је доста слободан и дозвољава велика или мала слова, "
-#~ "као и скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите "
-#~ "опцију на нарочити низ знакова „disabled“, онда неће бити коришћена "
-#~ "ниједна комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding which invokes a terminal. The format looks like \"&lt;"
-#~ "Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly "
-#~ "liberal and allows lower or upper case, and also abbreviations such as "
-#~ "\"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to the "
-#~ "special string \"disabled\", then there will be no keybinding for this "
-#~ "action."
-#~ msgstr ""
-#~ "Комбинација тастера која покреће терминал. Облик записа је „&lt;"
-#~ "Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду је "
-#~ "доста слободан и дозвољава велика или мала слова, као и скраћенице попут "
-#~ "„&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију на нарочити низ "
-#~ "знакова „disabled“, онда неће бити коришћена ниједна комбинација тастера "
-#~ "за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding which invokes the panel's screenshot utility to take a "
-#~ "screenshot of a window. The format looks like \"&lt;Control&gt;a\" or "
-#~ "\"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows "
-#~ "lower or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and "
-#~ "\"&lt;Ctrl&gt;\". If you set the option to the special string \"disabled"
-#~ "\", then there will be no keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера која приказује алатку панела за снимке екрана за "
-#~ "снимак прозора. Облик записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;"
-#~ "Alt&gt;F1“. Програм за обраду је доста слободан и дозвољава велика или "
-#~ "мала слова, као и скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако "
-#~ "подесите опцију на нарочити низ знакова „disabled“, онда неће бити "
-#~ "коришћена ниједна комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding which invokes the panel's screenshot utility. The format "
-#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
-#~ "parser is fairly liberal and allows lower or upper case, and also "
-#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
-#~ "the option to the special string \"disabled\", then there will be no "
-#~ "keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера која приказује алатку панела за снимке екрана. Облик "
-#~ "записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за "
-#~ "обраду је доста слободан и дозвољава велика или мала слова, као и "
-#~ "скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију "
-#~ "на нарочити низ знакова „disabled“, онда неће бити коришћена ниједна "
-#~ "комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "The keybinding which shows the panel's main menu. The format looks like "
-#~ "\"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser is "
-#~ "fairly liberal and allows lower or upper case, and also abbreviations "
-#~ "such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to "
-#~ "the special string \"disabled\", then there will be no keybinding for "
-#~ "this action."
-#~ msgstr ""
-#~ "Комбинација тастера која приказује главни мени панела. Облик записа је "
-#~ "„&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду је "
-#~ "доста слободан и дозвољава велика или мала слова, као и скраћенице попут "
-#~ "„&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију на нарочити низ "
-#~ "знакова „disabled“, онда неће бити коришћена ниједна комбинација тастера "
-#~ "за ову акцију."
-
-#~ msgid ""
-#~ "This keybinding changes whether a window is above or below other windows. "
-#~ "If the window is covered by another one, it raises the window above all "
-#~ "others, and if the window is already fully visible, it lowers it below "
-#~ "all others. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;"
-#~ "&lt;Alt&gt;F1\". The parser is fairly liberal and allows lower or upper "
-#~ "case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;"
-#~ "\". If you set the option to the special string \"disabled\", then there "
-#~ "will be no keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера која мења да ли је прозор изнад или испод осталих "
-#~ "прозора. Ако је прозор покривен неким прозором, онда се издиже изнад "
-#~ "осталих, а ако је већ у потпуности приказан, онда се сакрива иза свих "
-#~ "осталих прозора. Облик записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;"
-#~ "Alt&gt;F1“. Програм за обраду је доста слободан и дозвољава велика или "
-#~ "мала слова, као и скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако "
-#~ "подесите опцију на нарочити низ знакова „disabled“, онда неће бити "
-#~ "коришћена ниједна комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "This keybinding lowers a window below other windows. The format looks "
-#~ "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser "
-#~ "is fairly liberal and allows lower or upper case, and also abbreviations "
-#~ "such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to "
-#~ "the special string \"disabled\", then there will be no keybinding for "
-#~ "this action."
-#~ msgstr ""
-#~ "Комбинација тастера која сакрива прозор иза свих осталих прозора. Облик "
-#~ "записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за "
-#~ "обраду је доста слободан и дозвољава велика или мала слова, као и "
-#~ "скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију "
-#~ "на нарочити низ знакова „disabled“, онда неће бити коришћена ниједна "
-#~ "комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "This keybinding moves a window against the north (top) side of the "
-#~ "screen. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;"
-#~ "Alt&gt;F1\". The parser is fairly liberal and allows lower or upper case, "
-#~ "and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If "
-#~ "you set the option to the special string \"disabled\", then there will be "
-#~ "no keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера која помера прозор на север екрана (горња ивица). "
-#~ "Облик записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. "
-#~ "Програм за обраду је доста слободан и дозвољава велика или мала слова, "
-#~ "као и скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите "
-#~ "опцију на нарочити низ знакова „disabled“, онда неће бити коришћена "
-#~ "ниједна комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "This keybinding moves a window into the center of the screen. The format "
-#~ "looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The "
-#~ "parser is fairly liberal and allows lower or upper case, and also "
-#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
-#~ "the option to the special string \"disabled\", then there will be no "
-#~ "keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера која помера прозор на средину екрана. Облик записа је "
-#~ "„&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за обраду је "
-#~ "доста слободан и дозвољава велика или мала слова, као и скраћенице попут "
-#~ "„&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију на нарочити низ "
-#~ "знакова „disabled“, онда неће бити коришћена ниједна комбинација тастера "
-#~ "за ову акцију."
-
-#~ msgid ""
-#~ "This keybinding moves a window into the east (right) side of the screen. "
-#~ "The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1"
-#~ "\". The parser is fairly liberal and allows lower or upper case, and also "
-#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
-#~ "the option to the special string \"disabled\", then there will be no "
-#~ "keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера која помера прозор на исток екрана (десна ивица). "
-#~ "Облик записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. "
-#~ "Програм за обраду је доста слободан и дозвољава велика или мала слова, "
-#~ "као и скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите "
-#~ "опцију на нарочити низ знакова „disabled“, онда неће бити коришћена "
-#~ "ниједна комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "This keybinding moves a window into the north-east (top right) corner of "
-#~ "the screen. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;"
-#~ "&lt;Alt&gt;F1\". The parser is fairly liberal and allows lower or upper "
-#~ "case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;"
-#~ "\". If you set the option to the special string \"disabled\", then there "
-#~ "will be no keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера која помера прозор на североисток екрана (горе "
-#~ "десно). Облик записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;"
-#~ "F1“. Програм за обраду је доста слободан и дозвољава велика или мала "
-#~ "слова, као и скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако "
-#~ "подесите опцију на нарочити низ знакова „disabled“, онда неће бити "
-#~ "коришћена ниједна комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "This keybinding moves a window into the north-west (top left) corner of "
-#~ "the screen. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;"
-#~ "&lt;Alt&gt;F1\". The parser is fairly liberal and allows lower or upper "
-#~ "case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;"
-#~ "\". If you set the option to the special string \"disabled\", then there "
-#~ "will be no keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера која помера прозор на северозапад екрана (горе лево). "
-#~ "Облик записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. "
-#~ "Програм за обраду је доста слободан и дозвољава велика или мала слова, "
-#~ "као и скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите "
-#~ "опцију на нарочити низ знакова „disabled“, онда неће бити коришћена "
-#~ "ниједна комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "This keybinding moves a window into the south (bottom) side of the "
-#~ "screen. The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;"
-#~ "Alt&gt;F1\". The parser is fairly liberal and allows lower or upper case, "
-#~ "and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If "
-#~ "you set the option to the special string \"disabled\", then there will be "
-#~ "no keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера која помера прозор на југ екрана (доња ивица). Облик "
-#~ "записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за "
-#~ "обраду је доста слободан и дозвољава велика или мала слова, као и "
-#~ "скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију "
-#~ "на нарочити низ знакова „disabled“, онда неће бити коришћена ниједна "
-#~ "комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "This keybinding moves a window into the south-east (bottom right) corner "
-#~ "of the screen. The format looks like \"&lt;Control&gt;a\" or \"&lt;"
-#~ "Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows lower "
-#~ "or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;"
-#~ "Ctrl&gt;\". If you set the option to the special string \"disabled\", "
-#~ "then there will be no keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера која помера прозор на југоисток екрана (доле десно). "
-#~ "Облик записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. "
-#~ "Програм за обраду је доста слободан и дозвољава велика или мала слова, "
-#~ "као и скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите "
-#~ "опцију на нарочити низ знакова „disabled“, онда неће бити коришћена "
-#~ "ниједна комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "This keybinding moves a window into the south-west (bottom left) corner "
-#~ "of the screen. The format looks like \"&lt;Control&gt;a\" or \"&lt;"
-#~ "Shift&gt;&lt;Alt&gt;F1\". The parser is fairly liberal and allows lower "
-#~ "or upper case, and also abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;"
-#~ "Ctrl&gt;\". If you set the option to the special string \"disabled\", "
-#~ "then there will be no keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера која помера прозор на југозапад екрана (доле лево). "
-#~ "Облик записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. "
-#~ "Програм за обраду је доста слободан и дозвољава велика или мала слова, "
-#~ "као и скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите "
-#~ "опцију на нарочити низ знакова „disabled“, онда неће бити коришћена "
-#~ "ниједна комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "This keybinding moves a window into the west (left) side of the screen. "
-#~ "The format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1"
-#~ "\". The parser is fairly liberal and allows lower or upper case, and also "
-#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
-#~ "the option to the special string \"disabled\", then there will be no "
-#~ "keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера која помера прозор на запад екрана (лева ивица). "
-#~ "Облик записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. "
-#~ "Програм за обраду је доста слободан и дозвољава велика или мала слова, "
-#~ "као и скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите "
-#~ "опцију на нарочити низ знакова „disabled“, онда неће бити коришћена "
-#~ "ниједна комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "This keybinding raises the window above other windows. The format looks "
-#~ "like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". The parser "
-#~ "is fairly liberal and allows lower or upper case, and also abbreviations "
-#~ "such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set the option to "
-#~ "the special string \"disabled\", then there will be no keybinding for "
-#~ "this action."
-#~ msgstr ""
-#~ "Комбинација тастера која издиже прозор испред свих осталих прозора. Облик "
-#~ "записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;&lt;Alt&gt;F1“. Програм за "
-#~ "обраду је доста слободан и дозвољава велика или мала слова, као и "
-#~ "скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. Ако подесите опцију "
-#~ "на нарочити низ знакова „disabled“, онда неће бити коришћена ниједна "
-#~ "комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "This keybinding resizes a window to fill available horizontal space. The "
-#~ "format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
-#~ "The parser is fairly liberal and allows lower or upper case, and also "
-#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
-#~ "the option to the special string \"disabled\", then there will be no "
-#~ "keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера за измену величине прозора тако да попуни сав "
-#~ "водоравни простор. Облик записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;"
-#~ "&lt;Alt&gt;F1“. Програм за обраду је доста слободан и дозвољава велика "
-#~ "или мала слова, као и скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. "
-#~ "Ако подесите опцију на нарочити низ знакова „disabled“, онда неће бити "
-#~ "коришћена ниједна комбинација тастера за ову акцију."
-
-#~ msgid ""
-#~ "This keybinding resizes a window to fill available vertical space. The "
-#~ "format looks like \"&lt;Control&gt;a\" or \"&lt;Shift&gt;&lt;Alt&gt;F1\". "
-#~ "The parser is fairly liberal and allows lower or upper case, and also "
-#~ "abbreviations such as \"&lt;Ctl&gt;\" and \"&lt;Ctrl&gt;\". If you set "
-#~ "the option to the special string \"disabled\", then there will be no "
-#~ "keybinding for this action."
-#~ msgstr ""
-#~ "Комбинација тастера за измену величине прозора тако да попуни сав "
-#~ "усправни простор. Облик записа је „&lt;Control&gt;a“ или „&lt;Shift&gt;"
-#~ "&lt;Alt&gt;F1“. Програм за обраду је доста слободан и дозвољава велика "
-#~ "или мала слова, као и скраћенице попут „&lt;Ctl&gt;“ или „&lt; Ctrl&gt;“. "
-#~ "Ако подесите опцију на нарочити низ знакова „disabled“, онда неће бити "
-#~ "коришћена ниједна комбинација тастера за ову акцију."
-
-#~ msgid "Unmaximize window"
-#~ msgstr "Поништи увећање прозора"
-
-#~ msgid "Unmaximize Window"
-#~ msgstr "Поништи увећавање прозора"
-
-#~ msgid "No \"%s\" attribute on <%s> element"
-#~ msgstr "Не постоји атрибут „%s“ у елементу <%s>"
-
-#~ msgid "Theme already has a fallback icon"
-#~ msgstr "Тема већ има резервy за icon"
-
-#~ msgid "Theme already has a fallback mini_icon"
-#~ msgstr "Тема већ има резерву за mini_icon"
-
-#~ msgid "No \"name\" attribute on element <%s>"
-#~ msgstr "Није дефинисан „name“ атрибут у елементу <%s>"
-
-#~ msgid "No \"value\" attribute on element <%s>"
-#~ msgstr "Није дефинисан „value“ атрибут у елементу <%s>"
-
-#~ msgid "No \"top\" attribute on element <%s>"
-#~ msgstr "Није дефинисан „top“ атрибут у елементу <%s>"
-
-#~ msgid "No \"bottom\" attribute on element <%s>"
-#~ msgstr "Није дефинисан „bottom“ атрибут у елементу <%s>"
-
-#~ msgid "No \"left\" attribute on element <%s>"
-#~ msgstr "Није дефинисан „left“ атрибут у елементу <%s>"
-
-#~ msgid "No \"right\" attribute on element <%s>"
-#~ msgstr "Није дефинисан „right“ атрибут у елементу <%s>"
-
-#~ msgid "No \"color\" attribute on element <%s>"
-#~ msgstr "Није дефинисан „color“ атрибут у елементу <%s>"
-
-#~ msgid "No \"x1\" attribute on element <%s>"
-#~ msgstr "Није дефинисан „x1“ атрибут у елементу <%s>"
-
-#~ msgid "No \"y1\" attribute on element <%s>"
-#~ msgstr "Није дефинисан „y1“ атрибут у елементу <%s>"
-
-#~ msgid "No \"x2\" attribute on element <%s>"
-#~ msgstr "Није дефинисан „x2“ атрибут у елементу <%s>"
-
-#~ msgid "No \"y2\" attribute on element <%s>"
-#~ msgstr "Није дефинисан „y2“ атрибут у елементу <%s>"
-
-#~ msgid "No \"y\" attribute on element <%s>"
-#~ msgstr "Није дефинисан „y“ атрибут у елементу <%s>"
-
-#~ msgid "No \"width\" attribute on element <%s>"
-#~ msgstr "Није дефинисан „width“ атрибут у елементу <%s>"
-
-#~ msgid "No \"height\" attribute on element <%s>"
-#~ msgstr "Није дефинисан „height“ атрибут у елементу <%s>"
-
-#~ msgid "No \"start_angle\" attribute on element <%s>"
-#~ msgstr "Није дефинисан „start_angle“ атрибут у елементу <%s>"
-
-#~ msgid "No \"extent_angle\" attribute on element <%s>"
-#~ msgstr "Није дефинисан „extent_angle“ атрибут у елементу <%s>"
-
-#~ msgid "No \"alpha\" attribute on element <%s>"
-#~ msgstr "Није дефинисан „alpha“ атрибут у елементу <%s>"
-
-#~ msgid "No \"type\" attribute on element <%s>"
-#~ msgstr "Није дефинисан „type“ атрибут у елементу <%s>"
-
-#~ msgid "No \"filename\" attribute on element <%s>"
-#~ msgstr "Није дефинисан „filename“ атрибут у елементу <%s>"
-
-#~ msgid "No \"state\" attribute on element <%s>"
-#~ msgstr "Није дефинисан „state“ атрибут у елементу <%s>"
-
-#~ msgid "No \"shadow\" attribute on element <%s>"
-#~ msgstr "Није дефинисан „shadow“ атрибут у елементу <%s>"
-
-#~ msgid "No \"arrow\" attribute on element <%s>"
-#~ msgstr "Није дефинисан „arrow“ атрибут у елементу <%s>"
-
-#~ msgid "No \"value\" attribute on <%s> element"
-#~ msgstr "Није дефинисан „value“ атрибут у елементу <%s>"
-
-#~ msgid "No \"position\" attribute on <%s> element"
-#~ msgstr "Није дефинисан „position“ атрибут у елементу <%s>"
-
-#~ msgid "No \"function\" attribute on <%s> element"
-#~ msgstr "Није дефинисан „function“ атрибут у елементу <%s>"
-
-#~ msgid "No \"state\" attribute on <%s> element"
-#~ msgstr "Није дефинисан „state“ атрибут у елементу <%s>"
-
-#~ msgid "No \"focus\" attribute on <%s> element"
-#~ msgstr "Није дефинисан „focus“ атрибут у елементу <%s>"
-
-#~ msgid "No \"style\" attribute on <%s> element"
-#~ msgstr "Није дефинисан „style“ атрибут у елементу <%s>"
-
-#~ msgid "No \"resize\" attribute on <%s> element"
-#~ msgstr "Није дефинисан „resize“ атрибут у елементу <%s>"
-
-#~ msgid "Type of %s was not integer"
-#~ msgstr "Тип податка „%s“ није целобројна вредност"
-
-#~ msgid ""
-#~ "%d stored in GConf key %s is not a reasonable cursor_size; must be in the "
-#~ "range 1..128\n"
-#~ msgstr ""
-#~ "Број %d сачуван у кључу %s у Гномовим подешавањима не представља разумну "
-#~ "величину курсора која мора бити у опсегу од 1 до 128\n"
-
-#~ msgid ""
-#~ "%d stored in GConf key %s is not a reasonable number of workspaces, "
-#~ "current maximum is %d\n"
-#~ msgstr ""
-#~ "%d сачувано у кључу %s у гном подешавањима није разуман број радних "
-#~ "површина, тренутни максимум је %d\n"
-
-#~ msgid "On _Top"
-#~ msgstr "Изна_д свега"
-
-#~ msgid ""
-#~ "Forcing this application to quit will cause you to lose any unsaved "
-#~ "changes."
-#~ msgstr "Приморавањем програма на излаз ћете изгубити све несачуване измене."
-
-#~ msgid "Unknown function \"%s\" for menu icon"
-#~ msgstr "Непозната функција „%s“ за икону менија"
-
-#~ msgid "Unknown state \"%s\" for menu icon"
-#~ msgstr "Непознато стањр „%s“ за икону менија"
-
-#~ msgid "Theme already has a menu icon for function %s state %s"
-#~ msgstr "Тема већ поседује икону менија за функцију %s стање %s"
-
-#~ msgid "No draw_ops provided for menu icon"
-#~ msgstr "Није наведен draw_ops икону менија"
-
-#~ msgid "Failed to read theme from file %s: %s\n"
-#~ msgstr "Нисам успео да прочитам тему из датотеке %s: %s\n"
-
-#~ msgid ""
-#~ "<menu_icon function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> must be "
-#~ "specified for this theme"
-#~ msgstr ""
-#~ "<menu_icon function=\"%s\" state=\"%s\" draw_ops=\"било шта\"/> мора бити "
-#~ "дефинисан за ову тему"
-
-#~ msgid ""
-#~ "If true, and the focus mode is either \"sloppy\" or \"mouse\" then the "
-#~ "focused window will be automatically raised after a delay (the delay is "
-#~ "specified by the auto_raise_delay key). This preference is poorly named, "
-#~ "but kept for backwards compatibility. To try to be more clear (at least "
-#~ "to the technically inclined), its meaning is \"automatically raise the "
-#~ "window following a timeout which is triggered by non-grabbed mouse entry "
-#~ "in sloppy or mouse focus modes\". It is unrelated to clicking behavior (i."
-#~ "e. this is not related to raise-on-click/orthogonal-raise). It is "
-#~ "unrelated to entering a window during drag and drop (because that results "
-#~ "in the application grabbing the mouse)"
-#~ msgstr ""
-#~ "Ако је истинито и режим фокуса је или „sloppy“ или „mouse“ тада ће "
-#~ "фокусирани прозор бити сам подигнут након неке задршке која је одређена у "
-#~ "кључу „auto_raise_delay“. Ова поставка је неодговарајуће именована али "
-#~ "задржана због сагласности са старим издањима. Да би били јаснији (барем "
-#~ "оним технички образованим), њено значење је — сам подигни прозор након "
-#~ "задршке што се окида у режимима „sloppy“ и „mouse“. То нема везе са "
-#~ "понашањем при притискању (није сродно са подизањем по притиску). Није "
-#~ "сросно такође са уласком у прозор при радњи „Превуци и отпусти“ јер "
-#~ "резултат тога је да сам програм преузима миш."
-
-#~ msgid ""
-#~ "Some applications break specifications in ways that result in window "
-#~ "manager misfeatures. For example, ideally Metacity would place all "
-#~ "dialogs in a consistent position with respect to their parent window. "
-#~ "This requires ignoring application-specified positions for dialogs. But "
-#~ "some versions of Java/Swing mark their popup menus as dialogs, so "
-#~ "Metacity has to disable dialog positioning to allow menus to work in "
-#~ "broken Java applications. There are several other examples like this. "
-#~ "This option puts Metacity in full-on Correct mode, which perhaps gives a "
-#~ "moderately nicer UI if you don't need to run any broken apps. Sadly, "
-#~ "workarounds must be enabled by default; the real world is an ugly place. "
-#~ "Some of the workarounds are workarounds for limitations in the "
-#~ "specifications themselves, so sometimes a bug in no-workarounds mode "
-#~ "won't be fixable without amending a spec."
-#~ msgstr ""
-#~ "Неки програми крше спецификације што резултира неисправним могућностима "
-#~ "менаџера прозора. На пример, у идеалном случају метасити би поставио "
-#~ "дијалоге на конзистентне позиције у зависности од старијег прозора. То "
-#~ "захтева игнорисање програмски специфираних позиција дијалога. Али неке "
-#~ "верзије Јаве/Свинга обележавају њихове контекстне меније као дијалоге, "
-#~ "тако да метасити мора да искључи позиционирање дијалога и омогући "
-#~ "менијима да раде у лошим Јава програмима. Постоји неколико сличних "
-#~ "примера. Ова опција поставља метасити у потпуно тачан начин рада, што "
-#~ "можда даје опште лепши кориснички интерфејс ако не морате да покрећете "
-#~ "некомпатибилне програме. Међутим компромиси морају бити предефинисано "
-#~ "дозвољени; старни свет је јако ружно место. Неки од компромиса су "
-#~ "компромиси за ограничења која се јављају у самим спецификацијама, тако да "
-#~ "се грешка у некомпромисном начину рада неможе исправити без-заобилажења "
-#~ "спецификација."
-
-#~ msgid ""
-#~ "Coordinate expression parser overflowed its buffer, this is really a "
-#~ "Metacity bug, but are you sure you need a huge expression like that?"
-#~ msgstr ""
-#~ "Обрађивач израза са координатама је препунио свој багер, што је велика "
-#~ "грешка у метаситију, али да ли стебаш сигурни да вам треба толики израз?"
