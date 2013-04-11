@@ -129,6 +129,12 @@ keybind (switch-group-backward, handle_switch, META_TAB_LIST_GROUP,
 keybind (switch-windows, handle_switch, META_TAB_LIST_NORMAL, BINDING_REVERSES)
 keybind (switch-windows-backward, handle_switch, META_TAB_LIST_NORMAL,
          REVERSES_AND_REVERSED)
+/* We do not support switching applications, so we map these to switching
+ * windows */
+keybind (switch-applications, handle_switch, META_TAB_LIST_NORMAL,
+         BINDING_REVERSES)
+keybind (switch-applications-backward, handle_switch, META_TAB_LIST_NORMAL,
+         REVERSES_AND_REVERSED)
 keybind (switch-panels, handle_switch, META_TAB_LIST_DOCKS, BINDING_REVERSES)
 keybind (switch-panels-backward, handle_switch, META_TAB_LIST_DOCKS,
          REVERSES_AND_REVERSED)
