@@ -1564,11 +1564,7 @@ handle_window_focus_event (MetaDisplay *display,
     {
       display->server_focus_window = event->xany.window;
       display->server_focus_serial = event->xfocus.serial;
-
-      if (window && window->override_redirect)
-        focus_window = NULL;
-      else
-        focus_window = window;
+      focus_window = window;
     }
   else if (event->type == FocusOut)
     {
