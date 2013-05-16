@@ -12,7 +12,7 @@
 .\" > Right I know. any licenses that is DFSG-free, I'm ok with whatever,
 .\" > since I have contributed that for Debian. so GPL is no problem for me.
 .\" -----
-.TH METACITY\-MESSAGE 1 "28 August 2002"
+.TH METACITY\-MESSAGE 1 "16 May 2013"
 .\" Please adjust this date whenever revising the manpage.
 .\"
 .\" Some roff macros, for reference:
@@ -29,7 +29,7 @@
 METACITY\-MESSAGE \- a command to send a message to Metacity
 .SH SYNOPSIS
 .B METACITY\-MESSAGE
-[restart|reload\-theme|enable\-keybindings|disable\-keybindings]
+[restart|reload\-theme|enable\-keybindings|disable\-keybindings|enable\-mouse\-button\-modifiers|disable\-mouse\-button\-modifiers|toggle\-verbose]
 .SH DESCRIPTION
 This manual page documents briefly the
 .B metacity\-message\fP.
@@ -53,6 +53,15 @@ Enable all of keybindings which is specified on gsettings database.
 .TP
 .B disable-keybindings
 Disable all of keybindings which is specified on gsettings database.
+.TP
+.B enable-mouse-button-modifiers
+Enable move/resize operations while pressing a modifier key
+.TP
+.B disable-mouse-button-modifiers
+Disable move/resize operations while pressing a modifier key
+.TP
+.B toggle-verbose
+Turn debug messages on or off
 .SH SEE ALSO
 .BR metacity (1)
 .SH AUTHOR
