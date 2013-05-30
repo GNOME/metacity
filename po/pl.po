@@ -9,14 +9,14 @@
 # Marek Stępień <marcoos@aviary.pl>, 2007.
 # Wadim Dziedzic <wdziedzic@aviary.pl>, 2007.
 # Tomasz Dominikowski <dominikowski@gmail.com>, 2008-2009.
-# Piotr Drąg <piotrdrag@gmail.com>, 2010-2012.
-# Aviary.pl <gnomepl@aviary.pl>, 2007-2012.
+# Piotr Drąg <piotrdrag@gmail.com>, 2010-2013.
+# Aviary.pl <gnomepl@aviary.pl>, 2007-2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-08 15:39+0200\n"
-"PO-Revision-Date: 2012-09-08 15:40+0200\n"
+"POT-Creation-Date: 2013-05-30 19:30+0200\n"
+"PO-Revision-Date: 2013-05-30 19:32+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -65,62 +65,66 @@ msgid "Move window one workspace down"
 msgstr "Przeniesienie okna o obszar roboczy w dół"
 
 #: ../src/50-metacity-navigation.xml.in.h:10
+msgid "Switch windows"
+msgstr "Przełączenie okien"
+
+#: ../src/50-metacity-navigation.xml.in.h:11
 msgid "Switch applications"
 msgstr "Przełączenie programów"
 
-#: ../src/50-metacity-navigation.xml.in.h:11
+#: ../src/50-metacity-navigation.xml.in.h:12
 msgid "Switch windows of an application"
 msgstr "Przełączenie między oknami programu"
 
-#: ../src/50-metacity-navigation.xml.in.h:12
+#: ../src/50-metacity-navigation.xml.in.h:13
 msgid "Switch system controls"
 msgstr "Przełączenie kontroli systemowej"
 
-#: ../src/50-metacity-navigation.xml.in.h:13
+#: ../src/50-metacity-navigation.xml.in.h:14
 msgid "Switch windows directly"
 msgstr "Bezpośrednie przełączenie między oknami"
 
-#: ../src/50-metacity-navigation.xml.in.h:14
+#: ../src/50-metacity-navigation.xml.in.h:15
 msgid "Switch windows of an app directly"
 msgstr "Bezpośrednie przełączenie między oknami programu"
 
-#: ../src/50-metacity-navigation.xml.in.h:15
+#: ../src/50-metacity-navigation.xml.in.h:16
 msgid "Switch system controls directly"
 msgstr "Bezpośrednie przełączenie kontroli systemowej"
 
-#: ../src/50-metacity-navigation.xml.in.h:16
+#: ../src/50-metacity-navigation.xml.in.h:17
 msgid "Hide all normal windows"
 msgstr "Ukrycie wszystkich zwykłych okien"
 
-#: ../src/50-metacity-navigation.xml.in.h:17
+#: ../src/50-metacity-navigation.xml.in.h:18
 msgid "Switch to workspace 1"
 msgstr "Przełączenie na 1. obszar roboczy"
 
-#: ../src/50-metacity-navigation.xml.in.h:18
+#: ../src/50-metacity-navigation.xml.in.h:19
 msgid "Switch to workspace 2"
 msgstr "Przełączenie na 2. obszar roboczy"
 
-#: ../src/50-metacity-navigation.xml.in.h:19
+#: ../src/50-metacity-navigation.xml.in.h:20
 msgid "Switch to workspace 3"
 msgstr "Przełączenie na 3. obszar roboczy"
 
-#: ../src/50-metacity-navigation.xml.in.h:20
+#: ../src/50-metacity-navigation.xml.in.h:21
 msgid "Switch to workspace 4"
 msgstr "Przełączenie na 4. obszar roboczy"
 
-#: ../src/50-metacity-navigation.xml.in.h:21
+#: ../src/50-metacity-navigation.xml.in.h:22
 msgid "Move to workspace left"
 msgstr "Przeniesienie na lewy obszar roboczy"
 
-#: ../src/50-metacity-navigation.xml.in.h:22
+#: ../src/50-metacity-navigation.xml.in.h:23
 msgid "Move to workspace right"
 msgstr "Przeniesienie na prawy obszar roboczy"
 
-#: ../src/50-metacity-navigation.xml.in.h:23
+#: ../src/50-metacity-navigation.xml.in.h:24
 msgid "Move to workspace above"
 msgstr "Przeniesienie na górny obszar roboczy"
 
-#: ../src/50-metacity-navigation.xml.in.h:24
+#: ../src/50-metacity-navigation.xml.in.h:25
 msgid "Move to workspace below"
 msgstr "Przeniesienie na dolny obszar roboczy"
 
@@ -390,12 +394,12 @@ msgstr ""
 msgid "Workspace %d"
 msgstr "Obszar roboczy %d"
 
-#: ../src/core/screen.c:357
+#: ../src/core/screen.c:364
 #, c-format
 msgid "Screen %d on display '%s' is invalid\n"
 msgstr "Podekran %d ekranu \"%s\" jest nieprawidłowy\n"
 
-#: ../src/core/screen.c:373
+#: ../src/core/screen.c:380
 #, c-format
 msgid ""
 "Screen %d on display \"%s\" already has a window manager; try using the --"
@@ -404,7 +408,7 @@ msgstr ""
 "Na podekranie %d ekranu \"%s\" działa już menedżer okien. Aby zastąpić "
 "działającego menedżera okien, proszę spróbować użyć opcji --replace.\n"
 
-#: ../src/core/screen.c:400
+#: ../src/core/screen.c:407
 #, c-format
 msgid ""
 "Could not acquire window manager selection on screen %d display \"%s\"\n"
@@ -412,12 +416,12 @@ msgstr ""
 "Nie można uzyskać zaznaczenia menedżera okien na podekranie %d ekranu \"%s"
 "\"\n"
 
-#: ../src/core/screen.c:458
+#: ../src/core/screen.c:465
 #, c-format
 msgid "Screen %d on display \"%s\" already has a window manager\n"
 msgstr "Na podekranie %d ekranu \"%s\" działa już menedżer okien\n"
 
-#: ../src/core/screen.c:668
+#: ../src/core/screen.c:675
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "Nie można zwolnić podekranu %d ekranu \"%s\"\n"
