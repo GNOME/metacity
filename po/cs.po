@@ -8,91 +8,91 @@
 # Jakub Friedl <jfriedl@suse.cz>, 2006, 2007.
 # Ondřej Kopka <ondrej.kopka@gmail.com>, 2011.
 # Petr Kovar <pknbe@volny.cz>, 2007, 2008, 2009, 2010.
-# Marek Černocký <marek@manet.cz>, 2011, 2012.
+# Marek Černocký <marek@manet.cz>, 2011, 2012, 2013.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-01-12 16:13+0000\n"
-"PO-Revision-Date: 2012-03-16 22:04+0100\n"
+"POT-Creation-Date: 2013-05-30 17:09+0000\n"
+"PO-Revision-Date: 2013-06-03 10:49+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 1.1\n"
+"X-Generator: Gtranslator 2.91.6\n"
 
 #: ../src/50-metacity-navigation.xml.in.h:1
-msgid "Hide all normal windows"
-msgstr "Skrýt všechna normální okna"
-
-#: ../src/50-metacity-navigation.xml.in.h:2
-msgid "Move to workspace above"
-msgstr "Přesunout na plochu nad"
-
-#: ../src/50-metacity-navigation.xml.in.h:3
-msgid "Move to workspace below"
-msgstr "Přesunout na plochu pod"
-
-#: ../src/50-metacity-navigation.xml.in.h:4
-msgid "Move to workspace left"
-msgstr "Přesunout na plochu vlevo"
-
-#: ../src/50-metacity-navigation.xml.in.h:5
-msgid "Move to workspace right"
-msgstr "Přesunout na plochu vpravo"
-
-#: ../src/50-metacity-navigation.xml.in.h:6
-msgid "Move window one workspace down"
-msgstr "Posunout okno o plochu dolů"
-
-#: ../src/50-metacity-navigation.xml.in.h:7
-msgid "Move window one workspace to the left"
-msgstr "Posunout okno o plochu doleva"
-
-#: ../src/50-metacity-navigation.xml.in.h:8
-msgid "Move window one workspace to the right"
-msgstr "Posunout okno o plochu doprava"
-
-#: ../src/50-metacity-navigation.xml.in.h:9
-msgid "Move window one workspace up"
-msgstr "Posunout okno o plochu nahoru"
-
-#: ../src/50-metacity-navigation.xml.in.h:10
-msgid "Move window to workspace 1"
-msgstr "Přesunout okno na plochu 1"
-
-#: ../src/50-metacity-navigation.xml.in.h:11
-msgid "Move window to workspace 2"
-msgstr "Přesunout okno na plochu 2"
-
-#: ../src/50-metacity-navigation.xml.in.h:12
-msgid "Move window to workspace 3"
-msgstr "Přesunout okno na plochu 3"
-
-#: ../src/50-metacity-navigation.xml.in.h:13
-msgid "Move window to workspace 4"
-msgstr "Přesunout okno na plochu 4"
-
-#: ../src/50-metacity-navigation.xml.in.h:14
 msgid "Navigation"
 msgstr "Navigace"
 
-#: ../src/50-metacity-navigation.xml.in.h:15
+#: ../src/50-metacity-navigation.xml.in.h:2
+msgid "Move window to workspace 1"
+msgstr "Přesunout okno na plochu 1"
+
+#: ../src/50-metacity-navigation.xml.in.h:3
+msgid "Move window to workspace 2"
+msgstr "Přesunout okno na plochu 2"
+
+#: ../src/50-metacity-navigation.xml.in.h:4
+msgid "Move window to workspace 3"
+msgstr "Přesunout okno na plochu 3"
+
+#: ../src/50-metacity-navigation.xml.in.h:5
+msgid "Move window to workspace 4"
+msgstr "Přesunout okno na plochu 4"
+
+#: ../src/50-metacity-navigation.xml.in.h:6
+msgid "Move window one workspace to the left"
+msgstr "Posunout okno o plochu doleva"
+
+#: ../src/50-metacity-navigation.xml.in.h:7
+msgid "Move window one workspace to the right"
+msgstr "Posunout okno o plochu doprava"
+
+#: ../src/50-metacity-navigation.xml.in.h:8
+msgid "Move window one workspace up"
+msgstr "Posunout okno o plochu nahoru"
+
+#: ../src/50-metacity-navigation.xml.in.h:9
+msgid "Move window one workspace down"
+msgstr "Posunout okno o plochu dolů"
+
+#: ../src/50-metacity-navigation.xml.in.h:10
+msgid "Switch windows"
+msgstr "Přepnout mezi okny"
+
+#: ../src/50-metacity-navigation.xml.in.h:11
 msgid "Switch applications"
 msgstr "Přepnout mezi aplikacemi"
 
-#: ../src/50-metacity-navigation.xml.in.h:16
+#: ../src/50-metacity-navigation.xml.in.h:12
+msgid "Switch windows of an application"
+msgstr "Přepnout mezi okny aplikace"
+
+#: ../src/50-metacity-navigation.xml.in.h:13
 msgid "Switch system controls"
 msgstr "Přepnout mezi systémovými ovládacími prvky"
 
-#: ../src/50-metacity-navigation.xml.in.h:17
+#: ../src/50-metacity-navigation.xml.in.h:14
+msgid "Switch windows directly"
+msgstr "Přepnout přímo mezi okny"
+
+#: ../src/50-metacity-navigation.xml.in.h:15
+msgid "Switch windows of an app directly"
+msgstr "Přepnout přímo mezi okny aplikace"
+
+#: ../src/50-metacity-navigation.xml.in.h:16
 msgid "Switch system controls directly"
 msgstr "Přepnout přímo mezi systémovými ovládacími prvky"
+
+#: ../src/50-metacity-navigation.xml.in.h:17
+msgid "Hide all normal windows"
+msgstr "Skrýt všechna normální okna"
 
 #: ../src/50-metacity-navigation.xml.in.h:18
 msgid "Switch to workspace 1"
@@ -111,98 +111,102 @@ msgid "Switch to workspace 4"
 msgstr "Přepnout na plochu 4"
 
 #: ../src/50-metacity-navigation.xml.in.h:22
-msgid "Switch windows directly"
-msgstr "Přepnout přímo mezi okny"
+msgid "Move to workspace left"
+msgstr "Přesunout na plochu vlevo"
 
 #: ../src/50-metacity-navigation.xml.in.h:23
-msgid "Switch windows of an app directly"
-msgstr "Přepnout přímo mezi okny aplikace"
+msgid "Move to workspace right"
+msgstr "Přesunout na plochu vpravo"
 
 #: ../src/50-metacity-navigation.xml.in.h:24
-msgid "Switch windows of an application"
-msgstr "Přepnout mezi okny aplikace"
+msgid "Move to workspace above"
+msgstr "Přesunout na plochu nad"
+
+#: ../src/50-metacity-navigation.xml.in.h:25
+msgid "Move to workspace below"
+msgstr "Přesunout na plochu pod"
 
 #: ../src/50-metacity-system.xml.in.h:1
-msgid "Show the activities overview"
-msgstr "Zobrazit přehled činností"
+msgid "System"
+msgstr "Systém"
 
 #: ../src/50-metacity-system.xml.in.h:2
 msgid "Show the run command prompt"
 msgstr "Zobrazit výzvu ke spuštění příkazu"
 
 #: ../src/50-metacity-system.xml.in.h:3
-msgid "System"
-msgstr "Systém"
+msgid "Show the activities overview"
+msgstr "Zobrazit přehled činností"
 
 #: ../src/50-metacity-windows.xml.in.h:1
+msgid "Windows"
+msgstr "Okna"
+
+#: ../src/50-metacity-windows.xml.in.h:2
 msgid "Activate the window menu"
 msgstr "Aktivovat nabídku okna"
 
-#: ../src/50-metacity-windows.xml.in.h:2
-msgid "Close window"
-msgstr "Zavřít okno"
-
 #: ../src/50-metacity-windows.xml.in.h:3
-msgid "Lower window below other windows"
-msgstr "Odsunou okno do pozadí pod ostatní okna"
+msgid "Toggle fullscreen mode"
+msgstr "Přepnout režim na celou obrazovku"
 
 #: ../src/50-metacity-windows.xml.in.h:4
+msgid "Toggle maximization state"
+msgstr "Přepnout stav maximalizace"
+
+#: ../src/50-metacity-windows.xml.in.h:5
 msgid "Maximize window"
 msgstr "Maximalizovat okno"
 
-#: ../src/50-metacity-windows.xml.in.h:5
-msgid "Maximize window horizontally"
-msgstr "Maximalizovat okno vodorovně"
-
 #: ../src/50-metacity-windows.xml.in.h:6
-msgid "Maximize window vertically"
-msgstr "Maximalizovat okno svisle"
+msgid "Restore window"
+msgstr "Obnovit okno"
 
 #: ../src/50-metacity-windows.xml.in.h:7
+msgid "Toggle shaded state"
+msgstr "Přepnout stav svinutí"
+
+#: ../src/50-metacity-windows.xml.in.h:8
+msgid "Close window"
+msgstr "Zavřít okno"
+
+#: ../src/50-metacity-windows.xml.in.h:9
 msgid "Minimize window"
 msgstr "Minimalizovat okno"
 
-#: ../src/50-metacity-windows.xml.in.h:8
+#: ../src/50-metacity-windows.xml.in.h:10
 msgid "Move window"
 msgstr "Přesunout okno"
-
-#: ../src/50-metacity-windows.xml.in.h:9
-msgid "Raise window above other windows"
-msgstr "Přenést okno do popředí nad ostatní okna"
-
-#: ../src/50-metacity-windows.xml.in.h:10
-msgid "Raise window if covered, otherwise lower it"
-msgstr ""
-"Přenést okno do popředí, pokud je zakryté jiným oknem, jinak jej odsunout do "
-"pozadí"
 
 #: ../src/50-metacity-windows.xml.in.h:11
 msgid "Resize window"
 msgstr "Změnit velikost okna"
 
 #: ../src/50-metacity-windows.xml.in.h:12
-msgid "Restore window"
-msgstr "Obnovit okno"
-
-#: ../src/50-metacity-windows.xml.in.h:13
-msgid "Toggle fullscreen mode"
-msgstr "Přepnout režim na celou obrazovku"
-
-#: ../src/50-metacity-windows.xml.in.h:14
-msgid "Toggle maximization state"
-msgstr "Přepnout stav maximalizace"
-
-#: ../src/50-metacity-windows.xml.in.h:15
-msgid "Toggle shaded state"
-msgstr "Přepnout stav svinutí"
-
-#: ../src/50-metacity-windows.xml.in.h:16
 msgid "Toggle window on all workspaces or one"
 msgstr "Přepnout výskyt okna na všech plochách nebo jen na jedné"
 
+#: ../src/50-metacity-windows.xml.in.h:13
+msgid "Raise window if covered, otherwise lower it"
+msgstr ""
+"Přenést okno do popředí, pokud je zakryté jiným oknem, jinak jej odsunout do "
+"pozadí"
+
+#: ../src/50-metacity-windows.xml.in.h:14
+msgid "Raise window above other windows"
+msgstr "Přenést okno do popředí nad ostatní okna"
+
+#: ../src/50-metacity-windows.xml.in.h:15
+msgid "Lower window below other windows"
+msgstr "Odsunou okno do pozadí pod ostatní okna"
+
+#: ../src/50-metacity-windows.xml.in.h:16
+msgid "Maximize window vertically"
+msgstr "Maximalizovat okno svisle"
+
 #: ../src/50-metacity-windows.xml.in.h:17
-msgid "Windows"
-msgstr "Okna"
+msgid "Maximize window horizontally"
+msgstr "Maximalizovat okno vodorovně"
 
 #: ../src/core/bell.c:296
 msgid "Bell event"
@@ -240,12 +244,12 @@ msgstr "_Vynutit ukončení"
 msgid "Failed to get hostname: %s\n"
 msgstr "Nelze získat název počítače: %s\n"
 
-#: ../src/core/display.c:258
+#: ../src/core/display.c:263
 #, c-format
 msgid "Missing %s extension required for compositing"
 msgstr "Schází rozšíření %s vyžadované funkcemi kompozitoru"
 
-#: ../src/core/display.c:336
+#: ../src/core/display.c:341
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
 msgstr "Nelze otevřít displej X Window System „%s“\n"
@@ -387,12 +391,12 @@ msgstr ""
 msgid "Workspace %d"
 msgstr "Plocha %d"
 
-#: ../src/core/screen.c:357
+#: ../src/core/screen.c:364
 #, c-format
 msgid "Screen %d on display '%s' is invalid\n"
 msgstr "Obrazovka %d na displeji „%s“ je neplatná\n"
 
-#: ../src/core/screen.c:373
+#: ../src/core/screen.c:380
 #, c-format
 msgid ""
 "Screen %d on display \"%s\" already has a window manager; try using the --"
@@ -401,18 +405,18 @@ msgstr ""
 "Obrazovka %d na displeji „%s“ již správce oken má; zkuste prosím nahradit "
 "aktuálního správce oken pomocí přepínače --replace.\n"
 
-#: ../src/core/screen.c:400
+#: ../src/core/screen.c:407
 #, c-format
 msgid ""
 "Could not acquire window manager selection on screen %d display \"%s\"\n"
 msgstr "Nelze získat výběr správce oken na obrazovce %d displeje „%s“\n"
 
-#: ../src/core/screen.c:458
+#: ../src/core/screen.c:465
 #, c-format
 msgid "Screen %d on display \"%s\" already has a window manager\n"
 msgstr "Obrazovka %d na displeji „%s“ již má správce oken\n"
 
-#: ../src/core/screen.c:668
+#: ../src/core/screen.c:675
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "Nelze uvolnit obrazovku %d na displeji „%s“\n"
@@ -487,7 +491,7 @@ msgstr "Nelze provést fdopen() soubor záznamu %s: %s\n"
 msgid "Opened log file %s\n"
 msgstr "Otevřen soubor záznamu %s\n"
 
-#: ../src/core/util.c:136 ../src/tools/metacity-message.c:176
+#: ../src/core/util.c:136 ../src/tools/metacity-message.c:208
 #, c-format
 msgid "Metacity was compiled without support for verbose mode\n"
 msgstr "Metacity bylo přeloženo bez podpory podrobného režimu\n"
@@ -613,6 +617,12 @@ msgid "Determines whether Metacity is a compositing manager."
 msgstr "Určuje, jestli je Metacity správcem funkcí kompozitoru."
 
 #: ../src/org.gnome.metacity.gschema.xml.in.h:3
+msgid "If true, trade off usability for less resource usage"
+msgstr ""
+"Je-li zapnuto, dává se přednost menšímu používání prostředků před "
+"použitelností"
+
+#: ../src/org.gnome.metacity.gschema.xml.in.h:4
 msgid ""
 "If true, metacity will give the user less feedback by using wireframes, "
 "avoiding animations, or other means. This is a significant reduction in "
@@ -627,13 +637,7 @@ msgstr ""
 "jednat o přístupný kompromis. Funkce drátových rámů je ale zakázána, pokud "
 "je povoleno zpřístupnění."
 
-#: ../src/org.gnome.metacity.gschema.xml.in.h:4
-msgid "If true, trade off usability for less resource usage"
-msgstr ""
-"Je-li zapnuto, dává se přednost menšímu používání prostředků před "
-"použitelností"
-
-#: ../src/tools/metacity-message.c:150
+#: ../src/tools/metacity-message.c:178
 #, c-format
 msgid "Usage: %s\n"
 msgstr "Použití: %s\n"
