@@ -2963,6 +2963,9 @@ meta_spew_event (MetaDisplay *display,
   if (event->type == (display->damage_event_base + XDamageNotify))
     return;
 
+  if (event->type == (display->xsync_event_base + XSyncAlarmNotify))
+    return;
+
   switch (event->type)
     {
     case KeyPress:
