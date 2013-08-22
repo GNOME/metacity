@@ -19,81 +19,82 @@ msgstr ""
 "Project-Id-Version: metacity HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-01-12 16:13+0000\n"
-"PO-Revision-Date: 2012-03-10 12:21+0100\n"
+"POT-Creation-Date: 2013-08-11 16:46+0000\n"
+"PO-Revision-Date: 2013-08-22 12:34+0200\n"
 "Last-Translator: Claude Paroz <claude@2xlibre.net>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../src/50-metacity-navigation.xml.in.h:1
-msgid "Hide all normal windows"
-msgstr "Masquer toutes les fenêtres normales"
-
-#: ../src/50-metacity-navigation.xml.in.h:2
-msgid "Move to workspace above"
-msgstr "Déplacer vers l'espace de travail du dessus"
-
-#: ../src/50-metacity-navigation.xml.in.h:3
-msgid "Move to workspace below"
-msgstr "Déplacer vers l'espace de travail du dessous"
-
-#: ../src/50-metacity-navigation.xml.in.h:4
-msgid "Move to workspace left"
-msgstr "Déplacer vers l'espace de travail de gauche"
-
-#: ../src/50-metacity-navigation.xml.in.h:5
-msgid "Move to workspace right"
-msgstr "Déplacer vers l'espace de travail de droite"
-
-#: ../src/50-metacity-navigation.xml.in.h:6
-msgid "Move window one workspace down"
-msgstr "Déplacer la fenêtre d'un espace de travail vers le bas"
-
-#: ../src/50-metacity-navigation.xml.in.h:7
-msgid "Move window one workspace to the left"
-msgstr "Déplacer la fenêtre d'un espace de travail vers la gauche"
-
-#: ../src/50-metacity-navigation.xml.in.h:8
-msgid "Move window one workspace to the right"
-msgstr "Déplacer la fenêtre d'un espace de travail vers la droite"
-
-#: ../src/50-metacity-navigation.xml.in.h:9
-msgid "Move window one workspace up"
-msgstr "Déplacer la fenêtre d'un espace de travail vers le haut"
-
-#: ../src/50-metacity-navigation.xml.in.h:10
-msgid "Move window to workspace 1"
-msgstr "Déplacer la fenêtre vers l'espace de travail 1"
-
-#: ../src/50-metacity-navigation.xml.in.h:11
-msgid "Move window to workspace 2"
-msgstr "Déplacer la fenêtre vers l'espace de travail 2"
-
-#: ../src/50-metacity-navigation.xml.in.h:12
-msgid "Move window to workspace 3"
-msgstr "Déplacer la fenêtre vers l'espace de travail 3"
-
-#: ../src/50-metacity-navigation.xml.in.h:13
-msgid "Move window to workspace 4"
-msgstr "Déplacer la fenêtre vers l'espace de travail 4"
-
-#: ../src/50-metacity-navigation.xml.in.h:14
 msgid "Navigation"
 msgstr "Navigation"
 
-#: ../src/50-metacity-navigation.xml.in.h:15
+#: ../src/50-metacity-navigation.xml.in.h:2
+msgid "Move window to workspace 1"
+msgstr "Déplacer la fenêtre vers l'espace de travail 1"
+
+#: ../src/50-metacity-navigation.xml.in.h:3
+msgid "Move window to workspace 2"
+msgstr "Déplacer la fenêtre vers l'espace de travail 2"
+
+#: ../src/50-metacity-navigation.xml.in.h:4
+msgid "Move window to workspace 3"
+msgstr "Déplacer la fenêtre vers l'espace de travail 3"
+
+#: ../src/50-metacity-navigation.xml.in.h:5
+msgid "Move window to workspace 4"
+msgstr "Déplacer la fenêtre vers l'espace de travail 4"
+
+#: ../src/50-metacity-navigation.xml.in.h:6
+msgid "Move window one workspace to the left"
+msgstr "Déplacer la fenêtre d'un espace de travail vers la gauche"
+
+#: ../src/50-metacity-navigation.xml.in.h:7
+msgid "Move window one workspace to the right"
+msgstr "Déplacer la fenêtre d'un espace de travail vers la droite"
+
+#: ../src/50-metacity-navigation.xml.in.h:8
+msgid "Move window one workspace up"
+msgstr "Déplacer la fenêtre d'un espace de travail vers le haut"
+
+#: ../src/50-metacity-navigation.xml.in.h:9
+msgid "Move window one workspace down"
+msgstr "Déplacer la fenêtre d'un espace de travail vers le bas"
+
+#: ../src/50-metacity-navigation.xml.in.h:10
+msgid "Switch windows"
+msgstr "Changer de fenêtre"
+
+#: ../src/50-metacity-navigation.xml.in.h:11
 msgid "Switch applications"
 msgstr "Changer d'application"
 
-#: ../src/50-metacity-navigation.xml.in.h:16
+#: ../src/50-metacity-navigation.xml.in.h:12
+msgid "Switch windows of an application"
+msgstr "Changer de fenêtre d'une application"
+
+#: ../src/50-metacity-navigation.xml.in.h:13
 msgid "Switch system controls"
 msgstr "Changer les contrôles système"
 
-#: ../src/50-metacity-navigation.xml.in.h:17
+#: ../src/50-metacity-navigation.xml.in.h:14
+msgid "Switch windows directly"
+msgstr "Changer de fenêtre directement"
+
+#: ../src/50-metacity-navigation.xml.in.h:15
+msgid "Switch windows of an app directly"
+msgstr "Changer de fenêtre d'une application directement"
+
+#: ../src/50-metacity-navigation.xml.in.h:16
 msgid "Switch system controls directly"
 msgstr "Changer les contrôles système directement"
+
+#: ../src/50-metacity-navigation.xml.in.h:17
+msgid "Hide all normal windows"
+msgstr "Masquer toutes les fenêtres normales"
 
 #: ../src/50-metacity-navigation.xml.in.h:18
 msgid "Switch to workspace 1"
@@ -112,97 +113,101 @@ msgid "Switch to workspace 4"
 msgstr "Passer à l'espace de travail 4"
 
 #: ../src/50-metacity-navigation.xml.in.h:22
-msgid "Switch windows directly"
-msgstr "Changer de fenêtre directement"
+msgid "Move to workspace left"
+msgstr "Déplacer vers l'espace de travail de gauche"
 
 #: ../src/50-metacity-navigation.xml.in.h:23
-msgid "Switch windows of an app directly"
-msgstr "Changer de fenêtre d'une application directement"
+msgid "Move to workspace right"
+msgstr "Déplacer vers l'espace de travail de droite"
 
 #: ../src/50-metacity-navigation.xml.in.h:24
-msgid "Switch windows of an application"
-msgstr "Changer de fenêtre d'une application"
+msgid "Move to workspace above"
+msgstr "Déplacer vers l'espace de travail du dessus"
+
+#: ../src/50-metacity-navigation.xml.in.h:25
+msgid "Move to workspace below"
+msgstr "Déplacer vers l'espace de travail du dessous"
 
 #: ../src/50-metacity-system.xml.in.h:1
-msgid "Show the activities overview"
-msgstr "Afficher l'aperçu des activités"
+msgid "System"
+msgstr "Système"
 
 #: ../src/50-metacity-system.xml.in.h:2
 msgid "Show the run command prompt"
 msgstr "Afficher la fenêtre pour lancer une commande"
 
 #: ../src/50-metacity-system.xml.in.h:3
-msgid "System"
-msgstr "Système"
+msgid "Show the activities overview"
+msgstr "Afficher l'aperçu des activités"
 
 #: ../src/50-metacity-windows.xml.in.h:1
+msgid "Windows"
+msgstr "Fenêtres"
+
+#: ../src/50-metacity-windows.xml.in.h:2
 msgid "Activate the window menu"
 msgstr "Activer le menu fenêtre"
 
-#: ../src/50-metacity-windows.xml.in.h:2
-msgid "Close window"
-msgstr "Fermer la fenêtre"
-
 #: ../src/50-metacity-windows.xml.in.h:3
-msgid "Lower window below other windows"
-msgstr "Mettre la fenêtre sous les autres fenêtres"
+msgid "Toggle fullscreen mode"
+msgstr "Basculer en mode plein écran"
 
 #: ../src/50-metacity-windows.xml.in.h:4
+msgid "Toggle maximization state"
+msgstr "Basculer l'état d'agrandissement"
+
+#: ../src/50-metacity-windows.xml.in.h:5
 msgid "Maximize window"
 msgstr "Maximiser la fenêtre"
 
-#: ../src/50-metacity-windows.xml.in.h:5
-msgid "Maximize window horizontally"
-msgstr "Maximiser la fenêtre horizontalement"
-
 #: ../src/50-metacity-windows.xml.in.h:6
-msgid "Maximize window vertically"
-msgstr "Maximiser la fenêtre verticalement"
+msgid "Restore window"
+msgstr "Restaurer la fenêtre"
 
 #: ../src/50-metacity-windows.xml.in.h:7
+msgid "Toggle shaded state"
+msgstr "Basculer l'état de repli"
+
+#: ../src/50-metacity-windows.xml.in.h:8
+msgid "Close window"
+msgstr "Fermer la fenêtre"
+
+#: ../src/50-metacity-windows.xml.in.h:9
 msgid "Minimize window"
 msgstr "Réduire la fenêtre"
 
-#: ../src/50-metacity-windows.xml.in.h:8
+#: ../src/50-metacity-windows.xml.in.h:10
 msgid "Move window"
 msgstr "Déplacer la fenêtre"
-
-#: ../src/50-metacity-windows.xml.in.h:9
-msgid "Raise window above other windows"
-msgstr "Mettre la fenêtre au premier plan"
-
-#: ../src/50-metacity-windows.xml.in.h:10
-msgid "Raise window if covered, otherwise lower it"
-msgstr ""
-"Mettre la fenêtre au premier plan si elle est cachée, sinon à l'arrière-plan"
 
 #: ../src/50-metacity-windows.xml.in.h:11
 msgid "Resize window"
 msgstr "Redimensionner la fenêtre"
 
 #: ../src/50-metacity-windows.xml.in.h:12
-msgid "Restore window"
-msgstr "Restaurer la fenêtre"
-
-#: ../src/50-metacity-windows.xml.in.h:13
-msgid "Toggle fullscreen mode"
-msgstr "Basculer en mode plein écran"
-
-#: ../src/50-metacity-windows.xml.in.h:14
-msgid "Toggle maximization state"
-msgstr "Basculer l'état d'agrandissement"
-
-#: ../src/50-metacity-windows.xml.in.h:15
-msgid "Toggle shaded state"
-msgstr "Basculer l'état de repli"
-
-#: ../src/50-metacity-windows.xml.in.h:16
 msgid "Toggle window on all workspaces or one"
 msgstr "Placer la fenêtre sur tous les espaces de travail, ou sur un seul"
 
+#: ../src/50-metacity-windows.xml.in.h:13
+msgid "Raise window if covered, otherwise lower it"
+msgstr ""
+"Mettre la fenêtre au premier plan si elle est cachée, sinon à l'arrière-plan"
+
+#: ../src/50-metacity-windows.xml.in.h:14
+msgid "Raise window above other windows"
+msgstr "Mettre la fenêtre au premier plan"
+
+#: ../src/50-metacity-windows.xml.in.h:15
+msgid "Lower window below other windows"
+msgstr "Mettre la fenêtre sous les autres fenêtres"
+
+#: ../src/50-metacity-windows.xml.in.h:16
+msgid "Maximize window vertically"
+msgstr "Maximiser la fenêtre verticalement"
+
 #: ../src/50-metacity-windows.xml.in.h:17
-msgid "Windows"
-msgstr "Fenêtres"
+msgid "Maximize window horizontally"
+msgstr "Maximiser la fenêtre horizontalement"
 
 #: ../src/core/bell.c:296
 msgid "Bell event"
@@ -240,12 +245,12 @@ msgstr "_Forcer à quitter"
 msgid "Failed to get hostname: %s\n"
 msgstr "Impossible d'obtenir le nom de machine : %s\n"
 
-#: ../src/core/display.c:258
+#: ../src/core/display.c:263
 #, c-format
 msgid "Missing %s extension required for compositing"
 msgstr "Extension %s manquante, mais nécessaire pour la composition"
 
-#: ../src/core/display.c:336
+#: ../src/core/display.c:341
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
 msgstr "Impossible d'ouvrir le visuel « %s » du système X Window\n"
@@ -365,8 +370,8 @@ msgstr ""
 #, c-format
 msgid "Could not parse font description \"%s\" from GSettings key %s\n"
 msgstr ""
-"Impossible d'analyser la description de police « %s » depuis la clé GSettings "
-"%s\n"
+"Impossible d'analyser la description de police « %s » depuis la clé "
+"GSettings %s\n"
 
 #: ../src/core/prefs.c:1015
 #, c-format
@@ -391,12 +396,12 @@ msgstr ""
 msgid "Workspace %d"
 msgstr "Espace de travail %d"
 
-#: ../src/core/screen.c:357
+#: ../src/core/screen.c:364
 #, c-format
 msgid "Screen %d on display '%s' is invalid\n"
 msgstr "L'écran %d sur le visuel « %s » n'est pas valide\n"
 
-#: ../src/core/screen.c:373
+#: ../src/core/screen.c:380
 #, c-format
 msgid ""
 "Screen %d on display \"%s\" already has a window manager; try using the --"
@@ -406,7 +411,7 @@ msgstr ""
 "d'utiliser l'option --replace pour remplacer le gestionnaire de fenêtres "
 "actuel.\n"
 
-#: ../src/core/screen.c:400
+#: ../src/core/screen.c:407
 #, c-format
 msgid ""
 "Could not acquire window manager selection on screen %d display \"%s\"\n"
@@ -414,12 +419,12 @@ msgstr ""
 "Impossible d'avoir la sélection du gestionnaire de fenêtres sur l'écran %d "
 "du visuel « %s »\n"
 
-#: ../src/core/screen.c:458
+#: ../src/core/screen.c:465
 #, c-format
 msgid "Screen %d on display \"%s\" already has a window manager\n"
 msgstr "L'écran %d sur le visuel « %s » a déjà un gestionnaire de fenêtres\n"
 
-#: ../src/core/screen.c:668
+#: ../src/core/screen.c:675
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "Impossible de libérer l'écran %d sur le visuel « %s »\n"
@@ -478,8 +483,9 @@ msgid ""
 "These windows do not support &quot;save current setup&quot; and will have to "
 "be restarted manually next time you log in."
 msgstr ""
-"Ces fenêtres ne prennent pas en charge « l'enregistrement de la configuration "
-"actuelle » et devront être redémarrées manuellement à la prochaine connexion."
+"Ces fenêtres ne prennent pas en charge « l'enregistrement de la "
+"configuration actuelle » et devront être redémarrées manuellement à la "
+"prochaine connexion."
 
 #: ../src/core/util.c:101
 #, c-format
@@ -497,7 +503,7 @@ msgstr ""
 msgid "Opened log file %s\n"
 msgstr "Ouverture du fichier journal %s\n"
 
-#: ../src/core/util.c:136 ../src/tools/metacity-message.c:176
+#: ../src/core/util.c:136 ../src/tools/metacity-message.c:208
 #, c-format
 msgid "Metacity was compiled without support for verbose mode\n"
 msgstr "Metacity a été compilé sans la prise en charge du mode bavard\n"
@@ -544,8 +550,8 @@ msgstr ""
 #: ../src/core/window.c:6269
 #, c-format
 msgid ""
-"Window %s sets an MWM hint indicating it isn't resizable, but sets min size %"
-"d x %d and max size %d x %d; this doesn't make much sense.\n"
+"Window %s sets an MWM hint indicating it isn't resizable, but sets min size "
+"%d x %d and max size %d x %d; this doesn't make much sense.\n"
 msgstr ""
 "La fenêtre %s positionne un indice MWM indiquant qu'elle n'est pas "
 "redimensionnable, mais positionne une taille minimale de %d x %d et une "
@@ -626,6 +632,12 @@ msgid "Determines whether Metacity is a compositing manager."
 msgstr "Détermine si Metacity est utilisé comme gestionnaire de composition."
 
 #: ../src/org.gnome.metacity.gschema.xml.in.h:3
+msgid "If true, trade off usability for less resource usage"
+msgstr ""
+"Si VRAI, favorise une faible utilisation des ressources au détriment de la "
+"convivialité"
+
+#: ../src/org.gnome.metacity.gschema.xml.in.h:4
 msgid ""
 "If true, metacity will give the user less feedback by using wireframes, "
 "avoiding animations, or other means. This is a significant reduction in "
@@ -641,13 +653,7 @@ msgstr ""
 "améliorer les performances. Cependant, la fonction fil de fer est désactivée "
 "lorsque l'accessibilité est activée."
 
-#: ../src/org.gnome.metacity.gschema.xml.in.h:4
-msgid "If true, trade off usability for less resource usage"
-msgstr ""
-"Si VRAI, favorise une faible utilisation des ressources au détriment de la "
-"convivialité"
-
-#: ../src/tools/metacity-message.c:150
+#: ../src/tools/metacity-message.c:178
 #, c-format
 msgid "Usage: %s\n"
 msgstr "Utilisation : %s\n"
@@ -920,7 +926,8 @@ msgstr "la géométrie du cadre n'indique pas la dimension « %s »"
 #, c-format
 msgid "frame geometry does not specify dimension \"%s\" for border \"%s\""
 msgstr ""
-"la géométrie du cadre n'indique pas la dimension « %s » pour la bordure « %s »"
+"la géométrie du cadre n'indique pas la dimension « %s » pour la bordure "
+"« %s »"
 
 #: ../src/ui/theme.c:344
 #, c-format
@@ -953,20 +960,21 @@ msgid ""
 "fg[NORMAL] where NORMAL is the state; could not parse \"%s\""
 msgstr ""
 "La spécification de couleur GTK doit comporter un crochet de fermeture après "
-"l'état, p. ex. gtk:fg[NORMAL] où NORMAL est l'état ; impossible d'analyser « %"
-"s »"
+"l'état, p. ex. gtk:fg[NORMAL] où NORMAL est l'état ; impossible d'analyser "
+"« %s »"
 
 #: ../src/ui/theme.c:1209
 #, c-format
 msgid "Did not understand state \"%s\" in color specification"
-msgstr "Impossible de comprendre l'état « %s » dans la spécification de couleur"
+msgstr ""
+"Impossible de comprendre l'état « %s » dans la spécification de couleur"
 
 #: ../src/ui/theme.c:1222
 #, c-format
 msgid "Did not understand color component \"%s\" in color specification"
 msgstr ""
-"Impossible de comprendre le composant de couleur « %s » dans la spécification "
-"de couleur"
+"Impossible de comprendre le composant de couleur « %s » dans la "
+"spécification de couleur"
 
 #: ../src/ui/theme.c:1252
 #, c-format
@@ -986,15 +994,16 @@ msgstr "Impossible d'analyser la valeur alpha « %s » en couleur mélangée"
 #, c-format
 msgid "Alpha value \"%s\" in blended color is not between 0.0 and 1.0"
 msgstr ""
-"La valeur alpha « %s » en couleur mélangée n'est pas comprise entre 0,0 et 1,0"
+"La valeur alpha « %s » en couleur mélangée n'est pas comprise entre 0,0 et "
+"1,0"
 
 #: ../src/ui/theme.c:1320
 #, c-format
 msgid ""
 "Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
 msgstr ""
-"Le format d'ombre est « shade/base_color/factor », « %s » ne correspond pas au "
-"format"
+"Le format d'ombre est « shade/base_color/factor », « %s » ne correspond pas "
+"au format"
 
 #: ../src/ui/theme.c:1331
 #, c-format
@@ -1088,15 +1097,15 @@ msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
 "operand in between"
 msgstr ""
-"L'expression de la coordonnée a un opérateur « %c » suivant l'opérateur « %c » "
-"sans opérande entre eux"
+"L'expression de la coordonnée a un opérateur « %c » suivant l'opérateur "
+"« %c » sans opérande entre eux"
 
 #: ../src/ui/theme.c:2237 ../src/ui/theme.c:2278
 #, c-format
 msgid "Coordinate expression had unknown variable or constant \"%s\""
 msgstr ""
-"L'expression de la coordonnée possède une variable ou constante inconnue « %"
-"s »"
+"L'expression de la coordonnée possède une variable ou constante inconnue "
+"« %s »"
 
 #: ../src/ui/theme.c:2332
 #, c-format
@@ -1163,8 +1172,8 @@ msgid ""
 "No frame style set for window type \"%s\" in theme \"%s\", add a <window "
 "type=\"%s\" style_set=\"whatever\"/> element"
 msgstr ""
-"Aucun style de cadre défini pour le type de fenêtre « %s » dans le thème « %"
-"s », ajoutez un élément <window type=\"%s\" style_set=\"whatever\"/>"
+"Aucun style de cadre défini pour le type de fenêtre « %s » dans le thème "
+"« %s », ajoutez un élément <window type=\"%s\" style_set=\"whatever\"/>"
 
 #: ../src/ui/theme.c:5505 ../src/ui/theme.c:5567 ../src/ui/theme.c:5630
 #, c-format
@@ -1230,7 +1239,8 @@ msgstr "Impossible d'analyser « %s » en tant que valeur en virgule flottante
 #: ../src/ui/theme-parser.c:608 ../src/ui/theme-parser.c:636
 #, c-format
 msgid "Boolean values must be \"true\" or \"false\" not \"%s\""
-msgstr "Les valeurs booléennes doivent être « true » ou « false » et non « %s »"
+msgstr ""
+"Les valeurs booléennes doivent être « true » ou « false » et non « %s »"
 
 #: ../src/ui/theme-parser.c:663
 #, c-format
@@ -1309,8 +1319,9 @@ msgid ""
 "Cannot specify both \"button_width\"/\"button_height\" and \"aspect_ratio\" "
 "for buttons"
 msgstr ""
-"Impossible d'indiquer à la fois « button_width » / « button_height » (largeur/"
-"hauteur) et « aspect_ratio » (proportion) pour les boutons"
+"Impossible d'indiquer à la fois « button_width » / "
+"« button_height » (largeur/hauteur) et « aspect_ratio » (proportion) pour "
+"les boutons"
 
 #: ../src/ui/theme-parser.c:1377
 #, c-format
@@ -1331,15 +1342,15 @@ msgstr "Bordure « %s » inconnue"
 #, c-format
 msgid "No \"start_angle\" or \"from\" attribute on element <%s>"
 msgstr ""
-"Aucun attribut « start_angle » (« début d'angle ») ou « from » (« depuis ») sur "
-"l'élément <%s>"
+"Aucun attribut « start_angle » (« début d'angle ») ou « from » (« depuis ») "
+"sur l'élément <%s>"
 
 #: ../src/ui/theme-parser.c:1802
 #, c-format
 msgid "No \"extent_angle\" or \"to\" attribute on element <%s>"
 msgstr ""
-"Aucun attribut « extent_angle » (« extension d'angle ») ou « to » (« vers ») sur "
-"l'élément <%s>"
+"Aucun attribut « extent_angle » (« extension d'angle ») ou « to » (« vers ») "
+"sur l'élément <%s>"
 
 #: ../src/ui/theme-parser.c:2042
 #, c-format
@@ -1402,7 +1413,8 @@ msgstr "Fonction inconnue « %s » pour le bouton"
 #, c-format
 msgid "Button function \"%s\" does not exist in this version (%d, need %d)"
 msgstr ""
-"La fonction « %s » du bouton n'existe pas dans la version (%d, a besoin de %d)"
+"La fonction « %s » du bouton n'existe pas dans la version (%d, a besoin de "
+"%d)"
 
 #: ../src/ui/theme-parser.c:2905
 #, c-format
@@ -1432,7 +1444,8 @@ msgstr "Aucun style appelé « %s » n'a été défini"
 #: ../src/ui/theme-parser.c:3024 ../src/ui/theme-parser.c:3047
 #, c-format
 msgid "\"%s\" is not a valid value for resize attribute"
-msgstr "« %s » n'est pas une valeur valide pour l'attribut de redimensionnement"
+msgstr ""
+"« %s » n'est pas une valeur valide pour l'attribut de redimensionnement"
 
 #: ../src/ui/theme-parser.c:3058
 #, c-format
