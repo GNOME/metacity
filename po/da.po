@@ -17,9 +17,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-20 22:36+0100\n"
-"PO-Revision-Date: 2012-02-18 00:11+0100\n"
-"Last-Translator: Ask Hjorth Larsen <asklarsen@gmail.com>\n"
+"POT-Creation-Date: 2013-09-11 22:27+0200\n"
+"PO-Revision-Date: 2013-09-10 00:11+0100\n"
+"Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -27,72 +27,72 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../src/50-metacity-navigation.xml.in.h:1
-msgid "Hide all normal windows"
-msgstr "Skjul alle normale vinduer"
-
-#: ../src/50-metacity-navigation.xml.in.h:2
-msgid "Move to workspace above"
-msgstr "Flyt til arbejdsområdet over"
-
-#: ../src/50-metacity-navigation.xml.in.h:3
-msgid "Move to workspace below"
-msgstr "Flyt til arbejdsområdet under"
-
-#: ../src/50-metacity-navigation.xml.in.h:4
-msgid "Move to workspace left"
-msgstr "Flyt til arbejdsområdet til venstre"
-
-#: ../src/50-metacity-navigation.xml.in.h:5
-msgid "Move to workspace right"
-msgstr "Flyt til arbejdsområdet til højre"
-
-#: ../src/50-metacity-navigation.xml.in.h:6
-msgid "Move window one workspace down"
-msgstr "Flyt vindue et arbejdsområde ned"
-
-#: ../src/50-metacity-navigation.xml.in.h:7
-msgid "Move window one workspace to the left"
-msgstr "Flyt vindue et arbejdsområde til venstre"
-
-#: ../src/50-metacity-navigation.xml.in.h:8
-msgid "Move window one workspace to the right"
-msgstr "Flyt vindue et arbejdsområde til højre"
-
-#: ../src/50-metacity-navigation.xml.in.h:9
-msgid "Move window one workspace up"
-msgstr "Flyt vindue et arbejdsområde op"
-
-#: ../src/50-metacity-navigation.xml.in.h:10
-msgid "Move window to workspace 1"
-msgstr "Flyt vindue til arbejdsområde 1"
-
-#: ../src/50-metacity-navigation.xml.in.h:11
-msgid "Move window to workspace 2"
-msgstr "Flyt vindue til arbejdsområde 2"
-
-#: ../src/50-metacity-navigation.xml.in.h:12
-msgid "Move window to workspace 3"
-msgstr "Flyt vindue til arbejdsområde 3"
-
-#: ../src/50-metacity-navigation.xml.in.h:13
-msgid "Move window to workspace 4"
-msgstr "Flyt vindue til arbejdsområde 4"
-
-#: ../src/50-metacity-navigation.xml.in.h:14
 msgid "Navigation"
 msgstr "Navigation"
 
-#: ../src/50-metacity-navigation.xml.in.h:15
+#: ../src/50-metacity-navigation.xml.in.h:2
+msgid "Move window to workspace 1"
+msgstr "Flyt vindue til arbejdsområde 1"
+
+#: ../src/50-metacity-navigation.xml.in.h:3
+msgid "Move window to workspace 2"
+msgstr "Flyt vindue til arbejdsområde 2"
+
+#: ../src/50-metacity-navigation.xml.in.h:4
+msgid "Move window to workspace 3"
+msgstr "Flyt vindue til arbejdsområde 3"
+
+#: ../src/50-metacity-navigation.xml.in.h:5
+msgid "Move window to workspace 4"
+msgstr "Flyt vindue til arbejdsområde 4"
+
+#: ../src/50-metacity-navigation.xml.in.h:6
+msgid "Move window one workspace to the left"
+msgstr "Flyt vindue et arbejdsområde til venstre"
+
+#: ../src/50-metacity-navigation.xml.in.h:7
+msgid "Move window one workspace to the right"
+msgstr "Flyt vindue et arbejdsområde til højre"
+
+#: ../src/50-metacity-navigation.xml.in.h:8
+msgid "Move window one workspace up"
+msgstr "Flyt vindue et arbejdsområde op"
+
+#: ../src/50-metacity-navigation.xml.in.h:9
+msgid "Move window one workspace down"
+msgstr "Flyt vindue et arbejdsområde ned"
+
+#: ../src/50-metacity-navigation.xml.in.h:10
+msgid "Switch windows"
+msgstr "Skift mellem vinduer"
+
+#: ../src/50-metacity-navigation.xml.in.h:11
 msgid "Switch applications"
 msgstr "Skift mellem programmer"
 
-#: ../src/50-metacity-navigation.xml.in.h:16
+#: ../src/50-metacity-navigation.xml.in.h:12
+msgid "Switch windows of an application"
+msgstr "Skift mellem vinduer i et program"
+
+#: ../src/50-metacity-navigation.xml.in.h:13
 msgid "Switch system controls"
 msgstr "Skift mellem systemkontroller"
 
-#: ../src/50-metacity-navigation.xml.in.h:17
+#: ../src/50-metacity-navigation.xml.in.h:14
+msgid "Switch windows directly"
+msgstr "Skift direkte mellem vinduer"
+
+#: ../src/50-metacity-navigation.xml.in.h:15
+msgid "Switch windows of an app directly"
+msgstr "Skift direkte mellem vinduer i et program"
+
+#: ../src/50-metacity-navigation.xml.in.h:16
 msgid "Switch system controls directly"
 msgstr "Skift direkte mellem systemkontroller"
+
+#: ../src/50-metacity-navigation.xml.in.h:17
+msgid "Hide all normal windows"
+msgstr "Skjul alle normale vinduer"
 
 #: ../src/50-metacity-navigation.xml.in.h:18
 msgid "Switch to workspace 1"
@@ -111,96 +111,100 @@ msgid "Switch to workspace 4"
 msgstr "Skift til arbejdsområde 4"
 
 #: ../src/50-metacity-navigation.xml.in.h:22
-msgid "Switch windows directly"
-msgstr "Skift direkte mellem vinduer"
+msgid "Move to workspace left"
+msgstr "Flyt til arbejdsområdet til venstre"
 
 #: ../src/50-metacity-navigation.xml.in.h:23
-msgid "Switch windows of an app directly"
-msgstr "Skift direkte mellem vinduer i et program"
+msgid "Move to workspace right"
+msgstr "Flyt til arbejdsområdet til højre"
 
 #: ../src/50-metacity-navigation.xml.in.h:24
-msgid "Switch windows of an application"
-msgstr "Skift mellem vinduer i et program"
+msgid "Move to workspace above"
+msgstr "Flyt til arbejdsområdet over"
+
+#: ../src/50-metacity-navigation.xml.in.h:25
+msgid "Move to workspace below"
+msgstr "Flyt til arbejdsområdet under"
 
 #: ../src/50-metacity-system.xml.in.h:1
-msgid "Show the activities overview"
-msgstr "Vis aktivitetsoversigten"
+msgid "System"
+msgstr "System"
 
 #: ../src/50-metacity-system.xml.in.h:2
 msgid "Show the run command prompt"
 msgstr "Vis kør-kommandoprompten"
 
 #: ../src/50-metacity-system.xml.in.h:3
-msgid "System"
-msgstr "System"
+msgid "Show the activities overview"
+msgstr "Vis aktivitetsoversigten"
 
 #: ../src/50-metacity-windows.xml.in.h:1
+msgid "Windows"
+msgstr "Vinduer"
+
+#: ../src/50-metacity-windows.xml.in.h:2
 msgid "Activate the window menu"
 msgstr "Aktivér vinduesmenuen"
 
-#: ../src/50-metacity-windows.xml.in.h:2
-msgid "Close window"
-msgstr "Luk vindue"
-
 #: ../src/50-metacity-windows.xml.in.h:3
-msgid "Lower window below other windows"
-msgstr "Sænk vindue under andre vinduer"
+msgid "Toggle fullscreen mode"
+msgstr "Skift fuldskærmstilstand"
 
 #: ../src/50-metacity-windows.xml.in.h:4
+msgid "Toggle maximization state"
+msgstr "Skift maksimeringstilstand"
+
+#: ../src/50-metacity-windows.xml.in.h:5
 msgid "Maximize window"
 msgstr "Maksimér vindue"
 
-#: ../src/50-metacity-windows.xml.in.h:5
-msgid "Maximize window horizontally"
-msgstr "Maksimér et vindue vandret"
-
 #: ../src/50-metacity-windows.xml.in.h:6
-msgid "Maximize window vertically"
-msgstr "Maksimér et vindue lodret"
+msgid "Restore window"
+msgstr "Gendan vindue"
 
 #: ../src/50-metacity-windows.xml.in.h:7
+msgid "Toggle shaded state"
+msgstr "Skift oprullethed"
+
+#: ../src/50-metacity-windows.xml.in.h:8
+msgid "Close window"
+msgstr "Luk vindue"
+
+#: ../src/50-metacity-windows.xml.in.h:9
 msgid "Minimize window"
 msgstr "Minimér vindue"
 
-#: ../src/50-metacity-windows.xml.in.h:8
+#: ../src/50-metacity-windows.xml.in.h:10
 msgid "Move window"
 msgstr "Flyt vindue"
-
-#: ../src/50-metacity-windows.xml.in.h:9
-msgid "Raise window above other windows"
-msgstr "Hæv vindue over andre vinduer"
-
-#: ../src/50-metacity-windows.xml.in.h:10
-msgid "Raise window if covered, otherwise lower it"
-msgstr "Hæv vindue hvis det er dækket, ellers sænk det"
 
 #: ../src/50-metacity-windows.xml.in.h:11
 msgid "Resize window"
 msgstr "Ændr størrelsen på vindue"
 
 #: ../src/50-metacity-windows.xml.in.h:12
-msgid "Restore window"
-msgstr "Gendan vindue"
-
-#: ../src/50-metacity-windows.xml.in.h:13
-msgid "Toggle fullscreen mode"
-msgstr "Skift fuldskærmstilstand"
-
-#: ../src/50-metacity-windows.xml.in.h:14
-msgid "Toggle maximization state"
-msgstr "Skift maksimeringstilstand"
-
-#: ../src/50-metacity-windows.xml.in.h:15
-msgid "Toggle shaded state"
-msgstr "Skift oprullethed"
-
-#: ../src/50-metacity-windows.xml.in.h:16
 msgid "Toggle window on all workspaces or one"
 msgstr "Skift mellem visning af vindue på alle eller kun et arbejdsområde"
 
+#: ../src/50-metacity-windows.xml.in.h:13
+msgid "Raise window if covered, otherwise lower it"
+msgstr "Hæv vindue hvis det er dækket, ellers sænk det"
+
+#: ../src/50-metacity-windows.xml.in.h:14
+msgid "Raise window above other windows"
+msgstr "Hæv vindue over andre vinduer"
+
+#: ../src/50-metacity-windows.xml.in.h:15
+msgid "Lower window below other windows"
+msgstr "Sænk vindue under andre vinduer"
+
+#: ../src/50-metacity-windows.xml.in.h:16
+msgid "Maximize window vertically"
+msgstr "Maksimér et vindue lodret"
+
 #: ../src/50-metacity-windows.xml.in.h:17
-msgid "Windows"
-msgstr "Vinduer"
+msgid "Maximize window horizontally"
+msgstr "Maksimér et vindue vandret"
 
 #: ../src/core/bell.c:296
 msgid "Bell event"
@@ -238,12 +242,12 @@ msgstr "_Tving til at afslutte"
 msgid "Failed to get hostname: %s\n"
 msgstr "Kunne ikke skaffe værtsnavn: %s\n"
 
-#: ../src/core/display.c:258
+#: ../src/core/display.c:263
 #, c-format
 msgid "Missing %s extension required for compositing"
 msgstr "Manglende %s-udvidelse som kræves til komposition"
 
-#: ../src/core/display.c:336
+#: ../src/core/display.c:341
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
 msgstr "Kunne ikke åbne X Window System-terminalen \"%s\"\n"
@@ -385,12 +389,12 @@ msgstr ""
 msgid "Workspace %d"
 msgstr "Arbejdsområde %d"
 
-#: ../src/core/screen.c:357
+#: ../src/core/screen.c:364
 #, c-format
 msgid "Screen %d on display '%s' is invalid\n"
 msgstr "Skærm %d på terminal \"%s\" er ugyldig\n"
 
-#: ../src/core/screen.c:373
+#: ../src/core/screen.c:380
 #, c-format
 msgid ""
 "Screen %d on display \"%s\" already has a window manager; try using the --"
@@ -399,7 +403,7 @@ msgstr ""
 "Skærm %d på terminal \"%s\" har allerede en vindueshåndtering; prøv "
 "tilvalget --replace for at erstatte den aktuelle vindueshåndtering.\n"
 
-#: ../src/core/screen.c:400
+#: ../src/core/screen.c:407
 #, c-format
 msgid ""
 "Could not acquire window manager selection on screen %d display \"%s\"\n"
@@ -407,12 +411,12 @@ msgstr ""
 "Kunne ikke fremskaffe vindueshåndteringvælgeren på skærm %d på terminal \"%s"
 "\"\n"
 
-#: ../src/core/screen.c:458
+#: ../src/core/screen.c:465
 #, c-format
 msgid "Screen %d on display \"%s\" already has a window manager\n"
 msgstr "Skærm %d på terminal \"%s\" har allerede en vindueshåndtering\n"
 
-#: ../src/core/screen.c:668
+#: ../src/core/screen.c:675
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "Kunne ikke frigive skærm %d på terminal \"%s\"\n"
@@ -487,7 +491,7 @@ msgstr "Kunne ikke udføre fdopen() på logfilen %s: %s\n"
 msgid "Opened log file %s\n"
 msgstr "Åbnede logfilen %s\n"
 
-#: ../src/core/util.c:136 ../src/tools/metacity-message.c:176
+#: ../src/core/util.c:136 ../src/tools/metacity-message.c:208
 #, c-format
 msgid "Metacity was compiled without support for verbose mode\n"
 msgstr "Metacity blev oversat uden understøttelse for verbose-tilstand\n"
@@ -616,6 +620,10 @@ msgid "Determines whether Metacity is a compositing manager."
 msgstr "Bestemmer om Metacity håndterer komposition."
 
 #: ../src/org.gnome.metacity.gschema.xml.in.h:3
+msgid "If true, trade off usability for less resource usage"
+msgstr "Hvis sand, så formindsk brugbarhed af hensyn til resurseforbrug"
+
+#: ../src/org.gnome.metacity.gschema.xml.in.h:4
 msgid ""
 "If true, metacity will give the user less feedback by using wireframes, "
 "avoiding animations, or other means. This is a significant reduction in "
@@ -629,11 +637,7 @@ msgstr ""
 "til at fungere, samt kan være et brugbart kompromis for terminalservere. "
 "Rammelinje-faciliteten er dog deaktiveret når tilgængelighed er slået til."
 
-#: ../src/org.gnome.metacity.gschema.xml.in.h:4
-msgid "If true, trade off usability for less resource usage"
-msgstr "Hvis sand, så formindsk brugbarhed af hensyn til resurseforbrug"
-
-#: ../src/tools/metacity-message.c:150
+#: ../src/tools/metacity-message.c:178
 #, c-format
 msgid "Usage: %s\n"
 msgstr "Brug: %s\n"
