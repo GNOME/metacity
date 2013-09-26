@@ -421,9 +421,13 @@ setup_constraint_info (ConstraintInfo      *info,
                                           xinerama_info->number);
 
   /* Workaround braindead legacy apps that don't know how to
-   * fullscreen themselves properly.
+   * fullscreen themselves properly - don't get fooled by
+   * windows which are client decorated; that's not the same
+   * as fullscreen, even if there are no struts making the
+   * workarea smaller than the monitor.
    */
   if (meta_prefs_get_force_fullscreen() &&
+      window->decorated &&
       meta_rectangle_equal (new, &xinerama_info->rect) &&
       window->has_fullscreen_func &&
       !window->fullscreen)
