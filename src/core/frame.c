@@ -120,6 +120,7 @@ meta_window_ensure_frame (MetaWindow *window)
   frame->mapped = FALSE;
   frame->need_reapply_frame_shape = TRUE;
   frame->is_flashing = FALSE;
+  frame->borders_cached = FALSE;
 
   meta_verbose ("Framing window %s: visual %s default, depth %d default depth %d\n",
                 window->desc,
@@ -386,9 +387,28 @@ void
 meta_frame_calc_borders (MetaFrame        *frame,
                          MetaFrameBorders *borders)
 {
-  meta_ui_get_frame_borders (frame->window->screen->ui,
-                             frame->xwindow,
-                             borders);
+  if (frame == NULL)
+    {
+      meta_frame_borders_clear (borders);
+    }
+  else
+    {
+      if (!frame->borders_cached)
+        {
+          meta_ui_get_frame_borders (frame->window->screen->ui,
+                                     frame->xwindow,
+                                     &frame->cached_borders);
+          frame->borders_cached = TRUE;
+        }
+
+      *borders = frame->cached_borders;
+   }
+}
+
+void
+meta_frame_clear_cached_borders (MetaFrame *frame)
+{
+  frame->borders_cached = FALSE;
 }
 
 static gboolean
