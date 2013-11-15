@@ -40,6 +40,9 @@ struct _MetaFrame
    */
   MetaRectangle rect;
 
+  /* valid if borders_cached is set */
+  MetaFrameBorders cached_borders;
+
   /* position of client, size of frame */
   int child_x;
   int child_y;
@@ -49,6 +52,7 @@ struct _MetaFrame
   guint mapped : 1;
   guint need_reapply_frame_shape : 1;
   guint is_flashing : 1; /* used by the visual bell flash */
+  guint borders_cached : 1;
 };
 
 void     meta_window_ensure_frame           (MetaWindow *window);
@@ -61,6 +65,8 @@ gboolean meta_frame_sync_to_window (MetaFrame         *frame,
                                     int                gravity,
                                     gboolean           need_move,
                                     gboolean           need_resize);
+
+void meta_frame_clear_cached_borders (MetaFrame *frame);
 
 cairo_region_t *meta_frame_get_frame_bounds (MetaFrame *frame);
 
