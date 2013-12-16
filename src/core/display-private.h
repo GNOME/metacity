@@ -128,6 +128,14 @@ struct _MetaDisplay
    */
   guint allow_terminal_deactivation : 1;
 
+  /* If true, server->focus_serial refers to us changing the focus; in
+   * this case, we can ignore focus events that have exactly focus_serial,
+   * since we take care to make another request immediately afterwards.
+   * But if focus is being changed by another client, we have to accept
+   * multiple events with the same serial.
+   */
+  guint focused_by_us : 1;
+
   /*< private-ish >*/
   guint error_trap_synced_at_last_pop : 1;
   MetaEventQueue *events;
