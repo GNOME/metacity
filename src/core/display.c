@@ -1415,9 +1415,11 @@ button_press_event_new (XEvent *xevent,
 static void
 update_focus_window (MetaDisplay *display,
                      MetaWindow  *window,
-                     gulong       serial)
+                     gulong       serial,
+                     gboolean     focused_by_us)
 {
   display->focus_serial = serial;
+  display->focused_by_us = focused_by_us;
 
   if (window == display->focus_window)
     return;
@@ -1527,7 +1529,8 @@ request_xserver_input_focus_change (MetaDisplay *display,
 
   update_focus_window (display,
                        meta_window,
-                       serial);
+                       serial,
+                       TRUE);
 
   meta_error_trap_pop (display);
 
@@ -1637,10 +1640,18 @@ handle_window_focus_event (MetaDisplay *display,
   else
     g_return_if_reached ();
 
-  if (display->server_focus_serial > display->focus_serial)
+  /* If display->focused_by_us, then the focus_serial will be used only
+   * for a focus change we made and have already accounted for.
+   * (See request_xserver_input_focus_change().) Otherwise, we can get
+   * multiple focus events with the same serial.
+   */
+  if (display->server_focus_serial > display->focus_serial ||
+      (!display->focused_by_us &&
+       display->server_focus_serial == display->focus_serial))
     {
       update_focus_window (display, focus_window,
-                           display->server_focus_serial);
+                           display->server_focus_serial,
+                           FALSE);
     }
 }
 
@@ -1685,7 +1696,8 @@ event_callback (XEvent   *event,
   display->current_time = event_get_time (display, event);
   display->monitor_cache_invalidated = TRUE;
 
-  if (event->xany.serial > display->focus_serial &&
+  if (display->focused_by_us &&
+      event->xany.serial > display->focus_serial &&
       display->focus_window &&
       display->focus_window->xwindow != display->server_focus_window)
     {
@@ -1693,7 +1705,8 @@ event_callback (XEvent   *event,
                   display->focus_window->desc);
       update_focus_window (display,
                            meta_display_lookup_x_window (display, display->server_focus_window),
-                           display->server_focus_serial);
+                           display->server_focus_serial,
+                           FALSE);
     }
 
   modified = event_get_modified_window (display, event);
