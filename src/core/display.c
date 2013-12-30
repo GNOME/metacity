@@ -683,8 +683,6 @@ meta_display_open (void)
      the code */
   update_compositor (the_display, FALSE);
 
-  meta_display_grab (the_display);
-
   /* Now manage all existing windows */
   meta_screen_manage_all_windows (the_display->screen);
 
@@ -712,8 +710,6 @@ meta_display_open (void)
                                               the_display->screen,
                                               timestamp);
     }
-
-  meta_display_ungrab (the_display);
 
   /* Done opening new display */
   the_display->display_opening = FALSE;

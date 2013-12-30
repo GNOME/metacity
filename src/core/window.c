@@ -287,7 +287,6 @@ meta_window_new (MetaDisplay    *display,
   gulong event_mask;
   MetaMoveResizeFlags flags;
 
-  meta_display_grab (display);
   meta_error_trap_push (display); /* Push a trap over all of window
                                    * creation, to reduce XSync() calls
                                    */
@@ -296,7 +295,6 @@ meta_window_new (MetaDisplay    *display,
     {
       meta_verbose ("Failed to get attributes for window 0x%lx\n", xwindow);
       meta_error_trap_pop (display);
-      meta_display_ungrab (display);
       return NULL;
     }
 
@@ -308,7 +306,6 @@ meta_window_new (MetaDisplay    *display,
     {
       meta_verbose ("Not managing our own windows\n");
       meta_error_trap_pop (display);
-      meta_display_ungrab (display);
       return NULL;
     }
 
@@ -338,7 +335,6 @@ meta_window_new (MetaDisplay    *display,
         {
           meta_verbose ("Deciding not to manage unmapped or unviewable window 0x%lx\n", xwindow);
           meta_error_trap_pop (display);
-          meta_display_ungrab (display);
           return NULL;
         }
 
@@ -389,7 +385,6 @@ meta_window_new (MetaDisplay    *display,
       meta_verbose ("Window 0x%lx disappeared just as we tried to manage it\n",
                     xwindow);
       meta_error_trap_pop (display);
-      meta_display_ungrab (display);
       return NULL;
     }
 
@@ -858,7 +853,6 @@ meta_window_new (MetaDisplay    *display,
     unminimize_window_and_all_transient_parents (window);
 
   meta_error_trap_pop (display); /* pop the XSync()-reducing trap */
-  meta_display_ungrab (display);
 
   window->constructing = FALSE;
 
