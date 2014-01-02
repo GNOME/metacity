@@ -77,9 +77,6 @@ meta_window_ensure_frame (MetaWindow *window)
   if (window->frame)
     return;
 
-  /* See comment below for why this is required. */
-  meta_display_grab (window->display);
-
   frame = g_new (MetaFrame, 1);
 
   frame->window = window;
@@ -121,14 +118,6 @@ meta_window_ensure_frame (MetaWindow *window)
 
   meta_display_register_x_window (window->display, &frame->xwindow, window);
 
-  /* Reparent the client window; it may be destroyed,
-   * thus the error trap. We'll get a destroy notify later
-   * and free everything. Comment in FVWM source code says
-   * we need a server grab or the child can get its MapNotify
-   * before we've finished reparenting and getting the decoration
-   * window onscreen, so ensure_frame must be called with
-   * a grab.
-   */
   meta_error_trap_push (window->display);
   if (window->mapped)
     {
@@ -174,8 +163,6 @@ meta_window_ensure_frame (MetaWindow *window)
   /* Shape mask */
   update_input_shape (frame);
   update_shape (frame);
-
-  meta_display_ungrab (window->display);
 }
 
 void
