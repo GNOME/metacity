@@ -17,15 +17,15 @@ msgstr ""
 "Project-Id-Version: Metacity\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-14 12:03+0200\n"
-"PO-Revision-Date: 2013-07-14 12:04+0100\n"
-"Last-Translator: Christian Kirbach <christian.kirbach@gmail.com>\n"
+"PO-Revision-Date: 2014-01-04 19:36+0100\n"
+"Last-Translator: Benjamin Steinwender <b@stbe.at>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.6.3\n"
 
 #: ../src/50-metacity-navigation.xml.in.h:1
 msgid "Navigation"
@@ -814,7 +814,7 @@ msgstr "Auf a_ndere Arbeitsfläche verschieben"
 #.
 #: ../src/ui/metaaccellabel.c:80
 msgid "Shift"
-msgstr "Shift"
+msgstr "Umschalt"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the control key. If the text on this key isn't typically
@@ -953,8 +953,9 @@ msgid ""
 "GTK color specification must have the state in brackets, e.g. gtk:fg[NORMAL] "
 "where NORMAL is the state; could not parse \"%s\""
 msgstr ""
-"Bei GTK-Farbangaben muss der Zustand in eckigen Klammern stehen, z.B. gtk:fg"
-"[NORMAL], wobei NORMAL der Zustand ist; »%s« konnte nicht verarbeitet werden."
+"Bei GTK-Farbangaben muss der Zustand in eckigen Klammern stehen, z.B. gtk:"
+"fg[NORMAL], wobei NORMAL der Zustand ist; »%s« konnte nicht verarbeitet "
+"werden."
 
 #: ../src/ui/theme.c:1198
 #, c-format
