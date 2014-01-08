@@ -639,6 +639,98 @@ find_first_fit (MetaWindow *window,
   return retval;
 }
 
+static gboolean
+find_preferred_position (MetaWindow *window,
+                         MetaFrameGeometry *fgeom,
+                         /* visible windows on relevant workspaces */
+                         GList      *windows,
+                         int         xinerama,
+                         int         x,
+                         int         y,
+                         int        *new_x,
+                         int        *new_y)
+{
+  MetaRectangle rect;
+  MetaRectangle work_area;
+  MetaPlacementMode placement_mode_pref = meta_prefs_get_placement_mode ();
+
+  /* If first_fit placement is the preference, just pass all the
+   * options through to the original find_first_fit function.
+   * Otherwise, process the user preference here.
+   */
+  if (placement_mode_pref == META_PLACEMENT_MODE_SMART)
+    {
+      return find_first_fit (window, fgeom, windows,
+                             xinerama,
+                             x, y, new_x, new_y);
+    }
+  else if (placement_mode_pref == META_PLACEMENT_MODE_CASCADE)
+    {
+      /* This is an abuse of find_next_cascade(), because it was not
+       * intended for this use, and because it is not designed to
+       * deal with placement on multiple Xineramas.
+       */
+      find_next_cascade (window, fgeom, windows, x, y, new_x, new_y);
+      return TRUE;
+    }
+
+  rect.width = window->rect.width;
+  rect.height = window->rect.height;
+
+  if (fgeom)
+    {
+      rect.width += fgeom->left_width + fgeom->right_width;
+      rect.height += fgeom->top_height + fgeom->bottom_height;
+    }
+
+  meta_window_get_work_area_for_xinerama (window, xinerama, &work_area);
+
+  /* Cannot use rect_fits_in_work_area here because that function
+   * also checks the x & y position of rect, but those are not set
+   * yet in this case.
+   */
+  if ((rect.width <= work_area.width) && (rect.height <= work_area.height))
+    {
+      switch (placement_mode_pref)
+        {
+          case META_PLACEMENT_MODE_CENTER:
+            /* This is a plain centering, different from center_tile */
+            *new_x = work_area.x + ((work_area.width - rect.width) / 2);
+            *new_y = work_area.y + ((work_area.height - rect.height) / 2);
+            break;
+
+          case META_PLACEMENT_MODE_ORIGIN:
+            *new_x = work_area.x;
+            *new_y = work_area.y;
+            break;
+
+          case META_PLACEMENT_MODE_RANDOM:
+            *new_x = (int) ((float) (work_area.width - rect.width) *
+                            ((float) rand() / (float) RAND_MAX));
+            *new_y = (int) ((float) (work_area.height - rect.height) *
+                            ((float) rand() / (float) RAND_MAX));
+            *new_x += work_area.x;
+            *new_y += work_area.y;
+            break;
+
+          default:
+            meta_warning ("Unknown window-placement option chosen.\n");
+            return FALSE;
+            break;
+        }
+
+      if (fgeom)
+        {
+          *new_x += fgeom->left_width;
+          *new_y += fgeom->top_height;
+        }
+
+      return TRUE;
+    }
+
+  return FALSE;
+}
+
 void
 meta_window_place (MetaWindow        *window,
                    MetaFrameGeometry *fgeom,
@@ -839,9 +931,9 @@ meta_window_place (MetaWindow        *window,
   x = xi->rect.x;
   y = xi->rect.y;
 
-  if (find_first_fit (window, fgeom, windows,
-                      xi->number,
-                      x, y, &x, &y))
+  if (find_preferred_position (window, fgeom, windows,
+                               xi->number,
+                               x, y, &x, &y))
     goto done_check_denied_focus;
 
   /* Maximize windows if they are too big for their work area (bit of

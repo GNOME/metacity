@@ -58,8 +58,18 @@ typedef enum
   META_PREF_CURSOR_SIZE,
   META_PREF_COMPOSITING_MANAGER,
   META_PREF_RESIZE_WITH_RIGHT_BUTTON,
-  META_PREF_FORCE_FULLSCREEN
+  META_PREF_FORCE_FULLSCREEN,
+  META_PREF_PLACEMENT_MODE
 } MetaPreference;
+
+typedef enum
+{
+  META_PLACEMENT_MODE_SMART,
+  META_PLACEMENT_MODE_CASCADE,
+  META_PLACEMENT_MODE_CENTER,
+  META_PLACEMENT_MODE_ORIGIN,
+  META_PLACEMENT_MODE_RANDOM
+} MetaPlacementMode;
 
 typedef void (* MetaPrefsChangedFunc) (MetaPreference pref,
                                        gpointer       data);
@@ -113,6 +123,8 @@ const char* meta_prefs_get_cursor_theme      (void);
 int         meta_prefs_get_cursor_size       (void);
 gboolean    meta_prefs_get_compositing_manager (void);
 gboolean    meta_prefs_get_force_fullscreen  (void);
+
+MetaPlacementMode meta_prefs_get_placement_mode (void);
 
 /**
  * Sets whether the compositor is turned on.

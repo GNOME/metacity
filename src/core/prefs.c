@@ -42,6 +42,7 @@
 #define KEY_NUM_WORKSPACES "num-workspaces"
 #define KEY_WORKSPACE_NAMES "workspace-names"
 #define KEY_COMPOSITOR "compositing-manager"
+#define KEY_PLACEMENT_MODE "placement-mode"
 
 /* Keys from "foreign" schemas */
 #define KEY_GNOME_ACCESSIBILITY "toolkit-accessibility"
@@ -91,6 +92,8 @@ static gboolean force_fullscreen = TRUE;
 
 static GDesktopVisualBellType visual_bell_type = G_DESKTOP_VISUAL_BELL_FULLSCREEN_FLASH;
 static MetaButtonLayout button_layout;
+
+static MetaPlacementMode placement_mode = META_PLACEMENT_MODE_SMART;
 
 /* NULL-terminated array */
 static char **workspace_names = NULL;
@@ -241,6 +244,13 @@ static MetaEnumPreference preferences_enum[] =
         META_PREF_ACTION_RIGHT_CLICK_TITLEBAR,
       },
       &action_right_click_titlebar,
+    },
+    {
+      { "placement-mode",
+        SCHEMA_METACITY,
+        META_PREF_PLACEMENT_MODE,
+      },
+      &placement_mode,
     },
     { { NULL, 0, 0 }, NULL },
   };
@@ -626,7 +636,6 @@ handle_preference_update_int (GSettings *settings,
     }
 }
 
-
 /****************************************************************************/
 /* Listeners.                                                               */
 /****************************************************************************/
@@ -740,7 +749,6 @@ queue_changed (MetaPreference pref)
                                     changed_idle_handler, NULL, NULL);
 }
 
-
 /****************************************************************************/
 /* Initialisation.                                                          */
 /****************************************************************************/
@@ -791,7 +799,6 @@ meta_prefs_init (void)
   init_workspace_names ();
 }
 
-
 /****************************************************************************/
 /* Updates.                                                                 */
 /****************************************************************************/
@@ -925,7 +932,6 @@ meta_prefs_get_cursor_size (void)
   return cursor_size;
 }
 
-
 /****************************************************************************/
 /* Handlers for string preferences.                                         */
 /****************************************************************************/
@@ -1412,6 +1418,9 @@ meta_preference_to_string (MetaPreference pref)
 
     case META_PREF_FORCE_FULLSCREEN:
       return "FORCE_FULLSCREEN";
+
+    case META_PREF_PLACEMENT_MODE:
+      return "PLACEMENT_MODE";
     }
 
   return "(unknown)";
@@ -1822,6 +1831,12 @@ meta_prefs_get_force_fullscreen (void)
   return force_fullscreen;
 }
 
+MetaPlacementMode
+meta_prefs_get_placement_mode (void)
+{
+  return placement_mode;
+}
+
 void
 meta_prefs_set_compositing_manager (gboolean whether)
 {
@@ -1833,4 +1848,3 @@ meta_prefs_set_force_fullscreen (gboolean whether)
 {
   force_fullscreen = whether;
 }
-

@@ -1,5 +1,13 @@
 <schemalist>
 
+  <enum id="org.gnome.metacity.MetaPlacementMode">
+    <value nick="smart" value="0" />
+    <value nick="cascade" value="1" />
+    <value nick="center" value="2" />
+    <value nick="origin" value="3" />
+    <value nick="random" value="4" />
+  </enum>
+
   <schema id="org.gnome.metacity" path="/org/gnome/metacity/"
           gettext-domain="@GETTEXT_PACKAGE@">
     <key name="compositing-manager" type="b">
@@ -22,6 +30,21 @@
         However, the wireframe feature is disabled when accessibility is on.
       </_description>
     </key>
+    <key name="placement-mode" enum="org.gnome.metacity.MetaPlacementMode">
+      <default>'smart'</default>
+      <_summary>Window placement behavior</_summary>
+      <_description>
+        Metacity's default window-placement behavior is smart (first-fit),
+        similar to behaviors in some other window managers. It will try to tile
+        windows so that they do not overlap. Set this option to "smart" for this
+        behavior.
+
+        This option can be set to "center" to place new windows in the centers
+        of their workspaces, "origin" for the upper-left corners of the
+        workspaces, or "random" to place new windows at random locations within
+        their workspaces.
+      </_description>
+	</key>
   </schema>
 
 </schemalist>
