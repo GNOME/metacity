@@ -16,82 +16,84 @@ msgstr ""
 "Project-Id-Version: metacity master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-01-12 16:13+0000\n"
-"PO-Revision-Date: 2012-03-21 00:57+0800\n"
-"Last-Translator: YunQiang Su <wzssyqa@gmail.com>\n"
+"POT-Creation-Date: 2013-12-19 15:23+0000\n"
+"PO-Revision-Date: 2014-01-12 19:50+0800\n"
+"Last-Translator: Wylmer Wang <wantinghard@gmail.com>\n"
 "Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bits\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../src/50-metacity-navigation.xml.in.h:1
-msgid "Hide all normal windows"
-msgstr "隐藏所有正常窗口"
-
-#: ../src/50-metacity-navigation.xml.in.h:2
-msgid "Move to workspace above"
-msgstr "移动到上层工作区"
-
-#: ../src/50-metacity-navigation.xml.in.h:3
-msgid "Move to workspace below"
-msgstr "移动到下层工作区"
-
-#: ../src/50-metacity-navigation.xml.in.h:4
-msgid "Move to workspace left"
-msgstr "移动到左侧工作区"
-
-#: ../src/50-metacity-navigation.xml.in.h:5
-msgid "Move to workspace right"
-msgstr "移动到右侧工作区"
-
-#: ../src/50-metacity-navigation.xml.in.h:6
-msgid "Move window one workspace down"
-msgstr "将窗口下移一个工作区"
-
-#: ../src/50-metacity-navigation.xml.in.h:7
-msgid "Move window one workspace to the left"
-msgstr "将窗口左移一个工作区"
-
-#: ../src/50-metacity-navigation.xml.in.h:8
-msgid "Move window one workspace to the right"
-msgstr "将窗口右移一个工作区"
-
-#: ../src/50-metacity-navigation.xml.in.h:9
-msgid "Move window one workspace up"
-msgstr "将窗口上移一个工作区"
-
-#: ../src/50-metacity-navigation.xml.in.h:10
-msgid "Move window to workspace 1"
-msgstr "将窗口移到工作区 1"
-
-#: ../src/50-metacity-navigation.xml.in.h:11
-msgid "Move window to workspace 2"
-msgstr "将窗口移到工作区 2"
-
-#: ../src/50-metacity-navigation.xml.in.h:12
-msgid "Move window to workspace 3"
-msgstr "将窗口移到工作区 3"
-
-#: ../src/50-metacity-navigation.xml.in.h:13
-msgid "Move window to workspace 4"
-msgstr "将窗口移到工作区 4"
-
-#: ../src/50-metacity-navigation.xml.in.h:14
 msgid "Navigation"
 msgstr "导航"
 
-#: ../src/50-metacity-navigation.xml.in.h:15
+#: ../src/50-metacity-navigation.xml.in.h:2
+msgid "Move window to workspace 1"
+msgstr "将窗口移到工作区 1"
+
+#: ../src/50-metacity-navigation.xml.in.h:3
+msgid "Move window to workspace 2"
+msgstr "将窗口移到工作区 2"
+
+#: ../src/50-metacity-navigation.xml.in.h:4
+msgid "Move window to workspace 3"
+msgstr "将窗口移到工作区 3"
+
+#: ../src/50-metacity-navigation.xml.in.h:5
+msgid "Move window to workspace 4"
+msgstr "将窗口移到工作区 4"
+
+#: ../src/50-metacity-navigation.xml.in.h:6
+msgid "Move window one workspace to the left"
+msgstr "将窗口左移一个工作区"
+
+#: ../src/50-metacity-navigation.xml.in.h:7
+msgid "Move window one workspace to the right"
+msgstr "将窗口右移一个工作区"
+
+#: ../src/50-metacity-navigation.xml.in.h:8
+msgid "Move window one workspace up"
+msgstr "将窗口上移一个工作区"
+
+#: ../src/50-metacity-navigation.xml.in.h:9
+msgid "Move window one workspace down"
+msgstr "将窗口下移一个工作区"
+
+#: ../src/50-metacity-navigation.xml.in.h:10
+#| msgid "Switch windows directly"
+msgid "Switch windows"
+msgstr "切换窗口"
+
+#: ../src/50-metacity-navigation.xml.in.h:11
 msgid "Switch applications"
 msgstr "切换应用程序"
 
-#: ../src/50-metacity-navigation.xml.in.h:16
+#: ../src/50-metacity-navigation.xml.in.h:12
+msgid "Switch windows of an application"
+msgstr "在应用程序的窗口之间切换窗口"
+
+#: ../src/50-metacity-navigation.xml.in.h:13
 msgid "Switch system controls"
 msgstr "切换系统控制"
 
-#: ../src/50-metacity-navigation.xml.in.h:17
+#: ../src/50-metacity-navigation.xml.in.h:14
+msgid "Switch windows directly"
+msgstr "直接切换窗口"
+
+#: ../src/50-metacity-navigation.xml.in.h:15
+msgid "Switch windows of an app directly"
+msgstr "在应用程序窗口间直接移动焦点"
+
+#: ../src/50-metacity-navigation.xml.in.h:16
 msgid "Switch system controls directly"
 msgstr "直接切换系统控制"
+
+#: ../src/50-metacity-navigation.xml.in.h:17
+msgid "Hide all normal windows"
+msgstr "隐藏所有正常窗口"
 
 #: ../src/50-metacity-navigation.xml.in.h:18
 msgid "Switch to workspace 1"
@@ -110,96 +112,100 @@ msgid "Switch to workspace 4"
 msgstr "切换到工作区 4"
 
 #: ../src/50-metacity-navigation.xml.in.h:22
-msgid "Switch windows directly"
-msgstr "直接切换窗口"
+msgid "Move to workspace left"
+msgstr "移动到左侧工作区"
 
 #: ../src/50-metacity-navigation.xml.in.h:23
-msgid "Switch windows of an app directly"
-msgstr "在应用程序窗口间直接移动焦点"
+msgid "Move to workspace right"
+msgstr "移动到右侧工作区"
 
 #: ../src/50-metacity-navigation.xml.in.h:24
-msgid "Switch windows of an application"
-msgstr "在应用程序的窗口之间切换窗口"
+msgid "Move to workspace above"
+msgstr "移动到上层工作区"
+
+#: ../src/50-metacity-navigation.xml.in.h:25
+msgid "Move to workspace below"
+msgstr "移动到下层工作区"
 
 #: ../src/50-metacity-system.xml.in.h:1
-msgid "Show the activities overview"
-msgstr "显示活动大纲"
+msgid "System"
+msgstr "系统"
 
 #: ../src/50-metacity-system.xml.in.h:2
 msgid "Show the run command prompt"
 msgstr "显示运行命令提示符"
 
 #: ../src/50-metacity-system.xml.in.h:3
-msgid "System"
-msgstr "系统"
+msgid "Show the activities overview"
+msgstr "显示活动大纲"
 
 #: ../src/50-metacity-windows.xml.in.h:1
+msgid "Windows"
+msgstr "窗口"
+
+#: ../src/50-metacity-windows.xml.in.h:2
 msgid "Activate the window menu"
 msgstr "激活窗口菜单"
 
-#: ../src/50-metacity-windows.xml.in.h:2
-msgid "Close window"
-msgstr "关闭窗口"
-
 #: ../src/50-metacity-windows.xml.in.h:3
-msgid "Lower window below other windows"
-msgstr "将窗口降低到其它窗口之下"
+msgid "Toggle fullscreen mode"
+msgstr "切换全屏模式"
 
 #: ../src/50-metacity-windows.xml.in.h:4
+msgid "Toggle maximization state"
+msgstr "切换最大化状态"
+
+#: ../src/50-metacity-windows.xml.in.h:5
 msgid "Maximize window"
 msgstr "最大化窗口"
 
-#: ../src/50-metacity-windows.xml.in.h:5
-msgid "Maximize window horizontally"
-msgstr "水平最大化窗口"
-
 #: ../src/50-metacity-windows.xml.in.h:6
-msgid "Maximize window vertically"
-msgstr "垂直最大化窗口"
+msgid "Restore window"
+msgstr "恢复窗口"
 
 #: ../src/50-metacity-windows.xml.in.h:7
+msgid "Toggle shaded state"
+msgstr "切换卷起状态"
+
+#: ../src/50-metacity-windows.xml.in.h:8
+msgid "Close window"
+msgstr "关闭窗口"
+
+#: ../src/50-metacity-windows.xml.in.h:9
 msgid "Minimize window"
 msgstr "最小化窗口"
 
-#: ../src/50-metacity-windows.xml.in.h:8
+#: ../src/50-metacity-windows.xml.in.h:10
 msgid "Move window"
 msgstr "移动窗口"
-
-#: ../src/50-metacity-windows.xml.in.h:9
-msgid "Raise window above other windows"
-msgstr "将窗口提升到其它窗口之上"
-
-#: ../src/50-metacity-windows.xml.in.h:10
-msgid "Raise window if covered, otherwise lower it"
-msgstr "如果窗口被其他窗口遮盖，则提升它，否则降低它"
 
 #: ../src/50-metacity-windows.xml.in.h:11
 msgid "Resize window"
 msgstr "改变窗口大小"
 
 #: ../src/50-metacity-windows.xml.in.h:12
-msgid "Restore window"
-msgstr "恢复窗口"
-
-#: ../src/50-metacity-windows.xml.in.h:13
-msgid "Toggle fullscreen mode"
-msgstr "切换全屏模式"
-
-#: ../src/50-metacity-windows.xml.in.h:14
-msgid "Toggle maximization state"
-msgstr "切换最大化状态"
-
-#: ../src/50-metacity-windows.xml.in.h:15
-msgid "Toggle shaded state"
-msgstr "切换卷起状态"
-
-#: ../src/50-metacity-windows.xml.in.h:16
 msgid "Toggle window on all workspaces or one"
 msgstr "在位于所有或仅一个工作区的窗口间切换"
 
+#: ../src/50-metacity-windows.xml.in.h:13
+msgid "Raise window if covered, otherwise lower it"
+msgstr "如果窗口被其他窗口遮盖，则提升它，否则降低它"
+
+#: ../src/50-metacity-windows.xml.in.h:14
+msgid "Raise window above other windows"
+msgstr "将窗口提升到其它窗口之上"
+
+#: ../src/50-metacity-windows.xml.in.h:15
+msgid "Lower window below other windows"
+msgstr "将窗口降低到其它窗口之下"
+
+#: ../src/50-metacity-windows.xml.in.h:16
+msgid "Maximize window vertically"
+msgstr "垂直最大化窗口"
+
 #: ../src/50-metacity-windows.xml.in.h:17
-msgid "Windows"
-msgstr "窗口"
+msgid "Maximize window horizontally"
+msgstr "水平最大化窗口"
 
 #: ../src/core/bell.c:296
 msgid "Bell event"
@@ -235,12 +241,12 @@ msgstr "强制退出(_F)"
 msgid "Failed to get hostname: %s\n"
 msgstr "无法获取主机名：%s\n"
 
-#: ../src/core/display.c:258
+#: ../src/core/display.c:263
 #, c-format
 msgid "Missing %s extension required for compositing"
 msgstr "缺少复合效果所需的 %s 扩展"
 
-#: ../src/core/display.c:336
+#: ../src/core/display.c:341
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
 msgstr "无法打开 X Window System 显示“%s”\n"
@@ -347,7 +353,6 @@ msgstr "有缺陷的应用程序的工作区已禁用。某些应用程序可能
 
 #: ../src/core/prefs.c:949
 #, c-format
-#| msgid "Could not parse font description \"%s\" from GConf key %s\n"
 msgid "Could not parse font description \"%s\" from GSettings key %s\n"
 msgstr "无法解析字体说明“%s”(来自 GSettings 键 %s)\n"
 
@@ -370,12 +375,12 @@ msgstr "在配置数据库中找到的“%s”不是按键组合“%s”的有�
 msgid "Workspace %d"
 msgstr "工作区 %d"
 
-#: ../src/core/screen.c:357
+#: ../src/core/screen.c:364
 #, c-format
 msgid "Screen %d on display '%s' is invalid\n"
 msgstr "显示“%2$s”上的屏幕 %1$d 无效\n"
 
-#: ../src/core/screen.c:373
+#: ../src/core/screen.c:380
 #, c-format
 msgid ""
 "Screen %d on display \"%s\" already has a window manager; try using the --"
@@ -384,18 +389,18 @@ msgstr ""
 "显示“%2$s”上的屏幕 %1$d 已经有一个窗口管理器；请尝试使用 --replace 选项替换当"
 "前的窗口管理器。\n"
 
-#: ../src/core/screen.c:400
+#: ../src/core/screen.c:407
 #, c-format
 msgid ""
 "Could not acquire window manager selection on screen %d display \"%s\"\n"
 msgstr "无法获得显示“%2$s”上的屏幕 %1$d 的窗口管理器选定项\n"
 
-#: ../src/core/screen.c:458
+#: ../src/core/screen.c:465
 #, c-format
 msgid "Screen %d on display \"%s\" already has a window manager\n"
 msgstr "在显示 \"%2$s\" 上的 %1$d 屏幕已经有一个窗口管理器\n"
 
-#: ../src/core/screen.c:668
+#: ../src/core/screen.c:675
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "无法释放显示“%2$s”上的屏幕 %1$d\n"
@@ -469,7 +474,7 @@ msgstr "无法对日志文件 %s 进行 fdopen() 操作：%s\n"
 msgid "Opened log file %s\n"
 msgstr "打开的日志文件 %s\n"
 
-#: ../src/core/util.c:136 ../src/tools/metacity-message.c:176
+#: ../src/core/util.c:136 ../src/tools/metacity-message.c:208
 #, c-format
 msgid "Metacity was compiled without support for verbose mode\n"
 msgstr "Metacity 编译的时候没有加入详细模式的支持\n"
@@ -593,6 +598,10 @@ msgid "Determines whether Metacity is a compositing manager."
 msgstr "决定 Metacity 是否是复合管理器。"
 
 #: ../src/org.gnome.metacity.gschema.xml.in.h:3
+msgid "If true, trade off usability for less resource usage"
+msgstr "如果为 true，则以可用性为代价而降低资源占用"
+
+#: ../src/org.gnome.metacity.gschema.xml.in.h:4
 msgid ""
 "If true, metacity will give the user less feedback by using wireframes, "
 "avoiding animations, or other means. This is a significant reduction in "
@@ -604,11 +613,7 @@ msgstr ""
 "其它途径。这对许多用户来说，可用性大打折扣，但是这将允许较早的应用程序和终端"
 "服务器能够顺利运行。此外，如果开启了辅助功能，系统会自动禁用线框特性。"
 
-#: ../src/org.gnome.metacity.gschema.xml.in.h:4
-msgid "If true, trade off usability for less resource usage"
-msgstr "如果为 true，则以可用性为代价而降低资源占用"
-
-#: ../src/tools/metacity-message.c:150
+#: ../src/tools/metacity-message.c:178
 #, c-format
 msgid "Usage: %s\n"
 msgstr "用法：%s\n"
@@ -1459,57 +1464,46 @@ msgid "Theme file %s did not contain a root <metacity_theme> element"
 msgstr "主题文件 %s 不包含根 <metacity_theme> 元素"
 
 #: ../src/ui/theme-viewer.c:99
-#| msgid "/_Windows"
 msgid "_Windows"
 msgstr "窗口(_W)"
 
 #: ../src/ui/theme-viewer.c:100
-#| msgid "Dialog Box"
 msgid "_Dialog"
 msgstr "对话框(_D)"
 
 #: ../src/ui/theme-viewer.c:101
-#| msgid "Modal Dialog Box"
 msgid "_Modal dialog"
 msgstr "模态对话框(_M)"
 
 #: ../src/ui/theme-viewer.c:102
-#| msgid "/Windows/_Utility"
 msgid "_Utility"
 msgstr "工具(_U)"
 
 #: ../src/ui/theme-viewer.c:103
-#| msgid "/Windows/_Splashscreen"
 msgid "_Splashscreen"
 msgstr "启动屏幕(_S)"
 
 #: ../src/ui/theme-viewer.c:104
-#| msgid "/Windows/_Top dock"
 msgid "_Top dock"
 msgstr "上侧停靠(_T)"
 
 #: ../src/ui/theme-viewer.c:105
-#| msgid "/Windows/_Bottom dock"
 msgid "_Bottom dock"
 msgstr "下侧停靠(_B)"
 
 #: ../src/ui/theme-viewer.c:106
-#| msgid "/Windows/_Left dock"
 msgid "_Left dock"
 msgstr "左侧停靠(_L)"
 
 #: ../src/ui/theme-viewer.c:107
-#| msgid "/Windows/_Right dock"
 msgid "_Right dock"
 msgstr "右侧停靠(_R)"
 
 #: ../src/ui/theme-viewer.c:108
-#| msgid "/Windows/_All docks"
 msgid "_All docks"
 msgstr "全部停靠(_A)"
 
 #: ../src/ui/theme-viewer.c:109
-#| msgid "Desktop"
 msgid "Des_ktop"
 msgstr "桌面(_K)"
 
