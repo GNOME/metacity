@@ -438,7 +438,7 @@ setup_constraint_info (ConstraintInfo      *info,
    * workarea smaller than the monitor.
    */
   if (meta_prefs_get_force_fullscreen() &&
-      window->decorated &&
+      (window->decorated || !meta_window_is_client_decorated (window)) &&
       meta_rectangle_equal (new, &xinerama_info->rect) &&
       window->has_fullscreen_func &&
       !window->fullscreen)
