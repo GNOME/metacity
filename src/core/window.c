@@ -1983,8 +1983,8 @@ intervening_user_event_occurred (MetaWindow *window)
  * behavior is worthwhile.  The basic idea is to get more feedback about how
  * usage scenarios of "strict" focus users and what they expect.  See #326159.
  */
-gboolean
-__window_is_terminal (MetaWindow *window)
+static gboolean
+window_is_terminal (MetaWindow *window)
 {
   if (window == NULL || window->res_class == NULL)
     return FALSE;
@@ -2060,7 +2060,7 @@ window_state_on_map (MetaWindow *window,
   if (*takes_focus &&
       meta_prefs_get_focus_new_windows () == G_DESKTOP_FOCUS_NEW_WINDOWS_STRICT &&
       !window->display->allow_terminal_deactivation &&
-      __window_is_terminal (window->display->focus_window) &&
+      window_is_terminal (window->display->focus_window) &&
       !meta_window_is_ancestor_of_transient (window->display->focus_window,
                                              window))
     {
@@ -8704,9 +8704,8 @@ meta_window_set_user_time (MetaWindow *window,
       /* If this is a terminal, user interaction with it means the user likely
        * doesn't want to have focus transferred for now due to new windows.
        */
-      if (meta_prefs_get_focus_new_windows () ==
-               G_DESKTOP_FOCUS_NEW_WINDOWS_STRICT &&
-          __window_is_terminal (window))
+      if (meta_prefs_get_focus_new_windows () == G_DESKTOP_FOCUS_NEW_WINDOWS_STRICT &&
+          window_is_terminal (window))
         window->display->allow_terminal_deactivation = FALSE;
     }
 }
