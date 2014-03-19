@@ -612,9 +612,6 @@ void meta_window_show_menu (MetaWindow         *window,
 gboolean meta_window_titlebar_is_onscreen    (MetaWindow *window);
 void     meta_window_shove_titlebar_onscreen (MetaWindow *window);
 
-void meta_window_set_gravity (MetaWindow *window,
-                              int         gravity);
-
 void meta_window_update_sync_request_counter (MetaWindow *window,
                                               guint64     new_counter_value);
 

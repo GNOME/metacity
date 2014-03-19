@@ -3387,12 +3387,6 @@ adjust_for_gravity (MetaWindow        *window,
     }
 }
 
-static gboolean
-static_gravity_works (MetaDisplay *display)
-{
-  return display->static_gravity_works;
-}
-
 void
 meta_window_create_sync_request_alarm (MetaWindow *window)
 {
@@ -3596,7 +3590,6 @@ meta_window_move_resize_internal (MetaWindow          *window,
   gboolean do_gravity_adjust;
   gboolean is_user_action;
   gboolean configure_frame_first;
-  gboolean use_static_gravity;
   /* used for the configure request, but may not be final
    * destination due to StaticGravity etc.
    */
@@ -3764,50 +3757,11 @@ meta_window_move_resize_internal (MetaWindow          *window,
 
       new_x = borders.total.left;
       new_y = borders.total.top;
+      client_move_x = new_x;
+      client_move_y = new_y;
 
-      if (need_resize_frame && need_move_frame &&
-          static_gravity_works (window->display))
-        {
-          /* static gravity kicks in because frame
-           * is both moved and resized
-           */
-          /* when we move the frame by frame_pos_dx, frame_pos_dy the
-           * client will implicitly move relative to frame by the
-           * inverse delta.
-           *
-           * When moving client then frame, we move the client by the
-           * frame delta, to be canceled out by the implicit move by
-           * the inverse frame delta, resulting in a client at new_x,
-           * new_y.
-           *
-           * When moving frame then client, we move the client
-           * by the same delta as the frame, because the client
-           * was "left behind" by the frame - resulting in a client
-           * at new_x, new_y.
-           *
-           * In both cases we need to move the client window
-           * in all cases where we had to move the frame window.
-           */
-
-          client_move_x = new_x + frame_pos_dx;
-          client_move_y = new_y + frame_pos_dy;
-
-          if (need_move_frame)
-            need_move_client = TRUE;
-
-          use_static_gravity = TRUE;
-        }
-      else
-        {
-          client_move_x = new_x;
-          client_move_y = new_y;
-
-          if (client_move_x != window->rect.x ||
-              client_move_y != window->rect.y)
-            need_move_client = TRUE;
-
-          use_static_gravity = FALSE;
-        }
+      if (client_move_x != window->rect.x || client_move_y != window->rect.y)
+        need_move_client = TRUE;
 
       /* This is the final target position, but not necessarily what
        * we pass to XConfigureWindow, due to StaticGravity implicit
@@ -3827,8 +3781,6 @@ meta_window_move_resize_internal (MetaWindow          *window,
 
       client_move_x = window->rect.x;
       client_move_y = window->rect.y;
-
-      use_static_gravity = FALSE;
     }
 
   /* If frame extents have changed, fill in other frame fields and
@@ -3890,9 +3842,6 @@ meta_window_move_resize_internal (MetaWindow          *window,
 
   configure_frame_first = (size_dx + size_dy >= 0);
 
-  if (use_static_gravity)
-    meta_window_set_gravity (window, StaticGravity);
-
   if (configure_frame_first && window->frame)
     frame_shape_changed = meta_frame_sync_to_window (window->frame,
                                                      gravity,
@@ -3953,10 +3902,6 @@ meta_window_move_resize_internal (MetaWindow          *window,
                                                      gravity,
                                                      need_move_frame,
                                                      need_resize_frame);
-
-  /* Put gravity back to be nice to lesser window managers */
-  if (use_static_gravity)
-    meta_window_set_gravity (window, NorthWestGravity);
 
   if (need_configure_notify)
     send_configure_notify (window);
@@ -8169,26 +8114,6 @@ meta_window_handle_mouse_grab_op_event (MetaWindow *window,
     default:
       break;
     }
-}
-
-void
-meta_window_set_gravity (MetaWindow *window,
-                         int         gravity)
-{
-  XSetWindowAttributes attrs;
-
-  meta_verbose ("Setting gravity of %s to %d\n", window->desc, gravity);
-
-  attrs.win_gravity = gravity;
-
-  meta_error_trap_push (window->display);
-
-  XChangeWindowAttributes (window->display->xdisplay,
-                           window->xwindow,
-                           CWWinGravity,
-                           &attrs);
-
-  meta_error_trap_pop (window->display);
 }
 
 static void

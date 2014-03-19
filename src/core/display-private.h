@@ -128,8 +128,6 @@ struct _MetaDisplay
    */
   guint allow_terminal_deactivation : 1;
 
-  guint static_gravity_works : 1;
-
   /*< private-ish >*/
   guint error_trap_synced_at_last_pop : 1;
   MetaEventQueue *events;
