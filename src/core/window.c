@@ -430,7 +430,6 @@ meta_window_new_with_attrs (MetaDisplay       *display,
   window->colormap = attrs->colormap;
 
   window->title = NULL;
-  window->icon_name = NULL;
   window->icon = NULL;
   window->mini_icon = NULL;
   meta_icon_cache_init (&window->icon_cache);
@@ -540,10 +539,8 @@ meta_window_new_with_attrs (MetaDisplay       *display,
 
   window->struts = NULL;
 
-  window->using_net_wm_name              = FALSE;
-  window->using_net_wm_visible_name      = FALSE;
-  window->using_net_wm_icon_name         = FALSE;
-  window->using_net_wm_visible_icon_name = FALSE;
+  window->using_net_wm_name = FALSE;
+  window->using_net_wm_visible_name = FALSE;
 
   window->need_reread_icon = TRUE;
 
@@ -553,7 +550,6 @@ meta_window_new_with_attrs (MetaDisplay       *display,
   window->initial_timestamp = 0; /* not used */
 
   meta_display_register_x_window (display, &window->xwindow, window);
-
 
   /* assign the window to its group, or create a new group if needed
    */
@@ -1164,7 +1160,6 @@ meta_window_free (MetaWindow  *window,
   g_free (window->res_class);
   g_free (window->res_name);
   g_free (window->title);
-  g_free (window->icon_name);
   g_free (window->desc);
   g_free (window->gtk_theme_variant);
   g_free (window);
