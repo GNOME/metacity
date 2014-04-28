@@ -3258,6 +3258,18 @@ meta_display_set_grab_op_cursor (MetaDisplay *display,
     XFreeCursor (display->xdisplay, cursor);
 }
 
+static MetaWindow *
+get_toplevel_transient_for (MetaWindow *window)
+{
+  while (TRUE)
+    {
+      MetaWindow *parent = meta_window_get_transient_for (window);
+      if (parent == NULL)
+        return window;
+      window = parent;
+    }
+}
+
 gboolean
 meta_display_begin_grab_op (MetaDisplay *display,
                             MetaScreen  *screen,
@@ -3308,15 +3320,13 @@ meta_display_begin_grab_op (MetaDisplay *display,
         }
     }
 
+  grab_window = window;
+
   /* If window is a modal dialog attached to its parent,
    * grab the parent instead for moving.
    */
-  if (window && meta_window_is_attached_dialog (window) &&
-      meta_grab_op_is_moving (op))
-    grab_window = meta_window_get_transient_for (window);
-
-  if (grab_window == NULL)
-    grab_window = window;
+  if (meta_grab_op_is_moving (op))
+    grab_window = get_toplevel_transient_for (window);
 
   /* FIXME:
    *   If we have no MetaWindow we do our best
