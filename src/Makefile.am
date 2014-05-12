@@ -91,6 +91,8 @@ metacity_SOURCES= 				\
 	include/resizepopup.h			\
 	ui/tabpopup.c				\
 	include/tabpopup.h				\
+	ui/tile-preview.c \
+	include/tile-preview.h \
 	ui/theme-parser.c			\
 	ui/theme-parser.h			\
 	ui/theme.c				\

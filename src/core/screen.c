@@ -587,7 +587,10 @@ meta_screen_new (MetaDisplay *display,
                             screen->xscreen);
 
   screen->tab_popup = NULL;
-  
+  screen->tile_preview = NULL;
+
+  screen->tile_preview_timeout_id = 0;
+
   screen->stack = meta_stack_new (screen);
 
   meta_prefs_add_listener (prefs_changed_callback, screen);
@@ -696,7 +699,13 @@ meta_screen_free (MetaScreen *screen,
   
   if (screen->xinerama_infos)
     g_free (screen->xinerama_infos);
-  
+
+  if (screen->tile_preview_timeout_id)
+    g_source_remove (screen->tile_preview_timeout_id);
+
+  if (screen->tile_preview)
+    meta_tile_preview_free (screen->tile_preview);
+
   g_free (screen->screen_name);
   g_free (screen);
 
@@ -1387,6 +1396,89 @@ meta_screen_ensure_workspace_popup (MetaScreen *screen)
   meta_screen_free_workspace_layout (&layout);
 
   /* don't show tab popup, since proper space isn't selected yet */
+}
+
+static gboolean
+meta_screen_tile_preview_update_timeout (gpointer data)
+{
+  MetaScreen *screen = data;
+  MetaWindow *window = screen->display->grab_window;
+  gboolean composited = screen->display->compositor != NULL;
+  gboolean needs_preview = FALSE;
+
+  screen->tile_preview_timeout_id = 0;
+
+  if (!screen->tile_preview)
+    screen->tile_preview = meta_tile_preview_new (screen->number,
+                                                  composited);
+
+  if (window)
+    {
+      switch (window->tile_mode)
+        {
+          case META_TILE_LEFT:
+          case META_TILE_RIGHT:
+              if (!META_WINDOW_TILED_SIDE_BY_SIDE (window))
+                needs_preview = TRUE;
+              break;
+
+          case META_TILE_MAXIMIZED:
+              if (!META_WINDOW_MAXIMIZED (window))
+                needs_preview = TRUE;
+              break;
+
+          default:
+              needs_preview = FALSE;
+              break;
+        }
+    }
+
+  if (needs_preview)
+    {
+      MetaRectangle tile_rect;
+
+      meta_window_get_current_tile_area (window, &tile_rect);
+      meta_tile_preview_show (screen->tile_preview, &tile_rect);
+    }
+  else
+    meta_tile_preview_hide (screen->tile_preview);
+
+  return FALSE;
+}
+
+#define TILE_PREVIEW_TIMEOUT_MS 200
+
+void
+meta_screen_tile_preview_update (MetaScreen *screen,
+                                 gboolean delay)
+{
+  if (delay)
+    {
+      if (screen->tile_preview_timeout_id > 0)
+        return;
+
+      screen->tile_preview_timeout_id =
+        g_timeout_add (TILE_PREVIEW_TIMEOUT_MS,
+                       meta_screen_tile_preview_update_timeout,
+                       screen);
+    }
+  else
+    {
+      if (screen->tile_preview_timeout_id > 0)
+        g_source_remove (screen->tile_preview_timeout_id);
+
+      meta_screen_tile_preview_update_timeout ((gpointer)screen);
+    }
+}
+
+void
+meta_screen_tile_preview_hide (MetaScreen *screen)
+{
+  if (screen->tile_preview_timeout_id > 0)
+    g_source_remove (screen->tile_preview_timeout_id);
+
+  if (screen->tile_preview)
+    meta_tile_preview_hide (screen->tile_preview);
 }
 
 MetaWindow*

@@ -70,6 +70,13 @@ typedef void (* MetaWindowPingFunc) (MetaDisplay *display,
  */
 #define N_IGNORED_SERIALS           4
 
+typedef enum {
+  META_TILE_NONE,
+  META_TILE_LEFT,
+  META_TILE_RIGHT,
+  META_TILE_MAXIMIZED /* only used for previews */
+} MetaTileMode;
+
 struct _MetaDisplay
 {
   char *name;
@@ -160,6 +167,8 @@ struct _MetaDisplay
   int         grab_anchor_root_x;
   int         grab_anchor_root_y;
   MetaRectangle grab_anchor_window_pos;
+  MetaTileMode  grab_tile_mode;
+  int           grab_tile_monitor_number;
   int         grab_latest_motion_x;
   int         grab_latest_motion_y;
   gulong      grab_mask;
@@ -170,6 +179,9 @@ struct _MetaDisplay
   guint       grab_frame_action : 1;
   MetaRectangle grab_wireframe_rect;
   MetaRectangle grab_wireframe_last_xor_rect;
+  /* During a resize operation, the directions in which we've broken
+   * out of the initial maximization state */
+  guint       grab_resize_unmaximize : 2; /* MetaMaximizeFlags */
   MetaRectangle grab_initial_window_pos;
   int         grab_initial_x, grab_initial_y;  /* These are only relevant for */
   gboolean    grab_threshold_movement_reached; /* raise_on_click == FALSE.    */

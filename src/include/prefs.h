@@ -58,6 +58,7 @@ typedef enum
   META_PREF_CURSOR_SIZE,
   META_PREF_COMPOSITING_MANAGER,
   META_PREF_RESIZE_WITH_RIGHT_BUTTON,
+  META_PREF_EDGE_TILING,
   META_PREF_FORCE_FULLSCREEN,
   META_PREF_PLACEMENT_MODE
 } MetaPreference;
@@ -99,6 +100,7 @@ int                         meta_prefs_get_auto_raise_delay   (void);
 gboolean                    meta_prefs_get_reduced_resources  (void);
 gboolean                    meta_prefs_get_gnome_accessibility (void);
 gboolean                    meta_prefs_get_gnome_animations   (void);
+gboolean                    meta_prefs_get_edge_tiling        (void);
 
 const char*                 meta_prefs_get_screenshot_command (void);
 

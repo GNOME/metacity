@@ -88,6 +88,7 @@ static char *cursor_theme = NULL;
 static int   cursor_size = 24;
 static gboolean compositing_manager = FALSE;
 static gboolean resize_with_right_button = FALSE;
+static gboolean edge_tiling = FALSE;
 static gboolean force_fullscreen = TRUE;
 
 static GDesktopVisualBellType visual_bell_type = G_DESKTOP_VISUAL_BELL_FULLSCREEN_FLASH;
@@ -351,6 +352,14 @@ static MetaBoolPreference preferences_bool[] =
         META_PREF_RESIZE_WITH_RIGHT_BUTTON,
       },
       &resize_with_right_button,
+      FALSE,
+    },
+    {
+      { "edge-tiling",
+        SCHEMA_METACITY,
+        META_PREF_EDGE_TILING,
+      },
+      &edge_tiling,
       FALSE,
     },
     { { NULL, 0, 0 }, NULL, FALSE },
@@ -1416,6 +1425,9 @@ meta_preference_to_string (MetaPreference pref)
     case META_PREF_RESIZE_WITH_RIGHT_BUTTON:
       return "RESIZE_WITH_RIGHT_BUTTON";
 
+    case META_PREF_EDGE_TILING:
+      return "EDGE_TILING";
+
     case META_PREF_FORCE_FULLSCREEN:
       return "FORCE_FULLSCREEN";
 
@@ -1744,6 +1756,12 @@ gboolean
 meta_prefs_get_gnome_animations ()
 {
   return gnome_animations;
+}
+
+gboolean
+meta_prefs_get_edge_tiling ()
+{
+  return edge_tiling;
 }
 
 MetaKeyBindingAction
