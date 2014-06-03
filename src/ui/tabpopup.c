@@ -70,15 +70,12 @@ static void       select_workspace         (GtkWidget *widget);
 static void       unselect_workspace       (GtkWidget *widget);
 
 static gboolean
-outline_window_expose (GtkWidget      *widget,
-                       GdkEventExpose *event,
-                       gpointer        data)
+outline_window_draw (GtkWidget *widget,
+                     cairo_t   *cr,
+                     gpointer   data)
 {
   MetaTabPopup *popup;
   TabEntry *te;  
-  GtkStyle *style;
-  GdkWindow *window;
-  cairo_t *cr;
   
   popup = data;
 
@@ -86,12 +83,9 @@ outline_window_expose (GtkWidget      *widget,
     return FALSE;
 
   te = popup->current_selected_entry;
-  window = gtk_widget_get_window (widget);
-  style = gtk_widget_get_style (widget);
-  cr = gdk_cairo_create (window);
   
   cairo_set_line_width (cr, 1.0);
-  gdk_cairo_set_source_color (cr, &style->white);
+  cairo_set_source_rgb (cr, 1.0, 1.0, 1.0);
 
   cairo_rectangle (cr,
                    0.5, 0.5,
@@ -104,8 +98,6 @@ outline_window_expose (GtkWidget      *widget,
                    te->inner_rect.width + 1,
                    te->inner_rect.height + 1);
   cairo_stroke (cr);
-
-  cairo_destroy (cr);
 
   return FALSE;
 }
@@ -247,8 +239,8 @@ meta_ui_tab_popup_new (const MetaTabEntry *entries,
   gtk_widget_set_app_paintable (popup->outline_window, TRUE);
   gtk_widget_realize (popup->outline_window);
 
-  g_signal_connect (G_OBJECT (popup->outline_window), "expose_event",
-                    G_CALLBACK (outline_window_expose), popup);
+  g_signal_connect (G_OBJECT (popup->outline_window), "draw",
+                    G_CALLBACK (outline_window_draw), popup);
   
   popup->window = gtk_window_new (GTK_WINDOW_POPUP);
 
@@ -366,7 +358,7 @@ meta_ui_tab_popup_new (const MetaTabEntry *entries,
           /* Efficiency rules! */
           gtk_label_set_markup (GTK_LABEL (popup->label),
                               te->title);
-          gtk_widget_size_request (popup->label, &req);
+          gtk_widget_get_preferred_size (popup->label, &req, NULL);
           max_label_width = MAX (max_label_width, req.width);
           
           tmp = tmp->next;
@@ -454,8 +446,6 @@ display_entry (MetaTabPopup *popup,
                TabEntry     *te)
 {
   GdkRectangle rect;
-  GdkRegion *region;
-  GdkRegion *inner_region;
   GdkWindow *window;
 
   
@@ -476,6 +466,10 @@ display_entry (MetaTabPopup *popup,
 
   if (popup->outline)
     {
+      cairo_region_t *region;
+      cairo_region_t *inner_region;
+      GdkRGBA black = { 0.0, 0.0, 0.0, 1.0 };
+
       window = gtk_widget_get_window (popup->outline_window);
 
       /* Do stuff behind gtk's back */
@@ -490,19 +484,18 @@ display_entry (MetaTabPopup *popup,
                               te->rect.x, te->rect.y,
                               te->rect.width, te->rect.height);
   
-      gdk_window_set_background (window,
-                                 &gtk_widget_get_style (popup->outline_window)->black);
-  
-      region = gdk_region_rectangle (&rect);
-      inner_region = gdk_region_rectangle (&te->inner_rect);
-      gdk_region_subtract (region, inner_region);
-      gdk_region_destroy (inner_region);
+      gdk_window_set_background_rgba (window, &black);
+
+      region = cairo_region_create_rectangle (&rect);
+      inner_region = cairo_region_create_rectangle (&te->inner_rect);
+      cairo_region_subtract (region, inner_region);
+      cairo_region_destroy (inner_region);
   
       gdk_window_shape_combine_region (window,
                                        region,
                                        0, 0);
 
-      gdk_region_destroy (region);
+      cairo_region_destroy (region);
   
       /* This should piss off gtk a bit, but we don't want to raise
        * above the tab popup.  So, instead of calling gtk_widget_show,
@@ -646,8 +639,8 @@ unselect_image (GtkWidget *widget)
 }
 
 static void     meta_select_image_class_init   (MetaSelectImageClass *klass);
-static gboolean meta_select_image_expose_event (GtkWidget            *widget,
-                                                GdkEventExpose       *event);
+static gboolean meta_select_image_draw         (GtkWidget            *widget,
+                                                cairo_t              *cr);
 
 static GtkImageClass *parent_class;
 
@@ -686,74 +679,59 @@ meta_select_image_class_init (MetaSelectImageClass *klass)
 
   widget_class = GTK_WIDGET_CLASS (klass);
   
-  widget_class->expose_event = meta_select_image_expose_event;
+  widget_class->draw= meta_select_image_draw;
 }
 
 static gboolean
-meta_select_image_expose_event (GtkWidget      *widget,
-                                GdkEventExpose *event)
+meta_select_image_draw (GtkWidget *widget,
+                        cairo_t   *cr)
 {
+  GtkAllocation allocation;
+
+  gtk_widget_get_allocation (widget, &allocation);
+
   if (META_SELECT_IMAGE (widget)->selected)
     {
-      GtkAllocation allocation;
-      GtkRequisition requisition;
       GtkMisc *misc;
-      GtkStyle *style;
-      GtkStateType state;
-      GdkWindow *window;
+      GtkRequisition requisition;
+      GtkStyleContext *context;
+      GdkRGBA color;
       int x, y, w, h;
-      int xpad, ypad;
-      float xalign, yalign;
-      cairo_t *cr;
+      gint xpad, ypad;
+      gfloat xalign, yalign;
 
       misc = GTK_MISC (widget);
       
-      gtk_widget_get_allocation (widget, &allocation);
-      gtk_widget_get_requisition (widget, &requisition);
-      gtk_misc_get_padding (misc, &xpad, &ypad);
+      gtk_widget_get_preferred_size (widget, &requisition, 0);
       gtk_misc_get_alignment (misc, &xalign, &yalign);
+      gtk_misc_get_padding (misc, &xpad, &ypad);
 
-      x = (allocation.x * (1.0 - xalign) +
-           (allocation.x + allocation.width
-            - (requisition.width - xpad * 2)) * xalign) + 0.5;
-      y = (allocation.y * (1.0 - yalign) +
-           (allocation.y + allocation.height
-            - (requisition.height - ypad * 2)) * yalign) + 0.5;
+      x = (allocation.width - (requisition.width - xpad * 2)) * xalign + 0.5;
+      y = (allocation.height - (requisition.height - ypad * 2)) * yalign + 0.5;
 
       x -= INSIDE_SELECT_RECT + 1;
-      y -= INSIDE_SELECT_RECT + 1;      
+      y -= INSIDE_SELECT_RECT + 1;       
       
       w = requisition.width - OUTSIDE_SELECT_RECT * 2 - 1;
       h = requisition.height - OUTSIDE_SELECT_RECT * 2 - 1;
 
-      window = gtk_widget_get_window (widget);
-      style = gtk_widget_get_style (widget);
-      state = gtk_widget_get_state (widget);
-      cr = gdk_cairo_create (window);
+      context = gtk_widget_get_style_context (widget);
+
+      gtk_style_context_set_state (context,
+                                   gtk_widget_get_state_flags (widget));
+
+      gtk_style_context_lookup_color (context, "color", &color);
 
       cairo_set_line_width (cr, 2.0);
-      gdk_cairo_set_source_color (cr, &style->fg[state]);
+      cairo_set_source_rgb (cr, color.red, color.green, color.blue);
 
       cairo_rectangle (cr, x, y, w + 1, h + 1);
       cairo_stroke (cr);
 
       cairo_set_line_width (cr, 1.0);
-#if 0
-      gdk_cairo_set_source_color (cr, &style->bg[GTK_STATE_SELECTED]);
-      cairo_rectangle (cr, x, y, w, h);
-      cairo_fill (cr);
-#endif
-
-#if 0      
-      gtk_paint_focus (widget->style, widget->window,
-                       &event->area, widget, "meta-tab-image",
-                       x, y, w, h);
-#endif
-
-      cairo_destroy (cr);
     }
 
-  return GTK_WIDGET_CLASS (parent_class)->expose_event (widget, event);
+  return GTK_WIDGET_CLASS (parent_class)->draw (widget, cr);
 }
 
 #define META_TYPE_SELECT_WORKSPACE   (meta_select_workspace_get_type ())
@@ -817,8 +795,8 @@ unselect_workspace (GtkWidget *widget)
 
 static void meta_select_workspace_class_init (MetaSelectWorkspaceClass *klass);
 
-static gboolean meta_select_workspace_expose_event (GtkWidget      *widget,
-                                                    GdkEventExpose *event);
+static gboolean meta_select_workspace_draw (GtkWidget *widget,
+                                            cairo_t   *cr);
 
 GType
 meta_select_workspace_get_type (void)
@@ -856,7 +834,7 @@ meta_select_workspace_class_init (MetaSelectWorkspaceClass *klass)
   
   widget_class = GTK_WIDGET_CLASS (klass);
   
-  widget_class->expose_event = meta_select_workspace_expose_event;
+  widget_class->draw = meta_select_workspace_draw;
 }
 
 /**
@@ -894,15 +872,12 @@ meta_convert_meta_to_wnck (MetaWindow *window, MetaScreen *screen)
 
 
 static gboolean
-meta_select_workspace_expose_event (GtkWidget      *widget,
-                                    GdkEventExpose *event)
+meta_select_workspace_draw (GtkWidget *widget,
+                            cairo_t   *cr)
 {
   MetaWorkspace *workspace;
   WnckWindowDisplayInfo *windows;
   GtkAllocation allocation;
-  GtkStyle *style;
-  GdkWindow *window;
-  cairo_t *cr;
   int i, n_windows;
   GList *tmp, *list;
 
@@ -941,11 +916,10 @@ meta_select_workspace_expose_event (GtkWidget      *widget,
 
   g_list_free (list);
 
-  window = gtk_widget_get_window (widget);
   gtk_widget_get_allocation (widget, &allocation);
 
   wnck_draw_workspace (widget,
-                       window,
+                       cr,
                        SELECT_OUTLINE_WIDTH,
                        SELECT_OUTLINE_WIDTH,
                        allocation.width - SELECT_OUTLINE_WIDTH * 2,
@@ -961,20 +935,24 @@ meta_select_workspace_expose_event (GtkWidget      *widget,
   
   if (META_SELECT_WORKSPACE (widget)->selected)
     {
-      style = gtk_widget_get_style (widget);
-      cr = gdk_cairo_create (window);
+      GtkStyleContext *context;
+      GdkRGBA color;
 
-      gdk_cairo_set_source_color (cr,
-                                  &style->fg[gtk_widget_get_state (widget)]);
+      context = gtk_widget_get_style_context (widget);
+
+      gtk_style_context_set_state (context,
+                                   gtk_widget_get_state_flags (widget));
+
+      gtk_style_context_lookup_color (context, "color", &color);
+
       cairo_set_line_width (cr, SELECT_OUTLINE_WIDTH);
+      cairo_set_source_rgb (cr, color.red, color.green, color.blue);
 
       cairo_rectangle (cr,
                        SELECT_OUTLINE_WIDTH / 2.0, SELECT_OUTLINE_WIDTH / 2.0,
                        allocation.width - SELECT_OUTLINE_WIDTH,
                        allocation.height - SELECT_OUTLINE_WIDTH);
       cairo_stroke (cr);
-
-      cairo_destroy (cr);
     }
 
   return TRUE;

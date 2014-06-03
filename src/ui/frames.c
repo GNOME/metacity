@@ -33,20 +33,19 @@
 #include "prefs.h"
 #include "ui.h"
 
+#include <cairo-xlib.h>
+
 #ifdef HAVE_SHAPE
 #include <X11/extensions/shape.h>
 #endif
 
 #define DEFAULT_INNER_BUTTON_BORDER 3
 
-static void meta_frames_class_init (MetaFramesClass *klass);
-static void meta_frames_init       (MetaFrames      *frames);
-static void meta_frames_destroy    (GtkObject       *object);
-static void meta_frames_finalize   (GObject         *object);
-static void meta_frames_style_set  (GtkWidget       *widget,
-                                    GtkStyle        *prev_style);
-static void meta_frames_realize    (GtkWidget       *widget);
-static void meta_frames_unrealize  (GtkWidget       *widget);
+static void meta_frames_destroy       (GtkWidget *widget);
+static void meta_frames_finalize      (GObject   *object);
+static void meta_frames_style_updated (GtkWidget *widget);
+static void meta_frames_map           (GtkWidget *widget);
+static void meta_frames_unmap         (GtkWidget *widget);
 
 static void meta_frames_update_prelit_control (MetaFrames      *frames,
                                                MetaUIFrame     *frame,
@@ -59,8 +58,8 @@ static gboolean meta_frames_motion_notify_event   (GtkWidget           *widget,
                                                    GdkEventMotion      *event);
 static gboolean meta_frames_destroy_event         (GtkWidget           *widget,
                                                    GdkEventAny         *event);
-static gboolean meta_frames_expose_event          (GtkWidget           *widget,
-                                                   GdkEventExpose      *event);
+static gboolean meta_frames_draw                  (GtkWidget           *widget,
+                                                   cairo_t             *cr);
 static gboolean meta_frames_enter_notify_event    (GtkWidget           *widget,
                                                    GdkEventCrossing    *event);
 static gboolean meta_frames_leave_notify_event    (GtkWidget           *widget,
@@ -69,12 +68,9 @@ static gboolean meta_frames_leave_notify_event    (GtkWidget           *widget,
 static void meta_frames_attach_style (MetaFrames  *frames,
                                       MetaUIFrame *frame);
 
-static void meta_frames_paint_to_drawable (MetaFrames   *frames,
-                                           MetaUIFrame  *frame,
-                                           GdkDrawable  *drawable,
-                                           GdkRegion    *region,
-                                           int           x_offset,
-                                           int           y_offset);
+static void meta_frames_paint (MetaFrames  *frames,
+                               MetaUIFrame *frame,
+                               cairo_t     *cr);
 
 static void meta_frames_set_window_background (MetaFrames   *frames,
                                                MetaUIFrame  *frame);
@@ -104,8 +100,6 @@ static void invalidate_all_caches (MetaFrames *frames);
 static void invalidate_whole_window (MetaFrames *frames,
                                      MetaUIFrame *frame);
 
-static GtkWidgetClass *parent_class = NULL;
-
 G_DEFINE_TYPE (MetaFrames, meta_frames, GTK_TYPE_WINDOW);
 
 
@@ -117,7 +111,7 @@ meta_frames_constructor (GType                  gtype,
   GObject *object;
   GObjectClass *gobject_class;
 
-  gobject_class = G_OBJECT_CLASS (parent_class);
+  gobject_class = G_OBJECT_CLASS (meta_frames_parent_class);
   object = gobject_class->constructor (gtype, n_properties, properties);
 
   g_object_set (object,
@@ -131,25 +125,21 @@ static void
 meta_frames_class_init (MetaFramesClass *class)
 {
   GObjectClass   *gobject_class;
-  GtkObjectClass *object_class;
   GtkWidgetClass *widget_class;
 
   gobject_class = G_OBJECT_CLASS (class);
-  object_class = (GtkObjectClass*) class;
   widget_class = (GtkWidgetClass*) class;
-
-  parent_class = g_type_class_peek_parent (class);
 
   gobject_class->constructor = meta_frames_constructor;
   gobject_class->finalize = meta_frames_finalize;
-  object_class->destroy = meta_frames_destroy;
 
-  widget_class->style_set = meta_frames_style_set;
+  widget_class->destroy = meta_frames_destroy;
+  widget_class->style_updated = meta_frames_style_updated;
 
-  widget_class->realize = meta_frames_realize;
-  widget_class->unrealize = meta_frames_unrealize;
-  
-  widget_class->expose_event = meta_frames_expose_event;
+  widget_class->map = meta_frames_map;
+  widget_class->unmap = meta_frames_unmap;
+
+  widget_class->draw = meta_frames_draw;
   widget_class->destroy_event = meta_frames_destroy_event;  
   widget_class->button_press_event = meta_frames_button_press_event;
   widget_class->button_release_event = meta_frames_button_release_event;
@@ -225,13 +215,13 @@ listify_func (gpointer key, gpointer value, gpointer data)
 }
 
 static void
-meta_frames_destroy (GtkObject *object)
+meta_frames_destroy (GtkWidget *widget)
 {
   GSList *winlist;
   GSList *tmp;
   MetaFrames *frames;
   
-  frames = META_FRAMES (object);
+  frames = META_FRAMES (widget);
 
   clear_tip (frames);
   
@@ -249,7 +239,7 @@ meta_frames_destroy (GtkObject *object)
     }
   g_slist_free (winlist);
 
-  GTK_OBJECT_CLASS (parent_class)->destroy (object);
+  GTK_WIDGET_CLASS (meta_frames_parent_class)->destroy (widget);
 }
 
 static void
@@ -271,13 +261,13 @@ meta_frames_finalize (GObject *object)
   g_hash_table_destroy (frames->frames);
   g_hash_table_destroy (frames->cache);
 
-  G_OBJECT_CLASS (parent_class)->finalize (object);
+  G_OBJECT_CLASS (meta_frames_parent_class)->finalize (object);
 }
 
 typedef struct
 {
-  MetaRectangle rect;
-  GdkPixmap *pixmap;
+  cairo_rectangle_int_t rect;
+  cairo_surface_t *pixmap;
 } CachedFramePiece;
 
 typedef struct
@@ -429,8 +419,7 @@ reattach_style_func (gpointer key, gpointer value, gpointer data)
 }
 
 static void
-meta_frames_style_set  (GtkWidget *widget,
-                        GtkStyle  *prev_style)
+meta_frames_style_updated (GtkWidget *widget)
 {
   MetaFrames *frames;
 
@@ -441,7 +430,7 @@ meta_frames_style_set  (GtkWidget *widget,
   g_hash_table_foreach (frames->frames,
                         reattach_style_func, frames);
 
-  GTK_WIDGET_CLASS (parent_class)->style_set (widget, prev_style);
+  GTK_WIDGET_CLASS (meta_frames_parent_class)->style_updated (widget);
 }
 
 static void
@@ -583,12 +572,9 @@ meta_frames_attach_style (MetaFrames  *frames,
                           MetaUIFrame *frame)
 {
   if (frame->style != NULL)
-    gtk_style_detach (frame->style);
+    g_object_unref (frame->style);
 
-  /* Weirdly, gtk_style_attach() steals a reference count from the style passed in */
-  g_object_ref (gtk_widget_get_style (GTK_WIDGET (frames)));
-  frame->style = gtk_style_attach (gtk_widget_get_style (GTK_WIDGET (frames)),
-                                   frame->window);
+  frame->style = g_object_ref (gtk_widget_get_style_context (GTK_WIDGET (frames)));
 }
 
 void
@@ -659,7 +645,7 @@ meta_frames_unmanage_window (MetaFrames *frames,
       
       g_hash_table_remove (frames->frames, &frame->xwindow);
 
-      gtk_style_detach (frame->style);
+      g_object_unref (frame->style);
 
       gdk_window_destroy (frame->window);
 
@@ -676,17 +662,15 @@ meta_frames_unmanage_window (MetaFrames *frames,
 }
 
 static void
-meta_frames_realize (GtkWidget *widget)
+meta_frames_map (GtkWidget *widget)
 {
-  if (GTK_WIDGET_CLASS (parent_class)->realize)
-    GTK_WIDGET_CLASS (parent_class)->realize (widget);
+  gtk_widget_set_mapped (widget, TRUE);
 }
 
 static void
-meta_frames_unrealize (GtkWidget *widget)
+meta_frames_unmap (GtkWidget *widget)
 {
-  if (GTK_WIDGET_CLASS (parent_class)->unrealize)
-    GTK_WIDGET_CLASS (parent_class)->unrealize (widget);
+  gtk_widget_set_mapped (widget, FALSE);
 }
 
 static MetaUIFrame*
@@ -1019,10 +1003,10 @@ meta_frames_move_resize_frame (MetaFrames *frames,
                                int         height)
 {
   MetaUIFrame *frame = meta_frames_lookup_window (frames, xwindow);
-  int old_x, old_y, old_width, old_height;
-  
-  gdk_drawable_get_size (frame->window, &old_width, &old_height);
-  gdk_window_get_position (frame->window, &old_x, &old_y);
+  int old_width, old_height;
+
+  old_width = gdk_window_get_width (frame->window);
+  old_height = gdk_window_get_height (frame->window);
 
   gdk_window_move_resize (frame->window, x, y, width, height);
 
@@ -1925,8 +1909,9 @@ meta_frames_motion_notify_event     (GtkWidget           *widget,
       {
         MetaFrameControl control;
         int x, y;
-        
-        gdk_window_get_pointer (frame->window, &x, &y, NULL);
+
+        gdk_window_get_device_position (frame->window, event->device,
+                                        &x, &y, NULL);
 
         /* Control is set to none unless it matches
          * the current grab
@@ -1966,8 +1951,9 @@ meta_frames_motion_notify_event     (GtkWidget           *widget,
       {
         MetaFrameControl control;
         int x, y;
-        
-        gdk_window_get_pointer (frame->window, &x, &y, NULL);
+
+        gdk_window_get_device_position (frame->window, event->device,
+                                        &x, &y, NULL);
 
         control = get_control (frames, frame, x, y);
 
@@ -2001,54 +1987,6 @@ meta_frames_destroy_event           (GtkWidget           *widget,
   return TRUE;
 }
 
-#if !GTK_CHECK_VERSION(2,21,6)
-/* Copied from GDK */
-static cairo_surface_t *
-_gdk_drawable_ref_cairo_surface (GdkDrawable *drawable)
-{
-  g_return_val_if_fail (GDK_IS_DRAWABLE (drawable), NULL);
-
-  return GDK_DRAWABLE_GET_CLASS (drawable)->ref_cairo_surface (drawable);
-}
-
-static cairo_pattern_t *
-gdk_window_get_background_pattern (GdkWindow *window)
-{
-  GdkWindowObject *private = (GdkWindowObject *) window;
-  cairo_pattern_t *pattern;
-
-  g_return_val_if_fail (GDK_IS_WINDOW (window), NULL);
-
-  if (private->bg_pixmap == GDK_PARENT_RELATIVE_BG)
-    pattern = NULL;
-  else if (private->bg_pixmap != GDK_NO_BG &&
-           private->bg_pixmap != NULL)
-    {
-      static cairo_user_data_key_t key;
-      cairo_surface_t *surface;
-
-      surface = _gdk_drawable_ref_cairo_surface (private->bg_pixmap);
-      pattern = cairo_pattern_create_for_surface (surface);
-      cairo_surface_destroy (surface);
-
-      cairo_pattern_set_extend (pattern, CAIRO_EXTEND_REPEAT);
-      cairo_pattern_set_user_data (pattern,
-                                   &key,
-                                   g_object_ref (private->bg_pixmap),
-                                   g_object_unref);
-    }
-  else
-    {
-      pattern =
-        cairo_pattern_create_rgb (private->bg_color.red   / 65535.,
-                                  private->bg_color.green / 65535.,
-                                  private->bg_color.blue / 65535.);
-    }
-
-  return pattern;
-}
-#endif
-
 static void
 setup_bg_cr (cairo_t *cr, GdkWindow *window, int x_offset, int y_offset)
 {
@@ -2071,55 +2009,37 @@ setup_bg_cr (cairo_t *cr, GdkWindow *window, int x_offset, int y_offset)
     }
 }
 
-static void
-clear_backing (GdkPixmap *pixmap,
-               GdkWindow *window,
-               int xoffset, int yoffset)
-{
-  int width, height;
-  cairo_t *cr = gdk_cairo_create (pixmap);
-
-  setup_bg_cr (cr, window, xoffset, yoffset);
-
-  gdk_drawable_get_size (GDK_DRAWABLE (pixmap), &width, &height);
-  cairo_rectangle (cr, 0, 0, width, height);
-  cairo_fill (cr);
-
-  cairo_destroy (cr);
-}
-
 /* Returns a pixmap with a piece of the windows frame painted on it.
 */
 
-static GdkPixmap *
-generate_pixmap (MetaFrames *frames,
-                 MetaUIFrame *frame,
-                 MetaRectangle rect)
+static cairo_surface_t *
+generate_pixmap (MetaFrames            *frames,
+                 MetaUIFrame           *frame,
+                 cairo_rectangle_int_t *rect)
 {
-  GdkRectangle rectangle;
-  GdkRegion *region;
-  GdkPixmap *result;
+  cairo_surface_t *result;
+  cairo_t *cr;
 
-  rectangle.x = rect.x;
-  rectangle.y = rect.y;
-  rectangle.width = MAX (rect.width, 1);
-  rectangle.height = MAX (rect.height, 1);
-  
-  result = gdk_pixmap_new (frame->window,
-                           rectangle.width, rectangle.height, -1);
-  
-  clear_backing (result, frame->window, rectangle.x, rectangle.y);
+  /* do not create a pixmap for nonexisting areas */
+  if (rect->width <= 0 || rect->height <= 0)
+    return NULL;
 
-  region = gdk_region_rectangle (&rectangle);
+  result = gdk_window_create_similar_surface (frame->window,
+                                              CAIRO_CONTENT_COLOR,
+                                              rect->width, rect->height);
 
-  meta_frames_paint_to_drawable (frames, frame, result, region,
-                                 -rectangle.x, -rectangle.y);
+  cr = cairo_create (result);
+  cairo_translate (cr, -rect->x, -rect->y);
 
-  gdk_region_destroy (region);
+  setup_bg_cr (cr, frame->window, 0, 0);
+  cairo_paint (cr);
+
+  meta_frames_paint (frames, frame, cr);
+
+  cairo_destroy (cr);
 
   return result;
 }
-
 
 static void
 populate_cache (MetaFrames *frames,
@@ -2185,7 +2105,7 @@ populate_cache (MetaFrames *frames,
     {
       CachedFramePiece *piece = &pixels->piece[i];
       if (!piece->pixmap)
-        piece->pixmap = generate_pixmap (frames, frame, piece->rect);
+        piece->pixmap = generate_pixmap (frames, frame, &piece->rect);
     }
   
   if (frames->invalidate_cache_timeout_id)
@@ -2199,11 +2119,11 @@ populate_cache (MetaFrames *frames,
 }
 
 static void
-clip_to_screen (GdkRegion *region, MetaUIFrame *frame)
+clip_to_screen (cairo_region_t *region, MetaUIFrame *frame)
 {
-  GdkRectangle frame_area;
-  GdkRectangle screen_area = { 0, 0, 0, 0 };
-  GdkRegion *tmp_region;
+  cairo_rectangle_int_t frame_area;
+  cairo_rectangle_int_t screen_area = { 0, 0, 0, 0 };
+  cairo_region_t *tmp_region;
   
   /* Chop off stuff outside the screen; this optimization
    * is crucial to handle huge client windows,
@@ -2218,71 +2138,90 @@ clip_to_screen (GdkRegion *region, MetaUIFrame *frame)
                  META_CORE_GET_SCREEN_HEIGHT, &screen_area.height,
                  META_CORE_GET_END);
 
-  gdk_region_offset (region, frame_area.x, frame_area.y);
+  cairo_region_translate (region, frame_area.x, frame_area.y);
 
-  tmp_region = gdk_region_rectangle (&frame_area);
-  gdk_region_intersect (region, tmp_region);
-  gdk_region_destroy (tmp_region);
+  tmp_region = cairo_region_create_rectangle (&frame_area);
+  cairo_region_intersect (region, tmp_region);
+  cairo_region_destroy (tmp_region);
 
-  gdk_region_offset (region, - frame_area.x, - frame_area.y);
+  tmp_region = cairo_region_create_rectangle (&screen_area);
+  cairo_region_intersect (region, tmp_region);
+  cairo_region_destroy (tmp_region);
+
+  cairo_region_translate (region, - frame_area.x, - frame_area.y);
 }
 
 static void
-subtract_from_region (GdkRegion *region, GdkDrawable *drawable,
-                      gint x, gint y)
+subtract_client_area (cairo_region_t *region,
+                      MetaUIFrame    *frame)
 {
-  GdkRectangle rect;
-  GdkRegion *reg_rect;
+  cairo_rectangle_int_t area;
+  MetaFrameFlags flags;
+  MetaFrameType type;
+  cairo_region_t *tmp_region;
+  Display *display;
+  
+  display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
 
-  gdk_drawable_get_size (drawable, &rect.width, &rect.height);
-  rect.x = x;
-  rect.y = y;
+  meta_core_get (display, frame->xwindow,
+                 META_CORE_GET_FRAME_FLAGS, &flags,
+                 META_CORE_GET_FRAME_TYPE, &type,
+                 META_CORE_GET_CLIENT_WIDTH, &area.width,
+                 META_CORE_GET_CLIENT_HEIGHT, &area.height,
+                 META_CORE_GET_END);
+  meta_theme_get_frame_borders (meta_theme_get_current (),
+                         type, frame->text_height, flags, 
+                         &area.y, NULL, &area.x, NULL);
 
-  reg_rect = gdk_region_rectangle (&rect);
-  gdk_region_subtract (region, reg_rect);
-  gdk_region_destroy (reg_rect);
+  tmp_region = cairo_region_create_rectangle (&area);
+  cairo_region_subtract (region, tmp_region);
+  cairo_region_destroy (tmp_region);
 }
 
 static void
-cached_pixels_draw (CachedPixels *pixels,
-                    GdkWindow *window,
-                    GdkRegion *region)
+cached_pixels_draw (CachedPixels   *pixels,
+                    cairo_t        *cr,
+                    cairo_region_t *region)
 {
-  cairo_t *cr;
+  cairo_region_t *region_piece;
   int i;
-
-  cr = gdk_cairo_create (window);
 
   for (i = 0; i < 4; i++)
     {
       CachedFramePiece *piece;
       piece = &pixels->piece[i];
-      
+
       if (piece->pixmap)
         {
-          gdk_cairo_set_source_pixmap (cr, piece->pixmap,
-                                       piece->rect.x, piece->rect.y);
+          cairo_set_source_surface (cr, piece->pixmap,
+                                    piece->rect.x, piece->rect.y);
           cairo_paint (cr);
-          subtract_from_region (region, piece->pixmap,
-          piece->rect.x, piece->rect.y);
+
+          region_piece = cairo_region_create_rectangle (&piece->rect);
+          cairo_region_subtract (region, region_piece);
+          cairo_region_destroy (region_piece);
         }
     }
-  
-  cairo_destroy (cr);
 }
 
 static gboolean
-meta_frames_expose_event (GtkWidget           *widget,
-                          GdkEventExpose      *event)
+meta_frames_draw (GtkWidget *widget,
+                  cairo_t   *cr)
 {
   MetaUIFrame *frame;
   MetaFrames *frames;
-  GdkRegion *region;
   CachedPixels *pixels;
+  cairo_region_t *region;
+  cairo_rectangle_int_t clip;
+  int i, n_areas;
+  cairo_surface_t *target;
 
   frames = META_FRAMES (widget);
+  target = cairo_get_target (cr);
+  gdk_cairo_get_clip_rectangle (cr, &clip);
 
-  frame = meta_frames_lookup_window (frames, GDK_WINDOW_XID (event->window));
+  g_assert (cairo_surface_get_type (target) == CAIRO_SURFACE_TYPE_XLIB);
+  frame = meta_frames_lookup_window (frames, cairo_xlib_surface_get_drawable (target));
   if (frame == NULL)
     return FALSE;
 
@@ -2295,17 +2234,40 @@ meta_frames_expose_event (GtkWidget           *widget,
 
   populate_cache (frames, frame);
 
-  region = gdk_region_copy (event->region);
+  region = cairo_region_create_rectangle (&clip);
   
   pixels = get_cache (frames, frame);
 
-  cached_pixels_draw (pixels, frame->window, region);
+  cached_pixels_draw (pixels, cr, region);
   
   clip_to_screen (region, frame);
-  meta_frames_paint_to_drawable (frames, frame, frame->window, region, 0, 0);
+  subtract_client_area (region, frame);
 
-  gdk_region_destroy (region);
-  
+  n_areas = cairo_region_num_rectangles (region);
+
+  for (i = 0; i < n_areas; i++)
+    {
+      cairo_rectangle_int_t area;
+
+      cairo_region_get_rectangle (region, i, &area);
+
+      cairo_save (cr);
+
+      cairo_rectangle (cr, area.x, area.y, area.width, area.height);
+      cairo_clip (cr);
+
+      cairo_push_group (cr);
+
+      meta_frames_paint (frames, frame, cr);
+
+      cairo_pop_group_to_source (cr);
+      cairo_paint (cr);
+
+      cairo_restore (cr);
+    }
+
+  cairo_region_destroy (region);
+
   return TRUE;
 }
 
@@ -2315,12 +2277,9 @@ meta_frames_expose_event (GtkWidget           *widget,
 #define DECORATING_BORDER 100
 
 static void
-meta_frames_paint_to_drawable (MetaFrames   *frames,
-                               MetaUIFrame  *frame,
-                               GdkDrawable  *drawable,
-                               GdkRegion    *region,
-                               int           x_offset,
-                               int           y_offset)
+meta_frames_paint (MetaFrames   *frames,
+                   MetaUIFrame  *frame,
+                   cairo_t      *cr)
 {
   GtkWidget *widget;
   MetaFrameFlags flags;
@@ -2333,14 +2292,16 @@ meta_frames_paint_to_drawable (MetaFrames   *frames,
   int i;
   MetaButtonLayout button_layout;
   MetaGrabOp grab_op;
-  
+  Display *display;
+
   widget = GTK_WIDGET (frames);
+  display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
 
   for (i = 0; i < META_BUTTON_TYPE_LAST; i++)
     button_states[i] = META_BUTTON_STATE_NORMAL;
 
-  grab_frame = meta_core_get_grab_frame (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
-  grab_op = meta_core_get_grab_op (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
+  grab_frame = meta_core_get_grab_frame (display);
+  grab_op = meta_core_get_grab_op (display);
   if (grab_frame != frame->xwindow)
     grab_op = META_GRAB_OP_NONE;
   
@@ -2417,7 +2378,7 @@ meta_frames_paint_to_drawable (MetaFrames   *frames,
       break;
     }
 
-  meta_core_get (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()), frame->xwindow,
+  meta_core_get (display, frame->xwindow,
                  META_CORE_GET_FRAME_FLAGS, &flags,
                  META_CORE_GET_FRAME_TYPE, &type,
                  META_CORE_GET_MINI_ICON, &mini_icon,
@@ -2430,107 +2391,18 @@ meta_frames_paint_to_drawable (MetaFrames   *frames,
 
   meta_prefs_get_button_layout (&button_layout);
 
-  if (G_LIKELY (GDK_IS_WINDOW (drawable)))
-    {
-      /* A window; happens about 2/3 of the time */
-
-      GdkRectangle area, *areas;
-      int n_areas;
-      int screen_width, screen_height;
-      GdkRegion *edges, *tmp_region;
-      int top, bottom, left, right;
- 
-      /* Repaint each side of the frame */
-
-      meta_theme_get_frame_borders (meta_theme_get_current (),
-                             type, frame->text_height, flags, 
-                             &top, &bottom, &left, &right);
-
-      meta_core_get (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()), frame->xwindow,
-                     META_CORE_GET_SCREEN_WIDTH, &screen_width,
-                     META_CORE_GET_SCREEN_HEIGHT, &screen_height,
-                     META_CORE_GET_END);
-
-      edges = gdk_region_copy (region);
-
-      /* Punch out the client area */
-
-      area.x = left;
-      area.y = top;
-      area.width = w;
-      area.height = h;
-      tmp_region = gdk_region_rectangle (&area);
-      gdk_region_subtract (edges, tmp_region);
-      gdk_region_destroy (tmp_region);
-
-      /* Now draw remaining portion of region */
-
-      gdk_region_get_rectangles (edges, &areas, &n_areas);
-
-      for (i = 0; i < n_areas; i++)
-        {
-          /* Bug 399529: clamp areas[i] so that it doesn't go too far
-           * off the edge of the screen. This works around a GDK bug
-           * which makes gdk_window_begin_paint_rect cause an X error
-           * if the window is insanely huge. If the client is a GDK program
-           * and does this, it will still probably cause an X error in that
-           * program, but the last thing we want is for Metacity to crash
-           * because it attempted to decorate the silly window.
-           */
-
-          areas[i].x = MAX (areas[i].x, -DECORATING_BORDER); 
-          areas[i].y = MAX (areas[i].y, -DECORATING_BORDER); 
-          if (areas[i].x+areas[i].width  > screen_width  + DECORATING_BORDER)
-            areas[i].width  = MIN (0, screen_width  - areas[i].x);
-          if (areas[i].y+areas[i].height > screen_height + DECORATING_BORDER)
-            areas[i].height = MIN (0, screen_height - areas[i].y);
-
-          /* Okay, so let's start painting. */
-
-          gdk_window_begin_paint_rect (drawable, &areas[i]);
-
-          meta_theme_draw_frame_with_style (meta_theme_get_current (),
-            frame->style,
-            widget,
-            drawable,
-            NULL, /* &areas[i], */
-            x_offset, y_offset,
-            type,
-            flags,
-            w, h,
-            frame->layout,
-            frame->text_height,
-            &button_layout,
-            button_states,
-            mini_icon, icon);
-
-          gdk_window_end_paint (drawable);
-        }
-
-      g_free (areas);
-      gdk_region_destroy (edges);
-
-    }
-  else
-    {
-      /* Not a window; happens about 1/3 of the time */
-
-      meta_theme_draw_frame_with_style (meta_theme_get_current (),
-                                        frame->style,
-                                        widget,
-                                        drawable,
-                                        NULL,
-                                        x_offset, y_offset,
-                                        type,
-                                        flags,
-                                        w, h,
-                                        frame->layout,
-                                        frame->text_height,
-                                        &button_layout,
-                                        button_states,
-                                        mini_icon, icon);
-    }
-
+  meta_theme_draw_frame_with_style (meta_theme_get_current (),
+                                    frame->style,
+                                    widget,
+                                    cr,
+                                    type,
+                                    flags,
+                                    w, h,
+                                    frame->layout,
+                                    frame->text_height,
+                                    &button_layout,
+                                    button_states,
+                                    mini_icon, icon);
 }
 
 static void
@@ -2556,11 +2428,11 @@ meta_frames_set_window_background (MetaFrames   *frames,
 
   if (frame_exists && style->window_background_color != NULL)
     {
-      GdkColor color;
+      GdkRGBA color;
       GdkVisual *visual;
 
       meta_color_spec_render (style->window_background_color,
-                              GTK_WIDGET (frames),
+                              frame->style,
                               &color);
 
       /* Set A in ARGB to window_background_alpha, if we have ARGB */
@@ -2568,16 +2440,14 @@ meta_frames_set_window_background (MetaFrames   *frames,
       visual = gtk_widget_get_visual (GTK_WIDGET (frames));
       if (gdk_visual_get_depth (visual) == 32) /* we have ARGB */
         {
-          color.pixel = (color.pixel & 0xffffff) &
-            style->window_background_alpha << 24;
+          color.alpha = style->window_background_alpha / 255.0;
         }
 
-      gdk_window_set_background (frame->window, &color);
+      gdk_window_set_background_rgba (frame->window, &color);
     }
   else
     {
-      gtk_style_set_background (frame->style,
-                                frame->window, GTK_STATE_NORMAL);
+      gtk_style_context_set_background (frame->style, frame->window);
     }
  }
 

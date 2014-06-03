@@ -73,7 +73,7 @@ struct _MetaUIFrame
 {
   Window xwindow;
   GdkWindow *window;
-  GtkStyle *style;
+  GtkStyleContext *style;
   MetaFrameStyle *cache_style;
   PangoLayout *layout;
   int text_height;
@@ -152,8 +152,6 @@ void meta_frames_queue_draw (MetaFrames *frames,
                              Window      xwindow);
 
 void meta_frames_notify_menu_hide (MetaFrames *frames);
-
-Window meta_frames_get_moving_frame (MetaFrames *frames);
 
 void meta_frames_push_delay_exposes (MetaFrames *frames);
 void meta_frames_pop_delay_exposes  (MetaFrames *frames);

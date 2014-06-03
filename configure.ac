@@ -108,13 +108,10 @@ if test "x$GCC" = "xyes"; then
 fi
 changequote([,])dnl
 
-dnl This used to purport to allow compilation against gtk3, but it doesn't actually
-dnl work; see https://bugzilla.gnome.org/show_bug.cgi?id=650513
-with_gtk=2.0
-GTK_API_VERSION=2.0
-GTK_MIN_VERSION=2.24.0
+GTK_API_VERSION=3.0
+GTK_MIN_VERSION=3.8.0
 GIO_MIN_VERSION=2.25.10
-CANBERRA_GTK=libcanberra-gtk
+CANBERRA_GTK=libcanberra-gtk3
 
 METACITY_PC_MODULES="gtk+-$GTK_API_VERSION >= $GTK_MIN_VERSION gio-2.0 >= $GIO_MIN_VERSION pango >= 1.2.0 gsettings-desktop-schemas >= 3.3.0"
 AC_SUBST(GTK_API_VERSION)
