@@ -3,7 +3,7 @@
   <schema id="org.gnome.metacity" path="/org/gnome/metacity/"
           gettext-domain="@GETTEXT_PACKAGE@">
     <key name="compositing-manager" type="b">
-      <default>false</default>
+      <default>true</default>
       <_summary>Compositing Manager</_summary>
       <_description>
         Determines whether Metacity is a compositing manager.
