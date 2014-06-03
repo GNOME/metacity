@@ -176,8 +176,7 @@ AC_CHECK_HEADERS(execinfo.h, [AC_CHECK_FUNCS(backtrace)])
 AM_GLIB_GNU_GETTEXT
 
 ## here we get the flags we'll actually use
-# GOptionEntry requires         glib-2.6.0
-PKG_CHECK_MODULES(ALL, glib-2.0 >= 2.6.0 gthread-2.0 >= 2.6.0)
+PKG_CHECK_MODULES(ALL, glib-2.0 >= 2.36.0 gthread-2.0 >= 2.32.0)
 # gtk_window_set_icon_name requires gtk2+-2.60
 PKG_CHECK_MODULES(METACITY_MESSAGE, gtk+-$GTK_API_VERSION >= $GTK_MIN_VERSION)
 PKG_CHECK_MODULES(METACITY_WINDOW_DEMO, gtk+-$GTK_API_VERSION >= $GTK_MIN_VERSION)
