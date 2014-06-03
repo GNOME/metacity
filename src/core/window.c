@@ -1110,12 +1110,6 @@ meta_window_free (MetaWindow  *window,
   if (window->maximized_horizontally || window->maximized_vertically)
     unmaximize_window_before_freeing (window);
 
-  /* The XReparentWindow call in meta_window_destroy_frame() moves the
-   * window so we need to send a configure notify; see bug 399552.  (We
-   * also do this just in case a window got unmaximized.)
-   */
-  send_configure_notify (window);
-
   meta_window_unqueue (window, META_QUEUE_CALC_SHOWING |
                                META_QUEUE_MOVE_RESIZE |
                                META_QUEUE_UPDATE_ICON);
@@ -1143,7 +1137,15 @@ meta_window_free (MetaWindow  *window,
     meta_stack_remove (window->screen->stack, window);
 
   if (window->frame)
-    meta_window_destroy_frame (window);
+    {
+      /* The XReparentWindow call in meta_window_destroy_frame() moves the
+       * window so we need to send a configure notify; see bug 399552.  (We
+       * also do this just in case a window got unmaximized.)
+       */
+      send_configure_notify (window);
+
+      meta_window_destroy_frame (window);
+    }
 
   /* If an undecorated window is being withdrawn, that will change the
    * stack as presented to the compositing manager, without actually
