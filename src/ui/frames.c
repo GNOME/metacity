@@ -1168,8 +1168,7 @@ show_tip_now (MetaFrames *frames)
 
       screen_number = gdk_screen_get_number (gtk_widget_get_screen (GTK_WIDGET (frames)));
       
-      meta_fixed_tip_show (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
-                           screen_number,
+      meta_fixed_tip_show (screen_number,
                            rect->x + dx,
                            rect->y + rect->height + 2 + dy,
                            tiptext);
