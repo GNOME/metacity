@@ -1,5 +1,5 @@
 
-INCLUDES=@METACITY_CFLAGS@
+AM_CPPFLAGS=@METACITY_CFLAGS@
 
 wm_tester_SOURCES= 				\
 	main.c

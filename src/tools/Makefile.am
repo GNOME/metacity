@@ -3,7 +3,7 @@
 icondir=$(pkgdatadir)/icons
 icon_DATA=metacity-window-demo.png
 
-INCLUDES=@METACITY_WINDOW_DEMO_CFLAGS@ @METACITY_MESSAGE_CFLAGS@ \
+AM_CPPFLAGS=@METACITY_WINDOW_DEMO_CFLAGS@ @METACITY_MESSAGE_CFLAGS@ \
 	-DMETACITY_ICON_DIR=\"$(pkgdatadir)/icons\" \
 	-DMETACITY_LOCALEDIR=\"$(prefix)/@DATADIRNAME@/locale\"
 
