@@ -706,6 +706,7 @@ meta_ui_theme_get_frame_borders (MetaUI *ui,
   PangoContext *context;
   const PangoFontDescription *font_desc;
   GtkStyleContext *style = NULL;
+  PangoFontDescription *free_font_desc = NULL;
 
   if (meta_ui_have_a_theme ())
     {
@@ -714,8 +715,19 @@ meta_ui_theme_get_frame_borders (MetaUI *ui,
 
       if (!font_desc)
         {
+          GdkDisplay *display = gdk_x11_lookup_xdisplay (ui->xdisplay);
+          GdkScreen *screen = gdk_display_get_screen (display, XScreenNumberOfScreen (ui->xscreen));
+          GtkWidgetPath *widget_path;
+
           style = gtk_style_context_new ();
-          gtk_style_context_get (style, GTK_STATE_FLAG_NORMAL, "font", &font_desc, NULL);
+          gtk_style_context_set_screen (style, screen);
+          widget_path = gtk_widget_path_new ();
+          gtk_widget_path_append_type (widget_path, GTK_TYPE_WINDOW);
+          gtk_style_context_set_path (style, widget_path);
+          gtk_widget_path_free (widget_path);
+
+          gtk_style_context_get (style, GTK_STATE_FLAG_NORMAL, "font", &free_font_desc, NULL);
+          font_desc = (const PangoFontDescription *) free_font_desc;
         }
 
       text_height = meta_pango_font_desc_get_text_height (font_desc, context);
@@ -724,6 +736,9 @@ meta_ui_theme_get_frame_borders (MetaUI *ui,
                                     type, text_height, flags,
                                     top_height, bottom_height,
                                     left_width, right_width);
+
+      if (free_font_desc)
+        pango_font_description_free (free_font_desc);
     }
   else
     {

@@ -405,10 +405,7 @@ meta_frame_layout_get_borders (const MetaFrameLayout *layout,
 {
   int buttons_height, title_height;
   
-  g_return_if_fail (top_height != NULL);
-  g_return_if_fail (bottom_height != NULL);
-  g_return_if_fail (left_width != NULL);
-  g_return_if_fail (right_width != NULL);
+  g_return_if_fail (layout != NULL);
 
   if (!layout->has_title)
     text_height = 0;
@@ -608,7 +605,7 @@ strip_button (MetaButtonSpace *func_rects[MAX_BUTTONS_PER_CORNER],
   return FALSE; /* did not strip anything */
 }
 
-void
+static void
 meta_frame_layout_calc_geometry (const MetaFrameLayout  *layout,
                                  int                     text_height,
                                  MetaFrameFlags          flags,
@@ -1165,7 +1162,7 @@ meta_color_spec_new_from_string (const char *str,
       const char *bracket;
       const char *end_bracket;
       char *tmp;
-      GtkStateType state;
+      GtkStateFlags state;
       MetaGtkColorComponent component;
       
       bracket = str;
@@ -1224,7 +1221,6 @@ meta_color_spec_new_from_string (const char *str,
       spec = meta_color_spec_new (META_COLOR_SPEC_GTK);
       spec->data.gtk.state = state;
       spec->data.gtk.component = component;
-      g_assert (spec->data.gtk.state < N_GTK_STATES);
       g_assert (spec->data.gtk.component < META_GTK_COLOR_LAST);
     }
   else if (str[0] == 'b' && str[1] == 'l' && str[2] == 'e' && str[3] == 'n' &&
@@ -1376,7 +1372,7 @@ meta_color_spec_new_from_string (const char *str,
 
 MetaColorSpec*
 meta_color_spec_new_gtk (MetaGtkColorComponent component,
-                         GtkStateType          state)
+                         GtkStateFlags         state)
 {
   MetaColorSpec *spec;
 
@@ -3467,7 +3463,6 @@ fill_env (MetaPositionExprEnv *env,
 static void
 meta_draw_op_draw_with_env (const MetaDrawOp    *op,
                             GtkStyleContext     *style_gtk,
-                            GtkWidget           *widget,
                             cairo_t             *cr,
                             const MetaDrawInfo  *info,
                             MetaRectangle        rect,
@@ -3849,7 +3844,7 @@ meta_draw_op_draw_with_env (const MetaDrawOp    *op,
         d_rect.height = parse_size_unchecked (op->data.op_list.height, env);
 
         meta_draw_op_list_draw_with_style (op->data.op_list.op_list,
-                                           style_gtk, widget, cr, info,
+                                           style_gtk, cr, info,
                                            d_rect);
       }
       break;
@@ -3887,7 +3882,7 @@ meta_draw_op_draw_with_env (const MetaDrawOp    *op,
             while (tile.y < (ry + rheight))
               {
                 meta_draw_op_list_draw_with_style (op->data.tile.op_list,
-                                                   style_gtk, widget, cr, info,
+                                                   style_gtk, cr, info,
                                         tile);
 
                 tile.y += tile.height;
@@ -3954,7 +3949,6 @@ meta_draw_op_list_unref (MetaDrawOpList *op_list)
 void
 meta_draw_op_list_draw_with_style  (const MetaDrawOpList *op_list,
                                     GtkStyleContext      *style_gtk,
-                                    GtkWidget            *widget,
                                     cairo_t              *cr,
                                     const MetaDrawInfo   *info,
                                     MetaRectangle         rect)
@@ -3996,7 +3990,7 @@ meta_draw_op_list_draw_with_style  (const MetaDrawOpList *op_list,
         }
       else if (gdk_cairo_get_clip_rectangle (cr, NULL))
         {
-          meta_draw_op_draw_with_env (op, style_gtk, widget, cr, info, rect, &env);
+          meta_draw_op_draw_with_env (op, style_gtk, cr, info, rect, &env);
         }
     }
 
@@ -4362,10 +4356,9 @@ button_rect (MetaButtonType           type,
     }
 }
 
-void
+static void
 meta_frame_style_draw_with_style (MetaFrameStyle          *style,
                                   GtkStyleContext         *style_gtk,
-                                  GtkWidget               *widget,
                                   cairo_t                 *cr,
                                   const MetaFrameGeometry *fgeom,
                                   int                      client_width,
@@ -4532,7 +4525,6 @@ meta_frame_style_draw_with_style (MetaFrameStyle          *style,
               m_rect = meta_rect (rect.x, rect.y, rect.width, rect.height);
               meta_draw_op_list_draw_with_style (op_list,
                                                  style_gtk,
-                                                 widget,
                                                  cr,
                                                  &draw_info,
                                                  m_rect);
@@ -4571,7 +4563,6 @@ meta_frame_style_draw_with_style (MetaFrameStyle          *style,
                                           rect.width, rect.height);
                       meta_draw_op_list_draw_with_style (op_list,
                                                          style_gtk,
-                                                         widget,
                                                          cr,
                                                          &draw_info,
                                                          m_rect);
@@ -4596,25 +4587,6 @@ meta_frame_style_draw_with_style (MetaFrameStyle          *style,
       
       ++i;
     }
-}
-
-void
-meta_frame_style_draw (MetaFrameStyle          *style,
-                       GtkWidget               *widget,
-                       cairo_t                 *cr,
-                       const MetaFrameGeometry *fgeom,
-                       int                      client_width,
-                       int                      client_height,
-                       PangoLayout             *title_layout,
-                       int                      text_height,
-                       MetaButtonState          button_states[META_BUTTON_TYPE_LAST],
-                       GdkPixbuf               *mini_icon,
-                       GdkPixbuf               *icon)
-{
-  meta_frame_style_draw_with_style (style, gtk_widget_get_style_context (widget), widget,
-                                    cr, fgeom, client_width, client_height,
-                                    title_layout, text_height,
-                                    button_states, mini_icon, icon);
 }
 
 MetaFrameStyleSet*
@@ -5166,7 +5138,6 @@ meta_theme_get_title_scale (MetaTheme     *theme,
 void
 meta_theme_draw_frame_with_style (MetaTheme              *theme,
                                   GtkStyleContext        *style_gtk,
-                                  GtkWidget              *widget,
                                   cairo_t                *cr,
                                   MetaFrameType           type,
                                   MetaFrameFlags          flags,
@@ -5200,7 +5171,6 @@ meta_theme_draw_frame_with_style (MetaTheme              *theme,
 
   meta_frame_style_draw_with_style (style,
                                     style_gtk,
-                                    widget,
                                     cr,
                                     &fgeom,
                                     client_width, client_height,
@@ -5225,7 +5195,7 @@ meta_theme_draw_frame (MetaTheme              *theme,
                        GdkPixbuf              *mini_icon,
                        GdkPixbuf              *icon)
 {
-  meta_theme_draw_frame_with_style (theme, gtk_widget_get_style_context (widget), widget,
+  meta_theme_draw_frame_with_style (theme, gtk_widget_get_style_context (widget),
                                     cr, type, flags,
                                     client_width, client_height,
                                     title_layout, text_height,
@@ -5945,19 +5915,25 @@ meta_gradient_type_from_string (const char *str)
     return META_GRADIENT_LAST;
 }
 
-GtkStateType
+GtkStateFlags
 meta_gtk_state_from_string (const char *str)
 {
-  if (strcmp ("normal", str) == 0 || strcmp ("NORMAL", str) == 0)
-    return GTK_STATE_NORMAL;
-  else if (strcmp ("prelight", str) == 0 || strcmp ("PRELIGHT", str) == 0)
-    return GTK_STATE_PRELIGHT;
-  else if (strcmp ("active", str) == 0 || strcmp ("ACTIVE", str) == 0)
-    return GTK_STATE_ACTIVE;
-  else if (strcmp ("selected", str) == 0 || strcmp ("SELECTED", str) == 0)
-    return GTK_STATE_SELECTED;
-  else if (strcmp ("insensitive", str) == 0 || strcmp ("INSENSITIVE", str) == 0)
-    return GTK_STATE_INSENSITIVE;
+  if (g_ascii_strcasecmp ("normal", str) == 0)
+    return GTK_STATE_FLAG_NORMAL;
+  else if (g_ascii_strcasecmp ("prelight", str) == 0)
+    return GTK_STATE_FLAG_PRELIGHT;
+  else if (g_ascii_strcasecmp ("active", str) == 0)
+    return GTK_STATE_FLAG_ACTIVE;
+  else if (g_ascii_strcasecmp ("selected", str) == 0)
+    return GTK_STATE_FLAG_SELECTED;
+  else if (g_ascii_strcasecmp ("insensitive", str) == 0)
+    return GTK_STATE_FLAG_INSENSITIVE;
+  else if (g_ascii_strcasecmp ("inconsistent", str) == 0)
+    return GTK_STATE_FLAG_INCONSISTENT;
+  else if (g_ascii_strcasecmp ("focused", str) == 0)
+    return GTK_STATE_FLAG_FOCUSED;
+  else if (g_ascii_strcasecmp ("backdrop", str) == 0)
+    return GTK_STATE_FLAG_BACKDROP;
   else
     return -1; /* hack */
 }

@@ -304,7 +304,7 @@ invalidate_cache (MetaFrames *frames,
   
   for (i = 0; i < 4; i++)
     if (pixels->piece[i].pixmap)
-      g_object_unref (pixels->piece[i].pixmap);
+      cairo_surface_destroy (pixels->piece[i].pixmap);
   
   g_free (pixels);
   g_hash_table_remove (frames->cache, frame);
@@ -1518,7 +1518,6 @@ meta_frames_button_press_event (GtkWidget      *widget,
             control == META_FRAME_CONTROL_RESIZE_W))
     {
       MetaGrabOp op;
-      gboolean titlebar_is_onscreen;
       
       op = META_GRAB_OP_NONE;
       
@@ -1553,28 +1552,16 @@ meta_frames_button_press_event (GtkWidget      *widget,
           break;
         }
 
-      meta_core_get (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()), frame->xwindow,
-                     META_CORE_IS_TITLEBAR_ONSCREEN, &titlebar_is_onscreen,
-                     META_CORE_GET_END);
-
-      if (!titlebar_is_onscreen)
-        meta_core_show_window_menu (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
-                                    frame->xwindow,
-                                    event->x_root,
-                                    event->y_root,
-                                    event->button,
-                                    event->time);
-      else
-        meta_core_begin_grab_op (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
-                                 frame->xwindow,
-                                 op,
-                                 TRUE,
-                                 TRUE,
-                                 event->button,
-                                 0,
-                                 event->time,
-                                 event->x_root,
-                                 event->y_root);
+      meta_core_begin_grab_op (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
+                               frame->xwindow,
+                               op,
+                               TRUE,
+                               TRUE,
+                               event->button,
+                               0,
+                               event->time,
+                               event->x_root,
+                               event->y_root);
     }
   else if (control == META_FRAME_CONTROL_TITLE &&
            event->button == 1)
@@ -2281,7 +2268,6 @@ meta_frames_paint (MetaFrames   *frames,
                    MetaUIFrame  *frame,
                    cairo_t      *cr)
 {
-  GtkWidget *widget;
   MetaFrameFlags flags;
   MetaFrameType type;
   GdkPixbuf *mini_icon;
@@ -2294,7 +2280,6 @@ meta_frames_paint (MetaFrames   *frames,
   MetaGrabOp grab_op;
   Display *display;
 
-  widget = GTK_WIDGET (frames);
   display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
 
   for (i = 0; i < META_BUTTON_TYPE_LAST; i++)
@@ -2393,7 +2378,6 @@ meta_frames_paint (MetaFrames   *frames,
 
   meta_theme_draw_frame_with_style (meta_theme_get_current (),
                                     frame->style,
-                                    widget,
                                     cr,
                                     type,
                                     flags,
