@@ -413,14 +413,9 @@ main (int argc, char **argv)
   guint i;
   GIOChannel *channel;
 
-  if (!g_thread_supported ())
-    g_thread_init (NULL);
-  
   if (setlocale (LC_ALL, "") == NULL)
     meta_warning ("Locale not understood by C library, internationalization will not work\n");
 
-  g_type_init ();
-  
   sigemptyset (&empty_mask);
   act.sa_handler = SIG_IGN;
   act.sa_mask    = empty_mask;
