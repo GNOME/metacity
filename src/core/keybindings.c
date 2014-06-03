@@ -1325,11 +1325,13 @@ meta_display_process_key_event (MetaDisplay *display,
     return;
   
   /* window may be NULL */
-  
+#ifdef HAVE_XKB
   keysym = XKeycodeToKeysym (display->xdisplay, event->xkey.keycode, 0);
-
   str = XKeysymToString (keysym);
-  
+#else
+  str = NULL;
+#endif
+
   /* was topic */
   meta_topic (META_DEBUG_KEYBINDINGS,
               "Processing key %s event, keysym: %s state: 0x%x window: %s\n",

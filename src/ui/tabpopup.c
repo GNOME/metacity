@@ -217,7 +217,7 @@ meta_ui_tab_popup_new (const MetaTabEntry *entries,
   MetaTabPopup *popup;
   int i, left, right, top, bottom;
   int height;
-  GtkWidget *table;
+  GtkWidget *grid;
   GtkWidget *vbox;
   GtkWidget *align;
   GList *tmp;
@@ -271,12 +271,12 @@ meta_ui_tab_popup_new (const MetaTabEntry *entries,
   if (i % width)
     height += 1;
 
-  table = gtk_table_new (height, width, FALSE);
-  vbox = gtk_vbox_new (FALSE, 0);
+  grid = gtk_grid_new ();
+  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
   
   frame = gtk_frame_new (NULL);
   gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_OUT);
-  gtk_container_set_border_width (GTK_CONTAINER (table), 1);
+  gtk_container_set_border_width (GTK_CONTAINER (grid), 1);
   gtk_container_add (GTK_CONTAINER (popup->window),
                      frame);
   gtk_container_add (GTK_CONTAINER (frame),
@@ -287,7 +287,7 @@ meta_ui_tab_popup_new (const MetaTabEntry *entries,
   gtk_box_pack_start (GTK_BOX (vbox), align, TRUE, TRUE, 0);
 
   gtk_container_add (GTK_CONTAINER (align),
-                     table);
+                     grid);
 
   popup->label = gtk_label_new ("");
 
@@ -349,11 +349,7 @@ meta_ui_tab_popup_new (const MetaTabEntry *entries,
 
           te->widget = image;
 
-          gtk_table_attach (GTK_TABLE (table),
-                            te->widget,
-                            left, right,           top, bottom,
-                            0,                     0,
-                            0,                     0);
+          gtk_grid_attach (GTK_GRID (grid), te->widget, left, top, 1, 1);
 
           /* Efficiency rules! */
           gtk_label_set_markup (GTK_LABEL (popup->label),
