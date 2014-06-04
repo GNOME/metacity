@@ -67,55 +67,104 @@ static void run_position_expression_timings (void);
 #endif
 static void run_theme_benchmark (void);
 
+static const gchar *xml =
+  "<interface>"
+    "<menu id='menubar'>"
+      "<submenu>"
+        "<attribute name='label'>Windows</attribute>"
+        "<section>"
+          "<item>"
+            "<attribute name='label'>Dialog</attribute>"
+            "<attribute name='action'>theme-viewer.dialog1</attribute>"
+            "<attribute name='accel'>&lt;control&gt;d</attribute>"
+          "</item>"
+          "<item>"
+            "<attribute name='label'>Modal dialog</attribute>"
+            "<attribute name='action'>theme-viewer.dialog2</attribute>"
+          "</item>"
+          "<item>"
+            "<attribute name='label'>Utility</attribute>"
+            "<attribute name='action'>theme-viewer.utility</attribute>"
+            "<attribute name='accel'>&lt;control&gt;u</attribute>"
+          "</item>"
+          "<item>"
+            "<attribute name='label'>Splashscreen</attribute>"
+            "<attribute name='action'>theme-viewer.splashscreen</attribute>"
+            "<attribute name='accel'>&lt;control&gt;s</attribute>"
+          "</item>"
+          "<item>"
+            "<attribute name='label'>Top dock</attribute>"
+            "<attribute name='action'>theme-viewer.top-dock</attribute>"
+          "</item>"
+          "<item>"
+            "<attribute name='label'>Bottom dock</attribute>"
+            "<attribute name='action'>theme-viewer.bottom-dock</attribute>"
+          "</item>"
+          "<item>"
+            "<attribute name='label'>Left dock</attribute>"
+            "<attribute name='action'>theme-viewer.left-dock</attribute>"
+          "</item>"
+          "<item>"
+            "<attribute name='label'>Right dock</attribute>"
+            "<attribute name='action'>theme-viewer.right-dock</attribute>"
+          "</item>"
+          "<item>"
+            "<attribute name='label'>All docks</attribute>"
+            "<attribute name='action'>theme-viewer.all-docks</attribute>"
+          "</item>"
+          "<item>"
+            "<attribute name='label'>Desktop</attribute>"
+            "<attribute name='action'>theme-viewer.desktop</attribute>"
+          "</item>"
+        "</section>"
+      "</submenu>"
+    "</menu>"
+  "</interface>";
 
-static const gchar *menu_item_string =
-  "<ui>\n"
-    "<menubar>\n"
-      "<menu name='Windows' action='Windows'>\n"
-        "<menuitem name='Dialog' action='Dialog'/>\n"
-        "<menuitem name='Modal dialog' action='Modal dialog'/>\n"
-        "<menuitem name='Utility' action='Utility'/>\n"
-        "<menuitem name='Splashscreen' action='Splashscreen'/>\n"
-        "<menuitem name='Top dock' action='Top dock'/>\n"
-        "<menuitem name='Bottom dock' action='Bottom dock'/>\n"
-        "<menuitem name='Left dock' action='Left dock'/>\n"
-        "<menuitem name='Right dock' action='Right dock'/>\n"
-        "<menuitem name='Desktop' action='Desktop'/>\n"
-      "</menu>\n"
-    "</menubar>\n"
-    "<toolbar>\n"
-      "<separator/>\n"
-      "<toolitem name='New' action='New'/>\n"
-      "<toolitem name='Open' action='Open'/>\n"
-      "<toolitem name='Quit' action='Quit'/>\n"
-      "<separator/>\n"
-    "</toolbar>\n"
-  "</ui>\n";
-
-static GtkActionEntry menu_items[] =
+static GActionEntry theme_viewer_entries[] =
 {
-  { "Windows",           NULL, N_("_Windows"),       NULL,         NULL, NULL },
-  { "Dialog",            NULL, N_("_Dialog"),        "<control>d", NULL, NULL },
-  { "Modal dialog",      NULL, N_("_Modal dialog"),  NULL,         NULL, NULL },
-  { "Utility",           NULL, N_("_Utility"),       "<control>u", NULL, NULL },
-  { "Splashscreen",      NULL, N_("_Splashscreen"),  "<control>s", NULL, NULL },
-  { "Top dock",          NULL, N_("_Top dock"),      NULL,         NULL, NULL },
-  { "Bottom dock",       NULL, N_("_Bottom dock"),   NULL,         NULL, NULL },
-  { "Left dock",         NULL, N_("_Left dock"),     NULL,         NULL, NULL },
-  { "Right dock",        NULL, N_("_Right dock"),    NULL,         NULL, NULL },
-  { "All docks",         NULL, N_("_All docks"),     NULL,         NULL, NULL },
-  { "Desktop",           NULL, N_("Des_ktop"),       NULL,         NULL, NULL }
+  /* menubar */
+  { "dialog1",      NULL, NULL, NULL, NULL, {} },
+  { "dialog2",      NULL, NULL, NULL, NULL, {} },
+  { "utility",      NULL, NULL, NULL, NULL, {} },
+  { "splashscreen", NULL, NULL, NULL, NULL, {} },
+  { "top-dock",     NULL, NULL, NULL, NULL, {} },
+  { "bottom-dock",  NULL, NULL, NULL, NULL, {} },
+  { "left-dock",    NULL, NULL, NULL, NULL, {} },
+  { "right-dock",   NULL, NULL, NULL, NULL, {} },
+  { "all-docks",    NULL, NULL, NULL, NULL, {} },
+  { "desktop",      NULL, NULL, NULL, NULL, {} },
+  /* toolbar */
+  { "new",          NULL, NULL, NULL, NULL, {} },
+  { "open",         NULL, NULL, NULL, NULL, {} },
+  { "quit",         NULL, NULL, NULL, NULL, {} }
 };
 
-static GtkActionEntry tool_items[] =
+static GtkWidget *
+create_toolbar (void)
 {
-  { "New",      GTK_STOCK_NEW,  NULL,   NULL,
-    N_("Open another one of these windows"),            NULL },
-  { "Open",     GTK_STOCK_OPEN, NULL,   NULL,
-    N_("This is a demo button with an 'open' icon"),    NULL },
-  { "Quit",     GTK_STOCK_QUIT, NULL,   NULL,
-    N_("This is a demo button with a 'quit' icon"),     NULL }
-};
+  GtkWidget *toolbar;
+  GtkToolItem *item;
+
+  toolbar = gtk_toolbar_new ();
+
+  item = gtk_tool_button_new (gtk_image_new_from_icon_name ("document-new", GTK_ICON_SIZE_SMALL_TOOLBAR), NULL);
+  gtk_tool_item_set_tooltip_markup (item, "Open another one of these windows");
+  gtk_actionable_set_action_name (GTK_ACTIONABLE (item), "theme-viewer.new");
+  gtk_toolbar_insert (GTK_TOOLBAR (toolbar), item, -1);
+
+  item = gtk_tool_button_new (gtk_image_new_from_icon_name ("document-open", GTK_ICON_SIZE_SMALL_TOOLBAR), NULL);
+  gtk_tool_item_set_tooltip_markup (item, "This is a demo button with an 'open' icon");
+  gtk_actionable_set_action_name (GTK_ACTIONABLE (item), "theme-viewer.open");
+  gtk_toolbar_insert (GTK_TOOLBAR (toolbar), item, -1);
+
+  item = gtk_tool_button_new (gtk_image_new_from_icon_name ("application-exit", GTK_ICON_SIZE_SMALL_TOOLBAR), NULL);
+  gtk_tool_item_set_tooltip_markup (item, "This is a demo button with a 'quit' icon");
+  gtk_actionable_set_action_name (GTK_ACTIONABLE (item), "theme-viewer.quit");
+  gtk_toolbar_insert (GTK_TOOLBAR (toolbar), item, -1);
+
+  return toolbar;
+}
 
 static GtkWidget *
 normal_contents (void)
@@ -124,43 +173,21 @@ normal_contents (void)
   GtkWidget *statusbar;
   GtkWidget *contents;
   GtkWidget *sw;
-  GtkActionGroup *action_group;
-  GtkUIManager *ui_manager;
+  GtkBuilder *builder;
       
   grid = gtk_grid_new ();
-  
-  /* Create the menubar
-   */
-
-  action_group = gtk_action_group_new ("mainmenu");
-  gtk_action_group_add_actions (action_group,
-                                menu_items,
-                                G_N_ELEMENTS (menu_items),
-                                NULL);
-  gtk_action_group_add_actions (action_group,
-                                tool_items,
-                                G_N_ELEMENTS (tool_items),
-                                NULL);
-
-  ui_manager = gtk_ui_manager_new ();
-
-  gtk_ui_manager_insert_action_group (ui_manager, action_group, 0);
+  builder = gtk_builder_new_from_string (xml, -1);
 
   /* create menu items */
-  gtk_ui_manager_add_ui_from_string (ui_manager, menu_item_string, -1, NULL);
-
-  gtk_grid_attach (GTK_GRID (grid),
-                   gtk_ui_manager_get_widget (ui_manager, "/ui/menubar"),
-                   0, 0, 1, 1);
-  gtk_widget_set_hexpand (gtk_ui_manager_get_widget (ui_manager, "/ui/menubar"),
-                          TRUE);
+  GMenuModel *model = G_MENU_MODEL (gtk_builder_get_object (builder, "menubar"));
+  GtkWidget *menubar = gtk_menu_bar_new_from_model (model);
+  gtk_grid_attach (GTK_GRID (grid), menubar, 0, 0, 1, 1);
+  gtk_widget_set_hexpand (menubar, TRUE);
 
   /* Create the toolbar */
-  gtk_grid_attach (GTK_GRID (grid),
-                   gtk_ui_manager_get_widget (ui_manager, "/ui/toolbar"),
-                   0, 1, 1, 1);
-  gtk_widget_set_hexpand (gtk_ui_manager_get_widget (ui_manager, "/ui/toolbar"),
-                          TRUE);
+  GtkWidget *toolbar = create_toolbar ();
+  gtk_grid_attach (GTK_GRID (grid), toolbar, 0, 1, 1, 1);
+  gtk_widget_set_hexpand (toolbar, TRUE);
 
   /* Create document
    */
@@ -194,7 +221,7 @@ normal_contents (void)
 
   gtk_widget_show_all (grid);
 
-  g_object_unref (ui_manager);
+  g_object_unref (builder);
 
   return grid;
 }
@@ -225,7 +252,7 @@ dialog_contents (void)
   gtk_button_box_set_layout (GTK_BUTTON_BOX (action_area),
                              GTK_BUTTONBOX_END);  
 
-  button = gtk_button_new_from_stock (GTK_STOCK_OK);
+  button = gtk_button_new_with_label (_("OK"));
   gtk_box_pack_end (GTK_BOX (action_area),
                     button,
                     FALSE, TRUE, 0);
@@ -236,8 +263,7 @@ dialog_contents (void)
   update_spacings (vbox, action_area);
 
   label = gtk_label_new (_("This is a sample message in a sample dialog"));
-  image = gtk_image_new_from_stock (GTK_STOCK_DIALOG_INFO,
-                                    GTK_ICON_SIZE_DIALOG);
+  image = gtk_image_new_from_icon_name ("dialog-information", GTK_ICON_SIZE_DIALOG);
   gtk_misc_set_alignment (GTK_MISC (image), 0.5, 0.0);
   
   gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
@@ -467,7 +493,15 @@ preview_collection (int font_size,
   eventbox = gtk_event_box_new ();
   gtk_container_add (GTK_CONTAINER (eventbox), box);
   
-  gtk_scrolled_window_add_with_viewport (GTK_SCROLLED_WINDOW (sw), eventbox);
+  gtk_container_add (GTK_CONTAINER (sw), eventbox);
+
+  GSimpleActionGroup *action_group = g_simple_action_group_new ();
+  g_action_map_add_action_entries (G_ACTION_MAP (action_group),
+                                   theme_viewer_entries,
+                                   G_N_ELEMENTS (theme_viewer_entries),
+                                   NULL);
+  gtk_widget_insert_action_group (sw, "theme-viewer", G_ACTION_GROUP (action_group));
+  g_object_unref (action_group);
 
   desktop_color.red = 0.32;
   desktop_color.green = 0.46;
@@ -542,7 +576,7 @@ preview_collection (int font_size,
           pango_font_description_set_size (font_desc,
                                            MAX (pango_font_description_get_size (base_desc) * scale, 1));
           
-          gtk_widget_modify_font (preview, font_desc);
+          gtk_widget_override_font (preview, font_desc);
 
           pango_font_description_free (font_desc);
         }
@@ -691,7 +725,7 @@ previews_of_button_layouts (void)
   eventbox = gtk_event_box_new ();
   gtk_container_add (GTK_CONTAINER (eventbox), box);
   
-  gtk_scrolled_window_add_with_viewport (GTK_SCROLLED_WINDOW (sw), eventbox);
+  gtk_container_add (GTK_CONTAINER (sw), eventbox);
 
   desktop_color.red = 0.32;
   desktop_color.green = 0.46;
