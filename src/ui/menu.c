@@ -38,7 +38,6 @@ typedef enum
 {
   MENU_ITEM_SEPARATOR = 0,
   MENU_ITEM_NORMAL,
-  MENU_ITEM_IMAGE,
   MENU_ITEM_CHECKBOX,
   MENU_ITEM_RADIOBUTTON,
   MENU_ITEM_WORKSPACE_LIST,
@@ -64,9 +63,9 @@ static void activate_cb (GtkWidget *menuitem, gpointer data);
 
 static MenuItem menuitems[] = {
   /* Translators: Translate this string the same way as you do in libwnck! */
-  { META_MENU_OP_MINIMIZE, MENU_ITEM_IMAGE, METACITY_STOCK_MINIMIZE, FALSE, N_("Mi_nimize") },
+  { META_MENU_OP_MINIMIZE, MENU_ITEM_NORMAL, NULL, FALSE, N_("Mi_nimize") },
   /* Translators: Translate this string the same way as you do in libwnck! */
-  { META_MENU_OP_MAXIMIZE, MENU_ITEM_IMAGE, METACITY_STOCK_MAXIMIZE, FALSE, N_("Ma_ximize") },
+  { META_MENU_OP_MAXIMIZE, MENU_ITEM_NORMAL, NULL, FALSE, N_("Ma_ximize") },
   /* Translators: Translate this string the same way as you do in libwnck! */
   { META_MENU_OP_UNMAXIMIZE, MENU_ITEM_NORMAL, NULL, FALSE, N_("Unma_ximize") },
   /* Translators: Translate this string the same way as you do in libwnck! */
@@ -99,7 +98,7 @@ static MenuItem menuitems[] = {
   { 0, MENU_ITEM_WORKSPACE_LIST, NULL, FALSE, NULL },
   { 0, MENU_ITEM_SEPARATOR, NULL, FALSE, NULL }, /* separator */
   /* Translators: Translate this string the same way as you do in libwnck! */
-  { META_MENU_OP_DELETE, MENU_ITEM_IMAGE, METACITY_STOCK_DELETE, FALSE, N_("_Close") }
+  { META_MENU_OP_DELETE, MENU_ITEM_NORMAL, NULL, FALSE, N_("_Close") }
 };
 
 static void
@@ -271,16 +270,6 @@ menu_item_new (MenuItem *menuitem, int workspace_id)
   if (menuitem->type == MENU_ITEM_NORMAL)
     {
       mi = gtk_menu_item_new ();
-    }
-  else if (menuitem->type == MENU_ITEM_IMAGE)
-    {
-      GtkWidget *image;
-      
-      image = gtk_image_new_from_stock (menuitem->stock_id, GTK_ICON_SIZE_MENU);
-      mi = gtk_image_menu_item_new ();
-     
-      gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi), image);
-      gtk_widget_show (image);
     }
   else if (menuitem->type == MENU_ITEM_CHECKBOX)
     {
