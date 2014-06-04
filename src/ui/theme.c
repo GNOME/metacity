@@ -3840,20 +3840,22 @@ meta_draw_op_draw_with_env (const MetaDrawOp    *op,
             cairo_pattern_t *linpat;
             linpat = cairo_pattern_create_linear (rx, ry, text_space,
                                                   env->title_height);
-            cairo_pattern_add_color_stop_rgb (linpat, 0, color.red/65535.0,
-                                                         color.green/65535.0,
-                                                         color.blue/65535.0);
-            cairo_pattern_add_color_stop_rgb (linpat, startalpha,
-                                                      color.red/65535.0,
-                                                      color.green/65535.0,
-                                                      color.blue/65535.0);
-            cairo_pattern_add_color_stop_rgba (linpat, 1, color.red/65535.0,
-                                                          color.green/65535.0,
-                                                          color.blue/65535.0, 0);
+            cairo_pattern_add_color_stop_rgba (linpat, 0, color.red,
+                                                          color.green,
+                                                          color.blue,
+                                                          color.alpha);
+            cairo_pattern_add_color_stop_rgba (linpat, startalpha,
+                                                       color.red,
+                                                       color.green,
+                                                       color.blue,
+                                                       color.alpha);
+            cairo_pattern_add_color_stop_rgba (linpat, 1, color.red,
+                                                          color.green,
+                                                          color.blue, 0);
             cairo_set_source(cr, linpat);
             cairo_pattern_destroy(linpat);
           } else {
-            gdk_cairo_set_source_color (cr, &color);
+            gdk_cairo_set_source_rgba (cr, &color);
           }
 
           cairo_move_to (cr, rx, ry);
