@@ -2924,43 +2924,6 @@ handle_toggle_above       (MetaDisplay    *display,
     meta_window_make_above (window);
 }
 
-/* TODO: actually use this keybinding, without messing up the existing keybinding schema */
-static void
-handle_toggle_tiled (MetaDisplay *display,
-                     MetaScreen *screen,
-                     MetaWindow *window,
-                     XEvent *event,
-                     MetaKeyBinding *binding)
-{
-  MetaTileMode mode = binding->handler->data;
-
-  if ((META_WINDOW_TILED_LEFT (window) && mode == META_TILE_LEFT) ||
-      (META_WINDOW_TILED_RIGHT (window) && mode == META_TILE_RIGHT))
-    {
-      window->tile_mode = META_TILE_NONE;
-
-      if (window->saved_maximize)
-        meta_window_maximize (window, META_MAXIMIZE_VERTICAL |
-                                      META_MAXIMIZE_HORIZONTAL);
-      else
-        meta_window_unmaximize (window, META_MAXIMIZE_VERTICAL |
-                                        META_MAXIMIZE_HORIZONTAL);
-    }
-  else if (meta_window_can_tile_side_by_side (window))
-    {
-      window->tile_mode = mode;
-      window->tile_monitor_number = meta_screen_get_xinerama_for_window (window->screen, window)->number;
-      /* Maximization constraints beat tiling constraints, so if the window
-       * is maximized, tiling won't have any effect unless we unmaximize it
-       * horizontally first; rather than calling meta_window_unmaximize(),
-       * we just set the flag and rely on meta_window_tile() syncing it to
-       * save an additional roundtrip.
-       */
-      window->maximized_horizontally = FALSE;
-      meta_window_tile (window);
-    }
-}
-
 static void
 handle_toggle_maximized    (MetaDisplay    *display,
                            MetaScreen     *screen,
