@@ -35,8 +35,7 @@
 struct _MetaTilePreview {
   GtkWidget     *preview_window;
 
-  GdkColor      *preview_color;
-  guchar         preview_alpha;
+  GdkRGBA       *preview_color;
 
   MetaRectangle  tile_rect;
 
@@ -49,17 +48,13 @@ meta_tile_preview_draw (GtkWidget *widget,
                         gpointer   user_data)
 {
   MetaTilePreview *preview = user_data;
-  GdkRGBA preview_color;
-
-  preview_color.red = (double)preview->preview_color->red   / 0xFFFF;
-  preview_color.green = (double)preview->preview_color->green / 0xFFFF;
-  preview_color.blue = (double)preview->preview_color->blue  / 0xFFFF;
-  preview_color.alpha = (double)preview->preview_alpha / 0xFF;
 
   cairo_set_line_width (cr, 1.0);
 
   if (preview->has_alpha)
     {
+      GdkRGBA preview_color = *preview->preview_color;
+
       /* Fill the preview area with a transparent color */
       gdk_cairo_set_source_rgba (cr, &preview_color);
 
@@ -93,34 +88,35 @@ meta_tile_preview_draw (GtkWidget *widget,
 }
 
 static void
-on_preview_window_style_set (GtkWidget *widget,
-                             GtkStyle  *previous,
-                             gpointer   user_data)
+meta_tile_preview_style_updated (GtkWidget *widget,
+                                 gpointer   user_data)
 {
   MetaTilePreview *preview = user_data;
-  GtkStyle *style;
+  GtkStyleContext *context = gtk_style_context_new ();
+  GtkWidgetPath *path = gtk_widget_path_new ();
+  guchar alpha = 0xFF;
 
-  style = gtk_rc_get_style_by_paths (gtk_widget_get_settings (widget),
-                                     "GtkWindow.GtkIconView",
-                                     "GtkWindow.GtkIconView",
-                                     GTK_TYPE_ICON_VIEW);
+  gtk_widget_path_append_type (path, GTK_TYPE_ICON_VIEW);
+  gtk_style_context_set_path (context, path);
 
-  if (style != NULL)
-    g_object_ref (style);
-  else
-    style = gtk_style_new ();
+  gtk_style_context_get (context, GTK_STATE_FLAG_SELECTED, "background-color", &preview->preview_color, NULL);
+  gtk_style_context_get_style (context, "selection-box-alpha", &alpha, NULL);
 
-  gtk_style_get (style, GTK_TYPE_ICON_VIEW,
-                 "selection-box-color", &preview->preview_color,
-                 "selection-box-alpha", &preview->preview_alpha,
-                 NULL);
-  if (!preview->preview_color)
-    {
-      GdkColor selection = style->base[GTK_STATE_SELECTED];
-      preview->preview_color = gdk_color_copy (&selection);
-    }
+  preview->preview_color->alpha = (double)alpha / 0xFF;
 
-  g_object_unref (style);
+  gtk_widget_path_free (path);
+  g_object_unref (context);
+}
+
+static void
+meta_tile_preview_composited_changed (GtkWidget *widget,
+                                      gpointer   user_data)
+{
+  MetaTilePreview *preview = (MetaTilePreview *)user_data;
+  GdkScreen *screen = gdk_screen_get_default ();
+  GdkVisual *visual = gdk_screen_get_rgba_visual (screen);
+
+  preview->has_alpha = visual && gtk_widget_is_composited (widget);
 }
 
 MetaTilePreview *
@@ -142,7 +138,6 @@ meta_tile_preview_new (int      screen_number,
   gtk_widget_set_app_paintable (preview->preview_window, TRUE);
 
   preview->preview_color = NULL;
-  preview->preview_alpha = 0xFF;
 
   preview->tile_rect.x = preview->tile_rect.y = 0;
   preview->tile_rect.width = preview->tile_rect.height = 0;
@@ -153,13 +148,14 @@ meta_tile_preview_new (int      screen_number,
     {
       gtk_widget_set_visual (preview->preview_window, visual);
 
-      g_signal_connect (preview->preview_window, "style-set",
-                        G_CALLBACK (on_preview_window_style_set), preview);
-    }
+      g_signal_connect (preview->preview_window, "style-updated",
+                        G_CALLBACK (meta_tile_preview_style_updated), preview);
+      g_signal_connect (preview->preview_window, "composited-changed",
+                        G_CALLBACK (meta_tile_preview_composited_changed), preview);
+      meta_tile_preview_style_updated (preview->preview_window, preview);
+   }
 
   gtk_widget_realize (preview->preview_window);
-  /*gdk_window_set_back_pixmap (gtk_widget_get_window (preview->preview_window),
-                              NULL, FALSE);*/
 
   g_signal_connect (preview->preview_window, "draw",
                     G_CALLBACK (meta_tile_preview_draw), preview);
@@ -173,7 +169,7 @@ meta_tile_preview_free (MetaTilePreview *preview)
   gtk_widget_destroy (preview->preview_window);
 
   if (preview->preview_color)
-    gdk_color_free (preview->preview_color);
+    gdk_rgba_free (preview->preview_color);
 
   g_free (preview);
 }
@@ -235,6 +231,10 @@ meta_tile_preview_show (MetaTilePreview *preview,
 
       gtk_widget_shape_combine_region (preview->preview_window, outer_region);
       cairo_region_destroy (outer_region);
+    }
+  else
+    {
+      gtk_widget_shape_combine_region (preview->preview_window, NULL);
     }
 }
 
