@@ -473,7 +473,14 @@ display_entry (MetaTabPopup *popup,
   if (popup->outline)
     {
       GdkRectangle rect;
+      GdkWindow *window;
       cairo_region_t *region;
+
+      window = gtk_widget_get_window (popup->outline_window);
+
+      /* Do stuff behind gtk's back */
+      gdk_window_hide (window);
+      meta_core_increment_event_serial (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
 
       rect = te->rect;
       rect.x = 0;
@@ -490,6 +497,8 @@ display_entry (MetaTabPopup *popup,
                                        0, 0);
 
       cairo_region_destroy (region);
+
+      gdk_window_show_unraised (window);
     }
 
   /* Must be before we handle an expose for the outline window */
