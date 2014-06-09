@@ -118,7 +118,7 @@ libmetacity_private_la_SOURCES=			\
 	ui/theme.c				\
 	ui/theme.h
 
-libmetacity_private_la_LDFLAGS = -no-undefined
+libmetacity_private_la_LDFLAGS = -no-undefined -version-info 1:0:0
 libmetacity_private_la_LIBADD  = @METACITY_LIBS@
 
 libmetacityincludedir = $(includedir)/metacity-1/metacity-private
