@@ -1,3 +1,41 @@
+Version 3.12.0
+==============
+ - Port GTK+ 2 to GTK+ 3 (Mutter developers)
+ - Fix title bar button background (Nicolas Desfontaine)
+ - Side-by-side window tiling (Maarten Baert)
+ - Window placement patch (Chad Glendenin, http://chad.glendenin.com/metacity/patch.html)
+ - Add UXD shadows and borders (Sam Spilsbury)
+ - Add error handling to glibtop_get_proc_uid (Tomaž Šolc)
+ - Cut with fading the Bar title when it's longer than the decoration bar (Marco Trevisan)
+ - Don't show the ws switcher if we only have one (Didier Roche)
+ - Update meta_show_dialog for gtk's removal of --screen (Dan Winship)
+ - Add drag and drop support when using alt + tab (Matthias Clasen)
+ - Fix new window focus (https://bugzilla.gnome.org/show_bug.cgi?id=534752)
+ - Compositing manager is enabled by default now
+ - Fix screen flickering on session start (https://bugzilla.gnome.org/show_bug.cgi?id=658036)
+
+Translations:
+    Piotr Drąg (pl)
+    Lasse Liehu (fi)
+    Wylmer Wang (zh_CN)
+    Rafael Ferreira (pt_BR)
+    Benjamin Steinwender (de)
+    Мирослав Николић (sr, sr@latin)
+    Rūdolfs Mazurs (lv)
+    Joe Hansen (da)
+    Milo Casagrande (it)
+    Balázs Úr (hu)
+    Alexandre Franke (fr)
+    Aurimas Černius (lt)
+    Christian Kirbach (de)
+    Andika Triwidada (id)
+    Matej Urbančič (sl)
+    Daniel Mustieles (es)
+    Marek Černocký (cs)
+    Gil Forcada (ca)
+    Fran Diéguez (gl)
+    Gheyret Kenji (ug)
+
 Version 2.34.13
 ===============
 
