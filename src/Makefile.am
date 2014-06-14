@@ -121,7 +121,7 @@ libmetacity_private_la_SOURCES=			\
 libmetacity_private_la_LDFLAGS = -no-undefined -version-info 1:0:0
 libmetacity_private_la_LIBADD  = @METACITY_LIBS@
 
-libmetacityincludedir = $(includedir)/metacity-1/metacity-private
+libmetacityincludedir = $(includedir)/metacity/metacity-private
 
 libmetacityinclude_HEADERS =			\
 	include/boxes.h				\
