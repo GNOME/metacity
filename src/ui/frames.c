@@ -200,8 +200,6 @@ meta_frames_init (MetaFrames *frames)
   frames->invalidate_frames = NULL;
   frames->cache = g_hash_table_new (g_direct_hash, g_direct_equal);
 
-  gtk_widget_set_double_buffered (GTK_WIDGET (frames), FALSE);
-
   meta_prefs_add_listener (prefs_changed_callback, frames);
 }
 
@@ -2201,6 +2199,23 @@ cached_pixels_draw (CachedPixels   *pixels,
     }
 }
 
+/* XXX -- this is disgusting. Find a better approach here.
+ * Use multiple widgets? */
+static MetaUIFrame *
+find_frame_to_draw (MetaFrames *frames,
+                    cairo_t    *cr)
+{
+  GHashTableIter iter;
+  MetaUIFrame *frame;
+
+  g_hash_table_iter_init (&iter, frames->frames);
+  while (g_hash_table_iter_next (&iter, (gpointer *) &frame, NULL))
+    if (gtk_cairo_should_draw_window (cr, frame->window))
+      return frame;
+
+  return NULL;
+}
+
 static gboolean
 meta_frames_draw (GtkWidget *widget,
                   cairo_t   *cr)
@@ -2211,14 +2226,11 @@ meta_frames_draw (GtkWidget *widget,
   cairo_region_t *region;
   cairo_rectangle_int_t clip;
   int i, n_areas;
-  cairo_surface_t *target;
 
   frames = META_FRAMES (widget);
-  target = cairo_get_target (cr);
   gdk_cairo_get_clip_rectangle (cr, &clip);
 
-  g_assert (cairo_surface_get_type (target) == CAIRO_SURFACE_TYPE_XLIB);
-  frame = meta_frames_lookup_window (frames, cairo_xlib_surface_get_drawable (target));
+  frame = find_frame_to_draw (frames, cr);
   if (frame == NULL)
     return FALSE;
 
