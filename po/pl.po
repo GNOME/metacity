@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-14 16:28+0200\n"
-"PO-Revision-Date: 2014-06-14 16:29+0200\n"
+"POT-Creation-Date: 2014-06-24 21:40+0200\n"
+"PO-Revision-Date: 2014-06-24 21:42+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -137,8 +137,8 @@ msgid "Show the run command prompt"
 msgstr "Wyświetlenie okna wykonania polecenia"
 
 #: ../src/50-metacity-system.xml.in.h:3
-msgid "Show the activities overview"
-msgstr "Wyświetlenie podglądu aktywności"
+msgid "Show the applications menu"
+msgstr "Wyświetlenie menu programów"
 
 #: ../src/50-metacity-windows.xml.in.h:1
 msgid "Windows"
