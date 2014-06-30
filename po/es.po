@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: metacity.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-06-20 09:39+0000\n"
-"PO-Revision-Date: 2014-06-20 12:27+0200\n"
+"POT-Creation-Date: 2014-06-30 09:42+0000\n"
+"PO-Revision-Date: 2014-06-30 12:54+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -134,8 +134,9 @@ msgid "Show the run command prompt"
 msgstr "Mostrar el elemento «ejecutar comando»"
 
 #: ../src/50-metacity-system.xml.in.h:3
-msgid "Show the activities overview"
-msgstr "Mostrar el resumen de actividades"
+#| msgid "Switch applications"
+msgid "Show the applications menu"
+msgstr "Mostrar el menú de aplicaciones"
 
 #: ../src/50-metacity-windows.xml.in.h:1
 msgid "Windows"
@@ -644,7 +645,6 @@ msgstr ""
 "pantalla las maximiza por completo."
 
 #: ../src/org.gnome.metacity.gschema.xml.in.h:7
-#| msgid "Window Management"
 msgid "Window placement behavior"
 msgstr "Comportamiento al colocar ventanas"
 
@@ -1716,6 +1716,9 @@ msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr ""
 "%d expresiones de coordenadas interpretadas en %g segundos (%g segundos de "
 "media)\n"
+
+#~ msgid "Show the activities overview"
+#~ msgstr "Mostrar el resumen de actividades"
 
 #~ msgid ""
 #~ "Lost connection to the display '%s';\n"
