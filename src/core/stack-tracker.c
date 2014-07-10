@@ -852,8 +852,6 @@ static void
 stack_tracker_event_received (MetaStackTracker *tracker,
                               MetaStackOp      *op)
 {
-  gboolean verified;
-
   /* If the event is older than our latest requery, then it's
    * already included in our tree. Just ignore it.
    */
@@ -875,13 +873,8 @@ stack_tracker_event_received (MetaStackTracker *tracker,
    */
   meta_stack_op_apply (op, tracker->xserver_stack);
 
-  verified = stack_tracker_verify_predictions (tracker, op);
-  if (!verified)
-    {
-      resync_verified_stack_with_xserver_stack (tracker);
-      meta_stack_tracker_dump (tracker);
-      return;
-    }
+  if (!stack_tracker_verify_predictions (tracker, op))
+    resync_verified_stack_with_xserver_stack (tracker);
 
   meta_stack_tracker_dump (tracker);
 }
