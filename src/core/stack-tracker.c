@@ -577,6 +577,8 @@ stack_tracker_verify_predictions (MetaStackTracker *tracker,
   GArray *predicted_stack;
   gboolean modified_stack = FALSE;
 
+  meta_topic (META_DEBUG_STACK, "Verifying predictions:\n");
+
   if (tracker->unverified_predictions->length)
     {
       GList *l;
@@ -595,6 +597,9 @@ stack_tracker_verify_predictions (MetaStackTracker *tracker,
     }
   else
     predicted_stack = tracker->verified_stack;
+
+  meta_topic (META_DEBUG_STACK, "  predicted_stack: ");
+  stack_dump (predicted_stack);
 
   switch (op->any.type)
     {
