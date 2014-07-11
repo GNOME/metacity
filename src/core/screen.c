@@ -634,8 +634,6 @@ meta_screen_free (MetaScreen *screen,
 
   screen->closing += 1;
 
-  meta_display_grab (display);
-
   meta_compositor_unmanage (display->compositor);
 
   meta_display_unmanage_windows_for_screen (display, screen, timestamp);
@@ -705,9 +703,6 @@ meta_screen_free (MetaScreen *screen,
 
   g_free (screen->screen_name);
   g_free (screen);
-
-  XFlush (display->xdisplay);
-  meta_display_ungrab (display);
 }
 
 typedef struct
