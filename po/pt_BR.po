@@ -15,15 +15,16 @@
 # Krix Apolinário <krixapolinario@gmail.com> 2011.
 # Antonio Fernandes C. Neto <fernandesn@gnome.org> 2012.
 # Rafael Ferreira <rafael.f.f1@gmail.com>, 2013, 2014
+# Enrico Nicoletto <liverig@gmail.com>, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-06-16 09:47+0000\n"
-"PO-Revision-Date: 2014-06-16 08:49-0300\n"
-"Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
+"POT-Creation-Date: 2014-07-18 09:46+0000\n"
+"PO-Revision-Date: 2014-07-18 16:52-0300\n"
+"Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -140,8 +141,9 @@ msgid "Show the run command prompt"
 msgstr "Mostrar o prompt de executar comando"
 
 #: ../src/50-metacity-system.xml.in.h:3
-msgid "Show the activities overview"
-msgstr "Mostra a visão geral das atividades"
+#| msgid "Switch applications"
+msgid "Show the applications menu"
+msgstr "Mostrar o menu de aplicativos"
 
 #: ../src/50-metacity-windows.xml.in.h:1
 msgid "Windows"
@@ -646,7 +648,6 @@ msgstr ""
 "Soltar as janelas na borda superior da tela maximiza-as completamente."
 
 #: ../src/org.gnome.metacity.gschema.xml.in.h:7
-#| msgid "Window Management"
 msgid "Window placement behavior"
 msgstr "Comportamento de localização de janelas"
 
@@ -1709,6 +1710,9 @@ msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr ""
 "%d expressões de coordenadas analisadas em %g segundos (%g segundos em "
 "média)\n"
+
+#~ msgid "Show the activities overview"
+#~ msgstr "Mostra a visão geral das atividades"
 
 #~ msgid ""
 #~ "Lost connection to the display '%s';\n"
