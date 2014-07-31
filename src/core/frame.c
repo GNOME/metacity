@@ -149,7 +149,6 @@ meta_window_ensure_frame (MetaWindow *window)
    * style and background.
    */
   meta_ui_update_frame_style (window->screen->ui, frame->xwindow);
-  meta_ui_reset_frame_bg (window->screen->ui, frame->xwindow);
 
   if (window->title)
     meta_ui_set_frame_title (window->screen->ui,
@@ -374,11 +373,6 @@ meta_frame_sync_to_window (MetaFrame *frame,
   /* set bg to none to avoid flicker */
   if (need_resize)
     {
-      meta_ui_unflicker_frame_bg (frame->window->screen->ui,
-                                  frame->xwindow,
-                                  frame->rect.width,
-                                  frame->rect.height);
-
       /* we need new shape if we're resized */
       frame->need_reapply_frame_shape = TRUE;
     }
@@ -400,9 +394,6 @@ meta_frame_sync_to_window (MetaFrame *frame,
 
   if (need_resize)
     {
-      meta_ui_reset_frame_bg (frame->window->screen->ui,
-                              frame->xwindow);
-
       /* If we're interactively resizing the frame, repaint
        * it immediately so we don't start to lag.
        */
