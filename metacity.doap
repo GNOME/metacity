@@ -31,7 +31,7 @@ Many window managers are like Marshmallow Froot Loops; Metacity is like Cheerios
  <bug-database rdf:resource="https://bugzilla.gnome.org/browse.cgi?product=metacity" />
  <screenshots rdf:resource="http://commons.wikimedia.org/wiki/Image:Metacity-screenshot.png" />
 
- <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/metacity-devel-list" />
+ <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/gnome-flashback-list" />
 
  <programming-language>C</programming-language>
  <license rdf:resource="http://usefulinc.com/doap/licenses/gpl" />
