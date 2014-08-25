@@ -264,7 +264,8 @@ dialog_contents (void)
 
   label = gtk_label_new (_("This is a sample message in a sample dialog"));
   image = gtk_image_new_from_icon_name ("dialog-information", GTK_ICON_SIZE_DIALOG);
-  gtk_misc_set_alignment (GTK_MISC (image), 0.5, 0.0);
+  gtk_widget_set_halign (image, GTK_ALIGN_CENTER);
+  gtk_widget_set_valign (image, GTK_ALIGN_START);
   
   gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
   gtk_label_set_selectable (GTK_LABEL (label), TRUE);
@@ -341,7 +342,8 @@ menu_contents (void)
     {
       char *str = g_strdup_printf (_("Fake menu item %d\n"), i + 1);
       mi = gtk_label_new (str);
-      gtk_misc_set_alignment (GTK_MISC (mi), 0.0, 0.5);
+      gtk_widget_set_halign (mi, GTK_ALIGN_START);
+      gtk_widget_set_valign (mi, GTK_ALIGN_CENTER);
       g_free (str);
       gtk_box_pack_start (GTK_BOX (vbox), mi, FALSE, FALSE, 0);
       
