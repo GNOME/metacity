@@ -1110,8 +1110,7 @@ meta_window_free (MetaWindow  *window,
                   "Focusing default window since we're unmanaging %s\n",
                   window->desc);
       meta_workspace_focus_default_window (window->screen->active_workspace,
-                                           window,
-                                           timestamp);
+                                           NULL, timestamp);
     }
   else if (window->display->expected_focus_window == window)
     {
