@@ -50,17 +50,6 @@ void meta_stack_tracker_record_add             (MetaStackTracker *tracker,
 void meta_stack_tracker_record_remove          (MetaStackTracker *tracker,
                                                 Window            window,
                                                 gulong            serial);
-void meta_stack_tracker_record_raise_above     (MetaStackTracker *tracker,
-                                                Window            window,
-                                                Window            sibling,
-                                                gulong            serial);
-void meta_stack_tracker_record_lower_below    (MetaStackTracker *tracker,
-                                                Window            window,
-                                                Window            sibling,
-                                                gulong            serial);
-void meta_stack_tracker_record_lower           (MetaStackTracker *tracker,
-                                                Window            window,
-                                                gulong            serial);
 
 /* We also have functions that also go ahead and do the work
  */
