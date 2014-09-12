@@ -832,7 +832,7 @@ meta_stack_tracker_queue_sync_stack (MetaStackTracker *tracker)
     }
 }
 
-void
+static void
 meta_stack_tracker_lower_below (MetaStackTracker *tracker,
                                 Window            window,
                                 Window            sibling)
@@ -858,14 +858,7 @@ meta_stack_tracker_lower_below (MetaStackTracker *tracker,
   meta_stack_tracker_record_lower_below (tracker, window, sibling, serial);
 }
 
-void
-meta_stack_tracker_lower (MetaStackTracker *tracker,
-                          Window            window)
-{
-  meta_stack_tracker_raise_above (tracker, window, None);
-}
-
-void
+static void
 meta_stack_tracker_raise_above (MetaStackTracker *tracker,
                                 Window            window,
                                 Window            sibling)
@@ -889,6 +882,13 @@ meta_stack_tracker_raise_above (MetaStackTracker *tracker,
   meta_error_trap_pop (tracker->screen->display);
 
   meta_stack_tracker_record_raise_above (tracker, window, sibling, serial);
+}
+
+void
+meta_stack_tracker_lower (MetaStackTracker *tracker,
+                          Window            window)
+{
+  meta_stack_tracker_raise_above (tracker, window, None);
 }
 
 void

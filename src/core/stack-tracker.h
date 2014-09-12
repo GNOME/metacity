@@ -53,12 +53,6 @@ void meta_stack_tracker_record_remove          (MetaStackTracker *tracker,
 
 /* We also have functions that also go ahead and do the work
  */
-void meta_stack_tracker_raise_above       (MetaStackTracker *tracker,
-                                           Window            window,
-                                           Window            sibling);
-void meta_stack_tracker_lower_below       (MetaStackTracker *tracker,
-                                           Window            window,
-                                           Window            sibling);
 void meta_stack_tracker_lower             (MetaStackTracker *tracker,
                                            Window            window);
 void meta_stack_tracker_restack_managed   (MetaStackTracker *tracker,
