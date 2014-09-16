@@ -921,7 +921,7 @@ meta_stack_tracker_restack_managed (MetaStackTracker *tracker,
 
       old_window = meta_display_lookup_x_window (display, windows[old_pos]);
 
-      if (old_window && !old_window->override_redirect)
+      if (old_window && !old_window->override_redirect && !old_window->unmanaging)
         break;
     }
 
@@ -955,7 +955,7 @@ meta_stack_tracker_restack_managed (MetaStackTracker *tracker,
         }
 
       old_window = meta_display_lookup_x_window (display, windows[old_pos]);
-      if (!old_window || old_window->override_redirect)
+      if (!old_window || old_window->override_redirect || old_window->unmanaging)
         {
           old_pos--;
           continue;
