@@ -74,7 +74,7 @@ struct _MetaUIFrame
 {
   Window xwindow;
   GdkWindow *window;
-  GtkStyleContext *style;
+  MetaStyleInfo *style_info;
   MetaFrameStyle *cache_style;
   PangoLayout *layout;
   int text_height;
@@ -97,7 +97,7 @@ struct _MetaFrames
   guint tooltip_timeout;
   MetaUIFrame *last_motion_frame;
 
-  GtkStyleContext *normal_style;
+  MetaStyleInfo *normal_style;
   GHashTable *style_variants;
 
   int expose_delay_count;

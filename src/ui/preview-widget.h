@@ -39,7 +39,7 @@ struct _MetaPreview
 {
   GtkBin bin;
 
-  GtkStyleContext *style_context;
+  MetaStyleInfo *style_info;
 
   MetaTheme *theme;
   char *title;

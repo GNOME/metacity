@@ -113,7 +113,11 @@ meta_preview_dispose (GObject *object)
 {
   MetaPreview *preview = META_PREVIEW (object);
 
-  g_clear_object (&preview->style_context);
+  if (preview->style_info)
+    {
+      meta_style_info_unref (preview->style_info);
+      preview->style_info = NULL;
+    }
 
   G_OBJECT_CLASS (meta_preview_parent_class)->dispose (object);
 }
@@ -231,7 +235,7 @@ meta_preview_draw (GtkWidget *widget,
       border_width = gtk_container_get_border_width (GTK_CONTAINER (widget));
 
       meta_theme_draw_frame (preview->theme,
-                             preview->style_context,
+                             preview->style_info,
                              cr,
                              preview->type,
                              preview->flags,
@@ -257,8 +261,8 @@ meta_preview_realize (GtkWidget *widget)
 
   GTK_WIDGET_CLASS (meta_preview_parent_class)->realize (widget);
 
-  preview->style_context = meta_theme_create_style_context (gtk_widget_get_screen (widget),
-                                                            NULL);
+  preview->style_info = meta_theme_create_style_info (gtk_widget_get_screen (widget),
+                                                      NULL);
 }
 
 #define NO_CHILD_WIDTH 80
