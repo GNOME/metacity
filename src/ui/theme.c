@@ -711,7 +711,8 @@ meta_frame_layout_sync_with_style (MetaFrameLayout *layout,
 }
 
 static void
-meta_frame_layout_calc_geometry (const MetaFrameLayout  *layout,
+meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
+                                 MetaStyleInfo          *style_info,
                                  int                     text_height,
                                  MetaFrameFlags          flags,
                                  int                     client_width,
@@ -740,6 +741,8 @@ meta_frame_layout_calc_geometry (const MetaFrameLayout  *layout,
   gboolean right_buttons_has_spacer[MAX_BUTTONS_PER_CORNER];
 
   MetaFrameBorders borders;
+
+  meta_frame_layout_sync_with_style (layout, style_info, flags);
 
   meta_frame_layout_get_borders (layout, text_height,
                                  flags,
@@ -4709,15 +4712,13 @@ get_button_rect (MetaButtonType           type,
     }
 }
 
+/* Used for metacity theme */
 static void
 meta_frame_style_draw_with_style (MetaFrameStyle          *style,
                                   MetaStyleInfo           *style_info,
                                   cairo_t                 *cr,
                                   const MetaFrameGeometry *fgeom,
-                                  int                      client_width,
-                                  int                      client_height,
                                   PangoLayout             *title_layout,
-                                  int                      text_height,
                                   MetaButtonState          button_states[META_BUTTON_TYPE_LAST],
                                   GdkPixbuf               *mini_icon,
                                   GdkPixbuf               *icon)
@@ -4942,6 +4943,173 @@ meta_frame_style_draw_with_style (MetaFrameStyle          *style,
         }
 
       ++i;
+    }
+}
+
+/* Used for GTK+ theme */
+static void
+meta_frame_style_draw_with_style_gtk (MetaFrameStyle          *frame_style,
+                                      MetaStyleInfo           *style_info,
+                                      cairo_t                 *cr,
+                                      const MetaFrameGeometry *fgeom,
+                                      PangoLayout             *title_layout,
+                                      MetaFrameFlags           flags,
+                                      MetaButtonState          button_states[META_BUTTON_TYPE_LAST],
+                                      GdkPixbuf               *mini_icon)
+{
+  GtkStyleContext *style;
+  GtkStateFlags state;
+  MetaButtonType button_type;
+  GdkRectangle visible_rect;
+  GdkRectangle titlebar_rect;
+  GdkRectangle button_rect;
+  const MetaFrameBorders *borders;
+
+  borders = &fgeom->borders;
+
+  visible_rect.x = borders->invisible.left;
+  visible_rect.y = borders->invisible.top;
+  visible_rect.width = fgeom->width - borders->invisible.left - borders->invisible.right;
+  visible_rect.height = fgeom->height - borders->invisible.top - borders->invisible.bottom;
+
+  meta_style_info_set_flags (style_info, flags);
+
+  style = style_info->styles[META_STYLE_ELEMENT_FRAME];
+  gtk_render_background (style, cr,
+                         visible_rect.x, visible_rect.y,
+                         visible_rect.width, visible_rect.height);
+  gtk_render_frame (style, cr,
+                    visible_rect.x, visible_rect.y,
+                    visible_rect.width, visible_rect.height);
+
+  titlebar_rect.x = visible_rect.x;
+  titlebar_rect.y = visible_rect.y;
+  titlebar_rect.width = visible_rect.width;
+  titlebar_rect.height = borders->visible.top;
+
+  style = style_info->styles[META_STYLE_ELEMENT_TITLEBAR];
+  gtk_render_background (style, cr,
+                         titlebar_rect.x, titlebar_rect.y,
+                         titlebar_rect.width, titlebar_rect.height);
+  gtk_render_frame (style, cr,
+                    titlebar_rect.x, titlebar_rect.y,
+                    titlebar_rect.width, titlebar_rect.height);
+
+  if (frame_style->layout->has_title && title_layout)
+    {
+      PangoRectangle logical;
+      int text_width, x, y;
+
+      pango_layout_set_width (title_layout, -1);
+      pango_layout_get_pixel_extents (title_layout, NULL, &logical);
+
+      text_width = MIN(fgeom->title_rect.width, logical.width);
+
+      if (text_width < logical.width)
+        pango_layout_set_width (title_layout, PANGO_SCALE * text_width);
+
+      /* Center within the frame if possible */
+      x = titlebar_rect.x + (titlebar_rect.width - text_width) / 2;
+      y = titlebar_rect.y + (titlebar_rect.height - logical.height) / 2;
+
+      if (x < fgeom->title_rect.x)
+        x = fgeom->title_rect.x;
+      else if (x + text_width > fgeom->title_rect.x + fgeom->title_rect.width)
+        x = fgeom->title_rect.x + fgeom->title_rect.width - text_width;
+
+      style = style_info->styles[META_STYLE_ELEMENT_TITLE];
+      gtk_render_layout (style, cr, x, y, title_layout);
+    }
+
+  style = style_info->styles[META_STYLE_ELEMENT_BUTTON];
+  state = gtk_style_context_get_state (style);
+  for (button_type = META_BUTTON_TYPE_CLOSE; button_type < META_BUTTON_TYPE_LAST; button_type++)
+    {
+      MetaButtonState button_state;
+
+      get_button_rect (button_type, fgeom, 0, &button_rect);
+
+      button_state = map_button_state (button_type, fgeom, 0, button_states);
+
+      if (button_state == META_BUTTON_STATE_PRELIGHT)
+        gtk_style_context_set_state (style, state | GTK_STATE_PRELIGHT);
+      else if (button_state == META_BUTTON_STATE_PRESSED)
+        gtk_style_context_set_state (style, state | GTK_STATE_ACTIVE);
+      else
+        gtk_style_context_set_state (style, state);
+
+      cairo_save (cr);
+      gdk_cairo_rectangle (cr, &button_rect);
+      cairo_clip (cr);
+
+      if (gdk_cairo_get_clip_rectangle (cr, NULL))
+        {
+          GdkPixbuf *pixbuf = NULL;
+          const char *icon_name = NULL;
+
+          gtk_render_background (style, cr,
+                                 button_rect.x, button_rect.y,
+                                 button_rect.width, button_rect.height);
+          gtk_render_frame (style, cr,
+                            button_rect.x, button_rect.y,
+                            button_rect.width, button_rect.height);
+
+          switch (button_type)
+            {
+              case META_BUTTON_TYPE_CLOSE:
+                icon_name = "window-close-symbolic";
+                break;
+              case META_BUTTON_TYPE_MAXIMIZE:
+                if (flags & META_FRAME_MAXIMIZED)
+                  icon_name = "window-restore-symbolic";
+                else
+                  icon_name = "window-maximize-symbolic";
+                break;
+              case META_BUTTON_TYPE_MINIMIZE:
+                icon_name = "window-minimize-symbolic";
+                break;
+              case META_BUTTON_TYPE_MENU:
+                icon_name = "open-menu-symbolic";
+                break;
+              case META_BUTTON_TYPE_APPMENU:
+                pixbuf = g_object_ref (mini_icon);
+                break;
+              default:
+                icon_name = NULL;
+                break;
+            }
+
+          if (icon_name)
+            {
+              GtkIconTheme *theme = gtk_icon_theme_get_default ();
+              GtkIconInfo *info;
+
+              info = gtk_icon_theme_lookup_icon (theme, icon_name, frame_style->layout->icon_size, 0);
+              pixbuf = gtk_icon_info_load_symbolic_for_context (info, style, NULL, NULL);
+            }
+
+          if (pixbuf)
+            {
+              float width, height;
+              int x, y;
+
+              width = gdk_pixbuf_get_width (pixbuf);
+              height = gdk_pixbuf_get_height (pixbuf);
+              x = button_rect.x + (button_rect.width - width) / 2;
+              y = button_rect.y + (button_rect.height - height) / 2;
+
+              cairo_translate (cr, x, y);
+              cairo_scale (cr,
+                           width / frame_style->layout->icon_size,
+                           height / frame_style->layout->icon_size);
+              gdk_cairo_set_source_pixbuf (cr, pixbuf, 0, 0);
+                                           cairo_paint (cr);
+
+              g_object_unref (pixbuf);
+            }
+        }
+
+      cairo_restore (cr);
     }
 }
 
@@ -5773,6 +5941,7 @@ meta_theme_draw_frame (MetaTheme              *theme,
     return;
 
   meta_frame_layout_calc_geometry (style->layout,
+                                   style_info,
                                    text_height,
                                    flags,
                                    client_width, client_height,
@@ -5781,19 +5950,33 @@ meta_theme_draw_frame (MetaTheme              *theme,
                                    &fgeom,
                                    theme);
 
-  meta_frame_style_draw_with_style (style,
-                                    style_info,
-                                    cr,
-                                    &fgeom,
-                                    client_width, client_height,
-                                    title_layout,
-                                    text_height,
-                                    button_states,
-                                    mini_icon, icon);
+  if (meta_prefs_get_theme ())
+    {
+      meta_frame_style_draw_with_style (style,
+                                        style_info,
+                                        cr,
+                                        &fgeom,
+                                        title_layout,
+                                        button_states,
+                                        mini_icon,
+                                        icon);
+    }
+  else
+    {
+      meta_frame_style_draw_with_style_gtk (style,
+                                            style_info,
+                                            cr,
+                                            &fgeom,
+                                            title_layout,
+                                            flags,
+                                            button_states,
+                                            mini_icon);
+    }
 }
 
 void
 meta_theme_get_frame_borders (MetaTheme        *theme,
+                              MetaStyleInfo    *style_info,
                               MetaFrameType     type,
                               int               text_height,
                               MetaFrameFlags    flags,
@@ -5811,6 +5994,8 @@ meta_theme_get_frame_borders (MetaTheme        *theme,
   if (style == NULL)
     return;
 
+  meta_frame_layout_sync_with_style (style->layout, style_info, flags);
+
   meta_frame_layout_get_borders (style->layout,
                                  text_height,
                                  flags,
@@ -5820,6 +6005,7 @@ meta_theme_get_frame_borders (MetaTheme        *theme,
 
 void
 meta_theme_calc_geometry (MetaTheme              *theme,
+                          MetaStyleInfo          *style_info,
                           MetaFrameType           type,
                           int                     text_height,
                           MetaFrameFlags          flags,
@@ -5839,6 +6025,7 @@ meta_theme_calc_geometry (MetaTheme              *theme,
     return;
 
   meta_frame_layout_calc_geometry (style->layout,
+                                   style_info,
                                    text_height,
                                    flags,
                                    client_width, client_height,

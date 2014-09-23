@@ -1033,11 +1033,13 @@ void meta_theme_draw_frame (MetaTheme              *theme,
                             GdkPixbuf              *icon);
 
 void meta_theme_get_frame_borders (MetaTheme         *theme,
+                                   MetaStyleInfo     *style_info,
                                    MetaFrameType      type,
                                    int                text_height,
                                    MetaFrameFlags     flags,
                                    MetaFrameBorders  *borders);
 void meta_theme_calc_geometry (MetaTheme              *theme,
+                               MetaStyleInfo          *style_info,
                                MetaFrameType           type,
                                int                     text_height,
                                MetaFrameFlags          flags,

@@ -1044,6 +1044,7 @@ run_theme_benchmark (void)
   style_info = meta_theme_create_style_info (gtk_widget_get_screen (widget), NULL);
 
   meta_theme_get_frame_borders (global_theme,
+                                style_info,
                                 META_FRAME_TYPE_NORMAL,
                                 get_text_height (widget, style_info),
                                 get_flags (widget),
