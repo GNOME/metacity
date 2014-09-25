@@ -203,9 +203,6 @@ void       meta_core_set_screen_cursor (Display *xdisplay,
 void meta_core_increment_event_serial (Display *display);
 
 void meta_invalidate_default_icons (void);
+void meta_retheme_all (void);
 
 #endif
-
-
-
-

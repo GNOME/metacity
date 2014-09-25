@@ -812,3 +812,9 @@ meta_invalidate_default_icons (void)
   g_slist_free (windows);
 }
 
+void
+meta_retheme_all (void)
+{
+  if (meta_get_display ())
+    meta_display_retheme_all ();
+}
