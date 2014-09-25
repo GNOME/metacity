@@ -671,7 +671,6 @@ meta_ui_theme_get_frame_borders (MetaUI           *ui,
   int text_height;
   PangoContext *context;
   const PangoFontDescription *font_desc;
-  GtkStyleContext *style = NULL;
   PangoFontDescription *free_font_desc = NULL;
 
   if (meta_ui_have_a_theme ())
@@ -683,16 +682,37 @@ meta_ui_theme_get_frame_borders (MetaUI           *ui,
         {
           GdkDisplay *display = gdk_x11_lookup_xdisplay (ui->xdisplay);
           GdkScreen *screen = gdk_display_get_screen (display, XScreenNumberOfScreen (ui->xscreen));
-          GtkWidgetPath *widget_path;
 
-          style = gtk_style_context_new ();
-          gtk_style_context_set_screen (style, screen);
-          widget_path = gtk_widget_path_new ();
-          gtk_widget_path_append_type (widget_path, GTK_TYPE_WINDOW);
-          gtk_style_context_set_path (style, widget_path);
-          gtk_widget_path_free (widget_path);
+          if (meta_prefs_get_theme ())
+            {
+              GtkStyleContext *style = NULL;
+              GtkWidgetPath *widget_path;
 
-          gtk_style_context_get (style, GTK_STATE_FLAG_NORMAL, "font", &free_font_desc, NULL);
+              style = gtk_style_context_new ();
+              gtk_style_context_set_screen (style, screen);
+              widget_path = gtk_widget_path_new ();
+              gtk_widget_path_append_type (widget_path, GTK_TYPE_WINDOW);
+              gtk_style_context_set_path (style, widget_path);
+              gtk_widget_path_free (widget_path);
+
+              gtk_style_context_get (style, GTK_STATE_FLAG_NORMAL,
+                                     "font", &free_font_desc,
+                                     NULL);
+
+              if (style != NULL)
+                g_object_unref (style);
+            }
+          else
+            {
+              MetaStyleInfo *style_info = NULL;
+
+              style_info = meta_theme_create_style_info (screen, NULL);
+              free_font_desc = meta_style_info_create_font_desc (style_info);
+
+              if (style_info != NULL)
+                meta_style_info_unref (style_info);
+            }
+
           font_desc = (const PangoFontDescription *) free_font_desc;
         }
 
@@ -709,9 +729,6 @@ meta_ui_theme_get_frame_borders (MetaUI           *ui,
     {
       meta_frame_borders_clear (borders);
     }
-
-  if (style != NULL)
-    g_object_unref (style);
 }
 
 void

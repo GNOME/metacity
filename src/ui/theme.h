@@ -967,6 +967,9 @@ MetaFrameStyle* meta_frame_style_new   (MetaFrameStyle *parent);
 void            meta_frame_style_ref   (MetaFrameStyle *style);
 void            meta_frame_style_unref (MetaFrameStyle *style);
 
+void            meta_frame_style_apply_scale (const MetaFrameStyle *style,
+                                              PangoFontDescription *font_desc);
+
 gboolean       meta_frame_style_validate (MetaFrameStyle    *style,
                                           guint              current_theme_version,
                                           GError           **error);
@@ -1003,6 +1006,11 @@ MetaStyleInfo* meta_theme_create_style_info (GdkScreen     *screen,
                                              const gchar   *variant);
 MetaStyleInfo* meta_style_info_ref          (MetaStyleInfo *style);
 void           meta_style_info_unref        (MetaStyleInfo *style_info);
+
+PangoFontDescription* meta_style_info_create_font_desc (MetaStyleInfo *style_info);
+
+void meta_style_info_set_flags              (MetaStyleInfo  *style_info,
+                                             MetaFrameFlags  flags);
 
 void meta_theme_draw_frame (MetaTheme              *theme,
                             MetaStyleInfo          *style_info,
