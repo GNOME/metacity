@@ -70,6 +70,7 @@ static MetaVirtualModifier mouse_button_mods = Mod1Mask;
 static GDesktopFocusMode focus_mode = G_DESKTOP_FOCUS_MODE_CLICK;
 static GDesktopFocusNewWindows focus_new_windows = G_DESKTOP_FOCUS_NEW_WINDOWS_SMART;
 static gboolean raise_on_click = TRUE;
+static gboolean attach_modal_dialogs = FALSE;
 static char* current_theme = NULL;
 static int num_workspaces = 4;
 static GDesktopTitlebarAction action_double_click_titlebar = G_DESKTOP_TITLEBAR_ACTION_TOGGLE_MAXIMIZE;
@@ -258,6 +259,14 @@ static MetaEnumPreference preferences_enum[] =
 
 static MetaBoolPreference preferences_bool[] =
   {
+    {
+      { "attach-modal-dialogs",
+        SCHEMA_METACITY,
+        META_PREF_ATTACH_MODAL_DIALOGS
+      },
+      &attach_modal_dialogs,
+      TRUE,
+    },
     {
       { "raise-on-click",
         SCHEMA_GENERAL,
@@ -915,6 +924,12 @@ meta_prefs_get_focus_new_windows (void)
 }
 
 gboolean
+meta_prefs_get_attach_modal_dialogs (void)
+{
+  return attach_modal_dialogs;
+}
+
+gboolean
 meta_prefs_get_raise_on_click (void)
 {
   /* Force raise_on_click on for click-to-focus, as requested by Havoc
@@ -1352,6 +1367,9 @@ meta_preference_to_string (MetaPreference pref)
 
     case META_PREF_FOCUS_NEW_WINDOWS:
       return "FOCUS_NEW_WINDOWS";
+
+    case META_PREF_ATTACH_MODAL_DIALOGS:
+      return "ATTACH_MODAL_DIALOGS";
 
     case META_PREF_RAISE_ON_CLICK:
       return "RAISE_ON_CLICK";
