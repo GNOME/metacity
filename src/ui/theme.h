@@ -587,6 +587,7 @@ struct _MetaDrawOp
       MetaColorSpec *color_spec;
       MetaDrawSpec *x;
       MetaDrawSpec *y;
+      MetaDrawSpec *ellipsize_width;
     } title;
 
     struct {
