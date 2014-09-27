@@ -278,6 +278,7 @@ typedef enum
 {
   META_COLOR_SPEC_BASIC,
   META_COLOR_SPEC_GTK,
+  META_COLOR_SPEC_GTK_CUSTOM,
   META_COLOR_SPEC_BLEND,
   META_COLOR_SPEC_SHADE
 } MetaColorSpecType;
@@ -307,6 +308,10 @@ struct _MetaColorSpec
       MetaGtkColorComponent component;
       GtkStateFlags state;
     } gtk;
+    struct {
+      char *color_name;
+      MetaColorSpec *fallback;
+    } gtkcustom;
     struct {
       MetaColorSpec *foreground;
       MetaColorSpec *background;
