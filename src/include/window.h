@@ -33,5 +33,6 @@ MetaRectangle *meta_window_get_rect (MetaWindow *window);
 MetaScreen *meta_window_get_screen (MetaWindow *window);
 MetaDisplay *meta_window_get_display (MetaWindow *window);
 Window meta_window_get_xwindow (MetaWindow *window);
+MetaWindow *meta_window_get_transient_for (MetaWindow *window);
 
 #endif
