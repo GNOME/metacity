@@ -26,7 +26,7 @@
 #include "frame-private.h"
 
 void meta_window_place (MetaWindow *window,
-                        MetaFrameGeometry *fgeom,
+                        MetaFrameBorders *borders,
                         int         x,
                         int         y,
                         int        *new_x,
