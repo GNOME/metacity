@@ -23,3 +23,5 @@ test_gravity_LDADD= @METACITY_LIBS@
 test_resizing_LDADD= @METACITY_LIBS@
 test_size_hints_LDADD= @METACITY_LIBS@
 focus_window_LDADD= @METACITY_LIBS@
+
+-include $(top_srcdir)/git.mk

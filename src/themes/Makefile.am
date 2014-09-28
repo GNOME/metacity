@@ -48,3 +48,5 @@ dist-hook:
 		    	cp $$i $(distdir)/$$THEME;					\
 	  	 done)									\
 	done
+
+-include $(top_srcdir)/git.mk

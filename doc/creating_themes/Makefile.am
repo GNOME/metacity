@@ -12,4 +12,4 @@ HELP_FILES = index.docbook
 HELP_LINGUAS = de
 
 
-
+-include $(top_srcdir)/git.mk

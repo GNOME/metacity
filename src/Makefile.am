@@ -206,3 +206,4 @@ EXTRA_DIST=$(desktopfiles_files)	 	\
 	$(xml_in_files)				\
 	libmetacity-private.pc.in
 
+-include $(top_srcdir)/git.mk

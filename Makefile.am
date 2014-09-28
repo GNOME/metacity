@@ -1,7 +1,29 @@
+SUBDIRS = \
+	src \
+	po \
+	doc
 
-SUBDIRS=src po doc
+EXTRA_DIST = \
+	HACKING \
+	MAINTAINERS \
+	rationales.txt
 
-EXTRA_DIST = HACKING MAINTAINERS rationales.txt \
-	intltool-extract.in intltool-merge.in intltool-update.in
+MAINTAINERCLEANFILES = \
+	$(srcdir)/INSTALL \
+	$(srcdir)/aclocal.m4 \
+	$(srcdir)/compile \
+	$(srcdir)/config.guess \
+	$(srcdir)/config.h.in \
+	$(srcdir)/config.h.in~ \
+	$(srcdir)/config.sub \
+	$(srcdir)/depcomp \
+	$(srcdir)/install-sh \
+	$(srcdir)/ltmain.sh \
+	$(srcdir)/missing \
+	`find "$(srcdir)" -type f -name Makefile.in -print` \
+	$(srcdir)/configure
 
-DISTCLEANFILES = intltool-extract intltool-merge intltool-update po/stamp-it po/.intltool-merge-cache
+GITIGNOREFILES = \
+	$(PACKAGE)-\*.tar.{gz,bz2,xz}
+
+-include $(top_srcdir)/git.mk

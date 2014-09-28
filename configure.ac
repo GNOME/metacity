@@ -16,6 +16,8 @@ AM_INIT_AUTOMAKE([1.11.1 no-dist-gzip dist-xz])
 m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])],)
 AM_MAINTAINER_MODE([enable])
 
+GNOME_MAINTAINER_MODE_DEFINES
+
 # Honor aclocal flags
 AC_SUBST(ACLOCAL_AMFLAGS, "\${ACLOCAL_FLAGS}")
 
