@@ -75,6 +75,7 @@ metacity_SOURCES= 				\
 	core/workspace.h			\
 	core/xprops.c				\
 	include/xprops.h			\
+	core/common.c \
 	include/common.h			\
 	include/core.h				\
 	include/ui.h				\
@@ -110,6 +111,7 @@ libmetacity_private_la_SOURCES=			\
 	ui/gradient.h				\
 	core/util.c				\
 	include/util.h				\
+	core/common.c \
 	include/common.h			\
 	ui/preview-widget.c			\
 	ui/preview-widget.h			\

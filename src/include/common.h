@@ -267,6 +267,10 @@ struct _MetaFrameBorders
    */
   GtkBorder visible;
 };
+
+/* sets all dimensions to zero */
+void meta_frame_borders_clear (MetaFrameBorders *self);
+
 /* should investigate changing these to whatever most apps use */
 #define META_ICON_WIDTH 96
 #define META_ICON_HEIGHT 96
