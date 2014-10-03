@@ -1279,37 +1279,17 @@ meta_screen_ensure_tab_popup (MetaScreen      *screen,
        */
 #define OUTLINE_WIDTH 5
       /* Top side */
-      if (!entries[i].hidden &&
-          window->frame && window->frame->bottom_height > 0 &&
-          window->frame->child_y >= window->frame->bottom_height)
-        entries[i].inner_rect.y = window->frame->bottom_height;
-      else
-        entries[i].inner_rect.y = OUTLINE_WIDTH;
+      entries[i].inner_rect.y = OUTLINE_WIDTH;
 
       /* Bottom side */
-      if (!entries[i].hidden &&
-          window->frame && window->frame->bottom_height != 0)
-        entries[i].inner_rect.height = r.height
-          - entries[i].inner_rect.y - window->frame->bottom_height;
-      else
-        entries[i].inner_rect.height = r.height
-          - entries[i].inner_rect.y - OUTLINE_WIDTH;
+      entries[i].inner_rect.height = r.height - entries[i].inner_rect.y - OUTLINE_WIDTH;
 
       /* Left side */
-      if (!entries[i].hidden && window->frame && window->frame->child_x != 0)
-        entries[i].inner_rect.x = window->frame->child_x;
-      else
-        entries[i].inner_rect.x = OUTLINE_WIDTH;
+      entries[i].inner_rect.x = OUTLINE_WIDTH;
 
       /* Right side */
-      if (!entries[i].hidden &&
-          window->frame && window->frame->right_width != 0)
-        entries[i].inner_rect.width = r.width
-          - entries[i].inner_rect.x - window->frame->right_width;
-      else
-        entries[i].inner_rect.width = r.width
-          - entries[i].inner_rect.x - OUTLINE_WIDTH;
-      
+        entries[i].inner_rect.width = r.width - entries[i].inner_rect.x - OUTLINE_WIDTH;
+
       ++i;
       tmp = tmp->next;
     }
