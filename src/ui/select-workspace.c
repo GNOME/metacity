@@ -1,7 +1,5 @@
 /* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
 
-/* Metacity popup window thing showing windows you can tab to */
-
 /* 
  * Copyright (C) 2001 Havoc Pennington
  * Copyright (C) 2002 Red Hat, Inc.
@@ -31,49 +29,13 @@
 #define SELECT_OUTLINE_WIDTH 2
 #define MINI_WORKSPACE_WIDTH 48
 
-static void meta_select_workspace_class_init (MetaSelectWorkspaceClass *klass);
-
-static gboolean meta_select_workspace_draw (GtkWidget *widget,
-                                            cairo_t   *cr);
-
-GType
-meta_select_workspace_get_type (void)
+struct _MetaSelectWorkspacePrivate
 {
-  static GType workspace_type = 0;
+  MetaWorkspace *workspace;
+  gboolean       selected;
+};
 
-  if (!workspace_type)
-    {
-      static const GTypeInfo workspace_info =
-      {
-        sizeof (MetaSelectWorkspaceClass),
-        NULL,           /* base_init */
-        NULL,           /* base_finalize */
-        (GClassInitFunc) meta_select_workspace_class_init,
-        NULL,           /* class_finalize */
-        NULL,           /* class_data */
-        sizeof (MetaSelectWorkspace),
-        16,             /* n_preallocs */
-        (GInstanceInitFunc) NULL,
-      };
-
-      workspace_type = g_type_register_static (GTK_TYPE_DRAWING_AREA, 
-                                               "MetaSelectWorkspace", 
-                                               &workspace_info, 
-                                               0);
-    }
-
-  return workspace_type;
-}
-
-static void
-meta_select_workspace_class_init (MetaSelectWorkspaceClass *klass)
-{
-  GtkWidgetClass *widget_class;
-  
-  widget_class = GTK_WIDGET_CLASS (klass);
-  
-  widget_class->draw = meta_select_workspace_draw;
-}
+G_DEFINE_TYPE_WITH_PRIVATE (MetaSelectWorkspace, meta_select_workspace, GTK_TYPE_DRAWING_AREA);
 
 /**
  * meta_convert_meta_to_wnck() converts a MetaWindow to a
@@ -113,14 +75,16 @@ static gboolean
 meta_select_workspace_draw (GtkWidget *widget,
                             cairo_t   *cr)
 {
+  MetaSelectWorkspace *select;
   MetaWorkspace *workspace;
   WnckWindowDisplayInfo *windows;
   GtkAllocation allocation;
   int i, n_windows;
   GList *tmp, *list;
 
-  workspace = META_SELECT_WORKSPACE (widget)->workspace;
-              
+  select = META_SELECT_WORKSPACE (widget);
+  workspace = select->priv->workspace;
+
   list = meta_stack_list_windows (workspace->screen->stack, workspace);
   n_windows = g_list_length (list);
   windows = g_new (WnckWindowDisplayInfo, n_windows);
@@ -171,7 +135,7 @@ meta_select_workspace_draw (GtkWidget *widget,
 
   g_free (windows);
   
-  if (META_SELECT_WORKSPACE (widget)->selected)
+  if (select->priv->selected)
     {
       GtkStyleContext *context;
       GdkRGBA color;
@@ -194,4 +158,83 @@ meta_select_workspace_draw (GtkWidget *widget,
     }
 
   return TRUE;
+}
+
+static void
+meta_select_workspace_get_preferred_width (GtkWidget *widget,
+                                           gint      *minimum_width,
+                                           gint      *natural_width)
+{
+  GTK_WIDGET_CLASS (meta_select_workspace_parent_class)->get_preferred_width (widget,
+                                                                              minimum_width,
+                                                                              natural_width);
+
+  *minimum_width += SELECT_OUTLINE_WIDTH * 2;
+  *natural_width += SELECT_OUTLINE_WIDTH * 2;
+}
+
+static void
+meta_select_workspace_get_preferred_height (GtkWidget *widget,
+                                            gint      *minimum_height,
+                                            gint      *natural_height)
+{
+  GTK_WIDGET_CLASS (meta_select_workspace_parent_class)->get_preferred_height (widget,
+                                                                               minimum_height,
+                                                                               natural_height);
+
+  *minimum_height += SELECT_OUTLINE_WIDTH * 2;
+  *natural_height += SELECT_OUTLINE_WIDTH * 2;
+}
+
+static void
+meta_select_workspace_init (MetaSelectWorkspace *workspace)
+{
+  workspace->priv = meta_select_workspace_get_instance_private (workspace);
+}
+
+static void
+meta_select_workspace_class_init (MetaSelectWorkspaceClass *class)
+{
+  GtkWidgetClass *widget_class;
+
+  widget_class = GTK_WIDGET_CLASS (class);
+
+  widget_class->draw = meta_select_workspace_draw;
+  widget_class->get_preferred_width = meta_select_workspace_get_preferred_width;
+  widget_class->get_preferred_height = meta_select_workspace_get_preferred_height;
+}
+
+GtkWidget *
+meta_select_workspace_new (MetaWorkspace *workspace)
+{
+  GtkWidget *widget;
+  MetaSelectWorkspace *select;
+  double screen_aspect;
+
+  widget = g_object_new (META_TYPE_SELECT_WORKSPACE, NULL);
+  select = META_SELECT_WORKSPACE (widget);
+  screen_aspect = (double) workspace->screen->rect.height /
+                  (double) workspace->screen->rect.width;
+
+  gtk_widget_set_size_request (widget,
+                               MINI_WORKSPACE_WIDTH + SELECT_OUTLINE_WIDTH * 2,
+                               MINI_WORKSPACE_WIDTH * screen_aspect + SELECT_OUTLINE_WIDTH * 2);
+
+  select->priv->workspace = workspace;
+
+  return widget;
+}
+
+void
+meta_select_workspace_select (MetaSelectWorkspace *workspace)
+{
+  workspace->priv->selected = TRUE;
+  gtk_widget_queue_draw (GTK_WIDGET (workspace));
+}
+
+void
+meta_select_workspace_unselect (MetaSelectWorkspace *workspace)
+{
+  workspace->priv->selected = FALSE;
+  gtk_widget_queue_draw (GTK_WIDGET (workspace));
 }

@@ -31,9 +31,6 @@
 #include <gtk/gtk.h>
 #include <math.h>
 
-#define OUTSIDE_SELECT_RECT 2
-#define INSIDE_SELECT_RECT 2
-
 typedef struct _TabEntry TabEntry;
 
 struct _TabEntry
@@ -57,10 +54,6 @@ struct _MetaTabPopup
   GtkWidget *outline_window;
   gboolean outline;
 };
-
-static GtkWidget* selectable_workspace_new (MetaWorkspace *workspace);
-static void       select_workspace         (GtkWidget *widget);
-static void       unselect_workspace       (GtkWidget *widget);
 
 static gboolean
 outline_window_draw (GtkWidget *widget,
@@ -347,7 +340,7 @@ meta_ui_tab_popup_new (const MetaTabEntry *entries,
             }   
           else
             {
-              image = selectable_workspace_new ((MetaWorkspace *) te->key);
+              image = meta_select_workspace_new ((MetaWorkspace *) te->key);
             }
 
           te->widget = image;
@@ -450,15 +443,15 @@ display_entry (MetaTabPopup *popup,
     if (popup->outline)
       meta_select_image_unselect (META_SELECT_IMAGE (popup->current_selected_entry->widget));
     else
-      unselect_workspace (popup->current_selected_entry->widget);
+      meta_select_workspace_unselect (META_SELECT_WORKSPACE (popup->current_selected_entry->widget));
   }
-  
+
   gtk_label_set_markup (GTK_LABEL (popup->label), te->title);
 
   if (popup->outline)
     meta_select_image_select (META_SELECT_IMAGE (te->widget));
   else
-    select_workspace (te->widget);
+    meta_select_workspace_select (META_SELECT_WORKSPACE (te->widget));
 
   if (popup->outline)
     {
@@ -576,42 +569,4 @@ meta_ui_tab_popup_select (MetaTabPopup *popup,
       
       tmp = tmp->next;
     }
-}
-
-#define SELECT_OUTLINE_WIDTH 2
-#define MINI_WORKSPACE_WIDTH 48
-
-static GtkWidget*
-selectable_workspace_new (MetaWorkspace *workspace)
-{
-  GtkWidget *widget;
-  double screen_aspect;
-  
-  widget = g_object_new (meta_select_workspace_get_type (), NULL);
-
-  screen_aspect = (double) workspace->screen->rect.height /
-                  (double) workspace->screen->rect.width;
-  
-  /* account for select rect */ 
-  gtk_widget_set_size_request (widget,
-                               MINI_WORKSPACE_WIDTH + SELECT_OUTLINE_WIDTH * 2,
-                               MINI_WORKSPACE_WIDTH * screen_aspect + SELECT_OUTLINE_WIDTH * 2);
-
-  META_SELECT_WORKSPACE (widget)->workspace = workspace;
-
-  return widget;
-}
-
-static void
-select_workspace (GtkWidget *widget)
-{
-  META_SELECT_WORKSPACE(widget)->selected = TRUE;
-  gtk_widget_queue_draw (widget);
-}
-
-static void
-unselect_workspace (GtkWidget *widget)
-{
-  META_SELECT_WORKSPACE (widget)->selected = FALSE;
-  gtk_widget_queue_draw (widget);
 }

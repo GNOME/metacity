@@ -1,7 +1,5 @@
 /* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
 
-/* Metacity popup window thing showing windows you can tab to */
-
 /* 
  * Copyright (C) 2001 Havoc Pennington
  * Copyright (C) 2002 Red Hat, Inc.
@@ -25,23 +23,23 @@
 #define SELECT_WORKSPACE_H
 
 #include <gtk/gtk.h>
-/* FIXME these two includes are 100% broken ...
- */
 #include "../core/workspace.h"
-#include "../core/frame-private.h"
-#include "draw-workspace.h"
 
-#define META_TYPE_SELECT_WORKSPACE   (meta_select_workspace_get_type ())
-#define META_SELECT_WORKSPACE(obj)   (G_TYPE_CHECK_INSTANCE_CAST ((obj), META_TYPE_SELECT_WORKSPACE, MetaSelectWorkspace))
+#define META_TYPE_SELECT_WORKSPACE         (meta_select_workspace_get_type ())
+#define META_SELECT_WORKSPACE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), META_TYPE_SELECT_WORKSPACE, MetaSelectWorkspace))
+#define META_SELECT_WORKSPACE_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c),    META_TYPE_SELECT_WORKSPACE, MetaSelectWorkspaceClass))
+#define META_IS_SELECT_WORKSPACE(o)        (G_TYPE_CHECK_INSTANCE_CAST ((o), META_TYPE_SELECT_WORKSPACE))
+#define META_IS_SELECT_WORKSPACE_CLASS(c)  (G_TYPE_CHECK_CLASS_CAST ((c),    META_TYPE_SELECT_WORKSPACE))
+#define META_SELECT_WORKSPACE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o),  META_TYPE_SELECT_WORKSPACE, MetaSelectWorkspaceClass))
 
-typedef struct _MetaSelectWorkspace       MetaSelectWorkspace;
-typedef struct _MetaSelectWorkspaceClass  MetaSelectWorkspaceClass;
+typedef struct _MetaSelectWorkspace        MetaSelectWorkspace;
+typedef struct _MetaSelectWorkspaceClass   MetaSelectWorkspaceClass;
+typedef struct _MetaSelectWorkspacePrivate MetaSelectWorkspacePrivate;
 
 struct _MetaSelectWorkspace
 {
-  GtkDrawingArea parent_instance;
-  MetaWorkspace *workspace;
-  guint selected : 1;
+  GtkDrawingArea              parent;
+  MetaSelectWorkspacePrivate *priv;
 };
 
 struct _MetaSelectWorkspaceClass
@@ -49,6 +47,9 @@ struct _MetaSelectWorkspaceClass
   GtkDrawingAreaClass parent_class;
 };
 
-GType meta_select_workspace_get_type (void) G_GNUC_CONST;
+GType      meta_select_workspace_get_type (void) G_GNUC_CONST;
+GtkWidget *meta_select_workspace_new      (MetaWorkspace       *workspace);
+void       meta_select_workspace_select   (MetaSelectWorkspace *image);
+void       meta_select_workspace_unselect (MetaSelectWorkspace *image);
 
 #endif
