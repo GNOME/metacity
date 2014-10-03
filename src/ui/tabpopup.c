@@ -225,18 +225,23 @@ meta_ui_tab_popup_new (const MetaTabEntry *entries,
   int max_label_width; /* the actual max width of the labels we create */
   AtkObject *obj;
   GdkScreen *screen;
+  GdkVisual *visual;
   int screen_width;
   
   popup = g_new (MetaTabPopup, 1);
 
   screen = gdk_display_get_screen (gdk_display_get_default (),
                                    screen_number);
+  visual = gdk_screen_get_rgba_visual (screen);
 
   if (outline)
     {
       GdkRGBA black = { 0.0, 0.0, 0.0, 1.0 };
 
       popup->outline_window = gtk_window_new (GTK_WINDOW_POPUP);
+
+      if (visual)
+        gtk_widget_set_visual (popup->outline_window, visual);
 
       gtk_window_set_screen (GTK_WINDOW (popup->outline_window),
                              screen);
