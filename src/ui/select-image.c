@@ -1,7 +1,5 @@
 /* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
 
-/* Metacity popup window thing showing windows you can tab to */
-
 /* 
  * Copyright (C) 2001 Havoc Pennington
  * Copyright (C) 2002 Red Hat, Inc.
@@ -24,101 +22,120 @@
 #include <config.h>
 #include "select-image.h"
 
-#define OUTSIDE_SELECT_RECT 2
-#define INSIDE_SELECT_RECT 2
+#define BORDER_WIDTH 2
+#define PADDING 3
 
-static void     meta_select_image_class_init   (MetaSelectImageClass *klass);
-static gboolean meta_select_image_draw         (GtkWidget            *widget,
-                                                cairo_t              *cr);
-
-static GtkImageClass *parent_class;
-
-GType
-meta_select_image_get_type (void)
+struct _MetaSelectImagePrivate
 {
-  static GType image_type = 0;
+  gboolean selected;
+};
 
-  if (!image_type)
-    {
-      static const GTypeInfo image_info =
-      {
-        sizeof (MetaSelectImageClass),
-        NULL,           /* base_init */
-        NULL,           /* base_finalize */
-        (GClassInitFunc) meta_select_image_class_init,
-        NULL,           /* class_finalize */
-        NULL,           /* class_data */
-        sizeof (MetaSelectImage),
-        16,             /* n_preallocs */
-        (GInstanceInitFunc) NULL,
-      };
-
-      image_type = g_type_register_static (GTK_TYPE_IMAGE, "MetaSelectImage", &image_info, 0);
-    }
-
-  return image_type;
-}
-
-static void
-meta_select_image_class_init (MetaSelectImageClass *klass)
-{
-  GtkWidgetClass *widget_class;
-  
-  parent_class = g_type_class_peek (gtk_image_get_type ());
-
-  widget_class = GTK_WIDGET_CLASS (klass);
-  
-  widget_class->draw= meta_select_image_draw;
-}
+G_DEFINE_TYPE_WITH_PRIVATE (MetaSelectImage, meta_select_image, GTK_TYPE_IMAGE);
 
 static gboolean
 meta_select_image_draw (GtkWidget *widget,
                         cairo_t   *cr)
 {
-  GtkAllocation allocation;
+  MetaSelectImage *image;
 
-  gtk_widget_get_allocation (widget, &allocation);
+  image = META_SELECT_IMAGE (widget);
 
-  if (META_SELECT_IMAGE (widget)->selected)
+  if (image->priv->selected)
     {
-      GtkMisc *misc;
       GtkRequisition requisition;
       GtkStyleContext *context;
       GdkRGBA color;
       int x, y, w, h;
-      gint xpad, ypad;
-      gfloat xalign, yalign;
 
-      misc = GTK_MISC (widget);
-      
       gtk_widget_get_preferred_size (widget, &requisition, 0);
-      gtk_misc_get_alignment (misc, &xalign, &yalign);
-      gtk_misc_get_padding (misc, &xpad, &ypad);
 
-      x = (allocation.width - (requisition.width - xpad * 2)) * xalign + 0.5;
-      y = (allocation.height - (requisition.height - ypad * 2)) * yalign + 0.5;
-
-      x -= INSIDE_SELECT_RECT + 1;
-      y -= INSIDE_SELECT_RECT + 1;       
-      
-      w = requisition.width - OUTSIDE_SELECT_RECT * 2 - 1;
-      h = requisition.height - OUTSIDE_SELECT_RECT * 2 - 1;
+      x = BORDER_WIDTH;
+      y = BORDER_WIDTH;
+      w = requisition.width - BORDER_WIDTH * 2;
+      h = requisition.height - BORDER_WIDTH * 2;
 
       context = gtk_widget_get_style_context (widget);
 
-      gtk_style_context_set_state (context,
-                                   gtk_widget_get_state_flags (widget));
-
+      gtk_style_context_set_state (context, gtk_widget_get_state_flags (widget));
       gtk_style_context_lookup_color (context, "color", &color);
 
       cairo_set_line_width (cr, 2.0);
       cairo_set_source_rgb (cr, color.red, color.green, color.blue);
 
-      cairo_rectangle (cr, x, y, w + 1, h + 1);
+      cairo_rectangle (cr, x, y, w, h);
       cairo_stroke (cr);
 
       cairo_set_line_width (cr, 1.0);
     }
 
-  return GTK_WIDGET_CLASS (parent_class)->draw (widget, cr);
+  return GTK_WIDGET_CLASS (meta_select_image_parent_class)->draw (widget, cr);
+}
+
+static void
+meta_select_image_get_preferred_width (GtkWidget *widget,
+                                       gint      *minimum_width,
+                                       gint      *natural_width)
+{
+  GTK_WIDGET_CLASS (meta_select_image_parent_class)->get_preferred_width (widget,
+                                                                          minimum_width,
+                                                                          natural_width);
+
+  *minimum_width += (BORDER_WIDTH + PADDING) * 2;
+  *natural_width += (BORDER_WIDTH + PADDING) * 2;
+}
+
+static void
+meta_select_image_get_preferred_height (GtkWidget *widget,
+                                        gint      *minimum_height,
+                                        gint      *natural_height)
+{
+  GTK_WIDGET_CLASS (meta_select_image_parent_class)->get_preferred_height (widget,
+                                                                           minimum_height,
+                                                                           natural_height);
+
+  *minimum_height += (BORDER_WIDTH + PADDING) * 2;
+  *natural_height += (BORDER_WIDTH + PADDING) * 2;
+}
+
+static void
+meta_select_image_init (MetaSelectImage *image)
+{
+  image->priv = meta_select_image_get_instance_private (image);
+}
+
+static void
+meta_select_image_class_init (MetaSelectImageClass *class)
+{
+  GtkWidgetClass *widget_class;
+
+  widget_class = GTK_WIDGET_CLASS (class);
+
+  widget_class->draw = meta_select_image_draw;
+  widget_class->get_preferred_width = meta_select_image_get_preferred_width;
+  widget_class->get_preferred_height = meta_select_image_get_preferred_height;
+}
+
+GtkWidget *
+meta_select_image_new (GdkPixbuf *pixbuf)
+{
+  GtkWidget *widget;
+
+  widget = g_object_new (META_TYPE_SELECT_IMAGE, NULL);
+  gtk_image_set_from_pixbuf (GTK_IMAGE (widget), pixbuf);
+
+  return widget;
+}
+
+void
+meta_select_image_select (MetaSelectImage *image)
+{
+  image->priv->selected = TRUE;
+  gtk_widget_queue_draw (GTK_WIDGET (image));
+}
+
+void
+meta_select_image_unselect (MetaSelectImage *image)
+{
+  image->priv->selected = FALSE;
+  gtk_widget_queue_draw (GTK_WIDGET (image));
 }

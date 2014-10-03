@@ -62,10 +62,6 @@ struct _MetaTabPopup
   gboolean outline;
 };
 
-static GtkWidget* selectable_image_new (GdkPixbuf *pixbuf);
-static void       select_image         (GtkWidget *widget);
-static void       unselect_image       (GtkWidget *widget);
-
 static GtkWidget* selectable_workspace_new (MetaWorkspace *workspace);
 static void       select_workspace         (GtkWidget *widget);
 static void       unselect_workspace       (GtkWidget *widget);
@@ -343,17 +339,15 @@ meta_ui_tab_popup_new (const MetaTabEntry *entries,
             {
               if (te->dimmed_icon)
                 {
-                  image = selectable_image_new (te->dimmed_icon);
+                  image = meta_select_image_new (te->dimmed_icon);
                 }
               else 
                 {
-                  image = selectable_image_new (te->icon);
+                  image = meta_select_image_new (te->icon);
                 }
 
-              gtk_misc_set_padding (GTK_MISC (image),
-                                    INSIDE_SELECT_RECT + OUTSIDE_SELECT_RECT + 1,
-                                    INSIDE_SELECT_RECT + OUTSIDE_SELECT_RECT + 1);
-              gtk_misc_set_alignment (GTK_MISC (image), 0.5, 0.5);
+              gtk_widget_set_halign (image, GTK_ALIGN_CENTER);
+              gtk_widget_set_valign (image, GTK_ALIGN_CENTER);
             }   
           else
             {
@@ -458,7 +452,7 @@ display_entry (MetaTabPopup *popup,
   if (popup->current_selected_entry)
   {
     if (popup->outline)
-      unselect_image (popup->current_selected_entry->widget);
+      meta_select_image_unselect (META_SELECT_IMAGE (popup->current_selected_entry->widget));
     else
       unselect_workspace (popup->current_selected_entry->widget);
   }
@@ -466,7 +460,7 @@ display_entry (MetaTabPopup *popup,
   gtk_label_set_markup (GTK_LABEL (popup->label), te->title);
 
   if (popup->outline)
-    select_image (te->widget);
+    meta_select_image_select (META_SELECT_IMAGE (te->widget));
   else
     select_workspace (te->widget);
 
@@ -586,33 +580,6 @@ meta_ui_tab_popup_select (MetaTabPopup *popup,
       
       tmp = tmp->next;
     }
-}
-
-
-
-static GtkWidget*
-selectable_image_new (GdkPixbuf *pixbuf)
-{
-  GtkWidget *w;
-
-  w = g_object_new (meta_select_image_get_type (), NULL);
-  gtk_image_set_from_pixbuf (GTK_IMAGE (w), pixbuf); 
-
-  return w;
-}
-
-static void
-select_image (GtkWidget *widget)
-{
-  META_SELECT_IMAGE (widget)->selected = TRUE;
-  gtk_widget_queue_draw (widget);
-}
-
-static void
-unselect_image (GtkWidget *widget)
-{
-  META_SELECT_IMAGE (widget)->selected = FALSE;
-  gtk_widget_queue_draw (widget);
 }
 
 #define META_TYPE_SELECT_WORKSPACE   (meta_select_workspace_get_type ())
