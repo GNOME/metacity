@@ -94,6 +94,8 @@ metacity_SOURCES= 				\
 	include/tabpopup.h				\
 	ui/select-image.c \
 	ui/select-image.h \
+	ui/select-workspace.c \
+	ui/select-workspace.h \
 	ui/tile-preview.c \
 	include/tile-preview.h \
 	ui/theme-parser.c			\
