@@ -33,7 +33,6 @@
 #include "draw-workspace.h"
 #include <gtk/gtk.h>
 #include <math.h>
-#include <X11/Xatom.h>
 
 #define OUTSIDE_SELECT_RECT 2
 #define INSIDE_SELECT_RECT 2
@@ -236,10 +235,6 @@ meta_ui_tab_popup_new (const MetaTabEntry *entries,
   if (outline)
     {
       GdkRGBA black = { 0.0, 0.0, 0.0, 1.0 };
-      unsigned long data[1];
-      GdkWindow *window;
-      Display *xdisplay;
-      Window xwindow;
 
       popup->outline_window = gtk_window_new (GTK_WINDOW_POPUP);
 
@@ -248,17 +243,6 @@ meta_ui_tab_popup_new (const MetaTabEntry *entries,
 
       gtk_widget_set_app_paintable (popup->outline_window, TRUE);
       gtk_widget_realize (popup->outline_window);
-
-      window = gtk_widget_get_window (popup->outline_window);
-      xdisplay = GDK_WINDOW_XDISPLAY (window);
-      xwindow = GDK_WINDOW_XID (window);
-      data[0] = 0;
-
-      gdk_error_trap_push ();
-      XChangeProperty (xdisplay, xwindow, XInternAtom (xdisplay, "METACITY_WINDOW_HAVE_SHADOW", False),
-                       XA_CARDINAL, 32, PropModeReplace,
-                       (guchar *) data, 1);
-      gdk_error_trap_pop_ignored ();
 
       gdk_window_set_background_rgba (gtk_widget_get_window (popup->outline_window),
                                       &black);
