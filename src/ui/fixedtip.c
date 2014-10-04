@@ -102,7 +102,8 @@ meta_fixed_tip_show (int screen_number,
 
       label = gtk_label_new (NULL);
       gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
-      gtk_misc_set_alignment (GTK_MISC (label), 0.5, 0.5);
+      gtk_widget_set_halign (label, GTK_ALIGN_CENTER);
+      gtk_widget_set_valign (label, GTK_ALIGN_CENTER);
       gtk_widget_show (label);
       
       gtk_container_add (GTK_CONTAINER (tip), label);
