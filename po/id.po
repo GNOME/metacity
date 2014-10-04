@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: metacity master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-09-04 21:49+0000\n"
-"PO-Revision-Date: 2014-09-05 08:22+0700\n"
+"POT-Creation-Date: 2014-10-04 10:07+0000\n"
+"PO-Revision-Date: 2014-10-04 18:40+0700\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: GNOME Indonesian Translation Team <gnome@i15n.org>\n"
 "Language: id\n"
@@ -205,7 +205,7 @@ msgstr "Maksimalkan ukuran jendela secara horisontal"
 msgid "Bell event"
 msgstr "Peristiwa bel"
 
-#: ../src/core/core.c:205
+#: ../src/core/core.c:209
 #, c-format
 msgid "Unknown window information request: %d"
 msgstr "Permintaan informasi jendela tak dikenal: %d"
@@ -327,7 +327,7 @@ msgstr "Tak menemukan tema! Pastikan %s ada dan berisi tema yang biasa.\n"
 msgid "Failed to restart: %s\n"
 msgstr "Gagal menjalankan ulang: %s\n"
 
-#: ../src/core/prefs.c:894
+#: ../src/core/prefs.c:903
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -335,12 +335,12 @@ msgstr ""
 "Pencegahan kesalahan bagi aplikasi yang rusak sedang dinonaktifkan. Mungkin "
 "nanti ada beberapa aplikasi yang akan bertingkah aneh.\n"
 
-#: ../src/core/prefs.c:962
+#: ../src/core/prefs.c:977
 #, c-format
 msgid "Could not parse font description \"%s\" from GSettings key %s\n"
 msgstr "Tidak dapat mengurai deskripsi fonta \"%s\" dari kunci GSettings %s\n"
 
-#: ../src/core/prefs.c:1028
+#: ../src/core/prefs.c:1043
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -349,7 +349,7 @@ msgstr ""
 "\"%s\" yang ada pada database konfigurasi bukanlah nilai yang benar untuk "
 "tombol mouse.\n"
 
-#: ../src/core/prefs.c:1513
+#: ../src/core/prefs.c:1531
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -358,7 +358,7 @@ msgstr ""
 "\"%s\" yang ada pada database konfigurasi bernilai tidak benar untuk "
 "kombinasi tombol \"%s\"\n"
 
-#: ../src/core/prefs.c:1620
+#: ../src/core/prefs.c:1638
 #, c-format
 msgid "Workspace %d"
 msgstr "Area kerja %d"
@@ -493,7 +493,7 @@ msgid "Metacity"
 msgstr "Metacity"
 
 #. first time through
-#: ../src/core/window.c:5771
+#: ../src/core/window.c:5810
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -509,7 +509,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: ../src/core/window.c:6336
+#: ../src/core/window.c:6375
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size "
@@ -583,20 +583,34 @@ msgstr ""
 "Properti %s pada jendela 0x%lx di obyek %d berisi karakter UTF-8 yang salah\n"
 
 #: ../src/org.gnome.metacity.gschema.xml.in.h:1
+msgid "Attach modal dialogs"
+msgstr "Lampirkan dialog modal"
+
+#: ../src/org.gnome.metacity.gschema.xml.in.h:2
+msgid ""
+"When true, instead of having independent titlebars, modal dialogs appear "
+"attached to the titlebar of the parent window and are moved together with "
+"the parent window."
+msgstr ""
+"Bila berisi true, sebagai ganti memiliki bilah judul independen, dialog "
+"modal akan muncul dilampirkan ke bilah judul jendela induk dan bergerak "
+"bersama dengan jendela induk."
+
+#: ../src/org.gnome.metacity.gschema.xml.in.h:3
 msgid "Compositing Manager"
 msgstr "Manajer Pengkomposisian"
 
-#: ../src/org.gnome.metacity.gschema.xml.in.h:2
+#: ../src/org.gnome.metacity.gschema.xml.in.h:4
 msgid "Determines whether Metacity is a compositing manager."
 msgstr "Menentukan apakah Metacity adalah suatu manajer pengkomposisian."
 
-#: ../src/org.gnome.metacity.gschema.xml.in.h:3
+#: ../src/org.gnome.metacity.gschema.xml.in.h:5
 msgid "If true, trade off usability for less resource usage"
 msgstr ""
 "Bila bernilai true, mementingkan penggunaan sumber daya yang lebih kecil "
 "dari pada daya guna"
 
-#: ../src/org.gnome.metacity.gschema.xml.in.h:4
+#: ../src/org.gnome.metacity.gschema.xml.in.h:6
 msgid ""
 "If true, metacity will give the user less feedback by using wireframes, "
 "avoiding animations, or other means. This is a significant reduction in "
@@ -611,11 +625,11 @@ msgstr ""
 "untuk server terminal. Bagaimanapun, fitur bingkai kawat akan dimatikan saat "
 "kemudahan akses dinyalakan."
 
-#: ../src/org.gnome.metacity.gschema.xml.in.h:5
+#: ../src/org.gnome.metacity.gschema.xml.in.h:7
 msgid "Enable edge tiling when dropping windows on screen edges"
 msgstr "Fungsikan pengubinan tepi ketika menjatuhkan jendela pada tepi layar"
 
-#: ../src/org.gnome.metacity.gschema.xml.in.h:6
+#: ../src/org.gnome.metacity.gschema.xml.in.h:8
 msgid ""
 "If enabled, dropping windows on vertical screen edges maximizes them "
 "vertically and resizes them horizontally to cover half of the available "
@@ -626,11 +640,11 @@ msgstr ""
 "sehingga mencakup separuh dari area yang tersedia. Menjatuhkan jendela pada "
 "tepi atas layar memaksimalkan mereka sepenuhnya."
 
-#: ../src/org.gnome.metacity.gschema.xml.in.h:7
+#: ../src/org.gnome.metacity.gschema.xml.in.h:9
 msgid "Window placement behavior"
 msgstr "Perilaku penempatan jendela"
 
-#: ../src/org.gnome.metacity.gschema.xml.in.h:8
+#: ../src/org.gnome.metacity.gschema.xml.in.h:10
 msgid ""
 "Metacity's default window-placement behavior is smart (first-fit), similar "
 "to behaviors in some other window managers. It will try to tile windows so "
@@ -653,47 +667,47 @@ msgstr ""
 msgid "Usage: %s\n"
 msgstr "Cara pakai: %s\n"
 
-#: ../src/ui/frames.c:1096
+#: ../src/ui/frames.c:1095
 msgid "Close Window"
 msgstr "Tutup Jendela"
 
-#: ../src/ui/frames.c:1099
+#: ../src/ui/frames.c:1098
 msgid "Window Menu"
 msgstr "Menu Jendela"
 
-#: ../src/ui/frames.c:1102
+#: ../src/ui/frames.c:1101
 msgid "Minimize Window"
 msgstr "Kecilkan Jendela"
 
-#: ../src/ui/frames.c:1105
+#: ../src/ui/frames.c:1104
 msgid "Maximize Window"
 msgstr "Maksimalkan Ukuran Jendela"
 
-#: ../src/ui/frames.c:1108
+#: ../src/ui/frames.c:1107
 msgid "Restore Window"
 msgstr "Kembalikan Ukuran jendela"
 
-#: ../src/ui/frames.c:1111
+#: ../src/ui/frames.c:1110
 msgid "Roll Up Window"
 msgstr "Gulung Jendela"
 
-#: ../src/ui/frames.c:1114
+#: ../src/ui/frames.c:1113
 msgid "Unroll Window"
 msgstr "Buka Gulungan Jendela"
 
-#: ../src/ui/frames.c:1117
+#: ../src/ui/frames.c:1116
 msgid "Keep Window On Top"
 msgstr "Jaga Jendela Di Puncak"
 
-#: ../src/ui/frames.c:1120
+#: ../src/ui/frames.c:1119
 msgid "Remove Window From Top"
 msgstr "Hapus Jendela Dari Puncak"
 
-#: ../src/ui/frames.c:1123
+#: ../src/ui/frames.c:1122
 msgid "Always On Visible Workspace"
 msgstr "Selalu di Area Kerja Tampak"
 
-#: ../src/ui/frames.c:1126
+#: ../src/ui/frames.c:1125
 msgid "Put Window On Only One Workspace"
 msgstr "Menempatkan Jendela Hanya di Satu Area Kerja"
 
@@ -896,48 +910,75 @@ msgstr "Mod5"
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: ../src/ui/theme.c:250
+#: ../src/ui/theme.c:251
 msgid "top"
 msgstr "atas"
 
-#: ../src/ui/theme.c:252
+#: ../src/ui/theme.c:253
 msgid "bottom"
 msgstr "bawah"
 
-#: ../src/ui/theme.c:254
+#: ../src/ui/theme.c:255
 msgid "left"
 msgstr "kiri"
 
-#: ../src/ui/theme.c:256
+#: ../src/ui/theme.c:257
 msgid "right"
 msgstr "kanan"
 
-#: ../src/ui/theme.c:283
+#: ../src/ui/theme.c:284
 #, c-format
 msgid "frame geometry does not specify \"%s\" dimension"
 msgstr "geometri rangka tidak menyebutkan dimensi \"%s\""
 
-#: ../src/ui/theme.c:302
+#: ../src/ui/theme.c:303
 #, c-format
 msgid "frame geometry does not specify dimension \"%s\" for border \"%s\""
 msgstr "geometri rangka tidak menyebutkan dimensi \"%s\" untuk batas \"%s\""
 
-#: ../src/ui/theme.c:339
+#: ../src/ui/theme.c:340
 #, c-format
 msgid "Button aspect ratio %g is not reasonable"
 msgstr "Aspek rasio tombol %g tidak wajar"
 
-#: ../src/ui/theme.c:351
+#: ../src/ui/theme.c:352
 #, c-format
 msgid "Frame geometry does not specify size of buttons"
 msgstr "Ukuran frame tidak menyebutkan ukuran tombol"
 
-#: ../src/ui/theme.c:1051
+#: ../src/ui/theme.c:1031
 #, c-format
 msgid "Gradients should have at least two colors"
 msgstr "Gradien harus paling tidak ada dua warna"
 
-#: ../src/ui/theme.c:1222
+#: ../src/ui/theme.c:1214
+#, c-format
+msgid ""
+"GTK custom color specification must have color name and fallback in "
+"parentheses, e.g. gtk:custom(foo,bar); could not parse \"%s\""
+msgstr ""
+"Spesifikasi warna tersuai GTK harus memiliki nama warna dan fallback dalam "
+"kurung, mis. gtk:custom(foo,bar); tak dapat mengurai \"%s\""
+
+#: ../src/ui/theme.c:1230
+#, c-format
+msgid ""
+"Invalid character '%c' in color_name parameter of gtk:custom, only A-Za-z0-9-"
+"_ are valid"
+msgstr ""
+"Karakter tak valid '%c' dalam parameter color_name dari gtk:custom, hanya "
+"A-Za-z0-9-_ yang valid"
+
+#: ../src/ui/theme.c:1244
+#, c-format
+msgid ""
+"Gtk:custom format is \"gtk:custom(color_name,fallback)\", \"%s\" does not "
+"fit the format"
+msgstr ""
+"Format gtk:custom adalah \"gtk:custom(nama_warna,fallback)\", \"%s\" tak pas"
+"dengan format"
+
+#: ../src/ui/theme.c:1288
 #, c-format
 msgid ""
 "GTK color specification must have the state in brackets, e.g. gtk:fg[NORMAL] "
@@ -946,7 +987,7 @@ msgstr ""
 "Spesifikasi warna GTK harus memiliki kondisi pada kurung, misal gtk:"
 "fg[NORMAL] dengan NORMAL adalah jenis kondisinya, tidak dapat membaca \"%s\""
 
-#: ../src/ui/theme.c:1236
+#: ../src/ui/theme.c:1302
 #, c-format
 msgid ""
 "GTK color specification must have a close bracket after the state, e.g. gtk:"
@@ -955,17 +996,17 @@ msgstr ""
 "Spesifikasi warna GTK harus memiliki kurung tutup pada kondisinya, misal gtk:"
 "fg[NORMAL] dengan NORMAL adalah jenis kondisinya, tidak dapat membaca \"%s\""
 
-#: ../src/ui/theme.c:1247
+#: ../src/ui/theme.c:1313
 #, c-format
 msgid "Did not understand state \"%s\" in color specification"
 msgstr "Kondisi \"%s\" tidak benar pada spesifikasi warna"
 
-#: ../src/ui/theme.c:1260
+#: ../src/ui/theme.c:1326
 #, c-format
 msgid "Did not understand color component \"%s\" in color specification"
 msgstr "Komponen warna \"%s\" tidak benar pada spesifikasi warna"
 
-#: ../src/ui/theme.c:1289
+#: ../src/ui/theme.c:1354
 #, c-format
 msgid ""
 "Blend format is \"blend/bg_color/fg_color/alpha\", \"%s\" does not fit the "
@@ -974,19 +1015,19 @@ msgstr ""
 "Format pencampuran adalah \"blend/bg_color/fg_color/alpha\", \"%s\" bukan "
 "ditulis dalam format yang benar"
 
-#: ../src/ui/theme.c:1300
+#: ../src/ui/theme.c:1365
 #, c-format
 msgid "Could not parse alpha value \"%s\" in blended color"
 msgstr "Tidak dapat membaca nilai alpha \"%s\" pada pencampuran warna"
 
-#: ../src/ui/theme.c:1310
+#: ../src/ui/theme.c:1375
 #, c-format
 msgid "Alpha value \"%s\" in blended color is not between 0.0 and 1.0"
 msgstr ""
 "Nilai alpha \"%s\" pada warna yang dicampur tidak ada dalam rentang 0.0 dan "
 "1.0"
 
-#: ../src/ui/theme.c:1357
+#: ../src/ui/theme.c:1421
 #, c-format
 msgid ""
 "Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
@@ -994,27 +1035,27 @@ msgstr ""
 "Format bayangan adalah \"shade/base_color/factor\", \"%s\" ditulis dalam "
 "format yang keliru"
 
-#: ../src/ui/theme.c:1368
+#: ../src/ui/theme.c:1432
 #, c-format
 msgid "Could not parse shade factor \"%s\" in shaded color"
 msgstr "Tidak dapat membaca faktor bayangan \"%s\" pada warna berbayang"
 
-#: ../src/ui/theme.c:1378
+#: ../src/ui/theme.c:1442
 #, c-format
 msgid "Shade factor \"%s\" in shaded color is negative"
 msgstr "Faktor bayangan \"%s\" pada warna berbayang bernilai negatif"
 
-#: ../src/ui/theme.c:1407
+#: ../src/ui/theme.c:1471
 #, c-format
 msgid "Could not parse color \"%s\""
 msgstr "Tidak dapat membaca warna \"%s\""
 
-#: ../src/ui/theme.c:1697
+#: ../src/ui/theme.c:1770
 #, c-format
 msgid "Coordinate expression contains character '%s' which is not allowed"
 msgstr "Ekspresi koordinat berisi karakter '%s' yang tidak diperbolehkan"
 
-#: ../src/ui/theme.c:1724
+#: ../src/ui/theme.c:1797
 #, c-format
 msgid ""
 "Coordinate expression contains floating point number '%s' which could not be "
@@ -1022,12 +1063,12 @@ msgid ""
 msgstr ""
 "Ekspresi koordinat berisi angka floating point '%s' yang tidak dapat dibaca"
 
-#: ../src/ui/theme.c:1738
+#: ../src/ui/theme.c:1811
 #, c-format
 msgid "Coordinate expression contains integer '%s' which could not be parsed"
 msgstr "Ekspresi koordinat berisi integer '%s' yang tidak dapat dibaca"
 
-#: ../src/ui/theme.c:1860
+#: ../src/ui/theme.c:1933
 #, c-format
 msgid ""
 "Coordinate expression contained unknown operator at the start of this text: "
@@ -1035,41 +1076,41 @@ msgid ""
 msgstr ""
 "Ekspresi koordinat berisi operator tak dikenal pada awal teks berikut: \"%s\""
 
-#: ../src/ui/theme.c:1917
+#: ../src/ui/theme.c:1990
 #, c-format
 msgid "Coordinate expression was empty or not understood"
 msgstr "Ekspresi koordinat kosong atau tidak dapat dimengerti"
 
-#: ../src/ui/theme.c:2028 ../src/ui/theme.c:2038 ../src/ui/theme.c:2072
+#: ../src/ui/theme.c:2101 ../src/ui/theme.c:2111 ../src/ui/theme.c:2145
 #, c-format
 msgid "Coordinate expression results in division by zero"
 msgstr "Ekspresi koordinat menghasilkan pembagian dengan nol"
 
-#: ../src/ui/theme.c:2080
+#: ../src/ui/theme.c:2153
 #, c-format
 msgid ""
 "Coordinate expression tries to use mod operator on a floating-point number"
 msgstr "Ekspresi koordinat menggunakan operator mod pada angka bilangan nyata"
 
-#: ../src/ui/theme.c:2136
+#: ../src/ui/theme.c:2209
 #, c-format
 msgid ""
 "Coordinate expression has an operator \"%s\" where an operand was expected"
 msgstr "Ekspresi koordinat menggunakan operator \"%s\" tanpa adanya operan"
 
-#: ../src/ui/theme.c:2145
+#: ../src/ui/theme.c:2218
 #, c-format
 msgid "Coordinate expression had an operand where an operator was expected"
 msgstr "Ekspresi koordinat menggunakan operand tanpa operator"
 
-#: ../src/ui/theme.c:2153
+#: ../src/ui/theme.c:2226
 #, c-format
 msgid "Coordinate expression ended with an operator instead of an operand"
 msgstr ""
 "Ekspresi koordinat diakhiri dengan operator, seharusnya diakhiri dengan "
 "operand"
 
-#: ../src/ui/theme.c:2163
+#: ../src/ui/theme.c:2236
 #, c-format
 msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
@@ -1078,38 +1119,38 @@ msgstr ""
 "Ekspresi koordinat memiliki operator \"%c\" diikuti operator \"%c\" tanpa "
 "adanya operand di antarany"
 
-#: ../src/ui/theme.c:2310 ../src/ui/theme.c:2351
+#: ../src/ui/theme.c:2387 ../src/ui/theme.c:2432
 #, c-format
 msgid "Coordinate expression had unknown variable or constant \"%s\""
 msgstr ""
 "Ada variabel atau konstanta \"%s\" tidak diketahui pada ekspresi koordinat"
 
-#: ../src/ui/theme.c:2405
+#: ../src/ui/theme.c:2486
 #, c-format
 msgid "Coordinate expression parser overflowed its buffer."
 msgstr "Ekspresi koordinat melampaui batasannya."
 
-#: ../src/ui/theme.c:2434
+#: ../src/ui/theme.c:2515
 #, c-format
 msgid "Coordinate expression had a close parenthesis with no open parenthesis"
 msgstr "Terdapat kurung tutup tanpa kurung buka pada ekspresi koordinat"
 
-#: ../src/ui/theme.c:2498
+#: ../src/ui/theme.c:2579
 #, c-format
 msgid "Coordinate expression had an open parenthesis with no close parenthesis"
 msgstr "Terdapat kurung buka tanpa kurung tutup pada ekspresi koordinat "
 
-#: ../src/ui/theme.c:2509
+#: ../src/ui/theme.c:2590
 #, c-format
 msgid "Coordinate expression doesn't seem to have any operators or operands"
 msgstr "Ekspresi koordinat sepertinya tidak memiliki operator atau operan"
 
-#: ../src/ui/theme.c:2713 ../src/ui/theme.c:2733 ../src/ui/theme.c:2753
+#: ../src/ui/theme.c:2794 ../src/ui/theme.c:2814 ../src/ui/theme.c:2834
 #, c-format
 msgid "Theme contained an expression that resulted in an error: %s\n"
 msgstr "Tema berisi suatu ekspresi yang menghasilkan galat: %s\n"
 
-#: ../src/ui/theme.c:4350
+#: ../src/ui/theme.c:4470
 #, c-format
 msgid ""
 "<button function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> must be "
@@ -1118,25 +1159,25 @@ msgstr ""
 "<button function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> tidak "
 "disebutkan pada gaya frame ini"
 
-#: ../src/ui/theme.c:4857 ../src/ui/theme.c:4882
+#: ../src/ui/theme.c:4985 ../src/ui/theme.c:5010
 #, c-format
 msgid ""
 "Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
 msgstr ""
 "<frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/> tidak ada"
 
-#: ../src/ui/theme.c:4926
+#: ../src/ui/theme.c:5054
 #, c-format
 msgid "Failed to load theme \"%s\": %s\n"
 msgstr "Gagal membuka tema \"%s\": %s\n"
 
-#: ../src/ui/theme.c:5056 ../src/ui/theme.c:5063 ../src/ui/theme.c:5070
-#: ../src/ui/theme.c:5077 ../src/ui/theme.c:5084
+#: ../src/ui/theme.c:5186 ../src/ui/theme.c:5193 ../src/ui/theme.c:5200
+#: ../src/ui/theme.c:5207 ../src/ui/theme.c:5214
 #, c-format
 msgid "No <%s> set for theme \"%s\""
 msgstr "Tidak ada <%s> yang ditentukan untuk tema \"%s\""
 
-#: ../src/ui/theme.c:5092
+#: ../src/ui/theme.c:5222
 #, c-format
 msgid ""
 "No frame style set for window type \"%s\" in theme \"%s\", add a <window "
@@ -1145,14 +1186,14 @@ msgstr ""
 "Tidak ada gaya frame untuk tipe window \"%s\" pada tema \"%s\". Tambah dulu "
 "elemen <window type=\"%s\" style_set=\"whatever\"/>"
 
-#: ../src/ui/theme.c:5489 ../src/ui/theme.c:5551 ../src/ui/theme.c:5614
+#: ../src/ui/theme.c:5611 ../src/ui/theme.c:5673 ../src/ui/theme.c:5736
 #, c-format
 msgid ""
 "User-defined constants must begin with a capital letter; \"%s\" does not"
 msgstr ""
 "Konstanta buatan pengguna harus dimulai dengan huruf besar: \"%s\" tidak"
 
-#: ../src/ui/theme.c:5497 ../src/ui/theme.c:5559 ../src/ui/theme.c:5622
+#: ../src/ui/theme.c:5619 ../src/ui/theme.c:5681 ../src/ui/theme.c:5744
 #, c-format
 msgid "Constant \"%s\" has already been defined"
 msgstr "Konstanta \"%s\" telah didefinisikan sebelumnya"
@@ -1160,69 +1201,69 @@ msgstr "Konstanta \"%s\" telah didefinisikan sebelumnya"
 #. Translators: This means that an attribute which should have been found
 #. * on an XML element was not in fact found.
 #.
-#: ../src/ui/theme-parser.c:216
+#: ../src/ui/theme-parser.c:250
 #, c-format
 msgid "No \"%s\" attribute on element <%s>"
 msgstr "Tidak ada atribut \"%s\" pada elemen <%s>"
 
-#: ../src/ui/theme-parser.c:245 ../src/ui/theme-parser.c:263
+#: ../src/ui/theme-parser.c:279 ../src/ui/theme-parser.c:297
 #, c-format
 msgid "Line %d character %d: %s"
 msgstr "Baris %d karakter %d: %s"
 
-#: ../src/ui/theme-parser.c:427
+#: ../src/ui/theme-parser.c:497
 #, c-format
 msgid "Attribute \"%s\" repeated twice on the same <%s> element"
 msgstr "Atribut \"%s\" diulangi dua kali pada elemen <%s> yang sama"
 
-#: ../src/ui/theme-parser.c:451 ../src/ui/theme-parser.c:494
+#: ../src/ui/theme-parser.c:521 ../src/ui/theme-parser.c:570
 #, c-format
 msgid "Attribute \"%s\" is invalid on <%s> element in this context"
 msgstr "Atribut \"%s\" tidak diperkenankan pada elemen <%s> pada konteks ini"
 
-#: ../src/ui/theme-parser.c:536
+#: ../src/ui/theme-parser.c:612
 #, c-format
 msgid "Could not parse \"%s\" as an integer"
 msgstr "Tidak dapat menguraikan \"%s\" sebagai integer"
 
-#: ../src/ui/theme-parser.c:545 ../src/ui/theme-parser.c:600
+#: ../src/ui/theme-parser.c:621 ../src/ui/theme-parser.c:676
 #, c-format
 msgid "Did not understand trailing characters \"%s\" in string \"%s\""
 msgstr "Tidak mengerti karakter \"%s\" kenapa ada dibuntut string \"%s\""
 
-#: ../src/ui/theme-parser.c:555
+#: ../src/ui/theme-parser.c:631
 #, c-format
 msgid "Integer %ld must be positive"
 msgstr "Integer %ld harus bernilai positif"
 
-#: ../src/ui/theme-parser.c:563
+#: ../src/ui/theme-parser.c:639
 #, c-format
 msgid "Integer %ld is too large, current max is %d"
 msgstr "Integer %ld terlalu besar, maksimal %d"
 
-#: ../src/ui/theme-parser.c:591 ../src/ui/theme-parser.c:707
+#: ../src/ui/theme-parser.c:667 ../src/ui/theme-parser.c:783
 #, c-format
 msgid "Could not parse \"%s\" as a floating point number"
 msgstr "Tidak dapat membaca \"%s\" sebagai angka floating point"
 
-#: ../src/ui/theme-parser.c:622 ../src/ui/theme-parser.c:650
+#: ../src/ui/theme-parser.c:698 ../src/ui/theme-parser.c:726
 #, c-format
 msgid "Boolean values must be \"true\" or \"false\" not \"%s\""
 msgstr "Nilai boolean harus \"true\" atau \"false\" dan bukannya \"%s\""
 
-#: ../src/ui/theme-parser.c:677
+#: ../src/ui/theme-parser.c:753
 #, c-format
 msgid "Angle must be between 0.0 and 360.0, was %g\n"
 msgstr "Sudut harus ada dalam rentang 0.0 dan 360.0, dalam berkas didapat %g\n"
 
-#: ../src/ui/theme-parser.c:740
+#: ../src/ui/theme-parser.c:816
 #, c-format
 msgid "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g\n"
 msgstr ""
 "Alpha harus ada dalam rentang 0.0 (tidak kelihatan) dan 1.0 (nampak  semua, "
 "dalam berkas didapat %g\n"
 
-#: ../src/ui/theme-parser.c:805
+#: ../src/ui/theme-parser.c:881
 #, c-format
 msgid ""
 "Invalid title scale \"%s\" (must be one of xx-small,x-small,small,medium,"
@@ -1231,60 +1272,60 @@ msgstr ""
 "Skala judul \"%s\" tidak benar (harusnya bernilai xx-small, x-small, small, "
 "medium, large, x-large, xx-large)\n"
 
-#: ../src/ui/theme-parser.c:961 ../src/ui/theme-parser.c:1024
-#: ../src/ui/theme-parser.c:1058 ../src/ui/theme-parser.c:1161
+#: ../src/ui/theme-parser.c:1037 ../src/ui/theme-parser.c:1100
+#: ../src/ui/theme-parser.c:1134 ../src/ui/theme-parser.c:1237
 #, c-format
 msgid "<%s> name \"%s\" used a second time"
 msgstr "Nama <%s> \"%s\" digunakan kedua kali"
 
-#: ../src/ui/theme-parser.c:973 ../src/ui/theme-parser.c:1070
-#: ../src/ui/theme-parser.c:1173
+#: ../src/ui/theme-parser.c:1049 ../src/ui/theme-parser.c:1146
+#: ../src/ui/theme-parser.c:1249
 #, c-format
 msgid "<%s> parent \"%s\" has not been defined"
 msgstr "Induk <%s> \"%s\" belum didefinisikan"
 
-#: ../src/ui/theme-parser.c:1083
+#: ../src/ui/theme-parser.c:1159
 #, c-format
 msgid "<%s> geometry \"%s\" has not been defined"
 msgstr "Geometri <%s> \"%s\" belum didefinisikan"
 
-#: ../src/ui/theme-parser.c:1096
+#: ../src/ui/theme-parser.c:1172
 #, c-format
 msgid "<%s> must specify either a geometry or a parent that has a geometry"
 msgstr "<%s> harus menentukan geometri atau induk yang ada geometrinya"
 
-#: ../src/ui/theme-parser.c:1138
+#: ../src/ui/theme-parser.c:1214
 msgid "You must specify a background for an alpha value to be meaningful"
 msgstr ""
 "Anda mesti menyatakan suatu latar belakang bagi nilai alfa agar berarti"
 
-#: ../src/ui/theme-parser.c:1205
+#: ../src/ui/theme-parser.c:1282
 #, c-format
 msgid "Unknown type \"%s\" on <%s> element"
 msgstr "Tipe \"%s\" tidak dikenal pada elemen <%s>"
 
-#: ../src/ui/theme-parser.c:1216
+#: ../src/ui/theme-parser.c:1293
 #, c-format
 msgid "Unknown style_set \"%s\" on <%s> element"
 msgstr "style_set \"%s\" tidak dikenali pada elemen <%s>"
 
-#: ../src/ui/theme-parser.c:1224
+#: ../src/ui/theme-parser.c:1301
 #, c-format
 msgid "Window type \"%s\" has already been assigned a style set"
 msgstr "Tipe jendela \"%s\" sudah memiliki set gaya"
 
-#: ../src/ui/theme-parser.c:1254 ../src/ui/theme-parser.c:1318
-#: ../src/ui/theme-parser.c:1544 ../src/ui/theme-parser.c:2765
-#: ../src/ui/theme-parser.c:2811 ../src/ui/theme-parser.c:3025
-#: ../src/ui/theme-parser.c:3261 ../src/ui/theme-parser.c:3299
-#: ../src/ui/theme-parser.c:3337 ../src/ui/theme-parser.c:3354
-#: ../src/ui/theme-parser.c:3370 ../src/ui/theme-parser.c:3407
+#: ../src/ui/theme-parser.c:1331 ../src/ui/theme-parser.c:1395
+#: ../src/ui/theme-parser.c:1621 ../src/ui/theme-parser.c:2856
+#: ../src/ui/theme-parser.c:2902 ../src/ui/theme-parser.c:3118
+#: ../src/ui/theme-parser.c:3354 ../src/ui/theme-parser.c:3392
+#: ../src/ui/theme-parser.c:3430 ../src/ui/theme-parser.c:3447
+#: ../src/ui/theme-parser.c:3463 ../src/ui/theme-parser.c:3500
 #, c-format
 msgid "Element <%s> is not allowed below <%s>"
 msgstr "Elemen <%s> tidak diperkenankan ada di bawah <%s>"
 
-#: ../src/ui/theme-parser.c:1368 ../src/ui/theme-parser.c:1382
-#: ../src/ui/theme-parser.c:1427
+#: ../src/ui/theme-parser.c:1445 ../src/ui/theme-parser.c:1459
+#: ../src/ui/theme-parser.c:1504
 msgid ""
 "Cannot specify both \"button_width\"/\"button_height\" and \"aspect_ratio\" "
 "for buttons"
@@ -1292,124 +1333,124 @@ msgstr ""
 "Tidak dapat menyatakan \"button_width\"/\"button_height\" dan \"aspect_ratio"
 "\" sekaligus untuk tombol"
 
-#: ../src/ui/theme-parser.c:1391
+#: ../src/ui/theme-parser.c:1468
 #, c-format
 msgid "Distance \"%s\" is unknown"
 msgstr "Jarak \"%s\" tidak dikenal"
 
-#: ../src/ui/theme-parser.c:1436
+#: ../src/ui/theme-parser.c:1513
 #, c-format
 msgid "Aspect ratio \"%s\" is unknown"
 msgstr "Rasio aspek \"%s\" tidak dikenal"
 
-#: ../src/ui/theme-parser.c:1498
+#: ../src/ui/theme-parser.c:1575
 #, c-format
 msgid "Border \"%s\" is unknown"
 msgstr "Batas \"%s\" tidak dikenal"
 
-#: ../src/ui/theme-parser.c:1809
+#: ../src/ui/theme-parser.c:1886
 #, c-format
 msgid "No \"start_angle\" or \"from\" attribute on element <%s>"
 msgstr "Tidak ada atribut \"start_angle\" atau \"from\" pada elemen <%s>"
 
-#: ../src/ui/theme-parser.c:1816
+#: ../src/ui/theme-parser.c:1893
 #, c-format
 msgid "No \"extent_angle\" or \"to\" attribute on element <%s>"
 msgstr "Tidak ada atribut \"extent_angle\" atau \"to\" pada elemen <%s>"
 
-#: ../src/ui/theme-parser.c:2056
+#: ../src/ui/theme-parser.c:2133
 #, c-format
 msgid "Did not understand value \"%s\" for type of gradient"
 msgstr "Nilai \"%s\" bukan nilai yang sah untuk tipe gradien"
 
-#: ../src/ui/theme-parser.c:2134 ../src/ui/theme-parser.c:2509
+#: ../src/ui/theme-parser.c:2211 ../src/ui/theme-parser.c:2586
 #, c-format
 msgid "Did not understand fill type \"%s\" for <%s> element"
 msgstr "Tipe isian \"%s\" tidak dikenal untuk elemen <%s>"
 
-#: ../src/ui/theme-parser.c:2301 ../src/ui/theme-parser.c:2384
-#: ../src/ui/theme-parser.c:2447
+#: ../src/ui/theme-parser.c:2378 ../src/ui/theme-parser.c:2461
+#: ../src/ui/theme-parser.c:2524
 #, c-format
 msgid "Did not understand state \"%s\" for <%s> element"
 msgstr "Kondisi \"%s\" tidak dikenal untuk elemen <%s>"
 
-#: ../src/ui/theme-parser.c:2311 ../src/ui/theme-parser.c:2394
+#: ../src/ui/theme-parser.c:2388 ../src/ui/theme-parser.c:2471
 #, c-format
 msgid "Did not understand shadow \"%s\" for <%s> element"
 msgstr "Bayangan \"%s\" tidak dikenal untuk elemen <%s>"
 
-#: ../src/ui/theme-parser.c:2321
+#: ../src/ui/theme-parser.c:2398
 #, c-format
 msgid "Did not understand arrow \"%s\" for <%s> element"
 msgstr "Panah \"%s\" tidak dikenal untuk elemen <%s>"
 
-#: ../src/ui/theme-parser.c:2621 ../src/ui/theme-parser.c:2717
+#: ../src/ui/theme-parser.c:2712 ../src/ui/theme-parser.c:2808
 #, c-format
 msgid "No <draw_ops> called \"%s\" has been defined"
 msgstr "Tidak ada <draw_ops> bernama \"%s\" yang telah didefinisikan"
 
-#: ../src/ui/theme-parser.c:2633 ../src/ui/theme-parser.c:2729
+#: ../src/ui/theme-parser.c:2724 ../src/ui/theme-parser.c:2820
 #, c-format
 msgid "Including draw_ops \"%s\" here would create a circular reference"
 msgstr ""
 "Menyertakan draw_ops \"%s\" di sini akan membuat referensi tak berujung"
 
-#: ../src/ui/theme-parser.c:2844
+#: ../src/ui/theme-parser.c:2935
 #, c-format
 msgid "Unknown position \"%s\" for frame piece"
 msgstr "Posisi \"%s\" tidak dikenal untuk bagian frame"
 
-#: ../src/ui/theme-parser.c:2852
+#: ../src/ui/theme-parser.c:2943
 #, c-format
 msgid "Frame style already has a piece at position %s"
 msgstr "Gaya frame sudah memiliki bagian pada posisi %s"
 
-#: ../src/ui/theme-parser.c:2869 ../src/ui/theme-parser.c:2944
+#: ../src/ui/theme-parser.c:2960 ../src/ui/theme-parser.c:3037
 #, c-format
 msgid "No <draw_ops> with the name \"%s\" has been defined"
 msgstr "Tidak ada <draw_ops> dengan nama \"%s\" yang didefinisikan"
 
-#: ../src/ui/theme-parser.c:2898
+#: ../src/ui/theme-parser.c:2990
 #, c-format
 msgid "Unknown function \"%s\" for button"
 msgstr "Fungsi \"%s\" tidak dikenal untuk tombol"
 
-#: ../src/ui/theme-parser.c:2907
+#: ../src/ui/theme-parser.c:3000
 #, c-format
 msgid "Button function \"%s\" does not exist in this version (%d, need %d)"
 msgstr "Fungsi tombol \"%s\" tak ada pada versi ini (%d, perlu %d)"
 
-#: ../src/ui/theme-parser.c:2919
+#: ../src/ui/theme-parser.c:3012
 #, c-format
 msgid "Unknown state \"%s\" for button"
 msgstr "Kondisi \"%s\" tidak dikenal untuk tombol"
 
-#: ../src/ui/theme-parser.c:2927
+#: ../src/ui/theme-parser.c:3020
 #, c-format
 msgid "Frame style already has a button for function %s state %s"
 msgstr "Gaya bingkai sudah memiliki tombol untuk fungsi %s kondisi %s"
 
-#: ../src/ui/theme-parser.c:3064
+#: ../src/ui/theme-parser.c:3157
 #, c-format
 msgid "\"%s\" is not a valid value for focus attribute"
 msgstr "\"%s\" bukan nilai yang benar untuk atribut focus"
 
-#: ../src/ui/theme-parser.c:3073
+#: ../src/ui/theme-parser.c:3166
 #, c-format
 msgid "\"%s\" is not a valid value for state attribute"
 msgstr "\"%s\" bukan nilai yang benar untuk atribut state"
 
-#: ../src/ui/theme-parser.c:3083
+#: ../src/ui/theme-parser.c:3176
 #, c-format
 msgid "A style called \"%s\" has not been defined"
 msgstr "Gaya bernama \"%s\" belum didefinisikan"
 
-#: ../src/ui/theme-parser.c:3104 ../src/ui/theme-parser.c:3127
+#: ../src/ui/theme-parser.c:3197 ../src/ui/theme-parser.c:3220
 #, c-format
 msgid "\"%s\" is not a valid value for resize attribute"
 msgstr "\"%s\" bukan nilai yang benar untuk atribut resize"
 
-#: ../src/ui/theme-parser.c:3138
+#: ../src/ui/theme-parser.c:3231
 #, c-format
 msgid ""
 "Should not have \"resize\" attribute on <%s> element for maximized/shaded "
@@ -1418,7 +1459,7 @@ msgstr ""
 "Atribut \"resize\" tidak boleh ada pada elemen <%s> untuk kondisi ukuran "
 "window maksimum/tergulung"
 
-#: ../src/ui/theme-parser.c:3152
+#: ../src/ui/theme-parser.c:3245
 #, c-format
 msgid ""
 "Should not have \"resize\" attribute on <%s> element for maximized states"
@@ -1426,19 +1467,19 @@ msgstr ""
 "Atribut \"resize\" tidak boleh ada pada elemen <%s> untuk kondisi ukuran "
 "jendela maksimal"
 
-#: ../src/ui/theme-parser.c:3166 ../src/ui/theme-parser.c:3210
+#: ../src/ui/theme-parser.c:3259 ../src/ui/theme-parser.c:3303
 #, c-format
 msgid "Style has already been specified for state %s resize %s focus %s"
 msgstr "Gaya sudah menjelaskan kondisi %s resize %s focus %s"
 
-#: ../src/ui/theme-parser.c:3177 ../src/ui/theme-parser.c:3188
-#: ../src/ui/theme-parser.c:3199 ../src/ui/theme-parser.c:3221
-#: ../src/ui/theme-parser.c:3232 ../src/ui/theme-parser.c:3243
+#: ../src/ui/theme-parser.c:3270 ../src/ui/theme-parser.c:3281
+#: ../src/ui/theme-parser.c:3292 ../src/ui/theme-parser.c:3314
+#: ../src/ui/theme-parser.c:3325 ../src/ui/theme-parser.c:3336
 #, c-format
 msgid "Style has already been specified for state %s focus %s"
 msgstr "Gaya sudah menjelaskan kondisi %s focus %s"
 
-#: ../src/ui/theme-parser.c:3282
+#: ../src/ui/theme-parser.c:3375
 msgid ""
 "Can't have a two draw_ops for a <piece> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
@@ -1446,7 +1487,7 @@ msgstr ""
 "Tidak boleh ada dua draw_ops untuk elemen <piece> (tema menyebutkan atribut "
 "draw_ops dan juga elemen <draw_ops> atau meyebutkan dua elemen tersebut "
 
-#: ../src/ui/theme-parser.c:3320
+#: ../src/ui/theme-parser.c:3413
 msgid ""
 "Can't have a two draw_ops for a <button> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
@@ -1454,7 +1495,7 @@ msgstr ""
 "Tidak boleh ada dua draw_ops untuk elemen <button> (tema menyebutkan atribut "
 "draw_ops dan juga elemen <draw_ops> atau meyebutkan dua elemen tersebut "
 
-#: ../src/ui/theme-parser.c:3390
+#: ../src/ui/theme-parser.c:3483
 msgid ""
 "Can't have a two draw_ops for a <menu_icon> element (theme specified a "
 "draw_ops attribute and also a <draw_ops> element, or specified two elements)"
@@ -1463,70 +1504,83 @@ msgstr ""
 "atribut draw_ops dan juga elemen <draw_ops> atau meyebutkan dua elemen "
 "tersebut "
 
-#: ../src/ui/theme-parser.c:3438
+#: ../src/ui/theme-parser.c:3547
+#, c-format
+msgid "Bad version specification '%s'"
+msgstr "Spesifikasi bersi buruk '%s'"
+
+#: ../src/ui/theme-parser.c:3618
+msgid ""
+"\"version\" attribute cannot be used in metacity-theme-1.xml or metacity-"
+"theme-2.xml"
+msgstr ""
+"atribut \"version\" tak dapat dipakai dalam metacity-theme-1.xml atau "
+"metacity-theme-2.xml"
+
+#: ../src/ui/theme-parser.c:3641
+#, c-format
+msgid "Theme requires version %s but latest supported theme version is %d.%d"
+msgstr "Tema memerlukan versi %s tapi versi tema terakhir yang didukung adalah %d.%d"
+
+#: ../src/ui/theme-parser.c:3673
 #, c-format
 msgid "Outermost element in theme must be <metacity_theme> not <%s>"
 msgstr "Elemen tema paling luar haruslah <metacity_theme> dan bukan <%s>"
 
-#: ../src/ui/theme-parser.c:3458
+#: ../src/ui/theme-parser.c:3693
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a name/author/date/description element"
 msgstr ""
 "Elemen <%s> tidak diperbolehkan berada elemen name/author/date/description"
 
-#: ../src/ui/theme-parser.c:3463
+#: ../src/ui/theme-parser.c:3698
 #, c-format
 msgid "Element <%s> is not allowed inside a <constant> element"
 msgstr "Elemen <%s> tidak boleh ada dalam elemen <constat>"
 
-#: ../src/ui/theme-parser.c:3475
+#: ../src/ui/theme-parser.c:3710
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a distance/border/aspect_ratio element"
 msgstr ""
 "Elemen <%s> tidak boleh ada di dalam elemen distance/border/aspec_ratio"
 
-#: ../src/ui/theme-parser.c:3497
+#: ../src/ui/theme-parser.c:3732
 #, c-format
 msgid "Element <%s> is not allowed inside a draw operation element"
 msgstr "Elemen <%s> tidak boleh ada di dalam elemen operasi gambar"
 
-#: ../src/ui/theme-parser.c:3507 ../src/ui/theme-parser.c:3547
-#: ../src/ui/theme-parser.c:3552 ../src/ui/theme-parser.c:3557
+#: ../src/ui/theme-parser.c:3742 ../src/ui/theme-parser.c:3782
+#: ../src/ui/theme-parser.c:3787 ../src/ui/theme-parser.c:3792
 #, c-format
 msgid "Element <%s> is not allowed inside a <%s> element"
 msgstr "Elemen <%s> tidak boleh ada di dalam elemen <%s>"
 
-#: ../src/ui/theme-parser.c:3779
+#: ../src/ui/theme-parser.c:4020
 msgid "No draw_ops provided for frame piece"
 msgstr "Tidak ada draw_ops yang disediakan untuk bagian frame"
 
-#: ../src/ui/theme-parser.c:3794
+#: ../src/ui/theme-parser.c:4035
 msgid "No draw_ops provided for button"
 msgstr "Tidak ada draw_ops yang disediakan untuk tombol"
 
-#: ../src/ui/theme-parser.c:3854
+#: ../src/ui/theme-parser.c:4097
 #, c-format
 msgid "No text is allowed inside element <%s>"
 msgstr "Tidak boleh ada teks di dalam elemen <%s>"
 
-#: ../src/ui/theme-parser.c:3909 ../src/ui/theme-parser.c:3921
-#: ../src/ui/theme-parser.c:3933 ../src/ui/theme-parser.c:3945
-#: ../src/ui/theme-parser.c:3957
+#: ../src/ui/theme-parser.c:4155 ../src/ui/theme-parser.c:4167
+#: ../src/ui/theme-parser.c:4179 ../src/ui/theme-parser.c:4191
+#: ../src/ui/theme-parser.c:4203
 #, c-format
 msgid "<%s> specified twice for this theme"
 msgstr "<%s> disebutkan dua kali pada tema ini"
 
-#: ../src/ui/theme-parser.c:4231
+#: ../src/ui/theme-parser.c:4469
 #, c-format
 msgid "Failed to find a valid file for theme %s\n"
 msgstr "Gagal menemukan berkas yang sah untuk tema %s\n"
-
-#: ../src/ui/theme-parser.c:4287
-#, c-format
-msgid "Theme file %s did not contain a root <metacity_theme> element"
-msgstr "Berkas tema %s tidak berisi akar elemen <metacity_theme>"
 
 #: ../src/ui/theme-viewer.c:255
 msgid "OK"
@@ -1573,56 +1627,61 @@ msgstr "Menu Dapat Dilepas"
 msgid "Border"
 msgstr "Batas"
 
-#: ../src/ui/theme-viewer.c:756
+#: ../src/ui/theme-viewer.c:422
+#
+msgid "Attached Modal Dialog"
+msgstr "Dialog Modal Terlampir"
+
+#: ../src/ui/theme-viewer.c:763
 #, c-format
 msgid "Button layout test %d"
 msgstr "Tes komposisi tombol %d"
 
-#: ../src/ui/theme-viewer.c:785
+#: ../src/ui/theme-viewer.c:792
 #, c-format
 msgid "%g milliseconds to draw one window frame"
 msgstr "lama waktu menggambar satu bingkai jendela %g milidetik"
 
-#: ../src/ui/theme-viewer.c:830
+#: ../src/ui/theme-viewer.c:837
 #, c-format
 msgid "Usage: metacity-theme-viewer [THEMENAME]\n"
 msgstr "Cara pakai: metacity-theme-viewer [NAMA TEMA]\n"
 
-#: ../src/ui/theme-viewer.c:837
+#: ../src/ui/theme-viewer.c:844
 #, c-format
 msgid "Error loading theme: %s\n"
 msgstr "Ada galat saat memuat tema: %s\n"
 
-#: ../src/ui/theme-viewer.c:843
+#: ../src/ui/theme-viewer.c:850
 #, c-format
 msgid "Loaded theme \"%s\" in %g seconds\n"
 msgstr "Tema \"%s\" dibuka dalam %g detik\n"
 
-#: ../src/ui/theme-viewer.c:887
+#: ../src/ui/theme-viewer.c:894
 msgid "Normal Title Font"
 msgstr "Fonta Judul Normal"
 
-#: ../src/ui/theme-viewer.c:893
+#: ../src/ui/theme-viewer.c:900
 msgid "Small Title Font"
 msgstr "Fonta Judul Kecil"
 
-#: ../src/ui/theme-viewer.c:899
+#: ../src/ui/theme-viewer.c:906
 msgid "Large Title Font"
 msgstr "Fonta Judul Besar"
 
-#: ../src/ui/theme-viewer.c:904
+#: ../src/ui/theme-viewer.c:911
 msgid "Button Layouts"
 msgstr "Tata Letak Tombol"
 
-#: ../src/ui/theme-viewer.c:909
+#: ../src/ui/theme-viewer.c:916
 msgid "Benchmark"
 msgstr "Pengukuran"
 
-#: ../src/ui/theme-viewer.c:966
+#: ../src/ui/theme-viewer.c:973
 msgid "Window Title Goes Here"
 msgstr "Ini tempat judul jendela"
 
-#: ../src/ui/theme-viewer.c:1071
+#: ../src/ui/theme-viewer.c:1075
 #, c-format
 msgid ""
 "Drew %d frames in %g client-side seconds (%g milliseconds per frame) and %g "
@@ -1632,39 +1691,39 @@ msgstr ""
 "%d frame dibuat dalam %g detik dalam waktu klien (%g milidetik per frame) "
 "dan %g detik dalam waktu sebenarnya (%g milidetik per frame)\n"
 
-#: ../src/ui/theme-viewer.c:1290
+#: ../src/ui/theme-viewer.c:1294
 msgid "position expression test returned TRUE but set error"
 msgstr "tes ekspresi posisi mengembalikan TRUE tapi justru ada galat"
 
-#: ../src/ui/theme-viewer.c:1292
+#: ../src/ui/theme-viewer.c:1296
 msgid "position expression test returned FALSE but didn't set error"
 msgstr "tes ekspresi posisi mengembalikan FALSE tapi tidak ada galat"
 
-#: ../src/ui/theme-viewer.c:1296
+#: ../src/ui/theme-viewer.c:1300
 msgid "Error was expected but none given"
 msgstr "Seharusnya ada galat, tapi ini kok tidak ada"
 
-#: ../src/ui/theme-viewer.c:1298
+#: ../src/ui/theme-viewer.c:1302
 #, c-format
 msgid "Error %d was expected but %d given"
 msgstr "Seharunya ada galat %d, tapi yang terjadi %d"
 
-#: ../src/ui/theme-viewer.c:1304
+#: ../src/ui/theme-viewer.c:1308
 #, c-format
 msgid "Error not expected but one was returned: %s"
 msgstr "Seharusnya tidak ada galat, tapi ini tiba-tiba ada error: %s"
 
-#: ../src/ui/theme-viewer.c:1308
+#: ../src/ui/theme-viewer.c:1312
 #, c-format
 msgid "x value was %d, %d was expected"
 msgstr "nilai x sebelumnya %d, padahal seharusnya %d"
 
-#: ../src/ui/theme-viewer.c:1311
+#: ../src/ui/theme-viewer.c:1315
 #, c-format
 msgid "y value was %d, %d was expected"
 msgstr "nilai y sebelumnya %d, padahal seharusnya %d"
 
-#: ../src/ui/theme-viewer.c:1376
+#: ../src/ui/theme-viewer.c:1380
 #, c-format
 msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
 msgstr "ekspresi koordinat %d diambil dalam %g detik (rata-rata %g detik)\n"
