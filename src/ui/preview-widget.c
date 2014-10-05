@@ -2,9 +2,9 @@
 
 /* Metacity theme preview widget */
 
-/* 
+/*
  * Copyright (C) 2002 Havoc Pennington
- * 
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 2 of the
@@ -14,7 +14,7 @@
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
@@ -62,7 +62,7 @@ static void
 meta_preview_init (MetaPreview *preview)
 {
   int i;
-  
+
   gtk_widget_set_has_window (GTK_WIDGET (preview), FALSE);
 
   i = 0;
@@ -72,13 +72,13 @@ meta_preview_init (MetaPreview *preview)
       preview->button_layout.right_buttons[i] = META_BUTTON_FUNCTION_LAST;
       ++i;
     }
-  
+
   preview->button_layout.left_buttons[0] = META_BUTTON_FUNCTION_MENU;
 
   preview->button_layout.right_buttons[0] = META_BUTTON_FUNCTION_MINIMIZE;
   preview->button_layout.right_buttons[1] = META_BUTTON_FUNCTION_MAXIMIZE;
   preview->button_layout.right_buttons[2] = META_BUTTON_FUNCTION_CLOSE;
-  
+
   preview->type = META_FRAME_TYPE_NORMAL;
   preview->flags =
     META_FRAME_ALLOWS_DELETE |
@@ -90,7 +90,7 @@ meta_preview_init (MetaPreview *preview)
     META_FRAME_HAS_FOCUS |
     META_FRAME_ALLOWS_SHADE |
     META_FRAME_ALLOWS_MOVE;
-  
+
   preview->borders_cached = FALSE;
 }
 
@@ -98,9 +98,9 @@ GtkWidget*
 meta_preview_new (void)
 {
   MetaPreview *preview;
-  
+
   preview = g_object_new (META_TYPE_PREVIEW, NULL);
-  
+
   return GTK_WIDGET (preview);
 }
 
@@ -113,7 +113,7 @@ meta_preview_finalize (GObject *object)
 
   g_free (preview->title);
   preview->title = NULL;
-  
+
   G_OBJECT_CLASS (meta_preview_parent_class)->finalize (object);
 }
 
@@ -123,7 +123,7 @@ ensure_info (MetaPreview *preview)
   GtkWidget *widget;
 
   widget = GTK_WIDGET (preview);
-  
+
   if (preview->layout == NULL)
     {
       PangoFontDescription *font_desc;
@@ -131,34 +131,34 @@ ensure_info (MetaPreview *preview)
       PangoAttrList *attrs;
       PangoAttribute *attr;
 
-      if (preview->theme)        
+      if (preview->theme)
         scale = meta_theme_get_title_scale (preview->theme,
                                             preview->type,
                                             preview->flags);
       else
         scale = 1.0;
-      
+
       preview->layout = gtk_widget_create_pango_layout (widget,
                                                         preview->title);
-      
+
       font_desc = meta_gtk_widget_get_font_desc (widget, scale, NULL);
-      
+
       preview->text_height =
         meta_pango_font_desc_get_text_height (font_desc,
                                               gtk_widget_get_pango_context (widget));
-          
+
       attrs = pango_attr_list_new ();
-      
+
       attr = pango_attr_size_new (pango_font_description_get_size (font_desc));
       attr->start_index = 0;
       attr->end_index = G_MAXINT;
-      
+
       pango_attr_list_insert (attrs, attr);
-      
+
       pango_layout_set_attributes (preview->layout, attrs);
-      
-      pango_attr_list_unref (attrs);      
-  
+
+      pango_attr_list_unref (attrs);
+
       pango_font_description_free (font_desc);
     }
 
@@ -192,7 +192,7 @@ meta_preview_draw (GtkWidget *widget,
     META_BUTTON_STATE_NORMAL,
     META_BUTTON_STATE_NORMAL
   };
-  
+
   g_return_val_if_fail (META_IS_PREVIEW (widget), FALSE);
 
   preview = META_PREVIEW (widget);
@@ -202,7 +202,7 @@ meta_preview_draw (GtkWidget *widget,
   cairo_save (cr);
 
   border_width = gtk_container_get_border_width (GTK_CONTAINER (widget));
-  
+
   gtk_widget_get_allocation (widget, &allocation);
   client_width = allocation.width - preview->borders.visible.left - preview->borders.visible.right - border_width * 2;
   client_height = allocation.height - preview->borders.visible.top - preview->borders.visible.bottom - border_width * 2;
@@ -210,12 +210,12 @@ meta_preview_draw (GtkWidget *widget,
   if (client_width < 0)
     client_width = 1;
   if (client_height < 0)
-    client_height = 1;  
-  
+    client_height = 1;
+
   if (preview->theme)
     {
       border_width = gtk_container_get_border_width (GTK_CONTAINER (widget));
-      
+
       meta_theme_draw_frame (preview->theme,
                              widget,
                              cr,
@@ -319,15 +319,15 @@ meta_preview_size_allocate (GtkWidget         *widget,
   int border_width;
   GtkAllocation widget_allocation, child_allocation;
   GtkWidget *child;
-  
+
   preview = META_PREVIEW (widget);
 
   ensure_info (preview);
-  
+
   gtk_widget_set_allocation (widget, allocation);
 
   border_width = gtk_container_get_border_width (GTK_CONTAINER (widget));
-  
+
   child = gtk_bin_get_child (GTK_BIN (widget));
   if (child &&
       gtk_widget_get_visible (child))
@@ -335,7 +335,7 @@ meta_preview_size_allocate (GtkWidget         *widget,
       gtk_widget_get_allocation (widget, &widget_allocation);
       child_allocation.x = widget_allocation.x + border_width + preview->borders.visible.left;
       child_allocation.y = widget_allocation.y + border_width + preview->borders.visible.top;
-      
+
       child_allocation.width = MAX (1, widget_allocation.width - border_width * 2 - preview->borders.visible.left - preview->borders.visible.right);
       child_allocation.height = MAX (1, widget_allocation.height - border_width * 2 - preview->borders.visible.top - preview->borders.visible.bottom);
 
@@ -362,7 +362,7 @@ meta_preview_set_theme (MetaPreview    *preview,
   g_return_if_fail (META_IS_PREVIEW (preview));
 
   preview->theme = theme;
-  
+
   clear_cache (preview);
 
   gtk_widget_queue_resize (GTK_WIDGET (preview));
@@ -376,7 +376,7 @@ meta_preview_set_title (MetaPreview    *preview,
 
   g_free (preview->title);
   preview->title = g_strdup (title);
-  
+
   clear_cache (preview);
 
   gtk_widget_queue_resize (GTK_WIDGET (preview));
@@ -413,9 +413,9 @@ meta_preview_set_button_layout (MetaPreview            *preview,
                                 const MetaButtonLayout *button_layout)
 {
   g_return_if_fail (META_IS_PREVIEW (preview));
-  
-  preview->button_layout = *button_layout;  
-  
+
+  preview->button_layout = *button_layout;
+
   gtk_widget_queue_draw (GTK_WIDGET (preview));
 }
 
@@ -448,7 +448,7 @@ meta_preview_get_icon (void)
 
       g_assert (default_icon);
     }
-  
+
   return default_icon;
 }
 
@@ -481,6 +481,6 @@ meta_preview_get_mini_icon (void)
 
       g_assert (default_icon);
     }
-  
+
   return default_icon;
 }

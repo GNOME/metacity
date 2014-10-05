@@ -2,7 +2,7 @@
 
 /**
  * \file effects.c "Special effects" other than compositor effects.
- * 
+ *
  * Before we had a serious compositor, we supported swooping
  * rectangles for minimising and so on.  These are still supported
  * today, even when the compositor is enabled.  The file contains two
@@ -36,9 +36,9 @@
  * In svn r3769 this was made explicit.
  */
 
-/* 
+/*
  * Copyright (C) 2001 Anders Carlsson, Havoc Pennington
- * 
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 2 of the
@@ -48,7 +48,7 @@
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
@@ -95,7 +95,7 @@ typedef struct
 
   MetaRectangle start_rect;
   MetaRectangle end_rect;
-  
+
 } BoxAnimationContext;
 
 /**
@@ -129,7 +129,7 @@ struct MetaEffect
     MetaMinimizeEffect      minimize;
     /* ... and theoretically anything else */
   } u;
-  
+
   MetaEffectPriv *priv;
 };
 
@@ -181,7 +181,7 @@ effect_free (MetaEffect *effect)
 {
   if (effect->priv->finished)
     effect->priv->finished (effect->priv->finished_data);
-    
+
   g_free (effect->priv);
   g_free (effect);
 }
@@ -196,7 +196,7 @@ meta_effect_run_focus (MetaWindow	    *window,
     g_return_if_fail (window != NULL);
 
     effect = create_effect (META_EFFECT_FOCUS, window, finished, data);
-    
+
     run_handler (effect);
 }
 
@@ -211,7 +211,7 @@ meta_effect_run_minimize (MetaWindow         *window,
 
     g_return_if_fail (window != NULL);
     g_return_if_fail (icon_rect != NULL);
-    
+
     effect = create_effect (META_EFFECT_MINIMIZE, window, finished, data);
 
     effect->u.minimize.window_rect = *window_rect;
@@ -231,7 +231,7 @@ meta_effect_run_unminimize (MetaWindow         *window,
 
     g_return_if_fail (window != NULL);
     g_return_if_fail (icon_rect != NULL);
-    
+
     effect = create_effect (META_EFFECT_UNMINIMIZE, window, finished, data);
 
     effect->u.minimize.window_rect = *window_rect;
@@ -246,7 +246,7 @@ meta_effect_run_close (MetaWindow         *window,
 		       gpointer            data)
 {
     MetaEffect *effect;
-    
+
     g_return_if_fail (window != NULL);
 
     effect = create_effect (META_EFFECT_CLOSE, window,
@@ -258,7 +258,7 @@ meta_effect_run_close (MetaWindow         *window,
 
 /* old ugly minimization effect */
 
-#ifdef HAVE_SHAPE  
+#ifdef HAVE_SHAPE
 static void
 update_wireframe_window (MetaDisplay         *display,
                          Window               xwindow,
@@ -270,14 +270,14 @@ update_wireframe_window (MetaDisplay         *display,
                      rect->width, rect->height);
 
 #define OUTLINE_WIDTH 3
-  
+
   if (rect->width > OUTLINE_WIDTH * 2 &&
       rect->height > OUTLINE_WIDTH * 2)
     {
       XRectangle xrect;
       Region inner_xregion;
       Region outer_xregion;
-      
+
       inner_xregion = XCreateRegion ();
       outer_xregion = XCreateRegion ();
 
@@ -285,21 +285,21 @@ update_wireframe_window (MetaDisplay         *display,
       xrect.y = 0;
       xrect.width = rect->width;
       xrect.height = rect->height;
-  
+
       XUnionRectWithRegion (&xrect, outer_xregion, outer_xregion);
-  
+
       xrect.x += OUTLINE_WIDTH;
       xrect.y += OUTLINE_WIDTH;
       xrect.width -= OUTLINE_WIDTH * 2;
-      xrect.height -= OUTLINE_WIDTH * 2;  
-  
+      xrect.height -= OUTLINE_WIDTH * 2;
+
       XUnionRectWithRegion (&xrect, inner_xregion, inner_xregion);
 
       XSubtractRegion (outer_xregion, inner_xregion, outer_xregion);
 
       XShapeCombineRegion (display->xdisplay, xwindow,
                            ShapeBounding, 0, 0, outer_xregion, ShapeSet);
-  
+
       XDestroyRegion (outer_xregion);
       XDestroyRegion (inner_xregion);
     }
@@ -320,7 +320,7 @@ static void
 graphics_sync (BoxAnimationContext *context)
 {
   XImage *image;
-  
+
   image = XGetImage (context->screen->display->xdisplay,
                      context->screen->xroot,
                      0, 0, 1, 1,
@@ -336,7 +336,7 @@ effects_draw_box_animation_timeout (BoxAnimationContext *context)
   GTimeVal current_time;
   MetaRectangle draw_rect;
   double fraction;
-  
+
 #ifndef HAVE_SHAPE
   if (!context->first_time)
     {
@@ -353,12 +353,12 @@ effects_draw_box_animation_timeout (BoxAnimationContext *context)
 #endif /* !HAVE_SHAPE */
 
   g_get_current_time (&current_time);
-  
+
   /* We use milliseconds for all times */
   elapsed =
     ((((double)current_time.tv_sec - context->start_time.tv_sec) * G_USEC_PER_SEC +
       (current_time.tv_usec - context->start_time.tv_usec))) / 1000.0;
-  
+
   if (elapsed < 0)
     {
       /* Probably the system clock was set backwards? */
@@ -380,22 +380,22 @@ effects_draw_box_animation_timeout (BoxAnimationContext *context)
 #endif /* !HAVE_SHAPE */
 
       graphics_sync (context);
-      
+
       g_free (context);
       return FALSE;
     }
 
   g_assert (context->millisecs_duration > 0.0);
   fraction = elapsed / context->millisecs_duration;
-  
+
   draw_rect = context->start_rect;
-  
+
   /* Now add a delta proportional to elapsed time. */
   draw_rect.x += (context->end_rect.x - context->start_rect.x) * fraction;
   draw_rect.y += (context->end_rect.y - context->start_rect.y) * fraction;
   draw_rect.width += (context->end_rect.width - context->start_rect.width) * fraction;
   draw_rect.height += (context->end_rect.height - context->start_rect.height) * fraction;
-  
+
   /* don't confuse X or gdk-pixbuf with bogus rectangles */
   if (draw_rect.width < 1)
     draw_rect.width = 1;
@@ -415,15 +415,15 @@ effects_draw_box_animation_timeout (BoxAnimationContext *context)
                   context->gc,
                   draw_rect.x, draw_rect.y,
                   draw_rect.width, draw_rect.height);
-    
+
 #endif /* !HAVE_SHAPE */
 
   /* kick changes onto the server */
   graphics_sync (context);
-  
+
   return TRUE;
 }
- 
+
 void
 draw_box_animation (MetaScreen     *screen,
                     MetaRectangle  *initial_rect,
@@ -437,12 +437,12 @@ draw_box_animation (MetaScreen     *screen,
 #else
   XGCValues gc_values;
 #endif
-    
+
   g_return_if_fail (seconds_duration > 0.0);
 
   if (g_getenv ("METACITY_DEBUG_EFFECTS"))
     seconds_duration *= 10; /* slow things down */
-  
+
   /* Create the animation context */
   context = g_new0 (BoxAnimationContext, 1);
 
@@ -489,7 +489,7 @@ draw_box_animation (MetaScreen     *screen,
                            screen->xroot,
                            GCSubwindowMode | GCFunction,
                            &gc_values);
-      
+
   /* Grab the X server to avoid screen dirt */
   meta_display_grab (context->screen->display);
   meta_ui_push_delay_exposes (context->screen->ui);
@@ -499,7 +499,7 @@ draw_box_animation (MetaScreen     *screen,
    * so that the animation doesn't get truncated.
    */
   g_get_current_time (&context->start_time);
-  
+
   /* Add the timeout - a short one, could even use an idle,
    * but this is maybe more CPU-friendly.
    */
@@ -508,7 +508,7 @@ draw_box_animation (MetaScreen     *screen,
                  context);
 
   /* kick changes onto the server */
-  XFlush (context->screen->display->xdisplay);  
+  XFlush (context->screen->display->xdisplay);
 }
 
 void
@@ -519,9 +519,9 @@ meta_effects_begin_wireframe (MetaScreen          *screen,
 {
   /* Grab the X server to avoid screen dirt */
   meta_display_grab (screen->display);
-  meta_ui_push_delay_exposes (screen->ui);  
+  meta_ui_push_delay_exposes (screen->ui);
 
-  meta_effects_update_wireframe (screen, 
+  meta_effects_update_wireframe (screen,
                                  NULL, -1, -1,
                                  rect, width, height);
 }
@@ -539,7 +539,7 @@ draw_xor_rect (MetaScreen          *screen,
   XSegment segments[8];
   MetaRectangle shrunk_rect;
   int i;
-  
+
 #define LINE_WIDTH META_WIREFRAME_XOR_LINE_WIDTH
 
   /* We don't want the wireframe going outside the window area.
@@ -569,14 +569,14 @@ draw_xor_rect (MetaScreen          *screen,
       XGCValues gc_values = { 0 };
 
       if (XGetGCValues (screen->display->xdisplay,
-                        screen->root_xor_gc, 
+                        screen->root_xor_gc,
                         GCFont, &gc_values))
         {
           char *text;
           int text_length;
 
           XFontStruct *font_struct;
-          int text_width, text_height; 
+          int text_width, text_height;
           int box_x, box_y;
           int box_width, box_height;
 
@@ -589,7 +589,7 @@ draw_xor_rect (MetaScreen          *screen,
               text_length = strlen (text);
 
               text_width = text_length * font_struct->max_bounds.width;
-              text_height = font_struct->max_bounds.descent + 
+              text_height = font_struct->max_bounds.descent +
                             font_struct->max_bounds.ascent;
 
               box_width = text_width + 2 * LINE_WIDTH;
@@ -607,7 +607,7 @@ draw_xor_rect (MetaScreen          *screen,
                                   screen->root_xor_gc,
                                   box_x, box_y,
                                   box_width, box_height);
-                  XDrawString (screen->display->xdisplay, 
+                  XDrawString (screen->display->xdisplay,
                                screen->xroot,
                                screen->root_xor_gc,
                                box_x + LINE_WIDTH,
@@ -632,7 +632,7 @@ draw_xor_rect (MetaScreen          *screen,
   segments[0].x1 = shrunk_rect.x + shrunk_rect.width / 3;
   segments[0].y1 = shrunk_rect.y + LINE_WIDTH / 2 + LINE_WIDTH % 2;
   segments[0].x2 = segments[0].x1;
-  segments[0].y2 = shrunk_rect.y + shrunk_rect.height - LINE_WIDTH / 2;  
+  segments[0].y2 = shrunk_rect.y + shrunk_rect.height - LINE_WIDTH / 2;
 
   segments[1] = segments[0];
   segments[1].x1 = shrunk_rect.x + (shrunk_rect.width / 3) * 2;
@@ -650,7 +650,7 @@ draw_xor_rect (MetaScreen          *screen,
   segments[3] = segments[2];
   segments[3].x1 = segments[2].x2 + LINE_WIDTH;
   segments[3].x2 = segments[1].x1 - LINE_WIDTH / 2;
-  
+
   segments[4] = segments[3];
   segments[4].x1 = segments[3].x2 + LINE_WIDTH;
   segments[4].x2 = shrunk_rect.x + shrunk_rect.width - LINE_WIDTH / 2;
@@ -666,7 +666,7 @@ draw_xor_rect (MetaScreen          *screen,
       segments[i].y2 = segments[i].y1;
       ++i;
     }
-  
+
   XDrawSegments (screen->display->xdisplay,
                  screen->xroot,
                  screen->root_xor_gc,
@@ -685,10 +685,10 @@ meta_effects_update_wireframe (MetaScreen          *screen,
 {
   if (old_rect)
     draw_xor_rect (screen, old_rect, old_width, old_height);
-    
+
   if (new_rect)
     draw_xor_rect (screen, new_rect, new_width, new_height);
-    
+
   XFlush (screen->display->xdisplay);
 }
 
@@ -698,10 +698,10 @@ meta_effects_end_wireframe (MetaScreen          *screen,
                             int                  old_width,
                             int                  old_height)
 {
-  meta_effects_update_wireframe (screen, 
+  meta_effects_update_wireframe (screen,
                                  old_rect, old_width, old_height,
                                  NULL, -1, -1);
-  
+
   meta_display_ungrab (screen->display);
   meta_ui_pop_delay_exposes (screen->ui);
 }

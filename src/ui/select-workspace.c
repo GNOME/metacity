@@ -1,10 +1,10 @@
 /* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
 
-/* 
+/*
  * Copyright (C) 2001 Havoc Pennington
  * Copyright (C) 2002 Red Hat, Inc.
  * Copyright (C) 2005 Elijah Newren
- * 
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 2 of the
@@ -14,7 +14,7 @@
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
@@ -48,7 +48,7 @@ meta_convert_meta_to_wnck (MetaWindow *window, MetaScreen *screen)
   WnckWindowDisplayInfo wnck_window;
   wnck_window.icon = window->icon;
   wnck_window.mini_icon = window->mini_icon;
-  
+
   wnck_window.is_active = FALSE;
   if (window == window->display->expected_focus_window)
     wnck_window.is_active = TRUE;
@@ -101,7 +101,7 @@ meta_select_workspace_draw (GtkWidget *widget,
       ignoreable_sticky = window->on_all_workspaces &&
                           workspace != workspace->screen->active_workspace;
 
-      if (window->skip_pager || 
+      if (window->skip_pager ||
           !meta_window_showing_on_its_workspace (window) ||
           window->unmaps_pending ||
           ignoreable_sticky)
@@ -134,7 +134,7 @@ meta_select_workspace_draw (GtkWidget *widget,
                        n_windows);
 
   g_free (windows);
-  
+
   if (select->priv->selected)
     {
       GtkStyleContext *context;

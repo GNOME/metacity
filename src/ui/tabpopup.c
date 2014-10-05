@@ -2,11 +2,11 @@
 
 /* Metacity popup window thing showing windows you can tab to */
 
-/* 
+/*
  * Copyright (C) 2001 Havoc Pennington
  * Copyright (C) 2002 Red Hat, Inc.
  * Copyright (C) 2005 Elijah Newren
- * 
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 2 of the
@@ -16,7 +16,7 @@
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
@@ -61,15 +61,15 @@ outline_window_draw (GtkWidget *widget,
                      gpointer   data)
 {
   MetaTabPopup *popup;
-  TabEntry *te;  
-  
+  TabEntry *te;
+
   popup = data;
 
   if (!popup->outline || popup->current_selected_entry == NULL)
     return FALSE;
 
   te = popup->current_selected_entry;
-  
+
   cairo_set_line_width (cr, 1.0);
   cairo_set_source_rgb (cr, 1.0, 1.0, 1.0);
 
@@ -106,7 +106,7 @@ dimm_icon (GdkPixbuf *pixbuf)
     }
 
   w = gdk_pixbuf_get_width (dimmed_pixbuf);
-  h = gdk_pixbuf_get_height (dimmed_pixbuf);      
+  h = gdk_pixbuf_get_height (dimmed_pixbuf);
 
   pixel_stride = 4;
 
@@ -115,24 +115,24 @@ dimm_icon (GdkPixbuf *pixbuf)
 
   for (y = 0; y < h; y++)
     {
-      pixels = row;                     
-      for (x = 0; x < w; x++) 
+      pixels = row;
+      for (x = 0; x < w; x++)
         {
-          pixels[3] /= 2;                               
+          pixels[3] /= 2;
           pixels += pixel_stride;
-        }                       
+        }
       row += row_stride;
     }
   return dimmed_pixbuf;
 }
 
-static TabEntry*  
-tab_entry_new (const MetaTabEntry *entry, 
+static TabEntry*
+tab_entry_new (const MetaTabEntry *entry,
                gint                screen_width,
                gboolean            outline)
 {
   TabEntry *te;
-  
+
   te = g_new (TabEntry, 1);
   te->key = entry->key;
   te->title = NULL;
@@ -153,9 +153,9 @@ tab_entry_new (const MetaTabEntry *entry,
       g_free (str);
       str = tmp;
 
-      if (entry->demands_attention) 
-        {         
-          /* Escape the whole line of text then markup the text and 
+      if (entry->demands_attention)
+        {
+          /* Escape the whole line of text then markup the text and
            * copy it back into the original buffer.
            */
           tmp = g_strdup_printf ("<b>%s</b>", str);
@@ -177,7 +177,7 @@ tab_entry_new (const MetaTabEntry *entry,
       if (entry->hidden)
         te->dimmed_icon = dimm_icon (entry->icon);
     }
-  
+
   if (outline)
     {
       te->rect.x = entry->rect.x;
@@ -212,7 +212,7 @@ meta_ui_tab_popup_new (const MetaTabEntry *entries,
   GdkScreen *screen;
   GdkVisual *visual;
   int screen_width;
-  
+
   popup = g_new (MetaTabPopup, 1);
 
   screen = gdk_display_get_screen (gdk_display_get_default (),
@@ -268,7 +268,7 @@ meta_ui_tab_popup_new (const MetaTabEntry *entries,
     }
 
   popup->entries = g_list_reverse (popup->entries);
-    
+
   g_assert (width > 0);
   height = i / width;
   if (i % width)
@@ -276,7 +276,7 @@ meta_ui_tab_popup_new (const MetaTabEntry *entries,
 
   grid = gtk_grid_new ();
   vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-  
+
   frame = gtk_frame_new (NULL);
   gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_OUT);
   gtk_container_set_border_width (GTK_CONTAINER (grid), 1);
@@ -304,7 +304,7 @@ meta_ui_tab_popup_new (const MetaTabEntry *entries,
   tmp = popup->entries;
 
   while (tmp && top < height)
-    {      
+    {
       left = 0;
       right = 1;
 
@@ -328,14 +328,14 @@ meta_ui_tab_popup_new (const MetaTabEntry *entries,
                 {
                   image = meta_select_image_new (te->dimmed_icon);
                 }
-              else 
+              else
                 {
                   image = meta_select_image_new (te->icon);
                 }
 
               gtk_widget_set_halign (image, GTK_ALIGN_CENTER);
               gtk_widget_set_valign (image, GTK_ALIGN_CENTER);
-            }   
+            }
           else
             {
               image = meta_select_workspace_new ((MetaWorkspace *) te->key);
@@ -350,13 +350,13 @@ meta_ui_tab_popup_new (const MetaTabEntry *entries,
                               te->title);
           gtk_widget_get_preferred_size (popup->label, &req, NULL);
           max_label_width = MAX (max_label_width, req.width);
-          
+
           tmp = tmp->next;
-          
+
           ++left;
           ++right;
         }
-      
+
       ++top;
       ++bottom;
     }
@@ -367,17 +367,17 @@ meta_ui_tab_popup_new (const MetaTabEntry *entries,
   gtk_label_set_ellipsize (GTK_LABEL (popup->label), PANGO_ELLIPSIZE_END);
 
   /* Limit the window size to no bigger than screen_width/4 */
-  if (max_label_width>(screen_width/4)) 
+  if (max_label_width>(screen_width/4))
     {
       max_label_width = screen_width/4;
     }
 
   max_label_width += 20; /* add random padding */
-  
+
   gtk_window_set_default_size (GTK_WINDOW (popup->window),
                                max_label_width,
                                -1);
-  
+
   return popup;
 }
 
@@ -387,7 +387,7 @@ free_tab_entry (gpointer data, gpointer user_data)
   TabEntry *te;
 
   te = data;
-  
+
   g_free (te->title);
   if (te->icon)
     g_object_unref (G_OBJECT (te->icon));
@@ -405,11 +405,11 @@ meta_ui_tab_popup_free (MetaTabPopup *popup)
   if (popup->outline_window != NULL)
     gtk_widget_destroy (popup->outline_window);
   gtk_widget_destroy (popup->window);
-  
+
   g_list_foreach (popup->entries, free_tab_entry, NULL);
 
   g_list_free (popup->entries);
-  
+
   g_free (popup);
 }
 
@@ -494,7 +494,7 @@ meta_ui_tab_popup_forward (MetaTabPopup *popup)
 
   if (popup->current == NULL)
     popup->current = popup->entries;
-  
+
   if (popup->current != NULL)
     {
       TabEntry *te;
@@ -513,7 +513,7 @@ meta_ui_tab_popup_backward (MetaTabPopup *popup)
 
   if (popup->current == NULL)
     popup->current = g_list_last (popup->entries);
-  
+
   if (popup->current != NULL)
     {
       TabEntry *te;
@@ -548,7 +548,7 @@ meta_ui_tab_popup_select (MetaTabPopup *popup,
   /* Note, "key" may not be in the list of entries; other code assumes
    * it's OK to pass in a key that isn't.
    */
-  
+
   tmp = popup->entries;
   while (tmp != NULL)
     {
@@ -559,12 +559,12 @@ meta_ui_tab_popup_select (MetaTabPopup *popup,
       if (te->key == key)
         {
           popup->current = tmp;
-          
+
           display_entry (popup, te);
 
           return;
         }
-      
+
       tmp = tmp->next;
     }
 }

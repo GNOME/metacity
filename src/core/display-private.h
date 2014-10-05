@@ -2,12 +2,12 @@
 
 /* Metacity X display handler */
 
-/* 
+/*
  * Copyright (C) 2001 Havoc Pennington
  * Copyright (C) 2002 Red Hat, Inc.
  * Copyright (C) 2003 Rob Adams
  * Copyright (C) 2004-2006 Elijah Newren
- * 
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 2 of the
@@ -17,7 +17,7 @@
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
@@ -85,7 +85,7 @@ struct _MetaDisplay
 
   Window leader_window;
   Window timestamp_pinging_window;
-  
+
   /* Pull in all the names of atoms as fields; we will intern them when the
    * class is constructed.
    */
@@ -128,7 +128,7 @@ struct _MetaDisplay
   guint allow_terminal_deactivation : 1;
 
   guint static_gravity_works : 1;
-  
+
   /*< private-ish >*/
   guint error_trap_synced_at_last_pop : 1;
   MetaEventQueue *events;
@@ -137,7 +137,7 @@ struct _MetaDisplay
   GHashTable *window_ids;
   int error_traps;
   int (* error_trap_handler) (Display     *display,
-                              XErrorEvent *error);  
+                              XErrorEvent *error);
   int server_grab_count;
 
   /* serials of leave/unmap events that may
@@ -146,7 +146,7 @@ struct _MetaDisplay
    */
   unsigned long ignored_serials[N_IGNORED_SERIALS];
   Window ungrab_should_not_cause_focus_window;
-  
+
   guint32 current_time;
 
   /* Pings which we're waiting for a reply from */
@@ -158,7 +158,7 @@ struct _MetaDisplay
 
   /* Alt+click button grabs */
   unsigned int window_grab_modifiers;
-  
+
   /* current window operation */
   MetaGrabOp  grab_op;
   MetaScreen *grab_screen;
@@ -225,7 +225,7 @@ struct _MetaDisplay
   unsigned int hyper_mask;
   unsigned int super_mask;
   unsigned int meta_mask;
-  
+
   /* Xinerama cache */
   unsigned int xinerama_cache_invalidated : 1;
 
@@ -252,7 +252,7 @@ struct _MetaDisplay
 
   /* Managed by compositor.c */
   MetaCompositor *compositor;
-  
+
 #ifdef HAVE_STARTUP_NOTIFICATION
   SnDisplay *sn_display;
 #endif
@@ -316,7 +316,7 @@ struct _MetaDisplay
  *   time1 < time2
  * Of course, the rest of the ugliness of this macro comes from accounting
  * for the fact that wraparound can occur and the fact that a timestamp of
- * 0 must be special-cased since it means older than anything else. 
+ * 0 must be special-cased since it means older than anything else.
  *
  * Note that this is NOT an equivalent for time1 <= time2; if that's what
  * you need then you'll need to swap the order of the arguments and negate
@@ -429,7 +429,7 @@ const char* meta_event_detail_to_string (int d);
 void meta_display_queue_retheme_all_windows (MetaDisplay *display);
 void meta_display_retheme_all (void);
 
-void meta_display_set_cursor_theme (const char *theme, 
+void meta_display_set_cursor_theme (const char *theme,
 				    int         size);
 
 void meta_display_ping_window      (MetaDisplay        *display,
@@ -493,7 +493,7 @@ gboolean meta_display_focus_sentinel_clear (MetaDisplay *display);
  * whether a window should be allowed to be focused should depend
  * on user_time events (see bug 167358, comment 15 in particular)
  */
-void meta_display_set_input_focus_window   (MetaDisplay *display, 
+void meta_display_set_input_focus_window   (MetaDisplay *display,
                                             MetaWindow  *window,
                                             gboolean     focus_frame,
                                             guint32      timestamp);
@@ -502,7 +502,7 @@ void meta_display_set_input_focus_window   (MetaDisplay *display,
  * designated no_focus_window should be focused, but is otherwise the
  * same as meta_display_set_input_focus_window
  */
-void meta_display_focus_the_no_focus_window (MetaDisplay *display, 
+void meta_display_focus_the_no_focus_window (MetaDisplay *display,
                                              MetaScreen  *screen,
                                              guint32      timestamp);
 

@@ -5,10 +5,10 @@
  * PLEASE KEEP IN SYNC WITH GSETTINGS SCHEMAS!
  */
 
-/* 
+/*
  * Copyright (C) 2001 Havoc Pennington
  * Copyright (C) 2005 Elijah Newren
- * 
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 2 of the
@@ -18,7 +18,7 @@
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
@@ -126,12 +126,12 @@ typedef enum
   META_GRAB_OP_KEYBOARD_ESCAPING_DOCK,
 
   META_GRAB_OP_KEYBOARD_ESCAPING_GROUP,
-  
+
   /* Alt+F6 */
   META_GRAB_OP_KEYBOARD_TABBING_GROUP,
-  
+
   META_GRAB_OP_KEYBOARD_WORKSPACE_SWITCHING,
-  
+
   /* Frame button ops */
   META_GRAB_OP_CLICKING_MINIMIZE,
   META_GRAB_OP_CLICKING_MAXIMIZE,
@@ -181,7 +181,7 @@ typedef enum
    */
   META_VIRTUAL_SHIFT_MASK    = 1 << 5,
   META_VIRTUAL_CONTROL_MASK  = 1 << 6,
-  META_VIRTUAL_ALT_MASK      = 1 << 7,  
+  META_VIRTUAL_ALT_MASK      = 1 << 7,
   META_VIRTUAL_META_MASK     = 1 << 8,
   META_VIRTUAL_SUPER_MASK    = 1 << 9,
   META_VIRTUAL_HYPER_MASK    = 1 << 10,

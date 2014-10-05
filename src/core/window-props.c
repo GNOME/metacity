@@ -14,11 +14,11 @@
  * together.
  */
 
-/* 
+/*
  * Copyright (C) 2001, 2002, 2003 Red Hat, Inc.
  * Copyright (C) 2004, 2005 Elijah Newren
  * Copyright (C) 2009 Thomas Thurman
- * 
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 2 of the
@@ -28,7 +28,7 @@
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
@@ -173,7 +173,7 @@ static void
 init_prop_value (MetaWindow          *window,
                  MetaWindowPropHooks *hooks,
                  MetaPropValue       *value)
-{ 
+{
   if (!hooks || hooks->type == META_PROP_VALUE_INVALID)
     {
       value->type = META_PROP_VALUE_INVALID;
@@ -203,7 +203,7 @@ reload_wm_client_machine (MetaWindow    *window,
 {
   g_free (window->wm_client_machine);
   window->wm_client_machine = NULL;
-  
+
   if (value->type != META_PROP_VALUE_INVALID)
     window->wm_client_machine = g_strdup (value->v.str);
 
@@ -260,7 +260,7 @@ reload_net_wm_window_type (MetaWindow    *window,
     }
 
   meta_XFree (atoms);
- 
+
   if (meta_is_verbose ())
     {
       char *str;
@@ -397,7 +397,7 @@ reload_net_wm_pid (MetaWindow    *window,
   if (value->type != META_PROP_VALUE_INVALID)
     {
       gulong cardinal = (int) value->v.cardinal;
-      
+
       if (cardinal <= 0)
         meta_warning (_("Application set a bogus _NET_WM_PID %lu\n"),
                       cardinal);
@@ -492,7 +492,7 @@ owner_of_process (pid_t process, uid_t *result)
 {
 #ifdef HAVE_GTOP
   glibtop_proc_uid process_details;
-      
+
   glibtop_get_proc_uid (&process_details, process);
 
   if (process_details.flags & (1L << GLIBTOP_PROC_UID_UID))
@@ -530,12 +530,12 @@ set_title_text (MetaWindow  *window,
 {
   char hostname[HOST_NAME_MAX + 1];
   gboolean modified = FALSE;
-  
+
   if (!target)
     return FALSE;
-  
+
   g_free (*target);
-  
+
   if (!title)
     *target = g_strdup ("");
   else if (g_utf8_strlen (title, MAX_TITLE_LENGTH + 1) > MAX_TITLE_LENGTH)
@@ -569,7 +569,7 @@ set_title_text (MetaWindow  *window,
       /* Assume a window with unknown ownership is ours (call it usufruct!) */
       gboolean window_owner_is_us =
               !window_owner_known || window_owner==getuid ();
-      
+
       if (window_owner_is_us)
         {
           /* we own it, so fall back to the simple case */
@@ -596,7 +596,7 @@ set_title_text (MetaWindow  *window,
                 {
                   found_name = pwd->pw_name;
                 }
-            
+
               if (found_name)
                 /* Translators: the title of a window owned by another user
                  * on this machine */
@@ -611,7 +611,7 @@ set_title_text (MetaWindow  *window,
             }
           /* either way we changed it */
           modified = TRUE;
-              
+
         }
     }
   else
@@ -640,7 +640,7 @@ set_window_title (MetaWindow *window,
                   const char *title)
 {
   char *str;
- 
+
   gboolean modified =
     set_title_text (window,
                     window->using_net_wm_visible_name,
@@ -648,7 +648,7 @@ set_window_title (MetaWindow *window,
                     window->display->atom__NET_WM_VISIBLE_NAME,
                     &window->title);
   window->using_net_wm_visible_name = modified;
-  
+
   /* strndup is a hack since GNU libc has broken %.10s */
   str = g_strndup (window->title, 10);
   g_free (window->desc);
@@ -694,7 +694,7 @@ reload_wm_name (MetaWindow    *window,
                     value->v.str);
       return;
     }
-  
+
   if (value->type != META_PROP_VALUE_INVALID)
     {
       set_window_title (window, value->v.str);
@@ -754,11 +754,11 @@ reload_wm_icon_name (MetaWindow    *window,
                     value->v.str);
       return;
     }
-  
+
   if (value->type != META_PROP_VALUE_INVALID)
     {
       set_icon_title (window, value->v.str);
-      
+
       meta_verbose ("Using WM_ICON_NAME for new title of %s: \"%s\"\n",
                     window->desc, window->title);
     }
@@ -947,7 +947,7 @@ reload_mwm_hints (MetaWindow    *window,
     meta_verbose ("Functions flag unset\n");
 
   meta_window_recalc_features (window);
-  
+
   /* We do all this anyhow at the end of meta_window_new() */
   if (!window->constructing)
     {
@@ -955,7 +955,7 @@ reload_mwm_hints (MetaWindow    *window,
         meta_window_ensure_frame (window);
       else
         meta_window_destroy_frame (window);
-      
+
       meta_window_queue (window,
                          META_QUEUE_MOVE_RESIZE |
                          /* because ensure/destroy frame may unmap: */
@@ -977,7 +977,7 @@ reload_wm_class (MetaWindow    *window,
   window->res_name = NULL;
 
   if (value->type != META_PROP_VALUE_INVALID)
-    { 
+    {
       if (value->v.class_hint.res_name)
         window->res_name = g_strdup (value->v.class_hint.res_name);
 
@@ -1013,32 +1013,32 @@ reload_net_startup_id (MetaWindow    *window,
 {
   guint32 timestamp = window->net_wm_user_time;
   MetaWorkspace *workspace = NULL;
-  
+
   g_free (window->startup_id);
-  
+
   if (value->type != META_PROP_VALUE_INVALID)
     window->startup_id = g_strdup (value->v.str);
   else
     window->startup_id = NULL;
-    
+
   /* Update timestamp and workspace on a running window */
   if (!window->constructing)
   {
-    window->initial_timestamp_set = 0;  
+    window->initial_timestamp_set = 0;
     window->initial_workspace_set = 0;
-    
+
     if (meta_screen_apply_startup_properties (window->screen, window))
       {
-  
+
         if (window->initial_timestamp_set)
           timestamp = window->initial_timestamp;
         if (window->initial_workspace_set)
           workspace = meta_screen_get_workspace_by_index (window->screen, window->initial_workspace);
-    
+
         meta_window_activate_with_workspace (window, timestamp, workspace);
       }
   }
-  
+
   meta_verbose ("New _NET_STARTUP_ID \"%s\" for %s\n",
                 window->startup_id ? window->startup_id : "unset",
                 window->desc);
@@ -1118,7 +1118,7 @@ spew_size_hints_differences (const XSizeHints *old,
   if (FLAG_CHANGED (old, new, PWinGravity))
     meta_topic (META_DEBUG_GEOMETRY, "XSizeHints: PWinGravity now %s  (%d -> %d)\n",
                 FLAG_TOGGLED_ON (old, new, PWinGravity) ? "set" : "unset",
-                old->win_gravity, new->win_gravity);  
+                old->win_gravity, new->win_gravity);
 }
 
 void
@@ -1471,15 +1471,15 @@ reload_normal_hints (MetaWindow    *window,
   if (value->type != META_PROP_VALUE_INVALID)
     {
       XSizeHints old_hints;
-  
+
       meta_topic (META_DEBUG_GEOMETRY, "Updating WM_NORMAL_HINTS for %s\n", window->desc);
 
       old_hints = window->size_hints;
-  
+
       meta_set_normal_hints (window, value->v.size_hints.hints);
-      
+
       spew_size_hints_differences (&old_hints, &window->size_hints);
-      
+
       meta_window_recalc_features (window);
 
       if (!initial)
@@ -1493,12 +1493,12 @@ reload_wm_protocols (MetaWindow    *window,
                      gboolean       initial)
 {
   int i;
-  
+
   window->take_focus = FALSE;
   window->delete_window = FALSE;
   window->net_wm_ping = FALSE;
-  
-  if (value->type == META_PROP_VALUE_INVALID)    
+
+  if (value->type == META_PROP_VALUE_INVALID)
     return;
 
   i = 0;
@@ -1515,7 +1515,7 @@ reload_wm_protocols (MetaWindow    *window,
         window->net_wm_ping = TRUE;
       ++i;
     }
-  
+
   meta_verbose ("New _NET_STARTUP_ID \"%s\" for %s\n",
                 window->startup_id ? window->startup_id : "unset",
                 window->desc);
@@ -1527,20 +1527,20 @@ reload_wm_hints (MetaWindow    *window,
                  gboolean       initial)
 {
   Window old_group_leader;
-  
+
   old_group_leader = window->xgroup_leader;
-  
+
   /* Fill in defaults */
   window->input = TRUE;
   window->initially_iconic = FALSE;
   window->xgroup_leader = None;
   window->wm_hints_pixmap = None;
   window->wm_hints_mask = None;
-  
+
   if (value->type != META_PROP_VALUE_INVALID)
     {
       const XWMHints *hints = value->v.wm_hints;
-      
+
       if (hints->flags & InputHint)
         window->input = hints->input;
 
@@ -1555,7 +1555,7 @@ reload_wm_hints (MetaWindow    *window,
 
       if (hints->flags & IconMaskHint)
         window->wm_hints_mask = hints->icon_mask;
-      
+
       meta_verbose ("Read WM_HINTS input: %d iconic: %d group leader: 0x%lx pixmap: 0x%lx mask: 0x%lx\n",
                     window->input, window->initially_iconic,
                     window->xgroup_leader,
@@ -1567,7 +1567,7 @@ reload_wm_hints (MetaWindow    *window,
     {
       meta_verbose ("Window %s changed its group leader to 0x%lx\n",
                     window->desc, window->xgroup_leader);
-      
+
       meta_window_group_leader_changed (window);
     }
 
@@ -1584,13 +1584,13 @@ reload_transient_for (MetaWindow    *window,
                       gboolean       initial)
 {
   window->xtransient_for = None;
-  
+
   if (value->type != META_PROP_VALUE_INVALID)
     window->xtransient_for = value->v.xwindow;
 
   /* Make sure transient_for is valid */
   if (window->xtransient_for != None &&
-      meta_display_lookup_x_window (window->display, 
+      meta_display_lookup_x_window (window->display,
                                     window->xtransient_for) == NULL)
     {
       meta_warning (_("Invalid WM_TRANSIENT_FOR window 0x%lx specified "

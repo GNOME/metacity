@@ -1,8 +1,8 @@
 /* WM tester main() */
 
-/* 
+/*
  * Copyright (C) 2001 Havoc Pennington
- * 
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 2 of the
@@ -12,7 +12,7 @@
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
@@ -41,17 +41,17 @@ main (int argc, char **argv)
   int i;
   gboolean do_evil;
   gboolean do_icon_windows;
-  
-  gtk_init (&argc, &argv);  
-  
+
+  gtk_init (&argc, &argv);
+
   do_evil = FALSE;
   do_icon_windows = FALSE;
-  
+
   i = 1;
   while (i < argc)
     {
       const char *arg = argv[i];
-      
+
       if (strcmp (arg, "--help") == 0 ||
           strcmp (arg, "-h") == 0 ||
           strcmp (arg, "-?") == 0)
@@ -62,20 +62,20 @@ main (int argc, char **argv)
         do_icon_windows = TRUE;
       else
         usage ();
-      
+
       ++i;
     }
 
   /* Be sure some option was provided */
   if (! (do_evil || do_icon_windows))
     return 1;
-  
+
   if (do_evil)
     set_up_the_evil ();
 
   if (do_icon_windows)
     set_up_icon_windows ();
-  
+
   gtk_main ();
 
   return 0;
@@ -91,9 +91,9 @@ evil_timeout (gpointer data)
   int len;
   int create_count;
   int destroy_count;
-  
-  len = g_slist_length (evil_windows);  
-  
+
+  len = g_slist_length (evil_windows);
+
   if (len > 35)
     {
       create_count = 2;
@@ -107,7 +107,7 @@ evil_timeout (gpointer data)
 
   /* Create some windows */
   n_windows = g_random_int_range (0, create_count);
-  
+
   i = 0;
   while (i < n_windows)
     {
@@ -115,7 +115,7 @@ evil_timeout (gpointer data)
       GtkWidget *c;
       int t;
       GtkWidget *parent;
-      
+
       w = gtk_window_new (GTK_WINDOW_TOPLEVEL);
 
       gtk_window_move (GTK_WINDOW (w),
@@ -125,7 +125,7 @@ evil_timeout (gpointer data)
                                            gdk_screen_height ()));
 
       parent = NULL;
-      
+
       /* set transient for random window (may create all kinds of weird cycles) */
       if (len > 0)
         {
@@ -133,22 +133,22 @@ evil_timeout (gpointer data)
           if (t >= 0)
             {
               parent = g_slist_nth_data (evil_windows, t);
-              
+
               if (parent != NULL)
                 gtk_window_set_transient_for (GTK_WINDOW (w), GTK_WINDOW (parent));
             }
         }
-      
+
       if (parent != NULL)
         c = gtk_button_new_with_label ("Evil Transient!");
       else
         c = gtk_button_new_with_label ("Evil Window!");
       gtk_container_add (GTK_CONTAINER (w), c);
-      
+
       gtk_widget_show_all (w);
-      
+
       evil_windows = g_slist_prepend (evil_windows, w);
-      
+
       ++i;
     }
 
@@ -160,7 +160,7 @@ evil_timeout (gpointer data)
       while (i < n_windows)
         {
           GtkWidget *w;
-          
+
           w = g_slist_nth_data (evil_windows,
                                 g_random_int_range (0, len));
           if (w)
@@ -169,11 +169,11 @@ evil_timeout (gpointer data)
               evil_windows = g_slist_remove (evil_windows, w);
               gtk_widget_destroy (w);
             }
-          
+
           ++i;
         }
     }
-  
+
   return TRUE;
 }
 
@@ -191,7 +191,7 @@ set_up_icon_windows (void)
 
   /* Create some windows */
   n_windows = 9;
-  
+
   i = 0;
   while (i < n_windows)
     {
@@ -200,7 +200,7 @@ set_up_icon_windows (void)
       GList *icons;
       GdkPixbuf *pix;
       int size  = 0;
-      
+
       w = gtk_window_new (GTK_WINDOW_TOPLEVEL);
       c = gtk_button_new_with_label ("Icon window");
       gtk_container_add (GTK_CONTAINER (w), c);
@@ -209,7 +209,7 @@ set_up_icon_windows (void)
 
       gtk_icon_size_lookup (GTK_ICON_SIZE_LARGE_TOOLBAR, NULL, &size);
       pix = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (), "gtk-save", size, 0, NULL);
-      
+
       icons = g_list_append (icons, pix);
 
       if (i % 2)
@@ -230,9 +230,9 @@ set_up_icon_windows (void)
 
       g_list_foreach (icons, (GFunc) g_object_unref, NULL);
       g_list_free (icons);
-      
+
       gtk_widget_show_all (w);
-      
+
       ++i;
     }
 }

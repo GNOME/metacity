@@ -2,10 +2,10 @@
 
 /* Metacity utilities */
 
-/* 
+/*
  * Copyright (C) 2001 Havoc Pennington
  * Copyright (C) 2005 Elijah Newren
- * 
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 2 of the
@@ -15,7 +15,7 @@
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
@@ -44,11 +44,11 @@ meta_print_backtrace (void)
   int bt_size;
   int i;
   char **syms;
-  
+
   bt_size = backtrace (bt, 500);
 
   syms = backtrace_symbols (bt, bt_size);
-  
+
   i = 0;
   while (i < bt_size)
     {
@@ -83,7 +83,7 @@ ensure_logfile (void)
       char *tmpl;
       int fd;
       GError *err;
-      
+
       tmpl = g_strdup_printf ("metacity-%d-debug-log-XXXXXX",
                               (int) getpid ());
 
@@ -93,7 +93,7 @@ ensure_logfile (void)
                             &err);
 
       g_free (tmpl);
-      
+
       if (err != NULL)
         {
           meta_warning (_("Failed to open debug log: %s\n"),
@@ -101,9 +101,9 @@ ensure_logfile (void)
           g_error_free (err);
           return;
         }
-      
+
       logfile = fdopen (fd, "w");
-      
+
       if (logfile == NULL)
         {
           meta_warning (_("Failed to fdopen() log file %s: %s\n"),
@@ -114,7 +114,7 @@ ensure_logfile (void)
         {
           g_printerr (_("Opened log file %s\n"), filename);
         }
-      
+
       g_free (filename);
     }
 }
@@ -132,11 +132,11 @@ meta_set_verbose (gboolean setting)
 #ifndef WITH_VERBOSE_MODE
   if (setting)
     meta_fatal (_("Metacity was compiled without support for verbose mode\n"));
-#else 
+#else
   if (setting)
     ensure_logfile ();
 #endif
-  
+
   is_verbose = setting;
 }
 
@@ -189,7 +189,7 @@ utf8_fputs (const char *str,
 {
   char *l;
   int retval;
-  
+
   l = g_locale_from_utf8 (str, -1, NULL, NULL, NULL);
 
   if (l == NULL)
@@ -218,24 +218,24 @@ meta_debug_spew_real (const char *format, ...)
   va_list args;
   gchar *str;
   FILE *out;
-  
+
   g_return_if_fail (format != NULL);
 
   if (!is_debugging)
     return;
-  
+
   va_start (args, format);
   str = g_strdup_vprintf (format, args);
   va_end (args);
 
   out = logfile ? logfile : stderr;
-  
+
   if (no_prefix == 0)
     utf8_fputs (_("Window manager: "), out);
   utf8_fputs (str, out);
 
   fflush (out);
-  
+
   g_free (str);
 }
 #endif /* WITH_VERBOSE_MODE */
@@ -252,19 +252,19 @@ meta_verbose_real (const char *format, ...)
 
   if (!is_verbose)
     return;
-  
+
   va_start (args, format);
   str = g_strdup_vprintf (format, args);
   va_end (args);
 
   out = logfile ? logfile : stderr;
-  
+
   if (no_prefix == 0)
     utf8_fputs ("Window manager: ", out);
   utf8_fputs (str, out);
 
   fflush (out);
-  
+
   g_free (str);
 }
 #endif /* WITH_VERBOSE_MODE */
@@ -339,8 +339,8 @@ meta_topic_real (MetaDebugTopic topic,
 
   if (!is_verbose)
     return;
-  
-  va_start (args, format);  
+
+  va_start (args, format);
   str = g_strdup_vprintf (format, args);
   va_end (args);
 
@@ -354,11 +354,11 @@ meta_topic_real (MetaDebugTopic topic,
       ++sync_count;
       fprintf (out, "%d: ", sync_count);
     }
-  
+
   utf8_fputs (str, out);
-  
+
   fflush (out);
-  
+
   g_free (str);
 }
 #endif /* WITH_VERBOSE_MODE */
@@ -371,7 +371,7 @@ meta_bug (const char *format, ...)
   FILE *out;
 
   g_return_if_fail (format != NULL);
-  
+
   va_start (args, format);
   str = g_strdup_vprintf (format, args);
   va_end (args);
@@ -387,11 +387,11 @@ meta_bug (const char *format, ...)
   utf8_fputs (str, out);
 
   fflush (out);
-  
+
   g_free (str);
 
   meta_print_backtrace ();
-  
+
   /* stop us in a debugger */
   abort ();
 }
@@ -402,9 +402,9 @@ meta_warning (const char *format, ...)
   va_list args;
   gchar *str;
   FILE *out;
-  
+
   g_return_if_fail (format != NULL);
-  
+
   va_start (args, format);
   str = g_strdup_vprintf (format, args);
   va_end (args);
@@ -420,7 +420,7 @@ meta_warning (const char *format, ...)
   utf8_fputs (str, out);
 
   fflush (out);
-  
+
   g_free (str);
 }
 
@@ -430,9 +430,9 @@ meta_fatal (const char *format, ...)
   va_list args;
   gchar *str;
   FILE *out;
-  
+
   g_return_if_fail (format != NULL);
-  
+
   va_start (args, format);
   str = g_strdup_vprintf (format, args);
   va_end (args);
@@ -448,7 +448,7 @@ meta_fatal (const char *format, ...)
   utf8_fputs (str, out);
 
   fflush (out);
-  
+
   g_free (str);
 
   meta_exit (META_EXIT_ERROR);
@@ -471,7 +471,7 @@ meta_pop_no_msg_prefix (void)
 void
 meta_exit (MetaExitCode code)
 {
-  
+
   exit (code);
 }
 
@@ -567,7 +567,7 @@ meta_show_dialog (const char *type,
   argvl[i++] = _("Metacity");
   argvl[i++] = "--text";
   argvl[i++] = message;
-  
+
   if (timeout)
     {
       argvl[i++] = "--timeout";
@@ -585,7 +585,7 @@ meta_show_dialog (const char *type,
       argvl[i++] = "--cancel-label";
       argvl[i++] = cancel_text;
     }
-  
+
   tmp = columns;
   while (tmp)
     {
@@ -600,7 +600,7 @@ meta_show_dialog (const char *type,
       argvl[i++] = tmp->data;
       tmp = tmp->next;
     }
-    
+
   argvl[i] = NULL;
 
   if (transient_for)

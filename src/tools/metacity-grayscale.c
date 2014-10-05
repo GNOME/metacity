@@ -1,8 +1,8 @@
 /* Hack for grayscaling an image */
 
-/* 
+/*
  * Copyright (C) 2002 Red Hat Inc.
- * 
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 2 of the
@@ -12,7 +12,7 @@
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
@@ -34,15 +34,15 @@ grayscale_pixbuf (GdkPixbuf *pixbuf)
   int row;
   int n_rows;
   int width;
-  
+
   gray = gdk_pixbuf_copy (pixbuf);
   rowstride = gdk_pixbuf_get_rowstride (gray);
   pixstride = gdk_pixbuf_get_has_alpha (gray) ? 4 : 3;
-  
+
   pixels = gdk_pixbuf_get_pixels (gray);
   n_rows = gdk_pixbuf_get_height (gray);
   width = gdk_pixbuf_get_width (gray);
-  
+
   row = 0;
   while (row < n_rows)
     {
@@ -56,13 +56,13 @@ grayscale_pixbuf (GdkPixbuf *pixbuf)
           p[0] = (guchar) v;
           p[1] = (guchar) v;
           p[2] = (guchar) v;
-          
+
           p += pixstride;
         }
-      
+
       ++row;
     }
-  
+
   return gray;
 }
 
@@ -72,7 +72,7 @@ main (int argc, char **argv)
   GdkPixbuf *pixbuf;
   GdkPixbuf *gray;
   GError *err;
-  
+
   if (argc != 2)
     {
       g_printerr ("specify a single image on the command line\n");
@@ -89,7 +89,7 @@ main (int argc, char **argv)
     }
 
   gray = grayscale_pixbuf (pixbuf);
-  
+
   err = NULL;
   gdk_pixbuf_save (gray, "grayscale.png", "png", &err, NULL);
   if (err != NULL)
@@ -100,6 +100,6 @@ main (int argc, char **argv)
     }
 
   g_print ("wrote grayscale.png\n");
-  
+
   return 0;
 }

@@ -108,14 +108,14 @@ colorize_pixbuf (GdkPixbuf *orig,
   gboolean has_alpha;
   const guchar *src_pixels;
   guchar *dest_pixels;
-  
+
   pixbuf = gdk_pixbuf_new (gdk_pixbuf_get_colorspace (orig), gdk_pixbuf_get_has_alpha (orig),
 			   gdk_pixbuf_get_bits_per_sample (orig),
 			   gdk_pixbuf_get_width (orig), gdk_pixbuf_get_height (orig));
 
   if (pixbuf == NULL)
     return NULL;
-  
+
   orig_rowstride = gdk_pixbuf_get_rowstride (orig);
   dest_rowstride = gdk_pixbuf_get_rowstride (pixbuf);
   width = gdk_pixbuf_get_width (pixbuf);
@@ -123,7 +123,7 @@ colorize_pixbuf (GdkPixbuf *orig,
   has_alpha = gdk_pixbuf_get_has_alpha (orig);
   src_pixels = gdk_pixbuf_get_pixels (orig);
   dest_pixels = gdk_pixbuf_get_pixels (pixbuf);
-  
+
   for (y = 0; y < height; y++)
     {
       src = src_pixels + y * orig_rowstride;
@@ -132,7 +132,7 @@ colorize_pixbuf (GdkPixbuf *orig,
       for (x = 0; x < width; x++)
         {
           double dr, dg, db;
-          
+
           intensity = INTENSITY (src[0], src[1], src[2]) / 255.0;
 
           if (intensity <= 0.5)
@@ -149,11 +149,11 @@ colorize_pixbuf (GdkPixbuf *orig,
               dg = new_color->green + (1.0 - new_color->green) * (intensity - 0.5) * 2.0;
               db = new_color->blue + (1.0 - new_color->blue) * (intensity - 0.5) * 2.0;
             }
-          
+
           dest[0] = CLAMP_UCHAR (255 * dr);
           dest[1] = CLAMP_UCHAR (255 * dg);
           dest[2] = CLAMP_UCHAR (255 * db);
-          
+
           if (has_alpha)
             {
               dest[3] = src[3];
@@ -221,7 +221,7 @@ meta_frame_layout_new  (void)
   init_border (&layout->title_border);
 
   layout->title_vertical_pad = -1;
-  
+
   layout->right_titlebar_edge = -1;
   layout->left_titlebar_edge = -1;
 
@@ -232,7 +232,7 @@ meta_frame_layout_new  (void)
 
   layout->has_title = TRUE;
   layout->title_scale = 1.0;
-  
+
   init_border (&layout->button_border);
 
   return layout;
@@ -246,7 +246,7 @@ validate_border (const GtkBorder *border,
                  const char     **bad)
 {
   *bad = NULL;
-  
+
   if (border->top < 0)
     *bad = _("top");
   else if (border->bottom < 0)
@@ -402,12 +402,12 @@ meta_frame_layout_get_borders (const MetaFrameLayout *layout,
                                MetaFrameBorders      *borders)
 {
   int buttons_height, title_height;
-  
+
   g_return_if_fail (layout != NULL);
 
   if (!layout->has_title)
     text_height = 0;
-  
+
   buttons_height = layout->button_height +
     layout->button_border.top + layout->button_border.bottom;
   title_height = text_height +
@@ -469,7 +469,7 @@ rect_for_function (MetaFrameGeometry *fgeom,
 {
 
   /* Firstly, check version-specific things. */
-  
+
   if (META_THEME_ALLOWS(theme, META_THEME_SHADE_STICK_ABOVE_BUTTONS))
     {
       switch (function)
@@ -543,7 +543,7 @@ rect_for_function (MetaFrameGeometry *fgeom,
        * be well.
        */
       return NULL;
-      
+
     case META_BUTTON_FUNCTION_LAST:
       return NULL;
     }
@@ -558,7 +558,7 @@ strip_button (MetaButtonSpace *func_rects[MAX_BUTTONS_PER_CORNER],
               MetaButtonSpace *to_strip)
 {
   int i;
-  
+
   i = 0;
   while (i < *n_rects)
     {
@@ -577,7 +577,7 @@ strip_button (MetaButtonSpace *func_rects[MAX_BUTTONS_PER_CORNER],
 
           func_rects[i] = NULL;
           bg_rects[i] = NULL;
-          
+
           return TRUE;
         }
 
@@ -604,7 +604,7 @@ meta_frame_layout_calc_geometry (const MetaFrameLayout  *layout,
   int width, height;
   int button_width, button_height;
   int min_size_for_rounding;
-  
+
   /* the left/right rects in order; the max # of rects
    * is the number of button functions
    */
@@ -642,7 +642,7 @@ meta_frame_layout_calc_geometry (const MetaFrameLayout  *layout,
   /* gcc warnings */
   button_width = -1;
   button_height = -1;
-  
+
   switch (layout->button_sizing)
     {
     case META_BUTTON_SIZING_ASPECT:
@@ -663,11 +663,11 @@ meta_frame_layout_calc_geometry (const MetaFrameLayout  *layout,
    * code in frames.c, so isn't really allowed right now.
    * Would need left_close_rect, right_close_rect, etc.
    */
-  
+
   /* Init all button rects to 0, lame hack */
   memset (ADDRESS_OF_BUTTON_RECTS (fgeom), '\0',
           LENGTH_OF_BUTTON_RECTS);
-  
+
   n_left = 0;
   n_right = 0;
   n_left_spacers = 0;
@@ -690,7 +690,7 @@ meta_frame_layout_calc_geometry (const MetaFrameLayout  *layout,
               ++n_left;
             }
         }
-      
+
       for (i = 0; i < MAX_BUTTONS_PER_CORNER && button_layout->right_buttons[i] != META_BUTTON_FUNCTION_LAST; i++)
         {
           right_func_rects[n_right] = rect_for_function (fgeom, flags,
@@ -736,7 +736,7 @@ meta_frame_layout_calc_geometry (const MetaFrameLayout  *layout,
       else
         right_bg_rects[i] = &fgeom->right_middle_backgrounds[i - 1];
     }
-  
+
   /* Be sure buttons fit */
   while (n_left > 0 || n_right > 0)
     {
@@ -744,7 +744,7 @@ meta_frame_layout_calc_geometry (const MetaFrameLayout  *layout,
       int space_available;
 
       space_available = fgeom->width - layout->left_titlebar_edge - layout->right_titlebar_edge;
-      
+
       space_used_by_buttons = 0;
 
       space_used_by_buttons += button_width * n_left;
@@ -759,7 +759,7 @@ meta_frame_layout_calc_geometry (const MetaFrameLayout  *layout,
 
       if (space_used_by_buttons <= space_available)
         break; /* Everything fits, bail out */
-      
+
       /* First try to remove separators */
       if (n_left_spacers > 0)
         {
@@ -836,7 +836,7 @@ meta_frame_layout_calc_geometry (const MetaFrameLayout  *layout,
 
   /* right edge of farthest-right button */
   x = width - layout->right_titlebar_edge;
-  
+
   i = n_right - 1;
   while (i >= 0)
     {
@@ -844,7 +844,7 @@ meta_frame_layout_calc_geometry (const MetaFrameLayout  *layout,
 
       if (x < 0) /* if we go negative, leave the buttons we don't get to as 0-width */
         break;
-      
+
       rect = right_func_rects[i];
       rect->visible.x = x - layout->button_border.right - button_width;
       if (right_buttons_has_spacer[i])
@@ -871,9 +871,9 @@ meta_frame_layout_calc_geometry (const MetaFrameLayout  *layout,
         g_memmove (&(rect->clickable), &(rect->visible), sizeof(rect->clickable));
 
       *(right_bg_rects[i]) = rect->visible;
-      
+
       x = rect->visible.x - layout->button_border.left;
-      
+
       --i;
     }
 
@@ -889,7 +889,7 @@ meta_frame_layout_calc_geometry (const MetaFrameLayout  *layout,
       MetaButtonSpace *rect;
 
       rect = left_func_rects[i];
-      
+
       rect->visible.x = x + layout->button_border.left;
       rect->visible.y = button_y;
       rect->visible.width = button_width;
@@ -932,7 +932,7 @@ meta_frame_layout_calc_geometry (const MetaFrameLayout  *layout,
     min_size_for_rounding = 0;
   else
     min_size_for_rounding = 5;
-  
+
   fgeom->top_left_corner_rounded_radius = 0;
   fgeom->top_right_corner_rounded_radius = 0;
   fgeom->bottom_left_corner_rounded_radius = 0;
@@ -975,7 +975,7 @@ meta_gradient_spec_free (MetaGradientSpec *spec)
 
   g_slist_foreach (spec->color_specs, free_color_spec, NULL);
   g_slist_free (spec->color_specs);
-  
+
   DEBUG_FILL_STRUCT (spec);
   g_free (spec);
 }
@@ -1023,7 +1023,7 @@ meta_gradient_spec_validate (MetaGradientSpec *spec,
                              GError          **error)
 {
   g_return_val_if_fail (spec != NULL, FALSE);
-  
+
   if (g_slist_length (spec->color_specs) < 2)
     {
       g_set_error (error, META_THEME_ERROR,
@@ -1042,7 +1042,7 @@ meta_alpha_gradient_spec_new (MetaGradientType       type,
   MetaAlphaGradientSpec *spec;
 
   g_return_val_if_fail (n_alphas > 0, NULL);
-  
+
   spec = g_new0 (MetaAlphaGradientSpec, 1);
 
   spec->type = type;
@@ -1065,7 +1065,7 @@ MetaShadowProperties*
 meta_shadow_properties_new (void)
 {
   MetaShadowProperties *properties;
-  
+
   properties = g_new0 (MetaShadowProperties, 1);
 
   if (properties)
@@ -1092,7 +1092,7 @@ MetaInvisibleGrabAreaProperties*
 meta_invisible_grab_area_properties_new (void)
 {
   MetaInvisibleGrabAreaProperties *properties;
-  
+
   properties = g_new0 (MetaInvisibleGrabAreaProperties, 1);
 
   return properties;
@@ -1193,7 +1193,7 @@ meta_color_spec_new_from_string (const char *str,
   MetaColorSpec *spec;
 
   spec = NULL;
-  
+
   if (strncmp (str, "gtk:custom", 10) == 0)
     {
       const char *color_name_start, *fallback_str_start, *end;
@@ -1276,7 +1276,7 @@ meta_color_spec_new_from_string (const char *str,
       char *tmp;
       GtkStateFlags state;
       MetaGtkColorComponent component;
-      
+
       bracket = str;
       while (*bracket && *bracket != '[')
         ++bracket;
@@ -1294,7 +1294,7 @@ meta_color_spec_new_from_string (const char *str,
       ++end_bracket;
       while (*end_bracket && *end_bracket != ']')
         ++end_bracket;
-      
+
       if (*end_bracket == '\0')
         {
           g_set_error (err, META_THEME_ERROR,
@@ -1316,7 +1316,7 @@ meta_color_spec_new_from_string (const char *str,
           return NULL;
         }
       g_free (tmp);
-      
+
       tmp = g_strndup (str + 4, bracket - str - 4);
       component = meta_color_component_from_string (tmp);
       if (component == META_GTK_COLOR_LAST)
@@ -1343,9 +1343,9 @@ meta_color_spec_new_from_string (const char *str,
       char *end;
       MetaColorSpec *fg;
       MetaColorSpec *bg;
-      
+
       split = g_strsplit (str, "/", 4);
-      
+
       if (split[0] == NULL || split[1] == NULL ||
           split[2] == NULL || split[3] == NULL)
         {
@@ -1377,7 +1377,7 @@ meta_color_spec_new_from_string (const char *str,
           g_strfreev (split);
           return NULL;
         }
-      
+
       fg = NULL;
       bg = NULL;
 
@@ -1397,7 +1397,7 @@ meta_color_spec_new_from_string (const char *str,
         }
 
       g_strfreev (split);
-      
+
       spec = meta_color_spec_new (META_COLOR_SPEC_BLEND);
       spec->data.blend.alpha = alpha;
       spec->data.blend.background = bg;
@@ -1410,9 +1410,9 @@ meta_color_spec_new_from_string (const char *str,
       double factor;
       char *end;
       MetaColorSpec *base;
-      
+
       split = g_strsplit (str, "/", 3);
-      
+
       if (split[0] == NULL || split[1] == NULL ||
           split[2] == NULL)
         {
@@ -1444,7 +1444,7 @@ meta_color_spec_new_from_string (const char *str,
           g_strfreev (split);
           return NULL;
         }
-      
+
       base = NULL;
 
       base = meta_color_spec_new_from_string (split[1], err);
@@ -1455,7 +1455,7 @@ meta_color_spec_new_from_string (const char *str,
         }
 
       g_strfreev (split);
-      
+
       spec = meta_color_spec_new (META_COLOR_SPEC_SHADE);
       spec->data.shade.factor = factor;
       spec->data.shade.base = base;
@@ -1463,7 +1463,7 @@ meta_color_spec_new_from_string (const char *str,
   else
     {
       spec = meta_color_spec_new (META_COLOR_SPEC_BASIC);
-      
+
       if (!gdk_rgba_parse (&spec->data.basic.color, str))
         {
           g_set_error (err, META_THEME_ERROR,
@@ -1476,7 +1476,7 @@ meta_color_spec_new_from_string (const char *str,
     }
 
   g_assert (spec);
-  
+
   return spec;
 }
 
@@ -1606,7 +1606,7 @@ meta_color_spec_render (MetaColorSpec *spec,
         meta_color_spec_render (spec->data.blend.background, context, &bg);
         meta_color_spec_render (spec->data.blend.foreground, context, &fg);
 
-        color_composite (&bg, &fg, spec->data.blend.alpha, 
+        color_composite (&bg, &fg, spec->data.blend.alpha,
                          &spec->data.blend.color);
 
         *color = spec->data.blend.color;
@@ -1615,10 +1615,10 @@ meta_color_spec_render (MetaColorSpec *spec,
 
     case META_COLOR_SPEC_SHADE:
       {
-        meta_color_spec_render (spec->data.shade.base, context, 
+        meta_color_spec_render (spec->data.shade.base, context,
                                 &spec->data.shade.color);
-            
-        gtk_style_shade (&spec->data.shade.color, 
+
+        gtk_style_shade (&spec->data.shade.color,
                          &spec->data.shade.color, spec->data.shade.factor);
 
         *color = spec->data.shade.color;
@@ -1672,7 +1672,7 @@ op_from_string (const char *p,
                 int        *len)
 {
   *len = 0;
-  
+
   switch (*p)
     {
     case '+':
@@ -1833,7 +1833,7 @@ debug_print_tokens (PosToken *tokens,
                     int       n_tokens)
 {
   int i;
-  
+
   for (i = 0; i < n_tokens; i++)
     {
       PosToken *t = &tokens[i];
@@ -1889,7 +1889,7 @@ pos_tokenize (const char  *expr,
   int n_tokens;
   int allocated;
   const char *p;
-  
+
   *tokens_p = NULL;
   *n_tokens_p = 0;
 
@@ -1902,7 +1902,7 @@ pos_tokenize (const char  *expr,
     {
       PosToken *next;
       int len;
-      
+
       if (n_tokens == allocated)
         {
           allocated *= 2;
@@ -1932,7 +1932,7 @@ pos_tokenize (const char  *expr,
                            META_THEME_ERROR_FAILED,
                            _("Coordinate expression contained unknown operator at the start of this text: \"%s\""),
                            p);
-              
+
               goto error;
             }
           break;
@@ -1949,7 +1949,7 @@ pos_tokenize (const char  *expr,
 
         case ' ':
         case '\t':
-        case '\n':		
+        case '\n':
           break;
 
         default:
@@ -2389,7 +2389,7 @@ pos_eval_get_variable (PosToken                  *t,
           return FALSE;
         }
     }
-  else 
+  else
     {
       if (strcmp (t->d.v.name, "width") == 0)
         *result = env->rect.width;
@@ -2446,7 +2446,7 @@ pos_eval_get_variable (PosToken                  *t,
  * \param n_tokens  How many tokens are in the list.
  * \param env  The environment context in which to evaluate the expression.
  * \param[out] result  The current value of the expression
- * 
+ *
  * \bug Yes, we really do reparse the expression every time it's evaluated.
  *      We should keep the parse tree around all the time and just
  *      run the new values through it.
@@ -2467,7 +2467,7 @@ pos_eval_helper (PosToken                   *tokens,
   PosExpr exprs[MAX_EXPRS];
   int n_exprs;
   int precedence;
-  
+
   /* Our first goal is to get a list of PosExpr, essentially
    * substituting variables and handling parentheses.
    */
@@ -2524,7 +2524,7 @@ pos_eval_helper (PosToken                   *tokens,
                */
               if (!pos_eval_get_variable (t, &exprs[n_exprs].d.int_val, env, err))
                 return FALSE;
-                  
+
               ++n_exprs;
               break;
 
@@ -2712,7 +2712,7 @@ meta_parse_size_expression (MetaDrawSpec              *spec,
 
   if (spec->constant)
     val = spec->value;
-  else 
+  else
     {
       if (pos_eval (spec, env, &spec->value, err) == FALSE)
         {
@@ -2745,11 +2745,11 @@ meta_theme_replace_constants (MetaTheme   *theme,
   double dval;
   int ival;
   gboolean is_constant = TRUE;
-  
+
   /* Loop through tokenized string looking for variables to replace */
   for (i = 0; i < n_tokens; i++)
     {
-      PosToken *t = &tokens[i];      
+      PosToken *t = &tokens[i];
 
       if (t->type == POS_TOKEN_VARIABLE)
         {
@@ -2765,17 +2765,17 @@ meta_theme_replace_constants (MetaTheme   *theme,
               t->type = POS_TOKEN_DOUBLE;
               t->d.d.val = dval;
             }
-          else 
+          else
             {
               /* If we've found a variable that cannot be replaced then the
-                 expression is not a constant expression and we want to 
+                 expression is not a constant expression and we want to
                  replace it with a GQuark */
 
               t->d.v.name_quark = g_quark_from_string (t->d.v.name);
               is_constant = FALSE;
             }
         }
-    }  
+    }
 
   return is_constant;
 }
@@ -2793,10 +2793,10 @@ parse_x_position_unchecked (MetaDrawSpec              *spec,
     {
       meta_warning (_("Theme contained an expression that resulted in an error: %s\n"),
                     error->message);
-      
+
       g_error_free (error);
     }
-  
+
   return retval;
 }
 
@@ -2858,10 +2858,10 @@ meta_draw_spec_new (MetaTheme  *theme,
   spec = g_slice_new0 (MetaDrawSpec);
 
   pos_tokenize (expr, &spec->tokens, &spec->n_tokens, NULL);
-  
-  spec->constant = meta_theme_replace_constants (theme, spec->tokens, 
+
+  spec->constant = meta_theme_replace_constants (theme, spec->tokens,
                                                  spec->n_tokens, NULL);
-  if (spec->constant) 
+  if (spec->constant)
     {
       gboolean result;
 
@@ -2872,7 +2872,7 @@ meta_draw_spec_new (MetaTheme  *theme,
           return NULL;
         }
     }
-    
+
   return spec;
 }
 
@@ -2902,7 +2902,7 @@ meta_draw_op_new (MetaDrawType type)
     case META_DRAW_CLIP:
       size += sizeof (dummy.data.clip);
       break;
-      
+
     case META_DRAW_TINT:
       size += sizeof (dummy.data.tint);
       break;
@@ -2992,7 +2992,7 @@ meta_draw_op_free (MetaDrawOp *op)
       meta_draw_spec_free (op->data.clip.width);
       meta_draw_spec_free (op->data.clip.height);
       break;
-      
+
     case META_DRAW_TINT:
       if (op->data.tint.color_spec)
         meta_color_spec_free (op->data.tint.color_spec);
@@ -3113,15 +3113,15 @@ apply_alpha (GdkPixbuf             *pixbuf,
 {
   GdkPixbuf *new_pixbuf;
   gboolean needs_alpha;
-  
+
   g_return_val_if_fail (GDK_IS_PIXBUF (pixbuf), NULL);
-  
+
   needs_alpha = spec && (spec->n_alphas > 1 ||
                          spec->alphas[0] != 0xff);
 
   if (!needs_alpha)
     return pixbuf;
-  
+
   if (!gdk_pixbuf_get_has_alpha (pixbuf))
     {
       new_pixbuf = gdk_pixbuf_add_alpha (pixbuf, FALSE, 0, 0, 0);
@@ -3134,11 +3134,11 @@ apply_alpha (GdkPixbuf             *pixbuf,
       g_object_unref (G_OBJECT (pixbuf));
       pixbuf = new_pixbuf;
     }
-  
+
   g_assert (gdk_pixbuf_get_has_alpha (pixbuf));
 
   meta_gradient_add_alpha (pixbuf, spec->alphas, spec->n_alphas, spec->type);
-  
+
   return pixbuf;
 }
 
@@ -3151,10 +3151,10 @@ pixbuf_tile (GdkPixbuf *tile,
   int tile_width;
   int tile_height;
   int i, j;
-  
+
   tile_width = gdk_pixbuf_get_width (tile);
   tile_height = gdk_pixbuf_get_height (tile);
-  
+
   pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB,
                            gdk_pixbuf_get_has_alpha (tile),
                            8, width, height);
@@ -3169,7 +3169,7 @@ pixbuf_tile (GdkPixbuf *tile,
 
           w = MIN (tile_width, width - i);
           h = MIN (tile_height, height - j);
-          
+
           gdk_pixbuf_copy_area (tile,
                                 0, 0,
                                 w, h,
@@ -3178,10 +3178,10 @@ pixbuf_tile (GdkPixbuf *tile,
 
           j += tile_height;
         }
-      
+
       i += tile_width;
     }
-  
+
   return pixbuf;
 }
 
@@ -3205,7 +3205,7 @@ replicate_rows (GdkPixbuf  *src,
                            width, height);
   dest_rowstride = gdk_pixbuf_get_rowstride (result);
   dest_pixels = gdk_pixbuf_get_pixels (result);
-  
+
   for (i = 0; i < height; i++)
     memcpy (dest_pixels + dest_rowstride * i, pixels, n_channels * width);
 
@@ -3241,18 +3241,18 @@ replicate_cols (GdkPixbuf  *src,
       unsigned char r = *(q++);
       unsigned char g = *(q++);
       unsigned char b = *(q++);
-      
+
       if (n_channels == 4)
         {
           unsigned char a;
-          
+
           a = *(q++);
-          
+
           for (j = 0; j < width; j++)
             {
               *(p++) = r;
               *(p++) = g;
-              *(p++) = b;                    
+              *(p++) = b;
               *(p++) = a;
             }
         }
@@ -3348,7 +3348,7 @@ scale_and_alpha_pixbuf (GdkPixbuf             *src,
               pixbuf = replicate_rows (temp_pixbuf, 0, 0, width, height);
               g_object_unref (G_OBJECT (temp_pixbuf));
             }
-          else 
+          else
             {
               pixbuf = temp_pixbuf;
             }
@@ -3357,7 +3357,7 @@ scale_and_alpha_pixbuf (GdkPixbuf             *src,
 
   if (pixbuf)
     pixbuf = apply_alpha (pixbuf, alpha_spec, pixbuf == src);
-  
+
   return pixbuf;
 }
 
@@ -3403,7 +3403,7 @@ draw_op_as_pixbuf (const MetaDrawOp    *op,
 
     case META_DRAW_CLIP:
       break;
-      
+
     case META_DRAW_TINT:
       {
         GdkRGBA color;
@@ -3418,7 +3418,7 @@ draw_op_as_pixbuf (const MetaDrawOp    *op,
           op->data.tint.alpha_spec &&
           (op->data.tint.alpha_spec->n_alphas > 1 ||
            op->data.tint.alpha_spec->alphas[0] != 0xff);
-        
+
         pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB,
                                  has_alpha,
                                  8, width, height);
@@ -3426,7 +3426,7 @@ draw_op_as_pixbuf (const MetaDrawOp    *op,
         if (!has_alpha)
           {
             rgba = GDK_COLOR_RGBA (color);
-            
+
             gdk_pixbuf_fill (pixbuf, rgba);
           }
         else if (op->data.tint.alpha_spec->n_alphas == 1)
@@ -3434,13 +3434,13 @@ draw_op_as_pixbuf (const MetaDrawOp    *op,
             rgba = GDK_COLOR_RGBA (color);
             rgba &= ~0xff;
             rgba |= op->data.tint.alpha_spec->alphas[0];
-            
+
             gdk_pixbuf_fill (pixbuf, rgba);
           }
         else
           {
             rgba = GDK_COLOR_RGBA (color);
-            
+
             gdk_pixbuf_fill (pixbuf, rgba);
 
             meta_gradient_add_alpha (pixbuf,
@@ -3462,7 +3462,7 @@ draw_op_as_pixbuf (const MetaDrawOp    *op,
       }
       break;
 
-      
+
     case META_DRAW_IMAGE:
       {
 	if (op->data.image.colorize_spec)
@@ -3471,13 +3471,13 @@ draw_op_as_pixbuf (const MetaDrawOp    *op,
 
             meta_color_spec_render (op->data.image.colorize_spec,
                                     context, &color);
-            
+
             if (op->data.image.colorize_cache_pixbuf == NULL ||
                 op->data.image.colorize_cache_pixel != GDK_COLOR_RGB (color))
               {
                 if (op->data.image.colorize_cache_pixbuf)
                   g_object_unref (G_OBJECT (op->data.image.colorize_cache_pixbuf));
-                
+
                 /* const cast here */
                 ((MetaDrawOp*)op)->data.image.colorize_cache_pixbuf =
                   colorize_pixbuf (op->data.image.pixbuf,
@@ -3485,7 +3485,7 @@ draw_op_as_pixbuf (const MetaDrawOp    *op,
                 ((MetaDrawOp*)op)->data.image.colorize_cache_pixel =
                   GDK_COLOR_RGB (color);
               }
-            
+
             if (op->data.image.colorize_cache_pixbuf)
               {
                 pixbuf = scale_and_alpha_pixbuf (op->data.image.colorize_cache_pixbuf,
@@ -3507,7 +3507,7 @@ draw_op_as_pixbuf (const MetaDrawOp    *op,
 	  }
         break;
       }
-      
+
     case META_DRAW_GTK_ARROW:
     case META_DRAW_GTK_BOX:
     case META_DRAW_GTK_VLINE:
@@ -3571,7 +3571,7 @@ fill_env (MetaPositionExprEnv *env,
       env->frame_x_center = 0;
       env->frame_y_center = 0;
     }
-  
+
   env->mini_icon_width = info->mini_icon ? gdk_pixbuf_get_width (info->mini_icon) : 0;
   env->mini_icon_height = info->mini_icon ? gdk_pixbuf_get_height (info->mini_icon) : 0;
   env->icon_width = info->icon ? gdk_pixbuf_get_width (info->icon) : 0;
@@ -3630,7 +3630,7 @@ meta_draw_op_draw_with_env (const MetaDrawOp    *op,
           }
 
         x1 = parse_x_position_unchecked (op->data.line.x1, env);
-        y1 = parse_y_position_unchecked (op->data.line.y1, env); 
+        y1 = parse_y_position_unchecked (op->data.line.y1, env);
 
         if (!op->data.line.x2 &&
             !op->data.line.y2 &&
@@ -3757,16 +3757,16 @@ meta_draw_op_draw_with_env (const MetaDrawOp    *op,
 
     case META_DRAW_CLIP:
       break;
-      
+
     case META_DRAW_TINT:
       {
         int rx, ry, rwidth, rheight;
         gboolean needs_alpha;
-        
+
         needs_alpha = op->data.tint.alpha_spec &&
           (op->data.tint.alpha_spec->n_alphas > 1 ||
            op->data.tint.alpha_spec->alphas[0] != 0xff);
-        
+
         rx = parse_x_position_unchecked (op->data.tint.x, env);
         ry = parse_y_position_unchecked (op->data.tint.y, env);
         rwidth = parse_size_unchecked (op->data.tint.width, env);
@@ -3834,7 +3834,7 @@ meta_draw_op_draw_with_env (const MetaDrawOp    *op,
 
         rwidth = parse_size_unchecked (op->data.image.width, env);
         rheight = parse_size_unchecked (op->data.image.height, env);
-        
+
         pixbuf = draw_op_as_pixbuf (op, style_gtk, info,
                                     rwidth, rheight);
 
@@ -3908,7 +3908,7 @@ meta_draw_op_draw_with_env (const MetaDrawOp    *op,
         rx = parse_x_position_unchecked (op->data.gtk_vline.x, env);
         ry1 = parse_y_position_unchecked (op->data.gtk_vline.y1, env);
         ry2 = parse_y_position_unchecked (op->data.gtk_vline.y2, env);
-        
+
         gtk_style_context_set_state (style_gtk, op->data.gtk_vline.state);
         gtk_render_line (style_gtk, cr, rx, ry1, rx, ry2);
       }
@@ -3921,7 +3921,7 @@ meta_draw_op_draw_with_env (const MetaDrawOp    *op,
 
         rwidth = parse_size_unchecked (op->data.icon.width, env);
         rheight = parse_size_unchecked (op->data.icon.height, env);
-        
+
         pixbuf = draw_op_as_pixbuf (op, style_gtk, info,
                                     rwidth, rheight);
 
@@ -4036,9 +4036,9 @@ meta_draw_op_draw_with_env (const MetaDrawOp    *op,
     case META_DRAW_TILE:
       {
         int rx, ry, rwidth, rheight;
-        int tile_xoffset, tile_yoffset; 
+        int tile_xoffset, tile_yoffset;
         MetaRectangle tile;
-        
+
         rx = parse_x_position_unchecked (op->data.tile.x, env);
         ry = parse_y_position_unchecked (op->data.tile.y, env);
         rwidth = parse_size_unchecked (op->data.tile.width, env);
@@ -4054,12 +4054,12 @@ meta_draw_op_draw_with_env (const MetaDrawOp    *op,
         /* tile offset should not include x/y */
         tile_xoffset -= rect.x;
         tile_yoffset -= rect.y;
-        
+
         tile.width = parse_size_unchecked (op->data.tile.tile_width, env);
         tile.height = parse_size_unchecked (op->data.tile.tile_height, env);
 
         tile.x = rx - tile_xoffset;
-    
+
         while (tile.x < (rx + rwidth))
           {
             tile.y = ry - tile_yoffset;
@@ -4141,7 +4141,7 @@ meta_draw_op_list_draw_with_style  (const MetaDrawOpList *op_list,
   MetaPositionExprEnv env;
 
   fill_env (&env, info, rect);
-  
+
   /* FIXME this can be optimized, potentially a lot, by
    * compressing multiple ops when possible. For example,
    * anything convertible to a pixbuf can be composited
@@ -4158,18 +4158,18 @@ meta_draw_op_list_draw_with_style  (const MetaDrawOpList *op_list,
   for (i = 0; i < op_list->n_ops; i++)
     {
       MetaDrawOp *op = op_list->ops[i];
-      
+
       if (op->type == META_DRAW_CLIP)
         {
           cairo_restore (cr);
 
-          cairo_rectangle (cr, 
+          cairo_rectangle (cr,
                            parse_x_position_unchecked (op->data.clip.x, &env),
                            parse_y_position_unchecked (op->data.clip.y, &env),
                            parse_size_unchecked (op->data.clip.width, &env),
                            parse_size_unchecked (op->data.clip.height, &env));
           cairo_clip (cr);
-          
+
           cairo_save (cr);
         }
       else if (gdk_cairo_get_clip_rectangle (cr, NULL))
@@ -4224,7 +4224,7 @@ meta_draw_op_list_contains (MetaDrawOpList    *op_list,
         {
           if (op_list->ops[i]->data.op_list.op_list == child)
             return TRUE;
-          
+
           if (meta_draw_op_list_contains (op_list->ops[i]->data.op_list.op_list,
                                           child))
             return TRUE;
@@ -4233,7 +4233,7 @@ meta_draw_op_list_contains (MetaDrawOpList    *op_list,
         {
           if (op_list->ops[i]->data.tile.op_list == child)
             return TRUE;
-          
+
           if (meta_draw_op_list_contains (op_list->ops[i]->data.tile.op_list,
                                           child))
             return TRUE;
@@ -4402,7 +4402,7 @@ get_button (MetaFrameStyle *style,
 {
   MetaDrawOpList *op_list;
   MetaFrameStyle *parent;
-  
+
   parent = style;
   op_list = NULL;
   while (parent && op_list == NULL)
@@ -4435,7 +4435,7 @@ get_button (MetaFrameStyle *style,
        type == META_BUTTON_TYPE_RIGHT_RIGHT_BACKGROUND))
     return get_button (style, META_BUTTON_TYPE_RIGHT_MIDDLE_BACKGROUND,
                        state);
-  
+
   /* We fall back to normal if no prelight */
   if (op_list == NULL &&
       state == META_BUTTON_STATE_PRELIGHT)
@@ -4450,7 +4450,7 @@ meta_frame_style_validate (MetaFrameStyle    *style,
                            GError           **error)
 {
   int i, j;
-  
+
   g_return_val_if_fail (style != NULL, FALSE);
   g_return_val_if_fail (style->layout != NULL, FALSE);
 
@@ -4475,7 +4475,7 @@ meta_frame_style_validate (MetaFrameStyle    *style,
             }
         }
     }
-  
+
   return TRUE;
 }
 
@@ -4494,7 +4494,7 @@ button_rect (MetaButtonType           type,
     case META_BUTTON_TYPE_LEFT_MIDDLE_BACKGROUND:
       *rect = fgeom->left_middle_backgrounds[middle_background_offset];
       break;
-      
+
     case META_BUTTON_TYPE_LEFT_RIGHT_BACKGROUND:
       *rect = fgeom->left_right_background;
       break;
@@ -4506,11 +4506,11 @@ button_rect (MetaButtonType           type,
     case META_BUTTON_TYPE_RIGHT_LEFT_BACKGROUND:
       *rect = fgeom->right_left_background;
       break;
-      
+
     case META_BUTTON_TYPE_RIGHT_MIDDLE_BACKGROUND:
       *rect = fgeom->right_middle_backgrounds[middle_background_offset];
       break;
-      
+
     case META_BUTTON_TYPE_RIGHT_RIGHT_BACKGROUND:
       *rect = fgeom->right_right_background;
       break;
@@ -4558,7 +4558,7 @@ button_rect (MetaButtonType           type,
     case META_BUTTON_TYPE_MENU:
       *rect = fgeom->menu_rect.visible;
       break;
-      
+
     case META_BUTTON_TYPE_LAST:
       g_assert_not_reached ();
       break;
@@ -4638,13 +4638,13 @@ meta_frame_style_draw_with_style (MetaFrameStyle          *style,
   draw_info.title_layout_width = title_layout ? extents.width : 0;
   draw_info.title_layout_height = title_layout ? extents.height : 0;
   draw_info.fgeom = fgeom;
-  
+
   /* The enum is in the order the pieces should be rendered. */
   i = 0;
   while (i < META_FRAME_PIECE_LAST)
     {
       GdkRectangle rect;
-      
+
       switch ((MetaFramePiece) i)
         {
         case META_FRAME_PIECE_ENTIRE_BACKGROUND:
@@ -4755,16 +4755,16 @@ meta_frame_style_draw_with_style (MetaFrameStyle          *style,
               MetaButtonState button_state;
 
               button_rect (j, fgeom, middle_bg_offset, &rect);
-              
+
               button_state = map_button_state (j, fgeom, middle_bg_offset, button_states);
               op_list = get_button (style, j, button_state);
-              
+
               if (op_list)
                 {
                   cairo_save (cr);
                   gdk_cairo_rectangle (cr, &rect);
                   cairo_clip (cr);
-                  
+
                   if (gdk_cairo_get_clip_rectangle (cr, NULL))
                     {
                       MetaRectangle m_rect;
@@ -4793,7 +4793,7 @@ meta_frame_style_draw_with_style (MetaFrameStyle          *style,
                 }
             }
         }
-      
+
       ++i;
     }
 }
@@ -4821,7 +4821,7 @@ meta_frame_style_set_new (MetaFrameStyleSet *parent)
     meta_frame_style_set_ref (parent);
 
   style_set->refcount = 1;
-  
+
   return style_set;
 }
 
@@ -4883,8 +4883,8 @@ get_style (MetaFrameStyleSet *style_set,
            MetaFrameResize    resize,
            MetaFrameFocus     focus)
 {
-  MetaFrameStyle *style;  
-  
+  MetaFrameStyle *style;
+
   style = NULL;
 
   switch (state)
@@ -4900,7 +4900,7 @@ get_style (MetaFrameStyleSet *style_set,
         /* Try parent if we failed here */
         if (style == NULL && style_set->parent)
           style = get_style (style_set->parent, state, resize, focus);
-      
+
         /* Allow people to omit the vert/horz/none resize modes */
         if (style == NULL &&
             resize != META_FRAME_RESIZE_BOTH)
@@ -4912,7 +4912,7 @@ get_style (MetaFrameStyleSet *style_set,
         MetaFrameStyle **styles;
 
         styles = NULL;
-      
+
         switch (state)
           {
           case META_FRAME_STATE_MAXIMIZED:
@@ -4957,7 +4957,7 @@ get_style (MetaFrameStyleSet *style_set,
 
         /* Try parent if we failed here */
         if (style == NULL && style_set->parent)
-          style = get_style (style_set->parent, state, resize, focus);      
+          style = get_style (style_set->parent, state, resize, focus);
       }
     }
 
@@ -4998,7 +4998,7 @@ meta_frame_style_set_validate  (MetaFrameStyleSet *style_set,
                                 GError           **error)
 {
   int i, j;
-  
+
   g_return_val_if_fail (style_set != NULL, FALSE);
 
   for (i = 0; i < META_FRAME_RESIZE_LAST; i++)
@@ -5016,13 +5016,13 @@ meta_frame_style_set_validate  (MetaFrameStyleSet *style_set,
 
   if (!check_state (style_set, META_FRAME_STATE_SHADED, error))
     return FALSE;
-  
+
   if (!check_state (style_set, META_FRAME_STATE_MAXIMIZED, error))
     return FALSE;
 
   if (!check_state (style_set, META_FRAME_STATE_MAXIMIZED_AND_SHADED, error))
     return FALSE;
-  
+
   return TRUE;
 }
 
@@ -5040,12 +5040,12 @@ meta_theme_set_current (const char *name,
   GError *err;
 
   meta_topic (META_DEBUG_THEMES, "Setting current theme to \"%s\"\n", name);
-  
+
   if (!force_reload &&
       meta_current_theme &&
       strcmp (name, meta_current_theme->name) == 0)
     return;
-  
+
   err = NULL;
   new_theme = meta_theme_load (name, &err);
 
@@ -5078,7 +5078,7 @@ meta_theme_new (void)
                            g_str_equal,
                            g_free,
                            (GDestroyNotify) g_object_unref);
-  
+
   theme->layouts_by_name =
     g_hash_table_new_full (g_str_hash,
                            g_str_equal,
@@ -5102,7 +5102,7 @@ meta_theme_new (void)
                            g_str_equal,
                            g_free,
                            (GDestroyNotify) meta_frame_style_set_unref);
-  
+
   /* Create our variable quarks so we can look up variables without
      having to strcmp for the names */
   theme->quark_width = g_quark_from_static_string ("width");
@@ -5149,11 +5149,11 @@ meta_theme_free (MetaTheme *theme)
     g_hash_table_destroy (theme->images_by_filename);
   if (theme->layouts_by_name)
     g_hash_table_destroy (theme->layouts_by_name);
-  if (theme->draw_op_lists_by_name)  
+  if (theme->draw_op_lists_by_name)
     g_hash_table_destroy (theme->draw_op_lists_by_name);
-  if (theme->styles_by_name)  
+  if (theme->styles_by_name)
     g_hash_table_destroy (theme->styles_by_name);
-  if (theme->style_sets_by_name)  
+  if (theme->style_sets_by_name)
     g_hash_table_destroy (theme->style_sets_by_name);
 
   for (i = 0; i < META_FRAME_TYPE_LAST; i++)
@@ -5169,13 +5169,13 @@ meta_theme_validate (MetaTheme *theme,
                      GError   **error)
 {
   int i;
-  
+
   g_return_val_if_fail (theme != NULL, FALSE);
 
   /* FIXME what else should be checked? */
 
   g_assert (theme->name);
-  
+
   if (theme->readable_name == NULL)
     {
       /* Translators: This error means that a necessary XML tag (whose name
@@ -5223,8 +5223,8 @@ meta_theme_validate (MetaTheme *theme,
                      meta_frame_type_to_string (i),
                      theme->name,
                      meta_frame_type_to_string (i));
-        
-        return FALSE;          
+
+        return FALSE;
       }
 
   return TRUE;
@@ -5243,7 +5243,7 @@ meta_theme_load_image (MetaTheme  *theme,
 
   if (pixbuf == NULL)
     {
-       
+
       if (g_str_has_prefix (filename, "theme:") &&
           META_THEME_ALLOWS (theme, META_THEME_IMAGES_FROM_ICON_THEMES))
         {
@@ -5259,23 +5259,23 @@ meta_theme_load_image (MetaTheme  *theme,
         {
           char *full_path;
           full_path = g_build_filename (theme->dirname, filename, NULL);
-      
+
           pixbuf = gdk_pixbuf_new_from_file (full_path, error);
           if (pixbuf == NULL)
             {
               g_free (full_path);
               return NULL;
             }
-      
+
           g_free (full_path);
-        }      
+        }
       g_hash_table_replace (theme->images_by_filename,
                             g_strdup (filename),
                             pixbuf);
     }
 
   g_assert (pixbuf);
-  
+
   g_object_ref (G_OBJECT (pixbuf));
 
   return pixbuf;
@@ -5304,7 +5304,7 @@ theme_get_style (MetaTheme     *theme,
     style_set = theme->style_sets_by_type[META_FRAME_TYPE_NORMAL];
   if (style_set == NULL)
     return NULL;
-  
+
   switch (flags & (META_FRAME_MAXIMIZED | META_FRAME_SHADED | META_FRAME_TILED_LEFT | META_FRAME_TILED_RIGHT))
     {
     case 0:
@@ -5356,7 +5356,7 @@ theme_get_style (MetaTheme     *theme,
       resize = META_FRAME_RESIZE_LAST; /* compiler */
       break;
     }
-  
+
   /* re invert the styles used for focus/unfocussed while flashing a frame */
   if (((flags & META_FRAME_HAS_FOCUS) && !(flags & META_FRAME_IS_FLASHING))
       || (!(flags & META_FRAME_HAS_FOCUS) && (flags & META_FRAME_IS_FLASHING)))
@@ -5377,7 +5377,7 @@ meta_theme_get_frame_style (MetaTheme     *theme,
   MetaFrameStyle *style;
 
   g_return_val_if_fail (type < META_FRAME_TYPE_LAST, NULL);
-  
+
   style = theme_get_style (theme, type, flags);
 
   return style;
@@ -5391,9 +5391,9 @@ meta_theme_get_title_scale (MetaTheme     *theme,
   MetaFrameStyle *style;
 
   g_return_val_if_fail (type < META_FRAME_TYPE_LAST, 1.0);
-  
+
   style = theme_get_style (theme, type, flags);
-  
+
   /* Parser is not supposed to allow this currently */
   if (style == NULL)
     return 1.0;
@@ -5420,20 +5420,20 @@ meta_theme_draw_frame_with_style (MetaTheme              *theme,
   MetaFrameStyle *style;
 
   g_return_if_fail (type < META_FRAME_TYPE_LAST);
-  
+
   style = theme_get_style (theme, type, flags);
-  
+
   /* Parser is not supposed to allow this currently */
   if (style == NULL)
     return;
-  
+
   meta_frame_layout_calc_geometry (style->layout,
                                    text_height,
                                    flags,
                                    client_width, client_height,
                                    button_layout,
                                    &fgeom,
-                                   theme);  
+                                   theme);
 
   meta_frame_style_draw_with_style (style,
                                     style_gtk,
@@ -5507,9 +5507,9 @@ meta_theme_calc_geometry (MetaTheme              *theme,
   MetaFrameStyle *style;
 
   g_return_if_fail (type < META_FRAME_TYPE_LAST);
-  
+
   style = theme_get_style (theme, type, flags);
-  
+
   /* Parser is not supposed to allow this currently */
   if (style == NULL)
     return;
@@ -5589,7 +5589,7 @@ meta_theme_insert_style_set    (MetaTheme         *theme,
 
 static gboolean
 first_uppercase (const char *str)
-{  
+{
   return g_ascii_isupper (*str);
 }
 
@@ -5612,13 +5612,13 @@ meta_theme_define_int_constant (MetaTheme   *theme,
                    name);
       return FALSE;
     }
-  
+
   if (g_hash_table_lookup_extended (theme->integer_constants, name, NULL, NULL))
     {
       g_set_error (error, META_THEME_ERROR, META_THEME_ERROR_FAILED,
                    _("Constant \"%s\" has already been defined"),
                    name);
-      
+
       return FALSE;
     }
 
@@ -5637,10 +5637,10 @@ meta_theme_lookup_int_constant (MetaTheme   *theme,
   gpointer old_value;
 
   *value = 0;
-  
+
   if (theme->integer_constants == NULL)
     return FALSE;
-  
+
   if (g_hash_table_lookup_extended (theme->integer_constants,
                                     name, NULL, &old_value))
     {
@@ -5660,7 +5660,7 @@ meta_theme_define_float_constant (MetaTheme   *theme,
                                   GError     **error)
 {
   double *d;
-  
+
   if (theme->float_constants == NULL)
     theme->float_constants = g_hash_table_new_full (g_str_hash,
                                                     g_str_equal,
@@ -5674,19 +5674,19 @@ meta_theme_define_float_constant (MetaTheme   *theme,
                    name);
       return FALSE;
     }
-  
+
   if (g_hash_table_lookup_extended (theme->float_constants, name, NULL, NULL))
     {
       g_set_error (error, META_THEME_ERROR, META_THEME_ERROR_FAILED,
                    _("Constant \"%s\" has already been defined"),
                    name);
-      
+
       return FALSE;
     }
 
   d = g_new (double, 1);
   *d = value;
-  
+
   g_hash_table_insert (theme->float_constants,
                        g_strdup (name), d);
 
@@ -5701,7 +5701,7 @@ meta_theme_lookup_float_constant (MetaTheme   *theme,
   double *d;
 
   *value = 0.0;
-  
+
   if (theme->float_constants == NULL)
     return FALSE;
 
@@ -5737,13 +5737,13 @@ meta_theme_define_color_constant (MetaTheme   *theme,
                    name);
       return FALSE;
     }
-  
+
   if (g_hash_table_lookup_extended (theme->color_constants, name, NULL, NULL))
     {
       g_set_error (error, META_THEME_ERROR, META_THEME_ERROR_FAILED,
                    _("Constant \"%s\" has already been defined"),
                    name);
-      
+
       return FALSE;
     }
 
@@ -5771,7 +5771,7 @@ meta_theme_lookup_color_constant (MetaTheme   *theme,
   char *result;
 
   *value = NULL;
-  
+
   if (theme->color_constants == NULL)
     return FALSE;
 
@@ -5796,7 +5796,7 @@ meta_gtk_widget_get_font_desc (GtkWidget *widget,
 {
   GtkStyleContext *style;
   PangoFontDescription *font_desc;
-  
+
   g_return_val_if_fail (gtk_widget_get_realized (widget), NULL);
 
   style = gtk_widget_get_style_context (widget);
@@ -5829,11 +5829,11 @@ meta_pango_font_desc_get_text_height (const PangoFontDescription *font_desc,
   lang = pango_context_get_language (context);
   metrics = pango_context_get_metrics (context, font_desc, lang);
 
-  retval = PANGO_PIXELS (pango_font_metrics_get_ascent (metrics) + 
+  retval = PANGO_PIXELS (pango_font_metrics_get_ascent (metrics) +
                          pango_font_metrics_get_descent (metrics));
-  
+
   pango_font_metrics_unref (metrics);
-  
+
   return retval;
 }
 
@@ -6281,7 +6281,7 @@ meta_image_fill_type_from_string (const char *str)
  * \param a  the starting colour
  * \param b  [out] the resulting colour
  * \param k  amount to scale lightness and saturation by
- */ 
+ */
 static void
 gtk_style_shade (GdkRGBA *a,
                  GdkRGBA *b,
@@ -6290,27 +6290,27 @@ gtk_style_shade (GdkRGBA *a,
   gdouble red;
   gdouble green;
   gdouble blue;
-  
+
   red = a->red;
   green = a->green;
   blue = a->blue;
-  
+
   rgb_to_hls (&red, &green, &blue);
-  
+
   green *= k;
   if (green > 1.0)
     green = 1.0;
   else if (green < 0.0)
     green = 0.0;
-  
+
   blue *= k;
   if (blue > 1.0)
     blue = 1.0;
   else if (blue < 0.0)
     blue = 0.0;
-  
+
   hls_to_rgb (&red, &green, &blue);
-  
+
   b->red = red;
   b->green = green;
   b->blue = blue;
@@ -6336,18 +6336,18 @@ rgb_to_hls (gdouble *r,
   gdouble blue;
   gdouble h, l, s;
   gdouble delta;
-  
+
   red = *r;
   green = *g;
   blue = *b;
-  
+
   if (red > green)
     {
       if (red > blue)
         max = red;
       else
         max = blue;
-      
+
       if (green < blue)
         min = green;
       else
@@ -6359,24 +6359,24 @@ rgb_to_hls (gdouble *r,
         max = green;
       else
         max = blue;
-      
+
       if (red < blue)
         min = red;
       else
         min = blue;
     }
-  
+
   l = (max + min) / 2;
   s = 0;
   h = 0;
-  
+
   if (max != min)
     {
       if (l <= 0.5)
         s = (max - min) / (max + min);
       else
         s = (max - min) / (2 - max - min);
-      
+
       delta = max -min;
       if (red == max)
         h = (green - blue) / delta;
@@ -6384,12 +6384,12 @@ rgb_to_hls (gdouble *r,
         h = 2 + (blue - red) / delta;
       else if (blue == max)
         h = 4 + (red - green) / delta;
-      
+
       h *= 60;
       if (h < 0.0)
         h += 360;
     }
-  
+
   *r = h;
   *g = l;
   *b = s;
@@ -6412,16 +6412,16 @@ hls_to_rgb (gdouble *h,
   gdouble saturation;
   gdouble m1, m2;
   gdouble r, g, b;
-  
+
   lightness = *l;
   saturation = *s;
-  
+
   if (lightness <= 0.5)
     m2 = lightness * (1 + saturation);
   else
     m2 = lightness + saturation - lightness * saturation;
   m1 = 2 * lightness - m2;
-  
+
   if (saturation == 0)
     {
       *h = lightness;
@@ -6435,7 +6435,7 @@ hls_to_rgb (gdouble *h,
         hue -= 360;
       while (hue < 0)
         hue += 360;
-      
+
       if (hue < 60)
         r = m1 + (m2 - m1) * hue / 60;
       else if (hue < 180)
@@ -6444,13 +6444,13 @@ hls_to_rgb (gdouble *h,
         r = m1 + (m2 - m1) * (240 - hue) / 60;
       else
         r = m1;
-      
+
       hue = *h;
       while (hue > 360)
         hue -= 360;
       while (hue < 0)
         hue += 360;
-      
+
       if (hue < 60)
         g = m1 + (m2 - m1) * hue / 60;
       else if (hue < 180)
@@ -6459,13 +6459,13 @@ hls_to_rgb (gdouble *h,
         g = m1 + (m2 - m1) * (240 - hue) / 60;
       else
         g = m1;
-      
+
       hue = *h - 120;
       while (hue > 360)
         hue -= 360;
       while (hue < 0)
         hue += 360;
-      
+
       if (hue < 60)
         b = m1 + (m2 - m1) * hue / 60;
       else if (hue < 180)
@@ -6474,7 +6474,7 @@ hls_to_rgb (gdouble *h,
         b = m1 + (m2 - m1) * (240 - hue) / 60;
       else
         b = m1;
-      
+
       *h = r;
       *l = g;
       *s = b;
@@ -6505,7 +6505,7 @@ meta_theme_earliest_version_with_button (MetaButtonType type)
     case META_BUTTON_TYPE_RIGHT_MIDDLE_BACKGROUND:
     case META_BUTTON_TYPE_RIGHT_RIGHT_BACKGROUND:
       return 1000;
-      
+
     case META_BUTTON_TYPE_SHADE:
     case META_BUTTON_TYPE_ABOVE:
     case META_BUTTON_TYPE_STICK:
@@ -6520,6 +6520,6 @@ meta_theme_earliest_version_with_button (MetaButtonType type)
 
     default:
       meta_warning("Unknown button %d\n", type);
-      return 1000; 
+      return 1000;
     }
 }

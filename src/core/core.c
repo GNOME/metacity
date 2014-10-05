@@ -2,11 +2,11 @@
 
 /* Metacity interface used by GTK+ UI to talk to core */
 
-/* 
+/*
  * Copyright (C) 2001 Havoc Pennington
  * Copyright (C) 2003 Rob Adams
  * Copyright (C) 2004-2006 Elijah Newren
- * 
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 2 of the
@@ -16,7 +16,7 @@
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
@@ -45,7 +45,7 @@ get_window (Display *xdisplay,
 {
   MetaDisplay *display;
   MetaWindow *window;
-  
+
   display = meta_display_for_x_display (xdisplay);
   window = meta_display_lookup_x_window (display, frame_xwindow);
 
@@ -91,14 +91,14 @@ meta_core_get (Display *xdisplay,
   }
 
   while (request != META_CORE_GET_END) {
-    
+
     gpointer answer = va_arg (args, gpointer);
 
     switch (request) {
       case META_CORE_WINDOW_HAS_FRAME:
         *((gboolean*)answer) = window != NULL && window->frame != NULL;
         if (!*((gboolean*)answer)) goto out; /* see above */
-        break; 
+        break;
       case META_CORE_GET_CLIENT_WIDTH:
         *((gint*)answer) = window->rect.width;
         break;
@@ -113,7 +113,7 @@ meta_core_get (Display *xdisplay,
         break;
       case META_CORE_GET_FRAME_FLAGS:
         *((MetaFrameFlags*)answer) = meta_frame_get_flags (window->frame);
-        break; 
+        break;
       case META_CORE_GET_FRAME_TYPE:
           {
           MetaFrameType base_type = META_FRAME_TYPE_LAST;
@@ -157,19 +157,19 @@ meta_core_get (Display *xdisplay,
           if (base_type == META_FRAME_TYPE_LAST)
             {
               /* can't add border if undecorated */
-              *((MetaFrameType*)answer) = META_FRAME_TYPE_LAST; 
+              *((MetaFrameType*)answer) = META_FRAME_TYPE_LAST;
             }
           else if (window->border_only && base_type != META_FRAME_TYPE_ATTACHED)
             {
               /* override base frame type */
-              *((MetaFrameType*)answer) = META_FRAME_TYPE_BORDER; 
+              *((MetaFrameType*)answer) = META_FRAME_TYPE_BORDER;
             }
           else
             {
               *((MetaFrameType*)answer) = base_type;
             }
 
-          break; 
+          break;
           }
       case META_CORE_GET_MINI_ICON:
         *((GdkPixbuf**)answer) = window->mini_icon;
@@ -210,7 +210,7 @@ meta_core_get (Display *xdisplay,
     }
 
     request = va_arg (args, MetaCoreGetType);
-  } 
+  }
 
  out:
   va_end (args);
@@ -253,7 +253,7 @@ meta_core_user_raise (Display *xdisplay,
                       Window   frame_xwindow)
 {
   MetaWindow *window = get_window (xdisplay, frame_xwindow);
-  
+
   meta_window_raise (window);
 }
 
@@ -263,7 +263,7 @@ meta_core_user_lower_and_unfocus (Display *xdisplay,
                                   guint32  timestamp)
 {
   MetaWindow *window = get_window (xdisplay, frame_xwindow);
-  
+
   meta_window_lower (window);
 
   if (meta_prefs_get_focus_mode () == G_DESKTOP_FOCUS_MODE_CLICK &&
@@ -274,21 +274,21 @@ meta_core_user_lower_and_unfocus (Display *xdisplay,
        * (Borrowed from window.c.)
        */
       if (window->screen->active_workspace &&
-          meta_window_located_on_workspace (window, 
+          meta_window_located_on_workspace (window,
                                             window->screen->active_workspace))
         {
           GList* link;
-          link = g_list_find (window->screen->active_workspace->mru_list, 
+          link = g_list_find (window->screen->active_workspace->mru_list,
                               window);
           g_assert (link);
 
-          window->screen->active_workspace->mru_list = 
+          window->screen->active_workspace->mru_list =
             g_list_remove_link (window->screen->active_workspace->mru_list,
                                 link);
           g_list_free (link);
 
-          window->screen->active_workspace->mru_list = 
-            g_list_append (window->screen->active_workspace->mru_list, 
+          window->screen->active_workspace->mru_list =
+            g_list_append (window->screen->active_workspace->mru_list,
                            window);
         }
     }
@@ -335,7 +335,7 @@ meta_core_user_focus (Display *xdisplay,
                       guint32  timestamp)
 {
   MetaWindow *window = get_window (xdisplay, frame_xwindow);
-  
+
   meta_window_focus (window, timestamp);
 }
 
@@ -357,7 +357,7 @@ meta_core_maximize (Display *xdisplay,
   if (meta_prefs_get_raise_on_click ())
     meta_window_raise (window);
 
-  meta_window_maximize (window, 
+  meta_window_maximize (window,
                         META_MAXIMIZE_HORIZONTAL | META_MAXIMIZE_VERTICAL);
 }
 
@@ -371,7 +371,7 @@ meta_core_toggle_maximize_vertically (Display *xdisplay,
     meta_window_raise (window);
 
   if (META_WINDOW_MAXIMIZED_VERTICALLY (window))
-    meta_window_unmaximize (window, 
+    meta_window_unmaximize (window,
                             META_MAXIMIZE_VERTICAL);
   else
     meta_window_maximize (window,
@@ -388,7 +388,7 @@ meta_core_toggle_maximize_horizontally (Display *xdisplay,
     meta_window_raise (window);
 
   if (META_WINDOW_MAXIMIZED_HORIZONTALLY (window))
-    meta_window_unmaximize (window, 
+    meta_window_unmaximize (window,
                             META_MAXIMIZE_HORIZONTAL);
   else
     meta_window_maximize (window,
@@ -405,7 +405,7 @@ meta_core_toggle_maximize (Display *xdisplay,
     meta_window_raise (window);
 
   if (META_WINDOW_MAXIMIZED (window))
-    meta_window_unmaximize (window, 
+    meta_window_unmaximize (window,
                             META_MAXIMIZE_HORIZONTAL | META_MAXIMIZE_VERTICAL);
   else
     meta_window_maximize (window,
@@ -431,7 +431,7 @@ meta_core_delete (Display *xdisplay,
                   guint32  timestamp)
 {
   MetaWindow *window = get_window (xdisplay, frame_xwindow);
-     
+
   meta_window_delete (window, timestamp);
 }
 
@@ -451,7 +451,7 @@ meta_core_shade (Display *xdisplay,
                  guint32  timestamp)
 {
   MetaWindow *window = get_window (xdisplay, frame_xwindow);
-  
+
   meta_window_shade (window, timestamp);
 }
 
@@ -532,7 +532,7 @@ meta_core_show_window_menu (Display *xdisplay,
                             guint32  timestamp)
 {
   MetaWindow *window = get_window (xdisplay, frame_xwindow);
-  
+
   if (meta_prefs_get_raise_on_click ())
     meta_window_raise (window);
   meta_window_focus (window, timestamp);
@@ -549,7 +549,7 @@ meta_core_get_menu_accelerator (MetaMenuOp           menu_op,
   const char *name;
 
   name = NULL;
-  
+
   switch (menu_op)
     {
     case META_MENU_OP_NONE:
@@ -590,25 +590,25 @@ meta_core_get_menu_accelerator (MetaMenuOp           menu_op,
           break;
         case 3:
           name = "move-to-workspace-3";
-          break; 
+          break;
         case 4:
           name = "move-to-workspace-4";
-          break; 
+          break;
         case 5:
           name = "move-to-workspace-5";
-          break; 
+          break;
         case 6:
           name = "move-to-workspace-6";
-          break; 
+          break;
         case 7:
           name = "move-to-workspace-7";
-          break; 
+          break;
         case 8:
           name = "move-to-workspace-8";
-          break; 
+          break;
         case 9:
           name = "move-to-workspace-9";
-          break; 
+          break;
         case 10:
           name = "move-to-workspace-10";
           break;
@@ -685,12 +685,12 @@ meta_core_begin_grab_op (Display    *xdisplay,
   MetaWindow *window = get_window (xdisplay, frame_xwindow);
   MetaDisplay *display;
   MetaScreen *screen;
-  
+
   display = meta_display_for_x_display (xdisplay);
   screen = meta_display_screen_for_xwindow (display, frame_xwindow);
 
   g_assert (screen != NULL);
-  
+
   return meta_display_begin_grab_op (display, screen, window,
                                      op, pointer_already_grabbed,
                                      frame_action,
@@ -703,7 +703,7 @@ meta_core_end_grab_op (Display *xdisplay,
                        guint32  timestamp)
 {
   MetaDisplay *display;
-  
+
   display = meta_display_for_x_display (xdisplay);
 
   meta_display_end_grab_op (display, timestamp);
@@ -713,7 +713,7 @@ MetaGrabOp
 meta_core_get_grab_op (Display *xdisplay)
 {
   MetaDisplay *display;
-  
+
   display = meta_display_for_x_display (xdisplay);
 
   return display->grab_op;
@@ -723,15 +723,15 @@ Window
 meta_core_get_grab_frame (Display *xdisplay)
 {
   MetaDisplay *display;
-  
+
   display = meta_display_for_x_display (xdisplay);
 
   g_assert (display != NULL);
-  g_assert (display->grab_op == META_GRAB_OP_NONE || 
+  g_assert (display->grab_op == META_GRAB_OP_NONE ||
             display->grab_screen != NULL);
   g_assert (display->grab_op == META_GRAB_OP_NONE ||
             display->grab_screen->display->xdisplay == xdisplay);
-  
+
   if (display->grab_op != META_GRAB_OP_NONE &&
       display->grab_window &&
       display->grab_window->frame)
@@ -744,12 +744,12 @@ int
 meta_core_get_grab_button (Display  *xdisplay)
 {
   MetaDisplay *display;
-  
+
   display = meta_display_for_x_display (xdisplay);
 
   if (display->grab_op == META_GRAB_OP_NONE)
     return -1;
-  
+
   return display->grab_button;
 }
 
@@ -758,7 +758,7 @@ meta_core_grab_buttons  (Display *xdisplay,
                          Window   frame_xwindow)
 {
   MetaDisplay *display;
-    
+
   display = meta_display_for_x_display (xdisplay);
 
   meta_verbose ("Grabbing buttons on frame 0x%lx\n", frame_xwindow);
@@ -779,7 +779,7 @@ void
 meta_core_increment_event_serial (Display *xdisplay)
 {
   MetaDisplay *display;
-  
+
   display = meta_display_for_x_display (xdisplay);
 
   meta_display_increment_event_serial (display);
