@@ -10,15 +10,6 @@
 
   <schema id="org.gnome.metacity" path="/org/gnome/metacity/"
           gettext-domain="@GETTEXT_PACKAGE@">
-    <key name="attach-modal-dialogs" type="b">
-      <default>false</default>
-      <_summary>Attach modal dialogs</_summary>
-      <_description>
-        When true, instead of having independent titlebars, modal dialogs
-        appear attached to the titlebar of the parent window and are moved
-        together with the parent window.
-      </_description>
-    </key>
     <key name="compositing-manager" type="b">
       <default>true</default>
       <_summary>Compositing Manager</_summary>
