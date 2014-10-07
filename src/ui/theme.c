@@ -448,6 +448,8 @@ map_button_function_to_type (MetaButtonFunction  function)
       return META_BUTTON_TYPE_UNSTICK;
     case META_BUTTON_FUNCTION_MENU:
       return META_BUTTON_TYPE_MENU;
+    case META_BUTTON_FUNCTION_APPMENU:
+      return META_BUTTON_TYPE_APPMENU;
     case META_BUTTON_FUNCTION_MINIMIZE:
       return META_BUTTON_TYPE_MINIMIZE;
     case META_BUTTON_FUNCTION_MAXIMIZE:
@@ -514,6 +516,11 @@ rect_for_function (MetaFrameGeometry *fgeom,
     case META_BUTTON_FUNCTION_MENU:
       if (flags & META_FRAME_ALLOWS_MENU)
         return &fgeom->menu_rect;
+      else
+        return NULL;
+    case META_BUTTON_FUNCTION_APPMENU:
+      if (flags & META_FRAME_ALLOWS_APPMENU)
+        return &fgeom->appmenu_rect;
       else
         return NULL;
     case META_BUTTON_FUNCTION_MINIMIZE:
@@ -817,6 +824,12 @@ meta_frame_layout_calc_geometry (const MetaFrameLayout  *layout,
         continue;
       else if (strip_button (left_func_rects, left_bg_rects,
                              &n_left, &fgeom->menu_rect))
+        continue;
+      else if (strip_button (right_func_rects, right_bg_rects,
+                             &n_right, &fgeom->appmenu_rect))
+        continue;
+      else if (strip_button (left_func_rects, left_bg_rects,
+                             &n_left, &fgeom->appmenu_rect))
         continue;
       else
         {
@@ -4345,7 +4358,7 @@ map_button_state (MetaButtonType           button_type,
 
   switch (button_type)
     {
-    /* First hande functions, which map directly */
+    /* First handle functions, which map directly */
     case META_BUTTON_TYPE_SHADE:
     case META_BUTTON_TYPE_ABOVE:
     case META_BUTTON_TYPE_STICK:
@@ -4353,6 +4366,7 @@ map_button_state (MetaButtonType           button_type,
     case META_BUTTON_TYPE_UNABOVE:
     case META_BUTTON_TYPE_UNSTICK:
     case META_BUTTON_TYPE_MENU:
+    case META_BUTTON_TYPE_APPMENU:
     case META_BUTTON_TYPE_MINIMIZE:
     case META_BUTTON_TYPE_MAXIMIZE:
     case META_BUTTON_TYPE_CLOSE:
@@ -4557,6 +4571,10 @@ button_rect (MetaButtonType           type,
 
     case META_BUTTON_TYPE_MENU:
       *rect = fgeom->menu_rect.visible;
+      break;
+
+    case META_BUTTON_TYPE_APPMENU:
+      *rect = fgeom->appmenu_rect.visible;
       break;
 
     case META_BUTTON_TYPE_LAST:
@@ -5918,6 +5936,8 @@ meta_button_type_from_string (const char *str, MetaTheme *theme)
     return META_BUTTON_TYPE_MINIMIZE;
   else if (strcmp ("menu", str) == 0)
     return META_BUTTON_TYPE_MENU;
+  else if (strcmp ("appmenu", str) == 0)
+    return META_BUTTON_TYPE_APPMENU;
   else if (strcmp ("left_left_background", str) == 0)
     return META_BUTTON_TYPE_LEFT_LEFT_BACKGROUND;
   else if (strcmp ("left_middle_background", str) == 0)
@@ -5961,8 +5981,10 @@ meta_button_type_to_string (MetaButtonType type)
       return "unabove";
     case META_BUTTON_TYPE_UNSTICK:
       return "unstick";
-     case META_BUTTON_TYPE_MENU:
+    case META_BUTTON_TYPE_MENU:
       return "menu";
+    case META_BUTTON_TYPE_APPMENU:
+      return "appmenu";
     case META_BUTTON_TYPE_LEFT_LEFT_BACKGROUND:
       return "left_left_background";
     case META_BUTTON_TYPE_LEFT_MIDDLE_BACKGROUND:
@@ -6517,6 +6539,9 @@ meta_theme_earliest_version_with_button (MetaButtonType type)
     case META_BUTTON_TYPE_LEFT_SINGLE_BACKGROUND:
     case META_BUTTON_TYPE_RIGHT_SINGLE_BACKGROUND:
       return 3003;
+
+    case META_BUTTON_TYPE_APPMENU:
+      return 3005;
 
     default:
       meta_warning("Unknown button %d\n", type);

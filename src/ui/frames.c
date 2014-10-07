@@ -1095,6 +1095,9 @@ show_tip_now (MetaFrames *frames)
     case META_FRAME_CONTROL_MENU:
       tiptext = _("Window Menu");
       break;
+    case META_FRAME_CONTROL_APPMENU:
+      tiptext = _("Window App Menu");
+      break;
     case META_FRAME_CONTROL_MINIMIZE:
       tiptext = _("Minimize Window");
       break;
@@ -1442,6 +1445,9 @@ meta_frames_button_press_event (GtkWidget      *widget,
         case META_FRAME_CONTROL_MENU:
           op = META_GRAB_OP_CLICKING_MENU;
           break;
+        case META_FRAME_CONTROL_APPMENU:
+          op = META_GRAB_OP_CLICKING_APPMENU;
+          break;
         case META_FRAME_CONTROL_SHADE:
           op = META_GRAB_OP_CLICKING_SHADE;
           break;
@@ -1690,6 +1696,7 @@ meta_frames_button_release_event    (GtkWidget           *widget,
           break;
 
         case META_GRAB_OP_CLICKING_MENU:
+        case META_GRAB_OP_CLICKING_APPMENU:
           meta_core_end_grab_op (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()), event->time);
           break;
 
@@ -1776,6 +1783,8 @@ meta_frames_update_prelit_control (MetaFrames      *frames,
       break;
     case META_FRAME_CONTROL_MENU:
       break;
+    case META_FRAME_CONTROL_APPMENU:
+      break;
     case META_FRAME_CONTROL_MINIMIZE:
       break;
     case META_FRAME_CONTROL_MAXIMIZE:
@@ -1828,6 +1837,7 @@ meta_frames_update_prelit_control (MetaFrames      *frames,
   switch (control)
     {
     case META_FRAME_CONTROL_MENU:
+    case META_FRAME_CONTROL_APPMENU:
     case META_FRAME_CONTROL_MINIMIZE:
     case META_FRAME_CONTROL_MAXIMIZE:
     case META_FRAME_CONTROL_DELETE:
@@ -1881,6 +1891,7 @@ meta_frames_motion_notify_event     (GtkWidget           *widget,
   switch (grab_op)
     {
     case META_GRAB_OP_CLICKING_MENU:
+    case META_GRAB_OP_CLICKING_APPMENU:
     case META_GRAB_OP_CLICKING_DELETE:
     case META_GRAB_OP_CLICKING_MINIMIZE:
     case META_GRAB_OP_CLICKING_MAXIMIZE:
@@ -1904,6 +1915,8 @@ meta_frames_motion_notify_event     (GtkWidget           *widget,
         control = get_control (frames, frame, x, y);
         if (! ((control == META_FRAME_CONTROL_MENU &&
                 grab_op == META_GRAB_OP_CLICKING_MENU) ||
+               (control == META_FRAME_CONTROL_APPMENU &&
+                grab_op == META_GRAB_OP_CLICKING_APPMENU) ||
                (control == META_FRAME_CONTROL_DELETE &&
                 grab_op == META_GRAB_OP_CLICKING_DELETE) ||
                (control == META_FRAME_CONTROL_MINIMIZE &&
@@ -2321,6 +2334,12 @@ meta_frames_paint (MetaFrames   *frames,
       else
         button_states[META_BUTTON_TYPE_MENU] = META_BUTTON_STATE_PRELIGHT;
       break;
+    case META_FRAME_CONTROL_APPMENU:
+      if (grab_op == META_GRAB_OP_CLICKING_MENU)
+        button_states[META_BUTTON_TYPE_APPMENU] = META_BUTTON_STATE_PRESSED;
+      else
+        button_states[META_BUTTON_TYPE_APPMENU] = META_BUTTON_STATE_PRELIGHT;
+      break;
     case META_FRAME_CONTROL_MINIMIZE:
       if (grab_op == META_GRAB_OP_CLICKING_MINIMIZE)
         button_states[META_BUTTON_TYPE_MINIMIZE] = META_BUTTON_STATE_PRESSED;
@@ -2515,6 +2534,9 @@ control_rect (MetaFrameControl control,
     case META_FRAME_CONTROL_MENU:
       rect = &fgeom->menu_rect.visible;
       break;
+    case META_FRAME_CONTROL_APPMENU:
+      rect = &fgeom->appmenu_rect.visible;
+      break;
     case META_FRAME_CONTROL_MINIMIZE:
       rect = &fgeom->min_rect.visible;
       break;
@@ -2595,6 +2617,9 @@ get_control (MetaFrames *frames,
 
   if (POINT_IN_RECT (x, y, fgeom.menu_rect.clickable))
     return META_FRAME_CONTROL_MENU;
+
+  if (POINT_IN_RECT (x, y, fgeom.appmenu_rect.clickable))
+    return META_FRAME_CONTROL_APPMENU;
 
   meta_core_get (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()), frame->xwindow,
                  META_CORE_GET_FRAME_FLAGS, &flags,
