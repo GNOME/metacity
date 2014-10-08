@@ -79,7 +79,6 @@ metacity_SOURCES= 				\
 	include/common.h			\
 	include/core.h				\
 	include/ui.h				\
-	inlinepixbufs.h				\
 	ui/fixedtip.c				\
 	ui/fixedtip.h				\
 	ui/frames.c				\
@@ -186,15 +185,8 @@ xml_DATA     = $(xml_in_files:.xml.in=.xml)
 
 @INTLTOOL_SCHEMAS_RULE@
 
-IMAGES=window.png mini-window.png
-VARIABLES=mini_window_data $(srcdir)/mini-window.png \
-          window_data $(srcdir)/window.png
-
-BUILT_SOURCES = inlinepixbufs.h
-CLEANFILES = inlinepixbufs.h metacity.desktop metacity-wm.desktop org.gnome.metacity.gschema.xml 50-metacity-launchers.xml 50-metacity-navigation.xml 50-metacity-screenshot.xml 50-metacity-system.xml 50-metacity-windows.xml
-
-inlinepixbufs.h: $(IMAGES)
-	$(AM_V_GEN)$(GDK_PIXBUF_CSOURCE) --raw --build-list $(VARIABLES) >$(srcdir)/inlinepixbufs.h
+CLEANFILES = \
+	metacity.desktop metacity-wm.desktop org.gnome.metacity.gschema.xml 50-metacity-launchers.xml 50-metacity-navigation.xml 50-metacity-screenshot.xml 50-metacity-system.xml 50-metacity-windows.xml
 
 pkgconfigdir = $(libdir)/pkgconfig
 

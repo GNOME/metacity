@@ -4,7 +4,6 @@
 
 /*
  * Copyright (C) 2002 Havoc Pennington
- * stock icon code Copyright (C) 2002 Jorn Baayen <jorn@nl.linux.org>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -27,8 +26,6 @@
 #include "menu.h"
 #include "core.h"
 #include "theme.h"
-
-#include "inlinepixbufs.h"
 
 #include <string.h>
 #include <stdlib.h>
@@ -598,8 +595,10 @@ meta_ui_get_default_window_icon (MetaUI *ui)
                                                    0,
                                                    NULL);
       else
-        default_icon = gdk_pixbuf_new_from_inline (-1, window_data,
-                                                   FALSE,
+          default_icon = gtk_icon_theme_load_icon (theme,
+                                                   "gtk-missing-image",
+                                                   META_ICON_WIDTH,
+                                                   0,
                                                    NULL);
 
       g_assert (default_icon);
@@ -631,8 +630,10 @@ meta_ui_get_default_mini_icon (MetaUI *ui)
                                                    0,
                                                    NULL);
       else
-        default_icon = gdk_pixbuf_new_from_inline (-1, mini_window_data,
-                                                   FALSE,
+          default_icon = gtk_icon_theme_load_icon (theme,
+                                                   "gtk-missing-image",
+                                                   META_MINI_ICON_WIDTH,
+                                                   0,
                                                    NULL);
 
       g_assert (default_icon);
