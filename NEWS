@@ -1,3 +1,23 @@
+Version 3.14.0
+==============
+- Theme format version updated to 3.5, mostly patches from mutter. (Owen W. Taylor,
+  Florian Müllner, Jasper St. Pierre)
+- Optionally attach modal dialogs. (Maxim Ermilov)
+  [This was added as dependency for updating theme format version and is not 
+  available for use in metacity]
+- Updated *.doap file. (Alberts Muktupāvels, Olav Vitters)
+- Added support for _GTK_FRAME_EXTENTS. (Again based on mutter)
+- Added support for _GTK_THEME_VARIANT. (Patches from mutter, mostly work
+  by Florian Müllner)
+- Shadows won't be added to maximized windows. (Alberts Muktupāvels)
+- Fixed some deprecated warnings. (Alberts Muktupāvels)
+- Ignore adding a window if it's already present. (hordepfo)
+- Some other fixes/changes adapted from mutter.
+- Updated translations:
+  Andika Triwidada (id), Daniel Mustieles (es), Enrico Nicoletto (pt_BR),
+  Gábor Kelemen (hu), genodeftest (de), Inaki Larranaga Murgoiti (eu),
+  Marek Černocký (cs), MarMav (el), Piotr Drąg (pl), Rafael Ferreira (pt_BR).
+
 Version 3.12.0
 ==============
  - Port GTK+ 2 to GTK+ 3 (Mutter developers)
