@@ -506,7 +506,6 @@ doc/Makefile
 doc/creating_themes/Makefile
 doc/man/Makefile
 src/Makefile
-src/wm-tester/Makefile
 src/libmetacity-private.pc
 src/tools/Makefile
 src/themes/Makefile
