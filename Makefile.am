@@ -5,7 +5,6 @@ SUBDIRS = \
 
 EXTRA_DIST = \
 	HACKING \
-	MAINTAINERS \
 	rationales.txt
 
 MAINTAINERCLEANFILES = \
