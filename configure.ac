@@ -547,8 +547,8 @@ METACITY_MINOR_VERSION=metacity_minor_version
 if test $(( $(echo $METACITY_MINOR_VERSION) %2)) == "1"; then
    stable_version=$(( ($METACITY_MINOR_VERSION / 2) * 2))
    echo "This is the UNSTABLE branch of metacity"
-   echo -n "Use 2.$stable_version.x for stable "
-   echo    "(gnome-2-$stable_version branch in Subversion)"
+   echo -n "Use 3.$stable_version.x for stable "
+   echo    "(gnome-3-$stable_version branch in Subversion)"
 else
    echo "This is the stable branch of metacity"
 fi
