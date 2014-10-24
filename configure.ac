@@ -109,7 +109,7 @@ fi
 changequote([,])dnl
 
 GTK_API_VERSION=3.0
-GTK_MIN_VERSION=3.8.0
+GTK_MIN_VERSION=3.12.0
 GIO_MIN_VERSION=2.25.10
 CANBERRA_GTK=libcanberra-gtk3
 
