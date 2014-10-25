@@ -3636,7 +3636,6 @@ meta_draw_op_draw_with_env (const MetaDrawOp    *op,
   GdkRGBA color;
 
   cairo_save (cr);
-  gtk_style_context_save (style_gtk);
 
   cairo_set_line_width (cr, 1.0);
 
@@ -4112,7 +4111,6 @@ meta_draw_op_draw_with_env (const MetaDrawOp    *op,
     }
 
    cairo_restore (cr);
-   gtk_style_context_restore (style_gtk);
 }
 
 MetaDrawOpList*
