@@ -17,11 +17,11 @@
  <created>2001-05-30</created>
 
  <shortdesc xml:lang="en">
-   Metacity is a simple compositing window manager that integrates nicely with GNOME 2.
+   Metacity is a simple compositing window manager that integrates nicely with GNOME Flashback.
 </shortdesc>
  <description xml:lang="en">
-A window manager for GNOME, with a focus on simplicity and usability
-rather than novelties or gimmicks.  It uses GTK+ 3 for drawing window frames,
+A window manager for GNOME Flashback, with a focus on simplicity and usability
+rather than novelties or gimmicks. It uses GTK+ 3 for drawing window frames,
 so that it inherits colors, fonts, and so on from the GTK+ theme.  Its author
 has characterized it as a &quot;boring window manager for the adult in you.
 Many window managers are like Marshmallow Froot Loops; Metacity is like Cheerios.&quot;
