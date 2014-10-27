@@ -1,3 +1,9 @@
+Version 3.14.2
+==============
+- Fix two bugs with Chromium - does not get focus and does not appear in
+  alt-tab switcher. (Alberts Muktupāvels)
+- Fix errors in manpages. (Dmitry Shachnev)
+
 Version 3.14.1
 ==============
 - Fix random bug when windows opens in fullscreen mode. (Alberts Muktupāvels)
