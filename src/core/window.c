@@ -7311,6 +7311,8 @@ update_resize (MetaWindow *window,
       break;
     }
 
+  remaining = 0;
+
   if (!check_moveresize_frequency (window, &remaining) && !force)
     {
       /* we are ignoring an event here, so we schedule a
