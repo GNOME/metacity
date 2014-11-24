@@ -1,3 +1,7 @@
+Version 3.15.2
+==============
+- Fix deprecated warnings. (Alberts Muktupāvels)
+
 Version 3.14.3
 ==============
 - Use correct icon name [image-missing] for missing icon. (Alberts Muktupāvels)

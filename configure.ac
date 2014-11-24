@@ -1,8 +1,8 @@
 AC_PREREQ(2.50)
 
 m4_define([metacity_major_version], [3])
-m4_define([metacity_minor_version], [14])
-m4_define([metacity_micro_version], [3])
+m4_define([metacity_minor_version], [15])
+m4_define([metacity_micro_version], [2])
 
 m4_define([metacity_version],
           [metacity_major_version.metacity_minor_version.metacity_micro_version])
