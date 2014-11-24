@@ -1,3 +1,9 @@
+Version 3.14.3
+==============
+- Use correct icon name [image-missing] for missing icon. (Alberts Muktupāvels)
+- Updated translations:
+  Marek Černocký (cs), Мирослав Николић (sr).
+
 Version 3.14.2
 ==============
 - Fix two bugs with Chromium - does not get focus and does not appear in
