@@ -87,7 +87,7 @@ draw_window (GtkWidget                   *widget,
   if (is_active)
     meta_gtk_style_get_light_color (style, state, &color);
   else
-    gtk_style_context_get_background_color (style, state, &color);
+    gtk_style_context_get (style, state, "background-color", &color, NULL);
   gdk_cairo_set_source_rgba (cr, &color);
 
   cairo_rectangle (cr,

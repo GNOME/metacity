@@ -1515,7 +1515,7 @@ meta_gtk_style_get_light_color (GtkStyleContext *style,
                                 GtkStateFlags    state,
                                 GdkRGBA         *color)
 {
-  gtk_style_context_get_background_color (style, state, color);
+  gtk_style_context_get (style, state, "background-color", color, NULL);
   gtk_style_shade (color, color, LIGHTNESS_MULT);
 }
 
@@ -1524,7 +1524,7 @@ meta_gtk_style_get_dark_color (GtkStyleContext *style,
                                GtkStateFlags    state,
                                GdkRGBA         *color)
 {
-  gtk_style_context_get_background_color (style, state, color);
+  gtk_style_context_get (style, state, "background-color", color, NULL);
   gtk_style_shade (color, color, DARKNESS_MULT);
 }
 
@@ -1540,7 +1540,7 @@ meta_set_color_from_style (GdkRGBA               *color,
     {
     case META_GTK_COLOR_BG:
     case META_GTK_COLOR_BASE:
-      gtk_style_context_get_background_color (context, state, color);
+      gtk_style_context_get (context, state, "background-color", color, NULL);
       break;
     case META_GTK_COLOR_FG:
     case META_GTK_COLOR_TEXT:
