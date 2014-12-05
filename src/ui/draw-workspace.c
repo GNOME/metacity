@@ -64,6 +64,25 @@ get_window_rect (const WnckWindowDisplayInfo *win,
 }
 
 static void
+get_background_color (GtkStyleContext *context,
+                      GtkStateFlags    state,
+                      GdkRGBA         *color)
+{
+  GdkRGBA *c;
+
+  g_return_if_fail (color != NULL);
+  g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
+
+  gtk_style_context_get (context,
+                         state,
+                         "background-color", &c,
+                         NULL);
+
+  *color = *c;
+  gdk_rgba_free (c);
+}
+
+static void
 draw_window (GtkWidget                   *widget,
              cairo_t                     *cr,
              const WnckWindowDisplayInfo *win,
@@ -87,7 +106,7 @@ draw_window (GtkWidget                   *widget,
   if (is_active)
     meta_gtk_style_get_light_color (style, state, &color);
   else
-    gtk_style_context_get_background_color (style, state, &color);
+    get_background_color (style, state, &color);
   gdk_cairo_set_source_rgba (cr, &color);
 
   cairo_rectangle (cr,
