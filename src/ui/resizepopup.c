@@ -83,10 +83,10 @@ ensure_size_window (MetaResizePopup *popup)
 
   popup->size_label = gtk_label_new ("");
 
-  gtk_widget_set_margin_start (popup->size_label, 3);
-  gtk_widget_set_margin_end (popup->size_label, 3);
-  gtk_widget_set_margin_top (popup->size_label, 3);
-  gtk_widget_set_margin_bottom (popup->size_label, 3);
+  gtk_widget_set_margin_start (popup->size_label, 6);
+  gtk_widget_set_margin_end (popup->size_label, 6);
+  gtk_widget_set_margin_top (popup->size_label, 6);
+  gtk_widget_set_margin_bottom (popup->size_label, 6);
 
   gtk_container_add (GTK_CONTAINER (popup->size_window),
                      popup->size_label);
