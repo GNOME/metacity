@@ -147,6 +147,22 @@ reload_keymap (MetaDisplay *display)
                                          &display->keysyms_per_keycode);
 }
 
+static const char *
+keysym_to_string (KeySym keysym)
+{
+  const char *name;
+
+  if (keysym == META_KEY_ABOVE_TAB)
+    name = "Above_Tab";
+  else
+    name = XKeysymToString (keysym);
+
+  if (name == NULL)
+    name = "(unknown)";
+
+  return name;
+}
+
 static void
 reload_modmap (MetaDisplay *display)
 {
@@ -194,7 +210,7 @@ reload_modmap (MetaDisplay *display)
                 {
                   const char *str;
 
-                  str = XKeysymToString (syms[j]);
+                  str = keysym_to_string (syms[j]);
                   meta_topic (META_DEBUG_KEYBINDINGS,
                               "Keysym %s bound to modifier 0x%x\n",
                               str ? str : "none",
@@ -667,18 +683,6 @@ meta_display_shutdown_keys (MetaDisplay *display)
   g_free (display->key_bindings);
 }
 
-static const char*
-keysym_name (int keysym)
-{
-  const char *name;
-
-  name = XKeysymToString (keysym);
-  if (name == NULL)
-    name = "(unknown)";
-
-  return name;
-}
-
 /* Grab/ungrab, ignoring all annoying modifiers like NumLock etc. */
 static void
 meta_change_keygrab (MetaDisplay *display,
@@ -698,7 +702,7 @@ meta_change_keygrab (MetaDisplay *display,
   meta_topic (META_DEBUG_KEYBINDINGS,
               "%s keybinding %s keycode %d mask 0x%x on 0x%lx\n",
               grab ? "Grabbing" : "Ungrabbing",
-              keysym_name (keysym), keycode,
+              keysym_to_string (keysym), keycode,
               modmask, xwindow);
 
   /* efficiency, avoid so many XSync() */
@@ -738,11 +742,11 @@ meta_change_keygrab (MetaDisplay *display,
           if (grab && result != Success)
             {
               if (result == BadAccess)
-                meta_warning (_("Some other program is already using the key %s with modifiers %x as a binding\n"), keysym_name (keysym), modmask | ignored_mask);
+                meta_warning (_("Some other program is already using the key %s with modifiers %x as a binding\n"), keysym_to_string (keysym), modmask | ignored_mask);
               else
                 meta_topic (META_DEBUG_KEYBINDINGS,
                             "Failed to grab key %s with modifiers %x\n",
-                            keysym_name (keysym), modmask | ignored_mask);
+                            keysym_to_string (keysym), modmask | ignored_mask);
             }
         }
 
@@ -1313,7 +1317,6 @@ meta_display_process_key_event (MetaDisplay *display,
   KeySym keysym;
   gboolean keep_grab;
   gboolean all_keys_grabbed;
-  const char *str;
   MetaScreen *screen;
 
   XAllowEvents (display->xdisplay,
@@ -1340,17 +1343,11 @@ meta_display_process_key_event (MetaDisplay *display,
 
   keysym = keycode_to_keysym (display, event->xkey.keycode);
 
-#ifdef HAVE_XKB
-  str = XKeysymToString (keysym);
-#else
-  str = NULL;
-#endif
-
   /* was topic */
   meta_topic (META_DEBUG_KEYBINDINGS,
               "Processing key %s event, keysym: %s state: 0x%x window: %s\n",
               event->type == KeyPress ? "press" : "release",
-              str ? str : "none", event->xkey.state,
+              keysym_to_string (keysym), event->xkey.state,
               window ? window->desc : "(no window)");
 
   keep_grab = TRUE;
@@ -1433,7 +1430,7 @@ meta_display_process_key_event (MetaDisplay *display,
         {
           meta_topic (META_DEBUG_KEYBINDINGS,
                       "Ending grab op %u on key event sym %s\n",
-                      display->grab_op, XKeysymToString (keysym));
+                      display->grab_op, keysym_to_string (keysym));
           meta_display_end_grab_op (display, event->xkey.time);
           return;
         }
