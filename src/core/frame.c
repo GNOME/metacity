@@ -299,9 +299,6 @@ meta_frame_get_flags (MetaFrame *frame)
   return flags;
 }
 
-/* Moved to core/common.c
- */
-#if 0
 void
 meta_frame_borders_clear (MetaFrameBorders *self)
 {
@@ -310,7 +307,6 @@ meta_frame_borders_clear (MetaFrameBorders *self)
   self->visible.left = 0;
   self->visible.right = 0;
 }
-#endif
 
 void
 meta_frame_calc_borders (MetaFrame        *frame,
