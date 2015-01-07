@@ -121,17 +121,15 @@ keybind (switch-to-workspace-down, handle_switch_to_workspace,
  * same function checking a bit in the parameter for difference.
  */
 
+keybind (switch-applications, handle_switch, META_TAB_LIST_NORMAL,
+         BINDING_REVERSES)
+keybind (switch-applications-backward, handle_switch, META_TAB_LIST_NORMAL,
+         REVERSES_AND_REVERSED)
 keybind (switch-group, handle_switch, META_TAB_LIST_GROUP, BINDING_REVERSES)
 keybind (switch-group-backward, handle_switch, META_TAB_LIST_GROUP,
          REVERSES_AND_REVERSED)
 keybind (switch-windows, handle_switch, META_TAB_LIST_NORMAL, BINDING_REVERSES)
 keybind (switch-windows-backward, handle_switch, META_TAB_LIST_NORMAL,
-         REVERSES_AND_REVERSED)
-/* We do not support switching applications, so we map these to switching
- * windows */
-keybind (switch-applications, handle_switch, META_TAB_LIST_NORMAL,
-         BINDING_REVERSES)
-keybind (switch-applications-backward, handle_switch, META_TAB_LIST_NORMAL,
          REVERSES_AND_REVERSED)
 keybind (switch-panels, handle_switch, META_TAB_LIST_DOCKS, BINDING_REVERSES)
 keybind (switch-panels-backward, handle_switch, META_TAB_LIST_DOCKS,
