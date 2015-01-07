@@ -261,6 +261,20 @@ keysym_to_keycode (MetaDisplay *display,
     return XKeysymToKeycode (display->xdisplay, keysym);
 }
 
+static KeySym
+keycode_to_keysym (MetaDisplay *display,
+                   guint        keycode)
+{
+  if (keycode == meta_display_get_above_tab_keycode (display))
+    return META_KEY_ABOVE_TAB;
+
+#ifdef HAVE_XKB
+  return XkbKeycodeToKeysym (display->xdisplay, keycode, 0, 0);
+#else
+  return XKeycodeToKeysym (display->xdisplay, keycode, 0);
+#endif
+}
+
 static void
 reload_keycodes (MetaDisplay *display)
 {
@@ -1324,9 +1338,9 @@ meta_display_process_key_event (MetaDisplay *display,
       meta_ui_window_is_widget (screen->ui, event->xany.window))
     return;
 
-  /* window may be NULL */
+  keysym = keycode_to_keysym (display, event->xkey.keycode);
+
 #ifdef HAVE_XKB
-  keysym = XkbKeycodeToKeysym (display->xdisplay, event->xkey.keycode, 0, 0);
   str = XKeysymToString (keysym);
 #else
   str = NULL;
