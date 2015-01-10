@@ -334,15 +334,8 @@ queue_recalc_func (gpointer key, gpointer value, gpointer data)
   invalidate_whole_window (frames, frame);
   meta_core_queue_frame_resize (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
                                 frame->xwindow);
-  if (frame->text_layout)
-    {
-      /* save title to recreate layout */
-      g_free (frame->title);
 
-      frame->title = g_strdup (pango_layout_get_text (frame->text_layout));
-
-      g_clear_object (&frame->text_layout);
-    }
+  g_clear_object (&frame->text_layout);
 }
 
 static void
@@ -445,17 +438,7 @@ meta_frames_ensure_layout (MetaFrames  *frames,
   style = meta_theme_get_frame_style (meta_ui_get_theme (), type, flags);
 
   if (style != frame->cache_style)
-    {
-      if (frame->text_layout)
-        {
-          /* save title to recreate layout */
-          g_free (frame->title);
-
-          frame->title = g_strdup (pango_layout_get_text (frame->text_layout));
-
-          g_clear_object (&frame->text_layout);
-        }
-    }
+    g_clear_object (&frame->text_layout);
 
   frame->cache_style = style;
 
@@ -496,14 +479,8 @@ meta_frames_ensure_layout (MetaFrames  *frames,
                                 GINT_TO_POINTER (frame->text_height));
         }
 
-      pango_layout_set_font_description (frame->text_layout,
-                                         font_desc);
-
+      pango_layout_set_font_description (frame->text_layout, font_desc);
       pango_font_description_free (font_desc);
-
-      /* Save some RAM */
-      g_free (frame->title);
-      frame->title = NULL;
     }
 }
 
