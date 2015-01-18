@@ -4,7 +4,6 @@
 srcdir=`dirname $0`
 test -z "$srcdir" && srcdir=.
 
-PKG_NAME="metacity"
 REQUIRED_AUTOMAKE_VERSION=1.10
 
 (test -f $srcdir/configure.ac \
@@ -19,4 +18,5 @@ which gnome-autogen.sh || {
     echo "your distribution's package manager)."
     exit 1
 }
-USE_GNOME2_MACROS=1 . gnome-autogen.sh
+
+. gnome-autogen.sh
