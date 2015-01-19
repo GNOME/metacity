@@ -535,6 +535,7 @@ place_window_if_needed(MetaWindow     *window,
       info->fixed_directions = FIXED_DIRECTION_NONE;
     }
 
+
   if (window->placed || did_placement)
     {
       if (window->maximize_horizontally_after_placement ||
@@ -579,6 +580,9 @@ place_window_if_needed(MetaWindow     *window,
           window->maximize_horizontally_after_placement = FALSE;
           window->maximize_vertically_after_placement = FALSE;
         }
+
+      window->user_rect = info->current;
+
       if (window->minimize_after_placement)
         meta_window_minimize (window);
     }
