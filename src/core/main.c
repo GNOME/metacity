@@ -639,7 +639,7 @@ prefs_changed_callback (MetaPreference pref,
   switch (pref)
     {
     case META_PREF_THEME:
-      meta_ui_set_current_theme (meta_prefs_get_theme (), FALSE);
+      meta_ui_set_current_theme (meta_prefs_get_theme (), TRUE);
       meta_display_retheme_all ();
       break;
 
