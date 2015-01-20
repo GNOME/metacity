@@ -5350,9 +5350,9 @@ meta_theme_get_current (void)
   return meta_current_theme;
 }
 
-void
-meta_theme_set_current (const char *name,
-                        gboolean    force_reload)
+static void
+theme_set_current_metacity (const gchar *name,
+                            gboolean     force_reload)
 {
   MetaTheme *new_theme;
   GError *err;
@@ -5381,6 +5381,94 @@ meta_theme_set_current (const char *name,
       meta_current_theme = new_theme;
 
       meta_topic (META_DEBUG_THEMES, "New theme is \"%s\"\n", meta_current_theme->name);
+    }
+}
+
+static void
+theme_set_current_gtk (const gchar *name)
+{
+  int i, j, frame_type;
+
+  meta_topic (META_DEBUG_THEMES, "Setting current theme to \"%s\"\n", name);
+
+  if (meta_current_theme)
+    return;
+  meta_current_theme = meta_theme_new ();
+
+  for (frame_type = 0; frame_type < META_FRAME_TYPE_LAST; frame_type++)
+    {
+      MetaFrameStyleSet *style_set = meta_frame_style_set_new (NULL);
+      MetaFrameStyle *style = meta_frame_style_new (NULL);
+
+      style->layout = meta_frame_layout_new ();
+
+      switch (frame_type)
+        {
+          case META_FRAME_TYPE_NORMAL:
+            break;
+          case META_FRAME_TYPE_DIALOG:
+          case META_FRAME_TYPE_MODAL_DIALOG:
+          case META_FRAME_TYPE_ATTACHED:
+            style->layout->hide_buttons = TRUE;
+            break;
+          case META_FRAME_TYPE_MENU:
+          case META_FRAME_TYPE_UTILITY:
+            style->layout->title_scale = PANGO_SCALE_SMALL;
+            break;
+          case META_FRAME_TYPE_BORDER:
+            style->layout->has_title = FALSE;
+            style->layout->hide_buttons = TRUE;
+            break;
+          default:
+            g_assert_not_reached ();
+        }
+
+      for (i = 0; i < META_FRAME_FOCUS_LAST; i++)
+        {
+          for (j = 0; j < META_FRAME_RESIZE_LAST; j++)
+            {
+              meta_frame_style_ref (style);
+              style_set->normal_styles[j][i] = style;
+
+              meta_frame_style_ref (style);
+              style_set->shaded_styles[j][i] = style;
+            }
+
+          meta_frame_style_ref (style);
+          style_set->maximized_styles[i] = style;
+
+          meta_frame_style_ref (style);
+          style_set->tiled_left_styles[i] = style;
+
+          meta_frame_style_ref (style);
+          style_set->tiled_right_styles[i] = style;
+
+          meta_frame_style_ref (style);
+          style_set->maximized_and_shaded_styles[i] = style;
+
+          meta_frame_style_ref (style);
+          style_set->tiled_left_and_shaded_styles[i] = style;
+
+          meta_frame_style_ref (style);
+          style_set->tiled_right_and_shaded_styles[i] = style;
+        }
+
+      meta_frame_style_unref (style);
+      meta_current_theme->style_sets_by_type[frame_type] = style_set;
+    }
+}
+
+void
+meta_theme_set_current (const char *name,
+                        gboolean    force_reload)
+{
+  if (meta_prefs_get_theme ())
+    {
+      theme_set_current_metacity (name, force_reload);
+    }
+  else
+    {
+      theme_set_current_gtk (name);
     }
 }
 
