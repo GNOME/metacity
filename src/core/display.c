@@ -3371,10 +3371,10 @@ meta_display_begin_grab_op (MetaDisplay *display,
   display->grab_xwindow = grab_xwindow;
   display->grab_button = button;
   display->grab_mask = modmask;
-  if (window)
+  if (grab_window)
     {
-      display->grab_tile_mode = window->tile_mode;
-      display->grab_tile_monitor_number = window->tile_monitor_number;
+      display->grab_tile_mode = grab_window->tile_mode;
+      display->grab_tile_monitor_number = grab_window->tile_monitor_number;
     }
   else
     {
