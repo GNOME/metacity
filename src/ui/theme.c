@@ -52,6 +52,7 @@
 
 #include <config.h>
 #include "frames.h" /* for META_TYPE_FRAMES */
+#include "prefs.h"
 #include "theme.h"
 #include "theme-parser.h"
 #include "util.h"
@@ -409,6 +410,7 @@ meta_frame_layout_get_borders (const MetaFrameLayout *layout,
                                MetaFrameBorders      *borders)
 {
   int buttons_height, title_height;
+  GtkBorder invisible_border;
 
   meta_frame_borders_clear (borders);
 
@@ -432,18 +434,31 @@ meta_frame_layout_get_borders (const MetaFrameLayout *layout,
   borders->visible.right = layout->right_width;
   borders->visible.bottom = layout->bottom_height;
 
+  invisible_border.left = layout->invisible_border.left;
+  invisible_border.right = layout->invisible_border.right;
+  invisible_border.bottom = layout->invisible_border.bottom;
+  invisible_border.top = layout->invisible_border.top;
+
+  if (!meta_prefs_get_compositing_manager ())
+    {
+      invisible_border.left = 0;
+      invisible_border.right = 0;
+      invisible_border.bottom = 0;
+      invisible_border.top = 0;
+    }
+
   if (flags & META_FRAME_ALLOWS_HORIZONTAL_RESIZE)
     {
-      borders->invisible.left = layout->invisible_border.left;
-      borders->invisible.right = layout->invisible_border.right;
+      borders->invisible.left = invisible_border.left;
+      borders->invisible.right = invisible_border.right;
     }
 
   if (flags & META_FRAME_ALLOWS_VERTICAL_RESIZE)
     {
-      borders->invisible.bottom = layout->invisible_border.bottom;
+      borders->invisible.bottom = invisible_border.bottom;
 
       if (type != META_FRAME_TYPE_ATTACHED)
-        borders->invisible.top = layout->invisible_border.top;
+        borders->invisible.top = invisible_border.top;
     }
 
   borders->total.left = borders->invisible.left + borders->visible.left;
