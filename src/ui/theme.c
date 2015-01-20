@@ -5361,7 +5361,7 @@ meta_theme_set_current (const char *name,
 
   if (!force_reload &&
       meta_current_theme &&
-      strcmp (name, meta_current_theme->name) == 0)
+      g_strcmp0 (name, meta_current_theme->name) == 0)
     return;
 
   err = NULL;

@@ -999,15 +999,16 @@ theme_name_handler (GVariant *value,
   *result = NULL; /* ignored */
   string_value = g_variant_get_string (value, NULL);
 
-  if (!string_value || !*string_value)
-    return FALSE;
-
   if (g_strcmp0 (current_theme, string_value) != 0)
     {
       if (current_theme)
         g_free (current_theme);
 
-      current_theme = g_strdup (string_value);
+      if (!string_value || !*string_value)
+        current_theme = NULL;
+      else
+        current_theme = g_strdup (string_value);
+
       queue_changed (META_PREF_THEME);
     }
 
