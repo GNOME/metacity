@@ -60,9 +60,7 @@
 #include "window-private.h"
 #include "prefs.h"
 
-#ifdef HAVE_SHAPE
 #include <X11/extensions/shape.h>
-#endif
 
 #define META_MINIMIZE_ANIMATION_LENGTH 0.25
 #define META_SHADE_ANIMATION_LENGTH 0.2
@@ -79,19 +77,8 @@ typedef struct
   double millisecs_duration;
   GTimeVal start_time;
 
-#ifdef HAVE_SHAPE
   /** For wireframe window */
   Window wireframe_xwindow;
-#else
-  /** Rectangle to erase */
-  MetaRectangle last_rect;
-
-  /** First time we've plotted anything in this animation? */
-  gboolean first_time;
-
-  /** For wireframe drawn on root window */
-  GC gc;
-#endif
 
   MetaRectangle start_rect;
   MetaRectangle end_rect;
@@ -258,7 +245,6 @@ meta_effect_run_close (MetaWindow         *window,
 
 /* old ugly minimization effect */
 
-#ifdef HAVE_SHAPE
 static void
 update_wireframe_window (MetaDisplay         *display,
                          Window               xwindow,
@@ -310,7 +296,6 @@ update_wireframe_window (MetaDisplay         *display,
                          ShapeBounding, 0, 0, None, ShapeSet);
     }
 }
-#endif
 
 /**
  * A hack to force the X server to synchronize with the
@@ -337,21 +322,6 @@ effects_draw_box_animation_timeout (BoxAnimationContext *context)
   MetaRectangle draw_rect;
   double fraction;
 
-#ifndef HAVE_SHAPE
-  if (!context->first_time)
-    {
-       /* Restore the previously drawn background */
-       XDrawRectangle (context->screen->display->xdisplay,
-                       context->screen->xroot,
-                       context->gc,
-                       context->last_rect.x, context->last_rect.y,
-                       context->last_rect.width, context->last_rect.height);
-    }
-  else
-    context->first_time = FALSE;
-
-#endif /* !HAVE_SHAPE */
-
   g_get_current_time (&current_time);
 
   /* We use milliseconds for all times */
@@ -369,15 +339,8 @@ effects_draw_box_animation_timeout (BoxAnimationContext *context)
   if (elapsed > context->millisecs_duration)
     {
       /* All done */
-#ifdef HAVE_SHAPE
         XDestroyWindow (context->screen->display->xdisplay,
                           context->wireframe_xwindow);
-#else
-        meta_display_ungrab (context->screen->display);
-        meta_ui_pop_delay_exposes (context->screen->ui);
-        XFreeGC (context->screen->display->xdisplay,
-                 context->gc);
-#endif /* !HAVE_SHAPE */
 
       graphics_sync (context);
 
@@ -402,21 +365,9 @@ effects_draw_box_animation_timeout (BoxAnimationContext *context)
   if (draw_rect.height < 1)
     draw_rect.height = 1;
 
-#ifdef HAVE_SHAPE
   update_wireframe_window (context->screen->display,
                            context->wireframe_xwindow,
                            &draw_rect);
-#else
-  context->last_rect = draw_rect;
-
-  /* Draw the rectangle */
-  XDrawRectangle (context->screen->display->xdisplay,
-                  context->screen->xroot,
-                  context->gc,
-                  draw_rect.x, draw_rect.y,
-                  draw_rect.width, draw_rect.height);
-
-#endif /* !HAVE_SHAPE */
 
   /* kick changes onto the server */
   graphics_sync (context);
@@ -431,12 +382,7 @@ draw_box_animation (MetaScreen     *screen,
                     double          seconds_duration)
 {
   BoxAnimationContext *context;
-
-#ifdef HAVE_SHAPE
   XSetWindowAttributes attrs;
-#else
-  XGCValues gc_values;
-#endif
 
   g_return_if_fail (seconds_duration > 0.0);
 
@@ -452,8 +398,6 @@ draw_box_animation (MetaScreen     *screen,
 
   context->start_rect = *initial_rect;
   context->end_rect = *destination_rect;
-
-#ifdef HAVE_SHAPE
 
   attrs.override_redirect = True;
   attrs.background_pixel = BlackPixel (screen->display->xdisplay,
@@ -478,22 +422,6 @@ draw_box_animation (MetaScreen     *screen,
 
   XMapWindow (screen->display->xdisplay,
               context->wireframe_xwindow);
-
-#else /* !HAVE_SHAPE */
-
-  context->first_time = TRUE;
-  gc_values.subwindow_mode = IncludeInferiors;
-  gc_values.function = GXinvert;
-
-  context->gc = XCreateGC (screen->display->xdisplay,
-                           screen->xroot,
-                           GCSubwindowMode | GCFunction,
-                           &gc_values);
-
-  /* Grab the X server to avoid screen dirt */
-  meta_display_grab (context->screen->display);
-  meta_ui_push_delay_exposes (context->screen->ui);
-#endif
 
   /* Do this only after we get the pixbuf from the server,
    * so that the animation doesn't get truncated.

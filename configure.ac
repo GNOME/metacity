@@ -152,20 +152,10 @@ AC_ARG_ENABLE(compositor,
                  [disable metacity's compositing manager]),,
   enable_compositor=auto)
 
-AC_ARG_ENABLE(xsync,
-  AC_HELP_STRING([--disable-xsync],
-                 [disable metacity's use of the XSync extension]),,
-  enable_xsync=auto)
-
 AC_ARG_ENABLE(render,
   AC_HELP_STRING([--disable-render],
                  [disable metacity's use of the RENDER extension]),,
   enable_render=auto)
-
-AC_ARG_ENABLE(shape,
-  AC_HELP_STRING([--disable-shape],
-                 [disable metacity's use of the shaped window extension]),,
-  enable_shape=auto)
 
 ## try definining HAVE_BACKTRACE
 AC_CHECK_HEADERS(execinfo.h, [AC_CHECK_FUNCS(backtrace)])
@@ -310,7 +300,7 @@ PKG_CHECK_MODULES(METACITY, $METACITY_PC_MODULES)
 
 AC_PATH_XTRA
 
-ALL_X_LIBS="$X_LIBS $X_PRE_LIBS -lX11 $X_EXTRA_LIBS"
+ALL_X_LIBS="-lX11 $X_EXTRA_LIBS"
 
 # Check for Xinerama extension (Solaris impl or Xfree impl)
 metacity_save_cppflags="$CPPFLAGS"
@@ -366,28 +356,6 @@ fi
 
 CPPFLAGS="$metacity_save_cppflags"
 
-SHAPE_LIBS=
-found_shape=no
-AC_CHECK_LIB(Xext, XShapeQueryExtension,
-               [AC_CHECK_HEADER(X11/extensions/shape.h,
-                                SHAPE_LIBS=-lXext found_shape=yes)],
-               , $ALL_X_LIBS)
-
-if test x$enable_shape = xno; then
-   found_shape=no
-fi
-
-if test x$enable_shape = xyes; then
-   if test "$found_shape" = "no"; then
-      AC_MSG_ERROR([--enable-shape forced and Shape not found])
-      exit 1
-   fi
-fi
-
-if test "x$found_shape" = "xyes"; then
-   AC_DEFINE(HAVE_SHAPE, , [Have the shape extension library])
-fi
-
 found_xkb=no
 AC_CHECK_LIB(X11, XkbQueryExtension,
                [AC_CHECK_HEADER(X11/XKBlib.h,
@@ -411,34 +379,10 @@ if test "x$found_randr" = "xyes"; then
    AC_DEFINE(HAVE_RANDR, , [Have the Xrandr extension library])
 fi
 
-XSYNC_LIBS=
-found_xsync=no
-AC_CHECK_LIB(Xext, XSyncQueryExtension,
-               [AC_CHECK_HEADER(X11/extensions/sync.h,
-                                found_xsync=yes,,
-				[#include <X11/Xlib.h>])],
-               , $ALL_X_LIBS)
-
-if test x$enable_xsync = xno; then
-   found_xsync=no
-fi
-
-if test x$enable_xsync = xyes; then
-   if test "$found_xsync" = "no"; then
-      AC_MSG_ERROR([--enable-xsync forced and XSync not found])
-      exit 1
-   fi
-fi
-
-if test "x$found_xsync" = "xyes"; then
-   XSYNC_LIBS=-lXext
-   AC_DEFINE(HAVE_XSYNC, , [Have the Xsync extension library])
-fi
-
-METACITY_LIBS="$ALL_LIBS $METACITY_LIBS $XSYNC_LIBS $RANDR_LIBS $SHAPE_LIBS $X_LIBS $X_PRE_LIBS -lX11 $X_EXTRA_LIBS -lm"
-METACITY_MESSAGE_LIBS="$METACITY_MESSAGE_LIBS $X_LIBS $X_PRE_LIBS -lX11 $X_EXTRA_LIBS"
-METACITY_WINDOW_DEMO_LIBS="$METACITY_WINDOW_DEMO_LIBS $X_LIBS $X_PRE_LIBS -lX11 $X_EXTRA_LIBS"
-METACITY_PROPS_LIBS="$METACITY_PROPS_LIBS $X_LIBS $X_PRE_LIBS -lX11 $X_EXTRA_LIBS"
+METACITY_LIBS="$ALL_LIBS $METACITY_LIBS $RANDR_LIBS -lX11 -lXext $X_EXTRA_LIBS -lm"
+METACITY_MESSAGE_LIBS="$METACITY_MESSAGE_LIBS -lX11 $X_EXTRA_LIBS"
+METACITY_WINDOW_DEMO_LIBS="$METACITY_WINDOW_DEMO_LIBS -lX11 $X_EXTRA_LIBS"
+METACITY_PROPS_LIBS="$METACITY_PROPS_LIBS -lX11 $X_EXTRA_LIBS"
 
 found_sm=no
 case "$METACITY_LIBS" in
@@ -536,9 +480,7 @@ metacity-$VERSION (using gtk+-${GTK_API_VERSION}):
 	Startup notification:     ${have_startup_notification}
 	Compositing manager:      ${have_xcomposite}
 	Session management:       ${found_sm}
-	Shape extension:          ${found_shape}
 	Resize-and-rotate:        ${found_randr}
-	Xsync:                    ${found_xsync}
 	Render:                   ${have_xrender}
 	Xcursor:                  ${have_xcursor}
 "

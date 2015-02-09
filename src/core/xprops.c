@@ -562,7 +562,6 @@ window_from_results (GetPropertyResults *results,
   return TRUE;
 }
 
-#ifdef HAVE_XSYNC
 static gboolean
 counter_from_results (GetPropertyResults *results,
                       XSyncCounter       *counter_p)
@@ -578,7 +577,6 @@ counter_from_results (GetPropertyResults *results,
 
   return TRUE;
 }
-#endif
 
 gboolean
 meta_prop_get_window (MetaDisplay *display,
@@ -1186,18 +1184,9 @@ meta_prop_get_values (MetaDisplay   *display,
             values[i].type = META_PROP_VALUE_INVALID;
           break;
         case META_PROP_VALUE_SYNC_COUNTER:
-#ifdef HAVE_XSYNC
           if (!counter_from_results (&results,
                                      &values[i].v.xcounter))
             values[i].type = META_PROP_VALUE_INVALID;
-#else
-          values[i].type = META_PROP_VALUE_INVALID;
-          if (results.prop)
-            {
-              XFree (results.prop);
-              results.prop = NULL;
-            }
-#endif
           break;
         }
 

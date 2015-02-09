@@ -57,9 +57,7 @@
 #ifdef HAVE_RANDR
 #include <X11/extensions/Xrandr.h>
 #endif
-#ifdef HAVE_SHAPE
 #include <X11/extensions/shape.h>
-#endif
 #ifdef HAVE_RENDER
 #include <X11/extensions/Xrender.h>
 #endif
@@ -372,9 +370,7 @@ meta_display_open (void)
   the_display->allow_terminal_deactivation = TRUE; /* Only relevant for when a
                                                   terminal has the focus */
 
-#ifdef HAVE_XSYNC
   the_display->grab_sync_request_alarm = None;
-#endif
 
   /* FIXME copy the checks from GDK probably */
   the_display->static_gravity_works = g_getenv ("METACITY_USE_STATIC_GRAVITY") != NULL;
@@ -462,7 +458,6 @@ meta_display_open (void)
 
   the_display->grab_edge_resistance_data = NULL;
 
-#ifdef HAVE_XSYNC
   {
     int major, minor;
 
@@ -492,12 +487,7 @@ meta_display_open (void)
                   the_display->xsync_error_base,
                   the_display->xsync_event_base);
   }
-#else  /* HAVE_XSYNC */
-  meta_verbose ("Not compiled with Xsync support\n");
-#endif /* !HAVE_XSYNC */
 
-
-#ifdef HAVE_SHAPE
   {
     the_display->have_shape = FALSE;
 
@@ -518,9 +508,6 @@ meta_display_open (void)
                   the_display->shape_error_base,
                   the_display->shape_event_base);
   }
-#else  /* HAVE_SHAPE */
-  meta_verbose ("Not compiled with Shape support\n");
-#endif /* !HAVE_SHAPE */
 
 #ifdef HAVE_RENDER
   {
@@ -1466,7 +1453,6 @@ event_callback (XEvent   *event,
                   window->desc);
     }
 
-#ifdef HAVE_XSYNC
   if (META_DISPLAY_HAS_XSYNC (display) &&
       event->type == (display->xsync_event_base + XSyncAlarmNotify) &&
       ((XSyncAlarmNotifyEvent*)event)->alarm == display->grab_sync_request_alarm)
@@ -1478,9 +1464,7 @@ event_callback (XEvent   *event,
           grab_op_is_mouse (display->grab_op))
 	meta_window_handle_mouse_grab_op_event (display->grab_window, event);
     }
-#endif /* HAVE_XSYNC */
 
-#ifdef HAVE_SHAPE
   if (META_DISPLAY_HAS_SHAPE (display) &&
       event->type == (display->shape_event_base + ShapeNotify))
     {
@@ -1529,7 +1513,6 @@ event_callback (XEvent   *event,
                       frame_was_receiver);
         }
     }
-#endif /* HAVE_SHAPE */
 
   if (window && ((event->type == KeyPress) || (event->type == ButtonPress)))
     {
@@ -2435,14 +2418,12 @@ event_get_modified_window (MetaDisplay *display,
       return None;
 
     default:
-#ifdef HAVE_SHAPE
       if (META_DISPLAY_HAS_SHAPE (display) &&
           event->type == (display->shape_event_base + ShapeNotify))
         {
           XShapeEvent *sev = (XShapeEvent*) event;
           return sev->window;
         }
-#endif
 
       return None;
     }
@@ -2610,7 +2591,6 @@ key_event_description (Display *xdisplay,
 }
 #endif /* WITH_VERBOSE_MODE */
 
-#ifdef HAVE_XSYNC
 #ifdef WITH_VERBOSE_MODE
 static gint64
 sync_value_to_64 (const XSyncValue *value)
@@ -2641,8 +2621,6 @@ alarm_state_to_string (XSyncAlarmState state)
     }
 }
 #endif /* WITH_VERBOSE_MODE */
-
-#endif /* HAVE_XSYNC */
 
 #ifdef WITH_VERBOSE_MODE
 static void
@@ -2896,7 +2874,6 @@ meta_spew_event (MetaDisplay *display,
       name = "MappingNotify";
       break;
     default:
-#ifdef HAVE_XSYNC
       if (META_DISPLAY_HAS_XSYNC (display) &&
           event->type == (display->xsync_event_base + XSyncAlarmNotify))
         {
@@ -2914,12 +2891,9 @@ meta_spew_event (MetaDisplay *display,
                              (unsigned int)aevent->time,
                              alarm_state_to_string (aevent->state));
         }
-      else
-#endif /* HAVE_XSYNC */
-#ifdef HAVE_SHAPE
-        if (META_DISPLAY_HAS_SHAPE (display) &&
-            event->type == (display->shape_event_base + ShapeNotify))
-          {
+      else if (META_DISPLAY_HAS_SHAPE (display) &&
+               event->type == (display->shape_event_base + ShapeNotify))
+        {
             XShapeEvent *sev = (XShapeEvent*) event;
 
             name = "ShapeNotify";
@@ -2934,9 +2908,8 @@ meta_spew_event (MetaDisplay *display,
                                "ShapeClip" : "(unknown)"),
                                sev->x, sev->y, sev->width, sev->height,
                                sev->shaped);
-          }
-        else
-#endif /* HAVE_SHAPE */
+        }
+      else
         {
           name = "(Unknown event)";
           extra = g_strdup_printf ("type: %d", event->xany.type);
@@ -3312,10 +3285,8 @@ meta_display_begin_grab_op (MetaDisplay *display,
   display->grab_last_moveresize_time.tv_usec = 0;
   display->grab_motion_notify_time = 0;
   display->grab_old_window_stacking = NULL;
-#ifdef HAVE_XSYNC
   display->grab_sync_request_alarm = None;
   display->grab_last_user_action_was_snap = FALSE;
-#endif
   display->grab_was_cancelled = FALSE;
   display->grab_frame_action = frame_action;
 
@@ -3342,7 +3313,6 @@ meta_display_begin_grab_op (MetaDisplay *display,
           meta_window_begin_wireframe (window);
         }
 
-#ifdef HAVE_XSYNC
       if (!display->grab_wireframe_active &&
           meta_grab_op_is_resizing (display->grab_op) &&
           display->grab_window->sync_request_counter != None)
@@ -3395,7 +3365,6 @@ meta_display_begin_grab_op (MetaDisplay *display,
                       "Created update alarm 0x%lx\n",
                       display->grab_sync_request_alarm);
         }
-#endif
     }
 
   meta_topic (META_DEBUG_WINDOW_OPS,
@@ -3588,14 +3557,12 @@ meta_display_end_grab_op (MetaDisplay *display,
         meta_screen_ungrab_all_keys (display->grab_screen, timestamp);
     }
 
-#ifdef HAVE_XSYNC
   if (display->grab_sync_request_alarm != None)
     {
       XSyncDestroyAlarm (display->xdisplay,
                          display->grab_sync_request_alarm);
       display->grab_sync_request_alarm = None;
     }
-#endif /* HAVE_XSYNC */
 
   /* Hide the tile preview if it exists */
   if (display->grab_screen->tile_preview)
@@ -5180,11 +5147,9 @@ meta_display_get_damage_event_base (MetaDisplay *display)
 #endif
 
 #ifdef HAVE_COMPOSITE_EXTENSIONS
-#ifdef HAVE_SHAPE
 int
 meta_display_get_shape_event_base (MetaDisplay *display)
 {
   return display->shape_event_base;
 }
-#endif
 #endif

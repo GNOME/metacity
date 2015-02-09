@@ -322,12 +322,10 @@ struct _MetaWindow
   /* Note: can be NULL */
   GSList *struts;
 
-#ifdef HAVE_XSYNC
   /* XSync update counter */
   XSyncCounter sync_request_counter;
   guint sync_request_serial;
   GTimeVal sync_request_time;
-#endif
 
   /* Number of UnmapNotify that are caused by us, if
    * we get UnmapNotify with none pending then the client

@@ -48,9 +48,7 @@
 #include <X11/Xlibint.h> /* For display->resource_mask */
 #include <string.h>
 
-#ifdef HAVE_SHAPE
 #include <X11/extensions/shape.h>
-#endif
 
 static int destroying_windows_disallowed = 0;
 
@@ -323,7 +321,6 @@ meta_window_new_with_attrs (MetaDisplay       *display,
   XSelectInput (display->xdisplay, xwindow, event_mask);
 
   has_shape = FALSE;
-#ifdef HAVE_SHAPE
   if (META_DISPLAY_HAS_SHAPE (display))
     {
       int x_bounding, y_bounding, x_clip, y_clip;
@@ -345,7 +342,6 @@ meta_window_new_with_attrs (MetaDisplay       *display,
                   has_shape, x_bounding, y_bounding,
                   w_bounding, h_bounding);
     }
-#endif
 
   /* Get rid of any borders */
   if (attrs->border_width != 0)
@@ -389,12 +385,10 @@ meta_window_new_with_attrs (MetaDisplay       *display,
   window->display = display;
   window->workspace = NULL;
 
-#ifdef HAVE_XSYNC
   window->sync_request_counter = None;
   window->sync_request_serial = 0;
   window->sync_request_time.tv_sec = 0;
   window->sync_request_time.tv_usec = 0;
-#endif
 
   window->screen = NULL;
   tmp = display->screens;
@@ -1162,10 +1156,8 @@ meta_window_free (MetaWindow  *window,
       window->user_time_window = None;
     }
 
-#ifdef HAVE_SHAPE
   if (META_DISPLAY_HAS_SHAPE (window->display))
     XShapeSelectInput (window->display->xdisplay, window->xwindow, NoEventMask);
-#endif
 
   meta_error_trap_pop (window->display, FALSE);
 
@@ -3258,7 +3250,6 @@ static_gravity_works (MetaDisplay *display)
   return display->static_gravity_works;
 }
 
-#ifdef HAVE_XSYNC
 static void
 send_sync_request (MetaWindow *window)
 {
@@ -3291,7 +3282,6 @@ send_sync_request (MetaWindow *window)
 
   g_get_current_time (&window->sync_request_time);
 }
-#endif
 
 static gboolean
 move_attached_dialog (MetaWindow *window,
@@ -3696,7 +3686,6 @@ meta_window_move_resize_internal (MetaWindow          *window,
 
       meta_error_trap_push (window->display);
 
-#ifdef HAVE_XSYNC
       if (window->sync_request_counter != None &&
 	  window->display->grab_sync_request_alarm != None &&
 	  window->sync_request_time.tv_usec == 0 &&
@@ -3708,7 +3697,6 @@ meta_window_move_resize_internal (MetaWindow          *window,
 
 	  send_sync_request (window);
 	}
-#endif
 
       XConfigureWindow (window->display->xdisplay,
                         window->xwindow,
@@ -6913,7 +6901,6 @@ check_moveresize_frequency (MetaWindow *window,
 
   g_get_current_time (&current_time);
 
-#ifdef HAVE_XSYNC
   if (!window->disable_sync &&
       window->display->grab_sync_request_alarm != None)
     {
@@ -6951,7 +6938,6 @@ check_moveresize_frequency (MetaWindow *window,
 	}
     }
   else
-#endif /* HAVE_XSYNC */
     {
       const double max_resizes_per_second = 25.0;
       const double ms_between_resizes = 1000.0 / max_resizes_per_second;
@@ -7570,7 +7556,6 @@ void
 meta_window_handle_mouse_grab_op_event (MetaWindow *window,
                                         XEvent     *event)
 {
-#ifdef HAVE_XSYNC
   if (event->type == (window->display->xsync_event_base + XSyncAlarmNotify))
     {
       meta_topic (META_DEBUG_RESIZING,
@@ -7617,7 +7602,6 @@ meta_window_handle_mouse_grab_op_event (MetaWindow *window,
           break;
         }
     }
-#endif /* HAVE_XSYNC */
 
   switch (event->type)
     {

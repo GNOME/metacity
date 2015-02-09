@@ -36,9 +36,7 @@
 
 #include <cairo-xlib.h>
 
-#ifdef HAVE_SHAPE
 #include <X11/extensions/shape.h>
-#endif
 
 #define DEFAULT_INNER_BUTTON_BORDER 3
 
@@ -823,7 +821,6 @@ meta_frames_get_corner_radiuses (MetaFrames *frames,
                                      bottom_left, bottom_right);
 }
 
-#ifdef HAVE_SHAPE
 static void
 apply_cairo_region_to_window (Display        *display,
                               Window          xwindow,
@@ -855,7 +852,6 @@ apply_cairo_region_to_window (Display        *display,
 
   g_free (rects);
 }
-#endif
 
 /* The client rectangle surrounds client window; it subtracts both
  * the visible and invisible borders from the frame window's size.
@@ -1018,7 +1014,6 @@ meta_frames_apply_shapes (MetaFrames *frames,
                           int         new_window_height,
                           gboolean    window_has_shape)
 {
-#ifdef HAVE_SHAPE
   /* Apply shapes as if window had new_window_width, new_window_height */
   MetaUIFrame *frame;
   MetaFrameGeometry fgeom;
@@ -1183,7 +1178,6 @@ meta_frames_apply_shapes (MetaFrames *frames,
   frame->shape_applied = TRUE;
 
   cairo_region_destroy (window_region);
-#endif /* HAVE_SHAPE */
 }
 
 cairo_region_t *

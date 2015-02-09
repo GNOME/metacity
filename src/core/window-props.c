@@ -1051,13 +1051,11 @@ reload_update_counter (MetaWindow    *window,
 {
   if (value->type != META_PROP_VALUE_INVALID)
     {
-#ifdef HAVE_XSYNC
       XSyncCounter counter = value->v.xcounter;
 
       window->sync_request_counter = counter;
       meta_verbose ("Window has _NET_WM_SYNC_REQUEST_COUNTER 0x%lx\n",
                     window->sync_request_counter);
-#endif
     }
 }
 

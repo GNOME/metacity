@@ -143,11 +143,6 @@ version (void)
 static void
 meta_print_compilation_info (void)
 {
-#ifdef HAVE_SHAPE
-  meta_verbose ("Compiled with shape extension\n");
-#else
-  meta_verbose ("Compiled without shape extension\n");
-#endif
 #ifdef HAVE_XINERAMA
   meta_topic (META_DEBUG_XINERAMA, "Compiled with Xinerama extension\n");
 #else
@@ -162,11 +157,6 @@ meta_print_compilation_info (void)
   meta_topic (META_DEBUG_XINERAMA, " (using Solaris Xinerama)\n");
 #else
   meta_topic (META_DEBUG_XINERAMA, " (not using Solaris Xinerama)\n");
-#endif
-#ifdef HAVE_XSYNC
-  meta_verbose ("Compiled with sync extension\n");
-#else
-  meta_verbose ("Compiled without sync extension\n");
 #endif
 #ifdef HAVE_RANDR
   meta_verbose ("Compiled with randr extension\n");
