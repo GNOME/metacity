@@ -2490,11 +2490,6 @@ meta_frames_draw (GtkWidget *widget,
   return TRUE;
 }
 
-/* How far off the screen edge the window decorations should
- * be drawn. Used only in meta_frames_paint_to_drawable, below.
- */
-#define DECORATING_BORDER 100
-
 static void
 meta_frames_paint (MetaFrames   *frames,
                    MetaUIFrame  *frame,
