@@ -310,23 +310,14 @@ reload_kwm_win_icon (MetaWindow    *window,
   reload_icon (window, window->display->atom__KWM_WIN_ICON);
 }
 
-static gboolean
-gtk_border_equal (GtkBorder *a,
-                  GtkBorder *b)
-{
-  return (a->left == b->left &&
-          a->right == b->right &&
-          a->top == b->top &&
-          a->bottom == b->bottom);
-}
-
 static void
 meta_window_set_custom_frame_extents (MetaWindow *window,
                                       GtkBorder  *extents)
 {
   if (extents)
     {
-      if (window->has_custom_frame_extents && gtk_border_equal (&window->custom_frame_extents, extents))
+      if (window->has_custom_frame_extents &&
+          memcmp (&window->custom_frame_extents, extents, sizeof (GtkBorder)) == 0)
         return;
 
       window->has_custom_frame_extents = TRUE;
