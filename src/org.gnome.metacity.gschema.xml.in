@@ -53,7 +53,7 @@
         workspaces, or "random" to place new windows at random locations within
         their workspaces.
       </_description>
-	</key>
+    </key>
   </schema>
 
 </schemalist>
