@@ -925,29 +925,27 @@ meta_ui_get_direction (void)
 }
 
 GdkPixbuf *
-meta_ui_get_pixbuf_from_pixmap (Pixmap   pmap)
+meta_ui_get_pixbuf_from_pixmap (Pixmap pixmap)
 {
-  GdkPixmap *gpmap;
-  GdkScreen *screen;
+  Display *display;
+  Window root;
+  int x, y;
+  unsigned int width, height, border, depth;
+  XWindowAttributes attrs;
+  cairo_surface_t *surface;
   GdkPixbuf *pixbuf;
-  GdkColormap *cmap;
-  int width, height, depth;
 
-  gpmap = gdk_pixmap_foreign_new (pmap);
-  screen = gdk_drawable_get_screen (gpmap);
+  display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
 
-  gdk_drawable_get_size (GDK_DRAWABLE (gpmap), &width, &height);
-  
-  depth = gdk_drawable_get_depth (GDK_DRAWABLE (gpmap));
-  if (depth <= 24)
-    cmap = gdk_screen_get_system_colormap (screen);
-  else
-    cmap = gdk_screen_get_rgba_colormap (screen);
-  
-  pixbuf = gdk_pixbuf_get_from_drawable (NULL, gpmap, cmap, 0, 0, 0, 0,
-                                         width, height);
+  if (!XGetGeometry (display, pixmap, &root, &x, &y, &width, &height, &border, &depth))
+    return NULL;
 
-  g_object_unref (gpmap);
+  if (!XGetWindowAttributes (display, root, &attrs))
+    return NULL;
+
+  surface = cairo_xlib_surface_create (display, pixmap, attrs.visual, width, height);
+  pixbuf = gdk_pixbuf_get_from_surface (surface, x, y, width, height);
+  cairo_surface_destroy (surface);
 
   return pixbuf;
 }
