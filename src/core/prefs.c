@@ -378,7 +378,7 @@ static MetaStringPreference preferences_string[] =
     },
     {
       { "theme",
-        SCHEMA_GENERAL,
+        SCHEMA_METACITY,
         META_PREF_THEME,
       },
       theme_name_handler,

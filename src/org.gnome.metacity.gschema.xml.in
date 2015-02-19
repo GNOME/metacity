@@ -62,6 +62,14 @@
         Alt-Tab window instead of only icons.
       </_description>
     </key>
+    <key name="theme" type="s">
+      <default>'Adwaita'</default>
+      <_summary>Current theme</_summary>
+      <_description>
+        The theme determines the appearance of window borders, titlebar,
+        and so forth.
+      </_description>
+    </key>
   </schema>
 
 </schemalist>
