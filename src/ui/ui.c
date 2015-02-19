@@ -931,7 +931,7 @@ meta_ui_get_pixbuf_from_pixmap (Pixmap pixmap)
   Window root;
   int x, y;
   unsigned int width, height, border, depth;
-  XWindowAttributes attrs;
+  GdkVisual *visual;
   cairo_surface_t *surface;
   GdkPixbuf *pixbuf;
 
@@ -940,10 +940,11 @@ meta_ui_get_pixbuf_from_pixmap (Pixmap pixmap)
   if (!XGetGeometry (display, pixmap, &root, &x, &y, &width, &height, &border, &depth))
     return NULL;
 
-  if (!XGetWindowAttributes (display, root, &attrs))
-    return NULL;
+  visual = gdk_screen_get_rgba_visual (gdk_screen_get_default());
+  if (!visual)
+    visual = gdk_screen_get_system_visual (gdk_screen_get_default());
 
-  surface = cairo_xlib_surface_create (display, pixmap, attrs.visual, width, height);
+  surface = cairo_xlib_surface_create (display, pixmap, GDK_VISUAL_XVISUAL (visual), width, height);
   pixbuf = gdk_pixbuf_get_from_surface (surface, x, y, width, height);
   cairo_surface_destroy (surface);
 
