@@ -21,8 +21,8 @@
       <default>false</default>
       <_summary>If true, trade off usability for less resource usage</_summary>
       <_description>
-        If true, metacity will give the user less feedback by using wireframes,
-        avoiding animations, or other means.  This is a significant reduction
+        If true, Metacity will give the user less feedback by using wireframes,
+        avoiding animations, or other means. This is a significant reduction
         in usability for many users, but may allow legacy applications to
         continue working, and may also be a useful tradeoff
         for terminal servers.
@@ -56,10 +56,10 @@
     </key>
     <key name="alt-tab-thumbnails" type="b">
       <default>false</default>
-      <_summary>Show window content thumbnail in alt-tab</_summary>
+      <_summary>Show window content thumbnail in Alt-Tab</_summary>
       <_description>
-        If set to true Metacity will show window content thumbnails in alt-tab
-        window instead of only icons.
+        If set to true, Metacity will show window content thumbnails in the
+        Alt-Tab window instead of only icons.
       </_description>
     </key>
   </schema>
