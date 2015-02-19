@@ -52,6 +52,7 @@
 
 #include <config.h>
 #include "frames.h" /* for META_TYPE_FRAMES */
+#include "prefs.h"
 #include "theme.h"
 #include "theme-parser.h"
 #include "util.h"
