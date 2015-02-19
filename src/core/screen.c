@@ -1302,11 +1302,18 @@ meta_screen_ensure_tab_popup (MetaScreen      *screen,
         entries[i].icon = g_object_ref (window->icon);
       else
         {
+          GdkPixbuf *scaled;
           int icon_width, icon_height, t_width, t_height;
+
+#define ICON_SIZE 32
 #define ICON_OFFSET 6
 
-          icon_width = gdk_pixbuf_get_width (window->icon);
-          icon_height = gdk_pixbuf_get_height (window->icon);
+          scaled = gdk_pixbuf_scale_simple (window->icon,
+                                            ICON_SIZE, ICON_SIZE,
+                                            GDK_INTERP_BILINEAR);
+
+          icon_width = gdk_pixbuf_get_width (scaled);
+          icon_height = gdk_pixbuf_get_height (scaled);
 
           t_width = width + ICON_OFFSET;
           t_height = height + ICON_OFFSET;
@@ -1317,11 +1324,13 @@ meta_screen_ensure_tab_popup (MetaScreen      *screen,
           gdk_pixbuf_copy_area (win_pixbuf, 0, 0, width, height,
                                 entries[i].icon, 0, 0);
           g_object_unref (win_pixbuf);
-          gdk_pixbuf_composite (window->icon, entries[i].icon, 
+          gdk_pixbuf_composite (scaled, entries[i].icon,
                                 t_width - icon_width, t_height - icon_height,
                                 icon_width, icon_height,
                                 t_width - icon_width, t_height - icon_height, 
                                 1.0, 1.0, GDK_INTERP_BILINEAR, 255);
+
+          g_object_unref (scaled);
         }
                                 
       entries[i].blank = FALSE;
