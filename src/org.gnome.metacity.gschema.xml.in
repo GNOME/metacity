@@ -54,6 +54,14 @@
         their workspaces.
       </_description>
     </key>
+    <key name="alt-tab-thumbnails" type="b">
+      <default>false</default>
+      <_summary>Show window content thumbnail in alt-tab</_summary>
+      <_description>
+        If set to true Metacity will show window content thumbnails in alt-tab
+        window instead of only icons.
+      </_description>
+    </key>
   </schema>
 
 </schemalist>

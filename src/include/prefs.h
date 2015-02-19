@@ -60,7 +60,8 @@ typedef enum
   META_PREF_RESIZE_WITH_RIGHT_BUTTON,
   META_PREF_EDGE_TILING,
   META_PREF_FORCE_FULLSCREEN,
-  META_PREF_PLACEMENT_MODE
+  META_PREF_PLACEMENT_MODE,
+  META_PREF_ALT_TAB_THUMBNAILS
 } MetaPreference;
 
 typedef enum
@@ -127,6 +128,8 @@ gboolean    meta_prefs_get_compositing_manager (void);
 gboolean    meta_prefs_get_force_fullscreen  (void);
 
 MetaPlacementMode meta_prefs_get_placement_mode (void);
+
+gboolean    meta_prefs_get_alt_tab_thumbnails (void);
 
 /**
  * Sets whether the compositor is turned on.

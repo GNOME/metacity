@@ -1294,7 +1294,10 @@ meta_screen_ensure_tab_popup (MetaScreen      *screen,
       entries[i].key = (MetaTabEntryKey) window->xwindow;
       entries[i].title = window->title;
 
-      win_pixbuf = get_window_pixbuf (window, &width, &height);
+      win_pixbuf = NULL;
+      if (meta_prefs_get_alt_tab_thumbnails ())
+        win_pixbuf = get_window_pixbuf (window, &width, &height);
+
       if (win_pixbuf == NULL)
         entries[i].icon = g_object_ref (window->icon);
       else

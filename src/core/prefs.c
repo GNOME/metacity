@@ -90,6 +90,7 @@ static gboolean compositing_manager = FALSE;
 static gboolean resize_with_right_button = FALSE;
 static gboolean edge_tiling = FALSE;
 static gboolean force_fullscreen = TRUE;
+static gboolean alt_tab_thumbnails = FALSE;
 
 static GDesktopVisualBellType visual_bell_type = G_DESKTOP_VISUAL_BELL_FULLSCREEN_FLASH;
 static MetaButtonLayout button_layout;
@@ -352,6 +353,14 @@ static MetaBoolPreference preferences_bool[] =
         META_PREF_EDGE_TILING,
       },
       &edge_tiling,
+      FALSE,
+    },
+    {
+      { "alt-tab-thumbnails",
+        SCHEMA_METACITY,
+        META_PREF_ALT_TAB_THUMBNAILS,
+      },
+      &alt_tab_thumbnails,
       FALSE,
     },
     { { NULL, 0, 0 }, NULL, FALSE },
@@ -1422,6 +1431,9 @@ meta_preference_to_string (MetaPreference pref)
 
     case META_PREF_PLACEMENT_MODE:
       return "PLACEMENT_MODE";
+
+    case META_PREF_ALT_TAB_THUMBNAILS:
+      return "ALT_TAB_THUMBNAILS";
     }
 
   return "(unknown)";
@@ -1842,6 +1854,12 @@ MetaPlacementMode
 meta_prefs_get_placement_mode (void)
 {
   return placement_mode;
+}
+
+gboolean
+meta_prefs_get_alt_tab_thumbnails (void)
+{
+  return alt_tab_thumbnails;
 }
 
 void
