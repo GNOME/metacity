@@ -1,8 +1,10 @@
 THEMES=			\
+  Adwaita   \
 	Atlanta		\
 	Bright		\
 	Crux		\
 	Esco		\
+	HighContrast \
 	AgingGorilla	\
 	Metabox		\
 	Simple
