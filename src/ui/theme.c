@@ -4999,6 +4999,22 @@ meta_frame_style_draw_with_style (MetaFrameStyle          *style,
     }
 }
 
+static const char *
+get_class_from_button_type (MetaButtonType type)
+{
+  switch (type)
+    {
+    case META_BUTTON_TYPE_CLOSE:
+      return "close";
+    case META_BUTTON_TYPE_MAXIMIZE:
+      return "maximize";
+    case META_BUTTON_TYPE_MINIMIZE:
+      return "minimize";
+    default:
+      return NULL;
+    }
+}
+
 /* Used for GTK+ theme */
 static void
 meta_frame_style_draw_with_style_gtk (MetaFrameStyle          *frame_style,
@@ -5079,6 +5095,12 @@ meta_frame_style_draw_with_style_gtk (MetaFrameStyle          *frame_style,
   for (button_type = META_BUTTON_TYPE_CLOSE; button_type < META_BUTTON_TYPE_LAST; button_type++)
     {
       MetaButtonState button_state;
+      const char *button_class;
+
+      button_class = get_class_from_button_type (button_type);
+
+      if (button_class)
+        gtk_style_context_add_class (style, button_class);
 
       get_button_rect (button_type, fgeom, 0, &button_rect);
 
@@ -5163,6 +5185,9 @@ meta_frame_style_draw_with_style_gtk (MetaFrameStyle          *frame_style,
         }
 
       cairo_restore (cr);
+
+      if (button_class)
+        gtk_style_context_remove_class (style, button_class);
     }
 }
 
