@@ -8051,8 +8051,8 @@ meta_window_refresh_resize_popup (MetaWindow *window)
 
   if (window->display->grab_resize_popup == NULL)
     {
-      if (window->size_hints.width_inc > 1 ||
-          window->size_hints.height_inc > 1)
+      if (window->size_hints.width_inc > 2 ||
+          window->size_hints.height_inc > 2)
         window->display->grab_resize_popup =
           meta_ui_resize_popup_new (window->display->xdisplay,
                                     window->screen->number);
