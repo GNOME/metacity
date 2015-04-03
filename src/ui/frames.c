@@ -617,6 +617,23 @@ meta_frames_new (int screen_number)
   return frames;
 }
 
+static const char *
+get_theme_variant_override (MetaFrames *frames)
+{
+  GdkScreen *screen = gtk_widget_get_screen (GTK_WIDGET (frames));
+  GtkSettings *settings = gtk_settings_get_for_screen (screen);
+  gboolean dark_theme_requested;
+
+  g_object_get (settings,
+                "gtk-application-prefer-dark-theme", &dark_theme_requested,
+                NULL);
+
+  if (dark_theme_requested)
+    return "dark";
+
+  return NULL;
+}
+
 /* In order to use a style with a window it has to be attached to that
  * window. Actually, the colormaps just have to match, but since GTK+
  * already takes care of making sure that its cheap to attach a style
@@ -629,21 +646,29 @@ meta_frames_attach_style (MetaFrames  *frames,
 {
   gboolean has_frame;
   char *variant = NULL;
+  const char *variant_override;
 
   if (frame->style_info != NULL)
     meta_style_info_unref (frame->style_info);
 
-  meta_core_get (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
-                 frame->xwindow,
-                 META_CORE_WINDOW_HAS_FRAME, &has_frame,
-                 META_CORE_GET_THEME_VARIANT, &variant,
-                 META_CORE_GET_END);
+  variant_override = get_theme_variant_override (frames);
+
+  if (variant_override)
+    variant = g_strdup (variant_override);
+  else
+    meta_core_get (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
+                   frame->xwindow,
+                   META_CORE_WINDOW_HAS_FRAME, &has_frame,
+                   META_CORE_GET_THEME_VARIANT, &variant,
+                   META_CORE_GET_END);
 
   if (variant == NULL || strcmp(variant, "normal") == 0)
     frame->style_info = meta_style_info_ref (frames->normal_style);
   else
     frame->style_info = meta_style_info_ref (meta_frames_get_theme_variant (frames,
                                                                             variant));
+
+  g_free (variant);
 }
 
 void
