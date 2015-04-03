@@ -668,7 +668,8 @@ meta_frames_attach_style (MetaFrames  *frames,
     frame->style_info = meta_style_info_ref (meta_frames_get_theme_variant (frames,
                                                                             variant));
 
-  g_free (variant);
+  if (variant_override)
+    g_free (variant);
 }
 
 void
