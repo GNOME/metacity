@@ -7131,17 +7131,16 @@ update_move (MetaWindow  *window,
 
       display->grab_initial_window_pos.x =
         x - window->saved_rect.width * prop;
-      display->grab_initial_window_pos.y = y;
 
       if (window->frame)
         {
-          display->grab_initial_window_pos.y += window->frame->child_y / 2;
+          display->grab_initial_window_pos.y = y + window->frame->child_y / 2;
+          display->grab_anchor_root_x = x;
+          display->grab_anchor_root_y = y;
         }
 
       window->saved_rect.x = display->grab_initial_window_pos.x;
       window->saved_rect.y = display->grab_initial_window_pos.y;
-      display->grab_anchor_root_x = x;
-      display->grab_anchor_root_y = y;
 
       meta_window_unmaximize (window,
                               META_MAXIMIZE_HORIZONTAL |
