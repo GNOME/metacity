@@ -639,8 +639,6 @@ static void
 set_window_title (MetaWindow *window,
                   const char *title)
 {
-  char *str;
-
   gboolean modified =
     set_title_text (window,
                     window->using_net_wm_visible_name,
@@ -649,11 +647,8 @@ set_window_title (MetaWindow *window,
                     &window->title);
   window->using_net_wm_visible_name = modified;
 
-  /* strndup is a hack since GNU libc has broken %.10s */
-  str = g_strndup (window->title, 10);
   g_free (window->desc);
-  window->desc = g_strdup_printf ("0x%lx (%s)", window->xwindow, str);
-  g_free (str);
+  window->desc = g_strdup_printf ("0x%lx (%.30s)", window->xwindow, window->title);
 
   if (window->frame)
     meta_ui_set_frame_title (window->screen->ui,
