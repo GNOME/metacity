@@ -1212,7 +1212,7 @@ static void
 set_net_wm_state (MetaWindow *window)
 {
   int i;
-  unsigned long data[12];
+  unsigned long data[13];
 
   i = 0;
   if (window->shaded)
@@ -1273,6 +1273,11 @@ set_net_wm_state (MetaWindow *window)
   if (window->on_all_workspaces)
     {
       data[i] = window->display->atom__NET_WM_STATE_STICKY;
+      ++i;
+    }
+  if (meta_window_appears_focused (window))
+    {
+      data[i] = window->display->atom__NET_WM_STATE_FOCUSED;
       ++i;
     }
 
@@ -5448,6 +5453,15 @@ meta_window_client_message (MetaWindow *window,
 }
 
 static void
+meta_window_appears_focused_changed (MetaWindow *window)
+{
+  set_net_wm_state (window);
+
+  if (window->frame)
+    meta_frame_queue_draw (window->frame);
+}
+
+static void
 check_ancestor_focus_appearance (MetaWindow *window)
 {
   MetaWindow *parent = meta_window_get_transient_for (window);
@@ -5458,8 +5472,7 @@ check_ancestor_focus_appearance (MetaWindow *window)
   if (window->type != META_WINDOW_MODAL_DIALOG || !parent || parent == window)
     return;
 
-  if (parent->frame)
-    meta_frame_queue_draw (parent->frame);
+  meta_window_appears_focused_changed (parent);
 
   check_ancestor_focus_appearance (parent);
 }
@@ -5573,8 +5586,7 @@ meta_window_notify_focus (MetaWindow *window,
                                 window);
             }
 
-          if (window->frame)
-            meta_frame_queue_draw (window->frame);
+          meta_window_appears_focused_changed (window);
 
           meta_error_trap_push (window->display);
           XInstallColormap (window->display->xdisplay,
@@ -5633,8 +5645,7 @@ meta_window_notify_focus (MetaWindow *window,
           /* parent window become active. */
           check_ancestor_focus_appearance (window);
 
-          if (window->frame)
-            meta_frame_queue_draw (window->frame);
+          meta_window_appears_focused_changed (window);
 
           meta_compositor_set_active_window (window->display->compositor,
                                              window->screen, NULL);
