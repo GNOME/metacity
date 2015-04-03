@@ -666,4 +666,7 @@ void meta_window_update_icon_now (MetaWindow *window);
 gboolean meta_window_can_tile_side_by_side (MetaWindow *window);
 gboolean meta_window_is_client_decorated (MetaWindow *window);
 
+void meta_window_get_titlebar_rect (MetaWindow    *window,
+                                    MetaRectangle *titlebar_rect);
+
 #endif
