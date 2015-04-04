@@ -5850,6 +5850,7 @@ meta_theme_create_style_info (GdkScreen   *screen,
   MetaStyleInfo *style_info;
   GtkCssProvider *provider;
   char *theme_name;
+  gboolean compositing_manager;
 
   g_object_get (gtk_settings_get_for_screen (screen),
                 "gtk-theme-name", &theme_name,
@@ -5864,13 +5865,15 @@ meta_theme_create_style_info (GdkScreen   *screen,
   style_info = g_new0 (MetaStyleInfo, 1);
   style_info->refcount = 1;
 
+  compositing_manager = meta_prefs_get_compositing_manager ();
+
   style_info->styles[META_STYLE_ELEMENT_FRAME] =
     create_style_context (META_TYPE_FRAMES,
                           NULL,
                           provider,
                           GTK_STYLE_CLASS_BACKGROUND,
                           "window-frame",
-                          "ssd",
+                          compositing_manager ? "ssd" : "solid-csd",
                           NULL);
   style_info->styles[META_STYLE_ELEMENT_TITLEBAR] =
     create_style_context (GTK_TYPE_HEADER_BAR,
