@@ -625,6 +625,17 @@ strip_button (MetaButtonSpace *func_rects[MAX_BUTTONS_PER_CORNER],
 }
 
 static void
+get_margin (GtkStyleContext *style,
+            GtkBorder       *border)
+{
+  GtkStateFlags state;
+
+  state = gtk_style_context_get_state (style);
+
+  gtk_style_context_get_margin (style, state, border);
+}
+
+static void
 get_padding_and_border (GtkStyleContext *style,
                         GtkBorder       *border)
 {
@@ -677,6 +688,17 @@ meta_frame_layout_sync_with_style (MetaFrameLayout *layout,
   layout->left_width = border.left;
   layout->right_width = border.right;
   layout->bottom_height = border.bottom;
+
+  if (compositing_manager)
+    get_margin (style, &layout->invisible_border);
+  else
+    {
+      get_margin (style, &border);
+
+      layout->left_width += border.left;
+      layout->right_width += border.right;
+      layout->bottom_height += border.bottom;
+    }
 
   if (layout->hide_buttons)
     layout->icon_size = 0;
