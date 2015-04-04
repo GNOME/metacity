@@ -2486,7 +2486,21 @@ meta_frames_draw (GtkWidget *widget,
 
   populate_cache (frames, frame);
 
-  region = cairo_region_create_rectangle (&clip);
+  if (meta_prefs_get_theme ())
+    {
+      MetaFrameGeometry fgeom;
+
+      meta_frames_calc_geometry (frames, frame, &fgeom);
+
+      region = get_visible_region (frames, frame, &fgeom, fgeom.width, fgeom.height);
+
+      gdk_cairo_region (cr, region);
+      cairo_clip(cr);
+    }
+  else
+    {
+      region = cairo_region_create_rectangle (&clip);
+    }
 
   pixels = get_cache (frames, frame);
 
