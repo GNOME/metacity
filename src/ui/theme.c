@@ -657,11 +657,14 @@ meta_frame_layout_sync_with_style (MetaFrameLayout *layout,
 {
   GtkStyleContext *style;
   GtkBorder border;
+  gboolean compositing_manager;
   int border_radius, max_radius;
 
   /* We don't want GTK+ info for metacity theme */
   if (meta_prefs_get_theme ())
     return;
+
+  compositing_manager = meta_prefs_get_compositing_manager ();
 
   meta_style_info_set_flags (style_info, flags);
 
@@ -682,20 +685,24 @@ meta_frame_layout_sync_with_style (MetaFrameLayout *layout,
     return; /* border-only - be done */
 
   style = style_info->styles[META_STYLE_ELEMENT_TITLEBAR];
-  gtk_style_context_get (style, gtk_style_context_get_state (style),
-                         "border-radius", &border_radius,
-                         NULL);
-  /* GTK+ currently does not allow us to look up radii of individual
-   * corners; however we don't clip the client area, so with the
-   * current trend of using small/no visible frame borders, most
-   * themes should work fine with this.
-   */
-  layout->top_left_corner_rounded_radius = border_radius;
-  layout->top_right_corner_rounded_radius = border_radius;
-  max_radius = MIN (layout->bottom_height, layout->left_width);
-  layout->bottom_left_corner_rounded_radius = MAX (border_radius, max_radius);
-  max_radius = MIN (layout->bottom_height, layout->right_width);
-  layout->bottom_right_corner_rounded_radius = MAX (border_radius, max_radius);
+
+  if (compositing_manager)
+    {
+      gtk_style_context_get (style, gtk_style_context_get_state (style),
+                             "border-radius", &border_radius,
+                             NULL);
+      /* GTK+ currently does not allow us to look up radii of individual
+       * corners; however we don't clip the client area, so with the
+       * current trend of using small/no visible frame borders, most
+       * themes should work fine with this.
+       */
+      layout->top_left_corner_rounded_radius = border_radius;
+      layout->top_right_corner_rounded_radius = border_radius;
+      max_radius = MIN (layout->bottom_height, layout->left_width);
+      layout->bottom_left_corner_rounded_radius = MAX (border_radius, max_radius);
+      max_radius = MIN (layout->bottom_height, layout->right_width);
+      layout->bottom_right_corner_rounded_radius = MAX (border_radius, max_radius);
+    }
 
   get_padding_and_border (style, &border);
   scale_border (&border, layout->title_scale);
