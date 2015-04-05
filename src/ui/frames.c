@@ -169,6 +169,9 @@ prefs_changed_callback (MetaPreference pref,
 {
   switch (pref)
     {
+    case META_PREF_COMPOSITING_MANAGER:
+      meta_frames_style_updated (GTK_WIDGET (data));
+      break;
     case META_PREF_TITLEBAR_FONT:
       meta_frames_font_changed (META_FRAMES (data));
       break;
