@@ -678,15 +678,18 @@ meta_ui_theme_get_frame_borders (MetaUI           *ui,
       GdkDisplay *display = gdk_x11_lookup_xdisplay (ui->xdisplay);
       GdkScreen *screen = gdk_display_get_screen (display, XScreenNumberOfScreen (ui->xscreen));
       MetaStyleInfo *style_info = NULL;
+      MetaTheme *current;
 
       style_info = meta_theme_create_style_info (screen, NULL);
 
       context = gtk_widget_get_pango_context (GTK_WIDGET (ui->frames));
       font_desc = meta_prefs_get_titlebar_font ();
 
+      current = meta_theme_get_current ();
+
       if (!font_desc)
         {
-          if (meta_prefs_get_theme ())
+          if (current->is_gtk_theme == FALSE)
             {
               GtkStyleContext *style = NULL;
               GtkWidgetPath *widget_path;
@@ -715,7 +718,7 @@ meta_ui_theme_get_frame_borders (MetaUI           *ui,
 
       text_height = meta_pango_font_desc_get_text_height (font_desc, context);
 
-      meta_theme_get_frame_borders (meta_theme_get_current (),
+      meta_theme_get_frame_borders (current,
                                     style_info,
                                     type, text_height, flags,
                                     borders);

@@ -507,6 +507,7 @@ meta_frames_ensure_layout (MetaFrames  *frames,
   if (frame->text_layout == NULL)
     {
       gpointer key, value;
+      MetaTheme *current;
       PangoFontDescription *font_desc;
       int size;
 
@@ -516,12 +517,13 @@ meta_frames_ensure_layout (MetaFrames  *frames,
       pango_layout_set_auto_dir (frame->text_layout, FALSE);
       pango_layout_set_single_paragraph_mode (frame->text_layout, TRUE);
 
-      if (meta_prefs_get_theme ())
+      current = meta_theme_get_current ();
+
+      if (current->is_gtk_theme == FALSE)
         {
           double scale;
 
-          scale = meta_theme_get_title_scale (meta_theme_get_current (),
-                                              type, flags);
+          scale = meta_theme_get_title_scale (current, type, flags);
 
           font_desc = meta_gtk_widget_get_font_desc (widget, scale,
                                                      meta_prefs_get_titlebar_font ());
@@ -2465,6 +2467,7 @@ meta_frames_draw (GtkWidget *widget,
 {
   MetaUIFrame *frame;
   MetaFrames *frames;
+  MetaTheme *current;
   CachedPixels *pixels;
   cairo_region_t *region;
   cairo_rectangle_int_t clip;
@@ -2486,7 +2489,9 @@ meta_frames_draw (GtkWidget *widget,
 
   populate_cache (frames, frame);
 
-  if (meta_prefs_get_theme ())
+  current = meta_theme_get_current ();
+
+  if (current->is_gtk_theme == FALSE)
     {
       MetaFrameGeometry fgeom;
 

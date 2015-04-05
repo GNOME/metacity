@@ -838,6 +838,8 @@ struct _MetaTheme
    */
   guint format_version;
 
+  gboolean is_gtk_theme;
+
   /** Symbol table of integer constants. */
   GHashTable *integer_constants;
   /** Symbol table of float constants. */

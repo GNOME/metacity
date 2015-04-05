@@ -666,13 +666,16 @@ meta_frame_layout_sync_with_style (MetaFrameLayout *layout,
                                    MetaStyleInfo   *style_info,
                                    MetaFrameFlags   flags)
 {
+  MetaTheme *current;
   GtkStyleContext *style;
   GtkBorder border;
   gboolean compositing_manager;
   int border_radius, max_radius;
 
+  current = meta_theme_get_current ();
+
   /* We don't want GTK+ info for metacity theme */
-  if (meta_prefs_get_theme ())
+  if (current->is_gtk_theme == FALSE)
     return;
 
   compositing_manager = meta_prefs_get_compositing_manager ();
@@ -765,6 +768,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
                                  MetaFrameGeometry      *fgeom,
                                  MetaTheme              *theme)
 {
+  MetaTheme *current;
   int i, n_left, n_right, n_left_spacers, n_right_spacers;
   int x;
   int button_y;
@@ -772,6 +776,8 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
   int width, height;
   int button_width, button_height;
   int min_size_for_rounding;
+
+  current = meta_theme_get_current ();
 
   /* the left/right rects in order; the max # of rects
    * is the number of button functions
@@ -917,7 +923,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
 
       space_used_by_buttons += button_width * n_left;
       space_used_by_buttons += (button_width * 0.75) * n_left_spacers;
-      if (meta_prefs_get_theme ())
+      if (current->is_gtk_theme == FALSE)
         {
           space_used_by_buttons += layout->button_border.left * n_left;
           space_used_by_buttons += layout->button_border.right * n_left;
@@ -927,7 +933,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
 
       space_used_by_buttons += button_width * n_right;
       space_used_by_buttons += (button_width * 0.75) * n_right_spacers;
-      if (meta_prefs_get_theme ())
+      if (current->is_gtk_theme == FALSE)
         {
           space_used_by_buttons += layout->button_border.left * n_right;
           space_used_by_buttons += layout->button_border.right * n_right;
@@ -1030,7 +1036,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
         break;
 
       rect = right_func_rects[i];
-      if (meta_prefs_get_theme ())
+      if (current->is_gtk_theme == FALSE)
         rect->visible.x = x - layout->button_border.right - button_width;
       else
         rect->visible.x = x - button_width;
@@ -1052,7 +1058,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
 
           if (i == n_right - 1)
             {
-              if (meta_prefs_get_theme ())
+              if (current->is_gtk_theme == FALSE)
                 rect->clickable.width += layout->right_titlebar_edge + layout->right_width + layout->button_border.right;
               else
                 rect->clickable.width += layout->right_titlebar_edge + layout->right_width;
@@ -1064,7 +1070,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
 
       *(right_bg_rects[i]) = rect->visible;
 
-      if (meta_prefs_get_theme ())
+      if (current->is_gtk_theme == FALSE)
         x = rect->visible.x - layout->button_border.left;
       else
         {
@@ -1090,7 +1096,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
 
       rect = left_func_rects[i];
 
-      if (meta_prefs_get_theme ())
+      if (current->is_gtk_theme == FALSE)
         rect->visible.x = x + layout->button_border.left;
       else
         rect->visible.x = x;
@@ -1108,7 +1114,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
       else
         g_memmove (&(rect->clickable), &(rect->visible), sizeof(rect->clickable));
 
-      if (meta_prefs_get_theme ())
+      if (current->is_gtk_theme == FALSE)
         x = rect->visible.x + rect->visible.width + layout->button_border.right;
       else
         {
@@ -5404,6 +5410,8 @@ theme_set_current_metacity (const gchar *name,
     }
   else
     {
+      new_theme->is_gtk_theme = FALSE;
+
       if (meta_current_theme)
         meta_theme_free (meta_current_theme);
 
@@ -5414,15 +5422,21 @@ theme_set_current_metacity (const gchar *name,
 }
 
 static void
-theme_set_current_gtk (const gchar *name)
+theme_set_current_gtk (const gchar *name,
+                       gboolean     force_reload)
 {
   int i, j, frame_type;
 
   meta_topic (META_DEBUG_THEMES, "Setting current theme to \"%s\"\n", name);
 
-  if (meta_current_theme)
+  if (!force_reload && meta_current_theme)
     return;
+
+  if (force_reload && meta_current_theme)
+    meta_theme_free (meta_current_theme);
+
   meta_current_theme = meta_theme_new ();
+  meta_current_theme->is_gtk_theme = TRUE;
 
   for (frame_type = 0; frame_type < META_FRAME_TYPE_LAST; frame_type++)
     {
@@ -5491,13 +5505,13 @@ void
 meta_theme_set_current (const char *name,
                         gboolean    force_reload)
 {
-  if (meta_prefs_get_theme ())
+  if (name != NULL && strcmp (name, "") != 0)
     {
       theme_set_current_metacity (name, force_reload);
     }
   else
     {
-      theme_set_current_gtk (name);
+      theme_set_current_gtk (name, force_reload);
     }
 }
 
@@ -5507,6 +5521,8 @@ meta_theme_new (void)
   MetaTheme *theme;
 
   theme = g_new0 (MetaTheme, 1);
+
+  theme->is_gtk_theme = FALSE;
 
   theme->images_by_filename =
     g_hash_table_new_full (g_str_hash,
@@ -6084,7 +6100,7 @@ meta_theme_draw_frame (MetaTheme              *theme,
                                    &fgeom,
                                    theme);
 
-  if (meta_prefs_get_theme ())
+  if (theme->is_gtk_theme == FALSE)
     {
       meta_frame_style_draw_with_style (style,
                                         style_info,
