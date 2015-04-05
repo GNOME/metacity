@@ -92,6 +92,8 @@ struct _MetaFrameLayout
   int left_width;
   /** Size of right side */
   int right_width;
+  /** Size of top side */
+  int top_height;
   /** Size of bottom side */
   int bottom_height;
 
@@ -181,6 +183,7 @@ struct _MetaButtonSpace
 struct _MetaFrameGeometry
 {
   MetaFrameBorders borders;
+  int              top_height;
 
   int width;
   int height;

@@ -219,6 +219,7 @@ meta_frame_layout_new  (void)
   /* Fill with -1 values to detect invalid themes */
   layout->left_width = -1;
   layout->right_width = -1;
+  layout->top_height = 0; /* only used by GTK+ theme */
   layout->bottom_height = -1;
 
   layout->invisible_border.left = 10;
@@ -434,7 +435,7 @@ meta_frame_layout_get_borders (const MetaFrameLayout *layout,
     layout->title_vertical_pad +
     layout->title_border.top + layout->title_border.bottom;
 
-  borders->visible.top = MAX (buttons_height, title_height);
+  borders->visible.top = layout->top_height + MAX (buttons_height, title_height);
   borders->visible.left = layout->left_width;
   borders->visible.right = layout->right_width;
   borders->visible.bottom = layout->bottom_height;
@@ -690,6 +691,7 @@ meta_frame_layout_sync_with_style (MetaFrameLayout *layout,
 
   layout->left_width = border.left;
   layout->right_width = border.right;
+  layout->top_height = border.top;
   layout->bottom_height = border.bottom;
 
   if (compositing_manager)
@@ -700,6 +702,7 @@ meta_frame_layout_sync_with_style (MetaFrameLayout *layout,
 
       layout->left_width += border.left;
       layout->right_width += border.right;
+      layout->top_height += border.top;
       layout->bottom_height += border.bottom;
     }
 
@@ -731,8 +734,8 @@ meta_frame_layout_sync_with_style (MetaFrameLayout *layout,
 
   get_padding_and_border (style, &border);
   scale_border (&border, layout->title_scale);
-  layout->left_titlebar_edge = border.left;
-  layout->right_titlebar_edge = border.right;
+  layout->left_titlebar_edge = layout->left_width + border.left;
+  layout->right_titlebar_edge = layout->right_width + border.right;
   layout->title_vertical_pad = border.top;
 
   layout->button_border.top = border.top;
@@ -799,6 +802,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
                                  &borders);
 
   fgeom->borders = borders;
+  fgeom->top_height = layout->top_height;
 
   width = client_width + borders.total.left + borders.total.right;
 
@@ -1021,8 +1025,8 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
   fgeom->n_right_buttons = n_right;
 
   /* center buttons vertically */
-  button_y = (borders.visible.top -
-              (button_height + layout->button_border.top + layout->button_border.bottom)) / 2 + layout->button_border.top + borders.invisible.top;
+  button_y = (borders.visible.top - fgeom->top_height -
+              (button_height + layout->button_border.top + layout->button_border.bottom)) / 2 + layout->button_border.top + fgeom->top_height + borders.invisible.top;
 
   /* right edge of farthest-right button */
   x = width - layout->right_titlebar_edge - borders.invisible.right;
@@ -5031,10 +5035,10 @@ meta_frame_style_draw_with_style_gtk (MetaFrameStyle          *frame_style,
                     visible_rect.x, visible_rect.y,
                     visible_rect.width, visible_rect.height);
 
-  titlebar_rect.x = visible_rect.x;
-  titlebar_rect.y = visible_rect.y;
-  titlebar_rect.width = visible_rect.width;
-  titlebar_rect.height = borders->visible.top;
+  titlebar_rect.x = visible_rect.x + borders->visible.left;
+  titlebar_rect.y = visible_rect.y + fgeom->top_height;
+  titlebar_rect.width = visible_rect.width - borders->visible.left - borders->visible.right;
+  titlebar_rect.height = borders->visible.top - fgeom->top_height;
 
   style = style_info->styles[META_STYLE_ELEMENT_TITLEBAR];
   gtk_render_background (style, cr,
