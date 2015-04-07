@@ -112,7 +112,7 @@ libmetacity_private_la_SOURCES=			\
 	ui/ui.c					\
 	include/all-keybindings.h
 
-libmetacity_private_la_LDFLAGS = -no-undefined -version-info 2:0:0
+libmetacity_private_la_LDFLAGS = -no-undefined -version-info 3:0:0
 libmetacity_private_la_LIBADD  = @METACITY_LIBS@
 
 libmetacityincludedir = $(includedir)/metacity/metacity-private
