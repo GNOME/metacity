@@ -1,3 +1,25 @@
+Version 3.16.0
+==============
+- Added Adwaita and HightContrast metacity themes as they were removed from
+  gnome-themes-standart. (Alberts Muktupāvels)
+- Metacity now use theme setting key from org.gnome.metacity schema not
+  org.gnome.desktop.wm.preferences. (Alberts Muktupāvels)
+- Added support for GTK+ theme. Set theme to empty sting to enable GTK+
+  theme. Almost everything here was adapted from mutter. (Mutter developers,
+  Alberts Muktupāvels)
+- Added support for invisible borders. Again most work are based on mutter.
+  (Mutter developers, Alberts Muktupāvels)
+- Added invisible_border to metacity theme. Default is 10px extra space
+  for resize cursor area. (Alberts Muktupāvels)
+- Added back window thumbnails in alt-tab window as optional option. Can be
+  enabled setting alt-tab-thumbnails to true under org.gnome.metacity.
+  (Alberts Muktupāvels)
+- Better support for _GTK_FRAME_EXTENTS. (Alberts Muktupāvels)
+- Updated translations:
+  Balázs Úr (hu), Cheng-Chia Tseng (zh_TW), Daniel Mustieles (es),
+  Marek Černocký (cs), Muhammet Kara (tr), Piotr Drąg (pl),
+  Rafael Ferreira (pt_BR), Samir Ribic  (bs), Yosef Or Boczko (he).
+
 Version 3.15.2
 ==============
 - Fix deprecated warnings. (Alberts Muktupāvels)
