@@ -699,6 +699,15 @@ meta_change_keygrab (MetaDisplay *display,
    * X provides no better way to do this.
    */
 
+  if (modmask == 0)
+    {
+      meta_topic (META_DEBUG_KEYBINDINGS,
+                  "Will not %s keybinding %s without modmask\n",
+                  grab ? "grab" : "ungrab",
+                  keysym_to_string (keysym));
+      return;
+    }
+
   meta_topic (META_DEBUG_KEYBINDINGS,
               "%s keybinding %s keycode %d mask 0x%x on 0x%lx\n",
               grab ? "Grabbing" : "Ungrabbing",
