@@ -417,6 +417,7 @@ meta_frame_layout_get_borders (const MetaFrameLayout *layout,
                                MetaFrameBorders      *borders)
 {
   int buttons_height, title_height;
+  MetaTheme *current;
 
   meta_frame_borders_clear (borders);
 
@@ -440,18 +441,30 @@ meta_frame_layout_get_borders (const MetaFrameLayout *layout,
   borders->visible.right = layout->right_width;
   borders->visible.bottom = layout->bottom_height;
 
-  if (flags & META_FRAME_ALLOWS_HORIZONTAL_RESIZE)
+  current = meta_theme_get_current ();
+
+  if (current->is_gtk_theme == TRUE)
     {
       borders->invisible.left = layout->invisible_border.left;
       borders->invisible.right = layout->invisible_border.right;
-    }
-
-  if (flags & META_FRAME_ALLOWS_VERTICAL_RESIZE)
-    {
       borders->invisible.bottom = layout->invisible_border.bottom;
+      borders->invisible.top = layout->invisible_border.top;
+    }
+  else
+    {
+      if (flags & META_FRAME_ALLOWS_HORIZONTAL_RESIZE)
+        {
+          borders->invisible.left = layout->invisible_border.left;
+          borders->invisible.right = layout->invisible_border.right;
+        }
 
-      if (type != META_FRAME_TYPE_ATTACHED)
-        borders->invisible.top = layout->invisible_border.top;
+      if (flags & META_FRAME_ALLOWS_VERTICAL_RESIZE)
+        {
+          borders->invisible.bottom = layout->invisible_border.bottom;
+
+          if (type != META_FRAME_TYPE_ATTACHED)
+            borders->invisible.top = layout->invisible_border.top;
+        }
     }
 
   borders->total.left = borders->invisible.left + borders->visible.left;
