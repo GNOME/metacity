@@ -1,3 +1,10 @@
+Version 3.16.1
+==============
+- Don't grab keybindings wihtout modifiers. (Alberts Muktupāvels)
+- Fix unfullscreening. (Owen W. Taylor)
+- Fix missing border in GTK+ theme for windows that are not resizable. (Alberts
+  Muktupāvels)
+
 Version 3.16.0
 ==============
 - Added Adwaita and HightContrast metacity themes as they were removed from
