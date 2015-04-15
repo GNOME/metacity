@@ -46,6 +46,7 @@
 #endif
 
 #define SCHEMA_COMMON_KEYBINDINGS "org.gnome.desktop.wm.keybindings"
+#define SCHEMA_METACITY_KEYBINDINGS "org.gnome.metacity.keybindings"
 
 static gboolean all_bindings_disabled = FALSE;
 
@@ -2882,6 +2883,48 @@ handle_toggle_above       (MetaDisplay    *display,
 }
 
 static void
+handle_toggle_tiled (MetaDisplay    *display,
+                     MetaScreen     *screen,
+                     MetaWindow     *window,
+                     XEvent         *event,
+                     MetaKeyBinding *binding,
+                     gpointer        dummy)
+{
+  const MetaXineramaScreenInfo *monitor;
+  MetaTileMode mode = binding->handler->data;
+
+  monitor = meta_screen_get_current_xinerama (window->screen);
+
+  if ((META_WINDOW_TILED_LEFT (window) && mode == META_TILE_LEFT) ||
+      (META_WINDOW_TILED_RIGHT (window) && mode == META_TILE_RIGHT))
+    {
+      window->tile_monitor_number = window->saved_maximize ? monitor->number
+                                                           : -1;
+      window->tile_mode = window->saved_maximize ? META_TILE_MAXIMIZED
+                                                 : META_TILE_NONE;
+
+      if (window->saved_maximize)
+        meta_window_maximize (window, META_MAXIMIZE_VERTICAL |
+                                      META_MAXIMIZE_HORIZONTAL);
+      else
+        meta_window_unmaximize (window, META_MAXIMIZE_VERTICAL |
+                                        META_MAXIMIZE_HORIZONTAL);
+    }
+  else if (meta_window_can_tile_side_by_side (window))
+    {
+      window->tile_monitor_number = monitor->number;
+      window->tile_mode = mode;
+      /* Maximization constraints beat tiling constraints, so if the window
+       * is maximized, tiling won't have any effect unless we unmaximize it
+       * horizontally first; rather than calling meta_window_unmaximize(),
+       * we just set the flag and rely on meta_window_tile() syncing it to
+       * save an additional roundtrip. */
+      window->maximized_horizontally = FALSE;
+      meta_window_tile (window);
+    }
+}
+
+static void
 handle_toggle_maximized    (MetaDisplay    *display,
                            MetaScreen     *screen,
                            MetaWindow     *window,
@@ -3485,6 +3528,20 @@ init_builtin_key_bindings (MetaDisplay *display)
                           META_KEY_BINDING_PER_WINDOW,
                           META_KEYBINDING_ACTION_TOGGLE_MAXIMIZED,
                           (MetaKeyHandlerFunc) handle_toggle_maximized, 0);
+
+  add_builtin_keybinding (display,
+                          "toggle-tiled-left",
+                          SCHEMA_METACITY_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_TOGGLE_TILED_LEFT,
+                          handle_toggle_tiled, META_TILE_LEFT);
+
+  add_builtin_keybinding (display,
+                          "toggle-tiled-right",
+                          SCHEMA_METACITY_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_TOGGLE_TILED_RIGHT,
+                          handle_toggle_tiled, META_TILE_RIGHT);
 
   add_builtin_keybinding (display,
                           "toggle-above",

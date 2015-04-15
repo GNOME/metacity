@@ -38,5 +38,13 @@
 
 	<KeyListEntry name="maximize-horizontally" _description="Maximize window horizontally"/>
 
+	<KeyListEntry name="toggle-tiled-left"
+	              schema="org.gnome.metacity.keybindings"
+	              _description="View split on left"/>
+
+	<KeyListEntry name="toggle-tiled-right"
+	              schema="org.gnome.metacity.keybindings"
+	              _description="View split on right"/>
+
 </KeyListEntries>
 
