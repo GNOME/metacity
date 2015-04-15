@@ -25,6 +25,7 @@
 
 /* This header is a "common" one between the UI and core side */
 #include "common.h"
+#include "types.h"
 #include <pango/pango-font.h>
 #include <gdesktop-enums.h>
 
@@ -181,7 +182,58 @@ typedef enum _MetaKeyBindingAction
   META_KEYBINDING_ACTION_SHOW_DESKTOP,
   META_KEYBINDING_ACTION_PANEL_MAIN_MENU,
   META_KEYBINDING_ACTION_PANEL_RUN_DIALOG,
+  META_KEYBINDING_ACTION_SET_SPEW_MARK,
+  META_KEYBINDING_ACTION_ACTIVATE_WINDOW_MENU,
+  META_KEYBINDING_ACTION_TOGGLE_FULLSCREEN,
+  META_KEYBINDING_ACTION_TOGGLE_MAXIMIZED,
+  META_KEYBINDING_ACTION_TOGGLE_ABOVE,
+  META_KEYBINDING_ACTION_MAXIMIZE,
+  META_KEYBINDING_ACTION_UNMAXIMIZE,
+  META_KEYBINDING_ACTION_TOGGLE_SHADED,
+  META_KEYBINDING_ACTION_MINIMIZE,
+  META_KEYBINDING_ACTION_CLOSE,
+  META_KEYBINDING_ACTION_BEGIN_MOVE,
+  META_KEYBINDING_ACTION_BEGIN_RESIZE,
+  META_KEYBINDING_ACTION_TOGGLE_ON_ALL_WORKSPACES,
+  META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_1,
+  META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_2,
+  META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_3,
+  META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_4,
+  META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_5,
+  META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_6,
+  META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_7,
+  META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_8,
+  META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_9,
+  META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_10,
+  META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_11,
+  META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_12,
+  META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_LEFT,
+  META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_RIGHT,
+  META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_UP,
+  META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_DOWN,
+  META_KEYBINDING_ACTION_RAISE_OR_LOWER,
+  META_KEYBINDING_ACTION_RAISE,
+  META_KEYBINDING_ACTION_LOWER,
+  META_KEYBINDING_ACTION_MAXIMIZE_VERTICALLY,
+  META_KEYBINDING_ACTION_MAXIMIZE_HORIZONTALLY,
+  META_KEYBINDING_ACTION_MOVE_TO_CORNER_NW,
+  META_KEYBINDING_ACTION_MOVE_TO_CORNER_NE,
+  META_KEYBINDING_ACTION_MOVE_TO_CORNER_SW,
+  META_KEYBINDING_ACTION_MOVE_TO_CORNER_SE,
+  META_KEYBINDING_ACTION_MOVE_TO_SIDE_N,
+  META_KEYBINDING_ACTION_MOVE_TO_SIDE_S,
+  META_KEYBINDING_ACTION_MOVE_TO_SIDE_E,
+  META_KEYBINDING_ACTION_MOVE_TO_SIDE_W,
+  META_KEYBINDING_ACTION_MOVE_TO_CENTER,
 } MetaKeyBindingAction;
+
+typedef enum
+{
+  META_KEY_BINDING_NONE,
+  META_KEY_BINDING_PER_WINDOW  = 1 << 0,
+  META_KEY_BINDING_REVERSES    = 1 << 1,
+  META_KEY_BINDING_IS_REVERSED = 1 << 2
+} MetaKeyBindingFlags;
 
 typedef struct
 {
@@ -190,9 +242,26 @@ typedef struct
   MetaVirtualModifier modifiers;
 } MetaKeyCombo;
 
+/**
+ * MetaKeyHandlerFunc: (skip)
+ *
+ */
+typedef void (* MetaKeyHandlerFunc) (MetaDisplay    *display,
+                                     MetaScreen     *screen,
+                                     MetaWindow     *window,
+                                     XEvent         *event,
+                                     MetaKeyBinding *binding,
+                                     gpointer        user_data);
+
+typedef struct _MetaKeyHandler MetaKeyHandler;
+
 typedef struct
 {
-  const char   *name;
+  char *name;
+  char *schema;
+
+  MetaKeyBindingAction action;
+
   /**
    * A list of MetaKeyCombos. Each of them is bound to
    * this keypref. If one has keysym==modifiers==0, it is
@@ -209,8 +278,7 @@ typedef struct
   gboolean      per_window:1;
 } MetaKeyPref;
 
-void meta_prefs_get_key_bindings (const MetaKeyPref **bindings,
-                                  int                *n_bindings);
+GList *meta_prefs_get_keybindings (void);
 
 MetaKeyBindingAction meta_prefs_get_keybinding_action (const char *name);
 

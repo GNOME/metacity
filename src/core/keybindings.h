@@ -29,6 +29,28 @@
 
 #include "display-private.h"
 #include "window.h"
+#include "prefs.h"
+
+struct _MetaKeyHandler
+{
+  char               *name;
+  MetaKeyHandlerFunc  func;
+  MetaKeyHandlerFunc  default_func;
+  gint                data;
+  gint                flags;
+  gpointer            user_data;
+  GDestroyNotify      user_data_free_func;
+};
+
+struct _MetaKeyBinding
+{
+  const char          *name;
+  KeySym               keysym;
+  KeyCode              keycode;
+  unsigned int         mask;
+  MetaVirtualModifier  modifiers;
+  MetaKeyHandler      *handler;
+};
 
 void     meta_display_init_keys             (MetaDisplay *display);
 void     meta_display_shutdown_keys         (MetaDisplay *display);
@@ -52,8 +74,9 @@ void     meta_set_keybindings_disabled      (MetaDisplay *display,
 void     meta_display_process_mapping_event (MetaDisplay *display,
                                              XEvent      *event);
 
+gboolean meta_prefs_add_keybinding          (const char           *name,
+                                             const char           *schema,
+                                             MetaKeyBindingAction  action,
+                                             MetaKeyBindingFlags   flags);
+
 #endif
-
-
-
-

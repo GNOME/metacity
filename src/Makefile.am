@@ -109,8 +109,7 @@ libmetacity_private_la_SOURCES=			\
 	ui/theme-parser.h			\
 	ui/theme.c				\
 	ui/theme.h				\
-	ui/ui.c					\
-	include/all-keybindings.h
+	ui/ui.c
 
 libmetacity_private_la_LDFLAGS = -no-undefined -version-info 3:0:0
 libmetacity_private_la_LIBADD  = @METACITY_LIBS@

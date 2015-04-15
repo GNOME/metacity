@@ -45,24 +45,17 @@
 #include <X11/XKBlib.h>
 #endif
 
+#define SCHEMA_COMMON_KEYBINDINGS "org.gnome.desktop.wm.keybindings"
+
 static gboolean all_bindings_disabled = FALSE;
 
-typedef void (* MetaKeyHandlerFunc) (MetaDisplay    *display,
-                                     MetaScreen     *screen,
-                                     MetaWindow     *window,
-                                     XEvent         *event,
-                                     MetaKeyBinding *binding);
-
-/* Prototypes for handlers */
-#define keybind(name, handler, param, flags) \
-static void \
-handler (MetaDisplay    *display,\
-         MetaScreen     *screen,\
-         MetaWindow     *window,\
-         XEvent         *event,\
-         MetaKeyBinding *binding);
-#include "all-keybindings.h"
-#undef keybind
+static gboolean add_builtin_keybinding (MetaDisplay          *display,
+                                        const char           *name,
+                                        const char           *schema,
+                                        MetaKeyBindingFlags   flags,
+                                        MetaKeyBindingAction  action,
+                                        MetaKeyHandlerFunc    handler,
+                                        int                   handler_arg);
 
 /* These can't be bound to anything, but they are used to handle
  * various other events.  TODO: Possibly we should include them as event
@@ -105,30 +98,18 @@ static gboolean process_workspace_switch_grab (MetaDisplay *display,
 
 static void regrab_key_bindings         (MetaDisplay *display);
 
-typedef struct
-{
-  const char *name;
-  MetaKeyHandlerFunc func;
-  gint data, flags;
-} MetaKeyHandler;
+static GHashTable *key_handlers;
 
-struct _MetaKeyBinding
-{
-  const char *name;
-  KeySym keysym;
-  KeyCode keycode;
-  unsigned int mask;
-  MetaVirtualModifier modifiers;
-  const MetaKeyHandler *handler;
-};
+#define HANDLER(name) g_hash_table_lookup (key_handlers, (name))
 
-#define keybind(name, handler, param, flags) \
-   { #name, handler, param, flags },
-static const MetaKeyHandler key_handlers[] = {
-#include "all-keybindings.h"
-   { NULL, NULL, 0, 0 }
-};
-#undef keybind
+static void
+key_handler_free (MetaKeyHandler *handler)
+{
+  g_free (handler->name);
+  if (handler->user_data_free_func && handler->user_data)
+    handler->user_data_free_func (handler->user_data);
+  g_free (handler);
+}
 
 static void
 reload_keymap (MetaDisplay *display)
@@ -343,19 +324,18 @@ reload_modifiers (MetaDisplay *display)
     }
 }
 
-
 static int
-count_bindings (const MetaKeyPref *prefs,
-                int                n_prefs)
+count_bindings (GList *prefs)
 {
-  int i;
+  GList *p;
   int count;
 
   count = 0;
-  i = 0;
-  while (i < n_prefs)
+  p = prefs;
+  while (p)
     {
-      GSList *tmp = prefs[i].bindings;
+      MetaKeyPref *pref = (MetaKeyPref*) p->data;
+      GSList *tmp = pref->bindings;
 
       while (tmp)
         {
@@ -365,58 +345,39 @@ count_bindings (const MetaKeyPref *prefs,
             {
               count += 1;
 
-              if (prefs[i].add_shift &&
-                  (combo->modifiers & META_VIRTUAL_SHIFT_MASK) == 0)
+              if (pref->add_shift && (combo->modifiers & META_VIRTUAL_SHIFT_MASK) == 0)
                 count += 1;
             }
 
           tmp = tmp->next;
         }
 
-      ++i;
+      p = p->next;
     }
 
   return count;
 }
 
-/* FIXME: replace this with a temporary hash */
-static const MetaKeyHandler*
-find_handler (const MetaKeyHandler *handlers,
-              const char           *name)
-{
-  const MetaKeyHandler *iter;
-
-  iter = handlers;
-  while (iter->name)
-    {
-      if (strcmp (iter->name, name) == 0)
-        return iter;
-
-      ++iter;
-    }
-
-  return NULL;
-}
-
 static void
-rebuild_binding_table (MetaDisplay        *display,
-                       MetaKeyBinding    **bindings_p,
-                       int                *n_bindings_p,
-                       const MetaKeyPref  *prefs,
-                       int                 n_prefs)
+rebuild_binding_table (MetaDisplay     *display,
+                       MetaKeyBinding **bindings_p,
+                       int             *n_bindings_p,
+                       GList           *prefs)
 {
+  GList *p;
   int n_bindings;
-  int src, dest;
+  int i;
 
-  n_bindings = count_bindings (prefs, n_prefs);
+  n_bindings = count_bindings (prefs);
   g_free (*bindings_p);
   *bindings_p = g_new0 (MetaKeyBinding, n_bindings);
 
-  src = 0;
-  dest = 0;
-  while (src < n_prefs)
+  i = 0;
+  p = prefs;
+  while (p)
     {
-      GSList *tmp = prefs[src].bindings;
+      MetaKeyPref *pref = (MetaKeyPref*) p->data;
+      GSList *tmp = pref->bindings;
 
       while (tmp)
         {
@@ -424,45 +385,43 @@ rebuild_binding_table (MetaDisplay        *display,
 
           if (combo && (combo->keysym != None || combo->keycode != 0))
             {
-              const MetaKeyHandler *handler = find_handler (key_handlers, prefs[src].name);
+              MetaKeyHandler *handler = HANDLER (pref->name);
 
-              (*bindings_p)[dest].name = prefs[src].name;
-              (*bindings_p)[dest].handler = handler;
-              (*bindings_p)[dest].keysym = combo->keysym;
-              (*bindings_p)[dest].keycode = combo->keycode;
-              (*bindings_p)[dest].modifiers = combo->modifiers;
-              (*bindings_p)[dest].mask = 0;
+              (*bindings_p)[i].name = pref->name;
+              (*bindings_p)[i].handler = handler;
+              (*bindings_p)[i].keysym = combo->keysym;
+              (*bindings_p)[i].keycode = combo->keycode;
+              (*bindings_p)[i].modifiers = combo->modifiers;
+              (*bindings_p)[i].mask = 0;
 
-              ++dest;
+              ++i;
 
-              if (prefs[src].add_shift &&
-                  (combo->modifiers & META_VIRTUAL_SHIFT_MASK) == 0)
+              if (pref->add_shift && (combo->modifiers & META_VIRTUAL_SHIFT_MASK) == 0)
                 {
                   meta_topic (META_DEBUG_KEYBINDINGS,
                               "Binding %s also needs Shift grabbed\n",
-                               prefs[src].name);
+                               pref->name);
 
-                  (*bindings_p)[dest].name = prefs[src].name;
-                  (*bindings_p)[dest].handler = handler;
-                  (*bindings_p)[dest].keysym = combo->keysym;
-                  (*bindings_p)[dest].keycode = combo->keycode;
-                  (*bindings_p)[dest].modifiers = combo->modifiers |
-                    META_VIRTUAL_SHIFT_MASK;
-                  (*bindings_p)[dest].mask = 0;
+                  (*bindings_p)[i].name = pref->name;
+                  (*bindings_p)[i].handler = handler;
+                  (*bindings_p)[i].keysym = combo->keysym;
+                  (*bindings_p)[i].keycode = combo->keycode;
+                  (*bindings_p)[i].modifiers = combo->modifiers | META_VIRTUAL_SHIFT_MASK;
+                  (*bindings_p)[i].mask = 0;
 
-                  ++dest;
+                  ++i;
                 }
             }
 
           tmp = tmp->next;
         }
 
-      ++src;
+      p = p->next;
     }
 
-  g_assert (dest == n_bindings);
+  g_assert (i == n_bindings);
 
-  *n_bindings_p = dest;
+  *n_bindings_p = i;
 
   meta_topic (META_DEBUG_KEYBINDINGS,
               " %d bindings in table\n",
@@ -472,17 +431,17 @@ rebuild_binding_table (MetaDisplay        *display,
 static void
 rebuild_key_binding_table (MetaDisplay *display)
 {
-  const MetaKeyPref *prefs;
-  int n_prefs;
+  GList *prefs;
 
   meta_topic (META_DEBUG_KEYBINDINGS,
               "Rebuilding key binding table from preferences\n");
 
-  meta_prefs_get_key_bindings (&prefs, &n_prefs);
+  prefs = meta_prefs_get_keybindings ();
   rebuild_binding_table (display,
                          &display->key_bindings,
                          &display->n_key_bindings,
-                         prefs, n_prefs);
+                         prefs);
+  g_list_free (prefs);
 }
 
 static void
@@ -518,6 +477,32 @@ regrab_key_bindings (MetaDisplay *display)
   meta_error_trap_pop (display, FALSE);
 
   g_slist_free (windows);
+}
+
+static gboolean
+add_builtin_keybinding (MetaDisplay          *display,
+                        const char           *name,
+                        const char           *schema,
+                        MetaKeyBindingFlags   flags,
+                        MetaKeyBindingAction  action,
+                        MetaKeyHandlerFunc    func,
+                        int                   data)
+{
+  MetaKeyHandler *handler;
+
+  if (!meta_prefs_add_keybinding (name, schema, action, flags))
+    return FALSE;
+
+  handler = g_new0 (MetaKeyHandler, 1);
+  handler->name = g_strdup (name);
+  handler->func = func;
+  handler->default_func = func;
+  handler->data = data;
+  handler->flags = flags;
+
+  g_hash_table_insert (key_handlers, g_strdup (name), handler);
+
+  return TRUE;
 }
 
 static MetaKeyBindingAction
@@ -617,55 +602,6 @@ bindings_changed_callback (MetaPreference pref,
     default:
       break;
     }
-}
-
-
-void
-meta_display_init_keys (MetaDisplay *display)
-{
-  /* Keybindings */
-  display->keymap = NULL;
-  display->keysyms_per_keycode = 0;
-  display->modmap = NULL;
-  display->min_keycode = 0;
-  display->max_keycode = 0;
-  display->ignored_modifier_mask = 0;
-  display->num_lock_mask = 0;
-  display->scroll_lock_mask = 0;
-  display->hyper_mask = 0;
-  display->super_mask = 0;
-  display->meta_mask = 0;
-  display->key_bindings = NULL;
-  display->n_key_bindings = 0;
-
-  XDisplayKeycodes (display->xdisplay,
-                    &display->min_keycode,
-                    &display->max_keycode);
-
-  meta_topic (META_DEBUG_KEYBINDINGS,
-              "Display has keycode range %d to %d\n",
-              display->min_keycode,
-              display->max_keycode);
-
-  reload_keymap (display);
-  reload_modmap (display);
-
-  rebuild_key_binding_table (display);
-
-  reload_keycodes (display);
-  reload_modifiers (display);
-
-  /* Keys are actually grabbed in meta_screen_grab_keys() */
-
-  meta_prefs_add_listener (bindings_changed_callback, display);
-
-#ifdef HAVE_XKB
-  /* meta_display_init_keys() should have already called XkbQueryExtension() */
-  if (display->xkb_base_event_type != -1)
-    XkbSelectEvents (display->xdisplay, XkbUseCoreKbd,
-                     XkbNewKeyboardNotifyMask | XkbMapNotifyMask,
-                     XkbNewKeyboardNotifyMask | XkbMapNotifyMask);
-#endif
 }
 
 void
@@ -792,7 +728,7 @@ grab_keys (MetaKeyBinding *bindings,
   while (i < n_bindings)
     {
       if (!!binding_per_window ==
-          !!(bindings[i].handler->flags & BINDING_PER_WINDOW) &&
+          !!(bindings[i].handler->flags & META_KEY_BINDING_PER_WINDOW) &&
           bindings[i].keycode != 0)
         {
           meta_grab_key (display, xwindow,
@@ -1264,7 +1200,7 @@ process_event (MetaKeyBinding       *bindings,
     {
       const MetaKeyHandler *handler = bindings[i].handler;
 
-      if ((!on_window && handler->flags & BINDING_PER_WINDOW) ||
+      if ((!on_window && handler->flags & META_KEY_BINDING_PER_WINDOW) ||
           event->type != KeyPress ||
           bindings[i].keycode != event->xkey.keycode ||
           ((event->xkey.state & 0xff & ~(display->ignored_modifier_mask)) !=
@@ -1274,7 +1210,7 @@ process_event (MetaKeyBinding       *bindings,
       /*
        * window must be non-NULL for on_window to be true,
        * and so also window must be non-NULL if we get here and
-       * this is a BINDING_PER_WINDOW binding.
+       * this is a META_KEY_BINDING_PER_WINDOW binding.
        */
 
       meta_topic (META_DEBUG_KEYBINDINGS,
@@ -1296,9 +1232,10 @@ process_event (MetaKeyBinding       *bindings,
       display->allow_terminal_deactivation = TRUE;
 
       (* handler->func) (display, screen,
-                         bindings[i].handler->flags & BINDING_PER_WINDOW? window: NULL,
+                         bindings[i].handler->flags & META_KEY_BINDING_PER_WINDOW ? window: NULL,
                          event,
-                         &bindings[i]);
+                         &bindings[i],
+                         NULL);
       return TRUE;
     }
 
@@ -2898,7 +2835,7 @@ handle_switch (MetaDisplay    *display,
                     XEvent         *event,
                     MetaKeyBinding *binding)
 {
-  gint backwards = binding->handler->flags & BINDING_IS_REVERSED;
+  gint backwards = (binding->handler->flags & META_KEY_BINDING_IS_REVERSED) != 0;
 
   do_choose_window (display, screen, event_window, event, binding,
                     backwards, TRUE);
@@ -2911,7 +2848,7 @@ handle_cycle (MetaDisplay    *display,
                     XEvent         *event,
                     MetaKeyBinding *binding)
 {
-  gint backwards = binding->handler->flags & BINDING_IS_REVERSED;
+  gint backwards = (binding->handler->flags & META_KEY_BINDING_IS_REVERSED) != 0;
 
   do_choose_window (display, screen, event_window, event, binding,
                     backwards, FALSE);
@@ -3271,4 +3208,606 @@ meta_set_keybindings_disabled (MetaDisplay *display,
   regrab_key_bindings (display);
   meta_topic (META_DEBUG_KEYBINDINGS,
               "Keybindings %s\n", all_bindings_disabled ? "disabled" : "enabled");
+}
+
+static void
+init_builtin_key_bindings (MetaDisplay *display)
+{
+#define REVERSES_AND_REVERSED (META_KEY_BINDING_REVERSES | \
+                               META_KEY_BINDING_IS_REVERSED)
+
+  add_builtin_keybinding (display,
+                          "switch-to-workspace-1",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_NONE,
+                          META_KEYBINDING_ACTION_WORKSPACE_1,
+                          (MetaKeyHandlerFunc) handle_switch_to_workspace, 0);
+  add_builtin_keybinding (display,
+                          "switch-to-workspace-2",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_NONE,
+                          META_KEYBINDING_ACTION_WORKSPACE_2,
+                          (MetaKeyHandlerFunc) handle_switch_to_workspace, 1);
+  add_builtin_keybinding (display,
+                          "switch-to-workspace-3",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_NONE,
+                          META_KEYBINDING_ACTION_WORKSPACE_3,
+                          (MetaKeyHandlerFunc) handle_switch_to_workspace, 2);
+  add_builtin_keybinding (display,
+                          "switch-to-workspace-4",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_NONE,
+                          META_KEYBINDING_ACTION_WORKSPACE_4,
+                          (MetaKeyHandlerFunc) handle_switch_to_workspace, 3);
+  add_builtin_keybinding (display,
+                          "switch-to-workspace-5",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_NONE,
+                          META_KEYBINDING_ACTION_WORKSPACE_5,
+                          (MetaKeyHandlerFunc) handle_switch_to_workspace, 4);
+  add_builtin_keybinding (display,
+                          "switch-to-workspace-6",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_NONE,
+                          META_KEYBINDING_ACTION_WORKSPACE_6,
+                          (MetaKeyHandlerFunc) handle_switch_to_workspace, 5);
+  add_builtin_keybinding (display,
+                          "switch-to-workspace-7",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_NONE,
+                          META_KEYBINDING_ACTION_WORKSPACE_7,
+                          (MetaKeyHandlerFunc) handle_switch_to_workspace, 6);
+  add_builtin_keybinding (display,
+                          "switch-to-workspace-8",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_NONE,
+                          META_KEYBINDING_ACTION_WORKSPACE_8,
+                          (MetaKeyHandlerFunc) handle_switch_to_workspace, 7);
+  add_builtin_keybinding (display,
+                          "switch-to-workspace-9",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_NONE,
+                          META_KEYBINDING_ACTION_WORKSPACE_9,
+                          (MetaKeyHandlerFunc) handle_switch_to_workspace, 8);
+  add_builtin_keybinding (display,
+                          "switch-to-workspace-10",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_NONE,
+                          META_KEYBINDING_ACTION_WORKSPACE_10,
+                          (MetaKeyHandlerFunc) handle_switch_to_workspace, 9);
+  add_builtin_keybinding (display,
+                          "switch-to-workspace-11",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_NONE,
+                          META_KEYBINDING_ACTION_WORKSPACE_11,
+                          (MetaKeyHandlerFunc) handle_switch_to_workspace, 10);
+  add_builtin_keybinding (display,
+                          "switch-to-workspace-12",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_NONE,
+                          META_KEYBINDING_ACTION_WORKSPACE_12,
+                          (MetaKeyHandlerFunc) handle_switch_to_workspace, 11);
+
+  add_builtin_keybinding (display,
+                          "switch-to-workspace-left",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_NONE,
+                          META_KEYBINDING_ACTION_WORKSPACE_LEFT,
+                          (MetaKeyHandlerFunc) handle_switch_to_workspace, META_MOTION_LEFT);
+
+  add_builtin_keybinding (display,
+                          "switch-to-workspace-right",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_NONE,
+                          META_KEYBINDING_ACTION_WORKSPACE_RIGHT,
+                          (MetaKeyHandlerFunc) handle_switch_to_workspace, META_MOTION_RIGHT);
+
+  add_builtin_keybinding (display,
+                          "switch-to-workspace-up",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_NONE,
+                          META_KEYBINDING_ACTION_WORKSPACE_UP,
+                          (MetaKeyHandlerFunc) handle_switch_to_workspace, META_MOTION_UP);
+
+  add_builtin_keybinding (display,
+                          "switch-to-workspace-down",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_NONE,
+                          META_KEYBINDING_ACTION_WORKSPACE_DOWN,
+                          (MetaKeyHandlerFunc) handle_switch_to_workspace, META_MOTION_DOWN);
+
+
+  /* The ones which have inverses.  These can't be bound to any keystroke
+   * containing Shift because Shift will invert their "backward" state.
+   *
+   * TODO: "NORMAL" and "DOCKS" should be renamed to the same name as their
+   * action, for obviousness.
+   *
+   * TODO: handle_switch and handle_cycle should probably really be the
+   * same function checking a bit in the parameter for difference.
+   */
+
+  add_builtin_keybinding (display,
+                          "switch-applications",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_REVERSES,
+                          META_KEYBINDING_ACTION_SWITCH_APPLICATIONS,
+                          (MetaKeyHandlerFunc) handle_switch, META_TAB_LIST_NORMAL);
+
+  add_builtin_keybinding (display,
+                          "switch-applications-backward",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          REVERSES_AND_REVERSED,
+                          META_KEYBINDING_ACTION_SWITCH_APPLICATIONS_BACKWARD,
+                          (MetaKeyHandlerFunc) handle_switch, META_TAB_LIST_NORMAL);
+
+  add_builtin_keybinding (display,
+                          "switch-group",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_REVERSES,
+                          META_KEYBINDING_ACTION_SWITCH_GROUP,
+                          (MetaKeyHandlerFunc) handle_switch, META_TAB_LIST_GROUP);
+
+  add_builtin_keybinding (display,
+                          "switch-group-backward",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          REVERSES_AND_REVERSED,
+                          META_KEYBINDING_ACTION_SWITCH_GROUP_BACKWARD,
+                          (MetaKeyHandlerFunc) handle_switch, META_TAB_LIST_GROUP);
+
+  add_builtin_keybinding (display,
+                          "switch-windows",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_REVERSES,
+                          META_KEYBINDING_ACTION_SWITCH_WINDOWS,
+                          (MetaKeyHandlerFunc) handle_switch, META_TAB_LIST_NORMAL);
+
+  add_builtin_keybinding (display,
+                          "switch-windows-backward",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          REVERSES_AND_REVERSED,
+                          META_KEYBINDING_ACTION_SWITCH_WINDOWS_BACKWARD,
+                          (MetaKeyHandlerFunc) handle_switch, META_TAB_LIST_NORMAL);
+
+  add_builtin_keybinding (display,
+                          "switch-panels",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_REVERSES,
+                          META_KEYBINDING_ACTION_SWITCH_PANELS,
+                          (MetaKeyHandlerFunc) handle_switch, META_TAB_LIST_DOCKS);
+
+  add_builtin_keybinding (display,
+                          "switch-panels-backward",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          REVERSES_AND_REVERSED,
+                          META_KEYBINDING_ACTION_SWITCH_PANELS_BACKWARD,
+                          (MetaKeyHandlerFunc) handle_switch, META_TAB_LIST_DOCKS);
+
+  add_builtin_keybinding (display,
+                          "cycle-group",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_REVERSES,
+                          META_KEYBINDING_ACTION_CYCLE_GROUP,
+                          (MetaKeyHandlerFunc) handle_cycle, META_TAB_LIST_GROUP);
+
+  add_builtin_keybinding (display,
+                          "cycle-group-backward",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          REVERSES_AND_REVERSED,
+                          META_KEYBINDING_ACTION_CYCLE_GROUP_BACKWARD,
+                          (MetaKeyHandlerFunc) handle_cycle, META_TAB_LIST_GROUP);
+
+  add_builtin_keybinding (display,
+                          "cycle-windows",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_REVERSES,
+                          META_KEYBINDING_ACTION_CYCLE_WINDOWS,
+                          (MetaKeyHandlerFunc) handle_cycle, META_TAB_LIST_NORMAL);
+
+  add_builtin_keybinding (display,
+                          "cycle-windows-backward",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          REVERSES_AND_REVERSED,
+                          META_KEYBINDING_ACTION_CYCLE_WINDOWS_BACKWARD,
+                          (MetaKeyHandlerFunc) handle_cycle, META_TAB_LIST_NORMAL);
+
+  add_builtin_keybinding (display,
+                          "cycle-panels",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_REVERSES,
+                          META_KEYBINDING_ACTION_CYCLE_PANELS,
+                          (MetaKeyHandlerFunc) handle_cycle, META_TAB_LIST_DOCKS);
+
+  add_builtin_keybinding (display,
+                          "cycle-panels-backward",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          REVERSES_AND_REVERSED,
+                          META_KEYBINDING_ACTION_CYCLE_PANELS_BACKWARD,
+                          (MetaKeyHandlerFunc) handle_cycle, META_TAB_LIST_DOCKS);
+
+
+/***********************************/
+
+  add_builtin_keybinding (display,
+                          "show-desktop",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_NONE,
+                          META_KEYBINDING_ACTION_SHOW_DESKTOP,
+                          (MetaKeyHandlerFunc) handle_show_desktop, 0);
+
+  add_builtin_keybinding (display,
+                          "panel-main-menu",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_NONE,
+                          META_KEYBINDING_ACTION_PANEL_MAIN_MENU,
+                          (MetaKeyHandlerFunc) handle_panel, META_KEYBINDING_ACTION_PANEL_MAIN_MENU);
+
+  add_builtin_keybinding (display,
+                          "panel-run-dialog",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_NONE,
+                          META_KEYBINDING_ACTION_PANEL_RUN_DIALOG,
+                          (MetaKeyHandlerFunc) handle_panel, META_KEYBINDING_ACTION_PANEL_RUN_DIALOG);
+
+  add_builtin_keybinding (display,
+                          "set-spew-mark",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_NONE,
+                          META_KEYBINDING_ACTION_SET_SPEW_MARK,
+                          (MetaKeyHandlerFunc) handle_set_spew_mark, 0);
+
+#undef REVERSES_AND_REVERSED
+
+/************************ PER WINDOW BINDINGS ************************/
+
+/* These take a window as an extra parameter; they have no effect
+ * if no window is active.
+ */
+
+  add_builtin_keybinding (display,
+                          "activate-window-menu",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_ACTIVATE_WINDOW_MENU,
+                          (MetaKeyHandlerFunc) handle_activate_window_menu, 0);
+
+  add_builtin_keybinding (display,
+                          "toggle-fullscreen",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_TOGGLE_FULLSCREEN,
+                          (MetaKeyHandlerFunc) handle_toggle_fullscreen, 0);
+
+  add_builtin_keybinding (display,
+                          "toggle-maximized",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_TOGGLE_MAXIMIZED,
+                          (MetaKeyHandlerFunc) handle_toggle_maximized, 0);
+
+  add_builtin_keybinding (display,
+                          "toggle-above",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_TOGGLE_ABOVE,
+                          (MetaKeyHandlerFunc) handle_toggle_above, 0);
+
+  add_builtin_keybinding (display,
+                          "maximize",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MAXIMIZE,
+                          (MetaKeyHandlerFunc) handle_maximize, 0);
+
+  add_builtin_keybinding (display,
+                          "unmaximize",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_UNMAXIMIZE,
+                          (MetaKeyHandlerFunc) handle_unmaximize, 0);
+
+  add_builtin_keybinding (display,
+                          "toggle-shaded",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_TOGGLE_SHADED,
+                          (MetaKeyHandlerFunc) handle_toggle_shaded, 0);
+
+  add_builtin_keybinding (display,
+                          "minimize",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MINIMIZE,
+                          (MetaKeyHandlerFunc) handle_minimize, 0);
+
+  add_builtin_keybinding (display,
+                          "close",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_CLOSE,
+                          (MetaKeyHandlerFunc) handle_close, 0);
+
+  add_builtin_keybinding (display,
+                          "begin-move",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_BEGIN_MOVE,
+                          (MetaKeyHandlerFunc) handle_begin_move, 0);
+
+  add_builtin_keybinding (display,
+                          "begin-resize",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_BEGIN_RESIZE,
+                          (MetaKeyHandlerFunc) handle_begin_resize, 0);
+
+  add_builtin_keybinding (display,
+                          "toggle-on-all-workspaces",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_TOGGLE_ON_ALL_WORKSPACES,
+                          (MetaKeyHandlerFunc) handle_toggle_on_all_workspaces, 0);
+
+  add_builtin_keybinding (display,
+                          "move-to-workspace-1",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_1,
+                          (MetaKeyHandlerFunc) handle_move_to_workspace, 0);
+
+  add_builtin_keybinding (display,
+                          "move-to-workspace-2",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_2,
+                          (MetaKeyHandlerFunc) handle_move_to_workspace, 1);
+
+  add_builtin_keybinding (display,
+                          "move-to-workspace-3",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_3,
+                          (MetaKeyHandlerFunc) handle_move_to_workspace, 2);
+
+  add_builtin_keybinding (display,
+                          "move-to-workspace-4",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_4,
+                          (MetaKeyHandlerFunc) handle_move_to_workspace, 3);
+
+  add_builtin_keybinding (display,
+                          "move-to-workspace-5",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_5,
+                          (MetaKeyHandlerFunc) handle_move_to_workspace, 4);
+
+  add_builtin_keybinding (display,
+                          "move-to-workspace-6",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_6,
+                          (MetaKeyHandlerFunc) handle_move_to_workspace, 5);
+
+  add_builtin_keybinding (display,
+                          "move-to-workspace-7",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_7,
+                          (MetaKeyHandlerFunc) handle_move_to_workspace, 6);
+
+  add_builtin_keybinding (display,
+                          "move-to-workspace-8",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_8,
+                          (MetaKeyHandlerFunc) handle_move_to_workspace, 7);
+
+  add_builtin_keybinding (display,
+                          "move-to-workspace-9",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_9,
+                          (MetaKeyHandlerFunc) handle_move_to_workspace, 8);
+
+  add_builtin_keybinding (display,
+                          "move-to-workspace-10",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_10,
+                          (MetaKeyHandlerFunc) handle_move_to_workspace, 9);
+
+  add_builtin_keybinding (display,
+                          "move-to-workspace-11",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_11,
+                          (MetaKeyHandlerFunc) handle_move_to_workspace, 10);
+
+  add_builtin_keybinding (display,
+                          "move-to-workspace-12",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_12,
+                          (MetaKeyHandlerFunc) handle_move_to_workspace, 11);
+
+  add_builtin_keybinding (display,
+                          "move-to-workspace-left",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_LEFT,
+                          (MetaKeyHandlerFunc) handle_move_to_workspace, META_MOTION_LEFT);
+
+  add_builtin_keybinding (display,
+                          "move-to-workspace-right",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_RIGHT,
+                          (MetaKeyHandlerFunc) handle_move_to_workspace, META_MOTION_RIGHT);
+
+  add_builtin_keybinding (display,
+                          "move-to-workspace-up",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_UP,
+                          (MetaKeyHandlerFunc) handle_move_to_workspace, META_MOTION_UP);
+
+  add_builtin_keybinding (display,
+                          "move-to-workspace-down",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_DOWN,
+                          (MetaKeyHandlerFunc) handle_move_to_workspace, META_MOTION_DOWN);
+
+  add_builtin_keybinding (display,
+                          "raise-or-lower",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_RAISE_OR_LOWER,
+                          (MetaKeyHandlerFunc) handle_raise_or_lower, 0);
+
+  add_builtin_keybinding (display,
+                          "raise",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_RAISE,
+                          (MetaKeyHandlerFunc) handle_raise, 0);
+
+  add_builtin_keybinding (display,
+                          "lower",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_LOWER,
+                          (MetaKeyHandlerFunc) handle_lower, 0);
+
+  add_builtin_keybinding (display,
+                          "maximize-vertically",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MAXIMIZE_VERTICALLY,
+                          (MetaKeyHandlerFunc) handle_maximize_vertically, 0);
+
+  add_builtin_keybinding (display,
+                          "maximize-horizontally",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MAXIMIZE_HORIZONTALLY,
+                          (MetaKeyHandlerFunc) handle_maximize_horizontally, 0);
+
+  add_builtin_keybinding (display,
+                          "move-to-corner-nw",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MOVE_TO_CORNER_NW,
+                          (MetaKeyHandlerFunc) handle_move_to_corner_nw, 0);
+
+  add_builtin_keybinding (display,
+                          "move-to-corner-ne",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MOVE_TO_CORNER_NE,
+                          (MetaKeyHandlerFunc) handle_move_to_corner_ne, 0);
+
+  add_builtin_keybinding (display,
+                          "move-to-corner-sw",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MOVE_TO_CORNER_SW,
+                          (MetaKeyHandlerFunc) handle_move_to_corner_sw, 0);
+
+  add_builtin_keybinding (display,
+                          "move-to-corner-se",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MOVE_TO_CORNER_SE,
+                          (MetaKeyHandlerFunc) handle_move_to_corner_se, 0);
+
+  add_builtin_keybinding (display,
+                          "move-to-side-n",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MOVE_TO_SIDE_N,
+                          (MetaKeyHandlerFunc) handle_move_to_side_n, 0);
+
+  add_builtin_keybinding (display,
+                          "move-to-side-s",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MOVE_TO_SIDE_S,
+                          (MetaKeyHandlerFunc) handle_move_to_side_s, 0);
+
+  add_builtin_keybinding (display,
+                          "move-to-side-e",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MOVE_TO_SIDE_E,
+                          (MetaKeyHandlerFunc) handle_move_to_side_e, 0);
+
+  add_builtin_keybinding (display,
+                          "move-to-side-w",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MOVE_TO_SIDE_W,
+                          (MetaKeyHandlerFunc) handle_move_to_side_w, 0);
+
+  add_builtin_keybinding (display,
+                          "move-to-center",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MOVE_TO_CENTER,
+                          (MetaKeyHandlerFunc) handle_move_to_center, 0);
+}
+
+void
+meta_display_init_keys (MetaDisplay *display)
+{
+  /* Keybindings */
+  display->keymap = NULL;
+  display->keysyms_per_keycode = 0;
+  display->modmap = NULL;
+  display->min_keycode = 0;
+  display->max_keycode = 0;
+  display->ignored_modifier_mask = 0;
+  display->num_lock_mask = 0;
+  display->scroll_lock_mask = 0;
+  display->hyper_mask = 0;
+  display->super_mask = 0;
+  display->meta_mask = 0;
+  display->key_bindings = NULL;
+  display->n_key_bindings = 0;
+
+  XDisplayKeycodes (display->xdisplay,
+                    &display->min_keycode,
+                    &display->max_keycode);
+
+  meta_topic (META_DEBUG_KEYBINDINGS,
+              "Display has keycode range %d to %d\n",
+              display->min_keycode,
+              display->max_keycode);
+
+  reload_keymap (display);
+  reload_modmap (display);
+
+  key_handlers = g_hash_table_new_full (g_str_hash, g_str_equal, g_free,
+                                        (GDestroyNotify) key_handler_free);
+  init_builtin_key_bindings (display);
+
+  rebuild_key_binding_table (display);
+
+  reload_keycodes (display);
+  reload_modifiers (display);
+
+  /* Keys are actually grabbed in meta_screen_grab_keys() */
+
+  meta_prefs_add_listener (bindings_changed_callback, display);
+
+#ifdef HAVE_XKB
+  /* meta_display_init_keys() should have already called XkbQueryExtension() */
+  if (display->xkb_base_event_type != -1)
+    XkbSelectEvents (display->xdisplay, XkbUseCoreKbd,
+                     XkbNewKeyboardNotifyMask | XkbMapNotifyMask,
+                     XkbNewKeyboardNotifyMask | XkbMapNotifyMask);
+#endif
 }

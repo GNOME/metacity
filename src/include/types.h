@@ -26,4 +26,6 @@ typedef struct _MetaFrame       MetaFrame;
 typedef struct _MetaScreen      MetaScreen;
 typedef struct _MetaWindow      MetaWindow;
 
+typedef struct _MetaKeyBinding  MetaKeyBinding;
+
 #endif
