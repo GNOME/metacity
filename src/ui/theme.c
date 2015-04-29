@@ -1683,9 +1683,9 @@ meta_color_spec_new_gtk (MetaGtkColorComponent component,
 }
 
 static void
-get_background_color (GtkStyleContext *context,
-                      GtkStateFlags    state,
-                      GdkRGBA         *color)
+get_background_color_real (GtkStyleContext *context,
+                           GtkStateFlags    state,
+                           GdkRGBA         *color)
 {
   GdkRGBA *c;
 
@@ -1699,6 +1699,32 @@ get_background_color (GtkStyleContext *context,
 
   *color = *c;
   gdk_rgba_free (c);
+}
+
+static void
+get_background_color (GtkStyleContext *context,
+                      GtkStateFlags    state,
+                      GdkRGBA         *color)
+{
+  GdkRGBA empty = { 0.0, 0.0, 0.0, 0.0 };
+  GdkRGBA rgba;
+
+  get_background_color_real (context, state, &rgba);
+
+  if (gdk_rgba_equal (&rgba, &empty))
+    {
+      GtkWidget *toplevel;
+      GtkStyleContext *tmp;
+
+      toplevel = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+      tmp = gtk_widget_get_style_context (toplevel);
+
+      get_background_color_real (tmp, state, &rgba);
+
+      gtk_widget_destroy (toplevel);
+    }
+
+  *color = rgba;
 }
 
 /* Based on set_color() in gtkstyle.c */
