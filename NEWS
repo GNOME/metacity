@@ -1,3 +1,11 @@
+Version 3.17.1
+==============
+- Store keybindings dynamically. (Based on mutter)
+- Add toggle-tile-left/right keybindings. (Based on mutter)
+- Fix missing background color in metacity themes. (Alberts Muktupāvels)
+- Updated translations:
+  Jordi Mas (ca).
+
 Version 3.16.1
 ==============
 - Don't grab keybindings wihtout modifiers. (Alberts Muktupāvels)
