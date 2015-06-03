@@ -263,14 +263,18 @@ static KeySym
 keycode_to_keysym (MetaDisplay *display,
                    guint        keycode)
 {
+  int keysyms_return;
+  KeySym *keysyms;
+  KeySym keysym;
+
   if (keycode == meta_display_get_above_tab_keycode (display))
     return META_KEY_ABOVE_TAB;
 
-#ifdef HAVE_XKB
-  return XkbKeycodeToKeysym (display->xdisplay, keycode, 0, 0);
-#else
-  return XKeycodeToKeysym (display->xdisplay, keycode, 0);
-#endif
+  keysyms = XGetKeyboardMapping (display->xdisplay, keycode, 1, &keysyms_return);
+  keysym = keysyms[0];
+  XFree (keysyms);
+
+  return keysym;
 }
 
 static void
