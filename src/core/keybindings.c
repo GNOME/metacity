@@ -300,6 +300,8 @@ reload_keycodes (MetaDisplay *display)
 static void
 reload_modifiers (MetaDisplay *display)
 {
+  gboolean devirtualized;
+
   meta_topic (META_DEBUG_KEYBINDINGS,
               "Reloading keycodes for binding tables\n");
 
@@ -310,9 +312,11 @@ reload_modifiers (MetaDisplay *display)
       i = 0;
       while (i < display->n_key_bindings)
         {
-          meta_display_devirtualize_modifiers (display,
-                                               display->key_bindings[i].modifiers,
-                                               &display->key_bindings[i].mask);
+          devirtualized = meta_display_devirtualize_modifiers (display,
+                                                               display->key_bindings[i].modifiers,
+                                                               &display->key_bindings[i].mask);
+
+          display->key_bindings[i].devirtualized = devirtualized;
 
           meta_topic (META_DEBUG_KEYBINDINGS,
                       " Devirtualized mods 0x%x -> 0x%x (%s)\n",
@@ -394,6 +398,7 @@ rebuild_binding_table (MetaDisplay     *display,
               (*bindings_p)[i].keycode = combo->keycode;
               (*bindings_p)[i].modifiers = combo->modifiers;
               (*bindings_p)[i].mask = 0;
+              (*bindings_p)[i].devirtualized = FALSE;
 
               ++i;
 
@@ -409,6 +414,7 @@ rebuild_binding_table (MetaDisplay     *display,
                   (*bindings_p)[i].keycode = combo->keycode;
                   (*bindings_p)[i].modifiers = combo->modifiers | META_VIRTUAL_SHIFT_MASK;
                   (*bindings_p)[i].mask = 0;
+                  (*bindings_p)[i].devirtualized = FALSE;
 
                   ++i;
                 }
@@ -721,7 +727,8 @@ grab_keys (MetaKeyBinding *bindings,
     {
       if (!!binding_per_window ==
           !!(bindings[i].handler->flags & META_KEY_BINDING_PER_WINDOW) &&
-          bindings[i].keycode != 0)
+          bindings[i].keycode != 0 &&
+          bindings[i].devirtualized != FALSE)
         {
           meta_grab_key (display, xwindow,
                          bindings[i].keysym,
