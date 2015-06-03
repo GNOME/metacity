@@ -251,18 +251,6 @@ enable_compositor (MetaDisplay *display,
 {
   GSList *list;
 
-  if (!META_DISPLAY_HAS_COMPOSITE (display) ||
-      !META_DISPLAY_HAS_DAMAGE (display) ||
-      !META_DISPLAY_HAS_XFIXES (display) ||
-      !META_DISPLAY_HAS_RENDER (display))
-    {
-      meta_warning (_("Missing %s extension required for compositing"),
-                    !META_DISPLAY_HAS_COMPOSITE (display) ? "composite" :
-                    !META_DISPLAY_HAS_DAMAGE (display) ? "damage" :
-                    !META_DISPLAY_HAS_XFIXES (display) ? "xfixes" : "render");
-      return;
-    }
-
   if (!display->compositor)
       display->compositor = meta_compositor_new (display);
 
