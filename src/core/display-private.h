@@ -461,9 +461,9 @@ int meta_resize_gravity_from_grab_op (MetaGrabOp op);
 gboolean meta_grab_op_is_moving   (MetaGrabOp op);
 gboolean meta_grab_op_is_resizing (MetaGrabOp op);
 
-void meta_display_devirtualize_modifiers (MetaDisplay        *display,
-                                          MetaVirtualModifier modifiers,
-                                          unsigned int       *mask);
+gboolean meta_display_devirtualize_modifiers (MetaDisplay        *display,
+                                              MetaVirtualModifier modifiers,
+                                              unsigned int       *mask);
 
 void meta_display_increment_focus_sentinel (MetaDisplay *display);
 void meta_display_decrement_focus_sentinel (MetaDisplay *display);

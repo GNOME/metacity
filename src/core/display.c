@@ -4791,33 +4791,45 @@ meta_display_stack_cmp (const void *a,
     return 0; /* not reached in theory, if windows on same display */
 }
 
-void
+static gboolean
+devirtualize_modifiers (MetaVirtualModifier  modifiers,
+                        MetaVirtualModifier  virtual_mask,
+                        unsigned int         real_mask,
+                        unsigned int        *mask)
+{
+  if (modifiers & virtual_mask)
+    {
+      if (real_mask == 0)
+        return FALSE;
+
+       *mask |= real_mask;
+    }
+
+  return TRUE;
+}
+
+gboolean
 meta_display_devirtualize_modifiers (MetaDisplay        *display,
                                      MetaVirtualModifier modifiers,
                                      unsigned int       *mask)
 {
+  gboolean devirtualized;
+
+  devirtualized = TRUE;
   *mask = 0;
 
-  if (modifiers & META_VIRTUAL_SHIFT_MASK)
-    *mask |= ShiftMask;
-  if (modifiers & META_VIRTUAL_CONTROL_MASK)
-    *mask |= ControlMask;
-  if (modifiers & META_VIRTUAL_ALT_MASK)
-    *mask |= Mod1Mask;
-  if (modifiers & META_VIRTUAL_META_MASK)
-    *mask |= display->meta_mask;
-  if (modifiers & META_VIRTUAL_HYPER_MASK)
-    *mask |= display->hyper_mask;
-  if (modifiers & META_VIRTUAL_SUPER_MASK)
-    *mask |= display->super_mask;
-  if (modifiers & META_VIRTUAL_MOD2_MASK)
-    *mask |= Mod2Mask;
-  if (modifiers & META_VIRTUAL_MOD3_MASK)
-    *mask |= Mod3Mask;
-  if (modifiers & META_VIRTUAL_MOD4_MASK)
-    *mask |= Mod4Mask;
-  if (modifiers & META_VIRTUAL_MOD5_MASK)
-    *mask |= Mod5Mask;
+  devirtualized &= devirtualize_modifiers (modifiers, META_VIRTUAL_SHIFT_MASK, ShiftMask, mask);
+  devirtualized &= devirtualize_modifiers (modifiers, META_VIRTUAL_CONTROL_MASK, ControlMask, mask);
+  devirtualized &= devirtualize_modifiers (modifiers, META_VIRTUAL_ALT_MASK, Mod1Mask, mask);
+  devirtualized &= devirtualize_modifiers (modifiers, META_VIRTUAL_META_MASK, display->meta_mask, mask);
+  devirtualized &= devirtualize_modifiers (modifiers, META_VIRTUAL_HYPER_MASK, display->hyper_mask, mask);
+  devirtualized &= devirtualize_modifiers (modifiers, META_VIRTUAL_SUPER_MASK, display->super_mask, mask);
+  devirtualized &= devirtualize_modifiers (modifiers, META_VIRTUAL_MOD2_MASK, Mod2Mask, mask);
+  devirtualized &= devirtualize_modifiers (modifiers, META_VIRTUAL_MOD3_MASK, Mod3Mask, mask);
+  devirtualized &= devirtualize_modifiers (modifiers, META_VIRTUAL_MOD4_MASK, Mod4Mask, mask);
+  devirtualized &= devirtualize_modifiers (modifiers, META_VIRTUAL_MOD5_MASK, Mod5Mask, mask);
+
+  return devirtualized;
 }
 
 static void
