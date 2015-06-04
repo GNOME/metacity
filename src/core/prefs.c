@@ -129,6 +129,7 @@ static gboolean button_layout_handler (GVariant*, gpointer*, gpointer);
 static void     init_bindings             (void);
 static void     init_workspace_names      (void);
 
+static void update_button_layout (const gchar *string_value);
 
 typedef struct
 {
@@ -759,6 +760,71 @@ queue_changed (MetaPreference pref)
                                     changed_idle_handler, NULL, NULL);
 }
 
+static void
+gtk_decoration_layout_changed (GtkSettings *settings,
+                               GParamSpec  *pspec,
+                               gpointer     user_data)
+{
+  gchar *layout;
+  gchar **sides;
+  gint i;
+  gint j;
+
+  g_object_get (settings, "gtk-decoration-layout", &layout, NULL);
+
+  sides = g_strsplit (layout, ":", -1);
+  g_free (layout);
+
+  for (i = 0; sides[i]; i++)
+    {
+      gchar **buttons;
+
+      buttons = g_strsplit (sides[i], ",", -1);
+
+      for (j = 0; buttons[j]; j++)
+        {
+          const gchar *button;
+
+          if (g_strcmp0 (buttons[j], "icon") == 0)
+            button = "menu";
+          else if (g_strcmp0 (buttons[j], "menu") == 0)
+            button = "appmenu";
+          else
+            button = NULL;
+
+          if (button)
+            {
+              g_free (buttons[j]);
+              buttons[j] = g_strdup (button);
+            }
+        }
+
+      g_free (sides[i]);
+      sides[i] = g_strjoinv (",", buttons);
+
+      g_strfreev (buttons);
+    }
+
+  layout = g_strjoinv (":", sides);
+  g_strfreev (sides);
+
+  update_button_layout (layout);
+  g_free (layout);
+}
+
+static void
+init_gtk_decoration_layout (void)
+{
+  GtkSettings *settings;
+
+  settings = gtk_settings_get_default ();
+
+  g_signal_connect (settings, "notify::gtk-decoration-layout",
+                    G_CALLBACK (gtk_decoration_layout_changed), NULL);
+
+  gtk_decoration_layout_changed (settings, NULL, NULL);
+}
+
 /****************************************************************************/
 /* Initialisation.                                                          */
 /****************************************************************************/
@@ -799,6 +865,8 @@ meta_prefs_init (void)
 
   init_bindings ();
   init_workspace_names ();
+
+  init_gtk_decoration_layout ();
 }
 
 /****************************************************************************/
@@ -1118,13 +1186,10 @@ button_opposite_function (MetaButtonFunction ofwhat)
     }
 }
 
-static gboolean
-button_layout_handler (GVariant *value,
-                       gpointer *result,
-                       gpointer  data)
+static void
+update_button_layout (const gchar *string_value)
 {
   MetaButtonLayout new_layout;
-  const gchar *string_value;
   char **sides = NULL;
   int i;
 
@@ -1132,12 +1197,7 @@ button_layout_handler (GVariant *value,
    * compat with future versions
    */
 
-  *result = NULL; /* ignored */
-  string_value = g_variant_get_string (value, NULL);
-
-  if (string_value)
-    sides = g_strsplit (string_value, ":", 2);
-
+  sides = g_strsplit (string_value, ":", 2);
   i = 0;
 
   if (sides != NULL && sides[0] != NULL)
@@ -1303,7 +1363,23 @@ button_layout_handler (GVariant *value,
       button_layout = new_layout;
       emit_changed (META_PREF_BUTTON_LAYOUT);
     }
+}
 
+static gboolean
+button_layout_handler (GVariant *value,
+                       gpointer *result,
+                       gpointer  data)
+{
+#if 0
+  const gchar *string_value;
+
+  string_value = g_variant_get_string (value, NULL);
+
+  if (string_value)
+    update_button_layout (string_value);
+#endif
+
+  *result = NULL; /* ignored */
   return TRUE;
 }
 
