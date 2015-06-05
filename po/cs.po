@@ -32,63 +32,63 @@ msgstr "Navigace"
 
 #: ../src/50-metacity-navigation.xml.in.h:2
 msgid "Move window to workspace 1"
-msgstr "Přesunout okno na plochu 1"
+msgstr "Přesunout okno na pracovní plochu 1"
 
 #: ../src/50-metacity-navigation.xml.in.h:3
 msgid "Move window to workspace 2"
-msgstr "Přesunout okno na plochu 2"
+msgstr "Přesunout okno na pracovní plochu 2"
 
 #: ../src/50-metacity-navigation.xml.in.h:4
 msgid "Move window to workspace 3"
-msgstr "Přesunout okno na plochu 3"
+msgstr "Přesunout okno na pracovní plochu 3"
 
 #: ../src/50-metacity-navigation.xml.in.h:5
 msgid "Move window to workspace 4"
-msgstr "Přesunout okno na plochu 4"
+msgstr "Přesunout okno na pracovní plochu 4"
 
 #: ../src/50-metacity-navigation.xml.in.h:6
 msgid "Move window one workspace to the left"
-msgstr "Posunout okno o plochu doleva"
+msgstr "Posunout okno o jednu pracovní plochu doleva"
 
 #: ../src/50-metacity-navigation.xml.in.h:7
 msgid "Move window one workspace to the right"
-msgstr "Posunout okno o plochu doprava"
+msgstr "Posunout okno o jednu pracovní plochu doprava"
 
 #: ../src/50-metacity-navigation.xml.in.h:8
 msgid "Move window one workspace up"
-msgstr "Posunout okno o plochu nahoru"
+msgstr "Posunout okno o jednu pracovní plochu nahoru"
 
 #: ../src/50-metacity-navigation.xml.in.h:9
 msgid "Move window one workspace down"
-msgstr "Posunout okno o plochu dolů"
+msgstr "Posunout okno o jednu pracovní plochu dolů"
 
 #: ../src/50-metacity-navigation.xml.in.h:10
 msgid "Switch windows"
-msgstr "Přepnout mezi okny"
+msgstr "Přepnout do jiného okna"
 
 #: ../src/50-metacity-navigation.xml.in.h:11
 msgid "Switch applications"
-msgstr "Přepnout mezi aplikacemi"
+msgstr "Přepnout do jiné aplikace"
 
 #: ../src/50-metacity-navigation.xml.in.h:12
 msgid "Switch windows of an application"
-msgstr "Přepnout mezi okny aplikace"
+msgstr "Přepnout do jiného okna aplikace"
 
 #: ../src/50-metacity-navigation.xml.in.h:13
 msgid "Switch system controls"
-msgstr "Přepnout mezi systémovými ovládacími prvky"
+msgstr "Přepnout na systémový ovládací prvek"
 
 #: ../src/50-metacity-navigation.xml.in.h:14
 msgid "Switch windows directly"
-msgstr "Přepnout přímo mezi okny"
+msgstr "Přepnout do minulého okna"
 
 #: ../src/50-metacity-navigation.xml.in.h:15
 msgid "Switch windows of an app directly"
-msgstr "Přepnout přímo mezi okny aplikace"
+msgstr "Přepnout do minulého okna aplikace"
 
 #: ../src/50-metacity-navigation.xml.in.h:16
 msgid "Switch system controls directly"
-msgstr "Přepnout přímo mezi systémovými ovládacími prvky"
+msgstr "Přepnout na minulý systémový ovládací prvek"
 
 #: ../src/50-metacity-navigation.xml.in.h:17
 msgid "Hide all normal windows"
@@ -96,35 +96,35 @@ msgstr "Skrýt všechna normální okna"
 
 #: ../src/50-metacity-navigation.xml.in.h:18
 msgid "Switch to workspace 1"
-msgstr "Přepnout na plochu 1"
+msgstr "Přepnout na pracovní plochu 1"
 
 #: ../src/50-metacity-navigation.xml.in.h:19
 msgid "Switch to workspace 2"
-msgstr "Přepnout na plochu 2"
+msgstr "Přepnout na pracovní plochu 2"
 
 #: ../src/50-metacity-navigation.xml.in.h:20
 msgid "Switch to workspace 3"
-msgstr "Přepnout na plochu 3"
+msgstr "Přepnout na pracovní plochu 3"
 
 #: ../src/50-metacity-navigation.xml.in.h:21
 msgid "Switch to workspace 4"
-msgstr "Přepnout na plochu 4"
+msgstr "Přepnout na pracovní plochu 4"
 
 #: ../src/50-metacity-navigation.xml.in.h:22
 msgid "Move to workspace left"
-msgstr "Přesunout na plochu vlevo"
+msgstr "Přesunout na pracovní plochu vlevo"
 
 #: ../src/50-metacity-navigation.xml.in.h:23
 msgid "Move to workspace right"
-msgstr "Přesunout na plochu vpravo"
+msgstr "Přesunout na pracovní plochu vpravo"
 
 #: ../src/50-metacity-navigation.xml.in.h:24
 msgid "Move to workspace above"
-msgstr "Přesunout na plochu nad"
+msgstr "Přesunout na pracovní plochu nad"
 
 #: ../src/50-metacity-navigation.xml.in.h:25
 msgid "Move to workspace below"
-msgstr "Přesunout na plochu pod"
+msgstr "Přesunout na pracovní plochu pod"
 
 #: ../src/50-metacity-system.xml.in.h:1
 msgid "System"
@@ -136,7 +136,7 @@ msgstr "Zobrazit výzvu ke spuštění příkazu"
 
 #: ../src/50-metacity-system.xml.in.h:3
 msgid "Show the applications menu"
-msgstr "Zobrazit nabídku aplikací"
+msgstr "Zobrazit nabídku aplikace"
 
 #: ../src/50-metacity-windows.xml.in.h:1
 msgid "Windows"
