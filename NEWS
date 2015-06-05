@@ -1,3 +1,10 @@
+Version 3.17.2
+==============
+- Don't grab keybinding if devirtualization failed. (Alberts Muktupāvels)
+- Use button layout from Gtk/DecorationLayout. (Alberts Muktupāvels)
+- Updated translations:
+  Akom Chotiphantawanon (th), Marek Černocký (cs), Piotr Drąg (pl).
+
 Version 3.17.1
 ==============
 - Store keybindings dynamically. (Based on mutter)
