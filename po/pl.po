@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-03 16:25+0200\n"
-"PO-Revision-Date: 2015-05-03 16:27+0200\n"
+"POT-Creation-Date: 2015-06-07 19:04+0200\n"
+"PO-Revision-Date: 2015-06-07 19:05+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -253,18 +253,13 @@ msgstr "_Zakończ"
 msgid "Failed to get hostname: %s\n"
 msgstr "Uzyskanie nazwy komputera się nie powiodło: %s\n"
 
-#: ../src/core/display.c:259
-#, c-format
-msgid "Missing %s extension required for compositing"
-msgstr "Brak rozszerzenia %s, wymaganego przez składanie"
-
-#: ../src/core/display.c:337
+#: ../src/core/display.c:325
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
 msgstr ""
 "Otwarcie połączenia z ekranem \"%s\" systemu X Window się nie powiodło\n"
 
-#: ../src/core/keybindings.c:691
+#: ../src/core/keybindings.c:692
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
@@ -350,7 +345,7 @@ msgstr ""
 msgid "Failed to restart: %s\n"
 msgstr "Ponowne uruchomienie się nie powiodło: %s\n"
 
-#: ../src/core/prefs.c:887
+#: ../src/core/prefs.c:955
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -358,12 +353,12 @@ msgstr ""
 "Obejścia dla błędnie działających programów są wyłączone. Niektóre z nich "
 "mogą się zachowywać w sposób nieprzewidywalny.\n"
 
-#: ../src/core/prefs.c:958
+#: ../src/core/prefs.c:1026
 #, c-format
 msgid "Could not parse font description \"%s\" from GSettings key %s\n"
 msgstr "Nie można przetworzyć opisu czcionki \"%s\" z klucza GSettings %s\n"
 
-#: ../src/core/prefs.c:1025
+#: ../src/core/prefs.c:1093
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -372,7 +367,7 @@ msgstr ""
 "Wartość \"%s\", odnaleziona w bazie danych konfiguracji nie opisuje "
 "prawidłowo modyfikatora przycisku myszy\n"
 
-#: ../src/core/prefs.c:1502
+#: ../src/core/prefs.c:1578
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -381,10 +376,15 @@ msgstr ""
 "Wartość \"%s\", odnaleziona w bazie danych konfiguracji nie opisuje "
 "prawidłowo skrótu klawiszowego \"%s\"\n"
 
-#: ../src/core/prefs.c:1604
+#: ../src/core/prefs.c:1680
 #, c-format
 msgid "Workspace %d"
 msgstr "Obszar roboczy %d"
+
+#: ../src/core/prefs.c:1934
+#, c-format
+msgid "Missing %s extension required for compositing\n"
+msgstr "Brak rozszerzenia %s, wymaganego przez składanie\n"
 
 #: ../src/core/screen.c:364
 #, c-format
