@@ -1920,6 +1920,9 @@ meta_prefs_get_compositing_manager (void)
 
   display = meta_get_display ();
 
+  if (!display)
+    return compositing_manager;
+
   if (!compositing_manager)
     warned = FALSE;
 
