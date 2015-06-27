@@ -31,6 +31,7 @@ meta_group_new (MetaDisplay *display,
                 Window       group_leader)
 {
   MetaGroup *group;
+  XWindowAttributes attrs;
 #define N_INITIAL_PROPS 3
   Atom initial_props[N_INITIAL_PROPS];
   int i;
@@ -43,6 +44,10 @@ meta_group_new (MetaDisplay *display,
   group->windows = NULL;
   group->group_leader = group_leader;
   group->refcount = 1; /* owned by caller, hash table has only weak ref */
+
+  XGetWindowAttributes (display->xdisplay, group_leader, &attrs);
+  XSelectInput (display->xdisplay, group_leader,
+                attrs.your_event_mask | PropertyChangeMask);
 
   if (display->groups_by_leader == NULL)
     display->groups_by_leader = g_hash_table_new (meta_unsigned_long_hash,
