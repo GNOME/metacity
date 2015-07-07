@@ -48,6 +48,9 @@ struct _MetaCompositor
                              MetaScreen     *screen,
                              MetaWindow     *window);
 
+  void (*free_window) (MetaCompositor *compositor,
+                       MetaWindow     *window);
+
   void (*maximize_window)   (MetaCompositor *compositor,
                              MetaWindow     *window);
   void (*unmaximize_window) (MetaCompositor *compositor,
