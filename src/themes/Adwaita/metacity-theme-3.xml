@@ -838,19 +838,19 @@
 
 <draw_ops name="button_fill_prelight"> <!-- button background gradient for prelight status -->
   <gradient type="vertical" x="5" y="5" width="width-10" height="height-10">
-		<color value="gtk:custom(wm_button_hover_color_a,gtk:fg[NORMAL])" />
-		<color value="gtk:custom(wm_button_hover_color_b,gtk:fg[NORMAL])" />
+		<color value="gtk:custom(wm_button_hover_color_a,blend/gtk:bg[NORMAL]/gtk:base[NORMAL]/0.6)" />
+		<color value="gtk:custom(wm_button_hover_color_b,gtk:bg[NORMAL])" />
 	</gradient>
 	<include name="button_border" />
 </draw_ops>
 
 <draw_ops name="button_fill_pressed"> <!-- button background gradient for pressed status -->
   <gradient type="vertical" x="5" y="5" width="width-10" height="height-10">
-		<color value="gtk:custom(wm_button_active_color_b,gtk:fg[NORMAL])" />
-		<color value="gtk:custom(wm_button_active_color_c,gtk:fg[NORMAL])" />
+		<color value="gtk:custom(wm_button_active_color_b,blend/#000000/gtk:bg[NORMAL]/0.89)" />
+		<color value="gtk:custom(wm_button_active_color_c,blend/#000000/gtk:bg[NORMAL]/0.9)" />
 	</gradient>
-  <line x1="5" y1="5" x2="width-6" y2="5" color="blend/#000000/gtk:custom(wm_button_active_color_a,gtk:fg[NORMAL])/0.9" />
-  <line x1="4" y1="6" x2="width-5" y2="6" color="gtk:custom(wm_button_active_color_a,gtk:fg[NORMAL])" />
+  <line x1="5" y1="5" x2="width-6" y2="5" color="blend/#000000/gtk:custom(wm_button_active_color_a,gtk:bg[NORMAL])/0.9" />
+  <line x1="4" y1="6" x2="width-5" y2="6" color="gtk:custom(wm_button_active_color_a,blend/#000000/gtk:bg[NORMAL]/0.85)" />
 	<include name="button_border" />
 </draw_ops>
 
