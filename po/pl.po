@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-07 19:04+0200\n"
-"PO-Revision-Date: 2015-06-07 19:05+0200\n"
+"POT-Creation-Date: 2015-08-30 19:00+0200\n"
+"PO-Revision-Date: 2015-08-30 19:02+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -256,8 +256,7 @@ msgstr "Uzyskanie nazwy komputera się nie powiodło: %s\n"
 #: ../src/core/display.c:325
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
-msgstr ""
-"Otwarcie połączenia z ekranem \"%s\" systemu X Window się nie powiodło\n"
+msgstr "Otwarcie połączenia z ekranem „%s” systemu X Window się nie powiodło\n"
 
 #: ../src/core/keybindings.c:692
 #, c-format
@@ -278,7 +277,7 @@ msgid ""
 "PARTICULAR PURPOSE.\n"
 msgstr ""
 "metacity %s\n"
-"Copyright (C) 2001-%s Havoc Pennington, Red Hat, Inc., oraz inni\n"
+"Copyright © 2001-%s Havoc Pennington, Red Hat, Inc., oraz inni\n"
 "Niniejszy program jest wolnym oprogramowaniem, aby poznać warunki, pod\n"
 "jakimi dopuszczalne jest kopiowanie programu, zajrzyj do jego źródeł.\n"
 "Na program nie udziela się ŻADNYCH GWARANCJI, nawet domyślnej gwarancji\n"
@@ -356,7 +355,7 @@ msgstr ""
 #: ../src/core/prefs.c:1026
 #, c-format
 msgid "Could not parse font description \"%s\" from GSettings key %s\n"
-msgstr "Nie można przetworzyć opisu czcionki \"%s\" z klucza GSettings %s\n"
+msgstr "Nie można przetworzyć opisu czcionki „%s” z klucza GSettings %s\n"
 
 #: ../src/core/prefs.c:1093
 #, c-format
@@ -364,8 +363,8 @@ msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
 "modifier\n"
 msgstr ""
-"Wartość \"%s\", odnaleziona w bazie danych konfiguracji nie opisuje "
-"prawidłowo modyfikatora przycisku myszy\n"
+"Wartość „%s”, odnaleziona w bazie danych konfiguracji nie opisuje prawidłowo "
+"modyfikatora przycisku myszy\n"
 
 #: ../src/core/prefs.c:1578
 #, c-format
@@ -373,15 +372,15 @@ msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
 "\"%s\"\n"
 msgstr ""
-"Wartość \"%s\", odnaleziona w bazie danych konfiguracji nie opisuje "
-"prawidłowo skrótu klawiszowego \"%s\"\n"
+"Wartość „%s”, odnaleziona w bazie danych konfiguracji nie opisuje prawidłowo "
+"skrótu klawiszowego „%s”\n"
 
 #: ../src/core/prefs.c:1680
 #, c-format
 msgid "Workspace %d"
 msgstr "Obszar roboczy %d"
 
-#: ../src/core/prefs.c:1934
+#: ../src/core/prefs.c:1937
 #, c-format
 msgid "Missing %s extension required for compositing\n"
 msgstr "Brak rozszerzenia %s, wymaganego przez składanie\n"
@@ -389,7 +388,7 @@ msgstr "Brak rozszerzenia %s, wymaganego przez składanie\n"
 #: ../src/core/screen.c:364
 #, c-format
 msgid "Screen %d on display '%s' is invalid\n"
-msgstr "Podekran %d ekranu \"%s\" jest nieprawidłowy\n"
+msgstr "Podekran %d ekranu „%s” jest nieprawidłowy\n"
 
 #: ../src/core/screen.c:380
 #, c-format
@@ -397,7 +396,7 @@ msgid ""
 "Screen %d on display \"%s\" already has a window manager; try using the --"
 "replace option to replace the current window manager.\n"
 msgstr ""
-"Na podekranie %d ekranu \"%s\" działa już menedżer okien. Aby zastąpić "
+"Na podekranie %d ekranu „%s” działa już menedżer okien. Aby zastąpić "
 "działającego menedżera okien, proszę spróbować użyć opcji --replace.\n"
 
 #: ../src/core/screen.c:407
@@ -405,38 +404,37 @@ msgstr ""
 msgid ""
 "Could not acquire window manager selection on screen %d display \"%s\"\n"
 msgstr ""
-"Nie można uzyskać zaznaczenia menedżera okien na podekranie %d ekranu \"%s"
-"\"\n"
+"Nie można uzyskać zaznaczenia menedżera okien na podekranie %d ekranu „%s”\n"
 
 #: ../src/core/screen.c:465
 #, c-format
 msgid "Screen %d on display \"%s\" already has a window manager\n"
-msgstr "Na podekranie %d ekranu \"%s\" działa już menedżer okien\n"
+msgstr "Na podekranie %d ekranu „%s” działa już menedżer okien\n"
 
 #: ../src/core/screen.c:678
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
-msgstr "Nie można zwolnić podekranu %d ekranu \"%s\"\n"
+msgstr "Nie można zwolnić podekranu %d ekranu „%s”\n"
 
 #: ../src/core/session.c:840 ../src/core/session.c:847
 #, c-format
 msgid "Could not create directory '%s': %s\n"
-msgstr "Nie można utworzyć katalogu \"%s\": %s\n"
+msgstr "Nie można utworzyć katalogu „%s”: %s\n"
 
 #: ../src/core/session.c:857
 #, c-format
 msgid "Could not open session file '%s' for writing: %s\n"
-msgstr "Nie można otworzyć pliku sesji \"%s\" do zapisania: %s\n"
+msgstr "Nie można otworzyć pliku sesji „%s” do zapisania: %s\n"
 
 #: ../src/core/session.c:998
 #, c-format
 msgid "Error writing session file '%s': %s\n"
-msgstr "Błąd podczas zapisywania pliku sesji \"%s\": %s\n"
+msgstr "Błąd podczas zapisywania pliku sesji „%s”: %s\n"
 
 #: ../src/core/session.c:1003
 #, c-format
 msgid "Error closing session file '%s': %s\n"
-msgstr "Błąd podczas zamykania pliku sesji \"%s\": %s\n"
+msgstr "Błąd podczas zamykania pliku sesji „%s”: %s\n"
 
 #: ../src/core/session.c:1133
 #, c-format
@@ -472,8 +470,8 @@ msgid ""
 "These windows do not support &quot;save current setup&quot; and will have to "
 "be restarted manually next time you log in."
 msgstr ""
-"Te okna nie obsługują opcji zapisu aktualnego stanu (\"save current setup"
-"\"), więc przy następnym zalogowaniu będą musiały zostać uruchomione ręcznie."
+"Te okna nie obsługują opcji zapisu obecnego stanu („save current setup”), "
+"więc przy następnym zalogowaniu będą musiały zostać uruchomione ręcznie."
 
 #: ../src/core/util.c:99
 #, c-format
@@ -503,7 +501,7 @@ msgstr "Menedżer okien: "
 
 #: ../src/core/util.c:386
 msgid "Bug in window manager: "
-msgstr "Błąd w programie menedżera okien: "
+msgstr "Błąd w menedżerze okien: "
 
 #: ../src/core/util.c:419
 msgid "Window manager warning: "
@@ -543,8 +541,8 @@ msgid ""
 "%d x %d and max size %d x %d; this doesn't make much sense.\n"
 msgstr ""
 "Okno %s ustawia atrybut MWM, określający, że jego rozmiar okna jest "
-"niezmienny, lecz jednocześnie ustawia minimalny rozmiar na %d x %d, a "
-"maksymalny rozmiar na %d x %d. To nie ma żadnego sensu.\n"
+"niezmienny, lecz jednocześnie ustawia minimalny rozmiar na %d×%d, a "
+"maksymalny rozmiar na %d×%d. To nie ma żadnego sensu.\n"
 
 #: ../src/core/window-props.c:402
 #, c-format
@@ -674,11 +672,11 @@ msgstr ""
 "Domyślnym zachowaniem podczas rozmieszczania okien jest rozmieszczanie "
 "inteligentne, podobne do zachowania niektórych innych menedżerów okien. W "
 "ten sposób menedżer Metacity będzie próbował układać okna tak, aby się nie "
-"pokrywały. Ustawienie na wartość \"smart\" spowoduje użycie tego zachowania. "
-"Ustawienie na wartość \"center\" spowoduje umieszczanie nowych okien na "
-"środku obszaru roboczego, wartość \"origin\" spowoduje umieszczanie w lewym "
-"górnym rogu, a wartość \"random\" spowoduje umieszczanie nowych okien w "
-"losowych miejscach obszaru roboczego."
+"pokrywały. Ustawienie na wartość „smart” spowoduje użycie tego zachowania. "
+"Ustawienie na wartość „center” spowoduje umieszczanie nowych okien na środku "
+"obszaru roboczego, wartość „origin” spowoduje umieszczanie w lewym górnym "
+"rogu, a wartość „random” spowoduje umieszczanie nowych okien w losowych "
+"miejscach obszaru roboczego."
 
 #: ../src/org.gnome.metacity.gschema.xml.in.h:9
 msgid "Show window content thumbnail in Alt-Tab"
@@ -689,7 +687,7 @@ msgid ""
 "If set to true, Metacity will show window content thumbnails in the Alt-Tab "
 "window instead of only icons."
 msgstr ""
-"Jeśli jest ustawione na \"true\", to menedżer Metacity będzie wyświetlał "
+"Jeśli jest ustawione na „true”, to menedżer Metacity będzie wyświetlał "
 "miniatury zawartości okien w menu Alt-Tab, zamiast tylko ikony."
 
 #: ../src/org.gnome.metacity.gschema.xml.in.h:11
@@ -700,7 +698,7 @@ msgstr "Bieżący motyw"
 msgid ""
 "The theme determines the appearance of window borders, titlebar, and so "
 "forth."
-msgstr "Motyw określa wygląd krawędzi okien, paska tytułowego i tak dalej."
+msgstr "Motyw określa wygląd krawędzi okien, paska tytułowego itd."
 
 #: ../src/tools/metacity-message.c:176
 #, c-format
@@ -952,7 +950,7 @@ msgstr "Mod5"
 #: ../src/ui/resizepopup.c:139
 #, c-format
 msgid "%d x %d"
-msgstr "%d x %d"
+msgstr "%d×%d"
 
 #: ../src/ui/theme.c:265
 msgid "top"
@@ -973,12 +971,12 @@ msgstr "prawa"
 #: ../src/ui/theme.c:298
 #, c-format
 msgid "frame geometry does not specify \"%s\" dimension"
-msgstr "Rozmiar ramki nie określa wymiaru \"%s\""
+msgstr "Rozmiar ramki nie określa wymiaru „%s”"
 
 #: ../src/ui/theme.c:317
 #, c-format
 msgid "frame geometry does not specify dimension \"%s\" for border \"%s\""
-msgstr "Rozmiar ramki nie określa wymiaru \"%s\" dla krawędzi \"%s\""
+msgstr "Rozmiar ramki nie określa wymiaru „%s” dla krawędzi „%s”"
 
 #: ../src/ui/theme.c:354
 #, c-format
@@ -1004,7 +1002,7 @@ msgid ""
 msgstr ""
 "Specyfikacja koloru użytkownika biblioteki GTK+ musi posiadać nazwę koloru i "
 "kolor zapasowy w nawiasach, tzn. gtk:custom(foo,bar); nie można przetworzyć "
-"\"%s\""
+"„%s”"
 
 #: ../src/ui/theme.c:1418
 #, c-format
@@ -1012,8 +1010,8 @@ msgid ""
 "Invalid character '%c' in color_name parameter of gtk:custom, only A-Za-z0-9-"
 "_ are valid"
 msgstr ""
-"Nieprawidłowy znak \"%c\" w parametrze color_name własności gtk:custom, "
-"tylko znaki A-Za-z0-9-_ są prawidłowe"
+"Nieprawidłowy znak „%c” w parametrze color_name własności gtk:custom, tylko "
+"znaki A-Za-z0-9-_ są prawidłowe"
 
 #: ../src/ui/theme.c:1432
 #, c-format
@@ -1021,8 +1019,8 @@ msgid ""
 "Gtk:custom format is \"gtk:custom(color_name,fallback)\", \"%s\" does not "
 "fit the format"
 msgstr ""
-"Formatem gtk:custom jest \"gtk:custom(color_name,fallback)\", \"%s\" nie "
-"pasuje do formatu"
+"Formatem gtk:custom jest „gtk:custom(color_name,fallback)”, „%s” nie pasuje "
+"do formatu"
 
 #: ../src/ui/theme.c:1476
 #, c-format
@@ -1032,7 +1030,7 @@ msgid ""
 msgstr ""
 "Specyfikacja koloru biblioteki GTK+ musi zawierać stan w nawiasach "
 "kwadratowych, np. gtk:fg[NORMAL], gdzie NORMAL jest nazwą stanu; nie można "
-"przetworzyć \"%s\""
+"przetworzyć „%s”"
 
 #: ../src/ui/theme.c:1490
 #, c-format
@@ -1042,17 +1040,17 @@ msgid ""
 msgstr ""
 "Specyfikacja koloru biblioteki GTK+ musi po nazwie stanu zawierać zamykający "
 "nawias kwadratowy, np. gtk:fg[NORMAL], gdzie NORMAL jest nazwą stanu; nie "
-"można przetworzyć \"%s\""
+"można przetworzyć „%s”"
 
 #: ../src/ui/theme.c:1501
 #, c-format
 msgid "Did not understand state \"%s\" in color specification"
-msgstr "Niezrozumiały stan \"%s\" w specyfikacji koloru"
+msgstr "Niezrozumiały stan „%s” w specyfikacji koloru"
 
 #: ../src/ui/theme.c:1514
 #, c-format
 msgid "Did not understand color component \"%s\" in color specification"
-msgstr "Niezrozumiała definicja koloru \"%s\" w specyfikacji koloru"
+msgstr "Niezrozumiała definicja koloru „%s” w specyfikacji koloru"
 
 #: ../src/ui/theme.c:1542
 #, c-format
@@ -1060,49 +1058,48 @@ msgid ""
 "Blend format is \"blend/bg_color/fg_color/alpha\", \"%s\" does not fit the "
 "format"
 msgstr ""
-"Formatem przenikania jest \"blend/bg_color/fg_color/alpha\", \"%s\" nie "
-"pasuje do formatu"
+"Formatem przenikania jest „blend/bg_color/fg_color/alpha”, „%s” nie pasuje "
+"do formatu"
 
 #: ../src/ui/theme.c:1553
 #, c-format
 msgid "Could not parse alpha value \"%s\" in blended color"
-msgstr "Nie można przetworzyć wartości alfa \"%s\" w przenikającym kolorze"
+msgstr "Nie można przetworzyć wartości alfa „%s” w przenikającym kolorze"
 
 #: ../src/ui/theme.c:1563
 #, c-format
 msgid "Alpha value \"%s\" in blended color is not between 0.0 and 1.0"
 msgstr ""
-"Wartość alfa \"%s\" w przenikającym kolorze nie zawiera się między 0,0 i 1,0"
+"Wartość alfa „%s” w przenikającym kolorze nie zawiera się między 0,0 i 1,0"
 
 #: ../src/ui/theme.c:1609
 #, c-format
 msgid ""
 "Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
 msgstr ""
-"Formatem przenikania jest \"shade/base_color/factor\", \"%s\" nie pasuje do "
+"Formatem przenikania jest „shade/base_color/factor”, „%s” nie pasuje do "
 "formatu"
 
 #: ../src/ui/theme.c:1620
 #, c-format
 msgid "Could not parse shade factor \"%s\" in shaded color"
 msgstr ""
-"Nie można przetworzyć współczynnika przenikania \"%s\" w przenikającym "
-"kolorze"
+"Nie można przetworzyć współczynnika przenikania „%s” w przenikającym kolorze"
 
 #: ../src/ui/theme.c:1630
 #, c-format
 msgid "Shade factor \"%s\" in shaded color is negative"
-msgstr "Współczynnik przenikania \"%s\" w przenikającym kolorze jest ujemny"
+msgstr "Współczynnik przenikania „%s” w przenikającym kolorze jest ujemny"
 
 #: ../src/ui/theme.c:1659
 #, c-format
 msgid "Could not parse color \"%s\""
-msgstr "Nie można przetworzyć koloru \"%s\""
+msgstr "Nie można przetworzyć koloru „%s”"
 
 #: ../src/ui/theme.c:2003
 #, c-format
 msgid "Coordinate expression contains character '%s' which is not allowed"
-msgstr "Wyrażenie określające współrzędne zawiera niedozwolony znak \"%s\""
+msgstr "Wyrażenie określające współrzędne zawiera niedozwolony znak „%s”"
 
 #: ../src/ui/theme.c:2030
 #, c-format
@@ -1110,15 +1107,15 @@ msgid ""
 "Coordinate expression contains floating point number '%s' which could not be "
 "parsed"
 msgstr ""
-"Wyrażenie określające współrzędne zawiera liczbę zmiennoprzecinkową \"%s\", "
+"Wyrażenie określające współrzędne zawiera liczbę zmiennoprzecinkową „%s”, "
 "której nie można przetworzyć"
 
 #: ../src/ui/theme.c:2044
 #, c-format
 msgid "Coordinate expression contains integer '%s' which could not be parsed"
 msgstr ""
-"Wyrażenie określające współrzędne zawiera liczbę całkowitą \"%s\", której "
-"nie można przetworzyć"
+"Wyrażenie określające współrzędne zawiera liczbę całkowitą „%s”, której nie "
+"można przetworzyć"
 
 #: ../src/ui/theme.c:2166
 #, c-format
@@ -1127,7 +1124,7 @@ msgid ""
 "\"%s\""
 msgstr ""
 "Wyrażenie określające współrzędne zawiera nieznany operator na początku "
-"tekstu: \"%s\""
+"tekstu: „%s”"
 
 #: ../src/ui/theme.c:2223
 #, c-format
@@ -1153,7 +1150,7 @@ msgstr ""
 msgid ""
 "Coordinate expression has an operator \"%s\" where an operand was expected"
 msgstr ""
-"Wyrażenie opisujące położenie zawiera operator \"%s\" w miejscu, w którym "
+"Wyrażenie opisujące położenie zawiera operator „%s” w miejscu, w którym "
 "oczekiwano operandu"
 
 #: ../src/ui/theme.c:2451
@@ -1174,14 +1171,13 @@ msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
 "operand in between"
 msgstr ""
-"Wyrażenie opisujące położenie zawiera operator \"%c\" bezpośrednio po "
-"operatorze \"%c\" bez rozdzielającego ich operandu"
+"Wyrażenie opisujące położenie zawiera operator „%c” bezpośrednio po "
+"operatorze „%c” bez rozdzielającego ich operandu"
 
 #: ../src/ui/theme.c:2620 ../src/ui/theme.c:2665
 #, c-format
 msgid "Coordinate expression had unknown variable or constant \"%s\""
-msgstr ""
-"Wyrażenie opisujące położenie zawiera nieznaną zmienną lub stałą \"%s\""
+msgstr "Wyrażenie opisujące położenie zawiera nieznaną zmienną lub stałą „%s”"
 
 #: ../src/ui/theme.c:2719
 #, c-format
@@ -1232,13 +1228,13 @@ msgstr ""
 #: ../src/ui/theme.c:5473
 #, c-format
 msgid "Failed to load theme \"%s\": %s\n"
-msgstr "Wczytanie motywu \"%s\" się nie powiodło: %s\n"
+msgstr "Wczytanie motywu „%s” się nie powiodło: %s\n"
 
 #: ../src/ui/theme.c:5703 ../src/ui/theme.c:5710 ../src/ui/theme.c:5717
 #: ../src/ui/theme.c:5724 ../src/ui/theme.c:5731
 #, c-format
 msgid "No <%s> set for theme \"%s\""
-msgstr "Nie określono elementu <%s> dla motywu \"%s\""
+msgstr "Nie określono elementu <%s> dla motywu „%s”"
 
 #: ../src/ui/theme.c:5739
 #, c-format
@@ -1246,8 +1242,8 @@ msgid ""
 "No frame style set for window type \"%s\" in theme \"%s\", add a <window "
 "type=\"%s\" style_set=\"whatever\"/> element"
 msgstr ""
-"Przy typie okna \"%s\" w motywie \"%s\" nie ustawiono stylu ramki. Należy "
-"dodać element <window type=\"%s\" style_set=\"cokolwiek\"/>"
+"Przy typie okna „%s” w motywie „%s” nie ustawiono stylu ramki. Należy dodać "
+"element <window type=\"%s\" style_set=\"cokolwiek\"/>"
 
 #: ../src/ui/theme.c:6339 ../src/ui/theme.c:6401 ../src/ui/theme.c:6464
 #, c-format
@@ -1255,12 +1251,12 @@ msgid ""
 "User-defined constants must begin with a capital letter; \"%s\" does not"
 msgstr ""
 "Stałe definiowane przez użytkownika powinny rozpoczynać się wielką literą, "
-"natomiast \"%s\" nie spełnia tego warunku"
+"natomiast „%s” nie spełnia tego warunku"
 
 #: ../src/ui/theme.c:6347 ../src/ui/theme.c:6409 ../src/ui/theme.c:6472
 #, c-format
 msgid "Constant \"%s\" has already been defined"
-msgstr "Stała \"%s\" została już określona"
+msgstr "Stała „%s” została już określona"
 
 #. Translators: This means that an attribute which should have been found
 #. * on an XML element was not in fact found.
@@ -1268,7 +1264,7 @@ msgstr "Stała \"%s\" została już określona"
 #: ../src/ui/theme-parser.c:234
 #, c-format
 msgid "No \"%s\" attribute on element <%s>"
-msgstr "Brak atrybutu \"%s\" w elemencie <%s>"
+msgstr "Brak atrybutu „%s” w elemencie <%s>"
 
 #: ../src/ui/theme-parser.c:263 ../src/ui/theme-parser.c:281
 #, c-format
@@ -1278,23 +1274,23 @@ msgstr "Wiersz %d, znak %d: %s"
 #: ../src/ui/theme-parser.c:481
 #, c-format
 msgid "Attribute \"%s\" repeated twice on the same <%s> element"
-msgstr "Atrybut \"%s\" wystąpił dwukrotnie wewnątrz jednego elementu <%s>"
+msgstr "Atrybut „%s” wystąpił dwukrotnie wewnątrz jednego elementu <%s>"
 
 #: ../src/ui/theme-parser.c:505 ../src/ui/theme-parser.c:554
 #, c-format
 msgid "Attribute \"%s\" is invalid on <%s> element in this context"
 msgstr ""
-"Atrybut \"%s\" jest nieprawidłowy wewnątrz elementu <%s> w tym kontekście"
+"Atrybut „%s” jest nieprawidłowy wewnątrz elementu <%s> w tym kontekście"
 
 #: ../src/ui/theme-parser.c:596
 #, c-format
 msgid "Could not parse \"%s\" as an integer"
-msgstr "Nie można przetworzyć \"%s\" jako liczby całkowitej"
+msgstr "Nie można przetworzyć „%s” jako liczby całkowitej"
 
 #: ../src/ui/theme-parser.c:605 ../src/ui/theme-parser.c:660
 #, c-format
 msgid "Did not understand trailing characters \"%s\" in string \"%s\""
-msgstr "Nie można rozpoznać końcowych znaków \"%s\" w napisie \"%s\""
+msgstr "Nie można rozpoznać końcowych znaków „%s” w napisie „%s”"
 
 #: ../src/ui/theme-parser.c:615
 #, c-format
@@ -1309,12 +1305,12 @@ msgstr "Liczba całkowita %ld jest za duża, obecne maksimum to %d"
 #: ../src/ui/theme-parser.c:651 ../src/ui/theme-parser.c:767
 #, c-format
 msgid "Could not parse \"%s\" as a floating point number"
-msgstr "Napis \"%s\" nie jest zapisem liczby zmiennoprzecinkowej"
+msgstr "Napis „%s” nie jest zapisem liczby zmiennoprzecinkowej"
 
 #: ../src/ui/theme-parser.c:682 ../src/ui/theme-parser.c:710
 #, c-format
 msgid "Boolean values must be \"true\" or \"false\" not \"%s\""
-msgstr "Wartościami logicznymi są \"true\" i \"false\", a nie \"%s\""
+msgstr "Wartościami logicznymi są „true” i „false”, a nie „%s”"
 
 #: ../src/ui/theme-parser.c:737
 #, c-format
@@ -1334,25 +1330,25 @@ msgid ""
 "Invalid title scale \"%s\" (must be one of xx-small,x-small,small,medium,"
 "large,x-large,xx-large)\n"
 msgstr ""
-"Nieprawidłowy rozmiar tytułu \"%s\" (musi on być jedną z wartości: xx-small, "
-"x-small, small, medium, large, x-large, xx-large)\n"
+"Nieprawidłowy rozmiar tytułu „%s” (musi on być jedną z wartości: xx-small, x-"
+"small, small, medium, large, x-large, xx-large)\n"
 
 #: ../src/ui/theme-parser.c:1021 ../src/ui/theme-parser.c:1084
 #: ../src/ui/theme-parser.c:1118 ../src/ui/theme-parser.c:1221
 #, c-format
 msgid "<%s> name \"%s\" used a second time"
-msgstr "<%s>: użyto nazwy \"%s\" po raz drugi"
+msgstr "<%s>: użyto nazwy „%s” po raz drugi"
 
 #: ../src/ui/theme-parser.c:1033 ../src/ui/theme-parser.c:1130
 #: ../src/ui/theme-parser.c:1233
 #, c-format
 msgid "<%s> parent \"%s\" has not been defined"
-msgstr "<%s>: nie określono elementu nadrzędnego o nazwie \"%s\""
+msgstr "<%s>: nie określono elementu nadrzędnego o nazwie „%s”"
 
 #: ../src/ui/theme-parser.c:1143
 #, c-format
 msgid "<%s> geometry \"%s\" has not been defined"
-msgstr "<%s>: nie określono geometrii o nazwie \"%s\""
+msgstr "<%s>: nie określono geometrii o nazwie „%s”"
 
 #: ../src/ui/theme-parser.c:1156
 #, c-format
@@ -1366,17 +1362,17 @@ msgstr "Aby wartość alfa miała sens, należy określić tło"
 #: ../src/ui/theme-parser.c:1266
 #, c-format
 msgid "Unknown type \"%s\" on <%s> element"
-msgstr "Nieznany typ \"%s\" wewnątrz elementu <%s>"
+msgstr "Nieznany typ „%s” wewnątrz elementu <%s>"
 
 #: ../src/ui/theme-parser.c:1277
 #, c-format
 msgid "Unknown style_set \"%s\" on <%s> element"
-msgstr "Nieznana wartość atrybutu \"style_set\" (%s) wewnątrz elementu <%s>"
+msgstr "Nieznana wartość atrybutu „style_set” (%s) wewnątrz elementu <%s>"
 
 #: ../src/ui/theme-parser.c:1285
 #, c-format
 msgid "Window type \"%s\" has already been assigned a style set"
-msgstr "Z typem okna \"%s\" powiązano już zbiór stylów"
+msgstr "Z typem okna „%s” powiązano już zbiór stylów"
 
 #: ../src/ui/theme-parser.c:1315 ../src/ui/theme-parser.c:1379
 #: ../src/ui/theme-parser.c:1607 ../src/ui/theme-parser.c:2842
@@ -1399,70 +1395,70 @@ msgstr ""
 #: ../src/ui/theme-parser.c:1452
 #, c-format
 msgid "Distance \"%s\" is unknown"
-msgstr "Odległość \"%s\" jest nieznana"
+msgstr "Odległość „%s” jest nieznana"
 
 #: ../src/ui/theme-parser.c:1497
 #, c-format
 msgid "Aspect ratio \"%s\" is unknown"
-msgstr "Współczynnik proporcji \"%s\" jest nieznany"
+msgstr "Współczynnik proporcji „%s” jest nieznany"
 
 #: ../src/ui/theme-parser.c:1561
 #, c-format
 msgid "Border \"%s\" is unknown"
-msgstr "Krawędź \"%s\" jest nieznana"
+msgstr "Krawędź „%s” jest nieznana"
 
 #: ../src/ui/theme-parser.c:1872
 #, c-format
 msgid "No \"start_angle\" or \"from\" attribute on element <%s>"
-msgstr "Brak atrybutu \"start_angle\" wewnątrz elementu <%s>"
+msgstr "Brak atrybutu „start_angle” lub „from” wewnątrz elementu <%s>"
 
 #: ../src/ui/theme-parser.c:1879
 #, c-format
 msgid "No \"extent_angle\" or \"to\" attribute on element <%s>"
-msgstr "Brak atrybutu \"extent_angle\" wewnątrz elementu <%s>"
+msgstr "Brak atrybutu „extent_angle” lub „to” wewnątrz elementu <%s>"
 
 #: ../src/ui/theme-parser.c:2119
 #, c-format
 msgid "Did not understand value \"%s\" for type of gradient"
-msgstr "Niezrozumiała wartość \"%s\" typu gradientu"
+msgstr "Niezrozumiała wartość „%s” typu gradientu"
 
 #: ../src/ui/theme-parser.c:2197 ../src/ui/theme-parser.c:2572
 #, c-format
 msgid "Did not understand fill type \"%s\" for <%s> element"
-msgstr "Niezrozumiały typ wypełnienia \"%s\" elementu <%s>"
+msgstr "Niezrozumiały typ wypełnienia „%s” elementu <%s>"
 
 #: ../src/ui/theme-parser.c:2364 ../src/ui/theme-parser.c:2447
 #: ../src/ui/theme-parser.c:2510
 #, c-format
 msgid "Did not understand state \"%s\" for <%s> element"
-msgstr "Niezrozumiały stan \"%s\" (atrybut state) elementu <%s>"
+msgstr "Niezrozumiały stan „%s” (atrybut state) elementu <%s>"
 
 #: ../src/ui/theme-parser.c:2374 ../src/ui/theme-parser.c:2457
 #, c-format
 msgid "Did not understand shadow \"%s\" for <%s> element"
-msgstr "Niezrozumiały cień \"%s\" (atrybut \"shadow\") elementu <%s>"
+msgstr "Niezrozumiały cień „%s” (atrybut „shadow”) elementu <%s>"
 
 #: ../src/ui/theme-parser.c:2384
 #, c-format
 msgid "Did not understand arrow \"%s\" for <%s> element"
-msgstr "Niezrozumiała strzałka \"%s\" (atrybut \"arrow\") elementu <%s>"
+msgstr "Niezrozumiała strzałka „%s” (atrybut „arrow”) elementu <%s>"
 
 #: ../src/ui/theme-parser.c:2698 ../src/ui/theme-parser.c:2794
 #, c-format
 msgid "No <draw_ops> called \"%s\" has been defined"
-msgstr "Nie określono elementu <draw_ops> o nazwie \"%s\""
+msgstr "Nie określono elementu <draw_ops> o nazwie „%s”"
 
 #: ../src/ui/theme-parser.c:2710 ../src/ui/theme-parser.c:2806
 #, c-format
 msgid "Including draw_ops \"%s\" here would create a circular reference"
 msgstr ""
-"Włączenie tutaj elementu \"draw_ops\" o nazwie \"%s\" spowodowałoby "
-"zapętlone odwołanie"
+"Włączenie tutaj elementu „draw_ops” o nazwie „%s” spowodowałoby zapętlone "
+"odwołanie"
 
 #: ../src/ui/theme-parser.c:2921
 #, c-format
 msgid "Unknown position \"%s\" for frame piece"
-msgstr "Nieznane położenie \"%s\" elementu ramki"
+msgstr "Nieznane położenie „%s” elementu ramki"
 
 #: ../src/ui/theme-parser.c:2929
 #, c-format
@@ -1472,22 +1468,22 @@ msgstr "Styl ramki zawiera już element o położeniu %s"
 #: ../src/ui/theme-parser.c:2946 ../src/ui/theme-parser.c:3023
 #, c-format
 msgid "No <draw_ops> with the name \"%s\" has been defined"
-msgstr "Nie określono elementu <draw_ops> o nazwie \"%s\""
+msgstr "Nie określono elementu <draw_ops> o nazwie „%s”"
 
 #: ../src/ui/theme-parser.c:2976
 #, c-format
 msgid "Unknown function \"%s\" for button"
-msgstr "Nieznana funkcja \"%s\" powiązana z przyciskiem"
+msgstr "Nieznana funkcja „%s” powiązana z przyciskiem"
 
 #: ../src/ui/theme-parser.c:2986
 #, c-format
 msgid "Button function \"%s\" does not exist in this version (%d, need %d)"
-msgstr "Funkcja \"%s\" przycisku nie istnieje w tej wersji (%d, wymaga %d)"
+msgstr "Funkcja „%s” przycisku nie istnieje w tej wersji (%d, wymaga %d)"
 
 #: ../src/ui/theme-parser.c:2998
 #, c-format
 msgid "Unknown state \"%s\" for button"
-msgstr "Nieznany stan \"%s\" powiązany z przyciskiem"
+msgstr "Nieznany stan „%s” powiązany z przyciskiem"
 
 #: ../src/ui/theme-parser.c:3006
 #, c-format
@@ -1498,22 +1494,22 @@ msgstr ""
 #: ../src/ui/theme-parser.c:3077
 #, c-format
 msgid "\"%s\" is not a valid value for focus attribute"
-msgstr "\"%s\" nie jest prawidłową wartością atrybutu \"focus\""
+msgstr "„%s” nie jest prawidłową wartością atrybutu „focus”"
 
 #: ../src/ui/theme-parser.c:3086
 #, c-format
 msgid "\"%s\" is not a valid value for state attribute"
-msgstr "\"%s\" nie jest prawidłową wartością atrybutu \"state\""
+msgstr "„%s” nie jest prawidłową wartością atrybutu „state”"
 
 #: ../src/ui/theme-parser.c:3096
 #, c-format
 msgid "A style called \"%s\" has not been defined"
-msgstr "Nie określono stylu o nazwie \"%s\""
+msgstr "Nie określono stylu o nazwie „%s”"
 
 #: ../src/ui/theme-parser.c:3117 ../src/ui/theme-parser.c:3140
 #, c-format
 msgid "\"%s\" is not a valid value for resize attribute"
-msgstr "\"%s\" nie jest prawidłową wartością atrybutu \"resize\""
+msgstr "„%s” nie jest prawidłową wartością atrybutu „resize”"
 
 #: ../src/ui/theme-parser.c:3151
 #, c-format
@@ -1521,7 +1517,7 @@ msgid ""
 "Should not have \"resize\" attribute on <%s> element for maximized/shaded "
 "states"
 msgstr ""
-"Element <%s> nie powinien zawierać atrybutu \"resize\" przy stanie "
+"Element <%s> nie powinien zawierać atrybutu „resize” przy stanie "
 "zmaksymalizowanym lub zwiniętym"
 
 #: ../src/ui/theme-parser.c:3165
@@ -1529,7 +1525,7 @@ msgstr ""
 msgid ""
 "Should not have \"resize\" attribute on <%s> element for maximized states"
 msgstr ""
-"Element <%s> nie powinien zawierać atrybutu \"resize\" przy stanie "
+"Element <%s> nie powinien zawierać atrybutu „resize” przy stanie "
 "zmaksymalizowanym"
 
 #: ../src/ui/theme-parser.c:3179 ../src/ui/theme-parser.c:3223
@@ -1557,28 +1553,28 @@ msgid ""
 "Can't have a two draw_ops for a <button> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
 msgstr ""
-"Element <button> nie może zawierać dwóch \"draw_ops\" (motyw zawiera atrybut "
-"\"draw_ops\" i element <draw_ops> lub dwa elementy)"
+"Element <button> nie może zawierać dwóch „draw_ops” (motyw zawiera atrybut "
+"„draw_ops” i element <draw_ops> lub dwa elementy)"
 
 #: ../src/ui/theme-parser.c:3371
 msgid ""
 "Can't have a two draw_ops for a <menu_icon> element (theme specified a "
 "draw_ops attribute and also a <draw_ops> element, or specified two elements)"
 msgstr ""
-"Element <menu_icon> nie może zawierać dwóch \"draw_ops\" (motyw zawiera "
-"atrybut \"draw_ops\" i element <draw_ops> lub dwa elementy)"
+"Element <menu_icon> nie może zawierać dwóch „draw_ops” (motyw zawiera "
+"atrybut „draw_ops” i element <draw_ops> lub dwa elementy)"
 
 #: ../src/ui/theme-parser.c:3435
 #, c-format
 msgid "Bad version specification '%s'"
-msgstr "Błędne określenie wersji \"%s\""
+msgstr "Błędne określenie wersji „%s”"
 
 #: ../src/ui/theme-parser.c:3506
 msgid ""
 "\"version\" attribute cannot be used in metacity-theme-1.xml or metacity-"
 "theme-2.xml"
 msgstr ""
-"Atrybut \"version\" nie może być używany w plikach metacity-theme-1.xml lub "
+"Atrybut „version” nie może być używany w plikach metacity-theme-1.xml lub "
 "metacity-theme-2.xml"
 
 #: ../src/ui/theme-parser.c:3529
@@ -1722,7 +1718,7 @@ msgstr "Błąd podczas wczytywania motywu: %s\n"
 #: ../src/ui/theme-viewer.c:885
 #, c-format
 msgid "Loaded theme \"%s\" in %g seconds\n"
-msgstr "Wczytano motyw \"%s\" w ciągu %g sekund\n"
+msgstr "Wczytano motyw „%s” w ciągu %g sekund\n"
 
 #: ../src/ui/theme-viewer.c:931
 msgid "Normal Title Font"
