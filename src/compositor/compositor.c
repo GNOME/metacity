@@ -105,17 +105,17 @@ meta_compositor_process_event (MetaCompositor *compositor,
 #endif
 }
 
-Pixmap
-meta_compositor_get_window_pixmap (MetaCompositor *compositor,
-                                   MetaWindow     *window)
+cairo_surface_t *
+meta_compositor_get_window_surface (MetaCompositor *compositor,
+                                    MetaWindow     *window)
 {
 #ifdef HAVE_COMPOSITE_EXTENSIONS
-  if (compositor && compositor->get_window_pixmap)
-    return compositor->get_window_pixmap (compositor, window);
+  if (compositor && compositor->get_window_surface)
+    return compositor->get_window_surface (compositor, window);
   else
-    return None;
+    return NULL;
 #else
-  return None;
+  return NULL;
 #endif
 }
 

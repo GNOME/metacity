@@ -42,8 +42,10 @@ struct _MetaCompositor
   void (*process_event) (MetaCompositor *compositor,
                          XEvent         *event,
                          MetaWindow     *window);
-  Pixmap (*get_window_pixmap) (MetaCompositor *compositor,
-                               MetaWindow     *window);
+
+  cairo_surface_t *(* get_window_surface) (MetaCompositor *compositor,
+                                           MetaWindow     *window);
+
   void (*set_active_window) (MetaCompositor *compositor,
                              MetaScreen     *screen,
                              MetaWindow     *window);

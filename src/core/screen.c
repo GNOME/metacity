@@ -1220,16 +1220,17 @@ get_window_pixbuf (MetaWindow *window,
                    int        *width,
                    int        *height)
 {
-  Pixmap pmap;
+  cairo_surface_t *surface;
   GdkPixbuf *pixbuf, *scaled;
   double ratio;
 
-  pmap = meta_compositor_get_window_pixmap (window->display->compositor,
+  surface = meta_compositor_get_window_surface (window->display->compositor,
                                             window);
-  if (pmap == None)
+  if (surface == NULL)
     return NULL;
 
-  pixbuf = meta_ui_get_pixbuf_from_pixmap (pmap);
+  pixbuf = meta_ui_get_pixbuf_from_surface (surface);
+  cairo_surface_destroy (surface);
   if (pixbuf == NULL) 
     return NULL;
 

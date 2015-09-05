@@ -48,8 +48,10 @@ void meta_compositor_set_updates (MetaCompositor *compositor,
 void meta_compositor_process_event (MetaCompositor *compositor,
                                     XEvent         *event,
                                     MetaWindow     *window);
-Pixmap meta_compositor_get_window_pixmap (MetaCompositor *compositor,
-                                          MetaWindow     *window);
+
+cairo_surface_t *meta_compositor_get_window_surface (MetaCompositor *compositor,
+                                                     MetaWindow     *window);
+
 void meta_compositor_set_active_window (MetaCompositor *compositor,
                                         MetaScreen     *screen,
                                         MetaWindow     *window);

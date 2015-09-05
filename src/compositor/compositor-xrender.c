@@ -32,6 +32,7 @@
 #include <unistd.h>
 
 #include <gdk/gdk.h>
+#include <cairo/cairo-xlib.h>
 
 #include "display.h"
 #include "screen.h"
@@ -2905,24 +2906,42 @@ xrender_process_event (MetaCompositor *compositor,
 #endif
 }
 
-static Pixmap
-xrender_get_window_pixmap (MetaCompositor *compositor,
-                           MetaWindow     *window)
+static cairo_surface_t *
+xrender_get_window_surface (MetaCompositor *compositor,
+                            MetaWindow     *window)
 {
 #ifdef HAVE_COMPOSITE_EXTENSIONS
-  MetaCompWindow *cw = NULL;
-  MetaScreen *screen = meta_window_get_screen (window);
-  MetaFrame *frame = meta_window_get_frame (window);
+  MetaFrame *frame;
+  Window xwindow;
+  MetaScreen *screen;
+  MetaCompWindow *cw;
+  MetaCompositorXRender *xrc;
+  Display *display;
+  Pixmap pixmap;
 
-  cw = find_window_for_screen (screen, frame ? meta_frame_get_xwindow (frame) :
-                               meta_window_get_xwindow (window));
+  frame = meta_window_get_frame (window);
+
+  if (frame)
+    xwindow = meta_frame_get_xwindow (frame);
+  else
+    xwindow = meta_window_get_xwindow (window);
+
+  screen = meta_window_get_screen (window);
+  cw = find_window_for_screen (screen, xwindow);
+
   if (cw == NULL)
-    return None;
+    return NULL;
+
+  xrc = (MetaCompositorXRender *) compositor;
+  display = meta_display_get_xdisplay (xrc->display);
 
   if (meta_window_is_shaded (window))
-    return cw->shaded_back_pixmap;
+    pixmap = cw->shaded_back_pixmap;
   else
-    return cw->back_pixmap;
+    pixmap = cw->back_pixmap;
+
+  return cairo_xlib_surface_create (display, pixmap, cw->attrs.visual,
+                                    cw->attrs.width, cw->attrs.height);
 #endif
 }
 
@@ -3108,7 +3127,7 @@ static MetaCompositor comp_info = {
   xrender_remove_window,
   xrender_set_updates,
   xrender_process_event,
-  xrender_get_window_pixmap,
+  xrender_get_window_surface,
   xrender_set_active_window,
   xrender_free_window,
   xrender_maximize_window,

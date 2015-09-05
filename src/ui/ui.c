@@ -943,28 +943,13 @@ meta_ui_get_direction (void)
 }
 
 GdkPixbuf *
-meta_ui_get_pixbuf_from_pixmap (Pixmap pixmap)
+meta_ui_get_pixbuf_from_surface (cairo_surface_t *surface)
 {
-  Display *display;
-  Window root;
-  int x, y;
-  unsigned int width, height, border, depth;
-  GdkVisual *visual;
-  cairo_surface_t *surface;
-  GdkPixbuf *pixbuf;
+  gint width;
+  gint height;
 
-  display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
+  width = cairo_xlib_surface_get_width (surface);
+  height = cairo_xlib_surface_get_height (surface);
 
-  if (!XGetGeometry (display, pixmap, &root, &x, &y, &width, &height, &border, &depth))
-    return NULL;
-
-  visual = gdk_screen_get_rgba_visual (gdk_screen_get_default());
-  if (!visual)
-    visual = gdk_screen_get_system_visual (gdk_screen_get_default());
-
-  surface = cairo_xlib_surface_create (display, pixmap, GDK_VISUAL_XVISUAL (visual), width, height);
-  pixbuf = gdk_pixbuf_get_from_surface (surface, x, y, width, height);
-  cairo_surface_destroy (surface);
-
-  return pixbuf;
+  return gdk_pixbuf_get_from_surface (surface, 0, 0, width, height);
 }
