@@ -1229,8 +1229,14 @@ get_window_pixbuf (MetaWindow *window,
   if (surface == NULL)
     return NULL;
 
+  meta_error_trap_push (NULL);
+
   pixbuf = meta_ui_get_pixbuf_from_surface (surface);
   cairo_surface_destroy (surface);
+
+  if (meta_error_trap_pop_with_return (NULL, FALSE) != Success)
+    g_clear_object (&pixbuf);
+
   if (pixbuf == NULL) 
     return NULL;
 
