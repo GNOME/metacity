@@ -21,6 +21,7 @@ dnl **************************************************************************
 AC_INIT([metacity], [m_version], [m_bugzilla_url])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_SRCDIR([src/core/display.c])
+AC_CONFIG_MACRO_DIR([m4])
 
 dnl **************************************************************************
 dnl Set release policy
