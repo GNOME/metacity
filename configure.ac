@@ -31,6 +31,12 @@ dnl **************************************************************************
 AX_IS_RELEASE([git-directory])
 
 dnl **************************************************************************
+dnl Enable debug
+dnl **************************************************************************
+
+AX_CHECK_ENABLE_DEBUG([yes])
+
+dnl **************************************************************************
 dnl Initialize automake
 dnl **************************************************************************
 
@@ -440,13 +446,6 @@ AC_SUBST(HOST_ALIAS)
 AC_PATH_PROG(ZENITY, zenity, no)
 if test x"$ZENITY" = xno; then
   AC_MSG_ERROR([zenity not found in your path - needed for dialogs])
-fi
-
-AC_ARG_ENABLE(debug,
-	[  --enable-debug		enable debugging],,
-	enable_debug=no)
-if test "x$enable_debug" = "xyes"; then
-	CFLAGS="$CFLAGS -g -O"
 fi
 
 # Warnings are there for a reason
