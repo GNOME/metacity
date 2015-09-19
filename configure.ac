@@ -1,14 +1,26 @@
-m4_define([metacity_major_version], [3])
-m4_define([metacity_minor_version], [17])
-m4_define([metacity_micro_version], [2])
+dnl **************************************************************************
+dnl Define version info
+dnl **************************************************************************
 
-m4_define([metacity_version],
-          [metacity_major_version.metacity_minor_version.metacity_micro_version])
-AC_INIT([metacity], [metacity_version],
-        [http://bugzilla.gnome.org/enter_bug.cgi?product=metacity])
+m4_define([m_major_version], [3])
+m4_define([m_minor_version], [17])
+m4_define([m_micro_version], [2])
+m4_define([m_version], [m_major_version.m_minor_version.m_micro_version])
 
-AC_CONFIG_SRCDIR(src/core/display.c)
-AC_CONFIG_HEADERS(config.h)
+dnl **************************************************************************
+dnl Define bugzilla address
+dnl **************************************************************************
+
+m4_define([m_bugzilla_url],
+          [https://bugzilla.gnome.org/enter_bug.cgi?product=metacity])
+
+dnl **************************************************************************
+dnl Initialize autoconf
+dnl **************************************************************************
+
+AC_INIT([metacity], [m_version], [m_bugzilla_url])
+AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_SRCDIR([src/core/display.c])
 
 dnl **************************************************************************
 dnl Set release policy
