@@ -37,6 +37,12 @@ dnl **************************************************************************
 AX_CHECK_ENABLE_DEBUG([yes])
 
 dnl **************************************************************************
+dnl Add warning flags
+dnl **************************************************************************
+
+AX_COMPILER_FLAGS([WARN_CFLAGS], [WARN_LDFLAGS])
+
+dnl **************************************************************************
 dnl Initialize automake
 dnl **************************************************************************
 
@@ -70,69 +76,6 @@ AC_CHECK_SIZEOF(__int64)
 
 ## byte order
 AC_C_BIGENDIAN
-
-#### Warnings
-
-changequote(,)dnl
-if test "x$GCC" = "xyes"; then
-  case " $CFLAGS " in
-  *[\ \	]-Wall[\ \	]*) ;;
-  *) CFLAGS="$CFLAGS -Wall" ;;
-  esac
-
-#  case " $CFLAGS " in
-#  *[\ \	]-Wshadow[\ \	]*) ;;
-#  *) CFLAGS="$CFLAGS -Wshadow" ;;
-#  esac
-
-  case " $CFLAGS " in
-  *[\ \	]-Wchar-subscripts[\ \	]*) ;;
-  *) CFLAGS="$CFLAGS -Wchar-subscripts" ;;
-  esac
-
-  case " $CFLAGS " in
-  *[\ \	]-Wmissing-declarations[\ \	]*) ;;
-  *) CFLAGS="$CFLAGS -Wmissing-declarations" ;;
-  esac
-
-  case " $CFLAGS " in
-  *[\ \	]-Wmissing-prototypes[\ \	]*) ;;
-  *) CFLAGS="$CFLAGS -Wmissing-prototypes" ;;
-  esac
-
-  case " $CFLAGS " in
-  *[\ \	]-Wnested-externs[\ \	]*) ;;
-  *) CFLAGS="$CFLAGS -Wnested-externs" ;;
-  esac
-
-  case " $CFLAGS " in
-  *[\ \	]-Wpointer-arith[\ \	]*) ;;
-  *) CFLAGS="$CFLAGS -Wpointer-arith" ;;
-  esac
-
-  case " $CFLAGS " in
-  *[\ \	]-Wcast-align[\ \	]*) ;;
-  *) CFLAGS="$CFLAGS -Wcast-align" ;;
-  esac
-
-  case " $CFLAGS " in
-  *[\ \	]-Wsign-compare[\ \	]*) ;;
-  *) CFLAGS="$CFLAGS -Wsign-compare" ;;
-  esac
-
-  if test "x$enable_ansi" = "xyes"; then
-    case " $CFLAGS " in
-    *[\ \	]-ansi[\ \	]*) ;;
-    *) CFLAGS="$CFLAGS -ansi" ;;
-    esac
-
-    case " $CFLAGS " in
-    *[\ \	]-pedantic[\ \	]*) ;;
-    *) CFLAGS="$CFLAGS -pedantic" ;;
-    esac
-  fi
-fi
-changequote([,])dnl
 
 GTK_API_VERSION=3.0
 GTK_MIN_VERSION=3.15.2
@@ -446,11 +389,6 @@ AC_SUBST(HOST_ALIAS)
 AC_PATH_PROG(ZENITY, zenity, no)
 if test x"$ZENITY" = xno; then
   AC_MSG_ERROR([zenity not found in your path - needed for dialogs])
-fi
-
-# Warnings are there for a reason
-if test "x$GCC" = "xyes"; then
-  CFLAGS="$CFLAGS -Wall -ansi"
 fi
 
 AC_ARG_ENABLE(themes-documentation,
