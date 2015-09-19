@@ -1,28 +1,29 @@
+NULL =
+
 SUBDIRS = \
+	doc \
 	src \
 	po \
-	doc
+	$(NULL)
 
 EXTRA_DIST = \
+	AUTHORS \
+	COPYING \
 	HACKING \
-	rationales.txt
+	README \
+	rationales.txt \
+	$(NULL)
 
 MAINTAINERCLEANFILES = \
+	$(GITIGNORE_MAINTAINERCLEANFILES_TOPLEVEL) \
+	$(GITIGNORE_MAINTAINERCLEANFILES_MAKEFILE_IN) \
+	$(GITIGNORE_MAINTAINERCLEANFILES_M4_LIBTOOL) \
+	`find "m4" -type f -name "*.m4" -print` \
 	$(srcdir)/INSTALL \
-	$(srcdir)/aclocal.m4 \
-	$(srcdir)/compile \
-	$(srcdir)/config.guess \
-	$(srcdir)/config.h.in \
 	$(srcdir)/config.h.in~ \
-	$(srcdir)/config.sub \
-	$(srcdir)/depcomp \
-	$(srcdir)/install-sh \
-	$(srcdir)/ltmain.sh \
-	$(srcdir)/missing \
-	`find "$(srcdir)" -type f -name Makefile.in -print` \
-	$(srcdir)/configure
+	$(srcdir)/configure \
+	$(NULL)
 
-GITIGNOREFILES = \
-	$(PACKAGE)-\*.tar.{gz,bz2,xz}
+GITIGNOREFILES = $(PACKAGE)-\*.tar.{gz,bz2,xz}
 
 -include $(top_srcdir)/git.mk
