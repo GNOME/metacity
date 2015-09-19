@@ -12,6 +12,12 @@ AC_INIT([metacity], [metacity_version],
 AC_CONFIG_SRCDIR(src/core/display.c)
 AC_CONFIG_HEADERS(config.h)
 
+dnl **************************************************************************
+dnl Set release policy
+dnl **************************************************************************
+
+AX_IS_RELEASE([git-directory])
+
 AM_INIT_AUTOMAKE([1.11.1 no-dist-gzip dist-xz])
 m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])],)
 AM_MAINTAINER_MODE([enable])
