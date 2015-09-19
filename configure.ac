@@ -30,9 +30,13 @@ dnl **************************************************************************
 
 AX_IS_RELEASE([git-directory])
 
-AM_INIT_AUTOMAKE([1.11.1 no-dist-gzip dist-xz])
-m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])],)
+dnl **************************************************************************
+dnl Initialize automake
+dnl **************************************************************************
+
+AM_INIT_AUTOMAKE([1.13 no-dist-gzip dist-xz tar-ustar -Wno-portability])
 AM_MAINTAINER_MODE([enable])
+AM_SILENT_RULES([yes])
 
 # Honor aclocal flags
 AC_SUBST(ACLOCAL_AMFLAGS, "\${ACLOCAL_FLAGS}")
