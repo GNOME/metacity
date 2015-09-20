@@ -602,17 +602,13 @@ bindings_changed_callback (MetaPreference pref,
 
   display = data;
 
-  switch (pref)
-    {
-    case META_PREF_KEYBINDINGS:
-      rebuild_key_binding_table (display);
-      reload_keycodes (display);
-      reload_modifiers (display);
-      regrab_key_bindings (display);
-      break;
-    default:
-      break;
-    }
+  if (pref != META_PREF_KEYBINDINGS)
+    return;
+
+  rebuild_key_binding_table (display);
+  reload_keycodes (display);
+  reload_modifiers (display);
+  regrab_key_bindings (display);
 }
 
 void
@@ -1371,6 +1367,21 @@ meta_display_process_key_event (MetaDisplay *display,
               keep_grab = process_workspace_switch_grab (display, screen, event, keysym);
               break;
 
+            case META_GRAB_OP_NONE:
+            case META_GRAB_OP_CLICKING_MINIMIZE:
+            case META_GRAB_OP_CLICKING_MAXIMIZE:
+            case META_GRAB_OP_CLICKING_UNMAXIMIZE:
+            case META_GRAB_OP_CLICKING_DELETE:
+            case META_GRAB_OP_CLICKING_MENU:
+            case META_GRAB_OP_CLICKING_APPMENU:
+            case META_GRAB_OP_CLICKING_SHADE:
+            case META_GRAB_OP_CLICKING_UNSHADE:
+            case META_GRAB_OP_CLICKING_ABOVE:
+            case META_GRAB_OP_CLICKING_UNABOVE:
+            case META_GRAB_OP_CLICKING_STICK:
+            case META_GRAB_OP_CLICKING_UNSTICK:
+              break;
+
             default:
               break;
             }
@@ -1527,6 +1538,8 @@ process_keyboard_move_grab (MetaDisplay *display,
       y += incr;
       handled = TRUE;
       break;
+    default:
+      break;
     }
 
   switch (keysym)
@@ -1544,6 +1557,8 @@ process_keyboard_move_grab (MetaDisplay *display,
     case XK_KP_Right:
       x += incr;
       handled = TRUE;
+      break;
+    default:
       break;
     }
 
@@ -1620,6 +1635,8 @@ process_keyboard_resize_grab_op_change (MetaDisplay *display,
           display->grab_op = META_GRAB_OP_KEYBOARD_RESIZING_E;
           handled = TRUE;
           break;
+        default:
+          break;
         }
       break;
 
@@ -1635,6 +1652,8 @@ process_keyboard_resize_grab_op_change (MetaDisplay *display,
         case XK_KP_Right:
           display->grab_op = META_GRAB_OP_KEYBOARD_RESIZING_E;
           handled = TRUE;
+          break;
+        default:
           break;
         }
       break;
@@ -1652,6 +1671,8 @@ process_keyboard_resize_grab_op_change (MetaDisplay *display,
           display->grab_op = META_GRAB_OP_KEYBOARD_RESIZING_E;
           handled = TRUE;
           break;
+        default:
+          break;
         }
       break;
 
@@ -1667,6 +1688,8 @@ process_keyboard_resize_grab_op_change (MetaDisplay *display,
         case XK_KP_Down:
           display->grab_op = META_GRAB_OP_KEYBOARD_RESIZING_S;
           handled = TRUE;
+          break;
+        default:
           break;
         }
       break;
@@ -1684,6 +1707,8 @@ process_keyboard_resize_grab_op_change (MetaDisplay *display,
           display->grab_op = META_GRAB_OP_KEYBOARD_RESIZING_S;
           handled = TRUE;
           break;
+        default:
+          break;
         }
       break;
 
@@ -1691,6 +1716,39 @@ process_keyboard_resize_grab_op_change (MetaDisplay *display,
     case META_GRAB_OP_KEYBOARD_RESIZING_NE:
     case META_GRAB_OP_KEYBOARD_RESIZING_SW:
     case META_GRAB_OP_KEYBOARD_RESIZING_NW:
+      break;
+
+    case META_GRAB_OP_NONE:
+    case META_GRAB_OP_MOVING:
+    case META_GRAB_OP_RESIZING_SE:
+    case META_GRAB_OP_RESIZING_S:
+    case META_GRAB_OP_RESIZING_SW:
+    case META_GRAB_OP_RESIZING_N:
+    case META_GRAB_OP_RESIZING_NE:
+    case META_GRAB_OP_RESIZING_NW:
+    case META_GRAB_OP_RESIZING_W:
+    case META_GRAB_OP_RESIZING_E:
+    case META_GRAB_OP_KEYBOARD_MOVING:
+    case META_GRAB_OP_KEYBOARD_TABBING_NORMAL:
+    case META_GRAB_OP_KEYBOARD_TABBING_DOCK:
+    case META_GRAB_OP_KEYBOARD_ESCAPING_NORMAL:
+    case META_GRAB_OP_KEYBOARD_ESCAPING_DOCK:
+    case META_GRAB_OP_KEYBOARD_ESCAPING_GROUP:
+    case META_GRAB_OP_KEYBOARD_TABBING_GROUP:
+    case META_GRAB_OP_KEYBOARD_WORKSPACE_SWITCHING:
+    case META_GRAB_OP_CLICKING_MINIMIZE:
+    case META_GRAB_OP_CLICKING_MAXIMIZE:
+    case META_GRAB_OP_CLICKING_UNMAXIMIZE:
+    case META_GRAB_OP_CLICKING_DELETE:
+    case META_GRAB_OP_CLICKING_MENU:
+    case META_GRAB_OP_CLICKING_APPMENU:
+    case META_GRAB_OP_CLICKING_SHADE:
+    case META_GRAB_OP_CLICKING_UNSHADE:
+    case META_GRAB_OP_CLICKING_ABOVE:
+    case META_GRAB_OP_CLICKING_UNABOVE:
+    case META_GRAB_OP_CLICKING_STICK:
+    case META_GRAB_OP_CLICKING_UNSTICK:
+      g_assert_not_reached ();
       break;
 
     default:
@@ -1823,6 +1881,9 @@ process_keyboard_resize_grab (MetaDisplay *display,
         case CenterGravity:
           g_assert_not_reached ();
           break;
+
+        default:
+          break;
         }
 
       handled = TRUE;
@@ -1850,6 +1911,9 @@ process_keyboard_resize_grab (MetaDisplay *display,
         case WestGravity:
         case CenterGravity:
           g_assert_not_reached ();
+          break;
+
+        default:
           break;
         }
 
@@ -1879,6 +1943,9 @@ process_keyboard_resize_grab (MetaDisplay *display,
         case CenterGravity:
           g_assert_not_reached ();
           break;
+
+        default:
+          break;
         }
 
       handled = TRUE;
@@ -1906,6 +1973,9 @@ process_keyboard_resize_grab (MetaDisplay *display,
         case SouthGravity:
         case CenterGravity:
           g_assert_not_reached ();
+          break;
+
+        default:
           break;
         }
 
@@ -2088,16 +2158,12 @@ process_tab_grab (MetaDisplay *display,
       /* CYCLE_* are traditionally Escape-based actions,
        * and should cancel traditionally Tab-based ones.
        */
-       switch (display->grab_op)
+      if (display->grab_op != META_GRAB_OP_KEYBOARD_ESCAPING_NORMAL &&
+          display->grab_op != META_GRAB_OP_KEYBOARD_ESCAPING_DOCK)
         {
-        case META_GRAB_OP_KEYBOARD_ESCAPING_NORMAL:
-        case META_GRAB_OP_KEYBOARD_ESCAPING_DOCK:
-         /* carry on */
-          break;
-        default:
           return FALSE;
         }
-       break;
+      break;
     case META_KEYBINDING_ACTION_SWITCH_PANELS:
     case META_KEYBINDING_ACTION_SWITCH_WINDOWS:
     case META_KEYBINDING_ACTION_SWITCH_APPLICATIONS:
@@ -2107,13 +2173,9 @@ process_tab_grab (MetaDisplay *display,
       /* SWITCH_* are traditionally Tab-based actions,
        * and should cancel traditionally Escape-based ones.
        */
-      switch (display->grab_op)
+      if (display->grab_op != META_GRAB_OP_KEYBOARD_TABBING_NORMAL &&
+          display->grab_op != META_GRAB_OP_KEYBOARD_TABBING_DOCK)
         {
-        case META_GRAB_OP_KEYBOARD_TABBING_NORMAL:
-        case META_GRAB_OP_KEYBOARD_TABBING_DOCK:
-          /* carry on */
-          break;
-        default:
           /* Also, we must re-lower and re-minimize whatever window
            * we'd previously raised and unminimized.
            */
@@ -2131,16 +2193,77 @@ process_tab_grab (MetaDisplay *display,
     case META_KEYBINDING_ACTION_CYCLE_GROUP_BACKWARD:
     case META_KEYBINDING_ACTION_SWITCH_GROUP:
     case META_KEYBINDING_ACTION_SWITCH_GROUP_BACKWARD:
-      switch (display->grab_op)
+      if (display->grab_op != META_GRAB_OP_KEYBOARD_ESCAPING_GROUP &&
+          display->grab_op != META_GRAB_OP_KEYBOARD_TABBING_GROUP)
         {
-        case META_GRAB_OP_KEYBOARD_ESCAPING_GROUP:
-        case META_GRAB_OP_KEYBOARD_TABBING_GROUP:
-          /* carry on */
-             break;
-        default:
-             return FALSE;
+          return FALSE;
         }
-
+      break;
+    case META_KEYBINDING_ACTION_NONE:
+    case META_KEYBINDING_ACTION_WORKSPACE_1:
+    case META_KEYBINDING_ACTION_WORKSPACE_2:
+    case META_KEYBINDING_ACTION_WORKSPACE_3:
+    case META_KEYBINDING_ACTION_WORKSPACE_4:
+    case META_KEYBINDING_ACTION_WORKSPACE_5:
+    case META_KEYBINDING_ACTION_WORKSPACE_6:
+    case META_KEYBINDING_ACTION_WORKSPACE_7:
+    case META_KEYBINDING_ACTION_WORKSPACE_8:
+    case META_KEYBINDING_ACTION_WORKSPACE_9:
+    case META_KEYBINDING_ACTION_WORKSPACE_10:
+    case META_KEYBINDING_ACTION_WORKSPACE_11:
+    case META_KEYBINDING_ACTION_WORKSPACE_12:
+    case META_KEYBINDING_ACTION_WORKSPACE_LEFT:
+    case META_KEYBINDING_ACTION_WORKSPACE_RIGHT:
+    case META_KEYBINDING_ACTION_WORKSPACE_UP:
+    case META_KEYBINDING_ACTION_WORKSPACE_DOWN:
+    case META_KEYBINDING_ACTION_SHOW_DESKTOP:
+    case META_KEYBINDING_ACTION_PANEL_MAIN_MENU:
+    case META_KEYBINDING_ACTION_PANEL_RUN_DIALOG:
+    case META_KEYBINDING_ACTION_SET_SPEW_MARK:
+    case META_KEYBINDING_ACTION_ACTIVATE_WINDOW_MENU:
+    case META_KEYBINDING_ACTION_TOGGLE_FULLSCREEN:
+    case META_KEYBINDING_ACTION_TOGGLE_MAXIMIZED:
+    case META_KEYBINDING_ACTION_TOGGLE_TILED_LEFT:
+    case META_KEYBINDING_ACTION_TOGGLE_TILED_RIGHT:
+    case META_KEYBINDING_ACTION_TOGGLE_ABOVE:
+    case META_KEYBINDING_ACTION_MAXIMIZE:
+    case META_KEYBINDING_ACTION_UNMAXIMIZE:
+    case META_KEYBINDING_ACTION_TOGGLE_SHADED:
+    case META_KEYBINDING_ACTION_MINIMIZE:
+    case META_KEYBINDING_ACTION_CLOSE:
+    case META_KEYBINDING_ACTION_BEGIN_MOVE:
+    case META_KEYBINDING_ACTION_BEGIN_RESIZE:
+    case META_KEYBINDING_ACTION_TOGGLE_ON_ALL_WORKSPACES:
+    case META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_1:
+    case META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_2:
+    case META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_3:
+    case META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_4:
+    case META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_5:
+    case META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_6:
+    case META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_7:
+    case META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_8:
+    case META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_9:
+    case META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_10:
+    case META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_11:
+    case META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_12:
+    case META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_LEFT:
+    case META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_RIGHT:
+    case META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_UP:
+    case META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_DOWN:
+    case META_KEYBINDING_ACTION_RAISE_OR_LOWER:
+    case META_KEYBINDING_ACTION_RAISE:
+    case META_KEYBINDING_ACTION_LOWER:
+    case META_KEYBINDING_ACTION_MAXIMIZE_VERTICALLY:
+    case META_KEYBINDING_ACTION_MAXIMIZE_HORIZONTALLY:
+    case META_KEYBINDING_ACTION_MOVE_TO_CORNER_NW:
+    case META_KEYBINDING_ACTION_MOVE_TO_CORNER_NE:
+    case META_KEYBINDING_ACTION_MOVE_TO_CORNER_SW:
+    case META_KEYBINDING_ACTION_MOVE_TO_CORNER_SE:
+    case META_KEYBINDING_ACTION_MOVE_TO_SIDE_N:
+    case META_KEYBINDING_ACTION_MOVE_TO_SIDE_S:
+    case META_KEYBINDING_ACTION_MOVE_TO_SIDE_E:
+    case META_KEYBINDING_ACTION_MOVE_TO_SIDE_W:
+    case META_KEYBINDING_ACTION_MOVE_TO_CENTER:
       break;
     default:
       break;
@@ -2157,36 +2280,35 @@ process_tab_grab (MetaDisplay *display,
   key_used = FALSE;
   backward = FALSE;
 
-  switch (action)
+  if (action == META_KEYBINDING_ACTION_CYCLE_PANELS ||
+      action == META_KEYBINDING_ACTION_CYCLE_WINDOWS ||
+      action == META_KEYBINDING_ACTION_CYCLE_GROUP)
     {
-    case META_KEYBINDING_ACTION_CYCLE_PANELS:
-    case META_KEYBINDING_ACTION_CYCLE_WINDOWS:
-    case META_KEYBINDING_ACTION_CYCLE_GROUP:
       popup_not_showing = TRUE;
       key_used = TRUE;
-      break;
-    case META_KEYBINDING_ACTION_CYCLE_PANELS_BACKWARD:
-    case META_KEYBINDING_ACTION_CYCLE_WINDOWS_BACKWARD:
-    case META_KEYBINDING_ACTION_CYCLE_GROUP_BACKWARD:
+    }
+  else if (action == META_KEYBINDING_ACTION_CYCLE_PANELS_BACKWARD ||
+           action == META_KEYBINDING_ACTION_CYCLE_WINDOWS_BACKWARD ||
+           action == META_KEYBINDING_ACTION_CYCLE_GROUP_BACKWARD)
+    {
       popup_not_showing = TRUE;
       key_used = TRUE;
       backward = TRUE;
-      break;
-    case META_KEYBINDING_ACTION_SWITCH_PANELS:
-    case META_KEYBINDING_ACTION_SWITCH_WINDOWS:
-    case META_KEYBINDING_ACTION_SWITCH_APPLICATIONS:
-    case META_KEYBINDING_ACTION_SWITCH_GROUP:
+    }
+  else if (action == META_KEYBINDING_ACTION_SWITCH_PANELS ||
+           action == META_KEYBINDING_ACTION_SWITCH_WINDOWS ||
+           action == META_KEYBINDING_ACTION_SWITCH_APPLICATIONS ||
+           action == META_KEYBINDING_ACTION_SWITCH_GROUP)
+    {
       key_used = TRUE;
-      break;
-    case META_KEYBINDING_ACTION_SWITCH_PANELS_BACKWARD:
-    case META_KEYBINDING_ACTION_SWITCH_WINDOWS_BACKWARD:
-    case META_KEYBINDING_ACTION_SWITCH_APPLICATIONS_BACKWARD:
-    case META_KEYBINDING_ACTION_SWITCH_GROUP_BACKWARD:
+    }
+  else if (action == META_KEYBINDING_ACTION_SWITCH_PANELS_BACKWARD ||
+           action == META_KEYBINDING_ACTION_SWITCH_WINDOWS_BACKWARD ||
+           action == META_KEYBINDING_ACTION_SWITCH_APPLICATIONS_BACKWARD ||
+           action == META_KEYBINDING_ACTION_SWITCH_GROUP_BACKWARD)
+    {
       key_used = TRUE;
       backward = TRUE;
-      break;
-    default:
-      break;
     }
 
   if (key_used)
@@ -2551,31 +2673,29 @@ process_workspace_switch_grab (MetaDisplay *display,
                                               event->xkey.keycode,
                                               display->grab_mask);
 
-      switch (action)
+      if (action == META_KEYBINDING_ACTION_WORKSPACE_UP)
         {
-        case META_KEYBINDING_ACTION_WORKSPACE_UP:
           target_workspace = meta_workspace_get_neighbor (workspace,
                                                           META_MOTION_UP);
-          break;
-
-        case META_KEYBINDING_ACTION_WORKSPACE_DOWN:
+        }
+      else if (action == META_KEYBINDING_ACTION_WORKSPACE_DOWN)
+        {
           target_workspace = meta_workspace_get_neighbor (workspace,
                                                           META_MOTION_DOWN);
-          break;
-
-        case META_KEYBINDING_ACTION_WORKSPACE_LEFT:
+        }
+      else if (action == META_KEYBINDING_ACTION_WORKSPACE_LEFT)
+        {
           target_workspace = meta_workspace_get_neighbor (workspace,
                                                           META_MOTION_LEFT);
-          break;
-
-        case META_KEYBINDING_ACTION_WORKSPACE_RIGHT:
+        }
+      else if (action == META_KEYBINDING_ACTION_WORKSPACE_RIGHT)
+        {
           target_workspace = meta_workspace_get_neighbor (workspace,
                                                           META_MOTION_RIGHT);
-          break;
-
-        default:
+        }
+      else
+        {
           target_workspace = NULL;
-          break;
         }
 
       if (target_workspace)
@@ -2633,18 +2753,10 @@ handle_panel (MetaDisplay    *display,
   XClientMessageEvent ev;
 
   action_atom = None;
-  switch (action)
-    {
-    /* FIXME: The numbers are wrong */
-    case META_KEYBINDING_ACTION_PANEL_MAIN_MENU:
-      action_atom = display->atom__GNOME_PANEL_ACTION_MAIN_MENU;
-      break;
-    case META_KEYBINDING_ACTION_PANEL_RUN_DIALOG:
-      action_atom = display->atom__GNOME_PANEL_ACTION_RUN_DIALOG;
-      break;
-    default:
-      return;
-    }
+  if (action == META_KEYBINDING_ACTION_PANEL_MAIN_MENU)
+    action_atom = display->atom__GNOME_PANEL_ACTION_MAIN_MENU;
+  else if (action == META_KEYBINDING_ACTION_PANEL_RUN_DIALOG)
+    action_atom = display->atom__GNOME_PANEL_ACTION_RUN_DIALOG;
 
   ev.type = ClientMessage;
   ev.window = screen->xroot;
@@ -2707,6 +2819,8 @@ tab_op_from_tab_type (MetaTabList type)
       return META_GRAB_OP_KEYBOARD_TABBING_DOCK;
     case META_TAB_LIST_GROUP:
       return META_GRAB_OP_KEYBOARD_TABBING_GROUP;
+    default:
+      break;
     }
 
   g_assert_not_reached ();
@@ -2725,6 +2839,8 @@ cycle_op_from_tab_type (MetaTabList type)
       return META_GRAB_OP_KEYBOARD_ESCAPING_DOCK;
     case META_TAB_LIST_GROUP:
       return META_GRAB_OP_KEYBOARD_ESCAPING_GROUP;
+    default:
+      break;
     }
 
   g_assert_not_reached ();
