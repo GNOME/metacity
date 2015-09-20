@@ -61,7 +61,6 @@ static void     restack_window            (MetaWindow     *window,
 static void     recalc_window_type        (MetaWindow     *window);
 static void     recalc_window_features    (MetaWindow     *window);
 static void     invalidate_work_areas     (MetaWindow     *window);
-static void     recalc_window_type        (MetaWindow     *window);
 static void     set_wm_state              (MetaWindow     *window,
                                            int             state);
 static void     set_net_wm_state          (MetaWindow     *window);
@@ -141,6 +140,8 @@ wm_state_to_string (int state)
       return "IconicState";
     case WithdrawnState:
       return "WithdrawnState";
+    default:
+      break;
     }
 
   return "Unknown";
@@ -2016,6 +2017,8 @@ window_state_on_map (MetaWindow *window,
     case META_WINDOW_DIALOG:
     case META_WINDOW_MODAL_DIALOG:
       /* The default is correct for these */
+      break;
+    default:
       break;
     }
 }
@@ -4738,6 +4741,37 @@ meta_window_move_resize_request (MetaWindow *window,
         case META_GRAB_OP_RESIZING_E:
           in_grab_op = TRUE;
           break;
+        case META_GRAB_OP_NONE:
+        case META_GRAB_OP_KEYBOARD_MOVING:
+        case META_GRAB_OP_KEYBOARD_RESIZING_UNKNOWN:
+        case META_GRAB_OP_KEYBOARD_RESIZING_S:
+        case META_GRAB_OP_KEYBOARD_RESIZING_N:
+        case META_GRAB_OP_KEYBOARD_RESIZING_W:
+        case META_GRAB_OP_KEYBOARD_RESIZING_E:
+        case META_GRAB_OP_KEYBOARD_RESIZING_SE:
+        case META_GRAB_OP_KEYBOARD_RESIZING_NE:
+        case META_GRAB_OP_KEYBOARD_RESIZING_SW:
+        case META_GRAB_OP_KEYBOARD_RESIZING_NW:
+        case META_GRAB_OP_KEYBOARD_TABBING_NORMAL:
+        case META_GRAB_OP_KEYBOARD_TABBING_DOCK:
+        case META_GRAB_OP_KEYBOARD_ESCAPING_NORMAL:
+        case META_GRAB_OP_KEYBOARD_ESCAPING_DOCK:
+        case META_GRAB_OP_KEYBOARD_ESCAPING_GROUP:
+        case META_GRAB_OP_KEYBOARD_TABBING_GROUP:
+        case META_GRAB_OP_KEYBOARD_WORKSPACE_SWITCHING:
+        case META_GRAB_OP_CLICKING_MINIMIZE:
+        case META_GRAB_OP_CLICKING_MAXIMIZE:
+        case META_GRAB_OP_CLICKING_UNMAXIMIZE:
+        case META_GRAB_OP_CLICKING_DELETE:
+        case META_GRAB_OP_CLICKING_MENU:
+        case META_GRAB_OP_CLICKING_APPMENU:
+        case META_GRAB_OP_CLICKING_SHADE:
+        case META_GRAB_OP_CLICKING_UNSHADE:
+        case META_GRAB_OP_CLICKING_ABOVE:
+        case META_GRAB_OP_CLICKING_UNABOVE:
+        case META_GRAB_OP_CLICKING_STICK:
+        case META_GRAB_OP_CLICKING_UNSTICK:
+          break;
         default:
           break;
         }
@@ -4981,6 +5015,8 @@ restack_window (MetaWindow *window,
    case BottomIf:
    case Opposite:
      break;
+   default:
+    break;
    }
 }
 
@@ -6515,6 +6551,9 @@ recalc_window_features (MetaWindow *window)
 
     case META_WINDOW_NORMAL:
       break;
+
+    default:
+      break;
     }
 
   meta_topic (META_DEBUG_WINDOW_OPS,
@@ -7279,6 +7318,7 @@ update_resize (MetaWindow *window,
   MetaRectangle old;
   int new_x, new_y;
   double remaining;
+  MetaGrabOp grab_op;
 
   window->display->grab_latest_motion_x = x;
   window->display->grab_latest_motion_y = y;
@@ -7349,53 +7389,46 @@ update_resize (MetaWindow *window,
    * meta_rectangle_resize_with_gravity().  If we were to use that, we
    * could just increment new_w and new_h by dx and dy in all cases.
    */
-  switch (window->display->grab_op)
-    {
-    case META_GRAB_OP_RESIZING_SE:
-    case META_GRAB_OP_RESIZING_NE:
-    case META_GRAB_OP_RESIZING_E:
-    case META_GRAB_OP_KEYBOARD_RESIZING_SE:
-    case META_GRAB_OP_KEYBOARD_RESIZING_NE:
-    case META_GRAB_OP_KEYBOARD_RESIZING_E:
-      new_w += dx;
-      break;
 
-    case META_GRAB_OP_RESIZING_NW:
-    case META_GRAB_OP_RESIZING_SW:
-    case META_GRAB_OP_RESIZING_W:
-    case META_GRAB_OP_KEYBOARD_RESIZING_NW:
-    case META_GRAB_OP_KEYBOARD_RESIZING_SW:
-    case META_GRAB_OP_KEYBOARD_RESIZING_W:
+  grab_op = window->display->grab_op;
+
+  if (grab_op == META_GRAB_OP_RESIZING_SE ||
+      grab_op == META_GRAB_OP_RESIZING_NE ||
+      grab_op == META_GRAB_OP_RESIZING_E ||
+      grab_op == META_GRAB_OP_KEYBOARD_RESIZING_SE ||
+      grab_op == META_GRAB_OP_KEYBOARD_RESIZING_NE ||
+      grab_op == META_GRAB_OP_KEYBOARD_RESIZING_E)
+    {
+      new_w += dx;
+    }
+  else if (grab_op == META_GRAB_OP_RESIZING_NW ||
+           grab_op == META_GRAB_OP_RESIZING_SW ||
+           grab_op == META_GRAB_OP_RESIZING_W ||
+           grab_op == META_GRAB_OP_KEYBOARD_RESIZING_NW ||
+           grab_op == META_GRAB_OP_KEYBOARD_RESIZING_SW ||
+           grab_op == META_GRAB_OP_KEYBOARD_RESIZING_W)
+    {
       new_w -= dx;
       new_x += dx;
-      break;
-
-    default:
-      break;
     }
-
-  switch (window->display->grab_op)
+  else if (grab_op == META_GRAB_OP_RESIZING_SE ||
+           grab_op == META_GRAB_OP_RESIZING_S ||
+           grab_op == META_GRAB_OP_RESIZING_SW ||
+           grab_op == META_GRAB_OP_KEYBOARD_RESIZING_SE ||
+           grab_op == META_GRAB_OP_KEYBOARD_RESIZING_S ||
+           grab_op == META_GRAB_OP_KEYBOARD_RESIZING_SW)
     {
-    case META_GRAB_OP_RESIZING_SE:
-    case META_GRAB_OP_RESIZING_S:
-    case META_GRAB_OP_RESIZING_SW:
-    case META_GRAB_OP_KEYBOARD_RESIZING_SE:
-    case META_GRAB_OP_KEYBOARD_RESIZING_S:
-    case META_GRAB_OP_KEYBOARD_RESIZING_SW:
       new_h += dy;
-      break;
-
-    case META_GRAB_OP_RESIZING_N:
-    case META_GRAB_OP_RESIZING_NE:
-    case META_GRAB_OP_RESIZING_NW:
-    case META_GRAB_OP_KEYBOARD_RESIZING_N:
-    case META_GRAB_OP_KEYBOARD_RESIZING_NE:
-    case META_GRAB_OP_KEYBOARD_RESIZING_NW:
+    }
+  else if (grab_op == META_GRAB_OP_RESIZING_N ||
+           grab_op == META_GRAB_OP_RESIZING_NE ||
+           grab_op == META_GRAB_OP_RESIZING_NW ||
+           grab_op == META_GRAB_OP_KEYBOARD_RESIZING_N ||
+           grab_op == META_GRAB_OP_KEYBOARD_RESIZING_NE ||
+           grab_op == META_GRAB_OP_KEYBOARD_RESIZING_NW)
+    {
       new_h -= dy;
       new_y += dy;
-      break;
-    default:
-      break;
     }
 
   remaining = 0;
@@ -7436,20 +7469,16 @@ update_resize (MetaWindow *window,
    * aspect ratio windows don't interact nicely with the above stuff.  So,
    * to avoid some nasty flicker, we enforce that.
    */
-  switch (window->display->grab_op)
+
+  if (grab_op == META_GRAB_OP_RESIZING_S ||
+      grab_op == META_GRAB_OP_RESIZING_N)
     {
-    case META_GRAB_OP_RESIZING_S:
-    case META_GRAB_OP_RESIZING_N:
       new_w = old.width;
-      break;
-
-    case META_GRAB_OP_RESIZING_E:
-    case META_GRAB_OP_RESIZING_W:
+    }
+  else if (grab_op == META_GRAB_OP_RESIZING_E ||
+           grab_op == META_GRAB_OP_RESIZING_W)
+    {
       new_h = old.height;
-      break;
-
-    default:
-      break;
     }
 
   /* compute gravity of client during operation */
@@ -7582,6 +7611,8 @@ update_tile_mode (MetaWindow *window)
           if (!META_WINDOW_TILED_SIDE_BY_SIDE (window))
               window->tile_mode = META_TILE_NONE;
           break;
+      default:
+        break;
     }
 }
 
@@ -7629,6 +7660,31 @@ meta_window_handle_mouse_grab_op_event (MetaWindow *window,
                          window->display->grab_latest_motion_x,
                          window->display->grab_latest_motion_y,
                          TRUE);
+          break;
+
+        case META_GRAB_OP_NONE:
+        case META_GRAB_OP_MOVING:
+        case META_GRAB_OP_KEYBOARD_MOVING:
+        case META_GRAB_OP_KEYBOARD_RESIZING_UNKNOWN:
+        case META_GRAB_OP_KEYBOARD_TABBING_NORMAL:
+        case META_GRAB_OP_KEYBOARD_TABBING_DOCK:
+        case META_GRAB_OP_KEYBOARD_ESCAPING_NORMAL:
+        case META_GRAB_OP_KEYBOARD_ESCAPING_DOCK:
+        case META_GRAB_OP_KEYBOARD_ESCAPING_GROUP:
+        case META_GRAB_OP_KEYBOARD_TABBING_GROUP:
+        case META_GRAB_OP_KEYBOARD_WORKSPACE_SWITCHING:
+        case META_GRAB_OP_CLICKING_MINIMIZE:
+        case META_GRAB_OP_CLICKING_MAXIMIZE:
+        case META_GRAB_OP_CLICKING_UNMAXIMIZE:
+        case META_GRAB_OP_CLICKING_DELETE:
+        case META_GRAB_OP_CLICKING_MENU:
+        case META_GRAB_OP_CLICKING_APPMENU:
+        case META_GRAB_OP_CLICKING_SHADE:
+        case META_GRAB_OP_CLICKING_UNSHADE:
+        case META_GRAB_OP_CLICKING_ABOVE:
+        case META_GRAB_OP_CLICKING_UNABOVE:
+        case META_GRAB_OP_CLICKING_STICK:
+        case META_GRAB_OP_CLICKING_UNSTICK:
           break;
 
         default:
@@ -7934,6 +7990,31 @@ meta_window_refresh_resize_popup (MetaWindow *window)
     case META_GRAB_OP_KEYBOARD_RESIZING_NW:
       break;
 
+    case META_GRAB_OP_NONE:
+    case META_GRAB_OP_MOVING:
+    case META_GRAB_OP_KEYBOARD_MOVING:
+    case META_GRAB_OP_KEYBOARD_TABBING_NORMAL:
+    case META_GRAB_OP_KEYBOARD_TABBING_DOCK:
+    case META_GRAB_OP_KEYBOARD_ESCAPING_NORMAL:
+    case META_GRAB_OP_KEYBOARD_ESCAPING_DOCK:
+    case META_GRAB_OP_KEYBOARD_ESCAPING_GROUP:
+    case META_GRAB_OP_KEYBOARD_TABBING_GROUP:
+    case META_GRAB_OP_KEYBOARD_WORKSPACE_SWITCHING:
+    case META_GRAB_OP_CLICKING_MINIMIZE:
+    case META_GRAB_OP_CLICKING_MAXIMIZE:
+    case META_GRAB_OP_CLICKING_UNMAXIMIZE:
+    case META_GRAB_OP_CLICKING_DELETE:
+    case META_GRAB_OP_CLICKING_MENU:
+    case META_GRAB_OP_CLICKING_APPMENU:
+    case META_GRAB_OP_CLICKING_SHADE:
+    case META_GRAB_OP_CLICKING_UNSHADE:
+    case META_GRAB_OP_CLICKING_ABOVE:
+    case META_GRAB_OP_CLICKING_UNABOVE:
+    case META_GRAB_OP_CLICKING_STICK:
+    case META_GRAB_OP_CLICKING_UNSTICK:
+      /* Not resizing */
+      return;
+
     default:
       /* Not resizing */
       return;
@@ -8105,56 +8186,55 @@ warp_grab_pointer (MetaWindow          *window,
       meta_window_get_outer_rect (window, &rect);
     }
 
-  switch (grab_op)
+  if (grab_op == META_GRAB_OP_KEYBOARD_MOVING ||
+      grab_op == META_GRAB_OP_KEYBOARD_RESIZING_UNKNOWN)
     {
-      case META_GRAB_OP_KEYBOARD_MOVING:
-      case META_GRAB_OP_KEYBOARD_RESIZING_UNKNOWN:
-        *x = rect.width / 2;
-        *y = rect.height / 2;
-        break;
-
-      case META_GRAB_OP_KEYBOARD_RESIZING_S:
-        *x = rect.width / 2;
-        *y = rect.height - 1;
-        break;
-
-      case META_GRAB_OP_KEYBOARD_RESIZING_N:
-        *x = rect.width / 2;
-        *y = 0;
-        break;
-
-      case META_GRAB_OP_KEYBOARD_RESIZING_W:
-        *x = 0;
-        *y = rect.height / 2;
-        break;
-
-      case META_GRAB_OP_KEYBOARD_RESIZING_E:
-        *x = rect.width - 1;
-        *y = rect.height / 2;
-        break;
-
-      case META_GRAB_OP_KEYBOARD_RESIZING_SE:
-        *x = rect.width - 1;
-        *y = rect.height - 1;
-        break;
-
-      case META_GRAB_OP_KEYBOARD_RESIZING_NE:
-        *x = rect.width - 1;
-        *y = 0;
-        break;
-
-      case META_GRAB_OP_KEYBOARD_RESIZING_SW:
-        *x = 0;
-        *y = rect.height - 1;
-        break;
-
-      case META_GRAB_OP_KEYBOARD_RESIZING_NW:
-        *x = 0;
-        *y = 0;
-        break;
-
-      default:
-        return FALSE;
+      *x = rect.width / 2;
+      *y = rect.height / 2;
+    }
+  else if (grab_op == META_GRAB_OP_KEYBOARD_RESIZING_S)
+    {
+      *x = rect.width / 2;
+      *y = rect.height - 1;
+    }
+  else if (grab_op == META_GRAB_OP_KEYBOARD_RESIZING_N)
+    {
+      *x = rect.width / 2;
+      *y = 0;
+    }
+  else if (grab_op == META_GRAB_OP_KEYBOARD_RESIZING_W)
+    {
+      *x = 0;
+      *y = rect.height / 2;
+    }
+  else if (grab_op == META_GRAB_OP_KEYBOARD_RESIZING_E)
+    {
+      *x = rect.width - 1;
+      *y = rect.height / 2;
+    }
+  else if (grab_op == META_GRAB_OP_KEYBOARD_RESIZING_SE)
+    {
+      *x = rect.width - 1;
+      *y = rect.height - 1;
+    }
+  else if (grab_op == META_GRAB_OP_KEYBOARD_RESIZING_NE)
+    {
+      *x = rect.width - 1;
+      *y = 0;
+    }
+  else if (grab_op == META_GRAB_OP_KEYBOARD_RESIZING_SW)
+    {
+      *x = 0;
+      *y = rect.height - 1;
+    }
+  else if (grab_op == META_GRAB_OP_KEYBOARD_RESIZING_NW)
+    {
+      *x = 0;
+      *y = 0;
+    }
+  else
+    {
+      return FALSE;
     }
 
   *x += rect.x;
