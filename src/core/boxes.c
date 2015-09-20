@@ -1526,6 +1526,8 @@ add_edges (GList               *cur_edges,
           temp_edge->rect.y      += temp_edge->rect.height;
           temp_edge->rect.height  = 0;
           break;
+        default:
+          break;
         }
       temp_edge->edge_type = META_EDGE_SCREEN;
       cur_edges = g_list_prepend (cur_edges, temp_edge);
