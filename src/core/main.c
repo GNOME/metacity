@@ -336,14 +336,15 @@ meta_parse_options (int *argc, char ***argv,
 static void
 meta_select_display (gchar *display_name)
 {
-  gchar *envVar = "";
+  const gchar *env_var;
+
   if (display_name)
-    envVar = g_strconcat ("DISPLAY=", display_name, NULL);
-  else if (g_getenv ("METACITY_DISPLAY"))
-    envVar = g_strconcat ("DISPLAY=",
-      g_getenv ("METACITY_DISPLAY"), NULL);
-  /* DO NOT FREE envVar, putenv() sucks */
-  putenv (envVar);
+    env_var = (const gchar *) display_name;
+  else
+    env_var = g_getenv ("METACITY_DISPLAY");
+
+  if (env_var)
+    g_setenv ("DISPLAY", env_var, TRUE);
 }
 
 static void
@@ -649,6 +650,36 @@ prefs_changed_callback (MetaPreference pref,
       meta_display_set_cursor_theme (meta_prefs_get_cursor_theme (),
 				     meta_prefs_get_cursor_size ());
       break;
+
+    case META_PREF_MOUSE_BUTTON_MODS:
+    case META_PREF_FOCUS_MODE:
+    case META_PREF_FOCUS_NEW_WINDOWS:
+    case META_PREF_ATTACH_MODAL_DIALOGS:
+    case META_PREF_RAISE_ON_CLICK:
+    case META_PREF_ACTION_DOUBLE_CLICK_TITLEBAR:
+    case META_PREF_ACTION_MIDDLE_CLICK_TITLEBAR:
+    case META_PREF_ACTION_RIGHT_CLICK_TITLEBAR:
+    case META_PREF_AUTO_RAISE:
+    case META_PREF_AUTO_RAISE_DELAY:
+    case META_PREF_TITLEBAR_FONT:
+    case META_PREF_NUM_WORKSPACES:
+    case META_PREF_KEYBINDINGS:
+    case META_PREF_DISABLE_WORKAROUNDS:
+    case META_PREF_BUTTON_LAYOUT:
+    case META_PREF_WORKSPACE_NAMES:
+    case META_PREF_VISUAL_BELL:
+    case META_PREF_AUDIBLE_BELL:
+    case META_PREF_VISUAL_BELL_TYPE:
+    case META_PREF_REDUCED_RESOURCES:
+    case META_PREF_GNOME_ACCESSIBILITY:
+    case META_PREF_GNOME_ANIMATIONS:
+    case META_PREF_RESIZE_WITH_RIGHT_BUTTON:
+    case META_PREF_EDGE_TILING:
+    case META_PREF_FORCE_FULLSCREEN:
+    case META_PREF_PLACEMENT_MODE:
+    case META_PREF_ALT_TAB_THUMBNAILS:
+      break;
+
     default:
       /* handled elsewhere or otherwise */
       break;
