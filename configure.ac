@@ -399,53 +399,53 @@ if test x$enable_themes_documentation = xyes; then
   YELP_HELP_INIT
 fi
 
+dnl **************************************************************************
+dnl Process .in files
+dnl **************************************************************************
+
 AC_CONFIG_FILES([
-Makefile
-doc/Makefile
-doc/creating_themes/Makefile
-doc/man/Makefile
-src/Makefile
-src/libmetacity-private.pc
-src/tools/Makefile
-src/themes/Makefile
-po/Makefile.in
+  Makefile
+
+  doc/Makefile
+  doc/creating_themes/Makefile
+  doc/man/Makefile
+
+  src/Makefile
+  src/libmetacity-private.pc
+  src/tools/Makefile
+  src/themes/Makefile
+
+  po/Makefile.in
 ])
 
 AC_OUTPUT
 
-if test x$enable_verbose_mode = xno; then
-        echo "*** WARNING WARNING WARNING WARNING WARNING"
-        echo "*** Building without verbose mode"
-        echo "*** This means there's no way to debug metacity problems."
-        echo "*** Please build normal desktop versions of metacity"
-        echo "*** with verbose mode enabled so users can use it when they report bugs."
-fi
+dnl **************************************************************************
+dnl Show build info
+dnl **************************************************************************
 
-dnl ==========================================================================
-echo "
-metacity-$VERSION:
-
-	prefix:                   ${prefix}
-	source code location:	  ${srcdir}
-	compiler:		  ${CC}
-
-	Canberra:                 ${enable_canberra}
-	XFree86 Xinerama:         ${use_xfree_xinerama}
-	Solaris Xinerama:         ${use_solaris_xinerama}
-	Startup notification:     ${have_startup_notification}
-	Compositing manager:      ${have_xcomposite}
-	Session management:       ${found_sm}
-	Resize-and-rotate:        ${found_randr}
-	Render:                   ${have_xrender}
-	Xcursor:                  ${have_xcursor}
-"
-
-METACITY_MINOR_VERSION=metacity_minor_version
-if test $(( $(echo $METACITY_MINOR_VERSION) %2)) == "1"; then
-   stable_version=$(( ($METACITY_MINOR_VERSION / 2) * 2))
-   echo "This is the UNSTABLE branch of metacity"
-   echo -n "Use 3.$stable_version.x for stable "
-   echo    "(gnome-3-$stable_version branch in Subversion)"
-else
-   echo "This is the stable branch of metacity"
-fi
+echo ""
+echo "  Metacity $VERSION"
+echo "  `echo Metacity $VERSION | sed "s/./=/g"`"
+echo ""
+echo "  srcdir ......................: ${srcdir}"
+echo ""
+echo "  compiler ....................: ${CC}"
+echo "  cflags ......................: ${CFLAGS}"
+echo ""
+echo "  prefix ......................: ${prefix}"
+echo "  exec_prefix .................: ${exec_prefix}"
+echo "  libdir ......................: ${libdir}"
+echo "  sysconfdir ..................: ${sysconfdir}"
+echo "  libexecdir ..................: ${libexecdir}"
+echo ""
+echo "  Canberra ....................: ${enable_canberra}"
+echo "  XFree86 Xinerama ............: ${use_xfree_xinerama}"
+echo "  Solaris Xinerama ............: ${use_solaris_xinerama}"
+echo "  Startup notification ........: ${have_startup_notification}"
+echo "  Compositing manager .........: ${have_xcomposite}"
+echo "  Session management ..........: ${found_sm}"
+echo "  Resize-and-rotate ...........: ${found_randr}"
+echo "  Render ......................: ${have_xrender}"
+echo "  Xcursor .....................: ${have_xcursor}"
+echo ""
