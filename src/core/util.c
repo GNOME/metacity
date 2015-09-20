@@ -319,6 +319,8 @@ topic_name (MetaDebugTopic topic)
       return "COMPOSITOR";
     case META_DEBUG_EDGE_RESISTANCE:
       return "EDGE_RESISTANCE";
+    default:
+      break;
     }
 
   return "WM";
@@ -471,7 +473,6 @@ meta_pop_no_msg_prefix (void)
 void
 meta_exit (MetaExitCode code)
 {
-
   exit (code);
 }
 
