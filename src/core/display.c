@@ -309,7 +309,7 @@ meta_display_open (void)
   guint32 timestamp;
 
   /* A list of all atom names, so that we can intern them in one go. */
-  char *atom_names[] = {
+  const gchar *atom_names[] = {
 #define item(x) #x,
 #include "atomnames.h"
 #undef item
@@ -372,11 +372,11 @@ meta_display_open (void)
   meta_prefs_add_listener (prefs_changed_callback, the_display);
 
   meta_verbose ("Creating %d atoms\n", (int) G_N_ELEMENTS (atom_names));
-  XInternAtoms (the_display->xdisplay, atom_names, G_N_ELEMENTS (atom_names),
-                False, atoms);
+  XInternAtoms (the_display->xdisplay, (gchar **) atom_names,
+                G_N_ELEMENTS (atom_names), False, atoms);
   {
-    int i = 0;
-#define item(x) the_display->atom_##x = atoms[i++];
+    int atom_i = 0;
+#define item(x) the_display->atom_##x = atoms[atom_i++];
 #include "atomnames.h"
 #undef item
   }
@@ -1062,6 +1062,38 @@ grab_op_is_mouse_only (MetaGrabOp op)
     case META_GRAB_OP_RESIZING_E:
       return TRUE;
 
+    case META_GRAB_OP_NONE:
+    case META_GRAB_OP_KEYBOARD_MOVING:
+    case META_GRAB_OP_KEYBOARD_RESIZING_UNKNOWN:
+    case META_GRAB_OP_KEYBOARD_RESIZING_S:
+    case META_GRAB_OP_KEYBOARD_RESIZING_N:
+    case META_GRAB_OP_KEYBOARD_RESIZING_W:
+    case META_GRAB_OP_KEYBOARD_RESIZING_E:
+    case META_GRAB_OP_KEYBOARD_RESIZING_SE:
+    case META_GRAB_OP_KEYBOARD_RESIZING_NE:
+    case META_GRAB_OP_KEYBOARD_RESIZING_SW:
+    case META_GRAB_OP_KEYBOARD_RESIZING_NW:
+    case META_GRAB_OP_KEYBOARD_TABBING_NORMAL:
+    case META_GRAB_OP_KEYBOARD_TABBING_DOCK:
+    case META_GRAB_OP_KEYBOARD_ESCAPING_NORMAL:
+    case META_GRAB_OP_KEYBOARD_ESCAPING_DOCK:
+    case META_GRAB_OP_KEYBOARD_ESCAPING_GROUP:
+    case META_GRAB_OP_KEYBOARD_TABBING_GROUP:
+    case META_GRAB_OP_KEYBOARD_WORKSPACE_SWITCHING:
+    case META_GRAB_OP_CLICKING_MINIMIZE:
+    case META_GRAB_OP_CLICKING_MAXIMIZE:
+    case META_GRAB_OP_CLICKING_UNMAXIMIZE:
+    case META_GRAB_OP_CLICKING_DELETE:
+    case META_GRAB_OP_CLICKING_MENU:
+    case META_GRAB_OP_CLICKING_APPMENU:
+    case META_GRAB_OP_CLICKING_SHADE:
+    case META_GRAB_OP_CLICKING_UNSHADE:
+    case META_GRAB_OP_CLICKING_ABOVE:
+    case META_GRAB_OP_CLICKING_UNABOVE:
+    case META_GRAB_OP_CLICKING_STICK:
+    case META_GRAB_OP_CLICKING_UNSTICK:
+      return FALSE;
+
     default:
       return FALSE;
     }
@@ -1093,6 +1125,28 @@ grab_op_is_mouse (MetaGrabOp op)
     case META_GRAB_OP_KEYBOARD_MOVING:
       return TRUE;
 
+    case META_GRAB_OP_NONE:
+    case META_GRAB_OP_KEYBOARD_TABBING_NORMAL:
+    case META_GRAB_OP_KEYBOARD_TABBING_DOCK:
+    case META_GRAB_OP_KEYBOARD_ESCAPING_NORMAL:
+    case META_GRAB_OP_KEYBOARD_ESCAPING_DOCK:
+    case META_GRAB_OP_KEYBOARD_ESCAPING_GROUP:
+    case META_GRAB_OP_KEYBOARD_TABBING_GROUP:
+    case META_GRAB_OP_KEYBOARD_WORKSPACE_SWITCHING:
+    case META_GRAB_OP_CLICKING_MINIMIZE:
+    case META_GRAB_OP_CLICKING_MAXIMIZE:
+    case META_GRAB_OP_CLICKING_UNMAXIMIZE:
+    case META_GRAB_OP_CLICKING_DELETE:
+    case META_GRAB_OP_CLICKING_MENU:
+    case META_GRAB_OP_CLICKING_APPMENU:
+    case META_GRAB_OP_CLICKING_SHADE:
+    case META_GRAB_OP_CLICKING_UNSHADE:
+    case META_GRAB_OP_CLICKING_ABOVE:
+    case META_GRAB_OP_CLICKING_UNABOVE:
+    case META_GRAB_OP_CLICKING_STICK:
+    case META_GRAB_OP_CLICKING_UNSTICK:
+      return FALSE;
+
     default:
       return FALSE;
     }
@@ -1121,6 +1175,30 @@ grab_op_is_keyboard (MetaGrabOp op)
     case META_GRAB_OP_KEYBOARD_ESCAPING_GROUP:
     case META_GRAB_OP_KEYBOARD_WORKSPACE_SWITCHING:
       return TRUE;
+
+    case META_GRAB_OP_NONE:
+    case META_GRAB_OP_MOVING:
+    case META_GRAB_OP_RESIZING_SE:
+    case META_GRAB_OP_RESIZING_S:
+    case META_GRAB_OP_RESIZING_SW:
+    case META_GRAB_OP_RESIZING_N:
+    case META_GRAB_OP_RESIZING_NE:
+    case META_GRAB_OP_RESIZING_NW:
+    case META_GRAB_OP_RESIZING_W:
+    case META_GRAB_OP_RESIZING_E:
+    case META_GRAB_OP_CLICKING_MINIMIZE:
+    case META_GRAB_OP_CLICKING_MAXIMIZE:
+    case META_GRAB_OP_CLICKING_UNMAXIMIZE:
+    case META_GRAB_OP_CLICKING_DELETE:
+    case META_GRAB_OP_CLICKING_MENU:
+    case META_GRAB_OP_CLICKING_APPMENU:
+    case META_GRAB_OP_CLICKING_SHADE:
+    case META_GRAB_OP_CLICKING_UNSHADE:
+    case META_GRAB_OP_CLICKING_ABOVE:
+    case META_GRAB_OP_CLICKING_UNABOVE:
+    case META_GRAB_OP_CLICKING_STICK:
+    case META_GRAB_OP_CLICKING_UNSTICK:
+      return FALSE;
 
     default:
       return FALSE;
@@ -1151,6 +1229,30 @@ meta_grab_op_is_resizing (MetaGrabOp op)
     case META_GRAB_OP_KEYBOARD_RESIZING_NW:
       return TRUE;
 
+    case META_GRAB_OP_NONE:
+    case META_GRAB_OP_MOVING:
+    case META_GRAB_OP_KEYBOARD_MOVING:
+    case META_GRAB_OP_KEYBOARD_TABBING_NORMAL:
+    case META_GRAB_OP_KEYBOARD_TABBING_DOCK:
+    case META_GRAB_OP_KEYBOARD_ESCAPING_NORMAL:
+    case META_GRAB_OP_KEYBOARD_ESCAPING_DOCK:
+    case META_GRAB_OP_KEYBOARD_ESCAPING_GROUP:
+    case META_GRAB_OP_KEYBOARD_TABBING_GROUP:
+    case META_GRAB_OP_KEYBOARD_WORKSPACE_SWITCHING:
+    case META_GRAB_OP_CLICKING_MINIMIZE:
+    case META_GRAB_OP_CLICKING_MAXIMIZE:
+    case META_GRAB_OP_CLICKING_UNMAXIMIZE:
+    case META_GRAB_OP_CLICKING_DELETE:
+    case META_GRAB_OP_CLICKING_MENU:
+    case META_GRAB_OP_CLICKING_APPMENU:
+    case META_GRAB_OP_CLICKING_SHADE:
+    case META_GRAB_OP_CLICKING_UNSHADE:
+    case META_GRAB_OP_CLICKING_ABOVE:
+    case META_GRAB_OP_CLICKING_UNABOVE:
+    case META_GRAB_OP_CLICKING_STICK:
+    case META_GRAB_OP_CLICKING_UNSTICK:
+      return FALSE;
+
     default:
       return FALSE;
     }
@@ -1164,6 +1266,45 @@ meta_grab_op_is_moving (MetaGrabOp op)
     case META_GRAB_OP_MOVING:
     case META_GRAB_OP_KEYBOARD_MOVING:
       return TRUE;
+
+    case META_GRAB_OP_NONE:
+    case META_GRAB_OP_RESIZING_SE:
+    case META_GRAB_OP_RESIZING_S:
+    case META_GRAB_OP_RESIZING_SW:
+    case META_GRAB_OP_RESIZING_N:
+    case META_GRAB_OP_RESIZING_NE:
+    case META_GRAB_OP_RESIZING_NW:
+    case META_GRAB_OP_RESIZING_W:
+    case META_GRAB_OP_RESIZING_E:
+    case META_GRAB_OP_KEYBOARD_RESIZING_UNKNOWN:
+    case META_GRAB_OP_KEYBOARD_RESIZING_S:
+    case META_GRAB_OP_KEYBOARD_RESIZING_N:
+    case META_GRAB_OP_KEYBOARD_RESIZING_W:
+    case META_GRAB_OP_KEYBOARD_RESIZING_E:
+    case META_GRAB_OP_KEYBOARD_RESIZING_SE:
+    case META_GRAB_OP_KEYBOARD_RESIZING_NE:
+    case META_GRAB_OP_KEYBOARD_RESIZING_SW:
+    case META_GRAB_OP_KEYBOARD_RESIZING_NW:
+    case META_GRAB_OP_KEYBOARD_TABBING_NORMAL:
+    case META_GRAB_OP_KEYBOARD_TABBING_DOCK:
+    case META_GRAB_OP_KEYBOARD_ESCAPING_NORMAL:
+    case META_GRAB_OP_KEYBOARD_ESCAPING_DOCK:
+    case META_GRAB_OP_KEYBOARD_ESCAPING_GROUP:
+    case META_GRAB_OP_KEYBOARD_TABBING_GROUP:
+    case META_GRAB_OP_KEYBOARD_WORKSPACE_SWITCHING:
+    case META_GRAB_OP_CLICKING_MINIMIZE:
+    case META_GRAB_OP_CLICKING_MAXIMIZE:
+    case META_GRAB_OP_CLICKING_UNMAXIMIZE:
+    case META_GRAB_OP_CLICKING_DELETE:
+    case META_GRAB_OP_CLICKING_MENU:
+    case META_GRAB_OP_CLICKING_APPMENU:
+    case META_GRAB_OP_CLICKING_SHADE:
+    case META_GRAB_OP_CLICKING_UNSHADE:
+    case META_GRAB_OP_CLICKING_ABOVE:
+    case META_GRAB_OP_CLICKING_UNABOVE:
+    case META_GRAB_OP_CLICKING_STICK:
+    case META_GRAB_OP_CLICKING_UNSTICK:
+      return FALSE;
 
     default:
       return FALSE;
@@ -1796,6 +1937,8 @@ event_callback (XEvent   *event,
               break;
             case G_DESKTOP_FOCUS_MODE_CLICK:
               break;
+            default:
+              break;
             }
 
           if (window->type == META_WINDOW_DOCK)
@@ -2319,6 +2462,8 @@ event_callback (XEvent   *event,
             case XkbMapNotify:
               meta_display_process_mapping_event (display, event);
               break;
+	    default:
+	      break;
 	    }
 	}
 #endif
@@ -2506,6 +2651,8 @@ meta_event_detail_to_string (int d)
     case NotifyVirtual:
       detail = "NotifyVirtual";
       break;
+    default:
+      break;
     }
 
   return detail;
@@ -2536,6 +2683,8 @@ meta_event_mode_to_string (int m)
       mode = "NotifyWhileGrabbed";
       break;
 #endif
+    default:
+      break;
     }
 
   return mode;
@@ -2558,6 +2707,8 @@ stack_mode_to_string (int mode)
       return "BottomIf";
     case Opposite:
       return "Opposite";
+    default:
+      break;
     }
 
   return "Unknown";
@@ -3072,6 +3223,28 @@ xcursor_for_op (MetaDisplay *display,
       cursor = META_CURSOR_MOVE_OR_RESIZE_WINDOW;
       break;
 
+    case META_GRAB_OP_NONE:
+    case META_GRAB_OP_KEYBOARD_TABBING_NORMAL:
+    case META_GRAB_OP_KEYBOARD_TABBING_DOCK:
+    case META_GRAB_OP_KEYBOARD_ESCAPING_NORMAL:
+    case META_GRAB_OP_KEYBOARD_ESCAPING_DOCK:
+    case META_GRAB_OP_KEYBOARD_ESCAPING_GROUP:
+    case META_GRAB_OP_KEYBOARD_TABBING_GROUP:
+    case META_GRAB_OP_KEYBOARD_WORKSPACE_SWITCHING:
+    case META_GRAB_OP_CLICKING_MINIMIZE:
+    case META_GRAB_OP_CLICKING_MAXIMIZE:
+    case META_GRAB_OP_CLICKING_UNMAXIMIZE:
+    case META_GRAB_OP_CLICKING_DELETE:
+    case META_GRAB_OP_CLICKING_MENU:
+    case META_GRAB_OP_CLICKING_APPMENU:
+    case META_GRAB_OP_CLICKING_SHADE:
+    case META_GRAB_OP_CLICKING_UNSHADE:
+    case META_GRAB_OP_CLICKING_ABOVE:
+    case META_GRAB_OP_CLICKING_UNABOVE:
+    case META_GRAB_OP_CLICKING_STICK:
+    case META_GRAB_OP_CLICKING_UNSTICK:
+      break;
+
     default:
       break;
     }
@@ -3152,7 +3325,7 @@ meta_display_set_grab_op_cursor (MetaDisplay *display,
 
 gboolean
 meta_display_begin_grab_op (MetaDisplay *display,
-			    MetaScreen  *screen,
+                            MetaScreen  *screen,
                             MetaWindow  *window,
                             MetaGrabOp   op,
                             gboolean     pointer_already_grabbed,
@@ -3420,6 +3593,40 @@ meta_display_begin_grab_op (MetaDisplay *display,
 
     case META_GRAB_OP_KEYBOARD_WORKSPACE_SWITCHING:
       meta_screen_ensure_workspace_popup (screen);
+      break;
+
+    case META_GRAB_OP_NONE:
+    case META_GRAB_OP_MOVING:
+    case META_GRAB_OP_RESIZING_SE:
+    case META_GRAB_OP_RESIZING_S:
+    case META_GRAB_OP_RESIZING_SW:
+    case META_GRAB_OP_RESIZING_N:
+    case META_GRAB_OP_RESIZING_NE:
+    case META_GRAB_OP_RESIZING_NW:
+    case META_GRAB_OP_RESIZING_W:
+    case META_GRAB_OP_RESIZING_E:
+    case META_GRAB_OP_KEYBOARD_MOVING:
+    case META_GRAB_OP_KEYBOARD_RESIZING_UNKNOWN:
+    case META_GRAB_OP_KEYBOARD_RESIZING_S:
+    case META_GRAB_OP_KEYBOARD_RESIZING_N:
+    case META_GRAB_OP_KEYBOARD_RESIZING_W:
+    case META_GRAB_OP_KEYBOARD_RESIZING_E:
+    case META_GRAB_OP_KEYBOARD_RESIZING_SE:
+    case META_GRAB_OP_KEYBOARD_RESIZING_NE:
+    case META_GRAB_OP_KEYBOARD_RESIZING_SW:
+    case META_GRAB_OP_KEYBOARD_RESIZING_NW:
+    case META_GRAB_OP_CLICKING_MINIMIZE:
+    case META_GRAB_OP_CLICKING_MAXIMIZE:
+    case META_GRAB_OP_CLICKING_UNMAXIMIZE:
+    case META_GRAB_OP_CLICKING_DELETE:
+    case META_GRAB_OP_CLICKING_MENU:
+    case META_GRAB_OP_CLICKING_APPMENU:
+    case META_GRAB_OP_CLICKING_SHADE:
+    case META_GRAB_OP_CLICKING_UNSHADE:
+    case META_GRAB_OP_CLICKING_ABOVE:
+    case META_GRAB_OP_CLICKING_UNABOVE:
+    case META_GRAB_OP_CLICKING_STICK:
+    case META_GRAB_OP_CLICKING_UNSTICK:
       break;
 
     default:
@@ -4499,6 +4706,29 @@ meta_resize_gravity_from_grab_op (MetaGrabOp op)
     case META_GRAB_OP_KEYBOARD_RESIZING_UNKNOWN:
       gravity = CenterGravity;
       break;
+    case META_GRAB_OP_NONE:
+    case META_GRAB_OP_MOVING:
+    case META_GRAB_OP_KEYBOARD_MOVING:
+    case META_GRAB_OP_KEYBOARD_TABBING_NORMAL:
+    case META_GRAB_OP_KEYBOARD_TABBING_DOCK:
+    case META_GRAB_OP_KEYBOARD_ESCAPING_NORMAL:
+    case META_GRAB_OP_KEYBOARD_ESCAPING_DOCK:
+    case META_GRAB_OP_KEYBOARD_ESCAPING_GROUP:
+    case META_GRAB_OP_KEYBOARD_TABBING_GROUP:
+    case META_GRAB_OP_KEYBOARD_WORKSPACE_SWITCHING:
+    case META_GRAB_OP_CLICKING_MINIMIZE:
+    case META_GRAB_OP_CLICKING_MAXIMIZE:
+    case META_GRAB_OP_CLICKING_UNMAXIMIZE:
+    case META_GRAB_OP_CLICKING_DELETE:
+    case META_GRAB_OP_CLICKING_MENU:
+    case META_GRAB_OP_CLICKING_APPMENU:
+    case META_GRAB_OP_CLICKING_SHADE:
+    case META_GRAB_OP_CLICKING_UNSHADE:
+    case META_GRAB_OP_CLICKING_ABOVE:
+    case META_GRAB_OP_CLICKING_UNABOVE:
+    case META_GRAB_OP_CLICKING_STICK:
+    case META_GRAB_OP_CLICKING_UNSTICK:
+      break;
     default:
       break;
     }
@@ -4847,7 +5077,6 @@ prefs_changed_callback (MetaPreference pref,
   if (pref == META_PREF_MOUSE_BUTTON_MODS ||
       pref == META_PREF_FOCUS_MODE)
     {
-      MetaDisplay *display = data;
       GSList *windows;
       GSList *tmp;
 
@@ -4893,11 +5122,10 @@ prefs_changed_callback (MetaPreference pref,
       if (cm)
         enable_compositor (display, TRUE);
       else
-	disable_compositor (display);
+        disable_compositor (display);
     }
   else if (pref == META_PREF_ATTACH_MODAL_DIALOGS)
     {
-      MetaDisplay *display = data;
       GSList *windows;
       GSList *tmp;
 
