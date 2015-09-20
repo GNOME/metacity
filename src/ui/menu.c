@@ -352,18 +352,15 @@ meta_window_menu_new   (MetaFrames         *frames,
           mi = menu_item_new (&menuitem, -1);
 
           /* Set the activeness of radiobuttons. */
-          switch (menuitem.op)
+          if (menuitem.op == META_MENU_OP_STICK)
             {
-            case META_MENU_OP_STICK:
               gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (mi),
                                               active_workspace == 0xFFFFFFFF);
-              break;
-            case META_MENU_OP_UNSTICK:
+            }
+          else if (menuitem.op == META_MENU_OP_UNSTICK)
+            {
               gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (mi),
                                               active_workspace != 0xFFFFFFFF);
-              break;
-            default:
-              break;
             }
 
           if (menuitem.type == MENU_ITEM_WORKSPACE_LIST)
@@ -400,9 +397,6 @@ meta_window_menu_new   (MetaFrames         *frames,
                   for (j = 0; j < n_workspaces; j++)
                     {
                       char *label;
-                      MenuData *md;
-                      unsigned int key;
-                      MetaVirtualModifier mods;
                       MenuItem moveitem;
                       GtkWidget *submi;
 
