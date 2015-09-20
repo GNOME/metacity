@@ -239,21 +239,20 @@ get_standalone_layer (MetaWindow *window)
   MetaStackLayer layer;
   gboolean focused_transient = FALSE;
 
-  switch (window->type)
+  if (window->type == META_WINDOW_DESKTOP)
     {
-    case META_WINDOW_DESKTOP:
       layer = META_LAYER_DESKTOP;
-      break;
-
-    case META_WINDOW_DOCK:
+    }
+  else if (window->type == META_WINDOW_DOCK)
+    {
       /* still experimenting here */
       if (window->wm_state_below)
         layer = META_LAYER_BOTTOM;
       else
         layer = META_LAYER_DOCK;
-      break;
-
-    default:
+    }
+  else
+    {
       meta_window_foreach_transient (window,
                                      is_focused_foreach,
                                      &focused_transient);
@@ -272,7 +271,6 @@ get_standalone_layer (MetaWindow *window)
         layer = META_LAYER_TOP;
       else
         layer = META_LAYER_NORMAL;
-      break;
     }
 
   return layer;
