@@ -308,48 +308,48 @@ meta_session_init (const char *previous_client_id,
     char hint = SmRestartImmediately;
     char priority = 20; /* low to run before other apps */
 
-    prop1.name = SmProgram;
-    prop1.type = SmARRAY8;
+    prop1.name = (char *) SmProgram;
+    prop1.type = (char *) SmARRAY8;
     prop1.num_vals = 1;
     prop1.vals = &prop1val;
-    prop1val.value = "metacity";
+    prop1val.value = (char *) "metacity";
     prop1val.length = strlen ("metacity");
 
     /* twm sets getuid() for this, but the SM spec plainly
      * says pw_name, twm is on crack
      */
-    prop2.name = SmUserID;
-    prop2.type = SmARRAY8;
+    prop2.name = (char *) SmUserID;
+    prop2.type = (char *) SmARRAY8;
     prop2.num_vals = 1;
     prop2.vals = &prop2val;
-    prop2val.value = (char*) g_get_user_name ();
+    prop2val.value = (char *) g_get_user_name ();
     prop2val.length = strlen (prop2val.value);
 
-    prop3.name = SmRestartStyleHint;
-    prop3.type = SmCARD8;
+    prop3.name = (char *) SmRestartStyleHint;
+    prop3.type = (char *) SmCARD8;
     prop3.num_vals = 1;
     prop3.vals = &prop3val;
     prop3val.value = &hint;
     prop3val.length = 1;
 
     sprintf (pid, "%d", getpid ());
-    prop4.name = SmProcessID;
-    prop4.type = SmARRAY8;
+    prop4.name = (char *) SmProcessID;
+    prop4.type = (char *) SmARRAY8;
     prop4.num_vals = 1;
     prop4.vals = &prop4val;
     prop4val.value = pid;
     prop4val.length = strlen (prop4val.value);
 
     /* Always start in home directory */
-    prop5.name = SmCurrentDirectory;
-    prop5.type = SmARRAY8;
+    prop5.name = (char *) SmCurrentDirectory;
+    prop5.type = (char *) SmARRAY8;
     prop5.num_vals = 1;
     prop5.vals = &prop5val;
-    prop5val.value = (char*) g_get_home_dir ();
+    prop5val.value = (char *) g_get_home_dir ();
     prop5val.length = strlen (prop5val.value);
 
-    prop6.name = "_GSM_Priority";
-    prop6.type = SmCARD8;
+    prop6.name = (char *) "_GSM_Priority";
+    prop6.type = (char *) SmCARD8;
     prop6.num_vals = 1;
     prop6.vals = &prop6val;
     prop6val.value = &priority;
@@ -382,8 +382,8 @@ meta_session_shutdown (void)
   if (session_connection == NULL)
     return;
 
-  prop1.name = SmRestartStyleHint;
-  prop1.type = SmCARD8;
+  prop1.name = (char *) SmRestartStyleHint;
+  prop1.type = (char *) SmCARD8;
   prop1.num_vals = 1;
   prop1.vals = &prop1val;
   prop1val.value = &hint;
@@ -593,15 +593,15 @@ set_clone_restart_commands (void)
 
   /* Restart (use same client ID) */
 
-  prop1.name = SmRestartCommand;
-  prop1.type = SmLISTofARRAY8;
+  prop1.name = (char *) SmRestartCommand;
+  prop1.type = (char *) SmLISTofARRAY8;
 
   g_return_if_fail (client_id);
 
   i = 0;
-  restartv[i] = "metacity";
+  restartv[i] = (char *) "metacity";
   ++i;
-  restartv[i] = "--sm-client-id";
+  restartv[i] = (char *) "--sm-client-id";
   ++i;
   restartv[i] = client_id;
   ++i;
@@ -620,12 +620,12 @@ set_clone_restart_commands (void)
   /* Clone (no client ID) */
 
   i = 0;
-  clonev[i] = "metacity";
+  clonev[i] = (char *) "metacity";
   ++i;
   clonev[i] = NULL;
 
-  prop2.name = SmCloneCommand;
-  prop2.type = SmLISTofARRAY8;
+  prop2.name = (char *) SmCloneCommand;
+  prop2.type = (char *) SmLISTofARRAY8;
 
   prop2.vals = g_new (SmPropValue, i);
   i = 0;
@@ -640,16 +640,16 @@ set_clone_restart_commands (void)
   /* Discard */
 
   i = 0;
-  discardv[i] = "rm";
+  discardv[i] = (char *) "rm";
   ++i;
-  discardv[i] = "-f";
+  discardv[i] = (char *) "-f";
   ++i;
-  discardv[i] = (char*) full_save_file ();
+  discardv[i] = (char *) full_save_file ();
   ++i;
   discardv[i] = NULL;
 
-  prop3.name = SmDiscardCommand;
-  prop3.type = SmLISTofARRAY8;
+  prop3.name = (char *) SmDiscardCommand;
+  prop3.type = (char *) SmLISTofARRAY8;
 
   prop3.vals = g_new (SmPropValue, i);
   i = 0;
@@ -701,6 +701,8 @@ window_type_to_string (MetaWindowType type)
       return "splashscreen";
     case META_WINDOW_UTILITY:
       return "utility";
+    default:
+      break;
     }
 
   return "";
@@ -1783,20 +1785,24 @@ warn_about_lame_clients_and_finish_interact (gboolean shutdown)
       return;
     }
 
-  columns = g_slist_prepend (columns, "Window");
-  columns = g_slist_prepend (columns, "Class");
+  columns = g_slist_prepend (columns, (gpointer) "Window");
+  columns = g_slist_prepend (columns, (gpointer) "Class");
 
   lame = g_slist_sort (lame, (GCompareFunc) windows_cmp_by_title);
 
   tmp = lame;
   while (tmp != NULL)
     {
-      MetaWindow *w = tmp->data;
+      MetaWindow *w;
+      const gchar *column;
 
-      lame_details = g_slist_prepend (lame_details,
-                                      w->res_class ? w->res_class : "");
-      lame_details = g_slist_prepend (lame_details,
-                                      w->title);
+      w = tmp->data;
+
+      column = w->res_class ? w->res_class : "";
+      lame_details = g_slist_prepend (lame_details, (gpointer) column);
+
+      column = w->title;
+      lame_details = g_slist_prepend (lame_details, (gpointer) column);
 
       tmp = tmp->next;
     }
