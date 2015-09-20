@@ -167,20 +167,12 @@ static void
 prefs_changed_callback (MetaPreference pref,
                         void          *data)
 {
-  switch (pref)
-    {
-    case META_PREF_COMPOSITING_MANAGER:
-      meta_frames_style_updated (GTK_WIDGET (data));
-      break;
-    case META_PREF_TITLEBAR_FONT:
-      meta_frames_font_changed (META_FRAMES (data));
-      break;
-    case META_PREF_BUTTON_LAYOUT:
-      meta_frames_button_layout_changed (META_FRAMES (data));
-      break;
-    default:
-      break;
-    }
+  if (pref == META_PREF_COMPOSITING_MANAGER)
+    meta_frames_style_updated (GTK_WIDGET (data));
+  else if (pref == META_PREF_TITLEBAR_FONT)
+    meta_frames_font_changed (META_FRAMES (data));
+  else if (pref == META_PREF_BUTTON_LAYOUT)
+    meta_frames_button_layout_changed (META_FRAMES (data));
 }
 
 static MetaStyleInfo *
@@ -1359,6 +1351,8 @@ show_tip_now (MetaFrames *frames)
       break;
     case META_FRAME_CONTROL_CLIENT_AREA:
       break;
+    default:
+      break;
     }
 
   if (tiptext)
@@ -1540,6 +1534,9 @@ meta_frame_titlebar_event (MetaUIFrame    *frame,
                                   event->button,
                                   event->time);
       break;
+
+    default:
+      break;
     }
 
   return TRUE;
@@ -1642,48 +1639,32 @@ meta_frames_button_press_event (GtkWidget      *widget,
     {
       MetaGrabOp op = META_GRAB_OP_NONE;
 
-      switch (control)
-        {
-        case META_FRAME_CONTROL_MINIMIZE:
-          op = META_GRAB_OP_CLICKING_MINIMIZE;
-          break;
-        case META_FRAME_CONTROL_MAXIMIZE:
-          op = META_GRAB_OP_CLICKING_MAXIMIZE;
-          break;
-        case META_FRAME_CONTROL_UNMAXIMIZE:
-          op = META_GRAB_OP_CLICKING_UNMAXIMIZE;
-          break;
-        case META_FRAME_CONTROL_DELETE:
-          op = META_GRAB_OP_CLICKING_DELETE;
-          break;
-        case META_FRAME_CONTROL_MENU:
-          op = META_GRAB_OP_CLICKING_MENU;
-          break;
-        case META_FRAME_CONTROL_APPMENU:
-          op = META_GRAB_OP_CLICKING_APPMENU;
-          break;
-        case META_FRAME_CONTROL_SHADE:
-          op = META_GRAB_OP_CLICKING_SHADE;
-          break;
-        case META_FRAME_CONTROL_UNSHADE:
-          op = META_GRAB_OP_CLICKING_UNSHADE;
-          break;
-        case META_FRAME_CONTROL_ABOVE:
-          op = META_GRAB_OP_CLICKING_ABOVE;
-          break;
-        case META_FRAME_CONTROL_UNABOVE:
-          op = META_GRAB_OP_CLICKING_UNABOVE;
-          break;
-        case META_FRAME_CONTROL_STICK:
-          op = META_GRAB_OP_CLICKING_STICK;
-          break;
-        case META_FRAME_CONTROL_UNSTICK:
-          op = META_GRAB_OP_CLICKING_UNSTICK;
-          break;
-        default:
-          g_assert_not_reached ();
-          break;
-        }
+      if (control == META_FRAME_CONTROL_MINIMIZE)
+        op = META_GRAB_OP_CLICKING_MINIMIZE;
+      else if (control == META_FRAME_CONTROL_MAXIMIZE)
+        op = META_GRAB_OP_CLICKING_MAXIMIZE;
+      else if (control == META_FRAME_CONTROL_UNMAXIMIZE)
+        op = META_GRAB_OP_CLICKING_UNMAXIMIZE;
+      else if (control == META_FRAME_CONTROL_DELETE)
+        op = META_GRAB_OP_CLICKING_DELETE;
+      else if (control == META_FRAME_CONTROL_MENU)
+        op = META_GRAB_OP_CLICKING_MENU;
+      else if (control == META_FRAME_CONTROL_APPMENU)
+        op = META_GRAB_OP_CLICKING_APPMENU;
+      else if (control == META_FRAME_CONTROL_SHADE)
+        op = META_GRAB_OP_CLICKING_SHADE;
+      else if (control == META_FRAME_CONTROL_UNSHADE)
+        op = META_GRAB_OP_CLICKING_UNSHADE;
+      else if (control == META_FRAME_CONTROL_ABOVE)
+        op = META_GRAB_OP_CLICKING_ABOVE;
+      else if (control == META_FRAME_CONTROL_UNABOVE)
+        op = META_GRAB_OP_CLICKING_UNABOVE;
+      else if (control == META_FRAME_CONTROL_STICK)
+        op = META_GRAB_OP_CLICKING_STICK;
+      else if (control == META_FRAME_CONTROL_UNSTICK)
+        op = META_GRAB_OP_CLICKING_UNSTICK;
+      else
+        g_assert_not_reached ();
 
       meta_core_begin_grab_op (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
                                frame->xwindow,
@@ -1739,36 +1720,24 @@ meta_frames_button_press_event (GtkWidget      *widget,
 
       op = META_GRAB_OP_NONE;
 
-      switch (control)
-        {
-        case META_FRAME_CONTROL_RESIZE_SE:
-          op = META_GRAB_OP_RESIZING_SE;
-          break;
-        case META_FRAME_CONTROL_RESIZE_S:
-          op = META_GRAB_OP_RESIZING_S;
-          break;
-        case META_FRAME_CONTROL_RESIZE_SW:
-          op = META_GRAB_OP_RESIZING_SW;
-          break;
-        case META_FRAME_CONTROL_RESIZE_NE:
-          op = META_GRAB_OP_RESIZING_NE;
-          break;
-        case META_FRAME_CONTROL_RESIZE_N:
-          op = META_GRAB_OP_RESIZING_N;
-          break;
-        case META_FRAME_CONTROL_RESIZE_NW:
-          op = META_GRAB_OP_RESIZING_NW;
-          break;
-        case META_FRAME_CONTROL_RESIZE_E:
-          op = META_GRAB_OP_RESIZING_E;
-          break;
-        case META_FRAME_CONTROL_RESIZE_W:
-          op = META_GRAB_OP_RESIZING_W;
-          break;
-        default:
-          g_assert_not_reached ();
-          break;
-        }
+      if (control == META_FRAME_CONTROL_RESIZE_SE)
+        op = META_GRAB_OP_RESIZING_SE;
+      else if (control == META_FRAME_CONTROL_RESIZE_S)
+        op = META_GRAB_OP_RESIZING_S;
+      else if (control == META_FRAME_CONTROL_RESIZE_SW)
+        op = META_GRAB_OP_RESIZING_SW;
+      else if (control == META_FRAME_CONTROL_RESIZE_NE)
+        op = META_GRAB_OP_RESIZING_NE;
+      else if (control == META_FRAME_CONTROL_RESIZE_N)
+        op = META_GRAB_OP_RESIZING_N;
+      else if (control == META_FRAME_CONTROL_RESIZE_NW)
+        op = META_GRAB_OP_RESIZING_NW;
+      else if (control == META_FRAME_CONTROL_RESIZE_E)
+        op = META_GRAB_OP_RESIZING_E;
+      else if (control == META_FRAME_CONTROL_RESIZE_W)
+        op = META_GRAB_OP_RESIZING_W;
+      else
+        g_assert_not_reached ();
 
       meta_core_begin_grab_op (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
                                frame->xwindow,
@@ -1956,6 +1925,35 @@ meta_frames_button_release_event    (GtkWidget           *widget,
           meta_core_end_grab_op (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()), event->time);
           break;
 
+        case META_GRAB_OP_NONE:
+        case META_GRAB_OP_MOVING:
+        case META_GRAB_OP_RESIZING_SE:
+        case META_GRAB_OP_RESIZING_S:
+        case META_GRAB_OP_RESIZING_SW:
+        case META_GRAB_OP_RESIZING_N:
+        case META_GRAB_OP_RESIZING_NE:
+        case META_GRAB_OP_RESIZING_NW:
+        case META_GRAB_OP_RESIZING_W:
+        case META_GRAB_OP_RESIZING_E:
+        case META_GRAB_OP_KEYBOARD_MOVING:
+        case META_GRAB_OP_KEYBOARD_RESIZING_UNKNOWN:
+        case META_GRAB_OP_KEYBOARD_RESIZING_S:
+        case META_GRAB_OP_KEYBOARD_RESIZING_N:
+        case META_GRAB_OP_KEYBOARD_RESIZING_W:
+        case META_GRAB_OP_KEYBOARD_RESIZING_E:
+        case META_GRAB_OP_KEYBOARD_RESIZING_SE:
+        case META_GRAB_OP_KEYBOARD_RESIZING_NE:
+        case META_GRAB_OP_KEYBOARD_RESIZING_SW:
+        case META_GRAB_OP_KEYBOARD_RESIZING_NW:
+        case META_GRAB_OP_KEYBOARD_TABBING_NORMAL:
+        case META_GRAB_OP_KEYBOARD_TABBING_DOCK:
+        case META_GRAB_OP_KEYBOARD_ESCAPING_NORMAL:
+        case META_GRAB_OP_KEYBOARD_ESCAPING_DOCK:
+        case META_GRAB_OP_KEYBOARD_ESCAPING_GROUP:
+        case META_GRAB_OP_KEYBOARD_TABBING_GROUP:
+        case META_GRAB_OP_KEYBOARD_WORKSPACE_SWITCHING:
+          break;
+
         default:
           break;
         }
@@ -2041,6 +2039,8 @@ meta_frames_update_prelit_control (MetaFrames      *frames,
     case META_FRAME_CONTROL_RESIZE_E:
       cursor = META_CURSOR_EAST_RESIZE;
       break;
+    default:
+      break;
     }
 
   /* set/unset the prelight cursor */
@@ -2063,6 +2063,20 @@ meta_frames_update_prelit_control (MetaFrames      *frames,
     case META_FRAME_CONTROL_UNSTICK:
     case META_FRAME_CONTROL_UNMAXIMIZE:
       /* leave control set */
+      break;
+    case META_FRAME_CONTROL_NONE:
+    case META_FRAME_CONTROL_TITLE:
+    case META_FRAME_CONTROL_RESIZE_SE:
+    case META_FRAME_CONTROL_RESIZE_S:
+    case META_FRAME_CONTROL_RESIZE_SW:
+    case META_FRAME_CONTROL_RESIZE_N:
+    case META_FRAME_CONTROL_RESIZE_NE:
+    case META_FRAME_CONTROL_RESIZE_NW:
+    case META_FRAME_CONTROL_RESIZE_W:
+    case META_FRAME_CONTROL_RESIZE_E:
+    case META_FRAME_CONTROL_CLIENT_AREA:
+      /* Only prelight buttons */
+      control = META_FRAME_CONTROL_NONE;
       break;
     default:
       /* Only prelight buttons */
@@ -2174,6 +2188,34 @@ meta_frames_motion_notify_event     (GtkWidget           *widget,
 
         queue_tip (frames);
       }
+      break;
+
+    case META_GRAB_OP_MOVING:
+    case META_GRAB_OP_RESIZING_SE:
+    case META_GRAB_OP_RESIZING_S:
+    case META_GRAB_OP_RESIZING_SW:
+    case META_GRAB_OP_RESIZING_N:
+    case META_GRAB_OP_RESIZING_NE:
+    case META_GRAB_OP_RESIZING_NW:
+    case META_GRAB_OP_RESIZING_W:
+    case META_GRAB_OP_RESIZING_E:
+    case META_GRAB_OP_KEYBOARD_MOVING:
+    case META_GRAB_OP_KEYBOARD_RESIZING_UNKNOWN:
+    case META_GRAB_OP_KEYBOARD_RESIZING_S:
+    case META_GRAB_OP_KEYBOARD_RESIZING_N:
+    case META_GRAB_OP_KEYBOARD_RESIZING_W:
+    case META_GRAB_OP_KEYBOARD_RESIZING_E:
+    case META_GRAB_OP_KEYBOARD_RESIZING_SE:
+    case META_GRAB_OP_KEYBOARD_RESIZING_NE:
+    case META_GRAB_OP_KEYBOARD_RESIZING_SW:
+    case META_GRAB_OP_KEYBOARD_RESIZING_NW:
+    case META_GRAB_OP_KEYBOARD_TABBING_NORMAL:
+    case META_GRAB_OP_KEYBOARD_TABBING_DOCK:
+    case META_GRAB_OP_KEYBOARD_ESCAPING_NORMAL:
+    case META_GRAB_OP_KEYBOARD_ESCAPING_DOCK:
+    case META_GRAB_OP_KEYBOARD_ESCAPING_GROUP:
+    case META_GRAB_OP_KEYBOARD_TABBING_GROUP:
+    case META_GRAB_OP_KEYBOARD_WORKSPACE_SWITCHING:
       break;
 
     default:
@@ -2731,6 +2773,18 @@ meta_frames_paint (MetaFrames   *frames,
       else
         button_states[META_BUTTON_TYPE_CLOSE] = META_BUTTON_STATE_PRELIGHT;
       break;
+    case META_FRAME_CONTROL_NONE:
+    case META_FRAME_CONTROL_TITLE:
+    case META_FRAME_CONTROL_RESIZE_SE:
+    case META_FRAME_CONTROL_RESIZE_S:
+    case META_FRAME_CONTROL_RESIZE_SW:
+    case META_FRAME_CONTROL_RESIZE_N:
+    case META_FRAME_CONTROL_RESIZE_NE:
+    case META_FRAME_CONTROL_RESIZE_NW:
+    case META_FRAME_CONTROL_RESIZE_W:
+    case META_FRAME_CONTROL_RESIZE_E:
+    case META_FRAME_CONTROL_CLIENT_AREA:
+      break;
     default:
       break;
     }
@@ -2868,6 +2922,8 @@ control_rect (MetaFrameControl control,
     case META_FRAME_CONTROL_NONE:
       break;
     case META_FRAME_CONTROL_CLIENT_AREA:
+      break;
+    default:
       break;
     }
 
