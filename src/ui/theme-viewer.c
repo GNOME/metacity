@@ -174,18 +174,21 @@ normal_contents (void)
   GtkWidget *contents;
   GtkWidget *sw;
   GtkBuilder *builder;
+  GMenuModel *model;
+  GtkWidget *menubar;
+  GtkWidget *toolbar;
 
   grid = gtk_grid_new ();
   builder = gtk_builder_new_from_string (xml, -1);
 
   /* create menu items */
-  GMenuModel *model = G_MENU_MODEL (gtk_builder_get_object (builder, "menubar"));
-  GtkWidget *menubar = gtk_menu_bar_new_from_model (model);
+  model = G_MENU_MODEL (gtk_builder_get_object (builder, "menubar"));
+  menubar = gtk_menu_bar_new_from_model (model);
   gtk_grid_attach (GTK_GRID (grid), menubar, 0, 0, 1, 1);
   gtk_widget_set_hexpand (menubar, TRUE);
 
   /* Create the toolbar */
-  GtkWidget *toolbar = create_toolbar ();
+  toolbar = create_toolbar ();
   gtk_grid_attach (GTK_GRID (grid), toolbar, 0, 1, 1, 1);
   gtk_widget_set_hexpand (toolbar, TRUE);
 
@@ -445,6 +448,10 @@ get_window_contents (MetaFrameType  type,
     case META_FRAME_TYPE_LAST:
       g_assert_not_reached ();
       break;
+
+    default:
+      g_assert_not_reached ();
+      break;
     }
 
   return NULL;
@@ -495,6 +502,10 @@ get_window_flags (MetaFrameType type)
     case META_FRAME_TYPE_LAST:
       g_assert_not_reached ();
       break;
+
+    default:
+      g_assert_not_reached ();
+      break;
     }
 
   return flags;
@@ -528,6 +539,7 @@ preview_collection (int font_size,
   GdkRGBA desktop_color;
   int i;
   GtkWidget *eventbox;
+  GSimpleActionGroup *action_group;
 
   sw = gtk_scrolled_window_new (NULL, NULL);
   gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
@@ -543,7 +555,7 @@ preview_collection (int font_size,
 
   gtk_container_add (GTK_CONTAINER (sw), eventbox);
 
-  GSimpleActionGroup *action_group = g_simple_action_group_new ();
+  action_group = g_simple_action_group_new ();
   g_action_map_add_action_entries (G_ACTION_MAP (action_group),
                                    theme_viewer_entries,
                                    G_N_ELEMENTS (theme_viewer_entries),
