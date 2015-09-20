@@ -2072,7 +2072,7 @@ meta_screen_queue_workarea_recalc (MetaScreen *screen)
 
 
 #ifdef WITH_VERBOSE_MODE
-static char *
+static const gchar *
 meta_screen_corner_to_string (MetaScreenCorner corner)
 {
   switch (corner)
@@ -2085,6 +2085,8 @@ meta_screen_corner_to_string (MetaScreenCorner corner)
       return "BottomLeft";
     case META_SCREEN_BOTTOMRIGHT:
       return "BottomRight";
+    default:
+      break;
     }
 
   return "Unknown";
@@ -2297,6 +2299,8 @@ meta_screen_calc_workspace_layout (MetaScreen          *screen,
               --r;
             }
         }
+      break;
+    default:
       break;
     }
 
@@ -2697,6 +2701,9 @@ meta_screen_sn_event (SnMonitorEvent *event,
       meta_topic (META_DEBUG_STARTUP,
                   "Received startup canceled for %s\n",
                   sn_startup_sequence_get_id (sequence));
+      break;
+
+    default:
       break;
     }
 }
