@@ -646,6 +646,12 @@ run_default_effect_handler (MetaEffect *effect)
                      META_MINIMIZE_ANIMATION_LENGTH);
        break;
 
+    case META_EFFECT_UNMINIMIZE:
+    case META_EFFECT_FOCUS:
+    case META_EFFECT_CLOSE:
+    case META_NUM_EFFECTS:
+      break;
+
     default:
        break;
     }
