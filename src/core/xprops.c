@@ -1033,7 +1033,9 @@ meta_prop_get_values (MetaDisplay   *display,
               values[i].required_type = XA_WM_SIZE_HINTS;
               break;
             case META_PROP_VALUE_SYNC_COUNTER:
-	      values[i].required_type = XA_CARDINAL;
+              values[i].required_type = XA_CARDINAL;
+              break;
+            default:
               break;
             }
         }
@@ -1188,6 +1190,8 @@ meta_prop_get_values (MetaDisplay   *display,
                                      &values[i].v.xcounter))
             values[i].type = META_PROP_VALUE_INVALID;
           break;
+        default:
+          break;
         }
 
     next:
@@ -1239,6 +1243,8 @@ free_value (MetaPropValue *value)
       meta_XFree (value->v.cardinal_list.cardinals);
       break;
     case META_PROP_VALUE_SYNC_COUNTER:
+      break;
+    default:
       break;
     }
 }
