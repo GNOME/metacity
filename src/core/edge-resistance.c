@@ -427,6 +427,8 @@ apply_edge_resistance (MetaWindow                *window,
                 case META_EDGE_SCREEN:
                   timeout_length_ms = TIMEOUT_RESISTANCE_LENGTH_MS_SCREEN;
                   break;
+                default:
+                  break;
                 }
 
               if (!resistance_data->timeout_setup &&
@@ -477,6 +479,8 @@ apply_edge_resistance (MetaWindow                *window,
                 threshold = PIXEL_DISTANCE_THRESHOLD_TOWARDS_SCREEN;
               else
                 threshold = PIXEL_DISTANCE_THRESHOLD_AWAYFROM_SCREEN;
+              break;
+            default:
               break;
             }
 
