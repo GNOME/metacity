@@ -361,6 +361,7 @@ meta_frame_layout_validate (const MetaFrameLayout *layout,
       CHECK_GEOMETRY_VALUE (button_height);
       break;
     case META_BUTTON_SIZING_LAST:
+    default:
       g_set_error (error, META_THEME_ERROR,
                    META_THEME_ERROR_FRAME_GEOMETRY,
                    _("Frame geometry does not specify size of buttons"));
@@ -502,6 +503,8 @@ map_button_function_to_type (MetaButtonFunction  function)
       return META_BUTTON_TYPE_CLOSE;
     case META_BUTTON_FUNCTION_LAST:
       return META_BUTTON_TYPE_LAST;
+    default:
+      break;
     }
 
   return META_BUTTON_TYPE_LAST;
@@ -548,6 +551,12 @@ rect_for_function (MetaFrameGeometry *fgeom,
         case META_BUTTON_FUNCTION_UNSTICK:
           if (flags & META_FRAME_STUCK)
             return &fgeom->unstick_rect;
+        case META_BUTTON_FUNCTION_MENU:
+        case META_BUTTON_FUNCTION_APPMENU:
+        case META_BUTTON_FUNCTION_MINIMIZE:
+        case META_BUTTON_FUNCTION_MAXIMIZE:
+        case META_BUTTON_FUNCTION_CLOSE:
+        case META_BUTTON_FUNCTION_LAST:
         default:
           /* just go on to the next switch block */;
         }
@@ -597,6 +606,9 @@ rect_for_function (MetaFrameGeometry *fgeom,
 
     case META_BUTTON_FUNCTION_LAST:
       return NULL;
+
+    default:
+      break;
     }
 
   return NULL;
@@ -785,6 +797,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
                                  MetaTheme              *theme)
 {
   MetaTheme *current;
+  MetaFrameBorders borders;
   int i, n_left, n_right, n_left_spacers, n_right_spacers;
   int x;
   int button_y;
@@ -792,8 +805,6 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
   int width, height;
   int button_width, button_height;
   int min_size_for_rounding;
-
-  current = meta_theme_get_current ();
 
   /* the left/right rects in order; the max # of rects
    * is the number of button functions
@@ -805,7 +816,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
   GdkRectangle *right_bg_rects[MAX_BUTTONS_PER_CORNER];
   gboolean right_buttons_has_spacer[MAX_BUTTONS_PER_CORNER];
 
-  MetaFrameBorders borders;
+  current = meta_theme_get_current ();
 
   meta_frame_layout_sync_with_style (layout, style_info, flags);
 
@@ -845,6 +856,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
       button_height = layout->button_height;
       break;
     case META_BUTTON_SIZING_LAST:
+    default:
       g_assert_not_reached ();
       break;
     }
@@ -1324,6 +1336,9 @@ meta_color_spec_new (MetaColorSpecType type)
     case META_COLOR_SPEC_SHADE:
       size += sizeof (dummy.data.shade);
       break;
+
+    default:
+      break;
     }
 
   spec = g_malloc0 (size);
@@ -1368,6 +1383,9 @@ meta_color_spec_free (MetaColorSpec *spec)
       if (spec->data.shade.base)
         meta_color_spec_free (spec->data.shade.base);
       DEBUG_FILL_STRUCT (&spec->data.shade);
+      break;
+
+    default:
       break;
     }
 
@@ -1789,6 +1807,7 @@ meta_set_color_from_style (GdkRGBA               *color,
       meta_gtk_style_get_dark_color (context, state, color);
       break;
     case META_GTK_COLOR_LAST:
+    default:
       g_assert_not_reached ();
       break;
     }
@@ -1857,6 +1876,9 @@ meta_color_spec_render (MetaColorSpec *spec,
         *color = spec->data.shade.color;
       }
       break;
+
+    default:
+      break;
     }
 }
 
@@ -1886,6 +1908,8 @@ op_name (PosOperatorType type)
     case POS_OP_MIN:
       return "`min`";
     case POS_OP_NONE:
+      break;
+    default:
       break;
     }
 
@@ -1935,6 +1959,9 @@ op_from_string (const char *p,
           *len = 5;
           return POS_OP_MIN;
         }
+
+    default:
+      break;
     }
 
   return POS_OP_NONE;
@@ -2359,6 +2386,7 @@ do_operation (PosExpr *a,
           a->d.int_val = MIN (a->d.int_val, b->d.int_val);
           break;
         case POS_OP_NONE:
+        default:
           g_assert_not_reached ();
           break;
         }
@@ -2398,6 +2426,7 @@ do_operation (PosExpr *a,
           a->d.double_val = MIN (a->d.double_val, b->d.double_val);
           break;
         case POS_OP_NONE:
+        default:
           g_assert_not_reached ();
           break;
         }
@@ -2488,6 +2517,8 @@ do_operations (PosExpr *exprs,
                                  err))
                 return FALSE;
               break;
+            default:
+              break;
             }
           break;
         case 1:
@@ -2500,6 +2531,8 @@ do_operations (PosExpr *exprs,
                                  exprs[i].d.operator,
                                  err))
                 return FALSE;
+              break;
+            default:
               break;
             }
           break;
@@ -2515,7 +2548,11 @@ do_operations (PosExpr *exprs,
                                  err))
                 return FALSE;
               break;
+            default:
+              break;
             }
+          break;
+        default:
           break;
         }
 
@@ -2766,6 +2803,9 @@ pos_eval_helper (PosToken                   *tokens,
               exprs[n_exprs].d.operator = t->d.o.op;
               ++n_exprs;
               break;
+
+            default:
+              break;
             }
         }
       else
@@ -2801,6 +2841,8 @@ pos_eval_helper (PosToken                   *tokens,
               --paren_level;
               break;
 
+            default:
+              break;
             }
         }
     }
@@ -2883,6 +2925,7 @@ pos_eval (MetaDrawSpec              *spec,
           *val_p = expr.d.double_val;
           break;
         case POS_EXPR_OPERATOR:
+        default:
           g_assert_not_reached ();
           break;
         }
@@ -3173,6 +3216,9 @@ meta_draw_op_new (MetaDrawType type)
     case META_DRAW_TILE:
       size += sizeof (dummy.data.tile);
       break;
+
+    default:
+      break;
     }
 
   op = g_malloc0 (size);
@@ -3260,7 +3306,7 @@ meta_draw_op_free (MetaDrawOp *op)
         g_object_unref (G_OBJECT (op->data.image.pixbuf));
 
       if (op->data.image.colorize_spec)
-	meta_color_spec_free (op->data.image.colorize_spec);
+        meta_color_spec_free (op->data.image.colorize_spec);
 
       if (op->data.image.colorize_cache_pixbuf)
         g_object_unref (G_OBJECT (op->data.image.colorize_cache_pixbuf));
@@ -3333,6 +3379,9 @@ meta_draw_op_free (MetaDrawOp *op)
       meta_draw_spec_free (op->data.tile.tile_yoffset);
       meta_draw_spec_free (op->data.tile.tile_width);
       meta_draw_spec_free (op->data.tile.tile_height);
+      break;
+
+    default:
       break;
     }
 
@@ -3771,6 +3820,9 @@ draw_op_as_pixbuf (const MetaDrawOp    *op,
 
     case META_DRAW_TILE:
       break;
+
+    default:
+      break;
     }
 
   return pixbuf;
@@ -4111,6 +4163,8 @@ meta_draw_op_draw_with_env (const MetaDrawOp    *op,
             break;
           case GTK_ARROW_NONE:
             return;
+          default:
+            break;
           }
 
         gtk_style_context_set_state (style_gtk, op->data.gtk_arrow.state);
@@ -4308,6 +4362,9 @@ meta_draw_op_draw_with_env (const MetaDrawOp    *op,
           }
         cairo_restore (cr);
       }
+      break;
+
+    default:
       break;
     }
 
@@ -4613,6 +4670,8 @@ map_button_state (MetaButtonType           button_type,
       break;
     case META_BUTTON_TYPE_LAST:
       break;
+    default:
+      break;
     }
 
   if (function != META_BUTTON_FUNCTION_LAST)
@@ -4799,6 +4858,7 @@ get_button_rect (MetaButtonType           type,
       break;
 
     case META_BUTTON_TYPE_LAST:
+    default:
       g_assert_not_reached ();
       break;
     }
@@ -4946,6 +5006,7 @@ meta_frame_style_draw_with_style (MetaFrameStyle          *style,
           break;
 
         case META_FRAME_PIECE_LAST:
+        default:
           g_assert_not_reached ();
           break;
         }
@@ -5041,17 +5102,14 @@ meta_frame_style_draw_with_style (MetaFrameStyle          *style,
 static const char *
 get_class_from_button_type (MetaButtonType type)
 {
-  switch (type)
-    {
-    case META_BUTTON_TYPE_CLOSE:
-      return "close";
-    case META_BUTTON_TYPE_MAXIMIZE:
-      return "maximize";
-    case META_BUTTON_TYPE_MINIMIZE:
-      return "minimize";
-    default:
-      return NULL;
-    }
+  if (type == META_BUTTON_TYPE_CLOSE)
+    return "close";
+  else if (type == META_BUTTON_TYPE_MAXIMIZE)
+    return "maximize";
+  else if (type == META_BUTTON_TYPE_MINIMIZE)
+    return "minimize";
+
+  return NULL;
 }
 
 /* Used for GTK+ theme */
@@ -5186,6 +5244,21 @@ meta_frame_style_draw_with_style_gtk (MetaFrameStyle          *frame_style,
               case META_BUTTON_TYPE_APPMENU:
                 pixbuf = g_object_ref (mini_icon);
                 break;
+              case META_BUTTON_TYPE_LEFT_LEFT_BACKGROUND:
+              case META_BUTTON_TYPE_LEFT_MIDDLE_BACKGROUND:
+              case META_BUTTON_TYPE_LEFT_RIGHT_BACKGROUND:
+              case META_BUTTON_TYPE_LEFT_SINGLE_BACKGROUND:
+              case META_BUTTON_TYPE_RIGHT_LEFT_BACKGROUND:
+              case META_BUTTON_TYPE_RIGHT_MIDDLE_BACKGROUND:
+              case META_BUTTON_TYPE_RIGHT_RIGHT_BACKGROUND:
+              case META_BUTTON_TYPE_RIGHT_SINGLE_BACKGROUND:
+              case META_BUTTON_TYPE_SHADE:
+              case META_BUTTON_TYPE_ABOVE:
+              case META_BUTTON_TYPE_STICK:
+              case META_BUTTON_TYPE_UNSHADE:
+              case META_BUTTON_TYPE_UNABOVE:
+              case META_BUTTON_TYPE_UNSTICK:
+              case META_BUTTON_TYPE_LAST:
               default:
                 icon_name = NULL;
                 break;
@@ -5306,78 +5379,74 @@ get_style (MetaFrameStyleSet *style_set,
 
   style = NULL;
 
-  switch (state)
+  if (state == META_FRAME_STATE_NORMAL || state == META_FRAME_STATE_SHADED)
     {
-    case META_FRAME_STATE_NORMAL:
-    case META_FRAME_STATE_SHADED:
-      {
-        if (state == META_FRAME_STATE_SHADED)
-          style = style_set->shaded_styles[resize][focus];
-        else
-          style = style_set->normal_styles[resize][focus];
+      if (state == META_FRAME_STATE_SHADED)
+        style = style_set->shaded_styles[resize][focus];
+      else
+        style = style_set->normal_styles[resize][focus];
 
-        /* Try parent if we failed here */
-        if (style == NULL && style_set->parent)
-          style = get_style (style_set->parent, state, resize, focus);
+      /* Try parent if we failed here */
+      if (style == NULL && style_set->parent)
+        style = get_style (style_set->parent, state, resize, focus);
 
-        /* Allow people to omit the vert/horz/none resize modes */
-        if (style == NULL &&
-            resize != META_FRAME_RESIZE_BOTH)
-          style = get_style (style_set, state, META_FRAME_RESIZE_BOTH, focus);
-      }
-      break;
-    default:
-      {
-        MetaFrameStyle **styles;
+      /* Allow people to omit the vert/horz/none resize modes */
+      if (style == NULL &&
+          resize != META_FRAME_RESIZE_BOTH)
+        style = get_style (style_set, state, META_FRAME_RESIZE_BOTH, focus);
+    }
+  else
+    {
+      MetaFrameStyle **styles;
 
-        styles = NULL;
+      styles = NULL;
 
-        switch (state)
-          {
-          case META_FRAME_STATE_MAXIMIZED:
-            styles = style_set->maximized_styles;
-            break;
-          case META_FRAME_STATE_TILED_LEFT:
-            styles = style_set->tiled_left_styles;
-            break;
-          case META_FRAME_STATE_TILED_RIGHT:
-            styles = style_set->tiled_right_styles;
-            break;
-          case META_FRAME_STATE_MAXIMIZED_AND_SHADED:
-            styles = style_set->maximized_and_shaded_styles;
-            break;
-          case META_FRAME_STATE_TILED_LEFT_AND_SHADED:
-            styles = style_set->tiled_left_and_shaded_styles;
-            break;
-          case META_FRAME_STATE_TILED_RIGHT_AND_SHADED:
-            styles = style_set->tiled_right_and_shaded_styles;
-            break;
-          case META_FRAME_STATE_NORMAL:
-          case META_FRAME_STATE_SHADED:
-          case META_FRAME_STATE_LAST:
-            g_assert_not_reached ();
-            break;
-          }
+      switch (state)
+        {
+        case META_FRAME_STATE_MAXIMIZED:
+          styles = style_set->maximized_styles;
+          break;
+        case META_FRAME_STATE_TILED_LEFT:
+          styles = style_set->tiled_left_styles;
+          break;
+        case META_FRAME_STATE_TILED_RIGHT:
+          styles = style_set->tiled_right_styles;
+          break;
+        case META_FRAME_STATE_MAXIMIZED_AND_SHADED:
+          styles = style_set->maximized_and_shaded_styles;
+          break;
+        case META_FRAME_STATE_TILED_LEFT_AND_SHADED:
+          styles = style_set->tiled_left_and_shaded_styles;
+          break;
+        case META_FRAME_STATE_TILED_RIGHT_AND_SHADED:
+          styles = style_set->tiled_right_and_shaded_styles;
+          break;
+        case META_FRAME_STATE_NORMAL:
+        case META_FRAME_STATE_SHADED:
+        case META_FRAME_STATE_LAST:
+        default:
+          g_assert_not_reached ();
+          break;
+        }
 
-        style = styles[focus];
+      style = styles[focus];
 
-        /* Tiled states are optional, try falling back to non-tiled states */
-        if (style == NULL)
-          {
-            if (state == META_FRAME_STATE_TILED_LEFT ||
-                state == META_FRAME_STATE_TILED_RIGHT)
-              style = get_style (style_set, META_FRAME_STATE_NORMAL,
-                                 resize, focus);
-            else if (state == META_FRAME_STATE_TILED_LEFT_AND_SHADED ||
-                     state == META_FRAME_STATE_TILED_RIGHT_AND_SHADED)
-              style = get_style (style_set, META_FRAME_STATE_SHADED,
-                                 resize, focus);
-          }
+      /* Tiled states are optional, try falling back to non-tiled states */
+      if (style == NULL)
+        {
+          if (state == META_FRAME_STATE_TILED_LEFT ||
+              state == META_FRAME_STATE_TILED_RIGHT)
+            style = get_style (style_set, META_FRAME_STATE_NORMAL,
+                               resize, focus);
+          else if (state == META_FRAME_STATE_TILED_LEFT_AND_SHADED ||
+                   state == META_FRAME_STATE_TILED_RIGHT_AND_SHADED)
+            style = get_style (style_set, META_FRAME_STATE_SHADED,
+                               resize, focus);
+        }
 
-        /* Try parent if we failed here */
-        if (style == NULL && style_set->parent)
-          style = get_style (style_set->parent, state, resize, focus);
-      }
+      /* Try parent if we failed here */
+      if (style == NULL && style_set->parent)
+        style = get_style (style_set->parent, state, resize, focus);
     }
 
   return style;
@@ -6614,6 +6683,8 @@ meta_button_state_to_string (MetaButtonState state)
       return "prelight";
     case META_BUTTON_STATE_LAST:
       break;
+    default:
+      break;
     }
 
   return "<unknown>";
@@ -6713,6 +6784,8 @@ meta_button_type_to_string (MetaButtonType type)
       return "right_single_background";
     case META_BUTTON_TYPE_LAST:
       break;
+    default:
+      break;
     }
 
   return "<unknown>";
@@ -6795,6 +6868,8 @@ meta_frame_state_to_string (MetaFrameState state)
       return "tiled_right_and_shaded";
     case META_FRAME_STATE_LAST:
       break;
+    default:
+      break;
     }
 
   return "<unknown>";
@@ -6830,6 +6905,8 @@ meta_frame_resize_to_string (MetaFrameResize resize)
       return "both";
     case META_FRAME_RESIZE_LAST:
       break;
+    default:
+      break;
     }
 
   return "<unknown>";
@@ -6856,6 +6933,8 @@ meta_frame_focus_to_string (MetaFrameFocus focus)
     case META_FRAME_FOCUS_YES:
       return "yes";
     case META_FRAME_FOCUS_LAST:
+      break;
+    default:
       break;
     }
 
@@ -6911,6 +6990,8 @@ meta_frame_type_to_string (MetaFrameType type)
       return "toolbar";
 #endif
     case  META_FRAME_TYPE_LAST:
+      break;
+    default:
       break;
     }
 
@@ -7253,6 +7334,7 @@ meta_theme_earliest_version_with_button (MetaButtonType type)
     case META_BUTTON_TYPE_APPMENU:
       return 3005;
 
+    case META_BUTTON_TYPE_LAST:
     default:
       meta_warning("Unknown button %d\n", type);
       return 1000;
