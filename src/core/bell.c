@@ -269,6 +269,8 @@ bell_visual_notify (MetaDisplay *display,
     case G_DESKTOP_VISUAL_BELL_FRAME_FLASH:
       bell_flash_frame (display, xkb_ev); /* does nothing yet */
       break;
+    default:
+      break;
     }
 }
 
