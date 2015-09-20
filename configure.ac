@@ -77,13 +77,11 @@ AC_CHECK_SIZEOF(__int64)
 ## byte order
 AC_C_BIGENDIAN
 
-GTK_API_VERSION=3.0
 GTK_MIN_VERSION=3.15.2
 GIO_MIN_VERSION=2.25.10
 CANBERRA_GTK=libcanberra-gtk3
 
-METACITY_PC_MODULES="gtk+-$GTK_API_VERSION >= $GTK_MIN_VERSION gio-2.0 >= $GIO_MIN_VERSION pango >= 1.2.0 gsettings-desktop-schemas >= 3.3.0"
-AC_SUBST(GTK_API_VERSION)
+METACITY_PC_MODULES="gtk+-3.0 >= $GTK_MIN_VERSION gio-2.0 >= $GIO_MIN_VERSION pango >= 1.2.0 gsettings-desktop-schemas >= 3.3.0"
 
 GLIB_GSETTINGS
 
@@ -134,8 +132,8 @@ AM_GLIB_GNU_GETTEXT
 ## here we get the flags we'll actually use
 PKG_CHECK_MODULES(ALL, glib-2.0 >= 2.36.0 gthread-2.0 >= 2.32.0)
 # gtk_window_set_icon_name requires gtk2+-2.60
-PKG_CHECK_MODULES(METACITY_MESSAGE, gtk+-$GTK_API_VERSION >= $GTK_MIN_VERSION)
-PKG_CHECK_MODULES(METACITY_WINDOW_DEMO, gtk+-$GTK_API_VERSION >= $GTK_MIN_VERSION)
+PKG_CHECK_MODULES(METACITY_MESSAGE, gtk+-3.0 >= $GTK_MIN_VERSION)
+PKG_CHECK_MODULES(METACITY_WINDOW_DEMO, gtk+-3.0 >= $GTK_MIN_VERSION)
 
 if $PKG_CONFIG --atleast-version 1.2.0 pangoxft; then
    echo "pangoxft found"
@@ -425,7 +423,7 @@ fi
 
 dnl ==========================================================================
 echo "
-metacity-$VERSION (using gtk+-${GTK_API_VERSION}):
+metacity-$VERSION:
 
 	prefix:                   ${prefix}
 	source code location:	  ${srcdir}
