@@ -313,7 +313,6 @@ static void workspace_switch_sound(MetaWorkspace *from,
 
   MetaWorkspaceLayout layout;
   int i, nw, x, y, fi, ti;
-  const char *e;
 
   nw = meta_screen_get_n_workspaces(from->screen);
   fi = meta_workspace_index(from);
@@ -343,25 +342,30 @@ static void workspace_switch_sound(MetaWorkspace *from,
      spatial "Woosh!" effects will easily be able to encode horizontal
      movement but not such much vertical movement. */
 
-  if (x < layout.current_col)
-    e = "desktop-switch-left";
-  else if (x > layout.current_col)
-    e = "desktop-switch-right";
-  else if (y < layout.current_row)
-    e = "desktop-switch-up";
-  else if (y > layout.current_row)
-    e = "desktop-switch-down";
-  else {
+  if (x == layout.current_col && y == layout.current_row) {
     meta_bug("Uh, origin and destination workspace at same logic position!\n");
     goto finish;
   }
 
 #ifdef HAVE_CANBERRA
-  ca_context_play(ca_gtk_context_get(), 1,
+  {
+    const char *e;
+
+    if (x < layout.current_col)
+      e = "desktop-switch-left";
+    else if (x > layout.current_col)
+      e = "desktop-switch-right";
+    else if (y < layout.current_row)
+      e = "desktop-switch-up";
+    else if (y > layout.current_row)
+      e = "desktop-switch-down";
+
+    ca_context_play(ca_gtk_context_get(), 1,
                   CA_PROP_EVENT_ID, e,
                   CA_PROP_EVENT_DESCRIPTION, "Desktop switched",
                   CA_PROP_CANBERRA_CACHE_CONTROL, "permanent",
                   NULL);
+  }
 #endif
 
  finish:
