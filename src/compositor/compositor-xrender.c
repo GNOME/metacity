@@ -3138,7 +3138,7 @@ MetaCompositor *
 meta_compositor_xrender_new (MetaDisplay *display)
 {
 #ifdef HAVE_COMPOSITE_EXTENSIONS
-  char *atom_names[] = {
+  const gchar *atom_names[] = {
     "_XROOTPMAP_ID",
     "_XSETROOT_ID",
     "_NET_WM_WINDOW_OPACITY",
@@ -3168,7 +3168,7 @@ meta_compositor_xrender_new (MetaDisplay *display)
   xrc->display = display;
 
   meta_verbose ("Creating %d atoms\n", (int) G_N_ELEMENTS (atom_names));
-  XInternAtoms (xdisplay, atom_names, G_N_ELEMENTS (atom_names),
+  XInternAtoms (xdisplay, (gchar **) atom_names, G_N_ELEMENTS (atom_names),
                 False, atoms);
 
   xrc->atom_x_root_pixmap = atoms[0];
