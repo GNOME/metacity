@@ -3158,6 +3158,13 @@ parse_style_set_element (GMarkupParseContext  *context,
             }
           break;
 
+        case META_FRAME_STATE_MAXIMIZED:
+        case META_FRAME_STATE_TILED_LEFT:
+        case META_FRAME_STATE_TILED_RIGHT:
+        case META_FRAME_STATE_MAXIMIZED_AND_SHADED:
+        case META_FRAME_STATE_TILED_LEFT_AND_SHADED:
+        case META_FRAME_STATE_TILED_RIGHT_AND_SHADED:
+        case META_FRAME_STATE_LAST:
         default:
           if (resize != NULL)
             {
@@ -3261,6 +3268,9 @@ parse_style_set_element (GMarkupParseContext  *context,
           info->style_set->tiled_right_and_shaded_styles[frame_focus] = frame_style;
           break;
         case META_FRAME_STATE_LAST:
+          g_assert_not_reached ();
+          break;
+        default:
           g_assert_not_reached ();
           break;
         }
@@ -3670,6 +3680,8 @@ start_element_handler (GMarkupParseContext *context,
                  _("Element <%s> is not allowed inside a <%s> element"),
                  element_name, "fallback");
       break;
+    default:
+      break;
     }
 }
 
@@ -3763,6 +3775,8 @@ end_element_handler (GMarkupParseContext *context,
       break;
     case STATE_DRAW_OPS:
       {
+        ParseState parse_state;
+
         g_assert (info->op_list);
 
         if (!meta_draw_op_list_validate (info->op_list,
@@ -3775,25 +3789,26 @@ end_element_handler (GMarkupParseContext *context,
 
         pop_state (info);
 
-        switch (peek_state (info))
+        parse_state = peek_state (info);
+        if (parse_state == STATE_BUTTON ||
+            parse_state == STATE_PIECE ||
+            parse_state == STATE_MENU_ICON)
           {
-          case STATE_BUTTON:
-          case STATE_PIECE:
-          case STATE_MENU_ICON:
             /* Leave info->op_list to be picked up
              * when these elements are closed
              */
             g_assert (info->op_list);
-            break;
-          case STATE_THEME:
+          }
+        else if (parse_state == STATE_THEME)
+          {
             g_assert (info->op_list);
             meta_draw_op_list_unref (info->op_list);
             info->op_list = NULL;
-            break;
-          default:
+          }
+        else
+          {
             /* Op list can't occur in other contexts */
             g_assert_not_reached ();
-            break;
           }
       }
       break;
@@ -3958,6 +3973,8 @@ end_element_handler (GMarkupParseContext *context,
     case STATE_FALLBACK:
       pop_state (info);
       g_assert (peek_state (info) == STATE_THEME);
+      break;
+    default:
       break;
     }
 
@@ -4163,6 +4180,8 @@ text_handler (GMarkupParseContext *context,
       break;
     case STATE_FALLBACK:
       NO_TEXT ("fallback");
+      break;
+    default:
       break;
     }
 }
