@@ -320,6 +320,8 @@ find_most_freespace (MetaWindow *window,
       else
         *new_y = work_area.y + work_area.height - outer.height + frame_size_top;
       break;
+    default:
+      break;
     }
 }
 
@@ -394,6 +396,9 @@ rectangle_overlaps_some_window (MetaRectangle *rect,
 
           if (meta_rectangle_intersect (rect, &other_rect, &dest))
             return TRUE;
+          break;
+
+        default:
           break;
         }
 
@@ -705,6 +710,10 @@ find_preferred_position (MetaWindow *window,
             *new_y += work_area.y;
             break;
 
+          case META_PLACEMENT_MODE_SMART:
+          case META_PLACEMENT_MODE_CASCADE:
+            break;
+
           default:
             meta_warning ("Unknown window-placement option chosen.\n");
             return FALSE;
@@ -763,6 +772,9 @@ meta_window_place (MetaWindow        *window,
     case META_WINDOW_MENU:
     case META_WINDOW_UTILITY:
       goto done_no_constraints;
+
+    default:
+      goto done_no_constraints;
     }
 
   if (meta_prefs_get_disable_workarounds ())
@@ -801,6 +813,9 @@ meta_window_place (MetaWindow        *window,
                           "Not placing non-normal non-dialog window with PPosition set\n");
               goto done_no_constraints;
             }
+          break;
+
+        default:
           break;
         }
     }
