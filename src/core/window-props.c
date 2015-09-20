@@ -50,6 +50,7 @@
 #include <pwd.h>
 
 #ifdef HAVE_GTOP
+#define TIME_WITH_SYS_TIME 1
 #include <glibtop/procuid.h>
 #include <errno.h>
 #include <pwd.h>
