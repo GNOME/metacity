@@ -788,7 +788,7 @@ meta_workspace_get_onxinerama_region (MetaWorkspace *workspace,
 }
 
 #ifdef WITH_VERBOSE_MODE
-static char *
+static const gchar *
 meta_motion_direction_to_string (MetaMotionDirection direction)
 {
   switch (direction)
@@ -801,6 +801,8 @@ meta_motion_direction_to_string (MetaMotionDirection direction)
       return "Left";
     case META_MOTION_RIGHT:
       return "Right";
+    default:
+      break;
     }
 
   return "Unknown";
@@ -838,6 +840,8 @@ meta_workspace_get_neighbor (MetaWorkspace      *workspace,
       break;
     case META_MOTION_DOWN:
       layout.current_row += 1;
+      break;
+    default:
       break;
     }
 
