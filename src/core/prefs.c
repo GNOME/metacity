@@ -137,14 +137,12 @@ typedef struct
   gpointer data;
 } MetaPrefsListener;
 
-
 typedef struct
 {
-  gchar *key;
-  gchar *schema;
+  const gchar *key;
+  const gchar *schema;
   MetaPreference pref;
 } MetaBasePreference;
-
 
 typedef struct
 {
@@ -835,15 +833,15 @@ meta_prefs_init (void)
   GSettings *settings;
 
   settings_schemas = g_hash_table_new_full (g_str_hash, g_str_equal,
-                                            NULL, g_object_unref);
+                                            g_free, g_object_unref);
 
   settings = g_settings_new (SCHEMA_GENERAL);
   g_signal_connect (settings, "changed", G_CALLBACK (settings_changed), NULL);
-  g_hash_table_insert (settings_schemas, SCHEMA_GENERAL, settings);
+  g_hash_table_insert (settings_schemas, g_strdup (SCHEMA_GENERAL), settings);
 
   settings = g_settings_new (SCHEMA_METACITY);
   g_signal_connect (settings, "changed", G_CALLBACK (settings_changed), NULL);
-  g_hash_table_insert (settings_schemas, SCHEMA_METACITY, settings);
+  g_hash_table_insert (settings_schemas, g_strdup (SCHEMA_METACITY), settings);
 
   /* Individual keys we watch outside of our schemas */
   settings = g_settings_new (SCHEMA_INTERFACE);
@@ -855,7 +853,7 @@ meta_prefs_init (void)
                     G_CALLBACK (settings_changed), NULL);
   g_signal_connect (settings, "changed::" KEY_GNOME_CURSOR_SIZE,
                     G_CALLBACK (settings_changed), NULL);
-  g_hash_table_insert (settings_schemas, SCHEMA_INTERFACE, settings);
+  g_hash_table_insert (settings_schemas, g_strdup (SCHEMA_INTERFACE), settings);
 
   /* Pick up initial values. */
   handle_preference_init_enum ();
@@ -886,7 +884,7 @@ settings_changed (GSettings *settings,
   /* String array, handled separately */
   if (strcmp (key, KEY_WORKSPACE_NAMES) == 0)
     {
-      if (update_workspace_names ());
+      if (update_workspace_names ())
         queue_changed (META_PREF_WORKSPACE_NAMES);
 
       return;
@@ -1180,6 +1178,14 @@ button_opposite_function (MetaButtonFunction ofwhat)
       return META_BUTTON_FUNCTION_UNSTICK;
     case META_BUTTON_FUNCTION_UNSTICK:
       return META_BUTTON_FUNCTION_STICK;
+
+    case META_BUTTON_FUNCTION_MENU:
+    case META_BUTTON_FUNCTION_APPMENU:
+    case META_BUTTON_FUNCTION_MINIMIZE:
+    case META_BUTTON_FUNCTION_MAXIMIZE:
+    case META_BUTTON_FUNCTION_CLOSE:
+    case META_BUTTON_FUNCTION_LAST:
+      return META_BUTTON_FUNCTION_LAST;
 
     default:
       return META_BUTTON_FUNCTION_LAST;
@@ -1503,6 +1509,9 @@ meta_preference_to_string (MetaPreference pref)
 
     case META_PREF_ALT_TAB_THUMBNAILS:
       return "ALT_TAB_THUMBNAILS";
+
+    default:
+      break;
     }
 
   return "(unknown)";
@@ -1808,7 +1817,7 @@ meta_prefs_add_keybinding (const char           *name,
  * Return: (element-type MetaKeyPref) (transfer container):
  */
 GList *
-meta_prefs_get_keybindings ()
+meta_prefs_get_keybindings (void)
 {
   return g_hash_table_get_values (key_bindings);
 }
@@ -1850,19 +1859,19 @@ meta_prefs_get_reduced_resources (void)
 }
 
 gboolean
-meta_prefs_get_gnome_accessibility ()
+meta_prefs_get_gnome_accessibility (void)
 {
   return gnome_accessibility;
 }
 
 gboolean
-meta_prefs_get_gnome_animations ()
+meta_prefs_get_gnome_animations (void)
 {
   return gnome_animations;
 }
 
 gboolean
-meta_prefs_get_edge_tiling ()
+meta_prefs_get_edge_tiling (void)
 {
   return edge_tiling;
 }
