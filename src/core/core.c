@@ -152,6 +152,8 @@ meta_core_get (Display *xdisplay,
               base_type = META_FRAME_TYPE_LAST;
               break;
 
+            default:
+              break;
             }
 
           if (base_type == META_FRAME_TYPE_LAST)
@@ -208,8 +210,12 @@ meta_core_get (Display *xdisplay,
         *((gint*)answer) = window->screen->rect.height;
         break;
 
+      case META_CORE_GET_END:
+        break;
+
       default:
         meta_warning(_("Unknown window information request: %d"), request);
+        break;
     }
 
     request = va_arg (args, MetaCoreGetType);
@@ -620,6 +626,8 @@ meta_core_get_menu_accelerator (MetaMenuOp           menu_op,
         case 12:
           name = "move-to-workspace-12";
           break;
+        default:
+          break;
         }
       break;
     case META_MENU_OP_MOVE:
@@ -642,6 +650,8 @@ meta_core_get_menu_accelerator (MetaMenuOp           menu_op,
       break;
     case META_MENU_OP_RECOVER:
       /* No keybinding for this one */
+      break;
+    default:
       break;
     }
 
