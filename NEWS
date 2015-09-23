@@ -1,3 +1,15 @@
+Version 3.18.0
+==============
+- Fix adwaita theme fallback colors. (Balló György)
+- Fix crash when using Alt-Tab to switch widnows with alt-tab-thumbnails
+  enabled. (Alberts Muktupāvels)
+- Fix visual artifacts after unmaximizing Google Chrome / Chromium
+  window. (Alberts Muktupāvels)
+- Ported away from gnome-common. (Alberts Muktupāvels)
+- Updated translations:
+  Balázs Úr (hu), Daniel Mustieles (es), Marek Černocký (cs), Piotr Drąg (pl),
+  Sveinn í Felli (is), Yosef Or Boczko (he).
+
 Version 3.17.2
 ==============
 - Don't grab keybinding if devirtualization failed. (Alberts Muktupāvels)
