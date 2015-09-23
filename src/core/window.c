@@ -7411,12 +7411,13 @@ update_resize (MetaWindow *window,
       new_w -= dx;
       new_x += dx;
     }
-  else if (grab_op == META_GRAB_OP_RESIZING_SE ||
-           grab_op == META_GRAB_OP_RESIZING_S ||
-           grab_op == META_GRAB_OP_RESIZING_SW ||
-           grab_op == META_GRAB_OP_KEYBOARD_RESIZING_SE ||
-           grab_op == META_GRAB_OP_KEYBOARD_RESIZING_S ||
-           grab_op == META_GRAB_OP_KEYBOARD_RESIZING_SW)
+
+  if (grab_op == META_GRAB_OP_RESIZING_SE ||
+      grab_op == META_GRAB_OP_RESIZING_S ||
+      grab_op == META_GRAB_OP_RESIZING_SW ||
+      grab_op == META_GRAB_OP_KEYBOARD_RESIZING_SE ||
+      grab_op == META_GRAB_OP_KEYBOARD_RESIZING_S ||
+      grab_op == META_GRAB_OP_KEYBOARD_RESIZING_SW)
     {
       new_h += dy;
     }
