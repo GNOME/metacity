@@ -1,8 +1,22 @@
+NULL =
+
 lib_LTLIBRARIES = libmetacity-private.la
 
 SUBDIRS = tools themes
 
-AM_CPPFLAGS=-I$(srcdir)/include -DMETACITY_LIBEXECDIR=\"$(libexecdir)\" -DHOST_ALIAS=\"@HOST_ALIAS@\" -DMETACITY_LOCALEDIR=\"$(prefix)/@DATADIRNAME@/locale\" -DMETACITY_PKGDATADIR=\"$(pkgdatadir)\" -DMETACITY_DATADIR=\"$(datadir)\" -DG_LOG_DOMAIN=\"metacity\" -DSN_API_NOT_YET_FROZEN=1 @METACITY_CFLAGS@ $(WARN_CFLAGS) $(AM_CFLAGS)
+AM_CPPFLAGS = \
+	-DMETACITY_LIBEXECDIR=\"$(libexecdir)\" \
+	-DHOST_ALIAS=\"@HOST_ALIAS@\" \
+	-DMETACITY_LOCALEDIR=\""$(localedir)"\" \
+	-DMETACITY_PKGDATADIR=\"$(pkgdatadir)\" \
+	-DMETACITY_DATADIR=\"$(datadir)\" \
+	-DG_LOG_DOMAIN=\"metacity\" \
+	-DSN_API_NOT_YET_FROZEN=1 \
+	-I$(srcdir)/include \
+	@METACITY_CFLAGS@ \
+	$(WARN_CFLAGS) \
+	$(AM_CFLAGS) \
+	$(NULL)
 
 metacity_SOURCES= 				\
 	core/main.c				\

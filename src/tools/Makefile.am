@@ -5,7 +5,7 @@ icon_DATA=metacity-window-demo.png
 
 AM_CPPFLAGS=@METACITY_WINDOW_DEMO_CFLAGS@ @METACITY_MESSAGE_CFLAGS@ \
 	-DMETACITY_ICON_DIR=\"$(pkgdatadir)/icons\" \
-	-DMETACITY_LOCALEDIR=\"$(prefix)/@DATADIRNAME@/locale\"
+	-DMETACITY_LOCALEDIR=\""$(localedir)"\"
 
 metacity_message_SOURCES= 				\
 	metacity-message.c
