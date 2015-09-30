@@ -55,6 +55,7 @@ dnl Initialize libtool
 dnl **************************************************************************
 
 LT_INIT
+LT_LIB_M
 
 # Honor aclocal flags
 AC_SUBST(ACLOCAL_AMFLAGS, "\${ACLOCAL_FLAGS}")
@@ -350,9 +351,9 @@ if test "x$found_randr" = "xyes"; then
    AC_DEFINE(HAVE_RANDR, , [Have the Xrandr extension library])
 fi
 
-METACITY_LIBS="$ALL_LIBS $METACITY_LIBS $RANDR_LIBS -lX11 -lXext $X_EXTRA_LIBS -lm"
+METACITY_LIBS="$ALL_LIBS $METACITY_LIBS $RANDR_LIBS -lX11 -lXext $X_EXTRA_LIBS $LIBM"
 METACITY_MESSAGE_LIBS="$METACITY_MESSAGE_LIBS -lX11 $X_EXTRA_LIBS"
-METACITY_WINDOW_DEMO_LIBS="$METACITY_WINDOW_DEMO_LIBS -lX11 $X_EXTRA_LIBS"
+METACITY_WINDOW_DEMO_LIBS="$METACITY_WINDOW_DEMO_LIBS -lX11 $X_EXTRA_LIBS $LIBM"
 METACITY_PROPS_LIBS="$METACITY_PROPS_LIBS -lX11 $X_EXTRA_LIBS"
 
 found_sm=no
