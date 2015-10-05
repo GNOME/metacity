@@ -77,12 +77,9 @@ meta_theme_gtk_load (MetaThemeImpl  *impl,
       switch (type)
         {
           case META_FRAME_TYPE_NORMAL:
-            break;
-
           case META_FRAME_TYPE_DIALOG:
           case META_FRAME_TYPE_MODAL_DIALOG:
           case META_FRAME_TYPE_ATTACHED:
-            style->layout->hide_buttons = TRUE;
             break;
 
           case META_FRAME_TYPE_MENU:
