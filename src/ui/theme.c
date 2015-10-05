@@ -5639,11 +5639,9 @@ theme_set_current_gtk (const gchar *name,
       switch (frame_type)
         {
           case META_FRAME_TYPE_NORMAL:
-            break;
           case META_FRAME_TYPE_DIALOG:
           case META_FRAME_TYPE_MODAL_DIALOG:
           case META_FRAME_TYPE_ATTACHED:
-            style->layout->hide_buttons = TRUE;
             break;
           case META_FRAME_TYPE_MENU:
           case META_FRAME_TYPE_UTILITY:
