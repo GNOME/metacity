@@ -813,7 +813,13 @@ gtk_decoration_layout_changed (GtkSettings *settings,
 static void
 init_gtk_decoration_layout (void)
 {
+  const gchar *current_desktop;
   GtkSettings *settings;
+
+  current_desktop = g_getenv ("XDG_CURRENT_DESKTOP");
+
+  if (!current_desktop || !strstr (current_desktop, "GNOME-Flashback"))
+    return;
 
   settings = gtk_settings_get_default ();
 
@@ -1376,16 +1382,20 @@ button_layout_handler (GVariant *value,
                        gpointer *result,
                        gpointer  data)
 {
-#if 0
+  const gchar *current_desktop;
   const gchar *string_value;
+
+  *result = NULL; /* ignored */
+  current_desktop = g_getenv ("XDG_CURRENT_DESKTOP");
+
+  if (current_desktop && strstr (current_desktop, "GNOME-Flashback"))
+    return TRUE;
 
   string_value = g_variant_get_string (value, NULL);
 
   if (string_value)
     update_button_layout (string_value);
-#endif
 
-  *result = NULL; /* ignored */
   return TRUE;
 }
 
