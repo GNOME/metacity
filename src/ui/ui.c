@@ -688,11 +688,13 @@ meta_ui_theme_get_frame_borders (MetaUI           *ui,
         {
           if (current->is_gtk_theme == FALSE)
             {
-              GtkStyleContext *style = NULL;
+              GtkStyleContext *style;
               GtkWidgetPath *widget_path;
 
               style = gtk_style_context_new ();
               gtk_style_context_set_screen (style, screen);
+              gtk_style_context_set_state (style, GTK_STATE_FLAG_NORMAL);
+
               widget_path = gtk_widget_path_new ();
               gtk_widget_path_append_type (widget_path, GTK_TYPE_WINDOW);
               gtk_style_context_set_path (style, widget_path);
