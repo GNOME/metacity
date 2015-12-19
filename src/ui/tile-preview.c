@@ -89,15 +89,26 @@ static void
 meta_tile_preview_style_updated (GtkWidget *widget,
                                  gpointer   user_data)
 {
-  MetaTilePreview *preview = user_data;
-  GtkStyleContext *context = gtk_style_context_new ();
-  GtkWidgetPath *path = gtk_widget_path_new ();
-  guchar alpha = 0xFF;
+  MetaTilePreview *preview;
+  GtkWidgetPath *path;
+  GtkStyleContext *context;
+  guchar alpha;
+
+  preview = (MetaTilePreview *) user_data;
+
+  path = gtk_widget_path_new ();
+  context = gtk_style_context_new ();
+  alpha = 0xFF;
 
   gtk_widget_path_append_type (path, GTK_TYPE_ICON_VIEW);
-  gtk_style_context_set_path (context, path);
 
-  gtk_style_context_get (context, GTK_STATE_FLAG_SELECTED, "background-color", &preview->preview_color, NULL);
+  gtk_style_context_set_path (context, path);
+  gtk_style_context_set_state (context, GTK_STATE_FLAG_SELECTED);
+
+  gtk_style_context_get (context, GTK_STATE_FLAG_SELECTED,
+                         "background-color", &preview->preview_color,
+                         NULL);
+
   gtk_style_context_get_style (context, "selection-box-alpha", &alpha, NULL);
 
   preview->preview_color->alpha = (double)alpha / 0xFF;
