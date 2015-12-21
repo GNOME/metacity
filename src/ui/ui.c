@@ -92,7 +92,7 @@ static gboolean
 maybe_redirect_mouse_event (XEvent *xevent)
 {
   GdkDisplay *gdisplay;
-  GdkDeviceManager *gmanager;
+  GdkSeat *seat;
   GdkDevice *gdevice;
   MetaUI *ui;
   GdkEvent *gevent;
@@ -125,8 +125,8 @@ maybe_redirect_mouse_event (XEvent *xevent)
   if (gdk_window == NULL)
     return FALSE;
 
-  gmanager = gdk_display_get_device_manager (gdisplay);
-  gdevice = gdk_device_manager_get_client_pointer (gmanager);
+  seat = gdk_display_get_default_seat (gdisplay);
+  gdevice = gdk_seat_get_pointer (seat);
 
   /* If GDK already thinks it has a grab, we better let it see events; this
    * is the menu-navigation case and events need to get sent to the appropriate
