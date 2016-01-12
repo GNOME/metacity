@@ -689,18 +689,16 @@ scale_border (GtkBorder *border,
 static void
 meta_frame_layout_sync_with_style (MetaFrameLayout *layout,
                                    MetaStyleInfo   *style_info,
-                                   MetaFrameFlags   flags)
+                                   MetaFrameFlags   flags,
+                                   MetaTheme       *theme)
 {
-  MetaTheme *current;
   GtkStyleContext *style;
   GtkBorder border;
   gboolean compositing_manager;
   int border_radius, max_radius;
 
-  current = meta_theme_get_current ();
-
   /* We don't want GTK+ info for metacity theme */
-  if (current->is_gtk_theme == FALSE)
+  if (theme->is_gtk_theme == FALSE)
     return;
 
   compositing_manager = meta_prefs_get_compositing_manager ();
@@ -814,7 +812,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
   GdkRectangle *right_bg_rects[MAX_BUTTONS_PER_CORNER];
   gboolean right_buttons_has_spacer[MAX_BUTTONS_PER_CORNER];
 
-  meta_frame_layout_sync_with_style (layout, style_info, flags);
+  meta_frame_layout_sync_with_style (layout, style_info, flags, theme);
 
   meta_frame_layout_get_borders (layout, text_height,
                                  flags,
@@ -6297,7 +6295,7 @@ meta_theme_get_frame_borders (MetaTheme        *theme,
   if (style == NULL)
     return;
 
-  meta_frame_layout_sync_with_style (style->layout, style_info, flags);
+  meta_frame_layout_sync_with_style (style->layout, style_info, flags, theme);
 
   meta_frame_layout_get_borders (style->layout,
                                  text_height,
