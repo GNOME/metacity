@@ -795,7 +795,6 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
                                  MetaFrameGeometry      *fgeom,
                                  MetaTheme              *theme)
 {
-  MetaTheme *current;
   MetaFrameBorders borders;
   int i, n_left, n_right, n_left_spacers, n_right_spacers;
   int x;
@@ -814,8 +813,6 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
   gboolean left_buttons_has_spacer[MAX_BUTTONS_PER_CORNER];
   GdkRectangle *right_bg_rects[MAX_BUTTONS_PER_CORNER];
   gboolean right_buttons_has_spacer[MAX_BUTTONS_PER_CORNER];
-
-  current = meta_theme_get_current ();
 
   meta_frame_layout_sync_with_style (layout, style_info, flags);
 
@@ -951,7 +948,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
 
       space_used_by_buttons += button_width * n_left;
       space_used_by_buttons += (button_width * 0.75) * n_left_spacers;
-      if (current->is_gtk_theme == FALSE)
+      if (theme->is_gtk_theme == FALSE)
         {
           space_used_by_buttons += layout->button_border.left * n_left;
           space_used_by_buttons += layout->button_border.right * n_left;
@@ -961,7 +958,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
 
       space_used_by_buttons += button_width * n_right;
       space_used_by_buttons += (button_width * 0.75) * n_right_spacers;
-      if (current->is_gtk_theme == FALSE)
+      if (theme->is_gtk_theme == FALSE)
         {
           space_used_by_buttons += layout->button_border.left * n_right;
           space_used_by_buttons += layout->button_border.right * n_right;
@@ -1064,7 +1061,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
         break;
 
       rect = right_func_rects[i];
-      if (current->is_gtk_theme == FALSE)
+      if (theme->is_gtk_theme == FALSE)
         rect->visible.x = x - layout->button_border.right - button_width;
       else
         rect->visible.x = x - button_width;
@@ -1086,7 +1083,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
 
           if (i == n_right - 1)
             {
-              if (current->is_gtk_theme == FALSE)
+              if (theme->is_gtk_theme == FALSE)
                 rect->clickable.width += layout->right_titlebar_edge + layout->right_width + layout->button_border.right;
               else
                 rect->clickable.width += layout->right_titlebar_edge + layout->right_width;
@@ -1098,7 +1095,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
 
       *(right_bg_rects[i]) = rect->visible;
 
-      if (current->is_gtk_theme == FALSE)
+      if (theme->is_gtk_theme == FALSE)
         x = rect->visible.x - layout->button_border.left;
       else
         {
@@ -1124,7 +1121,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
 
       rect = left_func_rects[i];
 
-      if (current->is_gtk_theme == FALSE)
+      if (theme->is_gtk_theme == FALSE)
         rect->visible.x = x + layout->button_border.left;
       else
         rect->visible.x = x;
@@ -1142,7 +1139,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
       else
         g_memmove (&(rect->clickable), &(rect->visible), sizeof(rect->clickable));
 
-      if (current->is_gtk_theme == FALSE)
+      if (theme->is_gtk_theme == FALSE)
         x = rect->visible.x + rect->visible.width + layout->button_border.right;
       else
         {
