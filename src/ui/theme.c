@@ -51,7 +51,6 @@
  */
 
 #include <config.h>
-#include "frames.h" /* for META_TYPE_FRAMES */
 #include "prefs.h"
 #include "theme.h"
 #include "theme-parser.h"
@@ -6058,7 +6057,7 @@ meta_theme_create_style_info (GdkScreen   *screen,
   compositing_manager = meta_prefs_get_compositing_manager ();
 
   style_info->styles[META_STYLE_ELEMENT_FRAME] =
-    create_style_context (META_TYPE_FRAMES,
+    create_style_context (G_TYPE_NONE,
                           NULL,
                           provider,
                           "decoration",
@@ -6067,7 +6066,7 @@ meta_theme_create_style_info (GdkScreen   *screen,
                           compositing_manager ? "ssd" : "solid-csd",
                           NULL);
   style_info->styles[META_STYLE_ELEMENT_TITLEBAR] =
-    create_style_context (GTK_TYPE_HEADER_BAR,
+    create_style_context (G_TYPE_NONE,
                           style_info->styles[META_STYLE_ELEMENT_FRAME],
                           provider,
                           "headerbar",
@@ -6076,21 +6075,21 @@ meta_theme_create_style_info (GdkScreen   *screen,
                           "default-decoration",
                           NULL);
   style_info->styles[META_STYLE_ELEMENT_TITLE] =
-    create_style_context (GTK_TYPE_LABEL,
+    create_style_context (G_TYPE_NONE,
                           style_info->styles[META_STYLE_ELEMENT_TITLEBAR],
                           provider,
                           "label",
                           GTK_STYLE_CLASS_TITLE,
                           NULL);
   style_info->styles[META_STYLE_ELEMENT_BUTTON] =
-    create_style_context (GTK_TYPE_BUTTON,
+    create_style_context (G_TYPE_NONE,
                           style_info->styles[META_STYLE_ELEMENT_TITLEBAR],
                           provider,
                           "button",
                           "titlebutton",
                           NULL);
   style_info->styles[META_STYLE_ELEMENT_IMAGE] =
-    create_style_context (GTK_TYPE_IMAGE,
+    create_style_context (G_TYPE_NONE,
                           style_info->styles[META_STYLE_ELEMENT_BUTTON],
                           provider,
                           "image",
