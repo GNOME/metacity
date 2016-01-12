@@ -410,14 +410,14 @@ meta_frame_layout_unref (MetaFrameLayout *layout)
 }
 
 static void
-meta_frame_layout_get_borders (const MetaFrameLayout *layout,
+meta_frame_layout_get_borders (MetaTheme             *theme,
+                               const MetaFrameLayout *layout,
                                int                    text_height,
                                MetaFrameFlags         flags,
                                MetaFrameType          type,
                                MetaFrameBorders      *borders)
 {
   int buttons_height, title_height;
-  MetaTheme *current;
 
   meta_frame_borders_clear (borders);
 
@@ -441,9 +441,7 @@ meta_frame_layout_get_borders (const MetaFrameLayout *layout,
   borders->visible.right = layout->right_width;
   borders->visible.bottom = layout->bottom_height;
 
-  current = meta_theme_get_current ();
-
-  if (current->is_gtk_theme == TRUE)
+  if (theme->is_gtk_theme == TRUE)
     {
       borders->invisible.left = layout->invisible_border.left;
       borders->invisible.right = layout->invisible_border.right;
@@ -814,10 +812,8 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
 
   meta_frame_layout_sync_with_style (layout, style_info, flags, theme);
 
-  meta_frame_layout_get_borders (layout, text_height,
-                                 flags,
-                                 type,
-                                 &borders);
+  meta_frame_layout_get_borders (theme, layout, text_height,
+                                 flags, type, &borders);
 
   fgeom->borders = borders;
   fgeom->top_height = layout->top_height;
@@ -6297,11 +6293,8 @@ meta_theme_get_frame_borders (MetaTheme        *theme,
 
   meta_frame_layout_sync_with_style (style->layout, style_info, flags, theme);
 
-  meta_frame_layout_get_borders (style->layout,
-                                 text_height,
-                                 flags,
-                                 type,
-                                 borders);
+  meta_frame_layout_get_borders (theme, style->layout, text_height,
+                                 flags, type, borders);
 }
 
 void
