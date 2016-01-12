@@ -409,7 +409,7 @@ meta_frame_layout_unref (MetaFrameLayout *layout)
     }
 }
 
-void
+static void
 meta_frame_layout_get_borders (const MetaFrameLayout *layout,
                                int                    text_height,
                                MetaFrameFlags         flags,
