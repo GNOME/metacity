@@ -851,7 +851,6 @@ main (int argc, char **argv)
   GtkWidget *collection;
   MetaStyleInfo *style_info;
   PangoFontDescription *font_desc;
-  GError *err;
   clock_t start, end;
   GtkWidget *notebook;
   int i;
@@ -874,11 +873,10 @@ main (int argc, char **argv)
     }
 
   start = clock ();
-  err = NULL;
   if (argc == 1)
-    global_theme = meta_theme_load ("Atlanta", &err);
+    meta_theme_set_current ("Atlanta", FALSE);
   else if (argc == 2)
-    global_theme = meta_theme_load (argv[1], &err);
+    meta_theme_set_current (argv[1], FALSE);
   else
     {
       g_printerr (_("Usage: metacity-theme-viewer [THEMENAME]\n"));
@@ -886,13 +884,9 @@ main (int argc, char **argv)
     }
   end = clock ();
 
+  global_theme = meta_theme_get_current ();
   if (global_theme == NULL)
-    {
-      g_printerr (_("Error loading theme: %s\n"),
-                  err->message);
-      g_error_free (err);
-      exit (1);
-    }
+    exit (1);
 
   g_print (_("Loaded theme \"%s\" in %g seconds\n"),
            global_theme->name,
