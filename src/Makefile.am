@@ -19,13 +19,6 @@ AM_CPPFLAGS = \
 	$(NULL)
 
 metacity_SOURCES= 				\
-	core/main.c				\
-	include/main.h
-
-# by setting libmetacity_private_la_CFLAGS, the files shared with
-# metacity proper will be compiled with different names.
-libmetacity_private_la_CFLAGS =
-libmetacity_private_la_SOURCES=			\
 	core/async-getprop.c			\
 	core/async-getprop.h			\
 	core/atomnames.h                        \
@@ -123,7 +116,27 @@ libmetacity_private_la_SOURCES=			\
 	ui/theme-parser.h			\
 	ui/theme.c				\
 	ui/theme.h				\
-	ui/ui.c
+	ui/ui.c					\
+	$(NULL)
+
+# by setting libmetacity_private_la_CFLAGS, the files shared with
+# metacity proper will be compiled with different names.
+libmetacity_private_la_CFLAGS =
+libmetacity_private_la_SOURCES =		\
+	core/boxes.c				\
+	include/boxes.h				\
+	ui/gradient.c				\
+	ui/gradient.h				\
+	core/util.c				\
+	include/util.h				\
+	include/common.h			\
+	ui/preview-widget.c			\
+	ui/preview-widget.h			\
+	ui/theme-parser.c			\
+	ui/theme-parser.h			\
+	ui/theme.c				\
+	ui/theme.h				\
+	$(NULL)
 
 libmetacity_private_la_LDFLAGS = -no-undefined -version-info 3:0:0 $(WARN_LDFLAGS) $(AM_LDFLAGS)
 libmetacity_private_la_LIBADD  = @METACITY_LIBS@
@@ -151,7 +164,7 @@ convert_DATA = metacity-schemas.convert
 
 bin_PROGRAMS=metacity metacity-theme-viewer
 
-metacity_LDADD=@METACITY_LIBS@ libmetacity-private.la
+metacity_LDADD=@METACITY_LIBS@
 metacity_theme_viewer_LDADD= @METACITY_LIBS@ libmetacity-private.la
 
 testboxes_SOURCES=include/util.h core/util.c include/boxes.h core/boxes.c core/testboxes.c
