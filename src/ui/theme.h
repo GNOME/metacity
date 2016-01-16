@@ -844,6 +844,10 @@ struct _MetaTheme
 
   gboolean is_gtk_theme;
 
+  gboolean composited;
+
+  PangoFontDescription *titlebar_font;
+
   /** Symbol table of integer constants. */
   GHashTable *integer_constants;
   /** Symbol table of float constants. */
@@ -986,8 +990,10 @@ gboolean       meta_frame_style_set_validate  (MetaFrameStyleSet *style_set,
                                                GError           **error);
 
 MetaTheme* meta_theme_get_current (void);
-void       meta_theme_set_current (const char *name,
-                                   gboolean    force_reload);
+void       meta_theme_set_current (const char                 *name,
+                                   gboolean                    force_reload,
+                                   gboolean                    composited,
+                                   const PangoFontDescription *titlebar_font);
 
 MetaTheme* meta_theme_new      (void);
 void       meta_theme_free     (MetaTheme *theme);
@@ -997,6 +1003,12 @@ GdkPixbuf* meta_theme_load_image (MetaTheme  *theme,
                                   const char *filename,
                                   guint       size_of_theme_icons,
                                   GError    **error);
+
+void meta_theme_set_composited (MetaTheme  *theme,
+                                gboolean    composited);
+
+void meta_theme_set_titlebar_font (MetaTheme                  *theme,
+                                   const PangoFontDescription *titlebar_font);
 
 MetaFrameStyle* meta_theme_get_frame_style (MetaTheme     *theme,
                                             MetaFrameType  type,

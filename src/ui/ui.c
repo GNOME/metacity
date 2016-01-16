@@ -737,7 +737,13 @@ void
 meta_ui_set_current_theme (const char *name,
                            gboolean    force_reload)
 {
-  meta_theme_set_current (name, force_reload);
+  gboolean compositing_manager;
+  const PangoFontDescription *titlebar_font;
+
+  compositing_manager = meta_prefs_get_compositing_manager ();
+  titlebar_font = meta_prefs_get_titlebar_font ();
+
+  meta_theme_set_current (name, force_reload, compositing_manager, titlebar_font);
   meta_invalidate_default_icons ();
 }
 

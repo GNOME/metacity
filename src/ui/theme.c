@@ -51,7 +51,6 @@
  */
 
 #include <config.h>
-#include "prefs.h"
 #include "theme.h"
 #include "theme-parser.h"
 #include "util.h"
@@ -692,14 +691,11 @@ meta_frame_layout_sync_with_style (MetaFrameLayout *layout,
 {
   GtkStyleContext *style;
   GtkBorder border;
-  gboolean compositing_manager;
   int border_radius, max_radius;
 
   /* We don't want GTK+ info for metacity theme */
   if (theme->is_gtk_theme == FALSE)
     return;
-
-  compositing_manager = meta_prefs_get_compositing_manager ();
 
   meta_style_info_set_flags (style_info, flags);
 
@@ -714,7 +710,7 @@ meta_frame_layout_sync_with_style (MetaFrameLayout *layout,
   layout->top_height = border.top;
   layout->bottom_height = border.bottom;
 
-  if (compositing_manager)
+  if (theme->composited)
     get_margin (style, &layout->invisible_border);
   else
     {
@@ -734,7 +730,7 @@ meta_frame_layout_sync_with_style (MetaFrameLayout *layout,
 
   style = style_info->styles[META_STYLE_ELEMENT_TITLEBAR];
 
-  if (compositing_manager)
+  if (theme->composited)
     {
       gtk_style_context_get (style, gtk_style_context_get_state (style),
                              "border-radius", &border_radius,
@@ -5517,8 +5513,10 @@ meta_theme_get_current (void)
 }
 
 static void
-theme_set_current_metacity (const gchar *name,
-                            gboolean     force_reload)
+theme_set_current_metacity (const gchar                *name,
+                            gboolean                    force_reload,
+                            gboolean                    composited,
+                            const PangoFontDescription *titlebar_font)
 {
   MetaTheme *new_theme;
   GError *err;
@@ -5542,6 +5540,8 @@ theme_set_current_metacity (const gchar *name,
   else
     {
       new_theme->is_gtk_theme = FALSE;
+      new_theme->composited = composited;
+      new_theme->titlebar_font = pango_font_description_copy (NULL);
 
       if (meta_current_theme)
         meta_theme_free (meta_current_theme);
@@ -5553,8 +5553,10 @@ theme_set_current_metacity (const gchar *name,
 }
 
 static void
-theme_set_current_gtk (const gchar *name,
-                       gboolean     force_reload)
+theme_set_current_gtk (const gchar                *name,
+                       gboolean                    force_reload,
+                       gboolean                    composited,
+                       const PangoFontDescription *titlebar_font)
 {
   int i, j, frame_type;
 
@@ -5567,7 +5569,10 @@ theme_set_current_gtk (const gchar *name,
     meta_theme_free (meta_current_theme);
 
   meta_current_theme = meta_theme_new ();
+
   meta_current_theme->is_gtk_theme = TRUE;
+  meta_current_theme->composited = composited;
+  meta_current_theme->titlebar_font = pango_font_description_copy (NULL);
 
   for (frame_type = 0; frame_type < META_FRAME_TYPE_LAST; frame_type++)
     {
@@ -5633,16 +5638,18 @@ theme_set_current_gtk (const gchar *name,
 }
 
 void
-meta_theme_set_current (const char *name,
-                        gboolean    force_reload)
+meta_theme_set_current (const gchar                *name,
+                        gboolean                    force_reload,
+                        gboolean                    composited,
+                        const PangoFontDescription *titlebar_font)
 {
   if (name != NULL && strcmp (name, "") != 0)
     {
-      theme_set_current_metacity (name, force_reload);
+      theme_set_current_metacity (name, force_reload, composited, titlebar_font);
     }
   else
     {
-      theme_set_current_gtk (name, force_reload);
+      theme_set_current_gtk (name, force_reload, composited, titlebar_font);
     }
 }
 
@@ -5654,6 +5661,7 @@ meta_theme_new (void)
   theme = g_new0 (MetaTheme, 1);
 
   theme->is_gtk_theme = FALSE;
+  theme->composited = TRUE;
 
   theme->images_by_filename =
     g_hash_table_new_full (g_str_hash,
@@ -5722,6 +5730,9 @@ meta_theme_free (MetaTheme *theme)
   g_free (theme->description);
   g_free (theme->author);
   g_free (theme->copyright);
+
+  if (theme->titlebar_font)
+    pango_font_description_free (theme->titlebar_font);
 
   /* be more careful when destroying the theme hash tables,
      since they are only constructed as needed, and may be NULL. */
@@ -5861,6 +5872,21 @@ meta_theme_load_image (MetaTheme  *theme,
   g_object_ref (G_OBJECT (pixbuf));
 
   return pixbuf;
+}
+
+void
+meta_theme_set_composited (MetaTheme *theme,
+                           gboolean   composited)
+{
+  theme->composited = composited;
+}
+
+void
+meta_theme_set_titlebar_font (MetaTheme                  *theme,
+                              const PangoFontDescription *titlebar_font)
+{
+  pango_font_description_free (theme->titlebar_font);
+  theme->titlebar_font = pango_font_description_copy (titlebar_font);
 }
 
 static MetaFrameStyle*
@@ -6031,7 +6057,6 @@ meta_theme_create_style_info (MetaTheme   *theme,
   MetaStyleInfo *style_info;
   GtkCssProvider *provider;
   char *theme_name;
-  gboolean compositing_manager;
 
   g_object_get (gtk_settings_get_for_screen (screen),
                 "gtk-theme-name", &theme_name,
@@ -6046,22 +6071,20 @@ meta_theme_create_style_info (MetaTheme   *theme,
   style_info = g_new0 (MetaStyleInfo, 1);
   style_info->refcount = 1;
 
-  compositing_manager = meta_prefs_get_compositing_manager ();
-
   style_info->styles[META_STYLE_ELEMENT_WINDOW] =
     create_style_context (G_TYPE_NONE,
                           NULL,
                           provider,
                           "window",
                           GTK_STYLE_CLASS_BACKGROUND,
-                          compositing_manager == FALSE ? "solid-csd" : NULL,
+                          theme->composited == FALSE ? "solid-csd" : NULL,
                           NULL);
   style_info->styles[META_STYLE_ELEMENT_DECORATION] =
     create_style_context (G_TYPE_NONE,
                           style_info->styles[META_STYLE_ELEMENT_WINDOW],
                           provider,
                           "decoration",
-                          compositing_manager == TRUE ? "ssd" : NULL,
+                          theme->composited == TRUE ? "ssd" : NULL,
                           NULL);
   style_info->styles[META_STYLE_ELEMENT_TITLEBAR] =
     create_style_context (G_TYPE_NONE,
@@ -6202,7 +6225,6 @@ meta_style_info_create_font_desc (MetaTheme     *theme,
 {
   GtkStyleContext *context;
   PangoFontDescription *font_desc;
-  const PangoFontDescription *override;
 
   context = style_info->styles[META_STYLE_ELEMENT_TITLE];
 
@@ -6214,10 +6236,8 @@ meta_style_info_create_font_desc (MetaTheme     *theme,
 
   gtk_style_context_restore (context);
 
-  override = meta_prefs_get_titlebar_font ();
-
-  if (override)
-    pango_font_description_merge (font_desc, override, TRUE);
+  if (theme->titlebar_font)
+    pango_font_description_merge (font_desc, theme->titlebar_font, TRUE);
 
   return font_desc;
 }

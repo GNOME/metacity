@@ -409,6 +409,14 @@ queue_recalc_func (gpointer key, gpointer value, gpointer data)
 static void
 meta_frames_font_changed (MetaFrames *frames)
 {
+  MetaTheme *theme;
+  const PangoFontDescription *titlebar_font;
+
+  theme = meta_theme_get_current ();
+  titlebar_font = meta_prefs_get_titlebar_font ();
+
+  meta_theme_set_titlebar_font (theme, titlebar_font);
+
   if (g_hash_table_size (frames->text_heights) > 0)
     {
       g_hash_table_destroy (frames->text_heights);
@@ -456,8 +464,15 @@ static void
 meta_frames_style_updated (GtkWidget *widget)
 {
   MetaFrames *frames;
+  MetaTheme *theme;
+  gboolean compositing_manager;
 
   frames = META_FRAMES (widget);
+
+  theme = meta_theme_get_current ();
+  compositing_manager = meta_prefs_get_compositing_manager ();
+
+  meta_theme_set_composited (theme, compositing_manager);
 
   meta_frames_font_changed (frames);
 
