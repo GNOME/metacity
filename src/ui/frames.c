@@ -184,7 +184,9 @@ meta_frames_get_theme_variant (MetaFrames  *frames,
   style_info = g_hash_table_lookup (frames->style_variants, variant);
   if (style_info == NULL)
     {
-      style_info = meta_theme_create_style_info (gtk_widget_get_screen (GTK_WIDGET (frames)), variant);
+      style_info = meta_theme_create_style_info (meta_theme_get_current (),
+                                                 gtk_widget_get_screen (GTK_WIDGET (frames)),
+                                                 variant);
       g_hash_table_insert (frames->style_variants, g_strdup (variant), style_info);
     }
 
@@ -196,18 +198,20 @@ update_style_contexts (MetaFrames *frames)
 {
   MetaStyleInfo *style_info;
   GList *variants, *variant;
+  MetaTheme *theme;
   GdkScreen *screen;
 
+  theme = meta_theme_get_current ();
   screen = gtk_widget_get_screen (GTK_WIDGET (frames));
 
   if (frames->normal_style)
     meta_style_info_unref (frames->normal_style);
-  frames->normal_style = meta_theme_create_style_info (screen, NULL);
+  frames->normal_style = meta_theme_create_style_info (theme, screen, NULL);
 
   variants = g_hash_table_get_keys (frames->style_variants);
   for (variant = variants; variant; variant = variants->next)
     {
-      style_info = meta_theme_create_style_info (screen, (char *)variant->data);
+      style_info = meta_theme_create_style_info (theme, screen, (char *)variant->data);
       g_hash_table_insert (frames->style_variants,
                            g_strdup (variant->data), style_info);
     }

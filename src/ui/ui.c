@@ -677,12 +677,11 @@ meta_ui_theme_get_frame_borders (MetaUI           *ui,
       MetaStyleInfo *style_info = NULL;
       MetaTheme *current;
 
-      style_info = meta_theme_create_style_info (screen, NULL);
+      current = meta_theme_get_current ();
+      style_info = meta_theme_create_style_info (current, screen, NULL);
 
       context = gtk_widget_get_pango_context (GTK_WIDGET (ui->frames));
       font_desc = meta_prefs_get_titlebar_font ();
-
-      current = meta_theme_get_current ();
 
       if (!font_desc)
         {

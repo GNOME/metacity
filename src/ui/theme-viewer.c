@@ -926,7 +926,7 @@ main (int argc, char **argv)
 
   gtk_widget_realize (window);
 
-  style_info = meta_theme_create_style_info (gtk_widget_get_screen (window), NULL);
+  style_info = meta_theme_create_style_info (global_theme, gtk_widget_get_screen (window), NULL);
   gtk_style_context_get (style_info->styles[META_STYLE_ELEMENT_DECORATION],
                          GTK_STATE_FLAG_NORMAL, "font", &font_desc, NULL);
   meta_style_info_unref (style_info);
@@ -1053,7 +1053,7 @@ run_theme_benchmark (void)
   widget = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_widget_realize (widget);
 
-  style_info = meta_theme_create_style_info (gtk_widget_get_screen (widget), NULL);
+  style_info = meta_theme_create_style_info (global_theme, gtk_widget_get_screen (widget), NULL);
 
   meta_theme_get_frame_borders (global_theme,
                                 style_info,

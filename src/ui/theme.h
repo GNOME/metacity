@@ -1006,7 +1006,8 @@ double meta_theme_get_title_scale (MetaTheme     *theme,
                                    MetaFrameType  type,
                                    MetaFrameFlags flags);
 
-MetaStyleInfo* meta_theme_create_style_info (GdkScreen     *screen,
+MetaStyleInfo* meta_theme_create_style_info (MetaTheme     *theme,
+                                             GdkScreen     *screen,
                                              const gchar   *variant);
 MetaStyleInfo* meta_style_info_ref          (MetaStyleInfo *style);
 void           meta_style_info_unref        (MetaStyleInfo *style_info);

@@ -262,7 +262,8 @@ meta_preview_realize (GtkWidget *widget)
 
   GTK_WIDGET_CLASS (meta_preview_parent_class)->realize (widget);
 
-  preview->style_info = meta_theme_create_style_info (gtk_widget_get_screen (widget),
+  preview->style_info = meta_theme_create_style_info (preview->theme,
+                                                      gtk_widget_get_screen (widget),
                                                       NULL);
 }
 

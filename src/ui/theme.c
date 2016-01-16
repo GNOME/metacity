@@ -6024,7 +6024,8 @@ create_style_context (GType            widget_type,
 }
 
 MetaStyleInfo *
-meta_theme_create_style_info (GdkScreen   *screen,
+meta_theme_create_style_info (MetaTheme   *theme,
+                              GdkScreen   *screen,
                               const gchar *variant)
 {
   MetaStyleInfo *style_info;
