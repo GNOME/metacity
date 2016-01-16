@@ -1015,7 +1015,8 @@ void           meta_style_info_unref        (MetaStyleInfo *style_info);
 void           meta_style_info_set_flags    (MetaStyleInfo  *style_info,
                                              MetaFrameFlags  flags);
 
-PangoFontDescription* meta_style_info_create_font_desc (MetaStyleInfo *style_info);
+PangoFontDescription* meta_style_info_create_font_desc (MetaTheme     *theme,
+                                                        MetaStyleInfo *style_info);
 
 void meta_theme_draw_frame (MetaTheme              *theme,
                             MetaStyleInfo          *style_info,

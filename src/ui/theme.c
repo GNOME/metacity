@@ -6197,7 +6197,8 @@ meta_style_info_set_flags (MetaStyleInfo  *style_info,
 }
 
 PangoFontDescription*
-meta_style_info_create_font_desc (MetaStyleInfo *style_info)
+meta_style_info_create_font_desc (MetaTheme     *theme,
+                                  MetaStyleInfo *style_info)
 {
   GtkStyleContext *context;
   PangoFontDescription *font_desc;

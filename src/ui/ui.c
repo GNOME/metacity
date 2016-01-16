@@ -708,7 +708,7 @@ meta_ui_theme_get_frame_borders (MetaUI           *ui,
             }
           else
             {
-              free_font_desc = meta_style_info_create_font_desc (style_info);
+              free_font_desc = meta_style_info_create_font_desc (current, style_info);
             }
 
           font_desc = (const PangoFontDescription *) free_font_desc;

@@ -533,7 +533,7 @@ meta_frames_ensure_layout (MetaFrames  *frames,
         }
       else
         {
-          font_desc = meta_style_info_create_font_desc (frame->style_info);
+          font_desc = meta_style_info_create_font_desc (current, frame->style_info);
           meta_frame_style_apply_scale (style, font_desc);
         }
 
