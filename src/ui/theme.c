@@ -705,7 +705,7 @@ meta_frame_layout_sync_with_style (MetaFrameLayout *layout,
 
   layout->button_sizing = META_BUTTON_SIZING_FIXED;
 
-  style = style_info->styles[META_STYLE_ELEMENT_FRAME];
+  style = style_info->styles[META_STYLE_ELEMENT_DECORATION];
   get_padding_and_border (style, &border);
   scale_border (&border, layout->title_scale);
 
@@ -5030,7 +5030,7 @@ meta_frame_style_draw_with_style (MetaFrameStyle          *style,
               MetaRectangle m_rect;
               m_rect = meta_rect (rect.x, rect.y, rect.width, rect.height);
               meta_draw_op_list_draw_with_style (op_list,
-                                                 style_info->styles[META_STYLE_ELEMENT_FRAME],
+                                                 style_info->styles[META_STYLE_ELEMENT_DECORATION],
                                                  cr,
                                                  &draw_info,
                                                  m_rect);
@@ -5068,7 +5068,7 @@ meta_frame_style_draw_with_style (MetaFrameStyle          *style,
                       m_rect = meta_rect (rect.x, rect.y,
                                           rect.width, rect.height);
                       meta_draw_op_list_draw_with_style (op_list,
-                                                         style_info->styles[META_STYLE_ELEMENT_FRAME],
+                                                         style_info->styles[META_STYLE_ELEMENT_DECORATION],
                                                          cr,
                                                          &draw_info,
                                                          m_rect);
@@ -5136,7 +5136,7 @@ meta_frame_style_draw_with_style_gtk (MetaFrameStyle          *frame_style,
 
   meta_style_info_set_flags (style_info, flags);
 
-  style = style_info->styles[META_STYLE_ELEMENT_FRAME];
+  style = style_info->styles[META_STYLE_ELEMENT_DECORATION];
   gtk_render_background (style, cr,
                          visible_rect.x, visible_rect.y,
                          visible_rect.width, visible_rect.height);
@@ -6047,7 +6047,7 @@ meta_theme_create_style_info (GdkScreen   *screen,
 
   compositing_manager = meta_prefs_get_compositing_manager ();
 
-  style_info->styles[META_STYLE_ELEMENT_FRAME] =
+  style_info->styles[META_STYLE_ELEMENT_DECORATION] =
     create_style_context (G_TYPE_NONE,
                           NULL,
                           provider,
@@ -6058,7 +6058,7 @@ meta_theme_create_style_info (GdkScreen   *screen,
                           NULL);
   style_info->styles[META_STYLE_ELEMENT_TITLEBAR] =
     create_style_context (G_TYPE_NONE,
-                          style_info->styles[META_STYLE_ELEMENT_FRAME],
+                          style_info->styles[META_STYLE_ELEMENT_DECORATION],
                           provider,
                           "headerbar",
                           GTK_STYLE_CLASS_TITLEBAR,
