@@ -7386,3 +7386,12 @@ meta_theme_earliest_version_with_button (MetaButtonType type)
       return 1000;
     }
 }
+
+void
+meta_frame_borders_clear (MetaFrameBorders *self)
+{
+  self->visible.top = self->invisible.top = self->total.top = 0;
+  self->visible.bottom = self->invisible.bottom = self->total.bottom = 0;
+  self->visible.left = self->invisible.left = self->total.left = 0;
+  self->visible.right = self->invisible.right = self->total.right = 0;
+}

@@ -374,15 +374,6 @@ meta_frame_get_flags (MetaFrame *frame)
 }
 
 void
-meta_frame_borders_clear (MetaFrameBorders *self)
-{
-  self->visible.top = self->invisible.top = self->total.top = 0;
-  self->visible.bottom = self->invisible.bottom = self->total.bottom = 0;
-  self->visible.left = self->invisible.left = self->total.left = 0;
-  self->visible.right = self->invisible.right = self->total.right = 0;
-}
-
-void
 meta_frame_calc_borders (MetaFrame        *frame,
                          MetaFrameBorders *borders)
 {
