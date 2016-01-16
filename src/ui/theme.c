@@ -6047,14 +6047,20 @@ meta_theme_create_style_info (GdkScreen   *screen,
 
   compositing_manager = meta_prefs_get_compositing_manager ();
 
-  style_info->styles[META_STYLE_ELEMENT_DECORATION] =
+  style_info->styles[META_STYLE_ELEMENT_WINDOW] =
     create_style_context (G_TYPE_NONE,
                           NULL,
                           provider,
-                          "decoration",
+                          "window",
                           GTK_STYLE_CLASS_BACKGROUND,
-                          "window-frame",
-                          compositing_manager ? "ssd" : "solid-csd",
+                          compositing_manager == FALSE ? "solid-csd" : NULL,
+                          NULL);
+  style_info->styles[META_STYLE_ELEMENT_DECORATION] =
+    create_style_context (G_TYPE_NONE,
+                          style_info->styles[META_STYLE_ELEMENT_WINDOW],
+                          provider,
+                          "decoration",
+                          compositing_manager == TRUE ? "ssd" : NULL,
                           NULL);
   style_info->styles[META_STYLE_ELEMENT_TITLEBAR] =
     create_style_context (G_TYPE_NONE,
