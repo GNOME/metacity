@@ -6159,23 +6159,17 @@ meta_style_info_set_flags (MetaStyleInfo  *style_info,
                            MetaFrameFlags  flags)
 {
   GtkStyleContext *style;
-  const gchar *class_name = NULL;
   gboolean backdrop;
-  GtkStateFlags state;
   int i;
 
   backdrop = !(flags & META_FRAME_HAS_FOCUS);
   if (flags & META_FRAME_IS_FLASHING)
     backdrop = !backdrop;
 
-  if (flags & META_FRAME_MAXIMIZED)
-    class_name = "maximized";
-  else if (flags & META_FRAME_TILED_LEFT ||
-           flags & META_FRAME_TILED_RIGHT)
-    class_name = "tiled";
-
   for (i = 0; i < META_STYLE_ELEMENT_LAST; i++)
     {
+      GtkStateFlags state;
+
       style = style_info->styles[i];
 
       state = gtk_style_context_get_state (style);
@@ -6184,11 +6178,20 @@ meta_style_info_set_flags (MetaStyleInfo  *style_info,
       else
         gtk_style_context_set_state (style, state & ~GTK_STATE_FLAG_BACKDROP);
 
-      remove_toplevel_class (style, "maximized");
-      remove_toplevel_class (style, "tiled");
+      if (flags & META_FRAME_TILED_LEFT || flags & META_FRAME_TILED_RIGHT)
+        add_toplevel_class (style, "tiled");
+      else
+        remove_toplevel_class (style, "tiled");
 
-      if (class_name)
-        add_toplevel_class (style, class_name);
+      if (flags & META_FRAME_MAXIMIZED)
+        add_toplevel_class (style, "maximized");
+      else
+        remove_toplevel_class (style, "maximized");
+
+      if (flags & META_FRAME_FULLSCREEN)
+        add_toplevel_class (style, "fullscreen");
+      else
+        remove_toplevel_class (style, "fullscreen");
     }
 }
 
