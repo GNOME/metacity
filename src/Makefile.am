@@ -120,6 +120,7 @@ libmetacity_private_la_SOURCES =		\
 	ui/preview-widget.c			\
 	ui/preview-widget.h			\
 	ui/theme-parser.c			\
+	ui/theme-private.h			\
 	ui/theme.c				\
 	ui/theme.h				\
 	$(NULL)
@@ -130,11 +131,7 @@ libmetacity_private_la_LIBADD  = @METACITY_LIBS@
 libmetacityincludedir = $(includedir)/metacity/metacity-private
 
 libmetacityinclude_HEADERS =			\
-	include/boxes.h				\
-	ui/gradient.h				\
-	include/util.h				\
 	include/common.h			\
-	ui/preview-widget.h			\
 	ui/theme.h
 
 metacity_theme_viewer_SOURCES=  \

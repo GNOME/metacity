@@ -24,7 +24,7 @@
  */
 
 #include "draw-workspace.h"
-#include "theme.h"
+#include "theme-private.h"
 
 static void
 get_window_rect (const WnckWindowDisplayInfo *win,

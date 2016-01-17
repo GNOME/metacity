@@ -25,7 +25,7 @@
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
 #include "common.h"
-#include "theme.h"
+#include "theme-private.h"
 
 typedef enum
 {

@@ -30,7 +30,6 @@
 #include "core.h"
 #include "menu.h"
 #include "fixedtip.h"
-#include "theme.h"
 #include "prefs.h"
 #include "ui.h"
 

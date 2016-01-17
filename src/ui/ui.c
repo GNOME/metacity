@@ -25,7 +25,7 @@
 #include "util.h"
 #include "menu.h"
 #include "core.h"
-#include "theme.h"
+#include "theme-private.h"
 
 #include <string.h>
 #include <stdlib.h>
