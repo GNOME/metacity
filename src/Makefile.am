@@ -113,7 +113,6 @@ metacity_SOURCES= 				\
 	ui/tile-preview.c			\
 	include/tile-preview.h			\
 	ui/theme-parser.c			\
-	ui/theme-parser.h			\
 	ui/theme.c				\
 	ui/theme.h				\
 	ui/ui.c					\
@@ -133,7 +132,6 @@ libmetacity_private_la_SOURCES =		\
 	ui/preview-widget.c			\
 	ui/preview-widget.h			\
 	ui/theme-parser.c			\
-	ui/theme-parser.h			\
 	ui/theme.c				\
 	ui/theme.h				\
 	$(NULL)
@@ -149,7 +147,6 @@ libmetacityinclude_HEADERS =			\
 	include/util.h				\
 	include/common.h			\
 	ui/preview-widget.h			\
-	ui/theme-parser.h			\
 	ui/theme.h
 
 metacity_theme_viewer_SOURCES=  \

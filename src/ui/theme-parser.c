@@ -20,7 +20,7 @@
  */
 
 #include <config.h>
-#include "theme-parser.h"
+#include "theme.h"
 #include "util.h"
 #include <string.h>
 #include <stdlib.h>

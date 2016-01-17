@@ -1004,6 +1004,9 @@ GdkPixbuf* meta_theme_load_image (MetaTheme  *theme,
                                   guint       size_of_theme_icons,
                                   GError    **error);
 
+MetaTheme* meta_theme_load (const char *theme_name,
+                            GError    **err);
+
 void meta_theme_set_composited (MetaTheme  *theme,
                                 gboolean    composited);
 
