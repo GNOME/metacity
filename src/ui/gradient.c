@@ -23,9 +23,11 @@
  * @short_description: Metacity gradient rendering
  */
 
-#include "gradient.h"
-#include "util.h"
+#include "config.h"
+
 #include <string.h>
+
+#include "gradient.h"
 
 /* Used as the destroy notification function for gdk_pixbuf_new() */
 static void
