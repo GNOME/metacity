@@ -1103,11 +1103,6 @@ gboolean meta_theme_lookup_color_constant (MetaTheme   *theme,
                                            const char  *name,
                                            char       **value);
 
-gboolean     meta_theme_replace_constants     (MetaTheme    *theme,
-                                               PosToken     *tokens,
-                                               int           n_tokens,
-                                               GError      **err);
-
 /* random stuff */
 
 PangoFontDescription* meta_gtk_widget_get_font_desc        (GtkWidget            *widget,

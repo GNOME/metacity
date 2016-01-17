@@ -3003,7 +3003,7 @@ meta_parse_size_expression (MetaDrawSpec              *spec,
  * lookups to eval them. Obviously it's a tradeoff that
  * slows down theme load times.
  */
-gboolean
+static gboolean
 meta_theme_replace_constants (MetaTheme   *theme,
                               PosToken    *tokens,
                               int          n_tokens,
