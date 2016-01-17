@@ -24,8 +24,6 @@ metacity_SOURCES= 				\
 	core/atomnames.h                        \
 	core/bell.c				\
 	core/bell.h				\
-	core/boxes.c				\
-	include/boxes.h				\
 	compositor/compositor.c			\
 	compositor/compositor-private.h		\
 	compositor/compositor-xrender.c		\
@@ -52,8 +50,6 @@ metacity_SOURCES= 				\
 	core/frame.c				\
 	core/frame-private.h			\
 	include/frame.h				\
-	ui/gradient.c				\
-	ui/gradient.h				\
 	core/group-private.h			\
 	core/group-props.c			\
 	core/group-props.h			\
@@ -78,8 +74,6 @@ metacity_SOURCES= 				\
 	core/session.h				\
 	core/stack.c				\
 	core/stack.h				\
-	core/util.c				\
-	include/util.h				\
 	core/window-props.c			\
 	core/window-props.h			\
 	core/window.c				\
@@ -89,7 +83,6 @@ metacity_SOURCES= 				\
 	core/workspace.h			\
 	core/xprops.c				\
 	include/xprops.h			\
-	include/common.h			\
 	include/core.h				\
 	include/ui.h				\
 	ui/fixedtip.c				\
@@ -100,8 +93,6 @@ metacity_SOURCES= 				\
 	ui/menu.h				\
 	ui/metaaccellabel.c			\
 	ui/metaaccellabel.h			\
-	ui/preview-widget.c                     \
-	ui/preview-widget.h                     \
 	ui/resizepopup.c			\
 	include/resizepopup.h			\
 	ui/tabpopup.c				\
@@ -112,9 +103,6 @@ metacity_SOURCES= 				\
 	ui/select-workspace.h			\
 	ui/tile-preview.c			\
 	include/tile-preview.h			\
-	ui/theme-parser.c			\
-	ui/theme.c				\
-	ui/theme.h				\
 	ui/ui.c					\
 	$(NULL)
 
@@ -161,7 +149,7 @@ convert_DATA = metacity-schemas.convert
 
 bin_PROGRAMS=metacity metacity-theme-viewer
 
-metacity_LDADD=@METACITY_LIBS@
+metacity_LDADD=@METACITY_LIBS@ libmetacity-private.la
 metacity_theme_viewer_LDADD= @METACITY_LIBS@ libmetacity-private.la
 
 testboxes_SOURCES=include/util.h core/util.c include/boxes.h core/boxes.c core/testboxes.c
