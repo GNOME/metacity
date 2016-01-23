@@ -2575,125 +2575,103 @@ do_operations (PosExpr *exprs,
 }
 
 /**
+ * pos_eval_get_variable:
+ * @token: The token representing a variable
+ * @result: (out): The value of that variable; not set if the token did not
+ *     represent a known variable
+ * @env: The environment within which @token should be evaluated
+ * @err: (out): Set to the problem if there was a problem
+ *
  * There is a predefined set of variables which can appear in an expression.
  * Here we take a token representing a variable, and return the current value
  * of that variable in a particular environment.
  * (The value is always an integer.)
  *
- * There are supposedly some circumstances in which this function can be
- * called from outside Metacity, in which case env->theme will be NULL, and
- * therefore we can't use it to find out quark values, so we do the comparison
- * using strcmp, which is slower.
- *
- * \param t  The token representing a variable
- * \param[out] result  The value of that variable; not set if the token did
- *                     not represent a known variable
- * \param env  The environment within which t should be evaluated
- * \param[out] err  set to the problem if there was a problem
- *
- * \return true if we found the variable asked for, false if we didn't
- *
- * \bug shouldn't t be const?
- * \bug we should perhaps consider some sort of lookup arrangement into an
- *      array; also, the duplication of code is unlovely; perhaps using glib
- *      string hashes instead of quarks would fix both problems?
- * \ingroup parser
+ * Returns: %TRUE if we found the variable asked for, %FALSE if we didn't
  */
 static gboolean
-pos_eval_get_variable (PosToken                  *t,
-                       int                       *result,
-                       const MetaPositionExprEnv *env,
-                       GError                   **err)
+pos_eval_get_variable (const PosToken             *token,
+                       int                        *result,
+                       const MetaPositionExprEnv  *env,
+                       GError                    **err)
 {
-  if (env->theme)
+  GQuark quark;
+
+  quark = token->d.v.name_quark;
+
+  if (quark == g_quark_from_static_string ("width"))
     {
-      if (t->d.v.name_quark == env->theme->quark_width)
-        *result = env->rect.width;
-      else if (t->d.v.name_quark == env->theme->quark_height)
-        *result = env->rect.height;
-      else if (env->object_width >= 0 &&
-               t->d.v.name_quark == env->theme->quark_object_width)
-        *result = env->object_width;
-      else if (env->object_height >= 0 &&
-               t->d.v.name_quark == env->theme->quark_object_height)
-        *result = env->object_height;
-      else if (t->d.v.name_quark == env->theme->quark_left_width)
-        *result = env->left_width;
-      else if (t->d.v.name_quark == env->theme->quark_right_width)
-        *result = env->right_width;
-      else if (t->d.v.name_quark == env->theme->quark_top_height)
-        *result = env->top_height;
-      else if (t->d.v.name_quark == env->theme->quark_bottom_height)
-        *result = env->bottom_height;
-      else if (t->d.v.name_quark == env->theme->quark_mini_icon_width)
-        *result = env->mini_icon_width;
-      else if (t->d.v.name_quark == env->theme->quark_mini_icon_height)
-        *result = env->mini_icon_height;
-      else if (t->d.v.name_quark == env->theme->quark_icon_width)
-        *result = env->icon_width;
-      else if (t->d.v.name_quark == env->theme->quark_icon_height)
-        *result = env->icon_height;
-      else if (t->d.v.name_quark == env->theme->quark_title_width)
-        *result = env->title_width;
-      else if (t->d.v.name_quark == env->theme->quark_title_height)
-        *result = env->title_height;
-      else if (t->d.v.name_quark == env->theme->quark_frame_x_center)
-        *result = env->frame_x_center;
-      else if (t->d.v.name_quark == env->theme->quark_frame_y_center)
-        *result = env->frame_y_center;
-      else
-        {
-          g_set_error (err, META_THEME_ERROR,
-                       META_THEME_ERROR_UNKNOWN_VARIABLE,
-                       _("Coordinate expression had unknown variable or constant \"%s\""),
-                       t->d.v.name);
-          return FALSE;
-        }
+      *result = env->rect.width;
+    }
+  else if (quark == g_quark_from_static_string ("height"))
+    {
+      *result = env->rect.height;
+    }
+  else if (env->object_width >= 0 &&
+           quark == g_quark_from_static_string ("object_width"))
+    {
+      *result = env->object_width;
+    }
+  else if (env->object_height >= 0 &&
+           quark == g_quark_from_static_string ("object_height"))
+    {
+      *result = env->object_height;
+    }
+  else if (quark == g_quark_from_static_string ("left_width"))
+    {
+      *result = env->left_width;
+    }
+  else if (quark == g_quark_from_static_string ("right_width"))
+    {
+      *result = env->right_width;
+    }
+  else if (quark == g_quark_from_static_string ("top_height"))
+    {
+      *result = env->top_height;
+    }
+  else if (quark == g_quark_from_static_string ("bottom_height"))
+    {
+      *result = env->bottom_height;
+    }
+  else if (quark == g_quark_from_static_string ("mini_icon_width"))
+    {
+      *result = env->mini_icon_width;
+    }
+  else if (quark == g_quark_from_static_string ("mini_icon_height"))
+    {
+      *result = env->mini_icon_height;
+    }
+  else if (quark == g_quark_from_static_string ("icon_width"))
+    {
+      *result = env->icon_width;
+    }
+  else if (quark == g_quark_from_static_string ("icon_height"))
+    {
+      *result = env->icon_height;
+    }
+  else if (quark == g_quark_from_static_string ("title_width"))
+    {
+      *result = env->title_width;
+    }
+  else if (quark == g_quark_from_static_string ("title_height"))
+    {
+      *result = env->title_height;
+    }
+  else if (quark == g_quark_from_static_string ("frame_x_center"))
+    {
+      *result = env->frame_x_center;
+    }
+  else if (quark == g_quark_from_static_string ("frame_y_center"))
+    {
+      *result = env->frame_y_center;
     }
   else
     {
-      if (strcmp (t->d.v.name, "width") == 0)
-        *result = env->rect.width;
-      else if (strcmp (t->d.v.name, "height") == 0)
-        *result = env->rect.height;
-      else if (env->object_width >= 0 &&
-               strcmp (t->d.v.name, "object_width") == 0)
-        *result = env->object_width;
-      else if (env->object_height >= 0 &&
-               strcmp (t->d.v.name, "object_height") == 0)
-        *result = env->object_height;
-      else if (strcmp (t->d.v.name, "left_width") == 0)
-        *result = env->left_width;
-      else if (strcmp (t->d.v.name, "right_width") == 0)
-        *result = env->right_width;
-      else if (strcmp (t->d.v.name, "top_height") == 0)
-        *result = env->top_height;
-      else if (strcmp (t->d.v.name, "bottom_height") == 0)
-        *result = env->bottom_height;
-      else if (strcmp (t->d.v.name, "mini_icon_width") == 0)
-        *result = env->mini_icon_width;
-      else if (strcmp (t->d.v.name, "mini_icon_height") == 0)
-        *result = env->mini_icon_height;
-      else if (strcmp (t->d.v.name, "icon_width") == 0)
-        *result = env->icon_width;
-      else if (strcmp (t->d.v.name, "icon_height") == 0)
-        *result = env->icon_height;
-      else if (strcmp (t->d.v.name, "title_width") == 0)
-        *result = env->title_width;
-      else if (strcmp (t->d.v.name, "title_height") == 0)
-        *result = env->title_height;
-      else if (strcmp (t->d.v.name, "frame_x_center") == 0)
-        *result = env->frame_x_center;
-      else if (strcmp (t->d.v.name, "frame_y_center") == 0)
-        *result = env->frame_y_center;
-      else
-        {
-          g_set_error (err, META_THEME_ERROR,
-                       META_THEME_ERROR_UNKNOWN_VARIABLE,
-                       _("Coordinate expression had unknown variable or constant \"%s\""),
-                       t->d.v.name);
-          return FALSE;
-        }
+      g_set_error (err, META_THEME_ERROR, META_THEME_ERROR_UNKNOWN_VARIABLE,
+                   _("Coordinate expression had unknown variable or constant '%s'"),
+                   token->d.v.name);
+
+      return FALSE;
     }
 
   return TRUE;
@@ -3855,7 +3833,6 @@ fill_env (MetaPositionExprEnv *env,
 
   env->title_width = info->title_layout_width;
   env->title_height = info->title_layout_height;
-  env->theme = meta_current_theme;
 }
 
 /* This code was originally rendering anti-aliased using X primitives, and
@@ -5692,24 +5669,6 @@ meta_theme_new (void)
                            g_free,
                            (GDestroyNotify) meta_frame_style_set_unref);
 
-  /* Create our variable quarks so we can look up variables without
-     having to strcmp for the names */
-  theme->quark_width = g_quark_from_static_string ("width");
-  theme->quark_height = g_quark_from_static_string ("height");
-  theme->quark_object_width = g_quark_from_static_string ("object_width");
-  theme->quark_object_height = g_quark_from_static_string ("object_height");
-  theme->quark_left_width = g_quark_from_static_string ("left_width");
-  theme->quark_right_width = g_quark_from_static_string ("right_width");
-  theme->quark_top_height = g_quark_from_static_string ("top_height");
-  theme->quark_bottom_height = g_quark_from_static_string ("bottom_height");
-  theme->quark_mini_icon_width = g_quark_from_static_string ("mini_icon_width");
-  theme->quark_mini_icon_height = g_quark_from_static_string ("mini_icon_height");
-  theme->quark_icon_width = g_quark_from_static_string ("icon_width");
-  theme->quark_icon_height = g_quark_from_static_string ("icon_height");
-  theme->quark_title_width = g_quark_from_static_string ("title_width");
-  theme->quark_title_height = g_quark_from_static_string ("title_height");
-  theme->quark_frame_x_center = g_quark_from_static_string ("frame_x_center");
-  theme->quark_frame_y_center = g_quark_from_static_string ("frame_y_center");
   return theme;
 }
 
