@@ -5444,6 +5444,28 @@ meta_frame_state_to_string (MetaFrameState state)
   return "<unknown>";
 }
 
+static const char*
+meta_frame_resize_to_string (MetaFrameResize resize)
+{
+  switch (resize)
+    {
+    case META_FRAME_RESIZE_NONE:
+      return "none";
+    case META_FRAME_RESIZE_VERTICAL:
+      return "vertical";
+    case META_FRAME_RESIZE_HORIZONTAL:
+      return "horizontal";
+    case META_FRAME_RESIZE_BOTH:
+      return "both";
+    case META_FRAME_RESIZE_LAST:
+      break;
+    default:
+      break;
+    }
+
+  return "<unknown>";
+}
+
 static gboolean
 check_state  (MetaFrameStyleSet *style_set,
               MetaFrameState     state,
@@ -6647,28 +6669,6 @@ meta_pango_font_desc_get_text_height (const PangoFontDescription *font_desc,
   pango_font_metrics_unref (metrics);
 
   return retval;
-}
-
-const char*
-meta_frame_resize_to_string (MetaFrameResize resize)
-{
-  switch (resize)
-    {
-    case META_FRAME_RESIZE_NONE:
-      return "none";
-    case META_FRAME_RESIZE_VERTICAL:
-      return "vertical";
-    case META_FRAME_RESIZE_HORIZONTAL:
-      return "horizontal";
-    case META_FRAME_RESIZE_BOTH:
-      return "both";
-    case META_FRAME_RESIZE_LAST:
-      break;
-    default:
-      break;
-    }
-
-  return "<unknown>";
 }
 
 MetaFrameFocus
