@@ -5865,43 +5865,39 @@ meta_theme_get_title_scale (MetaTheme     *theme,
 }
 
 static GtkStyleContext *
-create_style_context (GType            widget_type,
-                      GtkStyleContext *parent_style,
+create_style_context (GtkStyleContext *parent,
                       GtkCssProvider  *provider,
                       const char      *object_name,
                       const char      *first_class,
                       ...)
 {
-  GtkStyleContext *style;
   GtkWidgetPath *path;
+  GtkStyleContext *context;
   const char *name;
   va_list ap;
 
-  style = gtk_style_context_new ();
-  gtk_style_context_set_parent (style, parent_style);
-
-  if (parent_style)
-    path = gtk_widget_path_copy (gtk_style_context_get_path (parent_style));
+  if (parent)
+    path = gtk_widget_path_copy (gtk_style_context_get_path (parent));
   else
     path = gtk_widget_path_new ();
 
-  gtk_widget_path_append_type (path, widget_type);
-
-  if (object_name)
-    gtk_widget_path_iter_set_object_name (path, -1, object_name);
+  gtk_widget_path_append_type (path, G_TYPE_NONE);
+  gtk_widget_path_iter_set_object_name (path, -1, object_name);
 
   va_start (ap, first_class);
   for (name = first_class; name; name = va_arg (ap, const char *))
     gtk_widget_path_iter_add_class (path, -1, name);
   va_end (ap);
 
-  gtk_style_context_set_path (style, path);
+  context = gtk_style_context_new ();
+  gtk_style_context_set_path (context, path);
+  gtk_style_context_set_parent (context, parent);
   gtk_widget_path_unref (path);
 
-  gtk_style_context_add_provider (style, GTK_STYLE_PROVIDER (provider),
+  gtk_style_context_add_provider (context, GTK_STYLE_PROVIDER (provider),
                                   GTK_STYLE_PROVIDER_PRIORITY_SETTINGS);
 
-  return style;
+  return context;
 }
 
 MetaStyleInfo *
@@ -5927,22 +5923,19 @@ meta_theme_create_style_info (MetaTheme   *theme,
   style_info->refcount = 1;
 
   style_info->styles[META_STYLE_ELEMENT_WINDOW] =
-    create_style_context (G_TYPE_NONE,
-                          NULL,
+    create_style_context (NULL,
                           provider,
                           "window",
                           GTK_STYLE_CLASS_BACKGROUND,
                           theme->composited == TRUE ? "ssd" : "solid-csd",
                           NULL);
   style_info->styles[META_STYLE_ELEMENT_DECORATION] =
-    create_style_context (G_TYPE_NONE,
-                          style_info->styles[META_STYLE_ELEMENT_WINDOW],
+    create_style_context (style_info->styles[META_STYLE_ELEMENT_WINDOW],
                           provider,
                           "decoration",
                           NULL);
   style_info->styles[META_STYLE_ELEMENT_TITLEBAR] =
-    create_style_context (G_TYPE_NONE,
-                          style_info->styles[META_STYLE_ELEMENT_DECORATION],
+    create_style_context (style_info->styles[META_STYLE_ELEMENT_DECORATION],
                           provider,
                           "headerbar",
                           GTK_STYLE_CLASS_TITLEBAR,
@@ -5950,22 +5943,19 @@ meta_theme_create_style_info (MetaTheme   *theme,
                           "default-decoration",
                           NULL);
   style_info->styles[META_STYLE_ELEMENT_TITLE] =
-    create_style_context (G_TYPE_NONE,
-                          style_info->styles[META_STYLE_ELEMENT_TITLEBAR],
+    create_style_context (style_info->styles[META_STYLE_ELEMENT_TITLEBAR],
                           provider,
                           "label",
                           GTK_STYLE_CLASS_TITLE,
                           NULL);
   style_info->styles[META_STYLE_ELEMENT_BUTTON] =
-    create_style_context (G_TYPE_NONE,
-                          style_info->styles[META_STYLE_ELEMENT_TITLEBAR],
+    create_style_context (style_info->styles[META_STYLE_ELEMENT_TITLEBAR],
                           provider,
                           "button",
                           "titlebutton",
                           NULL);
   style_info->styles[META_STYLE_ELEMENT_IMAGE] =
-    create_style_context (G_TYPE_NONE,
-                          style_info->styles[META_STYLE_ELEMENT_BUTTON],
+    create_style_context (style_info->styles[META_STYLE_ELEMENT_BUTTON],
                           provider,
                           "image",
                           NULL);
