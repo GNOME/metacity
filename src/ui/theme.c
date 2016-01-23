@@ -1733,7 +1733,6 @@ meta_set_color_from_style (GdkRGBA               *color,
 {
   GdkRGBA other;
 
-  gtk_style_context_save (context);
   gtk_style_context_set_state (context, state);
 
   switch (component)
@@ -1773,8 +1772,6 @@ meta_set_color_from_style (GdkRGBA               *color,
       g_assert_not_reached ();
       break;
     }
-
-  gtk_style_context_restore (context);
 }
 
 static void
