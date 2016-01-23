@@ -6619,37 +6619,6 @@ meta_pango_font_desc_get_text_height (const PangoFontDescription *font_desc,
   return retval;
 }
 
-MetaFramePiece
-meta_frame_piece_from_string (const char *str)
-{
-  if (strcmp ("entire_background", str) == 0)
-    return META_FRAME_PIECE_ENTIRE_BACKGROUND;
-  else if (strcmp ("titlebar", str) == 0)
-    return META_FRAME_PIECE_TITLEBAR;
-  else if (strcmp ("titlebar_middle", str) == 0)
-    return META_FRAME_PIECE_TITLEBAR_MIDDLE;
-  else if (strcmp ("left_titlebar_edge", str) == 0)
-    return META_FRAME_PIECE_LEFT_TITLEBAR_EDGE;
-  else if (strcmp ("right_titlebar_edge", str) == 0)
-    return META_FRAME_PIECE_RIGHT_TITLEBAR_EDGE;
-  else if (strcmp ("top_titlebar_edge", str) == 0)
-    return META_FRAME_PIECE_TOP_TITLEBAR_EDGE;
-  else if (strcmp ("bottom_titlebar_edge", str) == 0)
-    return META_FRAME_PIECE_BOTTOM_TITLEBAR_EDGE;
-  else if (strcmp ("title", str) == 0)
-    return META_FRAME_PIECE_TITLE;
-  else if (strcmp ("left_edge", str) == 0)
-    return META_FRAME_PIECE_LEFT_EDGE;
-  else if (strcmp ("right_edge", str) == 0)
-    return META_FRAME_PIECE_RIGHT_EDGE;
-  else if (strcmp ("bottom_edge", str) == 0)
-    return META_FRAME_PIECE_BOTTOM_EDGE;
-  else if (strcmp ("overlay", str) == 0)
-    return META_FRAME_PIECE_OVERLAY;
-  else
-    return META_FRAME_PIECE_LAST;
-}
-
 MetaFrameState
 meta_frame_state_from_string (const char *str)
 {
