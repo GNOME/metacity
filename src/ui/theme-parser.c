@@ -116,19 +116,6 @@ typedef struct
   int skip_level;               /* depth of elements that we're ignoring */
 } ParseInfo;
 
-typedef enum {
-  THEME_PARSE_ERROR_TOO_OLD,
-  THEME_PARSE_ERROR_TOO_FAILED
- } ThemeParseError;
-
-static GQuark
-theme_parse_error_quark (void)
-{
-  return g_quark_from_static_string ("theme-parse-error-quark");
-}
-
-#define THEME_PARSE_ERROR (theme_parse_error_quark ())
-
 static void set_error (GError             **err,
                        GMarkupParseContext *context,
                        int                  error_domain,
@@ -3282,7 +3269,7 @@ start_element_handler (GMarkupParseContext *context,
             }
           else
             {
-              set_error (error, context, THEME_PARSE_ERROR, THEME_PARSE_ERROR_TOO_OLD,
+              set_error (error, context, META_THEME_ERROR, META_THEME_ERROR_TOO_OLD,
                          _("Theme requires version %s but latest supported theme version is %d.%d"),
                          version, THEME_VERSION, THEME_MINOR_VERSION);
               return;
@@ -3866,8 +3853,8 @@ static gboolean
 theme_error_is_fatal (GError *error)
 {
   return !(error->domain == G_FILE_ERROR ||
-          (error->domain == THEME_PARSE_ERROR &&
-           error->code == THEME_PARSE_ERROR_TOO_OLD));
+          (error->domain == META_THEME_ERROR &&
+           error->code == META_THEME_ERROR_TOO_OLD));
 }
 
 static MetaTheme *
