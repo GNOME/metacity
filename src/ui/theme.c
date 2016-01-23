@@ -4628,6 +4628,26 @@ meta_frame_style_apply_scale (const MetaFrameStyle *style,
                                    MAX (size * style->layout->title_scale, 1));
 }
 
+static const char*
+meta_button_state_to_string (MetaButtonState state)
+{
+  switch (state)
+    {
+    case META_BUTTON_STATE_NORMAL:
+      return "normal";
+    case META_BUTTON_STATE_PRESSED:
+      return "pressed";
+    case META_BUTTON_STATE_PRELIGHT:
+      return "prelight";
+    case META_BUTTON_STATE_LAST:
+      break;
+    default:
+      break;
+    }
+
+  return "<unknown>";
+}
+
 gboolean
 meta_frame_style_validate (MetaFrameStyle    *style,
                            guint              current_theme_version,
@@ -6545,26 +6565,6 @@ meta_pango_font_desc_get_text_height (const PangoFontDescription *font_desc,
   pango_font_metrics_unref (metrics);
 
   return retval;
-}
-
-const char*
-meta_button_state_to_string (MetaButtonState state)
-{
-  switch (state)
-    {
-    case META_BUTTON_STATE_NORMAL:
-      return "normal";
-    case META_BUTTON_STATE_PRESSED:
-      return "pressed";
-    case META_BUTTON_STATE_PRELIGHT:
-      return "prelight";
-    case META_BUTTON_STATE_LAST:
-      break;
-    default:
-      break;
-    }
-
-  return "<unknown>";
 }
 
 MetaButtonType
