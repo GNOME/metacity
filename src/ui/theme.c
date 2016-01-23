@@ -4629,6 +4629,58 @@ meta_frame_style_apply_scale (const MetaFrameStyle *style,
 }
 
 static const char*
+meta_button_type_to_string (MetaButtonType type)
+{
+  switch (type)
+    {
+    case META_BUTTON_TYPE_CLOSE:
+      return "close";
+    case META_BUTTON_TYPE_MAXIMIZE:
+      return "maximize";
+    case META_BUTTON_TYPE_MINIMIZE:
+      return "minimize";
+    case META_BUTTON_TYPE_SHADE:
+     return "shade";
+    case META_BUTTON_TYPE_ABOVE:
+      return "above";
+    case META_BUTTON_TYPE_STICK:
+      return "stick";
+    case META_BUTTON_TYPE_UNSHADE:
+      return "unshade";
+    case META_BUTTON_TYPE_UNABOVE:
+      return "unabove";
+    case META_BUTTON_TYPE_UNSTICK:
+      return "unstick";
+    case META_BUTTON_TYPE_MENU:
+      return "menu";
+    case META_BUTTON_TYPE_APPMENU:
+      return "appmenu";
+    case META_BUTTON_TYPE_LEFT_LEFT_BACKGROUND:
+      return "left_left_background";
+    case META_BUTTON_TYPE_LEFT_MIDDLE_BACKGROUND:
+      return "left_middle_background";
+    case META_BUTTON_TYPE_LEFT_RIGHT_BACKGROUND:
+      return "left_right_background";
+    case META_BUTTON_TYPE_LEFT_SINGLE_BACKGROUND:
+      return "left_single_background";
+    case META_BUTTON_TYPE_RIGHT_LEFT_BACKGROUND:
+      return "right_left_background";
+    case META_BUTTON_TYPE_RIGHT_MIDDLE_BACKGROUND:
+      return "right_middle_background";
+    case META_BUTTON_TYPE_RIGHT_RIGHT_BACKGROUND:
+      return "right_right_background";
+    case META_BUTTON_TYPE_RIGHT_SINGLE_BACKGROUND:
+      return "right_single_background";
+    case META_BUTTON_TYPE_LAST:
+      break;
+    default:
+      break;
+    }
+
+  return "<unknown>";
+}
+
+static const char*
 meta_button_state_to_string (MetaButtonState state)
 {
   switch (state)
@@ -6565,58 +6617,6 @@ meta_pango_font_desc_get_text_height (const PangoFontDescription *font_desc,
   pango_font_metrics_unref (metrics);
 
   return retval;
-}
-
-const char*
-meta_button_type_to_string (MetaButtonType type)
-{
-  switch (type)
-    {
-    case META_BUTTON_TYPE_CLOSE:
-      return "close";
-    case META_BUTTON_TYPE_MAXIMIZE:
-      return "maximize";
-    case META_BUTTON_TYPE_MINIMIZE:
-      return "minimize";
-    case META_BUTTON_TYPE_SHADE:
-     return "shade";
-    case META_BUTTON_TYPE_ABOVE:
-      return "above";
-    case META_BUTTON_TYPE_STICK:
-      return "stick";
-    case META_BUTTON_TYPE_UNSHADE:
-      return "unshade";
-    case META_BUTTON_TYPE_UNABOVE:
-      return "unabove";
-    case META_BUTTON_TYPE_UNSTICK:
-      return "unstick";
-    case META_BUTTON_TYPE_MENU:
-      return "menu";
-    case META_BUTTON_TYPE_APPMENU:
-      return "appmenu";
-    case META_BUTTON_TYPE_LEFT_LEFT_BACKGROUND:
-      return "left_left_background";
-    case META_BUTTON_TYPE_LEFT_MIDDLE_BACKGROUND:
-      return "left_middle_background";
-    case META_BUTTON_TYPE_LEFT_RIGHT_BACKGROUND:
-      return "left_right_background";
-    case META_BUTTON_TYPE_LEFT_SINGLE_BACKGROUND:
-      return "left_single_background";
-    case META_BUTTON_TYPE_RIGHT_LEFT_BACKGROUND:
-      return "right_left_background";
-    case META_BUTTON_TYPE_RIGHT_MIDDLE_BACKGROUND:
-      return "right_middle_background";
-    case META_BUTTON_TYPE_RIGHT_RIGHT_BACKGROUND:
-      return "right_right_background";
-    case META_BUTTON_TYPE_RIGHT_SINGLE_BACKGROUND:
-      return "right_single_background";
-    case META_BUTTON_TYPE_LAST:
-      break;
-    default:
-      break;
-    }
-
-  return "<unknown>";
 }
 
 MetaFramePiece
