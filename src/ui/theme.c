@@ -5621,20 +5621,18 @@ meta_theme_free (MetaTheme *theme)
   if (theme->titlebar_font)
     pango_font_description_free (theme->titlebar_font);
 
-  /* be more careful when destroying the theme hash tables,
-     since they are only constructed as needed, and may be NULL. */
   if (theme->integer_constants)
     g_hash_table_destroy (theme->integer_constants);
-  if (theme->images_by_filename)
-    g_hash_table_destroy (theme->images_by_filename);
-  if (theme->layouts_by_name)
-    g_hash_table_destroy (theme->layouts_by_name);
-  if (theme->draw_op_lists_by_name)
-    g_hash_table_destroy (theme->draw_op_lists_by_name);
-  if (theme->styles_by_name)
-    g_hash_table_destroy (theme->styles_by_name);
-  if (theme->style_sets_by_name)
-    g_hash_table_destroy (theme->style_sets_by_name);
+  if (theme->float_constants)
+    g_hash_table_destroy (theme->float_constants);
+  if (theme->color_constants)
+    g_hash_table_destroy (theme->color_constants);
+
+  g_hash_table_destroy (theme->images_by_filename);
+  g_hash_table_destroy (theme->layouts_by_name);
+  g_hash_table_destroy (theme->draw_op_lists_by_name);
+  g_hash_table_destroy (theme->styles_by_name);
+  g_hash_table_destroy (theme->style_sets_by_name);
 
   for (i = 0; i < META_FRAME_TYPE_LAST; i++)
     if (theme->style_sets_by_type[i])

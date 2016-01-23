@@ -723,11 +723,13 @@ struct _MetaTheme
    * plus alpha).
    * */
   GHashTable *color_constants;
+
   GHashTable *images_by_filename;
   GHashTable *layouts_by_name;
   GHashTable *draw_op_lists_by_name;
   GHashTable *styles_by_name;
   GHashTable *style_sets_by_name;
+
   MetaFrameStyleSet *style_sets_by_type[META_FRAME_TYPE_LAST];
 };
 
