@@ -2624,6 +2624,19 @@ parse_gradient_element (GMarkupParseContext  *context,
     }
 }
 
+static MetaButtonState
+meta_button_state_from_string (const char *str)
+{
+  if (strcmp ("normal", str) == 0)
+    return META_BUTTON_STATE_NORMAL;
+  else if (strcmp ("pressed", str) == 0)
+    return META_BUTTON_STATE_PRESSED;
+  else if (strcmp ("prelight", str) == 0)
+    return META_BUTTON_STATE_PRELIGHT;
+  else
+    return META_BUTTON_STATE_LAST;
+}
+
 static void
 parse_style_element (GMarkupParseContext  *context,
                      const gchar          *element_name,

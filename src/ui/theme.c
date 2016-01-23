@@ -6547,19 +6547,6 @@ meta_pango_font_desc_get_text_height (const PangoFontDescription *font_desc,
   return retval;
 }
 
-MetaButtonState
-meta_button_state_from_string (const char *str)
-{
-  if (strcmp ("normal", str) == 0)
-    return META_BUTTON_STATE_NORMAL;
-  else if (strcmp ("pressed", str) == 0)
-    return META_BUTTON_STATE_PRESSED;
-  else if (strcmp ("prelight", str) == 0)
-    return META_BUTTON_STATE_PRELIGHT;
-  else
-    return META_BUTTON_STATE_LAST;
-}
-
 const char*
 meta_button_state_to_string (MetaButtonState state)
 {
