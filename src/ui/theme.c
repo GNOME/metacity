@@ -6076,14 +6076,13 @@ meta_theme_create_style_info (MetaTheme   *theme,
                           provider,
                           "window",
                           GTK_STYLE_CLASS_BACKGROUND,
-                          theme->composited == FALSE ? "solid-csd" : NULL,
+                          theme->composited == TRUE ? "ssd" : "solid-csd",
                           NULL);
   style_info->styles[META_STYLE_ELEMENT_DECORATION] =
     create_style_context (G_TYPE_NONE,
                           style_info->styles[META_STYLE_ELEMENT_WINDOW],
                           provider,
                           "decoration",
-                          theme->composited == TRUE ? "ssd" : NULL,
                           NULL);
   style_info->styles[META_STYLE_ELEMENT_TITLEBAR] =
     create_style_context (G_TYPE_NONE,
