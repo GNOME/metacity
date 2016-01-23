@@ -1377,6 +1377,29 @@ meta_color_spec_free (MetaColorSpec *spec)
   g_free (spec);
 }
 
+static MetaGtkColorComponent
+meta_color_component_from_string (const char *str)
+{
+  if (strcmp ("fg", str) == 0)
+    return META_GTK_COLOR_FG;
+  else if (strcmp ("bg", str) == 0)
+    return META_GTK_COLOR_BG;
+  else if (strcmp ("light", str) == 0)
+    return META_GTK_COLOR_LIGHT;
+  else if (strcmp ("dark", str) == 0)
+    return META_GTK_COLOR_DARK;
+  else if (strcmp ("mid", str) == 0)
+    return META_GTK_COLOR_MID;
+  else if (strcmp ("text", str) == 0)
+    return META_GTK_COLOR_TEXT;
+  else if (strcmp ("base", str) == 0)
+    return META_GTK_COLOR_BASE;
+  else if (strcmp ("text_aa", str) == 0)
+    return META_GTK_COLOR_TEXT_AA;
+  else
+    return META_GTK_COLOR_LAST;
+}
+
 MetaColorSpec*
 meta_color_spec_new_from_string (const char *str,
                                  GError    **err)
@@ -6522,29 +6545,6 @@ meta_pango_font_desc_get_text_height (const PangoFontDescription *font_desc,
   pango_font_metrics_unref (metrics);
 
   return retval;
-}
-
-MetaGtkColorComponent
-meta_color_component_from_string (const char *str)
-{
-  if (strcmp ("fg", str) == 0)
-    return META_GTK_COLOR_FG;
-  else if (strcmp ("bg", str) == 0)
-    return META_GTK_COLOR_BG;
-  else if (strcmp ("light", str) == 0)
-    return META_GTK_COLOR_LIGHT;
-  else if (strcmp ("dark", str) == 0)
-    return META_GTK_COLOR_DARK;
-  else if (strcmp ("mid", str) == 0)
-    return META_GTK_COLOR_MID;
-  else if (strcmp ("text", str) == 0)
-    return META_GTK_COLOR_TEXT;
-  else if (strcmp ("base", str) == 0)
-    return META_GTK_COLOR_BASE;
-  else if (strcmp ("text_aa", str) == 0)
-    return META_GTK_COLOR_TEXT_AA;
-  else
-    return META_GTK_COLOR_LAST;
 }
 
 MetaButtonState
