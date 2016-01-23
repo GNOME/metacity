@@ -5414,6 +5414,36 @@ get_style (MetaFrameStyleSet *style_set,
   return style;
 }
 
+static const char*
+meta_frame_state_to_string (MetaFrameState state)
+{
+  switch (state)
+    {
+    case META_FRAME_STATE_NORMAL:
+      return "normal";
+    case META_FRAME_STATE_MAXIMIZED:
+      return "maximized";
+    case META_FRAME_STATE_TILED_LEFT:
+      return "tiled_left";
+    case META_FRAME_STATE_TILED_RIGHT:
+      return "tiled_right";
+    case META_FRAME_STATE_SHADED:
+      return "shaded";
+    case META_FRAME_STATE_MAXIMIZED_AND_SHADED:
+      return "maximized_and_shaded";
+    case META_FRAME_STATE_TILED_LEFT_AND_SHADED:
+      return "tiled_left_and_shaded";
+    case META_FRAME_STATE_TILED_RIGHT_AND_SHADED:
+      return "tiled_right_and_shaded";
+    case META_FRAME_STATE_LAST:
+      break;
+    default:
+      break;
+    }
+
+  return "<unknown>";
+}
+
 static gboolean
 check_state  (MetaFrameStyleSet *style_set,
               MetaFrameState     state,
@@ -6617,36 +6647,6 @@ meta_pango_font_desc_get_text_height (const PangoFontDescription *font_desc,
   pango_font_metrics_unref (metrics);
 
   return retval;
-}
-
-const char*
-meta_frame_state_to_string (MetaFrameState state)
-{
-  switch (state)
-    {
-    case META_FRAME_STATE_NORMAL:
-      return "normal";
-    case META_FRAME_STATE_MAXIMIZED:
-      return "maximized";
-    case META_FRAME_STATE_TILED_LEFT:
-      return "tiled_left";
-    case META_FRAME_STATE_TILED_RIGHT:
-      return "tiled_right";
-    case META_FRAME_STATE_SHADED:
-      return "shaded";
-    case META_FRAME_STATE_MAXIMIZED_AND_SHADED:
-      return "maximized_and_shaded";
-    case META_FRAME_STATE_TILED_LEFT_AND_SHADED:
-      return "tiled_left_and_shaded";
-    case META_FRAME_STATE_TILED_RIGHT_AND_SHADED:
-      return "tiled_right_and_shaded";
-    case META_FRAME_STATE_LAST:
-      break;
-    default:
-      break;
-    }
-
-  return "<unknown>";
 }
 
 MetaFrameResize
