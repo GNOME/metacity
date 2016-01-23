@@ -874,8 +874,6 @@ gboolean               meta_theme_lookup_color_constant        (MetaTheme       
                                                                 const char                  *name,
                                                                 char                       **value);
 
-MetaButtonType         meta_button_type_from_string            (const char                  *str,
-                                                                MetaTheme                   *theme);
 const char            *meta_button_type_to_string              (MetaButtonType               type);
 MetaFramePiece         meta_frame_piece_from_string            (const char                  *str);
 MetaFrameState         meta_frame_state_from_string            (const char                  *str);

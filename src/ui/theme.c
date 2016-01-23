@@ -6567,55 +6567,6 @@ meta_pango_font_desc_get_text_height (const PangoFontDescription *font_desc,
   return retval;
 }
 
-MetaButtonType
-meta_button_type_from_string (const char *str, MetaTheme *theme)
-{
-  if (META_THEME_ALLOWS(theme, META_THEME_SHADE_STICK_ABOVE_BUTTONS))
-    {
-      if (strcmp ("shade", str) == 0)
-        return META_BUTTON_TYPE_SHADE;
-      else if (strcmp ("above", str) == 0)
-        return META_BUTTON_TYPE_ABOVE;
-      else if (strcmp ("stick", str) == 0)
-        return META_BUTTON_TYPE_STICK;
-      else if (strcmp ("unshade", str) == 0)
-        return META_BUTTON_TYPE_UNSHADE;
-      else if (strcmp ("unabove", str) == 0)
-        return META_BUTTON_TYPE_UNABOVE;
-      else if (strcmp ("unstick", str) == 0)
-        return META_BUTTON_TYPE_UNSTICK;
-     }
-
-  if (strcmp ("close", str) == 0)
-    return META_BUTTON_TYPE_CLOSE;
-  else if (strcmp ("maximize", str) == 0)
-    return META_BUTTON_TYPE_MAXIMIZE;
-  else if (strcmp ("minimize", str) == 0)
-    return META_BUTTON_TYPE_MINIMIZE;
-  else if (strcmp ("menu", str) == 0)
-    return META_BUTTON_TYPE_MENU;
-  else if (strcmp ("appmenu", str) == 0)
-    return META_BUTTON_TYPE_APPMENU;
-  else if (strcmp ("left_left_background", str) == 0)
-    return META_BUTTON_TYPE_LEFT_LEFT_BACKGROUND;
-  else if (strcmp ("left_middle_background", str) == 0)
-    return META_BUTTON_TYPE_LEFT_MIDDLE_BACKGROUND;
-  else if (strcmp ("left_right_background", str) == 0)
-    return META_BUTTON_TYPE_LEFT_RIGHT_BACKGROUND;
-  else if (strcmp ("left_single_background", str) == 0)
-    return META_BUTTON_TYPE_LEFT_SINGLE_BACKGROUND;
-  else if (strcmp ("right_left_background", str) == 0)
-    return META_BUTTON_TYPE_RIGHT_LEFT_BACKGROUND;
-  else if (strcmp ("right_middle_background", str) == 0)
-    return META_BUTTON_TYPE_RIGHT_MIDDLE_BACKGROUND;
-  else if (strcmp ("right_right_background", str) == 0)
-    return META_BUTTON_TYPE_RIGHT_RIGHT_BACKGROUND;
-  else if (strcmp ("right_single_background", str) == 0)
-    return META_BUTTON_TYPE_RIGHT_SINGLE_BACKGROUND;
-  else
-    return META_BUTTON_TYPE_LAST;
-}
-
 const char*
 meta_button_type_to_string (MetaButtonType type)
 {
