@@ -1609,61 +1609,6 @@ parse_geometry_element (GMarkupParseContext  *context,
     }
 }
 
-#if 0
-static gboolean
-check_expression (PosToken            *tokens,
-                  int                  n_tokens,
-                  gboolean             has_object,
-                  MetaTheme           *theme,
-                  GMarkupParseContext *context,
-                  GError             **error)
-{
-  MetaPositionExprEnv env;
-  int x, y;
-
-  /* We set it all to 0 to try and catch divide-by-zero screwups.
-   * it's possible we should instead guarantee that widths and heights
-   * are at least 1.
-   */
-
-  env.rect = meta_rect (0, 0, 0, 0);
-  if (has_object)
-    {
-      env.object_width = 0;
-      env.object_height = 0;
-    }
-  else
-    {
-      env.object_width = -1;
-      env.object_height = -1;
-    }
-
-  env.left_width = 0;
-  env.right_width = 0;
-  env.top_height = 0;
-  env.bottom_height = 0;
-  env.title_width = 0;
-  env.title_height = 0;
-
-  env.icon_width = 0;
-  env.icon_height = 0;
-  env.mini_icon_width = 0;
-  env.mini_icon_height = 0;
-  env.theme = theme;
-
-  if (!meta_parse_position_expression (tokens, n_tokens,
-                                       &env,
-                                       &x, &y,
-                                       error))
-    {
-      add_context_to_error (error, context);
-      return FALSE;
-    }
-
-  return TRUE;
-}
-#endif
-
 static void
 parse_draw_op_element (GMarkupParseContext  *context,
                        const gchar          *element_name,
@@ -1700,20 +1645,6 @@ parse_draw_op_element (GMarkupParseContext  *context,
                               "width", &width,
                               NULL))
         return;
-
-#if 0
-      if (!check_expression (x1, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (y1, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (x2, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (y2, FALSE, info->theme, context, error))
-        return;
-#endif
 
       dash_on_val = 0;
       if (dash_on_length &&
@@ -1787,20 +1718,6 @@ parse_draw_op_element (GMarkupParseContext  *context,
                               "filled", &filled,
                               NULL))
         return;
-
-#if 0
-      if (!check_expression (x, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (y, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (width, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (height, FALSE, info->theme, context, error))
-        return;
-#endif
 
       filled_val = FALSE;
       if (filled && !parse_boolean (filled, &filled_val, context, error))
@@ -1897,20 +1814,6 @@ parse_draw_op_element (GMarkupParseContext  *context,
             }
         }
 
-#if 0
-      if (!check_expression (x, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (y, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (width, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (height, FALSE, info->theme, context, error))
-        return;
-#endif
-
       if (start_angle == NULL)
         {
           if (!parse_angle (from, &start_angle_val, context, error))
@@ -1985,19 +1888,6 @@ parse_draw_op_element (GMarkupParseContext  *context,
                               NULL))
         return;
 
-#if 0
-      if (!check_expression (x, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (y, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (width, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (height, FALSE, info->theme, context, error))
-        return;
-#endif
       op = meta_draw_op_new (META_DRAW_CLIP);
 
       op->data.clip.x = meta_draw_spec_new (info->theme, x, NULL);
@@ -2032,19 +1922,6 @@ parse_draw_op_element (GMarkupParseContext  *context,
                               NULL))
         return;
 
-#if 0
-      if (!check_expression (x, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (y, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (width, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (height, FALSE, info->theme, context, error))
-        return;
-#endif
       alpha_spec = NULL;
       if (!parse_alpha (alpha, &alpha_spec, context, error))
         return;
@@ -2097,20 +1974,6 @@ parse_draw_op_element (GMarkupParseContext  *context,
                               "alpha", &alpha,
                               NULL))
         return;
-
-#if 0
-      if (!check_expression (x, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (y, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (width, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (height, FALSE, info->theme, context, error))
-        return;
-#endif
 
       type_val = meta_gradient_type_from_string (type);
       if (type_val == META_GRADIENT_LAST)
@@ -2172,19 +2035,6 @@ parse_draw_op_element (GMarkupParseContext  *context,
                               NULL))
         return;
 
-#if 0
-      if (!check_expression (x, TRUE, info->theme, context, error))
-        return;
-
-      if (!check_expression (y, TRUE, info->theme, context, error))
-        return;
-
-      if (!check_expression (width, TRUE, info->theme, context, error))
-        return;
-
-      if (!check_expression (height, TRUE, info->theme, context, error))
-        return;
-#endif
       fill_type_val = META_IMAGE_FILL_SCALE;
       if (fill_type)
         {
@@ -2339,19 +2189,6 @@ parse_draw_op_element (GMarkupParseContext  *context,
                               NULL))
         return;
 
-#if 0
-      if (!check_expression (x, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (y, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (width, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (height, FALSE, info->theme, context, error))
-        return;
-#endif
       filled_val = TRUE;
       if (filled && !parse_boolean (filled, &filled_val, context, error))
         return;
@@ -2426,19 +2263,6 @@ parse_draw_op_element (GMarkupParseContext  *context,
                               NULL))
         return;
 
-#if 0
-      if (!check_expression (x, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (y, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (width, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (height, FALSE, info->theme, context, error))
-        return;
-#endif
       state_val = meta_gtk_state_from_string (state);
       if (((int) state_val) == -1)
         {
@@ -2491,17 +2315,6 @@ parse_draw_op_element (GMarkupParseContext  *context,
                               NULL))
         return;
 
-#if 0
-      if (!check_expression (x, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (y1, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (y2, FALSE, info->theme, context, error))
-        return;
-#endif
-
       state_val = meta_gtk_state_from_string (state);
       if (((int) state_val) == -1)
         {
@@ -2547,19 +2360,6 @@ parse_draw_op_element (GMarkupParseContext  *context,
                               NULL))
         return;
 
-#if 0
-      if (!check_expression (x, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (y, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (width, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (height, FALSE, info->theme, context, error))
-        return;
-#endif
       fill_type_val = META_IMAGE_FILL_SCALE;
       if (fill_type)
         {
@@ -2610,17 +2410,6 @@ parse_draw_op_element (GMarkupParseContext  *context,
                               "ellipsize_width", &ellipsize_width,
                               NULL))
         return;
-
-#if 0
-      if (!check_expression (x, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (y, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (ellipsize_width, FALSE, info->theme, context, error))
-        return;
-#endif
 
       if (ellipsize_width && peek_required_version (info) < 3001)
         {
@@ -2675,20 +2464,6 @@ parse_draw_op_element (GMarkupParseContext  *context,
       /* x/y/width/height default to 0,0,width,height - should
        * probably do this for all the draw ops
        */
-#if 0
-      if (x && !check_expression (x, FALSE, info->theme, context, error))
-        return;
-
-      if (y && !check_expression (y, FALSE, info->theme, context, error))
-        return;
-
-      if (width && !check_expression (width, FALSE, info->theme, context, error))
-        return;
-
-      if (height && !check_expression (height, FALSE, info->theme, context, error))
-        return;
-#endif
-
       op_list = meta_theme_lookup_draw_op_list (info->theme,
                                                 name);
       if (op_list == NULL)
@@ -2757,34 +2532,6 @@ parse_draw_op_element (GMarkupParseContext  *context,
         return;
 
       /* These default to 0 */
-#if 0
-      if (tile_xoffset && !check_expression (tile_xoffset, FALSE, info->theme, context, error))
-        return;
-
-      if (tile_yoffset && !check_expression (tile_yoffset, FALSE, info->theme, context, error))
-        return;
-
-      /* x/y/width/height default to 0,0,width,height - should
-       * probably do this for all the draw ops
-       */
-      if (x && !check_expression (x, FALSE, info->theme, context, error))
-        return;
-
-      if (y && !check_expression (y, FALSE, info->theme, context, error))
-        return;
-
-      if (width && !check_expression (width, FALSE, info->theme, context, error))
-        return;
-
-      if (height && !check_expression (height, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (tile_width, FALSE, info->theme, context, error))
-        return;
-
-      if (!check_expression (tile_height, FALSE, info->theme, context, error))
-        return;
-#endif
       op_list = meta_theme_lookup_draw_op_list (info->theme,
                                                 name);
       if (op_list == NULL)

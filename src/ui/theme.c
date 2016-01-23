@@ -2078,46 +2078,6 @@ parse_number (const char  *p,
  */
 #define IS_VARIABLE_CHAR(c) (g_ascii_isalpha ((c)) || (c) == '_')
 
-#if 0
-static void
-debug_print_tokens (PosToken *tokens,
-                    int       n_tokens)
-{
-  int i;
-
-  for (i = 0; i < n_tokens; i++)
-    {
-      PosToken *t = &tokens[i];
-
-      g_print (" ");
-
-      switch (t->type)
-        {
-        case POS_TOKEN_INT:
-          g_print ("\"%d\"", t->d.i.val);
-          break;
-        case POS_TOKEN_DOUBLE:
-          g_print ("\"%g\"", t->d.d.val);
-          break;
-        case POS_TOKEN_OPEN_PAREN:
-          g_print ("\"(\"");
-          break;
-        case POS_TOKEN_CLOSE_PAREN:
-          g_print ("\")\"");
-          break;
-        case POS_TOKEN_VARIABLE:
-          g_print ("\"%s\"", t->d.v.name);
-          break;
-        case POS_TOKEN_OPERATOR:
-          g_print ("\"%s\"", op_name (t->d.o.op));
-          break;
-        }
-    }
-
-  g_print ("\n");
-}
-#endif
-
 /**
  * Tokenises an expression.
  *
@@ -2287,32 +2247,6 @@ typedef struct
   } d;
 } PosExpr;
 
-#if 0
-static void
-debug_print_exprs (PosExpr *exprs,
-                   int      n_exprs)
-{
-  int i;
-
-  for (i = 0; i < n_exprs; i++)
-    {
-      switch (exprs[i].type)
-        {
-        case POS_EXPR_INT:
-          g_print (" %d", exprs[i].d.int_val);
-          break;
-        case POS_EXPR_DOUBLE:
-          g_print (" %g", exprs[i].d.double_val);
-          break;
-        case POS_EXPR_OPERATOR:
-          g_print (" %s", op_name (exprs[i].d.operator));
-          break;
-        }
-    }
-  g_print ("\n");
-}
-#endif
-
 static gboolean
 do_operation (PosExpr *a,
               PosExpr *b,
@@ -2435,11 +2369,6 @@ do_operations (PosExpr *exprs,
                GError **err)
 {
   int i;
-
-#if 0
-  g_print ("Doing prec %d ops on %d exprs\n", precedence, *n_exprs);
-  debug_print_exprs (exprs, *n_exprs);
-#endif
 
   i = 1;
   while (i < *n_exprs)
@@ -6961,10 +6890,6 @@ meta_frame_type_from_string (const char *str)
     return META_FRAME_TYPE_BORDER;
   else if (strcmp ("attached", str) == 0)
     return META_FRAME_TYPE_ATTACHED;
-#if 0
-  else if (strcmp ("toolbar", str) == 0)
-    return META_FRAME_TYPE_TOOLBAR;
-#endif
   else
     return META_FRAME_TYPE_LAST;
 }
@@ -6988,10 +6913,6 @@ meta_frame_type_to_string (MetaFrameType type)
       return "border";
     case META_FRAME_TYPE_ATTACHED:
       return "attached";
-#if 0
-    case META_FRAME_TYPE_TOOLBAR:
-      return "toolbar";
-#endif
     case  META_FRAME_TYPE_LAST:
       break;
     default:
