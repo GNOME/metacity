@@ -2890,6 +2890,21 @@ meta_frame_state_from_string (const char *str)
     return META_FRAME_STATE_LAST;
 }
 
+static MetaFrameResize
+meta_frame_resize_from_string (const char *str)
+{
+  if (strcmp ("none", str) == 0)
+    return META_FRAME_RESIZE_NONE;
+  else if (strcmp ("vertical", str) == 0)
+    return META_FRAME_RESIZE_VERTICAL;
+  else if (strcmp ("horizontal", str) == 0)
+    return META_FRAME_RESIZE_HORIZONTAL;
+  else if (strcmp ("both", str) == 0)
+    return META_FRAME_RESIZE_BOTH;
+  else
+    return META_FRAME_RESIZE_LAST;
+}
+
 static void
 parse_style_set_element (GMarkupParseContext  *context,
                          const gchar          *element_name,

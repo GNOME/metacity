@@ -6649,21 +6649,6 @@ meta_pango_font_desc_get_text_height (const PangoFontDescription *font_desc,
   return retval;
 }
 
-MetaFrameResize
-meta_frame_resize_from_string (const char *str)
-{
-  if (strcmp ("none", str) == 0)
-    return META_FRAME_RESIZE_NONE;
-  else if (strcmp ("vertical", str) == 0)
-    return META_FRAME_RESIZE_VERTICAL;
-  else if (strcmp ("horizontal", str) == 0)
-    return META_FRAME_RESIZE_HORIZONTAL;
-  else if (strcmp ("both", str) == 0)
-    return META_FRAME_RESIZE_BOTH;
-  else
-    return META_FRAME_RESIZE_LAST;
-}
-
 const char*
 meta_frame_resize_to_string (MetaFrameResize resize)
 {
