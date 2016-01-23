@@ -4904,7 +4904,7 @@ meta_frame_style_draw_with_style (MetaFrameStyle          *style,
               MetaRectangle m_rect;
               m_rect = meta_rect (rect.x, rect.y, rect.width, rect.height);
               meta_draw_op_list_draw_with_style (op_list,
-                                                 style_info->styles[META_STYLE_ELEMENT_DECORATION],
+                                                 style_info->styles[META_STYLE_ELEMENT_WINDOW],
                                                  cr,
                                                  &draw_info,
                                                  m_rect);
@@ -4942,7 +4942,7 @@ meta_frame_style_draw_with_style (MetaFrameStyle          *style,
                       m_rect = meta_rect (rect.x, rect.y,
                                           rect.width, rect.height);
                       meta_draw_op_list_draw_with_style (op_list,
-                                                         style_info->styles[META_STYLE_ELEMENT_DECORATION],
+                                                         style_info->styles[META_STYLE_ELEMENT_WINDOW],
                                                          cr,
                                                          &draw_info,
                                                          m_rect);
