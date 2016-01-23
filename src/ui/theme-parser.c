@@ -2867,6 +2867,29 @@ parse_style_element (GMarkupParseContext  *context,
     }
 }
 
+static MetaFrameState
+meta_frame_state_from_string (const char *str)
+{
+  if (strcmp ("normal", str) == 0)
+    return META_FRAME_STATE_NORMAL;
+  else if (strcmp ("maximized", str) == 0)
+    return META_FRAME_STATE_MAXIMIZED;
+  else if (strcmp ("tiled_left", str) == 0)
+    return META_FRAME_STATE_TILED_LEFT;
+  else if (strcmp ("tiled_right", str) == 0)
+    return META_FRAME_STATE_TILED_RIGHT;
+  else if (strcmp ("shaded", str) == 0)
+    return META_FRAME_STATE_SHADED;
+  else if (strcmp ("maximized_and_shaded", str) == 0)
+    return META_FRAME_STATE_MAXIMIZED_AND_SHADED;
+  else if (strcmp ("tiled_left_and_shaded", str) == 0)
+    return META_FRAME_STATE_TILED_LEFT_AND_SHADED;
+  else if (strcmp ("tiled_right_and_shaded", str) == 0)
+    return META_FRAME_STATE_TILED_RIGHT_AND_SHADED;
+  else
+    return META_FRAME_STATE_LAST;
+}
+
 static void
 parse_style_set_element (GMarkupParseContext  *context,
                          const gchar          *element_name,

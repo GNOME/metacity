@@ -874,7 +874,6 @@ gboolean               meta_theme_lookup_color_constant        (MetaTheme       
                                                                 const char                  *name,
                                                                 char                       **value);
 
-MetaFrameState         meta_frame_state_from_string            (const char                  *str);
 const char            *meta_frame_state_to_string              (MetaFrameState               state);
 MetaFrameResize        meta_frame_resize_from_string           (const char                  *str);
 const char            *meta_frame_resize_to_string             (MetaFrameResize              resize);
