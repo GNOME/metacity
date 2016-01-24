@@ -6761,23 +6761,6 @@ meta_gtk_state_from_string (const char *str)
     return -1; /* hack */
 }
 
-GtkArrowType
-meta_gtk_arrow_from_string (const char *str)
-{
-  if (strcmp ("up", str) == 0)
-    return GTK_ARROW_UP;
-  else if (strcmp ("down", str) == 0)
-    return GTK_ARROW_DOWN;
-  else if (strcmp ("left", str) == 0)
-    return GTK_ARROW_LEFT;
-  else if (strcmp ("right", str) == 0)
-    return GTK_ARROW_RIGHT;
-  else if (strcmp ("none", str) == 0)
-    return GTK_ARROW_NONE;
-  else
-    return -1;
-}
-
 /**
  * Returns a fill_type from a string.  The inverse of
  * meta_image_fill_type_to_string().

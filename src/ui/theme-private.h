@@ -875,7 +875,6 @@ gboolean               meta_theme_lookup_color_constant        (MetaTheme       
                                                                 char                       **value);
 
 GtkStateFlags          meta_gtk_state_from_string              (const char                  *str);
-GtkArrowType           meta_gtk_arrow_from_string              (const char                  *str);
 MetaImageFillType      meta_image_fill_type_from_string        (const char                  *str);
 
 PangoFontDescription  *meta_gtk_widget_get_font_desc           (GtkWidget                   *widget,

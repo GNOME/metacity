@@ -1626,6 +1626,23 @@ meta_gtk_shadow_from_string (const char *str)
     return -1;
 }
 
+static GtkArrowType
+meta_gtk_arrow_from_string (const char *str)
+{
+  if (strcmp ("up", str) == 0)
+    return GTK_ARROW_UP;
+  else if (strcmp ("down", str) == 0)
+    return GTK_ARROW_DOWN;
+  else if (strcmp ("left", str) == 0)
+    return GTK_ARROW_LEFT;
+  else if (strcmp ("right", str) == 0)
+    return GTK_ARROW_RIGHT;
+  else if (strcmp ("none", str) == 0)
+    return GTK_ARROW_NONE;
+  else
+    return -1;
+}
+
 static void
 parse_draw_op_element (GMarkupParseContext  *context,
                        const gchar          *element_name,
