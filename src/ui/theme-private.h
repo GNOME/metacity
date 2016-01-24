@@ -819,9 +819,6 @@ MetaFrameStyle        *meta_theme_get_frame_style              (MetaTheme       
                                                                 MetaFrameType                type,
                                                                 MetaFrameFlags               flags);
 
-gboolean               meta_theme_validate                     (MetaTheme                   *theme,
-                                                                GError                     **error);
-
 PangoFontDescription  *meta_style_info_create_font_desc        (MetaTheme                   *theme,
                                                                 MetaStyleInfo               *style_info);
 
