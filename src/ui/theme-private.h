@@ -751,11 +751,6 @@ void                   meta_color_spec_render                  (MetaColorSpec   
                                                                 GtkStyleContext             *style_gtk,
                                                                 GdkRGBA                     *color);
 
-gboolean               meta_parse_size_expression              (MetaDrawSpec                *spec,
-                                                                const MetaPositionExprEnv   *env,
-                                                                int                         *val_return,
-                                                                GError                     **err);
-
 MetaDrawSpec          *meta_draw_spec_new                      (MetaTheme                   *theme,
                                                                 const char                  *expr,
                                                                 GError                     **error);

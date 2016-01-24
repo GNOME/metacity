@@ -2869,7 +2869,7 @@ meta_parse_position_expression (MetaDrawSpec              *spec,
 }
 
 
-gboolean
+static gboolean
 meta_parse_size_expression (MetaDrawSpec              *spec,
                             const MetaPositionExprEnv *env,
                             int                       *val_return,
