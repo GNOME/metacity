@@ -1596,6 +1596,19 @@ parse_geometry_element (GMarkupParseContext  *context,
     }
 }
 
+static MetaGradientType
+meta_gradient_type_from_string (const char *str)
+{
+  if (strcmp ("vertical", str) == 0)
+    return META_GRADIENT_VERTICAL;
+  else if (strcmp ("horizontal", str) == 0)
+    return META_GRADIENT_HORIZONTAL;
+  else if (strcmp ("diagonal", str) == 0)
+    return META_GRADIENT_DIAGONAL;
+  else
+    return META_GRADIENT_LAST;
+}
+
 static void
 parse_draw_op_element (GMarkupParseContext  *context,
                        const gchar          *element_name,

@@ -6738,19 +6738,6 @@ meta_frame_type_from_string (const char *str)
     return META_FRAME_TYPE_LAST;
 }
 
-MetaGradientType
-meta_gradient_type_from_string (const char *str)
-{
-  if (strcmp ("vertical", str) == 0)
-    return META_GRADIENT_VERTICAL;
-  else if (strcmp ("horizontal", str) == 0)
-    return META_GRADIENT_HORIZONTAL;
-  else if (strcmp ("diagonal", str) == 0)
-    return META_GRADIENT_DIAGONAL;
-  else
-    return META_GRADIENT_LAST;
-}
-
 GtkStateFlags
 meta_gtk_state_from_string (const char *str)
 {

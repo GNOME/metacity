@@ -874,7 +874,6 @@ gboolean               meta_theme_lookup_color_constant        (MetaTheme       
                                                                 const char                  *name,
                                                                 char                       **value);
 
-MetaGradientType       meta_gradient_type_from_string          (const char                  *str);
 GtkStateFlags          meta_gtk_state_from_string              (const char                  *str);
 GtkShadowType          meta_gtk_shadow_from_string             (const char                  *str);
 GtkArrowType           meta_gtk_arrow_from_string              (const char                  *str);
