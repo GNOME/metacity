@@ -6762,24 +6762,6 @@ meta_gtk_state_from_string (const char *str)
 }
 
 /**
- * Returns a fill_type from a string.  The inverse of
- * meta_image_fill_type_to_string().
- *
- * \param str  a string representing a fill_type
- * \result  the fill_type, or -1 if it represents no fill_type.
- */
-MetaImageFillType
-meta_image_fill_type_from_string (const char *str)
-{
-  if (strcmp ("tile", str) == 0)
-    return META_IMAGE_FILL_TILE;
-  else if (strcmp ("scale", str) == 0)
-    return META_IMAGE_FILL_SCALE;
-  else
-    return -1;
-}
-
-/**
  * Takes a colour "a", scales the lightness and saturation by a certain amount,
  * and sets "b" to the resulting colour.
  * gtkstyle.c cut-and-pastage.

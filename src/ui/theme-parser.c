@@ -1643,6 +1643,24 @@ meta_gtk_arrow_from_string (const char *str)
     return -1;
 }
 
+/**
+ * Returns a fill_type from a string.  The inverse of
+ * meta_image_fill_type_to_string().
+ *
+ * \param str  a string representing a fill_type
+ * \result  the fill_type, or -1 if it represents no fill_type.
+ */
+static MetaImageFillType
+meta_image_fill_type_from_string (const char *str)
+{
+  if (strcmp ("tile", str) == 0)
+    return META_IMAGE_FILL_TILE;
+  else if (strcmp ("scale", str) == 0)
+    return META_IMAGE_FILL_SCALE;
+  else
+    return -1;
+}
+
 static void
 parse_draw_op_element (GMarkupParseContext  *context,
                        const gchar          *element_name,
