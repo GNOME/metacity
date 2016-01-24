@@ -5777,6 +5777,34 @@ meta_theme_free (MetaTheme *theme)
   g_free (theme);
 }
 
+static const char*
+meta_frame_type_to_string (MetaFrameType type)
+{
+  switch (type)
+    {
+    case META_FRAME_TYPE_NORMAL:
+      return "normal";
+    case META_FRAME_TYPE_DIALOG:
+      return "dialog";
+    case META_FRAME_TYPE_MODAL_DIALOG:
+      return "modal_dialog";
+    case META_FRAME_TYPE_UTILITY:
+      return "utility";
+    case META_FRAME_TYPE_MENU:
+      return "menu";
+    case META_FRAME_TYPE_BORDER:
+      return "border";
+    case META_FRAME_TYPE_ATTACHED:
+      return "attached";
+    case  META_FRAME_TYPE_LAST:
+      break;
+    default:
+      break;
+    }
+
+  return "<unknown>";
+}
+
 gboolean
 meta_theme_validate (MetaTheme *theme,
                      GError   **error)
@@ -6708,34 +6736,6 @@ meta_frame_type_from_string (const char *str)
     return META_FRAME_TYPE_ATTACHED;
   else
     return META_FRAME_TYPE_LAST;
-}
-
-const char*
-meta_frame_type_to_string (MetaFrameType type)
-{
-  switch (type)
-    {
-    case META_FRAME_TYPE_NORMAL:
-      return "normal";
-    case META_FRAME_TYPE_DIALOG:
-      return "dialog";
-    case META_FRAME_TYPE_MODAL_DIALOG:
-      return "modal_dialog";
-    case META_FRAME_TYPE_UTILITY:
-      return "utility";
-    case META_FRAME_TYPE_MENU:
-      return "menu";
-    case META_FRAME_TYPE_BORDER:
-      return "border";
-    case META_FRAME_TYPE_ATTACHED:
-      return "attached";
-    case  META_FRAME_TYPE_LAST:
-      break;
-    default:
-      break;
-    }
-
-  return "<unknown>";
 }
 
 MetaGradientType
