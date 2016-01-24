@@ -5466,6 +5466,24 @@ meta_frame_resize_to_string (MetaFrameResize resize)
   return "<unknown>";
 }
 
+static const char*
+meta_frame_focus_to_string (MetaFrameFocus focus)
+{
+  switch (focus)
+    {
+    case META_FRAME_FOCUS_NO:
+      return "no";
+    case META_FRAME_FOCUS_YES:
+      return "yes";
+    case META_FRAME_FOCUS_LAST:
+      break;
+    default:
+      break;
+    }
+
+  return "<unknown>";
+}
+
 static gboolean
 check_state  (MetaFrameStyleSet *style_set,
               MetaFrameState     state,
@@ -6669,24 +6687,6 @@ meta_pango_font_desc_get_text_height (const PangoFontDescription *font_desc,
   pango_font_metrics_unref (metrics);
 
   return retval;
-}
-
-const char*
-meta_frame_focus_to_string (MetaFrameFocus focus)
-{
-  switch (focus)
-    {
-    case META_FRAME_FOCUS_NO:
-      return "no";
-    case META_FRAME_FOCUS_YES:
-      return "yes";
-    case META_FRAME_FOCUS_LAST:
-      break;
-    default:
-      break;
-    }
-
-  return "<unknown>";
 }
 
 MetaFrameType
