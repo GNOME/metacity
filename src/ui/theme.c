@@ -5871,57 +5871,6 @@ meta_theme_validate (MetaTheme *theme,
   return TRUE;
 }
 
-GdkPixbuf*
-meta_theme_load_image (MetaTheme  *theme,
-                       const char *filename,
-                       guint size_of_theme_icons,
-                       GError    **error)
-{
-  GdkPixbuf *pixbuf;
-
-  pixbuf = g_hash_table_lookup (theme->images_by_filename,
-                                filename);
-
-  if (pixbuf == NULL)
-    {
-
-      if (g_str_has_prefix (filename, "theme:") &&
-          META_THEME_ALLOWS (theme, META_THEME_IMAGES_FROM_ICON_THEMES))
-        {
-          pixbuf = gtk_icon_theme_load_icon (
-              gtk_icon_theme_get_default (),
-              filename+6,
-              size_of_theme_icons,
-              0,
-              error);
-          if (pixbuf == NULL) return NULL;
-         }
-      else
-        {
-          char *full_path;
-          full_path = g_build_filename (theme->dirname, filename, NULL);
-
-          pixbuf = gdk_pixbuf_new_from_file (full_path, error);
-          if (pixbuf == NULL)
-            {
-              g_free (full_path);
-              return NULL;
-            }
-
-          g_free (full_path);
-        }
-      g_hash_table_replace (theme->images_by_filename,
-                            g_strdup (filename),
-                            pixbuf);
-    }
-
-  g_assert (pixbuf);
-
-  g_object_ref (G_OBJECT (pixbuf));
-
-  return pixbuf;
-}
-
 void
 meta_theme_set_composited (MetaTheme *theme,
                            gboolean   composited)

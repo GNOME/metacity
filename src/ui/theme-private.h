@@ -822,11 +822,6 @@ MetaFrameStyle        *meta_theme_get_frame_style              (MetaTheme       
 gboolean               meta_theme_validate                     (MetaTheme                   *theme,
                                                                 GError                     **error);
 
-GdkPixbuf             *meta_theme_load_image                   (MetaTheme                   *theme,
-                                                                const char                  *filename,
-                                                                guint                        size_of_theme_icons,
-                                                                GError                     **error);
-
 PangoFontDescription  *meta_style_info_create_font_desc        (MetaTheme                   *theme,
                                                                 MetaStyleInfo               *style_info);
 

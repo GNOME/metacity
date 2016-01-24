@@ -1661,6 +1661,57 @@ meta_image_fill_type_from_string (const char *str)
     return -1;
 }
 
+static GdkPixbuf *
+meta_theme_load_image (MetaTheme   *theme,
+                       const char  *filename,
+                       guint        size_of_theme_icons,
+                       GError     **error)
+{
+  GdkPixbuf *pixbuf;
+
+  pixbuf = g_hash_table_lookup (theme->images_by_filename,
+                                filename);
+
+  if (pixbuf == NULL)
+    {
+
+      if (g_str_has_prefix (filename, "theme:") &&
+          META_THEME_ALLOWS (theme, META_THEME_IMAGES_FROM_ICON_THEMES))
+        {
+          pixbuf = gtk_icon_theme_load_icon (
+              gtk_icon_theme_get_default (),
+              filename+6,
+              size_of_theme_icons,
+              0,
+              error);
+          if (pixbuf == NULL) return NULL;
+         }
+      else
+        {
+          char *full_path;
+          full_path = g_build_filename (theme->dirname, filename, NULL);
+
+          pixbuf = gdk_pixbuf_new_from_file (full_path, error);
+          if (pixbuf == NULL)
+            {
+              g_free (full_path);
+              return NULL;
+            }
+
+          g_free (full_path);
+        }
+      g_hash_table_replace (theme->images_by_filename,
+                            g_strdup (filename),
+                            pixbuf);
+    }
+
+  g_assert (pixbuf);
+
+  g_object_ref (G_OBJECT (pixbuf));
+
+  return pixbuf;
+}
+
 static void
 parse_draw_op_element (GMarkupParseContext  *context,
                        const gchar          *element_name,
