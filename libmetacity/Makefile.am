@@ -3,6 +3,8 @@ NULL =
 noinst_LTLIBRARIES = libmetacity.la
 
 libmetacity_la_SOURCES = \
+	meta-hsla.c \
+	meta-hsla.h \
 	$(NULL)
 
 libmetacity_la_CPPFLAGS = \

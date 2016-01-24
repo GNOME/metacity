@@ -13,6 +13,7 @@ AM_CPPFLAGS = \
 	-DG_LOG_DOMAIN=\"metacity\" \
 	-DSN_API_NOT_YET_FROZEN=1 \
 	-I$(srcdir)/include \
+	-I$(top_srcdir) \
 	@METACITY_CFLAGS@ \
 	$(WARN_CFLAGS) \
 	$(AM_CFLAGS) \
@@ -126,7 +127,7 @@ libmetacity_private_la_SOURCES =		\
 	$(NULL)
 
 libmetacity_private_la_LDFLAGS = -no-undefined -version-info 4:0:0 $(WARN_LDFLAGS) $(AM_LDFLAGS)
-libmetacity_private_la_LIBADD  = @METACITY_LIBS@
+libmetacity_private_la_LIBADD  = @METACITY_LIBS@ $(top_builddir)/libmetacity/libmetacity.la
 
 libmetacityincludedir = $(includedir)/metacity/metacity-private
 
