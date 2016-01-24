@@ -2905,6 +2905,17 @@ meta_frame_resize_from_string (const char *str)
     return META_FRAME_RESIZE_LAST;
 }
 
+static MetaFrameFocus
+meta_frame_focus_from_string (const char *str)
+{
+  if (strcmp ("no", str) == 0)
+    return META_FRAME_FOCUS_NO;
+  else if (strcmp ("yes", str) == 0)
+    return META_FRAME_FOCUS_YES;
+  else
+    return META_FRAME_FOCUS_LAST;
+}
+
 static void
 parse_style_set_element (GMarkupParseContext  *context,
                          const gchar          *element_name,

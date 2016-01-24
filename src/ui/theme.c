@@ -6671,17 +6671,6 @@ meta_pango_font_desc_get_text_height (const PangoFontDescription *font_desc,
   return retval;
 }
 
-MetaFrameFocus
-meta_frame_focus_from_string (const char *str)
-{
-  if (strcmp ("no", str) == 0)
-    return META_FRAME_FOCUS_NO;
-  else if (strcmp ("yes", str) == 0)
-    return META_FRAME_FOCUS_YES;
-  else
-    return META_FRAME_FOCUS_LAST;
-}
-
 const char*
 meta_frame_focus_to_string (MetaFrameFocus focus)
 {
