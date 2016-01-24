@@ -2832,7 +2832,7 @@ pos_eval (MetaDrawSpec              *spec,
  * most contexts.
  */
 
-gboolean
+static gboolean
 meta_parse_position_expression (MetaDrawSpec              *spec,
                                 const MetaPositionExprEnv *env,
                                 int                       *x_return,
