@@ -780,8 +780,6 @@ GdkPixbuf             *meta_gradient_spec_render               (const MetaGradie
                                                                 GtkStyleContext             *widget,
                                                                 int                          width,
                                                                 int                          height);
-gboolean               meta_gradient_spec_validate             (MetaGradientSpec            *spec,
-                                                                GError                     **error);
 
 MetaAlphaGradientSpec *meta_alpha_gradient_spec_new            (MetaGradientType             type,
                                                                 int                          n_alphas);

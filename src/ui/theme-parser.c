@@ -3771,6 +3771,23 @@ meta_theme_validate (MetaTheme *theme,
   return TRUE;
 }
 
+static gboolean
+meta_gradient_spec_validate (MetaGradientSpec *spec,
+                             GError          **error)
+{
+  g_return_val_if_fail (spec != NULL, FALSE);
+
+  if (g_slist_length (spec->color_specs) < 2)
+    {
+      g_set_error (error, META_THEME_ERROR,
+                   META_THEME_ERROR_FAILED,
+                   _("Gradients should have at least two colors"));
+      return FALSE;
+    }
+
+  return TRUE;
+}
+
 static void
 end_element_handler (GMarkupParseContext *context,
                      const gchar         *element_name,
