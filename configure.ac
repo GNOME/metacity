@@ -57,6 +57,20 @@ dnl **************************************************************************
 LT_INIT
 LT_LIB_M
 
+dnl **************************************************************************
+dnl Check for required packages
+dnl **************************************************************************
+
+GLIB_REQUIRED_VERSION=2.44.0
+GTK_REQUIRED_VERSION=3.19.7
+
+PKG_CHECK_MODULES([LIBMETACITY], [
+  glib-2.0 >= $GLIB_REQUIRED_VERSION
+  gtk+-3.0 >= $GTK_REQUIRED_VERSION
+])
+
+dnl **************************************************************************
+
 # Honor aclocal flags
 AC_SUBST(ACLOCAL_AMFLAGS, "\${ACLOCAL_FLAGS}")
 
@@ -411,6 +425,8 @@ AC_CONFIG_FILES([
   doc/Makefile
   doc/creating_themes/Makefile
   doc/man/Makefile
+
+  libmetacity/Makefile
 
   src/Makefile
   src/libmetacity-private.pc

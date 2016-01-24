@@ -1,6 +1,7 @@
 NULL =
 
 SUBDIRS = \
+	libmetacity \
 	doc \
 	src \
 	po \
