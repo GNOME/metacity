@@ -6761,23 +6761,6 @@ meta_gtk_state_from_string (const char *str)
     return -1; /* hack */
 }
 
-GtkShadowType
-meta_gtk_shadow_from_string (const char *str)
-{
-  if (strcmp ("none", str) == 0)
-    return GTK_SHADOW_NONE;
-  else if (strcmp ("in", str) == 0)
-    return GTK_SHADOW_IN;
-  else if (strcmp ("out", str) == 0)
-    return GTK_SHADOW_OUT;
-  else if (strcmp ("etched_in", str) == 0)
-    return GTK_SHADOW_ETCHED_IN;
-  else if (strcmp ("etched_out", str) == 0)
-    return GTK_SHADOW_ETCHED_OUT;
-  else
-    return -1;
-}
-
 GtkArrowType
 meta_gtk_arrow_from_string (const char *str)
 {

@@ -1609,6 +1609,23 @@ meta_gradient_type_from_string (const char *str)
     return META_GRADIENT_LAST;
 }
 
+static GtkShadowType
+meta_gtk_shadow_from_string (const char *str)
+{
+  if (strcmp ("none", str) == 0)
+    return GTK_SHADOW_NONE;
+  else if (strcmp ("in", str) == 0)
+    return GTK_SHADOW_IN;
+  else if (strcmp ("out", str) == 0)
+    return GTK_SHADOW_OUT;
+  else if (strcmp ("etched_in", str) == 0)
+    return GTK_SHADOW_ETCHED_IN;
+  else if (strcmp ("etched_out", str) == 0)
+    return GTK_SHADOW_ETCHED_OUT;
+  else
+    return -1;
+}
+
 static void
 parse_draw_op_element (GMarkupParseContext  *context,
                        const gchar          *element_name,
