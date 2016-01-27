@@ -27,7 +27,7 @@
 
 #include <string.h>
 
-#include "meta-gradient.h"
+#include "meta-gradient-private.h"
 
 static void
 free_buffer (guchar   *pixels,

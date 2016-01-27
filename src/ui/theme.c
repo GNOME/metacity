@@ -1156,101 +1156,6 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
     fgeom->bottom_right_corner_rounded_radius = layout->bottom_right_corner_rounded_radius;
 }
 
-MetaGradientSpec*
-meta_gradient_spec_new (MetaGradientType type)
-{
-  MetaGradientSpec *spec;
-
-  spec = g_new (MetaGradientSpec, 1);
-
-  spec->type = type;
-  spec->color_specs = NULL;
-
-  return spec;
-}
-
-static void
-free_color_spec (gpointer spec, gpointer user_data)
-{
-  meta_color_spec_free (spec);
-}
-
-void
-meta_gradient_spec_free (MetaGradientSpec *spec)
-{
-  g_return_if_fail (spec != NULL);
-
-  g_slist_foreach (spec->color_specs, free_color_spec, NULL);
-  g_slist_free (spec->color_specs);
-
-  DEBUG_FILL_STRUCT (spec);
-  g_free (spec);
-}
-
-GdkPixbuf*
-meta_gradient_spec_render (const MetaGradientSpec *spec,
-                           GtkStyleContext        *style,
-                           int                     width,
-                           int                     height)
-{
-  int n_colors;
-  GdkRGBA *colors;
-  GSList *tmp;
-  int i;
-  GdkPixbuf *pixbuf;
-
-  n_colors = g_slist_length (spec->color_specs);
-
-  if (n_colors == 0)
-    return NULL;
-
-  colors = g_new (GdkRGBA, n_colors);
-
-  i = 0;
-  tmp = spec->color_specs;
-  while (tmp != NULL)
-    {
-      meta_color_spec_render (tmp->data, style, &colors[i]);
-
-      tmp = tmp->next;
-      ++i;
-    }
-
-  pixbuf = meta_gradient_create_multi (width, height,
-                                       colors, n_colors,
-                                       spec->type);
-
-  g_free (colors);
-
-  return pixbuf;
-}
-
-MetaAlphaGradientSpec*
-meta_alpha_gradient_spec_new (MetaGradientType       type,
-                              int                    n_alphas)
-{
-  MetaAlphaGradientSpec *spec;
-
-  g_return_val_if_fail (n_alphas > 0, NULL);
-
-  spec = g_new0 (MetaAlphaGradientSpec, 1);
-
-  spec->type = type;
-  spec->alphas = g_new0 (unsigned char, n_alphas);
-  spec->n_alphas = n_alphas;
-
-  return spec;
-}
-
-void
-meta_alpha_gradient_spec_free (MetaAlphaGradientSpec *spec)
-{
-  g_return_if_fail (spec != NULL);
-
-  g_free (spec->alphas);
-  g_free (spec);
-}
-
 /**
  * Represents an operation as a string.
  *
@@ -2665,42 +2570,6 @@ meta_draw_op_free (MetaDrawOp *op)
 }
 
 static GdkPixbuf*
-apply_alpha (GdkPixbuf             *pixbuf,
-             MetaAlphaGradientSpec *spec,
-             gboolean               force_copy)
-{
-  GdkPixbuf *new_pixbuf;
-  gboolean needs_alpha;
-
-  g_return_val_if_fail (GDK_IS_PIXBUF (pixbuf), NULL);
-
-  needs_alpha = spec && (spec->n_alphas > 1 ||
-                         spec->alphas[0] != 0xff);
-
-  if (!needs_alpha)
-    return pixbuf;
-
-  if (!gdk_pixbuf_get_has_alpha (pixbuf))
-    {
-      new_pixbuf = gdk_pixbuf_add_alpha (pixbuf, FALSE, 0, 0, 0);
-      g_object_unref (G_OBJECT (pixbuf));
-      pixbuf = new_pixbuf;
-    }
-  else if (force_copy)
-    {
-      new_pixbuf = gdk_pixbuf_copy (pixbuf);
-      g_object_unref (G_OBJECT (pixbuf));
-      pixbuf = new_pixbuf;
-    }
-
-  g_assert (gdk_pixbuf_get_has_alpha (pixbuf));
-
-  meta_gradient_add_alpha (pixbuf, spec->alphas, spec->n_alphas, spec->type);
-
-  return pixbuf;
-}
-
-static GdkPixbuf*
 pixbuf_tile (GdkPixbuf *tile,
              int        width,
              int        height)
@@ -2914,7 +2783,7 @@ scale_and_alpha_pixbuf (GdkPixbuf             *src,
     }
 
   if (pixbuf)
-    pixbuf = apply_alpha (pixbuf, alpha_spec, pixbuf == src);
+    pixbuf = meta_alpha_gradient_spec_apply_alpha (alpha_spec, pixbuf, pixbuf == src);
 
   return pixbuf;
 }
@@ -2965,47 +2834,12 @@ draw_op_as_pixbuf (const MetaDrawOp    *op,
     case META_DRAW_TINT:
       {
         GdkRGBA color;
-        guint32 rgba;
-        gboolean has_alpha;
 
         meta_color_spec_render (op->data.rectangle.color_spec,
-                                context,
-                                &color);
+                                context, &color);
 
-        has_alpha =
-          op->data.tint.alpha_spec &&
-          (op->data.tint.alpha_spec->n_alphas > 1 ||
-           op->data.tint.alpha_spec->alphas[0] != 0xff);
-
-        pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB,
-                                 has_alpha,
-                                 8, width, height);
-
-        if (!has_alpha)
-          {
-            rgba = GDK_COLOR_RGBA (color);
-
-            gdk_pixbuf_fill (pixbuf, rgba);
-          }
-        else if (op->data.tint.alpha_spec->n_alphas == 1)
-          {
-            rgba = GDK_COLOR_RGBA (color);
-            rgba &= ~0xff;
-            rgba |= op->data.tint.alpha_spec->alphas[0];
-
-            gdk_pixbuf_fill (pixbuf, rgba);
-          }
-        else
-          {
-            rgba = GDK_COLOR_RGBA (color);
-
-            gdk_pixbuf_fill (pixbuf, rgba);
-
-            meta_gradient_add_alpha (pixbuf,
-                                     op->data.tint.alpha_spec->alphas,
-                                     op->data.tint.alpha_spec->n_alphas,
-                                     op->data.tint.alpha_spec->type);
-          }
+        pixbuf = meta_alpha_gradient_spec_render (op->data.tint.alpha_spec,
+                                                  width, height, color);
       }
       break;
 
@@ -3014,12 +2848,10 @@ draw_op_as_pixbuf (const MetaDrawOp    *op,
         pixbuf = meta_gradient_spec_render (op->data.gradient.gradient_spec,
                                             context, width, height);
 
-        pixbuf = apply_alpha (pixbuf,
-                              op->data.gradient.alpha_spec,
-                              FALSE);
+        pixbuf = meta_alpha_gradient_spec_apply_alpha (op->data.gradient.alpha_spec,
+                                                       pixbuf, FALSE);
       }
       break;
-
 
     case META_DRAW_IMAGE:
       {
@@ -3322,9 +3154,7 @@ meta_draw_op_draw_with_env (const MetaDrawOp    *op,
         int rx, ry, rwidth, rheight;
         gboolean needs_alpha;
 
-        needs_alpha = op->data.tint.alpha_spec &&
-          (op->data.tint.alpha_spec->n_alphas > 1 ||
-           op->data.tint.alpha_spec->alphas[0] != 0xff);
+        needs_alpha = meta_alpha_gradient_spec_needs_alpha (op->data.tint.alpha_spec);
 
         rx = parse_x_position_unchecked (op->data.tint.x, env);
         ry = parse_y_position_unchecked (op->data.tint.y, env);

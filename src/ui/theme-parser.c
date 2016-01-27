@@ -793,7 +793,7 @@ parse_alpha (const char             *str,
           return FALSE;
         }
 
-      spec->alphas[i] = (unsigned char) (v * 255);
+      meta_alpha_gradient_spec_add_alpha (spec, i, v);
 
       ++i;
     }
@@ -1160,7 +1160,6 @@ parse_toplevel_element (GMarkupParseContext  *context,
 
           if (alpha != NULL)
             {
-
                gboolean success;
                MetaAlphaGradientSpec *alpha_vector;
 
@@ -1174,7 +1173,7 @@ parse_toplevel_element (GMarkupParseContext  *context,
                  return;
 
                /* alpha_vector->alphas must contain at least one element */
-               info->style->window_background_alpha = alpha_vector->alphas[0];
+               info->style->window_background_alpha = meta_alpha_gradient_spec_get_alpha (alpha_vector, 0);
 
                meta_alpha_gradient_spec_free (alpha_vector);
             }
@@ -2722,9 +2721,9 @@ parse_gradient_element (GMarkupParseContext  *context,
       g_assert (info->op);
       g_assert (info->op->type == META_DRAW_GRADIENT);
       g_assert (info->op->data.gradient.gradient_spec != NULL);
-      info->op->data.gradient.gradient_spec->color_specs =
-        g_slist_append (info->op->data.gradient.gradient_spec->color_specs,
-                        color_spec);
+
+      meta_gradient_spec_add_color_spec (info->op->data.gradient.gradient_spec,
+                                         color_spec);
 
       push_state (info, STATE_COLOR);
     }
@@ -3764,23 +3763,6 @@ meta_theme_validate (MetaTheme *theme,
 
         return FALSE;
       }
-
-  return TRUE;
-}
-
-static gboolean
-meta_gradient_spec_validate (MetaGradientSpec *spec,
-                             GError          **error)
-{
-  g_return_val_if_fail (spec != NULL, FALSE);
-
-  if (g_slist_length (spec->color_specs) < 2)
-    {
-      g_set_error (error, META_THEME_ERROR,
-                   META_THEME_ERROR_FAILED,
-                   _("Gradients should have at least two colors"));
-      return FALSE;
-    }
 
   return TRUE;
 }

@@ -10,6 +10,9 @@ libmetacity_la_SOURCES = \
 	meta-color-spec.h \
 	meta-gradient.c \
 	meta-gradient.h \
+	meta-gradient-private.h \
+	meta-gradient-spec.c \
+	meta-gradient-spec.h \
 	meta-hsla.c \
 	meta-hsla-private.h \
 	meta-theme.c \
@@ -17,6 +20,7 @@ libmetacity_la_SOURCES = \
 	$(NULL)
 
 libmetacity_la_CPPFLAGS = \
+	-I$(top_srcdir) \
 	$(AM_CPPFLAGS) \
 	$(NULL)
 

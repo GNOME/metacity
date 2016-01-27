@@ -19,14 +19,13 @@
 #define META_THEME_PRIVATE_H
 
 #include <libmetacity/meta-color-spec.h>
-#include <libmetacity/meta-gradient.h>
+#include <libmetacity/meta-gradient-spec.h>
 
 #include "boxes.h"
 #include "theme.h"
 
 G_BEGIN_DECLS
 
-typedef struct _MetaAlphaGradientSpec MetaAlphaGradientSpec;
 typedef struct _MetaDrawInfo MetaDrawInfo;
 typedef struct _MetaDrawOp MetaDrawOp;
 typedef struct _MetaDrawOpList MetaDrawOpList;
@@ -34,7 +33,6 @@ typedef struct _MetaDrawSpec MetaDrawSpec;
 typedef struct _MetaFrameLayout MetaFrameLayout;
 typedef struct _MetaFrameStyle MetaFrameStyle;
 typedef struct _MetaFrameStyleSet MetaFrameStyleSet;
-typedef struct _MetaGradientSpec MetaGradientSpec;
 typedef struct _MetaPositionExprEnv MetaPositionExprEnv;
 
 /**
@@ -550,19 +548,6 @@ struct _MetaDrawOpList
   int n_allocated;
 };
 
-struct _MetaGradientSpec
-{
-  MetaGradientType type;
-  GSList *color_specs;
-};
-
-struct _MetaAlphaGradientSpec
-{
-  MetaGradientType type;
-  unsigned char *alphas;
-  int n_alphas;
-};
-
 /**
  * How to draw a frame in a particular state (say, a focussed, non-maximised,
  * resizable frame). This corresponds closely to the <frame_style> tag
@@ -710,17 +695,6 @@ gboolean               meta_draw_op_list_validate              (MetaDrawOpList  
                                                                 GError                     **error);
 gboolean               meta_draw_op_list_contains              (MetaDrawOpList              *op_list,
                                                                 MetaDrawOpList              *child);
-
-MetaGradientSpec      *meta_gradient_spec_new                  (MetaGradientType             type);
-void                   meta_gradient_spec_free                 (MetaGradientSpec            *desc);
-GdkPixbuf             *meta_gradient_spec_render               (const MetaGradientSpec      *desc,
-                                                                GtkStyleContext             *widget,
-                                                                int                          width,
-                                                                int                          height);
-
-MetaAlphaGradientSpec *meta_alpha_gradient_spec_new            (MetaGradientType             type,
-                                                                int                          n_alphas);
-void                   meta_alpha_gradient_spec_free           (MetaAlphaGradientSpec       *spec);
 
 MetaFrameStyle        *meta_frame_style_new                    (MetaFrameStyle              *parent);
 void                   meta_frame_style_ref                    (MetaFrameStyle              *style);
