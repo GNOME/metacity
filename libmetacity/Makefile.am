@@ -5,6 +5,8 @@ noinst_LTLIBRARIES = libmetacity.la
 libmetacity_la_SOURCES = \
 	meta-hsla.c \
 	meta-hsla.h \
+	meta-theme.c \
+	meta-theme.h \
 	$(NULL)
 
 libmetacity_la_CPPFLAGS = \

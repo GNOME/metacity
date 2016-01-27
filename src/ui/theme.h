@@ -24,6 +24,7 @@
 
 #include "common.h"
 #include <gtk/gtk.h>
+#include <libmetacity/meta-theme.h>
 
 /**
  * MetaStyleInfo: (skip)
@@ -33,20 +34,6 @@ typedef struct _MetaStyleInfo MetaStyleInfo;
 typedef struct _MetaButtonSpace MetaButtonSpace;
 typedef struct _MetaFrameGeometry MetaFrameGeometry;
 typedef struct _MetaTheme MetaTheme;
-
-#define META_THEME_ERROR (g_quark_from_static_string ("meta-theme-error"))
-
-typedef enum
-{
-  META_THEME_ERROR_TOO_OLD,
-  META_THEME_ERROR_FRAME_GEOMETRY,
-  META_THEME_ERROR_BAD_CHARACTER,
-  META_THEME_ERROR_BAD_PARENS,
-  META_THEME_ERROR_UNKNOWN_VARIABLE,
-  META_THEME_ERROR_DIVIDE_BY_ZERO,
-  META_THEME_ERROR_MOD_ON_FLOAT,
-  META_THEME_ERROR_FAILED
-} MetaThemeError;
 
 /**
  * The computed size of a button (really just a way of tying its
