@@ -3,6 +3,8 @@ NULL =
 noinst_LTLIBRARIES = libmetacity.la
 
 libmetacity_la_SOURCES = \
+	meta-color.c \
+	meta-color.h \
 	meta-hsla.c \
 	meta-hsla.h \
 	meta-theme.c \

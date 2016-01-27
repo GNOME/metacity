@@ -55,7 +55,7 @@
 #include "util.h"
 #include "gradient.h"
 #include <gtk/gtk.h>
-#include <libmetacity/meta-hsla.h>
+#include <libmetacity/meta-color.h>
 #include <string.h>
 #include <stdlib.h>
 #define __USE_XOPEN
@@ -1683,67 +1683,6 @@ meta_color_spec_new_gtk (MetaGtkColorComponent component,
 }
 
 static void
-get_background_color (GtkStyleContext *context,
-                      GtkStateFlags    state,
-                      GdkRGBA         *color)
-{
-  GdkRGBA *c;
-
-  g_return_if_fail (color != NULL);
-  g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
-
-  gtk_style_context_get (context,
-                         state,
-                         "background-color", &c,
-                         NULL);
-
-  *color = *c;
-  gdk_rgba_free (c);
-}
-
-/**
- * Takes a colour "a", scales the lightness and saturation by a certain amount,
- * and sets "b" to the resulting colour.
- * gtkstyle.c cut-and-pastage.
- *
- * \param a  the starting colour
- * \param b  [out] the resulting colour
- * \param k  amount to scale lightness and saturation by
- */
-static void
-gtk_style_shade (GdkRGBA *a,
-                 GdkRGBA *b,
-                 gdouble  k)
-{
-  MetaHSLA hsla;
-
-  meta_hsla_from_rgba (&hsla, a);
-  meta_hsla_shade (&hsla, k, &hsla);
-  meta_hsla_to_rgba (&hsla, b);
-}
-
-/* Based on set_color() in gtkstyle.c */
-#define LIGHTNESS_MULT 1.3
-#define DARKNESS_MULT  0.7
-void
-meta_gtk_style_get_light_color (GtkStyleContext *style,
-                                GtkStateFlags    state,
-                                GdkRGBA         *color)
-{
-  get_background_color (style, state, color);
-  gtk_style_shade (color, color, LIGHTNESS_MULT);
-}
-
-void
-meta_gtk_style_get_dark_color (GtkStyleContext *style,
-                               GtkStateFlags    state,
-                               GdkRGBA         *color)
-{
-  get_background_color (style, state, color);
-  gtk_style_shade (color, color, DARKNESS_MULT);
-}
-
-static void
 meta_set_color_from_style (GdkRGBA               *color,
                            GtkStyleContext       *context,
                            GtkStateFlags          state,
@@ -1757,7 +1696,7 @@ meta_set_color_from_style (GdkRGBA               *color,
     {
     case META_GTK_COLOR_BG:
     case META_GTK_COLOR_BASE:
-      get_background_color (context, state, color);
+      meta_color_get_background_color (context, state, color);
       break;
     case META_GTK_COLOR_FG:
     case META_GTK_COLOR_TEXT:
@@ -1772,18 +1711,18 @@ meta_set_color_from_style (GdkRGBA               *color,
       color->blue = (color->blue + other.blue) / 2;
       break;
     case META_GTK_COLOR_MID:
-      meta_gtk_style_get_light_color (context, state, color);
-      meta_gtk_style_get_dark_color (context, state, &other);
+      meta_color_get_light_color (context, state, color);
+      meta_color_get_dark_color (context, state, &other);
 
       color->red = (color->red + other.red) / 2;
       color->green = (color->green + other.green) / 2;
       color->blue = (color->blue + other.blue) / 2;
       break;
     case META_GTK_COLOR_LIGHT:
-      meta_gtk_style_get_light_color (context, state, color);
+      meta_color_get_light_color (context, state, color);
       break;
     case META_GTK_COLOR_DARK:
-      meta_gtk_style_get_dark_color (context, state, color);
+      meta_color_get_dark_color (context, state, color);
       break;
     case META_GTK_COLOR_LAST:
     default:
@@ -1849,8 +1788,8 @@ meta_color_spec_render (MetaColorSpec *spec,
         meta_color_spec_render (spec->data.shade.base, context,
                                 &spec->data.shade.color);
 
-        gtk_style_shade (&spec->data.shade.color,
-                         &spec->data.shade.color, spec->data.shade.factor);
+        meta_color_shade (&spec->data.shade.color, spec->data.shade.factor,
+                          &spec->data.shade.color);
 
         *color = spec->data.shade.color;
       }

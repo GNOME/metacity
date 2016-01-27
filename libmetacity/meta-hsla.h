@@ -31,12 +31,15 @@ typedef struct
   gdouble alpha;
 } MetaHSLA;
 
+G_GNUC_INTERNAL
 void meta_hsla_from_rgba (MetaHSLA       *hsla,
                           const GdkRGBA  *rgba);
 
+G_GNUC_INTERNAL
 void meta_hsla_to_rgba   (const MetaHSLA *hsla,
                           GdkRGBA        *rgba);
 
+G_GNUC_INTERNAL
 void meta_hsla_shade     (const MetaHSLA *source,
                           const gdouble   factor,
                           MetaHSLA       *destination);

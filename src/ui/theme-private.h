@@ -863,13 +863,6 @@ PangoFontDescription  *meta_gtk_widget_get_font_desc           (GtkWidget       
 int                    meta_pango_font_desc_get_text_height    (const PangoFontDescription  *font_desc,
                                                                 PangoContext                *context);
 
-void                   meta_gtk_style_get_light_color          (GtkStyleContext             *style,
-                                                                GtkStateFlags                state,
-                                                                GdkRGBA                     *color);
-void                   meta_gtk_style_get_dark_color           (GtkStyleContext             *style,
-                                                                GtkStateFlags                state,
-                                                                GdkRGBA                     *color);
-
 guint                  meta_theme_earliest_version_with_button (MetaButtonType               type);
 
 #define META_THEME_ALLOWS(theme, feature) (theme->format_version >= feature)

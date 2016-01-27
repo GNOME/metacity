@@ -23,6 +23,10 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "config.h"
+
+#include <libmetacity/meta-color.h>
+
 #include "draw-workspace.h"
 #include "theme-private.h"
 
@@ -64,25 +68,6 @@ get_window_rect (const WnckWindowDisplayInfo *win,
 }
 
 static void
-get_background_color (GtkStyleContext *context,
-                      GtkStateFlags    state,
-                      GdkRGBA         *color)
-{
-  GdkRGBA *c;
-
-  g_return_if_fail (color != NULL);
-  g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
-
-  gtk_style_context_get (context,
-                         state,
-                         "background-color", &c,
-                         NULL);
-
-  *color = *c;
-  gdk_rgba_free (c);
-}
-
-static void
 draw_window (GtkWidget                   *widget,
              cairo_t                     *cr,
              const WnckWindowDisplayInfo *win,
@@ -104,9 +89,9 @@ draw_window (GtkWidget                   *widget,
 
   style = gtk_widget_get_style_context (widget);
   if (is_active)
-    meta_gtk_style_get_light_color (style, state, &color);
+    meta_color_get_light_color (style, state, &color);
   else
-    get_background_color (style, state, &color);
+    meta_color_get_background_color (style, state, &color);
   gdk_cairo_set_source_rgba (cr, &color);
 
   cairo_rectangle (cr,
@@ -213,7 +198,7 @@ wnck_draw_workspace (GtkWidget                   *widget,
     {
       GdkRGBA color;
 
-      meta_gtk_style_get_dark_color (style,state, &color);
+      meta_color_get_dark_color (style,state, &color);
       gdk_cairo_set_source_rgba (cr, &color);
 
       cairo_rectangle (cr, x, y, width, height);
