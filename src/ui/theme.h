@@ -19,8 +19,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef META_THEME_H
-#define META_THEME_H
+#ifndef THEME_H
+#define THEME_H
 
 #include "common.h"
 #include <gtk/gtk.h>
