@@ -11,7 +11,7 @@ libmetacity_la_SOURCES = \
 	meta-gradient.c \
 	meta-gradient.h \
 	meta-hsla.c \
-	meta-hsla.h \
+	meta-hsla-private.h \
 	meta-theme.c \
 	meta-theme.h \
 	$(NULL)

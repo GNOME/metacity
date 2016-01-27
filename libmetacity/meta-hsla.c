@@ -18,7 +18,7 @@
 
 #include "config.h"
 
-#include "meta-hsla.h"
+#include "meta-hsla-private.h"
 
 /**
  * meta_hsla_from_rgba:

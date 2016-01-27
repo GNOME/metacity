@@ -16,8 +16,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef META_HSLA_H
-#define META_HSLA_H
+#ifndef META_HSLA_PRIVATE_H
+#define META_HSLA_PRIVATE_H
 
 #include <gdk/gdk.h>
 

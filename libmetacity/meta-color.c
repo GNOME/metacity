@@ -18,7 +18,7 @@
 
 #include "config.h"
 
-#include "meta-hsla.h"
+#include "meta-hsla-private.h"
 #include "meta-color-private.h"
 #include "meta-color.h"
 
