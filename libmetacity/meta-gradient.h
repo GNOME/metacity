@@ -38,31 +38,27 @@ typedef enum
   META_GRADIENT_LAST
 } MetaGradientType;
 
-GdkPixbuf* meta_gradient_create_simple     (int               width,
+GdkPixbuf *meta_gradient_create_simple     (int               width,
                                             int               height,
                                             const GdkRGBA    *from,
                                             const GdkRGBA    *to,
                                             MetaGradientType  style);
-GdkPixbuf* meta_gradient_create_multi      (int               width,
+
+GdkPixbuf *meta_gradient_create_multi      (int               width,
                                             int               height,
                                             const GdkRGBA    *colors,
                                             int               n_colors,
                                             MetaGradientType  style);
-GdkPixbuf* meta_gradient_create_interwoven (int               width,
+
+GdkPixbuf *meta_gradient_create_interwoven (int               width,
                                             int               height,
                                             const GdkRGBA     colors1[2],
                                             int               thickness1,
                                             const GdkRGBA     colors2[2],
                                             int               thickness2);
 
-
-/* Generate an alpha gradient and multiply it with the existing alpha
- * channel of the given pixbuf
- */
-void meta_gradient_add_alpha (GdkPixbuf       *pixbuf,
-                              const guchar    *alphas,
-                              int              n_alphas,
-                              MetaGradientType type);
-
-
+void       meta_gradient_add_alpha         (GdkPixbuf        *pixbuf,
+                                            const guchar     *alphas,
+                                            int               n_alphas,
+                                            MetaGradientType  type);
 #endif

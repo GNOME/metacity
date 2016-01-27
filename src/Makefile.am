@@ -113,8 +113,6 @@ libmetacity_private_la_CFLAGS =
 libmetacity_private_la_SOURCES =		\
 	core/boxes.c				\
 	include/boxes.h				\
-	ui/gradient.c				\
-	ui/gradient.h				\
 	core/util.c				\
 	include/util.h				\
 	include/common.h			\
@@ -151,7 +149,7 @@ metacity_LDADD=@METACITY_LIBS@ libmetacity-private.la
 metacity_theme_viewer_LDADD= @METACITY_LIBS@ libmetacity-private.la
 
 testboxes_SOURCES=include/util.h core/util.c include/boxes.h core/boxes.c core/testboxes.c
-testgradient_SOURCES=ui/gradient.h ui/gradient.c ui/testgradient.c
+testgradient_SOURCES=../libmetacity/meta-gradient.h ../libmetacity/meta-gradient.c ui/testgradient.c
 testasyncgetprop_SOURCES=core/async-getprop.h core/async-getprop.c core/testasyncgetprop.c
 
 noinst_PROGRAMS=testboxes testgradient testasyncgetprop

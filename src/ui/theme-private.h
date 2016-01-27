@@ -19,9 +19,9 @@
 #define META_THEME_PRIVATE_H
 
 #include <libmetacity/meta-color-spec.h>
+#include <libmetacity/meta-gradient.h>
 
 #include "boxes.h"
-#include "gradient.h"
 #include "theme.h"
 
 G_BEGIN_DECLS

@@ -8,6 +8,8 @@ libmetacity_la_SOURCES = \
 	meta-color-private.h \
 	meta-color-spec.c \
 	meta-color-spec.h \
+	meta-gradient.c \
+	meta-gradient.h \
 	meta-hsla.c \
 	meta-hsla.h \
 	meta-theme.c \

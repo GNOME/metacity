@@ -27,17 +27,18 @@
 
 #include <string.h>
 
-#include "gradient.h"
+#include "meta-gradient.h"
 
-/* Used as the destroy notification function for gdk_pixbuf_new() */
 static void
-free_buffer (guchar *pixels, gpointer data)
+free_buffer (guchar   *pixels,
+             gpointer  data)
 {
   g_free (pixels);
 }
 
 static GdkPixbuf*
-blank_pixbuf (int width, int height)
+blank_pixbuf (int width,
+              int height)
 {
   guchar *buf;
   int rowstride;
@@ -72,7 +73,8 @@ blank_pixbuf (int width, int height)
  *----------------------------------------------------------------------
  */
 static GdkPixbuf*
-meta_gradient_create_horizontal (int width, int height,
+meta_gradient_create_horizontal (int            width,
+                                 int            height,
                                  const GdkRGBA *from,
                                  const GdkRGBA *to)
 {
@@ -145,8 +147,9 @@ meta_gradient_create_horizontal (int width, int height,
  *      None
  *----------------------------------------------------------------------
  */
-static GdkPixbuf*
-meta_gradient_create_vertical (int width, int height,
+static GdkPixbuf *
+meta_gradient_create_vertical (int            width,
+                               int            height,
                                const GdkRGBA *from,
                                const GdkRGBA *to)
 {
@@ -206,7 +209,6 @@ meta_gradient_create_vertical (int width, int height,
   return pixbuf;
 }
 
-
 /*
  *----------------------------------------------------------------------
  * meta_gradient_create_diagonal--
@@ -220,10 +222,9 @@ meta_gradient_create_vertical (int width, int height,
  *      None
  *----------------------------------------------------------------------
  */
-
-
-static GdkPixbuf*
-meta_gradient_create_diagonal (int width, int height,
+static GdkPixbuf *
+meta_gradient_create_diagonal (int            width,
+                               int            height,
                                const GdkRGBA *from,
                                const GdkRGBA *to)
 {
@@ -269,11 +270,11 @@ meta_gradient_create_diagonal (int width, int height,
   return pixbuf;
 }
 
-
-static GdkPixbuf*
-meta_gradient_create_multi_horizontal (int width, int height,
+static GdkPixbuf *
+meta_gradient_create_multi_horizontal (int            width,
+                                       int            height,
                                        const GdkRGBA *colors,
-                                       int count)
+                                       int            count)
 {
   int i, j, k;
   long r, g, b, a, dr, dg, db, da;
@@ -348,10 +349,11 @@ meta_gradient_create_multi_horizontal (int width, int height,
   return pixbuf;
 }
 
-static GdkPixbuf*
-meta_gradient_create_multi_vertical (int width, int height,
+static GdkPixbuf *
+meta_gradient_create_multi_vertical (int            width,
+                                     int            height,
                                      const GdkRGBA *colors,
-                                     int count)
+                                     int            count)
 {
   int i, j, k;
   long r, g, b, a, dr, dg, db, da;
@@ -443,11 +445,11 @@ meta_gradient_create_multi_vertical (int width, int height,
   return pixbuf;
 }
 
-
-static GdkPixbuf*
-meta_gradient_create_multi_diagonal (int width, int height,
+static GdkPixbuf *
+meta_gradient_create_multi_diagonal (int            width,
+                                     int            height,
                                      const GdkRGBA *colors,
-                                     int count)
+                                     int            count)
 {
   GdkPixbuf *pixbuf, *tmp;
   float a, offset;
@@ -661,31 +663,29 @@ meta_gradient_add_alpha_horizontal (GdkPixbuf           *pixbuf,
  *
  * Returns: (transfer full): A new linear gradient
  */
-GdkPixbuf*
-meta_gradient_create_simple (int              width,
-                             int              height,
-                             const GdkRGBA   *from,
-                             const GdkRGBA   *to,
-                             MetaGradientType style)
+GdkPixbuf *
+meta_gradient_create_simple (int               width,
+                             int               height,
+                             const GdkRGBA    *from,
+                             const GdkRGBA    *to,
+                             MetaGradientType  style)
 {
   switch (style)
     {
-    case META_GRADIENT_HORIZONTAL:
-      return meta_gradient_create_horizontal (width, height,
-                                              from, to);
-    case META_GRADIENT_VERTICAL:
-      return meta_gradient_create_vertical (width, height,
-                                            from, to);
+      case META_GRADIENT_HORIZONTAL:
+        return meta_gradient_create_horizontal (width, height, from, to);
+      case META_GRADIENT_VERTICAL:
+        return meta_gradient_create_vertical (width, height, from, to);
 
-    case META_GRADIENT_DIAGONAL:
-      return meta_gradient_create_diagonal (width, height,
-                                            from, to);
-    case META_GRADIENT_LAST:
-      break;
+      case META_GRADIENT_DIAGONAL:
+        return meta_gradient_create_diagonal (width, height, from, to);
+      case META_GRADIENT_LAST:
+        break;
 
-    default:
-      break;
+      default:
+        break;
     }
+
   g_assert_not_reached ();
   return NULL;
 }
@@ -700,30 +700,30 @@ meta_gradient_create_simple (int              width,
  *
  * Returns: (transfer full): A new multi-step linear gradient
  */
-GdkPixbuf*
-meta_gradient_create_multi (int              width,
-                            int              height,
-                            const GdkRGBA   *colors,
-                            int              n_colors,
-                            MetaGradientType style)
+GdkPixbuf *
+meta_gradient_create_multi (int               width,
+                            int               height,
+                            const GdkRGBA    *colors,
+                            int               n_colors,
+                            MetaGradientType  style)
 {
 
   if (n_colors > 2)
     {
       switch (style)
         {
-        case META_GRADIENT_HORIZONTAL:
-          return meta_gradient_create_multi_horizontal (width, height, colors, n_colors);
-        case META_GRADIENT_VERTICAL:
-          return meta_gradient_create_multi_vertical (width, height, colors, n_colors);
-        case META_GRADIENT_DIAGONAL:
-          return meta_gradient_create_multi_diagonal (width, height, colors, n_colors);
-        case META_GRADIENT_LAST:
-          g_assert_not_reached ();
-          break;
-        default:
-          g_assert_not_reached ();
-          break;
+          case META_GRADIENT_HORIZONTAL:
+            return meta_gradient_create_multi_horizontal (width, height, colors, n_colors);
+          case META_GRADIENT_VERTICAL:
+            return meta_gradient_create_multi_vertical (width, height, colors, n_colors);
+          case META_GRADIENT_DIAGONAL:
+            return meta_gradient_create_multi_diagonal (width, height, colors, n_colors);
+          case META_GRADIENT_LAST:
+            g_assert_not_reached ();
+            break;
+          default:
+            g_assert_not_reached ();
+            break;
         }
     }
   else if (n_colors > 1)
@@ -755,12 +755,12 @@ meta_gradient_create_multi (int              width,
  * WindowMaker had it.
  */
 GdkPixbuf*
-meta_gradient_create_interwoven (int            width,
-                                 int            height,
-                                 const GdkRGBA  colors1[2],
-                                 int            thickness1,
-                                 const GdkRGBA  colors2[2],
-                                 int            thickness2)
+meta_gradient_create_interwoven (int           width,
+                                 int           height,
+                                 const GdkRGBA colors1[2],
+                                 int           thickness1,
+                                 const GdkRGBA colors2[2],
+                                 int           thickness2)
 {
 
   int i, j, k, l, ll;
@@ -849,11 +849,21 @@ meta_gradient_create_interwoven (int            width,
   return pixbuf;
 }
 
+/**
+ * meta_gradient_add_alpha:
+ * @pixbuf:
+ * @alphas:
+ * @n_alphas:
+ * @type:
+ *
+ * Generate an alpha gradient and multiply it with the existing alpha
+ * channel of the given pixbuf.
+ */
 void
-meta_gradient_add_alpha (GdkPixbuf       *pixbuf,
-                         const guchar    *alphas,
-                         int              n_alphas,
-                         MetaGradientType type)
+meta_gradient_add_alpha (GdkPixbuf        *pixbuf,
+                         const guchar     *alphas,
+                         int               n_alphas,
+                         MetaGradientType  type)
 {
   g_return_if_fail (GDK_IS_PIXBUF (pixbuf));
   g_return_if_fail (gdk_pixbuf_get_has_alpha (pixbuf));
@@ -861,24 +871,24 @@ meta_gradient_add_alpha (GdkPixbuf       *pixbuf,
 
   switch (type)
     {
-    case META_GRADIENT_HORIZONTAL:
-      meta_gradient_add_alpha_horizontal (pixbuf, alphas, n_alphas);
-      break;
+      case META_GRADIENT_HORIZONTAL:
+        meta_gradient_add_alpha_horizontal (pixbuf, alphas, n_alphas);
+        break;
 
-    case META_GRADIENT_VERTICAL:
-      g_printerr ("metacity: vertical alpha channel gradient not implemented yet\n");
-      break;
+      case META_GRADIENT_VERTICAL:
+        g_printerr ("metacity: vertical alpha channel gradient not implemented yet\n");
+        break;
 
-    case META_GRADIENT_DIAGONAL:
-      g_printerr ("metacity: diagonal alpha channel gradient not implemented yet\n");
-      break;
+      case META_GRADIENT_DIAGONAL:
+        g_printerr ("metacity: diagonal alpha channel gradient not implemented yet\n");
+        break;
 
-    case META_GRADIENT_LAST:
-      g_assert_not_reached ();
-      break;
+      case META_GRADIENT_LAST:
+        g_assert_not_reached ();
+        break;
 
-    default:
-      g_assert_not_reached ();
-      break;
+      default:
+        g_assert_not_reached ();
+        break;
     }
 }

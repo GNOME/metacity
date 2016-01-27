@@ -53,7 +53,6 @@
 #include <config.h>
 #include "theme-private.h"
 #include "util.h"
-#include "gradient.h"
 #include <gtk/gtk.h>
 #include <libmetacity/meta-color.h>
 #include <string.h>
