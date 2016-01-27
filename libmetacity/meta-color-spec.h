@@ -41,7 +41,8 @@ void           meta_color_spec_render          (MetaColorSpec          *spec,
                                                 GtkStyleContext        *context,
                                                 GdkRGBA                *color);
 
-GtkStateFlags  meta_gtk_state_from_string      (const gchar            *str);
+gboolean       meta_gtk_state_from_string      (const gchar            *str,
+                                                GtkStateFlags          *state);
 
 G_END_DECLS
 

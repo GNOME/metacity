@@ -339,8 +339,7 @@ meta_color_spec_new_from_string (const gchar  *str,
         }
 
       tmp = g_strndup (bracket + 1, end_bracket - bracket - 1);
-      state = meta_gtk_state_from_string (tmp);
-      if (((int) state) == -1)
+      if (!meta_gtk_state_from_string (tmp, &state))
         {
           g_set_error (error, META_THEME_ERROR, META_THEME_ERROR_FAILED,
                        _("Did not understand state '%s' in color specification"),
@@ -609,25 +608,37 @@ meta_color_spec_render (MetaColorSpec   *spec,
     }
 }
 
-GtkStateFlags
-meta_gtk_state_from_string (const gchar *str)
+/**
+ * meta_gtk_state_from_string:
+ * @str: state string
+ * @state: (out): location to store #GtkStateFlags
+ *
+ * Convert string to #GtkStateFlags
+ *
+ * Returns: %TRUE if state string was valid, %FALSE otherwise
+ */
+gboolean
+meta_gtk_state_from_string (const gchar   *str,
+                            GtkStateFlags *state)
 {
   if (g_ascii_strcasecmp ("normal", str) == 0)
-    return GTK_STATE_FLAG_NORMAL;
+    *state = GTK_STATE_FLAG_NORMAL;
   else if (g_ascii_strcasecmp ("prelight", str) == 0)
-    return GTK_STATE_FLAG_PRELIGHT;
+    *state = GTK_STATE_FLAG_PRELIGHT;
   else if (g_ascii_strcasecmp ("active", str) == 0)
-    return GTK_STATE_FLAG_ACTIVE;
+    *state = GTK_STATE_FLAG_ACTIVE;
   else if (g_ascii_strcasecmp ("selected", str) == 0)
-    return GTK_STATE_FLAG_SELECTED;
+    *state = GTK_STATE_FLAG_SELECTED;
   else if (g_ascii_strcasecmp ("insensitive", str) == 0)
-    return GTK_STATE_FLAG_INSENSITIVE;
+    *state = GTK_STATE_FLAG_INSENSITIVE;
   else if (g_ascii_strcasecmp ("inconsistent", str) == 0)
-    return GTK_STATE_FLAG_INCONSISTENT;
+    *state = GTK_STATE_FLAG_INCONSISTENT;
   else if (g_ascii_strcasecmp ("focused", str) == 0)
-    return GTK_STATE_FLAG_FOCUSED;
+    *state = GTK_STATE_FLAG_FOCUSED;
   else if (g_ascii_strcasecmp ("backdrop", str) == 0)
-    return GTK_STATE_FLAG_BACKDROP;
+    *state = GTK_STATE_FLAG_BACKDROP;
   else
-    return -1;
+    return FALSE;
+
+  return TRUE;
 }

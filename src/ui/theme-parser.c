@@ -2296,8 +2296,7 @@ parse_draw_op_element (GMarkupParseContext  *context,
       if (filled && !parse_boolean (filled, &filled_val, context, error))
         return;
 
-      state_val = meta_gtk_state_from_string (state);
-      if (((int) state_val) == -1)
+      if (!meta_gtk_state_from_string (state, &state_val))
         {
           set_error (error, context, G_MARKUP_ERROR,
                      G_MARKUP_ERROR_PARSE,
@@ -2366,8 +2365,7 @@ parse_draw_op_element (GMarkupParseContext  *context,
                               NULL))
         return;
 
-      state_val = meta_gtk_state_from_string (state);
-      if (((int) state_val) == -1)
+      if (!meta_gtk_state_from_string (state, &state_val))
         {
           set_error (error, context, G_MARKUP_ERROR,
                      G_MARKUP_ERROR_PARSE,
@@ -2418,8 +2416,7 @@ parse_draw_op_element (GMarkupParseContext  *context,
                               NULL))
         return;
 
-      state_val = meta_gtk_state_from_string (state);
-      if (((int) state_val) == -1)
+      if (!meta_gtk_state_from_string (state, &state_val))
         {
           set_error (error, context, G_MARKUP_ERROR,
                      G_MARKUP_ERROR_PARSE,
