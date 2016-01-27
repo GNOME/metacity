@@ -233,21 +233,12 @@ meta_color_spec_new_from_string (const gchar  *str,
 
   if (strncmp (str, "gtk:custom", 10) == 0)
     {
-      MetaColorSpec *fallback;
-      static gboolean debug_set;
-      static gboolean debug;
       const gchar *color_name_start;
       const gchar *fallback_str_start;
       const gchar *end;
+      gchar *fallback_str;
+      MetaColorSpec *fallback;
       gchar *color_name;
-
-      fallback = NULL;
-
-      if (!debug_set)
-        {
-          debug = g_getenv ("METACITY_DISABLE_FALLBACK_COLOR") != NULL;
-          debug_set = TRUE;
-        }
 
       if (str[10] != '(')
         {
@@ -284,17 +275,9 @@ meta_color_spec_new_from_string (const gchar  *str,
           return NULL;
         }
 
-      if (!debug)
-        {
-          gchar *fallback_str;
-          fallback_str = g_strndup (fallback_str_start, end - fallback_str_start);
-          fallback = meta_color_spec_new_from_string (fallback_str, error);
-          g_free (fallback_str);
-        }
-      else
-        {
-          fallback = meta_color_spec_new_from_string ("pink", error);
-        }
+      fallback_str = g_strndup (fallback_str_start, end - fallback_str_start);
+      fallback = meta_color_spec_new_from_string (fallback_str, error);
+      g_free (fallback_str);
 
       if (fallback == NULL)
         return NULL;
