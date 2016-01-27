@@ -19,6 +19,7 @@
 #include "config.h"
 
 #include "meta-hsla.h"
+#include "meta-color-private.h"
 #include "meta-color.h"
 
 #define LIGHTNESS_MULT 1.3

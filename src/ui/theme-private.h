@@ -18,6 +18,8 @@
 #ifndef META_THEME_PRIVATE_H
 #define META_THEME_PRIVATE_H
 
+#include <libmetacity/meta-color-spec.h>
+
 #include "boxes.h"
 #include "gradient.h"
 #include "theme.h"
@@ -25,7 +27,6 @@
 G_BEGIN_DECLS
 
 typedef struct _MetaAlphaGradientSpec MetaAlphaGradientSpec;
-typedef struct _MetaColorSpec MetaColorSpec;
 typedef struct _MetaDrawInfo MetaDrawInfo;
 typedef struct _MetaDrawOp MetaDrawOp;
 typedef struct _MetaDrawOpList MetaDrawOpList;
@@ -333,60 +334,6 @@ struct _MetaDrawInfo
   int title_layout_width;
   int title_layout_height;
   const MetaFrameGeometry *fgeom;
-};
-
-typedef enum
-{
-  META_GTK_COLOR_FG,
-  META_GTK_COLOR_BG,
-  META_GTK_COLOR_LIGHT,
-  META_GTK_COLOR_DARK,
-  META_GTK_COLOR_MID,
-  META_GTK_COLOR_TEXT,
-  META_GTK_COLOR_BASE,
-  META_GTK_COLOR_TEXT_AA,
-  META_GTK_COLOR_LAST
-} MetaGtkColorComponent;
-
-typedef enum
-{
-  META_COLOR_SPEC_BASIC,
-  META_COLOR_SPEC_GTK,
-  META_COLOR_SPEC_GTK_CUSTOM,
-  META_COLOR_SPEC_BLEND,
-  META_COLOR_SPEC_SHADE
-} MetaColorSpecType;
-
-struct _MetaColorSpec
-{
-  MetaColorSpecType type;
-  union
-  {
-    struct {
-      GdkRGBA color;
-    } basic;
-    struct {
-      MetaGtkColorComponent component;
-      GtkStateFlags state;
-    } gtk;
-    struct {
-      char *color_name;
-      MetaColorSpec *fallback;
-    } gtkcustom;
-    struct {
-      MetaColorSpec *foreground;
-      MetaColorSpec *background;
-      double alpha;
-
-      GdkRGBA color;
-    } blend;
-    struct {
-      MetaColorSpec *base;
-      double factor;
-
-      GdkRGBA color;
-    } shade;
-  } data;
 };
 
 struct _MetaPositionExprEnv
@@ -741,16 +688,6 @@ void                   meta_frame_layout_unref                 (MetaFrameLayout 
 gboolean               meta_frame_layout_validate              (const MetaFrameLayout       *layout,
                                                                 GError                     **error);
 
-MetaColorSpec         *meta_color_spec_new                     (MetaColorSpecType            type);
-MetaColorSpec         *meta_color_spec_new_from_string         (const char                  *str,
-                                                                GError                     **err);
-MetaColorSpec         *meta_color_spec_new_gtk                 (MetaGtkColorComponent        component,
-                                                                GtkStateFlags                state);
-void                   meta_color_spec_free                    (MetaColorSpec               *spec);
-void                   meta_color_spec_render                  (MetaColorSpec               *spec,
-                                                                GtkStyleContext             *style_gtk,
-                                                                GdkRGBA                     *color);
-
 MetaDrawSpec          *meta_draw_spec_new                      (MetaTheme                   *theme,
                                                                 const char                  *expr,
                                                                 GError                     **error);
@@ -853,8 +790,6 @@ gboolean               meta_theme_define_color_constant        (MetaTheme       
 gboolean               meta_theme_lookup_color_constant        (MetaTheme                   *theme,
                                                                 const char                  *name,
                                                                 char                       **value);
-
-GtkStateFlags          meta_gtk_state_from_string              (const char                  *str);
 
 PangoFontDescription  *meta_gtk_widget_get_font_desc           (GtkWidget                   *widget,
                                                                 double                       scale,

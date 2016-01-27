@@ -5,6 +5,9 @@ noinst_LTLIBRARIES = libmetacity.la
 libmetacity_la_SOURCES = \
 	meta-color.c \
 	meta-color.h \
+	meta-color-private.h \
+	meta-color-spec.c \
+	meta-color-spec.h \
 	meta-hsla.c \
 	meta-hsla.h \
 	meta-theme.c \

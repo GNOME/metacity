@@ -16,24 +16,17 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef META_COLOR_H
-#define META_COLOR_H
+#ifndef META_COLOR_PRIVATE_H
+#define META_COLOR_PRIVATE_H
 
-#include <gtk/gtk.h>
+#include <gdk/gdk.h>
 
 G_BEGIN_DECLS
 
-void meta_color_get_background_color (GtkStyleContext *context,
-                                      GtkStateFlags    state,
-                                      GdkRGBA         *color);
-
-void meta_color_get_light_color      (GtkStyleContext *context,
-                                      GtkStateFlags    state,
-                                      GdkRGBA         *color);
-
-void meta_color_get_dark_color       (GtkStyleContext *context,
-                                      GtkStateFlags    state,
-                                      GdkRGBA         *color);
+G_GNUC_INTERNAL
+void meta_color_shade (const GdkRGBA *source,
+                       const gdouble  factor,
+                       GdkRGBA       *destination);
 
 G_END_DECLS
 
