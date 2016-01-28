@@ -43,9 +43,9 @@
  * we have a special case for the "no buttons on either side" case.
  */
 #ifndef ALLOW_DUPLICATE_BUTTONS
-#define BUTTON_LAYOUT_COMBINATIONS (MAX_BUTTONS_PER_CORNER + 1 + 1)
+#define BUTTON_LAYOUT_COMBINATIONS (META_BUTTON_FUNCTION_LAST + 1 + 1)
 #else
-#define BUTTON_LAYOUT_COMBINATIONS ((MAX_BUTTONS_PER_CORNER+1)*(MAX_BUTTONS_PER_CORNER+1))
+#define BUTTON_LAYOUT_COMBINATIONS ((META_BUTTON_FUNCTION_LAST+1)*(META_BUTTON_FUNCTION_LAST+1))
 #endif
 
 enum
@@ -660,7 +660,7 @@ init_layouts (void)
       int j;
 
       j = 0;
-      while (j < MAX_BUTTONS_PER_CORNER)
+      while (j < META_BUTTON_FUNCTION_LAST)
         {
           different_layouts[i].left_buttons[j] = META_BUTTON_FUNCTION_LAST;
           different_layouts[i].right_buttons[j] = META_BUTTON_FUNCTION_LAST;
@@ -671,7 +671,7 @@ init_layouts (void)
 
 #ifndef ALLOW_DUPLICATE_BUTTONS
   i = 0;
-  while (i <= MAX_BUTTONS_PER_CORNER)
+  while (i <= META_BUTTON_FUNCTION_LAST)
     {
       int j;
 
@@ -681,7 +681,7 @@ init_layouts (void)
           different_layouts[i].right_buttons[j] = (MetaButtonFunction) j;
           ++j;
         }
-      while (j < MAX_BUTTONS_PER_CORNER)
+      while (j < META_BUTTON_FUNCTION_LAST)
         {
           different_layouts[i].left_buttons[j-i] = (MetaButtonFunction) j;
           ++j;
@@ -704,23 +704,23 @@ init_layouts (void)
   left = 0;
   i = 0;
 
-  while (left < MAX_BUTTONS_PER_CORNER)
+  while (left < META_BUTTON_FUNCTION_LAST)
     {
       int right;
 
       right = 0;
 
-      while (right < MAX_BUTTONS_PER_CORNER)
+      while (right < META_BUTTON_FUNCTION_LAST)
         {
           int j;
 
-          static MetaButtonFunction left_functions[MAX_BUTTONS_PER_CORNER] = {
+          static MetaButtonFunction left_functions[META_BUTTON_FUNCTION_LAST] = {
             META_BUTTON_FUNCTION_MENU,
             META_BUTTON_FUNCTION_MINIMIZE,
             META_BUTTON_FUNCTION_MAXIMIZE,
             META_BUTTON_FUNCTION_CLOSE
           };
-          static MetaButtonFunction right_functions[MAX_BUTTONS_PER_CORNER] = {
+          static MetaButtonFunction right_functions[META_BUTTON_FUNCTION_LAST] = {
             META_BUTTON_FUNCTION_MINIMIZE,
             META_BUTTON_FUNCTION_MAXIMIZE,
             META_BUTTON_FUNCTION_CLOSE,
@@ -1055,7 +1055,7 @@ run_theme_benchmark (void)
   layout = create_title_layout (widget);
 
   i = 0;
-  while (i < MAX_BUTTONS_PER_CORNER)
+  while (i < META_BUTTON_FUNCTION_LAST)
     {
       button_layout.left_buttons[i] = META_BUTTON_FUNCTION_LAST;
       button_layout.right_buttons[i] = META_BUTTON_FUNCTION_LAST;

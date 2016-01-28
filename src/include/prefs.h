@@ -26,6 +26,7 @@
 /* This header is a "common" one between the UI and core side */
 #include "common.h"
 #include "types.h"
+#include <libmetacity/meta-button-layout.h>
 #include <pango/pango-font.h>
 #include <gdesktop-enums.h>
 

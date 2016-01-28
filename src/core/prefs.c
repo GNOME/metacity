@@ -1121,7 +1121,7 @@ button_layout_equal (const MetaButtonLayout *a,
   int i;
 
   i = 0;
-  while (i < MAX_BUTTONS_PER_CORNER)
+  while (i < META_BUTTON_FUNCTION_LAST)
     {
       if (a->left_buttons[i] != b->left_buttons[i])
         return FALSE;

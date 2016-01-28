@@ -71,7 +71,7 @@ meta_preview_init (MetaPreview *preview)
   gtk_widget_set_has_window (GTK_WIDGET (preview), FALSE);
 
   i = 0;
-  while (i < MAX_BUTTONS_PER_CORNER)
+  while (i < META_BUTTON_FUNCTION_LAST)
     {
       preview->button_layout.left_buttons[i] = META_BUTTON_FUNCTION_LAST;
       preview->button_layout.right_buttons[i] = META_BUTTON_FUNCTION_LAST;

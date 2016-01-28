@@ -130,7 +130,6 @@ libmetacity_private_la_LIBADD  = @METACITY_LIBS@ $(top_builddir)/libmetacity/lib
 libmetacityincludedir = $(includedir)/metacity/metacity-private
 
 libmetacityinclude_HEADERS =			\
-	include/common.h			\
 	ui/theme.h
 
 metacity_theme_viewer_SOURCES=  \

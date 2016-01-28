@@ -30,31 +30,8 @@
 #include <X11/Xlib.h>
 #include <glib.h>
 #include <gtk/gtk.h>
-#include <libmetacity/meta-button-layout.h>
 
 typedef struct _MetaResizePopup MetaResizePopup;
-
-typedef enum
-{
-  META_FRAME_ALLOWS_DELETE            = 1 << 0,
-  META_FRAME_ALLOWS_MENU              = 1 << 1,
-  META_FRAME_ALLOWS_APPMENU           = 1 << 2,
-  META_FRAME_ALLOWS_MINIMIZE          = 1 << 3,
-  META_FRAME_ALLOWS_MAXIMIZE          = 1 << 4,
-  META_FRAME_ALLOWS_VERTICAL_RESIZE   = 1 << 5,
-  META_FRAME_ALLOWS_HORIZONTAL_RESIZE = 1 << 6,
-  META_FRAME_HAS_FOCUS                = 1 << 7,
-  META_FRAME_SHADED                   = 1 << 8,
-  META_FRAME_STUCK                    = 1 << 9,
-  META_FRAME_MAXIMIZED                = 1 << 10,
-  META_FRAME_ALLOWS_SHADE             = 1 << 11,
-  META_FRAME_ALLOWS_MOVE              = 1 << 12,
-  META_FRAME_FULLSCREEN               = 1 << 13,
-  META_FRAME_IS_FLASHING              = 1 << 14,
-  META_FRAME_ABOVE                    = 1 << 15,
-  META_FRAME_TILED_LEFT               = 1 << 16,
-  META_FRAME_TILED_RIGHT              = 1 << 17
-} MetaFrameFlags;
 
 typedef enum
 {
@@ -167,18 +144,6 @@ typedef enum
 
 typedef enum
 {
-  META_FRAME_TYPE_NORMAL,
-  META_FRAME_TYPE_DIALOG,
-  META_FRAME_TYPE_MODAL_DIALOG,
-  META_FRAME_TYPE_UTILITY,
-  META_FRAME_TYPE_MENU,
-  META_FRAME_TYPE_BORDER,
-  META_FRAME_TYPE_ATTACHED,
-  META_FRAME_TYPE_LAST
-} MetaFrameType;
-
-typedef enum
-{
   /* Create gratuitous divergence from regular
    * X mod bits, to be sure we find bugs
    */
@@ -228,8 +193,6 @@ typedef enum
   META_SIDE_TOP             = META_DIRECTION_TOP,
   META_SIDE_BOTTOM          = META_DIRECTION_BOTTOM
 } MetaSide;
-
-#define MAX_BUTTONS_PER_CORNER META_BUTTON_FUNCTION_LAST
 
 /* should investigate changing these to whatever most apps use */
 #define META_ICON_WIDTH 96

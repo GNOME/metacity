@@ -589,8 +589,8 @@ rect_for_function (MetaFrameGeometry *fgeom,
 }
 
 static gboolean
-strip_button (MetaButtonSpace *func_rects[MAX_BUTTONS_PER_CORNER],
-              GdkRectangle    *bg_rects[MAX_BUTTONS_PER_CORNER],
+strip_button (MetaButtonSpace *func_rects[META_BUTTON_FUNCTION_LAST],
+              GdkRectangle    *bg_rects[META_BUTTON_FUNCTION_LAST],
               int             *n_rects,
               MetaButtonSpace *to_strip)
 {
@@ -777,12 +777,12 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
   /* the left/right rects in order; the max # of rects
    * is the number of button functions
    */
-  MetaButtonSpace *left_func_rects[MAX_BUTTONS_PER_CORNER];
-  MetaButtonSpace *right_func_rects[MAX_BUTTONS_PER_CORNER];
-  GdkRectangle *left_bg_rects[MAX_BUTTONS_PER_CORNER];
-  gboolean left_buttons_has_spacer[MAX_BUTTONS_PER_CORNER];
-  GdkRectangle *right_bg_rects[MAX_BUTTONS_PER_CORNER];
-  gboolean right_buttons_has_spacer[MAX_BUTTONS_PER_CORNER];
+  MetaButtonSpace *left_func_rects[META_BUTTON_FUNCTION_LAST];
+  MetaButtonSpace *right_func_rects[META_BUTTON_FUNCTION_LAST];
+  GdkRectangle *left_bg_rects[META_BUTTON_FUNCTION_LAST];
+  gboolean left_buttons_has_spacer[META_BUTTON_FUNCTION_LAST];
+  GdkRectangle *right_bg_rects[META_BUTTON_FUNCTION_LAST];
+  gboolean right_buttons_has_spacer[META_BUTTON_FUNCTION_LAST];
 
   meta_frame_layout_sync_with_style (layout, style_info, flags, theme);
 
@@ -843,7 +843,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
   if (!layout->hide_buttons)
     {
       /* Try to fill in rects */
-      for (i = 0; i < MAX_BUTTONS_PER_CORNER && button_layout->left_buttons[i] != META_BUTTON_FUNCTION_LAST; i++)
+      for (i = 0; i < META_BUTTON_FUNCTION_LAST && button_layout->left_buttons[i] != META_BUTTON_FUNCTION_LAST; i++)
         {
           left_func_rects[n_left] = rect_for_function (fgeom, flags,
                                                        button_layout->left_buttons[i],
@@ -858,7 +858,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
             }
         }
 
-      for (i = 0; i < MAX_BUTTONS_PER_CORNER && button_layout->right_buttons[i] != META_BUTTON_FUNCTION_LAST; i++)
+      for (i = 0; i < META_BUTTON_FUNCTION_LAST && button_layout->right_buttons[i] != META_BUTTON_FUNCTION_LAST; i++)
         {
           right_func_rects[n_right] = rect_for_function (fgeom, flags,
                                                          button_layout->right_buttons[i],
@@ -874,7 +874,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
         }
     }
 
-  for (i = 0; i < MAX_BUTTONS_PER_CORNER; i++)
+  for (i = 0; i < META_BUTTON_FUNCTION_LAST; i++)
     {
       left_bg_rects[i] = NULL;
       right_bg_rects[i] = NULL;

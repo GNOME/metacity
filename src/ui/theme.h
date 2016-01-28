@@ -22,9 +22,11 @@
 #ifndef THEME_H
 #define THEME_H
 
-#include "common.h"
 #include <gtk/gtk.h>
+#include <libmetacity/meta-button-layout.h>
 #include <libmetacity/meta-frame-borders.h>
+#include <libmetacity/meta-frame-flags.h>
+#include <libmetacity/meta-frame-type.h>
 #include <libmetacity/meta-theme.h>
 
 /**
@@ -85,7 +87,7 @@ struct _MetaFrameGeometry
   MetaButtonSpace unabove_rect;
   MetaButtonSpace unstick_rect;
 
-#define MAX_MIDDLE_BACKGROUNDS (MAX_BUTTONS_PER_CORNER - 2)
+#define MAX_MIDDLE_BACKGROUNDS (META_BUTTON_FUNCTION_LAST - 2)
   GdkRectangle left_left_background;
   GdkRectangle left_middle_backgrounds[MAX_MIDDLE_BACKGROUNDS];
   GdkRectangle left_right_background;
