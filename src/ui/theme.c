@@ -4798,7 +4798,7 @@ theme_set_current_metacity (const gchar                *name,
     {
       new_theme->is_gtk_theme = FALSE;
       new_theme->composited = composited;
-      new_theme->titlebar_font = pango_font_description_copy (NULL);
+      new_theme->titlebar_font = pango_font_description_copy (titlebar_font);
 
       if (meta_current_theme)
         meta_theme_free (meta_current_theme);
@@ -4829,7 +4829,7 @@ theme_set_current_gtk (const gchar                *name,
 
   meta_current_theme->is_gtk_theme = TRUE;
   meta_current_theme->composited = composited;
-  meta_current_theme->titlebar_font = pango_font_description_copy (NULL);
+  meta_current_theme->titlebar_font = pango_font_description_copy (titlebar_font);
 
   for (frame_type = 0; frame_type < META_FRAME_TYPE_LAST; frame_type++)
     {
