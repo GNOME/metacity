@@ -17,6 +17,12 @@ libmetacity_la_SOURCES = \
 	meta-hsla-private.h \
 	meta-theme.c \
 	meta-theme.h \
+	meta-theme-gtk.c \
+	meta-theme-gtk.h \
+	meta-theme-impl.c \
+	meta-theme-impl.h \
+	meta-theme-metacity.c \
+	meta-theme-metacity.h \
 	$(NULL)
 
 libmetacity_la_CPPFLAGS = \

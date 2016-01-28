@@ -20,6 +20,7 @@
 
 #include <libmetacity/meta-color-spec.h>
 #include <libmetacity/meta-gradient-spec.h>
+#include <libmetacity/meta-theme-impl.h>
 
 #include "boxes.h"
 #include "theme.h"
@@ -663,6 +664,8 @@ struct _MetaTheme
   GHashTable *style_sets_by_name;
 
   MetaFrameStyleSet *style_sets_by_type[META_FRAME_TYPE_LAST];
+
+  MetaThemeImpl *impl;
 };
 
 MetaFrameLayout       *meta_frame_layout_new                   (void);

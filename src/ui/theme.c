@@ -55,6 +55,8 @@
 #include "util.h"
 #include <gtk/gtk.h>
 #include <libmetacity/meta-color.h>
+#include <libmetacity/meta-theme-gtk.h>
+#include <libmetacity/meta-theme-metacity.h>
 #include <string.h>
 #include <stdlib.h>
 #define __USE_XOPEN
@@ -4823,7 +4825,7 @@ theme_set_current_gtk (const gchar                *name,
   if (force_reload && meta_current_theme)
     meta_theme_free (meta_current_theme);
 
-  meta_current_theme = meta_theme_new ();
+  meta_current_theme = meta_theme_new (META_THEME_TYPE_GTK);
 
   meta_current_theme->is_gtk_theme = TRUE;
   meta_current_theme->composited = composited;
@@ -4909,7 +4911,7 @@ meta_theme_set_current (const gchar                *name,
 }
 
 MetaTheme*
-meta_theme_new (void)
+meta_theme_new (MetaThemeType type)
 {
   MetaTheme *theme;
 
@@ -4948,9 +4950,15 @@ meta_theme_new (void)
                            g_free,
                            (GDestroyNotify) meta_frame_style_set_unref);
 
+  if (type == META_THEME_TYPE_GTK)
+    theme->impl = g_object_new (META_TYPE_THEME_GTK, NULL);
+  else if (type == META_THEME_TYPE_METACITY)
+    theme->impl = g_object_new (META_TYPE_THEME_METACITY, NULL);
+  else
+    g_assert_not_reached ();
+
   return theme;
 }
-
 
 void
 meta_theme_free (MetaTheme *theme)
@@ -4987,6 +4995,8 @@ meta_theme_free (MetaTheme *theme)
   for (i = 0; i < META_FRAME_TYPE_LAST; i++)
     if (theme->style_sets_by_type[i])
       meta_frame_style_set_unref (theme->style_sets_by_type[i]);
+
+  g_clear_object (&theme->impl);
 
   DEBUG_FILL_STRUCT (theme);
   g_free (theme);

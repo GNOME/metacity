@@ -55,6 +55,19 @@ typedef enum
   META_THEME_ERROR_FAILED
 } MetaThemeError;
 
+/**
+ * MetaThemeType:
+ * @META_THEME_TYPE_GTK:
+ * @META_THEME_TYPE_METACITY:
+ *
+ * Theme types.
+ */
+typedef enum
+{
+  META_THEME_TYPE_GTK,
+  META_THEME_TYPE_METACITY,
+} MetaThemeType;
+
 GQuark meta_theme_error_quark (void);
 
 G_END_DECLS

@@ -164,7 +164,7 @@ void       meta_theme_set_current (const char                 *name,
                                    gboolean                    composited,
                                    const PangoFontDescription *titlebar_font);
 
-MetaTheme* meta_theme_new      (void);
+MetaTheme* meta_theme_new      (MetaThemeType type);
 void       meta_theme_free     (MetaTheme *theme);
 
 MetaTheme* meta_theme_load (const char *theme_name,

@@ -3546,7 +3546,7 @@ start_element_handler (GMarkupParseContext *context,
     case STATE_START:
       if (strcmp (element_name, "metacity_theme") == 0)
         {
-          info->theme = meta_theme_new ();
+          info->theme = meta_theme_new (META_THEME_TYPE_METACITY);
           info->theme->name = g_strdup (info->theme_name);
           info->theme->filename = g_strdup (info->theme_file);
           info->theme->dirname = g_strdup (info->theme_dir);
