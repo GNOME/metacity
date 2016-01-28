@@ -30,7 +30,7 @@
 #include <X11/Xlib.h>
 #include <glib.h>
 #include <gtk/gtk.h>
-#include <libmetacity/meta-button-function.h>
+#include <libmetacity/meta-button-layout.h>
 
 typedef struct _MetaResizePopup MetaResizePopup;
 
@@ -230,18 +230,6 @@ typedef enum
 } MetaSide;
 
 #define MAX_BUTTONS_PER_CORNER META_BUTTON_FUNCTION_LAST
-
-typedef struct _MetaButtonLayout MetaButtonLayout;
-struct _MetaButtonLayout
-{
-  /* buttons in the group on the left side */
-  MetaButtonFunction left_buttons[MAX_BUTTONS_PER_CORNER];
-  gboolean left_buttons_has_spacer[MAX_BUTTONS_PER_CORNER];
-
-  /* buttons in the group on the right side */
-  MetaButtonFunction right_buttons[MAX_BUTTONS_PER_CORNER];
-  gboolean right_buttons_has_spacer[MAX_BUTTONS_PER_CORNER];
-};
 
 /* should investigate changing these to whatever most apps use */
 #define META_ICON_WIDTH 96
