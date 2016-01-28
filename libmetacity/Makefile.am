@@ -8,6 +8,8 @@ libmetacity_la_SOURCES = \
 	meta-color-private.h \
 	meta-color-spec.c \
 	meta-color-spec.h \
+	meta-frame-borders.c \
+	meta-frame-borders.h \
 	meta-gradient.c \
 	meta-gradient.h \
 	meta-gradient-private.h \
@@ -49,6 +51,7 @@ libmetacity_includedir = $(includedir)/metacity/libmetacity
 libmetacity_include_HEADERS = \
 	meta-color.h \
 	meta-color-spec.h \
+	meta-frame-borders.h \
 	meta-gradient.h \
 	meta-gradient-spec.h \
 	meta-theme.h \

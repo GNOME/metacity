@@ -21,6 +21,7 @@
 #define META_FRAME_H
 
 #include <X11/Xlib.h>
+#include <libmetacity/meta-frame-borders.h>
 
 #include "common.h"
 #include "types.h"

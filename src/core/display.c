@@ -46,6 +46,7 @@
 #include "bell.h"
 #include "effects.h"
 #include "compositor.h"
+#include <libmetacity/meta-frame-borders.h>
 #include <X11/Xatom.h>
 #include <X11/cursorfont.h>
 #ifdef HAVE_SOLARIS_XINERAMA

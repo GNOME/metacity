@@ -27,6 +27,7 @@
 #include "place.h"
 #include "prefs.h"
 
+#include <libmetacity/meta-frame-borders.h>
 #include <stdlib.h>
 #include <math.h>
 

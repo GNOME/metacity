@@ -24,6 +24,7 @@
 
 #include "common.h"
 #include <gtk/gtk.h>
+#include <libmetacity/meta-frame-borders.h>
 #include <libmetacity/meta-theme.h>
 
 /**

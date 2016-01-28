@@ -32,6 +32,7 @@
 #include <unistd.h>
 
 #include <gdk/gdk.h>
+#include <libmetacity/meta-frame-borders.h>
 #include <cairo/cairo-xlib.h>
 
 #include "display.h"

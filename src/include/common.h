@@ -262,23 +262,6 @@ struct _MetaButtonLayout
   gboolean right_buttons_has_spacer[MAX_BUTTONS_PER_CORNER];
 };
 
-typedef struct _MetaFrameBorders MetaFrameBorders;
-struct _MetaFrameBorders
-{
-  /* The frame border is made up of two pieces - an inner visible portion
-   * and an outer portion that is invisible but responds to events.
-   */
-  GtkBorder visible;
-  GtkBorder invisible;
-
-  /* For convenience, we have a "total" border which is equal to the sum
-   * of the two borders above. */
-  GtkBorder total;
-};
-
-/* sets all dimensions to zero */
-void meta_frame_borders_clear (MetaFrameBorders *self);
-
 /* should investigate changing these to whatever most apps use */
 #define META_ICON_WIDTH 96
 #define META_ICON_HEIGHT 96
