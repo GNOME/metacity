@@ -28,12 +28,8 @@
 #include <libmetacity/meta-frame-flags.h>
 #include <libmetacity/meta-frame-type.h>
 #include <libmetacity/meta-theme.h>
+#include <libmetacity/meta-style-info.h>
 
-/**
- * MetaStyleInfo: (skip)
- *
- */
-typedef struct _MetaStyleInfo MetaStyleInfo;
 typedef struct _MetaButtonSpace MetaButtonSpace;
 typedef struct _MetaFrameGeometry MetaFrameGeometry;
 typedef struct _MetaTheme MetaTheme;
@@ -143,24 +139,6 @@ typedef enum
   META_BUTTON_TYPE_LAST
 } MetaButtonType;
 
-typedef enum
-{
-  META_STYLE_ELEMENT_WINDOW,
-  META_STYLE_ELEMENT_DECORATION,
-  META_STYLE_ELEMENT_TITLEBAR,
-  META_STYLE_ELEMENT_TITLE,
-  META_STYLE_ELEMENT_BUTTON,
-  META_STYLE_ELEMENT_IMAGE,
-  META_STYLE_ELEMENT_LAST
-} MetaStyleElement;
-
-struct _MetaStyleInfo
-{
-  int refcount;
-
-  GtkStyleContext *styles[META_STYLE_ELEMENT_LAST];
-};
-
 MetaTheme* meta_theme_get_current (void);
 void       meta_theme_set_current (const char                 *name,
                                    gboolean                    force_reload,
@@ -182,15 +160,6 @@ void meta_theme_set_titlebar_font (MetaTheme                  *theme,
 double meta_theme_get_title_scale (MetaTheme     *theme,
                                    MetaFrameType  type,
                                    MetaFrameFlags flags);
-
-MetaStyleInfo* meta_theme_create_style_info (MetaTheme     *theme,
-                                             GdkScreen     *screen,
-                                             const gchar   *variant);
-MetaStyleInfo* meta_style_info_ref          (MetaStyleInfo *style);
-void           meta_style_info_unref        (MetaStyleInfo *style_info);
-
-void           meta_style_info_set_flags    (MetaStyleInfo  *style_info,
-                                             MetaFrameFlags  flags);
 
 void meta_theme_draw_frame (MetaTheme              *theme,
                             MetaStyleInfo          *style_info,

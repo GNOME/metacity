@@ -23,6 +23,8 @@ libmetacity_la_SOURCES = \
 	meta-gradient-spec.h \
 	meta-hsla.c \
 	meta-hsla-private.h \
+	meta-style-info.c \
+	meta-style-info.h \
 	meta-theme.c \
 	meta-theme.h \
 	meta-theme-gtk.c \
@@ -64,6 +66,7 @@ libmetacity_include_HEADERS = \
 	meta-frame-type.h \
 	meta-gradient.h \
 	meta-gradient-spec.h \
+	meta-style-info.h \
 	meta-theme.h \
 	meta-theme-gtk.h \
 	meta-theme-impl.h \
