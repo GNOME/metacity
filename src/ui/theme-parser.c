@@ -1713,7 +1713,11 @@ parse_draw_op_element (GMarkupParseContext  *context,
                        ParseInfo            *info,
                        GError              **error)
 {
+  MetaThemeMetacity *metacity;
+
   g_return_if_fail (peek_state (info) == STATE_DRAW_OPS);
+
+  metacity = META_THEME_METACITY (info->theme->impl);
 
   if (ELEMENT_IS ("line"))
     {
@@ -1771,18 +1775,18 @@ parse_draw_op_element (GMarkupParseContext  *context,
 
       op->data.line.color_spec = color_spec;
 
-      op->data.line.x1 = meta_draw_spec_new (info->theme, x1, NULL);
-      op->data.line.y1 = meta_draw_spec_new (info->theme, y1, NULL);
+      op->data.line.x1 = meta_draw_spec_new (metacity, x1, NULL);
+      op->data.line.y1 = meta_draw_spec_new (metacity, y1, NULL);
 
       if (strcmp(x1, x2)==0)
         op->data.line.x2 = NULL;
       else
-        op->data.line.x2 = meta_draw_spec_new (info->theme, x2, NULL);
+        op->data.line.x2 = meta_draw_spec_new (metacity, x2, NULL);
 
       if (strcmp(y1, y2)==0)
         op->data.line.y2 = NULL;
       else
-        op->data.line.y2 = meta_draw_spec_new (info->theme, y2, NULL);
+        op->data.line.y2 = meta_draw_spec_new (metacity, y2, NULL);
 
       op->data.line.width = width_val;
       op->data.line.dash_on_length = dash_on_val;
@@ -1832,10 +1836,10 @@ parse_draw_op_element (GMarkupParseContext  *context,
       op = meta_draw_op_new (META_DRAW_RECTANGLE);
 
       op->data.rectangle.color_spec = color_spec;
-      op->data.rectangle.x = meta_draw_spec_new (info->theme, x, NULL);
-      op->data.rectangle.y = meta_draw_spec_new (info->theme, y, NULL);
-      op->data.rectangle.width = meta_draw_spec_new (info->theme, width, NULL);
-      op->data.rectangle.height = meta_draw_spec_new (info->theme,
+      op->data.rectangle.x = meta_draw_spec_new (metacity, x, NULL);
+      op->data.rectangle.y = meta_draw_spec_new (metacity, y, NULL);
+      op->data.rectangle.width = meta_draw_spec_new (metacity, width, NULL);
+      op->data.rectangle.height = meta_draw_spec_new (metacity,
                                                       height, NULL);
 
       op->data.rectangle.filled = filled_val;
@@ -1954,10 +1958,10 @@ parse_draw_op_element (GMarkupParseContext  *context,
 
       op->data.arc.color_spec = color_spec;
 
-      op->data.arc.x = meta_draw_spec_new (info->theme, x, NULL);
-      op->data.arc.y = meta_draw_spec_new (info->theme, y, NULL);
-      op->data.arc.width = meta_draw_spec_new (info->theme, width, NULL);
-      op->data.arc.height = meta_draw_spec_new (info->theme, height, NULL);
+      op->data.arc.x = meta_draw_spec_new (metacity, x, NULL);
+      op->data.arc.y = meta_draw_spec_new (metacity, y, NULL);
+      op->data.arc.width = meta_draw_spec_new (metacity, width, NULL);
+      op->data.arc.height = meta_draw_spec_new (metacity, height, NULL);
 
       op->data.arc.filled = filled_val;
       op->data.arc.start_angle = start_angle_val;
@@ -1986,10 +1990,10 @@ parse_draw_op_element (GMarkupParseContext  *context,
 
       op = meta_draw_op_new (META_DRAW_CLIP);
 
-      op->data.clip.x = meta_draw_spec_new (info->theme, x, NULL);
-      op->data.clip.y = meta_draw_spec_new (info->theme, y, NULL);
-      op->data.clip.width = meta_draw_spec_new (info->theme, width, NULL);
-      op->data.clip.height = meta_draw_spec_new (info->theme, height, NULL);
+      op->data.clip.x = meta_draw_spec_new (metacity, x, NULL);
+      op->data.clip.y = meta_draw_spec_new (metacity, y, NULL);
+      op->data.clip.width = meta_draw_spec_new (metacity, width, NULL);
+      op->data.clip.height = meta_draw_spec_new (metacity, height, NULL);
 
       g_assert (info->op_list);
 
@@ -2040,10 +2044,10 @@ parse_draw_op_element (GMarkupParseContext  *context,
       op->data.tint.color_spec = color_spec;
       op->data.tint.alpha_spec = alpha_spec;
 
-      op->data.tint.x = meta_draw_spec_new (info->theme, x, NULL);
-      op->data.tint.y = meta_draw_spec_new (info->theme, y, NULL);
-      op->data.tint.width = meta_draw_spec_new (info->theme, width, NULL);
-      op->data.tint.height = meta_draw_spec_new (info->theme, height, NULL);
+      op->data.tint.x = meta_draw_spec_new (metacity, x, NULL);
+      op->data.tint.y = meta_draw_spec_new (metacity, y, NULL);
+      op->data.tint.width = meta_draw_spec_new (metacity, width, NULL);
+      op->data.tint.height = meta_draw_spec_new (metacity, height, NULL);
 
       g_assert (info->op_list);
 
@@ -2087,11 +2091,11 @@ parse_draw_op_element (GMarkupParseContext  *context,
       g_assert (info->op == NULL);
       info->op = meta_draw_op_new (META_DRAW_GRADIENT);
 
-      info->op->data.gradient.x = meta_draw_spec_new (info->theme, x, NULL);
-      info->op->data.gradient.y = meta_draw_spec_new (info->theme, y, NULL);
-      info->op->data.gradient.width = meta_draw_spec_new (info->theme,
+      info->op->data.gradient.x = meta_draw_spec_new (metacity, x, NULL);
+      info->op->data.gradient.y = meta_draw_spec_new (metacity, y, NULL);
+      info->op->data.gradient.width = meta_draw_spec_new (metacity,
                                                         width, NULL);
-      info->op->data.gradient.height = meta_draw_spec_new (info->theme,
+      info->op->data.gradient.height = meta_draw_spec_new (metacity,
                                                          height, NULL);
 
       info->op->data.gradient.gradient_spec = meta_gradient_spec_new (type_val);
@@ -2183,10 +2187,10 @@ parse_draw_op_element (GMarkupParseContext  *context,
       op->data.image.pixbuf = pixbuf;
       op->data.image.colorize_spec = colorize_spec;
 
-      op->data.image.x = meta_draw_spec_new (info->theme, x, NULL);
-      op->data.image.y = meta_draw_spec_new (info->theme, y, NULL);
-      op->data.image.width = meta_draw_spec_new (info->theme, width, NULL);
-      op->data.image.height = meta_draw_spec_new (info->theme, height, NULL);
+      op->data.image.x = meta_draw_spec_new (metacity, x, NULL);
+      op->data.image.y = meta_draw_spec_new (metacity, y, NULL);
+      op->data.image.width = meta_draw_spec_new (metacity, width, NULL);
+      op->data.image.height = meta_draw_spec_new (metacity, height, NULL);
 
       op->data.image.alpha_spec = alpha_spec;
       op->data.image.fill_type = fill_type_val;
@@ -2320,10 +2324,10 @@ parse_draw_op_element (GMarkupParseContext  *context,
 
       op = meta_draw_op_new (META_DRAW_GTK_ARROW);
 
-      op->data.gtk_arrow.x = meta_draw_spec_new (info->theme, x, NULL);
-      op->data.gtk_arrow.y = meta_draw_spec_new (info->theme, y, NULL);
-      op->data.gtk_arrow.width = meta_draw_spec_new (info->theme, width, NULL);
-      op->data.gtk_arrow.height = meta_draw_spec_new (info->theme,
+      op->data.gtk_arrow.x = meta_draw_spec_new (metacity, x, NULL);
+      op->data.gtk_arrow.y = meta_draw_spec_new (metacity, y, NULL);
+      op->data.gtk_arrow.width = meta_draw_spec_new (metacity, width, NULL);
+      op->data.gtk_arrow.height = meta_draw_spec_new (metacity,
                                                       height, NULL);
 
       op->data.gtk_arrow.filled = filled_val;
@@ -2379,10 +2383,10 @@ parse_draw_op_element (GMarkupParseContext  *context,
 
       op = meta_draw_op_new (META_DRAW_GTK_BOX);
 
-      op->data.gtk_box.x = meta_draw_spec_new (info->theme, x, NULL);
-      op->data.gtk_box.y = meta_draw_spec_new (info->theme, y, NULL);
-      op->data.gtk_box.width = meta_draw_spec_new (info->theme, width, NULL);
-      op->data.gtk_box.height = meta_draw_spec_new (info->theme, height, NULL);
+      op->data.gtk_box.x = meta_draw_spec_new (metacity, x, NULL);
+      op->data.gtk_box.y = meta_draw_spec_new (metacity, y, NULL);
+      op->data.gtk_box.width = meta_draw_spec_new (metacity, width, NULL);
+      op->data.gtk_box.height = meta_draw_spec_new (metacity, height, NULL);
 
       op->data.gtk_box.state = state_val;
       op->data.gtk_box.shadow = shadow_val;
@@ -2420,9 +2424,9 @@ parse_draw_op_element (GMarkupParseContext  *context,
 
       op = meta_draw_op_new (META_DRAW_GTK_VLINE);
 
-      op->data.gtk_vline.x = meta_draw_spec_new (info->theme, x, NULL);
-      op->data.gtk_vline.y1 = meta_draw_spec_new (info->theme, y1, NULL);
-      op->data.gtk_vline.y2 = meta_draw_spec_new (info->theme, y2, NULL);
+      op->data.gtk_vline.x = meta_draw_spec_new (metacity, x, NULL);
+      op->data.gtk_vline.y1 = meta_draw_spec_new (metacity, y1, NULL);
+      op->data.gtk_vline.y2 = meta_draw_spec_new (metacity, y2, NULL);
 
       op->data.gtk_vline.state = state_val;
 
@@ -2473,10 +2477,10 @@ parse_draw_op_element (GMarkupParseContext  *context,
 
       op = meta_draw_op_new (META_DRAW_ICON);
 
-      op->data.icon.x = meta_draw_spec_new (info->theme, x, NULL);
-      op->data.icon.y = meta_draw_spec_new (info->theme, y, NULL);
-      op->data.icon.width = meta_draw_spec_new (info->theme, width, NULL);
-      op->data.icon.height = meta_draw_spec_new (info->theme, height, NULL);
+      op->data.icon.x = meta_draw_spec_new (metacity, x, NULL);
+      op->data.icon.y = meta_draw_spec_new (metacity, y, NULL);
+      op->data.icon.width = meta_draw_spec_new (metacity, width, NULL);
+      op->data.icon.height = meta_draw_spec_new (metacity, height, NULL);
 
       op->data.icon.alpha_spec = alpha_spec;
       op->data.icon.fill_type = fill_type_val;
@@ -2525,10 +2529,10 @@ parse_draw_op_element (GMarkupParseContext  *context,
 
       op->data.title.color_spec = color_spec;
 
-      op->data.title.x = meta_draw_spec_new (info->theme, x, NULL);
-      op->data.title.y = meta_draw_spec_new (info->theme, y, NULL);
+      op->data.title.x = meta_draw_spec_new (metacity, x, NULL);
+      op->data.title.y = meta_draw_spec_new (metacity, y, NULL);
       if (ellipsize_width)
-        op->data.title.ellipsize_width = meta_draw_spec_new (info->theme, ellipsize_width, NULL);
+        op->data.title.ellipsize_width = meta_draw_spec_new (metacity, ellipsize_width, NULL);
 
       g_assert (info->op_list);
 
@@ -2585,12 +2589,12 @@ parse_draw_op_element (GMarkupParseContext  *context,
       meta_draw_op_list_ref (op_list);
       op->data.op_list.op_list = op_list;
 
-      op->data.op_list.x = meta_draw_spec_new (info->theme, x ? x : "0", NULL);
-      op->data.op_list.y = meta_draw_spec_new (info->theme, y ? y : "0", NULL);
-      op->data.op_list.width = meta_draw_spec_new (info->theme,
+      op->data.op_list.x = meta_draw_spec_new (metacity, x ? x : "0", NULL);
+      op->data.op_list.y = meta_draw_spec_new (metacity, y ? y : "0", NULL);
+      op->data.op_list.width = meta_draw_spec_new (metacity,
                                                    width ? width : "width",
                                                    NULL);
-      op->data.op_list.height = meta_draw_spec_new (info->theme,
+      op->data.op_list.height = meta_draw_spec_new (metacity,
                                                     height ? height : "height",
                                                     NULL);
 
@@ -2652,22 +2656,22 @@ parse_draw_op_element (GMarkupParseContext  *context,
 
       meta_draw_op_list_ref (op_list);
 
-      op->data.tile.x = meta_draw_spec_new (info->theme, x ? x : "0", NULL);
-      op->data.tile.y = meta_draw_spec_new (info->theme, y ? y : "0", NULL);
-      op->data.tile.width = meta_draw_spec_new (info->theme,
+      op->data.tile.x = meta_draw_spec_new (metacity, x ? x : "0", NULL);
+      op->data.tile.y = meta_draw_spec_new (metacity, y ? y : "0", NULL);
+      op->data.tile.width = meta_draw_spec_new (metacity,
                                                 width ? width : "width",
                                                 NULL);
-      op->data.tile.height = meta_draw_spec_new (info->theme,
+      op->data.tile.height = meta_draw_spec_new (metacity,
                                                  height ? height : "height",
                                                  NULL);
-      op->data.tile.tile_xoffset = meta_draw_spec_new (info->theme,
+      op->data.tile.tile_xoffset = meta_draw_spec_new (metacity,
                                                        tile_xoffset ? tile_xoffset : "0",
                                                        NULL);
-      op->data.tile.tile_yoffset = meta_draw_spec_new (info->theme,
+      op->data.tile.tile_yoffset = meta_draw_spec_new (metacity,
                                                        tile_yoffset ? tile_yoffset : "0",
                                                        NULL);
-      op->data.tile.tile_width = meta_draw_spec_new (info->theme, tile_width, NULL);
-      op->data.tile.tile_height = meta_draw_spec_new (info->theme, tile_height, NULL);
+      op->data.tile.tile_width = meta_draw_spec_new (metacity, tile_width, NULL);
+      op->data.tile.tile_height = meta_draw_spec_new (metacity, tile_height, NULL);
 
       op->data.tile.op_list = op_list;
 

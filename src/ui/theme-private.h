@@ -19,6 +19,7 @@
 #define META_THEME_PRIVATE_H
 
 #include <libmetacity/meta-color-spec.h>
+#include <libmetacity/meta-draw-spec.h>
 #include <libmetacity/meta-gradient-spec.h>
 #include <libmetacity/meta-theme-impl.h>
 
@@ -29,11 +30,9 @@ G_BEGIN_DECLS
 typedef struct _MetaDrawInfo MetaDrawInfo;
 typedef struct _MetaDrawOp MetaDrawOp;
 typedef struct _MetaDrawOpList MetaDrawOpList;
-typedef struct _MetaDrawSpec MetaDrawSpec;
 typedef struct _MetaFrameLayout MetaFrameLayout;
 typedef struct _MetaFrameStyle MetaFrameStyle;
 typedef struct _MetaFrameStyleSet MetaFrameStyleSet;
-typedef struct _MetaPositionExprEnv MetaPositionExprEnv;
 
 /**
  * A drawing operation in our simple vector drawing language.
@@ -71,59 +70,6 @@ typedef enum
   /** tiled draw op list */
   META_DRAW_TILE
 } MetaDrawType;
-
-typedef enum
-{
-  POS_TOKEN_INT,
-  POS_TOKEN_DOUBLE,
-  POS_TOKEN_OPERATOR,
-  POS_TOKEN_VARIABLE,
-  POS_TOKEN_OPEN_PAREN,
-  POS_TOKEN_CLOSE_PAREN
-} PosTokenType;
-
-typedef enum
-{
-  POS_OP_NONE,
-  POS_OP_ADD,
-  POS_OP_SUBTRACT,
-  POS_OP_MULTIPLY,
-  POS_OP_DIVIDE,
-  POS_OP_MOD,
-  POS_OP_MAX,
-  POS_OP_MIN
-} PosOperatorType;
-
-/**
- * A token, as output by the tokeniser.
- *
- * \ingroup tokenizer
- */
-typedef struct
-{
-  PosTokenType type;
-
-  union
-  {
-    struct {
-      int val;
-    } i;
-
-    struct {
-      double val;
-    } d;
-
-    struct {
-      PosOperatorType op;
-    } o;
-
-    struct {
-      char *name;
-      GQuark name_quark;
-    } v;
-
-  } d;
-} PosToken;
 
 typedef enum
 {
@@ -332,55 +278,6 @@ struct _MetaDrawInfo
   int title_layout_width;
   int title_layout_height;
   const MetaFrameGeometry *fgeom;
-};
-
-struct _MetaPositionExprEnv
-{
-  GdkRectangle rect;
-  /* size of an object being drawn, if it has a natural size */
-  int object_width;
-  int object_height;
-  /* global object sizes, always available */
-  int left_width;
-  int right_width;
-  int top_height;
-  int bottom_height;
-  int title_width;
-  int title_height;
-  int frame_x_center;
-  int frame_y_center;
-  int mini_icon_width;
-  int mini_icon_height;
-  int icon_width;
-  int icon_height;
-};
-
-/**
- * A computed expression in our simple vector drawing language.
- * While it appears to take the form of a tree, this is actually
- * merely a list; concerns such as precedence of operators are
- * currently recomputed on every recalculation.
- *
- * Created by meta_draw_spec_new(), destroyed by meta_draw_spec_free().
- * pos_eval() fills this with ...FIXME. Are tokens a tree or a list?
- * \ingroup parser
- */
-struct _MetaDrawSpec
-{
-  /**
-   * If this spec is constant, this is the value of the constant;
-   * otherwise it is zero.
-   */
-  int value;
-
-  /** A list of tokens in the expression. */
-  PosToken *tokens;
-
-  /** How many tokens are in the tokens list. */
-  int n_tokens;
-
-  /** Does the expression contain any variables? */
-  gboolean constant : 1;
 };
 
 /**
@@ -664,11 +561,6 @@ void                   meta_frame_layout_unref                 (MetaFrameLayout 
 
 gboolean               meta_frame_layout_validate              (const MetaFrameLayout       *layout,
                                                                 GError                     **error);
-
-MetaDrawSpec          *meta_draw_spec_new                      (MetaTheme                   *theme,
-                                                                const char                  *expr,
-                                                                GError                     **error);
-void                   meta_draw_spec_free                     (MetaDrawSpec                *spec);
 
 MetaDrawOp            *meta_draw_op_new                        (MetaDrawType                 type);
 void                   meta_draw_op_free                       (MetaDrawOp                  *op);
