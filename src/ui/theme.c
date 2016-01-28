@@ -51,6 +51,7 @@
  */
 
 #include <config.h>
+#include "common.h" /* for META_MINI_ICON_WIDTH */
 #include "theme-private.h"
 #include "util.h"
 #include <gtk/gtk.h>
@@ -2943,7 +2944,7 @@ draw_op_as_pixbuf (const MetaDrawOp    *op,
 static void
 fill_env (MetaPositionExprEnv *env,
           const MetaDrawInfo  *info,
-          MetaRectangle        logical_region)
+          GdkRectangle         logical_region)
 {
   /* FIXME this stuff could be raised into draw_op_list_draw() probably
    */
@@ -2994,7 +2995,7 @@ meta_draw_op_draw_with_env (const MetaDrawOp    *op,
                             GtkStyleContext     *style_gtk,
                             cairo_t             *cr,
                             const MetaDrawInfo  *info,
-                            MetaRectangle        rect,
+                            GdkRectangle         rect,
                             MetaPositionExprEnv *env)
 {
   GdkRGBA color;
@@ -3415,7 +3416,7 @@ meta_draw_op_draw_with_env (const MetaDrawOp    *op,
 
     case META_DRAW_OP_LIST:
       {
-        MetaRectangle d_rect;
+        GdkRectangle d_rect;
 
         d_rect.x = parse_x_position_unchecked (op->data.op_list.x, env);
         d_rect.y = parse_y_position_unchecked (op->data.op_list.y, env);
@@ -3432,7 +3433,7 @@ meta_draw_op_draw_with_env (const MetaDrawOp    *op,
       {
         int rx, ry, rwidth, rheight;
         int tile_xoffset, tile_yoffset;
-        MetaRectangle tile;
+        GdkRectangle tile;
 
         rx = parse_x_position_unchecked (op->data.tile.x, env);
         ry = parse_y_position_unchecked (op->data.tile.y, env);
@@ -3532,7 +3533,7 @@ meta_draw_op_list_draw_with_style  (const MetaDrawOpList *op_list,
                                     GtkStyleContext      *style_gtk,
                                     cairo_t              *cr,
                                     const MetaDrawInfo   *info,
-                                    MetaRectangle         rect)
+                                    GdkRectangle          rect)
 {
   int i;
   MetaPositionExprEnv env;
@@ -4212,13 +4213,11 @@ meta_frame_style_draw_with_style (MetaFrameStyle          *style,
 
           if (op_list)
             {
-              MetaRectangle m_rect;
-              m_rect = meta_rect (rect.x, rect.y, rect.width, rect.height);
               meta_draw_op_list_draw_with_style (op_list,
                                                  style_info->styles[META_STYLE_ELEMENT_WINDOW],
                                                  cr,
                                                  &draw_info,
-                                                 m_rect);
+                                                 rect);
             }
         }
 
@@ -4249,14 +4248,11 @@ meta_frame_style_draw_with_style (MetaFrameStyle          *style,
 
                   if (gdk_cairo_get_clip_rectangle (cr, NULL))
                     {
-                      MetaRectangle m_rect;
-                      m_rect = meta_rect (rect.x, rect.y,
-                                          rect.width, rect.height);
                       meta_draw_op_list_draw_with_style (op_list,
                                                          style_info->styles[META_STYLE_ELEMENT_WINDOW],
                                                          cr,
                                                          &draw_info,
-                                                         m_rect);
+                                                         rect);
                     }
                   cairo_restore (cr);
                 }

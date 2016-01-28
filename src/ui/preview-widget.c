@@ -24,6 +24,7 @@
 
 #include <math.h>
 #include <gtk/gtk.h>
+#include "common.h" /* for META_MINI_ICON_WIDTH */
 #include "preview-widget.h"
 #include "theme-private.h"
 

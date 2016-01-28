@@ -22,7 +22,6 @@
 #include <libmetacity/meta-gradient-spec.h>
 #include <libmetacity/meta-theme-impl.h>
 
-#include "boxes.h"
 #include "theme.h"
 
 G_BEGIN_DECLS
@@ -337,7 +336,7 @@ struct _MetaDrawInfo
 
 struct _MetaPositionExprEnv
 {
-  MetaRectangle rect;
+  GdkRectangle rect;
   /* size of an object being drawn, if it has a natural size */
   int object_width;
   int object_height;
@@ -681,7 +680,7 @@ void                   meta_draw_op_list_draw_with_style       (const MetaDrawOp
                                                                 GtkStyleContext             *style_gtk,
                                                                 cairo_t                     *cr,
                                                                 const MetaDrawInfo          *info,
-                                                                MetaRectangle                rect);
+                                                                GdkRectangle                 rect);
 void                   meta_draw_op_list_append                (MetaDrawOpList              *op_list,
                                                                 MetaDrawOp                  *op);
 gboolean               meta_draw_op_list_validate              (MetaDrawOpList              *op_list,
