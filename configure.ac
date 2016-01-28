@@ -422,6 +422,10 @@ dnl **************************************************************************
 AC_CONFIG_FILES([
   Makefile
 
+  data/Makefile
+  data/pkgconfig/Makefile
+  data/pkgconfig/libmetacity.pc
+
   doc/Makefile
   doc/creating_themes/Makefile
   doc/man/Makefile

@@ -1,6 +1,6 @@
 NULL =
 
-noinst_LTLIBRARIES = libmetacity.la
+lib_LTLIBRARIES = libmetacity.la
 
 libmetacity_la_SOURCES = \
 	meta-color.c \
@@ -43,6 +43,18 @@ libmetacity_la_LDFLAGS = \
 
 libmetacity_la_LIBADD = \
 	$(LIBMETACITY_LIBS) \
+	$(NULL)
+
+libmetacity_includedir = $(includedir)/metacity/libmetacity
+libmetacity_include_HEADERS = \
+	meta-color.h \
+	meta-color-spec.h \
+	meta-gradient.h \
+	meta-gradient-spec.h \
+	meta-theme.h \
+	meta-theme-gtk.h \
+	meta-theme-impl.h \
+	meta-theme-metacity.h \
 	$(NULL)
 
 -include $(top_srcdir)/git.mk
