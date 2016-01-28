@@ -647,16 +647,6 @@ struct _MetaTheme
 
   PangoFontDescription *titlebar_font;
 
-  /** Symbol table of integer constants. */
-  GHashTable *integer_constants;
-  /** Symbol table of float constants. */
-  GHashTable *float_constants;
-  /**
-   * Symbol table of colour constants (hex triples, and triples
-   * plus alpha).
-   * */
-  GHashTable *color_constants;
-
   GHashTable *images_by_filename;
   GHashTable *layouts_by_name;
   GHashTable *draw_op_lists_by_name;
@@ -744,29 +734,6 @@ MetaFrameStyleSet     *meta_theme_lookup_style_set             (MetaTheme       
 void                   meta_theme_insert_style_set             (MetaTheme                   *theme,
                                                                 const char                  *name,
                                                                 MetaFrameStyleSet           *style_set);
-
-gboolean               meta_theme_define_int_constant          (MetaTheme                   *theme,
-                                                                const char                  *name,
-                                                                int                          value,
-                                                                GError                     **error);
-gboolean               meta_theme_lookup_int_constant          (MetaTheme                   *theme,
-                                                                const char                  *name,
-                                                                int                         *value);
-gboolean               meta_theme_define_float_constant        (MetaTheme                   *theme,
-                                                                const char                  *name,
-                                                                double                       value,
-                                                                GError                     **error);
-gboolean               meta_theme_lookup_float_constant        (MetaTheme                   *theme,
-                                                                const char                  *name,
-                                                                double                      *value);
-
-gboolean               meta_theme_define_color_constant        (MetaTheme                   *theme,
-                                                                const char                  *name,
-                                                                const char                  *value,
-                                                                GError                     **error);
-gboolean               meta_theme_lookup_color_constant        (MetaTheme                   *theme,
-                                                                const char                  *name,
-                                                                char                       **value);
 
 PangoFontDescription  *meta_gtk_widget_get_font_desc           (GtkWidget                   *widget,
                                                                 double                       scale,

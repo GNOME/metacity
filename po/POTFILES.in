@@ -2,6 +2,7 @@
 # Please keep this file sorted alphabetically.
 libmetacity/meta-color-spec.c
 libmetacity/meta-gradient-spec.c
+libmetacity/meta-theme-metacity.c
 src/50-metacity-navigation.xml.in
 src/50-metacity-system.xml.in
 src/50-metacity-windows.xml.in

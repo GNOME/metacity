@@ -146,7 +146,7 @@ convert_DATA = metacity-schemas.convert
 bin_PROGRAMS=metacity metacity-theme-viewer
 
 metacity_LDADD=@METACITY_LIBS@ libmetacity-private.la $(top_builddir)/libmetacity/libmetacity.la
-metacity_theme_viewer_LDADD= @METACITY_LIBS@ libmetacity-private.la
+metacity_theme_viewer_LDADD= @METACITY_LIBS@ libmetacity-private.la $(top_builddir)/libmetacity/libmetacity.la
 
 testboxes_SOURCES=include/util.h core/util.c include/boxes.h core/boxes.c core/testboxes.c
 testgradient_SOURCES=../libmetacity/meta-gradient.h ../libmetacity/meta-gradient.c ui/testgradient.c

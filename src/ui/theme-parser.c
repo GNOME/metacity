@@ -22,6 +22,7 @@
 #include <config.h>
 #include "theme-private.h"
 #include "util.h"
+#include <libmetacity/meta-theme-metacity.h>
 #include <string.h>
 #include <stdlib.h>
 
@@ -565,7 +566,7 @@ parse_positive_integer (const char          *str,
   /* Is str a constant? */
 
   if (META_THEME_ALLOWS (theme, META_THEME_UBIQUITOUS_CONSTANTS) &&
-      meta_theme_lookup_int_constant (theme, str, &j))
+      meta_theme_metacity_lookup_int (META_THEME_METACITY (theme->impl), str, &j))
     {
       /* Yes. */
       l = j;
@@ -813,7 +814,8 @@ parse_color (MetaTheme *theme,
   char* referent;
 
   if (META_THEME_ALLOWS (theme, META_THEME_COLOR_CONSTANTS) &&
-      meta_theme_lookup_color_constant (theme, str, &referent))
+      meta_theme_metacity_lookup_color (META_THEME_METACITY (theme->impl),
+                                        str, &referent))
     {
       if (referent)
         return meta_color_spec_new_from_string (referent, err);
@@ -906,10 +908,8 @@ parse_toplevel_element (GMarkupParseContext  *context,
               if (!parse_double (value, &dval, context, error))
                 return;
 
-              if (!meta_theme_define_float_constant (info->theme,
-                                                     name,
-                                                     dval,
-                                                     error))
+              if (!meta_theme_metacity_define_float (META_THEME_METACITY (info->theme->impl),
+                                                     name, dval, error))
                 {
                   add_context_to_error (error, context);
                   return;
@@ -920,10 +920,8 @@ parse_toplevel_element (GMarkupParseContext  *context,
               if (!parse_positive_integer (value, &ival, context, info->theme, error))
                 return;
 
-              if (!meta_theme_define_int_constant (info->theme,
-                                                   name,
-                                                   ival,
-                                                   error))
+              if (!meta_theme_metacity_define_int (META_THEME_METACITY (info->theme->impl),
+                                                   name, ival, error))
                 {
                   add_context_to_error (error, context);
                   return;
@@ -932,10 +930,8 @@ parse_toplevel_element (GMarkupParseContext  *context,
         }
       else
         {
-          if (!meta_theme_define_color_constant (info->theme,
-                                                 name,
-                                                 value,
-                                                 error))
+          if (!meta_theme_metacity_define_color (META_THEME_METACITY (info->theme->impl),
+                                                 name, value, error))
             {
               add_context_to_error (error, context);
               return;
