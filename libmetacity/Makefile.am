@@ -3,6 +3,8 @@ NULL =
 lib_LTLIBRARIES = libmetacity.la
 
 libmetacity_la_SOURCES = \
+	meta-button-function.c \
+	meta-button-function.h \
 	meta-color.c \
 	meta-color.h \
 	meta-color-private.h \
@@ -49,6 +51,7 @@ libmetacity_la_LIBADD = \
 
 libmetacity_includedir = $(includedir)/metacity/libmetacity
 libmetacity_include_HEADERS = \
+	meta-button-function.h \
 	meta-color.h \
 	meta-color-spec.h \
 	meta-frame-borders.h \

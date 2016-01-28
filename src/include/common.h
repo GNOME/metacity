@@ -30,6 +30,7 @@
 #include <X11/Xlib.h>
 #include <glib.h>
 #include <gtk/gtk.h>
+#include <libmetacity/meta-button-function.h>
 
 typedef struct _MetaResizePopup MetaResizePopup;
 
@@ -227,26 +228,6 @@ typedef enum
   META_SIDE_TOP             = META_DIRECTION_TOP,
   META_SIDE_BOTTOM          = META_DIRECTION_BOTTOM
 } MetaSide;
-
-/* Function a window button can have.  Note, you can't add stuff here
- * without extending the theme format to draw a new function and
- * breaking all existing themes.
- */
-typedef enum
-{
-  META_BUTTON_FUNCTION_MENU,
-  META_BUTTON_FUNCTION_APPMENU,
-  META_BUTTON_FUNCTION_MINIMIZE,
-  META_BUTTON_FUNCTION_MAXIMIZE,
-  META_BUTTON_FUNCTION_CLOSE,
-  META_BUTTON_FUNCTION_SHADE,
-  META_BUTTON_FUNCTION_ABOVE,
-  META_BUTTON_FUNCTION_STICK,
-  META_BUTTON_FUNCTION_UNSHADE,
-  META_BUTTON_FUNCTION_UNABOVE,
-  META_BUTTON_FUNCTION_UNSTICK,
-  META_BUTTON_FUNCTION_LAST
-} MetaButtonFunction;
 
 #define MAX_BUTTONS_PER_CORNER META_BUTTON_FUNCTION_LAST
 

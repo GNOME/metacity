@@ -1137,67 +1137,6 @@ button_layout_equal (const MetaButtonLayout *a,
   return TRUE;
 }
 
-/*
- * This conversion cannot be handled by GSettings since
- * several values are stored in the same key (as a string).
- */
-static MetaButtonFunction
-button_function_from_string (const char *str)
-{
-  if (strcmp (str, "menu") == 0)
-    return META_BUTTON_FUNCTION_MENU;
-  else if (strcmp (str, "appmenu") == 0)
-    return META_BUTTON_FUNCTION_APPMENU;
-  else if (strcmp (str, "minimize") == 0)
-    return META_BUTTON_FUNCTION_MINIMIZE;
-  else if (strcmp (str, "maximize") == 0)
-    return META_BUTTON_FUNCTION_MAXIMIZE;
-  else if (strcmp (str, "close") == 0)
-    return META_BUTTON_FUNCTION_CLOSE;
-  else if (strcmp (str, "shade") == 0)
-    return META_BUTTON_FUNCTION_SHADE;
-  else if (strcmp (str, "above") == 0)
-    return META_BUTTON_FUNCTION_ABOVE;
-  else if (strcmp (str, "stick") == 0)
-    return META_BUTTON_FUNCTION_STICK;
-  else
-    /* don't know; give up */
-    return META_BUTTON_FUNCTION_LAST;
-}
-
-static MetaButtonFunction
-button_opposite_function (MetaButtonFunction ofwhat)
-{
-  switch (ofwhat)
-    {
-    case META_BUTTON_FUNCTION_SHADE:
-      return META_BUTTON_FUNCTION_UNSHADE;
-    case META_BUTTON_FUNCTION_UNSHADE:
-      return META_BUTTON_FUNCTION_SHADE;
-
-    case META_BUTTON_FUNCTION_ABOVE:
-      return META_BUTTON_FUNCTION_UNABOVE;
-    case META_BUTTON_FUNCTION_UNABOVE:
-      return META_BUTTON_FUNCTION_ABOVE;
-
-    case META_BUTTON_FUNCTION_STICK:
-      return META_BUTTON_FUNCTION_UNSTICK;
-    case META_BUTTON_FUNCTION_UNSTICK:
-      return META_BUTTON_FUNCTION_STICK;
-
-    case META_BUTTON_FUNCTION_MENU:
-    case META_BUTTON_FUNCTION_APPMENU:
-    case META_BUTTON_FUNCTION_MINIMIZE:
-    case META_BUTTON_FUNCTION_MAXIMIZE:
-    case META_BUTTON_FUNCTION_CLOSE:
-    case META_BUTTON_FUNCTION_LAST:
-      return META_BUTTON_FUNCTION_LAST;
-
-    default:
-      return META_BUTTON_FUNCTION_LAST;
-    }
-}
-
 static void
 update_button_layout (const gchar *string_value)
 {
@@ -1230,11 +1169,11 @@ update_button_layout (const gchar *string_value)
       b = 0;
       while (buttons[b] != NULL)
         {
-          MetaButtonFunction f = button_function_from_string (buttons[b]);
+          MetaButtonFunction f = meta_button_function_from_string (buttons[b]);
           if (i > 0 && strcmp("spacer", buttons[b]) == 0)
             {
               new_layout.left_buttons_has_spacer[i-1] = TRUE;
-              f = button_opposite_function (f);
+              f = meta_button_function_get_opposite (f);
 
               if (f != META_BUTTON_FUNCTION_LAST)
                 {
@@ -1249,7 +1188,7 @@ update_button_layout (const gchar *string_value)
                   used[f] = TRUE;
                   i++;
 
-                  f = button_opposite_function (f);
+                  f = meta_button_function_get_opposite (f);
 
                   if (f != META_BUTTON_FUNCTION_LAST)
                       new_layout.left_buttons[i++] = f;
@@ -1293,11 +1232,11 @@ update_button_layout (const gchar *string_value)
       b = 0;
       while (buttons[b] != NULL)
         {
-          MetaButtonFunction f = button_function_from_string (buttons[b]);
+          MetaButtonFunction f = meta_button_function_from_string (buttons[b]);
           if (i > 0 && strcmp("spacer", buttons[b]) == 0)
             {
               new_layout.right_buttons_has_spacer[i-1] = TRUE;
-              f = button_opposite_function (f);
+              f = meta_button_function_get_opposite (f);
               if (f != META_BUTTON_FUNCTION_LAST)
                 {
                   new_layout.right_buttons_has_spacer[i-2] = TRUE;
@@ -1311,7 +1250,7 @@ update_button_layout (const gchar *string_value)
                   used[f] = TRUE;
                   i++;
 
-                  f = button_opposite_function (f);
+                  f = meta_button_function_get_opposite (f);
 
                   if (f != META_BUTTON_FUNCTION_LAST)
                       new_layout.right_buttons[i++] = f;
