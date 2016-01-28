@@ -277,7 +277,10 @@ struct _MetaDrawInfo
   PangoLayout *title_layout;
   int title_layout_width;
   int title_layout_height;
-  const MetaFrameGeometry *fgeom;
+
+  MetaFrameBorders  borders;
+  gint              width;
+  gint              height;
 };
 
 /**

@@ -1772,24 +1772,13 @@ fill_env (MetaPositionExprEnv *env,
   env->rect = logical_region;
   env->object_width = -1;
   env->object_height = -1;
-  if (info->fgeom)
-    {
-      env->left_width = info->fgeom->borders.visible.left;
-      env->right_width = info->fgeom->borders.visible.right;
-      env->top_height = info->fgeom->borders.visible.top;
-      env->bottom_height = info->fgeom->borders.visible.bottom;
-      env->frame_x_center = info->fgeom->width / 2 - logical_region.x;
-      env->frame_y_center = info->fgeom->height / 2 - logical_region.y;
-    }
-  else
-    {
-      env->left_width = 0;
-      env->right_width = 0;
-      env->top_height = 0;
-      env->bottom_height = 0;
-      env->frame_x_center = 0;
-      env->frame_y_center = 0;
-    }
+
+  env->left_width = info->borders.visible.left;
+  env->right_width = info->borders.visible.right;
+  env->top_height = info->borders.visible.top;
+  env->bottom_height = info->borders.visible.bottom;
+  env->frame_x_center = info->width / 2 - logical_region.x;
+  env->frame_y_center = info->height / 2 - logical_region.y;
 
   env->mini_icon_width = info->mini_icon ? gdk_pixbuf_get_width (info->mini_icon) : 0;
   env->mini_icon_height = info->mini_icon ? gdk_pixbuf_get_height (info->mini_icon) : 0;
@@ -2946,7 +2935,10 @@ meta_frame_style_draw_with_style (MetaFrameStyle          *style,
   draw_info.title_layout = title_layout;
   draw_info.title_layout_width = title_layout ? extents.width : 0;
   draw_info.title_layout_height = title_layout ? extents.height : 0;
-  draw_info.fgeom = fgeom;
+
+  draw_info.borders = fgeom->borders;
+  draw_info.width = fgeom->width;
+  draw_info.height = fgeom->height;
 
   /* The enum is in the order the pieces should be rendered. */
   i = 0;
