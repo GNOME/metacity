@@ -1,6 +1,7 @@
 # List of source files containing translatable strings.
 # Please keep this file sorted alphabetically.
 libmetacity/meta-color-spec.c
+libmetacity/meta-draw-op.c
 libmetacity/meta-draw-spec.c
 libmetacity/meta-gradient-spec.c
 libmetacity/meta-theme-metacity.c
