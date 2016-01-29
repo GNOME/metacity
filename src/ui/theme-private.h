@@ -323,7 +323,6 @@ struct _MetaTheme
 
   GHashTable *images_by_filename;
   GHashTable *layouts_by_name;
-  GHashTable *draw_op_lists_by_name;
   GHashTable *styles_by_name;
   GHashTable *style_sets_by_name;
 
@@ -370,11 +369,6 @@ MetaFrameLayout       *meta_theme_lookup_layout                (MetaTheme       
 void                   meta_theme_insert_layout                (MetaTheme                   *theme,
                                                                 const char                  *name,
                                                                 MetaFrameLayout             *layout);
-MetaDrawOpList        *meta_theme_lookup_draw_op_list          (MetaTheme                   *theme,
-                                                                const char                  *name);
-void                   meta_theme_insert_draw_op_list          (MetaTheme                   *theme,
-                                                                const char                  *name,
-                                                                MetaDrawOpList              *op_list);
 MetaFrameStyle        *meta_theme_lookup_style                 (MetaTheme                   *theme,
                                                                 const char                  *name);
 void                   meta_theme_insert_style                 (MetaTheme                   *theme,

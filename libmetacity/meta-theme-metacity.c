@@ -20,6 +20,7 @@
 
 #include <glib/gi18n-lib.h>
 
+#include "meta-draw-op.h"
 #include "meta-theme.h"
 #include "meta-theme-metacity.h"
 
@@ -30,6 +31,8 @@ struct _MetaThemeMetacity
   GHashTable    *integers;
   GHashTable    *floats;
   GHashTable    *colors;
+
+  GHashTable    *draw_op_lists;
 };
 
 G_DEFINE_TYPE (MetaThemeMetacity, meta_theme_metacity, META_TYPE_THEME_IMPL)
@@ -51,6 +54,8 @@ meta_theme_metacity_dispose (GObject *object)
   g_clear_pointer (&metacity->floats, g_hash_table_destroy);
   g_clear_pointer (&metacity->colors, g_hash_table_destroy);
 
+  g_clear_pointer (&metacity->draw_op_lists, g_hash_table_destroy);
+
   G_OBJECT_CLASS (meta_theme_metacity_parent_class)->dispose (object);
 }
 
@@ -67,6 +72,8 @@ meta_theme_metacity_class_init (MetaThemeMetacityClass *metacity_class)
 static void
 meta_theme_metacity_init (MetaThemeMetacity *metacity)
 {
+  metacity->draw_op_lists = g_hash_table_new_full (g_str_hash, g_str_equal, g_free,
+                                                   (GDestroyNotify) meta_draw_op_list_unref);
 }
 
 gboolean
@@ -240,4 +247,20 @@ meta_theme_metacity_lookup_color (MetaThemeMetacity  *metacity,
   *value = result;
 
   return TRUE;
+}
+
+MetaDrawOpList *
+meta_theme_metacity_lookup_draw_op_list (MetaThemeMetacity *metacity,
+                                         const gchar       *name)
+{
+  return g_hash_table_lookup (metacity->draw_op_lists, name);
+}
+
+void
+meta_theme_metacity_insert_draw_op_list (MetaThemeMetacity *metacity,
+                                         const gchar       *name,
+                                         MetaDrawOpList    *op_list)
+{
+  meta_draw_op_list_ref (op_list);
+  g_hash_table_replace (metacity->draw_op_lists, g_strdup (name), op_list);
 }

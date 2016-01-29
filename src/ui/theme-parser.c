@@ -786,7 +786,11 @@ parse_toplevel_element (GMarkupParseContext  *context,
                         ParseInfo            *info,
                         GError              **error)
 {
+  MetaThemeMetacity *metacity;
+
   g_return_if_fail (peek_state (info) == STATE_THEME);
+
+  metacity = META_THEME_METACITY (info->theme->impl);
 
   if (ELEMENT_IS ("info"))
     {
@@ -978,7 +982,7 @@ parse_toplevel_element (GMarkupParseContext  *context,
                               NULL))
         return;
 
-      if (meta_theme_lookup_draw_op_list (info->theme, name))
+      if (meta_theme_metacity_lookup_draw_op_list (metacity, name))
         {
           set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
                      _("<%s> name \"%s\" used a second time"),
@@ -989,7 +993,7 @@ parse_toplevel_element (GMarkupParseContext  *context,
       g_assert (info->op_list == NULL);
       info->op_list = meta_draw_op_list_new (2);
 
-      meta_theme_insert_draw_op_list (info->theme, name, info->op_list);
+      meta_theme_metacity_insert_draw_op_list (metacity, name, info->op_list);
 
       push_state (info, STATE_DRAW_OPS);
     }
@@ -2478,8 +2482,7 @@ parse_draw_op_element (GMarkupParseContext  *context,
       /* x/y/width/height default to 0,0,width,height - should
        * probably do this for all the draw ops
        */
-      op_list = meta_theme_lookup_draw_op_list (info->theme,
-                                                name);
+      op_list = meta_theme_metacity_lookup_draw_op_list (metacity, name);
       if (op_list == NULL)
         {
           set_error (error, context, G_MARKUP_ERROR,
@@ -2546,8 +2549,7 @@ parse_draw_op_element (GMarkupParseContext  *context,
         return;
 
       /* These default to 0 */
-      op_list = meta_theme_lookup_draw_op_list (info->theme,
-                                                name);
+      op_list = meta_theme_metacity_lookup_draw_op_list (metacity, name);
       if (op_list == NULL)
         {
           set_error (error, context, G_MARKUP_ERROR,
@@ -2752,9 +2754,13 @@ parse_style_element (GMarkupParseContext  *context,
                      ParseInfo            *info,
                      GError              **error)
 {
+  MetaThemeMetacity *metacity;
+
   g_return_if_fail (peek_state (info) == STATE_FRAME_STYLE);
 
   g_assert (info->style);
+
+  metacity = META_THEME_METACITY (info->theme->impl);
 
   if (ELEMENT_IS ("piece"))
     {
@@ -2791,8 +2797,7 @@ parse_style_element (GMarkupParseContext  *context,
         {
           MetaDrawOpList *op_list;
 
-          op_list = meta_theme_lookup_draw_op_list (info->theme,
-                                                    draw_ops);
+          op_list = meta_theme_metacity_lookup_draw_op_list (metacity, draw_ops);
 
           if (op_list == NULL)
             {
@@ -2868,8 +2873,7 @@ parse_style_element (GMarkupParseContext  *context,
         {
           MetaDrawOpList *op_list;
 
-          op_list = meta_theme_lookup_draw_op_list (info->theme,
-                                                    draw_ops);
+          op_list = meta_theme_metacity_lookup_draw_op_list (metacity, draw_ops);
 
           if (op_list == NULL)
             {
