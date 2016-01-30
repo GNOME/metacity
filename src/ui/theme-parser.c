@@ -214,9 +214,6 @@ parse_info_free (ParseInfo *info)
   g_slist_free (info->states);
   g_slist_free (info->required_versions);
 
-  if (info->theme)
-    meta_theme_free (info->theme);
-
   if (info->layout)
     meta_frame_layout_unref (info->layout);
 
@@ -3465,7 +3462,6 @@ start_element_handler (GMarkupParseContext *context,
     case STATE_START:
       if (strcmp (element_name, "metacity_theme") == 0)
         {
-          info->theme = meta_theme_new (META_THEME_TYPE_METACITY);
           info->theme->name = g_strdup (info->theme_name);
           info->theme->filename = g_strdup (info->theme_file);
           info->theme->dirname = g_strdup (info->theme_dir);
@@ -3708,11 +3704,7 @@ end_element_handler (GMarkupParseContext *context,
       g_assert (info->theme);
 
       if (!meta_theme_validate (info->theme, error))
-        {
-          add_context_to_error (error, context);
-          meta_theme_free (info->theme);
-          info->theme = NULL;
-        }
+        add_context_to_error (error, context);
 
       pop_state (info);
       g_assert (peek_state (info) == STATE_START);
@@ -4124,8 +4116,62 @@ theme_error_is_fatal (GError *error)
            error->code == META_THEME_ERROR_TOO_OLD));
 }
 
-static MetaTheme *
-load_theme (const char *theme_dir,
+static void
+clear_theme (MetaTheme *theme)
+{
+  gint i;
+
+  g_free (theme->name);
+  theme->name = NULL;
+
+  g_free (theme->dirname);
+  theme->dirname = NULL;
+
+  g_free (theme->filename);
+  theme->filename = NULL;
+
+  g_free (theme->readable_name);
+  theme->readable_name = NULL;
+
+  g_free (theme->date);
+  theme->date = NULL;
+
+  g_free (theme->description);
+  theme->description = NULL;
+
+  g_free (theme->author);
+  theme->author = NULL;
+
+  g_free (theme->copyright);
+  theme->copyright = NULL;
+
+  if (theme->titlebar_font)
+    {
+      pango_font_description_free (theme->titlebar_font);
+      theme->titlebar_font = NULL;
+    }
+
+  g_hash_table_remove_all (theme->images_by_filename);
+  g_hash_table_remove_all (theme->layouts_by_name);
+  g_hash_table_remove_all (theme->styles_by_name);
+  g_hash_table_remove_all (theme->style_sets_by_name);
+
+  for (i = 0; i < META_FRAME_TYPE_LAST; i++)
+    {
+      if (theme->style_sets_by_type[i] == NULL)
+        continue;
+
+      meta_frame_style_set_unref (theme->style_sets_by_type[i]);
+      theme->style_sets_by_type[i] = NULL;
+    }
+
+  g_clear_object (&theme->impl);
+  theme->impl = g_object_new (META_TYPE_THEME_METACITY, NULL);
+}
+
+static gboolean
+load_theme (MetaTheme  *theme,
+            const char *theme_dir,
             const char *theme_name,
             guint       major_version,
             GError    **error)
@@ -4136,13 +4182,15 @@ load_theme (const char *theme_dir,
   gsize length;
   char *theme_filename;
   char *theme_file;
-  MetaTheme *retval;
+  gboolean retval;
 
-  g_return_val_if_fail (error && *error == NULL, NULL);
+  g_return_val_if_fail (error && *error == NULL, FALSE);
 
   text = NULL;
-  retval = NULL;
+  retval = FALSE;
   context = NULL;
+
+  clear_theme (theme);
 
   theme_filename = g_strdup_printf (METACITY_THEME_FILENAME_FORMAT, major_version);
   theme_file = g_build_filename (theme_dir, theme_filename, NULL);
@@ -4154,6 +4202,7 @@ load_theme (const char *theme_dir,
 
   parse_info_init (&info);
 
+  info.theme = theme;
   info.theme_name = theme_name;
   info.theme_file = theme_file;
   info.theme_dir = theme_dir;
@@ -4168,8 +4217,7 @@ load_theme (const char *theme_dir,
   if (!g_markup_parse_context_end_parse (context, error))
     goto out;
 
-  retval = info.theme;
-  info.theme = NULL;
+  retval = TRUE;
 
  out:
   if (*error && !theme_error_is_fatal (*error))
@@ -4201,18 +4249,19 @@ keep_trying (GError **error)
   return FALSE;
 }
 
-MetaTheme*
-meta_theme_load (const char  *theme_name,
-                 GError     **err)
+gboolean
+meta_theme_load (MetaTheme    *theme,
+                 const gchar  *theme_name,
+                 GError      **err)
 {
   GError *error = NULL;
   char *theme_dir;
-  MetaTheme *retval;
+  gboolean retval;
   const gchar* const* xdg_data_dirs;
   int major_version;
   int i;
 
-  retval = NULL;
+  retval = FALSE;
 
   /* We try all supported major versions from current to oldest */
   for (major_version = THEME_MAJOR_VERSION; (major_version > 0); major_version--)
@@ -4226,7 +4275,7 @@ meta_theme_load (const char  *theme_name,
                                     THEME_SUBDIR,
                                     NULL);
 
-      retval = load_theme (theme_dir, theme_name, major_version, &error);
+      retval = load_theme (theme, theme_dir, theme_name, major_version, &error);
       g_free (theme_dir);
       if (!keep_trying (&error))
         goto out;
@@ -4241,7 +4290,7 @@ meta_theme_load (const char  *theme_name,
                                         THEME_SUBDIR,
                                         NULL);
 
-          retval = load_theme (theme_dir, theme_name, major_version, &error);
+          retval = load_theme (theme, theme_dir, theme_name, major_version, &error);
           g_free (theme_dir);
           if (!keep_trying (&error))
             goto out;
@@ -4253,7 +4302,7 @@ meta_theme_load (const char  *theme_name,
                                     theme_name,
                                     THEME_SUBDIR,
                                     NULL);
-      retval = load_theme (theme_dir, theme_name, major_version, &error);
+      retval = load_theme (theme, theme_dir, theme_name, major_version, &error);
       g_free (theme_dir);
       if (!keep_trying (&error))
         goto out;

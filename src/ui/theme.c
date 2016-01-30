@@ -2211,14 +2211,15 @@ theme_set_current_metacity (const gchar                *name,
       g_strcmp0 (name, meta_current_theme->name) == 0)
     return;
 
-  err = NULL;
-  new_theme = meta_theme_load (name, &err);
+  new_theme = meta_theme_new (META_THEME_TYPE_METACITY);
 
-  if (new_theme == NULL)
+  err = NULL;
+  if (!meta_theme_load (new_theme, name, &err))
     {
-      meta_warning (_("Failed to load theme \"%s\": %s\n"),
-                    name, err->message);
+      g_warning (_("Failed to load theme '%s': %s"), name, err->message);
       g_error_free (err);
+
+      meta_theme_free (new_theme);
     }
   else
     {

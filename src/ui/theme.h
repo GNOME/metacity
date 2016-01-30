@@ -148,8 +148,9 @@ void       meta_theme_set_current (const char                 *name,
 MetaTheme* meta_theme_new      (MetaThemeType type);
 void       meta_theme_free     (MetaTheme *theme);
 
-MetaTheme* meta_theme_load (const char *theme_name,
-                            GError    **err);
+gboolean   meta_theme_load (MetaTheme    *theme,
+                            const gchar  *theme_name,
+                            GError      **err);
 
 void meta_theme_set_composited (MetaTheme  *theme,
                                 gboolean    composited);

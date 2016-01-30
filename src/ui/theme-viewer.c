@@ -842,6 +842,7 @@ benchmark_summary (void)
 int
 main (int argc, char **argv)
 {
+  gboolean loaded;
   GtkWidget *window;
   GtkWidget *collection;
   MetaStyleInfo *style_info;
@@ -864,23 +865,31 @@ main (int argc, char **argv)
     }
 
   start = clock ();
+  global_theme = meta_theme_new (META_THEME_TYPE_METACITY);
+
   err = NULL;
+  loaded = FALSE;
+
   if (argc == 1)
-    global_theme = meta_theme_load ("Atlanta", &err);
+    loaded = meta_theme_load (global_theme, "Atlanta", &err);
   else if (argc == 2)
-    global_theme = meta_theme_load (argv[1], &err);
+    loaded = meta_theme_load (global_theme, argv[1], &err);
   else
     {
       g_printerr (_("Usage: metacity-theme-viewer [THEMENAME]\n"));
+
+      meta_theme_free (global_theme);
       exit (1);
     }
+
   end = clock ();
 
-  if (global_theme == NULL)
+  if (loaded == FALSE)
     {
-      g_printerr (_("Error loading theme: %s\n"),
-                  err->message);
+      g_printerr (_("Error loading theme: %s\n"), err->message);
       g_error_free (err);
+
+      meta_theme_free (global_theme);
       exit (1);
     }
 
