@@ -148,6 +148,78 @@ check_state  (MetaFrameStyleSet  *style_set,
   return TRUE;
 }
 
+static const char*
+meta_button_type_to_string (MetaButtonType type)
+{
+  switch (type)
+    {
+      case META_BUTTON_TYPE_CLOSE:
+        return "close";
+      case META_BUTTON_TYPE_MAXIMIZE:
+        return "maximize";
+      case META_BUTTON_TYPE_MINIMIZE:
+        return "minimize";
+      case META_BUTTON_TYPE_SHADE:
+       return "shade";
+      case META_BUTTON_TYPE_ABOVE:
+        return "above";
+      case META_BUTTON_TYPE_STICK:
+        return "stick";
+      case META_BUTTON_TYPE_UNSHADE:
+        return "unshade";
+      case META_BUTTON_TYPE_UNABOVE:
+        return "unabove";
+      case META_BUTTON_TYPE_UNSTICK:
+        return "unstick";
+      case META_BUTTON_TYPE_MENU:
+        return "menu";
+      case META_BUTTON_TYPE_APPMENU:
+        return "appmenu";
+      case META_BUTTON_TYPE_LEFT_LEFT_BACKGROUND:
+        return "left_left_background";
+      case META_BUTTON_TYPE_LEFT_MIDDLE_BACKGROUND:
+        return "left_middle_background";
+      case META_BUTTON_TYPE_LEFT_RIGHT_BACKGROUND:
+        return "left_right_background";
+      case META_BUTTON_TYPE_LEFT_SINGLE_BACKGROUND:
+        return "left_single_background";
+      case META_BUTTON_TYPE_RIGHT_LEFT_BACKGROUND:
+        return "right_left_background";
+      case META_BUTTON_TYPE_RIGHT_MIDDLE_BACKGROUND:
+        return "right_middle_background";
+      case META_BUTTON_TYPE_RIGHT_RIGHT_BACKGROUND:
+        return "right_right_background";
+      case META_BUTTON_TYPE_RIGHT_SINGLE_BACKGROUND:
+        return "right_single_background";
+      case META_BUTTON_TYPE_LAST:
+        break;
+      default:
+        break;
+    }
+
+  return "<unknown>";
+}
+
+static const char*
+meta_button_state_to_string (MetaButtonState state)
+{
+  switch (state)
+    {
+      case META_BUTTON_STATE_NORMAL:
+        return "normal";
+      case META_BUTTON_STATE_PRESSED:
+        return "pressed";
+      case META_BUTTON_STATE_PRELIGHT:
+        return "prelight";
+      case META_BUTTON_STATE_LAST:
+        break;
+      default:
+        break;
+    }
+
+  return "<unknown>";
+}
+
 /**
  * Constructor for a MetaFrameStyle.
  *
@@ -230,6 +302,104 @@ meta_frame_style_apply_scale (const MetaFrameStyle *style,
   double scale = style->layout->title_scale;
 
   pango_font_description_set_size (font_desc, MAX (size * scale, 1));
+}
+
+gboolean
+meta_frame_style_validate (MetaFrameStyle  *style,
+                           guint            current_theme_version,
+                           GError         **error)
+{
+  int i, j;
+
+  g_return_val_if_fail (style != NULL, FALSE);
+  g_return_val_if_fail (style->layout != NULL, FALSE);
+
+  for (i = 0; i < META_BUTTON_TYPE_LAST; i++)
+    {
+      /* for now the "positional" buttons are optional */
+      if (i >= META_BUTTON_TYPE_CLOSE)
+        {
+          for (j = 0; j < META_BUTTON_STATE_LAST; j++)
+            {
+              guint earliest_version;
+
+              earliest_version = meta_theme_metacity_earliest_version_with_button (i);
+
+              if (meta_frame_style_get_button (style, i, j) == NULL &&
+                  earliest_version <= current_theme_version)
+                {
+                  g_set_error (error, META_THEME_ERROR, META_THEME_ERROR_FAILED,
+                               _("<button function='%s' state='%s' draw_ops='whatever'/> must be specified for this frame style"),
+                               meta_button_type_to_string (i),
+                               meta_button_state_to_string (j));
+                  return FALSE;
+                }
+            }
+        }
+    }
+
+  return TRUE;
+}
+
+MetaDrawOpList *
+meta_frame_style_get_button (MetaFrameStyle  *style,
+                             MetaButtonType   type,
+                             MetaButtonState  state)
+{
+  MetaDrawOpList *op_list;
+  MetaFrameStyle *parent;
+
+  parent = style;
+  op_list = NULL;
+
+  while (parent && op_list == NULL)
+    {
+      op_list = parent->buttons[type][state];
+      parent = parent->parent;
+    }
+
+  /* We fall back to the side buttons if we don't have
+   * single button backgrounds, and to middle button
+   * backgrounds if we don't have the ones on the sides
+   */
+
+  if (op_list == NULL && type == META_BUTTON_TYPE_LEFT_SINGLE_BACKGROUND)
+    {
+      return meta_frame_style_get_button (style,
+                                          META_BUTTON_TYPE_LEFT_LEFT_BACKGROUND,
+                                          state);
+    }
+
+  if (op_list == NULL && type == META_BUTTON_TYPE_RIGHT_SINGLE_BACKGROUND)
+    {
+      return meta_frame_style_get_button (style,
+                                          META_BUTTON_TYPE_RIGHT_RIGHT_BACKGROUND,
+                                          state);
+    }
+
+  if (op_list == NULL &&
+      (type == META_BUTTON_TYPE_LEFT_LEFT_BACKGROUND ||
+       type == META_BUTTON_TYPE_LEFT_RIGHT_BACKGROUND))
+    {
+      return meta_frame_style_get_button (style,
+                                          META_BUTTON_TYPE_LEFT_MIDDLE_BACKGROUND,
+                                          state);
+    }
+
+  if (op_list == NULL &&
+      (type == META_BUTTON_TYPE_RIGHT_LEFT_BACKGROUND ||
+       type == META_BUTTON_TYPE_RIGHT_RIGHT_BACKGROUND))
+    {
+      return meta_frame_style_get_button (style,
+                                          META_BUTTON_TYPE_RIGHT_MIDDLE_BACKGROUND,
+                                          state);
+    }
+
+  /* We fall back to normal if no prelight */
+  if (op_list == NULL && state == META_BUTTON_STATE_PRELIGHT)
+    return meta_frame_style_get_button (style, type, META_BUTTON_STATE_NORMAL);
+
+  return op_list;
 }
 
 MetaFrameStyleSet *

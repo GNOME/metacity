@@ -102,6 +102,10 @@ gboolean           meta_frame_style_validate      (MetaFrameStyle        *style,
                                                    guint                  current_theme_version,
                                                    GError               **error);
 
+MetaDrawOpList    *meta_frame_style_get_button    (MetaFrameStyle        *style,
+                                                   MetaButtonType         type,
+                                                   MetaButtonState        state);
+
 MetaFrameStyleSet *meta_frame_style_set_new       (MetaFrameStyleSet     *parent);
 
 void               meta_frame_style_set_ref       (MetaFrameStyleSet     *style_set);
