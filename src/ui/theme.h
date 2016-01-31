@@ -23,6 +23,7 @@
 #define THEME_H
 
 #include <gtk/gtk.h>
+#include <libmetacity/meta-button-enums.h>
 #include <libmetacity/meta-button-layout.h>
 #include <libmetacity/meta-frame-borders.h>
 #include <libmetacity/meta-frame-enums.h>
@@ -104,39 +105,6 @@ struct _MetaFrameGeometry
   guint bottom_left_corner_rounded_radius;
   guint bottom_right_corner_rounded_radius;
 };
-
-typedef enum
-{
-  META_BUTTON_STATE_NORMAL,
-  META_BUTTON_STATE_PRESSED,
-  META_BUTTON_STATE_PRELIGHT,
-  META_BUTTON_STATE_LAST
-} MetaButtonState;
-
-typedef enum
-{
-  /* Ordered so that background is drawn first */
-  META_BUTTON_TYPE_LEFT_LEFT_BACKGROUND,
-  META_BUTTON_TYPE_LEFT_MIDDLE_BACKGROUND,
-  META_BUTTON_TYPE_LEFT_RIGHT_BACKGROUND,
-  META_BUTTON_TYPE_LEFT_SINGLE_BACKGROUND,
-  META_BUTTON_TYPE_RIGHT_LEFT_BACKGROUND,
-  META_BUTTON_TYPE_RIGHT_MIDDLE_BACKGROUND,
-  META_BUTTON_TYPE_RIGHT_RIGHT_BACKGROUND,
-  META_BUTTON_TYPE_RIGHT_SINGLE_BACKGROUND,
-  META_BUTTON_TYPE_CLOSE,
-  META_BUTTON_TYPE_MAXIMIZE,
-  META_BUTTON_TYPE_MINIMIZE,
-  META_BUTTON_TYPE_MENU,
-  META_BUTTON_TYPE_APPMENU,
-  META_BUTTON_TYPE_SHADE,
-  META_BUTTON_TYPE_ABOVE,
-  META_BUTTON_TYPE_STICK,
-  META_BUTTON_TYPE_UNSHADE,
-  META_BUTTON_TYPE_UNABOVE,
-  META_BUTTON_TYPE_UNSTICK,
-  META_BUTTON_TYPE_LAST
-} MetaButtonType;
 
 MetaTheme* meta_theme_get_current (void);
 void       meta_theme_set_current (const char                 *name,

@@ -4,6 +4,7 @@ libmetacity/meta-color-spec.c
 libmetacity/meta-draw-op.c
 libmetacity/meta-draw-spec.c
 libmetacity/meta-frame-layout.c
+libmetacity/meta-frame-style.c
 libmetacity/meta-gradient-spec.c
 libmetacity/meta-theme-metacity.c
 src/50-metacity-navigation.xml.in

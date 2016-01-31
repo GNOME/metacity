@@ -3,6 +3,7 @@ NULL =
 lib_LTLIBRARIES = libmetacity.la
 
 libmetacity_la_SOURCES = \
+	meta-button-enums.h \
 	meta-button-function.c \
 	meta-button-function.h \
 	meta-button-layout.c \
@@ -21,6 +22,8 @@ libmetacity_la_SOURCES = \
 	meta-frame-enums.h \
 	meta-frame-layout.c \
 	meta-frame-layout.h \
+	meta-frame-style.c \
+	meta-frame-style.h \
 	meta-gradient.c \
 	meta-gradient.h \
 	meta-gradient-private.h \
@@ -62,6 +65,7 @@ libmetacity_la_LIBADD = \
 
 libmetacity_includedir = $(includedir)/metacity/libmetacity
 libmetacity_include_HEADERS = \
+	meta-button-enums.h \
 	meta-button-function.h \
 	meta-button-layout.h \
 	meta-color.h \
@@ -71,6 +75,7 @@ libmetacity_include_HEADERS = \
 	meta-frame-borders.h \
 	meta-frame-enums.h \
 	meta-frame-layout.h \
+	meta-frame-style.h \
 	meta-gradient.h \
 	meta-gradient-spec.h \
 	meta-style-info.h \
