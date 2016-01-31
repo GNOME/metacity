@@ -17,8 +17,11 @@
 
 #include "config.h"
 
+#include <glib/gi18n.h>
+
 #include "meta-frame-style.h"
 #include "meta-theme-impl.h"
+#include "meta-theme.h"
 
 typedef struct
 {
@@ -49,6 +52,20 @@ meta_theme_impl_dispose (GObject *object)
   G_OBJECT_CLASS (meta_theme_impl_parent_class)->dispose (object);
 }
 
+static gboolean
+meta_theme_real_impl_load (MetaThemeImpl  *impl,
+                           const gchar    *name,
+                           GError        **error)
+{
+  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+
+  g_set_error (error, META_THEME_ERROR, META_THEME_ERROR_FAILED,
+               _("MetaThemeImplClass::load not implemented for '%s'"),
+               g_type_name (G_TYPE_FROM_INSTANCE (impl)));
+
+  return FALSE;
+}
+
 static void
 meta_theme_impl_class_init (MetaThemeImplClass *impl_class)
 {
@@ -57,11 +74,21 @@ meta_theme_impl_class_init (MetaThemeImplClass *impl_class)
   object_class = G_OBJECT_CLASS (impl_class);
 
   object_class->dispose = meta_theme_impl_dispose;
+
+  impl_class->load = meta_theme_real_impl_load;
 }
 
 static void
 meta_theme_impl_init (MetaThemeImpl *impl)
 {
+}
+
+gboolean
+meta_theme_impl_load (MetaThemeImpl  *impl,
+                      const gchar    *name,
+                      GError        **error)
+{
+  return META_THEME_IMPL_GET_CLASS (impl)->load (impl, name, error);
 }
 
 void

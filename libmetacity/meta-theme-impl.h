@@ -32,14 +32,22 @@ G_DECLARE_DERIVABLE_TYPE (MetaThemeImpl, meta_theme_impl,
 struct _MetaThemeImplClass
 {
   GObjectClass parent_class;
+
+  gboolean (* load) (MetaThemeImpl  *impl,
+                     const gchar    *name,
+                     GError        **error);
 };
 
-void               meta_theme_impl_add_style_set (MetaThemeImpl     *impl,
-                                                  MetaFrameType      type,
-                                                  MetaFrameStyleSet *style_set);
+gboolean           meta_theme_impl_load          (MetaThemeImpl      *impl,
+                                                  const gchar        *name,
+                                                  GError            **error);
 
-MetaFrameStyleSet *meta_theme_impl_get_style_set (MetaThemeImpl     *impl,
-                                                  MetaFrameType      type);
+void               meta_theme_impl_add_style_set (MetaThemeImpl      *impl,
+                                                  MetaFrameType       type,
+                                                  MetaFrameStyleSet  *style_set);
+
+MetaFrameStyleSet *meta_theme_impl_get_style_set (MetaThemeImpl      *impl,
+                                                  MetaFrameType       type);
 
 G_END_DECLS
 
