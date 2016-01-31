@@ -218,7 +218,6 @@ struct _MetaTheme
   PangoFontDescription *titlebar_font;
 
   GHashTable *images_by_filename;
-  GHashTable *layouts_by_name;
   GHashTable *styles_by_name;
   GHashTable *style_sets_by_name;
 
@@ -252,11 +251,6 @@ MetaFrameStyle        *meta_theme_get_frame_style              (MetaTheme       
 PangoFontDescription  *meta_style_info_create_font_desc        (MetaTheme                   *theme,
                                                                 MetaStyleInfo               *style_info);
 
-MetaFrameLayout       *meta_theme_lookup_layout                (MetaTheme                   *theme,
-                                                                const char                  *name);
-void                   meta_theme_insert_layout                (MetaTheme                   *theme,
-                                                                const char                  *name,
-                                                                MetaFrameLayout             *layout);
 MetaFrameStyle        *meta_theme_lookup_style                 (MetaTheme                   *theme,
                                                                 const char                  *name);
 void                   meta_theme_insert_style                 (MetaTheme                   *theme,

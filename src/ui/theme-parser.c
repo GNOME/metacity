@@ -916,7 +916,7 @@ parse_toplevel_element (GMarkupParseContext  *context,
       if (title_scale && !parse_title_scale (title_scale, &title_scale_val, context, error))
         return;
 
-      if (meta_theme_lookup_layout (info->theme, name))
+      if (meta_theme_metacity_lookup_layout (metacity, name))
         {
           set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
                      _("<%s> name \"%s\" used a second time"),
@@ -927,7 +927,7 @@ parse_toplevel_element (GMarkupParseContext  *context,
       parent_layout = NULL;
       if (parent)
         {
-          parent_layout = meta_theme_lookup_layout (info->theme, parent);
+          parent_layout = meta_theme_metacity_lookup_layout (metacity, parent);
           if (parent_layout == NULL)
             {
               set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
@@ -965,7 +965,7 @@ parse_toplevel_element (GMarkupParseContext  *context,
       if (rounded_bottom_right)
         info->layout->bottom_right_corner_rounded_radius = rounded_bottom_right_val;
 
-      meta_theme_insert_layout (info->theme, name, info->layout);
+      meta_theme_metacity_insert_layout (metacity, name, info->layout);
 
       push_state (info, STATE_FRAME_GEOMETRY);
     }
@@ -1037,7 +1037,7 @@ parse_toplevel_element (GMarkupParseContext  *context,
       layout = NULL;
       if (geometry)
         {
-          layout = meta_theme_lookup_layout (info->theme, geometry);
+          layout = meta_theme_metacity_lookup_layout (metacity, geometry);
           if (layout == NULL)
             {
               set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
@@ -4152,7 +4152,6 @@ clear_theme (MetaTheme *theme)
     }
 
   g_hash_table_remove_all (theme->images_by_filename);
-  g_hash_table_remove_all (theme->layouts_by_name);
   g_hash_table_remove_all (theme->styles_by_name);
   g_hash_table_remove_all (theme->style_sets_by_name);
 

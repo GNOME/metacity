@@ -2129,12 +2129,6 @@ meta_theme_new (MetaThemeType type)
                            g_free,
                            (GDestroyNotify) g_object_unref);
 
-  theme->layouts_by_name =
-    g_hash_table_new_full (g_str_hash,
-                           g_str_equal,
-                           g_free,
-                           (GDestroyNotify) meta_frame_layout_unref);
-
   theme->styles_by_name =
     g_hash_table_new_full (g_str_hash,
                            g_str_equal,
@@ -2177,7 +2171,6 @@ meta_theme_free (MetaTheme *theme)
     pango_font_description_free (theme->titlebar_font);
 
   g_hash_table_destroy (theme->images_by_filename);
-  g_hash_table_destroy (theme->layouts_by_name);
   g_hash_table_destroy (theme->styles_by_name);
   g_hash_table_destroy (theme->style_sets_by_name);
 
@@ -2465,22 +2458,6 @@ meta_theme_calc_geometry (MetaTheme              *theme,
                                    type,
                                    fgeom,
                                    theme);
-}
-
-MetaFrameLayout*
-meta_theme_lookup_layout (MetaTheme         *theme,
-                          const char        *name)
-{
-  return g_hash_table_lookup (theme->layouts_by_name, name);
-}
-
-void
-meta_theme_insert_layout (MetaTheme         *theme,
-                          const char        *name,
-                          MetaFrameLayout   *layout)
-{
-  meta_frame_layout_ref (layout);
-  g_hash_table_replace (theme->layouts_by_name, g_strdup (name), layout);
 }
 
 MetaFrameStyle*
