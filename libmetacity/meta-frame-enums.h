@@ -46,6 +46,95 @@ typedef enum
 
 typedef enum
 {
+  META_FRAME_FOCUS_NO,
+  META_FRAME_FOCUS_YES,
+  META_FRAME_FOCUS_LAST
+} MetaFrameFocus;
+
+typedef enum
+{
+  /* Listed in the order in which the textures are drawn.
+   * (though this only matters for overlaps of course.)
+   * Buttons are drawn after the frame textures.
+   *
+   * On the corners, horizontal pieces are arbitrarily given the
+   * corner area:
+   *
+   *   =====                 |====
+   *   |                     |
+   *   |       rather than   |
+   *
+   */
+
+  /* entire frame */
+  META_FRAME_PIECE_ENTIRE_BACKGROUND,
+  /* entire titlebar background */
+  META_FRAME_PIECE_TITLEBAR,
+  /* portion of the titlebar background inside the titlebar
+   * background edges
+   */
+  META_FRAME_PIECE_TITLEBAR_MIDDLE,
+  /* left end of titlebar */
+  META_FRAME_PIECE_LEFT_TITLEBAR_EDGE,
+  /* right end of titlebar */
+  META_FRAME_PIECE_RIGHT_TITLEBAR_EDGE,
+  /* top edge of titlebar */
+  META_FRAME_PIECE_TOP_TITLEBAR_EDGE,
+  /* bottom edge of titlebar */
+  META_FRAME_PIECE_BOTTOM_TITLEBAR_EDGE,
+  /* render over title background (text area) */
+  META_FRAME_PIECE_TITLE,
+  /* left edge of the frame */
+  META_FRAME_PIECE_LEFT_EDGE,
+  /* right edge of the frame */
+  META_FRAME_PIECE_RIGHT_EDGE,
+  /* bottom edge of the frame */
+  META_FRAME_PIECE_BOTTOM_EDGE,
+  /* place over entire frame, after drawing everything else */
+  META_FRAME_PIECE_OVERLAY,
+  /* Used to get size of the enum */
+  META_FRAME_PIECE_LAST
+} MetaFramePiece;
+
+typedef enum
+{
+  META_FRAME_RESIZE_NONE,
+  META_FRAME_RESIZE_VERTICAL,
+  META_FRAME_RESIZE_HORIZONTAL,
+  META_FRAME_RESIZE_BOTH,
+  META_FRAME_RESIZE_LAST
+} MetaFrameResize;
+
+/* Kinds of frame...
+ *
+ *  normal ->   noresize / vert only / horz only / both
+ *              focused / unfocused
+ *  max    ->   focused / unfocused
+ *  shaded ->   focused / unfocused
+ *  max/shaded -> focused / unfocused
+ *
+ *  so 4 states with 8 sub-states in one, 2 sub-states in the other 3,
+ *  meaning 14 total
+ *
+ * 14 window states times 7 or 8 window types. Except some
+ * window types never get a frame so that narrows it down a bit.
+ *
+ */
+typedef enum
+{
+  META_FRAME_STATE_NORMAL,
+  META_FRAME_STATE_MAXIMIZED,
+  META_FRAME_STATE_TILED_LEFT,
+  META_FRAME_STATE_TILED_RIGHT,
+  META_FRAME_STATE_SHADED,
+  META_FRAME_STATE_MAXIMIZED_AND_SHADED,
+  META_FRAME_STATE_TILED_LEFT_AND_SHADED,
+  META_FRAME_STATE_TILED_RIGHT_AND_SHADED,
+  META_FRAME_STATE_LAST
+} MetaFrameState;
+
+typedef enum
+{
   META_FRAME_TYPE_NORMAL,
   META_FRAME_TYPE_DIALOG,
   META_FRAME_TYPE_MODAL_DIALOG,
