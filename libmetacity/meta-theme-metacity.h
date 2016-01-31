@@ -19,6 +19,7 @@
 #ifndef META_THEME_METACITY_H
 #define META_THEME_METACITY_H
 
+#include <libmetacity/meta-button-enums.h>
 #include "meta-theme-impl.h"
 
 G_BEGIN_DECLS
@@ -32,60 +33,33 @@ typedef struct _MetaFrameStyleSet MetaFrameStyleSet;
 G_DECLARE_FINAL_TYPE (MetaThemeMetacity, meta_theme_metacity,
                       META, THEME_METACITY, MetaThemeImpl)
 
-gboolean           meta_theme_metacity_define_int          (MetaThemeMetacity  *metacity,
-                                                            const gchar        *name,
-                                                            gint                value,
-                                                            GError            **error);
-
 gboolean           meta_theme_metacity_lookup_int          (MetaThemeMetacity  *metacity,
                                                             const gchar        *name,
                                                             gint               *value);
-
-gboolean           meta_theme_metacity_define_float        (MetaThemeMetacity  *metacity,
-                                                            const gchar        *name,
-                                                            gdouble             value,
-                                                            GError            **error);
 
 gboolean           meta_theme_metacity_lookup_float        (MetaThemeMetacity  *metacity,
                                                             const gchar        *name,
                                                             gdouble            *value);
 
-gboolean           meta_theme_metacity_define_color        (MetaThemeMetacity  *metacity,
-                                                            const gchar        *name,
-                                                            const gchar        *value,
-                                                            GError            **error);
-
-gboolean           meta_theme_metacity_lookup_color        (MetaThemeMetacity  *metacity,
-                                                            const gchar        *name,
-                                                            gchar             **value);
-
 MetaDrawOpList    *meta_theme_metacity_lookup_draw_op_list (MetaThemeMetacity  *metacity,
                                                             const gchar        *name);
-
-void               meta_theme_metacity_insert_draw_op_list (MetaThemeMetacity  *metacity,
-                                                            const gchar        *name,
-                                                            MetaDrawOpList     *op_list);
 
 MetaFrameLayout   *meta_theme_metacity_lookup_layout       (MetaThemeMetacity  *metacity,
                                                             const gchar        *name);
 
-void               meta_theme_metacity_insert_layout       (MetaThemeMetacity  *metacity,
-                                                            const gchar        *name,
-                                                            MetaFrameLayout    *layout);
-
 MetaFrameStyle    *meta_theme_metacity_lookup_style        (MetaThemeMetacity  *metacity,
                                                             const gchar        *name);
-
-void               meta_theme_metacity_insert_style        (MetaThemeMetacity  *metacity,
-                                                            const gchar        *name,
-                                                            MetaFrameStyle     *style);
 
 MetaFrameStyleSet *meta_theme_metacity_lookup_style_set    (MetaThemeMetacity  *metacity,
                                                             const gchar        *name);
 
-void               meta_theme_metacity_insert_style_set    (MetaThemeMetacity  *metacity,
-                                                            const gchar        *name,
-                                                            MetaFrameStyleSet  *style_set);
+const gchar       *meta_theme_metacity_get_name            (MetaThemeMetacity  *metacity);
+
+const gchar       *meta_theme_metacity_get_readable_name   (MetaThemeMetacity  *metacity);
+
+gboolean           meta_theme_metacity_allows_shade_stick_above_buttons (MetaThemeMetacity *metacity);
+
+guint              meta_theme_metacity_earliest_version_with_button (MetaButtonType type);
 
 G_END_DECLS
 

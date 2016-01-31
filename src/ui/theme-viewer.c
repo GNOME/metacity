@@ -839,6 +839,32 @@ benchmark_summary (void)
   return label;
 }
 
+static const gchar *
+theme_get_name (MetaTheme *theme)
+{
+  MetaThemeImpl *impl;
+
+  impl = theme->impl;
+
+  if (META_IS_THEME_METACITY (impl))
+    return meta_theme_metacity_get_name (META_THEME_METACITY (impl));
+
+  return NULL;
+}
+
+static const gchar *
+theme_get_readable_name (MetaTheme *theme)
+{
+  MetaThemeImpl *impl;
+
+  impl = theme->impl;
+
+  if (META_IS_THEME_METACITY (impl))
+    return meta_theme_metacity_get_readable_name (META_THEME_METACITY (impl));
+
+  return NULL;
+}
+
 int
 main (int argc, char **argv)
 {
@@ -893,8 +919,8 @@ main (int argc, char **argv)
       exit (1);
     }
 
-  g_print (_("Loaded theme \"%s\" in %g seconds\n"),
-           global_theme->name,
+  g_print (_("Loaded theme '%s' in %g seconds\n"),
+           theme_get_name (global_theme),
            (end - start) / (double) CLOCKS_PER_SEC);
 
   run_theme_benchmark ();
@@ -902,21 +928,18 @@ main (int argc, char **argv)
   window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_default_size (GTK_WINDOW (window), 350, 350);
 
-  if (strcmp (global_theme->name, global_theme->readable_name)==0)
-    gtk_window_set_title (GTK_WINDOW (window),
-                          global_theme->readable_name);
+  if (g_strcmp0 (theme_get_name (global_theme), theme_get_readable_name (global_theme)) == 0)
+    gtk_window_set_title (GTK_WINDOW (window), theme_get_name (global_theme));
   else
     {
       /* The theme directory name is different from the name the theme
        * gives itself within its file.  Display both, directory name first.
        */
-      gchar *title =  g_strconcat (global_theme->name, " - ",
-                                   global_theme->readable_name,
+      gchar *title =  g_strconcat (theme_get_name (global_theme), " - ",
+                                   theme_get_readable_name (global_theme),
                                    NULL);
 
-      gtk_window_set_title (GTK_WINDOW (window),
-                            title);
-
+      gtk_window_set_title (GTK_WINDOW (window), title);
       g_free (title);
     }
 

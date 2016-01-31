@@ -44,6 +44,7 @@ libmetacity_la_SOURCES = \
 	$(NULL)
 
 libmetacity_la_CPPFLAGS = \
+	-DDATADIR=\"$(datadir)\" \
 	-I$(top_srcdir) \
 	$(AM_CPPFLAGS) \
 	$(NULL)

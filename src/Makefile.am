@@ -118,7 +118,6 @@ libmetacity_private_la_SOURCES =		\
 	include/common.h			\
 	ui/preview-widget.c			\
 	ui/preview-widget.h			\
-	ui/theme-parser.c			\
 	ui/theme-private.h			\
 	ui/theme.c				\
 	ui/theme.h				\

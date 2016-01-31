@@ -100,6 +100,9 @@ meta_theme_impl_add_style_set (MetaThemeImpl     *impl,
 
   priv = meta_theme_impl_get_instance_private (impl);
 
+  if (priv->style_sets_by_type[type])
+    meta_frame_style_set_unref (priv->style_sets_by_type[type]);
+
   priv->style_sets_by_type[type] = style_set;
 }
 

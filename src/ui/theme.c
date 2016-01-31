@@ -174,99 +174,188 @@ rect_for_function (MetaFrameGeometry *fgeom,
                    MetaButtonFunction function,
                    MetaTheme         *theme)
 {
+  if (META_IS_THEME_METACITY (theme->impl))
+    {
+      MetaThemeMetacity *metacity;
 
-  /* Firstly, check version-specific things. */
+      metacity = META_THEME_METACITY (theme->impl);
 
-  if (META_THEME_ALLOWS(theme, META_THEME_SHADE_STICK_ABOVE_BUTTONS))
+      if (meta_theme_metacity_allows_shade_stick_above_buttons (metacity))
+        {
+          switch (function)
+            {
+              case META_BUTTON_FUNCTION_SHADE:
+                if ((flags & META_FRAME_ALLOWS_SHADE) && !(flags & META_FRAME_SHADED))
+                  return &fgeom->shade_rect;
+                else
+                  return NULL;
+
+              case META_BUTTON_FUNCTION_ABOVE:
+                if (!(flags & META_FRAME_ABOVE))
+                  return &fgeom->above_rect;
+                else
+                  return NULL;
+
+              case META_BUTTON_FUNCTION_STICK:
+                if (!(flags & META_FRAME_STUCK))
+                  return &fgeom->stick_rect;
+                else
+                  return NULL;
+
+              case META_BUTTON_FUNCTION_UNSHADE:
+                if ((flags & META_FRAME_ALLOWS_SHADE) && (flags & META_FRAME_SHADED))
+                  return &fgeom->unshade_rect;
+                else
+                  return NULL;
+
+              case META_BUTTON_FUNCTION_UNABOVE:
+                if (flags & META_FRAME_ABOVE)
+                  return &fgeom->unabove_rect;
+                else
+                  return NULL;
+
+              case META_BUTTON_FUNCTION_UNSTICK:
+                if (flags & META_FRAME_STUCK)
+                  return &fgeom->unstick_rect;
+                else
+                  return NULL;
+
+              case META_BUTTON_FUNCTION_MENU:
+              case META_BUTTON_FUNCTION_APPMENU:
+              case META_BUTTON_FUNCTION_MINIMIZE:
+              case META_BUTTON_FUNCTION_MAXIMIZE:
+              case META_BUTTON_FUNCTION_CLOSE:
+              case META_BUTTON_FUNCTION_LAST:
+              default:
+                break;
+            }
+
+          /* now consider the buttons which exist in all versions */
+          switch (function)
+            {
+              case META_BUTTON_FUNCTION_MENU:
+                if (flags & META_FRAME_ALLOWS_MENU)
+                  return &fgeom->menu_rect;
+                else
+                  return NULL;
+
+              case META_BUTTON_FUNCTION_APPMENU:
+                if (flags & META_FRAME_ALLOWS_APPMENU)
+                  return &fgeom->appmenu_rect;
+                else
+                  return NULL;
+
+              case META_BUTTON_FUNCTION_MINIMIZE:
+                if (flags & META_FRAME_ALLOWS_MINIMIZE)
+                  return &fgeom->min_rect;
+                else
+                  return NULL;
+
+              case META_BUTTON_FUNCTION_MAXIMIZE:
+                if (flags & META_FRAME_ALLOWS_MAXIMIZE)
+                  return &fgeom->max_rect;
+                else
+                  return NULL;
+
+              case META_BUTTON_FUNCTION_CLOSE:
+                if (flags & META_FRAME_ALLOWS_DELETE)
+                  return &fgeom->close_rect;
+                else
+                  return NULL;
+
+              case META_BUTTON_FUNCTION_STICK:
+              case META_BUTTON_FUNCTION_SHADE:
+              case META_BUTTON_FUNCTION_ABOVE:
+              case META_BUTTON_FUNCTION_UNSTICK:
+              case META_BUTTON_FUNCTION_UNSHADE:
+              case META_BUTTON_FUNCTION_UNABOVE:
+                /* we are being asked for a >v1 button which hasn't been handled yet,
+                 * so obviously we're not in a theme which supports that version.
+                 * therefore, we don't show the button. return NULL and all will
+                 * be well.
+                 */
+                return NULL;
+
+              case META_BUTTON_FUNCTION_LAST:
+              default:
+                break;
+            }
+        }
+    }
+  else
     {
       switch (function)
         {
-        case META_BUTTON_FUNCTION_SHADE:
-          if ((flags & META_FRAME_ALLOWS_SHADE) && !(flags & META_FRAME_SHADED))
-            return &fgeom->shade_rect;
-          else
-            return NULL;
-        case META_BUTTON_FUNCTION_ABOVE:
-          if (!(flags & META_FRAME_ABOVE))
-            return &fgeom->above_rect;
-          else
-            return NULL;
-        case META_BUTTON_FUNCTION_STICK:
-          if (!(flags & META_FRAME_STUCK))
-            return &fgeom->stick_rect;
-          else
-            return NULL;
-        case META_BUTTON_FUNCTION_UNSHADE:
-          if ((flags & META_FRAME_ALLOWS_SHADE) && (flags & META_FRAME_SHADED))
-            return &fgeom->unshade_rect;
-          else
-            return NULL;
-        case META_BUTTON_FUNCTION_UNABOVE:
-          if (flags & META_FRAME_ABOVE)
-            return &fgeom->unabove_rect;
-          else
-            return NULL;
-        case META_BUTTON_FUNCTION_UNSTICK:
-          if (flags & META_FRAME_STUCK)
-            return &fgeom->unstick_rect;
-        case META_BUTTON_FUNCTION_MENU:
-        case META_BUTTON_FUNCTION_APPMENU:
-        case META_BUTTON_FUNCTION_MINIMIZE:
-        case META_BUTTON_FUNCTION_MAXIMIZE:
-        case META_BUTTON_FUNCTION_CLOSE:
-        case META_BUTTON_FUNCTION_LAST:
-        default:
-          /* just go on to the next switch block */;
+          case META_BUTTON_FUNCTION_MENU:
+            if (flags & META_FRAME_ALLOWS_MENU)
+              return &fgeom->menu_rect;
+            else
+              return NULL;
+
+          case META_BUTTON_FUNCTION_APPMENU:
+            if (flags & META_FRAME_ALLOWS_APPMENU)
+              return &fgeom->appmenu_rect;
+            else
+              return NULL;
+
+          case META_BUTTON_FUNCTION_MINIMIZE:
+            if (flags & META_FRAME_ALLOWS_MINIMIZE)
+              return &fgeom->min_rect;
+            else
+              return NULL;
+
+          case META_BUTTON_FUNCTION_MAXIMIZE:
+            if (flags & META_FRAME_ALLOWS_MAXIMIZE)
+              return &fgeom->max_rect;
+            else
+              return NULL;
+
+          case META_BUTTON_FUNCTION_CLOSE:
+            if (flags & META_FRAME_ALLOWS_DELETE)
+              return &fgeom->close_rect;
+            else
+              return NULL;
+
+          case META_BUTTON_FUNCTION_SHADE:
+            if ((flags & META_FRAME_ALLOWS_SHADE) && !(flags & META_FRAME_SHADED))
+              return &fgeom->shade_rect;
+            else
+              return NULL;
+
+          case META_BUTTON_FUNCTION_ABOVE:
+            if (!(flags & META_FRAME_ABOVE))
+              return &fgeom->above_rect;
+            else
+              return NULL;
+
+          case META_BUTTON_FUNCTION_STICK:
+            if (!(flags & META_FRAME_STUCK))
+              return &fgeom->stick_rect;
+            else
+              return NULL;
+
+          case META_BUTTON_FUNCTION_UNSHADE:
+            if ((flags & META_FRAME_ALLOWS_SHADE) && (flags & META_FRAME_SHADED))
+              return &fgeom->unshade_rect;
+            else
+              return NULL;
+
+          case META_BUTTON_FUNCTION_UNABOVE:
+            if (flags & META_FRAME_ABOVE)
+              return &fgeom->unabove_rect;
+            else
+              return NULL;
+
+          case META_BUTTON_FUNCTION_UNSTICK:
+            if (flags & META_FRAME_STUCK)
+              return &fgeom->unstick_rect;
+            else
+              return NULL;
+
+          case META_BUTTON_FUNCTION_LAST:
+          default:
+            break;
         }
-    }
-
-  /* now consider the buttons which exist in all versions */
-
-  switch (function)
-    {
-    case META_BUTTON_FUNCTION_MENU:
-      if (flags & META_FRAME_ALLOWS_MENU)
-        return &fgeom->menu_rect;
-      else
-        return NULL;
-    case META_BUTTON_FUNCTION_APPMENU:
-      if (flags & META_FRAME_ALLOWS_APPMENU)
-        return &fgeom->appmenu_rect;
-      else
-        return NULL;
-    case META_BUTTON_FUNCTION_MINIMIZE:
-      if (flags & META_FRAME_ALLOWS_MINIMIZE)
-        return &fgeom->min_rect;
-      else
-        return NULL;
-    case META_BUTTON_FUNCTION_MAXIMIZE:
-      if (flags & META_FRAME_ALLOWS_MAXIMIZE)
-        return &fgeom->max_rect;
-      else
-        return NULL;
-    case META_BUTTON_FUNCTION_CLOSE:
-      if (flags & META_FRAME_ALLOWS_DELETE)
-        return &fgeom->close_rect;
-      else
-        return NULL;
-    case META_BUTTON_FUNCTION_STICK:
-    case META_BUTTON_FUNCTION_SHADE:
-    case META_BUTTON_FUNCTION_ABOVE:
-    case META_BUTTON_FUNCTION_UNSTICK:
-    case META_BUTTON_FUNCTION_UNSHADE:
-    case META_BUTTON_FUNCTION_UNABOVE:
-      /* we are being asked for a >v1 button which hasn't been handled yet,
-       * so obviously we're not in a theme which supports that version.
-       * therefore, we don't show the button. return NULL and all will
-       * be well.
-       */
-      return NULL;
-
-    case META_BUTTON_FUNCTION_LAST:
-      return NULL;
-
-    default:
-      break;
     }
 
   return NULL;
@@ -1043,9 +1132,12 @@ meta_frame_style_validate (MetaFrameStyle    *style,
         {
           for (j = 0; j < META_BUTTON_STATE_LAST; j++)
             {
+              guint earliest_version;
+
+              earliest_version = meta_theme_metacity_earliest_version_with_button (i);
+
               if (get_button (style, i, j) == NULL &&
-                  meta_theme_earliest_version_with_button (i) <= current_theme_version
-                  )
+                  earliest_version <= current_theme_version)
                 {
                   g_set_error (error, META_THEME_ERROR,
                                META_THEME_ERROR_FAILED,
@@ -1593,6 +1685,19 @@ meta_theme_get_current (void)
   return meta_current_theme;
 }
 
+static const gchar *
+theme_get_name (MetaTheme *theme)
+{
+  MetaThemeImpl *impl;
+
+  impl = theme->impl;
+
+  if (META_IS_THEME_METACITY (impl))
+    return meta_theme_metacity_get_name (META_THEME_METACITY (impl));
+
+  return NULL;
+}
+
 static void
 theme_set_current_metacity (const gchar                *name,
                             gboolean                    force_reload,
@@ -1604,9 +1709,8 @@ theme_set_current_metacity (const gchar                *name,
 
   meta_topic (META_DEBUG_THEMES, "Setting current theme to \"%s\"\n", name);
 
-  if (!force_reload &&
-      meta_current_theme &&
-      g_strcmp0 (name, meta_current_theme->name) == 0)
+  if (!force_reload && meta_current_theme &&
+      g_strcmp0 (name, theme_get_name (meta_current_theme)) == 0)
     return;
 
   new_theme = meta_theme_new (META_THEME_TYPE_METACITY);
@@ -1630,7 +1734,8 @@ theme_set_current_metacity (const gchar                *name,
 
       meta_current_theme = new_theme;
 
-      meta_topic (META_DEBUG_THEMES, "New theme is \"%s\"\n", meta_current_theme->name);
+      meta_topic (META_DEBUG_THEMES, "New theme is '%s'\n",
+                  theme_get_name (meta_current_theme));
     }
 }
 
@@ -1654,7 +1759,7 @@ theme_set_current_gtk (const gchar                *name,
   meta_current_theme->composited = composited;
   meta_current_theme->titlebar_font = pango_font_description_copy (titlebar_font);
 
-  meta_theme_impl_load (meta_current_theme->impl, name, NULL);
+  meta_theme_load (meta_current_theme, name, NULL);
 }
 
 void
@@ -1683,12 +1788,6 @@ meta_theme_new (MetaThemeType type)
   theme->is_gtk_theme = FALSE;
   theme->composited = TRUE;
 
-  theme->images_by_filename =
-    g_hash_table_new_full (g_str_hash,
-                           g_str_equal,
-                           g_free,
-                           (GDestroyNotify) g_object_unref);
-
   if (type == META_THEME_TYPE_GTK)
     theme->impl = g_object_new (META_TYPE_THEME_GTK, NULL);
   else if (type == META_THEME_TYPE_METACITY)
@@ -1704,24 +1803,21 @@ meta_theme_free (MetaTheme *theme)
 {
   g_return_if_fail (theme != NULL);
 
-  g_free (theme->name);
-  g_free (theme->dirname);
-  g_free (theme->filename);
-  g_free (theme->readable_name);
-  g_free (theme->date);
-  g_free (theme->description);
-  g_free (theme->author);
-  g_free (theme->copyright);
-
   if (theme->titlebar_font)
     pango_font_description_free (theme->titlebar_font);
-
-  g_hash_table_destroy (theme->images_by_filename);
 
   g_clear_object (&theme->impl);
 
   DEBUG_FILL_STRUCT (theme);
   g_free (theme);
+}
+
+gboolean
+meta_theme_load (MetaTheme    *theme,
+                 const gchar  *name,
+                 GError      **err)
+{
+  return meta_theme_impl_load (theme->impl, name, err);
 }
 
 void
@@ -2075,51 +2171,4 @@ meta_frame_type_from_string (const char *str)
     return META_FRAME_TYPE_ATTACHED;
   else
     return META_FRAME_TYPE_LAST;
-}
-
-/**
- * Returns the earliest version of the theme format which required support
- * for a particular button.  (For example, "shade" first appeared in v2, and
- * "close" in v1.)
- *
- * \param type  the button type
- * \return  the number of the theme format
- */
-guint
-meta_theme_earliest_version_with_button (MetaButtonType type)
-{
-  switch (type)
-    {
-    case META_BUTTON_TYPE_CLOSE:
-    case META_BUTTON_TYPE_MAXIMIZE:
-    case META_BUTTON_TYPE_MINIMIZE:
-    case META_BUTTON_TYPE_MENU:
-    case META_BUTTON_TYPE_LEFT_LEFT_BACKGROUND:
-    case META_BUTTON_TYPE_LEFT_MIDDLE_BACKGROUND:
-    case META_BUTTON_TYPE_LEFT_RIGHT_BACKGROUND:
-    case META_BUTTON_TYPE_RIGHT_LEFT_BACKGROUND:
-    case META_BUTTON_TYPE_RIGHT_MIDDLE_BACKGROUND:
-    case META_BUTTON_TYPE_RIGHT_RIGHT_BACKGROUND:
-      return 1000;
-
-    case META_BUTTON_TYPE_SHADE:
-    case META_BUTTON_TYPE_ABOVE:
-    case META_BUTTON_TYPE_STICK:
-    case META_BUTTON_TYPE_UNSHADE:
-    case META_BUTTON_TYPE_UNABOVE:
-    case META_BUTTON_TYPE_UNSTICK:
-      return 2000;
-
-    case META_BUTTON_TYPE_LEFT_SINGLE_BACKGROUND:
-    case META_BUTTON_TYPE_RIGHT_SINGLE_BACKGROUND:
-      return 3003;
-
-    case META_BUTTON_TYPE_APPMENU:
-      return 3005;
-
-    case META_BUTTON_TYPE_LAST:
-    default:
-      meta_warning("Unknown button %d\n", type);
-      return 1000;
-    }
 }
