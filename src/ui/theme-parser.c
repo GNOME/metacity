@@ -1179,7 +1179,7 @@ parse_toplevel_element (GMarkupParseContext  *context,
           return;
         }
 
-      if (info->theme->style_sets_by_type[type] != NULL)
+      if (meta_theme_impl_get_style_set (info->theme->impl, type) != NULL)
         {
           set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
                      _("Window type \"%s\" has already been assigned a style set"),
@@ -1188,7 +1188,7 @@ parse_toplevel_element (GMarkupParseContext  *context,
         }
 
       meta_frame_style_set_ref (style_set);
-      info->theme->style_sets_by_type[type] = style_set;
+      meta_theme_impl_add_style_set (info->theme->impl, type, style_set);
 
       push_state (info, STATE_WINDOW);
     }
@@ -3672,7 +3672,8 @@ meta_theme_validate (MetaTheme *theme,
     }
 
   for (i = 0; i < (int)META_FRAME_TYPE_LAST; i++)
-    if (i != (int)META_FRAME_TYPE_ATTACHED && theme->style_sets_by_type[i] == NULL)
+    if (i != (int)META_FRAME_TYPE_ATTACHED &&
+        meta_theme_impl_get_style_set (theme->impl, i) == NULL)
       {
         g_set_error (error, META_THEME_ERROR, META_THEME_ERROR_FAILED,
                      _("No frame style set for window type \"%s\" in theme \"%s\", add a <window type=\"%s\" style_set=\"whatever\"/> element"),
@@ -4123,8 +4124,6 @@ theme_error_is_fatal (GError *error)
 static void
 clear_theme (MetaTheme *theme)
 {
-  gint i;
-
   g_free (theme->name);
   theme->name = NULL;
 
@@ -4156,15 +4155,6 @@ clear_theme (MetaTheme *theme)
     }
 
   g_hash_table_remove_all (theme->images_by_filename);
-
-  for (i = 0; i < META_FRAME_TYPE_LAST; i++)
-    {
-      if (theme->style_sets_by_type[i] == NULL)
-        continue;
-
-      meta_frame_style_set_unref (theme->style_sets_by_type[i]);
-      theme->style_sets_by_type[i] = NULL;
-    }
 
   g_clear_object (&theme->impl);
   theme->impl = g_object_new (META_TYPE_THEME_METACITY, NULL);

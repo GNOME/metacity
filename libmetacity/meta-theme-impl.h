@@ -19,8 +19,11 @@
 #define META_THEME_IMPL_H
 
 #include <glib-object.h>
+#include <libmetacity/meta-frame-enums.h>
 
 G_BEGIN_DECLS
+
+typedef struct _MetaFrameStyleSet MetaFrameStyleSet;
 
 #define META_TYPE_THEME_IMPL meta_theme_impl_get_type ()
 G_DECLARE_DERIVABLE_TYPE (MetaThemeImpl, meta_theme_impl,
@@ -30,6 +33,13 @@ struct _MetaThemeImplClass
 {
   GObjectClass parent_class;
 };
+
+void               meta_theme_impl_add_style_set (MetaThemeImpl     *impl,
+                                                  MetaFrameType      type,
+                                                  MetaFrameStyleSet *style_set);
+
+MetaFrameStyleSet *meta_theme_impl_get_style_set (MetaThemeImpl     *impl,
+                                                  MetaFrameType      type);
 
 G_END_DECLS
 

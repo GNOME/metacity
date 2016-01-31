@@ -66,8 +66,6 @@ struct _MetaTheme
 
   GHashTable *images_by_filename;
 
-  MetaFrameStyleSet *style_sets_by_type[META_FRAME_TYPE_LAST];
-
   MetaThemeImpl *impl;
 };
 

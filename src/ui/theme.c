@@ -1715,7 +1715,8 @@ theme_set_current_gtk (const gchar                *name,
         }
 
       meta_frame_style_unref (style);
-      meta_current_theme->style_sets_by_type[frame_type] = style_set;
+      meta_theme_impl_add_style_set (meta_current_theme->impl,
+                                     frame_type, style_set);
     }
 }
 
@@ -1764,8 +1765,6 @@ meta_theme_new (MetaThemeType type)
 void
 meta_theme_free (MetaTheme *theme)
 {
-  int i;
-
   g_return_if_fail (theme != NULL);
 
   g_free (theme->name);
@@ -1781,10 +1780,6 @@ meta_theme_free (MetaTheme *theme)
     pango_font_description_free (theme->titlebar_font);
 
   g_hash_table_destroy (theme->images_by_filename);
-
-  for (i = 0; i < META_FRAME_TYPE_LAST; i++)
-    if (theme->style_sets_by_type[i])
-      meta_frame_style_set_unref (theme->style_sets_by_type[i]);
 
   g_clear_object (&theme->impl);
 
@@ -1818,16 +1813,17 @@ theme_get_style (MetaTheme     *theme,
   MetaFrameStyle *style;
   MetaFrameStyleSet *style_set;
 
-  style_set = theme->style_sets_by_type[type];
+  style_set = meta_theme_impl_get_style_set (theme->impl, type);
 
   if (style_set == NULL && type == META_FRAME_TYPE_ATTACHED)
-    style_set = theme->style_sets_by_type[META_FRAME_TYPE_BORDER];
+    style_set = meta_theme_impl_get_style_set (theme->impl, META_FRAME_TYPE_BORDER);
 
   /* Right now the parser forces a style set for all other types,
    * but this fallback code is here in case I take that out.
    */
   if (style_set == NULL)
-    style_set = theme->style_sets_by_type[META_FRAME_TYPE_NORMAL];
+    style_set = meta_theme_impl_get_style_set (theme->impl, META_FRAME_TYPE_NORMAL);
+
   if (style_set == NULL)
     return NULL;
 
