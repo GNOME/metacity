@@ -23,6 +23,7 @@
 
 #include "meta-draw-spec.h"
 #include "meta-theme.h"
+#include "meta-theme-metacity-private.h"
 
 typedef enum
 {

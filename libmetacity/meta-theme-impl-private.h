@@ -15,15 +15,15 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef META_THEME_IMPL_H
-#define META_THEME_IMPL_H
+#ifndef META_THEME_IMPL_PRIVATE_H
+#define META_THEME_IMPL_PRIVATE_H
 
 #include <glib-object.h>
-#include <libmetacity/meta-frame-enums.h>
+
+#include "meta-frame-enums.h"
+#include "meta-frame-style.h"
 
 G_BEGIN_DECLS
-
-typedef struct _MetaFrameStyleSet MetaFrameStyleSet;
 
 #define META_TYPE_THEME_IMPL meta_theme_impl_get_type ()
 G_DECLARE_DERIVABLE_TYPE (MetaThemeImpl, meta_theme_impl,
@@ -33,14 +33,12 @@ struct _MetaThemeImplClass
 {
   GObjectClass parent_class;
 
-  gboolean (* load) (MetaThemeImpl  *impl,
-                     const gchar    *name,
-                     GError        **error);
-};
+  gboolean   (* load)     (MetaThemeImpl  *impl,
+                           const gchar    *name,
+                           GError        **error);
 
-gboolean           meta_theme_impl_load          (MetaThemeImpl      *impl,
-                                                  const gchar        *name,
-                                                  GError            **error);
+  gchar    * (* get_name) (MetaThemeImpl  *impl);
+};
 
 void               meta_theme_impl_add_style_set (MetaThemeImpl      *impl,
                                                   MetaFrameType       type,

@@ -18,7 +18,7 @@
 
 #include "config.h"
 
-#include "meta-frame-flags.h"
+#include "meta-frame-enums.h"
 #include "meta-style-info.h"
 
 static void

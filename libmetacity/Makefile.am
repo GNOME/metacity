@@ -36,11 +36,12 @@ libmetacity_la_SOURCES = \
 	meta-theme.c \
 	meta-theme.h \
 	meta-theme-gtk.c \
-	meta-theme-gtk.h \
+	meta-theme-gtk-private.h \
 	meta-theme-impl.c \
-	meta-theme-impl.h \
+	meta-theme-impl-private.h \
 	meta-theme-metacity.c \
-	meta-theme-metacity.h \
+	meta-theme-metacity-private.h \
+	$(BUILT_SOURCES) \
 	$(NULL)
 
 libmetacity_la_CPPFLAGS = \
@@ -73,6 +74,7 @@ libmetacity_include_HEADERS = \
 	meta-color-spec.h \
 	meta-draw-op.h \
 	meta-draw-spec.h \
+	meta-enum-types.h \
 	meta-frame-borders.h \
 	meta-frame-enums.h \
 	meta-frame-layout.h \
@@ -81,9 +83,32 @@ libmetacity_include_HEADERS = \
 	meta-gradient-spec.h \
 	meta-style-info.h \
 	meta-theme.h \
-	meta-theme-gtk.h \
-	meta-theme-impl.h \
-	meta-theme-metacity.h \
+	$(NULL)
+
+ENUM_TYPES = \
+	meta-theme.h \
+	$(NULL)
+
+meta-enum-types.c: meta-enum-types.c.in meta-enum-types.h $(ENUM_TYPES)
+	$(AM_V_GEN) $(GLIB_MKENUMS) --template meta-enum-types.c.in $(ENUM_TYPES) > meta-enum-types.c.tmp \
+		meta-enum-types.c.tmp && mv meta-enum-types.c.tmp meta-enum-types.c
+
+meta-enum-types.h: meta-enum-types.h.in $(ENUM_TYPES)
+	$(AM_V_GEN) $(GLIB_MKENUMS) --template meta-enum-types.h.in $(ENUM_TYPES) > meta-enum-types.h.tmp \
+		meta-enum-types.h.tmp && mv meta-enum-types.h.tmp meta-enum-types.h
+
+BUILT_SOURCES = \
+	meta-enum-types.c \
+	meta-enum-types.h \
+	$(NULL)
+
+EXTRA_DIST = \
+	meta-enum-types.c.in \
+	meta-enum-types.h.in \
+	$(NULL)
+
+CLEANFILES = \
+	$(BUILT_SOURCES) \
 	$(NULL)
 
 -include $(top_srcdir)/git.mk

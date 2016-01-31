@@ -183,7 +183,8 @@ meta_frames_get_theme_variant (MetaFrames  *frames,
   style_info = g_hash_table_lookup (frames->style_variants, variant);
   if (style_info == NULL)
     {
-      style_info = meta_style_info_new (variant, meta_theme_get_current ()->composited);
+      MetaTheme *theme = meta_theme_get_current ();
+      style_info = meta_style_info_new (variant, meta_theme_get_composited (theme));
       g_hash_table_insert (frames->style_variants, g_strdup (variant), style_info);
     }
 
@@ -196,17 +197,19 @@ update_style_contexts (MetaFrames *frames)
   MetaStyleInfo *style_info;
   GList *variants, *variant;
   MetaTheme *theme;
+  gboolean composited;
 
   theme = meta_theme_get_current ();
+  composited = meta_theme_get_composited (theme);
 
   if (frames->normal_style)
     meta_style_info_unref (frames->normal_style);
-  frames->normal_style = meta_style_info_new (NULL, theme->composited);
+  frames->normal_style = meta_style_info_new (NULL, composited);
 
   variants = g_hash_table_get_keys (frames->style_variants);
   for (variant = variants; variant; variant = variants->next)
     {
-      style_info = meta_style_info_new ((char *)variant->data, theme->composited);
+      style_info = meta_style_info_new ((char *)variant->data, composited);
       g_hash_table_insert (frames->style_variants,
                            g_strdup (variant->data), style_info);
     }
@@ -532,7 +535,7 @@ meta_frames_ensure_layout (MetaFrames  *frames,
 
       current = meta_theme_get_current ();
 
-      if (current->is_gtk_theme == FALSE)
+      if (meta_theme_get_theme_type (current) == META_THEME_TYPE_METACITY)
         {
           double scale;
 
@@ -2634,7 +2637,7 @@ meta_frames_draw (GtkWidget *widget,
 
   current = meta_theme_get_current ();
 
-  if (current->is_gtk_theme == FALSE)
+  if (meta_theme_get_theme_type (current) == META_THEME_TYPE_METACITY)
     {
       MetaFrameGeometry fgeom;
 

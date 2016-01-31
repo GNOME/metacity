@@ -20,7 +20,7 @@
 #include <glib/gi18n.h>
 
 #include "meta-frame-style.h"
-#include "meta-theme-impl.h"
+#include "meta-theme-impl-private.h"
 #include "meta-theme.h"
 
 typedef struct
@@ -53,7 +53,7 @@ meta_theme_impl_dispose (GObject *object)
 }
 
 static gboolean
-meta_theme_real_impl_load (MetaThemeImpl  *impl,
+meta_theme_impl_real_load (MetaThemeImpl  *impl,
                            const gchar    *name,
                            GError        **error)
 {
@@ -66,6 +66,12 @@ meta_theme_real_impl_load (MetaThemeImpl  *impl,
   return FALSE;
 }
 
+static gchar *
+meta_theme_impl_real_get_name (MetaThemeImpl *impl)
+{
+  return NULL;
+}
+
 static void
 meta_theme_impl_class_init (MetaThemeImplClass *impl_class)
 {
@@ -75,20 +81,13 @@ meta_theme_impl_class_init (MetaThemeImplClass *impl_class)
 
   object_class->dispose = meta_theme_impl_dispose;
 
-  impl_class->load = meta_theme_real_impl_load;
+  impl_class->load = meta_theme_impl_real_load;
+  impl_class->get_name = meta_theme_impl_real_get_name;
 }
 
 static void
 meta_theme_impl_init (MetaThemeImpl *impl)
 {
-}
-
-gboolean
-meta_theme_impl_load (MetaThemeImpl  *impl,
-                      const gchar    *name,
-                      GError        **error)
-{
-  return META_THEME_IMPL_GET_CLASS (impl)->load (impl, name, error);
 }
 
 void

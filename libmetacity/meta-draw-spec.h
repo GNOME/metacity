@@ -20,11 +20,11 @@
 #define META_DRAW_SPEC_H
 
 #include <gdk/gdk.h>
-#include <libmetacity/meta-theme-metacity.h>
 
 G_BEGIN_DECLS
 
 typedef struct _MetaDrawSpec MetaDrawSpec;
+typedef struct _MetaThemeMetacity MetaThemeMetacity;
 typedef struct _MetaPositionExprEnv MetaPositionExprEnv;
 
 struct _MetaPositionExprEnv

@@ -55,15 +55,11 @@
 #include "util.h"
 #include <gtk/gtk.h>
 #include <libmetacity/meta-color.h>
-#include <libmetacity/meta-theme-gtk.h>
-#include <libmetacity/meta-theme-metacity.h>
 #include <string.h>
 #include <stdlib.h>
 #define __USE_XOPEN
 #include <stdarg.h>
 #include <math.h>
-
-#define DEBUG_FILL_STRUCT(s) memset ((s), 0xef, sizeof (*(s)))
 
 /**
  * The current theme. (Themes are singleton.)
@@ -102,7 +98,7 @@ meta_frame_layout_get_borders (MetaTheme             *theme,
   borders->visible.right = layout->right_width;
   borders->visible.bottom = layout->bottom_height;
 
-  if (theme->is_gtk_theme == TRUE)
+  if (meta_theme_get_theme_type (theme) != META_THEME_TYPE_METACITY)
     {
       borders->invisible.left = layout->invisible_border.left;
       borders->invisible.right = layout->invisible_border.right;
@@ -174,13 +170,9 @@ rect_for_function (MetaFrameGeometry *fgeom,
                    MetaButtonFunction function,
                    MetaTheme         *theme)
 {
-  if (META_IS_THEME_METACITY (theme->impl))
+  if (meta_theme_get_theme_type (theme) == META_THEME_TYPE_METACITY)
     {
-      MetaThemeMetacity *metacity;
-
-      metacity = META_THEME_METACITY (theme->impl);
-
-      if (meta_theme_metacity_allows_shade_stick_above_buttons (metacity))
+      if (meta_theme_allows_shade_stick_above_buttons (theme))
         {
           switch (function)
             {
@@ -445,7 +437,7 @@ meta_frame_layout_sync_with_style (MetaFrameLayout *layout,
   int border_radius, max_radius;
 
   /* We don't want GTK+ info for metacity theme */
-  if (theme->is_gtk_theme == FALSE)
+  if (meta_theme_get_theme_type (theme) == META_THEME_TYPE_METACITY)
     return;
 
   meta_style_info_set_flags (style_info, flags);
@@ -461,7 +453,7 @@ meta_frame_layout_sync_with_style (MetaFrameLayout *layout,
   layout->top_height = border.top;
   layout->bottom_height = border.bottom;
 
-  if (theme->composited)
+  if (meta_theme_get_composited (theme))
     get_margin (style, &layout->invisible_border);
   else
     {
@@ -481,7 +473,7 @@ meta_frame_layout_sync_with_style (MetaFrameLayout *layout,
 
   style = style_info->styles[META_STYLE_ELEMENT_TITLEBAR];
 
-  if (theme->composited)
+  if (meta_theme_get_composited (theme))
     {
       gtk_style_context_get (style, gtk_style_context_get_state (style),
                              "border-radius", &border_radius,
@@ -689,7 +681,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
 
       space_used_by_buttons += button_width * n_left;
       space_used_by_buttons += (button_width * 0.75) * n_left_spacers;
-      if (theme->is_gtk_theme == FALSE)
+      if (meta_theme_get_theme_type (theme) == META_THEME_TYPE_METACITY)
         {
           space_used_by_buttons += layout->button_border.left * n_left;
           space_used_by_buttons += layout->button_border.right * n_left;
@@ -699,7 +691,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
 
       space_used_by_buttons += button_width * n_right;
       space_used_by_buttons += (button_width * 0.75) * n_right_spacers;
-      if (theme->is_gtk_theme == FALSE)
+      if (meta_theme_get_theme_type (theme) == META_THEME_TYPE_METACITY)
         {
           space_used_by_buttons += layout->button_border.left * n_right;
           space_used_by_buttons += layout->button_border.right * n_right;
@@ -802,7 +794,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
         break;
 
       rect = right_func_rects[i];
-      if (theme->is_gtk_theme == FALSE)
+      if (meta_theme_get_theme_type (theme) == META_THEME_TYPE_METACITY)
         rect->visible.x = x - layout->button_border.right - button_width;
       else
         rect->visible.x = x - button_width;
@@ -824,7 +816,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
 
           if (i == n_right - 1)
             {
-              if (theme->is_gtk_theme == FALSE)
+              if (meta_theme_get_theme_type (theme) == META_THEME_TYPE_METACITY)
                 rect->clickable.width += layout->right_titlebar_edge + layout->right_width + layout->button_border.right;
               else
                 rect->clickable.width += layout->right_titlebar_edge + layout->right_width;
@@ -836,7 +828,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
 
       *(right_bg_rects[i]) = rect->visible;
 
-      if (theme->is_gtk_theme == FALSE)
+      if (meta_theme_get_theme_type (theme) == META_THEME_TYPE_METACITY)
         x = rect->visible.x - layout->button_border.left;
       else
         {
@@ -862,7 +854,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
 
       rect = left_func_rects[i];
 
-      if (theme->is_gtk_theme == FALSE)
+      if (meta_theme_get_theme_type (theme) == META_THEME_TYPE_METACITY)
         rect->visible.x = x + layout->button_border.left;
       else
         rect->visible.x = x;
@@ -880,7 +872,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
       else
         g_memmove (&(rect->clickable), &(rect->visible), sizeof(rect->clickable));
 
-      if (theme->is_gtk_theme == FALSE)
+      if (meta_theme_get_theme_type (theme) == META_THEME_TYPE_METACITY)
         x = rect->visible.x + rect->visible.width + layout->button_border.right;
       else
         {
@@ -1526,154 +1518,55 @@ meta_theme_get_current (void)
   return meta_current_theme;
 }
 
-static const gchar *
-theme_get_name (MetaTheme *theme)
-{
-  MetaThemeImpl *impl;
-
-  impl = theme->impl;
-
-  if (META_IS_THEME_METACITY (impl))
-    return meta_theme_metacity_get_name (META_THEME_METACITY (impl));
-
-  return NULL;
-}
-
-static void
-theme_set_current_metacity (const gchar                *name,
-                            gboolean                    force_reload,
-                            gboolean                    composited,
-                            const PangoFontDescription *titlebar_font)
-{
-  MetaTheme *new_theme;
-  GError *err;
-
-  meta_topic (META_DEBUG_THEMES, "Setting current theme to \"%s\"\n", name);
-
-  if (!force_reload && meta_current_theme &&
-      g_strcmp0 (name, theme_get_name (meta_current_theme)) == 0)
-    return;
-
-  new_theme = meta_theme_new (META_THEME_TYPE_METACITY);
-
-  err = NULL;
-  if (!meta_theme_load (new_theme, name, &err))
-    {
-      g_warning (_("Failed to load theme '%s': %s"), name, err->message);
-      g_error_free (err);
-
-      meta_theme_free (new_theme);
-    }
-  else
-    {
-      new_theme->is_gtk_theme = FALSE;
-      new_theme->composited = composited;
-      new_theme->titlebar_font = pango_font_description_copy (titlebar_font);
-
-      if (meta_current_theme)
-        meta_theme_free (meta_current_theme);
-
-      meta_current_theme = new_theme;
-
-      meta_topic (META_DEBUG_THEMES, "New theme is '%s'\n",
-                  theme_get_name (meta_current_theme));
-    }
-}
-
-static void
-theme_set_current_gtk (const gchar                *name,
-                       gboolean                    force_reload,
-                       gboolean                    composited,
-                       const PangoFontDescription *titlebar_font)
-{
-  meta_topic (META_DEBUG_THEMES, "Setting current theme to \"%s\"\n", name);
-
-  if (!force_reload && meta_current_theme)
-    return;
-
-  if (force_reload && meta_current_theme)
-    meta_theme_free (meta_current_theme);
-
-  meta_current_theme = meta_theme_new (META_THEME_TYPE_GTK);
-
-  meta_current_theme->is_gtk_theme = TRUE;
-  meta_current_theme->composited = composited;
-  meta_current_theme->titlebar_font = pango_font_description_copy (titlebar_font);
-
-  meta_theme_load (meta_current_theme, name, NULL);
-}
-
 void
 meta_theme_set_current (const gchar                *name,
                         gboolean                    force_reload,
                         gboolean                    composited,
                         const PangoFontDescription *titlebar_font)
 {
+  MetaTheme *new_theme;
+  GError *error;
+
+  g_debug ("Setting current theme to '%s'", name);
+
+  if (!force_reload && meta_current_theme)
+    {
+      gchar *theme_name;
+
+      theme_name = meta_theme_get_name (meta_current_theme);
+      if (g_strcmp0 (name, theme_name) == 0)
+        {
+          g_free (theme_name);
+          return;
+        }
+
+      g_free (theme_name);
+    }
+
   if (name != NULL && strcmp (name, "") != 0)
+    new_theme = meta_theme_new (META_THEME_TYPE_METACITY);
+  else
+    new_theme = meta_theme_new (META_THEME_TYPE_GTK);
+
+  meta_theme_set_composited (new_theme, composited);
+  meta_theme_set_titlebar_font (new_theme, titlebar_font);
+
+  error = NULL;
+  if (!meta_theme_load (new_theme, name, &error))
     {
-      theme_set_current_metacity (name, force_reload, composited, titlebar_font);
+      g_warning (_("Failed to load theme '%s': %s"), name, error->message);
+      g_error_free (error);
+
+      g_object_unref (new_theme);
     }
   else
     {
-      theme_set_current_gtk (name, force_reload, composited, titlebar_font);
+      if (meta_current_theme)
+        g_object_unref (meta_current_theme);
+      meta_current_theme = new_theme;
+
+      g_debug ("New theme is '%s'", name);
     }
-}
-
-MetaTheme*
-meta_theme_new (MetaThemeType type)
-{
-  MetaTheme *theme;
-
-  theme = g_new0 (MetaTheme, 1);
-
-  theme->is_gtk_theme = FALSE;
-  theme->composited = TRUE;
-
-  if (type == META_THEME_TYPE_GTK)
-    theme->impl = g_object_new (META_TYPE_THEME_GTK, NULL);
-  else if (type == META_THEME_TYPE_METACITY)
-    theme->impl = g_object_new (META_TYPE_THEME_METACITY, NULL);
-  else
-    g_assert_not_reached ();
-
-  return theme;
-}
-
-void
-meta_theme_free (MetaTheme *theme)
-{
-  g_return_if_fail (theme != NULL);
-
-  if (theme->titlebar_font)
-    pango_font_description_free (theme->titlebar_font);
-
-  g_clear_object (&theme->impl);
-
-  DEBUG_FILL_STRUCT (theme);
-  g_free (theme);
-}
-
-gboolean
-meta_theme_load (MetaTheme    *theme,
-                 const gchar  *name,
-                 GError      **err)
-{
-  return meta_theme_impl_load (theme->impl, name, err);
-}
-
-void
-meta_theme_set_composited (MetaTheme *theme,
-                           gboolean   composited)
-{
-  theme->composited = composited;
-}
-
-void
-meta_theme_set_titlebar_font (MetaTheme                  *theme,
-                              const PangoFontDescription *titlebar_font)
-{
-  pango_font_description_free (theme->titlebar_font);
-  theme->titlebar_font = pango_font_description_copy (titlebar_font);
 }
 
 static MetaFrameStyle*
@@ -1687,16 +1580,16 @@ theme_get_style (MetaTheme     *theme,
   MetaFrameStyle *style;
   MetaFrameStyleSet *style_set;
 
-  style_set = meta_theme_impl_get_style_set (theme->impl, type);
+  style_set = meta_theme_get_style_set (theme, type);
 
   if (style_set == NULL && type == META_FRAME_TYPE_ATTACHED)
-    style_set = meta_theme_impl_get_style_set (theme->impl, META_FRAME_TYPE_BORDER);
+    style_set = meta_theme_get_style_set (theme, META_FRAME_TYPE_BORDER);
 
   /* Right now the parser forces a style set for all other types,
    * but this fallback code is here in case I take that out.
    */
   if (style_set == NULL)
-    style_set = meta_theme_impl_get_style_set (theme->impl, META_FRAME_TYPE_NORMAL);
+    style_set = meta_theme_get_style_set (theme, META_FRAME_TYPE_NORMAL);
 
   if (style_set == NULL)
     return NULL;
@@ -1803,6 +1696,7 @@ meta_style_info_create_font_desc (MetaTheme     *theme,
 {
   GtkStyleContext *context;
   PangoFontDescription *font_desc;
+  const PangoFontDescription *titlebar_font;
 
   context = style_info->styles[META_STYLE_ELEMENT_TITLE];
 
@@ -1814,8 +1708,9 @@ meta_style_info_create_font_desc (MetaTheme     *theme,
 
   gtk_style_context_restore (context);
 
-  if (theme->titlebar_font)
-    pango_font_description_merge (font_desc, theme->titlebar_font, TRUE);
+  titlebar_font = meta_theme_get_titlebar_font (theme);
+  if (titlebar_font)
+    pango_font_description_merge (font_desc, titlebar_font, TRUE);
 
   return font_desc;
 }
@@ -1856,7 +1751,7 @@ meta_theme_draw_frame (MetaTheme              *theme,
                                    &fgeom,
                                    theme);
 
-  if (theme->is_gtk_theme == FALSE)
+  if (meta_theme_get_theme_type (theme) == META_THEME_TYPE_METACITY)
     {
       meta_frame_style_draw_with_style (style,
                                         style_info,

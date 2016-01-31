@@ -25,7 +25,7 @@
 #include "meta-frame-layout.h"
 #include "meta-frame-style.h"
 #include "meta-theme.h"
-#include "meta-theme-metacity.h"
+#include "meta-theme-metacity-private.h"
 
 /* We were intending to put the version number
  * in the subdirectory name, but we ended up
@@ -4617,6 +4617,16 @@ out:
   return retval;
 }
 
+static gchar *
+meta_theme_metacity_get_name (MetaThemeImpl *impl)
+{
+  MetaThemeMetacity *metacity;
+
+  metacity = META_THEME_METACITY (impl);
+
+  return g_strdup (metacity->name);
+}
+
 static void
 meta_theme_metacity_class_init (MetaThemeMetacityClass *metacity_class)
 {
@@ -4630,6 +4640,7 @@ meta_theme_metacity_class_init (MetaThemeMetacityClass *metacity_class)
   object_class->finalize = meta_theme_metacity_finalize;
 
   impl_class->load = meta_theme_metacity_load;
+  impl_class->get_name = meta_theme_metacity_get_name;
 }
 
 static void
@@ -4719,18 +4730,6 @@ meta_theme_metacity_lookup_style_set (MetaThemeMetacity *metacity,
                                       const gchar       *name)
 {
   return g_hash_table_lookup (metacity->style_sets, name);
-}
-
-const gchar *
-meta_theme_metacity_get_name (MetaThemeMetacity *metacity)
-{
-  return metacity->name;
-}
-
-const gchar *
-meta_theme_metacity_get_readable_name (MetaThemeMetacity *metacity)
-{
-  return metacity->readable_name;
 }
 
 gboolean

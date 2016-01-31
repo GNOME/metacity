@@ -15,10 +15,10 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef META_THEME_GTK_H
-#define META_THEME_GTK_H
+#ifndef META_THEME_GTK_PRIVATE_H
+#define META_THEME_GTK_PRIVATE_H
 
-#include "meta-theme-impl.h"
+#include "meta-theme-impl-private.h"
 
 G_BEGIN_DECLS
 

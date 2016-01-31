@@ -261,10 +261,11 @@ static void
 meta_preview_realize (GtkWidget *widget)
 {
   MetaPreview *preview = META_PREVIEW (widget);
+  gboolean composited = meta_theme_get_composited (preview->theme);
 
   GTK_WIDGET_CLASS (meta_preview_parent_class)->realize (widget);
 
-  preview->style_info = meta_style_info_new (NULL, preview->theme->composited);
+  preview->style_info = meta_style_info_new (NULL, composited);
 }
 
 #define NO_CHILD_WIDTH 80

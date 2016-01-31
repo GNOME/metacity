@@ -20,7 +20,7 @@
 #include <gtk/gtk.h>
 
 #include "meta-frame-style.h"
-#include "meta-theme-gtk.h"
+#include "meta-theme-gtk-private.h"
 #include "meta-theme.h"
 
 struct _MetaThemeGtk
@@ -122,6 +122,22 @@ meta_theme_gtk_load (MetaThemeImpl  *impl,
   return TRUE;
 }
 
+static gchar *
+meta_theme_gtk_get_name (MetaThemeImpl *impl)
+{
+  GtkSettings *settings;
+  gchar *name;
+
+  settings = gtk_settings_get_default ();
+
+  if (settings == NULL)
+    return NULL;
+
+  g_object_get (settings, "gtk-theme-name", &name, NULL);
+
+  return name;
+}
+
 static void
 meta_theme_gtk_class_init (MetaThemeGtkClass *gtk_class)
 {
@@ -130,6 +146,7 @@ meta_theme_gtk_class_init (MetaThemeGtkClass *gtk_class)
   impl_class = META_THEME_IMPL_CLASS (gtk_class);
 
   impl_class->load = meta_theme_gtk_load;
+  impl_class->get_name = meta_theme_gtk_get_name;
 }
 
 static void

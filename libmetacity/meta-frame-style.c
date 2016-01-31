@@ -22,6 +22,7 @@
 
 #include "meta-frame-style.h"
 #include "meta-theme.h"
+#include "meta-theme-metacity-private.h"
 
 static const char*
 meta_frame_state_to_string (MetaFrameState state)

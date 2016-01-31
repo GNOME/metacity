@@ -19,28 +19,10 @@
 #define META_THEME_PRIVATE_H
 
 #include <libmetacity/meta-frame-style.h>
-#include <libmetacity/meta-theme-impl.h>
 
 #include "theme.h"
 
 G_BEGIN_DECLS
-
-/**
- * A theme. This is a singleton class which groups all settings from a theme
- * on disk together.
- *
- * \bug It is rather useless to keep the metadata fields in core, I think.
- */
-struct _MetaTheme
-{
-  gboolean is_gtk_theme;
-
-  gboolean composited;
-
-  PangoFontDescription *titlebar_font;
-
-  MetaThemeImpl *impl;
-};
 
 MetaFrameStyle        *meta_theme_get_frame_style              (MetaTheme                   *theme,
                                                                 MetaFrameType                type,

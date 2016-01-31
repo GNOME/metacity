@@ -32,7 +32,6 @@
 
 typedef struct _MetaButtonSpace MetaButtonSpace;
 typedef struct _MetaFrameGeometry MetaFrameGeometry;
-typedef struct _MetaTheme MetaTheme;
 
 /**
  * The computed size of a button (really just a way of tying its
@@ -110,19 +109,6 @@ MetaTheme* meta_theme_get_current (void);
 void       meta_theme_set_current (const char                 *name,
                                    gboolean                    force_reload,
                                    gboolean                    composited,
-                                   const PangoFontDescription *titlebar_font);
-
-MetaTheme* meta_theme_new      (MetaThemeType type);
-void       meta_theme_free     (MetaTheme *theme);
-
-gboolean   meta_theme_load (MetaTheme    *theme,
-                            const gchar  *theme_name,
-                            GError      **err);
-
-void meta_theme_set_composited (MetaTheme  *theme,
-                                gboolean    composited);
-
-void meta_theme_set_titlebar_font (MetaTheme                  *theme,
                                    const PangoFontDescription *titlebar_font);
 
 double meta_theme_get_title_scale (MetaTheme     *theme,

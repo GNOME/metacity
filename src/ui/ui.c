@@ -678,14 +678,14 @@ meta_ui_theme_get_frame_borders (MetaUI           *ui,
       MetaTheme *current;
 
       current = meta_theme_get_current ();
-      style_info = meta_style_info_new (NULL, current->composited);
+      style_info = meta_style_info_new (NULL, meta_theme_get_composited (current));
 
       context = gtk_widget_get_pango_context (GTK_WIDGET (ui->frames));
       font_desc = meta_prefs_get_titlebar_font ();
 
       if (!font_desc)
         {
-          if (current->is_gtk_theme == FALSE)
+          if (meta_theme_get_theme_type (current) == META_THEME_TYPE_METACITY)
             {
               GtkStyleContext *style;
               GtkWidgetPath *widget_path;

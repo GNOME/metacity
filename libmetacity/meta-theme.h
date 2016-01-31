@@ -19,9 +19,15 @@
 #ifndef META_THEME_H
 #define META_THEME_H
 
-#include <glib.h>
+#include <gtk/gtk.h>
+#include <libmetacity/meta-frame-enums.h>
 
 G_BEGIN_DECLS
+
+typedef struct _MetaFrameStyleSet MetaFrameStyleSet;
+
+#define META_TYPE_THEME meta_theme_get_type ()
+G_DECLARE_FINAL_TYPE (MetaTheme, meta_theme, META, THEME, GObject)
 
 /**
  * META_THEME_ERROR:
@@ -68,7 +74,32 @@ typedef enum
   META_THEME_TYPE_METACITY,
 } MetaThemeType;
 
-GQuark meta_theme_error_quark (void);
+GQuark                      meta_theme_error_quark       (void);
+
+MetaTheme                  *meta_theme_new               (MetaThemeType                type);
+
+gboolean                    meta_theme_load              (MetaTheme                   *theme,
+                                                          const gchar                 *theme_name,
+                                                          GError                     **error);
+
+void                        meta_theme_set_composited    (MetaTheme                   *theme,
+                                                          gboolean                     composited);
+
+gboolean                    meta_theme_get_composited    (MetaTheme                   *theme);
+
+void                        meta_theme_set_titlebar_font (MetaTheme                   *theme,
+                                                          const PangoFontDescription  *titlebar_font);
+
+const PangoFontDescription *meta_theme_get_titlebar_font (MetaTheme                   *theme);
+
+MetaThemeType               meta_theme_get_theme_type    (MetaTheme                   *theme);
+
+gchar                      *meta_theme_get_name          (MetaTheme                   *theme);
+
+MetaFrameStyleSet          *meta_theme_get_style_set     (MetaTheme                   *theme,
+                                                          MetaFrameType                type);
+
+gboolean meta_theme_allows_shade_stick_above_buttons (MetaTheme *theme);
 
 G_END_DECLS
 

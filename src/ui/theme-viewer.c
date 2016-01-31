@@ -839,32 +839,6 @@ benchmark_summary (void)
   return label;
 }
 
-static const gchar *
-theme_get_name (MetaTheme *theme)
-{
-  MetaThemeImpl *impl;
-
-  impl = theme->impl;
-
-  if (META_IS_THEME_METACITY (impl))
-    return meta_theme_metacity_get_name (META_THEME_METACITY (impl));
-
-  return NULL;
-}
-
-static const gchar *
-theme_get_readable_name (MetaTheme *theme)
-{
-  MetaThemeImpl *impl;
-
-  impl = theme->impl;
-
-  if (META_IS_THEME_METACITY (impl))
-    return meta_theme_metacity_get_readable_name (META_THEME_METACITY (impl));
-
-  return NULL;
-}
-
 int
 main (int argc, char **argv)
 {
@@ -877,6 +851,7 @@ main (int argc, char **argv)
   clock_t start, end;
   GtkWidget *notebook;
   int i;
+  gchar *theme_name;
 
   bindtextdomain (GETTEXT_PACKAGE, METACITY_LOCALEDIR);
   textdomain(GETTEXT_PACKAGE);
@@ -904,7 +879,7 @@ main (int argc, char **argv)
     {
       g_printerr (_("Usage: metacity-theme-viewer [THEMENAME]\n"));
 
-      meta_theme_free (global_theme);
+      g_object_unref (global_theme);
       exit (1);
     }
 
@@ -915,12 +890,13 @@ main (int argc, char **argv)
       g_printerr (_("Error loading theme: %s\n"), err->message);
       g_error_free (err);
 
-      meta_theme_free (global_theme);
+      g_object_unref (global_theme);
       exit (1);
     }
 
-  g_print (_("Loaded theme '%s' in %g seconds\n"),
-           theme_get_name (global_theme),
+  theme_name = meta_theme_get_name (global_theme);
+
+  g_print (_("Loaded theme '%s' in %g seconds\n"), theme_name,
            (end - start) / (double) CLOCKS_PER_SEC);
 
   run_theme_benchmark ();
@@ -928,27 +904,15 @@ main (int argc, char **argv)
   window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_default_size (GTK_WINDOW (window), 350, 350);
 
-  if (g_strcmp0 (theme_get_name (global_theme), theme_get_readable_name (global_theme)) == 0)
-    gtk_window_set_title (GTK_WINDOW (window), theme_get_name (global_theme));
-  else
-    {
-      /* The theme directory name is different from the name the theme
-       * gives itself within its file.  Display both, directory name first.
-       */
-      gchar *title =  g_strconcat (theme_get_name (global_theme), " - ",
-                                   theme_get_readable_name (global_theme),
-                                   NULL);
-
-      gtk_window_set_title (GTK_WINDOW (window), title);
-      g_free (title);
-    }
+  gtk_window_set_title (GTK_WINDOW (window), theme_name);
+  g_free (theme_name);
 
   g_signal_connect (G_OBJECT (window), "destroy",
                     G_CALLBACK (gtk_main_quit), NULL);
 
   gtk_widget_realize (window);
 
-  style_info = meta_style_info_new (NULL, global_theme->composited);
+  style_info = meta_style_info_new (NULL, meta_theme_get_composited (global_theme));
   gtk_style_context_get (style_info->styles[META_STYLE_ELEMENT_DECORATION],
                          GTK_STATE_FLAG_NORMAL, "font", &font_desc, NULL);
   meta_style_info_unref (style_info);
@@ -1075,7 +1039,7 @@ run_theme_benchmark (void)
   widget = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_widget_realize (widget);
 
-  style_info = meta_style_info_new (NULL, global_theme->composited);
+  style_info = meta_style_info_new (NULL, meta_theme_get_composited (global_theme));
 
   meta_theme_get_frame_borders (global_theme,
                                 style_info,

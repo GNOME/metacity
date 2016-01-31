@@ -16,11 +16,11 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef META_THEME_METACITY_H
-#define META_THEME_METACITY_H
+#ifndef META_THEME_METACITY_PRIVATE_H
+#define META_THEME_METACITY_PRIVATE_H
 
-#include <libmetacity/meta-button-enums.h>
-#include "meta-theme-impl.h"
+#include "meta-button-enums.h"
+#include "meta-theme-impl-private.h"
 
 G_BEGIN_DECLS
 
@@ -52,10 +52,6 @@ MetaFrameStyle    *meta_theme_metacity_lookup_style        (MetaThemeMetacity  *
 
 MetaFrameStyleSet *meta_theme_metacity_lookup_style_set    (MetaThemeMetacity  *metacity,
                                                             const gchar        *name);
-
-const gchar       *meta_theme_metacity_get_name            (MetaThemeMetacity  *metacity);
-
-const gchar       *meta_theme_metacity_get_readable_name   (MetaThemeMetacity  *metacity);
 
 gboolean           meta_theme_metacity_allows_shade_stick_above_buttons (MetaThemeMetacity *metacity);
 
