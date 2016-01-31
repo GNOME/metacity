@@ -1013,7 +1013,7 @@ parse_toplevel_element (GMarkupParseContext  *context,
                               NULL))
         return;
 
-      if (meta_theme_lookup_style (info->theme, name))
+      if (meta_theme_metacity_lookup_style (metacity, name))
         {
           set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
                      _("<%s> name \"%s\" used a second time"),
@@ -1024,7 +1024,7 @@ parse_toplevel_element (GMarkupParseContext  *context,
       parent_style = NULL;
       if (parent)
         {
-          parent_style = meta_theme_lookup_style (info->theme, parent);
+          parent_style = meta_theme_metacity_lookup_style (metacity, parent);
           if (parent_style == NULL)
             {
               set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
@@ -1099,7 +1099,7 @@ parse_toplevel_element (GMarkupParseContext  *context,
           return;
         }
 
-      meta_theme_insert_style (info->theme, name, info->style);
+      meta_theme_metacity_insert_style (metacity, name, info->style);
 
       push_state (info, STATE_FRAME_STYLE);
     }
@@ -1115,7 +1115,7 @@ parse_toplevel_element (GMarkupParseContext  *context,
                               NULL))
         return;
 
-      if (meta_theme_lookup_style_set (info->theme, name))
+      if (meta_theme_metacity_lookup_style_set (metacity, name))
         {
           set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
                      _("<%s> name \"%s\" used a second time"),
@@ -1126,7 +1126,7 @@ parse_toplevel_element (GMarkupParseContext  *context,
       parent_set = NULL;
       if (parent)
         {
-          parent_set = meta_theme_lookup_style_set (info->theme, parent);
+          parent_set = meta_theme_metacity_lookup_style_set (metacity, parent);
           if (parent_set == NULL)
             {
               set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
@@ -1140,7 +1140,7 @@ parse_toplevel_element (GMarkupParseContext  *context,
 
       info->style_set = meta_frame_style_set_new (parent_set);
 
-      meta_theme_insert_style_set (info->theme, name, info->style_set);
+      meta_theme_metacity_insert_style_set (metacity, name, info->style_set);
 
       push_state (info, STATE_FRAME_STYLE_SET);
     }
@@ -1168,7 +1168,7 @@ parse_toplevel_element (GMarkupParseContext  *context,
           return;
         }
 
-      style_set = meta_theme_lookup_style_set (info->theme,
+      style_set = meta_theme_metacity_lookup_style_set (metacity,
                                                style_set_name);
 
       if (style_set == NULL)
@@ -2952,7 +2952,11 @@ parse_style_set_element (GMarkupParseContext  *context,
                          ParseInfo            *info,
                          GError              **error)
 {
+  MetaThemeMetacity *metacity;
+
   g_return_if_fail (peek_state (info) == STATE_FRAME_STYLE_SET);
+
+  metacity = META_THEME_METACITY (info->theme->impl);
 
   if (ELEMENT_IS ("frame"))
     {
@@ -2992,7 +2996,7 @@ parse_style_set_element (GMarkupParseContext  *context,
           return;
         }
 
-      frame_style = meta_theme_lookup_style (info->theme, style);
+      frame_style = meta_theme_metacity_lookup_style (metacity, style);
 
       if (frame_style == NULL)
         {
@@ -4152,8 +4156,6 @@ clear_theme (MetaTheme *theme)
     }
 
   g_hash_table_remove_all (theme->images_by_filename);
-  g_hash_table_remove_all (theme->styles_by_name);
-  g_hash_table_remove_all (theme->style_sets_by_name);
 
   for (i = 0; i < META_FRAME_TYPE_LAST; i++)
     {

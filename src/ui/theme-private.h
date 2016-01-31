@@ -65,8 +65,6 @@ struct _MetaTheme
   PangoFontDescription *titlebar_font;
 
   GHashTable *images_by_filename;
-  GHashTable *styles_by_name;
-  GHashTable *style_sets_by_name;
 
   MetaFrameStyleSet *style_sets_by_type[META_FRAME_TYPE_LAST];
 
@@ -79,17 +77,6 @@ MetaFrameStyle        *meta_theme_get_frame_style              (MetaTheme       
 
 PangoFontDescription  *meta_style_info_create_font_desc        (MetaTheme                   *theme,
                                                                 MetaStyleInfo               *style_info);
-
-MetaFrameStyle        *meta_theme_lookup_style                 (MetaTheme                   *theme,
-                                                                const char                  *name);
-void                   meta_theme_insert_style                 (MetaTheme                   *theme,
-                                                                const char                  *name,
-                                                                MetaFrameStyle              *style);
-MetaFrameStyleSet     *meta_theme_lookup_style_set             (MetaTheme                   *theme,
-                                                                const char                  *name);
-void                   meta_theme_insert_style_set             (MetaTheme                   *theme,
-                                                                const char                  *name,
-                                                                MetaFrameStyleSet           *style_set);
 
 PangoFontDescription  *meta_gtk_widget_get_font_desc           (GtkWidget                   *widget,
                                                                 double                       scale,

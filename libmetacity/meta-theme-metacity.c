@@ -22,6 +22,7 @@
 
 #include "meta-draw-op.h"
 #include "meta-frame-layout.h"
+#include "meta-frame-style.h"
 #include "meta-theme.h"
 #include "meta-theme-metacity.h"
 
@@ -35,6 +36,8 @@ struct _MetaThemeMetacity
 
   GHashTable    *draw_op_lists;
   GHashTable    *frame_layouts;
+  GHashTable    *styles;
+  GHashTable    *style_sets;
 };
 
 G_DEFINE_TYPE (MetaThemeMetacity, meta_theme_metacity, META_TYPE_THEME_IMPL)
@@ -58,6 +61,8 @@ meta_theme_metacity_dispose (GObject *object)
 
   g_clear_pointer (&metacity->draw_op_lists, g_hash_table_destroy);
   g_clear_pointer (&metacity->frame_layouts, g_hash_table_destroy);
+  g_clear_pointer (&metacity->styles, g_hash_table_destroy);
+  g_clear_pointer (&metacity->style_sets, g_hash_table_destroy);
 
   G_OBJECT_CLASS (meta_theme_metacity_parent_class)->dispose (object);
 }
@@ -80,6 +85,12 @@ meta_theme_metacity_init (MetaThemeMetacity *metacity)
 
   metacity->frame_layouts = g_hash_table_new_full (g_str_hash, g_str_equal, g_free,
                                                    (GDestroyNotify) meta_frame_layout_unref);
+
+  metacity->styles = g_hash_table_new_full (g_str_hash, g_str_equal, g_free,
+                                            (GDestroyNotify) meta_frame_style_unref);
+
+  metacity->style_sets = g_hash_table_new_full (g_str_hash, g_str_equal, g_free,
+                                                (GDestroyNotify) meta_frame_style_set_unref);
 }
 
 gboolean
@@ -285,4 +296,36 @@ meta_theme_metacity_insert_layout (MetaThemeMetacity *metacity,
 {
   meta_frame_layout_ref (layout);
   g_hash_table_replace (metacity->frame_layouts, g_strdup (name), layout);
+}
+
+MetaFrameStyle *
+meta_theme_metacity_lookup_style (MetaThemeMetacity *metacity,
+                                  const gchar       *name)
+{
+  return g_hash_table_lookup (metacity->styles, name);
+}
+
+void
+meta_theme_metacity_insert_style (MetaThemeMetacity *metacity,
+                                  const gchar       *name,
+                                  MetaFrameStyle    *style)
+{
+  meta_frame_style_ref (style);
+  g_hash_table_replace (metacity->styles, g_strdup (name), style);
+}
+
+MetaFrameStyleSet *
+meta_theme_metacity_lookup_style_set (MetaThemeMetacity *metacity,
+                                      const gchar       *name)
+{
+  return g_hash_table_lookup (metacity->style_sets, name);
+}
+
+void
+meta_theme_metacity_insert_style_set (MetaThemeMetacity *metacity,
+                                      const gchar       *name,
+                                      MetaFrameStyleSet *style_set)
+{
+  meta_frame_style_set_ref (style_set);
+  g_hash_table_replace (metacity->style_sets, g_strdup (name), style_set);
 }
