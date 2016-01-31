@@ -25,8 +25,7 @@
 #include <gtk/gtk.h>
 #include <libmetacity/meta-button-layout.h>
 #include <libmetacity/meta-frame-borders.h>
-#include <libmetacity/meta-frame-flags.h>
-#include <libmetacity/meta-frame-type.h>
+#include <libmetacity/meta-frame-enums.h>
 #include <libmetacity/meta-theme.h>
 #include <libmetacity/meta-style-info.h>
 

@@ -18,10 +18,9 @@ libmetacity_la_SOURCES = \
 	meta-draw-spec.h \
 	meta-frame-borders.c \
 	meta-frame-borders.h \
-	meta-frame-flags.h \
+	meta-frame-enums.h \
 	meta-frame-layout.c \
 	meta-frame-layout.h \
-	meta-frame-type.h \
 	meta-gradient.c \
 	meta-gradient.h \
 	meta-gradient-private.h \
@@ -70,9 +69,8 @@ libmetacity_include_HEADERS = \
 	meta-draw-op.h \
 	meta-draw-spec.h \
 	meta-frame-borders.h \
-	meta-frame-flags.h \
+	meta-frame-enums.h \
 	meta-frame-layout.h \
-	meta-frame-type.h \
 	meta-gradient.h \
 	meta-gradient-spec.h \
 	meta-style-info.h \
