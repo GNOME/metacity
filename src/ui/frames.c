@@ -174,48 +174,6 @@ prefs_changed_callback (MetaPreference pref,
     meta_frames_button_layout_changed (META_FRAMES (data));
 }
 
-static MetaStyleInfo *
-meta_frames_get_theme_variant (MetaFrames  *frames,
-                               const gchar *variant)
-{
-  MetaStyleInfo *style_info;
-
-  style_info = g_hash_table_lookup (frames->style_variants, variant);
-  if (style_info == NULL)
-    {
-      MetaTheme *theme = meta_theme_get_current ();
-      style_info = meta_style_info_new (variant, meta_theme_get_composited (theme));
-      g_hash_table_insert (frames->style_variants, g_strdup (variant), style_info);
-    }
-
-  return style_info;
-}
-
-static void
-update_style_contexts (MetaFrames *frames)
-{
-  MetaStyleInfo *style_info;
-  GList *variants, *variant;
-  MetaTheme *theme;
-  gboolean composited;
-
-  theme = meta_theme_get_current ();
-  composited = meta_theme_get_composited (theme);
-
-  if (frames->normal_style)
-    meta_style_info_unref (frames->normal_style);
-  frames->normal_style = meta_style_info_new (NULL, composited);
-
-  variants = g_hash_table_get_keys (frames->style_variants);
-  for (variant = variants; variant; variant = variants->next)
-    {
-      style_info = meta_style_info_new ((char *)variant->data, composited);
-      g_hash_table_insert (frames->style_variants,
-                           g_strdup (variant->data), style_info);
-    }
-  g_list_free (variants);
-}
-
 static void
 meta_frames_init (MetaFrames *frames)
 {
@@ -230,10 +188,6 @@ meta_frames_init (MetaFrames *frames)
   frames->invalidate_cache_timeout_id = 0;
   frames->invalidate_frames = NULL;
   frames->cache = g_hash_table_new (g_direct_hash, g_direct_equal);
-
-  frames->style_variants = g_hash_table_new_full (g_str_hash, g_str_equal,
-                                                  g_free, (GDestroyNotify)meta_style_info_unref);
-  update_style_contexts (frames);
 
   meta_prefs_add_listener (prefs_changed_callback, frames);
 }
@@ -271,18 +225,6 @@ meta_frames_destroy (GtkWidget *widget)
       meta_frames_unmanage_window (frames, frame->xwindow);
     }
   g_slist_free (winlist);
-
-  if (frames->normal_style)
-    {
-      meta_style_info_unref (frames->normal_style);
-      frames->normal_style = NULL;
-    }
-
-  if (frames->style_variants)
-    {
-      g_hash_table_destroy (frames->style_variants);
-      frames->style_variants = NULL;
-    }
 
   GTK_WIDGET_CLASS (meta_frames_parent_class)->destroy (widget);
 }
@@ -471,10 +413,9 @@ meta_frames_style_updated (GtkWidget *widget)
   compositing_manager = meta_prefs_get_compositing_manager ();
 
   meta_theme_set_composited (theme, compositing_manager);
+  meta_theme_style_invalidate (theme);
 
   meta_frames_font_changed (frames);
-
-  update_style_contexts (frames);
 
   g_hash_table_foreach (frames->frames,
                         reattach_style_func, frames);
@@ -667,6 +608,7 @@ meta_frames_attach_style (MetaFrames  *frames,
   gboolean has_frame;
   char *variant = NULL;
   const char *variant_override;
+  MetaTheme *theme;
 
   if (frame->style_info != NULL)
     meta_style_info_unref (frame->style_info);
@@ -682,11 +624,12 @@ meta_frames_attach_style (MetaFrames  *frames,
                    META_CORE_GET_THEME_VARIANT, &variant,
                    META_CORE_GET_END);
 
+  theme = meta_theme_get_current ();
+
   if (variant == NULL || strcmp(variant, "normal") == 0)
-    frame->style_info = meta_style_info_ref (frames->normal_style);
+    frame->style_info = meta_style_info_ref (meta_theme_get_style_info (theme, NULL));
   else
-    frame->style_info = meta_style_info_ref (meta_frames_get_theme_variant (frames,
-                                                                            variant));
+    frame->style_info = meta_style_info_ref (meta_theme_get_style_info (theme, variant));
 
   if (variant_override)
     g_free (variant);

@@ -33,6 +33,8 @@ struct _MetaTheme
   gboolean              composited;
 
   PangoFontDescription *titlebar_font;
+
+  GHashTable           *variants;
 };
 
 enum
@@ -73,6 +75,8 @@ meta_theme_dispose (GObject *object)
   theme = META_THEME (object);
 
   g_clear_object (&theme->impl);
+
+  g_clear_pointer (&theme->variants, g_hash_table_destroy);
 
   G_OBJECT_CLASS (meta_theme_parent_class)->dispose (object);
 }
@@ -169,6 +173,10 @@ meta_theme_class_init (MetaThemeClass *theme_class)
 static void
 meta_theme_init (MetaTheme *theme)
 {
+  theme->composited = TRUE;
+
+  theme->variants = g_hash_table_new_full (g_str_hash, g_str_equal, g_free,
+                                           (GDestroyNotify) meta_style_info_unref);
 }
 
 /**
@@ -200,10 +208,62 @@ meta_theme_load (MetaTheme    *theme,
 }
 
 void
+meta_theme_style_invalidate (MetaTheme *theme)
+{
+  GList *variants;
+  GList *l;
+
+  variants = g_hash_table_get_keys (theme->variants);
+
+  for (l = variants; l != NULL; l = g_list_next (l))
+    {
+      gchar *variant;
+      MetaStyleInfo *style_info;
+
+      variant = g_strdup ((gchar *) l->data);
+
+      if (g_strcmp0 (variant, "default") == 0)
+        style_info = meta_style_info_new (NULL, theme->composited);
+      else
+        style_info = meta_style_info_new (variant, theme->composited);
+
+      g_hash_table_insert (theme->variants, variant, style_info);
+    }
+
+  g_list_free (variants);
+}
+
+MetaStyleInfo *
+meta_theme_get_style_info (MetaTheme   *theme,
+                           const gchar *variant)
+{
+  MetaStyleInfo *style_info;
+
+  if (variant == NULL)
+    variant = "default";
+
+  style_info = g_hash_table_lookup (theme->variants, variant);
+
+  if (style_info == NULL)
+    {
+      style_info = meta_style_info_new (variant, theme->composited);
+
+      g_hash_table_insert (theme->variants, g_strdup (variant), style_info);
+    }
+
+  return style_info;
+}
+
+void
 meta_theme_set_composited (MetaTheme *theme,
                            gboolean   composited)
 {
+  if (theme->composited == composited)
+    return;
+
   theme->composited = composited;
+
+  meta_theme_style_invalidate (theme);
 }
 
 gboolean

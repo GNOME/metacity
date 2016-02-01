@@ -21,6 +21,7 @@
 
 #include <gtk/gtk.h>
 #include <libmetacity/meta-frame-enums.h>
+#include <libmetacity/meta-style-info.h>
 
 G_BEGIN_DECLS
 
@@ -81,6 +82,11 @@ MetaTheme                  *meta_theme_new               (MetaThemeType         
 gboolean                    meta_theme_load              (MetaTheme                   *theme,
                                                           const gchar                 *theme_name,
                                                           GError                     **error);
+
+void                        meta_theme_style_invalidate  (MetaTheme                   *theme);
+
+MetaStyleInfo              *meta_theme_get_style_info    (MetaTheme                   *theme,
+                                                          const gchar                 *variant);
 
 void                        meta_theme_set_composited    (MetaTheme                   *theme,
                                                           gboolean                     composited);
