@@ -912,11 +912,8 @@ main (int argc, char **argv)
 
   gtk_widget_realize (window);
 
-  style_info = meta_style_info_new (NULL, meta_theme_get_composited (global_theme));
-  gtk_style_context_get (style_info->styles[META_STYLE_ELEMENT_DECORATION],
-                         GTK_STATE_FLAG_NORMAL, "font", &font_desc, NULL);
-  meta_style_info_unref (style_info);
-
+  style_info = meta_theme_get_style_info (global_theme, NULL);
+  font_desc = meta_style_info_create_font_desc (global_theme, style_info);
   g_assert (font_desc);
 
   notebook = gtk_notebook_new ();
@@ -992,8 +989,7 @@ get_text_height (GtkWidget     *widget,
   PangoFontDescription *font_desc;
   int                   text_height;
 
-  gtk_style_context_get (style_info->styles[META_STYLE_ELEMENT_DECORATION],
-                         GTK_STATE_FLAG_NORMAL, "font", &font_desc, NULL);
+  font_desc = meta_style_info_create_font_desc (global_theme, style_info);
   text_height = meta_pango_font_desc_get_text_height (font_desc, gtk_widget_get_pango_context (widget));
   pango_font_description_free (font_desc);
 
@@ -1120,7 +1116,6 @@ run_theme_benchmark (void)
 
   g_timer_destroy (timer);
   g_object_unref (G_OBJECT (layout));
-  meta_style_info_unref (style_info);
   gtk_widget_destroy (widget);
 
 #undef ITERATIONS

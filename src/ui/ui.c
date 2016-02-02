@@ -667,62 +667,26 @@ meta_ui_theme_get_frame_borders (MetaUI           *ui,
 {
   int text_height;
   PangoContext *context;
-  const PangoFontDescription *font_desc;
-  PangoFontDescription *free_font_desc = NULL;
+  PangoFontDescription *font_desc;
 
   if (meta_ui_have_a_theme ())
     {
-      GdkDisplay *display = gdk_x11_lookup_xdisplay (ui->xdisplay);
-      GdkScreen *screen = gdk_display_get_screen (display, XScreenNumberOfScreen (ui->xscreen));
       MetaStyleInfo *style_info;
       MetaTheme *current;
 
       current = meta_theme_get_current ();
       style_info = meta_theme_get_style_info (current, NULL);
 
+      font_desc = meta_style_info_create_font_desc (current, style_info);
       context = gtk_widget_get_pango_context (GTK_WIDGET (ui->frames));
-      font_desc = meta_prefs_get_titlebar_font ();
-
-      if (!font_desc)
-        {
-          if (meta_theme_get_theme_type (current) == META_THEME_TYPE_METACITY)
-            {
-              GtkStyleContext *style;
-              GtkWidgetPath *widget_path;
-
-              style = gtk_style_context_new ();
-              gtk_style_context_set_screen (style, screen);
-              gtk_style_context_set_state (style, GTK_STATE_FLAG_NORMAL);
-
-              widget_path = gtk_widget_path_new ();
-              gtk_widget_path_append_type (widget_path, GTK_TYPE_WINDOW);
-              gtk_style_context_set_path (style, widget_path);
-              gtk_widget_path_free (widget_path);
-
-              gtk_style_context_get (style, GTK_STATE_FLAG_NORMAL,
-                                     "font", &free_font_desc,
-                                     NULL);
-
-              if (style != NULL)
-                g_object_unref (style);
-            }
-          else
-            {
-              free_font_desc = meta_style_info_create_font_desc (current, style_info);
-            }
-
-          font_desc = (const PangoFontDescription *) free_font_desc;
-        }
 
       text_height = meta_pango_font_desc_get_text_height (font_desc, context);
+      pango_font_description_free (font_desc);
 
       meta_theme_get_frame_borders (current,
                                     NULL, /* FIXME: theme variant*/
                                     type, text_height, flags,
                                     borders);
-
-      if (free_font_desc)
-        pango_font_description_free (free_font_desc);
     }
   else
     {

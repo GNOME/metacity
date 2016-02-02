@@ -128,22 +128,19 @@ ensure_info (MetaPreview *preview)
 
   if (preview->layout == NULL)
     {
+      MetaStyleInfo *style_info;
       PangoFontDescription *font_desc;
-      double scale;
+      MetaFrameStyle *style;
       PangoAttrList *attrs;
       PangoAttribute *attr;
-
-      if (preview->theme)
-        scale = meta_theme_get_title_scale (preview->theme,
-                                            preview->type,
-                                            preview->flags);
-      else
-        scale = 1.0;
 
       preview->layout = gtk_widget_create_pango_layout (widget,
                                                         preview->title);
 
-      font_desc = meta_gtk_widget_get_font_desc (widget, scale, NULL);
+      style_info = meta_theme_get_style_info (preview->theme, NULL);
+      font_desc = meta_style_info_create_font_desc (preview->theme, style_info);
+      style = meta_theme_get_frame_style (preview->theme, preview->type, preview->flags);
+      meta_frame_style_apply_scale (style, font_desc);
 
       preview->text_height =
         meta_pango_font_desc_get_text_height (font_desc,

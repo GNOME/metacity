@@ -31,10 +31,6 @@ MetaFrameStyle        *meta_theme_get_frame_style              (MetaTheme       
 PangoFontDescription  *meta_style_info_create_font_desc        (MetaTheme                   *theme,
                                                                 MetaStyleInfo               *style_info);
 
-PangoFontDescription  *meta_gtk_widget_get_font_desc           (GtkWidget                   *widget,
-                                                                double                       scale,
-                                                                const PangoFontDescription  *override);
-
 int                    meta_pango_font_desc_get_text_height    (const PangoFontDescription  *font_desc,
                                                                 PangoContext                *context);
 

@@ -465,6 +465,7 @@ meta_frames_ensure_layout (MetaFrames  *frames,
     {
       gpointer key, value;
       MetaTheme *current;
+      MetaStyleInfo *style_info;
       PangoFontDescription *font_desc;
       int size;
 
@@ -475,24 +476,10 @@ meta_frames_ensure_layout (MetaFrames  *frames,
       pango_layout_set_single_paragraph_mode (frame->text_layout, TRUE);
 
       current = meta_theme_get_current ();
+      style_info = meta_theme_get_style_info (current, frame->theme_variant);
 
-      if (meta_theme_get_theme_type (current) == META_THEME_TYPE_METACITY)
-        {
-          double scale;
-
-          scale = meta_theme_get_title_scale (current, type, flags);
-
-          font_desc = meta_gtk_widget_get_font_desc (widget, scale,
-                                                     meta_prefs_get_titlebar_font ());
-        }
-      else
-        {
-          MetaStyleInfo *style_info;
-
-          style_info = meta_theme_get_style_info (current, frame->theme_variant);
-          font_desc = meta_style_info_create_font_desc (current, style_info);
-          meta_frame_style_apply_scale (style, font_desc);
-        }
+      font_desc = meta_style_info_create_font_desc (current, style_info);
+      meta_frame_style_apply_scale (style, font_desc);
 
       size = pango_font_description_get_size (font_desc);
 
