@@ -116,7 +116,7 @@ double meta_theme_get_title_scale (MetaTheme     *theme,
                                    MetaFrameFlags flags);
 
 void meta_theme_draw_frame (MetaTheme              *theme,
-                            MetaStyleInfo          *style_info,
+                            const gchar            *variant,
                             cairo_t                *cr,
                             MetaFrameType           type,
                             MetaFrameFlags          flags,
@@ -130,13 +130,13 @@ void meta_theme_draw_frame (MetaTheme              *theme,
                             GdkPixbuf              *icon);
 
 void meta_theme_get_frame_borders (MetaTheme         *theme,
-                                   MetaStyleInfo     *style_info,
+                                   const gchar       *variant,
                                    MetaFrameType      type,
                                    int                text_height,
                                    MetaFrameFlags     flags,
                                    MetaFrameBorders  *borders);
 void meta_theme_calc_geometry (MetaTheme              *theme,
-                               MetaStyleInfo          *style_info,
+                               const gchar            *variant,
                                MetaFrameType           type,
                                int                     text_height,
                                MetaFrameFlags          flags,

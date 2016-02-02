@@ -74,7 +74,7 @@ struct _MetaUIFrame
 {
   Window xwindow;
   GdkWindow *window;
-  MetaStyleInfo *style_info;
+  gchar *theme_variant;
   MetaFrameStyle *cache_style;
   PangoLayout *text_layout;
   int text_height;

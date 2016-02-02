@@ -487,7 +487,10 @@ meta_frames_ensure_layout (MetaFrames  *frames,
         }
       else
         {
-          font_desc = meta_style_info_create_font_desc (current, frame->style_info);
+          MetaStyleInfo *style_info;
+
+          style_info = meta_theme_get_style_info (current, frame->theme_variant);
+          font_desc = meta_style_info_create_font_desc (current, style_info);
           meta_frame_style_apply_scale (style, font_desc);
         }
 
@@ -543,7 +546,7 @@ meta_frames_calc_geometry (MetaFrames        *frames,
   meta_prefs_get_button_layout (&button_layout);
 
   meta_theme_calc_geometry (meta_theme_get_current (),
-                            frame->style_info,
+                            frame->theme_variant,
                             type,
                             frame->text_height,
                             flags,
@@ -605,13 +608,8 @@ static void
 meta_frames_attach_style (MetaFrames  *frames,
                           MetaUIFrame *frame)
 {
-  gboolean has_frame;
   char *variant = NULL;
   const char *variant_override;
-  MetaTheme *theme;
-
-  if (frame->style_info != NULL)
-    meta_style_info_unref (frame->style_info);
 
   variant_override = get_theme_variant_override (frames);
 
@@ -620,19 +618,11 @@ meta_frames_attach_style (MetaFrames  *frames,
   else
     meta_core_get (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
                    frame->xwindow,
-                   META_CORE_WINDOW_HAS_FRAME, &has_frame,
                    META_CORE_GET_THEME_VARIANT, &variant,
                    META_CORE_GET_END);
 
-  theme = meta_theme_get_current ();
-
-  if (variant == NULL || strcmp(variant, "normal") == 0)
-    frame->style_info = meta_style_info_ref (meta_theme_get_style_info (theme, NULL));
-  else
-    frame->style_info = meta_style_info_ref (meta_theme_get_style_info (theme, variant));
-
-  if (variant_override)
-    g_free (variant);
+  g_free (frame->theme_variant);
+  frame->theme_variant = variant_override ? variant : g_strdup (variant);
 }
 
 void
@@ -650,7 +640,7 @@ meta_frames_manage_window (MetaFrames *frames,
 
   gdk_window_set_user_data (frame->window, frames);
 
-  frame->style_info = NULL;
+  frame->theme_variant = NULL;
 
   /* Don't set event mask here, it's in frame.c */
 
@@ -697,7 +687,7 @@ meta_frames_unmanage_window (MetaFrames *frames,
 
       g_hash_table_remove (frames->frames, &frame->xwindow);
 
-      meta_style_info_unref (frame->style_info);
+      g_free (frame->theme_variant);
 
       gdk_window_destroy (frame->window);
 
@@ -747,7 +737,7 @@ meta_ui_frame_get_borders (MetaFrames       *frames,
    * window size
    */
   meta_theme_get_frame_borders (meta_theme_get_current (),
-                                frame->style_info,
+                                frame->theme_variant,
                                 type,
                                 frame->text_height,
                                 flags,
@@ -2286,7 +2276,7 @@ populate_cache (MetaFrames *frames,
     }
 
   meta_theme_get_frame_borders (meta_theme_get_current (),
-                                frame->style_info,
+                                frame->theme_variant,
                                 frame_type,
                                 frame->text_height,
                                 frame_flags,
@@ -2399,7 +2389,7 @@ subtract_client_area (cairo_region_t *region,
                  META_CORE_GET_CLIENT_HEIGHT, &area.height,
                  META_CORE_GET_END);
   meta_theme_get_frame_borders (meta_theme_get_current (),
-                                frame->style_info,
+                                frame->theme_variant,
                                 type, frame->text_height, flags,
                                 &borders);
 
@@ -2763,7 +2753,7 @@ meta_frames_paint (MetaFrames   *frames,
   meta_prefs_get_button_layout (&button_layout);
 
   meta_theme_draw_frame (meta_theme_get_current (),
-                         frame->style_info,
+                         frame->theme_variant,
                          cr,
                          type,
                          flags,

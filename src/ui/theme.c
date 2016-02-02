@@ -1717,7 +1717,7 @@ meta_style_info_create_font_desc (MetaTheme     *theme,
 
 void
 meta_theme_draw_frame (MetaTheme              *theme,
-                       MetaStyleInfo          *style_info,
+                       const gchar            *theme_variant,
                        cairo_t                *cr,
                        MetaFrameType           type,
                        MetaFrameFlags          flags,
@@ -1732,6 +1732,7 @@ meta_theme_draw_frame (MetaTheme              *theme,
 {
   MetaFrameGeometry fgeom;
   MetaFrameStyle *style;
+  MetaStyleInfo *style_info;
 
   g_return_if_fail (type < META_FRAME_TYPE_LAST);
 
@@ -1740,6 +1741,8 @@ meta_theme_draw_frame (MetaTheme              *theme,
   /* Parser is not supposed to allow this currently */
   if (style == NULL)
     return;
+
+  style_info = meta_theme_get_style_info (theme, theme_variant);
 
   meta_frame_layout_calc_geometry (style->layout,
                                    style_info,
@@ -1777,13 +1780,14 @@ meta_theme_draw_frame (MetaTheme              *theme,
 
 void
 meta_theme_get_frame_borders (MetaTheme        *theme,
-                              MetaStyleInfo    *style_info,
+                              const gchar      *theme_variant,
                               MetaFrameType     type,
                               int               text_height,
                               MetaFrameFlags    flags,
                               MetaFrameBorders *borders)
 {
   MetaFrameStyle *style;
+  MetaStyleInfo *style_info;
 
   g_return_if_fail (type < META_FRAME_TYPE_LAST);
 
@@ -1795,6 +1799,8 @@ meta_theme_get_frame_borders (MetaTheme        *theme,
   if (style == NULL)
     return;
 
+  style_info = meta_theme_get_style_info (theme, theme_variant);
+
   meta_frame_layout_sync_with_style (style->layout, style_info, flags, theme);
 
   meta_frame_layout_get_borders (theme, style->layout, text_height,
@@ -1803,7 +1809,7 @@ meta_theme_get_frame_borders (MetaTheme        *theme,
 
 void
 meta_theme_calc_geometry (MetaTheme              *theme,
-                          MetaStyleInfo          *style_info,
+                          const gchar            *theme_variant,
                           MetaFrameType           type,
                           int                     text_height,
                           MetaFrameFlags          flags,
@@ -1813,6 +1819,7 @@ meta_theme_calc_geometry (MetaTheme              *theme,
                           MetaFrameGeometry      *fgeom)
 {
   MetaFrameStyle *style;
+  MetaStyleInfo *style_info;
 
   g_return_if_fail (type < META_FRAME_TYPE_LAST);
 
@@ -1821,6 +1828,8 @@ meta_theme_calc_geometry (MetaTheme              *theme,
   /* Parser is not supposed to allow this currently */
   if (style == NULL)
     return;
+
+  style_info = meta_theme_get_style_info (theme, theme_variant);
 
   meta_frame_layout_calc_geometry (style->layout,
                                    style_info,

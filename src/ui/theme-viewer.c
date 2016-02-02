@@ -1039,10 +1039,10 @@ run_theme_benchmark (void)
   widget = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_widget_realize (widget);
 
-  style_info = meta_style_info_new (NULL, meta_theme_get_composited (global_theme));
+  style_info = meta_theme_get_style_info (global_theme, NULL);
 
   meta_theme_get_frame_borders (global_theme,
-                                style_info,
+                                NULL,
                                 META_FRAME_TYPE_NORMAL,
                                 get_text_height (widget, style_info),
                                 get_flags (widget),
@@ -1086,7 +1086,7 @@ run_theme_benchmark (void)
       cr = cairo_create (pixmap);
 
       meta_theme_draw_frame (global_theme,
-                             style_info,
+                             NULL, /* theme variant */
                              cr,
                              META_FRAME_TYPE_NORMAL,
                              get_flags (widget),

@@ -38,8 +38,6 @@ static void     meta_preview_size_allocate (GtkWidget        *widget,
                                             GtkAllocation    *allocation);
 static gboolean meta_preview_draw          (GtkWidget        *widget,
                                             cairo_t          *cr);
-static void     meta_preview_realize       (GtkWidget        *widget);
-static void     meta_preview_dispose       (GObject          *object);
 static void     meta_preview_finalize      (GObject          *object);
 
 G_DEFINE_TYPE (MetaPreview, meta_preview, GTK_TYPE_BIN);
@@ -52,10 +50,8 @@ meta_preview_class_init (MetaPreviewClass *class)
 
   widget_class = (GtkWidgetClass*) class;
 
-  gobject_class->dispose = meta_preview_dispose;
   gobject_class->finalize = meta_preview_finalize;
 
-  widget_class->realize = meta_preview_realize;
   widget_class->draw = meta_preview_draw;
   widget_class->get_preferred_width = meta_preview_get_preferred_width;
   widget_class->get_preferred_height = meta_preview_get_preferred_height;
@@ -108,20 +104,6 @@ meta_preview_new (void)
   preview = g_object_new (META_TYPE_PREVIEW, NULL);
 
   return GTK_WIDGET (preview);
-}
-
-static void
-meta_preview_dispose (GObject *object)
-{
-  MetaPreview *preview = META_PREVIEW (object);
-
-  if (preview->style_info)
-    {
-      meta_style_info_unref (preview->style_info);
-      preview->style_info = NULL;
-    }
-
-  G_OBJECT_CLASS (meta_preview_parent_class)->dispose (object);
 }
 
 static void
@@ -186,7 +168,7 @@ ensure_info (MetaPreview *preview)
     {
       if (preview->theme)
         meta_theme_get_frame_borders (preview->theme,
-                                      preview->style_info,
+                                      NULL, /* theme variant */
                                       preview->type,
                                       preview->text_height,
                                       preview->flags,
@@ -238,7 +220,7 @@ meta_preview_draw (GtkWidget *widget,
       border_width = gtk_container_get_border_width (GTK_CONTAINER (widget));
 
       meta_theme_draw_frame (preview->theme,
-                             preview->style_info,
+                             NULL, /* theme variant... */
                              cr,
                              preview->type,
                              preview->flags,
@@ -255,17 +237,6 @@ meta_preview_draw (GtkWidget *widget,
 
   /* draw child */
   return GTK_WIDGET_CLASS (meta_preview_parent_class)->draw (widget, cr);
-}
-
-static void
-meta_preview_realize (GtkWidget *widget)
-{
-  MetaPreview *preview = META_PREVIEW (widget);
-  gboolean composited = meta_theme_get_composited (preview->theme);
-
-  GTK_WIDGET_CLASS (meta_preview_parent_class)->realize (widget);
-
-  preview->style_info = meta_style_info_new (NULL, composited);
 }
 
 #define NO_CHILD_WIDTH 80
