@@ -25,10 +25,4 @@
 #include <gtk/gtk.h>
 #include <libmetacity/meta-theme.h>
 
-MetaTheme* meta_theme_get_current (void);
-void       meta_theme_set_current (const char                 *name,
-                                   gboolean                    force_reload,
-                                   gboolean                    composited,
-                                   const PangoFontDescription *titlebar_font);
-
 #endif
