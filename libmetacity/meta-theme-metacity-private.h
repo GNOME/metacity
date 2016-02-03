@@ -53,8 +53,6 @@ MetaFrameStyle    *meta_theme_metacity_lookup_style        (MetaThemeMetacity  *
 MetaFrameStyleSet *meta_theme_metacity_lookup_style_set    (MetaThemeMetacity  *metacity,
                                                             const gchar        *name);
 
-gboolean           meta_theme_metacity_allows_shade_stick_above_buttons (MetaThemeMetacity *metacity);
-
 guint              meta_theme_metacity_earliest_version_with_button (MetaButtonType type);
 
 G_END_DECLS

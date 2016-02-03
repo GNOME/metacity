@@ -473,15 +473,125 @@ meta_theme_get_title_scale (MetaTheme     *theme,
   return style->layout->title_scale;
 }
 
-gboolean
-meta_theme_allows_shade_stick_above_buttons (MetaTheme *theme)
+void
+meta_theme_get_frame_borders (MetaTheme        *theme,
+                              const gchar      *theme_variant,
+                              MetaFrameType     type,
+                              int               text_height,
+                              MetaFrameFlags    flags,
+                              MetaFrameBorders *borders)
 {
-  MetaThemeMetacity *metacity;
+  MetaFrameStyle *style;
+  MetaStyleInfo *style_info;
 
-  if (theme->type != META_THEME_TYPE_METACITY)
-    return TRUE;
+  g_return_if_fail (type < META_FRAME_TYPE_LAST);
 
-  metacity = META_THEME_METACITY (theme->impl);
+  meta_frame_borders_clear (borders);
 
-  return meta_theme_metacity_allows_shade_stick_above_buttons (metacity);
+  style = meta_theme_get_frame_style (theme, type, flags);
+
+  /* Parser is not supposed to allow this currently */
+  if (style == NULL)
+    return;
+
+  style_info = meta_theme_get_style_info (theme, theme_variant);
+
+  META_THEME_IMPL_GET_CLASS (theme->impl)->get_frame_borders (theme->impl,
+                                                              style->layout,
+                                                              style_info,
+                                                              theme->composited,
+                                                              text_height,
+                                                              flags,
+                                                              type,
+                                                              borders);
+}
+
+void
+meta_theme_calc_geometry (MetaTheme              *theme,
+                          const gchar            *theme_variant,
+                          MetaFrameType           type,
+                          gint                    text_height,
+                          MetaFrameFlags          flags,
+                          gint                    client_width,
+                          gint                    client_height,
+                          const MetaButtonLayout *button_layout,
+                          MetaFrameGeometry      *fgeom)
+{
+  MetaFrameStyle *style;
+  MetaStyleInfo *style_info;
+
+  g_return_if_fail (type < META_FRAME_TYPE_LAST);
+
+  style = meta_theme_get_frame_style (theme, type, flags);
+
+  /* Parser is not supposed to allow this currently */
+  if (style == NULL)
+    return;
+
+  style_info = meta_theme_get_style_info (theme, theme_variant);
+
+  META_THEME_IMPL_GET_CLASS (theme->impl)->calc_geometry (theme->impl,
+                                                          style->layout,
+                                                          style_info,
+                                                          theme->composited,
+                                                          text_height,
+                                                          flags,
+                                                          client_width,
+                                                          client_height,
+                                                          button_layout,
+                                                          type,
+                                                          fgeom);
+}
+
+void
+meta_theme_draw_frame (MetaTheme              *theme,
+                       const gchar            *theme_variant,
+                       cairo_t                *cr,
+                       MetaFrameType           type,
+                       MetaFrameFlags          flags,
+                       int                     client_width,
+                       int                     client_height,
+                       PangoLayout            *title_layout,
+                       int                     text_height,
+                       const MetaButtonLayout *button_layout,
+                       MetaButtonState         button_states[META_BUTTON_TYPE_LAST],
+                       GdkPixbuf              *mini_icon,
+                       GdkPixbuf              *icon)
+{
+  MetaFrameStyle *style;
+  MetaStyleInfo *style_info;
+  MetaFrameGeometry fgeom;
+
+  g_return_if_fail (type < META_FRAME_TYPE_LAST);
+
+  style = meta_theme_get_frame_style (theme, type, flags);
+
+  /* Parser is not supposed to allow this currently */
+  if (style == NULL)
+    return;
+
+  style_info = meta_theme_get_style_info (theme, theme_variant);
+
+  META_THEME_IMPL_GET_CLASS (theme->impl)->calc_geometry (theme->impl,
+                                                          style->layout,
+                                                          style_info,
+                                                          theme->composited,
+                                                          text_height,
+                                                          flags,
+                                                          client_width,
+                                                          client_height,
+                                                          button_layout,
+                                                          type,
+                                                          &fgeom);
+
+  META_THEME_IMPL_GET_CLASS (theme->impl)->draw_frame (theme->impl,
+                                                       style,
+                                                       style_info,
+                                                       cr,
+                                                       &fgeom,
+                                                       title_layout,
+                                                       flags,
+                                                       button_states,
+                                                       mini_icon,
+                                                       icon);
 }

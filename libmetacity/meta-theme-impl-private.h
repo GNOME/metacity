@@ -18,12 +18,14 @@
 #ifndef META_THEME_IMPL_PRIVATE_H
 #define META_THEME_IMPL_PRIVATE_H
 
-#include <glib-object.h>
-
+#include "meta-button-layout.h"
 #include "meta-frame-enums.h"
 #include "meta-frame-style.h"
+#include "meta-style-info.h"
 
 G_BEGIN_DECLS
+
+typedef struct _MetaFrameGeometry MetaFrameGeometry;
 
 #define META_TYPE_THEME_IMPL meta_theme_impl_get_type ()
 G_DECLARE_DERIVABLE_TYPE (MetaThemeImpl, meta_theme_impl,
@@ -33,19 +35,61 @@ struct _MetaThemeImplClass
 {
   GObjectClass parent_class;
 
-  gboolean   (* load)     (MetaThemeImpl  *impl,
-                           const gchar    *name,
-                           GError        **error);
+  gboolean   (* load)              (MetaThemeImpl            *impl,
+                                    const gchar              *name,
+                                    GError                  **error);
 
-  gchar    * (* get_name) (MetaThemeImpl  *impl);
+  gchar    * (* get_name)          (MetaThemeImpl            *impl);
+
+  void       (* get_frame_borders) (MetaThemeImpl            *impl,
+                                    MetaFrameLayout          *layout,
+                                    MetaStyleInfo            *style_info,
+                                    gboolean                  composited,
+                                    gint                      text_height,
+                                    MetaFrameFlags            flags,
+                                    MetaFrameType             type,
+                                    MetaFrameBorders         *borders);
+
+  void       (* calc_geometry)     (MetaThemeImpl            *impl,
+                                    MetaFrameLayout          *layout,
+                                    MetaStyleInfo            *style_info,
+                                    gboolean                  composited,
+                                    gint                      text_height,
+                                    MetaFrameFlags            flags,
+                                    gint                      client_width,
+                                    gint                      client_height,
+                                    const MetaButtonLayout   *button_layout,
+                                    MetaFrameType             type,
+                                    MetaFrameGeometry        *fgeom);
+
+  void       (* draw_frame)        (MetaThemeImpl            *impl,
+                                    MetaFrameStyle           *style,
+                                    MetaStyleInfo            *style_info,
+                                    cairo_t                  *cr,
+                                    const MetaFrameGeometry  *fgeom,
+                                    PangoLayout              *title_layout,
+                                    MetaFrameFlags            flags,
+                                    MetaButtonState           button_states[META_BUTTON_TYPE_LAST],
+                                    GdkPixbuf                *mini_icon,
+                                    GdkPixbuf                *icon);
 };
 
-void               meta_theme_impl_add_style_set (MetaThemeImpl      *impl,
-                                                  MetaFrameType       type,
-                                                  MetaFrameStyleSet  *style_set);
+void               meta_theme_impl_add_style_set (MetaThemeImpl           *impl,
+                                                  MetaFrameType            type,
+                                                  MetaFrameStyleSet       *style_set);
 
-MetaFrameStyleSet *meta_theme_impl_get_style_set (MetaThemeImpl      *impl,
-                                                  MetaFrameType       type);
+MetaFrameStyleSet *meta_theme_impl_get_style_set (MetaThemeImpl           *impl,
+                                                  MetaFrameType            type);
+
+void               get_button_rect               (MetaButtonType           type,
+                                                  const MetaFrameGeometry *fgeom,
+                                                  gint                     middle_background_offset,
+                                                  GdkRectangle            *rect);
+
+MetaButtonState    map_button_state              (MetaButtonType           button_type,
+                                                  const MetaFrameGeometry *fgeom,
+                                                  gint                     middle_bg_offset,
+                                                  MetaButtonState          button_states[META_BUTTON_TYPE_LAST]);
 
 G_END_DECLS
 

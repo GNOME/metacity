@@ -31,34 +31,4 @@ void       meta_theme_set_current (const char                 *name,
                                    gboolean                    composited,
                                    const PangoFontDescription *titlebar_font);
 
-void meta_theme_draw_frame (MetaTheme              *theme,
-                            const gchar            *variant,
-                            cairo_t                *cr,
-                            MetaFrameType           type,
-                            MetaFrameFlags          flags,
-                            int                     client_width,
-                            int                     client_height,
-                            PangoLayout            *title_layout,
-                            int                     text_height,
-                            const MetaButtonLayout *button_layout,
-                            MetaButtonState         button_states[META_BUTTON_TYPE_LAST],
-                            GdkPixbuf              *mini_icon,
-                            GdkPixbuf              *icon);
-
-void meta_theme_get_frame_borders (MetaTheme         *theme,
-                                   const gchar       *variant,
-                                   MetaFrameType      type,
-                                   int                text_height,
-                                   MetaFrameFlags     flags,
-                                   MetaFrameBorders  *borders);
-void meta_theme_calc_geometry (MetaTheme              *theme,
-                               const gchar            *variant,
-                               MetaFrameType           type,
-                               int                     text_height,
-                               MetaFrameFlags          flags,
-                               int                     client_width,
-                               int                     client_height,
-                               const MetaButtonLayout *button_layout,
-                               MetaFrameGeometry      *fgeom);
-
 #endif

@@ -193,7 +193,36 @@ gdouble               meta_theme_get_title_scale           (MetaTheme           
                                                             MetaFrameType                type,
                                                             MetaFrameFlags               flags);
 
-gboolean              meta_theme_allows_shade_stick_above_buttons (MetaTheme *theme);
+void                  meta_theme_get_frame_borders         (MetaTheme                   *theme,
+                                                            const gchar                 *variant,
+                                                            MetaFrameType                type,
+                                                            gint                         text_height,
+                                                            MetaFrameFlags               flags,
+                                                            MetaFrameBorders            *borders);
+
+void                  meta_theme_calc_geometry             (MetaTheme                   *theme,
+                                                            const gchar                 *variant,
+                                                            MetaFrameType                type,
+                                                            gint                         text_height,
+                                                            MetaFrameFlags               flags,
+                                                            gint                         client_width,
+                                                            gint                         client_height,
+                                                            const MetaButtonLayout      *button_layout,
+                                                            MetaFrameGeometry           *fgeom);
+
+void                  meta_theme_draw_frame                (MetaTheme                   *theme,
+                                                            const gchar                 *variant,
+                                                            cairo_t                     *cr,
+                                                            MetaFrameType                type,
+                                                            MetaFrameFlags               flags,
+                                                            gint                         client_width,
+                                                            gint                         client_height,
+                                                            PangoLayout                 *title_layout,
+                                                            int                          text_height,
+                                                            const MetaButtonLayout      *button_layout,
+                                                            MetaButtonState              button_states[META_BUTTON_TYPE_LAST],
+                                                            GdkPixbuf                   *mini_icon,
+                                                            GdkPixbuf                   *icon);
 
 G_END_DECLS
 
