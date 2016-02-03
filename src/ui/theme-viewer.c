@@ -21,7 +21,6 @@
 
 #include <config.h>
 #include "util.h"
-#include "theme.h"
 #include "preview-widget.h"
 #include <gtk/gtk.h>
 #include <time.h>

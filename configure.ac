@@ -439,7 +439,6 @@ AC_CONFIG_FILES([
   libmetacity/Makefile
 
   src/Makefile
-  src/libmetacity-private.pc
   src/tools/Makefile
   src/themes/Makefile
 

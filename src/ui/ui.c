@@ -25,11 +25,11 @@
 #include "util.h"
 #include "menu.h"
 #include "core.h"
-#include "theme.h"
 
 #include <string.h>
 #include <stdlib.h>
 #include <cairo-xlib.h>
+#include <libmetacity/meta-theme.h>
 
 static void meta_ui_accelerator_parse (const char      *accel,
                                        guint           *keysym,

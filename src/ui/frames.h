@@ -24,8 +24,8 @@
 
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
+#include <libmetacity/meta-theme.h>
 #include "common.h"
-#include "theme.h"
 
 typedef enum
 {

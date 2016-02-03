@@ -1,7 +1,5 @@
 NULL =
 
-lib_LTLIBRARIES = libmetacity-private.la
-
 SUBDIRS = tools themes
 
 AM_CPPFLAGS = \
@@ -25,6 +23,11 @@ metacity_SOURCES= 				\
 	core/atomnames.h                        \
 	core/bell.c				\
 	core/bell.h				\
+	core/boxes.c				\
+	include/boxes.h				\
+	core/util.c				\
+	include/util.h				\
+	include/common.h			\
 	compositor/compositor.c			\
 	compositor/compositor-private.h		\
 	compositor/compositor-xrender.c		\
@@ -107,10 +110,7 @@ metacity_SOURCES= 				\
 	ui/ui.c					\
 	$(NULL)
 
-# by setting libmetacity_private_la_CFLAGS, the files shared with
-# metacity proper will be compiled with different names.
-libmetacity_private_la_CFLAGS =
-libmetacity_private_la_SOURCES =		\
+metacity_theme_viewer_SOURCES=  \
 	core/boxes.c				\
 	include/boxes.h				\
 	core/util.c				\
@@ -118,20 +118,8 @@ libmetacity_private_la_SOURCES =		\
 	include/common.h			\
 	ui/preview-widget.c			\
 	ui/preview-widget.h			\
-	ui/theme.c				\
-	ui/theme.h				\
+	ui/theme-viewer.c			\
 	$(NULL)
-
-libmetacity_private_la_LDFLAGS = -no-undefined -version-info 4:0:0 $(WARN_LDFLAGS) $(AM_LDFLAGS)
-libmetacity_private_la_LIBADD  = @METACITY_LIBS@ $(top_builddir)/libmetacity/libmetacity.la
-
-libmetacityincludedir = $(includedir)/metacity/metacity-private
-
-libmetacityinclude_HEADERS =			\
-	ui/theme.h
-
-metacity_theme_viewer_SOURCES=  \
-	ui/theme-viewer.c
 
 gsettings_SCHEMAS = org.gnome.metacity.gschema.xml
 @INTLTOOL_XML_NOMERGE_RULE@
@@ -142,8 +130,8 @@ convert_DATA = metacity-schemas.convert
 
 bin_PROGRAMS=metacity metacity-theme-viewer
 
-metacity_LDADD=@METACITY_LIBS@ libmetacity-private.la $(top_builddir)/libmetacity/libmetacity.la
-metacity_theme_viewer_LDADD= @METACITY_LIBS@ libmetacity-private.la $(top_builddir)/libmetacity/libmetacity.la
+metacity_LDADD=@METACITY_LIBS@ $(top_builddir)/libmetacity/libmetacity.la
+metacity_theme_viewer_LDADD= @METACITY_LIBS@ $(top_builddir)/libmetacity/libmetacity.la
 
 testboxes_SOURCES=include/util.h core/util.c include/boxes.h core/boxes.c core/testboxes.c
 testgradient_SOURCES=../libmetacity/meta-gradient.h ../libmetacity/meta-gradient.c ui/testgradient.c
@@ -180,18 +168,12 @@ xml_DATA     = $(xml_in_files:.xml.in=.xml)
 CLEANFILES = \
 	metacity.desktop metacity-wm.desktop org.gnome.metacity.gschema.xml 50-metacity-launchers.xml 50-metacity-navigation.xml 50-metacity-screenshot.xml 50-metacity-system.xml 50-metacity-windows.xml
 
-pkgconfigdir = $(libdir)/pkgconfig
-
-pkgconfig_DATA = libmetacity-private.pc
-
 EXTRA_DIST=$(desktopfiles_files)	 	\
 	$(wmproperties_files)			\
-	$(IMAGES)		 		\
 	$(desktopfiles_in_files)		\
 	$(wmproperties_in_files)		\
 	metacity-schemas.convert		\
 	org.gnome.metacity.gschema.xml.in	\
-	$(xml_in_files)				\
-	libmetacity-private.pc.in
+	$(xml_in_files)
 
 -include $(top_srcdir)/git.mk

@@ -19,8 +19,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "theme.h"
 #include <gtk/gtk.h>
+#include <libmetacity/meta-theme.h>
 
 #ifndef META_PREVIEW_WIDGET_H
 #define META_PREVIEW_WIDGET_H
