@@ -1713,24 +1713,3 @@ meta_theme_calc_geometry (MetaTheme              *theme,
                                    fgeom,
                                    theme);
 }
-
-MetaFrameType
-meta_frame_type_from_string (const char *str)
-{
-  if (strcmp ("normal", str) == 0)
-    return META_FRAME_TYPE_NORMAL;
-  else if (strcmp ("dialog", str) == 0)
-    return META_FRAME_TYPE_DIALOG;
-  else if (strcmp ("modal_dialog", str) == 0)
-    return META_FRAME_TYPE_MODAL_DIALOG;
-  else if (strcmp ("utility", str) == 0)
-    return META_FRAME_TYPE_UTILITY;
-  else if (strcmp ("menu", str) == 0)
-    return META_FRAME_TYPE_MENU;
-  else if (strcmp ("border", str) == 0)
-    return META_FRAME_TYPE_BORDER;
-  else if (strcmp ("attached", str) == 0)
-    return META_FRAME_TYPE_ATTACHED;
-  else
-    return META_FRAME_TYPE_LAST;
-}

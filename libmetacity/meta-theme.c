@@ -17,6 +17,8 @@
 
 #include "config.h"
 
+#include <string.h>
+
 #include "meta-enum-types.h"
 #include "meta-theme.h"
 #include "meta-theme-gtk-private.h"
@@ -430,6 +432,27 @@ meta_pango_font_desc_get_text_height (const PangoFontDescription *font_desc,
   pango_font_metrics_unref (metrics);
 
   return retval;
+}
+
+MetaFrameType
+meta_frame_type_from_string (const gchar *str)
+{
+  if (strcmp ("normal", str) == 0)
+    return META_FRAME_TYPE_NORMAL;
+  else if (strcmp ("dialog", str) == 0)
+    return META_FRAME_TYPE_DIALOG;
+  else if (strcmp ("modal_dialog", str) == 0)
+    return META_FRAME_TYPE_MODAL_DIALOG;
+  else if (strcmp ("utility", str) == 0)
+    return META_FRAME_TYPE_UTILITY;
+  else if (strcmp ("menu", str) == 0)
+    return META_FRAME_TYPE_MENU;
+  else if (strcmp ("border", str) == 0)
+    return META_FRAME_TYPE_BORDER;
+  else if (strcmp ("attached", str) == 0)
+    return META_FRAME_TYPE_ATTACHED;
+  else
+    return META_FRAME_TYPE_LAST;
 }
 
 gboolean

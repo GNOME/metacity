@@ -187,6 +187,8 @@ PangoFontDescription *meta_style_info_create_font_desc     (MetaTheme           
 gint                  meta_pango_font_desc_get_text_height (const PangoFontDescription  *font_desc,
                                                             PangoContext                *context);
 
+MetaFrameType         meta_frame_type_from_string          (const gchar                 *str);
+
 gboolean              meta_theme_allows_shade_stick_above_buttons (MetaTheme *theme);
 
 G_END_DECLS

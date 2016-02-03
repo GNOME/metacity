@@ -65,6 +65,4 @@ void meta_theme_calc_geometry (MetaTheme              *theme,
                                const MetaButtonLayout *button_layout,
                                MetaFrameGeometry      *fgeom);
 
-MetaFrameType         meta_frame_type_from_string      (const char            *str);
-
 #endif
