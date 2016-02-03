@@ -152,38 +152,39 @@ struct _MetaFrameGeometry
   guint bottom_right_corner_rounded_radius;
 };
 
-GQuark                      meta_theme_error_quark       (void);
+GQuark                meta_theme_error_quark               (void);
 
-MetaTheme                  *meta_theme_new               (MetaThemeType                type);
+MetaTheme            *meta_theme_new                       (MetaThemeType                type);
 
-gboolean                    meta_theme_load              (MetaTheme                   *theme,
-                                                          const gchar                 *theme_name,
-                                                          GError                     **error);
+gboolean              meta_theme_load                      (MetaTheme                   *theme,
+                                                            const gchar                 *theme_name,
+                                                            GError                     **error);
 
-void                        meta_theme_style_invalidate  (MetaTheme                   *theme);
+void                  meta_theme_style_invalidate          (MetaTheme                   *theme);
 
-MetaStyleInfo              *meta_theme_get_style_info    (MetaTheme                   *theme,
-                                                          const gchar                 *variant);
+MetaStyleInfo        *meta_theme_get_style_info            (MetaTheme                   *theme,
+                                                            const gchar                 *variant);
 
-void                        meta_theme_set_composited    (MetaTheme                   *theme,
-                                                          gboolean                     composited);
+void                  meta_theme_set_composited            (MetaTheme                   *theme,
+                                                            gboolean                     composited);
 
-gboolean                    meta_theme_get_composited    (MetaTheme                   *theme);
+gboolean              meta_theme_get_composited            (MetaTheme                   *theme);
 
-void                        meta_theme_set_titlebar_font (MetaTheme                   *theme,
-                                                          const PangoFontDescription  *titlebar_font);
+void                  meta_theme_set_titlebar_font         (MetaTheme                   *theme,
+                                                            const PangoFontDescription  *titlebar_font);
 
-const PangoFontDescription *meta_theme_get_titlebar_font (MetaTheme                   *theme);
+MetaThemeType         meta_theme_get_theme_type            (MetaTheme                   *theme);
 
-MetaThemeType               meta_theme_get_theme_type    (MetaTheme                   *theme);
+gchar                *meta_theme_get_name                  (MetaTheme                   *theme);
 
-gchar                      *meta_theme_get_name          (MetaTheme                   *theme);
+MetaFrameStyle       *meta_theme_get_frame_style           (MetaTheme                   *theme,
+                                                            MetaFrameType                type,
+                                                            MetaFrameFlags               flags);
 
-MetaFrameStyle             *meta_theme_get_frame_style   (MetaTheme                   *theme,
-                                                          MetaFrameType                type,
-                                                          MetaFrameFlags               flags);
+PangoFontDescription *meta_style_info_create_font_desc     (MetaTheme                   *theme,
+                                                            MetaStyleInfo               *style_info);
 
-gboolean meta_theme_allows_shade_stick_above_buttons (MetaTheme *theme);
+gboolean             meta_theme_allows_shade_stick_above_buttons (MetaTheme *theme);
 
 G_END_DECLS
 

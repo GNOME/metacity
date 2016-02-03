@@ -1587,31 +1587,6 @@ meta_theme_get_title_scale (MetaTheme     *theme,
   return style->layout->title_scale;
 }
 
-PangoFontDescription*
-meta_style_info_create_font_desc (MetaTheme     *theme,
-                                  MetaStyleInfo *style_info)
-{
-  GtkStyleContext *context;
-  PangoFontDescription *font_desc;
-  const PangoFontDescription *titlebar_font;
-
-  context = style_info->styles[META_STYLE_ELEMENT_TITLE];
-
-  gtk_style_context_save (context);
-  gtk_style_context_set_state (context, GTK_STATE_FLAG_NORMAL);
-
-  gtk_style_context_get (context, GTK_STATE_FLAG_NORMAL,
-                         "font", &font_desc, NULL);
-
-  gtk_style_context_restore (context);
-
-  titlebar_font = meta_theme_get_titlebar_font (theme);
-  if (titlebar_font)
-    pango_font_description_merge (font_desc, titlebar_font, TRUE);
-
-  return font_desc;
-}
-
 void
 meta_theme_draw_frame (MetaTheme              *theme,
                        const gchar            *theme_variant,

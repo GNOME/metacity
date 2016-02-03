@@ -280,12 +280,6 @@ meta_theme_set_titlebar_font (MetaTheme                  *theme,
   theme->titlebar_font = pango_font_description_copy (titlebar_font);
 }
 
-const PangoFontDescription *
-meta_theme_get_titlebar_font (MetaTheme *theme)
-{
-  return theme->titlebar_font;
-}
-
 MetaThemeType
 meta_theme_get_theme_type (MetaTheme *theme)
 {
@@ -387,6 +381,29 @@ meta_theme_get_frame_style (MetaTheme      *theme,
   style = meta_frame_style_set_get_style (style_set, state, resize, focus);
 
   return style;
+}
+
+PangoFontDescription*
+meta_style_info_create_font_desc (MetaTheme     *theme,
+                                  MetaStyleInfo *style_info)
+{
+  GtkStyleContext *context;
+  PangoFontDescription *font_desc;
+
+  context = style_info->styles[META_STYLE_ELEMENT_TITLE];
+
+  gtk_style_context_save (context);
+  gtk_style_context_set_state (context, GTK_STATE_FLAG_NORMAL);
+
+  gtk_style_context_get (context, GTK_STATE_FLAG_NORMAL,
+                         "font", &font_desc, NULL);
+
+  gtk_style_context_restore (context);
+
+  if (theme->titlebar_font)
+    pango_font_description_merge (font_desc, theme->titlebar_font, TRUE);
+
+  return font_desc;
 }
 
 gboolean
