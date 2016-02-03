@@ -31,10 +31,6 @@ void       meta_theme_set_current (const char                 *name,
                                    gboolean                    composited,
                                    const PangoFontDescription *titlebar_font);
 
-double meta_theme_get_title_scale (MetaTheme     *theme,
-                                   MetaFrameType  type,
-                                   MetaFrameFlags flags);
-
 void meta_theme_draw_frame (MetaTheme              *theme,
                             const gchar            *variant,
                             cairo_t                *cr,

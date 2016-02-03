@@ -189,6 +189,10 @@ gint                  meta_pango_font_desc_get_text_height (const PangoFontDescr
 
 MetaFrameType         meta_frame_type_from_string          (const gchar                 *str);
 
+gdouble               meta_theme_get_title_scale           (MetaTheme                   *theme,
+                                                            MetaFrameType                type,
+                                                            MetaFrameFlags               flags);
+
 gboolean              meta_theme_allows_shade_stick_above_buttons (MetaTheme *theme);
 
 G_END_DECLS
