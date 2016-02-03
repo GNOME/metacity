@@ -184,7 +184,10 @@ MetaFrameStyle       *meta_theme_get_frame_style           (MetaTheme           
 PangoFontDescription *meta_style_info_create_font_desc     (MetaTheme                   *theme,
                                                             MetaStyleInfo               *style_info);
 
-gboolean             meta_theme_allows_shade_stick_above_buttons (MetaTheme *theme);
+gint                  meta_pango_font_desc_get_text_height (const PangoFontDescription  *font_desc,
+                                                            PangoContext                *context);
+
+gboolean              meta_theme_allows_shade_stick_above_buttons (MetaTheme *theme);
 
 G_END_DECLS
 

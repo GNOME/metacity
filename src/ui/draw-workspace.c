@@ -28,7 +28,7 @@
 #include <libmetacity/meta-color.h>
 
 #include "draw-workspace.h"
-#include "theme-private.h"
+#include "theme.h"
 
 static void
 get_window_rect (const WnckWindowDisplayInfo *win,

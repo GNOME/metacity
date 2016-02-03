@@ -51,7 +51,7 @@
  */
 
 #include <config.h>
-#include "theme-private.h"
+#include "theme.h"
 #include "util.h"
 #include <gtk/gtk.h>
 #include <libmetacity/meta-color.h>
@@ -1712,32 +1712,6 @@ meta_theme_calc_geometry (MetaTheme              *theme,
                                    type,
                                    fgeom,
                                    theme);
-}
-
-/**
- * Returns the height of the letters in a particular font.
- *
- * \param font_desc  the font
- * \param context  the context of the font
- * \return  the height of the letters
- */
-int
-meta_pango_font_desc_get_text_height (const PangoFontDescription *font_desc,
-                                      PangoContext         *context)
-{
-  PangoFontMetrics *metrics;
-  PangoLanguage *lang;
-  int retval;
-
-  lang = pango_context_get_language (context);
-  metrics = pango_context_get_metrics (context, font_desc, lang);
-
-  retval = PANGO_PIXELS (pango_font_metrics_get_ascent (metrics) +
-                         pango_font_metrics_get_descent (metrics));
-
-  pango_font_metrics_unref (metrics);
-
-  return retval;
 }
 
 MetaFrameType
