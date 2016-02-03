@@ -1569,109 +1569,6 @@ meta_theme_set_current (const gchar                *name,
     }
 }
 
-static MetaFrameStyle*
-theme_get_style (MetaTheme     *theme,
-                 MetaFrameType  type,
-                 MetaFrameFlags flags)
-{
-  MetaFrameState state;
-  MetaFrameResize resize;
-  MetaFrameFocus focus;
-  MetaFrameStyle *style;
-  MetaFrameStyleSet *style_set;
-
-  style_set = meta_theme_get_style_set (theme, type);
-
-  if (style_set == NULL && type == META_FRAME_TYPE_ATTACHED)
-    style_set = meta_theme_get_style_set (theme, META_FRAME_TYPE_BORDER);
-
-  /* Right now the parser forces a style set for all other types,
-   * but this fallback code is here in case I take that out.
-   */
-  if (style_set == NULL)
-    style_set = meta_theme_get_style_set (theme, META_FRAME_TYPE_NORMAL);
-
-  if (style_set == NULL)
-    return NULL;
-
-  switch (flags & (META_FRAME_MAXIMIZED | META_FRAME_SHADED | META_FRAME_TILED_LEFT | META_FRAME_TILED_RIGHT))
-    {
-    case 0:
-      state = META_FRAME_STATE_NORMAL;
-      break;
-    case META_FRAME_MAXIMIZED:
-      state = META_FRAME_STATE_MAXIMIZED;
-      break;
-    case META_FRAME_TILED_LEFT:
-      state = META_FRAME_STATE_TILED_LEFT;
-      break;
-    case META_FRAME_TILED_RIGHT:
-      state = META_FRAME_STATE_TILED_RIGHT;
-      break;
-    case META_FRAME_SHADED:
-      state = META_FRAME_STATE_SHADED;
-      break;
-    case (META_FRAME_MAXIMIZED | META_FRAME_SHADED):
-      state = META_FRAME_STATE_MAXIMIZED_AND_SHADED;
-      break;
-    case (META_FRAME_TILED_LEFT | META_FRAME_SHADED):
-      state = META_FRAME_STATE_TILED_LEFT_AND_SHADED;
-      break;
-    case (META_FRAME_TILED_RIGHT | META_FRAME_SHADED):
-      state = META_FRAME_STATE_TILED_RIGHT_AND_SHADED;
-      break;
-    default:
-      g_assert_not_reached ();
-      state = META_FRAME_STATE_LAST; /* compiler */
-      break;
-    }
-
-  switch (flags & (META_FRAME_ALLOWS_VERTICAL_RESIZE | META_FRAME_ALLOWS_HORIZONTAL_RESIZE))
-    {
-    case 0:
-      resize = META_FRAME_RESIZE_NONE;
-      break;
-    case META_FRAME_ALLOWS_VERTICAL_RESIZE:
-      resize = META_FRAME_RESIZE_VERTICAL;
-      break;
-    case META_FRAME_ALLOWS_HORIZONTAL_RESIZE:
-      resize = META_FRAME_RESIZE_HORIZONTAL;
-      break;
-    case (META_FRAME_ALLOWS_VERTICAL_RESIZE | META_FRAME_ALLOWS_HORIZONTAL_RESIZE):
-      resize = META_FRAME_RESIZE_BOTH;
-      break;
-    default:
-      g_assert_not_reached ();
-      resize = META_FRAME_RESIZE_LAST; /* compiler */
-      break;
-    }
-
-  /* re invert the styles used for focus/unfocussed while flashing a frame */
-  if (((flags & META_FRAME_HAS_FOCUS) && !(flags & META_FRAME_IS_FLASHING))
-      || (!(flags & META_FRAME_HAS_FOCUS) && (flags & META_FRAME_IS_FLASHING)))
-    focus = META_FRAME_FOCUS_YES;
-  else
-    focus = META_FRAME_FOCUS_NO;
-
-  style = meta_frame_style_set_get_style (style_set, state, resize, focus);
-
-  return style;
-}
-
-MetaFrameStyle*
-meta_theme_get_frame_style (MetaTheme     *theme,
-                            MetaFrameType  type,
-                            MetaFrameFlags flags)
-{
-  MetaFrameStyle *style;
-
-  g_return_val_if_fail (type < META_FRAME_TYPE_LAST, NULL);
-
-  style = theme_get_style (theme, type, flags);
-
-  return style;
-}
-
 double
 meta_theme_get_title_scale (MetaTheme     *theme,
                             MetaFrameType  type,
@@ -1681,7 +1578,7 @@ meta_theme_get_title_scale (MetaTheme     *theme,
 
   g_return_val_if_fail (type < META_FRAME_TYPE_LAST, 1.0);
 
-  style = theme_get_style (theme, type, flags);
+  style = meta_theme_get_frame_style (theme, type, flags);
 
   /* Parser is not supposed to allow this currently */
   if (style == NULL)
@@ -1736,7 +1633,7 @@ meta_theme_draw_frame (MetaTheme              *theme,
 
   g_return_if_fail (type < META_FRAME_TYPE_LAST);
 
-  style = theme_get_style (theme, type, flags);
+  style = meta_theme_get_frame_style (theme, type, flags);
 
   /* Parser is not supposed to allow this currently */
   if (style == NULL)
@@ -1791,7 +1688,7 @@ meta_theme_get_frame_borders (MetaTheme        *theme,
 
   g_return_if_fail (type < META_FRAME_TYPE_LAST);
 
-  style = theme_get_style (theme, type, flags);
+  style = meta_theme_get_frame_style (theme, type, flags);
 
   meta_frame_borders_clear (borders);
 
@@ -1823,7 +1720,7 @@ meta_theme_calc_geometry (MetaTheme              *theme,
 
   g_return_if_fail (type < META_FRAME_TYPE_LAST);
 
-  style = theme_get_style (theme, type, flags);
+  style = meta_theme_get_frame_style (theme, type, flags);
 
   /* Parser is not supposed to allow this currently */
   if (style == NULL)

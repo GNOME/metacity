@@ -298,11 +298,95 @@ meta_theme_get_name (MetaTheme *theme)
   return META_THEME_IMPL_GET_CLASS (theme->impl)->get_name (theme->impl);
 }
 
-MetaFrameStyleSet *
-meta_theme_get_style_set (MetaTheme     *theme,
-                          MetaFrameType  type)
+MetaFrameStyle *
+meta_theme_get_frame_style (MetaTheme      *theme,
+                            MetaFrameType   type,
+                            MetaFrameFlags  flags)
 {
-  return meta_theme_impl_get_style_set (theme->impl, type);
+  MetaFrameState state;
+  MetaFrameResize resize;
+  MetaFrameFocus focus;
+  MetaFrameStyle *style;
+  MetaFrameStyleSet *style_set;
+
+  g_return_val_if_fail (type < META_FRAME_TYPE_LAST, NULL);
+
+  style_set = meta_theme_impl_get_style_set (theme->impl, type);
+
+  if (style_set == NULL && type == META_FRAME_TYPE_ATTACHED)
+    style_set = meta_theme_impl_get_style_set (theme->impl, META_FRAME_TYPE_BORDER);
+
+  /* Right now the parser forces a style set for all other types,
+   * but this fallback code is here in case I take that out.
+   */
+  if (style_set == NULL)
+    style_set = meta_theme_impl_get_style_set (theme->impl, META_FRAME_TYPE_NORMAL);
+
+  if (style_set == NULL)
+    return NULL;
+
+  switch (flags & (META_FRAME_MAXIMIZED | META_FRAME_SHADED | META_FRAME_TILED_LEFT | META_FRAME_TILED_RIGHT))
+    {
+    case 0:
+      state = META_FRAME_STATE_NORMAL;
+      break;
+    case META_FRAME_MAXIMIZED:
+      state = META_FRAME_STATE_MAXIMIZED;
+      break;
+    case META_FRAME_TILED_LEFT:
+      state = META_FRAME_STATE_TILED_LEFT;
+      break;
+    case META_FRAME_TILED_RIGHT:
+      state = META_FRAME_STATE_TILED_RIGHT;
+      break;
+    case META_FRAME_SHADED:
+      state = META_FRAME_STATE_SHADED;
+      break;
+    case (META_FRAME_MAXIMIZED | META_FRAME_SHADED):
+      state = META_FRAME_STATE_MAXIMIZED_AND_SHADED;
+      break;
+    case (META_FRAME_TILED_LEFT | META_FRAME_SHADED):
+      state = META_FRAME_STATE_TILED_LEFT_AND_SHADED;
+      break;
+    case (META_FRAME_TILED_RIGHT | META_FRAME_SHADED):
+      state = META_FRAME_STATE_TILED_RIGHT_AND_SHADED;
+      break;
+    default:
+      g_assert_not_reached ();
+      state = META_FRAME_STATE_LAST; /* compiler */
+      break;
+    }
+
+  switch (flags & (META_FRAME_ALLOWS_VERTICAL_RESIZE | META_FRAME_ALLOWS_HORIZONTAL_RESIZE))
+    {
+    case 0:
+      resize = META_FRAME_RESIZE_NONE;
+      break;
+    case META_FRAME_ALLOWS_VERTICAL_RESIZE:
+      resize = META_FRAME_RESIZE_VERTICAL;
+      break;
+    case META_FRAME_ALLOWS_HORIZONTAL_RESIZE:
+      resize = META_FRAME_RESIZE_HORIZONTAL;
+      break;
+    case (META_FRAME_ALLOWS_VERTICAL_RESIZE | META_FRAME_ALLOWS_HORIZONTAL_RESIZE):
+      resize = META_FRAME_RESIZE_BOTH;
+      break;
+    default:
+      g_assert_not_reached ();
+      resize = META_FRAME_RESIZE_LAST; /* compiler */
+      break;
+    }
+
+  /* re invert the styles used for focus/unfocussed while flashing a frame */
+  if (((flags & META_FRAME_HAS_FOCUS) && !(flags & META_FRAME_IS_FLASHING))
+      || (!(flags & META_FRAME_HAS_FOCUS) && (flags & META_FRAME_IS_FLASHING)))
+    focus = META_FRAME_FOCUS_YES;
+  else
+    focus = META_FRAME_FOCUS_NO;
+
+  style = meta_frame_style_set_get_style (style_set, state, resize, focus);
+
+  return style;
 }
 
 gboolean

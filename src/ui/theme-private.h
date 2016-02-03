@@ -18,15 +18,9 @@
 #ifndef META_THEME_PRIVATE_H
 #define META_THEME_PRIVATE_H
 
-#include <libmetacity/meta-frame-style.h>
-
 #include "theme.h"
 
 G_BEGIN_DECLS
-
-MetaFrameStyle        *meta_theme_get_frame_style              (MetaTheme                   *theme,
-                                                                MetaFrameType                type,
-                                                                MetaFrameFlags               flags);
 
 PangoFontDescription  *meta_style_info_create_font_desc        (MetaTheme                   *theme,
                                                                 MetaStyleInfo               *style_info);

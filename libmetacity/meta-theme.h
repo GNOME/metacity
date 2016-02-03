@@ -24,13 +24,13 @@
 #include <libmetacity/meta-button-layout.h>
 #include <libmetacity/meta-frame-borders.h>
 #include <libmetacity/meta-frame-enums.h>
+#include <libmetacity/meta-frame-style.h>
 #include <libmetacity/meta-style-info.h>
 
 G_BEGIN_DECLS
 
 typedef struct _MetaButtonSpace MetaButtonSpace;
 typedef struct _MetaFrameGeometry MetaFrameGeometry;
-typedef struct _MetaFrameStyleSet MetaFrameStyleSet;
 
 #define META_TYPE_THEME meta_theme_get_type ()
 G_DECLARE_FINAL_TYPE (MetaTheme, meta_theme, META, THEME, GObject)
@@ -179,8 +179,9 @@ MetaThemeType               meta_theme_get_theme_type    (MetaTheme             
 
 gchar                      *meta_theme_get_name          (MetaTheme                   *theme);
 
-MetaFrameStyleSet          *meta_theme_get_style_set     (MetaTheme                   *theme,
-                                                          MetaFrameType                type);
+MetaFrameStyle             *meta_theme_get_frame_style   (MetaTheme                   *theme,
+                                                          MetaFrameType                type,
+                                                          MetaFrameFlags               flags);
 
 gboolean meta_theme_allows_shade_stick_above_buttons (MetaTheme *theme);
 
