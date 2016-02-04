@@ -568,8 +568,8 @@ meta_frames_new (int screen_number)
   return frames;
 }
 
-static const char *
-get_theme_variant_override (MetaFrames *frames)
+static const gchar *
+get_global_theme_variant (MetaFrames *frames)
 {
   GdkScreen *screen = gtk_widget_get_screen (GTK_WIDGET (frames));
   GtkSettings *settings = gtk_settings_get_for_screen (screen);
@@ -595,21 +595,22 @@ static void
 meta_frames_attach_style (MetaFrames  *frames,
                           MetaUIFrame *frame)
 {
-  char *variant = NULL;
-  const char *variant_override;
+  GdkDisplay *display;
+  gchar *variant;
 
-  variant_override = get_theme_variant_override (frames);
+  display = gdk_display_get_default ();
+  variant = NULL;
 
-  if (variant_override)
-    variant = g_strdup (variant_override);
-  else
-    meta_core_get (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
-                   frame->xwindow,
-                   META_CORE_GET_THEME_VARIANT, &variant,
-                   META_CORE_GET_END);
+  meta_core_get (GDK_DISPLAY_XDISPLAY (display), frame->xwindow,
+                 META_CORE_GET_THEME_VARIANT, &variant,
+                 META_CORE_GET_END);
 
   g_free (frame->theme_variant);
-  frame->theme_variant = variant_override ? variant : g_strdup (variant);
+
+  if (variant == NULL)
+    frame->theme_variant = g_strdup (get_global_theme_variant (frames));
+  else
+    frame->theme_variant = *variant != '\0' ? g_strdup (variant) : NULL;
 }
 
 void
