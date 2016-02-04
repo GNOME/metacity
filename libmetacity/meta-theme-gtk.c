@@ -194,8 +194,6 @@ frame_layout_sync_with_style (MetaFrameLayout *layout,
 
   meta_style_info_set_flags (style_info, flags);
 
-  layout->button_sizing = META_BUTTON_SIZING_FIXED;
-
   style = style_info->styles[META_STYLE_ELEMENT_DECORATION];
   get_padding_and_border (style, &border);
   scale_border (&border, layout->title_scale);
@@ -417,7 +415,6 @@ rect_for_function (MetaFrameGeometry  *fgeom,
 
 static gboolean
 strip_button (MetaButtonSpace *func_rects[META_BUTTON_FUNCTION_LAST],
-              GdkRectangle    *bg_rects[META_BUTTON_FUNCTION_LAST],
               int             *n_rects,
               MetaButtonSpace *to_strip)
 {
@@ -434,13 +431,11 @@ strip_button (MetaButtonSpace *func_rects[META_BUTTON_FUNCTION_LAST],
           while (i < *n_rects)
             {
               func_rects[i] = func_rects[i+1];
-              bg_rects[i] = bg_rects[i+1];
 
               ++i;
             }
 
           func_rects[i] = NULL;
-          bg_rects[i] = NULL;
 
           return TRUE;
         }
@@ -478,9 +473,7 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
    */
   MetaButtonSpace *left_func_rects[META_BUTTON_FUNCTION_LAST];
   MetaButtonSpace *right_func_rects[META_BUTTON_FUNCTION_LAST];
-  GdkRectangle *left_bg_rects[META_BUTTON_FUNCTION_LAST];
   gboolean left_buttons_has_spacer[META_BUTTON_FUNCTION_LAST];
-  GdkRectangle *right_bg_rects[META_BUTTON_FUNCTION_LAST];
   gboolean right_buttons_has_spacer[META_BUTTON_FUNCTION_LAST];
 
   META_THEME_IMPL_GET_CLASS (impl)->get_frame_borders (impl, layout,
@@ -504,25 +497,8 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
   fgeom->left_titlebar_edge = layout->left_titlebar_edge;
   fgeom->right_titlebar_edge = layout->right_titlebar_edge;
 
-  /* gcc warnings */
-  button_width = -1;
-  button_height = -1;
-
-  switch (layout->button_sizing)
-    {
-    case META_BUTTON_SIZING_ASPECT:
-      button_height = borders.visible.top - layout->button_border.top - layout->button_border.bottom;
-      button_width = button_height / layout->button_aspect;
-      break;
-    case META_BUTTON_SIZING_FIXED:
-      button_width = layout->button_width;
-      button_height = layout->button_height;
-      break;
-    case META_BUTTON_SIZING_LAST:
-    default:
-      g_assert_not_reached ();
-      break;
-    }
+  button_width = layout->button_width;
+  button_height = layout->button_height;
 
   /* FIXME all this code sort of pretends that duplicate buttons
    * with the same function are allowed, but that breaks the
@@ -571,36 +547,6 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
         }
     }
 
-  for (i = 0; i < META_BUTTON_FUNCTION_LAST; i++)
-    {
-      left_bg_rects[i] = NULL;
-      right_bg_rects[i] = NULL;
-    }
-
-  for (i = 0; i < n_left; i++)
-    {
-      if (n_left == 1)
-        left_bg_rects[i] = &fgeom->left_single_background;
-      else if (i == 0)
-        left_bg_rects[i] = &fgeom->left_left_background;
-      else if (i == (n_left - 1))
-        left_bg_rects[i] = &fgeom->left_right_background;
-      else
-        left_bg_rects[i] = &fgeom->left_middle_backgrounds[i - 1];
-    }
-
-  for (i = 0; i < n_right; i++)
-    {
-      if (n_right == 1)
-        right_bg_rects[i] = &fgeom->right_single_background;
-      else if (i == (n_right - 1))
-        right_bg_rects[i] = &fgeom->right_right_background;
-      else if (i == 0)
-        right_bg_rects[i] = &fgeom->right_left_background;
-      else
-        right_bg_rects[i] = &fgeom->right_middle_backgrounds[i - 1];
-    }
-
   /* Be sure buttons fit */
   while (n_left > 0 || n_right > 0)
     {
@@ -638,53 +584,37 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
        * above, stick, shade, min, max, close, then menu (menu is most useful);
        * prefer the default button locations.
        */
-      if (strip_button (left_func_rects, left_bg_rects,
-                        &n_left, &fgeom->above_rect))
+      if (strip_button (left_func_rects, &n_left, &fgeom->above_rect))
         continue;
-      else if (strip_button (right_func_rects, right_bg_rects,
-                             &n_right, &fgeom->above_rect))
+      else if (strip_button (right_func_rects, &n_right, &fgeom->above_rect))
         continue;
-      else if (strip_button (left_func_rects, left_bg_rects,
-                        &n_left, &fgeom->stick_rect))
+      else if (strip_button (left_func_rects, &n_left, &fgeom->stick_rect))
         continue;
-      else if (strip_button (right_func_rects, right_bg_rects,
-                             &n_right, &fgeom->stick_rect))
+      else if (strip_button (right_func_rects, &n_right, &fgeom->stick_rect))
         continue;
-      else if (strip_button (left_func_rects, left_bg_rects,
-                        &n_left, &fgeom->shade_rect))
+      else if (strip_button (left_func_rects, &n_left, &fgeom->shade_rect))
         continue;
-      else if (strip_button (right_func_rects, right_bg_rects,
-                             &n_right, &fgeom->shade_rect))
+      else if (strip_button (right_func_rects, &n_right, &fgeom->shade_rect))
         continue;
-      else if (strip_button (left_func_rects, left_bg_rects,
-                        &n_left, &fgeom->min_rect))
+      else if (strip_button (left_func_rects, &n_left, &fgeom->min_rect))
         continue;
-      else if (strip_button (right_func_rects, right_bg_rects,
-                             &n_right, &fgeom->min_rect))
+      else if (strip_button (right_func_rects, &n_right, &fgeom->min_rect))
         continue;
-      else if (strip_button (left_func_rects, left_bg_rects,
-                             &n_left, &fgeom->max_rect))
+      else if (strip_button (left_func_rects, &n_left, &fgeom->max_rect))
         continue;
-      else if (strip_button (right_func_rects, right_bg_rects,
-                             &n_right, &fgeom->max_rect))
+      else if (strip_button (right_func_rects, &n_right, &fgeom->max_rect))
         continue;
-      else if (strip_button (left_func_rects, left_bg_rects,
-                             &n_left, &fgeom->close_rect))
+      else if (strip_button (left_func_rects, &n_left, &fgeom->close_rect))
         continue;
-      else if (strip_button (right_func_rects, right_bg_rects,
-                             &n_right, &fgeom->close_rect))
+      else if (strip_button (right_func_rects, &n_right, &fgeom->close_rect))
         continue;
-      else if (strip_button (right_func_rects, right_bg_rects,
-                             &n_right, &fgeom->menu_rect))
+      else if (strip_button (right_func_rects, &n_right, &fgeom->menu_rect))
         continue;
-      else if (strip_button (left_func_rects, left_bg_rects,
-                             &n_left, &fgeom->menu_rect))
+      else if (strip_button (left_func_rects, &n_left, &fgeom->menu_rect))
         continue;
-      else if (strip_button (right_func_rects, right_bg_rects,
-                             &n_right, &fgeom->appmenu_rect))
+      else if (strip_button (right_func_rects, &n_right, &fgeom->appmenu_rect))
         continue;
-      else if (strip_button (left_func_rects, left_bg_rects,
-                             &n_left, &fgeom->appmenu_rect))
+      else if (strip_button (left_func_rects, &n_left, &fgeom->appmenu_rect))
         continue;
       else
         {
@@ -738,8 +668,6 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
       else
         g_memmove (&(rect->clickable), &(rect->visible), sizeof(rect->clickable));
 
-      *(right_bg_rects[i]) = rect->visible;
-
       x = rect->visible.x;
 
       if (i > 0)
@@ -781,8 +709,6 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
         x += layout->titlebar_spacing;
       if (left_buttons_has_spacer[i])
         x += (button_width * 0.75);
-
-      *(left_bg_rects[i]) = rect->visible;
     }
 
   /* We always fill as much vertical space as possible with title rect,
