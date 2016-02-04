@@ -41,7 +41,8 @@ typedef struct
   GtkStyleContext *styles[META_STYLE_ELEMENT_LAST];
 } MetaStyleInfo;
 
-MetaStyleInfo *meta_style_info_new          (const gchar    *variant,
+MetaStyleInfo *meta_style_info_new          (const gchar    *theme_name,
+                                             const gchar    *variant,
                                              gboolean        composited);
 
 MetaStyleInfo *meta_style_info_ref          (MetaStyleInfo  *style_info);

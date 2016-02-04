@@ -37,6 +37,7 @@ struct _MetaTheme
 
   PangoFontDescription *titlebar_font;
 
+  gchar                *theme_name;
   GHashTable           *variants;
 };
 
@@ -96,6 +97,8 @@ meta_theme_finalize (GObject *object)
       pango_font_description_free (theme->titlebar_font);
       theme->titlebar_font = NULL;
     }
+
+  g_free (theme->theme_name);
 
   G_OBJECT_CLASS (meta_theme_parent_class)->finalize (object);
 }
@@ -206,6 +209,25 @@ meta_theme_load (MetaTheme    *theme,
                  const gchar  *name,
                  GError      **error)
 {
+  g_free (theme->theme_name);
+
+  if (theme->type == META_THEME_TYPE_GTK)
+    {
+      theme->theme_name = g_strdup (name);
+    }
+  else if (theme->type == META_THEME_TYPE_METACITY)
+    {
+      GtkSettings *settings;
+
+      settings = gtk_settings_get_default ();
+
+      g_object_get (settings, "gtk-theme-name", &theme->theme_name, NULL);
+    }
+  else
+    {
+      g_assert_not_reached ();
+    }
+
   return META_THEME_IMPL_GET_CLASS (theme->impl)->load (theme->impl, name,
                                                         error);
 }
@@ -226,9 +248,15 @@ meta_theme_style_invalidate (MetaTheme *theme)
       variant = g_strdup ((gchar *) l->data);
 
       if (g_strcmp0 (variant, "default") == 0)
-        style_info = meta_style_info_new (NULL, theme->composited);
+        {
+          style_info = meta_style_info_new (theme->theme_name, NULL,
+                                            theme->composited);
+        }
       else
-        style_info = meta_style_info_new (variant, theme->composited);
+        {
+          style_info = meta_style_info_new (theme->theme_name, variant,
+                                            theme->composited);
+        }
 
       g_hash_table_insert (theme->variants, variant, style_info);
     }
@@ -249,7 +277,8 @@ meta_theme_get_style_info (MetaTheme   *theme,
 
   if (style_info == NULL)
     {
-      style_info = meta_style_info_new (variant, theme->composited);
+      style_info = meta_style_info_new (theme->theme_name, variant,
+                                        theme->composited);
 
       g_hash_table_insert (theme->variants, g_strdup (variant), style_info);
     }

@@ -26,27 +26,39 @@
 
 struct _MetaThemeGtk
 {
-  MetaThemeImpl parent;
+  MetaThemeImpl  parent;
+
+  gchar         *name;
 };
 
 G_DEFINE_TYPE (MetaThemeGtk, meta_theme_gtk, META_TYPE_THEME_IMPL)
+
+static void
+meta_theme_gtk_finalize (GObject *object)
+{
+  MetaThemeGtk *gtk;
+
+  gtk = META_THEME_GTK (object);
+
+  g_free (gtk->name);
+
+  G_OBJECT_CLASS (meta_theme_gtk_parent_class)->finalize (object);
+}
 
 static gboolean
 meta_theme_gtk_load (MetaThemeImpl  *impl,
                      const gchar    *name,
                      GError        **error)
 {
-  GtkSettings *settings;
+  MetaThemeGtk *gtk;
   MetaFrameType type;
 
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  settings = gtk_settings_get_default ();
+  gtk = META_THEME_GTK (impl);
 
-  if (settings == NULL)
-    return FALSE;
-
-  g_object_set (settings, "gtk-theme-name", name, NULL);
+  g_free (gtk->name);
+  gtk->name = g_strdup (name);
 
   for (type = 0; type < META_FRAME_TYPE_LAST; type++)
     {
@@ -126,17 +138,11 @@ meta_theme_gtk_load (MetaThemeImpl  *impl,
 static gchar *
 meta_theme_gtk_get_name (MetaThemeImpl *impl)
 {
-  GtkSettings *settings;
-  gchar *name;
+  MetaThemeGtk *gtk;
 
-  settings = gtk_settings_get_default ();
+  gtk = META_THEME_GTK (impl);
 
-  if (settings == NULL)
-    return NULL;
-
-  g_object_get (settings, "gtk-theme-name", &name, NULL);
-
-  return name;
+  return gtk->name;
 }
 
 static void
@@ -1022,9 +1028,13 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
 static void
 meta_theme_gtk_class_init (MetaThemeGtkClass *gtk_class)
 {
+  GObjectClass *object_class;
   MetaThemeImplClass *impl_class;
 
+  object_class = G_OBJECT_CLASS (gtk_class);
   impl_class = META_THEME_IMPL_CLASS (gtk_class);
+
+  object_class->finalize = meta_theme_gtk_finalize;
 
   impl_class->load = meta_theme_gtk_load;
   impl_class->get_name = meta_theme_gtk_get_name;

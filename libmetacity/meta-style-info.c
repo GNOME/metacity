@@ -92,22 +92,17 @@ create_style_context (GtkStyleContext *parent,
 }
 
 MetaStyleInfo *
-meta_style_info_new (const gchar *variant,
+meta_style_info_new (const gchar *theme_name,
+                     const gchar *variant,
                      gboolean     composited)
 {
   MetaStyleInfo *style_info;
   GtkCssProvider *provider;
-  char *theme_name;
-
-  g_object_get (gtk_settings_get_default (),
-                "gtk-theme-name", &theme_name,
-                NULL);
 
   if (theme_name && *theme_name)
     provider = gtk_css_provider_get_named (theme_name, variant);
   else
     provider = gtk_css_provider_get_default ();
-  g_free (theme_name);
 
   style_info = g_new0 (MetaStyleInfo, 1);
   style_info->refcount = 1;
