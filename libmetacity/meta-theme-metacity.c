@@ -19,6 +19,7 @@
 #include "config.h"
 
 #include <glib/gi18n-lib.h>
+#include <math.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -5179,6 +5180,76 @@ meta_theme_metacity_calc_geometry (MetaThemeImpl          *impl,
 }
 
 static void
+clip_to_rounded_corners (cairo_t                 *cr,
+                         GdkRectangle             rect,
+                         const MetaFrameGeometry *fgeom)
+{
+  gint x;
+  gint y;
+  gint width;
+  gint height;
+  gint radius;
+
+  x = rect.x;
+  y = rect.y;
+  width = rect.width;
+  height = rect.height;
+
+  cairo_new_path (cr);
+
+  if (fgeom->top_left_corner_rounded_radius != 0)
+    {
+      radius = fgeom->top_left_corner_rounded_radius;
+      radius += sqrt(fgeom->top_left_corner_rounded_radius);
+
+      cairo_line_to (cr, x, y + radius);
+      cairo_arc (cr, x + radius, y + radius, radius,
+                 180.0f * G_PI / 180.0f, 270.0f * G_PI / 180.0f);
+    }
+  else
+    cairo_line_to (cr, x, y);
+
+  if (fgeom->top_right_corner_rounded_radius != 0)
+    {
+      radius = fgeom->top_right_corner_rounded_radius;
+      radius += sqrt(fgeom->top_right_corner_rounded_radius);
+
+      cairo_line_to (cr, x + width - radius, y);
+      cairo_arc (cr, x + width - radius, y + radius, radius,
+                 -90.0f * G_PI / 180.0f, 0.0f * G_PI / 180.0f);
+    }
+  else
+    cairo_line_to (cr, x + width, y);
+
+  if (fgeom->bottom_right_corner_rounded_radius != 0)
+    {
+      radius = fgeom->bottom_right_corner_rounded_radius;
+      radius += sqrt(fgeom->bottom_right_corner_rounded_radius);
+
+      cairo_line_to (cr, x + width, y + height - radius);
+      cairo_arc (cr, x + width - radius, y + height - radius, radius,
+                 0.0f * G_PI / 180.0f, 90.0f * G_PI / 180.0f);
+    }
+  else
+    cairo_line_to (cr, x + width, y + height);
+
+  if (fgeom->bottom_left_corner_rounded_radius != 0)
+    {
+      radius = fgeom->bottom_left_corner_rounded_radius;
+      radius += sqrt(fgeom->bottom_left_corner_rounded_radius);
+
+      cairo_line_to (cr, x + radius, y + height);
+      cairo_arc (cr, x + radius, y + height - radius, radius,
+                 90.0f * G_PI / 180.0f, 180.0f * G_PI / 180.0f);
+    }
+  else
+    cairo_line_to (cr, x, y + height);
+
+  cairo_close_path (cr);
+  cairo_clip (cr);
+}
+
+static void
 meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
                                 MetaFrameStyle          *style,
                                 MetaStyleInfo           *style_info,
@@ -5262,6 +5333,9 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
   draw_info.borders = fgeom->borders;
   draw_info.width = fgeom->width;
   draw_info.height = fgeom->height;
+
+  cairo_save (cr);
+  clip_to_rounded_corners (cr, visible_rect, fgeom);
 
   /* The enum is in the order the pieces should be rendered. */
   i = 0;
@@ -5410,6 +5484,8 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
 
       ++i;
     }
+
+  cairo_restore (cr);
 }
 
 static void
