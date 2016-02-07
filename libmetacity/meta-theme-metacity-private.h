@@ -33,26 +33,33 @@ typedef struct _MetaFrameStyleSet MetaFrameStyleSet;
 G_DECLARE_FINAL_TYPE (MetaThemeMetacity, meta_theme_metacity,
                       META, THEME_METACITY, MetaThemeImpl)
 
+G_GNUC_INTERNAL
 gboolean           meta_theme_metacity_lookup_int          (MetaThemeMetacity  *metacity,
                                                             const gchar        *name,
                                                             gint               *value);
 
+G_GNUC_INTERNAL
 gboolean           meta_theme_metacity_lookup_float        (MetaThemeMetacity  *metacity,
                                                             const gchar        *name,
                                                             gdouble            *value);
 
+G_GNUC_INTERNAL
 MetaDrawOpList    *meta_theme_metacity_lookup_draw_op_list (MetaThemeMetacity  *metacity,
                                                             const gchar        *name);
 
+G_GNUC_INTERNAL
 MetaFrameLayout   *meta_theme_metacity_lookup_layout       (MetaThemeMetacity  *metacity,
                                                             const gchar        *name);
 
+G_GNUC_INTERNAL
 MetaFrameStyle    *meta_theme_metacity_lookup_style        (MetaThemeMetacity  *metacity,
                                                             const gchar        *name);
 
+G_GNUC_INTERNAL
 MetaFrameStyleSet *meta_theme_metacity_lookup_style_set    (MetaThemeMetacity  *metacity,
                                                             const gchar        *name);
 
+G_GNUC_INTERNAL
 guint              meta_theme_metacity_earliest_version_with_button (MetaButtonType type);
 
 G_END_DECLS
