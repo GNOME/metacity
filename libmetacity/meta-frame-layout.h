@@ -66,6 +66,11 @@ struct _MetaFrameLayout
     /** Space between titlebar elements */
     guint titlebar_spacing;
 
+    /** Margin of title */
+    GtkBorder title_margin;
+    /** Margin of titlebar buttons */
+    GtkBorder button_margin;
+
     /** Min size of titlebar region */
     GtkRequisition titlebar_min_size;
     /** Min size of titlebar buttons */

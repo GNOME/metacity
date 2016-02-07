@@ -260,16 +260,29 @@ frame_layout_sync_with_style (MetaFrameLayout *layout,
   get_padding_and_border (style, &layout->gtk.titlebar_border);
   scale_border (&layout->gtk.titlebar_border, layout->title_scale);
 
+  style = style_info->styles[META_STYLE_ELEMENT_TITLE];
+  get_margin (style, &layout->gtk.title_margin);
+  scale_border (&layout->gtk.title_margin, layout->title_scale);
+
   style = style_info->styles[META_STYLE_ELEMENT_BUTTON];
   get_min_size (style, &layout->gtk.button_min_size);
   get_padding_and_border (style, &layout->button_border);
   scale_border (&layout->button_border, layout->title_scale);
+
+  get_margin (style, &layout->gtk.button_margin);
+  scale_border (&layout->gtk.button_margin, layout->title_scale);
 
   style = style_info->styles[META_STYLE_ELEMENT_IMAGE];
   get_min_size (style, &requisition);
   get_padding_and_border (style, &border);
   scale_border (&border, layout->title_scale);
 
+  layout->button_border.left += border.left;
+  layout->button_border.right += border.right;
+  layout->button_border.top += border.top;
+  layout->button_border.bottom += border.bottom;
+
+  get_margin (style, &border);
   layout->button_border.left += border.left;
   layout->button_border.right += border.right;
   layout->button_border.top += border.top;
@@ -306,9 +319,14 @@ meta_theme_gtk_get_frame_borders (MetaThemeImpl    *impl,
 
   if (!layout->has_title)
     text_height = 0;
+  else
+    text_height = layout->gtk.title_margin.top +
+                   text_height +
+                  layout->gtk.title_margin.bottom;
 
   buttons_height = MAX ((gint) layout->gtk.icon_size, layout->gtk.button_min_size.height) +
-                   layout->button_border.top + layout->button_border.bottom;
+                   layout->gtk.button_margin.top + layout->button_border.top +
+                   layout->gtk.button_margin.bottom + layout->button_border.bottom;
 
   content_height = MAX (buttons_height, text_height);
   content_height = MAX (content_height, layout->gtk.titlebar_min_size.height) +
@@ -578,11 +596,15 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
 
       space_used_by_buttons = 0;
 
+      space_used_by_buttons += layout->gtk.button_margin.left /** scale*/ * n_left;
       space_used_by_buttons += button_width * n_left;
+      space_used_by_buttons += layout->gtk.button_margin.right /** scale*/ * n_left;
       space_used_by_buttons += (button_width * 0.75) * n_left_spacers;
       space_used_by_buttons += layout->gtk.titlebar_spacing * MAX (n_left - 1, 0);
 
+      space_used_by_buttons += layout->gtk.button_margin.left /** scale*/ * n_right;
       space_used_by_buttons += button_width * n_right;
+      space_used_by_buttons += layout->gtk.button_margin.right /** scale*/ * n_right;
       space_used_by_buttons += (button_width * 0.75) * n_right_spacers;
       space_used_by_buttons += layout->gtk.titlebar_spacing * MAX (n_right - 1, 0);
 
@@ -664,6 +686,8 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
       if (x < 0) /* if we go negative, leave the buttons we don't get to as 0-width */
         break;
 
+      x -= layout->gtk.button_margin.right /** scale*/;
+
       rect = right_func_rects[i];
 
       rect->visible.x = x - button_width;
@@ -689,7 +713,7 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
       else
         g_memmove (&(rect->clickable), &(rect->visible), sizeof(rect->clickable));
 
-      x = rect->visible.x;
+      x = rect->visible.x - layout->gtk.button_margin.left /** scale*/;
 
       if (i > 0)
         x -= layout->gtk.titlebar_spacing;
@@ -708,6 +732,8 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
     {
       MetaButtonSpace *rect;
 
+      x += layout->gtk.button_margin.left /** scale*/;
+
       rect = left_func_rects[i];
 
       rect->visible.x = x;
@@ -725,7 +751,7 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
       else
         g_memmove (&(rect->clickable), &(rect->visible), sizeof(rect->clickable));
 
-      x = rect->visible.x + rect->visible.width;
+      x = rect->visible.x + rect->visible.width + layout->gtk.button_margin.right /** scale*/;
       if (i < n_left - 1)
         x += layout->gtk.titlebar_spacing;
       if (left_buttons_has_spacer[i])
