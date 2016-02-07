@@ -235,33 +235,7 @@ meta_theme_load (MetaTheme    *theme,
 void
 meta_theme_invalidate (MetaTheme *theme)
 {
-  GList *variants;
-  GList *l;
-
-  variants = g_hash_table_get_keys (theme->variants);
-
-  for (l = variants; l != NULL; l = g_list_next (l))
-    {
-      gchar *variant;
-      MetaStyleInfo *style_info;
-
-      variant = g_strdup ((gchar *) l->data);
-
-      if (g_strcmp0 (variant, "default") == 0)
-        {
-          style_info = meta_style_info_new (theme->theme_name, NULL,
-                                            theme->composited);
-        }
-      else
-        {
-          style_info = meta_style_info_new (theme->theme_name, variant,
-                                            theme->composited);
-        }
-
-      g_hash_table_insert (theme->variants, variant, style_info);
-    }
-
-  g_list_free (variants);
+  g_hash_table_remove_all (theme->variants);
 }
 
 MetaStyleInfo *
