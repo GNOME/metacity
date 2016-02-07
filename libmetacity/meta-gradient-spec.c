@@ -22,7 +22,7 @@
 
 #include "meta-color-spec.h"
 #include "meta-gradient-private.h"
-#include "meta-gradient-spec.h"
+#include "meta-gradient-spec-private.h"
 #include "meta-theme.h"
 
 struct _MetaGradientSpec

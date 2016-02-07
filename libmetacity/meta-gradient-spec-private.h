@@ -16,50 +16,63 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef META_GRADIENT_SPEC_H
-#define META_GRADIENT_SPEC_H
+#ifndef META_GRADIENT_SPEC_PRIVATE_H
+#define META_GRADIENT_SPEC_PRIVATE_H
 
 #include <gtk/gtk.h>
-#include <libmetacity/meta-gradient.h>
+
+#include "meta-gradient-private.h"
 
 G_BEGIN_DECLS
 
 typedef struct _MetaAlphaGradientSpec MetaAlphaGradientSpec;
 typedef struct _MetaGradientSpec MetaGradientSpec;
 
+G_GNUC_INTERNAL
 MetaGradientSpec      *meta_gradient_spec_new               (MetaGradientType         type);
 
+G_GNUC_INTERNAL
 void                   meta_gradient_spec_free              (MetaGradientSpec        *spec);
 
+G_GNUC_INTERNAL
 void                   meta_gradient_spec_add_color_spec    (MetaGradientSpec        *spec,
                                                              MetaColorSpec           *color_spec);
 
+G_GNUC_INTERNAL
 GdkPixbuf             *meta_gradient_spec_render            (const MetaGradientSpec  *spec,
                                                              GtkStyleContext         *context,
                                                              gint                     width,
                                                              gint                     height);
 
+G_GNUC_INTERNAL
 gboolean               meta_gradient_spec_validate          (MetaGradientSpec        *spec,
                                                              GError                 **error);
 
+G_GNUC_INTERNAL
 MetaAlphaGradientSpec *meta_alpha_gradient_spec_new         (MetaGradientType         type,
                                                              gint                     n_alphas);
 
+G_GNUC_INTERNAL
 void                   meta_alpha_gradient_spec_free        (MetaAlphaGradientSpec   *spec);
 
+G_GNUC_INTERNAL
 void                   meta_alpha_gradient_spec_add_alpha   (MetaAlphaGradientSpec   *spec,
                                                              gint                     n_alpha,
                                                              gdouble                  alpha);
 
+G_GNUC_INTERNAL
 guchar                 meta_alpha_gradient_spec_get_alpha   (MetaAlphaGradientSpec   *spec,
                                                              gint                     n_alpha);
 
+G_GNUC_INTERNAL
 gboolean               meta_alpha_gradient_spec_needs_alpha (MetaAlphaGradientSpec   *spec);
 
+G_GNUC_INTERNAL
 GdkPixbuf             *meta_alpha_gradient_spec_apply_alpha (MetaAlphaGradientSpec   *spec,
                                                              GdkPixbuf               *pixbuf,
                                                              gboolean                 force_copy);
 
+G_GNUC_INTERNAL
 GdkPixbuf             *meta_alpha_gradient_spec_render      (MetaAlphaGradientSpec   *spec,
                                                              gint                     width,
                                                              gint                     height,
