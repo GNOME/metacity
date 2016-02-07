@@ -1,5 +1,6 @@
 # List of source files containing translatable strings.
 # Please keep this file sorted alphabetically.
+[type: gettext/glade]data/ui/theme-viewer-window.ui
 libmetacity/meta-color-spec.c
 libmetacity/meta-draw-op.c
 libmetacity/meta-draw-spec.c
@@ -34,4 +35,4 @@ src/ui/frames.c
 src/ui/menu.c
 src/ui/metaaccellabel.c
 src/ui/resizepopup.c
-src/ui/theme-viewer.c
+theme-viewer/theme-viewer-window.c

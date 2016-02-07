@@ -62,6 +62,7 @@ dnl Check for required programs
 dnl **************************************************************************
 
 AC_PATH_PROG([GLIB_MKENUMS], [glib-mkenums])
+AC_PATH_PROG([GLIB_COMPILE_RESOURCES], [glib-compile-resources])
 
 dnl **************************************************************************
 dnl Check for required packages
@@ -71,6 +72,11 @@ GLIB_REQUIRED_VERSION=2.44.0
 GTK_REQUIRED_VERSION=3.19.7
 
 PKG_CHECK_MODULES([LIBMETACITY], [
+  glib-2.0 >= $GLIB_REQUIRED_VERSION
+  gtk+-3.0 >= $GTK_REQUIRED_VERSION
+])
+
+PKG_CHECK_MODULES([METACITY_THEME_VIEWER], [
   glib-2.0 >= $GLIB_REQUIRED_VERSION
   gtk+-3.0 >= $GTK_REQUIRED_VERSION
 ])
@@ -431,6 +437,7 @@ AC_CONFIG_FILES([
   data/Makefile
   data/pkgconfig/Makefile
   data/pkgconfig/libmetacity.pc
+  data/ui/Makefile
 
   doc/Makefile
   doc/creating_themes/Makefile
@@ -441,6 +448,8 @@ AC_CONFIG_FILES([
   src/Makefile
   src/tools/Makefile
   src/themes/Makefile
+
+  theme-viewer/Makefile
 
   po/Makefile.in
 ])

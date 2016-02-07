@@ -110,17 +110,6 @@ metacity_SOURCES= 				\
 	ui/ui.c					\
 	$(NULL)
 
-metacity_theme_viewer_SOURCES=  \
-	core/boxes.c				\
-	include/boxes.h				\
-	core/util.c				\
-	include/util.h				\
-	include/common.h			\
-	ui/preview-widget.c			\
-	ui/preview-widget.h			\
-	ui/theme-viewer.c			\
-	$(NULL)
-
 gsettings_SCHEMAS = org.gnome.metacity.gschema.xml
 @INTLTOOL_XML_NOMERGE_RULE@
 @GSETTINGS_RULES@
@@ -128,10 +117,9 @@ gsettings_SCHEMAS = org.gnome.metacity.gschema.xml
 convertdir = $(datadir)/GConf/gsettings/
 convert_DATA = metacity-schemas.convert
 
-bin_PROGRAMS=metacity metacity-theme-viewer
+bin_PROGRAMS=metacity
 
 metacity_LDADD=@METACITY_LIBS@ $(top_builddir)/libmetacity/libmetacity.la
-metacity_theme_viewer_LDADD= @METACITY_LIBS@ $(top_builddir)/libmetacity/libmetacity.la
 
 testboxes_SOURCES=include/util.h core/util.c include/boxes.h core/boxes.c core/testboxes.c
 testgradient_SOURCES=../libmetacity/meta-gradient.h ../libmetacity/meta-gradient.c ui/testgradient.c

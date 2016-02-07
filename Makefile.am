@@ -3,6 +3,7 @@ NULL =
 SUBDIRS = \
 	data \
 	libmetacity \
+	theme-viewer \
 	doc \
 	src \
 	po \

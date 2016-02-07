@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/org/gnome/metacity/ui">
+    <file alias="theme-viewer-window.ui">../data/ui/theme-viewer-window.ui</file>
+  </gresource>
+</gresources>

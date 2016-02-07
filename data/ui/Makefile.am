@@ -1,8 +1,7 @@
 NULL =
 
-SUBDIRS = \
-	pkgconfig \
-	ui \
+EXTRA_DIST = \
+	theme-viewer-window.ui \
 	$(NULL)
 
 -include $(top_srcdir)/git.mk
