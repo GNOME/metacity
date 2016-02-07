@@ -21,7 +21,6 @@
 
 #include <libmetacity/meta-button-enums.h>
 #include <libmetacity/meta-color-spec.h>
-#include <libmetacity/meta-draw-op.h>
 #include <libmetacity/meta-frame-enums.h>
 #include <libmetacity/meta-frame-layout.h>
 
@@ -29,6 +28,7 @@ G_BEGIN_DECLS
 
 typedef struct _MetaFrameStyle MetaFrameStyle;
 typedef struct _MetaFrameStyleSet MetaFrameStyleSet;
+typedef struct _MetaDrawOpList MetaDrawOpList;
 
 /**
  * How to draw a frame in a particular state (say, a focussed, non-maximised,

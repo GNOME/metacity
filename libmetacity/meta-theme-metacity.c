@@ -23,7 +23,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "meta-draw-op.h"
+#include "meta-draw-op-private.h"
 #include "meta-frame-layout.h"
 #include "meta-frame-style.h"
 #include "meta-theme.h"

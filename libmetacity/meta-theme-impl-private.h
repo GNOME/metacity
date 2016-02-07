@@ -19,6 +19,7 @@
 #define META_THEME_IMPL_PRIVATE_H
 
 #include "meta-button-layout.h"
+#include "meta-frame-borders.h"
 #include "meta-frame-enums.h"
 #include "meta-frame-style.h"
 #include "meta-style-info-private.h"

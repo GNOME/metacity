@@ -16,14 +16,15 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef META_DRAW_OP_H
-#define META_DRAW_OP_H
+#ifndef META_DRAW_OP_PRIVATE_H
+#define META_DRAW_OP_PRIVATE_H
 
 #include <gtk/gtk.h>
-#include <libmetacity/meta-color-spec.h>
-#include <libmetacity/meta-draw-spec.h>
-#include <libmetacity/meta-frame-borders.h>
-#include <libmetacity/meta-gradient-spec.h>
+
+#include "meta-color-spec.h"
+#include "meta-draw-spec.h"
+#include "meta-frame-borders.h"
+#include "meta-gradient-spec.h"
 
 G_BEGIN_DECLS
 
@@ -236,28 +237,37 @@ struct _MetaDrawOp
   } data;
 };
 
+G_GNUC_INTERNAL
 MetaDrawOp     *meta_draw_op_new                  (MetaDrawType           type);
 
+G_GNUC_INTERNAL
 void            meta_draw_op_free                 (MetaDrawOp            *op);
 
+G_GNUC_INTERNAL
 MetaDrawOpList *meta_draw_op_list_new             (int                    n_preallocs);
 
+G_GNUC_INTERNAL
 void            meta_draw_op_list_ref             (MetaDrawOpList        *op_list);
 
+G_GNUC_INTERNAL
 void            meta_draw_op_list_unref           (MetaDrawOpList        *op_list);
 
+G_GNUC_INTERNAL
 void            meta_draw_op_list_draw_with_style (const MetaDrawOpList  *op_list,
                                                    GtkStyleContext       *context,
                                                    cairo_t               *cr,
                                                    const MetaDrawInfo    *info,
                                                    GdkRectangle           rect);
 
+G_GNUC_INTERNAL
 void            meta_draw_op_list_append          (MetaDrawOpList        *op_list,
                                                    MetaDrawOp            *op);
 
+G_GNUC_INTERNAL
 gboolean        meta_draw_op_list_validate        (MetaDrawOpList        *op_list,
                                                    GError               **error);
 
+G_GNUC_INTERNAL
 gboolean        meta_draw_op_list_contains        (MetaDrawOpList        *op_list,
                                                    MetaDrawOpList        *child);
 

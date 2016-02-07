@@ -21,7 +21,7 @@
 #include <glib/gi18n-lib.h>
 #include <math.h>
 
-#include "meta-draw-op.h"
+#include "meta-draw-op-private.h"
 
 #define GDK_COLOR_RGBA(color)                            \
         ((guint32) (0xff                               | \
