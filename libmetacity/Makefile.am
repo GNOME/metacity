@@ -21,7 +21,7 @@ libmetacity_la_SOURCES = \
 	meta-frame-borders.h \
 	meta-frame-enums.h \
 	meta-frame-layout.c \
-	meta-frame-layout.h \
+	meta-frame-layout-private.h \
 	meta-frame-style.c \
 	meta-frame-style.h \
 	meta-gradient.c \
@@ -73,7 +73,6 @@ libmetacity_include_HEADERS = \
 	meta-enum-types.h \
 	meta-frame-borders.h \
 	meta-frame-enums.h \
-	meta-frame-layout.h \
 	meta-frame-style.h \
 	meta-theme.h \
 	$(NULL)

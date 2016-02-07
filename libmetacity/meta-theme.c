@@ -21,6 +21,7 @@
 #include <string.h>
 
 #include "meta-enum-types.h"
+#include "meta-frame-layout-private.h"
 #include "meta-theme.h"
 #include "meta-theme-gtk-private.h"
 #include "meta-theme-impl-private.h"

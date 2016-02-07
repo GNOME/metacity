@@ -22,6 +22,7 @@
 
 #include "meta-color-spec-private.h"
 #include "meta-draw-op-private.h"
+#include "meta-frame-layout-private.h"
 #include "meta-frame-style.h"
 #include "meta-theme.h"
 #include "meta-theme-metacity-private.h"

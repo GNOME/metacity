@@ -16,8 +16,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef META_FRAME_LAYOUT_H
-#define META_FRAME_LAYOUT_H
+#ifndef META_FRAME_LAYOUT_PRIVATE_H
+#define META_FRAME_LAYOUT_PRIVATE_H
 
 #include <gtk/gtk.h>
 
@@ -150,14 +150,19 @@ struct _MetaFrameLayout
   guint bottom_right_corner_rounded_radius;
 };
 
+G_GNUC_INTERNAL
 MetaFrameLayout *meta_frame_layout_new      (void);
 
+G_GNUC_INTERNAL
 MetaFrameLayout *meta_frame_layout_copy     (const MetaFrameLayout  *src);
 
+G_GNUC_INTERNAL
 void             meta_frame_layout_ref      (MetaFrameLayout        *layout);
 
+G_GNUC_INTERNAL
 void             meta_frame_layout_unref    (MetaFrameLayout        *layout);
 
+G_GNUC_INTERNAL
 gboolean         meta_frame_layout_validate (const MetaFrameLayout  *layout,
                                              GError                **error);
 

@@ -20,7 +20,7 @@
 
 #include <glib/gi18n-lib.h>
 
-#include "meta-frame-layout.h"
+#include "meta-frame-layout-private.h"
 #include "meta-theme.h"
 
 /**

@@ -21,6 +21,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "meta-frame-layout-private.h"
 #include "meta-frame-style.h"
 #include "meta-theme-gtk-private.h"
 #include "meta-theme.h"
