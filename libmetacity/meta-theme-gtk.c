@@ -173,6 +173,16 @@ get_padding_and_border (GtkStyleContext *style,
 }
 
 static void
+get_min_size (GtkStyleContext *style,
+              GtkRequisition  *requisition)
+{
+  gtk_style_context_get (style, gtk_style_context_get_state (style),
+                         "min-width", &requisition->width,
+                         "min-height", &requisition->height,
+                         NULL);
+}
+
+static void
 scale_border (GtkBorder *border,
               double     factor)
 {
@@ -190,6 +200,7 @@ frame_layout_sync_with_style (MetaFrameLayout *layout,
 {
   GtkStyleContext *style;
   GtkBorder border;
+  GtkRequisition requisition;
   int border_radius, max_radius;
 
   meta_style_info_set_flags (style_info, flags);
@@ -245,14 +256,17 @@ frame_layout_sync_with_style (MetaFrameLayout *layout,
       layout->bottom_right_corner_rounded_radius = MAX (border_radius, max_radius);
     }
 
+  get_min_size (style, &layout->gtk.titlebar_min_size);
   get_padding_and_border (style, &layout->gtk.titlebar_border);
   scale_border (&layout->gtk.titlebar_border, layout->title_scale);
 
   style = style_info->styles[META_STYLE_ELEMENT_BUTTON];
+  get_min_size (style, &layout->gtk.button_min_size);
   get_padding_and_border (style, &layout->button_border);
   scale_border (&layout->button_border, layout->title_scale);
 
   style = style_info->styles[META_STYLE_ELEMENT_IMAGE];
+  get_min_size (style, &requisition);
   get_padding_and_border (style, &border);
   scale_border (&border, layout->title_scale);
 
@@ -260,6 +274,11 @@ frame_layout_sync_with_style (MetaFrameLayout *layout,
   layout->button_border.right += border.right;
   layout->button_border.top += border.top;
   layout->button_border.bottom += border.bottom;
+
+  layout->gtk.button_min_size.width = MAX (layout->gtk.button_min_size.width,
+                                           requisition.width);
+  layout->gtk.button_min_size.height = MAX (layout->gtk.button_min_size.height,
+                                            requisition.height);
 }
 
 static void
@@ -288,10 +307,11 @@ meta_theme_gtk_get_frame_borders (MetaThemeImpl    *impl,
   if (!layout->has_title)
     text_height = 0;
 
-  buttons_height = layout->gtk.icon_size +
-    layout->button_border.top + layout->button_border.bottom;
+  buttons_height = MAX ((gint) layout->gtk.icon_size, layout->gtk.button_min_size.height) +
+                   layout->button_border.top + layout->button_border.bottom;
 
-  content_height = MAX (buttons_height, text_height) +
+  content_height = MAX (buttons_height, text_height);
+  content_height = MAX (content_height, layout->gtk.titlebar_min_size.height) +
                    layout->gtk.titlebar_border.top +
                    layout->gtk.titlebar_border.bottom;
 
@@ -499,9 +519,9 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
                   (fgeom->content_border.right + borders.invisible.right);
   content_height = borders.visible.top - fgeom->content_border.top - fgeom->content_border.bottom;
 
-  button_width = layout->gtk.icon_size +
+  button_width = MAX ((gint) layout->gtk.icon_size, layout->gtk.button_min_size.width) +
                  layout->button_border.left + layout->button_border.right;
-  button_height = layout->gtk.icon_size +
+  button_height = MAX ((gint) layout->gtk.icon_size, layout->gtk.button_min_size.height) +
                   layout->button_border.top + layout->button_border.bottom;
 
   /* FIXME all this code sort of pretends that duplicate buttons
