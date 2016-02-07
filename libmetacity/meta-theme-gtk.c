@@ -229,6 +229,21 @@ frame_layout_sync_with_style (MetaFrameLayout *layout,
       /* With compositing manager: margin is resize area */
       get_margin (style, &layout->invisible_resize_border);
       get_shadow_extents (style, &layout->gtk.shadow_border);
+
+      gtk_style_context_get (style, gtk_style_context_get_state (style),
+                             "border-radius", &border_radius,
+                             NULL);
+      /* GTK+ currently does not allow us to look up radii of individual
+       * corners; however we don't clip the client area, so with the
+       * current trend of using small/no visible frame borders, most
+       * themes should work fine with this.
+       */
+      layout->top_left_corner_rounded_radius = border_radius;
+      layout->top_right_corner_rounded_radius = border_radius;
+      max_radius = MIN (layout->gtk.frame_border.bottom, layout->gtk.frame_border.left);
+      layout->bottom_left_corner_rounded_radius = MAX (border_radius, max_radius);
+      max_radius = MIN (layout->gtk.frame_border.bottom, layout->gtk.frame_border.left);
+      layout->bottom_right_corner_rounded_radius = MAX (border_radius, max_radius);
     }
   else
     {
@@ -242,6 +257,11 @@ frame_layout_sync_with_style (MetaFrameLayout *layout,
       layout->gtk.shadow_border.bottom = 0;
       layout->gtk.shadow_border.left = 0;
       layout->gtk.shadow_border.right = 0;
+
+      layout->top_left_corner_rounded_radius = 0;
+      layout->top_right_corner_rounded_radius = 0;
+      layout->bottom_left_corner_rounded_radius = 0;
+      layout->bottom_right_corner_rounded_radius = 0;
 
       /* Without compositing manager: margin is part of border */
       get_margin (style, &border);
@@ -259,25 +279,6 @@ frame_layout_sync_with_style (MetaFrameLayout *layout,
     return; /* border-only - be done */
 
   style = style_info->styles[META_STYLE_ELEMENT_TITLEBAR];
-
-  if (composited)
-    {
-      gtk_style_context_get (style, gtk_style_context_get_state (style),
-                             "border-radius", &border_radius,
-                             NULL);
-      /* GTK+ currently does not allow us to look up radii of individual
-       * corners; however we don't clip the client area, so with the
-       * current trend of using small/no visible frame borders, most
-       * themes should work fine with this.
-       */
-      layout->top_left_corner_rounded_radius = border_radius;
-      layout->top_right_corner_rounded_radius = border_radius;
-      max_radius = MIN (layout->gtk.frame_border.bottom, layout->gtk.frame_border.left);
-      layout->bottom_left_corner_rounded_radius = MAX (border_radius, max_radius);
-      max_radius = MIN (layout->gtk.frame_border.bottom, layout->gtk.frame_border.left);
-      layout->bottom_right_corner_rounded_radius = MAX (border_radius, max_radius);
-    }
-
   get_min_size (style, &layout->gtk.titlebar_min_size);
   get_padding_and_border (style, &layout->gtk.titlebar_border);
   scale_border (&layout->gtk.titlebar_border, layout->title_scale);
