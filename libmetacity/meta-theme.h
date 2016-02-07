@@ -100,17 +100,13 @@ struct _MetaButtonSpace
 struct _MetaFrameGeometry
 {
   MetaFrameBorders borders;
-  int              top_height;
 
   int width;
   int height;
 
   GdkRectangle title_rect;
 
-  int left_titlebar_edge;
-  int right_titlebar_edge;
-  int top_titlebar_edge;
-  int bottom_titlebar_edge;
+  GtkBorder content_border;
 
   /* used for a memset hack */
 #define ADDRESS_OF_BUTTON_RECTS(fgeom) (((char*)(fgeom)) + G_STRUCT_OFFSET (MetaFrameGeometry, close_rect))

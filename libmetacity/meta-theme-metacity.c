@@ -1434,16 +1434,16 @@ parse_aspect_ratio (GMarkupParseContext  *context,
 
   if (strcmp (name, "button") == 0)
     {
-      info->layout->button_aspect = val;
+      info->layout->metacity.button_aspect = val;
 
-      if (info->layout->button_sizing != META_BUTTON_SIZING_LAST)
+      if (info->layout->metacity.button_sizing != META_BUTTON_SIZING_LAST)
         {
           set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
                      _("Cannot specify both 'button_width'/'button_height' and 'aspect_ratio' for buttons"));
           return;
         }
 
-      info->layout->button_sizing = META_BUTTON_SIZING_ASPECT;
+      info->layout->metacity.button_sizing = META_BUTTON_SIZING_ASPECT;
     }
   else
     {
@@ -1503,7 +1503,7 @@ parse_border (GMarkupParseContext  *context,
   border = NULL;
 
   if (strcmp (name, "title_border") == 0)
-    border = &info->layout->title_border;
+    border = &info->layout->metacity.title_border;
   else if (strcmp (name, "button_border") == 0)
     border = &info->layout->button_border;
 
@@ -1546,44 +1546,44 @@ parse_distance (GMarkupParseContext  *context,
   g_assert (info->layout);
 
   if (strcmp (name, "left_width") == 0)
-    info->layout->left_width = val;
+    info->layout->metacity.left_width = val;
   else if (strcmp (name, "right_width") == 0)
-    info->layout->right_width = val;
+    info->layout->metacity.right_width = val;
   else if (strcmp (name, "bottom_height") == 0)
-    info->layout->bottom_height = val;
+    info->layout->metacity.bottom_height = val;
   else if (strcmp (name, "title_vertical_pad") == 0)
-    info->layout->title_vertical_pad = val;
+    info->layout->metacity.title_vertical_pad = val;
   else if (strcmp (name, "right_titlebar_edge") == 0)
-    info->layout->right_titlebar_edge = val;
+    info->layout->metacity.right_titlebar_edge = val;
   else if (strcmp (name, "left_titlebar_edge") == 0)
-    info->layout->left_titlebar_edge = val;
+    info->layout->metacity.left_titlebar_edge = val;
   else if (strcmp (name, "button_width") == 0)
     {
-      info->layout->button_width = val;
+      info->layout->metacity.button_width = val;
 
-      if (!(info->layout->button_sizing == META_BUTTON_SIZING_LAST ||
-            info->layout->button_sizing == META_BUTTON_SIZING_FIXED))
+      if (!(info->layout->metacity.button_sizing == META_BUTTON_SIZING_LAST ||
+            info->layout->metacity.button_sizing == META_BUTTON_SIZING_FIXED))
         {
           set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
                      _("Cannot specify both 'button_width'/'button_height' and 'aspect_ratio' for buttons"));
           return;
         }
 
-      info->layout->button_sizing = META_BUTTON_SIZING_FIXED;
+      info->layout->metacity.button_sizing = META_BUTTON_SIZING_FIXED;
     }
   else if (strcmp (name, "button_height") == 0)
     {
-      info->layout->button_height = val;
+      info->layout->metacity.button_height = val;
 
-      if (!(info->layout->button_sizing == META_BUTTON_SIZING_LAST ||
-            info->layout->button_sizing == META_BUTTON_SIZING_FIXED))
+      if (!(info->layout->metacity.button_sizing == META_BUTTON_SIZING_LAST ||
+            info->layout->metacity.button_sizing == META_BUTTON_SIZING_FIXED))
         {
           set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
                      _("Cannot specify both 'button_width'/'button_height' and 'aspect_ratio' for buttons"));
           return;
         }
 
-      info->layout->button_sizing = META_BUTTON_SIZING_FIXED;
+      info->layout->metacity.button_sizing = META_BUTTON_SIZING_FIXED;
     }
   else
     {
@@ -4631,16 +4631,19 @@ meta_theme_metacity_get_frame_borders (MetaThemeImpl    *impl,
   if (!layout->has_title)
     text_height = 0;
 
-  buttons_height = layout->button_height +
-    layout->button_border.top + layout->button_border.bottom;
-  title_height = text_height +
-    layout->title_vertical_pad +
-    layout->title_border.top + layout->title_border.bottom;
+  buttons_height = layout->metacity.button_height +
+                   layout->button_border.top +
+                   layout->button_border.bottom;
 
-  borders->visible.top = layout->top_height + MAX (buttons_height, title_height);
-  borders->visible.left = layout->left_width;
-  borders->visible.right = layout->right_width;
-  borders->visible.bottom = layout->bottom_height;
+  title_height = text_height +
+                 layout->metacity.title_vertical_pad +
+                 layout->metacity.title_border.top +
+                 layout->metacity.title_border.bottom;
+
+  borders->visible.top = MAX (buttons_height, title_height);
+  borders->visible.left = layout->metacity.left_width;
+  borders->visible.right = layout->metacity.right_width;
+  borders->visible.bottom = layout->metacity.bottom_height;
 
   if (flags & META_FRAME_ALLOWS_HORIZONTAL_RESIZE)
     {
@@ -4848,7 +4851,6 @@ meta_theme_metacity_calc_geometry (MetaThemeImpl          *impl,
                                                        type, &borders);
 
   fgeom->borders = borders;
-  fgeom->top_height = layout->top_height;
 
   width = client_width + borders.total.left + borders.total.right;
 
@@ -4858,24 +4860,24 @@ meta_theme_metacity_calc_geometry (MetaThemeImpl          *impl,
   fgeom->width = width;
   fgeom->height = height;
 
-  fgeom->top_titlebar_edge = layout->title_border.top;
-  fgeom->bottom_titlebar_edge = layout->title_border.bottom;
-  fgeom->left_titlebar_edge = layout->left_titlebar_edge;
-  fgeom->right_titlebar_edge = layout->right_titlebar_edge;
+  fgeom->content_border.top = layout->metacity.title_border.top;
+  fgeom->content_border.bottom = layout->metacity.title_border.bottom;
+  fgeom->content_border.left = layout->metacity.left_titlebar_edge;
+  fgeom->content_border.right = layout->metacity.right_titlebar_edge;
 
   /* gcc warnings */
   button_width = -1;
   button_height = -1;
 
-  switch (layout->button_sizing)
+  switch (layout->metacity.button_sizing)
     {
     case META_BUTTON_SIZING_ASPECT:
       button_height = borders.visible.top - layout->button_border.top - layout->button_border.bottom;
-      button_width = button_height / layout->button_aspect;
+      button_width = button_height / layout->metacity.button_aspect;
       break;
     case META_BUTTON_SIZING_FIXED:
-      button_width = layout->button_width;
-      button_height = layout->button_height;
+      button_width = layout->metacity.button_width;
+      button_height = layout->metacity.button_height;
       break;
     case META_BUTTON_SIZING_LAST:
     default:
@@ -4968,7 +4970,8 @@ meta_theme_metacity_calc_geometry (MetaThemeImpl          *impl,
       int space_used_by_buttons;
       int space_available;
 
-      space_available = fgeom->width - layout->left_titlebar_edge - layout->right_titlebar_edge;
+      space_available = fgeom->width - layout->metacity.left_titlebar_edge -
+                        layout->metacity.right_titlebar_edge;
 
       space_used_by_buttons = 0;
 
@@ -5062,11 +5065,11 @@ meta_theme_metacity_calc_geometry (MetaThemeImpl          *impl,
   fgeom->n_right_buttons = n_right;
 
   /* center buttons vertically */
-  button_y = (borders.visible.top - fgeom->top_height -
-              (button_height + layout->button_border.top + layout->button_border.bottom)) / 2 + layout->button_border.top + fgeom->top_height + borders.invisible.top;
+  button_y = (borders.visible.top -
+              (button_height + layout->button_border.top + layout->button_border.bottom)) / 2 + layout->button_border.top + borders.invisible.top;
 
   /* right edge of farthest-right button */
-  x = width - layout->right_titlebar_edge - borders.invisible.right;
+  x = width - layout->metacity.right_titlebar_edge - borders.invisible.right;
 
   i = n_right - 1;
   while (i >= 0)
@@ -5095,7 +5098,9 @@ meta_theme_metacity_calc_geometry (MetaThemeImpl          *impl,
           rect->clickable.height = button_height;
 
           if (i == n_right - 1)
-            rect->clickable.width += layout->right_titlebar_edge + layout->right_width + layout->button_border.right;
+            rect->clickable.width += layout->metacity.right_titlebar_edge +
+                                     layout->metacity.right_width +
+                                     layout->button_border.right;
         }
       else
         g_memmove (&(rect->clickable), &(rect->visible), sizeof(rect->clickable));
@@ -5108,12 +5113,12 @@ meta_theme_metacity_calc_geometry (MetaThemeImpl          *impl,
     }
 
   /* save right edge of titlebar for later use */
-  title_right_edge = x - layout->title_border.right;
+  title_right_edge = x - layout->metacity.title_border.right;
 
   /* Now x changes to be position from the left and we go through
    * the left-side buttons
    */
-  x = layout->left_titlebar_edge + borders.invisible.left;
+  x = layout->metacity.left_titlebar_edge + borders.invisible.left;
   for (i = 0; i < n_left; i++)
     {
       MetaButtonSpace *rect;
@@ -5145,10 +5150,12 @@ meta_theme_metacity_calc_geometry (MetaThemeImpl          *impl,
   /* We always fill as much vertical space as possible with title rect,
    * rather than centering it like the buttons
    */
-  fgeom->title_rect.x = x + layout->title_border.left;
-  fgeom->title_rect.y = layout->title_border.top + borders.invisible.top;
+  fgeom->title_rect.x = x + layout->metacity.title_border.left;
+  fgeom->title_rect.y = layout->metacity.title_border.top + borders.invisible.top;
   fgeom->title_rect.width = title_right_edge - fgeom->title_rect.x;
-  fgeom->title_rect.height = borders.visible.top - layout->title_border.top - layout->title_border.bottom;
+  fgeom->title_rect.height = borders.visible.top -
+                             layout->metacity.title_border.top -
+                             layout->metacity.title_border.bottom;
 
   /* Nuke title if it won't fit */
   if (fgeom->title_rect.width < 0 ||
@@ -5286,23 +5293,23 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
   titlebar_rect.height = borders->visible.top;
 
   left_titlebar_edge.x = titlebar_rect.x;
-  left_titlebar_edge.y = titlebar_rect.y + fgeom->top_titlebar_edge;
-  left_titlebar_edge.width = fgeom->left_titlebar_edge;
-  left_titlebar_edge.height = titlebar_rect.height - fgeom->top_titlebar_edge - fgeom->bottom_titlebar_edge;
+  left_titlebar_edge.y = titlebar_rect.y + fgeom->content_border.top;
+  left_titlebar_edge.width = fgeom->content_border.left;
+  left_titlebar_edge.height = titlebar_rect.height - fgeom->content_border.top - fgeom->content_border.bottom;
 
   right_titlebar_edge.y = left_titlebar_edge.y;
   right_titlebar_edge.height = left_titlebar_edge.height;
-  right_titlebar_edge.width = fgeom->right_titlebar_edge;
+  right_titlebar_edge.width = fgeom->content_border.right;
   right_titlebar_edge.x = titlebar_rect.x + titlebar_rect.width - right_titlebar_edge.width;
 
   top_titlebar_edge.x = titlebar_rect.x;
   top_titlebar_edge.y = titlebar_rect.y;
   top_titlebar_edge.width = titlebar_rect.width;
-  top_titlebar_edge.height = fgeom->top_titlebar_edge;
+  top_titlebar_edge.height = fgeom->content_border.top;
 
   bottom_titlebar_edge.x = titlebar_rect.x;
   bottom_titlebar_edge.width = titlebar_rect.width;
-  bottom_titlebar_edge.height = fgeom->bottom_titlebar_edge;
+  bottom_titlebar_edge.height = fgeom->content_border.bottom;
   bottom_titlebar_edge.y = titlebar_rect.y + titlebar_rect.height - bottom_titlebar_edge.height;
 
   left_edge.x = visible_rect.x;

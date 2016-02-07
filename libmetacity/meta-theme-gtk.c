@@ -195,28 +195,32 @@ frame_layout_sync_with_style (MetaFrameLayout *layout,
   meta_style_info_set_flags (style_info, flags);
 
   style = style_info->styles[META_STYLE_ELEMENT_DECORATION];
-  get_padding_and_border (style, &border);
-  scale_border (&border, layout->title_scale);
-
-  layout->left_width = border.left;
-  layout->right_width = border.right;
-  layout->top_height = border.top;
-  layout->bottom_height = border.bottom;
+  get_padding_and_border (style, &layout->gtk.frame_border);
+  scale_border (&layout->gtk.frame_border, layout->title_scale);
 
   if (composited)
-    get_margin (style, &layout->invisible_border);
+    {
+      /* With compositing manager: margin is resize area */
+      get_margin (style, &layout->invisible_border);
+    }
   else
     {
+      layout->invisible_border.top = 0;
+      layout->invisible_border.bottom = 0;
+      layout->invisible_border.left = 0;
+      layout->invisible_border.right = 0;
+
+      /* Without compositing manager: margin is part of border */
       get_margin (style, &border);
 
-      layout->left_width += border.left;
-      layout->right_width += border.right;
-      layout->top_height += border.top;
-      layout->bottom_height += border.bottom;
+      layout->gtk.frame_border.left += border.left;
+      layout->gtk.frame_border.right += border.right;
+      layout->gtk.frame_border.top += border.top;
+      layout->gtk.frame_border.bottom += border.bottom;
     }
 
   if (layout->hide_buttons)
-    layout->icon_size = 0;
+    layout->gtk.icon_size = 0;
 
   if (!layout->has_title && layout->hide_buttons)
     return; /* border-only - be done */
@@ -235,37 +239,27 @@ frame_layout_sync_with_style (MetaFrameLayout *layout,
        */
       layout->top_left_corner_rounded_radius = border_radius;
       layout->top_right_corner_rounded_radius = border_radius;
-      max_radius = MIN (layout->bottom_height, layout->left_width);
+      max_radius = MIN (layout->gtk.frame_border.bottom, layout->gtk.frame_border.left);
       layout->bottom_left_corner_rounded_radius = MAX (border_radius, max_radius);
-      max_radius = MIN (layout->bottom_height, layout->right_width);
+      max_radius = MIN (layout->gtk.frame_border.bottom, layout->gtk.frame_border.left);
       layout->bottom_right_corner_rounded_radius = MAX (border_radius, max_radius);
     }
 
-  get_padding_and_border (style, &border);
-  scale_border (&border, layout->title_scale);
-  layout->left_titlebar_edge = layout->left_width + border.left;
-  layout->right_titlebar_edge = layout->right_width + border.right;
-  layout->title_vertical_pad = border.top;
-
-  layout->button_border.top = border.top;
-  layout->button_border.bottom = border.bottom;
-  layout->button_border.left = 0;
-  layout->button_border.right = 0;
-
-  layout->button_width = layout->icon_size;
-  layout->button_height = layout->icon_size;
+  get_padding_and_border (style, &layout->gtk.titlebar_border);
+  scale_border (&layout->gtk.titlebar_border, layout->title_scale);
 
   style = style_info->styles[META_STYLE_ELEMENT_BUTTON];
-  get_padding_and_border (style, &border);
-  scale_border (&border, layout->title_scale);
-  layout->button_width += border.left + border.right;
-  layout->button_height += border.top + border.bottom;
+  get_padding_and_border (style, &layout->button_border);
+  scale_border (&layout->button_border, layout->title_scale);
 
   style = style_info->styles[META_STYLE_ELEMENT_IMAGE];
   get_padding_and_border (style, &border);
   scale_border (&border, layout->title_scale);
-  layout->button_width += border.left + border.right;
-  layout->button_height += border.top + border.bottom;
+
+  layout->button_border.left += border.left;
+  layout->button_border.right += border.right;
+  layout->button_border.top += border.top;
+  layout->button_border.bottom += border.bottom;
 }
 
 static void
@@ -278,7 +272,8 @@ meta_theme_gtk_get_frame_borders (MetaThemeImpl    *impl,
                                   MetaFrameType     type,
                                   MetaFrameBorders *borders)
 {
-  int buttons_height, title_height;
+  gint buttons_height;
+  gint content_height;
 
   frame_layout_sync_with_style (layout, style_info, composited, flags);
 
@@ -293,16 +288,17 @@ meta_theme_gtk_get_frame_borders (MetaThemeImpl    *impl,
   if (!layout->has_title)
     text_height = 0;
 
-  buttons_height = layout->button_height +
+  buttons_height = layout->gtk.icon_size +
     layout->button_border.top + layout->button_border.bottom;
-  title_height = text_height +
-    layout->title_vertical_pad +
-    layout->title_border.top + layout->title_border.bottom;
 
-  borders->visible.top = layout->top_height + MAX (buttons_height, title_height);
-  borders->visible.left = layout->left_width;
-  borders->visible.right = layout->right_width;
-  borders->visible.bottom = layout->bottom_height;
+  content_height = MAX (buttons_height, text_height) +
+                   layout->gtk.titlebar_border.top +
+                   layout->gtk.titlebar_border.bottom;
+
+  borders->visible.top = layout->gtk.frame_border.top + content_height;
+  borders->visible.left = layout->gtk.frame_border.left;
+  borders->visible.right = layout->gtk.frame_border.right;
+  borders->visible.bottom = layout->gtk.frame_border.bottom;
 
   /* FIXME: invisible = MAX (margin, shadow) */
   borders->invisible.left = layout->invisible_border.left;
@@ -465,6 +461,7 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
   int button_y;
   int title_right_edge;
   int width, height;
+  int content_width, content_height;
   int button_width, button_height;
   int min_size_for_rounding;
 
@@ -482,7 +479,12 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
                                                        type, &borders);
 
   fgeom->borders = borders;
-  fgeom->top_height = layout->top_height;
+
+  fgeom->content_border = layout->gtk.frame_border;
+  fgeom->content_border.left += layout->gtk.titlebar_border.left;
+  fgeom->content_border.right += layout->gtk.titlebar_border.right;
+  fgeom->content_border.top += layout->gtk.titlebar_border.top;
+  fgeom->content_border.bottom += layout->gtk.titlebar_border.bottom;
 
   width = client_width + borders.total.left + borders.total.right;
 
@@ -492,13 +494,15 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
   fgeom->width = width;
   fgeom->height = height;
 
-  fgeom->top_titlebar_edge = layout->title_border.top;
-  fgeom->bottom_titlebar_edge = layout->title_border.bottom;
-  fgeom->left_titlebar_edge = layout->left_titlebar_edge;
-  fgeom->right_titlebar_edge = layout->right_titlebar_edge;
+  content_width = width -
+                  (fgeom->content_border.left + borders.invisible.left) -
+                  (fgeom->content_border.right + borders.invisible.right);
+  content_height = borders.visible.top - fgeom->content_border.top - fgeom->content_border.bottom;
 
-  button_width = layout->button_width;
-  button_height = layout->button_height;
+  button_width = layout->gtk.icon_size +
+                 layout->button_border.left + layout->button_border.right;
+  button_height = layout->gtk.icon_size +
+                  layout->button_border.top + layout->button_border.bottom;
 
   /* FIXME all this code sort of pretends that duplicate buttons
    * with the same function are allowed, but that breaks the
@@ -551,21 +555,18 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
   while (n_left > 0 || n_right > 0)
     {
       int space_used_by_buttons;
-      int space_available;
-
-      space_available = fgeom->width - layout->left_titlebar_edge - layout->right_titlebar_edge;
 
       space_used_by_buttons = 0;
 
       space_used_by_buttons += button_width * n_left;
       space_used_by_buttons += (button_width * 0.75) * n_left_spacers;
-      space_used_by_buttons += layout->titlebar_spacing * MAX (n_left - 1, 0);
+      space_used_by_buttons += layout->gtk.titlebar_spacing * MAX (n_left - 1, 0);
 
       space_used_by_buttons += button_width * n_right;
       space_used_by_buttons += (button_width * 0.75) * n_right_spacers;
-      space_used_by_buttons += layout->titlebar_spacing * MAX (n_right - 1, 0);
+      space_used_by_buttons += layout->gtk.titlebar_spacing * MAX (n_right - 1, 0);
 
-      if (space_used_by_buttons <= space_available)
+      if (space_used_by_buttons <= content_width)
         break; /* Everything fits, bail out */
 
       /* First try to remove separators */
@@ -629,11 +630,11 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
   fgeom->n_right_buttons = n_right;
 
   /* center buttons vertically */
-  button_y = (borders.visible.top - fgeom->top_height -
-              (button_height + layout->button_border.top + layout->button_border.bottom)) / 2 + layout->button_border.top + fgeom->top_height + borders.invisible.top;
+  button_y = fgeom->content_border.top + borders.invisible.top +
+             MAX(content_height - button_height, 0) / 2;
 
   /* right edge of farthest-right button */
-  x = width - layout->right_titlebar_edge - borders.invisible.right;
+  x = width - fgeom->content_border.right - borders.invisible.right;
 
   i = n_right - 1;
   while (i >= 0)
@@ -663,7 +664,7 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
           rect->clickable.height = button_height;
 
           if (i == n_right - 1)
-            rect->clickable.width += layout->right_titlebar_edge + layout->right_width;
+            rect->clickable.width += fgeom->content_border.right;
         }
       else
         g_memmove (&(rect->clickable), &(rect->visible), sizeof(rect->clickable));
@@ -671,18 +672,18 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
       x = rect->visible.x;
 
       if (i > 0)
-        x -= layout->titlebar_spacing;
+        x -= layout->gtk.titlebar_spacing;
 
       --i;
     }
 
   /* save right edge of titlebar for later use */
-  title_right_edge = x - layout->title_border.right;
+  title_right_edge = x;
 
   /* Now x changes to be position from the left and we go through
    * the left-side buttons
    */
-  x = layout->left_titlebar_edge + borders.invisible.left;
+  x = fgeom->content_border.left + borders.invisible.left;
   for (i = 0; i < n_left; i++)
     {
       MetaButtonSpace *rect;
@@ -706,18 +707,17 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
 
       x = rect->visible.x + rect->visible.width;
       if (i < n_left - 1)
-        x += layout->titlebar_spacing;
+        x += layout->gtk.titlebar_spacing;
       if (left_buttons_has_spacer[i])
         x += (button_width * 0.75);
     }
 
-  /* We always fill as much vertical space as possible with title rect,
-   * rather than centering it like the buttons
-   */
-  fgeom->title_rect.x = x + layout->title_border.left;
-  fgeom->title_rect.y = layout->title_border.top + borders.invisible.top;
+  /* Center vertically in the available content area */
+  fgeom->title_rect.x = x;
+  fgeom->title_rect.y = fgeom->content_border.top + borders.invisible.top +
+                        (content_height - text_height) / 2;
   fgeom->title_rect.width = title_right_edge - fgeom->title_rect.x;
-  fgeom->title_rect.height = borders.visible.top - layout->title_border.top - layout->title_border.bottom;
+  fgeom->title_rect.height = text_height;
 
   /* Nuke title if it won't fit */
   if (fgeom->title_rect.width < 0 ||
@@ -799,9 +799,9 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
                     visible_rect.width, visible_rect.height);
 
   titlebar_rect.x = visible_rect.x + borders->visible.left;
-  titlebar_rect.y = visible_rect.y + fgeom->top_height;
+  titlebar_rect.y = visible_rect.y + fgeom->content_border.top;
   titlebar_rect.width = visible_rect.width - borders->visible.left - borders->visible.right;
-  titlebar_rect.height = borders->visible.top - fgeom->top_height;
+  titlebar_rect.height = borders->visible.top - fgeom->content_border.top;
 
   context = style_info->styles[META_STYLE_ELEMENT_TITLEBAR];
   gtk_render_background (context, cr,
@@ -919,7 +919,7 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
               GtkIconTheme *theme = gtk_icon_theme_get_default ();
               GtkIconInfo *info;
 
-              info = gtk_icon_theme_lookup_icon (theme, icon_name, style->layout->icon_size, 0);
+              info = gtk_icon_theme_lookup_icon (theme, icon_name, style->layout->gtk.icon_size, 0);
               pixbuf = gtk_icon_info_load_symbolic_for_context (info, context, NULL, NULL);
             }
 
@@ -935,8 +935,8 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
 
               cairo_translate (cr, x, y);
               cairo_scale (cr,
-                           width / style->layout->icon_size,
-                           height / style->layout->icon_size);
+                           width / style->layout->gtk.icon_size,
+                           height / style->layout->gtk.icon_size);
               gdk_cairo_set_source_pixbuf (cr, pixbuf, 0, 0);
                                            cairo_paint (cr);
 

@@ -51,64 +51,71 @@ typedef enum
  **/
 struct _MetaFrameLayout
 {
-  /** Reference count. */
-  int refcount;
+  gint refcount;
 
-  /** Size of left side */
-  int left_width;
-  /** Size of right side */
-  int right_width;
-  /** Size of top side */
-  int top_height;
-  /** Size of bottom side */
-  int bottom_height;
+  struct {
+    /** Border/padding of the entire frame */
+    GtkBorder frame_border;
+    /** Border/padding of the titlebar region */
+    GtkBorder titlebar_border;
+    /** Border/padding of titlebar buttons */
+
+    /** Size of images in buttons */
+    guint icon_size;
+
+    /** Space between titlebar elements */
+    guint titlebar_spacing;
+  } gtk;
+
+  struct {
+    /** Size of left side */
+    gint left_width;
+    /** Size of right side */
+    gint right_width;
+    /** Size of bottom side */
+    gint bottom_height;
+
+    /** Border of blue title region
+     * \bug (blue?!)
+     **/
+    GtkBorder title_border;
+
+    /** Extra height for inside of title region, above the font height */
+    int title_vertical_pad;
+
+    /** Right indent of buttons from edges of frame */
+    int right_titlebar_edge;
+    /** Left indent of buttons from edges of frame */
+    int left_titlebar_edge;
+
+    /**
+     * Sizing rule of buttons, either META_BUTTON_SIZING_ASPECT
+     * (in which case button_aspect will be honoured, and
+     * button_width and button_height set from it), or
+     * META_BUTTON_SIZING_FIXED (in which case we read the width
+     * and height directly).
+     */
+    MetaButtonSizing button_sizing;
+
+    /**
+     * Ratio of height/width. Honoured only if
+     * button_sizing==META_BUTTON_SIZING_ASPECT.
+     * Otherwise we figure out the height from the button_border.
+     */
+    double button_aspect;
+
+    /** Width of a button; set even when we are using aspect sizing */
+    gint button_width;
+
+    /** Height of a button; set even when we are using aspect sizing */
+    gint button_height;
+  } metacity;
 
   /** Invisible border */
   GtkBorder invisible_border;
 
-  /** Border of blue title region
-   * \bug (blue?!)
-   **/
-  GtkBorder title_border;
-
-  /** Extra height for inside of title region, above the font height */
-  int title_vertical_pad;
-
-  /** Right indent of buttons from edges of frame */
-  int right_titlebar_edge;
-  /** Left indent of buttons from edges of frame */
-  int left_titlebar_edge;
-
-  /**
-   * Sizing rule of buttons, either META_BUTTON_SIZING_ASPECT
-   * (in which case button_aspect will be honoured, and
-   * button_width and button_height set from it), or
-   * META_BUTTON_SIZING_FIXED (in which case we read the width
-   * and height directly).
-   */
-  MetaButtonSizing button_sizing;
-
-  /**
-   * Ratio of height/width. Honoured only if
-   * button_sizing==META_BUTTON_SIZING_ASPECT.
-   * Otherwise we figure out the height from the button_border.
-   */
-  double button_aspect;
-
-  /** Width of a button; set even when we are using aspect sizing */
-  int button_width;
-
-  /** Height of a button; set even when we are using aspect sizing */
-  int button_height;
-
   /** Space around buttons */
   GtkBorder button_border;
-
-  /** Size of images in buttons */
-  guint icon_size;
-
-  /** Space between titlebar elements */
-  guint titlebar_spacing;
 
   /** scale factor for title text */
   double title_scale;

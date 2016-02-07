@@ -61,9 +61,7 @@ validate_border (const GtkBorder  *border,
  * MetaFrameLayout is created, all its integer fields are set to -1
  * by meta_frame_layout_new(). After an instance of this type
  * should have been initialised, this function checks that
- * a given field is not still at -1. It is never called directly, but
- * rather via the CHECK_GEOMETRY_VALUE and CHECK_GEOMETRY_BORDER
- * macros.
+ * a given field is not still at -1.
  *
  * \param      val    The value to check
  * \param      name   The name to use in the error message
@@ -120,38 +118,38 @@ meta_frame_layout_new  (void)
 
   layout->refcount = 1;
 
+  /* Spacing as hardcoded in GTK+:
+   * https://git.gnome.org/browse/gtk+/tree/gtk/gtkheaderbar.c?h=gtk-3-14#n53
+   */
+  layout->gtk.titlebar_spacing = 6;
+  layout->gtk.icon_size = 16; /* was META_MINI_ICON_WIDTH from common.h */
+
   /* Fill with -1 values to detect invalid themes */
-  layout->left_width = -1;
-  layout->right_width = -1;
-  layout->top_height = 0; /* only used by GTK+ theme */
-  layout->bottom_height = -1;
+  layout->metacity.left_width = -1;
+  layout->metacity.right_width = -1;
+  layout->metacity.bottom_height = -1;
+
+  init_border (&layout->metacity.title_border);
+
+  layout->metacity.title_vertical_pad = -1;
+
+  layout->metacity.right_titlebar_edge = -1;
+  layout->metacity.left_titlebar_edge = -1;
+
+  layout->metacity.button_sizing = META_BUTTON_SIZING_LAST;
+  layout->metacity.button_aspect = 1.0;
+  layout->metacity.button_width = -1;
+  layout->metacity.button_height = -1;
 
   layout->invisible_border.left = 10;
   layout->invisible_border.right = 10;
   layout->invisible_border.bottom = 10;
   layout->invisible_border.top = 10;
 
-  init_border (&layout->title_border);
-
-  layout->title_vertical_pad = -1;
-
-  layout->right_titlebar_edge = -1;
-  layout->left_titlebar_edge = -1;
-
-  layout->button_sizing = META_BUTTON_SIZING_LAST;
-  layout->button_aspect = 1.0;
-  layout->button_width = -1;
-  layout->button_height = -1;
-
-  /* Spacing as hardcoded in GTK+:
-   * https://git.gnome.org/browse/gtk+/tree/gtk/gtkheaderbar.c?h=gtk-3-14#n53
-   */
-  layout->titlebar_spacing = 6;
-  layout->has_title = TRUE;
-  layout->title_scale = 1.0;
-  layout->icon_size = 16; /* was META_MINI_ICON_WIDTH from common.h */
-
   init_border (&layout->button_border);
+
+  layout->has_title = TRUE;
+  layout->title_scale = PANGO_SCALE_MEDIUM;
 
   return layout;
 }
@@ -196,37 +194,56 @@ meta_frame_layout_validate (const MetaFrameLayout *layout,
 {
   g_return_val_if_fail (layout != NULL, FALSE);
 
-#define CHECK_GEOMETRY_VALUE(vname) if (!validate_geometry_value (layout->vname, #vname, error)) return FALSE
+  if (!validate_geometry_value (layout->metacity.left_width,
+      "left_width", error))
+    return FALSE;
 
-#define CHECK_GEOMETRY_BORDER(bname) if (!validate_geometry_border (&layout->bname, #bname, error)) return FALSE
+  if (!validate_geometry_value (layout->metacity.right_width,
+      "right_width", error))
+    return FALSE;
 
-  CHECK_GEOMETRY_VALUE (left_width);
-  CHECK_GEOMETRY_VALUE (right_width);
-  CHECK_GEOMETRY_VALUE (bottom_height);
+  if (!validate_geometry_value (layout->metacity.bottom_height,
+      "bottom_height", error))
+    return FALSE;
 
-  CHECK_GEOMETRY_BORDER (title_border);
+  if (!validate_geometry_border (&layout->metacity.title_border,
+                                 "title_border", error))
+    return FALSE;
 
-  CHECK_GEOMETRY_VALUE (title_vertical_pad);
+  if (!validate_geometry_value (layout->metacity.title_vertical_pad,
+      "title_vertical_pad", error))
+    return FALSE;
 
-  CHECK_GEOMETRY_VALUE (right_titlebar_edge);
-  CHECK_GEOMETRY_VALUE (left_titlebar_edge);
+  if (!validate_geometry_value (layout->metacity.right_titlebar_edge,
+      "right_titlebar_edge", error))
+    return FALSE;
 
-  switch (layout->button_sizing)
+  if (!validate_geometry_value (layout->metacity.left_titlebar_edge,
+      "left_titlebar_edge", error))
+    return FALSE;
+
+  switch (layout->metacity.button_sizing)
     {
       case META_BUTTON_SIZING_ASPECT:
-        if (layout->button_aspect < (0.1) || layout->button_aspect > (15.0))
+        if (layout->metacity.button_aspect < (0.1) ||
+            layout->metacity.button_aspect > (15.0))
           {
             g_set_error (error, META_THEME_ERROR,
                          META_THEME_ERROR_FRAME_GEOMETRY,
                          _("Button aspect ratio %g is not reasonable"),
-                         layout->button_aspect);
+                         layout->metacity.button_aspect);
 
             return FALSE;
           }
         break;
       case META_BUTTON_SIZING_FIXED:
-        CHECK_GEOMETRY_VALUE (button_width);
-        CHECK_GEOMETRY_VALUE (button_height);
+        if (!validate_geometry_value (layout->metacity.button_width,
+                                      "button_width", error))
+          return FALSE;
+
+        if (!validate_geometry_value (layout->metacity.button_height,
+                                      "button_height", error))
+          return FALSE;
         break;
       case META_BUTTON_SIZING_LAST:
       default:
@@ -236,7 +253,13 @@ meta_frame_layout_validate (const MetaFrameLayout *layout,
         return FALSE;
     }
 
-  CHECK_GEOMETRY_BORDER (button_border);
+  if (!validate_geometry_border (&layout->metacity.title_border,
+                                 "title_border", error))
+    return FALSE;
+
+  if (!validate_geometry_border (&layout->button_border,
+                                 "button_border", error))
+    return FALSE;
 
   return TRUE;
 }
