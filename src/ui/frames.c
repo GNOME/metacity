@@ -413,7 +413,7 @@ meta_frames_style_updated (GtkWidget *widget)
   compositing_manager = meta_prefs_get_compositing_manager ();
 
   meta_theme_set_composited (theme, compositing_manager);
-  meta_theme_style_invalidate (theme);
+  meta_theme_invalidate (theme);
 
   meta_frames_font_changed (frames);
 

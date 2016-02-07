@@ -160,7 +160,7 @@ gboolean              meta_theme_load                      (MetaTheme           
                                                             const gchar                 *theme_name,
                                                             GError                     **error);
 
-void                  meta_theme_style_invalidate          (MetaTheme                   *theme);
+void                  meta_theme_invalidate                (MetaTheme                   *theme);
 
 MetaStyleInfo        *meta_theme_get_style_info            (MetaTheme                   *theme,
                                                             const gchar                 *variant);

@@ -233,7 +233,7 @@ meta_theme_load (MetaTheme    *theme,
 }
 
 void
-meta_theme_style_invalidate (MetaTheme *theme)
+meta_theme_invalidate (MetaTheme *theme)
 {
   GList *variants;
   GList *l;
@@ -295,7 +295,7 @@ meta_theme_set_composited (MetaTheme *theme,
 
   theme->composited = composited;
 
-  meta_theme_style_invalidate (theme);
+  meta_theme_invalidate (theme);
 }
 
 void
