@@ -25,6 +25,7 @@
 #include "meta-theme-gtk-private.h"
 #include "meta-theme-impl-private.h"
 #include "meta-theme-metacity-private.h"
+#include "meta-style-info-private.h"
 
 struct _MetaTheme
 {
@@ -53,6 +54,28 @@ enum
 static GParamSpec *theme_properties[LAST_PROP] = { NULL };
 
 G_DEFINE_TYPE (MetaTheme, meta_theme, G_TYPE_OBJECT)
+
+static MetaStyleInfo *
+meta_theme_get_style_info (MetaTheme   *theme,
+                           const gchar *variant)
+{
+  MetaStyleInfo *style_info;
+
+  if (variant == NULL)
+    variant = "default";
+
+  style_info = g_hash_table_lookup (theme->variants, variant);
+
+  if (style_info == NULL)
+    {
+      style_info = meta_style_info_new (theme->theme_name, variant,
+                                        theme->composited);
+
+      g_hash_table_insert (theme->variants, g_strdup (variant), style_info);
+    }
+
+  return style_info;
+}
 
 static void
 meta_theme_constructed (GObject *object)
@@ -238,28 +261,6 @@ meta_theme_invalidate (MetaTheme *theme)
   g_hash_table_remove_all (theme->variants);
 }
 
-MetaStyleInfo *
-meta_theme_get_style_info (MetaTheme   *theme,
-                           const gchar *variant)
-{
-  MetaStyleInfo *style_info;
-
-  if (variant == NULL)
-    variant = "default";
-
-  style_info = g_hash_table_lookup (theme->variants, variant);
-
-  if (style_info == NULL)
-    {
-      style_info = meta_style_info_new (theme->theme_name, variant,
-                                        theme->composited);
-
-      g_hash_table_insert (theme->variants, g_strdup (variant), style_info);
-    }
-
-  return style_info;
-}
-
 void
 meta_theme_set_composited (MetaTheme *theme,
                            gboolean   composited)
@@ -384,12 +385,14 @@ meta_theme_get_frame_style (MetaTheme      *theme,
 }
 
 PangoFontDescription*
-meta_style_info_create_font_desc (MetaTheme     *theme,
-                                  MetaStyleInfo *style_info)
+meta_style_info_create_font_desc (MetaTheme   *theme,
+                                  const gchar *variant)
 {
+  MetaStyleInfo *style_info;
   GtkStyleContext *context;
   PangoFontDescription *font_desc;
 
+  style_info = meta_theme_get_style_info (theme, variant);
   context = style_info->styles[META_STYLE_ELEMENT_TITLE];
 
   gtk_style_context_save (context);

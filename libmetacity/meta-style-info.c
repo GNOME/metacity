@@ -19,7 +19,7 @@
 #include "config.h"
 
 #include "meta-frame-enums.h"
-#include "meta-style-info.h"
+#include "meta-style-info-private.h"
 
 static void
 add_toplevel_class (GtkStyleContext *style,

@@ -21,7 +21,7 @@
 #include "meta-button-layout.h"
 #include "meta-frame-enums.h"
 #include "meta-frame-style.h"
-#include "meta-style-info.h"
+#include "meta-style-info-private.h"
 
 G_BEGIN_DECLS
 

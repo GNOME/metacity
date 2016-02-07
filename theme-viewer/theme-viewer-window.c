@@ -204,7 +204,6 @@ update_title_layout (ThemeViewerWindow *window)
 {
   GtkWidget *widget;
   PangoLayout *layout;
-  MetaStyleInfo *style_info;
   PangoFontDescription *font_desc;
   MetaFrameType type;
   MetaFrameFlags flags;
@@ -216,8 +215,8 @@ update_title_layout (ThemeViewerWindow *window)
 
   layout = gtk_widget_create_pango_layout (widget, "Metacity Theme Viewer");
 
-  style_info = meta_theme_get_style_info (window->theme, window->theme_variant);
-  font_desc = meta_style_info_create_font_desc (window->theme, style_info);
+  font_desc = meta_style_info_create_font_desc (window->theme,
+                                                window->theme_variant);
 
   type = window->frame_type;
   flags = window->frame_flags;

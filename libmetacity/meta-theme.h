@@ -25,7 +25,6 @@
 #include <libmetacity/meta-frame-borders.h>
 #include <libmetacity/meta-frame-enums.h>
 #include <libmetacity/meta-frame-style.h>
-#include <libmetacity/meta-style-info.h>
 
 G_BEGIN_DECLS
 
@@ -158,9 +157,6 @@ gboolean              meta_theme_load                      (MetaTheme           
 
 void                  meta_theme_invalidate                (MetaTheme                   *theme);
 
-MetaStyleInfo        *meta_theme_get_style_info            (MetaTheme                   *theme,
-                                                            const gchar                 *variant);
-
 void                  meta_theme_set_composited            (MetaTheme                   *theme,
                                                             gboolean                     composited);
 
@@ -176,7 +172,7 @@ MetaFrameStyle       *meta_theme_get_frame_style           (MetaTheme           
                                                             MetaFrameFlags               flags);
 
 PangoFontDescription *meta_style_info_create_font_desc     (MetaTheme                   *theme,
-                                                            MetaStyleInfo               *style_info);
+                                                            const gchar                 *variant);
 
 gint                  meta_pango_font_desc_get_text_height (const PangoFontDescription  *font_desc,
                                                             PangoContext                *context);

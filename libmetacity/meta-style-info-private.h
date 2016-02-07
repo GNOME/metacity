@@ -16,8 +16,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef META_STYLE_INFO_H
-#define META_STYLE_INFO_H
+#ifndef META_STYLE_INFO_PRIVATE_H
+#define META_STYLE_INFO_PRIVATE_H
 
 #include <gtk/gtk.h>
 
@@ -41,16 +41,20 @@ typedef struct
   GtkStyleContext *styles[META_STYLE_ELEMENT_LAST];
 } MetaStyleInfo;
 
-MetaStyleInfo *meta_style_info_new          (const gchar    *theme_name,
-                                             const gchar    *variant,
-                                             gboolean        composited);
+G_GNUC_INTERNAL
+MetaStyleInfo *meta_style_info_new       (const gchar    *theme_name,
+                                          const gchar    *variant,
+                                          gboolean        composited);
 
-MetaStyleInfo *meta_style_info_ref          (MetaStyleInfo  *style_info);
+G_GNUC_INTERNAL
+MetaStyleInfo *meta_style_info_ref       (MetaStyleInfo  *style_info);
 
-void           meta_style_info_unref        (MetaStyleInfo  *style_info);
+G_GNUC_INTERNAL
+void           meta_style_info_unref     (MetaStyleInfo  *style_info);
 
-void           meta_style_info_set_flags    (MetaStyleInfo  *style_info,
-                                             MetaFrameFlags  flags);
+G_GNUC_INTERNAL
+void           meta_style_info_set_flags (MetaStyleInfo  *style_info,
+                                          MetaFrameFlags  flags);
 
 G_END_DECLS
 

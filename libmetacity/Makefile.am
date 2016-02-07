@@ -32,7 +32,7 @@ libmetacity_la_SOURCES = \
 	meta-hsla.c \
 	meta-hsla-private.h \
 	meta-style-info.c \
-	meta-style-info.h \
+	meta-style-info-private.h \
 	meta-theme.c \
 	meta-theme.h \
 	meta-theme-gtk.c \
@@ -81,7 +81,6 @@ libmetacity_include_HEADERS = \
 	meta-frame-style.h \
 	meta-gradient.h \
 	meta-gradient-spec.h \
-	meta-style-info.h \
 	meta-theme.h \
 	$(NULL)
 
