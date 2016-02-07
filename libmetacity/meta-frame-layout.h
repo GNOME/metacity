@@ -121,8 +121,8 @@ struct _MetaFrameLayout
     gint button_height;
   } metacity;
 
-  /** Invisible border */
-  GtkBorder invisible_border;
+  /** Invisible resize area border */
+  GtkBorder invisible_resize_border;
 
   /** Space around buttons */
   GtkBorder button_border;

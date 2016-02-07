@@ -212,14 +212,15 @@ frame_layout_sync_with_style (MetaFrameLayout *layout,
   if (composited)
     {
       /* With compositing manager: margin is resize area */
-      get_margin (style, &layout->invisible_border);
+      get_margin (style, &layout->invisible_resize_border);
     }
   else
     {
-      layout->invisible_border.top = 0;
-      layout->invisible_border.bottom = 0;
-      layout->invisible_border.left = 0;
-      layout->invisible_border.right = 0;
+      /* Without compositing manager we can not have invisible border */
+      layout->invisible_resize_border.top = 0;
+      layout->invisible_resize_border.bottom = 0;
+      layout->invisible_resize_border.left = 0;
+      layout->invisible_resize_border.right = 0;
 
       /* Without compositing manager: margin is part of border */
       get_margin (style, &border);
@@ -338,27 +339,19 @@ meta_theme_gtk_get_frame_borders (MetaThemeImpl    *impl,
   borders->visible.right = layout->gtk.frame_border.right;
   borders->visible.bottom = layout->gtk.frame_border.bottom;
 
-  /* FIXME: invisible = MAX (margin, shadow) */
-  borders->invisible.left = layout->invisible_border.left;
-  borders->invisible.right = layout->invisible_border.right;
-  borders->invisible.bottom = layout->invisible_border.bottom;
-  borders->invisible.top = layout->invisible_border.top;
-
-  /*
   if (flags & META_FRAME_ALLOWS_HORIZONTAL_RESIZE)
     {
-      borders->invisible.left = layout->invisible_border.left;
-      borders->invisible.right = layout->invisible_border.right;
+      borders->invisible.left = layout->invisible_resize_border.left;
+      borders->invisible.right = layout->invisible_resize_border.right;
     }
 
   if (flags & META_FRAME_ALLOWS_VERTICAL_RESIZE)
     {
-      borders->invisible.bottom = layout->invisible_border.bottom;
+      borders->invisible.bottom = layout->invisible_resize_border.bottom;
 
       if (type != META_FRAME_TYPE_ATTACHED)
-        borders->invisible.top = layout->invisible_border.top;
+        borders->invisible.top = layout->invisible_resize_border.top;
     }
-  */
 
   borders->total.left = borders->invisible.left + borders->visible.left;
   borders->total.right = borders->invisible.right + borders->visible.right;

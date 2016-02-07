@@ -141,10 +141,10 @@ meta_frame_layout_new  (void)
   layout->metacity.button_width = -1;
   layout->metacity.button_height = -1;
 
-  layout->invisible_border.left = 10;
-  layout->invisible_border.right = 10;
-  layout->invisible_border.bottom = 10;
-  layout->invisible_border.top = 10;
+  layout->invisible_resize_border.left = 10;
+  layout->invisible_resize_border.right = 10;
+  layout->invisible_resize_border.bottom = 10;
+  layout->invisible_resize_border.top = 10;
 
   init_border (&layout->button_border);
 

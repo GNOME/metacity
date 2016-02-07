@@ -4647,16 +4647,16 @@ meta_theme_metacity_get_frame_borders (MetaThemeImpl    *impl,
 
   if (flags & META_FRAME_ALLOWS_HORIZONTAL_RESIZE)
     {
-      borders->invisible.left = layout->invisible_border.left;
-      borders->invisible.right = layout->invisible_border.right;
+      borders->invisible.left = layout->invisible_resize_border.left;
+      borders->invisible.right = layout->invisible_resize_border.right;
     }
 
   if (flags & META_FRAME_ALLOWS_VERTICAL_RESIZE)
     {
-      borders->invisible.bottom = layout->invisible_border.bottom;
+      borders->invisible.bottom = layout->invisible_resize_border.bottom;
 
       if (type != META_FRAME_TYPE_ATTACHED)
-        borders->invisible.top = layout->invisible_border.top;
+        borders->invisible.top = layout->invisible_resize_border.top;
     }
 
   borders->total.left = borders->invisible.left + borders->visible.left;
