@@ -171,7 +171,7 @@ MetaFrameStyle       *meta_theme_get_frame_style           (MetaTheme           
                                                             MetaFrameType                type,
                                                             MetaFrameFlags               flags);
 
-PangoFontDescription *meta_style_info_create_font_desc     (MetaTheme                   *theme,
+PangoFontDescription *meta_theme_create_font_desc          (MetaTheme                   *theme,
                                                             const gchar                 *variant);
 
 gint                  meta_pango_font_desc_get_text_height (const PangoFontDescription  *font_desc,

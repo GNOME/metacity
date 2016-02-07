@@ -385,8 +385,8 @@ meta_theme_get_frame_style (MetaTheme      *theme,
 }
 
 PangoFontDescription*
-meta_style_info_create_font_desc (MetaTheme   *theme,
-                                  const gchar *variant)
+meta_theme_create_font_desc (MetaTheme   *theme,
+                             const gchar *variant)
 {
   MetaStyleInfo *style_info;
   GtkStyleContext *context;

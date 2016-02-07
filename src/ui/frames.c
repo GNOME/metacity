@@ -476,7 +476,7 @@ meta_frames_ensure_layout (MetaFrames  *frames,
 
       current = meta_theme_get_current ();
 
-      font_desc = meta_style_info_create_font_desc (current, frame->theme_variant);
+      font_desc = meta_theme_create_font_desc (current, frame->theme_variant);
       meta_frame_style_apply_scale (style, font_desc);
 
       size = pango_font_description_get_size (font_desc);
