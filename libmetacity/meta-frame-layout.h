@@ -56,6 +56,10 @@ struct _MetaFrameLayout
   struct {
     /** Border/padding of the entire frame */
     GtkBorder frame_border;
+
+    /** Shadow border used in invisible resize area */
+    GtkBorder shadow_border;
+
     /** Border/padding of the titlebar region */
     GtkBorder titlebar_border;
     /** Border/padding of titlebar buttons */

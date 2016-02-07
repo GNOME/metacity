@@ -69,7 +69,7 @@ dnl Check for required packages
 dnl **************************************************************************
 
 GLIB_REQUIRED_VERSION=2.44.0
-GTK_REQUIRED_VERSION=3.19.7
+GTK_REQUIRED_VERSION=3.19.8
 
 PKG_CHECK_MODULES([LIBMETACITY], [
   glib-2.0 >= $GLIB_REQUIRED_VERSION

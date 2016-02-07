@@ -18,6 +18,7 @@
 #include "config.h"
 
 #include <gtk/gtk.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include "meta-frame-style.h"
@@ -193,6 +194,20 @@ scale_border (GtkBorder *border,
 }
 
 static void
+get_shadow_extents (GtkStyleContext *style,
+                    GtkBorder       *border)
+{
+  GdkRectangle clip;
+
+  gtk_render_background_get_clip (style, 0, 0, 0, 0, &clip);
+
+  border->left = abs (clip.x);
+  border->top = abs (clip.y);
+  border->right = clip.width - border->left;
+  border->bottom = clip.height - border->bottom;
+}
+
+static void
 frame_layout_sync_with_style (MetaFrameLayout *layout,
                               MetaStyleInfo   *style_info,
                               gboolean         composited,
@@ -213,6 +228,7 @@ frame_layout_sync_with_style (MetaFrameLayout *layout,
     {
       /* With compositing manager: margin is resize area */
       get_margin (style, &layout->invisible_resize_border);
+      get_shadow_extents (style, &layout->gtk.shadow_border);
     }
   else
     {
@@ -221,6 +237,11 @@ frame_layout_sync_with_style (MetaFrameLayout *layout,
       layout->invisible_resize_border.bottom = 0;
       layout->invisible_resize_border.left = 0;
       layout->invisible_resize_border.right = 0;
+
+      layout->gtk.shadow_border.top = 0;
+      layout->gtk.shadow_border.bottom = 0;
+      layout->gtk.shadow_border.left = 0;
+      layout->gtk.shadow_border.right = 0;
 
       /* Without compositing manager: margin is part of border */
       get_margin (style, &border);
@@ -339,18 +360,25 @@ meta_theme_gtk_get_frame_borders (MetaThemeImpl    *impl,
   borders->visible.right = layout->gtk.frame_border.right;
   borders->visible.bottom = layout->gtk.frame_border.bottom;
 
+  borders->invisible = layout->gtk.shadow_border;
+
   if (flags & META_FRAME_ALLOWS_HORIZONTAL_RESIZE)
     {
-      borders->invisible.left = layout->invisible_resize_border.left;
-      borders->invisible.right = layout->invisible_resize_border.right;
+      borders->invisible.left = MAX (borders->invisible.left,
+                                     layout->invisible_resize_border.left);
+
+      borders->invisible.right = MAX (borders->invisible.right,
+                                      layout->invisible_resize_border.right);
     }
 
   if (flags & META_FRAME_ALLOWS_VERTICAL_RESIZE)
     {
-      borders->invisible.bottom = layout->invisible_resize_border.bottom;
+      borders->invisible.bottom = MAX (borders->invisible.bottom,
+                                       layout->invisible_resize_border.bottom);
 
       if (type != META_FRAME_TYPE_ATTACHED)
-        borders->invisible.top = layout->invisible_resize_border.top;
+        borders->invisible.top = MAX (borders->invisible.top,
+                                      layout->invisible_resize_border.top);
     }
 
   borders->total.left = borders->invisible.left + borders->visible.left;
