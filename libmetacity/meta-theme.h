@@ -168,8 +168,6 @@ MetaStyleInfo        *meta_theme_get_style_info            (MetaTheme           
 void                  meta_theme_set_composited            (MetaTheme                   *theme,
                                                             gboolean                     composited);
 
-gboolean              meta_theme_get_composited            (MetaTheme                   *theme);
-
 void                  meta_theme_set_titlebar_font         (MetaTheme                   *theme,
                                                             const PangoFontDescription  *titlebar_font);
 

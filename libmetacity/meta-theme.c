@@ -298,12 +298,6 @@ meta_theme_set_composited (MetaTheme *theme,
   meta_theme_style_invalidate (theme);
 }
 
-gboolean
-meta_theme_get_composited (MetaTheme *theme)
-{
-  return theme->composited;
-}
-
 void
 meta_theme_set_titlebar_font (MetaTheme                  *theme,
                               const PangoFontDescription *titlebar_font)
