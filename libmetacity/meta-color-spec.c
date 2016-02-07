@@ -22,7 +22,7 @@
 
 #include "meta-color.h"
 #include "meta-color-private.h"
-#include "meta-color-spec.h"
+#include "meta-color-spec-private.h"
 #include "meta-theme.h"
 
 enum _MetaColorSpecType

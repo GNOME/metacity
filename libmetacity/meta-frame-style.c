@@ -20,6 +20,7 @@
 
 #include <glib/gi18n-lib.h>
 
+#include "meta-color-spec-private.h"
 #include "meta-draw-op-private.h"
 #include "meta-frame-style.h"
 #include "meta-theme.h"

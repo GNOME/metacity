@@ -12,7 +12,7 @@ libmetacity_la_SOURCES = \
 	meta-color.h \
 	meta-color-private.h \
 	meta-color-spec.c \
-	meta-color-spec.h \
+	meta-color-spec-private.h \
 	meta-draw-op.c \
 	meta-draw-op-private.h \
 	meta-draw-spec.c \
@@ -70,7 +70,6 @@ libmetacity_include_HEADERS = \
 	meta-button-function.h \
 	meta-button-layout.h \
 	meta-color.h \
-	meta-color-spec.h \
 	meta-draw-spec.h \
 	meta-enum-types.h \
 	meta-frame-borders.h \

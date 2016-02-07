@@ -21,7 +21,7 @@
 
 #include <gtk/gtk.h>
 
-#include "meta-color-spec.h"
+#include "meta-color-spec-private.h"
 #include "meta-draw-spec.h"
 #include "meta-frame-borders.h"
 #include "meta-gradient-spec-private.h"

@@ -20,12 +20,12 @@
 #define META_FRAME_STYLE_H
 
 #include <libmetacity/meta-button-enums.h>
-#include <libmetacity/meta-color-spec.h>
 #include <libmetacity/meta-frame-enums.h>
 #include <libmetacity/meta-frame-layout.h>
 
 G_BEGIN_DECLS
 
+typedef struct _MetaColorSpec MetaColorSpec;
 typedef struct _MetaFrameStyle MetaFrameStyle;
 typedef struct _MetaFrameStyleSet MetaFrameStyleSet;
 typedef struct _MetaDrawOpList MetaDrawOpList;

@@ -16,8 +16,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef META_COLOR_SPEC_H
-#define META_COLOR_SPEC_H
+#ifndef META_COLOR_SPEC_PRIVATE_H
+#define META_COLOR_SPEC_PRIVATE_H
 
 #include <gtk/gtk.h>
 
@@ -27,20 +27,26 @@ typedef enum _MetaColorSpecType MetaColorSpecType;
 typedef enum _MetaGtkColorComponent MetaGtkColorComponent;
 typedef struct _MetaColorSpec MetaColorSpec;
 
+G_GNUC_INTERNAL
 MetaColorSpec *meta_color_spec_new             (MetaColorSpecType       type);
 
+G_GNUC_INTERNAL
 MetaColorSpec *meta_color_spec_new_from_string (const gchar            *str,
                                                 GError                **error);
 
+G_GNUC_INTERNAL
 MetaColorSpec *meta_color_spec_new_gtk         (MetaGtkColorComponent   component,
                                                 GtkStateFlags           state);
 
+G_GNUC_INTERNAL
 void           meta_color_spec_free            (MetaColorSpec          *spec);
 
+G_GNUC_INTERNAL
 void           meta_color_spec_render          (MetaColorSpec          *spec,
                                                 GtkStyleContext        *context,
                                                 GdkRGBA                *color);
 
+G_GNUC_INTERNAL
 gboolean       meta_gtk_state_from_string      (const gchar            *str,
                                                 GtkStateFlags          *state);
 
