@@ -557,7 +557,7 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
   content_width = width -
                   (fgeom->content_border.left + borders.invisible.left) -
                   (fgeom->content_border.right + borders.invisible.right);
-  content_height = borders.visible.top - fgeom->content_border.top - fgeom->content_border.bottom;
+  content_height = borders.visible.top - layout->gtk.frame_border.top;
 
   button_width = MAX ((gint) layout->gtk.icon_size, layout->gtk.button_min_size.width) +
                  layout->button_border.left + layout->button_border.right;
@@ -695,7 +695,7 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
 
   /* center buttons vertically */
   button_y = fgeom->content_border.top + borders.invisible.top +
-             MAX(content_height - button_height, 0) / 2;
+             (content_height - button_height) / 2;
 
   /* right edge of farthest-right button */
   x = width - fgeom->content_border.right - borders.invisible.right;
