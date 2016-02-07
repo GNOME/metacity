@@ -21,7 +21,7 @@
 #include <glib/gi18n-lib.h>
 #include <stdlib.h>
 
-#include "meta-draw-spec.h"
+#include "meta-draw-spec-private.h"
 #include "meta-theme.h"
 #include "meta-theme-metacity-private.h"
 

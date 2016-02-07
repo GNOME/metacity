@@ -16,8 +16,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef META_DRAW_SPEC_H
-#define META_DRAW_SPEC_H
+#ifndef META_DRAW_SPEC_PRIVATE_H
+#define META_DRAW_SPEC_PRIVATE_H
 
 #include <gdk/gdk.h>
 
@@ -48,18 +48,23 @@ struct _MetaPositionExprEnv
   int icon_height;
 };
 
+G_GNUC_INTERNAL
 MetaDrawSpec *meta_draw_spec_new              (MetaThemeMetacity          *metacity,
                                                const char                 *expr,
                                                GError                    **error);
 
+G_GNUC_INTERNAL
 void          meta_draw_spec_free             (MetaDrawSpec               *spec);
 
+G_GNUC_INTERNAL
 gint          meta_draw_spec_parse_x_position (MetaDrawSpec               *spec,
                                                const MetaPositionExprEnv  *env);
 
+G_GNUC_INTERNAL
 gint          meta_draw_spec_parse_y_position (MetaDrawSpec               *spec,
                                                const MetaPositionExprEnv  *env);
 
+G_GNUC_INTERNAL
 gint          meta_draw_spec_parse_size       (MetaDrawSpec               *spec,
                                                const MetaPositionExprEnv  *env);
 
