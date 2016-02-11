@@ -2532,7 +2532,6 @@ meta_frames_draw (GtkWidget *widget,
 {
   MetaUIFrame *frame;
   MetaFrames *frames;
-  MetaTheme *current;
   CachedPixels *pixels;
   cairo_region_t *region;
   cairo_rectangle_int_t clip;
@@ -2554,25 +2553,8 @@ meta_frames_draw (GtkWidget *widget,
 
   populate_cache (frames, frame);
 
-  current = meta_theme_get_current ();
-
-  if (meta_theme_get_theme_type (current) == META_THEME_TYPE_METACITY)
-    {
-      MetaFrameGeometry fgeom;
-
-      meta_frames_calc_geometry (frames, frame, &fgeom);
-
-      region = get_visible_region (frames, frame, &fgeom, fgeom.width, fgeom.height);
-
-      gdk_cairo_region (cr, region);
-      cairo_clip(cr);
-    }
-  else
-    {
-      region = cairo_region_create_rectangle (&clip);
-    }
-
   pixels = get_cache (frames, frame);
+  region = cairo_region_create_rectangle (&clip);
 
   cached_pixels_draw (pixels, cr, region);
 
