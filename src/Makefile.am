@@ -119,7 +119,7 @@ bin_PROGRAMS=metacity
 metacity_LDADD=@METACITY_LIBS@ $(top_builddir)/libmetacity/libmetacity.la
 
 testboxes_SOURCES=include/util.h core/util.c include/boxes.h core/boxes.c core/testboxes.c
-testgradient_SOURCES=../libmetacity/meta-gradient.h ../libmetacity/meta-gradient.c ui/testgradient.c
+testgradient_SOURCES=../libmetacity/meta-gradient-private.h ../libmetacity/meta-gradient.c ui/testgradient.c
 testasyncgetprop_SOURCES=core/async-getprop.h core/async-getprop.c core/testasyncgetprop.c
 
 noinst_PROGRAMS=testboxes testgradient testasyncgetprop
