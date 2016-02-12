@@ -417,16 +417,6 @@ if test x"$ZENITY" = xno; then
   AC_MSG_ERROR([zenity not found in your path - needed for dialogs])
 fi
 
-AC_ARG_ENABLE(themes-documentation,
-  AC_HELP_STRING([--disable-themes-documentation],
-                 [disable building themes documentation on system where yelp-tools is unavailable]),,
-  enable_themes_documentation=yes)
-AM_CONDITIONAL(BUILD_THEMES_DOCS, test "$enable_themes_documentation" = "yes")
-
-if test x$enable_themes_documentation = xyes; then
-  YELP_HELP_INIT
-fi
-
 dnl **************************************************************************
 dnl Process .in files
 dnl **************************************************************************
@@ -440,7 +430,6 @@ AC_CONFIG_FILES([
   data/ui/Makefile
 
   doc/Makefile
-  doc/creating_themes/Makefile
   doc/man/Makefile
 
   libmetacity/Makefile
