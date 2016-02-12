@@ -138,11 +138,6 @@ desktopfiles_in_files=metacity.desktop.in
 desktopfiles_files=$(desktopfiles_in_files:.desktop.in=.desktop)
 desktopfiles_DATA = $(desktopfiles_files)
 
-wmpropertiesdir=$(datadir)/gnome/wm-properties
-wmproperties_in_files=metacity-wm.desktop.in
-wmproperties_files=$(wmproperties_in_files:.desktop.in=.desktop)
-wmproperties_DATA = $(wmproperties_files)
-
 xmldir       = @GNOME_KEYBINDINGS_KEYSDIR@
 xml_in_files = \
 	50-metacity-navigation.xml.in	\
@@ -154,12 +149,10 @@ xml_DATA     = $(xml_in_files:.xml.in=.xml)
 @INTLTOOL_SCHEMAS_RULE@
 
 CLEANFILES = \
-	metacity.desktop metacity-wm.desktop org.gnome.metacity.gschema.xml 50-metacity-launchers.xml 50-metacity-navigation.xml 50-metacity-screenshot.xml 50-metacity-system.xml 50-metacity-windows.xml
+	metacity.desktop org.gnome.metacity.gschema.xml 50-metacity-launchers.xml 50-metacity-navigation.xml 50-metacity-screenshot.xml 50-metacity-system.xml 50-metacity-windows.xml
 
 EXTRA_DIST=$(desktopfiles_files)	 	\
-	$(wmproperties_files)			\
 	$(desktopfiles_in_files)		\
-	$(wmproperties_in_files)		\
 	metacity-schemas.convert		\
 	org.gnome.metacity.gschema.xml.in	\
 	$(xml_in_files)
