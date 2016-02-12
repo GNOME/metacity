@@ -114,9 +114,6 @@ gsettings_SCHEMAS = org.gnome.metacity.gschema.xml
 @INTLTOOL_XML_NOMERGE_RULE@
 @GSETTINGS_RULES@
 
-convertdir = $(datadir)/GConf/gsettings/
-convert_DATA = metacity-schemas.convert
-
 bin_PROGRAMS=metacity
 
 metacity_LDADD=@METACITY_LIBS@ $(top_builddir)/libmetacity/libmetacity.la
@@ -153,7 +150,6 @@ CLEANFILES = \
 
 EXTRA_DIST=$(desktopfiles_files)	 	\
 	$(desktopfiles_in_files)		\
-	metacity-schemas.convert		\
 	org.gnome.metacity.gschema.xml.in	\
 	$(xml_in_files)
 
