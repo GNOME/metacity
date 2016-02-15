@@ -866,6 +866,9 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
                     visible_rect.x, visible_rect.y,
                     visible_rect.width, visible_rect.height);
 
+  if (flags & META_FRAME_FULLSCREEN)
+    return;
+
   titlebar_rect.x = visible_rect.x + borders->visible.left;
   titlebar_rect.y = visible_rect.y + style->layout->gtk.frame_border.top;
   titlebar_rect.width = visible_rect.width - borders->visible.left - borders->visible.right;
