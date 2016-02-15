@@ -72,6 +72,38 @@ struct _ThemeViewerWindow
 
 G_DEFINE_TYPE (ThemeViewerWindow, theme_viewer_window, GTK_TYPE_WINDOW)
 
+static void
+update_frame_flags_sensitivity (ThemeViewerWindow *window)
+{
+  gtk_widget_set_sensitive (window->has_focus, TRUE);
+  gtk_widget_set_sensitive (window->shaded, TRUE);
+  gtk_widget_set_sensitive (window->maximized, TRUE);
+  gtk_widget_set_sensitive (window->fullscreen, TRUE);
+  gtk_widget_set_sensitive (window->tiled, TRUE);
+
+  if (window->frame_flags & META_FRAME_SHADED)
+    gtk_widget_set_sensitive (window->fullscreen, FALSE);
+
+  if (window->frame_flags & META_FRAME_MAXIMIZED)
+    {
+      gtk_widget_set_sensitive (window->fullscreen, FALSE);
+      gtk_widget_set_sensitive (window->tiled, FALSE);
+    }
+
+  if (window->frame_flags & META_FRAME_FULLSCREEN)
+    {
+      gtk_widget_set_sensitive (window->shaded, FALSE);
+      gtk_widget_set_sensitive (window->maximized, FALSE);
+      gtk_widget_set_sensitive (window->tiled, FALSE);
+    }
+
+  if (window->frame_flags & META_FRAME_TILED_LEFT)
+    {
+      gtk_widget_set_sensitive (window->maximized, FALSE);
+      gtk_widget_set_sensitive (window->fullscreen, FALSE);
+    }
+}
+
 static GdkPixbuf *
 get_icon (gint size)
 {
@@ -285,6 +317,8 @@ update_frame_flags (ThemeViewerWindow *window)
 
   update_title_layout (window);
   update_frame_borders (window);
+
+  update_frame_flags_sensitivity (window);
 }
 
 static void
