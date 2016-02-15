@@ -541,23 +541,18 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
 
   fgeom->borders = borders;
 
-  fgeom->content_border = layout->gtk.frame_border;
-  fgeom->content_border.left += layout->gtk.titlebar_border.left;
-  fgeom->content_border.right += layout->gtk.titlebar_border.right;
-  fgeom->content_border.top += layout->gtk.titlebar_border.top;
-  fgeom->content_border.bottom += layout->gtk.titlebar_border.bottom;
-
   width = client_width + borders.total.left + borders.total.right;
 
-  height = ((flags & META_FRAME_SHADED) ? 0: client_height) +
-    borders.total.top + borders.total.bottom;
+  height = borders.total.top + borders.total.bottom;
+  if (!(flags & META_FRAME_SHADED))
+    height += client_height;
 
   fgeom->width = width;
   fgeom->height = height;
 
   content_width = width -
-                  (fgeom->content_border.left + borders.invisible.left) -
-                  (fgeom->content_border.right + borders.invisible.right);
+                  borders.invisible.left - layout->gtk.frame_border.left -
+                  borders.invisible.right - layout->gtk.frame_border.right;
   content_height = borders.visible.top - layout->gtk.frame_border.top;
 
   button_width = MAX ((gint) layout->gtk.icon_size, layout->gtk.button_min_size.width) +
@@ -695,11 +690,12 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
   fgeom->n_right_buttons = n_right;
 
   /* center buttons vertically */
-  button_y = fgeom->content_border.top + borders.invisible.top +
+  button_y = borders.invisible.top + layout->gtk.frame_border.top +
              (content_height - button_height) / 2;
 
   /* right edge of farthest-right button */
-  x = width - fgeom->content_border.right - borders.invisible.right;
+  x = width - borders.invisible.right - layout->gtk.frame_border.right -
+      layout->gtk.titlebar_border.right;
 
   i = n_right - 1;
   while (i >= 0)
@@ -731,7 +727,8 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
           rect->clickable.height = button_height;
 
           if (i == n_right - 1)
-            rect->clickable.width += fgeom->content_border.right;
+            rect->clickable.width += layout->gtk.frame_border.right +
+                                     layout->gtk.titlebar_border.right;
         }
       else
         g_memmove (&(rect->clickable), &(rect->visible), sizeof(rect->clickable));
@@ -750,7 +747,9 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
   /* Now x changes to be position from the left and we go through
    * the left-side buttons
    */
-  x = fgeom->content_border.left + borders.invisible.left;
+  x = borders.invisible.left + layout->gtk.frame_border.left +
+      layout->gtk.titlebar_border.left;
+
   for (i = 0; i < n_left; i++)
     {
       MetaButtonSpace *rect;
@@ -783,7 +782,7 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
 
   /* Center vertically in the available content area */
   fgeom->title_rect.x = x;
-  fgeom->title_rect.y = fgeom->content_border.top + borders.invisible.top +
+  fgeom->title_rect.y = borders.invisible.top + layout->gtk.frame_border.top +
                         (content_height - text_height) / 2;
   fgeom->title_rect.width = title_right_edge - fgeom->title_rect.x;
   fgeom->title_rect.height = text_height;
@@ -868,9 +867,9 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
                     visible_rect.width, visible_rect.height);
 
   titlebar_rect.x = visible_rect.x + borders->visible.left;
-  titlebar_rect.y = visible_rect.y + fgeom->content_border.top;
+  titlebar_rect.y = visible_rect.y + style->layout->gtk.frame_border.top;
   titlebar_rect.width = visible_rect.width - borders->visible.left - borders->visible.right;
-  titlebar_rect.height = borders->visible.top - fgeom->content_border.top;
+  titlebar_rect.height = borders->visible.top - style->layout->gtk.frame_border.top;
 
   context = style_info->styles[META_STYLE_ELEMENT_TITLEBAR];
   gtk_render_background (context, cr,

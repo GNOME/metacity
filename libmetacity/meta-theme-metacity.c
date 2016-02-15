@@ -4860,11 +4860,6 @@ meta_theme_metacity_calc_geometry (MetaThemeImpl          *impl,
   fgeom->width = width;
   fgeom->height = height;
 
-  fgeom->content_border.top = layout->metacity.title_border.top;
-  fgeom->content_border.bottom = layout->metacity.title_border.bottom;
-  fgeom->content_border.left = layout->metacity.left_titlebar_edge;
-  fgeom->content_border.right = layout->metacity.right_titlebar_edge;
-
   /* gcc warnings */
   button_width = -1;
   button_height = -1;
@@ -5293,23 +5288,24 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
   titlebar_rect.height = borders->visible.top;
 
   left_titlebar_edge.x = titlebar_rect.x;
-  left_titlebar_edge.y = titlebar_rect.y + fgeom->content_border.top;
-  left_titlebar_edge.width = fgeom->content_border.left;
-  left_titlebar_edge.height = titlebar_rect.height - fgeom->content_border.top - fgeom->content_border.bottom;
+  left_titlebar_edge.y = titlebar_rect.y + style->layout->metacity.title_border.top;
+  left_titlebar_edge.width = style->layout->metacity.title_border.left;
+  left_titlebar_edge.height = titlebar_rect.height - style->layout->metacity.title_border.top -
+                              style->layout->metacity.title_border.bottom;
 
   right_titlebar_edge.y = left_titlebar_edge.y;
   right_titlebar_edge.height = left_titlebar_edge.height;
-  right_titlebar_edge.width = fgeom->content_border.right;
+  right_titlebar_edge.width = style->layout->metacity.title_border.right;
   right_titlebar_edge.x = titlebar_rect.x + titlebar_rect.width - right_titlebar_edge.width;
 
   top_titlebar_edge.x = titlebar_rect.x;
   top_titlebar_edge.y = titlebar_rect.y;
   top_titlebar_edge.width = titlebar_rect.width;
-  top_titlebar_edge.height = fgeom->content_border.top;
+  top_titlebar_edge.height = style->layout->metacity.title_border.top;
 
   bottom_titlebar_edge.x = titlebar_rect.x;
   bottom_titlebar_edge.width = titlebar_rect.width;
-  bottom_titlebar_edge.height = fgeom->content_border.bottom;
+  bottom_titlebar_edge.height = style->layout->metacity.title_border.bottom;
   bottom_titlebar_edge.y = titlebar_rect.y + titlebar_rect.height - bottom_titlebar_edge.height;
 
   left_edge.x = visible_rect.x;
