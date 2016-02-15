@@ -62,6 +62,7 @@ libmetacity_la_LDFLAGS = \
 
 libmetacity_la_LIBADD = \
 	$(LIBMETACITY_LIBS) \
+	$(LIBM) \
 	$(NULL)
 
 libmetacity_includedir = $(includedir)/metacity/libmetacity
