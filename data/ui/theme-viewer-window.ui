@@ -21,7 +21,7 @@
                 <property name="can_focus">False</property>
                 <property name="shadow_type">none</property>
                 <child>
-                  <object class="GtkBox">
+                  <object class="GtkBox" id="sidebar">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="border_width">12</property>

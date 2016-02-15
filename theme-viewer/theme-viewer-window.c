@@ -35,6 +35,8 @@ struct _ThemeViewerWindow
   GtkWidget        *theme_combo_box;
   GtkWidget        *reload_button;
 
+  GtkWidget        *sidebar;
+
   GtkWidget        *choose_theme;
   GtkWidget        *theme_box;
 
@@ -337,6 +339,8 @@ clear_theme (ThemeViewerWindow *window)
   gtk_widget_show (window->choose_theme);
   gtk_widget_hide (window->theme_box);
 
+  gtk_widget_set_sensitive (window->sidebar, FALSE);
+
   g_clear_object (&window->theme);
 }
 
@@ -531,6 +535,8 @@ theme_combo_box_changed_cb (GtkComboBox       *combo_box,
   gtk_widget_hide (window->choose_theme);
   gtk_widget_show (window->theme_box);
 
+  gtk_widget_set_sensitive (window->sidebar, TRUE);
+
   if (type == META_THEME_TYPE_METACITY)
      gtk_widget_set_sensitive (window->reload_button, TRUE);
 }
@@ -705,6 +711,8 @@ theme_viewer_window_class_init (ThemeViewerWindowClass *window_class)
 
   gtk_widget_class_bind_template_child (widget_class, ThemeViewerWindow, reload_button);
   gtk_widget_class_bind_template_callback (widget_class, reload_button_clicked_cb);
+
+  gtk_widget_class_bind_template_child (widget_class, ThemeViewerWindow, sidebar);
 
   gtk_widget_class_bind_template_child (widget_class, ThemeViewerWindow, choose_theme);
 
