@@ -63,6 +63,19 @@ dnl **************************************************************************
 
 AC_PATH_PROG([GLIB_MKENUMS], [glib-mkenums])
 AC_PATH_PROG([GLIB_COMPILE_RESOURCES], [glib-compile-resources])
+AC_PATH_PROG([ITSTOOL], [itstool])
+
+dnl **************************************************************************
+dnl Internationalization
+dnl **************************************************************************
+
+AM_GNU_GETTEXT([external])
+AM_GNU_GETTEXT_VERSION([0.19.4])
+
+GETTEXT_PACKAGE=metacity
+AC_SUBST([GETTEXT_PACKAGE])
+AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE], ["$GETTEXT_PACKAGE"],
+                   [Name of default gettext domain])
 
 dnl **************************************************************************
 dnl Check for required packages
@@ -86,11 +99,6 @@ dnl **************************************************************************
 # Honor aclocal flags
 AC_SUBST(ACLOCAL_AMFLAGS, "\${ACLOCAL_FLAGS}")
 
-GETTEXT_PACKAGE=metacity
-AC_SUBST(GETTEXT_PACKAGE)
-AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE",[Name of default gettext domain])
-
-IT_PROG_INTLTOOL([0.34.90])
 AC_PROG_CC
 AC_ISC_POSIX
 AC_HEADER_STDC
@@ -154,8 +162,6 @@ AC_ARG_ENABLE(render,
   AC_HELP_STRING([--disable-render],
                  [disable metacity's use of the RENDER extension]),,
   enable_render=auto)
-
-AM_GLIB_GNU_GETTEXT
 
 ## here we get the flags we'll actually use
 PKG_CHECK_MODULES(ALL, glib-2.0 >= 2.36.0 gthread-2.0 >= 2.32.0)
@@ -425,8 +431,11 @@ AC_CONFIG_FILES([
   Makefile
 
   data/Makefile
+  data/applications/Makefile
+  data/keybindings/Makefile
   data/pkgconfig/Makefile
   data/pkgconfig/libmetacity.pc
+  data/schemas/Makefile
   data/ui/Makefile
 
   doc/Makefile

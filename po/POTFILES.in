@@ -1,6 +1,9 @@
 # List of source files containing translatable strings.
 # Please keep this file sorted alphabetically.
-[type: gettext/glade]data/ui/theme-viewer-window.ui
+data/applications/metacity.desktop.in
+data/keybindings/keybindings.pot
+data/schemas/org.gnome.metacity.gschema.xml
+data/ui/theme-viewer-window.ui
 libmetacity/meta-color-spec.c
 libmetacity/meta-draw-op.c
 libmetacity/meta-draw-spec.c
@@ -10,9 +13,6 @@ libmetacity/meta-gradient-spec.c
 libmetacity/meta-theme.c
 libmetacity/meta-theme-impl.c
 libmetacity/meta-theme-metacity.c
-src/50-metacity-navigation.xml.in
-src/50-metacity-system.xml.in
-src/50-metacity-windows.xml.in
 src/core/bell.c
 src/core/core.c
 src/core/delete.c
@@ -27,8 +27,6 @@ src/core/util.c
 src/core/window.c
 src/core/window-props.c
 src/core/xprops.c
-src/metacity.desktop.in
-src/org.gnome.metacity.gschema.xml.in
 src/tools/metacity-message.c
 src/ui/frames.c
 src/ui/menu.c

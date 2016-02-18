@@ -1,5 +1,3 @@
-@INTLTOOL_DESKTOP_RULE@
-
 icondir=$(pkgdatadir)/icons
 icon_DATA=metacity-window-demo.png
 

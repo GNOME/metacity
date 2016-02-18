@@ -1,7 +1,10 @@
 NULL =
 
 SUBDIRS = \
+	applications \
+	keybindings \
 	pkgconfig \
+	schemas \
 	ui \
 	$(NULL)
 

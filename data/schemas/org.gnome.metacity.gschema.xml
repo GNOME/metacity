@@ -1,4 +1,4 @@
-<schemalist>
+<schemalist gettext-domain="metacity">
 
   <enum id="org.gnome.metacity.MetaPlacementMode">
     <value nick="smart" value="0" />
@@ -8,19 +8,20 @@
     <value nick="random" value="4" />
   </enum>
 
-  <schema id="org.gnome.metacity" path="/org/gnome/metacity/"
-          gettext-domain="@GETTEXT_PACKAGE@">
+  <schema id="org.gnome.metacity" path="/org/gnome/metacity/">
+
     <key name="compositing-manager" type="b">
       <default>true</default>
-      <_summary>Compositing Manager</_summary>
-      <_description>
+      <summary>Compositing Manager</summary>
+      <description>
         Determines whether Metacity is a compositing manager.
-      </_description>
+      </description>
     </key>
+
     <key name="reduced-resources" type="b">
       <default>false</default>
-      <_summary>If true, trade off usability for less resource usage</_summary>
-      <_description>
+      <summary>If true, trade off usability for less resource usage</summary>
+      <description>
         If true, Metacity will give the user less feedback by using wireframes,
         avoiding animations, or other means. This is a significant reduction
         in usability for many users, but may allow legacy applications to
@@ -28,21 +29,23 @@
         for terminal servers.
 
         However, the wireframe feature is disabled when accessibility is on.
-      </_description>
+      </description>
     </key>
+
     <key name="edge-tiling" type="b">
       <default>true</default>
-      <_summary>Enable edge tiling when dropping windows on screen edges</_summary>
-      <_description>
+      <summary>Enable edge tiling when dropping windows on screen edges</summary>
+      <description>
         If enabled, dropping windows on vertical screen edges maximizes them
         vertically and resizes them horizontally to cover half of the available
         area. Dropping windows on the top screen edge maximizes them completely.
-      </_description>
+      </description>
     </key>
+
     <key name="placement-mode" enum="org.gnome.metacity.MetaPlacementMode">
       <default>'smart'</default>
-      <_summary>Window placement behavior</_summary>
-      <_description>
+      <summary>Window placement behavior</summary>
+      <description>
         Metacity's default window-placement behavior is smart (first-fit),
         similar to behaviors in some other window managers. It will try to tile
         windows so that they do not overlap. Set this option to "smart" for this
@@ -52,33 +55,39 @@
         of their workspaces, "origin" for the upper-left corners of the
         workspaces, or "random" to place new windows at random locations within
         their workspaces.
-      </_description>
+      </description>
     </key>
+
     <key name="alt-tab-thumbnails" type="b">
       <default>false</default>
-      <_summary>Show window content thumbnail in Alt-Tab</_summary>
-      <_description>
+      <summary>Show window content thumbnail in Alt-Tab</summary>
+      <description>
         If set to true, Metacity will show window content thumbnails in the
         Alt-Tab window instead of only icons.
-      </_description>
+      </description>
     </key>
+
     <key name="theme" type="s">
       <default>'Adwaita'</default>
-      <_summary>Current theme</_summary>
-      <_description>
+      <summary>Current theme</summary>
+      <description>
         The theme determines the appearance of window borders, titlebar,
         and so forth.
-      </_description>
+      </description>
     </key>
+
   </schema>
 
   <schema id="org.gnome.metacity.keybindings" path="/org/gnome/metacity/keybindings/">
+
     <key name="toggle-tiled-left" type="as">
       <default><![CDATA[['<Super>Left']]]></default>
     </key>
+
     <key name="toggle-tiled-right" type="as">
       <default><![CDATA[['<Super>Right']]]></default>
     </key>
+
   </schema>
 
 </schemalist>

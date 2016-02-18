@@ -1,0 +1,246 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2016-02-18 23:06+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. (itstool) path: 50-metacity-navigation.xml/KeyListEntries@name
+#: 50-metacity-navigation.xml:6
+msgid "Navigation"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-navigation.xml:9
+msgid "Move window to workspace 1"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-navigation.xml:12
+msgid "Move window to workspace 2"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-navigation.xml:15
+msgid "Move window to workspace 3"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-navigation.xml:18
+msgid "Move window to workspace 4"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-navigation.xml:21
+msgid "Move window one workspace to the left"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-navigation.xml:24
+msgid "Move window one workspace to the right"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-navigation.xml:27
+msgid "Move window one workspace up"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-navigation.xml:30
+msgid "Move window one workspace down"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-navigation.xml:33
+msgid "Switch windows"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-navigation.xml:36
+msgid "Switch applications"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-navigation.xml:39
+msgid "Switch windows of an application"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-navigation.xml:42
+msgid "Switch system controls"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-navigation.xml:45
+msgid "Switch windows directly"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-navigation.xml:48
+msgid "Switch windows of an app directly"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-navigation.xml:51
+msgid "Switch system controls directly"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-navigation.xml:54
+msgid "Hide all normal windows"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-navigation.xml:57
+msgid "Switch to workspace 1"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-navigation.xml:60
+msgid "Switch to workspace 2"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-navigation.xml:63
+msgid "Switch to workspace 3"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-navigation.xml:66
+msgid "Switch to workspace 4"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-navigation.xml:69
+msgid "Move to workspace left"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-navigation.xml:72
+msgid "Move to workspace right"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-navigation.xml:75
+msgid "Move to workspace above"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-navigation.xml:78
+msgid "Move to workspace below"
+msgstr ""
+
+#. (itstool) path: 50-metacity-system.xml/KeyListEntries@name
+#: 50-metacity-system.xml:6
+msgid "System"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-system.xml:9
+msgid "Show the run command prompt"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-system.xml:12
+msgid "Show the applications menu"
+msgstr ""
+
+#. (itstool) path: 50-metacity-windows.xml/KeyListEntries@name
+#: 50-metacity-windows.xml:6
+msgid "Windows"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-windows.xml:9
+msgid "Activate the window menu"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-windows.xml:12
+msgid "Toggle fullscreen mode"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-windows.xml:15
+msgid "Toggle maximization state"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-windows.xml:18
+msgid "Maximize window"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-windows.xml:21
+msgid "Restore window"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-windows.xml:24
+msgid "Toggle shaded state"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-windows.xml:27
+msgid "Close window"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-windows.xml:30
+msgid "Minimize window"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-windows.xml:33
+msgid "Move window"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-windows.xml:36
+msgid "Resize window"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-windows.xml:39
+msgid "Toggle window on all workspaces or one"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-windows.xml:42
+msgid "Raise window if covered, otherwise lower it"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-windows.xml:45
+msgid "Raise window above other windows"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-windows.xml:48
+msgid "Lower window below other windows"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-windows.xml:51
+msgid "Maximize window vertically"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-windows.xml:54
+msgid "Maximize window horizontally"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-windows.xml:58
+msgid "View split on left"
+msgstr ""
+
+#. (itstool) path: KeyListEntries/KeyListEntry@description
+#: 50-metacity-windows.xml:62
+msgid "View split on right"
+msgstr ""
+

@@ -110,10 +110,6 @@ metacity_SOURCES= 				\
 	ui/ui.c					\
 	$(NULL)
 
-gsettings_SCHEMAS = org.gnome.metacity.gschema.xml
-@INTLTOOL_XML_NOMERGE_RULE@
-@GSETTINGS_RULES@
-
 bin_PROGRAMS=metacity
 
 metacity_LDADD=@METACITY_LIBS@ $(top_builddir)/libmetacity/libmetacity.la
@@ -127,30 +123,5 @@ noinst_PROGRAMS=testboxes testgradient testasyncgetprop
 testboxes_LDADD= @METACITY_LIBS@
 testgradient_LDADD= @METACITY_LIBS@
 testasyncgetprop_LDADD= @METACITY_LIBS@
-
-@INTLTOOL_DESKTOP_RULE@
-
-desktopfilesdir=$(datadir)/applications
-desktopfiles_in_files=metacity.desktop.in
-desktopfiles_files=$(desktopfiles_in_files:.desktop.in=.desktop)
-desktopfiles_DATA = $(desktopfiles_files)
-
-xmldir       = @GNOME_KEYBINDINGS_KEYSDIR@
-xml_in_files = \
-	50-metacity-navigation.xml.in	\
-	50-metacity-system.xml.in	\
-	50-metacity-windows.xml.in
-
-xml_DATA     = $(xml_in_files:.xml.in=.xml)
-
-@INTLTOOL_SCHEMAS_RULE@
-
-CLEANFILES = \
-	metacity.desktop org.gnome.metacity.gschema.xml 50-metacity-launchers.xml 50-metacity-navigation.xml 50-metacity-screenshot.xml 50-metacity-system.xml 50-metacity-windows.xml
-
-EXTRA_DIST=$(desktopfiles_files)	 	\
-	$(desktopfiles_in_files)		\
-	org.gnome.metacity.gschema.xml.in	\
-	$(xml_in_files)
 
 -include $(top_srcdir)/git.mk
