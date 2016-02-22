@@ -205,7 +205,7 @@ get_shadow_extents (GtkStyleContext *style,
   border->left = abs (clip.x);
   border->top = abs (clip.y);
   border->right = clip.width - border->left;
-  border->bottom = clip.height - border->bottom;
+  border->bottom = clip.height - border->top;
 }
 
 static void
