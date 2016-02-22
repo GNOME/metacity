@@ -63,6 +63,8 @@ meta_ui_init (int *argc, char ***argv)
   gdk_disable_multidevice ();
 #endif
 
+  gdk_set_allowed_backends ("x11");
+
   if (!gtk_init_check (argc, argv))
     meta_fatal ("Unable to open X display %s\n", XDisplayName (NULL));
 }
