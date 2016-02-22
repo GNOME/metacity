@@ -2,6 +2,7 @@
 Type=Application
 _Name=Metacity
 Exec=metacity
+Icon=preferences-system-windows
 NoDisplay=true
 # name of loadable control center module
 X-GNOME-WMSettingsModule=metacity
