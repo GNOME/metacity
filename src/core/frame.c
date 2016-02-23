@@ -45,47 +45,10 @@ prefs_changed_callback (MetaPreference preference,
 {
   MetaFrame *frame = (MetaFrame *) data;
 
-  switch (preference)
+  if (preference == META_PREF_COMPOSITING_MANAGER)
     {
-      case META_PREF_COMPOSITING_MANAGER:
-        frame->need_reapply_frame_shape = TRUE;
-        update_shape (frame);
-        break;
-
-      case META_PREF_MOUSE_BUTTON_MODS:
-      case META_PREF_FOCUS_MODE:
-      case META_PREF_FOCUS_NEW_WINDOWS:
-      case META_PREF_ATTACH_MODAL_DIALOGS:
-      case META_PREF_RAISE_ON_CLICK:
-      case META_PREF_ACTION_DOUBLE_CLICK_TITLEBAR:
-      case META_PREF_ACTION_MIDDLE_CLICK_TITLEBAR:
-      case META_PREF_ACTION_RIGHT_CLICK_TITLEBAR:
-      case META_PREF_AUTO_RAISE:
-      case META_PREF_AUTO_RAISE_DELAY:
-      case META_PREF_THEME:
-      case META_PREF_TITLEBAR_FONT:
-      case META_PREF_NUM_WORKSPACES:
-      case META_PREF_KEYBINDINGS:
-      case META_PREF_DISABLE_WORKAROUNDS:
-      case META_PREF_BUTTON_LAYOUT:
-      case META_PREF_WORKSPACE_NAMES:
-      case META_PREF_VISUAL_BELL:
-      case META_PREF_AUDIBLE_BELL:
-      case META_PREF_VISUAL_BELL_TYPE:
-      case META_PREF_REDUCED_RESOURCES:
-      case META_PREF_GNOME_ACCESSIBILITY:
-      case META_PREF_GNOME_ANIMATIONS:
-      case META_PREF_CURSOR_THEME:
-      case META_PREF_CURSOR_SIZE:
-      case META_PREF_RESIZE_WITH_RIGHT_BUTTON:
-      case META_PREF_EDGE_TILING:
-      case META_PREF_FORCE_FULLSCREEN:
-      case META_PREF_PLACEMENT_MODE:
-      case META_PREF_ALT_TAB_THUMBNAILS:
-        break;
-
-      default:
-        break;
+      frame->need_reapply_frame_shape = TRUE;
+      update_shape (frame);
     }
 }
 

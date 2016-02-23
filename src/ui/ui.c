@@ -19,8 +19,11 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "config.h"
+
 #include "prefs.h"
 #include "ui.h"
+#include "ui-private.h"
 #include "frames.h"
 #include "util.h"
 #include "menu.h"
@@ -30,6 +33,11 @@
 #include <stdlib.h>
 #include <cairo-xlib.h>
 #include <libmetacity/meta-theme.h>
+
+/**
+ * The current theme. (Themes are singleton.)
+ */
+static MetaTheme *meta_current_theme = NULL;
 
 static void meta_ui_accelerator_parse (const char      *accel,
                                        guint           *keysym,
@@ -667,51 +675,105 @@ meta_ui_theme_get_frame_borders (MetaUI           *ui,
                                  MetaFrameFlags    flags,
                                  MetaFrameBorders *borders)
 {
-  int text_height;
-  PangoContext *context;
+  MetaTheme *theme;
+  const gchar *theme_variant;
   PangoFontDescription *font_desc;
+  PangoContext *context;
+  gint text_height;
 
-  if (meta_ui_have_a_theme ())
+  theme = meta_ui_get_theme ();
+  theme_variant = NULL;
+
+  font_desc = meta_theme_create_font_desc (theme, theme_variant);
+  context = gtk_widget_get_pango_context (GTK_WIDGET (ui->frames));
+
+  text_height = meta_pango_font_desc_get_text_height (font_desc, context);
+  pango_font_description_free (font_desc);
+
+  meta_theme_get_frame_borders (theme, theme_variant, type,
+                                text_height, flags, borders);
+}
+
+MetaTheme *
+meta_ui_get_theme (void)
+{
+  return meta_current_theme;
+}
+
+static gchar *
+get_theme_name (MetaThemeType theme_type)
+{
+  gchar *theme_name;
+
+  if (theme_type == META_THEME_TYPE_METACITY)
     {
-      MetaTheme *current;
-
-      current = meta_theme_get_current ();
-
-      font_desc = meta_theme_create_font_desc (current, NULL);
-      context = gtk_widget_get_pango_context (GTK_WIDGET (ui->frames));
-
-      text_height = meta_pango_font_desc_get_text_height (font_desc, context);
-      pango_font_description_free (font_desc);
-
-      meta_theme_get_frame_borders (current,
-                                    NULL, /* FIXME: theme variant*/
-                                    type, text_height, flags,
-                                    borders);
+      theme_name = g_strdup (meta_prefs_get_theme_name ());
     }
   else
     {
-      meta_frame_borders_clear (borders);
+      GtkSettings *settings;
+
+      settings = gtk_settings_get_default ();
+
+      g_object_get (settings, "gtk-theme-name", &theme_name, NULL);
     }
+
+  return theme_name;
+}
+
+static MetaTheme *
+load_theme (MetaThemeType  theme_type,
+            const gchar   *theme_name)
+{
+  MetaTheme *theme;
+  gboolean compositing_manager;
+  const PangoFontDescription *titlebar_font;
+  GError *error;
+
+  theme = meta_theme_new (theme_type);
+
+  compositing_manager = meta_prefs_get_compositing_manager ();
+  meta_theme_set_composited (theme, compositing_manager);
+
+  titlebar_font = meta_prefs_get_titlebar_font ();
+  meta_theme_set_titlebar_font (theme, titlebar_font);
+
+  error = NULL;
+  if (!meta_theme_load (theme, theme_name, &error))
+    {
+      g_warning ("%s", error->message);
+      g_error_free (error);
+
+      g_object_unref (theme);
+      return NULL;
+    }
+
+  return theme;
 }
 
 void
-meta_ui_set_current_theme (const char *name,
-                           gboolean    force_reload)
+meta_ui_reload_theme (void)
 {
-  gboolean compositing_manager;
-  const PangoFontDescription *titlebar_font;
+  MetaThemeType theme_type;
+  gchar *theme_name;
+  MetaTheme *theme;
 
-  compositing_manager = meta_prefs_get_compositing_manager ();
-  titlebar_font = meta_prefs_get_titlebar_font ();
+  theme_type = meta_prefs_get_theme_type ();
+  theme_name = get_theme_name (theme_type);
 
-  meta_theme_set_current (name, force_reload, compositing_manager, titlebar_font);
+  theme = load_theme (theme_type, theme_name);
+  g_free (theme_name);
+
+  if (theme == NULL)
+    {
+      g_warning (_("Falling back to default GTK+ theme - Adwaita"));
+      theme = load_theme (META_THEME_TYPE_GTK, "Adwaita");
+    }
+
+  g_set_object (&meta_current_theme, theme);
+  g_assert (meta_current_theme);
+
   meta_invalidate_default_icons ();
-}
-
-gboolean
-meta_ui_have_a_theme (void)
-{
-  return meta_theme_get_current () != NULL;
 }
 
 static void

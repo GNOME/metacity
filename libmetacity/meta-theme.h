@@ -210,13 +210,6 @@ void                  meta_theme_draw_frame                (MetaTheme           
                                                             GdkPixbuf                   *mini_icon,
                                                             GdkPixbuf                   *icon);
 
-MetaTheme            *meta_theme_get_current               (void);
-
-void                  meta_theme_set_current               (const gchar                 *name,
-                                                            gboolean                    force_reload,
-                                                            gboolean                    composited,
-                                                            const PangoFontDescription *titlebar_font);
-
 G_END_DECLS
 
 #endif

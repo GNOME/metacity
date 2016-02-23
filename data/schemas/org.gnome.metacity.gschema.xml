@@ -1,5 +1,4 @@
 <schemalist gettext-domain="metacity">
-
   <enum id="org.gnome.metacity.MetaPlacementMode">
     <value nick="smart" value="0" />
     <value nick="cascade" value="1" />
@@ -10,25 +9,20 @@
 
   <schema id="org.gnome.metacity" path="/org/gnome/metacity/">
 
+    <key name="alt-tab-thumbnails" type="b">
+      <default>false</default>
+      <summary>Show window content thumbnail in Alt-Tab</summary>
+      <description>
+        If set to true, Metacity will show window content thumbnails in the
+        Alt-Tab window instead of only icons.
+      </description>
+    </key>
+
     <key name="compositing-manager" type="b">
       <default>true</default>
       <summary>Compositing Manager</summary>
       <description>
         Determines whether Metacity is a compositing manager.
-      </description>
-    </key>
-
-    <key name="reduced-resources" type="b">
-      <default>false</default>
-      <summary>If true, trade off usability for less resource usage</summary>
-      <description>
-        If true, Metacity will give the user less feedback by using wireframes,
-        avoiding animations, or other means. This is a significant reduction
-        in usability for many users, but may allow legacy applications to
-        continue working, and may also be a useful tradeoff
-        for terminal servers.
-
-        However, the wireframe feature is disabled when accessibility is on.
       </description>
     </key>
 
@@ -58,36 +52,22 @@
       </description>
     </key>
 
-    <key name="alt-tab-thumbnails" type="b">
+    <key name="reduced-resources" type="b">
       <default>false</default>
-      <summary>Show window content thumbnail in Alt-Tab</summary>
+      <summary>If true, trade off usability for less resource usage</summary>
       <description>
-        If set to true, Metacity will show window content thumbnails in the
-        Alt-Tab window instead of only icons.
+        If true, Metacity will give the user less feedback by using wireframes,
+        avoiding animations, or other means. This is a significant reduction
+        in usability for many users, but may allow legacy applications to
+        continue working, and may also be a useful tradeoff
+        for terminal servers.
+
+        However, the wireframe feature is disabled when accessibility is on.
       </description>
     </key>
 
-    <key name="theme" type="s">
-      <default>'Adwaita'</default>
-      <summary>Current theme</summary>
-      <description>
-        The theme determines the appearance of window borders, titlebar,
-        and so forth.
-      </description>
-    </key>
+    <child schema="org.gnome.metacity.keybindings" name="keybindings" />
+    <child schema="org.gnome.metacity.theme" name="theme" />
 
   </schema>
-
-  <schema id="org.gnome.metacity.keybindings" path="/org/gnome/metacity/keybindings/">
-
-    <key name="toggle-tiled-left" type="as">
-      <default><![CDATA[['<Super>Left']]]></default>
-    </key>
-
-    <key name="toggle-tiled-right" type="as">
-      <default><![CDATA[['<Super>Right']]]></default>
-    </key>
-
-  </schema>
-
 </schemalist>

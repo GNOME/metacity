@@ -1,0 +1,13 @@
+<schemalist gettext-domain="metacity">
+  <schema id="org.gnome.metacity.keybindings" path="/org/gnome/metacity/keybindings/">
+
+    <key name="toggle-tiled-left" type="as">
+      <default><![CDATA[['<Super>Left']]]></default>
+    </key>
+
+    <key name="toggle-tiled-right" type="as">
+      <default><![CDATA[['<Super>Right']]]></default>
+    </key>
+
+  </schema>
+</schemalist>

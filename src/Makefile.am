@@ -108,6 +108,7 @@ metacity_SOURCES= 				\
 	ui/tile-preview.c			\
 	include/tile-preview.h			\
 	ui/ui.c					\
+	ui/ui-private.h				\
 	$(NULL)
 
 bin_PROGRAMS=metacity

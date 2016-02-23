@@ -32,6 +32,7 @@
 #include "fixedtip.h"
 #include "prefs.h"
 #include "ui.h"
+#include "ui-private.h"
 
 #include <cairo-xlib.h>
 
@@ -352,7 +353,7 @@ meta_frames_font_changed (MetaFrames *frames)
   MetaTheme *theme;
   const PangoFontDescription *titlebar_font;
 
-  theme = meta_theme_get_current ();
+  theme = meta_ui_get_theme ();
   titlebar_font = meta_prefs_get_titlebar_font ();
 
   meta_theme_set_titlebar_font (theme, titlebar_font);
@@ -409,7 +410,7 @@ meta_frames_style_updated (GtkWidget *widget)
 
   frames = META_FRAMES (widget);
 
-  theme = meta_theme_get_current ();
+  theme = meta_ui_get_theme ();
   compositing_manager = meta_prefs_get_compositing_manager ();
 
   meta_theme_set_composited (theme, compositing_manager);
@@ -443,8 +444,7 @@ meta_frames_ensure_layout (MetaFrames  *frames,
                  META_CORE_GET_FRAME_TYPE, &type,
                  META_CORE_GET_END);
 
-  style = meta_theme_get_frame_style (meta_theme_get_current (),
-                                      type, flags);
+  style = meta_theme_get_frame_style (meta_ui_get_theme (), type, flags);
 
   if (style != frame->cache_style)
     {
@@ -474,7 +474,7 @@ meta_frames_ensure_layout (MetaFrames  *frames,
       pango_layout_set_auto_dir (frame->text_layout, FALSE);
       pango_layout_set_single_paragraph_mode (frame->text_layout, TRUE);
 
-      current = meta_theme_get_current ();
+      current = meta_ui_get_theme ();
 
       font_desc = meta_theme_create_font_desc (current, frame->theme_variant);
       meta_frame_style_apply_scale (style, font_desc);
@@ -530,7 +530,7 @@ meta_frames_calc_geometry (MetaFrames        *frames,
 
   meta_prefs_get_button_layout (&button_layout);
 
-  meta_theme_calc_geometry (meta_theme_get_current (),
+  meta_theme_calc_geometry (meta_ui_get_theme (),
                             frame->theme_variant,
                             type,
                             frame->text_height,
@@ -722,7 +722,7 @@ meta_ui_frame_get_borders (MetaFrames       *frames,
    * by the core move/resize code to decide on the client
    * window size
    */
-  meta_theme_get_frame_borders (meta_theme_get_current (),
+  meta_theme_get_frame_borders (meta_ui_get_theme (),
                                 frame->theme_variant,
                                 type,
                                 frame->text_height,
@@ -2261,7 +2261,7 @@ populate_cache (MetaFrames *frames,
       return;
     }
 
-  meta_theme_get_frame_borders (meta_theme_get_current (),
+  meta_theme_get_frame_borders (meta_ui_get_theme (),
                                 frame->theme_variant,
                                 frame_type,
                                 frame->text_height,
@@ -2374,7 +2374,8 @@ subtract_client_area (cairo_region_t *region,
                  META_CORE_GET_CLIENT_WIDTH, &area.width,
                  META_CORE_GET_CLIENT_HEIGHT, &area.height,
                  META_CORE_GET_END);
-  meta_theme_get_frame_borders (meta_theme_get_current (),
+
+  meta_theme_get_frame_borders (meta_ui_get_theme (),
                                 frame->theme_variant,
                                 type, frame->text_height, flags,
                                 &borders);
@@ -2720,7 +2721,7 @@ meta_frames_paint (MetaFrames   *frames,
 
   meta_prefs_get_button_layout (&button_layout);
 
-  meta_theme_draw_frame (meta_theme_get_current (),
+  meta_theme_draw_frame (meta_ui_get_theme (),
                          frame->theme_variant,
                          cr,
                          type,

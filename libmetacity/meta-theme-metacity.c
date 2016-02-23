@@ -4589,7 +4589,7 @@ out:
   if (!error && !retval)
     {
       g_set_error (&error, META_THEME_ERROR, META_THEME_ERROR_FAILED,
-                   _("Failed to find a valid file for theme %s"), name);
+                   _("Failed to find a valid file for theme '%s'"), name);
     }
 
   if (error)

@@ -1,0 +1,36 @@
+<schemalist gettext-domain="metacity">
+  <enum id="org.gnome.metacity.MetaThemeType">
+    <value nick="gtk" value="0" />
+    <value nick="metacity" value="1" />
+  </enum>
+
+  <schema id="org.gnome.metacity.theme" path="/org/gnome/metacity/theme/">
+
+    <key name="name" type="s">
+      <default>''</default>
+      <summary>Theme Name</summary>
+      <description>
+        This setting is only used if Metacity is selected as theme type. You
+        MUST provide valid Metacity theme name, otherwise Metacity will fall
+        back to default GTK+ theme - Adwaita.
+      </description>
+    </key>
+
+    <key name="type" enum="org.gnome.metacity.MetaThemeType">
+      <default>'gtk'</default>
+      <summary>Theme Type</summary>
+      <description>
+        Metacity supports two theme types - GTK+ (gtk.css) and Metacity
+        (metacity-theme-x.xml).
+
+        GTK+ theme: all data is loaded from CSS. This is same theme that is
+        used by mutter for server side decorations and by GTK+ for client side
+        decorations.
+
+        Metacity theme: data is loaded from metacity-theme-x.xml and css. Using
+        this theme type you MUST provide valid theme name.
+      </description>
+    </key>
+
+  </schema>
+</schemalist>

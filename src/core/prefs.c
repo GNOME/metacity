@@ -55,6 +55,7 @@
  * a GSettings instance for */
 #define SCHEMA_GENERAL         "org.gnome.desktop.wm.preferences"
 #define SCHEMA_METACITY        "org.gnome.metacity"
+#define SCHEMA_METACITY_THEME  "org.gnome.metacity.theme"
 #define SCHEMA_INTERFACE       "org.gnome.desktop.interface"
 
 #define SETTINGS(s) g_hash_table_lookup (settings_schemas, (s))
@@ -71,7 +72,8 @@ static GDesktopFocusMode focus_mode = G_DESKTOP_FOCUS_MODE_CLICK;
 static GDesktopFocusNewWindows focus_new_windows = G_DESKTOP_FOCUS_NEW_WINDOWS_SMART;
 static gboolean raise_on_click = TRUE;
 static gboolean attach_modal_dialogs = FALSE;
-static char* current_theme = NULL;
+static gchar *current_theme_name = NULL;
+static MetaThemeType current_theme_type = META_THEME_TYPE_GTK;
 static int num_workspaces = 4;
 static GDesktopTitlebarAction action_double_click_titlebar = G_DESKTOP_TITLEBAR_ACTION_TOGGLE_MAXIMIZE;
 static GDesktopTitlebarAction action_middle_click_titlebar = G_DESKTOP_TITLEBAR_ACTION_LOWER;
@@ -253,6 +255,13 @@ static MetaEnumPreference preferences_enum[] =
       },
       &placement_mode,
     },
+    {
+      { "type",
+        SCHEMA_METACITY_THEME,
+        META_PREF_THEME_TYPE,
+      },
+      &current_theme_type,
+    },
     { { NULL, 0, 0 }, NULL },
   };
 
@@ -376,14 +385,6 @@ static MetaStringPreference preferences_string[] =
       NULL,
     },
     {
-      { "theme",
-        SCHEMA_METACITY,
-        META_PREF_THEME,
-      },
-      theme_name_handler,
-      NULL,
-    },
-    {
       { KEY_TITLEBAR_FONT,
         SCHEMA_GENERAL,
         META_PREF_TITLEBAR_FONT,
@@ -406,6 +407,14 @@ static MetaStringPreference preferences_string[] =
       },
       NULL,
       &cursor_theme,
+    },
+    {
+      { "name",
+        SCHEMA_METACITY_THEME,
+        META_PREF_THEME_NAME,
+      },
+      theme_name_handler,
+      NULL,
     },
     { { NULL, 0, 0 }, NULL },
   };
@@ -849,6 +858,10 @@ meta_prefs_init (void)
   g_signal_connect (settings, "changed", G_CALLBACK (settings_changed), NULL);
   g_hash_table_insert (settings_schemas, g_strdup (SCHEMA_METACITY), settings);
 
+  settings = g_settings_new (SCHEMA_METACITY_THEME);
+  g_signal_connect (settings, "changed", G_CALLBACK (settings_changed), NULL);
+  g_hash_table_insert (settings_schemas, g_strdup (SCHEMA_METACITY_THEME), settings);
+
   /* Individual keys we watch outside of our schemas */
   settings = g_settings_new (SCHEMA_INTERFACE);
   g_signal_connect (settings, "changed::" KEY_GNOME_ACCESSIBILITY,
@@ -991,10 +1004,16 @@ meta_prefs_get_raise_on_click (void)
   return raise_on_click;
 }
 
-const char*
-meta_prefs_get_theme (void)
+const gchar *
+meta_prefs_get_theme_name (void)
 {
-  return current_theme;
+  return current_theme_name;
+}
+
+MetaThemeType
+meta_prefs_get_theme_type (void)
+{
+  return current_theme_type;
 }
 
 const char*
@@ -1063,17 +1082,12 @@ theme_name_handler (GVariant *value,
   *result = NULL; /* ignored */
   string_value = g_variant_get_string (value, NULL);
 
-  if (g_strcmp0 (current_theme, string_value) != 0)
+  if (g_strcmp0 (current_theme_name, string_value) != 0)
     {
-      if (current_theme)
-        g_free (current_theme);
+      g_free (current_theme_name);
+      current_theme_name = g_strdup (string_value);
 
-      if (!string_value || !*string_value)
-        current_theme = NULL;
-      else
-        current_theme = g_strdup (string_value);
-
-      queue_changed (META_PREF_THEME);
+      queue_changed (META_PREF_THEME_NAME);
     }
 
   return TRUE;
@@ -1218,8 +1232,11 @@ meta_preference_to_string (MetaPreference pref)
     case META_PREF_RAISE_ON_CLICK:
       return "RAISE_ON_CLICK";
 
-    case META_PREF_THEME:
-      return "THEME";
+    case META_PREF_THEME_NAME:
+      return "THEME_NAME";
+
+    case META_PREF_THEME_TYPE:
+      return "THEME_TYPE";
 
     case META_PREF_TITLEBAR_FONT:
       return "TITLEBAR_FONT";

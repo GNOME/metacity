@@ -3,6 +3,8 @@
 data/applications/metacity.desktop.in
 data/keybindings/keybindings.pot
 data/schemas/org.gnome.metacity.gschema.xml
+data/schemas/org.gnome.metacity.keybindings.gschema.xml
+data/schemas/org.gnome.metacity.theme.gschema.xml
 data/ui/theme-viewer-window.ui
 libmetacity/meta-color-spec.c
 libmetacity/meta-draw-op.c
