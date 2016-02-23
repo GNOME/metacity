@@ -279,6 +279,7 @@ peek_required_version (ParseInfo *info)
     return info->metacity->format_version;
 }
 
+G_GNUC_PRINTF(5, 6)
 static void
 set_error (GError              **err,
            GMarkupParseContext  *context,
