@@ -445,7 +445,6 @@ AC_CONFIG_FILES([
 
   src/Makefile
   src/tools/Makefile
-  src/themes/Makefile
 
   theme-viewer/Makefile
 

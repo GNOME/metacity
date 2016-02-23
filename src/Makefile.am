@@ -1,6 +1,6 @@
 NULL =
 
-SUBDIRS = tools themes
+SUBDIRS = tools
 
 AM_CPPFLAGS = \
 	-DMETACITY_LIBEXECDIR=\"$(libexecdir)\" \
