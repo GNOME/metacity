@@ -4598,16 +4598,6 @@ out:
   return retval;
 }
 
-static gchar *
-meta_theme_metacity_get_name (MetaThemeImpl *impl)
-{
-  MetaThemeMetacity *metacity;
-
-  metacity = META_THEME_METACITY (impl);
-
-  return g_strdup (metacity->name);
-}
-
 static void
 meta_theme_metacity_get_frame_borders (MetaThemeImpl    *impl,
                                        MetaFrameLayout  *layout,
@@ -5504,7 +5494,6 @@ meta_theme_metacity_class_init (MetaThemeMetacityClass *metacity_class)
   object_class->finalize = meta_theme_metacity_finalize;
 
   impl_class->load = meta_theme_metacity_load;
-  impl_class->get_name = meta_theme_metacity_get_name;
   impl_class->get_frame_borders = meta_theme_metacity_get_frame_borders;
   impl_class->calc_geometry = meta_theme_metacity_calc_geometry;
   impl_class->draw_frame = meta_theme_metacity_draw_frame;

@@ -102,12 +102,6 @@ meta_theme_impl_real_load (MetaThemeImpl  *impl,
   return FALSE;
 }
 
-static gchar *
-meta_theme_impl_real_get_name (MetaThemeImpl *impl)
-{
-  return NULL;
-}
-
 static void
 meta_theme_impl_class_init (MetaThemeImplClass *impl_class)
 {
@@ -118,7 +112,6 @@ meta_theme_impl_class_init (MetaThemeImplClass *impl_class)
   object_class->dispose = meta_theme_impl_dispose;
 
   impl_class->load = meta_theme_impl_real_load;
-  impl_class->get_name = meta_theme_impl_real_get_name;
 }
 
 static void

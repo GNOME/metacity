@@ -40,8 +40,6 @@ struct _MetaThemeImplClass
                                     const gchar              *name,
                                     GError                  **error);
 
-  gchar    * (* get_name)          (MetaThemeImpl            *impl);
-
   void       (* get_frame_borders) (MetaThemeImpl            *impl,
                                     MetaFrameLayout          *layout,
                                     MetaStyleInfo            *style_info,

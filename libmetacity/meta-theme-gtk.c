@@ -28,39 +28,19 @@
 
 struct _MetaThemeGtk
 {
-  MetaThemeImpl  parent;
-
-  gchar         *name;
+  MetaThemeImpl parent;
 };
 
 G_DEFINE_TYPE (MetaThemeGtk, meta_theme_gtk, META_TYPE_THEME_IMPL)
-
-static void
-meta_theme_gtk_finalize (GObject *object)
-{
-  MetaThemeGtk *gtk;
-
-  gtk = META_THEME_GTK (object);
-
-  g_free (gtk->name);
-
-  G_OBJECT_CLASS (meta_theme_gtk_parent_class)->finalize (object);
-}
 
 static gboolean
 meta_theme_gtk_load (MetaThemeImpl  *impl,
                      const gchar    *name,
                      GError        **error)
 {
-  MetaThemeGtk *gtk;
   MetaFrameType type;
 
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
-
-  gtk = META_THEME_GTK (impl);
-
-  g_free (gtk->name);
-  gtk->name = g_strdup (name);
 
   for (type = 0; type < META_FRAME_TYPE_LAST; type++)
     {
@@ -132,16 +112,6 @@ meta_theme_gtk_load (MetaThemeImpl  *impl,
     }
 
   return TRUE;
-}
-
-static gchar *
-meta_theme_gtk_get_name (MetaThemeImpl *impl)
-{
-  MetaThemeGtk *gtk;
-
-  gtk = META_THEME_GTK (impl);
-
-  return gtk->name;
 }
 
 static void
@@ -1022,16 +992,11 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
 static void
 meta_theme_gtk_class_init (MetaThemeGtkClass *gtk_class)
 {
-  GObjectClass *object_class;
   MetaThemeImplClass *impl_class;
 
-  object_class = G_OBJECT_CLASS (gtk_class);
   impl_class = META_THEME_IMPL_CLASS (gtk_class);
 
-  object_class->finalize = meta_theme_gtk_finalize;
-
   impl_class->load = meta_theme_gtk_load;
-  impl_class->get_name = meta_theme_gtk_get_name;
   impl_class->get_frame_borders = meta_theme_gtk_get_frame_borders;
   impl_class->calc_geometry = meta_theme_gtk_calc_geometry;
   impl_class->draw_frame = meta_theme_gtk_draw_frame;

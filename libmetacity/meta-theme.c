@@ -282,12 +282,6 @@ meta_theme_set_titlebar_font (MetaTheme                  *theme,
   theme->titlebar_font = pango_font_description_copy (titlebar_font);
 }
 
-gchar *
-meta_theme_get_name (MetaTheme *theme)
-{
-  return META_THEME_IMPL_GET_CLASS (theme->impl)->get_name (theme->impl);
-}
-
 MetaFrameStyle *
 meta_theme_get_frame_style (MetaTheme      *theme,
                             MetaFrameType   type,

@@ -161,8 +161,6 @@ void                  meta_theme_set_composited            (MetaTheme           
 void                  meta_theme_set_titlebar_font         (MetaTheme                   *theme,
                                                             const PangoFontDescription  *titlebar_font);
 
-gchar                *meta_theme_get_name                  (MetaTheme                   *theme);
-
 MetaFrameStyle       *meta_theme_get_frame_style           (MetaTheme                   *theme,
                                                             MetaFrameType                type,
                                                             MetaFrameFlags               flags);
