@@ -10,9 +10,9 @@
       <default>''</default>
       <summary>Theme Name</summary>
       <description>
-        This setting is only used if Metacity is selected as theme type. You
-        MUST provide valid Metacity theme name, otherwise Metacity will fall
-        back to default GTK+ theme - Adwaita.
+        This setting is only used if Metacity is selected as the theme type.
+        You MUST provide a valid Metacity theme name, otherwise Metacity will
+        fall back to the default GTK+ theme - Adwaita.
       </description>
     </key>
 
@@ -23,12 +23,12 @@
         Metacity supports two theme types - GTK+ (gtk.css) and Metacity
         (metacity-theme-x.xml).
 
-        GTK+ theme: all data is loaded from CSS. This is same theme that is
-        used by mutter for server side decorations and by GTK+ for client side
+        GTK+ theme: all data is loaded from CSS. This is the same theme that is
+        used by Mutter for server-side decorations and by GTK+ for client-side
         decorations.
 
-        Metacity theme: data is loaded from metacity-theme-x.xml and css. Using
-        this theme type you MUST provide valid theme name.
+        Metacity theme: data is loaded from metacity-theme-x.xml and CSS. When
+        using this theme type you MUST provide a valid theme name.
       </description>
     </key>
 
