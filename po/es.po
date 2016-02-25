@@ -8,6 +8,7 @@
 # Francisco Javier F. Serrador <serrador@cvs.gnome.org>, 2004, 2005, 2006.
 # Jorge González <jorgegonz@svn.gnome.org>, 2007, 2008, 2009, 2010, 2011.
 # 
+# Luis Enrique Ortega Rojas <ortegarle@gmail.com>, 2016.
 # Daniel Mustieles <daniel.mustieles@gmail.com>, 2011, 2012, 2013, 2014, 2015., 2016.
 #
 msgid ""
@@ -15,8 +16,8 @@ msgstr ""
 "Project-Id-Version: metacity.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-22 13:41+0000\n"
-"PO-Revision-Date: 2016-02-23 08:46+0100\n"
+"POT-Creation-Date: 2016-02-23 18:40+0000\n"
+"PO-Revision-Date: 2016-02-25 09:03+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -270,40 +271,33 @@ msgstr "Dividir la vista en la izquierda"
 msgid "View split on right"
 msgstr "Dividir la vista en la derecha"
 
+#: data/schemas/org.gnome.metacity.gschema.xml:14
+msgid "Show window content thumbnail in Alt-Tab"
+msgstr "Mostrar miniatura del contenido de la ventana al pulsar Alt+Tab"
+
 #: data/schemas/org.gnome.metacity.gschema.xml:15
+msgid ""
+"If set to true, Metacity will show window content thumbnails in the Alt-Tab "
+"window instead of only icons."
+msgstr ""
+"Si es cierto, Metacity mostrará miniaturas del contenido de la ventana al "
+"pulsar Alt+Tab, en lugar de mostrar sólo iconos."
+
+#: data/schemas/org.gnome.metacity.gschema.xml:23
 msgid "Compositing Manager"
 msgstr "Gestor de composición"
 
-#: data/schemas/org.gnome.metacity.gschema.xml:16
+#: data/schemas/org.gnome.metacity.gschema.xml:24
 msgid "Determines whether Metacity is a compositing manager."
 msgstr "Determina si Metacity es un gestor de composición."
 
-#: data/schemas/org.gnome.metacity.gschema.xml:23
-msgid "If true, trade off usability for less resource usage"
-msgstr "Si es «true», reducir usabilidad para menos uso de recursos"
-
-#: data/schemas/org.gnome.metacity.gschema.xml:24
-msgid ""
-"If true, Metacity will give the user less feedback by using wireframes, "
-"avoiding animations, or other means. This is a significant reduction in "
-"usability for many users, but may allow legacy applications to continue "
-"working, and may also be a useful tradeoff for terminal servers. However, "
-"the wireframe feature is disabled when accessibility is on."
-msgstr ""
-"Si es «true», Metacity dará al usuario menos información, usando marcos, "
-"evitando animaciones, u otros medios. Esto es una reducción significativa en "
-"usabilidad para muchos usuarios, pero puede permitir funcionar a las "
-"aplicaciones heredadas y servidores de terminal cuando de otra forma sería "
-"impracticable. Sin embargo, la característica de marcos se desactiva cuando "
-"la accesibilidad está activada."
-
-#: data/schemas/org.gnome.metacity.gschema.xml:37
+#: data/schemas/org.gnome.metacity.gschema.xml:31
 msgid "Enable edge tiling when dropping windows on screen edges"
 msgstr ""
 "Activar el mosaico en los bordes al arrastrar ventanas a los bordes de la "
 "ventana"
 
-#: data/schemas/org.gnome.metacity.gschema.xml:38
+#: data/schemas/org.gnome.metacity.gschema.xml:32
 msgid ""
 "If enabled, dropping windows on vertical screen edges maximizes them "
 "vertically and resizes them horizontally to cover half of the available "
@@ -314,11 +308,11 @@ msgstr ""
 "mitad del área disponible. Arrastrar ventanas al borde superior de la "
 "pantalla las maximiza por completo."
 
-#: data/schemas/org.gnome.metacity.gschema.xml:47
+#: data/schemas/org.gnome.metacity.gschema.xml:41
 msgid "Window placement behavior"
 msgstr "Comportamiento al colocar ventanas"
 
-#: data/schemas/org.gnome.metacity.gschema.xml:48
+#: data/schemas/org.gnome.metacity.gschema.xml:42
 msgid ""
 "Metacity's default window-placement behavior is smart (first-fit), similar "
 "to behaviors in some other window managers. It will try to tile windows so "
@@ -337,29 +331,59 @@ msgstr ""
 "trabajo o «random», para colocar las ventanas nuevas en ubicaciones "
 "aleatorias dentro del área de trabajo."
 
-#: data/schemas/org.gnome.metacity.gschema.xml:63
-msgid "Show window content thumbnail in Alt-Tab"
-msgstr "Mostrar miniatura del contenido de la ventana al pulsar Alt+Tab"
+#: data/schemas/org.gnome.metacity.gschema.xml:57
+msgid "If true, trade off usability for less resource usage"
+msgstr "Si es «true», reducir usabilidad para menos uso de recursos"
 
-#: data/schemas/org.gnome.metacity.gschema.xml:64
+#: data/schemas/org.gnome.metacity.gschema.xml:58
 msgid ""
-"If set to true, Metacity will show window content thumbnails in the Alt-Tab "
-"window instead of only icons."
+"If true, Metacity will give the user less feedback by using wireframes, "
+"avoiding animations, or other means. This is a significant reduction in "
+"usability for many users, but may allow legacy applications to continue "
+"working, and may also be a useful tradeoff for terminal servers. However, "
+"the wireframe feature is disabled when accessibility is on."
 msgstr ""
-"Si es cierto, Metacity mostrará miniaturas del contenido de la ventana al "
-"pulsar Alt+Tab, en lugar de mostrar sólo iconos."
+"Si es «true», Metacity dará al usuario menos información, usando marcos, "
+"evitando animaciones, u otros medios. Esto es una reducción significativa en "
+"usabilidad para muchos usuarios, pero puede permitir funcionar a las "
+"aplicaciones heredadas y servidores de terminal cuando de otra forma sería "
+"impracticable. Sin embargo, la característica de marcos se desactiva cuando "
+"la accesibilidad está activada."
 
-#: data/schemas/org.gnome.metacity.gschema.xml:72
-msgid "Current theme"
-msgstr "Tema actual"
+#: data/schemas/org.gnome.metacity.theme.gschema.xml:11
+msgid "Theme Name"
+msgstr "Nombre del tema"
 
-#: data/schemas/org.gnome.metacity.gschema.xml:73
+#: data/schemas/org.gnome.metacity.theme.gschema.xml:12
 msgid ""
-"The theme determines the appearance of window borders, titlebar, and so "
-"forth."
+"This setting is only used if Metacity is selected as the theme type. You "
+"MUST provide a valid Metacity theme name, otherwise Metacity will fall back "
+"to the default GTK+ theme - Adwaita."
 msgstr ""
-"El tema determina la apariencia de los bordes de la ventana, el título y "
-"demás."
+"Ésta configuración se usa sólo si Metacity se selecciona como tema. Tu DEBES "
+"proveer un nombre de tema de Metacity valido, de otra forma Metacity tomará "
+"el tema predeterminado de GTK+: Adwaita."
+
+#: data/schemas/org.gnome.metacity.theme.gschema.xml:21
+#| msgid "Frame Type:"
+msgid "Theme Type"
+msgstr "Tipo de tema"
+
+#: data/schemas/org.gnome.metacity.theme.gschema.xml:22
+msgid ""
+"Metacity supports two theme types - GTK+ (gtk.css) and Metacity (metacity-"
+"theme-x.xml). GTK+ theme: all data is loaded from CSS. This is the same "
+"theme that is used by Mutter for server-side decorations and by GTK+ for "
+"client-side decorations. Metacity theme: data is loaded from metacity-theme-"
+"x.xml and CSS. When using this theme type you MUST provide a valid theme "
+"name."
+msgstr ""
+"Metacity soporta dos tipos de tema - GTK+ (gtk.css) y Metacity (metacity-"
+"theme-x.xml). Tema GTK+: todos los datos se cargan desde CSS. Éste es el "
+"mismo tema que user Mutter para decoraciones del lado del servidor y por GTK"
+"+ para decoraciones del lado del cliente. Tema Metacity: los datos se cargan "
+"desde metacity-theme-x-xml y CSS. Cuando se usa éste tipo de tema debe "
+"proporcionarse un nombre de tema válido."
 
 #: data/ui/theme-viewer-window.ui:41
 msgid "Dark Theme:"
@@ -374,22 +398,19 @@ msgid "Normal"
 msgstr "Normal"
 
 #: data/ui/theme-viewer-window.ui:95
-#, fuzzy
 #| msgid "_Dialog"
 msgid "Dialog"
-msgstr "_Diálogo"
+msgstr "Diálogo"
 
 #: data/ui/theme-viewer-window.ui:96
-#, fuzzy
 #| msgid "_Modal dialog"
 msgid "Modal Dialog"
-msgstr "Diálogo _modal"
+msgstr "Diálogo modal"
 
 #: data/ui/theme-viewer-window.ui:97
-#, fuzzy
 #| msgid "_Utility"
 msgid "Utility"
-msgstr "_Utilidad"
+msgstr "Utilidad"
 
 #: data/ui/theme-viewer-window.ui:98
 msgid "Menu"
@@ -416,32 +437,28 @@ msgid "Shaded"
 msgstr "Sombreado"
 
 #: data/ui/theme-viewer-window.ui:172
-#, fuzzy
 #| msgid "Ma_ximize"
 msgid "Maximized"
-msgstr "Ma_ximizar"
+msgstr "Maximizado"
 
 #: data/ui/theme-viewer-window.ui:186
-#, fuzzy
 #| msgid "_Splashscreen"
 msgid "Fullscreen"
-msgstr "_Pantalla de inicio"
+msgstr "Pantalla completa"
 
 #: data/ui/theme-viewer-window.ui:200
 msgid "Tiled"
-msgstr ""
+msgstr "Apilado"
 
 #: data/ui/theme-viewer-window.ui:240
-#, fuzzy
 #| msgid "Button Layouts"
 msgid "Button Layout:"
-msgstr "Distribución de botones"
+msgstr "Distribución de botones:"
 
 #: data/ui/theme-viewer-window.ui:279
-#, fuzzy
 #| msgid "Compositing Manager"
 msgid "Composited:"
-msgstr "Gestor de composición"
+msgstr "Compuesto:"
 
 #: data/ui/theme-viewer-window.ui:342 theme-viewer/theme-viewer-window.c:525
 msgid "Choose Theme"
@@ -452,7 +469,7 @@ msgid "Reload"
 msgstr "Recargar"
 
 #: libmetacity/meta-color-spec.c:246
-#, fuzzy, c-format
+#, c-format
 #| msgid ""
 #| "GTK custom color specification must have color name and fallback in "
 #| "parentheses, e.g. gtk:custom(foo,bar); could not parse \"%s\""
@@ -460,7 +477,7 @@ msgid ""
 "GTK custom color specification must have color name and fallback in "
 "parentheses, e.g. gtk:custom(foo,bar); could not parse '%s'"
 msgstr ""
-"La especificación de color GTK debe tener un nombre de color y nombre "
+"La especificación de color de GTK debe tener un nombre de color y nombre "
 "alternativo entre paréntesis, ejemplo: gtk:custom(foo,bar); no se pudo "
 "analizar «%s»"
 
@@ -474,7 +491,7 @@ msgstr ""
 "permiten los caracteres A-Z-a-z-0-9"
 
 #: libmetacity/meta-color-spec.c:273
-#, fuzzy, c-format
+#, c-format
 #| msgid ""
 #| "Gtk:custom format is \"gtk:custom(color_name,fallback)\", \"%s\" does not "
 #| "fit the format"
@@ -482,11 +499,11 @@ msgid ""
 "Gtk:custom format is 'gtk:custom(color_name,fallback)', '%s' does not fit "
 "the format"
 msgstr ""
-"El formato de gtk:custom es «gtk:custom(nombre_color,alternativa)», «%s» no "
-"coincide con el formato"
+"Gtk:el formato personalizado es «gtk:custom(nombre_color,alternativa)», «%s» "
+"no coincide con el formato"
 
 #: libmetacity/meta-color-spec.c:306
-#, fuzzy, c-format
+#, c-format
 #| msgid ""
 #| "GTK color specification must have the state in brackets, e.g. gtk:"
 #| "fg[NORMAL] where NORMAL is the state; could not parse \"%s\""
@@ -495,7 +512,7 @@ msgid ""
 "where NORMAL is the state; could not parse '%s'"
 msgstr ""
 "La especificación de color GTK debe tener el estado entre corchetes, "
-"ejemplo. gtk:fg[NORMAL] donde NORMAL es el estado ; no se ha podido "
+"ejemplo. gtk:fg[NORMAL] donde NORMAL es el estado; no se ha podido "
 "interpretar «%s»"
 
 #: libmetacity/meta-color-spec.c:319
@@ -680,10 +697,10 @@ msgstr "La expresión de coordenadas no parece tener ni operadores ni operandos"
 
 #: libmetacity/meta-draw-spec.c:1226 libmetacity/meta-draw-spec.c:1246
 #: libmetacity/meta-draw-spec.c:1266
-#, fuzzy, c-format
+#, c-format
 #| msgid "Theme contained an expression that resulted in an error: %s\n"
 msgid "Theme contained an expression that resulted in an error: %s"
-msgstr "El tema contenía una expresión que ha resultado en un error: %s\n"
+msgstr "El tema contenía una expresión que resultó en error: %s"
 
 #: libmetacity/meta-frame-layout.c:47
 msgid "top"
@@ -748,12 +765,6 @@ msgstr ""
 msgid "Gradients should have at least two colors"
 msgstr "Los degradados deben tener al menos dos colores"
 
-#: libmetacity/meta-theme.c:642
-#, fuzzy, c-format
-#| msgid "Failed to load theme \"%s\": %s\n"
-msgid "Failed to load theme '%s': %s"
-msgstr "Ocurrió un error al cargar el tema «%s»: %s\n"
-
 #: libmetacity/meta-theme-impl.c:99
 #, c-format
 msgid "MetaThemeImplClass::load not implemented for '%s'"
@@ -768,52 +779,52 @@ msgstr "MetaThemeImplClass::carga no implementada para «%s»"
 msgid "No '%s' attribute on element <%s>"
 msgstr "El atributo «%s» no está definido en el elemento <%s>"
 
-#: libmetacity/meta-theme-metacity.c:302 libmetacity/meta-theme-metacity.c:321
+#: libmetacity/meta-theme-metacity.c:303 libmetacity/meta-theme-metacity.c:322
 #, c-format
 msgid "Line %d character %d: %s"
 msgstr "Línea %d carácter %d: %s"
 
-#: libmetacity/meta-theme-metacity.c:361
+#: libmetacity/meta-theme-metacity.c:362
 #, fuzzy, c-format
 #| msgid "Could not parse \"%s\" as an integer"
 msgid "Could not parse '%s' as an integer"
 msgstr "No se ha podido interpretar «%s» como un entero"
 
-#: libmetacity/meta-theme-metacity.c:369 libmetacity/meta-theme-metacity.c:586
+#: libmetacity/meta-theme-metacity.c:370 libmetacity/meta-theme-metacity.c:587
 #, fuzzy, c-format
 #| msgid "Did not understand trailing characters \"%s\" in string \"%s\""
 msgid "Did not understand trailing characters '%s' in string '%s'"
 msgstr "No se comprenden los caracteres sobrantes «%s» en la cadena «%s»"
 
-#: libmetacity/meta-theme-metacity.c:378
+#: libmetacity/meta-theme-metacity.c:379
 #, c-format
 msgid "Integer %ld must be positive"
 msgstr "El entero %ld debe ser positivo"
 
-#: libmetacity/meta-theme-metacity.c:385
+#: libmetacity/meta-theme-metacity.c:386
 #, c-format
 msgid "Integer %ld is too large, current max is %d"
 msgstr "El entero %ld es demasiado grande, el máximo actual es %d"
 
-#: libmetacity/meta-theme-metacity.c:487
+#: libmetacity/meta-theme-metacity.c:488
 #, fuzzy, c-format
 #| msgid "Attribute \"%s\" repeated twice on the same <%s> element"
 msgid "Attribute '%s' repeated twice on the same <%s> element"
 msgstr "El atributo «%s» se ha repetido dos veces en el mismo elemento <%s>"
 
-#: libmetacity/meta-theme-metacity.c:509 libmetacity/meta-theme-metacity.c:553
+#: libmetacity/meta-theme-metacity.c:510 libmetacity/meta-theme-metacity.c:554
 #, fuzzy, c-format
 #| msgid "Attribute \"%s\" is invalid on <%s> element in this context"
 msgid "Attribute '%s' is invalid on <%s> element in this context"
 msgstr "El atributo «%s» no es válido en el elemento <%s> en este contexto"
 
-#: libmetacity/meta-theme-metacity.c:578 libmetacity/meta-theme-metacity.c:616
+#: libmetacity/meta-theme-metacity.c:579 libmetacity/meta-theme-metacity.c:617
 #, fuzzy, c-format
 #| msgid "Could not parse \"%s\" as a floating point number"
 msgid "Could not parse '%s' as a floating point number"
 msgstr "No se ha podido interpretar «%s» como un número de coma flotante"
 
-#: libmetacity/meta-theme-metacity.c:648
+#: libmetacity/meta-theme-metacity.c:649
 #, fuzzy, c-format
 #| msgid ""
 #| "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g\n"
@@ -822,7 +833,7 @@ msgstr ""
 "El valor de alfa debe estar entre 0.0 (invisible) y 1.0 (completamente "
 "opaco), fue %g\n"
 
-#: libmetacity/meta-theme-metacity.c:694
+#: libmetacity/meta-theme-metacity.c:695
 #, fuzzy, c-format
 #| msgid ""
 #| "Invalid title scale \"%s\" (must be one of xx-small,x-small,small,medium,"
@@ -834,14 +845,14 @@ msgstr ""
 "Escalo de título no válido «%s» (debe ser una de xx-small,x-small,small,"
 "medium,large,x-large,xx-large)\n"
 
-#: libmetacity/meta-theme-metacity.c:723 libmetacity/meta-theme-metacity.c:751
+#: libmetacity/meta-theme-metacity.c:724 libmetacity/meta-theme-metacity.c:752
 #, fuzzy, c-format
 #| msgid "Boolean values must be \"true\" or \"false\" not \"%s\""
 msgid "Boolean values must be 'true' or 'false' not '%s'"
 msgstr "Los valores booleanos deben ser «true» o «false» no «%s»"
 
-#: libmetacity/meta-theme-metacity.c:780 libmetacity/meta-theme-metacity.c:817
-#: libmetacity/meta-theme-metacity.c:855
+#: libmetacity/meta-theme-metacity.c:781 libmetacity/meta-theme-metacity.c:818
+#: libmetacity/meta-theme-metacity.c:856
 #, fuzzy, c-format
 #| msgid ""
 #| "User-defined constants must begin with a capital letter; \"%s\" does not"
@@ -850,89 +861,89 @@ msgstr ""
 "Las constantes definidas por el usuario deben comenzar con una letra "
 "mayúscula; «%s» no lo hace"
 
-#: libmetacity/meta-theme-metacity.c:789 libmetacity/meta-theme-metacity.c:826
-#: libmetacity/meta-theme-metacity.c:864
+#: libmetacity/meta-theme-metacity.c:790 libmetacity/meta-theme-metacity.c:827
+#: libmetacity/meta-theme-metacity.c:865
 #, fuzzy, c-format
 #| msgid "Constant \"%s\" has already been defined"
 msgid "Constant '%s' has already been defined"
 msgstr "La constante «%s» ya ha sido definida"
 
-#: libmetacity/meta-theme-metacity.c:1050
-#: libmetacity/meta-theme-metacity.c:1147
-#: libmetacity/meta-theme-metacity.c:1249
+#: libmetacity/meta-theme-metacity.c:1051
+#: libmetacity/meta-theme-metacity.c:1148
+#: libmetacity/meta-theme-metacity.c:1250
 #, c-format
 msgid "<%s> name \"%s\" used a second time"
 msgstr "<%s> nombre «%s» usado una segunda vez"
 
-#: libmetacity/meta-theme-metacity.c:1062
+#: libmetacity/meta-theme-metacity.c:1063
 #, c-format
 msgid "<%s> parent \"%s\" has not been defined"
 msgstr "El <%s> padre «%s» no ha sido definido"
 
-#: libmetacity/meta-theme-metacity.c:1113
+#: libmetacity/meta-theme-metacity.c:1114
 #, fuzzy, c-format
 #| msgid "<%s> name \"%s\" used a second time"
 msgid "<%s> name '%s' used a second time"
 msgstr "<%s> nombre «%s» usado una segunda vez"
 
-#: libmetacity/meta-theme-metacity.c:1159
-#: libmetacity/meta-theme-metacity.c:1261
+#: libmetacity/meta-theme-metacity.c:1160
+#: libmetacity/meta-theme-metacity.c:1262
 #, fuzzy, c-format
 #| msgid "<%s> parent \"%s\" has not been defined"
 msgid "<%s> parent '%s' has not been defined"
 msgstr "El <%s> padre «%s» no ha sido definido"
 
-#: libmetacity/meta-theme-metacity.c:1172
+#: libmetacity/meta-theme-metacity.c:1173
 #, fuzzy, c-format
 #| msgid "<%s> geometry \"%s\" has not been defined"
 msgid "<%s> geometry '%s' has not been defined"
 msgstr "La <%s> geometría «%s» no ha sido definida"
 
-#: libmetacity/meta-theme-metacity.c:1185
+#: libmetacity/meta-theme-metacity.c:1186
 #, c-format
 msgid "<%s> must specify either a geometry or a parent that has a geometry"
 msgstr ""
 "<%s> debe especificar o una geometría o un padre para tenga una geometría"
 
-#: libmetacity/meta-theme-metacity.c:1226
+#: libmetacity/meta-theme-metacity.c:1227
 msgid "You must specify a background for an alpha value to be meaningful"
 msgstr "Debe especificar un fondo para un valor alfa para que tenga sentido"
 
-#: libmetacity/meta-theme-metacity.c:1295
+#: libmetacity/meta-theme-metacity.c:1296
 #, fuzzy, c-format
 #| msgid "Unknown type \"%s\" on <%s> element"
 msgid "Unknown type '%s' on <%s> element"
 msgstr "Tipo «%s» desconocido en el elemento <%s>"
 
-#: libmetacity/meta-theme-metacity.c:1304
+#: libmetacity/meta-theme-metacity.c:1305
 #, fuzzy, c-format
 #| msgid "Unknown style_set \"%s\" on <%s> element"
 msgid "Unknown style_set '%s' on <%s> element"
 msgstr "style_set «%s» desconocido en el elemento <%s>"
 
-#: libmetacity/meta-theme-metacity.c:1313
+#: libmetacity/meta-theme-metacity.c:1314
 #, fuzzy, c-format
 #| msgid "Window type \"%s\" has already been assigned a style set"
 msgid "Window type '%s' has already been assigned a style set"
 msgstr "El tipo de ventana «%s» ya ha sido asignado a un conjunto de estilo"
 
-#: libmetacity/meta-theme-metacity.c:1342
-#: libmetacity/meta-theme-metacity.c:1406
-#: libmetacity/meta-theme-metacity.c:1632
-#: libmetacity/meta-theme-metacity.c:2786
-#: libmetacity/meta-theme-metacity.c:2832
-#: libmetacity/meta-theme-metacity.c:3072
-#: libmetacity/meta-theme-metacity.c:3108
-#: libmetacity/meta-theme-metacity.c:3144
-#: libmetacity/meta-theme-metacity.c:3180
-#: libmetacity/meta-theme-metacity.c:3477
+#: libmetacity/meta-theme-metacity.c:1343
+#: libmetacity/meta-theme-metacity.c:1407
+#: libmetacity/meta-theme-metacity.c:1633
+#: libmetacity/meta-theme-metacity.c:2787
+#: libmetacity/meta-theme-metacity.c:2833
+#: libmetacity/meta-theme-metacity.c:3073
+#: libmetacity/meta-theme-metacity.c:3109
+#: libmetacity/meta-theme-metacity.c:3145
+#: libmetacity/meta-theme-metacity.c:3181
+#: libmetacity/meta-theme-metacity.c:3478
 #, c-format
 msgid "Element <%s> is not allowed below <%s>"
 msgstr "El elemento <%s> no está permitido debajo de <%s>"
 
-#: libmetacity/meta-theme-metacity.c:1442
-#: libmetacity/meta-theme-metacity.c:1568
-#: libmetacity/meta-theme-metacity.c:1582
+#: libmetacity/meta-theme-metacity.c:1443
+#: libmetacity/meta-theme-metacity.c:1569
+#: libmetacity/meta-theme-metacity.c:1583
 #, fuzzy
 #| msgid ""
 #| "Cannot specify both \"button_width\"/\"button_height\" and \"aspect_ratio"
@@ -944,124 +955,124 @@ msgstr ""
 "No se puede especificar ambos «button_width»/«button_height» y «aspect "
 "ratio» para los botones"
 
-#: libmetacity/meta-theme-metacity.c:1451
+#: libmetacity/meta-theme-metacity.c:1452
 #, fuzzy, c-format
 #| msgid "Aspect ratio \"%s\" is unknown"
 msgid "Aspect ratio '%s' is unknown"
 msgstr "La proporción «%s» es desconocido"
 
-#: libmetacity/meta-theme-metacity.c:1513
+#: libmetacity/meta-theme-metacity.c:1514
 #, fuzzy, c-format
 #| msgid "Border \"%s\" is unknown"
 msgid "Border '%s' is unknown"
 msgstr "El borde «%s» es desconocido"
 
-#: libmetacity/meta-theme-metacity.c:1591
+#: libmetacity/meta-theme-metacity.c:1592
 #, fuzzy, c-format
 #| msgid "Distance \"%s\" is unknown"
 msgid "Distance '%s' is unknown"
 msgstr "La distancia «%s» es desconocida"
 
-#: libmetacity/meta-theme-metacity.c:1802
+#: libmetacity/meta-theme-metacity.c:1803
 #, c-format
 msgid "Angle must be between 0.0 and 360.0, was %g\n"
 msgstr "El ángulo debe estar entre 0.0 y 360.0, fue %g\n"
 
-#: libmetacity/meta-theme-metacity.c:1991
+#: libmetacity/meta-theme-metacity.c:1992
 #, c-format
 msgid "No \"start_angle\" or \"from\" attribute on element <%s>"
 msgstr "No hay atributo «start_angle» o «from» en el elemento <%s>"
 
-#: libmetacity/meta-theme-metacity.c:1998
+#: libmetacity/meta-theme-metacity.c:1999
 #, c-format
 msgid "No \"extent_angle\" or \"to\" attribute on element <%s>"
 msgstr "No hay atributo «extent_angle» o «to» en el elemento <%s>"
 
-#: libmetacity/meta-theme-metacity.c:2184
+#: libmetacity/meta-theme-metacity.c:2185
 #, c-format
 msgid "Did not understand value \"%s\" for type of gradient"
 msgstr "No se entendió el valor «%s» para el tipo de degradado"
 
-#: libmetacity/meta-theme-metacity.c:2249
-#: libmetacity/meta-theme-metacity.c:2571
+#: libmetacity/meta-theme-metacity.c:2250
+#: libmetacity/meta-theme-metacity.c:2572
 #, c-format
 msgid "Did not understand fill type \"%s\" for <%s> element"
 msgstr "No se entendió en tipo de relleno «%s» para el elemento <%s>"
 
-#: libmetacity/meta-theme-metacity.c:2402
-#: libmetacity/meta-theme-metacity.c:2471
-#: libmetacity/meta-theme-metacity.c:2522
+#: libmetacity/meta-theme-metacity.c:2403
+#: libmetacity/meta-theme-metacity.c:2472
+#: libmetacity/meta-theme-metacity.c:2523
 #, c-format
 msgid "Did not understand state \"%s\" for <%s> element"
 msgstr "No se entendió estado «%s» para el elemento <%s>"
 
-#: libmetacity/meta-theme-metacity.c:2412
-#: libmetacity/meta-theme-metacity.c:2481
+#: libmetacity/meta-theme-metacity.c:2413
+#: libmetacity/meta-theme-metacity.c:2482
 #, c-format
 msgid "Did not understand shadow \"%s\" for <%s> element"
 msgstr "No se entendió enrollar «%s» para el elemento <%s>"
 
-#: libmetacity/meta-theme-metacity.c:2422
+#: libmetacity/meta-theme-metacity.c:2423
 #, c-format
 msgid "Did not understand arrow \"%s\" for <%s> element"
 msgstr "No se entendió la flecha «%s» para el elemento <%s>"
 
-#: libmetacity/meta-theme-metacity.c:2671
-#: libmetacity/meta-theme-metacity.c:2738
+#: libmetacity/meta-theme-metacity.c:2672
+#: libmetacity/meta-theme-metacity.c:2739
 #, c-format
 msgid "No <draw_ops> called \"%s\" has been defined"
 msgstr "No se ha definido una <draw_ops> llamada «%s»"
 
-#: libmetacity/meta-theme-metacity.c:2683
-#: libmetacity/meta-theme-metacity.c:2750
+#: libmetacity/meta-theme-metacity.c:2684
+#: libmetacity/meta-theme-metacity.c:2751
 #, c-format
 msgid "Including draw_ops \"%s\" here would create a circular reference"
 msgstr "Incluir el draw_ops «%s» aquí podría crear una referencia circular"
 
-#: libmetacity/meta-theme-metacity.c:2959
+#: libmetacity/meta-theme-metacity.c:2960
 #, c-format
 msgid "Unknown position \"%s\" for frame piece"
 msgstr "Posición desconocida «%s» para la pieza del marco"
 
-#: libmetacity/meta-theme-metacity.c:2967
+#: libmetacity/meta-theme-metacity.c:2968
 #, c-format
 msgid "Frame style already has a piece at position %s"
 msgstr "El estilo del marco ya tiene una pieza en la posición %s"
 
-#: libmetacity/meta-theme-metacity.c:2983
+#: libmetacity/meta-theme-metacity.c:2984
 #, c-format
 msgid "No <draw_ops> with the name \"%s\" has been defined"
 msgstr "No se ha definido ninguna <draw_ops> con el nombre «%s»"
 
-#: libmetacity/meta-theme-metacity.c:3014
+#: libmetacity/meta-theme-metacity.c:3015
 #, c-format
 msgid "Unknown function \"%s\" for button"
 msgstr "Función desconocida «%s» para el botón"
 
-#: libmetacity/meta-theme-metacity.c:3025
+#: libmetacity/meta-theme-metacity.c:3026
 #, fuzzy, c-format
 #| msgid "Button function \"%s\" does not exist in this version (%d, need %d)"
 msgid "Button function '%s' does not exist in this version (%d, need %d)"
 msgstr "La función del botón «%s» no existe en esta versión (%d, necesita %d)"
 
-#: libmetacity/meta-theme-metacity.c:3034
+#: libmetacity/meta-theme-metacity.c:3035
 #, fuzzy, c-format
 #| msgid "Unknown state \"%s\" for button"
 msgid "Unknown state '%s' for button"
 msgstr "Estado desconocido «%s» para el botón"
 
-#: libmetacity/meta-theme-metacity.c:3041
+#: libmetacity/meta-theme-metacity.c:3042
 #, c-format
 msgid "Frame style already has a button for function %s state %s"
 msgstr "El estilo del marcos ya tiene un botón para la función %s estado %s"
 
-#: libmetacity/meta-theme-metacity.c:3058
+#: libmetacity/meta-theme-metacity.c:3059
 #, fuzzy, c-format
 #| msgid "No <draw_ops> with the name \"%s\" has been defined"
 msgid "No <draw_ops> with the name '%s' has been defined"
 msgstr "No se ha definido ninguna <draw_ops> con el nombre «%s»"
 
-#: libmetacity/meta-theme-metacity.c:3092
+#: libmetacity/meta-theme-metacity.c:3093
 msgid ""
 "Can't have a two draw_ops for a <piece> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
@@ -1070,7 +1081,7 @@ msgstr ""
 "especificado un atributo draw_ops y también un elemento <draw_ops> o ha "
 "especificado los dos elementos)"
 
-#: libmetacity/meta-theme-metacity.c:3128
+#: libmetacity/meta-theme-metacity.c:3129
 msgid ""
 "Can't have a two draw_ops for a <button> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
@@ -1079,7 +1090,7 @@ msgstr ""
 "especificado un atributo draw_ops y también un elemento <draw_ops> o ha "
 "especificado los dos elementos)"
 
-#: libmetacity/meta-theme-metacity.c:3164
+#: libmetacity/meta-theme-metacity.c:3165
 msgid ""
 "Can't have a two draw_ops for a <menu_icon> element (theme specified a "
 "draw_ops attribute and also a <draw_ops> element, or specified two elements)"
@@ -1088,32 +1099,32 @@ msgstr ""
 "especificado un atributo draw_ops y también un elemento <draw_ops> o ha "
 "especificado los dos elementos)"
 
-#: libmetacity/meta-theme-metacity.c:3268
+#: libmetacity/meta-theme-metacity.c:3269
 #, fuzzy, c-format
 #| msgid "\"%s\" is not a valid value for focus attribute"
 msgid "'%s' is not a valid value for focus attribute"
 msgstr "«%s» no es valor válido para el atributo foco"
 
-#: libmetacity/meta-theme-metacity.c:3277
+#: libmetacity/meta-theme-metacity.c:3278
 #, fuzzy, c-format
 #| msgid "\"%s\" is not a valid value for state attribute"
 msgid "'%s' is not a valid value for state attribute"
 msgstr "«%s» no es un valor válido para el atributo estado"
 
-#: libmetacity/meta-theme-metacity.c:3286
+#: libmetacity/meta-theme-metacity.c:3287
 #, fuzzy, c-format
 #| msgid "A style called \"%s\" has not been defined"
 msgid "A style called '%s' has not been defined"
 msgstr "No se ha definido ningún estilo llamado «%s»"
 
-#: libmetacity/meta-theme-metacity.c:3304
-#: libmetacity/meta-theme-metacity.c:3327
+#: libmetacity/meta-theme-metacity.c:3305
+#: libmetacity/meta-theme-metacity.c:3328
 #, fuzzy, c-format
 #| msgid "\"%s\" is not a valid value for resize attribute"
 msgid "'%s' is not a valid value for resize attribute"
 msgstr "«%s» no es un estado válido para el atributo resize"
 
-#: libmetacity/meta-theme-metacity.c:3338
+#: libmetacity/meta-theme-metacity.c:3339
 #, fuzzy, c-format
 #| msgid ""
 #| "Should not have \"resize\" attribute on <%s> element for maximized/shaded "
@@ -1125,7 +1136,7 @@ msgstr ""
 "No debería tener un atributo «resize» en el elemento <%s> para los estados "
 "maximizado/enrollado"
 
-#: libmetacity/meta-theme-metacity.c:3359
+#: libmetacity/meta-theme-metacity.c:3360
 #, fuzzy, c-format
 #| msgid ""
 #| "Should not have \"resize\" attribute on <%s> element for maximized states"
@@ -1134,29 +1145,29 @@ msgstr ""
 "No debería tener un atributo «resize» en el elemento <%s> para los estados "
 "maximizados."
 
-#: libmetacity/meta-theme-metacity.c:3374
-#: libmetacity/meta-theme-metacity.c:3422
+#: libmetacity/meta-theme-metacity.c:3375
+#: libmetacity/meta-theme-metacity.c:3423
 #, c-format
 msgid "Style has already been specified for state %s resize %s focus %s"
 msgstr ""
 "El estilo ya ha sido especificado para estado %s redimensionado %s foco %s"
 
-#: libmetacity/meta-theme-metacity.c:3386
-#: libmetacity/meta-theme-metacity.c:3398
-#: libmetacity/meta-theme-metacity.c:3410
-#: libmetacity/meta-theme-metacity.c:3434
-#: libmetacity/meta-theme-metacity.c:3446
-#: libmetacity/meta-theme-metacity.c:3458
+#: libmetacity/meta-theme-metacity.c:3387
+#: libmetacity/meta-theme-metacity.c:3399
+#: libmetacity/meta-theme-metacity.c:3411
+#: libmetacity/meta-theme-metacity.c:3435
+#: libmetacity/meta-theme-metacity.c:3447
+#: libmetacity/meta-theme-metacity.c:3459
 #, c-format
 msgid "Style has already been specified for state %s focus %s"
 msgstr "El estilo ya ha sido especificado para estado %s foco %s"
 
-#: libmetacity/meta-theme-metacity.c:3524
+#: libmetacity/meta-theme-metacity.c:3525
 #, c-format
 msgid "Bad version specification '%s'"
 msgstr "Especificación de versión «%s» errónea"
 
-#: libmetacity/meta-theme-metacity.c:3595
+#: libmetacity/meta-theme-metacity.c:3596
 #, fuzzy
 #| msgid ""
 #| "\"version\" attribute cannot be used in metacity-theme-1.xml or metacity-"
@@ -1168,19 +1179,19 @@ msgstr ""
 "No se puede usar el atributo «version» con metacity-theme-1.xml o metacity-"
 "theme-2.xml"
 
-#: libmetacity/meta-theme-metacity.c:3618
+#: libmetacity/meta-theme-metacity.c:3619
 #, c-format
 msgid "Theme requires version %s but latest supported theme version is %d.%d"
 msgstr ""
 "El tema requiere la versión %s pero la última versión soportada del tema es "
 "la %d.%d"
 
-#: libmetacity/meta-theme-metacity.c:3642
+#: libmetacity/meta-theme-metacity.c:3643
 #, c-format
 msgid "Outermost element in theme must be <metacity_theme> not <%s>"
 msgstr "El elemento mas externo en un tema debe ser <metacity_theme> no <%s>"
 
-#: libmetacity/meta-theme-metacity.c:3662
+#: libmetacity/meta-theme-metacity.c:3663
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a name/author/date/description element"
@@ -1188,12 +1199,12 @@ msgstr ""
 "El elemento <%s> no esta permitido dentro de un elemento name/author/date/"
 "description"
 
-#: libmetacity/meta-theme-metacity.c:3668
+#: libmetacity/meta-theme-metacity.c:3669
 #, c-format
 msgid "Element <%s> is not allowed inside a <constant> element"
 msgstr "El elemento <%s> no esta permitido dentro de un elemento <constant>"
 
-#: libmetacity/meta-theme-metacity.c:3681
+#: libmetacity/meta-theme-metacity.c:3682
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a distance/border/aspect_ratio element"
@@ -1201,32 +1212,32 @@ msgstr ""
 "El elemento <%s> no esta permitido dentro de un elemento distance/border/"
 "aspect_ratio"
 
-#: libmetacity/meta-theme-metacity.c:3704
+#: libmetacity/meta-theme-metacity.c:3705
 #, c-format
 msgid "Element <%s> is not allowed inside a draw operation element"
 msgstr ""
 "El elemento <%s> no esta permitido dentro de un elemento de operación de "
 "dibujo"
 
-#: libmetacity/meta-theme-metacity.c:3715
-#: libmetacity/meta-theme-metacity.c:3746
-#: libmetacity/meta-theme-metacity.c:3752
-#: libmetacity/meta-theme-metacity.c:3758
+#: libmetacity/meta-theme-metacity.c:3716
+#: libmetacity/meta-theme-metacity.c:3747
+#: libmetacity/meta-theme-metacity.c:3753
+#: libmetacity/meta-theme-metacity.c:3759
 #, c-format
 msgid "Element <%s> is not allowed inside a <%s> element"
 msgstr "El elemento <%s> no esta permitido dentro del elemento <%s>"
 
-#: libmetacity/meta-theme-metacity.c:3812
-#: libmetacity/meta-theme-metacity.c:3820
-#: libmetacity/meta-theme-metacity.c:3828
-#: libmetacity/meta-theme-metacity.c:3836
-#: libmetacity/meta-theme-metacity.c:3845
+#: libmetacity/meta-theme-metacity.c:3813
+#: libmetacity/meta-theme-metacity.c:3821
+#: libmetacity/meta-theme-metacity.c:3829
+#: libmetacity/meta-theme-metacity.c:3837
+#: libmetacity/meta-theme-metacity.c:3846
 #, fuzzy, c-format
 #| msgid "No <%s> set for theme \"%s\""
 msgid "No <%s> set for theme '%s'"
 msgstr "No se configuró <%s> para el tema «%s»"
 
-#: libmetacity/meta-theme-metacity.c:3862
+#: libmetacity/meta-theme-metacity.c:3863
 #, fuzzy, c-format
 #| msgid ""
 #| "No frame style set for window type \"%s\" in theme \"%s\", add a <window "
@@ -1238,32 +1249,32 @@ msgstr ""
 "No hay un estilo de marco para el tipo de ventana «%s» en el tema «%s», "
 "añada un elemento <window type=\"%s\" style_set=\"whatever\"/>"
 
-#: libmetacity/meta-theme-metacity.c:4125
+#: libmetacity/meta-theme-metacity.c:4126
 msgid "No draw_ops provided for frame piece"
 msgstr "No se dio draw_ops para la pieza del cuadro"
 
-#: libmetacity/meta-theme-metacity.c:4141
+#: libmetacity/meta-theme-metacity.c:4142
 msgid "No draw_ops provided for button"
 msgstr "No se dio draw_ops para botón"
 
-#: libmetacity/meta-theme-metacity.c:4256
-#: libmetacity/meta-theme-metacity.c:4267
-#: libmetacity/meta-theme-metacity.c:4278
-#: libmetacity/meta-theme-metacity.c:4289
-#: libmetacity/meta-theme-metacity.c:4300
+#: libmetacity/meta-theme-metacity.c:4257
+#: libmetacity/meta-theme-metacity.c:4268
+#: libmetacity/meta-theme-metacity.c:4279
+#: libmetacity/meta-theme-metacity.c:4290
+#: libmetacity/meta-theme-metacity.c:4301
 #, c-format
 msgid "<%s> specified twice for this theme"
 msgstr "<%s> especificado dos veces para este tema"
 
-#: libmetacity/meta-theme-metacity.c:4339
+#: libmetacity/meta-theme-metacity.c:4340
 #, c-format
 msgid "No text is allowed inside element <%s>"
 msgstr "No se permite texto dentro del elemento <%s>"
 
-#: libmetacity/meta-theme-metacity.c:4592
+#: libmetacity/meta-theme-metacity.c:4593
 #, fuzzy, c-format
 #| msgid "Failed to find a valid file for theme %s\n"
-msgid "Failed to find a valid file for theme %s"
+msgid "Failed to find a valid file for theme '%s'"
 msgstr "Falló al encontrar un archivo válido para el tema%s\n"
 
 #: src/core/bell.c:296
@@ -1374,25 +1385,12 @@ msgstr ""
 "No poner a pantalla completa las ventanas maximizadas que no tienen "
 "decoración"
 
-#: src/core/main.c:473
-#, c-format
-msgid "Failed to scan themes directory: %s\n"
-msgstr "Falló al inspeccionar la carpeta de temas: %s\n"
-
-#: src/core/main.c:489
-#, c-format
-msgid ""
-"Could not find a theme! Be sure %s exists and contains the usual themes.\n"
-msgstr ""
-"No se ha podido encontrar un tema. Asegúrese de que %s existe y contiene los "
-"temas usuales.\n"
-
-#: src/core/main.c:548
+#: src/core/main.c:514
 #, c-format
 msgid "Failed to restart: %s\n"
 msgstr "No se pudo reiniciar: %s\n"
 
-#: src/core/prefs.c:959
+#: src/core/prefs.c:972
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -1400,14 +1398,14 @@ msgstr ""
 "Los arreglos para aplicaciones rotas se han deshabilitado. Algunas "
 "aplicaciones podrían no comportarse correctamente.\n"
 
-#: src/core/prefs.c:1030
+#: src/core/prefs.c:1049
 #, c-format
 msgid "Could not parse font description \"%s\" from GSettings key %s\n"
 msgstr ""
 "No se pudo analizar la descripción de la tipografía «%s» de la clave "
 "GSettings %s\n"
 
-#: src/core/prefs.c:1097
+#: src/core/prefs.c:1111
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -1416,7 +1414,7 @@ msgstr ""
 "«%s» encontrado en la base de datos de configuración no es un valor válido "
 "para el modificador del botón del ratón\n"
 
-#: src/core/prefs.c:1373
+#: src/core/prefs.c:1390
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -1425,12 +1423,12 @@ msgstr ""
 "«%s» encontrado en la base de datos de configuración no es un valor válido "
 "para la combinación de teclas «%s»\n"
 
-#: src/core/prefs.c:1475
+#: src/core/prefs.c:1492
 #, c-format
 msgid "Workspace %d"
 msgstr "Área de trabajo %d"
 
-#: src/core/prefs.c:1732
+#: src/core/prefs.c:1749
 #, c-format
 msgid "Missing %s extension required for compositing\n"
 msgstr "Falta la extensión %s requerida para la composición\n"
@@ -1903,6 +1901,30 @@ msgstr "%d x %d"
 #: theme-viewer/theme-viewer-window.c:791
 msgid "Metacity Theme Viewer"
 msgstr "Visualizador de temas de Metacity"
+
+#~ msgid "Current theme"
+#~ msgstr "Tema actual"
+
+#~ msgid ""
+#~ "The theme determines the appearance of window borders, titlebar, and so "
+#~ "forth."
+#~ msgstr ""
+#~ "El tema determina la apariencia de los bordes de la ventana, el título y "
+#~ "demás."
+
+#, fuzzy
+#~| msgid "Failed to load theme \"%s\": %s\n"
+#~ msgid "Failed to load theme '%s': %s"
+#~ msgstr "Ocurrió un error al cargar el tema «%s»: %s\n"
+
+#~ msgid "Failed to scan themes directory: %s\n"
+#~ msgstr "Falló al inspeccionar la carpeta de temas: %s\n"
+
+#~ msgid ""
+#~ "Could not find a theme! Be sure %s exists and contains the usual themes.\n"
+#~ msgstr ""
+#~ "No se ha podido encontrar un tema. Asegúrese de que %s existe y contiene "
+#~ "los temas usuales.\n"
 
 #~ msgid "OK"
 #~ msgstr "Aceptar"
