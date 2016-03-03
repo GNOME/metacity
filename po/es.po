@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: metacity.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-29 13:31+0000\n"
-"PO-Revision-Date: 2016-03-01 09:09+0100\n"
+"POT-Creation-Date: 2016-03-02 13:38+0000\n"
+"PO-Revision-Date: 2016-03-03 09:25+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -684,13 +684,11 @@ msgstr "derecha"
 
 #: libmetacity/meta-frame-layout.c:78
 #, c-format
-#| msgid "frame geometry does not specify \"%s\" dimension"
 msgid "frame geometry does not specify '%s' dimension"
 msgstr "LAa geometría del marco no especifica la dimensión «%s»"
 
 #: libmetacity/meta-frame-layout.c:97
 #, c-format
-#| msgid "frame geometry does not specify dimension \"%s\" for border \"%s\""
 msgid "frame geometry does not specify dimension '%s' for border '%s'"
 msgstr "geometría del marco no especifica la dimensión «%s» para el borde «%s»"
 
@@ -705,17 +703,11 @@ msgstr "La geometría del marco no especifica el tamaño de los botones"
 
 #: libmetacity/meta-frame-style.c:144 libmetacity/meta-frame-style.c:479
 #, c-format
-#| msgid ""
-#| "Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/"
-#| ">"
 msgid "Missing <frame state='%s' resize='%s' focus='%s' style='whatever' />"
 msgstr "Falta <frame state='%s' resize='%s' focus='%s' style='lo que sea' />"
 
 #: libmetacity/meta-frame-style.c:336
 #, c-format
-#| msgid ""
-#| "<button function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> must be "
-#| "specified for this frame style"
 msgid ""
 "<button function='%s' state='%s' draw_ops='whatever'/> must be specified for "
 "this frame style"
@@ -737,7 +729,6 @@ msgstr "MetaThemeImplClass::carga no implementada para «%s»"
 #.
 #: libmetacity/meta-theme-metacity.c:51
 #, c-format
-#| msgid "No \"%s\" attribute on element <%s>"
 msgid "No '%s' attribute on element <%s>"
 msgstr "Ningún atributo «%s» en el elemento <%s>"
 
@@ -748,13 +739,11 @@ msgstr "Línea %d carácter %d: %s"
 
 #: libmetacity/meta-theme-metacity.c:362
 #, c-format
-#| msgid "Could not parse \"%s\" as an integer"
 msgid "Could not parse '%s' as an integer"
 msgstr "No se puede interpretar «%s» como un entero"
 
 #: libmetacity/meta-theme-metacity.c:370 libmetacity/meta-theme-metacity.c:587
 #, c-format
-#| msgid "Did not understand trailing characters \"%s\" in string \"%s\""
 msgid "Did not understand trailing characters '%s' in string '%s'"
 msgstr "No se comprenden los caracteres finales «%s» en la cadena «%s»"
 
@@ -770,26 +759,21 @@ msgstr "El entero %ld es demasiado grande, el máximo actual es %d"
 
 #: libmetacity/meta-theme-metacity.c:488
 #, c-format
-#| msgid "Attribute \"%s\" repeated twice on the same <%s> element"
 msgid "Attribute '%s' repeated twice on the same <%s> element"
 msgstr "El atributo «%s» se repite dos veces en el mismo elemento <%s>"
 
 #: libmetacity/meta-theme-metacity.c:510 libmetacity/meta-theme-metacity.c:554
 #, c-format
-#| msgid "Attribute \"%s\" is invalid on <%s> element in this context"
 msgid "Attribute '%s' is invalid on <%s> element in this context"
 msgstr "El atributo «%s» no es válido en éste contexto en el elemento <%s>"
 
 #: libmetacity/meta-theme-metacity.c:579 libmetacity/meta-theme-metacity.c:617
 #, c-format
-#| msgid "Could not parse \"%s\" as a floating point number"
 msgid "Could not parse '%s' as a floating point number"
 msgstr "No se puede interpretar «%s» como un número de coma flotante"
 
 #: libmetacity/meta-theme-metacity.c:649
 #, c-format
-#| msgid ""
-#| "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g\n"
 msgid "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g"
 msgstr ""
 "El valor de alfa debe estar entre 0.0 (invisible) y 1.0 (opaco completo), "
@@ -797,9 +781,6 @@ msgstr ""
 
 #: libmetacity/meta-theme-metacity.c:695
 #, c-format
-#| msgid ""
-#| "Invalid title scale \"%s\" (must be one of xx-small,x-small,small,medium,"
-#| "large,x-large,xx-large)\n"
 msgid ""
 "Invalid title scale '%s' (must be one of xx-small,x-small,small,medium,large,"
 "x-large,xx-large)\n"
@@ -809,15 +790,12 @@ msgstr ""
 
 #: libmetacity/meta-theme-metacity.c:724 libmetacity/meta-theme-metacity.c:752
 #, c-format
-#| msgid "Boolean values must be \"true\" or \"false\" not \"%s\""
 msgid "Boolean values must be 'true' or 'false' not '%s'"
 msgstr "Valores booleanos deben ser «true» o «falsa» no «%s»"
 
 #: libmetacity/meta-theme-metacity.c:781 libmetacity/meta-theme-metacity.c:818
 #: libmetacity/meta-theme-metacity.c:856
 #, c-format
-#| msgid ""
-#| "User-defined constants must begin with a capital letter; \"%s\" does not"
 msgid "User-defined constants must begin with a capital letter; '%s' does not"
 msgstr ""
 "Las constantes definidas por el usuario deben comenzar con una letra "
@@ -826,7 +804,6 @@ msgstr ""
 #: libmetacity/meta-theme-metacity.c:790 libmetacity/meta-theme-metacity.c:827
 #: libmetacity/meta-theme-metacity.c:865
 #, c-format
-#| msgid "Constant \"%s\" has already been defined"
 msgid "Constant '%s' has already been defined"
 msgstr "La constante «%s» ya está definida"
 
@@ -843,21 +820,19 @@ msgid "<%s> parent \"%s\" has not been defined"
 msgstr "El <%s> padre «%s» no se ha definido"
 
 #: libmetacity/meta-theme-metacity.c:1114
-#, fuzzy, c-format
+#, c-format
 #| msgid "<%s> name \"%s\" used a second time"
 msgid "<%s> name '%s' used a second time"
-msgstr "<%s> nombre «%s» usado una segunda vez"
+msgstr "<%s> nombre «%s» usado por segunda vez"
 
 #: libmetacity/meta-theme-metacity.c:1160
 #: libmetacity/meta-theme-metacity.c:1262
 #, c-format
-#| msgid "<%s> parent \"%s\" has not been defined"
 msgid "<%s> parent '%s' has not been defined"
 msgstr "El <%s> padre «%s» no se ha definido"
 
 #: libmetacity/meta-theme-metacity.c:1173
 #, c-format
-#| msgid "<%s> geometry \"%s\" has not been defined"
 msgid "<%s> geometry '%s' has not been defined"
 msgstr "La <%s> geometría «%s» no se ha definida"
 
@@ -872,22 +847,22 @@ msgid "You must specify a background for an alpha value to be meaningful"
 msgstr "Debe especificar un fondo para un valor alfa para que tenga sentido"
 
 #: libmetacity/meta-theme-metacity.c:1296
-#, fuzzy, c-format
+#, c-format
 #| msgid "Unknown type \"%s\" on <%s> element"
 msgid "Unknown type '%s' on <%s> element"
-msgstr "Tipo «%s» desconocido en el elemento <%s>"
+msgstr "Tipo «%s» no conocido en el elemento <%s>"
 
 #: libmetacity/meta-theme-metacity.c:1305
-#, fuzzy, c-format
+#, c-format
 #| msgid "Unknown style_set \"%s\" on <%s> element"
 msgid "Unknown style_set '%s' on <%s> element"
-msgstr "style_set «%s» desconocido en el elemento <%s>"
+msgstr "style_set «%s» no conocido en el elemento <%s>"
 
 #: libmetacity/meta-theme-metacity.c:1314
-#, fuzzy, c-format
+#, c-format
 #| msgid "Window type \"%s\" has already been assigned a style set"
 msgid "Window type '%s' has already been assigned a style set"
-msgstr "El tipo de ventana «%s» ya ha sido asignado a un conjunto de estilo"
+msgstr "El tipo de ventana «%s» ya está asignado a un conjunto de estilo"
 
 #: libmetacity/meta-theme-metacity.c:1343
 #: libmetacity/meta-theme-metacity.c:1407
@@ -906,7 +881,6 @@ msgstr "El elemento <%s> no está permitido debajo de <%s>"
 #: libmetacity/meta-theme-metacity.c:1443
 #: libmetacity/meta-theme-metacity.c:1569
 #: libmetacity/meta-theme-metacity.c:1583
-#, fuzzy
 #| msgid ""
 #| "Cannot specify both \"button_width\"/\"button_height\" and \"aspect_ratio"
 #| "\" for buttons"
@@ -914,26 +888,26 @@ msgid ""
 "Cannot specify both 'button_width'/'button_height' and 'aspect_ratio' for "
 "buttons"
 msgstr ""
-"No se puede especificar ambos «button_width»/«button_height» y «aspect "
-"ratio» para los botones"
+"No se puede especificar ambos atributos «button_width»/«button_height» y "
+"«aspect ratio» para los botones"
 
 #: libmetacity/meta-theme-metacity.c:1452
-#, fuzzy, c-format
+#, c-format
 #| msgid "Aspect ratio \"%s\" is unknown"
 msgid "Aspect ratio '%s' is unknown"
-msgstr "La proporción «%s» es desconocido"
+msgstr "Proporción de aspecto «%s» no conocida"
 
 #: libmetacity/meta-theme-metacity.c:1514
-#, fuzzy, c-format
+#, c-format
 #| msgid "Border \"%s\" is unknown"
 msgid "Border '%s' is unknown"
-msgstr "El borde «%s» es desconocido"
+msgstr "Borde «%s» no conocido"
 
 #: libmetacity/meta-theme-metacity.c:1592
-#, fuzzy, c-format
+#, c-format
 #| msgid "Distance \"%s\" is unknown"
 msgid "Distance '%s' is unknown"
-msgstr "La distancia «%s» es desconocida"
+msgstr "Distancia «%s» no conocida"
 
 #: libmetacity/meta-theme-metacity.c:1803
 #, c-format
@@ -983,7 +957,7 @@ msgstr "No se entendió la flecha «%s» para el elemento <%s>"
 #: libmetacity/meta-theme-metacity.c:2739
 #, c-format
 msgid "No <draw_ops> called \"%s\" has been defined"
-msgstr "No se ha definido una <draw_ops> llamada «%s»"
+msgstr "No se ha definido ninguna <draw_ops> llamada «%s»"
 
 #: libmetacity/meta-theme-metacity.c:2684
 #: libmetacity/meta-theme-metacity.c:2751
@@ -1012,16 +986,18 @@ msgid "Unknown function \"%s\" for button"
 msgstr "Función desconocida «%s» para el botón"
 
 #: libmetacity/meta-theme-metacity.c:3026
-#, fuzzy, c-format
+#, c-format
 #| msgid "Button function \"%s\" does not exist in this version (%d, need %d)"
 msgid "Button function '%s' does not exist in this version (%d, need %d)"
-msgstr "La función del botón «%s» no existe en esta versión (%d, necesita %d)"
+msgstr ""
+"La función del botón «%s» no está definida para esta versión (%d, %d "
+"necesaria)"
 
 #: libmetacity/meta-theme-metacity.c:3035
-#, fuzzy, c-format
+#, c-format
 #| msgid "Unknown state \"%s\" for button"
 msgid "Unknown state '%s' for button"
-msgstr "Estado desconocido «%s» para el botón"
+msgstr "Estado no conocido «%s» para el botón"
 
 #: libmetacity/meta-theme-metacity.c:3042
 #, c-format
@@ -1029,7 +1005,7 @@ msgid "Frame style already has a button for function %s state %s"
 msgstr "El estilo del marcos ya tiene un botón para la función %s estado %s"
 
 #: libmetacity/meta-theme-metacity.c:3059
-#, fuzzy, c-format
+#, c-format
 #| msgid "No <draw_ops> with the name \"%s\" has been defined"
 msgid "No <draw_ops> with the name '%s' has been defined"
 msgstr "No se ha definido ninguna <draw_ops> con el nombre «%s»"
@@ -1062,32 +1038,32 @@ msgstr ""
 "especificado los dos elementos)"
 
 #: libmetacity/meta-theme-metacity.c:3269
-#, fuzzy, c-format
+#, c-format
 #| msgid "\"%s\" is not a valid value for focus attribute"
 msgid "'%s' is not a valid value for focus attribute"
-msgstr "«%s» no es valor válido para el atributo foco"
+msgstr "«%s» es un valor no válido para el atributo de foco"
 
 #: libmetacity/meta-theme-metacity.c:3278
-#, fuzzy, c-format
+#, c-format
 #| msgid "\"%s\" is not a valid value for state attribute"
 msgid "'%s' is not a valid value for state attribute"
-msgstr "«%s» no es un valor válido para el atributo estado"
+msgstr "«%s» es un valor no válido para el atributo de estado"
 
 #: libmetacity/meta-theme-metacity.c:3287
-#, fuzzy, c-format
+#, c-format
 #| msgid "A style called \"%s\" has not been defined"
 msgid "A style called '%s' has not been defined"
-msgstr "No se ha definido ningún estilo llamado «%s»"
+msgstr "No se ha definido un estilo llamado «%s»"
 
 #: libmetacity/meta-theme-metacity.c:3305
 #: libmetacity/meta-theme-metacity.c:3328
-#, fuzzy, c-format
+#, c-format
 #| msgid "\"%s\" is not a valid value for resize attribute"
 msgid "'%s' is not a valid value for resize attribute"
-msgstr "«%s» no es un estado válido para el atributo resize"
+msgstr "«%s» es un estado no válido para el atributo de redimensión"
 
 #: libmetacity/meta-theme-metacity.c:3339
-#, fuzzy, c-format
+#, c-format
 #| msgid ""
 #| "Should not have \"resize\" attribute on <%s> element for maximized/shaded "
 #| "states"
@@ -1095,17 +1071,17 @@ msgid ""
 "Should not have 'resize' attribute on <%s> element for maximized/shaded "
 "states"
 msgstr ""
-"No debería tener un atributo «resize» en el elemento <%s> para los estados "
-"maximizado/enrollado"
+"No debería contener el atributo «resize» en el elemento <%s> para los "
+"estados maximizado/sombreado"
 
 #: libmetacity/meta-theme-metacity.c:3360
-#, fuzzy, c-format
+#, c-format
 #| msgid ""
 #| "Should not have \"resize\" attribute on <%s> element for maximized states"
 msgid "Should not have 'resize' attribute on <%s> element for maximized states"
 msgstr ""
-"No debería tener un atributo «resize» en el elemento <%s> para los estados "
-"maximizados."
+"No debería contener un atributo «resize» en el elemento <%s> para los "
+"estados maximizados"
 
 #: libmetacity/meta-theme-metacity.c:3375
 #: libmetacity/meta-theme-metacity.c:3423
@@ -1130,7 +1106,6 @@ msgid "Bad version specification '%s'"
 msgstr "Especificación de versión «%s» errónea"
 
 #: libmetacity/meta-theme-metacity.c:3596
-#, fuzzy
 #| msgid ""
 #| "\"version\" attribute cannot be used in metacity-theme-1.xml or metacity-"
 #| "theme-2.xml"
@@ -1138,7 +1113,7 @@ msgid ""
 "'version' attribute cannot be used in metacity-theme-1.xml or metacity-"
 "theme-2.xml"
 msgstr ""
-"No se puede usar el atributo «version» con metacity-theme-1.xml o metacity-"
+"El atributo «version» no debe usarse en metacity-theme-1.xml o metacity-"
 "theme-2.xml"
 
 #: libmetacity/meta-theme-metacity.c:3619
@@ -1194,13 +1169,13 @@ msgstr "El elemento <%s> no esta permitido dentro del elemento <%s>"
 #: libmetacity/meta-theme-metacity.c:3829
 #: libmetacity/meta-theme-metacity.c:3837
 #: libmetacity/meta-theme-metacity.c:3846
-#, fuzzy, c-format
+#, c-format
 #| msgid "No <%s> set for theme \"%s\""
 msgid "No <%s> set for theme '%s'"
-msgstr "No se configuró <%s> para el tema «%s»"
+msgstr "Ningún <%s> establecido para el tema «%s»"
 
 #: libmetacity/meta-theme-metacity.c:3863
-#, fuzzy, c-format
+#, c-format
 #| msgid ""
 #| "No frame style set for window type \"%s\" in theme \"%s\", add a <window "
 #| "type=\"%s\" style_set=\"whatever\"/> element"
@@ -1208,8 +1183,8 @@ msgid ""
 "No frame style set for window type '%s' in theme '%s', add a <window "
 "type='%s' style_set='whatever' /> element"
 msgstr ""
-"No hay un estilo de marco para el tipo de ventana «%s» en el tema «%s», "
-"añada un elemento <window type=\"%s\" style_set=\"whatever\"/>"
+"Ningún estilo de marco establecido para el tipo de ventana «%s» en el tema "
+"«%s», añada un elemento <window type=\"%s\" style_set=\"lo que sea\"/>"
 
 #: libmetacity/meta-theme-metacity.c:4126
 msgid "No draw_ops provided for frame piece"
@@ -1234,10 +1209,10 @@ msgid "No text is allowed inside element <%s>"
 msgstr "No se permite texto dentro del elemento <%s>"
 
 #: libmetacity/meta-theme-metacity.c:4593
-#, fuzzy, c-format
+#, c-format
 #| msgid "Failed to find a valid file for theme %s\n"
 msgid "Failed to find a valid file for theme '%s'"
-msgstr "Falló al encontrar un archivo válido para el tema%s\n"
+msgstr "Falla al encontrar un archivo válido para el tema «%s»"
 
 #: src/core/bell.c:296
 msgid "Bell event"
