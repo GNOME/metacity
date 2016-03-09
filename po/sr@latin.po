@@ -1,6 +1,8 @@
 # Serbian translation of metacity
 # Courtesy of Prevod.org team (http://prevod.org/) -- 2003—2016.
 # This file is distributed under the same license as the metacity package.
+#
+# Translators: 
 # Goran Rakić <grakic@devbase.net>
 # Danilo Šegan <danilo@prevod.org>, 2005.
 # Miroslav Nikolić <miroslavnikolic@rocketmail.com>, 2011—2016.
@@ -9,10 +11,10 @@ msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=metacit"
 "y&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-23 01:49+0000\n"
-"PO-Revision-Date: 2016-02-23 10:32+0200\n"
+"POT-Creation-Date: 2016-03-09 01:34+0000\n"
+"PO-Revision-Date: 2016-03-09 09:35+0200\n"
 "Last-Translator: Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
-"Language-Team: Serbian <gnom@prevod.org>\n"
+"Language-Team: Serbian <(nothing)>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -345,33 +347,43 @@ msgid "Theme Name"
 msgstr "Naziv teme"
 
 #: data/schemas/org.gnome.metacity.theme.gschema.xml:12
+#| msgid ""
+#| "This setting is only used if Metacity is selected as theme type. You MUST "
+#| "provide valid Metacity theme name, otherwise Metacity will fall back to "
+#| "default GTK+ theme - Adwaita."
 msgid ""
-"This setting is only used if Metacity is selected as theme type. You MUST "
-"provide valid Metacity theme name, otherwise Metacity will fall back to "
-"default GTK+ theme - Adwaita."
+"This setting is only used if Metacity is selected as the theme type. You "
+"MUST provide a valid Metacity theme name, otherwise Metacity will fall back "
+"to the default GTK+ theme - Adwaita."
 msgstr ""
 "Ovo podešavanje se koristi samo ako je Metasiti izabran kao vrsta teme. "
 "MORATE da dostavite ispravan naziv teme Metasitija, u suprotnom Metasiti će "
 "se prebaciti na osnovnu Gtk+ temu — na Advajtu."
 
 #: data/schemas/org.gnome.metacity.theme.gschema.xml:21
-#| msgid "Frame Type:"
 msgid "Theme Type"
 msgstr "Vrsta teme"
 
 #: data/schemas/org.gnome.metacity.theme.gschema.xml:22
+#| msgid ""
+#| "Metacity supports two theme types - GTK+ (gtk.css) and Metacity (metacity-"
+#| "theme-x.xml). GTK+ theme: all data is loaded from CSS. This is same theme "
+#| "that is used by mutter for server side decorations and by GTK+ for client "
+#| "side decorations. Metacity theme: data is loaded from metacity-theme-x."
+#| "xml and css. Using this theme type you MUST provide valid theme name."
 msgid ""
 "Metacity supports two theme types - GTK+ (gtk.css) and Metacity (metacity-"
-"theme-x.xml). GTK+ theme: all data is loaded from CSS. This is same theme "
-"that is used by mutter for server side decorations and by GTK+ for client "
-"side decorations. Metacity theme: data is loaded from metacity-theme-x.xml "
-"and css. Using this theme type you MUST provide valid theme name."
+"theme-x.xml). GTK+ theme: all data is loaded from CSS. This is the same "
+"theme that is used by Mutter for server-side decorations and by GTK+ for "
+"client-side decorations. Metacity theme: data is loaded from metacity-theme-"
+"x.xml and CSS. When using this theme type you MUST provide a valid theme "
+"name."
 msgstr ""
 "Metasiti podržava dve vrste tema — Gtk+ (gtk.css) i Metasiti (metacity-"
 "theme-x.xml). Gtk+ tema: svi podaci se učitavaju iz CSS-a. To je ista tema "
-"koju koristi mater za ukrase na strani servera i Gtk+ za ukrase na strani "
+"koju koristi Mater za ukrase na strani servera i Gtk+ za ukrase na strani "
 "klijenta. Metasiti tema: podaci se učitavaju iz „metacity-theme-x.xml“-a i "
-"„css“-a. Kada koristite ovu temu MORATE da dostavite ispravan naziv teme."
+"„CSS“-a. Kada koristite ovu temu MORATE da dostavite ispravan naziv teme."
 
 #: data/ui/theme-viewer-window.ui:41
 msgid "Dark Theme:"
@@ -1135,7 +1147,6 @@ msgstr "Nije dozvoljen tekst unutar elementa <%s>"
 
 #: libmetacity/meta-theme-metacity.c:4593
 #, c-format
-#| msgid "Failed to find a valid file for theme %s"
 msgid "Failed to find a valid file for theme '%s'"
 msgstr "Nisam uspeo da pronađem ispravnu datoteku za temu „%s“"
 
