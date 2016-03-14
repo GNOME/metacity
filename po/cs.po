@@ -644,7 +644,7 @@ msgstr "Vyjádření souřadnic zřejmě nemá žádné operátory nebo operandy
 #: libmetacity/meta-draw-spec.c:1266
 #, c-format
 msgid "Theme contained an expression that resulted in an error: %s"
-msgstr "Motiv obsahoval výraz, který způsobil chybu: %s\n"
+msgstr "Motiv obsahoval výraz, který způsobil chybu: %s"
 
 #: libmetacity/meta-frame-layout.c:47
 msgid "top"
@@ -758,7 +758,7 @@ msgstr "Nelze zpracovat „%s“ jako desetinné číslo"
 msgid "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g"
 msgstr ""
 "Průhlednost alfa musí být mezi 0.0 (neviditelný) a 1.0 (zcela neprůhledný), "
-"ve skutečnosti měla hodnotu %g\n"
+"ve skutečnosti měla hodnotu %g"
 
 #: libmetacity/meta-theme-metacity.c:695
 #, c-format
@@ -1148,7 +1148,7 @@ msgstr "V prvku <%s> není dovolen žádný text"
 #: libmetacity/meta-theme-metacity.c:4593
 #, c-format
 msgid "Failed to find a valid file for theme '%s'"
-msgstr "Nelze nalézt platný soubor motivu „%s“\n"
+msgstr "Nelze nalézt platný soubor motivu „%s“"
 
 #: src/core/bell.c:296
 msgid "Bell event"
