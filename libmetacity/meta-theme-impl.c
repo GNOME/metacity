@@ -298,3 +298,13 @@ map_button_state (MetaButtonType           button_type,
 
   return META_BUTTON_STATE_LAST;
 }
+
+void
+scale_border (GtkBorder *border,
+              double     factor)
+{
+  border->left *= factor;
+  border->right *= factor;
+  border->top *= factor;
+  border->bottom *= factor;
+}

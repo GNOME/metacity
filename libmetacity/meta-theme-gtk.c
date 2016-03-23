@@ -152,16 +152,6 @@ get_min_size (GtkStyleContext *style,
 }
 
 static void
-scale_border (GtkBorder *border,
-              double     factor)
-{
-  border->left *= factor;
-  border->right *= factor;
-  border->top *= factor;
-  border->bottom *= factor;
-}
-
-static void
 get_shadow_extents (GtkStyleContext *style,
                     GtkBorder       *border)
 {

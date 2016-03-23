@@ -94,6 +94,10 @@ MetaButtonState    map_button_state              (MetaButtonType           butto
                                                   gint                     middle_bg_offset,
                                                   MetaButtonState          button_states[META_BUTTON_TYPE_LAST]);
 
+G_GNUC_INTERNAL
+void               scale_border                  (GtkBorder               *border,
+                                                  double                   factor);
+
 G_END_DECLS
 
 #endif
