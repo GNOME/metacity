@@ -98,6 +98,9 @@ G_GNUC_INTERNAL
 void               scale_border                  (GtkBorder               *border,
                                                   double                   factor);
 
+G_GNUC_INTERNAL
+int                get_window_scaling_factor     (void);
+
 G_END_DECLS
 
 #endif

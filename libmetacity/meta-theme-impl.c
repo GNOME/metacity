@@ -308,3 +308,19 @@ scale_border (GtkBorder *border,
   border->top *= factor;
   border->bottom *= factor;
 }
+
+int
+get_window_scaling_factor (void)
+{
+  GdkScreen *screen;
+  GValue value = G_VALUE_INIT;
+
+  screen = gdk_screen_get_default ();
+
+  g_value_init (&value, G_TYPE_INT);
+
+  if (gdk_screen_get_setting (screen, "gdk-window-scaling-factor", &value))
+    return g_value_get_int (&value);
+  else
+    return 1;
+}
