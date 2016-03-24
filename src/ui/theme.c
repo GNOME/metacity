@@ -90,6 +90,9 @@ static void rgb_to_hls			(gdouble	 *r,
 static void hls_to_rgb			(gdouble	 *h,
 					 gdouble	 *l,
 					 gdouble	 *s);
+static int get_window_scaling_factor (void);
+static void scale_border		(GtkBorder *border,
+					 double		 factor);
 
 /**
  * The current theme. (Themes are singleton.)
@@ -419,6 +422,7 @@ meta_frame_layout_get_borders (const MetaFrameLayout *layout,
 {
   int buttons_height, title_height;
   MetaTheme *current;
+  gint scale;
 
   meta_frame_borders_clear (borders);
 
@@ -472,6 +476,12 @@ meta_frame_layout_get_borders (const MetaFrameLayout *layout,
   borders->total.right = borders->invisible.right + borders->visible.right;
   borders->total.bottom = borders->invisible.bottom + borders->visible.bottom;
   borders->total.top = borders->invisible.top + borders->visible.top;
+
+  scale = get_window_scaling_factor ();
+
+  scale_border (&borders->visible, scale);
+  scale_border (&borders->invisible, scale);
+  scale_border (&borders->total, scale);
 }
 
 static MetaButtonType
@@ -687,6 +697,22 @@ scale_border (GtkBorder *border,
   border->bottom *= factor;
 }
 
+static int
+get_window_scaling_factor (void)
+{
+  GdkScreen *screen;
+  GValue value = G_VALUE_INIT;
+
+  screen = gdk_screen_get_default ();
+
+  g_value_init (&value, G_TYPE_INT);
+
+  if (gdk_screen_get_setting (screen, "gdk-window-scaling-factor", &value))
+    return g_value_get_int (&value);
+  else
+    return 1;
+}
+
 static void
 meta_frame_layout_sync_with_style (MetaFrameLayout *layout,
                                    MetaStyleInfo   *style_info,
@@ -803,6 +829,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
   int button_y;
   int title_right_edge;
   int width, height;
+  int scale;
   int button_width, button_height;
   int min_size_for_rounding;
 
@@ -817,6 +844,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
   gboolean right_buttons_has_spacer[MAX_BUTTONS_PER_CORNER];
 
   current = meta_theme_get_current ();
+  scale = get_window_scaling_factor ();
 
   meta_frame_layout_sync_with_style (layout, style_info, flags);
 
@@ -826,7 +854,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
                                  &borders);
 
   fgeom->borders = borders;
-  fgeom->top_height = layout->top_height;
+  fgeom->top_height = layout->top_height * scale;
 
   width = client_width + borders.total.left + borders.total.right;
 
@@ -836,10 +864,10 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
   fgeom->width = width;
   fgeom->height = height;
 
-  fgeom->top_titlebar_edge = layout->title_border.top;
-  fgeom->bottom_titlebar_edge = layout->title_border.bottom;
-  fgeom->left_titlebar_edge = layout->left_titlebar_edge;
-  fgeom->right_titlebar_edge = layout->right_titlebar_edge;
+  fgeom->top_titlebar_edge = layout->title_border.top * scale;
+  fgeom->bottom_titlebar_edge = layout->title_border.bottom * scale;
+  fgeom->left_titlebar_edge = layout->left_titlebar_edge * scale;
+  fgeom->right_titlebar_edge = layout->right_titlebar_edge * scale;
 
   /* gcc warnings */
   button_width = -1;
@@ -848,12 +876,12 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
   switch (layout->button_sizing)
     {
     case META_BUTTON_SIZING_ASPECT:
-      button_height = borders.visible.top - layout->button_border.top - layout->button_border.bottom;
+      button_height = borders.visible.top - (layout->button_border.top + layout->button_border.bottom) * scale;
       button_width = button_height / layout->button_aspect;
       break;
     case META_BUTTON_SIZING_FIXED:
-      button_width = layout->button_width;
-      button_height = layout->button_height;
+      button_width = layout->button_width * scale;
+      button_height = layout->button_height * scale;
       break;
     case META_BUTTON_SIZING_LAST:
     default:
@@ -946,7 +974,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
       int space_used_by_buttons;
       int space_available;
 
-      space_available = fgeom->width - layout->left_titlebar_edge - layout->right_titlebar_edge;
+      space_available = fgeom->width - (layout->left_titlebar_edge + layout->right_titlebar_edge) * scale;
 
       space_used_by_buttons = 0;
 
@@ -954,21 +982,21 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
       space_used_by_buttons += (button_width * 0.75) * n_left_spacers;
       if (current->is_gtk_theme == FALSE)
         {
-          space_used_by_buttons += layout->button_border.left * n_left;
-          space_used_by_buttons += layout->button_border.right * n_left;
+          space_used_by_buttons += layout->button_border.left * scale * n_left;
+          space_used_by_buttons += layout->button_border.right * scale * n_left;
         }
       else
-        space_used_by_buttons += layout->titlebar_spacing * MAX (n_left - 1, 0);
+        space_used_by_buttons += layout->titlebar_spacing * scale * MAX (n_left - 1, 0);
 
       space_used_by_buttons += button_width * n_right;
       space_used_by_buttons += (button_width * 0.75) * n_right_spacers;
       if (current->is_gtk_theme == FALSE)
         {
-          space_used_by_buttons += layout->button_border.left * n_right;
-          space_used_by_buttons += layout->button_border.right * n_right;
+          space_used_by_buttons += layout->button_border.left * scale * n_right;
+          space_used_by_buttons += layout->button_border.right * scale * n_right;
         }
       else
-        space_used_by_buttons += layout->titlebar_spacing * MAX (n_right - 1, 0);
+        space_used_by_buttons += layout->titlebar_spacing * scale * MAX (n_right - 1, 0);
 
       if (space_used_by_buttons <= space_available)
         break; /* Everything fits, bail out */
@@ -1051,10 +1079,11 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
 
   /* center buttons vertically */
   button_y = (borders.visible.top - fgeom->top_height -
-              (button_height + layout->button_border.top + layout->button_border.bottom)) / 2 + layout->button_border.top + fgeom->top_height + borders.invisible.top;
+              (button_height + (layout->button_border.top + layout->button_border.bottom) * scale)) / 2 +
+              layout->button_border.top  * scale + fgeom->top_height + borders.invisible.top;
 
   /* right edge of farthest-right button */
-  x = width - layout->right_titlebar_edge - borders.invisible.right;
+  x = width - layout->right_titlebar_edge * scale - borders.invisible.right;
 
   i = n_right - 1;
   while (i >= 0)
@@ -1066,7 +1095,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
 
       rect = right_func_rects[i];
       if (current->is_gtk_theme == FALSE)
-        rect->visible.x = x - layout->button_border.right - button_width;
+        rect->visible.x = x - layout->button_border.right * scale - button_width;
       else
         rect->visible.x = x - button_width;
       if (right_buttons_has_spacer[i])
@@ -1088,11 +1117,10 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
           if (i == n_right - 1)
             {
               if (current->is_gtk_theme == FALSE)
-                rect->clickable.width += layout->right_titlebar_edge + layout->right_width + layout->button_border.right;
+                rect->clickable.width += (layout->right_titlebar_edge + layout->right_width + layout->button_border.right) * scale;
               else
-                rect->clickable.width += layout->right_titlebar_edge + layout->right_width;
+                rect->clickable.width += (layout->right_titlebar_edge + layout->right_width) * scale;
             }
-
         }
       else
         g_memmove (&(rect->clickable), &(rect->visible), sizeof(rect->clickable));
@@ -1100,25 +1128,25 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
       *(right_bg_rects[i]) = rect->visible;
 
       if (current->is_gtk_theme == FALSE)
-        x = rect->visible.x - layout->button_border.left;
+        x = rect->visible.x - layout->button_border.left * scale;
       else
         {
           x = rect->visible.x;
 
           if (i > 0)
-            x -= layout->titlebar_spacing;
+            x -= layout->titlebar_spacing * scale;
         }
 
       --i;
     }
 
   /* save right edge of titlebar for later use */
-  title_right_edge = x - layout->title_border.right;
+  title_right_edge = x - layout->title_border.right * scale;
 
   /* Now x changes to be position from the left and we go through
    * the left-side buttons
    */
-  x = layout->left_titlebar_edge + borders.invisible.left;
+  x = layout->left_titlebar_edge * scale + borders.invisible.left;
   for (i = 0; i < n_left; i++)
     {
       MetaButtonSpace *rect;
@@ -1126,7 +1154,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
       rect = left_func_rects[i];
 
       if (current->is_gtk_theme == FALSE)
-        rect->visible.x = x + layout->button_border.left;
+        rect->visible.x = x + layout->button_border.left * scale;
       else
         rect->visible.x = x;
       rect->visible.y = button_y;
@@ -1144,12 +1172,12 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
         g_memmove (&(rect->clickable), &(rect->visible), sizeof(rect->clickable));
 
       if (current->is_gtk_theme == FALSE)
-        x = rect->visible.x + rect->visible.width + layout->button_border.right;
+        x = rect->visible.x + rect->visible.width + layout->button_border.right * scale;
       else
         {
           x = rect->visible.x + rect->visible.width;
           if (i < n_left - 1)
-            x += layout->titlebar_spacing;
+            x += layout->titlebar_spacing * scale;
         }
       if (left_buttons_has_spacer[i])
         x += (button_width * 0.75);
@@ -1160,10 +1188,10 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
   /* We always fill as much vertical space as possible with title rect,
    * rather than centering it like the buttons
    */
-  fgeom->title_rect.x = x + layout->title_border.left;
-  fgeom->title_rect.y = layout->title_border.top + borders.invisible.top;
+  fgeom->title_rect.x = x + layout->title_border.left * scale;
+  fgeom->title_rect.y = layout->title_border.top * scale + borders.invisible.top;
   fgeom->title_rect.width = title_right_edge - fgeom->title_rect.x;
-  fgeom->title_rect.height = borders.visible.top - layout->title_border.top - layout->title_border.bottom;
+  fgeom->title_rect.height = borders.visible.top - (layout->title_border.top + layout->title_border.bottom) * scale;
 
   /* Nuke title if it won't fit */
   if (fgeom->title_rect.width < 0 ||
@@ -1176,7 +1204,7 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
   if (flags & META_FRAME_SHADED)
     min_size_for_rounding = 0;
   else
-    min_size_for_rounding = 5;
+    min_size_for_rounding = 5 * scale;
 
   fgeom->top_left_corner_rounded_radius = 0;
   fgeom->top_right_corner_rounded_radius = 0;
@@ -1184,14 +1212,14 @@ meta_frame_layout_calc_geometry (MetaFrameLayout        *layout,
   fgeom->bottom_right_corner_rounded_radius = 0;
 
   if (borders.visible.top + borders.visible.left >= min_size_for_rounding)
-    fgeom->top_left_corner_rounded_radius = layout->top_left_corner_rounded_radius;
+    fgeom->top_left_corner_rounded_radius = layout->top_left_corner_rounded_radius * scale;
   if (borders.visible.top + borders.visible.right >= min_size_for_rounding)
-    fgeom->top_right_corner_rounded_radius = layout->top_right_corner_rounded_radius;
+    fgeom->top_right_corner_rounded_radius = layout->top_right_corner_rounded_radius * scale;
 
   if (borders.visible.bottom + borders.visible.left >= min_size_for_rounding)
-    fgeom->bottom_left_corner_rounded_radius = layout->bottom_left_corner_rounded_radius;
+    fgeom->bottom_left_corner_rounded_radius = layout->bottom_left_corner_rounded_radius * scale;
   if (borders.visible.bottom + borders.visible.right >= min_size_for_rounding)
-    fgeom->bottom_right_corner_rounded_radius = layout->bottom_right_corner_rounded_radius;
+    fgeom->bottom_right_corner_rounded_radius = layout->bottom_right_corner_rounded_radius * scale;
 }
 
 MetaGradientSpec*
@@ -3833,6 +3861,10 @@ fill_env (MetaPositionExprEnv *env,
           const MetaDrawInfo  *info,
           MetaRectangle        logical_region)
 {
+  int scale;
+
+  scale = get_window_scaling_factor ();
+
   /* FIXME this stuff could be raised into draw_op_list_draw() probably
    */
   env->rect = logical_region;
@@ -3840,12 +3872,12 @@ fill_env (MetaPositionExprEnv *env,
   env->object_height = -1;
   if (info->fgeom)
     {
-      env->left_width = info->fgeom->borders.visible.left;
-      env->right_width = info->fgeom->borders.visible.right;
-      env->top_height = info->fgeom->borders.visible.top;
-      env->bottom_height = info->fgeom->borders.visible.bottom;
-      env->frame_x_center = info->fgeom->width / 2 - logical_region.x;
-      env->frame_y_center = info->fgeom->height / 2 - logical_region.y;
+      env->left_width = info->fgeom->borders.visible.left / scale;
+      env->right_width = info->fgeom->borders.visible.right / scale;
+      env->top_height = info->fgeom->borders.visible.top / scale;
+      env->bottom_height = info->fgeom->borders.visible.bottom / scale;
+      env->frame_x_center = info->fgeom->width / scale / 2 - logical_region.x;
+      env->frame_y_center = info->fgeom->height / scale / 2 - logical_region.y;
     }
   else
     {
@@ -4734,8 +4766,9 @@ meta_frame_style_apply_scale (const MetaFrameStyle *style,
                               PangoFontDescription *font_desc)
 {
   int size = pango_font_description_get_size (font_desc);
+  double scale = style->layout->title_scale / get_window_scaling_factor ();
   pango_font_description_set_size (font_desc,
-                                   MAX (size * style->layout->title_scale, 1));
+                                   MAX (size * scale, 1));
 }
 
 gboolean
@@ -4886,53 +4919,57 @@ meta_frame_style_draw_with_style (MetaFrameStyle          *style,
   PangoRectangle extents;
   MetaDrawInfo draw_info;
   const MetaFrameBorders *borders;
+  int scale;
+
+  scale = get_window_scaling_factor ();
+  cairo_scale (cr, scale, scale);
 
   borders = &fgeom->borders;
 
-  visible_rect.x = borders->invisible.left;
-  visible_rect.y = borders->invisible.top;
-  visible_rect.width = fgeom->width - borders->invisible.left - borders->invisible.right;
-  visible_rect.height = fgeom->height - borders->invisible.top - borders->invisible.bottom;
+  visible_rect.x = borders->invisible.left / scale;
+  visible_rect.y = borders->invisible.top / scale;
+  visible_rect.width = (fgeom->width - borders->invisible.left - borders->invisible.right) / scale;
+  visible_rect.height = (fgeom->height - borders->invisible.top - borders->invisible.bottom) / scale;
 
   titlebar_rect.x = visible_rect.x;
   titlebar_rect.y = visible_rect.y;
   titlebar_rect.width = visible_rect.width;
-  titlebar_rect.height = borders->visible.top;
+  titlebar_rect.height = borders->visible.top / scale;
 
   left_titlebar_edge.x = titlebar_rect.x;
-  left_titlebar_edge.y = titlebar_rect.y + fgeom->top_titlebar_edge;
-  left_titlebar_edge.width = fgeom->left_titlebar_edge;
-  left_titlebar_edge.height = titlebar_rect.height - fgeom->top_titlebar_edge - fgeom->bottom_titlebar_edge;
+  left_titlebar_edge.y = titlebar_rect.y + fgeom->top_titlebar_edge / scale;
+  left_titlebar_edge.width = fgeom->left_titlebar_edge / scale;
+  left_titlebar_edge.height = titlebar_rect.height - (fgeom->top_titlebar_edge + fgeom->bottom_titlebar_edge) / scale;
 
   right_titlebar_edge.y = left_titlebar_edge.y;
   right_titlebar_edge.height = left_titlebar_edge.height;
-  right_titlebar_edge.width = fgeom->right_titlebar_edge;
+  right_titlebar_edge.width = fgeom->right_titlebar_edge / scale;
   right_titlebar_edge.x = titlebar_rect.x + titlebar_rect.width - right_titlebar_edge.width;
 
   top_titlebar_edge.x = titlebar_rect.x;
   top_titlebar_edge.y = titlebar_rect.y;
   top_titlebar_edge.width = titlebar_rect.width;
-  top_titlebar_edge.height = fgeom->top_titlebar_edge;
+  top_titlebar_edge.height = fgeom->top_titlebar_edge / scale;
 
   bottom_titlebar_edge.x = titlebar_rect.x;
   bottom_titlebar_edge.width = titlebar_rect.width;
-  bottom_titlebar_edge.height = fgeom->bottom_titlebar_edge;
+  bottom_titlebar_edge.height = fgeom->bottom_titlebar_edge / scale;
   bottom_titlebar_edge.y = titlebar_rect.y + titlebar_rect.height - bottom_titlebar_edge.height;
 
   left_edge.x = visible_rect.x;
-  left_edge.y = visible_rect.y + borders->visible.top;
-  left_edge.width = borders->visible.left;
-  left_edge.height = visible_rect.height - borders->visible.top - borders->visible.bottom;
+  left_edge.y = visible_rect.y + borders->visible.top / scale;
+  left_edge.width = borders->visible.left / scale;
+  left_edge.height = visible_rect.height - (borders->visible.top + borders->visible.bottom) / scale;
 
-  right_edge.x = visible_rect.x + visible_rect.width - borders->visible.right;
-  right_edge.y = visible_rect.y + borders->visible.top;
-  right_edge.width = borders->visible.right;
-  right_edge.height = visible_rect.height - borders->visible.top - borders->visible.bottom;
+  right_edge.x = visible_rect.x + visible_rect.width - borders->visible.right / scale;
+  right_edge.y = visible_rect.y + borders->visible.top / scale;
+  right_edge.width = borders->visible.right / scale;
+  right_edge.height = visible_rect.height - (borders->visible.top + borders->visible.bottom) / scale;
 
   bottom_edge.x = visible_rect.x;
-  bottom_edge.y = visible_rect.y + visible_rect.height - borders->visible.bottom;
+  bottom_edge.y = visible_rect.y + visible_rect.height - borders->visible.bottom / scale;
   bottom_edge.width = visible_rect.width;
-  bottom_edge.height = borders->visible.bottom;
+  bottom_edge.height = borders->visible.bottom / scale;
 
   if (title_layout)
     pango_layout_get_pixel_extents (title_layout,
@@ -4980,13 +5017,17 @@ meta_frame_style_draw_with_style (MetaFrameStyle          *style,
         case META_FRAME_PIECE_TITLEBAR_MIDDLE:
           rect.x = left_titlebar_edge.x + left_titlebar_edge.width;
           rect.y = top_titlebar_edge.y + top_titlebar_edge.height;
-          rect.width = titlebar_rect.width - left_titlebar_edge.width -
-            right_titlebar_edge.width;
+          rect.width = titlebar_rect.width - left_titlebar_edge.width - right_titlebar_edge.width;
           rect.height = titlebar_rect.height - top_titlebar_edge.height - bottom_titlebar_edge.height;
           break;
 
         case META_FRAME_PIECE_TITLE:
           rect = fgeom->title_rect;
+
+          rect.x /= scale;
+          rect.y /= scale;
+          rect.height /= scale;
+          rect.width /= scale;
           break;
 
         case META_FRAME_PIECE_LEFT_EDGE:
@@ -5056,6 +5097,11 @@ meta_frame_style_draw_with_style (MetaFrameStyle          *style,
               MetaButtonState button_state;
 
               get_button_rect (j, fgeom, middle_bg_offset, &rect);
+
+              rect.x /= scale;
+              rect.y /= scale;
+              rect.width /= scale;
+              rect.height /= scale;
 
               button_state = map_button_state (j, fgeom, middle_bg_offset, button_states);
               op_list = get_button (style, j, button_state);
@@ -5130,13 +5176,17 @@ meta_frame_style_draw_with_style_gtk (MetaFrameStyle          *frame_style,
   GdkRectangle titlebar_rect;
   GdkRectangle button_rect;
   const MetaFrameBorders *borders;
+  int scale;
+
+  scale = get_window_scaling_factor ();
+  cairo_scale (cr, scale, scale);
 
   borders = &fgeom->borders;
 
-  visible_rect.x = borders->invisible.left;
-  visible_rect.y = borders->invisible.top;
-  visible_rect.width = fgeom->width - borders->invisible.left - borders->invisible.right;
-  visible_rect.height = fgeom->height - borders->invisible.top - borders->invisible.bottom;
+  visible_rect.x = borders->invisible.left / scale;
+  visible_rect.y = borders->invisible.top / scale;
+  visible_rect.width = (fgeom->width - borders->invisible.left - borders->invisible.right) / scale;
+  visible_rect.height = (fgeom->height - borders->invisible.top - borders->invisible.bottom) / scale;
 
   meta_style_info_set_flags (style_info, flags);
 
@@ -5148,10 +5198,10 @@ meta_frame_style_draw_with_style_gtk (MetaFrameStyle          *frame_style,
                     visible_rect.x, visible_rect.y,
                     visible_rect.width, visible_rect.height);
 
-  titlebar_rect.x = visible_rect.x + borders->visible.left;
-  titlebar_rect.y = visible_rect.y + fgeom->top_height;
-  titlebar_rect.width = visible_rect.width - borders->visible.left - borders->visible.right;
-  titlebar_rect.height = borders->visible.top - fgeom->top_height;
+  titlebar_rect.x = visible_rect.x + borders->visible.left / scale;
+  titlebar_rect.y = visible_rect.y + fgeom->top_height / scale;
+  titlebar_rect.width = visible_rect.width - borders->visible.left / scale - borders->visible.right / scale;
+  titlebar_rect.height = borders->visible.top / scale - fgeom->top_height / scale;
 
   style = style_info->styles[META_STYLE_ELEMENT_TITLEBAR];
   gtk_render_background (style, cr,
@@ -5169,7 +5219,7 @@ meta_frame_style_draw_with_style_gtk (MetaFrameStyle          *frame_style,
       pango_layout_set_width (title_layout, -1);
       pango_layout_get_pixel_extents (title_layout, NULL, &logical);
 
-      text_width = MIN(fgeom->title_rect.width, logical.width);
+      text_width = MIN(fgeom->title_rect.width / scale, logical.width);
 
       if (text_width < logical.width)
         pango_layout_set_width (title_layout, PANGO_SCALE * text_width);
@@ -5178,10 +5228,10 @@ meta_frame_style_draw_with_style_gtk (MetaFrameStyle          *frame_style,
       x = titlebar_rect.x + (titlebar_rect.width - text_width) / 2;
       y = titlebar_rect.y + (titlebar_rect.height - logical.height) / 2;
 
-      if (x < fgeom->title_rect.x)
-        x = fgeom->title_rect.x;
-      else if (x + text_width > fgeom->title_rect.x + fgeom->title_rect.width)
-        x = fgeom->title_rect.x + fgeom->title_rect.width - text_width;
+      if (x < fgeom->title_rect.x / scale)
+        x = fgeom->title_rect.x / scale;
+      else if (x + text_width > (fgeom->title_rect.x + fgeom->title_rect.width) / scale)
+        x = (fgeom->title_rect.x + fgeom->title_rect.width) / scale - text_width;
 
       style = style_info->styles[META_STYLE_ELEMENT_TITLE];
       gtk_render_layout (style, cr, x, y, title_layout);
@@ -5200,6 +5250,11 @@ meta_frame_style_draw_with_style_gtk (MetaFrameStyle          *frame_style,
         gtk_style_context_add_class (style, button_class);
 
       get_button_rect (button_type, fgeom, 0, &button_rect);
+
+      button_rect.x /= scale;
+      button_rect.y /= scale;
+      button_rect.width /= scale;
+      button_rect.height /= scale;
 
       button_state = map_button_state (button_type, fgeom, 0, button_states);
 
@@ -5269,7 +5324,8 @@ meta_frame_style_draw_with_style_gtk (MetaFrameStyle          *frame_style,
               GtkIconTheme *theme = gtk_icon_theme_get_default ();
               GtkIconInfo *info;
 
-              info = gtk_icon_theme_lookup_icon (theme, icon_name, frame_style->layout->icon_size, 0);
+              info = gtk_icon_theme_lookup_icon_for_scale (theme,
+                      icon_name, frame_style->layout->icon_size, scale, 0);
               pixbuf = gtk_icon_info_load_symbolic_for_context (info, style, NULL, NULL);
             }
 
@@ -5278,15 +5334,15 @@ meta_frame_style_draw_with_style_gtk (MetaFrameStyle          *frame_style,
               float width, height;
               int x, y;
 
-              width = gdk_pixbuf_get_width (pixbuf);
-              height = gdk_pixbuf_get_height (pixbuf);
+              width = gdk_pixbuf_get_width (pixbuf) / scale;
+              height = gdk_pixbuf_get_height (pixbuf) / scale;
               x = button_rect.x + (button_rect.width - width) / 2;
               y = button_rect.y + (button_rect.height - height) / 2;
 
               cairo_translate (cr, x, y);
               cairo_scale (cr,
-                           width / frame_style->layout->icon_size,
-                           height / frame_style->layout->icon_size);
+                           width / frame_style->layout->icon_size / scale,
+                           height / frame_style->layout->icon_size / scale);
               gdk_cairo_set_source_pixbuf (cr, pixbuf, 0, 0);
                                            cairo_paint (cr);
 
@@ -5984,7 +6040,7 @@ meta_theme_get_title_scale (MetaTheme     *theme,
   if (style == NULL)
     return 1.0;
 
-  return style->layout->title_scale;
+  return style->layout->title_scale / get_window_scaling_factor ();
 }
 
 static GtkStyleContext *
@@ -6017,6 +6073,7 @@ create_style_context (GType            widget_type,
   gtk_style_context_set_path (style, path);
   gtk_widget_path_unref (path);
 
+  gtk_style_context_set_scale (style, get_window_scaling_factor ());
   gtk_style_context_add_provider (style, GTK_STYLE_PROVIDER (provider),
                                   GTK_STYLE_PROVIDER_PRIORITY_SETTINGS);
 
