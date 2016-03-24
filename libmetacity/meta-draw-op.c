@@ -22,6 +22,7 @@
 #include <math.h>
 
 #include "meta-draw-op-private.h"
+#include "meta-theme-impl-private.h"
 
 #define GDK_COLOR_RGBA(color)                            \
         ((guint32) (0xff                               | \
@@ -58,18 +59,22 @@ fill_env (MetaPositionExprEnv *env,
           const MetaDrawInfo  *info,
           GdkRectangle         logical_region)
 {
+  int scale;
+
+  scale = get_window_scaling_factor ();
+
   /* FIXME this stuff could be raised into draw_op_list_draw() probably
    */
   env->rect = logical_region;
   env->object_width = -1;
   env->object_height = -1;
 
-  env->left_width = info->borders.visible.left;
-  env->right_width = info->borders.visible.right;
-  env->top_height = info->borders.visible.top;
-  env->bottom_height = info->borders.visible.bottom;
-  env->frame_x_center = info->width / 2 - logical_region.x;
-  env->frame_y_center = info->height / 2 - logical_region.y;
+  env->left_width = info->borders.visible.left / scale;
+  env->right_width = info->borders.visible.right / scale;
+  env->top_height = info->borders.visible.top / scale;
+  env->bottom_height = info->borders.visible.bottom / scale;
+  env->frame_x_center = info->width / scale / 2 - logical_region.x;
+  env->frame_y_center = info->height / scale / 2 - logical_region.y;
 
   env->mini_icon_width = info->mini_icon ? gdk_pixbuf_get_width (info->mini_icon) : 0;
   env->mini_icon_height = info->mini_icon ? gdk_pixbuf_get_height (info->mini_icon) : 0;

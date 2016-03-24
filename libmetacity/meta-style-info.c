@@ -20,6 +20,7 @@
 
 #include "meta-frame-enums.h"
 #include "meta-style-info-private.h"
+#include "meta-theme-impl-private.h"
 
 static void
 add_toplevel_class (GtkStyleContext *style,
@@ -83,6 +84,7 @@ create_style_context (GtkStyleContext *parent,
   context = gtk_style_context_new ();
   gtk_style_context_set_path (context, path);
   gtk_style_context_set_parent (context, parent);
+  gtk_style_context_set_scale (context, get_window_scaling_factor ());
   gtk_widget_path_unref (path);
 
   gtk_style_context_add_provider (context, GTK_STYLE_PROVIDER (provider),
