@@ -114,8 +114,7 @@ metacity_SOURCES= 				\
 	ui/theme-parser.h			\
 	ui/theme.c				\
 	ui/theme.h				\
-	ui/ui.c					\
-	include/all-keybindings.h
+	ui/ui.c
 
 # by setting libmetacity_private_la_CFLAGS, the files shared with
 # metacity proper will be compiled with different names.
