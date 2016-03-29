@@ -1,3 +1,9 @@
+Version 3.18.3
+- Add Icon=preferences-system-windows in metacity.destkop. (Alberts Muktupāvels)
+- Scale window decorations on HiDPI displays, based on mutter. (Alberts
+  Muktupāvels, Florian Müllner, Iain Lane)
+- Partially revert "build everything as library". (Alberts Muktupāvels)
+
 Version 3.18.2
 ==============
 - Fix a segfault in metacity-theme-viewer. (Alberts Muktupāvels)
