@@ -19,8 +19,103 @@ AM_CPPFLAGS = \
 	$(NULL)
 
 metacity_SOURCES= 				\
+	core/async-getprop.c			\
+	core/async-getprop.h			\
+	core/atomnames.h                        \
+	core/bell.c				\
+	core/bell.h				\
+	core/boxes.c				\
+	include/boxes.h				\
+	compositor/compositor.c			\
+	compositor/compositor-private.h		\
+	compositor/compositor-xrender.c		\
+	compositor/compositor-xrender.h		\
+	include/compositor.h			\
+	core/above-tab-keycode.c		\
+	core/constraints.c			\
+	core/constraints.h			\
+	core/core.c				\
+	core/delete.c				\
+	core/display.c				\
+	core/display-private.h			\
+	include/display.h			\
+	ui/draw-workspace.c			\
+	ui/draw-workspace.h			\
+	core/edge-resistance.c			\
+	core/edge-resistance.h			\
+	core/effects.c				\
+	core/effects.h				\
+	core/errors.c				\
+	include/errors.h			\
+	core/eventqueue.c			\
+	core/eventqueue.h			\
+	core/frame.c				\
+	core/frame-private.h			\
+	include/frame.h				\
+	ui/gradient.c				\
+	ui/gradient.h				\
+	core/group-private.h			\
+	core/group-props.c			\
+	core/group-props.h			\
+	core/group.c				\
+	core/group.h				\
+	core/iconcache.c			\
+	core/iconcache.h			\
+	core/keybindings.c			\
+	core/keybindings.h			\
 	core/main.c				\
-	include/main.h
+	include/main.h				\
+	core/metacity-Xatomtype.h		\
+	core/place.c				\
+	core/place.h				\
+	core/prefs.c				\
+	include/prefs.h				\
+	core/screen.c				\
+	core/screen-private.h			\
+	include/screen.h			\
+	include/types.h                         \
+	core/session.c				\
+	core/session.h				\
+	core/stack.c				\
+	core/stack.h				\
+	core/util.c				\
+	include/util.h				\
+	core/window-props.c			\
+	core/window-props.h			\
+	core/window.c				\
+	core/window-private.h			\
+	include/window.h			\
+	core/workspace.c			\
+	core/workspace.h			\
+	core/xprops.c				\
+	include/xprops.h			\
+	include/common.h			\
+	include/core.h				\
+	include/ui.h				\
+	ui/fixedtip.c				\
+	ui/fixedtip.h				\
+	ui/frames.c				\
+	ui/frames.h				\
+	ui/menu.c				\
+	ui/menu.h				\
+	ui/metaaccellabel.c			\
+	ui/metaaccellabel.h			\
+	ui/resizepopup.c			\
+	include/resizepopup.h			\
+	ui/tabpopup.c				\
+	include/tabpopup.h			\
+	ui/select-image.c			\
+	ui/select-image.h			\
+	ui/select-workspace.c			\
+	ui/select-workspace.h			\
+	ui/tile-preview.c			\
+	include/tile-preview.h			\
+	ui/theme-parser.c			\
+	ui/theme-parser.h			\
+	ui/theme.c				\
+	ui/theme.h				\
+	ui/ui.c					\
+	include/all-keybindings.h
 
 # by setting libmetacity_private_la_CFLAGS, the files shared with
 # metacity proper will be compiled with different names.
@@ -151,7 +246,7 @@ convert_DATA = metacity-schemas.convert
 
 bin_PROGRAMS=metacity metacity-theme-viewer
 
-metacity_LDADD=@METACITY_LIBS@ libmetacity-private.la
+metacity_LDADD=@METACITY_LIBS@
 metacity_theme_viewer_LDADD= @METACITY_LIBS@ libmetacity-private.la
 
 testboxes_SOURCES=include/util.h core/util.c include/boxes.h core/boxes.c core/testboxes.c
