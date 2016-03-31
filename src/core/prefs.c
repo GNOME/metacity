@@ -838,6 +838,25 @@ init_gtk_decoration_layout (void)
   gtk_decoration_layout_changed (settings, NULL, NULL);
 }
 
+static void
+gtk_theme_name_changed (GtkSettings *settings,
+                        GParamSpec  *pspec,
+                        gpointer     user_data)
+{
+  queue_changed (META_PREF_THEME_NAME);
+}
+
+static void
+init_gtk_theme_name (void)
+{
+  GtkSettings *settings;
+
+  settings = gtk_settings_get_default ();
+
+  g_signal_connect (settings, "notify::gtk-theme-name",
+                    G_CALLBACK (gtk_theme_name_changed), NULL);
+}
+
 /****************************************************************************/
 /* Initialisation.                                                          */
 /****************************************************************************/
@@ -884,6 +903,7 @@ meta_prefs_init (void)
   init_workspace_names ();
 
   init_gtk_decoration_layout ();
+  init_gtk_theme_name ();
 }
 
 /****************************************************************************/
