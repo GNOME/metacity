@@ -2,6 +2,7 @@
 Type=Application
 Name=Metacity
 Exec=metacity
+# TRANSLATORS: Don't translate this text (this is icon name)
 Icon=preferences-system-windows
 NoDisplay=true
 X-GNOME-Bugzilla-Bugzilla=GNOME
