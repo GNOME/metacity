@@ -767,6 +767,35 @@ queue_changed (MetaPreference pref)
                                     changed_idle_handler, NULL, NULL);
 }
 
+static gboolean
+in_desktop (const gchar *name)
+{
+  const gchar *xdg_current_desktop;
+  gboolean result;
+  gchar **desktops;
+  gint i;
+
+  xdg_current_desktop = g_getenv ("XDG_CURRENT_DESKTOP");
+  if (xdg_current_desktop == NULL)
+    return FALSE;
+
+  result = FALSE;
+  desktops = g_strsplit (xdg_current_desktop, ":", -1);
+
+  for (i = 0; desktops[i] != NULL; i++)
+    {
+      if (g_strcmp0 (desktops[i], name) == 0)
+        {
+          result = TRUE;
+          break;
+        }
+    }
+
+  g_strfreev (desktops);
+
+  return result;
+}
+
 static void
 gtk_decoration_layout_changed (GtkSettings *settings,
                                GParamSpec  *pspec,
@@ -819,15 +848,13 @@ gtk_decoration_layout_changed (GtkSettings *settings,
   g_free (layout);
 }
 
+
 static void
 init_gtk_decoration_layout (void)
 {
-  const gchar *current_desktop;
   GtkSettings *settings;
 
-  current_desktop = g_getenv ("XDG_CURRENT_DESKTOP");
-
-  if (!current_desktop || !strstr (current_desktop, "GNOME-Flashback"))
+  if (!in_desktop ("GNOME-Flashback"))
     return;
 
   settings = gtk_settings_get_default ();
@@ -1192,13 +1219,11 @@ button_layout_handler (GVariant *value,
                        gpointer *result,
                        gpointer  data)
 {
-  const gchar *current_desktop;
   const gchar *string_value;
 
   *result = NULL; /* ignored */
-  current_desktop = g_getenv ("XDG_CURRENT_DESKTOP");
 
-  if (current_desktop && strstr (current_desktop, "GNOME-Flashback"))
+  if (in_desktop ("GNOME-Flashback"))
     return TRUE;
 
   string_value = g_variant_get_string (value, NULL);
