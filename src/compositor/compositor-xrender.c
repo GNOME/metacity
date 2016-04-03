@@ -847,6 +847,35 @@ root_tile (MetaScreen *screen)
 
   if (!pixmap)
     {
+      int width;
+      int height;
+
+      meta_screen_get_size (screen, &width, &height);
+
+      pixmap = XCreatePixmap (xdisplay, xroot, width, height,
+                              DefaultDepth (xdisplay, screen_number));
+
+      if (pixmap)
+        {
+          XGCValues gcv;
+          GC gc;
+
+          gcv.graphics_exposures = False;
+          gcv.subwindow_mode = IncludeInferiors;
+
+          gc = XCreateGC (xdisplay, xroot,
+                          GCGraphicsExposures | GCSubwindowMode,
+                          &gcv);
+
+          XCopyArea (xdisplay, xroot, pixmap, gc, 0, 0, width, height, 0, 0);
+          XSync (xdisplay, False);
+
+          XFreeGC (xdisplay, gc);
+        }
+    }
+
+  if (!pixmap)
+    {
       pixmap = XCreatePixmap (xdisplay, xroot, 1, 1,
                               DefaultDepth (xdisplay, screen_number));
       g_return_val_if_fail (pixmap != None, None);
