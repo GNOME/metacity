@@ -14,10 +14,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-23 18:40+0000\n"
-"PO-Revision-Date: 2016-02-07 12:14+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-04-09 13:48+0000\n"
+"PO-Revision-Date: 2016-04-09 15:50+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -34,7 +33,8 @@ msgstr ""
 msgid "Metacity"
 msgstr "Metacity"
 
-#: data/applications/metacity.desktop.in:6
+#. TRANSLATORS: Don't translate this text (this is icon name)
+#: data/applications/metacity.desktop.in:7
 msgid "preferences-system-windows"
 msgstr "preferences-system-windows"
 
@@ -367,8 +367,8 @@ msgid ""
 msgstr ""
 "To ustawienie jest używane tylko, jeśli wybrano typ motywu menedżera "
 "Metacity. Należy podać prawidłową nazwę motywu menedżera Metacity. W "
-"przeciwnym wypadku menedżer Metacity użyje domyślnego motywu biblioteki "
-"GTK+, Adwaita."
+"przeciwnym wypadku menedżer Metacity użyje domyślnego motywu biblioteki GTK"
+"+, Adwaita."
 
 #: data/schemas/org.gnome.metacity.theme.gschema.xml:21
 msgid "Theme Type"
@@ -1299,7 +1299,7 @@ msgstr ""
 msgid "Failed to restart: %s\n"
 msgstr "Ponowne uruchomienie się nie powiodło: %s\n"
 
-#: src/core/prefs.c:972
+#: src/core/prefs.c:1019
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -1307,12 +1307,12 @@ msgstr ""
 "Obejścia dla błędnie działających programów są wyłączone. Niektóre z nich "
 "mogą się zachowywać w sposób nieprzewidywalny.\n"
 
-#: src/core/prefs.c:1049
+#: src/core/prefs.c:1096
 #, c-format
 msgid "Could not parse font description \"%s\" from GSettings key %s\n"
 msgstr "Nie można przetworzyć opisu czcionki „%s” z klucza GSettings %s\n"
 
-#: src/core/prefs.c:1111
+#: src/core/prefs.c:1158
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -1321,7 +1321,7 @@ msgstr ""
 "Wartość „%s”, odnaleziona w bazie danych konfiguracji nie opisuje prawidłowo "
 "modyfikatora przycisku myszy\n"
 
-#: src/core/prefs.c:1390
+#: src/core/prefs.c:1435
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -1330,12 +1330,12 @@ msgstr ""
 "Wartość „%s”, odnaleziona w bazie danych konfiguracji nie opisuje prawidłowo "
 "skrótu klawiszowego „%s”\n"
 
-#: src/core/prefs.c:1492
+#: src/core/prefs.c:1537
 #, c-format
 msgid "Workspace %d"
 msgstr "Obszar roboczy %d"
 
-#: src/core/prefs.c:1749
+#: src/core/prefs.c:1794
 #, c-format
 msgid "Missing %s extension required for compositing\n"
 msgstr "Brak rozszerzenia %s, wymaganego przez składanie\n"
@@ -1806,6 +1806,10 @@ msgstr "Mod5"
 #, c-format
 msgid "%d x %d"
 msgstr "%d×%d"
+
+#: src/ui/ui.c:774
+msgid "Falling back to default GTK+ theme - Adwaita"
+msgstr "Używanie domyślnego motywu biblioteki GTK+, Adwaita"
 
 #: theme-viewer/theme-viewer-window.c:791
 msgid "Metacity Theme Viewer"
