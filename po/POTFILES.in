@@ -34,4 +34,5 @@ src/ui/frames.c
 src/ui/menu.c
 src/ui/metaaccellabel.c
 src/ui/resizepopup.c
+src/ui/ui.c
 theme-viewer/theme-viewer-window.c
