@@ -83,6 +83,8 @@ dnl **************************************************************************
 
 GLIB_REQUIRED_VERSION=2.44.0
 GTK_REQUIRED_VERSION=3.19.8
+PANGO_REQUIRED_VERSION=1.2.0
+XCOMPOSITE_REQUIRED_VERSION=0.3
 
 PKG_CHECK_MODULES([LIBMETACITY], [
   glib-2.0 >= $GLIB_REQUIRED_VERSION
@@ -116,12 +118,7 @@ AC_CHECK_SIZEOF(__int64)
 ## byte order
 AC_C_BIGENDIAN
 
-GTK_MIN_VERSION=3.19.6
-GIO_MIN_VERSION=2.25.10
-CANBERRA_GTK=libcanberra-gtk3
-XCOMPOSITE_VERSION=0.3
-
-METACITY_PC_MODULES="gtk+-3.0 >= $GTK_MIN_VERSION gio-2.0 >= $GIO_MIN_VERSION pango >= 1.2.0 gsettings-desktop-schemas >= 3.3.0 xcomposite >= $XCOMPOSITE_VERSION xfixes xrender xdamage"
+METACITY_PC_MODULES="gtk+-3.0 >= $GTK_REQUIRED_VERSION gio-2.0 >= $GLIB_REQUIRED_VERSION pango >= $PANGO_REQUIRED_VERSION gsettings-desktop-schemas >= 3.3.0 xcomposite >= $XCOMPOSITE_REQUIRED_VERSION xfixes xrender xdamage"
 
 GLIB_GSETTINGS
 
@@ -132,7 +129,7 @@ AC_ARG_ENABLE(canberra,
 
 if test x$enable_canberra = xyes; then
     AC_DEFINE(HAVE_CANBERRA,1,[Build with canberra support])
-    METACITY_PC_MODULES="$METACITY_PC_MODULES $CANBERRA_GTK"
+    METACITY_PC_MODULES="$METACITY_PC_MODULES libcanberra-gtk3"
 fi
 
 AC_ARG_ENABLE(verbose-mode,
@@ -160,10 +157,9 @@ AC_ARG_ENABLE(render,
   enable_render=auto)
 
 ## here we get the flags we'll actually use
-PKG_CHECK_MODULES(ALL, glib-2.0 >= 2.36.0 gthread-2.0 >= 2.32.0)
-# gtk_window_set_icon_name requires gtk2+-2.60
-PKG_CHECK_MODULES(METACITY_MESSAGE, gtk+-3.0 >= $GTK_MIN_VERSION)
-PKG_CHECK_MODULES(METACITY_WINDOW_DEMO, gtk+-3.0 >= $GTK_MIN_VERSION)
+PKG_CHECK_MODULES(ALL, glib-2.0 >= $GLIB_REQUIRED_VERSION gthread-2.0 >= $GLIB_REQUIRED_VERSION)
+PKG_CHECK_MODULES(METACITY_MESSAGE, gtk+-3.0 >= $GTK_REQUIRED_VERSION)
+PKG_CHECK_MODULES(METACITY_WINDOW_DEMO, gtk+-3.0 >= $GTK_REQUIRED_VERSION)
 
 if $PKG_CONFIG --atleast-version 1.2.0 pangoxft; then
    echo "pangoxft found"
