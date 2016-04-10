@@ -19,10 +19,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=metacit"
-"y&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-03-01 01:36+0000\n"
-"PO-Revision-Date: 2016-03-20 16:22-0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=metaci"
+"ty&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2016-04-10 13:01+0000\n"
+"PO-Revision-Date: 2016-04-10 15:54-0200\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -38,7 +38,8 @@ msgstr ""
 msgid "Metacity"
 msgstr "Metacity"
 
-#: data/applications/metacity.desktop.in:6
+#. TRANSLATORS: Don't translate this text (this is icon name)
+#: data/applications/metacity.desktop.in:7
 msgid "preferences-system-windows"
 msgstr "preferences-system-windows"
 
@@ -745,7 +746,8 @@ msgstr "Não foi possível analisar \"%s\" como um inteiro"
 #: libmetacity/meta-theme-metacity.c:370 libmetacity/meta-theme-metacity.c:587
 #, c-format
 msgid "Did not understand trailing characters '%s' in string '%s'"
-msgstr "Os caracteres à direita \"%s\" na string \"%s\" não foram compreendidos"
+msgstr ""
+"Os caracteres à direita \"%s\" na string \"%s\" não foram compreendidos"
 
 #: libmetacity/meta-theme-metacity.c:379
 #, c-format
@@ -775,7 +777,8 @@ msgstr "Não foi possível analisar \"%s\" como um número de ponto flutuante"
 #: libmetacity/meta-theme-metacity.c:649
 #, c-format
 msgid "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g"
-msgstr "Alfa deve estar entre 0,0 (invisível) e 1,0 (totalmente opaco) e era %g"
+msgstr ""
+"Alfa deve estar entre 0,0 (invisível) e 1,0 (totalmente opaco) e era %g"
 
 #: libmetacity/meta-theme-metacity.c:695
 #, c-format
@@ -796,8 +799,8 @@ msgstr "Os valores booleanos devem ser \"true\" ou \"false\" e não \"%s\""
 #, c-format
 msgid "User-defined constants must begin with a capital letter; '%s' does not"
 msgstr ""
-"As constantes definidas pelo usuário devem iniciar com letra maiúscula; \"%"
-"s\" não inicia"
+"As constantes definidas pelo usuário devem iniciar com letra maiúscula; \"%s"
+"\" não inicia"
 
 #: libmetacity/meta-theme-metacity.c:790 libmetacity/meta-theme-metacity.c:827
 #: libmetacity/meta-theme-metacity.c:865
@@ -879,8 +882,8 @@ msgid ""
 "Cannot specify both 'button_width'/'button_height' and 'aspect_ratio' for "
 "buttons"
 msgstr ""
-"Não foi possível especificar \"button_width\"/\"button_height\" e \""
-"aspect_ratio\" para os botões"
+"Não foi possível especificar \"button_width\"/\"button_height\" e "
+"\"aspect_ratio\" para os botões"
 
 #: libmetacity/meta-theme-metacity.c:1452
 #, c-format
@@ -1147,8 +1150,8 @@ msgid ""
 "No frame style set for window type '%s' in theme '%s', add a <window "
 "type='%s' style_set='whatever' /> element"
 msgstr ""
-"Nenhum estilo de quadro definido para o tipo de janela \"%s\" no tema \"%s\""
-", adicione um elemento <window type='%s' style_set='whatever'/>"
+"Nenhum estilo de quadro definido para o tipo de janela \"%s\" no tema \"%s"
+"\", adicione um elemento <window type='%s' style_set='whatever'/>"
 
 #: libmetacity/meta-theme-metacity.c:4126
 msgid "No draw_ops provided for frame piece"
@@ -1290,7 +1293,7 @@ msgstr ""
 msgid "Failed to restart: %s\n"
 msgstr "Falha ao reiniciar: %s\n"
 
-#: src/core/prefs.c:972
+#: src/core/prefs.c:1019
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -1298,14 +1301,14 @@ msgstr ""
 "As alternativas para aplicativos quebrados estão desabilitadas. É possível "
 "que alguns aplicativos não funcionem de maneira adequada.\n"
 
-#: src/core/prefs.c:1049
+#: src/core/prefs.c:1096
 #, c-format
 msgid "Could not parse font description \"%s\" from GSettings key %s\n"
 msgstr ""
 "Não foi possível analisar a descrição da fonte \"%s\" a partir da chave "
 "GSettings %s\n"
 
-#: src/core/prefs.c:1111
+#: src/core/prefs.c:1158
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -1314,7 +1317,7 @@ msgstr ""
 "\"%s\" localizado no banco de dados de configurações não é um valor válido "
 "para o modificador de botão do mouse\n"
 
-#: src/core/prefs.c:1390
+#: src/core/prefs.c:1435
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -1323,12 +1326,12 @@ msgstr ""
 "\"%s\" localizado no banco de dados de configurações não é um valor válido "
 "para a tecla de atalho \"%s\"\n"
 
-#: src/core/prefs.c:1492
+#: src/core/prefs.c:1537
 #, c-format
 msgid "Workspace %d"
 msgstr "Espaço de trabalho %d"
 
-#: src/core/prefs.c:1749
+#: src/core/prefs.c:1794
 #, c-format
 msgid "Missing %s extension required for compositing\n"
 msgstr "Extensão %s necessária para composição faltando\n"
@@ -1795,6 +1798,10 @@ msgstr "Mod5"
 #, c-format
 msgid "%d x %d"
 msgstr "%d x %d"
+
+#: src/ui/ui.c:774
+msgid "Falling back to default GTK+ theme - Adwaita"
+msgstr "Retrocedendo ao tema padrão do GTK+ - Adwaita"
 
 #: theme-viewer/theme-viewer-window.c:791
 msgid "Metacity Theme Viewer"
@@ -4095,4 +4102,4 @@ msgstr "Visualizador de temas do Metacity"
 #~ "specified for this theme"
 #~ msgstr ""
 #~ "<menu_icon function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> deve ser "
-#~ "especificado para este tema"    
+#~ "especificado para este tema"
