@@ -2864,28 +2864,12 @@ xrender_free_window (MetaCompositor *compositor,
 {
 #ifdef HAVE_COMPOSITE_EXTENSIONS
   MetaCompositorXRender *xrc;
-  MetaFrame *frame;
   Window xwindow;
 
   xrc = (MetaCompositorXRender *) compositor;
-  frame = meta_window_get_frame (window);
-  xwindow = None;
+  xwindow = meta_window_get_xwindow (window);
 
-  if (frame)
-    {
-      xwindow = meta_frame_get_xwindow (frame);
-    }
-  else
-    {
-      /* FIXME: When an undecorated window is hidden this is called, but the
-       * window does not get readded if it is subsequentally shown again. See:
-       * http://bugzilla.gnome.org/show_bug.cgi?id=504876
-       */
-      /* xwindow = meta_window_get_xwindow (window); */
-    }
-
-  if (xwindow != None)
-    destroy_win (xrc->display, xwindow, FALSE);
+  destroy_win (xrc->display, xwindow, FALSE);
 #endif
 }
 
