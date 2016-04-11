@@ -2117,8 +2117,22 @@ event_callback (XEvent   *event,
     case MapRequest:
       if (window == NULL)
         {
-          window = meta_window_new (display, event->xmaprequest.window,
-                                    FALSE);
+          Window xwindow;
+          XWindowAttributes attr;
+          int result;
+
+          xwindow = event->xmaprequest.window;
+          window = meta_window_new (display, xwindow, FALSE);
+
+          meta_error_trap_push (display);
+          result = XGetWindowAttributes (display->xdisplay, xwindow, &attr);
+          meta_error_trap_pop (display, TRUE);
+
+          if (result != 0)
+            {
+              meta_compositor_add_window (display->compositor, window,
+                                          xwindow, &attr);
+            }
         }
       /* if frame was receiver it's some malicious send event or something */
       else if (!frame_was_receiver && window)
