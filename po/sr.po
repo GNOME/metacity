@@ -2,33 +2,35 @@
 # Courtesy of Prevod.org team (http://prevod.org/) -- 2003—2016.
 # This file is distributed under the same license as the metacity package.
 #
-# Translators: 
+# Translators:
 # Горан Ракић <grakic@devbase.net>
 # Данило Шеган <danilo@prevod.org>, 2005.
 # Мирослав Николић <miroslavnikolic@rocketmail.com>, 2011—2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=metacit"
-"y&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-03-09 01:34+0000\n"
-"PO-Revision-Date: 2016-03-09 09:35+0200\n"
-"Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=metacity&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2016-04-10 01:01+0000\n"
+"PO-Revision-Date: 2016-04-10 09:39+0200\n"
+"Last-Translator: Марко М. Костић <marko.m.kostic@gmail.com>\n"
 "Language-Team: Serbian <(nothing)>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
-"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Project-Style: gnome\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 #. Translators: This is the title used on dialog boxes
 #: data/applications/metacity.desktop.in:4 src/core/util.c:535
 msgid "Metacity"
 msgstr "Метасити"
 
-#: data/applications/metacity.desktop.in:6
+#. TRANSLATORS: Don't translate this text (this is icon name)
+#: data/applications/metacity.desktop.in:7
 msgid "preferences-system-windows"
 msgstr "поставке-систем-прозори"
 
@@ -347,10 +349,6 @@ msgid "Theme Name"
 msgstr "Назив теме"
 
 #: data/schemas/org.gnome.metacity.theme.gschema.xml:12
-#| msgid ""
-#| "This setting is only used if Metacity is selected as theme type. You MUST "
-#| "provide valid Metacity theme name, otherwise Metacity will fall back to "
-#| "default GTK+ theme - Adwaita."
 msgid ""
 "This setting is only used if Metacity is selected as the theme type. You "
 "MUST provide a valid Metacity theme name, otherwise Metacity will fall back "
@@ -365,12 +363,6 @@ msgid "Theme Type"
 msgstr "Врста теме"
 
 #: data/schemas/org.gnome.metacity.theme.gschema.xml:22
-#| msgid ""
-#| "Metacity supports two theme types - GTK+ (gtk.css) and Metacity (metacity-"
-#| "theme-x.xml). GTK+ theme: all data is loaded from CSS. This is same theme "
-#| "that is used by mutter for server side decorations and by GTK+ for client "
-#| "side decorations. Metacity theme: data is loaded from metacity-theme-x."
-#| "xml and css. Using this theme type you MUST provide valid theme name."
 msgid ""
 "Metacity supports two theme types - GTK+ (gtk.css) and Metacity (metacity-"
 "theme-x.xml). GTK+ theme: all data is loaded from CSS. This is the same "
@@ -379,9 +371,9 @@ msgid ""
 "x.xml and CSS. When using this theme type you MUST provide a valid theme "
 "name."
 msgstr ""
-"Метасити подржава две врсте тема — Гтк+ (gtk.css) и Метасити (metacity-"
-"theme-x.xml). Гтк+ тема: сви подаци се учитавају из ЦСС-а. То је иста тема "
-"коју користи Матер за украсе на страни сервера и Гтк+ за украсе на страни "
+"Метасити подржава две врсте тема — Гтк+ (gtk.css) и Метасити (metacity-theme-"
+"x.xml). Гтк+ тема: сви подаци се учитавају из ЦСС-а. То је иста тема коју "
+"користи Матер за украсе на страни сервера и Гтк+ за украсе на страни "
 "клијента. Метасити тема: подаци се учитавају из „metacity-theme-x.xml“-а и "
 "„CSS“-а. Када користите ову тему МОРАТЕ да доставите исправан назив теме."
 
@@ -1262,7 +1254,7 @@ msgstr ""
 msgid "Failed to restart: %s\n"
 msgstr "Нисам успео поново да покренем: %s\n"
 
-#: src/core/prefs.c:972
+#: src/core/prefs.c:1019
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -1270,12 +1262,12 @@ msgstr ""
 "Решења за оштећене програме су искључена. Неке апликације се могу понашати "
 "чудно.\n"
 
-#: src/core/prefs.c:1049
+#: src/core/prefs.c:1096
 #, c-format
 msgid "Could not parse font description \"%s\" from GSettings key %s\n"
 msgstr "Не могу да обрадим опис „%s“ из кључа „%s“ у гномовим подешавањима\n"
 
-#: src/core/prefs.c:1111
+#: src/core/prefs.c:1158
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -1284,19 +1276,19 @@ msgstr ""
 "„%s“ је пронађен у бази подешавања што није исправна вредност за типку која "
 "мења понашање тастера миша\n"
 
-#: src/core/prefs.c:1390
+#: src/core/prefs.c:1435
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
 "\"%s\"\n"
 msgstr "„%s“ из базе са подешавањима није исправна комбинација тастера „%s“\n"
 
-#: src/core/prefs.c:1492
+#: src/core/prefs.c:1537
 #, c-format
 msgid "Workspace %d"
 msgstr "Радни простор бр. %d"
 
-#: src/core/prefs.c:1749
+#: src/core/prefs.c:1794
 #, c-format
 msgid "Missing %s extension required for compositing\n"
 msgstr "Недостаје %s проширење потребно за слагање\n"
@@ -1760,6 +1752,10 @@ msgstr "Мод5"
 #, c-format
 msgid "%d x %d"
 msgstr "%d x %d"
+
+#: src/ui/ui.c:774
+msgid "Falling back to default GTK+ theme - Adwaita"
+msgstr "Враћам се на подразумевану ГТК+ тему - Адвајту"
 
 #: theme-viewer/theme-viewer-window.c:791
 msgid "Metacity Theme Viewer"
