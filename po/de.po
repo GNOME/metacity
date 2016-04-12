@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Metacity\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-03-01 13:36+0000\n"
-"PO-Revision-Date: 2016-03-01 20:35+0100\n"
+"POT-Creation-Date: 2016-04-12 13:03+0000\n"
+"PO-Revision-Date: 2016-04-12 17:14+0200\n"
 "Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -33,7 +33,8 @@ msgstr ""
 msgid "Metacity"
 msgstr "Metacity"
 
-#: data/applications/metacity.desktop.in:6
+#. TRANSLATORS: Don't translate this text (this is icon name)
+#: data/applications/metacity.desktop.in:7
 msgid "preferences-system-windows"
 msgstr "preferences-system-windows"
 
@@ -1299,7 +1300,7 @@ msgstr "Maximierte Fenster im Vollbildmodus haben immer eine Fensterdekoration"
 msgid "Failed to restart: %s\n"
 msgstr "Neustart fehlgeschlagen: %s\n"
 
-#: src/core/prefs.c:972
+#: src/core/prefs.c:1019
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -1307,14 +1308,14 @@ msgstr ""
 "Problemumgehungen (Workarounds) für defekte Anwendungen abgeschaltet. "
 "Möglicherweise funktionieren manche Anwendungen nicht richtig.\n"
 
-#: src/core/prefs.c:1049
+#: src/core/prefs.c:1096
 #, c-format
 msgid "Could not parse font description \"%s\" from GSettings key %s\n"
 msgstr ""
 "Schriftbeschreibung »%s« aus GSettings-Schlüssel »%s« konnte nicht "
 "verarbeitet werden\n"
 
-#: src/core/prefs.c:1111
+#: src/core/prefs.c:1158
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -1323,7 +1324,7 @@ msgstr ""
 "»%s« in der Konfigurationsdatenbank ist kein zulässiger Wert für eine Maus-"
 "Zusatztaste\n"
 
-#: src/core/prefs.c:1390
+#: src/core/prefs.c:1435
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -1332,12 +1333,12 @@ msgstr ""
 "»%s« in der Konfigurationsdatenbank ist kein zulässiger Wert für die "
 "Tastenkombination »%s«\n"
 
-#: src/core/prefs.c:1492
+#: src/core/prefs.c:1537
 #, c-format
 msgid "Workspace %d"
 msgstr "Arbeitsfläche %d"
 
-#: src/core/prefs.c:1749
+#: src/core/prefs.c:1794
 #, c-format
 msgid "Missing %s extension required for compositing\n"
 msgstr "Die für Compositing benötigte Erweiterung »%s« fehlt\n"
@@ -1813,6 +1814,10 @@ msgstr "Umschalter5"
 #, c-format
 msgid "%d x %d"
 msgstr "%d x %d"
+
+#: src/ui/ui.c:774
+msgid "Falling back to default GTK+ theme - Adwaita"
+msgstr "Es wird auf Adwaita ausgewichen, das Standardthema von GTK+"
 
 #: theme-viewer/theme-viewer-window.c:791
 msgid "Metacity Theme Viewer"
