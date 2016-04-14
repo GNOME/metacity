@@ -24,8 +24,6 @@
 
 #include <config.h>
 
-#ifdef HAVE_COMPOSITE_EXTENSIONS
-
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
@@ -2991,22 +2989,18 @@ xrender_add_window (MetaCompositor    *compositor,
                     Window             xwindow,
                     XWindowAttributes *attrs)
 {
-#ifdef HAVE_COMPOSITE_EXTENSIONS
   MetaCompositorXRender *xrc = (MetaCompositorXRender *) compositor;
   MetaScreen *screen = meta_screen_for_x_screen (attrs->screen);
 
   meta_error_trap_push (xrc->display);
   add_win (screen, window, xwindow);
   meta_error_trap_pop (xrc->display, FALSE);
-#endif
 }
 
 static void
 xrender_remove_window (MetaCompositor *compositor,
                        Window          xwindow)
 {
-#ifdef HAVE_COMPOSITE_EXTENSIONS
-#endif
 }
 
 static void
@@ -3059,7 +3053,6 @@ static void
 xrender_manage_screen (MetaCompositor *compositor,
                        MetaScreen     *screen)
 {
-#ifdef HAVE_COMPOSITE_EXTENSIONS
   MetaCompScreen *info;
   MetaDisplay *display = meta_screen_get_display (screen);
   Display *xdisplay = meta_display_get_xdisplay (display);
@@ -3138,14 +3131,12 @@ xrender_manage_screen (MetaCompositor *compositor,
 
   /* Now we're up and running we can show the output if needed */
   show_overlay_window (screen, info->output);
-#endif
 }
 
 static void
 xrender_unmanage_screen (MetaCompositor *compositor,
                          MetaScreen     *screen)
 {
-#ifdef HAVE_COMPOSITE_EXTENSIONS
   MetaDisplay *display = meta_screen_get_display (screen);
   Display *xdisplay = meta_display_get_xdisplay (display);
   MetaCompScreen *info;
@@ -3192,7 +3183,6 @@ xrender_unmanage_screen (MetaCompositor *compositor,
   g_free (info);
 
   meta_screen_set_compositor_data (screen, NULL);
-#endif
 }
 
 static void
@@ -3200,17 +3190,12 @@ xrender_set_updates (MetaCompositor *compositor,
                      MetaWindow     *window,
                      gboolean        updates)
 {
-#ifdef HAVE_COMPOSITE_EXTENSIONS
-
-#endif
 }
 
 static void
 xrender_destroy (MetaCompositor *compositor)
 {
-#ifdef HAVE_COMPOSITE_EXTENSIONS
   g_free (compositor);
-#endif
 }
 
 #if 0
@@ -3225,8 +3210,6 @@ xrender_begin_move (MetaCompositor *compositor,
                     int             grab_x,
                     int             grab_y)
 {
-#ifdef HAVE_COMPOSITE_EXTENSIONS
-#endif
 }
 
 static void
@@ -3235,16 +3218,12 @@ xrender_update_move (MetaCompositor *compositor,
                      int             x,
                      int             y)
 {
-#ifdef HAVE_COMPOSITE_EXTENSIONS
-#endif
 }
 
 static void
 xrender_end_move (MetaCompositor *compositor,
                   MetaWindow     *window)
 {
-#ifdef HAVE_COMPOSITE_EXTENSIONS
-#endif
 }
 #endif /* 0 */
 
@@ -3252,7 +3231,6 @@ static void
 xrender_free_window (MetaCompositor *compositor,
                      MetaWindow     *window)
 {
-#ifdef HAVE_COMPOSITE_EXTENSIONS
   MetaCompositorXRender *xrc;
   MetaFrame *frame;
   Window xwindow;
@@ -3266,7 +3244,6 @@ xrender_free_window (MetaCompositor *compositor,
     xwindow = meta_window_get_xwindow (window);
 
   destroy_win (xrc->display, xwindow, FALSE);
-#endif
 }
 
 static void
@@ -3274,7 +3251,6 @@ xrender_process_event (MetaCompositor *compositor,
                        XEvent         *event,
                        MetaWindow     *window)
 {
-#ifdef HAVE_COMPOSITE_EXTENSIONS
   MetaCompositorXRender *xrc = (MetaCompositorXRender *) compositor;
   /*
    * This trap is so that none of the compositor functions cause
@@ -3337,16 +3313,12 @@ xrender_process_event (MetaCompositor *compositor,
 #ifndef USE_IDLE_REPAINT
   repair_display (xrc->display);
 #endif
-
-  return;
-#endif
 }
 
 static cairo_surface_t *
 xrender_get_window_surface (MetaCompositor *compositor,
                             MetaWindow     *window)
 {
-#ifdef HAVE_COMPOSITE_EXTENSIONS
   MetaFrame *frame;
   Window xwindow;
   MetaScreen *screen;
@@ -3472,7 +3444,6 @@ xrender_get_window_surface (MetaCompositor *compositor,
   cairo_region_destroy (client_region);
 
   return window_surface;
-#endif
 }
 
 static void
@@ -3480,7 +3451,6 @@ xrender_set_active_window (MetaCompositor *compositor,
                            MetaScreen     *screen,
                            MetaWindow     *window)
 {
-#ifdef HAVE_COMPOSITE_EXTENSIONS
   MetaCompositorXRender *xrc = (MetaCompositorXRender *) compositor;
   MetaDisplay *display;
   Display *xdisplay;
@@ -3626,14 +3596,12 @@ xrender_set_active_window (MetaCompositor *compositor,
 #ifdef USE_IDLE_REPAINT
   add_repair (display);
 #endif
-#endif
 }
 
 static void
 xrender_maximize_window (MetaCompositor *compositor,
                          MetaWindow     *window)
 {
-#ifdef HAVE_COMPOSITE_EXTENSIONS
   MetaFrame *frame = meta_window_get_frame (window);
   Window xid = frame ? meta_frame_get_xwindow (frame) : meta_window_get_xwindow (window);
   MetaCompWindow *cw = find_window_in_display (meta_window_get_display (window), xid);
@@ -3642,14 +3610,12 @@ xrender_maximize_window (MetaCompositor *compositor,
     return;
 
   cw->needs_shadow = window_has_shadow (cw);
-#endif
 }
 
 static void
 xrender_unmaximize_window (MetaCompositor *compositor,
                            MetaWindow     *window)
 {
-#ifdef HAVE_COMPOSITE_EXTENSIONS
   MetaFrame *frame = meta_window_get_frame (window);
   Window xid = frame ? meta_frame_get_xwindow (frame) : meta_window_get_xwindow (window);
   MetaCompWindow *cw = find_window_in_display (meta_window_get_display (window), xid);
@@ -3658,7 +3624,6 @@ xrender_unmaximize_window (MetaCompositor *compositor,
     return;
 
   cw->needs_shadow = window_has_shadow (cw);
-#endif
 }
 
 static MetaCompositor comp_info = {
@@ -3679,7 +3644,6 @@ static MetaCompositor comp_info = {
 MetaCompositor *
 meta_compositor_xrender_new (MetaDisplay *display)
 {
-#ifdef HAVE_COMPOSITE_EXTENSIONS
   const gchar *atom_names[] = {
     "_XROOTPMAP_ID",
     "_XSETROOT_ID",
@@ -3740,10 +3704,4 @@ meta_compositor_xrender_new (MetaDisplay *display)
   g_timeout_add (2000, (GSourceFunc) timeout_debug, xrc);
 
   return compositor;
-#else
-  return NULL;
-#endif
 }
-
-#endif /* HAVE_COMPOSITE_EXTENSIONS */
-

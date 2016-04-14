@@ -148,11 +148,6 @@ meta_print_compilation_info (void)
 #else
   meta_verbose ("Compiled without startup notification\n");
 #endif
-#ifdef HAVE_COMPOSITE_EXTENSIONS
-  meta_verbose ("Compiled with composite extensions\n");
-#else
-  meta_verbose ("Compiled without composite extensions\n");
-#endif
 }
 
 /**
@@ -204,13 +199,6 @@ typedef struct
   gboolean no_composite;
   gboolean no_force_fullscreen;
 } MetaArguments;
-
-#ifdef HAVE_COMPOSITE_EXTENSIONS
-#define COMPOSITE_OPTS_FLAGS 0
-#else /* HAVE_COMPOSITE_EXTENSIONS */
-/* No compositor, so don't show the arguments in --help */
-#define COMPOSITE_OPTS_FLAGS G_OPTION_FLAG_HIDDEN
-#endif /* HAVE_COMPOSITE_EXTENSIONS */
 
 /**
  * Parses argc and argv and returns the
@@ -273,19 +261,19 @@ meta_parse_options (int *argc, char ***argv,
       NULL
     },
     {
-      "composite", 'c', COMPOSITE_OPTS_FLAGS, G_OPTION_ARG_NONE,
+      "composite", 'c', G_OPTION_ARG_NONE, G_OPTION_ARG_NONE,
       &my_args.composite,
       N_("Turn compositing on"),
       NULL
     },
     {
-      "no-composite", 0, COMPOSITE_OPTS_FLAGS, G_OPTION_ARG_NONE,
+      "no-composite", 0, G_OPTION_ARG_NONE, G_OPTION_ARG_NONE,
       &my_args.no_composite,
       N_("Turn compositing off"),
       NULL
     },
     {
-      "no-force-fullscreen", 0, COMPOSITE_OPTS_FLAGS, G_OPTION_ARG_NONE,
+      "no-force-fullscreen", 0, G_OPTION_ARG_NONE, G_OPTION_ARG_NONE,
       &my_args.no_force_fullscreen,
       N_("Don't make fullscreen windows that are maximized and have no decorations"),
       NULL

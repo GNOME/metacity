@@ -456,10 +456,8 @@ meta_screen_new (MetaDisplay *display,
                 LeaveWindowMask | EnterWindowMask |
                 KeyPressMask | KeyReleaseMask |
                 FocusChangeMask | StructureNotifyMask |
-#ifdef HAVE_COMPOSITE_EXTENSIONS
                 ExposureMask |
-#endif
-		attr.your_event_mask);
+                attr.your_event_mask);
   if (meta_error_trap_pop_with_return (display, FALSE) != Success)
     {
       meta_warning (_("Screen %d on display \"%s\" already has a window manager\n"),
@@ -490,11 +488,10 @@ meta_screen_new (MetaDisplay *display,
   screen->wm_sn_atom = wm_sn_atom;
   screen->wm_sn_timestamp = manager_timestamp;
 
-#ifdef HAVE_COMPOSITE_EXTENSIONS
   screen->wm_cm_selection_window = meta_create_offscreen_window (xdisplay,
                                                                  xroot,
                                                                  NoEventMask);
-#endif
+
   screen->work_area_idle = 0;
 
   screen->active_workspace = NULL;
@@ -783,9 +780,7 @@ meta_screen_manage_all_windows (MetaScreen *screen)
                                            &info->attrs);
       if (info->xwindow == screen->no_focus_window ||
           info->xwindow == screen->flash_window ||
-#ifdef HAVE_COMPOSITE_EXTENSIONS
           info->xwindow == screen->wm_cm_selection_window ||
-#endif
           info->xwindow == screen->wm_sn_selection_window) {
         meta_verbose ("Not managing our own windows\n");
         continue;
@@ -806,7 +801,6 @@ meta_screen_manage_all_windows (MetaScreen *screen)
 void
 meta_screen_composite_all_windows (MetaScreen *screen)
 {
-#ifdef HAVE_COMPOSITE_EXTENSIONS
   MetaDisplay *display;
   GList *windows, *list;
 
@@ -840,7 +834,6 @@ meta_screen_composite_all_windows (MetaScreen *screen)
 
   g_list_foreach (windows, (GFunc)g_free, NULL);
   g_list_free (windows);
-#endif
 }
 
 MetaScreen*
@@ -2889,7 +2882,6 @@ meta_screen_set_compositor_data (MetaScreen *screen,
   screen->compositor_data = compositor;
 }
 
-#ifdef HAVE_COMPOSITE_EXTENSIONS
 void
 meta_screen_set_cm_selection (MetaScreen *screen)
 {
@@ -2917,4 +2909,3 @@ meta_screen_unset_cm_selection (MetaScreen *screen)
   XSetSelectionOwner (screen->display->xdisplay, a,
                       None, screen->wm_cm_timestamp);
 }
-#endif /* HAVE_COMPOSITE_EXTENSIONS */

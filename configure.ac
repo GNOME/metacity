@@ -119,8 +119,9 @@ AC_C_BIGENDIAN
 GTK_MIN_VERSION=3.19.6
 GIO_MIN_VERSION=2.25.10
 CANBERRA_GTK=libcanberra-gtk3
+XCOMPOSITE_VERSION=0.3
 
-METACITY_PC_MODULES="gtk+-3.0 >= $GTK_MIN_VERSION gio-2.0 >= $GIO_MIN_VERSION pango >= 1.2.0 gsettings-desktop-schemas >= 3.3.0"
+METACITY_PC_MODULES="gtk+-3.0 >= $GTK_MIN_VERSION gio-2.0 >= $GIO_MIN_VERSION pango >= 1.2.0 gsettings-desktop-schemas >= 3.3.0 xcomposite >= $XCOMPOSITE_VERSION xfixes xrender xdamage"
 
 GLIB_GSETTINGS
 
@@ -152,11 +153,6 @@ AC_ARG_ENABLE(startup-notification,
   AC_HELP_STRING([--disable-startup-notification],
                  [disable metacity's startup notification support, for embedded/size-sensitive custom non-GNOME builds]),,
   enable_startup_notification=auto)
-
-AC_ARG_ENABLE(compositor,
-  AC_HELP_STRING([--disable-compositor],
-                 [disable metacity's compositing manager]),,
-  enable_compositor=auto)
 
 AC_ARG_ENABLE(render,
   AC_HELP_STRING([--disable-render],
@@ -203,70 +199,6 @@ if test x$have_startup_notification = xyes; then
   AC_DEFINE(HAVE_STARTUP_NOTIFICATION, , [Building with startup notification support])
 else
   echo "Building without libstartup-notification"
-fi
-
-## init this, it gets set either in the compositor check below 
-## or the render-specific check later
-have_xrender=no
-
-XCOMPOSITE_VERSION=0.3
-if test x$enable_compositor = xyes; then
-   have_xcomposite=yes
-elif test x$enable_compositor = xauto; then
-   echo "Building compositing manager by default now."
-   have_xcomposite=yes
-else
-   have_xcomposite=no
-fi
-
-if test x$have_xcomposite = xyes; then
-   AC_MSG_CHECKING([Xcomposite >= $XCOMPOSITE_VERSION])
-   if $PKG_CONFIG --atleast-version $XCOMPOSITE_VERSION xcomposite; then
-      AC_MSG_RESULT([yes])
-   else
-      AC_MSG_ERROR([no. Use --disable-compositor to disable.])
-   fi
-fi
-
-if test x$have_xcomposite = xyes; then
-  METACITY_PC_MODULES="$METACITY_PC_MODULES xcomposite >= $XCOMPOSITE_VERSION xfixes xrender xdamage"
-  AC_DEFINE(HAVE_COMPOSITE_EXTENSIONS, 1, [Building with compositing manager support])
-  echo "Building with compositing manager"
-
-  ## force on render also
-  have_xrender=yes
-else
-  echo "Building without compositing manager"
-fi
-
-## if no compositor, still possibly enable render
-if test x$have_xcomposite = xno; then
-  XRENDER_VERSION=0.0
-  AC_MSG_CHECKING([xrender >= $XRENDER_VERSION])
-  if $PKG_CONFIG --atleast-version $XRENDER_VERSION xrender; then
-     have_xrender=yes
-  else
-     have_xrender=no
-  fi
-  AC_MSG_RESULT($have_xrender)
-
-  if test x$enable_render = xyes; then
-     have_xrender=yes
-     echo "Render support forced on"
-  elif test x$enable_render = xauto; then
-     true
-  else
-     have_xrender=no
-  fi
-
-  if test x$have_xrender = xyes; then
-     echo "Building with Render"
-     METACITY_PC_MODULES="$METACITY_PC_MODULES xrender >= $XRENDER_VERSION"
-  fi
-fi ## have_composite
-
-if test x$have_xrender = xyes; then
-  AC_DEFINE(HAVE_RENDER, , [Building with Render extension support])
 fi
 
 AC_MSG_CHECKING([Xcursor])
@@ -476,9 +408,7 @@ echo "  Canberra ....................: ${enable_canberra}"
 echo "  XFree86 Xinerama ............: ${use_xfree_xinerama}"
 echo "  Solaris Xinerama ............: ${use_solaris_xinerama}"
 echo "  Startup notification ........: ${have_startup_notification}"
-echo "  Compositing manager .........: ${have_xcomposite}"
 echo "  Session management ..........: ${found_sm}"
 echo "  Resize-and-rotate ...........: ${found_randr}"
-echo "  Render ......................: ${have_xrender}"
 echo "  Xcursor .....................: ${have_xcursor}"
 echo ""

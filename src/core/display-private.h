@@ -257,42 +257,27 @@ struct _MetaDisplay
   int xsync_error_base;
   int shape_event_base;
   int shape_error_base;
-#ifdef HAVE_RENDER
   int render_event_base;
   int render_error_base;
-#endif
-#ifdef HAVE_COMPOSITE_EXTENSIONS
   int composite_event_base;
   int composite_error_base;
   int damage_event_base;
   int damage_error_base;
   int xfixes_event_base;
   int xfixes_error_base;
-#endif
 
   unsigned int have_xsync : 1;
 #define META_DISPLAY_HAS_XSYNC(display) ((display)->have_xsync)
   unsigned int have_shape : 1;
 #define META_DISPLAY_HAS_SHAPE(display) ((display)->have_shape)
-
-#ifdef HAVE_RENDER
   unsigned int have_render : 1;
 #define META_DISPLAY_HAS_RENDER(display) ((display)->have_render)
-#else
-#define META_DISPLAY_HAS_RENDER(display) FALSE
-#endif
-#ifdef HAVE_COMPOSITE_EXTENSIONS
   unsigned int have_composite : 1;
-  unsigned int have_damage : 1;
-  unsigned int have_xfixes : 1;
 #define META_DISPLAY_HAS_COMPOSITE(display) ((display)->have_composite)
+  unsigned int have_damage : 1;
 #define META_DISPLAY_HAS_DAMAGE(display) ((display)->have_damage)
+  unsigned int have_xfixes : 1;
 #define META_DISPLAY_HAS_XFIXES(display) ((display)->have_xfixes)
-#else
-#define META_DISPLAY_HAS_COMPOSITE(display) FALSE
-#define META_DISPLAY_HAS_DAMAGE(display) FALSE
-#define META_DISPLAY_HAS_XFIXES(display) FALSE
-#endif
 };
 
 /* Xserver time can wraparound, thus comparing two timestamps needs to take
