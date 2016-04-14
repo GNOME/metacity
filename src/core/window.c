@@ -2765,6 +2765,12 @@ meta_window_unmaximize (MetaWindow        *window,
       window->maximized_vertically =
         window->maximized_vertically   && !unmaximize_vertically;
 
+      /* recalc_window_features() will eventually clear the cached frame
+       * extents, but we need the correct frame extents in the code below,
+       * so invalidate the old frame extents manually up front.
+       */
+      meta_window_frame_size_changed (window);
+
       /* Unmaximize to the saved_rect position in the direction(s)
        * being unmaximized.
        */
