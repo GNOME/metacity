@@ -2865,10 +2865,16 @@ xrender_free_window (MetaCompositor *compositor,
 {
 #ifdef HAVE_COMPOSITE_EXTENSIONS
   MetaCompositorXRender *xrc;
+  MetaFrame *frame;
   Window xwindow;
 
   xrc = (MetaCompositorXRender *) compositor;
-  xwindow = meta_window_get_xwindow (window);
+  frame = meta_window_get_frame (window);
+
+  if (frame)
+    xwindow = meta_frame_get_xwindow (frame);
+  else
+    xwindow = meta_window_get_xwindow (window);
 
   destroy_win (xrc->display, xwindow, FALSE);
 #endif
