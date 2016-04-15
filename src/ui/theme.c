@@ -4897,6 +4897,79 @@ get_button_rect (MetaButtonType           type,
     }
 }
 
+static void
+clip_to_rounded_corners (cairo_t                 *cr,
+                         GdkRectangle             rect,
+                         const MetaFrameGeometry *fgeom)
+{
+  gint x;
+  gint y;
+  gint width;
+  gint height;
+  int scale;
+  gint radius;
+
+  x = rect.x;
+  y = rect.y;
+  width = rect.width;
+  height = rect.height;
+
+  cairo_new_path (cr);
+
+  scale = get_window_scaling_factor ();
+
+  if (fgeom->top_left_corner_rounded_radius != 0)
+    {
+      radius = fgeom->top_left_corner_rounded_radius / scale;
+      radius += sqrt(fgeom->top_left_corner_rounded_radius / scale);
+
+      cairo_line_to (cr, x, y + radius);
+      cairo_arc (cr, x + radius, y + radius, radius,
+                 180.0f * G_PI / 180.0f, 270.0f * G_PI / 180.0f);
+    }
+  else
+    cairo_line_to (cr, x, y);
+
+  if (fgeom->top_right_corner_rounded_radius != 0)
+    {
+      radius = fgeom->top_right_corner_rounded_radius / scale;
+      radius += sqrt(fgeom->top_right_corner_rounded_radius / scale);
+
+      cairo_line_to (cr, x + width - radius, y);
+      cairo_arc (cr, x + width - radius, y + radius, radius,
+                 -90.0f * G_PI / 180.0f, 0.0f * G_PI / 180.0f);
+    }
+  else
+    cairo_line_to (cr, x + width, y);
+
+  if (fgeom->bottom_right_corner_rounded_radius != 0)
+    {
+      radius = fgeom->bottom_right_corner_rounded_radius / scale;
+      radius += sqrt(fgeom->bottom_right_corner_rounded_radius / scale);
+
+      cairo_line_to (cr, x + width, y + height - radius);
+      cairo_arc (cr, x + width - radius, y + height - radius, radius,
+                 0.0f * G_PI / 180.0f, 90.0f * G_PI / 180.0f);
+    }
+  else
+    cairo_line_to (cr, x + width, y + height);
+
+  if (fgeom->bottom_left_corner_rounded_radius != 0)
+    {
+      radius = fgeom->bottom_left_corner_rounded_radius / scale;
+      radius += sqrt(fgeom->bottom_left_corner_rounded_radius / scale);
+
+      cairo_line_to (cr, x + radius, y + height);
+      cairo_arc (cr, x + radius, y + height - radius, radius,
+                 90.0f * G_PI / 180.0f, 180.0f * G_PI / 180.0f);
+    }
+  else
+    cairo_line_to (cr, x, y + height);
+
+  cairo_close_path (cr);
+  cairo_clip (cr);
+}
+
 /* Used for metacity theme */
 static void
 meta_frame_style_draw_with_style (MetaFrameStyle          *style,
@@ -4981,6 +5054,9 @@ meta_frame_style_draw_with_style (MetaFrameStyle          *style,
   draw_info.title_layout_width = title_layout ? extents.width : 0;
   draw_info.title_layout_height = title_layout ? extents.height : 0;
   draw_info.fgeom = fgeom;
+
+  cairo_save (cr);
+  clip_to_rounded_corners (cr, visible_rect, fgeom);
 
   /* The enum is in the order the pieces should be rendered. */
   i = 0;
@@ -5143,6 +5219,8 @@ meta_frame_style_draw_with_style (MetaFrameStyle          *style,
 
       ++i;
     }
+
+  cairo_restore (cr);
 }
 
 static const char *
