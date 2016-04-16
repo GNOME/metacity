@@ -150,12 +150,7 @@ typedef struct _MetaCompWindow
   XWindowAttributes attrs;
 
   Pixmap back_pixmap;
-
-  /* When the window is shaded back_pixmap will be replaced with the pixmap
-     for the shaded window. This is a copy of the original unshaded window
-     so that we can still see what the window looked like when it is needed
-     for the _get_window_pixmap function */
-  Pixmap shaded_back_pixmap;
+  Pixmap mask_pixmap;
 
   int mode;
 
@@ -193,6 +188,22 @@ typedef struct _MetaCompWindow
 
   gboolean updates_frozen;
   gboolean update_pending;
+
+  /* When the window is shaded we will store few data of the original unshaded
+   * window so we can still see what the window looked like when it is needed
+   * for _get_window_surface function.
+   */
+  struct {
+    Pixmap back_pixmap;
+    Pixmap mask_pixmap;
+
+    int x;
+    int y;
+    int width;
+    int height;
+
+    XserverRegion client_region;
+  } shaded;
 } MetaCompWindow;
 
 #define OPAQUE 0xffffffff
@@ -1307,7 +1318,6 @@ get_window_mask (MetaCompWindow *cw)
   int width;
   int height;
   XRenderPictFormat *format;
-  Pixmap pixmap;
   cairo_surface_t *surface;
   cairo_t *cr;
   Picture picture;
@@ -1325,12 +1335,17 @@ get_window_mask (MetaCompWindow *cw)
   height = cw->attrs.height + cw->attrs.border_width * 2;
   format = XRenderFindStandardFormat (xdisplay, PictStandardA8);
 
-  meta_error_trap_push (display);
-  pixmap = XCreatePixmap (xdisplay, cw->id, width, height, format->depth);
-  if (meta_error_trap_pop_with_return (display, FALSE) != 0)
-    return None;
+  if (cw->mask_pixmap == None)
+    {
+      meta_error_trap_push (display);
+      cw->mask_pixmap = XCreatePixmap (xdisplay, cw->id, width, height,
+                                       format->depth);
 
-  surface = cairo_xlib_surface_create_with_xrender_format (xdisplay, pixmap,
+      if (meta_error_trap_pop_with_return (display, FALSE) != 0)
+        return None;
+    }
+
+  surface = cairo_xlib_surface_create_with_xrender_format (xdisplay, cw->mask_pixmap,
                                                            DefaultScreenOfDisplay (xdisplay),
                                                            format, width, height);
 
@@ -1374,10 +1389,8 @@ get_window_mask (MetaCompWindow *cw)
   cairo_surface_destroy (surface);
 
   meta_error_trap_push (display);
-  picture = XRenderCreatePicture (xdisplay, pixmap, format, 0, NULL);
+  picture = XRenderCreatePicture (xdisplay, cw->mask_pixmap, format, 0, NULL);
   meta_error_trap_pop (display, FALSE);
-
-  XFreePixmap (xdisplay, pixmap);
 
   return picture;
 }
@@ -1841,10 +1854,10 @@ free_win (MetaCompWindow *cw,
       cw->back_pixmap = None;
     }
 
-  if (cw->shaded_back_pixmap && destroy)
+  if (cw->mask_pixmap && destroy)
     {
-      XFreePixmap (xdisplay, cw->shaded_back_pixmap);
-      cw->shaded_back_pixmap = None;
+      XFreePixmap (xdisplay, cw->mask_pixmap);
+      cw->mask_pixmap = None;
     }
 
   if (cw->picture)
@@ -1907,6 +1920,24 @@ free_win (MetaCompWindow *cw,
       cw->extents = None;
     }
 
+  if (cw->shaded.back_pixmap && destroy)
+    {
+      XFreePixmap (xdisplay, cw->shaded.back_pixmap);
+      cw->shaded.back_pixmap = None;
+    }
+
+  if (cw->shaded.mask_pixmap && destroy)
+    {
+      XFreePixmap (xdisplay, cw->shaded.mask_pixmap);
+      cw->shaded.mask_pixmap = None;
+    }
+
+  if (cw->shaded.client_region && destroy)
+    {
+      XFixesDestroyRegion (xdisplay, cw->shaded.client_region);
+      cw->shaded.client_region = None;
+    }
+
   if (destroy)
     {
       if (cw->damage != None) {
@@ -1946,10 +1977,28 @@ map_win (MetaDisplay *display,
       cw->back_pixmap = None;
     }
 
-  if (cw->shaded_back_pixmap)
+  if (cw->mask_pixmap)
     {
-      XFreePixmap (xdisplay, cw->shaded_back_pixmap);
-      cw->shaded_back_pixmap = None;
+      XFreePixmap (xdisplay, cw->mask_pixmap);
+      cw->mask_pixmap = None;
+    }
+
+  if (cw->shaded.back_pixmap)
+    {
+      XFreePixmap (xdisplay, cw->shaded.back_pixmap);
+      cw->shaded.back_pixmap = None;
+    }
+
+  if (cw->shaded.mask_pixmap)
+    {
+      XFreePixmap (xdisplay, cw->shaded.mask_pixmap);
+      cw->shaded.mask_pixmap = None;
+    }
+
+  if (cw->shaded.client_region)
+    {
+      XFixesDestroyRegion (xdisplay, cw->shaded.client_region);
+      cw->shaded.client_region = None;
     }
 
   cw->attrs.map_state = IsViewable;
@@ -2145,7 +2194,7 @@ add_win (MetaScreen *screen,
   XSelectInput (xdisplay, xwindow, event_mask);
 
   cw->back_pixmap = None;
-  cw->shaded_back_pixmap = None;
+  cw->mask_pixmap = None;
 
   cw->damaged = FALSE;
   cw->shaped = is_shaped (display, xwindow);
@@ -2182,6 +2231,14 @@ add_win (MetaScreen *screen,
   cw->opacity = OPAQUE;
 
   cw->border_clip = None;
+
+  cw->shaded.back_pixmap = None;
+  cw->shaded.mask_pixmap = None;
+  cw->shaded.x = 0;
+  cw->shaded.y = 0;
+  cw->shaded.width = 0;
+  cw->shaded.height = 0;
+  cw->shaded.client_region = None;
 
   determine_mode (display, screen, cw);
   cw->needs_shadow = window_has_shadow (cw);
@@ -2332,30 +2389,73 @@ resize_win (MetaCompWindow *cw,
     damage = XFixesCreateRegion (xdisplay, &r, 1);
     } */
 
-  cw->attrs.x = x;
-  cw->attrs.y = y;
-
   if (cw->attrs.width != width || cw->attrs.height != height)
     {
-      if (cw->shaded_back_pixmap)
+      if (cw->shaded.back_pixmap)
         {
-          XFreePixmap (xdisplay, cw->shaded_back_pixmap);
-          cw->shaded_back_pixmap = None;
+          XFreePixmap (xdisplay, cw->shaded.back_pixmap);
+          cw->shaded.back_pixmap = None;
+        }
+
+      if (cw->shaded.mask_pixmap)
+        {
+          XFreePixmap (xdisplay, cw->shaded.mask_pixmap);
+          cw->shaded.mask_pixmap = None;
+        }
+
+      if (cw->shaded.client_region)
+        {
+          XFixesDestroyRegion (xdisplay, cw->shaded.client_region);
+          cw->shaded.client_region = None;
         }
 
       if (cw->back_pixmap)
         {
           /* If the window is shaded, we store the old backing pixmap
-             so we can return a proper image of the window */
+           * so we can return a proper image of the window
+           */
           if (cw->window && meta_window_is_shaded (cw->window))
             {
-              cw->shaded_back_pixmap = cw->back_pixmap;
+              cw->shaded.back_pixmap = cw->back_pixmap;
               cw->back_pixmap = None;
             }
           else
             {
               XFreePixmap (xdisplay, cw->back_pixmap);
               cw->back_pixmap = None;
+            }
+        }
+
+      if (cw->mask_pixmap)
+        {
+          /* If the window is shaded, we store the old backing pixmap
+           * so we can return a proper image of the window
+           */
+          if (cw->window && meta_window_is_shaded (cw->window))
+            {
+              cw->shaded.mask_pixmap = cw->mask_pixmap;
+              cw->mask_pixmap = None;
+            }
+          else
+            {
+              XFreePixmap (xdisplay, cw->mask_pixmap);
+              cw->mask_pixmap = None;
+            }
+        }
+
+      if (cw->window && meta_window_is_shaded (cw->window))
+        {
+          cw->shaded.x = cw->attrs.x;
+          cw->shaded.y = cw->attrs.y;
+          cw->shaded.width = cw->attrs.width;
+          cw->shaded.height = cw->attrs.height;
+
+          if (cw->client_region != None)
+            {
+              cw->shaded.client_region = XFixesCreateRegion (xdisplay, NULL, 0);
+
+              XFixesCopyRegion (xdisplay, cw->shaded.client_region,
+                                cw->client_region);
             }
         }
 
@@ -2378,6 +2478,8 @@ resize_win (MetaCompWindow *cw,
         }
     }
 
+  cw->attrs.x = x;
+  cw->attrs.y = y;
   cw->attrs.width = width;
   cw->attrs.height = height;
   cw->attrs.border_width = border_width;
@@ -3177,7 +3279,7 @@ xrender_get_window_surface (MetaCompositor *compositor,
   display = meta_display_get_xdisplay (xrc->display);
 
   if (meta_window_is_shaded (window))
-    pixmap = cw->shaded_back_pixmap;
+    pixmap = cw->shaded.back_pixmap;
   else
     pixmap = cw->back_pixmap;
 
