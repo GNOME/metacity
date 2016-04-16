@@ -1590,17 +1590,24 @@ paint_windows (MetaScreen   *screen,
       if (cw->mode == WINDOW_SOLID)
         {
           int x, y, wid, hei;
+          MetaFrame *frame;
+          MetaFrameBorders borders;
 
           x = cw->attrs.x;
           y = cw->attrs.y;
           wid = cw->attrs.width + cw->attrs.border_width * 2;
           hei = cw->attrs.height + cw->attrs.border_width * 2;
 
+          frame = cw->window ? meta_window_get_frame (cw->window) : NULL;
+          meta_frame_calc_borders (frame, &borders);
+
           XFixesSetPictureClipRegion (xdisplay, root_buffer,
                                       0, 0, paint_region);
-          XRenderComposite (xdisplay, PictOpSrc, cw->picture,
-                            None, root_buffer, 0, 0, 0, 0,
-                            x, y, wid, hei);
+          XRenderComposite (xdisplay, PictOpSrc, cw->picture, None, root_buffer,
+                            borders.total.left, borders.total.top, 0, 0,
+                            x + borders.total.left, y + borders.total.top,
+                            wid - borders.total.left - borders.total.right,
+                            hei - borders.total.top - borders.total.bottom);
 
           if (cw->type == META_COMP_WINDOW_DESKTOP)
             {
@@ -1608,8 +1615,16 @@ paint_windows (MetaScreen   *screen,
               XFixesCopyRegion (xdisplay, desktop_region, paint_region);
             }
 
-          XFixesSubtractRegion (xdisplay, paint_region,
-                                paint_region, cw->window_region);
+          if (frame == NULL)
+            {
+              XFixesSubtractRegion (xdisplay, paint_region,
+                                    paint_region, cw->window_region);
+            }
+          else
+            {
+              XFixesSubtractRegion (xdisplay, paint_region,
+                                    paint_region, cw->client_region);
+            }
         }
 
       if (!cw->border_clip)
@@ -1636,6 +1651,13 @@ paint_windows (MetaScreen   *screen,
 
       if (cw->picture)
         {
+          int x, y, wid, hei;
+
+          x = cw->attrs.x;
+          y = cw->attrs.y;
+          wid = cw->attrs.width + cw->attrs.border_width * 2;
+          hei = cw->attrs.height + cw->attrs.border_width * 2;
+
           if (cw->shadow && cw->type != META_COMP_WINDOW_DOCK)
             {
               XserverRegion shadow_clip;
@@ -1647,11 +1669,10 @@ paint_windows (MetaScreen   *screen,
                                           shadow_clip);
 
               XRenderComposite (xdisplay, PictOpOver, info->black_picture,
-                                cw->shadow, root_buffer,
-                                0, 0, 0, 0,
-                                cw->attrs.x + cw->shadow_dx,
-                                cw->attrs.y + cw->shadow_dy,
+                                cw->shadow, root_buffer, 0, 0, 0, 0,
+                                x + cw->shadow_dx, y + cw->shadow_dy,
                                 cw->shadow_width, cw->shadow_height);
+
               if (shadow_clip)
                 XFixesDestroyRegion (xdisplay, shadow_clip);
             }
@@ -1667,15 +1688,48 @@ paint_windows (MetaScreen   *screen,
                                  cw->window_region);
           XFixesSetPictureClipRegion (xdisplay, root_buffer, 0, 0,
                                       cw->border_clip);
-          if (cw->mode == WINDOW_ARGB)
+
+          if (cw->mode == WINDOW_SOLID && cw->mask != None)
             {
-              int x, y, wid, hei;
+              XRenderComposite (xdisplay, PictOpOver, cw->mask,
+                                cw->alpha_pict, root_buffer, 0, 0, 0, 0,
+                                x, y, wid, hei);
 
-              x = cw->attrs.x;
-              y = cw->attrs.y;
-              wid = cw->attrs.width + cw->attrs.border_width * 2;
-              hei = cw->attrs.height + cw->attrs.border_width * 2;
+              XRenderComposite (xdisplay, PictOpAdd, cw->picture,
+                                None, root_buffer, 0, 0, 0, 0,
+                                x, y, wid, hei);
+            }
+          else if (cw->mode == WINDOW_ARGB && cw->mask != None)
+            {
+              XserverRegion clip;
+              XserverRegion client;
 
+              clip = XFixesCreateRegion (xdisplay, NULL, 0);
+              client = cw->client_region;
+
+              XFixesSubtractRegion (xdisplay, clip, cw->border_clip, client);
+              XFixesSetPictureClipRegion (xdisplay, root_buffer, 0, 0, clip);
+
+              XRenderComposite (xdisplay, PictOpOver, cw->mask,
+                                cw->alpha_pict, root_buffer, 0, 0, 0, 0,
+                                x, y, wid, hei);
+
+              XRenderComposite (xdisplay, PictOpAdd, cw->picture,
+                                None, root_buffer, 0, 0, 0, 0,
+                                x, y, wid, hei);
+
+              XFixesIntersectRegion (xdisplay, clip, cw->border_clip, client);
+              XFixesSetPictureClipRegion (xdisplay, root_buffer, 0, 0, clip);
+
+              XRenderComposite (xdisplay, PictOpOver, cw->picture,
+                                cw->alpha_pict, root_buffer, 0, 0, 0, 0,
+                                x, y, wid, hei);
+
+              if (clip)
+                XFixesDestroyRegion (xdisplay, clip);
+            }
+          else if (cw->mode == WINDOW_ARGB && cw->mask == None)
+            {
               XRenderComposite (xdisplay, PictOpOver, cw->picture,
                                 cw->alpha_pict, root_buffer, 0, 0, 0, 0,
                                 x, y, wid, hei);
