@@ -1996,7 +1996,7 @@ free_win (MetaCompWindow *cw,
       cw->visible_region = None;
     }
 
-  if (cw->client_region)
+  if (cw->client_region && destroy)
     {
       XFixesDestroyRegion (xdisplay, cw->client_region);
       cw->client_region = None;
@@ -2075,6 +2075,12 @@ map_win (MetaDisplay *display,
     {
       XFreePixmap (xdisplay, cw->mask_pixmap);
       cw->mask_pixmap = None;
+    }
+
+  if (cw->client_region)
+    {
+      XFixesDestroyRegion (xdisplay, cw->client_region);
+      cw->client_region = None;
     }
 
   if (cw->shaded.back_pixmap)
