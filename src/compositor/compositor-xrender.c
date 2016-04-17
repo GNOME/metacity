@@ -623,6 +623,9 @@ xserver_region_to_cairo_region (Display       *xdisplay,
   int i;
   cairo_region_t *region;
 
+  if (xregion == None)
+    return NULL;
+
   xrects = XFixesFetchRegion (xdisplay, xregion, &nrects);
   if (xrects == NULL)
     return NULL;
