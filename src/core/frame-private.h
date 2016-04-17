@@ -66,6 +66,7 @@ gboolean meta_frame_sync_to_window (MetaFrame         *frame,
                                     gboolean           need_move,
                                     gboolean           need_resize);
 
+G_GNUC_INTERNAL
 void meta_frame_clear_cached_borders (MetaFrame *frame);
 
 cairo_region_t *meta_frame_get_frame_bounds (MetaFrame *frame);

@@ -649,6 +649,7 @@ const char* meta_window_get_startup_id (MetaWindow *window);
 void meta_window_recalc_features    (MetaWindow *window);
 void meta_window_recalc_window_type (MetaWindow *window);
 
+G_GNUC_INTERNAL
 void meta_window_frame_size_changed (MetaWindow *window);
 
 void meta_window_stack_just_above (MetaWindow *window,
