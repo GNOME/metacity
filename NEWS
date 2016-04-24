@@ -1,3 +1,9 @@
+Version 3.18.4
+- Try to use root window background instead of grey color.
+- Fix performance regression.
+- Updated translations:
+  Anders Jonsson (sv).
+
 Version 3.18.3
 - Add Icon=preferences-system-windows in metacity.destkop. (Alberts Muktupāvels)
 - Scale window decorations on HiDPI displays, based on mutter. (Alberts
