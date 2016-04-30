@@ -12,15 +12,15 @@ msgstr ""
 "Project-Id-Version: metacity master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-03-12 13:34+0000\n"
-"PO-Revision-Date: 2016-03-12 16:04+0100\n"
-"Last-Translator: Úr Balázs <urbalazs@gmail.com>\n"
+"POT-Creation-Date: 2016-04-29 01:15+0000\n"
+"PO-Revision-Date: 2016-04-29 09:42+0200\n"
+"Last-Translator: Meskó Balázs <meskobalazs@gmail.com>\n"
 "Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 1.8.7\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. Translators: This is the title used on dialog boxes
@@ -28,7 +28,8 @@ msgstr ""
 msgid "Metacity"
 msgstr "Metacity"
 
-#: data/applications/metacity.desktop.in:6
+#. TRANSLATORS: Don't translate this text (this is icon name)
+#: data/applications/metacity.desktop.in:7
 msgid "preferences-system-windows"
 msgstr "preferences-system-windows"
 
@@ -1197,7 +1198,7 @@ msgstr "_Erőltetett kilépés"
 msgid "Failed to get hostname: %s\n"
 msgstr "Hiba a gépnév lekérdezése közben: %s\n"
 
-#: src/core/display.c:326
+#: src/core/display.c:322
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
 msgstr "Nem sikerült megnyitni a(z) „%s” X Window rendszer képernyőt\n"
@@ -1226,55 +1227,55 @@ msgstr ""
 "NINCS garancia; még az ELADHATÓSÁGRA vagy EGY ADOTT CÉLRA VALÓ ALKALMASSÁGRA "
 "vonatkozólag sem.\n"
 
-#: src/core/main.c:237
+#: src/core/main.c:225
 msgid "Disable connection to session manager"
 msgstr "A munkamenet-kezelőhöz való csatlakozás tiltása"
 
-#: src/core/main.c:243
+#: src/core/main.c:231
 msgid "Replace the running window manager with Metacity"
 msgstr "A futó ablakkezelő helyettesítése a Metacity-vel"
 
-#: src/core/main.c:249
+#: src/core/main.c:237
 msgid "Specify session management ID"
 msgstr "A munkamenet-kezelő azonosítójának megadása"
 
-#: src/core/main.c:254
+#: src/core/main.c:242
 msgid "X Display to use"
 msgstr "A használandó X megjelenítő"
 
-#: src/core/main.c:260
+#: src/core/main.c:248
 msgid "Initialize session from savefile"
 msgstr "A munkamenet előkészítése a mentési fájlból"
 
-#: src/core/main.c:266
+#: src/core/main.c:254
 msgid "Print version"
 msgstr "Verzió kinyomtatása"
 
-#: src/core/main.c:272
+#: src/core/main.c:260
 msgid "Make X calls synchronous"
 msgstr "Az X-hívások szinkronná tétele"
 
-#: src/core/main.c:278
+#: src/core/main.c:266
 msgid "Turn compositing on"
 msgstr "Kompozitálás bekapcsolása"
 
-#: src/core/main.c:284
+#: src/core/main.c:272
 msgid "Turn compositing off"
 msgstr "Kompozitálás kikapcsolása"
 
-#: src/core/main.c:290
+#: src/core/main.c:278
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr ""
 "Ne tegye teljes képernyőssé a maximalizált és díszítésekkel nem rendelkező "
 "ablakokat"
 
-#: src/core/main.c:514
+#: src/core/main.c:502
 #, c-format
 msgid "Failed to restart: %s\n"
 msgstr "Újraindítás sikertelen: %s\n"
 
-#: src/core/prefs.c:972
+#: src/core/prefs.c:1019
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -1282,14 +1283,14 @@ msgstr ""
 "A hibás alkalmazások hibáinak megkerülése nincs engedélyezve. Néhány "
 "alkalmazás lehet, hogy nem fog helyesen működni.\n"
 
-#: src/core/prefs.c:1049
+#: src/core/prefs.c:1096
 #, c-format
 msgid "Could not parse font description \"%s\" from GSettings key %s\n"
 msgstr ""
 "Nem sikerült feldolgozni a(z) „%s” betűkészlet leírását a(z) „%s” GSettings "
 "kulcsból\n"
 
-#: src/core/prefs.c:1111
+#: src/core/prefs.c:1158
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -1298,7 +1299,7 @@ msgstr ""
 "A konfigurációs adatbázisban talált „%s” érvénytelen érték az egérgomb "
 "módosítóhoz\n"
 
-#: src/core/prefs.c:1390
+#: src/core/prefs.c:1435
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -1307,12 +1308,12 @@ msgstr ""
 "A konfigurációs adatbázisban talált „%s” nem érvényes érték a következő "
 "billentyűkombinációhoz: „%s”\n"
 
-#: src/core/prefs.c:1492
+#: src/core/prefs.c:1537
 #, c-format
 msgid "Workspace %d"
 msgstr "%d. munkaterület"
 
-#: src/core/prefs.c:1749
+#: src/core/prefs.c:1794
 #, c-format
 msgid "Missing %s extension required for compositing\n"
 msgstr "Hiányzik a kompozit ablakkezeléshez szükséges %s kiterjesztés\n"
@@ -1339,12 +1340,12 @@ msgstr ""
 "Nem sikerült beolvasni az ablakkezelő kiválasztását a(z) %d képernyőn a(z) "
 "„%s” megjelenítőn\n"
 
-#: src/core/screen.c:465
+#: src/core/screen.c:463
 #, c-format
 msgid "Screen %d on display \"%s\" already has a window manager\n"
 msgstr "A(z) %d képernyőnek a(z) „%s” megjelenítőn már van ablakkezelője\n"
 
-#: src/core/screen.c:678
+#: src/core/screen.c:675
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "Nem sikerült elengedni a(z) %d képernyőt a(z) „%s” kijelzőn\n"
@@ -1441,7 +1442,7 @@ msgid "Window manager error: "
 msgstr "Hibaüzenet az ablakkezelőtől: "
 
 #. first time through
-#: src/core/window.c:5935
+#: src/core/window.c:5955
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -1457,7 +1458,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/core/window.c:6418
+#: src/core/window.c:6445
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size "
@@ -1539,51 +1540,51 @@ msgstr ""
 msgid "Usage: %s\n"
 msgstr "Használat: %s\n"
 
-#: src/ui/frames.c:1235
+#: src/ui/frames.c:1204
 msgid "Close Window"
 msgstr "Ablak bezárása"
 
-#: src/ui/frames.c:1238
+#: src/ui/frames.c:1207
 msgid "Window Menu"
 msgstr "Ablak menü"
 
-#: src/ui/frames.c:1241
+#: src/ui/frames.c:1210
 msgid "Window App Menu"
 msgstr "Ablak app menü"
 
-#: src/ui/frames.c:1244
+#: src/ui/frames.c:1213
 msgid "Minimize Window"
 msgstr "Ablak minimalizálása"
 
-#: src/ui/frames.c:1247
+#: src/ui/frames.c:1216
 msgid "Maximize Window"
 msgstr "Ablak maximalizálása"
 
-#: src/ui/frames.c:1250
+#: src/ui/frames.c:1219
 msgid "Restore Window"
 msgstr "Ablak visszaállítása"
 
-#: src/ui/frames.c:1253
+#: src/ui/frames.c:1222
 msgid "Roll Up Window"
 msgstr "Ablak felgördítése"
 
-#: src/ui/frames.c:1256
+#: src/ui/frames.c:1225
 msgid "Unroll Window"
 msgstr "Ablak lenyitása"
 
-#: src/ui/frames.c:1259
+#: src/ui/frames.c:1228
 msgid "Keep Window On Top"
 msgstr "Ablak legfelül tartása"
 
-#: src/ui/frames.c:1262
+#: src/ui/frames.c:1231
 msgid "Remove Window From Top"
 msgstr "Ablak eltávolítása legfelülről"
 
-#: src/ui/frames.c:1265
+#: src/ui/frames.c:1234
 msgid "Always On Visible Workspace"
 msgstr "Mindig a látható munkaterületen"
 
-#: src/ui/frames.c:1268
+#: src/ui/frames.c:1237
 msgid "Put Window On Only One Workspace"
 msgstr "Ablak kirakása csak egy munkaterületre"
 
@@ -1784,6 +1785,10 @@ msgstr "Mod5"
 #, c-format
 msgid "%d x %d"
 msgstr "%d x %d"
+
+#: src/ui/ui.c:774
+msgid "Falling back to default GTK+ theme - Adwaita"
+msgstr "Visszaállás az alapértelmezett, Adwaita GTK+ témára"
 
 #: theme-viewer/theme-viewer-window.c:791
 msgid "Metacity Theme Viewer"
