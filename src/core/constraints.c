@@ -337,6 +337,27 @@ meta_window_constrain (MetaWindow          *window,
     g_free (info.borders);
 }
 
+static gboolean
+validate_fullscreen_monitors (MetaWindow *window)
+{
+  gint i;
+
+  if (window->fullscreen_monitors[0] == -1)
+    return FALSE;
+
+  for (i = 0; i < 4; i++)
+    {
+      gint monitor;
+
+      monitor = window->fullscreen_monitors[i];
+
+      if (monitor < 0 || monitor > window->screen->n_xinerama_infos)
+        return FALSE;
+    }
+
+  return TRUE;
+}
+
 static void
 setup_constraint_info (ConstraintInfo      *info,
                        MetaWindow          *window,
@@ -412,7 +433,7 @@ setup_constraint_info (ConstraintInfo      *info,
                                           xinerama_info->number,
                                           &info->work_area_xinerama);
 
-  if (!window->fullscreen || window->fullscreen_monitors[0] == -1)
+  if (!window->fullscreen || !validate_fullscreen_monitors (window))
     {
       info->entire_xinerama = xinerama_info->rect;
     }
