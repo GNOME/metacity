@@ -2819,6 +2819,9 @@ get_control (MetaFrames *frames,
   meta_frames_calc_geometry (frames, frame, &fgeom);
   get_client_rect (&fgeom, fgeom.width, fgeom.height, &client);
 
+  if (x < 0 || y < 0 || x > fgeom.width || y > fgeom.height)
+    return META_FRAME_CONTROL_NONE;
+
   if (POINT_IN_RECT (x, y, client))
     return META_FRAME_CONTROL_CLIENT_AREA;
 
