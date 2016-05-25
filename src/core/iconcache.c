@@ -230,7 +230,7 @@ read_rgb_icon (MetaDisplay   *display,
   int mini_w, mini_h;
   gulong *data_as_long;
 
-  meta_error_trap_push_with_return (display);
+  meta_error_trap_push (display);
   type = None;
   data = NULL;
   result = XGetWindowProperty (display->xdisplay,
@@ -239,7 +239,7 @@ read_rgb_icon (MetaDisplay   *display,
 			       0, G_MAXLONG,
 			       False, XA_CARDINAL, &type, &format, &nitems,
 			       &bytes_after, &data);
-  err = meta_error_trap_pop_with_return (display, TRUE);
+  err = meta_error_trap_pop_with_return (display);
 
   if (err != Success ||
       result != Success)
@@ -439,7 +439,7 @@ try_pixmap_and_mask (MetaDisplay *display,
                                                 w, h);
     }
 
-  meta_error_trap_pop (display, FALSE);
+  meta_error_trap_pop (display);
 
   if (mask)
     {
@@ -504,7 +504,7 @@ get_kwm_win_icon (MetaDisplay *display,
   *pixmap = None;
   *mask = None;
 
-  meta_error_trap_push_with_return (display);
+  meta_error_trap_push (display);
   icons = NULL;
   result = XGetWindowProperty (display->xdisplay, xwindow,
                                display->atom__KWM_WIN_ICON,
@@ -515,7 +515,7 @@ get_kwm_win_icon (MetaDisplay *display,
 			       &bytes_after, &data);
   icons = (Pixmap *)data;
 
-  err = meta_error_trap_pop_with_return (display, TRUE);
+  err = meta_error_trap_pop_with_return (display);
   if (err != Success ||
       result != Success)
     return;

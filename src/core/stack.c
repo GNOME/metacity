@@ -960,13 +960,13 @@ raise_window_relative_to_managed_windows (MetaScreen *screen,
    * or restack any windows before using the XQueryTree results.
    */
 
-  meta_error_trap_push_with_return (screen->display);
+  meta_error_trap_push (screen->display);
 
   XQueryTree (screen->display->xdisplay,
               screen->xroot,
               &ignored1, &ignored2, &children, &n_children);
 
-  if (meta_error_trap_pop_with_return (screen->display, TRUE) != Success)
+  if (meta_error_trap_pop_with_return (screen->display) != Success)
     {
       meta_topic (META_DEBUG_STACK,
                   "Error querying root children to raise window 0x%lx\n",
@@ -1011,7 +1011,7 @@ raise_window_relative_to_managed_windows (MetaScreen *screen,
                             xwindow,
                             CWSibling | CWStackMode,
                             &changes);
-          meta_error_trap_pop (screen->display, FALSE);
+          meta_error_trap_pop (screen->display);
 
           break;
         }
@@ -1027,7 +1027,7 @@ raise_window_relative_to_managed_windows (MetaScreen *screen,
       meta_error_trap_push (screen->display);
       XLowerWindow (screen->display->xdisplay,
                     xwindow);
-      meta_error_trap_pop (screen->display, FALSE);
+      meta_error_trap_pop (screen->display);
     }
 
   if (children)
@@ -1203,7 +1203,7 @@ stack_sync_to_server (MetaStack *stack)
         }
     }
 
-  meta_error_trap_pop (stack->screen->display, FALSE);
+  meta_error_trap_pop (stack->screen->display);
   /* on error, a window was destroyed; it should eventually
    * get removed from the stacking list when we unmanage it
    * and we'll fix stacking at that time.

@@ -42,6 +42,7 @@
 #include "compositor-private.h"
 #include "compositor-xrender.h"
 #include "xprops.h"
+#include "util.h"
 #include <X11/Xatom.h>
 #include <X11/extensions/shape.h>
 #include <X11/extensions/Xcomposite.h>
@@ -1175,7 +1176,7 @@ get_window_region (MetaCompWindow *cw)
 
   meta_error_trap_push (display);
   region = XFixesCreateRegionFromWindow (xdisplay, cw->id, WindowRegionBounding);
-  meta_error_trap_pop (display, FALSE);
+  meta_error_trap_pop (display);
 
   if (region == None)
     return None;
@@ -1325,7 +1326,7 @@ get_window_picture (MetaCompWindow *cw)
   if (cw->back_pixmap == None)
     cw->back_pixmap = XCompositeNameWindowPixmap (xdisplay, cw->id);
 
-  error_code = meta_error_trap_pop_with_return (display, FALSE);
+  error_code = meta_error_trap_pop_with_return (display);
   if (error_code != 0)
     cw->back_pixmap = None;
 
@@ -1341,7 +1342,7 @@ get_window_picture (MetaCompWindow *cw)
 
       meta_error_trap_push (display);
       pict = XRenderCreatePicture (xdisplay, draw, format, CPSubwindowMode, &pa);
-      meta_error_trap_pop (display, FALSE);
+      meta_error_trap_pop (display);
 
       return pict;
     }
@@ -1381,7 +1382,7 @@ get_window_mask (MetaCompWindow *cw)
       cw->mask_pixmap = XCreatePixmap (xdisplay, cw->id, width, height,
                                        format->depth);
 
-      if (meta_error_trap_pop_with_return (display, FALSE) != 0)
+      if (meta_error_trap_pop_with_return (display) != 0)
         return None;
     }
 
@@ -1430,7 +1431,7 @@ get_window_mask (MetaCompWindow *cw)
 
   meta_error_trap_push (display);
   picture = XRenderCreatePicture (xdisplay, cw->mask_pixmap, format, 0, NULL);
-  meta_error_trap_pop (display, FALSE);
+  meta_error_trap_pop (display);
 
   return picture;
 }
@@ -1805,7 +1806,7 @@ repair_screen (MetaScreen *screen)
       XFixesDestroyRegion (xdisplay, info->all_damage);
       info->all_damage = None;
       info->clip_changed = FALSE;
-      meta_error_trap_pop (display, FALSE);
+      meta_error_trap_pop (display);
     }
 }
 
@@ -1912,6 +1913,7 @@ repair_win (MetaCompWindow *cw)
   XserverRegion parts;
 
   meta_error_trap_push (display);
+
   if (!cw->damaged)
     {
       parts = win_extents (cw);
@@ -1926,7 +1928,7 @@ repair_win (MetaCompWindow *cw)
                              cw->attrs.y + cw->attrs.border_width);
     }
 
-  meta_error_trap_pop (display, FALSE);
+  meta_error_trap_pop (display);
 
   dump_xserver_region ("repair_win", display, parts);
   add_damage (screen, parts);
@@ -1958,7 +1960,7 @@ free_win (MetaCompWindow *cw,
     {
       meta_error_trap_push (display);
       XRenderFreePicture (xdisplay, cw->picture);
-      meta_error_trap_pop (display, FALSE);
+      meta_error_trap_pop (display);
 
       cw->picture = None;
     }
@@ -2040,7 +2042,7 @@ free_win (MetaCompWindow *cw,
       if (cw->damage != None) {
         meta_error_trap_push (display);
         XDamageDestroy (xdisplay, cw->damage);
-        meta_error_trap_pop (display, FALSE);
+        meta_error_trap_pop (display);
 
         cw->damage = None;
       }
@@ -3006,7 +3008,7 @@ xrender_add_window (MetaCompositor    *compositor,
 
   meta_error_trap_push (xrc->display);
   add_win (screen, window, xwindow);
-  meta_error_trap_pop (xrc->display, FALSE);
+  meta_error_trap_pop (xrc->display);
 }
 
 static void
@@ -3315,13 +3317,13 @@ xrender_process_event (MetaCompositor *compositor,
         process_shape (xrc, (XShapeEvent *) event);
       else
         {
-          meta_error_trap_pop (xrc->display, FALSE);
+          meta_error_trap_pop (xrc->display);
           return;
         }
       break;
     }
 
-  meta_error_trap_pop (xrc->display, FALSE);
+  meta_error_trap_pop (xrc->display);
 #ifndef USE_IDLE_REPAINT
   repair_display (xrc->display);
 #endif

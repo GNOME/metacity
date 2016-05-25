@@ -271,7 +271,7 @@ reload_net_wm_window_type (MetaWindow    *window,
         {
           meta_error_trap_push (window->display);
           str = XGetAtomName (window->display->xdisplay, window->type_atom);
-          meta_error_trap_pop (window->display, TRUE);
+          meta_error_trap_pop (window->display);
         }
 
       meta_verbose ("Window %s type atom %s\n", window->desc,
@@ -630,7 +630,7 @@ set_title_text (MetaWindow  *window,
       XDeleteProperty (window->display->xdisplay,
                        window->xwindow,
                        atom);
-      meta_error_trap_pop (window->display, FALSE);
+      meta_error_trap_pop (window->display);
     }
 
   return modified;

@@ -129,7 +129,7 @@ meta_window_ensure_frame (MetaWindow *window)
                    window->rect.x,
                    window->rect.y);
   /* FIXME handle this error */
-  meta_error_trap_pop (window->display, FALSE);
+  meta_error_trap_pop (window->display);
 
   /* stick frame to the window */
   window->frame = frame;
@@ -202,7 +202,7 @@ meta_window_destroy_frame (MetaWindow *window)
                     */
                    window->frame->rect.x + borders.invisible.left,
                    window->frame->rect.y + borders.invisible.top);
-  meta_error_trap_pop (window->display, FALSE);
+  meta_error_trap_pop (window->display);
 
   meta_ui_destroy_frame_window (window->screen->ui, frame->xwindow);
 

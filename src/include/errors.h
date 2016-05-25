@@ -1,7 +1,5 @@
 /* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
 
-/* Metacity X error handling */
-
 /*
  * Copyright (C) 2001 Havoc Pennington
  *
@@ -22,28 +20,12 @@
 #ifndef META_ERRORS_H
 #define META_ERRORS_H
 
-#include <X11/Xlib.h>
-
-#include "util.h"
 #include "display.h"
 
-typedef void (* ErrorHandler) (Display *dpy,
-                               XErrorEvent *error,
-                               gpointer data);
+void meta_error_trap_push            (MetaDisplay *display);
 
-void      meta_errors_init     (void);
-void	  meta_errors_register_foreign_display (Display      *foreign_dpy,
-						ErrorHandler  handler,
-						gpointer      data);
+void meta_error_trap_pop             (MetaDisplay *display);
 
-void      meta_error_trap_push (MetaDisplay *display);
-void      meta_error_trap_pop  (MetaDisplay *display,
-                                gboolean     last_request_was_roundtrip);
-
-void      meta_error_trap_push_with_return (MetaDisplay *display);
-/* returns X error code, or 0 for no error */
-int       meta_error_trap_pop_with_return  (MetaDisplay *display,
-                                            gboolean     last_request_was_roundtrip);
-
+int  meta_error_trap_pop_with_return (MetaDisplay *display);
 
 #endif

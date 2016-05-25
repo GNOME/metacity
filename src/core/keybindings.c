@@ -485,7 +485,8 @@ regrab_key_bindings (MetaDisplay *display)
 
       tmp = tmp->next;
     }
-  meta_error_trap_pop (display, FALSE);
+
+  meta_error_trap_pop (display);
 
   g_slist_free (windows);
 }
@@ -664,7 +665,8 @@ meta_change_keygrab (MetaDisplay *display,
         }
 
       if (meta_is_debugging ())
-        meta_error_trap_push_with_return (display);
+        meta_error_trap_push (display);
+
       if (grab)
         XGrabKey (display->xdisplay, keycode,
                   modmask | ignored_mask,
@@ -680,7 +682,7 @@ meta_change_keygrab (MetaDisplay *display,
         {
           int result;
 
-          result = meta_error_trap_pop_with_return (display, FALSE);
+          result = meta_error_trap_pop_with_return (display);
 
           if (grab && result != Success)
             {
@@ -696,7 +698,7 @@ meta_change_keygrab (MetaDisplay *display,
       ++ignored_mask;
     }
 
-  meta_error_trap_pop (display, FALSE);
+  meta_error_trap_pop (display);
 }
 
 static void
@@ -739,17 +741,14 @@ grab_keys (MetaKeyBinding *bindings,
       ++i;
     }
 
-  meta_error_trap_pop (display, FALSE);
+  meta_error_trap_pop (display);
 }
 
 static void
 ungrab_all_keys (MetaDisplay *display,
                  Window       xwindow)
 {
-  if (meta_is_debugging ())
-    meta_error_trap_push_with_return (display);
-  else
-    meta_error_trap_push (display);
+  meta_error_trap_push (display);
 
   XUngrabKey (display->xdisplay, AnyKey, AnyModifier,
               xwindow);
@@ -758,14 +757,14 @@ ungrab_all_keys (MetaDisplay *display,
     {
       int result;
 
-      result = meta_error_trap_pop_with_return (display, FALSE);
+      result = meta_error_trap_pop_with_return (display);
 
       if (result != Success)
         meta_topic (META_DEBUG_KEYBINDINGS,
                     "Ungrabbing all keys on 0x%lx failed\n", xwindow);
     }
   else
-    meta_error_trap_pop (display, FALSE);
+    meta_error_trap_pop (display);
 }
 
 void
@@ -886,7 +885,7 @@ grab_keyboard (MetaDisplay *display,
   /* Grab the keyboard, so we get key releases and all key
    * presses
    */
-  meta_error_trap_push_with_return (display);
+  meta_error_trap_push (display);
 
   grab_status = XGrabKeyboard (display->xdisplay,
                                xwindow, True,
@@ -895,7 +894,7 @@ grab_keyboard (MetaDisplay *display,
 
   if (grab_status != GrabSuccess)
     {
-      meta_error_trap_pop_with_return (display, TRUE);
+      meta_error_trap_pop_with_return (display);
       meta_topic (META_DEBUG_KEYBINDINGS,
                   "XGrabKeyboard() returned failure status %s time %u\n",
                   grab_status_to_string (grab_status),
@@ -904,7 +903,7 @@ grab_keyboard (MetaDisplay *display,
     }
   else
     {
-      result = meta_error_trap_pop_with_return (display, TRUE);
+      result = meta_error_trap_pop_with_return (display);
       if (result != Success)
         {
           meta_topic (META_DEBUG_KEYBINDINGS,
@@ -927,7 +926,8 @@ ungrab_keyboard (MetaDisplay *display, guint32 timestamp)
               "Ungrabbing keyboard with timestamp %u\n",
               timestamp);
   XUngrabKeyboard (display->xdisplay, timestamp);
-  meta_error_trap_pop (display, FALSE);
+
+  meta_error_trap_pop (display);
 }
 
 gboolean
@@ -2781,7 +2781,7 @@ handle_panel (MetaDisplay    *display,
 	      StructureNotifyMask,
 	      (XEvent*) &ev);
 
-  meta_error_trap_pop (display, FALSE);
+  meta_error_trap_pop (display);
 }
 
 static void
