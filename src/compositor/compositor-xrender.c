@@ -1957,7 +1957,10 @@ free_win (MetaCompWindow *cw,
 
   if (cw->picture)
     {
+      meta_error_trap_push (display);
       XRenderFreePicture (xdisplay, cw->picture);
+      meta_error_trap_pop (display, FALSE);
+
       cw->picture = None;
     }
 
