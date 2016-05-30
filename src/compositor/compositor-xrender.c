@@ -1942,6 +1942,8 @@ free_win (MetaCompWindow *cw,
   Display *xdisplay = meta_display_get_xdisplay (display);
   MetaCompScreen *info = meta_screen_get_compositor_data (cw->screen);
 
+  meta_error_trap_push (display);
+
   /* See comment in map_win */
   if (cw->back_pixmap && destroy)
     {
@@ -1957,10 +1959,7 @@ free_win (MetaCompWindow *cw,
 
   if (cw->picture)
     {
-      meta_error_trap_push (display);
       XRenderFreePicture (xdisplay, cw->picture);
-      meta_error_trap_pop (display, FALSE);
-
       cw->picture = None;
     }
 
@@ -2038,13 +2037,11 @@ free_win (MetaCompWindow *cw,
 
   if (destroy)
     {
-      if (cw->damage != None) {
-        meta_error_trap_push (display);
-        XDamageDestroy (xdisplay, cw->damage);
-        meta_error_trap_pop (display, FALSE);
-
-        cw->damage = None;
-      }
+      if (cw->damage != None)
+        {
+          XDamageDestroy (xdisplay, cw->damage);
+          cw->damage = None;
+        }
 
       /* The window may not have been added to the list in this case,
          but we can check anyway */
@@ -2053,6 +2050,8 @@ free_win (MetaCompWindow *cw,
 
       g_free (cw);
     }
+
+  meta_error_trap_pop (display, FALSE);
 }
 
 static void
