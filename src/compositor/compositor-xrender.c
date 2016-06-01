@@ -2667,23 +2667,6 @@ process_configure_notify (MetaCompositorXRender  *compositor,
 
   if (cw)
     {
-#if 0
-      int x = -1, y = -1, width = -1, height = -1;
-      int ex = -1, ey = -1, ewidth = -1, eheight = -1;
-      MetaRectangle *rect;
-
-      if (cw->window) {
-        rect = meta_window_get_rect (cw->window);
-        x = rect->x;
-        y = rect->y;
-        width = rect->width;
-        height = rect->height;
-      }
-      fprintf (stderr, "configure notify xy (%d %d) -> (%d %d), wh (%d %d) -> (%d %d)\n",
-               x, y, event->x, event->y,
-               width, height, event->width, event->height);
-#endif
-
       if (compositor->debug)
         {
           fprintf (stderr, "configure notify %d %d %d\n", cw->damaged,

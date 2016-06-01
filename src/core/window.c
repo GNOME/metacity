@@ -8631,12 +8631,6 @@ meta_window_is_shaded (MetaWindow *window)
   return window->shaded;
 }
 
-MetaRectangle *
-meta_window_get_rect (MetaWindow *window)
-{
-  return &window->rect;
-}
-
 MetaScreen *
 meta_window_get_screen (MetaWindow *window)
 {
