@@ -58,6 +58,7 @@ libmetacity_la_CFLAGS = \
 	$(NULL)
 
 libmetacity_la_LDFLAGS = \
+	-version-info $(LT_VERSION_INFO) \
 	$(WARN_LDFLAGS) \
 	$(AM_LDFLAGS) \
 	$(NULL)
