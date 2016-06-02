@@ -38,78 +38,7 @@ meta_theme_gtk_load (MetaThemeImpl  *impl,
                      const gchar    *name,
                      GError        **error)
 {
-  MetaFrameType type;
-
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
-
-  for (type = 0; type < META_FRAME_TYPE_LAST; type++)
-    {
-      MetaFrameStyleSet *style_set;
-      MetaFrameStyle *style;
-      gint i;
-      gint j;
-
-      style_set = meta_frame_style_set_new (NULL);
-
-      style = meta_frame_style_new (NULL);
-      style->layout = meta_frame_layout_new ();
-
-      switch (type)
-        {
-          case META_FRAME_TYPE_NORMAL:
-          case META_FRAME_TYPE_DIALOG:
-          case META_FRAME_TYPE_MODAL_DIALOG:
-          case META_FRAME_TYPE_ATTACHED:
-            break;
-
-          case META_FRAME_TYPE_MENU:
-          case META_FRAME_TYPE_UTILITY:
-            style->layout->title_scale = PANGO_SCALE_SMALL;
-            break;
-
-          case META_FRAME_TYPE_BORDER:
-            style->layout->has_title = FALSE;
-            style->layout->hide_buttons = TRUE;
-            break;
-
-          case META_FRAME_TYPE_LAST:
-          default:
-            g_assert_not_reached ();
-        }
-
-      for (i = 0; i < META_FRAME_FOCUS_LAST; i++)
-        {
-          for (j = 0; j < META_FRAME_RESIZE_LAST; j++)
-            {
-              meta_frame_style_ref (style);
-              style_set->normal_styles[j][i] = style;
-
-              meta_frame_style_ref (style);
-              style_set->shaded_styles[j][i] = style;
-            }
-
-          meta_frame_style_ref (style);
-          style_set->maximized_styles[i] = style;
-
-          meta_frame_style_ref (style);
-          style_set->tiled_left_styles[i] = style;
-
-          meta_frame_style_ref (style);
-          style_set->tiled_right_styles[i] = style;
-
-          meta_frame_style_ref (style);
-          style_set->maximized_and_shaded_styles[i] = style;
-
-          meta_frame_style_ref (style);
-          style_set->tiled_left_and_shaded_styles[i] = style;
-
-          meta_frame_style_ref (style);
-          style_set->tiled_right_and_shaded_styles[i] = style;
-        }
-
-      meta_frame_style_unref (style);
-      meta_theme_impl_add_style_set (impl, type, style_set);
-    }
 
   return TRUE;
 }
@@ -1033,4 +962,77 @@ meta_theme_gtk_class_init (MetaThemeGtkClass *gtk_class)
 static void
 meta_theme_gtk_init (MetaThemeGtk *gtk)
 {
+  MetaThemeImpl *impl;
+  MetaFrameType type;
+
+  impl = META_THEME_IMPL (gtk);
+
+  for (type = 0; type < META_FRAME_TYPE_LAST; type++)
+    {
+      MetaFrameStyleSet *style_set;
+      MetaFrameStyle *style;
+      gint i;
+      gint j;
+
+      style_set = meta_frame_style_set_new (NULL);
+
+      style = meta_frame_style_new (NULL);
+      style->layout = meta_frame_layout_new ();
+
+      switch (type)
+        {
+          case META_FRAME_TYPE_NORMAL:
+          case META_FRAME_TYPE_DIALOG:
+          case META_FRAME_TYPE_MODAL_DIALOG:
+          case META_FRAME_TYPE_ATTACHED:
+            break;
+
+          case META_FRAME_TYPE_MENU:
+          case META_FRAME_TYPE_UTILITY:
+            style->layout->title_scale = PANGO_SCALE_SMALL;
+            break;
+
+          case META_FRAME_TYPE_BORDER:
+            style->layout->has_title = FALSE;
+            style->layout->hide_buttons = TRUE;
+            break;
+
+          case META_FRAME_TYPE_LAST:
+          default:
+            g_assert_not_reached ();
+        }
+
+      for (i = 0; i < META_FRAME_FOCUS_LAST; i++)
+        {
+          for (j = 0; j < META_FRAME_RESIZE_LAST; j++)
+            {
+              meta_frame_style_ref (style);
+              style_set->normal_styles[j][i] = style;
+
+              meta_frame_style_ref (style);
+              style_set->shaded_styles[j][i] = style;
+            }
+
+          meta_frame_style_ref (style);
+          style_set->maximized_styles[i] = style;
+
+          meta_frame_style_ref (style);
+          style_set->tiled_left_styles[i] = style;
+
+          meta_frame_style_ref (style);
+          style_set->tiled_right_styles[i] = style;
+
+          meta_frame_style_ref (style);
+          style_set->maximized_and_shaded_styles[i] = style;
+
+          meta_frame_style_ref (style);
+          style_set->tiled_left_and_shaded_styles[i] = style;
+
+          meta_frame_style_ref (style);
+          style_set->tiled_right_and_shaded_styles[i] = style;
+        }
+
+      meta_frame_style_unref (style);
+      meta_theme_impl_add_style_set (impl, type, style_set);
+    }
 }
