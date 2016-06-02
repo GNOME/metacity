@@ -574,9 +574,7 @@ theme_combo_box_changed_cb (GtkComboBox       *combo_box,
     gtk_widget_show (window->theme_box);
 
   gtk_widget_set_sensitive (window->sidebar, TRUE);
-
-  if (type == META_THEME_TYPE_METACITY)
-     gtk_widget_set_sensitive (window->reload_button, TRUE);
+  gtk_widget_set_sensitive (window->reload_button, TRUE);
 }
 
 static void
@@ -590,6 +588,7 @@ reload_button_clicked_cb (GtkButton         *button,
   theme = gtk_combo_box_get_active_id (combo_box);
 
   meta_theme_load (window->theme, theme, NULL);
+  meta_theme_invalidate (window->theme);
 
   update_frame_borders (window);
 
