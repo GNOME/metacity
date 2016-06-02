@@ -567,7 +567,11 @@ theme_combo_box_changed_cb (GtkComboBox       *combo_box,
   update_button_layout (window);
 
   gtk_widget_hide (window->choose_theme);
-  gtk_widget_show (window->theme_box);
+
+  if (gtk_widget_is_visible (window->theme_box))
+    gtk_widget_queue_draw (window->theme_box);
+  else
+    gtk_widget_show (window->theme_box);
 
   gtk_widget_set_sensitive (window->sidebar, TRUE);
 
