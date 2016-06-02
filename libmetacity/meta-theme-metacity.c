@@ -5452,11 +5452,13 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
 
           if (op_list)
             {
-              meta_draw_op_list_draw_with_style (op_list,
-                                                 style_info->styles[META_STYLE_ELEMENT_WINDOW],
-                                                 cr,
-                                                 &draw_info,
-                                                 rect);
+              GtkStyleContext *context;
+
+              context = meta_style_info_get_style (style_info,
+                                                   META_STYLE_ELEMENT_WINDOW);
+
+              meta_draw_op_list_draw_with_style (op_list, context, cr,
+                                                 &draw_info, rect);
             }
         }
 
@@ -5492,11 +5494,13 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
 
                   if (gdk_cairo_get_clip_rectangle (cr, NULL))
                     {
-                      meta_draw_op_list_draw_with_style (op_list,
-                                                         style_info->styles[META_STYLE_ELEMENT_WINDOW],
-                                                         cr,
-                                                         &draw_info,
-                                                         rect);
+                      GtkStyleContext *context;
+
+                      context = meta_style_info_get_style (style_info,
+                                                           META_STYLE_ELEMENT_WINDOW);
+
+                      meta_draw_op_list_draw_with_style (op_list, context, cr,
+                                                         &draw_info, rect);
                     }
                   cairo_restore (cr);
                 }

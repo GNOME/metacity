@@ -178,7 +178,7 @@ frame_layout_sync_with_style (MetaFrameLayout *layout,
 
   meta_style_info_set_flags (style_info, flags);
 
-  style = style_info->styles[META_STYLE_ELEMENT_DECORATION];
+  style = meta_style_info_get_style (style_info, META_STYLE_ELEMENT_DECORATION);
   get_padding_and_border (style, &layout->gtk.frame_border);
   scale_border (&layout->gtk.frame_border, layout->title_scale);
 
@@ -236,16 +236,16 @@ frame_layout_sync_with_style (MetaFrameLayout *layout,
   if (!layout->has_title && layout->hide_buttons)
     return; /* border-only - be done */
 
-  style = style_info->styles[META_STYLE_ELEMENT_TITLEBAR];
+  style = meta_style_info_get_style (style_info, META_STYLE_ELEMENT_TITLEBAR);
   get_min_size (style, &layout->gtk.titlebar_min_size);
   get_padding_and_border (style, &layout->gtk.titlebar_border);
   scale_border (&layout->gtk.titlebar_border, layout->title_scale);
 
-  style = style_info->styles[META_STYLE_ELEMENT_TITLE];
+  style = meta_style_info_get_style (style_info, META_STYLE_ELEMENT_TITLE);
   get_margin (style, &layout->gtk.title_margin);
   scale_border (&layout->gtk.title_margin, layout->title_scale);
 
-  style = style_info->styles[META_STYLE_ELEMENT_BUTTON];
+  style = meta_style_info_get_style (style_info, META_STYLE_ELEMENT_BUTTON);
   get_min_size (style, &layout->gtk.button_min_size);
   get_padding_and_border (style, &layout->button_border);
   scale_border (&layout->button_border, layout->title_scale);
@@ -253,7 +253,7 @@ frame_layout_sync_with_style (MetaFrameLayout *layout,
   get_margin (style, &layout->gtk.button_margin);
   scale_border (&layout->gtk.button_margin, layout->title_scale);
 
-  style = style_info->styles[META_STYLE_ELEMENT_IMAGE];
+  style = meta_style_info_get_style (style_info, META_STYLE_ELEMENT_IMAGE);
   get_min_size (style, &requisition);
   get_padding_and_border (style, &border);
   scale_border (&border, layout->title_scale);
@@ -845,7 +845,7 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
 
   meta_style_info_set_flags (style_info, flags);
 
-  context = style_info->styles[META_STYLE_ELEMENT_DECORATION];
+  context = meta_style_info_get_style (style_info, META_STYLE_ELEMENT_DECORATION);
   gtk_render_background (context, cr,
                          visible_rect.x, visible_rect.y,
                          visible_rect.width, visible_rect.height);
@@ -861,7 +861,7 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
   titlebar_rect.width = visible_rect.width - (borders->visible.left + borders->visible.right) / scale;
   titlebar_rect.height = (borders->visible.top / scale) - style->layout->gtk.frame_border.top;
 
-  context = style_info->styles[META_STYLE_ELEMENT_TITLEBAR];
+  context = meta_style_info_get_style (style_info, META_STYLE_ELEMENT_TITLEBAR);
   gtk_render_background (context, cr,
                          titlebar_rect.x, titlebar_rect.y,
                          titlebar_rect.width, titlebar_rect.height);
@@ -891,11 +891,11 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
       else if (x + text_width > (fgeom->title_rect.x + fgeom->title_rect.width) / scale)
         x = (fgeom->title_rect.x + fgeom->title_rect.width) / scale - text_width;
 
-      context = style_info->styles[META_STYLE_ELEMENT_TITLE];
+      context = meta_style_info_get_style (style_info, META_STYLE_ELEMENT_TITLE);
       gtk_render_layout (context, cr, x, y, title_layout);
     }
 
-  context = style_info->styles[META_STYLE_ELEMENT_BUTTON];
+  context = meta_style_info_get_style (style_info, META_STYLE_ELEMENT_BUTTON);
   state = gtk_style_context_get_state (context);
   for (button_type = META_BUTTON_TYPE_CLOSE; button_type < META_BUTTON_TYPE_LAST; button_type++)
     {

@@ -39,7 +39,7 @@ struct _MetaTheme
 
   PangoFontDescription *titlebar_font;
 
-  gchar                *theme_name;
+  gchar                *gtk_theme_name;
   GHashTable           *variants;
 };
 
@@ -52,7 +52,7 @@ enum
   LAST_PROP
 };
 
-static GParamSpec *theme_properties[LAST_PROP] = { NULL };
+static GParamSpec *properties[LAST_PROP] = { NULL };
 
 G_DEFINE_TYPE (MetaTheme, meta_theme, G_TYPE_OBJECT)
 
@@ -60,19 +60,24 @@ static MetaStyleInfo *
 meta_theme_get_style_info (MetaTheme   *theme,
                            const gchar *variant)
 {
+  const gchar *key;
   MetaStyleInfo *style_info;
 
+  key = variant;
   if (variant == NULL)
-    variant = "default";
+    key = "default";
 
-  style_info = g_hash_table_lookup (theme->variants, variant);
+  style_info = g_hash_table_lookup (theme->variants, key);
 
   if (style_info == NULL)
     {
-      style_info = meta_style_info_new (theme->theme_name, variant,
-                                        theme->composited);
+      gint window_scale;
 
-      g_hash_table_insert (theme->variants, g_strdup (variant), style_info);
+      window_scale = get_window_scaling_factor ();
+      style_info = meta_style_info_new (theme->gtk_theme_name, variant,
+                                        theme->composited, window_scale);
+
+      g_hash_table_insert (theme->variants, g_strdup (key), style_info);
     }
 
   return style_info;
@@ -122,31 +127,9 @@ meta_theme_finalize (GObject *object)
       theme->titlebar_font = NULL;
     }
 
-  g_free (theme->theme_name);
+  g_free (theme->gtk_theme_name);
 
   G_OBJECT_CLASS (meta_theme_parent_class)->finalize (object);
-}
-
-static void
-meta_theme_get_property (GObject    *object,
-                         guint       property_id,
-                         GValue     *value,
-                         GParamSpec *pspec)
-{
-  MetaTheme *theme;
-
-  theme = META_THEME (object);
-
-  switch (property_id)
-    {
-      case PROP_TYPE:
-        g_value_set_enum (value, theme->type);
-        break;
-
-      default:
-        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-        break;
-    }
 }
 
 static void
@@ -174,14 +157,13 @@ meta_theme_set_property (GObject      *object,
 static void
 meta_theme_install_properties (GObjectClass *object_class)
 {
-  theme_properties[PROP_TYPE] =
+  properties[PROP_TYPE] =
     g_param_spec_enum ("type", "type", "type",
                         META_TYPE_THEME_TYPE, META_THEME_TYPE_GTK,
                         G_PARAM_CONSTRUCT_ONLY | G_PARAM_WRITABLE |
                         G_PARAM_STATIC_STRINGS);
 
-  g_object_class_install_properties (object_class, LAST_PROP,
-                                     theme_properties);
+  g_object_class_install_properties (object_class, LAST_PROP, properties);
 }
 
 static void
@@ -194,7 +176,6 @@ meta_theme_class_init (MetaThemeClass *theme_class)
   object_class->constructed = meta_theme_constructed;
   object_class->dispose = meta_theme_dispose;
   object_class->finalize = meta_theme_finalize;
-  object_class->get_property = meta_theme_get_property;
   object_class->set_property = meta_theme_set_property;
 
   meta_theme_install_properties (object_class);
@@ -205,8 +186,8 @@ meta_theme_init (MetaTheme *theme)
 {
   theme->composited = TRUE;
 
-  theme->variants = g_hash_table_new_full (g_str_hash, g_str_equal, g_free,
-                                           (GDestroyNotify) meta_style_info_unref);
+  theme->variants = g_hash_table_new_full (g_str_hash, g_str_equal,
+                                           g_free, g_object_unref);
 }
 
 /**
@@ -233,11 +214,11 @@ meta_theme_load (MetaTheme    *theme,
                  const gchar  *name,
                  GError      **error)
 {
-  g_free (theme->theme_name);
+  g_free (theme->gtk_theme_name);
 
   if (theme->type == META_THEME_TYPE_GTK)
     {
-      theme->theme_name = g_strdup (name);
+      theme->gtk_theme_name = g_strdup (name);
     }
   else if (theme->type == META_THEME_TYPE_METACITY)
     {
@@ -245,7 +226,7 @@ meta_theme_load (MetaTheme    *theme,
 
       settings = gtk_settings_get_default ();
 
-      g_object_get (settings, "gtk-theme-name", &theme->theme_name, NULL);
+      g_object_get (settings, "gtk-theme-name", &theme->gtk_theme_name, NULL);
     }
   else
     {
@@ -382,7 +363,7 @@ meta_theme_create_font_desc (MetaTheme   *theme,
   PangoFontDescription *font_desc;
 
   style_info = meta_theme_get_style_info (theme, variant);
-  context = style_info->styles[META_STYLE_ELEMENT_TITLE];
+  context = meta_style_info_get_style (style_info, META_STYLE_ELEMENT_TITLE);
 
   gtk_style_context_save (context);
   gtk_style_context_set_state (context, GTK_STATE_FLAG_NORMAL);

@@ -1,5 +1,4 @@
 /*
- * Copyright (C) 2001 Havoc Pennington
  * Copyright (C) 2016 Alberts Muktupāvels
  *
  * This program is free software: you can redistribute it and/or modify
@@ -34,27 +33,22 @@ typedef enum
   META_STYLE_ELEMENT_LAST
 } MetaStyleElement;
 
-typedef struct
-{
-  int refcount;
-
-  GtkStyleContext *styles[META_STYLE_ELEMENT_LAST];
-} MetaStyleInfo;
+#define META_TYPE_STYLE_INFO meta_style_info_get_type ()
+G_DECLARE_FINAL_TYPE (MetaStyleInfo, meta_style_info, META, STYLE_INFO, GObject)
 
 G_GNUC_INTERNAL
-MetaStyleInfo *meta_style_info_new       (const gchar    *theme_name,
-                                          const gchar    *variant,
-                                          gboolean        composited);
+MetaStyleInfo   *meta_style_info_new       (const gchar      *gtk_theme_name,
+                                            const gchar      *gtk_theme_variant,
+                                            gboolean          composited,
+                                            gint              window_scale);
 
 G_GNUC_INTERNAL
-MetaStyleInfo *meta_style_info_ref       (MetaStyleInfo  *style_info);
+GtkStyleContext *meta_style_info_get_style (MetaStyleInfo    *style_info,
+                                            MetaStyleElement  element);
 
 G_GNUC_INTERNAL
-void           meta_style_info_unref     (MetaStyleInfo  *style_info);
-
-G_GNUC_INTERNAL
-void           meta_style_info_set_flags (MetaStyleInfo  *style_info,
-                                          MetaFrameFlags  flags);
+void             meta_style_info_set_flags (MetaStyleInfo    *style_info,
+                                            MetaFrameFlags    flags);
 
 G_END_DECLS
 

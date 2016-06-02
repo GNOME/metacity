@@ -1,5 +1,4 @@
 /*
- * Copyright (C) 2001 Havoc Pennington
  * Copyright (C) 2016 Alberts Muktupāvels
  *
  * This program is free software: you can redistribute it and/or modify
@@ -17,10 +16,41 @@
  */
 
 #include "config.h"
-
+#include "meta-css-provider-private.h"
 #include "meta-frame-enums.h"
 #include "meta-style-info-private.h"
 #include "meta-theme-impl-private.h"
+
+struct _MetaStyleInfo
+{
+  GObject          parent;
+
+  gchar           *gtk_theme_name;
+  gchar           *gtk_theme_variant;
+  gboolean         composited;
+  gint             window_scale;
+
+  GtkCssProvider  *theme_provider;
+  GtkCssProvider  *user_provider;
+
+  GtkStyleContext *styles[META_STYLE_ELEMENT_LAST];
+};
+
+enum
+{
+  PROP_0,
+
+  PROP_GTK_THEME_NAME,
+  PROP_GTK_THEME_VARIANT,
+  PROP_COMPOSITED,
+  PROP_WINDOW_SCALE,
+
+  LAST_PROP
+};
+
+static GParamSpec *properties[LAST_PROP] = { NULL };
+
+G_DEFINE_TYPE (MetaStyleInfo, meta_style_info, G_TYPE_OBJECT)
 
 static void
 add_toplevel_class (GtkStyleContext *style,
@@ -57,16 +87,17 @@ remove_toplevel_class (GtkStyleContext *style,
 }
 
 static GtkStyleContext *
-create_style_context (GtkStyleContext *parent,
-                      GtkCssProvider  *provider,
-                      const char      *object_name,
-                      const char      *first_class,
+create_style_context (MetaStyleInfo   *style_info,
+                      GtkStyleContext *parent,
+                      const gchar     *object_name,
+                      const gchar     *first_class,
                       ...)
 {
   GtkWidgetPath *path;
   GtkStyleContext *context;
-  const char *name;
+  const gchar *name;
   va_list ap;
+  GtkStyleProvider *provider;
 
   if (parent)
     path = gtk_widget_path_copy (gtk_style_context_get_path (parent));
@@ -77,102 +108,236 @@ create_style_context (GtkStyleContext *parent,
   gtk_widget_path_iter_set_object_name (path, -1, object_name);
 
   va_start (ap, first_class);
-  for (name = first_class; name; name = va_arg (ap, const char *))
+  for (name = first_class; name; name = va_arg (ap, const gchar *))
     gtk_widget_path_iter_add_class (path, -1, name);
   va_end (ap);
 
   context = gtk_style_context_new ();
   gtk_style_context_set_path (context, path);
   gtk_style_context_set_parent (context, parent);
-  gtk_style_context_set_scale (context, get_window_scaling_factor ());
+  gtk_style_context_set_scale (context, style_info->window_scale);
   gtk_widget_path_unref (path);
 
-  gtk_style_context_add_provider (context, GTK_STYLE_PROVIDER (provider),
+  provider = GTK_STYLE_PROVIDER (style_info->theme_provider);
+  gtk_style_context_add_provider (context, provider,
                                   GTK_STYLE_PROVIDER_PRIORITY_SETTINGS);
+
+  provider = GTK_STYLE_PROVIDER (style_info->user_provider);
+  gtk_style_context_add_provider (context, provider,
+                                  GTK_STYLE_PROVIDER_PRIORITY_USER);
 
   return context;
 }
 
-MetaStyleInfo *
-meta_style_info_new (const gchar *theme_name,
-                     const gchar *variant,
-                     gboolean     composited)
+static void
+load_user_provider (GtkCssProvider *provider)
+{
+  gchar *path;
+
+  path = g_build_filename (g_get_user_config_dir (),
+                           "gtk-3.0", "gtk.css",
+                           NULL);
+
+  if (g_file_test (path, G_FILE_TEST_IS_REGULAR))
+    gtk_css_provider_load_from_path (provider, path, NULL);
+
+  g_free (path);
+}
+
+static void
+meta_style_info_constructed (GObject *object)
 {
   MetaStyleInfo *style_info;
-  GtkCssProvider *provider;
 
-  if (theme_name && *theme_name)
-    provider = gtk_css_provider_get_named (theme_name, variant);
-  else
-    provider = gtk_css_provider_get_default ();
+  G_OBJECT_CLASS (meta_style_info_parent_class)->constructed (object);
 
-  style_info = g_new0 (MetaStyleInfo, 1);
-  style_info->refcount = 1;
+  style_info = META_STYLE_INFO (object);
+
+  style_info->theme_provider = meta_css_provider_new (style_info->gtk_theme_name,
+                                                      style_info->gtk_theme_variant);
+
+  style_info->user_provider = gtk_css_provider_new ();
+  load_user_provider (style_info->user_provider);
 
   style_info->styles[META_STYLE_ELEMENT_WINDOW] =
-    create_style_context (NULL,
-                          provider,
+    create_style_context (style_info,
+                          NULL,
                           "window",
                           GTK_STYLE_CLASS_BACKGROUND,
-                          composited == TRUE ? "ssd" : "solid-csd",
+                          style_info->composited == TRUE ? "ssd" : "solid-csd",
                           NULL);
+
   style_info->styles[META_STYLE_ELEMENT_DECORATION] =
-    create_style_context (style_info->styles[META_STYLE_ELEMENT_WINDOW],
-                          provider,
+    create_style_context (style_info,
+                          style_info->styles[META_STYLE_ELEMENT_WINDOW],
                           "decoration",
                           NULL);
+
   style_info->styles[META_STYLE_ELEMENT_TITLEBAR] =
-    create_style_context (style_info->styles[META_STYLE_ELEMENT_DECORATION],
-                          provider,
+    create_style_context (style_info,
+                          style_info->styles[META_STYLE_ELEMENT_DECORATION],
                           "headerbar",
                           GTK_STYLE_CLASS_TITLEBAR,
                           GTK_STYLE_CLASS_HORIZONTAL,
                           "default-decoration",
                           NULL);
+
   style_info->styles[META_STYLE_ELEMENT_TITLE] =
-    create_style_context (style_info->styles[META_STYLE_ELEMENT_TITLEBAR],
-                          provider,
+    create_style_context (style_info,
+                          style_info->styles[META_STYLE_ELEMENT_TITLEBAR],
                           "label",
                           GTK_STYLE_CLASS_TITLE,
                           NULL);
+
   style_info->styles[META_STYLE_ELEMENT_BUTTON] =
-    create_style_context (style_info->styles[META_STYLE_ELEMENT_TITLEBAR],
-                          provider,
+    create_style_context (style_info,
+                          style_info->styles[META_STYLE_ELEMENT_TITLEBAR],
                           "button",
                           "titlebutton",
                           NULL);
+
   style_info->styles[META_STYLE_ELEMENT_IMAGE] =
-    create_style_context (style_info->styles[META_STYLE_ELEMENT_BUTTON],
-                          provider,
+    create_style_context (style_info,
+                          style_info->styles[META_STYLE_ELEMENT_BUTTON],
                           "image",
                           NULL);
+}
 
-  return style_info;
+static void
+meta_style_info_dispose (GObject *object)
+{
+  MetaStyleInfo *style_info;
+  gint i;
+
+  style_info = META_STYLE_INFO (object);
+
+  g_clear_object (&style_info->theme_provider);
+  g_clear_object (&style_info->user_provider);
+
+  for (i = 0; i < META_STYLE_ELEMENT_LAST; i++)
+    g_clear_object (&style_info->styles[i]);
+
+  G_OBJECT_CLASS (meta_style_info_parent_class)->dispose (object);
+}
+
+static void
+meta_style_info_finalize (GObject *object)
+{
+  MetaStyleInfo *style_info;
+
+  style_info = META_STYLE_INFO (object);
+
+  g_free (style_info->gtk_theme_name);
+  g_free (style_info->gtk_theme_variant);
+
+  G_OBJECT_CLASS (meta_style_info_parent_class)->finalize (object);
+}
+
+static void
+meta_style_info_set_property (GObject      *object,
+                              guint         property_id,
+                              const GValue *value,
+                              GParamSpec   *pspec)
+{
+  MetaStyleInfo *style_info;
+
+  style_info = META_STYLE_INFO (object);
+
+  switch (property_id)
+    {
+      case PROP_GTK_THEME_NAME:
+        style_info->gtk_theme_name = g_value_dup_string (value);
+        break;
+
+      case PROP_GTK_THEME_VARIANT:
+        style_info->gtk_theme_variant = g_value_dup_string (value);
+        break;
+
+      case PROP_COMPOSITED:
+        style_info->composited = g_value_get_boolean (value);
+        break;
+
+      case PROP_WINDOW_SCALE:
+        style_info->window_scale = g_value_get_int (value);
+        break;
+
+      default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+        break;
+    }
+}
+
+static void
+meta_style_info_class_init (MetaStyleInfoClass *style_info_class)
+{
+  GObjectClass *object_class;
+
+  object_class = G_OBJECT_CLASS (style_info_class);
+
+  object_class->constructed = meta_style_info_constructed;
+  object_class->dispose = meta_style_info_dispose;
+  object_class->finalize = meta_style_info_finalize;
+  object_class->set_property = meta_style_info_set_property;
+
+  properties[PROP_GTK_THEME_NAME] =
+    g_param_spec_string ("gtk-theme-name",
+                         "GTK+ Theme Name",
+                         "GTK+ Theme Name",
+                         "Adwaita",
+                         G_PARAM_CONSTRUCT_ONLY | G_PARAM_WRITABLE |
+                         G_PARAM_STATIC_STRINGS);
+
+  properties[PROP_GTK_THEME_VARIANT] =
+    g_param_spec_string ("gtk-theme-variant",
+                         "GTK+ Theme Variant",
+                         "GTK+ Theme Variant",
+                         NULL,
+                         G_PARAM_CONSTRUCT_ONLY | G_PARAM_WRITABLE |
+                         G_PARAM_STATIC_STRINGS);
+
+  properties[PROP_COMPOSITED] =
+    g_param_spec_boolean ("composited",
+                          "Composited",
+                          "Composited",
+                          TRUE,
+                          G_PARAM_CONSTRUCT_ONLY | G_PARAM_WRITABLE |
+                          G_PARAM_STATIC_STRINGS);
+
+  properties[PROP_WINDOW_SCALE] =
+    g_param_spec_int ("window-scale",
+                      "Window Scaling Factor",
+                      "Window Scaling Factor",
+                      1, G_MAXINT, 1,
+                      G_PARAM_CONSTRUCT_ONLY | G_PARAM_WRITABLE |
+                      G_PARAM_STATIC_STRINGS);
+
+  g_object_class_install_properties (object_class, LAST_PROP, properties);
+}
+
+static void
+meta_style_info_init (MetaStyleInfo *style_info)
+{
 }
 
 MetaStyleInfo *
-meta_style_info_ref (MetaStyleInfo *style_info)
+meta_style_info_new (const gchar *gtk_theme_name,
+                     const gchar *gtk_theme_variant,
+                     gboolean     composited,
+                     gint         window_scale)
 {
-  g_return_val_if_fail (style_info != NULL, NULL);
-  g_return_val_if_fail (style_info->refcount > 0, NULL);
-
-  g_atomic_int_inc ((volatile int *)&style_info->refcount);
-  return style_info;
+  return g_object_new (META_TYPE_STYLE_INFO,
+                       "gtk-theme-name", gtk_theme_name,
+                       "gtk-theme-variant", gtk_theme_variant,
+                       "composited", composited,
+                       "window-scale", window_scale,
+                       NULL);
 }
 
-void
-meta_style_info_unref (MetaStyleInfo *style_info)
+GtkStyleContext *
+meta_style_info_get_style (MetaStyleInfo    *style_info,
+                           MetaStyleElement  element)
 {
-  g_return_if_fail (style_info != NULL);
-  g_return_if_fail (style_info->refcount > 0);
-
-  if (g_atomic_int_dec_and_test ((volatile int *)&style_info->refcount))
-    {
-      int i;
-      for (i = 0; i < META_STYLE_ELEMENT_LAST; i++)
-        g_object_unref (style_info->styles[i]);
-      g_free (style_info);
-    }
+  return style_info->styles[element];
 }
 
 void
@@ -181,7 +346,7 @@ meta_style_info_set_flags (MetaStyleInfo  *style_info,
 {
   GtkStyleContext *style;
   gboolean backdrop;
-  int i;
+  gint i;
 
   backdrop = !(flags & META_FRAME_HAS_FOCUS);
   if (flags & META_FRAME_IS_FLASHING)
