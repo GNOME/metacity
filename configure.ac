@@ -97,6 +97,13 @@ PKG_CHECK_MODULES([METACITY_THEME_VIEWER], [
 ])
 
 dnl **************************************************************************
+dnl Get GTK+ data prefix, needed by libmetacity
+dnl **************************************************************************
+
+GTK_DATA_PREFIX=`$PKG_CONFIG --variable=prefix gtk+-3.0`
+AC_DEFINE_UNQUOTED([GTK_DATA_PREFIX], ["$GTK_DATA_PREFIX"], [GTK+ data prefix])
+
+dnl **************************************************************************
 
 # Honor aclocal flags
 AC_SUBST(ACLOCAL_AMFLAGS, "\${ACLOCAL_FLAGS}")
