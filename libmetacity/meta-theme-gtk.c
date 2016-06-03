@@ -208,16 +208,17 @@ static void
 meta_theme_gtk_get_frame_borders (MetaThemeImpl    *impl,
                                   MetaFrameLayout  *layout,
                                   MetaStyleInfo    *style_info,
-                                  gboolean          composited,
                                   gint              text_height,
                                   MetaFrameFlags    flags,
                                   MetaFrameType     type,
                                   MetaFrameBorders *borders)
 {
+  gboolean composited;
   gint buttons_height;
   gint content_height;
   gint scale;
 
+  composited = meta_theme_impl_get_composited (impl);
   frame_layout_sync_with_style (layout, style_info, composited, flags);
 
   meta_frame_borders_clear (borders);
@@ -401,7 +402,6 @@ static void
 meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
                               MetaFrameLayout        *layout,
                               MetaStyleInfo          *style_info,
-                              gboolean                composited,
                               gint                    text_height,
                               MetaFrameFlags          flags,
                               gint                    client_width,
@@ -430,9 +430,8 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
   gboolean right_buttons_has_spacer[META_BUTTON_FUNCTION_LAST];
 
   META_THEME_IMPL_GET_CLASS (impl)->get_frame_borders (impl, layout,
-                                                       style_info, composited,
-                                                       text_height, flags,
-                                                       type, &borders);
+                                                       style_info, text_height,
+                                                       flags, type, &borders);
 
   fgeom->borders = borders;
 

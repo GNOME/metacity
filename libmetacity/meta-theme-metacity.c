@@ -4603,7 +4603,6 @@ static void
 meta_theme_metacity_get_frame_borders (MetaThemeImpl    *impl,
                                        MetaFrameLayout  *layout,
                                        MetaStyleInfo    *style_info,
-                                       gboolean          composited,
                                        gint              text_height,
                                        MetaFrameFlags    flags,
                                        MetaFrameType     type,
@@ -4815,7 +4814,6 @@ static void
 meta_theme_metacity_calc_geometry (MetaThemeImpl          *impl,
                                    MetaFrameLayout        *layout,
                                    MetaStyleInfo          *style_info,
-                                   gboolean                composited,
                                    gint                    text_height,
                                    MetaFrameFlags          flags,
                                    gint                    client_width,
@@ -4846,9 +4844,8 @@ meta_theme_metacity_calc_geometry (MetaThemeImpl          *impl,
   gboolean right_buttons_has_spacer[META_BUTTON_FUNCTION_LAST];
 
   META_THEME_IMPL_GET_CLASS (impl)->get_frame_borders (impl, layout,
-                                                       style_info, composited,
-                                                       text_height, flags,
-                                                       type, &borders);
+                                                       style_info, text_height,
+                                                       flags, type, &borders);
 
   fgeom->borders = borders;
 

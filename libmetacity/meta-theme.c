@@ -98,6 +98,8 @@ meta_theme_constructed (GObject *object)
     theme->impl = g_object_new (META_TYPE_THEME_METACITY, NULL);
   else
     g_assert_not_reached ();
+
+  meta_theme_impl_set_composited (theme->impl, theme->composited);
 }
 
 static void
@@ -252,6 +254,7 @@ meta_theme_set_composited (MetaTheme *theme,
 
   theme->composited = composited;
 
+  meta_theme_impl_set_composited (theme->impl, composited);
   meta_theme_invalidate (theme);
 }
 
@@ -436,6 +439,7 @@ meta_theme_get_frame_borders (MetaTheme        *theme,
 {
   MetaFrameStyle *style;
   MetaStyleInfo *style_info;
+  MetaThemeImplClass *impl_class;
 
   g_return_if_fail (type < META_FRAME_TYPE_LAST);
 
@@ -448,15 +452,10 @@ meta_theme_get_frame_borders (MetaTheme        *theme,
     return;
 
   style_info = meta_theme_get_style_info (theme, theme_variant);
+  impl_class = META_THEME_IMPL_GET_CLASS (theme->impl);
 
-  META_THEME_IMPL_GET_CLASS (theme->impl)->get_frame_borders (theme->impl,
-                                                              style->layout,
-                                                              style_info,
-                                                              theme->composited,
-                                                              text_height,
-                                                              flags,
-                                                              type,
-                                                              borders);
+  impl_class->get_frame_borders (theme->impl, style->layout, style_info,
+                                 text_height, flags, type, borders);
 }
 
 void
@@ -472,6 +471,7 @@ meta_theme_calc_geometry (MetaTheme              *theme,
 {
   MetaFrameStyle *style;
   MetaStyleInfo *style_info;
+  MetaThemeImplClass *impl_class;
 
   g_return_if_fail (type < META_FRAME_TYPE_LAST);
 
@@ -482,18 +482,11 @@ meta_theme_calc_geometry (MetaTheme              *theme,
     return;
 
   style_info = meta_theme_get_style_info (theme, theme_variant);
+  impl_class = META_THEME_IMPL_GET_CLASS (theme->impl);
 
-  META_THEME_IMPL_GET_CLASS (theme->impl)->calc_geometry (theme->impl,
-                                                          style->layout,
-                                                          style_info,
-                                                          theme->composited,
-                                                          text_height,
-                                                          flags,
-                                                          client_width,
-                                                          client_height,
-                                                          button_layout,
-                                                          type,
-                                                          fgeom);
+  impl_class->calc_geometry (theme->impl, style->layout, style_info,
+                             text_height, flags, client_width, client_height,
+                             button_layout, type, fgeom);
 }
 
 void
@@ -513,6 +506,7 @@ meta_theme_draw_frame (MetaTheme              *theme,
 {
   MetaFrameStyle *style;
   MetaStyleInfo *style_info;
+  MetaThemeImplClass *impl_class;
   MetaFrameGeometry fgeom;
 
   g_return_if_fail (type < META_FRAME_TYPE_LAST);
@@ -524,27 +518,12 @@ meta_theme_draw_frame (MetaTheme              *theme,
     return;
 
   style_info = meta_theme_get_style_info (theme, theme_variant);
+  impl_class = META_THEME_IMPL_GET_CLASS (theme->impl);
 
-  META_THEME_IMPL_GET_CLASS (theme->impl)->calc_geometry (theme->impl,
-                                                          style->layout,
-                                                          style_info,
-                                                          theme->composited,
-                                                          text_height,
-                                                          flags,
-                                                          client_width,
-                                                          client_height,
-                                                          button_layout,
-                                                          type,
-                                                          &fgeom);
+  impl_class->calc_geometry (theme->impl, style->layout, style_info,
+                             text_height, flags, client_width, client_height,
+                             button_layout, type, &fgeom);
 
-  META_THEME_IMPL_GET_CLASS (theme->impl)->draw_frame (theme->impl,
-                                                       style,
-                                                       style_info,
-                                                       cr,
-                                                       &fgeom,
-                                                       title_layout,
-                                                       flags,
-                                                       button_states,
-                                                       mini_icon,
-                                                       icon);
+  impl_class->draw_frame (theme->impl, style, style_info, cr, &fgeom,
+                          title_layout, flags, button_states, mini_icon, icon);
 }

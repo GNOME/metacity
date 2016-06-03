@@ -25,6 +25,8 @@
 
 typedef struct
 {
+  gboolean           composited;
+
   MetaFrameStyleSet *style_sets_by_type[META_FRAME_TYPE_LAST];
 } MetaThemeImplPrivate;
 
@@ -117,6 +119,27 @@ meta_theme_impl_class_init (MetaThemeImplClass *impl_class)
 static void
 meta_theme_impl_init (MetaThemeImpl *impl)
 {
+}
+
+void
+meta_theme_impl_set_composited (MetaThemeImpl *impl,
+                                gboolean       composited)
+{
+  MetaThemeImplPrivate *priv;
+
+  priv = meta_theme_impl_get_instance_private (impl);
+
+  priv->composited = composited;
+}
+
+gboolean
+meta_theme_impl_get_composited (MetaThemeImpl *impl)
+{
+  MetaThemeImplPrivate *priv;
+
+  priv = meta_theme_impl_get_instance_private (impl);
+
+  return priv->composited;
 }
 
 void
