@@ -5185,13 +5185,13 @@ meta_theme_metacity_calc_geometry (MetaThemeImpl          *impl,
 static void
 clip_to_rounded_corners (cairo_t                 *cr,
                          GdkRectangle             rect,
-                         const MetaFrameGeometry *fgeom)
+                         const MetaFrameGeometry *fgeom,
+                         gint                     scale)
 {
   gint x;
   gint y;
   gint width;
   gint height;
-  int scale;
   gint radius;
 
   x = rect.x;
@@ -5200,8 +5200,6 @@ clip_to_rounded_corners (cairo_t                 *cr,
   height = rect.height;
 
   cairo_new_path (cr);
-
-  scale = get_window_scaling_factor ();
 
   if (fgeom->top_left_corner_rounded_radius != 0)
     {
@@ -5358,7 +5356,7 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
   draw_info.height = fgeom->height;
 
   cairo_save (cr);
-  clip_to_rounded_corners (cr, visible_rect, fgeom);
+  clip_to_rounded_corners (cr, visible_rect, fgeom, scale);
 
   context = meta_style_info_get_style (style_info, META_STYLE_ELEMENT_WINDOW);
 
