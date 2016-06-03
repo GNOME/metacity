@@ -83,7 +83,11 @@ struct _MetaDrawInfo
   int title_layout_width;
   int title_layout_height;
 
-  MetaFrameBorders  borders;
+  gint              left_width;
+  gint              right_width;
+  gint              top_height;
+  gint              bottom_height;
+
   gint              width;
   gint              height;
 };

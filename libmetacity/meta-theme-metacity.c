@@ -5351,9 +5351,13 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
   draw_info.title_layout_width = title_layout ? extents.width : 0;
   draw_info.title_layout_height = title_layout ? extents.height : 0;
 
-  draw_info.borders = fgeom->borders;
-  draw_info.width = fgeom->width;
-  draw_info.height = fgeom->height;
+  draw_info.left_width = borders->visible.left / scale;
+  draw_info.right_width = borders->visible.right / scale;
+  draw_info.top_height = borders->visible.top / scale;
+  draw_info.bottom_height = borders->visible.bottom / scale;
+
+  draw_info.width = fgeom->width / scale;
+  draw_info.height = fgeom->height / scale;
 
   cairo_save (cr);
   clip_to_rounded_corners (cr, visible_rect, fgeom, scale);

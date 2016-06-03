@@ -59,22 +59,18 @@ fill_env (MetaPositionExprEnv *env,
           const MetaDrawInfo  *info,
           GdkRectangle         logical_region)
 {
-  int scale;
-
-  scale = get_window_scaling_factor ();
-
   /* FIXME this stuff could be raised into draw_op_list_draw() probably
    */
   env->rect = logical_region;
   env->object_width = -1;
   env->object_height = -1;
 
-  env->left_width = info->borders.visible.left / scale;
-  env->right_width = info->borders.visible.right / scale;
-  env->top_height = info->borders.visible.top / scale;
-  env->bottom_height = info->borders.visible.bottom / scale;
-  env->frame_x_center = info->width / scale / 2 - logical_region.x;
-  env->frame_y_center = info->height / scale / 2 - logical_region.y;
+  env->left_width = info->left_width;
+  env->right_width = info->right_width;
+  env->top_height = info->top_height;
+  env->bottom_height = info->bottom_height;
+  env->frame_x_center = info->width / 2 - logical_region.x;
+  env->frame_y_center = info->height / 2 - logical_region.y;
 
   env->mini_icon_width = info->mini_icon ? gdk_pixbuf_get_width (info->mini_icon) : 0;
   env->mini_icon_height = info->mini_icon ? gdk_pixbuf_get_height (info->mini_icon) : 0;
