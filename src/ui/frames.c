@@ -98,18 +98,36 @@ static void invalidate_all_caches (MetaFrames *frames);
 static void invalidate_whole_window (MetaFrames *frames,
                                      MetaUIFrame *frame);
 
+struct _MetaFrames
+{
+  GtkWindow    parent;
+
+  GHashTable  *text_heights;
+
+  GHashTable  *frames;
+
+  guint        tooltip_timeout;
+  MetaUIFrame *last_motion_frame;
+
+  gint         expose_delay_count;
+
+  gint         invalidate_cache_timeout_id;
+  GList       *invalidate_frames;
+  GHashTable  *cache;
+};
+
 G_DEFINE_TYPE (MetaFrames, meta_frames, GTK_TYPE_WINDOW)
 
 static void
-meta_frames_class_init (MetaFramesClass *class)
+meta_frames_class_init (MetaFramesClass *frames_class)
 {
-  GObjectClass   *gobject_class;
+  GObjectClass *object_class;
   GtkWidgetClass *widget_class;
 
-  gobject_class = G_OBJECT_CLASS (class);
-  widget_class = (GtkWidgetClass*) class;
+  object_class = G_OBJECT_CLASS (frames_class);
+  widget_class = GTK_WIDGET_CLASS (frames_class);
 
-  gobject_class->finalize = meta_frames_finalize;
+  object_class->finalize = meta_frames_finalize;
 
   widget_class->destroy = meta_frames_destroy;
   widget_class->style_updated = meta_frames_style_updated;

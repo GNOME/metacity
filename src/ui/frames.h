@@ -58,15 +58,8 @@ typedef enum
  * as subwindows.
  */
 
-#define META_TYPE_FRAMES            (meta_frames_get_type ())
-#define META_FRAMES(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), META_TYPE_FRAMES, MetaFrames))
-#define META_FRAMES_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), META_TYPE_FRAMES, MetaFramesClass))
-#define META_IS_FRAMES(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), META_TYPE_FRAMES))
-#define META_IS_FRAMES_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), META_TYPE_FRAMES))
-#define META_FRAMES_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), META_TYPE_FRAMES, MetaFramesClass))
-
-typedef struct _MetaFrames        MetaFrames;
-typedef struct _MetaFramesClass   MetaFramesClass;
+#define META_TYPE_FRAMES meta_frames_get_type ()
+G_DECLARE_FINAL_TYPE (MetaFrames, meta_frames, META, FRAMES, GtkWindow)
 
 typedef struct _MetaUIFrame         MetaUIFrame;
 
@@ -85,32 +78,6 @@ struct _MetaUIFrame
   /* FIXME get rid of this, it can just be in the MetaFrames struct */
   MetaFrameControl prelit_control;
 };
-
-struct _MetaFrames
-{
-  GtkWindow parent_instance;
-
-  GHashTable *text_heights;
-
-  GHashTable *frames;
-
-  guint tooltip_timeout;
-  MetaUIFrame *last_motion_frame;
-
-  int expose_delay_count;
-
-  int invalidate_cache_timeout_id;
-  GList *invalidate_frames;
-  GHashTable *cache;
-};
-
-struct _MetaFramesClass
-{
-  GtkWindowClass parent_class;
-
-};
-
-GType        meta_frames_get_type               (void) G_GNUC_CONST;
 
 MetaFrames *meta_frames_new (int screen_number);
 
