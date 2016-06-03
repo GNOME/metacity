@@ -5279,6 +5279,7 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
   PangoRectangle extents;
   MetaDrawInfo draw_info;
   const MetaFrameBorders *borders;
+  GtkStyleContext *context;
 
   /* We opt out of GTK+ HiDPI handling, so we have to do the scaling
    * ourselves; the nitty-gritty is a bit confusing, so here is an overview:
@@ -5358,6 +5359,21 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
 
   cairo_save (cr);
   clip_to_rounded_corners (cr, visible_rect, fgeom);
+
+  context = meta_style_info_get_style (style_info, META_STYLE_ELEMENT_WINDOW);
+
+  if (style->window_background_color != NULL)
+    {
+      GdkRGBA color;
+
+      meta_color_spec_render (style->window_background_color, context, &color);
+
+      if (meta_theme_impl_get_composited (impl))
+        color.alpha = style->window_background_alpha / 255.0;
+
+      gdk_cairo_set_source_rgba (cr, &color);
+      cairo_paint (cr);
+    }
 
   /* The enum is in the order the pieces should be rendered. */
   i = 0;
@@ -5449,11 +5465,6 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
 
           if (op_list)
             {
-              GtkStyleContext *context;
-
-              context = meta_style_info_get_style (style_info,
-                                                   META_STYLE_ELEMENT_WINDOW);
-
               meta_draw_op_list_draw_with_style (op_list, context, cr,
                                                  &draw_info, rect);
             }
@@ -5491,11 +5502,6 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
 
                   if (gdk_cairo_get_clip_rectangle (cr, NULL))
                     {
-                      GtkStyleContext *context;
-
-                      context = meta_style_info_get_style (style_info,
-                                                           META_STYLE_ELEMENT_WINDOW);
-
                       meta_draw_op_list_draw_with_style (op_list, context, cr,
                                                          &draw_info, rect);
                     }
