@@ -98,26 +98,7 @@ static void invalidate_all_caches (MetaFrames *frames);
 static void invalidate_whole_window (MetaFrames *frames,
                                      MetaUIFrame *frame);
 
-G_DEFINE_TYPE (MetaFrames, meta_frames, GTK_TYPE_WINDOW);
-
-
-static GObject *
-meta_frames_constructor (GType                  gtype,
-                         guint                  n_properties,
-                         GObjectConstructParam *properties)
-{
-  GObject *object;
-  GObjectClass *gobject_class;
-
-  gobject_class = G_OBJECT_CLASS (meta_frames_parent_class);
-  object = gobject_class->constructor (gtype, n_properties, properties);
-
-  g_object_set (object,
-                "type", GTK_WINDOW_POPUP,
-                NULL);
-
-  return object;
-}
+G_DEFINE_TYPE (MetaFrames, meta_frames, GTK_TYPE_WINDOW)
 
 static void
 meta_frames_class_init (MetaFramesClass *class)
@@ -128,7 +109,6 @@ meta_frames_class_init (MetaFramesClass *class)
   gobject_class = G_OBJECT_CLASS (class);
   widget_class = (GtkWidgetClass*) class;
 
-  gobject_class->constructor = meta_frames_constructor;
   gobject_class->finalize = meta_frames_finalize;
 
   widget_class->destroy = meta_frames_destroy;
