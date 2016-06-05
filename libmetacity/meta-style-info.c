@@ -175,7 +175,7 @@ meta_style_info_constructed (GObject *object)
 
   style_info->styles[META_STYLE_ELEMENT_TITLEBAR] =
     create_style_context (style_info,
-                          style_info->styles[META_STYLE_ELEMENT_DECORATION],
+                          style_info->styles[META_STYLE_ELEMENT_WINDOW],
                           "headerbar",
                           GTK_STYLE_CLASS_TITLEBAR,
                           GTK_STYLE_CLASS_HORIZONTAL,
