@@ -214,9 +214,10 @@ meta_theme_gtk_get_frame_borders (MetaThemeImpl    *impl,
                                   MetaFrameBorders *borders)
 {
   gboolean composited;
+  gint scale;
+  gint title_height;
   gint buttons_height;
   gint content_height;
-  gint scale;
 
   composited = meta_theme_impl_get_composited (impl);
   frame_layout_sync_with_style (layout, style_info, composited, flags);
@@ -231,16 +232,19 @@ meta_theme_gtk_get_frame_borders (MetaThemeImpl    *impl,
 
   if (!layout->has_title)
     text_height = 0;
-  else
-    text_height = layout->gtk.title_margin.top +
-                   text_height +
-                  layout->gtk.title_margin.bottom;
+
+  /* Scale geometry for HiDPI, see comment in meta_theme_gtk_draw_frame () */
+  scale = get_window_scaling_factor ();
+
+  title_height = layout->gtk.title_margin.top +
+                 text_height / scale +
+                 layout->gtk.title_margin.bottom;
 
   buttons_height = MAX ((gint) layout->gtk.icon_size, layout->gtk.button_min_size.height) +
                    layout->gtk.button_margin.top + layout->button_border.top +
                    layout->gtk.button_margin.bottom + layout->button_border.bottom;
 
-  content_height = MAX (buttons_height, text_height);
+  content_height = MAX (title_height, buttons_height);
   content_height = MAX (content_height, layout->gtk.titlebar_min_size.height) +
                    layout->gtk.titlebar_border.top +
                    layout->gtk.titlebar_border.bottom;
@@ -275,9 +279,6 @@ meta_theme_gtk_get_frame_borders (MetaThemeImpl    *impl,
   borders->total.right = borders->invisible.right + borders->visible.right;
   borders->total.bottom = borders->invisible.bottom + borders->visible.bottom;
   borders->total.top = borders->invisible.top + borders->visible.top;
-
-  /* Scale geometry for HiDPI, see comment in meta_theme_gtk_draw_frame () */
-  scale = get_window_scaling_factor ();
 
   scale_border (&borders->visible, scale);
   scale_border (&borders->invisible, scale);

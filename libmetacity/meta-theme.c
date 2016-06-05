@@ -395,17 +395,20 @@ meta_pango_font_desc_get_text_height (const PangoFontDescription *font_desc,
 {
   PangoFontMetrics *metrics;
   PangoLanguage *lang;
-  int retval;
+  gint text_height;
+  gint scale;
 
   lang = pango_context_get_language (context);
   metrics = pango_context_get_metrics (context, font_desc, lang);
 
-  retval = PANGO_PIXELS (pango_font_metrics_get_ascent (metrics) +
-                         pango_font_metrics_get_descent (metrics));
+  text_height = PANGO_PIXELS (pango_font_metrics_get_ascent (metrics) +
+                              pango_font_metrics_get_descent (metrics));
 
   pango_font_metrics_unref (metrics);
 
-  return retval;
+  scale = get_window_scaling_factor ();
+
+  return text_height * scale;
 }
 
 MetaFrameType

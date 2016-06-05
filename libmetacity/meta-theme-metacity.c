@@ -4608,8 +4608,9 @@ meta_theme_metacity_get_frame_borders (MetaThemeImpl    *impl,
                                        MetaFrameType     type,
                                        MetaFrameBorders *borders)
 {
-  int buttons_height, title_height;
-  int scale;
+  gint scale;
+  gint buttons_height;
+  gint title_height;
 
   meta_frame_borders_clear (borders);
 
@@ -4622,11 +4623,14 @@ meta_theme_metacity_get_frame_borders (MetaThemeImpl    *impl,
   if (!layout->has_title)
     text_height = 0;
 
+  /* Scale geometry for HiDPI, see comment in meta_theme_metacity_draw_frame () */
+  scale = get_window_scaling_factor ();
+
   buttons_height = layout->metacity.button_height +
                    layout->button_border.top +
                    layout->button_border.bottom;
 
-  title_height = text_height +
+  title_height = text_height / scale +
                  layout->metacity.title_vertical_pad +
                  layout->metacity.title_border.top +
                  layout->metacity.title_border.bottom;
@@ -4654,9 +4658,6 @@ meta_theme_metacity_get_frame_borders (MetaThemeImpl    *impl,
   borders->total.right = borders->invisible.right + borders->visible.right;
   borders->total.bottom = borders->invisible.bottom + borders->visible.bottom;
   borders->total.top = borders->invisible.top + borders->visible.top;
-
-  /* Scale geometry for HiDPI, see comment in meta_theme_metacity_draw_frame () */
-  scale = get_window_scaling_factor ();
 
   scale_border (&borders->visible, scale);
   scale_border (&borders->invisible, scale);
