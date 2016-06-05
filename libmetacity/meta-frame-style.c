@@ -298,16 +298,6 @@ meta_frame_style_unref (MetaFrameStyle *style)
     }
 }
 
-void
-meta_frame_style_apply_scale (const MetaFrameStyle *style,
-                              PangoFontDescription *font_desc)
-{
-  int size = pango_font_description_get_size (font_desc);
-  double scale = style->layout->title_scale / get_window_scaling_factor ();
-
-  pango_font_description_set_size (font_desc, MAX (size * scale, 1));
-}
-
 gboolean
 meta_frame_style_validate (MetaFrameStyle  *style,
                            guint            current_theme_version,

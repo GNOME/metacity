@@ -56,6 +56,26 @@ static GParamSpec *properties[LAST_PROP] = { NULL };
 
 G_DEFINE_TYPE (MetaTheme, meta_theme, G_TYPE_OBJECT)
 
+static void
+font_desc_apply_scale (PangoFontDescription *font_desc,
+                       MetaTheme            *theme,
+                       MetaFrameType         type,
+                       MetaFrameFlags        flags)
+{
+  gint old_size;
+  MetaFrameStyle *style;
+  gdouble scale;
+  gint new_size;
+
+  old_size = pango_font_description_get_size (font_desc);
+  style = meta_theme_get_frame_style (theme, type, flags);
+  scale = get_window_scaling_factor ();
+
+  new_size = MAX (old_size * (style->layout->title_scale / scale), 1);
+
+  pango_font_description_set_size (font_desc, new_size);
+}
+
 static MetaStyleInfo *
 meta_theme_get_style_info (MetaTheme   *theme,
                            const gchar *variant)
@@ -358,8 +378,10 @@ meta_theme_get_frame_style (MetaTheme      *theme,
 }
 
 PangoFontDescription*
-meta_theme_create_font_desc (MetaTheme   *theme,
-                             const gchar *variant)
+meta_theme_create_font_desc (MetaTheme      *theme,
+                             const gchar    *variant,
+                             MetaFrameType   type,
+                             MetaFrameFlags  flags)
 {
   MetaStyleInfo *style_info;
   GtkStyleContext *context;
@@ -378,6 +400,8 @@ meta_theme_create_font_desc (MetaTheme   *theme,
 
   if (theme->titlebar_font)
     pango_font_description_merge (font_desc, theme->titlebar_font, TRUE);
+
+  font_desc_apply_scale (font_desc, theme, type, flags);
 
   return font_desc;
 }

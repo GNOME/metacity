@@ -689,7 +689,7 @@ meta_ui_theme_get_frame_borders (MetaUI           *ui,
   theme = meta_ui_get_theme ();
   theme_variant = NULL;
 
-  font_desc = meta_theme_create_font_desc (theme, theme_variant);
+  font_desc = meta_theme_create_font_desc (theme, theme_variant, type, flags);
   context = gtk_widget_get_pango_context (GTK_WIDGET (ui->frames));
 
   text_height = meta_pango_font_desc_get_text_height (font_desc, context);

@@ -96,9 +96,6 @@ void               meta_frame_style_ref           (MetaFrameStyle        *style)
 
 void               meta_frame_style_unref         (MetaFrameStyle        *style);
 
-void               meta_frame_style_apply_scale   (const MetaFrameStyle  *style,
-                                                   PangoFontDescription  *font_desc);
-
 gboolean           meta_frame_style_validate      (MetaFrameStyle        *style,
                                                    guint                  current_theme_version,
                                                    GError               **error);
