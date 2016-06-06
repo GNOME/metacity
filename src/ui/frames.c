@@ -426,13 +426,10 @@ meta_frames_ensure_layout (MetaFrames  *frames,
 
   if (frame->text_layout == NULL)
     {
-      PangoFontDescription *font_desc;
-
-      frame->text_layout = meta_theme_create_title_layout (theme, frame->title);
-      font_desc = meta_theme_get_title_font_desc (theme, frame->theme_variant,
-                                                  type, flags);
-
-      pango_layout_set_font_description (frame->text_layout, font_desc);
+      frame->text_layout = meta_theme_create_title_layout (theme,
+                                                           frame->theme_variant,
+                                                           type, flags,
+                                                           frame->title);
     }
 }
 

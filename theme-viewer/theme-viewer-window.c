@@ -235,13 +235,10 @@ static void
 update_title_layout (ThemeViewerWindow *window)
 {
   PangoLayout *layout;
-  PangoFontDescription *font_desc;
 
-  layout = meta_theme_create_title_layout (window->theme, "Metacity Theme Viewer");
-  font_desc = meta_theme_get_title_font_desc (window->theme, window->theme_variant,
-                                              window->frame_type, window->frame_flags);
-
-  pango_layout_set_font_description (layout, font_desc);
+  layout = meta_theme_create_title_layout (window->theme, window->theme_variant,
+                                           window->frame_type, window->frame_flags,
+                                           "Metacity Theme Viewer");
 
   if (window->title_layout)
     g_object_unref (window->title_layout);

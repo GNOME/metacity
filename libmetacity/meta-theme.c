@@ -61,6 +61,94 @@ static GParamSpec *properties[LAST_PROP] = { NULL };
 
 G_DEFINE_TYPE (MetaTheme, meta_theme, G_TYPE_OBJECT)
 
+static MetaStyleInfo *
+meta_theme_get_style_info (MetaTheme   *theme,
+                           const gchar *variant)
+{
+  const gchar *key;
+  MetaStyleInfo *style_info;
+
+  key = variant;
+  if (variant == NULL)
+    key = "default";
+
+  style_info = g_hash_table_lookup (theme->variants, key);
+
+  if (style_info == NULL)
+    {
+      gint window_scale;
+
+      window_scale = get_window_scaling_factor ();
+      style_info = meta_style_info_new (theme->gtk_theme_name, variant,
+                                        theme->composited, window_scale);
+
+      g_hash_table_insert (theme->variants, g_strdup (key), style_info);
+    }
+
+  return style_info;
+}
+
+static void
+font_desc_apply_scale (PangoFontDescription *font_desc,
+                       MetaTheme            *theme,
+                       MetaFrameType         type,
+                       MetaFrameFlags        flags)
+{
+  gint old_size;
+  MetaFrameStyle *style;
+  gdouble scale;
+  gint new_size;
+
+  old_size = pango_font_description_get_size (font_desc);
+  style = meta_theme_get_frame_style (theme, type, flags);
+  scale = get_window_scaling_factor ();
+
+  new_size = MAX (old_size * (style->layout->title_scale / scale), 1);
+
+  pango_font_description_set_size (font_desc, new_size);
+}
+
+static PangoFontDescription *
+get_title_font_desc (MetaTheme      *theme,
+                     const gchar    *variant,
+                     MetaFrameType   type,
+                     MetaFrameFlags  flags)
+{
+  gchar *key;
+  PangoFontDescription *font_desc;
+  MetaStyleInfo *style_info;
+  GtkStyleContext *context;
+
+  key = g_strdup_printf ("%s_%d_%x", variant ? variant : "default", type, flags);
+  font_desc = g_hash_table_lookup (theme->font_descs, key);
+
+  if (font_desc != NULL)
+    {
+      g_free (key);
+      return font_desc;
+    }
+
+  style_info = meta_theme_get_style_info (theme, variant);
+  context = meta_style_info_get_style (style_info, META_STYLE_ELEMENT_TITLE);
+
+  gtk_style_context_save (context);
+  gtk_style_context_set_state (context, GTK_STATE_FLAG_NORMAL);
+
+  gtk_style_context_get (context, GTK_STATE_FLAG_NORMAL,
+                         "font", &font_desc, NULL);
+
+  gtk_style_context_restore (context);
+
+  if (theme->titlebar_font)
+    pango_font_description_merge (font_desc, theme->titlebar_font, TRUE);
+
+  font_desc_apply_scale (font_desc, theme, type, flags);
+
+  g_hash_table_insert (theme->font_descs, key, font_desc);
+
+  return font_desc;
+}
+
 static void
 ensure_pango_context (MetaTheme *theme)
 {
@@ -98,7 +186,7 @@ get_title_height (MetaTheme      *theme,
   gpointer height;
   gint title_height;
 
-  description = meta_theme_get_title_font_desc (theme, variant, type, flags);
+  description = get_title_font_desc (theme, variant, type, flags);
   g_assert (description != NULL);
 
   size = GINT_TO_POINTER (pango_font_description_get_size (description));
@@ -135,53 +223,6 @@ get_title_height (MetaTheme      *theme,
     }
 
   return title_height;
-}
-
-static void
-font_desc_apply_scale (PangoFontDescription *font_desc,
-                       MetaTheme            *theme,
-                       MetaFrameType         type,
-                       MetaFrameFlags        flags)
-{
-  gint old_size;
-  MetaFrameStyle *style;
-  gdouble scale;
-  gint new_size;
-
-  old_size = pango_font_description_get_size (font_desc);
-  style = meta_theme_get_frame_style (theme, type, flags);
-  scale = get_window_scaling_factor ();
-
-  new_size = MAX (old_size * (style->layout->title_scale / scale), 1);
-
-  pango_font_description_set_size (font_desc, new_size);
-}
-
-static MetaStyleInfo *
-meta_theme_get_style_info (MetaTheme   *theme,
-                           const gchar *variant)
-{
-  const gchar *key;
-  MetaStyleInfo *style_info;
-
-  key = variant;
-  if (variant == NULL)
-    key = "default";
-
-  style_info = g_hash_table_lookup (theme->variants, key);
-
-  if (style_info == NULL)
-    {
-      gint window_scale;
-
-      window_scale = get_window_scaling_factor ();
-      style_info = meta_style_info_new (theme->gtk_theme_name, variant,
-                                        theme->composited, window_scale);
-
-      g_hash_table_insert (theme->variants, g_strdup (key), style_info);
-    }
-
-  return style_info;
 }
 
 static void
@@ -477,15 +518,24 @@ meta_theme_get_frame_style (MetaTheme      *theme,
 /**
  * meta_theme_create_title_layout:
  * @theme: a #MetaTheme
+ * @variant: (nullable): theme variant
+ * @type: frame type
+ * @flags: frame flags
  * @title: (nullable): text to set on the layout
+ *
+ * Use this function to create #PangoLayout for use in meta_theme_draw_frame.
  *
  * Returns: (transfer full): the new #PangoLayout
  */
 PangoLayout *
-meta_theme_create_title_layout (MetaTheme   *theme,
-                                const gchar *title)
+meta_theme_create_title_layout (MetaTheme      *theme,
+                                const gchar    *variant,
+                                MetaFrameType   type,
+                                MetaFrameFlags  flags,
+                                const gchar    *title)
 {
   PangoLayout *layout;
+  PangoFontDescription *font_desc;
 
   ensure_pango_context (theme);
 
@@ -498,57 +548,10 @@ meta_theme_create_title_layout (MetaTheme   *theme,
   pango_layout_set_ellipsize (layout, PANGO_ELLIPSIZE_END);
   pango_layout_set_single_paragraph_mode (layout, TRUE);
 
+  font_desc = get_title_font_desc (theme, variant, type, flags);
+  pango_layout_set_font_description (layout, font_desc);
+
   return layout;
-}
-
-/**
- * meta_theme_get_title_font_desc:
- * @theme: a #MetaTheme
- * @variant: (nullable): theme variant
- * @type: frame type
- * @flags: frame flags
- *
- * Returns: (transfer none): the #PangoFontDescription
- */
-PangoFontDescription*
-meta_theme_get_title_font_desc (MetaTheme      *theme,
-                                const gchar    *variant,
-                                MetaFrameType   type,
-                                MetaFrameFlags  flags)
-{
-  gchar *key;
-  PangoFontDescription *font_desc;
-  MetaStyleInfo *style_info;
-  GtkStyleContext *context;
-
-  key = g_strdup_printf ("%s_%d_%x", variant ? variant : "default", type, flags);
-  font_desc = g_hash_table_lookup (theme->font_descs, key);
-
-  if (font_desc != NULL)
-    {
-      g_free (key);
-      return font_desc;
-    }
-
-  style_info = meta_theme_get_style_info (theme, variant);
-  context = meta_style_info_get_style (style_info, META_STYLE_ELEMENT_TITLE);
-
-  gtk_style_context_save (context);
-  gtk_style_context_set_state (context, GTK_STATE_FLAG_NORMAL);
-
-  gtk_style_context_get (context, GTK_STATE_FLAG_NORMAL,
-                         "font", &font_desc, NULL);
-
-  gtk_style_context_restore (context);
-
-  if (theme->titlebar_font)
-    pango_font_description_merge (font_desc, theme->titlebar_font, TRUE);
-
-  font_desc_apply_scale (font_desc, theme, type, flags);
-
-  g_hash_table_insert (theme->font_descs, key, font_desc);
-
-  return font_desc;
 }
 
 MetaFrameType

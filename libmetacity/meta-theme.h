@@ -145,63 +145,61 @@ struct _MetaFrameGeometry
   guint bottom_right_corner_rounded_radius;
 };
 
-GQuark                meta_theme_error_quark               (void);
+GQuark          meta_theme_error_quark         (void);
 
-MetaTheme            *meta_theme_new                       (MetaThemeType                type);
+MetaTheme      *meta_theme_new                 (MetaThemeType                type);
 
-gboolean              meta_theme_load                      (MetaTheme                   *theme,
-                                                            const gchar                 *theme_name,
-                                                            GError                     **error);
+gboolean        meta_theme_load                (MetaTheme                   *theme,
+                                                const gchar                 *theme_name,
+                                                GError                     **error);
 
-void                  meta_theme_invalidate                (MetaTheme                   *theme);
+void            meta_theme_invalidate          (MetaTheme                   *theme);
 
-void                  meta_theme_set_composited            (MetaTheme                   *theme,
-                                                            gboolean                     composited);
+void            meta_theme_set_composited      (MetaTheme                   *theme,
+                                                gboolean                     composited);
 
-void                  meta_theme_set_titlebar_font         (MetaTheme                   *theme,
-                                                            const PangoFontDescription  *titlebar_font);
+void            meta_theme_set_titlebar_font   (MetaTheme                   *theme,
+                                                const PangoFontDescription  *titlebar_font);
 
-MetaFrameStyle       *meta_theme_get_frame_style           (MetaTheme                   *theme,
-                                                            MetaFrameType                type,
-                                                            MetaFrameFlags               flags);
+MetaFrameStyle *meta_theme_get_frame_style     (MetaTheme                   *theme,
+                                                MetaFrameType                type,
+                                                MetaFrameFlags               flags);
 
-PangoLayout          *meta_theme_create_title_layout       (MetaTheme                   *theme,
-                                                            const gchar                 *title);
+PangoLayout    *meta_theme_create_title_layout (MetaTheme                   *theme,
+                                                const gchar                 *variant,
+                                                MetaFrameType                type,
+                                                MetaFrameFlags               flags,
+                                                const gchar                 *title);
 
-PangoFontDescription *meta_theme_get_title_font_desc       (MetaTheme                   *theme,
-                                                            const gchar                 *variant,
-                                                            MetaFrameType                type,
-                                                            MetaFrameFlags               flags);
+MetaFrameType   meta_frame_type_from_string    (const gchar                 *str);
 
-MetaFrameType         meta_frame_type_from_string          (const gchar                 *str);
+void            meta_theme_get_frame_borders   (MetaTheme                   *theme,
+                                                const gchar                 *variant,
+                                                MetaFrameType                type,
+                                                MetaFrameFlags               flags,
+                                                MetaFrameBorders            *borders);
 
-void                  meta_theme_get_frame_borders         (MetaTheme                   *theme,
-                                                            const gchar                 *variant,
-                                                            MetaFrameType                type,
-                                                            MetaFrameFlags               flags,
-                                                            MetaFrameBorders            *borders);
+void            meta_theme_calc_geometry       (MetaTheme                   *theme,
+                                                const gchar                 *variant,
+                                                MetaFrameType                type,
+                                                MetaFrameFlags               flags,
+                                                gint                         client_width,
+                                                gint                         client_height,
+                                                const MetaButtonLayout      *button_layout,
+                                                MetaFrameGeometry           *fgeom);
 
-void                  meta_theme_calc_geometry             (MetaTheme                   *theme,
-                                                            const gchar                 *variant,
-                                                            MetaFrameType                type,
-                                                            MetaFrameFlags               flags,
-                                                            gint                         client_width,
-                                                            gint                         client_height,
-                                                            const MetaButtonLayout      *button_layout,
-                                                            MetaFrameGeometry           *fgeom);
-
-void                  meta_theme_draw_frame                (MetaTheme                   *theme,
-                                                            const gchar                 *variant,
-                                                            cairo_t                     *cr,
-                                                            MetaFrameType                type,
-                                                            MetaFrameFlags               flags,
-                                                            gint                         client_width,
-                                                            gint                         client_height,
-                                                            PangoLayout                 *title_layout,
-                                                            const MetaButtonLayout      *button_layout,
-                                                            MetaButtonState              button_states[META_BUTTON_TYPE_LAST],
-                                                            GdkPixbuf                   *mini_icon,
-                                                            GdkPixbuf                   *icon);
+void            meta_theme_draw_frame          (MetaTheme                   *theme,
+                                                const gchar                 *variant,
+                                                cairo_t                     *cr,
+                                                MetaFrameType                type,
+                                                MetaFrameFlags               flags,
+                                                gint                         client_width,
+                                                gint                         client_height,
+                                                PangoLayout                 *title_layout,
+                                                const MetaButtonLayout      *button_layout,
+                                                MetaButtonState              button_states[META_BUTTON_TYPE_LAST],
+                                                GdkPixbuf                   *mini_icon,
+                                                GdkPixbuf                   *icon);
 
 G_END_DECLS
 
