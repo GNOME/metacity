@@ -418,21 +418,18 @@ static void
 meta_frames_ensure_layout (MetaFrames  *frames,
                            MetaUIFrame *frame)
 {
-  GtkWidget *widget;
   MetaFrameFlags flags;
   MetaFrameType type;
+  MetaTheme *theme;
   MetaFrameStyle *style;
-
-  g_return_if_fail (gtk_widget_get_realized (GTK_WIDGET (frames)));
-
-  widget = GTK_WIDGET (frames);
 
   meta_core_get (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()), frame->xwindow,
                  META_CORE_GET_FRAME_FLAGS, &flags,
                  META_CORE_GET_FRAME_TYPE, &type,
                  META_CORE_GET_END);
 
-  style = meta_theme_get_frame_style (meta_ui_get_theme (), type, flags);
+  theme = meta_ui_get_theme ();
+  style = meta_theme_get_frame_style (theme, type, flags);
 
   if (style != frame->cache_style)
     g_clear_object (&frame->text_layout);
@@ -442,19 +439,11 @@ meta_frames_ensure_layout (MetaFrames  *frames,
   if (frame->text_layout == NULL)
     {
       gpointer key, value;
-      MetaTheme *current;
       PangoFontDescription *font_desc;
       int size;
 
-      frame->text_layout = gtk_widget_create_pango_layout (widget, frame->title);
-
-      pango_layout_set_ellipsize (frame->text_layout, PANGO_ELLIPSIZE_END);
-      pango_layout_set_auto_dir (frame->text_layout, FALSE);
-      pango_layout_set_single_paragraph_mode (frame->text_layout, TRUE);
-
-      current = meta_ui_get_theme ();
-
-      font_desc = meta_theme_create_font_desc (current, frame->theme_variant,
+      frame->text_layout = meta_theme_create_title_layout (theme, frame->title);
+      font_desc = meta_theme_create_font_desc (theme, frame->theme_variant,
                                                type, flags);
 
       size = pango_font_description_get_size (font_desc);
@@ -467,9 +456,7 @@ meta_frames_ensure_layout (MetaFrames  *frames,
         }
       else
         {
-          frame->text_height =
-            meta_pango_font_desc_get_text_height (font_desc,
-                                                  gtk_widget_get_pango_context (widget));
+          frame->text_height = meta_theme_get_title_height (theme, font_desc);
 
           g_hash_table_replace (frames->text_heights,
                                 GINT_TO_POINTER (size),

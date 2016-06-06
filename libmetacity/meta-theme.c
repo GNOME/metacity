@@ -41,6 +41,8 @@ struct _MetaTheme
 
   gchar                *gtk_theme_name;
   GHashTable           *variants;
+
+  PangoContext         *context;
 };
 
 enum
@@ -55,6 +57,32 @@ enum
 static GParamSpec *properties[LAST_PROP] = { NULL };
 
 G_DEFINE_TYPE (MetaTheme, meta_theme, G_TYPE_OBJECT)
+
+static void
+ensure_pango_context (MetaTheme *theme)
+{
+  GdkScreen *screen;
+  PangoFontMap *fontmap;
+  PangoContext *context;
+  const cairo_font_options_t *options;
+  gdouble dpi;
+
+  if (theme->context != NULL)
+    return;
+
+  screen = gdk_screen_get_default ();
+
+  fontmap = pango_cairo_font_map_get_default ();
+  context = pango_font_map_create_context (fontmap);
+
+  options = gdk_screen_get_font_options (screen);
+  pango_cairo_context_set_font_options (context, options);
+
+  dpi = gdk_screen_get_resolution (screen);
+  pango_cairo_context_set_resolution (context, dpi);
+
+  theme->context = context;
+}
 
 static void
 font_desc_apply_scale (PangoFontDescription *font_desc,
@@ -132,6 +160,8 @@ meta_theme_dispose (GObject *object)
   g_clear_object (&theme->impl);
 
   g_clear_pointer (&theme->variants, g_hash_table_destroy);
+
+  g_clear_object (&theme->context);
 
   G_OBJECT_CLASS (meta_theme_parent_class)->dispose (object);
 }
@@ -263,6 +293,7 @@ void
 meta_theme_invalidate (MetaTheme *theme)
 {
   g_hash_table_remove_all (theme->variants);
+  g_clear_object (&theme->context);
 }
 
 void
@@ -377,6 +408,33 @@ meta_theme_get_frame_style (MetaTheme      *theme,
   return style;
 }
 
+/**
+ * meta_theme_create_title_layout:
+ * @theme: a #MetaTheme
+ * @title: (nullable): text to set on the layout
+ *
+ * Returns: (transfer full): the new #PangoLayout
+ */
+PangoLayout *
+meta_theme_create_title_layout (MetaTheme   *theme,
+                                const gchar *title)
+{
+  PangoLayout *layout;
+
+  ensure_pango_context (theme);
+
+  layout = pango_layout_new (theme->context);
+
+  if (title)
+    pango_layout_set_text (layout, title, -1);
+
+  pango_layout_set_auto_dir (layout, FALSE);
+  pango_layout_set_ellipsize (layout, PANGO_ELLIPSIZE_END);
+  pango_layout_set_single_paragraph_mode (layout, TRUE);
+
+  return layout;
+}
+
 PangoFontDescription*
 meta_theme_create_font_desc (MetaTheme      *theme,
                              const gchar    *variant,
@@ -407,32 +465,36 @@ meta_theme_create_font_desc (MetaTheme      *theme,
 }
 
 /**
- * Returns the height of the letters in a particular font.
+ * meta_theme_get_title_height:
+ * @theme: a #MetaTheme
+ * @font_desc: the font description to use when calculating title height
  *
- * \param font_desc  the font
- * \param context  the context of the font
- * \return  the height of the letters
+ * Returns: the height of title
  */
 gint
-meta_pango_font_desc_get_text_height (const PangoFontDescription *font_desc,
-                                      PangoContext               *context)
+meta_theme_get_title_height (MetaTheme                  *theme,
+                             const PangoFontDescription *font_desc)
 {
-  PangoFontMetrics *metrics;
   PangoLanguage *lang;
-  gint text_height;
+  PangoFontMetrics *metrics;
+  gint ascent;
+  gint descent;
+  gint title_height;
   gint scale;
 
-  lang = pango_context_get_language (context);
-  metrics = pango_context_get_metrics (context, font_desc, lang);
+  ensure_pango_context (theme);
 
-  text_height = PANGO_PIXELS (pango_font_metrics_get_ascent (metrics) +
-                              pango_font_metrics_get_descent (metrics));
+  lang = pango_context_get_language (theme->context);
+  metrics = pango_context_get_metrics (theme->context, font_desc, lang);
 
+  ascent = pango_font_metrics_get_ascent (metrics);
+  descent = pango_font_metrics_get_descent (metrics);
   pango_font_metrics_unref (metrics);
 
+  title_height = PANGO_PIXELS (ascent + descent);
   scale = get_window_scaling_factor ();
 
-  return text_height * scale;
+  return title_height * scale;
 }
 
 MetaFrameType

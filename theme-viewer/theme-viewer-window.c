@@ -236,25 +236,17 @@ update_button_layout (ThemeViewerWindow *window)
 static void
 update_title_layout (ThemeViewerWindow *window)
 {
-  GtkWidget *widget;
   PangoLayout *layout;
   PangoFontDescription *font_desc;
-  PangoContext *context;
   gint height;
 
-  widget = GTK_WIDGET (window);
-
-  layout = gtk_widget_create_pango_layout (widget, "Metacity Theme Viewer");
+  layout = meta_theme_create_title_layout (window->theme, "Metacity Theme Viewer");
   font_desc = meta_theme_create_font_desc (window->theme, window->theme_variant,
                                            window->frame_type, window->frame_flags);
 
-  context = gtk_widget_get_pango_context (widget);
-  height = meta_pango_font_desc_get_text_height (font_desc, context);
+  height = meta_theme_get_title_height (window->theme, font_desc);
 
-  pango_layout_set_auto_dir (layout, FALSE);
-  pango_layout_set_ellipsize (layout, PANGO_ELLIPSIZE_END);
   pango_layout_set_font_description (layout, font_desc);
-  pango_layout_set_single_paragraph_mode (layout, TRUE);
 
   if (window->title_layout)
     g_object_unref (window->title_layout);

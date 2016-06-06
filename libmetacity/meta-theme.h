@@ -165,13 +165,16 @@ MetaFrameStyle       *meta_theme_get_frame_style           (MetaTheme           
                                                             MetaFrameType                type,
                                                             MetaFrameFlags               flags);
 
+PangoLayout          *meta_theme_create_title_layout       (MetaTheme                   *theme,
+                                                            const gchar                 *title);
+
 PangoFontDescription *meta_theme_create_font_desc          (MetaTheme                   *theme,
                                                             const gchar                 *variant,
                                                             MetaFrameType                type,
                                                             MetaFrameFlags               flags);
 
-gint                  meta_pango_font_desc_get_text_height (const PangoFontDescription  *font_desc,
-                                                            PangoContext                *context);
+gint                  meta_theme_get_title_height          (MetaTheme                   *theme,
+                                                            const PangoFontDescription  *font_desc);
 
 MetaFrameType         meta_frame_type_from_string          (const gchar                 *str);
 
