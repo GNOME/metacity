@@ -57,7 +57,6 @@ struct _ThemeViewerWindow
   MetaFrameFlags    frame_flags;
 
   PangoLayout      *title_layout;
-  gint              title_height;
 
   MetaFrameBorders  borders;
 
@@ -164,9 +163,8 @@ update_button_state (GtkWidget         *widget,
   get_client_width_and_height (widget, window, &width, &height);
 
   meta_theme_calc_geometry (window->theme, window->theme_variant,
-                            window->frame_type, window->title_height,
-                            window->frame_flags, width, height,
-                            &window->button_layout, &fgeom);
+                            window->frame_type, window->frame_flags,
+                            width, height, &window->button_layout, &fgeom);
 
   x -= PADDING;
   y -= PADDING;
@@ -238,13 +236,10 @@ update_title_layout (ThemeViewerWindow *window)
 {
   PangoLayout *layout;
   PangoFontDescription *font_desc;
-  gint height;
 
   layout = meta_theme_create_title_layout (window->theme, "Metacity Theme Viewer");
   font_desc = meta_theme_get_title_font_desc (window->theme, window->theme_variant,
                                               window->frame_type, window->frame_flags);
-
-  height = meta_theme_get_title_height (window->theme, font_desc);
 
   pango_layout_set_font_description (layout, font_desc);
 
@@ -252,15 +247,14 @@ update_title_layout (ThemeViewerWindow *window)
     g_object_unref (window->title_layout);
 
   window->title_layout = layout;
-  window->title_height = height;
 }
 
 static void
 update_frame_borders (ThemeViewerWindow *window)
 {
   meta_theme_get_frame_borders (window->theme, window->theme_variant,
-                                window->frame_type, window->title_height,
-                                window->frame_flags, &window->borders);
+                                window->frame_type, window->frame_flags,
+                                &window->borders);
 }
 
 static void
@@ -603,8 +597,7 @@ theme_box_draw_cb (GtkWidget         *widget,
   cairo_translate (cr, PADDING, PADDING);
   meta_theme_draw_frame (window->theme, window->theme_variant, cr,
                          window->frame_type, window->frame_flags,
-                         client_width, client_height,
-                         window->title_layout, window->title_height,
+                         client_width, client_height, window->title_layout,
                          &window->button_layout, window->button_states,
                          window->mini_icon, window->icon);
 

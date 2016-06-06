@@ -70,8 +70,7 @@ struct _MetaUIFrame
   gchar *theme_variant;
   MetaFrameStyle *cache_style;
   PangoLayout *text_layout;
-  int text_height;
-  char *title; /* NULL once we have a layout */
+  gchar *title;
   guint expose_delayed : 1;
   guint shape_applied : 1;
 

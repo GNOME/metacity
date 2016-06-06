@@ -173,22 +173,17 @@ PangoFontDescription *meta_theme_get_title_font_desc       (MetaTheme           
                                                             MetaFrameType                type,
                                                             MetaFrameFlags               flags);
 
-gint                  meta_theme_get_title_height          (MetaTheme                   *theme,
-                                                            const PangoFontDescription  *font_desc);
-
 MetaFrameType         meta_frame_type_from_string          (const gchar                 *str);
 
 void                  meta_theme_get_frame_borders         (MetaTheme                   *theme,
                                                             const gchar                 *variant,
                                                             MetaFrameType                type,
-                                                            gint                         text_height,
                                                             MetaFrameFlags               flags,
                                                             MetaFrameBorders            *borders);
 
 void                  meta_theme_calc_geometry             (MetaTheme                   *theme,
                                                             const gchar                 *variant,
                                                             MetaFrameType                type,
-                                                            gint                         text_height,
                                                             MetaFrameFlags               flags,
                                                             gint                         client_width,
                                                             gint                         client_height,
@@ -203,7 +198,6 @@ void                  meta_theme_draw_frame                (MetaTheme           
                                                             gint                         client_width,
                                                             gint                         client_height,
                                                             PangoLayout                 *title_layout,
-                                                            int                          text_height,
                                                             const MetaButtonLayout      *button_layout,
                                                             MetaButtonState              button_states[META_BUTTON_TYPE_LAST],
                                                             GdkPixbuf                   *mini_icon,

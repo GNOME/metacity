@@ -100,8 +100,6 @@ struct _MetaFrames
 {
   GtkWindow    parent;
 
-  GHashTable  *text_heights;
-
   GHashTable  *frames;
 
   guint        tooltip_timeout;
@@ -173,8 +171,6 @@ prefs_changed_callback (MetaPreference pref,
 static void
 meta_frames_init (MetaFrames *frames)
 {
-  frames->text_heights = g_hash_table_new (NULL, NULL);
-
   frames->frames = g_hash_table_new (unsigned_long_hash, unsigned_long_equal);
 
   frames->tooltip_timeout = 0;
@@ -233,8 +229,6 @@ meta_frames_finalize (GObject *object)
   frames = META_FRAMES (object);
 
   meta_prefs_remove_listener (prefs_changed_callback, frames);
-
-  g_hash_table_destroy (frames->text_heights);
 
   invalidate_all_caches (frames);
   if (frames->invalidate_cache_timeout_id)
@@ -346,12 +340,6 @@ meta_frames_font_changed (MetaFrames *frames)
 
   meta_theme_set_titlebar_font (theme, titlebar_font);
 
-  if (g_hash_table_size (frames->text_heights) > 0)
-    {
-      g_hash_table_destroy (frames->text_heights);
-      frames->text_heights = g_hash_table_new (NULL, NULL);
-    }
-
   /* Queue a draw/resize on all frames */
   g_hash_table_foreach (frames->frames,
                         queue_recalc_func, frames);
@@ -438,30 +426,11 @@ meta_frames_ensure_layout (MetaFrames  *frames,
 
   if (frame->text_layout == NULL)
     {
-      gpointer key, value;
       PangoFontDescription *font_desc;
-      int size;
 
       frame->text_layout = meta_theme_create_title_layout (theme, frame->title);
       font_desc = meta_theme_get_title_font_desc (theme, frame->theme_variant,
                                                   type, flags);
-
-      size = pango_font_description_get_size (font_desc);
-
-      if (g_hash_table_lookup_extended (frames->text_heights,
-                                        GINT_TO_POINTER (size),
-                                        &key, &value))
-        {
-          frame->text_height = GPOINTER_TO_INT (value);
-        }
-      else
-        {
-          frame->text_height = meta_theme_get_title_height (theme, font_desc);
-
-          g_hash_table_replace (frames->text_heights,
-                                GINT_TO_POINTER (size),
-                                GINT_TO_POINTER (frame->text_height));
-        }
 
       pango_layout_set_font_description (frame->text_layout, font_desc);
     }
@@ -488,14 +457,8 @@ meta_frames_calc_geometry (MetaFrames        *frames,
 
   meta_prefs_get_button_layout (&button_layout);
 
-  meta_theme_calc_geometry (meta_ui_get_theme (),
-                            frame->theme_variant,
-                            type,
-                            frame->text_height,
-                            flags,
-                            width, height,
-                            &button_layout,
-                            fgeom);
+  meta_theme_calc_geometry (meta_ui_get_theme (), frame->theme_variant,
+                            type, flags, width, height, &button_layout, fgeom);
 }
 
 MetaFrames*
@@ -591,7 +554,6 @@ meta_frames_manage_window (MetaFrames *frames,
   frame->xwindow = xwindow;
   frame->cache_style = NULL;
   frame->text_layout = NULL;
-  frame->text_height = -1;
   frame->title = NULL;
   frame->expose_delayed = FALSE;
   frame->shape_applied = FALSE;
@@ -680,12 +642,8 @@ meta_ui_frame_get_borders (MetaFrames       *frames,
    * by the core move/resize code to decide on the client
    * window size
    */
-  meta_theme_get_frame_borders (meta_ui_get_theme (),
-                                frame->theme_variant,
-                                type,
-                                frame->text_height,
-                                flags,
-                                borders);
+  meta_theme_get_frame_borders (meta_ui_get_theme (), frame->theme_variant,
+                                type, flags, borders);
 }
 
 void
@@ -2172,12 +2130,8 @@ populate_cache (MetaFrames *frames,
       return;
     }
 
-  meta_theme_get_frame_borders (meta_ui_get_theme (),
-                                frame->theme_variant,
-                                frame_type,
-                                frame->text_height,
-                                frame_flags,
-                                &borders);
+  meta_theme_get_frame_borders (meta_ui_get_theme (), frame->theme_variant,
+                                frame_type, frame_flags, &borders);
 
   pixels = get_cache (frames, frame);
 
@@ -2286,10 +2240,8 @@ subtract_client_area (cairo_region_t *region,
                  META_CORE_GET_CLIENT_HEIGHT, &area.height,
                  META_CORE_GET_END);
 
-  meta_theme_get_frame_borders (meta_ui_get_theme (),
-                                frame->theme_variant,
-                                type, frame->text_height, flags,
-                                &borders);
+  meta_theme_get_frame_borders (meta_ui_get_theme (), frame->theme_variant,
+                                type, flags, &borders);
 
   area.x = borders.total.left;
   area.y = borders.total.top;
@@ -2553,19 +2505,9 @@ meta_frames_paint (MetaFrames   *frames,
 
   meta_prefs_get_button_layout (&button_layout);
 
-  meta_theme_draw_frame (meta_ui_get_theme (),
-                         frame->theme_variant,
-                         cr,
-                         type,
-                         flags,
-                         w,
-                         h,
-                         frame->text_layout,
-                         frame->text_height,
-                         &button_layout,
-                         button_states,
-                         mini_icon,
-                         icon);
+  meta_theme_draw_frame (meta_ui_get_theme (), frame->theme_variant,
+                         cr, type, flags, w, h, frame->text_layout,
+                         &button_layout, button_states, mini_icon, icon);
 }
 
 static gboolean

@@ -45,6 +45,7 @@ struct _MetaTheme
   PangoContext         *context;
 
   GHashTable           *font_descs;
+  GHashTable           *title_heights;
 };
 
 enum
@@ -84,6 +85,56 @@ ensure_pango_context (MetaTheme *theme)
   pango_cairo_context_set_resolution (context, dpi);
 
   theme->context = context;
+}
+
+static gint
+get_title_height (MetaTheme      *theme,
+                  const gchar    *variant,
+                  MetaFrameType   type,
+                  MetaFrameFlags  flags)
+{
+  PangoFontDescription *description;
+  gpointer size;
+  gpointer height;
+  gint title_height;
+
+  description = meta_theme_get_title_font_desc (theme, variant, type, flags);
+  g_assert (description != NULL);
+
+  size = GINT_TO_POINTER (pango_font_description_get_size (description));
+  height = g_hash_table_lookup (theme->title_heights, size);
+
+  if (height != NULL)
+    {
+      title_height = GPOINTER_TO_INT (height);
+    }
+  else
+    {
+      PangoLanguage *lang;
+      PangoFontMetrics *metrics;
+      gint ascent;
+      gint descent;
+      gint scale;
+
+      ensure_pango_context (theme);
+
+      lang = pango_context_get_language (theme->context);
+      metrics = pango_context_get_metrics (theme->context, description, lang);
+
+      ascent = pango_font_metrics_get_ascent (metrics);
+      descent = pango_font_metrics_get_descent (metrics);
+      pango_font_metrics_unref (metrics);
+
+      title_height = PANGO_PIXELS (ascent + descent);
+      scale = get_window_scaling_factor ();
+
+      title_height *= scale;
+
+      height = GINT_TO_POINTER (title_height);
+      g_hash_table_insert (theme->title_heights, size, height);
+    }
+
+  return title_height;
 }
 
 static void
@@ -166,6 +217,7 @@ meta_theme_dispose (GObject *object)
   g_clear_object (&theme->context);
 
   g_clear_pointer (&theme->font_descs, g_hash_table_destroy);
+  g_clear_pointer (&theme->title_heights, g_hash_table_destroy);
 
   G_OBJECT_CLASS (meta_theme_parent_class)->dispose (object);
 }
@@ -247,6 +299,8 @@ meta_theme_init (MetaTheme *theme)
 
   theme->font_descs = g_hash_table_new_full (g_str_hash, g_str_equal, g_free,
                                              (GDestroyNotify) pango_font_description_free);
+
+  theme->title_heights = g_hash_table_new (NULL, NULL);
 }
 
 /**
@@ -302,6 +356,7 @@ meta_theme_invalidate (MetaTheme *theme)
   g_hash_table_remove_all (theme->variants);
   g_clear_object (&theme->context);
   g_hash_table_remove_all (theme->font_descs);
+  g_hash_table_remove_all (theme->title_heights);
 }
 
 void
@@ -325,6 +380,7 @@ meta_theme_set_titlebar_font (MetaTheme                  *theme,
   theme->titlebar_font = pango_font_description_copy (titlebar_font);
 
   g_hash_table_remove_all (theme->font_descs);
+  g_hash_table_remove_all (theme->title_heights);
 }
 
 MetaFrameStyle *
@@ -495,39 +551,6 @@ meta_theme_get_title_font_desc (MetaTheme      *theme,
   return font_desc;
 }
 
-/**
- * meta_theme_get_title_height:
- * @theme: a #MetaTheme
- * @font_desc: the font description to use when calculating title height
- *
- * Returns: the height of title
- */
-gint
-meta_theme_get_title_height (MetaTheme                  *theme,
-                             const PangoFontDescription *font_desc)
-{
-  PangoLanguage *lang;
-  PangoFontMetrics *metrics;
-  gint ascent;
-  gint descent;
-  gint title_height;
-  gint scale;
-
-  ensure_pango_context (theme);
-
-  lang = pango_context_get_language (theme->context);
-  metrics = pango_context_get_metrics (theme->context, font_desc, lang);
-
-  ascent = pango_font_metrics_get_ascent (metrics);
-  descent = pango_font_metrics_get_descent (metrics);
-  pango_font_metrics_unref (metrics);
-
-  title_height = PANGO_PIXELS (ascent + descent);
-  scale = get_window_scaling_factor ();
-
-  return title_height * scale;
-}
-
 MetaFrameType
 meta_frame_type_from_string (const gchar *str)
 {
@@ -553,13 +576,13 @@ void
 meta_theme_get_frame_borders (MetaTheme        *theme,
                               const gchar      *theme_variant,
                               MetaFrameType     type,
-                              int               text_height,
                               MetaFrameFlags    flags,
                               MetaFrameBorders *borders)
 {
   MetaFrameStyle *style;
-  MetaStyleInfo *style_info;
   MetaThemeImplClass *impl_class;
+  MetaStyleInfo *style_info;
+  gint title_height;
 
   g_return_if_fail (type < META_FRAME_TYPE_LAST);
 
@@ -571,18 +594,18 @@ meta_theme_get_frame_borders (MetaTheme        *theme,
   if (style == NULL)
     return;
 
-  style_info = meta_theme_get_style_info (theme, theme_variant);
   impl_class = META_THEME_IMPL_GET_CLASS (theme->impl);
+  style_info = meta_theme_get_style_info (theme, theme_variant);
+  title_height = get_title_height (theme, theme_variant, type, flags);
 
   impl_class->get_frame_borders (theme->impl, style->layout, style_info,
-                                 text_height, flags, type, borders);
+                                 title_height, flags, type, borders);
 }
 
 void
 meta_theme_calc_geometry (MetaTheme              *theme,
                           const gchar            *theme_variant,
                           MetaFrameType           type,
-                          gint                    text_height,
                           MetaFrameFlags          flags,
                           gint                    client_width,
                           gint                    client_height,
@@ -590,8 +613,9 @@ meta_theme_calc_geometry (MetaTheme              *theme,
                           MetaFrameGeometry      *fgeom)
 {
   MetaFrameStyle *style;
-  MetaStyleInfo *style_info;
   MetaThemeImplClass *impl_class;
+  MetaStyleInfo *style_info;
+  gint title_height;
 
   g_return_if_fail (type < META_FRAME_TYPE_LAST);
 
@@ -601,11 +625,12 @@ meta_theme_calc_geometry (MetaTheme              *theme,
   if (style == NULL)
     return;
 
-  style_info = meta_theme_get_style_info (theme, theme_variant);
   impl_class = META_THEME_IMPL_GET_CLASS (theme->impl);
+  style_info = meta_theme_get_style_info (theme, theme_variant);
+  title_height = get_title_height (theme, theme_variant, type, flags);
 
   impl_class->calc_geometry (theme->impl, style->layout, style_info,
-                             text_height, flags, client_width, client_height,
+                             title_height, flags, client_width, client_height,
                              button_layout, type, fgeom);
 }
 
@@ -618,15 +643,15 @@ meta_theme_draw_frame (MetaTheme              *theme,
                        int                     client_width,
                        int                     client_height,
                        PangoLayout            *title_layout,
-                       int                     text_height,
                        const MetaButtonLayout *button_layout,
                        MetaButtonState         button_states[META_BUTTON_TYPE_LAST],
                        GdkPixbuf              *mini_icon,
                        GdkPixbuf              *icon)
 {
   MetaFrameStyle *style;
-  MetaStyleInfo *style_info;
   MetaThemeImplClass *impl_class;
+  MetaStyleInfo *style_info;
+  gint title_height;
   MetaFrameGeometry fgeom;
 
   g_return_if_fail (type < META_FRAME_TYPE_LAST);
@@ -637,11 +662,12 @@ meta_theme_draw_frame (MetaTheme              *theme,
   if (style == NULL)
     return;
 
-  style_info = meta_theme_get_style_info (theme, theme_variant);
   impl_class = META_THEME_IMPL_GET_CLASS (theme->impl);
+  style_info = meta_theme_get_style_info (theme, theme_variant);
+  title_height = get_title_height (theme, theme_variant, type, flags);
 
   impl_class->calc_geometry (theme->impl, style->layout, style_info,
-                             text_height, flags, client_width, client_height,
+                             title_height, flags, client_width, client_height,
                              button_layout, type, &fgeom);
 
   impl_class->draw_frame (theme->impl, style, style_info, cr, &fgeom,

@@ -682,17 +682,11 @@ meta_ui_theme_get_frame_borders (MetaUI           *ui,
 {
   MetaTheme *theme;
   const gchar *theme_variant;
-  PangoFontDescription *font_desc;
-  gint text_height;
 
   theme = meta_ui_get_theme ();
   theme_variant = NULL;
 
-  font_desc = meta_theme_get_title_font_desc (theme, theme_variant, type, flags);
-  text_height = meta_theme_get_title_height (theme, font_desc);
-
-  meta_theme_get_frame_borders (theme, theme_variant, type,
-                                text_height, flags, borders);
+  meta_theme_get_frame_borders (theme, theme_variant, type, flags, borders);
 }
 
 MetaTheme *
