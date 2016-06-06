@@ -685,6 +685,8 @@ frame_type_combo_box_changed_cb (GtkComboBox       *combo_box,
   window->frame_type = gtk_combo_box_get_active (combo_box);
 
   update_frame_flags (window);
+
+  gtk_widget_queue_draw (window->theme_box);
 }
 
 static void
