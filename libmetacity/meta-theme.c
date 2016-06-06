@@ -43,6 +43,8 @@ struct _MetaTheme
   GHashTable           *variants;
 
   PangoContext         *context;
+
+  GHashTable           *font_descs;
 };
 
 enum
@@ -163,6 +165,8 @@ meta_theme_dispose (GObject *object)
 
   g_clear_object (&theme->context);
 
+  g_clear_pointer (&theme->font_descs, g_hash_table_destroy);
+
   G_OBJECT_CLASS (meta_theme_parent_class)->dispose (object);
 }
 
@@ -240,6 +244,9 @@ meta_theme_init (MetaTheme *theme)
 
   theme->variants = g_hash_table_new_full (g_str_hash, g_str_equal,
                                            g_free, g_object_unref);
+
+  theme->font_descs = g_hash_table_new_full (g_str_hash, g_str_equal, g_free,
+                                             (GDestroyNotify) pango_font_description_free);
 }
 
 /**
@@ -294,6 +301,7 @@ meta_theme_invalidate (MetaTheme *theme)
 {
   g_hash_table_remove_all (theme->variants);
   g_clear_object (&theme->context);
+  g_hash_table_remove_all (theme->font_descs);
 }
 
 void
@@ -315,6 +323,8 @@ meta_theme_set_titlebar_font (MetaTheme                  *theme,
 {
   pango_font_description_free (theme->titlebar_font);
   theme->titlebar_font = pango_font_description_copy (titlebar_font);
+
+  g_hash_table_remove_all (theme->font_descs);
 }
 
 MetaFrameStyle *
@@ -435,15 +445,34 @@ meta_theme_create_title_layout (MetaTheme   *theme,
   return layout;
 }
 
+/**
+ * meta_theme_get_title_font_desc:
+ * @theme: a #MetaTheme
+ * @variant: (nullable): theme variant
+ * @type: frame type
+ * @flags: frame flags
+ *
+ * Returns: (transfer none): the #PangoFontDescription
+ */
 PangoFontDescription*
-meta_theme_create_font_desc (MetaTheme      *theme,
-                             const gchar    *variant,
-                             MetaFrameType   type,
-                             MetaFrameFlags  flags)
+meta_theme_get_title_font_desc (MetaTheme      *theme,
+                                const gchar    *variant,
+                                MetaFrameType   type,
+                                MetaFrameFlags  flags)
 {
+  gchar *key;
+  PangoFontDescription *font_desc;
   MetaStyleInfo *style_info;
   GtkStyleContext *context;
-  PangoFontDescription *font_desc;
+
+  key = g_strdup_printf ("%s_%d_%x", variant ? variant : "default", type, flags);
+  font_desc = g_hash_table_lookup (theme->font_descs, key);
+
+  if (font_desc != NULL)
+    {
+      g_free (key);
+      return font_desc;
+    }
 
   style_info = meta_theme_get_style_info (theme, variant);
   context = meta_style_info_get_style (style_info, META_STYLE_ELEMENT_TITLE);
@@ -460,6 +489,8 @@ meta_theme_create_font_desc (MetaTheme      *theme,
     pango_font_description_merge (font_desc, theme->titlebar_font, TRUE);
 
   font_desc_apply_scale (font_desc, theme, type, flags);
+
+  g_hash_table_insert (theme->font_descs, key, font_desc);
 
   return font_desc;
 }

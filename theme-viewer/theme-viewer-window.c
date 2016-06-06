@@ -241,8 +241,8 @@ update_title_layout (ThemeViewerWindow *window)
   gint height;
 
   layout = meta_theme_create_title_layout (window->theme, "Metacity Theme Viewer");
-  font_desc = meta_theme_create_font_desc (window->theme, window->theme_variant,
-                                           window->frame_type, window->frame_flags);
+  font_desc = meta_theme_get_title_font_desc (window->theme, window->theme_variant,
+                                              window->frame_type, window->frame_flags);
 
   height = meta_theme_get_title_height (window->theme, font_desc);
 
@@ -253,8 +253,6 @@ update_title_layout (ThemeViewerWindow *window)
 
   window->title_layout = layout;
   window->title_height = height;
-
-  pango_font_description_free (font_desc);
 }
 
 static void

@@ -443,8 +443,8 @@ meta_frames_ensure_layout (MetaFrames  *frames,
       int size;
 
       frame->text_layout = meta_theme_create_title_layout (theme, frame->title);
-      font_desc = meta_theme_create_font_desc (theme, frame->theme_variant,
-                                               type, flags);
+      font_desc = meta_theme_get_title_font_desc (theme, frame->theme_variant,
+                                                  type, flags);
 
       size = pango_font_description_get_size (font_desc);
 
@@ -464,7 +464,6 @@ meta_frames_ensure_layout (MetaFrames  *frames,
         }
 
       pango_layout_set_font_description (frame->text_layout, font_desc);
-      pango_font_description_free (font_desc);
     }
 }
 

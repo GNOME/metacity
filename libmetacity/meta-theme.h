@@ -168,7 +168,7 @@ MetaFrameStyle       *meta_theme_get_frame_style           (MetaTheme           
 PangoLayout          *meta_theme_create_title_layout       (MetaTheme                   *theme,
                                                             const gchar                 *title);
 
-PangoFontDescription *meta_theme_create_font_desc          (MetaTheme                   *theme,
+PangoFontDescription *meta_theme_get_title_font_desc       (MetaTheme                   *theme,
                                                             const gchar                 *variant,
                                                             MetaFrameType                type,
                                                             MetaFrameFlags               flags);
