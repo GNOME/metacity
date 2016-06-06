@@ -19,8 +19,11 @@
 
 #include <glib/gi18n.h>
 #include <libmetacity/meta-theme.h>
+#include <time.h>
 
 #include "theme-viewer-window.h"
+
+#define BENCHMARK_ITERATIONS 100
 
 #define PADDING 60
 #define MINI_ICON_SIZE 16
@@ -38,6 +41,7 @@ struct _ThemeViewerWindow
   GtkWidget        *sidebar;
 
   GtkWidget        *choose_theme;
+  GtkWidget        *notebook;
   GtkWidget        *theme_box;
 
   GtkWidget        *has_focus;
@@ -67,9 +71,191 @@ struct _ThemeViewerWindow
 
   GdkPixbuf        *mini_icon;
   GdkPixbuf        *icon;
+
+  GtkWidget        *benchmark_frame;
+  GtkWidget        *load_time;
+  GtkWidget        *get_borders_time;
+  GtkWidget        *draw_time;
+
+  GtkWidget        *benchmark_button;
 };
 
 G_DEFINE_TYPE (ThemeViewerWindow, theme_viewer_window, GTK_TYPE_WINDOW)
+
+static void
+benchmark_load_time (ThemeViewerWindow *window,
+                     MetaTheme         *theme,
+                     MetaThemeType      type,
+                     const gchar       *name)
+{
+  clock_t start;
+  clock_t end;
+  clock_t elapsed;
+  gdouble seconds;
+  const gchar *type_string;
+  gchar *message;
+
+  start = clock ();
+  meta_theme_load (theme, name, NULL);
+  end = clock ();
+
+  elapsed = end - start;
+  seconds = (gdouble) elapsed / CLOCKS_PER_SEC;
+
+  type_string = type == META_THEME_TYPE_GTK ? "GTK+" : "Metacity";
+  message = g_strdup_printf (_("Loaded <b>%s</b> theme <b>%s</b> in <b>%f</b> seconds."),
+                             type_string, name, seconds);
+
+  gtk_label_set_markup (GTK_LABEL (window->load_time), message);
+  gtk_widget_show (window->load_time);
+  g_free (message);
+}
+
+static void
+benchmark_get_borders (ThemeViewerWindow *window,
+                       MetaTheme         *theme,
+                       MetaFrameBorders  *borders)
+{
+  clock_t start;
+  clock_t end;
+  clock_t elapsed;
+  gdouble seconds;
+  gchar *message;
+
+  start = clock ();
+
+  meta_theme_get_frame_borders (theme, window->theme_variant,
+                                window->frame_type, window->frame_flags,
+                                borders);
+
+  end = clock ();
+
+  elapsed = end - start;
+  seconds = (gdouble) elapsed / CLOCKS_PER_SEC;
+
+  message = g_strdup_printf (_("Got MetaFrameBorders in <b>%f</b> seconds (CSS loading, PangoFontDescription creation and title height calculation)."),
+                             seconds);
+
+  gtk_label_set_markup (GTK_LABEL (window->get_borders_time), message);
+  gtk_widget_show (window->get_borders_time);
+  g_free (message);
+}
+
+static void
+benchmark_draw_time (ThemeViewerWindow *window,
+                     MetaTheme         *theme,
+                     MetaFrameBorders  *borders)
+{
+  GTimer *timer;
+  clock_t start;
+  clock_t end;
+  clock_t elapsed;
+  gdouble seconds;
+  gdouble wall_seconds;
+  gchar *message;
+
+  timer = g_timer_new ();
+  start = clock ();
+
+  {
+    GdkWindow *gdk_window;
+    gint client_width;
+    gint client_height;
+    gint inc;
+    gint i;
+
+    gdk_window = gtk_widget_get_window (GTK_WIDGET (window));
+    client_width = 200;
+    client_height = 120;
+    inc = 1000 / BENCHMARK_ITERATIONS;
+    i = 0;
+
+    while (i < BENCHMARK_ITERATIONS)
+      {
+        gint width;
+        gint height;
+        cairo_surface_t *surface;
+        cairo_t *cr;
+
+        width = client_width + borders->total.left + borders->total.right;
+        height = client_height + borders->total.top + borders->total.bottom;
+        surface = gdk_window_create_similar_surface (gdk_window,
+                                                     CAIRO_CONTENT_COLOR,
+                                                     width, height);
+
+        cr = cairo_create (surface);
+
+        meta_theme_draw_frame (theme, window->theme_variant, cr,
+                               window->frame_type, window->frame_flags,
+                               width, height, window->title_layout,
+                               &window->button_layout, window->button_states,
+                               window->mini_icon, window->icon);
+
+        cairo_destroy (cr);
+        cairo_surface_destroy (surface);
+
+        client_width += inc;
+        client_height += inc;
+        ++i;
+      }
+  }
+
+  end = clock ();
+  g_timer_stop (timer);
+
+  g_object_unref (theme);
+
+  elapsed = end - start;
+  seconds = (gdouble) elapsed / CLOCKS_PER_SEC;
+  wall_seconds = g_timer_elapsed (timer, NULL);
+
+  message = g_strdup_printf (_("Drew <b>%d</b> frames in <b>%f</b> client-side seconds (<b>%f</b> milliseconds per frame) and <b>%f</b> seconds wall clock time including X server resources (<b>%f</b> milliseconds per frame)."),
+                             BENCHMARK_ITERATIONS,
+                             seconds, (seconds / BENCHMARK_ITERATIONS) * 1000,
+                             wall_seconds, (wall_seconds / BENCHMARK_ITERATIONS) * 1000);
+
+  g_timer_destroy (timer);
+
+  gtk_label_set_markup (GTK_LABEL (window->draw_time), message);
+  gtk_widget_show (window->draw_time);
+  g_free (message);
+}
+
+static void
+run_benchmark (ThemeViewerWindow *window)
+{
+  MetaThemeType theme_type;
+  const gchar *theme_name;
+  MetaTheme *theme;
+  MetaFrameBorders borders;
+
+  gtk_widget_set_sensitive (window->benchmark_button, FALSE);
+  gtk_widget_show (window->benchmark_frame);
+
+  theme_type = gtk_combo_box_get_active (GTK_COMBO_BOX (window->type_combo_box));
+  theme_name = gtk_combo_box_get_active_id (GTK_COMBO_BOX (window->theme_combo_box));
+
+  theme = meta_theme_new (theme_type);
+
+  /* 1. benchmark load time */
+  benchmark_load_time (window, theme, theme_type, theme_name);
+
+  /* 2. benchmark get borders */
+  benchmark_get_borders (window, theme, &borders);
+
+  /* 3. benchmark draw time */
+  benchmark_draw_time (window, theme, &borders);
+
+  gtk_button_set_label (GTK_BUTTON (window->benchmark_button), _("Run again"));
+  gtk_widget_set_sensitive (window->benchmark_button, TRUE);
+}
+
+static void
+reset_benchmark_page (ThemeViewerWindow *window)
+{
+  gtk_widget_hide (window->benchmark_frame);
+  gtk_button_set_label (GTK_BUTTON (window->benchmark_button), _("Run"));
+}
 
 static void
 update_frame_flags_sensitivity (ThemeViewerWindow *window)
@@ -344,7 +530,7 @@ static void
 clear_theme (ThemeViewerWindow *window)
 {
   gtk_widget_show (window->choose_theme);
-  gtk_widget_hide (window->theme_box);
+  gtk_widget_hide (window->notebook);
 
   gtk_widget_set_sensitive (window->sidebar, FALSE);
 
@@ -479,6 +665,7 @@ type_combo_box_changed_cb (GtkComboBox       *combo_box,
   gtk_widget_set_sensitive (window->reload_button, FALSE);
 
   clear_theme (window);
+  reset_benchmark_page (window);
 
   type = gtk_combo_box_get_active (combo_box);
   themes = NULL;
@@ -517,6 +704,7 @@ theme_combo_box_changed_cb (GtkComboBox       *combo_box,
 {
   const gchar *theme;
   MetaThemeType type;
+  gboolean sensitive;
 
   theme = gtk_combo_box_get_active_id (combo_box);
 
@@ -529,6 +717,8 @@ theme_combo_box_changed_cb (GtkComboBox       *combo_box,
       return;
     }
 
+  reset_benchmark_page (window);
+
   type = gtk_combo_box_get_active (GTK_COMBO_BOX (window->type_combo_box));
 
   window->theme = meta_theme_new (type);
@@ -540,14 +730,14 @@ theme_combo_box_changed_cb (GtkComboBox       *combo_box,
   update_button_layout (window);
 
   gtk_widget_hide (window->choose_theme);
+  gtk_widget_show (window->notebook);
 
-  if (gtk_widget_is_visible (window->theme_box))
-    gtk_widget_queue_draw (window->theme_box);
-  else
-    gtk_widget_show (window->theme_box);
+  sensitive = gtk_notebook_get_current_page (GTK_NOTEBOOK (window->notebook)) == 0;
 
   gtk_widget_set_sensitive (window->sidebar, TRUE);
-  gtk_widget_set_sensitive (window->reload_button, TRUE);
+  gtk_widget_set_sensitive (window->reload_button, sensitive);
+
+  gtk_widget_queue_draw (window->theme_box);
 }
 
 static void
@@ -698,6 +888,26 @@ composited_state_set_cb (GtkSwitch         *widget,
 }
 
 static void
+notebook_switch_page_cb (GtkNotebook       *notebook,
+                         GtkWidget         *page,
+                         guint              page_num,
+                         ThemeViewerWindow *window)
+{
+  gboolean sensitive;
+
+  sensitive = page_num == 0 && window->theme != NULL;
+
+  gtk_widget_set_sensitive (window->reload_button, sensitive);
+}
+
+static void
+benchmark_button_clicked_cb (GtkButton         *button,
+                             ThemeViewerWindow *window)
+{
+  run_benchmark (window);
+}
+
+static void
 theme_viewer_window_class_init (ThemeViewerWindowClass *window_class)
 {
   GObjectClass *object_class;
@@ -726,6 +936,7 @@ theme_viewer_window_class_init (ThemeViewerWindowClass *window_class)
   gtk_widget_class_bind_template_child (widget_class, ThemeViewerWindow, sidebar);
 
   gtk_widget_class_bind_template_child (widget_class, ThemeViewerWindow, choose_theme);
+  gtk_widget_class_bind_template_child (widget_class, ThemeViewerWindow, notebook);
 
   gtk_widget_class_bind_template_child (widget_class, ThemeViewerWindow, theme_box);
   gtk_widget_class_bind_template_callback (widget_class, theme_box_draw_cb);
@@ -746,6 +957,16 @@ theme_viewer_window_class_init (ThemeViewerWindowClass *window_class)
   gtk_widget_class_bind_template_callback (widget_class, dark_theme_state_set_cb);
   gtk_widget_class_bind_template_callback (widget_class, frame_type_combo_box_changed_cb);
   gtk_widget_class_bind_template_callback (widget_class, composited_state_set_cb);
+
+  gtk_widget_class_bind_template_callback (widget_class, notebook_switch_page_cb);
+
+  gtk_widget_class_bind_template_child (widget_class, ThemeViewerWindow, benchmark_frame);
+  gtk_widget_class_bind_template_child (widget_class, ThemeViewerWindow, load_time);
+  gtk_widget_class_bind_template_child (widget_class, ThemeViewerWindow, get_borders_time);
+  gtk_widget_class_bind_template_child (widget_class, ThemeViewerWindow, draw_time);
+
+  gtk_widget_class_bind_template_child (widget_class, ThemeViewerWindow, benchmark_button);
+  gtk_widget_class_bind_template_callback (widget_class, benchmark_button_clicked_cb);
 }
 
 static void
@@ -759,6 +980,10 @@ theme_viewer_window_init (ThemeViewerWindow *window)
   gtk_widget_add_events (window->theme_box, GDK_POINTER_MOTION_MASK);
 
   type_combo_box_changed_cb (GTK_COMBO_BOX (window->type_combo_box), window);
+
+  gtk_label_set_xalign (GTK_LABEL (window->load_time), 0.0);
+  gtk_label_set_xalign (GTK_LABEL (window->get_borders_time), 0.0);
+  gtk_label_set_xalign (GTK_LABEL (window->draw_time), 0.0);
 }
 
 GtkWidget *
