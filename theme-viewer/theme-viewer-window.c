@@ -657,6 +657,8 @@ type_combo_box_changed_cb (GtkComboBox       *combo_box,
   MetaThemeType type;
   GSList *themes;
   gchar *themes_dir;
+  const gchar *const *xdg_data_dirs;
+  gint i;
   GSList *theme;
 
   theme_combo_box_text = GTK_COMBO_BOX_TEXT (window->theme_combo_box);
@@ -673,6 +675,14 @@ type_combo_box_changed_cb (GtkComboBox       *combo_box,
   themes_dir = g_build_filename (DATADIR, "themes", NULL);
   get_valid_themes (window, themes_dir, type, &themes);
   g_free (themes_dir);
+
+  xdg_data_dirs = g_get_system_data_dirs ();
+  for (i = 0; xdg_data_dirs[i] != NULL; i++)
+    {
+      themes_dir = g_build_filename (xdg_data_dirs[i], "themes", NULL);
+      get_valid_themes (window, themes_dir, type, &themes);
+      g_free (themes_dir);
+    }
 
   themes_dir = g_build_filename (g_get_user_data_dir (), "themes", NULL);
   get_valid_themes (window, themes_dir, type, &themes);
