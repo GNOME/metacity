@@ -165,12 +165,6 @@ MetaFrameStyle *meta_theme_get_frame_style     (MetaTheme                   *the
                                                 MetaFrameType                type,
                                                 MetaFrameFlags               flags);
 
-PangoLayout    *meta_theme_create_title_layout (MetaTheme                   *theme,
-                                                const gchar                 *variant,
-                                                MetaFrameType                type,
-                                                MetaFrameFlags               flags,
-                                                const gchar                 *title);
-
 MetaFrameType   meta_frame_type_from_string    (const gchar                 *str);
 
 void            meta_theme_get_frame_borders   (MetaTheme                   *theme,
@@ -195,7 +189,7 @@ void            meta_theme_draw_frame          (MetaTheme                   *the
                                                 MetaFrameFlags               flags,
                                                 gint                         client_width,
                                                 gint                         client_height,
-                                                PangoLayout                 *title_layout,
+                                                const gchar                 *title,
                                                 const MetaButtonLayout      *button_layout,
                                                 MetaButtonState              button_states[META_BUTTON_TYPE_LAST],
                                                 GdkPixbuf                   *mini_icon,

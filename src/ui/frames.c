@@ -75,9 +75,6 @@ static void meta_frames_calc_geometry (MetaFrames        *frames,
                                        MetaUIFrame         *frame,
                                        MetaFrameGeometry *fgeom);
 
-static void meta_frames_ensure_layout (MetaFrames      *frames,
-                                       MetaUIFrame     *frame);
-
 static MetaUIFrame* meta_frames_lookup_window (MetaFrames *frames,
                                                Window      xwindow);
 
@@ -325,8 +322,6 @@ queue_recalc_func (gpointer key, gpointer value, gpointer data)
   invalidate_whole_window (frames, frame);
   meta_core_queue_frame_resize (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
                                 frame->xwindow);
-
-  g_clear_object (&frame->text_layout);
 }
 
 static void
@@ -403,37 +398,6 @@ meta_frames_style_updated (GtkWidget *widget)
 }
 
 static void
-meta_frames_ensure_layout (MetaFrames  *frames,
-                           MetaUIFrame *frame)
-{
-  MetaFrameFlags flags;
-  MetaFrameType type;
-  MetaTheme *theme;
-  MetaFrameStyle *style;
-
-  meta_core_get (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()), frame->xwindow,
-                 META_CORE_GET_FRAME_FLAGS, &flags,
-                 META_CORE_GET_FRAME_TYPE, &type,
-                 META_CORE_GET_END);
-
-  theme = meta_ui_get_theme ();
-  style = meta_theme_get_frame_style (theme, type, flags);
-
-  if (style != frame->cache_style)
-    g_clear_object (&frame->text_layout);
-
-  frame->cache_style = style;
-
-  if (frame->text_layout == NULL)
-    {
-      frame->text_layout = meta_theme_create_title_layout (theme,
-                                                           frame->theme_variant,
-                                                           type, flags,
-                                                           frame->title);
-    }
-}
-
-static void
 meta_frames_calc_geometry (MetaFrames        *frames,
                            MetaUIFrame       *frame,
                            MetaFrameGeometry *fgeom)
@@ -449,8 +413,6 @@ meta_frames_calc_geometry (MetaFrames        *frames,
                  META_CORE_GET_FRAME_FLAGS, &flags,
                  META_CORE_GET_FRAME_TYPE, &type,
                  META_CORE_GET_END);
-
-  meta_frames_ensure_layout (frames, frame);
 
   meta_prefs_get_button_layout (&button_layout);
 
@@ -549,8 +511,6 @@ meta_frames_manage_window (MetaFrames *frames,
   /* Don't set event mask here, it's in frame.c */
 
   frame->xwindow = xwindow;
-  frame->cache_style = NULL;
-  frame->text_layout = NULL;
   frame->title = NULL;
   frame->expose_delayed = FALSE;
   frame->shape_applied = FALSE;
@@ -594,9 +554,6 @@ meta_frames_unmanage_window (MetaFrames *frames,
 
       gdk_window_destroy (frame->window);
 
-      if (frame->text_layout)
-        g_object_unref (G_OBJECT (frame->text_layout));
-
       if (frame->title)
         g_free (frame->title);
 
@@ -631,8 +588,6 @@ meta_ui_frame_get_borders (MetaFrames       *frames,
                  META_CORE_GET_END);
 
   g_return_if_fail (type < META_FRAME_TYPE_LAST);
-
-  meta_frames_ensure_layout (frames, frame);
 
   /* We can't get the full geometry, because that depends on
    * the client window size and probably we're being called
@@ -1049,8 +1004,6 @@ meta_frames_set_title (MetaFrames *frames,
 
   g_free (frame->title);
   frame->title = g_strdup (title);
-
-  g_clear_object (&frame->text_layout);
 
   invalidate_whole_window (frames, frame);
 }
@@ -2498,12 +2451,10 @@ meta_frames_paint (MetaFrames   *frames,
                  META_CORE_GET_CLIENT_HEIGHT, &h,
                  META_CORE_GET_END);
 
-  meta_frames_ensure_layout (frames, frame);
-
   meta_prefs_get_button_layout (&button_layout);
 
   meta_theme_draw_frame (meta_ui_get_theme (), frame->theme_variant,
-                         cr, type, flags, w, h, frame->text_layout,
+                         cr, type, flags, w, h, frame->title,
                          &button_layout, button_states, mini_icon, icon);
 }
 

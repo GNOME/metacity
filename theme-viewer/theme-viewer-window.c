@@ -60,8 +60,6 @@ struct _ThemeViewerWindow
   MetaFrameType     frame_type;
   MetaFrameFlags    frame_flags;
 
-  PangoLayout      *title_layout;
-
   MetaFrameBorders  borders;
 
   MetaButtonLayout  button_layout;
@@ -187,7 +185,7 @@ benchmark_draw_time (ThemeViewerWindow *window,
 
         meta_theme_draw_frame (theme, window->theme_variant, cr,
                                window->frame_type, window->frame_flags,
-                               width, height, window->title_layout,
+                               width, height, "Benchmark",
                                &window->button_layout, window->button_states,
                                window->mini_icon, window->icon);
 
@@ -418,21 +416,6 @@ update_button_layout (ThemeViewerWindow *window)
 }
 
 static void
-update_title_layout (ThemeViewerWindow *window)
-{
-  PangoLayout *layout;
-
-  layout = meta_theme_create_title_layout (window->theme, window->theme_variant,
-                                           window->frame_type, window->frame_flags,
-                                           "Metacity Theme Viewer");
-
-  if (window->title_layout)
-    g_object_unref (window->title_layout);
-
-  window->title_layout = layout;
-}
-
-static void
 update_frame_borders (ThemeViewerWindow *window)
 {
   meta_theme_get_frame_borders (window->theme, window->theme_variant,
@@ -474,9 +457,7 @@ update_frame_flags (ThemeViewerWindow *window)
 
   window->frame_flags = flags;
 
-  update_title_layout (window);
   update_frame_borders (window);
-
   update_frame_flags_sensitivity (window);
 }
 
@@ -642,7 +623,6 @@ theme_viewer_window_dispose (GObject *object)
   window = THEME_VIEWER_WINDOW (object);
 
   g_clear_object (&window->theme);
-  g_clear_object (&window->title_layout);
   g_clear_object (&window->mini_icon);
   g_clear_object (&window->icon);
 
@@ -794,7 +774,7 @@ theme_box_draw_cb (GtkWidget         *widget,
   cairo_translate (cr, PADDING, PADDING);
   meta_theme_draw_frame (window->theme, window->theme_variant, cr,
                          window->frame_type, window->frame_flags,
-                         client_width, client_height, window->title_layout,
+                         client_width, client_height, "Metacity Theme Viewer",
                          &window->button_layout, window->button_states,
                          window->mini_icon, window->icon);
 

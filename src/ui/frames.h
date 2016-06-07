@@ -68,8 +68,6 @@ struct _MetaUIFrame
   Window xwindow;
   GdkWindow *window;
   gchar *theme_variant;
-  MetaFrameStyle *cache_style;
-  PangoLayout *text_layout;
   gchar *title;
   guint expose_delayed : 1;
   guint shape_applied : 1;

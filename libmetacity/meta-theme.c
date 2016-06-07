@@ -225,6 +225,33 @@ get_title_height (MetaTheme      *theme,
   return title_height;
 }
 
+static PangoLayout *
+create_title_layout (MetaTheme      *theme,
+                     const gchar    *variant,
+                     MetaFrameType   type,
+                     MetaFrameFlags  flags,
+                     const gchar    *title)
+{
+  PangoLayout *layout;
+  PangoFontDescription *font_desc;
+
+  ensure_pango_context (theme);
+
+  layout = pango_layout_new (theme->context);
+
+  if (title)
+    pango_layout_set_text (layout, title, -1);
+
+  pango_layout_set_auto_dir (layout, FALSE);
+  pango_layout_set_ellipsize (layout, PANGO_ELLIPSIZE_END);
+  pango_layout_set_single_paragraph_mode (layout, TRUE);
+
+  font_desc = get_title_font_desc (theme, variant, type, flags);
+  pango_layout_set_font_description (layout, font_desc);
+
+  return layout;
+}
+
 static void
 meta_theme_constructed (GObject *object)
 {
@@ -515,45 +542,6 @@ meta_theme_get_frame_style (MetaTheme      *theme,
   return style;
 }
 
-/**
- * meta_theme_create_title_layout:
- * @theme: a #MetaTheme
- * @variant: (nullable): theme variant
- * @type: frame type
- * @flags: frame flags
- * @title: (nullable): text to set on the layout
- *
- * Use this function to create #PangoLayout for use in meta_theme_draw_frame.
- *
- * Returns: (transfer full): the new #PangoLayout
- */
-PangoLayout *
-meta_theme_create_title_layout (MetaTheme      *theme,
-                                const gchar    *variant,
-                                MetaFrameType   type,
-                                MetaFrameFlags  flags,
-                                const gchar    *title)
-{
-  PangoLayout *layout;
-  PangoFontDescription *font_desc;
-
-  ensure_pango_context (theme);
-
-  layout = pango_layout_new (theme->context);
-
-  if (title)
-    pango_layout_set_text (layout, title, -1);
-
-  pango_layout_set_auto_dir (layout, FALSE);
-  pango_layout_set_ellipsize (layout, PANGO_ELLIPSIZE_END);
-  pango_layout_set_single_paragraph_mode (layout, TRUE);
-
-  font_desc = get_title_font_desc (theme, variant, type, flags);
-  pango_layout_set_font_description (layout, font_desc);
-
-  return layout;
-}
-
 MetaFrameType
 meta_frame_type_from_string (const gchar *str)
 {
@@ -577,7 +565,7 @@ meta_frame_type_from_string (const gchar *str)
 
 void
 meta_theme_get_frame_borders (MetaTheme        *theme,
-                              const gchar      *theme_variant,
+                              const gchar      *variant,
                               MetaFrameType     type,
                               MetaFrameFlags    flags,
                               MetaFrameBorders *borders)
@@ -598,8 +586,8 @@ meta_theme_get_frame_borders (MetaTheme        *theme,
     return;
 
   impl_class = META_THEME_IMPL_GET_CLASS (theme->impl);
-  style_info = meta_theme_get_style_info (theme, theme_variant);
-  title_height = get_title_height (theme, theme_variant, type, flags);
+  style_info = meta_theme_get_style_info (theme, variant);
+  title_height = get_title_height (theme, variant, type, flags);
 
   impl_class->get_frame_borders (theme->impl, style->layout, style_info,
                                  title_height, flags, type, borders);
@@ -607,7 +595,7 @@ meta_theme_get_frame_borders (MetaTheme        *theme,
 
 void
 meta_theme_calc_geometry (MetaTheme              *theme,
-                          const gchar            *theme_variant,
+                          const gchar            *variant,
                           MetaFrameType           type,
                           MetaFrameFlags          flags,
                           gint                    client_width,
@@ -629,8 +617,8 @@ meta_theme_calc_geometry (MetaTheme              *theme,
     return;
 
   impl_class = META_THEME_IMPL_GET_CLASS (theme->impl);
-  style_info = meta_theme_get_style_info (theme, theme_variant);
-  title_height = get_title_height (theme, theme_variant, type, flags);
+  style_info = meta_theme_get_style_info (theme, variant);
+  title_height = get_title_height (theme, variant, type, flags);
 
   impl_class->calc_geometry (theme->impl, style->layout, style_info,
                              title_height, flags, client_width, client_height,
@@ -639,13 +627,13 @@ meta_theme_calc_geometry (MetaTheme              *theme,
 
 void
 meta_theme_draw_frame (MetaTheme              *theme,
-                       const gchar            *theme_variant,
+                       const gchar            *variant,
                        cairo_t                *cr,
                        MetaFrameType           type,
                        MetaFrameFlags          flags,
-                       int                     client_width,
-                       int                     client_height,
-                       PangoLayout            *title_layout,
+                       gint                    client_width,
+                       gint                    client_height,
+                       const gchar            *title,
                        const MetaButtonLayout *button_layout,
                        MetaButtonState         button_states[META_BUTTON_TYPE_LAST],
                        GdkPixbuf              *mini_icon,
@@ -655,6 +643,7 @@ meta_theme_draw_frame (MetaTheme              *theme,
   MetaThemeImplClass *impl_class;
   MetaStyleInfo *style_info;
   gint title_height;
+  PangoLayout *title_layout;
   MetaFrameGeometry fgeom;
 
   g_return_if_fail (type < META_FRAME_TYPE_LAST);
@@ -666,8 +655,9 @@ meta_theme_draw_frame (MetaTheme              *theme,
     return;
 
   impl_class = META_THEME_IMPL_GET_CLASS (theme->impl);
-  style_info = meta_theme_get_style_info (theme, theme_variant);
-  title_height = get_title_height (theme, theme_variant, type, flags);
+  style_info = meta_theme_get_style_info (theme, variant);
+  title_height = get_title_height (theme, variant, type, flags);
+  title_layout = create_title_layout (theme, variant, type, flags, title);
 
   impl_class->calc_geometry (theme->impl, style->layout, style_info,
                              title_height, flags, client_width, client_height,
@@ -675,4 +665,6 @@ meta_theme_draw_frame (MetaTheme              *theme,
 
   impl_class->draw_frame (theme->impl, style, style_info, cr, &fgeom,
                           title_layout, flags, button_states, mini_icon, icon);
+
+  g_object_unref (title_layout);
 }
