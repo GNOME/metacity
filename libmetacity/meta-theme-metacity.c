@@ -908,6 +908,27 @@ meta_theme_metacity_insert_style_set (MetaThemeMetacity *metacity,
   g_hash_table_replace (metacity->style_sets, g_strdup (name), style_set);
 }
 
+static MetaFrameType
+meta_frame_type_from_string (const gchar *str)
+{
+  if (strcmp ("normal", str) == 0)
+    return META_FRAME_TYPE_NORMAL;
+  else if (strcmp ("dialog", str) == 0)
+    return META_FRAME_TYPE_DIALOG;
+  else if (strcmp ("modal_dialog", str) == 0)
+    return META_FRAME_TYPE_MODAL_DIALOG;
+  else if (strcmp ("utility", str) == 0)
+    return META_FRAME_TYPE_UTILITY;
+  else if (strcmp ("menu", str) == 0)
+    return META_FRAME_TYPE_MENU;
+  else if (strcmp ("border", str) == 0)
+    return META_FRAME_TYPE_BORDER;
+  else if (strcmp ("attached", str) == 0)
+    return META_FRAME_TYPE_ATTACHED;
+  else
+    return META_FRAME_TYPE_LAST;
+}
+
 static void
 parse_toplevel_element (GMarkupParseContext  *context,
                         const gchar          *element_name,

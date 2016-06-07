@@ -160,8 +160,6 @@ void           meta_theme_set_composited    (MetaTheme                   *theme,
 void           meta_theme_set_titlebar_font (MetaTheme                   *theme,
                                              const PangoFontDescription  *titlebar_font);
 
-MetaFrameType  meta_frame_type_from_string  (const gchar                 *str);
-
 void           meta_theme_get_frame_borders (MetaTheme                   *theme,
                                              const gchar                 *variant,
                                              MetaFrameType                type,
