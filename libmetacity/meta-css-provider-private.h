@@ -22,6 +22,7 @@
 
 G_BEGIN_DECLS
 
+G_GNUC_INTERNAL
 #define META_TYPE_CSS_PROVIDER meta_css_provider_get_type ()
 G_DECLARE_FINAL_TYPE (MetaCssProvider, meta_css_provider,
                       META, CSS_PROVIDER, GtkCssProvider)

@@ -29,6 +29,7 @@ typedef struct _MetaFrameLayout MetaFrameLayout;
 typedef struct _MetaFrameStyle MetaFrameStyle;
 typedef struct _MetaFrameStyleSet MetaFrameStyleSet;
 
+G_GNUC_INTERNAL
 #define META_TYPE_THEME_METACITY meta_theme_metacity_get_type ()
 G_DECLARE_FINAL_TYPE (MetaThemeMetacity, meta_theme_metacity,
                       META, THEME_METACITY, MetaThemeImpl)

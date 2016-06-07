@@ -28,6 +28,7 @@ G_BEGIN_DECLS
 
 typedef struct _MetaFrameGeometry MetaFrameGeometry;
 
+G_GNUC_INTERNAL
 #define META_TYPE_THEME_IMPL meta_theme_impl_get_type ()
 G_DECLARE_DERIVABLE_TYPE (MetaThemeImpl, meta_theme_impl,
                           META, THEME_IMPL, GObject)

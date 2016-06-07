@@ -22,6 +22,7 @@
 
 G_BEGIN_DECLS
 
+G_GNUC_INTERNAL
 #define META_TYPE_THEME_GTK meta_theme_gtk_get_type ()
 G_DECLARE_FINAL_TYPE (MetaThemeGtk, meta_theme_gtk,
                       META, THEME_GTK, MetaThemeImpl)

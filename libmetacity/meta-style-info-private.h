@@ -33,6 +33,7 @@ typedef enum
   META_STYLE_ELEMENT_LAST
 } MetaStyleElement;
 
+G_GNUC_INTERNAL
 #define META_TYPE_STYLE_INFO meta_style_info_get_type ()
 G_DECLARE_FINAL_TYPE (MetaStyleInfo, meta_style_info, META, STYLE_INFO, GObject)
 
