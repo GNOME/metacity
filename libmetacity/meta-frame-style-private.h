@@ -16,20 +16,19 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef META_FRAME_STYLE_H
-#define META_FRAME_STYLE_H
+#ifndef META_FRAME_STYLE_PRIVATE_H
+#define META_FRAME_STYLE_PRIVATE_H
 
-#include <gtk/gtk.h>
-#include <libmetacity/meta-button-enums.h>
-#include <libmetacity/meta-frame-enums.h>
+#include "meta-button-enums.h"
+#include "meta-color-spec-private.h"
+#include "meta-draw-op-private.h"
+#include "meta-frame-enums.h"
+#include "meta-frame-layout-private.h"
 
 G_BEGIN_DECLS
 
-typedef struct _MetaColorSpec MetaColorSpec;
-typedef struct _MetaFrameLayout MetaFrameLayout;
 typedef struct _MetaFrameStyle MetaFrameStyle;
 typedef struct _MetaFrameStyleSet MetaFrameStyleSet;
-typedef struct _MetaDrawOpList MetaDrawOpList;
 
 /**
  * How to draw a frame in a particular state (say, a focussed, non-maximised,
@@ -90,33 +89,43 @@ struct _MetaFrameStyleSet
   MetaFrameStyle *tiled_right_and_shaded_styles[META_FRAME_FOCUS_LAST];
 };
 
-MetaFrameStyle    *meta_frame_style_new           (MetaFrameStyle        *parent);
+G_GNUC_INTERNAL
+MetaFrameStyle    *meta_frame_style_new           (MetaFrameStyle     *parent);
 
-void               meta_frame_style_ref           (MetaFrameStyle        *style);
+G_GNUC_INTERNAL
+void               meta_frame_style_ref           (MetaFrameStyle     *style);
 
-void               meta_frame_style_unref         (MetaFrameStyle        *style);
+G_GNUC_INTERNAL
+void               meta_frame_style_unref         (MetaFrameStyle     *style);
 
-gboolean           meta_frame_style_validate      (MetaFrameStyle        *style,
-                                                   guint                  current_theme_version,
-                                                   GError               **error);
+G_GNUC_INTERNAL
+gboolean           meta_frame_style_validate      (MetaFrameStyle     *style,
+                                                   guint               current_theme_version,
+                                                   GError            **error);
 
-MetaDrawOpList    *meta_frame_style_get_button    (MetaFrameStyle        *style,
-                                                   MetaButtonType         type,
-                                                   MetaButtonState        state);
+G_GNUC_INTERNAL
+MetaDrawOpList    *meta_frame_style_get_button    (MetaFrameStyle     *style,
+                                                   MetaButtonType      type,
+                                                   MetaButtonState     state);
 
-MetaFrameStyleSet *meta_frame_style_set_new       (MetaFrameStyleSet     *parent);
+G_GNUC_INTERNAL
+MetaFrameStyleSet *meta_frame_style_set_new       (MetaFrameStyleSet  *parent);
 
-void               meta_frame_style_set_ref       (MetaFrameStyleSet     *style_set);
+G_GNUC_INTERNAL
+void               meta_frame_style_set_ref       (MetaFrameStyleSet  *style_set);
 
-void               meta_frame_style_set_unref     (MetaFrameStyleSet     *style_set);
+G_GNUC_INTERNAL
+void               meta_frame_style_set_unref     (MetaFrameStyleSet  *style_set);
 
-gboolean           meta_frame_style_set_validate  (MetaFrameStyleSet     *style_set,
-                                                   GError               **error);
+G_GNUC_INTERNAL
+gboolean           meta_frame_style_set_validate  (MetaFrameStyleSet  *style_set,
+                                                   GError            **error);
 
-MetaFrameStyle    *meta_frame_style_set_get_style (MetaFrameStyleSet     *style_set,
-                                                   MetaFrameState         state,
-                                                   MetaFrameResize        resize,
-                                                   MetaFrameFocus         focus);
+G_GNUC_INTERNAL
+MetaFrameStyle    *meta_frame_style_set_get_style (MetaFrameStyleSet  *style_set,
+                                                   MetaFrameState      state,
+                                                   MetaFrameResize     resize,
+                                                   MetaFrameFocus      focus);
 
 G_END_DECLS
 

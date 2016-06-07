@@ -24,7 +24,6 @@
 #include <libmetacity/meta-button-layout.h>
 #include <libmetacity/meta-frame-borders.h>
 #include <libmetacity/meta-frame-enums.h>
-#include <libmetacity/meta-frame-style.h>
 
 G_BEGIN_DECLS
 

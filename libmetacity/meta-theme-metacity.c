@@ -25,7 +25,7 @@
 
 #include "meta-draw-op-private.h"
 #include "meta-frame-layout-private.h"
-#include "meta-frame-style.h"
+#include "meta-frame-style-private.h"
 #include "meta-theme.h"
 #include "meta-theme-metacity-private.h"
 

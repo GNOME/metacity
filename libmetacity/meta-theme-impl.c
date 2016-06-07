@@ -19,7 +19,6 @@
 
 #include <glib/gi18n.h>
 
-#include "meta-frame-style.h"
 #include "meta-theme-impl-private.h"
 #include "meta-theme.h"
 
