@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2001 Havoc Pennington
+ * Copyright (C) 2016 Alberts Muktupāvels
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,11 +20,21 @@
 
 #include "meta-frame-borders.h"
 
-void
-meta_frame_borders_clear (MetaFrameBorders *self)
+static void
+clear_border (GtkBorder *border)
 {
-  self->visible.top = self->invisible.top = self->total.top = 0;
-  self->visible.bottom = self->invisible.bottom = self->total.bottom = 0;
-  self->visible.left = self->invisible.left = self->total.left = 0;
-  self->visible.right = self->invisible.right = self->total.right = 0;
+  border->left = 0;
+  border->right = 0;
+  border->top = 0;
+  border->bottom = 0;
+}
+
+void
+meta_frame_borders_clear (MetaFrameBorders *borders)
+{
+  clear_border (&borders->visible);
+  clear_border (&borders->shadow);
+  clear_border (&borders->resize);
+  clear_border (&borders->invisible);
+  clear_border (&borders->total);
 }

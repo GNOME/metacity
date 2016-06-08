@@ -254,26 +254,26 @@ meta_theme_gtk_get_frame_borders (MetaThemeImpl    *impl,
   borders->visible.right = layout->gtk.frame_border.right;
   borders->visible.bottom = layout->gtk.frame_border.bottom;
 
-  borders->invisible = layout->gtk.shadow_border;
+  borders->shadow = layout->gtk.shadow_border;
 
   if (flags & META_FRAME_ALLOWS_HORIZONTAL_RESIZE)
     {
-      borders->invisible.left = MAX (borders->invisible.left,
-                                     layout->invisible_resize_border.left);
-
-      borders->invisible.right = MAX (borders->invisible.right,
-                                      layout->invisible_resize_border.right);
+      borders->resize.left = layout->invisible_resize_border.left;
+      borders->resize.right = layout->invisible_resize_border.right;
     }
 
   if (flags & META_FRAME_ALLOWS_VERTICAL_RESIZE)
     {
-      borders->invisible.bottom = MAX (borders->invisible.bottom,
-                                       layout->invisible_resize_border.bottom);
+      borders->resize.bottom = layout->invisible_resize_border.bottom;
 
       if (type != META_FRAME_TYPE_ATTACHED)
-        borders->invisible.top = MAX (borders->invisible.top,
-                                      layout->invisible_resize_border.top);
+        borders->resize.top = layout->invisible_resize_border.top;
     }
+
+  borders->invisible.left = MAX (borders->shadow.left, borders->resize.left);
+  borders->invisible.right = MAX (borders->shadow.right, borders->resize.right);
+  borders->invisible.bottom = MAX (borders->shadow.bottom, borders->resize.bottom);
+  borders->invisible.top = MAX (borders->shadow.top, borders->resize.top);
 
   borders->total.left = borders->invisible.left + borders->visible.left;
   borders->total.right = borders->invisible.right + borders->visible.right;
@@ -281,6 +281,8 @@ meta_theme_gtk_get_frame_borders (MetaThemeImpl    *impl,
   borders->total.top = borders->invisible.top + borders->visible.top;
 
   scale_border (&borders->visible, scale);
+  scale_border (&borders->shadow, scale);
+  scale_border (&borders->resize, scale);
   scale_border (&borders->invisible, scale);
   scale_border (&borders->total, scale);
 }

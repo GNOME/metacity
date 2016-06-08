@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2001 Havoc Pennington
+ * Copyright (C) 2016 Alberts Muktupāvels
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,18 +25,14 @@ G_BEGIN_DECLS
 
 typedef struct
 {
-  /* The frame border is made up of two pieces - an inner visible portion
-   * and an outer portion that is invisible but responds to events.
-   */
   GtkBorder visible;
+  GtkBorder shadow;
+  GtkBorder resize;
   GtkBorder invisible;
-
-  /* For convenience, we have a "total" border which is equal to the sum
-   * of the two borders above. */
   GtkBorder total;
 } MetaFrameBorders;
 
-void meta_frame_borders_clear (MetaFrameBorders *self);
+void meta_frame_borders_clear (MetaFrameBorders *borders);
 
 G_END_DECLS
 

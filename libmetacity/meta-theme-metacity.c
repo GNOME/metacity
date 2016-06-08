@@ -4661,19 +4661,29 @@ meta_theme_metacity_get_frame_borders (MetaThemeImpl    *impl,
   borders->visible.right = layout->metacity.right_width;
   borders->visible.bottom = layout->metacity.bottom_height;
 
+  borders->shadow.top = 0;
+  borders->shadow.left = 0;
+  borders->shadow.right = 0;
+  borders->shadow.bottom = 0;
+
   if (flags & META_FRAME_ALLOWS_HORIZONTAL_RESIZE)
     {
-      borders->invisible.left = layout->invisible_resize_border.left;
-      borders->invisible.right = layout->invisible_resize_border.right;
+      borders->resize.left = layout->invisible_resize_border.left;
+      borders->resize.right = layout->invisible_resize_border.right;
     }
 
   if (flags & META_FRAME_ALLOWS_VERTICAL_RESIZE)
     {
-      borders->invisible.bottom = layout->invisible_resize_border.bottom;
+      borders->resize.bottom = layout->invisible_resize_border.bottom;
 
       if (type != META_FRAME_TYPE_ATTACHED)
-        borders->invisible.top = layout->invisible_resize_border.top;
+        borders->resize.top = layout->invisible_resize_border.top;
     }
+
+  borders->invisible.left = MAX (borders->shadow.left, borders->resize.left);
+  borders->invisible.right = MAX (borders->shadow.right, borders->resize.right);
+  borders->invisible.bottom = MAX (borders->shadow.bottom, borders->resize.bottom);
+  borders->invisible.top = MAX (borders->shadow.top, borders->resize.top);
 
   borders->total.left = borders->invisible.left + borders->visible.left;
   borders->total.right = borders->invisible.right + borders->visible.right;
@@ -4681,6 +4691,8 @@ meta_theme_metacity_get_frame_borders (MetaThemeImpl    *impl,
   borders->total.top = borders->invisible.top + borders->visible.top;
 
   scale_border (&borders->visible, scale);
+  scale_border (&borders->shadow, scale);
+  scale_border (&borders->resize, scale);
   scale_border (&borders->invisible, scale);
   scale_border (&borders->total, scale);
 }
