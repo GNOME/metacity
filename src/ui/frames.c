@@ -2097,28 +2097,30 @@ populate_cache (MetaFrames *frames,
    * size without any border added. */
 
   /* top */
-  pixels->piece[0].rect.x = 0;
-  pixels->piece[0].rect.y = 0;
-  pixels->piece[0].rect.width = width + borders.total.left + borders.total.right;
-  pixels->piece[0].rect.height = borders.total.top;
+  pixels->piece[0].rect.x = borders.invisible.left - borders.shadow.left;
+  pixels->piece[0].rect.y = borders.invisible.top - borders.shadow.top;
+  pixels->piece[0].rect.width = width + borders.visible.left + borders.shadow.left +
+                                borders.visible.right + borders.shadow.right;
+  pixels->piece[0].rect.height = borders.visible.top + borders.shadow.top;
 
   /* left */
-  pixels->piece[1].rect.x = 0;
+  pixels->piece[1].rect.x = borders.invisible.left - borders.shadow.left;
   pixels->piece[1].rect.y = borders.total.top;
   pixels->piece[1].rect.height = height;
-  pixels->piece[1].rect.width = borders.total.left;
+  pixels->piece[1].rect.width = borders.visible.left + borders.shadow.left;
 
   /* right */
   pixels->piece[2].rect.x = borders.total.left + width;
   pixels->piece[2].rect.y = borders.total.top;
-  pixels->piece[2].rect.width = borders.total.right;
+  pixels->piece[2].rect.width = borders.visible.right  + borders.shadow.right;
   pixels->piece[2].rect.height = height;
 
   /* bottom */
-  pixels->piece[3].rect.x = 0;
+  pixels->piece[3].rect.x = borders.invisible.left - borders.shadow.left;
   pixels->piece[3].rect.y = borders.total.top + height;
-  pixels->piece[3].rect.width = width + borders.total.left + borders.total.right;
-  pixels->piece[3].rect.height = borders.total.bottom;
+  pixels->piece[3].rect.width = width + borders.visible.left + borders.shadow.left +
+                                borders.visible.right + borders.shadow.right;
+  pixels->piece[3].rect.height = borders.visible.bottom + borders.shadow.bottom;
 
   for (i = 0; i < 4; i++)
     {
