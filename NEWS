@@ -1,3 +1,25 @@
+Version 3.20.0
+==============
+- Allow minimizing windows which don't advertise support for it. (Jasper
+  St. Pierre)
+- Metacity follows Mutter and by default will use GTK+ theme. It is still
+  possible to use Metacity themes by adjusting settings. (Alberts Muktupāvels)
+- Previously shipped Metacity themes has been removed. (Alberts Muktupāvels)
+- Metacity theme settings now is under new GSettings schema -
+  org.gnome.metacity.theme. (Alberts Muktupāvels)
+- Metacity now has new library - libmetacity. (Alberts Muktupāvels)
+- New Metacity theme viewer - can be used to preview both Metacity and GTK+
+  themes. (Alberts Muktupāvels)
+- Scale window decorations on HiDPI displays, based on mutter. (Alberts
+  Muktupāvels, Florian Müllner, Iain Lane)
+- Updated translations:
+  Aurimas Černius (lt), Balázs Meskó (hu), Balázs Úr (hu),
+  Cédric Valmary (oc), Daniel Mustieles (es), Gábor Kelemen (hu),
+  Josef Andersson (sv), Luis Enrique Ortega Rojas (es), Marek Černocký (cs),
+  Mario Blättermann (de), Марко Костић (sr), Милош Поповић (sr@latin),
+  Мирослав Николић (sr, sr@latin), Muhammet Kara (tr), Piotr Drąg (pl),
+  Rafael Fontenelle (pt_BR).
+
 Version 3.18.1
 ==============
 - Updated translations:
