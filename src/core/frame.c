@@ -21,7 +21,11 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <config.h>
+#include "config.h"
+
+#include <X11/extensions/shape.h>
+#include <X11/extensions/Xfixes.h>
+
 #include "frame-private.h"
 #include "bell.h"
 #include "errors.h"
@@ -38,6 +42,28 @@
                     ColormapChangeMask)
 
 static gboolean update_shape (MetaFrame *frame);
+
+static void
+update_input_shape (MetaFrame *frame)
+{
+  MetaFrameBorders borders;
+  XRectangle rect;
+  Display *xdisplay;
+  XserverRegion region;
+
+  meta_frame_calc_borders (frame, &borders);
+
+  rect.x = borders.invisible.left - borders.resize.left;
+  rect.y = borders.invisible.top - borders.resize.top;
+  rect.width = frame->rect.width - borders.invisible.left + borders.resize.right - rect.x;
+  rect.height = frame->rect.height - borders.invisible.top + borders.resize.bottom - rect.y;
+
+  xdisplay = frame->window->display->xdisplay;
+  region = XFixesCreateRegion (xdisplay, &rect, 1);
+
+  XFixesSetWindowShapeRegion (xdisplay, frame->xwindow, ShapeInput, 0, 0, region);
+  XFixesDestroyRegion (xdisplay, region);
+}
 
 static void
 prefs_changed_callback (MetaPreference preference,
@@ -148,12 +174,8 @@ meta_window_ensure_frame (MetaWindow *window)
   meta_window_grab_keys (window);
 
   /* Shape mask */
-  meta_ui_apply_frame_shape (frame->window->screen->ui,
-                             frame->xwindow,
-                             frame->rect.width,
-                             frame->rect.height,
-                             frame->window->has_shape);
-  frame->need_reapply_frame_shape = FALSE;
+  update_input_shape (frame);
+  update_shape (frame);
 
   meta_display_ungrab (window->display);
 
@@ -351,6 +373,8 @@ meta_frame_sync_to_window (MetaFrame *frame,
                            gboolean   need_move,
                            gboolean   need_resize)
 {
+  update_input_shape (frame);
+
   if (!(need_move || need_resize))
     {
       return update_shape (frame);
