@@ -2586,11 +2586,17 @@ get_control (MetaFrames *frames,
   gboolean has_vert, has_horiz;
   gboolean has_north_resize;
   GdkRectangle client;
+  MetaFrameBorders borders;
 
   meta_frames_calc_geometry (frames, frame, &fgeom);
   get_client_rect (&fgeom, fgeom.width, fgeom.height, &client);
 
-  if (x < 0 || y < 0 || x > fgeom.width || y > fgeom.height)
+  borders = fgeom.borders;
+
+  if (x < borders.invisible.left - borders.resize.left ||
+      y < borders.invisible.top - borders.resize.top ||
+      x > fgeom.width - borders.invisible.right + borders.resize.right ||
+      y > fgeom.height - borders.invisible.bottom + borders.resize.bottom)
     return META_FRAME_CONTROL_NONE;
 
   if (POINT_IN_RECT (x, y, client))
