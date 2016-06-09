@@ -39,6 +39,7 @@ struct _MetaTheme
 
   PangoFontDescription *titlebar_font;
 
+  gulong                gtk_theme_name_id;
   gchar                *gtk_theme_name;
   GHashTable           *variants;
 
@@ -344,6 +345,17 @@ create_title_layout (MetaTheme      *theme,
 }
 
 static void
+notify_gtk_theme_name_cb (GtkSettings *settings,
+                          GParamSpec  *pspec,
+                          MetaTheme   *theme)
+{
+  g_free (theme->gtk_theme_name);
+  g_object_get (settings, "gtk-theme-name", &theme->gtk_theme_name, NULL);
+
+  meta_theme_invalidate (theme);
+}
+
+static void
 meta_theme_constructed (GObject *object)
 {
   MetaTheme *theme;
@@ -370,6 +382,16 @@ meta_theme_dispose (GObject *object)
   theme = META_THEME (object);
 
   g_clear_object (&theme->impl);
+
+  if (theme->gtk_theme_name_id > 0)
+    {
+      GtkSettings *settings;
+
+      settings = gtk_settings_get_default ();
+
+      g_signal_handler_disconnect (settings, theme->gtk_theme_name_id);
+      theme->gtk_theme_name_id = 0;
+    }
 
   g_clear_pointer (&theme->variants, g_hash_table_destroy);
 
@@ -486,10 +508,9 @@ meta_theme_load (MetaTheme    *theme,
                  const gchar  *name,
                  GError      **error)
 {
-  g_free (theme->gtk_theme_name);
-
   if (theme->type == META_THEME_TYPE_GTK)
     {
+      g_free (theme->gtk_theme_name);
       theme->gtk_theme_name = g_strdup (name);
     }
   else if (theme->type == META_THEME_TYPE_METACITY)
@@ -498,7 +519,15 @@ meta_theme_load (MetaTheme    *theme,
 
       settings = gtk_settings_get_default ();
 
+      g_free (theme->gtk_theme_name);
       g_object_get (settings, "gtk-theme-name", &theme->gtk_theme_name, NULL);
+
+      if (theme->gtk_theme_name_id == 0)
+        {
+          theme->gtk_theme_name_id =
+            g_signal_connect (settings, "notify:gtk-theme-name",
+                              G_CALLBACK (notify_gtk_theme_name_cb), theme);
+        }
     }
   else
     {
