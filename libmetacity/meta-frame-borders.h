@@ -23,6 +23,14 @@
 
 G_BEGIN_DECLS
 
+/**
+ * MetaFrameBorders:
+ * @visible: Visible border
+ * @shadow: Extra size needed for box-shadow (GTK+ theme only)
+ * @resize: Extra size used for resize cursor area
+ * @invisible: Extra size around visible border (max of resize and shadow)
+ * @total: Sum of visible and invisible borders
+ */
 typedef struct
 {
   GtkBorder visible;
