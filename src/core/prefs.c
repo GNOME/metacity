@@ -870,7 +870,8 @@ gtk_theme_name_changed (GtkSettings *settings,
                         GParamSpec  *pspec,
                         gpointer     user_data)
 {
-  queue_changed (META_PREF_THEME_NAME);
+  if (current_theme_type == META_THEME_TYPE_GTK)
+    queue_changed (META_PREF_THEME_NAME);
 }
 
 static void
