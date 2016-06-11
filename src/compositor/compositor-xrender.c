@@ -780,15 +780,14 @@ static MetaCompWindow *
 find_window_in_display (MetaDisplay *display,
                         Window       xwindow)
 {
-  GSList *index;
+  MetaScreen *screen;
+  MetaCompWindow *cw;
 
-  for (index = meta_display_get_screens (display); index; index = index->next)
-    {
-      MetaCompWindow *cw = find_window_for_screen (index->data, xwindow);
+  screen = meta_display_get_screen (display);
+  cw = find_window_for_screen (screen, xwindow);
 
-      if (cw != NULL)
-        return cw;
-    }
+  if (cw != NULL)
+    return cw;
 
   return NULL;
 }
@@ -1813,7 +1812,7 @@ repair_screen (MetaScreen *screen)
 static void
 repair_display (MetaDisplay *display)
 {
-  GSList *screens = meta_display_get_screens (display);
+  MetaScreen *screen = meta_display_get_screen (display);
   MetaCompositorXRender *compositor = DISPLAY_COMPOSITOR (display);
 
 #ifdef USE_IDLE_REPAINT
@@ -1824,8 +1823,7 @@ repair_display (MetaDisplay *display)
     }
 #endif
 
-  for (; screens; screens = screens->next)
-    repair_screen ((MetaScreen *) screens->data);
+  repair_screen (screen);
 }
 
 #ifdef USE_IDLE_REPAINT

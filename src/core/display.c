@@ -5346,10 +5346,10 @@ meta_display_get_compositor (MetaDisplay *display)
   return display->compositor;
 }
 
-GSList *
-meta_display_get_screens (MetaDisplay *display)
+MetaScreen *
+meta_display_get_screen (MetaDisplay *display)
 {
-  return display->screens;
+  return display->screens->data;
 }
 
 gboolean
