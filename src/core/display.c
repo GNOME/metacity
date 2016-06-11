@@ -304,6 +304,7 @@ meta_display_open (void)
   GSList *tmp;
   int i;
   guint32 timestamp;
+  MetaScreen *screen;
 
   /* A list of all atom names, so that we can intern them in one go. */
   const gchar *atom_names[] = {
@@ -665,17 +666,11 @@ meta_display_open (void)
 
   screens = NULL;
 
-  i = 0;
-  while (i < ScreenCount (xdisplay))
-    {
-      MetaScreen *screen;
+  i = meta_ui_get_screen_number ();
+  screen = meta_screen_new (the_display, i, timestamp);
 
-      screen = meta_screen_new (the_display, i, timestamp);
-
-      if (screen)
-        screens = g_slist_prepend (screens, screen);
-      ++i;
-    }
+  if (screen)
+    screens = g_slist_prepend (screens, screen);
 
   the_display->screens = screens;
 
@@ -700,7 +695,7 @@ meta_display_open (void)
   tmp = the_display->screens;
   while (tmp != NULL)
     {
-      MetaScreen *screen = tmp->data;
+      screen = tmp->data;
 
       meta_screen_manage_all_windows (screen);
 

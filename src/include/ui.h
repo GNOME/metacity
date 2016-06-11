@@ -49,6 +49,8 @@ void meta_ui_init (int *argc, char ***argv);
 
 Display* meta_ui_get_display (void);
 
+gint     meta_ui_get_screen_number (void);
+
 void meta_ui_add_event_func    (Display       *xdisplay,
                                 MetaEventFunc  func,
                                 gpointer       data);
