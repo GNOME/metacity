@@ -30,7 +30,6 @@ struct _MetaResizePopup
   GtkWidget *size_window;
   GtkWidget *size_label;
   Display *display;
-  int screen_number;
 
   int vertical_size;
   int horizontal_size;
@@ -41,15 +40,13 @@ struct _MetaResizePopup
 };
 
 MetaResizePopup*
-meta_ui_resize_popup_new (Display *display,
-                          int      screen_number)
+meta_ui_resize_popup_new (Display *display)
 {
   MetaResizePopup *popup;
 
   popup = g_new0 (MetaResizePopup, 1);
 
   popup->display = display;
-  popup->screen_number = screen_number;
 
   return popup;
 }
@@ -93,8 +90,8 @@ ensure_size_window (MetaResizePopup *popup)
     return;
 
   popup->size_window = gtk_window_new (GTK_WINDOW_POPUP);
-  screen = gdk_display_get_screen (gdk_x11_lookup_xdisplay (popup->display),
-                                   popup->screen_number);
+
+  screen = gdk_screen_get_default ();
   visual = gdk_screen_get_rgba_visual (screen);
 
   gtk_window_set_screen (GTK_WINDOW (popup->size_window), screen);

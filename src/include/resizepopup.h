@@ -29,8 +29,7 @@
 #include <glib.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 
-MetaResizePopup* meta_ui_resize_popup_new          (Display *display,
-                                                    int      screen_number);
+MetaResizePopup *meta_ui_resize_popup_new          (Display         *display);
 void             meta_ui_resize_popup_free         (MetaResizePopup *popup);
 void             meta_ui_resize_popup_set (MetaResizePopup *popup,
                                            MetaRectangle    rect,
