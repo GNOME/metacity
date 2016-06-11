@@ -129,14 +129,13 @@ meta_tile_preview_composited_changed (GtkWidget *widget,
 }
 
 MetaTilePreview *
-meta_tile_preview_new (int      screen_number,
-                       gboolean composited)
+meta_tile_preview_new (gboolean composited)
 {
   MetaTilePreview *preview;
   GdkVisual *visual;
   GdkScreen *screen;
 
-  screen = gdk_display_get_screen (gdk_display_get_default (), screen_number);
+  screen = gdk_screen_get_default ();
   visual = gdk_screen_get_rgba_visual (screen);
 
   preview = g_new (MetaTilePreview, 1);
