@@ -421,16 +421,11 @@ meta_frames_calc_geometry (MetaFrames        *frames,
 }
 
 MetaFrames*
-meta_frames_new (int screen_number)
+meta_frames_new (void)
 {
-  GdkScreen *screen;
   MetaFrames *frames;
 
-  screen = gdk_display_get_screen (gdk_display_get_default (),
-                                   screen_number);
-
   frames = g_object_new (META_TYPE_FRAMES,
-                         "screen", screen,
                          "type", GTK_WINDOW_POPUP,
                          NULL);
 

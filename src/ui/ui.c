@@ -297,7 +297,8 @@ meta_ui_new (Display *xdisplay,
   g_assert (gdisplay == gdk_display_get_default ());
 
   g_assert (xdisplay == GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
-  ui->frames = meta_frames_new (XScreenNumberOfScreen (screen));
+  ui->frames = meta_frames_new ();
+
   /* GTK+ needs the frame-sync protocol to work in order to properly
    * handle style changes. This means that the dummy widget we create
    * to get the style for title bars actually needs to be mapped

@@ -76,7 +76,7 @@ struct _MetaUIFrame
   MetaFrameControl prelit_control;
 };
 
-MetaFrames *meta_frames_new (int screen_number);
+MetaFrames *meta_frames_new (void);
 
 void meta_frames_manage_window (MetaFrames *frames,
                                 Window      xwindow,
