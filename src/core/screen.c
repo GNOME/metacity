@@ -1370,7 +1370,6 @@ meta_screen_ensure_tab_popup (MetaScreen      *screen,
     }
 
   screen->tab_popup = meta_ui_tab_popup_new (entries,
-                                             screen->number,
                                              len,
                                              5, /* FIXME */
                                              TRUE);
@@ -1442,7 +1441,6 @@ meta_screen_ensure_workspace_popup (MetaScreen *screen)
     }
 
   screen->tab_popup = meta_ui_tab_popup_new (entries,
-                                             screen->number,
                                              len,
                                              layout.cols,
                                              FALSE);

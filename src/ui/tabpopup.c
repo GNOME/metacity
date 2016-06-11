@@ -188,7 +188,6 @@ tab_entry_new (const MetaTabEntry *entry,
 
 MetaTabPopup*
 meta_ui_tab_popup_new (const MetaTabEntry *entries,
-                       int                 screen_number,
                        int                 entry_count,
                        int                 width,
                        gboolean            outline)
@@ -208,8 +207,7 @@ meta_ui_tab_popup_new (const MetaTabEntry *entries,
 
   popup = g_new (MetaTabPopup, 1);
 
-  screen = gdk_display_get_screen (gdk_display_get_default (),
-                                   screen_number);
+  screen = gdk_screen_get_default ();
   visual = gdk_screen_get_rgba_visual (screen);
 
   if (outline)
