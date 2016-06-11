@@ -47,13 +47,11 @@
  * displayed, but if it is the window will be reused rather than destroyed
  * and recreated.
  *
- * \param  screen_number  The number of the screen.
  * \param  root_x         The X coordinate where the tooltip should appear
  * \param  root_y         The Y coordinate where the tooltip should appear
  * \param  markup_text    Text to display in the tooltip; can contain markup
  */
-void meta_fixed_tip_show (int screen_number,
-                          int root_x, int root_y,
+void meta_fixed_tip_show (int root_x, int root_y,
                           const char *markup_text);
 
 /**
@@ -61,6 +59,5 @@ void meta_fixed_tip_show (int screen_number,
  * is no tooltip currently visible, this is a no-op.
  */
 void meta_fixed_tip_hide (void);
-
 
 #endif
