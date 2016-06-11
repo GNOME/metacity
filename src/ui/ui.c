@@ -355,17 +355,15 @@ set_background_none (Display *xdisplay,
 }
 
 Window
-meta_ui_create_frame_window (MetaUI *ui,
+meta_ui_create_frame_window (MetaUI  *ui,
                              Display *xdisplay,
-                             Visual *xvisual,
-			     gint x,
-			     gint y,
-			     gint width,
-			     gint height,
-			     gint screen_no)
+                             Visual  *xvisual,
+                             gint     x,
+                             gint     y,
+                             gint     width,
+                             gint     height)
 {
-  GdkDisplay *display = gdk_x11_lookup_xdisplay (xdisplay);
-  GdkScreen *screen = gdk_display_get_screen (display, screen_no);
+  GdkScreen *screen = gdk_screen_get_default ();
   GdkWindowAttr attrs;
   gint attributes_mask;
   GdkWindow *window;
