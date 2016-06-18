@@ -1530,6 +1530,9 @@ paint_windows (MetaScreen   *screen,
           continue;
         }
 
+      if (cw->attrs.map_state != IsViewable)
+        continue;
+
 #if 0
       if ((cw->attrs.x + cw->attrs.width < 1) ||
           (cw->attrs.y + cw->attrs.height < 1) ||
