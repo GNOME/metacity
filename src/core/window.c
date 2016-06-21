@@ -4227,10 +4227,6 @@ meta_window_get_titlebar_rect (MetaWindow    *window,
 {
   meta_window_get_outer_rect (window, rect);
 
-  /* The returned rectangle is relative to the frame rect. */
-  rect->x = 0;
-  rect->y = 0;
-
   if (window->frame)
     {
       rect->height = window->frame->child_y;
