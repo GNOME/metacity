@@ -525,7 +525,7 @@ meta_theme_load (MetaTheme    *theme,
       if (theme->gtk_theme_name_id == 0)
         {
           theme->gtk_theme_name_id =
-            g_signal_connect (settings, "notify:gtk-theme-name",
+            g_signal_connect (settings, "notify::gtk-theme-name",
                               G_CALLBACK (notify_gtk_theme_name_cb), theme);
         }
     }
