@@ -2356,39 +2356,6 @@ populate_cache (MetaFrames *frames,
 }
 
 static void
-clip_to_screen (cairo_region_t *region, MetaUIFrame *frame)
-{
-  cairo_rectangle_int_t frame_area;
-  cairo_rectangle_int_t screen_area = { 0, 0, 0, 0 };
-  cairo_region_t *tmp_region;
-
-  /* Chop off stuff outside the screen; this optimization
-   * is crucial to handle huge client windows,
-   * like "xterm -geometry 1000x1000"
-   */
-  meta_core_get (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()), frame->xwindow,
-                 META_CORE_GET_FRAME_X, &frame_area.x,
-                 META_CORE_GET_FRAME_Y, &frame_area.y,
-                 META_CORE_GET_FRAME_WIDTH, &frame_area.width,
-                 META_CORE_GET_FRAME_HEIGHT, &frame_area.height,
-                 META_CORE_GET_SCREEN_WIDTH, &screen_area.width,
-                 META_CORE_GET_SCREEN_HEIGHT, &screen_area.height,
-                 META_CORE_GET_END);
-
-  cairo_region_translate (region, frame_area.x, frame_area.y);
-
-  tmp_region = cairo_region_create_rectangle (&frame_area);
-  cairo_region_intersect (region, tmp_region);
-  cairo_region_destroy (tmp_region);
-
-  tmp_region = cairo_region_create_rectangle (&screen_area);
-  cairo_region_intersect (region, tmp_region);
-  cairo_region_destroy (tmp_region);
-
-  cairo_region_translate (region, - frame_area.x, - frame_area.y);
-}
-
-static void
 subtract_client_area (cairo_region_t *region,
                       MetaUIFrame    *frame)
 {
@@ -2512,7 +2479,6 @@ meta_frames_draw (GtkWidget *widget,
 
   cached_pixels_draw (pixels, cr, region);
 
-  clip_to_screen (region, frame);
   subtract_client_area (region, frame);
 
   n_areas = cairo_region_num_rectangles (region);
