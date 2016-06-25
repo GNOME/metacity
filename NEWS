@@ -1,10 +1,22 @@
+Version 3.18.5
+==============
+- Fix _NET_WM_ICON in Alt-Tab switcher (Jasper St. Pierre, Owen W. Taylor;
+  #641975, #766820)
+- Ignore events outside of frame (Alberts Muktupāvels; #436416)
+- Don't paint windows that is not viewable (Alberts Muktupāvels; LP:#1592953)
+- Add error trap in free_win (Alberts Muktupāvels; LP:#1582687)
+- Fix meta_window_get_titlebar_rect (Alberts Muktupāvels; LP:#1509031)
+- Remove clip to screen optimization (Alberts Muktupāvels; #538438)
+
 Version 3.18.4
+==============
 - Try to use root window background instead of grey color.
 - Fix performance regression.
 - Updated translations:
   Anders Jonsson (sv).
 
 Version 3.18.3
+==============
 - Add Icon=preferences-system-windows in metacity.destkop. (Alberts Muktupāvels)
 - Scale window decorations on HiDPI displays, based on mutter. (Alberts
   Muktupāvels, Florian Müllner, Iain Lane)
