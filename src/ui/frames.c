@@ -2814,7 +2814,7 @@ get_control (MetaFrames *frames,
 
   if (POINT_IN_RECT (x, y, fgeom.title_rect))
     {
-      if (has_vert && y <= TOP_RESIZE_HEIGHT && has_north_resize)
+      if (has_vert && y <= (fgeom.borders.invisible.top + TOP_RESIZE_HEIGHT) && has_north_resize)
         return META_FRAME_CONTROL_RESIZE_N;
       else
         return META_FRAME_CONTROL_TITLE;
