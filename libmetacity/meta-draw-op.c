@@ -434,13 +434,6 @@ draw_op_as_pixbuf (const MetaDrawOp   *op,
       break;
 
     case META_DRAW_GRADIENT:
-      {
-        pixbuf = meta_gradient_spec_render (op->data.gradient.gradient_spec,
-                                            context, width, height);
-
-        pixbuf = meta_alpha_gradient_spec_apply_alpha (op->data.gradient.alpha_spec,
-                                                       pixbuf, FALSE);
-      }
       break;
 
     case META_DRAW_IMAGE:
@@ -741,22 +734,15 @@ draw_op_draw_with_env (const MetaDrawOp    *op,
     case META_DRAW_GRADIENT:
       {
         int rx, ry, rwidth, rheight;
-        GdkPixbuf *pixbuf;
 
         rx = meta_draw_spec_parse_x_position (op->data.gradient.x, env);
         ry = meta_draw_spec_parse_y_position (op->data.gradient.y, env);
         rwidth = meta_draw_spec_parse_size (op->data.gradient.width, env);
         rheight = meta_draw_spec_parse_size (op->data.gradient.height, env);
 
-        pixbuf = draw_op_as_pixbuf (op, context, info, rwidth, rheight);
-
-        if (pixbuf)
-          {
-            gdk_cairo_set_source_pixbuf (cr, pixbuf, rx, ry);
-            cairo_paint (cr);
-
-            g_object_unref (G_OBJECT (pixbuf));
-          }
+        meta_gradient_spec_render (op->data.gradient.gradient_spec,
+                                   op->data.gradient.alpha_spec,
+                                   cr, context, rx, ry, rwidth, rheight);
       }
       break;
 
