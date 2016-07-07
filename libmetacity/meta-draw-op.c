@@ -75,218 +75,66 @@ fill_env (MetaPositionExprEnv *env,
   env->title_height = info->title_layout_height;
 }
 
-static GdkPixbuf*
-pixbuf_tile (GdkPixbuf *tile,
-             int        width,
-             int        height)
+static cairo_surface_t *
+scale_surface (GdkPixbuf         *src,
+               MetaImageFillType  fill_type,
+               gint               width,
+               gint               height,
+               gboolean           vertical_stripes,
+               gboolean           horizontal_stripes)
 {
-  GdkPixbuf *pixbuf;
-  int tile_width;
-  int tile_height;
-  int i, j;
+  gfloat pixbuf_width;
+  gfloat pixbuf_height;
+  cairo_surface_t *src_surface;
+  cairo_surface_t *new_surface;
+  cairo_t *cr;
 
-  tile_width = gdk_pixbuf_get_width (tile);
-  tile_height = gdk_pixbuf_get_height (tile);
+  pixbuf_width = gdk_pixbuf_get_width (src);
+  pixbuf_height = gdk_pixbuf_get_height (src);
 
-  pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB,
-                           gdk_pixbuf_get_has_alpha (tile),
-                           8, width, height);
+  src_surface = gdk_cairo_surface_create_from_pixbuf (src, 1, NULL);
 
-  i = 0;
-  while (i < width)
+  if (pixbuf_width == width && pixbuf_height == height)
+    return src_surface;
+
+  new_surface = cairo_surface_create_similar (src_surface,
+                                              CAIRO_CONTENT_COLOR_ALPHA,
+                                              width, height);
+
+  cr = cairo_create (new_surface);
+
+  if (fill_type == META_IMAGE_FILL_TILE)
     {
-      j = 0;
-      while (j < height)
-        {
-          int w, h;
-
-          w = MIN (tile_width, width - i);
-          h = MIN (tile_height, height - j);
-
-          gdk_pixbuf_copy_area (tile,
-                                0, 0,
-                                w, h,
-                                pixbuf,
-                                i, j);
-
-          j += tile_height;
-        }
-
-      i += tile_width;
-    }
-
-  return pixbuf;
-}
-
-static GdkPixbuf *
-replicate_rows (GdkPixbuf  *src,
-                int         src_x,
-                int         src_y,
-                int         width,
-                int         height)
-{
-  unsigned int n_channels = gdk_pixbuf_get_n_channels (src);
-  unsigned int src_rowstride = gdk_pixbuf_get_rowstride (src);
-  unsigned char *pixels = (gdk_pixbuf_get_pixels (src) + src_y * src_rowstride + src_x
-                           * n_channels);
-  unsigned char *dest_pixels;
-  GdkPixbuf *result;
-  unsigned int dest_rowstride;
-  int i;
-
-  result = gdk_pixbuf_new (GDK_COLORSPACE_RGB, n_channels == 4, 8,
-                           width, height);
-  dest_rowstride = gdk_pixbuf_get_rowstride (result);
-  dest_pixels = gdk_pixbuf_get_pixels (result);
-
-  for (i = 0; i < height; i++)
-    memcpy (dest_pixels + dest_rowstride * i, pixels, n_channels * width);
-
-  return result;
-}
-
-static GdkPixbuf *
-replicate_cols (GdkPixbuf  *src,
-                int         src_x,
-                int         src_y,
-                int         width,
-                int         height)
-{
-  unsigned int n_channels = gdk_pixbuf_get_n_channels (src);
-  unsigned int src_rowstride = gdk_pixbuf_get_rowstride (src);
-  unsigned char *pixels = (gdk_pixbuf_get_pixels (src) + src_y * src_rowstride + src_x
-                           * n_channels);
-  unsigned char *dest_pixels;
-  GdkPixbuf *result;
-  unsigned int dest_rowstride;
-  int i, j;
-
-  result = gdk_pixbuf_new (GDK_COLORSPACE_RGB, n_channels == 4, 8,
-                           width, height);
-  dest_rowstride = gdk_pixbuf_get_rowstride (result);
-  dest_pixels = gdk_pixbuf_get_pixels (result);
-
-  for (i = 0; i < height; i++)
-    {
-      unsigned char *p = dest_pixels + dest_rowstride * i;
-      unsigned char *q = pixels + src_rowstride * i;
-
-      unsigned char r = *(q++);
-      unsigned char g = *(q++);
-      unsigned char b = *(q++);
-
-      if (n_channels == 4)
-        {
-          unsigned char a;
-
-          a = *(q++);
-
-          for (j = 0; j < width; j++)
-            {
-              *(p++) = r;
-              *(p++) = g;
-              *(p++) = b;
-              *(p++) = a;
-            }
-        }
-      else
-        {
-          for (j = 0; j < width; j++)
-            {
-              *(p++) = r;
-              *(p++) = g;
-              *(p++) = b;
-            }
-        }
-    }
-
-  return result;
-}
-
-static GdkPixbuf*
-scale_pixbuf (GdkPixbuf             *src,
-              MetaAlphaGradientSpec *alpha_spec,
-              MetaImageFillType      fill_type,
-              gint                   width,
-              gint                   height,
-              gboolean               vertical_stripes,
-              gboolean               horizontal_stripes)
-{
-  GdkPixbuf *pixbuf;
-
-  pixbuf = src;
-
-  if (gdk_pixbuf_get_width (pixbuf) == width &&
-      gdk_pixbuf_get_height (pixbuf) == height)
-    {
-      g_object_ref (G_OBJECT (pixbuf));
+      cairo_set_source_surface (cr, src_surface, 0, 0);
+      cairo_pattern_set_extend (cairo_get_source (cr), CAIRO_EXTEND_REPEAT);
+      cairo_paint (cr);
     }
   else
     {
-      if (fill_type == META_IMAGE_FILL_TILE)
-        {
-          pixbuf = pixbuf_tile (pixbuf, width, height);
-        }
-      else
-        {
-          GdkPixbuf *temp_pixbuf;
-          int src_h, src_w, dest_h, dest_w;
-          src_h = gdk_pixbuf_get_height (src);
-          src_w = gdk_pixbuf_get_width (src);
+      gfloat scale_x;
+      gfloat scale_y;
 
-          /* prefer to replicate_cols if possible, as that
-           * is faster (no memory reads)
-           */
-          if (horizontal_stripes)
-            {
-              dest_w = gdk_pixbuf_get_width (src);
-              dest_h = height;
-            }
-          else if (vertical_stripes)
-            {
-              dest_w = width;
-              dest_h = gdk_pixbuf_get_height (src);
-            }
+      scale_x = width / pixbuf_width;
+      scale_y = height / pixbuf_height;
 
-          else
-            {
-              dest_w = width;
-              dest_h = height;
-            }
+      if (vertical_stripes)
+        scale_y = 1;
+      else if (horizontal_stripes)
+        scale_x = 1;
 
-          if (dest_w == src_w && dest_h == src_h)
-            {
-              temp_pixbuf = src;
-              g_object_ref (G_OBJECT (temp_pixbuf));
-            }
-          else
-            {
-              temp_pixbuf = gdk_pixbuf_scale_simple (src,
-                                                     dest_w, dest_h,
-                                                     GDK_INTERP_BILINEAR);
-            }
+      cairo_scale (cr, scale_x, scale_y);
+      cairo_set_source_surface (cr, src_surface, 0, 0);
 
-          /* prefer to replicate_cols if possible, as that
-           * is faster (no memory reads)
-           */
-          if (horizontal_stripes)
-            {
-              pixbuf = replicate_cols (temp_pixbuf, 0, 0, width, height);
-              g_object_unref (G_OBJECT (temp_pixbuf));
-            }
-          else if (vertical_stripes)
-            {
-              pixbuf = replicate_rows (temp_pixbuf, 0, 0, width, height);
-              g_object_unref (G_OBJECT (temp_pixbuf));
-            }
-          else
-            {
-              pixbuf = temp_pixbuf;
-            }
-        }
+      if (vertical_stripes || horizontal_stripes)
+        cairo_pattern_set_extend (cairo_get_source (cr), CAIRO_EXTEND_REPEAT);
+
+      cairo_paint (cr);
     }
 
-  return pixbuf;
+  cairo_destroy (cr);
+  cairo_surface_destroy (src_surface);
+
+  return new_surface;
 }
 
 static GdkPixbuf *
@@ -367,20 +215,16 @@ colorize_pixbuf (GdkPixbuf *orig,
   return pixbuf;
 }
 
-static GdkPixbuf *
-draw_op_as_pixbuf (const MetaDrawOp   *op,
-                   GtkStyleContext    *context,
-                   const MetaDrawInfo *info,
-                   int                 width,
-                   int                 height)
+static cairo_surface_t *
+draw_op_as_surface (const MetaDrawOp   *op,
+                    GtkStyleContext    *context,
+                    const MetaDrawInfo *info,
+                    gint                width,
+                    gint                height)
 {
-  /* Try to get the op as a pixbuf, assuming w/h in the op
-   * matches the width/height passed in. return NULL
-   * if the op can't be converted to an equivalent pixbuf.
-   */
-  GdkPixbuf *pixbuf;
+  cairo_surface_t *surface;
 
-  pixbuf = NULL;
+  surface = NULL;
 
   switch (op->type)
     {
@@ -409,22 +253,20 @@ draw_op_as_pixbuf (const MetaDrawOp   *op,
 
             if (op->data.image.colorize_cache_pixbuf)
               {
-                pixbuf = scale_pixbuf (op->data.image.colorize_cache_pixbuf,
-                                       op->data.image.alpha_spec,
-                                       op->data.image.fill_type,
-                                       width, height,
-                                       op->data.image.vertical_stripes,
-                                       op->data.image.horizontal_stripes);
+                surface = scale_surface (op->data.image.colorize_cache_pixbuf,
+                                         op->data.image.fill_type,
+                                         width, height,
+                                         op->data.image.vertical_stripes,
+                                         op->data.image.horizontal_stripes);
               }
 	  }
 	else
 	  {
-	    pixbuf = scale_pixbuf (op->data.image.pixbuf,
-	                           op->data.image.alpha_spec,
-	                           op->data.image.fill_type,
-	                           width, height,
-	                           op->data.image.vertical_stripes,
-	                           op->data.image.horizontal_stripes);
+	    surface = scale_surface (op->data.image.pixbuf,
+	                             op->data.image.fill_type,
+	                             width, height,
+	                             op->data.image.vertical_stripes,
+	                             op->data.image.horizontal_stripes);
 	  }
         break;
       }
@@ -433,13 +275,11 @@ draw_op_as_pixbuf (const MetaDrawOp   *op,
       if (info->mini_icon &&
           width <= gdk_pixbuf_get_width (info->mini_icon) &&
           height <= gdk_pixbuf_get_height (info->mini_icon))
-        pixbuf = scale_pixbuf (info->mini_icon, op->data.icon.alpha_spec,
-                               op->data.icon.fill_type, width, height,
-                               FALSE, FALSE);
+        surface = scale_surface (info->mini_icon, op->data.icon.fill_type,
+                                 width, height, FALSE, FALSE);
       else if (info->icon)
-        pixbuf = scale_pixbuf (info->icon, op->data.icon.alpha_spec,
-                               op->data.icon.fill_type, width, height,
-                               FALSE, FALSE);
+        surface = scale_surface (info->icon, op->data.icon.fill_type,
+                                 width, height, FALSE, FALSE);
       break;
 
     case META_DRAW_TINT:
@@ -460,7 +300,7 @@ draw_op_as_pixbuf (const MetaDrawOp   *op,
       break;
     }
 
-  return pixbuf;
+  return surface;
 }
 
 /* This code was originally rendering anti-aliased using X primitives, and
@@ -671,7 +511,7 @@ draw_op_draw_with_env (const MetaDrawOp    *op,
     case META_DRAW_IMAGE:
       {
         int rx, ry, rwidth, rheight;
-        GdkPixbuf *pixbuf;
+        cairo_surface_t *surface;
 
         if (op->data.image.pixbuf)
           {
@@ -682,14 +522,14 @@ draw_op_draw_with_env (const MetaDrawOp    *op,
         rwidth = meta_draw_spec_parse_size (op->data.image.width, env);
         rheight = meta_draw_spec_parse_size (op->data.image.height, env);
 
-        pixbuf = draw_op_as_pixbuf (op, context, info, rwidth, rheight);
+        surface = draw_op_as_surface (op, context, info, rwidth, rheight);
 
-        if (pixbuf)
+        if (surface)
           {
             rx = meta_draw_spec_parse_x_position (op->data.image.x, env);
             ry = meta_draw_spec_parse_y_position (op->data.image.y, env);
 
-            gdk_cairo_set_source_pixbuf (cr, pixbuf, rx, ry);
+            cairo_set_source_surface (cr, surface, rx, ry);
 
             if (op->data.image.alpha_spec)
               {
@@ -708,7 +548,7 @@ draw_op_draw_with_env (const MetaDrawOp    *op,
                 cairo_paint (cr);
               }
 
-            g_object_unref (G_OBJECT (pixbuf));
+            cairo_surface_destroy (surface);
           }
       }
       break;
@@ -781,19 +621,19 @@ draw_op_draw_with_env (const MetaDrawOp    *op,
     case META_DRAW_ICON:
       {
         int rx, ry, rwidth, rheight;
-        GdkPixbuf *pixbuf;
+        cairo_surface_t *surface;
 
         rwidth = meta_draw_spec_parse_size (op->data.icon.width, env);
         rheight = meta_draw_spec_parse_size (op->data.icon.height, env);
 
-        pixbuf = draw_op_as_pixbuf (op, context, info, rwidth, rheight);
+        surface = draw_op_as_surface (op, context, info, rwidth, rheight);
 
-        if (pixbuf)
+        if (surface)
           {
             rx = meta_draw_spec_parse_x_position (op->data.icon.x, env);
             ry = meta_draw_spec_parse_y_position (op->data.icon.y, env);
 
-            gdk_cairo_set_source_pixbuf (cr, pixbuf, rx, ry);
+            cairo_set_source_surface (cr, surface, rx, ry);
 
             if (op->data.icon.alpha_spec)
               {
@@ -812,7 +652,7 @@ draw_op_draw_with_env (const MetaDrawOp    *op,
                 cairo_paint (cr);
               }
 
-            g_object_unref (G_OBJECT (pixbuf));
+            cairo_surface_destroy (surface);
           }
       }
       break;
