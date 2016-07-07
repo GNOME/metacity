@@ -24,12 +24,6 @@
 #include "meta-draw-op-private.h"
 #include "meta-theme-impl-private.h"
 
-#define GDK_COLOR_RGBA(color)                            \
-        ((guint32) (0xff                               | \
-                    ((int)((color).red * 255) << 24)   | \
-                    ((int)((color).green * 255) << 16) | \
-                    ((int)((color).blue * 255) << 8)))
-
 #define GDK_COLOR_RGB(color)                             \
         ((guint32) (((int)((color).red * 255) << 16)   | \
                     ((int)((color).green * 255) << 8)  | \
@@ -210,18 +204,15 @@ replicate_cols (GdkPixbuf  *src,
 }
 
 static GdkPixbuf*
-scale_and_alpha_pixbuf (GdkPixbuf             *src,
-                        MetaAlphaGradientSpec *alpha_spec,
-                        MetaImageFillType      fill_type,
-                        int                    width,
-                        int                    height,
-                        gboolean               vertical_stripes,
-                        gboolean               horizontal_stripes)
+scale_pixbuf (GdkPixbuf             *src,
+              MetaAlphaGradientSpec *alpha_spec,
+              MetaImageFillType      fill_type,
+              gint                   width,
+              gint                   height,
+              gboolean               vertical_stripes,
+              gboolean               horizontal_stripes)
 {
   GdkPixbuf *pixbuf;
-  GdkPixbuf *temp_pixbuf;
-
-  pixbuf = NULL;
 
   pixbuf = src;
 
@@ -238,6 +229,7 @@ scale_and_alpha_pixbuf (GdkPixbuf             *src,
         }
       else
         {
+          GdkPixbuf *temp_pixbuf;
           int src_h, src_w, dest_h, dest_w;
           src_h = gdk_pixbuf_get_height (src);
           src_w = gdk_pixbuf_get_width (src);
@@ -293,9 +285,6 @@ scale_and_alpha_pixbuf (GdkPixbuf             *src,
             }
         }
     }
-
-  if (pixbuf)
-    pixbuf = meta_alpha_gradient_spec_apply_alpha (alpha_spec, pixbuf, pixbuf == src);
 
   return pixbuf;
 }
@@ -420,22 +409,22 @@ draw_op_as_pixbuf (const MetaDrawOp   *op,
 
             if (op->data.image.colorize_cache_pixbuf)
               {
-                pixbuf = scale_and_alpha_pixbuf (op->data.image.colorize_cache_pixbuf,
-                                                 op->data.image.alpha_spec,
-                                                 op->data.image.fill_type,
-                                                 width, height,
-                                                 op->data.image.vertical_stripes,
-                                                 op->data.image.horizontal_stripes);
+                pixbuf = scale_pixbuf (op->data.image.colorize_cache_pixbuf,
+                                       op->data.image.alpha_spec,
+                                       op->data.image.fill_type,
+                                       width, height,
+                                       op->data.image.vertical_stripes,
+                                       op->data.image.horizontal_stripes);
               }
 	  }
 	else
 	  {
-	    pixbuf = scale_and_alpha_pixbuf (op->data.image.pixbuf,
-                                             op->data.image.alpha_spec,
-                                             op->data.image.fill_type,
-                                             width, height,
-                                             op->data.image.vertical_stripes,
-                                             op->data.image.horizontal_stripes);
+	    pixbuf = scale_pixbuf (op->data.image.pixbuf,
+	                           op->data.image.alpha_spec,
+	                           op->data.image.fill_type,
+	                           width, height,
+	                           op->data.image.vertical_stripes,
+	                           op->data.image.horizontal_stripes);
 	  }
         break;
       }
@@ -444,17 +433,13 @@ draw_op_as_pixbuf (const MetaDrawOp   *op,
       if (info->mini_icon &&
           width <= gdk_pixbuf_get_width (info->mini_icon) &&
           height <= gdk_pixbuf_get_height (info->mini_icon))
-        pixbuf = scale_and_alpha_pixbuf (info->mini_icon,
-                                         op->data.icon.alpha_spec,
-                                         op->data.icon.fill_type,
-                                         width, height,
-                                         FALSE, FALSE);
+        pixbuf = scale_pixbuf (info->mini_icon, op->data.icon.alpha_spec,
+                               op->data.icon.fill_type, width, height,
+                               FALSE, FALSE);
       else if (info->icon)
-        pixbuf = scale_and_alpha_pixbuf (info->icon,
-                                         op->data.icon.alpha_spec,
-                                         op->data.icon.fill_type,
-                                         width, height,
-                                         FALSE, FALSE);
+        pixbuf = scale_pixbuf (info->icon, op->data.icon.alpha_spec,
+                               op->data.icon.fill_type, width, height,
+                               FALSE, FALSE);
       break;
 
     case META_DRAW_TINT:
@@ -705,7 +690,23 @@ draw_op_draw_with_env (const MetaDrawOp    *op,
             ry = meta_draw_spec_parse_y_position (op->data.image.y, env);
 
             gdk_cairo_set_source_pixbuf (cr, pixbuf, rx, ry);
-            cairo_paint (cr);
+
+            if (op->data.image.alpha_spec)
+              {
+                cairo_pattern_t *pattern;
+
+                cairo_translate (cr, rx, ry);
+                cairo_scale (cr, rwidth, rheight);
+
+                pattern = meta_alpha_gradient_spec_get_mask (op->data.image.alpha_spec);
+                cairo_mask (cr, pattern);
+
+                cairo_pattern_destroy (pattern);
+              }
+            else
+              {
+                cairo_paint (cr);
+              }
 
             g_object_unref (G_OBJECT (pixbuf));
           }
@@ -793,7 +794,23 @@ draw_op_draw_with_env (const MetaDrawOp    *op,
             ry = meta_draw_spec_parse_y_position (op->data.icon.y, env);
 
             gdk_cairo_set_source_pixbuf (cr, pixbuf, rx, ry);
-            cairo_paint (cr);
+
+            if (op->data.icon.alpha_spec)
+              {
+                cairo_pattern_t *pattern;
+
+                cairo_translate (cr, rx, ry);
+                cairo_scale (cr, rwidth, rheight);
+
+                pattern = meta_alpha_gradient_spec_get_mask (op->data.icon.alpha_spec);
+                cairo_mask (cr, pattern);
+
+                cairo_pattern_destroy (pattern);
+              }
+            else
+              {
+                cairo_paint (cr);
+              }
 
             g_object_unref (G_OBJECT (pixbuf));
           }

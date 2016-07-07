@@ -21,12 +21,26 @@
 
 #include <gtk/gtk.h>
 
-#include "meta-gradient-private.h"
-
 G_BEGIN_DECLS
 
 typedef struct _MetaAlphaGradientSpec MetaAlphaGradientSpec;
 typedef struct _MetaGradientSpec MetaGradientSpec;
+
+/**
+ * MetaGradientType:
+ * @META_GRADIENT_VERTICAL: Vertical gradient
+ * @META_GRADIENT_HORIZONTAL: Horizontal gradient
+ * @META_GRADIENT_DIAGONAL: Diagonal gradient
+ * @META_GRADIENT_LAST: Marks the end of the #MetaGradientType enumeration
+ *
+ */
+typedef enum
+{
+  META_GRADIENT_VERTICAL,
+  META_GRADIENT_HORIZONTAL,
+  META_GRADIENT_DIAGONAL,
+  META_GRADIENT_LAST
+} MetaGradientType;
 
 G_GNUC_INTERNAL
 MetaGradientSpec      *meta_gradient_spec_new               (MetaGradientType         type);
@@ -69,11 +83,6 @@ guchar                 meta_alpha_gradient_spec_get_alpha   (MetaAlphaGradientSp
                                                              gint                     n_alpha);
 
 G_GNUC_INTERNAL
-GdkPixbuf             *meta_alpha_gradient_spec_apply_alpha (MetaAlphaGradientSpec   *spec,
-                                                             GdkPixbuf               *pixbuf,
-                                                             gboolean                 force_copy);
-
-G_GNUC_INTERNAL
 void                   meta_alpha_gradient_spec_render      (MetaAlphaGradientSpec   *spec,
                                                              GdkRGBA                  color,
                                                              cairo_t                 *cr,
@@ -81,6 +90,9 @@ void                   meta_alpha_gradient_spec_render      (MetaAlphaGradientSp
                                                              gint                     y,
                                                              gint                     width,
                                                              gint                     height);
+
+G_GNUC_INTERNAL
+cairo_pattern_t       *meta_alpha_gradient_spec_get_mask    (const MetaAlphaGradientSpec  *spec);
 
 G_END_DECLS
 

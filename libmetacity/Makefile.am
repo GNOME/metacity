@@ -26,8 +26,6 @@ libmetacity_la_SOURCES = \
 	meta-frame-layout-private.h \
 	meta-frame-style.c \
 	meta-frame-style-private.h \
-	meta-gradient.c \
-	meta-gradient-private.h \
 	meta-gradient-spec.c \
 	meta-gradient-spec-private.h \
 	meta-hsla.c \
