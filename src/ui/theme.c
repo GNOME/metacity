@@ -3762,16 +3762,7 @@ draw_op_as_pixbuf (const MetaDrawOp    *op,
       break;
 
     case META_DRAW_GRADIENT:
-      {
-        pixbuf = meta_gradient_spec_render (op->data.gradient.gradient_spec,
-                                            context, width, height);
-
-        pixbuf = apply_alpha (pixbuf,
-                              op->data.gradient.alpha_spec,
-                              FALSE);
-      }
       break;
-
 
     case META_DRAW_IMAGE:
       {
@@ -3897,6 +3888,85 @@ fill_env (MetaPositionExprEnv *env,
   env->title_width = info->title_layout_width;
   env->title_height = info->title_layout_height;
   env->theme = meta_current_theme;
+}
+
+static cairo_pattern_t *
+create_cairo_pattern_from_gradient_spec (const MetaGradientSpec      *spec,
+                                         const MetaAlphaGradientSpec *alpha_spec,
+                                         GtkStyleContext             *context)
+{
+  gint n_colors;
+  cairo_pattern_t *pattern;
+  GSList *tmp;
+  gint i;
+
+  n_colors = g_slist_length (spec->color_specs);
+  if (n_colors == 0)
+    return NULL;
+
+  if (alpha_spec != NULL)
+    g_assert (n_colors == alpha_spec->n_alphas);
+
+  if (spec->type == META_GRADIENT_HORIZONTAL)
+    pattern = cairo_pattern_create_linear (0, 0, 1, 0);
+  else if (spec->type == META_GRADIENT_VERTICAL)
+    pattern = cairo_pattern_create_linear (0, 0, 0, 1);
+  else if (spec->type == META_GRADIENT_DIAGONAL)
+    pattern = cairo_pattern_create_linear (0, 0, 1, 1);
+  else
+    g_assert_not_reached ();
+
+  i = 0;
+  tmp = spec->color_specs;
+  while (tmp != NULL)
+    {
+      GdkRGBA color;
+
+      meta_color_spec_render (tmp->data, context, &color);
+
+      if (alpha_spec != NULL)
+        cairo_pattern_add_color_stop_rgba (pattern, i / (gfloat) n_colors,
+                                           color.red, color.green, color.blue,
+                                           alpha_spec->alphas[i]);
+      else
+        cairo_pattern_add_color_stop_rgb (pattern, i / (gfloat) n_colors,
+                                          color.red, color.green, color.blue);
+
+      tmp = tmp->next;
+      ++i;
+    }
+
+  return pattern;
+}
+
+static void
+gradient_spec_render (const MetaGradientSpec      *spec,
+                      const MetaAlphaGradientSpec *alpha_spec,
+                      cairo_t                     *cr,
+                      GtkStyleContext             *context,
+                      gint                         x,
+                      gint                         y,
+                      gint                         width,
+                      gint                         height)
+{
+  cairo_pattern_t *pattern;
+
+  cairo_save (cr);
+
+  pattern = create_cairo_pattern_from_gradient_spec (spec, alpha_spec, context);
+  if (pattern == NULL)
+    return;
+
+  cairo_rectangle (cr, x, y, width, height);
+
+  cairo_translate (cr, x, y);
+  cairo_scale (cr, width, height);
+
+  cairo_set_source (cr, pattern);
+  cairo_fill (cr);
+  cairo_pattern_destroy (pattern);
+
+  cairo_restore (cr);
 }
 
 /* This code was originally rendering anti-aliased using X primitives, and
@@ -4117,23 +4187,15 @@ meta_draw_op_draw_with_env (const MetaDrawOp    *op,
     case META_DRAW_GRADIENT:
       {
         int rx, ry, rwidth, rheight;
-        GdkPixbuf *pixbuf;
 
         rx = parse_x_position_unchecked (op->data.gradient.x, env);
         ry = parse_y_position_unchecked (op->data.gradient.y, env);
         rwidth = parse_size_unchecked (op->data.gradient.width, env);
         rheight = parse_size_unchecked (op->data.gradient.height, env);
 
-        pixbuf = draw_op_as_pixbuf (op, style_gtk, info,
-                                    rwidth, rheight);
-
-        if (pixbuf)
-          {
-            gdk_cairo_set_source_pixbuf (cr, pixbuf, rx, ry);
-            cairo_paint (cr);
-
-            g_object_unref (G_OBJECT (pixbuf));
-          }
+        gradient_spec_render (op->data.gradient.gradient_spec,
+                              op->data.gradient.alpha_spec,
+                              cr, style_gtk, rx, ry, rwidth, rheight);
       }
       break;
 
