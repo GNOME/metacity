@@ -77,10 +77,13 @@ GdkPixbuf             *meta_alpha_gradient_spec_apply_alpha (MetaAlphaGradientSp
                                                              gboolean                 force_copy);
 
 G_GNUC_INTERNAL
-GdkPixbuf             *meta_alpha_gradient_spec_render      (MetaAlphaGradientSpec   *spec,
+void                   meta_alpha_gradient_spec_render      (MetaAlphaGradientSpec   *spec,
+                                                             GdkRGBA                  color,
+                                                             cairo_t                 *cr,
+                                                             gint                     x,
+                                                             gint                     y,
                                                              gint                     width,
-                                                             gint                     height,
-                                                             GdkRGBA                  color);
+                                                             gint                     height);
 
 G_END_DECLS
 

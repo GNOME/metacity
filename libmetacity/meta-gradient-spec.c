@@ -261,42 +261,57 @@ meta_alpha_gradient_spec_apply_alpha (MetaAlphaGradientSpec *spec,
   return pixbuf;
 }
 
-GdkPixbuf *
+void
 meta_alpha_gradient_spec_render (MetaAlphaGradientSpec *spec,
+                                 GdkRGBA                color,
+                                 cairo_t               *cr,
+                                 gint                   x,
+                                 gint                   y,
                                  gint                   width,
-                                 gint                   height,
-                                 GdkRGBA                color)
+                                 gint                   height)
 {
-  gboolean has_alpha;
-  GdkPixbuf *pixbuf;
-  guint32 rgba;
-
-  has_alpha = spec && (spec->n_alphas > 1 || spec->alphas[0] != 0xff);
-  pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, has_alpha, 8, width, height);
-
-  rgba = 0xff;
-  rgba |= (gint) (color.red * 255) << 24;
-  rgba |= (gint) (color.green * 255) << 16;
-  rgba |= (gint) (color.blue * 255) << 8;
-
-  if (!has_alpha)
+  if (!spec || spec->n_alphas == 1)
     {
-      gdk_pixbuf_fill (pixbuf, rgba);
-    }
-  else if (spec->n_alphas == 1)
-    {
-      rgba &= ~0xff;
-      rgba |= spec->alphas[0];
+      if (spec)
+        color.alpha = spec->alphas[0] / 255.0;
 
-      gdk_pixbuf_fill (pixbuf, rgba);
+      gdk_cairo_set_source_rgba (cr, &color);
+      cairo_rectangle (cr, x, y, width, height);
+      cairo_fill (cr);
     }
   else
     {
-      gdk_pixbuf_fill (pixbuf, rgba);
+      cairo_pattern_t *pattern;
+      gint n_alphas;
+      gint i;
 
-      meta_gradient_add_alpha (pixbuf, spec->alphas, spec->n_alphas,
-                               spec->type);
+      /* Hardcoded in meta-theme-metacity.c */
+      g_assert (spec->type == META_GRADIENT_HORIZONTAL);
+
+      pattern = cairo_pattern_create_linear (0, 0, 1, 0);
+      n_alphas = spec->n_alphas;
+
+      for (i = 0; i < n_alphas; i++)
+        cairo_pattern_add_color_stop_rgba (pattern, i / (gfloat) (n_alphas - 1),
+                                           color.red, color.green, color.blue,
+                                           spec->alphas[i] / 255.0);
+
+      if (cairo_pattern_status (pattern) != CAIRO_STATUS_SUCCESS)
+        {
+          cairo_pattern_destroy (pattern);
+          return;
+        }
+
+      cairo_save (cr);
+      cairo_rectangle (cr, x, y, width, height);
+
+      cairo_translate (cr, x, y);
+      cairo_scale (cr, width, height);
+
+      cairo_set_source (cr, pattern);
+      cairo_fill (cr);
+
+      cairo_pattern_destroy (pattern);
+      cairo_restore (cr);
     }
-
-  return pixbuf;
 }
