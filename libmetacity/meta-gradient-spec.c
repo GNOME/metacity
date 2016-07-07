@@ -74,15 +74,21 @@ create_cairo_pattern_from_gradient_spec (const MetaGradientSpec      *spec,
       meta_color_spec_render (tmp->data, context, &color);
 
       if (alpha_spec != NULL)
-        cairo_pattern_add_color_stop_rgba (pattern, i / (gfloat) n_colors,
+        cairo_pattern_add_color_stop_rgba (pattern, i / (gfloat) (n_colors - 1),
                                            color.red, color.green, color.blue,
-                                           alpha_spec->alphas[i]);
+                                           alpha_spec->alphas[i] / 255.0);
       else
-        cairo_pattern_add_color_stop_rgb (pattern, i / (gfloat) n_colors,
+        cairo_pattern_add_color_stop_rgb (pattern, i / (gfloat) (n_colors - 1),
                                           color.red, color.green, color.blue);
 
       tmp = tmp->next;
       ++i;
+    }
+
+  if (cairo_pattern_status (pattern) != CAIRO_STATUS_SUCCESS)
+    {
+      cairo_pattern_destroy (pattern);
+      return NULL;
     }
 
   return pattern;
