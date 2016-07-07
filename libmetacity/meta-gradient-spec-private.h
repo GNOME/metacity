@@ -39,10 +39,14 @@ void                   meta_gradient_spec_add_color_spec    (MetaGradientSpec   
                                                              MetaColorSpec           *color_spec);
 
 G_GNUC_INTERNAL
-GdkPixbuf             *meta_gradient_spec_render            (const MetaGradientSpec  *spec,
-                                                             GtkStyleContext         *context,
-                                                             gint                     width,
-                                                             gint                     height);
+void                   meta_gradient_spec_render            (const MetaGradientSpec       *spec,
+                                                             const MetaAlphaGradientSpec  *alpha_spec,
+                                                             cairo_t                      *cr,
+                                                             GtkStyleContext              *context,
+                                                             gint                          x,
+                                                             gint                          y,
+                                                             gint                          width,
+                                                             gint                          height);
 
 G_GNUC_INTERNAL
 gboolean               meta_gradient_spec_validate          (MetaGradientSpec        *spec,
