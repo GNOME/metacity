@@ -395,18 +395,6 @@ draw_op_as_pixbuf (const MetaDrawOp   *op,
 
   switch (op->type)
     {
-    case META_DRAW_TINT:
-      {
-        GdkRGBA color;
-
-        meta_color_spec_render (op->data.rectangle.color_spec,
-                                context, &color);
-
-        pixbuf = meta_alpha_gradient_spec_render (op->data.tint.alpha_spec,
-                                                  width, height, color);
-      }
-      break;
-
     case META_DRAW_IMAGE:
       {
 	if (op->data.image.colorize_spec)
@@ -469,6 +457,7 @@ draw_op_as_pixbuf (const MetaDrawOp   *op,
                                          FALSE, FALSE);
       break;
 
+    case META_DRAW_TINT:
     case META_DRAW_LINE:
     case META_DRAW_RECTANGLE:
     case META_DRAW_ARC:
@@ -667,37 +656,15 @@ draw_op_draw_with_env (const MetaDrawOp    *op,
     case META_DRAW_TINT:
       {
         int rx, ry, rwidth, rheight;
-        gboolean needs_alpha;
-
-        needs_alpha = meta_alpha_gradient_spec_needs_alpha (op->data.tint.alpha_spec);
 
         rx = meta_draw_spec_parse_x_position (op->data.tint.x, env);
         ry = meta_draw_spec_parse_y_position (op->data.tint.y, env);
         rwidth = meta_draw_spec_parse_size (op->data.tint.width, env);
         rheight = meta_draw_spec_parse_size (op->data.tint.height, env);
 
-        if (!needs_alpha)
-          {
-            meta_color_spec_render (op->data.tint.color_spec, context, &color);
-            gdk_cairo_set_source_rgba (cr, &color);
-
-            cairo_rectangle (cr, rx, ry, rwidth, rheight);
-            cairo_fill (cr);
-          }
-        else
-          {
-            GdkPixbuf *pixbuf;
-
-            pixbuf = draw_op_as_pixbuf (op, context, info, rwidth, rheight);
-
-            if (pixbuf)
-              {
-                gdk_cairo_set_source_pixbuf (cr, pixbuf, rx, ry);
-                cairo_paint (cr);
-
-                g_object_unref (G_OBJECT (pixbuf));
-              }
-          }
+        meta_color_spec_render (op->data.tint.color_spec, context, &color);
+        meta_alpha_gradient_spec_render (op->data.tint.alpha_spec, color, cr,
+                                         rx, ry, rwidth, rheight);
       }
       break;
 
