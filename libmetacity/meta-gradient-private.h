@@ -41,28 +41,6 @@ typedef enum
 } MetaGradientType;
 
 G_GNUC_INTERNAL
-GdkPixbuf *meta_gradient_create_simple     (int               width,
-                                            int               height,
-                                            const GdkRGBA    *from,
-                                            const GdkRGBA    *to,
-                                            MetaGradientType  style);
-
-G_GNUC_INTERNAL
-GdkPixbuf *meta_gradient_create_multi      (int               width,
-                                            int               height,
-                                            const GdkRGBA    *colors,
-                                            int               n_colors,
-                                            MetaGradientType  style);
-
-G_GNUC_INTERNAL
-GdkPixbuf *meta_gradient_create_interwoven (int               width,
-                                            int               height,
-                                            const GdkRGBA     colors1[2],
-                                            int               thickness1,
-                                            const GdkRGBA     colors2[2],
-                                            int               thickness2);
-
-G_GNUC_INTERNAL
 void       meta_gradient_add_alpha         (GdkPixbuf        *pixbuf,
                                             const guchar     *alphas,
                                             int               n_alphas,
