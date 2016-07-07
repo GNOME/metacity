@@ -138,11 +138,11 @@ meta_gradient_spec_render (const MetaGradientSpec      *spec,
 {
   cairo_pattern_t *pattern;
 
-  cairo_save (cr);
-
   pattern = create_cairo_pattern_from_gradient_spec (spec, alpha_spec, context);
   if (pattern == NULL)
     return;
+
+  cairo_save (cr);
 
   cairo_rectangle (cr, x, y, width, height);
 
