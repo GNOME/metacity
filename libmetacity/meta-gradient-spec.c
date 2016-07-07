@@ -220,12 +220,6 @@ meta_alpha_gradient_spec_get_alpha (MetaAlphaGradientSpec *spec,
   return spec->alphas[n_alpha];
 }
 
-gboolean
-meta_alpha_gradient_spec_needs_alpha (MetaAlphaGradientSpec *spec)
-{
-  return spec && (spec->n_alphas > 1 || spec->alphas[0] != 0xff);
-}
-
 GdkPixbuf *
 meta_alpha_gradient_spec_apply_alpha (MetaAlphaGradientSpec *spec,
                                       GdkPixbuf             *pixbuf,
@@ -236,7 +230,7 @@ meta_alpha_gradient_spec_apply_alpha (MetaAlphaGradientSpec *spec,
 
   g_return_val_if_fail (GDK_IS_PIXBUF (pixbuf), NULL);
 
-  needs_alpha = meta_alpha_gradient_spec_needs_alpha (spec);
+  needs_alpha = spec && (spec->n_alphas > 1 || spec->alphas[0] != 0xff);
 
   if (!needs_alpha)
     return pixbuf;
