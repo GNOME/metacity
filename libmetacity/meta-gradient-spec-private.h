@@ -69,9 +69,6 @@ guchar                 meta_alpha_gradient_spec_get_alpha   (MetaAlphaGradientSp
                                                              gint                     n_alpha);
 
 G_GNUC_INTERNAL
-gboolean               meta_alpha_gradient_spec_needs_alpha (MetaAlphaGradientSpec   *spec);
-
-G_GNUC_INTERNAL
 GdkPixbuf             *meta_alpha_gradient_spec_apply_alpha (MetaAlphaGradientSpec   *spec,
                                                              GdkPixbuf               *pixbuf,
                                                              gboolean                 force_copy);
