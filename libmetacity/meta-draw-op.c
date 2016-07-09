@@ -51,11 +51,11 @@ struct _MetaDrawOpList
 static void
 fill_env (MetaPositionExprEnv *env,
           const MetaDrawInfo  *info,
-          GdkRectangle         logical_region)
+          MetaRectangleDouble  rect)
 {
   /* FIXME this stuff could be raised into draw_op_list_draw() probably
    */
-  env->rect = logical_region;
+  env->rect = rect;
   env->object_width = -1;
   env->object_height = -1;
 
@@ -63,8 +63,8 @@ fill_env (MetaPositionExprEnv *env,
   env->right_width = info->right_width;
   env->top_height = info->top_height;
   env->bottom_height = info->bottom_height;
-  env->frame_x_center = info->width / 2 - logical_region.x;
-  env->frame_y_center = info->height / 2 - logical_region.y;
+  env->frame_x_center = info->width / 2 - rect.x;
+  env->frame_y_center = info->height / 2 - rect.y;
 
   env->mini_icon_width = info->mini_icon ? gdk_pixbuf_get_width (info->mini_icon) : 0;
   env->mini_icon_height = info->mini_icon ? gdk_pixbuf_get_height (info->mini_icon) : 0;
@@ -78,8 +78,8 @@ fill_env (MetaPositionExprEnv *env,
 static cairo_surface_t *
 scale_surface (GdkPixbuf         *src,
                MetaImageFillType  fill_type,
-               gint               width,
-               gint               height,
+               gdouble            width,
+               gdouble            height,
                gboolean           vertical_stripes,
                gboolean           horizontal_stripes)
 {
@@ -219,8 +219,8 @@ static cairo_surface_t *
 draw_op_as_surface (const MetaDrawOp   *op,
                     GtkStyleContext    *context,
                     const MetaDrawInfo *info,
-                    gint                width,
-                    gint                height)
+                    gdouble             width,
+                    gdouble             height)
 {
   cairo_surface_t *surface;
 
@@ -319,7 +319,6 @@ draw_op_draw_with_env (const MetaDrawOp    *op,
                        GtkStyleContext     *context,
                        cairo_t             *cr,
                        const MetaDrawInfo  *info,
-                       GdkRectangle         rect,
                        MetaPositionExprEnv *env)
 {
   GdkRGBA color;
@@ -332,7 +331,7 @@ draw_op_draw_with_env (const MetaDrawOp    *op,
     {
     case META_DRAW_LINE:
       {
-        int x1, x2, y1, y2;
+        gdouble x1, x2, y1, y2;
 
         meta_color_spec_render (op->data.line.color_spec, context, &color);
         gdk_cairo_set_source_rgba (cr, &color);
@@ -352,9 +351,8 @@ draw_op_draw_with_env (const MetaDrawOp    *op,
         x1 = meta_draw_spec_parse_x_position (op->data.line.x1, env);
         y1 = meta_draw_spec_parse_y_position (op->data.line.y1, env);
 
-        if (!op->data.line.x2 &&
-            !op->data.line.y2 &&
-            op->data.line.width==0)
+        if (!op->data.line.x2 && !op->data.line.y2 &&
+            op->data.line.width == 0)
           {
             cairo_rectangle (cr, x1, y1, 1, 1);
             cairo_fill (cr);
@@ -407,7 +405,7 @@ draw_op_draw_with_env (const MetaDrawOp    *op,
 
     case META_DRAW_RECTANGLE:
       {
-        int rx, ry, rwidth, rheight;
+        gdouble rx, ry, rwidth, rheight;
 
         meta_color_spec_render (op->data.rectangle.color_spec, context, &color);
         gdk_cairo_set_source_rgba (cr, &color);
@@ -435,7 +433,7 @@ draw_op_draw_with_env (const MetaDrawOp    *op,
 
     case META_DRAW_ARC:
       {
-        int rx, ry, rwidth, rheight;
+        gdouble rx, ry, rwidth, rheight;
         double start_angle, end_angle;
         double center_x, center_y;
 
@@ -480,7 +478,7 @@ draw_op_draw_with_env (const MetaDrawOp    *op,
 
     case META_DRAW_TINT:
       {
-        int rx, ry, rwidth, rheight;
+        gdouble rx, ry, rwidth, rheight;
 
         rx = meta_draw_spec_parse_x_position (op->data.tint.x, env);
         ry = meta_draw_spec_parse_y_position (op->data.tint.y, env);
@@ -495,7 +493,7 @@ draw_op_draw_with_env (const MetaDrawOp    *op,
 
     case META_DRAW_GRADIENT:
       {
-        int rx, ry, rwidth, rheight;
+        gdouble rx, ry, rwidth, rheight;
 
         rx = meta_draw_spec_parse_x_position (op->data.gradient.x, env);
         ry = meta_draw_spec_parse_y_position (op->data.gradient.y, env);
@@ -510,7 +508,7 @@ draw_op_draw_with_env (const MetaDrawOp    *op,
 
     case META_DRAW_IMAGE:
       {
-        int rx, ry, rwidth, rheight;
+        gdouble rx, ry, rwidth, rheight;
         cairo_surface_t *surface;
 
         if (op->data.image.pixbuf)
@@ -555,7 +553,7 @@ draw_op_draw_with_env (const MetaDrawOp    *op,
 
     case META_DRAW_GTK_ARROW:
       {
-        int rx, ry, rwidth, rheight;
+        gdouble rx, ry, rwidth, rheight;
         double angle = 0, size;
 
         rx = meta_draw_spec_parse_x_position (op->data.gtk_arrow.x, env);
@@ -592,7 +590,7 @@ draw_op_draw_with_env (const MetaDrawOp    *op,
 
     case META_DRAW_GTK_BOX:
       {
-        int rx, ry, rwidth, rheight;
+        gdouble rx, ry, rwidth, rheight;
 
         rx = meta_draw_spec_parse_x_position (op->data.gtk_box.x, env);
         ry = meta_draw_spec_parse_y_position (op->data.gtk_box.y, env);
@@ -607,7 +605,7 @@ draw_op_draw_with_env (const MetaDrawOp    *op,
 
     case META_DRAW_GTK_VLINE:
       {
-        int rx, ry1, ry2;
+        gdouble rx, ry1, ry2;
 
         rx = meta_draw_spec_parse_x_position (op->data.gtk_vline.x, env);
         ry1 = meta_draw_spec_parse_y_position (op->data.gtk_vline.y1, env);
@@ -620,7 +618,7 @@ draw_op_draw_with_env (const MetaDrawOp    *op,
 
     case META_DRAW_ICON:
       {
-        int rx, ry, rwidth, rheight;
+        gdouble rx, ry, rwidth, rheight;
         cairo_surface_t *surface;
 
         rwidth = meta_draw_spec_parse_size (op->data.icon.width, env);
@@ -660,7 +658,7 @@ draw_op_draw_with_env (const MetaDrawOp    *op,
     case META_DRAW_TITLE:
       if (info->title_layout)
         {
-          int rx, ry;
+          gdouble rx, ry;
           PangoRectangle ink_rect, logical_rect;
 
           meta_color_spec_render (op->data.title.color_spec, context, &color);
@@ -671,7 +669,7 @@ draw_op_draw_with_env (const MetaDrawOp    *op,
 
           if (op->data.title.ellipsize_width)
             {
-              int ellipsize_width;
+              gdouble ellipsize_width;
               int right_bearing;
 
               ellipsize_width = meta_draw_spec_parse_x_position (op->data.title.ellipsize_width, env);
@@ -739,7 +737,7 @@ draw_op_draw_with_env (const MetaDrawOp    *op,
 
     case META_DRAW_OP_LIST:
       {
-        GdkRectangle d_rect;
+        MetaRectangleDouble d_rect;
 
         d_rect.x = meta_draw_spec_parse_x_position (op->data.op_list.x, env);
         d_rect.y = meta_draw_spec_parse_y_position (op->data.op_list.y, env);
@@ -753,9 +751,9 @@ draw_op_draw_with_env (const MetaDrawOp    *op,
 
     case META_DRAW_TILE:
       {
-        int rx, ry, rwidth, rheight;
-        int tile_xoffset, tile_yoffset;
-        GdkRectangle tile;
+        gdouble rx, ry, rwidth, rheight;
+        gdouble tile_xoffset, tile_yoffset;
+        MetaRectangleDouble tile;
 
         rx = meta_draw_spec_parse_x_position (op->data.tile.x, env);
         ry = meta_draw_spec_parse_y_position (op->data.tile.y, env);
@@ -770,8 +768,8 @@ draw_op_draw_with_env (const MetaDrawOp    *op,
         tile_xoffset = meta_draw_spec_parse_x_position (op->data.tile.tile_xoffset, env);
         tile_yoffset = meta_draw_spec_parse_y_position (op->data.tile.tile_yoffset, env);
         /* tile offset should not include x/y */
-        tile_xoffset -= rect.x;
-        tile_yoffset -= rect.y;
+        tile_xoffset -= env->rect.x;
+        tile_yoffset -= env->rect.y;
 
         tile.width = meta_draw_spec_parse_size (op->data.tile.tile_width, env);
         tile.height = meta_draw_spec_parse_size (op->data.tile.tile_height, env);
@@ -1089,7 +1087,7 @@ meta_draw_op_list_draw_with_style (const MetaDrawOpList *op_list,
                                    GtkStyleContext      *context,
                                    cairo_t              *cr,
                                    const MetaDrawInfo   *info,
-                                   GdkRectangle          rect)
+                                   MetaRectangleDouble   rect)
 {
   int i;
   MetaPositionExprEnv env;
@@ -1117,7 +1115,7 @@ meta_draw_op_list_draw_with_style (const MetaDrawOpList *op_list,
         }
       else if (gdk_cairo_get_clip_rectangle (cr, NULL))
         {
-          draw_op_draw_with_env (op, context, cr, info, rect, &env);
+          draw_op_draw_with_env (op, context, cr, info, &env);
         }
     }
 

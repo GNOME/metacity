@@ -136,10 +136,10 @@ meta_gradient_spec_render (const MetaGradientSpec      *spec,
                            const MetaAlphaGradientSpec *alpha_spec,
                            cairo_t                     *cr,
                            GtkStyleContext             *context,
-                           gint                         x,
-                           gint                         y,
-                           gint                         width,
-                           gint                         height)
+                           gdouble                      x,
+                           gdouble                      y,
+                           gdouble                      width,
+                           gdouble                      height)
 {
   cairo_pattern_t *pattern;
 
@@ -223,10 +223,10 @@ void
 meta_alpha_gradient_spec_render (MetaAlphaGradientSpec *spec,
                                  GdkRGBA                color,
                                  cairo_t               *cr,
-                                 gint                   x,
-                                 gint                   y,
-                                 gint                   width,
-                                 gint                   height)
+                                 gdouble                x,
+                                 gdouble                y,
+                                 gdouble                width,
+                                 gdouble                height)
 {
   if (!spec || spec->n_alphas == 1)
     {

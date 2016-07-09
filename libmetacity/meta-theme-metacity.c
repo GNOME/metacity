@@ -5218,14 +5218,14 @@ meta_theme_metacity_calc_geometry (MetaThemeImpl          *impl,
 
 static void
 clip_to_rounded_corners (cairo_t                 *cr,
-                         GdkRectangle             rect,
+                         MetaRectangleDouble      rect,
                          const MetaFrameGeometry *fgeom,
                          gint                     scale)
 {
-  gint x;
-  gint y;
-  gint width;
-  gint height;
+  gdouble x;
+  gdouble y;
+  gdouble width;
+  gdouble height;
   gint radius;
 
   x = rect.x;
@@ -5299,15 +5299,17 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
                                 GdkPixbuf               *mini_icon,
                                 GdkPixbuf               *icon)
 {
-  int scale;
+  gdouble scale;
   int i, j;
-  GdkRectangle visible_rect;
-  GdkRectangle titlebar_rect;
-  GdkRectangle left_titlebar_edge;
-  GdkRectangle right_titlebar_edge;
-  GdkRectangle bottom_titlebar_edge;
-  GdkRectangle top_titlebar_edge;
-  GdkRectangle left_edge, right_edge, bottom_edge;
+  MetaRectangleDouble visible_rect;
+  MetaRectangleDouble titlebar_rect;
+  MetaRectangleDouble left_titlebar_edge;
+  MetaRectangleDouble right_titlebar_edge;
+  MetaRectangleDouble bottom_titlebar_edge;
+  MetaRectangleDouble top_titlebar_edge;
+  MetaRectangleDouble left_edge;
+  MetaRectangleDouble right_edge;
+  MetaRectangleDouble bottom_edge;
   PangoRectangle extents;
   MetaDrawInfo draw_info;
   const MetaFrameBorders *borders;
@@ -5415,7 +5417,7 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
   i = 0;
   while (i < META_FRAME_PIECE_LAST)
     {
-      GdkRectangle rect;
+      MetaRectangleDouble rect;
 
       switch ((MetaFramePiece) i)
         {
@@ -5451,12 +5453,10 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
           break;
 
         case META_FRAME_PIECE_TITLE:
-          rect = fgeom->title_rect;
-
-          rect.x /= scale;
-          rect.y /= scale;
-          rect.width /= scale;
-          rect.height /= scale;
+          rect.x = fgeom->title_rect.x / scale;
+          rect.y = fgeom->title_rect.y / scale;
+          rect.width = fgeom->title_rect.width / scale;
+          rect.height = fgeom->title_rect.height / scale;
           break;
 
         case META_FRAME_PIECE_LEFT_EDGE:
@@ -5483,7 +5483,7 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
 
       cairo_save (cr);
 
-      gdk_cairo_rectangle (cr, &rect);
+      cairo_rectangle (cr, rect.x, rect.y, rect.width, rect.height);
       cairo_clip (cr);
 
       if (gdk_cairo_get_clip_rectangle (cr, NULL))
@@ -5518,14 +5518,15 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
           j = 0;
           while (j < META_BUTTON_TYPE_LAST)
             {
+              GdkRectangle tmp_rect;
               MetaButtonState button_state;
 
-              get_button_rect (j, fgeom, middle_bg_offset, &rect);
+              get_button_rect (j, fgeom, middle_bg_offset, &tmp_rect);
 
-              rect.x /= scale;
-              rect.y /= scale;
-              rect.width /= scale;
-              rect.height /= scale;
+              rect.x = tmp_rect.x / scale;
+              rect.y = tmp_rect.y / scale;
+              rect.width = tmp_rect.width / scale;
+              rect.height = tmp_rect.height / scale;
 
               button_state = map_button_state (j, fgeom, middle_bg_offset, button_states);
               op_list = meta_frame_style_get_button (style, j, button_state);
@@ -5533,7 +5534,8 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
               if (op_list)
                 {
                   cairo_save (cr);
-                  gdk_cairo_rectangle (cr, &rect);
+
+                  cairo_rectangle (cr, rect.x, rect.y, rect.width, rect.height);
                   cairo_clip (cr);
 
                   if (gdk_cairo_get_clip_rectangle (cr, NULL))
@@ -5541,6 +5543,7 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
                       meta_draw_op_list_draw_with_style (op_list, context, cr,
                                                          &draw_info, rect);
                     }
+
                   cairo_restore (cr);
                 }
 

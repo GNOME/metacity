@@ -94,7 +94,7 @@ struct _MetaDrawSpec
    * If this spec is constant, this is the value of the constant;
    * otherwise it is zero.
    */
-  int value;
+  gdouble value;
 
   /** A list of tokens in the expression. */
   PosToken *tokens;
@@ -505,7 +505,7 @@ replace_constants (MetaThemeMetacity  *metacity,
  */
 static gboolean
 pos_eval_get_variable (const PosToken             *token,
-                       int                        *result,
+                       gdouble                    *result,
                        const MetaPositionExprEnv  *env,
                        GError                    **err)
 {
@@ -957,13 +957,13 @@ pos_eval_helper (PosToken                   *tokens,
               return FALSE;
 
             case POS_TOKEN_VARIABLE:
-              exprs[n_exprs].type = POS_EXPR_INT;
+              exprs[n_exprs].type = POS_EXPR_DOUBLE;
 
               /* FIXME we should just dump all this crap
                * in a hash, maybe keep width/height out
                * for optimization purposes
                */
-              if (!pos_eval_get_variable (t, &exprs[n_exprs].d.int_val, env, err))
+              if (!pos_eval_get_variable (t, &exprs[n_exprs].d.double_val, env, err))
                 return FALSE;
 
               ++n_exprs;
@@ -1076,7 +1076,7 @@ pos_eval_helper (PosToken                   *tokens,
 static gboolean
 pos_eval (MetaDrawSpec              *spec,
           const MetaPositionExprEnv *env,
-          int                       *val_p,
+          gdouble                   *val_p,
           GError                   **err)
 {
   PosExpr expr;
@@ -1112,8 +1112,8 @@ pos_eval (MetaDrawSpec              *spec,
 static gboolean
 parse_position_expression (MetaDrawSpec               *spec,
                            const MetaPositionExprEnv  *env,
-                           int                        *x_return,
-                           int                        *y_return,
+                           gdouble                    *x_return,
+                           gdouble                    *y_return,
                            GError                    **err)
 {
   /* All positions are in a coordinate system with x, y at the origin.
@@ -1122,7 +1122,7 @@ parse_position_expression (MetaDrawSpec               *spec,
    * optionally "object_width" and object_height". Negative numbers
    * aren't allowed.
    */
-  int val;
+  gdouble val;
 
   if (spec->constant)
     val = spec->value;
@@ -1148,10 +1148,10 @@ parse_position_expression (MetaDrawSpec               *spec,
 static gboolean
 parse_size_expression (MetaDrawSpec               *spec,
                        const MetaPositionExprEnv  *env,
-                       int                        *val_return,
+                       gdouble                    *val_return,
                        GError                    **err)
 {
-  int val;
+  gdouble val;
 
   if (spec->constant)
     val = spec->value;
@@ -1212,11 +1212,11 @@ meta_draw_spec_free (MetaDrawSpec *spec)
   g_slice_free (MetaDrawSpec, spec);
 }
 
-gint
+gdouble
 meta_draw_spec_parse_x_position (MetaDrawSpec              *spec,
                                  const MetaPositionExprEnv *env)
 {
-  int retval;
+  gdouble retval;
   GError *error;
 
   retval = 0;
@@ -1232,11 +1232,11 @@ meta_draw_spec_parse_x_position (MetaDrawSpec              *spec,
   return retval;
 }
 
-gint
+gdouble
 meta_draw_spec_parse_y_position (MetaDrawSpec              *spec,
                                  const MetaPositionExprEnv *env)
 {
-  int retval;
+  gdouble retval;
   GError *error;
 
   retval = 0;
@@ -1252,11 +1252,11 @@ meta_draw_spec_parse_y_position (MetaDrawSpec              *spec,
   return retval;
 }
 
-gint
+gdouble
 meta_draw_spec_parse_size (MetaDrawSpec              *spec,
                            const MetaPositionExprEnv *env)
 {
-  int retval;
+  gdouble retval;
   GError *error;
 
   retval = 0;

@@ -15,6 +15,7 @@ libmetacity_la_SOURCES = \
 	meta-color-spec-private.h \
 	meta-css-provider.c \
 	meta-css-provider-private.h \
+	meta-rectangle-private.h \
 	meta-draw-op.c \
 	meta-draw-op-private.h \
 	meta-draw-spec.c \

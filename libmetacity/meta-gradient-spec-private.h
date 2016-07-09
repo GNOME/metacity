@@ -57,10 +57,10 @@ void                   meta_gradient_spec_render            (const MetaGradientS
                                                              const MetaAlphaGradientSpec  *alpha_spec,
                                                              cairo_t                      *cr,
                                                              GtkStyleContext              *context,
-                                                             gint                          x,
-                                                             gint                          y,
-                                                             gint                          width,
-                                                             gint                          height);
+                                                             gdouble                       x,
+                                                             gdouble                       y,
+                                                             gdouble                       width,
+                                                             gdouble                       height);
 
 G_GNUC_INTERNAL
 gboolean               meta_gradient_spec_validate          (MetaGradientSpec        *spec,
@@ -86,10 +86,10 @@ G_GNUC_INTERNAL
 void                   meta_alpha_gradient_spec_render      (MetaAlphaGradientSpec   *spec,
                                                              GdkRGBA                  color,
                                                              cairo_t                 *cr,
-                                                             gint                     x,
-                                                             gint                     y,
-                                                             gint                     width,
-                                                             gint                     height);
+                                                             gdouble                  x,
+                                                             gdouble                  y,
+                                                             gdouble                  width,
+                                                             gdouble                  height);
 
 G_GNUC_INTERNAL
 cairo_pattern_t       *meta_alpha_gradient_spec_get_mask    (const MetaAlphaGradientSpec  *spec);
