@@ -21,6 +21,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "meta-rectangle-private.h"
 #include "meta-frame-layout-private.h"
 #include "meta-frame-style-private.h"
 #include "meta-theme-gtk-private.h"
@@ -744,13 +745,12 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
                            GdkPixbuf               *mini_icon,
                            GdkPixbuf               *icon)
 {
-  int scale;
+  gdouble scale;
   GtkStyleContext *context;
   GtkStateFlags state;
   MetaButtonType button_type;
-  GdkRectangle visible_rect;
-  GdkRectangle titlebar_rect;
-  GdkRectangle button_rect;
+  MetaRectangleDouble visible_rect;
+  MetaRectangleDouble titlebar_rect;
   const MetaFrameBorders *borders;
 
   /* We opt out of GTK+ HiDPI handling, so we have to do the scaling
@@ -803,7 +803,7 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
   if (style->layout->has_title && title_layout)
     {
       PangoRectangle logical;
-      int text_width, x, y;
+      gdouble text_width, x, y;
 
       pango_layout_set_width (title_layout, -1);
       pango_layout_get_pixel_extents (title_layout, NULL, &logical);
@@ -832,18 +832,13 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
     {
       MetaButtonState button_state;
       const char *button_class;
+      GdkRectangle tmp_rect;
+      MetaRectangleDouble button_rect;
 
       button_class = get_class_from_button_type (button_type);
 
       if (button_class)
         gtk_style_context_add_class (context, button_class);
-
-      get_button_rect (button_type, fgeom, 0, &button_rect);
-
-      button_rect.x /= scale;
-      button_rect.y /= scale;
-      button_rect.width /= scale;
-      button_rect.height /= scale;
 
       button_state = map_button_state (button_type, fgeom, 0, button_states);
 
@@ -855,6 +850,13 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
         gtk_style_context_set_state (context, state);
 
       cairo_save (cr);
+
+      get_button_rect (button_type, fgeom, 0, &tmp_rect);
+
+      button_rect.x = tmp_rect.x / scale;
+      button_rect.y = tmp_rect.y / scale;
+      button_rect.width = tmp_rect.width / scale;
+      button_rect.height = tmp_rect.height / scale;
 
       if (button_rect.width > 0 && button_rect.height > 0)
         {
@@ -923,7 +925,7 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
           if (pixbuf)
             {
               float width, height;
-              int x, y;
+              gdouble x, y;
 
               width = gdk_pixbuf_get_width (pixbuf) / scale;
               height = gdk_pixbuf_get_height (pixbuf) / scale;

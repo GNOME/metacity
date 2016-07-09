@@ -21,6 +21,8 @@
 
 #include <gdk/gdk.h>
 
+#include "meta-rectangle-private.h"
+
 G_BEGIN_DECLS
 
 typedef struct _MetaDrawSpec MetaDrawSpec;
@@ -29,23 +31,25 @@ typedef struct _MetaPositionExprEnv MetaPositionExprEnv;
 
 struct _MetaPositionExprEnv
 {
-  GdkRectangle rect;
+  MetaRectangleDouble rect;
+
   /* size of an object being drawn, if it has a natural size */
-  int object_width;
-  int object_height;
+  gdouble             object_width;
+  gdouble             object_height;
+
   /* global object sizes, always available */
-  int left_width;
-  int right_width;
-  int top_height;
-  int bottom_height;
-  int title_width;
-  int title_height;
-  int frame_x_center;
-  int frame_y_center;
-  int mini_icon_width;
-  int mini_icon_height;
-  int icon_width;
-  int icon_height;
+  gdouble             left_width;
+  gdouble             right_width;
+  gdouble             top_height;
+  gdouble             bottom_height;
+  gdouble             title_width;
+  gdouble             title_height;
+  gdouble             frame_x_center;
+  gdouble             frame_y_center;
+  gdouble             mini_icon_width;
+  gdouble             mini_icon_height;
+  gdouble             icon_width;
+  gdouble             icon_height;
 };
 
 G_GNUC_INTERNAL
@@ -57,15 +61,15 @@ G_GNUC_INTERNAL
 void          meta_draw_spec_free             (MetaDrawSpec               *spec);
 
 G_GNUC_INTERNAL
-gint          meta_draw_spec_parse_x_position (MetaDrawSpec               *spec,
+gdouble       meta_draw_spec_parse_x_position (MetaDrawSpec               *spec,
                                                const MetaPositionExprEnv  *env);
 
 G_GNUC_INTERNAL
-gint          meta_draw_spec_parse_y_position (MetaDrawSpec               *spec,
+gdouble       meta_draw_spec_parse_y_position (MetaDrawSpec               *spec,
                                                const MetaPositionExprEnv  *env);
 
 G_GNUC_INTERNAL
-gint          meta_draw_spec_parse_size       (MetaDrawSpec               *spec,
+gdouble       meta_draw_spec_parse_size       (MetaDrawSpec               *spec,
                                                const MetaPositionExprEnv  *env);
 
 G_END_DECLS

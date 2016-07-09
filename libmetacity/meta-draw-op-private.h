@@ -88,8 +88,8 @@ struct _MetaDrawInfo
   gint              top_height;
   gint              bottom_height;
 
-  gint              width;
-  gint              height;
+  gdouble      width;
+  gdouble      height;
 };
 
 /**
@@ -261,7 +261,7 @@ void            meta_draw_op_list_draw_with_style (const MetaDrawOpList  *op_lis
                                                    GtkStyleContext       *context,
                                                    cairo_t               *cr,
                                                    const MetaDrawInfo    *info,
-                                                   GdkRectangle           rect);
+                                                   MetaRectangleDouble    rect);
 
 G_GNUC_INTERNAL
 void            meta_draw_op_list_append          (MetaDrawOpList        *op_list,
