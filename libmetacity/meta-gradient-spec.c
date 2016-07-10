@@ -220,41 +220,6 @@ meta_alpha_gradient_spec_get_alpha (MetaAlphaGradientSpec *spec,
   return spec->alphas[n_alpha];
 }
 
-GdkPixbuf *
-meta_alpha_gradient_spec_apply_alpha (MetaAlphaGradientSpec *spec,
-                                      GdkPixbuf             *pixbuf,
-                                      gboolean               force_copy)
-{
-  GdkPixbuf *new_pixbuf;
-  gboolean needs_alpha;
-
-  g_return_val_if_fail (GDK_IS_PIXBUF (pixbuf), NULL);
-
-  needs_alpha = spec && (spec->n_alphas > 1 || spec->alphas[0] != 0xff);
-
-  if (!needs_alpha)
-    return pixbuf;
-
-  if (!gdk_pixbuf_get_has_alpha (pixbuf))
-    {
-      new_pixbuf = gdk_pixbuf_add_alpha (pixbuf, FALSE, 0, 0, 0);
-      g_object_unref (G_OBJECT (pixbuf));
-      pixbuf = new_pixbuf;
-    }
-  else if (force_copy)
-    {
-      new_pixbuf = gdk_pixbuf_copy (pixbuf);
-      g_object_unref (G_OBJECT (pixbuf));
-      pixbuf = new_pixbuf;
-    }
-
-  g_assert (gdk_pixbuf_get_has_alpha (pixbuf));
-
-  meta_gradient_add_alpha (pixbuf, spec->alphas, spec->n_alphas, spec->type);
-
-  return pixbuf;
-}
-
 void
 meta_alpha_gradient_spec_render (MetaAlphaGradientSpec *spec,
                                  GdkRGBA                color,
@@ -308,4 +273,36 @@ meta_alpha_gradient_spec_render (MetaAlphaGradientSpec *spec,
       cairo_pattern_destroy (pattern);
       cairo_restore (cr);
     }
+}
+
+cairo_pattern_t *
+meta_alpha_gradient_spec_get_mask (const MetaAlphaGradientSpec *spec)
+{
+  gint n_alphas;
+  cairo_pattern_t *pattern;
+  gint i;
+
+  /* Hardcoded in meta-theme-metacity.c */
+  g_assert (spec->type == META_GRADIENT_HORIZONTAL);
+
+  n_alphas = spec->n_alphas;
+  if (n_alphas == 0)
+    return NULL;
+
+  if (n_alphas == 1)
+    return cairo_pattern_create_rgba (0, 0, 0, spec->alphas[0] / 255.0);
+
+  pattern = cairo_pattern_create_linear (0, 0, 1, 0);
+
+  for (i = 0; i < n_alphas; i++)
+    cairo_pattern_add_color_stop_rgba (pattern, i / (gfloat) (n_alphas - 1),
+                                       0, 0, 0, spec->alphas[i] / 255.0);
+
+  if (cairo_pattern_status (pattern) != CAIRO_STATUS_SUCCESS)
+    {
+      cairo_pattern_destroy (pattern);
+      return NULL;
+    }
+
+  return pattern;
 }

@@ -69,11 +69,6 @@ guchar                 meta_alpha_gradient_spec_get_alpha   (MetaAlphaGradientSp
                                                              gint                     n_alpha);
 
 G_GNUC_INTERNAL
-GdkPixbuf             *meta_alpha_gradient_spec_apply_alpha (MetaAlphaGradientSpec   *spec,
-                                                             GdkPixbuf               *pixbuf,
-                                                             gboolean                 force_copy);
-
-G_GNUC_INTERNAL
 void                   meta_alpha_gradient_spec_render      (MetaAlphaGradientSpec   *spec,
                                                              GdkRGBA                  color,
                                                              cairo_t                 *cr,
@@ -81,6 +76,9 @@ void                   meta_alpha_gradient_spec_render      (MetaAlphaGradientSp
                                                              gint                     y,
                                                              gint                     width,
                                                              gint                     height);
+
+G_GNUC_INTERNAL
+cairo_pattern_t       *meta_alpha_gradient_spec_get_mask    (const MetaAlphaGradientSpec  *spec);
 
 G_END_DECLS
 
