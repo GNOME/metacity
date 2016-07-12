@@ -1,3 +1,9 @@
+Version 3.18.6
+==============
+- Fix window resizing using titlebar (Alberts Muktupāvels; LP:#1596574)
+- Small HiDPI support improvements (Alberts Muktupāvels, Giovanni Campagna)
+- Fix crash when removing secondary monitor (Alberts Muktupāvels; #766156)
+
 Version 3.18.5
 ==============
 - Fix _NET_WM_ICON in Alt-Tab switcher (Jasper St. Pierre, Owen W. Taylor;
