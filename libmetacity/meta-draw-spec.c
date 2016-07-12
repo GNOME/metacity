@@ -19,6 +19,7 @@
 #include "config.h"
 
 #include <glib/gi18n-lib.h>
+#include <math.h>
 #include <stdlib.h>
 
 #include "meta-draw-spec-private.h"
@@ -678,10 +679,14 @@ do_operation (PosExpr *a,
           a->d.double_val = a->d.double_val / b->d.double_val;
           break;
         case POS_OP_MOD:
-          g_set_error (err, META_THEME_ERROR,
-                       META_THEME_ERROR_MOD_ON_FLOAT,
-                       _("Coordinate expression tries to use mod operator on a floating-point number"));
-          return FALSE;
+          if (b->d.double_val == 0.0)
+            {
+              g_set_error (err, META_THEME_ERROR,
+                           META_THEME_ERROR_DIVIDE_BY_ZERO,
+                           _("Coordinate expression results in division by zero"));
+              return FALSE;
+            }
+          a->d.double_val = fmod (a->d.double_val, b->d.double_val);
         case POS_OP_ADD:
           a->d.double_val = a->d.double_val + b->d.double_val;
           break;
