@@ -1,3 +1,9 @@
+Version 3.20.2
+==============
+- Fix window resizing using titlebar (Alberts Muktupāvels; LP:#1596574)
+- Small HiDPI support improvements (Alberts Muktupāvels, Giovanni Campagna)
+- Fix crash when removing secondary monitor (Alberts Muktupāvels; #766156)
+
 Version 3.20.1.1
 ================
 - Don't paint windows that is not viewable (Alberts Muktupāvels; LP:#1592953)
