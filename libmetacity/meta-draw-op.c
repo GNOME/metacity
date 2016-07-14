@@ -83,8 +83,8 @@ scale_surface (GdkPixbuf         *src,
                gboolean           vertical_stripes,
                gboolean           horizontal_stripes)
 {
-  gfloat pixbuf_width;
-  gfloat pixbuf_height;
+  gdouble pixbuf_width;
+  gdouble pixbuf_height;
   cairo_surface_t *src_surface;
   cairo_surface_t *new_surface;
   cairo_t *cr;
@@ -93,26 +93,24 @@ scale_surface (GdkPixbuf         *src,
   pixbuf_height = gdk_pixbuf_get_height (src);
 
   src_surface = gdk_cairo_surface_create_from_pixbuf (src, 1, NULL);
-
-  if (pixbuf_width == width && pixbuf_height == height)
-    return src_surface;
-
   new_surface = cairo_surface_create_similar (src_surface,
                                               CAIRO_CONTENT_COLOR_ALPHA,
-                                              width, height);
+                                              ceil (width), ceil (height));
 
   cr = cairo_create (new_surface);
 
-  if (fill_type == META_IMAGE_FILL_TILE)
+  if ((pixbuf_width == width && pixbuf_height == height) ||
+      fill_type == META_IMAGE_FILL_TILE)
     {
       cairo_set_source_surface (cr, src_surface, 0, 0);
-      cairo_pattern_set_extend (cairo_get_source (cr), CAIRO_EXTEND_REPEAT);
-      cairo_paint (cr);
+
+      if (fill_type == META_IMAGE_FILL_TILE)
+        cairo_pattern_set_extend (cairo_get_source (cr), CAIRO_EXTEND_REPEAT);
     }
   else
     {
-      gfloat scale_x;
-      gfloat scale_y;
+      gdouble scale_x;
+      gdouble scale_y;
 
       scale_x = width / pixbuf_width;
       scale_y = height / pixbuf_height;
@@ -127,10 +125,9 @@ scale_surface (GdkPixbuf         *src,
 
       if (vertical_stripes || horizontal_stripes)
         cairo_pattern_set_extend (cairo_get_source (cr), CAIRO_EXTEND_REPEAT);
-
-      cairo_paint (cr);
     }
 
+  cairo_paint (cr);
   cairo_destroy (cr);
   cairo_surface_destroy (src_surface);
 
@@ -230,9 +227,9 @@ draw_op_as_surface (const MetaDrawOp   *op,
     {
     case META_DRAW_IMAGE:
       {
-	if (op->data.image.colorize_spec)
-	  {
-	    GdkRGBA color;
+        if (op->data.image.colorize_spec)
+          {
+            GdkRGBA color;
 
             meta_color_spec_render (op->data.image.colorize_spec,
                                     context, &color);
@@ -259,15 +256,15 @@ draw_op_as_surface (const MetaDrawOp   *op,
                                          op->data.image.vertical_stripes,
                                          op->data.image.horizontal_stripes);
               }
-	  }
-	else
-	  {
-	    surface = scale_surface (op->data.image.pixbuf,
-	                             op->data.image.fill_type,
-	                             width, height,
-	                             op->data.image.vertical_stripes,
-	                             op->data.image.horizontal_stripes);
-	  }
+          }
+        else
+          {
+            surface = scale_surface (op->data.image.pixbuf,
+                                     op->data.image.fill_type,
+                                     width, height,
+                                     op->data.image.vertical_stripes,
+                                     op->data.image.horizontal_stripes);
+          }
         break;
       }
 
@@ -508,8 +505,12 @@ draw_op_draw_with_env (const MetaDrawOp    *op,
 
     case META_DRAW_IMAGE:
       {
+        gdouble scale;
         gdouble rx, ry, rwidth, rheight;
         cairo_surface_t *surface;
+
+        scale = get_window_scaling_factor ();
+        cairo_scale (cr, 1.0 / scale, 1.0 / scale);
 
         if (op->data.image.pixbuf)
           {
@@ -517,15 +518,15 @@ draw_op_draw_with_env (const MetaDrawOp    *op,
             env->object_height = gdk_pixbuf_get_height (op->data.image.pixbuf);
           }
 
-        rwidth = meta_draw_spec_parse_size (op->data.image.width, env);
-        rheight = meta_draw_spec_parse_size (op->data.image.height, env);
+        rwidth = meta_draw_spec_parse_size (op->data.image.width, env) * scale;
+        rheight = meta_draw_spec_parse_size (op->data.image.height, env) * scale;
 
         surface = draw_op_as_surface (op, context, info, rwidth, rheight);
 
         if (surface)
           {
-            rx = meta_draw_spec_parse_x_position (op->data.image.x, env);
-            ry = meta_draw_spec_parse_y_position (op->data.image.y, env);
+            rx = meta_draw_spec_parse_x_position (op->data.image.x, env) * scale;
+            ry = meta_draw_spec_parse_y_position (op->data.image.y, env) * scale;
 
             cairo_set_source_surface (cr, surface, rx, ry);
 
