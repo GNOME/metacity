@@ -861,7 +861,8 @@ root_tile (MetaScreen *screen)
   Display *xdisplay = meta_display_get_xdisplay (display);
   Picture picture;
   Pixmap pixmap;
-  gboolean fill = FALSE;
+  gboolean free_pixmap;
+  gboolean fill;
   XRenderPictureAttributes pa;
   XRenderPictFormat *format;
   int p;
@@ -871,6 +872,9 @@ root_tile (MetaScreen *screen)
   Window xroot = meta_screen_get_xroot (screen);
 
   pixmap = None;
+  free_pixmap = FALSE;
+  fill = FALSE;
+
   background_atoms[0] = DISPLAY_COMPOSITOR (display)->atom_x_root_pixmap;
   background_atoms[1] = DISPLAY_COMPOSITOR (display)->atom_x_set_root;
 
@@ -894,7 +898,6 @@ root_tile (MetaScreen *screen)
             {
               memcpy (&pixmap, prop, 4);
               XFree (prop);
-              fill = FALSE;
               break;
             }
         }
@@ -926,6 +929,8 @@ root_tile (MetaScreen *screen)
           XSync (xdisplay, False);
 
           XFreeGC (xdisplay, gc);
+
+          free_pixmap = TRUE;
         }
     }
 
@@ -934,6 +939,8 @@ root_tile (MetaScreen *screen)
       pixmap = XCreatePixmap (xdisplay, xroot, 1, 1,
                               DefaultDepth (xdisplay, screen_number));
       g_return_val_if_fail (pixmap != None, None);
+
+      free_pixmap = TRUE;
       fill = TRUE;
     }
 
@@ -954,8 +961,10 @@ root_tile (MetaScreen *screen)
       c.alpha = 0xffff;
 
       XRenderFillRectangle (xdisplay, PictOpSrc, picture, &c, 0, 0, 1, 1);
-      XFreePixmap (xdisplay, pixmap);
     }
+
+  if (free_pixmap)
+    XFreePixmap (xdisplay, pixmap);
 
   return picture;
 }
