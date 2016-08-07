@@ -76,7 +76,56 @@ fill_env (MetaPositionExprEnv *env,
 }
 
 static cairo_surface_t *
-get_surface_from_pixbuf (GdkPixbuf         *src,
+scale_surface (cairo_surface_t *surface,
+               gdouble          old_width,
+               gdouble          old_height,
+               gdouble          new_width,
+               gdouble          new_height,
+               gboolean         vertical_stripes,
+               gboolean         horizontal_stripes)
+{
+  gdouble scale_x;
+  gdouble scale_y;
+  cairo_content_t content;
+  gint width;
+  gint height;
+  cairo_surface_t *scaled;
+  cairo_t *cr;
+
+  scale_x = new_width / old_width;
+  scale_y = new_height / old_height;
+
+  if (horizontal_stripes && !vertical_stripes)
+    {
+      new_width = old_width;
+      scale_x = 1.0;
+    }
+  else if (vertical_stripes && !horizontal_stripes)
+    {
+      new_height = old_height;
+      scale_y = 1.0;
+    }
+
+  content = CAIRO_CONTENT_COLOR_ALPHA;
+  width = ceil (new_width);
+  height = ceil (new_height);
+
+  scaled = cairo_surface_create_similar (surface, content, width, height);
+  cr = cairo_create (scaled);
+
+  cairo_scale (cr, scale_x, scale_y);
+  cairo_set_source_surface (cr, surface, 0, 0);
+
+  cairo_pattern_set_extend (cairo_get_source (cr), CAIRO_EXTEND_PAD);
+
+  cairo_paint (cr);
+  cairo_destroy (cr);
+
+  return scaled;
+}
+
+static cairo_surface_t *
+get_surface_from_pixbuf (GdkPixbuf         *pixbuf,
                          MetaImageFillType  fill_type,
                          gdouble            width,
                          gdouble            height,
@@ -85,53 +134,53 @@ get_surface_from_pixbuf (GdkPixbuf         *src,
 {
   gdouble pixbuf_width;
   gdouble pixbuf_height;
-  cairo_surface_t *src_surface;
-  cairo_surface_t *new_surface;
+  cairo_surface_t *surface;
+  cairo_content_t content;
+  cairo_surface_t *copy;
   cairo_t *cr;
 
-  pixbuf_width = gdk_pixbuf_get_width (src);
-  pixbuf_height = gdk_pixbuf_get_height (src);
+  pixbuf_width = gdk_pixbuf_get_width (pixbuf);
+  pixbuf_height = gdk_pixbuf_get_height (pixbuf);
+  surface = gdk_cairo_surface_create_from_pixbuf (pixbuf, 1, NULL);
 
-  src_surface = gdk_cairo_surface_create_from_pixbuf (src, 1, NULL);
-  new_surface = cairo_surface_create_similar (src_surface,
-                                              CAIRO_CONTENT_COLOR_ALPHA,
-                                              ceil (width), ceil (height));
-
-  cr = cairo_create (new_surface);
-
-  if ((pixbuf_width == width && pixbuf_height == height) ||
-      fill_type == META_IMAGE_FILL_TILE)
+  if (pixbuf_width == width && pixbuf_height == height)
     {
-      cairo_set_source_surface (cr, src_surface, 0, 0);
-
-      if (fill_type == META_IMAGE_FILL_TILE)
-        cairo_pattern_set_extend (cairo_get_source (cr), CAIRO_EXTEND_REPEAT);
+      return surface;
     }
-  else
+
+  if (fill_type != META_IMAGE_FILL_TILE)
     {
-      gdouble scale_x;
-      gdouble scale_y;
+      cairo_surface_t *scaled;
 
-      scale_x = width / pixbuf_width;
-      scale_y = height / pixbuf_height;
+      scaled = scale_surface (surface, pixbuf_width, pixbuf_height,
+                              width, height, vertical_stripes,
+                              horizontal_stripes);
 
-      if (vertical_stripes)
-        scale_y = 1;
-      else if (horizontal_stripes)
-        scale_x = 1;
+      cairo_surface_destroy (surface);
+      surface = scaled;
+    }
 
-      cairo_scale (cr, scale_x, scale_y);
-      cairo_set_source_surface (cr, src_surface, 0, 0);
+  content = CAIRO_CONTENT_COLOR_ALPHA;
+  width = ceil (width);
+  height = ceil (height);
 
-      if (vertical_stripes || horizontal_stripes)
-        cairo_pattern_set_extend (cairo_get_source (cr), CAIRO_EXTEND_REPEAT);
+  copy = cairo_surface_create_similar (surface, content, width, height);
+  cr = cairo_create (copy);
+
+  cairo_set_source_surface (cr, surface, 0, 0);
+
+  if (fill_type == META_IMAGE_FILL_TILE ||
+      vertical_stripes || horizontal_stripes)
+    {
+      cairo_pattern_set_extend (cairo_get_source (cr), CAIRO_EXTEND_REPEAT);
     }
 
   cairo_paint (cr);
   cairo_destroy (cr);
-  cairo_surface_destroy (src_surface);
 
-  return new_surface;
+  cairo_surface_destroy (surface);
+
+  return copy;
 }
 
 static GdkPixbuf *
