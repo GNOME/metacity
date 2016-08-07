@@ -76,12 +76,12 @@ fill_env (MetaPositionExprEnv *env,
 }
 
 static cairo_surface_t *
-scale_surface (GdkPixbuf         *src,
-               MetaImageFillType  fill_type,
-               gdouble            width,
-               gdouble            height,
-               gboolean           vertical_stripes,
-               gboolean           horizontal_stripes)
+get_surface_from_pixbuf (GdkPixbuf         *src,
+                         MetaImageFillType  fill_type,
+                         gdouble            width,
+                         gdouble            height,
+                         gboolean           vertical_stripes,
+                         gboolean           horizontal_stripes)
 {
   gdouble pixbuf_width;
   gdouble pixbuf_height;
@@ -268,20 +268,20 @@ draw_op_as_surface (const MetaDrawOp   *op,
 
             if (op->data.image.colorize_cache_pixbuf)
               {
-                surface = scale_surface (op->data.image.colorize_cache_pixbuf,
-                                         op->data.image.fill_type,
-                                         width, height,
-                                         op->data.image.vertical_stripes,
-                                         op->data.image.horizontal_stripes);
+                surface = get_surface_from_pixbuf (op->data.image.colorize_cache_pixbuf,
+                                                   op->data.image.fill_type,
+                                                   width, height,
+                                                   op->data.image.vertical_stripes,
+                                                   op->data.image.horizontal_stripes);
               }
           }
         else
           {
-            surface = scale_surface (op->data.image.pixbuf,
-                                     op->data.image.fill_type,
-                                     width, height,
-                                     op->data.image.vertical_stripes,
-                                     op->data.image.horizontal_stripes);
+            surface = get_surface_from_pixbuf (op->data.image.pixbuf,
+                                               op->data.image.fill_type,
+                                               width, height,
+                                               op->data.image.vertical_stripes,
+                                               op->data.image.horizontal_stripes);
           }
         break;
       }
@@ -295,11 +295,11 @@ draw_op_as_surface (const MetaDrawOp   *op,
       if (info->mini_icon &&
           width <= gdk_pixbuf_get_width (info->mini_icon) &&
           height <= gdk_pixbuf_get_height (info->mini_icon))
-        surface = scale_surface (info->mini_icon, op->data.icon.fill_type,
-                                 width, height, FALSE, FALSE);
+        surface = get_surface_from_pixbuf (info->mini_icon, op->data.icon.fill_type,
+                                           width, height, FALSE, FALSE);
       else if (info->icon)
-        surface = scale_surface (info->icon, op->data.icon.fill_type,
-                                 width, height, FALSE, FALSE);
+        surface = get_surface_from_pixbuf (info->icon, op->data.icon.fill_type,
+                                           width, height, FALSE, FALSE);
       break;
 
     case META_DRAW_TITLE:
