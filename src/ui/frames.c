@@ -2427,7 +2427,12 @@ meta_frames_get_mask (MetaFrames *frames,
   if (frame == NULL)
     return;
 
+  cairo_push_group (cr);
+
   meta_frames_paint (frames, frame, cr);
+
+  cairo_pop_group_to_source (cr);
+  cairo_paint (cr);
 }
 
 /* XXX -- this is disgusting. Find a better approach here.
