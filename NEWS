@@ -1,3 +1,10 @@
+Version 3.20.3
+==============
+- Fix titlebar repaint (Alberts Muktupāvels; #69049)
+- Fix regression in image scaling (Alberts Muktupāvels)
+- Updated translations:
+  Balázs Meskó (hu), Christian Kirbach (de).
+
 Version 3.20.2
 ==============
 - Fix window resizing using titlebar (Alberts Muktupāvels; LP:#1596574)
