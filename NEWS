@@ -1,3 +1,8 @@
+Version 3.18.7
+==============
+- Fix titlebar repaint (Alberts Muktupāvels; #69049)
+- Fix small memory leak in compositor (Alberts Muktupāvels)
+
 Version 3.18.6
 ==============
 - Fix window resizing using titlebar (Alberts Muktupāvels; LP:#1596574)
