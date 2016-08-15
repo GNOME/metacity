@@ -49,7 +49,6 @@
 #define KEY_GNOME_ACCESSIBILITY "toolkit-accessibility"
 #define KEY_GNOME_ANIMATIONS "enable-animations"
 #define KEY_GNOME_CURSOR_THEME "cursor-theme"
-#define KEY_GNOME_CURSOR_SIZE "cursor-size"
 
 /* These are the different schemas we are keeping
  * a GSettings instance for */
@@ -435,13 +434,6 @@ static MetaIntPreference preferences_int[] =
       },
       &auto_raise_delay
     },
-    {
-      { KEY_GNOME_CURSOR_SIZE,
-        SCHEMA_INTERFACE,
-        META_PREF_CURSOR_SIZE,
-      },
-      &cursor_size
-    },
     { { NULL, 0, 0 }, NULL },
   };
 
@@ -767,6 +759,38 @@ queue_changed (MetaPreference pref)
                                     changed_idle_handler, NULL, NULL);
 }
 
+static void
+gtk_cursor_theme_size_changed (GtkSettings *settings,
+                               GParamSpec  *pspec,
+                               gpointer     user_data)
+{
+  gint size;
+
+  g_object_get (settings, "gtk-cursor-theme-size", &size, NULL);
+
+  if (size == 0)
+    size = 24;
+
+  if (size != cursor_size)
+    {
+      cursor_size = size;
+      queue_changed (META_PREF_CURSOR_SIZE);
+    }
+}
+
+static void
+init_gtk_cursor_theme_size (void)
+{
+  GtkSettings *settings;
+
+  settings = gtk_settings_get_default ();
+
+  g_signal_connect (settings, "notify::gtk-cursor-theme-size",
+                    G_CALLBACK (gtk_cursor_theme_size_changed), NULL);
+
+  gtk_cursor_theme_size_changed (settings, NULL, NULL);
+}
+
 static gboolean
 in_desktop (const gchar *name)
 {
@@ -917,8 +941,6 @@ meta_prefs_init (void)
                     G_CALLBACK (settings_changed), NULL);
   g_signal_connect (settings, "changed::" KEY_GNOME_CURSOR_THEME,
                     G_CALLBACK (settings_changed), NULL);
-  g_signal_connect (settings, "changed::" KEY_GNOME_CURSOR_SIZE,
-                    G_CALLBACK (settings_changed), NULL);
   g_hash_table_insert (settings_schemas, g_strdup (SCHEMA_INTERFACE), settings);
 
   /* Pick up initial values. */
@@ -930,6 +952,7 @@ meta_prefs_init (void)
   init_bindings ();
   init_workspace_names ();
 
+  init_gtk_cursor_theme_size ();
   init_gtk_decoration_layout ();
   init_gtk_theme_name ();
 }
