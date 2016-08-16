@@ -62,7 +62,6 @@ struct _ThemeViewerWindow
 
   MetaFrameBorders  borders;
 
-  MetaButtonLayout  button_layout;
   MetaButtonState   button_states[META_BUTTON_TYPE_LAST];
 
   gboolean          button_pressed;
@@ -186,7 +185,7 @@ benchmark_draw_time (ThemeViewerWindow *window,
         meta_theme_draw_frame (theme, window->theme_variant, cr,
                                window->frame_type, window->frame_flags,
                                width, height, "Benchmark",
-                               &window->button_layout, window->button_states,
+                               window->button_states,
                                window->mini_icon, window->icon);
 
         cairo_destroy (cr);
@@ -348,7 +347,7 @@ update_button_state (GtkWidget         *widget,
 
   meta_theme_calc_geometry (window->theme, window->theme_variant,
                             window->frame_type, window->frame_flags,
-                            width, height, &window->button_layout, &fgeom);
+                            width, height, &fgeom);
 
   x -= PADDING;
   y -= PADDING;
@@ -408,8 +407,12 @@ update_button_layout (ThemeViewerWindow *window)
   const gchar *text;
   gint i;
 
+  if (!window->theme)
+    return;
+
   text = gtk_entry_get_text (GTK_ENTRY (window->button_layout_entry));
-  window->button_layout = meta_button_layout_new (text, FALSE);
+
+  meta_theme_set_button_layout (window->theme, text, FALSE);
 
   for (i = 0; i < META_BUTTON_TYPE_LAST; i++)
     window->button_states[i] = META_BUTTON_STATE_NORMAL;
@@ -775,7 +778,7 @@ theme_box_draw_cb (GtkWidget         *widget,
   meta_theme_draw_frame (window->theme, window->theme_variant, cr,
                          window->frame_type, window->frame_flags,
                          client_width, client_height, "Metacity Theme Viewer",
-                         &window->button_layout, window->button_states,
+                         window->button_states,
                          window->mini_icon, window->icon);
 
   return TRUE;

@@ -94,7 +94,7 @@ static gboolean force_fullscreen = TRUE;
 static gboolean alt_tab_thumbnails = FALSE;
 
 static GDesktopVisualBellType visual_bell_type = G_DESKTOP_VISUAL_BELL_FULLSCREEN_FLASH;
-static MetaButtonLayout button_layout;
+static gchar *button_layout;
 
 static MetaPlacementMode placement_mode = META_PLACEMENT_MODE_SMART;
 
@@ -1199,43 +1199,16 @@ mouse_button_mods_handler (GVariant *value,
   return TRUE;
 }
 
-static gboolean
-button_layout_equal (const MetaButtonLayout *a,
-                     const MetaButtonLayout *b)
-{
-  int i;
-
-  i = 0;
-  while (i < META_BUTTON_FUNCTION_LAST)
-    {
-      if (a->left_buttons[i] != b->left_buttons[i])
-        return FALSE;
-      if (a->right_buttons[i] != b->right_buttons[i])
-        return FALSE;
-      if (a->left_buttons_has_spacer[i] != b->left_buttons_has_spacer[i])
-        return FALSE;
-      if (a->right_buttons_has_spacer[i] != b->right_buttons_has_spacer[i])
-        return FALSE;
-      i++;
-    }
-
-  return TRUE;
-}
-
 static void
 update_button_layout (const gchar *string_value)
 {
-  gboolean invert;
-  MetaButtonLayout new_layout;
+  if (g_strcmp0 (button_layout, string_value) == 0)
+    return;
 
-  invert = meta_ui_get_direction() == META_UI_DIRECTION_RTL;
-  new_layout = meta_button_layout_new (string_value, invert);
+  g_free (button_layout);
+  button_layout = g_strdup (string_value);
 
-  if (!button_layout_equal (&button_layout, &new_layout))
-    {
-      button_layout = new_layout;
-      emit_changed (META_PREF_BUTTON_LAYOUT);
-    }
+  emit_changed (META_PREF_BUTTON_LAYOUT);
 }
 
 static gboolean
@@ -1618,10 +1591,10 @@ meta_prefs_change_workspace_name (int         num,
                         g_variant_builder_end (&builder));
 }
 
-void
-meta_prefs_get_button_layout (MetaButtonLayout *button_layout_p)
+const gchar *
+meta_prefs_get_button_layout (void)
 {
-  *button_layout_p = button_layout;
+  return button_layout;
 }
 
 gboolean

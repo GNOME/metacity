@@ -412,7 +412,6 @@ meta_frames_calc_geometry (MetaFrames        *frames,
   int width, height;
   MetaFrameFlags flags;
   MetaFrameType type;
-  MetaButtonLayout button_layout;
 
   meta_core_get (frames->xdisplay, frame->xwindow,
                  META_CORE_GET_CLIENT_WIDTH, &width,
@@ -421,10 +420,8 @@ meta_frames_calc_geometry (MetaFrames        *frames,
                  META_CORE_GET_FRAME_TYPE, &type,
                  META_CORE_GET_END);
 
-  meta_prefs_get_button_layout (&button_layout);
-
   meta_theme_calc_geometry (meta_ui_get_theme (), frame->theme_variant,
-                            type, flags, width, height, &button_layout, fgeom);
+                            type, flags, width, height, fgeom);
 }
 
 MetaFrames*
@@ -2284,7 +2281,6 @@ meta_frames_paint (MetaFrames   *frames,
   MetaButtonState button_states[META_BUTTON_TYPE_LAST];
   Window grab_frame;
   int i;
-  MetaButtonLayout button_layout;
   MetaGrabOp grab_op;
 
   for (i = 0; i < META_BUTTON_TYPE_LAST; i++)
@@ -2395,11 +2391,9 @@ meta_frames_paint (MetaFrames   *frames,
                  META_CORE_GET_CLIENT_HEIGHT, &h,
                  META_CORE_GET_END);
 
-  meta_prefs_get_button_layout (&button_layout);
-
   meta_theme_draw_frame (meta_ui_get_theme (), frame->theme_variant,
                          cr, type, flags, w, h, frame->title,
-                         &button_layout, button_states, mini_icon, icon);
+                         button_states, mini_icon, icon);
 }
 
 static gboolean

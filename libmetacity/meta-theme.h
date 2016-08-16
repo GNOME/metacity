@@ -154,6 +154,10 @@ gboolean       meta_theme_load              (MetaTheme                   *theme,
 
 void           meta_theme_invalidate        (MetaTheme                   *theme);
 
+void           meta_theme_set_button_layout (MetaTheme                   *theme,
+                                             const gchar                 *button_layout,
+                                             gboolean                     invert);
+
 void           meta_theme_set_composited    (MetaTheme                   *theme,
                                              gboolean                     composited);
 
@@ -172,7 +176,6 @@ void           meta_theme_calc_geometry     (MetaTheme                   *theme,
                                              MetaFrameFlags               flags,
                                              gint                         client_width,
                                              gint                         client_height,
-                                             const MetaButtonLayout      *button_layout,
                                              MetaFrameGeometry           *fgeom);
 
 void           meta_theme_draw_frame        (MetaTheme                   *theme,
@@ -183,7 +186,6 @@ void           meta_theme_draw_frame        (MetaTheme                   *theme,
                                              gint                         client_width,
                                              gint                         client_height,
                                              const gchar                 *title,
-                                             const MetaButtonLayout      *button_layout,
                                              MetaButtonState              button_states[META_BUTTON_TYPE_LAST],
                                              GdkPixbuf                   *mini_icon,
                                              GdkPixbuf                   *icon);

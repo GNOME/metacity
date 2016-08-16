@@ -729,6 +729,8 @@ load_theme (MetaThemeType  theme_type,
   gboolean compositing_manager;
   const PangoFontDescription *titlebar_font;
   GError *error;
+  const gchar *button_layout;
+  gboolean invert;
 
   theme = meta_theme_new (theme_type);
 
@@ -747,6 +749,11 @@ load_theme (MetaThemeType  theme_type,
       g_object_unref (theme);
       return NULL;
     }
+
+  button_layout = meta_prefs_get_button_layout ();
+  invert = meta_ui_get_direction() == META_UI_DIRECTION_RTL;
+
+  meta_theme_set_button_layout (theme, button_layout, invert);
 
   return theme;
 }
@@ -774,6 +781,18 @@ meta_ui_reload_theme (void)
   g_assert (meta_current_theme);
 
   meta_invalidate_default_icons ();
+}
+
+void
+meta_ui_update_button_layout (void)
+{
+  const gchar *button_layout;
+  gboolean invert;
+
+  button_layout = meta_prefs_get_button_layout ();
+  invert = meta_ui_get_direction() == META_UI_DIRECTION_RTL;
+
+  meta_theme_set_button_layout (meta_current_theme, button_layout, invert);
 }
 
 static void

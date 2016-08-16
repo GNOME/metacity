@@ -35,6 +35,8 @@ struct _MetaTheme
   MetaThemeType         type;
   MetaThemeImpl        *impl;
 
+  MetaButtonLayout      button_layout;
+
   gboolean              composited;
 
   PangoFontDescription *titlebar_font;
@@ -359,6 +361,7 @@ static void
 meta_theme_constructed (GObject *object)
 {
   MetaTheme *theme;
+  const gchar *button_layout;
 
   G_OBJECT_CLASS (meta_theme_parent_class)->constructed (object);
 
@@ -372,6 +375,9 @@ meta_theme_constructed (GObject *object)
     g_assert_not_reached ();
 
   meta_theme_impl_set_composited (theme->impl, theme->composited);
+
+  button_layout = "appmenu:minimize,maximize,close";
+  meta_theme_set_button_layout (theme, button_layout, FALSE);
 }
 
 static void
@@ -548,6 +554,14 @@ meta_theme_invalidate (MetaTheme *theme)
 }
 
 void
+meta_theme_set_button_layout (MetaTheme   *theme,
+                              const gchar *button_layout,
+                              gboolean     invert)
+{
+  theme->button_layout = meta_button_layout_new (button_layout, invert);
+}
+
+void
 meta_theme_set_composited (MetaTheme *theme,
                            gboolean   composited)
 {
@@ -602,14 +616,13 @@ meta_theme_get_frame_borders (MetaTheme        *theme,
 }
 
 void
-meta_theme_calc_geometry (MetaTheme              *theme,
-                          const gchar            *variant,
-                          MetaFrameType           type,
-                          MetaFrameFlags          flags,
-                          gint                    client_width,
-                          gint                    client_height,
-                          const MetaButtonLayout *button_layout,
-                          MetaFrameGeometry      *fgeom)
+meta_theme_calc_geometry (MetaTheme         *theme,
+                          const gchar       *variant,
+                          MetaFrameType      type,
+                          MetaFrameFlags     flags,
+                          gint               client_width,
+                          gint               client_height,
+                          MetaFrameGeometry *fgeom)
 {
   MetaFrameStyle *style;
   MetaThemeImplClass *impl_class;
@@ -630,7 +643,7 @@ meta_theme_calc_geometry (MetaTheme              *theme,
 
   impl_class->calc_geometry (theme->impl, style->layout, style_info,
                              title_height, flags, client_width, client_height,
-                             button_layout, type, fgeom);
+                             &theme->button_layout, type, fgeom);
 }
 
 void
@@ -642,7 +655,6 @@ meta_theme_draw_frame (MetaTheme              *theme,
                        gint                    client_width,
                        gint                    client_height,
                        const gchar            *title,
-                       const MetaButtonLayout *button_layout,
                        MetaButtonState         button_states[META_BUTTON_TYPE_LAST],
                        GdkPixbuf              *mini_icon,
                        GdkPixbuf              *icon)
@@ -669,7 +681,7 @@ meta_theme_draw_frame (MetaTheme              *theme,
 
   impl_class->calc_geometry (theme->impl, style->layout, style_info,
                              title_height, flags, client_width, client_height,
-                             button_layout, type, &fgeom);
+                             &theme->button_layout, type, &fgeom);
 
   impl_class->draw_frame (theme->impl, style, style_info, cr, &fgeom,
                           title_layout, flags, button_states, mini_icon, icon);

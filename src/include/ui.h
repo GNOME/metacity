@@ -159,6 +159,7 @@ gboolean  meta_ui_window_should_not_cause_focus (Display *xdisplay,
                                                  Window   xwindow);
 
 void meta_ui_reload_theme (void);
+void meta_ui_update_button_layout (void);
 
 /* Not a real key symbol but means "key above the tab key"; this is
  * used as the default keybinding for cycle_group.

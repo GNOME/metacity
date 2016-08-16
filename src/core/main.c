@@ -552,6 +552,10 @@ prefs_changed_callback (MetaPreference pref,
 {
   switch (pref)
     {
+    case META_PREF_BUTTON_LAYOUT:
+      meta_ui_update_button_layout ();
+      break;
+
     case META_PREF_THEME_NAME:
     case META_PREF_THEME_TYPE:
     case META_PREF_COMPOSITING_MANAGER:
@@ -579,7 +583,6 @@ prefs_changed_callback (MetaPreference pref,
     case META_PREF_NUM_WORKSPACES:
     case META_PREF_KEYBINDINGS:
     case META_PREF_DISABLE_WORKAROUNDS:
-    case META_PREF_BUTTON_LAYOUT:
     case META_PREF_WORKSPACE_NAMES:
     case META_PREF_VISUAL_BELL:
     case META_PREF_AUDIBLE_BELL:
