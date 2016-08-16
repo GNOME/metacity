@@ -62,8 +62,6 @@ struct _ThemeViewerWindow
 
   MetaFrameBorders  borders;
 
-  MetaButtonState   button_states[META_BUTTON_FUNCTION_LAST];
-
   gboolean          button_pressed;
 
   GdkPixbuf        *mini_icon;
@@ -185,8 +183,7 @@ benchmark_draw_time (ThemeViewerWindow *window,
         meta_theme_draw_frame (theme, window->theme_variant, cr,
                                window->frame_type, window->frame_flags,
                                width, height, "Benchmark",
-                               window->button_states,
-                               window->mini_icon, window->icon);
+                               NULL, NULL, window->mini_icon, window->icon);
 
         cairo_destroy (cr);
         cairo_surface_destroy (surface);
@@ -302,18 +299,6 @@ get_icon (gint size)
   return gtk_icon_theme_load_icon (theme, icon, size, 0, NULL);;
 }
 
-static gboolean
-point_in_rect (gint         x,
-               gint         y,
-               GdkRectangle rect)
-{
-  if (x >= rect.x && x < (rect.x + rect.width) &&
-      y >= rect.y && y < (rect.y + rect.height))
-    return TRUE;
-
-  return FALSE;
-}
-
 static void
 get_client_width_and_height (GtkWidget         *widget,
                              ThemeViewerWindow *window,
@@ -327,85 +312,48 @@ get_client_width_and_height (GtkWidget         *widget,
   *height -= window->borders.total.top + window->borders.total.bottom;
 }
 
-static void
-update_button_state (GtkWidget         *widget,
-                     GdkDevice         *device,
-                     ThemeViewerWindow *window)
+static MetaButtonState
+update_button_state (MetaButtonFunction function,
+                     GdkRectangle       rect,
+                     gpointer           user_data)
 {
+  ThemeViewerWindow *window;
+  MetaButtonState state;
+  GdkDisplay *display;
+  GdkSeat *seat;
+  GdkDevice *device;
   gint x;
   gint y;
-  gint width;
-  gint height;
-  MetaFrameGeometry fgeom;
-  MetaButtonFunction function;
-  guint i;
 
-  gdk_window_get_device_position (gtk_widget_get_window (widget),
+  window = THEME_VIEWER_WINDOW (user_data);
+  state = META_BUTTON_STATE_NORMAL;
+
+  display = gdk_display_get_default ();
+  seat = gdk_display_get_default_seat (display);
+  device = gdk_seat_get_pointer (seat);
+
+  gdk_window_get_device_position (gtk_widget_get_window (window->theme_box),
                                   device, &x, &y, NULL);
-
-  get_client_width_and_height (widget, window, &width, &height);
-
-  meta_theme_calc_geometry (window->theme, window->theme_variant,
-                            window->frame_type, window->frame_flags,
-                            width, height, &fgeom);
 
   x -= PADDING;
   y -= PADDING;
 
-  if (point_in_rect (x, y, fgeom.menu_rect.clickable))
-    function = META_BUTTON_FUNCTION_MENU;
-
-  if (point_in_rect (x, y, fgeom.appmenu_rect.clickable))
-    function = META_BUTTON_FUNCTION_APPMENU;
-
-  if (point_in_rect (x, y, fgeom.min_rect.clickable))
-    function = META_BUTTON_FUNCTION_MINIMIZE;
-
-  if (point_in_rect (x, y, fgeom.max_rect.clickable))
-    function = META_BUTTON_FUNCTION_MAXIMIZE;
-
-  if (point_in_rect (x, y, fgeom.close_rect.clickable))
-    function = META_BUTTON_FUNCTION_CLOSE;
-
-  if (point_in_rect (x, y, fgeom.shade_rect.clickable))
-    function = META_BUTTON_FUNCTION_SHADE;
-
-  if (point_in_rect (x, y, fgeom.unshade_rect.clickable))
-    function = META_BUTTON_FUNCTION_UNSHADE;
-
-  if (point_in_rect (x, y, fgeom.above_rect.clickable))
-    function = META_BUTTON_FUNCTION_ABOVE;
-
-  if (point_in_rect (x, y, fgeom.unabove_rect.clickable))
-    function = META_BUTTON_FUNCTION_UNABOVE;
-
-  if (point_in_rect (x, y, fgeom.stick_rect.clickable))
-    function = META_BUTTON_FUNCTION_STICK;
-
-  if (point_in_rect (x, y, fgeom.unstick_rect.clickable))
-    function = META_BUTTON_FUNCTION_UNSTICK;
-
-  for (i = 0; i < META_BUTTON_FUNCTION_LAST; i++)
+  if (x >= rect.x && x < (rect.x + rect.width) &&
+      y >= rect.y && y < (rect.y + rect.height))
     {
-      if (i == function)
-        {
-          if (window->button_pressed)
-            window->button_states[i] = META_BUTTON_STATE_PRESSED;
-          else
-            window->button_states[i] = META_BUTTON_STATE_PRELIGHT;
-        }
+      if (window->button_pressed)
+        state = META_BUTTON_STATE_PRESSED;
       else
-        window->button_states[i] = META_BUTTON_STATE_NORMAL;
+        state = META_BUTTON_STATE_PRELIGHT;
     }
 
-  gtk_widget_queue_draw (window->theme_box);
+  return state;
 }
 
 static void
 update_button_layout (ThemeViewerWindow *window)
 {
   const gchar *text;
-  gint i;
 
   if (!window->theme)
     return;
@@ -413,9 +361,6 @@ update_button_layout (ThemeViewerWindow *window)
   text = gtk_entry_get_text (GTK_ENTRY (window->button_layout_entry));
 
   meta_theme_set_button_layout (window->theme, text, FALSE);
-
-  for (i = 0; i < META_BUTTON_FUNCTION_LAST; i++)
-    window->button_states[i] = META_BUTTON_STATE_NORMAL;
 }
 
 static void
@@ -778,7 +723,7 @@ theme_box_draw_cb (GtkWidget         *widget,
   meta_theme_draw_frame (window->theme, window->theme_variant, cr,
                          window->frame_type, window->frame_flags,
                          client_width, client_height, "Metacity Theme Viewer",
-                         window->button_states,
+                         update_button_state, window,
                          window->mini_icon, window->icon);
 
   return TRUE;
@@ -791,7 +736,7 @@ theme_box_button_press_event_cb (GtkWidget         *widget,
 {
   window->button_pressed = TRUE;
 
-  update_button_state (widget, event->device, window);
+  gtk_widget_queue_draw (window->theme_box);
 
   return TRUE;
 }
@@ -803,7 +748,7 @@ theme_box_button_release_event_cb (GtkWidget         *widget,
 {
   window->button_pressed = FALSE;
 
-  update_button_state (widget, event->device, window);
+  gtk_widget_queue_draw (window->theme_box);
 
   return TRUE;
 }
@@ -813,7 +758,7 @@ theme_box_motion_notify_event_cb (GtkWidget         *widget,
                                   GdkEventMotion    *event,
                                   ThemeViewerWindow *window)
 {
-  update_button_state (widget, event->device, window);
+  gtk_widget_queue_draw (window->theme_box);
 
   return TRUE;
 }

@@ -89,6 +89,11 @@ MetaFrameStyleSet *meta_theme_impl_get_style_set  (MetaThemeImpl           *impl
                                                    MetaFrameType            type);
 
 G_GNUC_INTERNAL
+void               get_button_rect_for_function  (MetaButtonFunction       function,
+                                                  const MetaFrameGeometry *fgeom,
+                                                  GdkRectangle            *rect);
+
+G_GNUC_INTERNAL
 void               scale_border                   (GtkBorder               *border,
                                                    double                   factor);
 

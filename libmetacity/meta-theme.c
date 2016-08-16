@@ -647,17 +647,18 @@ meta_theme_calc_geometry (MetaTheme         *theme,
 }
 
 void
-meta_theme_draw_frame (MetaTheme              *theme,
-                       const gchar            *variant,
-                       cairo_t                *cr,
-                       MetaFrameType           type,
-                       MetaFrameFlags          flags,
-                       gint                    client_width,
-                       gint                    client_height,
-                       const gchar            *title,
-                       MetaButtonState         button_states[META_BUTTON_FUNCTION_LAST],
-                       GdkPixbuf              *mini_icon,
-                       GdkPixbuf              *icon)
+meta_theme_draw_frame (MetaTheme           *theme,
+                       const gchar         *variant,
+                       cairo_t             *cr,
+                       MetaFrameType        type,
+                       MetaFrameFlags       flags,
+                       gint                 client_width,
+                       gint                 client_height,
+                       const gchar         *title,
+                       MetaButtonStateFunc  func,
+                       gpointer             user_data,
+                       GdkPixbuf           *mini_icon,
+                       GdkPixbuf           *icon)
 {
   MetaFrameStyle *style;
   MetaThemeImplClass *impl_class;
@@ -665,6 +666,8 @@ meta_theme_draw_frame (MetaTheme              *theme,
   gint title_height;
   PangoLayout *title_layout;
   MetaFrameGeometry fgeom;
+  gint i;
+  MetaButtonState button_states[META_BUTTON_FUNCTION_LAST];
 
   g_return_if_fail (type < META_FRAME_TYPE_LAST);
 
@@ -682,6 +685,22 @@ meta_theme_draw_frame (MetaTheme              *theme,
   impl_class->calc_geometry (theme->impl, style->layout, style_info,
                              title_height, flags, client_width, client_height,
                              &theme->button_layout, type, &fgeom);
+
+  for (i = 0; i < META_BUTTON_FUNCTION_LAST; i++)
+    {
+      MetaButtonState state;
+      GdkRectangle rect;
+
+      get_button_rect_for_function (i, &fgeom, &rect);
+
+      state = META_BUTTON_STATE_NORMAL;
+      if (func != NULL)
+        state = (* func) (i, rect, user_data);
+
+      g_assert (state >= META_BUTTON_STATE_NORMAL && state < META_BUTTON_STATE_LAST);
+
+      button_states[i] = state;
+    }
 
   impl_class->draw_frame (theme->impl, style, style_info, cr, &fgeom,
                           title_layout, flags, button_states, mini_icon, icon);

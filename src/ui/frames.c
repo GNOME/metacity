@@ -2268,119 +2268,146 @@ meta_frames_draw (GtkWidget *widget,
   return TRUE;
 }
 
+typedef struct
+{
+  MetaFrames  *frames;
+  MetaUIFrame *frame;
+} ButtonStateData;
+
+static MetaButtonState
+update_button_state (MetaButtonFunction function,
+                     GdkRectangle       rect,
+                     gpointer           user_data)
+{
+  ButtonStateData *data;
+  MetaButtonState state;
+  Window grab_frame;
+  MetaGrabOp grab_op;
+  MetaFrameControl control;
+
+  data = (ButtonStateData *) user_data;
+
+  state = META_BUTTON_STATE_NORMAL;
+
+  grab_frame = meta_core_get_grab_frame (data->frames->xdisplay);
+  grab_op = meta_core_get_grab_op (data->frames->xdisplay);
+  if (grab_frame != data->frame->xwindow)
+    grab_op = META_GRAB_OP_NONE;
+
+  control = data->frame->prelit_control;
+
+  /* Set prelight state */
+  if (control == META_FRAME_CONTROL_MENU &&
+      function == META_BUTTON_FUNCTION_MENU)
+    {
+      if (grab_op == META_GRAB_OP_CLICKING_MENU)
+        state = META_BUTTON_STATE_PRESSED;
+      else
+        state = META_BUTTON_STATE_PRELIGHT;
+    }
+  else if (control == META_FRAME_CONTROL_APPMENU &&
+           function == META_BUTTON_FUNCTION_APPMENU)
+    {
+      if (grab_op == META_GRAB_OP_CLICKING_MENU)
+        state = META_BUTTON_STATE_PRESSED;
+      else
+        state = META_BUTTON_STATE_PRELIGHT;
+    }
+  else if (control == META_FRAME_CONTROL_MINIMIZE &&
+           function == META_BUTTON_FUNCTION_MINIMIZE)
+    {
+      if (grab_op == META_GRAB_OP_CLICKING_MINIMIZE)
+        state = META_BUTTON_STATE_PRESSED;
+      else
+        state = META_BUTTON_STATE_PRELIGHT;
+    }
+  else if (control == META_FRAME_CONTROL_MAXIMIZE &&
+           function == META_BUTTON_FUNCTION_MAXIMIZE)
+    {
+      if (grab_op == META_GRAB_OP_CLICKING_MAXIMIZE)
+        state = META_BUTTON_STATE_PRESSED;
+      else
+        state = META_BUTTON_STATE_PRELIGHT;
+    }
+  else if (control == META_FRAME_CONTROL_UNMAXIMIZE &&
+           function == META_BUTTON_FUNCTION_MAXIMIZE)
+    {
+      if (grab_op == META_GRAB_OP_CLICKING_UNMAXIMIZE)
+        state = META_BUTTON_STATE_PRESSED;
+      else
+        state = META_BUTTON_STATE_PRELIGHT;
+    }
+  else if (control == META_FRAME_CONTROL_SHADE &&
+           function == META_BUTTON_FUNCTION_SHADE)
+    {
+      if (grab_op == META_GRAB_OP_CLICKING_SHADE)
+        state = META_BUTTON_STATE_PRESSED;
+      else
+        state = META_BUTTON_STATE_PRELIGHT;
+    }
+  else if (control == META_FRAME_CONTROL_UNSHADE &&
+           function == META_BUTTON_FUNCTION_UNSHADE)
+    {
+      if (grab_op == META_GRAB_OP_CLICKING_UNSHADE)
+        state = META_BUTTON_STATE_PRESSED;
+      else
+        state = META_BUTTON_STATE_PRELIGHT;
+    }
+  else if (control == META_FRAME_CONTROL_ABOVE &&
+           function == META_BUTTON_FUNCTION_ABOVE)
+    {
+      if (grab_op == META_GRAB_OP_CLICKING_ABOVE)
+        state = META_BUTTON_STATE_PRESSED;
+      else
+        state = META_BUTTON_STATE_PRELIGHT;
+    }
+  else if (control == META_FRAME_CONTROL_UNABOVE &&
+           function == META_BUTTON_FUNCTION_UNABOVE)
+    {
+      if (grab_op == META_GRAB_OP_CLICKING_UNABOVE)
+        state = META_BUTTON_STATE_PRESSED;
+      else
+        state = META_BUTTON_STATE_PRELIGHT;
+    }
+  else if (control == META_FRAME_CONTROL_STICK &&
+           function == META_BUTTON_FUNCTION_STICK)
+    {
+      if (grab_op == META_GRAB_OP_CLICKING_STICK)
+        state = META_BUTTON_STATE_PRESSED;
+      else
+        state = META_BUTTON_STATE_PRELIGHT;
+    }
+  else if (control == META_FRAME_CONTROL_UNSTICK &&
+           function == META_BUTTON_FUNCTION_UNSTICK)
+    {
+      if (grab_op == META_GRAB_OP_CLICKING_UNSTICK)
+        state = META_BUTTON_STATE_PRESSED;
+      else
+        state = META_BUTTON_STATE_PRELIGHT;
+    }
+  else if (control == META_FRAME_CONTROL_DELETE &&
+           function == META_BUTTON_FUNCTION_CLOSE)
+    {
+      if (grab_op == META_GRAB_OP_CLICKING_DELETE)
+        state = META_BUTTON_STATE_PRESSED;
+      else
+        state = META_BUTTON_STATE_PRELIGHT;
+    }
+
+  return state;
+}
+
 static void
-meta_frames_paint (MetaFrames   *frames,
-                   MetaUIFrame  *frame,
-                   cairo_t      *cr)
+meta_frames_paint (MetaFrames  *frames,
+                   MetaUIFrame *frame,
+                   cairo_t     *cr)
 {
   MetaFrameFlags flags;
   MetaFrameType type;
   GdkPixbuf *mini_icon;
   GdkPixbuf *icon;
   int w, h;
-  MetaButtonState button_states[META_BUTTON_FUNCTION_LAST];
-  Window grab_frame;
-  int i;
-  MetaGrabOp grab_op;
-
-  for (i = 0; i < META_BUTTON_FUNCTION_LAST; i++)
-    button_states[i] = META_BUTTON_STATE_NORMAL;
-
-  grab_frame = meta_core_get_grab_frame (frames->xdisplay);
-  grab_op = meta_core_get_grab_op (frames->xdisplay);
-  if (grab_frame != frame->xwindow)
-    grab_op = META_GRAB_OP_NONE;
-
-  /* Set prelight state */
-  switch (frame->prelit_control)
-    {
-    case META_FRAME_CONTROL_MENU:
-      if (grab_op == META_GRAB_OP_CLICKING_MENU)
-        button_states[META_BUTTON_FUNCTION_MENU] = META_BUTTON_STATE_PRESSED;
-      else
-        button_states[META_BUTTON_FUNCTION_MENU] = META_BUTTON_STATE_PRELIGHT;
-      break;
-    case META_FRAME_CONTROL_APPMENU:
-      if (grab_op == META_GRAB_OP_CLICKING_MENU)
-        button_states[META_BUTTON_FUNCTION_APPMENU] = META_BUTTON_STATE_PRESSED;
-      else
-        button_states[META_BUTTON_FUNCTION_APPMENU] = META_BUTTON_STATE_PRELIGHT;
-      break;
-    case META_FRAME_CONTROL_MINIMIZE:
-      if (grab_op == META_GRAB_OP_CLICKING_MINIMIZE)
-        button_states[META_BUTTON_FUNCTION_MINIMIZE] = META_BUTTON_STATE_PRESSED;
-      else
-        button_states[META_BUTTON_FUNCTION_MINIMIZE] = META_BUTTON_STATE_PRELIGHT;
-      break;
-    case META_FRAME_CONTROL_MAXIMIZE:
-      if (grab_op == META_GRAB_OP_CLICKING_MAXIMIZE)
-        button_states[META_BUTTON_FUNCTION_MAXIMIZE] = META_BUTTON_STATE_PRESSED;
-      else
-        button_states[META_BUTTON_FUNCTION_MAXIMIZE] = META_BUTTON_STATE_PRELIGHT;
-      break;
-    case META_FRAME_CONTROL_UNMAXIMIZE:
-      if (grab_op == META_GRAB_OP_CLICKING_UNMAXIMIZE)
-        button_states[META_BUTTON_FUNCTION_MAXIMIZE] = META_BUTTON_STATE_PRESSED;
-      else
-        button_states[META_BUTTON_FUNCTION_MAXIMIZE] = META_BUTTON_STATE_PRELIGHT;
-      break;
-    case META_FRAME_CONTROL_SHADE:
-      if (grab_op == META_GRAB_OP_CLICKING_SHADE)
-        button_states[META_BUTTON_FUNCTION_SHADE] = META_BUTTON_STATE_PRESSED;
-      else
-        button_states[META_BUTTON_FUNCTION_SHADE] = META_BUTTON_STATE_PRELIGHT;
-      break;
-    case META_FRAME_CONTROL_UNSHADE:
-      if (grab_op == META_GRAB_OP_CLICKING_UNSHADE)
-        button_states[META_BUTTON_FUNCTION_UNSHADE] = META_BUTTON_STATE_PRESSED;
-      else
-        button_states[META_BUTTON_FUNCTION_UNSHADE] = META_BUTTON_STATE_PRELIGHT;
-      break;
-    case META_FRAME_CONTROL_ABOVE:
-      if (grab_op == META_GRAB_OP_CLICKING_ABOVE)
-        button_states[META_BUTTON_FUNCTION_ABOVE] = META_BUTTON_STATE_PRESSED;
-      else
-        button_states[META_BUTTON_FUNCTION_ABOVE] = META_BUTTON_STATE_PRELIGHT;
-      break;
-    case META_FRAME_CONTROL_UNABOVE:
-      if (grab_op == META_GRAB_OP_CLICKING_UNABOVE)
-        button_states[META_BUTTON_FUNCTION_UNABOVE] = META_BUTTON_STATE_PRESSED;
-      else
-        button_states[META_BUTTON_FUNCTION_UNABOVE] = META_BUTTON_STATE_PRELIGHT;
-      break;
-    case META_FRAME_CONTROL_STICK:
-      if (grab_op == META_GRAB_OP_CLICKING_STICK)
-        button_states[META_BUTTON_FUNCTION_STICK] = META_BUTTON_STATE_PRESSED;
-      else
-        button_states[META_BUTTON_FUNCTION_STICK] = META_BUTTON_STATE_PRELIGHT;
-      break;
-    case META_FRAME_CONTROL_UNSTICK:
-      if (grab_op == META_GRAB_OP_CLICKING_UNSTICK)
-        button_states[META_BUTTON_FUNCTION_UNSTICK] = META_BUTTON_STATE_PRESSED;
-      else
-        button_states[META_BUTTON_FUNCTION_UNSTICK] = META_BUTTON_STATE_PRELIGHT;
-      break;
-    case META_FRAME_CONTROL_DELETE:
-      if (grab_op == META_GRAB_OP_CLICKING_DELETE)
-        button_states[META_BUTTON_FUNCTION_CLOSE] = META_BUTTON_STATE_PRESSED;
-      else
-        button_states[META_BUTTON_FUNCTION_CLOSE] = META_BUTTON_STATE_PRELIGHT;
-      break;
-    case META_FRAME_CONTROL_NONE:
-    case META_FRAME_CONTROL_TITLE:
-    case META_FRAME_CONTROL_RESIZE_SE:
-    case META_FRAME_CONTROL_RESIZE_S:
-    case META_FRAME_CONTROL_RESIZE_SW:
-    case META_FRAME_CONTROL_RESIZE_N:
-    case META_FRAME_CONTROL_RESIZE_NE:
-    case META_FRAME_CONTROL_RESIZE_NW:
-    case META_FRAME_CONTROL_RESIZE_W:
-    case META_FRAME_CONTROL_RESIZE_E:
-    case META_FRAME_CONTROL_CLIENT_AREA:
-      break;
-    default:
-      break;
-    }
+  ButtonStateData data;
 
   meta_core_get (frames->xdisplay, frame->xwindow,
                  META_CORE_GET_FRAME_FLAGS, &flags,
@@ -2391,9 +2418,12 @@ meta_frames_paint (MetaFrames   *frames,
                  META_CORE_GET_CLIENT_HEIGHT, &h,
                  META_CORE_GET_END);
 
+  data.frames = frames;
+  data.frame = frame;
+
   meta_theme_draw_frame (meta_ui_get_theme (), frame->theme_variant,
                          cr, type, flags, w, h, frame->title,
-                         button_states, mini_icon, icon);
+                         update_button_state, &data, mini_icon, icon);
 }
 
 static gboolean

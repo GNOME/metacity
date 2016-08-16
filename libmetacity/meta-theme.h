@@ -30,6 +30,10 @@ G_BEGIN_DECLS
 typedef struct _MetaButtonSpace MetaButtonSpace;
 typedef struct _MetaFrameGeometry MetaFrameGeometry;
 
+typedef MetaButtonState (* MetaButtonStateFunc) (MetaButtonFunction function,
+                                                 GdkRectangle       rect,
+                                                 gpointer           user_data);
+
 #define META_TYPE_THEME meta_theme_get_type ()
 G_DECLARE_FINAL_TYPE (MetaTheme, meta_theme, META, THEME, GObject)
 
@@ -186,7 +190,8 @@ void           meta_theme_draw_frame        (MetaTheme                   *theme,
                                              gint                         client_width,
                                              gint                         client_height,
                                              const gchar                 *title,
-                                             MetaButtonState              button_states[META_BUTTON_FUNCTION_LAST],
+                                             MetaButtonStateFunc          func,
+                                             gpointer                     user_data,
                                              GdkPixbuf                   *mini_icon,
                                              GdkPixbuf                   *icon);
 

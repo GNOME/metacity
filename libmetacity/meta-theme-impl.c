@@ -132,6 +132,64 @@ meta_theme_impl_get_style_set (MetaThemeImpl *impl,
 }
 
 void
+get_button_rect_for_function (MetaButtonFunction       function,
+                              const MetaFrameGeometry *fgeom,
+                              GdkRectangle            *rect)
+{
+  switch (function)
+    {
+    case META_BUTTON_FUNCTION_CLOSE:
+      *rect = fgeom->close_rect.visible;
+      break;
+
+    case META_BUTTON_FUNCTION_SHADE:
+      *rect = fgeom->shade_rect.visible;
+      break;
+
+    case META_BUTTON_FUNCTION_UNSHADE:
+      *rect = fgeom->unshade_rect.visible;
+      break;
+
+    case META_BUTTON_FUNCTION_ABOVE:
+      *rect = fgeom->above_rect.visible;
+      break;
+
+    case META_BUTTON_FUNCTION_UNABOVE:
+      *rect = fgeom->unabove_rect.visible;
+      break;
+
+    case META_BUTTON_FUNCTION_STICK:
+      *rect = fgeom->stick_rect.visible;
+      break;
+
+    case META_BUTTON_FUNCTION_UNSTICK:
+      *rect = fgeom->unstick_rect.visible;
+      break;
+
+    case META_BUTTON_FUNCTION_MAXIMIZE:
+      *rect = fgeom->max_rect.visible;
+      break;
+
+    case META_BUTTON_FUNCTION_MINIMIZE:
+      *rect = fgeom->min_rect.visible;
+      break;
+
+    case META_BUTTON_FUNCTION_MENU:
+      *rect = fgeom->menu_rect.visible;
+      break;
+
+    case META_BUTTON_FUNCTION_APPMENU:
+      *rect = fgeom->appmenu_rect.visible;
+      break;
+
+    case META_BUTTON_FUNCTION_LAST:
+    default:
+      g_assert_not_reached ();
+      break;
+    }
+}
+
+void
 scale_border (GtkBorder *border,
               double     factor)
 {
