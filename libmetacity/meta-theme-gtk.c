@@ -721,16 +721,74 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
 }
 
 static const char *
-get_class_from_button_type (MetaButtonType type)
+get_class_from_button_function (MetaButtonFunction function)
 {
-  if (type == META_BUTTON_TYPE_CLOSE)
+  if (function == META_BUTTON_FUNCTION_CLOSE)
     return "close";
-  else if (type == META_BUTTON_TYPE_MAXIMIZE)
+  else if (function == META_BUTTON_FUNCTION_MAXIMIZE)
     return "maximize";
-  else if (type == META_BUTTON_TYPE_MINIMIZE)
+  else if (function == META_BUTTON_FUNCTION_MINIMIZE)
     return "minimize";
 
   return NULL;
+}
+
+static void
+get_button_rect (MetaButtonFunction       function,
+                 const MetaFrameGeometry *fgeom,
+                 GdkRectangle            *rect)
+{
+  switch (function)
+    {
+    case META_BUTTON_FUNCTION_CLOSE:
+      *rect = fgeom->close_rect.visible;
+      break;
+
+    case META_BUTTON_FUNCTION_SHADE:
+      *rect = fgeom->shade_rect.visible;
+      break;
+
+    case META_BUTTON_FUNCTION_UNSHADE:
+      *rect = fgeom->unshade_rect.visible;
+      break;
+
+    case META_BUTTON_FUNCTION_ABOVE:
+      *rect = fgeom->above_rect.visible;
+      break;
+
+    case META_BUTTON_FUNCTION_UNABOVE:
+      *rect = fgeom->unabove_rect.visible;
+      break;
+
+    case META_BUTTON_FUNCTION_STICK:
+      *rect = fgeom->stick_rect.visible;
+      break;
+
+    case META_BUTTON_FUNCTION_UNSTICK:
+      *rect = fgeom->unstick_rect.visible;
+      break;
+
+    case META_BUTTON_FUNCTION_MAXIMIZE:
+      *rect = fgeom->max_rect.visible;
+      break;
+
+    case META_BUTTON_FUNCTION_MINIMIZE:
+      *rect = fgeom->min_rect.visible;
+      break;
+
+    case META_BUTTON_FUNCTION_MENU:
+      *rect = fgeom->menu_rect.visible;
+      break;
+
+    case META_BUTTON_FUNCTION_APPMENU:
+      *rect = fgeom->appmenu_rect.visible;
+      break;
+
+    case META_BUTTON_FUNCTION_LAST:
+    default:
+      g_assert_not_reached ();
+      break;
+    }
 }
 
 static void
@@ -741,14 +799,14 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
                            const MetaFrameGeometry *fgeom,
                            PangoLayout             *title_layout,
                            MetaFrameFlags           flags,
-                           MetaButtonState          button_states[META_BUTTON_TYPE_LAST],
+                           MetaButtonState          button_states[META_BUTTON_FUNCTION_LAST],
                            GdkPixbuf               *mini_icon,
                            GdkPixbuf               *icon)
 {
   gdouble scale;
   GtkStyleContext *context;
   GtkStateFlags state;
-  MetaButtonType button_type;
+  MetaButtonFunction button_function;
   MetaRectangleDouble visible_rect;
   MetaRectangleDouble titlebar_rect;
   const MetaFrameBorders *borders;
@@ -828,19 +886,19 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
 
   context = meta_style_info_get_style (style_info, META_STYLE_ELEMENT_BUTTON);
   state = gtk_style_context_get_state (context);
-  for (button_type = META_BUTTON_TYPE_CLOSE; button_type < META_BUTTON_TYPE_LAST; button_type++)
+  for (button_function = 0; button_function < META_BUTTON_FUNCTION_LAST; button_function++)
     {
       MetaButtonState button_state;
       const char *button_class;
       GdkRectangle tmp_rect;
       MetaRectangleDouble button_rect;
 
-      button_class = get_class_from_button_type (button_type);
+      button_class = get_class_from_button_function (button_function);
 
       if (button_class)
         gtk_style_context_add_class (context, button_class);
 
-      button_state = map_button_state (button_type, fgeom, 0, button_states);
+      button_state = button_states [button_function];
 
       if (button_state == META_BUTTON_STATE_PRELIGHT)
         gtk_style_context_set_state (context, state | GTK_STATE_PRELIGHT);
@@ -851,7 +909,7 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
 
       cairo_save (cr);
 
-      get_button_rect (button_type, fgeom, 0, &tmp_rect);
+      get_button_rect (button_function, fgeom, &tmp_rect);
 
       button_rect.x = tmp_rect.x / scale;
       button_rect.y = tmp_rect.y / scale;
@@ -870,41 +928,33 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
                             button_rect.x, button_rect.y,
                             button_rect.width, button_rect.height);
 
-          switch (button_type)
+          switch (button_function)
             {
-              case META_BUTTON_TYPE_CLOSE:
+              case META_BUTTON_FUNCTION_CLOSE:
                 icon_name = "window-close-symbolic";
                 break;
-              case META_BUTTON_TYPE_MAXIMIZE:
+              case META_BUTTON_FUNCTION_MAXIMIZE:
                 if (flags & META_FRAME_MAXIMIZED)
                   icon_name = "window-restore-symbolic";
                 else
                   icon_name = "window-maximize-symbolic";
                 break;
-              case META_BUTTON_TYPE_MINIMIZE:
+              case META_BUTTON_FUNCTION_MINIMIZE:
                 icon_name = "window-minimize-symbolic";
                 break;
-              case META_BUTTON_TYPE_MENU:
+              case META_BUTTON_FUNCTION_MENU:
                 icon_name = "open-menu-symbolic";
                 break;
-              case META_BUTTON_TYPE_APPMENU:
+              case META_BUTTON_FUNCTION_APPMENU:
                 pixbuf = g_object_ref (mini_icon);
                 break;
-              case META_BUTTON_TYPE_LEFT_LEFT_BACKGROUND:
-              case META_BUTTON_TYPE_LEFT_MIDDLE_BACKGROUND:
-              case META_BUTTON_TYPE_LEFT_RIGHT_BACKGROUND:
-              case META_BUTTON_TYPE_LEFT_SINGLE_BACKGROUND:
-              case META_BUTTON_TYPE_RIGHT_LEFT_BACKGROUND:
-              case META_BUTTON_TYPE_RIGHT_MIDDLE_BACKGROUND:
-              case META_BUTTON_TYPE_RIGHT_RIGHT_BACKGROUND:
-              case META_BUTTON_TYPE_RIGHT_SINGLE_BACKGROUND:
-              case META_BUTTON_TYPE_SHADE:
-              case META_BUTTON_TYPE_ABOVE:
-              case META_BUTTON_TYPE_STICK:
-              case META_BUTTON_TYPE_UNSHADE:
-              case META_BUTTON_TYPE_UNABOVE:
-              case META_BUTTON_TYPE_UNSTICK:
-              case META_BUTTON_TYPE_LAST:
+              case META_BUTTON_FUNCTION_SHADE:
+              case META_BUTTON_FUNCTION_ABOVE:
+              case META_BUTTON_FUNCTION_STICK:
+              case META_BUTTON_FUNCTION_UNSHADE:
+              case META_BUTTON_FUNCTION_UNABOVE:
+              case META_BUTTON_FUNCTION_UNSTICK:
+              case META_BUTTON_FUNCTION_LAST:
               default:
                 icon_name = NULL;
                 break;

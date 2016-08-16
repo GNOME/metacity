@@ -8,6 +8,7 @@ libmetacity_la_SOURCES = \
 	meta-button-function.h \
 	meta-button-layout.c \
 	meta-button-layout.h \
+	meta-button-type-private.h \
 	meta-color.c \
 	meta-color.h \
 	meta-color-private.h \

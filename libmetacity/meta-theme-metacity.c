@@ -5288,6 +5288,181 @@ clip_to_rounded_corners (cairo_t                 *cr,
 }
 
 static void
+get_button_rect (MetaButtonType           type,
+                 const MetaFrameGeometry *fgeom,
+                 gint                     middle_background_offset,
+                 GdkRectangle            *rect)
+{
+  switch (type)
+    {
+    case META_BUTTON_TYPE_LEFT_LEFT_BACKGROUND:
+      *rect = fgeom->left_left_background;
+      break;
+
+    case META_BUTTON_TYPE_LEFT_MIDDLE_BACKGROUND:
+      *rect = fgeom->left_middle_backgrounds[middle_background_offset];
+      break;
+
+    case META_BUTTON_TYPE_LEFT_RIGHT_BACKGROUND:
+      *rect = fgeom->left_right_background;
+      break;
+
+    case META_BUTTON_TYPE_LEFT_SINGLE_BACKGROUND:
+      *rect = fgeom->left_single_background;
+      break;
+
+    case META_BUTTON_TYPE_RIGHT_LEFT_BACKGROUND:
+      *rect = fgeom->right_left_background;
+      break;
+
+    case META_BUTTON_TYPE_RIGHT_MIDDLE_BACKGROUND:
+      *rect = fgeom->right_middle_backgrounds[middle_background_offset];
+      break;
+
+    case META_BUTTON_TYPE_RIGHT_RIGHT_BACKGROUND:
+      *rect = fgeom->right_right_background;
+      break;
+
+    case META_BUTTON_TYPE_RIGHT_SINGLE_BACKGROUND:
+      *rect = fgeom->right_single_background;
+      break;
+
+    case META_BUTTON_TYPE_CLOSE:
+      *rect = fgeom->close_rect.visible;
+      break;
+
+    case META_BUTTON_TYPE_SHADE:
+      *rect = fgeom->shade_rect.visible;
+      break;
+
+    case META_BUTTON_TYPE_UNSHADE:
+      *rect = fgeom->unshade_rect.visible;
+      break;
+
+    case META_BUTTON_TYPE_ABOVE:
+      *rect = fgeom->above_rect.visible;
+      break;
+
+    case META_BUTTON_TYPE_UNABOVE:
+      *rect = fgeom->unabove_rect.visible;
+      break;
+
+    case META_BUTTON_TYPE_STICK:
+      *rect = fgeom->stick_rect.visible;
+      break;
+
+    case META_BUTTON_TYPE_UNSTICK:
+      *rect = fgeom->unstick_rect.visible;
+      break;
+
+    case META_BUTTON_TYPE_MAXIMIZE:
+      *rect = fgeom->max_rect.visible;
+      break;
+
+    case META_BUTTON_TYPE_MINIMIZE:
+      *rect = fgeom->min_rect.visible;
+      break;
+
+    case META_BUTTON_TYPE_MENU:
+      *rect = fgeom->menu_rect.visible;
+      break;
+
+    case META_BUTTON_TYPE_APPMENU:
+      *rect = fgeom->appmenu_rect.visible;
+      break;
+
+    case META_BUTTON_TYPE_LAST:
+    default:
+      g_assert_not_reached ();
+      break;
+    }
+}
+
+static MetaButtonState
+map_button_state (MetaButtonType           button_type,
+                  const MetaFrameGeometry *fgeom,
+                  gint                     middle_bg_offset,
+                  MetaButtonState          button_states[META_BUTTON_FUNCTION_LAST])
+{
+  MetaButtonFunction function = META_BUTTON_FUNCTION_LAST;
+
+  switch (button_type)
+    {
+    /* First handle functions, which map directly */
+    case META_BUTTON_TYPE_SHADE:
+      function = META_BUTTON_FUNCTION_SHADE;
+      break;
+    case META_BUTTON_TYPE_ABOVE:
+      function = META_BUTTON_FUNCTION_ABOVE;
+      break;
+    case META_BUTTON_TYPE_STICK:
+      function = META_BUTTON_FUNCTION_STICK;
+      break;
+    case META_BUTTON_TYPE_UNSHADE:
+      function = META_BUTTON_FUNCTION_UNSHADE;
+      break;
+    case META_BUTTON_TYPE_UNABOVE:
+      function = META_BUTTON_FUNCTION_UNABOVE;
+      break;;
+    case META_BUTTON_TYPE_UNSTICK:
+      function = META_BUTTON_FUNCTION_UNSTICK;
+      break;
+    case META_BUTTON_TYPE_MENU:
+      function = META_BUTTON_FUNCTION_MENU;
+      break;
+    case META_BUTTON_TYPE_APPMENU:
+      function = META_BUTTON_FUNCTION_APPMENU;
+      break;
+    case META_BUTTON_TYPE_MINIMIZE:
+      function = META_BUTTON_FUNCTION_MINIMIZE;
+      break;
+    case META_BUTTON_TYPE_MAXIMIZE:
+      function = META_BUTTON_FUNCTION_MAXIMIZE;
+      break;
+    case META_BUTTON_TYPE_CLOSE:
+      function = META_BUTTON_FUNCTION_CLOSE;
+      break;
+
+    /* Map position buttons to the corresponding function */
+    case META_BUTTON_TYPE_RIGHT_LEFT_BACKGROUND:
+    case META_BUTTON_TYPE_RIGHT_SINGLE_BACKGROUND:
+      if (fgeom->n_right_buttons > 0)
+        function = fgeom->button_layout.right_buttons[0];
+      break;
+    case META_BUTTON_TYPE_RIGHT_RIGHT_BACKGROUND:
+      if (fgeom->n_right_buttons > 0)
+        function = fgeom->button_layout.right_buttons[fgeom->n_right_buttons - 1];
+      break;
+    case META_BUTTON_TYPE_RIGHT_MIDDLE_BACKGROUND:
+      if (middle_bg_offset + 1 < fgeom->n_right_buttons)
+        function = fgeom->button_layout.right_buttons[middle_bg_offset + 1];
+      break;
+    case META_BUTTON_TYPE_LEFT_LEFT_BACKGROUND:
+    case META_BUTTON_TYPE_LEFT_SINGLE_BACKGROUND:
+      if (fgeom->n_left_buttons > 0)
+        function = fgeom->button_layout.left_buttons[0];
+      break;
+    case META_BUTTON_TYPE_LEFT_RIGHT_BACKGROUND:
+      if (fgeom->n_left_buttons > 0)
+        function = fgeom->button_layout.left_buttons[fgeom->n_left_buttons - 1];
+      break;
+    case META_BUTTON_TYPE_LEFT_MIDDLE_BACKGROUND:
+      if (middle_bg_offset + 1 < fgeom->n_left_buttons)
+        function = fgeom->button_layout.left_buttons[middle_bg_offset + 1];
+      break;
+    case META_BUTTON_TYPE_LAST:
+      break;
+    default:
+      break;
+    }
+
+  if (function != META_BUTTON_FUNCTION_LAST)
+    return button_states[function];
+
+  return META_BUTTON_STATE_LAST;
+}
+
+static void
 meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
                                 MetaFrameStyle          *style,
                                 MetaStyleInfo           *style_info,
@@ -5295,7 +5470,7 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
                                 const MetaFrameGeometry *fgeom,
                                 PangoLayout             *title_layout,
                                 MetaFrameFlags           flags,
-                                MetaButtonState          button_states[META_BUTTON_TYPE_LAST],
+                                MetaButtonState          button_states[META_BUTTON_FUNCTION_LAST],
                                 GdkPixbuf               *mini_icon,
                                 GdkPixbuf               *icon)
 {

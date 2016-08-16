@@ -62,7 +62,7 @@ struct _ThemeViewerWindow
 
   MetaFrameBorders  borders;
 
-  MetaButtonState   button_states[META_BUTTON_TYPE_LAST];
+  MetaButtonState   button_states[META_BUTTON_FUNCTION_LAST];
 
   gboolean          button_pressed;
 
@@ -337,7 +337,7 @@ update_button_state (GtkWidget         *widget,
   gint width;
   gint height;
   MetaFrameGeometry fgeom;
-  MetaButtonType type;
+  MetaButtonFunction function;
   guint i;
 
   gdk_window_get_device_position (gtk_widget_get_window (widget),
@@ -353,41 +353,41 @@ update_button_state (GtkWidget         *widget,
   y -= PADDING;
 
   if (point_in_rect (x, y, fgeom.menu_rect.clickable))
-    type = META_BUTTON_TYPE_MENU;
+    function = META_BUTTON_FUNCTION_MENU;
 
   if (point_in_rect (x, y, fgeom.appmenu_rect.clickable))
-    type = META_BUTTON_TYPE_APPMENU;
+    function = META_BUTTON_FUNCTION_APPMENU;
 
   if (point_in_rect (x, y, fgeom.min_rect.clickable))
-    type = META_BUTTON_TYPE_MINIMIZE;
+    function = META_BUTTON_FUNCTION_MINIMIZE;
 
   if (point_in_rect (x, y, fgeom.max_rect.clickable))
-    type = META_BUTTON_TYPE_MAXIMIZE;
+    function = META_BUTTON_FUNCTION_MAXIMIZE;
 
   if (point_in_rect (x, y, fgeom.close_rect.clickable))
-    type = META_BUTTON_TYPE_CLOSE;
+    function = META_BUTTON_FUNCTION_CLOSE;
 
   if (point_in_rect (x, y, fgeom.shade_rect.clickable))
-    type = META_BUTTON_TYPE_SHADE;
+    function = META_BUTTON_FUNCTION_SHADE;
 
   if (point_in_rect (x, y, fgeom.unshade_rect.clickable))
-    type = META_BUTTON_TYPE_UNSHADE;
+    function = META_BUTTON_FUNCTION_UNSHADE;
 
   if (point_in_rect (x, y, fgeom.above_rect.clickable))
-    type = META_BUTTON_TYPE_ABOVE;
+    function = META_BUTTON_FUNCTION_ABOVE;
 
   if (point_in_rect (x, y, fgeom.unabove_rect.clickable))
-    type = META_BUTTON_TYPE_UNABOVE;
+    function = META_BUTTON_FUNCTION_UNABOVE;
 
   if (point_in_rect (x, y, fgeom.stick_rect.clickable))
-    type = META_BUTTON_TYPE_STICK;
+    function = META_BUTTON_FUNCTION_STICK;
 
   if (point_in_rect (x, y, fgeom.unstick_rect.clickable))
-    type = META_BUTTON_TYPE_UNSTICK;
+    function = META_BUTTON_FUNCTION_UNSTICK;
 
-  for (i = 0; i < META_BUTTON_TYPE_LAST; i++)
+  for (i = 0; i < META_BUTTON_FUNCTION_LAST; i++)
     {
-      if (i == type)
+      if (i == function)
         {
           if (window->button_pressed)
             window->button_states[i] = META_BUTTON_STATE_PRESSED;
@@ -414,7 +414,7 @@ update_button_layout (ThemeViewerWindow *window)
 
   meta_theme_set_button_layout (window->theme, text, FALSE);
 
-  for (i = 0; i < META_BUTTON_TYPE_LAST; i++)
+  for (i = 0; i < META_BUTTON_FUNCTION_LAST; i++)
     window->button_states[i] = META_BUTTON_STATE_NORMAL;
 }
 

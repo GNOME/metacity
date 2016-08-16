@@ -186,7 +186,7 @@ void           meta_theme_draw_frame        (MetaTheme                   *theme,
                                              gint                         client_width,
                                              gint                         client_height,
                                              const gchar                 *title,
-                                             MetaButtonState              button_states[META_BUTTON_TYPE_LAST],
+                                             MetaButtonState              button_states[META_BUTTON_FUNCTION_LAST],
                                              GdkPixbuf                   *mini_icon,
                                              GdkPixbuf                   *icon);
 

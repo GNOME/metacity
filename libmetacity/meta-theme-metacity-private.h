@@ -19,7 +19,7 @@
 #ifndef META_THEME_METACITY_PRIVATE_H
 #define META_THEME_METACITY_PRIVATE_H
 
-#include "meta-button-enums.h"
+#include "meta-button-type-private.h"
 #include "meta-theme-impl-private.h"
 
 G_BEGIN_DECLS
