@@ -4,11 +4,9 @@ lib_LTLIBRARIES = libmetacity.la
 
 libmetacity_la_SOURCES = \
 	meta-button-enums.h \
-	meta-button-function.c \
-	meta-button-function.h \
 	meta-button-layout.c \
 	meta-button-layout.h \
-	meta-button-type-private.h \
+	meta-button-private.h \
 	meta-color.c \
 	meta-color.h \
 	meta-color-private.h \
@@ -72,7 +70,6 @@ libmetacity_la_LIBADD = \
 libmetacity_includedir = $(includedir)/metacity/libmetacity
 libmetacity_include_HEADERS = \
 	meta-button-enums.h \
-	meta-button-function.h \
 	meta-button-layout.h \
 	meta-color.h \
 	meta-enum-types.h \

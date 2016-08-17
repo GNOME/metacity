@@ -154,7 +154,7 @@ typedef struct
   MetaFrameStyle    *style;          /* frame style being parsed if any */
   MetaFrameStyleSet *style_set;      /* frame style set being parsed if any */
   MetaFramePiece     piece;          /* position of piece being parsed */
-  MetaButtonType     button_type;    /* type of button/menuitem being parsed */
+  MetaButtonFunction button_function; /* type of button/menuitem being parsed */
   MetaButtonState    button_state;   /* state of button being parsed */
 
   gint               skip_level;     /* depth of elements that we're ignoring */
@@ -198,7 +198,7 @@ parse_info_new (MetaThemeMetacity *metacity)
   info->style = NULL;
   info->style_set = NULL;
   info->piece = META_FRAME_PIECE_LAST;
-  info->button_type = META_BUTTON_TYPE_LAST;
+  info->button_function = META_BUTTON_FUNCTION_LAST;
   info->button_state = META_BUTTON_STATE_LAST;
 
   info->skip_level = 0;
@@ -2869,54 +2869,54 @@ meta_button_state_from_string (const char *str)
     return META_BUTTON_STATE_LAST;
 }
 
-static MetaButtonType
-meta_button_type_from_string (MetaThemeMetacity *metacity,
-                              const gchar       *str)
+static MetaButtonFunction
+meta_button_function_from_string (MetaThemeMetacity *metacity,
+                                  const gchar       *str)
 {
   if (theme_allows (metacity, META_THEME_SHADE_STICK_ABOVE_BUTTONS))
     {
       if (strcmp ("shade", str) == 0)
-        return META_BUTTON_TYPE_SHADE;
+        return META_BUTTON_FUNCTION_SHADE;
       else if (strcmp ("above", str) == 0)
-        return META_BUTTON_TYPE_ABOVE;
+        return META_BUTTON_FUNCTION_ABOVE;
       else if (strcmp ("stick", str) == 0)
-        return META_BUTTON_TYPE_STICK;
+        return META_BUTTON_FUNCTION_STICK;
       else if (strcmp ("unshade", str) == 0)
-        return META_BUTTON_TYPE_UNSHADE;
+        return META_BUTTON_FUNCTION_UNSHADE;
       else if (strcmp ("unabove", str) == 0)
-        return META_BUTTON_TYPE_UNABOVE;
+        return META_BUTTON_FUNCTION_UNABOVE;
       else if (strcmp ("unstick", str) == 0)
-        return META_BUTTON_TYPE_UNSTICK;
+        return META_BUTTON_FUNCTION_UNSTICK;
      }
 
   if (strcmp ("close", str) == 0)
-    return META_BUTTON_TYPE_CLOSE;
+    return META_BUTTON_FUNCTION_CLOSE;
   else if (strcmp ("maximize", str) == 0)
-    return META_BUTTON_TYPE_MAXIMIZE;
+    return META_BUTTON_FUNCTION_MAXIMIZE;
   else if (strcmp ("minimize", str) == 0)
-    return META_BUTTON_TYPE_MINIMIZE;
+    return META_BUTTON_FUNCTION_MINIMIZE;
   else if (strcmp ("menu", str) == 0)
-    return META_BUTTON_TYPE_MENU;
+    return META_BUTTON_FUNCTION_MENU;
   else if (strcmp ("appmenu", str) == 0)
-    return META_BUTTON_TYPE_APPMENU;
+    return META_BUTTON_FUNCTION_APPMENU;
   else if (strcmp ("left_left_background", str) == 0)
-    return META_BUTTON_TYPE_LEFT_LEFT_BACKGROUND;
+    return META_BUTTON_FUNCTION_LEFT_LEFT_BACKGROUND;
   else if (strcmp ("left_middle_background", str) == 0)
-    return META_BUTTON_TYPE_LEFT_MIDDLE_BACKGROUND;
+    return META_BUTTON_FUNCTION_LEFT_MIDDLE_BACKGROUND;
   else if (strcmp ("left_right_background", str) == 0)
-    return META_BUTTON_TYPE_LEFT_RIGHT_BACKGROUND;
+    return META_BUTTON_FUNCTION_LEFT_RIGHT_BACKGROUND;
   else if (strcmp ("left_single_background", str) == 0)
-    return META_BUTTON_TYPE_LEFT_SINGLE_BACKGROUND;
+    return META_BUTTON_FUNCTION_LEFT_SINGLE_BACKGROUND;
   else if (strcmp ("right_left_background", str) == 0)
-    return META_BUTTON_TYPE_RIGHT_LEFT_BACKGROUND;
+    return META_BUTTON_FUNCTION_RIGHT_LEFT_BACKGROUND;
   else if (strcmp ("right_middle_background", str) == 0)
-    return META_BUTTON_TYPE_RIGHT_MIDDLE_BACKGROUND;
+    return META_BUTTON_FUNCTION_RIGHT_MIDDLE_BACKGROUND;
   else if (strcmp ("right_right_background", str) == 0)
-    return META_BUTTON_TYPE_RIGHT_RIGHT_BACKGROUND;
+    return META_BUTTON_FUNCTION_RIGHT_RIGHT_BACKGROUND;
   else if (strcmp ("right_single_background", str) == 0)
-    return META_BUTTON_TYPE_RIGHT_SINGLE_BACKGROUND;
+    return META_BUTTON_FUNCTION_RIGHT_SINGLE_BACKGROUND;
   else
-    return META_BUTTON_TYPE_LAST;
+    return META_BUTTON_FUNCTION_LAST;
 }
 
 static MetaFramePiece
@@ -3029,8 +3029,8 @@ parse_style_element (GMarkupParseContext  *context,
                               NULL))
         return;
 
-      info->button_type = meta_button_type_from_string (info->metacity, function);
-      if (info->button_type == META_BUTTON_TYPE_LAST)
+      info->button_function = meta_button_function_from_string (info->metacity, function);
+      if (info->button_function == META_BUTTON_FUNCTION_LAST)
         {
           set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
                      _("Unknown function \"%s\" for button"),
@@ -3038,7 +3038,7 @@ parse_style_element (GMarkupParseContext  *context,
           return;
         }
 
-      earliest_version = meta_theme_metacity_earliest_version_with_button (info->button_type);
+      earliest_version = meta_theme_metacity_earliest_version_with_button (info->button_function);
       required_version = peek_required_version (info);
 
       if (earliest_version > (guint) required_version)
@@ -3057,7 +3057,7 @@ parse_style_element (GMarkupParseContext  *context,
           return;
         }
 
-      if (info->style->buttons[info->button_type][info->button_state] != NULL)
+      if (info->style->buttons[info->button_function][info->button_state] != NULL)
         {
           set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
                      _("Frame style already has a button for function %s state %s"),
@@ -4164,13 +4164,13 @@ end_element_handler (GMarkupParseContext  *context,
           }
         else
           {
-            MetaButtonType type;
+            MetaButtonFunction function;
             MetaButtonState state;
 
-            type = info->button_type;
+            function = info->button_function;
             state = info->button_state;
 
-            info->style->buttons[type][state] = info->op_list;
+            info->style->buttons[function][state] = info->op_list;
             info->op_list = NULL;
           }
         pop_state (info);
@@ -4698,101 +4698,101 @@ meta_theme_metacity_get_frame_borders (MetaThemeImpl    *impl,
 }
 
 static MetaButtonSpace *
-rect_for_function (MetaThemeMetacity  *metacity,
-                   MetaFrameGeometry  *fgeom,
-                   MetaFrameFlags      flags,
-                   MetaButtonFunction  function)
+rect_for_type (MetaThemeMetacity *metacity,
+               MetaFrameGeometry *fgeom,
+               MetaFrameFlags     flags,
+               MetaButtonType     type)
 {
   if (theme_allows (metacity, META_THEME_SHADE_STICK_ABOVE_BUTTONS))
     {
-      switch (function)
+      switch (type)
         {
-          case META_BUTTON_FUNCTION_SHADE:
+          case META_BUTTON_TYPE_SHADE:
             if ((flags & META_FRAME_ALLOWS_SHADE) && !(flags & META_FRAME_SHADED))
               return &fgeom->shade_rect;
             else
               return NULL;
 
-          case META_BUTTON_FUNCTION_ABOVE:
+          case META_BUTTON_TYPE_ABOVE:
             if (!(flags & META_FRAME_ABOVE))
               return &fgeom->above_rect;
             else
               return NULL;
 
-          case META_BUTTON_FUNCTION_STICK:
+          case META_BUTTON_TYPE_STICK:
             if (!(flags & META_FRAME_STUCK))
               return &fgeom->stick_rect;
             else
               return NULL;
 
-          case META_BUTTON_FUNCTION_UNSHADE:
+          case META_BUTTON_TYPE_UNSHADE:
             if ((flags & META_FRAME_ALLOWS_SHADE) && (flags & META_FRAME_SHADED))
               return &fgeom->unshade_rect;
             else
               return NULL;
 
-          case META_BUTTON_FUNCTION_UNABOVE:
+          case META_BUTTON_TYPE_UNABOVE:
             if (flags & META_FRAME_ABOVE)
               return &fgeom->unabove_rect;
             else
               return NULL;
 
-          case META_BUTTON_FUNCTION_UNSTICK:
+          case META_BUTTON_TYPE_UNSTICK:
             if (flags & META_FRAME_STUCK)
               return &fgeom->unstick_rect;
             else
               return NULL;
 
-          case META_BUTTON_FUNCTION_MENU:
-          case META_BUTTON_FUNCTION_APPMENU:
-          case META_BUTTON_FUNCTION_MINIMIZE:
-          case META_BUTTON_FUNCTION_MAXIMIZE:
-          case META_BUTTON_FUNCTION_CLOSE:
-          case META_BUTTON_FUNCTION_LAST:
+          case META_BUTTON_TYPE_MENU:
+          case META_BUTTON_TYPE_APPMENU:
+          case META_BUTTON_TYPE_MINIMIZE:
+          case META_BUTTON_TYPE_MAXIMIZE:
+          case META_BUTTON_TYPE_CLOSE:
+          case META_BUTTON_TYPE_LAST:
           default:
             break;
         }
     }
 
   /* now consider the buttons which exist in all versions */
-  switch (function)
+  switch (type)
     {
-      case META_BUTTON_FUNCTION_MENU:
+      case META_BUTTON_TYPE_MENU:
         if (flags & META_FRAME_ALLOWS_MENU)
           return &fgeom->menu_rect;
         else
           return NULL;
 
-      case META_BUTTON_FUNCTION_APPMENU:
+      case META_BUTTON_TYPE_APPMENU:
         if (flags & META_FRAME_ALLOWS_APPMENU)
           return &fgeom->appmenu_rect;
         else
           return NULL;
 
-      case META_BUTTON_FUNCTION_MINIMIZE:
+      case META_BUTTON_TYPE_MINIMIZE:
         if (flags & META_FRAME_ALLOWS_MINIMIZE)
           return &fgeom->min_rect;
         else
           return NULL;
 
-      case META_BUTTON_FUNCTION_MAXIMIZE:
+      case META_BUTTON_TYPE_MAXIMIZE:
         if (flags & META_FRAME_ALLOWS_MAXIMIZE)
           return &fgeom->max_rect;
         else
           return NULL;
 
-      case META_BUTTON_FUNCTION_CLOSE:
+      case META_BUTTON_TYPE_CLOSE:
         if (flags & META_FRAME_ALLOWS_DELETE)
           return &fgeom->close_rect;
         else
           return NULL;
 
-      case META_BUTTON_FUNCTION_STICK:
-      case META_BUTTON_FUNCTION_SHADE:
-      case META_BUTTON_FUNCTION_ABOVE:
-      case META_BUTTON_FUNCTION_UNSTICK:
-      case META_BUTTON_FUNCTION_UNSHADE:
-      case META_BUTTON_FUNCTION_UNABOVE:
+      case META_BUTTON_TYPE_STICK:
+      case META_BUTTON_TYPE_SHADE:
+      case META_BUTTON_TYPE_ABOVE:
+      case META_BUTTON_TYPE_UNSTICK:
+      case META_BUTTON_TYPE_UNSHADE:
+      case META_BUTTON_TYPE_UNABOVE:
         /* we are being asked for a >v1 button which hasn't been handled yet,
          * so obviously we're not in a theme which supports that version.
          * therefore, we don't show the button. return NULL and all will
@@ -4800,7 +4800,7 @@ rect_for_function (MetaThemeMetacity  *metacity,
          */
         return NULL;
 
-      case META_BUTTON_FUNCTION_LAST:
+      case META_BUTTON_TYPE_LAST:
       default:
         break;
     }
@@ -4809,8 +4809,8 @@ rect_for_function (MetaThemeMetacity  *metacity,
 }
 
 static gboolean
-strip_button (MetaButtonSpace *func_rects[META_BUTTON_FUNCTION_LAST],
-              GdkRectangle    *bg_rects[META_BUTTON_FUNCTION_LAST],
+strip_button (MetaButtonSpace *func_rects[META_BUTTON_TYPE_LAST],
+              GdkRectangle    *bg_rects[META_BUTTON_TYPE_LAST],
               int             *n_rects,
               MetaButtonSpace *to_strip)
 {
@@ -4870,12 +4870,12 @@ meta_theme_metacity_calc_geometry (MetaThemeImpl          *impl,
   /* the left/right rects in order; the max # of rects
    * is the number of button functions
    */
-  MetaButtonSpace *left_func_rects[META_BUTTON_FUNCTION_LAST];
-  MetaButtonSpace *right_func_rects[META_BUTTON_FUNCTION_LAST];
-  GdkRectangle *left_bg_rects[META_BUTTON_FUNCTION_LAST];
-  gboolean left_buttons_has_spacer[META_BUTTON_FUNCTION_LAST];
-  GdkRectangle *right_bg_rects[META_BUTTON_FUNCTION_LAST];
-  gboolean right_buttons_has_spacer[META_BUTTON_FUNCTION_LAST];
+  MetaButtonSpace *left_func_rects[META_BUTTON_TYPE_LAST];
+  MetaButtonSpace *right_func_rects[META_BUTTON_TYPE_LAST];
+  GdkRectangle *left_bg_rects[META_BUTTON_TYPE_LAST];
+  gboolean left_buttons_has_spacer[META_BUTTON_TYPE_LAST];
+  GdkRectangle *right_bg_rects[META_BUTTON_TYPE_LAST];
+  gboolean right_buttons_has_spacer[META_BUTTON_TYPE_LAST];
 
   META_THEME_IMPL_GET_CLASS (impl)->get_frame_borders (impl, layout,
                                                        style_info, text_height,
@@ -4934,10 +4934,10 @@ meta_theme_metacity_calc_geometry (MetaThemeImpl          *impl,
   if (!layout->hide_buttons)
     {
       /* Try to fill in rects */
-      for (i = 0; i < META_BUTTON_FUNCTION_LAST && button_layout->left_buttons[i] != META_BUTTON_FUNCTION_LAST; i++)
+      for (i = 0; i < META_BUTTON_TYPE_LAST && button_layout->left_buttons[i] != META_BUTTON_TYPE_LAST; i++)
         {
-          left_func_rects[n_left] = rect_for_function (metacity, fgeom, flags,
-                                                       button_layout->left_buttons[i]);
+          left_func_rects[n_left] = rect_for_type (metacity, fgeom, flags,
+                                                   button_layout->left_buttons[i]);
           if (left_func_rects[n_left] != NULL)
             {
               left_buttons_has_spacer[n_left] = button_layout->left_buttons_has_spacer[i];
@@ -4948,10 +4948,10 @@ meta_theme_metacity_calc_geometry (MetaThemeImpl          *impl,
             }
         }
 
-      for (i = 0; i < META_BUTTON_FUNCTION_LAST && button_layout->right_buttons[i] != META_BUTTON_FUNCTION_LAST; i++)
+      for (i = 0; i < META_BUTTON_TYPE_LAST && button_layout->right_buttons[i] != META_BUTTON_TYPE_LAST; i++)
         {
-          right_func_rects[n_right] = rect_for_function (metacity, fgeom, flags,
-                                                         button_layout->right_buttons[i]);
+          right_func_rects[n_right] = rect_for_type (metacity, fgeom, flags,
+                                                     button_layout->right_buttons[i]);
           if (right_func_rects[n_right] != NULL)
             {
               right_buttons_has_spacer[n_right] = button_layout->right_buttons_has_spacer[i];
@@ -4963,7 +4963,7 @@ meta_theme_metacity_calc_geometry (MetaThemeImpl          *impl,
         }
     }
 
-  for (i = 0; i < META_BUTTON_FUNCTION_LAST; i++)
+  for (i = 0; i < META_BUTTON_TYPE_LAST; i++)
     {
       left_bg_rects[i] = NULL;
       right_bg_rects[i] = NULL;
@@ -5288,90 +5288,90 @@ clip_to_rounded_corners (cairo_t                 *cr,
 }
 
 static void
-get_button_rect (MetaButtonType           type,
+get_button_rect (MetaButtonFunction       function,
                  const MetaFrameGeometry *fgeom,
                  gint                     middle_background_offset,
                  GdkRectangle            *rect)
 {
-  switch (type)
+  switch (function)
     {
-    case META_BUTTON_TYPE_LEFT_LEFT_BACKGROUND:
+    case META_BUTTON_FUNCTION_LEFT_LEFT_BACKGROUND:
       *rect = fgeom->left_left_background;
       break;
 
-    case META_BUTTON_TYPE_LEFT_MIDDLE_BACKGROUND:
+    case META_BUTTON_FUNCTION_LEFT_MIDDLE_BACKGROUND:
       *rect = fgeom->left_middle_backgrounds[middle_background_offset];
       break;
 
-    case META_BUTTON_TYPE_LEFT_RIGHT_BACKGROUND:
+    case META_BUTTON_FUNCTION_LEFT_RIGHT_BACKGROUND:
       *rect = fgeom->left_right_background;
       break;
 
-    case META_BUTTON_TYPE_LEFT_SINGLE_BACKGROUND:
+    case META_BUTTON_FUNCTION_LEFT_SINGLE_BACKGROUND:
       *rect = fgeom->left_single_background;
       break;
 
-    case META_BUTTON_TYPE_RIGHT_LEFT_BACKGROUND:
+    case META_BUTTON_FUNCTION_RIGHT_LEFT_BACKGROUND:
       *rect = fgeom->right_left_background;
       break;
 
-    case META_BUTTON_TYPE_RIGHT_MIDDLE_BACKGROUND:
+    case META_BUTTON_FUNCTION_RIGHT_MIDDLE_BACKGROUND:
       *rect = fgeom->right_middle_backgrounds[middle_background_offset];
       break;
 
-    case META_BUTTON_TYPE_RIGHT_RIGHT_BACKGROUND:
+    case META_BUTTON_FUNCTION_RIGHT_RIGHT_BACKGROUND:
       *rect = fgeom->right_right_background;
       break;
 
-    case META_BUTTON_TYPE_RIGHT_SINGLE_BACKGROUND:
+    case META_BUTTON_FUNCTION_RIGHT_SINGLE_BACKGROUND:
       *rect = fgeom->right_single_background;
       break;
 
-    case META_BUTTON_TYPE_CLOSE:
+    case META_BUTTON_FUNCTION_CLOSE:
       *rect = fgeom->close_rect.visible;
       break;
 
-    case META_BUTTON_TYPE_SHADE:
+    case META_BUTTON_FUNCTION_SHADE:
       *rect = fgeom->shade_rect.visible;
       break;
 
-    case META_BUTTON_TYPE_UNSHADE:
+    case META_BUTTON_FUNCTION_UNSHADE:
       *rect = fgeom->unshade_rect.visible;
       break;
 
-    case META_BUTTON_TYPE_ABOVE:
+    case META_BUTTON_FUNCTION_ABOVE:
       *rect = fgeom->above_rect.visible;
       break;
 
-    case META_BUTTON_TYPE_UNABOVE:
+    case META_BUTTON_FUNCTION_UNABOVE:
       *rect = fgeom->unabove_rect.visible;
       break;
 
-    case META_BUTTON_TYPE_STICK:
+    case META_BUTTON_FUNCTION_STICK:
       *rect = fgeom->stick_rect.visible;
       break;
 
-    case META_BUTTON_TYPE_UNSTICK:
+    case META_BUTTON_FUNCTION_UNSTICK:
       *rect = fgeom->unstick_rect.visible;
       break;
 
-    case META_BUTTON_TYPE_MAXIMIZE:
+    case META_BUTTON_FUNCTION_MAXIMIZE:
       *rect = fgeom->max_rect.visible;
       break;
 
-    case META_BUTTON_TYPE_MINIMIZE:
+    case META_BUTTON_FUNCTION_MINIMIZE:
       *rect = fgeom->min_rect.visible;
       break;
 
-    case META_BUTTON_TYPE_MENU:
+    case META_BUTTON_FUNCTION_MENU:
       *rect = fgeom->menu_rect.visible;
       break;
 
-    case META_BUTTON_TYPE_APPMENU:
+    case META_BUTTON_FUNCTION_APPMENU:
       *rect = fgeom->appmenu_rect.visible;
       break;
 
-    case META_BUTTON_TYPE_LAST:
+    case META_BUTTON_FUNCTION_LAST:
     default:
       g_assert_not_reached ();
       break;
@@ -5379,85 +5379,85 @@ get_button_rect (MetaButtonType           type,
 }
 
 static MetaButtonState
-map_button_state (MetaButtonType           button_type,
+map_button_state (MetaButtonFunction       button_function,
                   const MetaFrameGeometry *fgeom,
                   gint                     middle_bg_offset,
-                  MetaButtonState          button_states[META_BUTTON_FUNCTION_LAST])
+                  MetaButtonState          button_states[META_BUTTON_TYPE_LAST])
 {
-  MetaButtonFunction function = META_BUTTON_FUNCTION_LAST;
+  MetaButtonType type = META_BUTTON_TYPE_LAST;
 
-  switch (button_type)
+  switch (button_function)
     {
-    /* First handle functions, which map directly */
-    case META_BUTTON_TYPE_SHADE:
-      function = META_BUTTON_FUNCTION_SHADE;
+    /* First handle types, which map directly */
+    case META_BUTTON_FUNCTION_SHADE:
+      type = META_BUTTON_TYPE_SHADE;
       break;
-    case META_BUTTON_TYPE_ABOVE:
-      function = META_BUTTON_FUNCTION_ABOVE;
+    case META_BUTTON_FUNCTION_ABOVE:
+      type = META_BUTTON_TYPE_ABOVE;
       break;
-    case META_BUTTON_TYPE_STICK:
-      function = META_BUTTON_FUNCTION_STICK;
+    case META_BUTTON_FUNCTION_STICK:
+      type = META_BUTTON_TYPE_STICK;
       break;
-    case META_BUTTON_TYPE_UNSHADE:
-      function = META_BUTTON_FUNCTION_UNSHADE;
+    case META_BUTTON_FUNCTION_UNSHADE:
+      type = META_BUTTON_TYPE_UNSHADE;
       break;
-    case META_BUTTON_TYPE_UNABOVE:
-      function = META_BUTTON_FUNCTION_UNABOVE;
+    case META_BUTTON_FUNCTION_UNABOVE:
+      type = META_BUTTON_TYPE_UNABOVE;
       break;;
-    case META_BUTTON_TYPE_UNSTICK:
-      function = META_BUTTON_FUNCTION_UNSTICK;
+    case META_BUTTON_FUNCTION_UNSTICK:
+      type = META_BUTTON_TYPE_UNSTICK;
       break;
-    case META_BUTTON_TYPE_MENU:
-      function = META_BUTTON_FUNCTION_MENU;
+    case META_BUTTON_FUNCTION_MENU:
+      type = META_BUTTON_TYPE_MENU;
       break;
-    case META_BUTTON_TYPE_APPMENU:
-      function = META_BUTTON_FUNCTION_APPMENU;
+    case META_BUTTON_FUNCTION_APPMENU:
+      type = META_BUTTON_TYPE_APPMENU;
       break;
-    case META_BUTTON_TYPE_MINIMIZE:
-      function = META_BUTTON_FUNCTION_MINIMIZE;
+    case META_BUTTON_FUNCTION_MINIMIZE:
+      type = META_BUTTON_TYPE_MINIMIZE;
       break;
-    case META_BUTTON_TYPE_MAXIMIZE:
-      function = META_BUTTON_FUNCTION_MAXIMIZE;
+    case META_BUTTON_FUNCTION_MAXIMIZE:
+      type = META_BUTTON_TYPE_MAXIMIZE;
       break;
-    case META_BUTTON_TYPE_CLOSE:
-      function = META_BUTTON_FUNCTION_CLOSE;
+    case META_BUTTON_FUNCTION_CLOSE:
+      type = META_BUTTON_TYPE_CLOSE;
       break;
 
-    /* Map position buttons to the corresponding function */
-    case META_BUTTON_TYPE_RIGHT_LEFT_BACKGROUND:
-    case META_BUTTON_TYPE_RIGHT_SINGLE_BACKGROUND:
+    /* Map position buttons to the corresponding type */
+    case META_BUTTON_FUNCTION_RIGHT_LEFT_BACKGROUND:
+    case META_BUTTON_FUNCTION_RIGHT_SINGLE_BACKGROUND:
       if (fgeom->n_right_buttons > 0)
-        function = fgeom->button_layout.right_buttons[0];
+        type = fgeom->button_layout.right_buttons[0];
       break;
-    case META_BUTTON_TYPE_RIGHT_RIGHT_BACKGROUND:
+    case META_BUTTON_FUNCTION_RIGHT_RIGHT_BACKGROUND:
       if (fgeom->n_right_buttons > 0)
-        function = fgeom->button_layout.right_buttons[fgeom->n_right_buttons - 1];
+        type = fgeom->button_layout.right_buttons[fgeom->n_right_buttons - 1];
       break;
-    case META_BUTTON_TYPE_RIGHT_MIDDLE_BACKGROUND:
+    case META_BUTTON_FUNCTION_RIGHT_MIDDLE_BACKGROUND:
       if (middle_bg_offset + 1 < fgeom->n_right_buttons)
-        function = fgeom->button_layout.right_buttons[middle_bg_offset + 1];
+        type = fgeom->button_layout.right_buttons[middle_bg_offset + 1];
       break;
-    case META_BUTTON_TYPE_LEFT_LEFT_BACKGROUND:
-    case META_BUTTON_TYPE_LEFT_SINGLE_BACKGROUND:
+    case META_BUTTON_FUNCTION_LEFT_LEFT_BACKGROUND:
+    case META_BUTTON_FUNCTION_LEFT_SINGLE_BACKGROUND:
       if (fgeom->n_left_buttons > 0)
-        function = fgeom->button_layout.left_buttons[0];
+        type = fgeom->button_layout.left_buttons[0];
       break;
-    case META_BUTTON_TYPE_LEFT_RIGHT_BACKGROUND:
+    case META_BUTTON_FUNCTION_LEFT_RIGHT_BACKGROUND:
       if (fgeom->n_left_buttons > 0)
-        function = fgeom->button_layout.left_buttons[fgeom->n_left_buttons - 1];
+        type = fgeom->button_layout.left_buttons[fgeom->n_left_buttons - 1];
       break;
-    case META_BUTTON_TYPE_LEFT_MIDDLE_BACKGROUND:
+    case META_BUTTON_FUNCTION_LEFT_MIDDLE_BACKGROUND:
       if (middle_bg_offset + 1 < fgeom->n_left_buttons)
-        function = fgeom->button_layout.left_buttons[middle_bg_offset + 1];
+        type = fgeom->button_layout.left_buttons[middle_bg_offset + 1];
       break;
-    case META_BUTTON_TYPE_LAST:
+    case META_BUTTON_FUNCTION_LAST:
       break;
     default:
       break;
     }
 
-  if (function != META_BUTTON_FUNCTION_LAST)
-    return button_states[function];
+  if (type != META_BUTTON_TYPE_LAST)
+    return button_states[type];
 
   return META_BUTTON_STATE_LAST;
 }
@@ -5470,7 +5470,7 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
                                 const MetaFrameGeometry *fgeom,
                                 PangoLayout             *title_layout,
                                 MetaFrameFlags           flags,
-                                MetaButtonState          button_states[META_BUTTON_FUNCTION_LAST],
+                                MetaButtonState          button_states[META_BUTTON_TYPE_LAST],
                                 GdkPixbuf               *mini_icon,
                                 GdkPixbuf               *icon)
 {
@@ -5691,7 +5691,7 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
 
           middle_bg_offset = 0;
           j = 0;
-          while (j < META_BUTTON_TYPE_LAST)
+          while (j < META_BUTTON_FUNCTION_LAST)
             {
               GdkRectangle tmp_rect;
               MetaButtonState button_state;
@@ -5723,8 +5723,8 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
                 }
 
               /* MIDDLE_BACKGROUND type may get drawn more than once */
-              if ((j == META_BUTTON_TYPE_RIGHT_MIDDLE_BACKGROUND ||
-                   j == META_BUTTON_TYPE_LEFT_MIDDLE_BACKGROUND) &&
+              if ((j == META_BUTTON_FUNCTION_RIGHT_MIDDLE_BACKGROUND ||
+                   j == META_BUTTON_FUNCTION_LEFT_MIDDLE_BACKGROUND) &&
                   (middle_bg_offset < (MAX_MIDDLE_BACKGROUNDS - 1)))
                 {
                   ++middle_bg_offset;
@@ -5859,40 +5859,40 @@ meta_theme_metacity_lookup_style_set (MetaThemeMetacity *metacity,
  * \return  the number of the theme format
  */
 guint
-meta_theme_metacity_earliest_version_with_button (MetaButtonType type)
+meta_theme_metacity_earliest_version_with_button (MetaButtonFunction function)
 {
-  switch (type)
+  switch (function)
     {
-      case META_BUTTON_TYPE_CLOSE:
-      case META_BUTTON_TYPE_MAXIMIZE:
-      case META_BUTTON_TYPE_MINIMIZE:
-      case META_BUTTON_TYPE_MENU:
-      case META_BUTTON_TYPE_LEFT_LEFT_BACKGROUND:
-      case META_BUTTON_TYPE_LEFT_MIDDLE_BACKGROUND:
-      case META_BUTTON_TYPE_LEFT_RIGHT_BACKGROUND:
-      case META_BUTTON_TYPE_RIGHT_LEFT_BACKGROUND:
-      case META_BUTTON_TYPE_RIGHT_MIDDLE_BACKGROUND:
-      case META_BUTTON_TYPE_RIGHT_RIGHT_BACKGROUND:
+      case META_BUTTON_FUNCTION_CLOSE:
+      case META_BUTTON_FUNCTION_MAXIMIZE:
+      case META_BUTTON_FUNCTION_MINIMIZE:
+      case META_BUTTON_FUNCTION_MENU:
+      case META_BUTTON_FUNCTION_LEFT_LEFT_BACKGROUND:
+      case META_BUTTON_FUNCTION_LEFT_MIDDLE_BACKGROUND:
+      case META_BUTTON_FUNCTION_LEFT_RIGHT_BACKGROUND:
+      case META_BUTTON_FUNCTION_RIGHT_LEFT_BACKGROUND:
+      case META_BUTTON_FUNCTION_RIGHT_MIDDLE_BACKGROUND:
+      case META_BUTTON_FUNCTION_RIGHT_RIGHT_BACKGROUND:
         return 1000;
 
-      case META_BUTTON_TYPE_SHADE:
-      case META_BUTTON_TYPE_ABOVE:
-      case META_BUTTON_TYPE_STICK:
-      case META_BUTTON_TYPE_UNSHADE:
-      case META_BUTTON_TYPE_UNABOVE:
-      case META_BUTTON_TYPE_UNSTICK:
+      case META_BUTTON_FUNCTION_SHADE:
+      case META_BUTTON_FUNCTION_ABOVE:
+      case META_BUTTON_FUNCTION_STICK:
+      case META_BUTTON_FUNCTION_UNSHADE:
+      case META_BUTTON_FUNCTION_UNABOVE:
+      case META_BUTTON_FUNCTION_UNSTICK:
         return 2000;
 
-      case META_BUTTON_TYPE_LEFT_SINGLE_BACKGROUND:
-      case META_BUTTON_TYPE_RIGHT_SINGLE_BACKGROUND:
+      case META_BUTTON_FUNCTION_LEFT_SINGLE_BACKGROUND:
+      case META_BUTTON_FUNCTION_RIGHT_SINGLE_BACKGROUND:
         return 3003;
 
-      case META_BUTTON_TYPE_APPMENU:
+      case META_BUTTON_FUNCTION_APPMENU:
         return 3005;
 
-      case META_BUTTON_TYPE_LAST:
+      case META_BUTTON_FUNCTION_LAST:
       default:
-        g_warning ("Unknown button %d", (gint) type);
+        g_warning ("Unknown button %d", (gint) function);
         break;
     }
 

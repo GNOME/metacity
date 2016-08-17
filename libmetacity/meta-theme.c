@@ -667,7 +667,7 @@ meta_theme_draw_frame (MetaTheme           *theme,
   PangoLayout *title_layout;
   MetaFrameGeometry fgeom;
   gint i;
-  MetaButtonState button_states[META_BUTTON_FUNCTION_LAST];
+  MetaButtonState button_states[META_BUTTON_TYPE_LAST];
 
   g_return_if_fail (type < META_FRAME_TYPE_LAST);
 
@@ -686,12 +686,12 @@ meta_theme_draw_frame (MetaTheme           *theme,
                              title_height, flags, client_width, client_height,
                              &theme->button_layout, type, &fgeom);
 
-  for (i = 0; i < META_BUTTON_FUNCTION_LAST; i++)
+  for (i = 0; i < META_BUTTON_TYPE_LAST; i++)
     {
       MetaButtonState state;
       GdkRectangle rect;
 
-      get_button_rect_for_function (i, &fgeom, &rect);
+      get_button_rect_for_type (i, &fgeom, &rect);
 
       state = META_BUTTON_STATE_NORMAL;
       if (func != NULL)

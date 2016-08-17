@@ -20,7 +20,7 @@
 #define META_FRAME_STYLE_PRIVATE_H
 
 #include "meta-button-enums.h"
-#include "meta-button-type-private.h"
+#include "meta-button-private.h"
 #include "meta-color-spec-private.h"
 #include "meta-draw-op-private.h"
 #include "meta-frame-enums.h"
@@ -46,7 +46,7 @@ struct _MetaFrameStyle
    */
   MetaFrameStyle *parent;
   /** Operations for drawing each kind of button in each state. */
-  MetaDrawOpList *buttons[META_BUTTON_TYPE_LAST][META_BUTTON_STATE_LAST];
+  MetaDrawOpList *buttons[META_BUTTON_FUNCTION_LAST][META_BUTTON_STATE_LAST];
   /** Operations for drawing each piece of the frame. */
   MetaDrawOpList *pieces[META_FRAME_PIECE_LAST];
   /**
@@ -106,7 +106,7 @@ gboolean           meta_frame_style_validate      (MetaFrameStyle     *style,
 
 G_GNUC_INTERNAL
 MetaDrawOpList    *meta_frame_style_get_button    (MetaFrameStyle     *style,
-                                                   MetaButtonType      type,
+                                                   MetaButtonFunction  function,
                                                    MetaButtonState     state);
 
 G_GNUC_INTERNAL

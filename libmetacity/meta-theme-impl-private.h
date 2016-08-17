@@ -67,7 +67,7 @@ struct _MetaThemeImplClass
                                     const MetaFrameGeometry  *fgeom,
                                     PangoLayout              *title_layout,
                                     MetaFrameFlags            flags,
-                                    MetaButtonState           button_states[META_BUTTON_FUNCTION_LAST],
+                                    MetaButtonState           button_states[META_BUTTON_TYPE_LAST],
                                     GdkPixbuf                *mini_icon,
                                     GdkPixbuf                *icon);
 };
@@ -89,9 +89,9 @@ MetaFrameStyleSet *meta_theme_impl_get_style_set  (MetaThemeImpl           *impl
                                                    MetaFrameType            type);
 
 G_GNUC_INTERNAL
-void               get_button_rect_for_function  (MetaButtonFunction       function,
-                                                  const MetaFrameGeometry *fgeom,
-                                                  GdkRectangle            *rect);
+void               get_button_rect_for_type       (MetaButtonType           type,
+                                                   const MetaFrameGeometry *fgeom,
+                                                   GdkRectangle            *rect);
 
 G_GNUC_INTERNAL
 void               scale_border                   (GtkBorder               *border,

@@ -30,9 +30,9 @@ G_BEGIN_DECLS
 typedef struct _MetaButtonSpace MetaButtonSpace;
 typedef struct _MetaFrameGeometry MetaFrameGeometry;
 
-typedef MetaButtonState (* MetaButtonStateFunc) (MetaButtonFunction function,
-                                                 GdkRectangle       rect,
-                                                 gpointer           user_data);
+typedef MetaButtonState (* MetaButtonStateFunc) (MetaButtonType type,
+                                                 GdkRectangle   rect,
+                                                 gpointer       user_data);
 
 #define META_TYPE_THEME meta_theme_get_type ()
 G_DECLARE_FINAL_TYPE (MetaTheme, meta_theme, META, THEME, GObject)
@@ -125,7 +125,7 @@ struct _MetaFrameGeometry
   MetaButtonSpace unabove_rect;
   MetaButtonSpace unstick_rect;
 
-#define MAX_MIDDLE_BACKGROUNDS (META_BUTTON_FUNCTION_LAST - 2)
+#define MAX_MIDDLE_BACKGROUNDS (META_BUTTON_TYPE_LAST - 2)
   GdkRectangle left_left_background;
   GdkRectangle left_middle_backgrounds[MAX_MIDDLE_BACKGROUNDS];
   GdkRectangle left_right_background;

@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2001 Havoc Pennington
+ * Copyright (C) 2016 Alberts Muktupāvels
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,6 +22,22 @@
 #include <glib.h>
 
 G_BEGIN_DECLS
+
+typedef enum
+{
+  META_BUTTON_TYPE_MENU,
+  META_BUTTON_TYPE_APPMENU,
+  META_BUTTON_TYPE_MINIMIZE,
+  META_BUTTON_TYPE_MAXIMIZE,
+  META_BUTTON_TYPE_CLOSE,
+  META_BUTTON_TYPE_SHADE,
+  META_BUTTON_TYPE_UNSHADE,
+  META_BUTTON_TYPE_ABOVE,
+  META_BUTTON_TYPE_UNABOVE,
+  META_BUTTON_TYPE_STICK,
+  META_BUTTON_TYPE_UNSTICK,
+  META_BUTTON_TYPE_LAST
+} MetaButtonType;
 
 typedef enum
 {

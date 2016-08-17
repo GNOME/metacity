@@ -19,7 +19,7 @@
 #ifndef META_THEME_METACITY_PRIVATE_H
 #define META_THEME_METACITY_PRIVATE_H
 
-#include "meta-button-type-private.h"
+#include "meta-button-private.h"
 #include "meta-theme-impl-private.h"
 
 G_BEGIN_DECLS
@@ -61,7 +61,7 @@ MetaFrameStyleSet *meta_theme_metacity_lookup_style_set    (MetaThemeMetacity  *
                                                             const gchar        *name);
 
 G_GNUC_INTERNAL
-guint              meta_theme_metacity_earliest_version_with_button (MetaButtonType type);
+guint              meta_theme_metacity_earliest_version_with_button (MetaButtonFunction function);
 
 G_END_DECLS
 

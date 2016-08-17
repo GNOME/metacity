@@ -132,57 +132,57 @@ meta_theme_impl_get_style_set (MetaThemeImpl *impl,
 }
 
 void
-get_button_rect_for_function (MetaButtonFunction       function,
-                              const MetaFrameGeometry *fgeom,
-                              GdkRectangle            *rect)
+get_button_rect_for_type (MetaButtonType           type,
+                          const MetaFrameGeometry *fgeom,
+                          GdkRectangle            *rect)
 {
-  switch (function)
+  switch (type)
     {
-    case META_BUTTON_FUNCTION_CLOSE:
+    case META_BUTTON_TYPE_CLOSE:
       *rect = fgeom->close_rect.visible;
       break;
 
-    case META_BUTTON_FUNCTION_SHADE:
+    case META_BUTTON_TYPE_SHADE:
       *rect = fgeom->shade_rect.visible;
       break;
 
-    case META_BUTTON_FUNCTION_UNSHADE:
+    case META_BUTTON_TYPE_UNSHADE:
       *rect = fgeom->unshade_rect.visible;
       break;
 
-    case META_BUTTON_FUNCTION_ABOVE:
+    case META_BUTTON_TYPE_ABOVE:
       *rect = fgeom->above_rect.visible;
       break;
 
-    case META_BUTTON_FUNCTION_UNABOVE:
+    case META_BUTTON_TYPE_UNABOVE:
       *rect = fgeom->unabove_rect.visible;
       break;
 
-    case META_BUTTON_FUNCTION_STICK:
+    case META_BUTTON_TYPE_STICK:
       *rect = fgeom->stick_rect.visible;
       break;
 
-    case META_BUTTON_FUNCTION_UNSTICK:
+    case META_BUTTON_TYPE_UNSTICK:
       *rect = fgeom->unstick_rect.visible;
       break;
 
-    case META_BUTTON_FUNCTION_MAXIMIZE:
+    case META_BUTTON_TYPE_MAXIMIZE:
       *rect = fgeom->max_rect.visible;
       break;
 
-    case META_BUTTON_FUNCTION_MINIMIZE:
+    case META_BUTTON_TYPE_MINIMIZE:
       *rect = fgeom->min_rect.visible;
       break;
 
-    case META_BUTTON_FUNCTION_MENU:
+    case META_BUTTON_TYPE_MENU:
       *rect = fgeom->menu_rect.visible;
       break;
 
-    case META_BUTTON_FUNCTION_APPMENU:
+    case META_BUTTON_TYPE_APPMENU:
       *rect = fgeom->appmenu_rect.visible;
       break;
 
-    case META_BUTTON_FUNCTION_LAST:
+    case META_BUTTON_TYPE_LAST:
     default:
       g_assert_not_reached ();
       break;

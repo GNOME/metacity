@@ -313,9 +313,9 @@ get_client_width_and_height (GtkWidget         *widget,
 }
 
 static MetaButtonState
-update_button_state (MetaButtonFunction function,
-                     GdkRectangle       rect,
-                     gpointer           user_data)
+update_button_state (MetaButtonType type,
+                     GdkRectangle   rect,
+                     gpointer       user_data)
 {
   ThemeViewerWindow *window;
   MetaButtonState state;

@@ -19,19 +19,19 @@
 #ifndef META_BUTTON_LAYOUT_H
 #define META_BUTTON_LAYOUT_H
 
-#include <libmetacity/meta-button-function.h>
+#include <libmetacity/meta-button-enums.h>
 
 G_BEGIN_DECLS
 
 typedef struct
 {
   /* buttons in the group on the left side */
-  MetaButtonFunction left_buttons[META_BUTTON_FUNCTION_LAST];
-  gboolean left_buttons_has_spacer[META_BUTTON_FUNCTION_LAST];
+  MetaButtonType left_buttons[META_BUTTON_TYPE_LAST];
+  gboolean left_buttons_has_spacer[META_BUTTON_TYPE_LAST];
 
   /* buttons in the group on the right side */
-  MetaButtonFunction right_buttons[META_BUTTON_FUNCTION_LAST];
-  gboolean right_buttons_has_spacer[META_BUTTON_FUNCTION_LAST];
+  MetaButtonType right_buttons[META_BUTTON_TYPE_LAST];
+  gboolean right_buttons_has_spacer[META_BUTTON_TYPE_LAST];
 } MetaButtonLayout;
 
 MetaButtonLayout meta_button_layout_new (const gchar *str,

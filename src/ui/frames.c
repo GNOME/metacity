@@ -2275,9 +2275,9 @@ typedef struct
 } ButtonStateData;
 
 static MetaButtonState
-update_button_state (MetaButtonFunction function,
-                     GdkRectangle       rect,
-                     gpointer           user_data)
+update_button_state (MetaButtonType type,
+                     GdkRectangle   rect,
+                     gpointer       user_data)
 {
   ButtonStateData *data;
   MetaButtonState state;
@@ -2298,7 +2298,7 @@ update_button_state (MetaButtonFunction function,
 
   /* Set prelight state */
   if (control == META_FRAME_CONTROL_MENU &&
-      function == META_BUTTON_FUNCTION_MENU)
+      type == META_BUTTON_TYPE_MENU)
     {
       if (grab_op == META_GRAB_OP_CLICKING_MENU)
         state = META_BUTTON_STATE_PRESSED;
@@ -2306,7 +2306,7 @@ update_button_state (MetaButtonFunction function,
         state = META_BUTTON_STATE_PRELIGHT;
     }
   else if (control == META_FRAME_CONTROL_APPMENU &&
-           function == META_BUTTON_FUNCTION_APPMENU)
+           type == META_BUTTON_TYPE_APPMENU)
     {
       if (grab_op == META_GRAB_OP_CLICKING_MENU)
         state = META_BUTTON_STATE_PRESSED;
@@ -2314,7 +2314,7 @@ update_button_state (MetaButtonFunction function,
         state = META_BUTTON_STATE_PRELIGHT;
     }
   else if (control == META_FRAME_CONTROL_MINIMIZE &&
-           function == META_BUTTON_FUNCTION_MINIMIZE)
+           type == META_BUTTON_TYPE_MINIMIZE)
     {
       if (grab_op == META_GRAB_OP_CLICKING_MINIMIZE)
         state = META_BUTTON_STATE_PRESSED;
@@ -2322,7 +2322,7 @@ update_button_state (MetaButtonFunction function,
         state = META_BUTTON_STATE_PRELIGHT;
     }
   else if (control == META_FRAME_CONTROL_MAXIMIZE &&
-           function == META_BUTTON_FUNCTION_MAXIMIZE)
+           type == META_BUTTON_TYPE_MAXIMIZE)
     {
       if (grab_op == META_GRAB_OP_CLICKING_MAXIMIZE)
         state = META_BUTTON_STATE_PRESSED;
@@ -2330,7 +2330,7 @@ update_button_state (MetaButtonFunction function,
         state = META_BUTTON_STATE_PRELIGHT;
     }
   else if (control == META_FRAME_CONTROL_UNMAXIMIZE &&
-           function == META_BUTTON_FUNCTION_MAXIMIZE)
+           type == META_BUTTON_TYPE_MAXIMIZE)
     {
       if (grab_op == META_GRAB_OP_CLICKING_UNMAXIMIZE)
         state = META_BUTTON_STATE_PRESSED;
@@ -2338,7 +2338,7 @@ update_button_state (MetaButtonFunction function,
         state = META_BUTTON_STATE_PRELIGHT;
     }
   else if (control == META_FRAME_CONTROL_SHADE &&
-           function == META_BUTTON_FUNCTION_SHADE)
+           type == META_BUTTON_TYPE_SHADE)
     {
       if (grab_op == META_GRAB_OP_CLICKING_SHADE)
         state = META_BUTTON_STATE_PRESSED;
@@ -2346,7 +2346,7 @@ update_button_state (MetaButtonFunction function,
         state = META_BUTTON_STATE_PRELIGHT;
     }
   else if (control == META_FRAME_CONTROL_UNSHADE &&
-           function == META_BUTTON_FUNCTION_UNSHADE)
+           type == META_BUTTON_TYPE_UNSHADE)
     {
       if (grab_op == META_GRAB_OP_CLICKING_UNSHADE)
         state = META_BUTTON_STATE_PRESSED;
@@ -2354,7 +2354,7 @@ update_button_state (MetaButtonFunction function,
         state = META_BUTTON_STATE_PRELIGHT;
     }
   else if (control == META_FRAME_CONTROL_ABOVE &&
-           function == META_BUTTON_FUNCTION_ABOVE)
+           type == META_BUTTON_TYPE_ABOVE)
     {
       if (grab_op == META_GRAB_OP_CLICKING_ABOVE)
         state = META_BUTTON_STATE_PRESSED;
@@ -2362,7 +2362,7 @@ update_button_state (MetaButtonFunction function,
         state = META_BUTTON_STATE_PRELIGHT;
     }
   else if (control == META_FRAME_CONTROL_UNABOVE &&
-           function == META_BUTTON_FUNCTION_UNABOVE)
+           type == META_BUTTON_TYPE_UNABOVE)
     {
       if (grab_op == META_GRAB_OP_CLICKING_UNABOVE)
         state = META_BUTTON_STATE_PRESSED;
@@ -2370,7 +2370,7 @@ update_button_state (MetaButtonFunction function,
         state = META_BUTTON_STATE_PRELIGHT;
     }
   else if (control == META_FRAME_CONTROL_STICK &&
-           function == META_BUTTON_FUNCTION_STICK)
+           type == META_BUTTON_TYPE_STICK)
     {
       if (grab_op == META_GRAB_OP_CLICKING_STICK)
         state = META_BUTTON_STATE_PRESSED;
@@ -2378,7 +2378,7 @@ update_button_state (MetaButtonFunction function,
         state = META_BUTTON_STATE_PRELIGHT;
     }
   else if (control == META_FRAME_CONTROL_UNSTICK &&
-           function == META_BUTTON_FUNCTION_UNSTICK)
+           type == META_BUTTON_TYPE_UNSTICK)
     {
       if (grab_op == META_GRAB_OP_CLICKING_UNSTICK)
         state = META_BUTTON_STATE_PRESSED;
@@ -2386,7 +2386,7 @@ update_button_state (MetaButtonFunction function,
         state = META_BUTTON_STATE_PRELIGHT;
     }
   else if (control == META_FRAME_CONTROL_DELETE &&
-           function == META_BUTTON_FUNCTION_CLOSE)
+           type == META_BUTTON_TYPE_CLOSE)
     {
       if (grab_op == META_GRAB_OP_CLICKING_DELETE)
         state = META_BUTTON_STATE_PRESSED;
