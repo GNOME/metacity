@@ -89,16 +89,25 @@ MetaFrameStyleSet *meta_theme_impl_get_style_set  (MetaThemeImpl           *impl
                                                    MetaFrameType            type);
 
 G_GNUC_INTERNAL
-void               get_button_rect_for_type       (MetaButtonType           type,
-                                                   const MetaFrameGeometry *fgeom,
-                                                   GdkRectangle            *rect);
-
-G_GNUC_INTERNAL
 void               scale_border                   (GtkBorder               *border,
                                                    double                   factor);
 
 G_GNUC_INTERNAL
 int                get_window_scaling_factor      (void);
+
+G_GNUC_INTERNAL
+gboolean           is_button_visible              (MetaButton              *button,
+                                                   MetaFrameFlags           flags);
+
+G_GNUC_INTERNAL
+gboolean           strip_button                   (MetaButton              *buttons,
+                                                   gint                     n_buttons,
+                                                   MetaButtonType           type);
+
+G_GNUC_INTERNAL
+gboolean           strip_buttons                  (MetaButtonLayout        *layout,
+                                                   gint                    *n_left,
+                                                   gint                    *n_right);
 
 G_END_DECLS
 

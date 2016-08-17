@@ -132,64 +132,6 @@ meta_theme_impl_get_style_set (MetaThemeImpl *impl,
 }
 
 void
-get_button_rect_for_type (MetaButtonType           type,
-                          const MetaFrameGeometry *fgeom,
-                          GdkRectangle            *rect)
-{
-  switch (type)
-    {
-    case META_BUTTON_TYPE_CLOSE:
-      *rect = fgeom->close_rect.visible;
-      break;
-
-    case META_BUTTON_TYPE_SHADE:
-      *rect = fgeom->shade_rect.visible;
-      break;
-
-    case META_BUTTON_TYPE_UNSHADE:
-      *rect = fgeom->unshade_rect.visible;
-      break;
-
-    case META_BUTTON_TYPE_ABOVE:
-      *rect = fgeom->above_rect.visible;
-      break;
-
-    case META_BUTTON_TYPE_UNABOVE:
-      *rect = fgeom->unabove_rect.visible;
-      break;
-
-    case META_BUTTON_TYPE_STICK:
-      *rect = fgeom->stick_rect.visible;
-      break;
-
-    case META_BUTTON_TYPE_UNSTICK:
-      *rect = fgeom->unstick_rect.visible;
-      break;
-
-    case META_BUTTON_TYPE_MAXIMIZE:
-      *rect = fgeom->max_rect.visible;
-      break;
-
-    case META_BUTTON_TYPE_MINIMIZE:
-      *rect = fgeom->min_rect.visible;
-      break;
-
-    case META_BUTTON_TYPE_MENU:
-      *rect = fgeom->menu_rect.visible;
-      break;
-
-    case META_BUTTON_TYPE_APPMENU:
-      *rect = fgeom->appmenu_rect.visible;
-      break;
-
-    case META_BUTTON_TYPE_LAST:
-    default:
-      g_assert_not_reached ();
-      break;
-    }
-}
-
-void
 scale_border (GtkBorder *border,
               double     factor)
 {
@@ -213,4 +155,141 @@ get_window_scaling_factor (void)
     return g_value_get_int (&value);
   else
     return 1;
+}
+
+gboolean
+is_button_visible (MetaButton     *button,
+                   MetaFrameFlags  flags)
+{
+  gboolean visible;
+
+  visible = FALSE;
+
+  switch (button->type)
+    {
+      case META_BUTTON_TYPE_MENU:
+        if (flags & META_FRAME_ALLOWS_MENU)
+          visible = TRUE;
+        break;
+
+      case META_BUTTON_TYPE_APPMENU:
+        if (flags & META_FRAME_ALLOWS_APPMENU)
+          visible = TRUE;
+        break;
+
+      case META_BUTTON_TYPE_MINIMIZE:
+        if (flags & META_FRAME_ALLOWS_MINIMIZE)
+          visible = TRUE;
+        break;
+
+      case META_BUTTON_TYPE_MAXIMIZE:
+        if (flags & META_FRAME_ALLOWS_MAXIMIZE)
+          visible = TRUE;
+        break;
+
+      case META_BUTTON_TYPE_CLOSE:
+        if (flags & META_FRAME_ALLOWS_DELETE)
+          visible = TRUE;
+        break;
+
+      case META_BUTTON_TYPE_SHADE:
+        if ((flags & META_FRAME_ALLOWS_SHADE) && !(flags & META_FRAME_SHADED))
+          visible = TRUE;
+        break;
+
+      case META_BUTTON_TYPE_ABOVE:
+        if (!(flags & META_FRAME_ABOVE))
+          visible = TRUE;
+        break;
+
+      case META_BUTTON_TYPE_STICK:
+        if (!(flags & META_FRAME_STUCK))
+          visible = TRUE;
+        break;
+
+      case META_BUTTON_TYPE_UNSHADE:
+        if ((flags & META_FRAME_ALLOWS_SHADE) && (flags & META_FRAME_SHADED))
+          visible = TRUE;
+        break;
+
+      case META_BUTTON_TYPE_UNABOVE:
+        if (flags & META_FRAME_ABOVE)
+          visible = TRUE;
+        break;
+
+      case META_BUTTON_TYPE_UNSTICK:
+        if (flags & META_FRAME_STUCK)
+          visible = TRUE;
+        break;
+
+      case META_BUTTON_TYPE_SPACER:
+        visible = TRUE;
+        break;
+
+      case META_BUTTON_TYPE_LAST:
+      default:
+        break;
+    }
+
+  return visible;
+}
+
+gboolean
+strip_button (MetaButton     *buttons,
+              gint            n_buttons,
+              MetaButtonType  type)
+{
+  gint i;
+
+  for (i = 0; i < n_buttons; i++)
+    {
+      if (buttons[i].type == type && buttons[i].visible)
+        {
+          buttons[i].visible = FALSE;
+          return TRUE;
+        }
+    }
+
+  return FALSE;
+}
+
+gboolean
+strip_buttons (MetaButtonLayout *layout,
+               gint             *n_left,
+               gint             *n_right)
+{
+  gint count;
+  MetaButtonType types[META_BUTTON_TYPE_LAST];
+  gint i;
+
+  count = 0;
+  types[count++] = META_BUTTON_TYPE_ABOVE;
+  types[count++] = META_BUTTON_TYPE_UNABOVE;
+  types[count++] = META_BUTTON_TYPE_STICK;
+  types[count++] = META_BUTTON_TYPE_UNSTICK;
+  types[count++] = META_BUTTON_TYPE_SHADE;
+  types[count++] = META_BUTTON_TYPE_UNSHADE;
+  types[count++] = META_BUTTON_TYPE_MINIMIZE;
+  types[count++] = META_BUTTON_TYPE_MAXIMIZE;
+  types[count++] = META_BUTTON_TYPE_CLOSE;
+  types[count++] = META_BUTTON_TYPE_MENU;
+  types[count++] = META_BUTTON_TYPE_APPMENU;
+
+  for (i = 0; i < count; i++)
+    {
+      if (strip_button (layout->left_buttons, layout->n_left_buttons,
+                        types[i]))
+        {
+          *n_left -= 1;
+          return TRUE;
+        }
+      else if (strip_button (layout->right_buttons, layout->n_right_buttons,
+                             types[i]))
+        {
+          *n_left -= 1;
+          return TRUE;
+        }
+    }
+
+  return FALSE;
 }

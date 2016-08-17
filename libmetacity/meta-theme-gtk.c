@@ -288,120 +288,6 @@ meta_theme_gtk_get_frame_borders (MetaThemeImpl    *impl,
   scale_border (&borders->total, scale);
 }
 
-static MetaButtonSpace *
-rect_for_type (MetaFrameGeometry *fgeom,
-               MetaFrameFlags     flags,
-               MetaButtonType     type)
-{
-  switch (type)
-    {
-      case META_BUTTON_TYPE_MENU:
-        if (flags & META_FRAME_ALLOWS_MENU)
-          return &fgeom->menu_rect;
-        else
-          return NULL;
-
-      case META_BUTTON_TYPE_APPMENU:
-        if (flags & META_FRAME_ALLOWS_APPMENU)
-          return &fgeom->appmenu_rect;
-        else
-          return NULL;
-
-      case META_BUTTON_TYPE_MINIMIZE:
-        if (flags & META_FRAME_ALLOWS_MINIMIZE)
-          return &fgeom->min_rect;
-        else
-          return NULL;
-
-      case META_BUTTON_TYPE_MAXIMIZE:
-        if (flags & META_FRAME_ALLOWS_MAXIMIZE)
-          return &fgeom->max_rect;
-        else
-          return NULL;
-
-      case META_BUTTON_TYPE_CLOSE:
-        if (flags & META_FRAME_ALLOWS_DELETE)
-          return &fgeom->close_rect;
-        else
-          return NULL;
-
-      case META_BUTTON_TYPE_SHADE:
-        if ((flags & META_FRAME_ALLOWS_SHADE) && !(flags & META_FRAME_SHADED))
-          return &fgeom->shade_rect;
-        else
-          return NULL;
-
-      case META_BUTTON_TYPE_ABOVE:
-        if (!(flags & META_FRAME_ABOVE))
-          return &fgeom->above_rect;
-        else
-          return NULL;
-
-      case META_BUTTON_TYPE_STICK:
-        if (!(flags & META_FRAME_STUCK))
-          return &fgeom->stick_rect;
-        else
-          return NULL;
-
-      case META_BUTTON_TYPE_UNSHADE:
-        if ((flags & META_FRAME_ALLOWS_SHADE) && (flags & META_FRAME_SHADED))
-          return &fgeom->unshade_rect;
-        else
-          return NULL;
-
-      case META_BUTTON_TYPE_UNABOVE:
-        if (flags & META_FRAME_ABOVE)
-          return &fgeom->unabove_rect;
-        else
-          return NULL;
-
-      case META_BUTTON_TYPE_UNSTICK:
-        if (flags & META_FRAME_STUCK)
-          return &fgeom->unstick_rect;
-        else
-          return NULL;
-
-      case META_BUTTON_TYPE_LAST:
-      default:
-        break;
-    }
-
-  return NULL;
-}
-
-static gboolean
-strip_button (MetaButtonSpace *func_rects[META_BUTTON_TYPE_LAST],
-              int             *n_rects,
-              MetaButtonSpace *to_strip)
-{
-  int i;
-
-  i = 0;
-  while (i < *n_rects)
-    {
-      if (func_rects[i] == to_strip)
-        {
-          *n_rects -= 1;
-
-          /* shift the other rects back in the array */
-          while (i < *n_rects)
-            {
-              func_rects[i] = func_rects[i+1];
-
-              ++i;
-            }
-
-          func_rects[i] = NULL;
-
-          return TRUE;
-        }
-
-      ++i;
-    }
-
-  return FALSE; /* did not strip anything */
-}
-
 static void
 meta_theme_gtk_calc_geometry (MetaThemeImpl     *impl,
                               MetaFrameLayout   *layout,
@@ -424,14 +310,6 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl     *impl,
   int content_width, content_height;
   int button_width, button_height;
   int min_size_for_rounding;
-
-  /* the left/right rects in order; the max # of rects
-   * is the number of button functions
-   */
-  MetaButtonSpace *left_func_rects[META_BUTTON_TYPE_LAST];
-  MetaButtonSpace *right_func_rects[META_BUTTON_TYPE_LAST];
-  gboolean left_buttons_has_spacer[META_BUTTON_TYPE_LAST];
-  gboolean right_buttons_has_spacer[META_BUTTON_TYPE_LAST];
 
   META_THEME_IMPL_GET_CLASS (impl)->get_frame_borders (impl, layout,
                                                        style_info, text_height,
@@ -464,16 +342,6 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl     *impl,
   button_width *= scale;
   button_height *= scale;
 
-  /* FIXME all this code sort of pretends that duplicate buttons
-   * with the same function are allowed, but that breaks the
-   * code in frames.c, so isn't really allowed right now.
-   * Would need left_close_rect, right_close_rect, etc.
-   */
-
-  /* Init all button rects to 0, lame hack */
-  memset (ADDRESS_OF_BUTTON_RECTS (fgeom), '\0',
-          LENGTH_OF_BUTTON_RECTS);
-
   n_left = 0;
   n_right = 0;
   n_left_spacers = 0;
@@ -481,34 +349,43 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl     *impl,
 
   if (!layout->hide_buttons)
     {
-      /* Try to fill in rects */
-      for (i = 0; i < META_BUTTON_TYPE_LAST && button_layout->left_buttons[i] != META_BUTTON_TYPE_LAST; i++)
-        {
-          left_func_rects[n_left] = rect_for_type (fgeom, flags,
-                                                   button_layout->left_buttons[i]);
-          if (left_func_rects[n_left] != NULL)
-            {
-              left_buttons_has_spacer[n_left] = button_layout->left_buttons_has_spacer[i];
-              if (button_layout->left_buttons_has_spacer[i])
-                ++n_left_spacers;
+      MetaButton *button;
 
-              ++n_left;
+      for (i = 0; i < button_layout->n_left_buttons; i++)
+        {
+          button = &button_layout->left_buttons[i];
+          button->visible = is_button_visible (button, flags);
+
+          if (button->visible)
+            {
+              if (button->type != META_BUTTON_TYPE_SPACER)
+                n_left++;
+              else
+                n_left_spacers++;
             }
         }
 
-      for (i = 0; i < META_BUTTON_TYPE_LAST && button_layout->right_buttons[i] != META_BUTTON_TYPE_LAST; i++)
+      for (i = 0; i < button_layout->n_right_buttons; i++)
         {
-          right_func_rects[n_right] = rect_for_type (fgeom, flags,
-                                                     button_layout->right_buttons[i]);
-          if (right_func_rects[n_right] != NULL)
-            {
-              right_buttons_has_spacer[n_right] = button_layout->right_buttons_has_spacer[i];
-              if (button_layout->right_buttons_has_spacer[i])
-                ++n_right_spacers;
+          button = &button_layout->right_buttons[i];
+          button->visible = is_button_visible (button, flags);
 
-              ++n_right;
+          if (button->visible)
+            {
+              if (button->type != META_BUTTON_TYPE_SPACER)
+                n_left++;
+              else
+                n_left_spacers++;
             }
         }
+    }
+  else
+    {
+      for (i = 0; i < button_layout->n_left_buttons; i++)
+        button_layout->left_buttons[i].visible = FALSE;
+
+      for (i = 0; i < button_layout->n_right_buttons; i++)
+        button_layout->right_buttons[i].visible = FALSE;
     }
 
   /* Be sure buttons fit */
@@ -536,61 +413,47 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl     *impl,
       /* First try to remove separators */
       if (n_left_spacers > 0)
         {
-          left_buttons_has_spacer[--n_left_spacers] = FALSE;
-          continue;
+          if (strip_button (button_layout->left_buttons,
+                            button_layout->n_left_buttons,
+                            META_BUTTON_TYPE_SPACER))
+            {
+              n_left_spacers--;
+              continue;
+            }
+          else
+            {
+              g_assert_not_reached ();
+            }
         }
       else if (n_right_spacers > 0)
         {
-          right_buttons_has_spacer[--n_right_spacers] = FALSE;
-          continue;
+          if (strip_button (button_layout->right_buttons,
+                            button_layout->n_right_buttons,
+                            META_BUTTON_TYPE_SPACER))
+            {
+              n_right_spacers--;
+              continue;
+            }
+          else
+            {
+              g_assert_not_reached ();
+            }
         }
 
       /* Otherwise we need to shave out a button. Shave
        * above, stick, shade, min, max, close, then menu (menu is most useful);
        * prefer the default button locations.
        */
-      if (strip_button (left_func_rects, &n_left, &fgeom->above_rect))
-        continue;
-      else if (strip_button (right_func_rects, &n_right, &fgeom->above_rect))
-        continue;
-      else if (strip_button (left_func_rects, &n_left, &fgeom->stick_rect))
-        continue;
-      else if (strip_button (right_func_rects, &n_right, &fgeom->stick_rect))
-        continue;
-      else if (strip_button (left_func_rects, &n_left, &fgeom->shade_rect))
-        continue;
-      else if (strip_button (right_func_rects, &n_right, &fgeom->shade_rect))
-        continue;
-      else if (strip_button (left_func_rects, &n_left, &fgeom->min_rect))
-        continue;
-      else if (strip_button (right_func_rects, &n_right, &fgeom->min_rect))
-        continue;
-      else if (strip_button (left_func_rects, &n_left, &fgeom->max_rect))
-        continue;
-      else if (strip_button (right_func_rects, &n_right, &fgeom->max_rect))
-        continue;
-      else if (strip_button (left_func_rects, &n_left, &fgeom->close_rect))
-        continue;
-      else if (strip_button (right_func_rects, &n_right, &fgeom->close_rect))
-        continue;
-      else if (strip_button (right_func_rects, &n_right, &fgeom->menu_rect))
-        continue;
-      else if (strip_button (left_func_rects, &n_left, &fgeom->menu_rect))
-        continue;
-      else if (strip_button (right_func_rects, &n_right, &fgeom->appmenu_rect))
-        continue;
-      else if (strip_button (left_func_rects, &n_left, &fgeom->appmenu_rect))
-        continue;
+      if (strip_buttons (button_layout, &n_left, &n_right))
+        {
+          continue;
+        }
       else
         {
           g_error ("Could not find a button to strip. n_left = %d n_right = %d",
                    n_left, n_right);
         }
     }
-
-  /* Save the button layout */
-  button_layout->n_left_buttons = n_left;
-  button_layout->n_right_buttons = n_right;
 
   /* center buttons vertically */
   button_y = borders.invisible.top + layout->gtk.frame_border.top * scale +
@@ -600,48 +463,61 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl     *impl,
   x = width - borders.invisible.right - layout->gtk.frame_border.right * scale -
       layout->gtk.titlebar_border.right * scale;
 
-  i = n_right - 1;
-  while (i >= 0)
+  for (i = button_layout->n_right_buttons - 1; i >= 0; i--)
     {
-      MetaButtonSpace *rect;
+      MetaButton *button;
+      GdkRectangle rect;
 
-      if (x < 0) /* if we go negative, leave the buttons we don't get to as 0-width */
+      button = &button_layout->right_buttons[i];
+
+      if (button->visible == FALSE)
+        continue;
+
+      /* if we go negative, leave the buttons we don't get to as 0 - width */
+      if (x < 0)
         break;
 
       x -= layout->gtk.button_margin.right * scale;
 
-      rect = right_func_rects[i];
+      rect.y = button_y;
+      rect.width = button_width;
+      rect.height = button_height;
 
-      rect->visible.x = x - button_width;
-      if (right_buttons_has_spacer[i])
-        rect->visible.x -= (button_width * 0.75);
-
-      rect->visible.y = button_y;
-      rect->visible.width = button_width;
-      rect->visible.height = button_height;
-
-      if (flags & META_FRAME_MAXIMIZED ||
-          flags & META_FRAME_TILED_LEFT ||
-          flags & META_FRAME_TILED_RIGHT)
+      if (button->type == META_BUTTON_TYPE_SPACER)
         {
-          rect->clickable.x = rect->visible.x;
-          rect->clickable.y = rect->visible.y;
-          rect->clickable.width = button_width;
-          rect->clickable.height = button_height;
-
-          if (i == n_right - 1)
-            rect->clickable.width += layout->gtk.frame_border.right * scale +
-                                     layout->gtk.titlebar_border.right * scale;
+          rect.x = x - button_width * 0.75;
+          rect.width *= 0.75;
         }
       else
-        g_memmove (&(rect->clickable), &(rect->visible), sizeof(rect->clickable));
+        {
+          rect.x = x - button_width;
+        }
 
-      x = rect->visible.x - layout->gtk.button_margin.left * scale;
+      button->rect.visible = rect;
+      button->rect.clickable = rect;
+
+      if ((flags & META_FRAME_MAXIMIZED || flags & META_FRAME_TILED_RIGHT) &&
+          i == button_layout->n_right_buttons - 1)
+        {
+          gint extra_width;
+          gint extra_height;
+
+          extra_width = layout->gtk.button_margin.right * scale +
+                        layout->gtk.frame_border.right * scale +
+                        layout->gtk.titlebar_border.right * scale;
+
+          /* FIXME: */
+          extra_height = 0;
+
+          button->rect.clickable.y -= extra_height;
+          button->rect.clickable.width += extra_width;
+          button->rect.clickable.height += extra_height;
+        }
+
+      x = rect.x - layout->gtk.button_margin.left * scale;
 
       if (i > 0)
         x -= layout->gtk.titlebar_spacing * scale;
-
-      --i;
     }
 
   /* save right edge of titlebar for later use */
@@ -653,34 +529,50 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl     *impl,
   x = borders.invisible.left + layout->gtk.frame_border.left * scale +
       layout->gtk.titlebar_border.left * scale;
 
-  for (i = 0; i < n_left; i++)
+  for (i = 0; i < button_layout->n_left_buttons; i++)
     {
-      MetaButtonSpace *rect;
+      MetaButton *button;
+      GdkRectangle rect;
 
-      x += layout->gtk.button_margin.left * scale;
+      button = &button_layout->left_buttons[i];
 
-      rect = left_func_rects[i];
+      if (button->visible == FALSE)
+        continue;
 
-      rect->visible.x = x;
-      rect->visible.y = button_y;
-      rect->visible.width = button_width;
-      rect->visible.height = button_height;
+      rect.x = x + layout->gtk.button_margin.left * scale;
+      rect.y = button_y;
+      rect.width = button_width;
+      rect.height = button_height;
 
-      if (flags & META_FRAME_MAXIMIZED)
+      if (button->type == META_BUTTON_TYPE_SPACER)
+        rect.width *= 0.75;
+
+      button->rect.visible = rect;
+      button->rect.clickable = rect;
+
+      if ((flags & META_FRAME_MAXIMIZED || flags & META_FRAME_TILED_LEFT) &&
+          i == 0)
         {
-          rect->clickable.x = rect->visible.x;
-          rect->clickable.y = rect->visible.y;
-          rect->clickable.width = button_width;
-          rect->clickable.height = button_height;
-        }
-      else
-        g_memmove (&(rect->clickable), &(rect->visible), sizeof(rect->clickable));
+          gint extra_width;
+          gint extra_height;
 
-      x = rect->visible.x + rect->visible.width + layout->gtk.button_margin.right * scale;
-      if (i < n_left - 1)
+          extra_width = layout->gtk.button_margin.left * scale +
+                        layout->gtk.frame_border.left * scale +
+                        layout->gtk.titlebar_border.left * scale;
+
+          /* FIXME: */
+          extra_height = 0;
+
+          button->rect.clickable.x -= extra_width;
+          button->rect.clickable.y -= extra_height;
+          button->rect.clickable.width += extra_width;
+          button->rect.clickable.height += extra_height;
+        }
+
+      x = rect.x + rect.width + layout->gtk.button_margin.right * scale;
+
+      if (i < button_layout->n_left_buttons - 1)
         x += layout->gtk.titlebar_spacing * scale;
-      if (left_buttons_has_spacer[i])
-        x += (button_width * 0.75);
     }
 
   /* Center vertically in the available content area */
@@ -747,10 +639,10 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
   gdouble scale;
   GtkStyleContext *context;
   GtkStateFlags state;
-  MetaButtonType button_type;
   MetaRectangleDouble visible_rect;
   MetaRectangleDouble titlebar_rect;
   const MetaFrameBorders *borders;
+  gint side;
 
   /* We opt out of GTK+ HiDPI handling, so we have to do the scaling
    * ourselves; the nitty-gritty is a bit confusing, so here is an overview:
@@ -827,49 +719,73 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
 
   context = meta_style_info_get_style (style_info, META_STYLE_ELEMENT_BUTTON);
   state = gtk_style_context_get_state (context);
-  for (button_type = 0; button_type < META_BUTTON_TYPE_LAST; button_type++)
+
+  for (side = 0; side < 2; side++)
     {
-      MetaButtonState button_state;
-      const char *button_class;
-      GdkRectangle tmp_rect;
-      MetaRectangleDouble button_rect;
+      MetaButton *buttons;
+      gint n_buttons;
+      gint i;
 
-      button_class = get_class_from_button_type (button_type);
-
-      if (button_class)
-        gtk_style_context_add_class (context, button_class);
-
-      button_state = button_layout->button_states[button_type];
-
-      if (button_state == META_BUTTON_STATE_PRELIGHT)
-        gtk_style_context_set_state (context, state | GTK_STATE_PRELIGHT);
-      else if (button_state == META_BUTTON_STATE_PRESSED)
-        gtk_style_context_set_state (context, state | GTK_STATE_ACTIVE);
-      else
-        gtk_style_context_set_state (context, state);
-
-      cairo_save (cr);
-
-      get_button_rect_for_type (button_type, fgeom, &tmp_rect);
-
-      button_rect.x = tmp_rect.x / scale;
-      button_rect.y = tmp_rect.y / scale;
-      button_rect.width = tmp_rect.width / scale;
-      button_rect.height = tmp_rect.height / scale;
-
-      if (button_rect.width > 0 && button_rect.height > 0)
+      if (side == 0)
         {
-          GdkPixbuf *pixbuf = NULL;
-          const char *icon_name = NULL;
+          buttons = button_layout->left_buttons;
+          n_buttons = button_layout->n_left_buttons;
+        }
+      else if (side == 1)
+        {
+          buttons = button_layout->right_buttons;
+          n_buttons = button_layout->n_right_buttons;
+        }
+      else
+        {
+          g_assert_not_reached ();
+        }
 
-          gtk_render_background (context, cr,
-                                 button_rect.x, button_rect.y,
-                                 button_rect.width, button_rect.height);
-          gtk_render_frame (context, cr,
-                            button_rect.x, button_rect.y,
-                            button_rect.width, button_rect.height);
+      for (i = 0; i < n_buttons; i++)
+        {
+          MetaButton *button;
+          gdouble x;
+          gdouble y;
+          gdouble width;
+          gdouble height;
+          const gchar *button_class;
+          const gchar *icon_name;
+          GdkPixbuf *pixbuf;
 
-          switch (button_type)
+          button = &buttons[i];
+
+          x = button->rect.visible.x / scale;
+          y = button->rect.visible.y / scale;
+          width = button->rect.visible.width / scale;
+          height = button->rect.visible.height / scale;
+
+          if (!button->visible || button->type == META_BUTTON_TYPE_SPACER ||
+              width <= 0 || height <= 0)
+            {
+              continue;
+            }
+
+          button_class = get_class_from_button_type (button->type);
+
+          if (button_class)
+            gtk_style_context_add_class (context, button_class);
+
+          if (button->state == META_BUTTON_STATE_PRELIGHT)
+            gtk_style_context_set_state (context, state | GTK_STATE_PRELIGHT);
+          else if (button->state == META_BUTTON_STATE_PRESSED)
+            gtk_style_context_set_state (context, state | GTK_STATE_ACTIVE);
+          else
+            gtk_style_context_set_state (context, state);
+
+          cairo_save (cr);
+
+          gtk_render_background (context, cr, x, y, width, height);
+          gtk_render_frame (context, cr, x, y, width, height);
+
+          icon_name = NULL;
+          pixbuf = NULL;
+
+          switch (button->type)
             {
               case META_BUTTON_TYPE_CLOSE:
                 icon_name = "window-close-symbolic";
@@ -895,49 +811,58 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
               case META_BUTTON_TYPE_UNSHADE:
               case META_BUTTON_TYPE_UNABOVE:
               case META_BUTTON_TYPE_UNSTICK:
+              case META_BUTTON_TYPE_SPACER:
               case META_BUTTON_TYPE_LAST:
               default:
-                icon_name = NULL;
                 break;
             }
 
           if (icon_name)
             {
-              GtkIconTheme *theme = gtk_icon_theme_get_default ();
+              GtkIconTheme *theme;
               GtkIconInfo *info;
 
+              theme = gtk_icon_theme_get_default ();
               info = gtk_icon_theme_lookup_icon_for_scale (theme, icon_name,
                                                            style->layout->gtk.icon_size,
                                                            scale, 0);
 
+              g_assert (pixbuf == NULL);
               pixbuf = gtk_icon_info_load_symbolic_for_context (info, context, NULL, NULL);
             }
 
           if (pixbuf)
             {
-              float width, height;
-              gdouble x, y;
+              gdouble pwidth;
+              gdouble pheight;
+              gdouble px;
+              gdouble py;
+              gdouble scale_x;
+              gdouble scale_y;
 
-              width = gdk_pixbuf_get_width (pixbuf) / scale;
-              height = gdk_pixbuf_get_height (pixbuf) / scale;
-              x = button_rect.x + (button_rect.width - width) / 2;
-              y = button_rect.y + (button_rect.height - height) / 2;
+              pwidth = gdk_pixbuf_get_width (pixbuf) / scale;
+              pheight = gdk_pixbuf_get_height (pixbuf) / scale;
+              px = x + (width - pwidth) / 2;
+              py = y + (height - pheight) / 2;
 
-              cairo_translate (cr, x, y);
-              cairo_scale (cr,
-                           width / style->layout->gtk.icon_size / scale,
-                           height / style->layout->gtk.icon_size / scale);
+              scale_x = pwidth / style->layout->gtk.icon_size / scale;
+              scale_y = pheight / style->layout->gtk.icon_size / scale;
+
+              cairo_translate (cr, px, py);
+              cairo_scale (cr, scale_x, scale_y);
               gdk_cairo_set_source_pixbuf (cr, pixbuf, 0, 0);
               cairo_paint (cr);
 
               g_object_unref (pixbuf);
             }
+
+          cairo_restore (cr);
+
+          if (button_class)
+            gtk_style_context_remove_class (context, button_class);
+
+          gtk_style_context_set_state (context, state);
         }
-
-      cairo_restore (cr);
-
-      if (button_class)
-        gtk_style_context_remove_class (context, button_class);
     }
 }
 

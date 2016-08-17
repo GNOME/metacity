@@ -21,7 +21,7 @@
 #include "meta-button-layout-private.h"
 
 static MetaButtonType
-meta_button_type_from_string (const gchar *str)
+type_from_string (const gchar *str)
 {
   if (g_strcmp0 (str, "menu") == 0)
     return META_BUTTON_TYPE_MENU;
@@ -45,12 +45,14 @@ meta_button_type_from_string (const gchar *str)
     return META_BUTTON_TYPE_STICK;
   else if (g_strcmp0 (str, "unstick") == 0)
     return META_BUTTON_TYPE_UNSTICK;
+  else if (g_strcmp0 (str, "spacer") == 0)
+    return META_BUTTON_TYPE_SPACER;
 
   return META_BUTTON_TYPE_LAST;
 }
 
 static MetaButtonType
-meta_button_type_get_opposite (MetaButtonType type)
+get_opposite_type (MetaButtonType type)
 {
   switch (type)
     {
@@ -74,155 +76,141 @@ meta_button_type_get_opposite (MetaButtonType type)
       case META_BUTTON_TYPE_MINIMIZE:
       case META_BUTTON_TYPE_MAXIMIZE:
       case META_BUTTON_TYPE_CLOSE:
+      case META_BUTTON_TYPE_SPACER:
       case META_BUTTON_TYPE_LAST:
-        return META_BUTTON_TYPE_LAST;
-
       default:
-        return META_BUTTON_TYPE_LAST;
+        break;
     }
+
+  return META_BUTTON_TYPE_LAST;
 }
 
-static void
-meta_button_layout_init (MetaButtonLayout *layout)
+static MetaButton *
+string_to_buttons (const gchar *str,
+                   gint        *n_buttons)
 {
-  gint i;
-
-  for (i = 0; i < META_BUTTON_TYPE_LAST; i++)
-    {
-      layout->left_buttons[i] = META_BUTTON_TYPE_LAST;
-      layout->left_buttons_has_spacer[i] = FALSE;
-
-      layout->right_buttons[i] = META_BUTTON_TYPE_LAST;
-      layout->right_buttons_has_spacer[i] = FALSE;
-    }
-}
-
-static void
-string_to_buttons (const gchar    *str,
-                   MetaButtonType  side_buttons[META_BUTTON_TYPE_LAST],
-                   gboolean        side_has_spacer[META_BUTTON_TYPE_LAST])
-{
-  gint i;
-  gint b;
-  gboolean used[META_BUTTON_TYPE_LAST];
   gchar **buttons;
+  MetaButton *retval;
+  gint index;
+  gint i;
 
-  i = 0;
-  while (i < META_BUTTON_TYPE_LAST)
-    used[i++] = FALSE;
+  *n_buttons = 0;
+
+  if (str == NULL)
+    return NULL;
 
   buttons = g_strsplit (str, ",", -1);
 
-  i = b = 0;
-  while (buttons[b] != NULL)
+  for (i = 0; buttons[i] != NULL; i++)
     {
       MetaButtonType type;
 
-      type = meta_button_type_from_string (buttons[b]);
+      type = type_from_string (buttons[i]);
 
-      if (i > 0 && g_strcmp0 ("spacer", buttons[b]) == 0)
+      if (type != META_BUTTON_TYPE_LAST)
         {
-          side_has_spacer[i - 1] = TRUE;
-
-          type = meta_button_type_get_opposite (type);
-          if (type != META_BUTTON_TYPE_LAST)
-            side_has_spacer[i - 2] = TRUE;
+          if (get_opposite_type (type) != META_BUTTON_TYPE_LAST)
+            *n_buttons += 2;
+          else
+            *n_buttons += 1;
         }
       else
         {
-          if (type != META_BUTTON_TYPE_LAST && !used[type])
-            {
-              side_buttons[i] = type;
-              used[type] = TRUE;
-              i++;
+          g_debug ("Ignoring unknown button name - '%s'", buttons[i]);
+        }
+    }
 
-              type = meta_button_type_get_opposite (type);
-              if (type != META_BUTTON_TYPE_LAST)
-                side_buttons[i++] = type;
-            }
-          else
+  retval = g_new0 (MetaButton, *n_buttons);
+  index = 0;
+
+  for (i = 0; buttons[i] != NULL; i++)
+    {
+      MetaButtonType type;
+
+      type = type_from_string (buttons[i]);
+
+      if (type != META_BUTTON_TYPE_LAST)
+        {
+          GdkRectangle empty;
+          MetaButton tmp;
+
+          empty.x = 0;
+          empty.y = 0;
+          empty.width = 0;
+          empty.height = 0;
+
+          tmp.type = type;
+          tmp.state = META_BUTTON_STATE_NORMAL;
+          tmp.rect.visible = empty;
+          tmp.rect.clickable = empty;
+          tmp.visible = TRUE;
+
+          retval[index++] = tmp;
+
+          type = get_opposite_type (type);
+          if (type != META_BUTTON_TYPE_LAST)
             {
-              g_debug ("Ignoring unknown or already-used button name - '%s'",
-                       buttons[b]);
+              tmp.type = type;
+              retval[index++] = tmp;
             }
         }
-
-      b++;
     }
 
   g_strfreev (buttons);
+
+  return retval;
 }
 
 MetaButtonLayout *
 meta_button_layout_new (const gchar *str,
                         gboolean     invert)
 {
-  gchar **sides;
   MetaButtonLayout *layout;
-  MetaButtonLayout *rtl_layout;
-  gint i;
-  gint j;
+  gchar **sides;
+  const gchar *buttons;
+  gint n_buttons;
 
   layout = g_new0 (MetaButtonLayout, 1);
-  meta_button_layout_init (layout);
-
   sides = g_strsplit (str, ":", 2);
 
-  if (sides[0] != NULL)
-    {
-      string_to_buttons (sides[0], layout->left_buttons,
-                         layout->left_buttons_has_spacer);
-    }
+  buttons = sides[0];
+  layout->left_buttons = string_to_buttons (buttons, &n_buttons);
+  layout->n_left_buttons = n_buttons;
 
-  if (sides[0] != NULL && sides[1] != NULL)
-    {
-      string_to_buttons (sides[1], layout->right_buttons,
-                         layout->right_buttons_has_spacer);
-    }
+  buttons = sides[0] != NULL ? sides[1] : NULL;
+  layout->right_buttons = string_to_buttons (buttons, &n_buttons);
+  layout->n_right_buttons = n_buttons;
 
   g_strfreev (sides);
 
-  if (!invert)
-    return layout;
-
-  rtl_layout = g_new0 (MetaButtonLayout, 1);
-  meta_button_layout_init (rtl_layout);
-
-  i = 0;
-  while (rtl_layout->left_buttons[i] != META_BUTTON_TYPE_LAST)
-    i++;
-
-  for (j = 0; j < i; j++)
+  if (invert)
     {
-      rtl_layout->right_buttons[j] = layout->left_buttons[i - j - 1];
+      MetaButtonLayout *rtl_layout;
+      gint i;
 
-      if (j == 0)
-        rtl_layout->right_buttons_has_spacer[i - 1] = layout->left_buttons_has_spacer[i - j - 1];
-      else
-        rtl_layout->right_buttons_has_spacer[j - 1] = layout->left_buttons_has_spacer[i - j - 1];
+      rtl_layout = g_new0 (MetaButtonLayout, 1);
+      rtl_layout->left_buttons = g_new0 (MetaButton, layout->n_right_buttons);
+      rtl_layout->right_buttons = g_new0 (MetaButton, layout->n_left_buttons);
+
+      for (i = 0; i < layout->n_left_buttons; i++)
+        rtl_layout->right_buttons[i] = rtl_layout->left_buttons[layout->n_left_buttons - i];
+
+      for (i = 0; i < layout->n_right_buttons; i++)
+        rtl_layout->left_buttons[i] = rtl_layout->right_buttons[layout->n_right_buttons - i];
+
+      meta_button_layout_free (layout);
+
+      return rtl_layout;
     }
 
-  i = 0;
-  while (rtl_layout->left_buttons[i] != META_BUTTON_TYPE_LAST)
-    i++;
-
-  for (j = 0; j < i; j++)
-    {
-      rtl_layout->left_buttons[j] = layout->right_buttons[i - j - 1];
-
-      if (j == 0)
-        rtl_layout->left_buttons_has_spacer[i - 1] = layout->right_buttons_has_spacer[i - j - 1];
-      else
-        rtl_layout->left_buttons_has_spacer[j - 1] = layout->right_buttons_has_spacer[i - j - 1];
-    }
-
-  meta_button_layout_free (layout);
-
-  return rtl_layout;
+  return layout;
 }
 
 void
 meta_button_layout_free (MetaButtonLayout *layout)
 {
+  g_free (layout->left_buttons);
+  g_free (layout->right_buttons);
+
   g_free (layout);
 }

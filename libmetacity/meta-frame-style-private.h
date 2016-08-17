@@ -19,7 +19,7 @@
 #ifndef META_FRAME_STYLE_PRIVATE_H
 #define META_FRAME_STYLE_PRIVATE_H
 
-#include "meta-button-enums.h"
+#include "meta-button.h"
 #include "meta-button-private.h"
 #include "meta-color-spec-private.h"
 #include "meta-draw-op-private.h"

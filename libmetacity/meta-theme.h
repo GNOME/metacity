@@ -20,13 +20,12 @@
 #define META_THEME_H
 
 #include <gtk/gtk.h>
-#include <libmetacity/meta-button-enums.h>
+#include <libmetacity/meta-button.h>
 #include <libmetacity/meta-frame-borders.h>
 #include <libmetacity/meta-frame-enums.h>
 
 G_BEGIN_DECLS
 
-typedef struct _MetaButtonSpace MetaButtonSpace;
 typedef struct _MetaFrameGeometry MetaFrameGeometry;
 
 typedef MetaButtonState (* MetaButtonStateFunc) (MetaButtonType type,
@@ -82,20 +81,6 @@ typedef enum
 } MetaThemeType;
 
 /**
- * The computed size of a button (really just a way of tying its
- * visible and clickable areas together).
- * The reason for two different rectangles here is Fitts' law & maximized
- * windows; see bug #97703 for more details.
- */
-struct _MetaButtonSpace
-{
-  /** The screen area where the button's image is drawn */
-  GdkRectangle visible;
-  /** The screen area where the button can be activated by clicking */
-  GdkRectangle clickable;
-};
-
-/**
  * Calculated actual geometry of the frame
  */
 struct _MetaFrameGeometry
@@ -106,34 +91,6 @@ struct _MetaFrameGeometry
   int height;
 
   GdkRectangle title_rect;
-
-  /* used for a memset hack */
-#define ADDRESS_OF_BUTTON_RECTS(fgeom) (((char*)(fgeom)) + G_STRUCT_OFFSET (MetaFrameGeometry, close_rect))
-#define LENGTH_OF_BUTTON_RECTS (G_STRUCT_OFFSET (MetaFrameGeometry, right_single_background) + sizeof (GdkRectangle) - G_STRUCT_OFFSET (MetaFrameGeometry, close_rect))
-
-  /* The button rects (if changed adjust memset hack) */
-  MetaButtonSpace close_rect;
-  MetaButtonSpace max_rect;
-  MetaButtonSpace min_rect;
-  MetaButtonSpace menu_rect;
-  MetaButtonSpace appmenu_rect;
-  MetaButtonSpace shade_rect;
-  MetaButtonSpace above_rect;
-  MetaButtonSpace stick_rect;
-  MetaButtonSpace unshade_rect;
-  MetaButtonSpace unabove_rect;
-  MetaButtonSpace unstick_rect;
-
-#define MAX_MIDDLE_BACKGROUNDS (META_BUTTON_TYPE_LAST - 2)
-  GdkRectangle left_left_background;
-  GdkRectangle left_middle_backgrounds[MAX_MIDDLE_BACKGROUNDS];
-  GdkRectangle left_right_background;
-  GdkRectangle left_single_background;
-  GdkRectangle right_left_background;
-  GdkRectangle right_middle_backgrounds[MAX_MIDDLE_BACKGROUNDS];
-  GdkRectangle right_right_background;
-  GdkRectangle right_single_background;
-  /* End of button rects (if changed adjust memset hack) */
 
   /* Round corners */
   guint top_left_corner_rounded_radius;
@@ -155,6 +112,11 @@ void           meta_theme_invalidate        (MetaTheme                   *theme)
 void           meta_theme_set_button_layout (MetaTheme                   *theme,
                                              const gchar                 *button_layout,
                                              gboolean                     invert);
+
+gboolean       meta_theme_get_button        (MetaTheme                   *theme,
+                                             gint                         x,
+                                             gint                         y,
+                                             MetaButton                  *button);
 
 void           meta_theme_set_composited    (MetaTheme                   *theme,
                                              gboolean                     composited);

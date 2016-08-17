@@ -16,10 +16,10 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef META_BUTTON_ENUMS_H
-#define META_BUTTON_ENUMS_H
+#ifndef META_BUTTON_H
+#define META_BUTTON_H
 
-#include <glib.h>
+#include <gdk/gdk.h>
 
 G_BEGIN_DECLS
 
@@ -36,6 +36,7 @@ typedef enum
   META_BUTTON_TYPE_UNABOVE,
   META_BUTTON_TYPE_STICK,
   META_BUTTON_TYPE_UNSTICK,
+  META_BUTTON_TYPE_SPACER,
   META_BUTTON_TYPE_LAST
 } MetaButtonType;
 
@@ -46,6 +47,26 @@ typedef enum
   META_BUTTON_STATE_PRELIGHT,
   META_BUTTON_STATE_LAST
 } MetaButtonState;
+
+typedef struct
+{
+  MetaButtonType  type;
+  MetaButtonState state;
+
+  /* The computed size of a button (really just a way of tying its visible
+   * and clickable areas together). The reason for two different rectangles
+   * here is Fitts' law & maximized windows; See bug #97703 for more details.
+   */
+  struct {
+    /* The area where the button's image is drawn. */
+    GdkRectangle  visible;
+
+    /* The area where the button can be activated by clicking */
+    GdkRectangle clickable;
+  } rect;
+
+  gboolean       visible;
+} MetaButton;
 
 G_END_DECLS
 

@@ -48,9 +48,6 @@ static void meta_frames_destroy       (GtkWidget *widget);
 static void meta_frames_finalize      (GObject   *object);
 static void meta_frames_style_updated (GtkWidget *widget);
 
-static void meta_frames_update_prelit_control (MetaFrames      *frames,
-                                               MetaUIFrame     *frame,
-                                               MetaFrameControl control);
 static gboolean meta_frames_button_press_event    (GtkWidget           *widget,
                                                    GdkEventButton      *event);
 static gboolean meta_frames_button_release_event  (GtkWidget           *widget,
@@ -81,13 +78,6 @@ static MetaUIFrame* meta_frames_lookup_window (MetaFrames *frames,
 static void meta_frames_font_changed          (MetaFrames *frames);
 static void meta_frames_button_layout_changed (MetaFrames *frames);
 
-
-static GdkRectangle*    control_rect (MetaFrameControl   control,
-                                      MetaFrameGeometry *fgeom);
-static MetaFrameControl get_control  (MetaFrames        *frames,
-                                      MetaUIFrame       *frame,
-                                      int                x,
-                                      int                y);
 static void clear_tip (MetaFrames *frames);
 static void invalidate_all_caches (MetaFrames *frames);
 static void invalidate_whole_window (MetaFrames *frames,
@@ -112,6 +102,277 @@ struct _MetaFrames
 };
 
 G_DEFINE_TYPE (MetaFrames, meta_frames, GTK_TYPE_WINDOW)
+
+static void
+get_client_rect (MetaFrameGeometry *fgeom,
+                 GdkRectangle      *rect)
+{
+  rect->x = fgeom->borders.total.left;
+  rect->y = fgeom->borders.total.top;
+  rect->width = fgeom->width - fgeom->borders.total.right - rect->x;
+  rect->height = fgeom->height - fgeom->borders.total.bottom - rect->y;
+}
+
+#define RESIZE_EXTENDS 15
+#define TOP_RESIZE_HEIGHT 4
+static MetaFrameControl
+get_control (MetaFrames  *frames,
+             MetaUIFrame *frame,
+             gint         x,
+             gint         y)
+{
+  MetaFrameGeometry fgeom;
+  MetaFrameFlags flags;
+  MetaFrameType type;
+  gboolean has_vert, has_horiz;
+  gboolean has_north_resize;
+  GdkRectangle client;
+  MetaFrameBorders borders;
+  MetaTheme *theme;
+  MetaButton button;
+
+  meta_frames_calc_geometry (frames, frame, &fgeom);
+  get_client_rect (&fgeom, &client);
+
+  borders = fgeom.borders;
+  theme = meta_ui_get_theme ();
+
+  if (x < borders.invisible.left - borders.resize.left ||
+      y < borders.invisible.top - borders.resize.top ||
+      x > fgeom.width - borders.invisible.right + borders.resize.right ||
+      y > fgeom.height - borders.invisible.bottom + borders.resize.bottom)
+    return META_FRAME_CONTROL_NONE;
+
+  if (POINT_IN_RECT (x, y, client))
+    return META_FRAME_CONTROL_CLIENT_AREA;
+
+  meta_core_get (frames->xdisplay, frame->xwindow,
+                 META_CORE_GET_FRAME_FLAGS, &flags,
+                 META_CORE_GET_FRAME_TYPE, &type,
+                 META_CORE_GET_END);
+
+  if (meta_theme_get_button (theme, x, y, &button))
+    {
+      switch (button.type)
+        {
+          case META_BUTTON_TYPE_CLOSE:
+            return META_FRAME_CONTROL_DELETE;
+
+          case META_BUTTON_TYPE_MINIMIZE:
+            return META_FRAME_CONTROL_MINIMIZE;
+
+          case META_BUTTON_TYPE_MENU:
+            return META_FRAME_CONTROL_MENU;
+
+          case META_BUTTON_TYPE_APPMENU:
+            return META_FRAME_CONTROL_APPMENU;
+
+          case META_BUTTON_TYPE_MAXIMIZE:
+            if (flags & META_FRAME_MAXIMIZED)
+              return META_FRAME_CONTROL_UNMAXIMIZE;
+            else
+              return META_FRAME_CONTROL_MAXIMIZE;
+
+          case META_BUTTON_TYPE_SHADE:
+            return META_FRAME_CONTROL_SHADE;
+
+          case META_BUTTON_TYPE_UNSHADE:
+            return META_FRAME_CONTROL_UNSHADE;
+
+          case META_BUTTON_TYPE_ABOVE:
+            return META_FRAME_CONTROL_ABOVE;
+
+          case META_BUTTON_TYPE_UNABOVE:
+            return META_FRAME_CONTROL_UNABOVE;
+
+          case META_BUTTON_TYPE_STICK:
+            return META_FRAME_CONTROL_STICK;
+
+          case META_BUTTON_TYPE_UNSTICK:
+            return META_FRAME_CONTROL_UNSTICK;
+
+          case META_BUTTON_TYPE_SPACER:
+          case META_BUTTON_TYPE_LAST:
+          default:
+            break;
+        }
+    }
+
+  has_north_resize = (type != META_FRAME_TYPE_ATTACHED);
+  has_vert = (flags & META_FRAME_ALLOWS_VERTICAL_RESIZE) != 0;
+  has_horiz = (flags & META_FRAME_ALLOWS_HORIZONTAL_RESIZE) != 0;
+
+  if (POINT_IN_RECT (x, y, fgeom.title_rect))
+    {
+      if (has_vert && y <= (fgeom.borders.invisible.top + TOP_RESIZE_HEIGHT) && has_north_resize)
+        return META_FRAME_CONTROL_RESIZE_N;
+      else
+        return META_FRAME_CONTROL_TITLE;
+    }
+
+  /* South resize always has priority over north resize,
+   * in case of overlap.
+   */
+
+  if (y >= (fgeom.height - fgeom.borders.total.bottom - RESIZE_EXTENDS) &&
+      x >= (fgeom.width - fgeom.borders.total.right - RESIZE_EXTENDS))
+    {
+      if (has_vert && has_horiz)
+        return META_FRAME_CONTROL_RESIZE_SE;
+      else if (has_vert)
+        return META_FRAME_CONTROL_RESIZE_S;
+      else if (has_horiz)
+        return META_FRAME_CONTROL_RESIZE_E;
+    }
+  else if (y >= (fgeom.height - fgeom.borders.total.bottom - RESIZE_EXTENDS) &&
+           x <= (fgeom.borders.total.left + RESIZE_EXTENDS))
+    {
+      if (has_vert && has_horiz)
+        return META_FRAME_CONTROL_RESIZE_SW;
+      else if (has_vert)
+        return META_FRAME_CONTROL_RESIZE_S;
+      else if (has_horiz)
+        return META_FRAME_CONTROL_RESIZE_W;
+    }
+  else if (y < (fgeom.borders.invisible.top + RESIZE_EXTENDS) &&
+           x <= (fgeom.borders.total.left + RESIZE_EXTENDS) && has_north_resize)
+    {
+      if (has_vert && has_horiz)
+        return META_FRAME_CONTROL_RESIZE_NW;
+      else if (has_vert)
+        return META_FRAME_CONTROL_RESIZE_N;
+      else if (has_horiz)
+        return META_FRAME_CONTROL_RESIZE_W;
+    }
+  else if (y < (fgeom.borders.invisible.top + RESIZE_EXTENDS) &&
+           x >= (fgeom.width - fgeom.borders.total.right - RESIZE_EXTENDS) && has_north_resize)
+    {
+      if (has_vert && has_horiz)
+        return META_FRAME_CONTROL_RESIZE_NE;
+      else if (has_vert)
+        return META_FRAME_CONTROL_RESIZE_N;
+      else if (has_horiz)
+        return META_FRAME_CONTROL_RESIZE_E;
+    }
+  else if (y < (fgeom.borders.invisible.top + TOP_RESIZE_HEIGHT))
+    {
+      if (has_vert && has_north_resize)
+        return META_FRAME_CONTROL_RESIZE_N;
+    }
+  else if (y >= (fgeom.height - fgeom.borders.total.bottom - RESIZE_EXTENDS))
+    {
+      if (has_vert)
+        return META_FRAME_CONTROL_RESIZE_S;
+    }
+  else if (x <= fgeom.borders.total.left + RESIZE_EXTENDS)
+    {
+      if (has_horiz)
+        return META_FRAME_CONTROL_RESIZE_W;
+    }
+  else if (x >= (fgeom.width - fgeom.borders.total.right - RESIZE_EXTENDS))
+    {
+      if (has_horiz)
+        return META_FRAME_CONTROL_RESIZE_E;
+    }
+
+  if (y >= fgeom.borders.total.top)
+    return META_FRAME_CONTROL_NONE;
+  else
+    return META_FRAME_CONTROL_TITLE;
+}
+
+static gboolean
+get_control_rect (MetaFrameControl   control,
+                  MetaFrameGeometry *fgeom,
+                  gint               x,
+                  gint               y,
+                  GdkRectangle      *rect)
+{
+  MetaButtonType type;
+  MetaTheme *theme;
+  MetaButton button;
+
+  type = META_BUTTON_TYPE_LAST;
+
+  switch (control)
+    {
+      case META_FRAME_CONTROL_TITLE:
+        *rect = fgeom->title_rect;
+        return TRUE;
+
+      case META_FRAME_CONTROL_DELETE:
+        type = META_BUTTON_TYPE_CLOSE;
+        break;
+
+      case META_FRAME_CONTROL_MENU:
+        type = META_BUTTON_TYPE_MENU;
+        break;
+
+      case META_FRAME_CONTROL_APPMENU:
+        type = META_BUTTON_TYPE_APPMENU;
+        break;
+
+      case META_FRAME_CONTROL_MINIMIZE:
+        type = META_BUTTON_TYPE_MINIMIZE;
+        break;
+
+      case META_FRAME_CONTROL_MAXIMIZE:
+      case META_FRAME_CONTROL_UNMAXIMIZE:
+        type = META_BUTTON_TYPE_MAXIMIZE;
+        break;
+
+      case META_FRAME_CONTROL_SHADE:
+        type = META_BUTTON_TYPE_SHADE;
+        break;
+
+      case META_FRAME_CONTROL_UNSHADE:
+        type = META_BUTTON_TYPE_UNSHADE;
+        break;
+
+      case META_FRAME_CONTROL_ABOVE:
+        type = META_BUTTON_TYPE_ABOVE;
+        break;
+
+      case META_FRAME_CONTROL_UNABOVE:
+        type = META_BUTTON_TYPE_UNABOVE;
+        break;
+
+      case META_FRAME_CONTROL_STICK:
+        type = META_BUTTON_TYPE_STICK;
+        break;
+
+      case META_FRAME_CONTROL_UNSTICK:
+        type = META_BUTTON_TYPE_UNSTICK;
+        break;
+
+      case META_FRAME_CONTROL_CLIENT_AREA:
+      case META_FRAME_CONTROL_RESIZE_SE:
+      case META_FRAME_CONTROL_RESIZE_S:
+      case META_FRAME_CONTROL_RESIZE_SW:
+      case META_FRAME_CONTROL_RESIZE_N:
+      case META_FRAME_CONTROL_RESIZE_NE:
+      case META_FRAME_CONTROL_RESIZE_NW:
+      case META_FRAME_CONTROL_RESIZE_W:
+      case META_FRAME_CONTROL_RESIZE_E:
+      case META_FRAME_CONTROL_NONE:
+      default:
+        break;
+    }
+
+  theme = meta_ui_get_theme ();
+
+  if (type != META_BUTTON_TYPE_LAST &&
+      meta_theme_get_button (theme, x, y, &button))
+    {
+      if (type == button.type)
+        {
+          *rect = button.rect.clickable;
+          return TRUE;
+        }
+    }
+
+  return FALSE;
+}
 
 static void
 meta_frames_class_init (MetaFramesClass *frames_class)
@@ -514,6 +775,8 @@ meta_frames_manage_window (MetaFrames *frames,
   frame->expose_delayed = FALSE;
   frame->shape_applied = FALSE;
   frame->prelit_control = META_FRAME_CONTROL_NONE;
+  frame->prelit_x = 0;
+  frame->prelit_y = 0;
 
   meta_core_grab_buttons (frames->xdisplay, frame->xwindow);
 
@@ -640,21 +903,6 @@ apply_cairo_region_to_window (Display        *display,
                            op, YXBanded);
 
   g_free (rects);
-}
-
-/* The client rectangle surrounds client window; it subtracts both
- * the visible and invisible borders from the frame window's size.
- */
-static void
-get_client_rect (MetaFrameGeometry     *fgeom,
-                 int                    window_width,
-                 int                    window_height,
-                 cairo_rectangle_int_t *rect)
-{
-  rect->x = fgeom->borders.total.left;
-  rect->y = fgeom->borders.total.top;
-  rect->width = window_width - fgeom->borders.total.right - rect->x;
-  rect->height = window_height - fgeom->borders.total.bottom - rect->y;
 }
 
 /* The visible frame rectangle surrounds the visible portion of the
@@ -1120,12 +1368,13 @@ show_tip_now (MetaFrames *frames)
   if (tiptext)
     {
       MetaFrameGeometry fgeom;
-      GdkRectangle *rect;
+      GdkRectangle rect;
       int dx, dy;
 
       meta_frames_calc_geometry (frames, frame, &fgeom);
 
-      rect = control_rect (control, &fgeom);
+      if (!get_control_rect (control, &fgeom, x, y, &rect))
+        return;
 
       /* get conversion delta for root-to-frame coords */
       dx = root_x - x;
@@ -1133,10 +1382,10 @@ show_tip_now (MetaFrames *frames)
 
       /* Align the tooltip to the button right end if RTL */
       if (meta_ui_get_direction() == META_UI_DIRECTION_RTL)
-        dx += rect->width;
+        dx += rect.width;
 
-      meta_fixed_tip_show (rect->x + dx,
-                           rect->y + rect->height + 2 + dy,
+      meta_fixed_tip_show (rect.x + dx,
+                           rect.y + rect.height + 2 + dy,
                            tiptext);
     }
 }
@@ -1178,19 +1427,144 @@ clear_tip (MetaFrames *frames)
 }
 
 static void
-redraw_control (MetaFrames *frames,
-                MetaUIFrame *frame,
-                MetaFrameControl control)
+redraw_control (MetaFrames       *frames,
+                MetaUIFrame      *frame,
+                MetaFrameControl  control,
+                gint              x,
+                gint              y)
 {
   MetaFrameGeometry fgeom;
-  GdkRectangle *rect;
+  GdkRectangle rect;
 
   meta_frames_calc_geometry (frames, frame, &fgeom);
 
-  rect = control_rect (control, &fgeom);
+  if (!get_control_rect (control, &fgeom, x, y, &rect))
+    return;
 
-  gdk_window_invalidate_rect (frame->window, rect, FALSE);
+  gdk_window_invalidate_rect (frame->window, &rect, FALSE);
   invalidate_cache (frames, frame);
+}
+
+static void
+update_prelit_control (MetaFrames       *frames,
+                       MetaUIFrame      *frame,
+                       MetaFrameControl  control,
+                       gint              x,
+                       gint              y)
+{
+  MetaCursor cursor;
+  MetaFrameControl old_control;
+  gint old_x;
+  gint old_y;
+
+  meta_verbose ("Updating prelit control from %u to %u\n",
+                frame->prelit_control, control);
+
+  switch (control)
+    {
+      case META_FRAME_CONTROL_RESIZE_SE:
+        cursor = META_CURSOR_SE_RESIZE;
+        break;
+
+      case META_FRAME_CONTROL_RESIZE_S:
+        cursor = META_CURSOR_SOUTH_RESIZE;
+        break;
+
+      case META_FRAME_CONTROL_RESIZE_SW:
+        cursor = META_CURSOR_SW_RESIZE;
+        break;
+
+      case META_FRAME_CONTROL_RESIZE_N:
+        cursor = META_CURSOR_NORTH_RESIZE;
+        break;
+
+      case META_FRAME_CONTROL_RESIZE_NE:
+        cursor = META_CURSOR_NE_RESIZE;
+        break;
+
+      case META_FRAME_CONTROL_RESIZE_NW:
+        cursor = META_CURSOR_NW_RESIZE;
+        break;
+
+      case META_FRAME_CONTROL_RESIZE_W:
+        cursor = META_CURSOR_WEST_RESIZE;
+        break;
+
+      case META_FRAME_CONTROL_RESIZE_E:
+        cursor = META_CURSOR_EAST_RESIZE;
+        break;
+
+      case META_FRAME_CONTROL_CLIENT_AREA:
+      case META_FRAME_CONTROL_NONE:
+      case META_FRAME_CONTROL_TITLE:
+      case META_FRAME_CONTROL_DELETE:
+      case META_FRAME_CONTROL_MENU:
+      case META_FRAME_CONTROL_APPMENU:
+      case META_FRAME_CONTROL_MINIMIZE:
+      case META_FRAME_CONTROL_MAXIMIZE:
+      case META_FRAME_CONTROL_UNMAXIMIZE:
+      case META_FRAME_CONTROL_SHADE:
+      case META_FRAME_CONTROL_UNSHADE:
+      case META_FRAME_CONTROL_ABOVE:
+      case META_FRAME_CONTROL_UNABOVE:
+      case META_FRAME_CONTROL_STICK:
+      case META_FRAME_CONTROL_UNSTICK:
+      default:
+        cursor = META_CURSOR_DEFAULT;
+        break;
+    }
+
+  /* set/unset the prelight cursor */
+  meta_core_set_screen_cursor (frames->xdisplay, frame->xwindow, cursor);
+
+  switch (control)
+    {
+      case META_FRAME_CONTROL_MENU:
+      case META_FRAME_CONTROL_APPMENU:
+      case META_FRAME_CONTROL_MINIMIZE:
+      case META_FRAME_CONTROL_MAXIMIZE:
+      case META_FRAME_CONTROL_DELETE:
+      case META_FRAME_CONTROL_SHADE:
+      case META_FRAME_CONTROL_UNSHADE:
+      case META_FRAME_CONTROL_ABOVE:
+      case META_FRAME_CONTROL_UNABOVE:
+      case META_FRAME_CONTROL_STICK:
+      case META_FRAME_CONTROL_UNSTICK:
+      case META_FRAME_CONTROL_UNMAXIMIZE:
+        /* leave control set */
+        break;
+
+      case META_FRAME_CONTROL_NONE:
+      case META_FRAME_CONTROL_TITLE:
+      case META_FRAME_CONTROL_RESIZE_SE:
+      case META_FRAME_CONTROL_RESIZE_S:
+      case META_FRAME_CONTROL_RESIZE_SW:
+      case META_FRAME_CONTROL_RESIZE_N:
+      case META_FRAME_CONTROL_RESIZE_NE:
+      case META_FRAME_CONTROL_RESIZE_NW:
+      case META_FRAME_CONTROL_RESIZE_W:
+      case META_FRAME_CONTROL_RESIZE_E:
+      case META_FRAME_CONTROL_CLIENT_AREA:
+      default:
+        /* Only prelight buttons */
+        control = META_FRAME_CONTROL_NONE;
+        break;
+    }
+
+  if (control == frame->prelit_control)
+    return;
+
+  /* Save the old control so we can unprelight it */
+  old_control = frame->prelit_control;
+  old_x = frame->prelit_x;
+  old_y = frame->prelit_y;
+
+  frame->prelit_control = control;
+  frame->prelit_x = x;
+  frame->prelit_y = y;
+
+  redraw_control (frames, frame, old_control, old_x, old_y);
+  redraw_control (frames, frame, control, x, y);
 }
 
 static gboolean
@@ -1428,17 +1802,24 @@ meta_frames_button_press_event (GtkWidget      *widget,
                                event->y_root);
 
       frame->prelit_control = control;
-      redraw_control (frames, frame, control);
+      frame->prelit_x = event->x;
+      frame->prelit_y = event->y;
+
+      redraw_control (frames, frame, control, event->x, event->y);
 
       if (op == META_GRAB_OP_CLICKING_MENU)
         {
           MetaFrameGeometry fgeom;
-          GdkRectangle *rect;
+          GdkRectangle rect;
           int dx, dy;
 
           meta_frames_calc_geometry (frames, frame, &fgeom);
 
-          rect = control_rect (META_FRAME_CONTROL_MENU, &fgeom);
+          if (!get_control_rect (META_FRAME_CONTROL_MENU, &fgeom,
+                                 event->x, event->y, &rect))
+            {
+              return FALSE;
+            }
 
           /* get delta to convert to root coords */
           dx = event->x_root - event->x;
@@ -1446,12 +1827,12 @@ meta_frames_button_press_event (GtkWidget      *widget,
 
           /* Align to the right end of the menu rectangle if RTL */
           if (meta_ui_get_direction() == META_UI_DIRECTION_RTL)
-            dx += rect->width;
+            dx += rect.width;
 
           meta_core_show_window_menu (frames->xdisplay,
                                       frame->xwindow,
-                                      rect->x + dx,
-                                      rect->y + rect->height + dy,
+                                      rect.x + dx,
+                                      rect.y + rect.height + dy,
                                       event->button,
                                       event->time);
         }
@@ -1552,7 +1933,9 @@ meta_frames_notify_menu_hide (MetaFrames *frames)
 
           if (frame)
             {
-              redraw_control (frames, frame, META_FRAME_CONTROL_MENU);
+              redraw_control (frames, frame, META_FRAME_CONTROL_MENU,
+                              frame->prelit_x, frame->prelit_y);
+
               meta_core_end_grab_op (frames->xdisplay, CurrentTime);
             }
         }
@@ -1709,135 +2092,10 @@ meta_frames_button_release_event    (GtkWidget           *widget,
        * prelit so to let the user know that it can now be pressed.
        * :)
        */
-      meta_frames_update_prelit_control (frames, frame, control);
+      update_prelit_control (frames, frame, control, event->x, event->y);
     }
 
   return TRUE;
-}
-
-static void
-meta_frames_update_prelit_control (MetaFrames      *frames,
-                                   MetaUIFrame     *frame,
-                                   MetaFrameControl control)
-{
-  MetaFrameControl old_control;
-  MetaCursor cursor;
-
-
-  meta_verbose ("Updating prelit control from %u to %u\n",
-                frame->prelit_control, control);
-
-  cursor = META_CURSOR_DEFAULT;
-
-  switch (control)
-    {
-    case META_FRAME_CONTROL_CLIENT_AREA:
-      break;
-    case META_FRAME_CONTROL_NONE:
-      break;
-    case META_FRAME_CONTROL_TITLE:
-      break;
-    case META_FRAME_CONTROL_DELETE:
-      break;
-    case META_FRAME_CONTROL_MENU:
-      break;
-    case META_FRAME_CONTROL_APPMENU:
-      break;
-    case META_FRAME_CONTROL_MINIMIZE:
-      break;
-    case META_FRAME_CONTROL_MAXIMIZE:
-      break;
-    case META_FRAME_CONTROL_UNMAXIMIZE:
-      break;
-    case META_FRAME_CONTROL_SHADE:
-      break;
-    case META_FRAME_CONTROL_UNSHADE:
-      break;
-    case META_FRAME_CONTROL_ABOVE:
-      break;
-    case META_FRAME_CONTROL_UNABOVE:
-      break;
-    case META_FRAME_CONTROL_STICK:
-      break;
-    case META_FRAME_CONTROL_UNSTICK:
-      break;
-    case META_FRAME_CONTROL_RESIZE_SE:
-      cursor = META_CURSOR_SE_RESIZE;
-      break;
-    case META_FRAME_CONTROL_RESIZE_S:
-      cursor = META_CURSOR_SOUTH_RESIZE;
-      break;
-    case META_FRAME_CONTROL_RESIZE_SW:
-      cursor = META_CURSOR_SW_RESIZE;
-      break;
-    case META_FRAME_CONTROL_RESIZE_N:
-      cursor = META_CURSOR_NORTH_RESIZE;
-      break;
-    case META_FRAME_CONTROL_RESIZE_NE:
-      cursor = META_CURSOR_NE_RESIZE;
-      break;
-    case META_FRAME_CONTROL_RESIZE_NW:
-      cursor = META_CURSOR_NW_RESIZE;
-      break;
-    case META_FRAME_CONTROL_RESIZE_W:
-      cursor = META_CURSOR_WEST_RESIZE;
-      break;
-    case META_FRAME_CONTROL_RESIZE_E:
-      cursor = META_CURSOR_EAST_RESIZE;
-      break;
-    default:
-      break;
-    }
-
-  /* set/unset the prelight cursor */
-  meta_core_set_screen_cursor (frames->xdisplay, frame->xwindow, cursor);
-
-  switch (control)
-    {
-    case META_FRAME_CONTROL_MENU:
-    case META_FRAME_CONTROL_APPMENU:
-    case META_FRAME_CONTROL_MINIMIZE:
-    case META_FRAME_CONTROL_MAXIMIZE:
-    case META_FRAME_CONTROL_DELETE:
-    case META_FRAME_CONTROL_SHADE:
-    case META_FRAME_CONTROL_UNSHADE:
-    case META_FRAME_CONTROL_ABOVE:
-    case META_FRAME_CONTROL_UNABOVE:
-    case META_FRAME_CONTROL_STICK:
-    case META_FRAME_CONTROL_UNSTICK:
-    case META_FRAME_CONTROL_UNMAXIMIZE:
-      /* leave control set */
-      break;
-    case META_FRAME_CONTROL_NONE:
-    case META_FRAME_CONTROL_TITLE:
-    case META_FRAME_CONTROL_RESIZE_SE:
-    case META_FRAME_CONTROL_RESIZE_S:
-    case META_FRAME_CONTROL_RESIZE_SW:
-    case META_FRAME_CONTROL_RESIZE_N:
-    case META_FRAME_CONTROL_RESIZE_NE:
-    case META_FRAME_CONTROL_RESIZE_NW:
-    case META_FRAME_CONTROL_RESIZE_W:
-    case META_FRAME_CONTROL_RESIZE_E:
-    case META_FRAME_CONTROL_CLIENT_AREA:
-      /* Only prelight buttons */
-      control = META_FRAME_CONTROL_NONE;
-      break;
-    default:
-      /* Only prelight buttons */
-      control = META_FRAME_CONTROL_NONE;
-      break;
-    }
-
-  if (control == frame->prelit_control)
-    return;
-
-  /* Save the old control so we can unprelight it */
-  old_control = frame->prelit_control;
-
-  frame->prelit_control = control;
-
-  redraw_control (frames, frame, old_control);
-  redraw_control (frames, frame, control);
 }
 
 static gboolean
@@ -1912,7 +2170,7 @@ meta_frames_motion_notify_event     (GtkWidget           *widget,
            control = META_FRAME_CONTROL_NONE;
 
         /* Update prelit control and cursor */
-        meta_frames_update_prelit_control (frames, frame, control);
+        update_prelit_control (frames, frame, control, x, y);
 
         /* No tooltip while in the process of clicking */
       }
@@ -1928,7 +2186,7 @@ meta_frames_motion_notify_event     (GtkWidget           *widget,
         control = get_control (frames, frame, x, y);
 
         /* Update prelit control and cursor */
-        meta_frames_update_prelit_control (frames, frame, control);
+        update_prelit_control (frames, frame, control, x, y);
 
         queue_tip (frames);
       }
@@ -2284,6 +2542,11 @@ update_button_state (MetaButtonType type,
   Window grab_frame;
   MetaGrabOp grab_op;
   MetaFrameControl control;
+  GdkDisplay *display;
+  GdkSeat *seat;
+  GdkDevice *device;
+  gint x;
+  gint y;
 
   data = (ButtonStateData *) user_data;
 
@@ -2295,6 +2558,15 @@ update_button_state (MetaButtonType type,
     grab_op = META_GRAB_OP_NONE;
 
   control = data->frame->prelit_control;
+
+  display = gdk_display_get_default ();
+  seat = gdk_display_get_default_seat (display);
+  device = gdk_seat_get_pointer (seat);
+
+  gdk_window_get_device_position (data->frame->window, device, &x, &y, NULL);
+
+  if (!POINT_IN_RECT (x, y, rect))
+    return state;
 
   /* Set prelight state */
   if (control == META_FRAME_CONTROL_MENU &&
@@ -2441,7 +2713,7 @@ meta_frames_enter_notify_event      (GtkWidget           *widget,
     return FALSE;
 
   control = get_control (frames, frame, event->x, event->y);
-  meta_frames_update_prelit_control (frames, frame, control);
+  update_prelit_control (frames, frame, control, event->x, event->y);
 
   return TRUE;
 }
@@ -2459,251 +2731,12 @@ meta_frames_leave_notify_event      (GtkWidget           *widget,
   if (frame == NULL)
     return FALSE;
 
-  meta_frames_update_prelit_control (frames, frame, META_FRAME_CONTROL_NONE);
+  update_prelit_control (frames, frame, META_FRAME_CONTROL_NONE,
+                         event->x, event->y);
 
   clear_tip (frames);
 
   return TRUE;
-}
-
-static GdkRectangle*
-control_rect (MetaFrameControl control,
-              MetaFrameGeometry *fgeom)
-{
-  GdkRectangle *rect;
-
-  rect = NULL;
-  switch (control)
-    {
-    case META_FRAME_CONTROL_TITLE:
-      rect = &fgeom->title_rect;
-      break;
-    case META_FRAME_CONTROL_DELETE:
-      rect = &fgeom->close_rect.visible;
-      break;
-    case META_FRAME_CONTROL_MENU:
-      rect = &fgeom->menu_rect.visible;
-      break;
-    case META_FRAME_CONTROL_APPMENU:
-      rect = &fgeom->appmenu_rect.visible;
-      break;
-    case META_FRAME_CONTROL_MINIMIZE:
-      rect = &fgeom->min_rect.visible;
-      break;
-    case META_FRAME_CONTROL_MAXIMIZE:
-    case META_FRAME_CONTROL_UNMAXIMIZE:
-      rect = &fgeom->max_rect.visible;
-      break;
-    case META_FRAME_CONTROL_SHADE:
-      rect = &fgeom->shade_rect.visible;
-      break;
-    case META_FRAME_CONTROL_UNSHADE:
-      rect = &fgeom->unshade_rect.visible;
-      break;
-    case META_FRAME_CONTROL_ABOVE:
-      rect = &fgeom->above_rect.visible;
-      break;
-    case META_FRAME_CONTROL_UNABOVE:
-      rect = &fgeom->unabove_rect.visible;
-      break;
-    case META_FRAME_CONTROL_STICK:
-      rect = &fgeom->stick_rect.visible;
-      break;
-    case META_FRAME_CONTROL_UNSTICK:
-      rect = &fgeom->unstick_rect.visible;
-      break;
-    case META_FRAME_CONTROL_RESIZE_SE:
-      break;
-    case META_FRAME_CONTROL_RESIZE_S:
-      break;
-    case META_FRAME_CONTROL_RESIZE_SW:
-      break;
-    case META_FRAME_CONTROL_RESIZE_N:
-      break;
-    case META_FRAME_CONTROL_RESIZE_NE:
-      break;
-    case META_FRAME_CONTROL_RESIZE_NW:
-      break;
-    case META_FRAME_CONTROL_RESIZE_W:
-      break;
-    case META_FRAME_CONTROL_RESIZE_E:
-      break;
-    case META_FRAME_CONTROL_NONE:
-      break;
-    case META_FRAME_CONTROL_CLIENT_AREA:
-      break;
-    default:
-      break;
-    }
-
-  return rect;
-}
-
-#define RESIZE_EXTENDS 15
-#define TOP_RESIZE_HEIGHT 4
-static MetaFrameControl
-get_control (MetaFrames *frames,
-             MetaUIFrame *frame,
-             int x, int y)
-{
-  MetaFrameGeometry fgeom;
-  MetaFrameFlags flags;
-  MetaFrameType type;
-  gboolean has_vert, has_horiz;
-  gboolean has_north_resize;
-  GdkRectangle client;
-  MetaFrameBorders borders;
-
-  meta_frames_calc_geometry (frames, frame, &fgeom);
-  get_client_rect (&fgeom, fgeom.width, fgeom.height, &client);
-
-  borders = fgeom.borders;
-
-  if (x < borders.invisible.left - borders.resize.left ||
-      y < borders.invisible.top - borders.resize.top ||
-      x > fgeom.width - borders.invisible.right + borders.resize.right ||
-      y > fgeom.height - borders.invisible.bottom + borders.resize.bottom)
-    return META_FRAME_CONTROL_NONE;
-
-  if (POINT_IN_RECT (x, y, client))
-    return META_FRAME_CONTROL_CLIENT_AREA;
-
-  if (POINT_IN_RECT (x, y, fgeom.close_rect.clickable))
-    return META_FRAME_CONTROL_DELETE;
-
-  if (POINT_IN_RECT (x, y, fgeom.min_rect.clickable))
-    return META_FRAME_CONTROL_MINIMIZE;
-
-  if (POINT_IN_RECT (x, y, fgeom.menu_rect.clickable))
-    return META_FRAME_CONTROL_MENU;
-
-  if (POINT_IN_RECT (x, y, fgeom.appmenu_rect.clickable))
-    return META_FRAME_CONTROL_APPMENU;
-
-  meta_core_get (frames->xdisplay, frame->xwindow,
-                 META_CORE_GET_FRAME_FLAGS, &flags,
-                 META_CORE_GET_FRAME_TYPE, &type,
-                 META_CORE_GET_END);
-
-  has_north_resize = (type != META_FRAME_TYPE_ATTACHED);
-  has_vert = (flags & META_FRAME_ALLOWS_VERTICAL_RESIZE) != 0;
-  has_horiz = (flags & META_FRAME_ALLOWS_HORIZONTAL_RESIZE) != 0;
-
-  if (POINT_IN_RECT (x, y, fgeom.title_rect))
-    {
-      if (has_vert && y <= (fgeom.borders.invisible.top + TOP_RESIZE_HEIGHT) && has_north_resize)
-        return META_FRAME_CONTROL_RESIZE_N;
-      else
-        return META_FRAME_CONTROL_TITLE;
-    }
-
-  if (POINT_IN_RECT (x, y, fgeom.max_rect.clickable))
-    {
-      if (flags & META_FRAME_MAXIMIZED)
-        return META_FRAME_CONTROL_UNMAXIMIZE;
-      else
-        return META_FRAME_CONTROL_MAXIMIZE;
-    }
-
-  if (POINT_IN_RECT (x, y, fgeom.shade_rect.clickable))
-    {
-      return META_FRAME_CONTROL_SHADE;
-    }
-
-  if (POINT_IN_RECT (x, y, fgeom.unshade_rect.clickable))
-    {
-      return META_FRAME_CONTROL_UNSHADE;
-    }
-
-  if (POINT_IN_RECT (x, y, fgeom.above_rect.clickable))
-    {
-      return META_FRAME_CONTROL_ABOVE;
-    }
-
-  if (POINT_IN_RECT (x, y, fgeom.unabove_rect.clickable))
-    {
-      return META_FRAME_CONTROL_UNABOVE;
-    }
-
-  if (POINT_IN_RECT (x, y, fgeom.stick_rect.clickable))
-    {
-      return META_FRAME_CONTROL_STICK;
-    }
-
-  if (POINT_IN_RECT (x, y, fgeom.unstick_rect.clickable))
-    {
-      return META_FRAME_CONTROL_UNSTICK;
-    }
-
-  /* South resize always has priority over north resize,
-   * in case of overlap.
-   */
-
-  if (y >= (fgeom.height - fgeom.borders.total.bottom - RESIZE_EXTENDS) &&
-      x >= (fgeom.width - fgeom.borders.total.right - RESIZE_EXTENDS))
-    {
-      if (has_vert && has_horiz)
-        return META_FRAME_CONTROL_RESIZE_SE;
-      else if (has_vert)
-        return META_FRAME_CONTROL_RESIZE_S;
-      else if (has_horiz)
-        return META_FRAME_CONTROL_RESIZE_E;
-    }
-  else if (y >= (fgeom.height - fgeom.borders.total.bottom - RESIZE_EXTENDS) &&
-           x <= (fgeom.borders.total.left + RESIZE_EXTENDS))
-    {
-      if (has_vert && has_horiz)
-        return META_FRAME_CONTROL_RESIZE_SW;
-      else if (has_vert)
-        return META_FRAME_CONTROL_RESIZE_S;
-      else if (has_horiz)
-        return META_FRAME_CONTROL_RESIZE_W;
-    }
-  else if (y < (fgeom.borders.invisible.top + RESIZE_EXTENDS) &&
-           x <= (fgeom.borders.total.left + RESIZE_EXTENDS) && has_north_resize)
-    {
-      if (has_vert && has_horiz)
-        return META_FRAME_CONTROL_RESIZE_NW;
-      else if (has_vert)
-        return META_FRAME_CONTROL_RESIZE_N;
-      else if (has_horiz)
-        return META_FRAME_CONTROL_RESIZE_W;
-    }
-  else if (y < (fgeom.borders.invisible.top + RESIZE_EXTENDS) &&
-           x >= (fgeom.width - fgeom.borders.total.right - RESIZE_EXTENDS) && has_north_resize)
-    {
-      if (has_vert && has_horiz)
-        return META_FRAME_CONTROL_RESIZE_NE;
-      else if (has_vert)
-        return META_FRAME_CONTROL_RESIZE_N;
-      else if (has_horiz)
-        return META_FRAME_CONTROL_RESIZE_E;
-    }
-  else if (y < (fgeom.borders.invisible.top + TOP_RESIZE_HEIGHT))
-    {
-      if (has_vert && has_north_resize)
-        return META_FRAME_CONTROL_RESIZE_N;
-    }
-  else if (y >= (fgeom.height - fgeom.borders.total.bottom - RESIZE_EXTENDS))
-    {
-      if (has_vert)
-        return META_FRAME_CONTROL_RESIZE_S;
-    }
-  else if (x <= fgeom.borders.total.left + RESIZE_EXTENDS)
-    {
-      if (has_horiz)
-        return META_FRAME_CONTROL_RESIZE_W;
-    }
-  else if (x >= (fgeom.width - fgeom.borders.total.right - RESIZE_EXTENDS))
-    {
-      if (has_horiz)
-        return META_FRAME_CONTROL_RESIZE_E;
-    }
-
-  if (y >= fgeom.borders.total.top)
-    return META_FRAME_CONTROL_NONE;
-  else
-    return META_FRAME_CONTROL_TITLE;
 }
 
 void

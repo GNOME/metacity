@@ -74,6 +74,8 @@ struct _MetaUIFrame
 
   /* FIXME get rid of this, it can just be in the MetaFrames struct */
   MetaFrameControl prelit_control;
+  gint prelit_x;
+  gint prelit_y;
 };
 
 MetaFrames *meta_frames_new (void);

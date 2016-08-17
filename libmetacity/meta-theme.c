@@ -570,6 +570,63 @@ meta_theme_set_button_layout (MetaTheme   *theme,
   theme->button_layout = meta_button_layout_new (button_layout, invert);
 }
 
+gboolean
+meta_theme_get_button (MetaTheme  *theme,
+                       gint        x,
+                       gint        y,
+                       MetaButton *button)
+{
+  gint side;
+
+  for (side = 0; side < 2; side++)
+    {
+      MetaButton *buttons;
+      gint n_buttons;
+      gint i;
+
+      if (side == 0)
+        {
+          buttons = theme->button_layout->left_buttons;
+          n_buttons = theme->button_layout->n_left_buttons;
+        }
+      else if (side == 1)
+        {
+          buttons = theme->button_layout->right_buttons;
+          n_buttons = theme->button_layout->n_right_buttons;
+        }
+      else
+        {
+          g_assert_not_reached ();
+        }
+
+      for (i = 0; i < n_buttons; i++)
+        {
+          MetaButton *btn;
+          GdkRectangle rect;
+
+          btn = &buttons[i];
+          rect = btn->rect.visible;
+
+          if (!btn->visible || btn->type == META_BUTTON_TYPE_SPACER ||
+              rect.width <= 0 || rect.height <= 0)
+            {
+              continue;
+            }
+
+          rect = btn->rect.clickable;
+
+          if (x >= rect.x && x < (rect.x + rect.width) &&
+              y >= rect.y && y < (rect.y + rect.height))
+            {
+              *button = *btn;
+              return TRUE;
+            }
+        }
+    }
+
+  return FALSE;
+}
+
 void
 meta_theme_set_composited (MetaTheme *theme,
                            gboolean   composited)
@@ -694,20 +751,50 @@ meta_theme_draw_frame (MetaTheme           *theme,
                              title_height, flags, client_width, client_height,
                              theme->button_layout, type, &fgeom);
 
-  for (i = 0; i < META_BUTTON_TYPE_LAST; i++)
+  for (i = 0; i < 2; i++)
     {
-      MetaButtonState state;
-      GdkRectangle rect;
+      MetaButton *buttons;
+      gint n_buttons;
+      gint j;
 
-      get_button_rect_for_type (i, &fgeom, &rect);
+      if (i == 0)
+        {
+          buttons = theme->button_layout->left_buttons;
+          n_buttons = theme->button_layout->n_left_buttons;
+        }
+      else if (i == 1)
+        {
+          buttons = theme->button_layout->right_buttons;
+          n_buttons = theme->button_layout->n_right_buttons;
+        }
+      else
+        {
+          g_assert_not_reached ();
+        }
 
-      state = META_BUTTON_STATE_NORMAL;
-      if (func != NULL)
-        state = (* func) (i, rect, user_data);
+      for (j = 0; j < n_buttons; j++)
+        {
+          MetaButton *button;
+          MetaButtonState state;
+          GdkRectangle rect;
 
-      g_assert (state >= META_BUTTON_STATE_NORMAL && state < META_BUTTON_STATE_LAST);
+          button = &buttons[j];
+          state = META_BUTTON_STATE_NORMAL;
+          rect = button->rect.visible;
 
-      theme->button_layout->button_states[i] = state;
+          if (!button->visible || button->type == META_BUTTON_TYPE_SPACER ||
+              rect.width <= 0 || rect.height <= 0)
+            {
+              button->state = state;
+              continue;
+            }
+
+          if (func != NULL)
+            state = (* func) (button->type, button->rect.clickable, user_data);
+
+          g_assert (state >= META_BUTTON_STATE_NORMAL && state < META_BUTTON_STATE_LAST);
+          button->state = state;
+        }
     }
 
   impl_class->draw_frame (theme->impl, style, style_info, cr, &fgeom,
