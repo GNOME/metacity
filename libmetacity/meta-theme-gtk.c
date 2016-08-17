@@ -403,16 +403,16 @@ strip_button (MetaButtonSpace *func_rects[META_BUTTON_TYPE_LAST],
 }
 
 static void
-meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
-                              MetaFrameLayout        *layout,
-                              MetaStyleInfo          *style_info,
-                              gint                    text_height,
-                              MetaFrameFlags          flags,
-                              gint                    client_width,
-                              gint                    client_height,
-                              const MetaButtonLayout *button_layout,
-                              MetaFrameType           type,
-                              MetaFrameGeometry      *fgeom)
+meta_theme_gtk_calc_geometry (MetaThemeImpl     *impl,
+                              MetaFrameLayout   *layout,
+                              MetaStyleInfo     *style_info,
+                              gint               text_height,
+                              MetaFrameFlags     flags,
+                              gint               client_width,
+                              gint               client_height,
+                              MetaButtonLayout  *button_layout,
+                              MetaFrameType      type,
+                              MetaFrameGeometry *fgeom)
 {
   MetaFrameBorders borders;
   int i, n_left, n_right, n_left_spacers, n_right_spacers;
@@ -589,8 +589,8 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
     }
 
   /* Save the button layout */
-  fgeom->n_left_buttons = n_left;
-  fgeom->n_right_buttons = n_right;
+  button_layout->n_left_buttons = n_left;
+  button_layout->n_right_buttons = n_right;
 
   /* center buttons vertically */
   button_y = borders.invisible.top + layout->gtk.frame_border.top * scale +
@@ -741,7 +741,6 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
                            PangoLayout             *title_layout,
                            MetaFrameFlags           flags,
                            const MetaButtonLayout  *button_layout,
-                           MetaButtonState          button_states[META_BUTTON_TYPE_LAST],
                            GdkPixbuf               *mini_icon,
                            GdkPixbuf               *icon)
 {
@@ -840,7 +839,7 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
       if (button_class)
         gtk_style_context_add_class (context, button_class);
 
-      button_state = button_states [button_type];
+      button_state = button_layout->button_states[button_type];
 
       if (button_state == META_BUTTON_STATE_PRELIGHT)
         gtk_style_context_set_state (context, state | GTK_STATE_PRELIGHT);

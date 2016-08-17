@@ -153,29 +153,31 @@ string_to_buttons (const gchar    *str,
   g_strfreev (buttons);
 }
 
-MetaButtonLayout
+MetaButtonLayout *
 meta_button_layout_new (const gchar *str,
                         gboolean     invert)
 {
   gchar **sides;
-  MetaButtonLayout layout;
-  MetaButtonLayout rtl_layout;
+  MetaButtonLayout *layout;
+  MetaButtonLayout *rtl_layout;
   gint i;
   gint j;
 
+  layout = g_new0 (MetaButtonLayout, 1);
+  meta_button_layout_init (layout);
+
   sides = g_strsplit (str, ":", 2);
-  meta_button_layout_init (&layout);
 
   if (sides[0] != NULL)
     {
-      string_to_buttons (sides[0], layout.left_buttons,
-                         layout.left_buttons_has_spacer);
+      string_to_buttons (sides[0], layout->left_buttons,
+                         layout->left_buttons_has_spacer);
     }
 
   if (sides[0] != NULL && sides[1] != NULL)
     {
-      string_to_buttons (sides[1], layout.right_buttons,
-                         layout.right_buttons_has_spacer);
+      string_to_buttons (sides[1], layout->right_buttons,
+                         layout->right_buttons_has_spacer);
     }
 
   g_strfreev (sides);
@@ -183,35 +185,44 @@ meta_button_layout_new (const gchar *str,
   if (!invert)
     return layout;
 
-  meta_button_layout_init (&rtl_layout);
+  rtl_layout = g_new0 (MetaButtonLayout, 1);
+  meta_button_layout_init (rtl_layout);
 
   i = 0;
-  while (rtl_layout.left_buttons[i] != META_BUTTON_TYPE_LAST)
+  while (rtl_layout->left_buttons[i] != META_BUTTON_TYPE_LAST)
     i++;
 
   for (j = 0; j < i; j++)
     {
-      rtl_layout.right_buttons[j] = layout.left_buttons[i - j - 1];
+      rtl_layout->right_buttons[j] = layout->left_buttons[i - j - 1];
 
       if (j == 0)
-        rtl_layout.right_buttons_has_spacer[i - 1] = layout.left_buttons_has_spacer[i - j - 1];
+        rtl_layout->right_buttons_has_spacer[i - 1] = layout->left_buttons_has_spacer[i - j - 1];
       else
-        rtl_layout.right_buttons_has_spacer[j - 1] = layout.left_buttons_has_spacer[i - j - 1];
+        rtl_layout->right_buttons_has_spacer[j - 1] = layout->left_buttons_has_spacer[i - j - 1];
     }
 
   i = 0;
-  while (rtl_layout.left_buttons[i] != META_BUTTON_TYPE_LAST)
+  while (rtl_layout->left_buttons[i] != META_BUTTON_TYPE_LAST)
     i++;
 
   for (j = 0; j < i; j++)
     {
-      rtl_layout.left_buttons[j] = layout.right_buttons[i - j - 1];
+      rtl_layout->left_buttons[j] = layout->right_buttons[i - j - 1];
 
       if (j == 0)
-        rtl_layout.left_buttons_has_spacer[i - 1] = layout.right_buttons_has_spacer[i - j - 1];
+        rtl_layout->left_buttons_has_spacer[i - 1] = layout->right_buttons_has_spacer[i - j - 1];
       else
-        rtl_layout.left_buttons_has_spacer[j - 1] = layout.right_buttons_has_spacer[i - j - 1];
+        rtl_layout->left_buttons_has_spacer[j - 1] = layout->right_buttons_has_spacer[i - j - 1];
     }
+
+  meta_button_layout_free (layout);
 
   return rtl_layout;
+}
+
+void
+meta_button_layout_free (MetaButtonLayout *layout)
+{
+  g_free (layout);
 }

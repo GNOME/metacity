@@ -56,7 +56,7 @@ struct _MetaThemeImplClass
                                     MetaFrameFlags            flags,
                                     gint                      client_width,
                                     gint                      client_height,
-                                    const MetaButtonLayout   *button_layout,
+                                    MetaButtonLayout         *button_layout,
                                     MetaFrameType             type,
                                     MetaFrameGeometry        *fgeom);
 
@@ -68,7 +68,6 @@ struct _MetaThemeImplClass
                                     PangoLayout              *title_layout,
                                     MetaFrameFlags            flags,
                                     const MetaButtonLayout   *button_layout,
-                                    MetaButtonState           button_states[META_BUTTON_TYPE_LAST],
                                     GdkPixbuf                *mini_icon,
                                     GdkPixbuf                *icon);
 };

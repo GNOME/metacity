@@ -35,7 +35,7 @@ struct _MetaTheme
   MetaThemeType         type;
   MetaThemeImpl        *impl;
 
-  MetaButtonLayout      button_layout;
+  MetaButtonLayout     *button_layout;
 
   gboolean              composited;
 
@@ -416,6 +416,12 @@ meta_theme_finalize (GObject *object)
 
   theme = META_THEME (object);
 
+  if (theme->button_layout != NULL)
+    {
+      meta_button_layout_free (theme->button_layout);
+      theme->button_layout = NULL;
+    }
+
   if (theme->titlebar_font)
     {
       pango_font_description_free (theme->titlebar_font);
@@ -558,6 +564,9 @@ meta_theme_set_button_layout (MetaTheme   *theme,
                               const gchar *button_layout,
                               gboolean     invert)
 {
+  if (theme->button_layout != NULL)
+    meta_button_layout_free (theme->button_layout);
+
   theme->button_layout = meta_button_layout_new (button_layout, invert);
 }
 
@@ -643,7 +652,7 @@ meta_theme_calc_geometry (MetaTheme         *theme,
 
   impl_class->calc_geometry (theme->impl, style->layout, style_info,
                              title_height, flags, client_width, client_height,
-                             &theme->button_layout, type, fgeom);
+                             theme->button_layout, type, fgeom);
 }
 
 void
@@ -667,7 +676,6 @@ meta_theme_draw_frame (MetaTheme           *theme,
   PangoLayout *title_layout;
   MetaFrameGeometry fgeom;
   gint i;
-  MetaButtonState button_states[META_BUTTON_TYPE_LAST];
 
   g_return_if_fail (type < META_FRAME_TYPE_LAST);
 
@@ -684,7 +692,7 @@ meta_theme_draw_frame (MetaTheme           *theme,
 
   impl_class->calc_geometry (theme->impl, style->layout, style_info,
                              title_height, flags, client_width, client_height,
-                             &theme->button_layout, type, &fgeom);
+                             theme->button_layout, type, &fgeom);
 
   for (i = 0; i < META_BUTTON_TYPE_LAST; i++)
     {
@@ -699,12 +707,12 @@ meta_theme_draw_frame (MetaTheme           *theme,
 
       g_assert (state >= META_BUTTON_STATE_NORMAL && state < META_BUTTON_STATE_LAST);
 
-      button_states[i] = state;
+      theme->button_layout->button_states[i] = state;
     }
 
   impl_class->draw_frame (theme->impl, style, style_info, cr, &fgeom,
-                          title_layout, flags, &theme->button_layout,
-                          button_states, mini_icon, icon);
+                          title_layout, flags, theme->button_layout,
+                          mini_icon, icon);
 
   g_object_unref (title_layout);
 }

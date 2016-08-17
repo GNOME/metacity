@@ -26,16 +26,22 @@ G_BEGIN_DECLS
 typedef struct
 {
   /* buttons in the group on the left side */
-  MetaButtonType left_buttons[META_BUTTON_TYPE_LAST];
-  gboolean       left_buttons_has_spacer[META_BUTTON_TYPE_LAST];
+  MetaButtonType  left_buttons[META_BUTTON_TYPE_LAST];
+  gboolean        left_buttons_has_spacer[META_BUTTON_TYPE_LAST];
+  gint            n_left_buttons;
 
   /* buttons in the group on the right side */
-  MetaButtonType right_buttons[META_BUTTON_TYPE_LAST];
-  gboolean       right_buttons_has_spacer[META_BUTTON_TYPE_LAST];
+  MetaButtonType  right_buttons[META_BUTTON_TYPE_LAST];
+  gboolean        right_buttons_has_spacer[META_BUTTON_TYPE_LAST];
+  gint            n_right_buttons;
+
+  MetaButtonState button_states[META_BUTTON_TYPE_LAST];
 } MetaButtonLayout;
 
-MetaButtonLayout meta_button_layout_new (const gchar *str,
-                                         gboolean     invert);
+MetaButtonLayout *meta_button_layout_new  (const gchar      *str,
+                                           gboolean          invert);
+
+void              meta_button_layout_free (MetaButtonLayout *layout);
 
 G_END_DECLS
 
