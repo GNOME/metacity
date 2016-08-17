@@ -18,7 +18,7 @@
 
 #include "config.h"
 
-#include "meta-button-layout.h"
+#include "meta-button-layout-private.h"
 
 static MetaButtonType
 meta_button_type_from_string (const gchar *str)

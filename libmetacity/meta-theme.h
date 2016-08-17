@@ -21,7 +21,6 @@
 
 #include <gtk/gtk.h>
 #include <libmetacity/meta-button-enums.h>
-#include <libmetacity/meta-button-layout.h>
 #include <libmetacity/meta-frame-borders.h>
 #include <libmetacity/meta-frame-enums.h>
 
@@ -137,7 +136,6 @@ struct _MetaFrameGeometry
   /* End of button rects (if changed adjust memset hack) */
 
   /* Saved button layout */
-  MetaButtonLayout button_layout;
   int n_left_buttons;
   int n_right_buttons;
 

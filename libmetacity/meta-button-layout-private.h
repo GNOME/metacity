@@ -16,10 +16,10 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef META_BUTTON_LAYOUT_H
-#define META_BUTTON_LAYOUT_H
+#ifndef META_BUTTON_LAYOUT_PRIVATE_H
+#define META_BUTTON_LAYOUT_PRIVATE_H
 
-#include <libmetacity/meta-button-enums.h>
+#include "meta-button-enums.h"
 
 G_BEGIN_DECLS
 
@@ -27,11 +27,11 @@ typedef struct
 {
   /* buttons in the group on the left side */
   MetaButtonType left_buttons[META_BUTTON_TYPE_LAST];
-  gboolean left_buttons_has_spacer[META_BUTTON_TYPE_LAST];
+  gboolean       left_buttons_has_spacer[META_BUTTON_TYPE_LAST];
 
   /* buttons in the group on the right side */
   MetaButtonType right_buttons[META_BUTTON_TYPE_LAST];
-  gboolean right_buttons_has_spacer[META_BUTTON_TYPE_LAST];
+  gboolean       right_buttons_has_spacer[META_BUTTON_TYPE_LAST];
 } MetaButtonLayout;
 
 MetaButtonLayout meta_button_layout_new (const gchar *str,

@@ -5090,7 +5090,6 @@ meta_theme_metacity_calc_geometry (MetaThemeImpl          *impl,
     }
 
   /* Save the button layout */
-  fgeom->button_layout = *button_layout;
   fgeom->n_left_buttons = n_left;
   fgeom->n_right_buttons = n_right;
 
@@ -5382,6 +5381,7 @@ static MetaButtonState
 map_button_state (MetaButtonFunction       button_function,
                   const MetaFrameGeometry *fgeom,
                   gint                     middle_bg_offset,
+                  const MetaButtonLayout  *button_layout,
                   MetaButtonState          button_states[META_BUTTON_TYPE_LAST])
 {
   MetaButtonType type = META_BUTTON_TYPE_LAST;
@@ -5427,28 +5427,28 @@ map_button_state (MetaButtonFunction       button_function,
     case META_BUTTON_FUNCTION_RIGHT_LEFT_BACKGROUND:
     case META_BUTTON_FUNCTION_RIGHT_SINGLE_BACKGROUND:
       if (fgeom->n_right_buttons > 0)
-        type = fgeom->button_layout.right_buttons[0];
+        type = button_layout->right_buttons[0];
       break;
     case META_BUTTON_FUNCTION_RIGHT_RIGHT_BACKGROUND:
       if (fgeom->n_right_buttons > 0)
-        type = fgeom->button_layout.right_buttons[fgeom->n_right_buttons - 1];
+        type = button_layout->right_buttons[fgeom->n_right_buttons - 1];
       break;
     case META_BUTTON_FUNCTION_RIGHT_MIDDLE_BACKGROUND:
       if (middle_bg_offset + 1 < fgeom->n_right_buttons)
-        type = fgeom->button_layout.right_buttons[middle_bg_offset + 1];
+        type = button_layout->right_buttons[middle_bg_offset + 1];
       break;
     case META_BUTTON_FUNCTION_LEFT_LEFT_BACKGROUND:
     case META_BUTTON_FUNCTION_LEFT_SINGLE_BACKGROUND:
       if (fgeom->n_left_buttons > 0)
-        type = fgeom->button_layout.left_buttons[0];
+        type = button_layout->left_buttons[0];
       break;
     case META_BUTTON_FUNCTION_LEFT_RIGHT_BACKGROUND:
       if (fgeom->n_left_buttons > 0)
-        type = fgeom->button_layout.left_buttons[fgeom->n_left_buttons - 1];
+        type = button_layout->left_buttons[fgeom->n_left_buttons - 1];
       break;
     case META_BUTTON_FUNCTION_LEFT_MIDDLE_BACKGROUND:
       if (middle_bg_offset + 1 < fgeom->n_left_buttons)
-        type = fgeom->button_layout.left_buttons[middle_bg_offset + 1];
+        type = button_layout->left_buttons[middle_bg_offset + 1];
       break;
     case META_BUTTON_FUNCTION_LAST:
       break;
@@ -5470,6 +5470,7 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
                                 const MetaFrameGeometry *fgeom,
                                 PangoLayout             *title_layout,
                                 MetaFrameFlags           flags,
+                                const MetaButtonLayout  *button_layout,
                                 MetaButtonState          button_states[META_BUTTON_TYPE_LAST],
                                 GdkPixbuf               *mini_icon,
                                 GdkPixbuf               *icon)
@@ -5703,7 +5704,9 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
               rect.width = tmp_rect.width / scale;
               rect.height = tmp_rect.height / scale;
 
-              button_state = map_button_state (j, fgeom, middle_bg_offset, button_states);
+              button_state = map_button_state (j, fgeom, middle_bg_offset,
+                                               button_layout, button_states);
+
               op_list = meta_frame_style_get_button (style, j, button_state);
 
               if (op_list)

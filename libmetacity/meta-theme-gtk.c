@@ -589,7 +589,6 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl          *impl,
     }
 
   /* Save the button layout */
-  fgeom->button_layout = *button_layout;
   fgeom->n_left_buttons = n_left;
   fgeom->n_right_buttons = n_right;
 
@@ -741,6 +740,7 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
                            const MetaFrameGeometry *fgeom,
                            PangoLayout             *title_layout,
                            MetaFrameFlags           flags,
+                           const MetaButtonLayout  *button_layout,
                            MetaButtonState          button_states[META_BUTTON_TYPE_LAST],
                            GdkPixbuf               *mini_icon,
                            GdkPixbuf               *icon)

@@ -18,7 +18,7 @@
 #ifndef META_THEME_IMPL_PRIVATE_H
 #define META_THEME_IMPL_PRIVATE_H
 
-#include "meta-button-layout.h"
+#include "meta-button-layout-private.h"
 #include "meta-frame-borders.h"
 #include "meta-frame-enums.h"
 #include "meta-frame-style-private.h"
@@ -67,6 +67,7 @@ struct _MetaThemeImplClass
                                     const MetaFrameGeometry  *fgeom,
                                     PangoLayout              *title_layout,
                                     MetaFrameFlags            flags,
+                                    const MetaButtonLayout   *button_layout,
                                     MetaButtonState           button_states[META_BUTTON_TYPE_LAST],
                                     GdkPixbuf                *mini_icon,
                                     GdkPixbuf                *icon);

@@ -703,7 +703,8 @@ meta_theme_draw_frame (MetaTheme           *theme,
     }
 
   impl_class->draw_frame (theme->impl, style, style_info, cr, &fgeom,
-                          title_layout, flags, button_states, mini_icon, icon);
+                          title_layout, flags, &theme->button_layout,
+                          button_states, mini_icon, icon);
 
   g_object_unref (title_layout);
 }

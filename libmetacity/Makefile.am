@@ -5,7 +5,7 @@ lib_LTLIBRARIES = libmetacity.la
 libmetacity_la_SOURCES = \
 	meta-button-enums.h \
 	meta-button-layout.c \
-	meta-button-layout.h \
+	meta-button-layout-private.h \
 	meta-button-private.h \
 	meta-color.c \
 	meta-color.h \
@@ -70,7 +70,6 @@ libmetacity_la_LIBADD = \
 libmetacity_includedir = $(includedir)/metacity/libmetacity
 libmetacity_include_HEADERS = \
 	meta-button-enums.h \
-	meta-button-layout.h \
 	meta-color.h \
 	meta-enum-types.h \
 	meta-frame-borders.h \
