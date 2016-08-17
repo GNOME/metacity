@@ -9,6 +9,7 @@ AM_CPPFLAGS = \
 	-DMETACITY_PKGDATADIR=\"$(pkgdatadir)\" \
 	-DMETACITY_DATADIR=\"$(datadir)\" \
 	-DG_LOG_DOMAIN=\"metacity\" \
+	-DG_LOG_USE_STRUCTURED=1 \
 	-DSN_API_NOT_YET_FROZEN=1 \
 	-I$(srcdir)/include \
 	-I$(top_srcdir) \

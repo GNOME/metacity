@@ -11,6 +11,7 @@ metacity_theme_viewer_SOURCES = \
 
 metacity_theme_viewer_CPPFLAGS = \
 	-DDATADIR=\""$(datadir)"\" \
+	-DG_LOG_USE_STRUCTURED=1 \
 	-DLOCALEDIR=\""$(localedir)"\" \
 	-I$(top_srcdir) \
 	$(AM_CPPFLAGS) \
