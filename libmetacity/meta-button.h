@@ -48,25 +48,12 @@ typedef enum
   META_BUTTON_STATE_LAST
 } MetaButtonState;
 
-typedef struct
-{
-  MetaButtonType  type;
-  MetaButtonState state;
+typedef struct _MetaButton MetaButton;
 
-  /* The computed size of a button (really just a way of tying its visible
-   * and clickable areas together). The reason for two different rectangles
-   * here is Fitts' law & maximized windows; See bug #97703 for more details.
-   */
-  struct {
-    /* The area where the button's image is drawn. */
-    GdkRectangle  visible;
+MetaButtonType meta_button_get_type       (MetaButton   *button);
 
-    /* The area where the button can be activated by clicking */
-    GdkRectangle clickable;
-  } rect;
-
-  gboolean       visible;
-} MetaButton;
+void           meta_button_get_event_rect (MetaButton   *button,
+                                           GdkRectangle *rect);
 
 G_END_DECLS
 

@@ -570,11 +570,10 @@ meta_theme_set_button_layout (MetaTheme   *theme,
   theme->button_layout = meta_button_layout_new (button_layout, invert);
 }
 
-gboolean
-meta_theme_get_button (MetaTheme  *theme,
-                       gint        x,
-                       gint        y,
-                       MetaButton *button)
+MetaButton *
+meta_theme_get_button (MetaTheme *theme,
+                       gint       x,
+                       gint       y)
 {
   gint side;
 
@@ -618,13 +617,12 @@ meta_theme_get_button (MetaTheme  *theme,
           if (x >= rect.x && x < (rect.x + rect.width) &&
               y >= rect.y && y < (rect.y + rect.height))
             {
-              *button = *btn;
-              return TRUE;
+              return btn;
             }
         }
     }
 
-  return FALSE;
+  return NULL;
 }
 
 void

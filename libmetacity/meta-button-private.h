@@ -18,7 +18,7 @@
 #ifndef META_BUTTON_PRIVATE_H
 #define META_BUTTON_PRIVATE_H
 
-#include <glib.h>
+#include "meta-button.h"
 
 G_BEGIN_DECLS
 
@@ -46,6 +46,26 @@ typedef enum
   META_BUTTON_FUNCTION_UNSTICK,
   META_BUTTON_FUNCTION_LAST
 } MetaButtonFunction;
+
+struct _MetaButton
+{
+  MetaButtonType  type;
+  MetaButtonState state;
+
+  /* The computed size of a button (really just a way of tying its visible
+   * and clickable areas together). The reason for two different rectangles
+   * here is Fitts' law & maximized windows; See bug #97703 for more details.
+   */
+  struct {
+    /* The area where the button's image is drawn. */
+    GdkRectangle  visible;
+
+    /* The area where the button can be activated by clicking */
+    GdkRectangle clickable;
+  } rect;
+
+  gboolean       visible;
+};
 
 G_END_DECLS
 

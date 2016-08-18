@@ -1,5 +1,4 @@
 /*
- * Copyright (C) 2001 Havoc Pennington
  * Copyright (C) 2016 Alberts Muktupāvels
  *
  * This program is free software: you can redistribute it and/or modify
@@ -16,27 +15,19 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef META_BUTTON_LAYOUT_PRIVATE_H
-#define META_BUTTON_LAYOUT_PRIVATE_H
+#include "config.h"
 
 #include "meta-button-private.h"
 
-G_BEGIN_DECLS
-
-typedef struct
+MetaButtonType
+meta_button_get_type (MetaButton *button)
 {
-  MetaButton *left_buttons;
-  gint        n_left_buttons;
+  return button->type;
+}
 
-  MetaButton *right_buttons;
-  gint        n_right_buttons;
-} MetaButtonLayout;
-
-MetaButtonLayout *meta_button_layout_new  (const gchar      *str,
-                                           gboolean          invert);
-
-void              meta_button_layout_free (MetaButtonLayout *layout);
-
-G_END_DECLS
-
-#endif
+void
+meta_button_get_event_rect (MetaButton   *button,
+                            GdkRectangle *rect)
+{
+  *rect = button->rect.clickable;
+}

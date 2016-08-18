@@ -3,6 +3,7 @@ NULL =
 lib_LTLIBRARIES = libmetacity.la
 
 libmetacity_la_SOURCES = \
+	meta-button.c \
 	meta-button.h \
 	meta-button-layout.c \
 	meta-button-layout-private.h \

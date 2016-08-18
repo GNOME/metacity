@@ -129,13 +129,12 @@ get_control (MetaFrames  *frames,
   GdkRectangle client;
   MetaFrameBorders borders;
   MetaTheme *theme;
-  MetaButton button;
+  MetaButton *button;
 
   meta_frames_calc_geometry (frames, frame, &fgeom);
   get_client_rect (&fgeom, &client);
 
   borders = fgeom.borders;
-  theme = meta_ui_get_theme ();
 
   if (x < borders.invisible.left - borders.resize.left ||
       y < borders.invisible.top - borders.resize.top ||
@@ -151,9 +150,12 @@ get_control (MetaFrames  *frames,
                  META_CORE_GET_FRAME_TYPE, &type,
                  META_CORE_GET_END);
 
-  if (meta_theme_get_button (theme, x, y, &button))
+  theme = meta_ui_get_theme ();
+  button = meta_theme_get_button (theme, x, y);
+
+  if (button != NULL)
     {
-      switch (button.type)
+      switch (meta_button_get_type (button))
         {
           case META_BUTTON_TYPE_CLOSE:
             return META_FRAME_CONTROL_DELETE;
@@ -290,9 +292,7 @@ get_control_rect (MetaFrameControl   control,
 {
   MetaButtonType type;
   MetaTheme *theme;
-  MetaButton button;
-
-  type = META_BUTTON_TYPE_LAST;
+  MetaButton *button;
 
   switch (control)
     {
@@ -356,22 +356,22 @@ get_control_rect (MetaFrameControl   control,
       case META_FRAME_CONTROL_RESIZE_E:
       case META_FRAME_CONTROL_NONE:
       default:
+        type = META_BUTTON_TYPE_LAST;
         break;
     }
 
+  if (type == META_BUTTON_TYPE_LAST)
+    return FALSE;
+
   theme = meta_ui_get_theme ();
+  button = meta_theme_get_button (theme, x, y);
 
-  if (type != META_BUTTON_TYPE_LAST &&
-      meta_theme_get_button (theme, x, y, &button))
-    {
-      if (type == button.type)
-        {
-          *rect = button.rect.clickable;
-          return TRUE;
-        }
-    }
+  if (button == NULL || meta_button_get_type (button) != type)
+    return FALSE;
 
-  return FALSE;
+  meta_button_get_event_rect (button, rect);
+
+  return TRUE;
 }
 
 static void

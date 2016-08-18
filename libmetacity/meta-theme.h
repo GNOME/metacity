@@ -113,10 +113,9 @@ void           meta_theme_set_button_layout (MetaTheme                   *theme,
                                              const gchar                 *button_layout,
                                              gboolean                     invert);
 
-gboolean       meta_theme_get_button        (MetaTheme                   *theme,
+MetaButton    *meta_theme_get_button        (MetaTheme                   *theme,
                                              gint                         x,
-                                             gint                         y,
-                                             MetaButton                  *button);
+                                             gint                         y);
 
 void           meta_theme_set_composited    (MetaTheme                   *theme,
                                              gboolean                     composited);
