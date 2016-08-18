@@ -625,6 +625,64 @@ meta_theme_get_button (MetaTheme *theme,
   return NULL;
 }
 
+MetaButton **
+meta_theme_get_buttons (MetaTheme *theme)
+{
+  MetaButtonLayout *layout;
+  gint size;
+  MetaButton **retval;
+  gint index;
+  gint side;
+
+  layout = theme->button_layout;
+  size = layout->n_left_buttons + layout->n_right_buttons + 1;
+  retval = g_new0 (MetaButton *, size);
+  index = 0;
+
+  for (side = 0; side < 2; side++)
+    {
+      MetaButton *buttons;
+      gint n_buttons;
+      gint i;
+
+      if (side == 0)
+        {
+          buttons = layout->left_buttons;
+          n_buttons = layout->n_left_buttons;
+        }
+      else if (side == 1)
+        {
+          buttons = layout->right_buttons;
+          n_buttons = layout->n_right_buttons;
+        }
+      else
+        {
+          g_assert_not_reached ();
+        }
+
+      for (i = 0; i < n_buttons; i++)
+        {
+          MetaButton *btn;
+          GdkRectangle rect;
+
+          btn = &buttons[i];
+          rect = btn->rect.visible;
+
+          if (!btn->visible || btn->type == META_BUTTON_TYPE_SPACER ||
+              rect.width <= 0 || rect.height <= 0)
+            {
+              continue;
+            }
+
+          retval[index++] = btn;
+        }
+    }
+
+  retval[index] = NULL;
+
+  return retval;
+}
+
 void
 meta_theme_set_composited (MetaTheme *theme,
                            gboolean   composited)

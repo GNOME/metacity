@@ -117,6 +117,8 @@ MetaButton    *meta_theme_get_button        (MetaTheme                   *theme,
                                              gint                         x,
                                              gint                         y);
 
+MetaButton   **meta_theme_get_buttons       (MetaTheme                   *theme);
+
 void           meta_theme_set_composited    (MetaTheme                   *theme,
                                              gboolean                     composited);
 
