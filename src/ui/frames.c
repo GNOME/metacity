@@ -774,6 +774,7 @@ meta_frames_manage_window (MetaFrames *frames,
   frame->title = NULL;
   frame->expose_delayed = FALSE;
   frame->shape_applied = FALSE;
+  frame->ignore_leave_notify = FALSE;
   frame->prelit_control = META_FRAME_CONTROL_NONE;
   frame->prelit_x = 0;
   frame->prelit_y = 0;
@@ -1829,6 +1830,7 @@ meta_frames_button_press_event (GtkWidget      *widget,
           if (meta_ui_get_direction() == META_UI_DIRECTION_RTL)
             dx += rect.width;
 
+          frame->ignore_leave_notify = TRUE;
           meta_core_show_window_menu (frames->xdisplay,
                                       frame->xwindow,
                                       rect.x + dx,
@@ -2712,6 +2714,8 @@ meta_frames_enter_notify_event      (GtkWidget           *widget,
   if (frame == NULL)
     return FALSE;
 
+  frame->ignore_leave_notify = FALSE;
+
   control = get_control (frames, frame, event->x, event->y);
   update_prelit_control (frames, frame, control, event->x, event->y);
 
@@ -2724,11 +2728,19 @@ meta_frames_leave_notify_event      (GtkWidget           *widget,
 {
   MetaUIFrame *frame;
   MetaFrames *frames;
+  MetaGrabOp grab_op;
 
   frames = META_FRAMES (widget);
 
   frame = meta_frames_lookup_window (frames, GDK_WINDOW_XID (event->window));
   if (frame == NULL)
+    return FALSE;
+
+  grab_op = meta_core_get_grab_op (frames->xdisplay);
+  frame->ignore_leave_notify = frame->ignore_leave_notify &&
+                               grab_op == META_GRAB_OP_CLICKING_MENU;
+
+  if (frame->ignore_leave_notify)
     return FALSE;
 
   update_prelit_control (frames, frame, META_FRAME_CONTROL_NONE,
