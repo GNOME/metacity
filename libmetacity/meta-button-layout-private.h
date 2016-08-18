@@ -32,9 +32,11 @@ typedef struct
   gint        n_right_buttons;
 } MetaButtonLayout;
 
+G_GNUC_INTERNAL
 MetaButtonLayout *meta_button_layout_new  (const gchar      *str,
                                            gboolean          invert);
 
+G_GNUC_INTERNAL
 void              meta_button_layout_free (MetaButtonLayout *layout);
 
 G_END_DECLS
