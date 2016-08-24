@@ -1,7 +1,6 @@
 # Serbian translation of metacity
 # Courtesy of Prevod.org team (http://prevod.org/) -- 2003—2016.
 # This file is distributed under the same license as the metacity package.
-#
 # Translators:
 # Горан Ракић <grakic@devbase.net>
 # Данило Шеган <danilo@prevod.org>, 2005.
@@ -9,12 +8,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-04-10 01:01+0000\n"
-"PO-Revision-Date: 2016-04-10 09:39+0200\n"
-"Last-Translator: Марко М. Костић <marko.m.kostic@gmail.com>\n"
-"Language-Team: Serbian <(nothing)>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=metacit"
+"y&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2016-08-15 20:54+0000\n"
+"PO-Revision-Date: 2016-08-22 21:21+0200\n"
+"Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
+"Language-Team: српски <gnome-sr@googlegroups.org>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +21,6 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Project-Style: gnome\n"
-"X-Generator: Poedit 1.8.7.1\n"
 
 #. Translators: This is the title used on dialog boxes
 #: data/applications/metacity.desktop.in:4 src/core/util.c:535
@@ -445,11 +443,23 @@ msgstr "Распоред дугмића:"
 msgid "Composited:"
 msgstr "Наслаган:"
 
-#: data/ui/theme-viewer-window.ui:342 theme-viewer/theme-viewer-window.c:525
+#: data/ui/theme-viewer-window.ui:339 theme-viewer/theme-viewer-window.c:675
 msgid "Choose Theme"
 msgstr "Изаберите тему"
 
-#: data/ui/theme-viewer-window.ui:437
+#: data/ui/theme-viewer-window.ui:379
+msgid "Preview"
+msgstr "Преглед"
+
+#: data/ui/theme-viewer-window.ui:468 theme-viewer/theme-viewer-window.c:255
+msgid "Run"
+msgstr "Покрени"
+
+#: data/ui/theme-viewer-window.ui:490
+msgid "Benchmark"
+msgstr "Провера брзине"
+
+#: data/ui/theme-viewer-window.ui:563
 msgid "Reload"
 msgstr "Поново учитај"
 
@@ -546,12 +556,12 @@ msgstr "Чинилац сенке „%s“ у засенченој боји је
 msgid "Could not parse color '%s'"
 msgstr "Не могу да обрадим боју „%s“"
 
-#: libmetacity/meta-draw-spec.c:200
+#: libmetacity/meta-draw-spec.c:201
 #, c-format
 msgid "Coordinate expression contains character '%s' which is not allowed"
 msgstr "Израз са координатама садржи знак „%s“ што није дозвољено"
 
-#: libmetacity/meta-draw-spec.c:227
+#: libmetacity/meta-draw-spec.c:228
 #, c-format
 msgid ""
 "Coordinate expression contains floating point number '%s' which could not be "
@@ -559,12 +569,12 @@ msgid ""
 msgstr ""
 "Израз са координатама садржи децимални број „%s“ што не може бити обрађено"
 
-#: libmetacity/meta-draw-spec.c:240
+#: libmetacity/meta-draw-spec.c:241
 #, c-format
 msgid "Coordinate expression contains integer '%s' which could not be parsed"
 msgstr "Израз са координатама садржи цели број „%s“ што не може бити обрађено"
 
-#: libmetacity/meta-draw-spec.c:367
+#: libmetacity/meta-draw-spec.c:368
 #, c-format
 msgid ""
 "Coordinate expression contained unknown operator at the start of this text: "
@@ -572,42 +582,35 @@ msgid ""
 msgstr ""
 "Израз са координатама садржи непознати оператор на почетку овог текста: „%s“"
 
-#: libmetacity/meta-draw-spec.c:423
+#: libmetacity/meta-draw-spec.c:424
 msgid "Coordinate expression was empty or not understood"
 msgstr "Израз са координатама је био празан или неразумљив"
 
-#: libmetacity/meta-draw-spec.c:585
+#: libmetacity/meta-draw-spec.c:586
 #, c-format
 msgid "Coordinate expression had unknown variable or constant '%s'"
 msgstr "Израз са координатама има непознату променљиву или константу „%s“"
 
-#: libmetacity/meta-draw-spec.c:630 libmetacity/meta-draw-spec.c:640
-#: libmetacity/meta-draw-spec.c:675
+#: libmetacity/meta-draw-spec.c:631 libmetacity/meta-draw-spec.c:641
+#: libmetacity/meta-draw-spec.c:676 libmetacity/meta-draw-spec.c:686
 msgid "Coordinate expression results in division by zero"
 msgstr "Израз са координатама резултира у дељењу нулом"
 
-#: libmetacity/meta-draw-spec.c:683
-msgid ""
-"Coordinate expression tries to use mod operator on a floating-point number"
-msgstr ""
-"Израз са координатам покушава да користи оператор остатка при дељењу за "
-"децимални број"
-
-#: libmetacity/meta-draw-spec.c:769
+#: libmetacity/meta-draw-spec.c:774
 #, c-format
 msgid ""
 "Coordinate expression has an operator \"%s\" where an operand was expected"
 msgstr "Израз са координатама има оператор „%s“ где је очекиван операнд"
 
-#: libmetacity/meta-draw-spec.c:778
+#: libmetacity/meta-draw-spec.c:783
 msgid "Coordinate expression had an operand where an operator was expected"
 msgstr "Израз са координатама имаше операнд где је очекиван оператор"
 
-#: libmetacity/meta-draw-spec.c:786
+#: libmetacity/meta-draw-spec.c:791
 msgid "Coordinate expression ended with an operator instead of an operand"
 msgstr "Израз са координатама је завршио са оператором уместо са операндом"
 
-#: libmetacity/meta-draw-spec.c:796
+#: libmetacity/meta-draw-spec.c:801
 #, c-format
 msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
@@ -616,24 +619,24 @@ msgstr ""
 "Израз са координатама има оператор „%c“, а затим оператор „%c“ без операнда "
 "између"
 
-#: libmetacity/meta-draw-spec.c:928
+#: libmetacity/meta-draw-spec.c:933
 msgid "Coordinate expression parser overflowed its buffer."
 msgstr "Израз са координатама је био превелики за смештај и обраду."
 
-#: libmetacity/meta-draw-spec.c:956
+#: libmetacity/meta-draw-spec.c:961
 msgid "Coordinate expression had a close parenthesis with no open parenthesis"
 msgstr "Израз са координатама има затворене заграде без отворених заграда"
 
-#: libmetacity/meta-draw-spec.c:1024
+#: libmetacity/meta-draw-spec.c:1029
 msgid "Coordinate expression had an open parenthesis with no close parenthesis"
 msgstr "Израз са координатама има отворену заграду без затворене заграде"
 
-#: libmetacity/meta-draw-spec.c:1034
+#: libmetacity/meta-draw-spec.c:1039
 msgid "Coordinate expression doesn't seem to have any operators or operands"
 msgstr "Израз са координатама изгледа да нема ни један оператор или операнд"
 
-#: libmetacity/meta-draw-spec.c:1226 libmetacity/meta-draw-spec.c:1246
-#: libmetacity/meta-draw-spec.c:1266
+#: libmetacity/meta-draw-spec.c:1231 libmetacity/meta-draw-spec.c:1251
+#: libmetacity/meta-draw-spec.c:1271
 #, c-format
 msgid "Theme contained an expression that resulted in an error: %s"
 msgstr "Тема садржи израз који резултира грешком: %s"
@@ -673,12 +676,12 @@ msgstr "Однос размере дугмета %g није разуман"
 msgid "Frame geometry does not specify size of buttons"
 msgstr "Геометрија оквира не подешава величину дугмића"
 
-#: libmetacity/meta-frame-style.c:144 libmetacity/meta-frame-style.c:479
+#: libmetacity/meta-frame-style.c:144 libmetacity/meta-frame-style.c:469
 #, c-format
 msgid "Missing <frame state='%s' resize='%s' focus='%s' style='whatever' />"
 msgstr "Недостаје <frame state='%s' resize='%s' focus='%s' style='whatever' />"
 
-#: libmetacity/meta-frame-style.c:336
+#: libmetacity/meta-frame-style.c:326
 #, c-format
 msgid ""
 "<button function='%s' state='%s' draw_ops='whatever'/> must be specified for "
@@ -687,11 +690,11 @@ msgstr ""
 "<button function='%s' state='%s' draw_ops='whatever'/> мора бити наведен за "
 "овај стил оквира"
 
-#: libmetacity/meta-gradient-spec.c:125
+#: libmetacity/meta-gradient-spec.c:174
 msgid "Gradients should have at least two colors"
 msgstr "Градијенти морају имати најмање две боје"
 
-#: libmetacity/meta-theme-impl.c:99
+#: libmetacity/meta-theme-impl.c:100
 #, c-format
 msgid "MetaThemeImplClass::load not implemented for '%s'"
 msgstr "„MetaThemeImplClass::load“ није примењено за „%s“"
@@ -778,77 +781,77 @@ msgstr ""
 msgid "Constant '%s' has already been defined"
 msgstr "Константа „%s“ је већ одређена"
 
-#: libmetacity/meta-theme-metacity.c:1051
-#: libmetacity/meta-theme-metacity.c:1148
-#: libmetacity/meta-theme-metacity.c:1250
+#: libmetacity/meta-theme-metacity.c:1072
+#: libmetacity/meta-theme-metacity.c:1169
+#: libmetacity/meta-theme-metacity.c:1271
 #, c-format
 msgid "<%s> name \"%s\" used a second time"
 msgstr "<%s> назив „%s“ је коришћен по други пут"
 
-#: libmetacity/meta-theme-metacity.c:1063
+#: libmetacity/meta-theme-metacity.c:1084
 #, c-format
 msgid "<%s> parent \"%s\" has not been defined"
 msgstr "<%s> старији „%s“ није одређен"
 
-#: libmetacity/meta-theme-metacity.c:1114
+#: libmetacity/meta-theme-metacity.c:1135
 #, c-format
 msgid "<%s> name '%s' used a second time"
 msgstr "<%s> назив „%s“ је коришћен по други пут"
 
-#: libmetacity/meta-theme-metacity.c:1160
-#: libmetacity/meta-theme-metacity.c:1262
+#: libmetacity/meta-theme-metacity.c:1181
+#: libmetacity/meta-theme-metacity.c:1283
 #, c-format
 msgid "<%s> parent '%s' has not been defined"
 msgstr "<%s> старији „%s“ није одређен"
 
-#: libmetacity/meta-theme-metacity.c:1173
+#: libmetacity/meta-theme-metacity.c:1194
 #, c-format
 msgid "<%s> geometry '%s' has not been defined"
 msgstr "<%s> геометрија „%s“ није одређена"
 
-#: libmetacity/meta-theme-metacity.c:1186
+#: libmetacity/meta-theme-metacity.c:1207
 #, c-format
 msgid "<%s> must specify either a geometry or a parent that has a geometry"
 msgstr ""
 "<%s> мора бити наведена или геометрија или старији елемент који има "
 "геометрију"
 
-#: libmetacity/meta-theme-metacity.c:1227
+#: libmetacity/meta-theme-metacity.c:1248
 msgid "You must specify a background for an alpha value to be meaningful"
 msgstr "Морате навести позадину да би вредност прозирности имала смисла"
 
-#: libmetacity/meta-theme-metacity.c:1296
+#: libmetacity/meta-theme-metacity.c:1317
 #, c-format
 msgid "Unknown type '%s' on <%s> element"
 msgstr "Непозната врста „%s“ у елементу <%s>"
 
-#: libmetacity/meta-theme-metacity.c:1305
+#: libmetacity/meta-theme-metacity.c:1326
 #, c-format
 msgid "Unknown style_set '%s' on <%s> element"
 msgstr "Непознат „style_set“ „%s“ у елементу <%s>"
 
-#: libmetacity/meta-theme-metacity.c:1314
+#: libmetacity/meta-theme-metacity.c:1335
 #, c-format
 msgid "Window type '%s' has already been assigned a style set"
 msgstr "Врсти прозора „%s“ је већ додељен скуп изгледа"
 
-#: libmetacity/meta-theme-metacity.c:1343
-#: libmetacity/meta-theme-metacity.c:1407
-#: libmetacity/meta-theme-metacity.c:1633
-#: libmetacity/meta-theme-metacity.c:2787
-#: libmetacity/meta-theme-metacity.c:2833
-#: libmetacity/meta-theme-metacity.c:3073
-#: libmetacity/meta-theme-metacity.c:3109
-#: libmetacity/meta-theme-metacity.c:3145
-#: libmetacity/meta-theme-metacity.c:3181
-#: libmetacity/meta-theme-metacity.c:3478
+#: libmetacity/meta-theme-metacity.c:1364
+#: libmetacity/meta-theme-metacity.c:1428
+#: libmetacity/meta-theme-metacity.c:1654
+#: libmetacity/meta-theme-metacity.c:2808
+#: libmetacity/meta-theme-metacity.c:2854
+#: libmetacity/meta-theme-metacity.c:3094
+#: libmetacity/meta-theme-metacity.c:3130
+#: libmetacity/meta-theme-metacity.c:3166
+#: libmetacity/meta-theme-metacity.c:3202
+#: libmetacity/meta-theme-metacity.c:3499
 #, c-format
 msgid "Element <%s> is not allowed below <%s>"
 msgstr "Елемент <%s> није дозвољен испод <%s>"
 
-#: libmetacity/meta-theme-metacity.c:1443
-#: libmetacity/meta-theme-metacity.c:1569
-#: libmetacity/meta-theme-metacity.c:1583
+#: libmetacity/meta-theme-metacity.c:1464
+#: libmetacity/meta-theme-metacity.c:1590
+#: libmetacity/meta-theme-metacity.c:1604
 msgid ""
 "Cannot specify both 'button_width'/'button_height' and 'aspect_ratio' for "
 "buttons"
@@ -856,118 +859,118 @@ msgstr ""
 "Не можете да наведете и „button_width“/„button_height“ и „aspect_ratio“ за "
 "дугмад"
 
-#: libmetacity/meta-theme-metacity.c:1452
+#: libmetacity/meta-theme-metacity.c:1473
 #, c-format
 msgid "Aspect ratio '%s' is unknown"
 msgstr "Однос размере „%s је непознат"
 
-#: libmetacity/meta-theme-metacity.c:1514
+#: libmetacity/meta-theme-metacity.c:1535
 #, c-format
 msgid "Border '%s' is unknown"
 msgstr "Ивица „%s“ је непозната"
 
-#: libmetacity/meta-theme-metacity.c:1592
+#: libmetacity/meta-theme-metacity.c:1613
 #, c-format
 msgid "Distance '%s' is unknown"
 msgstr "Удаљеност „%s“ је непозната"
 
-#: libmetacity/meta-theme-metacity.c:1803
+#: libmetacity/meta-theme-metacity.c:1824
 #, c-format
 msgid "Angle must be between 0.0 and 360.0, was %g\n"
 msgstr "Угао мора бити између 0.0 и 360.0, био је %g\n"
 
-#: libmetacity/meta-theme-metacity.c:1992
+#: libmetacity/meta-theme-metacity.c:2013
 #, c-format
 msgid "No \"start_angle\" or \"from\" attribute on element <%s>"
 msgstr "Нема атрибута „start_angle“ или „from“ у елементу <%s>"
 
-#: libmetacity/meta-theme-metacity.c:1999
+#: libmetacity/meta-theme-metacity.c:2020
 #, c-format
 msgid "No \"extent_angle\" or \"to\" attribute on element <%s>"
 msgstr "Нема атрибута „extent_angle“ или „to“ у елементу <%s>"
 
-#: libmetacity/meta-theme-metacity.c:2185
+#: libmetacity/meta-theme-metacity.c:2206
 #, c-format
 msgid "Did not understand value \"%s\" for type of gradient"
 msgstr "Нисам разумео вредност „%s“ као врсту прелива"
 
-#: libmetacity/meta-theme-metacity.c:2250
-#: libmetacity/meta-theme-metacity.c:2572
+#: libmetacity/meta-theme-metacity.c:2271
+#: libmetacity/meta-theme-metacity.c:2593
 #, c-format
 msgid "Did not understand fill type \"%s\" for <%s> element"
 msgstr "Нисам разумео врсту попуњавања „%s“ у елементу <%s>"
 
-#: libmetacity/meta-theme-metacity.c:2403
-#: libmetacity/meta-theme-metacity.c:2472
-#: libmetacity/meta-theme-metacity.c:2523
+#: libmetacity/meta-theme-metacity.c:2424
+#: libmetacity/meta-theme-metacity.c:2493
+#: libmetacity/meta-theme-metacity.c:2544
 #, c-format
 msgid "Did not understand state \"%s\" for <%s> element"
 msgstr "Нисам разумео стање „%s“ у елементу <%s>"
 
-#: libmetacity/meta-theme-metacity.c:2413
-#: libmetacity/meta-theme-metacity.c:2482
+#: libmetacity/meta-theme-metacity.c:2434
+#: libmetacity/meta-theme-metacity.c:2503
 #, c-format
 msgid "Did not understand shadow \"%s\" for <%s> element"
 msgstr "Нисам разумео сенку „%s“ у елементу <%s>"
 
-#: libmetacity/meta-theme-metacity.c:2423
+#: libmetacity/meta-theme-metacity.c:2444
 #, c-format
 msgid "Did not understand arrow \"%s\" for <%s> element"
 msgstr "Нисам разумео стрелицу „%s“ у елементу <%s>"
 
-#: libmetacity/meta-theme-metacity.c:2672
-#: libmetacity/meta-theme-metacity.c:2739
+#: libmetacity/meta-theme-metacity.c:2693
+#: libmetacity/meta-theme-metacity.c:2760
 #, c-format
 msgid "No <draw_ops> called \"%s\" has been defined"
 msgstr "Није одређен <draw_ops> означен као „%s“"
 
-#: libmetacity/meta-theme-metacity.c:2684
-#: libmetacity/meta-theme-metacity.c:2751
+#: libmetacity/meta-theme-metacity.c:2705
+#: libmetacity/meta-theme-metacity.c:2772
 #, c-format
 msgid "Including draw_ops \"%s\" here would create a circular reference"
 msgstr "Укључивање елемента „draw_ops“ „%s“ овде би направило кружну упуту"
 
-#: libmetacity/meta-theme-metacity.c:2960
+#: libmetacity/meta-theme-metacity.c:2981
 #, c-format
 msgid "Unknown position \"%s\" for frame piece"
 msgstr "Непознат положај „%s“ за парче оквира"
 
-#: libmetacity/meta-theme-metacity.c:2968
+#: libmetacity/meta-theme-metacity.c:2989
 #, c-format
 msgid "Frame style already has a piece at position %s"
 msgstr "Изглед оквира већ има парче на положају %s"
 
-#: libmetacity/meta-theme-metacity.c:2984
+#: libmetacity/meta-theme-metacity.c:3005
 #, c-format
 msgid "No <draw_ops> with the name \"%s\" has been defined"
 msgstr "Није одређен <draw_ops> са називом „%s“"
 
-#: libmetacity/meta-theme-metacity.c:3015
+#: libmetacity/meta-theme-metacity.c:3036
 #, c-format
 msgid "Unknown function \"%s\" for button"
 msgstr "Непозната функција „%s“ за дугме"
 
-#: libmetacity/meta-theme-metacity.c:3026
+#: libmetacity/meta-theme-metacity.c:3047
 #, c-format
 msgid "Button function '%s' does not exist in this version (%d, need %d)"
 msgstr "Функција „%s“ за дугме не постоји у овом издању (%d, а треба вам %d)"
 
-#: libmetacity/meta-theme-metacity.c:3035
+#: libmetacity/meta-theme-metacity.c:3056
 #, c-format
 msgid "Unknown state '%s' for button"
 msgstr "Непознато стање „%s“ за дугме"
 
-#: libmetacity/meta-theme-metacity.c:3042
+#: libmetacity/meta-theme-metacity.c:3063
 #, c-format
 msgid "Frame style already has a button for function %s state %s"
 msgstr "Изглед оквира већ има дугме са функцијом %s и стањем %s"
 
-#: libmetacity/meta-theme-metacity.c:3059
+#: libmetacity/meta-theme-metacity.c:3080
 #, c-format
 msgid "No <draw_ops> with the name '%s' has been defined"
 msgstr "Није одређен <draw_ops> са називом „%s“"
 
-#: libmetacity/meta-theme-metacity.c:3093
+#: libmetacity/meta-theme-metacity.c:3114
 msgid ""
 "Can't have a two draw_ops for a <piece> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
@@ -975,7 +978,7 @@ msgstr ""
 "Не могу постојати два „draw_ops“ за елемент <piece> (тема наводи „draw_ops“ "
 "атрибут и <draw_ops> елемент, или наводи два елемента)"
 
-#: libmetacity/meta-theme-metacity.c:3129
+#: libmetacity/meta-theme-metacity.c:3150
 msgid ""
 "Can't have a two draw_ops for a <button> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
@@ -983,7 +986,7 @@ msgstr ""
 "Не могу постојати два „draw_ops“ за елемент <button> (тема наводи „draw_ops“ "
 "атрибут и <draw_ops> елемент, или наводи два елемента)"
 
-#: libmetacity/meta-theme-metacity.c:3165
+#: libmetacity/meta-theme-metacity.c:3186
 msgid ""
 "Can't have a two draw_ops for a <menu_icon> element (theme specified a "
 "draw_ops attribute and also a <draw_ops> element, or specified two elements)"
@@ -991,28 +994,28 @@ msgstr ""
 "Не могу постојати два „draw_ops“ за елемент <menu_icon> (тема наводи "
 "„draw_ops“ атрибут и <draw_ops> елемент, или наводи два елемента)"
 
-#: libmetacity/meta-theme-metacity.c:3269
+#: libmetacity/meta-theme-metacity.c:3290
 #, c-format
 msgid "'%s' is not a valid value for focus attribute"
 msgstr "„%s“ није дозвољена вредност за атрибут фокуса"
 
-#: libmetacity/meta-theme-metacity.c:3278
+#: libmetacity/meta-theme-metacity.c:3299
 #, c-format
 msgid "'%s' is not a valid value for state attribute"
 msgstr "„%s“ није дозвољена вредност за атрибут стања"
 
-#: libmetacity/meta-theme-metacity.c:3287
+#: libmetacity/meta-theme-metacity.c:3308
 #, c-format
 msgid "A style called '%s' has not been defined"
 msgstr "Изглед под називом „%s“ није одређен"
 
-#: libmetacity/meta-theme-metacity.c:3305
-#: libmetacity/meta-theme-metacity.c:3328
+#: libmetacity/meta-theme-metacity.c:3326
+#: libmetacity/meta-theme-metacity.c:3349
 #, c-format
 msgid "'%s' is not a valid value for resize attribute"
 msgstr "„%s“ није дозвољена вредност за атрибут промене величине"
 
-#: libmetacity/meta-theme-metacity.c:3339
+#: libmetacity/meta-theme-metacity.c:3360
 #, c-format
 msgid ""
 "Should not have 'resize' attribute on <%s> element for maximized/shaded "
@@ -1020,33 +1023,33 @@ msgid ""
 msgstr ""
 "Не треба имати „resize“ атрибут у елементу <%s> за увећана/засенчена стања"
 
-#: libmetacity/meta-theme-metacity.c:3360
+#: libmetacity/meta-theme-metacity.c:3381
 #, c-format
 msgid "Should not have 'resize' attribute on <%s> element for maximized states"
 msgstr "Не треба имати „resize“ атрибут у елементу <%s> за увећана стања"
 
-#: libmetacity/meta-theme-metacity.c:3375
-#: libmetacity/meta-theme-metacity.c:3423
+#: libmetacity/meta-theme-metacity.c:3396
+#: libmetacity/meta-theme-metacity.c:3444
 #, c-format
 msgid "Style has already been specified for state %s resize %s focus %s"
 msgstr "Изглед је већ наведен за стање „%s“ увећање „%s“ фокус „%s“"
 
-#: libmetacity/meta-theme-metacity.c:3387
-#: libmetacity/meta-theme-metacity.c:3399
-#: libmetacity/meta-theme-metacity.c:3411
-#: libmetacity/meta-theme-metacity.c:3435
-#: libmetacity/meta-theme-metacity.c:3447
-#: libmetacity/meta-theme-metacity.c:3459
+#: libmetacity/meta-theme-metacity.c:3408
+#: libmetacity/meta-theme-metacity.c:3420
+#: libmetacity/meta-theme-metacity.c:3432
+#: libmetacity/meta-theme-metacity.c:3456
+#: libmetacity/meta-theme-metacity.c:3468
+#: libmetacity/meta-theme-metacity.c:3480
 #, c-format
 msgid "Style has already been specified for state %s focus %s"
 msgstr "Изглед је већ наведен за стање „%s“ фокус „“%s"
 
-#: libmetacity/meta-theme-metacity.c:3525
+#: libmetacity/meta-theme-metacity.c:3546
 #, c-format
 msgid "Bad version specification '%s'"
 msgstr "Лоша одредба издања „%s“"
 
-#: libmetacity/meta-theme-metacity.c:3596
+#: libmetacity/meta-theme-metacity.c:3617
 msgid ""
 "'version' attribute cannot be used in metacity-theme-1.xml or metacity-"
 "theme-2.xml"
@@ -1054,17 +1057,17 @@ msgstr ""
 "Атрибут „version“ се не може користити у „metacity-theme-1.xml“ или "
 "„metacity-theme-2.xml“"
 
-#: libmetacity/meta-theme-metacity.c:3619
+#: libmetacity/meta-theme-metacity.c:3640
 #, c-format
 msgid "Theme requires version %s but latest supported theme version is %d.%d"
 msgstr "Тема захтева издање „%s“ али је последње подржано издање теме %d.%d"
 
-#: libmetacity/meta-theme-metacity.c:3643
+#: libmetacity/meta-theme-metacity.c:3664
 #, c-format
 msgid "Outermost element in theme must be <metacity_theme> not <%s>"
 msgstr "Најстарији елемент теме мора бити <metacity_theme>, а не <%s>"
 
-#: libmetacity/meta-theme-metacity.c:3663
+#: libmetacity/meta-theme-metacity.c:3684
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a name/author/date/description element"
@@ -1072,41 +1075,41 @@ msgstr ""
 "Елемент <%s> није дозвољен унутар елемената „name, author, date и "
 "description“"
 
-#: libmetacity/meta-theme-metacity.c:3669
+#: libmetacity/meta-theme-metacity.c:3690
 #, c-format
 msgid "Element <%s> is not allowed inside a <constant> element"
 msgstr "Елемент <%s> није дозвољен унутар елемента <constant>"
 
-#: libmetacity/meta-theme-metacity.c:3682
+#: libmetacity/meta-theme-metacity.c:3703
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a distance/border/aspect_ratio element"
 msgstr ""
 "Елемент <%s> није дозвољен унутар елемената „distance, border и aspect_ratio“"
 
-#: libmetacity/meta-theme-metacity.c:3705
+#: libmetacity/meta-theme-metacity.c:3726
 #, c-format
 msgid "Element <%s> is not allowed inside a draw operation element"
 msgstr "Елемент <%s> није дозвољен унутар елемента операција цртања"
 
-#: libmetacity/meta-theme-metacity.c:3716
-#: libmetacity/meta-theme-metacity.c:3747
-#: libmetacity/meta-theme-metacity.c:3753
-#: libmetacity/meta-theme-metacity.c:3759
+#: libmetacity/meta-theme-metacity.c:3737
+#: libmetacity/meta-theme-metacity.c:3768
+#: libmetacity/meta-theme-metacity.c:3774
+#: libmetacity/meta-theme-metacity.c:3780
 #, c-format
 msgid "Element <%s> is not allowed inside a <%s> element"
 msgstr "Елемент <%s> није дозвољен унутар <%s> елемента"
 
-#: libmetacity/meta-theme-metacity.c:3813
-#: libmetacity/meta-theme-metacity.c:3821
-#: libmetacity/meta-theme-metacity.c:3829
-#: libmetacity/meta-theme-metacity.c:3837
-#: libmetacity/meta-theme-metacity.c:3846
+#: libmetacity/meta-theme-metacity.c:3834
+#: libmetacity/meta-theme-metacity.c:3842
+#: libmetacity/meta-theme-metacity.c:3850
+#: libmetacity/meta-theme-metacity.c:3858
+#: libmetacity/meta-theme-metacity.c:3867
 #, c-format
 msgid "No <%s> set for theme '%s'"
 msgstr "Није подешен елемент <%s> за тему „%s“"
 
-#: libmetacity/meta-theme-metacity.c:3863
+#: libmetacity/meta-theme-metacity.c:3884
 #, c-format
 msgid ""
 "No frame style set for window type '%s' in theme '%s', add a <window "
@@ -1115,29 +1118,29 @@ msgstr ""
 "Није подешен стил оквира за прозор врсте „%s“ у теми „%s“, додајте елемент "
 "<window type='%s' style_set='whatever' />"
 
-#: libmetacity/meta-theme-metacity.c:4126
+#: libmetacity/meta-theme-metacity.c:4147
 msgid "No draw_ops provided for frame piece"
 msgstr "Није наведен „draw_ops“ за део оквира"
 
-#: libmetacity/meta-theme-metacity.c:4142
+#: libmetacity/meta-theme-metacity.c:4163
 msgid "No draw_ops provided for button"
 msgstr "Није наведен „draw_ops“ за дугме"
 
-#: libmetacity/meta-theme-metacity.c:4257
-#: libmetacity/meta-theme-metacity.c:4268
-#: libmetacity/meta-theme-metacity.c:4279
-#: libmetacity/meta-theme-metacity.c:4290
-#: libmetacity/meta-theme-metacity.c:4301
+#: libmetacity/meta-theme-metacity.c:4278
+#: libmetacity/meta-theme-metacity.c:4289
+#: libmetacity/meta-theme-metacity.c:4300
+#: libmetacity/meta-theme-metacity.c:4311
+#: libmetacity/meta-theme-metacity.c:4322
 #, c-format
 msgid "<%s> specified twice for this theme"
 msgstr "Елемент <%s> је наведен два пута у овој теми"
 
-#: libmetacity/meta-theme-metacity.c:4340
+#: libmetacity/meta-theme-metacity.c:4361
 #, c-format
 msgid "No text is allowed inside element <%s>"
 msgstr "Није дозвољен текст унутар елемента <%s>"
 
-#: libmetacity/meta-theme-metacity.c:4593
+#: libmetacity/meta-theme-metacity.c:4614
 #, c-format
 msgid "Failed to find a valid file for theme '%s'"
 msgstr "Нисам успео да пронађем исправну датотеку за тему „%s“"
@@ -1178,12 +1181,12 @@ msgstr "_Приморај излаз"
 msgid "Failed to get hostname: %s\n"
 msgstr "Нисам успео да сазнам назив рачунара: %s\n"
 
-#: src/core/display.c:326
+#: src/core/display.c:322
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
 msgstr "Нисам успео да отворим екран система Х прозора „%s“\n"
 
-#: src/core/keybindings.c:688
+#: src/core/keybindings.c:690
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
@@ -1207,54 +1210,54 @@ msgstr ""
 "Нема НИКАКВЕ гаранције; чак ни о ТРЖИШНОЈ ВРЕДНОСТИ или ПРИЛАГОЂЕНОСТИ "
 "ОДРЕЂЕНОЈ НАМЕНИ.\n"
 
-#: src/core/main.c:237
+#: src/core/main.c:225
 msgid "Disable connection to session manager"
 msgstr "Искључује везу са управником сесије"
 
-#: src/core/main.c:243
+#: src/core/main.c:231
 msgid "Replace the running window manager with Metacity"
 msgstr "Мења текућег управника прозорима Метаситијем"
 
-#: src/core/main.c:249
+#: src/core/main.c:237
 msgid "Specify session management ID"
 msgstr "Наводи ИБ за управљање сесијом"
 
-#: src/core/main.c:254
+#: src/core/main.c:242
 msgid "X Display to use"
 msgstr "Који ће X екран бити коришћен"
 
-#: src/core/main.c:260
+#: src/core/main.c:248
 msgid "Initialize session from savefile"
 msgstr "Покреће сесију из датотеке чувања"
 
-#: src/core/main.c:266
+#: src/core/main.c:254
 msgid "Print version"
 msgstr "Исписује издање"
 
-#: src/core/main.c:272
+#: src/core/main.c:260
 msgid "Make X calls synchronous"
 msgstr "Усаглашава позиве Икса"
 
-#: src/core/main.c:278
+#: src/core/main.c:266
 msgid "Turn compositing on"
 msgstr "Укључује слагање"
 
-#: src/core/main.c:284
+#: src/core/main.c:272
 msgid "Turn compositing off"
 msgstr "Искључује слагање"
 
-#: src/core/main.c:290
+#: src/core/main.c:278
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr ""
 "Не поставља преко целог екрана прозоре који нису увећани и не поседују оквир"
 
-#: src/core/main.c:514
+#: src/core/main.c:499
 #, c-format
 msgid "Failed to restart: %s\n"
 msgstr "Нисам успео поново да покренем: %s\n"
 
-#: src/core/prefs.c:1019
+#: src/core/prefs.c:1043
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -1262,12 +1265,12 @@ msgstr ""
 "Решења за оштећене програме су искључена. Неке апликације се могу понашати "
 "чудно.\n"
 
-#: src/core/prefs.c:1096
+#: src/core/prefs.c:1120
 #, c-format
 msgid "Could not parse font description \"%s\" from GSettings key %s\n"
 msgstr "Не могу да обрадим опис „%s“ из кључа „%s“ у гномовим подешавањима\n"
 
-#: src/core/prefs.c:1158
+#: src/core/prefs.c:1182
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -1276,19 +1279,19 @@ msgstr ""
 "„%s“ је пронађен у бази подешавања што није исправна вредност за типку која "
 "мења понашање тастера миша\n"
 
-#: src/core/prefs.c:1435
+#: src/core/prefs.c:1459
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
 "\"%s\"\n"
 msgstr "„%s“ из базе са подешавањима није исправна комбинација тастера „%s“\n"
 
-#: src/core/prefs.c:1537
+#: src/core/prefs.c:1561
 #, c-format
 msgid "Workspace %d"
 msgstr "Радни простор бр. %d"
 
-#: src/core/prefs.c:1794
+#: src/core/prefs.c:1818
 #, c-format
 msgid "Missing %s extension required for compositing\n"
 msgstr "Недостаје %s проширење потребно за слагање\n"
@@ -1313,12 +1316,12 @@ msgid ""
 "Could not acquire window manager selection on screen %d display \"%s\"\n"
 msgstr "Не могу да добијем избор управника прозора на приказу %d екрана „%s“\n"
 
-#: src/core/screen.c:465
+#: src/core/screen.c:463
 #, c-format
 msgid "Screen %d on display \"%s\" already has a window manager\n"
 msgstr "Приказ %d на екрану „%s“ већ има управника прозора\n"
 
-#: src/core/screen.c:678
+#: src/core/screen.c:675
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "Не могу да отпустим приказ %d на екрану „%s“\n"
@@ -1412,7 +1415,7 @@ msgid "Window manager error: "
 msgstr "Грешка управника прозора: "
 
 #. first time through
-#: src/core/window.c:5935
+#: src/core/window.c:5950
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -1428,7 +1431,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/core/window.c:6418
+#: src/core/window.c:6440
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size "
@@ -1507,51 +1510,51 @@ msgstr ""
 msgid "Usage: %s\n"
 msgstr "Употреба: %s\n"
 
-#: src/ui/frames.c:1235
+#: src/ui/frames.c:1070
 msgid "Close Window"
 msgstr "Затвори прозор"
 
-#: src/ui/frames.c:1238
+#: src/ui/frames.c:1073
 msgid "Window Menu"
 msgstr "Изборник прозора"
 
-#: src/ui/frames.c:1241
+#: src/ui/frames.c:1076
 msgid "Window App Menu"
 msgstr "Изборник прозора програма"
 
-#: src/ui/frames.c:1244
+#: src/ui/frames.c:1079
 msgid "Minimize Window"
 msgstr "Умањи прозор"
 
-#: src/ui/frames.c:1247
+#: src/ui/frames.c:1082
 msgid "Maximize Window"
 msgstr "Увећај прозор"
 
-#: src/ui/frames.c:1250
+#: src/ui/frames.c:1085
 msgid "Restore Window"
 msgstr "Врати величину прозору"
 
-#: src/ui/frames.c:1253
+#: src/ui/frames.c:1088
 msgid "Roll Up Window"
 msgstr "Замотај прозор"
 
-#: src/ui/frames.c:1256
+#: src/ui/frames.c:1091
 msgid "Unroll Window"
 msgstr "Одмотај прозор"
 
-#: src/ui/frames.c:1259
+#: src/ui/frames.c:1094
 msgid "Keep Window On Top"
 msgstr "Стави прозор у први план"
 
-#: src/ui/frames.c:1262
+#: src/ui/frames.c:1097
 msgid "Remove Window From Top"
 msgstr "Склони прозор из првог плана"
 
-#: src/ui/frames.c:1265
+#: src/ui/frames.c:1100
 msgid "Always On Visible Workspace"
 msgstr "Увек на приказаном радном простору"
 
-#: src/ui/frames.c:1268
+#: src/ui/frames.c:1103
 msgid "Put Window On Only One Workspace"
 msgstr "Стави прозор само на један радни простор"
 
@@ -1753,13 +1756,55 @@ msgstr "Мод5"
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: src/ui/ui.c:774
+#: src/ui/ui.c:764
 msgid "Falling back to default GTK+ theme - Adwaita"
-msgstr "Враћам се на подразумевану ГТК+ тему - Адвајту"
+msgstr "Враћам се на подразумевану ГТК+ тему — Адвајту"
 
-#: theme-viewer/theme-viewer-window.c:791
+# bug: plural-forms
+#: theme-viewer/theme-viewer-window.c:104
+#, c-format
+#| msgid "Loaded theme \"%s\" in %g seconds\n"
+msgid "Loaded <b>%s</b> theme <b>%s</b> in <b>%f</b> seconds."
+msgstr "Учитах <b>%s</b> тему <b>%s</b> за <b>%f</b> секунде."
+
+#: theme-viewer/theme-viewer-window.c:134
+#, c-format
+msgid ""
+"Got MetaFrameBorders in <b>%f</b> seconds (CSS loading, PangoFontDescription "
+"creation and title height calculation)."
+msgstr ""
+"Добавих ивице мета-оквира за <b>%f</b> секунде (ЦСС учитавање, стварање "
+"описа Панго слова и израчунавање висине наслова)."
+
+# bug: plural-forms
+#: theme-viewer/theme-viewer-window.c:210
+#, c-format
+#| msgid ""
+#| "Drew %d frames in %g client-side seconds (%g milliseconds per frame) and "
+#| "%g seconds wall clock time including X server resources (%g milliseconds "
+#| "per frame)\n"
+msgid ""
+"Drew <b>%d</b> frames in <b>%f</b> client-side seconds (<b>%f</b> "
+"milliseconds per frame) and <b>%f</b> seconds wall clock time including X "
+"server resources (<b>%f</b> milliseconds per frame)."
+msgstr ""
+"Нацртах <b>%d</b> оквира за <b>%f</b> клијентских секунди (<b>%f</b> "
+"милисекунди по оквиру) и <b>%f</b> секунди времена на зидном часовнику "
+"укључујући и ресурсе Икс сервера (<b>%f</b> милисекунди по оквиру)\n"
+
+#: theme-viewer/theme-viewer-window.c:247
+msgid "Run again"
+msgstr "Поново покрени"
+
+#: theme-viewer/theme-viewer-window.c:983
 msgid "Metacity Theme Viewer"
 msgstr "Прегледник теме Метаситија"
+
+#~ msgid ""
+#~ "Coordinate expression tries to use mod operator on a floating-point number"
+#~ msgstr ""
+#~ "Израз са координатам покушава да користи оператор остатка при дељењу за "
+#~ "децимални број"
 
 #~ msgid "Current theme"
 #~ msgstr "Тренутна тема"
@@ -1828,10 +1873,6 @@ msgstr "Прегледник теме Метаситија"
 #~ msgid "Error loading theme: %s\n"
 #~ msgstr "Грешка учитавања теме: %s\n"
 
-# bug: plural-forms
-#~ msgid "Loaded theme \"%s\" in %g seconds\n"
-#~ msgstr "Учитана је тема „%s“ за %g секунде\n"
-
 #~ msgid "Normal Title Font"
 #~ msgstr "Обичан словни лик наслова"
 
@@ -1841,21 +1882,8 @@ msgstr "Прегледник теме Метаситија"
 #~ msgid "Large Title Font"
 #~ msgstr "Велики словни лик наслова"
 
-#~ msgid "Benchmark"
-#~ msgstr "Провера брзине"
-
 #~ msgid "Window Title Goes Here"
 #~ msgstr "Овде иде наслов прозора"
-
-# bug: plural-forms
-#~ msgid ""
-#~ "Drew %d frames in %g client-side seconds (%g milliseconds per frame) and "
-#~ "%g seconds wall clock time including X server resources (%g milliseconds "
-#~ "per frame)\n"
-#~ msgstr ""
-#~ "Нацртах %d оквира за %g клијентских секунди (%g милисекунди по оквиру) и "
-#~ "%g секунди времена на зидном часовнику укључујући и ресурсе Икс сервера "
-#~ "(%g милисекунди по оквиру)\n"
 
 #~ msgid "position expression test returned TRUE but set error"
 #~ msgstr "провера израза положаја је вратила тачно, али је поставила грешку"
