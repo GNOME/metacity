@@ -1790,7 +1790,7 @@ msgid ""
 msgstr ""
 "Nacrtah <b>%d</b> okvira za <b>%f</b> klijentskih sekundi (<b>%f</b> "
 "milisekundi po okviru) i <b>%f</b> sekundi vremena na zidnom časovniku "
-"uključujući i resurse Iks servera (<b>%f</b> milisekundi po okviru)\n"
+"uključujući i resurse Iks servera (<b>%f</b> milisekundi po okviru)."
 
 #: theme-viewer/theme-viewer-window.c:247
 msgid "Run again"
