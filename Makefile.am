@@ -24,7 +24,6 @@ MAINTAINERCLEANFILES = \
 	`find "$(srcdir)/m4" -type f -name "*.m4" -print` \
 	$(srcdir)/ABOUT-NLS \
 	$(srcdir)/INSTALL \
-	$(srcdir)/build-aux/config.rpath \
 	$(srcdir)/config.h.in~ \
 	$(srcdir)/configure \
 	$(srcdir)/po/Makefile.in.in \
