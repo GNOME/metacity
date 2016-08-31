@@ -38,6 +38,7 @@
 #include "screen.h"
 #include "frame.h"
 #include "errors.h"
+#include "prefs.h"
 #include "window.h"
 #include "compositor-private.h"
 #include "compositor-xrender.h"
@@ -1037,22 +1038,38 @@ window_has_shadow (MetaCompWindow *cw)
   if (info == NULL || info->have_shadows == FALSE)
     return FALSE;
 
-  /* Always put a shadow around windows with a frame - This should override
-     the restriction about not putting a shadow around shaped windows
-     as the frame might be the reason the window is shaped */
+  /* Always put a shadow around windows with a frame. This should override
+   * the restriction about not putting a shadow around shaped windows as the
+   * frame might be the reason the window is shaped.
+   */
   if (cw->window)
     {
-      /* Do not add shadows for maximized windows */
+      /* Do not add shadows to fullscreen windows */
+      if (meta_window_is_fullscreen (cw->window))
+        {
+          meta_verbose ("Window has no shadow because it is fullscreen\n");
+          return FALSE;
+        }
+
+      /* Do not add shadows to maximized windows */
       if (meta_window_is_maximized (cw->window))
         {
           meta_verbose ("Window has no shadow because it is maximized\n");
           return FALSE;
         }
 
-      if (meta_window_get_frame (cw->window)) {
-        meta_verbose ("Window has shadow because it has a frame\n");
-        return TRUE;
-      }
+      /* Do not add shadows if GTK+ theme is used */
+      if (meta_prefs_get_theme_type () == META_THEME_TYPE_GTK)
+        {
+          meta_verbose ("Window has shadow from GTK+ theme\n");
+          return FALSE;
+        }
+
+      if (meta_window_get_frame (cw->window))
+        {
+          meta_verbose ("Window has shadow because it has a frame\n");
+          return TRUE;
+        }
     }
 
   /* Do not add shadows to ARGB windows */
@@ -2996,6 +3013,38 @@ xrender_remove_window (MetaCompositor *compositor,
 }
 
 static void
+update_shadows (MetaPreference pref,
+                gpointer       data)
+{
+  MetaCompScreen *info;
+  MetaDisplay *display;
+  Display *xdisplay;
+  GList *index;
+
+  if (pref != META_PREF_THEME_TYPE)
+    return;
+
+  info = (MetaCompScreen *) data;
+  display = meta_screen_get_display (info->screen);
+  xdisplay = meta_display_get_xdisplay (display);
+
+  for (index = info->windows; index; index = index->next)
+    {
+      MetaCompWindow *cw;
+
+      cw = (MetaCompWindow *) index->data;
+
+      if (cw->window && cw->shadow)
+        {
+          XRenderFreePicture (xdisplay, cw->shadow);
+          cw->shadow = None;
+        }
+
+      cw->needs_shadow = window_has_shadow (cw);
+    }
+}
+
+static void
 show_overlay_window (MetaScreen *screen,
                      Window      cow)
 {
@@ -3123,6 +3172,8 @@ xrender_manage_screen (MetaCompositor *compositor,
 
   /* Now we're up and running we can show the output if needed */
   show_overlay_window (screen, info->output);
+
+  meta_prefs_add_listener (update_shadows, info);
 }
 
 static void
@@ -3140,6 +3191,8 @@ xrender_unmanage_screen (MetaCompositor *compositor,
   /* This screen isn't managed */
   if (info == NULL)
     return;
+
+  meta_prefs_remove_listener (update_shadows, info);
 
   hide_overlay_window (screen, info->output);
 

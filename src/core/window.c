@@ -8668,6 +8668,12 @@ meta_window_get_transient_for (MetaWindow *window)
 }
 
 gboolean
+meta_window_is_fullscreen (MetaWindow *window)
+{
+  return window->fullscreen;
+}
+
+gboolean
 meta_window_is_maximized (MetaWindow *window)
 {
   return META_WINDOW_MAXIMIZED (window);
