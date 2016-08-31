@@ -168,7 +168,6 @@ typedef struct _MetaCompWindow
 
   gboolean needs_shadow;
   MetaShadowType shadow_type;
-  Picture shadow_pict;
 
   XserverRegion window_region;
   XserverRegion visible_region;
@@ -1992,12 +1991,6 @@ free_win (MetaCompWindow *cw,
       cw->alpha_pict = None;
     }
 
-  if (cw->shadow_pict)
-    {
-      XRenderFreePicture (xdisplay, cw->shadow_pict);
-      cw->shadow_pict = None;
-    }
-
   if (cw->window_region)
     {
       XFixesDestroyRegion (xdisplay, cw->window_region);
@@ -2163,12 +2156,6 @@ determine_mode (MetaDisplay    *display,
       cw->alpha_pict = None;
     }
 
-  if (cw->shadow_pict)
-    {
-      XRenderFreePicture (xdisplay, cw->shadow_pict);
-      cw->shadow_pict = None;
-    }
-
   if (cw->attrs.class == InputOnly)
     format = NULL;
   else
@@ -2324,7 +2311,6 @@ add_win (MetaScreen *screen,
     cw->damage = XDamageCreate (xdisplay, xwindow, XDamageReportNonEmpty);
 
   cw->alpha_pict = None;
-  cw->shadow_pict = None;
 
   cw->window_region = None;
   cw->visible_region = None;
