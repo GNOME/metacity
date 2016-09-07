@@ -1,7 +1,9 @@
 # List of source files containing translatable strings.
 # Please keep this file sorted alphabetically.
 data/applications/metacity.desktop.in
-data/keybindings/keybindings.pot
+data/keybindings/50-metacity-navigation.xml
+data/keybindings/50-metacity-system.xml
+data/keybindings/50-metacity-windows.xml
 data/schemas/org.gnome.metacity.gschema.xml
 data/schemas/org.gnome.metacity.keybindings.gschema.xml
 data/schemas/org.gnome.metacity.theme.gschema.xml

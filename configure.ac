@@ -63,7 +63,6 @@ dnl **************************************************************************
 
 AC_PATH_PROG([GLIB_MKENUMS], [glib-mkenums])
 AC_PATH_PROG([GLIB_COMPILE_RESOURCES], [glib-compile-resources])
-AC_PATH_PROG([ITSTOOL], [itstool])
 
 dnl **************************************************************************
 dnl Internationalization
