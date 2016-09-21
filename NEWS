@@ -1,3 +1,17 @@
+Version 3.22.0
+==============
+- Use shadow from GTK+ theme (Alberts Muktupāvels)
+- Fix pressed state of menu button (Alberts Muktupāvels; #394787)
+- Fix titlebar repaint (Alberts Muktupāvels; #769049)
+- Fix small memory leak in compositor (Alberts Muktupāvels)
+- Improved HiDPI support (Alberts Muktupāvels, Giovanni Campagna)
+- Fix crash when removing secondary monitor (Alberts Muktupāvels; #766156)
+- Fix window resizing using titlebar (Alberts Muktupāvels; LP:#1596574)
+- Updated translations:
+  Anders Jonsson (sv), Andika Triwidada (id), Balázs Meskó (hu),
+  Daniel Mustieles (es), Marek Černocký (cs), Мирослав Николић (sr, sr@latin),
+  Piotr Drąg (pl), Rafael Fontenelle (pt_BR).
+
 Version 3.20.0
 ==============
 - Allow minimizing windows which don't advertise support for it. (Jasper
