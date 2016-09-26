@@ -2378,8 +2378,7 @@ add_win (MetaScreen *screen,
 
 static void
 destroy_win (MetaDisplay *display,
-             Window       xwindow,
-             gboolean     gone)
+             Window       xwindow)
 {
   MetaScreen *screen;
   MetaCompScreen *info;
@@ -2900,7 +2899,7 @@ process_reparent (MetaCompositorXRender *compositor,
   if (screen != NULL)
     add_win (screen, window, event->window);
   else
-    destroy_win (compositor->display, event->window, FALSE);
+    destroy_win (compositor->display, event->window);
 }
 
 static void
@@ -2924,7 +2923,7 @@ static void
 process_destroy (MetaCompositorXRender *compositor,
                  XDestroyWindowEvent   *event)
 {
-  destroy_win (compositor->display, event->window, FALSE);
+  destroy_win (compositor->display, event->window);
 }
 
 static void
