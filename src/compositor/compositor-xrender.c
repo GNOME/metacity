@@ -3279,6 +3279,7 @@ xrender_free_window (MetaCompositor *compositor,
   MetaCompositorXRender *xrc;
   MetaFrame *frame;
   Window xwindow;
+  MetaCompWindow *cw;
 
   xrc = (MetaCompositorXRender *) compositor;
   frame = meta_window_get_frame (window);
@@ -3288,7 +3289,21 @@ xrender_free_window (MetaCompositor *compositor,
   else
     xwindow = meta_window_get_xwindow (window);
 
-  destroy_win (xrc->display, xwindow, FALSE);
+  cw = find_window_in_display (xrc->display, xwindow);
+  if (cw == NULL)
+    return;
+
+  cw->attrs.map_state = IsUnmapped;
+  cw->damaged = FALSE;
+
+  if (cw->extents != None)
+    {
+      dump_xserver_region ("destroy_win", xrc->display, cw->extents);
+      add_damage (cw->screen, cw->extents);
+      cw->extents = None;
+    }
+
+  free_win (cw, FALSE);
 }
 
 static void
