@@ -98,6 +98,8 @@ metacity_SOURCES= 				\
 	ui/menu.h				\
 	ui/metaaccellabel.c			\
 	ui/metaaccellabel.h			\
+	ui/meta-tooltip.c \
+	ui/meta-tooltip.h \
 	ui/resizepopup.c			\
 	include/resizepopup.h			\
 	ui/tabpopup.c				\
