@@ -494,11 +494,13 @@ meta_window_menu_popup (MetaWindowMenu     *menu,
   pt->x = root_x;
   pt->y = root_y;
 
+  G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   gtk_menu_popup (GTK_MENU (menu->menu),
                   NULL, NULL,
                   popup_position_func, pt,
                   button,
                   timestamp);
+  G_GNUC_END_IGNORE_DEPRECATIONS
 
   if (!gtk_widget_get_visible (menu->menu))
     meta_warning ("GtkMenu failed to grab the pointer\n");
