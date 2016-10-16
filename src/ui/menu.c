@@ -101,31 +101,6 @@ static MenuItem menuitems[] = {
 };
 
 static void
-popup_position_func (GtkMenu   *menu,
-                     gint      *x,
-                     gint      *y,
-                     gboolean  *push_in,
-                     gpointer  user_data)
-{
-  GtkRequisition req;
-  GdkPoint *pos;
-
-  pos = user_data;
-
-  gtk_widget_get_preferred_size (GTK_WIDGET (menu), &req, NULL);
-
-  *x = pos->x;
-  *y = pos->y;
-
-  if (meta_ui_get_direction() == META_UI_DIRECTION_RTL)
-    *x = MAX (0, *x - req.width);
-
-  /* Ensure onscreen */
-  *x = CLAMP (*x, 0, MAX (0, gdk_screen_width () - req.width));
-  *y = CLAMP (*y, 0, MAX (0, gdk_screen_height () - req.height));
-}
-
-static void
 menu_closed (GtkMenu *widget,
              gpointer data)
 {
@@ -477,28 +452,18 @@ meta_window_menu_new   (MetaFrames         *frames,
 
 void
 meta_window_menu_popup (MetaWindowMenu     *menu,
-                        int                 root_x,
-                        int                 root_y,
-                        int                 button,
-                        guint32             timestamp)
+                        const GdkRectangle *rect,
+                        const GdkEvent     *event)
 {
-  GdkPoint *pt;
+  GdkEventAny *any;
 
-  pt = g_new (GdkPoint, 1);
+  any = (GdkEventAny *) event;
 
-  g_object_set_data_full (G_OBJECT (menu->menu),
-                          "destroy-point",
-                          pt,
-                          g_free);
-
-  pt->x = root_x;
-  pt->y = root_y;
-
-  gtk_menu_popup (GTK_MENU (menu->menu),
-                  NULL, NULL,
-                  popup_position_func, pt,
-                  button,
-                  timestamp);
+  gtk_menu_popup_at_rect (GTK_MENU (menu->menu),
+                          any->window, rect,
+                          GDK_GRAVITY_SOUTH_WEST,
+                          GDK_GRAVITY_NORTH_WEST,
+                          event);
 
   if (!gtk_widget_get_visible (menu->menu))
     meta_warning ("GtkMenu failed to grab the pointer\n");

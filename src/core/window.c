@@ -6761,11 +6761,9 @@ menu_callback (MetaWindowMenu *menu,
 }
 
 void
-meta_window_show_menu (MetaWindow *window,
-                       int         root_x,
-                       int         root_y,
-                       int         button,
-                       guint32     timestamp)
+meta_window_show_menu (MetaWindow         *window,
+                       const GdkRectangle *rect,
+                       const GdkEvent     *event)
 {
   MetaMenuOp ops;
   MetaMenuOp insensitive;
@@ -6886,7 +6884,7 @@ meta_window_show_menu (MetaWindow *window,
 
   meta_verbose ("Popping up window menu for %s\n", window->desc);
 
-  meta_ui_window_menu_popup (menu, root_x, root_y, button, timestamp);
+  meta_ui_window_menu_popup (menu, rect, event);
 }
 
 void

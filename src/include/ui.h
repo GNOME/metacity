@@ -132,10 +132,8 @@ MetaWindowMenu* meta_ui_window_menu_new   (MetaUI             *ui,
                                            MetaWindowMenuFunc  func,
                                            gpointer            data);
 void            meta_ui_window_menu_popup (MetaWindowMenu     *menu,
-                                           int                 root_x,
-                                           int                 root_y,
-                                           int                 button,
-                                           guint32             timestamp);
+                                           const GdkRectangle *rect,
+                                           const GdkEvent     *event);
 void            meta_ui_window_menu_free  (MetaWindowMenu     *menu);
 
 

@@ -1655,9 +1655,17 @@ meta_frame_titlebar_event (MetaFrames     *frames,
       break;
 
     case G_DESKTOP_TITLEBAR_ACTION_MENU:
-      meta_core_show_window_menu (frames->xdisplay, frame->xwindow,
-                                  event->x_root, event->y_root,
-                                  event->button, event->time);
+      {
+        GdkRectangle rect;
+
+        rect.x = event->x;
+        rect.y = event->y;
+        rect.width = 0;
+        rect.height = 0;
+
+        meta_core_show_window_menu (frames->xdisplay, frame->xwindow,
+                                    &rect, event);
+      }
       break;
 
     default:
@@ -1812,7 +1820,6 @@ meta_frames_button_press_event (GtkWidget      *widget,
         {
           MetaFrameGeometry fgeom;
           GdkRectangle rect;
-          int dx, dy;
 
           meta_frames_calc_geometry (frames, frame, &fgeom);
 
@@ -1822,21 +1829,10 @@ meta_frames_button_press_event (GtkWidget      *widget,
               return FALSE;
             }
 
-          /* get delta to convert to root coords */
-          dx = event->x_root - event->x;
-          dy = event->y_root - event->y;
-
-          /* Align to the right end of the menu rectangle if RTL */
-          if (meta_ui_get_direction() == META_UI_DIRECTION_RTL)
-            dx += rect.width;
-
           frame->ignore_leave_notify = TRUE;
           meta_core_show_window_menu (frames->xdisplay,
                                       frame->xwindow,
-                                      rect.x + dx,
-                                      rect.y + rect.height + dy,
-                                      event->button,
-                                      event->time);
+                                      &rect, event);
         }
     }
   else if (event->button == 1 &&
