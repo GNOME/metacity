@@ -189,14 +189,16 @@ meta_button_layout_new (const gchar *str,
       gint i;
 
       rtl_layout = g_new0 (MetaButtonLayout, 1);
+
       rtl_layout->left_buttons = g_new0 (MetaButton, layout->n_right_buttons);
-      rtl_layout->right_buttons = g_new0 (MetaButton, layout->n_left_buttons);
-
-      for (i = 0; i < layout->n_left_buttons; i++)
-        rtl_layout->right_buttons[i] = rtl_layout->left_buttons[layout->n_left_buttons - i];
-
       for (i = 0; i < layout->n_right_buttons; i++)
-        rtl_layout->left_buttons[i] = rtl_layout->right_buttons[layout->n_right_buttons - i];
+        rtl_layout->left_buttons[i] = layout->right_buttons[layout->n_right_buttons - i - 1];
+      rtl_layout->n_left_buttons = layout->n_right_buttons;
+
+      rtl_layout->right_buttons = g_new0 (MetaButton, layout->n_left_buttons);
+      for (i = 0; i < layout->n_left_buttons; i++)
+        rtl_layout->right_buttons[i] = layout->left_buttons[layout->n_left_buttons - i - 1];
+      rtl_layout->n_right_buttons = layout->n_left_buttons;
 
       meta_button_layout_free (layout);
 
