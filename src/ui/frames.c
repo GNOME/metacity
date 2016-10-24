@@ -2235,7 +2235,10 @@ setup_bg_cr (cairo_t *cr, GdkWindow *window, int x_offset, int y_offset)
   GdkWindow *parent = gdk_window_get_parent (window);
   cairo_pattern_t *bg_pattern;
 
+  G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   bg_pattern = gdk_window_get_background_pattern (window);
+  G_GNUC_END_IGNORE_DEPRECATIONS
+
   if (bg_pattern == NULL && parent)
     {
       gint window_x, window_y;
