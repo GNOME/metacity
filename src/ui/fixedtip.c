@@ -51,8 +51,11 @@ meta_fixed_tip_show (int root_x, int root_y,
 			G_CALLBACK (gtk_widget_destroyed), &tip);
     }
 
+  G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   mon_num = gdk_screen_get_monitor_at_point (screen, root_x, root_y);
   gdk_screen_get_monitor_geometry (screen, mon_num, &monitor);
+  G_GNUC_END_IGNORE_DEPRECATIONS
+
   screen_right_edge = monitor.x + monitor.width;
 
   meta_tooltip_set_label_markup (META_TOOLTIP (tip), markup_text);
