@@ -220,7 +220,9 @@ meta_tile_preview_show (MetaTilePreview *preview,
       cairo_region_t *outer_region, *inner_region;
       GdkRGBA black = {.0, .0, .0, 1.0};
 
+      G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       gdk_window_set_background_rgba (window, &black);
+      G_GNUC_END_IGNORE_DEPRECATIONS
 
       outer_rect.x = outer_rect.y = 0;
       outer_rect.width = preview->tile_rect.width;
