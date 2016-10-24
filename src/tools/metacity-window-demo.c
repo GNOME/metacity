@@ -605,7 +605,9 @@ make_dock (int type)
       break;
     case DOCK_RIGHT:
       gtk_widget_set_size_request (window, DOCK_SIZE, 400);
+      G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       gtk_window_move (GTK_WINDOW (window), gdk_screen_width () - DOCK_SIZE, 200);
+      G_GNUC_END_IGNORE_DEPRECATIONS
       set_gtk_window_struts (window, 0, DOCK_SIZE, 0, 0);
       gtk_window_set_title (GTK_WINDOW (window), "RightDock");
       break;
@@ -617,7 +619,9 @@ make_dock (int type)
       break;
     case DOCK_BOTTOM:
       gtk_widget_set_size_request (window, 600, DOCK_SIZE);
+      G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       gtk_window_move (GTK_WINDOW (window), 200, gdk_screen_height () - DOCK_SIZE);
+      G_GNUC_END_IGNORE_DEPRECATIONS
       set_gtk_window_struts (window, 0, 0, 0, DOCK_SIZE);
       gtk_window_set_title (GTK_WINDOW (window), "BottomDock");
       break;
@@ -696,8 +700,10 @@ desktop_cb (GSimpleAction *action,
   window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   set_gtk_window_type (GTK_WINDOW (window), "_NET_WM_WINDOW_TYPE_DESKTOP");
   gtk_window_set_title (GTK_WINDOW (window), "Desktop");
+  G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   gtk_widget_set_size_request (window,
                                gdk_screen_width (), gdk_screen_height ());
+  G_GNUC_END_IGNORE_DEPRECATIONS
   gtk_window_move (GTK_WINDOW (window), 0, 0);
 
   desktop_color.red = 0.32;
