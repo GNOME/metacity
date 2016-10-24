@@ -225,8 +225,10 @@ meta_ui_tab_popup_new (const MetaTabEntry *entries,
       gtk_widget_set_app_paintable (popup->outline_window, TRUE);
       gtk_widget_realize (popup->outline_window);
 
+      G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       gdk_window_set_background_rgba (gtk_widget_get_window (popup->outline_window),
                                       &black);
+      G_GNUC_END_IGNORE_DEPRECATIONS
 
       g_signal_connect (G_OBJECT (popup->outline_window), "draw",
                         G_CALLBACK (outline_window_draw), popup);
@@ -251,7 +253,10 @@ meta_ui_tab_popup_new (const MetaTabEntry *entries,
   popup->current_selected_entry = NULL;
   popup->outline = outline;
 
+  G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   screen_width = gdk_screen_get_width (screen);
+  G_GNUC_END_IGNORE_DEPRECATIONS
+
   for (i = 0; i < entry_count; ++i)
     {
       TabEntry* new_entry = tab_entry_new (&entries[i], screen_width, outline);
