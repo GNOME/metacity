@@ -91,7 +91,13 @@ meta_ui_get_display (void)
 gint
 meta_ui_get_screen_number (void)
 {
-  return gdk_screen_get_number (gdk_screen_get_default ());
+  gint screen;
+
+  G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+  screen = gdk_screen_get_number (gdk_screen_get_default ());
+  G_GNUC_END_IGNORE_DEPRECATIONS
+
+  return screen;
 }
 
 /* We do some of our event handling in frames.c, which expects
