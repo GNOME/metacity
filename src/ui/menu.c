@@ -121,8 +121,10 @@ popup_position_func (GtkMenu   *menu,
     *x = MAX (0, *x - req.width);
 
   /* Ensure onscreen */
+  G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   *x = CLAMP (*x, 0, MAX (0, gdk_screen_width () - req.width));
   *y = CLAMP (*y, 0, MAX (0, gdk_screen_height () - req.height));
+  G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
