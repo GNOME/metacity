@@ -3292,6 +3292,7 @@ xrender_free_window (MetaCompositor *compositor,
   if (cw == NULL)
     return;
 
+  cw->window = NULL;
   cw->attrs.map_state = IsUnmapped;
   cw->damaged = FALSE;
 
