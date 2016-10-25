@@ -1,9 +1,14 @@
+NULL =
+
 icondir=$(pkgdatadir)/icons
 icon_DATA=metacity-window-demo.png
 
 AM_CPPFLAGS=@METACITY_WINDOW_DEMO_CFLAGS@ @METACITY_MESSAGE_CFLAGS@ \
 	-DMETACITY_ICON_DIR=\"$(pkgdatadir)/icons\" \
-	-DMETACITY_LOCALEDIR=\""$(localedir)"\"
+	-DMETACITY_LOCALEDIR=\""$(localedir)"\" \
+	$(WARN_CFLAGS) \
+	$(AM_CFLAGS) \
+	$(NULL)
 
 metacity_message_SOURCES= 				\
 	metacity-message.c
