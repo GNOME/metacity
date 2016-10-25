@@ -667,7 +667,7 @@ meta_display_open (void)
 
   screens = NULL;
 
-  i = meta_ui_get_screen_number ();
+  i = XDefaultScreen (the_display->xdisplay);
   screen = meta_screen_new (the_display, i, timestamp);
 
   if (screen)
