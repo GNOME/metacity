@@ -65,7 +65,11 @@ meta_tile_preview_draw (GtkWidget *widget,
     }
   else
     {
+      GdkRGBA black = {.0, .0, .0, 1.0};
       GdkRGBA white = {1.0, 1.0, 1.0, 1.0};
+
+      gdk_cairo_set_source_rgba (cr, &black);
+      cairo_paint (cr);
 
       gdk_cairo_set_source_rgba (cr, &white);
 
@@ -218,9 +222,6 @@ meta_tile_preview_show (MetaTilePreview *preview,
     {
       cairo_rectangle_int_t outer_rect, inner_rect;
       cairo_region_t *outer_region, *inner_region;
-      GdkRGBA black = {.0, .0, .0, 1.0};
-
-      gdk_window_set_background_rgba (window, &black);
 
       outer_rect.x = outer_rect.y = 0;
       outer_rect.width = preview->tile_rect.width;
