@@ -128,7 +128,6 @@ dimm_icon (GdkPixbuf *pixbuf)
 
 static TabEntry*
 tab_entry_new (const MetaTabEntry *entry,
-               gint                screen_width,
                gboolean            outline)
 {
   TabEntry *te;
@@ -251,10 +250,9 @@ meta_ui_tab_popup_new (const MetaTabEntry *entries,
   popup->current_selected_entry = NULL;
   popup->outline = outline;
 
-  screen_width = gdk_screen_get_width (screen);
   for (i = 0; i < entry_count; ++i)
     {
-      TabEntry* new_entry = tab_entry_new (&entries[i], screen_width, outline);
+      TabEntry* new_entry = tab_entry_new (&entries[i], outline);
       popup->entries = g_list_prepend (popup->entries, new_entry);
     }
 
@@ -358,6 +356,7 @@ meta_ui_tab_popup_new (const MetaTabEntry *entries,
   gtk_label_set_ellipsize (GTK_LABEL (popup->label), PANGO_ELLIPSIZE_END);
 
   /* Limit the window size to no bigger than screen_width/4 */
+  screen_width = gdk_screen_get_width (screen);
   if (max_label_width>(screen_width/4))
     {
       max_label_width = screen_width/4;
