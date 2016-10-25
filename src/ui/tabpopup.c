@@ -60,6 +60,7 @@ outline_window_draw (GtkWidget *widget,
                      cairo_t   *cr,
                      gpointer   data)
 {
+  GdkRGBA black = { 0.0, 0.0, 0.0, 1.0 };
   MetaTabPopup *popup;
   TabEntry *te;
 
@@ -69,6 +70,9 @@ outline_window_draw (GtkWidget *widget,
     return FALSE;
 
   te = popup->current_selected_entry;
+
+  gdk_cairo_set_source_rgba (cr, &black);
+  cairo_paint (cr);
 
   cairo_set_line_width (cr, 1.0);
   cairo_set_source_rgb (cr, 1.0, 1.0, 1.0);
@@ -202,6 +206,7 @@ meta_ui_tab_popup_new (const MetaTabEntry *entries,
   AtkObject *obj;
   GdkScreen *screen;
   GdkVisual *visual;
+  GdkWindow *root;
   int screen_width;
 
   popup = g_new (MetaTabPopup, 1);
@@ -211,8 +216,6 @@ meta_ui_tab_popup_new (const MetaTabEntry *entries,
 
   if (outline)
     {
-      GdkRGBA black = { 0.0, 0.0, 0.0, 1.0 };
-
       popup->outline_window = gtk_window_new (GTK_WINDOW_POPUP);
 
       if (visual)
@@ -223,9 +226,6 @@ meta_ui_tab_popup_new (const MetaTabEntry *entries,
 
       gtk_widget_set_app_paintable (popup->outline_window, TRUE);
       gtk_widget_realize (popup->outline_window);
-
-      gdk_window_set_background_rgba (gtk_widget_get_window (popup->outline_window),
-                                      &black);
 
       g_signal_connect (G_OBJECT (popup->outline_window), "draw",
                         G_CALLBACK (outline_window_draw), popup);
@@ -356,7 +356,8 @@ meta_ui_tab_popup_new (const MetaTabEntry *entries,
   gtk_label_set_ellipsize (GTK_LABEL (popup->label), PANGO_ELLIPSIZE_END);
 
   /* Limit the window size to no bigger than screen_width/4 */
-  screen_width = gdk_screen_get_width (screen);
+  root = gdk_screen_get_root_window (screen);
+  screen_width = gdk_window_get_width (root);
   if (max_label_width>(screen_width/4))
     {
       max_label_width = screen_width/4;
