@@ -577,6 +577,7 @@ make_dock (int type)
       box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
       break;
     case DOCK_ALL:
+    default:
       break;
     }
 
@@ -627,6 +628,7 @@ make_dock (int type)
       gtk_window_set_title (GTK_WINDOW (window), "BottomDock");
       break;
     case DOCK_ALL:
+    default:
       break;
     }
 
@@ -994,6 +996,9 @@ do_appwindow (GSimpleAction *action,
   GtkTextBuffer *buffer;
   GSimpleActionGroup *action_group;
   GtkBuilder *builder;
+  GMenuModel *model;
+  GtkWidget *menubar;
+  GtkWidget *toolbar;
 
   /* Create the toplevel window
    */
@@ -1027,15 +1032,15 @@ do_appwindow (GSimpleAction *action,
   /* Create the menubar
    */
 
-  GMenuModel *model = G_MENU_MODEL (gtk_builder_get_object (builder, "menubar"));
-  GtkWidget *menubar = gtk_menu_bar_new_from_model (model);
+  model = G_MENU_MODEL (gtk_builder_get_object (builder, "menubar"));
+  menubar = gtk_menu_bar_new_from_model (model);
   gtk_grid_attach (GTK_GRID (grid), menubar, 0, 0, 1, 1);
   gtk_widget_set_hexpand (menubar, TRUE);
 
   /* Create the toolbar
    */
 
-  GtkWidget *toolbar = create_toolbar ();
+  toolbar = create_toolbar ();
   gtk_grid_attach (GTK_GRID (grid), toolbar, 0, 1, 1, 1);
   gtk_widget_set_hexpand (toolbar, TRUE);
 
