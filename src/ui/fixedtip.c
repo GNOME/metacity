@@ -34,14 +34,14 @@ void
 meta_fixed_tip_show (int root_x, int root_y,
                      const char *markup_text)
 {
-  GdkScreen *screen;
+  GdkDisplay *display;
+  GdkMonitor *monitor;
   gint w;
   gint h;
-  gint mon_num;
-  GdkRectangle monitor;
+  GdkRectangle rect;
   gint screen_right_edge;
 
-  screen = gdk_screen_get_default ();
+  display = gdk_display_get_default ();
 
   if (tip == NULL)
     {
@@ -51,9 +51,9 @@ meta_fixed_tip_show (int root_x, int root_y,
 			G_CALLBACK (gtk_widget_destroyed), &tip);
     }
 
-  mon_num = gdk_screen_get_monitor_at_point (screen, root_x, root_y);
-  gdk_screen_get_monitor_geometry (screen, mon_num, &monitor);
-  screen_right_edge = monitor.x + monitor.width;
+  monitor = gdk_display_get_monitor_at_point (display, root_x, root_y);
+  gdk_monitor_get_geometry (monitor, &rect);
+  screen_right_edge = rect.x + rect.width;
 
   meta_tooltip_set_label_markup (META_TOOLTIP (tip), markup_text);
 
