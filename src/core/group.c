@@ -45,9 +45,14 @@ meta_group_new (MetaDisplay *display,
   group->group_leader = group_leader;
   group->refcount = 1; /* owned by caller, hash table has only weak ref */
 
+  gdk_error_trap_push ();
+
   XGetWindowAttributes (display->xdisplay, group_leader, &attrs);
   XSelectInput (display->xdisplay, group_leader,
                 attrs.your_event_mask | PropertyChangeMask);
+
+  if (gdk_error_trap_pop () != 0)
+    return NULL;
 
   if (display->groups_by_leader == NULL)
     display->groups_by_leader = g_hash_table_new (meta_unsigned_long_hash,
@@ -162,12 +167,14 @@ meta_window_compute_group (MetaWindow* window)
       window->group = group;
     }
 
+  if (!window->group)
+    return;
+
   window->group->windows = g_slist_prepend (window->group->windows, window);
 
   meta_topic (META_DEBUG_GROUPS,
               "Adding %s to group with leader 0x%lx\n",
               window->desc, group->group_leader);
-
 }
 
 static void
@@ -273,5 +280,4 @@ meta_group_property_notify (MetaGroup  *group,
                               event->xproperty.atom);
 
   return TRUE;
-
 }
