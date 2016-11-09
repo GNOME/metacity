@@ -129,7 +129,7 @@ meta_tile_preview_composited_changed (GtkWidget *widget,
   GdkScreen *screen = gdk_screen_get_default ();
   GdkVisual *visual = gdk_screen_get_rgba_visual (screen);
 
-  preview->has_alpha = visual && gtk_widget_is_composited (widget);
+  preview->has_alpha = visual && gdk_screen_is_composited (screen);
 }
 
 MetaTilePreview *
