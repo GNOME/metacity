@@ -77,16 +77,18 @@ typedef enum
 
 struct _MetaDrawInfo
 {
+  gint         scale;
+
   GdkPixbuf   *mini_icon;
   GdkPixbuf   *icon;
   PangoLayout *title_layout;
-  int title_layout_width;
-  int title_layout_height;
+  gint         title_layout_width;
+  gint         title_layout_height;
 
-  gint              left_width;
-  gint              right_width;
-  gint              top_height;
-  gint              bottom_height;
+  gint         left_width;
+  gint         right_width;
+  gint         top_height;
+  gint         bottom_height;
 
   gdouble      width;
   gdouble      height;

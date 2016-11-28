@@ -5358,6 +5358,8 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
     pango_layout_get_pixel_extents (title_layout,
                                     NULL, &extents);
 
+  draw_info.scale = scale;
+
   draw_info.mini_icon = mini_icon;
   draw_info.icon = icon;
   draw_info.title_layout = title_layout;
