@@ -4645,7 +4645,7 @@ meta_theme_metacity_get_frame_borders (MetaThemeImpl    *impl,
     text_height = 0;
 
   /* Scale geometry for HiDPI, see comment in meta_theme_metacity_draw_frame () */
-  scale = get_window_scaling_factor ();
+  scale = meta_theme_impl_get_scale (impl);
 
   buttons_height = layout->metacity.button_height +
                    layout->button_border.top +
@@ -4799,7 +4799,7 @@ meta_theme_metacity_calc_geometry (MetaThemeImpl     *impl,
   button_height = -1;
 
   /* Scale geometry for HiDPI, see comment in meta_theme_metacity_draw_frame () */
-  scale = get_window_scaling_factor ();
+  scale = meta_theme_impl_get_scale (impl);
 
   switch (layout->metacity.button_sizing)
     {
@@ -5303,7 +5303,7 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
    *    radii, ...) at the correct scale - as a result, we have to "unscale"
    *    the geometry again to not apply the scaling twice
    */
-  scale = get_window_scaling_factor ();
+  scale = meta_theme_impl_get_scale (impl);
   cairo_scale (cr, scale, scale);
 
   borders = &fgeom->borders;

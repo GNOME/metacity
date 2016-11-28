@@ -80,6 +80,9 @@ G_GNUC_INTERNAL
 gboolean           meta_theme_impl_get_composited (MetaThemeImpl           *impl);
 
 G_GNUC_INTERNAL
+gint               meta_theme_impl_get_scale      (MetaThemeImpl           *impl);
+
+G_GNUC_INTERNAL
 void               meta_theme_impl_add_style_set  (MetaThemeImpl           *impl,
                                                    MetaFrameType            type,
                                                    MetaFrameStyleSet       *style_set);
@@ -91,9 +94,6 @@ MetaFrameStyleSet *meta_theme_impl_get_style_set  (MetaThemeImpl           *impl
 G_GNUC_INTERNAL
 void               scale_border                   (GtkBorder               *border,
                                                    double                   factor);
-
-G_GNUC_INTERNAL
-int                get_window_scaling_factor      (void);
 
 G_GNUC_INTERNAL
 gboolean           is_button_visible              (MetaButton              *button,

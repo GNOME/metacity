@@ -79,11 +79,11 @@ get_style_info (MetaTheme   *theme,
 
   if (style_info == NULL)
     {
-      gint window_scale;
+      gint scale;
 
-      window_scale = get_window_scaling_factor ();
+      scale = meta_theme_impl_get_scale (theme->impl);
       style_info = meta_style_info_new (theme->gtk_theme_name, variant,
-                                        theme->composited, window_scale);
+                                        theme->composited, scale);
 
       g_hash_table_insert (theme->variants, g_strdup (key), style_info);
     }
@@ -195,7 +195,7 @@ font_desc_apply_scale (PangoFontDescription *font_desc,
 
   old_size = pango_font_description_get_size (font_desc);
   style = get_frame_style (theme, type, flags);
-  scale = get_window_scaling_factor ();
+  scale = meta_theme_impl_get_scale (theme->impl);
 
   new_size = MAX (old_size * (style->layout->title_scale / scale), 1);
 
@@ -308,7 +308,7 @@ get_title_height (MetaTheme      *theme,
       pango_font_metrics_unref (metrics);
 
       title_height = PANGO_PIXELS (ascent + descent);
-      scale = get_window_scaling_factor ();
+      scale = meta_theme_impl_get_scale (theme->impl);
 
       title_height *= scale;
 

@@ -25,6 +25,7 @@
 typedef struct
 {
   gboolean           composited;
+  gint               scale;
 
   MetaFrameStyleSet *style_sets_by_type[META_FRAME_TYPE_LAST];
 } MetaThemeImplPrivate;
@@ -105,6 +106,28 @@ meta_theme_impl_get_composited (MetaThemeImpl *impl)
   return priv->composited;
 }
 
+gint
+meta_theme_impl_get_scale (MetaThemeImpl *impl)
+{
+  GValue value = G_VALUE_INIT;
+  MetaThemeImplPrivate *priv;
+  GdkScreen *screen;
+
+  priv = meta_theme_impl_get_instance_private (impl);
+
+  if (priv->scale != 0)
+    return priv->scale;
+
+  screen = gdk_screen_get_default ();
+
+  g_value_init (&value, G_TYPE_INT);
+
+  if (gdk_screen_get_setting (screen, "gdk-window-scaling-factor", &value))
+    return g_value_get_int (&value);
+  else
+    return 1;
+}
+
 void
 meta_theme_impl_add_style_set (MetaThemeImpl     *impl,
                                MetaFrameType      type,
@@ -139,22 +162,6 @@ scale_border (GtkBorder *border,
   border->right *= factor;
   border->top *= factor;
   border->bottom *= factor;
-}
-
-int
-get_window_scaling_factor (void)
-{
-  GdkScreen *screen;
-  GValue value = G_VALUE_INIT;
-
-  screen = gdk_screen_get_default ();
-
-  g_value_init (&value, G_TYPE_INT);
-
-  if (gdk_screen_get_setting (screen, "gdk-window-scaling-factor", &value))
-    return g_value_get_int (&value);
-  else
-    return 1;
 }
 
 gboolean

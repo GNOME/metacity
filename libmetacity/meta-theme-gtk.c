@@ -235,7 +235,7 @@ meta_theme_gtk_get_frame_borders (MetaThemeImpl    *impl,
     text_height = 0;
 
   /* Scale geometry for HiDPI, see comment in meta_theme_gtk_draw_frame () */
-  scale = get_window_scaling_factor ();
+  scale = meta_theme_impl_get_scale (impl);
 
   title_height = layout->gtk.title_margin.top +
                  text_height / scale +
@@ -327,7 +327,7 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl     *impl,
   fgeom->height = height;
 
   /* Scale geometry for HiDPI, see comment in meta_theme_gtk_draw_frame () */
-  scale = get_window_scaling_factor ();
+  scale = meta_theme_impl_get_scale (impl);
 
   content_width = width -
                   borders.invisible.left - layout->gtk.frame_border.left * scale -
@@ -655,7 +655,7 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
    *    radii, ...) at the correct scale - as a result, we have to "unscale"
    *    the geometry again to not apply the scaling twice
    */
-  scale = get_window_scaling_factor ();
+  scale = meta_theme_impl_get_scale (impl);
   cairo_scale (cr, scale, scale);
 
   borders = &fgeom->borders;
