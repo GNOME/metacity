@@ -12,9 +12,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-07 17:47+0000\n"
-"PO-Revision-Date: 2016-09-09 23:52+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=metacity&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2016-11-28 17:36+0000\n"
+"PO-Revision-Date: 2016-11-28 21:19+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -408,7 +409,7 @@ msgstr "Układ przycisków:"
 msgid "Composited:"
 msgstr "Składane:"
 
-#: data/ui/theme-viewer-window.ui:339 theme-viewer/theme-viewer-window.c:623
+#: data/ui/theme-viewer-window.ui:339 theme-viewer/theme-viewer-window.c:622
 msgid "Choose Theme"
 msgstr "Wybór motywu"
 
@@ -416,7 +417,7 @@ msgstr "Wybór motywu"
 msgid "Preview"
 msgstr "Podgląd"
 
-#: data/ui/theme-viewer-window.ui:468 theme-viewer/theme-viewer-window.c:251
+#: data/ui/theme-viewer-window.ui:468 theme-viewer/theme-viewer-window.c:250
 msgid "Run"
 msgstr "Wykonaj"
 
@@ -681,7 +682,7 @@ msgstr ""
 msgid "Gradients should have at least two colors"
 msgstr "Gradienty powinny się składać co najmniej z dwóch kolorów"
 
-#: libmetacity/meta-theme-impl.c:64
+#: libmetacity/meta-theme-impl.c:65
 #, c-format
 msgid "MetaThemeImplClass::load not implemented for '%s'"
 msgstr "Nie zaimplementowano MetaThemeImplClass::load dla „%s”"
@@ -1175,12 +1176,12 @@ msgstr "_Zakończ"
 msgid "Failed to get hostname: %s\n"
 msgstr "Uzyskanie nazwy komputera się nie powiodło: %s\n"
 
-#: src/core/display.c:323
+#: src/core/display.c:324
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
 msgstr "Otwarcie połączenia z ekranem „%s” systemu X Window się nie powiodło\n"
 
-#: src/core/keybindings.c:690
+#: src/core/keybindings.c:691
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
@@ -1245,8 +1246,8 @@ msgstr "Wyłącza składanie"
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr ""
-"Nie przełącza okien na pełny ekran, jeśli są zmaksymalizowane i nie "
-"mają dekoracji"
+"Nie przełącza okien na pełny ekran, jeśli są zmaksymalizowane i nie mają "
+"dekoracji"
 
 #: src/core/main.c:499
 #, c-format
@@ -1645,21 +1646,21 @@ msgstr "Przenieś na _dolny obszar roboczy"
 msgid "_Close"
 msgstr "Za_mknij"
 
-#: src/ui/menu.c:200
+#: src/ui/menu.c:175
 #, c-format
 msgid "Workspace %d%n"
 msgstr "Obszar roboczy %d%n"
 
-#: src/ui/menu.c:210
+#: src/ui/menu.c:185
 msgid "Workspace 1_0"
 msgstr "Obszar roboczy 1_0"
 
-#: src/ui/menu.c:212
+#: src/ui/menu.c:187
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Obszar roboczy %s%d"
 
-#: src/ui/menu.c:379
+#: src/ui/menu.c:354
 msgid "Move to Another _Workspace"
 msgstr "Przeniesienie na inny _obszar roboczy"
 
@@ -1756,21 +1757,37 @@ msgstr "Mod5"
 #. Translators: This represents the size of a window.  The first number is
 #. * the width of the window and the second is the height.
 #.
-#: src/ui/resizepopup.c:136
+#: src/ui/resizepopup.c:86
 #, c-format
 msgid "%d x %d"
 msgstr "%d×%d"
 
-#: src/ui/ui.c:776
+#: src/ui/ui.c:768
 msgid "Falling back to default GTK+ theme - Adwaita"
 msgstr "Używanie domyślnego motywu biblioteki GTK+, Adwaita"
 
-#: theme-viewer/theme-viewer-window.c:101
+#: theme-viewer/theme-viewer-main.c:32
+msgid "Theme type to use (GTK+ or Metacity)"
+msgstr "Typ używanego motywu (GTK+ lub Metacity)"
+
+#: theme-viewer/theme-viewer-main.c:32
+msgid "TYPE"
+msgstr "TYP"
+
+#: theme-viewer/theme-viewer-main.c:36
+msgid "Theme name to use"
+msgstr "Nazwa używanego motywu"
+
+#: theme-viewer/theme-viewer-main.c:36
+msgid "NAME"
+msgstr "NAZWA"
+
+#: theme-viewer/theme-viewer-window.c:100
 #, c-format
 msgid "Loaded <b>%s</b> theme <b>%s</b> in <b>%f</b> seconds."
 msgstr "Wczytano motyw <b>%s</b> <b>%s</b> w <b>%f</b> s."
 
-#: theme-viewer/theme-viewer-window.c:131
+#: theme-viewer/theme-viewer-window.c:130
 #, c-format
 msgid ""
 "Got MetaFrameBorders in <b>%f</b> seconds (CSS loading, PangoFontDescription "
@@ -1779,7 +1796,7 @@ msgstr ""
 "Otrzymano MetaFrameBorders w <b>%f</b> s (wczytywanie CSS, tworzenie "
 "PangoFontDescription i obliczanie wysokości tytułu)."
 
-#: theme-viewer/theme-viewer-window.c:206
+#: theme-viewer/theme-viewer-window.c:205
 #, c-format
 msgid ""
 "Drew <b>%d</b> frames in <b>%f</b> client-side seconds (<b>%f</b> "
@@ -1790,10 +1807,10 @@ msgstr ""
 "na klatkę) i <b>%f</b> s czasu zegara rzeczywistego, wliczając zasoby "
 "serwera X (<b>%f</b> ms na klatkę)."
 
-#: theme-viewer/theme-viewer-window.c:243
+#: theme-viewer/theme-viewer-window.c:242
 msgid "Run again"
 msgstr "Wykonaj ponownie"
 
-#: theme-viewer/theme-viewer-window.c:931
+#: theme-viewer/theme-viewer-window.c:930
 msgid "Metacity Theme Viewer"
 msgstr "Przeglądarka motywów Metacity"
