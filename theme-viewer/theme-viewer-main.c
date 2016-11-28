@@ -29,7 +29,7 @@ static GOptionEntry entries[] =
 {
   {
     "theme-type", 0, G_OPTION_FLAG_NONE, G_OPTION_ARG_STRING, &theme_type,
-    N_("Theme type to use (gtk or metacity)"), N_("TYPE")
+    N_("Theme type to use (GTK+ or Metacity)"), N_("TYPE")
   },
   {
     "theme-name", 0, G_OPTION_FLAG_NONE, G_OPTION_ARG_STRING, &theme_name,
