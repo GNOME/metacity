@@ -22,7 +22,6 @@
 #include <math.h>
 
 #include "meta-draw-op-private.h"
-#include "meta-theme-impl-private.h"
 
 #define GDK_COLOR_RGB(color)                             \
         ((guint32) (((int)((color).red * 255) << 16)   | \
@@ -576,7 +575,7 @@ draw_op_draw_with_env (const MetaDrawOp    *op,
         gdouble rx, ry, rwidth, rheight;
         cairo_surface_t *surface;
 
-        scale = get_window_scaling_factor ();
+        scale = info->scale;
         cairo_scale (cr, 1.0 / scale, 1.0 / scale);
 
         if (op->data.image.pixbuf)
