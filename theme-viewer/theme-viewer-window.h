@@ -19,6 +19,7 @@
 #define THEME_VIEWER_WINDOW_H
 
 #include <gtk/gtk.h>
+#include <libmetacity/meta-theme.h>
 
 G_BEGIN_DECLS
 
@@ -26,7 +27,13 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (ThemeViewerWindow, theme_viewer_window,
                       THEME_VIEWER, WINDOW, GtkWindow)
 
-GtkWidget *theme_viewer_window_new (void);
+GtkWidget *theme_viewer_window_new            (void);
+
+void       theme_viewer_window_set_theme_type (ThemeViewerWindow *window,
+                                               MetaThemeType      theme_type);
+
+void       theme_viewer_window_set_theme_name (ThemeViewerWindow *window,
+                                               const gchar       *theme_name);
 
 G_END_DECLS
 

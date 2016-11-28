@@ -18,7 +18,6 @@
 #include "config.h"
 
 #include <glib/gi18n.h>
-#include <libmetacity/meta-theme.h>
 #include <time.h>
 
 #include "theme-viewer-window.h"
@@ -930,4 +929,19 @@ theme_viewer_window_new (void)
   return g_object_new (THEME_VIEWER_TYPE_WINDOW,
                        "title", _("Metacity Theme Viewer"),
                        NULL);
+}
+
+void
+theme_viewer_window_set_theme_type (ThemeViewerWindow *window,
+                                    MetaThemeType      theme_type)
+{
+  gtk_combo_box_set_active (GTK_COMBO_BOX (window->type_combo_box), theme_type);
+}
+
+void
+theme_viewer_window_set_theme_name (ThemeViewerWindow *window,
+                                    const gchar       *theme_name)
+{
+  gtk_combo_box_set_active_id (GTK_COMBO_BOX (window->theme_combo_box),
+                               theme_name);
 }
