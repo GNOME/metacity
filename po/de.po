@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Metacity\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-06-22 09:49+0000\n"
-"PO-Revision-Date: 2016-06-22 13:59+0200\n"
+"POT-Creation-Date: 2016-11-28 17:36+0000\n"
+"PO-Revision-Date: 2016-12-09 12:44+0100\n"
 "Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #. Translators: This is the title used on dialog boxes
 #: data/applications/metacity.desktop.in:4 src/core/util.c:535
@@ -38,239 +38,192 @@ msgstr "Metacity"
 msgid "preferences-system-windows"
 msgstr "preferences-system-windows"
 
-#. (itstool) path: 50-metacity-navigation.xml/KeyListEntries@name
-#: 50-metacity-navigation.xml:6
+#: data/keybindings/50-metacity-navigation.xml:6
 msgid "Navigation"
 msgstr "Navigation"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:9
+#: data/keybindings/50-metacity-navigation.xml:9
 msgid "Move window to workspace 1"
 msgstr "Fenster auf Arbeitsfläche 1 verschieben"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:12
+#: data/keybindings/50-metacity-navigation.xml:12
 msgid "Move window to workspace 2"
 msgstr "Fenster auf Arbeitsfläche 2 verschieben"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:15
+#: data/keybindings/50-metacity-navigation.xml:15
 msgid "Move window to workspace 3"
 msgstr "Fenster auf Arbeitsfläche 3 verschieben"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:18
+#: data/keybindings/50-metacity-navigation.xml:18
 msgid "Move window to workspace 4"
 msgstr "Fenster auf Arbeitsfläche 4 verschieben"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:21
+#: data/keybindings/50-metacity-navigation.xml:21
 msgid "Move window one workspace to the left"
 msgstr "Fenster eine Arbeitsfläche nach links verschieben"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:24
+#: data/keybindings/50-metacity-navigation.xml:24
 msgid "Move window one workspace to the right"
 msgstr "Fenster eine Arbeitsfläche nach rechts verschieben"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:27
+#: data/keybindings/50-metacity-navigation.xml:27
 msgid "Move window one workspace up"
 msgstr "Fenster eine Arbeitsfläche nach oben verschieben"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:30
+#: data/keybindings/50-metacity-navigation.xml:30
 msgid "Move window one workspace down"
 msgstr "Fenster eine Arbeitsfläche nach unten verschieben"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:33
+#: data/keybindings/50-metacity-navigation.xml:33
 msgid "Switch windows"
 msgstr "Fenster wechseln"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:36
+#: data/keybindings/50-metacity-navigation.xml:36
 msgid "Switch applications"
 msgstr "Anwendungen wechseln"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:39
+#: data/keybindings/50-metacity-navigation.xml:39
 msgid "Switch windows of an application"
 msgstr "Zwischen den Fenstern einer Anwendung wechseln"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:42
+#: data/keybindings/50-metacity-navigation.xml:42
 msgid "Switch system controls"
 msgstr "Systemsteuerungen umschalten"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:45
+#: data/keybindings/50-metacity-navigation.xml:45
 msgid "Switch windows directly"
 msgstr "Fenster sofort wechseln"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:48
+#: data/keybindings/50-metacity-navigation.xml:48
 msgid "Switch windows of an app directly"
 msgstr "Sofort zwischen den Fenstern einer Anwendung wechseln"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:51
+#: data/keybindings/50-metacity-navigation.xml:51
 msgid "Switch system controls directly"
 msgstr "Systemsteuerungen sofort umschalten"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:54
+#: data/keybindings/50-metacity-navigation.xml:54
 msgid "Hide all normal windows"
 msgstr "Alle normalen Fenster verbergen"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:57
+#: data/keybindings/50-metacity-navigation.xml:57
 msgid "Switch to workspace 1"
 msgstr "Zur Arbeitsfläche 1 wechseln"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:60
+#: data/keybindings/50-metacity-navigation.xml:60
 msgid "Switch to workspace 2"
 msgstr "Zur Arbeitsfläche 2 wechseln"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:63
+#: data/keybindings/50-metacity-navigation.xml:63
 msgid "Switch to workspace 3"
 msgstr "Zur Arbeitsfläche 3 wechseln"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:66
+#: data/keybindings/50-metacity-navigation.xml:66
 msgid "Switch to workspace 4"
 msgstr "Zur Arbeitsfläche 4 wechseln"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:69
+#: data/keybindings/50-metacity-navigation.xml:69
 msgid "Move to workspace left"
 msgstr "Auf Arbeitsfläche links verschieben"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:72
+#: data/keybindings/50-metacity-navigation.xml:72
 msgid "Move to workspace right"
 msgstr "Auf Arbeitsfläche rechts verschieben"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:75
+#: data/keybindings/50-metacity-navigation.xml:75
 msgid "Move to workspace above"
 msgstr "Auf Arbeitsfläche darüber verschieben"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:78
+#: data/keybindings/50-metacity-navigation.xml:78
 msgid "Move to workspace below"
 msgstr "Auf Arbeitsfläche darunter verschieben"
 
-#. (itstool) path: 50-metacity-system.xml/KeyListEntries@name
-#: 50-metacity-system.xml:6
+#: data/keybindings/50-metacity-system.xml:6
 msgid "System"
 msgstr "System"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-system.xml:9
+#: data/keybindings/50-metacity-system.xml:9
 msgid "Show the run command prompt"
 msgstr "Den »Befehl ausführen«-Dialog anzeigen"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-system.xml:12
+#: data/keybindings/50-metacity-system.xml:12
 msgid "Show the applications menu"
 msgstr "Das Anwendungsmenü anzeigen"
 
-#. (itstool) path: 50-metacity-windows.xml/KeyListEntries@name
-#: 50-metacity-windows.xml:6
+#: data/keybindings/50-metacity-windows.xml:6
 msgid "Windows"
 msgstr "Fenster"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:9
+#: data/keybindings/50-metacity-windows.xml:9
 msgid "Activate the window menu"
 msgstr "Das Fenstermenü aktivieren"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:12
+#: data/keybindings/50-metacity-windows.xml:12
 msgid "Toggle fullscreen mode"
 msgstr "Vollbildmodus ein-/ausschalten"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:15
+#: data/keybindings/50-metacity-windows.xml:15
 msgid "Toggle maximization state"
 msgstr "Maximierungszustand ein-/ausschalten"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:18
+#: data/keybindings/50-metacity-windows.xml:18
 msgid "Maximize window"
 msgstr "Fenster maximieren"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:21
+#: data/keybindings/50-metacity-windows.xml:21
 msgid "Restore window"
 msgstr "Fenstergröße wiederherstellen"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:24
+#: data/keybindings/50-metacity-windows.xml:24
 msgid "Toggle shaded state"
 msgstr "Fenster ein-/ausrollen"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:27
+#: data/keybindings/50-metacity-windows.xml:27
 msgid "Close window"
 msgstr "Fenster schließen"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:30
+#: data/keybindings/50-metacity-windows.xml:30
 msgid "Minimize window"
 msgstr "Fenster minimieren"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:33
+#: data/keybindings/50-metacity-windows.xml:33
 msgid "Move window"
 msgstr "Fenster verschieben"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:36
+#: data/keybindings/50-metacity-windows.xml:36
 msgid "Resize window"
 msgstr "Fenstergröße ändern"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:39
+#: data/keybindings/50-metacity-windows.xml:39
 msgid "Toggle window on all workspaces or one"
 msgstr ""
 "Festlegen, ob das Fenster auf allen oder nur einer Arbeitsfläche sichtbar ist"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:42
+#: data/keybindings/50-metacity-windows.xml:42
 msgid "Raise window if covered, otherwise lower it"
 msgstr "Fenster anheben, falls es verdeckt ist, andernfalls absenken"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:45
+#: data/keybindings/50-metacity-windows.xml:45
 msgid "Raise window above other windows"
 msgstr "Fenster vor die anderen Fenster anheben"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:48
+#: data/keybindings/50-metacity-windows.xml:48
 msgid "Lower window below other windows"
 msgstr "Fenster hinter die anderen Fenster absenken"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:51
+#: data/keybindings/50-metacity-windows.xml:51
 msgid "Maximize window vertically"
 msgstr "Fenster vertikal maximieren"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:54
+#: data/keybindings/50-metacity-windows.xml:54
 msgid "Maximize window horizontally"
 msgstr "Fenster horizontal maximieren"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:58
+#: data/keybindings/50-metacity-windows.xml:58
 msgid "View split on left"
 msgstr "Ansicht links teilen"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:62
+#: data/keybindings/50-metacity-windows.xml:62
 msgid "View split on right"
 msgstr "Ansicht rechts teilen"
 
@@ -457,7 +410,7 @@ msgstr "Knopf-Layout:"
 msgid "Composited:"
 msgstr "Composited:"
 
-#: data/ui/theme-viewer-window.ui:339 theme-viewer/theme-viewer-window.c:675
+#: data/ui/theme-viewer-window.ui:339 theme-viewer/theme-viewer-window.c:622
 msgid "Choose Theme"
 msgstr "Thema wählen"
 
@@ -465,7 +418,7 @@ msgstr "Thema wählen"
 msgid "Preview"
 msgstr "Vorschau"
 
-#: data/ui/theme-viewer-window.ui:468 theme-viewer/theme-viewer-window.c:255
+#: data/ui/theme-viewer-window.ui:468 theme-viewer/theme-viewer-window.c:250
 msgid "Run"
 msgstr "Ausführen"
 
@@ -577,12 +530,12 @@ msgstr "Der Mischfaktor »%s« in einer Mischfarbe ist negativ"
 msgid "Could not parse color '%s'"
 msgstr "Die Farbe »%s« konnte nicht verarbeitet werden"
 
-#: libmetacity/meta-draw-spec.c:200
+#: libmetacity/meta-draw-spec.c:201
 #, c-format
 msgid "Coordinate expression contains character '%s' which is not allowed"
 msgstr "Der Koordinatenausdruck enthält das unerlaubte Zeichen »%s«"
 
-#: libmetacity/meta-draw-spec.c:227
+#: libmetacity/meta-draw-spec.c:228
 #, c-format
 msgid ""
 "Coordinate expression contains floating point number '%s' which could not be "
@@ -591,14 +544,14 @@ msgstr ""
 "Der Koordinatenausdruck enthält die Gleitkommazahl »%s«, die nicht "
 "verarbeitet werden konnte"
 
-#: libmetacity/meta-draw-spec.c:240
+#: libmetacity/meta-draw-spec.c:241
 #, c-format
 msgid "Coordinate expression contains integer '%s' which could not be parsed"
 msgstr ""
 "Der Koordinatenausdruck enthält die Ganzzahl »%s«, die nicht verarbeitet "
 "werden konnte"
 
-#: libmetacity/meta-draw-spec.c:367
+#: libmetacity/meta-draw-spec.c:368
 #, c-format
 msgid ""
 "Coordinate expression contained unknown operator at the start of this text: "
@@ -607,29 +560,22 @@ msgstr ""
 "Der Koordinatenausdruck enthält einen unbekannten Operator am Anfang dieses "
 "Texts: »%s«"
 
-#: libmetacity/meta-draw-spec.c:423
+#: libmetacity/meta-draw-spec.c:424
 msgid "Coordinate expression was empty or not understood"
 msgstr "Der Koordinatenausdruck war leer oder unverständlich"
 
-#: libmetacity/meta-draw-spec.c:585
+#: libmetacity/meta-draw-spec.c:586
 #, c-format
 msgid "Coordinate expression had unknown variable or constant '%s'"
 msgstr ""
 "Der Koordinatenausdruck enthält die unbekannte Variable oder Konstante »%s«"
 
-#: libmetacity/meta-draw-spec.c:630 libmetacity/meta-draw-spec.c:640
-#: libmetacity/meta-draw-spec.c:675
+#: libmetacity/meta-draw-spec.c:631 libmetacity/meta-draw-spec.c:641
+#: libmetacity/meta-draw-spec.c:676 libmetacity/meta-draw-spec.c:686
 msgid "Coordinate expression results in division by zero"
 msgstr "Der Koordinatenausdruck führt zu einer Division durch Null"
 
-#: libmetacity/meta-draw-spec.c:683
-msgid ""
-"Coordinate expression tries to use mod operator on a floating-point number"
-msgstr ""
-"Der Koordinatenausdruck versucht, den Modulo-Operator auf eine "
-"Gleitkommazahl anzuwenden"
-
-#: libmetacity/meta-draw-spec.c:769
+#: libmetacity/meta-draw-spec.c:774
 #, c-format
 msgid ""
 "Coordinate expression has an operator \"%s\" where an operand was expected"
@@ -637,17 +583,17 @@ msgstr ""
 "Der Koordinatenausdruck enthält den Operator »%s«, wo ein Operand stehen "
 "müsste"
 
-#: libmetacity/meta-draw-spec.c:778
+#: libmetacity/meta-draw-spec.c:783
 msgid "Coordinate expression had an operand where an operator was expected"
 msgstr ""
 "Der Koordinatenausdruck enthält einen Operanden, wo ein Operator stehen "
 "müsste"
 
-#: libmetacity/meta-draw-spec.c:786
+#: libmetacity/meta-draw-spec.c:791
 msgid "Coordinate expression ended with an operator instead of an operand"
 msgstr "Der Koordinatenausdruck endet mit einem Operator statt einem Operanden"
 
-#: libmetacity/meta-draw-spec.c:796
+#: libmetacity/meta-draw-spec.c:801
 #, c-format
 msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
@@ -656,29 +602,29 @@ msgstr ""
 "Der Koordinatenausdruck enthält die beiden Operatoren »%c« und »%c«, jedoch "
 "keinen Operanden dazwischen"
 
-#: libmetacity/meta-draw-spec.c:928
+#: libmetacity/meta-draw-spec.c:933
 msgid "Coordinate expression parser overflowed its buffer."
 msgstr "Der Koordinatenausdruck brachte seinen Puffer zum überlaufen."
 
-#: libmetacity/meta-draw-spec.c:956
+#: libmetacity/meta-draw-spec.c:961
 msgid "Coordinate expression had a close parenthesis with no open parenthesis"
 msgstr ""
 "Der Koordinatenausdruck enthält eine schließende Klammer, jedoch keine "
 "Öffnende"
 
-#: libmetacity/meta-draw-spec.c:1024
+#: libmetacity/meta-draw-spec.c:1029
 msgid "Coordinate expression had an open parenthesis with no close parenthesis"
 msgstr ""
 "Der Koordinatenausdruck enthält eine öffnende Klammer, jedoch keine "
 "Schließende"
 
-#: libmetacity/meta-draw-spec.c:1034
+#: libmetacity/meta-draw-spec.c:1039
 msgid "Coordinate expression doesn't seem to have any operators or operands"
 msgstr ""
 "Der Koordinatenausdruck scheint weder Operatoren noch Operanden zu enthalten"
 
-#: libmetacity/meta-draw-spec.c:1226 libmetacity/meta-draw-spec.c:1246
-#: libmetacity/meta-draw-spec.c:1266
+#: libmetacity/meta-draw-spec.c:1231 libmetacity/meta-draw-spec.c:1251
+#: libmetacity/meta-draw-spec.c:1271
 #, c-format
 msgid "Theme contained an expression that resulted in an error: %s"
 msgstr "Das Thema enthält einen Ausdruck, der zu folgendem Fehler führte: %s"
@@ -733,11 +679,11 @@ msgstr ""
 "Für diesen Rahmenstil muss <button function=\"%s\" state=\"%s\" draw_ops="
 "\"irgendwas\"/> angegeben werden"
 
-#: libmetacity/meta-gradient-spec.c:125
+#: libmetacity/meta-gradient-spec.c:173
 msgid "Gradients should have at least two colors"
 msgstr "Farbverläufe sollten mindestens zwei Farben enthalten"
 
-#: libmetacity/meta-theme-impl.c:100
+#: libmetacity/meta-theme-impl.c:65
 #, c-format
 msgid "MetaThemeImplClass::load not implemented for '%s'"
 msgstr "MetaThemeImplClass::load ist für »%s« nicht implementiert"
@@ -1233,12 +1179,12 @@ msgstr "_Beenden erzwingen"
 msgid "Failed to get hostname: %s\n"
 msgstr "Rechnername konnte nicht ermittelt werden: %s\n"
 
-#: src/core/display.c:323
+#: src/core/display.c:324
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
 msgstr "X Window System-Anzeige »%s« konnte nicht geöffnet werden\n"
 
-#: src/core/keybindings.c:690
+#: src/core/keybindings.c:691
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
@@ -1312,7 +1258,7 @@ msgstr "Maximierte Fenster im Vollbildmodus haben immer eine Fensterdekoration"
 msgid "Failed to restart: %s\n"
 msgstr "Neustart fehlgeschlagen: %s\n"
 
-#: src/core/prefs.c:1020
+#: src/core/prefs.c:1043
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -1320,14 +1266,14 @@ msgstr ""
 "Problemumgehungen (Workarounds) für defekte Anwendungen abgeschaltet. "
 "Möglicherweise funktionieren manche Anwendungen nicht richtig.\n"
 
-#: src/core/prefs.c:1097
+#: src/core/prefs.c:1120
 #, c-format
 msgid "Could not parse font description \"%s\" from GSettings key %s\n"
 msgstr ""
 "Schriftbeschreibung »%s« aus GSettings-Schlüssel »%s« konnte nicht "
 "verarbeitet werden\n"
 
-#: src/core/prefs.c:1159
+#: src/core/prefs.c:1182
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -1336,7 +1282,7 @@ msgstr ""
 "»%s« in der Konfigurationsdatenbank ist kein zulässiger Wert für eine Maus-"
 "Zusatztaste\n"
 
-#: src/core/prefs.c:1436
+#: src/core/prefs.c:1432
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -1345,12 +1291,12 @@ msgstr ""
 "»%s« in der Konfigurationsdatenbank ist kein zulässiger Wert für die "
 "Tastenkombination »%s«\n"
 
-#: src/core/prefs.c:1538
+#: src/core/prefs.c:1534
 #, c-format
 msgid "Workspace %d"
 msgstr "Arbeitsfläche %d"
 
-#: src/core/prefs.c:1795
+#: src/core/prefs.c:1791
 #, c-format
 msgid "Missing %s extension required for compositing\n"
 msgstr "Die für Compositing benötigte Erweiterung »%s« fehlt\n"
@@ -1581,51 +1527,51 @@ msgstr ""
 msgid "Usage: %s\n"
 msgstr "Aufruf: %s\n"
 
-#: src/ui/frames.c:1064
+#: src/ui/frames.c:1310
 msgid "Close Window"
 msgstr "Fenster schließen"
 
-#: src/ui/frames.c:1067
+#: src/ui/frames.c:1313
 msgid "Window Menu"
 msgstr "Fenstermenü"
 
-#: src/ui/frames.c:1070
+#: src/ui/frames.c:1316
 msgid "Window App Menu"
 msgstr "Fenster-Anwendungsmenü"
 
-#: src/ui/frames.c:1073
+#: src/ui/frames.c:1319
 msgid "Minimize Window"
 msgstr "Fenster minimieren"
 
-#: src/ui/frames.c:1076
+#: src/ui/frames.c:1322
 msgid "Maximize Window"
 msgstr "Fenster maximieren"
 
-#: src/ui/frames.c:1079
+#: src/ui/frames.c:1325
 msgid "Restore Window"
 msgstr "Fenster wiederherstellen"
 
-#: src/ui/frames.c:1082
+#: src/ui/frames.c:1328
 msgid "Roll Up Window"
 msgstr "Fenster einrollen"
 
-#: src/ui/frames.c:1085
+#: src/ui/frames.c:1331
 msgid "Unroll Window"
 msgstr "Fenster ausrollen"
 
-#: src/ui/frames.c:1088
+#: src/ui/frames.c:1334
 msgid "Keep Window On Top"
 msgstr "Fenster immer im Vordergrund"
 
-#: src/ui/frames.c:1091
+#: src/ui/frames.c:1337
 msgid "Remove Window From Top"
 msgstr "Fenster nicht mehr stets im Vordergrund"
 
-#: src/ui/frames.c:1094
+#: src/ui/frames.c:1340
 msgid "Always On Visible Workspace"
 msgstr "Immer auf der sichtbaren Arbeitsfläche"
 
-#: src/ui/frames.c:1097
+#: src/ui/frames.c:1343
 msgid "Put Window On Only One Workspace"
 msgstr "Fenster nur auf eine Arbeitsfläche legen"
 
@@ -1711,21 +1657,21 @@ msgstr "Auf Arbeitsfläche dar_unter verschieben"
 msgid "_Close"
 msgstr "S_chließen"
 
-#: src/ui/menu.c:200
+#: src/ui/menu.c:175
 #, c-format
 msgid "Workspace %d%n"
 msgstr "Arbeitsfläche %d%n"
 
-#: src/ui/menu.c:210
+#: src/ui/menu.c:185
 msgid "Workspace 1_0"
 msgstr "Arbeitsfläche 1_0"
 
-#: src/ui/menu.c:212
+#: src/ui/menu.c:187
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Arbeitsfläche %s%d"
 
-#: src/ui/menu.c:379
+#: src/ui/menu.c:354
 msgid "Move to Another _Workspace"
 msgstr "Auf a_ndere Arbeitsfläche verschieben"
 
@@ -1822,22 +1768,37 @@ msgstr "Umschalter5"
 #. Translators: This represents the size of a window.  The first number is
 #. * the width of the window and the second is the height.
 #.
-#: src/ui/resizepopup.c:136
+#: src/ui/resizepopup.c:86
 #, c-format
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: src/ui/ui.c:769
+#: src/ui/ui.c:768
 msgid "Falling back to default GTK+ theme - Adwaita"
 msgstr "Es wird auf Adwaita ausgewichen, das Standardthema von GTK+"
 
-#: theme-viewer/theme-viewer-window.c:104
+#: theme-viewer/theme-viewer-main.c:32
+msgid "Theme type to use (GTK+ or Metacity)"
+msgstr "Typ des zu verwendenden Themas (GTK+ oder Metacity)"
+
+#: theme-viewer/theme-viewer-main.c:32
+msgid "TYPE"
+msgstr "TYP"
+
+#: theme-viewer/theme-viewer-main.c:36
+msgid "Theme name to use"
+msgstr "Themenname"
+
+#: theme-viewer/theme-viewer-main.c:36
+msgid "NAME"
+msgstr "NAME"
+
+#: theme-viewer/theme-viewer-window.c:100
 #, c-format
-#| msgid "Loaded theme '%s' in %g seconds\n"
 msgid "Loaded <b>%s</b> theme <b>%s</b> in <b>%f</b> seconds."
 msgstr "<b>%s</b>-Thema <b>%s</b> wurde in <b>%f</b> Sekunden geladen."
 
-#: theme-viewer/theme-viewer-window.c:134
+#: theme-viewer/theme-viewer-window.c:130
 #, c-format
 msgid ""
 "Got MetaFrameBorders in <b>%f</b> seconds (CSS loading, PangoFontDescription "
@@ -1847,7 +1808,7 @@ msgstr ""
 "PangoFontDescription erzeugt und Höhe der Titelzeile ermittelt)."
 
 # CHECK - wall clock
-#: theme-viewer/theme-viewer-window.c:210
+#: theme-viewer/theme-viewer-window.c:205
 #, c-format
 msgid ""
 "Drew <b>%d</b> frames in <b>%f</b> client-side seconds (<b>%f</b> "
@@ -1858,13 +1819,19 @@ msgstr ""
 "b> Millisekunden pro Rahmen) bzw. in <b>%f</b> Sekunden Gesamtzeit inkl. X-"
 "Server-Ressourcen (<b>%f</b> Millisekunden pro Rahmen)."
 
-#: theme-viewer/theme-viewer-window.c:247
+#: theme-viewer/theme-viewer-window.c:242
 msgid "Run again"
 msgstr "Erneut ausführen"
 
-#: theme-viewer/theme-viewer-window.c:983
+#: theme-viewer/theme-viewer-window.c:930
 msgid "Metacity Theme Viewer"
 msgstr "Metacity Themenbetrachter"
+
+#~ msgid ""
+#~ "Coordinate expression tries to use mod operator on a floating-point number"
+#~ msgstr ""
+#~ "Der Koordinatenausdruck versucht, den Modulo-Operator auf eine "
+#~ "Gleitkommazahl anzuwenden"
 
 #~ msgid "Failed to load theme '%s': %s"
 #~ msgstr "Thema »%s« konnte nicht geladen werden: %s"
