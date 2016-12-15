@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-11-28 17:36+0000\n"
-"PO-Revision-Date: 2016-11-28 21:19+0100\n"
+"POT-Creation-Date: 2016-12-15 17:42+0000\n"
+"PO-Revision-Date: 2016-12-15 18:45+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -1288,7 +1288,7 @@ msgstr ""
 #: src/core/prefs.c:1534
 #, c-format
 msgid "Workspace %d"
-msgstr "Obszar roboczy %d"
+msgstr "%d. obszar roboczy"
 
 #: src/core/prefs.c:1791
 #, c-format
@@ -1649,20 +1649,20 @@ msgstr "Za_mknij"
 #: src/ui/menu.c:175
 #, c-format
 msgid "Workspace %d%n"
-msgstr "Obszar roboczy %d%n"
+msgstr "%d%n. obszar roboczy"
 
 #: src/ui/menu.c:185
 msgid "Workspace 1_0"
-msgstr "Obszar roboczy 1_0"
+msgstr "1_0. obszar roboczy"
 
 #: src/ui/menu.c:187
 #, c-format
 msgid "Workspace %s%d"
-msgstr "Obszar roboczy %s%d"
+msgstr "%s%d. obszar roboczy"
 
 #: src/ui/menu.c:354
 msgid "Move to Another _Workspace"
-msgstr "Przeniesienie na inny _obszar roboczy"
+msgstr "Przenieś na inny _obszar roboczy"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the shift key. If the text on this key isn't typically
@@ -1767,8 +1767,8 @@ msgid "Falling back to default GTK+ theme - Adwaita"
 msgstr "Używanie domyślnego motywu biblioteki GTK+, Adwaita"
 
 #: theme-viewer/theme-viewer-main.c:32
-msgid "Theme type to use (GTK+ or Metacity)"
-msgstr "Typ używanego motywu (GTK+ lub Metacity)"
+msgid "Theme type to use (\"gtk\" or \"metacity\")"
+msgstr "Typ używanego motywu („gtk” lub „metacity”)"
 
 #: theme-viewer/theme-viewer-main.c:32
 msgid "TYPE"
