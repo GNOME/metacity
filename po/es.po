@@ -2,12 +2,12 @@
 # Spanish trasnlation for Metacity
 # Copyright © 2001,2002,2003, 2006, 2007, 2008 Free Software Foundation, Inc.
 # This file is distributed under the same license as the metacity package.
-# 
+#
 # Héctor García Álvarez <hector@scouts-es.org>, 2001.
 # Pablo Gonzalo del Campo <pablodc@bigfoot.com>,2002,2003.
 # Francisco Javier F. Serrador <serrador@cvs.gnome.org>, 2004, 2005, 2006.
 # Jorge González <jorgegonz@svn.gnome.org>, 2007, 2008, 2009, 2010, 2011.
-# 
+#
 # Luis Enrique Ortega Rojas <ortegarle@gmail.com>, 2016.
 # Daniel Mustieles <daniel.mustieles@gmail.com>, 2011, 2012, 2013, 2014, 2015, 2016.
 #
@@ -16,10 +16,10 @@ msgstr ""
 "Project-Id-Version: metacity.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-08-24 03:22+0000\n"
-"PO-Revision-Date: 2016-04-28 13:27+0200\n"
+"POT-Creation-Date: 2016-12-15 17:42+0000\n"
+"PO-Revision-Date: 2016-12-22 13:34+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
-"Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
+"Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,238 +37,191 @@ msgstr "Metacity"
 msgid "preferences-system-windows"
 msgstr "preferencias-sistema-ventanas"
 
-#. (itstool) path: 50-metacity-navigation.xml/KeyListEntries@name
-#: 50-metacity-navigation.xml:6
+#: data/keybindings/50-metacity-navigation.xml:6
 msgid "Navigation"
 msgstr "Navegación"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:9
+#: data/keybindings/50-metacity-navigation.xml:9
 msgid "Move window to workspace 1"
 msgstr "Mover la ventana al área de trabajo 1"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:12
+#: data/keybindings/50-metacity-navigation.xml:12
 msgid "Move window to workspace 2"
 msgstr "Mover la ventana al área de trabajo 2"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:15
+#: data/keybindings/50-metacity-navigation.xml:15
 msgid "Move window to workspace 3"
 msgstr "Mover la ventana al área de trabajo 3"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:18
+#: data/keybindings/50-metacity-navigation.xml:18
 msgid "Move window to workspace 4"
 msgstr "Mover la ventana al área de trabajo 4"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:21
+#: data/keybindings/50-metacity-navigation.xml:21
 msgid "Move window one workspace to the left"
 msgstr "Mover la ventana un área de trabajo a la izquierda"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:24
+#: data/keybindings/50-metacity-navigation.xml:24
 msgid "Move window one workspace to the right"
 msgstr "Mover la ventana un área de trabajo a la derecha"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:27
+#: data/keybindings/50-metacity-navigation.xml:27
 msgid "Move window one workspace up"
 msgstr "Subir la ventana un área de trabajo"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:30
+#: data/keybindings/50-metacity-navigation.xml:30
 msgid "Move window one workspace down"
 msgstr "Bajar la ventana un área de trabajo"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:33
+#: data/keybindings/50-metacity-navigation.xml:33
 msgid "Switch windows"
 msgstr "Cambiar entre ventanas"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:36
+#: data/keybindings/50-metacity-navigation.xml:36
 msgid "Switch applications"
 msgstr "Moverse entre aplicaciones"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:39
+#: data/keybindings/50-metacity-navigation.xml:39
 msgid "Switch windows of an application"
 msgstr "Moverse entre las ventanas de una aplicación"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:42
+#: data/keybindings/50-metacity-navigation.xml:42
 msgid "Switch system controls"
 msgstr "Cambiar entre controles del sistema"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:45
+#: data/keybindings/50-metacity-navigation.xml:45
 msgid "Switch windows directly"
 msgstr "Cambiar ventanas directamente"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:48
+#: data/keybindings/50-metacity-navigation.xml:48
 msgid "Switch windows of an app directly"
 msgstr "Moverse entre las ventanas de una aplicación directamente"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:51
+#: data/keybindings/50-metacity-navigation.xml:51
 msgid "Switch system controls directly"
 msgstr "Moverse entre los controles del sistema directamente"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:54
+#: data/keybindings/50-metacity-navigation.xml:54
 msgid "Hide all normal windows"
 msgstr "Ocultar todas las ventanas normales"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:57
+#: data/keybindings/50-metacity-navigation.xml:57
 msgid "Switch to workspace 1"
 msgstr "Cambiar al área de trabajo 1"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:60
+#: data/keybindings/50-metacity-navigation.xml:60
 msgid "Switch to workspace 2"
 msgstr "Cambiar al área de trabajo 2"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:63
+#: data/keybindings/50-metacity-navigation.xml:63
 msgid "Switch to workspace 3"
 msgstr "Cambiar al área de trabajo 3"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:66
+#: data/keybindings/50-metacity-navigation.xml:66
 msgid "Switch to workspace 4"
 msgstr "Cambiar al área de trabajo 4"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:69
+#: data/keybindings/50-metacity-navigation.xml:69
 msgid "Move to workspace left"
 msgstr "Mover al área de trabajo de la izquierda"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:72
+#: data/keybindings/50-metacity-navigation.xml:72
 msgid "Move to workspace right"
 msgstr "Mover al área de trabajo de la derecha"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:75
+#: data/keybindings/50-metacity-navigation.xml:75
 msgid "Move to workspace above"
 msgstr "Mover al área de trabajo de la arriba"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:78
+#: data/keybindings/50-metacity-navigation.xml:78
 msgid "Move to workspace below"
 msgstr "Mover al área de trabajo de abajo"
 
-#. (itstool) path: 50-metacity-system.xml/KeyListEntries@name
-#: 50-metacity-system.xml:6
+#: data/keybindings/50-metacity-system.xml:6
 msgid "System"
 msgstr "Sistema"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-system.xml:9
+#: data/keybindings/50-metacity-system.xml:9
 msgid "Show the run command prompt"
 msgstr "Mostrar el elemento «ejecutar comando»"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-system.xml:12
+#: data/keybindings/50-metacity-system.xml:12
 msgid "Show the applications menu"
 msgstr "Mostrar el menú de aplicaciones"
 
-#. (itstool) path: 50-metacity-windows.xml/KeyListEntries@name
-#: 50-metacity-windows.xml:6
+#: data/keybindings/50-metacity-windows.xml:6
 msgid "Windows"
 msgstr "Ventanas"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:9
+#: data/keybindings/50-metacity-windows.xml:9
 msgid "Activate the window menu"
 msgstr "Activar el menú de la ventana"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:12
+#: data/keybindings/50-metacity-windows.xml:12
 msgid "Toggle fullscreen mode"
 msgstr "Cambiar a modo de pantalla completa"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:15
+#: data/keybindings/50-metacity-windows.xml:15
 msgid "Toggle maximization state"
 msgstr "Cambiar el estado de maximización"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:18
+#: data/keybindings/50-metacity-windows.xml:18
 msgid "Maximize window"
 msgstr "Maximizar la ventana"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:21
+#: data/keybindings/50-metacity-windows.xml:21
 msgid "Restore window"
 msgstr "Restaurar la ventana"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:24
+#: data/keybindings/50-metacity-windows.xml:24
 msgid "Toggle shaded state"
 msgstr "Cambiar el estado de enrollado"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:27
+#: data/keybindings/50-metacity-windows.xml:27
 msgid "Close window"
 msgstr "Cerrar la ventana"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:30
+#: data/keybindings/50-metacity-windows.xml:30
 msgid "Minimize window"
 msgstr "Minimizar la ventana"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:33
+#: data/keybindings/50-metacity-windows.xml:33
 msgid "Move window"
 msgstr "Mover la ventana"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:36
+#: data/keybindings/50-metacity-windows.xml:36
 msgid "Resize window"
 msgstr "Redimensionar la ventana"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:39
+#: data/keybindings/50-metacity-windows.xml:39
 msgid "Toggle window on all workspaces or one"
 msgstr "Conmutar la ventana en todas las áreas de trabajo o sólo en una"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:42
+#: data/keybindings/50-metacity-windows.xml:42
 msgid "Raise window if covered, otherwise lower it"
 msgstr "Levantar la ventana si está cubierta, minimizarla en otro caso"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:45
+#: data/keybindings/50-metacity-windows.xml:45
 msgid "Raise window above other windows"
 msgstr "Levanta la ventana por encima de otras ventanas"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:48
+#: data/keybindings/50-metacity-windows.xml:48
 msgid "Lower window below other windows"
 msgstr "Bajar la ventana por debajo de otras ventanas"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:51
+#: data/keybindings/50-metacity-windows.xml:51
 msgid "Maximize window vertically"
 msgstr "Maximizar la ventana verticalmente"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:54
+#: data/keybindings/50-metacity-windows.xml:54
 msgid "Maximize window horizontally"
 msgstr "Maximizar la ventana horizontalmente"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:58
+#: data/keybindings/50-metacity-windows.xml:58
 msgid "View split on left"
 msgstr "Dividir la vista en la izquierda"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:62
+#: data/keybindings/50-metacity-windows.xml:62
 msgid "View split on right"
 msgstr "Dividir la vista en la derecha"
 
@@ -453,17 +406,17 @@ msgstr "Distribución de botones:"
 msgid "Composited:"
 msgstr "Compuesto:"
 
-#: data/ui/theme-viewer-window.ui:339 theme-viewer/theme-viewer-window.c:623
+#: data/ui/theme-viewer-window.ui:339 theme-viewer/theme-viewer-window.c:622
 msgid "Choose Theme"
 msgstr "Elegir tema"
 
 #: data/ui/theme-viewer-window.ui:379
 msgid "Preview"
-msgstr ""
+msgstr "Previsualizar"
 
-#: data/ui/theme-viewer-window.ui:468 theme-viewer/theme-viewer-window.c:251
+#: data/ui/theme-viewer-window.ui:468 theme-viewer/theme-viewer-window.c:250
 msgid "Run"
-msgstr ""
+msgstr "Ejecutar"
 
 #: data/ui/theme-viewer-window.ui:490
 msgid "Benchmark"
@@ -725,7 +678,7 @@ msgstr ""
 msgid "Gradients should have at least two colors"
 msgstr "Los degradados deben tener al menos dos colores"
 
-#: libmetacity/meta-theme-impl.c:64
+#: libmetacity/meta-theme-impl.c:65
 #, c-format
 msgid "MetaThemeImplClass::load not implemented for '%s'"
 msgstr "MetaThemeImplClass::carga no implementada para «%s»"
@@ -1226,12 +1179,12 @@ msgstr "_Forzar la salida"
 msgid "Failed to get hostname: %s\n"
 msgstr "Ocurrió un error al obtener el nombre del host: %s\n"
 
-#: src/core/display.c:323
+#: src/core/display.c:324
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
 msgstr "Ocurrió un error al abrir la pantalla de X Window System «%s»\n"
 
-#: src/core/keybindings.c:690
+#: src/core/keybindings.c:691
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
@@ -1242,18 +1195,25 @@ msgstr ""
 
 #: src/core/main.c:109
 #, c-format
+#| msgid ""
+#| "metacity %s\n"
+#| "Copyright (C) 2001-%s Havoc Pennington, Red Hat, Inc, and others\n"
+#| "This is free software; see the source for copying conditions.\n"
+#| "There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A "
+#| "PARTICULAR PURPOSE.\n"
 msgid ""
 "metacity %s\n"
-"Copyright (C) 2001-%s Havoc Pennington, Red Hat, Inc, and others\n"
+"Copyright (C) 2001-%s Havoc Pennington, Red Hat, Inc., and others\n"
 "This is free software; see the source for copying conditions.\n"
 "There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A "
 "PARTICULAR PURPOSE.\n"
 msgstr ""
 "metacity %s\n"
 "Copyright © 2001-%s Havoc Pennington, Red Hat, Inc, y otros\n"
-"Este programa es software libre; vea el código fuente para obtener las\n"
-"condiciones de copia. NO se proporciona ninguna garantía; ni de\n"
-"MERCANTILIDAD O DE IDONEIDAD PARA UN PROPÓSITO PARTICULAR.\n"
+"Este programa es software libre; vea el código fuente para obtener las "
+"condiciones de copia.\n"
+"NO se proporciona ninguna garantía; ni de MERCANTILIDAD NI DE IDONEIDAD PARA "
+"UN PROPÓSITO PARTICULAR.\n"
 
 #: src/core/main.c:225
 msgid "Disable connection to session manager"
@@ -1695,21 +1655,21 @@ msgstr "Mover al área de trabajo de a_bajo"
 msgid "_Close"
 msgstr "_Cerrar"
 
-#: src/ui/menu.c:200
+#: src/ui/menu.c:175
 #, c-format
 msgid "Workspace %d%n"
 msgstr "Área de trabajo %d%n"
 
-#: src/ui/menu.c:210
+#: src/ui/menu.c:185
 msgid "Workspace 1_0"
 msgstr "Área de trabajo 1_0"
 
-#: src/ui/menu.c:212
+#: src/ui/menu.c:187
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Área de trabajo %s%d"
 
-#: src/ui/menu.c:379
+#: src/ui/menu.c:354
 msgid "Move to Another _Workspace"
 msgstr "Mover a _otra área de trabajo"
 
@@ -1806,30 +1766,49 @@ msgstr "Mod5"
 #. Translators: This represents the size of a window.  The first number is
 #. * the width of the window and the second is the height.
 #.
-#: src/ui/resizepopup.c:136
+#: src/ui/resizepopup.c:86
 #, c-format
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: src/ui/ui.c:776
+#: src/ui/ui.c:768
 msgid "Falling back to default GTK+ theme - Adwaita"
 msgstr "Usando el tema predeterminado alternativo de GTK+: Adwaita"
 
-#: theme-viewer/theme-viewer-window.c:101
-#, fuzzy, c-format
+#: theme-viewer/theme-viewer-main.c:32
+msgid "Theme type to use (\"gtk\" or \"metacity\")"
+msgstr "Tipo de tema que usar («gtk» o «metacity»)"
+
+#: theme-viewer/theme-viewer-main.c:32
+msgid "TYPE"
+msgstr "TIPO"
+
+#: theme-viewer/theme-viewer-main.c:36
+#| msgid "Theme Name"
+msgid "Theme name to use"
+msgstr "Nombre del tema que usar"
+
+#: theme-viewer/theme-viewer-main.c:36
+msgid "NAME"
+msgstr "NOMBRE"
+
+#: theme-viewer/theme-viewer-window.c:100
+#, c-format
 #| msgid "Loaded theme \"%s\" in %g seconds\n"
 msgid "Loaded <b>%s</b> theme <b>%s</b> in <b>%f</b> seconds."
-msgstr "Se cargó el tema «%s» en %g segundos\n"
+msgstr "Cargado <b>%s</b> tema <b>%s</b> en <b>%f</b> segundos."
 
-#: theme-viewer/theme-viewer-window.c:131
+#: theme-viewer/theme-viewer-window.c:130
 #, c-format
 msgid ""
 "Got MetaFrameBorders in <b>%f</b> seconds (CSS loading, PangoFontDescription "
 "creation and title height calculation)."
 msgstr ""
+"Se obtuvieron los MetaFrameBorders en <b>%f</b> segundos (carga de CSS, "
+"creación de PangoFontDescription y cálculo de altura del título)."
 
-#: theme-viewer/theme-viewer-window.c:206
-#, fuzzy, c-format
+#: theme-viewer/theme-viewer-window.c:205
+#, c-format
 #| msgid ""
 #| "Drew %d frames in %g client-side seconds (%g milliseconds per frame) and "
 #| "%g seconds wall clock time including X server resources (%g milliseconds "
@@ -1839,15 +1818,15 @@ msgid ""
 "milliseconds per frame) and <b>%f</b> seconds wall clock time including X "
 "server resources (<b>%f</b> milliseconds per frame)."
 msgstr ""
-"Dibujó %d marcos en %g segundos del lado del cliente (%g milisegundos por "
-"marco) y %g segundos de tiempo estándar incluyendo recursos del servidor X "
-"(%g milisegundos por marco)\n"
+"Dibujó <b>%d</b> marcos en <b>%f</b>segundos del lado del cliente (<b>%f</b> "
+"milisegundos por marco) y <b>%f</b> segundos de tiempo estándar incluyendo "
+"recursos del servidor X (<b>%f</b> milisegundos por marco)."
 
-#: theme-viewer/theme-viewer-window.c:243
+#: theme-viewer/theme-viewer-window.c:242
 msgid "Run again"
-msgstr ""
+msgstr "Ejecutar de nuevo"
 
-#: theme-viewer/theme-viewer-window.c:931
+#: theme-viewer/theme-viewer-window.c:930
 msgid "Metacity Theme Viewer"
 msgstr "Visualizador de temas de Metacity"
 
