@@ -202,8 +202,6 @@ typedef struct _MetaCompWindow
 
 #define TRANS_OPACITY 0.75
 
-#define DISPLAY_COMPOSITOR(display) ((MetaCompositorXRender *) meta_display_get_compositor (display))
-
 /* Gaussian stuff for creating the shadows */
 static double
 gaussian (double r,
@@ -251,17 +249,16 @@ make_gaussian_map (double r)
 }
 
 static void
-dump_xserver_region (const char   *location,
-                     MetaDisplay  *display,
-                     XserverRegion region)
+dump_xserver_region (MetaCompositorXRender *xrender,
+                     const gchar           *location,
+                     XserverRegion          region)
 {
-  MetaCompositorXRender *compositor = DISPLAY_COMPOSITOR (display);
-  Display *xdisplay = meta_display_get_xdisplay (display);
+  Display *xdisplay = meta_display_get_xdisplay (xrender->display);
   int nrects;
   XRectangle *rects;
   XRectangle bounds;
 
-  if (!compositor->debug)
+  if (!xrender->debug)
     return;
 
   if (region)
@@ -1752,8 +1749,9 @@ paint_windows (MetaScreen   *screen,
 }
 
 static void
-paint_all (MetaScreen   *screen,
-           XserverRegion region)
+paint_all (MetaCompositorXRender *xrender,
+           MetaScreen            *screen,
+           XserverRegion          region)
 {
   MetaCompScreen *info = meta_screen_get_compositor_data (screen);
   MetaDisplay *display = meta_screen_get_display (screen);
@@ -1765,11 +1763,11 @@ paint_all (MetaScreen   *screen,
 
   meta_screen_get_size (screen, &screen_width, &screen_height);
 
-  if (DISPLAY_COMPOSITOR (display)->show_redraw)
+  if (xrender->show_redraw)
     {
       Picture overlay;
 
-      dump_xserver_region ("paint_all", display, region);
+      dump_xserver_region (xrender, "paint_all", region);
 
       /* Make a random colour overlay */
       overlay = solid_picture (display, screen, TRUE, 1, /* 0.3, alpha */
@@ -1796,7 +1794,8 @@ paint_all (MetaScreen   *screen,
 }
 
 static void
-repair_screen (MetaScreen *screen)
+repair_screen (MetaCompositorXRender *xrender,
+               MetaScreen            *screen)
 {
   MetaCompScreen *info = meta_screen_get_compositor_data (screen);
   MetaDisplay *display = meta_screen_get_display (screen);
@@ -1805,7 +1804,7 @@ repair_screen (MetaScreen *screen)
   if (info!=NULL && info->all_damage != None)
     {
       meta_error_trap_push (display);
-      paint_all (screen, info->all_damage);
+      paint_all (xrender, screen, info->all_damage);
       XFixesDestroyRegion (xdisplay, info->all_damage);
       info->all_damage = None;
       info->clip_changed = FALSE;
@@ -1814,20 +1813,19 @@ repair_screen (MetaScreen *screen)
 }
 
 static void
-repair_display (MetaDisplay *display)
+repair_display (MetaCompositorXRender *xrender)
 {
-  MetaScreen *screen = meta_display_get_screen (display);
-  MetaCompositorXRender *compositor = DISPLAY_COMPOSITOR (display);
+  MetaScreen *screen = meta_display_get_screen (xrender->display);
 
 #ifdef USE_IDLE_REPAINT
-  if (compositor->repaint_id > 0)
+  if (xrender->repaint_id > 0)
     {
-      g_source_remove (compositor->repaint_id);
-      compositor->repaint_id = 0;
+      g_source_remove (xrender->repaint_id);
+      xrender->repaint_id = 0;
     }
 #endif
 
-  repair_screen (screen);
+  repair_screen (xrender, screen);
 }
 
 #ifdef USE_IDLE_REPAINT
@@ -1837,16 +1835,14 @@ compositor_idle_cb (gpointer data)
   MetaCompositorXRender *compositor = (MetaCompositorXRender *) data;
 
   compositor->repaint_id = 0;
-  repair_display (compositor->display);
+  repair_display (compositor);
 
   return FALSE;
 }
 
 static void
-add_repair (MetaDisplay *display)
+add_repair (MetaCompositorXRender *compositor)
 {
-  MetaCompositorXRender *compositor = DISPLAY_COMPOSITOR (display);
-
   if (compositor->repaint_id > 0)
     return;
 
@@ -1864,14 +1860,14 @@ add_repair (MetaDisplay *display)
 #endif
 
 static void
-add_damage (MetaScreen     *screen,
-            XserverRegion   damage)
+add_damage (MetaCompositorXRender *xrender,
+            MetaScreen            *screen,
+            XserverRegion          damage)
 {
-  MetaDisplay *display = meta_screen_get_display (screen);
-  Display *xdisplay = meta_display_get_xdisplay (display);
+  Display *xdisplay = meta_display_get_xdisplay (xrender->display);
   MetaCompScreen *info = meta_screen_get_compositor_data (screen);
 
-  /*  dump_xserver_region ("add_damage", display, damage); */
+  /* dump_xserver_region (xrender, "add_damage", damage); */
 
   if (info != NULL && info->all_damage)
     {
@@ -1882,15 +1878,15 @@ add_damage (MetaScreen     *screen,
     info->all_damage = damage;
 
 #ifdef USE_IDLE_REPAINT
-  add_repair (display);
+  add_repair (xrender);
 #endif
 }
 
 static void
-damage_screen (MetaScreen *screen)
+damage_screen (MetaCompositorXRender *xrender,
+               MetaScreen            *screen)
 {
-  MetaDisplay *display = meta_screen_get_display (screen);
-  Display *xdisplay = meta_display_get_xdisplay (display);
+  Display *xdisplay = meta_display_get_xdisplay (xrender->display);
   XserverRegion region;
   int width, height;
   XRectangle r;
@@ -1902,19 +1898,19 @@ damage_screen (MetaScreen *screen)
   r.height = height;
 
   region = XFixesCreateRegion (xdisplay, &r, 1);
-  dump_xserver_region ("damage_screen", display, region);
-  add_damage (screen, region);
+  dump_xserver_region (xrender, "damage_screen", region);
+  add_damage (xrender, screen, region);
 }
 
 static void
-repair_win (MetaCompWindow *cw)
+repair_win (MetaCompositorXRender *xrender,
+            MetaCompWindow        *cw)
 {
   MetaScreen *screen = cw->screen;
-  MetaDisplay *display = meta_screen_get_display (screen);
-  Display *xdisplay = meta_display_get_xdisplay (display);
+  Display *xdisplay = meta_display_get_xdisplay (xrender->display);
   XserverRegion parts;
 
-  meta_error_trap_push (display);
+  meta_error_trap_push (xrender->display);
 
   if (!cw->damaged)
     {
@@ -1930,10 +1926,10 @@ repair_win (MetaCompWindow *cw)
                              cw->attrs.y + cw->attrs.border_width);
     }
 
-  meta_error_trap_pop (display);
+  meta_error_trap_pop (xrender->display);
 
-  dump_xserver_region ("repair_win", display, parts);
-  add_damage (screen, parts);
+  dump_xserver_region (xrender, "repair_win", parts);
+  add_damage (xrender, screen, parts);
   cw->damaged = TRUE;
 }
 
@@ -2106,9 +2102,9 @@ map_win (MetaDisplay *display,
 }
 
 static void
-unmap_win (MetaDisplay *display,
-           MetaScreen  *screen,
-           Window       id)
+unmap_win (MetaCompositorXRender *xrender,
+           MetaScreen            *screen,
+           Window                 id)
 {
   MetaCompWindow *cw = find_window_for_screen (screen, id);
   MetaCompScreen *info = meta_screen_get_compositor_data (screen);
@@ -2126,8 +2122,8 @@ unmap_win (MetaDisplay *display,
 
   if (cw->extents != None)
     {
-      dump_xserver_region ("unmap_win", display, cw->extents);
-      add_damage (screen, cw->extents);
+      dump_xserver_region (xrender, "unmap_win", cw->extents);
+      add_damage (xrender, screen, cw->extents);
       cw->extents = None;
     }
 
@@ -2136,12 +2132,12 @@ unmap_win (MetaDisplay *display,
 }
 
 static void
-determine_mode (MetaDisplay    *display,
-                MetaScreen     *screen,
-                MetaCompWindow *cw)
+determine_mode (MetaCompositorXRender *xrender,
+                MetaScreen            *screen,
+                MetaCompWindow        *cw)
 {
   XRenderPictFormat *format;
-  Display *xdisplay = meta_display_get_xdisplay (display);
+  Display *xdisplay = meta_display_get_xdisplay (xrender->display);
 
   if (cw->alpha_pict)
     {
@@ -2166,8 +2162,8 @@ determine_mode (MetaDisplay    *display,
       damage = XFixesCreateRegion (xdisplay, NULL, 0);
       XFixesCopyRegion (xdisplay, damage, cw->extents);
 
-      dump_xserver_region ("determine_mode", display, damage);
-      add_damage (screen, damage);
+      dump_xserver_region (xrender, "determine_mode", damage);
+      add_damage (xrender, screen, damage);
     }
 }
 
@@ -2248,9 +2244,10 @@ get_window_type (MetaDisplay    *display,
 
 /* Must be called with an error trap in place */
 static void
-add_win (MetaScreen *screen,
-         MetaWindow *window,
-         Window     xwindow)
+add_win (MetaCompositorXRender *xrender,
+         MetaScreen            *screen,
+         MetaWindow            *window,
+         Window                 xwindow)
 {
   MetaDisplay *display = meta_screen_get_display (screen);
   Display *xdisplay = meta_display_get_xdisplay (display);
@@ -2332,7 +2329,7 @@ add_win (MetaScreen *screen,
   cw->shaded.height = 0;
   cw->shaded.client_region = None;
 
-  determine_mode (display, screen, cw);
+  determine_mode (xrender, screen, cw);
   cw->needs_shadow = window_has_shadow (cw);
 
   /* Only add the window to the list of docks if it needs a shadow */
@@ -2352,14 +2349,14 @@ add_win (MetaScreen *screen,
 }
 
 static void
-destroy_win (MetaDisplay *display,
-             Window       xwindow)
+destroy_win (MetaCompositorXRender *xrender,
+             Window                 xwindow)
 {
   MetaScreen *screen;
   MetaCompScreen *info;
   MetaCompWindow *cw;
 
-  cw = find_window_in_display (display, xwindow);
+  cw = find_window_in_display (xrender->display, xwindow);
 
   if (cw == NULL)
     return;
@@ -2368,8 +2365,8 @@ destroy_win (MetaDisplay *display,
 
   if (cw->extents != None)
     {
-      dump_xserver_region ("destroy_win", display, cw->extents);
-      add_damage (screen, cw->extents);
+      dump_xserver_region (xrender, "destroy_win", cw->extents);
+      add_damage (xrender, screen, cw->extents);
       cw->extents = None;
     }
 
@@ -2438,13 +2435,14 @@ restack_win (MetaCompWindow *cw,
 }
 
 static void
-resize_win (MetaCompWindow *cw,
-            int             x,
-            int             y,
-            int             width,
-            int             height,
-            int             border_width,
-            gboolean        override_redirect)
+resize_win (MetaCompositorXRender *xrender,
+            MetaCompWindow        *cw,
+            int                    x,
+            int                    y,
+            int                    width,
+            int                    height,
+            int                    border_width,
+            gboolean               override_redirect)
 {
   MetaScreen *screen = cw->screen;
   MetaDisplay *display = meta_screen_get_display (screen);
@@ -2452,9 +2450,6 @@ resize_win (MetaCompWindow *cw,
   MetaCompScreen *info = meta_screen_get_compositor_data (screen);
   XserverRegion damage;
   XserverRegion shape;
-  gboolean debug;
-
-  debug = DISPLAY_COMPOSITOR (display)->debug;
 
   if (cw->extents)
     {
@@ -2464,7 +2459,7 @@ resize_win (MetaCompWindow *cw,
   else
     {
       damage = None;
-      if (debug)
+      if (xrender->debug)
         fprintf (stderr, "no extents to damage !\n");
     }
 
@@ -2583,7 +2578,7 @@ resize_win (MetaCompWindow *cw,
 
   if (damage)
     {
-      if (debug)
+      if (xrender->debug)
         fprintf (stderr, "Inexplicable intersection with new extents!\n");
 
       XFixesUnionRegion (xdisplay, damage, damage, cw->extents);
@@ -2598,8 +2593,8 @@ resize_win (MetaCompWindow *cw,
   XFixesUnionRegion (xdisplay, damage, damage, shape);
   XFixesDestroyRegion (xdisplay, shape);
 
-  dump_xserver_region ("resize_win", display, damage);
-  add_damage (screen, damage);
+  dump_xserver_region (xrender, "resize_win", damage);
+  add_damage (xrender, screen, damage);
 
   if (info != NULL)
     {
@@ -2640,7 +2635,7 @@ process_circulate_notify (MetaCompositorXRender  *compositor,
     }
 
 #ifdef USE_IDLE_REPAINT
-  add_repair (compositor->display);
+  add_repair (compositor);
 #endif
 }
 
@@ -2658,13 +2653,13 @@ process_configure_notify (MetaCompositorXRender  *compositor,
         {
           fprintf (stderr, "configure notify %d %d %d\n", cw->damaged,
                    cw->shaped, cw->needs_shadow);
-          dump_xserver_region ("\textents", display, cw->extents);
+          dump_xserver_region (compositor, "\textents", cw->extents);
           fprintf (stderr, "\txy (%d %d), wh (%d %d)\n",
                    event->x, event->y, event->width, event->height);
         }
 
       restack_win (cw, event->above);
-      resize_win (cw, event->x, event->y, event->width, event->height,
+      resize_win (compositor, cw, event->x, event->y, event->width, event->height,
                   event->border_width, event->override_redirect);
     }
   else
@@ -2684,7 +2679,7 @@ process_configure_notify (MetaCompositorXRender  *compositor,
           info->root_buffer = None;
         }
 
-      damage_screen (screen);
+      damage_screen (compositor, screen);
     }
 }
 
@@ -2720,9 +2715,9 @@ process_property_notify (MetaCompositorXRender *compositor,
 
                   /* Damage the whole screen as we may need to redraw the
                      background ourselves */
-                  damage_screen (screen);
+                  damage_screen (compositor, screen);
 #ifdef USE_IDLE_REPAINT
-                  add_repair (display);
+                  add_repair (compositor);
 #endif
 
                   return;
@@ -2754,7 +2749,7 @@ process_property_notify (MetaCompositorXRender *compositor,
         value = OPAQUE;
 
       cw->opacity = (guint)value;
-      determine_mode (display, cw->screen, cw);
+      determine_mode (compositor, cw->screen, cw);
       cw->needs_shadow = window_has_shadow (cw);
 
       if (cw->shadow)
@@ -2769,7 +2764,7 @@ process_property_notify (MetaCompositorXRender *compositor,
 
       cw->damaged = TRUE;
 #ifdef USE_IDLE_REPAINT
-      add_repair (display);
+      add_repair (compositor);
 #endif
 
       return;
@@ -2788,18 +2783,18 @@ process_property_notify (MetaCompositorXRender *compositor,
 }
 
 static void
-expose_area (MetaScreen *screen,
-             XRectangle *rects,
-             int         nrects)
+expose_area (MetaCompositorXRender *xrender,
+             MetaScreen            *screen,
+             XRectangle            *rects,
+             int                    nrects)
 {
-  MetaDisplay *display = meta_screen_get_display (screen);
-  Display *xdisplay = meta_display_get_xdisplay (display);
+  Display *xdisplay = meta_display_get_xdisplay (xrender->display);
   XserverRegion region;
 
   region = XFixesCreateRegion (xdisplay, rects, nrects);
 
-  dump_xserver_region ("expose_area", display, region);
-  add_damage (screen, region);
+  dump_xserver_region (xrender, "expose_area", region);
+  add_damage (xrender, screen, region);
 }
 
 static void
@@ -2831,7 +2826,7 @@ process_expose (MetaCompositorXRender *compositor,
   rect[0].width = event->width;
   rect[0].height = event->height;
 
-  expose_area (screen, rect, 1);
+  expose_area (compositor, screen, rect, 1);
 }
 
 static void
@@ -2846,10 +2841,9 @@ process_unmap (MetaCompositorXRender *compositor,
       return;
     }
 
-
   cw = find_window_in_display (compositor->display, event->window);
   if (cw)
-    unmap_win (compositor->display, cw->screen, event->window);
+    unmap_win (compositor, cw->screen, event->window);
 }
 
 static void
@@ -2872,9 +2866,9 @@ process_reparent (MetaCompositorXRender *compositor,
 
   screen = meta_display_screen_for_root (compositor->display, event->parent);
   if (screen != NULL)
-    add_win (screen, window, event->window);
+    add_win (compositor, screen, window, event->window);
   else
-    destroy_win (compositor->display, event->window);
+    destroy_win (compositor, event->window);
 }
 
 static void
@@ -2891,14 +2885,14 @@ process_create (MetaCompositorXRender *compositor,
     return;
 
   if (!find_window_in_display (compositor->display, event->window))
-    add_win (screen, window, event->window);
+    add_win (compositor, screen, window, event->window);
 }
 
 static void
 process_destroy (MetaCompositorXRender *compositor,
                  XDestroyWindowEvent   *event)
 {
-  destroy_win (compositor->display, event->window);
+  destroy_win (compositor, event->window);
 }
 
 static void
@@ -2910,11 +2904,11 @@ process_damage (MetaCompositorXRender *compositor,
   if (cw == NULL)
     return;
 
-  repair_win (cw);
+  repair_win (compositor, cw);
 
 #ifdef USE_IDLE_REPAINT
   if (event->more == FALSE)
-    add_repair (compositor->display);
+    add_repair (compositor);
 #endif
 }
 
@@ -2933,7 +2927,7 @@ process_shape (MetaCompositorXRender *compositor,
       if (!event->shaped && cw->shaped)
         cw->shaped = FALSE;
 
-      resize_win (cw, cw->attrs.x, cw->attrs.y,
+      resize_win (compositor, cw, cw->attrs.x, cw->attrs.y,
                   event->width + event->x, event->height + event->y,
                   cw->attrs.border_width, cw->attrs.override_redirect);
 
@@ -2976,7 +2970,7 @@ xrender_add_window (MetaCompositor    *compositor,
   MetaScreen *screen = meta_screen_for_x_screen (attrs->screen);
 
   meta_error_trap_push (xrc->display);
-  add_win (screen, window, xwindow);
+  add_win (xrc, screen, window, xwindow);
   meta_error_trap_pop (xrc->display);
 }
 
@@ -3019,11 +3013,11 @@ update_shadows (MetaPreference pref,
 }
 
 static void
-show_overlay_window (MetaScreen *screen,
-                     Window      cow)
+show_overlay_window (MetaCompositorXRender *xrender,
+                     MetaScreen            *screen,
+                     Window                 cow)
 {
-  MetaDisplay *display = meta_screen_get_display (screen);
-  Display *xdisplay = meta_display_get_xdisplay (display);
+  Display *xdisplay = meta_display_get_xdisplay (xrender->display);
   XserverRegion region;
 
   region = XFixesCreateRegion (xdisplay, NULL, 0);
@@ -3033,7 +3027,7 @@ show_overlay_window (MetaScreen *screen,
 
   XFixesDestroyRegion (xdisplay, region);
 
-  damage_screen (screen);
+  damage_screen (xrender, screen);
 }
 
 static void
@@ -3069,6 +3063,7 @@ xrender_manage_screen (MetaCompositor *compositor,
                        MetaScreen     *screen)
 {
   MetaCompScreen *info;
+  MetaCompositorXRender *xrc = (MetaCompositorXRender *) compositor;
   MetaDisplay *display = meta_screen_get_display (screen);
   Display *xdisplay = meta_display_get_xdisplay (display);
   XRenderPictureAttributes pa;
@@ -3143,7 +3138,7 @@ xrender_manage_screen (MetaCompositor *compositor,
   meta_screen_set_cm_selection (screen);
 
   /* Now we're up and running we can show the output if needed */
-  show_overlay_window (screen, info->output);
+  show_overlay_window (xrc, screen, info->output);
 
   meta_prefs_add_listener (update_shadows, info);
 }
@@ -3271,8 +3266,8 @@ xrender_free_window (MetaCompositor *compositor,
 
   if (cw->extents != None)
     {
-      dump_xserver_region ("destroy_win", xrc->display, cw->extents);
-      add_damage (cw->screen, cw->extents);
+      dump_xserver_region (xrc, "destroy_win", cw->extents);
+      add_damage (xrc, cw->screen, cw->extents);
       cw->extents = None;
     }
 
@@ -3344,7 +3339,7 @@ xrender_process_event (MetaCompositor *compositor,
 
   meta_error_trap_pop (xrc->display);
 #ifndef USE_IDLE_REPAINT
-  repair_display (xrc->display);
+  repair_display (xrc);
 #endif
 }
 
@@ -3531,7 +3526,7 @@ xrender_set_active_window (MetaCompositor *compositor,
 
       /* Tear down old shadows */
       old_focus->shadow_type = META_SHADOW_MEDIUM;
-      determine_mode (display, screen, old_focus);
+      determine_mode (xrc, screen, old_focus);
       old_focus->needs_shadow = window_has_shadow (old_focus);
 
       if (old_focus->attrs.map_state == IsViewable)
@@ -3568,8 +3563,8 @@ xrender_set_active_window (MetaCompositor *compositor,
               XFixesCopyRegion (xdisplay, damage, old_focus->extents);
             }
 
-          dump_xserver_region ("resize_win", display, damage);
-          add_damage (screen, damage);
+          dump_xserver_region (xrc, "resize_win", damage);
+          add_damage (xrc, screen, damage);
 
           if (info != NULL)
             {
@@ -3583,7 +3578,7 @@ xrender_set_active_window (MetaCompositor *compositor,
       XserverRegion damage;
 
       new_focus->shadow_type = META_SHADOW_LARGE;
-      determine_mode (display, screen, new_focus);
+      determine_mode (xrc, screen, new_focus);
       new_focus->needs_shadow = window_has_shadow (new_focus);
 
       if (new_focus->mask)
@@ -3618,8 +3613,8 @@ xrender_set_active_window (MetaCompositor *compositor,
           XFixesCopyRegion (xdisplay, damage, new_focus->extents);
         }
 
-      dump_xserver_region ("resize_win", display, damage);
-      add_damage (screen, damage);
+      dump_xserver_region (xrc, "resize_win", damage);
+      add_damage (xrc, screen, damage);
 
       if (info != NULL)
         {
@@ -3627,7 +3622,7 @@ xrender_set_active_window (MetaCompositor *compositor,
         }
     }
 #ifdef USE_IDLE_REPAINT
-  add_repair (display);
+  add_repair (xrc);
 #endif
 }
 
