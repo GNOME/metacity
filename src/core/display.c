@@ -5284,12 +5284,6 @@ meta_display_get_xdisplay (MetaDisplay *display)
   return display->xdisplay;
 }
 
-MetaCompositor *
-meta_display_get_compositor (MetaDisplay *display)
-{
-  return display->compositor;
-}
-
 MetaScreen *
 meta_display_get_screen (MetaDisplay *display)
 {
