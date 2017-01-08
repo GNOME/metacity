@@ -200,8 +200,6 @@ typedef struct _MetaCompWindow
 
 #define SHADOW_OPACITY 0.66
 
-#define TRANS_OPACITY 0.75
-
 /* Gaussian stuff for creating the shadows */
 static double
 gaussian (double r,
