@@ -18,8 +18,14 @@
 #ifndef META_COMPOSITOR_NONE_H
 #define META_COMPOSITOR_NONE_H
 
-#include "types.h"
+#include "meta-compositor-private.h"
 
-MetaCompositor *meta_compositor_none_new (MetaDisplay *display);
+G_BEGIN_DECLS
+
+#define META_TYPE_COMPOSITOR_NONE meta_compositor_none_get_type ()
+G_DECLARE_FINAL_TYPE (MetaCompositorNone, meta_compositor_none,
+                      META, COMPOSITOR_NONE, MetaCompositor)
+
+G_END_DECLS
 
 #endif

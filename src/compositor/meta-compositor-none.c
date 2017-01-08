@@ -18,19 +18,19 @@
 #include "config.h"
 
 #include "meta-compositor-none.h"
-#include "meta-compositor-private.h"
 
-typedef struct
+struct _MetaCompositorNone
 {
-  MetaCompositor  compositor;
+  MetaCompositor parent;
+};
 
-  MetaDisplay    *display;
-} MetaCompositorNone;
+G_DEFINE_TYPE (MetaCompositorNone, meta_compositor_none, META_TYPE_COMPOSITOR)
 
-static void
-meta_compositor_none_destroy (MetaCompositor *compositor)
+static gboolean
+meta_compositor_none_initable_init (MetaCompositor  *compositor,
+                                    GError         **error)
 {
-  g_free (compositor);
+  return TRUE;
 }
 
 static void
@@ -128,33 +128,31 @@ meta_compositor_none_unmaximize_window (MetaCompositor *compositor,
 {
 }
 
-static MetaCompositor comp_info = {
-  meta_compositor_none_destroy,
-  meta_compositor_none_manage_screen,
-  meta_compositor_none_unmanage_screen,
-  meta_compositor_none_add_window,
-  meta_compositor_none_remove_window,
-  meta_compositor_none_set_updates,
-  meta_compositor_none_process_event,
-  meta_compositor_none_get_window_surface,
-  meta_compositor_none_set_active_window,
-  meta_compositor_none_begin_move,
-  meta_compositor_none_update_move,
-  meta_compositor_none_end_move,
-  meta_compositor_none_free_window,
-  meta_compositor_none_maximize_window,
-  meta_compositor_none_unmaximize_window,
-};
-
-MetaCompositor *
-meta_compositor_none_new (MetaDisplay *display)
+static void
+meta_compositor_none_class_init (MetaCompositorNoneClass *none_class)
 {
-  MetaCompositorNone *none;
+  MetaCompositorClass *compositor_class;
 
-  none = g_new (MetaCompositorNone, 1);
+  compositor_class = META_COMPOSITOR_CLASS (none_class);
 
-  none->compositor = comp_info;
-  none->display = display;
+  compositor_class->initable_init = meta_compositor_none_initable_init;
+  compositor_class->manage_screen = meta_compositor_none_manage_screen;
+  compositor_class->unmanage_screen = meta_compositor_none_unmanage_screen;
+  compositor_class->add_window = meta_compositor_none_add_window;
+  compositor_class->remove_window = meta_compositor_none_remove_window;
+  compositor_class->set_updates = meta_compositor_none_set_updates;
+  compositor_class->process_event = meta_compositor_none_process_event;
+  compositor_class->get_window_surface = meta_compositor_none_get_window_surface;
+  compositor_class->set_active_window = meta_compositor_none_set_active_window;
+  compositor_class->begin_move = meta_compositor_none_begin_move;
+  compositor_class->update_move = meta_compositor_none_update_move;
+  compositor_class->end_move = meta_compositor_none_end_move;
+  compositor_class->free_window = meta_compositor_none_free_window;
+  compositor_class->maximize_window = meta_compositor_none_maximize_window;
+  compositor_class->unmaximize_window = meta_compositor_none_unmaximize_window;
+}
 
-  return (MetaCompositor *) none;
+static void
+meta_compositor_none_init (MetaCompositorNone *none)
+{
 }

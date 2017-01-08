@@ -19,11 +19,17 @@
 #ifndef META_COMPOSITOR_H
 #define META_COMPOSITOR_H
 
-#include <glib.h>
+#include <glib-object.h>
 #include <X11/Xlib.h>
 
 #include "types.h"
 #include "boxes.h"
+
+G_BEGIN_DECLS
+
+#define META_TYPE_COMPOSITOR meta_compositor_get_type ()
+G_DECLARE_DERIVABLE_TYPE (MetaCompositor, meta_compositor,
+                          META, COMPOSITOR, GObject)
 
 typedef enum
 {
@@ -33,8 +39,6 @@ typedef enum
 
 MetaCompositor  *meta_compositor_new                (MetaCompositorType  type,
                                                      MetaDisplay        *display);
-
-void             meta_compositor_destroy            (MetaCompositor     *compositor);
 
 void             meta_compositor_manage_screen      (MetaCompositor     *compositor,
                                                      MetaScreen         *screen);
@@ -87,5 +91,9 @@ void             meta_compositor_maximize_window    (MetaCompositor     *composi
 
 void             meta_compositor_unmaximize_window  (MetaCompositor     *compositor,
                                                      MetaWindow         *window);
+
+MetaDisplay     *meta_compositor_get_display        (MetaCompositor     *compositor);
+
+G_END_DECLS
 
 #endif

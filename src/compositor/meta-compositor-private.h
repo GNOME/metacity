@@ -21,9 +21,14 @@
 
 #include "meta-compositor.h"
 
-struct _MetaCompositor
+G_BEGIN_DECLS
+
+struct _MetaCompositorClass
 {
-  void              (* destroy)            (MetaCompositor     *compositor);
+  GObjectClass parent_class;
+
+  gboolean          (* initable_init)      (MetaCompositor     *compositor,
+                                            GError            **error);
 
   void              (* manage_screen)      (MetaCompositor     *compositor,
                                             MetaScreen         *screen);
@@ -77,5 +82,7 @@ struct _MetaCompositor
   void              (* unmaximize_window)  (MetaCompositor     *compositor,
                                             MetaWindow         *window);
 };
+
+G_END_DECLS
 
 #endif

@@ -1,22 +1,22 @@
-/* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
-
 /*
  * Copyright (C) 2007 Iain Holmes
- * Based on xcompmgr - (c) 2003 Keith Packard
- *          xfwm4    - (c) 2005-2007 Olivier Fourdan
+ * Copyright (C) 2017 Alberts Muktupāvels
  *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of the
- * License, or (at your option) any later version.
+ * Based on xcompmgr - (C) 2003 Keith Packard
+ *          xfwm4    - (C) 2005-2007 Olivier Fourdan
  *
- * This program is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * General Public License for more details.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #define _GNU_SOURCE
@@ -40,7 +40,6 @@
 #include "errors.h"
 #include "prefs.h"
 #include "window.h"
-#include "meta-compositor-private.h"
 #include "meta-compositor-xrender.h"
 #include "xprops.h"
 #include "util.h"
@@ -72,18 +71,16 @@ typedef enum _MetaShadowType
   LAST_SHADOW_TYPE
 } MetaShadowType;
 
-typedef struct _MetaCompositorXRender
+struct _MetaCompositorXRender
 {
-  MetaCompositor compositor;
-
-  MetaDisplay *display;
+  MetaCompositor parent;
 
 #ifdef USE_IDLE_REPAINT
   guint repaint_id;
 #endif
   guint show_redraw : 1;
   guint debug : 1;
-} MetaCompositorXRender;
+};
 
 typedef struct _conv
 {
@@ -200,6 +197,8 @@ typedef struct _MetaCompWindow
 
 #define SHADOW_OPACITY 0.66
 
+G_DEFINE_TYPE (MetaCompositorXRender, meta_compositor_xrender, META_TYPE_COMPOSITOR)
+
 /* Gaussian stuff for creating the shadows */
 static double
 gaussian (double r,
@@ -251,7 +250,9 @@ dump_xserver_region (MetaCompositorXRender *xrender,
                      const gchar           *location,
                      XserverRegion          region)
 {
-  Display *xdisplay = meta_display_get_xdisplay (xrender->display);
+  MetaCompositor *compositor = META_COMPOSITOR (xrender);
+  MetaDisplay *display = meta_compositor_get_display (compositor);
+  Display *xdisplay = meta_display_get_xdisplay (display);
   int nrects;
   XRectangle *rects;
   XRectangle bounds;
@@ -1813,7 +1814,9 @@ repair_screen (MetaCompositorXRender *xrender,
 static void
 repair_display (MetaCompositorXRender *xrender)
 {
-  MetaScreen *screen = meta_display_get_screen (xrender->display);
+  MetaCompositor *compositor = META_COMPOSITOR (xrender);
+  MetaDisplay *display = meta_compositor_get_display (compositor);
+  MetaScreen *screen = meta_display_get_screen (display);
 
 #ifdef USE_IDLE_REPAINT
   if (xrender->repaint_id > 0)
@@ -1830,29 +1833,29 @@ repair_display (MetaCompositorXRender *xrender)
 static gboolean
 compositor_idle_cb (gpointer data)
 {
-  MetaCompositorXRender *compositor = (MetaCompositorXRender *) data;
+  MetaCompositorXRender *xrender = META_COMPOSITOR_XRENDER (data);
 
-  compositor->repaint_id = 0;
-  repair_display (compositor);
+  xrender->repaint_id = 0;
+  repair_display (xrender);
 
   return FALSE;
 }
 
 static void
-add_repair (MetaCompositorXRender *compositor)
+add_repair (MetaCompositorXRender *xrender)
 {
-  if (compositor->repaint_id > 0)
+  if (xrender->repaint_id > 0)
     return;
 
 #if 1
-  compositor->repaint_id = g_idle_add_full (G_PRIORITY_HIGH_IDLE,
-                                            compositor_idle_cb, compositor,
-                                            NULL);
+  xrender->repaint_id = g_idle_add_full (G_PRIORITY_HIGH_IDLE,
+                                         compositor_idle_cb, xrender,
+                                         NULL);
 #else
   /* Limit it to 50fps */
-  compositor->repaint_id = g_timeout_add_full (G_PRIORITY_HIGH, 20,
-                                               compositor_idle_cb, compositor,
-                                               NULL);
+  xrender->repaint_id = g_timeout_add_full (G_PRIORITY_HIGH, 20,
+                                            compositor_idle_cb, xrender,
+                                            NULL);
 #endif
 }
 #endif
@@ -1862,7 +1865,9 @@ add_damage (MetaCompositorXRender *xrender,
             MetaScreen            *screen,
             XserverRegion          damage)
 {
-  Display *xdisplay = meta_display_get_xdisplay (xrender->display);
+  MetaCompositor *compositor = META_COMPOSITOR (xrender);
+  MetaDisplay *display = meta_compositor_get_display (compositor);
+  Display *xdisplay = meta_display_get_xdisplay (display);
   MetaCompScreen *info = meta_screen_get_compositor_data (screen);
 
   /* dump_xserver_region (xrender, "add_damage", damage); */
@@ -1884,7 +1889,9 @@ static void
 damage_screen (MetaCompositorXRender *xrender,
                MetaScreen            *screen)
 {
-  Display *xdisplay = meta_display_get_xdisplay (xrender->display);
+  MetaCompositor *compositor = META_COMPOSITOR (xrender);
+  MetaDisplay *display = meta_compositor_get_display (compositor);
+  Display *xdisplay = meta_display_get_xdisplay (display);
   XserverRegion region;
   int width, height;
   XRectangle r;
@@ -1905,10 +1912,12 @@ repair_win (MetaCompositorXRender *xrender,
             MetaCompWindow        *cw)
 {
   MetaScreen *screen = cw->screen;
-  Display *xdisplay = meta_display_get_xdisplay (xrender->display);
+  MetaCompositor *compositor = META_COMPOSITOR (xrender);
+  MetaDisplay *display = meta_compositor_get_display (compositor);
+  Display *xdisplay = meta_display_get_xdisplay (display);
   XserverRegion parts;
 
-  meta_error_trap_push (xrender->display);
+  meta_error_trap_push (NULL);
 
   if (!cw->damaged)
     {
@@ -1924,7 +1933,7 @@ repair_win (MetaCompositorXRender *xrender,
                              cw->attrs.y + cw->attrs.border_width);
     }
 
-  meta_error_trap_pop (xrender->display);
+  meta_error_trap_pop (NULL);
 
   dump_xserver_region (xrender, "repair_win", parts);
   add_damage (xrender, screen, parts);
@@ -2135,7 +2144,9 @@ determine_mode (MetaCompositorXRender *xrender,
                 MetaCompWindow        *cw)
 {
   XRenderPictFormat *format;
-  Display *xdisplay = meta_display_get_xdisplay (xrender->display);
+  MetaCompositor *compositor = META_COMPOSITOR (xrender);
+  MetaDisplay *display = meta_compositor_get_display (compositor);
+  Display *xdisplay = meta_display_get_xdisplay (display);
 
   if (cw->alpha_pict)
     {
@@ -2350,11 +2361,15 @@ static void
 destroy_win (MetaCompositorXRender *xrender,
              Window                 xwindow)
 {
+  MetaCompositor *compositor;
+  MetaDisplay *display;
   MetaScreen *screen;
   MetaCompScreen *info;
   MetaCompWindow *cw;
 
-  cw = find_window_in_display (xrender->display, xwindow);
+  compositor = META_COMPOSITOR (xrender);
+  display = meta_compositor_get_display (compositor);
+  cw = find_window_in_display (display, xwindow);
 
   if (cw == NULL)
     return;
@@ -2602,11 +2617,12 @@ resize_win (MetaCompositorXRender *xrender,
 
 /* event processors must all be called with an error trap in place */
 static void
-process_circulate_notify (MetaCompositorXRender  *compositor,
-                          XCirculateEvent        *event)
+process_circulate_notify (MetaCompositorXRender *xrender,
+                          XCirculateEvent       *event)
 {
-  MetaCompWindow *cw = find_window_in_display (compositor->display,
-                                               event->window);
+  MetaCompositor *compositor = META_COMPOSITOR (xrender);
+  MetaDisplay *display = meta_compositor_get_display (compositor);
+  MetaCompWindow *cw = find_window_in_display (display, event->window);
   MetaCompWindow *top;
   MetaCompScreen *info;
   MetaScreen *screen;
@@ -2633,31 +2649,32 @@ process_circulate_notify (MetaCompositorXRender  *compositor,
     }
 
 #ifdef USE_IDLE_REPAINT
-  add_repair (compositor);
+  add_repair (xrender);
 #endif
 }
 
 static void
-process_configure_notify (MetaCompositorXRender  *compositor,
-                          XConfigureEvent        *event)
+process_configure_notify (MetaCompositorXRender *xrender,
+                          XConfigureEvent       *event)
 {
-  MetaDisplay *display = compositor->display;
+  MetaCompositor *compositor = META_COMPOSITOR (xrender);
+  MetaDisplay *display = meta_compositor_get_display (compositor);
   Display *xdisplay = meta_display_get_xdisplay (display);
   MetaCompWindow *cw = find_window_in_display (display, event->window);
 
   if (cw)
     {
-      if (compositor->debug)
+      if (xrender->debug)
         {
           fprintf (stderr, "configure notify %d %d %d\n", cw->damaged,
                    cw->shaped, cw->needs_shadow);
-          dump_xserver_region (compositor, "\textents", cw->extents);
+          dump_xserver_region (xrender, "\textents", cw->extents);
           fprintf (stderr, "\txy (%d %d), wh (%d %d)\n",
                    event->x, event->y, event->width, event->height);
         }
 
       restack_win (cw, event->above);
-      resize_win (compositor, cw, event->x, event->y, event->width, event->height,
+      resize_win (xrender, cw, event->x, event->y, event->width, event->height,
                   event->border_width, event->override_redirect);
     }
   else
@@ -2677,15 +2694,16 @@ process_configure_notify (MetaCompositorXRender  *compositor,
           info->root_buffer = None;
         }
 
-      damage_screen (compositor, screen);
+      damage_screen (xrender, screen);
     }
 }
 
 static void
-process_property_notify (MetaCompositorXRender *compositor,
+process_property_notify (MetaCompositorXRender *xrender,
                          XPropertyEvent        *event)
 {
-  MetaDisplay *display = compositor->display;
+  MetaCompositor *compositor = META_COMPOSITOR (xrender);
+  MetaDisplay *display = meta_compositor_get_display (compositor);
   Display *xdisplay = meta_display_get_xdisplay (display);
   MetaScreen *screen;
   int p;
@@ -2713,9 +2731,9 @@ process_property_notify (MetaCompositorXRender *compositor,
 
                   /* Damage the whole screen as we may need to redraw the
                      background ourselves */
-                  damage_screen (compositor, screen);
+                  damage_screen (xrender, screen);
 #ifdef USE_IDLE_REPAINT
-                  add_repair (compositor);
+                  add_repair (xrender);
 #endif
 
                   return;
@@ -2747,7 +2765,7 @@ process_property_notify (MetaCompositorXRender *compositor,
         value = OPAQUE;
 
       cw->opacity = (guint)value;
-      determine_mode (compositor, cw->screen, cw);
+      determine_mode (xrender, cw->screen, cw);
       cw->needs_shadow = window_has_shadow (cw);
 
       if (cw->shadow)
@@ -2762,7 +2780,7 @@ process_property_notify (MetaCompositorXRender *compositor,
 
       cw->damaged = TRUE;
 #ifdef USE_IDLE_REPAINT
-      add_repair (compositor);
+      add_repair (xrender);
 #endif
 
       return;
@@ -2786,7 +2804,9 @@ expose_area (MetaCompositorXRender *xrender,
              XRectangle            *rects,
              int                    nrects)
 {
-  Display *xdisplay = meta_display_get_xdisplay (xrender->display);
+  MetaCompositor *compositor = META_COMPOSITOR (xrender);
+  MetaDisplay *display = meta_compositor_get_display (compositor);
+  Display *xdisplay = meta_display_get_xdisplay (display);
   XserverRegion region;
 
   region = XFixesCreateRegion (xdisplay, rects, nrects);
@@ -2796,11 +2816,12 @@ expose_area (MetaCompositorXRender *xrender,
 }
 
 static void
-process_expose (MetaCompositorXRender *compositor,
+process_expose (MetaCompositorXRender *xrender,
                 XExposeEvent          *event)
 {
-  MetaCompWindow *cw = find_window_in_display (compositor->display,
-                                               event->window);
+  MetaCompositor *compositor = META_COMPOSITOR (xrender);
+  MetaDisplay *display = meta_compositor_get_display (compositor);
+  MetaCompWindow *cw = find_window_in_display (display, event->window);
   MetaScreen *screen = NULL;
   XRectangle rect[1];
   int origin_x = 0, origin_y = 0;
@@ -2813,8 +2834,7 @@ process_expose (MetaCompositorXRender *compositor,
     }
   else
     {
-      screen = meta_display_screen_for_root (compositor->display,
-                                             event->window);
+      screen = meta_display_screen_for_root (display, event->window);
       if (screen == NULL)
         return;
     }
@@ -2824,13 +2844,15 @@ process_expose (MetaCompositorXRender *compositor,
   rect[0].width = event->width;
   rect[0].height = event->height;
 
-  expose_area (compositor, screen, rect, 1);
+  expose_area (xrender, screen, rect, 1);
 }
 
 static void
-process_unmap (MetaCompositorXRender *compositor,
+process_unmap (MetaCompositorXRender *xrender,
                XUnmapEvent           *event)
 {
+  MetaCompositor *compositor = META_COMPOSITOR (xrender);
+  MetaDisplay *display = meta_compositor_get_display (compositor);
   MetaCompWindow *cw;
 
   if (event->from_configure)
@@ -2839,83 +2861,93 @@ process_unmap (MetaCompositorXRender *compositor,
       return;
     }
 
-  cw = find_window_in_display (compositor->display, event->window);
+  cw = find_window_in_display (display, event->window);
   if (cw)
-    unmap_win (compositor, cw->screen, event->window);
+    unmap_win (xrender, cw->screen, event->window);
 }
 
 static void
-process_map (MetaCompositorXRender *compositor,
+process_map (MetaCompositorXRender *xrender,
              XMapEvent             *event)
 {
-  MetaCompWindow *cw = find_window_in_display (compositor->display,
-                                               event->window);
+  MetaCompositor *compositor = META_COMPOSITOR (xrender);
+  MetaDisplay *display = meta_compositor_get_display (compositor);
+  MetaCompWindow *cw = find_window_in_display (display, event->window);
 
   if (cw)
-    map_win (compositor->display, cw->screen, event->window);
+    map_win (display, cw->screen, event->window);
 }
 
 static void
-process_reparent (MetaCompositorXRender *compositor,
+process_reparent (MetaCompositorXRender *xrender,
                   XReparentEvent        *event,
                   MetaWindow            *window)
 {
+  MetaCompositor *compositor = META_COMPOSITOR (xrender);
+  MetaDisplay *display = meta_compositor_get_display (compositor);
   MetaScreen *screen;
 
-  screen = meta_display_screen_for_root (compositor->display, event->parent);
+  screen = meta_display_screen_for_root (display, event->parent);
   if (screen != NULL)
-    add_win (compositor, screen, window, event->window);
+    add_win (xrender, screen, window, event->window);
   else
-    destroy_win (compositor, event->window);
+    destroy_win (xrender, event->window);
 }
 
 static void
-process_create (MetaCompositorXRender *compositor,
+process_create (MetaCompositorXRender *xrender,
                 XCreateWindowEvent    *event,
                 MetaWindow            *window)
 {
+  MetaCompositor *compositor = META_COMPOSITOR (xrender);
+  MetaDisplay *display = meta_compositor_get_display (compositor);
   MetaScreen *screen;
-  /* We are only interested in top level windows, others will
-     be caught by normal metacity functions */
 
-  screen = meta_display_screen_for_root (compositor->display, event->parent);
+  /* We are only interested in top level windows, others will be caught
+   * by normal metacity functions.
+   */
+
+  screen = meta_display_screen_for_root (display, event->parent);
   if (screen == NULL)
     return;
 
-  if (!find_window_in_display (compositor->display, event->window))
-    add_win (compositor, screen, window, event->window);
+  if (!find_window_in_display (display, event->window))
+    add_win (xrender, screen, window, event->window);
 }
 
 static void
-process_destroy (MetaCompositorXRender *compositor,
+process_destroy (MetaCompositorXRender *xrender,
                  XDestroyWindowEvent   *event)
 {
-  destroy_win (compositor, event->window);
+  destroy_win (xrender, event->window);
 }
 
 static void
-process_damage (MetaCompositorXRender *compositor,
+process_damage (MetaCompositorXRender *xrender,
                 XDamageNotifyEvent    *event)
 {
-  MetaCompWindow *cw = find_window_in_display (compositor->display,
-                                               event->drawable);
+  MetaCompositor *compositor = META_COMPOSITOR (xrender);
+  MetaDisplay *display = meta_compositor_get_display (compositor);
+  MetaCompWindow *cw = find_window_in_display (display, event->drawable);
+
   if (cw == NULL)
     return;
 
-  repair_win (compositor, cw);
+  repair_win (xrender, cw);
 
 #ifdef USE_IDLE_REPAINT
   if (event->more == FALSE)
-    add_repair (compositor);
+    add_repair (xrender);
 #endif
 }
 
 static void
-process_shape (MetaCompositorXRender *compositor,
+process_shape (MetaCompositorXRender *xrender,
                XShapeEvent           *event)
 {
-  MetaCompWindow *cw = find_window_in_display (compositor->display,
-                                               event->window);
+  MetaCompositor *compositor = META_COMPOSITOR (xrender);
+  MetaDisplay *display = meta_compositor_get_display (compositor);
+  MetaCompWindow *cw = find_window_in_display (display, event->window);
 
   if (cw == NULL)
     return;
@@ -2925,7 +2957,7 @@ process_shape (MetaCompositorXRender *compositor,
       if (!event->shaped && cw->shaped)
         cw->shaped = FALSE;
 
-      resize_win (compositor, cw, cw->attrs.x, cw->attrs.y,
+      resize_win (xrender, cw, cw->attrs.x, cw->attrs.y,
                   event->width + event->x, event->height + event->y,
                   cw->attrs.border_width, cw->attrs.override_redirect);
 
@@ -2995,7 +3027,8 @@ show_overlay_window (MetaCompositorXRender *xrender,
                      MetaScreen            *screen,
                      Window                 cow)
 {
-  Display *xdisplay = meta_display_get_xdisplay (xrender->display);
+  MetaDisplay *display = meta_screen_get_display (screen);
+  Display *xdisplay = meta_display_get_xdisplay (display);
   XserverRegion region;
 
   region = XFixesCreateRegion (xdisplay, NULL, 0);
@@ -3036,10 +3069,17 @@ get_output_window (MetaScreen *screen)
   return output;
 }
 
-static void
-meta_compositor_xrender_destroy (MetaCompositor *compositor)
+static gboolean
+meta_compositor_xrender_initable_init (MetaCompositor  *compositor,
+                                       GError         **error)
 {
-  g_free (compositor);
+#ifdef USE_IDLE_REPAINT
+  meta_verbose ("Using idle repaint\n");
+#endif
+
+  g_timeout_add (2000, (GSourceFunc) timeout_debug, compositor);
+
+  return TRUE;
 }
 
 static void
@@ -3047,7 +3087,7 @@ meta_compositor_xrender_manage_screen (MetaCompositor *compositor,
                                        MetaScreen     *screen)
 {
   MetaCompScreen *info;
-  MetaCompositorXRender *xrc = (MetaCompositorXRender *) compositor;
+  MetaCompositorXRender *xrender = META_COMPOSITOR_XRENDER (compositor);
   MetaDisplay *display = meta_screen_get_display (screen);
   Display *xdisplay = meta_display_get_xdisplay (display);
   XRenderPictureAttributes pa;
@@ -3122,7 +3162,7 @@ meta_compositor_xrender_manage_screen (MetaCompositor *compositor,
   meta_screen_set_cm_selection (screen);
 
   /* Now we're up and running we can show the output if needed */
-  show_overlay_window (xrc, screen, info->output);
+  show_overlay_window (xrender, screen, info->output);
 
   meta_prefs_add_listener (update_shadows, info);
 }
@@ -3187,12 +3227,12 @@ meta_compositor_xrender_add_window (MetaCompositor    *compositor,
                                     Window             xwindow,
                                     XWindowAttributes *attrs)
 {
-  MetaCompositorXRender *xrender = (MetaCompositorXRender *) compositor;
+  MetaCompositorXRender *xrender = META_COMPOSITOR_XRENDER (compositor);
   MetaScreen *screen = meta_screen_for_x_screen (attrs->screen);
 
-  meta_error_trap_push (xrender->display);
+  meta_error_trap_push (NULL);
   add_win (xrender, screen, window, xwindow);
-  meta_error_trap_pop (xrender->display);
+  meta_error_trap_pop (NULL);
 }
 
 static void
@@ -3213,67 +3253,74 @@ meta_compositor_xrender_process_event (MetaCompositor *compositor,
                                        XEvent         *event,
                                        MetaWindow     *window)
 {
-  MetaCompositorXRender *xrc = (MetaCompositorXRender *) compositor;
+  MetaCompositorXRender *xrender;
+  MetaDisplay *display;
+
+  xrender = META_COMPOSITOR_XRENDER (compositor);
+  display = meta_compositor_get_display (compositor);
+
   /*
    * This trap is so that none of the compositor functions cause
    * X errors. This is really a hack, but I'm afraid I don't understand
    * enough about Metacity/X to know how else you are supposed to do it
    */
-  meta_error_trap_push (xrc->display);
+  meta_error_trap_push (NULL);
+
   switch (event->type)
     {
     case CirculateNotify:
-      process_circulate_notify (xrc, (XCirculateEvent *) event);
+      process_circulate_notify (xrender, (XCirculateEvent *) event);
       break;
 
     case ConfigureNotify:
-      process_configure_notify (xrc, (XConfigureEvent *) event);
+      process_configure_notify (xrender, (XConfigureEvent *) event);
       break;
 
     case PropertyNotify:
-      process_property_notify (xrc, (XPropertyEvent *) event);
+      process_property_notify (xrender, (XPropertyEvent *) event);
       break;
 
     case Expose:
-      process_expose (xrc, (XExposeEvent *) event);
+      process_expose (xrender, (XExposeEvent *) event);
       break;
 
     case UnmapNotify:
-      process_unmap (xrc, (XUnmapEvent *) event);
+      process_unmap (xrender, (XUnmapEvent *) event);
       break;
 
     case MapNotify:
-      process_map (xrc, (XMapEvent *) event);
+      process_map (xrender, (XMapEvent *) event);
       break;
 
     case ReparentNotify:
-      process_reparent (xrc, (XReparentEvent *) event, window);
+      process_reparent (xrender, (XReparentEvent *) event, window);
       break;
 
     case CreateNotify:
-      process_create (xrc, (XCreateWindowEvent *) event, window);
+      process_create (xrender, (XCreateWindowEvent *) event, window);
       break;
 
     case DestroyNotify:
-      process_destroy (xrc, (XDestroyWindowEvent *) event);
+      process_destroy (xrender, (XDestroyWindowEvent *) event);
       break;
 
     default:
-      if (event->type == meta_display_get_damage_event_base (xrc->display) + XDamageNotify)
-        process_damage (xrc, (XDamageNotifyEvent *) event);
-      else if (event->type == meta_display_get_shape_event_base (xrc->display) + ShapeNotify)
-        process_shape (xrc, (XShapeEvent *) event);
+      if (event->type == meta_display_get_damage_event_base (display) + XDamageNotify)
+        process_damage (xrender, (XDamageNotifyEvent *) event);
+      else if (event->type == meta_display_get_shape_event_base (display) + ShapeNotify)
+        process_shape (xrender, (XShapeEvent *) event);
       else
         {
-          meta_error_trap_pop (xrc->display);
+          meta_error_trap_pop (NULL);
           return;
         }
       break;
     }
 
-  meta_error_trap_pop (xrc->display);
+  meta_error_trap_pop (NULL);
+
 #ifndef USE_IDLE_REPAINT
-  repair_display (xrc);
+  repair_display (xrender);
 #endif
 }
 
@@ -3285,7 +3332,7 @@ meta_compositor_xrender_get_window_surface (MetaCompositor *compositor,
   Window xwindow;
   MetaScreen *screen;
   MetaCompWindow *cw;
-  MetaCompositorXRender *xrc;
+  MetaDisplay *display;
   Display *xdisplay;
   gboolean shaded;
   Pixmap back_pixmap;
@@ -3311,8 +3358,8 @@ meta_compositor_xrender_get_window_surface (MetaCompositor *compositor,
   if (cw == NULL)
     return NULL;
 
-  xrc = (MetaCompositorXRender *) compositor;
-  xdisplay = meta_display_get_xdisplay (xrc->display);
+  display = meta_compositor_get_display (compositor);
+  xdisplay = meta_display_get_xdisplay (display);
   shaded = meta_window_is_shaded (window);
 
   back_pixmap = shaded ? cw->shaded.back_pixmap : cw->back_pixmap;
@@ -3413,17 +3460,15 @@ meta_compositor_xrender_set_active_window (MetaCompositor *compositor,
                                            MetaScreen     *screen,
                                            MetaWindow     *window)
 {
-  MetaCompositorXRender *xrc = (MetaCompositorXRender *) compositor;
+  MetaCompositorXRender *xrender;
   MetaDisplay *display;
   Display *xdisplay;
   MetaCompWindow *old_focus = NULL, *new_focus = NULL;
   MetaCompScreen *info = NULL;
   MetaWindow *old_focus_win = NULL;
 
-  if (compositor == NULL)
-    return;
-
-  display = xrc->display;
+  xrender = META_COMPOSITOR_XRENDER (compositor);
+  display = meta_compositor_get_display (compositor);
   xdisplay = meta_display_get_xdisplay (display);
   info = meta_screen_get_compositor_data (screen);
 
@@ -3460,7 +3505,7 @@ meta_compositor_xrender_set_active_window (MetaCompositor *compositor,
 
       /* Tear down old shadows */
       old_focus->shadow_type = META_SHADOW_MEDIUM;
-      determine_mode (xrc, screen, old_focus);
+      determine_mode (xrender, screen, old_focus);
       old_focus->needs_shadow = window_has_shadow (old_focus);
 
       if (old_focus->attrs.map_state == IsViewable)
@@ -3497,8 +3542,8 @@ meta_compositor_xrender_set_active_window (MetaCompositor *compositor,
               XFixesCopyRegion (xdisplay, damage, old_focus->extents);
             }
 
-          dump_xserver_region (xrc, "resize_win", damage);
-          add_damage (xrc, screen, damage);
+          dump_xserver_region (xrender, "resize_win", damage);
+          add_damage (xrender, screen, damage);
 
           if (info != NULL)
             {
@@ -3512,7 +3557,7 @@ meta_compositor_xrender_set_active_window (MetaCompositor *compositor,
       XserverRegion damage;
 
       new_focus->shadow_type = META_SHADOW_LARGE;
-      determine_mode (xrc, screen, new_focus);
+      determine_mode (xrender, screen, new_focus);
       new_focus->needs_shadow = window_has_shadow (new_focus);
 
       if (new_focus->mask)
@@ -3547,16 +3592,17 @@ meta_compositor_xrender_set_active_window (MetaCompositor *compositor,
           XFixesCopyRegion (xdisplay, damage, new_focus->extents);
         }
 
-      dump_xserver_region (xrc, "resize_win", damage);
-      add_damage (xrc, screen, damage);
+      dump_xserver_region (xrender, "resize_win", damage);
+      add_damage (xrender, screen, damage);
 
       if (info != NULL)
         {
           info->clip_changed = TRUE;
         }
     }
+
 #ifdef USE_IDLE_REPAINT
-  add_repair (xrc);
+  add_repair (xrender);
 #endif
 }
 
@@ -3587,12 +3633,14 @@ static void
 meta_compositor_xrender_free_window (MetaCompositor *compositor,
                                      MetaWindow     *window)
 {
-  MetaCompositorXRender *xrc;
+  MetaCompositorXRender *xrender;
+  MetaDisplay *display;
   MetaFrame *frame;
   Window xwindow;
   MetaCompWindow *cw;
 
-  xrc = (MetaCompositorXRender *) compositor;
+  xrender = META_COMPOSITOR_XRENDER (compositor);
+  display = meta_compositor_get_display (compositor);
   frame = meta_window_get_frame (window);
 
   if (frame)
@@ -3600,7 +3648,7 @@ meta_compositor_xrender_free_window (MetaCompositor *compositor,
   else
     xwindow = meta_window_get_xwindow (window);
 
-  cw = find_window_in_display (xrc->display, xwindow);
+  cw = find_window_in_display (display, xwindow);
   if (cw == NULL)
     return;
 
@@ -3610,8 +3658,8 @@ meta_compositor_xrender_free_window (MetaCompositor *compositor,
 
   if (cw->extents != None)
     {
-      dump_xserver_region (xrc, "destroy_win", cw->extents);
-      add_damage (xrc, cw->screen, cw->extents);
+      dump_xserver_region (xrender, "destroy_win", cw->extents);
+      add_damage (xrender, cw->screen, cw->extents);
       cw->extents = None;
     }
 
@@ -3646,45 +3694,31 @@ meta_compositor_xrender_unmaximize_window (MetaCompositor *compositor,
   cw->needs_shadow = window_has_shadow (cw);
 }
 
-static MetaCompositor comp_info = {
-  meta_compositor_xrender_destroy,
-  meta_compositor_xrender_manage_screen,
-  meta_compositor_xrender_unmanage_screen,
-  meta_compositor_xrender_add_window,
-  meta_compositor_xrender_remove_window,
-  meta_compositor_xrender_set_updates,
-  meta_compositor_xrender_process_event,
-  meta_compositor_xrender_get_window_surface,
-  meta_compositor_xrender_set_active_window,
-  meta_compositor_xrender_begin_move,
-  meta_compositor_xrender_update_move,
-  meta_compositor_xrender_end_move,
-  meta_compositor_xrender_free_window,
-  meta_compositor_xrender_maximize_window,
-  meta_compositor_xrender_unmaximize_window,
-};
-
-MetaCompositor *
-meta_compositor_xrender_new (MetaDisplay *display)
+static void
+meta_compositor_xrender_class_init (MetaCompositorXRenderClass *xrender_class)
 {
-  MetaCompositorXRender *xrc;
-  MetaCompositor *compositor;
+  MetaCompositorClass *compositor_class;
 
-  xrc = g_new (MetaCompositorXRender, 1);
-  xrc->compositor = comp_info;
+  compositor_class = META_COMPOSITOR_CLASS (xrender_class);
 
-  compositor = (MetaCompositor *) xrc;
+  compositor_class->initable_init = meta_compositor_xrender_initable_init;
+  compositor_class->manage_screen = meta_compositor_xrender_manage_screen;
+  compositor_class->unmanage_screen = meta_compositor_xrender_unmanage_screen;
+  compositor_class->add_window = meta_compositor_xrender_add_window;
+  compositor_class->remove_window = meta_compositor_xrender_remove_window;
+  compositor_class->set_updates = meta_compositor_xrender_set_updates;
+  compositor_class->process_event = meta_compositor_xrender_process_event;
+  compositor_class->get_window_surface = meta_compositor_xrender_get_window_surface;
+  compositor_class->set_active_window = meta_compositor_xrender_set_active_window;
+  compositor_class->begin_move = meta_compositor_xrender_begin_move;
+  compositor_class->update_move = meta_compositor_xrender_update_move;
+  compositor_class->end_move = meta_compositor_xrender_end_move;
+  compositor_class->free_window = meta_compositor_xrender_free_window;
+  compositor_class->maximize_window = meta_compositor_xrender_maximize_window;
+  compositor_class->unmaximize_window = meta_compositor_xrender_unmaximize_window;
+}
 
-  xrc->display = display;
-  xrc->show_redraw = FALSE;
-  xrc->debug = FALSE;
-
-#ifdef USE_IDLE_REPAINT
-  meta_verbose ("Using idle repaint\n");
-  xrc->repaint_id = 0;
-#endif
-
-  g_timeout_add (2000, (GSourceFunc) timeout_debug, xrc);
-
-  return compositor;
+static void
+meta_compositor_xrender_init (MetaCompositorXRender *xrender)
+{
 }

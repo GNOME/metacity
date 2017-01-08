@@ -253,7 +253,7 @@ update_compositor (MetaDisplay *display,
   if (display->compositor != NULL)
     {
       meta_compositor_unmanage_screen (display->compositor, display->screen);
-      meta_compositor_destroy (display->compositor);
+      g_object_unref (display->compositor);
     }
 
   if (meta_prefs_get_compositing_manager ())
@@ -844,7 +844,7 @@ meta_display_close (MetaDisplay *display,
 
   meta_display_shutdown_keys (display);
 
-  meta_compositor_destroy (display->compositor);
+  g_clear_object (&display->compositor);
 
   g_free (display);
   the_display = NULL;
