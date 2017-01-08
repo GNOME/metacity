@@ -34,50 +34,58 @@ typedef enum
 MetaCompositor  *meta_compositor_new                (MetaCompositorType  type,
                                                      MetaDisplay        *display);
 
-void meta_compositor_destroy (MetaCompositor *compositor);
+void             meta_compositor_destroy            (MetaCompositor     *compositor);
 
-void meta_compositor_manage_screen (MetaCompositor *compositor,
-                                    MetaScreen     *screen);
-void meta_compositor_unmanage_screen (MetaCompositor *compositor,
-                                      MetaScreen     *screen);
+void             meta_compositor_manage_screen      (MetaCompositor     *compositor,
+                                                     MetaScreen         *screen);
 
-void meta_compositor_add_window (MetaCompositor    *compositor,
-                                 MetaWindow        *window,
-                                 Window             xwindow,
-                                 XWindowAttributes *attrs);
-void meta_compositor_remove_window (MetaCompositor *compositor,
-                                    Window          xwindow);
+void             meta_compositor_unmanage_screen    (MetaCompositor     *compositor,
+                                                     MetaScreen         *screen);
 
-void meta_compositor_set_updates (MetaCompositor *compositor,
-                                  MetaWindow     *window,
-                                  gboolean        updates);
+void             meta_compositor_add_window         (MetaCompositor     *compositor,
+                                                     MetaWindow         *window,
+                                                     Window              xwindow,
+                                                     XWindowAttributes  *attrs);
 
-void meta_compositor_process_event (MetaCompositor *compositor,
-                                    XEvent         *event,
-                                    MetaWindow     *window);
+void             meta_compositor_remove_window      (MetaCompositor     *compositor,
+                                                     Window              xwindow);
 
-cairo_surface_t *meta_compositor_get_window_surface (MetaCompositor *compositor,
-                                                     MetaWindow     *window);
+void             meta_compositor_set_updates        (MetaCompositor     *compositor,
+                                                     MetaWindow         *window,
+                                                     gboolean            updates);
 
-void meta_compositor_set_active_window (MetaCompositor *compositor,
-                                        MetaScreen     *screen,
-                                        MetaWindow     *window);
+void             meta_compositor_process_event      (MetaCompositor     *compositor,
+                                                     XEvent             *event,
+                                                     MetaWindow         *window);
 
-void meta_compositor_begin_move (MetaCompositor *compositor,
-                                 MetaWindow *window,
-                                 MetaRectangle *initial,
-                                 int grab_x, int grab_y);
-void meta_compositor_update_move (MetaCompositor *compositor,
-                                  MetaWindow *window,
-                                  int x, int y);
-void meta_compositor_end_move (MetaCompositor *compositor,
-                               MetaWindow *window);
-void meta_compositor_free_window (MetaCompositor *compositor,
-                                  MetaWindow *window);
+cairo_surface_t *meta_compositor_get_window_surface (MetaCompositor     *compositor,
+                                                     MetaWindow         *window);
 
-void meta_compositor_maximize_window   (MetaCompositor *compositor,
-                                        MetaWindow     *window);
-void meta_compositor_unmaximize_window (MetaCompositor *compositor,
-                                        MetaWindow     *window);
+void             meta_compositor_set_active_window  (MetaCompositor     *compositor,
+                                                     MetaScreen         *screen,
+                                                     MetaWindow         *window);
+
+void             meta_compositor_begin_move         (MetaCompositor     *compositor,
+                                                     MetaWindow         *window,
+                                                     MetaRectangle      *initial,
+                                                     gint                grab_x,
+                                                     gint                grab_y);
+
+void             meta_compositor_update_move        (MetaCompositor     *compositor,
+                                                     MetaWindow         *window,
+                                                     gint                x,
+                                                     gint                y);
+
+void             meta_compositor_end_move           (MetaCompositor     *compositor,
+                                                     MetaWindow         *window);
+
+void             meta_compositor_free_window        (MetaCompositor     *compositor,
+                                                     MetaWindow         *window);
+
+void             meta_compositor_maximize_window    (MetaCompositor     *compositor,
+                                                     MetaWindow         *window);
+
+void             meta_compositor_unmaximize_window  (MetaCompositor     *compositor,
+                                                     MetaWindow         *window);
 
 #endif
