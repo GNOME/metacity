@@ -3037,6 +3037,12 @@ get_output_window (MetaScreen *screen)
 }
 
 static void
+meta_compositor_xrender_destroy (MetaCompositor *compositor)
+{
+  g_free (compositor);
+}
+
+static void
 meta_compositor_xrender_manage_screen (MetaCompositor *compositor,
                                        MetaScreen     *screen)
 {
@@ -3200,76 +3206,6 @@ meta_compositor_xrender_set_updates (MetaCompositor *compositor,
                                      MetaWindow     *window,
                                      gboolean        updates)
 {
-}
-
-static void
-meta_compositor_xrender_destroy (MetaCompositor *compositor)
-{
-  g_free (compositor);
-}
-
-#if 0
-/* Taking these out because they're empty and never called, and the
- * compiler complains -- tthurman
- */
-
-static void
-xrender_begin_move (MetaCompositor *compositor,
-                    MetaWindow     *window,
-                    MetaRectangle  *initial,
-                    int             grab_x,
-                    int             grab_y)
-{
-}
-
-static void
-xrender_update_move (MetaCompositor *compositor,
-                     MetaWindow     *window,
-                     int             x,
-                     int             y)
-{
-}
-
-static void
-xrender_end_move (MetaCompositor *compositor,
-                  MetaWindow     *window)
-{
-}
-#endif /* 0 */
-
-static void
-meta_compositor_xrender_free_window (MetaCompositor *compositor,
-                                     MetaWindow     *window)
-{
-  MetaCompositorXRender *xrc;
-  MetaFrame *frame;
-  Window xwindow;
-  MetaCompWindow *cw;
-
-  xrc = (MetaCompositorXRender *) compositor;
-  frame = meta_window_get_frame (window);
-
-  if (frame)
-    xwindow = meta_frame_get_xwindow (frame);
-  else
-    xwindow = meta_window_get_xwindow (window);
-
-  cw = find_window_in_display (xrc->display, xwindow);
-  if (cw == NULL)
-    return;
-
-  cw->window = NULL;
-  cw->attrs.map_state = IsUnmapped;
-  cw->damaged = FALSE;
-
-  if (cw->extents != None)
-    {
-      dump_xserver_region (xrc, "destroy_win", cw->extents);
-      add_damage (xrc, cw->screen, cw->extents);
-      cw->extents = None;
-    }
-
-  free_win (cw, FALSE);
 }
 
 static void
@@ -3625,6 +3561,64 @@ meta_compositor_xrender_set_active_window (MetaCompositor *compositor,
 }
 
 static void
+meta_compositor_xrender_begin_move (MetaCompositor *compositor,
+                                    MetaWindow     *window,
+                                    MetaRectangle  *initial,
+                                    gint            grab_x,
+                                    gint            grab_y)
+{
+}
+
+static void
+meta_compositor_xrender_update_move (MetaCompositor *compositor,
+                                     MetaWindow     *window,
+                                     gint            x,
+                                     gint            y)
+{
+}
+
+static void
+meta_compositor_xrender_end_move (MetaCompositor *compositor,
+                                  MetaWindow     *window)
+{
+}
+
+static void
+meta_compositor_xrender_free_window (MetaCompositor *compositor,
+                                     MetaWindow     *window)
+{
+  MetaCompositorXRender *xrc;
+  MetaFrame *frame;
+  Window xwindow;
+  MetaCompWindow *cw;
+
+  xrc = (MetaCompositorXRender *) compositor;
+  frame = meta_window_get_frame (window);
+
+  if (frame)
+    xwindow = meta_frame_get_xwindow (frame);
+  else
+    xwindow = meta_window_get_xwindow (window);
+
+  cw = find_window_in_display (xrc->display, xwindow);
+  if (cw == NULL)
+    return;
+
+  cw->window = NULL;
+  cw->attrs.map_state = IsUnmapped;
+  cw->damaged = FALSE;
+
+  if (cw->extents != None)
+    {
+      dump_xserver_region (xrc, "destroy_win", cw->extents);
+      add_damage (xrc, cw->screen, cw->extents);
+      cw->extents = None;
+    }
+
+  free_win (cw, FALSE);
+}
+
+static void
 meta_compositor_xrender_maximize_window (MetaCompositor *compositor,
                                          MetaWindow     *window)
 {
@@ -3662,6 +3656,9 @@ static MetaCompositor comp_info = {
   meta_compositor_xrender_process_event,
   meta_compositor_xrender_get_window_surface,
   meta_compositor_xrender_set_active_window,
+  meta_compositor_xrender_begin_move,
+  meta_compositor_xrender_update_move,
+  meta_compositor_xrender_end_move,
   meta_compositor_xrender_free_window,
   meta_compositor_xrender_maximize_window,
   meta_compositor_xrender_unmaximize_window,

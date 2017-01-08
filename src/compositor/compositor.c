@@ -127,6 +127,8 @@ meta_compositor_begin_move (MetaCompositor *compositor,
                             gint            grab_x,
                             gint            grab_y)
 {
+  if (compositor && compositor->begin_move)
+    compositor->begin_move (compositor, window, initial, grab_x, grab_y);
 }
 
 void
@@ -135,12 +137,16 @@ meta_compositor_update_move (MetaCompositor *compositor,
                              gint            x,
                              gint            y)
 {
+  if (compositor && compositor->update_move)
+    compositor->update_move (compositor, window, x, y);
 }
 
 void
 meta_compositor_end_move (MetaCompositor *compositor,
                           MetaWindow     *window)
 {
+  if (compositor && compositor->end_move)
+    compositor->end_move (compositor, window);
 }
 
 void meta_compositor_free_window (MetaCompositor *compositor,

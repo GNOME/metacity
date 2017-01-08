@@ -28,6 +28,12 @@ typedef struct
 } MetaCompositorNone;
 
 static void
+meta_compositor_none_destroy (MetaCompositor *compositor)
+{
+  g_free (compositor);
+}
+
+static void
 meta_compositor_none_manage_screen (MetaCompositor *compositor,
                                     MetaScreen     *screen)
 {
@@ -61,18 +67,6 @@ meta_compositor_none_set_updates (MetaCompositor *compositor,
 }
 
 static void
-meta_compositor_none_destroy (MetaCompositor *compositor)
-{
-  g_free (compositor);
-}
-
-static void
-meta_compositor_none_free_window (MetaCompositor *compositor,
-                                  MetaWindow     *window)
-{
-}
-
-static void
 meta_compositor_none_process_event (MetaCompositor *compositor,
                                     XEvent         *event,
                                     MetaWindow     *window)
@@ -90,6 +84,35 @@ static void
 meta_compositor_none_set_active_window (MetaCompositor *compositor,
                                         MetaScreen     *screen,
                                         MetaWindow     *window)
+{
+}
+
+static void
+meta_compositor_none_begin_move (MetaCompositor *compositor,
+                                 MetaWindow     *window,
+                                 MetaRectangle  *initial,
+                                 gint            grab_x,
+                                 gint            grab_y)
+{
+}
+
+static void
+meta_compositor_none_update_move (MetaCompositor *compositor,
+                                  MetaWindow     *window,
+                                  gint            x,
+                                  gint            y)
+{
+}
+
+static void
+meta_compositor_none_end_move (MetaCompositor *compositor,
+                               MetaWindow     *window)
+{
+}
+
+static void
+meta_compositor_none_free_window (MetaCompositor *compositor,
+                                  MetaWindow     *window)
 {
 }
 
@@ -115,6 +138,9 @@ static MetaCompositor comp_info = {
   meta_compositor_none_process_event,
   meta_compositor_none_get_window_surface,
   meta_compositor_none_set_active_window,
+  meta_compositor_none_begin_move,
+  meta_compositor_none_update_move,
+  meta_compositor_none_end_move,
   meta_compositor_none_free_window,
   meta_compositor_none_maximize_window,
   meta_compositor_none_unmaximize_window,

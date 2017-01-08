@@ -54,6 +54,20 @@ struct _MetaCompositor
                                             MetaScreen         *screen,
                                             MetaWindow         *window);
 
+  void              (* begin_move)         (MetaCompositor     *compositor,
+                                            MetaWindow         *window,
+                                            MetaRectangle      *initial,
+                                            gint                grab_x,
+                                            gint                grab_y);
+
+  void              (* update_move)        (MetaCompositor     *compositor,
+                                            MetaWindow         *window,
+                                            gint                x,
+                                            gint                y);
+
+  void              (* end_move)           (MetaCompositor     *compositor,
+                                            MetaWindow         *window);
+
   void              (* free_window)        (MetaCompositor     *compositor,
                                             MetaWindow         *window);
 
