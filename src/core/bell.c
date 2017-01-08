@@ -158,17 +158,11 @@ bell_flash_fullscreen (MetaDisplay *display,
     {
       screen = meta_display_screen_for_xwindow (display, xkb_bell_ev->window);
       if (screen)
-	bell_flash_screen (display, screen);
+        bell_flash_screen (display, screen);
     }
   else
     {
-      GSList *screen_list = display->screens;
-      while (screen_list)
-	{
-	  screen = (MetaScreen *) screen_list->data;
-	  bell_flash_screen (display, screen);
-	  screen_list = screen_list->next;
-	}
+      bell_flash_screen (display, display->screen);
     }
 }
 

@@ -247,41 +247,25 @@ static void
 enable_compositor (MetaDisplay *display,
                    gboolean     composite_windows)
 {
-  GSList *list;
-
   if (!display->compositor)
       display->compositor = meta_compositor_new (display);
 
   if (!display->compositor)
     return;
 
-  for (list = display->screens; list != NULL; list = list->next)
-    {
-      MetaScreen *screen = list->data;
+  meta_compositor_manage_screen (display->compositor, display->screen);
 
-      meta_compositor_manage_screen (screen->display->compositor,
-				     screen);
-
-      if (composite_windows)
-        meta_screen_composite_all_windows (screen);
-    }
+  if (composite_windows)
+    meta_screen_composite_all_windows (display->screen);
 }
 
 static void
 disable_compositor (MetaDisplay *display)
 {
-  GSList *list;
-
   if (!display->compositor)
     return;
 
-  for (list = display->screens; list != NULL; list = list->next)
-    {
-      MetaScreen *screen = list->data;
-
-      meta_compositor_unmanage_screen (screen->display->compositor,
-				       screen);
-    }
+  meta_compositor_unmanage_screen (display->compositor, display->screen);
 
   meta_compositor_destroy (display->compositor);
   display->compositor = NULL;
@@ -301,8 +285,6 @@ gboolean
 meta_display_open (void)
 {
   Display *xdisplay;
-  GSList *screens;
-  GSList *tmp;
   int i;
   guint32 timestamp;
   MetaScreen *screen;
@@ -398,8 +380,7 @@ meta_display_open (void)
   the_display->window_with_menu = NULL;
   the_display->window_menu = NULL;
 
-  the_display->screens = NULL;
-  the_display->active_screen = NULL;
+  the_display->screen = NULL;
 
 #ifdef HAVE_STARTUP_NOTIFICATION
   the_display->sn_display = sn_display_new (the_display->xdisplay,
@@ -665,20 +646,14 @@ meta_display_open (void)
   the_display->last_user_time = timestamp;
   the_display->compositor = NULL;
 
-  screens = NULL;
-
   i = XDefaultScreen (the_display->xdisplay);
   screen = meta_screen_new (the_display, i, timestamp);
+  the_display->screen = screen;
 
-  if (screen)
-    screens = g_slist_prepend (screens, screen);
-
-  the_display->screens = screens;
-
-  if (screens == NULL)
+  if (screen == NULL)
     {
-      /* This would typically happen because all the screens already
-       * have window managers.
+      /* This would typically happen because the screen already
+       * have window manager.
        */
       meta_display_close (the_display, timestamp);
       return FALSE;
@@ -693,15 +668,7 @@ meta_display_open (void)
   meta_display_grab (the_display);
 
   /* Now manage all existing windows */
-  tmp = the_display->screens;
-  while (tmp != NULL)
-    {
-      screen = tmp->data;
-
-      meta_screen_manage_all_windows (screen);
-
-      tmp = tmp->next;
-    }
+  meta_screen_manage_all_windows (the_display->screen);
 
   {
     Window focus;
@@ -723,7 +690,7 @@ meta_display_open (void)
     if (focus == None || focus == PointerRoot)
       /* Just focus the no_focus_window on the first screen */
       meta_display_focus_the_no_focus_window (the_display,
-                                              the_display->screens->data,
+                                              the_display->screen,
                                               timestamp);
     else
       {
@@ -734,7 +701,7 @@ meta_display_open (void)
         else
           /* Just focus the no_focus_window on the first screen */
           meta_display_focus_the_no_focus_window (the_display,
-                                                  the_display->screens->data,
+                                                  the_display->screen,
                                                   timestamp);
       }
 
@@ -824,8 +791,6 @@ void
 meta_display_close (MetaDisplay *display,
                     guint32      timestamp)
 {
-  GSList *tmp;
-
   g_assert (display != NULL);
 
   if (display->closing != 0)
@@ -851,17 +816,11 @@ meta_display_close (MetaDisplay *display,
                              event_callback,
                              display);
 
-  /* Free all screens */
-  tmp = display->screens;
-  while (tmp != NULL)
+  if (display->screen != NULL)
     {
-      MetaScreen *screen = tmp->data;
-      meta_screen_free (screen, timestamp);
-      tmp = tmp->next;
+      meta_screen_free (display->screen, timestamp);
+      display->screen = NULL;
     }
-
-  g_slist_free (display->screens);
-  display->screens = NULL;
 
 #ifdef HAVE_STARTUP_NOTIFICATION
   if (display->sn_display)
@@ -901,18 +860,8 @@ MetaScreen*
 meta_display_screen_for_root (MetaDisplay *display,
                               Window       xroot)
 {
-  GSList *tmp;
-
-  tmp = display->screens;
-  while (tmp != NULL)
-    {
-      MetaScreen *screen = tmp->data;
-
-      if (xroot == screen->xroot)
-        return screen;
-
-      tmp = tmp->next;
-    }
+  if (display->screen->xroot == xroot)
+    return display->screen;
 
   return NULL;
 }
@@ -943,18 +892,8 @@ MetaScreen*
 meta_display_screen_for_x_screen (MetaDisplay *display,
                                   Screen      *xscreen)
 {
-  GSList *tmp;
-
-  tmp = display->screens;
-  while (tmp != NULL)
-    {
-      MetaScreen *screen = tmp->data;
-
-      if (xscreen == screen->xscreen)
-        return screen;
-
-      tmp = tmp->next;
-    }
+  if (display->screen->xscreen == xscreen)
+    return display->screen;
 
   return NULL;
 }
@@ -1909,7 +1848,7 @@ event_callback (XEvent   *event,
         MetaScreen *new_screen =
           meta_display_screen_for_root (display, event->xcrossing.root);
 
-        if (new_screen != NULL && display->active_screen != new_screen)
+        if (new_screen != NULL)
           meta_workspace_focus_default_window (new_screen->active_workspace,
                                                NULL,
                                                event->xcrossing.time);
@@ -3164,18 +3103,7 @@ gboolean
 meta_display_xwindow_is_a_no_focus_window (MetaDisplay *display,
                                            Window xwindow)
 {
-  gboolean is_a_no_focus_window = FALSE;
-  GSList *temp = display->screens;
-  while (temp != NULL) {
-    MetaScreen *screen = temp->data;
-    if (screen->no_focus_window == xwindow) {
-      is_a_no_focus_window = TRUE;
-      break;
-    }
-    temp = temp->next;
-  }
-
-  return is_a_no_focus_window;
+  return display->screen->no_focus_window == xwindow;
 }
 
 Cursor
@@ -4087,8 +4015,6 @@ meta_display_increment_event_serial (MetaDisplay *display)
 void
 meta_display_update_active_window_hint (MetaDisplay *display)
 {
-  GSList *tmp;
-
   gulong data[1];
 
   if (display->focus_window)
@@ -4096,21 +4022,12 @@ meta_display_update_active_window_hint (MetaDisplay *display)
   else
     data[0] = None;
 
-  tmp = display->screens;
-  while (tmp != NULL)
-    {
-      MetaScreen *screen = tmp->data;
+  meta_error_trap_push (display);
+  XChangeProperty (display->xdisplay, display->screen->xroot,
+                   display->atom__NET_ACTIVE_WINDOW, XA_WINDOW,
+                   32, PropModeReplace, (guchar*) data, 1);
 
-      meta_error_trap_push (display);
-      XChangeProperty (display->xdisplay, screen->xroot,
-                       display->atom__NET_ACTIVE_WINDOW,
-                       XA_WINDOW,
-                       32, PropModeReplace, (guchar*) data, 1);
-
-      meta_error_trap_pop (display);
-
-      tmp = tmp->next;
-    }
+  meta_error_trap_pop (display);
 }
 
 void
@@ -4152,23 +4069,12 @@ meta_display_set_cursor_theme (const char *theme,
 			       int         size)
 {
 #ifdef HAVE_XCURSOR
-  GSList *tmp;
-
   MetaDisplay *display = meta_get_display ();
 
   XcursorSetTheme (display->xdisplay, theme);
   XcursorSetDefaultSize (display->xdisplay, size);
 
-  tmp = display->screens;
-  while (tmp != NULL)
-    {
-      MetaScreen *screen = tmp->data;
-
-      meta_screen_update_cursor (screen);
-
-      tmp = tmp->next;
-    }
-
+  meta_screen_update_cursor (display->screen);
 #endif
 }
 
@@ -4798,19 +4704,9 @@ find_screen_for_selection (MetaDisplay *display,
                            Window       owner,
                            Atom         selection)
 {
-  GSList *tmp;
-
-  tmp = display->screens;
-  while (tmp != NULL)
-    {
-      MetaScreen *screen = tmp->data;
-
-      if (screen->wm_sn_selection_window == owner &&
-          screen->wm_sn_atom == selection)
-        return screen;
-
-      tmp = tmp->next;
-    }
+  if (display->screen->wm_sn_selection_window == owner &&
+      display->screen->wm_sn_atom == selection)
+    return display->screen;
 
   return NULL;
 }
@@ -5017,13 +4913,12 @@ meta_display_unmanage_screen (MetaDisplay *display,
   meta_verbose ("Unmanaging screen %d on display %s\n",
                 screen->number, display->name);
 
-  g_return_if_fail (g_slist_find (display->screens, screen) != NULL);
+  g_return_if_fail (display->screen != NULL);
 
   meta_screen_free (screen, timestamp);
-  display->screens = g_slist_remove (display->screens, screen);
+  display->screen = NULL;
 
-  if (display->screens == NULL)
-    meta_display_close (display, timestamp);
+  meta_display_close (display, timestamp);
 }
 
 void
@@ -5218,7 +5113,7 @@ meta_display_increment_focus_sentinel (MetaDisplay *display)
   data[0] = meta_display_get_current_time (display);
 
   XChangeProperty (display->xdisplay,
-                   ((MetaScreen*) display->screens->data)->xroot,
+                   display->screen->xroot,
                    display->atom__METACITY_SENTINEL,
                    XA_CARDINAL,
                    32, PropModeReplace, (guchar*) data, 1);
@@ -5356,7 +5251,6 @@ meta_display_set_input_focus_window (MetaDisplay *display,
 
   display->expected_focus_window = window;
   display->last_focus_time = timestamp;
-  display->active_screen = window->screen;
 
   if (window != display->autoraise_window)
     meta_display_remove_autoraise_callback (window->display);
@@ -5376,7 +5270,6 @@ meta_display_focus_the_no_focus_window (MetaDisplay *display,
                   timestamp);
   display->expected_focus_window = NULL;
   display->last_focus_time = timestamp;
-  display->active_screen = screen;
 
   meta_display_remove_autoraise_callback (display);
 }
@@ -5407,7 +5300,7 @@ meta_display_get_compositor (MetaDisplay *display)
 MetaScreen *
 meta_display_get_screen (MetaDisplay *display)
 {
-  return display->screens->data;
+  return display->screen;
 }
 
 gboolean

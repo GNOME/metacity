@@ -464,16 +464,8 @@ regrab_key_bindings (MetaDisplay *display)
 
   meta_error_trap_push (display); /* for efficiency push outer trap */
 
-  tmp = display->screens;
-  while (tmp != NULL)
-    {
-      MetaScreen *screen = tmp->data;
-
-      meta_screen_ungrab_keys (screen);
-      meta_screen_grab_keys (screen);
-
-      tmp = tmp->next;
-    }
+  meta_screen_ungrab_keys (display->screen);
+  meta_screen_grab_keys (display->screen);
 
   windows = meta_display_list_windows (display);
   tmp = windows;
@@ -1151,15 +1143,11 @@ primary_modifier_still_pressed (MetaDisplay *display,
   int x, y, root_x, root_y;
   Window root, child;
   guint mask;
-  MetaScreen *random_screen;
-  Window      random_xwindow;
 
   primary_modifier = get_primary_modifier (display, entire_binding_mask);
 
-  random_screen = display->screens->data;
-  random_xwindow = random_screen->no_focus_window;
   XQueryPointer (display->xdisplay,
-                 random_xwindow, /* some random window */
+                 display->screen->no_focus_window, /* some random window */
                  &root, &child,
                  &root_x, &root_y,
                  &x, &y,

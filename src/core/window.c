@@ -246,7 +246,6 @@ meta_window_new_with_attrs (MetaDisplay       *display,
                             XWindowAttributes *attrs)
 {
   MetaWindow *window;
-  GSList *tmp;
   MetaWorkspace *space;
   gulong existing_wm_state;
   gulong event_mask;
@@ -254,6 +253,7 @@ meta_window_new_with_attrs (MetaDisplay       *display,
   gboolean has_shape;
 
   g_assert (attrs != NULL);
+  g_assert (display->screen->xroot == attrs->root);
 
   meta_verbose ("Attempting to manage 0x%lx\n", xwindow);
 
@@ -391,22 +391,7 @@ meta_window_new_with_attrs (MetaDisplay       *display,
   window->sync_request_time.tv_sec = 0;
   window->sync_request_time.tv_usec = 0;
 
-  window->screen = NULL;
-  tmp = display->screens;
-  while (tmp != NULL)
-    {
-      MetaScreen *scr = tmp->data;
-
-      if (scr->xroot == attrs->root)
-        {
-          window->screen = tmp->data;
-          break;
-        }
-
-      tmp = tmp->next;
-    }
-
-  g_assert (window->screen);
+  window->screen = display->screen;
 
   window->desc = g_strdup_printf ("0x%lx", window->xwindow);
 
