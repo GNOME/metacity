@@ -2959,26 +2959,6 @@ timeout_debug (MetaCompositorXRender *compositor)
 }
 
 static void
-xrender_add_window (MetaCompositor    *compositor,
-                    MetaWindow        *window,
-                    Window             xwindow,
-                    XWindowAttributes *attrs)
-{
-  MetaCompositorXRender *xrc = (MetaCompositorXRender *) compositor;
-  MetaScreen *screen = meta_screen_for_x_screen (attrs->screen);
-
-  meta_error_trap_push (xrc->display);
-  add_win (xrc, screen, window, xwindow);
-  meta_error_trap_pop (xrc->display);
-}
-
-static void
-xrender_remove_window (MetaCompositor *compositor,
-                       Window          xwindow)
-{
-}
-
-static void
 update_shadows (MetaPreference pref,
                 gpointer       data)
 {
@@ -3057,8 +3037,8 @@ get_output_window (MetaScreen *screen)
 }
 
 static void
-xrender_manage_screen (MetaCompositor *compositor,
-                       MetaScreen     *screen)
+meta_compositor_xrender_manage_screen (MetaCompositor *compositor,
+                                       MetaScreen     *screen)
 {
   MetaCompScreen *info;
   MetaCompositorXRender *xrc = (MetaCompositorXRender *) compositor;
@@ -3142,8 +3122,8 @@ xrender_manage_screen (MetaCompositor *compositor,
 }
 
 static void
-xrender_unmanage_screen (MetaCompositor *compositor,
-                         MetaScreen     *screen)
+meta_compositor_xrender_unmanage_screen (MetaCompositor *compositor,
+                                         MetaScreen     *screen)
 {
   MetaDisplay *display = meta_screen_get_display (screen);
   Display *xdisplay = meta_display_get_xdisplay (display);
@@ -3196,14 +3176,34 @@ xrender_unmanage_screen (MetaCompositor *compositor,
 }
 
 static void
-xrender_set_updates (MetaCompositor *compositor,
-                     MetaWindow     *window,
-                     gboolean        updates)
+meta_compositor_xrender_add_window (MetaCompositor    *compositor,
+                                    MetaWindow        *window,
+                                    Window             xwindow,
+                                    XWindowAttributes *attrs)
+{
+  MetaCompositorXRender *xrender = (MetaCompositorXRender *) compositor;
+  MetaScreen *screen = meta_screen_for_x_screen (attrs->screen);
+
+  meta_error_trap_push (xrender->display);
+  add_win (xrender, screen, window, xwindow);
+  meta_error_trap_pop (xrender->display);
+}
+
+static void
+meta_compositor_xrender_remove_window (MetaCompositor *compositor,
+                                       Window          xwindow)
 {
 }
 
 static void
-xrender_destroy (MetaCompositor *compositor)
+meta_compositor_xrender_set_updates (MetaCompositor *compositor,
+                                     MetaWindow     *window,
+                                     gboolean        updates)
+{
+}
+
+static void
+meta_compositor_xrender_destroy (MetaCompositor *compositor)
 {
   g_free (compositor);
 }
@@ -3238,8 +3238,8 @@ xrender_end_move (MetaCompositor *compositor,
 #endif /* 0 */
 
 static void
-xrender_free_window (MetaCompositor *compositor,
-                     MetaWindow     *window)
+meta_compositor_xrender_free_window (MetaCompositor *compositor,
+                                     MetaWindow     *window)
 {
   MetaCompositorXRender *xrc;
   MetaFrame *frame;
@@ -3273,9 +3273,9 @@ xrender_free_window (MetaCompositor *compositor,
 }
 
 static void
-xrender_process_event (MetaCompositor *compositor,
-                       XEvent         *event,
-                       MetaWindow     *window)
+meta_compositor_xrender_process_event (MetaCompositor *compositor,
+                                       XEvent         *event,
+                                       MetaWindow     *window)
 {
   MetaCompositorXRender *xrc = (MetaCompositorXRender *) compositor;
   /*
@@ -3342,8 +3342,8 @@ xrender_process_event (MetaCompositor *compositor,
 }
 
 static cairo_surface_t *
-xrender_get_window_surface (MetaCompositor *compositor,
-                            MetaWindow     *window)
+meta_compositor_xrender_get_window_surface (MetaCompositor *compositor,
+                                            MetaWindow     *window)
 {
   MetaFrame *frame;
   Window xwindow;
@@ -3473,9 +3473,9 @@ xrender_get_window_surface (MetaCompositor *compositor,
 }
 
 static void
-xrender_set_active_window (MetaCompositor *compositor,
-                           MetaScreen     *screen,
-                           MetaWindow     *window)
+meta_compositor_xrender_set_active_window (MetaCompositor *compositor,
+                                           MetaScreen     *screen,
+                                           MetaWindow     *window)
 {
   MetaCompositorXRender *xrc = (MetaCompositorXRender *) compositor;
   MetaDisplay *display;
@@ -3625,8 +3625,8 @@ xrender_set_active_window (MetaCompositor *compositor,
 }
 
 static void
-xrender_maximize_window (MetaCompositor *compositor,
-                         MetaWindow     *window)
+meta_compositor_xrender_maximize_window (MetaCompositor *compositor,
+                                         MetaWindow     *window)
 {
   MetaFrame *frame = meta_window_get_frame (window);
   Window xid = frame ? meta_frame_get_xwindow (frame) : meta_window_get_xwindow (window);
@@ -3639,8 +3639,8 @@ xrender_maximize_window (MetaCompositor *compositor,
 }
 
 static void
-xrender_unmaximize_window (MetaCompositor *compositor,
-                           MetaWindow     *window)
+meta_compositor_xrender_unmaximize_window (MetaCompositor *compositor,
+                                           MetaWindow     *window)
 {
   MetaFrame *frame = meta_window_get_frame (window);
   Window xid = frame ? meta_frame_get_xwindow (frame) : meta_window_get_xwindow (window);
@@ -3653,18 +3653,18 @@ xrender_unmaximize_window (MetaCompositor *compositor,
 }
 
 static MetaCompositor comp_info = {
-  xrender_destroy,
-  xrender_manage_screen,
-  xrender_unmanage_screen,
-  xrender_add_window,
-  xrender_remove_window,
-  xrender_set_updates,
-  xrender_process_event,
-  xrender_get_window_surface,
-  xrender_set_active_window,
-  xrender_free_window,
-  xrender_maximize_window,
-  xrender_unmaximize_window,
+  meta_compositor_xrender_destroy,
+  meta_compositor_xrender_manage_screen,
+  meta_compositor_xrender_unmanage_screen,
+  meta_compositor_xrender_add_window,
+  meta_compositor_xrender_remove_window,
+  meta_compositor_xrender_set_updates,
+  meta_compositor_xrender_process_event,
+  meta_compositor_xrender_get_window_surface,
+  meta_compositor_xrender_set_active_window,
+  meta_compositor_xrender_free_window,
+  meta_compositor_xrender_maximize_window,
+  meta_compositor_xrender_unmaximize_window,
 };
 
 MetaCompositor *
