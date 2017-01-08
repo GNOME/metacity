@@ -635,11 +635,7 @@ meta_screen_free (MetaScreen *screen,
 
   meta_display_grab (display);
 
-  if (screen->display->compositor)
-    {
-      meta_compositor_unmanage_screen (screen->display->compositor,
-				       screen);
-    }
+  meta_compositor_unmanage_screen (display->compositor, screen);
 
   meta_display_unmanage_windows_for_screen (display, screen, timestamp);
 
@@ -786,9 +782,8 @@ meta_screen_manage_all_windows (MetaScreen *screen)
         continue;
       }
 
-      if (screen->display->compositor)
-        meta_compositor_add_window (screen->display->compositor, window,
-                                    info->xwindow, &info->attrs);
+      meta_compositor_add_window (screen->display->compositor, window,
+                                  info->xwindow, &info->attrs);
     }
   meta_stack_thaw (screen->stack);
 
@@ -805,8 +800,6 @@ meta_screen_composite_all_windows (MetaScreen *screen)
   GList *windows, *list;
 
   display = screen->display;
-  if (!display->compositor)
-    return;
 
   windows = list_windows (screen);
 
@@ -815,6 +808,7 @@ meta_screen_composite_all_windows (MetaScreen *screen)
   for (list = windows; list != NULL; list = list->next)
     {
       WindowInfo *info = list->data;
+      MetaWindow *window;
 
       if (info->xwindow == screen->no_focus_window ||
           info->xwindow == screen->flash_window ||
@@ -824,10 +818,9 @@ meta_screen_composite_all_windows (MetaScreen *screen)
         continue;
       }
 
-      meta_compositor_add_window (display->compositor,
-                                  meta_display_lookup_x_window (display,
-                                                                info->xwindow),
-				  info->xwindow, &info->attrs);
+      window = meta_display_lookup_x_window (display, info->xwindow);
+      meta_compositor_add_window (display->compositor, window,
+                                  info->xwindow, &info->attrs);
     }
 
   meta_stack_thaw (screen->stack);
@@ -1213,12 +1206,13 @@ get_window_pixbuf (MetaWindow *window,
                    int        *width,
                    int        *height)
 {
+  MetaDisplay *display;
   cairo_surface_t *surface;
   GdkPixbuf *pixbuf, *scaled;
   double ratio;
 
-  surface = meta_compositor_get_window_surface (window->display->compositor,
-                                            window);
+  display = window->display;
+  surface = meta_compositor_get_window_surface (display->compositor, window);
   if (surface == NULL)
     return NULL;
 

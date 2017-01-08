@@ -244,11 +244,21 @@ sn_error_trap_pop (SnDisplay *sn_display,
 #endif
 
 static void
-enable_compositor (MetaCompositorType  type,
-                   MetaDisplay        *display,
-                   gboolean            composite_windows)
+update_compositor (MetaDisplay *display,
+                   gboolean     composite_windows)
 {
-  g_assert (display->compositor == NULL);
+  MetaCompositorType type;
+
+  if (display->compositor != NULL)
+    {
+      meta_compositor_unmanage_screen (display->compositor, display->screen);
+      meta_compositor_destroy (display->compositor);
+    }
+
+  if (meta_prefs_get_compositing_manager ())
+    type = META_COMPOSITOR_TYPE_XRENDER;
+  else
+    type = META_COMPOSITOR_TYPE_NONE;
 
   display->compositor = meta_compositor_new (type, display);
 
@@ -256,17 +266,6 @@ enable_compositor (MetaCompositorType  type,
 
   if (composite_windows)
     meta_screen_composite_all_windows (display->screen);
-}
-
-static void
-disable_compositor (MetaDisplay *display)
-{
-  g_return_if_fail (display->compositor != NULL);
-
-  meta_compositor_unmanage_screen (display->compositor, display->screen);
-
-  meta_compositor_destroy (display->compositor);
-  display->compositor = NULL;
 }
 
 /**
@@ -660,10 +659,7 @@ meta_display_open (void)
   /* We don't composite the windows here because they will be composited
      faster with the call to meta_screen_manage_all_windows further down
      the code */
-  if (meta_prefs_get_compositing_manager ())
-    enable_compositor (META_COMPOSITOR_TYPE_XRENDER, the_display, FALSE);
-  else
-    enable_compositor (META_COMPOSITOR_TYPE_NONE, the_display, FALSE);
+  update_compositor (the_display, FALSE);
 
   meta_display_grab (the_display);
 
@@ -847,8 +843,7 @@ meta_display_close (MetaDisplay *display,
 
   meta_display_shutdown_keys (display);
 
-  if (display->compositor)
-    meta_compositor_destroy (display->compositor);
+  meta_compositor_destroy (display->compositor);
 
   g_free (display);
   the_display = NULL;
@@ -2443,12 +2438,7 @@ event_callback (XEvent   *event,
       break;
     }
 
-  if (display->compositor)
-    {
-      meta_compositor_process_event (display->compositor,
-				     event,
-				     window);
-    }
+  meta_compositor_process_event (display->compositor, event, window);
 
   display->current_time = CurrentTime;
   return filter_out_event;
@@ -3302,12 +3292,9 @@ meta_display_begin_grab_op (MetaDisplay *display,
 
   if (grab_op_is_mouse (op) && meta_grab_op_is_moving (op))
     {
-      if (display->compositor)
-	{
-	  meta_compositor_begin_move (display->compositor,
-				      window, &window->rect,
-				      root_x, root_y);
-	}
+      meta_compositor_begin_move (display->compositor,
+                                  window, &window->rect,
+                                  root_x, root_y);
     }
 
   meta_topic (META_DEBUG_WINDOW_OPS,
@@ -3688,13 +3675,11 @@ meta_display_end_grab_op (MetaDisplay *display,
       meta_window_calc_showing (display->grab_window);
     }
 
-  if (display->compositor &&
-      display->grab_window &&
+  if (display->grab_window &&
       grab_op_is_mouse (display->grab_op) &&
       meta_grab_op_is_moving (display->grab_op))
     {
-      meta_compositor_end_move (display->compositor,
-				display->grab_window);
+      meta_compositor_end_move (display->compositor, display->grab_window);
     }
 
   if (display->grab_have_pointer)
@@ -5048,12 +5033,7 @@ prefs_changed_callback (MetaPreference pref,
     }
   else if (pref == META_PREF_COMPOSITING_MANAGER)
     {
-      disable_compositor (display);
-
-      if (meta_prefs_get_compositing_manager ())
-        enable_compositor (META_COMPOSITOR_TYPE_XRENDER, display, TRUE);
-      else
-        enable_compositor (META_COMPOSITOR_TYPE_NONE, display, TRUE);
+      update_compositor (display, TRUE);
     }
   else if (pref == META_PREF_ATTACH_MODAL_DIALOGS)
     {

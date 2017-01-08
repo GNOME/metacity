@@ -939,8 +939,7 @@ meta_window_free (MetaWindow  *window,
 
   meta_verbose ("Unmanaging 0x%lx\n", window->xwindow);
 
-  if (window->display->compositor)
-    meta_compositor_free_window (window->display->compositor, window);
+  meta_compositor_free_window (window->display->compositor, window);
 
   if (window->display->window_with_menu == window)
     {
@@ -3696,16 +3695,14 @@ meta_window_move_resize_internal (MetaWindow          *window,
       meta_error_trap_push (window->display);
 
       if (window->sync_request_counter != None &&
-	  window->display->grab_sync_request_alarm != None &&
-	  window->sync_request_time.tv_usec == 0 &&
-	  window->sync_request_time.tv_sec == 0)
-	{
-	  /* turn off updating */
-	  if (window->display->compositor)
-	    meta_compositor_set_updates (window->display->compositor, window, FALSE);
-
-	  send_sync_request (window);
-	}
+          window->display->grab_sync_request_alarm != None &&
+          window->sync_request_time.tv_usec == 0 &&
+          window->sync_request_time.tv_sec == 0)
+        {
+          /* turn off updating */
+          meta_compositor_set_updates (window->display->compositor, window, FALSE);
+          send_sync_request (window);
+        }
 
       XConfigureWindow (window->display->xdisplay,
                         window->xwindow,
@@ -7073,6 +7070,7 @@ update_move (MetaWindow  *window,
   MetaRectangle old;
   int shake_threshold;
   MetaDisplay *display = window->display;
+  int root_x, root_y;
 
   display->grab_latest_motion_x = x;
   display->grab_latest_motion_y = y;
@@ -7287,14 +7285,9 @@ update_move (MetaWindow  *window,
                                         snap,
                                         FALSE);
 
-  if (display->compositor)
-    {
-      int root_x = new_x - display->grab_anchor_window_pos.x + display->grab_anchor_root_x;
-      int root_y = new_y - display->grab_anchor_window_pos.y + display->grab_anchor_root_y;
-
-      meta_compositor_update_move (display->compositor,
-				   window, root_x, root_y);
-    }
+  root_x = new_x - display->grab_anchor_window_pos.x + display->grab_anchor_root_x;
+  root_y = new_y - display->grab_anchor_window_pos.y + display->grab_anchor_root_y;
+  meta_compositor_update_move (display->compositor, window, root_x, root_y);
 
   if (display->grab_wireframe_active)
     meta_window_update_wireframe (window, new_x, new_y,
@@ -7462,8 +7455,7 @@ update_resize (MetaWindow *window,
     }
 
   /* If we get here, it means the client should have redrawn itself */
-  if (window->display->compositor)
-    meta_compositor_set_updates (window->display->compositor, window, TRUE);
+  meta_compositor_set_updates (window->display->compositor, window, TRUE);
 
   /* Remove any scheduled compensation events */
   if (window->display->grab_resize_timeout_id)
@@ -7741,8 +7733,8 @@ meta_window_handle_mouse_grab_op_event (MetaWindow *window,
                                event->xbutton.x_root,
                                event->xbutton.y_root,
                                TRUE);
-              if (window->display->compositor)
-                meta_compositor_set_updates (window->display->compositor, window, TRUE);
+
+              meta_compositor_set_updates (window->display->compositor, window, TRUE);
 
               /* If a tiled window has been dragged free with a
                * mouse resize without snapping back to the tiled
