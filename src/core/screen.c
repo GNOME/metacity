@@ -1456,13 +1456,12 @@ meta_screen_tile_preview_update_timeout (gpointer data)
 {
   MetaScreen *screen = data;
   MetaWindow *window = screen->display->grab_window;
-  gboolean composited = screen->display->compositor != NULL;
   gboolean needs_preview = FALSE;
 
   screen->tile_preview_timeout_id = 0;
 
   if (!screen->tile_preview)
-    screen->tile_preview = meta_tile_preview_new (composited);
+    screen->tile_preview = meta_tile_preview_new ();
 
   if (window)
     {

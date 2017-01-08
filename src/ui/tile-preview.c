@@ -133,7 +133,7 @@ meta_tile_preview_composited_changed (GtkWidget *widget,
 }
 
 MetaTilePreview *
-meta_tile_preview_new (gboolean composited)
+meta_tile_preview_new (void)
 {
   MetaTilePreview *preview;
   GdkVisual *visual;
@@ -154,7 +154,7 @@ meta_tile_preview_new (gboolean composited)
   preview->tile_rect.x = preview->tile_rect.y = 0;
   preview->tile_rect.width = preview->tile_rect.height = 0;
 
-  preview->has_alpha = visual && composited;
+  preview->has_alpha = visual && gdk_screen_is_composited (screen);
 
   if (preview->has_alpha)
     {
