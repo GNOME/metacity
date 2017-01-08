@@ -31,6 +31,8 @@ metacity_SOURCES= 				\
 	include/util.h				\
 	include/common.h			\
 	compositor/compositor.c			\
+	compositor/compositor-none.c		\
+	compositor/compositor-none.h		\
 	compositor/compositor-private.h		\
 	compositor/compositor-xrender.c		\
 	compositor/compositor-xrender.h		\
