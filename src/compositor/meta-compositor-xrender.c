@@ -22,7 +22,7 @@
 #define _GNU_SOURCE
 #define _XOPEN_SOURCE 600 /* for usleep() */
 
-#include <config.h>
+#include "config.h"
 
 #include <stdlib.h>
 #include <string.h>
@@ -40,8 +40,8 @@
 #include "errors.h"
 #include "prefs.h"
 #include "window.h"
-#include "compositor-private.h"
-#include "compositor-xrender.h"
+#include "meta-compositor-private.h"
+#include "meta-compositor-xrender.h"
 #include "xprops.h"
 #include "util.h"
 #include <X11/Xatom.h>

@@ -30,13 +30,13 @@ metacity_SOURCES= 				\
 	core/util.c				\
 	include/util.h				\
 	include/common.h			\
-	compositor/compositor.c			\
-	compositor/compositor-none.c		\
-	compositor/compositor-none.h		\
-	compositor/compositor-private.h		\
-	compositor/compositor-xrender.c		\
-	compositor/compositor-xrender.h		\
-	include/compositor.h			\
+	compositor/meta-compositor.c		\
+	compositor/meta-compositor-none.c	\
+	compositor/meta-compositor-none.h	\
+	compositor/meta-compositor-private.h	\
+	compositor/meta-compositor-xrender.c	\
+	compositor/meta-compositor-xrender.h	\
+	include/meta-compositor.h		\
 	core/above-tab-keycode.c		\
 	core/constraints.c			\
 	core/constraints.h			\

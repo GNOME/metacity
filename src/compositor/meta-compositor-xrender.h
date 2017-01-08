@@ -19,8 +19,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef META_COMPOSITOR_XRENDER_H_
-#define META_COMPOSITOR_XRENDER_H_
+#ifndef META_COMPOSITOR_XRENDER_H
+#define META_COMPOSITOR_XRENDER_H
 
 #include "types.h"
 

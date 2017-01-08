@@ -24,7 +24,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <config.h>
+#include "config.h"
+
 #include "screen-private.h"
 #include "util.h"
 #include "errors.h"
@@ -35,7 +36,7 @@
 #include "keybindings.h"
 #include "stack.h"
 #include "xprops.h"
-#include "compositor.h"
+#include "meta-compositor.h"
 
 #ifdef HAVE_SOLARIS_XINERAMA
 #include <X11/extensions/xinerama.h>

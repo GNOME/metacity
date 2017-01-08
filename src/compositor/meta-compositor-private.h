@@ -19,7 +19,7 @@
 #ifndef META_COMPOSITOR_PRIVATE_H
 #define META_COMPOSITOR_PRIVATE_H
 
-#include "compositor.h"
+#include "meta-compositor.h"
 
 struct _MetaCompositor
 {

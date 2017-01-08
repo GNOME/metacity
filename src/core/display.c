@@ -28,7 +28,8 @@
  * The display is represented as a MetaDisplay struct.
  */
 
-#include <config.h>
+#include "config.h"
+
 #include "display-private.h"
 #include "util.h"
 #include "main.h"
@@ -45,7 +46,7 @@
 #include "workspace.h"
 #include "bell.h"
 #include "effects.h"
-#include "compositor.h"
+#include "meta-compositor.h"
 #include <gdk/gdkx.h>
 #include <libmetacity/meta-frame-borders.h>
 #include <X11/Xatom.h>

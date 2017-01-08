@@ -17,8 +17,8 @@
 
 #include "config.h"
 
-#include "compositor-none.h"
-#include "compositor-private.h"
+#include "meta-compositor-none.h"
+#include "meta-compositor-private.h"
 
 typedef struct
 {

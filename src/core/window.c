@@ -22,7 +22,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <config.h>
+#include "config.h"
+
 #include "window-private.h"
 #include "edge-resistance.h"
 #include "util.h"
@@ -41,7 +42,7 @@
 #include "group.h"
 #include "window-props.h"
 #include "constraints.h"
-#include "compositor.h"
+#include "meta-compositor.h"
 #include "effects.h"
 
 #include <X11/Xatom.h>
