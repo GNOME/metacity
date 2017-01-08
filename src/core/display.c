@@ -1833,20 +1833,6 @@ event_callback (XEvent   *event,
           break;
         }
 
-      /* If the mouse switches screens, active the default window on the new
-       * screen; this will make keybindings and workspace-launched items
-       * actually appear on the right screen.
-       */
-      {
-        MetaScreen *new_screen =
-          meta_display_screen_for_root (display, event->xcrossing.root);
-
-        if (new_screen != NULL)
-          meta_workspace_focus_default_window (new_screen->active_workspace,
-                                               NULL,
-                                               event->xcrossing.time);
-      }
-
       /* Check if we've entered a window; do this even if window->has_focus to
        * avoid races.
        */
