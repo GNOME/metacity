@@ -885,17 +885,10 @@ meta_display_screen_for_xwindow (MetaDisplay *display,
   if (result == 0 || attr.screen == NULL)
     return NULL;
 
-  return meta_display_screen_for_x_screen (display, attr.screen);
-}
+  if (display->screen->xscreen != attr.screen)
+    return NULL;
 
-MetaScreen*
-meta_display_screen_for_x_screen (MetaDisplay *display,
-                                  Screen      *xscreen)
-{
-  if (display->screen->xscreen == xscreen)
-    return display->screen;
-
-  return NULL;
+  return display->screen;
 }
 
 /* Grab/ungrab routines taken from fvwm */

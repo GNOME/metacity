@@ -843,10 +843,10 @@ meta_screen_for_x_screen (Screen *xscreen)
 
   display = meta_display_for_x_display (DisplayOfScreen (xscreen));
 
-  if (display == NULL)
+  if (display == NULL || display->screen->xscreen != xscreen)
     return NULL;
 
-  return meta_display_screen_for_x_screen (display, xscreen);
+  return display->screen;
 }
 
 static void
