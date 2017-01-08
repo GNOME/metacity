@@ -1,31 +1,45 @@
-/* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
-
 /*
  * Copyright (C) 2008 Iain Holmes
+ * Copyright (C) 2017 Alberts Muktupāvels
  *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of the
- * License, or (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
  *
- * This program is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <config.h>
+#include "config.h"
+
+#include "compositor-none.h"
 #include "compositor-private.h"
 #include "compositor-xrender.h"
 
 MetaCompositor *
-meta_compositor_new (MetaDisplay *display)
+meta_compositor_new (MetaCompositorType  type,
+                     MetaDisplay        *display)
 {
-  /* At some point we would have a way to select between backends */
-  return meta_compositor_xrender_new (display);
+  switch (type)
+    {
+      case META_COMPOSITOR_TYPE_NONE:
+        return meta_compositor_none_new (display);
+
+      case META_COMPOSITOR_TYPE_XRENDER:
+        return meta_compositor_xrender_new (display);
+
+      default:
+        g_assert_not_reached ();
+        break;
+    }
+
+  return NULL;
 }
 
 void

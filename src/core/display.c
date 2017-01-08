@@ -244,14 +244,13 @@ sn_error_trap_pop (SnDisplay *sn_display,
 #endif
 
 static void
-enable_compositor (MetaDisplay *display,
-                   gboolean     composite_windows)
+enable_compositor (MetaCompositorType  type,
+                   MetaDisplay        *display,
+                   gboolean            composite_windows)
 {
-  if (!display->compositor)
-      display->compositor = meta_compositor_new (display);
+  g_assert (display->compositor == NULL);
 
-  if (!display->compositor)
-    return;
+  display->compositor = meta_compositor_new (type, display);
 
   meta_compositor_manage_screen (display->compositor, display->screen);
 
@@ -262,8 +261,7 @@ enable_compositor (MetaDisplay *display,
 static void
 disable_compositor (MetaDisplay *display)
 {
-  if (!display->compositor)
-    return;
+  g_return_if_fail (display->compositor != NULL);
 
   meta_compositor_unmanage_screen (display->compositor, display->screen);
 
@@ -663,7 +661,9 @@ meta_display_open (void)
      faster with the call to meta_screen_manage_all_windows further down
      the code */
   if (meta_prefs_get_compositing_manager ())
-    enable_compositor (the_display, FALSE);
+    enable_compositor (META_COMPOSITOR_TYPE_XRENDER, the_display, FALSE);
+  else
+    enable_compositor (META_COMPOSITOR_TYPE_NONE, the_display, FALSE);
 
   meta_display_grab (the_display);
 
@@ -5062,12 +5062,12 @@ prefs_changed_callback (MetaPreference pref,
     }
   else if (pref == META_PREF_COMPOSITING_MANAGER)
     {
-      gboolean cm = meta_prefs_get_compositing_manager ();
+      disable_compositor (display);
 
-      if (cm)
-        enable_compositor (display, TRUE);
+      if (meta_prefs_get_compositing_manager ())
+        enable_compositor (META_COMPOSITOR_TYPE_XRENDER, display, TRUE);
       else
-        disable_compositor (display);
+        enable_compositor (META_COMPOSITOR_TYPE_NONE, display, TRUE);
     }
   else if (pref == META_PREF_ATTACH_MODAL_DIALOGS)
     {
