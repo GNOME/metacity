@@ -98,7 +98,6 @@ typedef struct _MetaCompositorXRender
 #ifdef USE_IDLE_REPAINT
   guint repaint_id;
 #endif
-  guint enabled : 1;
   guint show_redraw : 1;
   guint debug : 1;
 } MetaCompositorXRender;
@@ -3760,7 +3759,6 @@ meta_compositor_xrender_new (MetaDisplay *display)
   xrc->repaint_id = 0;
 #endif
 
-  xrc->enabled = TRUE;
   g_timeout_add (2000, (GSourceFunc) timeout_debug, xrc);
 
   return compositor;
