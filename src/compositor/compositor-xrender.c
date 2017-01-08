@@ -34,7 +34,7 @@
 #include <cairo/cairo-xlib.h>
 #include <cairo/cairo-xlib-xrender.h>
 
-#include "display.h"
+#include "display-private.h"
 #include "screen.h"
 #include "frame.h"
 #include "errors.h"
@@ -77,23 +77,6 @@ typedef struct _MetaCompositorXRender
   MetaCompositor compositor;
 
   MetaDisplay *display;
-
-  Atom atom_x_root_pixmap;
-  Atom atom_x_set_root;
-  Atom atom_net_wm_window_opacity;
-  Atom atom_net_wm_window_type_dnd;
-
-  Atom atom_net_wm_window_type;
-  Atom atom_net_wm_window_type_desktop;
-  Atom atom_net_wm_window_type_dock;
-  Atom atom_net_wm_window_type_menu;
-  Atom atom_net_wm_window_type_dialog;
-  Atom atom_net_wm_window_type_normal;
-  Atom atom_net_wm_window_type_utility;
-  Atom atom_net_wm_window_type_splash;
-  Atom atom_net_wm_window_type_toolbar;
-  Atom atom_net_wm_window_type_dropdown_menu;
-  Atom atom_net_wm_window_type_tooltip;
 
 #ifdef USE_IDLE_REPAINT
   guint repaint_id;
@@ -873,8 +856,8 @@ root_tile (MetaScreen *screen)
   free_pixmap = FALSE;
   fill = FALSE;
 
-  background_atoms[0] = DISPLAY_COMPOSITOR (display)->atom_x_root_pixmap;
-  background_atoms[1] = DISPLAY_COMPOSITOR (display)->atom_x_set_root;
+  background_atoms[0] = display->atom__XROOTPMAP_ID;
+  background_atoms[1] = display->atom__XSETROOT_ID;
 
   pixmap_atom = XInternAtom (xdisplay, "PIXMAP", False);
   for (p = 0; p < 2; p++)
@@ -2218,7 +2201,6 @@ static void
 get_window_type (MetaDisplay    *display,
                  MetaCompWindow *cw)
 {
-  MetaCompositorXRender *compositor = DISPLAY_COMPOSITOR (display);
   int n_atoms;
   Atom *atoms, type_atom;
   int i;
@@ -2228,22 +2210,22 @@ get_window_type (MetaDisplay    *display,
   atoms = NULL;
 
   meta_prop_get_atom_list (display, cw->id,
-                           compositor->atom_net_wm_window_type,
+                           display->atom__NET_WM_WINDOW_TYPE,
                            &atoms, &n_atoms);
 
   for (i = 0; i < n_atoms; i++)
     {
-      if (atoms[i] == compositor->atom_net_wm_window_type_dnd ||
-          atoms[i] == compositor->atom_net_wm_window_type_desktop ||
-          atoms[i] == compositor->atom_net_wm_window_type_dock ||
-          atoms[i] == compositor->atom_net_wm_window_type_toolbar ||
-          atoms[i] == compositor->atom_net_wm_window_type_menu ||
-          atoms[i] == compositor->atom_net_wm_window_type_dialog ||
-          atoms[i] == compositor->atom_net_wm_window_type_normal ||
-          atoms[i] == compositor->atom_net_wm_window_type_utility ||
-          atoms[i] == compositor->atom_net_wm_window_type_splash ||
-          atoms[i] == compositor->atom_net_wm_window_type_dropdown_menu ||
-          atoms[i] == compositor->atom_net_wm_window_type_tooltip)
+      if (atoms[i] == display->atom__NET_WM_WINDOW_TYPE_DND ||
+          atoms[i] == display->atom__NET_WM_WINDOW_TYPE_DESKTOP ||
+          atoms[i] == display->atom__NET_WM_WINDOW_TYPE_DOCK ||
+          atoms[i] == display->atom__NET_WM_WINDOW_TYPE_TOOLBAR ||
+          atoms[i] == display->atom__NET_WM_WINDOW_TYPE_MENU ||
+          atoms[i] == display->atom__NET_WM_WINDOW_TYPE_DIALOG ||
+          atoms[i] == display->atom__NET_WM_WINDOW_TYPE_NORMAL ||
+          atoms[i] == display->atom__NET_WM_WINDOW_TYPE_UTILITY ||
+          atoms[i] == display->atom__NET_WM_WINDOW_TYPE_SPLASH ||
+          atoms[i] == display->atom__NET_WM_WINDOW_TYPE_DROPDOWN_MENU ||
+          atoms[i] == display->atom__NET_WM_WINDOW_TYPE_TOOLTIP)
         {
           type_atom = atoms[i];
           break;
@@ -2252,17 +2234,17 @@ get_window_type (MetaDisplay    *display,
 
   meta_XFree (atoms);
 
-  if (type_atom == compositor->atom_net_wm_window_type_dnd)
+  if (type_atom == display->atom__NET_WM_WINDOW_TYPE_DND)
     cw->type = META_COMP_WINDOW_DND;
-  else if (type_atom == compositor->atom_net_wm_window_type_desktop)
+  else if (type_atom == display->atom__NET_WM_WINDOW_TYPE_DESKTOP)
     cw->type = META_COMP_WINDOW_DESKTOP;
-  else if (type_atom == compositor->atom_net_wm_window_type_dock)
+  else if (type_atom == display->atom__NET_WM_WINDOW_TYPE_DOCK)
     cw->type = META_COMP_WINDOW_DOCK;
-  else if (type_atom == compositor->atom_net_wm_window_type_menu)
+  else if (type_atom == display->atom__NET_WM_WINDOW_TYPE_MENU)
     cw->type = META_COMP_WINDOW_MENU;
-  else if (type_atom == compositor->atom_net_wm_window_type_dropdown_menu)
+  else if (type_atom == display->atom__NET_WM_WINDOW_TYPE_DROPDOWN_MENU)
     cw->type = META_COMP_WINDOW_DROP_DOWN_MENU;
-  else if (type_atom == compositor->atom_net_wm_window_type_tooltip)
+  else if (type_atom == display->atom__NET_WM_WINDOW_TYPE_TOOLTIP)
     cw->type = META_COMP_WINDOW_TOOLTIP;
   else
     cw->type = META_COMP_WINDOW_NORMAL;
@@ -2723,8 +2705,8 @@ process_property_notify (MetaCompositorXRender *compositor,
   Atom background_atoms[2];
 
   /* Check for the background property changing */
-  background_atoms[0] = compositor->atom_x_root_pixmap;
-  background_atoms[1] = compositor->atom_x_set_root;
+  background_atoms[0] = display->atom__XROOTPMAP_ID;
+  background_atoms[1] = display->atom__XSETROOT_ID;
 
   for (p = 0; p < 2; p++)
     {
@@ -2756,7 +2738,7 @@ process_property_notify (MetaCompositorXRender *compositor,
     }
 
   /* Check for the opacity changing */
-  if (event->atom == compositor->atom_net_wm_window_opacity)
+  if (event->atom == display->atom__NET_WM_WINDOW_OPACITY)
     {
       MetaCompWindow *cw = find_window_in_display (display, event->window);
       gulong value;
@@ -2773,7 +2755,7 @@ process_property_notify (MetaCompositorXRender *compositor,
         return;
 
       if (meta_prop_get_cardinal (display, event->window,
-                                  compositor->atom_net_wm_window_opacity,
+                                  display->atom__NET_WM_WINDOW_OPACITY,
                                   &value) == FALSE)
         value = OPAQUE;
 
@@ -2799,7 +2781,7 @@ process_property_notify (MetaCompositorXRender *compositor,
       return;
     }
 
-  if (event->atom == compositor->atom_net_wm_window_type) {
+  if (event->atom == display->atom__NET_WM_WINDOW_TYPE) {
     MetaCompWindow *cw = find_window_in_display (display, event->window);
 
     if (!cw)
@@ -3703,27 +3685,8 @@ static MetaCompositor comp_info = {
 MetaCompositor *
 meta_compositor_xrender_new (MetaDisplay *display)
 {
-  const gchar *atom_names[] = {
-    "_XROOTPMAP_ID",
-    "_XSETROOT_ID",
-    "_NET_WM_WINDOW_OPACITY",
-    "_NET_WM_WINDOW_TYPE_DND",
-    "_NET_WM_WINDOW_TYPE",
-    "_NET_WM_WINDOW_TYPE_DESKTOP",
-    "_NET_WM_WINDOW_TYPE_DOCK",
-    "_NET_WM_WINDOW_TYPE_MENU",
-    "_NET_WM_WINDOW_TYPE_DIALOG",
-    "_NET_WM_WINDOW_TYPE_NORMAL",
-    "_NET_WM_WINDOW_TYPE_UTILITY",
-    "_NET_WM_WINDOW_TYPE_SPLASH",
-    "_NET_WM_WINDOW_TYPE_TOOLBAR",
-    "_NET_WM_WINDOW_TYPE_DROPDOWN_MENU",
-    "_NET_WM_WINDOW_TYPE_TOOLTIP"
-  };
-  Atom atoms[G_N_ELEMENTS(atom_names)];
   MetaCompositorXRender *xrc;
   MetaCompositor *compositor;
-  Display *xdisplay = meta_display_get_xdisplay (display);
 
   xrc = g_new (MetaCompositorXRender, 1);
   xrc->compositor = comp_info;
@@ -3731,26 +3694,6 @@ meta_compositor_xrender_new (MetaDisplay *display)
   compositor = (MetaCompositor *) xrc;
 
   xrc->display = display;
-
-  meta_verbose ("Creating %d atoms\n", (int) G_N_ELEMENTS (atom_names));
-  XInternAtoms (xdisplay, (gchar **) atom_names, G_N_ELEMENTS (atom_names),
-                False, atoms);
-
-  xrc->atom_x_root_pixmap = atoms[0];
-  xrc->atom_x_set_root = atoms[1];
-  xrc->atom_net_wm_window_opacity = atoms[2];
-  xrc->atom_net_wm_window_type_dnd = atoms[3];
-  xrc->atom_net_wm_window_type = atoms[4];
-  xrc->atom_net_wm_window_type_desktop = atoms[5];
-  xrc->atom_net_wm_window_type_dock = atoms[6];
-  xrc->atom_net_wm_window_type_menu = atoms[7];
-  xrc->atom_net_wm_window_type_dialog = atoms[8];
-  xrc->atom_net_wm_window_type_normal = atoms[9];
-  xrc->atom_net_wm_window_type_utility = atoms[10];
-  xrc->atom_net_wm_window_type_splash = atoms[11];
-  xrc->atom_net_wm_window_type_toolbar = atoms[12];
-  xrc->atom_net_wm_window_type_dropdown_menu = atoms[13];
-  xrc->atom_net_wm_window_type_tooltip = atoms[14];
   xrc->show_redraw = FALSE;
   xrc->debug = FALSE;
 
