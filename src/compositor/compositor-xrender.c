@@ -114,12 +114,9 @@ typedef struct _MetaCompScreen
   Picture root_picture;
   Picture root_buffer;
   Picture black_picture;
-  Picture trans_black_picture;
   Picture root_tile;
   XserverRegion all_damage;
 
-  guint overlays;
-  gboolean compositor_active;
   gboolean clip_changed;
 
   GSList *dock_windows;
@@ -167,9 +164,6 @@ typedef struct _MetaCompWindow
   guint opacity;
 
   XserverRegion border_clip;
-
-  gboolean updates_frozen;
-  gboolean update_pending;
 
   /* When the window is shaded we will store few data of the original unshaded
    * window so we can still see what the window looked like when it is needed
@@ -3133,8 +3127,6 @@ xrender_manage_screen (MetaCompositor *compositor,
 
   info->focus_window = meta_display_get_focus_window (display);
 
-  info->compositor_active = TRUE;
-  info->overlays = 0;
   info->clip_changed = TRUE;
 
   info->have_shadows = (g_getenv("META_DEBUG_NO_SHADOW") == NULL);
