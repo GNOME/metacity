@@ -3826,11 +3826,11 @@ theme_validate (MetaThemeMetacity  *metacity,
 
   if (metacity->readable_name == NULL)
     {
-      /* Translators: This error means that a necessary XML tag (whose name
-       * is given in angle brackets) was not found in a given theme (whose
-       * name is given second, in quotation marks).
-       */
       g_set_error (error, META_THEME_ERROR, META_THEME_ERROR_FAILED,
+                   /* Translators: This error means that a necessary XML tag (whose name
+                    * is given in angle brackets) was not found in a given theme (whose
+                    * name is given second, in quotation marks).
+                    */
                    _("No <%s> set for theme '%s'"), "name", metacity->name);
 
       return FALSE;

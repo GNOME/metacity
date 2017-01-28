@@ -136,11 +136,11 @@ check_state  (MetaFrameStyleSet  *style_set,
       if (meta_frame_style_set_get_style (style_set, state,
                                           META_FRAME_RESIZE_NONE, i) == NULL)
         {
-          /* Translators: This error occurs when a <frame> tag is missing
-           * in theme XML.  The "<frame ...>" is intended as a noun phrase,
-           * and the "missing" qualifies it.  You should translate "whatever".
-           */
           g_set_error (error, META_THEME_ERROR, META_THEME_ERROR_FAILED,
+                       /* Translators: This error occurs when a <frame> tag is missing
+                        * in theme XML.  The "<frame ...>" is intended as a noun phrase,
+                        * and the "missing" qualifies it.  You should translate "whatever".
+                        */
                        _("Missing <frame state='%s' resize='%s' focus='%s' style='whatever' />"),
                        meta_frame_state_to_string (state),
                        meta_frame_resize_to_string (META_FRAME_RESIZE_NONE),
