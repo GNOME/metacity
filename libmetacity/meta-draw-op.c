@@ -72,6 +72,8 @@ fill_env (MetaPositionExprEnv *env,
 
   env->title_width = info->title_layout_width;
   env->title_height = info->title_layout_height;
+
+  env->scale = info->scale;
 }
 
 static cairo_surface_t *

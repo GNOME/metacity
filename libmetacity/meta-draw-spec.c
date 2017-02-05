@@ -937,6 +937,8 @@ pos_eval_helper (PosToken                   *tokens,
 
       if (paren_level == 0)
         {
+          gdouble double_val;
+
           switch (t->type)
             {
             case POS_TOKEN_INT:
@@ -963,14 +965,19 @@ pos_eval_helper (PosToken                   *tokens,
               return FALSE;
 
             case POS_TOKEN_VARIABLE:
-              exprs[n_exprs].type = POS_EXPR_DOUBLE;
+              exprs[n_exprs].type = env->scale > 1 ? POS_EXPR_DOUBLE : POS_EXPR_INT;
 
               /* FIXME we should just dump all this crap
                * in a hash, maybe keep width/height out
                * for optimization purposes
                */
-              if (!pos_eval_get_variable (t, &exprs[n_exprs].d.double_val, env, err))
+              if (!pos_eval_get_variable (t, &double_val, env, err))
                 return FALSE;
+
+              if (env->scale > 1)
+                exprs[n_exprs].d.double_val = double_val;
+              else
+                exprs[n_exprs].d.int_val = double_val;
 
               ++n_exprs;
               break;
