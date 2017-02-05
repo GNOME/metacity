@@ -687,6 +687,7 @@ do_operation (PosExpr *a,
               return FALSE;
             }
           a->d.double_val = fmod (a->d.double_val, b->d.double_val);
+          break;
         case POS_OP_ADD:
           a->d.double_val = a->d.double_val + b->d.double_val;
           break;
