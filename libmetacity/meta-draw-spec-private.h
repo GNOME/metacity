@@ -50,6 +50,8 @@ struct _MetaPositionExprEnv
   gdouble             mini_icon_height;
   gdouble             icon_width;
   gdouble             icon_height;
+
+  gint                scale;
 };
 
 G_GNUC_INTERNAL
