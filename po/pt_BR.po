@@ -1,5 +1,5 @@
 # Brazilian Portuguese translation of metacity.
-# Copyright (C) 2002-2016 Free Software Foundation, Inc.
+# Copyright (C) 2002-2017 Free Software Foundation, Inc.
 # Sun G11n <gnome_int_l10n@ireland.sun.com>, 2002.
 # Evandro Fernandes Giovanini <evandrofg@ig.com.br>, 2002, 2003, 2006.
 # Gustavo Noronha Silva <kov@debian.org>, 2004.
@@ -14,23 +14,23 @@
 # Fábio Nogueira <fnogueira@gnome.org>, 2009.
 # Krix Apolinário <krixapolinario@gmail.com> 2011.
 # Antonio Fernandes C. Neto <fernandesn@gnome.org> 2012.
-# Enrico Nicoletto <liverig@gmail.com>, 2014.
 # Rafael Fontenelle <rafaelff@gnome.org>, 2013, 2014, 2016.
+# Enrico Nicoletto <liverig@gmail.com>, 2014, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=metacit"
-"y&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-06-25 12:58+0000\n"
-"PO-Revision-Date: 2016-06-25 20:22-0200\n"
-"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=metacity&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2016-12-15 17:42+0000\n"
+"PO-Revision-Date: 2017-02-06 10:23-0200\n"
+"Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Project-Style: gnome\n"
 
 #. Translators: This is the title used on dialog boxes
@@ -43,239 +43,192 @@ msgstr "Metacity"
 msgid "preferences-system-windows"
 msgstr "preferences-system-windows"
 
-#. (itstool) path: 50-metacity-navigation.xml/KeyListEntries@name
-#: 50-metacity-navigation.xml:6
+#: data/keybindings/50-metacity-navigation.xml:6
 msgid "Navigation"
 msgstr "Navegação"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:9
+#: data/keybindings/50-metacity-navigation.xml:9
 msgid "Move window to workspace 1"
 msgstr "Mover a janela para o espaço de trabalho 1"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:12
+#: data/keybindings/50-metacity-navigation.xml:12
 msgid "Move window to workspace 2"
 msgstr "Mover a janela para o espaço de trabalho 2"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:15
+#: data/keybindings/50-metacity-navigation.xml:15
 msgid "Move window to workspace 3"
 msgstr "Mover a janela para o espaço de trabalho 3"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:18
+#: data/keybindings/50-metacity-navigation.xml:18
 msgid "Move window to workspace 4"
 msgstr "Mover a janela para o espaço de trabalho 4"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:21
+#: data/keybindings/50-metacity-navigation.xml:21
 msgid "Move window one workspace to the left"
 msgstr "Mover a janela um espaço de trabalho à esquerda"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:24
+#: data/keybindings/50-metacity-navigation.xml:24
 msgid "Move window one workspace to the right"
 msgstr "Mover a janela um espaço de trabalho à direita"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:27
+#: data/keybindings/50-metacity-navigation.xml:27
 msgid "Move window one workspace up"
 msgstr "Mover a janela um espaço de trabalho acima"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:30
+#: data/keybindings/50-metacity-navigation.xml:30
 msgid "Move window one workspace down"
 msgstr "Mover a janela um espaço de trabalho abaixo"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:33
+#: data/keybindings/50-metacity-navigation.xml:33
 msgid "Switch windows"
 msgstr "Alterna janelas"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:36
+#: data/keybindings/50-metacity-navigation.xml:36
 msgid "Switch applications"
 msgstr "Alterna aplicativos"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:39
+#: data/keybindings/50-metacity-navigation.xml:39
 msgid "Switch windows of an application"
 msgstr "Alterna janelas de um aplicativo"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:42
+#: data/keybindings/50-metacity-navigation.xml:42
 msgid "Switch system controls"
 msgstr "Alterna controles do sistema"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:45
+#: data/keybindings/50-metacity-navigation.xml:45
 msgid "Switch windows directly"
 msgstr "Alterna janelas diretamente"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:48
+#: data/keybindings/50-metacity-navigation.xml:48
 msgid "Switch windows of an app directly"
 msgstr "Alterna janelas de um aplicativo diretamente"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:51
+#: data/keybindings/50-metacity-navigation.xml:51
 msgid "Switch system controls directly"
 msgstr "Alterna controles do sistema diretamente"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:54
+#: data/keybindings/50-metacity-navigation.xml:54
 msgid "Hide all normal windows"
 msgstr "Ocultar todas as janelas normais"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:57
+#: data/keybindings/50-metacity-navigation.xml:57
 msgid "Switch to workspace 1"
 msgstr "Trocar para o espaço de trabalho 1"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:60
+#: data/keybindings/50-metacity-navigation.xml:60
 msgid "Switch to workspace 2"
 msgstr "Trocar para o espaço de trabalho 2"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:63
+#: data/keybindings/50-metacity-navigation.xml:63
 msgid "Switch to workspace 3"
 msgstr "Trocar para o espaço de trabalho 3"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:66
+#: data/keybindings/50-metacity-navigation.xml:66
 msgid "Switch to workspace 4"
 msgstr "Trocar para o espaço de trabalho 4"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:69
+#: data/keybindings/50-metacity-navigation.xml:69
 msgid "Move to workspace left"
 msgstr "Mover para o espaço de trabalho à esquerda"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:72
+#: data/keybindings/50-metacity-navigation.xml:72
 msgid "Move to workspace right"
 msgstr "Mover para o espaço de trabalho à direita"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:75
+#: data/keybindings/50-metacity-navigation.xml:75
 msgid "Move to workspace above"
 msgstr "Mover para o espaço de trabalho acima"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:78
+#: data/keybindings/50-metacity-navigation.xml:78
 msgid "Move to workspace below"
 msgstr "Mover para o espaço de trabalho abaixo"
 
-#. (itstool) path: 50-metacity-system.xml/KeyListEntries@name
-#: 50-metacity-system.xml:6
+#: data/keybindings/50-metacity-system.xml:6
 msgid "System"
 msgstr "Sistema"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-system.xml:9
+#: data/keybindings/50-metacity-system.xml:9
 msgid "Show the run command prompt"
 msgstr "Mostrar o prompt de executar comando"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-system.xml:12
+#: data/keybindings/50-metacity-system.xml:12
 msgid "Show the applications menu"
 msgstr "Mostrar o menu de aplicativos"
 
-#. (itstool) path: 50-metacity-windows.xml/KeyListEntries@name
-#: 50-metacity-windows.xml:6
+#: data/keybindings/50-metacity-windows.xml:6
 msgid "Windows"
 msgstr "Janelas"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:9
+#: data/keybindings/50-metacity-windows.xml:9
 msgid "Activate the window menu"
 msgstr "Ativar o menu da janela"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:12
+#: data/keybindings/50-metacity-windows.xml:12
 msgid "Toggle fullscreen mode"
 msgstr "Alternar modo de tela inteira"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:15
+#: data/keybindings/50-metacity-windows.xml:15
 msgid "Toggle maximization state"
 msgstr "Alternar estado de maximização"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:18
+#: data/keybindings/50-metacity-windows.xml:18
 msgid "Maximize window"
 msgstr "Maximizar a janela"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:21
+#: data/keybindings/50-metacity-windows.xml:21
 msgid "Restore window"
 msgstr "Restaurar janela"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:24
+#: data/keybindings/50-metacity-windows.xml:24
 msgid "Toggle shaded state"
 msgstr "Alternar estado sombreado"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:27
+#: data/keybindings/50-metacity-windows.xml:27
 msgid "Close window"
 msgstr "Fechar a janela"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:30
+#: data/keybindings/50-metacity-windows.xml:30
 msgid "Minimize window"
 msgstr "Minimizar a janela"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:33
+#: data/keybindings/50-metacity-windows.xml:33
 msgid "Move window"
 msgstr "Mover a janela"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:36
+#: data/keybindings/50-metacity-windows.xml:36
 msgid "Resize window"
 msgstr "Redimensionar a janela"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:39
+#: data/keybindings/50-metacity-windows.xml:39
 msgid "Toggle window on all workspaces or one"
 msgstr "Alternar janela em todos os espaços de trabalho ou em um"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:42
+#: data/keybindings/50-metacity-windows.xml:42
 msgid "Raise window if covered, otherwise lower it"
 msgstr ""
 "Elevar janela se ela estiver coberta por outra; caso contrário, baixe-a"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:45
+#: data/keybindings/50-metacity-windows.xml:45
 msgid "Raise window above other windows"
 msgstr "Elevar a janela para frente das outras"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:48
+#: data/keybindings/50-metacity-windows.xml:48
 msgid "Lower window below other windows"
 msgstr "Colocar a janela atrás das outras"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:51
+#: data/keybindings/50-metacity-windows.xml:51
 msgid "Maximize window vertically"
 msgstr "Maximizar a janela verticalmente"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:54
+#: data/keybindings/50-metacity-windows.xml:54
 msgid "Maximize window horizontally"
 msgstr "Maximizar a janela horizontalmente"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:58
+#: data/keybindings/50-metacity-windows.xml:58
 msgid "View split on left"
 msgstr "Exibição de divisão à esquerda"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:62
+#: data/keybindings/50-metacity-windows.xml:62
 msgid "View split on right"
 msgstr "Exibição de divisão à direita"
 
@@ -457,7 +410,7 @@ msgstr "Disposição de botões:"
 msgid "Composited:"
 msgstr "Composto:"
 
-#: data/ui/theme-viewer-window.ui:339 theme-viewer/theme-viewer-window.c:675
+#: data/ui/theme-viewer-window.ui:339 theme-viewer/theme-viewer-window.c:622
 msgid "Choose Theme"
 msgstr "Escolher tema"
 
@@ -465,7 +418,7 @@ msgstr "Escolher tema"
 msgid "Preview"
 msgstr "Visualizar"
 
-#: data/ui/theme-viewer-window.ui:468 theme-viewer/theme-viewer-window.c:255
+#: data/ui/theme-viewer-window.ui:468 theme-viewer/theme-viewer-window.c:250
 msgid "Run"
 msgstr "Executar"
 
@@ -575,12 +528,12 @@ msgstr "O fator de sombra \"%s\" na cor sombreada é negativo"
 msgid "Could not parse color '%s'"
 msgstr "Não foi possível analisar a cor \"%s\""
 
-#: libmetacity/meta-draw-spec.c:200
+#: libmetacity/meta-draw-spec.c:201
 #, c-format
 msgid "Coordinate expression contains character '%s' which is not allowed"
 msgstr "A expressão coordenada contém o caractere \"%s\" que não é permitido"
 
-#: libmetacity/meta-draw-spec.c:227
+#: libmetacity/meta-draw-spec.c:228
 #, c-format
 msgid ""
 "Coordinate expression contains floating point number '%s' which could not be "
@@ -589,13 +542,13 @@ msgstr ""
 "A expressão coordenada contém o número de ponto flutuante \"%s\" que não "
 "pôde ser analisado"
 
-#: libmetacity/meta-draw-spec.c:240
+#: libmetacity/meta-draw-spec.c:241
 #, c-format
 msgid "Coordinate expression contains integer '%s' which could not be parsed"
 msgstr ""
 "A expressão coordenada contém o inteiro \"%s\" que não pôde ser analisado"
 
-#: libmetacity/meta-draw-spec.c:367
+#: libmetacity/meta-draw-spec.c:368
 #, c-format
 msgid ""
 "Coordinate expression contained unknown operator at the start of this text: "
@@ -604,46 +557,39 @@ msgstr ""
 "A expressão coordenada continha um operador desconhecido no início deste "
 "texto: \"%s\""
 
-#: libmetacity/meta-draw-spec.c:423
+#: libmetacity/meta-draw-spec.c:424
 msgid "Coordinate expression was empty or not understood"
 msgstr "A expressão coordenada estava vazia ou não foi compreendida"
 
-#: libmetacity/meta-draw-spec.c:585
+#: libmetacity/meta-draw-spec.c:586
 #, c-format
 msgid "Coordinate expression had unknown variable or constant '%s'"
 msgstr ""
 "A expressão coordenada tinha uma variável ou uma constante desconhecida \"%s"
 "\""
 
-#: libmetacity/meta-draw-spec.c:630 libmetacity/meta-draw-spec.c:640
-#: libmetacity/meta-draw-spec.c:675
+#: libmetacity/meta-draw-spec.c:631 libmetacity/meta-draw-spec.c:641
+#: libmetacity/meta-draw-spec.c:676 libmetacity/meta-draw-spec.c:686
 msgid "Coordinate expression results in division by zero"
 msgstr "A expressão coordenada resulta na divisão por zero"
 
-#: libmetacity/meta-draw-spec.c:683
-msgid ""
-"Coordinate expression tries to use mod operator on a floating-point number"
-msgstr ""
-"A expressão coordenada tenta usar o operador mod em um número de ponto "
-"flutuante"
-
-#: libmetacity/meta-draw-spec.c:769
+#: libmetacity/meta-draw-spec.c:774
 #, c-format
 msgid ""
 "Coordinate expression has an operator \"%s\" where an operand was expected"
 msgstr ""
 "A expressão coordenada tem o operador \"%s\" onde era esperado um operando"
 
-#: libmetacity/meta-draw-spec.c:778
+#: libmetacity/meta-draw-spec.c:783
 msgid "Coordinate expression had an operand where an operator was expected"
 msgstr "A expressão coordenada tinha um operando onde era esperado um operador"
 
-#: libmetacity/meta-draw-spec.c:786
+#: libmetacity/meta-draw-spec.c:791
 msgid "Coordinate expression ended with an operator instead of an operand"
 msgstr ""
 "A expressão coordenada terminou com um operador, em vez de com um operando"
 
-#: libmetacity/meta-draw-spec.c:796
+#: libmetacity/meta-draw-spec.c:801
 #, c-format
 msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
@@ -652,28 +598,28 @@ msgstr ""
 "A expressão coordenada tem o operador \"%c\" após o operador \"%c\" sem "
 "nenhum operando entre eles"
 
-#: libmetacity/meta-draw-spec.c:928
+#: libmetacity/meta-draw-spec.c:933
 msgid "Coordinate expression parser overflowed its buffer."
 msgstr "O analisador de expressão coordenada estourou o buffer."
 
-#: libmetacity/meta-draw-spec.c:956
+#: libmetacity/meta-draw-spec.c:961
 msgid "Coordinate expression had a close parenthesis with no open parenthesis"
 msgstr ""
 "A expressão coordenada tinha um parêntese de fechamento sem um parêntese de "
 "abertura"
 
-#: libmetacity/meta-draw-spec.c:1024
+#: libmetacity/meta-draw-spec.c:1029
 msgid "Coordinate expression had an open parenthesis with no close parenthesis"
 msgstr ""
 "A expressão coordenada tinha um parêntese de abertura sem um parêntese de "
 "fechamento"
 
-#: libmetacity/meta-draw-spec.c:1034
+#: libmetacity/meta-draw-spec.c:1039
 msgid "Coordinate expression doesn't seem to have any operators or operands"
 msgstr "Aparentemente não há operadores nem operandos na expressão coordenada"
 
-#: libmetacity/meta-draw-spec.c:1226 libmetacity/meta-draw-spec.c:1246
-#: libmetacity/meta-draw-spec.c:1266
+#: libmetacity/meta-draw-spec.c:1231 libmetacity/meta-draw-spec.c:1251
+#: libmetacity/meta-draw-spec.c:1271
 #, c-format
 msgid "Theme contained an expression that resulted in an error: %s"
 msgstr "O tema continha uma expressão que resultou em um erro: %s"
@@ -728,11 +674,11 @@ msgstr ""
 "<button function='%s' state='%s' draw_ops='whatever'/> deve ser especificado "
 "para este estilo de quadro"
 
-#: libmetacity/meta-gradient-spec.c:125
+#: libmetacity/meta-gradient-spec.c:173
 msgid "Gradients should have at least two colors"
 msgstr "Os degradês devem ter pelo menos duas cores"
 
-#: libmetacity/meta-theme-impl.c:100
+#: libmetacity/meta-theme-impl.c:65
 #, c-format
 msgid "MetaThemeImplClass::load not implemented for '%s'"
 msgstr "MetaThemeImplClass::load não implementada para \"%s\""
@@ -1228,12 +1174,12 @@ msgstr "_Forçar sair"
 msgid "Failed to get hostname: %s\n"
 msgstr "Falha ao obter o nome da máquina: %s\n"
 
-#: src/core/display.c:322
+#: src/core/display.c:324
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
 msgstr "Falha ao abrir a exibição \"%s\" do X Window System\n"
 
-#: src/core/keybindings.c:690
+#: src/core/keybindings.c:691
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
@@ -1305,7 +1251,7 @@ msgstr ""
 msgid "Failed to restart: %s\n"
 msgstr "Falha ao reiniciar: %s\n"
 
-#: src/core/prefs.c:1020
+#: src/core/prefs.c:1043
 msgid ""
 "Workarounds for broken applications disabled. Some applications may not "
 "behave properly.\n"
@@ -1313,14 +1259,14 @@ msgstr ""
 "As alternativas para aplicativos quebrados estão desabilitadas. É possível "
 "que alguns aplicativos não funcionem de maneira adequada.\n"
 
-#: src/core/prefs.c:1097
+#: src/core/prefs.c:1120
 #, c-format
 msgid "Could not parse font description \"%s\" from GSettings key %s\n"
 msgstr ""
 "Não foi possível analisar a descrição da fonte \"%s\" a partir da chave "
 "GSettings %s\n"
 
-#: src/core/prefs.c:1159
+#: src/core/prefs.c:1182
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for mouse button "
@@ -1329,7 +1275,7 @@ msgstr ""
 "\"%s\" localizado no banco de dados de configurações não é um valor válido "
 "para o modificador de botão do mouse\n"
 
-#: src/core/prefs.c:1436
+#: src/core/prefs.c:1432
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
@@ -1338,12 +1284,12 @@ msgstr ""
 "\"%s\" localizado no banco de dados de configurações não é um valor válido "
 "para a tecla de atalho \"%s\"\n"
 
-#: src/core/prefs.c:1538
+#: src/core/prefs.c:1534
 #, c-format
 msgid "Workspace %d"
 msgstr "Espaço de trabalho %d"
 
-#: src/core/prefs.c:1795
+#: src/core/prefs.c:1791
 #, c-format
 msgid "Missing %s extension required for compositing\n"
 msgstr "Extensão %s necessária para composição faltando\n"
@@ -1565,51 +1511,51 @@ msgstr ""
 msgid "Usage: %s\n"
 msgstr "Uso: %s\n"
 
-#: src/ui/frames.c:1070
+#: src/ui/frames.c:1310
 msgid "Close Window"
 msgstr "Fechar janela"
 
-#: src/ui/frames.c:1073
+#: src/ui/frames.c:1313
 msgid "Window Menu"
 msgstr "Menu de janela"
 
-#: src/ui/frames.c:1076
+#: src/ui/frames.c:1316
 msgid "Window App Menu"
 msgstr "Menu de aplicativo de janelas"
 
-#: src/ui/frames.c:1079
+#: src/ui/frames.c:1319
 msgid "Minimize Window"
 msgstr "Minimizar janela"
 
-#: src/ui/frames.c:1082
+#: src/ui/frames.c:1322
 msgid "Maximize Window"
 msgstr "Maximizar janela"
 
-#: src/ui/frames.c:1085
+#: src/ui/frames.c:1325
 msgid "Restore Window"
 msgstr "Restaurar janela"
 
-#: src/ui/frames.c:1088
+#: src/ui/frames.c:1328
 msgid "Roll Up Window"
 msgstr "Enrolar janela"
 
-#: src/ui/frames.c:1091
+#: src/ui/frames.c:1331
 msgid "Unroll Window"
 msgstr "Desenrolar janela"
 
-#: src/ui/frames.c:1094
+#: src/ui/frames.c:1334
 msgid "Keep Window On Top"
 msgstr "Manter no topo"
 
-#: src/ui/frames.c:1097
+#: src/ui/frames.c:1337
 msgid "Remove Window From Top"
 msgstr "Remover do topo"
 
-#: src/ui/frames.c:1100
+#: src/ui/frames.c:1340
 msgid "Always On Visible Workspace"
 msgstr "Sempre no espaço de trabalho visível"
 
-#: src/ui/frames.c:1103
+#: src/ui/frames.c:1343
 msgid "Put Window On Only One Workspace"
 msgstr "Colocar em apenas um espaço de trabalho"
 
@@ -1695,21 +1641,21 @@ msgstr "Mover para o espaço de trabalho a_baixo"
 msgid "_Close"
 msgstr "Fe_char"
 
-#: src/ui/menu.c:200
+#: src/ui/menu.c:175
 #, c-format
 msgid "Workspace %d%n"
 msgstr "Espaço de trabalho %d%n"
 
-#: src/ui/menu.c:210
+#: src/ui/menu.c:185
 msgid "Workspace 1_0"
 msgstr "Espaço de trabalho 1_0"
 
-#: src/ui/menu.c:212
+#: src/ui/menu.c:187
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Espaço de trabalho %s%d"
 
-#: src/ui/menu.c:379
+#: src/ui/menu.c:354
 msgid "Move to Another _Workspace"
 msgstr "Mover para _outro espaço de trabalho"
 
@@ -1806,22 +1752,37 @@ msgstr "Mod5"
 #. Translators: This represents the size of a window.  The first number is
 #. * the width of the window and the second is the height.
 #.
-#: src/ui/resizepopup.c:139
+#: src/ui/resizepopup.c:86
 #, c-format
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: src/ui/ui.c:764
+#: src/ui/ui.c:768
 msgid "Falling back to default GTK+ theme - Adwaita"
 msgstr "Retrocedendo ao tema padrão do GTK+ - Adwaita"
 
-#: theme-viewer/theme-viewer-window.c:104
+#: theme-viewer/theme-viewer-main.c:32
+msgid "Theme type to use (\"gtk\" or \"metacity\")"
+msgstr "Tipo de tema a se usar (\"gtk\" ou \"metacity\")"
+
+#: theme-viewer/theme-viewer-main.c:32
+msgid "TYPE"
+msgstr "TIPO"
+
+#: theme-viewer/theme-viewer-main.c:36
+msgid "Theme name to use"
+msgstr "Nome do tema a ser usar"
+
+#: theme-viewer/theme-viewer-main.c:36
+msgid "NAME"
+msgstr "NOME"
+
+#: theme-viewer/theme-viewer-window.c:100
 #, c-format
-#| msgid "Loaded theme \"%s\" in %g seconds\n"
 msgid "Loaded <b>%s</b> theme <b>%s</b> in <b>%f</b> seconds."
 msgstr "Carregado o tema <b>%s</b> <b>%s</b> em <b>%f</b> segundos."
 
-#: theme-viewer/theme-viewer-window.c:134
+#: theme-viewer/theme-viewer-window.c:130
 #, c-format
 msgid ""
 "Got MetaFrameBorders in <b>%f</b> seconds (CSS loading, PangoFontDescription "
@@ -1830,28 +1791,30 @@ msgstr ""
 "Obtido MetaFrameBorders em <b>%f</b> segundos (carregamento de CSS, criação "
 "de PangoFontDescription e cálculo de altura do título)."
 
-#: theme-viewer/theme-viewer-window.c:210
+#: theme-viewer/theme-viewer-window.c:205
 #, c-format
-#| msgid ""
-#| "Drew %d frames in %g client-side seconds (%g milliseconds per frame) and "
-#| "%g seconds wall clock time including X server resources (%g milliseconds "
-#| "per frame)\n"
 msgid ""
 "Drew <b>%d</b> frames in <b>%f</b> client-side seconds (<b>%f</b> "
 "milliseconds per frame) and <b>%f</b> seconds wall clock time including X "
 "server resources (<b>%f</b> milliseconds per frame)."
 msgstr ""
-"Desenhados <b>%d</b> quadros em <b>%f</b> segundos do lado cliente (<b>%f</b>"
-" milissegundos por quadro) e <b>%f</b> segundos no relógio, incluindo "
+"Desenhados <b>%d</b> quadros em <b>%f</b> segundos do lado cliente (<b>%f</"
+"b> milissegundos por quadro) e <b>%f</b> segundos no relógio, incluindo "
 "recursos do servidor X (<b>%f</b> milissegundos por quadro)."
 
-#: theme-viewer/theme-viewer-window.c:247
+#: theme-viewer/theme-viewer-window.c:242
 msgid "Run again"
 msgstr "Executar novamente"
 
-#: theme-viewer/theme-viewer-window.c:983
+#: theme-viewer/theme-viewer-window.c:930
 msgid "Metacity Theme Viewer"
 msgstr "Visualizador de temas do Metacity"
+
+#~ msgid ""
+#~ "Coordinate expression tries to use mod operator on a floating-point number"
+#~ msgstr ""
+#~ "A expressão coordenada tenta usar o operador mod em um número de ponto "
+#~ "flutuante"
 
 #~ msgid "Failed to scan themes directory: %s\n"
 #~ msgstr "Falha ao varrer a pasta de temas: %s\n"
