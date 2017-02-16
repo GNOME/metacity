@@ -1,3 +1,15 @@
+Version 3.23.90
+===============
+- Fix tooltip style (Alberts Muktupāvels; #772984)
+- Fix crash in meta_group_new (Alberts Muktupāvels; LP:#1638153)
+- Fix window stacking order in compositor (Alberts Muktupāvels; LP:#1614050)
+- Ignore deprecation warnings (Alberts Muktupāvels)
+- Updated translations:
+  Ask Hjorth Larsen (da), Daniel Mustieles (es), Enrico Nicoletto (pt_BR),
+  Gianvito Cavasoli (it), Josef Andersson (sv), Marek Černocký (cs),
+  Mario Blättermann (de), Piotr Drąg (pl), Theppitak Karoonboonyanan (th),
+  Tiago Santos (pt).
+
 Version 3.22.0
 ==============
 - Use shadow from GTK+ theme (Alberts Muktupāvels)
