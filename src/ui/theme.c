@@ -3904,7 +3904,7 @@ create_cairo_pattern_from_gradient_spec (const MetaGradientSpec      *spec,
   if (n_colors == 0)
     return NULL;
 
-  if (alpha_spec != NULL)
+  if (alpha_spec != NULL && alpha_spec->n_alphas != 1)
     g_assert (n_colors == alpha_spec->n_alphas);
 
   if (spec->type == META_GRADIENT_HORIZONTAL)
@@ -3925,9 +3925,18 @@ create_cairo_pattern_from_gradient_spec (const MetaGradientSpec      *spec,
       meta_color_spec_render (tmp->data, context, &color);
 
       if (alpha_spec != NULL)
-        cairo_pattern_add_color_stop_rgba (pattern, i / (gfloat) (n_colors - 1),
-                                           color.red, color.green, color.blue,
-                                           alpha_spec->alphas[i] / 255.0);
+        {
+          gdouble alpha;
+
+          if (alpha_spec->n_alphas == 1)
+            alpha = alpha_spec->alphas[0] / 255.0;
+          else
+            alpha = alpha_spec->alphas[i] / 255.0;
+
+          cairo_pattern_add_color_stop_rgba (pattern, i / (gfloat) (n_colors - 1),
+                                             color.red, color.green, color.blue,
+                                             alpha);
+        }
       else
         cairo_pattern_add_color_stop_rgb (pattern, i / (gfloat) (n_colors - 1),
                                           color.red, color.green, color.blue);
