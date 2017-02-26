@@ -347,6 +347,12 @@ meta_compositor_unmaximize_window (MetaCompositor *compositor,
   compositor_class->unmaximize_window (compositor, window);
 }
 
+void
+meta_compositor_sync_stack (MetaCompositor *compositor,
+                            GList          *stack)
+{
+}
+
 MetaDisplay *
 meta_compositor_get_display (MetaCompositor *compositor)
 {

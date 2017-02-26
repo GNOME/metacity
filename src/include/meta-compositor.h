@@ -92,6 +92,9 @@ void             meta_compositor_maximize_window    (MetaCompositor     *composi
 void             meta_compositor_unmaximize_window  (MetaCompositor     *compositor,
                                                      MetaWindow         *window);
 
+void             meta_compositor_sync_stack         (MetaCompositor     *compositor,
+                                                     GList              *stack);
+
 MetaDisplay     *meta_compositor_get_display        (MetaCompositor     *compositor);
 
 G_END_DECLS
