@@ -396,6 +396,8 @@ meta_window_new_with_attrs (MetaDisplay       *display,
 
   window->desc = g_strdup_printf ("0x%lx", window->xwindow);
 
+  window->override_redirect = attrs->override_redirect;
+
   /* avoid tons of stack updates */
   meta_stack_freeze (window->screen->stack);
 
