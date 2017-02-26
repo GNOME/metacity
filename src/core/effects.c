@@ -122,19 +122,6 @@ struct MetaEffect
 
 static void run_default_effect_handler (MetaEffect *effect);
 static void run_handler (MetaEffect *effect);
-static void effect_free (MetaEffect *effect);
-
-static MetaEffect *
-create_effect (MetaEffectType      type,
-               MetaWindow         *window,
-               MetaEffectFinished  finished,
-               gpointer            finished_data);
-
-static void
-draw_box_animation (MetaScreen     *screen,
-                    MetaRectangle  *initial_rect,
-                    MetaRectangle  *destination_rect,
-                    double          seconds_duration);
 
 /**
  * Creates an effect.
@@ -356,7 +343,7 @@ effects_draw_box_animation_timeout (BoxAnimationContext *context)
   return TRUE;
 }
 
-void
+static void
 draw_box_animation (MetaScreen     *screen,
                     MetaRectangle  *initial_rect,
                     MetaRectangle  *destination_rect,
