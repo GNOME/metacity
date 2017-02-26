@@ -561,8 +561,11 @@ meta_window_new_with_attrs (MetaDisplay       *display,
 
   meta_window_load_initial_properties (window);
 
-  update_sm_hints (window); /* must come after transient_for */
-  meta_window_update_icon_now (window);
+  if (!window->override_redirect)
+    update_sm_hints (window); /* must come after transient_for */
+
+  if (!window->override_redirect)
+    meta_window_update_icon_now (window);
 
   if (window->initially_iconic)
     {
@@ -595,7 +598,7 @@ meta_window_new_with_attrs (MetaDisplay       *display,
    * much we can do...except record the current time so that any children
    * can use this time as a fallback.
    */
-  if (!window->net_wm_user_time_set) {
+  if (!window->override_redirect && !window->net_wm_user_time_set) {
     MetaWindow *parent = NULL;
     if (window->xtransient_for)
       parent = meta_display_lookup_x_window (window->display,
@@ -710,9 +713,12 @@ meta_window_new_with_attrs (MetaDisplay       *display,
     }
 
   /* for the various on_all_workspaces = TRUE possible above */
-  meta_window_set_current_workspace_hint (window);
+  if (!window->override_redirect)
+    {
+      meta_window_set_current_workspace_hint (window);
 
-  meta_window_update_struts (window);
+      meta_window_update_struts (window);
+    }
 
   /* Must add window to stack before doing move/resize, since the
    * window might have fullscreen size (i.e. should have been
@@ -5809,6 +5815,8 @@ gboolean
 meta_window_get_icon_geometry (MetaWindow    *window,
                                MetaRectangle *rect)
 {
+  g_return_val_if_fail (!window->override_redirect, FALSE);
+
   if (window->icon_geometry_set)
     {
       if (rect)
@@ -5951,6 +5959,8 @@ meta_window_update_icon_now (MetaWindow *window)
   GdkPixbuf *icon;
   GdkPixbuf *mini_icon;
 
+  g_return_if_fail (!window->override_redirect);
+
   icon = NULL;
   mini_icon = NULL;
 
@@ -6053,6 +6063,8 @@ meta_window_update_struts (MetaWindow *window)
   gulong *struts = NULL;
   int nitems;
   gboolean changed;
+
+  g_return_if_fail (!window->override_redirect);
 
   meta_verbose ("Updating struts for %s\n", window->desc);
 
@@ -8446,6 +8458,8 @@ meta_window_set_user_time (MetaWindow *window,
    * us to sanity check the timestamp here and ensure it doesn't correspond to
    * a future time.
    */
+
+  g_return_if_fail (!window->override_redirect);
 
   /* Only update the time if this timestamp is newer... */
   if (window->net_wm_user_time_set &&

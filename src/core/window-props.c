@@ -68,8 +68,9 @@ typedef void (* ReloadValueFunc) (MetaWindow    *window,
 typedef enum {
   NONE       = 0,
   LOAD_INIT  = (1 << 0),
-  INIT_ONLY  = (1 << 1),
-  FORCE_INIT = (1 << 2),
+  INCLUDE_OR = (1 << 1),
+  INIT_ONLY  = (1 << 2),
+  FORCE_INIT = (1 << 3),
 } MetaPropHookFlags;
 
 struct _MetaWindowPropHooks {
@@ -178,7 +179,8 @@ init_prop_value (MetaWindow          *window,
                  MetaWindowPropHooks *hooks,
                  MetaPropValue       *value)
 {
-  if (!hooks || hooks->type == META_PROP_VALUE_INVALID)
+  if (!hooks || hooks->type == META_PROP_VALUE_INVALID ||
+      (window->override_redirect && !(hooks->flags & INCLUDE_OR)))
     {
       value->type = META_PROP_VALUE_INVALID;
       value->atom = None;
@@ -196,7 +198,7 @@ reload_prop_value (MetaWindow          *window,
                    MetaPropValue       *value,
                    gboolean             initial)
 {
-  if (hooks && hooks->reload_func != NULL)
+  if (!(window->override_redirect && !(hooks->flags & INCLUDE_OR)))
     (* hooks->reload_func) (window, value, initial);
 }
 
@@ -1617,36 +1619,49 @@ reload_gtk_theme_variant (MetaWindow    *window,
 void
 meta_display_init_window_prop_hooks (MetaDisplay *display)
 {
+  /* The ordering here is significant for the properties we load
+   * initially: they are roughly ordered in the order we want them to
+   * be gotten. We want to get window name and class first so we can
+   * use them in error messages and such. However, name is modified
+   * depending on wm_client_machine, so push it slightly sooner.
+   *
+   * For override-redirect windows, we pay attention to:
+   *
+   *  - properties that identify the window: useful for debugging
+   *    purposes.
+   *  - NET_WM_WINDOW_TYPE: can be used to do appropriate handling
+   *    for different types of override-redirect windows.
+   */
   MetaWindowPropHooks hooks[] = {
     {
       display->atom_WM_CLIENT_MACHINE,
       META_PROP_VALUE_STRING,
       reload_wm_client_machine,
-      LOAD_INIT
+      LOAD_INIT | INCLUDE_OR
     },
     {
       display->atom__NET_WM_NAME,
       META_PROP_VALUE_UTF8,
       reload_net_wm_name,
-      LOAD_INIT
+      LOAD_INIT | INCLUDE_OR
     },
     {
       XA_WM_CLASS,
       META_PROP_VALUE_CLASS_HINT,
       reload_wm_class,
-      LOAD_INIT
+      LOAD_INIT | INCLUDE_OR
     },
     {
       display->atom__NET_WM_PID,
       META_PROP_VALUE_CARDINAL,
       reload_net_wm_pid,
-      LOAD_INIT
+      LOAD_INIT | INCLUDE_OR
     },
     {
       XA_WM_NAME,
       META_PROP_VALUE_TEXT_PROPERTY,
       reload_wm_name,
-      LOAD_INIT
+      LOAD_INIT | INCLUDE_OR
     },
     {
       display->atom__NET_WM_DESKTOP,
@@ -1664,7 +1679,7 @@ meta_display_init_window_prop_hooks (MetaDisplay *display)
       display->atom__NET_WM_SYNC_REQUEST_COUNTER,
       META_PROP_VALUE_SYNC_COUNTER,
       reload_update_counter,
-      LOAD_INIT
+      LOAD_INIT | INCLUDE_OR
     },
     {
       XA_WM_NORMAL_HINTS,
@@ -1727,12 +1742,6 @@ meta_display_init_window_prop_hooks (MetaDisplay *display)
       LOAD_INIT
     },
     {
-      display->atom_WM_STATE,
-      META_PROP_VALUE_INVALID,
-      NULL,
-      NONE
-    },
-    {
       display->atom__NET_WM_ICON,
       META_PROP_VALUE_INVALID,
       reload_net_wm_icon,
@@ -1772,7 +1781,7 @@ meta_display_init_window_prop_hooks (MetaDisplay *display)
       display->atom__NET_WM_WINDOW_TYPE,
       META_PROP_VALUE_ATOM_LIST,
       reload_net_wm_window_type,
-      LOAD_INIT | FORCE_INIT
+      LOAD_INIT | INCLUDE_OR | FORCE_INIT
     },
     {
       display->atom__NET_WM_STRUT,
