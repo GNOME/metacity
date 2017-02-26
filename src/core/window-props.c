@@ -102,6 +102,9 @@ meta_window_reload_property_from_xwindow (MetaWindow *window,
   if (!hooks)
     return;
 
+  if ((hooks->flags & INIT_ONLY) && !initial)
+    return;
+
   init_prop_value (window, hooks, &value);
 
   meta_prop_get_values (window->display, xwindow,
