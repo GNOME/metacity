@@ -1,19 +1,19 @@
 # Serbian translation of metacity
-# Courtesy of Prevod.org team (http://prevod.org/) -- 2003—2016.
+# Courtesy of Prevod.org team (http://prevod.org/) -- 2003—2017.
 # This file is distributed under the same license as the metacity package.
 # Translators:
 # Горан Ракић <grakic@devbase.net>
 # Данило Шеган <danilo@prevod.org>, 2005.
-# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2011—2016.
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2011—2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=metacit"
 "y&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-08-15 20:52+0000\n"
-"PO-Revision-Date: 2016-08-24 05:08+0200\n"
+"POT-Creation-Date: 2017-02-06 12:25+0000\n"
+"PO-Revision-Date: 2017-02-12 18:21+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
-"Language-Team: српски <gnome-sr@googlegroups.org>\n"
+"Language-Team: Serbian <(nothing)>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,238 +32,191 @@ msgstr "Метасити"
 msgid "preferences-system-windows"
 msgstr "поставке-систем-прозори"
 
-#. (itstool) path: 50-metacity-navigation.xml/KeyListEntries@name
-#: 50-metacity-navigation.xml:6
+#: data/keybindings/50-metacity-navigation.xml:6
 msgid "Navigation"
 msgstr "Навигација"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:9
+#: data/keybindings/50-metacity-navigation.xml:9
 msgid "Move window to workspace 1"
 msgstr "Премешта прозор на радни простор број 1"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:12
+#: data/keybindings/50-metacity-navigation.xml:12
 msgid "Move window to workspace 2"
 msgstr "Премешта прозор на радни простор број 2"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:15
+#: data/keybindings/50-metacity-navigation.xml:15
 msgid "Move window to workspace 3"
 msgstr "Премешта прозор на радни простор број 3"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:18
+#: data/keybindings/50-metacity-navigation.xml:18
 msgid "Move window to workspace 4"
 msgstr "Премешта прозор на радни простор број 4"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:21
+#: data/keybindings/50-metacity-navigation.xml:21
 msgid "Move window one workspace to the left"
 msgstr "Премешта прозор један радни простор улево"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:24
+#: data/keybindings/50-metacity-navigation.xml:24
 msgid "Move window one workspace to the right"
 msgstr "Премешта прозор један радни простор удесно"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:27
+#: data/keybindings/50-metacity-navigation.xml:27
 msgid "Move window one workspace up"
 msgstr "Премешта прозор један радни простор на горе"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:30
+#: data/keybindings/50-metacity-navigation.xml:30
 msgid "Move window one workspace down"
 msgstr "Премешта прозор један радни простор на доле"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:33
+#: data/keybindings/50-metacity-navigation.xml:33
 msgid "Switch windows"
 msgstr "Пребацује прозоре"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:36
+#: data/keybindings/50-metacity-navigation.xml:36
 msgid "Switch applications"
 msgstr "Пребацује програме"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:39
+#: data/keybindings/50-metacity-navigation.xml:39
 msgid "Switch windows of an application"
 msgstr "Пребацује прозор програма"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:42
+#: data/keybindings/50-metacity-navigation.xml:42
 msgid "Switch system controls"
 msgstr "Пребацује контроле система"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:45
+#: data/keybindings/50-metacity-navigation.xml:45
 msgid "Switch windows directly"
 msgstr "Пребацује прозоре непосредно"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:48
+#: data/keybindings/50-metacity-navigation.xml:48
 msgid "Switch windows of an app directly"
 msgstr "Пребацује прозоре програма непосредно"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:51
+#: data/keybindings/50-metacity-navigation.xml:51
 msgid "Switch system controls directly"
 msgstr "Пребацује контроле система непосредно"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:54
+#: data/keybindings/50-metacity-navigation.xml:54
 msgid "Hide all normal windows"
 msgstr "Скрива све обичне прозоре"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:57
+#: data/keybindings/50-metacity-navigation.xml:57
 msgid "Switch to workspace 1"
 msgstr "Прелази на радни простор 1"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:60
+#: data/keybindings/50-metacity-navigation.xml:60
 msgid "Switch to workspace 2"
 msgstr "Прелази на радни простор 2"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:63
+#: data/keybindings/50-metacity-navigation.xml:63
 msgid "Switch to workspace 3"
 msgstr "Прелази на радни простор 3"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:66
+#: data/keybindings/50-metacity-navigation.xml:66
 msgid "Switch to workspace 4"
 msgstr "Прелази на радни простор 4"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:69
+#: data/keybindings/50-metacity-navigation.xml:69
 msgid "Move to workspace left"
 msgstr "Премешта на радни простор лево"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:72
+#: data/keybindings/50-metacity-navigation.xml:72
 msgid "Move to workspace right"
 msgstr "Премешта на радни простор десно"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:75
+#: data/keybindings/50-metacity-navigation.xml:75
 msgid "Move to workspace above"
 msgstr "Премешта на радни простор изнад"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-navigation.xml:78
+#: data/keybindings/50-metacity-navigation.xml:78
 msgid "Move to workspace below"
 msgstr "Премешта на радни простор испод"
 
-#. (itstool) path: 50-metacity-system.xml/KeyListEntries@name
-#: 50-metacity-system.xml:6
+#: data/keybindings/50-metacity-system.xml:6
 msgid "System"
 msgstr "Систем"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-system.xml:9
+#: data/keybindings/50-metacity-system.xml:9
 msgid "Show the run command prompt"
 msgstr "Приказује упит за покретање наредбе"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-system.xml:12
+#: data/keybindings/50-metacity-system.xml:12
 msgid "Show the applications menu"
 msgstr "Приказује изборник програма"
 
-#. (itstool) path: 50-metacity-windows.xml/KeyListEntries@name
-#: 50-metacity-windows.xml:6
+#: data/keybindings/50-metacity-windows.xml:6
 msgid "Windows"
 msgstr "Прозори"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:9
+#: data/keybindings/50-metacity-windows.xml:9
 msgid "Activate the window menu"
 msgstr "Покреће изборник прозора"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:12
+#: data/keybindings/50-metacity-windows.xml:12
 msgid "Toggle fullscreen mode"
 msgstr "Искључује/укључује приказ преко целог екрана"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:15
+#: data/keybindings/50-metacity-windows.xml:15
 msgid "Toggle maximization state"
 msgstr "Искључује/укључује стање увећања"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:18
+#: data/keybindings/50-metacity-windows.xml:18
 msgid "Maximize window"
 msgstr "Увећава прозор"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:21
+#: data/keybindings/50-metacity-windows.xml:21
 msgid "Restore window"
 msgstr "Враћа величину прозора"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:24
+#: data/keybindings/50-metacity-windows.xml:24
 msgid "Toggle shaded state"
 msgstr "Искључује/укључује стање засенчености"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:27
+#: data/keybindings/50-metacity-windows.xml:27
 msgid "Close window"
 msgstr "Затвара прозор"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:30
+#: data/keybindings/50-metacity-windows.xml:30
 msgid "Minimize window"
 msgstr "Умањује прозор"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:33
+#: data/keybindings/50-metacity-windows.xml:33
 msgid "Move window"
 msgstr "Премешта прозор"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:36
+#: data/keybindings/50-metacity-windows.xml:36
 msgid "Resize window"
 msgstr "Мења величину прозора"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:39
+#: data/keybindings/50-metacity-windows.xml:39
 msgid "Toggle window on all workspaces or one"
 msgstr "Приказује прозор на свим радним просторима или само на једном"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:42
+#: data/keybindings/50-metacity-windows.xml:42
 msgid "Raise window if covered, otherwise lower it"
 msgstr "Издиже прозор уколико га други прозор заклања, у противном га спушта"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:45
+#: data/keybindings/50-metacity-windows.xml:45
 msgid "Raise window above other windows"
 msgstr "Издиже прозор изнад осталих прозора"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:48
+#: data/keybindings/50-metacity-windows.xml:48
 msgid "Lower window below other windows"
 msgstr "Спушта прозор испод осталих прозора"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:51
+#: data/keybindings/50-metacity-windows.xml:51
 msgid "Maximize window vertically"
 msgstr "Увећава прозор усправно"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:54
+#: data/keybindings/50-metacity-windows.xml:54
 msgid "Maximize window horizontally"
 msgstr "Увећава прозор водоравно"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:58
+#: data/keybindings/50-metacity-windows.xml:58
 msgid "View split on left"
 msgstr "Прикажите поделу на лево"
 
-#. (itstool) path: KeyListEntries/KeyListEntry@description
-#: 50-metacity-windows.xml:62
+#: data/keybindings/50-metacity-windows.xml:62
 msgid "View split on right"
 msgstr "Прикажите поделу на десно"
 
@@ -443,7 +396,7 @@ msgstr "Распоред дугмића:"
 msgid "Composited:"
 msgstr "Наслаган:"
 
-#: data/ui/theme-viewer-window.ui:339 theme-viewer/theme-viewer-window.c:675
+#: data/ui/theme-viewer-window.ui:339 theme-viewer/theme-viewer-window.c:622
 msgid "Choose Theme"
 msgstr "Изаберите тему"
 
@@ -451,7 +404,7 @@ msgstr "Изаберите тему"
 msgid "Preview"
 msgstr "Преглед"
 
-#: data/ui/theme-viewer-window.ui:468 theme-viewer/theme-viewer-window.c:255
+#: data/ui/theme-viewer-window.ui:468 theme-viewer/theme-viewer-window.c:250
 msgid "Run"
 msgstr "Покрени"
 
@@ -596,21 +549,21 @@ msgstr "Израз са координатама има непознату пр�
 msgid "Coordinate expression results in division by zero"
 msgstr "Израз са координатама резултира у дељењу нулом"
 
-#: libmetacity/meta-draw-spec.c:774
+#: libmetacity/meta-draw-spec.c:775
 #, c-format
 msgid ""
 "Coordinate expression has an operator \"%s\" where an operand was expected"
 msgstr "Израз са координатама има оператор „%s“ где је очекиван операнд"
 
-#: libmetacity/meta-draw-spec.c:783
+#: libmetacity/meta-draw-spec.c:784
 msgid "Coordinate expression had an operand where an operator was expected"
 msgstr "Израз са координатама имаше операнд где је очекиван оператор"
 
-#: libmetacity/meta-draw-spec.c:791
+#: libmetacity/meta-draw-spec.c:792
 msgid "Coordinate expression ended with an operator instead of an operand"
 msgstr "Израз са координатама је завршио са оператором уместо са операндом"
 
-#: libmetacity/meta-draw-spec.c:801
+#: libmetacity/meta-draw-spec.c:802
 #, c-format
 msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
@@ -619,24 +572,24 @@ msgstr ""
 "Израз са координатама има оператор „%c“, а затим оператор „%c“ без операнда "
 "између"
 
-#: libmetacity/meta-draw-spec.c:933
+#: libmetacity/meta-draw-spec.c:934
 msgid "Coordinate expression parser overflowed its buffer."
 msgstr "Израз са координатама је био превелики за смештај и обраду."
 
-#: libmetacity/meta-draw-spec.c:961
+#: libmetacity/meta-draw-spec.c:964
 msgid "Coordinate expression had a close parenthesis with no open parenthesis"
 msgstr "Израз са координатама има затворене заграде без отворених заграда"
 
-#: libmetacity/meta-draw-spec.c:1029
+#: libmetacity/meta-draw-spec.c:1037
 msgid "Coordinate expression had an open parenthesis with no close parenthesis"
 msgstr "Израз са координатама има отворену заграду без затворене заграде"
 
-#: libmetacity/meta-draw-spec.c:1039
+#: libmetacity/meta-draw-spec.c:1047
 msgid "Coordinate expression doesn't seem to have any operators or operands"
 msgstr "Израз са координатама изгледа да нема ни један оператор или операнд"
 
-#: libmetacity/meta-draw-spec.c:1231 libmetacity/meta-draw-spec.c:1251
-#: libmetacity/meta-draw-spec.c:1271
+#: libmetacity/meta-draw-spec.c:1239 libmetacity/meta-draw-spec.c:1259
+#: libmetacity/meta-draw-spec.c:1279
 #, c-format
 msgid "Theme contained an expression that resulted in an error: %s"
 msgstr "Тема садржи израз који резултира грешком: %s"
@@ -676,6 +629,10 @@ msgstr "Однос размере дугмета %g није разуман"
 msgid "Frame geometry does not specify size of buttons"
 msgstr "Геометрија оквира не подешава величину дугмића"
 
+#. Translators: This error occurs when a <frame> tag is missing
+#. * in theme XML.  The "<frame ...>" is intended as a noun phrase,
+#. * and the "missing" qualifies it.  You should translate "whatever".
+#.
 #: libmetacity/meta-frame-style.c:144 libmetacity/meta-frame-style.c:469
 #, c-format
 msgid "Missing <frame state='%s' resize='%s' focus='%s' style='whatever' />"
@@ -694,7 +651,7 @@ msgstr ""
 msgid "Gradients should have at least two colors"
 msgstr "Градијенти морају имати најмање две боје"
 
-#: libmetacity/meta-theme-impl.c:100
+#: libmetacity/meta-theme-impl.c:65
 #, c-format
 msgid "MetaThemeImplClass::load not implemented for '%s'"
 msgstr "„MetaThemeImplClass::load“ није примењено за „%s“"
@@ -1100,6 +1057,10 @@ msgstr "Елемент <%s> није дозвољен унутар елемен�
 msgid "Element <%s> is not allowed inside a <%s> element"
 msgstr "Елемент <%s> није дозвољен унутар <%s> елемента"
 
+#. Translators: This error means that a necessary XML tag (whose name
+#. * is given in angle brackets) was not found in a given theme (whose
+#. * name is given second, in quotation marks).
+#.
 #: libmetacity/meta-theme-metacity.c:3834
 #: libmetacity/meta-theme-metacity.c:3842
 #: libmetacity/meta-theme-metacity.c:3850
@@ -1145,7 +1106,7 @@ msgstr "Није дозвољен текст унутар елемента <%s>"
 msgid "Failed to find a valid file for theme '%s'"
 msgstr "Нисам успео да пронађем исправну датотеку за тему „%s“"
 
-#: src/core/bell.c:296
+#: src/core/bell.c:290
 msgid "Bell event"
 msgstr "Звонце"
 
@@ -1181,12 +1142,12 @@ msgstr "_Приморај излаз"
 msgid "Failed to get hostname: %s\n"
 msgstr "Нисам успео да сазнам назив рачунара: %s\n"
 
-#: src/core/display.c:323
+#: src/core/display.c:304
 #, c-format
 msgid "Failed to open X Window System display '%s'\n"
 msgstr "Нисам успео да отворим екран система Х прозора „%s“\n"
 
-#: src/core/keybindings.c:690
+#: src/core/keybindings.c:683
 #, c-format
 msgid ""
 "Some other program is already using the key %s with modifiers %x as a "
@@ -1279,29 +1240,29 @@ msgstr ""
 "„%s“ је пронађен у бази подешавања што није исправна вредност за типку која "
 "мења понашање тастера миша\n"
 
-#: src/core/prefs.c:1459
+#: src/core/prefs.c:1432
 #, c-format
 msgid ""
 "\"%s\" found in configuration database is not a valid value for keybinding "
 "\"%s\"\n"
 msgstr "„%s“ из базе са подешавањима није исправна комбинација тастера „%s“\n"
 
-#: src/core/prefs.c:1561
+#: src/core/prefs.c:1534
 #, c-format
 msgid "Workspace %d"
 msgstr "Радни простор бр. %d"
 
-#: src/core/prefs.c:1818
+#: src/core/prefs.c:1791
 #, c-format
 msgid "Missing %s extension required for compositing\n"
 msgstr "Недостаје %s проширење потребно за слагање\n"
 
-#: src/core/screen.c:364
+#: src/core/screen.c:365
 #, c-format
 msgid "Screen %d on display '%s' is invalid\n"
 msgstr "Приказ „%d“ на екрану „%s“ није исправан\n"
 
-#: src/core/screen.c:380
+#: src/core/screen.c:381
 #, c-format
 msgid ""
 "Screen %d on display \"%s\" already has a window manager; try using the --"
@@ -1310,18 +1271,18 @@ msgstr ""
 "Приказ „%d“ на екрану „%s“ већ има управника прозора; покушајте да користите "
 "опцију „--replace“ да замените тренутног управника прозора.\n"
 
-#: src/core/screen.c:407
+#: src/core/screen.c:408
 #, c-format
 msgid ""
 "Could not acquire window manager selection on screen %d display \"%s\"\n"
 msgstr "Не могу да добијем избор управника прозора на приказу %d екрана „%s“\n"
 
-#: src/core/screen.c:463
+#: src/core/screen.c:464
 #, c-format
 msgid "Screen %d on display \"%s\" already has a window manager\n"
 msgstr "Приказ %d на екрану „%s“ већ има управника прозора\n"
 
-#: src/core/screen.c:675
+#: src/core/screen.c:672
 #, c-format
 msgid "Could not release screen %d on display \"%s\"\n"
 msgstr "Не могу да отпустим приказ %d на екрану „%s“\n"
@@ -1415,7 +1376,7 @@ msgid "Window manager error: "
 msgstr "Грешка управника прозора: "
 
 #. first time through
-#: src/core/window.c:5950
+#: src/core/window.c:5933
 #, c-format
 msgid ""
 "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
@@ -1431,7 +1392,7 @@ msgstr ""
 #. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
 #. * about these apps but make them work.
 #.
-#: src/core/window.c:6440
+#: src/core/window.c:6423
 #, c-format
 msgid ""
 "Window %s sets an MWM hint indicating it isn't resizable, but sets min size "
@@ -1510,51 +1471,51 @@ msgstr ""
 msgid "Usage: %s\n"
 msgstr "Употреба: %s\n"
 
-#: src/ui/frames.c:1064
+#: src/ui/frames.c:1310
 msgid "Close Window"
 msgstr "Затвори прозор"
 
-#: src/ui/frames.c:1067
+#: src/ui/frames.c:1313
 msgid "Window Menu"
 msgstr "Изборник прозора"
 
-#: src/ui/frames.c:1070
+#: src/ui/frames.c:1316
 msgid "Window App Menu"
 msgstr "Изборник прозора програма"
 
-#: src/ui/frames.c:1073
+#: src/ui/frames.c:1319
 msgid "Minimize Window"
 msgstr "Умањи прозор"
 
-#: src/ui/frames.c:1076
+#: src/ui/frames.c:1322
 msgid "Maximize Window"
 msgstr "Увећај прозор"
 
-#: src/ui/frames.c:1079
+#: src/ui/frames.c:1325
 msgid "Restore Window"
 msgstr "Врати величину прозору"
 
-#: src/ui/frames.c:1082
+#: src/ui/frames.c:1328
 msgid "Roll Up Window"
 msgstr "Замотај прозор"
 
-#: src/ui/frames.c:1085
+#: src/ui/frames.c:1331
 msgid "Unroll Window"
 msgstr "Одмотај прозор"
 
-#: src/ui/frames.c:1088
+#: src/ui/frames.c:1334
 msgid "Keep Window On Top"
 msgstr "Стави прозор у први план"
 
-#: src/ui/frames.c:1091
+#: src/ui/frames.c:1337
 msgid "Remove Window From Top"
 msgstr "Склони прозор из првог плана"
 
-#: src/ui/frames.c:1094
+#: src/ui/frames.c:1340
 msgid "Always On Visible Workspace"
 msgstr "Увек на приказаном радном простору"
 
-#: src/ui/frames.c:1097
+#: src/ui/frames.c:1343
 msgid "Put Window On Only One Workspace"
 msgstr "Стави прозор само на један радни простор"
 
@@ -1640,21 +1601,21 @@ msgstr "Премести на радни простор и_спод"
 msgid "_Close"
 msgstr "_Затвори"
 
-#: src/ui/menu.c:200
+#: src/ui/menu.c:175
 #, c-format
 msgid "Workspace %d%n"
 msgstr "Радни простор %d%n"
 
-#: src/ui/menu.c:210
+#: src/ui/menu.c:185
 msgid "Workspace 1_0"
 msgstr "1_0° радни простор"
 
-#: src/ui/menu.c:212
+#: src/ui/menu.c:187
 #, c-format
 msgid "Workspace %s%d"
 msgstr "%s%d° радни простор"
 
-#: src/ui/menu.c:379
+#: src/ui/menu.c:354
 msgid "Move to Another _Workspace"
 msgstr "Премести на други _радни простор"
 
@@ -1751,23 +1712,39 @@ msgstr "Мод5"
 #. Translators: This represents the size of a window.  The first number is
 #. * the width of the window and the second is the height.
 #.
-#: src/ui/resizepopup.c:136
+#: src/ui/resizepopup.c:86
 #, c-format
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: src/ui/ui.c:769
+#: src/ui/ui.c:768
 msgid "Falling back to default GTK+ theme - Adwaita"
 msgstr "Враћам се на подразумевану ГТК+ тему — Адвајту"
 
+#: theme-viewer/theme-viewer-main.c:32
+msgid "Theme type to use (\"gtk\" or \"metacity\")"
+msgstr "Врста теме за коришћење (гтк или метасити)"
+
+#: theme-viewer/theme-viewer-main.c:32
+msgid "TYPE"
+msgstr "ВРСТА"
+
+#: theme-viewer/theme-viewer-main.c:36
+#| msgid "Theme Name"
+msgid "Theme name to use"
+msgstr "Назив теме за коришћење"
+
+#: theme-viewer/theme-viewer-main.c:36
+msgid "NAME"
+msgstr "НАЗИВ"
+
 # bug: plural-forms
-#: theme-viewer/theme-viewer-window.c:104
+#: theme-viewer/theme-viewer-window.c:100
 #, c-format
-#| msgid "Loaded theme \"%s\" in %g seconds\n"
 msgid "Loaded <b>%s</b> theme <b>%s</b> in <b>%f</b> seconds."
 msgstr "Учитах <b>%s</b> тему <b>%s</b> за <b>%f</b> секунде."
 
-#: theme-viewer/theme-viewer-window.c:134
+#: theme-viewer/theme-viewer-window.c:130
 #, c-format
 msgid ""
 "Got MetaFrameBorders in <b>%f</b> seconds (CSS loading, PangoFontDescription "
@@ -1777,12 +1754,8 @@ msgstr ""
 "описа Панго слова и израчунавање висине наслова)."
 
 # bug: plural-forms
-#: theme-viewer/theme-viewer-window.c:210
+#: theme-viewer/theme-viewer-window.c:205
 #, c-format
-#| msgid ""
-#| "Drew %d frames in %g client-side seconds (%g milliseconds per frame) and "
-#| "%g seconds wall clock time including X server resources (%g milliseconds "
-#| "per frame)\n"
 msgid ""
 "Drew <b>%d</b> frames in <b>%f</b> client-side seconds (<b>%f</b> "
 "milliseconds per frame) and <b>%f</b> seconds wall clock time including X "
@@ -1792,11 +1765,11 @@ msgstr ""
 "милисекунди по оквиру) и <b>%f</b> секунди времена на зидном часовнику "
 "укључујући и ресурсе Икс сервера (<b>%f</b> милисекунди по оквиру)."
 
-#: theme-viewer/theme-viewer-window.c:247
+#: theme-viewer/theme-viewer-window.c:242
 msgid "Run again"
 msgstr "Поново покрени"
 
-#: theme-viewer/theme-viewer-window.c:983
+#: theme-viewer/theme-viewer-window.c:930
 msgid "Metacity Theme Viewer"
 msgstr "Прегледник теме Метаситија"
 
