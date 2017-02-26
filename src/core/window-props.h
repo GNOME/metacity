@@ -37,18 +37,6 @@
  * window from the server, and deals with it appropriately.
  * Does not return it to the caller (it's been dealt with!)
  *
- * \param window     The window.
- * \param property   A single X atom.
- */
-void meta_window_reload_property   (MetaWindow *window,
-                                    Atom        property,
-                                    gboolean    initial);
-
-/**
- * Requests the current values of a single property for a given
- * window from the server, and deals with it appropriately.
- * Does not return it to the caller (it's been dealt with!)
- *
  * \param window     A window on the same display as the one we're
  *                   investigating (only used to find the display)
  * \param xwindow    The X handle for the window.

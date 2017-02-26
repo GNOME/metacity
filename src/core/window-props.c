@@ -116,7 +116,7 @@ meta_window_reload_property_from_xwindow (MetaWindow *window,
   meta_prop_free_values (&value, 1);
 }
 
-void
+static void
 meta_window_reload_property (MetaWindow *window,
                              Atom        property,
                              gboolean    initial)
