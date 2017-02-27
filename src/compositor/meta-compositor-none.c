@@ -128,6 +128,13 @@ meta_compositor_none_unmaximize_window (MetaCompositor *compositor,
 {
 }
 
+static gboolean
+meta_compositor_none_is_our_xwindow (MetaCompositor *compositor,
+                                     Window          xwindow)
+{
+  return FALSE;
+}
+
 static void
 meta_compositor_none_class_init (MetaCompositorNoneClass *none_class)
 {
@@ -150,6 +157,7 @@ meta_compositor_none_class_init (MetaCompositorNoneClass *none_class)
   compositor_class->free_window = meta_compositor_none_free_window;
   compositor_class->maximize_window = meta_compositor_none_maximize_window;
   compositor_class->unmaximize_window = meta_compositor_none_unmaximize_window;
+  compositor_class->is_our_xwindow = meta_compositor_none_is_our_xwindow;
 }
 
 static void

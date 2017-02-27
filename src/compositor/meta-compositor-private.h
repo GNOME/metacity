@@ -81,6 +81,9 @@ struct _MetaCompositorClass
 
   void              (* unmaximize_window)  (MetaCompositor     *compositor,
                                             MetaWindow         *window);
+
+  gboolean          (* is_our_xwindow)     (MetaCompositor     *compositor,
+                                            Window              xwindow);
 };
 
 G_END_DECLS

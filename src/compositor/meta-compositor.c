@@ -353,6 +353,17 @@ meta_compositor_sync_stack (MetaCompositor *compositor,
 {
 }
 
+gboolean
+meta_compositor_is_our_xwindow (MetaCompositor *compositor,
+                                Window          xwindow)
+{
+  MetaCompositorClass *compositor_class;
+
+  compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
+
+  return compositor_class->is_our_xwindow (compositor, xwindow);
+}
+
 MetaDisplay *
 meta_compositor_get_display (MetaCompositor *compositor)
 {

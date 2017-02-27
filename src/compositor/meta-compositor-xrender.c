@@ -3694,6 +3694,27 @@ meta_compositor_xrender_unmaximize_window (MetaCompositor *compositor,
   cw->needs_shadow = window_has_shadow (cw);
 }
 
+static gboolean
+meta_compositor_xrender_is_our_xwindow (MetaCompositor *compositor,
+                                        Window          xwindow)
+{
+  MetaDisplay *display;
+  MetaScreen *screen;
+  MetaCompScreen *info;
+
+  display = meta_compositor_get_display (compositor);
+  screen = meta_display_get_screen (display);
+  info = meta_screen_get_compositor_data (screen);
+
+  if (info == NULL)
+    return FALSE;
+
+  if (info->output == xwindow)
+    return TRUE;
+
+  return FALSE;
+}
+
 static void
 meta_compositor_xrender_class_init (MetaCompositorXRenderClass *xrender_class)
 {
@@ -3716,6 +3737,7 @@ meta_compositor_xrender_class_init (MetaCompositorXRenderClass *xrender_class)
   compositor_class->free_window = meta_compositor_xrender_free_window;
   compositor_class->maximize_window = meta_compositor_xrender_maximize_window;
   compositor_class->unmaximize_window = meta_compositor_xrender_unmaximize_window;
+  compositor_class->is_our_xwindow = meta_compositor_xrender_is_our_xwindow;
 }
 
 static void
