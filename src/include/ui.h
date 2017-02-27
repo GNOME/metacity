@@ -32,9 +32,6 @@
 #include <libmetacity/meta-frame-borders.h>
 #include <libmetacity/meta-frame-enums.h>
 
-/* This is between GTK_PRIORITY_RESIZE (+10) and GDK_PRIORITY_REDRAW (+20) */
-#define META_PRIORITY_RESIZE    (G_PRIORITY_HIGH_IDLE + 15)
-
 typedef struct _MetaUI MetaUI;
 
 typedef gboolean (* MetaEventFunc) (XEvent *xevent, gpointer data);
