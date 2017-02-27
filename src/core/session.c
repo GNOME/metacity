@@ -701,6 +701,20 @@ window_type_to_string (MetaWindowType type)
       return "splashscreen";
     case META_WINDOW_UTILITY:
       return "utility";
+    case META_WINDOW_DROPDOWN_MENU:
+      return "dropdown_menu";
+    case META_WINDOW_POPUP_MENU:
+      return "popup_menu";
+    case META_WINDOW_TOOLTIP:
+      return "tooltip";
+    case META_WINDOW_NOTIFICATION:
+      return "notification";
+    case META_WINDOW_COMBO:
+      return "combo";
+    case META_WINDOW_DND:
+      return "dnd";
+    case META_WINDOW_OVERRIDE_OTHER:
+      return "override_redirect";
     default:
       break;
     }
@@ -729,6 +743,20 @@ window_type_from_string (const char *str)
     return META_WINDOW_UTILITY;
   else if (strcmp (str, "splashscreen") == 0)
     return META_WINDOW_SPLASHSCREEN;
+  else if (strcmp (str, "dropdown_menu") == 0)
+    return META_WINDOW_DROPDOWN_MENU;
+  else if (strcmp (str, "popup_menu") == 0)
+    return META_WINDOW_POPUP_MENU;
+  else if (strcmp (str, "tooltip") == 0)
+    return META_WINDOW_TOOLTIP;
+  else if (strcmp (str, "notification") == 0)
+    return META_WINDOW_NOTIFICATION;
+  else if (strcmp (str, "combo") == 0)
+    return META_WINDOW_COMBO;
+  else if (strcmp (str, "dnd") == 0)
+    return META_WINDOW_DND;
+  else if (strcmp (str, "override_redirect") == 0)
+    return META_WINDOW_OVERRIDE_OTHER;
   else
     return META_WINDOW_NORMAL;
 }

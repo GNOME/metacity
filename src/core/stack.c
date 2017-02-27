@@ -286,6 +286,16 @@ get_standalone_layer (MetaWindow *window)
       else
         layer = META_LAYER_DOCK;
     }
+  else if (window->type == META_WINDOW_DROPDOWN_MENU ||
+           window->type == META_WINDOW_POPUP_MENU ||
+           window->type == META_WINDOW_TOOLTIP ||
+           window->type == META_WINDOW_NOTIFICATION ||
+           window->type == META_WINDOW_COMBO ||
+           window->type == META_WINDOW_DND ||
+           window->type == META_WINDOW_OVERRIDE_OTHER)
+    {
+      layer = META_LAYER_OVERRIDE_REDIRECT;
+    }
   else
     {
       meta_window_foreach_transient (window,

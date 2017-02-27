@@ -394,6 +394,13 @@ rectangle_overlaps_some_window (MetaRectangle *rect,
         case META_WINDOW_DESKTOP:
         case META_WINDOW_DIALOG:
         case META_WINDOW_MODAL_DIALOG:
+        case META_WINDOW_DROPDOWN_MENU:
+        case META_WINDOW_POPUP_MENU:
+        case META_WINDOW_TOOLTIP:
+        case META_WINDOW_NOTIFICATION:
+        case META_WINDOW_COMBO:
+        case META_WINDOW_DND:
+        case META_WINDOW_OVERRIDE_OTHER:
           break;
 
         case META_WINDOW_NORMAL:
@@ -779,6 +786,13 @@ meta_window_place (MetaWindow        *window,
     case META_WINDOW_TOOLBAR:
     case META_WINDOW_MENU:
     case META_WINDOW_UTILITY:
+    case META_WINDOW_DROPDOWN_MENU:
+    case META_WINDOW_POPUP_MENU:
+    case META_WINDOW_TOOLTIP:
+    case META_WINDOW_NOTIFICATION:
+    case META_WINDOW_COMBO:
+    case META_WINDOW_DND:
+    case META_WINDOW_OVERRIDE_OTHER:
       goto done_no_constraints;
 
     default:
@@ -815,6 +829,13 @@ meta_window_place (MetaWindow        *window,
         case META_WINDOW_TOOLBAR:
         case META_WINDOW_MENU:
         case META_WINDOW_UTILITY:
+        case META_WINDOW_DROPDOWN_MENU:
+        case META_WINDOW_POPUP_MENU:
+        case META_WINDOW_TOOLTIP:
+        case META_WINDOW_NOTIFICATION:
+        case META_WINDOW_COMBO:
+        case META_WINDOW_DND:
+        case META_WINDOW_OVERRIDE_OTHER:
           if (window->size_hints.flags & PPosition)
             {
               meta_topic (META_DEBUG_PLACEMENT,

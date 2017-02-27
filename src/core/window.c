@@ -2060,6 +2060,13 @@ window_state_on_map (MetaWindow *window,
     case META_WINDOW_DESKTOP:
     case META_WINDOW_SPLASHSCREEN:
     case META_WINDOW_MENU:
+    case META_WINDOW_DROPDOWN_MENU:
+    case META_WINDOW_POPUP_MENU:
+    case META_WINDOW_TOOLTIP:
+    case META_WINDOW_NOTIFICATION:
+    case META_WINDOW_COMBO:
+    case META_WINDOW_DND:
+    case META_WINDOW_OVERRIDE_OTHER:
       /* don't focus any of these; places_on_top may be irrelevant for some of
        * these (e.g. dock)--but you never know--the focus window might also be
        * of the same type in some weird situation...
@@ -6386,17 +6393,45 @@ recalc_window_type (MetaWindow *window)
         window->type = META_WINDOW_TOOLBAR;
       else if (window->type_atom  == window->display->atom__NET_WM_WINDOW_TYPE_MENU)
         window->type = META_WINDOW_MENU;
-      else if (window->type_atom  == window->display->atom__NET_WM_WINDOW_TYPE_DIALOG)
-        window->type = META_WINDOW_DIALOG;
-      else if (window->type_atom  == window->display->atom__NET_WM_WINDOW_TYPE_NORMAL)
-        window->type = META_WINDOW_NORMAL;
       else if (window->type_atom  == window->display->atom__NET_WM_WINDOW_TYPE_UTILITY)
         window->type = META_WINDOW_UTILITY;
       else if (window->type_atom  == window->display->atom__NET_WM_WINDOW_TYPE_SPLASH)
         window->type = META_WINDOW_SPLASHSCREEN;
+      else if (window->type_atom  == window->display->atom__NET_WM_WINDOW_TYPE_DIALOG)
+        window->type = META_WINDOW_DIALOG;
+      else if (window->type_atom  == window->display->atom__NET_WM_WINDOW_TYPE_NORMAL)
+        window->type = META_WINDOW_NORMAL;
+      else if (window->type_atom  == window->display->atom__NET_WM_WINDOW_TYPE_DROPDOWN_MENU)
+        window->type = META_WINDOW_DROPDOWN_MENU;
+      else if (window->type_atom  == window->display->atom__NET_WM_WINDOW_TYPE_POPUP_MENU)
+        window->type = META_WINDOW_POPUP_MENU;
+      else if (window->type_atom  == window->display->atom__NET_WM_WINDOW_TYPE_TOOLTIP)
+        window->type = META_WINDOW_TOOLTIP;
+      else if (window->type_atom  == window->display->atom__NET_WM_WINDOW_TYPE_NOTIFICATION)
+        window->type = META_WINDOW_NOTIFICATION;
+      else if (window->type_atom  == window->display->atom__NET_WM_WINDOW_TYPE_COMBO)
+        window->type = META_WINDOW_COMBO;
+      else if (window->type_atom  == window->display->atom__NET_WM_WINDOW_TYPE_DND)
+        window->type = META_WINDOW_DND;
+      else if (window->override_redirect)
+        window->type = META_WINDOW_OVERRIDE_OTHER;
       else
-        meta_bug ("Set a type atom for %s that wasn't handled in recalc_window_type\n",
-                  window->desc);
+        {
+          char *atom_name;
+
+          /* Fallback on a normal type, and print warning. Don't abort. */
+          window->type = META_WINDOW_NORMAL;
+
+          meta_error_trap_push (window->display);
+          atom_name = XGetAtomName (window->display->xdisplay, window->type_atom);
+          meta_error_trap_pop (window->display);
+
+          meta_warning ("Unrecognized type atom [%s] set for %s \n",
+                        atom_name ? atom_name : "unknown", window->desc);
+
+          if (atom_name)
+            XFree (atom_name);
+        }
     }
   else if (window->xtransient_for != None)
     {
@@ -6679,6 +6714,13 @@ recalc_window_features (MetaWindow *window)
     case META_WINDOW_MENU:
     case META_WINDOW_UTILITY:
     case META_WINDOW_SPLASHSCREEN:
+    case META_WINDOW_DROPDOWN_MENU:
+    case META_WINDOW_POPUP_MENU:
+    case META_WINDOW_TOOLTIP:
+    case META_WINDOW_NOTIFICATION:
+    case META_WINDOW_COMBO:
+    case META_WINDOW_DND:
+    case META_WINDOW_OVERRIDE_OTHER:
       window->skip_taskbar = TRUE;
       window->skip_pager = TRUE;
       break;
