@@ -240,6 +240,37 @@ meta_window_new (MetaDisplay *display,
   return window;
 }
 
+static gboolean
+is_our_xwindow (MetaDisplay       *display,
+                Window             xwindow,
+                XWindowAttributes *attrs)
+{
+  if (xwindow == display->screen->no_focus_window)
+    return TRUE;
+
+  if (xwindow == display->screen->flash_window)
+    return TRUE;
+
+  if (xwindow == display->screen->wm_sn_selection_window)
+    return TRUE;
+
+  if (xwindow == display->screen->wm_cm_selection_window)
+    return TRUE;
+
+  if (meta_compositor_is_our_xwindow (display->compositor, xwindow))
+    return TRUE;
+
+  /* Any windows created via meta_create_offscreen_window */
+  if (attrs->override_redirect &&
+      attrs->x == -100 && attrs->y == -100 &&
+      attrs->width == 1 && attrs->height == 1)
+    {
+      return TRUE;
+    }
+
+  return FALSE;
+}
+
 MetaWindow*
 meta_window_new_with_attrs (MetaDisplay       *display,
                             Window             xwindow,
@@ -268,6 +299,12 @@ meta_window_new_with_attrs (MetaDisplay       *display,
   if (attrs->override_redirect)
     {
       meta_verbose ("Deciding not to manage override_redirect window 0x%lx\n", xwindow);
+      return NULL;
+    }
+
+  if (is_our_xwindow (display, xwindow, attrs))
+    {
+      meta_verbose ("Not managing our own windows\n");
       return NULL;
     }
 
