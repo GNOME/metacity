@@ -303,7 +303,7 @@ meta_display_open (void)
   if (xdisplay == NULL)
     {
       meta_warning (_("Failed to open X Window System display '%s'\n"),
-		    XDisplayName (NULL));
+                    XDisplayName (NULL));
       return FALSE;
     }
 
@@ -1315,14 +1315,14 @@ window_raise_with_delay_callback (void *data)
   auto_raise = data;
 
   meta_topic (META_DEBUG_FOCUS,
-	      "In autoraise callback for window 0x%lx\n",
-	      auto_raise->xwindow);
+              "In autoraise callback for window 0x%lx\n",
+              auto_raise->xwindow);
 
   auto_raise->display->autoraise_timeout_id = 0;
   auto_raise->display->autoraise_window = NULL;
 
   window  = meta_display_lookup_x_window (auto_raise->display,
-					  auto_raise->xwindow);
+                                          auto_raise->xwindow);
 
   if (window == NULL)
     return FALSE;
@@ -1340,20 +1340,20 @@ window_raise_with_delay_callback (void *data)
 
       meta_error_trap_push (window->display);
       same_screen = XQueryPointer (window->display->xdisplay,
-				   window->xwindow,
-				   &root, &child,
-				   &root_x, &root_y, &x, &y, &mask);
+                                   window->xwindow,
+                                   &root, &child,
+                                   &root_x, &root_y, &x, &y, &mask);
       meta_error_trap_pop (window->display);
 
       point_in_window =
         (window->frame && POINT_IN_RECT (root_x, root_y, window->frame->rect)) ||
         (window->frame == NULL && POINT_IN_RECT (root_x, root_y, window->rect));
       if (same_screen && point_in_window)
-	meta_window_raise (window);
+        meta_window_raise (window);
       else
-	meta_topic (META_DEBUG_FOCUS,
-		    "Pointer not inside window, not raising %s\n",
-		    window->desc);
+        meta_topic (META_DEBUG_FOCUS,
+                    "Pointer not inside window, not raising %s\n",
+                    window->desc);
     }
 
   return FALSE;
@@ -1482,9 +1482,8 @@ event_callback (XEvent   *event,
   if (event->type == ButtonPress)
     {
       /* filter out scrollwheel */
-      if (event->xbutton.button == 4 ||
-	  event->xbutton.button == 5)
-	return FALSE;
+      if (event->xbutton.button == 4 || event->xbutton.button == 5)
+        return FALSE;
     }
   else if (event->type == UnmapNotify)
     {
@@ -1547,7 +1546,7 @@ event_callback (XEvent   *event,
       if (display->grab_op != META_GRAB_OP_NONE &&
           display->grab_window != NULL &&
           grab_op_is_mouse (display->grab_op))
-	meta_window_handle_mouse_grab_op_event (display->grab_window, event);
+        meta_window_handle_mouse_grab_op_event (display->grab_window, event);
     }
 
   if (META_DISPLAY_HAS_SHAPE (display) &&
@@ -1585,7 +1584,7 @@ event_callback (XEvent   *event,
               if (window->frame)
                 {
                   window->frame->need_reapply_frame_shape = TRUE;
-		  meta_warning("from event callback\n");
+                  meta_warning ("from event callback\n");
                   meta_window_queue (window, META_QUEUE_MOVE_RESIZE);
                 }
             }
@@ -1687,7 +1686,7 @@ event_callback (XEvent   *event,
                   /* Don't focus panels--they must explicitly request focus.
                    * See bug 160470
                    */
-		  if (window->type != META_WINDOW_DOCK)
+                  if (window->type != META_WINDOW_DOCK)
                     {
                       meta_topic (META_DEBUG_FOCUS,
                                   "Focusing %s due to unmodified button %u press (display.c)\n",
@@ -2148,12 +2147,12 @@ event_callback (XEvent   *event,
 
       /* Handle screen resize */
       {
-	MetaScreen *screen;
+        MetaScreen *screen;
 
         screen = meta_display_screen_for_root (display,
                                                event->xconfigure.window);
 
-	if (screen != NULL)
+        if (screen != NULL)
           {
 #ifdef HAVE_RANDR
             /* do the resize the official way */
@@ -2246,12 +2245,11 @@ event_callback (XEvent   *event,
             /* we just use this property as a sentinel to avoid
              * certain race conditions.  See the comment for the
              * sentinel_counter variable declaration in display.h
-	     */
-	    if (event->xproperty.atom ==
-		display->atom__METACITY_SENTINEL)
-	      {
-		meta_display_decrement_focus_sentinel (display);
-	      }
+             */
+            if (event->xproperty.atom == display->atom__METACITY_SENTINEL)
+              {
+                meta_display_decrement_focus_sentinel (display);
+              }
           }
       }
       break;
@@ -2391,12 +2389,12 @@ event_callback (XEvent   *event,
                   meta_verbose ("Received toggle verbose message\n");
                   meta_set_verbose (!meta_is_verbose ());
                 }
-	      else if (event->xclient.message_type ==
-		       display->atom_WM_PROTOCOLS)
-		{
+              else if (event->xclient.message_type ==
+                       display->atom_WM_PROTOCOLS)
+                {
                   meta_verbose ("Received WM_PROTOCOLS message\n");
 
-		  if ((Atom)event->xclient.data.l[0] == display->atom__NET_WM_PING)
+                  if ((Atom)event->xclient.data.l[0] == display->atom__NET_WM_PING)
                     {
                       process_pong_message (display, event);
 
@@ -2406,7 +2404,7 @@ event_callback (XEvent   *event,
                        */
                       filter_out_event = TRUE;
                     }
-		}
+                }
             }
 
           if (event->xclient.message_type ==
@@ -2427,7 +2425,7 @@ event_callback (XEvent   *event,
          * event.  If it is, ignore the current event, we'll update
          * when we get the next one.
          */
-	if (XPending (display->xdisplay))
+        if (XPending (display->xdisplay))
           {
             XEvent next_event;
 
@@ -2450,27 +2448,27 @@ event_callback (XEvent   *event,
     default:
 #ifdef HAVE_XKB
       if (event->type == display->xkb_base_event_type)
-	{
-	  XkbAnyEvent *xkb_ev = (XkbAnyEvent *) event;
+        {
+          XkbAnyEvent *xkb_ev = (XkbAnyEvent *) event;
 
-	  switch (xkb_ev->xkb_type)
-	    {
-	    case XkbBellNotify:
+          switch (xkb_ev->xkb_type)
+            {
+            case XkbBellNotify:
               if (XSERVER_TIME_IS_BEFORE(display->last_bell_time,
                                          xkb_ev->time - 100))
                 {
                   display->last_bell_time = xkb_ev->time;
                   meta_bell_notify (display, xkb_ev);
                 }
-	      break;
+              break;
             case XkbNewKeyboardNotify:
             case XkbMapNotify:
               meta_display_process_mapping_event (display, event);
               break;
-	    default:
-	      break;
-	    }
-	}
+            default:
+              break;
+            }
+        }
 #endif
       break;
     }
@@ -3257,7 +3255,7 @@ meta_display_set_grab_op_cursor (MetaDisplay *display,
 
 #define GRAB_MASK (PointerMotionMask |                          \
                    ButtonPressMask | ButtonReleaseMask |        \
-		   EnterWindowMask | LeaveWindowMask)
+                   EnterWindowMask | LeaveWindowMask)
 
   if (change_pointer)
     {
@@ -3465,28 +3463,28 @@ meta_display_begin_grab_op (MetaDisplay *display,
           display->grab_window->sync_request_counter != None)
         {
           XSyncAlarmAttributes values;
-	  XSyncValue init;
+          XSyncValue init;
 
           meta_error_trap_push (display);
 
-	  /* Set the counter to 0, so we know that the application's
-	   * responses to the client messages will always trigger
-	   * a PositiveTransition
-	   */
+          /* Set the counter to 0, so we know that the application's
+           * responses to the client messages will always trigger
+           * a PositiveTransition
+           */
 
-	  XSyncIntToValue (&init, 0);
-	  XSyncSetCounter (display->xdisplay,
-			   display->grab_window->sync_request_counter, init);
+          XSyncIntToValue (&init, 0);
+          XSyncSetCounter (display->xdisplay,
+                           display->grab_window->sync_request_counter, init);
 
-	  display->grab_window->sync_request_serial = 0;
-	  display->grab_window->sync_request_time.tv_sec = 0;
-	  display->grab_window->sync_request_time.tv_usec = 0;
+          display->grab_window->sync_request_serial = 0;
+          display->grab_window->sync_request_time.tv_sec = 0;
+          display->grab_window->sync_request_time.tv_usec = 0;
 
           values.trigger.counter = display->grab_window->sync_request_counter;
           values.trigger.value_type = XSyncAbsolute;
           values.trigger.test_type = XSyncPositiveTransition;
           XSyncIntToValue (&values.trigger.wait_value,
-			   display->grab_window->sync_request_serial + 1);
+                           display->grab_window->sync_request_serial + 1);
 
           /* After triggering, increment test_value by this.
            * (NOT wait_value above)
@@ -3506,7 +3504,7 @@ meta_display_begin_grab_op (MetaDisplay *display,
                                                          &values);
 
           if (meta_error_trap_pop_with_return (display) != Success)
-	    display->grab_sync_request_alarm = None;
+            display->grab_sync_request_alarm = None;
 
           meta_topic (META_DEBUG_RESIZING,
                       "Created update alarm 0x%lx\n",
@@ -4070,7 +4068,7 @@ meta_display_retheme_all (void)
 
 void
 meta_display_set_cursor_theme (const char *theme,
-			       int         size)
+                               int         size)
 {
 #ifdef HAVE_XCURSOR
   MetaDisplay *display = meta_get_display ();
@@ -4192,12 +4190,12 @@ meta_display_ping_timeout (gpointer data)
  * \ingroup pings
  */
 void
-meta_display_ping_window (MetaDisplay       *display,
-			  MetaWindow        *window,
-			  guint32            timestamp,
-			  MetaWindowPingFunc ping_reply_func,
-			  MetaWindowPingFunc ping_timeout_func,
-			  gpointer           user_data)
+meta_display_ping_window (MetaDisplay        *display,
+                          MetaWindow         *window,
+                          guint32             timestamp,
+                          MetaWindowPingFunc  ping_reply_func,
+                          MetaWindowPingFunc  ping_timeout_func,
+                          gpointer            user_data)
 {
   MetaPingData *ping_data;
 
@@ -4223,8 +4221,8 @@ meta_display_ping_window (MetaDisplay       *display,
   ping_data->ping_timeout_func = ping_timeout_func;
   ping_data->user_data = user_data;
   ping_data->ping_timeout_id = g_timeout_add (PING_TIMEOUT_DELAY,
-					      meta_display_ping_timeout,
-					      ping_data);
+                                              meta_display_ping_timeout,
+                                              ping_data);
 
   display->pending_pings = g_slist_prepend (display->pending_pings, ping_data);
 
@@ -4369,7 +4367,7 @@ process_pong_message (MetaDisplay    *display,
  */
 gboolean
 meta_display_window_has_pending_pings (MetaDisplay *display,
-				       MetaWindow  *window)
+                                       MetaWindow  *window)
 {
   GSList *tmp;
 
@@ -4419,7 +4417,7 @@ find_tab_forward (MetaDisplay   *display,
       MetaWindow *window = tmp->data;
 
       if (window->screen == screen &&
-	  IN_TAB_CHAIN (window, type))
+          IN_TAB_CHAIN (window, type))
         return window;
 
       tmp = tmp->next;
@@ -4460,7 +4458,7 @@ find_tab_backward (MetaDisplay   *display,
       MetaWindow *window = tmp->data;
 
       if (window->screen == screen &&
-	  IN_TAB_CHAIN (window, type))
+          IN_TAB_CHAIN (window, type))
         return window;
 
       tmp = tmp->prev;
@@ -4735,16 +4733,16 @@ convert_property (MetaDisplay *display,
   meta_error_trap_push (display);
   if (target == display->atom_TARGETS)
     XChangeProperty (display->xdisplay, w, property,
-		     XA_ATOM, 32, PropModeReplace,
-		     (unsigned char *)conversion_targets, N_TARGETS);
+                     XA_ATOM, 32, PropModeReplace,
+                     (unsigned char *)conversion_targets, N_TARGETS);
   else if (target == display->atom_TIMESTAMP)
     XChangeProperty (display->xdisplay, w, property,
-		     XA_INTEGER, 32, PropModeReplace,
-		     (unsigned char *)&screen->wm_sn_timestamp, 1);
+                     XA_INTEGER, 32, PropModeReplace,
+                     (unsigned char *)&screen->wm_sn_timestamp, 1);
   else if (target == display->atom_VERSION)
     XChangeProperty (display->xdisplay, w, property,
-		     XA_INTEGER, 32, PropModeReplace,
-		     (unsigned char *)icccm_version, 2);
+                     XA_INTEGER, 32, PropModeReplace,
+                     (unsigned char *)icccm_version, 2);
   else
     {
       meta_error_trap_pop (display);
