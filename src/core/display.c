@@ -1458,11 +1458,13 @@ event_callback (XEvent   *event,
   MetaWindow *window;
   MetaWindow *property_for_window;
   MetaDisplay *display;
+  MetaScreen *screen;
   Window modified;
   gboolean frame_was_receiver;
   gboolean filter_out_event;
 
   display = data;
+  screen = display->screen;
 
 #ifdef WITH_VERBOSE_MODE
   if (dump_events)
@@ -1638,13 +1640,10 @@ event_callback (XEvent   *event,
                        "none"));
           if (GRAB_OP_IS_WINDOW_SWITCH (display->grab_op))
             {
-              MetaScreen *screen;
               meta_topic (META_DEBUG_WINDOW_OPS,
                           "Syncing to old stack positions.\n");
-              screen =
-                meta_display_screen_for_root (display, event->xany.window);
 
-              if (screen!=NULL)
+              if (event->xany.window == screen->xroot)
                 meta_stack_set_positions (screen->stack,
                                           display->grab_old_window_stacking);
             }
@@ -1927,10 +1926,7 @@ event_callback (XEvent   *event,
         }
       else
         {
-          MetaScreen *screen =
-                meta_display_screen_for_root(display,
-                                             event->xany.window);
-          if (screen == NULL)
+          if (event->xany.window != screen->xroot)
             break;
 
           meta_topic (META_DEBUG_FOCUS,
@@ -1981,12 +1977,7 @@ event_callback (XEvent   *event,
       break;
     case CreateNotify:
       {
-        MetaScreen *screen;
-
-        screen = meta_display_screen_for_root (display,
-                                               event->xcreatewindow.parent);
-
-        if (screen)
+        if (event->xcreatewindow.parent == screen->xroot)
           meta_stack_tracker_create_event (screen->stack_tracker,
                                            &event->xcreatewindow);
       }
@@ -1994,12 +1985,7 @@ event_callback (XEvent   *event,
 
     case DestroyNotify:
       {
-        MetaScreen *screen;
-
-        screen = meta_display_screen_for_root (display,
-                                               event->xdestroywindow.event);
-
-        if (screen)
+        if (event->xdestroywindow.event == screen->xroot)
           meta_stack_tracker_destroy_event (screen->stack_tracker,
                                             &event->xdestroywindow);
       }
@@ -2122,12 +2108,7 @@ event_callback (XEvent   *event,
       break;
     case ReparentNotify:
       {
-        MetaScreen *screen;
-
-        screen = meta_display_screen_for_root (display,
-                                               event->xreparent.event);
-
-        if (screen)
+        if (event->xreparent.event == screen->xroot)
           meta_stack_tracker_reparent_event (screen->stack_tracker,
                                              &event->xreparent);
       }
@@ -2135,24 +2116,14 @@ event_callback (XEvent   *event,
     case ConfigureNotify:
       if (event->xconfigure.event != event->xconfigure.window)
         {
-          MetaScreen *screen;
-
-          screen = meta_display_screen_for_root (display,
-                                                 event->xconfigure.event);
-
-          if (screen)
+          if (event->xconfigure.event == screen->xroot)
             meta_stack_tracker_configure_event (screen->stack_tracker,
                                                 &event->xconfigure);
         }
 
       /* Handle screen resize */
       {
-        MetaScreen *screen;
-
-        screen = meta_display_screen_for_root (display,
-                                               event->xconfigure.window);
-
-        if (screen != NULL)
+        if (event->xconfigure.window == screen->xroot)
           {
 #ifdef HAVE_RANDR
             /* do the resize the official way */
@@ -2215,31 +2186,21 @@ event_callback (XEvent   *event,
     case PropertyNotify:
       {
         MetaGroup *group;
-        MetaScreen *screen;
 
         if (window && !frame_was_receiver)
           meta_window_property_notify (window, event);
         else if (property_for_window && !frame_was_receiver)
           meta_window_property_notify (property_for_window, event);
 
-        group = meta_display_lookup_group (display,
-                                           event->xproperty.window);
+        group = meta_display_lookup_group (display, event->xproperty.window);
         if (group != NULL)
           meta_group_property_notify (group, event);
 
-        screen = NULL;
-        if (window == NULL &&
-            group == NULL) /* window/group != NULL means it wasn't a root window */
-          screen = meta_display_screen_for_root (display,
-                                                 event->xproperty.window);
-
-        if (screen != NULL)
+        if (event->xproperty.window == screen->xroot)
           {
-            if (event->xproperty.atom ==
-                display->atom__NET_DESKTOP_LAYOUT)
+            if (event->xproperty.atom == display->atom__NET_DESKTOP_LAYOUT)
               meta_screen_update_workspace_layout (screen);
-            else if (event->xproperty.atom ==
-                     display->atom__NET_DESKTOP_NAMES)
+            else if (event->xproperty.atom == display->atom__NET_DESKTOP_NAMES)
               meta_screen_update_workspace_names (screen);
 
             /* we just use this property as a sentinel to avoid
@@ -2285,12 +2246,7 @@ event_callback (XEvent   *event,
         }
       else
         {
-          MetaScreen *screen;
-
-          screen = meta_display_screen_for_root (display,
-                                                 event->xclient.window);
-
-          if (screen)
+          if (event->xclient.window == screen->xroot)
             {
               if (event->xclient.message_type ==
                   display->atom__NET_CURRENT_DESKTOP)
@@ -2306,9 +2262,7 @@ event_callback (XEvent   *event,
                                 "specified timestamp of %u\n",
                                 space, time);
 
-                  workspace =
-                    meta_screen_get_workspace_by_index (screen,
-                                                        space);
+                  workspace = meta_screen_get_workspace_by_index (screen, space);
 
                   /* Handle clients using the older version of the spec... */
                   if (time == 0 && workspace)
