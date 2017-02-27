@@ -2721,7 +2721,6 @@ meta_spew_event (MetaDisplay *display,
   const char *name = NULL;
   char *extra = NULL;
   char *winname;
-  MetaScreen *screen;
 
   if (!meta_is_verbose())
     return;
@@ -3008,10 +3007,8 @@ meta_spew_event (MetaDisplay *display,
       break;
     }
 
-  screen = meta_display_screen_for_root (display, event->xany.window);
-
-  if (screen)
-    winname = g_strdup_printf ("root %d", screen->number);
+  if (event->xany.window == display->screen->xroot)
+    winname = g_strdup_printf ("root %d", display->screen->number);
   else
     winname = g_strdup_printf ("0x%lx", event->xany.window);
 
