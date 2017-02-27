@@ -1848,7 +1848,7 @@ add_repair (MetaCompositorXRender *xrender)
     return;
 
 #if 1
-  xrender->repaint_id = g_idle_add_full (G_PRIORITY_HIGH_IDLE,
+  xrender->repaint_id = g_idle_add_full (META_PRIORITY_REDRAW,
                                          compositor_idle_cb, xrender,
                                          NULL);
 #else
