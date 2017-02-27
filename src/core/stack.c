@@ -105,6 +105,8 @@ void
 meta_stack_add (MetaStack  *stack,
                 MetaWindow *window)
 {
+  g_return_if_fail (!window->override_redirect);
+
   meta_topic (META_DEBUG_STACK, "Adding window %s to the stack\n", window->desc);
 
   if (window->stack_position >= 0)
@@ -347,9 +349,12 @@ get_maximum_layer_in_group (MetaWindow *window)
     {
       MetaWindow *w = tmp->data;
 
-      layer = get_standalone_layer (w);
-      if (layer > max)
-        max = layer;
+      if (!w->override_redirect)
+        {
+          layer = get_standalone_layer (w);
+          if (layer > max)
+            max = layer;
+        }
 
       tmp = tmp->next;
     }
@@ -561,7 +566,8 @@ create_constraints (Constraint **constraints,
               MetaWindow *group_window = tmp2->data;
 
               if (!WINDOW_IN_STACK (group_window) ||
-                  w->screen != group_window->screen)
+                  w->screen != group_window->screen ||
+                  group_window->override_redirect)
                 {
                   tmp2 = tmp2->next;
                   continue;
