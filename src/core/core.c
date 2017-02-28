@@ -379,7 +379,7 @@ meta_core_maximize (Display *xdisplay,
 
 void
 meta_core_toggle_maximize_vertically (Display *xdisplay,
-				      Window   frame_xwindow)
+                                      Window   frame_xwindow)
 {
   MetaWindow *window = get_window (xdisplay, frame_xwindow);
 
@@ -387,16 +387,14 @@ meta_core_toggle_maximize_vertically (Display *xdisplay,
     meta_window_raise (window);
 
   if (META_WINDOW_MAXIMIZED_VERTICALLY (window))
-    meta_window_unmaximize (window,
-                            META_MAXIMIZE_VERTICAL);
+    meta_window_unmaximize (window, META_MAXIMIZE_VERTICAL);
   else
-    meta_window_maximize (window,
-    			    META_MAXIMIZE_VERTICAL);
+    meta_window_maximize (window, META_MAXIMIZE_VERTICAL);
 }
 
 void
 meta_core_toggle_maximize_horizontally (Display *xdisplay,
-				        Window   frame_xwindow)
+                                        Window   frame_xwindow)
 {
   MetaWindow *window = get_window (xdisplay, frame_xwindow);
 
@@ -404,11 +402,9 @@ meta_core_toggle_maximize_horizontally (Display *xdisplay,
     meta_window_raise (window);
 
   if (META_WINDOW_MAXIMIZED_HORIZONTALLY (window))
-    meta_window_unmaximize (window,
-                            META_MAXIMIZE_HORIZONTAL);
+    meta_window_unmaximize (window, META_MAXIMIZE_HORIZONTAL);
   else
-    meta_window_maximize (window,
-    			    META_MAXIMIZE_HORIZONTAL);
+    meta_window_maximize (window, META_MAXIMIZE_HORIZONTAL);
 }
 
 void
