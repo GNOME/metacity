@@ -1757,9 +1757,6 @@ meta_window_unqueue (MetaWindow *window, guint queuebits)
 {
   gint queuenum;
 
-  /* Easier to debug by checking here rather than in the idle */
-  g_return_if_fail (!window->override_redirect || (queuebits & META_QUEUE_MOVE_RESIZE) == 0);
-
   for (queuenum=0; queuenum<NUMBER_OF_QUEUES; queuenum++)
     {
       if ((queuebits & 1<<queuenum) /* they have asked to unqueue */
@@ -1805,6 +1802,9 @@ void
 meta_window_queue (MetaWindow *window, guint queuebits)
 {
   guint queuenum;
+
+  /* Easier to debug by checking here rather than in the idle */
+  g_return_if_fail (!window->override_redirect || (queuebits & META_QUEUE_MOVE_RESIZE) == 0);
 
   for (queuenum=0; queuenum<NUMBER_OF_QUEUES; queuenum++)
     {
