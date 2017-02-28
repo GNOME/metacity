@@ -242,13 +242,13 @@ reload_xinerama_infos (MetaScreen *screen)
       n_monitors = 0;
       result = XineramaGetInfo (screen->display->xdisplay,
                                 screen->number,
-				monitors, hints,
+                                monitors, hints,
                                 &n_monitors);
       /* Yes I know it should be Success but the current implementation
        * returns the num of monitor
        */
       if (result > 0)
-	{
+        {
           g_assert (n_monitors > 0);
 
           screen->xinerama_infos = g_new (MetaXineramaScreenInfo, n_monitors);
@@ -273,7 +273,7 @@ reload_xinerama_infos (MetaScreen *screen)
 
               ++i;
             }
-	}
+        }
     }
   else if (screen->n_xinerama_infos == 0)
     {
@@ -713,8 +713,8 @@ meta_screen_free (MetaScreen *screen,
 
 typedef struct
 {
-  Window		xwindow;
-  XWindowAttributes	attrs;
+  Window            xwindow;
+  XWindowAttributes attrs;
 } WindowInfo;
 
 static GList *
@@ -740,15 +740,15 @@ list_windows (MetaScreen *screen)
                             children[i], &info->attrs);
 
       if (meta_error_trap_pop_with_return (screen->display))
-	{
+        {
           meta_verbose ("Failed to get attributes for window 0x%lx\n",
                         children[i]);
-	  g_free (info);
+          g_free (info);
         }
       else
         {
-	  info->xwindow = children[i];
-	}
+          info->xwindow = children[i];
+        }
 
       result = g_list_prepend (result, info);
     }
@@ -1024,7 +1024,7 @@ meta_screen_get_workspace_by_index (MetaScreen  *screen,
 
 static void
 set_number_of_spaces_hint (MetaScreen *screen,
-			   int         n_spaces)
+                           int         n_spaces)
 {
   unsigned long data[1];
 
@@ -1199,7 +1199,7 @@ meta_screen_update_cursor (MetaScreen *screen)
   Cursor xcursor;
 
   xcursor = meta_display_create_x_cursor (screen->display,
-					  screen->current_cursor);
+                                          screen->current_cursor);
   XDefineCursor (screen->display->xdisplay, screen->xroot, xcursor);
   XFlush (screen->display->xdisplay);
   XFreeCursor (screen->display->xdisplay, xcursor);
@@ -1569,7 +1569,7 @@ meta_screen_get_mouse_window (MetaScreen  *screen,
 
 const MetaXineramaScreenInfo*
 meta_screen_get_xinerama_for_rect (MetaScreen    *screen,
-				   MetaRectangle *rect)
+                                   MetaRectangle *rect)
 {
   int i;
   int best_xinerama, xinerama_score;
@@ -1601,7 +1601,7 @@ meta_screen_get_xinerama_for_rect (MetaScreen    *screen,
 
 const MetaXineramaScreenInfo*
 meta_screen_get_xinerama_for_window (MetaScreen *screen,
-				     MetaWindow *window)
+                                     MetaWindow *window)
 {
   MetaRectangle window_rect;
 
@@ -1920,9 +1920,9 @@ set_workspace_names (MetaScreen *screen)
   XChangeProperty (screen->display->xdisplay,
                    screen->xroot,
                    screen->display->atom__NET_DESKTOP_NAMES,
-		   screen->display->atom_UTF8_STRING,
+                   screen->display->atom_UTF8_STRING,
                    8, PropModeReplace,
-		   (unsigned char *)flattened->str, flattened->len);
+                   (unsigned char *)flattened->str, flattened->len);
   meta_error_trap_pop (screen->display);
 
   g_string_free (flattened, TRUE);
@@ -2015,7 +2015,7 @@ set_work_area_hint (MetaScreen *screen)
           tmp[2] = area.width;
           tmp[3] = area.height;
 
-	  tmp += 4;
+          tmp += 4;
         }
 
       tmp_list = tmp_list->next;
@@ -2023,9 +2023,9 @@ set_work_area_hint (MetaScreen *screen)
 
   meta_error_trap_push (screen->display);
   XChangeProperty (screen->display->xdisplay, screen->xroot,
-		   screen->display->atom__NET_WORKAREA,
-		   XA_CARDINAL, 32, PropModeReplace,
-		   (guchar*) data, num_workspaces*4);
+                   screen->display->atom__NET_WORKAREA,
+                   XA_CARDINAL, 32, PropModeReplace,
+                   (guchar*) data, num_workspaces*4);
   g_free (data);
   meta_error_trap_pop (screen->display);
 }
@@ -2443,10 +2443,8 @@ meta_screen_minimize_all_on_active_workspace_except (MetaScreen *screen,
     {
       MetaWindow *w = tmp->data;
 
-      if (w->screen == screen  &&
-          w->has_minimize_func &&
-	  w != keep)
-	meta_window_minimize (w);
+      if (w->screen == screen && w->has_minimize_func && w != keep)
+        meta_window_minimize (w);
 
       tmp = tmp->next;
     }
