@@ -2039,8 +2039,8 @@ process_keyboard_resize_grab (MetaDisplay *display,
 }
 
 static gboolean
-end_keyboard_grab (MetaDisplay *display,
-		   unsigned int keycode)
+end_keyboard_grab (MetaDisplay  *display,
+                   unsigned int  keycode)
 {
 #ifdef HAVE_XKB
   if (display->xkb_base_event_type > 0)
@@ -2053,13 +2053,13 @@ end_keyboard_grab (MetaDisplay *display,
       XkbGetState (display->xdisplay, XkbUseCoreKbd, &state);
 
       if (!(primary_modifier & state.mods))
-	return TRUE;
+        return TRUE;
     }
   else
 #endif
     {
       if (keycode_is_primary_modifier (display, keycode, display->grab_mask))
-	return TRUE;
+        return TRUE;
     }
 
   return FALSE;
@@ -2695,8 +2695,7 @@ process_workspace_switch_grab (MetaDisplay *display,
           meta_topic (META_DEBUG_KEYBINDINGS,
                       "Tab key pressed, moving tab focus in popup\n");
 
-          meta_topic (META_DEBUG_KEYBINDINGS,
-                      "Activating target workspace\n");
+          meta_topic (META_DEBUG_KEYBINDINGS, "Activating target workspace\n");
 
           meta_workspace_activate (target_workspace, event->xkey.time);
 
@@ -2765,11 +2764,8 @@ handle_panel (MetaDisplay    *display,
   /* Release the grab for the panel before sending the event */
   XUngrabKeyboard (display->xdisplay, event->xkey.time);
 
-  XSendEvent (display->xdisplay,
-	      screen->xroot,
-	      False,
-	      StructureNotifyMask,
-	      (XEvent*) &ev);
+  XSendEvent (display->xdisplay, screen->xroot, False,
+              StructureNotifyMask, (XEvent*) &ev);
 
   meta_error_trap_pop (display);
 }
@@ -3239,9 +3235,9 @@ handle_move_to_workspace  (MetaDisplay    *display,
 static void
 handle_raise_or_lower (MetaDisplay    *display,
                        MetaScreen     *screen,
-		       MetaWindow     *window,
-		       XEvent         *event,
-		       MetaKeyBinding *binding)
+                       MetaWindow     *window,
+                       XEvent         *event,
+                       MetaKeyBinding *binding)
 {
   /* Get window at pointer */
 
@@ -3343,8 +3339,7 @@ handle_workspace_switch  (MetaDisplay    *display,
 
       grabbed_before_release = primary_modifier_still_pressed (display, grab_mask);
 
-      meta_topic (META_DEBUG_KEYBINDINGS,
-		  "Activating target workspace\n");
+      meta_topic (META_DEBUG_KEYBINDINGS, "Activating target workspace\n");
 
       if (!grabbed_before_release)
         {
