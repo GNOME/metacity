@@ -75,7 +75,7 @@ meta_window_release_saved_state (const MetaWindowSessionInfo *info)
 static void ice_io_error_handler (IceConn connection);
 
 static void new_ice_connection (IceConn connection, IcePointer client_data,
-				Bool opening, IcePointer *watch_data);
+                                Bool opening, IcePointer *watch_data);
 
 static void        save_state         (void);
 static char*       load_state         (const char *previous_save_file);
@@ -122,7 +122,7 @@ process_ice_messages (GIOChannel *channel,
    the ICE connection to be handled via the event loop.  */
 static void
 new_ice_connection (IceConn connection, IcePointer client_data, Bool opening,
-		    IcePointer *watch_data)
+                    IcePointer *watch_data)
 {
   guint input_id;
 
@@ -179,7 +179,7 @@ ice_init (void)
       default_handler = IceSetIOErrorHandler (ice_io_error_handler);
 
       if (ice_installed_handler == default_handler)
-	ice_installed_handler = NULL;
+        ice_installed_handler = NULL;
 
       IceAddConnectionWatch (new_ice_connection, NULL);
 
@@ -503,13 +503,13 @@ save_yourself_callback (SmcConn   smc_conn,
       /* Double check that this is a section 7.2 SaveYourself: */
 
       if (save_style == SmSaveLocal &&
-	  interact_style == SmInteractStyleNone &&
-	  !shutdown && !fast)
-	{
-	  /* The protocol requires this even if xsm ignores it. */
-	  SmcSaveYourselfDone (session_connection, successful);
-	  return;
-	}
+          interact_style == SmInteractStyleNone &&
+          !shutdown && !fast)
+        {
+          /* The protocol requires this even if xsm ignores it. */
+          SmcSaveYourselfDone (session_connection, successful);
+          return;
+        }
     }
 #endif
 
