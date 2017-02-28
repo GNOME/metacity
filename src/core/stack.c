@@ -37,7 +37,7 @@
 
 #define WINDOW_HAS_TRANSIENT_TYPE(w)                    \
           (w->type == META_WINDOW_DIALOG ||             \
-	   w->type == META_WINDOW_MODAL_DIALOG ||       \
+           w->type == META_WINDOW_MODAL_DIALOG ||       \
            w->type == META_WINDOW_TOOLBAR ||            \
            w->type == META_WINDOW_MENU ||               \
            w->type == META_WINDOW_UTILITY)
@@ -693,8 +693,8 @@ ensure_above (MetaWindow *above,
       above->layer < below->layer)
     {
       meta_topic (META_DEBUG_STACK,
-		  "Promoting window %s from layer %u to %u due to contraint\n",
-		  above->desc, above->layer, below->layer);
+                  "Promoting window %s from layer %u to %u due to contraint\n",
+                  above->desc, above->layer, below->layer);
       above->layer = below->layer;
     }
 
