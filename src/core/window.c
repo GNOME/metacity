@@ -357,6 +357,9 @@ meta_window_new_with_attrs (MetaDisplay       *display,
     PropertyChangeMask | EnterWindowMask | LeaveWindowMask |
     FocusChangeMask | ColormapChangeMask;
 
+  if (attrs->override_redirect)
+    event_mask |= StructureNotifyMask;
+
   XSelectInput (display->xdisplay, xwindow, event_mask);
 
   has_shape = FALSE;
@@ -590,6 +593,16 @@ meta_window_new_with_attrs (MetaDisplay       *display,
   window->initial_workspace = 0; /* not used */
   window->initial_timestamp = 0; /* not used */
 
+  if (window->override_redirect)
+    {
+      window->decorated = FALSE;
+      window->always_sticky = TRUE;
+      window->has_close_func = FALSE;
+      window->has_shade_func = FALSE;
+      window->has_move_func = FALSE;
+      window->has_resize_func = FALSE;
+    }
+
   meta_display_register_x_window (display, &window->xwindow, window);
 
   /* assign the window to its group, or create a new group if needed
@@ -665,14 +678,15 @@ meta_window_new_with_attrs (MetaDisplay       *display,
     meta_window_ensure_frame (window);
 
   meta_window_grab_keys (window);
-  if (window->type != META_WINDOW_DOCK)
+  if (window->type != META_WINDOW_DOCK && !window->override_redirect)
     {
       meta_display_grab_window_buttons (window->display, window->xwindow);
       meta_display_grab_focus_window_button (window->display, window);
     }
 
   if (window->type == META_WINDOW_DESKTOP ||
-      window->type == META_WINDOW_DOCK)
+      window->type == META_WINDOW_DOCK ||
+      window->override_redirect)
     {
       /* Change the default, but don't enforce this if the user
        * focuses the dock/desktop and unsticks it using key shortcuts.
@@ -804,11 +818,14 @@ meta_window_new_with_attrs (MetaDisplay       *display,
       }
   }
 
-  /* FIXME we have a tendency to set this then immediately
-   * change it again.
-   */
-  set_wm_state (window, window->iconic ? IconicState : NormalState);
-  set_net_wm_state (window);
+  if (!window->override_redirect)
+    {
+      /* FIXME we have a tendency to set this then immediately
+       * change it again.
+       */
+      set_wm_state (window, window->iconic ? IconicState : NormalState);
+      set_net_wm_state (window);
+    }
 
   /* Sync stack changes */
   meta_stack_thaw (window->screen->stack);
@@ -4004,6 +4021,25 @@ idle_move_resize (gpointer data)
   return FALSE;
 }
 
+/* This is used to notify us of an unrequested configuration (only
+ * applicable to override redirect windows)
+ */
+void
+meta_window_configure_notify (MetaWindow      *window,
+                              XConfigureEvent *event)
+{
+  g_assert (window->override_redirect);
+  g_assert (window->frame == NULL);
+
+  window->rect.x = event->x;
+  window->rect.y = event->y;
+  window->rect.width = event->width;
+  window->rect.height = event->height;
+
+  if (!event->override_redirect && !event->send_event)
+    meta_warning ("Unhandled change of windows override redirect status\n");
+}
+
 void
 meta_window_get_position (MetaWindow  *window,
                           int         *x,
@@ -5896,6 +5932,8 @@ send_configure_notify (MetaWindow *window)
 {
   XEvent event;
 
+  g_return_if_fail (!window->override_redirect);
+
   /* from twm */
 
   event.type = ConfigureNotify;
@@ -6490,7 +6528,8 @@ recalc_window_type (MetaWindow *window)
     {
       recalc_window_features (window);
 
-      set_net_wm_state (window);
+      if (!window->override_redirect)
+        set_net_wm_state (window);
 
       /* Update frame */
       if (window->decorated)
@@ -6658,12 +6697,14 @@ recalc_window_features (MetaWindow *window)
     }
 
   if (window->type == META_WINDOW_DESKTOP ||
-      window->type == META_WINDOW_DOCK)
+      window->type == META_WINDOW_DOCK ||
+      window->override_redirect)
     window->always_sticky = TRUE;
 
   if (window->type == META_WINDOW_DESKTOP ||
       window->type == META_WINDOW_DOCK ||
-      window->type == META_WINDOW_SPLASHSCREEN)
+      window->type == META_WINDOW_SPLASHSCREEN ||
+      window->override_redirect)
     {
       window->decorated = FALSE;
       window->has_close_func = FALSE;

@@ -1600,7 +1600,8 @@ event_callback (XEvent   *event,
         }
     }
 
-  if (window && ((event->type == KeyPress) || (event->type == ButtonPress)))
+  if (window && window && !window->override_redirect &&
+      ((event->type == KeyPress) || (event->type == ButtonPress)))
     {
       if (CurrentTime == display->current_time)
         {
@@ -2042,7 +2043,8 @@ event_callback (XEvent   *event,
                               "Window %s withdrawn\n",
                               window->desc);
 
-                  meta_effect_run_close (window, NULL, NULL);
+                  if (!window->override_redirect)
+                    meta_effect_run_close (window, NULL, NULL);
 
                   /* Unmanage withdrawn window */
                   window->withdrawn = TRUE;
@@ -2121,24 +2123,29 @@ event_callback (XEvent   *event,
                                                 &event->xconfigure);
         }
 
-      /* Handle screen resize */
-      {
-        if (event->xconfigure.window == screen->xroot)
-          {
+      if (window && window->override_redirect)
+        {
+          meta_window_configure_notify (window, &event->xconfigure);
+        }
+      else
+        {
+          /* Handle screen resize */
+          if (event->xconfigure.window == screen->xroot)
+            {
 #ifdef HAVE_RANDR
-            /* do the resize the official way */
-            XRRUpdateConfiguration (event);
+              /* do the resize the official way */
+              XRRUpdateConfiguration (event);
 #else
-            /* poke around in Xlib */
-            screen->xscreen->width   = event->xconfigure.width;
-            screen->xscreen->height  = event->xconfigure.height;
+              /* poke around in Xlib */
+              screen->xscreen->width   = event->xconfigure.width;
+              screen->xscreen->height  = event->xconfigure.height;
 #endif
 
-            meta_screen_resize (screen,
-                                event->xconfigure.width,
-                                event->xconfigure.height);
-          }
-      }
+              meta_screen_resize (screen,
+                                  event->xconfigure.width,
+                                  event->xconfigure.height);
+            }
+        }
       break;
     case ConfigureRequest:
       /* This comment and code is found in both twm and fvwm */
