@@ -177,19 +177,19 @@ find_next_cascade (MetaWindow *window,
           cascade_y = wy + titlebar_rect.height;
 
           /* If we go off the screen, start over with a new cascade */
-	  if (((cascade_x + window_width) >
+          if (((cascade_x + window_width) >
                (work_area.x + work_area.width)) ||
               ((cascade_y + window_height) >
-	       (work_area.y + work_area.height)))
-	    {
-	      cascade_x = MAX (0, work_area.x);
-	      cascade_y = MAX (0, work_area.y);
+               (work_area.y + work_area.height)))
+            {
+              cascade_x = MAX (0, work_area.x);
+              cascade_y = MAX (0, work_area.y);
 
 #define CASCADE_INTERVAL 50 /* space between top-left corners of cascades */
               cascade_stage += 1;
-	      cascade_x += CASCADE_INTERVAL * cascade_stage;
+              cascade_x += CASCADE_INTERVAL * cascade_stage;
 
-	      /* start over with a new cascade translated to the right, unless
+              /* start over with a new cascade translated to the right, unless
                * we are out of space
                */
               if ((cascade_x + window_width) <
@@ -204,7 +204,7 @@ find_next_cascade (MetaWindow *window,
                   cascade_x = MAX (0, work_area.x);
                   break;
                 }
-	    }
+            }
         }
       else
         {
@@ -510,7 +510,7 @@ find_first_fit (MetaWindow *window,
                 MetaFrameBorders *borders,
                 /* visible windows on relevant workspaces */
                 GList      *windows,
-		int         xinerama,
+                int         xinerama,
                 int         x,
                 int         y,
                 int        *new_x,
@@ -557,8 +557,8 @@ find_first_fit (MetaWindow *window,
       meta_rectangle_to_string (&window->screen->xinerama_infos[xinerama].rect,
                                 xinerama_location_string);
       meta_topic (META_DEBUG_XINERAMA,
-		  "Natural xinerama is %s\n",
-		  xinerama_location_string);
+                  "Natural xinerama is %s\n",
+                  xinerama_location_string);
     }
 #endif
 
@@ -1039,7 +1039,7 @@ meta_window_place (MetaWindow        *window,
                                       xi->number,
                                       x, y, &x, &y);
           g_list_free (focus_window_list);
-	}
+        }
 
       /* If that still didn't work, just place it where we can see as much
        * as possible.
