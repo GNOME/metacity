@@ -1129,6 +1129,12 @@ stack_sync_to_server (MetaStack *stack)
 
       w = tmp->data;
 
+      if (w->unmanaging)
+        {
+          tmp = tmp->next;
+          continue;
+        }
+
       /* remember, stacked is in reverse order (bottom to top) */
       g_array_prepend_val (stacked, w->xwindow);
 
@@ -1145,11 +1151,6 @@ stack_sync_to_server (MetaStack *stack)
 
   meta_topic (META_DEBUG_STACK, "\n");
   meta_pop_no_msg_prefix ();
-
-  /* All windows should be in some stacking order */
-  if (stacked->len != stack->windows->len)
-    meta_bug ("%u windows stacked, %u windows exist in stack\n",
-              stacked->len, stack->windows->len);
 
   /* Sync to server */
 
@@ -1435,6 +1436,9 @@ get_default_focus_window (MetaStack     *stack,
         continue;
 
       if (window->minimized)
+        continue;
+
+      if (window->unmanaging)
         continue;
 
       if (!(window->input || window->take_focus))
