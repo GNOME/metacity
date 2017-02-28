@@ -695,9 +695,9 @@ meta_window_new_with_attrs (MetaDisplay       *display,
                       "Window %s is initially on all spaces\n",
                       window->desc);
 
-	  /* need to set on_all_workspaces first so that it will be
-	   * added to all the MRU lists
-	   */
+          /* need to set on_all_workspaces first so that it will be
+           * added to all the MRU lists
+           */
           window->on_all_workspaces = TRUE;
           meta_workspace_add_window (window->screen->active_workspace, window);
         }
@@ -904,7 +904,7 @@ meta_window_apply_session_info (MetaWindow *window,
               window->saved_rect.width = info->saved_rect.width;
               window->saved_rect.height = info->saved_rect.height;
             }
-	}
+        }
     }
 
   if (info->on_all_workspaces_set)
@@ -2590,15 +2590,15 @@ save_user_window_placement (MetaWindow *window)
       meta_window_get_client_root_coords (window, &user_rect);
 
       if (!window->maximized_horizontally)
-	{
-	  window->user_rect.x     = user_rect.x;
-	  window->user_rect.width = user_rect.width;
-	}
+        {
+          window->user_rect.x     = user_rect.x;
+          window->user_rect.width = user_rect.width;
+        }
       if (!window->maximized_vertically)
-	{
-	  window->user_rect.y      = user_rect.y;
-	  window->user_rect.height = user_rect.height;
-	}
+        {
+          window->user_rect.y      = user_rect.y;
+          window->user_rect.height = user_rect.height;
+        }
     }
 }
 
@@ -3387,7 +3387,7 @@ send_sync_request (MetaWindow *window)
    * inside an error_trap_push()/pop() pair.
    */
   XSendEvent (window->display->xdisplay,
-	      window->xwindow, False, 0, (XEvent*) &ev);
+              window->xwindow, False, 0, (XEvent*) &ev);
 
   g_get_current_time (&window->sync_request_time);
 }
@@ -4802,12 +4802,12 @@ meta_window_send_icccm_message (MetaWindow *window,
    * ICCCM Client Messages - Section 4.2.8 of the ICCCM dictates that all
    * client messages will have the following form:
    *
-   *     event type	ClientMessage
-   *     message type	_XA_WM_PROTOCOLS
-   *     window		tmp->w
-   *     format		32
-   *     data[0]		message atom
-   *     data[1]		time stamp
+   *     event type    ClientMessage
+   *     message type  _XA_WM_PROTOCOLS
+   *     window        tmp->w
+   *     format        32
+   *     data[0]       message atom
+   *     data[1]       time stamp
    */
 
     XClientMessageEvent ev;
@@ -4953,10 +4953,10 @@ meta_window_move_resize_request (MetaWindow *window,
   else
     {
       meta_topic (META_DEBUG_GEOMETRY,
-		  "Not allowing position change for window %s PPosition 0x%lx USPosition 0x%lx type %u\n",
-		  window->desc, window->size_hints.flags & PPosition,
-		  window->size_hints.flags & USPosition,
-		  window->type);
+                  "Not allowing position change for window %s PPosition 0x%lx USPosition 0x%lx type %u\n",
+                  window->desc, window->size_hints.flags & PPosition,
+                  window->size_hints.flags & USPosition,
+                  window->type);
     }
 
   width = window->rect.width;
@@ -5186,7 +5186,7 @@ meta_window_client_message (MetaWindow *window,
       guint32 timestamp;
 
       if (event->xclient.data.l[0] != 0)
-	timestamp = event->xclient.data.l[0];
+        timestamp = event->xclient.data.l[0];
       else
         {
           meta_warning ("Receiving a NET_CLOSE_WINDOW message for %s without "
@@ -6900,14 +6900,13 @@ menu_callback (MetaWindowMenu *menu,
         }
 
       if (workspace)
-	{
-	  meta_window_change_workspace (window,
-					workspace);
+        {
+          meta_window_change_workspace (window, workspace);
 #if 0
-	  meta_workspace_activate (workspace);
-	  meta_window_raise (window);
+          meta_workspace_activate (workspace);
+          meta_window_raise (window);
 #endif
-	}
+        }
     }
   else
     {
@@ -7151,7 +7150,7 @@ timeval_to_ms (const GTimeVal *timeval)
 
 static double
 time_diff (const GTimeVal *first,
-	   const GTimeVal *second)
+           const GTimeVal *second)
 {
   double first_ms = timeval_to_ms (first);
   double second_ms = timeval_to_ms (second);
@@ -7161,7 +7160,7 @@ time_diff (const GTimeVal *first,
 
 static gboolean
 check_moveresize_frequency (MetaWindow *window,
-			    gdouble    *remaining)
+                            gdouble    *remaining)
 {
   GTimeVal current_time;
 
@@ -7171,37 +7170,36 @@ check_moveresize_frequency (MetaWindow *window,
       window->display->grab_sync_request_alarm != None)
     {
       if (window->sync_request_time.tv_sec != 0 ||
-	  window->sync_request_time.tv_usec != 0)
-	{
-	  double elapsed =
-	    time_diff (&current_time, &window->sync_request_time);
+          window->sync_request_time.tv_usec != 0)
+        {
+          double elapsed = time_diff (&current_time, &window->sync_request_time);
 
-	  if (elapsed < 1000.0)
-	    {
-	      /* We want to be sure that the timeout happens at
-	       * a time where elapsed will definitely be
-	       * greater than 1000, so we can disable sync
-	       */
-	      if (remaining)
-		*remaining = 1000.0 - elapsed + 100;
+          if (elapsed < 1000.0)
+            {
+              /* We want to be sure that the timeout happens at
+               * a time where elapsed will definitely be
+               * greater than 1000, so we can disable sync
+               */
+              if (remaining)
+                *remaining = 1000.0 - elapsed + 100;
 
-	      return FALSE;
-	    }
-	  else
-	    {
-	      /* We have now waited for more than a second for the
-	       * application to respond to the sync request
-	       */
-	      window->disable_sync = TRUE;
-	      return TRUE;
-	    }
-	}
+              return FALSE;
+            }
+          else
+            {
+              /* We have now waited for more than a second for the
+               * application to respond to the sync request
+               */
+              window->disable_sync = TRUE;
+              return TRUE;
+            }
+        }
       else
-	{
-	  /* No outstanding sync requests. Go ahead and resize
-	   */
-	  return TRUE;
-	}
+        {
+          /* No outstanding sync requests. Go ahead and resize
+           */
+          return TRUE;
+        }
     }
   else
     {
@@ -7212,20 +7210,20 @@ check_moveresize_frequency (MetaWindow *window,
       elapsed = time_diff (&current_time, &window->display->grab_last_moveresize_time);
 
       if (elapsed >= 0.0 && elapsed < ms_between_resizes)
-	{
-	  meta_topic (META_DEBUG_RESIZING,
-		      "Delaying move/resize as only %g of %g ms elapsed\n",
-		      elapsed, ms_between_resizes);
+        {
+          meta_topic (META_DEBUG_RESIZING,
+                      "Delaying move/resize as only %g of %g ms elapsed\n",
+                      elapsed, ms_between_resizes);
 
-	  if (remaining)
-	    *remaining = (ms_between_resizes - elapsed);
+          if (remaining)
+            *remaining = (ms_between_resizes - elapsed);
 
-	  return FALSE;
-	}
+          return FALSE;
+        }
 
       meta_topic (META_DEBUG_RESIZING,
-		  " Checked moveresize freq, allowing move/resize now (%g of %g seconds elapsed)\n",
-		  elapsed / 1000.0, 1.0 / max_resizes_per_second);
+                  " Checked moveresize freq, allowing move/resize now (%g of %g seconds elapsed)\n",
+                  elapsed / 1000.0, 1.0 / max_resizes_per_second);
 
       return TRUE;
     }
@@ -7631,10 +7629,10 @@ update_resize (MetaWindow *window,
        * generates another event.
        */
       if (!window->display->grab_resize_timeout_id)
-	{
-	  window->display->grab_resize_timeout_id =
-	    g_timeout_add ((int)remaining, update_resize_timeout, window);
-	}
+        {
+          window->display->grab_resize_timeout_id =
+            g_timeout_add ((int)remaining, update_resize_timeout, window);
+        }
 
       return;
     }
@@ -8024,21 +8022,19 @@ get_work_area_xinerama (MetaWindow    *window,
 
 void
 meta_window_get_work_area_current_xinerama (MetaWindow    *window,
-					    MetaRectangle *area)
+                                            MetaRectangle *area)
 {
-  const MetaXineramaScreenInfo *xinerama = NULL;
-  xinerama = meta_screen_get_xinerama_for_window (window->screen,
-						  window);
+  const MetaXineramaScreenInfo *xinerama;
 
-  meta_window_get_work_area_for_xinerama (window,
-                                          xinerama->number,
-                                          area);
+  xinerama = meta_screen_get_xinerama_for_window (window->screen, window);
+
+  meta_window_get_work_area_for_xinerama (window, xinerama->number, area);
 }
 
 void
 meta_window_get_work_area_for_xinerama (MetaWindow    *window,
-					int            which_xinerama,
-					MetaRectangle *area)
+                                        int            which_xinerama,
+                                        MetaRectangle *area)
 {
   g_return_if_fail (which_xinerama >= 0);
 
