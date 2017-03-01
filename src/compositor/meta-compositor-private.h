@@ -46,7 +46,7 @@ struct _MetaCompositorClass
                                             MetaWindow         *window,
                                             gboolean            update);
 
-  void              (*process_event)       (MetaCompositor     *compositor,
+  void              (* process_event)      (MetaCompositor     *compositor,
                                             XEvent             *event,
                                             MetaWindow         *window);
 
