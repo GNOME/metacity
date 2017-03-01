@@ -427,10 +427,6 @@ struct _MetaWindow
 MetaWindow* meta_window_new                (MetaDisplay *display,
                                             Window       xwindow,
                                             gboolean     must_be_viewable);
-MetaWindow* meta_window_new_with_attrs     (MetaDisplay *display,
-                                            Window       xwindow,
-                                            gboolean     must_be_viewable,
-                                            XWindowAttributes *attrs);
 void        meta_window_free               (MetaWindow  *window,
                                             guint32      timestamp);
 void        meta_window_calc_showing       (MetaWindow  *window);

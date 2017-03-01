@@ -775,8 +775,8 @@ meta_screen_manage_all_windows (MetaScreen *screen)
       WindowInfo *info = list->data;
       MetaWindow *window;
 
-      window = meta_window_new_with_attrs (screen->display, info->xwindow, TRUE,
-                                           &info->attrs);
+      window = meta_window_new (screen->display, info->xwindow, TRUE);
+
       if (info->xwindow == screen->no_focus_window ||
           info->xwindow == screen->flash_window ||
           info->xwindow == screen->wm_cm_selection_window ||
