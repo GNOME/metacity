@@ -3222,16 +3222,15 @@ meta_compositor_xrender_unmanage (MetaCompositor *compositor)
 }
 
 static void
-meta_compositor_xrender_add_window (MetaCompositor    *compositor,
-                                    MetaWindow        *window,
-                                    Window             xwindow,
-                                    XWindowAttributes *attrs)
+meta_compositor_xrender_add_window (MetaCompositor *compositor,
+                                    MetaWindow     *window,
+                                    Window          xwindow)
 {
   MetaCompositorXRender *xrender = META_COMPOSITOR_XRENDER (compositor);
-  MetaScreen *screen = meta_screen_for_x_screen (attrs->screen);
+  MetaDisplay *display = meta_compositor_get_display (compositor);
 
   meta_error_trap_push (NULL);
-  add_win (xrender, screen, window, xwindow);
+  add_win (xrender, display->screen, window, xwindow);
   meta_error_trap_pop (NULL);
 }
 

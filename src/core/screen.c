@@ -786,7 +786,7 @@ meta_screen_manage_all_windows (MetaScreen *screen)
       }
 
       meta_compositor_add_window (screen->display->compositor, window,
-                                  info->xwindow, &info->attrs);
+                                  info->xwindow);
     }
   meta_stack_thaw (screen->stack);
 
@@ -823,7 +823,7 @@ meta_screen_composite_all_windows (MetaScreen *screen)
 
       window = meta_display_lookup_x_window (display, info->xwindow);
       meta_compositor_add_window (display->compositor, window,
-                                  info->xwindow, &info->attrs);
+                                  info->xwindow);
     }
 
   meta_stack_thaw (screen->stack);

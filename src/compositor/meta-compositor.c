@@ -204,16 +204,15 @@ meta_compositor_unmanage (MetaCompositor *compositor)
 }
 
 void
-meta_compositor_add_window (MetaCompositor    *compositor,
-                            MetaWindow        *window,
-                            Window             xwindow,
-                            XWindowAttributes *attrs)
+meta_compositor_add_window (MetaCompositor *compositor,
+                            MetaWindow     *window,
+                            Window          xwindow)
 {
   MetaCompositorClass *compositor_class;
 
   compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
 
-  compositor_class->add_window (compositor, window, xwindow, attrs);
+  compositor_class->add_window (compositor, window, xwindow);
 }
 
 void

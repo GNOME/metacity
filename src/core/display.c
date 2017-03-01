@@ -2074,20 +2074,13 @@ event_callback (XEvent   *event,
       if (window == NULL)
         {
           Window xwindow;
-          XWindowAttributes attr;
-          int result;
 
           xwindow = event->xmaprequest.window;
           window = meta_window_new (display, xwindow, FALSE);
 
-          meta_error_trap_push (display);
-          result = XGetWindowAttributes (display->xdisplay, xwindow, &attr);
-          meta_error_trap_pop (display);
-
-          if (result != 0)
+          if (window != NULL)
             {
-              meta_compositor_add_window (display->compositor, window,
-                                          xwindow, &attr);
+              meta_compositor_add_window (display->compositor, window, xwindow);
             }
         }
       /* if frame was receiver it's some malicious send event or something */

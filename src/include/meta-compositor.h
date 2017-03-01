@@ -46,8 +46,7 @@ void             meta_compositor_unmanage           (MetaCompositor     *composi
 
 void             meta_compositor_add_window         (MetaCompositor     *compositor,
                                                      MetaWindow         *window,
-                                                     Window              xwindow,
-                                                     XWindowAttributes  *attrs);
+                                                     Window              xwindow);
 
 void             meta_compositor_remove_window      (MetaCompositor     *compositor,
                                                      MetaWindow         *window);
