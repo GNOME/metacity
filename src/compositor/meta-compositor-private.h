@@ -40,7 +40,7 @@ struct _MetaCompositorClass
                                             XWindowAttributes  *attrs);
 
   void              (* remove_window)      (MetaCompositor     *compositor,
-                                            Window              xwindow);
+                                            MetaWindow         *window);
 
   void              (* set_updates)        (MetaCompositor     *compositor,
                                             MetaWindow         *window,
@@ -69,9 +69,6 @@ struct _MetaCompositorClass
                                             gint                y);
 
   void              (* end_move)           (MetaCompositor     *compositor,
-                                            MetaWindow         *window);
-
-  void              (* free_window)        (MetaCompositor     *compositor,
                                             MetaWindow         *window);
 
   void              (* maximize_window)    (MetaCompositor     *compositor,

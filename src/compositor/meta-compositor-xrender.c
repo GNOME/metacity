@@ -3237,8 +3237,39 @@ meta_compositor_xrender_add_window (MetaCompositor    *compositor,
 
 static void
 meta_compositor_xrender_remove_window (MetaCompositor *compositor,
-                                       Window          xwindow)
+                                       MetaWindow     *window)
 {
+  MetaCompositorXRender *xrender;
+  MetaDisplay *display;
+  MetaFrame *frame;
+  Window xwindow;
+  MetaCompWindow *cw;
+
+  xrender = META_COMPOSITOR_XRENDER (compositor);
+  display = meta_compositor_get_display (compositor);
+  frame = meta_window_get_frame (window);
+
+  if (frame)
+    xwindow = meta_frame_get_xwindow (frame);
+  else
+    xwindow = meta_window_get_xwindow (window);
+
+  cw = find_window_in_display (display, xwindow);
+  if (cw == NULL)
+    return;
+
+  cw->window = NULL;
+  cw->attrs.map_state = IsUnmapped;
+  cw->damaged = FALSE;
+
+  if (cw->extents != None)
+    {
+      dump_xserver_region (xrender, "destroy_win", cw->extents);
+      add_damage (xrender, cw->screen, cw->extents);
+      cw->extents = None;
+    }
+
+  free_win (cw, FALSE);
 }
 
 static void
@@ -3630,43 +3661,6 @@ meta_compositor_xrender_end_move (MetaCompositor *compositor,
 }
 
 static void
-meta_compositor_xrender_free_window (MetaCompositor *compositor,
-                                     MetaWindow     *window)
-{
-  MetaCompositorXRender *xrender;
-  MetaDisplay *display;
-  MetaFrame *frame;
-  Window xwindow;
-  MetaCompWindow *cw;
-
-  xrender = META_COMPOSITOR_XRENDER (compositor);
-  display = meta_compositor_get_display (compositor);
-  frame = meta_window_get_frame (window);
-
-  if (frame)
-    xwindow = meta_frame_get_xwindow (frame);
-  else
-    xwindow = meta_window_get_xwindow (window);
-
-  cw = find_window_in_display (display, xwindow);
-  if (cw == NULL)
-    return;
-
-  cw->window = NULL;
-  cw->attrs.map_state = IsUnmapped;
-  cw->damaged = FALSE;
-
-  if (cw->extents != None)
-    {
-      dump_xserver_region (xrender, "destroy_win", cw->extents);
-      add_damage (xrender, cw->screen, cw->extents);
-      cw->extents = None;
-    }
-
-  free_win (cw, FALSE);
-}
-
-static void
 meta_compositor_xrender_maximize_window (MetaCompositor *compositor,
                                          MetaWindow     *window)
 {
@@ -3734,7 +3728,6 @@ meta_compositor_xrender_class_init (MetaCompositorXRenderClass *xrender_class)
   compositor_class->begin_move = meta_compositor_xrender_begin_move;
   compositor_class->update_move = meta_compositor_xrender_update_move;
   compositor_class->end_move = meta_compositor_xrender_end_move;
-  compositor_class->free_window = meta_compositor_xrender_free_window;
   compositor_class->maximize_window = meta_compositor_xrender_maximize_window;
   compositor_class->unmaximize_window = meta_compositor_xrender_unmaximize_window;
   compositor_class->is_our_xwindow = meta_compositor_xrender_is_our_xwindow;

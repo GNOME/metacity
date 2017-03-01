@@ -218,13 +218,13 @@ meta_compositor_add_window (MetaCompositor    *compositor,
 
 void
 meta_compositor_remove_window (MetaCompositor *compositor,
-                               Window          xwindow)
+                               MetaWindow     *window)
 {
   MetaCompositorClass *compositor_class;
 
   compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
 
-  compositor_class->remove_window (compositor, xwindow);
+  compositor_class->remove_window (compositor, window);
 }
 
 void
@@ -310,17 +310,6 @@ meta_compositor_end_move (MetaCompositor *compositor,
   compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
 
   compositor_class->end_move (compositor, window);
-}
-
-void
-meta_compositor_free_window (MetaCompositor *compositor,
-                             MetaWindow     *window)
-{
-  MetaCompositorClass *compositor_class;
-
-  compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
-
-  compositor_class->free_window (compositor, window);
 }
 
 void

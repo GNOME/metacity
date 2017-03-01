@@ -53,7 +53,7 @@ meta_compositor_none_add_window (MetaCompositor    *compositor,
 
 static void
 meta_compositor_none_remove_window (MetaCompositor *compositor,
-                                    Window          xwindow)
+                                    MetaWindow     *window)
 {
 }
 
@@ -109,12 +109,6 @@ meta_compositor_none_end_move (MetaCompositor *compositor,
 }
 
 static void
-meta_compositor_none_free_window (MetaCompositor *compositor,
-                                  MetaWindow     *window)
-{
-}
-
-static void
 meta_compositor_none_maximize_window (MetaCompositor *compositor,
                                       MetaWindow     *window)
 {
@@ -152,7 +146,6 @@ meta_compositor_none_class_init (MetaCompositorNoneClass *none_class)
   compositor_class->begin_move = meta_compositor_none_begin_move;
   compositor_class->update_move = meta_compositor_none_update_move;
   compositor_class->end_move = meta_compositor_none_end_move;
-  compositor_class->free_window = meta_compositor_none_free_window;
   compositor_class->maximize_window = meta_compositor_none_maximize_window;
   compositor_class->unmaximize_window = meta_compositor_none_unmaximize_window;
   compositor_class->is_our_xwindow = meta_compositor_none_is_our_xwindow;

@@ -50,7 +50,7 @@ void             meta_compositor_add_window         (MetaCompositor     *composi
                                                      XWindowAttributes  *attrs);
 
 void             meta_compositor_remove_window      (MetaCompositor     *compositor,
-                                                     Window              xwindow);
+                                                     MetaWindow         *window);
 
 void             meta_compositor_set_updates        (MetaCompositor     *compositor,
                                                      MetaWindow         *window,
@@ -79,9 +79,6 @@ void             meta_compositor_update_move        (MetaCompositor     *composi
                                                      gint                y);
 
 void             meta_compositor_end_move           (MetaCompositor     *compositor,
-                                                     MetaWindow         *window);
-
-void             meta_compositor_free_window        (MetaCompositor     *compositor,
                                                      MetaWindow         *window);
 
 void             meta_compositor_maximize_window    (MetaCompositor     *compositor,
