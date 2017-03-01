@@ -315,9 +315,9 @@ meta_window_new (MetaDisplay *display,
                     wm_state_to_string (existing_wm_state));
     }
 
-  meta_error_trap_push (display);
-
   XAddToSaveSet (display->xdisplay, xwindow);
+
+  meta_error_trap_push (display);
 
   event_mask =
     PropertyChangeMask | EnterWindowMask | LeaveWindowMask |
