@@ -53,7 +53,6 @@ struct _MetaCompositorClass
                                             MetaWindow         *window);
 
   void              (* set_active_window)  (MetaCompositor     *compositor,
-                                            MetaScreen         *screen,
                                             MetaWindow         *window);
 
   void              (* begin_move)         (MetaCompositor     *compositor,

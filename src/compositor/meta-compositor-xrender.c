@@ -3487,11 +3487,11 @@ meta_compositor_xrender_get_window_surface (MetaCompositor *compositor,
 
 static void
 meta_compositor_xrender_set_active_window (MetaCompositor *compositor,
-                                           MetaScreen     *screen,
                                            MetaWindow     *window)
 {
   MetaCompositorXRender *xrender;
   MetaDisplay *display;
+  MetaScreen *screen;
   Display *xdisplay;
   MetaCompWindow *old_focus = NULL, *new_focus = NULL;
   MetaCompScreen *info = NULL;
@@ -3499,6 +3499,7 @@ meta_compositor_xrender_set_active_window (MetaCompositor *compositor,
 
   xrender = META_COMPOSITOR_XRENDER (compositor);
   display = meta_compositor_get_display (compositor);
+  screen = meta_display_get_screen (display);
   xdisplay = meta_display_get_xdisplay (display);
   info = meta_screen_get_compositor_data (screen);
 

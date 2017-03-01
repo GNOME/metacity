@@ -63,7 +63,6 @@ cairo_surface_t *meta_compositor_get_window_surface (MetaCompositor     *composi
                                                      MetaWindow         *window);
 
 void             meta_compositor_set_active_window  (MetaCompositor     *compositor,
-                                                     MetaScreen         *screen,
                                                      MetaWindow         *window);
 
 void             meta_compositor_begin_move         (MetaCompositor     *compositor,

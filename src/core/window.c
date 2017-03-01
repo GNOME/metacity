@@ -1069,8 +1069,7 @@ meta_window_free (MetaWindow  *window,
   if (window->display->focus_window == window)
     {
       window->display->focus_window = NULL;
-      meta_compositor_set_active_window (window->display->compositor,
-                                         window->screen, NULL);
+      meta_compositor_set_active_window (window->display->compositor, NULL);
     }
 
   if (window->maximized_horizontally || window->maximized_vertically)
@@ -5754,8 +5753,7 @@ meta_window_notify_focus (MetaWindow *window,
                       "* Focus --> %s\n", window->desc);
           window->display->focus_window = window;
           window->has_focus = TRUE;
-          meta_compositor_set_active_window (window->display->compositor,
-                                             window->screen, window);
+          meta_compositor_set_active_window (window->display->compositor, window);
 
           /* Move to the front of the focusing workspace's MRU list.
            * We should only be "removing" it from the MRU list if it's
@@ -5845,8 +5843,7 @@ meta_window_notify_focus (MetaWindow *window,
 
           meta_window_appears_focused_changed (window);
 
-          meta_compositor_set_active_window (window->display->compositor,
-                                             window->screen, NULL);
+          meta_compositor_set_active_window (window->display->compositor, NULL);
 
           meta_error_trap_push (window->display);
           XUninstallColormap (window->display->xdisplay,

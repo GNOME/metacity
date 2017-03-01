@@ -79,7 +79,6 @@ meta_compositor_none_get_window_surface (MetaCompositor *compositor,
 
 static void
 meta_compositor_none_set_active_window (MetaCompositor *compositor,
-                                        MetaScreen     *screen,
                                         MetaWindow     *window)
 {
 }
