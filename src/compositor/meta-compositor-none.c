@@ -34,14 +34,12 @@ meta_compositor_none_initable_init (MetaCompositor  *compositor,
 }
 
 static void
-meta_compositor_none_manage_screen (MetaCompositor *compositor,
-                                    MetaScreen     *screen)
+meta_compositor_none_manage (MetaCompositor *compositor)
 {
 }
 
 static void
-meta_compositor_none_unmanage_screen (MetaCompositor *compositor,
-                                      MetaScreen     *screen)
+meta_compositor_none_unmanage (MetaCompositor *compositor)
 {
 }
 
@@ -143,8 +141,8 @@ meta_compositor_none_class_init (MetaCompositorNoneClass *none_class)
   compositor_class = META_COMPOSITOR_CLASS (none_class);
 
   compositor_class->initable_init = meta_compositor_none_initable_init;
-  compositor_class->manage_screen = meta_compositor_none_manage_screen;
-  compositor_class->unmanage_screen = meta_compositor_none_unmanage_screen;
+  compositor_class->manage = meta_compositor_none_manage;
+  compositor_class->unmanage = meta_compositor_none_unmanage;
   compositor_class->add_window = meta_compositor_none_add_window;
   compositor_class->remove_window = meta_compositor_none_remove_window;
   compositor_class->set_updates = meta_compositor_none_set_updates;

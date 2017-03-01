@@ -40,11 +40,9 @@ typedef enum
 MetaCompositor  *meta_compositor_new                (MetaCompositorType  type,
                                                      MetaDisplay        *display);
 
-void             meta_compositor_manage_screen      (MetaCompositor     *compositor,
-                                                     MetaScreen         *screen);
+void             meta_compositor_manage             (MetaCompositor     *compositor);
 
-void             meta_compositor_unmanage_screen    (MetaCompositor     *compositor,
-                                                     MetaScreen         *screen);
+void             meta_compositor_unmanage           (MetaCompositor     *compositor);
 
 void             meta_compositor_add_window         (MetaCompositor     *compositor,
                                                      MetaWindow         *window,

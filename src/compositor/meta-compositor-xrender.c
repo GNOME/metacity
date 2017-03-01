@@ -3083,12 +3083,12 @@ meta_compositor_xrender_initable_init (MetaCompositor  *compositor,
 }
 
 static void
-meta_compositor_xrender_manage_screen (MetaCompositor *compositor,
-                                       MetaScreen     *screen)
+meta_compositor_xrender_manage (MetaCompositor *compositor)
 {
   MetaCompScreen *info;
   MetaCompositorXRender *xrender = META_COMPOSITOR_XRENDER (compositor);
-  MetaDisplay *display = meta_screen_get_display (screen);
+  MetaDisplay *display = meta_compositor_get_display (compositor);
+  MetaScreen *screen = meta_display_get_screen (display);
   Display *xdisplay = meta_display_get_xdisplay (display);
   XRenderPictureAttributes pa;
   XRenderPictFormat *visual_format;
@@ -3168,10 +3168,10 @@ meta_compositor_xrender_manage_screen (MetaCompositor *compositor,
 }
 
 static void
-meta_compositor_xrender_unmanage_screen (MetaCompositor *compositor,
-                                         MetaScreen     *screen)
+meta_compositor_xrender_unmanage (MetaCompositor *compositor)
 {
-  MetaDisplay *display = meta_screen_get_display (screen);
+  MetaDisplay *display = meta_compositor_get_display (compositor);
+  MetaScreen *screen = meta_display_get_screen (display);
   Display *xdisplay = meta_display_get_xdisplay (display);
   MetaCompScreen *info;
   Window xroot = meta_screen_get_xroot (screen);
@@ -3723,8 +3723,8 @@ meta_compositor_xrender_class_init (MetaCompositorXRenderClass *xrender_class)
   compositor_class = META_COMPOSITOR_CLASS (xrender_class);
 
   compositor_class->initable_init = meta_compositor_xrender_initable_init;
-  compositor_class->manage_screen = meta_compositor_xrender_manage_screen;
-  compositor_class->unmanage_screen = meta_compositor_xrender_unmanage_screen;
+  compositor_class->manage = meta_compositor_xrender_manage;
+  compositor_class->unmanage = meta_compositor_xrender_unmanage;
   compositor_class->add_window = meta_compositor_xrender_add_window;
   compositor_class->remove_window = meta_compositor_xrender_remove_window;
   compositor_class->set_updates = meta_compositor_xrender_set_updates;

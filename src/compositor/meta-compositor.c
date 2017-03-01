@@ -184,25 +184,23 @@ meta_compositor_new (MetaCompositorType  type,
 }
 
 void
-meta_compositor_manage_screen (MetaCompositor *compositor,
-                               MetaScreen     *screen)
+meta_compositor_manage (MetaCompositor *compositor)
 {
   MetaCompositorClass *compositor_class;
 
   compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
 
-  compositor_class->manage_screen (compositor, screen);
+  compositor_class->manage (compositor);
 }
 
 void
-meta_compositor_unmanage_screen (MetaCompositor *compositor,
-                                 MetaScreen     *screen)
+meta_compositor_unmanage (MetaCompositor *compositor)
 {
   MetaCompositorClass *compositor_class;
 
   compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
 
-  compositor_class->unmanage_screen (compositor, screen);
+  compositor_class->unmanage (compositor);
 }
 
 void

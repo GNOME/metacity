@@ -30,11 +30,9 @@ struct _MetaCompositorClass
   gboolean          (* initable_init)      (MetaCompositor     *compositor,
                                             GError            **error);
 
-  void              (* manage_screen)      (MetaCompositor     *compositor,
-                                            MetaScreen         *screen);
+  void              (* manage)             (MetaCompositor     *compositor);
 
-  void              (* unmanage_screen)    (MetaCompositor     *compositor,
-                                            MetaScreen         *screen);
+  void              (* unmanage)           (MetaCompositor     *compositor);
 
   void              (* add_window)         (MetaCompositor     *compositor,
                                             MetaWindow         *window,

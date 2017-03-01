@@ -252,7 +252,7 @@ update_compositor (MetaDisplay *display,
 
   if (display->compositor != NULL)
     {
-      meta_compositor_unmanage_screen (display->compositor, display->screen);
+      meta_compositor_unmanage (display->compositor);
       g_object_unref (display->compositor);
     }
 
@@ -263,7 +263,7 @@ update_compositor (MetaDisplay *display,
 
   display->compositor = meta_compositor_new (type, display);
 
-  meta_compositor_manage_screen (display->compositor, display->screen);
+  meta_compositor_manage (display->compositor);
 
   if (composite_windows)
     meta_screen_composite_all_windows (display->screen);
