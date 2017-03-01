@@ -244,21 +244,8 @@ meta_window_new (MetaDisplay *display,
                                    * creation, to reduce XSync() calls
                                    */
 
-  meta_error_trap_push (display);
-
-  if (XGetWindowAttributes (display->xdisplay,xwindow, &attrs))
+  if (!XGetWindowAttributes (display->xdisplay,xwindow, &attrs))
     {
-      if (meta_error_trap_pop_with_return (display) != Success)
-        {
-          meta_verbose ("Failed to get attributes for window 0x%lx\n", xwindow);
-          meta_error_trap_pop (display);
-          meta_display_ungrab (display);
-          return NULL;
-        }
-    }
-  else
-    {
-      meta_error_trap_pop_with_return (display);
       meta_verbose ("Failed to get attributes for window 0x%lx\n", xwindow);
       meta_error_trap_pop (display);
       meta_display_ungrab (display);
