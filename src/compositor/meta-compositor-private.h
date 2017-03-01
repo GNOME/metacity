@@ -86,6 +86,8 @@ struct _MetaCompositorClass
                                             Window              xwindow);
 };
 
+MetaDisplay *meta_compositor_get_display (MetaCompositor *compositor);
+
 G_END_DECLS
 
 #endif
