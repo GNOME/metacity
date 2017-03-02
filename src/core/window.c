@@ -446,6 +446,7 @@ meta_window_new (MetaDisplay *display,
 
   window->frame = NULL;
   window->has_focus = FALSE;
+  window->attached_focus_window = NULL;
 
   window->maximized_horizontally = FALSE;
   window->maximized_vertically = FALSE;
@@ -1031,6 +1032,7 @@ meta_window_free (MetaWindow  *window,
       meta_workspace_focus_default_window (window->screen->active_workspace,
                                            window,
                                            timestamp);
+      meta_window_propagate_focus_appearance (window, FALSE);
     }
   else if (window->display->expected_focus_window == window)
     {
@@ -5622,20 +5624,44 @@ meta_window_appears_focused_changed (MetaWindow *window)
     meta_frame_queue_draw (window->frame);
 }
 
-static void
-check_ancestor_focus_appearance (MetaWindow *window)
+void
+meta_window_propagate_focus_appearance (MetaWindow *window,
+                                        gboolean    focused)
 {
-  MetaWindow *parent = meta_window_get_transient_for (window);
+  MetaWindow *child, *parent;
 
   if (!meta_prefs_get_attach_modal_dialogs ())
     return;
 
-  if (window->type != META_WINDOW_MODAL_DIALOG || !parent || parent == window)
-    return;
+  child = window;
+  parent = meta_window_get_transient_for (child);
+  while (child->type == META_WINDOW_MODAL_DIALOG && parent)
+    {
+      gboolean child_focus_state_changed;
 
-  meta_window_appears_focused_changed (parent);
+      if (focused)
+        {
+          if (parent->attached_focus_window == window)
+            break;
+          child_focus_state_changed = (parent->attached_focus_window == NULL);
+          parent->attached_focus_window = window;
+        }
+      else
+        {
+          if (parent->attached_focus_window != window)
+            break;
+          child_focus_state_changed = (parent->attached_focus_window != NULL);
+          parent->attached_focus_window = NULL;
+        }
 
-  check_ancestor_focus_appearance (parent);
+      if (child_focus_state_changed && !parent->has_focus)
+        {
+          meta_window_appears_focused_changed (parent);
+        }
+
+      child = parent;
+      parent = meta_window_get_transient_for (child);
+    }
 }
 
 static void
@@ -5707,8 +5733,10 @@ meta_window_set_focused_internal (MetaWindow *window,
           !meta_prefs_get_raise_on_click())
         meta_display_ungrab_focus_window_button (window->display, window);
 
-      /* parent window become active. */
-      check_ancestor_focus_appearance (window);
+      if (!window->attached_focus_window)
+        meta_window_appears_focused_changed (window);
+
+      meta_window_propagate_focus_appearance (window, TRUE);
     }
   else
     {
@@ -5727,10 +5755,10 @@ meta_window_set_focused_internal (MetaWindow *window,
 
       meta_compositor_set_active_window (window->display->compositor, NULL);
 
-      /* parent window become active. */
-      check_ancestor_focus_appearance (window);
+      if (!window->attached_focus_window)
+        meta_window_appears_focused_changed (window);
 
-      meta_window_appears_focused_changed (window);
+      meta_window_propagate_focus_appearance (window, FALSE);
 
       meta_error_trap_push (window->display);
       XUninstallColormap (window->display->xdisplay, window->colormap);
@@ -8791,26 +8819,10 @@ meta_window_get_frame (MetaWindow *window)
   return window->frame;
 }
 
-static gboolean
-transient_has_focus (MetaWindow *window,
-                     void       *data)
-{
-  if (window->type == META_WINDOW_MODAL_DIALOG && meta_window_appears_focused (window))
-    *((gboolean *)data) = TRUE;
-
-  return FALSE;
-}
-
 gboolean
 meta_window_appears_focused (MetaWindow *window)
 {
-  if (!window->has_focus && meta_prefs_get_attach_modal_dialogs ())
-    {
-      gboolean focus = FALSE;
-      meta_window_foreach_transient (window, transient_has_focus, &focus);
-      return focus;
-    }
-  return window->has_focus;
+  return window->has_focus || (window->attached_focus_window != NULL);
 }
 
 gboolean

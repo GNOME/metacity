@@ -262,9 +262,7 @@ struct _MetaWindow
   /* EWHH demands attention flag */
   guint wm_state_demands_attention : 1;
 
-  /* this flag tracks receipt of focus_in focus_out and
-   * determines whether we draw the focus
-   */
+  /* this flag tracks receipt of focus_in focus_out */
   guint has_focus : 1;
 
   /* Have we placed this window? */
@@ -398,6 +396,9 @@ struct _MetaWindow
 
   /* maintained by group.c */
   MetaGroup *group;
+
+  /* Focused window that is (directly or indirectly) attached to this one */
+  MetaWindow *attached_focus_window;
 };
 
 /* These differ from window->has_foo_func in that they consider
@@ -686,5 +687,8 @@ void meta_window_get_titlebar_rect (MetaWindow    *window,
 
 void meta_window_configure_notify (MetaWindow      *window,
                                    XConfigureEvent *event);
+
+void meta_window_propagate_focus_appearance (MetaWindow *window,
+                                             gboolean    focused);
 
 #endif

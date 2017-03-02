@@ -1532,6 +1532,9 @@ reload_transient_for (MetaWindow    *window,
                       MetaPropValue *value,
                       gboolean       initial)
 {
+  if (window->has_focus && window->xtransient_for != None)
+    meta_window_propagate_focus_appearance (window, FALSE);
+
   window->xtransient_for = None;
 
   if (value->type != META_PROP_VALUE_INVALID)
@@ -1575,6 +1578,9 @@ reload_transient_for (MetaWindow    *window,
 
   if (!window->constructing && !window->override_redirect)
     meta_window_queue (window, META_QUEUE_MOVE_RESIZE);
+
+  if (window->has_focus && window->xtransient_for != None)
+    meta_window_propagate_focus_appearance (window, TRUE);
 }
 
 static void
