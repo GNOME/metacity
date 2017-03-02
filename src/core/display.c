@@ -2062,7 +2062,7 @@ event_callback (XEvent   *event,
            * and move focus to another window
            */
           if (window)
-            meta_window_notify_focus (window, event);
+            meta_window_lost_focus (window);
         }
       break;
     case MapNotify:

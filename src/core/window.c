@@ -5638,6 +5638,43 @@ check_ancestor_focus_appearance (MetaWindow *window)
   check_ancestor_focus_appearance (parent);
 }
 
+void
+meta_window_lost_focus (MetaWindow *window)
+{
+  if (window == window->display->focus_window)
+    {
+      meta_topic (META_DEBUG_FOCUS,
+                  "%s is now the previous focus window due to being focused out or unmapped\n",
+                  window->desc);
+
+      meta_topic (META_DEBUG_FOCUS,
+                  "* Focus --> NULL (was %s)\n", window->desc);
+
+      window->display->focus_window = NULL;
+      window->has_focus = FALSE;
+
+      /* parent window become active. */
+      check_ancestor_focus_appearance (window);
+
+      meta_window_appears_focused_changed (window);
+
+      meta_compositor_set_active_window (window->display->compositor, NULL);
+
+      meta_error_trap_push (window->display);
+      XUninstallColormap (window->display->xdisplay,
+                          window->colormap);
+      meta_error_trap_pop (window->display);
+
+      /* move out of FOCUSED_WINDOW layer */
+      meta_window_update_layer (window);
+
+      /* Re-grab for click to focus and raise-on-click, if necessary */
+      if (meta_prefs_get_focus_mode () == G_DESKTOP_FOCUS_MODE_CLICK ||
+          !meta_prefs_get_raise_on_click ())
+        meta_display_grab_focus_window_button (window->display, window);
+   }
+}
+
 gboolean
 meta_window_notify_focus (MetaWindow *window,
                           XEvent     *event)
@@ -5785,11 +5822,9 @@ meta_window_notify_focus (MetaWindow *window,
           check_ancestor_focus_appearance (window);
         }
     }
-  else if (event->type == FocusOut ||
-           event->type == UnmapNotify)
+  else if (event->type == FocusOut)
     {
-      if (event->type == FocusOut &&
-          event->xfocus.detail == NotifyInferior)
+      if (event->xfocus.detail == NotifyInferior)
         {
           /* This event means the client moved focus to a subwindow */
           meta_topic (META_DEBUG_FOCUS,
@@ -5797,39 +5832,10 @@ meta_window_notify_focus (MetaWindow *window,
                       window->desc);
           return TRUE;
         }
-
-      if (window == window->display->focus_window)
+      else
         {
-          meta_topic (META_DEBUG_FOCUS,
-                      "%s is now the previous focus window due to being focused out or unmapped\n",
-                      window->desc);
-
-          meta_topic (META_DEBUG_FOCUS,
-                      "* Focus --> NULL (was %s)\n", window->desc);
-
-          window->display->focus_window = NULL;
-          window->has_focus = FALSE;
-
-          /* parent window become active. */
-          check_ancestor_focus_appearance (window);
-
-          meta_window_appears_focused_changed (window);
-
-          meta_compositor_set_active_window (window->display->compositor, NULL);
-
-          meta_error_trap_push (window->display);
-          XUninstallColormap (window->display->xdisplay,
-                              window->colormap);
-          meta_error_trap_pop (window->display);
-
-          /* move out of FOCUSED_WINDOW layer */
-          meta_window_update_layer (window);
-
-          /* Re-grab for click to focus and raise-on-click, if necessary */
-          if (meta_prefs_get_focus_mode () == G_DESKTOP_FOCUS_MODE_CLICK ||
-              !meta_prefs_get_raise_on_click ())
-            meta_display_grab_focus_window_button (window->display, window);
-       }
+          meta_window_lost_focus (window);
+        }
     }
 
   /* Now set _NET_ACTIVE_WINDOW hint */
