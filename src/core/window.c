@@ -5638,6 +5638,76 @@ check_ancestor_focus_appearance (MetaWindow *window)
   check_ancestor_focus_appearance (parent);
 }
 
+static void
+meta_window_got_focus (MetaWindow *window)
+{
+  if (window != window->display->focus_window)
+    {
+      meta_topic (META_DEBUG_FOCUS,
+                  "* Focus --> %s\n", window->desc);
+      window->display->focus_window = window;
+      window->has_focus = TRUE;
+      meta_compositor_set_active_window (window->display->compositor, window);
+
+      /* Move to the front of the focusing workspace's MRU list.
+       * We should only be "removing" it from the MRU list if it's
+       * not already there.  Note that it's possible that we might
+       * be processing this FocusIn after we've changed to a
+       * different workspace; we should therefore update the MRU
+       * list only if the window is actually on the active
+       * workspace.
+       */
+      if (window->screen->active_workspace &&
+          meta_window_located_on_workspace (window,
+                                            window->screen->active_workspace))
+        {
+          GList* link;
+          link = g_list_find (window->screen->active_workspace->mru_list,
+                              window);
+          g_assert (link);
+
+          window->screen->active_workspace->mru_list =
+            g_list_remove_link (window->screen->active_workspace->mru_list,
+                                link);
+          g_list_free (link);
+
+          window->screen->active_workspace->mru_list =
+            g_list_prepend (window->screen->active_workspace->mru_list,
+                            window);
+        }
+
+      meta_window_appears_focused_changed (window);
+
+      meta_error_trap_push (window->display);
+      XInstallColormap (window->display->xdisplay,
+                        window->colormap);
+      meta_error_trap_pop (window->display);
+
+      /* move into FOCUSED_WINDOW layer */
+      meta_window_update_layer (window);
+
+      /* Ungrab click to focus button since the sync grab can interfere
+       * with some things you might do inside the focused window, by
+       * causing the client to get funky enter/leave events.
+       *
+       * The reason we usually have a passive grab on the window is
+       * so that we can intercept clicks and raise the window in
+       * response. For click-to-focus we don't need that since the
+       * focused window is already raised. When raise_on_click is
+       * FALSE we also don't need that since we don't do anything
+       * when the window is clicked.
+       *
+       * There is dicussion in bugs 102209, 115072, and 461577
+       */
+      if (meta_prefs_get_focus_mode () == G_DESKTOP_FOCUS_MODE_CLICK ||
+          !meta_prefs_get_raise_on_click())
+        meta_display_ungrab_focus_window_button (window->display, window);
+
+      /* parent window become active. */
+      check_ancestor_focus_appearance (window);
+    }
+}
+
 void
 meta_window_lost_focus (MetaWindow *window)
 {
@@ -5756,71 +5826,7 @@ meta_window_notify_focus (MetaWindow *window,
           return FALSE;
         }
 
-      if (window != window->display->focus_window)
-        {
-          meta_topic (META_DEBUG_FOCUS,
-                      "* Focus --> %s\n", window->desc);
-          window->display->focus_window = window;
-          window->has_focus = TRUE;
-          meta_compositor_set_active_window (window->display->compositor, window);
-
-          /* Move to the front of the focusing workspace's MRU list.
-           * We should only be "removing" it from the MRU list if it's
-           * not already there.  Note that it's possible that we might
-           * be processing this FocusIn after we've changed to a
-           * different workspace; we should therefore update the MRU
-           * list only if the window is actually on the active
-           * workspace.
-           */
-          if (window->screen->active_workspace &&
-              meta_window_located_on_workspace (window,
-                                                window->screen->active_workspace))
-            {
-              GList* link;
-              link = g_list_find (window->screen->active_workspace->mru_list,
-                                  window);
-              g_assert (link);
-
-              window->screen->active_workspace->mru_list =
-                g_list_remove_link (window->screen->active_workspace->mru_list,
-                                    link);
-              g_list_free (link);
-
-              window->screen->active_workspace->mru_list =
-                g_list_prepend (window->screen->active_workspace->mru_list,
-                                window);
-            }
-
-          meta_window_appears_focused_changed (window);
-
-          meta_error_trap_push (window->display);
-          XInstallColormap (window->display->xdisplay,
-                            window->colormap);
-          meta_error_trap_pop (window->display);
-
-          /* move into FOCUSED_WINDOW layer */
-          meta_window_update_layer (window);
-
-          /* Ungrab click to focus button since the sync grab can interfere
-           * with some things you might do inside the focused window, by
-           * causing the client to get funky enter/leave events.
-           *
-           * The reason we usually have a passive grab on the window is
-           * so that we can intercept clicks and raise the window in
-           * response. For click-to-focus we don't need that since the
-           * focused window is already raised. When raise_on_click is
-           * FALSE we also don't need that since we don't do anything
-           * when the window is clicked.
-           *
-           * There is dicussion in bugs 102209, 115072, and 461577
-           */
-          if (meta_prefs_get_focus_mode () == G_DESKTOP_FOCUS_MODE_CLICK ||
-              !meta_prefs_get_raise_on_click())
-            meta_display_ungrab_focus_window_button (window->display, window);
-
-          /* parent window become active. */
-          check_ancestor_focus_appearance (window);
-        }
+      meta_window_got_focus (window);
     }
   else if (event->type == FocusOut)
     {
