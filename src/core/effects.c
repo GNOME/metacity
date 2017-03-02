@@ -63,12 +63,8 @@
 #include <X11/extensions/shape.h>
 
 #define META_MINIMIZE_ANIMATION_LENGTH 0.25
-#define META_SHADE_ANIMATION_LENGTH 0.2
 
 #include <string.h>
-
-typedef struct MetaEffect MetaEffect;
-typedef struct MetaEffectPriv MetaEffectPriv;
 
 typedef struct
 {
@@ -85,99 +81,24 @@ typedef struct
 
 } BoxAnimationContext;
 
-/**
- * Information we need to know during a maximise or minimise effect.
- */
-typedef struct
-{
-  /** This is the normal-size window. */
-  MetaRectangle window_rect;
-  /** This is the size of the window when it's an icon. */
-  MetaRectangle icon_rect;
-} MetaMinimizeEffect, MetaUnminimizeEffect;
-
-struct MetaEffectPriv
-{
-  MetaEffectFinished finished;
-  gpointer           finished_data;
-};
-
-struct MetaEffect
-{
-  /** The window the effect is applied to. */
-  MetaWindow *window;
-  /** Which effect is happening here. */
-  MetaEffectType type;
-  /** The effect handler can hang data here. */
-  gpointer info;
-
-  union
-  {
-    MetaMinimizeEffect      minimize;
-    /* ... and theoretically anything else */
-  } u;
-
-  MetaEffectPriv *priv;
-};
-
-static void run_default_effect_handler (MetaEffect *effect);
-static void run_handler (MetaEffect *effect);
-
-/**
- * Creates an effect.
- *
- */
-static MetaEffect*
-create_effect (MetaEffectType      type,
-               MetaWindow         *window,
-               MetaEffectFinished  finished,
-               gpointer            finished_data)
-{
-    MetaEffect *effect = g_new (MetaEffect, 1);
-
-    effect->type = type;
-    effect->window = window;
-    effect->priv = g_new (MetaEffectPriv, 1);
-    effect->priv->finished = finished;
-    effect->priv->finished_data = finished_data;
-
-    return effect;
-}
-
-/**
- * Destroys an effect.  If the effect has a "finished" hook, it will be
- * called before cleanup.
- *
- * \param effect  The effect.
- */
-static void
-effect_free (MetaEffect *effect)
-{
-  if (effect->priv->finished)
-    effect->priv->finished (effect->priv->finished_data);
-
-  g_free (effect->priv);
-  g_free (effect);
-}
+static void draw_box_animation (MetaScreen    *screen,
+                                MetaRectangle *initial_rect,
+                                MetaRectangle *destination_rect,
+                                double         seconds_duration);
 
 void
-meta_effect_run_minimize (MetaWindow         *window,
-                          MetaRectangle      *window_rect,
-                          MetaRectangle      *icon_rect,
-                          MetaEffectFinished  finished,
-                          gpointer            data)
+meta_effect_run_minimize (MetaWindow    *window,
+                          MetaRectangle *window_rect,
+                          MetaRectangle *icon_rect)
 {
-    MetaEffect *effect;
+  g_return_if_fail (window != NULL);
+  g_return_if_fail (icon_rect != NULL);
 
-    g_return_if_fail (window != NULL);
-    g_return_if_fail (icon_rect != NULL);
-
-    effect = create_effect (META_EFFECT_MINIMIZE, window, finished, data);
-
-    effect->u.minimize.window_rect = *window_rect;
-    effect->u.minimize.icon_rect = *icon_rect;
-
-    run_handler (effect);
+  if (meta_prefs_get_gnome_animations ())
+    {
+      draw_box_animation (window->screen, window_rect, icon_rect,
+                          META_MINIMIZE_ANIMATION_LENGTH);
+    }
 }
 
 /* old ugly minimization effect */
@@ -550,30 +471,4 @@ meta_effects_end_wireframe (MetaScreen          *screen,
 
   meta_display_ungrab (screen->display);
   meta_ui_pop_delay_exposes (screen->ui);
-}
-
-static void
-run_default_effect_handler (MetaEffect *effect)
-{
-    switch (effect->type)
-    {
-    case META_EFFECT_MINIMIZE:
-       draw_box_animation (effect->window->screen,
-                     &(effect->u.minimize.window_rect),
-                     &(effect->u.minimize.icon_rect),
-                     META_MINIMIZE_ANIMATION_LENGTH);
-       break;
-
-    default:
-       break;
-    }
-}
-
-static void
-run_handler (MetaEffect *effect)
-{
-  if (meta_prefs_get_gnome_animations ())
-    run_default_effect_handler (effect);
-
-  effect_free (effect);
 }

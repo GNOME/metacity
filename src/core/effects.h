@@ -46,30 +46,16 @@
 #include "util.h"
 #include "screen-private.h"
 
-typedef enum
-{
-  META_EFFECT_MINIMIZE,
-} MetaEffectType;
-
-/**
- * A callback which will be called when the effect has finished.
- */
-typedef void (* MetaEffectFinished) (gpointer    data);
-
 /**
  * Performs the minimize effect.
  *
  * \param window       The window we're moving
  * \param window_rect  Its current state
  * \param target       Where it should end up
- * \param finished     Callback for when it's finished
- * \param data         Data for callback
  */
-void        meta_effect_run_minimize     (MetaWindow         *window,
-                                          MetaRectangle	     *window_rect,
-                                          MetaRectangle	     *target,
-                                          MetaEffectFinished  finished,
-                                          gpointer            data);
+void meta_effect_run_minimize (MetaWindow    *window,
+                               MetaRectangle *window_rect,
+                               MetaRectangle *target);
 
 /**
  * Grabs the server and paints a wireframe rectangle on the screen.

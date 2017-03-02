@@ -1461,27 +1461,6 @@ meta_window_should_be_showing (MetaWindow  *window)
 }
 
 static void
-finish_minimize (gpointer data)
-{
-  MetaWindow *window = data;
-  /* FIXME: It really sucks to put timestamp pinging here; it'd
-   * probably make more sense in implement_showing() so that it's at
-   * least not duplicated in meta_window_show; but since
-   * finish_minimize is a callback making things just slightly icky, I
-   * haven't done that yet.
-   */
-  guint32 timestamp = meta_display_get_current_time_roundtrip (window->display);
-
-  meta_window_hide (window);
-  if (window->has_focus)
-    {
-      meta_workspace_focus_default_window (window->screen->active_workspace,
-                                           window,
-                                           timestamp);
-    }
-}
-
-static void
 implement_showing (MetaWindow *window,
                    gboolean    showing)
 {
@@ -1524,15 +1503,23 @@ implement_showing (MetaWindow *window,
 
           meta_window_get_outer_rect (window, &window_rect);
 
-          meta_effect_run_minimize (window,
-                                    &window_rect,
-                                    &icon_rect,
-                                    finish_minimize,
-                                    window);
+          meta_effect_run_minimize (window, &window_rect, &icon_rect);
         }
-      else
+
+      meta_window_hide (window);
+
+      if (window->has_focus)
         {
-          finish_minimize (window);
+          guint32 timestamp;
+
+          /* FIXME: It really sucks to put timestamp pinging here; it'd
+           * probably make more sense in implement_showing() so that it's at
+           * least not duplicated in meta_window_show.
+           */
+          timestamp = meta_display_get_current_time_roundtrip (window->display);
+
+          meta_workspace_focus_default_window (window->screen->active_workspace,
+                                              window, timestamp);
         }
     }
   else
@@ -2134,8 +2121,7 @@ meta_window_show (MetaWindow *window)
   guint32     timestamp;
 
   /* FIXME: It really sucks to put timestamp pinging here; it'd
-   * probably make more sense in implement_showing() so that it's at
-   * least not duplicated in finish_minimize.  *shrug*
+   * probably make more sense in implement_showing().
    */
   timestamp = meta_display_get_current_time_roundtrip (window->display);
 
