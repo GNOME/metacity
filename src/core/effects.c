@@ -161,20 +161,6 @@ effect_free (MetaEffect *effect)
 }
 
 void
-meta_effect_run_focus (MetaWindow	    *window,
-		       MetaEffectFinished   finished,
-		       gpointer		    data)
-{
-    MetaEffect *effect;
-
-    g_return_if_fail (window != NULL);
-
-    effect = create_effect (META_EFFECT_FOCUS, window, finished, data);
-
-    run_handler (effect);
-}
-
-void
 meta_effect_run_minimize (MetaWindow         *window,
                           MetaRectangle      *window_rect,
                           MetaRectangle      *icon_rect,
@@ -193,42 +179,6 @@ meta_effect_run_minimize (MetaWindow         *window,
 
     run_handler (effect);
 }
-
-void
-meta_effect_run_unminimize (MetaWindow         *window,
-                            MetaRectangle      *window_rect,
-                            MetaRectangle      *icon_rect,
-                            MetaEffectFinished  finished,
-                            gpointer            data)
-{
-    MetaEffect *effect;
-
-    g_return_if_fail (window != NULL);
-    g_return_if_fail (icon_rect != NULL);
-
-    effect = create_effect (META_EFFECT_UNMINIMIZE, window, finished, data);
-
-    effect->u.minimize.window_rect = *window_rect;
-    effect->u.minimize.icon_rect = *icon_rect;
-
-    run_handler (effect);
-}
-
-void
-meta_effect_run_close (MetaWindow         *window,
-		       MetaEffectFinished  finished,
-		       gpointer            data)
-{
-    MetaEffect *effect;
-
-    g_return_if_fail (window != NULL);
-
-    effect = create_effect (META_EFFECT_CLOSE, window,
-                            finished, data);
-
-    run_handler (effect);
-}
-
 
 /* old ugly minimization effect */
 
@@ -613,12 +563,6 @@ run_default_effect_handler (MetaEffect *effect)
                      &(effect->u.minimize.icon_rect),
                      META_MINIMIZE_ANIMATION_LENGTH);
        break;
-
-    case META_EFFECT_UNMINIMIZE:
-    case META_EFFECT_FOCUS:
-    case META_EFFECT_CLOSE:
-    case META_NUM_EFFECTS:
-      break;
 
     default:
        break;

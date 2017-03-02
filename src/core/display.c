@@ -2043,9 +2043,6 @@ event_callback (XEvent   *event,
                               "Window %s withdrawn\n",
                               window->desc);
 
-                  if (!window->override_redirect)
-                    meta_effect_run_close (window, NULL, NULL);
-
                   /* Unmanage withdrawn window */
                   window->withdrawn = TRUE;
                   meta_window_free (window, timestamp);

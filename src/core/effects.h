@@ -49,10 +49,6 @@
 typedef enum
 {
   META_EFFECT_MINIMIZE,
-  META_EFFECT_UNMINIMIZE,
-  META_EFFECT_FOCUS,
-  META_EFFECT_CLOSE,
-  META_NUM_EFFECTS
 } MetaEffectType;
 
 /**
@@ -72,46 +68,6 @@ typedef void (* MetaEffectFinished) (gpointer    data);
 void        meta_effect_run_minimize     (MetaWindow         *window,
                                           MetaRectangle	     *window_rect,
                                           MetaRectangle	     *target,
-                                          MetaEffectFinished  finished,
-                                          gpointer            data);
-
-/**
- * Performs the unminimize effect.  There is no such effect.
- * FIXME: delete this.
- *
- * \param window       The window we're moving
- * \param icon_rect    Its current state
- * \param window_rect  Where it should end up
- * \param finished     Callback for when it's finished
- * \param data         Data for callback
- */
-void        meta_effect_run_unminimize (MetaWindow         *window,
-                                          MetaRectangle      *window_rect,
-                                          MetaRectangle      *icon_rect,
-                                          MetaEffectFinished  finished,
-                                          gpointer            data);
-
-/**
- * Performs the close effect.  There is no such effect.
- * FIXME: delete this.
- *
- * \param window       The window we're moving
- * \param finished     Callback for when it's finished
- * \param data         Data for callback
- */
-void        meta_effect_run_close        (MetaWindow         *window,
-                                          MetaEffectFinished  finished,
-                                          gpointer            data);
-
-/**
- * Performs the focus effect.  There is no such effect.
- * FIXME: delete this.
- *
- * \param window       The window we're moving
- * \param finished     Callback for when it's finished
- * \param data         Data for callback
- */
-void        meta_effect_run_focus        (MetaWindow         *window,
                                           MetaEffectFinished  finished,
                                           gpointer            data);
 

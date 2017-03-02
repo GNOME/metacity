@@ -464,7 +464,6 @@ meta_window_new (MetaDisplay *display,
   window->fullscreen = FALSE;
   window->initially_iconic = FALSE;
   window->minimized = FALSE;
-  window->was_minimized = FALSE;
   window->tab_unminimized = FALSE;
   window->iconic = FALSE;
   window->mapped = attrs.map_state != IsUnmapped;
@@ -2315,24 +2314,6 @@ meta_window_show (MetaWindow *window)
           XMapWindow (window->display->xdisplay, window->xwindow);
           meta_error_trap_pop (window->display);
           did_show = TRUE;
-
-          if (window->was_minimized)
-            {
-              MetaRectangle window_rect;
-              MetaRectangle icon_rect;
-
-              window->was_minimized = FALSE;
-
-              if (meta_window_get_icon_geometry (window, &icon_rect))
-                {
-                  meta_window_get_outer_rect (window, &window_rect);
-
-                  meta_effect_run_unminimize (window,
-                                              &window_rect,
-                                              &icon_rect,
-                                              NULL, NULL);
-                }
-            }
         }
 
       if (window->iconic)
@@ -2481,7 +2462,6 @@ meta_window_unminimize (MetaWindow  *window)
   if (window->minimized)
     {
       window->minimized = FALSE;
-      window->was_minimized = TRUE;
       meta_window_queue(window, META_QUEUE_CALC_SHOWING);
 
       meta_window_foreach_transient (window,
@@ -4483,8 +4463,6 @@ meta_window_focus (MetaWindow  *window,
 
   if (window->wm_state_demands_attention)
     meta_window_unset_demands_attention(window);
-
-  meta_effect_run_focus(window, NULL, NULL);
 }
 
 static void
