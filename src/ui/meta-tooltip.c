@@ -18,7 +18,6 @@
 #include "config.h"
 
 #include "meta-tooltip.h"
-#include "prefs.h"
 
 struct _MetaTooltip
 {
@@ -26,76 +25,32 @@ struct _MetaTooltip
 
   GtkWidget *box;
   GtkWidget *label;
-
-  gboolean   composited;
 };
 
 G_DEFINE_TYPE (MetaTooltip, meta_tooltip, GTK_TYPE_WINDOW)
-
-static void
-update_style_class (MetaTooltip *tooltip)
-{
-  GtkStyleContext *context;
-
-  context = gtk_widget_get_style_context (GTK_WIDGET (tooltip));
-
-  if (tooltip->composited)
-    {
-      gtk_style_context_remove_class (context, "solid-csd");
-      gtk_style_context_add_class (context, GTK_STYLE_CLASS_CSD);
-    }
-  else
-    {
-      gtk_style_context_remove_class (context, GTK_STYLE_CLASS_CSD);
-      gtk_style_context_add_class (context, "solid-csd");
-    }
-}
-
-static void
-prefs_changed_cb (MetaPreference  pref,
-                  void           *data)
-{
-  MetaTooltip *tooltip;
-  gboolean composited;
-
-  if (pref != META_PREF_COMPOSITING_MANAGER)
-    return;
-
-  tooltip = META_TOOLTIP (data);
-  composited = meta_prefs_get_compositing_manager ();
-
-  if (tooltip->composited == composited)
-    return;
-
-  tooltip->composited = composited;
-  update_style_class (tooltip);
-}
-
-static void
-meta_tooltip_finalize (GObject *object)
-{
-  MetaTooltip *tooltip;
-
-  tooltip = META_TOOLTIP (object);
-
-  meta_prefs_remove_listener (prefs_changed_cb, tooltip);
-
-  G_OBJECT_CLASS (meta_tooltip_parent_class)->finalize (object);
-}
 
 static void
 meta_tooltip_realize (GtkWidget *widget)
 {
   GdkScreen *screen;
   GdkVisual *visual;
+  gboolean has_rgba;
+  GtkStyleContext *context;
 
   screen = gtk_widget_get_screen (widget);
   visual = gdk_screen_get_rgba_visual (screen);
+  has_rgba = visual && gdk_screen_is_composited (screen);
+  context = gtk_widget_get_style_context (widget);
 
-  if (visual == NULL)
-    visual = gdk_screen_get_system_visual (screen);
-
-  gtk_widget_set_visual (widget, visual);
+  if (has_rgba)
+    {
+      gtk_widget_set_visual (widget, visual);
+      gtk_style_context_add_class (context, GTK_STYLE_CLASS_CSD);
+    }
+  else
+    {
+      gtk_style_context_add_class (context, "solid-csd");
+    }
 
   GTK_WIDGET_CLASS (meta_tooltip_parent_class)->realize (widget);
 }
@@ -103,13 +58,9 @@ meta_tooltip_realize (GtkWidget *widget)
 static void
 meta_tooltip_class_init (MetaTooltipClass *tooltip_class)
 {
-  GObjectClass *object_class;
   GtkWidgetClass *widget_class;
 
-  object_class = G_OBJECT_CLASS (tooltip_class);
   widget_class = GTK_WIDGET_CLASS (tooltip_class);
-
-  object_class->finalize = meta_tooltip_finalize;
 
   widget_class->realize = meta_tooltip_realize;
 
@@ -134,11 +85,6 @@ meta_tooltip_init (MetaTooltip *tooltip)
 
   gtk_label_set_line_wrap (GTK_LABEL (tooltip->label), TRUE);
   gtk_label_set_max_width_chars (GTK_LABEL (tooltip->label), 70);
-
-  tooltip->composited = meta_prefs_get_compositing_manager ();
-  update_style_class (tooltip);
-
-  meta_prefs_add_listener (prefs_changed_cb, tooltip);
 }
 
 GtkWidget *
