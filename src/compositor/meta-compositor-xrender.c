@@ -2671,37 +2671,30 @@ process_property_notify (MetaCompositorXRender *xrender,
   MetaDisplay *display = meta_compositor_get_display (compositor);
   Display *xdisplay = meta_display_get_xdisplay (display);
   MetaScreen *screen;
-  int p;
-  Atom background_atoms[2];
 
   /* Check for the background property changing */
-  background_atoms[0] = display->atom__XROOTPMAP_ID;
-  background_atoms[1] = display->atom__XSETROOT_ID;
-
-  for (p = 0; p < 2; p++)
+  if (event->atom == display->atom__XROOTPMAP_ID ||
+      event->atom == display->atom__XSETROOT_ID)
     {
-      if (event->atom == background_atoms[p])
+      screen = meta_display_screen_for_root (display, event->window);
+      if (screen)
         {
-          screen = meta_display_screen_for_root (display, event->window);
-          if (screen)
+          MetaCompScreen *info = xrender->info;
+          Window xroot = meta_screen_get_xroot (screen);
+
+          if (info != NULL && info->root_tile)
             {
-              MetaCompScreen *info = xrender->info;
-              Window xroot = meta_screen_get_xroot (screen);
+              XClearArea (xdisplay, xroot, 0, 0, 0, 0, TRUE);
+              XRenderFreePicture (xdisplay, info->root_tile);
+              info->root_tile = None;
 
-              if (info != NULL && info->root_tile)
-                {
-                  XClearArea (xdisplay, xroot, 0, 0, 0, 0, TRUE);
-                  XRenderFreePicture (xdisplay, info->root_tile);
-                  info->root_tile = None;
+              /* Damage the whole screen as we may need to redraw the
+                 background ourselves */
+              damage_screen (xrender, screen);
 
-                  /* Damage the whole screen as we may need to redraw the
-                     background ourselves */
-                  damage_screen (xrender, screen);
+              add_repair (xrender);
 
-                  add_repair (xrender);
-
-                  return;
-                }
+              return;
             }
         }
     }
