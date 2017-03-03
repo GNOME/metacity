@@ -3309,11 +3309,6 @@ meta_compositor_xrender_process_event (MetaCompositor *compositor,
         process_damage (xrender, (XDamageNotifyEvent *) event);
       else if (event->type == meta_display_get_shape_event_base (display) + ShapeNotify)
         process_shape (xrender, (XShapeEvent *) event);
-      else
-        {
-          meta_error_trap_pop (NULL);
-          return;
-        }
       break;
     }
 
