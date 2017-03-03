@@ -52,6 +52,24 @@
 
 #define USE_IDLE_REPAINT 1
 
+#define OPAQUE 0xffffffff
+
+#define WINDOW_SOLID 0
+#define WINDOW_ARGB 1
+
+#define SHADOW_SMALL_RADIUS 3.0
+#define SHADOW_MEDIUM_RADIUS 6.0
+#define SHADOW_LARGE_RADIUS 12.0
+
+#define SHADOW_SMALL_OFFSET_X (SHADOW_SMALL_RADIUS * -3 / 2)
+#define SHADOW_SMALL_OFFSET_Y (SHADOW_SMALL_RADIUS * -3 / 2)
+#define SHADOW_MEDIUM_OFFSET_X (SHADOW_MEDIUM_RADIUS * -3 / 2)
+#define SHADOW_MEDIUM_OFFSET_Y (SHADOW_MEDIUM_RADIUS * -5 / 4)
+#define SHADOW_LARGE_OFFSET_X -15
+#define SHADOW_LARGE_OFFSET_Y -15
+
+#define SHADOW_OPACITY 0.66
+
 typedef enum _MetaCompWindowType
 {
   META_COMP_WINDOW_NORMAL,
@@ -178,24 +196,6 @@ typedef struct _MetaCompWindow
     XserverRegion client_region;
   } shaded;
 } MetaCompWindow;
-
-#define OPAQUE 0xffffffff
-
-#define WINDOW_SOLID 0
-#define WINDOW_ARGB 1
-
-#define SHADOW_SMALL_RADIUS 3.0
-#define SHADOW_MEDIUM_RADIUS 6.0
-#define SHADOW_LARGE_RADIUS 12.0
-
-#define SHADOW_SMALL_OFFSET_X (SHADOW_SMALL_RADIUS * -3 / 2)
-#define SHADOW_SMALL_OFFSET_Y (SHADOW_SMALL_RADIUS * -3 / 2)
-#define SHADOW_MEDIUM_OFFSET_X (SHADOW_MEDIUM_RADIUS * -3 / 2)
-#define SHADOW_MEDIUM_OFFSET_Y (SHADOW_MEDIUM_RADIUS * -5 / 4)
-#define SHADOW_LARGE_OFFSET_X -15
-#define SHADOW_LARGE_OFFSET_Y -15
-
-#define SHADOW_OPACITY 0.66
 
 G_DEFINE_TYPE (MetaCompositorXRender, meta_compositor_xrender, META_TYPE_COMPOSITOR)
 
