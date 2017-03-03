@@ -170,7 +170,7 @@ struct _MetaCompositorXRender
 
   MetaWindow     *focus_window;
 
-  Window          output;
+  Window          overlay_window;
 
   gboolean        have_shadows;
   shadow         *shadows[LAST_SHADOW_TYPE];
@@ -930,8 +930,9 @@ create_root_buffer (MetaCompositorXRender *xrender,
   format = XRenderFindVisualFormat (xdisplay, visual);
   g_return_val_if_fail (format != NULL, None);
 
-  root_pixmap = XCreatePixmap (xdisplay, xrender->output,
+  root_pixmap = XCreatePixmap (xdisplay, xrender->overlay_window,
                                screen_width, screen_height, depth);
+
   g_return_val_if_fail (root_pixmap != None, None);
 
   pict = XRenderCreatePicture (xdisplay, root_pixmap, format, 0, NULL);
@@ -2200,7 +2201,7 @@ add_win (MetaCompositorXRender *xrender,
   MetaCompWindow *cw;
   gulong event_mask;
 
-  if (xwindow == xrender->output)
+  if (xwindow == xrender->overlay_window)
     return;
 
   /* If already added, ignore */
@@ -2892,16 +2893,17 @@ update_shadows (MetaPreference pref,
 static void
 show_overlay_window (MetaCompositorXRender *xrender,
                      MetaScreen            *screen,
-                     Window                 cow)
+                     Display               *xdisplay)
 {
-  MetaDisplay *display = meta_screen_get_display (screen);
-  Display *xdisplay = meta_display_get_xdisplay (display);
   XserverRegion region;
 
   region = XFixesCreateRegion (xdisplay, NULL, 0);
 
-  XFixesSetWindowShapeRegion (xdisplay, cow, ShapeBounding, 0, 0, 0);
-  XFixesSetWindowShapeRegion (xdisplay, cow, ShapeInput, 0, 0, region);
+  XFixesSetWindowShapeRegion (xdisplay, xrender->overlay_window,
+                              ShapeBounding, 0, 0, 0);
+
+  XFixesSetWindowShapeRegion (xdisplay, xrender->overlay_window,
+                              ShapeInput, 0, 0, region);
 
   XFixesDestroyRegion (xdisplay, region);
 
@@ -2909,31 +2911,17 @@ show_overlay_window (MetaCompositorXRender *xrender,
 }
 
 static void
-hide_overlay_window (MetaScreen *screen,
-                     Window      cow)
+hide_overlay_window (MetaCompositorXRender *xrender,
+                     Display               *xdisplay)
 {
-  MetaDisplay *display = meta_screen_get_display (screen);
-  Display *xdisplay = meta_display_get_xdisplay (display);
   XserverRegion region;
 
   region = XFixesCreateRegion (xdisplay, NULL, 0);
-  XFixesSetWindowShapeRegion (xdisplay, cow, ShapeBounding, 0, 0, region);
+
+  XFixesSetWindowShapeRegion (xdisplay, xrender->overlay_window,
+                              ShapeBounding, 0, 0, region);
+
   XFixesDestroyRegion (xdisplay, region);
-}
-
-static Window
-get_output_window (MetaScreen *screen)
-{
-  MetaDisplay *display = meta_screen_get_display (screen);
-  Display *xdisplay = meta_display_get_xdisplay (display);
-  Window output, xroot;
-
-  xroot = meta_screen_get_xroot (screen);
-
-  output = XCompositeGetOverlayWindow (xdisplay, xroot);
-  XSelectInput (xdisplay, output, ExposureMask);
-
-  return output;
 }
 
 static gboolean
@@ -2975,12 +2963,15 @@ meta_compositor_xrender_manage (MetaCompositor  *compositor,
       return FALSE;
     }
 
-  xrender->output = get_output_window (screen);
+  xrender->overlay_window = XCompositeGetOverlayWindow (xdisplay, xroot);
+  XSelectInput (xdisplay, xrender->overlay_window, ExposureMask);
 
   pa.subwindow_mode = IncludeInferiors;
-  xrender->root_picture = XRenderCreatePicture (xdisplay, xrender->output,
-                                             visual_format,
-                                             CPSubwindowMode, &pa);
+  xrender->root_picture = XRenderCreatePicture (xdisplay,
+                                                xrender->overlay_window,
+                                                visual_format,
+                                                CPSubwindowMode, &pa);
+
   if (xrender->root_picture == None)
     {
       g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
@@ -3012,12 +3003,11 @@ meta_compositor_xrender_manage (MetaCompositor  *compositor,
   else
     meta_verbose ("Disabling shadows\n");
 
-  XClearArea (xdisplay, xrender->output, 0, 0, 0, 0, TRUE);
+  XClearArea (xdisplay, xrender->overlay_window, 0, 0, 0, 0, TRUE);
 
   meta_screen_set_cm_selection (screen);
 
-  /* Now we're up and running we can show the output if needed */
-  show_overlay_window (xrender, screen, xrender->output);
+  show_overlay_window (xrender, screen, xdisplay);
 
   meta_prefs_add_listener (update_shadows, xrender);
 
@@ -3038,7 +3028,7 @@ meta_compositor_xrender_unmanage (MetaCompositor *compositor)
 
   meta_prefs_remove_listener (update_shadows, xrender);
 
-  hide_overlay_window (screen, xrender->output);
+  hide_overlay_window (xrender, xdisplay);
 
   /* Destroy the windows */
   for (index = xrender->windows; index; index = index->next)
@@ -3063,11 +3053,10 @@ meta_compositor_xrender_unmanage (MetaCompositor *compositor)
         g_free (xrender->shadows[i]->gaussian_map);
     }
 
-  XCompositeUnredirectSubwindows (xdisplay, xroot,
-                                  CompositeRedirectManual);
-  meta_screen_unset_cm_selection (screen);
+  XCompositeUnredirectSubwindows (xdisplay, xroot, CompositeRedirectManual);
+  XCompositeReleaseOverlayWindow (xdisplay, xrender->overlay_window);
 
-  XCompositeReleaseOverlayWindow (xdisplay, xrender->output);
+  meta_screen_unset_cm_selection (screen);
 }
 
 static void
@@ -3529,7 +3518,7 @@ meta_compositor_xrender_is_our_xwindow (MetaCompositor *compositor,
 
   xrender = META_COMPOSITOR_XRENDER (compositor);
 
-  if (xrender->output == xwindow)
+  if (xrender->overlay_window == xwindow)
     return TRUE;
 
   return FALSE;
