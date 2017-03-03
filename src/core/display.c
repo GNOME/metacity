@@ -834,6 +834,9 @@ meta_display_close (MetaDisplay *display,
 
   meta_display_unmanage_windows (display, timestamp);
 
+  meta_compositor_unmanage (display->compositor);
+  g_clear_object (&display->compositor);
+
   if (display->screen != NULL)
     {
       meta_screen_free (display->screen, timestamp);
@@ -864,8 +867,6 @@ meta_display_close (MetaDisplay *display,
   g_free (display->name);
 
   meta_display_shutdown_keys (display);
-
-  g_clear_object (&display->compositor);
 
   g_free (display);
   the_display = NULL;

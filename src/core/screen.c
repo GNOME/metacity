@@ -627,14 +627,9 @@ void
 meta_screen_free (MetaScreen *screen,
                   guint32     timestamp)
 {
-  MetaDisplay *display;
   XGCValues gc_values = { 0 };
 
-  display = screen->display;
-
   screen->closing += 1;
-
-  meta_compositor_unmanage (display->compositor);
 
   meta_prefs_remove_listener (prefs_changed_callback, screen);
 
