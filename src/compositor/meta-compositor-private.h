@@ -27,10 +27,8 @@ struct _MetaCompositorClass
 {
   GObjectClass parent_class;
 
-  gboolean          (* initable_init)      (MetaCompositor     *compositor,
+  gboolean          (* manage)             (MetaCompositor     *compositor,
                                             GError            **error);
-
-  void              (* manage)             (MetaCompositor     *compositor);
 
   void              (* unmanage)           (MetaCompositor     *compositor);
 

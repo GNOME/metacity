@@ -3007,16 +3007,8 @@ get_output_window (MetaScreen *screen)
 }
 
 static gboolean
-meta_compositor_xrender_initable_init (MetaCompositor  *compositor,
-                                       GError         **error)
-{
-  g_timeout_add (2000, (GSourceFunc) timeout_debug, compositor);
-
-  return TRUE;
-}
-
-static void
-meta_compositor_xrender_manage (MetaCompositor *compositor)
+meta_compositor_xrender_manage (MetaCompositor  *compositor,
+                                GError         **error)
 {
   MetaCompScreen *info;
   MetaCompositorXRender *xrender = META_COMPOSITOR_XRENDER (compositor);
@@ -3030,7 +3022,7 @@ meta_compositor_xrender_manage (MetaCompositor *compositor)
 
   /* Check if the screen is already managed */
   if (xrender->info != NULL)
-    return;
+    return TRUE;
 
   gdk_error_trap_push ();
   XCompositeRedirectSubwindows (xdisplay, xroot, CompositeRedirectManual);
@@ -3038,9 +3030,11 @@ meta_compositor_xrender_manage (MetaCompositor *compositor)
 
   if (gdk_error_trap_pop ())
     {
-      g_warning ("Another compositing manager is running on screen %i",
-                 screen_number);
-      return;
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Another compositing manager is running on screen %i",
+                   screen_number);
+
+      return FALSE;
     }
 
   info = g_new0 (MetaCompScreen, 1);
@@ -3052,8 +3046,11 @@ meta_compositor_xrender_manage (MetaCompositor *compositor)
                                                                     screen_number));
   if (!visual_format)
     {
-      g_warning ("Cannot find visual format on screen %i", screen_number);
-      return;
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Cannot find visual format on screen %i",
+                   screen_number);
+
+      return FALSE;
     }
 
   info->output = get_output_window (screen);
@@ -3064,8 +3061,11 @@ meta_compositor_xrender_manage (MetaCompositor *compositor)
                                              CPSubwindowMode, &pa);
   if (info->root_picture == None)
     {
-      g_warning ("Cannot create root picture on screen %i", screen_number);
-      return;
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Cannot create root picture on screen %i",
+                   screen_number);
+
+      return FALSE;
     }
 
   info->root_buffer = None;
@@ -3098,6 +3098,10 @@ meta_compositor_xrender_manage (MetaCompositor *compositor)
   show_overlay_window (xrender, screen, info->output);
 
   meta_prefs_add_listener (update_shadows, xrender);
+
+  g_timeout_add (2000, (GSourceFunc) timeout_debug, compositor);
+
+  return TRUE;
 }
 
 static void
@@ -3643,7 +3647,6 @@ meta_compositor_xrender_class_init (MetaCompositorXRenderClass *xrender_class)
 
   compositor_class = META_COMPOSITOR_CLASS (xrender_class);
 
-  compositor_class->initable_init = meta_compositor_xrender_initable_init;
   compositor_class->manage = meta_compositor_xrender_manage;
   compositor_class->unmanage = meta_compositor_xrender_unmanage;
   compositor_class->add_window = meta_compositor_xrender_add_window;

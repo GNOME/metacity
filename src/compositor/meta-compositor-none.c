@@ -27,15 +27,10 @@ struct _MetaCompositorNone
 G_DEFINE_TYPE (MetaCompositorNone, meta_compositor_none, META_TYPE_COMPOSITOR)
 
 static gboolean
-meta_compositor_none_initable_init (MetaCompositor  *compositor,
-                                    GError         **error)
+meta_compositor_none_manage (MetaCompositor  *compositor,
+                             GError         **error)
 {
   return TRUE;
-}
-
-static void
-meta_compositor_none_manage (MetaCompositor *compositor)
-{
 }
 
 static void
@@ -146,7 +141,6 @@ meta_compositor_none_class_init (MetaCompositorNoneClass *none_class)
 
   compositor_class = META_COMPOSITOR_CLASS (none_class);
 
-  compositor_class->initable_init = meta_compositor_none_initable_init;
   compositor_class->manage = meta_compositor_none_manage;
   compositor_class->unmanage = meta_compositor_none_unmanage;
   compositor_class->add_window = meta_compositor_none_add_window;

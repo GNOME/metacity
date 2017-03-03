@@ -55,7 +55,7 @@ meta_compositor_initable_init (GInitable     *initable,
   compositor = META_COMPOSITOR (initable);
   compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
 
-  return compositor_class->initable_init (compositor, error);
+  return compositor_class->manage (compositor, error);
 }
 
 static void
@@ -191,8 +191,6 @@ meta_compositor_new (MetaCompositorType  type,
     }
 
   g_assert (compositor != NULL);
-
-  META_COMPOSITOR_GET_CLASS (compositor)->manage (compositor);
 
   return compositor;
 }
