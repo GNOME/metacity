@@ -131,9 +131,6 @@ struct _MetaScreen
 
   /* gc for XOR on root window */
   GC root_xor_gc;
-
-  /* Managed by compositor.c */
-  gpointer compositor_data;
 };
 
 MetaScreen*   meta_screen_new                 (MetaDisplay                *display,
