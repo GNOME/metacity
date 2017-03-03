@@ -782,6 +782,27 @@ meta_display_list_windows (MetaDisplay          *display,
   return winlist;
 }
 
+static void
+meta_display_unmanage_windows (MetaDisplay *display,
+                               guint32      timestamp)
+{
+  GSList *tmp;
+  GSList *winlist;
+
+  winlist = meta_display_list_windows (display, META_LIST_INCLUDE_OVERRIDE_REDIRECT);
+  winlist = g_slist_sort (winlist, meta_display_stack_cmp);
+
+  /* Unmanage all windows */
+  tmp = winlist;
+  while (tmp != NULL)
+    {
+      meta_window_free (tmp->data, timestamp);
+
+      tmp = tmp->next;
+    }
+  g_slist_free (winlist);
+}
+
 void
 meta_display_close (MetaDisplay *display,
                     guint32      timestamp)
@@ -810,6 +831,8 @@ meta_display_close (MetaDisplay *display,
   meta_ui_remove_event_func (display->xdisplay,
                              event_callback,
                              display);
+
+  meta_display_unmanage_windows (display, timestamp);
 
   if (display->screen != NULL)
     {
@@ -5074,28 +5097,6 @@ process_selection_clear (MetaDisplay   *display,
 
     meta_XFree (str);
   }
-}
-
-void
-meta_display_unmanage_windows_for_screen (MetaDisplay *display,
-                                          MetaScreen  *screen,
-                                          guint32      timestamp)
-{
-  GSList *tmp;
-  GSList *winlist;
-
-  winlist = meta_display_list_windows (display, META_LIST_INCLUDE_OVERRIDE_REDIRECT);
-  winlist = g_slist_sort (winlist, meta_display_stack_cmp);
-
-  /* Unmanage all windows */
-  tmp = winlist;
-  while (tmp != NULL)
-    {
-      meta_window_free (tmp->data, timestamp);
-
-      tmp = tmp->next;
-    }
-  g_slist_free (winlist);
 }
 
 int
