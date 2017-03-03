@@ -740,33 +740,15 @@ shadow_picture (MetaCompositorXRender *xrender,
 }
 
 static MetaCompWindow *
-find_window_for_screen (MetaCompositorXRender *xrender,
-                        MetaScreen            *screen,
-                        Window                 xwindow)
-{
-  MetaCompScreen *info = xrender->info;
-
-  if (info == NULL)
-    return NULL;
-
-  return g_hash_table_lookup (info->windows_by_xid, (gpointer) xwindow);
-}
-
-static MetaCompWindow *
 find_window_in_display (MetaCompositorXRender *xrender,
                         MetaDisplay           *display,
                         Window                 xwindow)
 {
-  MetaScreen *screen;
-  MetaCompWindow *cw;
+  if (xrender->info == NULL)
+    return NULL;
 
-  screen = meta_display_get_screen (display);
-  cw = find_window_for_screen (xrender, screen, xwindow);
-
-  if (cw != NULL)
-    return cw;
-
-  return NULL;
+  return g_hash_table_lookup (xrender->info->windows_by_xid,
+                              (gpointer) xwindow);
 }
 
 static MetaCompWindow *
@@ -2071,7 +2053,7 @@ map_win (MetaCompositorXRender *xrender,
          MetaScreen            *screen,
          Window                 id)
 {
-  MetaCompWindow *cw = find_window_for_screen (xrender, screen, id);
+  MetaCompWindow *cw = find_window_in_display (xrender, display, id);
   Display *xdisplay = meta_display_get_xdisplay (display);
 
   if (cw == NULL)
@@ -2125,7 +2107,9 @@ unmap_win (MetaCompositorXRender *xrender,
            MetaScreen            *screen,
            Window                 id)
 {
-  MetaCompWindow *cw = find_window_for_screen (xrender, screen, id);
+  MetaCompositor *compositor = META_COMPOSITOR (xrender);
+  MetaDisplay *display = meta_compositor_get_display (compositor);
+  MetaCompWindow *cw = find_window_in_display (xrender, display, id);
   MetaCompScreen *info = xrender->info;
 
   if (cw == NULL || info == NULL)
@@ -2283,7 +2267,7 @@ add_win (MetaCompositorXRender *xrender,
     return;
 
   /* If already added, ignore */
-  if (find_window_for_screen (xrender, screen, xwindow) != NULL)
+  if (find_window_in_display (xrender, display, xwindow) != NULL)
     return;
 
   cw = g_new0 (MetaCompWindow, 1);
@@ -3382,7 +3366,6 @@ meta_compositor_xrender_get_window_surface (MetaCompositor *compositor,
 {
   MetaFrame *frame;
   Window xwindow;
-  MetaScreen *screen;
   MetaCompWindow *cw;
   MetaDisplay *display;
   Display *xdisplay;
@@ -3404,13 +3387,13 @@ meta_compositor_xrender_get_window_surface (MetaCompositor *compositor,
   else
     xwindow = meta_window_get_xwindow (window);
 
-  screen = meta_window_get_screen (window);
-  cw = find_window_for_screen (META_COMPOSITOR_XRENDER (compositor), screen, xwindow);
+  display = meta_compositor_get_display (compositor);
+  cw = find_window_in_display (META_COMPOSITOR_XRENDER (compositor),
+                               display, xwindow);
 
   if (cw == NULL)
     return NULL;
 
-  display = meta_compositor_get_display (compositor);
   xdisplay = meta_display_get_xdisplay (display);
   shaded = meta_window_is_shaded (window);
 
@@ -3534,7 +3517,7 @@ meta_compositor_xrender_set_active_window (MetaCompositor *compositor,
     {
       MetaFrame *f = meta_window_get_frame (old_focus_win);
 
-      old_focus = find_window_for_screen (xrender, screen,
+      old_focus = find_window_in_display (xrender, display,
                                           f ? meta_frame_get_xwindow (f) :
                                           meta_window_get_xwindow (old_focus_win));
     }
@@ -3542,7 +3525,7 @@ meta_compositor_xrender_set_active_window (MetaCompositor *compositor,
   if (window)
     {
       MetaFrame *f = meta_window_get_frame (window);
-      new_focus = find_window_for_screen (xrender, screen,
+      new_focus = find_window_in_display (xrender, display,
                                           f ? meta_frame_get_xwindow (f) :
                                           meta_window_get_xwindow (window));
     }
