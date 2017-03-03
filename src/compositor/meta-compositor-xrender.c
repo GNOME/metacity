@@ -89,17 +89,6 @@ typedef enum _MetaShadowType
   LAST_SHADOW_TYPE
 } MetaShadowType;
 
-struct _MetaCompositorXRender
-{
-  MetaCompositor parent;
-
-#ifdef USE_IDLE_REPAINT
-  guint repaint_id;
-#endif
-  guint show_redraw : 1;
-  guint debug : 1;
-};
-
 typedef struct _conv
 {
   int size;
@@ -196,6 +185,17 @@ typedef struct _MetaCompWindow
     XserverRegion client_region;
   } shaded;
 } MetaCompWindow;
+
+struct _MetaCompositorXRender
+{
+  MetaCompositor  parent;
+
+#ifdef USE_IDLE_REPAINT
+  guint           repaint_id;
+#endif
+  guint           show_redraw : 1;
+  guint           debug : 1;
+};
 
 G_DEFINE_TYPE (MetaCompositorXRender, meta_compositor_xrender, META_TYPE_COMPOSITOR)
 
