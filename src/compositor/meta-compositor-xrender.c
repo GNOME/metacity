@@ -2122,7 +2122,6 @@ unmap_win (MetaCompositorXRender *xrender,
 
 static void
 determine_mode (MetaCompositorXRender *xrender,
-                MetaScreen            *screen,
                 MetaCompWindow        *cw)
 {
   XRenderPictFormat *format;
@@ -2320,7 +2319,7 @@ add_win (MetaCompositorXRender *xrender,
   cw->shaded.height = 0;
   cw->shaded.client_region = None;
 
-  determine_mode (xrender, screen, cw);
+  determine_mode (xrender, cw);
   cw->needs_shadow = window_has_shadow (xrender, cw);
 
   /* Only add the window to the list of docks if it needs a shadow */
@@ -2732,7 +2731,7 @@ process_property_notify (MetaCompositorXRender *xrender,
         value = OPAQUE;
 
       cw->opacity = (guint)value;
-      determine_mode (xrender, cw->screen, cw);
+      determine_mode (xrender, cw);
       cw->needs_shadow = window_has_shadow (xrender, cw);
 
       if (cw->shadow)
@@ -3445,7 +3444,6 @@ meta_compositor_xrender_set_active_window (MetaCompositor *compositor,
 {
   MetaCompositorXRender *xrender;
   MetaDisplay *display;
-  MetaScreen *screen;
   Display *xdisplay;
   MetaCompWindow *old_focus = NULL, *new_focus = NULL;
   MetaCompScreen *info = NULL;
@@ -3453,7 +3451,6 @@ meta_compositor_xrender_set_active_window (MetaCompositor *compositor,
 
   xrender = META_COMPOSITOR_XRENDER (compositor);
   display = meta_compositor_get_display (compositor);
-  screen = meta_display_get_screen (display);
   xdisplay = meta_display_get_xdisplay (display);
   info = xrender->info;
 
@@ -3490,7 +3487,7 @@ meta_compositor_xrender_set_active_window (MetaCompositor *compositor,
 
       /* Tear down old shadows */
       old_focus->shadow_type = META_SHADOW_MEDIUM;
-      determine_mode (xrender, screen, old_focus);
+      determine_mode (xrender, old_focus);
       old_focus->needs_shadow = window_has_shadow (xrender, old_focus);
 
       if (old_focus->attrs.map_state == IsViewable)
@@ -3542,7 +3539,7 @@ meta_compositor_xrender_set_active_window (MetaCompositor *compositor,
       XserverRegion damage;
 
       new_focus->shadow_type = META_SHADOW_LARGE;
-      determine_mode (xrender, screen, new_focus);
+      determine_mode (xrender, new_focus);
       new_focus->needs_shadow = window_has_shadow (xrender, new_focus);
 
       if (new_focus->mask)
