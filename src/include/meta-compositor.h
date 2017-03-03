@@ -51,8 +51,6 @@ MetaCompositor  *meta_compositor_new                (MetaCompositorType  type,
 
 void             meta_compositor_manage             (MetaCompositor     *compositor);
 
-void             meta_compositor_unmanage           (MetaCompositor     *compositor);
-
 void             meta_compositor_add_window         (MetaCompositor     *compositor,
                                                      MetaWindow         *window,
                                                      Window              xwindow);

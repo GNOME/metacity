@@ -251,10 +251,7 @@ update_compositor (MetaDisplay *display,
   MetaCompositorType type;
 
   if (display->compositor != NULL)
-    {
-      meta_compositor_unmanage (display->compositor);
-      g_object_unref (display->compositor);
-    }
+    g_object_unref (display->compositor);
 
   if (meta_prefs_get_compositing_manager ())
     type = META_COMPOSITOR_TYPE_XRENDER;
@@ -834,7 +831,6 @@ meta_display_close (MetaDisplay *display,
 
   meta_display_unmanage_windows (display, timestamp);
 
-  meta_compositor_unmanage (display->compositor);
   g_clear_object (&display->compositor);
 
   if (display->screen != NULL)

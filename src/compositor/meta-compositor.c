@@ -65,6 +65,17 @@ initable_iface_init (GInitableIface *iface)
 }
 
 static void
+meta_compositor_finalize (GObject *object)
+{
+  MetaCompositor *compositor;
+
+  compositor = META_COMPOSITOR (object);
+
+  META_COMPOSITOR_GET_CLASS (compositor)->unmanage (compositor);
+  G_OBJECT_CLASS (meta_compositor_parent_class)->finalize (object);
+}
+
+static void
 meta_compositor_get_property (GObject    *object,
                               guint       property_id,
                               GValue     *value,
@@ -130,6 +141,7 @@ meta_compositor_class_init (MetaCompositorClass *compositor_class)
 
   object_class = G_OBJECT_CLASS (compositor_class);
 
+  object_class->finalize = meta_compositor_finalize;
   object_class->get_property = meta_compositor_get_property;
   object_class->set_property = meta_compositor_set_property;
 
@@ -191,16 +203,6 @@ meta_compositor_manage (MetaCompositor *compositor)
   compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
 
   compositor_class->manage (compositor);
-}
-
-void
-meta_compositor_unmanage (MetaCompositor *compositor)
-{
-  MetaCompositorClass *compositor_class;
-
-  compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
-
-  compositor_class->unmanage (compositor);
 }
 
 void
