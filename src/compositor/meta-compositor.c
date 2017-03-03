@@ -192,17 +192,9 @@ meta_compositor_new (MetaCompositorType  type,
 
   g_assert (compositor != NULL);
 
+  META_COMPOSITOR_GET_CLASS (compositor)->manage (compositor);
+
   return compositor;
-}
-
-void
-meta_compositor_manage (MetaCompositor *compositor)
-{
-  MetaCompositorClass *compositor_class;
-
-  compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
-
-  compositor_class->manage (compositor);
 }
 
 void

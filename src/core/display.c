@@ -260,8 +260,6 @@ update_compositor (MetaDisplay *display,
 
   display->compositor = meta_compositor_new (type, display);
 
-  meta_compositor_manage (display->compositor);
-
   if (composite_windows)
     meta_screen_composite_all_windows (display->screen);
 }
