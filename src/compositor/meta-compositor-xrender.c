@@ -50,8 +50,6 @@
 #include <X11/extensions/Xfixes.h>
 #include <X11/extensions/Xrender.h>
 
-#define USE_IDLE_REPAINT 1
-
 #define OPAQUE 0xffffffff
 
 #define WINDOW_SOLID 0
@@ -192,9 +190,8 @@ struct _MetaCompositorXRender
 
   MetaCompScreen *info;
 
-#ifdef USE_IDLE_REPAINT
   guint           repaint_id;
-#endif
+
   guint           show_redraw : 1;
   guint           debug : 1;
 };
@@ -1809,18 +1806,15 @@ repair_display (MetaCompositorXRender *xrender)
   MetaDisplay *display = meta_compositor_get_display (compositor);
   MetaScreen *screen = meta_display_get_screen (display);
 
-#ifdef USE_IDLE_REPAINT
   if (xrender->repaint_id > 0)
     {
       g_source_remove (xrender->repaint_id);
       xrender->repaint_id = 0;
     }
-#endif
 
   repair_screen (xrender, screen);
 }
 
-#ifdef USE_IDLE_REPAINT
 static gboolean
 compositor_idle_cb (gpointer data)
 {
@@ -1849,7 +1843,6 @@ add_repair (MetaCompositorXRender *xrender)
                                             NULL);
 #endif
 }
-#endif
 
 static void
 add_damage (MetaCompositorXRender *xrender,
@@ -1871,9 +1864,7 @@ add_damage (MetaCompositorXRender *xrender,
   else
     info->all_damage = damage;
 
-#ifdef USE_IDLE_REPAINT
   add_repair (xrender);
-#endif
 }
 
 static void
@@ -2632,9 +2623,7 @@ process_circulate_notify (MetaCompositorXRender *xrender,
       info->clip_changed = TRUE;
     }
 
-#ifdef USE_IDLE_REPAINT
   add_repair (xrender);
-#endif
 }
 
 static void
@@ -2716,9 +2705,8 @@ process_property_notify (MetaCompositorXRender *xrender,
                   /* Damage the whole screen as we may need to redraw the
                      background ourselves */
                   damage_screen (xrender, screen);
-#ifdef USE_IDLE_REPAINT
+
                   add_repair (xrender);
-#endif
 
                   return;
                 }
@@ -2763,9 +2751,8 @@ process_property_notify (MetaCompositorXRender *xrender,
       cw->extents = win_extents (xrender, cw);
 
       cw->damaged = TRUE;
-#ifdef USE_IDLE_REPAINT
+
       add_repair (xrender);
-#endif
 
       return;
     }
@@ -2915,10 +2902,8 @@ process_damage (MetaCompositorXRender *xrender,
 
   repair_win (xrender, cw);
 
-#ifdef USE_IDLE_REPAINT
   if (event->more == FALSE)
     add_repair (xrender);
-#endif
 }
 
 static void
@@ -3051,10 +3036,6 @@ static gboolean
 meta_compositor_xrender_initable_init (MetaCompositor  *compositor,
                                        GError         **error)
 {
-#ifdef USE_IDLE_REPAINT
-  meta_verbose ("Using idle repaint\n");
-#endif
-
   g_timeout_add (2000, (GSourceFunc) timeout_debug, compositor);
 
   return TRUE;
@@ -3337,10 +3318,6 @@ meta_compositor_xrender_process_event (MetaCompositor *compositor,
     }
 
   meta_error_trap_pop (NULL);
-
-#ifndef USE_IDLE_REPAINT
-  repair_display (xrender);
-#endif
 }
 
 static cairo_surface_t *
@@ -3619,9 +3596,7 @@ meta_compositor_xrender_set_active_window (MetaCompositor *compositor,
         }
     }
 
-#ifdef USE_IDLE_REPAINT
   add_repair (xrender);
-#endif
 }
 
 static void
