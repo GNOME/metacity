@@ -2091,7 +2091,6 @@ map_win (MetaCompositorXRender *xrender,
 
 static void
 unmap_win (MetaCompositorXRender *xrender,
-           MetaScreen            *screen,
            Window                 id)
 {
   MetaCompWindow *cw = find_window (xrender, id);
@@ -2825,7 +2824,7 @@ process_unmap (MetaCompositorXRender *xrender,
 
   cw = find_window (xrender, event->window);
   if (cw)
-    unmap_win (xrender, cw->screen, event->window);
+    unmap_win (xrender, event->window);
 }
 
 static void
