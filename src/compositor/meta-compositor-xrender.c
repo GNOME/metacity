@@ -2763,7 +2763,6 @@ process_property_notify (MetaCompositorXRender *xrender,
 
 static void
 expose_area (MetaCompositorXRender *xrender,
-             MetaScreen            *screen,
              XRectangle            *rects,
              int                    nrects)
 {
@@ -2782,24 +2781,14 @@ static void
 process_expose (MetaCompositorXRender *xrender,
                 XExposeEvent          *event)
 {
-  MetaCompositor *compositor = META_COMPOSITOR (xrender);
-  MetaDisplay *display = meta_compositor_get_display (compositor);
   MetaCompWindow *cw = find_window (xrender, event->window);
-  MetaScreen *screen = NULL;
   XRectangle rect[1];
   int origin_x = 0, origin_y = 0;
 
   if (cw != NULL)
     {
-      screen = cw->screen;
       origin_x = cw->attrs.x; /* + cw->attrs.border_width; ? */
       origin_y = cw->attrs.y; /* + cw->attrs.border_width; ? */
-    }
-  else
-    {
-      screen = meta_display_screen_for_root (display, event->window);
-      if (screen == NULL)
-        return;
     }
 
   rect[0].x = event->x + origin_x;
@@ -2807,7 +2796,7 @@ process_expose (MetaCompositorXRender *xrender,
   rect[0].width = event->width;
   rect[0].height = event->height;
 
-  expose_area (xrender, screen, rect, 1);
+  expose_area (xrender, rect, 1);
 }
 
 static void
