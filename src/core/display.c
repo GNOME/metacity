@@ -2268,7 +2268,8 @@ event_callback (XEvent   *event,
           Window xwindow;
 
           xwindow = event->xmaprequest.window;
-          window = meta_window_new (display, xwindow, FALSE);
+          window = meta_window_new (display, xwindow, FALSE,
+                                    META_EFFECT_TYPE_CREATE);
 
           if (window != NULL)
             {

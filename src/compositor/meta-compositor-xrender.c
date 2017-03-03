@@ -3272,6 +3272,20 @@ meta_compositor_xrender_remove_window (MetaCompositor *compositor,
 }
 
 static void
+meta_compositor_xrender_show_window (MetaCompositor *compositor,
+                                     MetaWindow     *window,
+                                     MetaEffectType  effect)
+{
+}
+
+static void
+meta_compositor_xrender_hide_window (MetaCompositor *compositor,
+                                     MetaWindow     *window,
+                                     MetaEffectType  effect)
+{
+}
+
+static void
 meta_compositor_xrender_set_updates (MetaCompositor *compositor,
                                      MetaWindow     *window,
                                      gboolean        updates)
@@ -3721,6 +3735,8 @@ meta_compositor_xrender_class_init (MetaCompositorXRenderClass *xrender_class)
   compositor_class->unmanage = meta_compositor_xrender_unmanage;
   compositor_class->add_window = meta_compositor_xrender_add_window;
   compositor_class->remove_window = meta_compositor_xrender_remove_window;
+  compositor_class->show_window = meta_compositor_xrender_show_window;
+  compositor_class->hide_window = meta_compositor_xrender_hide_window;
   compositor_class->set_updates = meta_compositor_xrender_set_updates;
   compositor_class->process_event = meta_compositor_xrender_process_event;
   compositor_class->get_window_surface = meta_compositor_xrender_get_window_surface;

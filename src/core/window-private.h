@@ -32,7 +32,7 @@
 #ifndef META_WINDOW_PRIVATE_H
 #define META_WINDOW_PRIVATE_H
 
-#include <config.h>
+#include "meta-compositor.h"
 #include "window.h"
 #include "screen-private.h"
 #include "util.h"
@@ -194,6 +194,17 @@ struct _MetaWindow
    * see also unmaps_pending
    */
   guint mapped : 1;
+
+  /* Whether the compositor thinks the window is visible.
+   * This should match up with calls to meta_compositor_show_window /
+   * meta_compositor_hide_window.
+   */
+  guint visible_to_compositor : 1;
+
+  /* When we next show or hide the window, what effect we should
+   * tell the compositor to perform.
+   */
+  guint pending_compositor_effect : 4;
 
   /* Iconic is the state in WM_STATE; happens for workspaces/shading
    * in addition to minimize
@@ -427,9 +438,10 @@ struct _MetaWindow
 #define META_WINDOW_ALLOWS_HORIZONTAL_RESIZE(w) (META_WINDOW_ALLOWS_RESIZE_EXCEPT_HINTS (w) && (w)->size_hints.min_width < (w)->size_hints.max_width)
 #define META_WINDOW_ALLOWS_VERTICAL_RESIZE(w)   (META_WINDOW_ALLOWS_RESIZE_EXCEPT_HINTS (w) && (w)->size_hints.min_height < (w)->size_hints.max_height)
 
-MetaWindow* meta_window_new                (MetaDisplay *display,
-                                            Window       xwindow,
-                                            gboolean     must_be_viewable);
+MetaWindow* meta_window_new                (MetaDisplay    *display,
+                                            Window          xwindow,
+                                            gboolean        must_be_viewable,
+                                            MetaEffectType  effect);
 void        meta_window_free               (MetaWindow  *window,
                                             guint32      timestamp);
 void        meta_window_calc_showing       (MetaWindow  *window);

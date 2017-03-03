@@ -41,6 +41,14 @@ struct _MetaCompositorClass
   void              (* remove_window)      (MetaCompositor     *compositor,
                                             MetaWindow         *window);
 
+  void              (* show_window)        (MetaCompositor     *compositor,
+                                            MetaWindow         *window,
+                                            MetaEffectType      effect);
+
+  void              (* hide_window)        (MetaCompositor     *compositor,
+                                            MetaWindow         *window,
+                                            MetaEffectType      effect);
+
   void              (* set_updates)        (MetaCompositor     *compositor,
                                             MetaWindow         *window,
                                             gboolean            update);

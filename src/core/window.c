@@ -267,9 +267,10 @@ meta_window_should_attach_to_parent (MetaWindow *window)
 }
 
 MetaWindow*
-meta_window_new (MetaDisplay *display,
-                 Window       xwindow,
-                 gboolean     must_be_viewable)
+meta_window_new (MetaDisplay    *display,
+                 Window          xwindow,
+                 gboolean        must_be_viewable,
+                 MetaEffectType  effect)
 {
   XWindowAttributes attrs;
   MetaWindow *window;
@@ -508,6 +509,8 @@ meta_window_new (MetaDisplay *display,
   window->tab_unminimized = FALSE;
   window->iconic = FALSE;
   window->mapped = attrs.map_state != IsUnmapped;
+  window->visible_to_compositor = FALSE;
+  window->pending_compositor_effect = effect;
   /* if already mapped, no need to worry about focus-on-first-time-showing */
   window->showing_for_first_time = !window->mapped;
   /* if already mapped we don't want to do the placement thing;
@@ -2178,7 +2181,6 @@ window_would_be_covered (const MetaWindow *newbie)
   return FALSE; /* none found */
 }
 
-/* XXX META_EFFECT_*_MAP */
 void
 meta_window_show (MetaWindow *window)
 {
@@ -2379,6 +2381,31 @@ meta_window_show (MetaWindow *window)
         }
     }
 
+  if (!window->visible_to_compositor)
+    {
+      MetaEffectType effect;
+
+      window->visible_to_compositor = TRUE;
+      effect = META_EFFECT_TYPE_NONE;
+
+      switch (window->pending_compositor_effect)
+        {
+        case META_EFFECT_TYPE_CREATE:
+        case META_EFFECT_TYPE_UNMINIMIZE:
+          effect = window->pending_compositor_effect;
+          break;
+
+        case META_EFFECT_TYPE_NONE:
+        case META_EFFECT_TYPE_DESTROY:
+        case META_EFFECT_TYPE_MINIMIZE:
+        default:
+          break;
+        }
+
+      meta_compositor_show_window (window->display->compositor, window, effect);
+      window->pending_compositor_effect = META_EFFECT_TYPE_NONE;
+    }
+
   /* We don't want to worry about all cases from inside
    * implement_showing(); we only want to worry about focus if this
    * window has not been shown before.
@@ -2422,7 +2449,6 @@ meta_window_show (MetaWindow *window)
   window->initial_timestamp_set = FALSE;
 }
 
-/* XXX META_EFFECT_*_UNMAP */
 static void
 meta_window_hide (MetaWindow *window)
 {
@@ -2430,6 +2456,31 @@ meta_window_hide (MetaWindow *window)
 
   meta_topic (META_DEBUG_WINDOW_STATE,
               "Hiding window %s\n", window->desc);
+
+  if (window->visible_to_compositor)
+    {
+      MetaEffectType effect;
+
+      window->visible_to_compositor = FALSE;
+      effect = META_EFFECT_TYPE_NONE;
+
+      switch (window->pending_compositor_effect)
+        {
+        case META_EFFECT_TYPE_DESTROY:
+        case META_EFFECT_TYPE_MINIMIZE:
+          effect = window->pending_compositor_effect;
+          break;
+
+        case META_EFFECT_TYPE_NONE:
+        case META_EFFECT_TYPE_CREATE:
+        case META_EFFECT_TYPE_UNMINIMIZE:
+        default:
+          break;
+        }
+
+      meta_compositor_hide_window (window->display->compositor, window, effect);
+      window->pending_compositor_effect = META_EFFECT_TYPE_NONE;
+    }
 
   did_hide = FALSE;
 
@@ -2489,6 +2540,7 @@ meta_window_minimize (MetaWindow  *window)
   if (!window->minimized)
     {
       window->minimized = TRUE;
+      window->pending_compositor_effect = META_EFFECT_TYPE_MINIMIZE;
       meta_window_queue(window, META_QUEUE_CALC_SHOWING);
 
       meta_window_foreach_transient (window,
@@ -2518,6 +2570,7 @@ meta_window_unminimize (MetaWindow  *window)
   if (window->minimized)
     {
       window->minimized = FALSE;
+      window->pending_compositor_effect = META_EFFECT_TYPE_UNMINIMIZE;
       meta_window_queue(window, META_QUEUE_CALC_SHOWING);
 
       meta_window_foreach_transient (window,

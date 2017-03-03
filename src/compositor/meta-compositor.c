@@ -227,6 +227,30 @@ meta_compositor_remove_window (MetaCompositor *compositor,
 }
 
 void
+meta_compositor_show_window (MetaCompositor *compositor,
+                             MetaWindow     *window,
+                             MetaEffectType  effect)
+{
+  MetaCompositorClass *compositor_class;
+
+  compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
+
+  compositor_class->show_window (compositor, window, effect);
+}
+
+void
+meta_compositor_hide_window (MetaCompositor *compositor,
+                             MetaWindow     *window,
+                             MetaEffectType  effect)
+{
+  MetaCompositorClass *compositor_class;
+
+  compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
+
+  compositor_class->hide_window (compositor, window, effect);
+}
+
+void
 meta_compositor_set_updates (MetaCompositor *compositor,
                              MetaWindow     *window,
                              gboolean        updates)

@@ -37,6 +37,15 @@ typedef enum
   META_COMPOSITOR_TYPE_XRENDER
 } MetaCompositorType;
 
+typedef enum
+{
+  META_EFFECT_TYPE_NONE,
+  META_EFFECT_TYPE_CREATE,
+  META_EFFECT_TYPE_DESTROY,
+  META_EFFECT_TYPE_MINIMIZE,
+  META_EFFECT_TYPE_UNMINIMIZE,
+} MetaEffectType;
+
 MetaCompositor  *meta_compositor_new                (MetaCompositorType  type,
                                                      MetaDisplay        *display);
 
@@ -50,6 +59,14 @@ void             meta_compositor_add_window         (MetaCompositor     *composi
 
 void             meta_compositor_remove_window      (MetaCompositor     *compositor,
                                                      MetaWindow         *window);
+
+void             meta_compositor_show_window        (MetaCompositor     *compositor,
+                                                     MetaWindow         *window,
+                                                     MetaEffectType      effect);
+
+void             meta_compositor_hide_window        (MetaCompositor     *compositor,
+                                                     MetaWindow         *window,
+                                                     MetaEffectType      effect);
 
 void             meta_compositor_set_updates        (MetaCompositor     *compositor,
                                                      MetaWindow         *window,
