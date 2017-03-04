@@ -734,14 +734,13 @@ find_window (MetaCompositorXRender *xrender,
 
 static MetaCompWindow *
 find_window_for_child_window (MetaCompositorXRender *xrender,
-                              Display               *xdisplay,
                               Window                 xwindow)
 {
   Window ignored1, *ignored2;
   Window parent;
   guint ignored_children;
 
-  XQueryTree (xdisplay, xwindow, &ignored1,
+  XQueryTree (xrender->xdisplay, xwindow, &ignored1,
               &parent, &ignored2, &ignored_children);
 
   if (parent != None)
@@ -2626,7 +2625,7 @@ process_property_notify (MetaCompositorXRender *xrender,
           /* Applications can set this for their toplevel windows, so
            * this must be propagated to the window managed by the compositor
            */
-          cw = find_window_for_child_window (xrender, xdisplay, event->window);
+          cw = find_window_for_child_window (xrender, event->window);
         }
 
       if (!cw)
