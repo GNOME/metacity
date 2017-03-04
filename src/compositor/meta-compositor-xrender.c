@@ -1786,9 +1786,7 @@ static void
 add_damage (MetaCompositorXRender *xrender,
             XserverRegion          damage)
 {
-  MetaCompositor *compositor = META_COMPOSITOR (xrender);
-  MetaDisplay *display = meta_compositor_get_display (compositor);
-  Display *xdisplay = meta_display_get_xdisplay (display);
+  Display *xdisplay = xrender->xdisplay;
 
   /* dump_xserver_region (xrender, "add_damage", damage); */
 
