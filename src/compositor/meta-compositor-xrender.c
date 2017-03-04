@@ -1742,37 +1742,24 @@ paint_all (MetaCompositorXRender *xrender,
 }
 
 static void
-repair_screen (MetaCompositorXRender *xrender,
-               MetaScreen            *screen)
-{
-  MetaDisplay *display = meta_screen_get_display (screen);
-  Display *xdisplay = meta_display_get_xdisplay (display);
-
-  if (xrender->all_damage != None)
-    {
-      meta_error_trap_push (display);
-      paint_all (xrender, screen, xrender->all_damage);
-      XFixesDestroyRegion (xdisplay, xrender->all_damage);
-      xrender->all_damage = None;
-      xrender->clip_changed = FALSE;
-      meta_error_trap_pop (display);
-    }
-}
-
-static void
 repair_display (MetaCompositorXRender *xrender)
 {
   MetaCompositor *compositor = META_COMPOSITOR (xrender);
   MetaDisplay *display = meta_compositor_get_display (compositor);
+  Display *xdisplay = meta_display_get_xdisplay (display);
   MetaScreen *screen = meta_display_get_screen (display);
 
-  if (xrender->repaint_id > 0)
+  if (xrender->all_damage != None)
     {
-      g_source_remove (xrender->repaint_id);
-      xrender->repaint_id = 0;
-    }
+      meta_error_trap_push (display);
 
-  repair_screen (xrender, screen);
+      paint_all (xrender, screen, xrender->all_damage);
+      XFixesDestroyRegion (xdisplay, xrender->all_damage);
+      xrender->all_damage = None;
+      xrender->clip_changed = FALSE;
+
+      meta_error_trap_pop (display);
+    }
 }
 
 static gboolean
