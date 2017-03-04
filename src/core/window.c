@@ -3532,6 +3532,36 @@ send_sync_request (MetaWindow *window)
   g_get_current_time (&window->sync_request_time);
 }
 
+/**
+ * meta_window_updates_are_frozen:
+ * @window: a #MetaWindow
+ *
+ * Gets whether the compositor should be updating the window contents;
+ * window content updates may be frozen at client request by setting
+ * an odd value in the extended _NET_WM_SYNC_REQUEST_COUNTER counter r
+ * by the window manager during a resize operation while waiting for
+ * the client to redraw.
+ *
+ * Return value: %TRUE if updates are currently frozen
+ */
+gboolean
+meta_window_updates_are_frozen (MetaWindow *window)
+{
+  return window->updates_frozen_for_resize;
+}
+
+static void
+meta_window_set_updates_frozen_for_resize (MetaWindow *window,
+                                           gboolean    updates_frozen)
+{
+  if (updates_frozen != window->updates_frozen_for_resize)
+    {
+      window->updates_frozen_for_resize = updates_frozen;
+      meta_compositor_set_updates_frozen (window->display->compositor, window,
+                                          meta_window_updates_are_frozen (window));
+    }
+}
+
 static gboolean
 maybe_move_attached_dialog (MetaWindow *window,
                             void       *data)
@@ -3942,7 +3972,7 @@ meta_window_move_resize_internal (MetaWindow          *window,
           window->sync_request_time.tv_sec == 0)
         {
           /* turn off updating */
-          meta_compositor_set_updates (window->display->compositor, window, FALSE);
+          meta_window_set_updates_frozen_for_resize (window, TRUE);
           send_sync_request (window);
         }
 
@@ -7792,7 +7822,7 @@ update_resize (MetaWindow *window,
     }
 
   /* If we get here, it means the client should have redrawn itself */
-  meta_compositor_set_updates (window->display->compositor, window, TRUE);
+  meta_window_set_updates_frozen_for_resize (window, FALSE);
 
   /* Remove any scheduled compensation events */
   if (window->display->grab_resize_timeout_id)
@@ -8078,7 +8108,7 @@ meta_window_handle_mouse_grab_op_event (MetaWindow *window,
                                event->xbutton.y_root,
                                TRUE);
 
-              meta_compositor_set_updates (window->display->compositor, window, TRUE);
+              meta_window_set_updates_frozen_for_resize (window, FALSE);
 
               /* If a tiled window has been dragged free with a
                * mouse resize without snapping back to the tiled

@@ -337,6 +337,9 @@ struct _MetaWindow
   /* if TRUE, window is attached to its parent */
   guint attached : 1;
 
+  /* if TRUE, we are freezing updates during a resize */
+  guint updates_frozen_for_resize : 1;
+
   /* if non-NULL, the bounds of the window frame */
   cairo_region_t *frame_bounds;
 
@@ -716,5 +719,7 @@ void meta_window_propagate_focus_appearance (MetaWindow *window,
 gboolean meta_window_should_attach_to_parent (MetaWindow *window);
 
 MetaFrameType meta_window_get_frame_type (MetaWindow *window);
+
+gboolean meta_window_updates_are_frozen (MetaWindow *window);
 
 #endif

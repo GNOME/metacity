@@ -63,9 +63,9 @@ void             meta_compositor_hide_window        (MetaCompositor     *composi
                                                      MetaWindow         *window,
                                                      MetaEffectType      effect);
 
-void             meta_compositor_set_updates        (MetaCompositor     *compositor,
+void             meta_compositor_set_updates_frozen (MetaCompositor     *compositor,
                                                      MetaWindow         *window,
-                                                     gboolean            updates);
+                                                     gboolean            updates_frozen);
 
 void             meta_compositor_process_event      (MetaCompositor     *compositor,
                                                      XEvent             *event,

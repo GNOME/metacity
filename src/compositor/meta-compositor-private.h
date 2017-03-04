@@ -46,9 +46,9 @@ struct _MetaCompositorClass
                                             MetaWindow         *window,
                                             MetaEffectType      effect);
 
-  void              (* set_updates)        (MetaCompositor     *compositor,
+  void              (* set_updates_frozen) (MetaCompositor     *compositor,
                                             MetaWindow         *window,
-                                            gboolean            update);
+                                            gboolean            updates_frozen);
 
   void              (* process_event)      (MetaCompositor     *compositor,
                                             XEvent             *event,
