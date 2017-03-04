@@ -837,6 +837,8 @@ meta_window_new (MetaDisplay    *display,
       set_net_wm_state (window);
     }
 
+  meta_compositor_add_window (window->display->compositor, window, window->xwindow);
+
   /* Sync stack changes */
   meta_stack_thaw (window->screen->stack);
 

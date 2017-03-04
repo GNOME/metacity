@@ -2295,16 +2295,8 @@ event_callback (XEvent   *event,
     case MapRequest:
       if (window == NULL)
         {
-          Window xwindow;
-
-          xwindow = event->xmaprequest.window;
-          window = meta_window_new (display, xwindow, FALSE,
+          window = meta_window_new (display, event->xmaprequest.window, FALSE,
                                     META_EFFECT_TYPE_CREATE);
-
-          if (window != NULL)
-            {
-              meta_compositor_add_window (display->compositor, window, xwindow);
-            }
 
           /* The window might have initial iconic state, but this is a
            * MapRequest, fall through to ensure it is unminimized in
