@@ -2834,16 +2834,12 @@ update_shadows (MetaPreference pref,
                 gpointer       data)
 {
   MetaCompositorXRender *xrender;
-  MetaDisplay *display;
-  Display *xdisplay;
   GList *index;
 
   if (pref != META_PREF_THEME_TYPE)
     return;
 
   xrender = META_COMPOSITOR_XRENDER (data);
-  display = meta_screen_get_display (xrender->screen);
-  xdisplay = meta_display_get_xdisplay (display);
 
   for (index = xrender->windows; index; index = index->next)
     {
@@ -2853,7 +2849,7 @@ update_shadows (MetaPreference pref,
 
       if (cw->window && cw->shadow)
         {
-          XRenderFreePicture (xdisplay, cw->shadow);
+          XRenderFreePicture (xrender->xdisplay, cw->shadow);
           cw->shadow = None;
         }
 
