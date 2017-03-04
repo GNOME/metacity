@@ -1971,11 +1971,10 @@ free_win (MetaCompositorXRender *xrender,
 
 static void
 map_win (MetaCompositorXRender *xrender,
-         MetaDisplay           *display,
          Window                 id)
 {
   MetaCompWindow *cw = find_window (xrender, id);
-  Display *xdisplay = meta_display_get_xdisplay (display);
+  Display *xdisplay = xrender->xdisplay;
 
   if (cw == NULL)
     return;
@@ -2262,7 +2261,7 @@ add_win (MetaCompositorXRender *xrender,
   g_hash_table_insert (xrender->windows_by_xid, (gpointer) xwindow, cw);
 
   if (cw->attrs.map_state == IsViewable)
-    map_win (xrender, display, xwindow);
+    map_win (xrender, xwindow);
 }
 
 static void
@@ -2718,12 +2717,10 @@ static void
 process_map (MetaCompositorXRender *xrender,
              XMapEvent             *event)
 {
-  MetaCompositor *compositor = META_COMPOSITOR (xrender);
-  MetaDisplay *display = meta_compositor_get_display (compositor);
   MetaCompWindow *cw = find_window (xrender, event->window);
 
   if (cw)
-    map_win (xrender, display, event->window);
+    map_win (xrender, event->window);
 }
 
 static void
