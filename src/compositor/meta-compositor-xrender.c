@@ -1043,9 +1043,6 @@ static XserverRegion
 win_extents (MetaCompositorXRender *xrender,
              MetaCompWindow        *cw)
 {
-  MetaScreen *screen = cw->screen;
-  MetaDisplay *display = meta_screen_get_display (screen);
-  Display *xdisplay = meta_display_get_xdisplay (display);
   XRectangle r;
 
   r.x = cw->attrs.x;
@@ -1110,7 +1107,7 @@ win_extents (MetaCompositorXRender *xrender,
         r.height = sr.y + sr.height - r.y;
     }
 
-  return XFixesCreateRegion (xdisplay, &r, 1);
+  return XFixesCreateRegion (xrender->xdisplay, &r, 1);
 }
 
 static XserverRegion
