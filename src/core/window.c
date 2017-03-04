@@ -297,14 +297,6 @@ meta_window_new (MetaDisplay    *display,
 
   meta_verbose ("Attempting to manage 0x%lx\n", xwindow);
 
-  if (meta_display_xwindow_is_a_no_focus_window (display, xwindow))
-    {
-      meta_verbose ("Not managing no_focus_window 0x%lx\n", xwindow);
-      meta_error_trap_pop (display);
-      meta_display_ungrab (display);
-      return NULL;
-    }
-
   if (attrs.override_redirect)
     {
       meta_verbose ("Deciding not to manage override_redirect window 0x%lx\n", xwindow);
