@@ -164,6 +164,8 @@ struct _MetaCompositorXRender
 {
   MetaCompositor  parent;
 
+  Display        *xdisplay;
+
   MetaScreen     *screen;
   GList          *windows;
   GHashTable     *windows_by_xid;
@@ -2909,6 +2911,22 @@ hide_overlay_window (MetaCompositorXRender *xrender,
   XFixesDestroyRegion (xdisplay, region);
 }
 
+static void
+meta_compositor_xrender_constructed (GObject *object)
+{
+  MetaCompositor *compositor;
+  MetaCompositorXRender *xrender;
+  MetaDisplay *display;
+
+  G_OBJECT_CLASS (meta_compositor_xrender_parent_class)->constructed (object);
+
+  compositor = META_COMPOSITOR (object);
+  xrender = META_COMPOSITOR_XRENDER (object);
+  display = meta_compositor_get_display (compositor);
+
+  xrender->xdisplay = meta_display_get_xdisplay (display);
+}
+
 static gboolean
 meta_compositor_xrender_manage (MetaCompositor  *compositor,
                                 GError         **error)
@@ -3512,9 +3530,13 @@ meta_compositor_xrender_is_our_xwindow (MetaCompositor *compositor,
 static void
 meta_compositor_xrender_class_init (MetaCompositorXRenderClass *xrender_class)
 {
+  GObjectClass *object_class;
   MetaCompositorClass *compositor_class;
 
+  object_class = G_OBJECT_CLASS (xrender_class);
   compositor_class = META_COMPOSITOR_CLASS (xrender_class);
+
+  object_class->constructed = meta_compositor_xrender_constructed;
 
   compositor_class->manage = meta_compositor_xrender_manage;
   compositor_class->unmanage = meta_compositor_xrender_unmanage;
