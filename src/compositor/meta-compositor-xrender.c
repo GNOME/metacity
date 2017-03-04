@@ -663,7 +663,6 @@ shadow_picture_clip (Display          *xdisplay,
 
 static Picture
 shadow_picture (MetaCompositorXRender *xrender,
-                MetaDisplay           *display,
                 MetaCompWindow        *cw,
                 double                 opacity,
                 MetaFrameBorders       borders,
@@ -672,7 +671,7 @@ shadow_picture (MetaCompositorXRender *xrender,
                 int                   *wp,
                 int                   *hp)
 {
-  Display *xdisplay = meta_display_get_xdisplay (display);
+  Display *xdisplay;
   XImage *shadow_image;
   Pixmap shadow_pixmap;
   Picture shadow_picture;
@@ -683,6 +682,7 @@ shadow_picture (MetaCompositorXRender *xrender,
   if (!shadow_image)
     return None;
 
+  xdisplay = xrender->xdisplay;
   shadow_pixmap = XCreatePixmap (xdisplay, DefaultRootWindow (xdisplay),
                                  shadow_image->width, shadow_image->height, 8);
   if (!shadow_pixmap)
@@ -1084,7 +1084,7 @@ win_extents (MetaCompositorXRender *xrender,
           if (cw->opacity != (guint) OPAQUE)
             opacity = opacity * ((double) cw->opacity) / ((double) OPAQUE);
 
-          cw->shadow = shadow_picture (xrender, display, cw, opacity, borders,
+          cw->shadow = shadow_picture (xrender, cw, opacity, borders,
                                        cw->attrs.width - invisible_width + cw->attrs.border_width * 2,
                                        cw->attrs.height - invisible_height + cw->attrs.border_width * 2,
                                        &cw->shadow_width, &cw->shadow_height);
