@@ -421,13 +421,12 @@ generate_shadows (MetaCompositorXRender *xrender)
 
 static XImage *
 make_shadow (MetaCompositorXRender *xrender,
-             MetaDisplay           *display,
              MetaShadowType         shadow_type,
              double                 opacity,
              int                    width,
              int                    height)
 {
-  Display *xdisplay = meta_display_get_xdisplay (display);
+  Display *xdisplay;
   XImage *ximage;
   guchar *data;
   shadow *shad;
@@ -449,6 +448,7 @@ make_shadow (MetaCompositorXRender *xrender,
 
   data = g_malloc (swidth * sheight * sizeof (guchar));
 
+  xdisplay = xrender->xdisplay;
   screen_number = DefaultScreen (xdisplay);
   ximage = XCreateImage (xdisplay, DefaultVisual (xdisplay, screen_number),
                          8, ZPixmap, 0, (char *) data,
@@ -678,8 +678,7 @@ shadow_picture (MetaCompositorXRender *xrender,
   Picture shadow_picture;
   GC gc;
 
-  shadow_image = make_shadow (xrender, display, cw->shadow_type,
-                              opacity, width, height);
+  shadow_image = make_shadow (xrender, cw->shadow_type, opacity, width, height);
 
   if (!shadow_image)
     return None;
