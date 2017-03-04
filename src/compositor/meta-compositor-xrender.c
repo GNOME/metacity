@@ -1386,12 +1386,10 @@ get_window_mask (MetaCompWindow *cw)
 
 static void
 paint_dock_shadows (MetaCompositorXRender *xrender,
-                    MetaScreen            *screen,
                     Picture                root_buffer,
                     XserverRegion          region)
 {
-  MetaDisplay *display = meta_screen_get_display (screen);
-  Display *xdisplay = meta_display_get_xdisplay (display);
+  Display *xdisplay = xrender->xdisplay;
   GSList *d;
 
   for (d = xrender->dock_windows; d; d = d->next)
@@ -1580,7 +1578,7 @@ paint_windows (MetaCompositorXRender *xrender,
   XFixesSetPictureClipRegion (xdisplay, root_buffer, 0, 0, paint_region);
   paint_root (xrender, screen, root_buffer);
 
-  paint_dock_shadows (xrender, screen, root_buffer,
+  paint_dock_shadows (xrender, root_buffer,
                       desktop_region == None ? paint_region : desktop_region);
 
   if (desktop_region != None)
