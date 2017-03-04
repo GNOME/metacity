@@ -821,6 +821,8 @@ composited_state_set_cb (GtkSwitch         *widget,
 
   meta_theme_set_composited (window->theme, active);
 
+  update_frame_borders (window);
+
   gtk_widget_queue_draw (window->theme_box);
 }
 
