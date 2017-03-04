@@ -230,6 +230,9 @@ meta_css_provider_finalize (GObject *object)
 
   provider = META_CSS_PROVIDER (object);
 
+  g_clear_pointer (&provider->name, g_free);
+  g_clear_pointer (&provider->variant, g_free);
+
   if (provider->resource)
     {
       g_resources_unregister (provider->resource);
