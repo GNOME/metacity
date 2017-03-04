@@ -83,6 +83,8 @@ static void invalidate_all_caches (MetaFrames *frames);
 static void invalidate_whole_window (MetaFrames *frames,
                                      MetaUIFrame *frame);
 
+static void meta_frames_composited_changed (MetaFrames *frames);
+
 struct _MetaFrames
 {
   GtkWindow    parent;
@@ -421,7 +423,7 @@ prefs_changed_callback (MetaPreference pref,
                         void          *data)
 {
   if (pref == META_PREF_COMPOSITING_MANAGER)
-    meta_frames_style_updated (GTK_WIDGET (data));
+    meta_frames_composited_changed (META_FRAMES (data));
   else if (pref == META_PREF_TITLEBAR_FONT)
     meta_frames_font_changed (META_FRAMES (data));
   else if (pref == META_PREF_BUTTON_LAYOUT)
@@ -641,18 +643,27 @@ reattach_style_func (gpointer key, gpointer value, gpointer data)
 }
 
 static void
-meta_frames_style_updated (GtkWidget *widget)
+meta_frames_composited_changed (MetaFrames *frames)
 {
-  MetaFrames *frames;
   MetaTheme *theme;
   gboolean compositing_manager;
-
-  frames = META_FRAMES (widget);
 
   theme = meta_ui_get_theme ();
   compositing_manager = meta_prefs_get_compositing_manager ();
 
   meta_theme_set_composited (theme, compositing_manager);
+  g_hash_table_foreach (frames->frames, queue_recalc_func, frames);
+}
+
+static void
+meta_frames_style_updated (GtkWidget *widget)
+{
+  MetaFrames *frames;
+  MetaTheme *theme;
+
+  frames = META_FRAMES (widget);
+  theme = meta_ui_get_theme ();
+
   meta_theme_invalidate (theme);
 
   meta_frames_font_changed (frames);
