@@ -752,7 +752,6 @@ find_window_for_child_window (MetaCompositorXRender *xrender,
 
 static Picture
 solid_picture (MetaDisplay *display,
-               MetaScreen  *screen,
                gboolean     argb,
                double       a,
                double       r,
@@ -765,7 +764,7 @@ solid_picture (MetaDisplay *display,
   XRenderPictureAttributes pa;
   XRenderPictFormat *render_format;
   XRenderColor c;
-  Window xroot = meta_screen_get_xroot (screen);
+  Window xroot = DefaultRootWindow (xdisplay);
 
   render_format = XRenderFindStandardFormat (xdisplay,
                                              argb ? PictStandardARGB32 : PictStandardA8);
@@ -1631,7 +1630,7 @@ paint_windows (MetaCompositorXRender *xrender,
 
           if ((cw->opacity != (guint) OPAQUE) && !(cw->alpha_pict))
             {
-              cw->alpha_pict = solid_picture (display, screen, FALSE,
+              cw->alpha_pict = solid_picture (display, FALSE,
                                               (double) cw->opacity / OPAQUE,
                                               0, 0, 0);
             }
@@ -1719,7 +1718,7 @@ paint_all (MetaCompositorXRender *xrender,
       dump_xserver_region (xrender, "paint_all", region);
 
       /* Make a random colour overlay */
-      overlay = solid_picture (display, screen, TRUE, 1, /* 0.3, alpha */
+      overlay = solid_picture (display, TRUE, 1, /* 0.3, alpha */
                                ((double) (rand () % 100)) / 100.0,
                                ((double) (rand () % 100)) / 100.0,
                                ((double) (rand () % 100)) / 100.0);
@@ -2981,7 +2980,7 @@ meta_compositor_xrender_manage (MetaCompositor  *compositor,
     }
 
   xrender->root_buffer = None;
-  xrender->black_picture = solid_picture (display, screen, TRUE, 1, 0, 0, 0);
+  xrender->black_picture = solid_picture (display, TRUE, 1, 0, 0, 0);
 
   xrender->root_tile = None;
   xrender->all_damage = None;
