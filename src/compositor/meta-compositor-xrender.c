@@ -910,8 +910,7 @@ static Picture
 create_root_buffer (MetaCompositorXRender *xrender,
                     MetaScreen            *screen)
 {
-  MetaDisplay *display = meta_screen_get_display (screen);
-  Display *xdisplay = meta_display_get_xdisplay (display);
+  Display *xdisplay = xrender->xdisplay;
   Picture pict;
   XRenderPictFormat *format;
   Pixmap root_pixmap;
