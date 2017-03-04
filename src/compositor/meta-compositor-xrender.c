@@ -246,9 +246,6 @@ dump_xserver_region (MetaCompositorXRender *xrender,
                      const gchar           *location,
                      XserverRegion          region)
 {
-  MetaCompositor *compositor = META_COMPOSITOR (xrender);
-  MetaDisplay *display = meta_compositor_get_display (compositor);
-  Display *xdisplay = meta_display_get_xdisplay (display);
   int nrects;
   XRectangle *rects;
   XRectangle bounds;
@@ -258,7 +255,9 @@ dump_xserver_region (MetaCompositorXRender *xrender,
 
   if (region)
     {
-      rects = XFixesFetchRegionAndBounds (xdisplay, region, &nrects, &bounds);
+      rects = XFixesFetchRegionAndBounds (xrender->xdisplay, region,
+                                          &nrects, &bounds);
+
       if (nrects > 0)
         {
           int i;
