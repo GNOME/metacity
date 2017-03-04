@@ -558,7 +558,6 @@ prefs_changed_callback (MetaPreference pref,
 
     case META_PREF_THEME_NAME:
     case META_PREF_THEME_TYPE:
-    case META_PREF_COMPOSITING_MANAGER:
       meta_ui_reload_theme ();
       meta_display_retheme_all ();
       break;
@@ -569,6 +568,7 @@ prefs_changed_callback (MetaPreference pref,
 				     meta_prefs_get_cursor_size ());
       break;
 
+    case META_PREF_COMPOSITING_MANAGER:
     case META_PREF_MOUSE_BUTTON_MODS:
     case META_PREF_FOCUS_MODE:
     case META_PREF_FOCUS_NEW_WINDOWS:
