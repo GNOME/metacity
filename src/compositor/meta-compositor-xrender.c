@@ -941,8 +941,6 @@ paint_root (MetaCompositorXRender *xrender,
             MetaScreen            *screen,
             Picture                root_buffer)
 {
-  MetaDisplay *display = meta_screen_get_display (screen);
-  Display *xdisplay = meta_display_get_xdisplay (display);
   int width, height;
 
   g_return_if_fail (root_buffer != None);
@@ -954,7 +952,8 @@ paint_root (MetaCompositorXRender *xrender,
     }
 
   meta_screen_get_size (screen, &width, &height);
-  XRenderComposite (xdisplay, PictOpSrc, xrender->root_tile, None, root_buffer,
+  XRenderComposite (xrender->xdisplay, PictOpSrc,
+                    xrender->root_tile, None, root_buffer,
                     0, 0, 0, 0, 0, 0, width, height);
 }
 
