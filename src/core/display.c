@@ -2282,6 +2282,15 @@ event_callback (XEvent   *event,
         }
       break;
     case MapNotify:
+      /* NB: override redirect windows wont cause a map request so we
+       * watch out for map notifies against any root windows too if a
+       * compositor is enabled:
+       */
+      if (window == NULL && event->xmap.event == screen->xroot)
+        {
+          window = meta_window_new (display, event->xmap.window, FALSE,
+                                    META_EFFECT_TYPE_CREATE);
+        }
       break;
     case MapRequest:
       if (window == NULL)
