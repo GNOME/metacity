@@ -341,6 +341,36 @@ meta_style_info_get_style (MetaStyleInfo    *style_info,
 }
 
 void
+meta_style_info_set_composited (MetaStyleInfo *style_info,
+                                gboolean       composited)
+{
+  gint i;
+
+  if (style_info->composited == composited)
+    return;
+
+  style_info->composited = composited;
+
+  for (i = 0; i < META_STYLE_ELEMENT_LAST; i++)
+    {
+      GtkStyleContext *style;
+
+      style = style_info->styles[i];
+
+      if (composited)
+        {
+          remove_toplevel_class (style, "solid-csd");
+          add_toplevel_class (style, "csd");
+        }
+      else
+        {
+          remove_toplevel_class (style, "csd");
+          add_toplevel_class (style, "solid-csd");
+        }
+    }
+}
+
+void
 meta_style_info_set_flags (MetaStyleInfo  *style_info,
                            MetaFrameFlags  flags)
 {

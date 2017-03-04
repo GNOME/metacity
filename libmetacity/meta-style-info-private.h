@@ -38,18 +38,22 @@ G_GNUC_INTERNAL
 G_DECLARE_FINAL_TYPE (MetaStyleInfo, meta_style_info, META, STYLE_INFO, GObject)
 
 G_GNUC_INTERNAL
-MetaStyleInfo   *meta_style_info_new       (const gchar      *gtk_theme_name,
-                                            const gchar      *gtk_theme_variant,
-                                            gboolean          composited,
-                                            gint              window_scale);
+MetaStyleInfo   *meta_style_info_new            (const gchar      *gtk_theme_name,
+                                                 const gchar      *gtk_theme_variant,
+                                                 gboolean          composited,
+                                                 gint              window_scale);
 
 G_GNUC_INTERNAL
-GtkStyleContext *meta_style_info_get_style (MetaStyleInfo    *style_info,
-                                            MetaStyleElement  element);
+GtkStyleContext *meta_style_info_get_style      (MetaStyleInfo    *style_info,
+                                                 MetaStyleElement  element);
 
 G_GNUC_INTERNAL
-void             meta_style_info_set_flags (MetaStyleInfo    *style_info,
-                                            MetaFrameFlags    flags);
+void             meta_style_info_set_composited (MetaStyleInfo    *style_info,
+                                                 gboolean          composited);
+
+G_GNUC_INTERNAL
+void             meta_style_info_set_flags      (MetaStyleInfo    *style_info,
+                                                 MetaFrameFlags    flags);
 
 G_END_DECLS
 

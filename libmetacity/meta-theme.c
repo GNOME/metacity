@@ -64,6 +64,20 @@ static GParamSpec *properties[LAST_PROP] = { NULL };
 
 G_DEFINE_TYPE (MetaTheme, meta_theme, G_TYPE_OBJECT)
 
+static void
+update_composited_func (gpointer key,
+                        gpointer value,
+                        gpointer user_data)
+{
+  MetaTheme *theme;
+  MetaStyleInfo *style_info;
+
+  theme = META_THEME (user_data);
+  style_info = META_STYLE_INFO (value);
+
+  meta_style_info_set_composited (style_info, theme->composited);
+}
+
 static MetaStyleInfo *
 get_style_info (MetaTheme   *theme,
                 const gchar *variant)
@@ -693,7 +707,10 @@ meta_theme_set_composited (MetaTheme *theme,
   theme->composited = composited;
 
   meta_theme_impl_set_composited (theme->impl, composited);
-  meta_theme_invalidate (theme);
+  g_hash_table_foreach (theme->variants, update_composited_func, theme);
+
+  g_hash_table_remove_all (theme->font_descs);
+  g_hash_table_remove_all (theme->title_heights);
 }
 
 void
