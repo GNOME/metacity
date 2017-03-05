@@ -184,8 +184,6 @@ struct _MetaCompositorXRender
 
   gboolean        clip_changed;
 
-  GSList         *dock_windows;
-
   guint           repaint_id;
 
   guint           show_redraw : 1;
@@ -1385,14 +1383,15 @@ paint_dock_shadows (MetaCompositorXRender *xrender,
                     XserverRegion          region)
 {
   Display *xdisplay = xrender->xdisplay;
-  GSList *d;
+  GList *window;
 
-  for (d = xrender->dock_windows; d; d = d->next)
+  for (window = xrender->windows; window; window = window->next)
     {
-      MetaCompWindow *cw = d->data;
+      MetaCompWindow *cw = window->data;
       XserverRegion shadow_clip;
 
-      if (cw->shadow)
+      if (cw->type == META_COMP_WINDOW_DOCK &&
+          cw->needs_shadow && cw->shadow)
         {
           shadow_clip = XFixesCreateRegion (xdisplay, NULL, 0);
           XFixesIntersectRegion (xdisplay, shadow_clip,
@@ -1949,11 +1948,6 @@ free_win (MetaCompositorXRender *xrender,
           cw->damage = None;
         }
 
-      /* The window may not have been added to the list in this case,
-         but we can check anyway */
-      if (cw->type == META_COMP_WINDOW_DOCK)
-        xrender->dock_windows = g_slist_remove (xrender->dock_windows, cw);
-
       g_free (cw);
     }
 
@@ -2236,13 +2230,6 @@ add_win (MetaCompositorXRender *xrender,
 
   determine_mode (xrender, cw);
   cw->needs_shadow = window_has_shadow (xrender, cw);
-
-  /* Only add the window to the list of docks if it needs a shadow */
-  if (cw->type == META_COMP_WINDOW_DOCK && cw->needs_shadow)
-    {
-      meta_verbose ("Appending %p to dock windows\n", cw);
-      xrender->dock_windows = g_slist_append (xrender->dock_windows, cw);
-    }
 
   /* Add this to the list at the top of the stack
      before it is mapped so that map_win can find it again */
