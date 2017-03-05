@@ -752,8 +752,6 @@ meta_screen_manage_all_windows (MetaScreen *screen)
   GList *windows;
   GList *list;
 
-  meta_display_grab (screen->display);
-
   windows = list_windows (screen);
 
   meta_stack_freeze (screen->stack);
@@ -780,8 +778,6 @@ meta_screen_manage_all_windows (MetaScreen *screen)
 
   g_list_foreach (windows, (GFunc)g_free, NULL);
   g_list_free (windows);
-
-  meta_display_ungrab (screen->display);
 }
 
 void
