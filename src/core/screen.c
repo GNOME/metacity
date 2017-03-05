@@ -698,54 +698,6 @@ meta_screen_free (MetaScreen *screen,
   g_free (screen);
 }
 
-typedef struct
-{
-  Window            xwindow;
-  XWindowAttributes attrs;
-} WindowInfo;
-
-static GList *
-list_windows (MetaScreen *screen)
-{
-  Window ignored1, ignored2;
-  Window *children;
-  guint n_children, i;
-  GList *result;
-
-  XQueryTree (screen->display->xdisplay,
-              screen->xroot,
-              &ignored1, &ignored2, &children, &n_children);
-
-  result = NULL;
-  for (i = 0; i < n_children; ++i)
-    {
-      WindowInfo *info = g_new0 (WindowInfo, 1);
-
-      meta_error_trap_push (screen->display);
-
-      XGetWindowAttributes (screen->display->xdisplay,
-                            children[i], &info->attrs);
-
-      if (meta_error_trap_pop_with_return (screen->display))
-        {
-          meta_verbose ("Failed to get attributes for window 0x%lx\n",
-                        children[i]);
-          g_free (info);
-        }
-      else
-        {
-          info->xwindow = children[i];
-        }
-
-      result = g_list_prepend (result, info);
-    }
-
-  if (children)
-    XFree (children);
-
-  return g_list_reverse (result);
-}
-
 void
 meta_screen_manage_all_windows (MetaScreen *screen)
 {
@@ -775,37 +727,21 @@ void
 meta_screen_composite_all_windows (MetaScreen *screen)
 {
   MetaDisplay *display;
-  GList *windows, *list;
+  GSList *windows, *list;
 
   display = screen->display;
-
-  windows = list_windows (screen);
-
-  meta_stack_freeze (screen->stack);
+  windows = meta_display_list_windows (display, META_LIST_INCLUDE_OVERRIDE_REDIRECT);
 
   for (list = windows; list != NULL; list = list->next)
     {
-      WindowInfo *info = list->data;
       MetaWindow *window;
 
-      if (info->xwindow == screen->no_focus_window ||
-          info->xwindow == screen->flash_window ||
-          info->xwindow == screen->wm_sn_selection_window ||
-          info->xwindow == screen->wm_cm_selection_window) {
-        meta_verbose ("Not managing our own windows\n");
-        continue;
-      }
+      window = list->data;
 
-      window = meta_display_lookup_x_window (display, info->xwindow);
-
-      if (window != NULL)
-        meta_compositor_add_window (display->compositor, window);
+      meta_compositor_add_window (display->compositor, window);
     }
 
-  meta_stack_thaw (screen->stack);
-
-  g_list_foreach (windows, (GFunc)g_free, NULL);
-  g_list_free (windows);
+  g_slist_free (windows);
 
   /* initialize the compositor's view of the stacking order */
   meta_stack_tracker_sync_stack (screen->stack_tracker);
