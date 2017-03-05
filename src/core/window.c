@@ -297,14 +297,6 @@ meta_window_new (MetaDisplay    *display,
 
   meta_verbose ("Attempting to manage 0x%lx\n", xwindow);
 
-  if (attrs.override_redirect)
-    {
-      meta_verbose ("Deciding not to manage override_redirect window 0x%lx\n", xwindow);
-      meta_error_trap_pop (display);
-      meta_display_ungrab (display);
-      return NULL;
-    }
-
   if (is_our_xwindow (display, xwindow, &attrs))
     {
       meta_verbose ("Not managing our own windows\n");
@@ -413,8 +405,6 @@ meta_window_new (MetaDisplay    *display,
       meta_display_ungrab (display);
       return NULL;
     }
-
-  g_assert (!attrs.override_redirect);
 
   window = g_new (MetaWindow, 1);
 
