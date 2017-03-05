@@ -77,20 +77,6 @@ cairo_surface_t *meta_compositor_get_window_surface (MetaCompositor     *composi
 void             meta_compositor_set_active_window  (MetaCompositor     *compositor,
                                                      MetaWindow         *window);
 
-void             meta_compositor_begin_move         (MetaCompositor     *compositor,
-                                                     MetaWindow         *window,
-                                                     MetaRectangle      *initial,
-                                                     gint                grab_x,
-                                                     gint                grab_y);
-
-void             meta_compositor_update_move        (MetaCompositor     *compositor,
-                                                     MetaWindow         *window,
-                                                     gint                x,
-                                                     gint                y);
-
-void             meta_compositor_end_move           (MetaCompositor     *compositor,
-                                                     MetaWindow         *window);
-
 void             meta_compositor_maximize_window    (MetaCompositor     *compositor,
                                                      MetaWindow         *window);
 

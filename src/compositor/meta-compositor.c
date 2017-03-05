@@ -288,44 +288,6 @@ meta_compositor_set_active_window (MetaCompositor *compositor,
 }
 
 void
-meta_compositor_begin_move (MetaCompositor *compositor,
-                            MetaWindow     *window,
-                            MetaRectangle  *initial,
-                            gint            grab_x,
-                            gint            grab_y)
-{
-  MetaCompositorClass *compositor_class;
-
-  compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
-
-  compositor_class->begin_move (compositor, window, initial, grab_x, grab_y);
-}
-
-void
-meta_compositor_update_move (MetaCompositor *compositor,
-                             MetaWindow     *window,
-                             gint            x,
-                             gint            y)
-{
-  MetaCompositorClass *compositor_class;
-
-  compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
-
-  compositor_class->update_move (compositor, window, x, y);
-}
-
-void
-meta_compositor_end_move (MetaCompositor *compositor,
-                          MetaWindow     *window)
-{
-  MetaCompositorClass *compositor_class;
-
-  compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
-
-  compositor_class->end_move (compositor, window);
-}
-
-void
 meta_compositor_maximize_window (MetaCompositor *compositor,
                                  MetaWindow     *window)
 {

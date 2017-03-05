@@ -3552,13 +3552,6 @@ meta_display_begin_grab_op (MetaDisplay *display,
   MetaWindow *grab_window = NULL;
   Window grab_xwindow;
 
-  if (meta_grab_op_is_mouse (op) && meta_grab_op_is_moving (op))
-    {
-      meta_compositor_begin_move (display->compositor,
-                                  window, &window->rect,
-                                  root_x, root_y);
-    }
-
   meta_topic (META_DEBUG_WINDOW_OPS,
               "Doing grab op %u on window %s button %d pointer already grabbed: %d pointer pos %d,%d\n",
               op, window ? window->desc : "none", button, pointer_already_grabbed,
@@ -3899,13 +3892,6 @@ meta_display_end_grab_op (MetaDisplay *display,
                                              meta_resize_gravity_from_grab_op (display->grab_op));
         }
       meta_window_calc_showing (display->grab_window);
-    }
-
-  if (display->grab_window &&
-      meta_grab_op_is_mouse (display->grab_op) &&
-      meta_grab_op_is_moving (display->grab_op))
-    {
-      meta_compositor_end_move (display->compositor, display->grab_window);
     }
 
   if (display->grab_have_pointer)

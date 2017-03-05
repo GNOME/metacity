@@ -7427,7 +7427,6 @@ update_move (MetaWindow  *window,
   MetaRectangle old;
   int shake_threshold;
   MetaDisplay *display = window->display;
-  int root_x, root_y;
 
   display->grab_latest_motion_x = x;
   display->grab_latest_motion_y = y;
@@ -7641,10 +7640,6 @@ update_move (MetaWindow  *window,
                                         update_move_timeout,
                                         snap,
                                         FALSE);
-
-  root_x = new_x - display->grab_anchor_window_pos.x + display->grab_anchor_root_x;
-  root_y = new_y - display->grab_anchor_window_pos.y + display->grab_anchor_root_y;
-  meta_compositor_update_move (display->compositor, window, root_x, root_y);
 
   if (display->grab_wireframe_active)
     meta_window_update_wireframe (window, new_x, new_y,

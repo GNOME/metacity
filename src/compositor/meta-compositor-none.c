@@ -92,29 +92,6 @@ meta_compositor_none_set_active_window (MetaCompositor *compositor,
 }
 
 static void
-meta_compositor_none_begin_move (MetaCompositor *compositor,
-                                 MetaWindow     *window,
-                                 MetaRectangle  *initial,
-                                 gint            grab_x,
-                                 gint            grab_y)
-{
-}
-
-static void
-meta_compositor_none_update_move (MetaCompositor *compositor,
-                                  MetaWindow     *window,
-                                  gint            x,
-                                  gint            y)
-{
-}
-
-static void
-meta_compositor_none_end_move (MetaCompositor *compositor,
-                               MetaWindow     *window)
-{
-}
-
-static void
 meta_compositor_none_maximize_window (MetaCompositor *compositor,
                                       MetaWindow     *window)
 {
@@ -156,9 +133,6 @@ meta_compositor_none_class_init (MetaCompositorNoneClass *none_class)
   compositor_class->process_event = meta_compositor_none_process_event;
   compositor_class->get_window_surface = meta_compositor_none_get_window_surface;
   compositor_class->set_active_window = meta_compositor_none_set_active_window;
-  compositor_class->begin_move = meta_compositor_none_begin_move;
-  compositor_class->update_move = meta_compositor_none_update_move;
-  compositor_class->end_move = meta_compositor_none_end_move;
   compositor_class->maximize_window = meta_compositor_none_maximize_window;
   compositor_class->unmaximize_window = meta_compositor_none_unmaximize_window;
   compositor_class->sync_stack = meta_compositor_none_sync_stack;
