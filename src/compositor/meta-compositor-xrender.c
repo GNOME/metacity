@@ -1241,18 +1241,21 @@ get_visible_region (MetaCompWindow *cw)
 }
 
 static XRenderPictFormat *
-get_window_format (MetaCompWindow *cw)
+get_window_format (Display        *xdisplay,
+                   MetaCompWindow *cw)
 {
-  MetaScreen *screen = cw->screen;
-  MetaDisplay *display = meta_screen_get_display (screen);
-  Display *xdisplay = meta_display_get_xdisplay (display);
   XRenderPictFormat *format;
-  int screen_number = meta_screen_get_screen_number (screen);
 
   format = XRenderFindVisualFormat (xdisplay, cw->attrs.visual);
+
   if (!format)
-    format = XRenderFindVisualFormat (xdisplay,
-                                      DefaultVisual (xdisplay, screen_number));
+    {
+      Visual *visual;
+
+      visual = DefaultVisual (xdisplay, DefaultScreen (xdisplay));
+      format = XRenderFindVisualFormat (xdisplay, visual);
+    }
+
   return format;
 }
 
@@ -1281,7 +1284,7 @@ get_window_picture (MetaCompWindow *cw)
   if (cw->back_pixmap != None)
     draw = cw->back_pixmap;
 
-  format = get_window_format (cw);
+  format = get_window_format (xdisplay, cw);
   if (format)
     {
       Picture pict;
