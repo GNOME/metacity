@@ -1856,7 +1856,7 @@ event_callback (XEvent   *event,
         }
     }
 
-  if (window && window && !window->override_redirect &&
+  if (window && !window->override_redirect &&
       ((event->type == KeyPress) || (event->type == ButtonPress)))
     {
       if (CurrentTime == display->current_time)
