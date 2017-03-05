@@ -797,8 +797,9 @@ meta_screen_composite_all_windows (MetaScreen *screen)
       }
 
       window = meta_display_lookup_x_window (display, info->xwindow);
-      meta_compositor_add_window (display->compositor, window,
-                                  info->xwindow);
+
+      if (window != NULL)
+        meta_compositor_add_window (display->compositor, window);
     }
 
   meta_stack_thaw (screen->stack);

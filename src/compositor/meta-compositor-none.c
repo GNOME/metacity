@@ -40,8 +40,7 @@ meta_compositor_none_unmanage (MetaCompositor *compositor)
 
 static void
 meta_compositor_none_add_window (MetaCompositor *compositor,
-                                 MetaWindow     *window,
-                                 Window          xwindow)
+                                 MetaWindow     *window)
 {
 }
 

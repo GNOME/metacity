@@ -197,14 +197,13 @@ meta_compositor_new (MetaCompositorType  type,
 
 void
 meta_compositor_add_window (MetaCompositor *compositor,
-                            MetaWindow     *window,
-                            Window          xwindow)
+                            MetaWindow     *window)
 {
   MetaCompositorClass *compositor_class;
 
   compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
 
-  compositor_class->add_window (compositor, window, xwindow);
+  compositor_class->add_window (compositor, window);
 }
 
 void

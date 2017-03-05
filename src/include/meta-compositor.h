@@ -50,8 +50,7 @@ MetaCompositor  *meta_compositor_new                (MetaCompositorType  type,
                                                      MetaDisplay        *display);
 
 void             meta_compositor_add_window         (MetaCompositor     *compositor,
-                                                     MetaWindow         *window,
-                                                     Window              xwindow);
+                                                     MetaWindow         *window);
 
 void             meta_compositor_remove_window      (MetaCompositor     *compositor,
                                                      MetaWindow         *window);

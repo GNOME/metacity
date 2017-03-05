@@ -33,8 +33,7 @@ struct _MetaCompositorClass
   void              (* unmanage)           (MetaCompositor     *compositor);
 
   void              (* add_window)         (MetaCompositor     *compositor,
-                                            MetaWindow         *window,
-                                            Window              xwindow);
+                                            MetaWindow         *window);
 
   void              (* remove_window)      (MetaCompositor     *compositor,
                                             MetaWindow         *window);
