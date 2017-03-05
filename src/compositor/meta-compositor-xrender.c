@@ -2713,27 +2713,6 @@ process_reparent (MetaCompositorXRender *xrender,
 }
 
 static void
-process_create (MetaCompositorXRender *xrender,
-                XCreateWindowEvent    *event,
-                MetaWindow            *window)
-{
-  MetaCompositor *compositor = META_COMPOSITOR (xrender);
-  MetaDisplay *display = meta_compositor_get_display (compositor);
-  MetaScreen *screen;
-
-  /* We are only interested in top level windows, others will be caught
-   * by normal metacity functions.
-   */
-
-  screen = meta_display_screen_for_root (display, event->parent);
-  if (screen == NULL)
-    return;
-
-  if (!find_window (xrender, event->window))
-    add_win (xrender, screen, window, event->window);
-}
-
-static void
 process_destroy (MetaCompositorXRender *xrender,
                  XDestroyWindowEvent   *event)
 {
@@ -3132,10 +3111,6 @@ meta_compositor_xrender_process_event (MetaCompositor *compositor,
 
     case ReparentNotify:
       process_reparent (xrender, (XReparentEvent *) event, window);
-      break;
-
-    case CreateNotify:
-      process_create (xrender, (XCreateWindowEvent *) event, window);
       break;
 
     case DestroyNotify:
