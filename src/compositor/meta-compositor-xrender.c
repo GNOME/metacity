@@ -2499,33 +2499,6 @@ resize_win (MetaCompositorXRender *xrender,
 
 /* event processors must all be called with an error trap in place */
 static void
-process_circulate_notify (MetaCompositorXRender *xrender,
-                          XCirculateEvent       *event)
-{
-  MetaCompWindow *cw = find_window (xrender, event->window);
-  MetaCompWindow *top;
-  GList *first;
-  Window above;
-
-  if (!cw)
-    return;
-
-  first = xrender->windows;
-  top = (MetaCompWindow *) first->data;
-
-  if ((event->place == PlaceOnTop) && top)
-    above = top->id;
-  else
-    above = None;
-
-  restack_win (xrender, cw, above);
-
-  xrender->clip_changed = TRUE;
-
-  add_repair (xrender);
-}
-
-static void
 process_configure_notify (MetaCompositorXRender *xrender,
                           XConfigureEvent       *event)
 {
@@ -3131,10 +3104,6 @@ meta_compositor_xrender_process_event (MetaCompositor *compositor,
 
   switch (event->type)
     {
-    case CirculateNotify:
-      process_circulate_notify (xrender, (XCirculateEvent *) event);
-      break;
-
     case ConfigureNotify:
       process_configure_notify (xrender, (XConfigureEvent *) event);
       break;
@@ -3493,6 +3462,48 @@ meta_compositor_xrender_unmaximize_window (MetaCompositor *compositor,
   cw->needs_shadow = window_has_shadow (xrender, cw);
 }
 
+static void
+meta_compositor_xrender_sync_stack (MetaCompositor *compositor,
+                                    GList          *stack)
+{
+  MetaCompositorXRender *xrender;
+  GList *tmp;
+
+  xrender = META_COMPOSITOR_XRENDER (compositor);
+
+  for (tmp = stack; tmp != NULL; tmp = tmp->next)
+    {
+      MetaWindow *window;
+      MetaFrame *frame;
+      Window xwindow;
+      MetaCompWindow *cw;
+
+      window = (MetaWindow *) tmp->data;
+      frame = meta_window_get_frame (window);
+
+      if (frame)
+        xwindow = meta_frame_get_xwindow (frame);
+      else
+        xwindow = meta_window_get_xwindow (window);
+
+      cw = find_window (xrender, xwindow);
+
+      if (cw == NULL)
+        {
+          g_warning ("Failed to find MetaCompWindow for MetaWindow %p", window);
+          continue;
+        }
+
+      xrender->windows = g_list_remove (xrender->windows, cw);
+      xrender->windows = g_list_prepend (xrender->windows, cw);
+    }
+
+  xrender->windows = g_list_reverse (xrender->windows);
+  xrender->clip_changed = TRUE;
+
+  add_repair (xrender);
+}
+
 static gboolean
 meta_compositor_xrender_is_our_xwindow (MetaCompositor *compositor,
                                         Window          xwindow)
@@ -3533,6 +3544,7 @@ meta_compositor_xrender_class_init (MetaCompositorXRenderClass *xrender_class)
   compositor_class->end_move = meta_compositor_xrender_end_move;
   compositor_class->maximize_window = meta_compositor_xrender_maximize_window;
   compositor_class->unmaximize_window = meta_compositor_xrender_unmaximize_window;
+  compositor_class->sync_stack = meta_compositor_xrender_sync_stack;
   compositor_class->is_our_xwindow = meta_compositor_xrender_is_our_xwindow;
 }
 

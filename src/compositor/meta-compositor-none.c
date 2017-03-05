@@ -127,6 +127,12 @@ meta_compositor_none_unmaximize_window (MetaCompositor *compositor,
 {
 }
 
+static void
+meta_compositor_none_sync_stack (MetaCompositor *compositor,
+                                 GList          *stack)
+{
+}
+
 static gboolean
 meta_compositor_none_is_our_xwindow (MetaCompositor *compositor,
                                      Window          xwindow)
@@ -156,6 +162,7 @@ meta_compositor_none_class_init (MetaCompositorNoneClass *none_class)
   compositor_class->end_move = meta_compositor_none_end_move;
   compositor_class->maximize_window = meta_compositor_none_maximize_window;
   compositor_class->unmaximize_window = meta_compositor_none_unmaximize_window;
+  compositor_class->sync_stack = meta_compositor_none_sync_stack;
   compositor_class->is_our_xwindow = meta_compositor_none_is_our_xwindow;
 }
 

@@ -352,6 +352,11 @@ void
 meta_compositor_sync_stack (MetaCompositor *compositor,
                             GList          *stack)
 {
+  MetaCompositorClass *compositor_class;
+
+  compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
+
+  compositor_class->sync_stack (compositor, stack);
 }
 
 gboolean
