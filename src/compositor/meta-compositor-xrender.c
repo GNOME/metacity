@@ -102,7 +102,6 @@ typedef struct _shadow
 
 typedef struct _MetaCompWindow
 {
-  MetaScreen *screen;
   MetaWindow *window; /* May be NULL if this window isn't managed by Metacity */
   Window id;
   XWindowAttributes attrs;
@@ -1111,15 +1110,14 @@ win_extents (MetaCompositorXRender *xrender,
 }
 
 static XserverRegion
-get_window_region (MetaCompWindow *cw)
+get_window_region (MetaDisplay    *display,
+                   MetaCompWindow *cw)
 {
-  MetaDisplay *display;
   Display *xdisplay;
   XserverRegion region;
   int x;
   int y;
 
-  display = meta_screen_get_display (cw->screen);
   xdisplay = meta_display_get_xdisplay (display);
 
   meta_error_trap_push (display);
@@ -1138,14 +1136,13 @@ get_window_region (MetaCompWindow *cw)
 }
 
 static XserverRegion
-get_client_region (MetaCompWindow *cw)
+get_client_region (MetaDisplay    *display,
+                   MetaCompWindow *cw)
 {
-  MetaDisplay *display;
   Display *xdisplay;
   XserverRegion region;
   MetaFrame *frame;
 
-  display = meta_screen_get_display (cw->screen);
   xdisplay = meta_display_get_xdisplay (display);
 
   if (cw->window_region != None)
@@ -1155,7 +1152,7 @@ get_client_region (MetaCompWindow *cw)
     }
   else
     {
-      region = get_window_region (cw);
+      region = get_window_region (display, cw);
       if (region == None)
         return None;
     }
@@ -1194,13 +1191,12 @@ get_client_region (MetaCompWindow *cw)
 }
 
 static XserverRegion
-get_visible_region (MetaCompWindow *cw)
+get_visible_region (MetaDisplay    *display,
+                    MetaCompWindow *cw)
 {
-  MetaDisplay *display;
   Display *xdisplay;
   XserverRegion region;
 
-  display = meta_screen_get_display (cw->screen);
   xdisplay = meta_display_get_xdisplay (display);
 
   if (cw->window_region != None)
@@ -1210,7 +1206,7 @@ get_visible_region (MetaCompWindow *cw)
     }
   else
     {
-      region = get_window_region (cw);
+      region = get_window_region (display, cw);
       if (region == None)
         return None;
     }
@@ -1260,10 +1256,9 @@ get_window_format (Display        *xdisplay,
 }
 
 static Picture
-get_window_picture (MetaCompWindow *cw)
+get_window_picture (MetaDisplay    *display,
+                    MetaCompWindow *cw)
 {
-  MetaScreen *screen = cw->screen;
-  MetaDisplay *display = meta_screen_get_display (screen);
   Display *xdisplay = meta_display_get_xdisplay (display);
   XRenderPictureAttributes pa;
   XRenderPictFormat *format;
@@ -1302,10 +1297,10 @@ get_window_picture (MetaCompWindow *cw)
 }
 
 static Picture
-get_window_mask (MetaCompWindow *cw)
+get_window_mask (MetaDisplay    *display,
+                 MetaCompWindow *cw)
 {
   MetaFrame *frame;
-  MetaDisplay *display;
   Display *xdisplay;
   int width;
   int height;
@@ -1321,7 +1316,6 @@ get_window_mask (MetaCompWindow *cw)
   if (frame == NULL)
     return None;
 
-  display = meta_screen_get_display (cw->screen);
   xdisplay = meta_display_get_xdisplay (display);
   width = cw->attrs.width + cw->attrs.border_width * 2;
   height = cw->attrs.height + cw->attrs.border_width * 2;
@@ -1483,10 +1477,10 @@ paint_windows (MetaCompositorXRender *xrender,
 #endif
 
       if (cw->picture == None)
-        cw->picture = get_window_picture (cw);
+        cw->picture = get_window_picture (display, cw);
 
       if (cw->mask == None)
-        cw->mask = get_window_mask (cw);
+        cw->mask = get_window_mask (display, cw);
 
       /* If the clip region of the screen has been changed
          then we need to recreate the extents of the window */
@@ -1520,13 +1514,13 @@ paint_windows (MetaCompositorXRender *xrender,
         }
 
       if (cw->window_region == None)
-        cw->window_region = get_window_region (cw);
+        cw->window_region = get_window_region (display, cw);
 
       if (cw->visible_region == None)
-        cw->visible_region = get_visible_region (cw);
+        cw->visible_region = get_visible_region (display, cw);
 
       if (cw->client_region == None)
-        cw->client_region = get_client_region (cw);
+        cw->client_region = get_client_region (display, cw);
 
       if (cw->extents == None)
         cw->extents = win_extents (xrender, cw);
@@ -1863,7 +1857,7 @@ free_win (MetaCompositorXRender *xrender,
           MetaCompWindow        *cw,
           gboolean               destroy)
 {
-  MetaDisplay *display = meta_screen_get_display (cw->screen);
+  MetaDisplay *display = meta_screen_get_display (xrender->screen);
   Display *xdisplay = meta_display_get_xdisplay (display);
 
   meta_error_trap_push (display);
@@ -2184,7 +2178,6 @@ add_win (MetaCompositorXRender *xrender,
     return;
 
   cw = g_new0 (MetaCompWindow, 1);
-  cw->screen = xrender->screen;
   cw->window = window;
   cw->id = xwindow;
 
@@ -2321,8 +2314,7 @@ resize_win (MetaCompositorXRender *xrender,
             int                    border_width,
             gboolean               override_redirect)
 {
-  MetaScreen *screen = cw->screen;
-  MetaDisplay *display = meta_screen_get_display (screen);
+  MetaDisplay *display = meta_screen_get_display (xrender->screen);
   Display *xdisplay = meta_display_get_xdisplay (display);
   XserverRegion damage;
   XserverRegion shape;
@@ -2338,18 +2330,6 @@ resize_win (MetaCompositorXRender *xrender,
       if (xrender->debug)
         fprintf (stderr, "no extents to damage !\n");
     }
-
-  /*  { // Damage whole screen each time ! ;-)
-    XRectangle r;
-
-    r.x = 0;
-    r.y = 0;
-    meta_screen_get_size (screen, &r.width, &r.height);
-    fprintf (stderr, "Damage whole screen %d,%d (%d %d)\n",
-             r.x, r.y, r.width, r.height);
-
-    damage = XFixesCreateRegion (xdisplay, &r, 1);
-    } */
 
   if (cw->attrs.width != width || cw->attrs.height != height)
     {
