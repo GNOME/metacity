@@ -749,35 +749,26 @@ list_windows (MetaScreen *screen)
 void
 meta_screen_manage_all_windows (MetaScreen *screen)
 {
-  GList *windows;
-  GList *list;
-
-  windows = list_windows (screen);
+  Window *windows;
+  int n_windows;
+  Window *xwindows;
+  int i;
 
   meta_stack_freeze (screen->stack);
-  for (list = windows; list != NULL; list = list->next)
+  meta_stack_tracker_get_stack (screen->stack_tracker, &windows, &n_windows);
+
+  /* Copy the stack as it will be modified as part of the loop */
+  xwindows = g_memdup (windows, sizeof (Window) * n_windows);
+
+  for (i = 0; i < n_windows; i++)
     {
-      WindowInfo *info = list->data;
-      MetaWindow *window;
-
-      window = meta_window_new (screen->display, info->xwindow, TRUE,
-                                META_EFFECT_TYPE_NONE);
-
-      if (info->xwindow == screen->no_focus_window ||
-          info->xwindow == screen->flash_window ||
-          info->xwindow == screen->wm_cm_selection_window ||
-          info->xwindow == screen->wm_sn_selection_window) {
-        meta_verbose ("Not managing our own windows\n");
-        continue;
-      }
-
-      meta_compositor_add_window (screen->display->compositor, window,
-                                  info->xwindow);
+      meta_window_new (screen->display, xwindows[i], TRUE,
+                       META_EFFECT_TYPE_NONE);
     }
-  meta_stack_thaw (screen->stack);
 
-  g_list_foreach (windows, (GFunc)g_free, NULL);
-  g_list_free (windows);
+  g_free (xwindows);
+
+  meta_stack_thaw (screen->stack);
 }
 
 void
