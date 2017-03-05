@@ -2168,11 +2168,10 @@ get_window_type (MetaDisplay    *display,
 /* Must be called with an error trap in place */
 static void
 add_win (MetaCompositorXRender *xrender,
-         MetaScreen            *screen,
          MetaWindow            *window,
          Window                 xwindow)
 {
-  MetaDisplay *display = meta_screen_get_display (screen);
+  MetaDisplay *display = meta_screen_get_display (xrender->screen);
   Display *xdisplay = meta_display_get_xdisplay (display);
   MetaCompWindow *cw;
   gulong event_mask;
@@ -2185,7 +2184,7 @@ add_win (MetaCompositorXRender *xrender,
     return;
 
   cw = g_new0 (MetaCompWindow, 1);
-  cw->screen = screen;
+  cw->screen = xrender->screen;
   cw->window = window;
   cw->id = xwindow;
 
@@ -2955,7 +2954,6 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
                                     MetaWindow     *window)
 {
   MetaCompositorXRender *xrender = META_COMPOSITOR_XRENDER (compositor);
-  MetaDisplay *display = meta_compositor_get_display (compositor);
   MetaFrame *frame = meta_window_get_frame (window);
   Window xwindow;
 
@@ -2965,7 +2963,7 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
     xwindow = meta_window_get_xwindow (window);
 
   meta_error_trap_push (NULL);
-  add_win (xrender, display->screen, window, xwindow);
+  add_win (xrender, window, xwindow);
   meta_error_trap_pop (NULL);
 }
 
