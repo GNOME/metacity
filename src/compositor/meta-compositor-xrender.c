@@ -2697,22 +2697,6 @@ process_map (MetaCompositorXRender *xrender,
 }
 
 static void
-process_reparent (MetaCompositorXRender *xrender,
-                  XReparentEvent        *event,
-                  MetaWindow            *window)
-{
-  MetaCompositor *compositor = META_COMPOSITOR (xrender);
-  MetaDisplay *display = meta_compositor_get_display (compositor);
-  MetaScreen *screen;
-
-  screen = meta_display_screen_for_root (display, event->parent);
-  if (screen != NULL)
-    add_win (xrender, screen, window, event->window);
-  else
-    destroy_win (xrender, event->window);
-}
-
-static void
 process_destroy (MetaCompositorXRender *xrender,
                  XDestroyWindowEvent   *event)
 {
@@ -3107,10 +3091,6 @@ meta_compositor_xrender_process_event (MetaCompositor *compositor,
 
     case MapNotify:
       process_map (xrender, (XMapEvent *) event);
-      break;
-
-    case ReparentNotify:
-      process_reparent (xrender, (XReparentEvent *) event, window);
       break;
 
     case DestroyNotify:
