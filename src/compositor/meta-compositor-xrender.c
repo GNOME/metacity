@@ -2265,30 +2265,6 @@ add_win (MetaCompositorXRender *xrender,
 }
 
 static void
-destroy_win (MetaCompositorXRender *xrender,
-             Window                 xwindow)
-{
-  MetaCompWindow *cw;
-
-  cw = find_window (xrender, xwindow);
-
-  if (cw == NULL)
-    return;
-
-  if (cw->extents != None)
-    {
-      dump_xserver_region (xrender, "destroy_win", cw->extents);
-      add_damage (xrender, cw->extents);
-      cw->extents = None;
-    }
-
-  xrender->windows = g_list_remove (xrender->windows, (gconstpointer) cw);
-  g_hash_table_remove (xrender->windows_by_xid, (gpointer) xwindow);
-
-  free_win (xrender, cw, TRUE);
-}
-
-static void
 restack_win (MetaCompositorXRender *xrender,
              MetaCompWindow        *cw,
              Window                 above)
@@ -2697,13 +2673,6 @@ process_map (MetaCompositorXRender *xrender,
 }
 
 static void
-process_destroy (MetaCompositorXRender *xrender,
-                 XDestroyWindowEvent   *event)
-{
-  destroy_win (xrender, event->window);
-}
-
-static void
 process_damage (MetaCompositorXRender *xrender,
                 XDamageNotifyEvent    *event)
 {
@@ -3018,18 +2987,17 @@ meta_compositor_xrender_remove_window (MetaCompositor *compositor,
   if (cw == NULL)
     return;
 
-  cw->window = NULL;
-  cw->attrs.map_state = IsUnmapped;
-  cw->damaged = FALSE;
-
   if (cw->extents != None)
     {
-      dump_xserver_region (xrender, "destroy_win", cw->extents);
+      dump_xserver_region (xrender, "remove_window", cw->extents);
       add_damage (xrender, cw->extents);
       cw->extents = None;
     }
 
-  free_win (xrender, cw, FALSE);
+  xrender->windows = g_list_remove (xrender->windows, (gconstpointer) cw);
+  g_hash_table_remove (xrender->windows_by_xid, (gpointer) xwindow);
+
+  free_win (xrender, cw, TRUE);
 }
 
 static void
@@ -3091,10 +3059,6 @@ meta_compositor_xrender_process_event (MetaCompositor *compositor,
 
     case MapNotify:
       process_map (xrender, (XMapEvent *) event);
-      break;
-
-    case DestroyNotify:
-      process_destroy (xrender, (XDestroyWindowEvent *) event);
       break;
 
     default:
