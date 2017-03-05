@@ -1883,7 +1883,7 @@ event_callback (XEvent   *event,
       meta_display_process_key_event (display, window, event);
       break;
     case ButtonPress:
-      if ((window &&
+      if ((window && !window->override_redirect &&
            meta_grab_op_is_mouse (display->grab_op) &&
            display->grab_button != (int) event->xbutton.button &&
            display->grab_window == window) ||
@@ -1907,7 +1907,8 @@ event_callback (XEvent   *event,
           meta_display_end_grab_op (display,
                                     event->xbutton.time);
         }
-      else if (window && display->grab_op == META_GRAB_OP_NONE)
+      else if (window && !window->override_redirect &&
+               display->grab_op == META_GRAB_OP_NONE)
         {
           gboolean begin_move = FALSE;
           unsigned int grab_mask;
