@@ -906,8 +906,7 @@ root_tile (MetaScreen *screen)
 }
 
 static Picture
-create_root_buffer (MetaCompositorXRender *xrender,
-                    MetaScreen            *screen)
+create_root_buffer (MetaCompositorXRender *xrender)
 {
   Display *xdisplay = xrender->xdisplay;
   Picture pict;
@@ -916,8 +915,8 @@ create_root_buffer (MetaCompositorXRender *xrender,
   Visual *visual;
   int depth, screen_width, screen_height, screen_number;
 
-  meta_screen_get_size (screen, &screen_width, &screen_height);
-  screen_number = meta_screen_get_screen_number (screen);
+  meta_screen_get_size (xrender->screen, &screen_width, &screen_height);
+  screen_number = meta_screen_get_screen_number (xrender->screen);
   visual = DefaultVisual (xdisplay, screen_number);
   depth = DefaultDepth (xdisplay, screen_number);
 
@@ -937,7 +936,6 @@ create_root_buffer (MetaCompositorXRender *xrender,
 
 static void
 paint_root (MetaCompositorXRender *xrender,
-            MetaScreen            *screen,
             Picture                root_buffer)
 {
   int width, height;
@@ -946,11 +944,11 @@ paint_root (MetaCompositorXRender *xrender,
 
   if (xrender->root_tile == None)
     {
-      xrender->root_tile = root_tile (screen);
+      xrender->root_tile = root_tile (xrender->screen);
       g_return_if_fail (xrender->root_tile != None);
     }
 
-  meta_screen_get_size (screen, &width, &height);
+  meta_screen_get_size (xrender->screen, &width, &height);
   XRenderComposite (xrender->xdisplay, PictOpSrc,
                     xrender->root_tile, None, root_buffer,
                     0, 0, 0, 0, 0, 0, width, height);
@@ -1415,19 +1413,18 @@ paint_dock_shadows (MetaCompositorXRender *xrender,
 
 static void
 paint_windows (MetaCompositorXRender *xrender,
-               MetaScreen            *screen,
                GList                 *windows,
                Picture                root_buffer,
                XserverRegion          region)
 {
-  MetaDisplay *display = meta_screen_get_display (screen);
+  MetaDisplay *display = meta_screen_get_display (xrender->screen);
   Display *xdisplay = meta_display_get_xdisplay (display);
   GList *index, *last;
   int screen_width, screen_height;
   MetaCompWindow *cw;
   XserverRegion paint_region, desktop_region;
 
-  meta_screen_get_size (screen, &screen_width, &screen_height);
+  meta_screen_get_size (xrender->screen, &screen_width, &screen_height);
 
   if (region == None)
     {
@@ -1573,7 +1570,7 @@ paint_windows (MetaCompositorXRender *xrender,
     }
 
   XFixesSetPictureClipRegion (xdisplay, root_buffer, 0, 0, paint_region);
-  paint_root (xrender, screen, root_buffer);
+  paint_root (xrender, root_buffer);
 
   paint_dock_shadows (xrender, root_buffer,
                       desktop_region == None ? paint_region : desktop_region);
@@ -1687,17 +1684,16 @@ paint_windows (MetaCompositorXRender *xrender,
 
 static void
 paint_all (MetaCompositorXRender *xrender,
-           MetaScreen            *screen,
            XserverRegion          region)
 {
-  MetaDisplay *display = meta_screen_get_display (screen);
+  MetaDisplay *display = meta_screen_get_display (xrender->screen);
   Display *xdisplay = meta_display_get_xdisplay (display);
   int screen_width, screen_height;
 
   /* Set clipping to the given region */
   XFixesSetPictureClipRegion (xdisplay, xrender->root_picture, 0, 0, region);
 
-  meta_screen_get_size (screen, &screen_width, &screen_height);
+  meta_screen_get_size (xrender->screen, &screen_width, &screen_height);
 
   if (xrender->show_redraw)
     {
@@ -1719,9 +1715,9 @@ paint_all (MetaCompositorXRender *xrender,
     }
 
   if (xrender->root_buffer == None)
-    xrender->root_buffer = create_root_buffer (xrender, screen);
+    xrender->root_buffer = create_root_buffer (xrender);
 
-  paint_windows (xrender, screen, xrender->windows, xrender->root_buffer, region);
+  paint_windows (xrender, xrender->windows, xrender->root_buffer, region);
 
   XFixesSetPictureClipRegion (xdisplay, xrender->root_buffer, 0, 0, region);
   XRenderComposite (xdisplay, PictOpSrc, xrender->root_buffer, None,
@@ -1735,13 +1731,12 @@ repair_display (MetaCompositorXRender *xrender)
   MetaCompositor *compositor = META_COMPOSITOR (xrender);
   MetaDisplay *display = meta_compositor_get_display (compositor);
   Display *xdisplay = meta_display_get_xdisplay (display);
-  MetaScreen *screen = meta_display_get_screen (display);
 
   if (xrender->all_damage != None)
     {
       meta_error_trap_push (display);
 
-      paint_all (xrender, screen, xrender->all_damage);
+      paint_all (xrender, xrender->all_damage);
       XFixesDestroyRegion (xdisplay, xrender->all_damage);
       xrender->all_damage = None;
       xrender->clip_changed = FALSE;
@@ -1799,8 +1794,7 @@ add_damage (MetaCompositorXRender *xrender,
 }
 
 static void
-damage_screen (MetaCompositorXRender *xrender,
-               MetaScreen            *screen)
+damage_screen (MetaCompositorXRender *xrender)
 {
   MetaCompositor *compositor = META_COMPOSITOR (xrender);
   MetaDisplay *display = meta_compositor_get_display (compositor);
@@ -1811,7 +1805,7 @@ damage_screen (MetaCompositorXRender *xrender,
 
   r.x = 0;
   r.y = 0;
-  meta_screen_get_size (screen, &width, &height);
+  meta_screen_get_size (xrender->screen, &width, &height);
   r.width = width;
   r.height = height;
 
@@ -2495,7 +2489,7 @@ process_configure_notify (MetaCompositorXRender *xrender,
           xrender->root_buffer = None;
         }
 
-      damage_screen (xrender, screen);
+      damage_screen (xrender);
     }
 }
 
@@ -2525,7 +2519,7 @@ process_property_notify (MetaCompositorXRender *xrender,
 
               /* Damage the whole screen as we may need to redraw the
                  background ourselves */
-              damage_screen (xrender, screen);
+              damage_screen (xrender);
 
               add_repair (xrender);
 
@@ -2746,7 +2740,6 @@ update_shadows (MetaPreference pref,
 
 static void
 show_overlay_window (MetaCompositorXRender *xrender,
-                     MetaScreen            *screen,
                      Display               *xdisplay)
 {
   XserverRegion region;
@@ -2761,7 +2754,7 @@ show_overlay_window (MetaCompositorXRender *xrender,
 
   XFixesDestroyRegion (xdisplay, region);
 
-  damage_screen (xrender, screen);
+  damage_screen (xrender);
 }
 
 static void
@@ -2877,7 +2870,7 @@ meta_compositor_xrender_manage (MetaCompositor  *compositor,
 
   meta_screen_set_cm_selection (screen);
 
-  show_overlay_window (xrender, screen, xdisplay);
+  show_overlay_window (xrender, xdisplay);
 
   meta_prefs_add_listener (update_shadows, xrender);
 
