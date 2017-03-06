@@ -65,6 +65,12 @@ meta_compositor_none_hide_window (MetaCompositor *compositor,
 }
 
 static void
+meta_compositor_none_window_opacity_changed (MetaCompositor *compositor,
+                                             MetaWindow     *window)
+{
+}
+
+static void
 meta_compositor_none_set_updates_frozen (MetaCompositor *compositor,
                                          MetaWindow     *window,
                                          gboolean        updates_frozen)
@@ -129,6 +135,7 @@ meta_compositor_none_class_init (MetaCompositorNoneClass *none_class)
   compositor_class->remove_window = meta_compositor_none_remove_window;
   compositor_class->show_window = meta_compositor_none_show_window;
   compositor_class->hide_window = meta_compositor_none_hide_window;
+  compositor_class->window_opacity_changed = meta_compositor_none_window_opacity_changed;
   compositor_class->set_updates_frozen = meta_compositor_none_set_updates_frozen;
   compositor_class->process_event = meta_compositor_none_process_event;
   compositor_class->get_window_surface = meta_compositor_none_get_window_surface;

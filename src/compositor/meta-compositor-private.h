@@ -27,50 +27,53 @@ struct _MetaCompositorClass
 {
   GObjectClass parent_class;
 
-  gboolean          (* manage)             (MetaCompositor     *compositor,
-                                            GError            **error);
+  gboolean          (* manage)                 (MetaCompositor     *compositor,
+                                                GError            **error);
 
-  void              (* unmanage)           (MetaCompositor     *compositor);
+  void              (* unmanage)               (MetaCompositor     *compositor);
 
-  void              (* add_window)         (MetaCompositor     *compositor,
-                                            MetaWindow         *window);
+  void              (* add_window)             (MetaCompositor     *compositor,
+                                                MetaWindow         *window);
 
-  void              (* remove_window)      (MetaCompositor     *compositor,
-                                            MetaWindow         *window);
+  void              (* remove_window)          (MetaCompositor     *compositor,
+                                                MetaWindow         *window);
 
-  void              (* show_window)        (MetaCompositor     *compositor,
-                                            MetaWindow         *window,
-                                            MetaEffectType      effect);
+  void              (* show_window)            (MetaCompositor     *compositor,
+                                                MetaWindow         *window,
+                                                MetaEffectType      effect);
 
-  void              (* hide_window)        (MetaCompositor     *compositor,
-                                            MetaWindow         *window,
-                                            MetaEffectType      effect);
+  void              (* hide_window)            (MetaCompositor     *compositor,
+                                                MetaWindow         *window,
+                                                MetaEffectType      effect);
 
-  void              (* set_updates_frozen) (MetaCompositor     *compositor,
-                                            MetaWindow         *window,
-                                            gboolean            updates_frozen);
+  void              (* window_opacity_changed) (MetaCompositor     *compositor,
+                                                MetaWindow         *window);
 
-  void              (* process_event)      (MetaCompositor     *compositor,
-                                            XEvent             *event,
-                                            MetaWindow         *window);
+  void              (* set_updates_frozen)     (MetaCompositor     *compositor,
+                                                MetaWindow         *window,
+                                                gboolean            updates_frozen);
 
-  cairo_surface_t * (* get_window_surface) (MetaCompositor     *compositor,
-                                            MetaWindow         *window);
+  void              (* process_event)          (MetaCompositor     *compositor,
+                                                XEvent             *event,
+                                                MetaWindow         *window);
 
-  void              (* set_active_window)  (MetaCompositor     *compositor,
-                                            MetaWindow         *window);
+  cairo_surface_t * (* get_window_surface)     (MetaCompositor     *compositor,
+                                                MetaWindow         *window);
 
-  void              (* maximize_window)    (MetaCompositor     *compositor,
-                                            MetaWindow         *window);
+  void              (* set_active_window)      (MetaCompositor     *compositor,
+                                                MetaWindow         *window);
 
-  void              (* unmaximize_window)  (MetaCompositor     *compositor,
-                                            MetaWindow         *window);
+  void              (* maximize_window)        (MetaCompositor     *compositor,
+                                                MetaWindow         *window);
 
-  void              (* sync_stack)         (MetaCompositor     *compositor,
-                                            GList              *stack);
+  void              (* unmaximize_window)      (MetaCompositor     *compositor,
+                                                MetaWindow         *window);
 
-  gboolean          (* is_our_xwindow)     (MetaCompositor     *compositor,
-                                            Window              xwindow);
+  void              (* sync_stack)             (MetaCompositor     *compositor,
+                                                GList              *stack);
+
+  gboolean          (* is_our_xwindow)         (MetaCompositor     *compositor,
+                                                Window              xwindow);
 };
 
 MetaDisplay *meta_compositor_get_display (MetaCompositor *compositor);
