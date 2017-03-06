@@ -2151,51 +2151,6 @@ add_win (MetaCompositorXRender *xrender,
 }
 
 static void
-restack_win (MetaCompositorXRender *xrender,
-             MetaCompWindow        *cw,
-             Window                 above)
-{
-  Window previous_above;
-  GList *sibling, *next;
-
-  sibling = g_list_find (xrender->windows, (gconstpointer) cw);
-  next = g_list_next (sibling);
-  previous_above = None;
-
-  if (next)
-    {
-      MetaCompWindow *ncw = (MetaCompWindow *) next->data;
-      previous_above = ncw->id;
-    }
-
-  /* If above is set to None, the window whose state was changed is on
-   * the bottom of the stack with respect to sibling.
-   */
-  if (above == None)
-    {
-      /* Insert at bottom of window stack */
-      xrender->windows = g_list_delete_link (xrender->windows, sibling);
-      xrender->windows = g_list_append (xrender->windows, cw);
-    }
-  else if (previous_above != above)
-    {
-      GList *index;
-
-      for (index = xrender->windows; index; index = index->next) {
-        MetaCompWindow *cw2 = (MetaCompWindow *) index->data;
-        if (cw2->id == above)
-          break;
-      }
-
-      if (index != NULL)
-        {
-          xrender->windows = g_list_delete_link (xrender->windows, sibling);
-          xrender->windows = g_list_insert_before (xrender->windows, index, cw);
-        }
-    }
-}
-
-static void
 resize_win (MetaCompositorXRender *xrender,
             MetaCompWindow        *cw,
             int                    x,
@@ -2367,7 +2322,6 @@ process_configure_notify (MetaCompositorXRender *xrender,
                    event->x, event->y, event->width, event->height);
         }
 
-      restack_win (xrender, cw, event->above);
       resize_win (xrender, cw, event->x, event->y, event->width, event->height,
                   event->border_width, event->override_redirect);
     }
