@@ -1726,6 +1726,27 @@ reload_gtk_theme_variant (MetaWindow    *window,
     }
 }
 
+static void
+reload_window_opacity (MetaWindow    *window,
+                       MetaPropValue *value,
+                       gboolean       initial)
+
+{
+  guint opacity;
+
+  opacity = 0xffffffff;
+
+  if (value->type != META_PROP_VALUE_INVALID)
+    opacity = value->v.cardinal;
+
+  if (window->opacity == opacity)
+    return;
+
+  window->opacity = opacity;
+
+  meta_compositor_window_opacity_changed (window->display->compositor, window);
+}
+
 /**
  * Initialises the property hooks system.  Each row in the table named "hooks"
  * represents an action to take when a property is found on a newly-created
@@ -1924,6 +1945,12 @@ meta_display_init_window_prop_hooks (MetaDisplay *display)
       META_PROP_VALUE_INVALID,
       reload_struts,
       NONE
+    },
+    {
+      display->atom__NET_WM_WINDOW_OPACITY,
+      META_PROP_VALUE_CARDINAL,
+      reload_window_opacity,
+      LOAD_INIT | INCLUDE_OR
     },
     {
       0

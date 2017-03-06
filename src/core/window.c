@@ -529,6 +529,7 @@ meta_window_new (MetaDisplay    *display,
   window->attached = FALSE;
   window->frame_bounds = NULL;
   window->opaque_region = NULL;
+  window->opacity = 0xffffffff;
 
   window->unmaps_pending = 0;
 
