@@ -2056,7 +2056,6 @@ add_win (MetaCompositorXRender *xrender,
   MetaDisplay *display = meta_screen_get_display (xrender->screen);
   Display *xdisplay = meta_display_get_xdisplay (display);
   MetaCompWindow *cw;
-  gulong event_mask;
 
   /* If already added, ignore */
   if (find_window (xrender, xwindow) != NULL)
@@ -2071,12 +2070,6 @@ add_win (MetaCompositorXRender *xrender,
       g_free (cw);
       return;
     }
-
-  /* If Metacity has decided not to manage this window then the input events
-     won't have been set on the window */
-  event_mask = cw->attrs.your_event_mask | PropertyChangeMask;
-
-  XSelectInput (xdisplay, xwindow, event_mask);
 
   cw->back_pixmap = None;
   cw->mask_pixmap = None;
