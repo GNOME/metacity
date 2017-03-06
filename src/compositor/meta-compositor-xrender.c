@@ -2058,9 +2058,6 @@ add_win (MetaCompositorXRender *xrender,
   MetaCompWindow *cw;
   gulong event_mask;
 
-  if (xwindow == xrender->overlay_window)
-    return;
-
   /* If already added, ignore */
   if (find_window (xrender, xwindow) != NULL)
     return;
