@@ -39,7 +39,7 @@
 #include "frame.h"
 #include "errors.h"
 #include "prefs.h"
-#include "window.h"
+#include "window-private.h"
 #include "meta-compositor-xrender.h"
 #include "xprops.h"
 #include "util.h"
@@ -137,8 +137,6 @@ typedef struct _MetaCompWindow
   int shadow_dy;
   int shadow_width;
   int shadow_height;
-
-  guint opacity;
 
   XserverRegion border_clip;
 
@@ -729,23 +727,6 @@ find_window (MetaCompositorXRender *xrender,
   return g_hash_table_lookup (xrender->windows_by_xid, (gpointer) xwindow);
 }
 
-static MetaCompWindow *
-find_window_for_child_window (MetaCompositorXRender *xrender,
-                              Window                 xwindow)
-{
-  Window ignored1, *ignored2;
-  Window parent;
-  guint ignored_children;
-
-  XQueryTree (xrender->xdisplay, xwindow, &ignored1,
-              &parent, &ignored2, &ignored_children);
-
-  if (parent != None)
-    return find_window (xrender, parent);
-
-  return NULL;
-}
-
 static Picture
 solid_picture (Display  *xdisplay,
                gboolean  argb,
@@ -1069,8 +1050,8 @@ win_extents (MetaCompositorXRender *xrender,
           int invisible_width = borders.invisible.left + borders.invisible.right;
           int invisible_height = borders.invisible.top + borders.invisible.bottom;
 
-          if (cw->opacity != (guint) OPAQUE)
-            opacity = opacity * ((double) cw->opacity) / ((double) OPAQUE);
+          if (cw->window->opacity != (guint) OPAQUE)
+            opacity = opacity * ((double) cw->window->opacity) / ((double) OPAQUE);
 
           cw->shadow = shadow_picture (xrender, cw, opacity, borders,
                                        cw->attrs.width - invisible_width + cw->attrs.border_width * 2,
@@ -1612,10 +1593,10 @@ paint_windows (MetaCompositorXRender *xrender,
                 XFixesDestroyRegion (xdisplay, shadow_clip);
             }
 
-          if ((cw->opacity != (guint) OPAQUE) && !(cw->alpha_pict))
+          if ((cw->window->opacity != (guint) OPAQUE) && !(cw->alpha_pict))
             {
               cw->alpha_pict = solid_picture (xdisplay, FALSE,
-                                              (double) cw->opacity / OPAQUE,
+                                              (double) cw->window->opacity / OPAQUE,
                                               0, 0, 0);
             }
 
@@ -2056,7 +2037,7 @@ determine_mode (MetaCompositorXRender *xrender,
     format = XRenderFindVisualFormat (xdisplay, cw->attrs.visual);
 
   if ((format && format->type == PictTypeDirect && format->direct.alphaMask)
-      || cw->opacity != (guint) OPAQUE)
+      || cw->window->opacity != (guint) OPAQUE)
     cw->mode = WINDOW_ARGB;
   else
     cw->mode = WINDOW_SOLID;
@@ -2215,8 +2196,6 @@ add_win (MetaCompositorXRender *xrender,
     cw->shadow_type = META_SHADOW_LARGE;
   else
     cw->shadow_type = META_SHADOW_MEDIUM;
-
-  cw->opacity = OPAQUE;
 
   cw->border_clip = None;
 
@@ -2513,49 +2492,6 @@ process_property_notify (MetaCompositorXRender *xrender,
               return;
             }
         }
-    }
-
-  /* Check for the opacity changing */
-  if (event->atom == display->atom__NET_WM_WINDOW_OPACITY)
-    {
-      MetaCompWindow *cw = find_window (xrender, event->window);
-      gulong value;
-
-      if (!cw)
-        {
-          /* Applications can set this for their toplevel windows, so
-           * this must be propagated to the window managed by the compositor
-           */
-          cw = find_window_for_child_window (xrender, event->window);
-        }
-
-      if (!cw)
-        return;
-
-      if (meta_prop_get_cardinal (display, event->window,
-                                  display->atom__NET_WM_WINDOW_OPACITY,
-                                  &value) == FALSE)
-        value = OPAQUE;
-
-      cw->opacity = (guint)value;
-      determine_mode (xrender, cw);
-      cw->needs_shadow = window_has_shadow (xrender, cw);
-
-      if (cw->shadow)
-        {
-          XRenderFreePicture (xdisplay, cw->shadow);
-          cw->shadow = None;
-        }
-
-      if (cw->extents)
-        XFixesDestroyRegion (xdisplay, cw->extents);
-      cw->extents = win_extents (xrender, cw);
-
-      cw->damaged = TRUE;
-
-      add_repair (xrender);
-
-      return;
     }
 
   if (event->atom == display->atom__NET_WM_WINDOW_TYPE) {
@@ -2979,6 +2915,39 @@ static void
 meta_compositor_xrender_window_opacity_changed (MetaCompositor *compositor,
                                                 MetaWindow     *window)
 {
+  MetaCompositorXRender *xrender;
+  MetaFrame *frame;
+  Window xwindow;
+  MetaCompWindow *cw;
+
+  xrender = META_COMPOSITOR_XRENDER (compositor);
+  frame = meta_window_get_frame (window);
+
+  if (frame)
+    xwindow = meta_frame_get_xwindow (frame);
+  else
+    xwindow = meta_window_get_xwindow (window);
+
+  cw = find_window (xrender, xwindow);
+  if (cw == NULL)
+    return;
+
+  determine_mode (xrender, cw);
+  cw->needs_shadow = window_has_shadow (xrender, cw);
+
+  if (cw->shadow)
+    {
+      XRenderFreePicture (xrender->xdisplay, cw->shadow);
+      cw->shadow = None;
+    }
+
+  if (cw->extents)
+    XFixesDestroyRegion (xrender->xdisplay, cw->extents);
+  cw->extents = win_extents (xrender, cw);
+
+  cw->damaged = TRUE;
+
+  add_repair (xrender);
 }
 
 static void
