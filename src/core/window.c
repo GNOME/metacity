@@ -528,6 +528,7 @@ meta_window_new (MetaDisplay    *display,
   window->disable_sync = FALSE;
   window->attached = FALSE;
   window->frame_bounds = NULL;
+  window->opaque_region = NULL;
 
   window->unmaps_pending = 0;
 
@@ -1273,6 +1274,9 @@ meta_window_free (MetaWindow  *window,
 
   if (window->frame_bounds)
     cairo_region_destroy (window->frame_bounds);
+
+  if (window->opaque_region)
+    cairo_region_destroy (window->opaque_region);
 
   meta_icon_cache_free (&window->icon_cache);
 

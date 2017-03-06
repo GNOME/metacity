@@ -343,6 +343,9 @@ struct _MetaWindow
   /* if non-NULL, the bounds of the window frame */
   cairo_region_t *frame_bounds;
 
+  /* if non-NULL, the opaque region _NET_WM_OPAQUE_REGION */
+  cairo_region_t *opaque_region;
+
   /* Note: can be NULL */
   GSList *struts;
 

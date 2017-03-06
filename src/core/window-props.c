@@ -720,6 +720,79 @@ reload_wm_name (MetaWindow    *window,
 }
 
 static void
+meta_window_set_opaque_region (MetaWindow     *window,
+                               cairo_region_t *region)
+{
+  if (cairo_region_equal (window->opaque_region, region))
+    return;
+
+  g_clear_pointer (&window->opaque_region, cairo_region_destroy);
+
+  if (region != NULL)
+    window->opaque_region = cairo_region_reference (region);
+
+  meta_compositor_window_shape_changed (window->display->compositor, window);
+}
+
+static void
+reload_opaque_region (MetaWindow    *window,
+                      MetaPropValue *value,
+                      gboolean       initial)
+{
+  int nitems, nrects, rect_index, i;
+  gulong *region;
+  cairo_rectangle_int_t *rects;
+  cairo_region_t *opaque_region;
+
+  if (value->type == META_PROP_VALUE_INVALID)
+    {
+      meta_window_set_opaque_region (window, NULL);
+      return;
+    }
+
+  nitems = value->v.cardinal_list.n_cardinals;
+  region = value->v.cardinal_list.cardinals;
+
+  if (nitems % 4 != 0)
+    {
+      meta_verbose ("_NET_WM_OPAQUE_REGION does not have a list of 4-tuples.");
+      meta_window_set_opaque_region (window, NULL);
+      return;
+    }
+
+  /* empty region */
+  if (nitems == 0)
+    {
+      meta_window_set_opaque_region (window, NULL);
+      return;
+    }
+
+  nrects = nitems / 4;
+  rects = g_new (cairo_rectangle_int_t, nrects);
+  rect_index = i = 0;
+
+  while (i < nitems)
+    {
+      cairo_rectangle_int_t *rect;
+
+      rect = &rects[rect_index];
+
+      rect->x = region[i++];
+      rect->y = region[i++];
+      rect->width = region[i++];
+      rect->height = region[i++];
+
+      rect_index++;
+    }
+
+  opaque_region = cairo_region_create_rectangles (rects, nrects);
+  g_free (rects);
+
+  meta_window_set_opaque_region (window, opaque_region);
+  cairo_region_destroy (opaque_region);
+}
+
+static void
 reload_net_wm_state (MetaWindow    *window,
                      MetaPropValue *value,
                      gboolean       initial)
@@ -1712,6 +1785,12 @@ meta_display_init_window_prop_hooks (MetaDisplay *display)
       XA_WM_NAME,
       META_PROP_VALUE_TEXT_PROPERTY,
       reload_wm_name,
+      LOAD_INIT | INCLUDE_OR
+    },
+    {
+      display->atom__NET_WM_OPAQUE_REGION,
+      META_PROP_VALUE_CARDINAL_LIST,
+      reload_opaque_region,
       LOAD_INIT | INCLUDE_OR
     },
     {
