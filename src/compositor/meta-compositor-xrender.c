@@ -91,7 +91,7 @@ typedef struct _shadow
 
 typedef struct _MetaCompWindow
 {
-  MetaWindow *window; /* May be NULL if this window isn't managed by Metacity */
+  MetaWindow *window;
   Window id;
   XWindowAttributes attrs;
 
