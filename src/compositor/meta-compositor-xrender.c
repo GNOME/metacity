@@ -1599,7 +1599,7 @@ paint_windows (MetaCompositorXRender *xrender,
                                 x, y, wid, hei);
 
               XRenderComposite (xdisplay, PictOpAdd, cw->picture,
-                                None, root_buffer, 0, 0, 0, 0,
+                                cw->alpha_pict, root_buffer, 0, 0, 0, 0,
                                 x, y, wid, hei);
             }
           else if (cw->mode == WINDOW_ARGB && cw->mask != None)
@@ -1618,7 +1618,7 @@ paint_windows (MetaCompositorXRender *xrender,
                                 x, y, wid, hei);
 
               XRenderComposite (xdisplay, PictOpAdd, cw->picture,
-                                None, root_buffer, 0, 0, 0, 0,
+                                cw->alpha_pict, root_buffer, 0, 0, 0, 0,
                                 x, y, wid, hei);
 
               XFixesIntersectRegion (xdisplay, clip, cw->border_clip, client);
