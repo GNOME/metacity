@@ -68,17 +68,6 @@
 
 #define SHADOW_OPACITY 0.66
 
-typedef enum _MetaCompWindowType
-{
-  META_COMP_WINDOW_NORMAL,
-  META_COMP_WINDOW_DND,
-  META_COMP_WINDOW_DESKTOP,
-  META_COMP_WINDOW_DOCK,
-  META_COMP_WINDOW_MENU,
-  META_COMP_WINDOW_DROP_DOWN_MENU,
-  META_COMP_WINDOW_TOOLTIP,
-} MetaCompWindowType;
-
 typedef enum _MetaShadowType
 {
   META_SHADOW_SMALL,
@@ -115,8 +104,6 @@ typedef struct _MetaCompWindow
   gboolean shaped;
 
   XRectangle shape_bounds;
-
-  MetaCompWindowType type;
 
   Damage damage;
   Picture picture;
@@ -988,8 +975,8 @@ window_has_shadow (MetaCompositorXRender *xrender,
   }
 
   /* Don't put shadow around DND icon windows */
-  if (cw->type == META_COMP_WINDOW_DND ||
-      cw->type == META_COMP_WINDOW_DESKTOP) {
+  if (cw->window->type == META_WINDOW_DND ||
+      cw->window->type == META_WINDOW_DESKTOP) {
     meta_verbose ("Window has no shadow as it is DND or Desktop\n");
     return FALSE;
   }
@@ -999,13 +986,13 @@ window_has_shadow (MetaCompositorXRender *xrender,
     return TRUE;
   }
 
-  if (cw->type == META_COMP_WINDOW_MENU ||
-      cw->type == META_COMP_WINDOW_DROP_DOWN_MENU) {
+  if (cw->window->type == META_WINDOW_MENU ||
+      cw->window->type == META_WINDOW_DROPDOWN_MENU) {
     meta_verbose ("Window has shadow as it is a menu\n");
     return TRUE;
   }
 
-  if (cw->type == META_COMP_WINDOW_TOOLTIP) {
+  if (cw->window->type == META_WINDOW_TOOLTIP) {
     meta_verbose ("Window has shadow as it is a tooltip\n");
     return TRUE;
   }
@@ -1371,7 +1358,7 @@ paint_dock_shadows (MetaCompositorXRender *xrender,
       MetaCompWindow *cw = window->data;
       XserverRegion shadow_clip;
 
-      if (cw->type == META_COMP_WINDOW_DOCK &&
+      if (cw->window->type == META_WINDOW_DOCK &&
           cw->needs_shadow && cw->shadow)
         {
           shadow_clip = XFixesCreateRegion (xdisplay, NULL, 0);
@@ -1524,7 +1511,7 @@ paint_windows (MetaCompositorXRender *xrender,
                             wid - borders.total.left - borders.total.right,
                             hei - borders.total.top - borders.total.bottom);
 
-          if (cw->type == META_COMP_WINDOW_DESKTOP)
+          if (cw->window->type == META_WINDOW_DESKTOP)
             {
               desktop_region = XFixesCreateRegion (xdisplay, 0, 0);
               XFixesCopyRegion (xdisplay, desktop_region, paint_region);
@@ -1574,7 +1561,7 @@ paint_windows (MetaCompositorXRender *xrender,
           wid = cw->attrs.width + cw->attrs.border_width * 2;
           hei = cw->attrs.height + cw->attrs.border_width * 2;
 
-          if (cw->shadow && cw->type != META_COMP_WINDOW_DOCK)
+          if (cw->shadow && cw->window->type != META_WINDOW_DOCK)
             {
               XserverRegion shadow_clip;
 
@@ -2073,61 +2060,6 @@ is_shaped (MetaDisplay *display,
   return FALSE;
 }
 
-static void
-get_window_type (MetaDisplay    *display,
-                 MetaCompWindow *cw)
-{
-  int n_atoms;
-  Atom *atoms, type_atom;
-  int i;
-
-  type_atom = None;
-  n_atoms = 0;
-  atoms = NULL;
-
-  meta_prop_get_atom_list (display, cw->id,
-                           display->atom__NET_WM_WINDOW_TYPE,
-                           &atoms, &n_atoms);
-
-  for (i = 0; i < n_atoms; i++)
-    {
-      if (atoms[i] == display->atom__NET_WM_WINDOW_TYPE_DND ||
-          atoms[i] == display->atom__NET_WM_WINDOW_TYPE_DESKTOP ||
-          atoms[i] == display->atom__NET_WM_WINDOW_TYPE_DOCK ||
-          atoms[i] == display->atom__NET_WM_WINDOW_TYPE_TOOLBAR ||
-          atoms[i] == display->atom__NET_WM_WINDOW_TYPE_MENU ||
-          atoms[i] == display->atom__NET_WM_WINDOW_TYPE_DIALOG ||
-          atoms[i] == display->atom__NET_WM_WINDOW_TYPE_NORMAL ||
-          atoms[i] == display->atom__NET_WM_WINDOW_TYPE_UTILITY ||
-          atoms[i] == display->atom__NET_WM_WINDOW_TYPE_SPLASH ||
-          atoms[i] == display->atom__NET_WM_WINDOW_TYPE_DROPDOWN_MENU ||
-          atoms[i] == display->atom__NET_WM_WINDOW_TYPE_TOOLTIP)
-        {
-          type_atom = atoms[i];
-          break;
-        }
-    }
-
-  meta_XFree (atoms);
-
-  if (type_atom == display->atom__NET_WM_WINDOW_TYPE_DND)
-    cw->type = META_COMP_WINDOW_DND;
-  else if (type_atom == display->atom__NET_WM_WINDOW_TYPE_DESKTOP)
-    cw->type = META_COMP_WINDOW_DESKTOP;
-  else if (type_atom == display->atom__NET_WM_WINDOW_TYPE_DOCK)
-    cw->type = META_COMP_WINDOW_DOCK;
-  else if (type_atom == display->atom__NET_WM_WINDOW_TYPE_MENU)
-    cw->type = META_COMP_WINDOW_MENU;
-  else if (type_atom == display->atom__NET_WM_WINDOW_TYPE_DROPDOWN_MENU)
-    cw->type = META_COMP_WINDOW_DROP_DOWN_MENU;
-  else if (type_atom == display->atom__NET_WM_WINDOW_TYPE_TOOLTIP)
-    cw->type = META_COMP_WINDOW_TOOLTIP;
-  else
-    cw->type = META_COMP_WINDOW_NORMAL;
-
-/*   meta_verbose ("Window is %d\n", cw->type); */
-}
-
 /* Must be called with an error trap in place */
 static void
 add_win (MetaCompositorXRender *xrender,
@@ -2155,7 +2087,6 @@ add_win (MetaCompositorXRender *xrender,
       g_free (cw);
       return;
     }
-  get_window_type (display, cw);
 
   /* If Metacity has decided not to manage this window then the input events
      won't have been set on the window */
@@ -2494,16 +2425,16 @@ process_property_notify (MetaCompositorXRender *xrender,
         }
     }
 
-  if (event->atom == display->atom__NET_WM_WINDOW_TYPE) {
-    MetaCompWindow *cw = find_window (xrender, event->window);
+  if (event->atom == display->atom__NET_WM_WINDOW_TYPE)
+    {
+      MetaCompWindow *cw = find_window (xrender, event->window);
 
-    if (!cw)
+      if (!cw)
+        return;
+
+      cw->needs_shadow = window_has_shadow (xrender, cw);
       return;
-
-    get_window_type (display, cw);
-    cw->needs_shadow = window_has_shadow (xrender, cw);
-    return;
-  }
+    }
 }
 
 static void
