@@ -20,7 +20,6 @@ msgstr ""
 "X-Generator: Lokalize 1.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "\n"
-"\n"
 
 #: ../src/50-metacity-navigation.xml.in.h:1
 msgid "Navigation"
