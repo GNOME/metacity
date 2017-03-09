@@ -43,7 +43,6 @@
 #ifndef META_EFFECTS_H
 #define META_EFFECTS_H
 
-#include "util.h"
 #include "screen-private.h"
 
 /**
