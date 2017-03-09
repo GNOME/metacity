@@ -20,6 +20,7 @@
 
 #include "meta-compositor-none.h"
 #include "meta-compositor-xrender.h"
+#include "meta-compositor-vulkan.h"
 
 typedef struct
 {
@@ -164,6 +165,10 @@ meta_compositor_new (MetaCompositorType  type,
 
       case META_COMPOSITOR_TYPE_XRENDER:
         gtype = META_TYPE_COMPOSITOR_XRENDER;
+        break;
+
+      case META_COMPOSITOR_TYPE_VULKAN:
+        gtype = META_TYPE_COMPOSITOR_VULKAN;
         break;
 
       default:

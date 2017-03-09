@@ -36,6 +36,8 @@ metacity_SOURCES= 				\
 	compositor/meta-compositor-private.h	\
 	compositor/meta-compositor-xrender.c	\
 	compositor/meta-compositor-xrender.h	\
+	compositor/meta-compositor-vulkan.c	\
+	compositor/meta-compositor-vulkan.h	\
 	include/meta-compositor.h		\
 	core/above-tab-keycode.c		\
 	core/constraints.c			\

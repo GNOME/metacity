@@ -34,7 +34,8 @@ G_DECLARE_DERIVABLE_TYPE (MetaCompositor, meta_compositor,
 typedef enum
 {
   META_COMPOSITOR_TYPE_NONE,
-  META_COMPOSITOR_TYPE_XRENDER
+  META_COMPOSITOR_TYPE_XRENDER,
+  META_COMPOSITOR_TYPE_VULKAN
 } MetaCompositorType;
 
 typedef enum
