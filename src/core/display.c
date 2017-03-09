@@ -248,15 +248,29 @@ static void
 update_compositor (MetaDisplay *display,
                    gboolean     composite_windows)
 {
+  const gchar *compositor;
   MetaCompositorType type;
 
   if (display->compositor != NULL)
     g_object_unref (display->compositor);
 
-  if (meta_prefs_get_compositing_manager ())
-    type = META_COMPOSITOR_TYPE_XRENDER;
+  compositor = g_getenv ("META_COMPOSITOR");
+  if (compositor != NULL)
+    {
+      if (g_strcmp0 (compositor, "vulkan") == 0)
+        type = META_COMPOSITOR_TYPE_VULKAN;
+      else if (g_strcmp0 (compositor, "xrender") == 0)
+        type = META_COMPOSITOR_TYPE_XRENDER;
+      else
+        type = META_COMPOSITOR_TYPE_NONE;
+    }
   else
-    type = META_COMPOSITOR_TYPE_NONE;
+    {
+      if (meta_prefs_get_compositing_manager ())
+        type = META_COMPOSITOR_TYPE_XRENDER;
+      else
+        type = META_COMPOSITOR_TYPE_NONE;
+    }
 
   display->compositor = meta_compositor_new (type, display);
 
