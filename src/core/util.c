@@ -182,35 +182,6 @@ meta_free_gslist_and_elements (GSList *list_to_deep_free)
 
 #ifdef WITH_VERBOSE_MODE
 void
-meta_debug_spew_real (const char *format, ...)
-{
-  va_list args;
-  gchar *str;
-  FILE *out;
-
-  g_return_if_fail (format != NULL);
-
-  if (!is_debugging)
-    return;
-
-  va_start (args, format);
-  str = g_strdup_vprintf (format, args);
-  va_end (args);
-
-  out = logfile ? logfile : stderr;
-
-  if (no_prefix == 0)
-    utf8_fputs (_("Window manager: "), out);
-  utf8_fputs (str, out);
-
-  fflush (out);
-
-  g_free (str);
-}
-#endif /* WITH_VERBOSE_MODE */
-
-#ifdef WITH_VERBOSE_MODE
-void
 meta_verbose_real (const char *format, ...)
 {
   va_list args;
@@ -601,5 +572,3 @@ meta_show_dialog (const char *type,
 
   return child_pid;
 }
-/* eof util.c */
-

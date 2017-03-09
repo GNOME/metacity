@@ -35,8 +35,6 @@ void     meta_set_syncing (gboolean setting);
 gboolean meta_get_replace_current_wm (void);
 void     meta_set_replace_current_wm (gboolean setting);
 
-void meta_debug_spew_real (const char *format,
-                           ...) G_GNUC_PRINTF (1, 2);
 void meta_verbose_real    (const char *format,
                            ...) G_GNUC_PRINTF (1, 2);
 
@@ -107,18 +105,15 @@ GPid meta_show_dialog (const char *type,
 /* To disable verbose mode, we make these functions into no-ops */
 #ifdef WITH_VERBOSE_MODE
 
-#define meta_debug_spew meta_debug_spew_real
 #define meta_verbose    meta_verbose_real
 #define meta_topic      meta_topic_real
 
 #else
 
 #  ifdef G_HAVE_ISO_VARARGS
-#    define meta_debug_spew(...)
 #    define meta_verbose(...)
 #    define meta_topic(...)
 #  elif defined(G_HAVE_GNUC_VARARGS)
-#    define meta_debug_spew(format...)
 #    define meta_verbose(format...)
 #    define meta_topic(format...)
 #  else
@@ -128,5 +123,3 @@ GPid meta_show_dialog (const char *type,
 #endif /* !WITH_VERBOSE_MODE */
 
 #endif /* META_UTIL_H */
-
-
