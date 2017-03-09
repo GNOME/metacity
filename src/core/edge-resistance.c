@@ -774,7 +774,6 @@ cache_edges (MetaDisplay *display,
   /*
    * 0th: Print debugging information to the log about the edges
    */
-#ifdef WITH_VERBOSE_MODE
   if (meta_is_verbose())
     {
       int max_edges = MAX (MAX( g_list_length (window_edges),
@@ -794,7 +793,6 @@ cache_edges (MetaDisplay *display,
       meta_topic (META_DEBUG_EDGE_RESISTANCE,
                   "Screen edges for resistance  : %s\n", big_buffer);
     }
-#endif
 
   /*
    * 1st: Get the total number of each kind of edge

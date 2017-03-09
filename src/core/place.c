@@ -551,7 +551,6 @@ find_first_fit (MetaWindow *window,
       rect.height += borders->visible.top + borders->visible.bottom;
     }
 
-#ifdef WITH_VERBOSE_MODE
     {
       char xinerama_location_string[RECT_LENGTH];
       meta_rectangle_to_string (&window->screen->xinerama_infos[xinerama].rect,
@@ -560,7 +559,6 @@ find_first_fit (MetaWindow *window,
                   "Natural xinerama is %s\n",
                   xinerama_location_string);
     }
-#endif
 
     meta_window_get_work_area_for_xinerama (window, xinerama, &work_area);
 

@@ -132,10 +132,8 @@ static MetaDisplay *the_display = NULL;
 
 static gboolean mousemods_disabled = FALSE;
 
-#ifdef WITH_VERBOSE_MODE
 static void   meta_spew_event           (MetaDisplay    *display,
                                          XEvent         *event);
-#endif
 
 static gboolean event_callback          (XEvent         *event,
                                          gpointer        data);
@@ -983,9 +981,7 @@ meta_get_display (void)
   return the_display;
 }
 
-#ifdef WITH_VERBOSE_MODE
 static gboolean dump_events = TRUE;
-#endif
 
 static gboolean
 grab_op_is_mouse_only (MetaGrabOp op)
@@ -1581,7 +1577,6 @@ handle_window_focus_event (MetaDisplay *display,
                            XEvent      *event)
 {
   MetaWindow *focus_window;
-#ifdef WITH_VERBOSE_MODE
   const char *window_type;
 
   /* Note the event can be on either the window or the frame,
@@ -1614,7 +1609,6 @@ handle_window_focus_event (MetaDisplay *display,
               meta_event_mode_to_string (event->xfocus.mode),
               meta_event_detail_to_string (event->xfocus.detail),
               event->xfocus.serial);
-#endif
 
   /* FIXME our pointer tracking is broken; see how
    * gtk+/gdk/x11/gdkevents-x11.c or XFree86/xc/programs/xterm/misc.c
@@ -1714,10 +1708,8 @@ event_callback (XEvent   *event,
   display = data;
   screen = display->screen;
 
-#ifdef WITH_VERBOSE_MODE
   if (dump_events)
     meta_spew_event (display, event);
-#endif
 
 #ifdef HAVE_STARTUP_NOTIFICATION
   sn_display_process_event (display->sn_display, event);
@@ -2821,7 +2813,6 @@ event_get_time (MetaDisplay *display,
     }
 }
 
-#ifdef WITH_VERBOSE_MODE
 const char*
 meta_event_detail_to_string (int d)
 {
@@ -2860,9 +2851,7 @@ meta_event_detail_to_string (int d)
 
   return detail;
 }
-#endif /* WITH_VERBOSE_MODE */
 
-#ifdef WITH_VERBOSE_MODE
 const char*
 meta_event_mode_to_string (int m)
 {
@@ -2892,9 +2881,7 @@ meta_event_mode_to_string (int m)
 
   return mode;
 }
-#endif /* WITH_VERBOSE_MODE */
 
-#ifdef WITH_VERBOSE_MODE
 static const char*
 stack_mode_to_string (int mode)
 {
@@ -2916,9 +2903,7 @@ stack_mode_to_string (int mode)
 
   return "Unknown";
 }
-#endif /* WITH_VERBOSE_MODE */
 
-#ifdef WITH_VERBOSE_MODE
 static char*
 key_event_description (Display *xdisplay,
                        XEvent  *event)
@@ -2931,9 +2916,7 @@ key_event_description (Display *xdisplay,
   return "none";
 #endif
 }
-#endif /* WITH_VERBOSE_MODE */
 
-#ifdef WITH_VERBOSE_MODE
 static gint64
 sync_value_to_64 (const XSyncValue *value)
 {
@@ -2944,9 +2927,7 @@ sync_value_to_64 (const XSyncValue *value)
 
   return v;
 }
-#endif /* WITH_VERBOSE_MODE */
 
-#ifdef WITH_VERBOSE_MODE
 static const char*
 alarm_state_to_string (XSyncAlarmState state)
 {
@@ -2962,9 +2943,7 @@ alarm_state_to_string (XSyncAlarmState state)
       return "(unknown)";
     }
 }
-#endif /* WITH_VERBOSE_MODE */
 
-#ifdef WITH_VERBOSE_MODE
 static void
 meta_spew_event (MetaDisplay *display,
                  XEvent      *event)
@@ -3274,7 +3253,6 @@ meta_spew_event (MetaDisplay *display,
   if (extra)
     g_free (extra);
 }
-#endif /* WITH_VERBOSE_MODE */
 
 MetaWindow*
 meta_display_lookup_x_window (MetaDisplay *display,

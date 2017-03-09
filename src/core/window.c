@@ -129,7 +129,6 @@ static gboolean idle_calc_showing (gpointer data);
 static gboolean idle_move_resize (gpointer data);
 static gboolean idle_update_icon (gpointer data);
 
-#ifdef WITH_VERBOSE_MODE
 static const char*
 wm_state_to_string (int state)
 {
@@ -147,7 +146,6 @@ wm_state_to_string (int state)
 
   return "Unknown";
 }
-#endif
 
 static gboolean
 is_desktop_or_dock_foreach (MetaWindow *window,
@@ -1774,10 +1772,8 @@ idle_calc_showing (gpointer data)
   return FALSE;
 }
 
-#ifdef WITH_VERBOSE_MODE
 static const gchar* meta_window_queue_names[NUMBER_OF_QUEUES] =
   {"calc_showing", "move_resize", "update_icon"};
-#endif
 
 static void
 meta_window_unqueue (MetaWindow *window, guint queuebits)

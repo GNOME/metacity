@@ -140,7 +140,6 @@ send_set_mousemods (gboolean enabled)
   XSync (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()), False);
 }
 
-#ifdef WITH_VERBOSE_MODE
 static void
 send_toggle_verbose (void)
 {
@@ -168,7 +167,6 @@ send_toggle_verbose (void)
   XFlush (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
   XSync (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()), False);
 }
-#endif
 
 static void
 usage (void)
@@ -201,14 +199,7 @@ main (int argc, char **argv)
   else if (strcmp (argv[1], "disable-mouse-button-modifiers") == 0)
     send_set_mousemods (FALSE);
   else if (strcmp (argv[1], "toggle-verbose") == 0)
-    {
-#ifndef WITH_VERBOSE_MODE
-      g_printerr (_("Metacity was compiled without support for verbose mode\n"));
-      return 1;
-#else
-      send_toggle_verbose ();
-#endif
-    }
+    send_toggle_verbose ();
   else
     usage ();
 

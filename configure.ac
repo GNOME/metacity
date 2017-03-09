@@ -149,15 +149,6 @@ if test x$enable_canberra = xyes; then
     METACITY_PC_MODULES="$METACITY_PC_MODULES libcanberra-gtk3"
 fi
 
-AC_ARG_ENABLE(verbose-mode,
-  AC_HELP_STRING([--disable-verbose-mode],
-                 [disable metacity's ability to do verbose logging, for embedded/size-sensitive custom builds]),,
-  enable_verbose_mode=yes)
-
-if test x$enable_verbose_mode = xyes; then
-    AC_DEFINE(WITH_VERBOSE_MODE,1,[Build with verbose mode support])
-fi
-
 AC_ARG_ENABLE(sm,
   AC_HELP_STRING([--disable-sm],
                  [disable metacity's session management support, for embedded/size-sensitive custom non-GNOME builds]),,

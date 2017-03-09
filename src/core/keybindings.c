@@ -846,7 +846,6 @@ meta_window_ungrab_keys (MetaWindow  *window)
     }
 }
 
-#ifdef WITH_VERBOSE_MODE
 static const char*
 grab_status_to_string (int status)
 {
@@ -866,7 +865,6 @@ grab_status_to_string (int status)
       return "(unknown)";
     }
 }
-#endif /* WITH_VERBOSE_MODE */
 
 static gboolean
 grab_keyboard (MetaDisplay *display,

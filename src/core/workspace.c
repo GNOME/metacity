@@ -792,7 +792,6 @@ meta_workspace_get_onxinerama_region (MetaWorkspace *workspace,
   return workspace->xinerama_region[which_xinerama];
 }
 
-#ifdef WITH_VERBOSE_MODE
 static const gchar *
 meta_motion_direction_to_string (MetaMotionDirection direction)
 {
@@ -812,7 +811,6 @@ meta_motion_direction_to_string (MetaMotionDirection direction)
 
   return "Unknown";
 }
-#endif /* WITH_VERBOSE_MODE */
 
 MetaWorkspace*
 meta_workspace_get_neighbor (MetaWorkspace      *workspace,

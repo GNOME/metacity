@@ -1305,7 +1305,6 @@ do_screen_and_xinerama_relative_constraints (
   gboolean exit_early = FALSE, constraint_satisfied;
   MetaRectangle how_far_it_can_be_smushed, min_size, max_size;
 
-#ifdef WITH_VERBOSE_MODE
   if (meta_is_verbose ())
     {
       /* First, log some debugging information */
@@ -1316,7 +1315,6 @@ do_screen_and_xinerama_relative_constraints (
              meta_rectangle_region_to_string (region_spanning_rectangles, ", ",
                                               spanning_region));
     }
-#endif
 
   /* Determine whether constraint applies; exit if it doesn't */
   how_far_it_can_be_smushed = info->current;

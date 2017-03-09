@@ -1971,8 +1971,6 @@ meta_screen_queue_workarea_recalc (MetaScreen *screen)
     }
 }
 
-
-#ifdef WITH_VERBOSE_MODE
 static const gchar *
 meta_screen_corner_to_string (MetaScreenCorner corner)
 {
@@ -1992,7 +1990,6 @@ meta_screen_corner_to_string (MetaScreenCorner corner)
 
   return "Unknown";
 }
-#endif /* WITH_VERBOSE_MODE */
 
 void
 meta_screen_calc_workspace_layout (MetaScreen          *screen,
@@ -2239,7 +2236,6 @@ meta_screen_calc_workspace_layout (MetaScreen          *screen,
   layout->current_row = current_row;
   layout->current_col = current_col;
 
-#ifdef WITH_VERBOSE_MODE
   if (meta_is_verbose ())
     {
       r = 0;
@@ -2262,7 +2258,6 @@ meta_screen_calc_workspace_layout (MetaScreen          *screen,
           ++r;
         }
     }
-#endif /* WITH_VERBOSE_MODE */
 }
 
 void

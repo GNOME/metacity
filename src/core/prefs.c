@@ -1252,7 +1252,6 @@ meta_prefs_get_disable_workarounds (void)
   return disable_workarounds;
 }
 
-#ifdef WITH_VERBOSE_MODE
 const char*
 meta_preference_to_string (MetaPreference pref)
 {
@@ -1361,7 +1360,6 @@ meta_preference_to_string (MetaPreference pref)
 
   return "(unknown)";
 }
-#endif /* WITH_VERBOSE_MODE */
 
 void
 meta_prefs_set_num_workspaces (int n_workspaces)

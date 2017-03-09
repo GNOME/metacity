@@ -39,8 +39,6 @@ static gboolean is_verbose = FALSE;
 static gboolean is_debugging = FALSE;
 static gboolean replace_current = FALSE;
 static int no_prefix = 0;
-
-#ifdef WITH_VERBOSE_MODE
 static FILE* logfile = NULL;
 
 static void
@@ -87,7 +85,6 @@ ensure_logfile (void)
       g_free (filename);
     }
 }
-#endif
 
 gboolean
 meta_is_verbose (void)
@@ -98,13 +95,8 @@ meta_is_verbose (void)
 void
 meta_set_verbose (gboolean setting)
 {
-#ifndef WITH_VERBOSE_MODE
-  if (setting)
-    meta_fatal (_("Metacity was compiled without support for verbose mode\n"));
-#else
   if (setting)
     ensure_logfile ();
-#endif
 
   is_verbose = setting;
 }
@@ -118,10 +110,8 @@ meta_is_debugging (void)
 void
 meta_set_debugging (gboolean setting)
 {
-#ifdef WITH_VERBOSE_MODE
   if (setting)
     ensure_logfile ();
-#endif
 
   is_debugging = setting;
 }
@@ -180,9 +170,8 @@ meta_free_gslist_and_elements (GSList *list_to_deep_free)
   g_slist_free (list_to_deep_free);
 }
 
-#ifdef WITH_VERBOSE_MODE
 void
-meta_verbose_real (const char *format, ...)
+meta_verbose (const char *format, ...)
 {
   va_list args;
   gchar *str;
@@ -207,9 +196,7 @@ meta_verbose_real (const char *format, ...)
 
   g_free (str);
 }
-#endif /* WITH_VERBOSE_MODE */
 
-#ifdef WITH_VERBOSE_MODE
 static const char*
 topic_name (MetaDebugTopic topic)
 {
@@ -269,9 +256,9 @@ topic_name (MetaDebugTopic topic)
 static int sync_count = 0;
 
 void
-meta_topic_real (MetaDebugTopic topic,
-                 const char *format,
-                 ...)
+meta_topic (MetaDebugTopic  topic,
+            const char     *format,
+            ...)
 {
   va_list args;
   gchar *str;
@@ -303,7 +290,6 @@ meta_topic_real (MetaDebugTopic topic,
 
   g_free (str);
 }
-#endif /* WITH_VERBOSE_MODE */
 
 void
 meta_bug (const char *format, ...)
@@ -318,11 +304,7 @@ meta_bug (const char *format, ...)
   str = g_strdup_vprintf (format, args);
   va_end (args);
 
-#ifdef WITH_VERBOSE_MODE
   out = logfile ? logfile : stderr;
-#else
-  out = stderr;
-#endif
 
   if (no_prefix == 0)
     utf8_fputs (_("Bug in window manager: "), out);
@@ -349,11 +331,7 @@ meta_warning (const char *format, ...)
   str = g_strdup_vprintf (format, args);
   va_end (args);
 
-#ifdef WITH_VERBOSE_MODE
   out = logfile ? logfile : stderr;
-#else
-  out = stderr;
-#endif
 
   if (no_prefix == 0)
     utf8_fputs (_("Window manager warning: "), out);
@@ -377,11 +355,7 @@ meta_fatal (const char *format, ...)
   str = g_strdup_vprintf (format, args);
   va_end (args);
 
-#ifdef WITH_VERBOSE_MODE
   out = logfile ? logfile : stderr;
-#else
-  out = stderr;
-#endif
 
   if (no_prefix == 0)
     utf8_fputs (_("Window manager error: "), out);
