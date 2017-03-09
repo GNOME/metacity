@@ -369,6 +369,29 @@ if test x"$ZENITY" = xno; then
 fi
 
 dnl **************************************************************************
+dnl Check for Vulkan support
+dnl **************************************************************************
+
+AC_ARG_ENABLE([vulkan],
+              [AS_HELP_STRING([--enable-vulkan], [enable Vulkan support])],
+              [enable_vulkan="$enableval"], [enable_vulkan="auto"])
+
+AS_IF([test "x$enable_vulkan" != "xno"], [
+  AC_CHECK_LIB([vulkan], [vkCreateInstance], [
+    AC_CHECK_HEADER([vulkan/vulkan.h], [found_vulkan=yes], [found_vulkan=no])
+  ], [found_vulkan=no])
+
+  AS_IF([test "x$found_vulkan" = "xyes"], [
+    AC_DEFINE([HAVE_VULKAN], 1, [Build with Vulkan support])
+    METACITY_LIBS="$METACITY_LIBS -lvulkan"
+  ], [
+    AS_IF([test "x$enable_vulkan" = "xyes"], [
+      AC_MSG_ERROR([Vulkan enabled but not found])
+    ])
+  ])
+], [found_vulkan=no])
+
+dnl **************************************************************************
 dnl Process .in files
 dnl **************************************************************************
 
@@ -424,4 +447,5 @@ echo "  Startup notification ........: ${have_startup_notification}"
 echo "  Session management ..........: ${found_sm}"
 echo "  Resize-and-rotate ...........: ${found_randr}"
 echo "  Xcursor .....................: ${have_xcursor}"
+echo "  Vulkan ......................: ${found_vulkan}"
 echo ""
