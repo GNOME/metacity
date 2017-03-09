@@ -2570,6 +2570,55 @@ meta_compositor_xrender_constructed (GObject *object)
   xrender->xdisplay = meta_display_get_xdisplay (display);
 }
 
+static void
+meta_compositor_xrender_finalize (GObject *object)
+{
+  MetaCompositorXRender *xrender;
+  MetaDisplay *display;
+  Display *xdisplay;
+  Window xroot;
+  GList *index;
+
+  xrender = META_COMPOSITOR_XRENDER (object);
+  display = meta_compositor_get_display (META_COMPOSITOR (xrender));
+  xdisplay = meta_display_get_xdisplay (display);
+  xroot = display->screen->xroot;
+
+  meta_prefs_remove_listener (update_shadows, xrender);
+
+  hide_overlay_window (xrender, xdisplay);
+
+  /* Destroy the windows */
+  for (index = xrender->windows; index; index = index->next)
+    {
+      MetaCompWindow *cw = (MetaCompWindow *) index->data;
+      free_win (xrender, cw, TRUE);
+    }
+  g_list_free (xrender->windows);
+  g_hash_table_destroy (xrender->windows_by_xid);
+
+  if (xrender->root_picture)
+    XRenderFreePicture (xdisplay, xrender->root_picture);
+
+  if (xrender->black_picture)
+    XRenderFreePicture (xdisplay, xrender->black_picture);
+
+  if (xrender->have_shadows)
+    {
+      int i;
+
+      for (i = 0; i < LAST_SHADOW_TYPE; i++)
+        g_free (xrender->shadows[i]->gaussian_map);
+    }
+
+  XCompositeUnredirectSubwindows (xdisplay, xroot, CompositeRedirectManual);
+  XCompositeReleaseOverlayWindow (xdisplay, xrender->overlay_window);
+
+  meta_screen_unset_cm_selection (display->screen);
+
+  G_OBJECT_CLASS (meta_compositor_xrender_parent_class)->finalize (object);
+}
+
 static gboolean
 meta_compositor_xrender_manage (MetaCompositor  *compositor,
                                 GError         **error)
@@ -2665,44 +2714,6 @@ meta_compositor_xrender_manage (MetaCompositor  *compositor,
 static void
 meta_compositor_xrender_unmanage (MetaCompositor *compositor)
 {
-  MetaCompositorXRender *xrender = META_COMPOSITOR_XRENDER (compositor);
-  MetaDisplay *display = meta_compositor_get_display (compositor);
-  MetaScreen *screen = meta_display_get_screen (display);
-  Display *xdisplay = meta_display_get_xdisplay (display);
-  Window xroot = meta_screen_get_xroot (screen);
-  GList *index;
-
-  meta_prefs_remove_listener (update_shadows, xrender);
-
-  hide_overlay_window (xrender, xdisplay);
-
-  /* Destroy the windows */
-  for (index = xrender->windows; index; index = index->next)
-    {
-      MetaCompWindow *cw = (MetaCompWindow *) index->data;
-      free_win (xrender, cw, TRUE);
-    }
-  g_list_free (xrender->windows);
-  g_hash_table_destroy (xrender->windows_by_xid);
-
-  if (xrender->root_picture)
-    XRenderFreePicture (xdisplay, xrender->root_picture);
-
-  if (xrender->black_picture)
-    XRenderFreePicture (xdisplay, xrender->black_picture);
-
-  if (xrender->have_shadows)
-    {
-      int i;
-
-      for (i = 0; i < LAST_SHADOW_TYPE; i++)
-        g_free (xrender->shadows[i]->gaussian_map);
-    }
-
-  XCompositeUnredirectSubwindows (xdisplay, xroot, CompositeRedirectManual);
-  XCompositeReleaseOverlayWindow (xdisplay, xrender->overlay_window);
-
-  meta_screen_unset_cm_selection (screen);
 }
 
 static void
@@ -3232,6 +3243,7 @@ meta_compositor_xrender_class_init (MetaCompositorXRenderClass *xrender_class)
   compositor_class = META_COMPOSITOR_CLASS (xrender_class);
 
   object_class->constructed = meta_compositor_xrender_constructed;
+  object_class->finalize = meta_compositor_xrender_finalize;
 
   compositor_class->manage = meta_compositor_xrender_manage;
   compositor_class->unmanage = meta_compositor_xrender_unmanage;
