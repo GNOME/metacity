@@ -2712,11 +2712,6 @@ meta_compositor_xrender_manage (MetaCompositor  *compositor,
 }
 
 static void
-meta_compositor_xrender_unmanage (MetaCompositor *compositor)
-{
-}
-
-static void
 meta_compositor_xrender_add_window (MetaCompositor *compositor,
                                     MetaWindow     *window)
 {
@@ -3246,7 +3241,6 @@ meta_compositor_xrender_class_init (MetaCompositorXRenderClass *xrender_class)
   object_class->finalize = meta_compositor_xrender_finalize;
 
   compositor_class->manage = meta_compositor_xrender_manage;
-  compositor_class->unmanage = meta_compositor_xrender_unmanage;
   compositor_class->add_window = meta_compositor_xrender_add_window;
   compositor_class->remove_window = meta_compositor_xrender_remove_window;
   compositor_class->show_window = meta_compositor_xrender_show_window;

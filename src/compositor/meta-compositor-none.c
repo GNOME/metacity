@@ -34,11 +34,6 @@ meta_compositor_none_manage (MetaCompositor  *compositor,
 }
 
 static void
-meta_compositor_none_unmanage (MetaCompositor *compositor)
-{
-}
-
-static void
 meta_compositor_none_add_window (MetaCompositor *compositor,
                                  MetaWindow     *window)
 {
@@ -136,7 +131,6 @@ meta_compositor_none_class_init (MetaCompositorNoneClass *none_class)
   compositor_class = META_COMPOSITOR_CLASS (none_class);
 
   compositor_class->manage = meta_compositor_none_manage;
-  compositor_class->unmanage = meta_compositor_none_unmanage;
   compositor_class->add_window = meta_compositor_none_add_window;
   compositor_class->remove_window = meta_compositor_none_remove_window;
   compositor_class->show_window = meta_compositor_none_show_window;

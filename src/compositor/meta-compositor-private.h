@@ -30,8 +30,6 @@ struct _MetaCompositorClass
   gboolean          (* manage)                 (MetaCompositor     *compositor,
                                                 GError            **error);
 
-  void              (* unmanage)               (MetaCompositor     *compositor);
-
   void              (* add_window)             (MetaCompositor     *compositor,
                                                 MetaWindow         *window);
 

@@ -67,11 +67,6 @@ initable_iface_init (GInitableIface *iface)
 static void
 meta_compositor_finalize (GObject *object)
 {
-  MetaCompositor *compositor;
-
-  compositor = META_COMPOSITOR (object);
-
-  META_COMPOSITOR_GET_CLASS (compositor)->unmanage (compositor);
   G_OBJECT_CLASS (meta_compositor_parent_class)->finalize (object);
 }
 
