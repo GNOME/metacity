@@ -74,7 +74,10 @@ meta_ui_init (int *argc, char ***argv)
   gdk_set_allowed_backends ("x11");
 
   if (!gtk_init_check (argc, argv))
-    meta_fatal ("Unable to open X display %s\n", XDisplayName (NULL));
+    {
+      g_critical ("Unable to open X display %s", XDisplayName (NULL));
+      exit (EXIT_FAILURE);
+    }
 
   /* We need to be able to fully trust that the window and monitor sizes
    * that GDK reports corresponds to the X ones, so we disable the automatic

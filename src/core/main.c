@@ -430,7 +430,10 @@ main (int argc, char **argv)
     meta_set_replace_current_wm (TRUE);
 
   if (meta_args.save_file && meta_args.client_id)
-    meta_fatal ("Can't specify both SM save file and SM client id\n");
+    {
+      g_critical ("Can't specify both SM save file and SM client id");
+      exit (EXIT_FAILURE);
+    }
 
   meta_main_loop = g_main_loop_new (NULL, FALSE);
 
@@ -498,9 +501,9 @@ main (int argc, char **argv)
                           NULL,
                           &err))
         {
-          meta_fatal (_("Failed to restart: %s\n"),
-                      err->message);
-          g_error_free (err); /* not reached anyhow */
+          g_critical ("Failed to restart: %s", err->message);
+          g_error_free (err);
+
           meta_exit_code = META_EXIT_ERROR;
         }
     }

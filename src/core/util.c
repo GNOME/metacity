@@ -285,32 +285,6 @@ meta_topic (MetaDebugTopic  topic,
 }
 
 void
-meta_fatal (const char *format, ...)
-{
-  va_list args;
-  gchar *str;
-  FILE *out;
-
-  g_return_if_fail (format != NULL);
-
-  va_start (args, format);
-  str = g_strdup_vprintf (format, args);
-  va_end (args);
-
-  out = logfile ? logfile : stderr;
-
-  if (no_prefix == 0)
-    utf8_fputs (_("Window manager error: "), out);
-  utf8_fputs (str, out);
-
-  fflush (out);
-
-  g_free (str);
-
-  meta_exit (META_EXIT_ERROR);
-}
-
-void
 meta_push_no_msg_prefix (void)
 {
   ++no_prefix;
