@@ -279,6 +279,167 @@ setup_debug_callback (MetaCompositorVulkan *vulkan)
       g_warning ("Failed to set up debug callback");
     }
 }
+
+static const gchar *
+device_type_to_string (VkPhysicalDeviceType type)
+{
+  switch (type)
+    {
+      case VK_PHYSICAL_DEVICE_TYPE_OTHER:
+        return "other";
+        break;
+
+      case VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU:
+        return "integrated";
+        break;
+
+      case VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU:
+        return "discrete";
+        break;
+
+      case VK_PHYSICAL_DEVICE_TYPE_VIRTUAL_GPU:
+        return "virtual";
+        break;
+
+      case VK_PHYSICAL_DEVICE_TYPE_CPU:
+        return "cpu";
+        break;
+
+      case VK_PHYSICAL_DEVICE_TYPE_RANGE_SIZE:
+      case VK_PHYSICAL_DEVICE_TYPE_MAX_ENUM:
+      default:
+        break;
+    }
+
+  return "unknown";
+}
+
+static gchar *
+queue_flags_to_string (VkQueueFlags flags)
+{
+  GPtrArray *operations;
+  gchar *result;
+
+  operations = g_ptr_array_new ();
+
+  if (flags & VK_QUEUE_GRAPHICS_BIT)
+    g_ptr_array_add (operations, (gpointer) "graphics");
+
+  if (flags & VK_QUEUE_COMPUTE_BIT)
+    g_ptr_array_add (operations, (gpointer) "compute");
+
+  if (flags & VK_QUEUE_TRANSFER_BIT)
+    g_ptr_array_add (operations, (gpointer) "transfer");
+
+  if (flags & VK_QUEUE_SPARSE_BINDING_BIT)
+    g_ptr_array_add (operations, (gpointer) "sparse binding");
+
+  g_ptr_array_add (operations, NULL);
+
+  result = g_strjoinv (", ", (char **) operations->pdata);
+  g_ptr_array_free (operations, TRUE);
+
+  return result;
+}
+
+static gboolean
+enumerate_physical_devices (MetaCompositorVulkan  *vulkan,
+                            GError               **error)
+{
+  uint32_t n_devices;
+  VkPhysicalDevice *devices;
+  VkResult result;
+  uint32_t i;
+
+  result = vkEnumeratePhysicalDevices (vulkan->instance, &n_devices, NULL);
+
+  if (result != VK_SUCCESS)
+    {
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Failed to query the number of physical devices presents");
+
+      return FALSE;
+    }
+
+  if (n_devices == 0)
+    {
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Failed to find GPUs with Vulkan support");
+
+      return FALSE;
+    }
+
+  devices = g_new0 (VkPhysicalDevice, n_devices);
+  result = vkEnumeratePhysicalDevices (vulkan->instance, &n_devices, devices);
+
+  if (result != VK_SUCCESS)
+    {
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Failed to enumerate physical devices present");
+
+      g_free (devices);
+      return FALSE;
+    }
+
+  meta_topic (META_DEBUG_VULKAN, "Available physical devices:\n");
+  meta_push_no_msg_prefix ();
+
+  for (i = 0; i < n_devices; i++)
+    {
+      uint32_t n_family_properties;
+      VkQueueFamilyProperties *family_properties;
+      uint32_t j;
+
+      if (meta_check_debug_flags (META_DEBUG_VULKAN))
+        {
+          VkPhysicalDeviceProperties device_properties;
+
+          vkGetPhysicalDeviceProperties (devices[i], &device_properties);
+
+          meta_topic (META_DEBUG_VULKAN, "  %s (type - %s, driver - v%d.%d.%d, "
+                      "api - v%d.%d.%d)\n", device_properties.deviceName,
+                      device_type_to_string (device_properties.deviceType),
+                      VK_VERSION_MAJOR (device_properties.driverVersion),
+                      VK_VERSION_MINOR (device_properties.driverVersion),
+                      VK_VERSION_PATCH (device_properties.driverVersion),
+                      VK_VERSION_MAJOR (device_properties.apiVersion),
+                      VK_VERSION_MINOR (device_properties.apiVersion),
+                      VK_VERSION_PATCH (device_properties.apiVersion));
+        }
+
+      vkGetPhysicalDeviceQueueFamilyProperties (devices[i],
+                                                &n_family_properties,
+                                                NULL);
+
+      family_properties = g_new0 (VkQueueFamilyProperties, n_family_properties);
+      vkGetPhysicalDeviceQueueFamilyProperties (devices[i],
+                                                &n_family_properties,
+                                                family_properties);
+
+      for (j = 0; j < n_family_properties; j++)
+        {
+          if (meta_check_debug_flags (META_DEBUG_VULKAN))
+            {
+              gchar *operations;
+
+              operations = queue_flags_to_string (family_properties[j].queueFlags);
+
+              meta_topic (META_DEBUG_VULKAN, "    queues: %d; operations: %s\n",
+                          family_properties[j].queueCount, operations);
+
+              g_free (operations);
+            }
+        }
+
+      g_free (family_properties);
+    }
+
+  meta_pop_no_msg_prefix ();
+
+  g_free (devices);
+
+  return TRUE;
+}
 #endif
 
 static void
@@ -329,6 +490,9 @@ meta_compositor_vulkan_manage (MetaCompositor  *compositor,
     return FALSE;
 
   setup_debug_callback (vulkan);
+
+  if (!enumerate_physical_devices (vulkan, error))
+    return FALSE;
 
   g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED, "Not implemented");
 
