@@ -436,8 +436,6 @@ main (int argc, char **argv)
   meta_prefs_init ();
   meta_prefs_add_listener (prefs_changed_callback, NULL);
 
-  meta_ui_reload_theme ();
-
   /* Connect to SM as late as possible - but before managing display,
    * or we might try to manage a window before we have the session
    * info

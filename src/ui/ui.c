@@ -289,8 +289,10 @@ meta_ui_new (Display *xdisplay)
 
   gdisplay = gdk_x11_lookup_xdisplay (xdisplay);
   g_assert (gdisplay == gdk_display_get_default ());
-
   g_assert (xdisplay == GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
+
+  meta_ui_reload_theme ();
+
   ui->frames = meta_frames_new ();
 
   /* GTK+ needs the frame-sync protocol to work in order to properly
