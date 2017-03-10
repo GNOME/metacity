@@ -24,7 +24,31 @@
 #define META_UTIL_H
 
 #include <glib.h>
-#include <glib-object.h>
+
+G_BEGIN_DECLS
+
+typedef enum
+{
+  META_DEBUG_FOCUS = 1 << 0,
+  META_DEBUG_WORKAREA = 1 << 1,
+  META_DEBUG_STACK = 1 << 2,
+  META_DEBUG_SM = 1 << 3,
+  META_DEBUG_EVENTS = 1 << 4,
+  META_DEBUG_WINDOW_STATE = 1 << 5,
+  META_DEBUG_WINDOW_OPS = 1 << 6,
+  META_DEBUG_GEOMETRY = 1 << 7,
+  META_DEBUG_PLACEMENT = 1 << 8,
+  META_DEBUG_PING = 1 << 9,
+  META_DEBUG_XINERAMA = 1 << 10,
+  META_DEBUG_KEYBINDINGS = 1 << 11,
+  META_DEBUG_SYNC = 1 << 12,
+  META_DEBUG_STARTUP = 1 << 13,
+  META_DEBUG_PREFS = 1 << 14,
+  META_DEBUG_GROUPS = 1 << 15,
+  META_DEBUG_RESIZING = 1 << 16,
+  META_DEBUG_SHAPES = 1 << 17,
+  META_DEBUG_EDGE_RESISTANCE = 1 << 18
+} MetaDebugFlags;
 
 gboolean meta_is_verbose  (void);
 void     meta_set_verbose (gboolean setting);
@@ -38,30 +62,7 @@ void     meta_set_replace_current_wm (gboolean setting);
 void meta_verbose (const char *format,
                    ...) G_GNUC_PRINTF (1, 2);
 
-typedef enum
-{
-  META_DEBUG_FOCUS           = 1 << 0,
-  META_DEBUG_WORKAREA        = 1 << 1,
-  META_DEBUG_STACK           = 1 << 2,
-  META_DEBUG_SM              = 1 << 4,
-  META_DEBUG_EVENTS          = 1 << 5,
-  META_DEBUG_WINDOW_STATE    = 1 << 6,
-  META_DEBUG_WINDOW_OPS      = 1 << 7,
-  META_DEBUG_GEOMETRY        = 1 << 8,
-  META_DEBUG_PLACEMENT       = 1 << 9,
-  META_DEBUG_PING            = 1 << 10,
-  META_DEBUG_XINERAMA        = 1 << 11,
-  META_DEBUG_KEYBINDINGS     = 1 << 12,
-  META_DEBUG_SYNC            = 1 << 13,
-  META_DEBUG_STARTUP         = 1 << 15,
-  META_DEBUG_PREFS           = 1 << 16,
-  META_DEBUG_GROUPS          = 1 << 17,
-  META_DEBUG_RESIZING        = 1 << 18,
-  META_DEBUG_SHAPES          = 1 << 19,
-  META_DEBUG_EDGE_RESISTANCE = 1 << 21
-} MetaDebugTopic;
-
-void meta_topic (MetaDebugTopic  topic,
+void meta_topic (MetaDebugFlags  topic,
                  const char     *format,
                  ...) G_GNUC_PRINTF (2, 3);
 
@@ -92,4 +93,6 @@ GPid meta_show_dialog (const char *type,
                        GSList *columns,
                        GSList *entries);
 
-#endif /* META_UTIL_H */
+G_END_DECLS
+
+#endif

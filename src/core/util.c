@@ -197,7 +197,7 @@ meta_verbose (const char *format, ...)
 }
 
 static const char*
-topic_name (MetaDebugTopic topic)
+topic_name (MetaDebugFlags topic)
 {
   switch (topic)
     {
@@ -249,7 +249,7 @@ topic_name (MetaDebugTopic topic)
 static int sync_count = 0;
 
 void
-meta_topic (MetaDebugTopic  topic,
+meta_topic (MetaDebugFlags  topic,
             const char     *format,
             ...)
 {
