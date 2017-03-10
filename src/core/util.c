@@ -298,12 +298,6 @@ meta_pop_no_msg_prefix (void)
   --no_prefix;
 }
 
-void
-meta_exit (MetaExitCode code)
-{
-  exit (code);
-}
-
 gint
 meta_unsigned_long_equal (gconstpointer v1,
                           gconstpointer v2)

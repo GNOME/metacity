@@ -481,7 +481,9 @@ main (int argc, char **argv)
     meta_prefs_set_force_fullscreen (FALSE);
 
   if (!meta_display_open ())
-    meta_exit (META_EXIT_ERROR);
+    {
+      exit (EXIT_FAILURE);
+    }
 
   g_main_loop_run (meta_main_loop);
 
