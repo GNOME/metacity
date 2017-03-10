@@ -34,11 +34,6 @@
 #include <cairo-xlib.h>
 #include <libmetacity/meta-theme.h>
 
-/**
- * The current theme. (Themes are singleton.)
- */
-static MetaTheme *meta_current_theme = NULL;
-
 static void meta_ui_accelerator_parse (const char      *accel,
                                        guint           *keysym,
                                        guint           *keycode,
@@ -47,6 +42,8 @@ static void meta_ui_accelerator_parse (const char      *accel,
 struct _MetaUI
 {
   Display *xdisplay;
+
+  MetaTheme *theme;
   MetaFrames *frames;
 
   /* For double-click tracking */
@@ -698,7 +695,7 @@ meta_ui_theme_get_frame_borders (MetaUI           *ui,
 MetaTheme *
 meta_ui_get_theme (MetaUI *ui)
 {
-  return meta_current_theme;
+  return ui->theme;
 }
 
 static gchar *
@@ -778,8 +775,8 @@ meta_ui_reload_theme (MetaUI *ui)
       theme = load_theme (META_THEME_TYPE_GTK, "Adwaita");
     }
 
-  g_set_object (&meta_current_theme, theme);
-  g_assert (meta_current_theme);
+  g_set_object (&ui->theme, theme);
+  g_assert (ui->theme);
 
   meta_invalidate_default_icons ();
 }
@@ -793,7 +790,7 @@ meta_ui_update_button_layout (MetaUI *ui)
   button_layout = meta_prefs_get_button_layout ();
   invert = meta_ui_get_direction() == META_UI_DIRECTION_RTL;
 
-  meta_theme_set_button_layout (meta_current_theme, button_layout, invert);
+  meta_theme_set_button_layout (ui->theme, button_layout, invert);
 }
 
 static void
