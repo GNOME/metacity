@@ -248,6 +248,7 @@ update_compositor (MetaDisplay *display,
 {
   const gchar *compositor;
   MetaCompositorType type;
+  gboolean composited;
 
   if (display->compositor != NULL)
     g_object_unref (display->compositor);
@@ -274,6 +275,9 @@ update_compositor (MetaDisplay *display,
 
   if (composite_windows)
     meta_screen_composite_all_windows (display->screen);
+
+  composited = meta_compositor_is_composited (display->compositor);
+  meta_ui_set_composited (display->screen->ui, composited);
 }
 
 /**

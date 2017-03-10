@@ -342,6 +342,7 @@ meta_screen_new (MetaDisplay *display,
   char buf[128];
   guint32 manager_timestamp;
   gulong current_workspace;
+  gboolean composited;
 
   replace_current_wm = meta_get_replace_current_wm ();
 
@@ -580,7 +581,8 @@ meta_screen_new (MetaDisplay *display,
   screen->keys_grabbed = FALSE;
   meta_screen_grab_keys (screen);
 
-  screen->ui = meta_ui_new (screen->display->xdisplay);
+  composited = meta_compositor_is_composited (screen->display->compositor);
+  screen->ui = meta_ui_new (screen->display->xdisplay, composited);
 
   screen->tab_popup = NULL;
   screen->tile_preview = NULL;

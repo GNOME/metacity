@@ -42,6 +42,7 @@ static void meta_ui_accelerator_parse (const char      *accel,
 struct _MetaUI
 {
   Display *xdisplay;
+  gboolean composited;
 
   MetaTheme *theme;
   MetaFrames *frames;
@@ -276,13 +277,15 @@ meta_ui_remove_event_func (Display       *xdisplay,
 }
 
 MetaUI*
-meta_ui_new (Display *xdisplay)
+meta_ui_new (Display  *xdisplay,
+             gboolean  composited)
 {
   GdkDisplay *gdisplay;
   MetaUI *ui;
 
   ui = g_new0 (MetaUI, 1);
   ui->xdisplay = xdisplay;
+  ui->composited = composited;
 
   gdisplay = gdk_x11_lookup_xdisplay (xdisplay);
   g_assert (gdisplay == gdk_display_get_default ());
@@ -316,6 +319,19 @@ meta_ui_free (MetaUI *ui)
   g_object_set_data (G_OBJECT (gdisplay), "meta-ui", NULL);
 
   g_free (ui);
+}
+
+void
+meta_ui_set_composited (MetaUI   *ui,
+                        gboolean  composited)
+{
+  if (ui->composited == composited)
+    return;
+
+  ui->composited = composited;
+
+  meta_theme_set_composited (ui->theme, composited);
+  meta_frames_composited_changed (ui->frames);
 }
 
 void
@@ -698,6 +714,12 @@ meta_ui_get_theme (MetaUI *ui)
   return ui->theme;
 }
 
+gboolean
+meta_ui_is_composited (MetaUI *ui)
+{
+  return ui->composited;
+}
+
 static gchar *
 get_theme_name (MetaThemeType theme_type)
 {
@@ -720,11 +742,11 @@ get_theme_name (MetaThemeType theme_type)
 }
 
 static MetaTheme *
-load_theme (MetaThemeType  theme_type,
+load_theme (MetaUI        *ui,
+            MetaThemeType  theme_type,
             const gchar   *theme_name)
 {
   MetaTheme *theme;
-  gboolean compositing_manager;
   const PangoFontDescription *titlebar_font;
   GError *error;
   const gchar *button_layout;
@@ -732,8 +754,7 @@ load_theme (MetaThemeType  theme_type,
 
   theme = meta_theme_new (theme_type);
 
-  compositing_manager = meta_prefs_get_compositing_manager ();
-  meta_theme_set_composited (theme, compositing_manager);
+  meta_theme_set_composited (theme, ui->composited);
 
   titlebar_font = meta_prefs_get_titlebar_font ();
   meta_theme_set_titlebar_font (theme, titlebar_font);
@@ -766,13 +787,13 @@ meta_ui_reload_theme (MetaUI *ui)
   theme_type = meta_prefs_get_theme_type ();
   theme_name = get_theme_name (theme_type);
 
-  theme = load_theme (theme_type, theme_name);
+  theme = load_theme (ui, theme_type, theme_name);
   g_free (theme_name);
 
   if (theme == NULL)
     {
       g_warning (_("Falling back to default GTK+ theme - Adwaita"));
-      theme = load_theme (META_THEME_TYPE_GTK, "Adwaita");
+      theme = load_theme (ui, META_THEME_TYPE_GTK, "Adwaita");
     }
 
   g_set_object (&ui->theme, theme);

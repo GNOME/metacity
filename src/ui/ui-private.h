@@ -23,7 +23,9 @@
 
 G_BEGIN_DECLS
 
-MetaTheme *meta_ui_get_theme (MetaUI *ui);
+MetaTheme *meta_ui_get_theme     (MetaUI *ui);
+
+gboolean   meta_ui_is_composited (MetaUI *ui);
 
 G_END_DECLS
 

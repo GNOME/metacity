@@ -379,6 +379,12 @@ meta_compositor_is_our_xwindow (MetaCompositor *compositor,
 }
 
 gboolean
+meta_compositor_is_composited (MetaCompositor *compositor)
+{
+  return !META_IS_COMPOSITOR_NONE (compositor);
+}
+
+gboolean
 meta_compositor_check_extensions (MetaCompositor  *compositor,
                                   GError         **error)
 {

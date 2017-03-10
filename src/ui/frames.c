@@ -83,8 +83,6 @@ static void invalidate_all_caches (MetaFrames *frames);
 static void invalidate_whole_window (MetaFrames *frames,
                                      MetaUIFrame *frame);
 
-static void meta_frames_composited_changed (MetaFrames *frames);
-
 struct _MetaFrames
 {
   GtkWindow    parent;
@@ -425,9 +423,7 @@ static void
 prefs_changed_callback (MetaPreference pref,
                         void          *data)
 {
-  if (pref == META_PREF_COMPOSITING_MANAGER)
-    meta_frames_composited_changed (META_FRAMES (data));
-  else if (pref == META_PREF_TITLEBAR_FONT)
+  if (pref == META_PREF_TITLEBAR_FONT)
     meta_frames_font_changed (META_FRAMES (data));
   else if (pref == META_PREF_BUTTON_LAYOUT)
     meta_frames_button_layout_changed (META_FRAMES (data));
@@ -643,19 +639,6 @@ reattach_style_func (gpointer key, gpointer value, gpointer data)
   frame = value;
 
   meta_frames_attach_style (frames, frame);
-}
-
-static void
-meta_frames_composited_changed (MetaFrames *frames)
-{
-  MetaTheme *theme;
-  gboolean compositing_manager;
-
-  theme = meta_ui_get_theme (frames->ui);
-  compositing_manager = meta_prefs_get_compositing_manager ();
-
-  meta_theme_set_composited (theme, compositing_manager);
-  g_hash_table_foreach (frames->frames, queue_recalc_func, frames);
 }
 
 static void
@@ -1073,7 +1056,6 @@ meta_frames_apply_shapes (MetaFrames *frames,
   MetaUIFrame *frame;
   MetaFrameGeometry fgeom;
   cairo_region_t *window_region;
-  gboolean compositing_manager;
 
   frame = meta_frames_lookup_window (frames, xwindow);
   g_return_if_fail (frame != NULL);
@@ -1091,9 +1073,7 @@ meta_frames_apply_shapes (MetaFrames *frames,
 
   meta_frames_calc_geometry (frames, frame, &fgeom);
 
-  compositing_manager = meta_prefs_get_compositing_manager ();
-
-  if (!window_has_shape && compositing_manager)
+  if (!window_has_shape && meta_ui_is_composited (frames->ui))
     return;
 
   window_region = get_visible_region (frames,
@@ -1161,7 +1141,7 @@ meta_frames_apply_shapes (MetaFrames *frames,
                                          new_window_width,
                                          new_window_height);
 
-      tmp_region = compositing_manager ? frame_region : window_region;
+      tmp_region = meta_ui_is_composited (frames->ui) ? frame_region : window_region;
 
       cairo_region_subtract (tmp_region, client_region);
 
@@ -1189,7 +1169,7 @@ meta_frames_apply_shapes (MetaFrames *frames,
                   "Frame 0x%lx has shaped corners\n",
                   frame->xwindow);
 
-      if (!compositing_manager)
+      if (!meta_ui_is_composited (frames->ui))
         apply_cairo_region_to_window (frames->xdisplay,
                                       frame->xwindow, window_region,
                                       ShapeSet);
@@ -2793,4 +2773,10 @@ invalidate_whole_window (MetaFrames *frames,
 {
   gdk_window_invalidate_rect (frame->window, NULL, FALSE);
   invalidate_cache (frames, frame);
+}
+
+void
+meta_frames_composited_changed (MetaFrames *frames)
+{
+  g_hash_table_foreach (frames->frames, queue_recalc_func, frames);
 }

@@ -96,6 +96,8 @@ void             meta_compositor_sync_stack             (MetaCompositor     *com
 gboolean         meta_compositor_is_our_xwindow         (MetaCompositor     *compositor,
                                                          Window              xwindow);
 
+gboolean         meta_compositor_is_composited          (MetaCompositor     *compositor);
+
 G_END_DECLS
 
 #endif
