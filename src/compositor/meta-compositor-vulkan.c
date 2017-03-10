@@ -28,6 +28,13 @@
 struct _MetaCompositorVulkan
 {
   MetaCompositor parent;
+
+  gboolean       lunarg_validation_layer;
+  gboolean       debug_report_extension;
+
+#ifdef HAVE_VULKAN
+  VkInstance     instance;
+#endif
 };
 
 G_DEFINE_TYPE (MetaCompositorVulkan, meta_compositor_vulkan, META_TYPE_COMPOSITOR)
@@ -71,12 +78,20 @@ enumerate_instance_layers (MetaCompositorVulkan *vulkan)
 
   for (i = 0; i < n_layers; i++)
     {
-      meta_topic (META_DEBUG_VULKAN, "  %s v%u.%u.%u (%s)\n",
-                  layers[i].layerName,
+      const gchar *layer_name;
+
+      layer_name = layers[i].layerName;
+
+      meta_topic (META_DEBUG_VULKAN, "  %s v%u.%u.%u (%s)\n", layer_name,
                   VK_VERSION_MAJOR (layers[i].specVersion),
                   VK_VERSION_MINOR (layers[i].specVersion),
                   VK_VERSION_PATCH (layers[i].specVersion),
                   layers[i].description);
+
+      if (g_strcmp0 (layer_name, "VK_LAYER_LUNARG_standard_validation") == 0)
+        {
+          vulkan->lunarg_validation_layer = TRUE;
+        }
     }
 
   meta_pop_no_msg_prefix ();
@@ -123,18 +138,101 @@ enumerate_instance_extensions (MetaCompositorVulkan *vulkan)
 
   for (i = 0; i < n_extensions; i++)
     {
-      meta_topic (META_DEBUG_VULKAN, "  %s v%u.%u.%u\n",
-                  extensions[i].extensionName,
+      const gchar *extension_name;
+
+      extension_name = extensions[i].extensionName;
+
+      meta_topic (META_DEBUG_VULKAN, "  %s v%u.%u.%u\n", extension_name,
                   VK_VERSION_MAJOR (extensions[i].specVersion),
                   VK_VERSION_MINOR (extensions[i].specVersion),
                   VK_VERSION_PATCH (extensions[i].specVersion));
+
+      if (g_strcmp0 (extension_name, VK_EXT_DEBUG_REPORT_EXTENSION_NAME) == 0)
+        {
+          vulkan->debug_report_extension = TRUE;
+        }
     }
 
   meta_pop_no_msg_prefix ();
 
   g_free (extensions);
 }
+
+static gboolean
+create_instance (MetaCompositorVulkan  *vulkan,
+                 GError               **error)
+{
+  GPtrArray *layers;
+  GPtrArray *extensions;
+  VkApplicationInfo app_info;
+  VkInstanceCreateInfo instance_info;
+  VkResult result;
+
+  layers = g_ptr_array_new ();
+  extensions = g_ptr_array_new ();
+
+  if (vulkan->lunarg_validation_layer)
+    g_ptr_array_add (layers, (gpointer) "VK_LAYER_LUNARG_standard_validation");
+
+  g_ptr_array_add (extensions, (gpointer) VK_KHR_SURFACE_EXTENSION_NAME);
+  g_ptr_array_add (extensions, (gpointer) VK_KHR_XLIB_SURFACE_EXTENSION_NAME);
+
+  if (vulkan->debug_report_extension)
+    g_ptr_array_add (extensions, (gpointer) VK_EXT_DEBUG_REPORT_EXTENSION_NAME);
+
+  app_info.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
+  app_info.pNext = NULL;
+  app_info.pApplicationName = "Metacity";
+  app_info.applicationVersion = VK_MAKE_VERSION (METACITY_MAJOR_VERSION,
+                                                 METACITY_MINOR_VERSION,
+                                                 METACITY_MICRO_VERSION);
+  app_info.pEngineName = NULL;
+  app_info.engineVersion = 0;
+  app_info.apiVersion = VK_API_VERSION_1_0;
+
+  instance_info.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
+  instance_info.pNext = NULL;
+  instance_info.flags = 0;
+  instance_info.pApplicationInfo = &app_info;
+  instance_info.enabledLayerCount = layers->len;
+  instance_info.ppEnabledLayerNames = (const char * const *) layers->pdata;
+  instance_info.enabledExtensionCount = extensions->len;
+  instance_info.ppEnabledExtensionNames = (const char * const *) extensions->pdata;
+
+  result = vkCreateInstance (&instance_info, NULL, &vulkan->instance);
+
+  g_ptr_array_free (layers, TRUE);
+  g_ptr_array_free (extensions, TRUE);
+
+  if (result != VK_SUCCESS)
+    {
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Failed to create Vulkan instance");
+
+      return FALSE;
+    }
+
+  return TRUE;
+}
 #endif
+
+static void
+meta_compositor_vulkan_finalize (GObject *object)
+{
+#ifdef HAVE_VULKAN
+  MetaCompositorVulkan *vulkan;
+
+  vulkan = META_COMPOSITOR_VULKAN (object);
+
+  if (vulkan->instance != VK_NULL_HANDLE)
+    {
+      vkDestroyInstance (vulkan->instance, NULL);
+      vulkan->instance = VK_NULL_HANDLE;
+    }
+#endif
+
+  G_OBJECT_CLASS (meta_compositor_vulkan_parent_class)->finalize (object);
+}
 
 static gboolean
 meta_compositor_vulkan_manage (MetaCompositor  *compositor,
@@ -147,6 +245,9 @@ meta_compositor_vulkan_manage (MetaCompositor  *compositor,
 
   enumerate_instance_layers (vulkan);
   enumerate_instance_extensions (vulkan);
+
+  if (!create_instance (vulkan, error))
+    return FALSE;
 
   g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED, "Not implemented");
 
@@ -252,9 +353,13 @@ meta_compositor_vulkan_is_our_xwindow (MetaCompositor *compositor,
 static void
 meta_compositor_vulkan_class_init (MetaCompositorVulkanClass *vulkan_class)
 {
+  GObjectClass *object_class;
   MetaCompositorClass *compositor_class;
 
+  object_class = G_OBJECT_CLASS (vulkan_class);
   compositor_class = META_COMPOSITOR_CLASS (vulkan_class);
+
+  object_class->finalize = meta_compositor_vulkan_finalize;
 
   compositor_class->manage = meta_compositor_vulkan_manage;
   compositor_class->add_window = meta_compositor_vulkan_add_window;
