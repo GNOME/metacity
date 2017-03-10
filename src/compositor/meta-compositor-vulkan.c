@@ -27,13 +27,15 @@
 
 struct _MetaCompositorVulkan
 {
-  MetaCompositor parent;
+  MetaCompositor           parent;
 
-  gboolean       lunarg_validation_layer;
-  gboolean       debug_report_extension;
+  gboolean                 lunarg_validation_layer;
+  gboolean                 debug_report_extension;
 
 #ifdef HAVE_VULKAN
-  VkInstance     instance;
+  VkInstance               instance;
+
+  VkDebugReportCallbackEXT debug_callback;
 #endif
 };
 
@@ -214,6 +216,69 @@ create_instance (MetaCompositorVulkan  *vulkan,
 
   return TRUE;
 }
+
+static VkBool32
+debug_report_cb (VkDebugReportFlagsEXT       flags,
+                 VkDebugReportObjectTypeEXT  objectType,
+                 uint64_t                    object,
+                 size_t                      location,
+                 int32_t                     messageCode,
+                 const char                 *pLayerPrefix,
+                 const char                 *pMessage,
+                 void                       *pUserData)
+{
+  if (flags & VK_DEBUG_REPORT_ERROR_BIT_EXT)
+    g_critical ("%s: %s", pLayerPrefix, pMessage);
+  else if (flags & VK_DEBUG_REPORT_WARNING_BIT_EXT)
+    g_critical ("%s: %s", pLayerPrefix, pMessage);
+  else if (flags & VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT)
+    g_warning ("%s: %s", pLayerPrefix, pMessage);
+  else
+    meta_topic (META_DEBUG_VULKAN, "%s: %s\n", pLayerPrefix, pMessage);
+
+  return VK_FALSE;
+}
+
+static void
+setup_debug_callback (MetaCompositorVulkan *vulkan)
+{
+  PFN_vkVoidFunction f;
+  VkDebugReportFlagsEXT flags;
+  VkDebugReportCallbackCreateInfoEXT info;
+  VkResult result;
+
+  if (!vulkan->lunarg_validation_layer || !vulkan->debug_report_extension)
+    return;
+
+  f = vkGetInstanceProcAddr (vulkan->instance, "vkCreateDebugReportCallbackEXT");
+
+  if (f == VK_NULL_HANDLE)
+    {
+      g_warning ("VK_EXT_debug_report not found");
+      return;
+    }
+
+  flags = VK_DEBUG_REPORT_INFORMATION_BIT_EXT |
+          VK_DEBUG_REPORT_WARNING_BIT_EXT |
+          VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT |
+          VK_DEBUG_REPORT_ERROR_BIT_EXT |
+          VK_DEBUG_REPORT_DEBUG_BIT_EXT;
+
+  info.sType = VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT;
+  info.pNext = NULL;
+  info.flags = flags;
+  info.pfnCallback = debug_report_cb;
+  info.pUserData = NULL;
+
+  result = ((PFN_vkCreateDebugReportCallbackEXT) f) (vulkan->instance,
+                                                     &info, NULL,
+                                                     &vulkan->debug_callback);
+
+  if (result != VK_SUCCESS)
+    {
+      g_warning ("Failed to set up debug callback");
+    }
+}
 #endif
 
 static void
@@ -223,6 +288,20 @@ meta_compositor_vulkan_finalize (GObject *object)
   MetaCompositorVulkan *vulkan;
 
   vulkan = META_COMPOSITOR_VULKAN (object);
+
+  if (vulkan->debug_callback != VK_NULL_HANDLE)
+    {
+      PFN_vkVoidFunction f;
+
+      f = vkGetInstanceProcAddr (vulkan->instance,
+                                 "vkDestroyDebugReportCallbackEXT");
+
+      ((PFN_vkDestroyDebugReportCallbackEXT) f) (vulkan->instance,
+                                                 vulkan->debug_callback,
+                                                 NULL);
+
+      vulkan->debug_callback = VK_NULL_HANDLE;
+    }
 
   if (vulkan->instance != VK_NULL_HANDLE)
     {
@@ -248,6 +327,8 @@ meta_compositor_vulkan_manage (MetaCompositor  *compositor,
 
   if (!create_instance (vulkan, error))
     return FALSE;
+
+  setup_debug_callback (vulkan);
 
   g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED, "Not implemented");
 
