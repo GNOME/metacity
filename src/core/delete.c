@@ -203,8 +203,7 @@ meta_window_kill (MetaWindow *window)
         }
       else
         {
-          meta_warning (_("Failed to get hostname: %s\n"),
-                        strerror (errno));
+          g_warning ("Failed to get hostname: %s", strerror (errno));
         }
     }
 

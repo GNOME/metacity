@@ -867,15 +867,15 @@ save_state (void)
   if (mkdir (metacity_dir, 0700) < 0 &&
       errno != EEXIST)
     {
-      meta_warning (_("Could not create directory '%s': %s\n"),
-                    metacity_dir, g_strerror (errno));
+      g_warning ("Could not create directory '%s': %s",
+                 metacity_dir, g_strerror (errno));
     }
 
   if (mkdir (session_dir, 0700) < 0 &&
       errno != EEXIST)
     {
-      meta_warning (_("Could not create directory '%s': %s\n"),
-                    session_dir, g_strerror (errno));
+      g_warning ("Could not create directory '%s': %s",
+                 session_dir, g_strerror (errno));
     }
 
   meta_topic (META_DEBUG_SM, "Saving session to '%s'\n", full_save_file ());
@@ -884,8 +884,8 @@ save_state (void)
 
   if (outfile == NULL)
     {
-      meta_warning (_("Could not open session file '%s' for writing: %s\n"),
-                    full_save_file (), g_strerror (errno));
+      g_warning ("Could not open session file '%s' for writing: %s",
+                 full_save_file (), g_strerror (errno));
       goto out;
     }
 
@@ -1025,13 +1025,13 @@ save_state (void)
       /* FIXME need a dialog for this */
       if (ferror (outfile))
         {
-          meta_warning (_("Error writing session file '%s': %s\n"),
-                        full_save_file (), g_strerror (errno));
+          g_warning ("Error writing session file '%s': %s",
+                     full_save_file (), g_strerror (errno));
         }
       if (fclose (outfile))
         {
-          meta_warning (_("Error closing session file '%s': %s\n"),
-                        full_save_file (), g_strerror (errno));
+          g_warning ("Error closing session file '%s': %s",
+                     full_save_file (), g_strerror (errno));
         }
     }
 
@@ -1160,8 +1160,7 @@ load_state (const char *previous_save_file)
 
  error:
 
-  meta_warning (_("Failed to parse saved session file: %s\n"),
-                error->message);
+  g_warning ("Failed to parse saved session file: %s", error->message);
   g_error_free (error);
 
   if (parse_data.info)

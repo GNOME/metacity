@@ -833,7 +833,9 @@ meta_frames_unmanage_window (MetaFrames *frames,
       g_free (frame);
     }
   else
-    meta_warning ("Frame 0x%lx not managed, can't unmanage\n", xwindow);
+    {
+      g_warning ("Frame 0x%lx not managed, can't unmanage", xwindow);
+    }
 }
 
 static MetaUIFrame*

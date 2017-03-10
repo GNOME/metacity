@@ -362,8 +362,7 @@ meta_screen_new (MetaDisplay *display,
    */
   if (xroot == None)
     {
-      meta_warning (_("Screen %d on display '%s' is invalid\n"),
-                    number, display->name);
+      g_warning ("Screen %d on display '%s' is invalid", number, display->name);
       return NULL;
     }
 
@@ -378,8 +377,9 @@ meta_screen_new (MetaDisplay *display,
 
       if (!replace_current_wm)
         {
-          meta_warning (_("Screen %d on display \"%s\" already has a window manager; try using the --replace option to replace the current window manager.\n"),
-                        number, display->name);
+          g_warning ("Screen %d on display \"%s\" already has a window "
+                     "manager; try using the --replace option to replace the "
+                     "current window manager.", number, display->name);
 
           return NULL;
         }
@@ -405,8 +405,8 @@ meta_screen_new (MetaDisplay *display,
 
   if (XGetSelectionOwner (xdisplay, wm_sn_atom) != new_wm_sn_owner)
     {
-      meta_warning (_("Could not acquire window manager selection on screen %d display \"%s\"\n"),
-                    number, display->name);
+      g_warning ("Could not acquire window manager selection on "
+                 "screen %d display \"%s\"", number, display->name);
 
       XDestroyWindow (xdisplay, new_wm_sn_owner);
 
@@ -461,8 +461,8 @@ meta_screen_new (MetaDisplay *display,
                 attr.your_event_mask);
   if (meta_error_trap_pop_with_return (display) != Success)
     {
-      meta_warning (_("Screen %d on display \"%s\" already has a window manager\n"),
-                    number, display->name);
+      g_warning ("Screen %d on display \"%s\" already has a window manager",
+                 number, display->name);
 
       XDestroyWindow (xdisplay, new_wm_sn_owner);
 
@@ -523,7 +523,9 @@ meta_screen_new (MetaDisplay *display,
         XFreeFontInfo (NULL, font_info, 1);
       }
     else
-      meta_warning ("xserver doesn't have 'fixed' font.\n");
+      {
+        g_warning ("xserver doesn't have 'fixed' font.");
+      }
 
     screen->root_xor_gc = XCreateGC (screen->display->xdisplay,
                                      screen->xroot,
@@ -661,8 +663,10 @@ meta_screen_free (MetaScreen *screen,
   meta_error_trap_push (screen->display);
   XSelectInput (screen->display->xdisplay, screen->xroot, 0);
   if (meta_error_trap_pop_with_return (screen->display) != Success)
-    meta_warning (_("Could not release screen %d on display \"%s\"\n"),
-                  screen->number, screen->display->name);
+    {
+      g_warning ("Could not release screen %d on display \"%s\"",
+                 screen->number, screen->display->name);
+    }
 
   unset_wm_check_hint (screen);
 
@@ -1734,7 +1738,7 @@ meta_screen_update_workspace_layout (MetaScreen *screen)
               screen->vertical_workspaces = TRUE;
               break;
             default:
-              meta_warning ("Someone set a weird orientation in _NET_DESKTOP_LAYOUT\n");
+              g_warning ("Someone set a weird orientation in _NET_DESKTOP_LAYOUT");
               break;
             }
 
@@ -1743,7 +1747,8 @@ meta_screen_update_workspace_layout (MetaScreen *screen)
 
           if (rows <= 0 && cols <= 0)
             {
-              meta_warning ("Columns = %d rows = %d in _NET_DESKTOP_LAYOUT makes no sense\n", rows, cols);
+              g_warning ("Columns = %d rows = %d in _NET_DESKTOP_LAYOUT makes no sense",
+                         rows, cols);
             }
           else
             {
@@ -1775,7 +1780,7 @@ meta_screen_update_workspace_layout (MetaScreen *screen)
                     screen->starting_corner = META_SCREEN_BOTTOMLEFT;
                     break;
                   default:
-                    meta_warning ("Someone set a weird starting corner in _NET_DESKTOP_LAYOUT\n");
+                    g_warning ("Someone set a weird starting corner in _NET_DESKTOP_LAYOUT");
                     break;
                 }
             }
@@ -1784,8 +1789,8 @@ meta_screen_update_workspace_layout (MetaScreen *screen)
         }
       else
         {
-          meta_warning ("Someone set _NET_DESKTOP_LAYOUT to %d integers instead of 4 "
-                        "(3 is accepted for backwards compat)\n", n_items);
+          g_warning ("Someone set _NET_DESKTOP_LAYOUT to %d integers instead of 4 "
+                     "(3 is accepted for backwards compat)", n_items);
         }
 
       meta_XFree (list);

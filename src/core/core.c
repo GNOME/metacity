@@ -158,7 +158,7 @@ meta_core_get (Display *xdisplay,
         break;
 
       default:
-        meta_warning(_("Unknown window information request: %d"), request);
+        g_warning ("Unknown window information request: %d", request);
         break;
     }
 

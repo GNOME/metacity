@@ -309,8 +309,9 @@ meta_display_open (void)
 
   if (xdisplay == NULL)
     {
-      meta_warning (_("Failed to open X Window System display '%s'\n"),
-                    XDisplayName (NULL));
+      g_warning ("Failed to open X Window System display '%s'",
+                 XDisplayName (NULL));
+
       return FALSE;
     }
 
@@ -963,8 +964,8 @@ meta_display_for_x_display (Display *xdisplay)
   if (the_display->xdisplay == xdisplay)
     return the_display;
 
-  meta_warning ("Could not find display for X display %p, probably going to crash\n",
-                xdisplay);
+  g_warning ("Could not find display for X display %p, probably going to crash",
+             xdisplay);
 
   return NULL;
 }
@@ -1848,7 +1849,7 @@ event_callback (XEvent   *event,
               if (window->frame)
                 {
                   window->frame->need_reapply_frame_shape = TRUE;
-                  meta_warning ("from event callback\n");
+                  g_warning ("from event callback");
                   meta_window_queue (window, META_QUEUE_MOVE_RESIZE);
                 }
             }
@@ -1871,9 +1872,9 @@ event_callback (XEvent   *event,
            * nor do we want to use them to sanity check other timestamps.
            * See bug 313490 for more details.
            */
-          meta_warning ("Event has no timestamp! You may be using a broken "
-                        "program such as xse.  Please ask the authors of that "
-                        "program to fix it.\n");
+          g_warning ("Event has no timestamp! You may be using a broken "
+                     "program such as xse.  Please ask the authors of that "
+                     "program to fix it.");
         }
       else
         {
@@ -2245,8 +2246,10 @@ event_callback (XEvent   *event,
 
           if (frame_was_receiver)
             {
-              meta_warning ("Unexpected destruction of frame 0x%lx, not sure if this should silently fail or be considered a bug\n",
-                            window->frame->xwindow);
+              g_warning ("Unexpected destruction of frame 0x%lx, not sure if "
+                         "this should silently fail or be considered a bug",
+                         window->frame->xwindow);
+
               meta_error_trap_push (display);
               meta_window_destroy_frame (window->frame->window);
               meta_error_trap_pop (display);
@@ -2321,7 +2324,7 @@ event_callback (XEvent   *event,
         }
       else if (frame_was_receiver)
         {
-          meta_warning ("Map requests on the frame window are unexpected\n");
+          g_warning ("Map requests on the frame window are unexpected");
           break;
         }
 
@@ -2510,9 +2513,9 @@ event_callback (XEvent   *event,
                   /* Handle clients using the older version of the spec... */
                   if (time == 0 && workspace)
                     {
-                      meta_warning ("Received a NET_CURRENT_DESKTOP message "
-                                    "from a broken (outdated) client who sent "
-                                    "a 0 timestamp\n");
+                      g_warning ("Received a NET_CURRENT_DESKTOP message from "
+                                 "a broken (outdated) client who sent a 0 timestamp");
+
                       time = meta_display_get_current_time_roundtrip (display);
                     }
 
@@ -3552,9 +3555,11 @@ meta_display_begin_grab_op (MetaDisplay *display,
   if (display->grab_op != META_GRAB_OP_NONE)
     {
       if (window)
-        meta_warning ("Attempt to perform window operation %u on window %s when operation %u on %s already in effect\n",
-                      op, window->desc, display->grab_op,
-                      display->grab_window ? display->grab_window->desc : "none");
+        g_warning ("Attempt to perform window operation %u on window %s when "
+                   "operation %u on %s already in effect",
+                   op, window->desc, display->grab_op,
+                   display->grab_window ? display->grab_window->desc : "none");
+
       return FALSE;
     }
 
@@ -4363,7 +4368,7 @@ meta_display_ping_window (MetaDisplay        *display,
 
   if (timestamp == CurrentTime)
     {
-      meta_warning ("Tried to ping a window with CurrentTime! Not allowed.\n");
+      g_warning ("Tried to ping a window with CurrentTime! Not allowed.");
       return;
     }
 
@@ -4423,9 +4428,10 @@ process_request_frame_extents (MetaDisplay    *display,
                                                 event->xclient.window);
       if (screen == NULL)
         {
-          meta_warning ("Received request to set _NET_FRAME_EXTENTS "
-                        "on 0x%lx which is on a screen we are not managing\n",
-                        event->xclient.window);
+          g_warning ("Received request to set _NET_FRAME_EXTENTS "
+                     "on 0x%lx which is on a screen we are not managing",
+                     event->xclient.window);
+
           meta_XFree (hints);
           return;
         }
@@ -5237,11 +5243,11 @@ sanity_check_timestamps (MetaDisplay *display,
 {
   if (XSERVER_TIME_IS_BEFORE (timestamp, display->last_focus_time))
     {
-      meta_warning ("last_focus_time (%u) is greater than comparison "
-                    "timestamp (%u).  This most likely represents a buggy "
-                    "client sending inaccurate timestamps in messages such as "
-                    "_NET_ACTIVE_WINDOW.  Trying to work around...\n",
-                    display->last_focus_time, timestamp);
+      g_warning ("last_focus_time (%u) is greater than comparison "
+                 "timestamp (%u). This most likely represents a buggy "
+                 "client sending inaccurate timestamps in messages such as "
+                 "_NET_ACTIVE_WINDOW. Trying to work around...",
+                 display->last_focus_time, timestamp);
       display->last_focus_time = timestamp;
     }
   if (XSERVER_TIME_IS_BEFORE (timestamp, display->last_user_time))
@@ -5249,11 +5255,11 @@ sanity_check_timestamps (MetaDisplay *display,
       GSList *windows;
       GSList *tmp;
 
-      meta_warning ("last_user_time (%u) is greater than comparison "
-                    "timestamp (%u).  This most likely represents a buggy "
-                    "client sending inaccurate timestamps in messages such as "
-                    "_NET_ACTIVE_WINDOW.  Trying to work around...\n",
-                    display->last_user_time, timestamp);
+      g_warning ("last_user_time (%u) is greater than comparison "
+                 "timestamp (%u). This most likely represents a buggy "
+                 "client sending inaccurate timestamps in messages such as "
+                 "_NET_ACTIVE_WINDOW. Trying to work around...",
+                 display->last_user_time, timestamp);
       display->last_user_time = timestamp;
 
       windows = meta_display_list_windows (display, META_LIST_DEFAULT);
@@ -5264,9 +5270,9 @@ sanity_check_timestamps (MetaDisplay *display,
 
           if (XSERVER_TIME_IS_BEFORE (timestamp, window->net_wm_user_time))
             {
-              meta_warning ("%s appears to be one of the offending windows "
-                            "with a timestamp of %u.  Working around...\n",
-                            window->desc, window->net_wm_user_time);
+              g_warning ("%s appears to be one of the offending windows "
+                         "with a timestamp of %u. Working around...",
+                         window->desc, window->net_wm_user_time);
               window->net_wm_user_time = timestamp;
             }
 

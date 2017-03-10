@@ -222,8 +222,8 @@ complain_about_broken_client (MetaWindow    *window,
                               MetaPropValue *value,
                               gboolean       initial)
 {
-  meta_warning ("Broken client! Window %s changed client leader window or SM client ID\n",
-                window->desc);
+  g_warning ("Broken client! Window %s changed client leader window "
+             "or SM client ID", window->desc);
 }
 
 static void
@@ -405,8 +405,9 @@ reload_net_wm_pid (MetaWindow    *window,
       gulong cardinal = (int) value->v.cardinal;
 
       if (cardinal <= 0)
-        meta_warning (_("Application set a bogus _NET_WM_PID %lu\n"),
-                      cardinal);
+        {
+          g_warning ("Application set a bogus _NET_WM_PID %lu", cardinal);
+        }
       else
         {
           window->net_wm_pid = cardinal;
@@ -1617,8 +1618,8 @@ reload_transient_for (MetaWindow    *window,
       parent = meta_display_lookup_x_window (window->display, transient_for);
       if (!parent)
         {
-          meta_warning ("Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n",
-                        transient_for, window->desc);
+          g_warning ("Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.",
+                     transient_for, window->desc);
           transient_for = None;
         }
 
@@ -1627,8 +1628,8 @@ reload_transient_for (MetaWindow    *window,
         {
           if (parent == window)
             {
-              meta_warning ("WM_TRANSIENT_FOR window 0x%lx for %s would create loop.\n",
-                            transient_for, window->desc);
+              g_warning ("WM_TRANSIENT_FOR window 0x%lx for %s would create loop.",
+                         transient_for, window->desc);
               transient_for = None;
               break;
             }

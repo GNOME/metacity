@@ -40,8 +40,6 @@ void meta_verbose (const char *format,
 
 void meta_bug        (const char *format,
                       ...) G_GNUC_PRINTF (1, 2);
-void meta_warning    (const char *format,
-                      ...) G_GNUC_PRINTF (1, 2);
 void meta_fatal      (const char *format,
                       ...) G_GNUC_PRINTF (1, 2);
 

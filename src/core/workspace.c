@@ -653,9 +653,10 @@ ensure_work_areas_validated (MetaWorkspace *workspace)
 #define MIN_SANE_AREA 100
   if (work_area.width < MIN_SANE_AREA)
     {
-      meta_warning ("struts occupy an unusually large percentage of the screen; "
-                    "available remaining width = %d < %d",
-                    work_area.width, MIN_SANE_AREA);
+      g_warning ("struts occupy an unusually large percentage of the screen; "
+                 "available remaining width = %d < %d",
+                 work_area.width, MIN_SANE_AREA);
+
       if (work_area.width < 1)
         {
           work_area.x = (workspace->screen->rect.width - MIN_SANE_AREA)/2;
@@ -670,9 +671,10 @@ ensure_work_areas_validated (MetaWorkspace *workspace)
     }
   if (work_area.height < MIN_SANE_AREA)
     {
-      meta_warning ("struts occupy an unusually large percentage of the screen; "
-                    "available remaining height = %d < %d",
-                    work_area.height, MIN_SANE_AREA);
+      g_warning ("struts occupy an unusually large percentage of the screen; "
+                 "available remaining height = %d < %d",
+                  work_area.height, MIN_SANE_AREA);
+
       if (work_area.height < 1)
         {
           work_area.y = (workspace->screen->rect.height - MIN_SANE_AREA)/2;
@@ -887,10 +889,9 @@ meta_workspace_focus_default_window (MetaWorkspace *workspace,
 {
   if (timestamp == CurrentTime)
     {
-      meta_warning ("CurrentTime used to choose focus window; "
-                    "focus window may not be correct.\n");
+      g_warning ("CurrentTime used to choose focus window; "
+                 "focus window may not be correct.");
     }
-
 
   if (meta_prefs_get_focus_mode () == G_DESKTOP_FOCUS_MODE_CLICK ||
       !workspace->screen->display->mouse_mode)

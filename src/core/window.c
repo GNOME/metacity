@@ -3212,8 +3212,8 @@ window_activate (MetaWindow     *window,
   /* For those stupid pagers, get a valid timestamp and show a warning */
   if (timestamp == 0)
     {
-      meta_warning ("meta_window_activate called by a pager with a 0 timestamp; "
-                    "the pager needs to be fixed.\n");
+      g_warning ("meta_window_activate called by a pager with a 0 timestamp; "
+                 "the pager needs to be fixed.");
       timestamp = meta_display_get_current_time_roundtrip (window->display);
     }
 
@@ -4189,7 +4189,9 @@ meta_window_configure_notify (MetaWindow      *window,
   window->rect.height = event->height;
 
   if (!event->override_redirect && !event->send_event)
-    meta_warning ("Unhandled change of windows override redirect status\n");
+    {
+      g_warning ("Unhandled change of windows override redirect status");
+    }
 }
 
 void
@@ -4965,11 +4967,10 @@ meta_window_raise (MetaWindow  *window)
     meta_stack_raise (window->screen->stack, ancestor);
   else
     {
-      meta_warning (
-                    "Either stacks aren't per screen or some window has a weird "
-                    "transient_for hint; window->screen->stack != "
-                    "ancestor->screen->stack.  window = %s, ancestor = %s.\n",
-                    window->desc, ancestor->desc);
+      g_warning ("Either stacks aren't per screen or some window has a weird "
+                 "transient_for hint; window->screen->stack != "
+                 "ancestor->screen->stack.  window = %s, ancestor = %s.",
+                  window->desc, ancestor->desc);
       /* We could raise the window here, but don't want to do that twice and
        * so we let the case below handle that.
        */
@@ -5395,10 +5396,9 @@ meta_window_client_message (MetaWindow *window,
         timestamp = event->xclient.data.l[0];
       else
         {
-          meta_warning ("Receiving a NET_CLOSE_WINDOW message for %s without "
-                        "a timestamp!  This means some buggy (outdated) "
-                        "application is on the loose!\n",
-                        window->desc);
+          g_warning ("Receiving a NET_CLOSE_WINDOW message for %s without "
+                     "a timestamp!  This means some buggy (outdated) "
+                     "application is on the loose!", window->desc);
           timestamp = meta_display_get_current_time (window->display);
         }
 
@@ -5822,9 +5822,8 @@ meta_window_client_message (MetaWindow *window,
       if (timestamp == 0)
         {
           /* Client using older EWMH _NET_ACTIVE_WINDOW without a timestamp */
-          meta_warning ("Buggy client sent a _NET_ACTIVE_WINDOW message with a "
-                        "timestamp of 0 for %s\n",
-                        window->desc);
+          g_warning ("Buggy client sent a _NET_ACTIVE_WINDOW message with a "
+                     "timestamp of 0 for %s", window->desc);
           timestamp = meta_display_get_current_time (display);
         }
 
@@ -6205,8 +6204,11 @@ update_sm_hints (MetaWindow *window)
                                            &str))
             {
               if (window->sm_client_id == NULL) /* first time through */
-                meta_warning (_("Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER window as specified in the ICCCM.\n"),
-                              window->desc);
+                {
+                  g_warning ("Window %s sets SM_CLIENT_ID on itself, instead "
+                             "of on the WM_CLIENT_LEADER window as specified "
+                             "in the ICCCM.", window->desc);
+                }
 
               window->sm_client_id = g_strdup (str);
               meta_XFree (str);
@@ -6567,8 +6569,8 @@ recalc_window_type (MetaWindow *window)
           atom_name = XGetAtomName (window->display->xdisplay, window->type_atom);
           meta_error_trap_pop (window->display);
 
-          meta_warning ("Unrecognized type atom [%s] set for %s \n",
-                        atom_name ? atom_name : "unknown", window->desc);
+          g_warning ("Unrecognized type atom [%s] set for %s",
+                     atom_name ? atom_name : "unknown", window->desc);
 
           if (atom_name)
             XFree (atom_name);
@@ -6775,12 +6777,11 @@ recalc_window_features (MetaWindow *window)
        * about these apps but make them work.
        */
 
-      meta_warning (_("Window %s sets an MWM hint indicating it isn't resizable, but sets min size %d x %d and max size %d x %d; this doesn't make much sense.\n"),
-                    window->desc,
-                    window->size_hints.min_width,
-                    window->size_hints.min_height,
-                    window->size_hints.max_width,
-                    window->size_hints.max_height);
+      g_warning ("Window %s sets an MWM hint indicating it isn't resizable, "
+                 "but sets min size %d x %d and max size %d x %d; this "
+                 "doesn't make much sense.", window->desc,
+                 window->size_hints.min_width, window->size_hints.min_height,
+                 window->size_hints.max_width, window->size_hints.max_height);
     }
 
   window->has_shade_func = TRUE;
@@ -7070,7 +7071,7 @@ menu_callback (MetaWindowMenu *menu,
           break;
 
         default:
-          meta_warning (G_STRLOC": Unknown window op\n");
+          g_warning (G_STRLOC": Unknown window op");
           break;
         }
 
@@ -8278,7 +8279,7 @@ meta_window_get_current_tile_area (MetaWindow *window,
   tile_monitor_number = window->tile_monitor_number;
   if (tile_monitor_number < 0)
     {
-      meta_warning ("%s called with an invalid monitor number; using 0 instead\n", G_STRFUNC);
+      g_warning ("%s called with an invalid monitor number; using 0 instead", G_STRFUNC);
       tile_monitor_number = 0;
     }
 

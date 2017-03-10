@@ -728,7 +728,7 @@ find_preferred_position (MetaWindow *window,
             break;
 
           default:
-            meta_warning ("Unknown window-placement option chosen.\n");
+            g_warning ("Unknown window-placement option chosen.");
             return FALSE;
             break;
         }

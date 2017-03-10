@@ -466,7 +466,9 @@ meta_window_menu_popup (MetaWindowMenu     *menu,
                           event);
 
   if (!gtk_widget_get_visible (menu->menu))
-    meta_warning ("GtkMenu failed to grab the pointer\n");
+    {
+      g_warning ("GtkMenu failed to grab the pointer");
+    }
 }
 
 void

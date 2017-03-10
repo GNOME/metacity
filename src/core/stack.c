@@ -1591,8 +1591,8 @@ meta_stack_set_positions (MetaStack *stack,
 
   if (!lists_contain_same_windows (windows, stack->sorted))
     {
-      meta_warning ("This list of windows has somehow changed; not resetting "
-                    "positions of the windows.\n");
+      g_warning ("This list of windows has somehow changed; not resetting "
+                 "positions of the windows.");
       return;
     }
 

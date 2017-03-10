@@ -63,8 +63,7 @@ ensure_logfile (void)
 
       if (err != NULL)
         {
-          meta_warning (_("Failed to open debug log: %s\n"),
-                        err->message);
+          g_warning ("Failed to open debug log: %s", err->message);
           g_error_free (err);
           return;
         }
@@ -73,8 +72,8 @@ ensure_logfile (void)
 
       if (logfile == NULL)
         {
-          meta_warning (_("Failed to fdopen() log file %s: %s\n"),
-                        filename, strerror (errno));
+          g_warning ("Failed to fdopen() log file %s: %s",
+                     filename, strerror (errno));
           close (fd);
         }
       else
@@ -313,30 +312,6 @@ meta_bug (const char *format, ...)
 }
 
 void
-meta_warning (const char *format, ...)
-{
-  va_list args;
-  gchar *str;
-  FILE *out;
-
-  g_return_if_fail (format != NULL);
-
-  va_start (args, format);
-  str = g_strdup_vprintf (format, args);
-  va_end (args);
-
-  out = logfile ? logfile : stderr;
-
-  if (no_prefix == 0)
-    utf8_fputs (_("Window manager warning: "), out);
-  utf8_fputs (str, out);
-
-  fflush (out);
-
-  g_free (str);
-}
-
-void
 meta_fatal (const char *format, ...)
 {
   va_list args;
@@ -534,7 +509,7 @@ meta_show_dialog (const char *type,
 
   if (error)
     {
-      meta_warning ("%s\n", error->message);
+      g_warning ("%s", error->message);
       g_error_free (error);
     }
 

@@ -1040,8 +1040,8 @@ maybe_give_disable_workarounds_warning (void)
     {
       first_disable = FALSE;
 
-      meta_warning (_("Workarounds for broken applications disabled. "
-                      "Some applications may not behave properly.\n"));
+      g_warning ("Workarounds for broken applications disabled. "
+                 "Some applications may not behave properly.");
     }
 }
 
@@ -1117,10 +1117,8 @@ titlebar_handler (GVariant *value,
 
   if (desc == NULL)
     {
-      meta_warning (_("Could not parse font description "
-                      "\"%s\" from GSettings key %s\n"),
-                    string_value ? string_value : "(null)",
-                    KEY_TITLEBAR_FONT);
+      g_warning ("Could not parse font description \"%s\" from GSettings key %s",
+                 string_value ? string_value : "(null)", KEY_TITLEBAR_FONT);
 
       return FALSE;
     }
@@ -1176,12 +1174,8 @@ mouse_button_mods_handler (GVariant *value,
 
   if (!string_value || !meta_ui_parse_modifier (string_value, &mods))
     {
-      meta_topic (META_DEBUG_KEYBINDINGS,
-                  "Failed to parse new GSettings value\n");
-
-      meta_warning (_("\"%s\" found in configuration database is "
-                      "not a valid value for mouse button modifier\n"),
-                    string_value);
+      g_warning ("\"%s\" found in configuration database is not a valid value "
+                 "for mouse button modifier", string_value);
 
       return FALSE;
     }
@@ -1427,8 +1421,8 @@ update_binding (MetaKeyPref *binding,
         {
           meta_topic (META_DEBUG_KEYBINDINGS,
                       "Failed to parse new GSettings value\n");
-          meta_warning (_("\"%s\" found in configuration database is not a valid value for keybinding \"%s\"\n"),
-                        strokes[i], binding->name);
+          g_warning ("\"%s\" found in configuration database is not a valid "
+                     "value for keybinding \"%s\"", strokes[i], binding->name);
 
           /* Value is kept and will thus be removed next time we save the key.
            * Changing the key in response to a modification could lead to cyclic calls. */
@@ -1443,10 +1437,8 @@ update_binding (MetaKeyPref *binding,
           0 != keysym &&
           (META_VIRTUAL_SHIFT_MASK == mods || 0 == mods))
         {
-          meta_warning ("Cannot bind \"%s\" to %s: it needs a modifier "
-                        "such as Ctrl or Alt.\n",
-                        binding->name,
-                        strokes[i]);
+          g_warning ("Cannot bind \"%s\" to %s: it needs a modifier "
+                     "such as Ctrl or Alt.", binding->name, strokes[i]);
 
           /* Value is kept and will thus be removed next time we save the key.
            * Changing the key in response to a modification could lead to cyclic calls. */
@@ -1625,7 +1617,7 @@ meta_prefs_add_keybinding (const char           *name,
 
   if (g_hash_table_lookup (key_bindings, name))
     {
-      meta_warning ("Trying to re-add keybinding \"%s\".\n", name);
+      g_warning ("Trying to re-add keybinding \"%s\".", name);
       return FALSE;
     }
 
@@ -1786,10 +1778,11 @@ meta_prefs_get_compositing_manager (void)
     {
       if (!warned)
         {
-          meta_warning (_("Missing %s extension required for compositing\n"),
-                        !META_DISPLAY_HAS_COMPOSITE (display) ? "composite" :
-                        !META_DISPLAY_HAS_DAMAGE (display) ? "damage" :
-                        !META_DISPLAY_HAS_XFIXES (display) ? "xfixes" : "render");
+          g_warning ("Missing %s extension required for compositing",
+                     !META_DISPLAY_HAS_COMPOSITE (display) ? "composite" :
+                     !META_DISPLAY_HAS_DAMAGE (display) ? "damage" :
+                     !META_DISPLAY_HAS_XFIXES (display) ? "xfixes" : "render");
+
           warned = TRUE;
         }
 

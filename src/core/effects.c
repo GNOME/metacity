@@ -173,7 +173,7 @@ effects_draw_box_animation_timeout (BoxAnimationContext *context)
   if (elapsed < 0)
     {
       /* Probably the system clock was set backwards? */
-      meta_warning ("System clock seemed to go backwards?\n");
+      g_warning ("System clock seemed to go backwards?");
       elapsed = G_MAXDOUBLE; /* definitely done. */
     }
 

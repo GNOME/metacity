@@ -680,7 +680,11 @@ meta_change_keygrab (MetaDisplay *display,
           if (grab && result != Success)
             {
               if (result == BadAccess)
-                meta_warning (_("Some other program is already using the key %s with modifiers %x as a binding\n"), keysym_to_string (keysym), modmask | ignored_mask);
+                {
+                  g_warning ("Some other program is already using the key %s "
+                             "with modifiers %x as a binding",
+                             keysym_to_string (keysym), modmask | ignored_mask);
+                }
               else
                 meta_topic (META_DEBUG_KEYBINDINGS,
                             "Failed to grab key %s with modifiers %x\n",
@@ -2633,7 +2637,8 @@ process_workspace_switch_grab (MetaDisplay *display,
         }
 
       /* Workspace switching should have already occurred on KeyPress */
-      meta_warning ("target_workspace != active_workspace.  Some other event must have occurred.\n");
+      g_warning ("target_workspace != active_workspace. Some other "
+                 "event must have occurred.");
 
       return FALSE; /* end grab */
     }

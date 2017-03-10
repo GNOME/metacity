@@ -479,13 +479,8 @@ setup_constraint_info (ConstraintInfo      *info,
       window->has_fullscreen_func &&
       !window->fullscreen)
     {
-      /*
-      meta_topic (META_DEBUG_GEOMETRY,
-      */
-      meta_warning (
-                  "Treating resize request of legacy application %s as a "
-                  "fullscreen request\n",
-                  window->desc);
+      g_warning ("Treating resize request of legacy application %s as a "
+                 "fullscreen request", window->desc);
       meta_window_make_fullscreen_internal (window);
     }
 

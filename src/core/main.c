@@ -368,7 +368,8 @@ main (int argc, char **argv)
   GIOChannel *channel;
 
   if (setlocale (LC_ALL, "") == NULL)
-    meta_warning ("Locale not understood by C library, internationalization will not work\n");
+    g_warning ("Locale not understood by C library, internationalization "
+               "will not work");
 
   sigemptyset (&empty_mask);
   act.sa_handler = SIG_IGN;
@@ -404,9 +405,10 @@ main (int argc, char **argv)
     meta_set_debugging (TRUE);
 
   if (g_get_home_dir ())
-    if (chdir (g_get_home_dir ()) < 0)
-      meta_warning ("Could not change to home directory %s.\n",
-                    g_get_home_dir ());
+    {
+      if (chdir (g_get_home_dir ()) < 0)
+        g_warning ("Could not change to home directory %s.", g_get_home_dir ());
+    }
 
   meta_print_self_identity ();
 
