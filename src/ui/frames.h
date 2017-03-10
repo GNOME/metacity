@@ -26,6 +26,7 @@
 #include <gdk/gdkx.h>
 #include <libmetacity/meta-theme.h>
 #include "common.h"
+#include "ui.h"
 
 typedef enum
 {
@@ -79,7 +80,7 @@ struct _MetaUIFrame
   gint prelit_y;
 };
 
-MetaFrames *meta_frames_new (void);
+MetaFrames *meta_frames_new (MetaUI *ui);
 
 void meta_frames_manage_window (MetaFrames *frames,
                                 Window      xwindow,

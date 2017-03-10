@@ -293,7 +293,7 @@ meta_ui_new (Display *xdisplay)
 
   meta_ui_reload_theme ();
 
-  ui->frames = meta_frames_new ();
+  ui->frames = meta_frames_new (ui);
 
   /* GTK+ needs the frame-sync protocol to work in order to properly
    * handle style changes. This means that the dummy widget we create
@@ -689,14 +689,14 @@ meta_ui_theme_get_frame_borders (MetaUI           *ui,
   MetaTheme *theme;
   const gchar *theme_variant;
 
-  theme = meta_ui_get_theme ();
+  theme = meta_ui_get_theme (ui);
   theme_variant = NULL;
 
   meta_theme_get_frame_borders (theme, theme_variant, type, flags, borders);
 }
 
 MetaTheme *
-meta_ui_get_theme (void)
+meta_ui_get_theme (MetaUI *ui)
 {
   return meta_current_theme;
 }

@@ -19,10 +19,11 @@
 #define META_UI_PRIVATE_H
 
 #include <libmetacity/meta-theme.h>
+#include "ui.h"
 
 G_BEGIN_DECLS
 
-MetaTheme *meta_ui_get_theme (void);
+MetaTheme *meta_ui_get_theme (MetaUI *ui);
 
 G_END_DECLS
 

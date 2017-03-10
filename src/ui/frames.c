@@ -89,6 +89,8 @@ struct _MetaFrames
 {
   GtkWindow    parent;
 
+  MetaUI      *ui;
+
   Display     *xdisplay;
 
   GHashTable  *frames;
@@ -152,7 +154,7 @@ get_control (MetaFrames  *frames,
                  META_CORE_GET_FRAME_TYPE, &type,
                  META_CORE_GET_END);
 
-  theme = meta_ui_get_theme ();
+  theme = meta_ui_get_theme (frames->ui);
   button = meta_theme_get_button (theme, x, y);
 
   if (button != NULL)
@@ -286,7 +288,8 @@ get_control (MetaFrames  *frames,
 }
 
 static gboolean
-get_control_rect (MetaFrameControl   control,
+get_control_rect (MetaFrames        *frames,
+                  MetaFrameControl   control,
                   MetaFrameGeometry *fgeom,
                   gint               x,
                   gint               y,
@@ -365,7 +368,7 @@ get_control_rect (MetaFrameControl   control,
   if (type == META_BUTTON_TYPE_LAST)
     return FALSE;
 
-  theme = meta_ui_get_theme ();
+  theme = meta_ui_get_theme (frames->ui);
   button = meta_theme_get_button (theme, x, y);
 
   if (button == NULL || meta_button_get_type (button) != type)
@@ -600,7 +603,7 @@ meta_frames_font_changed (MetaFrames *frames)
   MetaTheme *theme;
   const PangoFontDescription *titlebar_font;
 
-  theme = meta_ui_get_theme ();
+  theme = meta_ui_get_theme (frames->ui);
   titlebar_font = meta_prefs_get_titlebar_font ();
 
   meta_theme_set_titlebar_font (theme, titlebar_font);
@@ -648,7 +651,7 @@ meta_frames_composited_changed (MetaFrames *frames)
   MetaTheme *theme;
   gboolean compositing_manager;
 
-  theme = meta_ui_get_theme ();
+  theme = meta_ui_get_theme (frames->ui);
   compositing_manager = meta_prefs_get_compositing_manager ();
 
   meta_theme_set_composited (theme, compositing_manager);
@@ -662,7 +665,7 @@ meta_frames_style_updated (GtkWidget *widget)
   MetaTheme *theme;
 
   frames = META_FRAMES (widget);
-  theme = meta_ui_get_theme ();
+  theme = meta_ui_get_theme (frames->ui);
 
   meta_theme_invalidate (theme);
 
@@ -692,18 +695,18 @@ meta_frames_calc_geometry (MetaFrames        *frames,
                  META_CORE_GET_FRAME_TYPE, &type,
                  META_CORE_GET_END);
 
-  meta_theme_calc_geometry (meta_ui_get_theme (), frame->theme_variant,
-                            type, flags, width, height, fgeom);
+  meta_theme_calc_geometry (meta_ui_get_theme (frames->ui),
+                            frame->theme_variant, type, flags,
+                            width, height, fgeom);
 }
 
 MetaFrames*
-meta_frames_new (void)
+meta_frames_new (MetaUI *ui)
 {
   MetaFrames *frames;
 
-  frames = g_object_new (META_TYPE_FRAMES,
-                         "type", GTK_WINDOW_POPUP,
-                         NULL);
+  frames = g_object_new (META_TYPE_FRAMES, "type", GTK_WINDOW_POPUP, NULL);
+  frames->ui = ui;
 
   /* Put the window at an arbitrary offscreen location; the one place
    * it can't be is at -100x-100, since the meta_window_new() will
@@ -869,8 +872,9 @@ meta_ui_frame_get_borders (MetaFrames       *frames,
    * by the core move/resize code to decide on the client
    * window size
    */
-  meta_theme_get_frame_borders (meta_ui_get_theme (), frame->theme_variant,
-                                type, flags, borders);
+  meta_theme_get_frame_borders (meta_ui_get_theme (frames->ui),
+                                frame->theme_variant, type,
+                                flags, borders);
 }
 
 void
@@ -1387,7 +1391,7 @@ show_tip_now (MetaFrames *frames)
 
       meta_frames_calc_geometry (frames, frame, &fgeom);
 
-      if (!get_control_rect (control, &fgeom, x, y, &rect))
+      if (!get_control_rect (frames, control, &fgeom, x, y, &rect))
         return;
 
       /* get conversion delta for root-to-frame coords */
@@ -1452,7 +1456,7 @@ redraw_control (MetaFrames       *frames,
 
   meta_frames_calc_geometry (frames, frame, &fgeom);
 
-  if (!get_control_rect (control, &fgeom, x, y, &rect))
+  if (!get_control_rect (frames, control, &fgeom, x, y, &rect))
     return;
 
   gdk_window_invalidate_rect (frame->window, &rect, FALSE);
@@ -1836,7 +1840,7 @@ meta_frames_button_press_event (GtkWidget      *widget,
 
           meta_frames_calc_geometry (frames, frame, &fgeom);
 
-          if (!get_control_rect (META_FRAME_CONTROL_MENU, &fgeom,
+          if (!get_control_rect (frames, META_FRAME_CONTROL_MENU, &fgeom,
                                  event->x, event->y, &rect))
             {
               return FALSE;
@@ -2270,7 +2274,7 @@ generate_pixmap (MetaFrames            *frames,
 }
 
 static void
-populate_cache (MetaFrames *frames,
+populate_cache (MetaFrames  *frames,
                 MetaUIFrame *frame)
 {
   MetaFrameBorders borders;
@@ -2299,8 +2303,9 @@ populate_cache (MetaFrames *frames,
       return;
     }
 
-  meta_theme_get_frame_borders (meta_ui_get_theme (), frame->theme_variant,
-                                frame_type, frame_flags, &borders);
+  meta_theme_get_frame_borders (meta_ui_get_theme (frames->ui),
+                                frame->theme_variant, frame_type,
+                                frame_flags, &borders);
 
   pixels = get_cache (frames, frame);
 
@@ -2359,8 +2364,8 @@ populate_cache (MetaFrames *frames,
 }
 
 static void
-subtract_client_area (cairo_region_t *region,
-                      Display        *xdisplay,
+subtract_client_area (MetaFrames     *frames,
+                      cairo_region_t *region,
                       MetaUIFrame    *frame)
 {
   cairo_rectangle_int_t area;
@@ -2369,15 +2374,16 @@ subtract_client_area (cairo_region_t *region,
   MetaFrameBorders borders;
   cairo_region_t *tmp_region;
 
-  meta_core_get (xdisplay, frame->xwindow,
+  meta_core_get (frames->xdisplay, frame->xwindow,
                  META_CORE_GET_FRAME_FLAGS, &flags,
                  META_CORE_GET_FRAME_TYPE, &type,
                  META_CORE_GET_CLIENT_WIDTH, &area.width,
                  META_CORE_GET_CLIENT_HEIGHT, &area.height,
                  META_CORE_GET_END);
 
-  meta_theme_get_frame_borders (meta_ui_get_theme (), frame->theme_variant,
-                                type, flags, &borders);
+  meta_theme_get_frame_borders (meta_ui_get_theme (frames->ui),
+                                frame->theme_variant, type,
+                                flags, &borders);
 
   area.x = borders.total.left;
   area.y = borders.total.top;
@@ -2484,7 +2490,7 @@ meta_frames_draw (GtkWidget *widget,
 
   cached_pixels_draw (pixels, cr, region);
 
-  subtract_client_area (region, frames->xdisplay, frame);
+  subtract_client_area (frames, region, frame);
 
   n_areas = cairo_region_num_rectangles (region);
 
@@ -2681,7 +2687,7 @@ meta_frames_paint (MetaFrames  *frames,
   data.frames = frames;
   data.frame = frame;
 
-  meta_theme_draw_frame (meta_ui_get_theme (), frame->theme_variant,
+  meta_theme_draw_frame (meta_ui_get_theme (frames->ui), frame->theme_variant,
                          cr, type, flags, w, h, frame->title,
                          update_button_state, &data, mini_icon, icon);
 }
