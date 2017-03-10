@@ -379,6 +379,33 @@ meta_compositor_is_our_xwindow (MetaCompositor *compositor,
 }
 
 gboolean
+meta_compositor_check_extensions (MetaCompositor  *compositor,
+                                  GError         **error)
+{
+  MetaCompositorPrivate *priv;
+
+  priv = meta_compositor_get_instance_private (compositor);
+
+  if (!priv->display->have_composite)
+    {
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Missing composite extension required for compositing");
+
+      return FALSE;
+    }
+
+  if (!priv->display->have_damage)
+    {
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Missing damage extension required for compositing");
+
+      return FALSE;
+    }
+
+  return TRUE;
+}
+
+gboolean
 meta_compositor_set_selection (MetaCompositor  *compositor,
                                GError         **error)
 {

@@ -2630,6 +2630,25 @@ meta_compositor_xrender_manage (MetaCompositor  *compositor,
   int screen_number = meta_screen_get_screen_number (screen);
   Window xroot = meta_screen_get_xroot (screen);
 
+  if (!meta_compositor_check_extensions (compositor, error))
+    return FALSE;
+
+  if (!display->have_render)
+    {
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Missing render extension required for compositing");
+
+      return FALSE;
+    }
+
+  if (!display->have_xfixes)
+    {
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Missing xfixes extension required for compositing");
+
+      return FALSE;
+    }
+
   if (!meta_compositor_set_selection (compositor, error))
     return FALSE;
 
