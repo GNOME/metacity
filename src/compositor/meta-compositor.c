@@ -198,15 +198,13 @@ meta_compositor_new (MetaCompositorType  type,
         break;
     }
 
-  compositor = g_object_new (gtype, "display", display, NULL);
-
   error = NULL;
-  if (!g_initable_init (G_INITABLE (compositor), NULL, &error))
+  compositor = g_initable_new (gtype, NULL, &error, "display", display, NULL);
+
+  if (compositor == NULL)
     {
       g_warning ("Failed to create %s: %s", g_type_name (gtype), error->message);
       g_error_free (error);
-
-      g_object_unref (compositor);
 
       if (type != META_COMPOSITOR_TYPE_NONE)
         compositor = meta_compositor_new (META_COMPOSITOR_TYPE_NONE, display);
