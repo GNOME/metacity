@@ -51,6 +51,9 @@ update_input_shape (MetaFrame *frame)
   Display *xdisplay;
   XserverRegion region;
 
+  if (!frame->window->display->have_xfixes)
+    return;
+
   meta_frame_calc_borders (frame, &borders);
 
   rect.x = borders.invisible.left - borders.resize.left;
