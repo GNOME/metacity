@@ -1759,36 +1759,6 @@ meta_prefs_get_window_binding (const char          *name,
 gboolean
 meta_prefs_get_compositing_manager (void)
 {
-  MetaDisplay *display;
-  static gboolean warned = FALSE;
-
-  display = meta_get_display ();
-
-  if (!display)
-    return compositing_manager;
-
-  if (!compositing_manager)
-    warned = FALSE;
-
-  if (compositing_manager &&
-      (!META_DISPLAY_HAS_COMPOSITE (display) ||
-       !META_DISPLAY_HAS_DAMAGE (display) ||
-       !META_DISPLAY_HAS_XFIXES (display) ||
-       !META_DISPLAY_HAS_RENDER (display)))
-    {
-      if (!warned)
-        {
-          g_warning ("Missing %s extension required for compositing",
-                     !META_DISPLAY_HAS_COMPOSITE (display) ? "composite" :
-                     !META_DISPLAY_HAS_DAMAGE (display) ? "damage" :
-                     !META_DISPLAY_HAS_XFIXES (display) ? "xfixes" : "render");
-
-          warned = TRUE;
-        }
-
-      return FALSE;
-    }
-
   return compositing_manager;
 }
 
