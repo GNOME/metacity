@@ -79,9 +79,6 @@ static GMainLoop *meta_main_loop = NULL;
  */
 static gboolean meta_restart_after_quit = FALSE;
 
-static void prefs_changed_callback (MetaPreference pref,
-                                    gpointer       data);
-
 /**
  * Prints the version notice. This is shown when Metacity is called
  * with the --version switch.
@@ -434,7 +431,6 @@ main (int argc, char **argv)
 
   /* Load prefs */
   meta_prefs_init ();
-  meta_prefs_add_listener (prefs_changed_callback, NULL);
 
   /* Connect to SM as late as possible - but before managing display,
    * or we might try to manage a window before we have the session
@@ -531,70 +527,4 @@ meta_restart (void)
 {
   meta_restart_after_quit = TRUE;
   meta_quit ();
-}
-
-/**
- * Called on pref changes. (One of several functions of its kind and purpose.)
- *
- * \bug Why are these particular prefs handled in main.c and not others?
- * Should they be?
- *
- * \param pref  Which preference has changed
- * \param data  Arbitrary data (which we ignore)
- */
-static void
-prefs_changed_callback (MetaPreference pref,
-                        gpointer       data)
-{
-  switch (pref)
-    {
-    case META_PREF_BUTTON_LAYOUT:
-      meta_ui_update_button_layout ();
-      break;
-
-    case META_PREF_THEME_NAME:
-    case META_PREF_THEME_TYPE:
-      meta_ui_reload_theme ();
-      meta_display_retheme_all ();
-      break;
-
-    case META_PREF_CURSOR_THEME:
-    case META_PREF_CURSOR_SIZE:
-      meta_display_set_cursor_theme (meta_prefs_get_cursor_theme (),
-				     meta_prefs_get_cursor_size ());
-      break;
-
-    case META_PREF_COMPOSITING_MANAGER:
-    case META_PREF_MOUSE_BUTTON_MODS:
-    case META_PREF_FOCUS_MODE:
-    case META_PREF_FOCUS_NEW_WINDOWS:
-    case META_PREF_ATTACH_MODAL_DIALOGS:
-    case META_PREF_RAISE_ON_CLICK:
-    case META_PREF_ACTION_DOUBLE_CLICK_TITLEBAR:
-    case META_PREF_ACTION_MIDDLE_CLICK_TITLEBAR:
-    case META_PREF_ACTION_RIGHT_CLICK_TITLEBAR:
-    case META_PREF_AUTO_RAISE:
-    case META_PREF_AUTO_RAISE_DELAY:
-    case META_PREF_TITLEBAR_FONT:
-    case META_PREF_NUM_WORKSPACES:
-    case META_PREF_KEYBINDINGS:
-    case META_PREF_DISABLE_WORKAROUNDS:
-    case META_PREF_WORKSPACE_NAMES:
-    case META_PREF_VISUAL_BELL:
-    case META_PREF_AUDIBLE_BELL:
-    case META_PREF_VISUAL_BELL_TYPE:
-    case META_PREF_REDUCED_RESOURCES:
-    case META_PREF_GNOME_ACCESSIBILITY:
-    case META_PREF_GNOME_ANIMATIONS:
-    case META_PREF_RESIZE_WITH_RIGHT_BUTTON:
-    case META_PREF_EDGE_TILING:
-    case META_PREF_FORCE_FULLSCREEN:
-    case META_PREF_PLACEMENT_MODE:
-    case META_PREF_ALT_TAB_THUMBNAILS:
-      break;
-
-    default:
-      /* handled elsewhere or otherwise */
-      break;
-    }
 }

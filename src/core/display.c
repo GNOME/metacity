@@ -5204,6 +5204,22 @@ prefs_changed_callback (MetaPreference pref,
     {
       update_compositor (display, TRUE);
     }
+  else if (pref == META_PREF_THEME_NAME ||
+           pref == META_PREF_THEME_TYPE)
+    {
+      meta_ui_reload_theme ();
+      meta_display_retheme_all ();
+    }
+  else if (pref == META_PREF_BUTTON_LAYOUT)
+    {
+      meta_ui_update_button_layout ();
+    }
+  else if (pref == META_PREF_CURSOR_THEME ||
+           pref == META_PREF_CURSOR_SIZE)
+    {
+      meta_display_set_cursor_theme (meta_prefs_get_cursor_theme (),
+                                     meta_prefs_get_cursor_size ());
+    }
 }
 
 void
