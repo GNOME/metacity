@@ -77,7 +77,10 @@ struct _MetaCompositorClass
                                                 Window              xwindow);
 };
 
-MetaDisplay *meta_compositor_get_display (MetaCompositor *compositor);
+gboolean     meta_compositor_set_selection (MetaCompositor  *compositor,
+                                            GError         **error);
+
+MetaDisplay *meta_compositor_get_display   (MetaCompositor  *compositor);
 
 G_END_DECLS
 

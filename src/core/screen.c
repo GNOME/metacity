@@ -489,10 +489,6 @@ meta_screen_new (MetaDisplay *display,
   screen->wm_sn_atom = wm_sn_atom;
   screen->wm_sn_timestamp = manager_timestamp;
 
-  screen->wm_cm_selection_window = meta_create_offscreen_window (xdisplay,
-                                                                 xroot,
-                                                                 NoEventMask);
-
   screen->work_area_idle = 0;
 
   screen->active_workspace = NULL;
@@ -2773,32 +2769,4 @@ meta_screen_get_size (MetaScreen *screen,
 {
   *width = screen->rect.width;
   *height = screen->rect.height;
-}
-
-void
-meta_screen_set_cm_selection (MetaScreen *screen)
-{
-  char selection[32];
-  Atom a;
-
-  screen->wm_cm_timestamp = meta_display_get_current_time_roundtrip (
-                                                               screen->display);
-
-  g_snprintf (selection, sizeof(selection), "_NET_WM_CM_S%d", screen->number);
-  meta_verbose ("Setting selection: %s\n", selection);
-  a = XInternAtom (screen->display->xdisplay, selection, FALSE);
-  XSetSelectionOwner (screen->display->xdisplay, a,
-                      screen->wm_cm_selection_window, screen->wm_cm_timestamp);
-}
-
-void
-meta_screen_unset_cm_selection (MetaScreen *screen)
-{
-  char selection[32];
-  Atom a;
-
-  g_snprintf (selection, sizeof(selection), "_NET_WM_CM_S%d", screen->number);
-  a = XInternAtom (screen->display->xdisplay, selection, FALSE);
-  XSetSelectionOwner (screen->display->xdisplay, a,
-                      None, screen->wm_cm_timestamp);
 }

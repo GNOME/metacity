@@ -510,6 +510,9 @@ meta_compositor_vulkan_manage (MetaCompositor  *compositor,
   if (!enumerate_physical_devices (vulkan, error))
     return FALSE;
 
+  if (!meta_compositor_set_selection (compositor, error))
+    return FALSE;
+
   g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED, "Not implemented");
 
   return FALSE;

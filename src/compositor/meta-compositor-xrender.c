@@ -2614,8 +2614,6 @@ meta_compositor_xrender_finalize (GObject *object)
   XCompositeUnredirectSubwindows (xdisplay, xroot, CompositeRedirectManual);
   XCompositeReleaseOverlayWindow (xdisplay, xrender->overlay_window);
 
-  meta_screen_unset_cm_selection (display->screen);
-
   G_OBJECT_CLASS (meta_compositor_xrender_parent_class)->finalize (object);
 }
 
@@ -2631,6 +2629,9 @@ meta_compositor_xrender_manage (MetaCompositor  *compositor,
   XRenderPictFormat *visual_format;
   int screen_number = meta_screen_get_screen_number (screen);
   Window xroot = meta_screen_get_xroot (screen);
+
+  if (!meta_compositor_set_selection (compositor, error))
+    return FALSE;
 
   gdk_error_trap_push ();
   XCompositeRedirectSubwindows (xdisplay, xroot, CompositeRedirectManual);
@@ -2699,8 +2700,6 @@ meta_compositor_xrender_manage (MetaCompositor  *compositor,
     meta_verbose ("Disabling shadows\n");
 
   XClearArea (xdisplay, xrender->overlay_window, 0, 0, 0, 0, TRUE);
-
-  meta_screen_set_cm_selection (screen);
 
   show_overlay_window (xrender, xdisplay);
 

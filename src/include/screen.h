@@ -34,7 +34,4 @@ void meta_screen_get_size (MetaScreen *screen,
 
 MetaScreen *meta_screen_for_x_screen (Screen *xscreen);
 
-void meta_screen_set_cm_selection (MetaScreen *screen);
-void meta_screen_unset_cm_selection (MetaScreen *screen);
-
 #endif

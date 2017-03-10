@@ -207,9 +207,6 @@ is_our_xwindow (MetaDisplay       *display,
   if (xwindow == display->screen->wm_sn_selection_window)
     return TRUE;
 
-  if (xwindow == display->screen->wm_cm_selection_window)
-    return TRUE;
-
   if (meta_compositor_is_our_xwindow (display->compositor, xwindow))
     return TRUE;
 

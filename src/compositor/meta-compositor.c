@@ -18,13 +18,20 @@
 
 #include "config.h"
 
+#include "display-private.h"
 #include "meta-compositor-none.h"
 #include "meta-compositor-xrender.h"
 #include "meta-compositor-vulkan.h"
+#include "screen-private.h"
 
 typedef struct
 {
   MetaDisplay *display;
+
+  /* _NET_WM_CM_Sn */
+  Atom         cm_atom;
+  Window       cm_window;
+  guint32      cm_timestamp;
 } MetaCompositorPrivate;
 
 enum
@@ -68,6 +75,21 @@ initable_iface_init (GInitableIface *iface)
 static void
 meta_compositor_finalize (GObject *object)
 {
+  MetaCompositor *compositor;
+  MetaCompositorPrivate *priv;
+  Display *xdisplay;
+
+  compositor = META_COMPOSITOR (object);
+  priv = meta_compositor_get_instance_private (compositor);
+  xdisplay = priv->display->xdisplay;
+
+  if (priv->cm_window != None)
+    {
+      XSetSelectionOwner (xdisplay, priv->cm_atom, None, priv->cm_timestamp);
+      XDestroyWindow (xdisplay, priv->cm_window);
+      priv->cm_window = None;
+    }
+
   G_OBJECT_CLASS (meta_compositor_parent_class)->finalize (object);
 }
 
@@ -346,11 +368,50 @@ gboolean
 meta_compositor_is_our_xwindow (MetaCompositor *compositor,
                                 Window          xwindow)
 {
+  MetaCompositorPrivate *priv;
   MetaCompositorClass *compositor_class;
 
+  priv = meta_compositor_get_instance_private (compositor);
   compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
 
+  if (priv->cm_window == xwindow)
+    return TRUE;
+
   return compositor_class->is_our_xwindow (compositor, xwindow);
+}
+
+gboolean
+meta_compositor_set_selection (MetaCompositor  *compositor,
+                               GError         **error)
+{
+  MetaCompositorPrivate *priv;
+  Display *xdisplay;
+  gchar *atom_name;
+  Window xroot;
+
+  priv = meta_compositor_get_instance_private (compositor);
+  xdisplay = priv->display->xdisplay;
+
+  atom_name = g_strdup_printf ("_NET_WM_CM_S%d", DefaultScreen (xdisplay));
+  priv->cm_atom = XInternAtom (xdisplay, atom_name, FALSE);
+  g_free (atom_name);
+
+  xroot = DefaultRootWindow (xdisplay);
+  priv->cm_window = meta_create_offscreen_window (xdisplay, xroot, NoEventMask);
+  priv->cm_timestamp = meta_display_get_current_time_roundtrip (priv->display);
+
+  XSetSelectionOwner (xdisplay, priv->cm_atom, priv->cm_window, priv->cm_timestamp);
+
+  if (XGetSelectionOwner (xdisplay, priv->cm_atom) != priv->cm_window)
+    {
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Could not acquire selection: %s",
+                   XGetAtomName (xdisplay, priv->cm_atom));
+
+      return FALSE;
+    }
+
+  return TRUE;
 }
 
 MetaDisplay *

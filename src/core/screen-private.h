@@ -114,9 +114,6 @@ struct _MetaScreen
   guint startup_sequence_timeout;
 #endif
 
-  Window wm_cm_selection_window;
-  guint32 wm_cm_timestamp;
-
   guint work_area_idle;
 
   int rows_of_workspaces;
