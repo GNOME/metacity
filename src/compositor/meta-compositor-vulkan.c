@@ -50,7 +50,8 @@ enumerate_instance_layers (MetaCompositorVulkan *vulkan)
   VkResult result;
   uint32_t i;
 
-  if (!meta_check_debug_flags (META_DEBUG_VULKAN))
+  if (!meta_check_debug_flags (META_DEBUG_VULKAN) &&
+      g_getenv ("META_VULKAN_VALIDATE") == NULL)
     return;
 
   result = vkEnumerateInstanceLayerProperties (&n_layers, NULL);
@@ -109,7 +110,8 @@ enumerate_instance_extensions (MetaCompositorVulkan *vulkan)
   VkResult result;
   uint32_t i;
 
-  if (!meta_check_debug_flags (META_DEBUG_VULKAN))
+  if (!meta_check_debug_flags (META_DEBUG_VULKAN) &&
+      g_getenv ("META_VULKAN_VALIDATE") == NULL)
     return;
 
   result = vkEnumerateInstanceExtensionProperties (NULL, &n_extensions, NULL);
@@ -227,14 +229,21 @@ debug_report_cb (VkDebugReportFlagsEXT       flags,
                  const char                 *pMessage,
                  void                       *pUserData)
 {
-  if (flags & VK_DEBUG_REPORT_ERROR_BIT_EXT)
-    g_critical ("%s: %s", pLayerPrefix, pMessage);
-  else if (flags & VK_DEBUG_REPORT_WARNING_BIT_EXT)
-    g_critical ("%s: %s", pLayerPrefix, pMessage);
-  else if (flags & VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT)
-    g_warning ("%s: %s", pLayerPrefix, pMessage);
+  if (!meta_check_debug_flags (META_DEBUG_VULKAN))
+    {
+      if (flags & VK_DEBUG_REPORT_ERROR_BIT_EXT)
+        g_critical ("%s: %s", pLayerPrefix, pMessage);
+      else if (flags & VK_DEBUG_REPORT_WARNING_BIT_EXT)
+        g_critical ("%s: %s", pLayerPrefix, pMessage);
+      else if (flags & VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT)
+        g_warning ("%s: %s", pLayerPrefix, pMessage);
+      else
+        meta_topic (META_DEBUG_VULKAN, "%s: %s\n", pLayerPrefix, pMessage);
+    }
   else
-    meta_topic (META_DEBUG_VULKAN, "%s: %s\n", pLayerPrefix, pMessage);
+    {
+      meta_topic (META_DEBUG_VULKAN, "%s: %s\n", pLayerPrefix, pMessage);
+    }
 
   return VK_FALSE;
 }
@@ -254,7 +263,11 @@ setup_debug_callback (MetaCompositorVulkan *vulkan)
 
   if (f == VK_NULL_HANDLE)
     {
-      g_warning ("VK_EXT_debug_report not found");
+      if (!meta_check_debug_flags (META_DEBUG_VULKAN))
+        g_warning ("VK_EXT_debug_report not found");
+      else
+        meta_topic (META_DEBUG_VULKAN, "VK_EXT_debug_report not found");
+
       return;
     }
 
@@ -276,7 +289,10 @@ setup_debug_callback (MetaCompositorVulkan *vulkan)
 
   if (result != VK_SUCCESS)
     {
-      g_warning ("Failed to set up debug callback");
+      if (!meta_check_debug_flags (META_DEBUG_VULKAN))
+        g_warning ("Failed to set up debug callback");
+      else
+        meta_topic (META_DEBUG_VULKAN, "Failed to set up debug callback");
     }
 }
 
