@@ -1300,7 +1300,7 @@ do_screen_and_xinerama_relative_constraints (
   gboolean exit_early = FALSE, constraint_satisfied;
   MetaRectangle how_far_it_can_be_smushed, min_size, max_size;
 
-  if (meta_is_verbose ())
+  if (meta_check_debug_flags (META_DEBUG_GEOMETRY))
     {
       /* First, log some debugging information */
       char spanning_region[1 + 28 * g_list_length (region_spanning_rectangles)];

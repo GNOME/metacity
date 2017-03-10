@@ -35,7 +35,30 @@
 #include <X11/Xlib.h>   /* must explicitly be included for Solaris; #326746 */
 #include <X11/Xutil.h>  /* Just for the definition of the various gravities */
 
-static gboolean is_verbose = FALSE;
+static const GDebugKey debug_keys[] = {
+  { "focus", META_DEBUG_FOCUS },
+  { "workarea", META_DEBUG_WORKAREA },
+  { "stack", META_DEBUG_STACK },
+  { "sm", META_DEBUG_SM },
+  { "events", META_DEBUG_EVENTS },
+  { "window-state", META_DEBUG_WINDOW_STATE },
+  { "window-ops", META_DEBUG_WINDOW_OPS },
+  { "geometry", META_DEBUG_GEOMETRY },
+  { "placement", META_DEBUG_PLACEMENT },
+  { "ping", META_DEBUG_PING },
+  { "xinerama", META_DEBUG_XINERAMA },
+  { "keybindings", META_DEBUG_KEYBINDINGS },
+  { "sync", META_DEBUG_SYNC },
+  { "startup", META_DEBUG_STARTUP },
+  { "prefs", META_DEBUG_PREFS },
+  { "groups", META_DEBUG_GROUPS },
+  { "resizing", META_DEBUG_RESIZING },
+  { "shapes", META_DEBUG_SHAPES },
+  { "edge-resistance", META_DEBUG_EDGE_RESISTANCE },
+  { "verbose", META_DEBUG_VERBOSE }
+};
+
+static guint debug_flags = 0;
 static gboolean is_debugging = FALSE;
 static gboolean replace_current = FALSE;
 static int no_prefix = 0;
@@ -85,19 +108,36 @@ ensure_logfile (void)
     }
 }
 
-gboolean
-meta_is_verbose (void)
+void
+meta_init_debug (void)
 {
-  return is_verbose;
+  debug_flags = g_parse_debug_string (g_getenv ("META_DEBUG"), debug_keys,
+                                      G_N_ELEMENTS (debug_keys));
+
+  if (debug_flags != 0)
+    ensure_logfile ();
 }
 
 void
-meta_set_verbose (gboolean setting)
+meta_toggle_debug (void)
 {
-  if (setting)
-    ensure_logfile ();
+  if (debug_flags == 0)
+    {
+      debug_flags = g_parse_debug_string ("all", debug_keys,
+                                          G_N_ELEMENTS (debug_keys));
 
-  is_verbose = setting;
+      ensure_logfile ();
+    }
+  else
+    {
+      debug_flags = 0;
+    }
+}
+
+gboolean
+meta_check_debug_flags (MetaDebugFlags flags)
+{
+  return (debug_flags & flags) != 0;
 }
 
 gboolean
@@ -178,7 +218,7 @@ meta_verbose (const char *format, ...)
 
   g_return_if_fail (format != NULL);
 
-  if (!is_verbose)
+  if ((debug_flags & META_DEBUG_VERBOSE) == 0)
     return;
 
   va_start (args, format);
@@ -239,6 +279,8 @@ topic_name (MetaDebugFlags topic)
       return "SHAPES";
     case META_DEBUG_EDGE_RESISTANCE:
       return "EDGE_RESISTANCE";
+    case META_DEBUG_VERBOSE:
+      return "VERBOSE";
     default:
       break;
     }
@@ -259,7 +301,7 @@ meta_topic (MetaDebugFlags  topic,
 
   g_return_if_fail (format != NULL);
 
-  if (!is_verbose)
+  if ((debug_flags & topic) == 0)
     return;
 
   va_start (args, format);

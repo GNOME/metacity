@@ -47,11 +47,15 @@ typedef enum
   META_DEBUG_GROUPS = 1 << 15,
   META_DEBUG_RESIZING = 1 << 16,
   META_DEBUG_SHAPES = 1 << 17,
-  META_DEBUG_EDGE_RESISTANCE = 1 << 18
+  META_DEBUG_EDGE_RESISTANCE = 1 << 18,
+  META_DEBUG_VERBOSE = 1 << 19
 } MetaDebugFlags;
 
-gboolean meta_is_verbose  (void);
-void     meta_set_verbose (gboolean setting);
+void meta_init_debug (void);
+void meta_toggle_debug (void);
+
+gboolean meta_check_debug_flags (MetaDebugFlags flags);
+
 gboolean meta_is_debugging (void);
 void     meta_set_debugging (gboolean setting);
 gboolean meta_is_syncing (void);

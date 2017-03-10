@@ -2587,7 +2587,7 @@ event_callback (XEvent   *event,
                        display->atom__METACITY_TOGGLE_VERBOSE)
                 {
                   meta_verbose ("Received toggle verbose message\n");
-                  meta_set_verbose (!meta_is_verbose ());
+                  meta_toggle_debug ();
                 }
               else if (event->xclient.message_type ==
                        display->atom_WM_PROTOCOLS)
@@ -2955,7 +2955,7 @@ meta_spew_event (MetaDisplay *display,
   char *extra = NULL;
   char *winname;
 
-  if (!meta_is_verbose())
+  if (!meta_check_debug_flags (META_DEBUG_EVENTS))
     return;
 
   /* filter overnumerous events */

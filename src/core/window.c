@@ -5457,7 +5457,7 @@ meta_window_client_message (MetaWindow *window,
       first = event->xclient.data.l[1];
       second = event->xclient.data.l[2];
 
-      if (meta_is_verbose ())
+      if (meta_check_debug_flags (META_DEBUG_VERBOSE))
         {
           char *str1;
           char *str2;
@@ -6010,7 +6010,8 @@ process_property_notify (MetaWindow     *window,
 {
   Window xid = window->xwindow;
 
-  if (meta_is_verbose ()) /* avoid looking up the name if we don't have to */
+  /* avoid looking up the name if we don't have to */
+  if (meta_check_debug_flags (META_DEBUG_VERBOSE))
     {
       char *property_name = XGetAtomName (window->display->xdisplay,
                                           event->atom);

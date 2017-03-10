@@ -112,8 +112,7 @@ version (void)
 /**
  * Prints a list of which configure script options were used to
  * build this copy of Metacity. This is actually always called
- * on startup, but it's all no-op unless we're in verbose mode
- * (see meta_set_verbose).
+ * on startup, but it's all no-op unless we're in verbose mode.
  */
 static void
 meta_print_compilation_info (void)
@@ -150,8 +149,7 @@ meta_print_compilation_info (void)
  * build date), the locale, the character encoding, and a list
  * of configure script options that were used to build this
  * copy of Metacity. This is actually always called
- * on startup, but it's all no-op unless we're in verbose mode
- * (see meta_set_verbose).
+ * on startup, but it's all no-op unless we're in verbose mode.
  */
 static void
 meta_print_self_identity (void)
@@ -394,8 +392,8 @@ main (int argc, char **argv)
     g_printerr ("Failed to register SIGTERM handler: %s\n",
 		g_strerror (errno));
 
-  if (g_getenv ("METACITY_VERBOSE"))
-    meta_set_verbose (TRUE);
+  meta_init_debug ();
+
   if (g_getenv ("METACITY_DEBUG"))
     meta_set_debugging (TRUE);
 

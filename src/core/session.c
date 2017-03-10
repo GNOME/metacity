@@ -1570,7 +1570,7 @@ get_possible_matches (MetaWindow *window)
         }
       else
         {
-          if (meta_is_verbose ())
+          if (meta_check_debug_flags (META_DEBUG_SM))
             {
               if (!both_null_or_matching (info->id, window->sm_client_id))
                 meta_topic (META_DEBUG_SM, "Window %s has SM client ID %s, saved state has %s, no match\n",

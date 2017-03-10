@@ -2241,7 +2241,7 @@ meta_screen_calc_workspace_layout (MetaScreen          *screen,
   layout->current_row = current_row;
   layout->current_col = current_col;
 
-  if (meta_is_verbose ())
+  if (meta_check_debug_flags (META_DEBUG_VERBOSE))
     {
       r = 0;
       while (r < layout->rows)

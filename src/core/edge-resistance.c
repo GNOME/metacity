@@ -774,7 +774,7 @@ cache_edges (MetaDisplay *display,
   /*
    * 0th: Print debugging information to the log about the edges
    */
-  if (meta_is_verbose())
+  if (meta_check_debug_flags (META_DEBUG_EDGE_RESISTANCE))
     {
       int max_edges = MAX (MAX( g_list_length (window_edges),
                                 g_list_length (xinerama_edges)),
