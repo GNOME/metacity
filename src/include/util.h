@@ -38,8 +38,6 @@ void     meta_set_replace_current_wm (gboolean setting);
 void meta_verbose (const char *format,
                    ...) G_GNUC_PRINTF (1, 2);
 
-void meta_bug        (const char *format,
-                      ...) G_GNUC_PRINTF (1, 2);
 void meta_fatal      (const char *format,
                       ...) G_GNUC_PRINTF (1, 2);
 

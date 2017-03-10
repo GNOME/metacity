@@ -1017,7 +1017,7 @@ meta_prop_get_values (MetaDisplay   *display,
                * property notify on an atom we don't care about.
                */
               if (values[i].atom != None)
-                meta_bug ("META_PROP_VALUE_INVALID requested in %s\n", G_STRFUNC);
+                g_error ("META_PROP_VALUE_INVALID requested in %s", G_STRFUNC);
               break;
             case META_PROP_VALUE_UTF8_LIST:
             case META_PROP_VALUE_UTF8:

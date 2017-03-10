@@ -485,7 +485,7 @@ handle_preference_init_string (void)
       if (cursor->handler)
         {
           if (cursor->target)
-            meta_bug ("%s has both a target and a handler\n", cursor->base.key);
+            g_error ("%s has both a target and a handler", cursor->base.key);
 
           g_settings_get_mapped (SETTINGS (cursor->base.schema),
                                  cursor->base.key, cursor->handler, NULL);
@@ -493,7 +493,7 @@ handle_preference_init_string (void)
       else
         {
           if (!cursor->target)
-            meta_bug ("%s must have handler or target\n", cursor->base.key);
+            g_error ("%s must have handler or target", cursor->base.key);
 
           if (*(cursor->target))
             g_free (*(cursor->target));
@@ -598,7 +598,7 @@ handle_preference_update_string (GSettings *settings,
   if (cursor->handler)
     {
       if (cursor->target)
-        meta_bug ("%s has both a target and a handler\n", cursor->base.key);
+        g_error ("%s has both a target and a handler", cursor->base.key);
 
       g_settings_get_mapped (SETTINGS (cursor->base.schema),
                              cursor->base.key, cursor->handler, NULL);
@@ -606,7 +606,7 @@ handle_preference_update_string (GSettings *settings,
   else
     {
       if (!cursor->target)
-        meta_bug ("%s must have handler or target\n", cursor->base.key);
+        g_error ("%s must have handler or target", cursor->base.key);
 
       value = g_settings_get_string (SETTINGS (cursor->base.schema),
                                      cursor->base.key);
@@ -686,7 +686,7 @@ meta_prefs_remove_listener (MetaPrefsChangedFunc func,
       tmp = tmp->next;
     }
 
-  meta_bug ("Did not find listener to remove\n");
+  g_error ("Did not find listener to remove");
 }
 
 static void

@@ -1210,7 +1210,7 @@ process_event (MetaKeyBinding       *bindings,
                   event->xkey.keycode, event->xkey.state);
 
       if (handler == NULL)
-        meta_bug ("Binding %s has no handler\n", bindings[i].name);
+        g_error ("Binding %s has no handler", bindings[i].name);
       else
         meta_topic (META_DEBUG_KEYBINDINGS,
                     "Running handler for %s\n",

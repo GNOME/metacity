@@ -285,33 +285,6 @@ meta_topic (MetaDebugTopic  topic,
 }
 
 void
-meta_bug (const char *format, ...)
-{
-  va_list args;
-  gchar *str;
-  FILE *out;
-
-  g_return_if_fail (format != NULL);
-
-  va_start (args, format);
-  str = g_strdup_vprintf (format, args);
-  va_end (args);
-
-  out = logfile ? logfile : stderr;
-
-  if (no_prefix == 0)
-    utf8_fputs (_("Bug in window manager: "), out);
-  utf8_fputs (str, out);
-
-  fflush (out);
-
-  g_free (str);
-
-  /* stop us in a debugger */
-  abort ();
-}
-
-void
 meta_fatal (const char *format, ...)
 {
   va_list args;

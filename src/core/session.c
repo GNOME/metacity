@@ -292,7 +292,7 @@ meta_session_init (const char *previous_client_id,
   else
     {
       if (client_id == NULL)
-        meta_bug ("Session manager gave us a NULL client ID?");
+        g_error ("Session manager gave us a NULL client ID?");
       meta_topic (META_DEBUG_SM, "Obtained session ID '%s'\n", client_id);
     }
 

@@ -1048,8 +1048,8 @@ meta_window_free (MetaWindow  *window,
     }
 
   if (destroying_windows_disallowed > 0)
-    meta_bug ("Tried to destroy window %s while destruction was not allowed\n",
-              window->desc);
+    g_error ("Tried to destroy window %s while destruction was not allowed",
+             window->desc);
 
   window->unmanaging = TRUE;
 

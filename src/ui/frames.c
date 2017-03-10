@@ -883,7 +883,7 @@ meta_frames_get_borders (MetaFrames       *frames,
   frame = meta_frames_lookup_window (frames, xwindow);
 
   if (frame == NULL)
-    meta_bug ("No such frame 0x%lx\n", xwindow);
+    g_error ("No such frame 0x%lx", xwindow);
 
   meta_ui_frame_get_borders (frames, frame, borders);
 }

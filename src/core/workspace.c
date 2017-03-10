@@ -328,7 +328,7 @@ static void workspace_switch_sound(MetaWorkspace *from,
       break;
 
   if (i >= nw) {
-    meta_bug("Failed to find destination workspace in layout\n");
+    g_error ("Failed to find destination workspace in layout");
     goto finish;
   }
 
@@ -343,7 +343,7 @@ static void workspace_switch_sound(MetaWorkspace *from,
      movement but not such much vertical movement. */
 
   if (x == layout.current_col && y == layout.current_row) {
-    meta_bug("Uh, origin and destination workspace at same logic position!\n");
+    g_error ("Uh, origin and destination workspace at same logic position!");
     goto finish;
   }
 
@@ -469,7 +469,7 @@ meta_workspace_index (MetaWorkspace *workspace)
   ret = g_list_index (workspace->screen->workspaces, workspace);
 
   if (ret < 0)
-    meta_bug ("Workspace does not exist to index!\n");
+    g_error ("Workspace does not exist to index!");
 
   return ret;
 }
@@ -865,8 +865,10 @@ meta_workspace_get_neighbor (MetaWorkspace      *workspace,
     i = current_space;
 
   if (i >= num_workspaces)
-    meta_bug ("calc_workspace_layout left an invalid (too-high) workspace number %d in the grid\n",
-              i);
+    {
+      g_error ("calc_workspace_layout left an invalid (too-high) workspace "
+               "number %d in the grid", i);
+    }
 
   meta_verbose ("Neighbor workspace is %d at row %d col %d\n",
                 i, layout.current_row, layout.current_col);

@@ -822,7 +822,7 @@ meta_display_close (MetaDisplay *display,
     }
 
   if (display->error_traps > 0)
-    meta_bug ("Display closed with error traps pending\n");
+    g_error ("Display closed with error traps pending");
 
   display->closing += 1;
 
@@ -931,7 +931,7 @@ void
 meta_display_ungrab (MetaDisplay *display)
 {
   if (display->server_grab_count == 0)
-    meta_bug ("Ungrabbed non-grabbed server\n");
+    g_error ("Ungrabbed non-grabbed server");
 
   display->server_grab_count -= 1;
   if (display->server_grab_count == 0)

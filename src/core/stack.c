@@ -110,7 +110,7 @@ meta_stack_add (MetaStack  *stack,
   meta_topic (META_DEBUG_STACK, "Adding window %s to the stack\n", window->desc);
 
   if (window->stack_position >= 0)
-    meta_bug ("Window %s had stack position already\n", window->desc);
+    g_error ("Window %s had stack position already", window->desc);
 
   stack->added = g_list_prepend (stack->added, window);
 
@@ -130,8 +130,8 @@ meta_stack_remove (MetaStack  *stack,
   meta_topic (META_DEBUG_STACK, "Removing window %s from the stack\n", window->desc);
 
   if (window->stack_position < 0)
-    meta_bug ("Window %s removed from stack but had no stack position\n",
-              window->desc);
+    g_error ("Window %s removed from stack but had no stack position",
+             window->desc);
 
   /* Set window to top position, so removing it will not leave gaps
    * in the set of positions

@@ -51,7 +51,7 @@ get_window (Display *xdisplay,
 
   if (window == NULL || window->frame == NULL)
     {
-      meta_bug ("No such frame window 0x%lx!\n", frame_xwindow);
+      g_error ("No such frame window 0x%lx!", frame_xwindow);
       return NULL;
     }
 
@@ -60,8 +60,8 @@ get_window (Display *xdisplay,
 
 void
 meta_core_get (Display *xdisplay,
-    Window xwindow,
-    ...)
+               Window   xwindow,
+               ...)
 {
   va_list args;
   MetaCoreGetType request;
@@ -85,10 +85,11 @@ meta_core_get (Display *xdisplay,
    */
 
   if (request != META_CORE_WINDOW_HAS_FRAME &&
-      (window == NULL || window->frame == NULL)) {
-    meta_bug ("No such frame window 0x%lx!\n", xwindow);
-    goto out;
-  }
+      (window == NULL || window->frame == NULL))
+    {
+      g_error ("No such frame window 0x%lx!", xwindow);
+      goto out;
+    }
 
   while (request != META_CORE_GET_END) {
 

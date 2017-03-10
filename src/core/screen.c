@@ -2208,8 +2208,8 @@ meta_screen_calc_workspace_layout (MetaScreen          *screen,
     }
 
   if (i != grid_area)
-    meta_bug ("did not fill in the whole workspace grid in %s (%d filled)\n",
-              G_STRFUNC, i);
+    g_error ("did not fill in the whole workspace grid in %s (%d filled)",
+             G_STRFUNC, i);
 
   current_row = 0;
   current_col = 0;
