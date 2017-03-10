@@ -208,8 +208,6 @@ topic_name (MetaDebugTopic topic)
       return "WORKAREA";
     case META_DEBUG_STACK:
       return "STACK";
-    case META_DEBUG_THEMES:
-      return "THEMES";
     case META_DEBUG_SM:
       return "SM";
     case META_DEBUG_EVENTS:
@@ -230,8 +228,6 @@ topic_name (MetaDebugTopic topic)
       return "KEYBINDINGS";
     case META_DEBUG_SYNC:
       return "SYNC";
-    case META_DEBUG_ERRORS:
-      return "ERRORS";
     case META_DEBUG_STARTUP:
       return "STARTUP";
     case META_DEBUG_PREFS:
@@ -242,8 +238,6 @@ topic_name (MetaDebugTopic topic)
       return "RESIZING";
     case META_DEBUG_SHAPES:
       return "SHAPES";
-    case META_DEBUG_COMPOSITOR:
-      return "COMPOSITOR";
     case META_DEBUG_EDGE_RESISTANCE:
       return "EDGE_RESISTANCE";
     default:

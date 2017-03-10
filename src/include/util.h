@@ -50,7 +50,6 @@ typedef enum
   META_DEBUG_FOCUS           = 1 << 0,
   META_DEBUG_WORKAREA        = 1 << 1,
   META_DEBUG_STACK           = 1 << 2,
-  META_DEBUG_THEMES          = 1 << 3,
   META_DEBUG_SM              = 1 << 4,
   META_DEBUG_EVENTS          = 1 << 5,
   META_DEBUG_WINDOW_STATE    = 1 << 6,
@@ -61,13 +60,11 @@ typedef enum
   META_DEBUG_XINERAMA        = 1 << 11,
   META_DEBUG_KEYBINDINGS     = 1 << 12,
   META_DEBUG_SYNC            = 1 << 13,
-  META_DEBUG_ERRORS          = 1 << 14,
   META_DEBUG_STARTUP         = 1 << 15,
   META_DEBUG_PREFS           = 1 << 16,
   META_DEBUG_GROUPS          = 1 << 17,
   META_DEBUG_RESIZING        = 1 << 18,
   META_DEBUG_SHAPES          = 1 << 19,
-  META_DEBUG_COMPOSITOR      = 1 << 20,
   META_DEBUG_EDGE_RESISTANCE = 1 << 21
 } MetaDebugTopic;
 
