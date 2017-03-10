@@ -2566,7 +2566,7 @@ event_callback (XEvent   *event,
                        display->atom__METACITY_RELOAD_THEME_MESSAGE)
                 {
                   meta_verbose ("Received reload theme request\n");
-                  meta_ui_reload_theme ();
+                  meta_ui_reload_theme (display->screen->ui);
                   meta_display_retheme_all ();
                 }
               else if (event->xclient.message_type ==
@@ -5207,12 +5207,12 @@ prefs_changed_callback (MetaPreference pref,
   else if (pref == META_PREF_THEME_NAME ||
            pref == META_PREF_THEME_TYPE)
     {
-      meta_ui_reload_theme ();
+      meta_ui_reload_theme (display->screen->ui);
       meta_display_retheme_all ();
     }
   else if (pref == META_PREF_BUTTON_LAYOUT)
     {
-      meta_ui_update_button_layout ();
+      meta_ui_update_button_layout (display->screen->ui);
     }
   else if (pref == META_PREF_CURSOR_THEME ||
            pref == META_PREF_CURSOR_SIZE)

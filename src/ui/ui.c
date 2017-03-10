@@ -291,7 +291,7 @@ meta_ui_new (Display *xdisplay)
   g_assert (gdisplay == gdk_display_get_default ());
   g_assert (xdisplay == GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
 
-  meta_ui_reload_theme ();
+  meta_ui_reload_theme (ui);
 
   ui->frames = meta_frames_new (ui);
 
@@ -760,7 +760,7 @@ load_theme (MetaThemeType  theme_type,
 }
 
 void
-meta_ui_reload_theme (void)
+meta_ui_reload_theme (MetaUI *ui)
 {
   MetaThemeType theme_type;
   gchar *theme_name;
@@ -785,7 +785,7 @@ meta_ui_reload_theme (void)
 }
 
 void
-meta_ui_update_button_layout (void)
+meta_ui_update_button_layout (MetaUI *ui)
 {
   const gchar *button_layout;
   gboolean invert;
