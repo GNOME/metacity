@@ -53,8 +53,7 @@ void meta_ui_remove_event_func (Display       *xdisplay,
                                 MetaEventFunc  func,
                                 gpointer       data);
 
-MetaUI* meta_ui_new (Display *xdisplay,
-                     Screen  *screen);
+MetaUI* meta_ui_new (Display *xdisplay);
 void    meta_ui_free (MetaUI *ui);
 
 void meta_ui_theme_get_frame_borders (MetaUI           *ui,

@@ -47,7 +47,6 @@ static void meta_ui_accelerator_parse (const char      *accel,
 struct _MetaUI
 {
   Display *xdisplay;
-  Screen *xscreen;
   MetaFrames *frames;
 
   /* For double-click tracking */
@@ -280,15 +279,13 @@ meta_ui_remove_event_func (Display       *xdisplay,
 }
 
 MetaUI*
-meta_ui_new (Display *xdisplay,
-             Screen  *screen)
+meta_ui_new (Display *xdisplay)
 {
   GdkDisplay *gdisplay;
   MetaUI *ui;
 
   ui = g_new0 (MetaUI, 1);
   ui->xdisplay = xdisplay;
-  ui->xscreen = screen;
 
   gdisplay = gdk_x11_lookup_xdisplay (xdisplay);
   g_assert (gdisplay == gdk_display_get_default ());

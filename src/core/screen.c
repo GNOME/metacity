@@ -580,8 +580,7 @@ meta_screen_new (MetaDisplay *display,
   screen->keys_grabbed = FALSE;
   meta_screen_grab_keys (screen);
 
-  screen->ui = meta_ui_new (screen->display->xdisplay,
-                            screen->xscreen);
+  screen->ui = meta_ui_new (screen->display->xdisplay);
 
   screen->tab_popup = NULL;
   screen->tile_preview = NULL;
