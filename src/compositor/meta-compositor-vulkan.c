@@ -17,7 +17,13 @@
 
 #include "config.h"
 
+#ifdef HAVE_VULKAN
+#define VK_USE_PLATFORM_XLIB_KHR
+#include <vulkan/vulkan.h>
+#endif
+
 #include "meta-compositor-vulkan.h"
+#include "util.h"
 
 struct _MetaCompositorVulkan
 {
@@ -26,11 +32,122 @@ struct _MetaCompositorVulkan
 
 G_DEFINE_TYPE (MetaCompositorVulkan, meta_compositor_vulkan, META_TYPE_COMPOSITOR)
 
+#ifdef HAVE_VULKAN
+static void
+enumerate_instance_layers (MetaCompositorVulkan *vulkan)
+{
+  uint32_t n_layers;
+  VkLayerProperties *layers;
+  VkResult result;
+  uint32_t i;
+
+  if (!meta_check_debug_flags (META_DEBUG_VULKAN))
+    return;
+
+  result = vkEnumerateInstanceLayerProperties (&n_layers, NULL);
+
+  if (result != VK_SUCCESS)
+    {
+      meta_topic (META_DEBUG_VULKAN,
+                  "Failed to enumerate instance layer properties\n");
+
+      return;
+    }
+
+  layers = g_new0 (VkLayerProperties, n_layers);
+  result = vkEnumerateInstanceLayerProperties (&n_layers, layers);
+
+  if (result != VK_SUCCESS)
+    {
+      meta_topic (META_DEBUG_VULKAN,
+                  "Failed to enumerate instance layer properties\n");
+
+      g_free (layers);
+      return;
+    }
+
+  meta_topic (META_DEBUG_VULKAN, "Available instance layers:\n");
+  meta_push_no_msg_prefix ();
+
+  for (i = 0; i < n_layers; i++)
+    {
+      meta_topic (META_DEBUG_VULKAN, "  %s v%u.%u.%u (%s)\n",
+                  layers[i].layerName,
+                  VK_VERSION_MAJOR (layers[i].specVersion),
+                  VK_VERSION_MINOR (layers[i].specVersion),
+                  VK_VERSION_PATCH (layers[i].specVersion),
+                  layers[i].description);
+    }
+
+  meta_pop_no_msg_prefix ();
+
+  g_free (layers);
+}
+
+static void
+enumerate_instance_extensions (MetaCompositorVulkan *vulkan)
+{
+  uint32_t n_extensions;
+  VkExtensionProperties *extensions;
+  VkResult result;
+  uint32_t i;
+
+  if (!meta_check_debug_flags (META_DEBUG_VULKAN))
+    return;
+
+  result = vkEnumerateInstanceExtensionProperties (NULL, &n_extensions, NULL);
+
+  if (result != VK_SUCCESS)
+    {
+      meta_topic (META_DEBUG_VULKAN,
+                  "Failed to enumerate instance extension properties\n");
+
+      return;
+    }
+
+  extensions = g_new0 (VkExtensionProperties, n_extensions);
+  result = vkEnumerateInstanceExtensionProperties (NULL, &n_extensions,
+                                                   extensions);
+
+  if (result != VK_SUCCESS)
+    {
+      meta_topic (META_DEBUG_VULKAN,
+                  "Failed to enumerate instance extension properties\n");
+
+      g_free (extensions);
+      return;
+    }
+
+  meta_topic (META_DEBUG_VULKAN, "Available instance extensions:\n");
+  meta_push_no_msg_prefix ();
+
+  for (i = 0; i < n_extensions; i++)
+    {
+      meta_topic (META_DEBUG_VULKAN, "  %s v%u.%u.%u\n",
+                  extensions[i].extensionName,
+                  VK_VERSION_MAJOR (extensions[i].specVersion),
+                  VK_VERSION_MINOR (extensions[i].specVersion),
+                  VK_VERSION_PATCH (extensions[i].specVersion));
+    }
+
+  meta_pop_no_msg_prefix ();
+
+  g_free (extensions);
+}
+#endif
+
 static gboolean
 meta_compositor_vulkan_manage (MetaCompositor  *compositor,
                                GError         **error)
 {
 #ifdef HAVE_VULKAN
+  MetaCompositorVulkan *vulkan;
+
+  vulkan = META_COMPOSITOR_VULKAN (compositor);
+
+  enumerate_instance_layers (vulkan);
+  enumerate_instance_extensions (vulkan);
+
   g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED, "Not implemented");
 
   return FALSE;

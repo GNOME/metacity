@@ -48,7 +48,8 @@ typedef enum
   META_DEBUG_RESIZING = 1 << 16,
   META_DEBUG_SHAPES = 1 << 17,
   META_DEBUG_EDGE_RESISTANCE = 1 << 18,
-  META_DEBUG_VERBOSE = 1 << 19
+  META_DEBUG_VERBOSE = 1 << 19,
+  META_DEBUG_VULKAN = 1 << 20
 } MetaDebugFlags;
 
 void meta_init_debug (void);
