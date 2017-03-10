@@ -68,11 +68,6 @@
 #include <unistd.h>
 
 /**
- * The exit code we'll return to our parent process when we eventually die.
- */
-static MetaExitCode meta_exit_code = META_EXIT_SUCCESS;
-
-/**
  * Handle on the main loop, so that we have an easy way of shutting Metacity
  * down.
  */
@@ -344,7 +339,7 @@ sigterm_handler (int signum)
 static gboolean
 on_sigterm (void)
 {
-  meta_quit (META_EXIT_SUCCESS);
+  meta_quit ();
   return FALSE;
 }
 
@@ -506,11 +501,11 @@ main (int argc, char **argv)
           g_critical ("Failed to restart: %s", err->message);
           g_error_free (err);
 
-          meta_exit_code = META_EXIT_ERROR;
+          return EXIT_FAILURE;
         }
     }
 
-  return meta_exit_code;
+  return EXIT_SUCCESS;
 }
 
 /**
@@ -523,10 +518,8 @@ main (int argc, char **argv)
  * \param code The success or failure code to return to the calling process.
  */
 void
-meta_quit (MetaExitCode code)
+meta_quit (void)
 {
-  meta_exit_code = code;
-
   if (g_main_loop_is_running (meta_main_loop))
     g_main_loop_quit (meta_main_loop);
 }
@@ -541,7 +534,7 @@ void
 meta_restart (void)
 {
   meta_restart_after_quit = TRUE;
-  meta_quit (META_EXIT_SUCCESS);
+  meta_quit ();
 }
 
 /**

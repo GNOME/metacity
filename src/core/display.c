@@ -876,7 +876,7 @@ meta_display_close (MetaDisplay *display,
   g_free (display);
   the_display = NULL;
 
-  meta_quit (META_EXIT_SUCCESS);
+  meta_quit ();
 }
 
 MetaScreen*
