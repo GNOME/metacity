@@ -171,6 +171,8 @@ struct _MetaCompositorXRender
 
   guint           repaint_id;
 
+  gboolean        prefs_listener_added;
+
   guint           show_redraw : 1;
   guint           debug : 1;
 };
@@ -2584,7 +2586,11 @@ meta_compositor_xrender_finalize (GObject *object)
   xdisplay = meta_display_get_xdisplay (display);
   xroot = display->screen->xroot;
 
-  meta_prefs_remove_listener (update_shadows, xrender);
+  if (xrender->prefs_listener_added)
+    {
+      meta_prefs_remove_listener (update_shadows, xrender);
+      xrender->prefs_listener_added = FALSE;
+    }
 
   hide_overlay_window (xrender, xdisplay);
 
@@ -2723,6 +2729,7 @@ meta_compositor_xrender_manage (MetaCompositor  *compositor,
   show_overlay_window (xrender, xdisplay);
 
   meta_prefs_add_listener (update_shadows, xrender);
+  xrender->prefs_listener_added = TRUE;
 
   g_timeout_add (2000, (GSourceFunc) timeout_debug, compositor);
 
