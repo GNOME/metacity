@@ -5208,6 +5208,7 @@ prefs_changed_callback (MetaPreference pref,
   else if (pref == META_PREF_COMPOSITING_MANAGER)
     {
       update_compositor (display, TRUE);
+      meta_display_retheme_all ();
     }
   else if (pref == META_PREF_THEME_NAME ||
            pref == META_PREF_THEME_TYPE)

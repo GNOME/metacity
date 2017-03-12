@@ -30,7 +30,6 @@
 #include "bell.h"
 #include "errors.h"
 #include "keybindings.h"
-#include "prefs.h"
 
 #define EVENT_MASK (SubstructureRedirectMask |                     \
                     StructureNotifyMask | SubstructureNotifyMask | \
@@ -66,19 +65,6 @@ update_input_shape (MetaFrame *frame)
 
   XFixesSetWindowShapeRegion (xdisplay, frame->xwindow, ShapeInput, 0, 0, region);
   XFixesDestroyRegion (xdisplay, region);
-}
-
-static void
-prefs_changed_callback (MetaPreference preference,
-                        gpointer       data)
-{
-  MetaFrame *frame = (MetaFrame *) data;
-
-  if (preference == META_PREF_COMPOSITING_MANAGER)
-    {
-      frame->need_reapply_frame_shape = TRUE;
-      update_shape (frame);
-    }
 }
 
 void
@@ -190,8 +176,6 @@ meta_window_ensure_frame (MetaWindow *window)
   update_shape (frame);
 
   meta_display_ungrab (window->display);
-
-  meta_prefs_add_listener (prefs_changed_callback, frame);
 }
 
 void
@@ -206,8 +190,6 @@ meta_window_destroy_frame (MetaWindow *window)
   meta_verbose ("Unframing window %s\n", window->desc);
 
   frame = window->frame;
-
-  meta_prefs_remove_listener (prefs_changed_callback, frame);
 
   meta_frame_calc_borders (frame, &borders);
 
