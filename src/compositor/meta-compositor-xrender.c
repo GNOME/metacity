@@ -2601,7 +2601,7 @@ meta_compositor_xrender_finalize (GObject *object)
       free_win (xrender, cw, TRUE);
     }
   g_list_free (xrender->windows);
-  g_hash_table_destroy (xrender->windows_by_xid);
+  g_clear_pointer (&xrender->windows_by_xid, g_hash_table_destroy);
 
   if (xrender->root_picture)
     XRenderFreePicture (xdisplay, xrender->root_picture);
