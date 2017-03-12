@@ -5850,6 +5850,15 @@ should_propagate_focus_appearance (MetaWindow *window)
     case META_WINDOW_OVERRIDE_OTHER:
       return TRUE;
 
+    case META_WINDOW_NORMAL:
+    case META_WINDOW_DESKTOP:
+    case META_WINDOW_DOCK:
+    case META_WINDOW_DIALOG:
+    case META_WINDOW_MODAL_DIALOG:
+    case META_WINDOW_TOOLBAR:
+    case META_WINDOW_MENU:
+    case META_WINDOW_UTILITY:
+    case META_WINDOW_SPLASHSCREEN:
     default:
       break;
     }
