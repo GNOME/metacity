@@ -53,7 +53,6 @@
 
 static int destroying_windows_disallowed = 0;
 
-
 static void     update_sm_hints           (MetaWindow     *window);
 static void     update_net_frame_extents  (MetaWindow     *window);
 static void     restack_window            (MetaWindow     *window,
@@ -128,6 +127,8 @@ static void unminimize_window_and_all_transient_parents (MetaWindow *window);
 static gboolean idle_calc_showing (gpointer data);
 static gboolean idle_move_resize (gpointer data);
 static gboolean idle_update_icon (gpointer data);
+
+G_DEFINE_TYPE (MetaWindow, meta_window, G_TYPE_OBJECT)
 
 static const char*
 wm_state_to_string (int state)
@@ -380,7 +381,7 @@ meta_window_new (MetaDisplay    *display,
       return NULL;
     }
 
-  window = g_new (MetaWindow, 1);
+  window = g_object_new (META_TYPE_WINDOW, NULL);
 
   window->constructing = TRUE;
 
@@ -1244,33 +1245,7 @@ meta_window_free (MetaWindow  *window,
 
   meta_error_trap_pop (window->display);
 
-  if (window->icon)
-    g_object_unref (G_OBJECT (window->icon));
-
-  if (window->mini_icon)
-    g_object_unref (G_OBJECT (window->mini_icon));
-
-  if (window->frame_bounds)
-    cairo_region_destroy (window->frame_bounds);
-
-  if (window->shape_region)
-    cairo_region_destroy (window->shape_region);
-
-  if (window->opaque_region)
-    cairo_region_destroy (window->opaque_region);
-
-  meta_icon_cache_free (&window->icon_cache);
-
-  g_free (window->sm_client_id);
-  g_free (window->wm_client_machine);
-  g_free (window->startup_id);
-  g_free (window->role);
-  g_free (window->res_class);
-  g_free (window->res_name);
-  g_free (window->title);
-  g_free (window->desc);
-  g_free (window->gtk_theme_variant);
-  g_free (window);
+  g_object_unref (window);
 }
 
 static void
@@ -9194,4 +9169,48 @@ meta_window_update_shape_region (MetaWindow *window)
   window->shape_region = shape_region;
 
   meta_compositor_window_shape_changed (window->display->compositor, window);
+}
+
+static void
+meta_window_finalize (GObject *object)
+{
+  MetaWindow *window;
+
+  window = META_WINDOW (object);
+
+  g_clear_object (&window->icon);
+  g_clear_object (&window->mini_icon);
+
+  g_clear_pointer (&window->frame_bounds, cairo_region_destroy);
+  g_clear_pointer (&window->shape_region, cairo_region_destroy);
+  g_clear_pointer (&window->opaque_region, cairo_region_destroy);
+
+  meta_icon_cache_free (&window->icon_cache);
+
+  g_clear_pointer (&window->sm_client_id, g_free);
+  g_clear_pointer (&window->wm_client_machine, g_free);
+  g_clear_pointer (&window->startup_id, g_free);
+  g_clear_pointer (&window->role, g_free);
+  g_clear_pointer (&window->res_class, g_free);
+  g_clear_pointer (&window->res_name, g_free);
+  g_clear_pointer (&window->title, g_free);
+  g_clear_pointer (&window->desc, g_free);
+  g_clear_pointer (&window->gtk_theme_variant, g_free);
+
+  G_OBJECT_CLASS (meta_window_parent_class)->finalize (object);
+}
+
+static void
+meta_window_class_init (MetaWindowClass *window_class)
+{
+  GObjectClass *object_class;
+
+  object_class = G_OBJECT_CLASS (window_class);
+
+  object_class->finalize = meta_window_finalize;
+}
+
+static void
+meta_window_init (MetaWindow *window)
+{
 }

@@ -42,6 +42,8 @@
 #include <cairo.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 
+G_BEGIN_DECLS
+
 typedef struct _MetaGroup MetaGroup;
 typedef struct _MetaWindowQueue MetaWindowQueue;
 
@@ -91,6 +93,8 @@ typedef enum {
 
 struct _MetaWindow
 {
+  GObject parent;
+
   MetaDisplay *display;
   MetaScreen *screen;
   MetaWorkspace *workspace;
@@ -732,5 +736,7 @@ MetaFrameType meta_window_get_frame_type (MetaWindow *window);
 gboolean meta_window_updates_are_frozen (MetaWindow *window);
 
 void meta_window_update_shape_region (MetaWindow *window);
+
+G_END_DECLS
 
 #endif
