@@ -273,7 +273,6 @@ meta_window_new (MetaDisplay    *display,
   gulong existing_wm_state;
   gulong event_mask;
   MetaMoveResizeFlags flags;
-  gboolean has_shape;
 
   meta_display_grab (display);
   meta_error_trap_push (display); /* Push a trap over all of window
@@ -352,28 +351,8 @@ meta_window_new (MetaDisplay    *display,
    */
   XSelectInput (display->xdisplay, xwindow, attrs.your_event_mask | event_mask);
 
-  has_shape = FALSE;
   if (META_DISPLAY_HAS_SHAPE (display))
-    {
-      int x_bounding, y_bounding, x_clip, y_clip;
-      unsigned w_bounding, h_bounding, w_clip, h_clip;
-      int bounding_shaped, clip_shaped;
-
-      XShapeSelectInput (display->xdisplay, xwindow, ShapeNotifyMask);
-
-      XShapeQueryExtents (display->xdisplay, xwindow,
-                          &bounding_shaped, &x_bounding, &y_bounding,
-                          &w_bounding, &h_bounding,
-                          &clip_shaped, &x_clip, &y_clip,
-                          &w_clip, &h_clip);
-
-      has_shape = bounding_shaped != FALSE;
-
-      meta_topic (META_DEBUG_SHAPES,
-                  "Window has_shape = %d extents %d,%d %u x %u\n",
-                  has_shape, x_bounding, y_bounding,
-                  w_bounding, h_bounding);
-    }
+    XShapeSelectInput (display->xdisplay, xwindow, ShapeNotifyMask);
 
   /* Get rid of any borders */
   if (attrs.border_width != 0)
@@ -430,7 +409,7 @@ meta_window_new (MetaDisplay    *display,
   /* avoid tons of stack updates */
   meta_stack_freeze (window->screen->stack);
 
-  window->has_shape = has_shape;
+  window->has_shape = FALSE;
 
   window->rect.x = attrs.x;
   window->rect.y = attrs.y;
@@ -523,6 +502,7 @@ meta_window_new (MetaDisplay    *display,
   window->disable_sync = FALSE;
   window->attached = FALSE;
   window->frame_bounds = NULL;
+  window->shape_region = NULL;
   window->opaque_region = NULL;
   window->opacity = 0xffffffff;
 
@@ -598,6 +578,8 @@ meta_window_new (MetaDisplay    *display,
     }
 
   meta_display_register_x_window (display, &window->xwindow, window);
+
+  meta_window_update_shape_region (window);
 
   /* assign the window to its group, or create a new group if needed
    */
@@ -1270,6 +1252,9 @@ meta_window_free (MetaWindow  *window,
 
   if (window->frame_bounds)
     cairo_region_destroy (window->frame_bounds);
+
+  if (window->shape_region)
+    cairo_region_destroy (window->shape_region);
 
   if (window->opaque_region)
     cairo_region_destroy (window->opaque_region);
@@ -9105,4 +9090,108 @@ gboolean
 meta_window_is_attached_dialog (MetaWindow *window)
 {
   return window->attached;
+}
+
+void
+meta_window_update_shape_region (MetaWindow *window)
+{
+  cairo_region_t *shape_region;
+  int bshaped;
+  int xbs;
+  int ybs;
+  unsigned int wbs;
+  unsigned int hbs;
+  int cshaped;
+  int xcs;
+  int ycs;
+  unsigned int wcs;
+  unsigned int hcs;
+
+  if (!window->display->have_shape)
+    return;
+
+  meta_error_trap_push (window->display);
+
+  XShapeQueryExtents (window->display->xdisplay, window->xwindow,
+                      &bshaped, &xbs, &ybs, &wbs, &hbs,
+                      &cshaped, &xcs, &ycs, &wcs, &hcs);
+
+  if (bshaped)
+    {
+      XRectangle *rects;
+      int n_rects;
+      int ordering;
+
+      window->has_shape = TRUE;
+
+      rects = XShapeGetRectangles (window->display->xdisplay, window->xwindow,
+                                   ShapeBounding, &n_rects, &ordering);
+
+      if (rects)
+        {
+          cairo_rectangle_int_t cairo_rects[n_rects];
+          int i;
+
+          for (i = 0; i < n_rects; i ++)
+            {
+              cairo_rects[i].x = rects[i].x;
+              cairo_rects[i].y = rects[i].y;
+              cairo_rects[i].width = rects[i].width;
+              cairo_rects[i].height = rects[i].height;
+            }
+
+          shape_region = cairo_region_create_rectangles (cairo_rects, n_rects);
+          XFree (rects);
+        }
+      else
+        {
+          shape_region = NULL;
+        }
+    }
+  else
+    {
+      window->has_shape = FALSE;
+      shape_region = NULL;
+    }
+
+  meta_error_trap_pop (window->display);
+
+  if (shape_region != NULL)
+    {
+      cairo_rectangle_int_t client_area;
+      cairo_region_overlap_t overlap;
+
+      client_area.x = 0;
+      client_area.y = 0;
+      client_area.width = window->rect.width;
+      client_area.height = window->rect.height;
+
+      /* The shape we get back from the client may have coordinates
+       * outside of the frame. The X SHAPE Extension requires that
+       * the overall shape the client provides never exceeds the
+       * "bounding rectangle" of the window -- the shape that the
+       * window would have gotten if it was unshaped. In our case,
+       * this is simply the client area.
+       */
+      cairo_region_intersect_rectangle (shape_region, &client_area);
+
+      /* Some applications might explicitly set their bounding region
+       * to the client area. Detect these cases, and throw out the
+       * bounding region in this case.
+       */
+      overlap = cairo_region_contains_rectangle (shape_region, &client_area);
+      if (overlap == CAIRO_REGION_OVERLAP_IN)
+        g_clear_pointer (&shape_region, cairo_region_destroy);
+    }
+
+  if (cairo_region_equal (window->shape_region, shape_region))
+    {
+      cairo_region_destroy (shape_region);
+      return;
+    }
+
+  g_clear_pointer (&window->shape_region, cairo_region_destroy);
+  window->shape_region = shape_region;
+
+  meta_compositor_window_shape_changed (window->display->compositor, window);
 }

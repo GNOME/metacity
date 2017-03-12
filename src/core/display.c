@@ -1850,6 +1850,8 @@ event_callback (XEvent   *event,
                               window->desc);
                 }
 
+              meta_window_update_shape_region (window);
+
               if (window->frame)
                 {
                   window->frame->need_reapply_frame_shape = TRUE;

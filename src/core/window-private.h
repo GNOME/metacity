@@ -343,6 +343,9 @@ struct _MetaWindow
   /* if non-NULL, the bounds of the window frame */
   cairo_region_t *frame_bounds;
 
+  /* if non-NULL, the bounding shape region of the window */
+  cairo_region_t *shape_region;
+
   /* if non-NULL, the opaque region _NET_WM_OPAQUE_REGION */
   cairo_region_t *opaque_region;
 
@@ -727,5 +730,7 @@ gboolean meta_window_should_attach_to_parent (MetaWindow *window);
 MetaFrameType meta_window_get_frame_type (MetaWindow *window);
 
 gboolean meta_window_updates_are_frozen (MetaWindow *window);
+
+void meta_window_update_shape_region (MetaWindow *window);
 
 #endif
