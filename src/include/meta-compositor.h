@@ -81,9 +81,6 @@ void             meta_compositor_process_event          (MetaCompositor     *com
 cairo_surface_t *meta_compositor_get_window_surface     (MetaCompositor     *compositor,
                                                          MetaWindow         *window);
 
-void             meta_compositor_set_active_window      (MetaCompositor     *compositor,
-                                                         MetaWindow         *window);
-
 void             meta_compositor_maximize_window        (MetaCompositor     *compositor,
                                                          MetaWindow         *window);
 

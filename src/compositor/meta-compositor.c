@@ -319,17 +319,6 @@ meta_compositor_get_window_surface (MetaCompositor *compositor,
 }
 
 void
-meta_compositor_set_active_window (MetaCompositor *compositor,
-                                   MetaWindow     *window)
-{
-  MetaCompositorClass *compositor_class;
-
-  compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
-
-  compositor_class->set_active_window (compositor, window);
-}
-
-void
 meta_compositor_maximize_window (MetaCompositor *compositor,
                                  MetaWindow     *window)
 {

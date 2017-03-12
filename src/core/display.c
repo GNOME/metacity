@@ -1511,7 +1511,6 @@ update_focus_window (MetaDisplay *display,
   else
     meta_topic (META_DEBUG_FOCUS, "* Focus --> NULL with serial %lu\n", serial);
 
-  meta_compositor_set_active_window (display->compositor, window);
   meta_display_update_active_window_hint (display);
 }
 

@@ -61,9 +61,6 @@ struct _MetaCompositorClass
   cairo_surface_t * (* get_window_surface)     (MetaCompositor     *compositor,
                                                 MetaWindow         *window);
 
-  void              (* set_active_window)      (MetaCompositor     *compositor,
-                                                MetaWindow         *window);
-
   void              (* maximize_window)        (MetaCompositor     *compositor,
                                                 MetaWindow         *window);
 

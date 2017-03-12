@@ -3104,12 +3104,6 @@ meta_compositor_xrender_get_window_surface (MetaCompositor *compositor,
 }
 
 static void
-meta_compositor_xrender_set_active_window (MetaCompositor *compositor,
-                                           MetaWindow     *window)
-{
-}
-
-static void
 meta_compositor_xrender_maximize_window (MetaCompositor *compositor,
                                          MetaWindow     *window)
 {
@@ -3217,7 +3211,6 @@ meta_compositor_xrender_class_init (MetaCompositorXRenderClass *xrender_class)
   compositor_class->set_updates_frozen = meta_compositor_xrender_set_updates_frozen;
   compositor_class->process_event = meta_compositor_xrender_process_event;
   compositor_class->get_window_surface = meta_compositor_xrender_get_window_surface;
-  compositor_class->set_active_window = meta_compositor_xrender_set_active_window;
   compositor_class->maximize_window = meta_compositor_xrender_maximize_window;
   compositor_class->unmaximize_window = meta_compositor_xrender_unmaximize_window;
   compositor_class->sync_stack = meta_compositor_xrender_sync_stack;
