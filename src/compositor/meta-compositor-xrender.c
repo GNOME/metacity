@@ -154,8 +154,6 @@ struct _MetaCompositorXRender
   GList          *windows;
   GHashTable     *windows_by_xid;
 
-  MetaWindow     *focus_window;
-
   Window          overlay_window;
 
   gboolean        have_shadows;
@@ -1975,9 +1973,6 @@ unmap_win (MetaCompositorXRender *xrender,
       return;
     }
 
-  if (cw->window && cw->window == xrender->focus_window)
-    xrender->focus_window = NULL;
-
   cw->attrs.map_state = IsUnmapped;
   cw->damaged = FALSE;
 
@@ -2049,6 +2044,78 @@ is_shaped (MetaDisplay *display,
   return FALSE;
 }
 
+static void
+notify_appears_focused_cb (MetaWindow            *window,
+                           GParamSpec            *pspec,
+                           MetaCompositorXRender *xrender)
+{
+  MetaFrame *frame;
+  Window xwindow;
+  MetaCompWindow *cw;
+  Display *xdisplay;
+  XserverRegion damage;
+
+  frame = meta_window_get_frame (window);
+
+  if (frame)
+    xwindow = meta_frame_get_xwindow (frame);
+  else
+    xwindow = meta_window_get_xwindow (window);
+
+  cw = find_window (xrender, xwindow);
+
+  if (cw == NULL)
+    return;
+
+  xdisplay = window->display->xdisplay;
+  damage = None;
+
+  if (meta_window_appears_focused (window))
+    cw->shadow_type = META_SHADOW_LARGE;
+  else
+    cw->shadow_type = META_SHADOW_MEDIUM;
+
+  determine_mode (xrender, cw);
+  cw->needs_shadow = window_has_shadow (xrender, cw);
+
+  if (cw->mask)
+    {
+      XRenderFreePicture (xdisplay, cw->mask);
+      cw->mask = None;
+    }
+
+  if (cw->shadow)
+    {
+      XRenderFreePicture (xdisplay, cw->shadow);
+      cw->shadow = None;
+    }
+
+  if (cw->extents)
+    {
+      damage = XFixesCreateRegion (xdisplay, NULL, 0);
+      XFixesCopyRegion (xdisplay, damage, cw->extents);
+      XFixesDestroyRegion (xdisplay, cw->extents);
+    }
+
+  cw->extents = win_extents (xrender, cw);
+
+  if (damage)
+    {
+      XFixesUnionRegion (xdisplay, damage, damage, cw->extents);
+    }
+  else
+    {
+      damage = XFixesCreateRegion (xdisplay, NULL, 0);
+      XFixesCopyRegion (xdisplay, damage, cw->extents);
+    }
+
+  dump_xserver_region (xrender, "notify_appears_focused_cb", damage);
+  add_damage (xrender, damage);
+
+  xrender->clip_changed = TRUE;
+  add_repair (xrender);
+}
+
 /* Must be called with an error trap in place */
 static void
 add_win (MetaCompositorXRender *xrender,
@@ -2072,6 +2139,10 @@ add_win (MetaCompositorXRender *xrender,
       g_free (cw);
       return;
     }
+
+  g_signal_connect_object (window, "notify::appears-focused",
+                           G_CALLBACK (notify_appears_focused_cb),
+                           xrender, 0);
 
   cw->back_pixmap = None;
   cw->mask_pixmap = None;
@@ -2711,8 +2782,6 @@ meta_compositor_xrender_manage (MetaCompositor  *compositor,
   xrender->windows = NULL;
   xrender->windows_by_xid = g_hash_table_new (g_direct_hash, g_direct_equal);
 
-  xrender->focus_window = meta_display_get_focus_window (display);
-
   xrender->clip_changed = TRUE;
 
   xrender->have_shadows = (g_getenv("META_DEBUG_NO_SHADOW") == NULL);
@@ -3038,133 +3107,6 @@ static void
 meta_compositor_xrender_set_active_window (MetaCompositor *compositor,
                                            MetaWindow     *window)
 {
-  MetaCompositorXRender *xrender;
-  MetaDisplay *display;
-  Display *xdisplay;
-  MetaCompWindow *old_focus = NULL, *new_focus = NULL;
-  MetaWindow *old_focus_win = NULL;
-
-  xrender = META_COMPOSITOR_XRENDER (compositor);
-  display = meta_compositor_get_display (compositor);
-  xdisplay = meta_display_get_xdisplay (display);
-
-  old_focus_win = xrender->focus_window;
-  xrender->focus_window = window;
-
-  if (old_focus_win)
-    {
-      MetaFrame *f = meta_window_get_frame (old_focus_win);
-
-      old_focus = find_window (xrender,
-                               f ? meta_frame_get_xwindow (f) :
-                               meta_window_get_xwindow (old_focus_win));
-    }
-
-  if (window)
-    {
-      MetaFrame *f = meta_window_get_frame (window);
-      new_focus = find_window (xrender,
-                               f ? meta_frame_get_xwindow (f) :
-                               meta_window_get_xwindow (window));
-    }
-
-  if (old_focus)
-    {
-      XserverRegion damage;
-
-      /* Tear down old shadows */
-      old_focus->shadow_type = META_SHADOW_MEDIUM;
-      determine_mode (xrender, old_focus);
-      old_focus->needs_shadow = window_has_shadow (xrender, old_focus);
-
-      if (old_focus->attrs.map_state == IsViewable)
-        {
-          if (old_focus->mask)
-            {
-              XRenderFreePicture (xdisplay, old_focus->mask);
-              old_focus->mask = None;
-            }
-
-          if (old_focus->shadow)
-            {
-              XRenderFreePicture (xdisplay, old_focus->shadow);
-              old_focus->shadow = None;
-            }
-
-          if (old_focus->extents)
-            {
-              damage = XFixesCreateRegion (xdisplay, NULL, 0);
-              XFixesCopyRegion (xdisplay, damage, old_focus->extents);
-              XFixesDestroyRegion (xdisplay, old_focus->extents);
-            }
-          else
-            damage = None;
-
-          /* Build new extents */
-          old_focus->extents = win_extents (xrender, old_focus);
-
-          if (damage)
-            XFixesUnionRegion (xdisplay, damage, damage, old_focus->extents);
-          else
-            {
-              damage = XFixesCreateRegion (xdisplay, NULL, 0);
-              XFixesCopyRegion (xdisplay, damage, old_focus->extents);
-            }
-
-          dump_xserver_region (xrender, "resize_win", damage);
-          add_damage (xrender, damage);
-
-          xrender->clip_changed = TRUE;
-        }
-    }
-
-  if (new_focus)
-    {
-      XserverRegion damage;
-
-      new_focus->shadow_type = META_SHADOW_LARGE;
-      determine_mode (xrender, new_focus);
-      new_focus->needs_shadow = window_has_shadow (xrender, new_focus);
-
-      if (new_focus->mask)
-        {
-          XRenderFreePicture (xdisplay, new_focus->mask);
-          new_focus->mask = None;
-        }
-
-      if (new_focus->shadow)
-        {
-          XRenderFreePicture (xdisplay, new_focus->shadow);
-          new_focus->shadow = None;
-        }
-
-      if (new_focus->extents)
-        {
-          damage = XFixesCreateRegion (xdisplay, NULL, 0);
-          XFixesCopyRegion (xdisplay, damage, new_focus->extents);
-          XFixesDestroyRegion (xdisplay, new_focus->extents);
-        }
-      else
-        damage = None;
-
-      /* Build new extents */
-      new_focus->extents = win_extents (xrender, new_focus);
-
-      if (damage)
-        XFixesUnionRegion (xdisplay, damage, damage, new_focus->extents);
-      else
-        {
-          damage = XFixesCreateRegion (xdisplay, NULL, 0);
-          XFixesCopyRegion (xdisplay, damage, new_focus->extents);
-        }
-
-      dump_xserver_region (xrender, "resize_win", damage);
-      add_damage (xrender, damage);
-
-      xrender->clip_changed = TRUE;
-    }
-
-  add_repair (xrender);
 }
 
 static void
