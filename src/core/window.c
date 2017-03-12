@@ -1011,8 +1011,8 @@ detach_foreach_func (MetaWindow *window,
 }
 
 void
-meta_window_free (MetaWindow  *window,
-                  guint32      timestamp)
+meta_window_unmanage (MetaWindow *window,
+                      guint32     timestamp)
 {
   GList *tmp;
 
@@ -1044,7 +1044,7 @@ meta_window_free (MetaWindow  *window,
                                      detach_foreach_func,
                                      &attached_children);
       for (iter = attached_children; iter; iter = iter->next)
-        meta_window_free (iter->data, timestamp);
+        meta_window_unmanage (iter->data, timestamp);
       g_list_free (attached_children);
     }
 

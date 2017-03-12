@@ -1676,7 +1676,7 @@ reload_transient_for (MetaWindow    *window,
 
           window->xtransient_for = old_transient_for;
           timestamp = meta_display_get_current_time_roundtrip (window->display);
-          meta_window_free (window, timestamp);
+          meta_window_unmanage (window, timestamp);
           return;
         }
     }

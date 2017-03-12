@@ -292,7 +292,7 @@ struct _MetaWindow
   /* Has this window not ever been shown yet? */
   guint showing_for_first_time : 1;
 
-  /* Are we in meta_window_free()? */
+  /* Are we in meta_window_unmanage()? */
   guint unmanaging : 1;
 
   /* Are we in meta_window_new()? */
@@ -460,7 +460,7 @@ MetaWindow* meta_window_new                (MetaDisplay    *display,
                                             Window          xwindow,
                                             gboolean        must_be_viewable,
                                             MetaEffectType  effect);
-void        meta_window_free               (MetaWindow  *window,
+void        meta_window_unmanage           (MetaWindow  *window,
                                             guint32      timestamp);
 void        meta_window_calc_showing       (MetaWindow  *window);
 void        meta_window_queue              (MetaWindow  *window,

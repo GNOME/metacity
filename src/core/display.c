@@ -806,7 +806,7 @@ meta_display_unmanage_windows (MetaDisplay *display,
   tmp = winlist;
   while (tmp != NULL)
     {
-      meta_window_free (tmp->data, timestamp);
+      meta_window_unmanage (tmp->data, timestamp);
 
       tmp = tmp->next;
     }
@@ -860,7 +860,7 @@ meta_display_close (MetaDisplay *display,
     }
 #endif
 
-  /* Must be after all calls to meta_window_free() since they
+  /* Must be after all calls to meta_window_unmanage() since they
    * unregister windows
    */
   g_hash_table_destroy (display->window_ids);
@@ -2262,7 +2262,7 @@ event_callback (XEvent   *event,
           else
             {
               /* Unmanage destroyed window */
-              meta_window_free (window, timestamp);
+              meta_window_unmanage (window, timestamp);
               window = NULL;
             }
         }
@@ -2292,7 +2292,7 @@ event_callback (XEvent   *event,
 
                   /* Unmanage withdrawn window */
                   window->withdrawn = TRUE;
-                  meta_window_free (window, timestamp);
+                  meta_window_unmanage (window, timestamp);
                   window = NULL;
                 }
               else
