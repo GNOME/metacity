@@ -128,6 +128,17 @@ static gboolean idle_calc_showing (gpointer data);
 static gboolean idle_move_resize (gpointer data);
 static gboolean idle_update_icon (gpointer data);
 
+enum
+{
+  PROP_0,
+
+  PROP_APPEARS_FOCUSED,
+
+  LAST_PROP
+};
+
+static GParamSpec *properties[LAST_PROP] = { NULL };
+
 G_DEFINE_TYPE (MetaWindow, meta_window, G_TYPE_OBJECT)
 
 static const char*
@@ -5812,6 +5823,8 @@ meta_window_appears_focused_changed (MetaWindow *window)
   set_net_wm_state (window);
   meta_window_frame_size_changed (window);
 
+  g_object_notify_by_pspec (G_OBJECT (window), properties[PROP_APPEARS_FOCUSED]);
+
   if (window->frame)
     meta_frame_queue_draw (window->frame);
 }
@@ -9201,6 +9214,38 @@ meta_window_finalize (GObject *object)
 }
 
 static void
+meta_window_get_property (GObject    *object,
+                          guint       property_id,
+                          GValue     *value,
+                          GParamSpec *pspec)
+{
+  MetaWindow *window;
+
+  window = META_WINDOW (object);
+
+  switch (property_id)
+    {
+      case PROP_APPEARS_FOCUSED:
+        g_value_set_boolean (value, meta_window_appears_focused (window));
+        break;
+
+      default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+        break;
+    }
+}
+
+static void
+install_properties (GObjectClass *object_class)
+{
+  properties[PROP_APPEARS_FOCUSED] =
+    g_param_spec_boolean ("appears-focused", "appears-focused", "appears-focused",
+                          FALSE, G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
+
+  g_object_class_install_properties (object_class, LAST_PROP, properties);
+}
+
+static void
 meta_window_class_init (MetaWindowClass *window_class)
 {
   GObjectClass *object_class;
@@ -9208,6 +9253,9 @@ meta_window_class_init (MetaWindowClass *window_class)
   object_class = G_OBJECT_CLASS (window_class);
 
   object_class->finalize = meta_window_finalize;
+  object_class->get_property = meta_window_get_property;
+
+  install_properties (object_class);
 }
 
 static void
