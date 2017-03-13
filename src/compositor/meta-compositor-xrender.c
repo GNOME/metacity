@@ -1195,7 +1195,7 @@ get_window_format (Display        *xdisplay,
 {
   XRenderPictFormat *format;
 
-  format = XRenderFindVisualFormat (xdisplay, cw->attrs.visual);
+  format = XRenderFindVisualFormat (xdisplay, cw->window->xvisual);
 
   if (!format)
     {
@@ -2005,7 +2005,7 @@ determine_mode (MetaCompositorXRender *xrender,
   if (cw->attrs.class == InputOnly)
     format = NULL;
   else
-    format = XRenderFindVisualFormat (xdisplay, cw->attrs.visual);
+    format = XRenderFindVisualFormat (xdisplay, cw->window->xvisual);
 
   if ((format && format->type == PictTypeDirect && format->direct.alphaMask)
       || cw->window->opacity != (guint) OPAQUE)
@@ -3049,7 +3049,8 @@ meta_compositor_xrender_get_window_surface (MetaCompositor *compositor,
   height = shaded ? cw->shaded.height : cw->attrs.height;
 
   back_surface = cairo_xlib_surface_create (xdisplay, back_pixmap,
-                                            cw->attrs.visual, width, height);
+                                            cw->window->xvisual,
+                                            width, height);
 
   window_surface = cairo_surface_create_similar (back_surface,
                                                  CAIRO_CONTENT_COLOR_ALPHA,
