@@ -2206,8 +2206,7 @@ resize_win (MetaCompositorXRender *xrender,
             int                    x,
             int                    y,
             int                    width,
-            int                    height,
-            gboolean               override_redirect)
+            int                    height)
 {
   MetaDisplay *display = meta_screen_get_display (xrender->screen);
   Display *xdisplay = meta_display_get_xdisplay (display);
@@ -2319,7 +2318,6 @@ resize_win (MetaCompositorXRender *xrender,
   cw->attrs.y = y;
   cw->attrs.width = width;
   cw->attrs.height = height;
-  cw->attrs.override_redirect = override_redirect;
 
   if (cw->extents)
     XFixesDestroyRegion (xdisplay, cw->extents);
@@ -2370,8 +2368,7 @@ process_configure_notify (MetaCompositorXRender *xrender,
                    event->x, event->y, event->width, event->height);
         }
 
-      resize_win (xrender, cw, event->x, event->y, event->width, event->height,
-                  event->override_redirect);
+      resize_win (xrender, cw, event->x, event->y, event->width, event->height);
     }
   else
     {
@@ -2534,8 +2531,7 @@ process_shape (MetaCompositorXRender *xrender,
         cw->shaped = FALSE;
 
       resize_win (xrender, cw, cw->attrs.x, cw->attrs.y,
-                  event->width + event->x, event->height + event->y,
-                  cw->attrs.override_redirect);
+                  event->width + event->x, event->height + event->y);
 
       if (event->shaped && !cw->shaped)
         cw->shaped = TRUE;
