@@ -575,6 +575,9 @@ meta_compositor_vulkan_manage (MetaCompositor  *compositor,
   if (!meta_compositor_set_selection (compositor, error))
     return FALSE;
 
+  if (!meta_compositor_redirect_windows (compositor, error))
+    return FALSE;
+
   if (!create_overlay_surface (vulkan, error))
     return FALSE;
 
