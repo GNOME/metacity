@@ -22,6 +22,7 @@
 #include <vulkan/vulkan.h>
 #endif
 
+#include "display-private.h"
 #include "meta-compositor-vulkan.h"
 #include "prefs.h"
 #include "util.h"
@@ -37,6 +38,8 @@ struct _MetaCompositorVulkan
   VkInstance               instance;
 
   VkDebugReportCallbackEXT debug_callback;
+
+  VkSurfaceKHR             surface;
 #endif
 };
 
@@ -297,6 +300,41 @@ setup_debug_callback (MetaCompositorVulkan *vulkan)
     }
 }
 
+static gboolean
+create_overlay_surface (MetaCompositorVulkan  *vulkan,
+                        GError               **error)
+{
+  MetaCompositor *compositor;
+  MetaDisplay *display;
+  Window overlay;
+  VkXlibSurfaceCreateInfoKHR info;
+  VkResult result;
+
+  compositor = META_COMPOSITOR (vulkan);
+
+  display = meta_compositor_get_display (compositor);
+  overlay = meta_compositor_get_overlay_window (compositor);
+
+  info.sType = VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR;
+  info.pNext = NULL;
+  info.flags = 0;
+  info.dpy = display->xdisplay;
+  info.window = overlay;
+
+  result = vkCreateXlibSurfaceKHR (vulkan->instance, &info, NULL,
+                                   &vulkan->surface);
+
+  if (result != VK_SUCCESS)
+    {
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Failed to create Vulkan surface for overlay window");
+
+      return FALSE;
+    }
+
+  return TRUE;
+}
+
 static const gchar *
 device_type_to_string (VkPhysicalDeviceType type)
 {
@@ -467,6 +505,12 @@ meta_compositor_vulkan_finalize (GObject *object)
 
   vulkan = META_COMPOSITOR_VULKAN (object);
 
+  if (vulkan->surface != VK_NULL_HANDLE)
+    {
+      vkDestroySurfaceKHR (vulkan->instance, vulkan->surface, NULL);
+      vulkan->surface = VK_NULL_HANDLE;
+    }
+
   if (vulkan->debug_callback != VK_NULL_HANDLE)
     {
       PFN_vkVoidFunction f;
@@ -528,10 +572,13 @@ meta_compositor_vulkan_manage (MetaCompositor  *compositor,
 
   setup_debug_callback (vulkan);
 
-  if (!enumerate_physical_devices (vulkan, error))
+  if (!meta_compositor_set_selection (compositor, error))
     return FALSE;
 
-  if (!meta_compositor_set_selection (compositor, error))
+  if (!create_overlay_surface (vulkan, error))
+    return FALSE;
+
+  if (!enumerate_physical_devices (vulkan, error))
     return FALSE;
 
   g_timeout_add (10000, (GSourceFunc) not_implemented_cb, vulkan);
