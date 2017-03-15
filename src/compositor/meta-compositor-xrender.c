@@ -101,9 +101,8 @@ typedef struct _MetaCompWindow
   int mode;
 
   gboolean damaged;
-  gboolean shaped;
 
-  XRectangle shape_bounds;
+  XserverRegion shape_region;
 
   Damage damage;
   Picture picture;
@@ -969,10 +968,11 @@ window_has_shadow (MetaCompositorXRender *xrender,
     }
 
   /* Never put a shadow around shaped windows */
-  if (cw->shaped) {
-    meta_verbose ("Window has no shadow as it is shaped\n");
-    return FALSE;
-  }
+  if (cw->shape_region != None)
+    {
+      meta_verbose ("Window has no shadow as it is shaped\n");
+      return FALSE;
+    }
 
   /* Don't put shadow around DND icon windows */
   if (cw->window->type == META_WINDOW_DND ||
@@ -1823,6 +1823,12 @@ free_win (MetaCompositorXRender *xrender,
       cw->mask_pixmap = None;
     }
 
+  if (cw->shape_region)
+    {
+      XFixesDestroyRegion (xdisplay, cw->shape_region);
+      cw->shape_region = None;
+    }
+
   if (cw->picture)
     {
       XRenderFreePicture (xdisplay, cw->picture);
@@ -2024,26 +2030,6 @@ determine_mode (MetaCompositorXRender *xrender,
     }
 }
 
-static gboolean
-is_shaped (MetaDisplay *display,
-           Window       xwindow)
-{
-  Display *xdisplay = meta_display_get_xdisplay (display);
-  int xws, yws, xbs, ybs;
-  unsigned wws, hws, wbs, hbs;
-  int bounding_shaped, clip_shaped;
-
-  if (meta_display_has_shape (display))
-    {
-      XShapeQueryExtents (xdisplay, xwindow, &bounding_shaped,
-                          &xws, &yws, &wws, &hws, &clip_shaped,
-                          &xbs, &ybs, &wbs, &hbs);
-      return (bounding_shaped != 0);
-    }
-
-  return FALSE;
-}
-
 static void
 notify_appears_focused_cb (MetaWindow            *window,
                            GParamSpec            *pspec,
@@ -2148,12 +2134,16 @@ add_win (MetaCompositorXRender *xrender,
   cw->mask_pixmap = None;
 
   cw->damaged = FALSE;
-  cw->shaped = is_shaped (display, xwindow);
 
-  cw->shape_bounds.x = cw->attrs.x;
-  cw->shape_bounds.y = cw->attrs.y;
-  cw->shape_bounds.width = cw->attrs.width;
-  cw->shape_bounds.height = cw->attrs.height;
+  if (window->shape_region != NULL)
+    {
+      cw->shape_region = cairo_region_to_xserver_region (xdisplay,
+                                                         window->shape_region);
+    }
+  else
+    {
+      cw->shape_region = None;
+    }
 
   if (cw->attrs.class == InputOnly)
     cw->damage = None;
@@ -2211,7 +2201,6 @@ resize_win (MetaCompositorXRender *xrender,
   MetaDisplay *display = meta_screen_get_display (xrender->screen);
   Display *xdisplay = meta_display_get_xdisplay (display);
   XserverRegion damage;
-  XserverRegion shape;
 
   if (cw->extents)
     {
@@ -2337,10 +2326,6 @@ resize_win (MetaCompositorXRender *xrender,
       XFixesCopyRegion (xdisplay, damage, cw->extents);
     }
 
-  shape = XFixesCreateRegion (xdisplay, &cw->shape_bounds, 1);
-  XFixesUnionRegion (xdisplay, damage, damage, shape);
-  XFixesDestroyRegion (xdisplay, shape);
-
   dump_xserver_region (xrender, "resize_win", damage);
   add_damage (xrender, damage);
 
@@ -2362,7 +2347,7 @@ process_configure_notify (MetaCompositorXRender *xrender,
       if (xrender->debug)
         {
           fprintf (stderr, "configure notify %d %d %d\n", cw->damaged,
-                   cw->shaped, cw->needs_shadow);
+                   cw->shape_region != None, cw->needs_shadow);
           dump_xserver_region (xrender, "\textents", cw->extents);
           fprintf (stderr, "\txy (%d %d), wh (%d %d)\n",
                    event->x, event->y, event->width, event->height);
@@ -2514,43 +2499,6 @@ process_damage (MetaCompositorXRender *xrender,
 
   if (event->more == FALSE)
     add_repair (xrender);
-}
-
-static void
-process_shape (MetaCompositorXRender *xrender,
-               XShapeEvent           *event)
-{
-  MetaCompWindow *cw = find_window (xrender, event->window);
-
-  if (cw == NULL)
-    return;
-
-  if (event->kind == ShapeBounding)
-    {
-      if (!event->shaped && cw->shaped)
-        cw->shaped = FALSE;
-
-      resize_win (xrender, cw, cw->attrs.x, cw->attrs.y,
-                  event->width + event->x, event->height + event->y);
-
-      if (event->shaped && !cw->shaped)
-        cw->shaped = TRUE;
-
-      if (event->shaped == True)
-        {
-          cw->shape_bounds.x = cw->attrs.x + event->x;
-          cw->shape_bounds.y = cw->attrs.y + event->y;
-          cw->shape_bounds.width = event->width;
-          cw->shape_bounds.height = event->height;
-        }
-      else
-        {
-          cw->shape_bounds.x = cw->attrs.x;
-          cw->shape_bounds.y = cw->attrs.y;
-          cw->shape_bounds.width = cw->attrs.width;
-          cw->shape_bounds.height = cw->attrs.height;
-        }
-    }
 }
 
 static int
@@ -2910,6 +2858,41 @@ static void
 meta_compositor_xrender_window_shape_changed (MetaCompositor *compositor,
                                               MetaWindow     *window)
 {
+  MetaCompositorXRender *xrender;
+  MetaFrame *frame;
+  Window xwindow;
+  MetaCompWindow *cw;
+
+  xrender = META_COMPOSITOR_XRENDER (compositor);
+  frame = meta_window_get_frame (window);
+
+  if (frame)
+    xwindow = meta_frame_get_xwindow (frame);
+  else
+    xwindow = meta_window_get_xwindow (window);
+
+  cw = find_window (xrender, xwindow);
+  if (cw == NULL)
+    return;
+
+  if (cw->shape_region != None)
+    {
+      XFixesTranslateRegion (xrender->xdisplay, cw->shape_region,
+                             cw->attrs.x, cw->attrs.y);
+
+      dump_xserver_region (xrender, "shape_changed", cw->shape_region);
+      add_damage (xrender, cw->shape_region);
+
+      cw->shape_region = None;
+
+      xrender->clip_changed = TRUE;
+    }
+
+  if (window->shape_region != NULL)
+    {
+      cw->shape_region = cairo_region_to_xserver_region (xrender->xdisplay,
+                                                         window->shape_region);
+    }
 }
 
 static void
@@ -2962,8 +2945,6 @@ meta_compositor_xrender_process_event (MetaCompositor *compositor,
     default:
       if (event->type == meta_display_get_damage_event_base (display) + XDamageNotify)
         process_damage (xrender, (XDamageNotifyEvent *) event);
-      else if (event->type == meta_display_get_shape_event_base (display) + ShapeNotify)
-        process_shape (xrender, (XShapeEvent *) event);
       break;
     }
 
