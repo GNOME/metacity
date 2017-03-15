@@ -1951,30 +1951,6 @@ map_win (MetaCompositorXRender *xrender,
 }
 
 static void
-unmap_win (MetaCompositorXRender *xrender,
-           Window                 id)
-{
-  MetaCompWindow *cw = find_window (xrender, id);
-
-  if (cw == NULL)
-    {
-      return;
-    }
-
-  cw->damaged = FALSE;
-
-  if (cw->extents != None)
-    {
-      dump_xserver_region (xrender, "unmap_win", cw->extents);
-      add_damage (xrender, cw->extents);
-      cw->extents = None;
-    }
-
-  free_win (xrender, cw, FALSE);
-  xrender->clip_changed = TRUE;
-}
-
-static void
 determine_mode (MetaCompositorXRender *xrender,
                 MetaCompWindow        *cw)
 {
@@ -2431,23 +2407,6 @@ process_expose (MetaCompositorXRender *xrender,
 }
 
 static void
-process_unmap (MetaCompositorXRender *xrender,
-               XUnmapEvent           *event)
-{
-  MetaCompWindow *cw;
-
-  if (event->from_configure)
-    {
-      /* Ignore unmap caused by parent's resize */
-      return;
-    }
-
-  cw = find_window (xrender, event->window);
-  if (cw)
-    unmap_win (xrender, event->window);
-}
-
-static void
 process_map (MetaCompositorXRender *xrender,
              XMapEvent             *event)
 {
@@ -2784,6 +2743,34 @@ meta_compositor_xrender_hide_window (MetaCompositor *compositor,
                                      MetaWindow     *window,
                                      MetaEffectType  effect)
 {
+  MetaCompositorXRender *xrender;
+  MetaFrame *frame;
+  Window xwindow;
+  MetaCompWindow *cw;
+
+  xrender = META_COMPOSITOR_XRENDER (compositor);
+  frame = meta_window_get_frame (window);
+
+  if (frame)
+    xwindow = meta_frame_get_xwindow (frame);
+  else
+    xwindow = meta_window_get_xwindow (window);
+
+  cw = find_window (xrender, xwindow);
+  if (cw == NULL)
+    return;
+
+  cw->damaged = FALSE;
+
+  if (cw->extents != None)
+    {
+      dump_xserver_region (xrender, "hide_window", cw->extents);
+      add_damage (xrender, cw->extents);
+      cw->extents = None;
+    }
+
+  free_win (xrender, cw, FALSE);
+  xrender->clip_changed = TRUE;
 }
 
 static void
@@ -2903,10 +2890,6 @@ meta_compositor_xrender_process_event (MetaCompositor *compositor,
 
     case Expose:
       process_expose (xrender, (XExposeEvent *) event);
-      break;
-
-    case UnmapNotify:
-      process_unmap (xrender, (XUnmapEvent *) event);
       break;
 
     case MapNotify:
