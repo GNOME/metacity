@@ -93,7 +93,8 @@ typedef struct _MetaCompWindow
 {
   MetaWindow *window;
   Window id;
-  XWindowAttributes attrs;
+
+  MetaRectangle rect;
 
   Pixmap back_pixmap;
   Pixmap mask_pixmap;
@@ -1008,10 +1009,10 @@ win_extents (MetaCompositorXRender *xrender,
 {
   XRectangle r;
 
-  r.x = cw->attrs.x;
-  r.y = cw->attrs.y;
-  r.width = cw->attrs.width;
-  r.height = cw->attrs.height;
+  r.x = cw->rect.x;
+  r.y = cw->rect.y;
+  r.width = cw->rect.width;
+  r.height = cw->rect.height;
 
   if (cw->needs_shadow)
     {
@@ -1041,13 +1042,13 @@ win_extents (MetaCompositorXRender *xrender,
             opacity = opacity * ((double) cw->window->opacity) / ((double) OPAQUE);
 
           cw->shadow = shadow_picture (xrender, cw, opacity, borders,
-                                       cw->attrs.width - invisible_width,
-                                       cw->attrs.height - invisible_height,
+                                       cw->rect.width - invisible_width,
+                                       cw->rect.height - invisible_height,
                                        &cw->shadow_width, &cw->shadow_height);
         }
 
-      sr.x = cw->attrs.x + cw->shadow_dx;
-      sr.y = cw->attrs.y + cw->shadow_dy;
+      sr.x = cw->rect.x + cw->shadow_dx;
+      sr.y = cw->rect.y + cw->shadow_dy;
       sr.width = cw->shadow_width;
       sr.height = cw->shadow_height;
 
@@ -1089,7 +1090,7 @@ get_window_region (MetaDisplay    *display,
   if (region == None)
     return None;
 
-  XFixesTranslateRegion (xdisplay, region, cw->attrs.x, cw->attrs.y);
+  XFixesTranslateRegion (xdisplay, region, cw->rect.x, cw->rect.y);
 
   return region;
 }
@@ -1130,10 +1131,10 @@ get_client_region (MetaDisplay    *display,
 
       meta_frame_calc_borders (frame, &borders);
 
-      x = cw->attrs.x;
-      y = cw->attrs.y;
-      width = cw->attrs.width;
-      height = cw->attrs.height;
+      x = cw->rect.x;
+      y = cw->rect.y;
+      width = cw->rect.width;
+      height = cw->rect.height;
 
       rect.x = x + borders.total.left;
       rect.y = y + borders.total.top;
@@ -1180,7 +1181,7 @@ get_visible_region (MetaDisplay    *display,
 
       if (tmp != None)
         {
-          XFixesTranslateRegion (xdisplay, tmp, cw->attrs.x, cw->attrs.y);
+          XFixesTranslateRegion (xdisplay, tmp, cw->rect.x, cw->rect.y);
           XFixesIntersectRegion (xdisplay, region, region, tmp);
           XFixesDestroyRegion (xdisplay, tmp);
         }
@@ -1270,8 +1271,8 @@ get_window_mask (MetaDisplay    *display,
     return None;
 
   xdisplay = meta_display_get_xdisplay (display);
-  width = cw->attrs.width;
-  height = cw->attrs.height;
+  width = cw->rect.width;
+  height = cw->rect.height;
   format = XRenderFindStandardFormat (xdisplay, PictStandardA8);
 
   if (cw->mask_pixmap == None)
@@ -1359,8 +1360,8 @@ paint_dock_shadows (MetaCompositorXRender *xrender,
           XRenderComposite (xdisplay, PictOpOver, xrender->black_picture,
                             cw->shadow, root_buffer,
                             0, 0, 0, 0,
-                            cw->attrs.x + cw->shadow_dx,
-                            cw->attrs.y + cw->shadow_dy,
+                            cw->rect.x + cw->shadow_dx,
+                            cw->rect.y + cw->shadow_dy,
                             cw->shadow_width, cw->shadow_height);
           XFixesDestroyRegion (xdisplay, shadow_clip);
         }
@@ -1466,10 +1467,10 @@ paint_windows (MetaCompositorXRender *xrender,
           MetaFrame *frame;
           MetaFrameBorders borders;
 
-          x = cw->attrs.x;
-          y = cw->attrs.y;
-          wid = cw->attrs.width;
-          hei = cw->attrs.height;
+          x = cw->rect.x;
+          y = cw->rect.y;
+          wid = cw->rect.width;
+          hei = cw->rect.height;
 
           frame = cw->window ? meta_window_get_frame (cw->window) : NULL;
           meta_frame_calc_borders (frame, &borders);
@@ -1527,10 +1528,10 @@ paint_windows (MetaCompositorXRender *xrender,
         {
           int x, y, wid, hei;
 
-          x = cw->attrs.x;
-          y = cw->attrs.y;
-          wid = cw->attrs.width;
-          hei = cw->attrs.height;
+          x = cw->rect.x;
+          y = cw->rect.y;
+          wid = cw->rect.width;
+          hei = cw->rect.height;
 
           if (cw->shadow && cw->window->type != META_WINDOW_DOCK)
             {
@@ -1772,7 +1773,7 @@ repair_win (MetaCompositorXRender *xrender,
     {
       parts = XFixesCreateRegion (xdisplay, 0, 0);
       XDamageSubtract (xdisplay, cw->damage, None, parts);
-      XFixesTranslateRegion (xdisplay, parts, cw->attrs.x, cw->attrs.y);
+      XFixesTranslateRegion (xdisplay, parts, cw->rect.x, cw->rect.y);
     }
 
   meta_error_trap_pop (NULL);
@@ -1988,10 +1989,7 @@ determine_mode (MetaCompositorXRender *xrender,
       cw->alpha_pict = None;
     }
 
-  if (cw->attrs.class == InputOnly)
-    format = NULL;
-  else
-    format = XRenderFindVisualFormat (xdisplay, cw->window->xvisual);
+  format = XRenderFindVisualFormat (xdisplay, cw->window->xvisual);
 
   if ((format && format->type == PictTypeDirect && format->direct.alphaMask)
       || cw->window->opacity != (guint) OPAQUE)
@@ -2100,11 +2098,7 @@ add_win (MetaCompositorXRender *xrender,
   cw->window = window;
   cw->id = xwindow;
 
-  if (!XGetWindowAttributes (xdisplay, xwindow, &cw->attrs))
-    {
-      g_free (cw);
-      return;
-    }
+  meta_window_get_input_rect (window, &cw->rect);
 
   g_signal_connect_object (window, "notify::appears-focused",
                            G_CALLBACK (notify_appears_focused_cb),
@@ -2125,10 +2119,7 @@ add_win (MetaCompositorXRender *xrender,
       cw->shape_region = None;
     }
 
-  if (cw->attrs.class == InputOnly)
-    cw->damage = None;
-  else
-    cw->damage = XDamageCreate (xdisplay, xwindow, XDamageReportNonEmpty);
+  cw->damage = XDamageCreate (xdisplay, xwindow, XDamageReportNonEmpty);
 
   cw->alpha_pict = None;
 
@@ -2194,7 +2185,7 @@ resize_win (MetaCompositorXRender *xrender,
         fprintf (stderr, "no extents to damage !\n");
     }
 
-  if (cw->attrs.width != width || cw->attrs.height != height)
+  if (cw->rect.width != width || cw->rect.height != height)
     {
       if (cw->shaded.back_pixmap)
         {
@@ -2250,10 +2241,10 @@ resize_win (MetaCompositorXRender *xrender,
 
       if (cw->window && meta_window_is_shaded (cw->window))
         {
-          cw->shaded.x = cw->attrs.x;
-          cw->shaded.y = cw->attrs.y;
-          cw->shaded.width = cw->attrs.width;
-          cw->shaded.height = cw->attrs.height;
+          cw->shaded.x = cw->rect.x;
+          cw->shaded.y = cw->rect.y;
+          cw->shaded.width = cw->rect.width;
+          cw->shaded.height = cw->rect.height;
 
           if (cw->client_region != None)
             {
@@ -2283,10 +2274,10 @@ resize_win (MetaCompositorXRender *xrender,
         }
     }
 
-  cw->attrs.x = x;
-  cw->attrs.y = y;
-  cw->attrs.width = width;
-  cw->attrs.height = height;
+  cw->rect.x = x;
+  cw->rect.y = y;
+  cw->rect.width = width;
+  cw->rect.height = height;
 
   if (cw->extents)
     XFixesDestroyRegion (xdisplay, cw->extents);
@@ -2427,8 +2418,8 @@ process_expose (MetaCompositorXRender *xrender,
 
   if (cw != NULL)
     {
-      origin_x = cw->attrs.x;
-      origin_y = cw->attrs.y;
+      origin_x = cw->rect.x;
+      origin_y = cw->rect.y;
     }
 
   rect[0].x = event->x + origin_x;
@@ -2858,7 +2849,7 @@ meta_compositor_xrender_window_shape_changed (MetaCompositor *compositor,
   if (cw->shape_region != None)
     {
       XFixesTranslateRegion (xrender->xdisplay, cw->shape_region,
-                             cw->attrs.x, cw->attrs.y);
+                             cw->rect.x, cw->rect.y);
 
       dump_xserver_region (xrender, "shape_changed", cw->shape_region);
       add_damage (xrender, cw->shape_region);
@@ -2993,7 +2984,7 @@ meta_compositor_xrender_get_window_surface (MetaCompositor *compositor,
           xclient_region = XFixesCreateRegion (xdisplay, NULL, 0);
           XFixesCopyRegion (xdisplay, xclient_region, cw->client_region);
           XFixesTranslateRegion (xdisplay, xclient_region,
-                                 -cw->attrs.x, -cw->attrs.y);
+                                 -cw->rect.x, -cw->rect.y);
         }
     }
 
@@ -3006,8 +2997,8 @@ meta_compositor_xrender_get_window_surface (MetaCompositor *compositor,
   if (frame != NULL && client_region == NULL)
     return NULL;
 
-  width = shaded ? cw->shaded.width : cw->attrs.width;
-  height = shaded ? cw->shaded.height : cw->attrs.height;
+  width = shaded ? cw->shaded.width : cw->rect.width;
+  height = shaded ? cw->shaded.height : cw->rect.height;
 
   back_surface = cairo_xlib_surface_create (xdisplay, back_pixmap,
                                             cw->window->xvisual,
