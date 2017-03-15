@@ -1900,13 +1900,9 @@ free_win (MetaCompositorXRender *xrender,
 
 static void
 map_win (MetaCompositorXRender *xrender,
-         Window                 id)
+         MetaCompWindow        *cw)
 {
-  MetaCompWindow *cw = find_window (xrender, id);
   Display *xdisplay = xrender->xdisplay;
-
-  if (cw == NULL)
-    return;
 
   /* The reason we deallocate this here and not in unmap
      is so that we will still have a valid pixmap for
@@ -1946,8 +1942,6 @@ map_win (MetaCompositorXRender *xrender,
       XFixesDestroyRegion (xdisplay, cw->shaded.client_region);
       cw->shaded.client_region = None;
     }
-
-  cw->damaged = FALSE;
 }
 
 static void
@@ -2134,7 +2128,7 @@ add_win (MetaCompositorXRender *xrender,
   g_hash_table_insert (xrender->windows_by_xid, (gpointer) xwindow, cw);
 
   if (cw->window->mapped)
-    map_win (xrender, xwindow);
+    map_win (xrender, cw);
 }
 
 static void
@@ -2404,16 +2398,6 @@ process_expose (MetaCompositorXRender *xrender,
   rect[0].height = event->height;
 
   expose_area (xrender, rect, 1);
-}
-
-static void
-process_map (MetaCompositorXRender *xrender,
-             XMapEvent             *event)
-{
-  MetaCompWindow *cw = find_window (xrender, event->window);
-
-  if (cw)
-    map_win (xrender, event->window);
 }
 
 static void
@@ -2736,6 +2720,26 @@ meta_compositor_xrender_show_window (MetaCompositor *compositor,
                                      MetaWindow     *window,
                                      MetaEffectType  effect)
 {
+  MetaCompositorXRender *xrender;
+  MetaFrame *frame;
+  Window xwindow;
+  MetaCompWindow *cw;
+
+  xrender = META_COMPOSITOR_XRENDER (compositor);
+  frame = meta_window_get_frame (window);
+
+  if (frame)
+    xwindow = meta_frame_get_xwindow (frame);
+  else
+    xwindow = meta_window_get_xwindow (window);
+
+  cw = find_window (xrender, xwindow);
+  if (cw == NULL)
+    return;
+
+  cw->damaged = TRUE;
+
+  map_win (xrender, cw);
 }
 
 static void
@@ -2890,10 +2894,6 @@ meta_compositor_xrender_process_event (MetaCompositor *compositor,
 
     case Expose:
       process_expose (xrender, (XExposeEvent *) event);
-      break;
-
-    case MapNotify:
-      process_map (xrender, (XMapEvent *) event);
       break;
 
     default:
