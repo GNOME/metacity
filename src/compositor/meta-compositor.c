@@ -18,6 +18,10 @@
 
 #include "config.h"
 
+#include <X11/extensions/shape.h>
+#include <X11/extensions/Xcomposite.h>
+#include <X11/extensions/Xfixes.h>
+
 #include "display-private.h"
 #include "meta-compositor-none.h"
 #include "meta-compositor-xrender.h"
@@ -32,6 +36,9 @@ typedef struct
   Atom         cm_atom;
   Window       cm_window;
   guint32      cm_timestamp;
+
+  /* XCompositeGetOverlayWindow */
+  Window       overlay_window;
 } MetaCompositorPrivate;
 
 enum
@@ -82,6 +89,21 @@ meta_compositor_finalize (GObject *object)
   compositor = META_COMPOSITOR (object);
   priv = meta_compositor_get_instance_private (compositor);
   xdisplay = priv->display->xdisplay;
+
+  if (priv->overlay_window != None)
+    {
+      Window overlay;
+      XserverRegion region;
+
+      overlay = priv->overlay_window;
+
+      region = XFixesCreateRegion (xdisplay, NULL, 0);
+      XFixesSetWindowShapeRegion (xdisplay, overlay, ShapeBounding, 0, 0, region);
+      XFixesDestroyRegion (xdisplay, region);
+
+      XCompositeReleaseOverlayWindow (xdisplay, overlay);
+      priv->overlay_window = None;
+    }
 
   if (priv->cm_window != None)
     {
@@ -364,6 +386,9 @@ meta_compositor_is_our_xwindow (MetaCompositor *compositor,
   if (priv->cm_window == xwindow)
     return TRUE;
 
+  if (priv->overlay_window == xwindow)
+    return TRUE;
+
   return compositor_class->is_our_xwindow (compositor, xwindow);
 }
 
@@ -393,6 +418,14 @@ meta_compositor_check_extensions (MetaCompositor  *compositor,
     {
       g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
                    "Missing damage extension required for compositing");
+
+      return FALSE;
+    }
+
+  if (!priv->display->have_xfixes)
+    {
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Missing xfixes extension required for compositing");
 
       return FALSE;
     }
@@ -432,6 +465,42 @@ meta_compositor_set_selection (MetaCompositor  *compositor,
     }
 
   return TRUE;
+}
+
+Window
+meta_compositor_get_overlay_window (MetaCompositor *compositor)
+{
+  MetaCompositorPrivate *priv;
+  Display *xdisplay;
+  Window xroot;
+  Window overlay;
+  XserverRegion region;
+
+  priv = meta_compositor_get_instance_private (compositor);
+
+  if (priv->overlay_window != None)
+    return priv->overlay_window;
+
+  xdisplay = priv->display->xdisplay;
+  xroot = DefaultRootWindow (xdisplay);
+
+  overlay = XCompositeGetOverlayWindow (xdisplay, xroot);
+
+  /* Get Expose events about window regions that have lost contents. */
+  XSelectInput (xdisplay, overlay, ExposureMask);
+
+  /* Make sure there isn't any left-over output shape on the overlay
+   * window by setting the whole screen to be an output region.
+   */
+  XFixesSetWindowShapeRegion (xdisplay, overlay, ShapeBounding, 0, 0, 0);
+
+  /* Allow events to pass through the overlay */
+  region = XFixesCreateRegion (xdisplay, NULL, 0);
+  XFixesSetWindowShapeRegion (xdisplay, overlay, ShapeInput, 0, 0, region);
+  XFixesDestroyRegion (xdisplay, region);
+
+  priv->overlay_window = overlay;
+  return overlay;
 }
 
 MetaDisplay *

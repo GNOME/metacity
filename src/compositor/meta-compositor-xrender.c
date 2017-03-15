@@ -2453,39 +2453,6 @@ update_shadows (MetaPreference pref,
 }
 
 static void
-show_overlay_window (MetaCompositorXRender *xrender,
-                     Display               *xdisplay)
-{
-  XserverRegion region;
-
-  region = XFixesCreateRegion (xdisplay, NULL, 0);
-
-  XFixesSetWindowShapeRegion (xdisplay, xrender->overlay_window,
-                              ShapeBounding, 0, 0, 0);
-
-  XFixesSetWindowShapeRegion (xdisplay, xrender->overlay_window,
-                              ShapeInput, 0, 0, region);
-
-  XFixesDestroyRegion (xdisplay, region);
-
-  damage_screen (xrender);
-}
-
-static void
-hide_overlay_window (MetaCompositorXRender *xrender,
-                     Display               *xdisplay)
-{
-  XserverRegion region;
-
-  region = XFixesCreateRegion (xdisplay, NULL, 0);
-
-  XFixesSetWindowShapeRegion (xdisplay, xrender->overlay_window,
-                              ShapeBounding, 0, 0, region);
-
-  XFixesDestroyRegion (xdisplay, region);
-}
-
-static void
 meta_compositor_xrender_constructed (GObject *object)
 {
   MetaCompositor *compositor;
@@ -2521,8 +2488,6 @@ meta_compositor_xrender_finalize (GObject *object)
       xrender->prefs_listener_added = FALSE;
     }
 
-  hide_overlay_window (xrender, xdisplay);
-
   /* Destroy the windows */
   for (index = xrender->windows; index; index = index->next)
     {
@@ -2547,7 +2512,6 @@ meta_compositor_xrender_finalize (GObject *object)
     }
 
   XCompositeUnredirectSubwindows (xdisplay, xroot, CompositeRedirectManual);
-  XCompositeReleaseOverlayWindow (xdisplay, xrender->overlay_window);
 
   G_OBJECT_CLASS (meta_compositor_xrender_parent_class)->finalize (object);
 }
@@ -2572,14 +2536,6 @@ meta_compositor_xrender_manage (MetaCompositor  *compositor,
     {
       g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
                    "Missing render extension required for compositing");
-
-      return FALSE;
-    }
-
-  if (!display->have_xfixes)
-    {
-      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                   "Missing xfixes extension required for compositing");
 
       return FALSE;
     }
@@ -2613,8 +2569,7 @@ meta_compositor_xrender_manage (MetaCompositor  *compositor,
       return FALSE;
     }
 
-  xrender->overlay_window = XCompositeGetOverlayWindow (xdisplay, xroot);
-  XSelectInput (xdisplay, xrender->overlay_window, ExposureMask);
+  xrender->overlay_window = meta_compositor_get_overlay_window (compositor);
 
   pa.subwindow_mode = IncludeInferiors;
   xrender->root_picture = XRenderCreatePicture (xdisplay,
@@ -2653,7 +2608,7 @@ meta_compositor_xrender_manage (MetaCompositor  *compositor,
 
   XClearArea (xdisplay, xrender->overlay_window, 0, 0, 0, 0, TRUE);
 
-  show_overlay_window (xrender, xdisplay);
+  damage_screen (xrender);
 
   meta_prefs_add_listener (update_shadows, xrender);
   xrender->prefs_listener_added = TRUE;
@@ -3111,13 +3066,6 @@ static gboolean
 meta_compositor_xrender_is_our_xwindow (MetaCompositor *compositor,
                                         Window          xwindow)
 {
-  MetaCompositorXRender *xrender;
-
-  xrender = META_COMPOSITOR_XRENDER (compositor);
-
-  if (xrender->overlay_window == xwindow)
-    return TRUE;
-
   return FALSE;
 }
 
