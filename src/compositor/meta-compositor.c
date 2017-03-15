@@ -23,6 +23,7 @@
 #include <X11/extensions/Xfixes.h>
 
 #include "display-private.h"
+#include "errors.h"
 #include "meta-compositor-none.h"
 #include "meta-compositor-xrender.h"
 #include "meta-compositor-vulkan.h"
@@ -39,6 +40,9 @@ typedef struct
 
   /* XCompositeGetOverlayWindow */
   Window       overlay_window;
+
+  /* XCompositeRedirectSubwindows */
+  gboolean     windows_redirected;
 } MetaCompositorPrivate;
 
 enum
@@ -89,6 +93,15 @@ meta_compositor_finalize (GObject *object)
   compositor = META_COMPOSITOR (object);
   priv = meta_compositor_get_instance_private (compositor);
   xdisplay = priv->display->xdisplay;
+
+  if (priv->windows_redirected)
+    {
+      Window xroot;
+
+      xroot = DefaultRootWindow (xdisplay);
+      XCompositeUnredirectSubwindows (xdisplay, xroot, CompositeRedirectManual);
+      priv->windows_redirected = FALSE;
+    }
 
   if (priv->overlay_window != None)
     {
@@ -499,6 +512,36 @@ meta_compositor_get_overlay_window (MetaCompositor *compositor)
 
   priv->overlay_window = overlay;
   return overlay;
+}
+
+gboolean
+meta_compositor_redirect_windows (MetaCompositor  *compositor,
+                                  GError         **error)
+{
+  MetaCompositorPrivate *priv;
+  Display *xdisplay;
+  Window xroot;
+
+  priv = meta_compositor_get_instance_private (compositor);
+
+  xdisplay = priv->display->xdisplay;
+  xroot = DefaultRootWindow (xdisplay);
+
+  meta_error_trap_push (priv->display);
+  XCompositeRedirectSubwindows (xdisplay, xroot, CompositeRedirectManual);
+  XSync (xdisplay, FALSE);
+
+  if (meta_error_trap_pop_with_return (priv->display) != Success)
+    {
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Another compositing manager is running on screen %i",
+                   DefaultScreen (xdisplay));
+
+      return FALSE;
+    }
+
+  priv->windows_redirected = TRUE;
+  return TRUE;
 }
 
 MetaDisplay *

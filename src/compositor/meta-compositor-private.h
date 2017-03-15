@@ -79,6 +79,9 @@ gboolean     meta_compositor_set_selection      (MetaCompositor  *compositor,
 
 Window       meta_compositor_get_overlay_window (MetaCompositor  *compositor);
 
+gboolean     meta_compositor_redirect_windows   (MetaCompositor  *compositor,
+                                                 GError         **error);
+
 MetaDisplay *meta_compositor_get_display        (MetaCompositor  *compositor);
 
 G_END_DECLS

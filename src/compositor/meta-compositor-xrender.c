@@ -2474,13 +2474,11 @@ meta_compositor_xrender_finalize (GObject *object)
   MetaCompositorXRender *xrender;
   MetaDisplay *display;
   Display *xdisplay;
-  Window xroot;
   GList *index;
 
   xrender = META_COMPOSITOR_XRENDER (object);
   display = meta_compositor_get_display (META_COMPOSITOR (xrender));
   xdisplay = meta_display_get_xdisplay (display);
-  xroot = display->screen->xroot;
 
   if (xrender->prefs_listener_added)
     {
@@ -2511,8 +2509,6 @@ meta_compositor_xrender_finalize (GObject *object)
         g_free (xrender->shadows[i]->gaussian_map);
     }
 
-  XCompositeUnredirectSubwindows (xdisplay, xroot, CompositeRedirectManual);
-
   G_OBJECT_CLASS (meta_compositor_xrender_parent_class)->finalize (object);
 }
 
@@ -2527,7 +2523,6 @@ meta_compositor_xrender_manage (MetaCompositor  *compositor,
   XRenderPictureAttributes pa;
   XRenderPictFormat *visual_format;
   int screen_number = meta_screen_get_screen_number (screen);
-  Window xroot = meta_screen_get_xroot (screen);
 
   if (!meta_compositor_check_extensions (compositor, error))
     return FALSE;
@@ -2543,18 +2538,8 @@ meta_compositor_xrender_manage (MetaCompositor  *compositor,
   if (!meta_compositor_set_selection (compositor, error))
     return FALSE;
 
-  gdk_error_trap_push ();
-  XCompositeRedirectSubwindows (xdisplay, xroot, CompositeRedirectManual);
-  XSync (xdisplay, FALSE);
-
-  if (gdk_error_trap_pop ())
-    {
-      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                   "Another compositing manager is running on screen %i",
-                   screen_number);
-
-      return FALSE;
-    }
+  if (!meta_compositor_redirect_windows (compositor, error))
+    return FALSE;
 
   xrender->screen = screen;
 
