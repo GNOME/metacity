@@ -23,6 +23,7 @@
 #endif
 
 #include "meta-compositor-vulkan.h"
+#include "prefs.h"
 #include "util.h"
 
 struct _MetaCompositorVulkan
@@ -491,6 +492,23 @@ meta_compositor_vulkan_finalize (GObject *object)
 }
 
 static gboolean
+not_implemented_cb (MetaCompositorVulkan *vulkan)
+{
+  gboolean cm;
+
+  cm = meta_prefs_get_compositing_manager ();
+
+  g_warning ("MetaCompositorVulkan is not implemented, switching to %s...",
+             cm ? "MetaCompositorXRender" : "MetaCompositorNone");
+
+  g_unsetenv ("META_COMPOSITOR");
+  meta_prefs_set_compositing_manager (!cm);
+  meta_prefs_set_compositing_manager (cm);
+
+  return G_SOURCE_REMOVE;
+}
+
+static gboolean
 meta_compositor_vulkan_manage (MetaCompositor  *compositor,
                                GError         **error)
 {
@@ -516,9 +534,9 @@ meta_compositor_vulkan_manage (MetaCompositor  *compositor,
   if (!meta_compositor_set_selection (compositor, error))
     return FALSE;
 
-  g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED, "Not implemented");
+  g_timeout_add (10000, (GSourceFunc) not_implemented_cb, vulkan);
 
-  return FALSE;
+  return TRUE;
 #else
   g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
                "Compiled without Vulkan support");
