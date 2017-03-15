@@ -1419,16 +1419,6 @@ paint_windows (MetaCompositorXRender *xrender,
       if (!cw->window->mapped)
         continue;
 
-#if 0
-      if ((cw->attrs.x + cw->attrs.width < 1) ||
-          (cw->attrs.y + cw->attrs.height < 1) ||
-          (cw->attrs.x >= screen_width) || (cw->attrs.y >= screen_height))
-        {
-          /* Off screen */
-          continue;
-        }
-#endif
-
       if (cw->picture == None)
         cw->picture = get_window_picture (display, cw);
 
@@ -1456,14 +1446,6 @@ paint_windows (MetaCompositorXRender *xrender,
               XFixesDestroyRegion (xdisplay, cw->client_region);
               cw->client_region = None;
             }
-
-#if 0
-          if (cw->extents)
-            {
-              XFixesDestroyRegion (xdisplay, cw->extents);
-              cw->extents = None;
-            }
-#endif
         }
 
       if (cw->window_region == None)
