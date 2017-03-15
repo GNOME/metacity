@@ -69,9 +69,6 @@ struct _MetaCompositorClass
 
   void              (* sync_stack)             (MetaCompositor     *compositor,
                                                 GList              *stack);
-
-  gboolean          (* is_our_xwindow)         (MetaCompositor     *compositor,
-                                                Window              xwindow);
 };
 
 gboolean     meta_compositor_check_extensions   (MetaCompositor  *compositor,

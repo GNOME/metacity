@@ -622,13 +622,6 @@ meta_compositor_vulkan_sync_stack (MetaCompositor *compositor,
 {
 }
 
-static gboolean
-meta_compositor_vulkan_is_our_xwindow (MetaCompositor *compositor,
-                                       Window          xwindow)
-{
-  return FALSE;
-}
-
 static void
 meta_compositor_vulkan_class_init (MetaCompositorVulkanClass *vulkan_class)
 {
@@ -653,7 +646,6 @@ meta_compositor_vulkan_class_init (MetaCompositorVulkanClass *vulkan_class)
   compositor_class->maximize_window = meta_compositor_vulkan_maximize_window;
   compositor_class->unmaximize_window = meta_compositor_vulkan_unmaximize_window;
   compositor_class->sync_stack = meta_compositor_vulkan_sync_stack;
-  compositor_class->is_our_xwindow = meta_compositor_vulkan_is_our_xwindow;
 }
 
 static void

@@ -378,10 +378,8 @@ meta_compositor_is_our_xwindow (MetaCompositor *compositor,
                                 Window          xwindow)
 {
   MetaCompositorPrivate *priv;
-  MetaCompositorClass *compositor_class;
 
   priv = meta_compositor_get_instance_private (compositor);
-  compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
 
   if (priv->cm_window == xwindow)
     return TRUE;
@@ -389,7 +387,7 @@ meta_compositor_is_our_xwindow (MetaCompositor *compositor,
   if (priv->overlay_window == xwindow)
     return TRUE;
 
-  return compositor_class->is_our_xwindow (compositor, xwindow);
+  return FALSE;
 }
 
 gboolean
