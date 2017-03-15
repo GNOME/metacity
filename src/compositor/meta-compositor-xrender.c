@@ -1416,7 +1416,7 @@ paint_windows (MetaCompositorXRender *xrender,
           continue;
         }
 
-      if (cw->attrs.map_state != IsViewable)
+      if (!cw->window->mapped)
         continue;
 
 #if 0
@@ -1964,7 +1964,6 @@ map_win (MetaCompositorXRender *xrender,
       cw->shaded.client_region = None;
     }
 
-  cw->attrs.map_state = IsViewable;
   cw->damaged = FALSE;
 }
 
@@ -1979,7 +1978,6 @@ unmap_win (MetaCompositorXRender *xrender,
       return;
     }
 
-  cw->attrs.map_state = IsUnmapped;
   cw->damaged = FALSE;
 
   if (cw->extents != None)
@@ -2186,7 +2184,7 @@ add_win (MetaCompositorXRender *xrender,
   xrender->windows = g_list_prepend (xrender->windows, cw);
   g_hash_table_insert (xrender->windows_by_xid, (gpointer) xwindow, cw);
 
-  if (cw->attrs.map_state == IsViewable)
+  if (cw->window->mapped)
     map_win (xrender, xwindow);
 }
 
