@@ -67,6 +67,8 @@ struct _MetaCompositorClass
   void              (* unmaximize_window)      (MetaCompositor     *compositor,
                                                 MetaWindow         *window);
 
+  void              (* sync_screen_size)       (MetaCompositor     *compositor);
+
   void              (* sync_stack)             (MetaCompositor     *compositor,
                                                 GList              *stack);
 };

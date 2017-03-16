@@ -105,6 +105,11 @@ meta_compositor_none_unmaximize_window (MetaCompositor *compositor,
 }
 
 static void
+meta_compositor_none_sync_screen_size (MetaCompositor *compositor)
+{
+}
+
+static void
 meta_compositor_none_sync_stack (MetaCompositor *compositor,
                                  GList          *stack)
 {
@@ -129,6 +134,7 @@ meta_compositor_none_class_init (MetaCompositorNoneClass *none_class)
   compositor_class->get_window_surface = meta_compositor_none_get_window_surface;
   compositor_class->maximize_window = meta_compositor_none_maximize_window;
   compositor_class->unmaximize_window = meta_compositor_none_unmaximize_window;
+  compositor_class->sync_screen_size = meta_compositor_none_sync_screen_size;
   compositor_class->sync_stack = meta_compositor_none_sync_stack;
 }
 

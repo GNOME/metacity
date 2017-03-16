@@ -2293,6 +2293,8 @@ meta_screen_resize (MetaScreen *screen,
   reload_xinerama_infos (screen);
   set_desktop_geometry_hint (screen);
 
+  meta_compositor_sync_screen_size (screen->display->compositor);
+
   /* Queue a resize on all the windows */
   meta_screen_foreach_window (screen, meta_screen_resize_func, 0);
 }

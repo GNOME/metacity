@@ -3003,6 +3003,11 @@ meta_compositor_xrender_unmaximize_window (MetaCompositor *compositor,
 }
 
 static void
+meta_compositor_xrender_sync_screen_size (MetaCompositor *compositor)
+{
+}
+
+static void
 meta_compositor_xrender_sync_stack (MetaCompositor *compositor,
                                     GList          *stack)
 {
@@ -3068,6 +3073,7 @@ meta_compositor_xrender_class_init (MetaCompositorXRenderClass *xrender_class)
   compositor_class->get_window_surface = meta_compositor_xrender_get_window_surface;
   compositor_class->maximize_window = meta_compositor_xrender_maximize_window;
   compositor_class->unmaximize_window = meta_compositor_xrender_unmaximize_window;
+  compositor_class->sync_screen_size = meta_compositor_xrender_sync_screen_size;
   compositor_class->sync_stack = meta_compositor_xrender_sync_stack;
 }
 

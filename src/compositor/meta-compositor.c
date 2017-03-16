@@ -417,6 +417,16 @@ meta_compositor_unmaximize_window (MetaCompositor *compositor,
 }
 
 void
+meta_compositor_sync_screen_size (MetaCompositor *compositor)
+{
+  MetaCompositorClass *compositor_class;
+
+  compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
+
+  compositor_class->sync_screen_size (compositor);
+}
+
+void
 meta_compositor_sync_stack (MetaCompositor *compositor,
                             GList          *stack)
 {

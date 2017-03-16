@@ -87,6 +87,8 @@ void             meta_compositor_maximize_window        (MetaCompositor     *com
 void             meta_compositor_unmaximize_window      (MetaCompositor     *compositor,
                                                          MetaWindow         *window);
 
+void             meta_compositor_sync_screen_size       (MetaCompositor     *compositor);
+
 void             meta_compositor_sync_stack             (MetaCompositor     *compositor,
                                                          GList              *stack);
 
