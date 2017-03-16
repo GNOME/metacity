@@ -42,6 +42,7 @@ struct _MetaCompositorVulkan
 
   VkSurfaceKHR              surface;
   VkSurfaceFormatKHR        surface_format;
+  VkExtent2D                surface_extent;
 
   VkPhysicalDevice          physical_device;
   uint32_t                  graphics_family_index;
@@ -65,12 +66,76 @@ struct _MetaCompositorVulkan
   VkImageView              *image_views;
 
   VkRenderPass              render_pass;
+
+  uint32_t                  n_framebuffers;
+  VkFramebuffer            *framebuffers;
 #endif
 };
 
 G_DEFINE_TYPE (MetaCompositorVulkan, meta_compositor_vulkan, META_TYPE_COMPOSITOR)
 
 #ifdef HAVE_VULKAN
+static void
+destroy_framebuffers (MetaCompositorVulkan *vulkan)
+{
+  uint32_t i;
+
+  if (vulkan->framebuffers == NULL)
+    return;
+
+  for (i = 0; i < vulkan->n_framebuffers; i++)
+    vkDestroyFramebuffer (vulkan->device, vulkan->framebuffers[i], NULL);
+
+  g_clear_pointer (&vulkan->framebuffers, g_free);
+
+  vulkan->n_framebuffers = 0;
+}
+
+static gboolean
+create_framebuffers (MetaCompositorVulkan  *vulkan,
+                     GError               **error)
+{
+  uint32_t i;
+  VkFramebufferCreateInfo info;
+  VkResult result;
+
+  destroy_framebuffers (vulkan);
+
+  vulkan->framebuffers = g_new0 (VkFramebuffer, vulkan->n_images);
+
+  for (i = 0; i < vulkan->n_images; i++)
+    {
+      VkImageView attachments[1];
+
+      attachments[0] = vulkan->image_views[i];
+
+      info.sType = VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO;
+      info.pNext = NULL;
+      info.flags = 0;
+      info.renderPass = vulkan->render_pass;
+      info.attachmentCount = 1;
+      info.pAttachments = attachments;
+      info.width = vulkan->surface_extent.width;
+      info.height = vulkan->surface_extent.height;
+      info.layers = 1;
+
+      result = vkCreateFramebuffer (vulkan->device, &info, NULL,
+                                    &vulkan->framebuffers[i]);
+
+      if (result != VK_SUCCESS)
+        {
+          g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                       "Failed to create framebuffer");
+
+          return FALSE;
+        }
+
+      vulkan->n_framebuffers++;
+    }
+
+  return TRUE;
+}
+
 static void
 destroy_render_pass (MetaCompositorVulkan *vulkan)
 {
@@ -245,8 +310,10 @@ create_swapchain (MetaCompositorVulkan  *vulkan,
       return FALSE;
     }
 
-  if (capabilities.currentExtent.width == 0xffffffff &&
-      capabilities.currentExtent.height == 0xffffffff)
+  vulkan->surface_extent = capabilities.currentExtent;
+
+  if (vulkan->surface_extent.width == 0xffffffff &&
+      vulkan->surface_extent.height == 0xffffffff)
     {
       MetaDisplay *display;
       gint width;
@@ -256,8 +323,8 @@ create_swapchain (MetaCompositorVulkan  *vulkan,
 
       meta_screen_get_size (display->screen, &width, &height);
 
-      capabilities.currentExtent.width = width;
-      capabilities.currentExtent.height = height;
+      vulkan->surface_extent.width = width;
+      vulkan->surface_extent.height = height;
     }
 
   info.sType = VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR;
@@ -267,7 +334,7 @@ create_swapchain (MetaCompositorVulkan  *vulkan,
   info.minImageCount = capabilities.minImageCount;
   info.imageFormat = vulkan->surface_format.format;
   info.imageColorSpace = vulkan->surface_format.colorSpace;
-  info.imageExtent = capabilities.currentExtent;
+  info.imageExtent = vulkan->surface_extent;
   info.imageArrayLayers = 1;
   info.imageUsage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT;
   info.preTransform = capabilities.currentTransform;
@@ -1018,6 +1085,7 @@ meta_compositor_vulkan_finalize (GObject *object)
 
   vulkan = META_COMPOSITOR_VULKAN (object);
 
+  destroy_framebuffers (vulkan);
   destroy_render_pass (vulkan);
   destroy_image_views (vulkan);
   destroy_swapchain (vulkan);
@@ -1135,6 +1203,9 @@ meta_compositor_vulkan_manage (MetaCompositor  *compositor,
     return FALSE;
 
   if (!create_render_pass (vulkan, error))
+    return FALSE;
+
+  if (!create_framebuffers (vulkan, error))
     return FALSE;
 
   g_timeout_add (10000, (GSourceFunc) not_implemented_cb, vulkan);
