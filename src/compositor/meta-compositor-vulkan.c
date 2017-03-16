@@ -49,6 +49,8 @@ struct _MetaCompositorVulkan
 
   VkQueue                  graphics_queue;
   VkQueue                  present_queue;
+
+  VkCommandPool            command_pool;
 #endif
 };
 
@@ -629,6 +631,32 @@ create_logical_device (MetaCompositorVulkan  *vulkan,
 
   return TRUE;
 }
+
+static gboolean
+create_command_pool (MetaCompositorVulkan  *vulkan,
+                     GError               **error)
+{
+  VkCommandPoolCreateInfo info;
+  VkResult result;
+
+  info.sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO;
+  info.pNext = NULL;
+  info.flags = 0;
+  info.queueFamilyIndex = vulkan->graphics_family_index;
+
+  result = vkCreateCommandPool (vulkan->device, &info, NULL,
+                                &vulkan->command_pool);
+
+  if (result != VK_SUCCESS)
+    {
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Failed to create command pool");
+
+      return FALSE;
+    }
+
+  return TRUE;
+}
 #endif
 
 static void
@@ -638,6 +666,12 @@ meta_compositor_vulkan_finalize (GObject *object)
   MetaCompositorVulkan *vulkan;
 
   vulkan = META_COMPOSITOR_VULKAN (object);
+
+  if (vulkan->command_pool != VK_NULL_HANDLE)
+    {
+      vkDestroyCommandPool (vulkan->device, vulkan->command_pool, NULL);
+      vulkan->command_pool = VK_NULL_HANDLE;
+    }
 
   if (vulkan->device != VK_NULL_HANDLE)
     {
@@ -722,6 +756,9 @@ meta_compositor_vulkan_manage (MetaCompositor  *compositor,
     return FALSE;
 
   if (!create_logical_device (vulkan, error))
+    return FALSE;
+
+  if (!create_command_pool (vulkan, error))
     return FALSE;
 
   g_timeout_add (10000, (GSourceFunc) not_implemented_cb, vulkan);
