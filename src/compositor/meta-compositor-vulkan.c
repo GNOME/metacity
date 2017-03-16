@@ -25,6 +25,7 @@
 #include "display-private.h"
 #include "meta-compositor-vulkan.h"
 #include "prefs.h"
+#include "screen.h"
 #include "util.h"
 
 struct _MetaCompositorVulkan
@@ -40,6 +41,7 @@ struct _MetaCompositorVulkan
   VkDebugReportCallbackEXT debug_callback;
 
   VkSurfaceKHR             surface;
+  VkSurfaceFormatKHR       surface_format;
 
   VkPhysicalDevice         physical_device;
   uint32_t                 graphics_family_index;
@@ -53,12 +55,105 @@ struct _MetaCompositorVulkan
   VkCommandPool            command_pool;
 
   VkSemaphore              semaphore;
+
+  VkSwapchainKHR           swapchain;
 #endif
 };
 
 G_DEFINE_TYPE (MetaCompositorVulkan, meta_compositor_vulkan, META_TYPE_COMPOSITOR)
 
 #ifdef HAVE_VULKAN
+static gboolean
+create_swapchain (MetaCompositorVulkan  *vulkan,
+                  GError               **error)
+{
+  VkSurfaceCapabilitiesKHR capabilities;
+  VkSwapchainCreateInfoKHR info;
+  VkSwapchainKHR swapchain;
+  VkResult result;
+
+  result = vkGetPhysicalDeviceSurfaceCapabilitiesKHR (vulkan->physical_device,
+                                                      vulkan->surface,
+                                                      &capabilities);
+
+  if (result != VK_SUCCESS)
+    {
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Could not query surface capabilities");
+
+      return FALSE;
+    }
+
+  if (capabilities.currentExtent.width == 0xffffffff &&
+      capabilities.currentExtent.height == 0xffffffff)
+    {
+      MetaDisplay *display;
+      gint width;
+      gint height;
+
+      display = meta_compositor_get_display (META_COMPOSITOR (vulkan));
+
+      meta_screen_get_size (display->screen, &width, &height);
+
+      capabilities.currentExtent.width = width;
+      capabilities.currentExtent.height = height;
+    }
+
+  info.sType = VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR;
+  info.pNext = NULL;
+  info.flags = 0;
+  info.surface = vulkan->surface;
+  info.minImageCount = capabilities.minImageCount;
+  info.imageFormat = vulkan->surface_format.format;
+  info.imageColorSpace = vulkan->surface_format.colorSpace;
+  info.imageExtent = capabilities.currentExtent;
+  info.imageArrayLayers = 1;
+  info.imageUsage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT;
+  info.preTransform = capabilities.currentTransform;
+  info.compositeAlpha = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR;
+  info.presentMode = VK_PRESENT_MODE_FIFO_KHR;
+  info.clipped = VK_FALSE;
+  info.oldSwapchain = vulkan->swapchain;
+
+  if (vulkan->graphics_family_index != vulkan->present_family_index)
+    {
+      uint32_t indices[2];
+
+      indices[0] = vulkan->graphics_family_index;
+      indices[1] = vulkan->present_family_index;
+
+      info.imageSharingMode = VK_SHARING_MODE_CONCURRENT;
+      info.queueFamilyIndexCount = 2;
+      info.pQueueFamilyIndices = indices;
+    }
+  else
+    {
+      info.imageSharingMode = VK_SHARING_MODE_EXCLUSIVE;
+      info.queueFamilyIndexCount = 0;
+      info.pQueueFamilyIndices = NULL;
+    }
+
+  result = vkCreateSwapchainKHR (vulkan->device, &info, NULL, &swapchain);
+
+  if (vulkan->swapchain != VK_NULL_HANDLE)
+    {
+      vkDestroySwapchainKHR (vulkan->device, vulkan->swapchain, NULL);
+      vulkan->swapchain = VK_NULL_HANDLE;
+    }
+
+  if (result != VK_SUCCESS)
+    {
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Failed to create swapchain");
+
+      return FALSE;
+    }
+
+  vulkan->swapchain = swapchain;
+
+  return TRUE;
+}
+
 static void
 enumerate_instance_layers (MetaCompositorVulkan *vulkan)
 {
@@ -311,6 +406,54 @@ setup_debug_callback (MetaCompositorVulkan *vulkan)
       else
         meta_topic (META_DEBUG_VULKAN, "Failed to set up debug callback");
     }
+}
+
+static gboolean
+find_surface_format (MetaCompositorVulkan  *vulkan,
+                     GError               **error)
+{
+  uint32_t n_formats;
+  VkSurfaceFormatKHR *formats;
+  VkResult result;
+  uint32_t i;
+
+  result = vkGetPhysicalDeviceSurfaceFormatsKHR (vulkan->physical_device,
+                                                 vulkan->surface,
+                                                 &n_formats, NULL);
+
+  if (result != VK_SUCCESS || n_formats == 0)
+    {
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Failed to get surface formats");
+
+      return FALSE;
+    }
+
+  formats = g_new0 (VkSurfaceFormatKHR, n_formats);
+  result = vkGetPhysicalDeviceSurfaceFormatsKHR (vulkan->physical_device,
+                                                 vulkan->surface,
+                                                 &n_formats, formats);
+
+  for (i = 0; i < n_formats; i++)
+    {
+      if (formats[i].format == VK_FORMAT_B8G8R8A8_UNORM)
+        {
+          vulkan->surface_format = formats[i];
+          break;
+        }
+    }
+
+  g_free (formats);
+
+  if (i == n_formats)
+    {
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Failed to find valid surface format");
+
+      return FALSE;
+    }
+
+  return TRUE;
 }
 
 static gboolean
@@ -693,6 +836,12 @@ meta_compositor_vulkan_finalize (GObject *object)
 
   vulkan = META_COMPOSITOR_VULKAN (object);
 
+  if (vulkan->swapchain != VK_NULL_HANDLE)
+    {
+      vkDestroySwapchainKHR (vulkan->device, vulkan->swapchain, NULL);
+      vulkan->swapchain = VK_NULL_HANDLE;
+    }
+
   if (vulkan->semaphore != VK_NULL_HANDLE)
     {
       vkDestroySemaphore (vulkan->device, vulkan->semaphore, NULL);
@@ -787,6 +936,9 @@ meta_compositor_vulkan_manage (MetaCompositor  *compositor,
   if (!enumerate_physical_devices (vulkan, error))
     return FALSE;
 
+  if (!find_surface_format (vulkan, error))
+    return FALSE;
+
   if (!create_logical_device (vulkan, error))
     return FALSE;
 
@@ -794,6 +946,9 @@ meta_compositor_vulkan_manage (MetaCompositor  *compositor,
     return FALSE;
 
   if (!create_semaphore (vulkan, error))
+    return FALSE;
+
+  if (!create_swapchain (vulkan, error))
     return FALSE;
 
   g_timeout_add (10000, (GSourceFunc) not_implemented_cb, vulkan);
