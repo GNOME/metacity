@@ -2278,9 +2278,6 @@ static void
 process_configure_notify (MetaCompositorXRender *xrender,
                           XConfigureEvent       *event)
 {
-  MetaCompositor *compositor = META_COMPOSITOR (xrender);
-  MetaDisplay *display = meta_compositor_get_display (compositor);
-  Display *xdisplay = meta_display_get_xdisplay (display);
   MetaCompWindow *cw = find_window (xrender, event->window);
 
   if (cw)
@@ -2295,23 +2292,6 @@ process_configure_notify (MetaCompositorXRender *xrender,
         }
 
       resize_win (xrender, cw, event->x, event->y, event->width, event->height);
-    }
-  else
-    {
-      MetaScreen *screen;
-
-      /* Might be the root window? */
-      screen = meta_display_screen_for_root (display, event->window);
-      if (screen == NULL)
-        return;
-
-      if (xrender->root_buffer)
-        {
-          XRenderFreePicture (xdisplay, xrender->root_buffer);
-          xrender->root_buffer = None;
-        }
-
-      damage_screen (xrender);
     }
 }
 
@@ -3005,6 +2985,17 @@ meta_compositor_xrender_unmaximize_window (MetaCompositor *compositor,
 static void
 meta_compositor_xrender_sync_screen_size (MetaCompositor *compositor)
 {
+  MetaCompositorXRender *xrender;
+
+  xrender = META_COMPOSITOR_XRENDER (compositor);
+
+  if (xrender->root_buffer)
+    {
+      XRenderFreePicture (xrender->xdisplay, xrender->root_buffer);
+      xrender->root_buffer = None;
+    }
+
+  damage_screen (xrender);
 }
 
 static void
