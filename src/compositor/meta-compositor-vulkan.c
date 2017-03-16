@@ -63,12 +63,84 @@ struct _MetaCompositorVulkan
 
   uint32_t                  n_image_views;
   VkImageView              *image_views;
+
+  VkRenderPass              render_pass;
 #endif
 };
 
 G_DEFINE_TYPE (MetaCompositorVulkan, meta_compositor_vulkan, META_TYPE_COMPOSITOR)
 
 #ifdef HAVE_VULKAN
+static void
+destroy_render_pass (MetaCompositorVulkan *vulkan)
+{
+  if (vulkan->render_pass != VK_NULL_HANDLE)
+    {
+      vkDestroyRenderPass (vulkan->device, vulkan->render_pass, NULL);
+      vulkan->render_pass = VK_NULL_HANDLE;
+    }
+}
+
+static gboolean
+create_render_pass (MetaCompositorVulkan  *vulkan,
+                    GError               **error)
+{
+  VkAttachmentDescription color_attachment;
+  VkAttachmentReference color_attachment_ref;
+  VkSubpassDescription subpass;
+  VkRenderPassCreateInfo info;
+  VkResult result;
+
+  color_attachment.flags = 0;
+  color_attachment.format = vulkan->surface_format.format;
+  color_attachment.samples = VK_SAMPLE_COUNT_1_BIT;
+  color_attachment.loadOp = VK_ATTACHMENT_LOAD_OP_CLEAR;
+  color_attachment.storeOp = VK_ATTACHMENT_STORE_OP_STORE;
+  color_attachment.stencilLoadOp = VK_ATTACHMENT_LOAD_OP_DONT_CARE;
+  color_attachment.stencilStoreOp = VK_ATTACHMENT_STORE_OP_DONT_CARE;
+  color_attachment.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
+  color_attachment.finalLayout = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR;
+
+  color_attachment_ref.attachment = 0;
+  color_attachment_ref.layout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL;
+
+  subpass.flags = 0;
+  subpass.pipelineBindPoint = VK_PIPELINE_BIND_POINT_GRAPHICS;
+  subpass.inputAttachmentCount = 0;
+  subpass.pInputAttachments = NULL;
+  subpass.colorAttachmentCount = 1;
+  subpass.pColorAttachments = &color_attachment_ref;
+  subpass.pResolveAttachments = NULL;
+  subpass.pDepthStencilAttachment = NULL;
+  subpass.preserveAttachmentCount = 0;
+  subpass.pPreserveAttachments = NULL;
+
+  info.sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO;
+  info.pNext = NULL;
+  info.flags = 0;
+  info.attachmentCount = 1;
+  info.pAttachments = &color_attachment;
+  info.subpassCount = 1;
+  info.pSubpasses = &subpass;
+  info.dependencyCount = 0;
+  info.pDependencies = NULL;
+
+  destroy_render_pass (vulkan);
+
+  result = vkCreateRenderPass (vulkan->device, &info, NULL,
+                               &vulkan->render_pass);
+
+  if (result != VK_SUCCESS)
+    {
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Failed to create render pass");
+
+      return FALSE;
+    }
+
+  return TRUE;
+}
+
 static void
 destroy_image_views (MetaCompositorVulkan *vulkan)
 {
@@ -946,6 +1018,7 @@ meta_compositor_vulkan_finalize (GObject *object)
 
   vulkan = META_COMPOSITOR_VULKAN (object);
 
+  destroy_render_pass (vulkan);
   destroy_image_views (vulkan);
   destroy_swapchain (vulkan);
 
@@ -1059,6 +1132,9 @@ meta_compositor_vulkan_manage (MetaCompositor  *compositor,
     return FALSE;
 
   if (!create_image_views (vulkan, error))
+    return FALSE;
+
+  if (!create_render_pass (vulkan, error))
     return FALSE;
 
   g_timeout_add (10000, (GSourceFunc) not_implemented_cb, vulkan);
