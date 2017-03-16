@@ -30,39 +30,56 @@
 
 struct _MetaCompositorVulkan
 {
-  MetaCompositor           parent;
+  MetaCompositor            parent;
 
-  gboolean                 lunarg_validation_layer;
-  gboolean                 debug_report_extension;
+  gboolean                  lunarg_validation_layer;
+  gboolean                  debug_report_extension;
 
 #ifdef HAVE_VULKAN
-  VkInstance               instance;
+  VkInstance                instance;
 
-  VkDebugReportCallbackEXT debug_callback;
+  VkDebugReportCallbackEXT  debug_callback;
 
-  VkSurfaceKHR             surface;
-  VkSurfaceFormatKHR       surface_format;
+  VkSurfaceKHR              surface;
+  VkSurfaceFormatKHR        surface_format;
 
-  VkPhysicalDevice         physical_device;
-  uint32_t                 graphics_family_index;
-  uint32_t                 present_family_index;
+  VkPhysicalDevice          physical_device;
+  uint32_t                  graphics_family_index;
+  uint32_t                  present_family_index;
 
-  VkDevice                 device;
+  VkDevice                  device;
 
-  VkQueue                  graphics_queue;
-  VkQueue                  present_queue;
+  VkQueue                   graphics_queue;
+  VkQueue                   present_queue;
 
-  VkCommandPool            command_pool;
+  VkCommandPool             command_pool;
 
-  VkSemaphore              semaphore;
+  VkSemaphore               semaphore;
 
-  VkSwapchainKHR           swapchain;
+  VkSwapchainKHR            swapchain;
+
+  uint32_t                  n_images;
+  VkImage                  *images;
 #endif
 };
 
 G_DEFINE_TYPE (MetaCompositorVulkan, meta_compositor_vulkan, META_TYPE_COMPOSITOR)
 
 #ifdef HAVE_VULKAN
+static void
+destroy_swapchain (MetaCompositorVulkan *vulkan)
+{
+  if (vulkan->swapchain != VK_NULL_HANDLE)
+    {
+      vkDestroySwapchainKHR (vulkan->device, vulkan->swapchain, NULL);
+      vulkan->swapchain = VK_NULL_HANDLE;
+    }
+
+  g_clear_pointer (&vulkan->images, g_free);
+
+  vulkan->n_images = 0;
+}
+
 static gboolean
 create_swapchain (MetaCompositorVulkan  *vulkan,
                   GError               **error)
@@ -135,11 +152,7 @@ create_swapchain (MetaCompositorVulkan  *vulkan,
 
   result = vkCreateSwapchainKHR (vulkan->device, &info, NULL, &swapchain);
 
-  if (vulkan->swapchain != VK_NULL_HANDLE)
-    {
-      vkDestroySwapchainKHR (vulkan->device, vulkan->swapchain, NULL);
-      vulkan->swapchain = VK_NULL_HANDLE;
-    }
+  destroy_swapchain (vulkan);
 
   if (result != VK_SUCCESS)
     {
@@ -150,6 +163,31 @@ create_swapchain (MetaCompositorVulkan  *vulkan,
     }
 
   vulkan->swapchain = swapchain;
+
+  result = vkGetSwapchainImagesKHR (vulkan->device, vulkan->swapchain,
+                                    &vulkan->n_images, NULL);
+
+  if (result != VK_SUCCESS)
+    {
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Failed to get swapchain images");
+
+      return FALSE;
+    }
+
+  vulkan->images = g_new0 (VkImage, vulkan->n_images);
+  result = vkGetSwapchainImagesKHR (vulkan->device, vulkan->swapchain,
+                                    &vulkan->n_images, vulkan->images);
+
+  if (result != VK_SUCCESS)
+    {
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Failed to get swapchain images");
+
+      destroy_swapchain (vulkan);
+
+      return FALSE;
+    }
 
   return TRUE;
 }
@@ -836,11 +874,7 @@ meta_compositor_vulkan_finalize (GObject *object)
 
   vulkan = META_COMPOSITOR_VULKAN (object);
 
-  if (vulkan->swapchain != VK_NULL_HANDLE)
-    {
-      vkDestroySwapchainKHR (vulkan->device, vulkan->swapchain, NULL);
-      vulkan->swapchain = VK_NULL_HANDLE;
-    }
+  destroy_swapchain (vulkan);
 
   if (vulkan->semaphore != VK_NULL_HANDLE)
     {
