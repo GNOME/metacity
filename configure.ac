@@ -359,9 +359,6 @@ fi
 
 AM_CONDITIONAL(HAVE_SM, test "$found_sm" = "yes") 
 
-HOST_ALIAS=$host_alias
-AC_SUBST(HOST_ALIAS)
-
 AC_PATH_PROG(ZENITY, zenity, no)
 if test x"$ZENITY" = xno; then
   AC_MSG_ERROR([zenity not found in your path - needed for dialogs])
