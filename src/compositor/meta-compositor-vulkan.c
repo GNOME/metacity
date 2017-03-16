@@ -60,12 +60,84 @@ struct _MetaCompositorVulkan
 
   uint32_t                  n_images;
   VkImage                  *images;
+
+  uint32_t                  n_image_views;
+  VkImageView              *image_views;
 #endif
 };
 
 G_DEFINE_TYPE (MetaCompositorVulkan, meta_compositor_vulkan, META_TYPE_COMPOSITOR)
 
 #ifdef HAVE_VULKAN
+static void
+destroy_image_views (MetaCompositorVulkan *vulkan)
+{
+  uint32_t i;
+
+  if (vulkan->image_views == NULL)
+    return;
+
+  for (i = 0; i < vulkan->n_image_views; i++)
+    vkDestroyImageView (vulkan->device, vulkan->image_views[i], NULL);
+
+  g_clear_pointer (&vulkan->image_views, g_free);
+
+  vulkan->n_image_views = 0;
+}
+
+static gboolean
+create_image_views (MetaCompositorVulkan  *vulkan,
+                    GError               **error)
+{
+  VkComponentMapping components;
+  VkImageSubresourceRange subresource_range;
+  uint32_t i;
+  VkImageViewCreateInfo info;
+  VkResult result;
+
+  destroy_image_views (vulkan);
+
+  vulkan->image_views = g_new0 (VkImageView, vulkan->n_images);
+
+  components.r = VK_COMPONENT_SWIZZLE_R;
+  components.g = VK_COMPONENT_SWIZZLE_G;
+  components.b = VK_COMPONENT_SWIZZLE_B;
+  components.a = VK_COMPONENT_SWIZZLE_A;
+
+  subresource_range.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+  subresource_range.baseMipLevel = 0;
+  subresource_range.levelCount = 1;
+  subresource_range.baseArrayLayer = 0;
+  subresource_range.layerCount = 1;
+
+  for (i = 0; i < vulkan->n_images; i++)
+    {
+      info.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
+      info.pNext = NULL;
+      info.flags = 0;
+      info.image = vulkan->images[i];
+      info.viewType = VK_IMAGE_VIEW_TYPE_2D;
+      info.format = vulkan->surface_format.format;
+      info.components = components;
+      info.subresourceRange = subresource_range;
+
+      result = vkCreateImageView (vulkan->device, &info, NULL,
+                                  &vulkan->image_views[i]);
+
+      if (result != VK_SUCCESS)
+        {
+          g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                       "Failed to create image view");
+
+          return FALSE;
+        }
+
+      vulkan->n_image_views++;
+    }
+
+  return TRUE;
+}
+
 static void
 destroy_swapchain (MetaCompositorVulkan *vulkan)
 {
@@ -874,6 +946,7 @@ meta_compositor_vulkan_finalize (GObject *object)
 
   vulkan = META_COMPOSITOR_VULKAN (object);
 
+  destroy_image_views (vulkan);
   destroy_swapchain (vulkan);
 
   if (vulkan->semaphore != VK_NULL_HANDLE)
@@ -983,6 +1056,9 @@ meta_compositor_vulkan_manage (MetaCompositor  *compositor,
     return FALSE;
 
   if (!create_swapchain (vulkan, error))
+    return FALSE;
+
+  if (!create_image_views (vulkan, error))
     return FALSE;
 
   g_timeout_add (10000, (GSourceFunc) not_implemented_cb, vulkan);
