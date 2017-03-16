@@ -51,6 +51,8 @@ struct _MetaCompositorVulkan
   VkQueue                  present_queue;
 
   VkCommandPool            command_pool;
+
+  VkSemaphore              semaphore;
 #endif
 };
 
@@ -657,6 +659,30 @@ create_command_pool (MetaCompositorVulkan  *vulkan,
 
   return TRUE;
 }
+
+static gboolean
+create_semaphore (MetaCompositorVulkan  *vulkan,
+                  GError               **error)
+{
+  VkSemaphoreCreateInfo info;
+  VkResult result;
+
+  info.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;
+  info.pNext = NULL;
+  info.flags = 0;
+
+  result = vkCreateSemaphore (vulkan->device, &info, NULL, &vulkan->semaphore);
+
+  if (result != VK_SUCCESS)
+    {
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Failed to create semaphore");
+
+      return FALSE;
+    }
+
+  return TRUE;
+}
 #endif
 
 static void
@@ -666,6 +692,12 @@ meta_compositor_vulkan_finalize (GObject *object)
   MetaCompositorVulkan *vulkan;
 
   vulkan = META_COMPOSITOR_VULKAN (object);
+
+  if (vulkan->semaphore != VK_NULL_HANDLE)
+    {
+      vkDestroySemaphore (vulkan->device, vulkan->semaphore, NULL);
+      vulkan->semaphore = VK_NULL_HANDLE;
+    }
 
   if (vulkan->command_pool != VK_NULL_HANDLE)
     {
@@ -759,6 +791,9 @@ meta_compositor_vulkan_manage (MetaCompositor  *compositor,
     return FALSE;
 
   if (!create_command_pool (vulkan, error))
+    return FALSE;
+
+  if (!create_semaphore (vulkan, error))
     return FALSE;
 
   g_timeout_add (10000, (GSourceFunc) not_implemented_cb, vulkan);
