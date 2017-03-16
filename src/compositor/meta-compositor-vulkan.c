@@ -40,6 +40,10 @@ struct _MetaCompositorVulkan
   VkDebugReportCallbackEXT debug_callback;
 
   VkSurfaceKHR             surface;
+
+  VkPhysicalDevice         physical_device;
+  uint32_t                 graphics_family_index;
+  uint32_t                 present_family_index;
 #endif
 };
 
@@ -443,6 +447,8 @@ enumerate_physical_devices (MetaCompositorVulkan  *vulkan,
     {
       uint32_t n_family_properties;
       VkQueueFamilyProperties *family_properties;
+      uint32_t graphics_family_index;
+      uint32_t present_family_index;
       uint32_t j;
 
       if (meta_check_debug_flags (META_DEBUG_VULKAN))
@@ -471,6 +477,9 @@ enumerate_physical_devices (MetaCompositorVulkan  *vulkan,
                                                 &n_family_properties,
                                                 family_properties);
 
+      graphics_family_index = n_family_properties;
+      present_family_index = n_family_properties;
+
       for (j = 0; j < n_family_properties; j++)
         {
           if (meta_check_debug_flags (META_DEBUG_VULKAN))
@@ -484,6 +493,33 @@ enumerate_physical_devices (MetaCompositorVulkan  *vulkan,
 
               g_free (operations);
             }
+
+          if (family_properties[j].queueFlags & VK_QUEUE_GRAPHICS_BIT &&
+              graphics_family_index == n_family_properties)
+            {
+              graphics_family_index = j;
+            }
+
+          if (present_family_index == n_family_properties)
+            {
+              VkBool32 supported;
+
+              result = vkGetPhysicalDeviceSurfaceSupportKHR (devices[i], j,
+                                                             vulkan->surface,
+                                                             &supported);
+
+              if (result == VK_SUCCESS && supported)
+                present_family_index = j;
+            }
+        }
+
+      if (graphics_family_index != n_family_properties &&
+          present_family_index != n_family_properties &&
+          vulkan->physical_device == VK_NULL_HANDLE)
+        {
+          vulkan->physical_device = devices[i];
+          vulkan->graphics_family_index = graphics_family_index;
+          vulkan->present_family_index = present_family_index;
         }
 
       g_free (family_properties);
@@ -492,6 +528,14 @@ enumerate_physical_devices (MetaCompositorVulkan  *vulkan,
   meta_pop_no_msg_prefix ();
 
   g_free (devices);
+
+  if (vulkan->physical_device == VK_NULL_HANDLE)
+    {
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Failed to find a suitable GPU");
+
+      return FALSE;
+    }
 
   return TRUE;
 }
