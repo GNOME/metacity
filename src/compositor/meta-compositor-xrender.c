@@ -167,8 +167,6 @@ struct _MetaCompositorXRender
 
   gboolean        clip_changed;
 
-  guint           repaint_id;
-
   gboolean        prefs_listener_added;
 
   guint           show_redraw : 1;
@@ -1665,52 +1663,9 @@ paint_all (MetaCompositorXRender *xrender,
 }
 
 static void
-repair_display (MetaCompositorXRender *xrender)
-{
-  MetaCompositor *compositor = META_COMPOSITOR (xrender);
-  MetaDisplay *display = meta_compositor_get_display (compositor);
-  Display *xdisplay = meta_display_get_xdisplay (display);
-
-  if (xrender->all_damage != None)
-    {
-      meta_error_trap_push (display);
-
-      paint_all (xrender, xrender->all_damage);
-      XFixesDestroyRegion (xdisplay, xrender->all_damage);
-      xrender->all_damage = None;
-      xrender->clip_changed = FALSE;
-
-      meta_error_trap_pop (display);
-    }
-}
-
-static gboolean
-compositor_idle_cb (gpointer data)
-{
-  MetaCompositorXRender *xrender = META_COMPOSITOR_XRENDER (data);
-
-  xrender->repaint_id = 0;
-  repair_display (xrender);
-
-  return FALSE;
-}
-
-static void
 add_repair (MetaCompositorXRender *xrender)
 {
-  if (xrender->repaint_id > 0)
-    return;
-
-#if 1
-  xrender->repaint_id = g_idle_add_full (META_PRIORITY_REDRAW,
-                                         compositor_idle_cb, xrender,
-                                         NULL);
-#else
-  /* Limit it to 50fps */
-  xrender->repaint_id = g_timeout_add_full (G_PRIORITY_HIGH, 20,
-                                            compositor_idle_cb, xrender,
-                                            NULL);
-#endif
+  meta_compositor_queue_redraw (META_COMPOSITOR (xrender));
 }
 
 static void
@@ -3041,6 +2996,28 @@ meta_compositor_xrender_sync_stack (MetaCompositor *compositor,
 }
 
 static void
+meta_compositor_xrender_redraw (MetaCompositor *compositor)
+{
+  MetaCompositorXRender *xrender;
+  MetaDisplay *display;
+
+  xrender = META_COMPOSITOR_XRENDER (compositor);
+  display = meta_compositor_get_display (compositor);
+
+  if (xrender->all_damage == None)
+    return;
+
+  meta_error_trap_push (display);
+
+  paint_all (xrender, xrender->all_damage);
+  XFixesDestroyRegion (xrender->xdisplay, xrender->all_damage);
+  xrender->all_damage = None;
+  xrender->clip_changed = FALSE;
+
+  meta_error_trap_pop (display);
+}
+
+static void
 meta_compositor_xrender_class_init (MetaCompositorXRenderClass *xrender_class)
 {
   GObjectClass *object_class;
@@ -3066,6 +3043,7 @@ meta_compositor_xrender_class_init (MetaCompositorXRenderClass *xrender_class)
   compositor_class->unmaximize_window = meta_compositor_xrender_unmaximize_window;
   compositor_class->sync_screen_size = meta_compositor_xrender_sync_screen_size;
   compositor_class->sync_stack = meta_compositor_xrender_sync_stack;
+  compositor_class->redraw = meta_compositor_xrender_redraw;
 }
 
 static void

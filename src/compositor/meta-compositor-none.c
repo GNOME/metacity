@@ -116,6 +116,11 @@ meta_compositor_none_sync_stack (MetaCompositor *compositor,
 }
 
 static void
+meta_compositor_none_redraw (MetaCompositor *compositor)
+{
+}
+
+static void
 meta_compositor_none_class_init (MetaCompositorNoneClass *none_class)
 {
   MetaCompositorClass *compositor_class;
@@ -136,6 +141,7 @@ meta_compositor_none_class_init (MetaCompositorNoneClass *none_class)
   compositor_class->unmaximize_window = meta_compositor_none_unmaximize_window;
   compositor_class->sync_screen_size = meta_compositor_none_sync_screen_size;
   compositor_class->sync_stack = meta_compositor_none_sync_stack;
+  compositor_class->redraw = meta_compositor_none_redraw;
 }
 
 static void

@@ -71,6 +71,8 @@ struct _MetaCompositorClass
 
   void              (* sync_stack)             (MetaCompositor     *compositor,
                                                 GList              *stack);
+
+  void              (* redraw)                 (MetaCompositor     *compositor);
 };
 
 gboolean     meta_compositor_set_selection      (MetaCompositor  *compositor,
@@ -82,6 +84,8 @@ gboolean     meta_compositor_redirect_windows   (MetaCompositor  *compositor,
                                                  GError         **error);
 
 MetaDisplay *meta_compositor_get_display        (MetaCompositor  *compositor);
+
+void         meta_compositor_queue_redraw       (MetaCompositor  *compositor);
 
 G_END_DECLS
 

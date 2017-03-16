@@ -43,6 +43,9 @@ typedef struct
 
   /* XCompositeRedirectSubwindows */
   gboolean     windows_redirected;
+
+  /* meta_compositor_queue_redraw */
+  guint        redraw_id;
 } MetaCompositorPrivate;
 
 enum
@@ -62,6 +65,22 @@ G_DEFINE_ABSTRACT_TYPE_WITH_CODE (MetaCompositor, meta_compositor, G_TYPE_OBJECT
                                   G_ADD_PRIVATE (MetaCompositor)
                                   G_IMPLEMENT_INTERFACE (G_TYPE_INITABLE,
                                                          initable_iface_init))
+
+static gboolean
+redraw_idle_cb (gpointer user_data)
+{
+  MetaCompositor *compositor;
+  MetaCompositorPrivate *priv;
+
+  compositor = META_COMPOSITOR (user_data);
+  priv = meta_compositor_get_instance_private (compositor);
+
+  META_COMPOSITOR_GET_CLASS (compositor)->redraw (compositor);
+
+  priv->redraw_id = 0;
+
+  return G_SOURCE_REMOVE;
+}
 
 static gboolean
 check_common_extensions (MetaCompositor  *compositor,
@@ -134,6 +153,12 @@ meta_compositor_finalize (GObject *object)
   compositor = META_COMPOSITOR (object);
   priv = meta_compositor_get_instance_private (compositor);
   xdisplay = priv->display->xdisplay;
+
+  if (priv->redraw_id > 0)
+    {
+      g_source_remove (priv->redraw_id);
+      priv->redraw_id = 0;
+    }
 
   if (priv->windows_redirected)
     {
@@ -568,4 +593,20 @@ meta_compositor_get_display (MetaCompositor *compositor)
   priv = meta_compositor_get_instance_private (compositor);
 
   return priv->display;
+}
+
+void
+meta_compositor_queue_redraw (MetaCompositor *compositor)
+{
+  MetaCompositorPrivate *priv;
+  gint priority;
+
+  priv = meta_compositor_get_instance_private (compositor);
+  priority = META_PRIORITY_REDRAW;
+
+  if (priv->redraw_id > 0)
+    return;
+
+  priv->redraw_id = g_idle_add_full (priority, redraw_idle_cb, compositor, NULL);
+  g_source_set_name_by_id (priv->redraw_id, "[metacity] redraw_idle_cb");
 }
