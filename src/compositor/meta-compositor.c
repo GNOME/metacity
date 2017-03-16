@@ -64,6 +64,41 @@ G_DEFINE_ABSTRACT_TYPE_WITH_CODE (MetaCompositor, meta_compositor, G_TYPE_OBJECT
                                                          initable_iface_init))
 
 static gboolean
+check_common_extensions (MetaCompositor  *compositor,
+                         GError         **error)
+{
+  MetaCompositorPrivate *priv;
+
+  priv = meta_compositor_get_instance_private (compositor);
+
+  if (!priv->display->have_composite)
+    {
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Missing composite extension required for compositing");
+
+      return FALSE;
+    }
+
+  if (!priv->display->have_damage)
+    {
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Missing damage extension required for compositing");
+
+      return FALSE;
+    }
+
+  if (!priv->display->have_xfixes)
+    {
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Missing xfixes extension required for compositing");
+
+      return FALSE;
+    }
+
+  return TRUE;
+}
+
+static gboolean
 meta_compositor_initable_init (GInitable     *initable,
                                GCancellable  *cancellable,
                                GError       **error)
@@ -73,6 +108,12 @@ meta_compositor_initable_init (GInitable     *initable,
 
   compositor = META_COMPOSITOR (initable);
   compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
+
+  if (!META_IS_COMPOSITOR_NONE (compositor))
+    {
+      if (!check_common_extensions (compositor, error))
+        return FALSE;
+    }
 
   return compositor_class->manage (compositor, error);
 }
@@ -407,41 +448,6 @@ gboolean
 meta_compositor_is_composited (MetaCompositor *compositor)
 {
   return !META_IS_COMPOSITOR_NONE (compositor);
-}
-
-gboolean
-meta_compositor_check_extensions (MetaCompositor  *compositor,
-                                  GError         **error)
-{
-  MetaCompositorPrivate *priv;
-
-  priv = meta_compositor_get_instance_private (compositor);
-
-  if (!priv->display->have_composite)
-    {
-      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                   "Missing composite extension required for compositing");
-
-      return FALSE;
-    }
-
-  if (!priv->display->have_damage)
-    {
-      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                   "Missing damage extension required for compositing");
-
-      return FALSE;
-    }
-
-  if (!priv->display->have_xfixes)
-    {
-      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                   "Missing xfixes extension required for compositing");
-
-      return FALSE;
-    }
-
-  return TRUE;
 }
 
 gboolean

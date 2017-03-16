@@ -701,9 +701,6 @@ meta_compositor_vulkan_manage (MetaCompositor  *compositor,
 
   vulkan = META_COMPOSITOR_VULKAN (compositor);
 
-  if (!meta_compositor_check_extensions (compositor, error))
-    return FALSE;
-
   enumerate_instance_layers (vulkan);
   enumerate_instance_extensions (vulkan);
 
