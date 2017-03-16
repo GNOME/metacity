@@ -44,6 +44,11 @@ struct _MetaCompositorVulkan
   VkPhysicalDevice         physical_device;
   uint32_t                 graphics_family_index;
   uint32_t                 present_family_index;
+
+  VkDevice                 device;
+
+  VkQueue                  graphics_queue;
+  VkQueue                  present_queue;
 #endif
 };
 
@@ -539,6 +544,91 @@ enumerate_physical_devices (MetaCompositorVulkan  *vulkan,
 
   return TRUE;
 }
+
+static gboolean
+create_logical_device (MetaCompositorVulkan  *vulkan,
+                       GError               **error)
+{
+  GPtrArray *layers;
+  GPtrArray *extensions;
+  VkDeviceCreateInfo create_info;
+  VkResult result;
+
+  layers = g_ptr_array_new ();
+  extensions = g_ptr_array_new ();
+
+  if (vulkan->lunarg_validation_layer)
+    g_ptr_array_add (layers, (gpointer) "VK_LAYER_LUNARG_standard_validation");
+
+  g_ptr_array_add (extensions, (gpointer) VK_KHR_SWAPCHAIN_EXTENSION_NAME);
+
+  create_info.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
+  create_info.pNext = NULL;
+  create_info.flags = 0;
+  create_info.enabledLayerCount = layers->len;
+  create_info.ppEnabledLayerNames = (const char * const *) layers->pdata;
+  create_info.enabledExtensionCount = extensions->len;
+  create_info.ppEnabledExtensionNames = (const char * const *) extensions->pdata;
+  create_info.pEnabledFeatures = NULL;
+
+  if (vulkan->graphics_family_index != vulkan->present_family_index)
+    {
+      VkDeviceQueueCreateInfo queue_create_info[2];
+
+      queue_create_info[0].sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
+      queue_create_info[0].pNext = NULL;
+      queue_create_info[0].flags = 0;
+      queue_create_info[0].queueFamilyIndex = vulkan->graphics_family_index;
+      queue_create_info[0].queueCount = 1;
+      queue_create_info[0].pQueuePriorities = (float []) { 1.0f };
+
+      queue_create_info[1].sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
+      queue_create_info[1].pNext = NULL;
+      queue_create_info[1].flags = 0;
+      queue_create_info[1].queueFamilyIndex = vulkan->present_family_index;
+      queue_create_info[1].queueCount = 1;
+      queue_create_info[1].pQueuePriorities = (float []) { 1.0f };
+
+      create_info.queueCreateInfoCount = G_N_ELEMENTS (queue_create_info);
+      create_info.pQueueCreateInfos = queue_create_info;
+    }
+  else
+    {
+      VkDeviceQueueCreateInfo queue_create_info;
+
+      queue_create_info.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
+      queue_create_info.pNext = NULL;
+      queue_create_info.flags = 0;
+      queue_create_info.queueFamilyIndex = vulkan->graphics_family_index;
+      queue_create_info.queueCount = 1;
+      queue_create_info.pQueuePriorities = (float []) { 1.0f };
+
+      create_info.queueCreateInfoCount = 1;
+      create_info.pQueueCreateInfos = &queue_create_info;
+    }
+
+  result = vkCreateDevice (vulkan->physical_device, &create_info,
+                           NULL, &vulkan->device);
+
+  g_ptr_array_free (layers, TRUE);
+  g_ptr_array_free (extensions, TRUE);
+
+  if (result != VK_SUCCESS)
+    {
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Failed to create logical device");
+
+      return FALSE;
+    }
+
+  vkGetDeviceQueue (vulkan->device, vulkan->graphics_family_index,
+                    0, &vulkan->graphics_queue);
+
+  vkGetDeviceQueue (vulkan->device, vulkan->present_family_index,
+                    0, &vulkan->present_queue);
+
+  return TRUE;
+}
 #endif
 
 static void
@@ -548,6 +638,12 @@ meta_compositor_vulkan_finalize (GObject *object)
   MetaCompositorVulkan *vulkan;
 
   vulkan = META_COMPOSITOR_VULKAN (object);
+
+  if (vulkan->device != VK_NULL_HANDLE)
+    {
+      vkDestroyDevice (vulkan->device, NULL);
+      vulkan->device = VK_NULL_HANDLE;
+    }
 
   if (vulkan->surface != VK_NULL_HANDLE)
     {
@@ -626,6 +722,9 @@ meta_compositor_vulkan_manage (MetaCompositor  *compositor,
     return FALSE;
 
   if (!enumerate_physical_devices (vulkan, error))
+    return FALSE;
+
+  if (!create_logical_device (vulkan, error))
     return FALSE;
 
   g_timeout_add (10000, (GSourceFunc) not_implemented_cb, vulkan);
