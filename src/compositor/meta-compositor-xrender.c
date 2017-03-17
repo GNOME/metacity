@@ -92,7 +92,6 @@ typedef struct _shadow
 typedef struct _MetaCompWindow
 {
   MetaWindow *window;
-  Window id;
 
   MetaRectangle rect;
 
@@ -1090,12 +1089,14 @@ get_window_region (MetaDisplay    *display,
                    MetaCompWindow *cw)
 {
   Display *xdisplay;
+  Window xwindow;
   XserverRegion region;
 
   xdisplay = meta_display_get_xdisplay (display);
+  xwindow = get_toplevel_xwindow (cw->window);
 
   meta_error_trap_push (display);
-  region = XFixesCreateRegionFromWindow (xdisplay, cw->id, WindowRegionBounding);
+  region = XFixesCreateRegionFromWindow (xdisplay, xwindow, WindowRegionBounding);
   meta_error_trap_pop (display);
 
   if (region == None)
@@ -1224,31 +1225,30 @@ static Picture
 get_window_picture (MetaDisplay    *display,
                     MetaCompWindow *cw)
 {
-  Display *xdisplay = meta_display_get_xdisplay (display);
+  Display *xdisplay;
+  Window xwindow;
   XRenderPictureAttributes pa;
   XRenderPictFormat *format;
-  Drawable draw;
-  int error_code;
 
-  draw = cw->id;
-
-  meta_error_trap_push (display);
+  xdisplay = meta_display_get_xdisplay (display);
+  xwindow = get_toplevel_xwindow (cw->window);
 
   if (cw->back_pixmap == None)
-    cw->back_pixmap = XCompositeNameWindowPixmap (xdisplay, cw->id);
+    {
+      meta_error_trap_push (display);
+      cw->back_pixmap = XCompositeNameWindowPixmap (xdisplay, xwindow);
 
-  error_code = meta_error_trap_pop_with_return (display);
-  if (error_code != 0)
-    cw->back_pixmap = None;
-
-  if (cw->back_pixmap != None)
-    draw = cw->back_pixmap;
+      if (meta_error_trap_pop_with_return (display) != 0)
+        cw->back_pixmap = None;
+    }
 
   format = get_window_format (xdisplay, cw);
   if (format)
     {
+      Drawable draw;
       Picture pict;
 
+      draw = cw->back_pixmap != None ? cw->back_pixmap : xwindow;
       pa.subwindow_mode = IncludeInferiors;
 
       meta_error_trap_push (display);
@@ -1288,8 +1288,12 @@ get_window_mask (MetaDisplay    *display,
 
   if (cw->mask_pixmap == None)
     {
+      Window xwindow;
+
+      xwindow = get_toplevel_xwindow (cw->window);
+
       meta_error_trap_push (display);
-      cw->mask_pixmap = XCreatePixmap (xdisplay, cw->id, width, height,
+      cw->mask_pixmap = XCreatePixmap (xdisplay, xwindow, width, height,
                                        format->depth);
 
       if (meta_error_trap_pop_with_return (display) != 0)
@@ -2027,7 +2031,6 @@ add_win (MetaCompositorXRender *xrender,
 
   cw = g_new0 (MetaCompWindow, 1);
   cw->window = window;
-  cw->id = xwindow;
 
   meta_window_get_input_rect (window, &cw->rect);
 
