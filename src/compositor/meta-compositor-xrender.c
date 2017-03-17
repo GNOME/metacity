@@ -547,6 +547,9 @@ cairo_region_to_xserver_region (Display        *xdisplay,
   XRectangle *rects;
   XserverRegion xregion;
 
+  if (region == NULL)
+    return None;
+
   n_rects = cairo_region_num_rectangles (region);
   rects = g_new (XRectangle, n_rects);
 
@@ -1189,7 +1192,7 @@ get_visible_region (MetaDisplay    *display,
       XserverRegion tmp;
 
       visible = meta_window_get_frame_bounds (cw->window);
-      tmp = visible ? cairo_region_to_xserver_region (xdisplay, visible) : None;
+      tmp = cairo_region_to_xserver_region (xdisplay, visible);
 
       if (tmp != None)
         {
@@ -2503,15 +2506,8 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
 
   cw->damaged = FALSE;
 
-  if (window->shape_region != NULL)
-    {
-      cw->shape_region = cairo_region_to_xserver_region (xrender->xdisplay,
-                                                         window->shape_region);
-    }
-  else
-    {
-      cw->shape_region = None;
-    }
+  cw->shape_region = cairo_region_to_xserver_region (xrender->xdisplay,
+                                                     window->shape_region);
 
   cw->damage = XDamageCreate (xrender->xdisplay, xwindow, XDamageReportNonEmpty);
 
@@ -2689,16 +2685,11 @@ meta_compositor_xrender_window_shape_changed (MetaCompositor *compositor,
       dump_xserver_region (xrender, "shape_changed", cw->shape_region);
       add_damage (xrender, cw->shape_region);
 
-      cw->shape_region = None;
-
       xrender->clip_changed = TRUE;
     }
 
-  if (window->shape_region != NULL)
-    {
-      cw->shape_region = cairo_region_to_xserver_region (xrender->xdisplay,
-                                                         window->shape_region);
-    }
+  cw->shape_region = cairo_region_to_xserver_region (xrender->xdisplay,
+                                                     window->shape_region);
 }
 
 static void
