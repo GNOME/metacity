@@ -724,7 +724,22 @@ static MetaCompWindow *
 find_comp_window_by_xwindow (MetaCompositorXRender *xrender,
                              Window                 xwindow)
 {
-  return g_hash_table_lookup (xrender->windows_by_xid, (gpointer) xwindow);
+  GHashTableIter iter;
+  MetaCompWindow *cw;
+
+  g_hash_table_iter_init (&iter, xrender->windows_by_xid);
+  while (g_hash_table_iter_next (&iter, NULL, (gpointer) &cw))
+    {
+      MetaFrame *frame;
+
+      frame = meta_window_get_frame (cw->window);
+
+      if ((frame && meta_frame_get_xwindow (frame) == xwindow) ||
+          meta_window_get_xwindow (cw->window) == xwindow)
+        return cw;
+    }
+
+  return NULL;
 }
 
 static MetaCompWindow *
@@ -733,7 +748,7 @@ find_comp_window_by_window (MetaCompositorXRender *xrender,
 {
   Window xwindow;
 
-  xwindow = get_toplevel_xwindow (window);
+  xwindow = meta_window_get_xwindow (window);
 
   return g_hash_table_lookup (xrender->windows_by_xid, (gpointer) xwindow);
 }
@@ -2482,21 +2497,14 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
 {
   MetaCompositorXRender *xrender;
   MetaDisplay *display;
-  MetaFrame *frame;
-  Window xwindow;
   MetaCompWindow *cw;
+  Window xwindow;
 
   xrender = META_COMPOSITOR_XRENDER (compositor);
   display = meta_compositor_get_display (compositor);
-  frame = meta_window_get_frame (window);
-
-  if (frame)
-    xwindow = meta_frame_get_xwindow (frame);
-  else
-    xwindow = meta_window_get_xwindow (window);
 
   /* If already added, ignore */
-  if (find_comp_window_by_xwindow (xrender, xwindow) != NULL)
+  if (find_comp_window_by_window (xrender, window) != NULL)
     return;
 
   meta_error_trap_push (display);
@@ -2518,6 +2526,7 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
   cw->shape_region = cairo_region_to_xserver_region (xrender->xdisplay,
                                                      window->shape_region);
 
+  xwindow = get_toplevel_xwindow (window);
   cw->damage = XDamageCreate (xrender->xdisplay, xwindow, XDamageReportNonEmpty);
 
   cw->alpha_pict = None;
@@ -2551,6 +2560,7 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
   determine_mode (xrender, cw);
   cw->needs_shadow = window_has_shadow (xrender, cw);
 
+  xwindow = meta_window_get_xwindow (window);
   xrender->windows = g_list_prepend (xrender->windows, cw);
   g_hash_table_insert (xrender->windows_by_xid, (gpointer) xwindow, cw);
 
@@ -2565,13 +2575,12 @@ meta_compositor_xrender_remove_window (MetaCompositor *compositor,
                                        MetaWindow     *window)
 {
   MetaCompositorXRender *xrender;
-  Window xwindow;
   MetaCompWindow *cw;
+  Window xwindow;
 
   xrender = META_COMPOSITOR_XRENDER (compositor);
-  xwindow = get_toplevel_xwindow (window);
 
-  cw = find_comp_window_by_xwindow (xrender, xwindow);
+  cw = find_comp_window_by_window (xrender, window);
   if (cw == NULL)
     return;
 
@@ -2582,6 +2591,7 @@ meta_compositor_xrender_remove_window (MetaCompositor *compositor,
       cw->extents = None;
     }
 
+  xwindow = meta_window_get_xwindow (window);
   xrender->windows = g_list_remove (xrender->windows, (gconstpointer) cw);
   g_hash_table_remove (xrender->windows_by_xid, (gpointer) xwindow);
 
