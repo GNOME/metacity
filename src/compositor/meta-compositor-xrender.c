@@ -175,6 +175,19 @@ struct _MetaCompositorXRender
 
 G_DEFINE_TYPE (MetaCompositorXRender, meta_compositor_xrender, META_TYPE_COMPOSITOR)
 
+static Window
+get_toplevel_xwindow (MetaWindow *window)
+{
+  MetaFrame *frame;
+
+  frame = meta_window_get_frame (window);
+
+  if (frame != NULL)
+    return meta_frame_get_xwindow (frame);
+
+  return meta_window_get_xwindow (window);
+}
+
 /* Gaussian stuff for creating the shadows */
 static double
 gaussian (double r,
@@ -1938,19 +1951,12 @@ notify_appears_focused_cb (MetaWindow            *window,
                            GParamSpec            *pspec,
                            MetaCompositorXRender *xrender)
 {
-  MetaFrame *frame;
   Window xwindow;
   MetaCompWindow *cw;
   Display *xdisplay;
   XserverRegion damage;
 
-  frame = meta_window_get_frame (window);
-
-  if (frame)
-    xwindow = meta_frame_get_xwindow (frame);
-  else
-    xwindow = meta_window_get_xwindow (window);
-
+  xwindow = get_toplevel_xwindow (window);
   cw = find_window (xrender, xwindow);
 
   if (cw == NULL)
@@ -2558,17 +2564,11 @@ meta_compositor_xrender_remove_window (MetaCompositor *compositor,
                                        MetaWindow     *window)
 {
   MetaCompositorXRender *xrender;
-  MetaFrame *frame;
   Window xwindow;
   MetaCompWindow *cw;
 
   xrender = META_COMPOSITOR_XRENDER (compositor);
-  frame = meta_window_get_frame (window);
-
-  if (frame)
-    xwindow = meta_frame_get_xwindow (frame);
-  else
-    xwindow = meta_window_get_xwindow (window);
+  xwindow = get_toplevel_xwindow (window);
 
   cw = find_window (xrender, xwindow);
   if (cw == NULL)
@@ -2593,17 +2593,11 @@ meta_compositor_xrender_show_window (MetaCompositor *compositor,
                                      MetaEffectType  effect)
 {
   MetaCompositorXRender *xrender;
-  MetaFrame *frame;
   Window xwindow;
   MetaCompWindow *cw;
 
   xrender = META_COMPOSITOR_XRENDER (compositor);
-  frame = meta_window_get_frame (window);
-
-  if (frame)
-    xwindow = meta_frame_get_xwindow (frame);
-  else
-    xwindow = meta_window_get_xwindow (window);
+  xwindow = get_toplevel_xwindow (window);
 
   cw = find_window (xrender, xwindow);
   if (cw == NULL)
@@ -2620,17 +2614,11 @@ meta_compositor_xrender_hide_window (MetaCompositor *compositor,
                                      MetaEffectType  effect)
 {
   MetaCompositorXRender *xrender;
-  MetaFrame *frame;
   Window xwindow;
   MetaCompWindow *cw;
 
   xrender = META_COMPOSITOR_XRENDER (compositor);
-  frame = meta_window_get_frame (window);
-
-  if (frame)
-    xwindow = meta_frame_get_xwindow (frame);
-  else
-    xwindow = meta_window_get_xwindow (window);
+  xwindow = get_toplevel_xwindow (window);
 
   cw = find_window (xrender, xwindow);
   if (cw == NULL)
@@ -2654,17 +2642,11 @@ meta_compositor_xrender_window_opacity_changed (MetaCompositor *compositor,
                                                 MetaWindow     *window)
 {
   MetaCompositorXRender *xrender;
-  MetaFrame *frame;
   Window xwindow;
   MetaCompWindow *cw;
 
   xrender = META_COMPOSITOR_XRENDER (compositor);
-  frame = meta_window_get_frame (window);
-
-  if (frame)
-    xwindow = meta_frame_get_xwindow (frame);
-  else
-    xwindow = meta_window_get_xwindow (window);
+  xwindow = get_toplevel_xwindow (window);
 
   cw = find_window (xrender, xwindow);
   if (cw == NULL)
@@ -2693,17 +2675,11 @@ meta_compositor_xrender_window_shape_changed (MetaCompositor *compositor,
                                               MetaWindow     *window)
 {
   MetaCompositorXRender *xrender;
-  MetaFrame *frame;
   Window xwindow;
   MetaCompWindow *cw;
 
   xrender = META_COMPOSITOR_XRENDER (compositor);
-  frame = meta_window_get_frame (window);
-
-  if (frame)
-    xwindow = meta_frame_get_xwindow (frame);
-  else
-    xwindow = meta_window_get_xwindow (window);
+  xwindow = get_toplevel_xwindow (window);
 
   cw = find_window (xrender, xwindow);
   if (cw == NULL)
@@ -2798,11 +2774,7 @@ meta_compositor_xrender_get_window_surface (MetaCompositor *compositor,
   cairo_t *cr;
 
   frame = meta_window_get_frame (window);
-
-  if (frame)
-    xwindow = meta_frame_get_xwindow (frame);
-  else
-    xwindow = meta_window_get_xwindow (window);
+  xwindow = get_toplevel_xwindow (window);
 
   display = meta_compositor_get_display (compositor);
   cw = find_window (META_COMPOSITOR_XRENDER (compositor), xwindow);
@@ -2912,8 +2884,7 @@ meta_compositor_xrender_maximize_window (MetaCompositor *compositor,
                                          MetaWindow     *window)
 {
   MetaCompositorXRender *xrender = META_COMPOSITOR_XRENDER (compositor);
-  MetaFrame *frame = meta_window_get_frame (window);
-  Window xid = frame ? meta_frame_get_xwindow (frame) : meta_window_get_xwindow (window);
+  Window xid = get_toplevel_xwindow (window);
   MetaCompWindow *cw = find_window (xrender, xid);
 
   if (!cw)
@@ -2927,8 +2898,7 @@ meta_compositor_xrender_unmaximize_window (MetaCompositor *compositor,
                                            MetaWindow     *window)
 {
   MetaCompositorXRender *xrender = META_COMPOSITOR_XRENDER (compositor);
-  MetaFrame *frame = meta_window_get_frame (window);
-  Window xid = frame ? meta_frame_get_xwindow (frame) : meta_window_get_xwindow (window);
+  Window xid = get_toplevel_xwindow (window);
   MetaCompWindow *cw = find_window (xrender, xid);
 
   if (!cw)
@@ -2965,17 +2935,11 @@ meta_compositor_xrender_sync_stack (MetaCompositor *compositor,
   for (tmp = stack; tmp != NULL; tmp = tmp->next)
     {
       MetaWindow *window;
-      MetaFrame *frame;
       Window xwindow;
       MetaCompWindow *cw;
 
       window = (MetaWindow *) tmp->data;
-      frame = meta_window_get_frame (window);
-
-      if (frame)
-        xwindow = meta_frame_get_xwindow (frame);
-      else
-        xwindow = meta_window_get_xwindow (window);
+      xwindow = get_toplevel_xwindow (window);
 
       cw = find_window (xrender, xwindow);
 
