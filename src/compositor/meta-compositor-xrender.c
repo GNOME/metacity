@@ -2015,86 +2015,6 @@ notify_appears_focused_cb (MetaWindow            *window,
   add_repair (xrender);
 }
 
-/* Must be called with an error trap in place */
-static void
-add_win (MetaCompositorXRender *xrender,
-         MetaWindow            *window,
-         Window                 xwindow)
-{
-  MetaDisplay *display = meta_screen_get_display (xrender->screen);
-  Display *xdisplay = meta_display_get_xdisplay (display);
-  MetaCompWindow *cw;
-
-  /* If already added, ignore */
-  if (find_window (xrender, xwindow) != NULL)
-    return;
-
-  cw = g_new0 (MetaCompWindow, 1);
-  cw->window = window;
-
-  meta_window_get_input_rect (window, &cw->rect);
-
-  g_signal_connect_object (window, "notify::appears-focused",
-                           G_CALLBACK (notify_appears_focused_cb),
-                           xrender, 0);
-
-  cw->back_pixmap = None;
-  cw->mask_pixmap = None;
-
-  cw->damaged = FALSE;
-
-  if (window->shape_region != NULL)
-    {
-      cw->shape_region = cairo_region_to_xserver_region (xdisplay,
-                                                         window->shape_region);
-    }
-  else
-    {
-      cw->shape_region = None;
-    }
-
-  cw->damage = XDamageCreate (xdisplay, xwindow, XDamageReportNonEmpty);
-
-  cw->alpha_pict = None;
-
-  cw->window_region = None;
-  cw->visible_region = None;
-  cw->client_region = None;
-
-  cw->extents = None;
-  cw->shadow = None;
-  cw->shadow_dx = 0;
-  cw->shadow_dy = 0;
-  cw->shadow_width = 0;
-  cw->shadow_height = 0;
-
-  if (window && meta_window_has_focus (window))
-    cw->shadow_type = META_SHADOW_LARGE;
-  else
-    cw->shadow_type = META_SHADOW_MEDIUM;
-
-  cw->border_clip = None;
-
-  cw->shaded.back_pixmap = None;
-  cw->shaded.mask_pixmap = None;
-  cw->shaded.x = 0;
-  cw->shaded.y = 0;
-  cw->shaded.width = 0;
-  cw->shaded.height = 0;
-  cw->shaded.client_region = None;
-
-  determine_mode (xrender, cw);
-  cw->needs_shadow = window_has_shadow (xrender, cw);
-
-  /* Add this to the list at the top of the stack
-     before it is mapped so that map_win can find it again */
-  xrender->windows = g_list_prepend (xrender->windows, cw);
-  g_hash_table_insert (xrender->windows_by_xid, (gpointer) xwindow, cw);
-
-  if (cw->window->mapped)
-    map_win (xrender, cw);
-}
-
 static void
 resize_win (MetaCompositorXRender *xrender,
             MetaCompWindow        *cw,
@@ -2548,18 +2468,91 @@ static void
 meta_compositor_xrender_add_window (MetaCompositor *compositor,
                                     MetaWindow     *window)
 {
-  MetaCompositorXRender *xrender = META_COMPOSITOR_XRENDER (compositor);
-  MetaFrame *frame = meta_window_get_frame (window);
+  MetaCompositorXRender *xrender;
+  MetaDisplay *display;
+  MetaFrame *frame;
   Window xwindow;
+  MetaCompWindow *cw;
+
+  xrender = META_COMPOSITOR_XRENDER (compositor);
+  display = meta_compositor_get_display (compositor);
+  frame = meta_window_get_frame (window);
 
   if (frame)
     xwindow = meta_frame_get_xwindow (frame);
   else
     xwindow = meta_window_get_xwindow (window);
 
-  meta_error_trap_push (NULL);
-  add_win (xrender, window, xwindow);
-  meta_error_trap_pop (NULL);
+  /* If already added, ignore */
+  if (find_window (xrender, xwindow) != NULL)
+    return;
+
+  meta_error_trap_push (display);
+
+  cw = g_new0 (MetaCompWindow, 1);
+  cw->window = window;
+
+  meta_window_get_input_rect (window, &cw->rect);
+
+  g_signal_connect_object (window, "notify::appears-focused",
+                           G_CALLBACK (notify_appears_focused_cb),
+                           xrender, 0);
+
+  cw->back_pixmap = None;
+  cw->mask_pixmap = None;
+
+  cw->damaged = FALSE;
+
+  if (window->shape_region != NULL)
+    {
+      cw->shape_region = cairo_region_to_xserver_region (xrender->xdisplay,
+                                                         window->shape_region);
+    }
+  else
+    {
+      cw->shape_region = None;
+    }
+
+  cw->damage = XDamageCreate (xrender->xdisplay, xwindow, XDamageReportNonEmpty);
+
+  cw->alpha_pict = None;
+
+  cw->window_region = None;
+  cw->visible_region = None;
+  cw->client_region = None;
+
+  cw->extents = None;
+  cw->shadow = None;
+  cw->shadow_dx = 0;
+  cw->shadow_dy = 0;
+  cw->shadow_width = 0;
+  cw->shadow_height = 0;
+
+  if (window && meta_window_has_focus (window))
+    cw->shadow_type = META_SHADOW_LARGE;
+  else
+    cw->shadow_type = META_SHADOW_MEDIUM;
+
+  cw->border_clip = None;
+
+  cw->shaded.back_pixmap = None;
+  cw->shaded.mask_pixmap = None;
+  cw->shaded.x = 0;
+  cw->shaded.y = 0;
+  cw->shaded.width = 0;
+  cw->shaded.height = 0;
+  cw->shaded.client_region = None;
+
+  determine_mode (xrender, cw);
+  cw->needs_shadow = window_has_shadow (xrender, cw);
+
+  xrender->windows = g_list_prepend (xrender->windows, cw);
+  g_hash_table_insert (xrender->windows_by_xid, (gpointer) xwindow, cw);
+
+  if (cw->window->mapped)
+    map_win (xrender, cw);
+
+  meta_error_trap_pop (display);
 }
 
 static void
