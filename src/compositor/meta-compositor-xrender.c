@@ -2043,6 +2043,135 @@ notify_appears_focused_cb (MetaWindow            *window,
 }
 
 static void
+notify_decorated_cb (MetaWindow            *window,
+                     GParamSpec            *pspec,
+                     MetaCompositorXRender *xrender)
+{
+  MetaCompWindow *cw;
+  XserverRegion damage;
+
+  cw = find_comp_window_by_window (xrender, window);
+  damage = None;
+
+  if (cw == NULL)
+    return;
+
+  meta_error_trap_push (window->display);
+
+  if (cw->back_pixmap != None)
+    {
+      XFreePixmap (xrender->xdisplay, cw->back_pixmap);
+      cw->back_pixmap = None;
+    }
+
+  if (cw->mask_pixmap != None)
+    {
+      XFreePixmap (xrender->xdisplay, cw->mask_pixmap);
+      cw->mask_pixmap = None;
+    }
+
+  if (cw->shape_region != None)
+    {
+      XFixesDestroyRegion (xrender->xdisplay, cw->shape_region);
+      cw->shape_region = None;
+    }
+
+  if (cw->damage != None)
+    {
+      XDamageDestroy (xrender->xdisplay, cw->damage);
+      cw->damage = None;
+    }
+
+  if (cw->picture != None)
+    {
+      XRenderFreePicture (xrender->xdisplay, cw->picture);
+      cw->picture = None;
+    }
+
+  if (cw->mask != None)
+    {
+      XRenderFreePicture (xrender->xdisplay, cw->mask);
+      cw->mask = None;
+    }
+
+  if (cw->alpha_pict != None)
+    {
+      XRenderFreePicture (xrender->xdisplay, cw->alpha_pict);
+      cw->alpha_pict = None;
+    }
+
+  if (cw->window_region != None)
+    {
+      XFixesDestroyRegion (xrender->xdisplay, cw->window_region);
+      cw->window_region = None;
+    }
+
+  if (cw->visible_region != None)
+    {
+      XFixesDestroyRegion (xrender->xdisplay, cw->visible_region);
+      cw->visible_region = None;
+    }
+
+  if (cw->client_region != None)
+    {
+      XFixesDestroyRegion (xrender->xdisplay, cw->client_region);
+      cw->client_region = None;
+    }
+
+  if (cw->extents != None)
+    {
+      damage = cw->extents;
+      cw->extents = None;
+    }
+
+  if (cw->shadow != None)
+    {
+      XRenderFreePicture (xrender->xdisplay, cw->shadow);
+      cw->shadow = None;
+    }
+
+  if (cw->border_clip != None)
+    {
+      XFixesDestroyRegion (xrender->xdisplay, cw->border_clip);
+      cw->border_clip = None;
+    }
+
+  if (cw->shaded.back_pixmap != None)
+    {
+      XFreePixmap (xrender->xdisplay, cw->shaded.back_pixmap);
+      cw->shaded.back_pixmap = None;
+    }
+
+  if (cw->shaded.mask_pixmap != None)
+    {
+      XFreePixmap (xrender->xdisplay, cw->shaded.mask_pixmap);
+      cw->shaded.mask_pixmap = None;
+    }
+
+  if (cw->shaded.client_region != None)
+    {
+      XFixesDestroyRegion (xrender->xdisplay, cw->shaded.client_region);
+      cw->shaded.client_region = None;
+    }
+
+  cw->damage = XDamageCreate (xrender->xdisplay,
+                              get_toplevel_xwindow (window),
+                              XDamageReportNonEmpty);
+
+  determine_mode (xrender, cw);
+  cw->needs_shadow = window_has_shadow (xrender, cw);
+
+  meta_error_trap_pop (window->display);
+
+  dump_xserver_region (xrender, "notify_decorated_cb", damage);
+  add_damage (xrender, damage);
+  cw->damaged = TRUE;
+
+  xrender->clip_changed = TRUE;
+  add_repair (xrender);
+}
+
+static void
 resize_win (MetaCompositorXRender *xrender,
             MetaCompWindow        *cw,
             int                    x,
@@ -2516,6 +2645,10 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
 
   g_signal_connect_object (window, "notify::appears-focused",
                            G_CALLBACK (notify_appears_focused_cb),
+                           xrender, 0);
+
+  g_signal_connect_object (window, "notify::decorated",
+                           G_CALLBACK (notify_decorated_cb),
                            xrender, 0);
 
   cw->back_pixmap = None;
