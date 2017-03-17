@@ -133,6 +133,7 @@ enum
   PROP_0,
 
   PROP_APPEARS_FOCUSED,
+  PROP_DECORATED,
 
   LAST_PROP
 };
@@ -6641,6 +6642,10 @@ recalc_window_type (MetaWindow *window)
 
   if (old_type != window->type)
     {
+      gboolean decorated;
+
+      decorated = window->decorated;
+
       window->attached = meta_window_should_attach_to_parent (window);
       recalc_window_features (window);
 
@@ -6657,6 +6662,9 @@ recalc_window_type (MetaWindow *window)
       meta_window_update_layer (window);
 
       meta_window_grab_keys (window);
+
+      if (decorated != window->decorated)
+        g_object_notify_by_pspec (G_OBJECT (window), properties[PROP_DECORATED]);
     }
 }
 
@@ -9266,6 +9274,10 @@ meta_window_get_property (GObject    *object,
         g_value_set_boolean (value, meta_window_appears_focused (window));
         break;
 
+      case PROP_DECORATED:
+        g_value_set_boolean (value, window->decorated);
+        break;
+
       default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
         break;
@@ -9278,6 +9290,10 @@ install_properties (GObjectClass *object_class)
   properties[PROP_APPEARS_FOCUSED] =
     g_param_spec_boolean ("appears-focused", "appears-focused", "appears-focused",
                           FALSE, G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
+
+  properties[PROP_DECORATED] =
+    g_param_spec_boolean ("decorated", "decorated", "decorated",
+                          TRUE, G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
 
   g_object_class_install_properties (object_class, LAST_PROP, properties);
 }
