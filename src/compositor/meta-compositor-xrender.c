@@ -2231,12 +2231,9 @@ expose_area (MetaCompositorXRender *xrender,
              XRectangle            *rects,
              int                    nrects)
 {
-  MetaCompositor *compositor = META_COMPOSITOR (xrender);
-  MetaDisplay *display = meta_compositor_get_display (compositor);
-  Display *xdisplay = meta_display_get_xdisplay (display);
   XserverRegion region;
 
-  region = XFixesCreateRegion (xdisplay, rects, nrects);
+  region = XFixesCreateRegion (xrender->xdisplay, rects, nrects);
 
   dump_xserver_region (xrender, "expose_area", region);
   add_damage (xrender, region);
