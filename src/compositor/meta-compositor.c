@@ -462,6 +462,17 @@ meta_compositor_sync_stack (MetaCompositor *compositor,
   compositor_class->sync_stack (compositor, stack);
 }
 
+void
+meta_compositor_sync_window_geometry (MetaCompositor *compositor,
+                                      MetaWindow     *window)
+{
+  MetaCompositorClass *compositor_class;
+
+  compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
+
+  compositor_class->sync_window_geometry (compositor, window);
+}
+
 gboolean
 meta_compositor_is_our_xwindow (MetaCompositor *compositor,
                                 Window          xwindow)

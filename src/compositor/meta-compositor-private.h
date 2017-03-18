@@ -72,6 +72,9 @@ struct _MetaCompositorClass
   void              (* sync_stack)             (MetaCompositor     *compositor,
                                                 GList              *stack);
 
+  void              (* sync_window_geometry)   (MetaCompositor     *compositor,
+                                                MetaWindow         *window);
+
   void              (* redraw)                 (MetaCompositor     *compositor);
 };
 

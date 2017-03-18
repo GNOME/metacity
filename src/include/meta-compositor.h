@@ -92,6 +92,9 @@ void             meta_compositor_sync_screen_size       (MetaCompositor     *com
 void             meta_compositor_sync_stack             (MetaCompositor     *compositor,
                                                          GList              *stack);
 
+void             meta_compositor_sync_window_geometry   (MetaCompositor     *compositor,
+                                                         MetaWindow         *window);
+
 gboolean         meta_compositor_is_our_xwindow         (MetaCompositor     *compositor,
                                                          Window              xwindow);
 

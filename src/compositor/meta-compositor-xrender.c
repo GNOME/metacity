@@ -2178,170 +2178,7 @@ notify_decorated_cb (MetaWindow            *window,
   add_repair (xrender);
 }
 
-static void
-resize_win (MetaCompositorXRender *xrender,
-            MetaCompWindow        *cw,
-            int                    x,
-            int                    y,
-            int                    width,
-            int                    height)
-{
-  MetaDisplay *display = meta_screen_get_display (xrender->screen);
-  Display *xdisplay = meta_display_get_xdisplay (display);
-  XserverRegion damage;
-
-  if (cw->extents)
-    {
-      damage = XFixesCreateRegion (xdisplay, NULL, 0);
-      XFixesCopyRegion (xdisplay, damage, cw->extents);
-    }
-  else
-    {
-      damage = None;
-      if (xrender->debug)
-        fprintf (stderr, "no extents to damage !\n");
-    }
-
-  if (cw->rect.width != width || cw->rect.height != height)
-    {
-      if (cw->shaded.back_pixmap)
-        {
-          XFreePixmap (xdisplay, cw->shaded.back_pixmap);
-          cw->shaded.back_pixmap = None;
-        }
-
-      if (cw->shaded.mask_pixmap)
-        {
-          XFreePixmap (xdisplay, cw->shaded.mask_pixmap);
-          cw->shaded.mask_pixmap = None;
-        }
-
-      if (cw->shaded.client_region)
-        {
-          XFixesDestroyRegion (xdisplay, cw->shaded.client_region);
-          cw->shaded.client_region = None;
-        }
-
-      if (cw->back_pixmap)
-        {
-          /* If the window is shaded, we store the old backing pixmap
-           * so we can return a proper image of the window
-           */
-          if (cw->window && meta_window_is_shaded (cw->window))
-            {
-              cw->shaded.back_pixmap = cw->back_pixmap;
-              cw->back_pixmap = None;
-            }
-          else
-            {
-              XFreePixmap (xdisplay, cw->back_pixmap);
-              cw->back_pixmap = None;
-            }
-        }
-
-      if (cw->mask_pixmap)
-        {
-          /* If the window is shaded, we store the old backing pixmap
-           * so we can return a proper image of the window
-           */
-          if (cw->window && meta_window_is_shaded (cw->window))
-            {
-              cw->shaded.mask_pixmap = cw->mask_pixmap;
-              cw->mask_pixmap = None;
-            }
-          else
-            {
-              XFreePixmap (xdisplay, cw->mask_pixmap);
-              cw->mask_pixmap = None;
-            }
-        }
-
-      if (cw->window && meta_window_is_shaded (cw->window))
-        {
-          cw->shaded.x = cw->rect.x;
-          cw->shaded.y = cw->rect.y;
-          cw->shaded.width = cw->rect.width;
-          cw->shaded.height = cw->rect.height;
-
-          if (cw->client_region != None)
-            {
-              cw->shaded.client_region = XFixesCreateRegion (xdisplay, NULL, 0);
-
-              XFixesCopyRegion (xdisplay, cw->shaded.client_region,
-                                cw->client_region);
-            }
-        }
-
-      if (cw->picture)
-        {
-          XRenderFreePicture (xdisplay, cw->picture);
-          cw->picture = None;
-        }
-
-      if (cw->mask)
-        {
-          XRenderFreePicture (xdisplay, cw->mask);
-          cw->mask = None;
-        }
-
-      if (cw->shadow)
-        {
-          XRenderFreePicture (xdisplay, cw->shadow);
-          cw->shadow = None;
-        }
-    }
-
-  cw->rect.x = x;
-  cw->rect.y = y;
-  cw->rect.width = width;
-  cw->rect.height = height;
-
-  if (cw->extents)
-    XFixesDestroyRegion (xdisplay, cw->extents);
-
-  cw->extents = win_extents (xrender, cw);
-
-  if (damage)
-    {
-      if (xrender->debug)
-        fprintf (stderr, "Inexplicable intersection with new extents!\n");
-
-      XFixesUnionRegion (xdisplay, damage, damage, cw->extents);
-    }
-  else
-    {
-      damage = XFixesCreateRegion (xdisplay, NULL, 0);
-      XFixesCopyRegion (xdisplay, damage, cw->extents);
-    }
-
-  dump_xserver_region (xrender, "resize_win", damage);
-  add_damage (xrender, damage);
-
-  xrender->clip_changed = TRUE;
-}
-
 /* event processors must all be called with an error trap in place */
-static void
-process_configure_notify (MetaCompositorXRender *xrender,
-                          XConfigureEvent       *event)
-{
-  MetaCompWindow *cw = find_comp_window_by_xwindow (xrender, event->window);
-
-  if (cw)
-    {
-      if (xrender->debug)
-        {
-          fprintf (stderr, "configure notify %d %d %d\n", cw->damaged,
-                   cw->shape_region != None, cw->needs_shadow);
-          dump_xserver_region (xrender, "\textents", cw->extents);
-          fprintf (stderr, "\txy (%d %d), wh (%d %d)\n",
-                   event->x, event->y, event->width, event->height);
-        }
-
-      resize_win (xrender, cw, event->x, event->y, event->width, event->height);
-    }
-}
-
 static void
 process_property_notify (MetaCompositorXRender *xrender,
                          XPropertyEvent        *event)
@@ -2870,10 +2707,6 @@ meta_compositor_xrender_process_event (MetaCompositor *compositor,
 
   switch (event->type)
     {
-    case ConfigureNotify:
-      process_configure_notify (xrender, (XConfigureEvent *) event);
-      break;
-
     case PropertyNotify:
       process_property_notify (xrender, (XPropertyEvent *) event);
       break;
@@ -3090,6 +2923,160 @@ meta_compositor_xrender_sync_stack (MetaCompositor *compositor,
 }
 
 static void
+meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
+                                              MetaWindow     *window)
+{
+  MetaCompositorXRender *xrender;
+  MetaCompWindow *cw;
+  MetaRectangle rect;
+  XserverRegion damage;
+
+  xrender = META_COMPOSITOR_XRENDER (compositor);
+  cw = find_comp_window_by_window (xrender, window);
+
+  if (cw == NULL)
+    return;
+
+  meta_window_get_input_rect (window, &rect);
+
+  if (xrender->debug)
+    {
+      fprintf (stderr, "configure notify %d %d %d\n", cw->damaged,
+               cw->shape_region != None, cw->needs_shadow);
+      dump_xserver_region (xrender, "\textents", cw->extents);
+      fprintf (stderr, "\txy (%d %d), wh (%d %d)\n",
+               rect.x, rect.y, rect.width, rect.height);
+    }
+
+  if (cw->extents)
+    {
+      damage = XFixesCreateRegion (xrender->xdisplay, NULL, 0);
+      XFixesCopyRegion (xrender->xdisplay, damage, cw->extents);
+    }
+  else
+    {
+      damage = None;
+      if (xrender->debug)
+        fprintf (stderr, "no extents to damage !\n");
+    }
+
+  if (cw->rect.width != rect.width || cw->rect.height != rect.height)
+    {
+      if (cw->shaded.back_pixmap != None)
+        {
+          XFreePixmap (xrender->xdisplay, cw->shaded.back_pixmap);
+          cw->shaded.back_pixmap = None;
+        }
+
+      if (cw->shaded.mask_pixmap != None)
+        {
+          XFreePixmap (xrender->xdisplay, cw->shaded.mask_pixmap);
+          cw->shaded.mask_pixmap = None;
+        }
+
+      if (cw->shaded.client_region != None)
+        {
+          XFixesDestroyRegion (xrender->xdisplay, cw->shaded.client_region);
+          cw->shaded.client_region = None;
+        }
+
+      if (cw->back_pixmap != None)
+        {
+          /* If the window is shaded, we store the old backing pixmap
+           * so we can return a proper image of the window
+           */
+          if (cw->window && meta_window_is_shaded (cw->window))
+            {
+              cw->shaded.back_pixmap = cw->back_pixmap;
+              cw->back_pixmap = None;
+            }
+          else
+            {
+              XFreePixmap (xrender->xdisplay, cw->back_pixmap);
+              cw->back_pixmap = None;
+            }
+        }
+
+      if (cw->mask_pixmap != None)
+        {
+          /* If the window is shaded, we store the old backing pixmap
+           * so we can return a proper image of the window
+           */
+          if (cw->window && meta_window_is_shaded (cw->window))
+            {
+              cw->shaded.mask_pixmap = cw->mask_pixmap;
+              cw->mask_pixmap = None;
+            }
+          else
+            {
+              XFreePixmap (xrender->xdisplay, cw->mask_pixmap);
+              cw->mask_pixmap = None;
+            }
+        }
+
+      if (cw->window && meta_window_is_shaded (cw->window))
+        {
+          cw->shaded.x = cw->rect.x;
+          cw->shaded.y = cw->rect.y;
+          cw->shaded.width = cw->rect.width;
+          cw->shaded.height = cw->rect.height;
+
+          if (cw->client_region != None)
+            {
+              cw->shaded.client_region = XFixesCreateRegion (xrender->xdisplay,
+                                                             NULL, 0);
+
+              XFixesCopyRegion (xrender->xdisplay, cw->shaded.client_region,
+                                cw->client_region);
+            }
+        }
+
+      if (cw->picture != None)
+        {
+          XRenderFreePicture (xrender->xdisplay, cw->picture);
+          cw->picture = None;
+        }
+
+      if (cw->mask != None)
+        {
+          XRenderFreePicture (xrender->xdisplay, cw->mask);
+          cw->mask = None;
+        }
+
+      if (cw->shadow != None)
+        {
+          XRenderFreePicture (xrender->xdisplay, cw->shadow);
+          cw->shadow = None;
+        }
+    }
+
+  cw->rect = rect;
+
+  if (cw->extents)
+    XFixesDestroyRegion (xrender->xdisplay, cw->extents);
+
+  cw->extents = win_extents (xrender, cw);
+
+  if (damage)
+    {
+      if (xrender->debug)
+        fprintf (stderr, "Inexplicable intersection with new extents!\n");
+
+      XFixesUnionRegion (xrender->xdisplay, damage, damage, cw->extents);
+    }
+  else
+    {
+      damage = XFixesCreateRegion (xrender->xdisplay, NULL, 0);
+      XFixesCopyRegion (xrender->xdisplay, damage, cw->extents);
+    }
+
+  dump_xserver_region (xrender, "sync_window_geometry", damage);
+  add_damage (xrender, damage);
+
+  xrender->clip_changed = TRUE;
+}
+
+static void
 meta_compositor_xrender_redraw (MetaCompositor *compositor)
 {
   MetaCompositorXRender *xrender;
@@ -3137,6 +3124,7 @@ meta_compositor_xrender_class_init (MetaCompositorXRenderClass *xrender_class)
   compositor_class->unmaximize_window = meta_compositor_xrender_unmaximize_window;
   compositor_class->sync_screen_size = meta_compositor_xrender_sync_screen_size;
   compositor_class->sync_stack = meta_compositor_xrender_sync_stack;
+  compositor_class->sync_window_geometry = meta_compositor_xrender_sync_window_geometry;
   compositor_class->redraw = meta_compositor_xrender_redraw;
 }
 
