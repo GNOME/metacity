@@ -4999,7 +4999,7 @@ meta_window_send_icccm_message (MetaWindow *window,
     meta_error_trap_pop (window->display);
 }
 
-void
+static void
 meta_window_move_resize_request (MetaWindow *window,
                                  guint       value_mask,
                                  int         gravity,
