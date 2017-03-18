@@ -734,9 +734,16 @@ find_comp_window_by_xwindow (MetaCompositorXRender *xrender,
 
       frame = meta_window_get_frame (cw->window);
 
-      if ((frame && meta_frame_get_xwindow (frame) == xwindow) ||
-          meta_window_get_xwindow (cw->window) == xwindow)
-        return cw;
+      if (frame)
+        {
+          if (meta_frame_get_xwindow (frame) == xwindow)
+            return cw;
+        }
+      else
+        {
+          if (meta_window_get_xwindow (cw->window) == xwindow)
+            return cw;
+        }
     }
 
   return NULL;
