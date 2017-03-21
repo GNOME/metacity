@@ -1279,7 +1279,9 @@ meta_frames_repaint_frame (MetaFrames *frames,
   /* repaint everything, so the other frame don't
    * lag behind if they are exposed
    */
+  G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   gdk_window_process_all_updates ();
+  G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
@@ -2730,7 +2732,9 @@ meta_frames_push_delay_exposes (MetaFrames *frames)
   if (frames->expose_delay_count == 0)
     {
       /* Make sure we've repainted things */
+      G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       gdk_window_process_all_updates ();
+      G_GNUC_END_IGNORE_DEPRECATIONS
       XFlush (frames->xdisplay);
     }
 
