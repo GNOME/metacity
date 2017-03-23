@@ -551,6 +551,14 @@ void meta_window_send_icccm_message (MetaWindow *window,
                                      Atom        atom,
                                      guint32     timestamp);
 
+
+void     meta_window_move_resize_request(MetaWindow *window,
+                                         guint       value_mask,
+                                         int         gravity,
+                                         int         x,
+                                         int         y,
+                                         int         width,
+                                         int         height);
 gboolean meta_window_configure_request (MetaWindow *window,
                                         XEvent     *event);
 gboolean meta_window_property_notify   (MetaWindow *window,
