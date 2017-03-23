@@ -84,7 +84,10 @@ static void meta_window_move_resize_internal (MetaWindow         *window,
                                               int                 root_x_nw,
                                               int                 root_y_nw,
                                               int                 w,
-                                              int                 h);
+                                              int                 h,
+                                              gboolean            configure_notify,
+                                              gboolean           *moved,
+                                              gboolean           *resized);
 
 static void     ensure_mru_position_after (MetaWindow *window,
                                            MetaWindow *after_this_one);
@@ -752,7 +755,8 @@ meta_window_new_with_attrs (MetaDisplay       *display,
                                     window->size_hints.x,
                                     window->size_hints.y,
                                     window->size_hints.width,
-                                    window->size_hints.height);
+                                    window->size_hints.height,
+                                    TRUE, NULL, NULL);
 
   /* Now try applying saved stuff from the session */
   {
@@ -942,7 +946,8 @@ meta_window_apply_session_info (MetaWindow *window,
       meta_window_move_resize_internal (window,
                                         flags,
                                         window->size_hints.win_gravity,
-                                        x, y, w, h);
+                                        x, y, w, h,
+                                        TRUE, NULL, NULL);
     }
 }
 
@@ -3328,7 +3333,10 @@ meta_window_move_resize_internal (MetaWindow          *window,
                                   int                  root_x_nw,
                                   int                  root_y_nw,
                                   int                  w,
-                                  int                  h)
+                                  int                  h,
+                                  gboolean             configure_notify,
+                                  gboolean            *moved,
+                                  gboolean            *resized)
 {
   /* meta_window_move_resize_internal gets called with very different
    * meanings for root_x_nw and root_y_nw.  w & h are always the area
@@ -3661,6 +3669,12 @@ meta_window_move_resize_internal (MetaWindow          *window,
        (window->size_hints.flags & USPosition)))
     need_configure_notify = TRUE;
 
+  if (moved != NULL)
+    *moved = need_move_client || need_move_frame;
+
+  if (resized != NULL)
+    *resized = need_resize_client || need_resize_frame;
+
   /* The rest of this function syncs our new size/pos with X as
    * efficiently as possible
    */
@@ -3741,7 +3755,7 @@ meta_window_move_resize_internal (MetaWindow          *window,
   if (use_static_gravity)
     meta_window_set_gravity (window, NorthWestGravity);
 
-  if (need_configure_notify)
+  if (need_configure_notify && configure_notify)
     send_configure_notify (window);
 
   if (!window->placed && window->force_save_user_rect && !window->fullscreen)
@@ -3801,7 +3815,8 @@ meta_window_resize (MetaWindow  *window,
   meta_window_move_resize_internal (window,
                                     flags,
                                     NorthWestGravity,
-                                    x, y, w, h);
+                                    x, y, w, h,
+                                    TRUE, NULL, NULL);
 }
 
 void
@@ -3817,7 +3832,8 @@ meta_window_move (MetaWindow  *window,
                                     NorthWestGravity,
                                     root_x_nw, root_y_nw,
                                     window->rect.width,
-                                    window->rect.height);
+                                    window->rect.height,
+                                    TRUE, NULL, NULL);
 }
 
 void
@@ -3835,7 +3851,8 @@ meta_window_move_resize (MetaWindow  *window,
                                     flags,
                                     NorthWestGravity,
                                     root_x_nw, root_y_nw,
-                                    w, h);
+                                    w, h,
+                                    TRUE, NULL, NULL);
 }
 
 void
@@ -3854,7 +3871,8 @@ meta_window_resize_with_gravity (MetaWindow *window,
   meta_window_move_resize_internal (window,
                                     flags,
                                     gravity,
-                                    x, y, w, h);
+                                    x, y, w, h,
+                                    TRUE, NULL, NULL);
 }
 
 static void
@@ -4717,14 +4735,17 @@ meta_window_send_icccm_message (MetaWindow *window,
     meta_error_trap_pop (window->display, FALSE);
 }
 
-void
-meta_window_move_resize_request (MetaWindow *window,
-                                 guint       value_mask,
-                                 int         gravity,
-                                 int         new_x,
-                                 int         new_y,
-                                 int         new_width,
-                                 int         new_height)
+static void
+move_resize_request (MetaWindow *window,
+                     guint       value_mask,
+                     int         gravity,
+                     int         new_x,
+                     int         new_y,
+                     int         new_width,
+                     int         new_height,
+                     gboolean    configure_notify,
+                     gboolean   *moved,
+                     gboolean   *resized)
 {
   int x, y, width, height;
   gboolean allow_position_change;
@@ -4898,7 +4919,10 @@ meta_window_move_resize_request (MetaWindow *window,
                                       x,
                                       y,
                                       width,
-                                      height);
+                                      height,
+                                      configure_notify,
+                                      moved,
+                                      resized);
 
   /* window->user_rect exists to allow "snapping-back" the window if a
    * new strut is set (causing the window to move) and then the strut
@@ -4913,10 +4937,34 @@ meta_window_move_resize_request (MetaWindow *window,
   save_user_window_placement (window);
 }
 
+void
+meta_window_move_resize_request (MetaWindow *window,
+                                 guint       value_mask,
+                                 int         gravity,
+                                 int         new_x,
+                                 int         new_y,
+                                 int         new_width,
+                                 int         new_height)
+{
+  move_resize_request (window, value_mask, gravity,
+                       new_x, new_y, new_width, new_height,
+                       TRUE, NULL, NULL);
+}
+
 gboolean
 meta_window_configure_request (MetaWindow *window,
                                XEvent     *event)
 {
+  gboolean moved;
+  gboolean resized;
+  gboolean restacked;
+  gboolean need_configure_notify;
+
+  moved = FALSE;
+  resized = FALSE;
+  restacked = FALSE;
+  need_configure_notify = FALSE;
+
   /* Note that x, y is the corner of the window border,
    * and width, height is the size of the window inside
    * its border, but that we always deny border requests
@@ -4926,13 +4974,14 @@ meta_window_configure_request (MetaWindow *window,
   if (event->xconfigurerequest.value_mask & CWBorderWidth)
     window->border_width = event->xconfigurerequest.border_width;
 
-  meta_window_move_resize_request(window,
-                                  event->xconfigurerequest.value_mask,
-                                  window->size_hints.win_gravity,
-                                  event->xconfigurerequest.x,
-                                  event->xconfigurerequest.y,
-                                  event->xconfigurerequest.width,
-                                  event->xconfigurerequest.height);
+  move_resize_request (window,
+                       event->xconfigurerequest.value_mask,
+                       window->size_hints.win_gravity,
+                       event->xconfigurerequest.x,
+                       event->xconfigurerequest.y,
+                       event->xconfigurerequest.width,
+                       event->xconfigurerequest.height,
+                       FALSE, &moved, &resized);
 
 
   /* Handle stacking. We only handle raises/lowers (both absolute and
@@ -4981,8 +5030,23 @@ meta_window_configure_request (MetaWindow *window,
             }
 
           restack_window(window, sibling, event->xconfigurerequest.detail);
+
+          restacked = TRUE;
         }
     }
+
+  /* If we change nothing, then we must send configure notify. */
+  if (!(moved || resized || window->border_width != 0 || restacked))
+    need_configure_notify = TRUE;
+
+  /* We must send configure notify if we move or restack without
+   * resizing or changing border width.
+   */
+  if ((moved || restacked) && !(resized || window->border_width != 0))
+    need_configure_notify = TRUE;
+
+  if (need_configure_notify)
+    send_configure_notify (window);
 
   return TRUE;
 }
