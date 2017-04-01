@@ -112,20 +112,25 @@ struct _MetaStackTracker
   /* This is the last state of the stack as based on events received
    * from the X server.
    */
-  GArray *server_stack;
+  GArray *xserver_stack;
 
   /* This is the serial of the last request we made that was reflected
-   * in server_stack
+   * in xserver_stack.
    */
-  gulong server_serial;
+  gulong xserver_serial;
+
+  /* A stack without any unverified operations applied.
+   */
+  GArray *verified_stack;
 
   /* This is a queue of requests we've made to change the stacking order,
    * where we haven't yet gotten a reply back from the server.
    */
-  GQueue *queued_requests;
+  GQueue *unverified_predictions;
 
-  /* This is how we think the stack is, based on server_stack, and
-   * on requests we've made subsequent to server_stack
+  /* This is how we think the stack is, based on verified_stack, and
+   * on the unverified_predictions we've made subsequent to
+   * verified_stack.
    */
   GArray *predicted_stack;
 
@@ -177,23 +182,33 @@ meta_stack_tracker_dump (MetaStackTracker *tracker)
 
   meta_topic (META_DEBUG_STACK, "MetaStackTracker state (screen=%d)\n", tracker->screen->number);
   meta_push_no_msg_prefix ();
-  meta_topic (META_DEBUG_STACK, "  server_serial: %ld\n", tracker->server_serial);
-  meta_topic (META_DEBUG_STACK, "  server_stack: ");
-  for (i = 0; i < tracker->server_stack->len; i++)
-    meta_topic (META_DEBUG_STACK, "  %#lx", g_array_index (tracker->server_stack, Window, i));
-  if (tracker->predicted_stack)
+  meta_topic (META_DEBUG_STACK, "  xserver_serial: %ld\n", tracker->xserver_serial);
+  meta_topic (META_DEBUG_STACK, "  xserver_stack: ");
+  for (i = 0; i < tracker->xserver_stack->len; i++)
     {
-      meta_topic (META_DEBUG_STACK, "\n  predicted_stack: ");
-      for (i = 0; i < tracker->predicted_stack->len; i++)
-        meta_topic (META_DEBUG_STACK, "  %#lx", g_array_index (tracker->predicted_stack, Window, i));
+      meta_topic (META_DEBUG_STACK, "  %#lx", g_array_index (tracker->xserver_stack, Window, i));
     }
-  meta_topic (META_DEBUG_STACK, "\n  queued_requests: [");
-  for (l = tracker->queued_requests->head; l; l = l->next)
+  meta_topic (META_DEBUG_STACK, "\n  verfied_stack: ");
+  for (i = 0; i < tracker->verified_stack->len; i++)
+    {
+      meta_topic (META_DEBUG_STACK, " %#lx", g_array_index (tracker->verified_stack, Window, i));
+    }
+  meta_topic (META_DEBUG_STACK, "\n  unverified_predictions: [");
+  for (l = tracker->unverified_predictions->head; l; l = l->next)
     {
       MetaStackOp *op = l->data;
       meta_stack_op_dump (op, "", l->next ? ", " : "");
     }
   meta_topic (META_DEBUG_STACK, "]\n");
+  if (tracker->predicted_stack)
+    {
+      meta_topic (META_DEBUG_STACK, "\n  predicted_stack: ");
+      for (i = 0; i < tracker->predicted_stack->len; i++)
+        {
+          meta_topic (META_DEBUG_STACK, " %#lx", g_array_index (tracker->predicted_stack, Window, i));
+        }
+    }
+  meta_topic (META_DEBUG_STACK, "\n");
   meta_pop_no_msg_prefix ();
 }
 
@@ -204,14 +219,16 @@ meta_stack_op_free (MetaStackOp *op)
 }
 
 static int
-find_window (GArray *stack,
+find_window (GArray *window_stack,
              Window  window)
 {
   guint i;
 
-  for (i = 0; i < stack->len; i++)
-    if (g_array_index (stack, Window, i) == window)
-      return i;
+  for (i = 0; i < window_stack->len; i++)
+    {
+      if (g_array_index (window_stack, Window, i) == window)
+        return i;
+    }
 
   return -1;
 }
@@ -351,37 +368,61 @@ meta_stack_op_apply (MetaStackOp *op,
 }
 
 static GArray *
-copy_stack (Window *windows,
-            guint   n_windows)
+copy_stack (GArray *stack)
 {
-  GArray *stack = g_array_new (FALSE, FALSE, sizeof (Window));
+  GArray *copy = g_array_sized_new (FALSE, FALSE, sizeof (Window), stack->len);
 
-  g_array_set_size (stack, n_windows);
-  memcpy (stack->data, windows, sizeof (Window) * n_windows);
+  g_array_set_size (copy, stack->len);
 
-  return stack;
+  memcpy (copy->data, stack->data, sizeof (Window) * stack->len);
+
+  return copy;
+}
+
+static void
+requery_xserver_stack (MetaStackTracker *tracker)
+{
+  MetaScreen *screen = tracker->screen;
+  Window ignored1, ignored2;
+  Window *children;
+  guint n_children;
+  guint i;
+
+  if (tracker->xserver_stack)
+    g_array_free (tracker->xserver_stack, TRUE);
+
+  tracker->xserver_serial = XNextRequest (screen->display->xdisplay);
+
+  XQueryTree (screen->display->xdisplay,
+              screen->xroot,
+              &ignored1, &ignored2, &children, &n_children);
+
+  tracker->xserver_stack =  g_array_sized_new (FALSE, FALSE, sizeof (Window), n_children);
+  g_array_set_size (tracker->xserver_stack, n_children);
+
+  for (i = 0; i < n_children; i++)
+    {
+      g_array_index (tracker->xserver_stack, Window, i) = children[i];
+    }
+
+  XFree (children);
 }
 
 MetaStackTracker *
 meta_stack_tracker_new (MetaScreen *screen)
 {
   MetaStackTracker *tracker;
-  Window ignored1, ignored2;
-  Window *children;
-  guint n_children;
 
   tracker = g_new0 (MetaStackTracker, 1);
   tracker->screen = screen;
 
-  tracker->server_serial = XNextRequest (screen->display->xdisplay);
+  requery_xserver_stack (tracker);
 
-  XQueryTree (screen->display->xdisplay,
-              screen->xroot,
-              &ignored1, &ignored2, &children, &n_children);
-  tracker->server_stack = copy_stack (children, n_children);
-  XFree (children);
+  tracker->verified_stack = copy_stack (tracker->xserver_stack);
 
-  tracker->queued_requests = g_queue_new ();
+  tracker->unverified_predictions = g_queue_new ();
+
+  meta_stack_tracker_dump (tracker);
 
   return tracker;
 }
@@ -392,23 +433,25 @@ meta_stack_tracker_free (MetaStackTracker *tracker)
   if (tracker->sync_stack_idle)
     g_source_remove (tracker->sync_stack_idle);
 
-  g_array_free (tracker->server_stack, TRUE);
+  g_array_free (tracker->xserver_stack, TRUE);
+  g_array_free (tracker->verified_stack, TRUE);
   if (tracker->predicted_stack)
     g_array_free (tracker->predicted_stack, TRUE);
 
-  g_queue_foreach (tracker->queued_requests, (GFunc)meta_stack_op_free, NULL);
-  g_queue_free (tracker->queued_requests);
-  tracker->queued_requests = NULL;
+  g_queue_foreach (tracker->unverified_predictions, (GFunc)meta_stack_op_free, NULL);
+  g_queue_free (tracker->unverified_predictions);
+  tracker->unverified_predictions = NULL;
 
   g_free (tracker);
 }
 
 static void
-stack_tracker_queue_request (MetaStackTracker *tracker,
-                             MetaStackOp      *op)
+stack_tracker_apply_prediction (MetaStackTracker *tracker,
+                                MetaStackOp      *op)
 {
-  meta_stack_op_dump (op, "Queueing: ", "\n");
-  g_queue_push_tail (tracker->queued_requests, op);
+  meta_stack_op_dump (op, "Predicting: ", "\n");
+  g_queue_push_tail (tracker->unverified_predictions, op);
+
   if (!tracker->predicted_stack ||
       meta_stack_op_apply (op, tracker->predicted_stack))
     meta_stack_tracker_queue_sync_stack (tracker);
@@ -427,7 +470,7 @@ meta_stack_tracker_record_add (MetaStackTracker *tracker,
   op->any.serial = serial;
   op->add.window = window;
 
-  stack_tracker_queue_request (tracker, op);
+  stack_tracker_apply_prediction (tracker, op);
 }
 
 void
@@ -441,7 +484,7 @@ meta_stack_tracker_record_remove (MetaStackTracker *tracker,
   op->any.serial = serial;
   op->remove.window = window;
 
-  stack_tracker_queue_request (tracker, op);
+  stack_tracker_apply_prediction (tracker, op);
 }
 
 void
@@ -454,7 +497,7 @@ meta_stack_tracker_record_restack_windows (MetaStackTracker *tracker,
 
   /* XRestackWindows() isn't actually a X requests - it's broken down
    * by XLib into a series of XConfigureWindow(StackMode=below); we
-   * mirror that exactly here.
+   * mirror that here.
    *
    * Aside: Having a separate StackOp for this would be possible to
    * get some extra efficiency in memory allocation and in applying
@@ -481,7 +524,7 @@ meta_stack_tracker_record_raise_above (MetaStackTracker *tracker,
   op->raise_above.window = window;
   op->raise_above.sibling = sibling;
 
-  stack_tracker_queue_request (tracker, op);
+  stack_tracker_apply_prediction (tracker, op);
 }
 
 void
@@ -497,7 +540,7 @@ meta_stack_tracker_record_lower_below (MetaStackTracker *tracker,
   op->lower_below.window = window;
   op->lower_below.sibling = sibling;
 
-  stack_tracker_queue_request (tracker, op);
+  stack_tracker_apply_prediction (tracker, op);
 }
 
 void
@@ -508,34 +551,289 @@ meta_stack_tracker_record_lower (MetaStackTracker *tracker,
   meta_stack_tracker_record_raise_above (tracker, window, None, serial);
 }
 
-static void
-stack_tracker_event_received (MetaStackTracker *tracker,
-                              MetaStackOp      *op)
+/* @op is an operation derived from an X event from the server and we
+ * want to verify that our predicted operations are consistent with
+ * what's being reported by the X server.
+ *
+ * This function applies all the unverified predicted operations up to
+ * the given @serial onto the verified_stack so that we can check the
+ * stack for consistency with the given X operation.
+ *
+ * Return value: %TRUE if the predicted state is consistent with
+ * receiving the given @op from X, else %FALSE.
+ *
+ * @modified will be set to %TRUE if tracker->verified_stack is
+ * changed by applying any newly validated operations, else %FALSE.
+ */
+static gboolean
+stack_tracker_verify_predictions (MetaStackTracker *tracker,
+                                  MetaStackOp      *op,
+                                  gboolean         *modified)
 {
-  gboolean need_sync = FALSE;
+  GArray *tmp_predicted_stack = NULL;
+  GArray *predicted_stack;
+  gboolean modified_stack = FALSE;
 
-  meta_stack_op_dump (op, "Stack op event received: ", "\n");
-
-  if (op->any.serial < tracker->server_serial)
-    return;
-
-  tracker->server_serial = op->any.serial;
-
-  if (meta_stack_op_apply (op, tracker->server_stack))
-    need_sync = TRUE;
-
-  while (tracker->queued_requests->head)
+  if (tracker->unverified_predictions->length)
     {
-      MetaStackOp *queued_op = tracker->queued_requests->head->data;
+      GList *l;
+
+      tmp_predicted_stack = predicted_stack = copy_stack (tracker->verified_stack);
+
+      for (l = tracker->unverified_predictions->head; l; l = l->next)
+        {
+          MetaStackOp *current_op = l->data;
+
+          if (current_op->any.serial > op->any.serial)
+            break;
+
+          modified_stack |= meta_stack_op_apply (current_op, predicted_stack);
+        }
+    }
+  else
+    predicted_stack = tracker->verified_stack;
+
+  switch (op->any.type)
+    {
+    case STACK_OP_ADD:
+      if (!find_window (predicted_stack, op->add.window))
+        {
+          meta_topic (META_DEBUG_STACK, "Verify STACK_OP_ADD: window %#lx not found\n", op->add.window);
+          goto not_verified;
+        }
+      break;
+    case STACK_OP_REMOVE:
+      if (!find_window (predicted_stack, op->remove.window))
+        {
+          meta_topic (META_DEBUG_STACK, "Verify STACK_OP_REMOVE: window %#lx not found\n", op->remove.window);
+          goto not_verified;
+        }
+      break;
+    case STACK_OP_RAISE_ABOVE:
+      {
+        Window last_xwindow = None;
+        guint i;
+
+        for (i = 0; i < predicted_stack->len; i++)
+          {
+            Window xwindow = g_array_index (predicted_stack, Window, i);
+
+            if (xwindow == op->raise_above.window)
+              {
+                if (last_xwindow == op->raise_above.sibling)
+                  goto verified;
+                else
+                  goto not_verified;
+              }
+
+            last_xwindow = xwindow;
+          }
+
+        meta_topic (META_DEBUG_STACK, "Verify STACK_OP_RAISE_ABOVE: window %#lx not found\n", op->raise_above.window);
+        goto not_verified;
+      }
+      break;
+    case STACK_OP_LOWER_BELOW:
+      g_warn_if_reached (); /* No X events currently lead to this path */
+      goto not_verified;
+      break;
+    default:
+      g_warn_if_reached ();
+      goto not_verified;
+      break;
+    }
+
+verified:
+
+  /* We can free the operations which we have now verified... */
+  while (tracker->unverified_predictions->head)
+    {
+      MetaStackOp *queued_op = tracker->unverified_predictions->head->data;
+
       if (queued_op->any.serial > op->any.serial)
         break;
 
-      g_queue_pop_head (tracker->queued_requests);
+      g_queue_pop_head (tracker->unverified_predictions);
       meta_stack_op_free (queued_op);
-      need_sync = TRUE;
     }
 
-  if (need_sync)
+  *modified = modified_stack;
+  if (modified_stack)
+    {
+      g_array_free (tracker->verified_stack, TRUE);
+      tracker->verified_stack = predicted_stack;
+    }
+  else if (tmp_predicted_stack)
+    g_array_free (tmp_predicted_stack, TRUE);
+
+  return TRUE;
+
+not_verified:
+
+  if (tmp_predicted_stack)
+    g_array_free (tmp_predicted_stack, TRUE);
+
+  if (tracker->predicted_stack)
+    {
+      g_array_free (tracker->predicted_stack, TRUE);
+      tracker->predicted_stack = NULL;
+    }
+
+  *modified = FALSE;
+
+  return FALSE;
+}
+
+/* If we find that our predicted state is not consistent with what the
+ * X server is reporting to us then this function can re-query and
+ * re-synchronize verified_stack with the X server stack.
+ *
+ * Return value: %TRUE if the verified stack was modified with respect
+ * to the predicted stack else %FALSE.
+ *
+ * Note: ->predicted_stack will be cleared by this function if
+ * ->verified_stack had to be modified when re-synchronizing.
+ */
+static gboolean
+resync_verified_stack_with_xserver_stack (MetaStackTracker *tracker)
+{
+  GList *l;
+  unsigned int i, j;
+  Window expected_xwindow;
+  gboolean modified_stack = FALSE;
+
+  /* Overview of the algorithm:
+   *
+   * - Re-query the complete X window stack from the X server via
+   *   XQueryTree() and update xserver_stack.
+   *
+   * - Apply all operations in unverified_predictions to
+   *   verified_stack so we have a predicted stack and free the
+   *   queue of unverified_predictions.
+   *
+   * - Iterate through the x windows listed in verified_stack at the
+   *   same time as iterating the windows in xserver_stack. (Stop
+   *   when we reach the end of the xserver_stack)
+   *     - If the window found doesn't match the window expected
+   *     according to the order of xserver_stack then:
+   *       - Look ahead for the window we were expecting and restack
+   *       that above the previous X window. If we fail to find the
+   *       expected window then create a new entry for it and stack
+   *       that.
+   *
+   * - Continue to iterate through verified_stack for any remaining
+   *   X windows that we now know aren't in the xserver_stack and
+   *   remove them.
+   *
+   * - Free ->predicted_stack if any.
+   */
+
+  meta_topic (META_DEBUG_STACK, "Fully re-synchronizing X stack with verified stack\n");
+
+  requery_xserver_stack (tracker);
+
+  for (l = tracker->unverified_predictions->head; l; l = l->next)
+    {
+      meta_stack_op_apply (l->data, tracker->verified_stack);
+      meta_stack_op_free (l->data);
+    }
+  g_queue_clear (tracker->unverified_predictions);
+
+  j = 0;
+  expected_xwindow = g_array_index (tracker->xserver_stack, Window, j);
+
+  for (i = 0; i < tracker->verified_stack->len; )
+    {
+      Window current = g_array_index (tracker->verified_stack, Window, i);
+
+      if (current != expected_xwindow)
+        {
+          Window new;
+          Window expected;
+          int expected_index;
+
+          /* If the current window corresponds to a window that's not
+           * in xserver_stack any more then the least disruptive thing
+           * we can do is to simply remove it and take another look at
+           * the same index.
+           *
+           * Technically we only need to look forward from j if we
+           * wanted to optimize this a bit...
+           */
+          if (find_window (tracker->xserver_stack, current) < 0)
+            {
+              g_array_remove_index (tracker->verified_stack, i);
+              continue;
+            }
+
+          /* Technically we only need to look forward from i if we
+           * wanted to optimize this a bit...
+           */
+          expected_index = find_window (tracker->verified_stack, expected_xwindow);
+
+          if (expected_index >= 0)
+            {
+              expected = g_array_index (tracker->verified_stack, Window, expected_index);
+            }
+          else
+            {
+              new = expected_xwindow;
+
+              g_array_append_val (tracker->verified_stack, new);
+
+              expected = new;
+              expected_index = tracker->verified_stack->len - 1;
+            }
+
+          /* Note: that this move will effectively bump the index of
+           * the current window.
+           *
+           * We want to continue by re-checking this window against
+           * the next expected window though so we don't have to
+           * update i to compensate here.
+           */
+          move_window_above (tracker->verified_stack, expected,
+                             expected_index, /* current index */
+                             i - 1); /* above */
+          modified_stack = TRUE;
+        }
+
+      /* NB: we want to make sure that if we break the loop because j
+       * reaches the end of xserver_stack that i has also been
+       * incremented already so that we can run a final loop to remove
+       * remaining windows based on the i index.
+       */
+      i++;
+
+      j++;
+      expected_xwindow = g_array_index (tracker->xserver_stack, Window, j);
+
+      if (j >= tracker->xserver_stack->len)
+        break;
+    }
+
+  /* We now know that any remaining X windows aren't listed in the
+   * xserver_stack and so we can remove them.
+   */
+  while (i < tracker->verified_stack->len)
+    {
+      g_array_remove_index (tracker->verified_stack, i);
+
+      modified_stack = TRUE;
+    }
+
+  /* If we get to the end of verified_list and there are any remaining
+   * entries in xserver_stack then append them all to the end
+   */
+  for (; j < tracker->xserver_stack->len; j++)
+    {
+      Window current = g_array_index (tracker->xserver_stack, Window, j);
+      g_array_append_val (tracker->verified_stack, current);
+
+      modified_stack = TRUE;
+    }
+
+  if (modified_stack)
     {
       if (tracker->predicted_stack)
         {
@@ -544,6 +842,45 @@ stack_tracker_event_received (MetaStackTracker *tracker,
         }
 
       meta_stack_tracker_queue_sync_stack (tracker);
+    }
+
+  return modified_stack;
+}
+
+static void
+stack_tracker_event_received (MetaStackTracker *tracker,
+                              MetaStackOp      *op)
+{
+  gboolean need_sync = FALSE;
+  gboolean verified;
+
+  /* If the event is older than our latest requery, then it's
+   * already included in our tree. Just ignore it.
+   */
+  if (op->any.serial < tracker->xserver_serial)
+    return;
+
+  meta_stack_op_dump (op, "Stack op event received: ", "\n");
+
+  tracker->xserver_serial = op->any.serial;
+
+  /* XXX: With the design we have ended up with it looks like we've
+   * ended up making it unnecessary to maintain tracker->xserver_stack
+   * since we only need an xserver_stack during the
+   * resync_verified_stack_with_xserver_stack() at which point we are
+   * going to query the full stack from the X server using
+   * XQueryTree() anyway.
+   *
+   * TODO: remove tracker->xserver_stack.
+   */
+  meta_stack_op_apply (op, tracker->xserver_stack);
+
+  verified = stack_tracker_verify_predictions (tracker, op, &need_sync);
+  if (!verified)
+    {
+      resync_verified_stack_with_xserver_stack (tracker);
+      meta_stack_tracker_dump (tracker);
+      return;
     }
 
   meta_stack_tracker_dump (tracker);
@@ -639,9 +976,9 @@ meta_stack_tracker_get_stack (MetaStackTracker *tracker,
 {
   GArray *stack;
 
-  if (tracker->queued_requests->length == 0)
+  if (tracker->unverified_predictions->length == 0)
     {
-      stack = tracker->server_stack;
+      stack = tracker->verified_stack;
     }
   else
     {
@@ -649,9 +986,8 @@ meta_stack_tracker_get_stack (MetaStackTracker *tracker,
         {
           GList *l;
 
-          tracker->predicted_stack = copy_stack ((Window *)tracker->server_stack->data,
-                                                 tracker->server_stack->len);
-          for (l = tracker->queued_requests->head; l; l = l->next)
+          tracker->predicted_stack = copy_stack (tracker->verified_stack);
+          for (l = tracker->unverified_predictions->head; l; l = l->next)
             {
               MetaStackOp *op = l->data;
               meta_stack_op_apply (op, tracker->predicted_stack);
@@ -660,6 +996,9 @@ meta_stack_tracker_get_stack (MetaStackTracker *tracker,
 
       stack = tracker->predicted_stack;
     }
+
+  meta_topic (META_DEBUG_STACK, "Get Stack\n");
+  meta_stack_tracker_dump (tracker);
 
   if (windows)
     *windows = (Window *)stack->data;
