@@ -64,17 +64,20 @@ void meta_stack_tracker_record_lower           (MetaStackTracker *tracker,
 
 /* We also have functions that also go ahead and do the work
  */
-void meta_stack_tracker_raise_above     (MetaStackTracker *tracker,
-                                         Window            window,
-                                         Window            sibling);
-void meta_stack_tracker_lower_below     (MetaStackTracker *tracker,
-                                         Window            window,
-                                         Window            sibling);
-void meta_stack_tracker_lower           (MetaStackTracker *tracker,
-                                         Window            window);
-void meta_stack_tracker_restack_windows (MetaStackTracker *tracker,
-                                         const Window     *windows,
-                                         int               n_windows);
+void meta_stack_tracker_raise_above       (MetaStackTracker *tracker,
+                                           Window            window,
+                                           Window            sibling);
+void meta_stack_tracker_lower_below       (MetaStackTracker *tracker,
+                                           Window            window,
+                                           Window            sibling);
+void meta_stack_tracker_lower             (MetaStackTracker *tracker,
+                                           Window            window);
+void meta_stack_tracker_restack_managed   (MetaStackTracker *tracker,
+                                           const Window     *windows,
+                                           int               n_windows);
+void meta_stack_tracker_restack_at_bottom (MetaStackTracker *tracker,
+                                           const Window     *new_order,
+                                           int               n_new_order);
 
 /* These functions are used to update the stack when we get events
  * reflecting changes to the stacking order */
