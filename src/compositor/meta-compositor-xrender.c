@@ -2934,6 +2934,8 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
   if (cw == NULL)
     return;
 
+  meta_error_trap_push (window->display);
+
   meta_window_get_input_rect (window, &rect);
 
   if (xrender->debug)
@@ -3071,6 +3073,8 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
   add_damage (xrender, damage);
 
   xrender->clip_changed = TRUE;
+
+  meta_error_trap_pop (window->display);
 }
 
 static void
