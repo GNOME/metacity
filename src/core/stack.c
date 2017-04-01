@@ -1059,42 +1059,24 @@ raise_window_relative_to_managed_windows (MetaScreen *screen,
                                           Window      xwindow)
 {
   Window sibling;
-  gulong serial;
 
   sibling = find_top_most_managed_window (screen, xwindow);
 
   if (sibling == None)
     {
-      meta_error_trap_push (screen->display);
-      serial = XNextRequest (screen->display->xdisplay);
-      XLowerWindow (screen->display->xdisplay, xwindow);
-      meta_error_trap_pop (screen->display);
-
       /* No sibling to use, just lower ourselves to the bottom
        * to be sure we're below any override redirect windows.
        */
-      meta_stack_tracker_record_lower (screen->stack_tracker, xwindow, serial);
+      meta_stack_tracker_lower (screen->stack_tracker, xwindow);
     }
   else
     {
-      XWindowChanges changes;
-
       /* sibling is the topmost managed child */
       meta_topic (META_DEBUG_STACK,
                   "Moving 0x%lx above topmost managed child window 0x%lx\n",
                   xwindow, sibling);
 
-      changes.sibling = sibling;
-      changes.stack_mode = Above;
-
-      meta_error_trap_push (screen->display);
-      serial = XNextRequest (screen->display->xdisplay);
-      XConfigureWindow (screen->display->xdisplay, xwindow,
-                        CWSibling | CWStackMode, &changes);
-      meta_error_trap_pop (screen->display);
-
-      meta_stack_tracker_record_raise_above (screen->stack_tracker,
-                                             xwindow, sibling, serial);
+      meta_stack_tracker_raise_above (screen->stack_tracker, xwindow, sibling);
     }
 }
 
@@ -1181,13 +1163,9 @@ stack_sync_to_xserver (MetaStack *stack)
 
       if (root_children_stacked->len > 0)
         {
-          meta_stack_tracker_record_restack_windows (stack->screen->stack_tracker,
-                                                     (Window *) root_children_stacked->data,
-                                                     root_children_stacked->len,
-                                                     XNextRequest (stack->screen->display->xdisplay));
-          XRestackWindows (stack->screen->display->xdisplay,
-                           (Window *) root_children_stacked->data,
-                           root_children_stacked->len);
+          meta_stack_tracker_restack_windows (stack->screen->stack_tracker,
+                                              (Window *) root_children_stacked->data,
+                                              root_children_stacked->len);
         }
     }
   else if (root_children_stacked->len > 0)
@@ -1243,21 +1221,11 @@ stack_sync_to_xserver (MetaStack *stack)
                    * unmanaging last_window, we'll fix it up.
                    */
 
-                  XWindowChanges changes;
-
-                  changes.sibling = last_window;
-                  changes.stack_mode = Below;
-
                   meta_topic (META_DEBUG_STACK, "Placing window 0x%lx below 0x%lx\n",
                               *newp, last_window);
 
-                  meta_stack_tracker_record_lower_below (stack->screen->stack_tracker,
-                                                         *newp, last_window,
-                                                         XNextRequest (stack->screen->display->xdisplay));
-                  XConfigureWindow (stack->screen->display->xdisplay,
-                                    *newp,
-                                    CWSibling | CWStackMode,
-                                    &changes);
+                  meta_stack_tracker_lower_below (stack->screen->stack_tracker,
+                                                  *newp, last_window);
                 }
 
               last_window = *newp;
@@ -1270,17 +1238,15 @@ stack_sync_to_xserver (MetaStack *stack)
           /* Restack remaining windows */
           meta_topic (META_DEBUG_STACK, "Restacking remaining %d windows\n",
                         (int) (new_end - newp));
+
           /* We need to include an already-stacked window
            * in the restack call, so we get in the proper position
            * with respect to it.
            */
           if (newp != new_stack)
             --newp;
-          meta_stack_tracker_record_restack_windows (stack->screen->stack_tracker,
-                                                     (Window *) newp, new_end - newp,
-                                                     XNextRequest (stack->screen->display->xdisplay));
-          XRestackWindows (stack->screen->display->xdisplay,
-                           (Window *) newp, new_end - newp);
+          meta_stack_tracker_restack_windows (stack->screen->stack_tracker,
+                                              newp, new_end - newp);
         }
     }
 

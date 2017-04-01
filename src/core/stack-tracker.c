@@ -17,10 +17,11 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <config.h>
+#include "config.h"
 
 #include <string.h>
 
+#include "errors.h"
 #include "frame-private.h"
 #include "meta-compositor.h"
 #include "screen-private.h"
@@ -525,30 +526,6 @@ meta_stack_tracker_record_remove (MetaStackTracker *tracker,
 }
 
 void
-meta_stack_tracker_record_restack_windows (MetaStackTracker *tracker,
-                                           Window           *windows,
-                                           int               n_windows,
-                                           gulong            serial)
-{
-  int i;
-
-  /* XRestackWindows() isn't actually a X requests - it's broken down
-   * by XLib into a series of XConfigureWindow(StackMode=below); we
-   * mirror that here.
-   *
-   * Aside: Having a separate StackOp for this would be possible to
-   * get some extra efficiency in memory allocation and in applying
-   * the op, at the expense of a code complexity. Implementation hint
-   * for that - keep op->restack_window.n_complete, and when receiving
-   * events with intermediate serials, set n_complete rather than
-   * removing the op from the queue.
-   */
-  for (i = 0; i < n_windows - 1; i++)
-    meta_stack_tracker_record_lower_below (tracker, windows[i + 1], windows[i],
-                                           serial + i);
-}
-
-void
 meta_stack_tracker_record_raise_above (MetaStackTracker *tracker,
                                        Window            window,
                                        Window            sibling,
@@ -864,4 +841,80 @@ meta_stack_tracker_queue_sync_stack (MetaStackTracker *tracker)
                                                   stack_tracker_sync_stack_idle,
                                                   tracker, NULL);
     }
+}
+
+void
+meta_stack_tracker_lower_below (MetaStackTracker *tracker,
+                                Window            window,
+                                Window            sibling)
+{
+  MetaDisplay *display;
+  XWindowChanges changes;
+  guint changes_mask;
+  gulong serial;
+
+  display = tracker->screen->display;
+
+  meta_error_trap_push (display);
+
+  changes.sibling = sibling;
+  changes.stack_mode = changes.sibling ? Below : Above;
+  changes_mask = (changes.sibling ? CWSibling : 0) | CWStackMode;
+
+  serial = XNextRequest (display->xdisplay);
+  XConfigureWindow (display->xdisplay, window, changes_mask, &changes);
+
+  meta_error_trap_pop (tracker->screen->display);
+
+  meta_stack_tracker_record_lower_below (tracker, window, sibling, serial);
+}
+
+void
+meta_stack_tracker_lower (MetaStackTracker *tracker,
+                          Window            window)
+{
+  meta_stack_tracker_raise_above (tracker, window, None);
+}
+
+void
+meta_stack_tracker_raise_above (MetaStackTracker *tracker,
+                                Window            window,
+                                Window            sibling)
+{
+  MetaDisplay *display;
+  XWindowChanges changes;
+  guint changes_mask;
+  gulong serial;
+
+  display = tracker->screen->display;
+
+  meta_error_trap_push (display);
+
+  changes.sibling = sibling;
+  changes.stack_mode = changes.sibling ? Above : Below;
+  changes_mask = (changes.sibling ? CWSibling : 0) | CWStackMode;
+
+  serial = XNextRequest (display->xdisplay);
+  XConfigureWindow (display->xdisplay, window, changes_mask, &changes);
+
+  meta_error_trap_pop (tracker->screen->display);
+
+  meta_stack_tracker_record_raise_above (tracker, window, sibling, serial);
+}
+
+void
+meta_stack_tracker_restack_windows (MetaStackTracker *tracker,
+                                    const Window     *windows,
+                                    int               n_windows)
+{
+  int i;
+
+  /* XRestackWindows() isn't actually a X requests - it's broken down
+   * by XLib into a series of XConfigureWindow(StackMode=below); we
+   * just do the same here directly. The main disadvantage of  is that
+   * we allocate individual ops for each lower, and also that we are
+   * grabbing the libX11 lock separately for individual component.
+   */
+  for (i = 0; i < n_windows - 1; i++)
+    meta_stack_tracker_lower_below (tracker, windows[i + 1], windows[i]);
 }
