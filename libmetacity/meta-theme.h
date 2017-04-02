@@ -125,6 +125,9 @@ void           meta_theme_set_composited    (MetaTheme                   *theme,
 void           meta_theme_set_scale         (MetaTheme                   *theme,
                                              gint                         scale);
 
+void           meta_theme_set_dpi           (MetaTheme                   *theme,
+                                             gdouble                      dpi);
+
 void           meta_theme_set_titlebar_font (MetaTheme                   *theme,
                                              const PangoFontDescription  *titlebar_font);
 

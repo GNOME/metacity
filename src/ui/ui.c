@@ -114,6 +114,7 @@ notify_gtk_xft_dpi_cb (GtkSettings *settings,
   ui->dpi = get_xft_dpi (ui);
 
   meta_theme_set_scale (ui->theme, ui->scale);
+  meta_theme_set_dpi (ui->theme, ui->dpi);
 }
 
 void
@@ -823,6 +824,7 @@ load_theme (MetaUI        *ui,
 
   meta_theme_set_composited (theme, ui->composited);
   meta_theme_set_scale (theme, ui->scale);
+  meta_theme_set_dpi (theme, ui->dpi);
 
   titlebar_font = meta_prefs_get_titlebar_font ();
   meta_theme_set_titlebar_font (theme, titlebar_font);

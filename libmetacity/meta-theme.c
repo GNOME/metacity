@@ -45,6 +45,7 @@ struct _MetaTheme
 
   gboolean              composited;
   gint                  scale;
+  gdouble               dpi;
 
   PangoFontDescription *titlebar_font;
 
@@ -292,7 +293,7 @@ ensure_pango_context (MetaTheme *theme)
   options = gdk_screen_get_font_options (screen);
   pango_cairo_context_set_font_options (context, options);
 
-  dpi = gdk_screen_get_resolution (screen);
+  dpi = theme->dpi * theme->scale;
   pango_cairo_context_set_resolution (context, dpi);
 
   theme->context = context;
@@ -601,6 +602,7 @@ meta_theme_init (MetaTheme *theme)
 {
   theme->composited = TRUE;
   theme->scale = 1;
+  theme->dpi = 96.0;
 
   theme->variants = g_hash_table_new_full (g_str_hash, g_str_equal,
                                            g_free, g_object_unref);
@@ -803,6 +805,20 @@ meta_theme_set_composited (MetaTheme *theme,
   meta_theme_impl_set_composited (theme->impl, composited);
   g_hash_table_foreach (theme->variants, update_composited_func, theme);
 
+  g_hash_table_remove_all (theme->font_descs);
+  g_hash_table_remove_all (theme->title_heights);
+}
+
+void
+meta_theme_set_dpi (MetaTheme *theme,
+                    gdouble    dpi)
+{
+  if (theme->dpi == dpi)
+    return;
+
+  theme->dpi = dpi;
+
+  g_clear_object (&theme->context);
   g_hash_table_remove_all (theme->font_descs);
   g_hash_table_remove_all (theme->title_heights);
 }
