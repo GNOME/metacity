@@ -106,6 +106,17 @@ meta_theme_impl_get_composited (MetaThemeImpl *impl)
   return priv->composited;
 }
 
+void
+meta_theme_impl_set_scale (MetaThemeImpl *impl,
+                           gint           scale)
+{
+  MetaThemeImplPrivate *priv;
+
+  priv = meta_theme_impl_get_instance_private (impl);
+
+  priv->scale = scale;
+}
+
 gint
 meta_theme_impl_get_scale (MetaThemeImpl *impl)
 {

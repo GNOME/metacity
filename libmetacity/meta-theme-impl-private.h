@@ -80,6 +80,10 @@ G_GNUC_INTERNAL
 gboolean           meta_theme_impl_get_composited (MetaThemeImpl           *impl);
 
 G_GNUC_INTERNAL
+void               meta_theme_impl_set_scale      (MetaThemeImpl           *impl,
+                                                   gint                     scale);
+
+G_GNUC_INTERNAL
 gint               meta_theme_impl_get_scale      (MetaThemeImpl           *impl);
 
 G_GNUC_INTERNAL
