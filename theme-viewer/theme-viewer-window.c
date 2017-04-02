@@ -56,6 +56,9 @@ struct _ThemeViewerWindow
   const gchar      *theme_variant;
   gboolean          composited;
 
+  GtkWidget        *scale_button;
+  gint              scale;
+
   MetaFrameType     frame_type;
   MetaFrameFlags    frame_flags;
 
@@ -75,6 +78,22 @@ struct _ThemeViewerWindow
 };
 
 G_DEFINE_TYPE (ThemeViewerWindow, theme_viewer_window, GTK_TYPE_WINDOW)
+
+static gint
+get_screen_scale (void)
+{
+  GValue value = G_VALUE_INIT;
+  GdkScreen *screen;
+
+  screen = gdk_screen_get_default ();
+
+  g_value_init (&value, G_TYPE_INT);
+
+  if (gdk_screen_get_setting (screen, "gdk-window-scaling-factor", &value))
+    return g_value_get_int (&value);
+  else
+    return 1;
+}
 
 static void
 benchmark_load_time (ThemeViewerWindow *window,
@@ -301,11 +320,15 @@ get_icon (gint size)
 static void
 get_client_width_and_height (GtkWidget         *widget,
                              ThemeViewerWindow *window,
+                             gint               screen_scale,
                              gint              *width,
                              gint              *height)
 {
   *width = gtk_widget_get_allocated_width (widget) - PADDING * 2;
   *height = gtk_widget_get_allocated_height (widget) - PADDING * 2;
+
+  *width /= 1.0 / screen_scale;
+  *height /= 1.0 / screen_scale;
 
   *width -= window->borders.total.left + window->borders.total.right;
   *height -= window->borders.total.top + window->borders.total.bottom;
@@ -323,6 +346,7 @@ update_button_state (MetaButtonType type,
   GdkDevice *device;
   gint x;
   gint y;
+  gint screen_scale;
 
   window = THEME_VIEWER_WINDOW (user_data);
   state = META_BUTTON_STATE_NORMAL;
@@ -336,6 +360,10 @@ update_button_state (MetaButtonType type,
 
   x -= PADDING;
   y -= PADDING;
+
+  screen_scale = get_screen_scale ();
+  x /= 1.0 / screen_scale;
+  y /= 1.0 / screen_scale;
 
   if (x >= rect.x && x < (rect.x + rect.width) &&
       y >= rect.y && y < (rect.y + rect.height))
@@ -662,6 +690,7 @@ theme_combo_box_changed_cb (GtkComboBox       *combo_box,
 
   meta_theme_load (window->theme, theme, NULL);
   meta_theme_set_composited (window->theme, window->composited);
+  meta_theme_set_scale (window->theme, window->scale);
 
   update_frame_flags (window);
   update_button_layout (window);
@@ -700,6 +729,7 @@ theme_box_draw_cb (GtkWidget         *widget,
                    cairo_t           *cr,
                    ThemeViewerWindow *window)
 {
+  gint screen_scale;
   gint client_width;
   gint client_height;
 
@@ -710,7 +740,9 @@ theme_box_draw_cb (GtkWidget         *widget,
   cairo_set_operator (cr, CAIRO_OPERATOR_OVER);
   theme_box_draw_grid (widget, cr);
 
-  get_client_width_and_height (widget, window, &client_width, &client_height);
+  screen_scale = get_screen_scale ();
+  get_client_width_and_height (widget, window, screen_scale,
+                               &client_width, &client_height);
 
   if (!window->mini_icon)
     window->mini_icon = get_icon (MINI_ICON_SIZE);
@@ -719,11 +751,17 @@ theme_box_draw_cb (GtkWidget         *widget,
     window->icon = get_icon (ICON_SIZE);
 
   cairo_translate (cr, PADDING, PADDING);
+
+  cairo_save (cr);
+  cairo_scale (cr, 1.0 / screen_scale, 1.0 / screen_scale);
+
   meta_theme_draw_frame (window->theme, window->theme_variant, cr,
                          window->frame_type, window->frame_flags,
                          client_width, client_height, "Metacity Theme Viewer",
                          update_button_state, window,
                          window->mini_icon, window->icon);
+
+  cairo_restore (cr);
 
   return TRUE;
 }
@@ -827,6 +865,26 @@ composited_state_set_cb (GtkSwitch         *widget,
 }
 
 static void
+scale_changed_cb (GtkSpinButton     *spin_button,
+                  ThemeViewerWindow *window)
+{
+  gint scale;
+
+  scale = (gint) gtk_spin_button_get_value (spin_button);
+
+  if (window->scale == scale)
+    return;
+
+  window->scale = scale;
+
+  meta_theme_set_scale (window->theme, scale);
+
+  update_frame_borders (window);
+
+  gtk_widget_queue_draw (window->theme_box);
+}
+
+static void
 notebook_switch_page_cb (GtkNotebook       *notebook,
                          GtkWidget         *page,
                          guint              page_num,
@@ -897,6 +955,9 @@ theme_viewer_window_class_init (ThemeViewerWindowClass *window_class)
   gtk_widget_class_bind_template_callback (widget_class, frame_type_combo_box_changed_cb);
   gtk_widget_class_bind_template_callback (widget_class, composited_state_set_cb);
 
+  gtk_widget_class_bind_template_child (widget_class, ThemeViewerWindow, scale_button);
+  gtk_widget_class_bind_template_callback (widget_class, scale_changed_cb);
+
   gtk_widget_class_bind_template_callback (widget_class, notebook_switch_page_cb);
 
   gtk_widget_class_bind_template_child (widget_class, ThemeViewerWindow, benchmark_frame);
@@ -912,11 +973,14 @@ static void
 theme_viewer_window_init (ThemeViewerWindow *window)
 {
   window->composited = TRUE;
+  window->scale = get_screen_scale ();
 
   gtk_widget_init_template (GTK_WIDGET (window));
   gtk_window_set_titlebar (GTK_WINDOW (window), window->header_bar);
 
   gtk_widget_add_events (window->theme_box, GDK_POINTER_MOTION_MASK);
+
+  gtk_spin_button_set_value (GTK_SPIN_BUTTON (window->scale_button), window->scale);
 
   type_combo_box_changed_cb (GTK_COMBO_BOX (window->type_combo_box), window);
 

@@ -2,6 +2,68 @@
 <!-- Generated with glade 3.20.0 -->
 <interface domain="metacity">
   <requires lib="gtk+" version="3.20"/>
+  <object class="GtkHeaderBar" id="header_bar">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="show_close_button">True</property>
+    <child type="title">
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="spacing">10</property>
+        <child>
+          <object class="GtkComboBoxText" id="type_combo_box">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="active">0</property>
+            <items>
+              <item>GTK+</item>
+              <item>Metacity</item>
+            </items>
+            <signal name="changed" handler="type_combo_box_changed_cb" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkComboBoxText" id="theme_combo_box">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <signal name="changed" handler="theme_combo_box_changed_cb" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="reload_button">
+            <property name="label" translatable="yes">Reload</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="reload_button_clicked_cb" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkAdjustment" id="scale_adjustment">
+    <property name="lower">1</property>
+    <property name="upper">4</property>
+    <property name="value">1</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+  </object>
   <template class="ThemeViewerWindow" parent="GtkWindow">
     <property name="can_focus">False</property>
     <property name="default_width">1024</property>
@@ -305,6 +367,46 @@
                         <property name="position">4</property>
                       </packing>
                     </child>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">3</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="label" translatable="yes">Scale:</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkSpinButton" id="scale_button">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="adjustment">scale_adjustment</property>
+                            <property name="value">1</property>
+                            <signal name="value-changed" handler="scale_changed_cb" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">5</property>
+                      </packing>
+                    </child>
                   </object>
                 </child>
               </object>
@@ -520,59 +622,4 @@
       <placeholder/>
     </child>
   </template>
-  <object class="GtkHeaderBar" id="header_bar">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="show_close_button">True</property>
-    <child type="title">
-      <object class="GtkBox">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="spacing">10</property>
-        <child>
-          <object class="GtkComboBoxText" id="type_combo_box">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="active">0</property>
-            <items>
-              <item>GTK+</item>
-              <item>Metacity</item>
-            </items>
-            <signal name="changed" handler="type_combo_box_changed_cb" swapped="no"/>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkComboBoxText" id="theme_combo_box">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <signal name="changed" handler="theme_combo_box_changed_cb" swapped="no"/>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="reload_button">
-            <property name="label" translatable="yes">Reload</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <signal name="clicked" handler="reload_button_clicked_cb" swapped="no"/>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">2</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-  </object>
 </interface>
