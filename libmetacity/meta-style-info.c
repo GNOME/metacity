@@ -28,7 +28,7 @@ struct _MetaStyleInfo
   gchar           *gtk_theme_name;
   gchar           *gtk_theme_variant;
   gboolean         composited;
-  gint             window_scale;
+  gint             scale;
 
   GtkCssProvider  *theme_provider;
   GtkCssProvider  *user_provider;
@@ -43,7 +43,7 @@ enum
   PROP_GTK_THEME_NAME,
   PROP_GTK_THEME_VARIANT,
   PROP_COMPOSITED,
-  PROP_WINDOW_SCALE,
+  PROP_SCALE,
 
   LAST_PROP
 };
@@ -115,7 +115,7 @@ create_style_context (MetaStyleInfo   *style_info,
   context = gtk_style_context_new ();
   gtk_style_context_set_path (context, path);
   gtk_style_context_set_parent (context, parent);
-  gtk_style_context_set_scale (context, style_info->window_scale);
+  gtk_style_context_set_scale (context, style_info->scale);
   gtk_widget_path_unref (path);
 
   provider = GTK_STYLE_PROVIDER (style_info->theme_provider);
@@ -257,8 +257,8 @@ meta_style_info_set_property (GObject      *object,
         style_info->composited = g_value_get_boolean (value);
         break;
 
-      case PROP_WINDOW_SCALE:
-        style_info->window_scale = g_value_get_int (value);
+      case PROP_SCALE:
+        style_info->scale = g_value_get_int (value);
         break;
 
       default:
@@ -303,10 +303,10 @@ meta_style_info_class_init (MetaStyleInfoClass *style_info_class)
                           G_PARAM_CONSTRUCT_ONLY | G_PARAM_WRITABLE |
                           G_PARAM_STATIC_STRINGS);
 
-  properties[PROP_WINDOW_SCALE] =
-    g_param_spec_int ("window-scale",
-                      "Window Scaling Factor",
-                      "Window Scaling Factor",
+  properties[PROP_SCALE] =
+    g_param_spec_int ("scale",
+                      "Scale",
+                      "Scale",
                       1, G_MAXINT, 1,
                       G_PARAM_CONSTRUCT_ONLY | G_PARAM_WRITABLE |
                       G_PARAM_STATIC_STRINGS);
@@ -323,13 +323,13 @@ MetaStyleInfo *
 meta_style_info_new (const gchar *gtk_theme_name,
                      const gchar *gtk_theme_variant,
                      gboolean     composited,
-                     gint         window_scale)
+                     gint         scale)
 {
   return g_object_new (META_TYPE_STYLE_INFO,
                        "gtk-theme-name", gtk_theme_name,
                        "gtk-theme-variant", gtk_theme_variant,
                        "composited", composited,
-                       "window-scale", window_scale,
+                       "scale", scale,
                        NULL);
 }
 
@@ -368,6 +368,21 @@ meta_style_info_set_composited (MetaStyleInfo *style_info,
           add_toplevel_class (style, "solid-csd");
         }
     }
+}
+
+void
+meta_style_info_set_scale (MetaStyleInfo *style_info,
+                           gint           scale)
+{
+  gint i;
+
+  if (style_info->scale == scale)
+    return;
+
+  style_info->scale = scale;
+
+  for (i = 0; i < META_STYLE_ELEMENT_LAST; i++)
+    gtk_style_context_set_scale (style_info->styles[i], scale);
 }
 
 void

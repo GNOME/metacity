@@ -41,7 +41,7 @@ G_GNUC_INTERNAL
 MetaStyleInfo   *meta_style_info_new            (const gchar      *gtk_theme_name,
                                                  const gchar      *gtk_theme_variant,
                                                  gboolean          composited,
-                                                 gint              window_scale);
+                                                 gint              scale);
 
 G_GNUC_INTERNAL
 GtkStyleContext *meta_style_info_get_style      (MetaStyleInfo    *style_info,
@@ -50,6 +50,10 @@ GtkStyleContext *meta_style_info_get_style      (MetaStyleInfo    *style_info,
 G_GNUC_INTERNAL
 void             meta_style_info_set_composited (MetaStyleInfo    *style_info,
                                                  gboolean          composited);
+
+G_GNUC_INTERNAL
+void             meta_style_info_set_scale      (MetaStyleInfo    *style_info,
+                                                 gint              scale);
 
 G_GNUC_INTERNAL
 void             meta_style_info_set_flags      (MetaStyleInfo    *style_info,
