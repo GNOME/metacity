@@ -286,7 +286,7 @@ strip_buttons (MetaButtonLayout *layout,
       else if (strip_button (layout->right_buttons, layout->n_right_buttons,
                              types[i]))
         {
-          *n_left -= 1;
+          *n_right -= 1;
           return TRUE;
         }
     }
