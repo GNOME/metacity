@@ -35,13 +35,18 @@ struct _MetaTheme
   MetaThemeType         type;
   MetaThemeImpl        *impl;
 
+  gulong                gtk_theme_name_id;
+  gulong                gtk_xft_antialias_id;
+  gulong                gtk_xft_hinting_id;
+  gulong                gtk_xft_hintstyle_id;
+  gulong                gtk_xft_rgba_id;
+
   MetaButtonLayout     *button_layout;
 
   gboolean              composited;
 
   PangoFontDescription *titlebar_font;
 
-  gulong                gtk_theme_name_id;
   gchar                *gtk_theme_name;
   GHashTable           *variants;
 
@@ -361,6 +366,14 @@ create_title_layout (MetaTheme      *theme,
 }
 
 static void
+update_font_options (MetaTheme *theme)
+{
+  g_clear_object (&theme->context);
+  g_hash_table_remove_all (theme->font_descs);
+  g_hash_table_remove_all (theme->title_heights);
+}
+
+static void
 notify_gtk_theme_name_cb (GtkSettings *settings,
                           GParamSpec  *pspec,
                           MetaTheme   *theme)
@@ -372,14 +385,48 @@ notify_gtk_theme_name_cb (GtkSettings *settings,
 }
 
 static void
+notify_gtk_xft_antialias_cb (GtkSettings *settings,
+                             GParamSpec  *pspec,
+                             MetaTheme   *theme)
+{
+  update_font_options (theme);
+}
+
+static void
+notify_gtk_xft_hinting_cb (GtkSettings *settings,
+                           GParamSpec  *pspec,
+                           MetaTheme   *theme)
+{
+  update_font_options (theme);
+}
+
+static void
+notify_gtk_xft_hintstyle_cb (GtkSettings *settings,
+                             GParamSpec  *pspec,
+                             MetaTheme   *theme)
+{
+  update_font_options (theme);
+}
+
+static void
+notify_gtk_xft_rgba_cb (GtkSettings *settings,
+                        GParamSpec  *pspec,
+                        MetaTheme   *theme)
+{
+  update_font_options (theme);
+}
+
+static void
 meta_theme_constructed (GObject *object)
 {
   MetaTheme *theme;
+  GtkSettings *settings;
   const gchar *button_layout;
 
   G_OBJECT_CLASS (meta_theme_parent_class)->constructed (object);
 
   theme = META_THEME (object);
+  settings = gtk_settings_get_default ();
 
   if (theme->type == META_THEME_TYPE_GTK)
     theme->impl = g_object_new (META_TYPE_THEME_GTK, NULL);
@@ -392,25 +439,70 @@ meta_theme_constructed (GObject *object)
 
   button_layout = "appmenu:minimize,maximize,close";
   meta_theme_set_button_layout (theme, button_layout, FALSE);
+
+  if (theme->type == META_THEME_TYPE_METACITY)
+    {
+      theme->gtk_theme_name_id =
+        g_signal_connect (settings, "notify::gtk-theme-name",
+                          G_CALLBACK (notify_gtk_theme_name_cb), theme);
+    }
+
+  theme->gtk_xft_antialias_id =
+    g_signal_connect (settings, "notify::gtk-xft-antialias",
+                      G_CALLBACK (notify_gtk_xft_antialias_cb), theme);
+
+  theme->gtk_xft_hinting_id =
+    g_signal_connect (settings, "notify::gtk-xft-hinting",
+                      G_CALLBACK (notify_gtk_xft_hinting_cb), theme);
+
+  theme->gtk_xft_hintstyle_id =
+    g_signal_connect (settings, "notify::gtk-xft-hintstyle",
+                      G_CALLBACK (notify_gtk_xft_hintstyle_cb), theme);
+
+  theme->gtk_xft_rgba_id =
+    g_signal_connect (settings, "notify::gtk-xft-rgba",
+                      G_CALLBACK (notify_gtk_xft_rgba_cb), theme);
 }
 
 static void
 meta_theme_dispose (GObject *object)
 {
   MetaTheme *theme;
+  GtkSettings *settings;
 
   theme = META_THEME (object);
+  settings = gtk_settings_get_default ();
 
   g_clear_object (&theme->impl);
 
   if (theme->gtk_theme_name_id > 0)
     {
-      GtkSettings *settings;
-
-      settings = gtk_settings_get_default ();
-
       g_signal_handler_disconnect (settings, theme->gtk_theme_name_id);
       theme->gtk_theme_name_id = 0;
+    }
+
+  if (theme->gtk_xft_antialias_id > 0)
+    {
+      g_signal_handler_disconnect (settings, theme->gtk_xft_antialias_id);
+      theme->gtk_xft_antialias_id = 0;
+    }
+
+  if (theme->gtk_xft_hinting_id > 0)
+    {
+      g_signal_handler_disconnect (settings, theme->gtk_xft_hinting_id);
+      theme->gtk_xft_hinting_id = 0;
+    }
+
+  if (theme->gtk_xft_hintstyle_id > 0)
+    {
+      g_signal_handler_disconnect (settings, theme->gtk_xft_hintstyle_id);
+      theme->gtk_xft_hintstyle_id = 0;
+    }
+
+  if (theme->gtk_xft_rgba_id > 0)
+    {
+      g_signal_handler_disconnect (settings, theme->gtk_xft_rgba_id);
+      theme->gtk_xft_rgba_id = 0;
     }
 
   g_clear_pointer (&theme->variants, g_hash_table_destroy);
@@ -547,13 +639,6 @@ meta_theme_load (MetaTheme    *theme,
 
       g_free (theme->gtk_theme_name);
       g_object_get (settings, "gtk-theme-name", &theme->gtk_theme_name, NULL);
-
-      if (theme->gtk_theme_name_id == 0)
-        {
-          theme->gtk_theme_name_id =
-            g_signal_connect (settings, "notify::gtk-theme-name",
-                              G_CALLBACK (notify_gtk_theme_name_cb), theme);
-        }
     }
   else
     {
