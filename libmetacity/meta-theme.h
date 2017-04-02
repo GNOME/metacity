@@ -122,6 +122,9 @@ MetaButton   **meta_theme_get_buttons       (MetaTheme                   *theme)
 void           meta_theme_set_composited    (MetaTheme                   *theme,
                                              gboolean                     composited);
 
+void           meta_theme_set_scale         (MetaTheme                   *theme,
+                                             gint                         scale);
+
 void           meta_theme_set_titlebar_font (MetaTheme                   *theme,
                                              const PangoFontDescription  *titlebar_font);
 

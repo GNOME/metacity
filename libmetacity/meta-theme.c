@@ -44,6 +44,7 @@ struct _MetaTheme
   MetaButtonLayout     *button_layout;
 
   gboolean              composited;
+  gint                  scale;
 
   PangoFontDescription *titlebar_font;
 
@@ -83,6 +84,20 @@ update_composited_func (gpointer key,
   meta_style_info_set_composited (style_info, theme->composited);
 }
 
+static void
+update_scale_func (gpointer key,
+                   gpointer value,
+                   gpointer user_data)
+{
+  MetaTheme *theme;
+  MetaStyleInfo *style_info;
+
+  theme = META_THEME (user_data);
+  style_info = META_STYLE_INFO (value);
+
+  meta_style_info_set_scale (style_info, theme->scale);
+}
+
 static MetaStyleInfo *
 get_style_info (MetaTheme   *theme,
                 const gchar *variant)
@@ -98,11 +113,8 @@ get_style_info (MetaTheme   *theme,
 
   if (style_info == NULL)
     {
-      gint scale;
-
-      scale = meta_theme_impl_get_scale (theme->impl);
       style_info = meta_style_info_new (theme->gtk_theme_name, variant,
-                                        theme->composited, scale);
+                                        theme->composited, theme->scale);
 
       g_hash_table_insert (theme->variants, g_strdup (key), style_info);
     }
@@ -209,14 +221,12 @@ font_desc_apply_scale (PangoFontDescription *font_desc,
 {
   gint old_size;
   MetaFrameStyle *style;
-  gdouble scale;
   gint new_size;
 
   old_size = pango_font_description_get_size (font_desc);
   style = get_frame_style (theme, type, flags);
-  scale = meta_theme_impl_get_scale (theme->impl);
 
-  new_size = MAX (old_size * (style->layout->title_scale / scale), 1);
+  new_size = MAX (old_size * (style->layout->title_scale / theme->scale), 1);
 
   pango_font_description_set_size (font_desc, new_size);
 }
@@ -315,7 +325,6 @@ get_title_height (MetaTheme      *theme,
       PangoFontMetrics *metrics;
       gint ascent;
       gint descent;
-      gint scale;
 
       ensure_pango_context (theme);
 
@@ -327,9 +336,7 @@ get_title_height (MetaTheme      *theme,
       pango_font_metrics_unref (metrics);
 
       title_height = PANGO_PIXELS (ascent + descent);
-      scale = meta_theme_impl_get_scale (theme->impl);
-
-      title_height *= scale;
+      title_height *= theme->scale;
 
       height = GINT_TO_POINTER (title_height);
       g_hash_table_insert (theme->title_heights, size, height);
@@ -436,6 +443,7 @@ meta_theme_constructed (GObject *object)
     g_assert_not_reached ();
 
   meta_theme_impl_set_composited (theme->impl, theme->composited);
+  meta_theme_impl_set_scale (theme->impl, theme->scale);
 
   button_layout = "appmenu:minimize,maximize,close";
   meta_theme_set_button_layout (theme, button_layout, FALSE);
@@ -592,6 +600,7 @@ static void
 meta_theme_init (MetaTheme *theme)
 {
   theme->composited = TRUE;
+  theme->scale = 1;
 
   theme->variants = g_hash_table_new_full (g_str_hash, g_str_equal,
                                            g_free, g_object_unref);
@@ -794,6 +803,23 @@ meta_theme_set_composited (MetaTheme *theme,
   meta_theme_impl_set_composited (theme->impl, composited);
   g_hash_table_foreach (theme->variants, update_composited_func, theme);
 
+  g_hash_table_remove_all (theme->font_descs);
+  g_hash_table_remove_all (theme->title_heights);
+}
+
+void
+meta_theme_set_scale (MetaTheme *theme,
+                      gint       scale)
+{
+  if (theme->scale == scale)
+    return;
+
+  theme->scale = scale;
+
+  meta_theme_impl_set_scale (theme->impl, scale);
+  g_hash_table_foreach (theme->variants, update_scale_func, theme);
+
+  g_clear_object (&theme->context);
   g_hash_table_remove_all (theme->font_descs);
   g_hash_table_remove_all (theme->title_heights);
 }

@@ -120,23 +120,11 @@ meta_theme_impl_set_scale (MetaThemeImpl *impl,
 gint
 meta_theme_impl_get_scale (MetaThemeImpl *impl)
 {
-  GValue value = G_VALUE_INIT;
   MetaThemeImplPrivate *priv;
-  GdkScreen *screen;
 
   priv = meta_theme_impl_get_instance_private (impl);
 
-  if (priv->scale != 0)
-    return priv->scale;
-
-  screen = gdk_screen_get_default ();
-
-  g_value_init (&value, G_TYPE_INT);
-
-  if (gdk_screen_get_setting (screen, "gdk-window-scaling-factor", &value))
-    return g_value_get_int (&value);
-  else
-    return 1;
+  return priv->scale;
 }
 
 void
