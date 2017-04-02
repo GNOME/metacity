@@ -14,27 +14,27 @@
 # Fábio Nogueira <fnogueira@gnome.org>, 2009.
 # Krix Apolinário <krixapolinario@gmail.com> 2011.
 # Antonio Fernandes C. Neto <fernandesn@gnome.org> 2012.
-# Rafael Fontenelle <rafaelff@gnome.org>, 2013, 2014, 2016.
+# Rafael Fontenelle <rafaelff@gnome.org>, 2013, 2014, 2016, 2017.
 # Enrico Nicoletto <liverig@gmail.com>, 2014, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-12-15 17:42+0000\n"
-"PO-Revision-Date: 2017-02-06 10:23-0200\n"
-"Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=metaci"
+"ty&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2017-04-02 16:23+0000\n"
+"PO-Revision-Date: 2017-04-02 18:05-0200\n"
+"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Virtaal 1.0.0-beta1\n"
 "X-Project-Style: gnome\n"
 
 #. Translators: This is the title used on dialog boxes
-#: data/applications/metacity.desktop.in:4 src/core/util.c:535
+#: data/applications/metacity.desktop.in:4 src/core/util.c:435
 msgid "Metacity"
 msgstr "Metacity"
 
@@ -342,93 +342,97 @@ msgstr ""
 "Tema Metacity: os dados são carregados a partir de metacity-theme-x.xml e do "
 "CSS. Ao usar este tipo de tema, você DEVE fornecer um nome de tema válido."
 
-#: data/ui/theme-viewer-window.ui:41
+#: data/ui/theme-viewer-window.ui:45
+msgid "Reload"
+msgstr "Recarregar"
+
+#: data/ui/theme-viewer-window.ui:103
 msgid "Dark Theme:"
 msgstr "Tema escuro:"
 
-#: data/ui/theme-viewer-window.ui:80
+#: data/ui/theme-viewer-window.ui:142
 msgid "Frame Type:"
 msgstr "Tipo de quadro:"
 
-#: data/ui/theme-viewer-window.ui:94
+#: data/ui/theme-viewer-window.ui:156
 msgid "Normal"
 msgstr "Normal"
 
-#: data/ui/theme-viewer-window.ui:95
+#: data/ui/theme-viewer-window.ui:157
 msgid "Dialog"
 msgstr "Diálogo"
 
-#: data/ui/theme-viewer-window.ui:96
+#: data/ui/theme-viewer-window.ui:158
 msgid "Modal Dialog"
 msgstr "Diálogo modal"
 
-#: data/ui/theme-viewer-window.ui:97
+#: data/ui/theme-viewer-window.ui:159
 msgid "Utility"
 msgstr "Utilitário"
 
-#: data/ui/theme-viewer-window.ui:98
+#: data/ui/theme-viewer-window.ui:160
 msgid "Menu"
 msgstr "Menu"
 
-#: data/ui/theme-viewer-window.ui:99
+#: data/ui/theme-viewer-window.ui:161
 msgid "Border"
 msgstr "Borda"
 
-#: data/ui/theme-viewer-window.ui:100
+#: data/ui/theme-viewer-window.ui:162
 msgid "Attached"
 msgstr "Anexado"
 
-#: data/ui/theme-viewer-window.ui:128
+#: data/ui/theme-viewer-window.ui:190
 msgid "Frame Flags:"
 msgstr "Sinalizadores do quadro:"
 
-#: data/ui/theme-viewer-window.ui:143
+#: data/ui/theme-viewer-window.ui:205
 msgid "Has Focus"
 msgstr "Tem foco"
 
-#: data/ui/theme-viewer-window.ui:158
+#: data/ui/theme-viewer-window.ui:220
 msgid "Shaded"
 msgstr "Sombreado"
 
-#: data/ui/theme-viewer-window.ui:172
+#: data/ui/theme-viewer-window.ui:234
 msgid "Maximized"
 msgstr "Maximizada"
 
-#: data/ui/theme-viewer-window.ui:186
+#: data/ui/theme-viewer-window.ui:248
 msgid "Fullscreen"
 msgstr "Tela cheia"
 
-#: data/ui/theme-viewer-window.ui:200
+#: data/ui/theme-viewer-window.ui:262
 msgid "Tiled"
 msgstr "Lado a lado"
 
-#: data/ui/theme-viewer-window.ui:240
+#: data/ui/theme-viewer-window.ui:302
 msgid "Button Layout:"
 msgstr "Disposição de botões:"
 
-#: data/ui/theme-viewer-window.ui:279
+#: data/ui/theme-viewer-window.ui:341
 msgid "Composited:"
 msgstr "Composto:"
 
-#: data/ui/theme-viewer-window.ui:339 theme-viewer/theme-viewer-window.c:622
+#: data/ui/theme-viewer-window.ui:381
+msgid "Scale:"
+msgstr "Escala:"
+
+#: data/ui/theme-viewer-window.ui:441 theme-viewer/theme-viewer-window.c:650
 msgid "Choose Theme"
 msgstr "Escolher tema"
 
-#: data/ui/theme-viewer-window.ui:379
+#: data/ui/theme-viewer-window.ui:481
 msgid "Preview"
 msgstr "Visualizar"
 
-#: data/ui/theme-viewer-window.ui:468 theme-viewer/theme-viewer-window.c:250
+#: data/ui/theme-viewer-window.ui:570 theme-viewer/theme-viewer-window.c:269
 msgid "Run"
 msgstr "Executar"
 
-#: data/ui/theme-viewer-window.ui:490
+#: data/ui/theme-viewer-window.ui:592
 msgid "Benchmark"
 msgstr "Benchmark"
-
-#: data/ui/theme-viewer-window.ui:563
-msgid "Reload"
-msgstr "Recarregar"
 
 #: libmetacity/meta-color-spec.c:246
 #, c-format
@@ -573,23 +577,23 @@ msgstr ""
 msgid "Coordinate expression results in division by zero"
 msgstr "A expressão coordenada resulta na divisão por zero"
 
-#: libmetacity/meta-draw-spec.c:774
+#: libmetacity/meta-draw-spec.c:775
 #, c-format
 msgid ""
 "Coordinate expression has an operator \"%s\" where an operand was expected"
 msgstr ""
 "A expressão coordenada tem o operador \"%s\" onde era esperado um operando"
 
-#: libmetacity/meta-draw-spec.c:783
+#: libmetacity/meta-draw-spec.c:784
 msgid "Coordinate expression had an operand where an operator was expected"
 msgstr "A expressão coordenada tinha um operando onde era esperado um operador"
 
-#: libmetacity/meta-draw-spec.c:791
+#: libmetacity/meta-draw-spec.c:792
 msgid "Coordinate expression ended with an operator instead of an operand"
 msgstr ""
 "A expressão coordenada terminou com um operador, em vez de com um operando"
 
-#: libmetacity/meta-draw-spec.c:801
+#: libmetacity/meta-draw-spec.c:802
 #, c-format
 msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
@@ -598,28 +602,28 @@ msgstr ""
 "A expressão coordenada tem o operador \"%c\" após o operador \"%c\" sem "
 "nenhum operando entre eles"
 
-#: libmetacity/meta-draw-spec.c:933
+#: libmetacity/meta-draw-spec.c:934
 msgid "Coordinate expression parser overflowed its buffer."
 msgstr "O analisador de expressão coordenada estourou o buffer."
 
-#: libmetacity/meta-draw-spec.c:961
+#: libmetacity/meta-draw-spec.c:964
 msgid "Coordinate expression had a close parenthesis with no open parenthesis"
 msgstr ""
 "A expressão coordenada tinha um parêntese de fechamento sem um parêntese de "
 "abertura"
 
-#: libmetacity/meta-draw-spec.c:1029
+#: libmetacity/meta-draw-spec.c:1037
 msgid "Coordinate expression had an open parenthesis with no close parenthesis"
 msgstr ""
 "A expressão coordenada tinha um parêntese de abertura sem um parêntese de "
 "fechamento"
 
-#: libmetacity/meta-draw-spec.c:1039
+#: libmetacity/meta-draw-spec.c:1047
 msgid "Coordinate expression doesn't seem to have any operators or operands"
 msgstr "Aparentemente não há operadores nem operandos na expressão coordenada"
 
-#: libmetacity/meta-draw-spec.c:1231 libmetacity/meta-draw-spec.c:1251
-#: libmetacity/meta-draw-spec.c:1271
+#: libmetacity/meta-draw-spec.c:1239 libmetacity/meta-draw-spec.c:1259
+#: libmetacity/meta-draw-spec.c:1279
 #, c-format
 msgid "Theme contained an expression that resulted in an error: %s"
 msgstr "O tema continha uma expressão que resultou em um erro: %s"
@@ -659,6 +663,10 @@ msgstr "A taxa de proporção %g do botão não é razoável"
 msgid "Frame geometry does not specify size of buttons"
 msgstr "A geometria do quadro não especifica o tamanho dos botões"
 
+#. Translators: This error occurs when a <frame> tag is missing
+#. * in theme XML.  The "<frame ...>" is intended as a noun phrase,
+#. * and the "missing" qualifies it.  You should translate "whatever".
+#.
 #: libmetacity/meta-frame-style.c:144 libmetacity/meta-frame-style.c:469
 #, c-format
 msgid "Missing <frame state='%s' resize='%s' focus='%s' style='whatever' />"
@@ -674,7 +682,7 @@ msgstr ""
 "<button function='%s' state='%s' draw_ops='whatever'/> deve ser especificado "
 "para este estilo de quadro"
 
-#: libmetacity/meta-gradient-spec.c:173
+#: libmetacity/meta-gradient-spec.c:182
 msgid "Gradients should have at least two colors"
 msgstr "Os degradês devem ter pelo menos duas cores"
 
@@ -1093,6 +1101,10 @@ msgstr "O elemento <%s> não é permitido em um elemento de operação de desenh
 msgid "Element <%s> is not allowed inside a <%s> element"
 msgstr "O elemento <%s> não é permitido em um elemento <%s>"
 
+#. Translators: This error means that a necessary XML tag (whose name
+#. * is given in angle brackets) was not found in a given theme (whose
+#. * name is given second, in quotation marks).
+#.
 #: libmetacity/meta-theme-metacity.c:3834
 #: libmetacity/meta-theme-metacity.c:3842
 #: libmetacity/meta-theme-metacity.c:3850
@@ -1138,14 +1150,9 @@ msgstr "Nenhum texto é permitido no elemento <%s>"
 msgid "Failed to find a valid file for theme '%s'"
 msgstr "Falha ao localizar um arquivo válido para o tema \"%s\""
 
-#: src/core/bell.c:296
+#: src/core/bell.c:290
 msgid "Bell event"
 msgstr "Campainha de evento"
-
-#: src/core/core.c:217
-#, c-format
-msgid "Unknown window information request: %d"
-msgstr "Informação solicitada de janela desconhecida: %d"
 
 #. Translators: %s is a window title
 #: src/core/delete.c:94
@@ -1169,26 +1176,7 @@ msgstr "_Esperar"
 msgid "_Force Quit"
 msgstr "_Forçar sair"
 
-#: src/core/delete.c:206
-#, c-format
-msgid "Failed to get hostname: %s\n"
-msgstr "Falha ao obter o nome da máquina: %s\n"
-
-#: src/core/display.c:324
-#, c-format
-msgid "Failed to open X Window System display '%s'\n"
-msgstr "Falha ao abrir a exibição \"%s\" do X Window System\n"
-
-#: src/core/keybindings.c:691
-#, c-format
-msgid ""
-"Some other program is already using the key %s with modifiers %x as a "
-"binding\n"
-msgstr ""
-"Algum outro programa já está usando a tecla %s com modificadores %x como uma "
-"tecla de atalho\n"
-
-#: src/core/main.c:109
+#: src/core/main.c:101
 #, c-format
 msgid ""
 "metacity %s\n"
@@ -1204,173 +1192,73 @@ msgstr ""
 "Não há NENHUMA garantia; nem mesmo para o COMÉRCIO ou ADEQUAÇÃO\n"
 "PARA UM PROPÓSITO PARTICULAR.\n"
 
-#: src/core/main.c:225
+#: src/core/main.c:215
 msgid "Disable connection to session manager"
 msgstr "Desabilitar a conexão com o gerenciador de sessões"
 
-#: src/core/main.c:231
+#: src/core/main.c:221
 msgid "Replace the running window manager with Metacity"
 msgstr "Substituir o gerenciador de janelas em execução pelo Metacity"
 
-#: src/core/main.c:237
+#: src/core/main.c:227
 msgid "Specify session management ID"
 msgstr "Especificar o ID do gerenciador de sessões"
 
-#: src/core/main.c:242
+#: src/core/main.c:232
 msgid "X Display to use"
 msgstr "Exibição do X a ser utilizada"
 
-#: src/core/main.c:248
+#: src/core/main.c:238
 msgid "Initialize session from savefile"
 msgstr "Inicializar a sessão a partir do arquivo salvo"
 
-#: src/core/main.c:254
+#: src/core/main.c:244
 msgid "Print version"
 msgstr "Versão impressa"
 
-#: src/core/main.c:260
+#: src/core/main.c:250
 msgid "Make X calls synchronous"
 msgstr "Fazer chamadas X em modo síncrono"
 
-#: src/core/main.c:266
+#: src/core/main.c:256
 msgid "Turn compositing on"
 msgstr "Ativar composição"
 
-#: src/core/main.c:272
+#: src/core/main.c:262
 msgid "Turn compositing off"
 msgstr "Desativar composição"
 
-#: src/core/main.c:278
+#: src/core/main.c:268
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr ""
 "Não torna janelas em tela-cheia que estão maximizadas e não tem decorações"
 
-#: src/core/main.c:499
-#, c-format
-msgid "Failed to restart: %s\n"
-msgstr "Falha ao reiniciar: %s\n"
-
-#: src/core/prefs.c:1043
-msgid ""
-"Workarounds for broken applications disabled. Some applications may not "
-"behave properly.\n"
-msgstr ""
-"As alternativas para aplicativos quebrados estão desabilitadas. É possível "
-"que alguns aplicativos não funcionem de maneira adequada.\n"
-
-#: src/core/prefs.c:1120
-#, c-format
-msgid "Could not parse font description \"%s\" from GSettings key %s\n"
-msgstr ""
-"Não foi possível analisar a descrição da fonte \"%s\" a partir da chave "
-"GSettings %s\n"
-
-#: src/core/prefs.c:1182
-#, c-format
-msgid ""
-"\"%s\" found in configuration database is not a valid value for mouse button "
-"modifier\n"
-msgstr ""
-"\"%s\" localizado no banco de dados de configurações não é um valor válido "
-"para o modificador de botão do mouse\n"
-
-#: src/core/prefs.c:1432
-#, c-format
-msgid ""
-"\"%s\" found in configuration database is not a valid value for keybinding "
-"\"%s\"\n"
-msgstr ""
-"\"%s\" localizado no banco de dados de configurações não é um valor válido "
-"para a tecla de atalho \"%s\"\n"
-
-#: src/core/prefs.c:1534
+#: src/core/prefs.c:1524
 #, c-format
 msgid "Workspace %d"
 msgstr "Espaço de trabalho %d"
 
-#: src/core/prefs.c:1791
-#, c-format
-msgid "Missing %s extension required for compositing\n"
-msgstr "Extensão %s necessária para composição faltando\n"
-
-#: src/core/screen.c:364
-#, c-format
-msgid "Screen %d on display '%s' is invalid\n"
-msgstr "A tela %d na exibição \"%s\" é inválida\n"
-
-#: src/core/screen.c:380
-#, c-format
-msgid ""
-"Screen %d on display \"%s\" already has a window manager; try using the --"
-"replace option to replace the current window manager.\n"
-msgstr ""
-"A tela %d na exibição \"%s\" já possui um gerenciador de janelas; tente usar "
-"a opção --replace para substituir o gerenciador de janelas atual.\n"
-
-#: src/core/screen.c:407
-#, c-format
-msgid ""
-"Could not acquire window manager selection on screen %d display \"%s\"\n"
-msgstr ""
-"Não foi possível obter a seleção do gerenciador de janelas na exibição %d da "
-"tela \"%s\"\n"
-
-#: src/core/screen.c:463
-#, c-format
-msgid "Screen %d on display \"%s\" already has a window manager\n"
-msgstr "A tela %d na exibição \"%s\" já possui um gerenciador de janelas\n"
-
-#: src/core/screen.c:675
-#, c-format
-msgid "Could not release screen %d on display \"%s\"\n"
-msgstr "Não foi possível liberar a tela %d na exibição \"%s\"\n"
-
-#: src/core/session.c:842 src/core/session.c:849
-#, c-format
-msgid "Could not create directory '%s': %s\n"
-msgstr "Não foi possível criar o diretório \"%s\": %s\n"
-
-#: src/core/session.c:859
-#, c-format
-msgid "Could not open session file '%s' for writing: %s\n"
-msgstr "Não foi possível abrir o arquivo de sessão \"%s\" para gravação: %s\n"
-
-#: src/core/session.c:1000
-#, c-format
-msgid "Error writing session file '%s': %s\n"
-msgstr "Erro ao gravar o arquivo de sessão \"%s\": %s\n"
-
-#: src/core/session.c:1005
-#, c-format
-msgid "Error closing session file '%s': %s\n"
-msgstr "Erro ao fechar o arquivo de sessão \"%s\": %s\n"
-
-#: src/core/session.c:1135
-#, c-format
-msgid "Failed to parse saved session file: %s\n"
-msgstr "Falha ao analisar o arquivo de sessão salvo: %s\n"
-
-#: src/core/session.c:1184
+#: src/core/session.c:1210
 msgid "<metacity_session> attribute seen but we already have the session ID"
 msgstr "O atributo <metacity_session> foi visto, mas já temos o ID da sessão"
 
-#: src/core/session.c:1197 src/core/session.c:1272 src/core/session.c:1304
-#: src/core/session.c:1376 src/core/session.c:1436
+#: src/core/session.c:1223 src/core/session.c:1298 src/core/session.c:1330
+#: src/core/session.c:1402 src/core/session.c:1462
 #, c-format
 msgid "Unknown attribute %s on <%s> element"
 msgstr "Atributo %s desconhecido no elemento <%s>"
 
-#: src/core/session.c:1214
+#: src/core/session.c:1240
 msgid "nested <window> tag"
 msgstr "marca de <window> aninhada"
 
-#: src/core/session.c:1456
+#: src/core/session.c:1482
 #, c-format
 msgid "Unknown element %s"
 msgstr "Elemento %s desconhecido"
 
-#: src/core/session.c:1812
+#: src/core/session.c:1838
 msgid ""
 "These windows do not support &quot;save current setup&quot; and will have to "
 "be restarted manually next time you log in."
@@ -1379,183 +1267,87 @@ msgstr ""
 "atual&quot; e precisarão ser reiniciadas manualmente a próxima vez que você "
 "iniciar a sessão."
 
-#: src/core/util.c:68
-#, c-format
-msgid "Failed to open debug log: %s\n"
-msgstr "Falha ao abrir o log de depuração: %s\n"
-
-#: src/core/util.c:78
-#, c-format
-msgid "Failed to fdopen() log file %s: %s\n"
-msgstr "Falha ao executar fdopen() no arquivo de log %s: %s\n"
-
-#: src/core/util.c:84
+#: src/core/util.c:105
 #, c-format
 msgid "Opened log file %s\n"
 msgstr "Arquivo de log %s aberto\n"
 
-#: src/core/util.c:103 src/tools/metacity-message.c:206
-msgid "Metacity was compiled without support for verbose mode\n"
-msgstr "O Metacity foi compilado sem suporte para modo detalhado\n"
-
-#: src/core/util.c:203
-msgid "Window manager: "
-msgstr "Gerenciador de janelas: "
-
-#: src/core/util.c:357
-msgid "Bug in window manager: "
-msgstr "Erro no gerenciador de janelas: "
-
-#: src/core/util.c:388
-msgid "Window manager warning: "
-msgstr "Aviso do gerenciador de janelas: "
-
-#: src/core/util.c:416
-msgid "Window manager error: "
-msgstr "Erro do gerenciador de janelas: "
-
-#. first time through
-#: src/core/window.c:5950
-#, c-format
-msgid ""
-"Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
-"window as specified in the ICCCM.\n"
-msgstr ""
-"A janela %s define SM_CLIENT_ID em si mesma, ao invés de definir na janela "
-"WM_CLIENT_LEADER como o ICCCM especifica.\n"
-
-#. We ignore mwm_has_resize_func because WM_NORMAL_HINTS is the
-#. * authoritative source for that info. Some apps such as mplayer or
-#. * xine disable resize via MWM but not WM_NORMAL_HINTS, but that
-#. * leads to e.g. us not fullscreening their windows.  Apps that set
-#. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
-#. * about these apps but make them work.
-#.
-#: src/core/window.c:6440
-#, c-format
-msgid ""
-"Window %s sets an MWM hint indicating it isn't resizable, but sets min size "
-"%d x %d and max size %d x %d; this doesn't make much sense.\n"
-msgstr ""
-"A janela %s define uma dica MWM indicando que não é redimensionável, mas "
-"define o tamanho mínimo %d x %d e máximo %d x %d; isso não faz muito "
-"sentido.\n"
-
-#: src/core/window-props.c:403
-#, c-format
-msgid "Application set a bogus _NET_WM_PID %lu\n"
-msgstr "O aplicativo definiu um _NET_WM_PID %lu inválido\n"
-
 #. Translators: the title of a window from another machine
-#: src/core/window-props.c:554
+#: src/core/window-props.c:570
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (em %s)"
 
 #. Simple case-- don't bother to look it up.  It's root.
-#: src/core/window-props.c:586
+#: src/core/window-props.c:602
 #, c-format
 msgid "%s (as superuser)"
 msgstr "%s (como superusuário)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine
-#: src/core/window-props.c:604
+#: src/core/window-props.c:620
 #, c-format
 msgid "%s (as %s)"
 msgstr "%s (como %s)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine, whose name we don't know
-#: src/core/window-props.c:610
+#: src/core/window-props.c:626
 #, c-format
 msgid "%s (as another user)"
 msgstr "%s (como outro usuário)"
 
-#: src/core/window-props.c:1590
-#, c-format
-msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
-msgstr "Janela WM_TRANSIENT_FOR inválida 0x%lx especificada para %s.\n"
-
-#: src/core/xprops.c:153
-#, c-format
-msgid ""
-"Window 0x%lx has property %s\n"
-"that was expected to have type %s format %d\n"
-"and actually has type %s format %d n_items %d.\n"
-"This is most likely an application bug, not a window manager bug.\n"
-"The window has title=\"%s\" class=\"%s\" name=\"%s\"\n"
-msgstr ""
-"A janela 0x%lx tem a propriedade %s\n"
-"que deveria ter tipo %s formato %d\n"
-"e, na verdade, ela tem tipo %s, %d n_items %d.\n"
-"Isso é bem provavelmente um erro do aplicativo, não do gerenciador de "
-"janelas.\n"
-"A janela tem title=\"%s\" class=\"%s\" name=\"%s\"\n"
-
-#: src/core/xprops.c:409
-#, c-format
-msgid "Property %s on window 0x%lx contained invalid UTF-8\n"
-msgstr "A propriedade %s na janela 0x%lx continha UTF-8 inválido\n"
-
-#: src/core/xprops.c:492
-#, c-format
-msgid ""
-"Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
-msgstr ""
-"A propriedade %s na janela 0x%lx continha UTF-8 inválido para o item %d da "
-"lista\n"
-
-#: src/tools/metacity-message.c:176
+#: src/tools/metacity-message.c:174
 #, c-format
 msgid "Usage: %s\n"
 msgstr "Uso: %s\n"
 
-#: src/ui/frames.c:1310
+#: src/ui/frames.c:1307
 msgid "Close Window"
 msgstr "Fechar janela"
 
-#: src/ui/frames.c:1313
+#: src/ui/frames.c:1310
 msgid "Window Menu"
 msgstr "Menu de janela"
 
-#: src/ui/frames.c:1316
+#: src/ui/frames.c:1313
 msgid "Window App Menu"
 msgstr "Menu de aplicativo de janelas"
 
-#: src/ui/frames.c:1319
+#: src/ui/frames.c:1316
 msgid "Minimize Window"
 msgstr "Minimizar janela"
 
-#: src/ui/frames.c:1322
+#: src/ui/frames.c:1319
 msgid "Maximize Window"
 msgstr "Maximizar janela"
 
-#: src/ui/frames.c:1325
+#: src/ui/frames.c:1322
 msgid "Restore Window"
 msgstr "Restaurar janela"
 
-#: src/ui/frames.c:1328
+#: src/ui/frames.c:1325
 msgid "Roll Up Window"
 msgstr "Enrolar janela"
 
-#: src/ui/frames.c:1331
+#: src/ui/frames.c:1328
 msgid "Unroll Window"
 msgstr "Desenrolar janela"
 
-#: src/ui/frames.c:1334
+#: src/ui/frames.c:1331
 msgid "Keep Window On Top"
 msgstr "Manter no topo"
 
-#: src/ui/frames.c:1337
+#: src/ui/frames.c:1334
 msgid "Remove Window From Top"
 msgstr "Remover do topo"
 
-#: src/ui/frames.c:1340
+#: src/ui/frames.c:1337
 msgid "Always On Visible Workspace"
 msgstr "Sempre no espaço de trabalho visível"
 
-#: src/ui/frames.c:1343
+#: src/ui/frames.c:1340
 msgid "Put Window On Only One Workspace"
 msgstr "Colocar em apenas um espaço de trabalho"
 
@@ -1757,7 +1549,7 @@ msgstr "Mod5"
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: src/ui/ui.c:768
+#: src/ui/ui.c:865
 msgid "Falling back to default GTK+ theme - Adwaita"
 msgstr "Retrocedendo ao tema padrão do GTK+ - Adwaita"
 
@@ -1777,12 +1569,12 @@ msgstr "Nome do tema a ser usar"
 msgid "NAME"
 msgstr "NOME"
 
-#: theme-viewer/theme-viewer-window.c:100
+#: theme-viewer/theme-viewer-window.c:119
 #, c-format
 msgid "Loaded <b>%s</b> theme <b>%s</b> in <b>%f</b> seconds."
 msgstr "Carregado o tema <b>%s</b> <b>%s</b> em <b>%f</b> segundos."
 
-#: theme-viewer/theme-viewer-window.c:130
+#: theme-viewer/theme-viewer-window.c:149
 #, c-format
 msgid ""
 "Got MetaFrameBorders in <b>%f</b> seconds (CSS loading, PangoFontDescription "
@@ -1791,7 +1583,7 @@ msgstr ""
 "Obtido MetaFrameBorders em <b>%f</b> segundos (carregamento de CSS, criação "
 "de PangoFontDescription e cálculo de altura do título)."
 
-#: theme-viewer/theme-viewer-window.c:205
+#: theme-viewer/theme-viewer-window.c:224
 #, c-format
 msgid ""
 "Drew <b>%d</b> frames in <b>%f</b> client-side seconds (<b>%f</b> "
@@ -1802,13 +1594,165 @@ msgstr ""
 "b> milissegundos por quadro) e <b>%f</b> segundos no relógio, incluindo "
 "recursos do servidor X (<b>%f</b> milissegundos por quadro)."
 
-#: theme-viewer/theme-viewer-window.c:242
+#: theme-viewer/theme-viewer-window.c:261
 msgid "Run again"
 msgstr "Executar novamente"
 
-#: theme-viewer/theme-viewer-window.c:930
+#: theme-viewer/theme-viewer-window.c:996
 msgid "Metacity Theme Viewer"
 msgstr "Visualizador de temas do Metacity"
+
+#~ msgid "Unknown window information request: %d"
+#~ msgstr "Informação solicitada de janela desconhecida: %d"
+
+#~ msgid "Failed to get hostname: %s\n"
+#~ msgstr "Falha ao obter o nome da máquina: %s\n"
+
+#~ msgid "Failed to open X Window System display '%s'\n"
+#~ msgstr "Falha ao abrir a exibição \"%s\" do X Window System\n"
+
+#~ msgid ""
+#~ "Some other program is already using the key %s with modifiers %x as a "
+#~ "binding\n"
+#~ msgstr ""
+#~ "Algum outro programa já está usando a tecla %s com modificadores %x como "
+#~ "uma tecla de atalho\n"
+
+#~ msgid "Failed to restart: %s\n"
+#~ msgstr "Falha ao reiniciar: %s\n"
+
+#~ msgid ""
+#~ "Workarounds for broken applications disabled. Some applications may not "
+#~ "behave properly.\n"
+#~ msgstr ""
+#~ "As alternativas para aplicativos quebrados estão desabilitadas. É "
+#~ "possível que alguns aplicativos não funcionem de maneira adequada.\n"
+
+#~ msgid "Could not parse font description \"%s\" from GSettings key %s\n"
+#~ msgstr ""
+#~ "Não foi possível analisar a descrição da fonte \"%s\" a partir da chave "
+#~ "GSettings %s\n"
+
+#~ msgid ""
+#~ "\"%s\" found in configuration database is not a valid value for mouse "
+#~ "button modifier\n"
+#~ msgstr ""
+#~ "\"%s\" localizado no banco de dados de configurações não é um valor "
+#~ "válido para o modificador de botão do mouse\n"
+
+#~ msgid ""
+#~ "\"%s\" found in configuration database is not a valid value for "
+#~ "keybinding \"%s\"\n"
+#~ msgstr ""
+#~ "\"%s\" localizado no banco de dados de configurações não é um valor "
+#~ "válido para a tecla de atalho \"%s\"\n"
+
+#~ msgid "Missing %s extension required for compositing\n"
+#~ msgstr "Extensão %s necessária para composição faltando\n"
+
+#~ msgid "Screen %d on display '%s' is invalid\n"
+#~ msgstr "A tela %d na exibição \"%s\" é inválida\n"
+
+#~ msgid ""
+#~ "Screen %d on display \"%s\" already has a window manager; try using the --"
+#~ "replace option to replace the current window manager.\n"
+#~ msgstr ""
+#~ "A tela %d na exibição \"%s\" já possui um gerenciador de janelas; tente "
+#~ "usar a opção --replace para substituir o gerenciador de janelas atual.\n"
+
+#~ msgid ""
+#~ "Could not acquire window manager selection on screen %d display \"%s\"\n"
+#~ msgstr ""
+#~ "Não foi possível obter a seleção do gerenciador de janelas na exibição %d "
+#~ "da tela \"%s\"\n"
+
+#~ msgid "Screen %d on display \"%s\" already has a window manager\n"
+#~ msgstr "A tela %d na exibição \"%s\" já possui um gerenciador de janelas\n"
+
+#~ msgid "Could not release screen %d on display \"%s\"\n"
+#~ msgstr "Não foi possível liberar a tela %d na exibição \"%s\"\n"
+
+#~ msgid "Could not create directory '%s': %s\n"
+#~ msgstr "Não foi possível criar o diretório \"%s\": %s\n"
+
+#~ msgid "Could not open session file '%s' for writing: %s\n"
+#~ msgstr ""
+#~ "Não foi possível abrir o arquivo de sessão \"%s\" para gravação: %s\n"
+
+#~ msgid "Error writing session file '%s': %s\n"
+#~ msgstr "Erro ao gravar o arquivo de sessão \"%s\": %s\n"
+
+#~ msgid "Error closing session file '%s': %s\n"
+#~ msgstr "Erro ao fechar o arquivo de sessão \"%s\": %s\n"
+
+#~ msgid "Failed to parse saved session file: %s\n"
+#~ msgstr "Falha ao analisar o arquivo de sessão salvo: %s\n"
+
+#~ msgid "Failed to open debug log: %s\n"
+#~ msgstr "Falha ao abrir o log de depuração: %s\n"
+
+#~ msgid "Failed to fdopen() log file %s: %s\n"
+#~ msgstr "Falha ao executar fdopen() no arquivo de log %s: %s\n"
+
+#~ msgid "Metacity was compiled without support for verbose mode\n"
+#~ msgstr "O Metacity foi compilado sem suporte para modo detalhado\n"
+
+#~ msgid "Window manager: "
+#~ msgstr "Gerenciador de janelas: "
+
+#~ msgid "Bug in window manager: "
+#~ msgstr "Erro no gerenciador de janelas: "
+
+#~ msgid "Window manager warning: "
+#~ msgstr "Aviso do gerenciador de janelas: "
+
+#~ msgid "Window manager error: "
+#~ msgstr "Erro do gerenciador de janelas: "
+
+#~ msgid ""
+#~ "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
+#~ "window as specified in the ICCCM.\n"
+#~ msgstr ""
+#~ "A janela %s define SM_CLIENT_ID em si mesma, ao invés de definir na "
+#~ "janela WM_CLIENT_LEADER como o ICCCM especifica.\n"
+
+#~ msgid ""
+#~ "Window %s sets an MWM hint indicating it isn't resizable, but sets min "
+#~ "size %d x %d and max size %d x %d; this doesn't make much sense.\n"
+#~ msgstr ""
+#~ "A janela %s define uma dica MWM indicando que não é redimensionável, mas "
+#~ "define o tamanho mínimo %d x %d e máximo %d x %d; isso não faz muito "
+#~ "sentido.\n"
+
+#~ msgid "Application set a bogus _NET_WM_PID %lu\n"
+#~ msgstr "O aplicativo definiu um _NET_WM_PID %lu inválido\n"
+
+#~ msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
+#~ msgstr "Janela WM_TRANSIENT_FOR inválida 0x%lx especificada para %s.\n"
+
+#~ msgid ""
+#~ "Window 0x%lx has property %s\n"
+#~ "that was expected to have type %s format %d\n"
+#~ "and actually has type %s format %d n_items %d.\n"
+#~ "This is most likely an application bug, not a window manager bug.\n"
+#~ "The window has title=\"%s\" class=\"%s\" name=\"%s\"\n"
+#~ msgstr ""
+#~ "A janela 0x%lx tem a propriedade %s\n"
+#~ "que deveria ter tipo %s formato %d\n"
+#~ "e, na verdade, ela tem tipo %s, %d n_items %d.\n"
+#~ "Isso é bem provavelmente um erro do aplicativo, não do gerenciador de "
+#~ "janelas.\n"
+#~ "A janela tem title=\"%s\" class=\"%s\" name=\"%s\"\n"
+
+#~ msgid "Property %s on window 0x%lx contained invalid UTF-8\n"
+#~ msgstr "A propriedade %s na janela 0x%lx continha UTF-8 inválido\n"
+
+#~ msgid ""
+#~ "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the "
+#~ "list\n"
+#~ msgstr ""
+#~ "A propriedade %s na janela 0x%lx continha UTF-8 inválido para o item %d "
+#~ "da lista\n"
 
 #~ msgid ""
 #~ "Coordinate expression tries to use mod operator on a floating-point number"
