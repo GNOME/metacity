@@ -570,11 +570,10 @@ place_window_if_needed(MetaWindow     *window,
   if (window->placed || did_placement)
     {
       if (window->maximize_horizontally_after_placement ||
-          window->maximize_vertically_after_placement   ||
-          window->fullscreen_after_placement)
+          window->maximize_vertically_after_placement)
         {
-          /* define a sane saved_rect so that the user can unmaximize or
-           * make unfullscreen to something reasonable.
+          /* define a sane saved_rect so that the user can unmaximize to
+           * something reasonable.
            */
           if (info->current.width >= info->work_area_xinerama.width)
             {
@@ -600,13 +599,6 @@ place_window_if_needed(MetaWindow     *window,
           /* maximization may have changed frame geometry */
           if (window->frame && !window->fullscreen)
             meta_frame_calc_borders (window->frame, info->borders);
-
-          if (window->fullscreen_after_placement)
-            {
-              window->saved_rect = info->current;
-              window->fullscreen = TRUE;
-              window->fullscreen_after_placement = FALSE;
-            }
 
           window->maximize_horizontally_after_placement = FALSE;
           window->maximize_vertically_after_placement = FALSE;

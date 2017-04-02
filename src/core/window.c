@@ -466,7 +466,6 @@ meta_window_new (MetaDisplay    *display,
   window->maximize_horizontally_after_placement = FALSE;
   window->maximize_vertically_after_placement = FALSE;
   window->minimize_after_placement = FALSE;
-  window->fullscreen_after_placement = FALSE;
   window->fullscreen_monitors[0] = -1;
   window->require_fully_onscreen = TRUE;
   window->require_on_single_xinerama = TRUE;
@@ -493,7 +492,6 @@ meta_window_new (MetaDisplay    *display,
     meta_topic (META_DEBUG_PLACEMENT,
                 "Not placing window 0x%lx since it's already mapped\n",
                 xwindow);
-  window->force_save_user_rect = TRUE;
   window->denied_focus_and_not_transient = FALSE;
   window->unmanaging = FALSE;
   window->is_in_queues = 0;
@@ -2669,8 +2667,6 @@ meta_window_maximize_internal (MetaWindow        *window,
     window->maximized_horizontally || maximize_horizontally;
   window->maximized_vertically =
     window->maximized_vertically   || maximize_vertically;
-  if (maximize_horizontally || maximize_vertically)
-    window->force_save_user_rect = FALSE;
 
   /* Fix for #336850: If the frame shape isn't reapplied, it is
    * possible that the frame will retains its rounded corners. That
@@ -2903,10 +2899,6 @@ meta_window_unmaximize (MetaWindow        *window,
                                target_rect.width,
                                target_rect.height);
 
-      /* Make sure user_rect is current.
-       */
-      force_save_user_window_placement (window);
-
       /* When we unmaximize, if we're doing a mouse move also we could
        * get the window suddenly jumping to the upper left corner of
        * the workspace, since that's where it was when the grab op
@@ -2979,7 +2971,6 @@ meta_window_make_fullscreen_internal (MetaWindow  *window)
       meta_window_save_rect (window);
 
       window->fullscreen = TRUE;
-      window->force_save_user_rect = FALSE;
 
       meta_stack_freeze (window->screen->stack);
       meta_window_update_layer (window);
@@ -3039,10 +3030,6 @@ meta_window_unmake_fullscreen (MetaWindow  *window)
                                target_rect.y,
                                target_rect.width,
                                target_rect.height);
-
-      /* Make sure user_rect is current.
-       */
-      force_save_user_window_placement (window);
 
       meta_window_update_layer (window);
     }
@@ -3918,7 +3905,7 @@ meta_window_move_resize_internal (MetaWindow          *window,
   if (need_configure_notify && configure_notify)
     send_configure_notify (window);
 
-  if (!window->placed && window->force_save_user_rect && !window->fullscreen)
+  if (!window->placed)
     force_save_user_window_placement (window);
   else if (is_user_action)
     save_user_window_placement (window);
