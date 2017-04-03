@@ -79,22 +79,6 @@ struct _ThemeViewerWindow
 
 G_DEFINE_TYPE (ThemeViewerWindow, theme_viewer_window, GTK_TYPE_WINDOW)
 
-static gint
-get_screen_scale (void)
-{
-  GValue value = G_VALUE_INIT;
-  GdkScreen *screen;
-
-  screen = gdk_screen_get_default ();
-
-  g_value_init (&value, G_TYPE_INT);
-
-  if (gdk_screen_get_setting (screen, "gdk-window-scaling-factor", &value))
-    return g_value_get_int (&value);
-  else
-    return 1;
-}
-
 static void
 benchmark_load_time (ThemeViewerWindow *window,
                      MetaTheme         *theme,
@@ -320,15 +304,15 @@ get_icon (gint size)
 static void
 get_client_width_and_height (GtkWidget         *widget,
                              ThemeViewerWindow *window,
-                             gint               screen_scale,
+                             gint               widget_scale,
                              gint              *width,
                              gint              *height)
 {
   *width = gtk_widget_get_allocated_width (widget) - PADDING * 2;
   *height = gtk_widget_get_allocated_height (widget) - PADDING * 2;
 
-  *width /= 1.0 / screen_scale;
-  *height /= 1.0 / screen_scale;
+  *width /= 1.0 / widget_scale;
+  *height /= 1.0 / widget_scale;
 
   *width -= window->borders.total.left + window->borders.total.right;
   *height -= window->borders.total.top + window->borders.total.bottom;
@@ -346,7 +330,7 @@ update_button_state (MetaButtonType type,
   GdkDevice *device;
   gint x;
   gint y;
-  gint screen_scale;
+  gint widget_scale;
 
   window = THEME_VIEWER_WINDOW (user_data);
   state = META_BUTTON_STATE_NORMAL;
@@ -361,9 +345,9 @@ update_button_state (MetaButtonType type,
   x -= PADDING;
   y -= PADDING;
 
-  screen_scale = get_screen_scale ();
-  x /= 1.0 / screen_scale;
-  y /= 1.0 / screen_scale;
+  widget_scale = gtk_widget_get_scale_factor (GTK_WIDGET (window));
+  x /= 1.0 / widget_scale;
+  y /= 1.0 / widget_scale;
 
   if (x >= rect.x && x < (rect.x + rect.width) &&
       y >= rect.y && y < (rect.y + rect.height))
@@ -729,7 +713,7 @@ theme_box_draw_cb (GtkWidget         *widget,
                    cairo_t           *cr,
                    ThemeViewerWindow *window)
 {
-  gint screen_scale;
+  gint widget_scale;
   gint client_width;
   gint client_height;
 
@@ -740,8 +724,8 @@ theme_box_draw_cb (GtkWidget         *widget,
   cairo_set_operator (cr, CAIRO_OPERATOR_OVER);
   theme_box_draw_grid (widget, cr);
 
-  screen_scale = get_screen_scale ();
-  get_client_width_and_height (widget, window, screen_scale,
+  widget_scale = gtk_widget_get_scale_factor (widget);
+  get_client_width_and_height (widget, window, widget_scale,
                                &client_width, &client_height);
 
   if (!window->mini_icon)
@@ -753,7 +737,7 @@ theme_box_draw_cb (GtkWidget         *widget,
   cairo_translate (cr, PADDING, PADDING);
 
   cairo_save (cr);
-  cairo_scale (cr, 1.0 / screen_scale, 1.0 / screen_scale);
+  cairo_scale (cr, 1.0 / widget_scale, 1.0 / widget_scale);
 
   meta_theme_draw_frame (window->theme, window->theme_variant, cr,
                          window->frame_type, window->frame_flags,
@@ -973,7 +957,7 @@ static void
 theme_viewer_window_init (ThemeViewerWindow *window)
 {
   window->composited = TRUE;
-  window->scale = get_screen_scale ();
+  window->scale = gtk_widget_get_scale_factor (GTK_WIDGET (window));
 
   gtk_widget_init_template (GTK_WIDGET (window));
   gtk_window_set_titlebar (GTK_WINDOW (window), window->header_bar);
