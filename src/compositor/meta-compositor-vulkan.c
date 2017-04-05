@@ -69,12 +69,61 @@ struct _MetaCompositorVulkan
 
   uint32_t                  n_framebuffers;
   VkFramebuffer            *framebuffers;
+
+  uint32_t                  n_command_buffers;
+  VkCommandBuffer          *command_buffers;
 #endif
 };
 
 G_DEFINE_TYPE (MetaCompositorVulkan, meta_compositor_vulkan, META_TYPE_COMPOSITOR)
 
 #ifdef HAVE_VULKAN
+static void
+destroy_command_buffers (MetaCompositorVulkan *vulkan)
+{
+  if (vulkan->command_buffers == NULL)
+    return;
+
+  vkFreeCommandBuffers (vulkan->device, vulkan->command_pool,
+                        vulkan->n_command_buffers, vulkan->command_buffers);
+
+  g_clear_pointer (&vulkan->command_buffers, g_free);
+
+  vulkan->n_command_buffers = 0;
+}
+
+static gboolean
+create_command_buffers (MetaCompositorVulkan  *vulkan,
+                        GError               **error)
+{
+  VkCommandBufferAllocateInfo allocate_info;
+  VkResult result;
+
+  destroy_command_buffers (vulkan);
+
+  vulkan->n_command_buffers = vulkan->n_images;
+  vulkan->command_buffers = g_new0 (VkCommandBuffer, vulkan->n_images);
+
+  allocate_info.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
+  allocate_info.pNext = NULL;
+  allocate_info.commandPool = vulkan->command_pool;
+  allocate_info.level = VK_COMMAND_BUFFER_LEVEL_PRIMARY;
+  allocate_info.commandBufferCount = vulkan->n_command_buffers;
+
+  result = vkAllocateCommandBuffers (vulkan->device, &allocate_info,
+                                     vulkan->command_buffers);
+
+  if (result != VK_SUCCESS)
+    {
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                   "Failed to allocate command buffers");
+
+      return FALSE;
+    }
+
+  return TRUE;
+}
+
 static void
 destroy_framebuffers (MetaCompositorVulkan *vulkan)
 {
@@ -1085,6 +1134,7 @@ meta_compositor_vulkan_finalize (GObject *object)
 
   vulkan = META_COMPOSITOR_VULKAN (object);
 
+  destroy_command_buffers (vulkan);
   destroy_framebuffers (vulkan);
   destroy_render_pass (vulkan);
   destroy_image_views (vulkan);
@@ -1206,6 +1256,9 @@ meta_compositor_vulkan_manage (MetaCompositor  *compositor,
     return FALSE;
 
   if (!create_framebuffers (vulkan, error))
+    return FALSE;
+
+  if (!create_command_buffers (vulkan, error))
     return FALSE;
 
   g_timeout_add (10000, (GSourceFunc) not_implemented_cb, vulkan);
