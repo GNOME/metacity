@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Metacity\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-03-10 20:21+0000\n"
-"PO-Revision-Date: 2017-03-11 21:42+0100\n"
+"POT-Creation-Date: 2017-04-05 07:27+0000\n"
+"PO-Revision-Date: 2017-04-06 20:20+0200\n"
 "Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -342,93 +342,97 @@ msgstr ""
 "Daten werden aus metacity-theme-x.xml und CSS geladen. Sie MÜSSEN bei "
 "Verwendung dieses Thementyps einen gültigen Themennamen angeben."
 
-#: data/ui/theme-viewer-window.ui:41
+#: data/ui/theme-viewer-window.ui:45
+msgid "Reload"
+msgstr "Neu laden"
+
+#: data/ui/theme-viewer-window.ui:103
 msgid "Dark Theme:"
 msgstr "Dunkles Thema:"
 
-#: data/ui/theme-viewer-window.ui:80
+#: data/ui/theme-viewer-window.ui:142
 msgid "Frame Type:"
 msgstr "Rahmentyp:"
 
-#: data/ui/theme-viewer-window.ui:94
+#: data/ui/theme-viewer-window.ui:156
 msgid "Normal"
 msgstr "Normal"
 
-#: data/ui/theme-viewer-window.ui:95
+#: data/ui/theme-viewer-window.ui:157
 msgid "Dialog"
 msgstr "Dialog"
 
-#: data/ui/theme-viewer-window.ui:96
+#: data/ui/theme-viewer-window.ui:158
 msgid "Modal Dialog"
 msgstr "Modaler Dialog"
 
-#: data/ui/theme-viewer-window.ui:97
+#: data/ui/theme-viewer-window.ui:159
 msgid "Utility"
 msgstr "Werkzeug"
 
-#: data/ui/theme-viewer-window.ui:98
+#: data/ui/theme-viewer-window.ui:160
 msgid "Menu"
 msgstr "Menü"
 
-#: data/ui/theme-viewer-window.ui:99
+#: data/ui/theme-viewer-window.ui:161
 msgid "Border"
 msgstr "Rand"
 
-#: data/ui/theme-viewer-window.ui:100
+#: data/ui/theme-viewer-window.ui:162
 msgid "Attached"
 msgstr "Angebunden"
 
-#: data/ui/theme-viewer-window.ui:128
+#: data/ui/theme-viewer-window.ui:190
 msgid "Frame Flags:"
 msgstr "Rahmen-Flags:"
 
-#: data/ui/theme-viewer-window.ui:143
+#: data/ui/theme-viewer-window.ui:205
 msgid "Has Focus"
 msgstr "Hat Fokus"
 
-#: data/ui/theme-viewer-window.ui:158
+#: data/ui/theme-viewer-window.ui:220
 msgid "Shaded"
 msgstr "Eingerollt"
 
-#: data/ui/theme-viewer-window.ui:172
+#: data/ui/theme-viewer-window.ui:234
 msgid "Maximized"
 msgstr "Maximiert"
 
-#: data/ui/theme-viewer-window.ui:186
+#: data/ui/theme-viewer-window.ui:248
 msgid "Fullscreen"
 msgstr "Vollbild"
 
-#: data/ui/theme-viewer-window.ui:200
+#: data/ui/theme-viewer-window.ui:262
 msgid "Tiled"
 msgstr "Gekachelt"
 
-#: data/ui/theme-viewer-window.ui:240
+#: data/ui/theme-viewer-window.ui:302
 msgid "Button Layout:"
 msgstr "Knopf-Layout:"
 
-#: data/ui/theme-viewer-window.ui:279
+#: data/ui/theme-viewer-window.ui:341
 msgid "Composited:"
 msgstr "Composited:"
 
-#: data/ui/theme-viewer-window.ui:339 theme-viewer/theme-viewer-window.c:622
+#: data/ui/theme-viewer-window.ui:381
+msgid "Scale:"
+msgstr "Skalierung:"
+
+#: data/ui/theme-viewer-window.ui:441 theme-viewer/theme-viewer-window.c:634
 msgid "Choose Theme"
 msgstr "Thema wählen"
 
-#: data/ui/theme-viewer-window.ui:379
+#: data/ui/theme-viewer-window.ui:481
 msgid "Preview"
 msgstr "Vorschau"
 
-#: data/ui/theme-viewer-window.ui:468 theme-viewer/theme-viewer-window.c:250
+#: data/ui/theme-viewer-window.ui:570 theme-viewer/theme-viewer-window.c:253
 msgid "Run"
 msgstr "Ausführen"
 
-#: data/ui/theme-viewer-window.ui:490
+#: data/ui/theme-viewer-window.ui:592
 msgid "Benchmark"
 msgstr "Leistungserfassung"
-
-#: data/ui/theme-viewer-window.ui:563
-msgid "Reload"
-msgstr "Neu laden"
 
 #: libmetacity/meta-color-spec.c:246
 #, c-format
@@ -1180,7 +1184,7 @@ msgstr "_Beenden erzwingen"
 # CHECK
 # c-format
 #
-#: src/core/main.c:104
+#: src/core/main.c:101
 #, c-format
 msgid ""
 "metacity %s\n"
@@ -1196,43 +1200,43 @@ msgstr ""
 "Es besteht KEINE Garantie auf MARKTREIFE oder EIGNUNG für einen BESTIMMTEN "
 "ZWECK.\n"
 
-#: src/core/main.c:218
+#: src/core/main.c:215
 msgid "Disable connection to session manager"
 msgstr "Verbindung zur Sitzungsverwaltung deaktivieren"
 
-#: src/core/main.c:224
+#: src/core/main.c:221
 msgid "Replace the running window manager with Metacity"
 msgstr "Die aktuelle Fensterverwaltung durch Metacity ersetzen"
 
-#: src/core/main.c:230
+#: src/core/main.c:227
 msgid "Specify session management ID"
 msgstr "Kennung der Sitzungsverwaltung angeben"
 
-#: src/core/main.c:235
+#: src/core/main.c:232
 msgid "X Display to use"
 msgstr "Zu verwendene X-Anzeige"
 
-#: src/core/main.c:241
+#: src/core/main.c:238
 msgid "Initialize session from savefile"
 msgstr "Sitzung anhand gespeicherter Datei starten"
 
-#: src/core/main.c:247
+#: src/core/main.c:244
 msgid "Print version"
 msgstr "Version ausgeben"
 
-#: src/core/main.c:253
+#: src/core/main.c:250
 msgid "Make X calls synchronous"
 msgstr "X-Aufrufe synchron ausführen"
 
-#: src/core/main.c:259
+#: src/core/main.c:256
 msgid "Turn compositing on"
 msgstr "Compositing einschalten"
 
-#: src/core/main.c:265
+#: src/core/main.c:262
 msgid "Turn compositing off"
 msgstr "Compositing ausschalten"
 
-#: src/core/main.c:271
+#: src/core/main.c:268
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr "Maximierte Fenster im Vollbildmodus haben immer eine Fensterdekoration"
@@ -1307,51 +1311,51 @@ msgstr "%s (als ein anderer Benutzer)"
 msgid "Usage: %s\n"
 msgstr "Aufruf: %s\n"
 
-#: src/ui/frames.c:1323
+#: src/ui/frames.c:1307
 msgid "Close Window"
 msgstr "Fenster schließen"
 
-#: src/ui/frames.c:1326
+#: src/ui/frames.c:1310
 msgid "Window Menu"
 msgstr "Fenstermenü"
 
-#: src/ui/frames.c:1329
+#: src/ui/frames.c:1313
 msgid "Window App Menu"
 msgstr "Fenster-Anwendungsmenü"
 
-#: src/ui/frames.c:1332
+#: src/ui/frames.c:1316
 msgid "Minimize Window"
 msgstr "Fenster minimieren"
 
-#: src/ui/frames.c:1335
+#: src/ui/frames.c:1319
 msgid "Maximize Window"
 msgstr "Fenster maximieren"
 
-#: src/ui/frames.c:1338
+#: src/ui/frames.c:1322
 msgid "Restore Window"
 msgstr "Fenster wiederherstellen"
 
-#: src/ui/frames.c:1341
+#: src/ui/frames.c:1325
 msgid "Roll Up Window"
 msgstr "Fenster einrollen"
 
-#: src/ui/frames.c:1344
+#: src/ui/frames.c:1328
 msgid "Unroll Window"
 msgstr "Fenster ausrollen"
 
-#: src/ui/frames.c:1347
+#: src/ui/frames.c:1331
 msgid "Keep Window On Top"
 msgstr "Fenster immer im Vordergrund"
 
-#: src/ui/frames.c:1350
+#: src/ui/frames.c:1334
 msgid "Remove Window From Top"
 msgstr "Fenster nicht mehr stets im Vordergrund"
 
-#: src/ui/frames.c:1353
+#: src/ui/frames.c:1337
 msgid "Always On Visible Workspace"
 msgstr "Immer auf der sichtbaren Arbeitsfläche"
 
-#: src/ui/frames.c:1356
+#: src/ui/frames.c:1340
 msgid "Put Window On Only One Workspace"
 msgstr "Fenster nur auf eine Arbeitsfläche legen"
 
@@ -1553,7 +1557,7 @@ msgstr "Umschalter5"
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: src/ui/ui.c:778
+#: src/ui/ui.c:865
 msgid "Falling back to default GTK+ theme - Adwaita"
 msgstr "Es wird auf Adwaita ausgewichen, das Standardthema von GTK+"
 
@@ -1573,12 +1577,12 @@ msgstr "Themenname"
 msgid "NAME"
 msgstr "NAME"
 
-#: theme-viewer/theme-viewer-window.c:100
+#: theme-viewer/theme-viewer-window.c:103
 #, c-format
 msgid "Loaded <b>%s</b> theme <b>%s</b> in <b>%f</b> seconds."
 msgstr "<b>%s</b>-Thema <b>%s</b> wurde in <b>%f</b> Sekunden geladen."
 
-#: theme-viewer/theme-viewer-window.c:130
+#: theme-viewer/theme-viewer-window.c:133
 #, c-format
 msgid ""
 "Got MetaFrameBorders in <b>%f</b> seconds (CSS loading, PangoFontDescription "
@@ -1588,7 +1592,7 @@ msgstr ""
 "PangoFontDescription erzeugt und Höhe der Titelzeile ermittelt)."
 
 # CHECK - wall clock
-#: theme-viewer/theme-viewer-window.c:205
+#: theme-viewer/theme-viewer-window.c:208
 #, c-format
 msgid ""
 "Drew <b>%d</b> frames in <b>%f</b> client-side seconds (<b>%f</b> "
@@ -1599,11 +1603,11 @@ msgstr ""
 "b> Millisekunden pro Rahmen) bzw. in <b>%f</b> Sekunden Gesamtzeit inkl. X-"
 "Server-Ressourcen (<b>%f</b> Millisekunden pro Rahmen)."
 
-#: theme-viewer/theme-viewer-window.c:242
+#: theme-viewer/theme-viewer-window.c:245
 msgid "Run again"
 msgstr "Erneut ausführen"
 
-#: theme-viewer/theme-viewer-window.c:932
+#: theme-viewer/theme-viewer-window.c:980
 msgid "Metacity Theme Viewer"
 msgstr "Metacity Themenbetrachter"
 
