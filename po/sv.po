@@ -1,28 +1,28 @@
 # Swedish messages for metacity.
-# Copyright © 2001-2016 Free Software Foundation, Inc.
+# Copyright © 2001-2017 Free Software Foundation, Inc.
 # Christian Rose <menthos@menthos.com>, 2001, 2002, 2003, 2004, 2005.
 # Daniel Nylander <po@danielnylander.se>, 2006, 2007, 2008, 2009, 2010, 2011, 2012.
 # Josef Andersson <josef.andersson@fripost.org>, 2016.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2016.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2016, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-12-15 17:42+0000\n"
-"PO-Revision-Date: 2016-12-21 23:23+0100\n"
-"Last-Translator: Josef Andersson <josef.andersson@fripost.org>\n"
+"POT-Creation-Date: 2017-04-05 07:27+0000\n"
+"PO-Revision-Date: 2017-04-07 21:13+0200\n"
+"Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Project-Style: gnome\n"
 
 #. Translators: This is the title used on dialog boxes
-#: data/applications/metacity.desktop.in:4 src/core/util.c:535
+#: data/applications/metacity.desktop.in:4 src/core/util.c:435
 msgid "Metacity"
 msgstr "Metacity"
 
@@ -330,93 +330,97 @@ msgstr ""
 "klientsidan. Metacity-tema: data läses in från metacity-theme-x.xml och CSS. "
 "När detta tema används MÅSTE du använda ett giltigt temanamn."
 
-#: data/ui/theme-viewer-window.ui:41
+#: data/ui/theme-viewer-window.ui:45
+msgid "Reload"
+msgstr "Läs om"
+
+#: data/ui/theme-viewer-window.ui:103
 msgid "Dark Theme:"
 msgstr "Mörkt tema:"
 
-#: data/ui/theme-viewer-window.ui:80
+#: data/ui/theme-viewer-window.ui:142
 msgid "Frame Type:"
 msgstr "Ramtyp:"
 
-#: data/ui/theme-viewer-window.ui:94
+#: data/ui/theme-viewer-window.ui:156
 msgid "Normal"
 msgstr "Normal"
 
-#: data/ui/theme-viewer-window.ui:95
+#: data/ui/theme-viewer-window.ui:157
 msgid "Dialog"
 msgstr "Dialogruta"
 
-#: data/ui/theme-viewer-window.ui:96
+#: data/ui/theme-viewer-window.ui:158
 msgid "Modal Dialog"
 msgstr "Modalt dialogfönster"
 
-#: data/ui/theme-viewer-window.ui:97
+#: data/ui/theme-viewer-window.ui:159
 msgid "Utility"
 msgstr "Verktyg"
 
-#: data/ui/theme-viewer-window.ui:98
+#: data/ui/theme-viewer-window.ui:160
 msgid "Menu"
 msgstr "Meny"
 
-#: data/ui/theme-viewer-window.ui:99
+#: data/ui/theme-viewer-window.ui:161
 msgid "Border"
 msgstr "Ram"
 
-#: data/ui/theme-viewer-window.ui:100
+#: data/ui/theme-viewer-window.ui:162
 msgid "Attached"
 msgstr "Fäst"
 
-#: data/ui/theme-viewer-window.ui:128
+#: data/ui/theme-viewer-window.ui:190
 msgid "Frame Flags:"
 msgstr "Ramflaggor:"
 
-#: data/ui/theme-viewer-window.ui:143
+#: data/ui/theme-viewer-window.ui:205
 msgid "Has Focus"
 msgstr "Har fokus"
 
-#: data/ui/theme-viewer-window.ui:158
+#: data/ui/theme-viewer-window.ui:220
 msgid "Shaded"
 msgstr "Skuggad"
 
-#: data/ui/theme-viewer-window.ui:172
+#: data/ui/theme-viewer-window.ui:234
 msgid "Maximized"
 msgstr "Maximerad"
 
-#: data/ui/theme-viewer-window.ui:186
+#: data/ui/theme-viewer-window.ui:248
 msgid "Fullscreen"
 msgstr "Helskärm"
 
-#: data/ui/theme-viewer-window.ui:200
+#: data/ui/theme-viewer-window.ui:262
 msgid "Tiled"
 msgstr "Sida-vid-sida"
 
-#: data/ui/theme-viewer-window.ui:240
+#: data/ui/theme-viewer-window.ui:302
 msgid "Button Layout:"
 msgstr "Knapplayout:"
 
-#: data/ui/theme-viewer-window.ui:279
+#: data/ui/theme-viewer-window.ui:341
 msgid "Composited:"
 msgstr "Sammansatt:"
 
-#: data/ui/theme-viewer-window.ui:339 theme-viewer/theme-viewer-window.c:622
+#: data/ui/theme-viewer-window.ui:381
+msgid "Scale:"
+msgstr "Skala:"
+
+#: data/ui/theme-viewer-window.ui:441 theme-viewer/theme-viewer-window.c:634
 msgid "Choose Theme"
 msgstr "Välj tema"
 
-#: data/ui/theme-viewer-window.ui:379
+#: data/ui/theme-viewer-window.ui:481
 msgid "Preview"
 msgstr "Förhandsgranskning"
 
-#: data/ui/theme-viewer-window.ui:468 theme-viewer/theme-viewer-window.c:250
+#: data/ui/theme-viewer-window.ui:570 theme-viewer/theme-viewer-window.c:253
 msgid "Run"
 msgstr "Kör"
 
-#: data/ui/theme-viewer-window.ui:490
+#: data/ui/theme-viewer-window.ui:592
 msgid "Benchmark"
 msgstr "Prestandatest"
-
-#: data/ui/theme-viewer-window.ui:563
-msgid "Reload"
-msgstr "Läs om"
 
 #: libmetacity/meta-color-spec.c:246
 #, c-format
@@ -550,21 +554,21 @@ msgstr "Koordinatuttrycket hade en okänd variabel eller konstant ”%s”"
 msgid "Coordinate expression results in division by zero"
 msgstr "Koordinatuttrycket resulterar i division med noll"
 
-#: libmetacity/meta-draw-spec.c:774
+#: libmetacity/meta-draw-spec.c:775
 #, c-format
 msgid ""
 "Coordinate expression has an operator \"%s\" where an operand was expected"
 msgstr "Koordinatuttrycket har en operator ”%s” där en operand förväntades"
 
-#: libmetacity/meta-draw-spec.c:783
+#: libmetacity/meta-draw-spec.c:784
 msgid "Coordinate expression had an operand where an operator was expected"
 msgstr "Koordinatuttrycket hade en operand där en operator förväntades"
 
-#: libmetacity/meta-draw-spec.c:791
+#: libmetacity/meta-draw-spec.c:792
 msgid "Coordinate expression ended with an operator instead of an operand"
 msgstr "Koordinatuttrycket slutade med en operator istället för en operand"
 
-#: libmetacity/meta-draw-spec.c:801
+#: libmetacity/meta-draw-spec.c:802
 #, c-format
 msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
@@ -573,26 +577,26 @@ msgstr ""
 "Koordinatuttrycket har en operator ”%c” som följer på operatorn ”%c” utan "
 "någon operand emellan"
 
-#: libmetacity/meta-draw-spec.c:933
+#: libmetacity/meta-draw-spec.c:934
 msgid "Coordinate expression parser overflowed its buffer."
 msgstr "Koordinatuttryckstolk överflödade sin buffert."
 
-#: libmetacity/meta-draw-spec.c:961
+#: libmetacity/meta-draw-spec.c:964
 msgid "Coordinate expression had a close parenthesis with no open parenthesis"
 msgstr ""
 "Koordinatuttrycket hade en stängningsparentes utan någon öppningsparentes"
 
-#: libmetacity/meta-draw-spec.c:1029
+#: libmetacity/meta-draw-spec.c:1037
 msgid "Coordinate expression had an open parenthesis with no close parenthesis"
 msgstr ""
 "Koordinatuttrycket hade en öppningsparentes utan någon stängningsparentes"
 
-#: libmetacity/meta-draw-spec.c:1039
+#: libmetacity/meta-draw-spec.c:1047
 msgid "Coordinate expression doesn't seem to have any operators or operands"
 msgstr "Koordinatuttrycket verkar inte ha några operatorer eller operander"
 
-#: libmetacity/meta-draw-spec.c:1231 libmetacity/meta-draw-spec.c:1251
-#: libmetacity/meta-draw-spec.c:1271
+#: libmetacity/meta-draw-spec.c:1239 libmetacity/meta-draw-spec.c:1259
+#: libmetacity/meta-draw-spec.c:1279
 #, c-format
 msgid "Theme contained an expression that resulted in an error: %s"
 msgstr "Temat innehöll ett uttryck som resulterade i ett fel: %s"
@@ -632,6 +636,10 @@ msgstr "Knappförhållandet %g är inte rimligt"
 msgid "Frame geometry does not specify size of buttons"
 msgstr "Ramgeometrin anger inte storlek på knappar"
 
+#. Translators: This error occurs when a <frame> tag is missing
+#. * in theme XML.  The "<frame ...>" is intended as a noun phrase,
+#. * and the "missing" qualifies it.  You should translate "whatever".
+#.
 #: libmetacity/meta-frame-style.c:144 libmetacity/meta-frame-style.c:469
 #, c-format
 msgid "Missing <frame state='%s' resize='%s' focus='%s' style='whatever' />"
@@ -647,7 +655,7 @@ msgstr ""
 "<button function='%s' state='%s' draw_ops='whatever'/> måste anges för denna "
 "ramtyp"
 
-#: libmetacity/meta-gradient-spec.c:173
+#: libmetacity/meta-gradient-spec.c:182
 msgid "Gradients should have at least two colors"
 msgstr "Toningarna bör ha minst två färger"
 
@@ -1068,6 +1076,10 @@ msgstr "Elementet <%s> är inte tillåtet inuti ett ritningsåtgärdselement"
 msgid "Element <%s> is not allowed inside a <%s> element"
 msgstr "Elementet <%s> är inte tillåtet inuti ett <%s>-element"
 
+#. Translators: This error means that a necessary XML tag (whose name
+#. * is given in angle brackets) was not found in a given theme (whose
+#. * name is given second, in quotation marks).
+#.
 #: libmetacity/meta-theme-metacity.c:3834
 #: libmetacity/meta-theme-metacity.c:3842
 #: libmetacity/meta-theme-metacity.c:3850
@@ -1113,14 +1125,9 @@ msgstr "Ingen text är tillåten inuti elementet <%s>"
 msgid "Failed to find a valid file for theme '%s'"
 msgstr "Misslyckades med att hitta en giltig fil för temat ”%s”"
 
-#: src/core/bell.c:296
+#: src/core/bell.c:290
 msgid "Bell event"
 msgstr "Ljudhändelse"
-
-#: src/core/core.c:217
-#, c-format
-msgid "Unknown window information request: %d"
-msgstr "Okänd fråga efter fönsterinformation: %d"
 
 #. Translators: %s is a window title
 #: src/core/delete.c:94
@@ -1144,26 +1151,7 @@ msgstr "_Vänta"
 msgid "_Force Quit"
 msgstr "_Tvinga att avsluta"
 
-#: src/core/delete.c:206
-#, c-format
-msgid "Failed to get hostname: %s\n"
-msgstr "Misslyckades med att få tag i värdnamn: %s\n"
-
-#: src/core/display.c:324
-#, c-format
-msgid "Failed to open X Window System display '%s'\n"
-msgstr "Misslyckades med att öppna X Window System-displayen ”%s”\n"
-
-#: src/core/keybindings.c:691
-#, c-format
-msgid ""
-"Some other program is already using the key %s with modifiers %x as a "
-"binding\n"
-msgstr ""
-"Ett annat program använder redan tangenten %s med modifierarna %x som en "
-"bindning\n"
-
-#: src/core/main.c:109
+#: src/core/main.c:101
 #, c-format
 msgid ""
 "metacity %s\n"
@@ -1178,170 +1166,73 @@ msgstr ""
 "Det finns INGA garantier; inte ens för SÄLJBARHET eller LÄMPLIGHET FÖR NÅGOT "
 "SPECIELLT ÄNDAMÅL.\n"
 
-#: src/core/main.c:225
+#: src/core/main.c:215
 msgid "Disable connection to session manager"
 msgstr "Inaktivera anslutning till sessionshanteraren"
 
-#: src/core/main.c:231
+#: src/core/main.c:221
 msgid "Replace the running window manager with Metacity"
 msgstr "Ersätt den körande fönsterhanteraren med Metacity"
 
-#: src/core/main.c:237
+#: src/core/main.c:227
 msgid "Specify session management ID"
 msgstr "Ange sessionshanterings-ID"
 
-#: src/core/main.c:242
+#: src/core/main.c:232
 msgid "X Display to use"
 msgstr "X-display att använda"
 
-#: src/core/main.c:248
+#: src/core/main.c:238
 msgid "Initialize session from savefile"
 msgstr "Initiera session från sparandefil"
 
-#: src/core/main.c:254
+#: src/core/main.c:244
 msgid "Print version"
 msgstr "Skriv ut version"
 
-#: src/core/main.c:260
+#: src/core/main.c:250
 msgid "Make X calls synchronous"
 msgstr "Gör X-anrop synkrona"
 
-#: src/core/main.c:266
+#: src/core/main.c:256
 msgid "Turn compositing on"
 msgstr "Slå på sammansättning"
 
-#: src/core/main.c:272
+#: src/core/main.c:262
 msgid "Turn compositing off"
 msgstr "Stäng av sammansättning"
 
-#: src/core/main.c:278
+#: src/core/main.c:268
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr "Skapa inte helskärmsfönster som är maximerade och saknar dekorationer"
 
-#: src/core/main.c:499
-#, c-format
-msgid "Failed to restart: %s\n"
-msgstr "Misslyckades med att starta om: %s\n"
-
-#: src/core/prefs.c:1043
-msgid ""
-"Workarounds for broken applications disabled. Some applications may not "
-"behave properly.\n"
-msgstr ""
-"Fixar för trasiga program är inaktiverade. En del program fungerar kanske "
-"inte korrekt.\n"
-
-#: src/core/prefs.c:1120
-#, c-format
-msgid "Could not parse font description \"%s\" from GSettings key %s\n"
-msgstr ""
-"Kunde inte tolka typsnittsbeskrivningen ”%s” från GSettings-nyckeln %s\n"
-
-#: src/core/prefs.c:1182
-#, c-format
-msgid ""
-"\"%s\" found in configuration database is not a valid value for mouse button "
-"modifier\n"
-msgstr ""
-"”%s” som hittades i konfigurationsdatabasen är inte ett giltigt värde för "
-"musknappsmodifierare\n"
-
-#: src/core/prefs.c:1432
-#, c-format
-msgid ""
-"\"%s\" found in configuration database is not a valid value for keybinding "
-"\"%s\"\n"
-msgstr ""
-"”%s” som hittades i konfigurationsdatabasen är inte ett giltigt värde för "
-"tangentbindningen ”%s”\n"
-
-#: src/core/prefs.c:1534
+#: src/core/prefs.c:1524
 #, c-format
 msgid "Workspace %d"
 msgstr "Arbetsyta %d"
 
-#: src/core/prefs.c:1791
-#, c-format
-msgid "Missing %s extension required for compositing\n"
-msgstr "Saknar %s-tillägg som krävs för sammansättning\n"
-
-#: src/core/screen.c:364
-#, c-format
-msgid "Screen %d on display '%s' is invalid\n"
-msgstr "Skärm %d på display \"%s\" är ogiltig\n"
-
-#: src/core/screen.c:380
-#, c-format
-msgid ""
-"Screen %d on display \"%s\" already has a window manager; try using the --"
-"replace option to replace the current window manager.\n"
-msgstr ""
-"Skärm %d på display ”%s” har redan en fönsterhanterare; försök med flaggan --"
-"replace för att ersätta den aktuella fönsterhanteraren.\n"
-
-#: src/core/screen.c:407
-#, c-format
-msgid ""
-"Could not acquire window manager selection on screen %d display \"%s\"\n"
-msgstr "Kunde inte få tag i fönsterhanterarval på skärm %d display ”%s”\n"
-
-#: src/core/screen.c:463
-#, c-format
-msgid "Screen %d on display \"%s\" already has a window manager\n"
-msgstr "Skärm %d på display ”%s” har redan en fönsterhanterare\n"
-
-#: src/core/screen.c:675
-#, c-format
-msgid "Could not release screen %d on display \"%s\"\n"
-msgstr "Kunde inte släppa skärm %d på display ”%s”\n"
-
-#: src/core/session.c:842 src/core/session.c:849
-#, c-format
-msgid "Could not create directory '%s': %s\n"
-msgstr "Kunde inte skapa katalogen ”%s”: %s\n"
-
-#: src/core/session.c:859
-#, c-format
-msgid "Could not open session file '%s' for writing: %s\n"
-msgstr "Kunde inte öppna sessionsfilen ”%s” för skrivning: %s\n"
-
-#: src/core/session.c:1000
-#, c-format
-msgid "Error writing session file '%s': %s\n"
-msgstr "Fel vid skrivning av sessionsfilen ”%s”: %s\n"
-
-#: src/core/session.c:1005
-#, c-format
-msgid "Error closing session file '%s': %s\n"
-msgstr "Fel vid stängning av sessionsfilen ”%s”: %s\n"
-
-#: src/core/session.c:1135
-#, c-format
-msgid "Failed to parse saved session file: %s\n"
-msgstr "Misslyckades med att tolka sparad sessionsfil: %s\n"
-
-#: src/core/session.c:1184
+#: src/core/session.c:1210
 msgid "<metacity_session> attribute seen but we already have the session ID"
 msgstr "<metacity_session>-attribut hittat men vi har redan sessions-ID"
 
 # SUN CHANGED MESSAGE
-#: src/core/session.c:1197 src/core/session.c:1272 src/core/session.c:1304
-#: src/core/session.c:1376 src/core/session.c:1436
+#: src/core/session.c:1223 src/core/session.c:1298 src/core/session.c:1330
+#: src/core/session.c:1402 src/core/session.c:1462
 #, c-format
 msgid "Unknown attribute %s on <%s> element"
 msgstr "Okänt attribut %s i <%s>-element"
 
-#: src/core/session.c:1214
+#: src/core/session.c:1240
 msgid "nested <window> tag"
 msgstr "nästlad <window>-tagg"
 
-#: src/core/session.c:1456
+#: src/core/session.c:1482
 #, c-format
 msgid "Unknown element %s"
 msgstr "Okänt element %s"
 
-#: src/core/session.c:1812
+#: src/core/session.c:1838
 msgid ""
 "These windows do not support &quot;save current setup&quot; and will have to "
 "be restarted manually next time you log in."
@@ -1349,181 +1240,87 @@ msgstr ""
 "Dessa fönster har inte stöd för &quot;spara nuvarande inställningar&quot; "
 "och kommer att behöva startas om manuellt nästa gång du loggar in."
 
-#: src/core/util.c:68
-#, c-format
-msgid "Failed to open debug log: %s\n"
-msgstr "Misslyckades med att öppna felsökningslogg: %s\n"
-
-#: src/core/util.c:78
-#, c-format
-msgid "Failed to fdopen() log file %s: %s\n"
-msgstr "Misslyckades med att använda fdopen() på loggfilen %s: %s\n"
-
-#: src/core/util.c:84
+#: src/core/util.c:105
 #, c-format
 msgid "Opened log file %s\n"
 msgstr "Öppnade loggfilen %s\n"
 
-#: src/core/util.c:103 src/tools/metacity-message.c:206
-msgid "Metacity was compiled without support for verbose mode\n"
-msgstr "Metacity kompilerades utan stöd för utförligt läge\n"
-
-#: src/core/util.c:203
-msgid "Window manager: "
-msgstr "Fönsterhanterare: "
-
-#: src/core/util.c:357
-msgid "Bug in window manager: "
-msgstr "Fel i fönsterhanterare: "
-
-#: src/core/util.c:388
-msgid "Window manager warning: "
-msgstr "Fönsterhanterarvarning: "
-
-#: src/core/util.c:416
-msgid "Window manager error: "
-msgstr "Fönsterhanterarfel: "
-
-#. first time through
-#: src/core/window.c:5950
-#, c-format
-msgid ""
-"Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
-"window as specified in the ICCCM.\n"
-msgstr ""
-"Fönstret %s ställer in SM_CLIENT_ID på sig själv, istället för på "
-"WM_CLIENT_LEADER-fönstret som är angivet i ICCCM.\n"
-
-#. We ignore mwm_has_resize_func because WM_NORMAL_HINTS is the
-#. * authoritative source for that info. Some apps such as mplayer or
-#. * xine disable resize via MWM but not WM_NORMAL_HINTS, but that
-#. * leads to e.g. us not fullscreening their windows.  Apps that set
-#. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
-#. * about these apps but make them work.
-#.
-#: src/core/window.c:6440
-#, c-format
-msgid ""
-"Window %s sets an MWM hint indicating it isn't resizable, but sets min size "
-"%d x %d and max size %d x %d; this doesn't make much sense.\n"
-msgstr ""
-"Fönstret %s ställer in ett MWM-tips som anger att det inte går att ändra "
-"storlek på, men ställer in minsta storleken %d × %d och största storleken %d "
-"× %d; detta verkar inte vettigt.\n"
-
-#: src/core/window-props.c:403
-#, c-format
-msgid "Application set a bogus _NET_WM_PID %lu\n"
-msgstr "Programmet ställde in ett felaktigt _NET_WM_PID %lu\n"
-
 #. Translators: the title of a window from another machine
-#: src/core/window-props.c:554
+#: src/core/window-props.c:570
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (på %s)"
 
 #. Simple case-- don't bother to look it up.  It's root.
-#: src/core/window-props.c:586
+#: src/core/window-props.c:602
 #, c-format
 msgid "%s (as superuser)"
 msgstr "%s (som superanvändare)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine
-#: src/core/window-props.c:604
+#: src/core/window-props.c:620
 #, c-format
 msgid "%s (as %s)"
 msgstr "%s (som %s)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine, whose name we don't know
-#: src/core/window-props.c:610
+#: src/core/window-props.c:626
 #, c-format
 msgid "%s (as another user)"
 msgstr "%s (som en annan användare)"
 
-#: src/core/window-props.c:1590
-#, c-format
-msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
-msgstr "Ogiltigt WM_TRANSIENT_FOR-fönster 0x%lx angivet för %s.\n"
-
-#: src/core/xprops.c:153
-#, c-format
-msgid ""
-"Window 0x%lx has property %s\n"
-"that was expected to have type %s format %d\n"
-"and actually has type %s format %d n_items %d.\n"
-"This is most likely an application bug, not a window manager bug.\n"
-"The window has title=\"%s\" class=\"%s\" name=\"%s\"\n"
-msgstr ""
-"Fönster 0x%lx har egenskap %s\n"
-"som förväntades ha typen %s format %d\n"
-"och har i verkligheten typ %s format %d n_items %d.\n"
-"Det här är sannolikt ett programfel och inte ett fel i fönsterhanteraren.\n"
-"Fönstret har titeln=”%s” klass=”%s” namn=”%s”\n"
-
-#: src/core/xprops.c:409
-#, c-format
-msgid "Property %s on window 0x%lx contained invalid UTF-8\n"
-msgstr "Egenskap %s på fönster 0x%lx innehöll ogiltig UTF-8\n"
-
-#: src/core/xprops.c:492
-#, c-format
-msgid ""
-"Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
-msgstr ""
-"Egenskap %s på fönster 0x%lx innehöll ogiltig UTF-8 för objekt %d i listan\n"
-
-#: src/tools/metacity-message.c:176
+#: src/tools/metacity-message.c:174
 #, c-format
 msgid "Usage: %s\n"
 msgstr "Användning: %s\n"
 
-#: src/ui/frames.c:1310
+#: src/ui/frames.c:1307
 msgid "Close Window"
 msgstr "Stäng fönster"
 
-#: src/ui/frames.c:1313
+#: src/ui/frames.c:1310
 msgid "Window Menu"
 msgstr "Fönstermeny"
 
-#: src/ui/frames.c:1316
+#: src/ui/frames.c:1313
 msgid "Window App Menu"
 msgstr "Programfönstermeny"
 
-#: src/ui/frames.c:1319
+#: src/ui/frames.c:1316
 msgid "Minimize Window"
 msgstr "Minimera fönster"
 
-#: src/ui/frames.c:1322
+#: src/ui/frames.c:1319
 msgid "Maximize Window"
 msgstr "Maximera fönster"
 
-#: src/ui/frames.c:1325
+#: src/ui/frames.c:1322
 msgid "Restore Window"
 msgstr "Återställ fönster"
 
-#: src/ui/frames.c:1328
+#: src/ui/frames.c:1325
 msgid "Roll Up Window"
 msgstr "Rulla upp fönstret"
 
-#: src/ui/frames.c:1331
+#: src/ui/frames.c:1328
 msgid "Unroll Window"
 msgstr "Rulla tillbaka fönstret"
 
-#: src/ui/frames.c:1334
+#: src/ui/frames.c:1331
 msgid "Keep Window On Top"
 msgstr "Behåll fönstret överst"
 
-#: src/ui/frames.c:1337
+#: src/ui/frames.c:1334
 msgid "Remove Window From Top"
 msgstr "Ta bort överliggande fönster"
 
-#: src/ui/frames.c:1340
+#: src/ui/frames.c:1337
 msgid "Always On Visible Workspace"
 msgstr "Alltid på synlig arbetsyta"
 
-#: src/ui/frames.c:1343
+#: src/ui/frames.c:1340
 msgid "Put Window On Only One Workspace"
 msgstr "Placera fönstret på endast en arbetsyta"
 
@@ -1725,7 +1522,7 @@ msgstr "Mod5"
 msgid "%d x %d"
 msgstr "%d × %d"
 
-#: src/ui/ui.c:768
+#: src/ui/ui.c:865
 msgid "Falling back to default GTK+ theme - Adwaita"
 msgstr "Faller tillbaka på standardtemat för GTK+ - Adwaita."
 
@@ -1745,12 +1542,12 @@ msgstr "Temanamn att använda"
 msgid "NAME"
 msgstr "NAMN"
 
-#: theme-viewer/theme-viewer-window.c:100
+#: theme-viewer/theme-viewer-window.c:103
 #, c-format
 msgid "Loaded <b>%s</b> theme <b>%s</b> in <b>%f</b> seconds."
 msgstr "Läste in <b>%s</b>-temat <b>%s</b> på <b>%f</b> sekunder."
 
-#: theme-viewer/theme-viewer-window.c:130
+#: theme-viewer/theme-viewer-window.c:133
 #, c-format
 msgid ""
 "Got MetaFrameBorders in <b>%f</b> seconds (CSS loading, PangoFontDescription "
@@ -1759,7 +1556,7 @@ msgstr ""
 "Fick MetaFrameBorders på <b>%f</b> sekunder (CSS-inläsning, skapande av "
 "PangoFontDescription och beräkning av titelhöjd)."
 
-#: theme-viewer/theme-viewer-window.c:205
+#: theme-viewer/theme-viewer-window.c:208
 #, c-format
 msgid ""
 "Drew <b>%d</b> frames in <b>%f</b> client-side seconds (<b>%f</b> "
@@ -1770,13 +1567,161 @@ msgstr ""
 "millisekunder per ram) och <b>%f</b> sekunder väggklockstid inklusive X-"
 "serverresurser (<b>%f</b> millisekunder per ram)."
 
-#: theme-viewer/theme-viewer-window.c:242
+#: theme-viewer/theme-viewer-window.c:245
 msgid "Run again"
 msgstr "Kör igen"
 
-#: theme-viewer/theme-viewer-window.c:930
+#: theme-viewer/theme-viewer-window.c:980
 msgid "Metacity Theme Viewer"
 msgstr "Metacity temavisare"
+
+#~ msgid "Unknown window information request: %d"
+#~ msgstr "Okänd fråga efter fönsterinformation: %d"
+
+#~ msgid "Failed to get hostname: %s\n"
+#~ msgstr "Misslyckades med att få tag i värdnamn: %s\n"
+
+#~ msgid "Failed to open X Window System display '%s'\n"
+#~ msgstr "Misslyckades med att öppna X Window System-displayen ”%s”\n"
+
+#~ msgid ""
+#~ "Some other program is already using the key %s with modifiers %x as a "
+#~ "binding\n"
+#~ msgstr ""
+#~ "Ett annat program använder redan tangenten %s med modifierarna %x som en "
+#~ "bindning\n"
+
+#~ msgid "Failed to restart: %s\n"
+#~ msgstr "Misslyckades med att starta om: %s\n"
+
+#~ msgid ""
+#~ "Workarounds for broken applications disabled. Some applications may not "
+#~ "behave properly.\n"
+#~ msgstr ""
+#~ "Fixar för trasiga program är inaktiverade. En del program fungerar kanske "
+#~ "inte korrekt.\n"
+
+#~ msgid "Could not parse font description \"%s\" from GSettings key %s\n"
+#~ msgstr ""
+#~ "Kunde inte tolka typsnittsbeskrivningen ”%s” från GSettings-nyckeln %s\n"
+
+#~ msgid ""
+#~ "\"%s\" found in configuration database is not a valid value for mouse "
+#~ "button modifier\n"
+#~ msgstr ""
+#~ "”%s” som hittades i konfigurationsdatabasen är inte ett giltigt värde för "
+#~ "musknappsmodifierare\n"
+
+#~ msgid ""
+#~ "\"%s\" found in configuration database is not a valid value for "
+#~ "keybinding \"%s\"\n"
+#~ msgstr ""
+#~ "”%s” som hittades i konfigurationsdatabasen är inte ett giltigt värde för "
+#~ "tangentbindningen ”%s”\n"
+
+#~ msgid "Missing %s extension required for compositing\n"
+#~ msgstr "Saknar %s-tillägg som krävs för sammansättning\n"
+
+#~ msgid "Screen %d on display '%s' is invalid\n"
+#~ msgstr "Skärm %d på display \"%s\" är ogiltig\n"
+
+#~ msgid ""
+#~ "Screen %d on display \"%s\" already has a window manager; try using the --"
+#~ "replace option to replace the current window manager.\n"
+#~ msgstr ""
+#~ "Skärm %d på display ”%s” har redan en fönsterhanterare; försök med "
+#~ "flaggan --replace för att ersätta den aktuella fönsterhanteraren.\n"
+
+#~ msgid ""
+#~ "Could not acquire window manager selection on screen %d display \"%s\"\n"
+#~ msgstr "Kunde inte få tag i fönsterhanterarval på skärm %d display ”%s”\n"
+
+#~ msgid "Screen %d on display \"%s\" already has a window manager\n"
+#~ msgstr "Skärm %d på display ”%s” har redan en fönsterhanterare\n"
+
+#~ msgid "Could not release screen %d on display \"%s\"\n"
+#~ msgstr "Kunde inte släppa skärm %d på display ”%s”\n"
+
+#~ msgid "Could not create directory '%s': %s\n"
+#~ msgstr "Kunde inte skapa katalogen ”%s”: %s\n"
+
+#~ msgid "Could not open session file '%s' for writing: %s\n"
+#~ msgstr "Kunde inte öppna sessionsfilen ”%s” för skrivning: %s\n"
+
+#~ msgid "Error writing session file '%s': %s\n"
+#~ msgstr "Fel vid skrivning av sessionsfilen ”%s”: %s\n"
+
+#~ msgid "Error closing session file '%s': %s\n"
+#~ msgstr "Fel vid stängning av sessionsfilen ”%s”: %s\n"
+
+#~ msgid "Failed to parse saved session file: %s\n"
+#~ msgstr "Misslyckades med att tolka sparad sessionsfil: %s\n"
+
+#~ msgid "Failed to open debug log: %s\n"
+#~ msgstr "Misslyckades med att öppna felsökningslogg: %s\n"
+
+#~ msgid "Failed to fdopen() log file %s: %s\n"
+#~ msgstr "Misslyckades med att använda fdopen() på loggfilen %s: %s\n"
+
+#~ msgid "Metacity was compiled without support for verbose mode\n"
+#~ msgstr "Metacity kompilerades utan stöd för utförligt läge\n"
+
+#~ msgid "Window manager: "
+#~ msgstr "Fönsterhanterare: "
+
+#~ msgid "Bug in window manager: "
+#~ msgstr "Fel i fönsterhanterare: "
+
+#~ msgid "Window manager warning: "
+#~ msgstr "Fönsterhanterarvarning: "
+
+#~ msgid "Window manager error: "
+#~ msgstr "Fönsterhanterarfel: "
+
+#~ msgid ""
+#~ "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
+#~ "window as specified in the ICCCM.\n"
+#~ msgstr ""
+#~ "Fönstret %s ställer in SM_CLIENT_ID på sig själv, istället för på "
+#~ "WM_CLIENT_LEADER-fönstret som är angivet i ICCCM.\n"
+
+#~ msgid ""
+#~ "Window %s sets an MWM hint indicating it isn't resizable, but sets min "
+#~ "size %d x %d and max size %d x %d; this doesn't make much sense.\n"
+#~ msgstr ""
+#~ "Fönstret %s ställer in ett MWM-tips som anger att det inte går att ändra "
+#~ "storlek på, men ställer in minsta storleken %d × %d och största storleken "
+#~ "%d × %d; detta verkar inte vettigt.\n"
+
+#~ msgid "Application set a bogus _NET_WM_PID %lu\n"
+#~ msgstr "Programmet ställde in ett felaktigt _NET_WM_PID %lu\n"
+
+#~ msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
+#~ msgstr "Ogiltigt WM_TRANSIENT_FOR-fönster 0x%lx angivet för %s.\n"
+
+#~ msgid ""
+#~ "Window 0x%lx has property %s\n"
+#~ "that was expected to have type %s format %d\n"
+#~ "and actually has type %s format %d n_items %d.\n"
+#~ "This is most likely an application bug, not a window manager bug.\n"
+#~ "The window has title=\"%s\" class=\"%s\" name=\"%s\"\n"
+#~ msgstr ""
+#~ "Fönster 0x%lx har egenskap %s\n"
+#~ "som förväntades ha typen %s format %d\n"
+#~ "och har i verkligheten typ %s format %d n_items %d.\n"
+#~ "Det här är sannolikt ett programfel och inte ett fel i "
+#~ "fönsterhanteraren.\n"
+#~ "Fönstret har titeln=”%s” klass=”%s” namn=”%s”\n"
+
+#~ msgid "Property %s on window 0x%lx contained invalid UTF-8\n"
+#~ msgstr "Egenskap %s på fönster 0x%lx innehöll ogiltig UTF-8\n"
+
+#~ msgid ""
+#~ "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the "
+#~ "list\n"
+#~ msgstr ""
+#~ "Egenskap %s på fönster 0x%lx innehöll ogiltig UTF-8 för objekt %d i "
+#~ "listan\n"
 
 #~ msgid ""
 #~ "Coordinate expression tries to use mod operator on a floating-point number"
