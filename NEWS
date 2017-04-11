@@ -1,3 +1,10 @@
+Version 3.24.1
+==============
+- Fix drawing with _NET_WM_WINDOW_OPACITY.
+- Change repaint priority.
+- Updated translations:
+  Balázs Úr (hu).
+
 Version 3.24.0
 ==============
 - Improve handling of tracking the old focused window during restart
