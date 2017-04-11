@@ -23,7 +23,6 @@
 
 #include "meta-color-spec-private.h"
 #include "meta-draw-spec-private.h"
-#include "meta-frame-borders.h"
 #include "meta-gradient-spec-private.h"
 
 G_BEGIN_DECLS
