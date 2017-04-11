@@ -37,39 +37,43 @@ struct _MetaThemeImplClass
 {
   GObjectClass parent_class;
 
-  gboolean   (* load)              (MetaThemeImpl            *impl,
-                                    const gchar              *name,
-                                    GError                  **error);
+  gboolean         (* load)              (MetaThemeImpl            *impl,
+                                          const gchar              *name,
+                                          GError                  **error);
 
-  void       (* get_frame_borders) (MetaThemeImpl            *impl,
-                                    MetaFrameLayout          *layout,
-                                    MetaStyleInfo            *style_info,
-                                    gint                      text_height,
-                                    MetaFrameFlags            flags,
-                                    MetaFrameType             type,
-                                    MetaFrameBorders         *borders);
+  MetaFrameStyle * (* get_frame_style)   (MetaThemeImpl            *impl,
+                                          MetaFrameType             type,
+                                          MetaFrameFlags            flags);
 
-  void       (* calc_geometry)     (MetaThemeImpl            *impl,
-                                    MetaFrameLayout          *layout,
-                                    MetaStyleInfo            *style_info,
-                                    gint                      text_height,
-                                    MetaFrameFlags            flags,
-                                    gint                      client_width,
-                                    gint                      client_height,
-                                    MetaButtonLayout         *button_layout,
-                                    MetaFrameType             type,
-                                    MetaFrameGeometry        *fgeom);
+  void             (* get_frame_borders) (MetaThemeImpl            *impl,
+                                          MetaFrameLayout          *layout,
+                                          MetaStyleInfo            *style_info,
+                                          gint                      text_height,
+                                          MetaFrameFlags            flags,
+                                          MetaFrameType             type,
+                                          MetaFrameBorders         *borders);
 
-  void       (* draw_frame)        (MetaThemeImpl            *impl,
-                                    MetaFrameStyle           *style,
-                                    MetaStyleInfo            *style_info,
-                                    cairo_t                  *cr,
-                                    const MetaFrameGeometry  *fgeom,
-                                    PangoLayout              *title_layout,
-                                    MetaFrameFlags            flags,
-                                    const MetaButtonLayout   *button_layout,
-                                    GdkPixbuf                *mini_icon,
-                                    GdkPixbuf                *icon);
+  void             (* calc_geometry)     (MetaThemeImpl            *impl,
+                                          MetaFrameLayout          *layout,
+                                          MetaStyleInfo            *style_info,
+                                          gint                      text_height,
+                                          MetaFrameFlags            flags,
+                                          gint                      client_width,
+                                          gint                      client_height,
+                                          MetaButtonLayout         *button_layout,
+                                          MetaFrameType             type,
+                                          MetaFrameGeometry        *fgeom);
+
+  void             (* draw_frame)        (MetaThemeImpl            *impl,
+                                          MetaFrameStyle           *style,
+                                          MetaStyleInfo            *style_info,
+                                          cairo_t                  *cr,
+                                          const MetaFrameGeometry  *fgeom,
+                                          PangoLayout              *title_layout,
+                                          MetaFrameFlags            flags,
+                                          const MetaButtonLayout   *button_layout,
+                                          GdkPixbuf                *mini_icon,
+                                          GdkPixbuf                *icon);
 };
 
 G_GNUC_INTERNAL
@@ -85,15 +89,6 @@ void               meta_theme_impl_set_scale      (MetaThemeImpl           *impl
 
 G_GNUC_INTERNAL
 gint               meta_theme_impl_get_scale      (MetaThemeImpl           *impl);
-
-G_GNUC_INTERNAL
-void               meta_theme_impl_add_style_set  (MetaThemeImpl           *impl,
-                                                   MetaFrameType            type,
-                                                   MetaFrameStyleSet       *style_set);
-
-G_GNUC_INTERNAL
-MetaFrameStyleSet *meta_theme_impl_get_style_set  (MetaThemeImpl           *impl,
-                                                   MetaFrameType            type);
 
 G_GNUC_INTERNAL
 void               scale_border                   (GtkBorder               *border,

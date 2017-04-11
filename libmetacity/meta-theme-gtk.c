@@ -29,10 +29,32 @@
 
 struct _MetaThemeGtk
 {
-  MetaThemeImpl parent;
+  MetaThemeImpl   parent;
+
+  MetaFrameStyle *styles[META_FRAME_TYPE_LAST];
 };
 
 G_DEFINE_TYPE (MetaThemeGtk, meta_theme_gtk, META_TYPE_THEME_IMPL)
+
+static void
+meta_theme_gtk_dispose (GObject *object)
+{
+  MetaThemeGtk *gtk;
+  gint i;
+
+  gtk = META_THEME_GTK (object);
+
+  for (i = 0; i < META_FRAME_TYPE_LAST; i++)
+    {
+      if (gtk->styles[i] != NULL)
+        {
+          meta_frame_style_unref (gtk->styles[i]);
+          gtk->styles[i] = NULL;
+        }
+    }
+
+  G_OBJECT_CLASS (meta_theme_gtk_parent_class)->dispose (object);
+}
 
 static gboolean
 meta_theme_gtk_load (MetaThemeImpl  *impl,
@@ -203,6 +225,18 @@ frame_layout_sync_with_style (MetaFrameLayout *layout,
                                            requisition.width);
   layout->gtk.button_min_size.height = MAX (layout->gtk.button_min_size.height,
                                             requisition.height);
+}
+
+static MetaFrameStyle *
+meta_theme_gtk_get_frame_style (MetaThemeImpl  *impl,
+                                MetaFrameType   type,
+                                MetaFrameFlags  flags)
+{
+  MetaThemeGtk *gtk;
+
+  gtk = META_THEME_GTK (impl);
+
+  return gtk->styles[type];
 }
 
 static void
@@ -869,11 +903,16 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
 static void
 meta_theme_gtk_class_init (MetaThemeGtkClass *gtk_class)
 {
+  GObjectClass *object_class;
   MetaThemeImplClass *impl_class;
 
+  object_class = G_OBJECT_CLASS (gtk_class);
   impl_class = META_THEME_IMPL_CLASS (gtk_class);
 
+  object_class->dispose = meta_theme_gtk_dispose;
+
   impl_class->load = meta_theme_gtk_load;
+  impl_class->get_frame_style = meta_theme_gtk_get_frame_style;
   impl_class->get_frame_borders = meta_theme_gtk_get_frame_borders;
   impl_class->calc_geometry = meta_theme_gtk_calc_geometry;
   impl_class->draw_frame = meta_theme_gtk_draw_frame;
@@ -882,19 +921,11 @@ meta_theme_gtk_class_init (MetaThemeGtkClass *gtk_class)
 static void
 meta_theme_gtk_init (MetaThemeGtk *gtk)
 {
-  MetaThemeImpl *impl;
   MetaFrameType type;
-
-  impl = META_THEME_IMPL (gtk);
 
   for (type = 0; type < META_FRAME_TYPE_LAST; type++)
     {
-      MetaFrameStyleSet *style_set;
       MetaFrameStyle *style;
-      gint i;
-      gint j;
-
-      style_set = meta_frame_style_set_new (NULL);
 
       style = meta_frame_style_new (NULL);
       style->layout = meta_frame_layout_new ();
@@ -922,37 +953,6 @@ meta_theme_gtk_init (MetaThemeGtk *gtk)
             g_assert_not_reached ();
         }
 
-      for (i = 0; i < META_FRAME_FOCUS_LAST; i++)
-        {
-          for (j = 0; j < META_FRAME_RESIZE_LAST; j++)
-            {
-              meta_frame_style_ref (style);
-              style_set->normal_styles[j][i] = style;
-
-              meta_frame_style_ref (style);
-              style_set->shaded_styles[j][i] = style;
-            }
-
-          meta_frame_style_ref (style);
-          style_set->maximized_styles[i] = style;
-
-          meta_frame_style_ref (style);
-          style_set->tiled_left_styles[i] = style;
-
-          meta_frame_style_ref (style);
-          style_set->tiled_right_styles[i] = style;
-
-          meta_frame_style_ref (style);
-          style_set->maximized_and_shaded_styles[i] = style;
-
-          meta_frame_style_ref (style);
-          style_set->tiled_left_and_shaded_styles[i] = style;
-
-          meta_frame_style_ref (style);
-          style_set->tiled_right_and_shaded_styles[i] = style;
-        }
-
-      meta_frame_style_unref (style);
-      meta_theme_impl_add_style_set (impl, type, style_set);
+      gtk->styles[type] = style;
     }
 }

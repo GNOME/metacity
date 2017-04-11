@@ -63,28 +63,30 @@
 
 struct _MetaThemeMetacity
 {
-  MetaThemeImpl  parent;
+  MetaThemeImpl      parent;
 
-  gchar         *name;
-  gchar         *dirname;
+  MetaFrameStyleSet *style_sets_by_type[META_FRAME_TYPE_LAST];
 
-  guint          format_version;
+  gchar             *name;
+  gchar             *dirname;
 
-  gchar         *readable_name;
-  gchar         *author;
-  gchar         *copyright;
-  gchar         *date;
-  gchar         *description;
+  guint              format_version;
 
-  GHashTable    *integers;
-  GHashTable    *floats;
-  GHashTable    *colors;
+  gchar             *readable_name;
+  gchar             *author;
+  gchar             *copyright;
+  gchar             *date;
+  gchar             *description;
 
-  GHashTable    *draw_op_lists;
-  GHashTable    *frame_layouts;
-  GHashTable    *styles;
-  GHashTable    *style_sets;
-  GHashTable    *images;
+  GHashTable        *integers;
+  GHashTable        *floats;
+  GHashTable        *colors;
+
+  GHashTable        *draw_op_lists;
+  GHashTable        *frame_layouts;
+  GHashTable        *styles;
+  GHashTable        *style_sets;
+  GHashTable        *images;
 };
 
 typedef enum
@@ -1300,7 +1302,6 @@ parse_toplevel_element (GMarkupParseContext  *context,
       const char *style_set_name = NULL;
       MetaFrameStyleSet *style_set;
       MetaFrameType type;
-      MetaThemeImpl *impl;
 
       if (!locate_attributes (context, element_name, attribute_names,
                               attribute_values, error,
@@ -1328,8 +1329,7 @@ parse_toplevel_element (GMarkupParseContext  *context,
           return;
         }
 
-      impl = META_THEME_IMPL (info->metacity);
-      if (meta_theme_impl_get_style_set (impl, type) != NULL)
+      if (info->metacity->style_sets_by_type[type] != NULL)
         {
           set_error (error, context, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
                      _("Window type '%s' has already been assigned a style set"),
@@ -1338,7 +1338,7 @@ parse_toplevel_element (GMarkupParseContext  *context,
         }
 
       meta_frame_style_set_ref (style_set);
-      meta_theme_impl_add_style_set (impl, type, style_set);
+      info->metacity->style_sets_by_type[type] = style_set;
 
       push_state (info, STATE_WINDOW);
     }
@@ -3872,13 +3872,7 @@ theme_validate (MetaThemeMetacity  *metacity,
 
   for (i = 0; i < META_FRAME_TYPE_LAST; i++)
     {
-      MetaThemeImpl *impl;
-      MetaFrameStyleSet *style_set;
-
-      impl = META_THEME_IMPL (metacity);
-      style_set = meta_theme_impl_get_style_set (impl, i);
-
-      if (i != META_FRAME_TYPE_ATTACHED && style_set == NULL)
+      if (i != META_FRAME_TYPE_ATTACHED && metacity->style_sets_by_type[i] == NULL)
         {
           g_set_error (error, META_THEME_ERROR, META_THEME_ERROR_FAILED,
                        _("No frame style set for window type '%s' in theme '%s', add a <window type='%s' style_set='whatever' /> element"),
@@ -4394,9 +4388,6 @@ static void
 clear_theme (MetaThemeMetacity *metacity)
 {
   MetaFrameType type;
-  MetaThemeImpl *impl;
-
-  impl = META_THEME_IMPL (metacity);
 
   g_free (metacity->name);
   metacity->name = NULL;
@@ -4430,7 +4421,13 @@ clear_theme (MetaThemeMetacity *metacity)
   g_hash_table_remove_all (metacity->images);
 
   for (type = 0; type < META_FRAME_TYPE_LAST; type++)
-    meta_theme_impl_add_style_set (impl, type, NULL);
+    {
+      if (metacity->style_sets_by_type[type] != NULL)
+        {
+          meta_frame_style_set_unref (metacity->style_sets_by_type[type]);
+          metacity->style_sets_by_type[type] = NULL;
+        }
+    }
 }
 
 static GMarkupParser metacity_theme_parser =
@@ -4518,8 +4515,18 @@ static void
 meta_theme_metacity_dispose (GObject *object)
 {
   MetaThemeMetacity *metacity;
+  gint i;
 
   metacity = META_THEME_METACITY (object);
+
+  for (i = 0; i < META_FRAME_TYPE_LAST; i++)
+    {
+      if (metacity->style_sets_by_type[i] != NULL)
+        {
+          meta_frame_style_set_unref (metacity->style_sets_by_type[i]);
+          metacity->style_sets_by_type[i] = NULL;
+        }
+    }
 
   g_clear_pointer (&metacity->integers, g_hash_table_destroy);
   g_clear_pointer (&metacity->floats, g_hash_table_destroy);
@@ -4618,6 +4625,99 @@ out:
     g_propagate_error (err, error);
 
   return retval;
+}
+
+static MetaFrameStyle *
+meta_theme_metacity_get_frame_style (MetaThemeImpl  *impl,
+                                     MetaFrameType   type,
+                                     MetaFrameFlags  flags)
+{
+  MetaThemeMetacity *metacity;
+  MetaFrameState state;
+  MetaFrameResize resize;
+  MetaFrameFocus focus;
+  MetaFrameStyle *style;
+  MetaFrameStyleSet *style_set;
+
+  g_return_val_if_fail (type < META_FRAME_TYPE_LAST, NULL);
+
+  metacity = META_THEME_METACITY (impl);
+  style_set = metacity->style_sets_by_type[type];
+
+  if (style_set == NULL && type == META_FRAME_TYPE_ATTACHED)
+    style_set = metacity->style_sets_by_type[META_FRAME_TYPE_BORDER];
+
+  /* Right now the parser forces a style set for all other types,
+   * but this fallback code is here in case I take that out.
+   */
+  if (style_set == NULL)
+    style_set = metacity->style_sets_by_type[META_FRAME_TYPE_NORMAL];
+
+  if (style_set == NULL)
+    return NULL;
+
+  switch (flags & (META_FRAME_MAXIMIZED | META_FRAME_SHADED | META_FRAME_TILED_LEFT | META_FRAME_TILED_RIGHT))
+    {
+    case 0:
+      state = META_FRAME_STATE_NORMAL;
+      break;
+    case META_FRAME_MAXIMIZED:
+      state = META_FRAME_STATE_MAXIMIZED;
+      break;
+    case META_FRAME_TILED_LEFT:
+      state = META_FRAME_STATE_TILED_LEFT;
+      break;
+    case META_FRAME_TILED_RIGHT:
+      state = META_FRAME_STATE_TILED_RIGHT;
+      break;
+    case META_FRAME_SHADED:
+      state = META_FRAME_STATE_SHADED;
+      break;
+    case (META_FRAME_MAXIMIZED | META_FRAME_SHADED):
+      state = META_FRAME_STATE_MAXIMIZED_AND_SHADED;
+      break;
+    case (META_FRAME_TILED_LEFT | META_FRAME_SHADED):
+      state = META_FRAME_STATE_TILED_LEFT_AND_SHADED;
+      break;
+    case (META_FRAME_TILED_RIGHT | META_FRAME_SHADED):
+      state = META_FRAME_STATE_TILED_RIGHT_AND_SHADED;
+      break;
+    default:
+      g_assert_not_reached ();
+      state = META_FRAME_STATE_LAST; /* compiler */
+      break;
+    }
+
+  switch (flags & (META_FRAME_ALLOWS_VERTICAL_RESIZE | META_FRAME_ALLOWS_HORIZONTAL_RESIZE))
+    {
+    case 0:
+      resize = META_FRAME_RESIZE_NONE;
+      break;
+    case META_FRAME_ALLOWS_VERTICAL_RESIZE:
+      resize = META_FRAME_RESIZE_VERTICAL;
+      break;
+    case META_FRAME_ALLOWS_HORIZONTAL_RESIZE:
+      resize = META_FRAME_RESIZE_HORIZONTAL;
+      break;
+    case (META_FRAME_ALLOWS_VERTICAL_RESIZE | META_FRAME_ALLOWS_HORIZONTAL_RESIZE):
+      resize = META_FRAME_RESIZE_BOTH;
+      break;
+    default:
+      g_assert_not_reached ();
+      resize = META_FRAME_RESIZE_LAST; /* compiler */
+      break;
+    }
+
+  /* re invert the styles used for focus/unfocussed while flashing a frame */
+  if (((flags & META_FRAME_HAS_FOCUS) && !(flags & META_FRAME_IS_FLASHING))
+      || (!(flags & META_FRAME_HAS_FOCUS) && (flags & META_FRAME_IS_FLASHING)))
+    focus = META_FRAME_FOCUS_YES;
+  else
+    focus = META_FRAME_FOCUS_NO;
+
+  style = meta_frame_style_set_get_style (style_set, state, resize, focus);
+
+  return style;
 }
 
 static void
@@ -5585,6 +5685,7 @@ meta_theme_metacity_class_init (MetaThemeMetacityClass *metacity_class)
   object_class->finalize = meta_theme_metacity_finalize;
 
   impl_class->load = meta_theme_metacity_load;
+  impl_class->get_frame_style = meta_theme_metacity_get_frame_style;
   impl_class->get_frame_borders = meta_theme_metacity_get_frame_borders;
   impl_class->calc_geometry = meta_theme_metacity_calc_geometry;
   impl_class->draw_frame = meta_theme_metacity_draw_frame;
