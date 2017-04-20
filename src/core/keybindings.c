@@ -2812,10 +2812,20 @@ handle_activate_window_menu (MetaDisplay    *display,
       GdkRectangle rect;
       GdkEvent *gdk_event;
 
+#if GTK_CHECK_VERSION (3, 22, 0)
       rect.x = display->focus_window->rect.x;
       rect.y = display->focus_window->rect.y;
       rect.width = display->focus_window->rect.width;
       rect.height = 0;
+#else
+      meta_window_get_position (display->focus_window, &rect.x, &rect.y);
+
+      if (meta_ui_get_direction() == META_UI_DIRECTION_RTL)
+        rect.x += display->focus_window->rect.width;
+
+      rect.width = 0;
+      rect.height = 0;
+#endif
 
       gdk_event = key_press_event_new (event);
       meta_window_show_menu (display->focus_window, &rect, gdk_event);

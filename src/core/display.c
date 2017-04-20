@@ -2024,8 +2024,13 @@ event_callback (XEvent   *event,
               if (meta_prefs_get_raise_on_click ())
                 meta_window_raise (window);
 
+#if GTK_CHECK_VERSION (3, 22, 0)
               rect.x = event->xbutton.x;
               rect.y = event->xbutton.y;
+#else
+              rect.x = event->xbutton.x_root;
+              rect.y = event->xbutton.y_root;
+#endif
               rect.width = 0;
               rect.height = 0;
 
