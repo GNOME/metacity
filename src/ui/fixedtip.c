@@ -30,18 +30,38 @@
  */
 static GtkWidget *tip = NULL;
 
+static void
+get_monitor_geometry (gint          root_x,
+                      gint          root_y,
+                      GdkRectangle *geometry)
+{
+#if GTK_CHECK_VERSION(3, 22, 0)
+  GdkDisplay *display;
+  GdkMonitor *monitor;
+
+  display = gdk_display_get_default ();
+  monitor = gdk_display_get_monitor_at_point (display, root_x, root_y);
+
+  gdk_monitor_get_geometry (monitor, geometry);
+#else
+  GdkScreen *screen;
+  gint monitor;
+
+  screen = gdk_screen_get_default ();
+  monitor = gdk_screen_get_monitor_at_point (screen, root_x, root_y);
+
+  gdk_screen_get_monitor_geometry (screen, monitor, geometry);
+#endif
+}
+
 void
 meta_fixed_tip_show (int root_x, int root_y,
                      const char *markup_text)
 {
-  GdkDisplay *display;
-  GdkMonitor *monitor;
   gint w;
   gint h;
   GdkRectangle rect;
   gint screen_right_edge;
-
-  display = gdk_display_get_default ();
 
   if (tip == NULL)
     {
@@ -51,8 +71,7 @@ meta_fixed_tip_show (int root_x, int root_y,
 			G_CALLBACK (gtk_widget_destroyed), &tip);
     }
 
-  monitor = gdk_display_get_monitor_at_point (display, root_x, root_y);
-  gdk_monitor_get_geometry (monitor, &rect);
+  get_monitor_geometry (root_x, root_y, &rect);
   screen_right_edge = rect.x + rect.width;
 
   meta_tooltip_set_label_markup (META_TOOLTIP (tip), markup_text);
