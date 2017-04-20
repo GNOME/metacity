@@ -1415,35 +1415,18 @@ meta_display_queue_autoraise_callback (MetaDisplay *display,
   display->autoraise_window = window;
 }
 
-static gint
-get_window_scaling_factor (void)
-{
-  GdkScreen *screen;
-  GValue value = G_VALUE_INIT;
-
-  screen = gdk_screen_get_default ();
-
-  g_value_init (&value, G_TYPE_INT);
-
-  if (gdk_screen_get_setting (screen, "gdk-window-scaling-factor", &value))
-    return g_value_get_int (&value);
-  else
-    return 1;
-}
-
 static GdkEvent *
-button_press_event_new (XEvent *xevent)
+button_press_event_new (XEvent *xevent,
+                        gint    scale)
 {
   GdkDisplay *display;
   GdkSeat *seat;
-  gint scale;
   GdkWindow *window;
   GdkDevice *device;
   GdkEvent *event;
 
   display = gdk_display_get_default ();
   seat = gdk_display_get_default_seat (display);
-  scale = get_window_scaling_factor ();
 
   window = gdk_x11_window_lookup_for_display (display, xevent->xbutton.window);
   device = gdk_seat_get_pointer (seat);
@@ -2019,6 +2002,7 @@ event_callback (XEvent   *event,
           else if (event->xbutton.button == meta_prefs_get_mouse_button_menu())
             {
               GdkRectangle rect;
+              gint scale;
               GdkEvent *gdk_event;
 
               if (meta_prefs_get_raise_on_click ())
@@ -2034,7 +2018,8 @@ event_callback (XEvent   *event,
               rect.width = 0;
               rect.height = 0;
 
-              gdk_event = button_press_event_new (event);
+              scale = meta_ui_get_scale (display->screen->ui);
+              gdk_event = button_press_event_new (event, scale);
               meta_window_show_menu (window, &rect, gdk_event);
               gdk_event_free (gdk_event);
             }

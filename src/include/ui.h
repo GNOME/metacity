@@ -60,6 +60,8 @@ void    meta_ui_free (MetaUI *ui);
 void meta_ui_set_composited (MetaUI   *ui,
                              gboolean  composited);
 
+gint meta_ui_get_scale (MetaUI *ui);
+
 void meta_ui_theme_get_frame_borders (MetaUI           *ui,
                                       MetaFrameType     type,
                                       MetaFrameFlags    flags,

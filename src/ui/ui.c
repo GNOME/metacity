@@ -402,6 +402,12 @@ meta_ui_set_composited (MetaUI   *ui,
   meta_frames_composited_changed (ui->frames);
 }
 
+gint
+meta_ui_get_scale (MetaUI *ui)
+{
+  return ui->scale;
+}
+
 void
 meta_ui_get_frame_mask (MetaUI  *ui,
                         Window   frame_xwindow,
