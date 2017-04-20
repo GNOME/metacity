@@ -2785,12 +2785,12 @@ key_press_event_new (XEvent *xevent)
   display = gdk_display_get_default ();
   seat = gdk_display_get_default_seat (display);
 
-  window = gdk_x11_window_lookup_for_display (display, xevent->xkey.window);
+  window = gdk_x11_window_foreign_new_for_display (display, xevent->xkey.window);
   device = gdk_seat_get_keyboard (seat);
 
   event = gdk_event_new (GDK_KEY_PRESS);
 
-  event->key.window = window ? g_object_ref (window) : NULL;
+  event->key.window = window;
   event->key.send_event = xevent->xkey.send_event ? TRUE : FALSE;
   event->key.time = xevent->xkey.time;
   event->key.state = (GdkModifierType) xevent->xkey.state;
@@ -2814,8 +2814,17 @@ handle_activate_window_menu (MetaDisplay    *display,
       GdkEvent *gdk_event;
 
 #if GTK_CHECK_VERSION (3, 22, 0)
-      rect.x = display->focus_window->rect.x;
-      rect.y = display->focus_window->rect.y;
+      if (display->focus_window->frame)
+        {
+          rect.x = display->focus_window->rect.x;
+          rect.y = display->focus_window->rect.y;
+        }
+      else
+        {
+          rect.x = 0;
+          rect.y = 0;
+        }
+
       rect.width = display->focus_window->rect.width;
       rect.height = 0;
 #else
@@ -2827,6 +2836,15 @@ handle_activate_window_menu (MetaDisplay    *display,
       rect.width = 0;
       rect.height = 0;
 #endif
+
+      if (meta_window_is_client_decorated (display->focus_window))
+        {
+          rect.x += display->focus_window->custom_frame_extents.left;
+          rect.y += display->focus_window->custom_frame_extents.top;
+
+          rect.width -= display->focus_window->custom_frame_extents.left +
+                        display->focus_window->custom_frame_extents.right;
+        }
 
       gdk_event = key_press_event_new (event);
       meta_window_show_menu (display->focus_window, &rect, gdk_event);
