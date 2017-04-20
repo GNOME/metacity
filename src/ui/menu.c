@@ -450,11 +450,39 @@ meta_window_menu_new   (MetaFrames         *frames,
   return menu;
 }
 
+#if !GTK_CHECK_VERSION (3, 22, 0)
+static void
+popup_position_func (GtkMenu  *menu,
+                     gint     *x,
+                     gint     *y,
+                     gboolean *push_in,
+                     gpointer  user_data)
+{
+  GtkRequisition req;
+  GdkPoint *pos;
+
+  pos = user_data;
+
+  gtk_widget_get_preferred_size (GTK_WIDGET (menu), &req, NULL);
+
+  *x = pos->x;
+  *y = pos->y;
+
+  if (meta_ui_get_direction() == META_UI_DIRECTION_RTL)
+    *x = MAX (0, *x - req.width);
+
+  /* Ensure onscreen */
+  *x = CLAMP (*x, 0, MAX (0, gdk_screen_width () - req.width));
+  *y = CLAMP (*y, 0, MAX (0, gdk_screen_height () - req.height));
+}
+#endif
+
 void
 meta_window_menu_popup (MetaWindowMenu     *menu,
                         const GdkRectangle *rect,
                         const GdkEvent     *event)
 {
+#if GTK_CHECK_VERSION (3, 22, 0)
   GdkEventAny *any;
 
   any = (GdkEventAny *) event;
@@ -464,6 +492,33 @@ meta_window_menu_popup (MetaWindowMenu     *menu,
                           GDK_GRAVITY_SOUTH_WEST,
                           GDK_GRAVITY_NORTH_WEST,
                           event);
+#else
+  GdkPoint *pt;
+  gint button;
+  guint32 timestamp;
+
+  pt = g_new (GdkPoint, 1);
+
+  g_object_set_data_full (G_OBJECT (menu->menu), "destroy-point", pt, g_free);
+
+  pt->x = rect->x;
+  pt->y = rect->y;
+
+  if (event->type == GDK_KEY_PRESS)
+    {
+      button = 0;
+      timestamp = ((GdkEventKey *) event)->time;
+    }
+  else
+    {
+      button = ((GdkEventButton *) event)->button;
+      timestamp = ((GdkEventButton *) event)->time;
+    }
+
+  gtk_menu_popup (GTK_MENU (menu->menu), NULL, NULL,
+                  popup_position_func, pt,
+                  button, timestamp);
+#endif
 
   if (!gtk_widget_get_visible (menu->menu))
     meta_warning ("GtkMenu failed to grab the pointer\n");
