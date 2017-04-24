@@ -1,3 +1,14 @@
+Version 3.25.1
+==============
+- Fix drawing with _NET_WM_WINDOW_OPACITY.
+- Change repaint priority.
+- Manage override-redirect windows.
+- Add option to change scale in metacity-theme-viewer.
+- Updated translations:
+  Anders Jonsson (sv), Balázs Úr (hu), Gianvito Cavasoli (it),
+  Inaki Larranaga Murgoitio (eu), Kukuh Syafaat (id), Mario Blättermann (de),
+  Piotr Drąg (pl), Rafael Fontenelle (pt_BR).
+
 Version 3.24.0
 ==============
 - Improve handling of tracking the old focused window during restart
