@@ -1787,7 +1787,7 @@ event_callback (XEvent   *event,
           value = ((XSyncAlarmNotifyEvent *) event)->counter_value;
           new_counter_value = XSyncValueLow32 (value) + ((gint64) XSyncValueHigh32 (value) << 32);
 
-          meta_window_update_sync_request_counter (display->grab_window, new_counter_value);
+          meta_window_update_sync_request_counter (alarm_window, new_counter_value);
 
           filter_out_event = TRUE; /* GTK doesn't want to see this really */
         }
