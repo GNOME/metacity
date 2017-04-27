@@ -2914,8 +2914,8 @@ meta_compositor_xrender_sync_stack (MetaCompositor *compositor,
     }
 
   xrender->windows = g_list_reverse (xrender->windows);
-  xrender->clip_changed = TRUE;
 
+  damage_screen (xrender);
   add_repair (xrender);
 }
 
