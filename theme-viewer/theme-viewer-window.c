@@ -286,7 +286,8 @@ update_frame_flags_sensitivity (ThemeViewerWindow *window)
 }
 
 static GdkPixbuf *
-get_icon (gint size)
+get_icon (ThemeViewerWindow *window,
+          gint               size)
 {
   GtkIconTheme *theme;
   const gchar *icon;
@@ -298,7 +299,9 @@ get_icon (gint size)
   else
     icon = "image-missing";
 
-  return gtk_icon_theme_load_icon (theme, icon, size, 0, NULL);;
+  return gtk_icon_theme_load_icon_for_scale (theme, icon, size,
+                                             window->scale,
+                                             0, NULL);
 }
 
 static void
@@ -729,10 +732,10 @@ theme_box_draw_cb (GtkWidget         *widget,
                                &client_width, &client_height);
 
   if (!window->mini_icon)
-    window->mini_icon = get_icon (MINI_ICON_SIZE);
+    window->mini_icon = get_icon (window, MINI_ICON_SIZE);
 
   if (!window->mini_icon)
-    window->icon = get_icon (ICON_SIZE);
+    window->icon = get_icon (window, ICON_SIZE);
 
   cairo_translate (cr, PADDING, PADDING);
 
@@ -862,6 +865,9 @@ scale_changed_cb (GtkSpinButton     *spin_button,
   window->scale = scale;
 
   meta_theme_set_scale (window->theme, scale);
+
+  g_clear_object (&window->mini_icon);
+  g_clear_object (&window->icon);
 
   update_frame_borders (window);
 
