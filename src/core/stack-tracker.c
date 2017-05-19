@@ -151,6 +151,9 @@ struct _MetaStackTracker
 };
 
 static void
+meta_stack_tracker_keep_override_redirect_on_top (MetaStackTracker *tracker);
+
+static void
 meta_stack_op_dump (MetaStackOp *op,
                     const char  *prefix,
                     const char  *suffix)
@@ -768,6 +771,8 @@ meta_stack_tracker_sync_stack (MetaStackTracker *tracker)
       tracker->sync_stack_idle = 0;
     }
 
+  meta_stack_tracker_keep_override_redirect_on_top (tracker);
+
   meta_stack_tracker_get_stack (tracker, &windows, &n_windows);
 
   meta_windows = NULL;
@@ -890,6 +895,38 @@ meta_stack_tracker_lower (MetaStackTracker *tracker,
 {
   meta_stack_tracker_raise_above (tracker, window, None);
 }
+
+static void
+meta_stack_tracker_keep_override_redirect_on_top (MetaStackTracker *tracker)
+{
+  MetaWindow *window;
+  Window *stack;
+  int n_windows, i;
+  int topmost_non_or;
+
+  meta_stack_tracker_get_stack (tracker, &stack, &n_windows);
+
+  for (i = n_windows - 1; i >= 0; i--)
+    {
+      window = meta_display_lookup_x_window (tracker->screen->display, stack[i]);
+      if (window && window->layer != META_LAYER_OVERRIDE_REDIRECT)
+        break;
+    }
+
+  topmost_non_or = i;
+
+  for (i -= 1; i >= 0; i--)
+    {
+      window = meta_display_lookup_x_window (tracker->screen->display, stack[i]);
+      if (window && window->layer == META_LAYER_OVERRIDE_REDIRECT)
+        {
+          meta_stack_tracker_raise_above (tracker, stack[i], stack[topmost_non_or]);
+          meta_stack_tracker_get_stack (tracker, &stack, &n_windows);
+          topmost_non_or -= 1;
+        }
+    }
+}
+
 
 void
 meta_stack_tracker_restack_managed (MetaStackTracker *tracker,
