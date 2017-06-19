@@ -627,9 +627,6 @@ shadow_picture_clip (Display          *xdisplay,
   XserverRegion region1;
   XserverRegion region2;
 
-  if (!cw->window)
-    return;
-
   visible_region = meta_window_get_frame_bounds (cw->window);
 
   if (!visible_region)
@@ -973,38 +970,31 @@ window_has_shadow (MetaCompositorXRender *xrender,
   if (xrender->have_shadows == FALSE)
     return FALSE;
 
-  /* Always put a shadow around windows with a frame. This should override
-   * the restriction about not putting a shadow around shaped windows as the
-   * frame might be the reason the window is shaped.
-   */
-  if (cw->window)
+  /* Do not add shadows to fullscreen windows */
+  if (meta_window_is_fullscreen (cw->window))
     {
-      /* Do not add shadows to fullscreen windows */
-      if (meta_window_is_fullscreen (cw->window))
-        {
-          meta_verbose ("Window has no shadow because it is fullscreen\n");
-          return FALSE;
-        }
+      meta_verbose ("Window has no shadow because it is fullscreen\n");
+      return FALSE;
+    }
 
-      /* Do not add shadows to maximized windows */
-      if (meta_window_is_maximized (cw->window))
-        {
-          meta_verbose ("Window has no shadow because it is maximized\n");
-          return FALSE;
-        }
+  /* Do not add shadows to maximized windows */
+  if (meta_window_is_maximized (cw->window))
+    {
+      meta_verbose ("Window has no shadow because it is maximized\n");
+      return FALSE;
+    }
 
-      /* Do not add shadows if GTK+ theme is used */
-      if (meta_prefs_get_theme_type () == META_THEME_TYPE_GTK)
-        {
-          meta_verbose ("Window has shadow from GTK+ theme\n");
-          return FALSE;
-        }
+  /* Do not add shadows if GTK+ theme is used */
+  if (meta_prefs_get_theme_type () == META_THEME_TYPE_GTK)
+    {
+      meta_verbose ("Window has shadow from GTK+ theme\n");
+      return FALSE;
+    }
 
-      if (meta_window_get_frame (cw->window))
-        {
-          meta_verbose ("Window has shadow because it has a frame\n");
-          return TRUE;
-        }
+  if (meta_window_get_frame (cw->window))
+    {
+      meta_verbose ("Window has shadow because it has a frame\n");
+      return TRUE;
     }
 
   /* Do not add shadows to ARGB windows */
@@ -1062,18 +1052,12 @@ win_extents (MetaCompositorXRender *xrender,
 
   if (cw->needs_shadow)
     {
+      MetaFrame *frame;
       MetaFrameBorders borders;
       XRectangle sr;
 
-      meta_frame_borders_clear (&borders);
-
-      if (cw->window)
-        {
-          MetaFrame *frame = meta_window_get_frame (cw->window);
-
-          if (frame)
-            meta_frame_calc_borders (frame, &borders);
-        }
+      frame = meta_window_get_frame (cw->window);
+      meta_frame_calc_borders (frame, &borders);
 
       cw->shadow_dx = (int) shadow_offsets_x [cw->shadow_type] + borders.invisible.left;
       cw->shadow_dy = (int) shadow_offsets_y [cw->shadow_type] + borders.invisible.top;
@@ -1165,7 +1149,7 @@ get_client_region (MetaDisplay    *display,
         return None;
     }
 
-  frame = cw->window ? meta_window_get_frame (cw->window) : NULL;
+  frame = meta_window_get_frame (cw->window);
 
   if (frame != NULL)
     {
@@ -1204,6 +1188,8 @@ get_visible_region (MetaDisplay    *display,
 {
   Display *xdisplay;
   XserverRegion region;
+  cairo_region_t *visible;
+  XserverRegion tmp;
 
   xdisplay = meta_display_get_xdisplay (display);
 
@@ -1219,20 +1205,14 @@ get_visible_region (MetaDisplay    *display,
         return None;
     }
 
-  if (cw->window)
+  visible = meta_window_get_frame_bounds (cw->window);
+  tmp = cairo_region_to_xserver_region (xdisplay, visible);
+
+  if (tmp != None)
     {
-      cairo_region_t *visible;
-      XserverRegion tmp;
-
-      visible = meta_window_get_frame_bounds (cw->window);
-      tmp = cairo_region_to_xserver_region (xdisplay, visible);
-
-      if (tmp != None)
-        {
-          XFixesTranslateRegion (xdisplay, tmp, cw->rect.x, cw->rect.y);
-          XFixesIntersectRegion (xdisplay, region, region, tmp);
-          XFixesDestroyRegion (xdisplay, tmp);
-        }
+      XFixesTranslateRegion (xdisplay, tmp, cw->rect.x, cw->rect.y);
+      XFixesIntersectRegion (xdisplay, region, region, tmp);
+      XFixesDestroyRegion (xdisplay, tmp);
     }
 
   return region;
@@ -1309,9 +1289,6 @@ get_window_mask (MetaDisplay    *display,
   cairo_surface_t *surface;
   cairo_t *cr;
   Picture picture;
-
-  if (cw->window == NULL)
-    return None;
 
   frame = meta_window_get_frame (cw->window);
   if (frame == NULL)
@@ -1523,7 +1500,7 @@ paint_windows (MetaCompositorXRender *xrender,
           wid = cw->rect.width;
           hei = cw->rect.height;
 
-          frame = cw->window ? meta_window_get_frame (cw->window) : NULL;
+          frame = meta_window_get_frame (cw->window);
           meta_frame_calc_borders (frame, &borders);
 
           XFixesSetPictureClipRegion (xdisplay, root_buffer,
@@ -2303,7 +2280,7 @@ update_shadows (MetaPreference pref,
 
       cw = (MetaCompWindow *) index->data;
 
-      if (cw->window && cw->shadow)
+      if (cw->shadow != None)
         {
           XRenderFreePicture (xrender->xdisplay, cw->shadow);
           cw->shadow = None;
@@ -2469,6 +2446,8 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
   MetaDisplay *display;
   MetaCompWindow *cw;
   Window xwindow;
+
+  g_assert (window != NULL);
 
   xrender = META_COMPOSITOR_XRENDER (compositor);
   display = meta_compositor_get_display (compositor);
@@ -3001,7 +2980,7 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
           /* If the window is shaded, we store the old backing pixmap
            * so we can return a proper image of the window
            */
-          if (cw->window && meta_window_is_shaded (cw->window))
+          if (meta_window_is_shaded (cw->window))
             {
               cw->shaded.mask_pixmap = cw->mask_pixmap;
               cw->mask_pixmap = None;
@@ -3013,7 +2992,7 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
             }
         }
 
-      if (cw->window && meta_window_is_shaded (cw->window))
+      if (meta_window_is_shaded (cw->window))
         {
           cw->shaded.x = cw->rect.x;
           cw->shaded.y = cw->rect.y;
