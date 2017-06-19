@@ -261,12 +261,10 @@ meta_core_lower_beneath_focus_window (Display *xdisplay,
 {
   XWindowChanges changes;
   MetaDisplay *display;
-  MetaScreen *screen;
   MetaWindow *focus_window;
 
   display = meta_display_for_x_display (xdisplay);
-  screen = meta_display_screen_for_xwindow (display, xwindow);
-  focus_window = meta_stack_get_top (screen->stack);
+  focus_window = meta_stack_get_top (display->screen->stack);
 
   if (focus_window == NULL)
     return;
@@ -636,14 +634,12 @@ meta_core_begin_grab_op (Display    *xdisplay,
 {
   MetaWindow *window = get_window (xdisplay, frame_xwindow);
   MetaDisplay *display;
-  MetaScreen *screen;
 
   display = meta_display_for_x_display (xdisplay);
-  screen = meta_display_screen_for_xwindow (display, frame_xwindow);
 
-  g_assert (screen != NULL);
+  g_assert (display->screen != NULL);
 
-  return meta_display_begin_grab_op (display, screen, window,
+  return meta_display_begin_grab_op (display, display->screen, window,
                                      op, pointer_already_grabbed,
                                      frame_action,
                                      button, modmask,

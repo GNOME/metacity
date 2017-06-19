@@ -303,8 +303,7 @@ struct _MetaDisplay
 gboolean      meta_display_open                (void);
 void          meta_display_close               (MetaDisplay *display,
                                                 guint32      timestamp);
-MetaScreen*   meta_display_screen_for_xwindow  (MetaDisplay *display,
-                                                Window       xindow);
+
 void          meta_display_grab                (MetaDisplay *display);
 void          meta_display_ungrab              (MetaDisplay *display);
 

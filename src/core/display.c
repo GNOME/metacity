@@ -886,31 +886,6 @@ meta_display_screen_for_root (MetaDisplay *display,
   return NULL;
 }
 
-MetaScreen*
-meta_display_screen_for_xwindow (MetaDisplay *display,
-                                 Window       xwindow)
-{
-  XWindowAttributes attr;
-  int result;
-
-  meta_error_trap_push (display);
-  attr.screen = NULL;
-  result = XGetWindowAttributes (display->xdisplay, xwindow, &attr);
-  meta_error_trap_pop (display);
-
-  /* Note, XGetWindowAttributes is on all kinds of crack
-   * and returns 1 on success 0 on failure, rather than Success
-   * on success.
-   */
-  if (result == 0 || attr.screen == NULL)
-    return NULL;
-
-  if (display->screen->xscreen != attr.screen)
-    return NULL;
-
-  return display->screen;
-}
-
 /* Grab/ungrab routines taken from fvwm */
 void
 meta_display_grab (MetaDisplay *display)
@@ -4415,22 +4390,9 @@ process_request_frame_extents (MetaDisplay    *display,
   if ((hints_set && hints->decorations) || !hints_set)
     {
       MetaFrameBorders borders;
-      MetaScreen *screen;
-
-      screen = meta_display_screen_for_xwindow (display,
-                                                event->xclient.window);
-      if (screen == NULL)
-        {
-          g_warning ("Received request to set _NET_FRAME_EXTENTS "
-                     "on 0x%lx which is on a screen we are not managing",
-                     event->xclient.window);
-
-          meta_XFree (hints);
-          return;
-        }
 
       /* Return estimated frame extents for a normal window. */
-      meta_ui_theme_get_frame_borders (screen->ui,
+      meta_ui_theme_get_frame_borders (display->screen->ui,
                                        META_FRAME_TYPE_NORMAL,
                                        0,
                                        &borders);

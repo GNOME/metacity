@@ -1265,11 +1265,6 @@ meta_display_process_key_event (MetaDisplay *display,
   /* if key event was on root window, we have a shortcut */
   screen = meta_display_screen_for_root (display, event->xkey.window);
 
-  /* else round-trip to server */
-  if (screen == NULL)
-    screen = meta_display_screen_for_xwindow (display,
-                                              event->xany.window);
-
   if (screen == NULL)
     return; /* event window is destroyed */
 

@@ -150,20 +150,9 @@ static void
 bell_flash_fullscreen (MetaDisplay *display,
 			    XkbAnyEvent *xkb_ev)
 {
-  XkbBellNotifyEvent *xkb_bell_ev = (XkbBellNotifyEvent *) xkb_ev;
-  MetaScreen *screen;
-
   g_assert (xkb_ev->xkb_type == XkbBellNotify);
-  if (xkb_bell_ev->window != None)
-    {
-      screen = meta_display_screen_for_xwindow (display, xkb_bell_ev->window);
-      if (screen)
-        bell_flash_screen (display, screen);
-    }
-  else
-    {
-      bell_flash_screen (display, display->screen);
-    }
+
+  bell_flash_screen (display, display->screen);
 }
 
 /**
