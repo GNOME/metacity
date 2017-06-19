@@ -2495,7 +2495,7 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
   cw->shadow_width = 0;
   cw->shadow_height = 0;
 
-  if (window && meta_window_has_focus (window))
+  if (meta_window_has_focus (window))
     cw->shadow_type = META_SHADOW_LARGE;
   else
     cw->shadow_type = META_SHADOW_MEDIUM;
@@ -2963,7 +2963,7 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
           /* If the window is shaded, we store the old backing pixmap
            * so we can return a proper image of the window
            */
-          if (cw->window && meta_window_is_shaded (cw->window))
+          if (meta_window_is_shaded (cw->window))
             {
               cw->shaded.back_pixmap = cw->back_pixmap;
               cw->back_pixmap = None;
