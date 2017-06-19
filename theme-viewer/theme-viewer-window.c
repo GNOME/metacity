@@ -716,7 +716,7 @@ theme_box_draw_cb (GtkWidget         *widget,
   if (!window->mini_icon)
     window->mini_icon = get_icon (MINI_ICON_SIZE);
 
-  if (!window->mini_icon)
+  if (!window->icon)
     window->icon = get_icon (ICON_SIZE);
 
   cairo_translate (cr, PADDING, PADDING);
