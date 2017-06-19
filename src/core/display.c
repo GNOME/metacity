@@ -3719,10 +3719,11 @@ meta_display_begin_grab_op (MetaDisplay *display,
                                     META_TAB_LIST_GROUP,
                                     META_TAB_SHOW_ICON);
       break;
-     case META_GRAB_OP_KEYBOARD_ESCAPING_GROUP:
+    case META_GRAB_OP_KEYBOARD_ESCAPING_GROUP:
       meta_screen_ensure_tab_popup (screen,
                                     META_TAB_LIST_GROUP,
                                     META_TAB_SHOW_INSTANTLY);
+      break;
 
     case META_GRAB_OP_KEYBOARD_WORKSPACE_SWITCHING:
       meta_screen_ensure_workspace_popup (screen);
