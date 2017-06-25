@@ -8,15 +8,15 @@
 # Jakub Friedl <jfriedl@suse.cz>, 2006, 2007.
 # Ondřej Kopka <ondrej.kopka@gmail.com>, 2011.
 # Petr Kovar <pknbe@volny.cz>, 2007, 2008, 2009, 2010.
-# Marek Černocký <marek@manet.cz>, 2011, 2012, 2013, 2014, 2015, 2016.
+# Marek Černocký <marek@manet.cz>, 2011, 2012, 2013, 2014, 2015, 2016, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-12-15 17:42+0000\n"
-"PO-Revision-Date: 2016-12-20 11:10+0100\n"
+"POT-Creation-Date: 2017-06-19 19:40+0000\n"
+"PO-Revision-Date: 2017-06-25 12:03+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -27,7 +27,7 @@ msgstr ""
 "X-Generator: Gtranslator 2.91.7\n"
 
 #. Translators: This is the title used on dialog boxes
-#: data/applications/metacity.desktop.in:4 src/core/util.c:535
+#: data/applications/metacity.desktop.in:4 src/core/util.c:435
 msgid "Metacity"
 msgstr "Metacity"
 
@@ -334,93 +334,97 @@ msgstr ""
 "theme-x.xml a CSS. Když používáte tento typ motivu, musíte uvést platný "
 "název motivu."
 
-#: data/ui/theme-viewer-window.ui:41
+#: data/ui/theme-viewer-window.ui:45
+msgid "Reload"
+msgstr "Znovu načíst"
+
+#: data/ui/theme-viewer-window.ui:103
 msgid "Dark Theme:"
 msgstr "Tmavý motiv:"
 
-#: data/ui/theme-viewer-window.ui:80
+#: data/ui/theme-viewer-window.ui:142
 msgid "Frame Type:"
 msgstr "Typ rámu:"
 
-#: data/ui/theme-viewer-window.ui:94
+#: data/ui/theme-viewer-window.ui:156
 msgid "Normal"
 msgstr "Normální"
 
-#: data/ui/theme-viewer-window.ui:95
+#: data/ui/theme-viewer-window.ui:157
 msgid "Dialog"
 msgstr "Dialogové okno"
 
-#: data/ui/theme-viewer-window.ui:96
+#: data/ui/theme-viewer-window.ui:158
 msgid "Modal Dialog"
 msgstr "Modální dialogové okno"
 
-#: data/ui/theme-viewer-window.ui:97
+#: data/ui/theme-viewer-window.ui:159
 msgid "Utility"
 msgstr "Pomůcka"
 
-#: data/ui/theme-viewer-window.ui:98
+#: data/ui/theme-viewer-window.ui:160
 msgid "Menu"
 msgstr "Nabídka"
 
-#: data/ui/theme-viewer-window.ui:99
+#: data/ui/theme-viewer-window.ui:161
 msgid "Border"
 msgstr "Okraj"
 
-#: data/ui/theme-viewer-window.ui:100
+#: data/ui/theme-viewer-window.ui:162
 msgid "Attached"
 msgstr "Připojený"
 
-#: data/ui/theme-viewer-window.ui:128
+#: data/ui/theme-viewer-window.ui:190
 msgid "Frame Flags:"
 msgstr "Příznaky rámu:"
 
-#: data/ui/theme-viewer-window.ui:143
+#: data/ui/theme-viewer-window.ui:205
 msgid "Has Focus"
 msgstr "Má zaměření"
 
-#: data/ui/theme-viewer-window.ui:158
+#: data/ui/theme-viewer-window.ui:220
 msgid "Shaded"
 msgstr "Se stínem"
 
-#: data/ui/theme-viewer-window.ui:172
+#: data/ui/theme-viewer-window.ui:234
 msgid "Maximized"
 msgstr "Maximalizovaný"
 
-#: data/ui/theme-viewer-window.ui:186
+#: data/ui/theme-viewer-window.ui:248
 msgid "Fullscreen"
 msgstr "Celá obrazovka"
 
-#: data/ui/theme-viewer-window.ui:200
+#: data/ui/theme-viewer-window.ui:262
 msgid "Tiled"
 msgstr "V dlaždicích"
 
-#: data/ui/theme-viewer-window.ui:240
+#: data/ui/theme-viewer-window.ui:302
 msgid "Button Layout:"
 msgstr "Rozložení tlačítek:"
 
-#: data/ui/theme-viewer-window.ui:279
+#: data/ui/theme-viewer-window.ui:341
 msgid "Composited:"
 msgstr "Složený:"
 
-#: data/ui/theme-viewer-window.ui:339 theme-viewer/theme-viewer-window.c:622
+#: data/ui/theme-viewer-window.ui:381
+msgid "Scale:"
+msgstr "Měřítko:"
+
+#: data/ui/theme-viewer-window.ui:441 theme-viewer/theme-viewer-window.c:637
 msgid "Choose Theme"
 msgstr "Volba motivu"
 
-#: data/ui/theme-viewer-window.ui:379
+#: data/ui/theme-viewer-window.ui:481
 msgid "Preview"
 msgstr "Náhled"
 
-#: data/ui/theme-viewer-window.ui:468 theme-viewer/theme-viewer-window.c:250
+#: data/ui/theme-viewer-window.ui:570 theme-viewer/theme-viewer-window.c:253
 msgid "Run"
 msgstr "Spustit"
 
-#: data/ui/theme-viewer-window.ui:490
+#: data/ui/theme-viewer-window.ui:592
 msgid "Benchmark"
 msgstr "Test výkonu"
-
-#: data/ui/theme-viewer-window.ui:563
-msgid "Reload"
-msgstr "Znovu načíst"
 
 #: libmetacity/meta-color-spec.c:246
 #, c-format
@@ -557,22 +561,22 @@ msgstr "Vyjádření souřadnic obsahuje neznámou proměnnou nebo konstantu „
 msgid "Coordinate expression results in division by zero"
 msgstr "Vyjádření souřadnic způsobilo dělení nulou"
 
-#: libmetacity/meta-draw-spec.c:774
+#: libmetacity/meta-draw-spec.c:775
 #, c-format
 msgid ""
 "Coordinate expression has an operator \"%s\" where an operand was expected"
 msgstr ""
 "Vyjádření souřadnic má na místě, kde byl očekáván operand, operátor „%s“"
 
-#: libmetacity/meta-draw-spec.c:783
+#: libmetacity/meta-draw-spec.c:784
 msgid "Coordinate expression had an operand where an operator was expected"
 msgstr "Vyjádření souřadnic má operand tam, kde byl očekáván operátor"
 
-#: libmetacity/meta-draw-spec.c:791
+#: libmetacity/meta-draw-spec.c:792
 msgid "Coordinate expression ended with an operator instead of an operand"
 msgstr "Vyjádření souřadnic končí operátorem místo operandem"
 
-#: libmetacity/meta-draw-spec.c:801
+#: libmetacity/meta-draw-spec.c:802
 #, c-format
 msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
@@ -581,26 +585,26 @@ msgstr ""
 "Vyjádření souřadnic obsahuje operátor „%c“ za operátorem „%c“ bez operandu "
 "mezi nimi"
 
-#: libmetacity/meta-draw-spec.c:933
+#: libmetacity/meta-draw-spec.c:934
 msgid "Coordinate expression parser overflowed its buffer."
 msgstr "Analyzátor vyjádření souřadnic přeplnil svou vyrovnávací paměť."
 
-#: libmetacity/meta-draw-spec.c:961
+#: libmetacity/meta-draw-spec.c:964
 msgid "Coordinate expression had a close parenthesis with no open parenthesis"
 msgstr ""
 "Vyjádření souřadnic obsahuje pravou závorku bez odpovídající levé závorky"
 
-#: libmetacity/meta-draw-spec.c:1029
+#: libmetacity/meta-draw-spec.c:1037
 msgid "Coordinate expression had an open parenthesis with no close parenthesis"
 msgstr ""
 "Vyjádření souřadnic obsahuje levou závorku bez odpovídající pravé závorky"
 
-#: libmetacity/meta-draw-spec.c:1039
+#: libmetacity/meta-draw-spec.c:1047
 msgid "Coordinate expression doesn't seem to have any operators or operands"
 msgstr "Vyjádření souřadnic zřejmě nemá žádné operátory nebo operandy"
 
-#: libmetacity/meta-draw-spec.c:1231 libmetacity/meta-draw-spec.c:1251
-#: libmetacity/meta-draw-spec.c:1271
+#: libmetacity/meta-draw-spec.c:1239 libmetacity/meta-draw-spec.c:1259
+#: libmetacity/meta-draw-spec.c:1279
 #, c-format
 msgid "Theme contained an expression that resulted in an error: %s"
 msgstr "Motiv obsahoval výraz, který způsobil chybu: %s"
@@ -640,6 +644,10 @@ msgstr "Poměr stran tlačítka %g není přiměřený"
 msgid "Frame geometry does not specify size of buttons"
 msgstr "Geometrie rámu nedefinuje velikost tlačítek"
 
+#. Translators: This error occurs when a <frame> tag is missing
+#. * in theme XML.  The "<frame ...>" is intended as a noun phrase,
+#. * and the "missing" qualifies it.  You should translate "whatever".
+#.
 #: libmetacity/meta-frame-style.c:144 libmetacity/meta-frame-style.c:469
 #, c-format
 msgid "Missing <frame state='%s' resize='%s' focus='%s' style='whatever' />"
@@ -655,11 +663,11 @@ msgstr ""
 "U tohoto stylu rámu musí být zadáno <button function=\"%s\" state=\"%s\" "
 "draw_ops=\"cokoliv\"/>"
 
-#: libmetacity/meta-gradient-spec.c:173
+#: libmetacity/meta-gradient-spec.c:182
 msgid "Gradients should have at least two colors"
 msgstr "Přechody by měly mít alespoň dvě barvy"
 
-#: libmetacity/meta-theme-impl.c:65
+#: libmetacity/meta-theme-impl.c:41
 #, c-format
 msgid "MetaThemeImplClass::load not implemented for '%s'"
 msgstr "MetaThemeImplClass::load není implementováno pro „%s“"
@@ -672,54 +680,54 @@ msgstr "MetaThemeImplClass::load není implementováno pro „%s“"
 msgid "No '%s' attribute on element <%s>"
 msgstr "Chybí atribut „%s“ v prvku <%s>"
 
-#: libmetacity/meta-theme-metacity.c:303 libmetacity/meta-theme-metacity.c:322
+#: libmetacity/meta-theme-metacity.c:305 libmetacity/meta-theme-metacity.c:324
 #, c-format
 msgid "Line %d character %d: %s"
 msgstr "Řádek %d znak %d: %s"
 
-#: libmetacity/meta-theme-metacity.c:362
+#: libmetacity/meta-theme-metacity.c:364
 #, c-format
 msgid "Could not parse '%s' as an integer"
 msgstr "„%s“ nelze analyzovat jako celé číslo"
 
-#: libmetacity/meta-theme-metacity.c:370 libmetacity/meta-theme-metacity.c:587
+#: libmetacity/meta-theme-metacity.c:372 libmetacity/meta-theme-metacity.c:589
 #, c-format
 msgid "Did not understand trailing characters '%s' in string '%s'"
 msgstr "Nerozumí se koncovým znakům „%s“ v řetězci „%s“"
 
-#: libmetacity/meta-theme-metacity.c:379
+#: libmetacity/meta-theme-metacity.c:381
 #, c-format
 msgid "Integer %ld must be positive"
 msgstr "Celé číslo %ld musí být kladné"
 
-#: libmetacity/meta-theme-metacity.c:386
+#: libmetacity/meta-theme-metacity.c:388
 #, c-format
 msgid "Integer %ld is too large, current max is %d"
 msgstr "Celé číslo %ld je příliš velké, aktuální maximum je %d"
 
-#: libmetacity/meta-theme-metacity.c:488
+#: libmetacity/meta-theme-metacity.c:490
 #, c-format
 msgid "Attribute '%s' repeated twice on the same <%s> element"
 msgstr "Atribut „%s“ se opakuje dvakrát v jednom prvku <%s>"
 
-#: libmetacity/meta-theme-metacity.c:510 libmetacity/meta-theme-metacity.c:554
+#: libmetacity/meta-theme-metacity.c:512 libmetacity/meta-theme-metacity.c:556
 #, c-format
 msgid "Attribute '%s' is invalid on <%s> element in this context"
 msgstr "Atribut „%s“ je pro prvek <%s> v tomto kontextu neplatný"
 
-#: libmetacity/meta-theme-metacity.c:579 libmetacity/meta-theme-metacity.c:617
+#: libmetacity/meta-theme-metacity.c:581 libmetacity/meta-theme-metacity.c:619
 #, c-format
 msgid "Could not parse '%s' as a floating point number"
 msgstr "Nelze zpracovat „%s“ jako desetinné číslo"
 
-#: libmetacity/meta-theme-metacity.c:649
+#: libmetacity/meta-theme-metacity.c:651
 #, c-format
 msgid "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g"
 msgstr ""
 "Průhlednost alfa musí být mezi 0.0 (neviditelný) a 1.0 (zcela neprůhledný), "
 "ve skutečnosti měla hodnotu %g"
 
-#: libmetacity/meta-theme-metacity.c:695
+#: libmetacity/meta-theme-metacity.c:697
 #, c-format
 msgid ""
 "Invalid title scale '%s' (must be one of xx-small,x-small,small,medium,large,"
@@ -728,70 +736,70 @@ msgstr ""
 "Neplatné měřítko záhlaví „%s“ (musí být něco z xx-small, x-small, medium, "
 "large, x-large, xx-large)\n"
 
-#: libmetacity/meta-theme-metacity.c:724 libmetacity/meta-theme-metacity.c:752
+#: libmetacity/meta-theme-metacity.c:726 libmetacity/meta-theme-metacity.c:754
 #, c-format
 msgid "Boolean values must be 'true' or 'false' not '%s'"
 msgstr ""
 "Pravdivostní hodnoty musí být „true“ (pravda) nebo „false“ (nepravda), "
 "nikoliv „%s“"
 
-#: libmetacity/meta-theme-metacity.c:781 libmetacity/meta-theme-metacity.c:818
-#: libmetacity/meta-theme-metacity.c:856
+#: libmetacity/meta-theme-metacity.c:783 libmetacity/meta-theme-metacity.c:820
+#: libmetacity/meta-theme-metacity.c:858
 #, c-format
 msgid "User-defined constants must begin with a capital letter; '%s' does not"
 msgstr ""
 "Uživatelem definované konstanty musí začínat velkým písmenem; „%s“ toto "
 "nesplňuje"
 
-#: libmetacity/meta-theme-metacity.c:790 libmetacity/meta-theme-metacity.c:827
-#: libmetacity/meta-theme-metacity.c:865
+#: libmetacity/meta-theme-metacity.c:792 libmetacity/meta-theme-metacity.c:829
+#: libmetacity/meta-theme-metacity.c:867
 #, c-format
 msgid "Constant '%s' has already been defined"
 msgstr "Konstanta „%s“ již byla definována"
 
-#: libmetacity/meta-theme-metacity.c:1072
-#: libmetacity/meta-theme-metacity.c:1169
-#: libmetacity/meta-theme-metacity.c:1271
+#: libmetacity/meta-theme-metacity.c:1074
+#: libmetacity/meta-theme-metacity.c:1171
+#: libmetacity/meta-theme-metacity.c:1273
 #, c-format
 msgid "<%s> name \"%s\" used a second time"
 msgstr "<%s>: název „%s“ je použit podruhé"
 
-#: libmetacity/meta-theme-metacity.c:1084
+#: libmetacity/meta-theme-metacity.c:1086
 #, c-format
 msgid "<%s> parent \"%s\" has not been defined"
 msgstr "<%s>: rodič „%s“ nebyl definován"
 
-#: libmetacity/meta-theme-metacity.c:1135
+#: libmetacity/meta-theme-metacity.c:1137
 #, c-format
 msgid "<%s> name '%s' used a second time"
 msgstr "<%s>: název „%s“ je použit podruhé"
 
-#: libmetacity/meta-theme-metacity.c:1181
-#: libmetacity/meta-theme-metacity.c:1283
+#: libmetacity/meta-theme-metacity.c:1183
+#: libmetacity/meta-theme-metacity.c:1285
 #, c-format
 msgid "<%s> parent '%s' has not been defined"
 msgstr "<%s>: rodič „%s“ nebyl definován"
 
-#: libmetacity/meta-theme-metacity.c:1194
+#: libmetacity/meta-theme-metacity.c:1196
 #, c-format
 msgid "<%s> geometry '%s' has not been defined"
 msgstr "<%s>: geometrie „%s“ nebyla definována"
 
-#: libmetacity/meta-theme-metacity.c:1207
+#: libmetacity/meta-theme-metacity.c:1209
 #, c-format
 msgid "<%s> must specify either a geometry or a parent that has a geometry"
 msgstr "<%s> musí určit buď geometrii, nebo rodiče, který má geometrii"
 
-#: libmetacity/meta-theme-metacity.c:1248
+#: libmetacity/meta-theme-metacity.c:1250
 msgid "You must specify a background for an alpha value to be meaningful"
 msgstr "Aby měla hodnota průhlednosti alfa význam, je nutné určit pozadí"
 
-#: libmetacity/meta-theme-metacity.c:1317
+#: libmetacity/meta-theme-metacity.c:1318
 #, c-format
 msgid "Unknown type '%s' on <%s> element"
 msgstr "Neznámý typ „%s“ v prvku <%s>"
 
-#: libmetacity/meta-theme-metacity.c:1326
+#: libmetacity/meta-theme-metacity.c:1327
 #, c-format
 msgid "Unknown style_set '%s' on <%s> element"
 msgstr "Neznámá sada stylů style_set „%s“ v prvku <%s>"
@@ -1064,6 +1072,10 @@ msgstr "Prvek <%s> není dovolen v prvku operace kreslení"
 msgid "Element <%s> is not allowed inside a <%s> element"
 msgstr "Prvek <%s> není dovolen v prvku <%s>"
 
+#. Translators: This error means that a necessary XML tag (whose name
+#. * is given in angle brackets) was not found in a given theme (whose
+#. * name is given second, in quotation marks).
+#.
 #: libmetacity/meta-theme-metacity.c:3834
 #: libmetacity/meta-theme-metacity.c:3842
 #: libmetacity/meta-theme-metacity.c:3850
@@ -1073,7 +1085,7 @@ msgstr "Prvek <%s> není dovolen v prvku <%s>"
 msgid "No <%s> set for theme '%s'"
 msgstr "Není nastaveno <%s> pro motiv „%s“"
 
-#: libmetacity/meta-theme-metacity.c:3884
+#: libmetacity/meta-theme-metacity.c:3878
 #, c-format
 msgid ""
 "No frame style set for window type '%s' in theme '%s', add a <window "
@@ -1082,41 +1094,36 @@ msgstr ""
 "U typu okna „%s“ motivu „%s“ není nastaven typ rámu, přidejte prosím prvek "
 "<window type=\"%s\" style_set=\"cokoliv\"/>"
 
-#: libmetacity/meta-theme-metacity.c:4147
+#: libmetacity/meta-theme-metacity.c:4141
 msgid "No draw_ops provided for frame piece"
 msgstr "U položky rámu není neposkytnut draw_ops"
 
-#: libmetacity/meta-theme-metacity.c:4163
+#: libmetacity/meta-theme-metacity.c:4157
 msgid "No draw_ops provided for button"
 msgstr "U tlačítka není neposkytnut draw_ops"
 
-#: libmetacity/meta-theme-metacity.c:4278
-#: libmetacity/meta-theme-metacity.c:4289
-#: libmetacity/meta-theme-metacity.c:4300
-#: libmetacity/meta-theme-metacity.c:4311
-#: libmetacity/meta-theme-metacity.c:4322
+#: libmetacity/meta-theme-metacity.c:4272
+#: libmetacity/meta-theme-metacity.c:4283
+#: libmetacity/meta-theme-metacity.c:4294
+#: libmetacity/meta-theme-metacity.c:4305
+#: libmetacity/meta-theme-metacity.c:4316
 #, c-format
 msgid "<%s> specified twice for this theme"
 msgstr "<%s> je u tohoto motivu definováno dvakrát"
 
-#: libmetacity/meta-theme-metacity.c:4361
+#: libmetacity/meta-theme-metacity.c:4355
 #, c-format
 msgid "No text is allowed inside element <%s>"
 msgstr "V prvku <%s> není dovolen žádný text"
 
-#: libmetacity/meta-theme-metacity.c:4614
+#: libmetacity/meta-theme-metacity.c:4621
 #, c-format
 msgid "Failed to find a valid file for theme '%s'"
 msgstr "Nelze nalézt platný soubor motivu „%s“"
 
-#: src/core/bell.c:296
+#: src/core/bell.c:279
 msgid "Bell event"
 msgstr "Událost zvonku"
-
-#: src/core/core.c:217
-#, c-format
-msgid "Unknown window information request: %d"
-msgstr "Neznámý informační požadavek okna: %d"
 
 #. Translators: %s is a window title
 #: src/core/delete.c:94
@@ -1140,25 +1147,7 @@ msgstr "_Počkat"
 msgid "_Force Quit"
 msgstr "_Vynutit ukončení"
 
-#: src/core/delete.c:206
-#, c-format
-msgid "Failed to get hostname: %s\n"
-msgstr "Nelze získat název počítače: %s\n"
-
-#: src/core/display.c:324
-#, c-format
-msgid "Failed to open X Window System display '%s'\n"
-msgstr "Nelze otevřít displej X Window System „%s“\n"
-
-#: src/core/keybindings.c:691
-#, c-format
-msgid ""
-"Some other program is already using the key %s with modifiers %x as a "
-"binding\n"
-msgstr ""
-"Klávesu %s s modifikátory %x již jako zkratku používá nějaký jiný program\n"
-
-#: src/core/main.c:109
+#: src/core/main.c:101
 #, c-format
 msgid ""
 "metacity %s\n"
@@ -1174,170 +1163,74 @@ msgstr ""
 "Tento software je BEZ JAKÉKOLIV ZÁRUKY; neposkytují se ani záruky "
 "PRODEJNOSTI anebo VHODNOSTI PRO URČITÝ ÚČEL.\n"
 
-#: src/core/main.c:225
+#: src/core/main.c:215
 msgid "Disable connection to session manager"
 msgstr "Zakáže připojení ke správci sezení"
 
-#: src/core/main.c:231
+#: src/core/main.c:221
 msgid "Replace the running window manager with Metacity"
 msgstr "Nahradí běžícího správce oken správcem Metacity"
 
-#: src/core/main.c:237
+#: src/core/main.c:227
 msgid "Specify session management ID"
 msgstr "Určení ID správy sezení"
 
-#: src/core/main.c:242
+#: src/core/main.c:232
 msgid "X Display to use"
 msgstr "Displej X, který použije"
 
-#: src/core/main.c:248
+#: src/core/main.c:238
 msgid "Initialize session from savefile"
 msgstr "Spustí sezení z uloženého souboru"
 
-#: src/core/main.c:254
+#: src/core/main.c:244
 msgid "Print version"
 msgstr "Vypíše verzi"
 
-#: src/core/main.c:260
+#: src/core/main.c:250
 msgid "Make X calls synchronous"
 msgstr "Provede volání X synchronně"
 
-#: src/core/main.c:266
+#: src/core/main.c:256
 msgid "Turn compositing on"
 msgstr "Zapnout funkci kompozitoru"
 
-#: src/core/main.c:272
+#: src/core/main.c:262
 msgid "Turn compositing off"
 msgstr "Vypnout funkci kompozitoru"
 
-#: src/core/main.c:278
+#: src/core/main.c:268
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr ""
 "Nevytvářet okna přes celou obrazovku, která jsou maximalizovaná a nemají "
 "dekorace"
 
-#: src/core/main.c:499
-#, c-format
-msgid "Failed to restart: %s\n"
-msgstr "Nezdařil se restart: %s\n"
-
-#: src/core/prefs.c:1043
-msgid ""
-"Workarounds for broken applications disabled. Some applications may not "
-"behave properly.\n"
-msgstr ""
-"Bylo zakázáno obcházení chyb aplikací. Některé aplikace se možná nebudou "
-"chovat správně.\n"
-
-#: src/core/prefs.c:1120
-#, c-format
-msgid "Could not parse font description \"%s\" from GSettings key %s\n"
-msgstr "Nelze analyzovat popis písma „%s“ z klíče GSettings %s\n"
-
-#: src/core/prefs.c:1182
-#, c-format
-msgid ""
-"\"%s\" found in configuration database is not a valid value for mouse button "
-"modifier\n"
-msgstr ""
-"„%s“ nalezené v databázi nastavení není platnou hodnotou modifikátoru "
-"tlačítka myši\n"
-
-#: src/core/prefs.c:1432
-#, c-format
-msgid ""
-"\"%s\" found in configuration database is not a valid value for keybinding "
-"\"%s\"\n"
-msgstr ""
-"„%s“ nalezené v databázi nastavení není platnou hodnotou klávesové zkratky "
-"„%s“\n"
-
-#: src/core/prefs.c:1534
+#: src/core/prefs.c:1524
 #, c-format
 msgid "Workspace %d"
 msgstr "Plocha %d"
 
-#: src/core/prefs.c:1791
-#, c-format
-msgid "Missing %s extension required for compositing\n"
-msgstr "Schází rozšíření %s vyžadované funkcemi kompozitoru\n"
-
-#: src/core/screen.c:364
-#, c-format
-msgid "Screen %d on display '%s' is invalid\n"
-msgstr "Obrazovka %d na displeji „%s“ je neplatná\n"
-
-#: src/core/screen.c:380
-#, c-format
-msgid ""
-"Screen %d on display \"%s\" already has a window manager; try using the --"
-"replace option to replace the current window manager.\n"
-msgstr ""
-"Obrazovka %d na displeji „%s“ již správce oken má; zkuste prosím nahradit "
-"aktuálního správce oken pomocí přepínače --replace.\n"
-
-#: src/core/screen.c:407
-#, c-format
-msgid ""
-"Could not acquire window manager selection on screen %d display \"%s\"\n"
-msgstr "Nelze získat výběr správce oken na obrazovce %d displeje „%s“\n"
-
-#: src/core/screen.c:463
-#, c-format
-msgid "Screen %d on display \"%s\" already has a window manager\n"
-msgstr "Obrazovka %d na displeji „%s“ již má správce oken\n"
-
-#: src/core/screen.c:675
-#, c-format
-msgid "Could not release screen %d on display \"%s\"\n"
-msgstr "Nelze uvolnit obrazovku %d na displeji „%s“\n"
-
-#: src/core/session.c:842 src/core/session.c:849
-#, c-format
-msgid "Could not create directory '%s': %s\n"
-msgstr "Nelze vytvořit složku \"%s\": %s\n"
-
-#: src/core/session.c:859
-#, c-format
-msgid "Could not open session file '%s' for writing: %s\n"
-msgstr "Nelze otevřít soubor sezení „%s“ k zápisu: %s\n"
-
-#: src/core/session.c:1000
-#, c-format
-msgid "Error writing session file '%s': %s\n"
-msgstr "Chyba při zápisu souboru sezení „%s“: %s\n"
-
-#: src/core/session.c:1005
-#, c-format
-msgid "Error closing session file '%s': %s\n"
-msgstr "Chyba při zavírání souboru sezení „%s“: %s\n"
-
-#: src/core/session.c:1135
-#, c-format
-msgid "Failed to parse saved session file: %s\n"
-msgstr "Chyba při analyzování uloženého souboru sezení: %s\n"
-
-#: src/core/session.c:1184
+#: src/core/session.c:1210
 msgid "<metacity_session> attribute seen but we already have the session ID"
 msgstr "nalezen atribut <metacity_session>, ale ID sezení už k dispozici je"
 
-#: src/core/session.c:1197 src/core/session.c:1272 src/core/session.c:1304
-#: src/core/session.c:1376 src/core/session.c:1436
+#: src/core/session.c:1223 src/core/session.c:1298 src/core/session.c:1330
+#: src/core/session.c:1402 src/core/session.c:1462
 #, c-format
 msgid "Unknown attribute %s on <%s> element"
 msgstr "Neznámý atribut %s prvku <%s>"
 
-#: src/core/session.c:1214
+#: src/core/session.c:1240
 msgid "nested <window> tag"
 msgstr "vnořená značka <window>"
 
-#: src/core/session.c:1456
+#: src/core/session.c:1482
 #, c-format
 msgid "Unknown element %s"
 msgstr "Neznámý prvek %s"
 
-#: src/core/session.c:1812
+#: src/core/session.c:1838
 msgid ""
 "These windows do not support &quot;save current setup&quot; and will have to "
 "be restarted manually next time you log in."
@@ -1345,181 +1238,87 @@ msgstr ""
 "Tato okna nepodporují ukládání aktuálního nastavení a po vašem příštím "
 "přihlášení je budete muset znovu spustit ručně."
 
-#: src/core/util.c:68
-#, c-format
-msgid "Failed to open debug log: %s\n"
-msgstr "Nelze otevřít ladicí záznam: %s\n"
-
-#: src/core/util.c:78
-#, c-format
-msgid "Failed to fdopen() log file %s: %s\n"
-msgstr "Nelze provést fdopen() soubor záznamu %s: %s\n"
-
-#: src/core/util.c:84
+#: src/core/util.c:105
 #, c-format
 msgid "Opened log file %s\n"
 msgstr "Otevřen soubor záznamu %s\n"
 
-#: src/core/util.c:103 src/tools/metacity-message.c:206
-msgid "Metacity was compiled without support for verbose mode\n"
-msgstr "Metacity bylo přeloženo bez podpory podrobného režimu\n"
-
-#: src/core/util.c:203
-msgid "Window manager: "
-msgstr "Správce oken: "
-
-#: src/core/util.c:357
-msgid "Bug in window manager: "
-msgstr "Chyba ve správci oken: "
-
-#: src/core/util.c:388
-msgid "Window manager warning: "
-msgstr "Varování správce oken: "
-
-#: src/core/util.c:416
-msgid "Window manager error: "
-msgstr "Chyba správce oken: "
-
-#. first time through
-#: src/core/window.c:5950
-#, c-format
-msgid ""
-"Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
-"window as specified in the ICCCM.\n"
-msgstr ""
-"Okno %s nastavilo SM_CLIENT_ID samo na sebe, namísto okna WM_CLIENT_LEADER, "
-"jak je definováno v ICCCM.\n"
-
-#. We ignore mwm_has_resize_func because WM_NORMAL_HINTS is the
-#. * authoritative source for that info. Some apps such as mplayer or
-#. * xine disable resize via MWM but not WM_NORMAL_HINTS, but that
-#. * leads to e.g. us not fullscreening their windows.  Apps that set
-#. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
-#. * about these apps but make them work.
-#.
-#: src/core/window.c:6440
-#, c-format
-msgid ""
-"Window %s sets an MWM hint indicating it isn't resizable, but sets min size "
-"%d x %d and max size %d x %d; this doesn't make much sense.\n"
-msgstr ""
-"Okno %s nastavuje pokyn MWM, kterým naznačuje, že se nedá měnit jeho "
-"velikost, ale nastavuje min. velikost %d × %d a max. velikost %d × %d; to "
-"nedává smysl.\n"
-
-#: src/core/window-props.c:403
-#, c-format
-msgid "Application set a bogus _NET_WM_PID %lu\n"
-msgstr "Aplikace nastavila neplatný _NET_WM_PID %lu\n"
-
 #. Translators: the title of a window from another machine
-#: src/core/window-props.c:554
+#: src/core/window-props.c:570
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (na %s)"
 
 #. Simple case-- don't bother to look it up.  It's root.
-#: src/core/window-props.c:586
+#: src/core/window-props.c:602
 #, c-format
 msgid "%s (as superuser)"
 msgstr "%s (jako superuživatel)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine
-#: src/core/window-props.c:604
+#: src/core/window-props.c:620
 #, c-format
 msgid "%s (as %s)"
 msgstr "%s (jako %s)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine, whose name we don't know
-#: src/core/window-props.c:610
+#: src/core/window-props.c:626
 #, c-format
 msgid "%s (as another user)"
 msgstr "%s (jako jiný uživatel)"
 
-#: src/core/window-props.c:1590
-#, c-format
-msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
-msgstr "Neplatné okno WM_TRANSIENT_FOR 0x%lx specifikováno pro %s.\n"
-
-#: src/core/xprops.c:153
-#, c-format
-msgid ""
-"Window 0x%lx has property %s\n"
-"that was expected to have type %s format %d\n"
-"and actually has type %s format %d n_items %d.\n"
-"This is most likely an application bug, not a window manager bug.\n"
-"The window has title=\"%s\" class=\"%s\" name=\"%s\"\n"
-msgstr ""
-"Okno 0x%lx má vlastnost %s\n"
-"Ta má mít typ %s formátu %d\n"
-"a ve skutečnosti má typ %s formátu %d n_items %d.\n"
-"To je pravděpodobně chyba aplikace, nikoliv správce oken.\n"
-"Okno má záhlaví=„%s“, třída=„%s“, název=„%s“.\n"
-
-#: src/core/xprops.c:409
-#, c-format
-msgid "Property %s on window 0x%lx contained invalid UTF-8\n"
-msgstr "Vlastnost %s okna 0x%lx obsahovala neplatné UTF-8\n"
-
-#: src/core/xprops.c:492
-#, c-format
-msgid ""
-"Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
-msgstr ""
-"Vlastnost %s okna 0x%lx obsahovala neplatné UTF-8 u položky %d v seznamu\n"
-
-#: src/tools/metacity-message.c:176
+#: src/tools/metacity-message.c:174
 #, c-format
 msgid "Usage: %s\n"
 msgstr "Použití: %s\n"
 
-#: src/ui/frames.c:1310
+#: src/ui/frames.c:1307
 msgid "Close Window"
 msgstr "Zavřít okno"
 
-#: src/ui/frames.c:1313
+#: src/ui/frames.c:1310
 msgid "Window Menu"
 msgstr "Nabídka okna"
 
-#: src/ui/frames.c:1316
+#: src/ui/frames.c:1313
 msgid "Window App Menu"
 msgstr "Aplikační nabídka okna"
 
-#: src/ui/frames.c:1319
+#: src/ui/frames.c:1316
 msgid "Minimize Window"
 msgstr "Minimalizovat okno"
 
-#: src/ui/frames.c:1322
+#: src/ui/frames.c:1319
 msgid "Maximize Window"
 msgstr "Maximalizovat okno"
 
-#: src/ui/frames.c:1325
+#: src/ui/frames.c:1322
 msgid "Restore Window"
 msgstr "Obnovit okno"
 
-#: src/ui/frames.c:1328
+#: src/ui/frames.c:1325
 msgid "Roll Up Window"
 msgstr "Svinout okno"
 
-#: src/ui/frames.c:1331
+#: src/ui/frames.c:1328
 msgid "Unroll Window"
 msgstr "Rozvinout okno"
 
-#: src/ui/frames.c:1334
+#: src/ui/frames.c:1331
 msgid "Keep Window On Top"
 msgstr "Držet okno navrchu"
 
-#: src/ui/frames.c:1337
+#: src/ui/frames.c:1334
 msgid "Remove Window From Top"
 msgstr "Odstranit okno svrchu"
 
-#: src/ui/frames.c:1340
+#: src/ui/frames.c:1337
 msgid "Always On Visible Workspace"
 msgstr "Vždy na viditelné ploše"
 
-#: src/ui/frames.c:1343
+#: src/ui/frames.c:1340
 msgid "Put Window On Only One Workspace"
 msgstr "Umístit okno jen na jednu plochu"
 
@@ -1721,7 +1520,7 @@ msgstr "Mod5"
 msgid "%d x %d"
 msgstr "%d × %d"
 
-#: src/ui/ui.c:768
+#: src/ui/ui.c:871
 msgid "Falling back to default GTK+ theme - Adwaita"
 msgstr "Nouzově se přepnulo zpět na výchozí motiv GTK+ – Adwaita"
 
@@ -1741,12 +1540,12 @@ msgstr "Název motivu, který se má použít"
 msgid "NAME"
 msgstr "NÁZEV"
 
-#: theme-viewer/theme-viewer-window.c:100
+#: theme-viewer/theme-viewer-window.c:103
 #, c-format
 msgid "Loaded <b>%s</b> theme <b>%s</b> in <b>%f</b> seconds."
 msgstr "Načten motiv <b>%s</b> s názvem <b>%s</b> během <b>%f</b> s."
 
-#: theme-viewer/theme-viewer-window.c:130
+#: theme-viewer/theme-viewer-window.c:133
 #, c-format
 msgid ""
 "Got MetaFrameBorders in <b>%f</b> seconds (CSS loading, PangoFontDescription "
@@ -1755,7 +1554,7 @@ msgstr ""
 "Byly získány MetaFrameBorders během <b>%f</b> s (načtení CSS, vytvoření "
 "PangoFontDescription a výpočet výšky záhlaví)."
 
-#: theme-viewer/theme-viewer-window.c:205
+#: theme-viewer/theme-viewer-window.c:208
 #, c-format
 msgid ""
 "Drew <b>%d</b> frames in <b>%f</b> client-side seconds (<b>%f</b> "
@@ -1766,11 +1565,155 @@ msgstr ""
 "b> ms na snímek) a <b>%f</b> s celkově včetně prostředků X serveru (<b>%f</"
 "b> ms na snímek)."
 
-#: theme-viewer/theme-viewer-window.c:242
+#: theme-viewer/theme-viewer-window.c:245
 msgid "Run again"
 msgstr "Spustit znovu"
 
-#: theme-viewer/theme-viewer-window.c:930
+#: theme-viewer/theme-viewer-window.c:986
 msgid "Metacity Theme Viewer"
 msgstr "Prohlížeč motivů Metacity"
 
+#~ msgid "Unknown window information request: %d"
+#~ msgstr "Neznámý informační požadavek okna: %d"
+
+#~ msgid "Failed to get hostname: %s\n"
+#~ msgstr "Nelze získat název počítače: %s\n"
+
+#~ msgid "Failed to open X Window System display '%s'\n"
+#~ msgstr "Nelze otevřít displej X Window System „%s“\n"
+
+#~ msgid ""
+#~ "Some other program is already using the key %s with modifiers %x as a "
+#~ "binding\n"
+#~ msgstr ""
+#~ "Klávesu %s s modifikátory %x již jako zkratku používá nějaký jiný "
+#~ "program\n"
+
+#~ msgid "Failed to restart: %s\n"
+#~ msgstr "Nezdařil se restart: %s\n"
+
+#~ msgid ""
+#~ "Workarounds for broken applications disabled. Some applications may not "
+#~ "behave properly.\n"
+#~ msgstr ""
+#~ "Bylo zakázáno obcházení chyb aplikací. Některé aplikace se možná nebudou "
+#~ "chovat správně.\n"
+
+#~ msgid "Could not parse font description \"%s\" from GSettings key %s\n"
+#~ msgstr "Nelze analyzovat popis písma „%s“ z klíče GSettings %s\n"
+
+#~ msgid ""
+#~ "\"%s\" found in configuration database is not a valid value for mouse "
+#~ "button modifier\n"
+#~ msgstr ""
+#~ "„%s“ nalezené v databázi nastavení není platnou hodnotou modifikátoru "
+#~ "tlačítka myši\n"
+
+#~ msgid ""
+#~ "\"%s\" found in configuration database is not a valid value for "
+#~ "keybinding \"%s\"\n"
+#~ msgstr ""
+#~ "„%s“ nalezené v databázi nastavení není platnou hodnotou klávesové "
+#~ "zkratky „%s“\n"
+
+#~ msgid "Missing %s extension required for compositing\n"
+#~ msgstr "Schází rozšíření %s vyžadované funkcemi kompozitoru\n"
+
+#~ msgid "Screen %d on display '%s' is invalid\n"
+#~ msgstr "Obrazovka %d na displeji „%s“ je neplatná\n"
+
+#~ msgid ""
+#~ "Screen %d on display \"%s\" already has a window manager; try using the --"
+#~ "replace option to replace the current window manager.\n"
+#~ msgstr ""
+#~ "Obrazovka %d na displeji „%s“ již správce oken má; zkuste prosím nahradit "
+#~ "aktuálního správce oken pomocí přepínače --replace.\n"
+
+#~ msgid ""
+#~ "Could not acquire window manager selection on screen %d display \"%s\"\n"
+#~ msgstr "Nelze získat výběr správce oken na obrazovce %d displeje „%s“\n"
+
+#~ msgid "Screen %d on display \"%s\" already has a window manager\n"
+#~ msgstr "Obrazovka %d na displeji „%s“ již má správce oken\n"
+
+#~ msgid "Could not release screen %d on display \"%s\"\n"
+#~ msgstr "Nelze uvolnit obrazovku %d na displeji „%s“\n"
+
+#~ msgid "Could not create directory '%s': %s\n"
+#~ msgstr "Nelze vytvořit složku \"%s\": %s\n"
+
+#~ msgid "Could not open session file '%s' for writing: %s\n"
+#~ msgstr "Nelze otevřít soubor sezení „%s“ k zápisu: %s\n"
+
+#~ msgid "Error writing session file '%s': %s\n"
+#~ msgstr "Chyba při zápisu souboru sezení „%s“: %s\n"
+
+#~ msgid "Error closing session file '%s': %s\n"
+#~ msgstr "Chyba při zavírání souboru sezení „%s“: %s\n"
+
+#~ msgid "Failed to parse saved session file: %s\n"
+#~ msgstr "Chyba při analyzování uloženého souboru sezení: %s\n"
+
+#~ msgid "Failed to open debug log: %s\n"
+#~ msgstr "Nelze otevřít ladicí záznam: %s\n"
+
+#~ msgid "Failed to fdopen() log file %s: %s\n"
+#~ msgstr "Nelze provést fdopen() soubor záznamu %s: %s\n"
+
+#~ msgid "Metacity was compiled without support for verbose mode\n"
+#~ msgstr "Metacity bylo přeloženo bez podpory podrobného režimu\n"
+
+#~ msgid "Window manager: "
+#~ msgstr "Správce oken: "
+
+#~ msgid "Bug in window manager: "
+#~ msgstr "Chyba ve správci oken: "
+
+#~ msgid "Window manager warning: "
+#~ msgstr "Varování správce oken: "
+
+#~ msgid "Window manager error: "
+#~ msgstr "Chyba správce oken: "
+
+#~ msgid ""
+#~ "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
+#~ "window as specified in the ICCCM.\n"
+#~ msgstr ""
+#~ "Okno %s nastavilo SM_CLIENT_ID samo na sebe, namísto okna "
+#~ "WM_CLIENT_LEADER, jak je definováno v ICCCM.\n"
+
+#~ msgid ""
+#~ "Window %s sets an MWM hint indicating it isn't resizable, but sets min "
+#~ "size %d x %d and max size %d x %d; this doesn't make much sense.\n"
+#~ msgstr ""
+#~ "Okno %s nastavuje pokyn MWM, kterým naznačuje, že se nedá měnit jeho "
+#~ "velikost, ale nastavuje min. velikost %d × %d a max. velikost %d × %d; to "
+#~ "nedává smysl.\n"
+
+#~ msgid "Application set a bogus _NET_WM_PID %lu\n"
+#~ msgstr "Aplikace nastavila neplatný _NET_WM_PID %lu\n"
+
+#~ msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
+#~ msgstr "Neplatné okno WM_TRANSIENT_FOR 0x%lx specifikováno pro %s.\n"
+
+#~ msgid ""
+#~ "Window 0x%lx has property %s\n"
+#~ "that was expected to have type %s format %d\n"
+#~ "and actually has type %s format %d n_items %d.\n"
+#~ "This is most likely an application bug, not a window manager bug.\n"
+#~ "The window has title=\"%s\" class=\"%s\" name=\"%s\"\n"
+#~ msgstr ""
+#~ "Okno 0x%lx má vlastnost %s\n"
+#~ "Ta má mít typ %s formátu %d\n"
+#~ "a ve skutečnosti má typ %s formátu %d n_items %d.\n"
+#~ "To je pravděpodobně chyba aplikace, nikoliv správce oken.\n"
+#~ "Okno má záhlaví=„%s“, třída=„%s“, název=„%s“.\n"
+
+#~ msgid "Property %s on window 0x%lx contained invalid UTF-8\n"
+#~ msgstr "Vlastnost %s okna 0x%lx obsahovala neplatné UTF-8\n"
+
+#~ msgid ""
+#~ "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the "
+#~ "list\n"
+#~ msgstr ""
+#~ "Vlastnost %s okna 0x%lx obsahovala neplatné UTF-8 u položky %d v seznamu\n"
