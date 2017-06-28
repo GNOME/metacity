@@ -80,9 +80,9 @@ dnl **************************************************************************
 dnl Metacity version
 dnl **************************************************************************
 
-AC_DEFINE([METACITY_MAJOR_VERSION], m_major_version, [Metacity major version])
-AC_DEFINE([METACITY_MINOR_VERSION], m_minor_version, [Metacity minor version])
-AC_DEFINE([METACITY_MICRO_VERSION], m_micro_version, [Metacity micro version])
+AC_DEFINE([METACITY_MAJOR_VERSION], [m_major_version], [Metacity major version])
+AC_DEFINE([METACITY_MINOR_VERSION], [m_minor_version], [Metacity minor version])
+AC_DEFINE([METACITY_MICRO_VERSION], [m_micro_version], [Metacity micro version])
 
 dnl **************************************************************************
 dnl Check for required packages
