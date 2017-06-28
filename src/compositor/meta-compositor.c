@@ -374,6 +374,17 @@ meta_compositor_window_opacity_changed (MetaCompositor *compositor,
 }
 
 void
+meta_compositor_window_opaque_region_changed (MetaCompositor *compositor,
+                                              MetaWindow     *window)
+{
+  MetaCompositorClass *compositor_class;
+
+  compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
+
+  compositor_class->window_opaque_region_changed (compositor, window);
+}
+
+void
 meta_compositor_window_shape_changed (MetaCompositor *compositor,
                                       MetaWindow     *window)
 {

@@ -67,6 +67,9 @@ void             meta_compositor_hide_window            (MetaCompositor     *com
 void             meta_compositor_window_opacity_changed (MetaCompositor     *compositor,
                                                          MetaWindow         *window);
 
+void             meta_compositor_window_opaque_region_changed (MetaCompositor     *compositor,
+                                                               MetaWindow         *window);
+
 void             meta_compositor_window_shape_changed   (MetaCompositor     *compositor,
                                                          MetaWindow         *window);
 
