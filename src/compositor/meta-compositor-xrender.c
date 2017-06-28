@@ -2479,6 +2479,12 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
   cw->shape_region = cairo_region_to_xserver_region (xrender->xdisplay,
                                                      window->shape_region);
 
+  if (cw->shape_region != None)
+    {
+      XFixesTranslateRegion (xrender->xdisplay, cw->shape_region,
+                             cw->rect.x, cw->rect.y);
+    }
+
   xwindow = get_toplevel_xwindow (window);
   cw->damage = XDamageCreate (xrender->xdisplay, xwindow, XDamageReportNonEmpty);
 
@@ -2649,9 +2655,6 @@ meta_compositor_xrender_window_shape_region_changed (MetaCompositor *compositor,
 
   if (cw->shape_region != None)
     {
-      XFixesTranslateRegion (xrender->xdisplay, cw->shape_region,
-                             cw->rect.x, cw->rect.y);
-
       dump_xserver_region (xrender, "shape_changed", cw->shape_region);
       add_damage (xrender, cw->shape_region);
 
@@ -2660,6 +2663,12 @@ meta_compositor_xrender_window_shape_region_changed (MetaCompositor *compositor,
 
   cw->shape_region = cairo_region_to_xserver_region (xrender->xdisplay,
                                                      window->shape_region);
+
+  if (cw->shape_region != None)
+    {
+      XFixesTranslateRegion (xrender->xdisplay, cw->shape_region,
+                             cw->rect.x, cw->rect.y);
+    }
 }
 
 static void
@@ -2910,7 +2919,7 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
 {
   MetaCompositorXRender *xrender;
   MetaCompWindow *cw;
-  MetaRectangle rect;
+  MetaRectangle old_rect;
   XserverRegion damage;
 
   xrender = META_COMPOSITOR_XRENDER (compositor);
@@ -2921,7 +2930,8 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
 
   meta_error_trap_push (window->display);
 
-  meta_window_get_input_rect (window, &rect);
+  old_rect = cw->rect;
+  meta_window_get_input_rect (window, &cw->rect);
 
   if (xrender->debug)
     {
@@ -2929,7 +2939,7 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
                cw->shape_region != None, cw->needs_shadow);
       dump_xserver_region (xrender, "\textents", cw->extents);
       fprintf (stderr, "\txy (%d %d), wh (%d %d)\n",
-               rect.x, rect.y, rect.width, rect.height);
+               cw->rect.x, cw->rect.y, cw->rect.width, cw->rect.height);
     }
 
   if (cw->extents)
@@ -2944,7 +2954,7 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
         fprintf (stderr, "no extents to damage !\n");
     }
 
-  if (cw->rect.width != rect.width || cw->rect.height != rect.height)
+  if (cw->rect.width != old_rect.width || cw->rect.height != old_rect.height)
     {
       if (cw->shaded.back_pixmap != None)
         {
@@ -3000,10 +3010,10 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
 
       if (meta_window_is_shaded (cw->window))
         {
-          cw->shaded.x = cw->rect.x;
-          cw->shaded.y = cw->rect.y;
-          cw->shaded.width = cw->rect.width;
-          cw->shaded.height = cw->rect.height;
+          cw->shaded.x = old_rect.x;
+          cw->shaded.y = old_rect.y;
+          cw->shaded.width = old_rect.width;
+          cw->shaded.height = old_rect.height;
 
           if (cw->client_region != None)
             {
@@ -3034,8 +3044,6 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
         }
     }
 
-  cw->rect = rect;
-
   if (cw->extents)
     XFixesDestroyRegion (xrender->xdisplay, cw->extents);
 
@@ -3052,6 +3060,18 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
     {
       damage = XFixesCreateRegion (xrender->xdisplay, NULL, 0);
       XFixesCopyRegion (xrender->xdisplay, damage, cw->extents);
+    }
+
+  if (cw->shape_region != None)
+    {
+      gint dx;
+      gint dy;
+
+      dx = cw->rect.x - old_rect.x;
+      dy = cw->rect.y - old_rect.y;
+
+      XFixesUnionRegion (xrender->xdisplay, damage, damage, cw->shape_region);
+      XFixesTranslateRegion (xrender->xdisplay, cw->shape_region, dx, dy);
     }
 
   dump_xserver_region (xrender, "sync_window_geometry", damage);
