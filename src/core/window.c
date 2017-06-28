@@ -9122,34 +9122,6 @@ meta_window_update_shape_region (MetaWindow *window)
 
   meta_error_trap_pop (window->display);
 
-  if (shape_region != NULL)
-    {
-      cairo_rectangle_int_t client_area;
-      cairo_region_overlap_t overlap;
-
-      client_area.x = 0;
-      client_area.y = 0;
-      client_area.width = window->rect.width;
-      client_area.height = window->rect.height;
-
-      /* The shape we get back from the client may have coordinates
-       * outside of the frame. The X SHAPE Extension requires that
-       * the overall shape the client provides never exceeds the
-       * "bounding rectangle" of the window -- the shape that the
-       * window would have gotten if it was unshaped. In our case,
-       * this is simply the client area.
-       */
-      cairo_region_intersect_rectangle (shape_region, &client_area);
-
-      /* Some applications might explicitly set their bounding region
-       * to the client area. Detect these cases, and throw out the
-       * bounding region in this case.
-       */
-      overlap = cairo_region_contains_rectangle (shape_region, &client_area);
-      if (overlap == CAIRO_REGION_OVERLAP_IN)
-        g_clear_pointer (&shape_region, cairo_region_destroy);
-    }
-
   if (cairo_region_equal (window->shape_region, shape_region))
     {
       cairo_region_destroy (shape_region);
