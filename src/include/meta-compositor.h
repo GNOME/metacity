@@ -47,25 +47,25 @@ typedef enum
   META_EFFECT_TYPE_UNMINIMIZE,
 } MetaEffectType;
 
-MetaCompositor  *meta_compositor_new                    (MetaCompositorType  type,
-                                                         MetaDisplay        *display);
+MetaCompositor  *meta_compositor_new                          (MetaCompositorType  type,
+                                                               MetaDisplay        *display);
 
-void             meta_compositor_add_window             (MetaCompositor     *compositor,
-                                                         MetaWindow         *window);
+void             meta_compositor_add_window                   (MetaCompositor     *compositor,
+                                                               MetaWindow         *window);
 
-void             meta_compositor_remove_window          (MetaCompositor     *compositor,
-                                                         MetaWindow         *window);
+void             meta_compositor_remove_window                (MetaCompositor     *compositor,
+                                                               MetaWindow         *window);
 
-void             meta_compositor_show_window            (MetaCompositor     *compositor,
-                                                         MetaWindow         *window,
-                                                         MetaEffectType      effect);
+void             meta_compositor_show_window                  (MetaCompositor     *compositor,
+                                                               MetaWindow         *window,
+                                                               MetaEffectType      effect);
 
-void             meta_compositor_hide_window            (MetaCompositor     *compositor,
-                                                         MetaWindow         *window,
-                                                         MetaEffectType      effect);
+void             meta_compositor_hide_window                  (MetaCompositor     *compositor,
+                                                               MetaWindow         *window,
+                                                               MetaEffectType      effect);
 
-void             meta_compositor_window_opacity_changed (MetaCompositor     *compositor,
-                                                         MetaWindow         *window);
+void             meta_compositor_window_opacity_changed       (MetaCompositor     *compositor,
+                                                               MetaWindow         *window);
 
 void             meta_compositor_window_opaque_region_changed (MetaCompositor     *compositor,
                                                                MetaWindow         *window);
@@ -73,35 +73,35 @@ void             meta_compositor_window_opaque_region_changed (MetaCompositor   
 void             meta_compositor_window_shape_region_changed  (MetaCompositor     *compositor,
                                                                MetaWindow         *window);
 
-void             meta_compositor_set_updates_frozen     (MetaCompositor     *compositor,
-                                                         MetaWindow         *window,
-                                                         gboolean            updates_frozen);
+void             meta_compositor_set_updates_frozen           (MetaCompositor     *compositor,
+                                                               MetaWindow         *window,
+                                                               gboolean            updates_frozen);
 
-void             meta_compositor_process_event          (MetaCompositor     *compositor,
-                                                         XEvent             *event,
-                                                         MetaWindow         *window);
+void             meta_compositor_process_event                (MetaCompositor     *compositor,
+                                                               XEvent             *event,
+                                                               MetaWindow         *window);
 
-cairo_surface_t *meta_compositor_get_window_surface     (MetaCompositor     *compositor,
-                                                         MetaWindow         *window);
+cairo_surface_t *meta_compositor_get_window_surface           (MetaCompositor     *compositor,
+                                                               MetaWindow         *window);
 
-void             meta_compositor_maximize_window        (MetaCompositor     *compositor,
-                                                         MetaWindow         *window);
+void             meta_compositor_maximize_window              (MetaCompositor     *compositor,
+                                                               MetaWindow         *window);
 
-void             meta_compositor_unmaximize_window      (MetaCompositor     *compositor,
-                                                         MetaWindow         *window);
+void             meta_compositor_unmaximize_window            (MetaCompositor     *compositor,
+                                                               MetaWindow         *window);
 
-void             meta_compositor_sync_screen_size       (MetaCompositor     *compositor);
+void             meta_compositor_sync_screen_size             (MetaCompositor     *compositor);
 
-void             meta_compositor_sync_stack             (MetaCompositor     *compositor,
-                                                         GList              *stack);
+void             meta_compositor_sync_stack                   (MetaCompositor     *compositor,
+                                                               GList              *stack);
 
-void             meta_compositor_sync_window_geometry   (MetaCompositor     *compositor,
-                                                         MetaWindow         *window);
+void             meta_compositor_sync_window_geometry         (MetaCompositor     *compositor,
+                                                               MetaWindow         *window);
 
-gboolean         meta_compositor_is_our_xwindow         (MetaCompositor     *compositor,
-                                                         Window              xwindow);
+gboolean         meta_compositor_is_our_xwindow               (MetaCompositor     *compositor,
+                                                               Window              xwindow);
 
-gboolean         meta_compositor_is_composited          (MetaCompositor     *compositor);
+gboolean         meta_compositor_is_composited                (MetaCompositor     *compositor);
 
 G_END_DECLS
 
