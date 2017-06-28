@@ -70,8 +70,8 @@ void             meta_compositor_window_opacity_changed (MetaCompositor     *com
 void             meta_compositor_window_opaque_region_changed (MetaCompositor     *compositor,
                                                                MetaWindow         *window);
 
-void             meta_compositor_window_shape_changed   (MetaCompositor     *compositor,
-                                                         MetaWindow         *window);
+void             meta_compositor_window_shape_region_changed  (MetaCompositor     *compositor,
+                                                               MetaWindow         *window);
 
 void             meta_compositor_set_updates_frozen     (MetaCompositor     *compositor,
                                                          MetaWindow         *window,

@@ -50,8 +50,8 @@ struct _MetaCompositorClass
   void              (* window_opaque_region_changed) (MetaCompositor     *compositor,
                                                       MetaWindow         *window);
 
-  void              (* window_shape_changed)   (MetaCompositor     *compositor,
-                                                MetaWindow         *window);
+  void              (* window_shape_region_changed)  (MetaCompositor     *compositor,
+                                                      MetaWindow         *window);
 
   void              (* set_updates_frozen)     (MetaCompositor     *compositor,
                                                 MetaWindow         *window,

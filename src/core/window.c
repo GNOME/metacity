@@ -9159,7 +9159,7 @@ meta_window_update_shape_region (MetaWindow *window)
   g_clear_pointer (&window->shape_region, cairo_region_destroy);
   window->shape_region = shape_region;
 
-  meta_compositor_window_shape_changed (window->display->compositor, window);
+  meta_compositor_window_shape_region_changed (window->display->compositor, window);
 }
 
 static void

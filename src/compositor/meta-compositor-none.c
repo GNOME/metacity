@@ -72,8 +72,8 @@ meta_compositor_none_window_opaque_region_changed (MetaCompositor *compositor,
 }
 
 static void
-meta_compositor_none_window_shape_changed (MetaCompositor *compositor,
-                                           MetaWindow     *window)
+meta_compositor_none_window_shape_region_changed (MetaCompositor *compositor,
+                                                  MetaWindow     *window)
 {
 }
 
@@ -146,7 +146,7 @@ meta_compositor_none_class_init (MetaCompositorNoneClass *none_class)
   compositor_class->hide_window = meta_compositor_none_hide_window;
   compositor_class->window_opacity_changed = meta_compositor_none_window_opacity_changed;
   compositor_class->window_opaque_region_changed = meta_compositor_none_window_opaque_region_changed;
-  compositor_class->window_shape_changed = meta_compositor_none_window_shape_changed;
+  compositor_class->window_shape_region_changed = meta_compositor_none_window_shape_region_changed;
   compositor_class->set_updates_frozen = meta_compositor_none_set_updates_frozen;
   compositor_class->process_event = meta_compositor_none_process_event;
   compositor_class->get_window_surface = meta_compositor_none_get_window_surface;
