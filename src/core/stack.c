@@ -1026,7 +1026,7 @@ stack_sync_to_xserver (MetaStack *stack)
       meta_topic (META_DEBUG_STACK, "%u:%d - %s ",
                   w->layer, w->stack_position, w->desc);
 
-      g_array_prepend_val (stacked, w->xwindow);
+      g_array_append_val (stacked, w->xwindow);
 
       if (w->frame)
         g_array_append_val (root_children_stacked, w->frame->xwindow);
