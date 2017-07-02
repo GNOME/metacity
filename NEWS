@@ -1,3 +1,11 @@
+Version 3.25.2
+==============
+- Fix appmenu button size in metacity-theme-viewer
+- Add appmenu to button layout in metacity-theme-viewer
+- Handle legacy fullscreen requests (#781946)
+- Updated translations:
+  Daniel Mustieles (es), Jordi Mas (ca), Marek Černocký (cs).
+
 Version 3.25.1
 ==============
 - Fix drawing with _NET_WM_WINDOW_OPACITY.
