@@ -3910,6 +3910,12 @@ meta_window_move_resize_internal (MetaWindow          *window,
   else if (is_user_action)
     save_user_window_placement (window);
 
+  if (frame_shape_changed && window->frame_bounds)
+    {
+      cairo_region_destroy (window->frame_bounds);
+      window->frame_bounds = NULL;
+    }
+
   if (need_move_frame || need_resize_frame ||
       need_move_client || need_resize_client)
     {
@@ -3938,12 +3944,6 @@ meta_window_move_resize_internal (MetaWindow          *window,
    *      server-side size/pos of window->xwindow and frame->xwindow
    *   b) all constraints are obeyed by window->rect and frame->rect
    */
-
-  if (frame_shape_changed && window->frame_bounds)
-    {
-      cairo_region_destroy (window->frame_bounds);
-      window->frame_bounds = NULL;
-    }
 
   meta_window_foreach_transient (window, maybe_move_attached_dialog, NULL);
 }
