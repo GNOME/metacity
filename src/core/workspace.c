@@ -32,14 +32,10 @@
 #include <canberra-gtk.h>
 #endif
 
-void meta_workspace_queue_calc_showing   (MetaWorkspace *workspace);
 static void set_active_space_hint        (MetaScreen *screen);
 static void focus_ancestor_or_top_window (MetaWorkspace *workspace,
                                           MetaWindow    *not_this_one,
                                           guint32        timestamp);
-static void free_this                    (gpointer candidate,
-                                          gpointer dummy);
-static void workspace_free_struts        (MetaWorkspace *workspace);
 
 static void
 maybe_add_to_list (MetaScreen *screen, MetaWindow *window, gpointer data)
@@ -294,7 +290,7 @@ meta_workspace_relocate_windows (MetaWorkspace *workspace,
   g_assert (workspace->windows == NULL);
 }
 
-void
+static void
 meta_workspace_queue_calc_showing  (MetaWorkspace *workspace)
 {
   GList *tmp;
