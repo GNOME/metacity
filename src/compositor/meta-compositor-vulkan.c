@@ -1188,6 +1188,7 @@ meta_compositor_vulkan_finalize (GObject *object)
   G_OBJECT_CLASS (meta_compositor_vulkan_parent_class)->finalize (object);
 }
 
+#ifdef HAVE_VULKAN
 static gboolean
 not_implemented_cb (MetaCompositorVulkan *vulkan)
 {
@@ -1204,6 +1205,7 @@ not_implemented_cb (MetaCompositorVulkan *vulkan)
 
   return G_SOURCE_REMOVE;
 }
+#endif
 
 static gboolean
 meta_compositor_vulkan_manage (MetaCompositor  *compositor,
