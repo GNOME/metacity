@@ -38,7 +38,9 @@ static void focus_ancestor_or_top_window (MetaWorkspace *workspace,
                                           guint32        timestamp);
 
 static void
-maybe_add_to_list (MetaScreen *screen, MetaWindow *window, gpointer data)
+maybe_add_to_list (MetaScreen *screen,
+                   MetaWindow *window,
+                   gpointer    data)
 {
   GList **mru_list = data;
 
@@ -80,9 +82,9 @@ meta_workspace_new (MetaScreen *screen)
   return workspace;
 }
 
-/** Foreach function for workspace_free_struts() */
 static void
-free_this (gpointer candidate, gpointer dummy)
+free_this (gpointer candidate,
+           gpointer user_data)
 {
   g_free (candidate);
 }
@@ -291,7 +293,7 @@ meta_workspace_relocate_windows (MetaWorkspace *workspace,
 }
 
 static void
-meta_workspace_queue_calc_showing  (MetaWorkspace *workspace)
+meta_workspace_queue_calc_showing (MetaWorkspace *workspace)
 {
   GList *tmp;
 
@@ -304,44 +306,49 @@ meta_workspace_queue_calc_showing  (MetaWorkspace *workspace)
     }
 }
 
-static void workspace_switch_sound(MetaWorkspace *from,
-                                   MetaWorkspace *to) {
-
+static void
+workspace_switch_sound (MetaWorkspace *from,
+                        MetaWorkspace *to)
+{
   MetaWorkspaceLayout layout;
   int i, nw, x, y, fi, ti;
 
-  nw = meta_screen_get_n_workspaces(from->screen);
-  fi = meta_workspace_index(from);
-  ti = meta_workspace_index(to);
+  nw = meta_screen_get_n_workspaces (from->screen);
+  fi = meta_workspace_index (from);
+  ti = meta_workspace_index (to);
 
-  meta_screen_calc_workspace_layout(from->screen,
-                                    nw,
-                                    fi,
-                                    &layout);
+  meta_screen_calc_workspace_layout (from->screen, nw, fi, &layout);
 
   for (i = 0; i < nw; i++)
-    if (layout.grid[i] == ti)
-      break;
+    {
+      if (layout.grid[i] == ti)
+        break;
+    }
 
-  if (i >= nw) {
-    g_error ("Failed to find destination workspace in layout");
-    goto finish;
-  }
+  if (i >= nw)
+    {
+      g_error ("Failed to find destination workspace in layout");
+      meta_screen_free_workspace_layout (&layout);
+      return;
+    }
 
   y = i / layout.cols;
   x = i % layout.cols;
 
   /* We priorize horizontal over vertical movements here. The
-     rationale for this is that horizontal movements are probably more
-     interesting for sound effects because speakers are usually
-     positioned on a horizontal and not a vertical axis. i.e. your
-     spatial "Woosh!" effects will easily be able to encode horizontal
-     movement but not such much vertical movement. */
+   * rationale for this is that horizontal movements are probably more
+   * interesting for sound effects because speakers are usually
+   * positioned on a horizontal and not a vertical axis. i.e. your
+   * spatial "Woosh!" effects will easily be able to encode horizontal
+   * movement but not such much vertical movement.
+   */
 
-  if (x == layout.current_col && y == layout.current_row) {
-    g_error ("Uh, origin and destination workspace at same logic position!");
-    goto finish;
-  }
+  if (x == layout.current_col && y == layout.current_row)
+    {
+      g_error ("Uh, origin and destination workspace at same logic position!");
+      meta_screen_free_workspace_layout (&layout);
+      return;
+    }
 
 #ifdef HAVE_CANBERRA
   {
@@ -359,16 +366,13 @@ static void workspace_switch_sound(MetaWorkspace *from,
     else
       g_assert_not_reached ();
 
-    ca_context_play(ca_gtk_context_get(), 1,
-                  CA_PROP_EVENT_ID, e,
-                  CA_PROP_EVENT_DESCRIPTION, "Desktop switched",
-                  CA_PROP_CANBERRA_CACHE_CONTROL, "permanent",
-                  NULL);
+    ca_context_play (ca_gtk_context_get(), 1,
+                     CA_PROP_EVENT_ID, e,
+                     CA_PROP_EVENT_DESCRIPTION, "Desktop switched",
+                     CA_PROP_CANBERRA_CACHE_CONTROL, "permanent",
+                     NULL);
   }
 #endif
-
- finish:
-  meta_screen_free_workspace_layout (&layout);
 }
 
 void
