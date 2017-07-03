@@ -347,6 +347,7 @@ static void workspace_switch_sound(MetaWorkspace *from,
   {
     const char *e;
 
+    e = NULL;
     if (x < layout.current_col)
       e = "desktop-switch-left";
     else if (x > layout.current_col)
@@ -355,6 +356,8 @@ static void workspace_switch_sound(MetaWorkspace *from,
       e = "desktop-switch-up";
     else if (y > layout.current_row)
       e = "desktop-switch-down";
+    else
+      g_assert_not_reached ();
 
     ca_context_play(ca_gtk_context_get(), 1,
                   CA_PROP_EVENT_ID, e,
