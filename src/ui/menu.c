@@ -155,14 +155,13 @@ activate_cb (GtkWidget *menuitem, gpointer data)
  */
 static char*
 get_workspace_name_with_accel (Display *display,
-                               Window   xroot,
                                int      index)
 {
   const char *name;
   int number;
   int charcount=0;
 
-  name = meta_core_get_workspace_name_with_index (display, xroot, index);
+  name = meta_core_get_workspace_name_with_index (display, index);
 
   g_assert (name != NULL);
 
@@ -343,8 +342,6 @@ meta_window_menu_new   (MetaFrames         *frames,
               if (ops & META_MENU_OP_WORKSPACES)
                 {
                   Display *display;
-                  Window xroot;
-                  GdkScreen *screen;
                   GdkWindow *window;
                   GtkWidget *submenu;
                   int j;
@@ -359,9 +356,6 @@ meta_window_menu_new   (MetaFrames         *frames,
 
                   window = gtk_widget_get_window (GTK_WIDGET (frames));
                   display = GDK_WINDOW_XDISPLAY (window);
-
-                  screen = gdk_window_get_screen (window);
-                  xroot = GDK_WINDOW_XID (gdk_screen_get_root_window (screen));
 
                   submenu = gtk_menu_new ();
 
@@ -379,7 +373,7 @@ meta_window_menu_new   (MetaFrames         *frames,
                           j + 1,
                           &key, &mods);
 
-                      label = get_workspace_name_with_accel (display, xroot, j);
+                      label = get_workspace_name_with_accel (display, j);
 
                       moveitem.type = MENU_ITEM_NORMAL;
                       moveitem.op = META_MENU_OP_WORKSPACES;

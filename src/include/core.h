@@ -157,7 +157,6 @@ int meta_core_get_active_workspace (Screen *xscreen);
 int meta_core_get_frame_workspace (Display *xdisplay,
                                    Window frame_xwindow);
 const char* meta_core_get_workspace_name_with_index (Display *xdisplay,
-                                                     Window xroot,
                                                      int    index);
 
 void meta_core_show_window_menu (Display              *xdisplay,
