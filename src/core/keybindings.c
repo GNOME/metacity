@@ -1262,11 +1262,7 @@ meta_display_process_key_event (MetaDisplay *display,
   if (all_bindings_disabled)
     return;
 
-  /* if key event was on root window, we have a shortcut */
-  screen = meta_display_screen_for_root (display, event->xkey.window);
-
-  if (screen == NULL)
-    return; /* event window is destroyed */
+  screen = display->screen;
 
   /* ignore key events on popup menus and such. */
   if (meta_ui_window_is_widget (screen->ui, event->xany.window))
