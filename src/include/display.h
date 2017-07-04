@@ -32,8 +32,6 @@ MetaScreen *meta_display_get_screen (MetaDisplay *display);
 
 gboolean meta_display_has_shape (MetaDisplay *display);
 
-MetaScreen *meta_display_screen_for_root (MetaDisplay *display,
-                                          Window       xroot);
 MetaWindow *meta_display_get_focus_window (MetaDisplay *display);
 
 int meta_display_get_damage_event_base (MetaDisplay *display);

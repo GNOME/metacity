@@ -876,16 +876,6 @@ meta_display_close (MetaDisplay *display,
   meta_quit ();
 }
 
-MetaScreen*
-meta_display_screen_for_root (MetaDisplay *display,
-                              Window       xroot)
-{
-  if (display->screen->xroot == xroot)
-    return display->screen;
-
-  return NULL;
-}
-
 /* Grab/ungrab routines taken from fvwm */
 void
 meta_display_grab (MetaDisplay *display)
@@ -1548,7 +1538,7 @@ handle_window_focus_event (MetaDisplay *display,
     }
   else if (meta_display_xwindow_is_a_no_focus_window (display, event->xany.window))
     window_type = "no_focus_window";
-  else if (meta_display_screen_for_root (display, event->xany.window))
+  else if (event->xany.window == display->screen->xroot)
     window_type = "root window";
   else
     window_type = "unknown window";
