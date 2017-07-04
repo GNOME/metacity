@@ -2169,25 +2169,22 @@ process_property_notify (MetaCompositorXRender *xrender,
   if (event->atom == display->atom__XROOTPMAP_ID ||
       event->atom == display->atom__XSETROOT_ID)
     {
-      screen = meta_display_screen_for_root (display, event->window);
-      if (screen)
+      screen = meta_display_get_screen (display);
+
+      if (event->window == meta_screen_get_xroot (screen) &&
+          xrender->root_tile != None)
         {
-          Window xroot = meta_screen_get_xroot (screen);
+          XClearArea (xdisplay, event->window, 0, 0, 0, 0, TRUE);
+          XRenderFreePicture (xdisplay, xrender->root_tile);
+          xrender->root_tile = None;
 
-          if (xrender->root_tile)
-            {
-              XClearArea (xdisplay, xroot, 0, 0, 0, 0, TRUE);
-              XRenderFreePicture (xdisplay, xrender->root_tile);
-              xrender->root_tile = None;
+          /* Damage the whole screen as we may need to redraw the
+           * background ourselves
+           */
+          damage_screen (xrender);
 
-              /* Damage the whole screen as we may need to redraw the
-                 background ourselves */
-              damage_screen (xrender);
-
-              add_repair (xrender);
-
-              return;
-            }
+          add_repair (xrender);
+          return;
         }
     }
 
