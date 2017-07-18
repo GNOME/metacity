@@ -407,9 +407,9 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl     *impl,
           if (button->visible)
             {
               if (button->type != META_BUTTON_TYPE_SPACER)
-                n_left++;
+                n_right++;
               else
-                n_left_spacers++;
+                n_right_spacers++;
             }
         }
     }
