@@ -341,7 +341,7 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl     *impl,
   int title_right_edge;
   int width, height;
   int scale;
-  int content_width, content_height;
+  int content_height;
   int button_width, button_height;
   int min_size_for_rounding;
 
@@ -363,9 +363,6 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl     *impl,
   /* Scale geometry for HiDPI, see comment in meta_theme_gtk_draw_frame () */
   scale = meta_theme_impl_get_scale (impl);
 
-  content_width = width -
-                  borders.invisible.left - layout->gtk.frame_border.left * scale -
-                  borders.invisible.right - layout->gtk.frame_border.right * scale;
   content_height = borders.visible.top - layout->gtk.frame_border.top * scale;
 
   button_width = MAX ((gint) layout->gtk.icon_size, layout->gtk.button_min_size.width) +
@@ -426,6 +423,13 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl     *impl,
   while (n_left > 0 || n_right > 0)
     {
       int space_used_by_buttons;
+      int space_available;
+
+      space_available = fgeom->width -
+                        borders.total.left -
+                        layout->gtk.titlebar_border.left * scale -
+                        layout->gtk.titlebar_border.right * scale -
+                        borders.total.right;
 
       space_used_by_buttons = 0;
 
@@ -441,7 +445,7 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl     *impl,
       space_used_by_buttons += (button_width * 0.75) * n_right_spacers;
       space_used_by_buttons += layout->gtk.titlebar_spacing * scale * MAX (n_right - 1, 0);
 
-      if (space_used_by_buttons <= content_width)
+      if (space_used_by_buttons <= space_available)
         break; /* Everything fits, bail out */
 
       /* First try to remove separators */

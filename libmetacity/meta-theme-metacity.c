@@ -4974,7 +4974,9 @@ meta_theme_metacity_calc_geometry (MetaThemeImpl     *impl,
       int space_available;
 
       space_available = fgeom->width -
+                        borders.invisible.left -
                         layout->metacity.left_titlebar_edge * scale -
+                        borders.invisible.right -
                         layout->metacity.right_titlebar_edge * scale;
 
       space_used_by_buttons = 0;
