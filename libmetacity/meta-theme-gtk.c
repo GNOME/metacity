@@ -747,8 +747,19 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
       else if (x + text_width > (fgeom->title_rect.x + fgeom->title_rect.width) / scale)
         x = (fgeom->title_rect.x + fgeom->title_rect.width) / scale - text_width;
 
+      cairo_save (cr);
+
+      cairo_rectangle (cr,
+                       fgeom->title_rect.x / scale,
+                       fgeom->title_rect.y / scale,
+                       fgeom->title_rect.width / scale,
+                       fgeom->title_rect.height / scale);
+      cairo_clip (cr);
+
       context = meta_style_info_get_style (style_info, META_STYLE_ELEMENT_TITLE);
       gtk_render_layout (context, cr, x, y, title_layout);
+
+      cairo_restore (cr);
     }
 
   context = meta_style_info_get_style (style_info, META_STYLE_ELEMENT_BUTTON);
