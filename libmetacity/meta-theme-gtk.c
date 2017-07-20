@@ -553,9 +553,7 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl     *impl,
         }
 
       x = rect.x - layout->gtk.button_margin.left * scale;
-
-      if (i > 0)
-        x -= layout->gtk.titlebar_spacing * scale;
+      x -= layout->gtk.titlebar_spacing * scale;
     }
 
   /* save right edge of titlebar for later use */
@@ -608,9 +606,7 @@ meta_theme_gtk_calc_geometry (MetaThemeImpl     *impl,
         }
 
       x = rect.x + rect.width + layout->gtk.button_margin.right * scale;
-
-      if (i < button_layout->n_left_buttons - 1)
-        x += layout->gtk.titlebar_spacing * scale;
+      x += layout->gtk.titlebar_spacing * scale;
     }
 
   /* Center vertically in the available content area */
