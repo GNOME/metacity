@@ -890,7 +890,7 @@ grab_keyboard (MetaDisplay *display,
 
   if (grab_status != GrabSuccess)
     {
-      meta_error_trap_pop_with_return (display);
+      meta_error_trap_pop (display);
       meta_topic (META_DEBUG_KEYBINDINGS,
                   "XGrabKeyboard() returned failure status %s time %u\n",
                   grab_status_to_string (grab_status),
