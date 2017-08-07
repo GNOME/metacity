@@ -147,8 +147,6 @@ set_wm_icon_size_hint (MetaScreen *screen)
 static void
 reload_xinerama_infos (MetaScreen *screen)
 {
-  MetaDisplay *display;
-
   {
     GList *tmp;
 
@@ -163,8 +161,6 @@ reload_xinerama_infos (MetaScreen *screen)
       }
   }
 
-  display = screen->display;
-
   if (screen->xinerama_infos)
     g_free (screen->xinerama_infos);
 
@@ -175,18 +171,18 @@ reload_xinerama_infos (MetaScreen *screen)
   screen->display->xinerama_cache_invalidated = TRUE;
 
 #ifdef HAVE_XFREE_XINERAMA
-  if (XineramaIsActive (display->xdisplay))
+  if (XineramaIsActive (screen->display->xdisplay))
     {
       XineramaScreenInfo *infos;
       int n_infos;
       int i;
 
       n_infos = 0;
-      infos = XineramaQueryScreens (display->xdisplay, &n_infos);
+      infos = XineramaQueryScreens (screen->display->xdisplay, &n_infos);
 
       meta_topic (META_DEBUG_XINERAMA,
                   "Found %d Xinerama screens on display %s\n",
-                  n_infos, display->name);
+                  n_infos, screen->display->name);
 
       if (n_infos > 0)
         {
@@ -220,7 +216,7 @@ reload_xinerama_infos (MetaScreen *screen)
     {
       meta_topic (META_DEBUG_XINERAMA,
                   "No XFree86 Xinerama extension or XFree86 Xinerama inactive on display %s\n",
-                  display->name);
+                  screen->display->name);
     }
 #else
   meta_topic (META_DEBUG_XINERAMA,
@@ -279,7 +275,7 @@ reload_xinerama_infos (MetaScreen *screen)
     {
       meta_topic (META_DEBUG_XINERAMA,
                   "No Solaris Xinerama extension or Solaris Xinerama inactive on display %s\n",
-                  display->name);
+                  screen->display->name);
     }
 #else
   meta_topic (META_DEBUG_XINERAMA,
