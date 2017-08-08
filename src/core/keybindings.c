@@ -1268,6 +1268,15 @@ meta_display_process_key_event (MetaDisplay *display,
   if (meta_ui_window_is_widget (screen->ui, event->xany.window))
     return;
 
+  /* Use focused window when processing synthetic events from another client */
+  if (window == NULL && event->xkey.send_event)
+    {
+      Window focus = None;
+      int ret_to = RevertToPointerRoot;
+      XGetInputFocus (display->xdisplay, &focus, &ret_to);
+      window = meta_display_lookup_x_window (display, focus);
+    }
+
   keysym = keycode_to_keysym (display, event->xkey.keycode);
 
   /* was topic */
