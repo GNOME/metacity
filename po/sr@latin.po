@@ -8,12 +8,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=metacit"
-"y&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-02-06 12:25+0000\n"
-"PO-Revision-Date: 2017-02-12 18:21+0200\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=metaci"
+"ty&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2017-07-20 22:22+0000\n"
+"PO-Revision-Date: 2017-08-12 21:31+0200\n"
 "Last-Translator: Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
-"Language-Team: Serbian <(nothing)>\n"
+"Language-Team: srpski <gnome-sr@googlegroups.org>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +23,7 @@ msgstr ""
 "X-Project-Style: gnome\n"
 
 #. Translators: This is the title used on dialog boxes
-#: data/applications/metacity.desktop.in:4 src/core/util.c:535
+#: data/applications/metacity.desktop.in:4 src/core/util.c:435
 msgid "Metacity"
 msgstr "Metasiti"
 
@@ -328,93 +328,97 @@ msgstr ""
 "klijenta. Metasiti tema: podaci se učitavaju iz „metacity-theme-x.xml“-a i "
 "„CSS“-a. Kada koristite ovu temu MORATE da dostavite ispravan naziv teme."
 
-#: data/ui/theme-viewer-window.ui:41
+#: data/ui/theme-viewer-window.ui:45
+msgid "Reload"
+msgstr "Ponovo učitaj"
+
+#: data/ui/theme-viewer-window.ui:103
 msgid "Dark Theme:"
 msgstr "Tamna tema:"
 
-#: data/ui/theme-viewer-window.ui:80
+#: data/ui/theme-viewer-window.ui:142
 msgid "Frame Type:"
 msgstr "Vrsta okvira:"
 
-#: data/ui/theme-viewer-window.ui:94
+#: data/ui/theme-viewer-window.ui:156
 msgid "Normal"
 msgstr "Normalan"
 
-#: data/ui/theme-viewer-window.ui:95
+#: data/ui/theme-viewer-window.ui:157
 msgid "Dialog"
 msgstr "Prozorče"
 
-#: data/ui/theme-viewer-window.ui:96
+#: data/ui/theme-viewer-window.ui:158
 msgid "Modal Dialog"
 msgstr "Važno prozorče"
 
-#: data/ui/theme-viewer-window.ui:97
+#: data/ui/theme-viewer-window.ui:159
 msgid "Utility"
 msgstr "Pomagalo"
 
-#: data/ui/theme-viewer-window.ui:98
+#: data/ui/theme-viewer-window.ui:160
 msgid "Menu"
 msgstr "Izbornik"
 
-#: data/ui/theme-viewer-window.ui:99
+#: data/ui/theme-viewer-window.ui:161
 msgid "Border"
 msgstr "Ivica"
 
-#: data/ui/theme-viewer-window.ui:100
+#: data/ui/theme-viewer-window.ui:162
 msgid "Attached"
 msgstr "Priloženo"
 
-#: data/ui/theme-viewer-window.ui:128
+#: data/ui/theme-viewer-window.ui:190
 msgid "Frame Flags:"
 msgstr "Zastavice okvira:"
 
-#: data/ui/theme-viewer-window.ui:143
+#: data/ui/theme-viewer-window.ui:205
 msgid "Has Focus"
 msgstr "U fokusu je"
 
-#: data/ui/theme-viewer-window.ui:158
+#: data/ui/theme-viewer-window.ui:220
 msgid "Shaded"
 msgstr "Zasenčen"
 
-#: data/ui/theme-viewer-window.ui:172
+#: data/ui/theme-viewer-window.ui:234
 msgid "Maximized"
 msgstr "Uvećan"
 
-#: data/ui/theme-viewer-window.ui:186
+#: data/ui/theme-viewer-window.ui:248
 msgid "Fullscreen"
 msgstr "Preko celog ekrana"
 
-#: data/ui/theme-viewer-window.ui:200
+#: data/ui/theme-viewer-window.ui:262
 msgid "Tiled"
 msgstr "Popločano"
 
-#: data/ui/theme-viewer-window.ui:240
+#: data/ui/theme-viewer-window.ui:302
 msgid "Button Layout:"
 msgstr "Raspored dugmića:"
 
-#: data/ui/theme-viewer-window.ui:279
+#: data/ui/theme-viewer-window.ui:341
 msgid "Composited:"
 msgstr "Naslagan:"
 
-#: data/ui/theme-viewer-window.ui:339 theme-viewer/theme-viewer-window.c:622
+#: data/ui/theme-viewer-window.ui:381
+msgid "Scale:"
+msgstr "Razmera:"
+
+#: data/ui/theme-viewer-window.ui:441 theme-viewer/theme-viewer-window.c:637
 msgid "Choose Theme"
 msgstr "Izaberite temu"
 
-#: data/ui/theme-viewer-window.ui:379
+#: data/ui/theme-viewer-window.ui:481
 msgid "Preview"
 msgstr "Pregled"
 
-#: data/ui/theme-viewer-window.ui:468 theme-viewer/theme-viewer-window.c:250
+#: data/ui/theme-viewer-window.ui:570 theme-viewer/theme-viewer-window.c:253
 msgid "Run"
 msgstr "Pokreni"
 
-#: data/ui/theme-viewer-window.ui:490
+#: data/ui/theme-viewer-window.ui:592
 msgid "Benchmark"
 msgstr "Provera brzine"
-
-#: data/ui/theme-viewer-window.ui:563
-msgid "Reload"
-msgstr "Ponovo učitaj"
 
 #: libmetacity/meta-color-spec.c:246
 #, c-format
@@ -647,11 +651,11 @@ msgstr ""
 "<button function='%s' state='%s' draw_ops='whatever'/> mora biti naveden za "
 "ovaj stil okvira"
 
-#: libmetacity/meta-gradient-spec.c:173
+#: libmetacity/meta-gradient-spec.c:182
 msgid "Gradients should have at least two colors"
 msgstr "Gradijenti moraju imati najmanje dve boje"
 
-#: libmetacity/meta-theme-impl.c:65
+#: libmetacity/meta-theme-impl.c:41
 #, c-format
 msgid "MetaThemeImplClass::load not implemented for '%s'"
 msgstr "„MetaThemeImplClass::load“ nije primenjeno za „%s“"
@@ -664,53 +668,53 @@ msgstr "„MetaThemeImplClass::load“ nije primenjeno za „%s“"
 msgid "No '%s' attribute on element <%s>"
 msgstr "Nije određen „%s“ atribut u elementu <%s>"
 
-#: libmetacity/meta-theme-metacity.c:303 libmetacity/meta-theme-metacity.c:322
+#: libmetacity/meta-theme-metacity.c:305 libmetacity/meta-theme-metacity.c:324
 #, c-format
 msgid "Line %d character %d: %s"
 msgstr "%d. red %d. znak: %s"
 
-#: libmetacity/meta-theme-metacity.c:362
+#: libmetacity/meta-theme-metacity.c:364
 #, c-format
 msgid "Could not parse '%s' as an integer"
 msgstr "Ne mogu da obradim „%s“ kao celobrojnu vrednost"
 
-#: libmetacity/meta-theme-metacity.c:370 libmetacity/meta-theme-metacity.c:587
+#: libmetacity/meta-theme-metacity.c:372 libmetacity/meta-theme-metacity.c:589
 #, c-format
 msgid "Did not understand trailing characters '%s' in string '%s'"
 msgstr "Nisam razumeo vodeće znake „%s“ u nisci „%s“"
 
-#: libmetacity/meta-theme-metacity.c:379
+#: libmetacity/meta-theme-metacity.c:381
 #, c-format
 msgid "Integer %ld must be positive"
 msgstr "Ceo broj %ld mora biti pozitivan"
 
-#: libmetacity/meta-theme-metacity.c:386
+#: libmetacity/meta-theme-metacity.c:388
 #, c-format
 msgid "Integer %ld is too large, current max is %d"
 msgstr "Ceo broj %ld je previše veliki, trenutni maksimum je %d"
 
-#: libmetacity/meta-theme-metacity.c:488
+#: libmetacity/meta-theme-metacity.c:490
 #, c-format
 msgid "Attribute '%s' repeated twice on the same <%s> element"
 msgstr "Atribut „%s“ je ponovljen dva puta u istom elementu <%s>"
 
-#: libmetacity/meta-theme-metacity.c:510 libmetacity/meta-theme-metacity.c:554
+#: libmetacity/meta-theme-metacity.c:512 libmetacity/meta-theme-metacity.c:556
 #, c-format
 msgid "Attribute '%s' is invalid on <%s> element in this context"
 msgstr "Atribut „%s“ je neispravan u elementu <%s> u ovom kontekstu"
 
-#: libmetacity/meta-theme-metacity.c:579 libmetacity/meta-theme-metacity.c:617
+#: libmetacity/meta-theme-metacity.c:581 libmetacity/meta-theme-metacity.c:619
 #, c-format
 msgid "Could not parse '%s' as a floating point number"
 msgstr "Ne mogu da obradim „%s“ kao decimalni broj"
 
-#: libmetacity/meta-theme-metacity.c:649
+#: libmetacity/meta-theme-metacity.c:651
 #, c-format
 msgid "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g"
 msgstr ""
 "Prozirnost mora biti između 0.0 (nevidljivo) i 1.0 (potpuno vidljivo), beše %g"
 
-#: libmetacity/meta-theme-metacity.c:695
+#: libmetacity/meta-theme-metacity.c:697
 #, c-format
 msgid ""
 "Invalid title scale '%s' (must be one of xx-small,x-small,small,medium,large,"
@@ -719,70 +723,70 @@ msgstr ""
 "Netačno skaliranje naslova „%s“ (mora biti jedan od sledećih: xx-small,x-"
 "small,small,medium,large,x-large,xx-large)\n"
 
-#: libmetacity/meta-theme-metacity.c:724 libmetacity/meta-theme-metacity.c:752
+#: libmetacity/meta-theme-metacity.c:726 libmetacity/meta-theme-metacity.c:754
 #, c-format
 msgid "Boolean values must be 'true' or 'false' not '%s'"
 msgstr "Logičke vrednosti moraju biti „true“ ili „false“, a ne „%s“"
 
-#: libmetacity/meta-theme-metacity.c:781 libmetacity/meta-theme-metacity.c:818
-#: libmetacity/meta-theme-metacity.c:856
+#: libmetacity/meta-theme-metacity.c:783 libmetacity/meta-theme-metacity.c:820
+#: libmetacity/meta-theme-metacity.c:858
 #, c-format
 msgid "User-defined constants must begin with a capital letter; '%s' does not"
 msgstr ""
 "Konstante koje je odredio korisnik moraju početi velikim slovom; „%s“ ne "
 "počinje"
 
-#: libmetacity/meta-theme-metacity.c:790 libmetacity/meta-theme-metacity.c:827
-#: libmetacity/meta-theme-metacity.c:865
+#: libmetacity/meta-theme-metacity.c:792 libmetacity/meta-theme-metacity.c:829
+#: libmetacity/meta-theme-metacity.c:867
 #, c-format
 msgid "Constant '%s' has already been defined"
 msgstr "Konstanta „%s“ je već određena"
 
-#: libmetacity/meta-theme-metacity.c:1072
-#: libmetacity/meta-theme-metacity.c:1169
-#: libmetacity/meta-theme-metacity.c:1271
+#: libmetacity/meta-theme-metacity.c:1074
+#: libmetacity/meta-theme-metacity.c:1171
+#: libmetacity/meta-theme-metacity.c:1273
 #, c-format
 msgid "<%s> name \"%s\" used a second time"
 msgstr "<%s> naziv „%s“ je korišćen po drugi put"
 
-#: libmetacity/meta-theme-metacity.c:1084
+#: libmetacity/meta-theme-metacity.c:1086
 #, c-format
 msgid "<%s> parent \"%s\" has not been defined"
 msgstr "<%s> stariji „%s“ nije određen"
 
-#: libmetacity/meta-theme-metacity.c:1135
+#: libmetacity/meta-theme-metacity.c:1137
 #, c-format
 msgid "<%s> name '%s' used a second time"
 msgstr "<%s> naziv „%s“ je korišćen po drugi put"
 
-#: libmetacity/meta-theme-metacity.c:1181
-#: libmetacity/meta-theme-metacity.c:1283
+#: libmetacity/meta-theme-metacity.c:1183
+#: libmetacity/meta-theme-metacity.c:1285
 #, c-format
 msgid "<%s> parent '%s' has not been defined"
 msgstr "<%s> stariji „%s“ nije određen"
 
-#: libmetacity/meta-theme-metacity.c:1194
+#: libmetacity/meta-theme-metacity.c:1196
 #, c-format
 msgid "<%s> geometry '%s' has not been defined"
 msgstr "<%s> geometrija „%s“ nije određena"
 
-#: libmetacity/meta-theme-metacity.c:1207
+#: libmetacity/meta-theme-metacity.c:1209
 #, c-format
 msgid "<%s> must specify either a geometry or a parent that has a geometry"
 msgstr ""
 "<%s> mora biti navedena ili geometrija ili stariji element koji ima "
 "geometriju"
 
-#: libmetacity/meta-theme-metacity.c:1248
+#: libmetacity/meta-theme-metacity.c:1250
 msgid "You must specify a background for an alpha value to be meaningful"
 msgstr "Morate navesti pozadinu da bi vrednost prozirnosti imala smisla"
 
-#: libmetacity/meta-theme-metacity.c:1317
+#: libmetacity/meta-theme-metacity.c:1318
 #, c-format
 msgid "Unknown type '%s' on <%s> element"
 msgstr "Nepoznata vrsta „%s“ u elementu <%s>"
 
-#: libmetacity/meta-theme-metacity.c:1326
+#: libmetacity/meta-theme-metacity.c:1327
 #, c-format
 msgid "Unknown style_set '%s' on <%s> element"
 msgstr "Nepoznat „style_set“ „%s“ u elementu <%s>"
@@ -1070,7 +1074,7 @@ msgstr "Element <%s> nije dozvoljen unutar <%s> elementa"
 msgid "No <%s> set for theme '%s'"
 msgstr "Nije podešen element <%s> za temu „%s“"
 
-#: libmetacity/meta-theme-metacity.c:3884
+#: libmetacity/meta-theme-metacity.c:3878
 #, c-format
 msgid ""
 "No frame style set for window type '%s' in theme '%s', add a <window "
@@ -1079,41 +1083,36 @@ msgstr ""
 "Nije podešen stil okvira za prozor vrste „%s“ u temi „%s“, dodajte element "
 "<window type='%s' style_set='whatever' />"
 
-#: libmetacity/meta-theme-metacity.c:4147
+#: libmetacity/meta-theme-metacity.c:4141
 msgid "No draw_ops provided for frame piece"
 msgstr "Nije naveden „draw_ops“ za deo okvira"
 
-#: libmetacity/meta-theme-metacity.c:4163
+#: libmetacity/meta-theme-metacity.c:4157
 msgid "No draw_ops provided for button"
 msgstr "Nije naveden „draw_ops“ za dugme"
 
-#: libmetacity/meta-theme-metacity.c:4278
-#: libmetacity/meta-theme-metacity.c:4289
-#: libmetacity/meta-theme-metacity.c:4300
-#: libmetacity/meta-theme-metacity.c:4311
-#: libmetacity/meta-theme-metacity.c:4322
+#: libmetacity/meta-theme-metacity.c:4272
+#: libmetacity/meta-theme-metacity.c:4283
+#: libmetacity/meta-theme-metacity.c:4294
+#: libmetacity/meta-theme-metacity.c:4305
+#: libmetacity/meta-theme-metacity.c:4316
 #, c-format
 msgid "<%s> specified twice for this theme"
 msgstr "Element <%s> je naveden dva puta u ovoj temi"
 
-#: libmetacity/meta-theme-metacity.c:4361
+#: libmetacity/meta-theme-metacity.c:4355
 #, c-format
 msgid "No text is allowed inside element <%s>"
 msgstr "Nije dozvoljen tekst unutar elementa <%s>"
 
-#: libmetacity/meta-theme-metacity.c:4614
+#: libmetacity/meta-theme-metacity.c:4621
 #, c-format
 msgid "Failed to find a valid file for theme '%s'"
 msgstr "Nisam uspeo da pronađem ispravnu datoteku za temu „%s“"
 
-#: src/core/bell.c:290
+#: src/core/bell.c:279
 msgid "Bell event"
 msgstr "Zvonce"
-
-#: src/core/core.c:217
-#, c-format
-msgid "Unknown window information request: %d"
-msgstr "Zahtevan je nepoznat podatak o prozoru: %d"
 
 #. Translators: %s is a window title
 #: src/core/delete.c:94
@@ -1137,26 +1136,7 @@ msgstr "_Sačekaj"
 msgid "_Force Quit"
 msgstr "_Primoraj izlaz"
 
-#: src/core/delete.c:206
-#, c-format
-msgid "Failed to get hostname: %s\n"
-msgstr "Nisam uspeo da saznam naziv računara: %s\n"
-
-#: src/core/display.c:304
-#, c-format
-msgid "Failed to open X Window System display '%s'\n"
-msgstr "Nisam uspeo da otvorim ekran sistema H prozora „%s“\n"
-
-#: src/core/keybindings.c:683
-#, c-format
-msgid ""
-"Some other program is already using the key %s with modifiers %x as a "
-"binding\n"
-msgstr ""
-"Neki drugi program već koristi taster „%s“ sa izmenjivačima „%x“ za neku "
-"funkciju\n"
-
-#: src/core/main.c:109
+#: src/core/main.c:101
 #, c-format
 msgid ""
 "metacity %s\n"
@@ -1171,168 +1151,74 @@ msgstr ""
 "Nema NIKAKVE garancije; čak ni o TRŽIŠNOJ VREDNOSTI ili PRILAGOĐENOSTI "
 "ODREĐENOJ NAMENI.\n"
 
-#: src/core/main.c:225
+#: src/core/main.c:215
 msgid "Disable connection to session manager"
 msgstr "Isključuje vezu sa upravnikom sesije"
 
-#: src/core/main.c:231
+#: src/core/main.c:221
 msgid "Replace the running window manager with Metacity"
 msgstr "Menja tekućeg upravnika prozorima Metasitijem"
 
-#: src/core/main.c:237
+#: src/core/main.c:227
 msgid "Specify session management ID"
 msgstr "Navodi IB za upravljanje sesijom"
 
-#: src/core/main.c:242
+#: src/core/main.c:232
 msgid "X Display to use"
 msgstr "Koji će X ekran biti korišćen"
 
-#: src/core/main.c:248
+#: src/core/main.c:238
 msgid "Initialize session from savefile"
 msgstr "Pokreće sesiju iz datoteke čuvanja"
 
-#: src/core/main.c:254
+#: src/core/main.c:244
 msgid "Print version"
 msgstr "Ispisuje izdanje"
 
-#: src/core/main.c:260
+#: src/core/main.c:250
 msgid "Make X calls synchronous"
 msgstr "Usaglašava pozive Iksa"
 
-#: src/core/main.c:266
+#: src/core/main.c:256
 msgid "Turn compositing on"
 msgstr "Uključuje slaganje"
 
-#: src/core/main.c:272
+#: src/core/main.c:262
 msgid "Turn compositing off"
 msgstr "Isključuje slaganje"
 
-#: src/core/main.c:278
+#: src/core/main.c:268
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr ""
 "Ne postavlja preko celog ekrana prozore koji nisu uvećani i ne poseduju okvir"
 
-#: src/core/main.c:499
-#, c-format
-msgid "Failed to restart: %s\n"
-msgstr "Nisam uspeo ponovo da pokrenem: %s\n"
-
-#: src/core/prefs.c:1043
-msgid ""
-"Workarounds for broken applications disabled. Some applications may not "
-"behave properly.\n"
-msgstr ""
-"Rešenja za oštećene programe su isključena. Neke aplikacije se mogu ponašati "
-"čudno.\n"
-
-#: src/core/prefs.c:1120
-#, c-format
-msgid "Could not parse font description \"%s\" from GSettings key %s\n"
-msgstr "Ne mogu da obradim opis „%s“ iz ključa „%s“ u gnomovim podešavanjima\n"
-
-#: src/core/prefs.c:1182
-#, c-format
-msgid ""
-"\"%s\" found in configuration database is not a valid value for mouse button "
-"modifier\n"
-msgstr ""
-"„%s“ je pronađen u bazi podešavanja što nije ispravna vrednost za tipku koja "
-"menja ponašanje tastera miša\n"
-
-#: src/core/prefs.c:1432
-#, c-format
-msgid ""
-"\"%s\" found in configuration database is not a valid value for keybinding "
-"\"%s\"\n"
-msgstr "„%s“ iz baze sa podešavanjima nije ispravna kombinacija tastera „%s“\n"
-
-#: src/core/prefs.c:1534
+#: src/core/prefs.c:1524
 #, c-format
 msgid "Workspace %d"
 msgstr "Radni prostor br. %d"
 
-#: src/core/prefs.c:1791
-#, c-format
-msgid "Missing %s extension required for compositing\n"
-msgstr "Nedostaje %s proširenje potrebno za slaganje\n"
-
-#: src/core/screen.c:365
-#, c-format
-msgid "Screen %d on display '%s' is invalid\n"
-msgstr "Prikaz „%d“ na ekranu „%s“ nije ispravan\n"
-
-#: src/core/screen.c:381
-#, c-format
-msgid ""
-"Screen %d on display \"%s\" already has a window manager; try using the --"
-"replace option to replace the current window manager.\n"
-msgstr ""
-"Prikaz „%d“ na ekranu „%s“ već ima upravnika prozora; pokušajte da koristite "
-"opciju „--replace“ da zamenite trenutnog upravnika prozora.\n"
-
-#: src/core/screen.c:408
-#, c-format
-msgid ""
-"Could not acquire window manager selection on screen %d display \"%s\"\n"
-msgstr "Ne mogu da dobijem izbor upravnika prozora na prikazu %d ekrana „%s“\n"
-
-#: src/core/screen.c:464
-#, c-format
-msgid "Screen %d on display \"%s\" already has a window manager\n"
-msgstr "Prikaz %d na ekranu „%s“ već ima upravnika prozora\n"
-
-#: src/core/screen.c:672
-#, c-format
-msgid "Could not release screen %d on display \"%s\"\n"
-msgstr "Ne mogu da otpustim prikaz %d na ekranu „%s“\n"
-
-#: src/core/session.c:842 src/core/session.c:849
-#, c-format
-msgid "Could not create directory '%s': %s\n"
-msgstr "Ne mogu da napravim direktorijum „%s“: %s\n"
-
-#: src/core/session.c:859
-#, c-format
-msgid "Could not open session file '%s' for writing: %s\n"
-msgstr "Ne mogu da otvorim datoteku sesije „%s“ za upis: %s\n"
-
-#: src/core/session.c:1000
-#, c-format
-msgid "Error writing session file '%s': %s\n"
-msgstr "Greška zapisivanja datoteke sesije „%s“: %s\n"
-
-#: src/core/session.c:1005
-#, c-format
-msgid "Error closing session file '%s': %s\n"
-msgstr "Greška zatvaranja datoteke sesije „%s“: %s\n"
-
-#: src/core/session.c:1135
-#, c-format
-msgid "Failed to parse saved session file: %s\n"
-msgstr "Nisam uspeo da obradim sačuvanu datoteku sesije: %s\n"
-
-#: src/core/session.c:1184
+#: src/core/session.c:1210
 msgid "<metacity_session> attribute seen but we already have the session ID"
 msgstr ""
 "<metacity_session> atribut je primećen ali mi već imamo indetifikaciju sesije"
 
-#: src/core/session.c:1197 src/core/session.c:1272 src/core/session.c:1304
-#: src/core/session.c:1376 src/core/session.c:1436
+#: src/core/session.c:1223 src/core/session.c:1298 src/core/session.c:1330
+#: src/core/session.c:1402 src/core/session.c:1462
 #, c-format
 msgid "Unknown attribute %s on <%s> element"
 msgstr "Nepoznat atribut „%s“ u <%s> elementu"
 
-#: src/core/session.c:1214
+#: src/core/session.c:1240
 msgid "nested <window> tag"
 msgstr "ugnežden <window> element"
 
-#: src/core/session.c:1456
+#: src/core/session.c:1482
 #, c-format
 msgid "Unknown element %s"
 msgstr "Nepoznat element „%s“"
 
-#: src/core/session.c:1812
+#: src/core/session.c:1838
 msgid ""
 "These windows do not support &quot;save current setup&quot; and will have to "
 "be restarted manually next time you log in."
@@ -1340,182 +1226,87 @@ msgstr ""
 "Ovi prozori ne podržavaju mogućnost „sačuvaj trenutna podešavanja“ pa ćete "
 "morati ručno da ih ponovo pokrenete kada se sledeći put prijavite."
 
-#: src/core/util.c:68
-#, c-format
-msgid "Failed to open debug log: %s\n"
-msgstr "Nisam uspeo da otvorim dnevnik grešaka: %s\n"
-
-#: src/core/util.c:78
-#, c-format
-msgid "Failed to fdopen() log file %s: %s\n"
-msgstr "Nisam uspeo da „fdopen()“ datoteku dnevnika „%s“: %s\n"
-
-#: src/core/util.c:84
+#: src/core/util.c:105
 #, c-format
 msgid "Opened log file %s\n"
 msgstr "Otvorena je datoteka dnevnika „%s“\n"
 
-#: src/core/util.c:103 src/tools/metacity-message.c:206
-msgid "Metacity was compiled without support for verbose mode\n"
-msgstr "Metasiti je preveden bez podrške za opširni režim\n"
-
-#: src/core/util.c:203
-msgid "Window manager: "
-msgstr "Upravnik prozora: "
-
-#: src/core/util.c:357
-msgid "Bug in window manager: "
-msgstr "Greška u upravniku prozora: "
-
-#: src/core/util.c:388
-msgid "Window manager warning: "
-msgstr "Upozorenje upravnika prozora: "
-
-#: src/core/util.c:416
-msgid "Window manager error: "
-msgstr "Greška upravnika prozora: "
-
-#. first time through
-#: src/core/window.c:5933
-#, c-format
-msgid ""
-"Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
-"window as specified in the ICCCM.\n"
-msgstr ""
-"Prozor „%s“ je postavio „SM_CLIENT_ID“ na samom sebi umesto na prozoru "
-"„WM_CLIENT_LEADER“ kao što je navedeno u ICCCM.\n"
-
-#. We ignore mwm_has_resize_func because WM_NORMAL_HINTS is the
-#. * authoritative source for that info. Some apps such as mplayer or
-#. * xine disable resize via MWM but not WM_NORMAL_HINTS, but that
-#. * leads to e.g. us not fullscreening their windows.  Apps that set
-#. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
-#. * about these apps but make them work.
-#.
-#: src/core/window.c:6423
-#, c-format
-msgid ""
-"Window %s sets an MWM hint indicating it isn't resizable, but sets min size "
-"%d x %d and max size %d x %d; this doesn't make much sense.\n"
-msgstr ""
-"Prozor „%s“ je postavio „MWM“ što nagoveštava da nije promenljive veličine, "
-"ali je postavio najmanju veličinu %d x %d i najveću veličinu %d x %d što nema "
-"mnogo smisla.\n"
-
-#: src/core/window-props.c:403
-#, c-format
-msgid "Application set a bogus _NET_WM_PID %lu\n"
-msgstr "Program je postavio netačan _NET_WM_PID %lu\n"
-
 #. Translators: the title of a window from another machine
-#: src/core/window-props.c:554
+#: src/core/window-props.c:570
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (na %s)"
 
 #. Simple case-- don't bother to look it up.  It's root.
-#: src/core/window-props.c:586
+#: src/core/window-props.c:602
 #, c-format
 msgid "%s (as superuser)"
 msgstr "%s (kao administrator)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine
-#: src/core/window-props.c:604
+#: src/core/window-props.c:620
 #, c-format
 msgid "%s (as %s)"
 msgstr "%s (kao %s)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine, whose name we don't know
-#: src/core/window-props.c:610
+#: src/core/window-props.c:626
 #, c-format
 msgid "%s (as another user)"
 msgstr "%s (kao drugi korsnik)"
 
-#: src/core/window-props.c:1590
-#, c-format
-msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
-msgstr "Neispravan prozor 0x%lx naveden kao WM_TRANSIENT_FOR za %s.\n"
-
-#: src/core/xprops.c:153
-#, c-format
-msgid ""
-"Window 0x%lx has property %s\n"
-"that was expected to have type %s format %d\n"
-"and actually has type %s format %d n_items %d.\n"
-"This is most likely an application bug, not a window manager bug.\n"
-"The window has title=\"%s\" class=\"%s\" name=\"%s\"\n"
-msgstr ""
-"Prozor 0x%lx ima svojstvo %s\n"
-"tako da je očekivano da ima vrstu %s zapis %d,\n"
-"a zapravo ima vrstu %s zapis %d n_stavki %d.\n"
-"Ovo je najverovatnije greška programa, a ne upravnika prozora.\n"
-"Prozor ima naslov=„%s“ razred=„%s“ naziv=„%s“\n"
-
-#: src/core/xprops.c:409
-#, c-format
-msgid "Property %s on window 0x%lx contained invalid UTF-8\n"
-msgstr "Svojstvo „%s“ prozora 0x%lx sadrži neispravan UTF-8\n"
-
-#: src/core/xprops.c:492
-#, c-format
-msgid ""
-"Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
-msgstr ""
-"Svojstvo „%s“ prozora 0x%lx sadrži neispravan UTF-8 za stavku „%d“ na "
-"spisku\n"
-
-#: src/tools/metacity-message.c:176
+#: src/tools/metacity-message.c:174
 #, c-format
 msgid "Usage: %s\n"
 msgstr "Upotreba: %s\n"
 
-#: src/ui/frames.c:1310
+#: src/ui/frames.c:1307
 msgid "Close Window"
 msgstr "Zatvori prozor"
 
-#: src/ui/frames.c:1313
+#: src/ui/frames.c:1310
 msgid "Window Menu"
 msgstr "Izbornik prozora"
 
-#: src/ui/frames.c:1316
+#: src/ui/frames.c:1313
 msgid "Window App Menu"
 msgstr "Izbornik prozora programa"
 
-#: src/ui/frames.c:1319
+#: src/ui/frames.c:1316
 msgid "Minimize Window"
 msgstr "Umanji prozor"
 
-#: src/ui/frames.c:1322
+#: src/ui/frames.c:1319
 msgid "Maximize Window"
 msgstr "Uvećaj prozor"
 
-#: src/ui/frames.c:1325
+#: src/ui/frames.c:1322
 msgid "Restore Window"
 msgstr "Vrati veličinu prozoru"
 
-#: src/ui/frames.c:1328
+#: src/ui/frames.c:1325
 msgid "Roll Up Window"
 msgstr "Zamotaj prozor"
 
-#: src/ui/frames.c:1331
+#: src/ui/frames.c:1328
 msgid "Unroll Window"
 msgstr "Odmotaj prozor"
 
-#: src/ui/frames.c:1334
+#: src/ui/frames.c:1331
 msgid "Keep Window On Top"
 msgstr "Stavi prozor u prvi plan"
 
-#: src/ui/frames.c:1337
+#: src/ui/frames.c:1334
 msgid "Remove Window From Top"
 msgstr "Skloni prozor iz prvog plana"
 
-#: src/ui/frames.c:1340
+#: src/ui/frames.c:1337
 msgid "Always On Visible Workspace"
 msgstr "Uvek na prikazanom radnom prostoru"
 
-#: src/ui/frames.c:1343
+#: src/ui/frames.c:1340
 msgid "Put Window On Only One Workspace"
 msgstr "Stavi prozor samo na jedan radni prostor"
 
@@ -1601,21 +1392,21 @@ msgstr "Premesti na radni prostor i_spod"
 msgid "_Close"
 msgstr "_Zatvori"
 
-#: src/ui/menu.c:175
+#: src/ui/menu.c:174
 #, c-format
 msgid "Workspace %d%n"
 msgstr "Radni prostor %d%n"
 
-#: src/ui/menu.c:185
+#: src/ui/menu.c:184
 msgid "Workspace 1_0"
 msgstr "1_0° radni prostor"
 
-#: src/ui/menu.c:187
+#: src/ui/menu.c:186
 #, c-format
 msgid "Workspace %s%d"
 msgstr "%s%d° radni prostor"
 
-#: src/ui/menu.c:354
+#: src/ui/menu.c:351
 msgid "Move to Another _Workspace"
 msgstr "Premesti na drugi _radni prostor"
 
@@ -1717,7 +1508,7 @@ msgstr "Mod5"
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: src/ui/ui.c:768
+#: src/ui/ui.c:871
 msgid "Falling back to default GTK+ theme - Adwaita"
 msgstr "Vraćam se na podrazumevanu GTK+ temu — Advajtu"
 
@@ -1730,7 +1521,6 @@ msgid "TYPE"
 msgstr "VRSTA"
 
 #: theme-viewer/theme-viewer-main.c:36
-#| msgid "Theme Name"
 msgid "Theme name to use"
 msgstr "Naziv teme za korišćenje"
 
@@ -1739,12 +1529,12 @@ msgid "NAME"
 msgstr "NAZIV"
 
 # bug: plural-forms
-#: theme-viewer/theme-viewer-window.c:100
+#: theme-viewer/theme-viewer-window.c:103
 #, c-format
 msgid "Loaded <b>%s</b> theme <b>%s</b> in <b>%f</b> seconds."
 msgstr "Učitah <b>%s</b> temu <b>%s</b> za <b>%f</b> sekunde."
 
-#: theme-viewer/theme-viewer-window.c:130
+#: theme-viewer/theme-viewer-window.c:133
 #, c-format
 msgid ""
 "Got MetaFrameBorders in <b>%f</b> seconds (CSS loading, PangoFontDescription "
@@ -1754,7 +1544,7 @@ msgstr ""
 "opisa Pango slova i izračunavanje visine naslova)."
 
 # bug: plural-forms
-#: theme-viewer/theme-viewer-window.c:205
+#: theme-viewer/theme-viewer-window.c:208
 #, c-format
 msgid ""
 "Drew <b>%d</b> frames in <b>%f</b> client-side seconds (<b>%f</b> "
@@ -1765,13 +1555,160 @@ msgstr ""
 "milisekundi po okviru) i <b>%f</b> sekundi vremena na zidnom časovniku "
 "uključujući i resurse Iks servera (<b>%f</b> milisekundi po okviru)."
 
-#: theme-viewer/theme-viewer-window.c:242
+#: theme-viewer/theme-viewer-window.c:245
 msgid "Run again"
 msgstr "Ponovo pokreni"
 
-#: theme-viewer/theme-viewer-window.c:930
+#: theme-viewer/theme-viewer-window.c:986
 msgid "Metacity Theme Viewer"
 msgstr "Preglednik teme Metasitija"
+
+#~ msgid "Unknown window information request: %d"
+#~ msgstr "Zahtevan je nepoznat podatak o prozoru: %d"
+
+#~ msgid "Failed to get hostname: %s\n"
+#~ msgstr "Nisam uspeo da saznam naziv računara: %s\n"
+
+#~ msgid "Failed to open X Window System display '%s'\n"
+#~ msgstr "Nisam uspeo da otvorim ekran sistema H prozora „%s“\n"
+
+#~ msgid ""
+#~ "Some other program is already using the key %s with modifiers %x as a "
+#~ "binding\n"
+#~ msgstr ""
+#~ "Neki drugi program već koristi taster „%s“ sa izmenjivačima „%x“ za neku "
+#~ "funkciju\n"
+
+#~ msgid "Failed to restart: %s\n"
+#~ msgstr "Nisam uspeo ponovo da pokrenem: %s\n"
+
+#~ msgid ""
+#~ "Workarounds for broken applications disabled. Some applications may not "
+#~ "behave properly.\n"
+#~ msgstr ""
+#~ "Rešenja za oštećene programe su isključena. Neke aplikacije se mogu "
+#~ "ponašati čudno.\n"
+
+#~ msgid "Could not parse font description \"%s\" from GSettings key %s\n"
+#~ msgstr ""
+#~ "Ne mogu da obradim opis „%s“ iz ključa „%s“ u gnomovim podešavanjima\n"
+
+#~ msgid ""
+#~ "\"%s\" found in configuration database is not a valid value for mouse "
+#~ "button modifier\n"
+#~ msgstr ""
+#~ "„%s“ je pronađen u bazi podešavanja što nije ispravna vrednost za tipku "
+#~ "koja menja ponašanje tastera miša\n"
+
+#~ msgid ""
+#~ "\"%s\" found in configuration database is not a valid value for "
+#~ "keybinding \"%s\"\n"
+#~ msgstr ""
+#~ "„%s“ iz baze sa podešavanjima nije ispravna kombinacija tastera „%s“\n"
+
+#~ msgid "Missing %s extension required for compositing\n"
+#~ msgstr "Nedostaje %s proširenje potrebno za slaganje\n"
+
+#~ msgid "Screen %d on display '%s' is invalid\n"
+#~ msgstr "Prikaz „%d“ na ekranu „%s“ nije ispravan\n"
+
+#~ msgid ""
+#~ "Screen %d on display \"%s\" already has a window manager; try using the --"
+#~ "replace option to replace the current window manager.\n"
+#~ msgstr ""
+#~ "Prikaz „%d“ na ekranu „%s“ već ima upravnika prozora; pokušajte da "
+#~ "koristite opciju „--replace“ da zamenite trenutnog upravnika prozora.\n"
+
+#~ msgid ""
+#~ "Could not acquire window manager selection on screen %d display \"%s\"\n"
+#~ msgstr ""
+#~ "Ne mogu da dobijem izbor upravnika prozora na prikazu %d ekrana „%s“\n"
+
+#~ msgid "Screen %d on display \"%s\" already has a window manager\n"
+#~ msgstr "Prikaz %d na ekranu „%s“ već ima upravnika prozora\n"
+
+#~ msgid "Could not release screen %d on display \"%s\"\n"
+#~ msgstr "Ne mogu da otpustim prikaz %d na ekranu „%s“\n"
+
+#~ msgid "Could not create directory '%s': %s\n"
+#~ msgstr "Ne mogu da napravim direktorijum „%s“: %s\n"
+
+#~ msgid "Could not open session file '%s' for writing: %s\n"
+#~ msgstr "Ne mogu da otvorim datoteku sesije „%s“ za upis: %s\n"
+
+#~ msgid "Error writing session file '%s': %s\n"
+#~ msgstr "Greška zapisivanja datoteke sesije „%s“: %s\n"
+
+#~ msgid "Error closing session file '%s': %s\n"
+#~ msgstr "Greška zatvaranja datoteke sesije „%s“: %s\n"
+
+#~ msgid "Failed to parse saved session file: %s\n"
+#~ msgstr "Nisam uspeo da obradim sačuvanu datoteku sesije: %s\n"
+
+#~ msgid "Failed to open debug log: %s\n"
+#~ msgstr "Nisam uspeo da otvorim dnevnik grešaka: %s\n"
+
+#~ msgid "Failed to fdopen() log file %s: %s\n"
+#~ msgstr "Nisam uspeo da „fdopen()“ datoteku dnevnika „%s“: %s\n"
+
+#~ msgid "Metacity was compiled without support for verbose mode\n"
+#~ msgstr "Metasiti je preveden bez podrške za opširni režim\n"
+
+#~ msgid "Window manager: "
+#~ msgstr "Upravnik prozora: "
+
+#~ msgid "Bug in window manager: "
+#~ msgstr "Greška u upravniku prozora: "
+
+#~ msgid "Window manager warning: "
+#~ msgstr "Upozorenje upravnika prozora: "
+
+#~ msgid "Window manager error: "
+#~ msgstr "Greška upravnika prozora: "
+
+#~ msgid ""
+#~ "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
+#~ "window as specified in the ICCCM.\n"
+#~ msgstr ""
+#~ "Prozor „%s“ je postavio „SM_CLIENT_ID“ na samom sebi umesto na prozoru "
+#~ "„WM_CLIENT_LEADER“ kao što je navedeno u ICCCM.\n"
+
+#~ msgid ""
+#~ "Window %s sets an MWM hint indicating it isn't resizable, but sets min "
+#~ "size %d x %d and max size %d x %d; this doesn't make much sense.\n"
+#~ msgstr ""
+#~ "Prozor „%s“ je postavio „MWM“ što nagoveštava da nije promenljive "
+#~ "veličine, ali je postavio najmanju veličinu %d x %d i najveću veličinu %d "
+#~ "x %d što nema mnogo smisla.\n"
+
+#~ msgid "Application set a bogus _NET_WM_PID %lu\n"
+#~ msgstr "Program je postavio netačan _NET_WM_PID %lu\n"
+
+#~ msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
+#~ msgstr "Neispravan prozor 0x%lx naveden kao WM_TRANSIENT_FOR za %s.\n"
+
+#~ msgid ""
+#~ "Window 0x%lx has property %s\n"
+#~ "that was expected to have type %s format %d\n"
+#~ "and actually has type %s format %d n_items %d.\n"
+#~ "This is most likely an application bug, not a window manager bug.\n"
+#~ "The window has title=\"%s\" class=\"%s\" name=\"%s\"\n"
+#~ msgstr ""
+#~ "Prozor 0x%lx ima svojstvo %s\n"
+#~ "tako da je očekivano da ima vrstu %s zapis %d,\n"
+#~ "a zapravo ima vrstu %s zapis %d n_stavki %d.\n"
+#~ "Ovo je najverovatnije greška programa, a ne upravnika prozora.\n"
+#~ "Prozor ima naslov=„%s“ razred=„%s“ naziv=„%s“\n"
+
+#~ msgid "Property %s on window 0x%lx contained invalid UTF-8\n"
+#~ msgstr "Svojstvo „%s“ prozora 0x%lx sadrži neispravan UTF-8\n"
+
+#~ msgid ""
+#~ "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the "
+#~ "list\n"
+#~ msgstr ""
+#~ "Svojstvo „%s“ prozora 0x%lx sadrži neispravan UTF-8 za stavku „%d“ na "
+#~ "spisku\n"
 
 #~ msgid ""
 #~ "Coordinate expression tries to use mod operator on a floating-point number"
