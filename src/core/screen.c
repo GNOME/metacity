@@ -1436,6 +1436,7 @@ meta_screen_tile_preview_hide (MetaScreen *screen)
 {
   if (screen->tile_preview_timeout_id > 0)
     g_source_remove (screen->tile_preview_timeout_id);
+  screen->tile_preview_timeout_id = 0;
 
   if (screen->tile_preview)
     meta_tile_preview_hide (screen->tile_preview);
