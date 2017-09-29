@@ -324,8 +324,10 @@ sigterm_handler (int signum)
 {
   if (sigterm_pipe_fds[1] >= 0)
     {
-      if ( write (sigterm_pipe_fds[1], "", 1) == -1 )
-        g_printerr ("metacity: write to sigterm_pipe failed.\n");
+      if (write (sigterm_pipe_fds[1], "", 1) == -1)
+        {
+        }
+
       close (sigterm_pipe_fds[1]);
       sigterm_pipe_fds[1] = -1;
     }
