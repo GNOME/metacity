@@ -872,8 +872,9 @@ meta_ui_reload_theme (MetaUI *ui)
       theme = load_theme (ui, META_THEME_TYPE_GTK, "Adwaita");
     }
 
-  g_set_object (&ui->theme, theme);
-  g_assert (ui->theme);
+  g_assert (theme);
+  g_clear_object (&ui->theme);
+  ui->theme = theme;
 
   meta_invalidate_default_icons ();
 }
