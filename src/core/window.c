@@ -5230,15 +5230,25 @@ meta_window_configure_request (MetaWindow *window,
         }
       else
         {
-          MetaWindow *sibling = NULL;
+          Window above;
+          MetaWindow *sibling;
 
-          if (event->xconfigurerequest.above != None)
+          above = event->xconfigurerequest.above;
+          sibling = NULL;
+
+          if (above != None)
             {
-              sibling = meta_display_lookup_x_window (window->display,
-                event->xconfigurerequest.above);
+              sibling = meta_display_lookup_x_window (window->display, above);
+
+              if (sibling == NULL)
+                return TRUE;
+
+              meta_topic (META_DEBUG_STACK,
+                          "xconfigure stacking request from window %s sibling %s stackmode %d\n",
+                          window->desc, sibling->desc, event->xconfigurerequest.detail);
             }
 
-          restack_window(window, sibling, event->xconfigurerequest.detail);
+          restack_window (window, sibling, event->xconfigurerequest.detail);
 
           restacked = TRUE;
         }
@@ -5283,7 +5293,7 @@ meta_window_property_notify (MetaWindow *window,
 static void
 restack_window (MetaWindow *window,
                 MetaWindow *sibling,
-                int direction)
+                int         direction)
 {
  switch (direction)
    {
@@ -5309,13 +5319,16 @@ restack_window (MetaWindow *window,
 }
 
 static void
-handle_net_restack_window (MetaDisplay* display,
-                           XEvent *event)
+handle_net_restack_window (MetaDisplay *display,
+                           XEvent      *event)
 {
   MetaWindow *window, *sibling = NULL;
 
-  window = meta_display_lookup_x_window (display,
-                                         event->xclient.window);
+  /* Ignore if this does not come from a pager, see the WM spec */
+  if (event->xclient.data.l[0] != 2)
+    return;
+
+  window = meta_display_lookup_x_window (display, event->xclient.window);
 
   if (window)
     {
@@ -5364,7 +5377,7 @@ meta_window_client_message (MetaWindow *window,
 
       return TRUE;
     }
-  else if (event->xproperty.atom ==
+  else if (event->xclient.message_type ==
            display->atom__NET_RESTACK_WINDOW)
     {
       handle_net_restack_window (display, event);
