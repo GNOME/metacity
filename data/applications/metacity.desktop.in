@@ -5,9 +5,6 @@ Exec=metacity
 # TRANSLATORS: Don't translate this text (this is icon name)
 Icon=preferences-system-windows
 NoDisplay=true
-X-GNOME-Bugzilla-Bugzilla=GNOME
-X-GNOME-Bugzilla-Product=metacity
-X-GNOME-Bugzilla-Component=general
 X-GNOME-Autostart-Phase=WindowManager
 X-GNOME-Provides=windowmanager
 X-GNOME-Autostart-Notify=true
