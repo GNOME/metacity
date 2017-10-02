@@ -32,7 +32,6 @@ struct _ThemeViewerWindow
 {
   GtkWindow         parent;
 
-  GtkWidget        *header_bar;
   GtkWidget        *type_combo_box;
   GtkWidget        *theme_combo_box;
   GtkWidget        *reload_button;
@@ -909,8 +908,6 @@ theme_viewer_window_class_init (ThemeViewerWindowClass *window_class)
   resource = "/org/gnome/metacity/ui/theme-viewer-window.ui";
   gtk_widget_class_set_template_from_resource (widget_class, resource);
 
-  gtk_widget_class_bind_template_child (widget_class, ThemeViewerWindow, header_bar);
-
   gtk_widget_class_bind_template_child (widget_class, ThemeViewerWindow, type_combo_box);
   gtk_widget_class_bind_template_callback (widget_class, type_combo_box_changed_cb);
 
@@ -966,7 +963,6 @@ theme_viewer_window_init (ThemeViewerWindow *window)
   window->scale = gtk_widget_get_scale_factor (GTK_WIDGET (window));
 
   gtk_widget_init_template (GTK_WIDGET (window));
-  gtk_window_set_titlebar (GTK_WINDOW (window), window->header_bar);
 
   gtk_widget_add_events (window->theme_box, GDK_POINTER_MOTION_MASK);
 
