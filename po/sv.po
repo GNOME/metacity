@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-04-05 07:27+0000\n"
-"PO-Revision-Date: 2017-04-07 21:13+0200\n"
+"POT-Creation-Date: 2017-07-21 13:51+0000\n"
+"PO-Revision-Date: 2017-10-02 20:33+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.0.4\n"
 "X-Project-Style: gnome\n"
 
 #. Translators: This is the title used on dialog boxes
@@ -406,7 +406,7 @@ msgstr "Sammansatt:"
 msgid "Scale:"
 msgstr "Skala:"
 
-#: data/ui/theme-viewer-window.ui:441 theme-viewer/theme-viewer-window.c:634
+#: data/ui/theme-viewer-window.ui:441 theme-viewer/theme-viewer-window.c:637
 msgid "Choose Theme"
 msgstr "Välj tema"
 
@@ -659,7 +659,7 @@ msgstr ""
 msgid "Gradients should have at least two colors"
 msgstr "Toningarna bör ha minst två färger"
 
-#: libmetacity/meta-theme-impl.c:65
+#: libmetacity/meta-theme-impl.c:41
 #, c-format
 msgid "MetaThemeImplClass::load not implemented for '%s'"
 msgstr "MetaThemeImplClass::load är ej implementerad för ”%s”"
@@ -673,55 +673,55 @@ msgstr "MetaThemeImplClass::load är ej implementerad för ”%s”"
 msgid "No '%s' attribute on element <%s>"
 msgstr "Inget ”%s”-attribut i element <%s>"
 
-#: libmetacity/meta-theme-metacity.c:303 libmetacity/meta-theme-metacity.c:322
+#: libmetacity/meta-theme-metacity.c:305 libmetacity/meta-theme-metacity.c:324
 #, c-format
 msgid "Line %d character %d: %s"
 msgstr "Rad %d tecken %d: %s"
 
-#: libmetacity/meta-theme-metacity.c:362
+#: libmetacity/meta-theme-metacity.c:364
 #, c-format
 msgid "Could not parse '%s' as an integer"
 msgstr "Kunde inte tolka ”%s” som ett heltal"
 
-#: libmetacity/meta-theme-metacity.c:370 libmetacity/meta-theme-metacity.c:587
+#: libmetacity/meta-theme-metacity.c:372 libmetacity/meta-theme-metacity.c:589
 #, c-format
 msgid "Did not understand trailing characters '%s' in string '%s'"
 msgstr "Förstod inte de avslutande tecknen ”%s” i strängen ”%s”"
 
-#: libmetacity/meta-theme-metacity.c:379
+#: libmetacity/meta-theme-metacity.c:381
 #, c-format
 msgid "Integer %ld must be positive"
 msgstr "Heltalet %ld måste vara positivt"
 
 # SUN CHANGED MESSAGE
-#: libmetacity/meta-theme-metacity.c:386
+#: libmetacity/meta-theme-metacity.c:388
 #, c-format
 msgid "Integer %ld is too large, current max is %d"
 msgstr "Heltalet %ld är för stort, aktuellt maxvärde är %d"
 
-#: libmetacity/meta-theme-metacity.c:488
+#: libmetacity/meta-theme-metacity.c:490
 #, c-format
 msgid "Attribute '%s' repeated twice on the same <%s> element"
 msgstr "Attributet ”%s” upprepat två gånger på samma <%s>-element"
 
 # SUN CHANGED MESSAGE
-#: libmetacity/meta-theme-metacity.c:510 libmetacity/meta-theme-metacity.c:554
+#: libmetacity/meta-theme-metacity.c:512 libmetacity/meta-theme-metacity.c:556
 #, c-format
 msgid "Attribute '%s' is invalid on <%s> element in this context"
 msgstr "Attributet ”%s” är ogiltigt i <%s>-element i detta sammanhang"
 
-#: libmetacity/meta-theme-metacity.c:579 libmetacity/meta-theme-metacity.c:617
+#: libmetacity/meta-theme-metacity.c:581 libmetacity/meta-theme-metacity.c:619
 #, c-format
 msgid "Could not parse '%s' as a floating point number"
 msgstr "Kunde inte tolka ”%s” som ett flyttal"
 
-#: libmetacity/meta-theme-metacity.c:649
+#: libmetacity/meta-theme-metacity.c:651
 #, c-format
 msgid "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g"
 msgstr ""
 "Alfavärdet måste vara mellan 0,0 (osynligt) och 1,0 (helt synligt), var %g"
 
-#: libmetacity/meta-theme-metacity.c:695
+#: libmetacity/meta-theme-metacity.c:697
 #, c-format
 msgid ""
 "Invalid title scale '%s' (must be one of xx-small,x-small,small,medium,large,"
@@ -730,71 +730,71 @@ msgstr ""
 "Ogiltig titelskala ”%s” (måste vara ett av xx-small,x-small,small,medium,"
 "large,x-large,xx-large)\n"
 
-#: libmetacity/meta-theme-metacity.c:724 libmetacity/meta-theme-metacity.c:752
+#: libmetacity/meta-theme-metacity.c:726 libmetacity/meta-theme-metacity.c:754
 #, c-format
 msgid "Boolean values must be 'true' or 'false' not '%s'"
 msgstr "Booleska värden måste vara ”true” eller ”false”, inte ”%s”"
 
-#: libmetacity/meta-theme-metacity.c:781 libmetacity/meta-theme-metacity.c:818
-#: libmetacity/meta-theme-metacity.c:856
+#: libmetacity/meta-theme-metacity.c:783 libmetacity/meta-theme-metacity.c:820
+#: libmetacity/meta-theme-metacity.c:858
 #, c-format
 msgid "User-defined constants must begin with a capital letter; '%s' does not"
 msgstr ""
 "Användardefinierade konstanter måste börja med en stor bokstav; ”%s” gör det "
 "inte"
 
-#: libmetacity/meta-theme-metacity.c:790 libmetacity/meta-theme-metacity.c:827
-#: libmetacity/meta-theme-metacity.c:865
+#: libmetacity/meta-theme-metacity.c:792 libmetacity/meta-theme-metacity.c:829
+#: libmetacity/meta-theme-metacity.c:867
 #, c-format
 msgid "Constant '%s' has already been defined"
 msgstr "Konstanten ”%s” har redan definierats"
 
-#: libmetacity/meta-theme-metacity.c:1072
-#: libmetacity/meta-theme-metacity.c:1169
-#: libmetacity/meta-theme-metacity.c:1271
+#: libmetacity/meta-theme-metacity.c:1074
+#: libmetacity/meta-theme-metacity.c:1171
+#: libmetacity/meta-theme-metacity.c:1273
 #, c-format
 msgid "<%s> name \"%s\" used a second time"
 msgstr "<%s>-namnet ”%s” använt en andra gång"
 
-#: libmetacity/meta-theme-metacity.c:1084
+#: libmetacity/meta-theme-metacity.c:1086
 #, c-format
 msgid "<%s> parent \"%s\" has not been defined"
 msgstr "<%s>-föräldern ”%s” har inte definierats"
 
-#: libmetacity/meta-theme-metacity.c:1135
+#: libmetacity/meta-theme-metacity.c:1137
 #, c-format
 msgid "<%s> name '%s' used a second time"
 msgstr "<%s>-namnet ”%s” använt en andra gång"
 
-#: libmetacity/meta-theme-metacity.c:1181
-#: libmetacity/meta-theme-metacity.c:1283
+#: libmetacity/meta-theme-metacity.c:1183
+#: libmetacity/meta-theme-metacity.c:1285
 #, c-format
 msgid "<%s> parent '%s' has not been defined"
 msgstr "<%s>-föräldern ”%s” har inte definierats"
 
-#: libmetacity/meta-theme-metacity.c:1194
+#: libmetacity/meta-theme-metacity.c:1196
 #, c-format
 msgid "<%s> geometry '%s' has not been defined"
 msgstr "<%s>-geometrin ”%s” har inte definierats"
 
-#: libmetacity/meta-theme-metacity.c:1207
+#: libmetacity/meta-theme-metacity.c:1209
 #, c-format
 msgid "<%s> must specify either a geometry or a parent that has a geometry"
 msgstr ""
 "<%s> måste ange antingen en geometri eller en förälder som har en geometri"
 
-#: libmetacity/meta-theme-metacity.c:1248
+#: libmetacity/meta-theme-metacity.c:1250
 msgid "You must specify a background for an alpha value to be meaningful"
 msgstr "Du måste ange en bakgrund för att ett alfavärde ska vara meningsfullt"
 
 # SUN CHANGED MESSAGE
-#: libmetacity/meta-theme-metacity.c:1317
+#: libmetacity/meta-theme-metacity.c:1318
 #, c-format
 msgid "Unknown type '%s' on <%s> element"
 msgstr "Okänd typ ”%s” i <%s>-element"
 
 # SUN CHANGED MESSAGE
-#: libmetacity/meta-theme-metacity.c:1326
+#: libmetacity/meta-theme-metacity.c:1327
 #, c-format
 msgid "Unknown style_set '%s' on <%s> element"
 msgstr "Okänt style_set ”%s” i <%s>-element"
@@ -1089,7 +1089,7 @@ msgstr "Elementet <%s> är inte tillåtet inuti ett <%s>-element"
 msgid "No <%s> set for theme '%s'"
 msgstr "Inget <%s> angivet för temat ”%s”"
 
-#: libmetacity/meta-theme-metacity.c:3884
+#: libmetacity/meta-theme-metacity.c:3878
 #, c-format
 msgid ""
 "No frame style set for window type '%s' in theme '%s', add a <window "
@@ -1098,34 +1098,34 @@ msgstr ""
 "Ingen ramstil angiven för fönstertypen ”%s” i temat ”%s”, lägg till ett "
 "<window type=\"%s\" style_set=\"whatever\"/>-element"
 
-#: libmetacity/meta-theme-metacity.c:4147
+#: libmetacity/meta-theme-metacity.c:4141
 msgid "No draw_ops provided for frame piece"
 msgstr "Inget draw_ops tillhandahålls för ramdel"
 
-#: libmetacity/meta-theme-metacity.c:4163
+#: libmetacity/meta-theme-metacity.c:4157
 msgid "No draw_ops provided for button"
 msgstr "Inget draw_ops tillhandahålls för knappen"
 
-#: libmetacity/meta-theme-metacity.c:4278
-#: libmetacity/meta-theme-metacity.c:4289
-#: libmetacity/meta-theme-metacity.c:4300
-#: libmetacity/meta-theme-metacity.c:4311
-#: libmetacity/meta-theme-metacity.c:4322
+#: libmetacity/meta-theme-metacity.c:4272
+#: libmetacity/meta-theme-metacity.c:4283
+#: libmetacity/meta-theme-metacity.c:4294
+#: libmetacity/meta-theme-metacity.c:4305
+#: libmetacity/meta-theme-metacity.c:4316
 #, c-format
 msgid "<%s> specified twice for this theme"
 msgstr "<%s> är angiven två gånger för detta tema"
 
-#: libmetacity/meta-theme-metacity.c:4361
+#: libmetacity/meta-theme-metacity.c:4355
 #, c-format
 msgid "No text is allowed inside element <%s>"
 msgstr "Ingen text är tillåten inuti elementet <%s>"
 
-#: libmetacity/meta-theme-metacity.c:4614
+#: libmetacity/meta-theme-metacity.c:4621
 #, c-format
 msgid "Failed to find a valid file for theme '%s'"
 msgstr "Misslyckades med att hitta en giltig fil för temat ”%s”"
 
-#: src/core/bell.c:290
+#: src/core/bell.c:279
 msgid "Bell event"
 msgstr "Ljudhändelse"
 
@@ -1362,7 +1362,7 @@ msgstr "_Ändra storlek"
 #. Translators: Translate this string the same way as you do in libwnck!
 #: src/ui/menu.c:79
 msgid "Move Titlebar On_screen"
-msgstr "Flytta titelrad på _skärm"
+msgstr "Flytta namnlist på _skärm"
 
 #. separator
 #. Translators: Translate this string the same way as you do in libwnck!
@@ -1406,21 +1406,21 @@ msgstr "Flytta till arbetsyta _nedanför"
 msgid "_Close"
 msgstr "S_täng"
 
-#: src/ui/menu.c:175
+#: src/ui/menu.c:174
 #, c-format
 msgid "Workspace %d%n"
 msgstr "Arbetsyta %d%n"
 
-#: src/ui/menu.c:185
+#: src/ui/menu.c:184
 msgid "Workspace 1_0"
 msgstr "Arbetsyta 1_0"
 
-#: src/ui/menu.c:187
+#: src/ui/menu.c:186
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Arbetsyta %s%d"
 
-#: src/ui/menu.c:354
+#: src/ui/menu.c:351
 msgid "Move to Another _Workspace"
 msgstr "Flytta till en annan _arbetsyta"
 
@@ -1522,9 +1522,9 @@ msgstr "Mod5"
 msgid "%d x %d"
 msgstr "%d × %d"
 
-#: src/ui/ui.c:865
+#: src/ui/ui.c:871
 msgid "Falling back to default GTK+ theme - Adwaita"
-msgstr "Faller tillbaka på standardtemat för GTK+ - Adwaita."
+msgstr "Faller tillbaka på standardtemat för GTK+ - Adwaita"
 
 #: theme-viewer/theme-viewer-main.c:32
 msgid "Theme type to use (\"gtk\" or \"metacity\")"
@@ -1571,7 +1571,7 @@ msgstr ""
 msgid "Run again"
 msgstr "Kör igen"
 
-#: theme-viewer/theme-viewer-window.c:980
+#: theme-viewer/theme-viewer-window.c:986
 msgid "Metacity Theme Viewer"
 msgstr "Metacity temavisare"
 
