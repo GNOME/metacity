@@ -409,7 +409,7 @@
                               <object class="GtkSpinButton" id="scale_button">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
-                                <property name="text" translatable="yes">1</property>
+                                <property name="text">1</property>
                                 <property name="adjustment">scale_adjustment</property>
                                 <property name="value">1</property>
                                 <signal name="value-changed" handler="scale_changed_cb" swapped="no"/>
