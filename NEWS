@@ -1,3 +1,10 @@
+Version 3.26.0
+==============
+- Fix memory leak when changing theme (#788078)
+- Fix crash when struts change during grab operation (#603632)
+- Updated translations:
+  Anders Jonsson (sv), Balázs Úr (hu), Мирослав Николић (sr, sr@latin).
+
 Version 3.25.2
 ==============
 - Fix appmenu button size in metacity-theme-viewer
