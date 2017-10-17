@@ -290,6 +290,8 @@ meta_window_new (MetaDisplay    *display,
   gulong event_mask;
   MetaMoveResizeFlags flags;
 
+  meta_verbose ("Attempting to manage 0x%lx\n", xwindow);
+
   meta_error_trap_push (display); /* Push a trap over all of window
                                    * creation, to reduce XSync() calls
                                    */
@@ -301,9 +303,19 @@ meta_window_new (MetaDisplay    *display,
       return NULL;
     }
 
-  g_assert (display->screen->xroot == attrs.root);
+  if (attrs.root != display->screen->xroot)
+    {
+      meta_verbose ("Not on our screen\n");
+      meta_error_trap_pop (display);
+      return NULL;
+    }
 
-  meta_verbose ("Attempting to manage 0x%lx\n", xwindow);
+  if (attrs.class == InputOnly)
+    {
+      meta_verbose ("Not managing InputOnly windows\n");
+      meta_error_trap_pop (display);
+      return NULL;
+    }
 
   if (is_our_xwindow (display, xwindow, &attrs))
     {
