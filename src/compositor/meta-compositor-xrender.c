@@ -970,6 +970,13 @@ window_has_shadow (MetaCompositorXRender *xrender,
   if (xrender->have_shadows == FALSE)
     return FALSE;
 
+  /* Do not add shadows to client side decorated windows */
+  if (meta_window_is_client_decorated (cw->window))
+    {
+      meta_verbose ("Window might have shadow because it is client side decorated\n");
+      return FALSE;
+    }
+
   /* Do not add shadows to fullscreen windows */
   if (meta_window_is_fullscreen (cw->window))
     {
@@ -984,15 +991,16 @@ window_has_shadow (MetaCompositorXRender *xrender,
       return FALSE;
     }
 
-  /* Do not add shadows if GTK+ theme is used */
-  if (meta_prefs_get_theme_type () == META_THEME_TYPE_GTK)
-    {
-      meta_verbose ("Window has shadow from GTK+ theme\n");
-      return FALSE;
-    }
-
+  /* Add shadows to windows with frame */
   if (meta_window_get_frame (cw->window))
     {
+      /* Do not add shadows if GTK+ theme is used */
+      if (meta_prefs_get_theme_type () == META_THEME_TYPE_GTK)
+        {
+          meta_verbose ("Window might have shadow from GTK+ theme\n");
+          return FALSE;
+        }
+
       meta_verbose ("Window has shadow because it has a frame\n");
       return TRUE;
     }
