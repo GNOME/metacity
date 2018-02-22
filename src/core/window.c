@@ -8923,7 +8923,17 @@ meta_window_get_frame (MetaWindow *window)
 gboolean
 meta_window_appears_focused (MetaWindow *window)
 {
-  return window->has_focus || (window->attached_focus_window != NULL);
+  if (window->has_focus)
+    return TRUE;
+
+  if (window->attached_focus_window != NULL)
+    return TRUE;
+
+  if (window->type == META_WINDOW_DOCK ||
+      window->type == META_WINDOW_SPLASHSCREEN)
+    return TRUE;
+
+  return FALSE;
 }
 
 gboolean
