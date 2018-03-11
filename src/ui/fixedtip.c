@@ -35,7 +35,6 @@ get_monitor_geometry (gint          root_x,
                       gint          root_y,
                       GdkRectangle *geometry)
 {
-#if GTK_CHECK_VERSION(3, 22, 0)
   GdkDisplay *display;
   GdkMonitor *monitor;
 
@@ -43,15 +42,6 @@ get_monitor_geometry (gint          root_x,
   monitor = gdk_display_get_monitor_at_point (display, root_x, root_y);
 
   gdk_monitor_get_geometry (monitor, geometry);
-#else
-  GdkScreen *screen;
-  gint monitor;
-
-  screen = gdk_screen_get_default ();
-  monitor = gdk_screen_get_monitor_at_point (screen, root_x, root_y);
-
-  gdk_screen_get_monitor_geometry (screen, monitor, geometry);
-#endif
 }
 
 void

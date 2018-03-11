@@ -1655,13 +1655,8 @@ meta_frame_titlebar_event (MetaFrames     *frames,
       {
         GdkRectangle rect;
 
-#if GTK_CHECK_VERSION (3, 22, 0)
         rect.x = event->x;
         rect.y = event->y;
-#else
-        rect.x = event->x_root;
-        rect.y = event->y_root;
-#endif
         rect.width = 0;
         rect.height = 0;
 
@@ -1830,15 +1825,6 @@ meta_frames_button_press_event (GtkWidget      *widget,
             {
               return FALSE;
             }
-
-#if !GTK_CHECK_VERSION (3, 22, 0)
-          rect.x += event->x_root - event->x;
-          rect.y += rect.height + event->y_root - event->y;
-
-          /* Align to the right end of the menu rectangle if RTL */
-          if (meta_ui_get_direction() == META_UI_DIRECTION_RTL)
-            rect.x += rect.width;
-#endif
 
           frame->ignore_leave_notify = TRUE;
           meta_core_show_window_menu (frames->xdisplay,

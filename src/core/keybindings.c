@@ -2803,7 +2803,6 @@ handle_activate_window_menu (MetaDisplay    *display,
       GdkRectangle rect;
       GdkEvent *gdk_event;
 
-#if GTK_CHECK_VERSION (3, 22, 0)
       if (display->focus_window->frame)
         {
           rect.x = display->focus_window->rect.x;
@@ -2817,15 +2816,6 @@ handle_activate_window_menu (MetaDisplay    *display,
 
       rect.width = display->focus_window->rect.width;
       rect.height = 0;
-#else
-      meta_window_get_position (display->focus_window, &rect.x, &rect.y);
-
-      if (meta_ui_get_direction() == META_UI_DIRECTION_RTL)
-        rect.x += display->focus_window->rect.width;
-
-      rect.width = 0;
-      rect.height = 0;
-#endif
 
       if (meta_window_is_client_decorated (display->focus_window))
         {

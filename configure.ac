@@ -89,7 +89,7 @@ dnl Check for required packages
 dnl **************************************************************************
 
 GLIB_REQUIRED_VERSION=2.44.0
-GTK_REQUIRED_VERSION=3.20.0
+GTK_REQUIRED_VERSION=3.22.0
 PANGO_REQUIRED_VERSION=1.2.0
 XCOMPOSITE_REQUIRED_VERSION=0.3
 
