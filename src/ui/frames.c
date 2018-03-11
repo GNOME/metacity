@@ -940,7 +940,7 @@ get_visible_region (MetaFrames        *frames,
   if (fgeom->top_left_corner_rounded_radius != 0)
     {
       const int corner = fgeom->top_left_corner_rounded_radius;
-      const float radius = sqrt(corner) + corner;
+      const gdouble radius = sqrt (corner) + corner;
       int i;
 
       for (i=0; i<corner; i++)
@@ -958,7 +958,7 @@ get_visible_region (MetaFrames        *frames,
   if (fgeom->top_right_corner_rounded_radius != 0)
     {
       const int corner = fgeom->top_right_corner_rounded_radius;
-      const float radius = sqrt(corner) + corner;
+      const gdouble radius = sqrt (corner) + corner;
       int i;
 
       for (i=0; i<corner; i++)
@@ -976,7 +976,7 @@ get_visible_region (MetaFrames        *frames,
   if (fgeom->bottom_left_corner_rounded_radius != 0)
     {
       const int corner = fgeom->bottom_left_corner_rounded_radius;
-      const float radius = sqrt(corner) + corner;
+      const gdouble radius = sqrt (corner) + corner;
       int i;
 
       for (i=0; i<corner; i++)
@@ -994,7 +994,7 @@ get_visible_region (MetaFrames        *frames,
   if (fgeom->bottom_right_corner_rounded_radius != 0)
     {
       const int corner = fgeom->bottom_right_corner_rounded_radius;
-      const float radius = sqrt(corner) + corner;
+      const gdouble radius = sqrt (corner) + corner;
       int i;
 
       for (i=0; i<corner; i++)
