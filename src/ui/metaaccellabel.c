@@ -258,7 +258,7 @@ meta_accel_label_draw (GtkWidget *widget,
       GtkLabel *label = GTK_LABEL (widget);
       gint x, y, xpad, ypad;
       gint margin_start, margin_end, margin_top, margin_bottom;
-      gfloat yalign;
+      gdouble yalign;
 
       label_layout = gtk_label_get_layout (GTK_LABEL (accel_label));
       yalign = gtk_label_get_yalign (GTK_LABEL (accel_label));
