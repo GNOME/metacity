@@ -106,6 +106,14 @@ struct _MetaFrames
 G_DEFINE_TYPE (MetaFrames, meta_frames, GTK_TYPE_WINDOW)
 
 static void
+process_all_updates (void)
+{
+  G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+  gdk_window_process_all_updates ();
+  G_GNUC_END_IGNORE_DEPRECATIONS
+}
+
+static void
 get_client_rect (MetaFrameGeometry *fgeom,
                  GdkRectangle      *rect)
 {
@@ -1276,7 +1284,7 @@ meta_frames_repaint_frame (MetaFrames *frames,
   /* repaint everything, so the other frame don't
    * lag behind if they are exposed
    */
-  gdk_window_process_all_updates ();
+  process_all_updates ();
 }
 
 static void
@@ -2729,7 +2737,7 @@ meta_frames_push_delay_exposes (MetaFrames *frames)
   if (frames->expose_delay_count == 0)
     {
       /* Make sure we've repainted things */
-      gdk_window_process_all_updates ();
+      process_all_updates ();
       XFlush (frames->xdisplay);
     }
 
