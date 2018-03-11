@@ -5214,7 +5214,7 @@ clip_to_rounded_corners (cairo_t                 *cr,
 
       cairo_line_to (cr, x, y + radius);
       cairo_arc (cr, x + radius, y + radius, radius,
-                 180.0f * G_PI / 180.0f, 270.0f * G_PI / 180.0f);
+                 180.0 * G_PI / 180.0, 270.0 * G_PI / 180.0);
     }
   else
     cairo_line_to (cr, x, y);
@@ -5226,7 +5226,7 @@ clip_to_rounded_corners (cairo_t                 *cr,
 
       cairo_line_to (cr, x + width - radius, y);
       cairo_arc (cr, x + width - radius, y + radius, radius,
-                 -90.0f * G_PI / 180.0f, 0.0f * G_PI / 180.0f);
+                 -90.0 * G_PI / 180.0, 0.0 * G_PI / 180.0);
     }
   else
     cairo_line_to (cr, x + width, y);
@@ -5238,7 +5238,7 @@ clip_to_rounded_corners (cairo_t                 *cr,
 
       cairo_line_to (cr, x + width, y + height - radius);
       cairo_arc (cr, x + width - radius, y + height - radius, radius,
-                 0.0f * G_PI / 180.0f, 90.0f * G_PI / 180.0f);
+                 0.0 * G_PI / 180.0, 90.0 * G_PI / 180.0);
     }
   else
     cairo_line_to (cr, x + width, y + height);
@@ -5250,7 +5250,7 @@ clip_to_rounded_corners (cairo_t                 *cr,
 
       cairo_line_to (cr, x + radius, y + height);
       cairo_arc (cr, x + radius, y + height - radius, radius,
-                 90.0f * G_PI / 180.0f, 180.0f * G_PI / 180.0f);
+                 90.0 * G_PI / 180.0, 180.0 * G_PI / 180.0);
     }
   else
     cairo_line_to (cr, x, y + height);
