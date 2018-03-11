@@ -21,23 +21,45 @@
 #include "config.h"
 
 #include <gdk/gdk.h>
+#include <gdk/gdkx.h>
 
 #include "errors.h"
 
 void
 meta_error_trap_push (MetaDisplay *display)
 {
-  gdk_error_trap_push ();
+  Display *xdisplay;
+  GdkDisplay *gdk_display;
+
+  xdisplay = meta_display_get_xdisplay (display);
+  gdk_display = gdk_x11_lookup_xdisplay (xdisplay);
+  g_assert (gdk_display != NULL);
+
+  gdk_x11_display_error_trap_push (gdk_display);
 }
 
 void
 meta_error_trap_pop (MetaDisplay *display)
 {
-  gdk_error_trap_pop_ignored ();
+  Display *xdisplay;
+  GdkDisplay *gdk_display;
+
+  xdisplay = meta_display_get_xdisplay (display);
+  gdk_display = gdk_x11_lookup_xdisplay (xdisplay);
+  g_assert (gdk_display != NULL);
+
+  gdk_x11_display_error_trap_pop_ignored (gdk_display);
 }
 
 int
 meta_error_trap_pop_with_return (MetaDisplay *display)
 {
-  return gdk_error_trap_pop ();
+  Display *xdisplay;
+  GdkDisplay *gdk_display;
+
+  xdisplay = meta_display_get_xdisplay (display);
+  gdk_display = gdk_x11_lookup_xdisplay (xdisplay);
+  g_assert (gdk_display != NULL);
+
+  return gdk_x11_display_error_trap_pop (gdk_display);
 }

@@ -1755,7 +1755,7 @@ repair_win (MetaCompositorXRender *xrender,
   Display *xdisplay = meta_display_get_xdisplay (display);
   XserverRegion parts;
 
-  meta_error_trap_push (NULL);
+  meta_error_trap_push (display);
 
   if (!cw->damaged)
     {
@@ -1769,7 +1769,7 @@ repair_win (MetaCompositorXRender *xrender,
       XFixesTranslateRegion (xdisplay, parts, cw->rect.x, cw->rect.y);
     }
 
-  meta_error_trap_pop (NULL);
+  meta_error_trap_pop (display);
 
   dump_xserver_region (xrender, "repair_win", parts);
   add_damage (xrender, parts);
@@ -2699,7 +2699,7 @@ meta_compositor_xrender_process_event (MetaCompositor *compositor,
    * X errors. This is really a hack, but I'm afraid I don't understand
    * enough about Metacity/X to know how else you are supposed to do it
    */
-  meta_error_trap_push (NULL);
+  meta_error_trap_push (display);
 
   switch (event->type)
     {
@@ -2717,7 +2717,7 @@ meta_compositor_xrender_process_event (MetaCompositor *compositor,
       break;
     }
 
-  meta_error_trap_pop (NULL);
+  meta_error_trap_pop (display);
 }
 
 static cairo_surface_t *

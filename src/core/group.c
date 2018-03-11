@@ -22,6 +22,7 @@
 
 #include <config.h>
 #include "util.h"
+#include "errors.h"
 #include "group-private.h"
 #include "group-props.h"
 #include "window.h"
@@ -45,13 +46,13 @@ meta_group_new (MetaDisplay *display,
   group->group_leader = group_leader;
   group->refcount = 1; /* owned by caller, hash table has only weak ref */
 
-  gdk_error_trap_push ();
+  meta_error_trap_push (display);
 
   XGetWindowAttributes (display->xdisplay, group_leader, &attrs);
   XSelectInput (display->xdisplay, group_leader,
                 attrs.your_event_mask | PropertyChangeMask);
 
-  if (gdk_error_trap_pop () != 0)
+  if (meta_error_trap_pop_with_return (display) != 0)
     return NULL;
 
   if (display->groups_by_leader == NULL)
