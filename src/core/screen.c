@@ -1847,6 +1847,7 @@ set_work_area_hint (MetaScreen *screen)
   GList *tmp_list;
   unsigned long *data, *tmp;
   MetaRectangle area;
+  int i;
 
   num_workspaces = meta_screen_get_n_workspaces (screen);
   data = g_new (unsigned long, num_workspaces * 4);
@@ -1876,8 +1877,47 @@ set_work_area_hint (MetaScreen *screen)
                    screen->display->atom__NET_WORKAREA,
                    XA_CARDINAL, 32, PropModeReplace,
                    (guchar*) data, num_workspaces*4);
-  g_free (data);
   meta_error_trap_pop (screen->display);
+
+  for (i = 0; i < screen->n_monitor_infos; i++)
+    {
+      gchar *workarea_name;
+      Atom workarea_atom;
+
+      tmp_list = screen->workspaces;
+      tmp = data;
+
+      while (tmp_list != NULL)
+        {
+          MetaWorkspace *workspace = tmp_list->data;
+
+          if (workspace->screen == screen)
+            {
+              meta_workspace_get_work_area_for_monitor (workspace, i, &area);
+
+              tmp[0] = area.x;
+              tmp[1] = area.y;
+              tmp[2] = area.width;
+              tmp[3] = area.height;
+
+              tmp += 4;
+            }
+
+          tmp_list = tmp_list->next;
+        }
+
+      workarea_name = g_strdup_printf ("_NET_WORKAREA_M%d", i);
+      workarea_atom = XInternAtom (screen->display->xdisplay, workarea_name, False);
+      g_free (workarea_name);
+
+      meta_error_trap_push (screen->display);
+      XChangeProperty (screen->display->xdisplay, screen->xroot, workarea_atom,
+                       XA_CARDINAL, 32, PropModeReplace,
+                       (guchar *) data, num_workspaces * 4);
+      meta_error_trap_pop (screen->display);
+    }
+
+  g_free (data);
 }
 
 static gboolean
