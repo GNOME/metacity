@@ -56,19 +56,12 @@ new_meta_rect (int x, int y, int width, int height)
   return temporary;
 }
 
-static MetaStrut*
-new_meta_strut (int x, int y, int width, int height, int side)
-{
-  MetaStrut* temporary;
-  temporary = g_new (MetaStrut, 1);
-  temporary->rect = meta_rect(x, y, width, height);
-  temporary->side = side;
-
-  return temporary;
-}
-
 static MetaEdge*
-new_screen_edge (int x, int y, int width, int height, int side_type)
+new_screen_edge (int      x,
+                 int      y,
+                 int      width,
+                 int      height,
+                 MetaSide side_type)
 {
   MetaEdge* temporary;
   temporary = g_new (MetaEdge, 1);
@@ -83,11 +76,11 @@ new_screen_edge (int x, int y, int width, int height, int side_type)
 }
 
 static MetaEdge *
-new_monitor_edge (int x,
-                  int y,
-                  int width,
-                  int height,
-                  int side_type)
+new_monitor_edge (int      x,
+                  int      y,
+                  int      width,
+                  int      height,
+                  MetaSide side_type)
 {
   MetaEdge* temporary;
   temporary = g_new (MetaEdge, 1);
@@ -242,7 +235,7 @@ static GSList*
 get_strut_list (int which)
 {
   GSList *ans;
-  MetaDirection wc = 0; /* wc == who cares? ;-) */
+  MetaSide wc = 0; /* wc == who cares? ;-) */
 
   ans = NULL;
 
@@ -252,32 +245,32 @@ get_strut_list (int which)
     case 0:
       break;
     case 1:
-      ans = g_slist_prepend (ans, new_meta_strut (   0,    0, 1600,   20, wc));
-      ans = g_slist_prepend (ans, new_meta_strut ( 400, 1160, 1600,   40, wc));
+      ans = g_slist_prepend (ans, new_screen_edge (   0,    0, 1600,   20, wc));
+      ans = g_slist_prepend (ans, new_screen_edge ( 400, 1160, 1600,   40, wc));
       break;
     case 2:
-      ans = g_slist_prepend (ans, new_meta_strut (   0,    0, 1600,   20, wc));
-      ans = g_slist_prepend (ans, new_meta_strut ( 800, 1100,  400,  100, wc));
-      ans = g_slist_prepend (ans, new_meta_strut ( 300, 1150,  150,   50, wc));
+      ans = g_slist_prepend (ans, new_screen_edge (   0,    0, 1600,   20, wc));
+      ans = g_slist_prepend (ans, new_screen_edge ( 800, 1100,  400,  100, wc));
+      ans = g_slist_prepend (ans, new_screen_edge ( 300, 1150,  150,   50, wc));
       break;
     case 3:
-      ans = g_slist_prepend (ans, new_meta_strut (   0,    0, 1600,   20, wc));
-      ans = g_slist_prepend (ans, new_meta_strut ( 800, 1100,  400,  100, wc));
-      ans = g_slist_prepend (ans, new_meta_strut ( 300, 1150,   80,   50, wc));
-      ans = g_slist_prepend (ans, new_meta_strut ( 700,  525,  200,  150, wc));
+      ans = g_slist_prepend (ans, new_screen_edge (   0,    0, 1600,   20, wc));
+      ans = g_slist_prepend (ans, new_screen_edge ( 800, 1100,  400,  100, wc));
+      ans = g_slist_prepend (ans, new_screen_edge ( 300, 1150,   80,   50, wc));
+      ans = g_slist_prepend (ans, new_screen_edge ( 700,  525,  200,  150, wc));
       break;
     case 4:
-      ans = g_slist_prepend (ans, new_meta_strut (   0,    0,  800, 1200, wc));
-      ans = g_slist_prepend (ans, new_meta_strut ( 800,    0, 1600,   20, wc));
+      ans = g_slist_prepend (ans, new_screen_edge (   0,    0,  800, 1200, wc));
+      ans = g_slist_prepend (ans, new_screen_edge ( 800,    0, 1600,   20, wc));
       break;
     case 5:
-      ans = g_slist_prepend (ans, new_meta_strut ( 800,    0, 1600,   20, wc));
-      ans = g_slist_prepend (ans, new_meta_strut (   0,    0,  800, 1200, wc));
-      ans = g_slist_prepend (ans, new_meta_strut ( 800,   10,  800, 1200, wc));
+      ans = g_slist_prepend (ans, new_screen_edge ( 800,    0, 1600,   20, wc));
+      ans = g_slist_prepend (ans, new_screen_edge (   0,    0,  800, 1200, wc));
+      ans = g_slist_prepend (ans, new_screen_edge ( 800,   10,  800, 1200, wc));
       break;
     case 6:
-      ans = g_slist_prepend (ans, new_meta_strut (   0,    0, 1600,   40, wc));
-      ans = g_slist_prepend (ans, new_meta_strut (   0,    0, 1600,   20, wc));
+      ans = g_slist_prepend (ans, new_screen_edge (   0,    0, 1600,   40, wc));
+      ans = g_slist_prepend (ans, new_screen_edge (   0,    0, 1600,   20, wc));
       break;
     default:
       break;
@@ -1030,10 +1023,10 @@ test_find_onscreen_edges (void)
   GList* edges;
   GList* tmp;
 
-  int left   = META_DIRECTION_LEFT;
-  int right  = META_DIRECTION_RIGHT;
-  int top    = META_DIRECTION_TOP;
-  int bottom = META_DIRECTION_BOTTOM;
+  int left   = META_SIDE_LEFT;
+  int right  = META_SIDE_RIGHT;
+  int top    = META_SIDE_TOP;
+  int bottom = META_SIDE_BOTTOM;
 
   /*************************************************/
   /* Make sure test region 0 has the correct edges */
@@ -1163,10 +1156,10 @@ test_find_nonintersected_monitor_edges (void)
   GList* edges;
   GList* tmp;
 
-  int left   = META_DIRECTION_LEFT;
-  int right  = META_DIRECTION_RIGHT;
-  int top    = META_DIRECTION_TOP;
-  int bottom = META_DIRECTION_BOTTOM;
+  int left   = META_SIDE_LEFT;
+  int right  = META_SIDE_RIGHT;
+  int top    = META_SIDE_TOP;
+  int bottom = META_SIDE_BOTTOM;
 
   /*************************************************************************/
   /* Make sure test monitor set 0 for with region 0 has the correct edges */
