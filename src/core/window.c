@@ -6376,6 +6376,91 @@ meta_window_update_struts (MetaWindow *window)
 
   if (meta_prop_get_cardinal_list (window->display,
                                    window->xwindow,
+                                   window->display->atom__NET_WM_STRUT_AREA,
+                                   &struts, &nitems))
+    {
+      if (nitems != 4)
+        {
+          meta_verbose ("_NET_WM_STRUT_AREA on %s has %d values instead of 4\n",
+                        window->desc, nitems);
+        }
+      else
+        {
+          MetaEdge *temp;
+          MetaSide side;
+          gboolean valid;
+          int i;
+
+          temp = g_new (MetaEdge, 1);
+
+          temp->rect.x = struts[0];
+          temp->rect.y = struts[1];
+          temp->rect.width = struts[2];
+          temp->rect.height = struts[3];
+
+          side = META_SIDE_LEFT;
+          valid = FALSE;
+
+          for (i = 0; i < window->screen->n_monitor_infos; i++)
+            {
+              MetaRectangle monitor;
+
+              monitor = window->screen->monitor_infos[i].rect;
+              if (!meta_rectangle_contains_rect (&monitor, &temp->rect))
+                continue;
+
+              if (temp->rect.height > temp->rect.width)
+                {
+                  if (temp->rect.x == monitor.x)
+                    {
+                      side = META_SIDE_LEFT;
+                      valid = TRUE;
+                    }
+                  else if (temp->rect.x + temp->rect.width == monitor.x + monitor.width)
+                    {
+                      side = META_SIDE_RIGHT;
+                      valid = TRUE;
+                    }
+                }
+              else
+                {
+                  if (temp->rect.y == monitor.y)
+                    {
+                      side = META_SIDE_TOP;
+                      valid = TRUE;
+                    }
+                  else if (temp->rect.y + temp->rect.height == monitor.y + monitor.height)
+                    {
+                      side = META_SIDE_BOTTOM;
+                      valid = TRUE;
+                    }
+                }
+            }
+
+          if (valid)
+            {
+              temp->side_type = side;
+              temp->edge_type = META_EDGE_MONITOR;
+
+              new_struts = g_slist_prepend (new_struts, temp);
+            }
+          else
+            {
+              g_free (temp);
+            }
+        }
+
+      meta_XFree (struts);
+    }
+  else
+    {
+      meta_verbose ("No _NET_WM_STRUT_AREA property for %s\n",
+                    window->desc);
+    }
+
+  if (!new_struts &&
+      meta_prop_get_cardinal_list (window->display,
+                                   window->xwindow,
                                    window->display->atom__NET_WM_STRUT_PARTIAL,
                                    &struts, &nitems))
     {
