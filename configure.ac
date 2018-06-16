@@ -247,7 +247,7 @@ AC_PATH_XTRA
 
 ALL_X_LIBS="-lX11 $X_EXTRA_LIBS"
 
-# Check for Xinerama extension (Solaris impl or Xfree impl)
+# Check for Xinerama extension
 metacity_save_cppflags="$CPPFLAGS"
 CPPFLAGS="$CPPFLAGS $X_CFLAGS"
 
@@ -256,47 +256,21 @@ AC_ARG_ENABLE(xinerama,
                  [disable metacity's use of the Xinerama extension]),
   try_xinerama=$enable_xinerama,try_xinerama=yes)
 
-use_solaris_xinerama=no
-use_xfree_xinerama=no
+have_xinerama=no
 if test "${try_xinerama}" != no; then
-    case "$host" in
-        *-*-solaris*)
-            # Check for solaris
-            use_solaris_xinerama=yes
-            AC_CHECK_LIB(Xext, XineramaGetInfo,
-                         use_solaris_xinerama=yes, use_solaris_xinerama=no,
-                         $ALL_X_LIBS)
-            if test "x$use_solaris_xinerama" = "xyes"; then
-                AC_CHECK_HEADER(X11/extensions/xinerama.h,
-                                if test -z "`echo $ALL_X_LIBS | grep "\-lXext" 2> /dev/null`"; then
-                                    X_EXTRA_LIBS="-lXext $X_EXTRA_LIBS"
-                                fi
-                                AC_DEFINE(HAVE_SOLARIS_XINERAMA, , [Have Solaris-style Xinerama])
-                                AC_DEFINE(HAVE_XINERAMA, , [Have some version of Xinerama]),
-                                use_solaris_xinerama=no,
-                                [#include <X11/Xlib.h>])
-            fi	
-            AC_MSG_CHECKING(for Xinerama support on Solaris)
-            AC_MSG_RESULT($use_solaris_xinerama);
-            ;;
-        *)
-            # Check for XFree
-            use_xfree_xinerama=yes
-            AC_CHECK_LIB(Xinerama, XineramaQueryExtension,
-                [AC_CHECK_HEADER(X11/extensions/Xinerama.h,
-                                 X_EXTRA_LIBS="-lXinerama $X_EXTRA_LIBS"   
-                                 if test -z "`echo $ALL_X_LIBS | grep "\-lXext" 2> /dev/null`"; then
-                                     X_EXTRA_LIBS="-lXext $X_EXTRA_LIBS"
-                                 fi
-                                 AC_DEFINE(HAVE_XFREE_XINERAMA, , [Have XFree86-style Xinerama])
-                                 AC_DEFINE(HAVE_XINERAMA,, [Have some version of Xinerama]), 
-                                 use_xfree_xinerama=no,
-                                 [#include <X11/Xlib.h>])],
-                use_xfree_xinerama=no, -lXext $ALL_X_LIBS)
-            AC_MSG_CHECKING(for Xinerama support on XFree86)
-            AC_MSG_RESULT($use_xfree_xinerama);
-            ;;
-    esac
+    have_xinerama=yes
+    AC_CHECK_LIB(Xinerama, XineramaQueryExtension,
+        [AC_CHECK_HEADER(X11/extensions/Xinerama.h,
+                         X_EXTRA_LIBS="-lXinerama $X_EXTRA_LIBS"
+                         if test -z "`echo $ALL_X_LIBS | grep "\-lXext" 2> /dev/null`"; then
+                             X_EXTRA_LIBS="-lXext $X_EXTRA_LIBS"
+                         fi
+                         AC_DEFINE(HAVE_XINERAMA, , [Have the Xinerama extension library]),
+                         have_xinerama=no,
+                         [#include <X11/Xlib.h>])],
+        have_xinerama=no, -lXext $ALL_X_LIBS)
+    AC_MSG_CHECKING([Xinerama])
+    AC_MSG_RESULT($have_xinerama)
 fi
 
 CPPFLAGS="$metacity_save_cppflags"
@@ -437,8 +411,7 @@ echo "  sysconfdir ..................: ${sysconfdir}"
 echo "  libexecdir ..................: ${libexecdir}"
 echo ""
 echo "  Canberra ....................: ${enable_canberra}"
-echo "  XFree86 Xinerama ............: ${use_xfree_xinerama}"
-echo "  Solaris Xinerama ............: ${use_solaris_xinerama}"
+echo "  Xinerama ....................: ${have_xinerama}"
 echo "  Startup notification ........: ${have_startup_notification}"
 echo "  Session management ..........: ${found_sm}"
 echo "  Resize-and-rotate ...........: ${found_randr}"

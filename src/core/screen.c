@@ -38,10 +38,7 @@
 #include "xprops.h"
 #include "meta-compositor.h"
 
-#ifdef HAVE_SOLARIS_XINERAMA
-#include <X11/extensions/xinerama.h>
-#endif
-#ifdef HAVE_XFREE_XINERAMA
+#ifdef HAVE_XINERAMA
 #include <X11/extensions/Xinerama.h>
 #endif
 
@@ -170,7 +167,7 @@ reload_xinerama_infos (MetaScreen *screen)
 
   screen->display->xinerama_cache_invalidated = TRUE;
 
-#ifdef HAVE_XFREE_XINERAMA
+#ifdef HAVE_XINERAMA
   if (XineramaIsActive (screen->display->xdisplay))
     {
       XineramaScreenInfo *infos;
@@ -215,73 +212,13 @@ reload_xinerama_infos (MetaScreen *screen)
   else
     {
       meta_topic (META_DEBUG_XINERAMA,
-                  "No XFree86 Xinerama extension or XFree86 Xinerama inactive on display %s\n",
+                  "No Xinerama extension or Xinerama inactive on display %s\n",
                   screen->display->name);
     }
 #else
   meta_topic (META_DEBUG_XINERAMA,
-              "Metacity compiled without XFree86 Xinerama support\n");
-#endif /* HAVE_XFREE_XINERAMA */
-
-#ifdef HAVE_SOLARIS_XINERAMA
-  /* This code from GDK, Copyright (C) 2002 Sun Microsystems */
-  if (screen->n_xinerama_infos == 0 &&
-      XineramaGetState (screen->display->xdisplay,
-                        screen->number))
-    {
-      XRectangle monitors[MAXFRAMEBUFFERS];
-      unsigned char hints[16];
-      int result;
-      int n_monitors;
-      int i;
-
-      n_monitors = 0;
-      result = XineramaGetInfo (screen->display->xdisplay,
-                                screen->number,
-                                monitors, hints,
-                                &n_monitors);
-      /* Yes I know it should be Success but the current implementation
-       * returns the num of monitor
-       */
-      if (result > 0)
-        {
-          g_assert (n_monitors > 0);
-
-          screen->xinerama_infos = g_new (MetaXineramaScreenInfo, n_monitors);
-          screen->n_xinerama_infos = n_monitors;
-
-          i = 0;
-          while (i < n_monitors)
-            {
-              screen->xinerama_infos[i].number = i;
-              screen->xinerama_infos[i].rect.x = monitors[i].x;
-              screen->xinerama_infos[i].rect.y = monitors[i].y;
-              screen->xinerama_infos[i].rect.width = monitors[i].width;
-              screen->xinerama_infos[i].rect.height = monitors[i].height;
-
-              meta_topic (META_DEBUG_XINERAMA,
-                          "Xinerama %d is %d,%d %d x %d\n",
-                          screen->xinerama_infos[i].number,
-                          screen->xinerama_infos[i].rect.x,
-                          screen->xinerama_infos[i].rect.y,
-                          screen->xinerama_infos[i].rect.width,
-                          screen->xinerama_infos[i].rect.height);
-
-              ++i;
-            }
-        }
-    }
-  else if (screen->n_xinerama_infos == 0)
-    {
-      meta_topic (META_DEBUG_XINERAMA,
-                  "No Solaris Xinerama extension or Solaris Xinerama inactive on display %s\n",
-                  screen->display->name);
-    }
-#else
-  meta_topic (META_DEBUG_XINERAMA,
-              "Metacity compiled without Solaris Xinerama support\n");
-#endif /* HAVE_SOLARIS_XINERAMA */
-
+              "Metacity compiled without Xinerama support\n");
+#endif /* HAVE_XINERAMA */
 
   /* If no Xinerama, fill in the single screen info so
    * we can use the field unconditionally

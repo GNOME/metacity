@@ -51,12 +51,6 @@
 #include <libmetacity/meta-frame-borders.h>
 #include <X11/Xatom.h>
 #include <X11/cursorfont.h>
-#ifdef HAVE_SOLARIS_XINERAMA
-#include <X11/extensions/xinerama.h>
-#endif
-#ifdef HAVE_XFREE_XINERAMA
-#include <X11/extensions/Xinerama.h>
-#endif
 #ifdef HAVE_RANDR
 #include <X11/extensions/Xrandr.h>
 #endif
