@@ -6441,7 +6441,7 @@ meta_window_update_struts (MetaWindow *window)
     }
   else
     {
-      meta_verbose ("No _NET_WM_STRUT property for %s\n",
+      meta_verbose ("No _NET_WM_STRUT_PARTIAL property for %s\n",
                     window->desc);
     }
 
