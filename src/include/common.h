@@ -183,15 +183,14 @@ typedef enum
 
 /* Sometimes we want to talk about sides instead of directions; note
  * that the values must be as follows or meta_window_update_struts()
- * won't work. Using these values also is a safety blanket since
- * MetaDirection used to be used as a side.
+ * won't work.
  */
 typedef enum
 {
-  META_SIDE_LEFT            = META_DIRECTION_LEFT,
-  META_SIDE_RIGHT           = META_DIRECTION_RIGHT,
-  META_SIDE_TOP             = META_DIRECTION_TOP,
-  META_SIDE_BOTTOM          = META_DIRECTION_BOTTOM
+  META_SIDE_LEFT = 0,
+  META_SIDE_RIGHT = 1,
+  META_SIDE_TOP = 2,
+  META_SIDE_BOTTOM = 3
 } MetaSide;
 
 /* should investigate changing these to whatever most apps use */
