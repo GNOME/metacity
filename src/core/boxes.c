@@ -532,7 +532,7 @@ meta_rectangle_get_minimal_spanning_set_for_region (
    * enough to make this worth bothering.  Further, it is only called from
    * workspace.c:ensure_work_areas_validated (at least as of the time of
    * writing this comment), which in turn should only be called if the
-   * strut list changes or the screen or xinerama size changes.  If it ever
+   * strut list changes or the screen or monitor size changes. If it ever
    * does show up on profiles (most likely because people start using
    * ridiculously huge numbers of partial struts), possible optimizations
    * include:
@@ -1799,15 +1799,15 @@ meta_rectangle_find_onscreen_edges (const MetaRectangle *basic_rect,
 }
 
 GList*
-meta_rectangle_find_nonintersected_xinerama_edges (
+meta_rectangle_find_nonintersected_monitor_edges (
                                     const MetaRectangle *screen_rect,
-                                    const GList         *xinerama_rects,
+                                    const GList         *monitor_rects,
                                     const GSList        *all_struts)
 {
   /* This function cannot easily be merged with
    * meta_rectangle_find_onscreen_edges() because real screen edges
    * and strut edges both are of the type "there ain't anything
-   * immediately on the other side"; xinerama edges are different.
+   * immediately on the other side"; monitor edges are different.
    */
   GList *ret;
   const GList  *cur;
@@ -1816,10 +1816,10 @@ meta_rectangle_find_nonintersected_xinerama_edges (
   /* Initialize the return list to be empty */
   ret = NULL;
 
-  /* start of ret with all the edges of xineramas that are adjacent to
-   * another xinerama.
+  /* start of ret with all the edges of monitors that are adjacent to
+   * another monitor.
    */
-  cur = xinerama_rects;
+  cur = monitor_rects;
   while (cur)
     {
       MetaRectangle *cur_rect = cur->data;
@@ -1830,7 +1830,7 @@ meta_rectangle_find_nonintersected_xinerama_edges (
           new_edge  = g_new (MetaEdge, 1);
           new_edge->rect = meta_rect (BOX_LEFT (*cur_rect), BOX_TOP (*cur_rect), 0, cur_rect->height);
           new_edge->side_type = META_SIDE_LEFT;
-          new_edge->edge_type = META_EDGE_XINERAMA;
+          new_edge->edge_type = META_EDGE_MONITOR;
           ret = g_list_prepend (ret, new_edge);
         }
       if (BOX_RIGHT(*cur_rect) != BOX_RIGHT(*screen_rect))
@@ -1838,7 +1838,7 @@ meta_rectangle_find_nonintersected_xinerama_edges (
           new_edge  = g_new (MetaEdge, 1);
           new_edge->rect = meta_rect (BOX_RIGHT (*cur_rect), BOX_TOP (*cur_rect), 0, cur_rect->height);
           new_edge->side_type = META_SIDE_RIGHT;
-          new_edge->edge_type = META_EDGE_XINERAMA;
+          new_edge->edge_type = META_EDGE_MONITOR;
           ret = g_list_prepend (ret, new_edge);
         }
       if (BOX_TOP(*cur_rect) != BOX_TOP(*screen_rect))
@@ -1846,7 +1846,7 @@ meta_rectangle_find_nonintersected_xinerama_edges (
           new_edge  = g_new (MetaEdge, 1);
           new_edge->rect = meta_rect (BOX_LEFT (*cur_rect), BOX_TOP (*cur_rect), cur_rect->width, 0);
           new_edge->side_type = META_SIDE_TOP;
-          new_edge->edge_type = META_EDGE_XINERAMA;
+          new_edge->edge_type = META_EDGE_MONITOR;
           ret = g_list_prepend (ret, new_edge);
         }
       if (BOX_BOTTOM(*cur_rect) != BOX_BOTTOM(*screen_rect))
@@ -1854,7 +1854,7 @@ meta_rectangle_find_nonintersected_xinerama_edges (
           new_edge  = g_new (MetaEdge, 1);
           new_edge->rect = meta_rect (BOX_LEFT (*cur_rect), BOX_BOTTOM (*cur_rect), cur_rect->width, 0);
           new_edge->side_type = META_SIDE_BOTTOM;
-          new_edge->edge_type = META_EDGE_XINERAMA;
+          new_edge->edge_type = META_EDGE_MONITOR;
           ret = g_list_prepend (ret, new_edge);
         }
 

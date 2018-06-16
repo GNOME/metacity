@@ -220,8 +220,8 @@ struct _MetaDisplay
   unsigned int super_mask;
   unsigned int meta_mask;
 
-  /* Xinerama cache */
-  unsigned int xinerama_cache_invalidated : 1;
+  /* Monitor cache */
+  unsigned int monitor_cache_invalidated : 1;
 
   /* Opening the display */
   unsigned int display_opening : 1;

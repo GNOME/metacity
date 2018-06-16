@@ -480,7 +480,7 @@ meta_window_new (MetaDisplay    *display,
   window->minimize_after_placement = FALSE;
   window->fullscreen_monitors[0] = -1;
   window->require_fully_onscreen = TRUE;
-  window->require_on_single_xinerama = TRUE;
+  window->require_on_single_monitor = TRUE;
   window->require_titlebar_visible = TRUE;
   window->on_all_workspaces = FALSE;
   window->tile_mode = META_TILE_NONE;
@@ -2803,15 +2803,15 @@ meta_window_can_tile_maximized (MetaWindow *window)
 gboolean
 meta_window_can_tile_side_by_side (MetaWindow *window)
 {
-  const MetaXineramaScreenInfo *monitor;
+  const MetaMonitorInfo *monitor;
   MetaRectangle tile_area;
 
   /*if (!META_WINDOW_ALLOWS_RESIZE (window))*/
   if (!meta_window_can_tile_maximized (window))
     return FALSE;
 
-  monitor = meta_screen_get_current_xinerama (window->screen);
-  meta_window_get_work_area_for_xinerama (window, monitor->number, &tile_area);
+  monitor = meta_screen_get_current_monitor (window->screen);
+  meta_window_get_work_area_for_monitor (window, monitor->number, &tile_area);
 
   /* Do not allow tiling in portrait orientation */
   if (tile_area.height > tile_area.width)
@@ -3054,10 +3054,10 @@ meta_window_update_fullscreen_monitors (MetaWindow    *window,
                                         unsigned long  left,
                                         unsigned long  right)
 {
-  if ((int)top < window->screen->n_xinerama_infos &&
-      (int)bottom < window->screen->n_xinerama_infos &&
-      (int)left < window->screen->n_xinerama_infos &&
-      (int)right < window->screen->n_xinerama_infos)
+  if ((int)top < window->screen->n_monitor_infos &&
+      (int)bottom < window->screen->n_monitor_infos &&
+      (int)left < window->screen->n_monitor_infos &&
+      (int)right < window->screen->n_monitor_infos)
     {
       window->fullscreen_monitors[0] = top;
       window->fullscreen_monitors[1] = bottom;
@@ -5127,7 +5127,7 @@ meta_window_move_resize_request (MetaWindow *window,
 
   if (flags & (META_IS_MOVE_ACTION | META_IS_RESIZE_ACTION))
     {
-      const MetaXineramaScreenInfo *xinerama_info;
+      const MetaMonitorInfo *monitor_info;
       MetaRectangle rect;
 
       rect.x = x;
@@ -5135,7 +5135,7 @@ meta_window_move_resize_request (MetaWindow *window,
       rect.width = width;
       rect.height = height;
 
-      xinerama_info = meta_screen_get_xinerama_for_rect (window->screen, &rect);
+      monitor_info = meta_screen_get_monitor_for_rect (window->screen, &rect);
 
       /* Workaround braindead legacy apps that don't know how to
        * fullscreen themselves properly - don't get fooled by
@@ -5145,7 +5145,7 @@ meta_window_move_resize_request (MetaWindow *window,
        */
       if (meta_prefs_get_force_fullscreen() &&
           (window->decorated || !meta_window_is_client_decorated (window)) &&
-          meta_rectangle_equal (&rect, &xinerama_info->rect) &&
+          meta_rectangle_equal (&rect, &monitor_info->rect) &&
           window->has_fullscreen_func &&
           !window->fullscreen)
         {
@@ -6864,7 +6864,7 @@ recalc_window_features (MetaWindow *window)
 
       /* don't allow fullscreen if we can't resize, unless the size
        * is entire screen size (kind of broken, because we
-       * actually fullscreen to xinerama head size not screen size)
+       * actually fullscreen to monitor head size not screen size)
        */
       if (window->size_hints.min_width == window->screen->rect.width &&
           window->size_hints.min_height == window->screen->rect.height)
@@ -7505,7 +7505,7 @@ update_move (MetaWindow  *window,
            !META_WINDOW_MAXIMIZED (window) &&
            !META_WINDOW_TILED_SIDE_BY_SIDE (window))
     {
-      const MetaXineramaScreenInfo *monitor;
+      const MetaMonitorInfo *monitor;
       MetaRectangle work_area;
 
       /* For side-by-side tiling we are interested in the inside vertical
@@ -7521,10 +7521,10 @@ update_move (MetaWindow  *window,
        * refers to the monitor which contains the largest part of the window,
        * the latter to the one where the pointer is located.
        */
-      monitor = meta_screen_get_current_xinerama (window->screen);
-      meta_window_get_work_area_for_xinerama (window,
-                                              monitor->number,
-                                              &work_area);
+      monitor = meta_screen_get_current_monitor (window->screen);
+      meta_window_get_work_area_for_monitor (window,
+                                             monitor->number,
+                                             &work_area);
 
       /* Check if the cursor is in a position which triggers tiling
        * and set tile_mode accordingly.
@@ -7587,22 +7587,22 @@ update_move (MetaWindow  *window,
 
       return;
     }
-  /* remaximize window on an other xinerama monitor if window has
-   * been shaken loose or it is still maximized (then move straight)
+  /* remaximize window on an other monitor if window has been shaken
+   * loose or it is still maximized (then move straight)
    */
   else if (window->shaken_loose || META_WINDOW_MAXIMIZED (window))
     {
-      const MetaXineramaScreenInfo *wxinerama;
+      const MetaMonitorInfo *wmonitor;
       MetaRectangle work_area;
       int monitor;
 
-      wxinerama = meta_screen_get_xinerama_for_window (window->screen, window);
+      wmonitor = meta_screen_get_monitor_for_window (window->screen, window);
 
-      for (monitor = 0; monitor < window->screen->n_xinerama_infos; monitor++)
+      for (monitor = 0; monitor < window->screen->n_monitor_infos; monitor++)
         {
-          meta_window_get_work_area_for_xinerama (window, monitor, &work_area);
+          meta_window_get_work_area_for_monitor (window, monitor, &work_area);
 
-          /* check if cursor is near the top of a xinerama work area */
+          /* check if cursor is near the top of a monitor work area */
           if (x >= work_area.x &&
               x < (work_area.x + work_area.width) &&
               y >= work_area.y &&
@@ -7611,7 +7611,7 @@ update_move (MetaWindow  *window,
               /* move the saved rect if window will become maximized on an
                * other monitor so user isn't surprised on a later unmaximize
                */
-              if (wxinerama->number != monitor)
+              if (wmonitor->number != monitor)
                 {
                   window->saved_rect.x = work_area.x;
                   window->saved_rect.y = work_area.y;
@@ -8189,24 +8189,24 @@ meta_window_handle_mouse_grab_op_event (MetaWindow *window,
 }
 
 static void
-get_work_area_xinerama (MetaWindow    *window,
-                        MetaRectangle *area,
-                        int            which_xinerama)
+get_work_area_monitor (MetaWindow    *window,
+                       MetaRectangle *area,
+                       int            which_monitor)
 {
   GList *tmp;
 
-  g_assert (which_xinerama >= 0);
+  g_assert (which_monitor >= 0);
 
-  /* Initialize to the whole xinerama */
-  *area = window->screen->xinerama_infos[which_xinerama].rect;
+  /* Initialize to the whole monitor */
+  *area = window->screen->monitor_infos[which_monitor].rect;
 
   tmp = meta_window_get_workspaces (window);
   while (tmp != NULL)
     {
       MetaRectangle workspace_work_area;
-      meta_workspace_get_work_area_for_xinerama (tmp->data,
-                                                 which_xinerama,
-                                                 &workspace_work_area);
+      meta_workspace_get_work_area_for_monitor (tmp->data,
+                                                which_monitor,
+                                                &workspace_work_area);
       meta_rectangle_intersect (area,
                                 &workspace_work_area,
                                 area);
@@ -8214,37 +8214,35 @@ get_work_area_xinerama (MetaWindow    *window,
     }
 
   meta_topic (META_DEBUG_WORKAREA,
-              "Window %s xinerama %d has work area %d,%d %d x %d\n",
-              window->desc, which_xinerama,
+              "Window %s monitor %d has work area %d,%d %d x %d\n",
+              window->desc, which_monitor,
               area->x, area->y, area->width, area->height);
 }
 
 void
-meta_window_get_work_area_current_xinerama (MetaWindow    *window,
-                                            MetaRectangle *area)
+meta_window_get_work_area_current_monitor (MetaWindow    *window,
+                                           MetaRectangle *area)
 {
-  const MetaXineramaScreenInfo *xinerama;
+  const MetaMonitorInfo *monitor;
 
-  xinerama = meta_screen_get_xinerama_for_window (window->screen, window);
+  monitor = meta_screen_get_monitor_for_window (window->screen, window);
 
-  meta_window_get_work_area_for_xinerama (window, xinerama->number, area);
+  meta_window_get_work_area_for_monitor (window, monitor->number, area);
 }
 
 void
-meta_window_get_work_area_for_xinerama (MetaWindow    *window,
-                                        int            which_xinerama,
+meta_window_get_work_area_for_monitor (MetaWindow    *window,
+                                       int            which_monitor,
+                                       MetaRectangle *area)
+{
+  g_return_if_fail (which_monitor >= 0);
+
+  get_work_area_monitor (window, area, which_monitor);
+}
+
+void
+meta_window_get_work_area_all_monitors (MetaWindow    *window,
                                         MetaRectangle *area)
-{
-  g_return_if_fail (which_xinerama >= 0);
-
-  get_work_area_xinerama (window,
-                          area,
-                          which_xinerama);
-}
-
-void
-meta_window_get_work_area_all_xineramas (MetaWindow    *window,
-                                         MetaRectangle *area)
 {
   GList *tmp;
 
@@ -8255,8 +8253,8 @@ meta_window_get_work_area_all_xineramas (MetaWindow    *window,
   while (tmp != NULL)
     {
       MetaRectangle workspace_work_area;
-      meta_workspace_get_work_area_all_xineramas (tmp->data,
-                                                  &workspace_work_area);
+      meta_workspace_get_work_area_all_monitors (tmp->data,
+                                                 &workspace_work_area);
       meta_rectangle_intersect (area,
                                 &workspace_work_area,
                                 area);
@@ -8282,9 +8280,12 @@ meta_window_get_current_tile_area (MetaWindow *window,
    * cases is the real monitor number actually required (e.g. the window is being moved with the mouse but
    * is still mostly on the wrong monitor).
    */
-  if (window->tile_monitor_number >= window->screen->n_xinerama_infos)
+  if (window->tile_monitor_number >= window->screen->n_monitor_infos)
     {
-      window->tile_monitor_number = meta_screen_get_xinerama_for_window (window->screen, window)->number;
+      const MetaMonitorInfo *monitor;
+
+      monitor = meta_screen_get_monitor_for_window (window->screen, window);
+      window->tile_monitor_number = monitor->number;
     }
 
   tile_monitor_number = window->tile_monitor_number;
@@ -8294,7 +8295,7 @@ meta_window_get_current_tile_area (MetaWindow *window,
       tile_monitor_number = 0;
     }
 
-  meta_window_get_work_area_for_xinerama (window, tile_monitor_number, tile_area);
+  meta_window_get_work_area_for_monitor (window, tile_monitor_number, tile_area);
 
   if (window->tile_mode == META_TILE_LEFT ||
       window->tile_mode == META_TILE_RIGHT)

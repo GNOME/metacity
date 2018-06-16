@@ -2448,7 +2448,7 @@ handle_move_to_corner_backend (MetaDisplay    *display,
   int new_x, new_y;
   int frame_width, frame_height;
 
-  meta_window_get_work_area_all_xineramas (window, &work_area);
+  meta_window_get_work_area_all_monitors (window, &work_area);
   meta_window_get_outer_rect (window, &outer);
   meta_window_get_position (window, &orig_x, &orig_y);
 
@@ -2571,7 +2571,7 @@ handle_move_to_center  (MetaDisplay    *display,
   int orig_x, orig_y;
   int frame_width, frame_height;
 
-  meta_window_get_work_area_all_xineramas (window, &work_area);
+  meta_window_get_work_area_all_monitors (window, &work_area);
   meta_window_get_outer_rect (window, &outer);
   meta_window_get_position (window, &orig_x, &orig_y);
 
@@ -3032,10 +3032,10 @@ handle_toggle_tiled (MetaDisplay    *display,
                      MetaKeyBinding *binding,
                      gpointer        dummy)
 {
-  const MetaXineramaScreenInfo *monitor;
+  const MetaMonitorInfo *monitor;
   MetaTileMode mode = binding->handler->data;
 
-  monitor = meta_screen_get_current_xinerama (window->screen);
+  monitor = meta_screen_get_current_monitor (window->screen);
 
   if ((META_WINDOW_TILED_LEFT (window) && mode == META_TILE_LEFT) ||
       (META_WINDOW_TILED_RIGHT (window) && mode == META_TILE_RIGHT))

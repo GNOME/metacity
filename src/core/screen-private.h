@@ -37,9 +37,9 @@
 #include "stack-tracker.h"
 #include "ui.h"
 
-typedef struct _MetaXineramaScreenInfo MetaXineramaScreenInfo;
+typedef struct _MetaMonitorInfo MetaMonitorInfo;
 
-struct _MetaXineramaScreenInfo
+struct _MetaMonitorInfo
 {
   int number;
   MetaRectangle rect;
@@ -102,11 +102,11 @@ struct _MetaScreen
   Atom wm_sn_atom;
   guint32 wm_sn_timestamp;
 
-  MetaXineramaScreenInfo *xinerama_infos;
-  int n_xinerama_infos;
+  MetaMonitorInfo *monitor_infos;
+  int n_monitor_infos;
 
-  /* Cache the current Xinerama */
-  int last_xinerama_index;
+  /* Cache the current monitor */
+  int last_monitor_index;
 
 #ifdef HAVE_STARTUP_NOTIFICATION
   SnMonitorContext *sn_context;
@@ -163,19 +163,19 @@ void          meta_screen_tile_preview_hide            (MetaScreen    *screen);
 MetaWindow*   meta_screen_get_mouse_window     (MetaScreen                 *screen,
                                                 MetaWindow                 *not_this_one);
 
-const MetaXineramaScreenInfo* meta_screen_get_current_xinerama    (MetaScreen    *screen);
-const MetaXineramaScreenInfo* meta_screen_get_xinerama_for_rect   (MetaScreen    *screen,
-                                                                   MetaRectangle *rect);
-const MetaXineramaScreenInfo* meta_screen_get_xinerama_for_window (MetaScreen    *screen,
-                                                                   MetaWindow    *window);
+const MetaMonitorInfo* meta_screen_get_current_monitor    (MetaScreen    *screen);
+const MetaMonitorInfo* meta_screen_get_monitor_for_rect   (MetaScreen    *screen,
+                                                           MetaRectangle *rect);
+const MetaMonitorInfo* meta_screen_get_monitor_for_window (MetaScreen    *screen,
+                                                           MetaWindow    *window);
 
+const MetaMonitorInfo* meta_screen_get_monitor_neighbor (MetaScreen          *screen,
+                                                         int                  which_monitor,
+                                                         MetaScreenDirection  dir);
 
-const MetaXineramaScreenInfo* meta_screen_get_xinerama_neighbor (MetaScreen *screen,
-                                                                 int         which_xinerama,
-                                                                 MetaScreenDirection dir);
-void          meta_screen_get_natural_xinerama_list (MetaScreen *screen,
-                                                     int**       xineramas_list,
-                                                     int*        n_xineramas);
+void          meta_screen_get_natural_monitor_list (MetaScreen *screen,
+                                                    int**       monitors_list,
+                                                    int*        n_monitors);
 
 void          meta_screen_update_workspace_layout (MetaScreen             *screen);
 void          meta_screen_update_workspace_names  (MetaScreen             *screen);
