@@ -149,7 +149,8 @@ void meta_rectangle_resize_with_gravity (const MetaRectangle *old_rect,
  */
 GList*   meta_rectangle_get_minimal_spanning_set_for_region (
                                          const MetaRectangle *basic_rect,
-                                         const GSList        *all_struts);
+                                         const GSList        *all_struts,
+                                         gboolean             skip_middle_struts);
 
 /* Expand all rectangles in region by the given amount on each side */
 GList*   meta_rectangle_expand_region   (GList               *region,
