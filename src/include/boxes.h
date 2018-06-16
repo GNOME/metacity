@@ -34,13 +34,6 @@ struct _MetaRectangle
   int height;
 };
 
-typedef struct _MetaStrut MetaStrut;
-struct _MetaStrut
-{
-  MetaRectangle rect;
-  MetaSide side;
-};
-
 #define BOX_LEFT(box)    ((box).x)                /* Leftmost pixel of rect */
 #define BOX_RIGHT(box)   ((box).x + (box).width)  /* One pixel past right   */
 #define BOX_TOP(box)     ((box).y)                /* Topmost pixel of rect  */

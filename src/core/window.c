@@ -6389,7 +6389,7 @@ meta_window_update_struts (MetaWindow *window)
           int i;
           for (i=0; i<4; i++)
             {
-              MetaStrut *temp;
+              MetaEdge *temp;
               int thickness, strut_begin, strut_end;
 
               thickness = struts[i];
@@ -6398,10 +6398,13 @@ meta_window_update_struts (MetaWindow *window)
               strut_begin = struts[4+(i*2)];
               strut_end   = struts[4+(i*2)+1];
 
-              temp = g_new (MetaStrut, 1);
-              temp->side = 1 << i; /* See MetaSide def.  Matches nicely, eh? */
+              temp = g_new (MetaEdge, 1);
+
+              temp->side_type = i;
+              temp->edge_type = META_EDGE_SCREEN;
+
               temp->rect = window->screen->rect;
-              switch (temp->side)
+              switch (temp->side_type)
                 {
                 case META_SIDE_RIGHT:
                   temp->rect.x = BOX_RIGHT(temp->rect) - thickness;
@@ -6460,17 +6463,20 @@ meta_window_update_struts (MetaWindow *window)
           int i;
           for (i=0; i<4; i++)
             {
-              MetaStrut *temp;
+              MetaEdge *temp;
               int thickness;
 
               thickness = struts[i];
               if (thickness == 0)
                 continue;
 
-              temp = g_new (MetaStrut, 1);
-              temp->side = 1 << i;
+              temp = g_new (MetaEdge, 1);
+
+              temp->side_type = i;
+              temp->edge_type = META_EDGE_SCREEN;
+
               temp->rect = window->screen->rect;
-              switch (temp->side)
+              switch (temp->side_type)
                 {
                 case META_SIDE_RIGHT:
                   temp->rect.x = BOX_RIGHT(temp->rect) - thickness;
@@ -6510,10 +6516,11 @@ meta_window_update_struts (MetaWindow *window)
   new_iter = new_struts;
   while (old_iter && new_iter)
     {
-      MetaStrut *old_strut = (MetaStrut*) old_iter->data;
-      MetaStrut *new_strut = (MetaStrut*) new_iter->data;
+      MetaEdge *old_strut = (MetaEdge *) old_iter->data;
+      MetaEdge *new_strut = (MetaEdge *) new_iter->data;
 
-      if (old_strut->side != new_strut->side ||
+      if (old_strut->side_type != new_strut->side_type ||
+          old_strut->edge_type != new_strut->edge_type ||
           !meta_rectangle_equal (&old_strut->rect, &new_strut->rect))
         break;
 
