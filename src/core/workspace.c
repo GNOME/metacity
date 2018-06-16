@@ -624,8 +624,8 @@ ensure_work_areas_validated (MetaWorkspace *workspace)
       GSList *s_iter;
 
       for (s_iter = win->struts; s_iter != NULL; s_iter = s_iter->next) {
-        MetaStrut *cpy = g_new (MetaStrut, 1);
-        *cpy = *((MetaStrut *)s_iter->data);
+        MetaEdge *cpy = g_new (MetaEdge, 1);
+        *cpy = *((MetaEdge *)s_iter->data);
         workspace->all_struts = g_slist_prepend (workspace->all_struts,
                                                  cpy);
       }
