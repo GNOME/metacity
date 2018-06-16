@@ -1955,6 +1955,12 @@ meta_display_init_window_prop_hooks (MetaDisplay *display)
       NONE
     },
     {
+      display->atom__NET_WM_STRUT_AREA,
+      META_PROP_VALUE_INVALID,
+      reload_struts,
+      NONE
+    },
+    {
       display->atom__NET_WM_WINDOW_OPACITY,
       META_PROP_VALUE_CARDINAL,
       reload_window_opacity,
