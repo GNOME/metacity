@@ -791,104 +791,6 @@ init_gtk_cursor_theme_size (void)
   gtk_cursor_theme_size_changed (settings, NULL, NULL);
 }
 
-static gboolean
-in_desktop (const gchar *name)
-{
-  const gchar *xdg_current_desktop;
-  gboolean result;
-  gchar **desktops;
-  gint i;
-
-  xdg_current_desktop = g_getenv ("XDG_CURRENT_DESKTOP");
-  if (xdg_current_desktop == NULL)
-    return FALSE;
-
-  result = FALSE;
-  desktops = g_strsplit (xdg_current_desktop, ":", -1);
-
-  for (i = 0; desktops[i] != NULL; i++)
-    {
-      if (g_strcmp0 (desktops[i], name) == 0)
-        {
-          result = TRUE;
-          break;
-        }
-    }
-
-  g_strfreev (desktops);
-
-  return result;
-}
-
-static void
-gtk_decoration_layout_changed (GtkSettings *settings,
-                               GParamSpec  *pspec,
-                               gpointer     user_data)
-{
-  gchar *layout;
-  gchar **sides;
-  gint i;
-  gint j;
-
-  g_object_get (settings, "gtk-decoration-layout", &layout, NULL);
-
-  sides = g_strsplit (layout, ":", -1);
-  g_free (layout);
-
-  for (i = 0; sides[i]; i++)
-    {
-      gchar **buttons;
-
-      buttons = g_strsplit (sides[i], ",", -1);
-
-      for (j = 0; buttons[j]; j++)
-        {
-          const gchar *button;
-
-          if (g_strcmp0 (buttons[j], "icon") == 0)
-            button = "menu";
-          else if (g_strcmp0 (buttons[j], "menu") == 0)
-            button = "appmenu";
-          else
-            button = NULL;
-
-          if (button)
-            {
-              g_free (buttons[j]);
-              buttons[j] = g_strdup (button);
-            }
-        }
-
-      g_free (sides[i]);
-      sides[i] = g_strjoinv (",", buttons);
-
-      g_strfreev (buttons);
-    }
-
-  layout = g_strjoinv (":", sides);
-  g_strfreev (sides);
-
-  update_button_layout (layout);
-  g_free (layout);
-}
-
-
-static void
-init_gtk_decoration_layout (void)
-{
-  GtkSettings *settings;
-
-  if (!in_desktop ("GNOME-Flashback"))
-    return;
-
-  settings = gtk_settings_get_default ();
-
-  g_signal_connect (settings, "notify::gtk-decoration-layout",
-                    G_CALLBACK (gtk_decoration_layout_changed), NULL);
-
-  gtk_decoration_layout_changed (settings, NULL, NULL);
-}
-
 static void
 gtk_theme_name_changed (GtkSettings *settings,
                         GParamSpec  *pspec,
@@ -953,7 +855,6 @@ meta_prefs_init (void)
   init_workspace_names ();
 
   init_gtk_cursor_theme_size ();
-  init_gtk_decoration_layout ();
   init_gtk_theme_name ();
 }
 
@@ -1213,9 +1114,6 @@ button_layout_handler (GVariant *value,
   const gchar *string_value;
 
   *result = NULL; /* ignored */
-
-  if (in_desktop ("GNOME-Flashback"))
-    return TRUE;
 
   string_value = g_variant_get_string (value, NULL);
 
