@@ -1845,11 +1845,14 @@ set_work_area_hint (MetaScreen *screen)
 {
   int num_workspaces;
   GList *tmp_list;
+  unsigned long data_len;
   unsigned long *data, *tmp;
   MetaRectangle area;
+  int i;
 
   num_workspaces = meta_screen_get_n_workspaces (screen);
-  data = g_new (unsigned long, num_workspaces * 4);
+  data_len = num_workspaces * 4;
+  data = g_new0 (unsigned long, data_len);
   tmp_list = screen->workspaces;
   tmp = data;
 
@@ -1875,9 +1878,51 @@ set_work_area_hint (MetaScreen *screen)
   XChangeProperty (screen->display->xdisplay, screen->xroot,
                    screen->display->atom__NET_WORKAREA,
                    XA_CARDINAL, 32, PropModeReplace,
-                   (guchar*) data, num_workspaces*4);
-  g_free (data);
+                   (guchar*) data, data_len);
   meta_error_trap_pop (screen->display);
+
+  g_free (data);
+  data_len = 1 + screen->n_monitor_infos * (2 + num_workspaces * 4);
+  data = g_new (unsigned long, data_len);
+  tmp = data;
+
+  *tmp++ = screen->n_monitor_infos;
+
+  for (i = 0; i < screen->n_monitor_infos; i++)
+    {
+      tmp_list = screen->workspaces;
+
+      *tmp++ = screen->monitor_infos[i].rect.x;
+      *tmp++ = screen->monitor_infos[i].rect.y;
+
+      while (tmp_list != NULL)
+        {
+          MetaWorkspace *workspace = tmp_list->data;
+
+          if (workspace->screen == screen)
+            {
+              meta_workspace_get_work_area_for_monitor (workspace, i, &area);
+
+              tmp[0] = area.x;
+              tmp[1] = area.y;
+              tmp[2] = area.width;
+              tmp[3] = area.height;
+
+              tmp += 4;
+            }
+
+          tmp_list = tmp_list->next;
+        }
+    }
+
+  meta_error_trap_push (screen->display);
+  XChangeProperty (screen->display->xdisplay, screen->xroot,
+                   screen->display->atom__NET_WORKAREA_MONITORS,
+                   XA_CARDINAL, 32, PropModeReplace,
+                   (guchar*) data, data_len);
+  meta_error_trap_pop (screen->display);
+
+  g_free (data);
 }
 
 static gboolean
