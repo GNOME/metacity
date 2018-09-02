@@ -1,3 +1,10 @@
+Version 3.30.0
+==============
+- Fix build warnings
+- Remove Solaris Xinerama support
+- Updated translations:
+  Dingzhong Chen (zh_CN).
+
 Version 3.28.0
 ==============
 - Fix build warnings
