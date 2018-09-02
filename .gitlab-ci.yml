@@ -1,0 +1,37 @@
+stages:
+  - build
+
+build-ubuntu:
+  image: ubuntu:devel
+  stage: build
+  before_script:
+    - apt-get update
+    - apt-get install -q -y --no-install-recommends
+                      autoconf-archive
+                      automake
+                      gsettings-desktop-schemas-dev
+                      libcanberra-gtk3-dev
+                      libglib2.0-dev
+                      libgtk-3-dev
+                      libgtop2-dev
+                      libice-dev
+                      libpango1.0-dev
+                      libsm-dev
+                      libstartup-notification0-dev
+                      libvulkan-dev
+                      libx11-dev
+                      libxcomposite-dev
+                      libxcursor-dev
+                      libxdamage-dev
+                      libxext-dev
+                      libxfixes-dev
+                      libxinerama-dev
+                      libxrandr-dev
+                      libxrender-dev
+                      libxt-dev
+                      yelp-tools
+                      zenity
+  script:
+    - ./autogen.sh
+    - make
+    - make distcheck
