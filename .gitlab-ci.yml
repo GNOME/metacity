@@ -21,6 +21,7 @@ build-ubuntu:
                       libpango1.0-dev
                       libsm-dev
                       libstartup-notification0-dev
+                      libtool
                       libvulkan-dev
                       libx11-dev
                       libxcomposite-dev
