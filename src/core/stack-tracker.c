@@ -479,8 +479,7 @@ meta_stack_tracker_free (MetaStackTracker *tracker)
   if (tracker->predicted_stack)
     g_array_free (tracker->predicted_stack, TRUE);
 
-  g_queue_foreach (tracker->unverified_predictions, (GFunc)meta_stack_op_free, NULL);
-  g_queue_free (tracker->unverified_predictions);
+  g_queue_free_full (tracker->unverified_predictions, (GDestroyNotify) meta_stack_op_free);
   tracker->unverified_predictions = NULL;
 
   g_free (tracker);
