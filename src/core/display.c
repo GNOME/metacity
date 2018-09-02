@@ -390,8 +390,6 @@ meta_display_open (void)
                                         sn_error_trap_pop);
 #endif
 
-  the_display->events = NULL;
-
   /* Get events */
   meta_ui_add_event_func (the_display->xdisplay,
                           event_callback,

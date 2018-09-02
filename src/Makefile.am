@@ -51,8 +51,6 @@ metacity_SOURCES= 				\
 	core/effects.h				\
 	core/errors.c				\
 	include/errors.h			\
-	core/eventqueue.c			\
-	core/eventqueue.h			\
 	core/frame.c				\
 	core/frame-private.h			\
 	include/frame.h				\
