@@ -280,6 +280,13 @@ menu_item_new (MenuItem *menuitem, int workspace_id)
   return mi;
 }
 
+static void
+free_menu_data (MenuData *menu_data,
+                GClosure *closure)
+{
+  g_free (menu_data);
+}
+
 MetaWindowMenu*
 meta_window_menu_new   (MetaFrames         *frames,
                         MetaMenuOp          ops,
@@ -398,7 +405,7 @@ meta_window_menu_new   (MetaFrames         *frames,
                           "activate",
                           G_CALLBACK (activate_cb),
                           md,
-                          (GClosureNotify) g_free, 0);
+                          (GClosureNotify) free_menu_data, 0);
 
                       gtk_menu_shell_append (GTK_MENU_SHELL (submenu), submi);
 
@@ -425,7 +432,7 @@ meta_window_menu_new   (MetaFrames         *frames,
                                      "activate",
                                      G_CALLBACK (activate_cb),
                                      md,
-                                     (GClosureNotify) g_free, 0);
+                                     (GClosureNotify) free_menu_data, 0);
             }
 
           if (mi)
