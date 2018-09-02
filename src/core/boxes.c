@@ -761,15 +761,6 @@ meta_rectangle_expand_to_avoiding_struts (MetaRectangle       *rect,
     } /* end loop over struts */
 } /* end meta_rectangle_expand_to_avoiding_struts */
 
-void
-meta_rectangle_free_list_and_elements (GList *filled_list)
-{
-  g_list_foreach (filled_list,
-                  (void (*)(gpointer,gpointer))&g_free, /* ew, for ugly */
-                  NULL);
-  g_list_free (filled_list);
-}
-
 gboolean
 meta_rectangle_could_fit_in_region (const GList         *spanning_rects,
                                     const MetaRectangle *rect)
@@ -1793,7 +1784,7 @@ meta_rectangle_find_onscreen_edges (const MetaRectangle *basic_rect,
   ret = g_list_sort (ret, meta_rectangle_edge_cmp);
 
   /* Free the fixed struts list */
-  meta_rectangle_free_list_and_elements (fixed_strut_rects);
+  g_list_free_full (fixed_strut_rects, g_free);
 
   return ret;
 }
