@@ -9,6 +9,8 @@ build-ubuntu:
     - apt-get install -q -y --no-install-recommends
                       autoconf-archive
                       automake
+                      build-essential
+                      gettext
                       gsettings-desktop-schemas-dev
                       libcanberra-gtk3-dev
                       libglib2.0-dev
