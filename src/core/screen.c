@@ -568,9 +568,7 @@ meta_screen_free (MetaScreen *screen,
   meta_screen_ungrab_keys (screen);
 
 #ifdef HAVE_STARTUP_NOTIFICATION
-  g_slist_foreach (screen->startup_sequences,
-                   (GFunc) sn_startup_sequence_unref, NULL);
-  g_slist_free (screen->startup_sequences);
+  g_slist_free_full (screen->startup_sequences, (GDestroyNotify) sn_startup_sequence_unref);
   screen->startup_sequences = NULL;
 
   if (screen->startup_sequence_timeout != 0)
