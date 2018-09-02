@@ -9,6 +9,7 @@ build-ubuntu:
     - apt-get install -q -y --no-install-recommends
                       autoconf-archive
                       automake
+                      autopoint
                       build-essential
                       gettext
                       gsettings-desktop-schemas-dev
