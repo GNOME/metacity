@@ -257,8 +257,7 @@ typedef void (* MetaKeyHandlerFunc) (MetaDisplay    *display,
                                      MetaScreen     *screen,
                                      MetaWindow     *window,
                                      XEvent         *event,
-                                     MetaKeyBinding *binding,
-                                     gpointer        user_data);
+                                     MetaKeyBinding *binding);
 
 typedef struct _MetaKeyHandler MetaKeyHandler;
 
