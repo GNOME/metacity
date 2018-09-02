@@ -1305,8 +1305,7 @@ update_binding (MetaKeyPref *binding,
   /* Okay, so, we're about to provide a new list of key combos for this
    * action. Delete any pre-existing list.
    */
-  g_slist_foreach (binding->bindings, (GFunc) g_free, NULL);
-  g_slist_free (binding->bindings);
+  g_slist_free_full (binding->bindings, g_free);
   binding->bindings = NULL;
 
   for (i = 0; strokes && strokes[i]; i++)
