@@ -1503,7 +1503,7 @@ request_xserver_input_focus_change (MetaDisplay *display,
 
   meta_error_trap_push (display);
 
-  /* In order for mutter to know that the focus request succeeded, we track
+  /* In order for Metacity to know that the focus request succeeded, we track
    * the serial of the "focus request" we made, but if we take the serial
    * of the XSetInputFocus request, then there's no way to determine the
    * difference between focus events as a result of the SetInputFocus and

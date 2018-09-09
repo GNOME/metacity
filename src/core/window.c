@@ -1208,7 +1208,7 @@ meta_window_unmanage (MetaWindow *window,
         }
 
       /* If we're unmanaging a window that is not withdrawn, then
-       * either (a) mutter is exiting, in which case we need to map
+       * either (a) Metacity is exiting, in which case we need to map
        * the window so the next WM will know that it's not Withdrawn,
        * or (b) we want to create a new MetaWindow to replace the
        * current one, which will happen automatically if we re-map

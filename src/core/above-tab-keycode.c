@@ -30,12 +30,12 @@
  * implemented here, but unfortunately, fetching the geometry is rather
  * slow (It could take 20ms or more.)
  *
- * If you looking for a way to optimize Mutter startup performance:
+ * If you looking for a way to optimize Metacity startup performance:
  * On all Linux systems using evdev the key above TAB will have
  * keycode 49. (KEY_GRAVE=41 + the 8 code point offset between
  * evdev keysyms and X keysyms.) So a configure option
  * --with-above-tab-keycode=49 could be added that bypassed this
- * code. It wouldn't work right for displaying Mutter remotely
+ * code. It wouldn't work right for displaying Metacity remotely
  * to a non-Linux X server, but that is pretty rare.
  */
 
