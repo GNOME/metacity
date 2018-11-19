@@ -1009,10 +1009,12 @@ reload_wm_class (MetaWindow    *window,
   if (value->type != META_PROP_VALUE_INVALID)
     {
       if (value->v.class_hint.res_name)
-        window->res_name = g_strdup (value->v.class_hint.res_name);
+        window->res_name = g_convert (value->v.class_hint.res_name, -1,
+                                      "UTF-8", "LATIN1", NULL, NULL, NULL);
 
       if (value->v.class_hint.res_class)
-        window->res_class = g_strdup (value->v.class_hint.res_class);
+        window->res_class = g_convert (value->v.class_hint.res_class, -1,
+                                       "UTF-8", "LATIN1", NULL, NULL, NULL);
     }
 
   meta_verbose ("Window %s class: '%s' name: '%s'\n",
