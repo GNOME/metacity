@@ -16,9 +16,7 @@
  <!-- The date when the source control was initialised. -->
  <created>2001-05-30</created>
 
- <shortdesc xml:lang="en">
-   Metacity is a simple compositing window manager that integrates nicely with GNOME Flashback.
-</shortdesc>
+ <shortdesc xml:lang="en">Metacity is a simple compositing window manager that integrates nicely with GNOME Flashback.</shortdesc>
  <description xml:lang="en">
 A window manager for GNOME Flashback, with a focus on simplicity and usability
 rather than novelties or gimmicks. It uses GTK+ 3 for drawing window frames,
