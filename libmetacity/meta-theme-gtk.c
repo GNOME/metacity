@@ -654,6 +654,8 @@ get_class_from_button_type (MetaButtonType type)
     return "maximize";
   else if (type == META_BUTTON_TYPE_MINIMIZE)
     return "minimize";
+  else if (type == META_BUTTON_TYPE_APPMENU)
+    return "appmenu";
 
   return NULL;
 }
