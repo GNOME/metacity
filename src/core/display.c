@@ -2297,34 +2297,22 @@ event_callback (XEvent   *event,
         {
           window = meta_window_new (display, event->xmaprequest.window, FALSE,
                                     META_EFFECT_TYPE_CREATE);
-
-          /* The window might have initial iconic state, but this is a
-           * MapRequest, fall through to ensure it is unminimized in
-           * that case.
-           */
         }
-      else if (frame_was_receiver)
+      /* if frame was receiver it's some malicious send event or something */
+      else if (!frame_was_receiver && window)
         {
-          g_warning ("Map requests on the frame window are unexpected");
-          break;
-        }
-
-      /* Double check that creating the MetaWindow succeeded */
-      if (window == NULL)
-        break;
-
-      meta_verbose ("MapRequest on %s mapped = %d minimized = %d\n",
-                    window->desc, window->mapped, window->minimized);
-
-      if (window->minimized)
-        {
-          meta_window_unminimize (window);
-          if (window->workspace != window->screen->active_workspace)
+          meta_verbose ("MapRequest on %s mapped = %d minimized = %d\n",
+                        window->desc, window->mapped, window->minimized);
+          if (window->minimized)
             {
-              meta_verbose ("Changing workspace due to MapRequest mapped = %d minimized = %d\n",
-                            window->mapped, window->minimized);
-              meta_window_change_workspace (window,
-                                            window->screen->active_workspace);
+              meta_window_unminimize (window);
+              if (window->workspace != window->screen->active_workspace)
+                {
+                  meta_verbose ("Changing workspace due to MapRequest mapped = %d minimized = %d\n",
+                                window->mapped, window->minimized);
+                  meta_window_change_workspace (window,
+                                                window->screen->active_workspace);
+                }
             }
         }
       break;
