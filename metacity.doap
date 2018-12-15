@@ -37,8 +37,8 @@ Many window managers are like Marshmallow Froot Loops; Metacity is like Cheerios
 
  <repository>
    <GitRepository>
-     <location rdf:resource="git://git.gnome.org/metacity" />
-     <browse rdf:resource="https://git.gnome.org/browse/metacity/" />
+     <location rdf:resource="https://gitlab.gnome.org/GNOME/metacity" />
+     <browse rdf:resource="https://gitlab.gnome.org/GNOME/metacity.git" />
    </GitRepository>
  </repository> 
 
