@@ -1876,6 +1876,58 @@ set_work_area_hint (MetaScreen *screen)
                    (guchar*) data, num_workspaces*4);
   g_free (data);
   meta_error_trap_pop (screen->display);
+
+  tmp_list = screen->workspaces;
+
+  while (tmp_list != NULL)
+    {
+      MetaWorkspace *workspace = tmp_list->data;
+
+      if (workspace->screen == screen)
+        {
+          GList *region;
+          int num_rectangles;
+          GList *l;
+          gchar *atom_name;
+          Atom region_atom;
+
+          region = meta_workspace_get_onscreen_region (workspace);
+          num_rectangles = g_list_length (region);
+
+          data = g_new (unsigned long, num_rectangles * 4);
+          tmp = data;
+
+          for (l = region; l != NULL; l = l->next)
+            {
+              MetaRectangle *rect;
+
+              rect = l->data;
+
+              tmp[0] = rect->x;
+              tmp[1] = rect->y;
+              tmp[2] = rect->width;
+              tmp[3] = rect->height;
+
+              tmp += 4;
+            }
+
+          atom_name = g_strdup_printf ("_NET_WORKAREA_REGION_D%d",
+                                       meta_workspace_index (workspace));
+
+          region_atom = XInternAtom (screen->display->xdisplay, atom_name, False);
+          g_free (atom_name);
+
+          meta_error_trap_push (screen->display);
+          XChangeProperty (screen->display->xdisplay, screen->xroot, region_atom,
+                           XA_CARDINAL, 32, PropModeReplace,
+                           (guchar*) data, num_rectangles * 4);
+          meta_error_trap_pop (screen->display);
+
+          g_free (data);
+        }
+
+        tmp_list = tmp_list->next;
+    }
 }
 
 static gboolean
