@@ -1,21 +1,20 @@
 # Polish translation for metacity.
-# Copyright © 2002-2017 the metacity authors.
+# Copyright © 2002-2019 the metacity authors.
 # This file is distributed under the same license as the metacity package.
 # Zbigniew Chyla <chyla@alice.ci.pwr.wroc.pl>, 2002-2003.
 # Artur Flinta <aflinta@at.kernel.pl>, 2003-2005.
 # Marek Stępień <marcoos@aviary.pl>, 2007.
 # Wadim Dziedzic <wdziedzic@aviary.pl>, 2007.
 # Tomasz Dominikowski <dominikowski@gmail.com>, 2008-2009.
-# Piotr Drąg <piotrdrag@gmail.com>, 2010-2017.
-# Aviary.pl <community-poland@mozilla.org>, 2007-2017.
+# Piotr Drąg <piotrdrag@gmail.com>, 2010-2019.
+# Aviary.pl <community-poland@mozilla.org>, 2007-2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
-"product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-04-05 07:27+0000\n"
-"PO-Revision-Date: 2017-04-09 15:49+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues\n"
+"POT-Creation-Date: 2018-06-10 17:51+0000\n"
+"PO-Revision-Date: 2019-02-21 18:01+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -317,8 +316,8 @@ msgid ""
 msgstr ""
 "To ustawienie jest używane tylko, jeśli wybrano typ motywu menedżera "
 "Metacity. Należy podać prawidłową nazwę motywu menedżera Metacity. "
-"W przeciwnym wypadku menedżer Metacity użyje domyślnego motywu biblioteki GTK"
-"+, Adwaita."
+"W przeciwnym wypadku menedżer Metacity użyje domyślnego motywu biblioteki "
+"GTK, Adwaita."
 
 #: data/schemas/org.gnome.metacity.theme.gschema.xml:21
 msgid "Theme Type"
@@ -333,105 +332,109 @@ msgid ""
 "x.xml and CSS. When using this theme type you MUST provide a valid theme "
 "name."
 msgstr ""
-"Menedżer Metacity obsługuje dwa typy motywów — biblioteki GTK+ (gtk.css) "
-"oraz menedżera Metacity (metacity-theme-x.xml). Motyw biblioteki GTK+: "
-"wszystkie dane są wczytywane z plików CSS. Jest to ten sam motyw, którego "
-"menedżer Mutter używa dla dekoracji okien po stronie serwera, a biblioteka "
-"GTK+ do dekoracji okien po stronie klienta. Motyw Metacity: dane są "
-"wczytywane z pliku metacity-theme-x.xml oraz plików CSS. Używając tego typu "
-"motywu, należy podać prawidłową nazwę."
+"Menedżer Metacity obsługuje dwa typy motywów — biblioteki GTK (gtk.css) oraz "
+"menedżera Metacity (metacity-theme-x.xml). Motyw biblioteki GTK: wszystkie "
+"dane są wczytywane z plików CSS. Jest to ten sam motyw, którego menedżer "
+"Mutter używa dla dekoracji okien po stronie serwera, a biblioteka GTK do "
+"dekoracji okien po stronie klienta. Motyw Metacity: dane są wczytywane "
+"z pliku metacity-theme-x.xml oraz plików CSS. Używając tego typu motywu, "
+"należy podać prawidłową nazwę."
 
-#: data/ui/theme-viewer-window.ui:45
+#: data/ui/theme-viewer-window.ui:86
 msgid "Reload"
 msgstr "Wczytaj ponownie"
 
-#: data/ui/theme-viewer-window.ui:103
+#: data/ui/theme-viewer-window.ui:122
 msgid "Dark Theme:"
 msgstr "Ciemny motyw:"
 
-#: data/ui/theme-viewer-window.ui:142
+#: data/ui/theme-viewer-window.ui:161
 msgid "Frame Type:"
 msgstr "Typ ramki:"
 
-#: data/ui/theme-viewer-window.ui:156
+#: data/ui/theme-viewer-window.ui:175
 msgid "Normal"
 msgstr "Zwykły"
 
-#: data/ui/theme-viewer-window.ui:157
+#: data/ui/theme-viewer-window.ui:176
 msgid "Dialog"
 msgstr "Okno dialogowe"
 
-#: data/ui/theme-viewer-window.ui:158
+#: data/ui/theme-viewer-window.ui:177
 msgid "Modal Dialog"
 msgstr "Modalne okno dialogowe"
 
-#: data/ui/theme-viewer-window.ui:159
+#: data/ui/theme-viewer-window.ui:178
 msgid "Utility"
 msgstr "Narzędziowy"
 
-#: data/ui/theme-viewer-window.ui:160
+#: data/ui/theme-viewer-window.ui:179
 msgid "Menu"
 msgstr "Menu"
 
-#: data/ui/theme-viewer-window.ui:161
+#: data/ui/theme-viewer-window.ui:180
 msgid "Border"
 msgstr "Krawędź"
 
-#: data/ui/theme-viewer-window.ui:162
+#: data/ui/theme-viewer-window.ui:181
 msgid "Attached"
 msgstr "Dołączony"
 
-#: data/ui/theme-viewer-window.ui:190
+#: data/ui/theme-viewer-window.ui:209
 msgid "Frame Flags:"
 msgstr "Flagi ramki:"
 
-#: data/ui/theme-viewer-window.ui:205
+#: data/ui/theme-viewer-window.ui:224
 msgid "Has Focus"
 msgstr "Aktywna"
 
-#: data/ui/theme-viewer-window.ui:220
+#: data/ui/theme-viewer-window.ui:239
 msgid "Shaded"
 msgstr "Zwinięta"
 
-#: data/ui/theme-viewer-window.ui:234
+#: data/ui/theme-viewer-window.ui:253
 msgid "Maximized"
 msgstr "Zmaksymalizowana"
 
-#: data/ui/theme-viewer-window.ui:248
+#: data/ui/theme-viewer-window.ui:267
 msgid "Fullscreen"
 msgstr "Pełnoekranowa"
 
-#: data/ui/theme-viewer-window.ui:262
+#: data/ui/theme-viewer-window.ui:281
 msgid "Tiled"
 msgstr "Ułożona"
 
-#: data/ui/theme-viewer-window.ui:302
+#: data/ui/theme-viewer-window.ui:321
 msgid "Button Layout:"
 msgstr "Układ przycisków:"
 
-#: data/ui/theme-viewer-window.ui:341
+#: data/ui/theme-viewer-window.ui:360
 msgid "Composited:"
 msgstr "Składane:"
 
-#: data/ui/theme-viewer-window.ui:381
+#: data/ui/theme-viewer-window.ui:400
 msgid "Scale:"
 msgstr "Skala:"
 
-#: data/ui/theme-viewer-window.ui:441 theme-viewer/theme-viewer-window.c:634
+#: data/ui/theme-viewer-window.ui:468 theme-viewer/theme-viewer-window.c:636
 msgid "Choose Theme"
 msgstr "Wybór motywu"
 
-#: data/ui/theme-viewer-window.ui:481
+#: data/ui/theme-viewer-window.ui:508
 msgid "Preview"
 msgstr "Podgląd"
 
-#: data/ui/theme-viewer-window.ui:570 theme-viewer/theme-viewer-window.c:253
+#: data/ui/theme-viewer-window.ui:597 theme-viewer/theme-viewer-window.c:252
 msgid "Run"
 msgstr "Wykonaj"
 
-#: data/ui/theme-viewer-window.ui:592
+#: data/ui/theme-viewer-window.ui:619
 msgid "Benchmark"
 msgstr "Test wydajności"
+
+#: data/ui/theme-viewer-window.ui:652 theme-viewer/theme-viewer-window.c:982
+msgid "Metacity Theme Viewer"
+msgstr "Przeglądarka motywów Metacity"
 
 #: libmetacity/meta-color-spec.c:246
 #, c-format
@@ -439,7 +442,7 @@ msgid ""
 "GTK custom color specification must have color name and fallback in "
 "parentheses, e.g. gtk:custom(foo,bar); could not parse '%s'"
 msgstr ""
-"Niestandardowa specyfikacja koloru biblioteki GTK+ musi mieć nazwę koloru "
+"Niestandardowa specyfikacja koloru biblioteki GTK musi mieć nazwę koloru "
 "i kolor zapasowy w nawiasach, tzn. gtk:custom(foo,bar); nie można "
 "przetworzyć „%s”"
 
@@ -467,7 +470,7 @@ msgid ""
 "GTK color specification must have the state in brackets, e.g. gtk:fg[NORMAL] "
 "where NORMAL is the state; could not parse '%s'"
 msgstr ""
-"Specyfikacja koloru biblioteki GTK+ musi zawierać stan w nawiasach "
+"Specyfikacja koloru biblioteki GTK musi zawierać stan w nawiasach "
 "kwadratowych, np. gtk:fg[NORMAL], gdzie NORMAL jest nazwą stanu; nie można "
 "przetworzyć „%s”"
 
@@ -477,7 +480,7 @@ msgid ""
 "GTK color specification must have a close bracket after the state, e.g. gtk:"
 "fg[NORMAL] where NORMAL is the state; could not parse '%s'"
 msgstr ""
-"Specyfikacja koloru biblioteki GTK+ musi po nazwie stanu zawierać zamykający "
+"Specyfikacja koloru biblioteki GTK musi po nazwie stanu zawierać zamykający "
 "nawias kwadratowy, np. gtk:fg[NORMAL], gdzie NORMAL jest nazwą stanu; nie "
 "można przetworzyć „%s”"
 
@@ -690,7 +693,7 @@ msgstr ""
 msgid "Gradients should have at least two colors"
 msgstr "Gradienty powinny się składać co najmniej z dwóch kolorów"
 
-#: libmetacity/meta-theme-impl.c:65
+#: libmetacity/meta-theme-impl.c:41
 #, c-format
 msgid "MetaThemeImplClass::load not implemented for '%s'"
 msgstr "Nie zaimplementowano MetaThemeImplClass::load dla „%s”"
@@ -703,55 +706,55 @@ msgstr "Nie zaimplementowano MetaThemeImplClass::load dla „%s”"
 msgid "No '%s' attribute on element <%s>"
 msgstr "Brak atrybutu „%s” w elemencie <%s>"
 
-#: libmetacity/meta-theme-metacity.c:303 libmetacity/meta-theme-metacity.c:322
+#: libmetacity/meta-theme-metacity.c:305 libmetacity/meta-theme-metacity.c:324
 #, c-format
 msgid "Line %d character %d: %s"
 msgstr "%d. wiersz, %d. znak: %s"
 
-#: libmetacity/meta-theme-metacity.c:362
+#: libmetacity/meta-theme-metacity.c:364
 #, c-format
 msgid "Could not parse '%s' as an integer"
 msgstr "Nie można przetworzyć „%s” jako liczby całkowitej"
 
-#: libmetacity/meta-theme-metacity.c:370 libmetacity/meta-theme-metacity.c:587
+#: libmetacity/meta-theme-metacity.c:372 libmetacity/meta-theme-metacity.c:589
 #, c-format
 msgid "Did not understand trailing characters '%s' in string '%s'"
 msgstr "Nie można rozpoznać końcowych znaków „%s” w napisie „%s”"
 
-#: libmetacity/meta-theme-metacity.c:379
+#: libmetacity/meta-theme-metacity.c:381
 #, c-format
 msgid "Integer %ld must be positive"
 msgstr "Liczba całkowita %ld musi być dodatnia"
 
-#: libmetacity/meta-theme-metacity.c:386
+#: libmetacity/meta-theme-metacity.c:388
 #, c-format
 msgid "Integer %ld is too large, current max is %d"
 msgstr "Liczba całkowita %ld jest za duża, obecne maksimum to %d"
 
-#: libmetacity/meta-theme-metacity.c:488
+#: libmetacity/meta-theme-metacity.c:490
 #, c-format
 msgid "Attribute '%s' repeated twice on the same <%s> element"
 msgstr "Atrybut „%s” wystąpił dwukrotnie wewnątrz jednego elementu <%s>"
 
-#: libmetacity/meta-theme-metacity.c:510 libmetacity/meta-theme-metacity.c:554
+#: libmetacity/meta-theme-metacity.c:512 libmetacity/meta-theme-metacity.c:556
 #, c-format
 msgid "Attribute '%s' is invalid on <%s> element in this context"
 msgstr ""
 "Atrybut „%s” jest nieprawidłowy wewnątrz elementu <%s> w tym kontekście"
 
-#: libmetacity/meta-theme-metacity.c:579 libmetacity/meta-theme-metacity.c:617
+#: libmetacity/meta-theme-metacity.c:581 libmetacity/meta-theme-metacity.c:619
 #, c-format
 msgid "Could not parse '%s' as a floating point number"
 msgstr "Napis „%s” nie jest zapisem liczby zmiennoprzecinkowej"
 
-#: libmetacity/meta-theme-metacity.c:649
+#: libmetacity/meta-theme-metacity.c:651
 #, c-format
 msgid "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g"
 msgstr ""
 "Wartość alfa musi się mieścić między 0,0 (niewidoczne) a 1,0 (w pełni "
 "nieprzezroczyste), odczytano %g"
 
-#: libmetacity/meta-theme-metacity.c:695
+#: libmetacity/meta-theme-metacity.c:697
 #, c-format
 msgid ""
 "Invalid title scale '%s' (must be one of xx-small,x-small,small,medium,large,"
@@ -760,68 +763,68 @@ msgstr ""
 "Nieprawidłowy rozmiar tytułu „%s” (musi on być jedną z wartości: xx-small, x-"
 "small, small, medium, large, x-large, xx-large)\n"
 
-#: libmetacity/meta-theme-metacity.c:724 libmetacity/meta-theme-metacity.c:752
+#: libmetacity/meta-theme-metacity.c:726 libmetacity/meta-theme-metacity.c:754
 #, c-format
 msgid "Boolean values must be 'true' or 'false' not '%s'"
 msgstr "Wartościami logicznymi są „true” i „false”, a nie „%s”"
 
-#: libmetacity/meta-theme-metacity.c:781 libmetacity/meta-theme-metacity.c:818
-#: libmetacity/meta-theme-metacity.c:856
+#: libmetacity/meta-theme-metacity.c:783 libmetacity/meta-theme-metacity.c:820
+#: libmetacity/meta-theme-metacity.c:858
 #, c-format
 msgid "User-defined constants must begin with a capital letter; '%s' does not"
 msgstr ""
 "Stałe definiowane przez użytkownika powinny rozpoczynać się wielką literą, "
 "natomiast „%s” nie spełnia tego warunku"
 
-#: libmetacity/meta-theme-metacity.c:790 libmetacity/meta-theme-metacity.c:827
-#: libmetacity/meta-theme-metacity.c:865
+#: libmetacity/meta-theme-metacity.c:792 libmetacity/meta-theme-metacity.c:829
+#: libmetacity/meta-theme-metacity.c:867
 #, c-format
 msgid "Constant '%s' has already been defined"
 msgstr "Stała „%s” została już określona"
 
-#: libmetacity/meta-theme-metacity.c:1072
-#: libmetacity/meta-theme-metacity.c:1169
-#: libmetacity/meta-theme-metacity.c:1271
+#: libmetacity/meta-theme-metacity.c:1074
+#: libmetacity/meta-theme-metacity.c:1171
+#: libmetacity/meta-theme-metacity.c:1273
 #, c-format
 msgid "<%s> name \"%s\" used a second time"
 msgstr "<%s>: użyto nazwy „%s” po raz drugi"
 
-#: libmetacity/meta-theme-metacity.c:1084
+#: libmetacity/meta-theme-metacity.c:1086
 #, c-format
 msgid "<%s> parent \"%s\" has not been defined"
 msgstr "<%s>: nie określono elementu nadrzędnego o nazwie „%s”"
 
-#: libmetacity/meta-theme-metacity.c:1135
+#: libmetacity/meta-theme-metacity.c:1137
 #, c-format
 msgid "<%s> name '%s' used a second time"
 msgstr "<%s>: użyto nazwy „%s” po raz drugi"
 
-#: libmetacity/meta-theme-metacity.c:1181
-#: libmetacity/meta-theme-metacity.c:1283
+#: libmetacity/meta-theme-metacity.c:1183
+#: libmetacity/meta-theme-metacity.c:1285
 #, c-format
 msgid "<%s> parent '%s' has not been defined"
 msgstr "<%s>: nie określono elementu nadrzędnego o nazwie „%s”"
 
-#: libmetacity/meta-theme-metacity.c:1194
+#: libmetacity/meta-theme-metacity.c:1196
 #, c-format
 msgid "<%s> geometry '%s' has not been defined"
 msgstr "<%s>: nie określono geometrii o nazwie „%s”"
 
-#: libmetacity/meta-theme-metacity.c:1207
+#: libmetacity/meta-theme-metacity.c:1209
 #, c-format
 msgid "<%s> must specify either a geometry or a parent that has a geometry"
 msgstr "<%s> musi albo określać geometrię, albo element nadrzędny z geometrią"
 
-#: libmetacity/meta-theme-metacity.c:1248
+#: libmetacity/meta-theme-metacity.c:1250
 msgid "You must specify a background for an alpha value to be meaningful"
 msgstr "Aby wartość alfa miała sens, należy określić tło"
 
-#: libmetacity/meta-theme-metacity.c:1317
+#: libmetacity/meta-theme-metacity.c:1318
 #, c-format
 msgid "Unknown type '%s' on <%s> element"
 msgstr "Nieznany typ „%s” wewnątrz elementu <%s>"
 
-#: libmetacity/meta-theme-metacity.c:1326
+#: libmetacity/meta-theme-metacity.c:1327
 #, c-format
 msgid "Unknown style_set '%s' on <%s> element"
 msgstr "Nieznana wartość atrybutu „style_set” (%s) wewnątrz elementu <%s>"
@@ -1118,7 +1121,7 @@ msgstr "Element <%s> nie jest dopuszczalny wewnątrz elementu <%s>"
 msgid "No <%s> set for theme '%s'"
 msgstr "Nie określono elementu <%s> dla motywu „%s”"
 
-#: libmetacity/meta-theme-metacity.c:3884
+#: libmetacity/meta-theme-metacity.c:3878
 #, c-format
 msgid ""
 "No frame style set for window type '%s' in theme '%s', add a <window "
@@ -1127,34 +1130,34 @@ msgstr ""
 "Przy typie okna „%s” w motywie „%s” nie ustawiono stylu ramki. Należy dodać "
 "element <window type=\"%s\" style_set=\"cokolwiek\"/>"
 
-#: libmetacity/meta-theme-metacity.c:4147
+#: libmetacity/meta-theme-metacity.c:4141
 msgid "No draw_ops provided for frame piece"
 msgstr "Brak elementu <draw_ops> powiązanego z elementem ramki"
 
-#: libmetacity/meta-theme-metacity.c:4163
+#: libmetacity/meta-theme-metacity.c:4157
 msgid "No draw_ops provided for button"
 msgstr "Brak elementu <draw_ops> powiązanego z przyciskiem"
 
-#: libmetacity/meta-theme-metacity.c:4278
-#: libmetacity/meta-theme-metacity.c:4289
-#: libmetacity/meta-theme-metacity.c:4300
-#: libmetacity/meta-theme-metacity.c:4311
-#: libmetacity/meta-theme-metacity.c:4322
+#: libmetacity/meta-theme-metacity.c:4272
+#: libmetacity/meta-theme-metacity.c:4283
+#: libmetacity/meta-theme-metacity.c:4294
+#: libmetacity/meta-theme-metacity.c:4305
+#: libmetacity/meta-theme-metacity.c:4316
 #, c-format
 msgid "<%s> specified twice for this theme"
 msgstr "<%s> określono dwukrotnie dla tego motywu"
 
-#: libmetacity/meta-theme-metacity.c:4361
+#: libmetacity/meta-theme-metacity.c:4355
 #, c-format
 msgid "No text is allowed inside element <%s>"
 msgstr "Wewnątrz elementu <%s> nie jest dopuszczalny tekst"
 
-#: libmetacity/meta-theme-metacity.c:4614
+#: libmetacity/meta-theme-metacity.c:4621
 #, c-format
 msgid "Failed to find a valid file for theme '%s'"
 msgstr "Odnalezienie prawidłowego pliku dla motywu „%s” się nie powiodło"
 
-#: src/core/bell.c:290
+#: src/core/bell.c:279
 msgid "Bell event"
 msgstr "Zdarzenie sygnału dźwiękowego"
 
@@ -1307,51 +1310,51 @@ msgstr "%s (jako inny użytkownik)"
 msgid "Usage: %s\n"
 msgstr "Użycie: %s\n"
 
-#: src/ui/frames.c:1307
+#: src/ui/frames.c:1315
 msgid "Close Window"
 msgstr "Zamknij okno"
 
-#: src/ui/frames.c:1310
+#: src/ui/frames.c:1318
 msgid "Window Menu"
 msgstr "Menu okna"
 
-#: src/ui/frames.c:1313
+#: src/ui/frames.c:1321
 msgid "Window App Menu"
 msgstr "Menu okna programu"
 
-#: src/ui/frames.c:1316
+#: src/ui/frames.c:1324
 msgid "Minimize Window"
 msgstr "Zminimalizuj okno"
 
-#: src/ui/frames.c:1319
+#: src/ui/frames.c:1327
 msgid "Maximize Window"
 msgstr "Zmaksymalizuj okno"
 
-#: src/ui/frames.c:1322
+#: src/ui/frames.c:1330
 msgid "Restore Window"
 msgstr "Przywróć okno"
 
-#: src/ui/frames.c:1325
+#: src/ui/frames.c:1333
 msgid "Roll Up Window"
 msgstr "Zwiń okno"
 
-#: src/ui/frames.c:1328
+#: src/ui/frames.c:1336
 msgid "Unroll Window"
 msgstr "Rozwiń okno"
 
-#: src/ui/frames.c:1331
+#: src/ui/frames.c:1339
 msgid "Keep Window On Top"
 msgstr "Utrzymuj okno na wierzchu"
 
-#: src/ui/frames.c:1334
+#: src/ui/frames.c:1342
 msgid "Remove Window From Top"
 msgstr "Usuń okno z wierzchu"
 
-#: src/ui/frames.c:1337
+#: src/ui/frames.c:1345
 msgid "Always On Visible Workspace"
 msgstr "Zawsze na widocznym obszarze roboczym"
 
-#: src/ui/frames.c:1340
+#: src/ui/frames.c:1348
 msgid "Put Window On Only One Workspace"
 msgstr "Umieść okno tylko na jednym obszarze roboczym"
 
@@ -1437,21 +1440,21 @@ msgstr "Przenieś na _dolny obszar roboczy"
 msgid "_Close"
 msgstr "Za_mknij"
 
-#: src/ui/menu.c:175
+#: src/ui/menu.c:174
 #, c-format
 msgid "Workspace %d%n"
 msgstr "%d%n. obszar roboczy"
 
-#: src/ui/menu.c:185
+#: src/ui/menu.c:184
 msgid "Workspace 1_0"
 msgstr "1_0. obszar roboczy"
 
-#: src/ui/menu.c:187
+#: src/ui/menu.c:186
 #, c-format
 msgid "Workspace %s%d"
 msgstr "%s%d. obszar roboczy"
 
-#: src/ui/menu.c:354
+#: src/ui/menu.c:351
 msgid "Move to Another _Workspace"
 msgstr "Przenieś na inny _obszar roboczy"
 
@@ -1553,9 +1556,9 @@ msgstr "Mod5"
 msgid "%d x %d"
 msgstr "%d×%d"
 
-#: src/ui/ui.c:865
+#: src/ui/ui.c:871
 msgid "Falling back to default GTK+ theme - Adwaita"
-msgstr "Używanie domyślnego motywu biblioteki GTK+, Adwaita"
+msgstr "Używanie domyślnego motywu biblioteki GTK, Adwaita"
 
 #: theme-viewer/theme-viewer-main.c:32
 msgid "Theme type to use (\"gtk\" or \"metacity\")"
@@ -1573,12 +1576,12 @@ msgstr "Nazwa używanego motywu"
 msgid "NAME"
 msgstr "NAZWA"
 
-#: theme-viewer/theme-viewer-window.c:103
+#: theme-viewer/theme-viewer-window.c:102
 #, c-format
 msgid "Loaded <b>%s</b> theme <b>%s</b> in <b>%f</b> seconds."
 msgstr "Wczytano motyw <b>%s</b> <b>%s</b> w <b>%f</b> s."
 
-#: theme-viewer/theme-viewer-window.c:133
+#: theme-viewer/theme-viewer-window.c:132
 #, c-format
 msgid ""
 "Got MetaFrameBorders in <b>%f</b> seconds (CSS loading, PangoFontDescription "
@@ -1587,7 +1590,7 @@ msgstr ""
 "Otrzymano MetaFrameBorders w <b>%f</b> s (wczytywanie CSS, tworzenie "
 "PangoFontDescription i obliczanie wysokości tytułu)."
 
-#: theme-viewer/theme-viewer-window.c:208
+#: theme-viewer/theme-viewer-window.c:207
 #, c-format
 msgid ""
 "Drew <b>%d</b> frames in <b>%f</b> client-side seconds (<b>%f</b> "
@@ -1598,10 +1601,6 @@ msgstr ""
 "na klatkę) i <b>%f</b> s czasu zegara rzeczywistego, wliczając zasoby "
 "serwera X (<b>%f</b> ms na klatkę)."
 
-#: theme-viewer/theme-viewer-window.c:245
+#: theme-viewer/theme-viewer-window.c:244
 msgid "Run again"
 msgstr "Wykonaj ponownie"
-
-#: theme-viewer/theme-viewer-window.c:980
-msgid "Metacity Theme Viewer"
-msgstr "Przeglądarka motywów Metacity"
