@@ -1,3 +1,9 @@
+Version 3.32.0
+==============
+- Convert WM_NAME and WM_CLASS to UTF-8.
+- Updated translations:
+  Nathan Follens (nl), Piotr Drąg (pl).
+
 Version 3.30.1
 ==============
 - Improve focus tracking
