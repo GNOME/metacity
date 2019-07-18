@@ -871,8 +871,8 @@ do_operations (PosExpr *exprs,
            */
           if ((i+2) < *n_exprs)
             {
-              g_memmove (&exprs[i], &exprs[i+2],
-                         sizeof (PosExpr) * (*n_exprs - i - 2));
+              memmove (&exprs[i], &exprs[i+2],
+                       sizeof (PosExpr) * (*n_exprs - i - 2));
             }
 
           *n_exprs -= 2;
