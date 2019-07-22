@@ -11,18 +11,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity 2.24\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
-"product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-04-02 16:23+0000\n"
-"PO-Revision-Date: 2017-06-18 12:51+0200\n"
-"Last-Translator: Gil Forcada <gilforcada@guifi.net>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues\n"
+"POT-Creation-Date: 2018-06-10 17:51+0000\n"
+"PO-Revision-Date: 2019-07-22 20:54+0200\n"
+"Last-Translator: Jordi Mas <jmas@softcaatala.org>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.0.1\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. Translators: This is the title used on dialog boxes
 #: data/applications/metacity.desktop.in:4 src/core/util.c:435
@@ -217,14 +216,12 @@ msgid "Maximize window horizontally"
 msgstr "Maximitza la finestra horitzontalment"
 
 #: data/keybindings/50-metacity-windows.xml:58
-#, fuzzy
 msgid "View split on left"
-msgstr "Mostra la partició a l'esquerra"
+msgstr "Divideix la vista a l'esquerra"
 
 #: data/keybindings/50-metacity-windows.xml:62
-#, fuzzy
 msgid "View split on right"
-msgstr "Mostra la partició a la dreta"
+msgstr "Divideix la vista a la dreta"
 
 #: data/schemas/org.gnome.metacity.gschema.xml:14
 msgid "Show window content thumbnail in Alt-Tab"
@@ -248,8 +245,8 @@ msgstr "Determina si el Metacity és un gestor de composició."
 #, fuzzy
 msgid "Enable edge tiling when dropping windows on screen edges"
 msgstr ""
-"Habilita la tesselització a les vores en deixar anar les finestres a les "
-"vores de la pantalla"
+"Habilita el mòsaic a les vores en deixar anar les finestres a les vores de "
+"la pantalla"
 
 #: data/schemas/org.gnome.metacity.gschema.xml:32
 #, fuzzy
@@ -264,10 +261,8 @@ msgstr ""
 "vora superior de la pantalla es maximitzaran completament."
 
 #: data/schemas/org.gnome.metacity.gschema.xml:41
-#, fuzzy
-#| msgid "Window Management"
 msgid "Window placement behavior"
-msgstr "Gestor de finestres"
+msgstr "Comportament del posicionament de la finestra"
 
 #: data/schemas/org.gnome.metacity.gschema.xml:42
 msgid ""
@@ -331,100 +326,103 @@ msgid ""
 "name."
 msgstr ""
 
-#: data/ui/theme-viewer-window.ui:45
+#: data/ui/theme-viewer-window.ui:86
 msgid "Reload"
 msgstr "Actualitza"
 
-#: data/ui/theme-viewer-window.ui:103
+#: data/ui/theme-viewer-window.ui:122
 msgid "Dark Theme:"
 msgstr ""
 
-#: data/ui/theme-viewer-window.ui:142
+#: data/ui/theme-viewer-window.ui:161
 msgid "Frame Type:"
 msgstr ""
 
-#: data/ui/theme-viewer-window.ui:156
+#: data/ui/theme-viewer-window.ui:175
 msgid "Normal"
 msgstr "Normal"
 
-#: data/ui/theme-viewer-window.ui:157
+#: data/ui/theme-viewer-window.ui:176
 msgid "Dialog"
 msgstr "Diàleg"
 
-#: data/ui/theme-viewer-window.ui:158
+#: data/ui/theme-viewer-window.ui:177
 msgid "Modal Dialog"
 msgstr "Diàleg modal"
 
-#: data/ui/theme-viewer-window.ui:159
+#: data/ui/theme-viewer-window.ui:178
 msgid "Utility"
 msgstr "Utilitat"
 
-#: data/ui/theme-viewer-window.ui:160
+#: data/ui/theme-viewer-window.ui:179
 msgid "Menu"
 msgstr ""
 
-#: data/ui/theme-viewer-window.ui:161
+#: data/ui/theme-viewer-window.ui:180
 msgid "Border"
 msgstr "Contorn"
 
-#: data/ui/theme-viewer-window.ui:162
+#: data/ui/theme-viewer-window.ui:181
 msgid "Attached"
 msgstr ""
 
-#: data/ui/theme-viewer-window.ui:190
+#: data/ui/theme-viewer-window.ui:209
 msgid "Frame Flags:"
 msgstr ""
 
-#: data/ui/theme-viewer-window.ui:205
+#: data/ui/theme-viewer-window.ui:224
 msgid "Has Focus"
 msgstr ""
 
-#: data/ui/theme-viewer-window.ui:220
+#: data/ui/theme-viewer-window.ui:239
 msgid "Shaded"
 msgstr ""
 
-#: data/ui/theme-viewer-window.ui:234
+#: data/ui/theme-viewer-window.ui:253
 msgid "Maximized"
 msgstr "Maximitzada"
 
-#: data/ui/theme-viewer-window.ui:248
+#: data/ui/theme-viewer-window.ui:267
 msgid "Fullscreen"
 msgstr "Pantalla completa"
 
-#: data/ui/theme-viewer-window.ui:262
+#: data/ui/theme-viewer-window.ui:281
 msgid "Tiled"
 msgstr "Enrajolat"
 
-#: data/ui/theme-viewer-window.ui:302
+#: data/ui/theme-viewer-window.ui:321
 msgid "Button Layout:"
 msgstr "Disposició del botó:"
 
-#: data/ui/theme-viewer-window.ui:341
+#: data/ui/theme-viewer-window.ui:360
 #, fuzzy
 #| msgid "Compositing Manager"
 msgid "Composited:"
 msgstr "Gestor de composició"
 
-#: data/ui/theme-viewer-window.ui:381
+#: data/ui/theme-viewer-window.ui:400
 msgid "Scale:"
-msgstr ""
+msgstr "Escala:"
 
-#: data/ui/theme-viewer-window.ui:441 theme-viewer/theme-viewer-window.c:650
+#: data/ui/theme-viewer-window.ui:468 theme-viewer/theme-viewer-window.c:636
 msgid "Choose Theme"
 msgstr ""
 
-#: data/ui/theme-viewer-window.ui:481
-#, fuzzy
+#: data/ui/theme-viewer-window.ui:508
 msgid "Preview"
-msgstr "Previsual."
+msgstr "Previsualització"
 
-#: data/ui/theme-viewer-window.ui:570 theme-viewer/theme-viewer-window.c:269
+#: data/ui/theme-viewer-window.ui:597 theme-viewer/theme-viewer-window.c:252
 msgid "Run"
 msgstr "Executa"
 
-#: data/ui/theme-viewer-window.ui:592
+#: data/ui/theme-viewer-window.ui:619
 msgid "Benchmark"
 msgstr "Test de referència"
+
+#: data/ui/theme-viewer-window.ui:652 theme-viewer/theme-viewer-window.c:982
+msgid "Metacity Theme Viewer"
+msgstr ""
 
 #: libmetacity/meta-color-spec.c:246
 #, fuzzy, c-format
@@ -656,14 +654,12 @@ msgid "right"
 msgstr "dreta"
 
 #: libmetacity/meta-frame-layout.c:78
-#, fuzzy, c-format
-#| msgid "frame geometry does not specify \"%s\" dimension"
+#, c-format
 msgid "frame geometry does not specify '%s' dimension"
 msgstr "la geometria del marc no especifica la dimensió «%s»"
 
 #: libmetacity/meta-frame-layout.c:97
-#, fuzzy, c-format
-#| msgid "frame geometry does not specify dimension \"%s\" for border \"%s\""
+#, c-format
 msgid "frame geometry does not specify dimension '%s' for border '%s'"
 msgstr ""
 "la geometria del marc no especifica la dimensió «%s» per al contorn «%s»"
@@ -707,7 +703,7 @@ msgstr ""
 msgid "Gradients should have at least two colors"
 msgstr "Els degradats han de tenir almenys dos colors"
 
-#: libmetacity/meta-theme-impl.c:65
+#: libmetacity/meta-theme-impl.c:41
 #, c-format
 msgid "MetaThemeImplClass::load not implemented for '%s'"
 msgstr ""
@@ -716,70 +712,59 @@ msgstr ""
 #. * on an XML element was not in fact found.
 #.
 #: libmetacity/meta-theme-metacity.c:51
-#, fuzzy, c-format
-#| msgid "No \"%s\" attribute on element <%s>"
+#, c-format
 msgid "No '%s' attribute on element <%s>"
 msgstr "No hi ha cap atribut «%s» a l'element <%s>"
 
-#: libmetacity/meta-theme-metacity.c:303 libmetacity/meta-theme-metacity.c:322
+#: libmetacity/meta-theme-metacity.c:305 libmetacity/meta-theme-metacity.c:324
 #, c-format
 msgid "Line %d character %d: %s"
 msgstr "Línia %d caràcter %d: %s"
 
-#: libmetacity/meta-theme-metacity.c:362
-#, fuzzy, c-format
-#| msgid "Could not parse \"%s\" as an integer"
+#: libmetacity/meta-theme-metacity.c:364
+#, c-format
 msgid "Could not parse '%s' as an integer"
 msgstr "No s'ha pogut analitzar «%s» com a enter"
 
-#: libmetacity/meta-theme-metacity.c:370 libmetacity/meta-theme-metacity.c:587
-#, fuzzy, c-format
-#| msgid "Did not understand trailing characters \"%s\" in string \"%s\""
+#: libmetacity/meta-theme-metacity.c:372 libmetacity/meta-theme-metacity.c:589
+#, c-format
 msgid "Did not understand trailing characters '%s' in string '%s'"
 msgstr "No s'entenen els caràcters finals «%s» de la cadena «%s»"
 
-#: libmetacity/meta-theme-metacity.c:379
+#: libmetacity/meta-theme-metacity.c:381
 #, c-format
 msgid "Integer %ld must be positive"
 msgstr "L'enter %ld ha de ser positiu"
 
-#: libmetacity/meta-theme-metacity.c:386
+#: libmetacity/meta-theme-metacity.c:388
 #, c-format
 msgid "Integer %ld is too large, current max is %d"
 msgstr "L'enter %ld és massa gran, el màxim actual és %d"
 
-#: libmetacity/meta-theme-metacity.c:488
-#, fuzzy, c-format
-#| msgid "Attribute \"%s\" repeated twice on the same <%s> element"
+#: libmetacity/meta-theme-metacity.c:490
+#, c-format
 msgid "Attribute '%s' repeated twice on the same <%s> element"
 msgstr "S'ha repetit l'atribut «%s» dues vegades en el mateix element <%s>"
 
-#: libmetacity/meta-theme-metacity.c:510 libmetacity/meta-theme-metacity.c:554
-#, fuzzy, c-format
-#| msgid "Attribute \"%s\" is invalid on <%s> element in this context"
+#: libmetacity/meta-theme-metacity.c:512 libmetacity/meta-theme-metacity.c:556
+#, c-format
 msgid "Attribute '%s' is invalid on <%s> element in this context"
 msgstr "L'atribut «%s» no és vàlid per a l'element <%s> en aquest context"
 
-#: libmetacity/meta-theme-metacity.c:579 libmetacity/meta-theme-metacity.c:617
-#, fuzzy, c-format
-#| msgid "Could not parse \"%s\" as a floating point number"
+#: libmetacity/meta-theme-metacity.c:581 libmetacity/meta-theme-metacity.c:619
+#,  c-format
 msgid "Could not parse '%s' as a floating point number"
 msgstr "No s'ha pogut analitzar «%s» com a un número de coma flotant"
 
-#: libmetacity/meta-theme-metacity.c:649
-#, fuzzy, c-format
-#| msgid ""
-#| "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g\n"
+#: libmetacity/meta-theme-metacity.c:651
+#, c-format
 msgid "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g"
 msgstr ""
 "L'opacitat ha d'estar entre 0.0 (invisible) i 1.0 (totalment opac), era a "
-"%g\n"
+"%g"
 
-#: libmetacity/meta-theme-metacity.c:695
-#, fuzzy, c-format
-#| msgid ""
-#| "Invalid title scale \"%s\" (must be one of xx-small,x-small,small,medium,"
-#| "large,x-large,xx-large)\n"
+#: libmetacity/meta-theme-metacity.c:697
+#, c-format
 msgid ""
 "Invalid title scale '%s' (must be one of xx-small,x-small,small,medium,large,"
 "x-large,xx-large)\n"
@@ -787,85 +772,75 @@ msgstr ""
 "Escala de títol no vàlida «%s» (ha de ser una d'aquestes: xx-small,x-small,"
 "small,medium,large,x-large,xx-large)\n"
 
-#: libmetacity/meta-theme-metacity.c:724 libmetacity/meta-theme-metacity.c:752
-#, fuzzy, c-format
-#| msgid "Boolean values must be \"true\" or \"false\" not \"%s\""
+#: libmetacity/meta-theme-metacity.c:726 libmetacity/meta-theme-metacity.c:754
+#, c-format
 msgid "Boolean values must be 'true' or 'false' not '%s'"
 msgstr "Els valors booleans han de ser «true» (cert) o «false» (fals), no «%s»"
 
-#: libmetacity/meta-theme-metacity.c:781 libmetacity/meta-theme-metacity.c:818
-#: libmetacity/meta-theme-metacity.c:856
-#, fuzzy, c-format
-#| msgid ""
-#| "User-defined constants must begin with a capital letter; \"%s\" does not"
+#: libmetacity/meta-theme-metacity.c:783 libmetacity/meta-theme-metacity.c:820
+#: libmetacity/meta-theme-metacity.c:858
+#, c-format
 msgid "User-defined constants must begin with a capital letter; '%s' does not"
 msgstr ""
 "Les constants de la definició d'usuari han de començar per una majúscula; "
 "«%s» no ho és"
 
-#: libmetacity/meta-theme-metacity.c:790 libmetacity/meta-theme-metacity.c:827
-#: libmetacity/meta-theme-metacity.c:865
-#, fuzzy, c-format
-#| msgid "Constant \"%s\" has already been defined"
+#: libmetacity/meta-theme-metacity.c:792 libmetacity/meta-theme-metacity.c:829
+#: libmetacity/meta-theme-metacity.c:867
+#,  c-format
 msgid "Constant '%s' has already been defined"
 msgstr "La constant «%s» ja s'ha definit"
 
-#: libmetacity/meta-theme-metacity.c:1072
-#: libmetacity/meta-theme-metacity.c:1169
-#: libmetacity/meta-theme-metacity.c:1271
+#: libmetacity/meta-theme-metacity.c:1074
+#: libmetacity/meta-theme-metacity.c:1171
+#: libmetacity/meta-theme-metacity.c:1273
 #, c-format
 msgid "<%s> name \"%s\" used a second time"
 msgstr "<%s> amb nom «%s» s'ha utilitzat dues vegades"
 
-#: libmetacity/meta-theme-metacity.c:1084
+#: libmetacity/meta-theme-metacity.c:1086
 #, c-format
 msgid "<%s> parent \"%s\" has not been defined"
 msgstr "El pare de <%s>, «%s», no s'ha definit"
 
-#: libmetacity/meta-theme-metacity.c:1135
-#, fuzzy, c-format
-#| msgid "<%s> name \"%s\" used a second time"
+#: libmetacity/meta-theme-metacity.c:1137
+#, c-format
 msgid "<%s> name '%s' used a second time"
 msgstr "<%s> amb nom «%s» s'ha utilitzat dues vegades"
 
-#: libmetacity/meta-theme-metacity.c:1181
-#: libmetacity/meta-theme-metacity.c:1283
-#, fuzzy, c-format
-#| msgid "<%s> parent \"%s\" has not been defined"
+#: libmetacity/meta-theme-metacity.c:1183
+#: libmetacity/meta-theme-metacity.c:1285
+#, c-format
 msgid "<%s> parent '%s' has not been defined"
 msgstr "El pare de <%s>, «%s», no s'ha definit"
 
-#: libmetacity/meta-theme-metacity.c:1194
-#, fuzzy, c-format
-#| msgid "<%s> geometry \"%s\" has not been defined"
+#: libmetacity/meta-theme-metacity.c:1196
+#, c-format
 msgid "<%s> geometry '%s' has not been defined"
 msgstr "La geometria de <%s>, «%s», no s'ha definit"
 
-#: libmetacity/meta-theme-metacity.c:1207
+#: libmetacity/meta-theme-metacity.c:1209
 #, c-format
 msgid "<%s> must specify either a geometry or a parent that has a geometry"
 msgstr ""
 "<%s> ha d'especificar bé una geometria o un pare que tingui una geometria"
 
-#: libmetacity/meta-theme-metacity.c:1248
+#: libmetacity/meta-theme-metacity.c:1250
 msgid "You must specify a background for an alpha value to be meaningful"
 msgstr "El valor alfa requereix que també s'especifiqui un fons de pantalla"
 
-#: libmetacity/meta-theme-metacity.c:1317
-#, fuzzy, c-format
-#| msgid "Unknown type \"%s\" on <%s> element"
+#: libmetacity/meta-theme-metacity.c:1318
+#, c-format
 msgid "Unknown type '%s' on <%s> element"
 msgstr "Tipus desconegut «%s» en l'element <%s>"
 
-#: libmetacity/meta-theme-metacity.c:1326
-#, fuzzy, c-format
-#| msgid "Unknown style_set \"%s\" on <%s> element"
+#: libmetacity/meta-theme-metacity.c:1327
+#, c-format
 msgid "Unknown style_set '%s' on <%s> element"
 msgstr "style_set «%s» desconegut en l'element <%s>"
 
 #: libmetacity/meta-theme-metacity.c:1335
-#, fuzzy, c-format
-#| msgid "Window type \"%s\" has already been assigned a style set"
+#,, c-format
 msgid "Window type '%s' has already been assigned a style set"
 msgstr "El tipus de finestra «%s» ja té assignat un joc d'estil"
 
@@ -886,10 +861,6 @@ msgstr "No es permet l'element <%s> sota <%s>"
 #: libmetacity/meta-theme-metacity.c:1464
 #: libmetacity/meta-theme-metacity.c:1590
 #: libmetacity/meta-theme-metacity.c:1604
-#, fuzzy
-#| msgid ""
-#| "Cannot specify both \"button_width\"/\"button_height\" and \"aspect_ratio"
-#| "\" for buttons"
 msgid ""
 "Cannot specify both 'button_width'/'button_height' and 'aspect_ratio' for "
 "buttons"
@@ -898,20 +869,17 @@ msgstr ""
 "vegada per als botons"
 
 #: libmetacity/meta-theme-metacity.c:1473
-#, fuzzy, c-format
-#| msgid "Aspect ratio \"%s\" is unknown"
+#, c-format
 msgid "Aspect ratio '%s' is unknown"
 msgstr "La ràtio d'aspecte «%s» és desconeguda"
 
 #: libmetacity/meta-theme-metacity.c:1535
-#, fuzzy, c-format
-#| msgid "Border \"%s\" is unknown"
+#,c-format
 msgid "Border '%s' is unknown"
 msgstr "El contorn «%s» és desconegut"
 
 #: libmetacity/meta-theme-metacity.c:1613
-#, fuzzy, c-format
-#| msgid "Distance \"%s\" is unknown"
+#, c-format
 msgid "Distance '%s' is unknown"
 msgstr "La distància «%s» és desconeguda"
 
@@ -992,15 +960,13 @@ msgid "Unknown function \"%s\" for button"
 msgstr "Funció «%s» desconeguda per al botó"
 
 #: libmetacity/meta-theme-metacity.c:3047
-#, fuzzy, c-format
-#| msgid "Button function \"%s\" does not exist in this version (%d, need %d)"
+#, c-format
 msgid "Button function '%s' does not exist in this version (%d, need %d)"
 msgstr ""
 "La funció de botó «%s» no existeix en aquesta versió (%d, es necessita %d)"
 
 #: libmetacity/meta-theme-metacity.c:3056
-#, fuzzy, c-format
-#| msgid "Unknown state \"%s\" for button"
+#, c-format
 msgid "Unknown state '%s' for button"
 msgstr "Estat «%s» desconegut per al botó"
 
@@ -1010,8 +976,7 @@ msgid "Frame style already has a button for function %s state %s"
 msgstr "L'estil del marc ja té un botó per a l'estat %s de la funció %s"
 
 #: libmetacity/meta-theme-metacity.c:3080
-#, fuzzy, c-format
-#| msgid "No <draw_ops> with the name \"%s\" has been defined"
+#, c-format
 msgid "No <draw_ops> with the name '%s' has been defined"
 msgstr "No s'ha definit cap <draw_ops> amb el nom «%s»"
 
@@ -1043,35 +1008,28 @@ msgstr ""
 "especificat ambdós elements)"
 
 #: libmetacity/meta-theme-metacity.c:3290
-#, fuzzy, c-format
-#| msgid "\"%s\" is not a valid value for focus attribute"
+#, c-format
 msgid "'%s' is not a valid value for focus attribute"
 msgstr "«%s» no és un valor vàlid per a l'atribut del focus"
 
 #: libmetacity/meta-theme-metacity.c:3299
-#, fuzzy, c-format
-#| msgid "\"%s\" is not a valid value for state attribute"
+#, c-format
 msgid "'%s' is not a valid value for state attribute"
 msgstr "«%s» no és un valor vàlid per a l'atribut de l'estat"
 
 #: libmetacity/meta-theme-metacity.c:3308
-#, fuzzy, c-format
-#| msgid "A style called \"%s\" has not been defined"
+#, c-format
 msgid "A style called '%s' has not been defined"
 msgstr "No s'ha definit un estil amb el nom «%s»"
 
 #: libmetacity/meta-theme-metacity.c:3326
 #: libmetacity/meta-theme-metacity.c:3349
-#, fuzzy, c-format
-#| msgid "\"%s\" is not a valid value for resize attribute"
+#, c-format
 msgid "'%s' is not a valid value for resize attribute"
 msgstr "«%s» no és un valor vàlid per a l'atribut de redimensiona"
 
 #: libmetacity/meta-theme-metacity.c:3360
-#, fuzzy, c-format
-#| msgid ""
-#| "Should not have \"resize\" attribute on <%s> element for maximized/shaded "
-#| "states"
+#, c-format
 msgid ""
 "Should not have 'resize' attribute on <%s> element for maximized/shaded "
 "states"
@@ -1080,9 +1038,7 @@ msgstr ""
 "maximitzat/ombrejat"
 
 #: libmetacity/meta-theme-metacity.c:3381
-#, fuzzy, c-format
-#| msgid ""
-#| "Should not have \"resize\" attribute on <%s> element for maximized states"
+#, c-format
 msgid "Should not have 'resize' attribute on <%s> element for maximized states"
 msgstr ""
 "No hauria de tenir l'atribut «resize» en l'element <%s> per als estats "
@@ -1105,7 +1061,7 @@ msgid "Style has already been specified for state %s focus %s"
 msgstr "L'estil ja s'ha especificat per a l'estat %s focus %s"
 
 #: libmetacity/meta-theme-metacity.c:3546
-#, fuzzy, c-format
+#, c-format
 msgid "Bad version specification '%s'"
 msgstr "Especificació de versió errònia («%s»)"
 
@@ -1116,7 +1072,7 @@ msgid ""
 msgstr ""
 
 #: libmetacity/meta-theme-metacity.c:3640
-#, fuzzy, c-format
+#, c-format
 msgid "Theme requires version %s but latest supported theme version is %d.%d"
 msgstr ""
 "El tema requereix la versió %s, però la darrera versió compatible del tema "
@@ -1168,12 +1124,11 @@ msgstr "L'element <%s> no és permès dins d'un element <%s>"
 #: libmetacity/meta-theme-metacity.c:3850
 #: libmetacity/meta-theme-metacity.c:3858
 #: libmetacity/meta-theme-metacity.c:3867
-#, fuzzy, c-format
-#| msgid "No <%s> set for theme \"%s\""
+#, c-format
 msgid "No <%s> set for theme '%s'"
 msgstr "No s'ha definit <%s> per al tema «%s»"
 
-#: libmetacity/meta-theme-metacity.c:3884
+#: libmetacity/meta-theme-metacity.c:3878
 #, fuzzy, c-format
 #| msgid ""
 #| "No frame style set for window type \"%s\" in theme \"%s\", add a <window "
@@ -1185,35 +1140,35 @@ msgstr ""
 "No s'ha definit cap estil de marc per al tipus de finestra \"%s\" en el tema "
 "\"%s\", afegiu un element <window type=\"%s\" style_set=\"qualsevol\"/>"
 
-#: libmetacity/meta-theme-metacity.c:4147
+#: libmetacity/meta-theme-metacity.c:4141
 msgid "No draw_ops provided for frame piece"
 msgstr "No s'ha proveït cap draw_ops per a la peça del marc"
 
-#: libmetacity/meta-theme-metacity.c:4163
+#: libmetacity/meta-theme-metacity.c:4157
 msgid "No draw_ops provided for button"
 msgstr "No s'ha proveït cap draw_ops per al botó"
 
-#: libmetacity/meta-theme-metacity.c:4278
-#: libmetacity/meta-theme-metacity.c:4289
-#: libmetacity/meta-theme-metacity.c:4300
-#: libmetacity/meta-theme-metacity.c:4311
-#: libmetacity/meta-theme-metacity.c:4322
+#: libmetacity/meta-theme-metacity.c:4272
+#: libmetacity/meta-theme-metacity.c:4283
+#: libmetacity/meta-theme-metacity.c:4294
+#: libmetacity/meta-theme-metacity.c:4305
+#: libmetacity/meta-theme-metacity.c:4316
 #, c-format
 msgid "<%s> specified twice for this theme"
 msgstr "S'ha especificat <%s> dues vegades per a aquest tema"
 
-#: libmetacity/meta-theme-metacity.c:4361
+#: libmetacity/meta-theme-metacity.c:4355
 #, c-format
 msgid "No text is allowed inside element <%s>"
 msgstr "No es permet cap text dins de l'element <%s>"
 
-#: libmetacity/meta-theme-metacity.c:4614
+#: libmetacity/meta-theme-metacity.c:4621
 #, fuzzy, c-format
 #| msgid "Failed to find a valid file for theme %s\n"
 msgid "Failed to find a valid file for theme '%s'"
 msgstr "No s'ha trobat un fitxer vàlid per al tema %s\n"
 
-#: src/core/bell.c:290
+#: src/core/bell.c:279
 msgid "Bell event"
 msgstr "Esdeveniment de to del sistema"
 
@@ -1368,53 +1323,53 @@ msgstr "%s (com a un altre usuari)"
 msgid "Usage: %s\n"
 msgstr "Forma d'ús: %s\n"
 
-#: src/ui/frames.c:1307
+#: src/ui/frames.c:1315
 msgid "Close Window"
 msgstr "Tanca la finestra"
 
-#: src/ui/frames.c:1310
+#: src/ui/frames.c:1318
 msgid "Window Menu"
 msgstr "Menú de la finestra"
 
-#: src/ui/frames.c:1313
+#: src/ui/frames.c:1321
 #, fuzzy
 #| msgid "Window Menu"
 msgid "Window App Menu"
 msgstr "Menú de la finestra"
 
-#: src/ui/frames.c:1316
+#: src/ui/frames.c:1324
 msgid "Minimize Window"
 msgstr "Minimitza la finestra"
 
-#: src/ui/frames.c:1319
+#: src/ui/frames.c:1327
 msgid "Maximize Window"
 msgstr "Maximitza la finestra"
 
-#: src/ui/frames.c:1322
+#: src/ui/frames.c:1330
 msgid "Restore Window"
 msgstr "Restaura la finestra"
 
-#: src/ui/frames.c:1325
+#: src/ui/frames.c:1333
 msgid "Roll Up Window"
 msgstr "Enrotlla la finestra"
 
-#: src/ui/frames.c:1328
+#: src/ui/frames.c:1336
 msgid "Unroll Window"
 msgstr "Desenrotlla la finestra"
 
-#: src/ui/frames.c:1331
+#: src/ui/frames.c:1339
 msgid "Keep Window On Top"
 msgstr "Matín la finestra per damunt"
 
-#: src/ui/frames.c:1334
+#: src/ui/frames.c:1342
 msgid "Remove Window From Top"
 msgstr "Treu la finestra de damunt"
 
-#: src/ui/frames.c:1337
+#: src/ui/frames.c:1345
 msgid "Always On Visible Workspace"
 msgstr "Sempre a l'espai de treball visible"
 
-#: src/ui/frames.c:1340
+#: src/ui/frames.c:1348
 msgid "Put Window On Only One Workspace"
 msgstr "Posa la finestra només a un espai de treball"
 
@@ -1500,21 +1455,21 @@ msgstr "Mou a l'espai de treball de s_ota"
 msgid "_Close"
 msgstr "_Tanca"
 
-#: src/ui/menu.c:175
+#: src/ui/menu.c:174
 #, c-format
 msgid "Workspace %d%n"
 msgstr "Espai de treball %d%n"
 
-#: src/ui/menu.c:185
+#: src/ui/menu.c:184
 msgid "Workspace 1_0"
 msgstr "Espai de treball 1_0"
 
-#: src/ui/menu.c:187
+#: src/ui/menu.c:186
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Espai de treball %s%d"
 
-#: src/ui/menu.c:354
+#: src/ui/menu.c:351
 msgid "Move to Another _Workspace"
 msgstr "Mou a un altre es_pai de treball"
 
@@ -1616,7 +1571,7 @@ msgstr "Mod5"
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: src/ui/ui.c:865
+#: src/ui/ui.c:871
 msgid "Falling back to default GTK+ theme - Adwaita"
 msgstr ""
 
@@ -1638,20 +1593,20 @@ msgstr "El nom d'un espai de treball."
 msgid "NAME"
 msgstr ""
 
-#: theme-viewer/theme-viewer-window.c:119
+#: theme-viewer/theme-viewer-window.c:102
 #, fuzzy, c-format
 #| msgid "Loaded theme \"%s\" in %g seconds\n"
 msgid "Loaded <b>%s</b> theme <b>%s</b> in <b>%f</b> seconds."
 msgstr "S'ha carregat el tema «%s» en %g segons\n"
 
-#: theme-viewer/theme-viewer-window.c:149
+#: theme-viewer/theme-viewer-window.c:132
 #, c-format
 msgid ""
 "Got MetaFrameBorders in <b>%f</b> seconds (CSS loading, PangoFontDescription "
 "creation and title height calculation)."
 msgstr ""
 
-#: theme-viewer/theme-viewer-window.c:224
+#: theme-viewer/theme-viewer-window.c:207
 #, fuzzy, c-format
 #| msgid ""
 #| "Drew %d frames in %g client-side seconds (%g milliseconds per frame) and "
@@ -1666,14 +1621,10 @@ msgstr ""
 "%g segons de rellotge inclosos els recursos del servidor d'X (%g "
 "mil·lisegons per marc)\n"
 
-#: theme-viewer/theme-viewer-window.c:261
+#: theme-viewer/theme-viewer-window.c:244
 #, fuzzy
 msgid "Run again"
 msgstr "Torna a executar"
-
-#: theme-viewer/theme-viewer-window.c:996
-msgid "Metacity Theme Viewer"
-msgstr ""
 
 #~ msgid "Unknown window information request: %d"
 #~ msgstr "Es desconeix la informació demanada sobre la finestra: %d"
