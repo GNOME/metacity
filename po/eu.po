@@ -6,636 +6,251 @@
 # Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2004, 2005, 2006, 2008, 2009, 2010, 2011, 2012.
 # Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2007, 2014.
 msgid ""
-msgstr ""
-"Project-Id-Version: metacity master\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-15 14:11+0200\n"
-"PO-Revision-Date: 2014-07-15 14:12+0200\n"
-"Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
+msgstr "Project-Id-Version: metacity master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues\n"
+"POT-Creation-Date: 2019-08-06 20:52+0000\n"
+"PO-Revision-Date: 2019-08-10 13:15+0200\n"
+"Last-Translator: Alexander Gabilondo <alexgabi@irakasle.net>\n"
 "Language-Team: Basque <librezale@librezale.org>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.4\n"
+"X-Generator: Poedit 2.0.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"\n"
-
-#: ../src/50-metacity-navigation.xml.in.h:1
-msgid "Navigation"
-msgstr "Nabigazioa"
-
-#: ../src/50-metacity-navigation.xml.in.h:2
-msgid "Move window to workspace 1"
-msgstr "Eraman leihoa 1. laneko areara"
-
-#: ../src/50-metacity-navigation.xml.in.h:3
-msgid "Move window to workspace 2"
-msgstr "Eraman leihoa 2. laneko areara"
-
-#: ../src/50-metacity-navigation.xml.in.h:4
-msgid "Move window to workspace 3"
-msgstr "Eraman leihoa 3. laneko areara"
-
-#: ../src/50-metacity-navigation.xml.in.h:5
-msgid "Move window to workspace 4"
-msgstr "Eraman leihoa 4. laneko areara"
-
-#: ../src/50-metacity-navigation.xml.in.h:6
-msgid "Move window one workspace to the left"
-msgstr "Eraman leihoa laneko area bat ezkerrera"
-
-#: ../src/50-metacity-navigation.xml.in.h:7
-msgid "Move window one workspace to the right"
-msgstr "Eraman leihoa laneko area bat eskuinera"
-
-#: ../src/50-metacity-navigation.xml.in.h:8
-msgid "Move window one workspace up"
-msgstr "Eraman leihoa laneko area bat gora"
-
-#: ../src/50-metacity-navigation.xml.in.h:9
-msgid "Move window one workspace down"
-msgstr "Eraman leihoa laneko area bat behera"
-
-#: ../src/50-metacity-navigation.xml.in.h:10
-msgid "Switch windows"
-msgstr "Aldatu leihoak"
-
-#: ../src/50-metacity-navigation.xml.in.h:11
-msgid "Switch applications"
-msgstr "Aldatu aplikazioz"
-
-#: ../src/50-metacity-navigation.xml.in.h:12
-msgid "Switch windows of an application"
-msgstr "Aldatu aplikazio baten leihoen artean"
-
-#: ../src/50-metacity-navigation.xml.in.h:13
-msgid "Switch system controls"
-msgstr "Aldatu sistemaren kontrolak"
-
-#: ../src/50-metacity-navigation.xml.in.h:14
-msgid "Switch windows directly"
-msgstr "Aldatu leihoa zuzenean"
-
-#: ../src/50-metacity-navigation.xml.in.h:15
-msgid "Switch windows of an app directly"
-msgstr "Aldatu aplikazio baten leihoa zuzenean"
-
-#: ../src/50-metacity-navigation.xml.in.h:16
-msgid "Switch system controls directly"
-msgstr "Aldatu sistemaren kontrolak zuzenean"
-
-#: ../src/50-metacity-navigation.xml.in.h:17
-msgid "Hide all normal windows"
-msgstr "Ezkutatu leiho arrunt guztiak"
-
-#: ../src/50-metacity-navigation.xml.in.h:18
-msgid "Switch to workspace 1"
-msgstr "Aldatu 1. laneko areara"
-
-#: ../src/50-metacity-navigation.xml.in.h:19
-msgid "Switch to workspace 2"
-msgstr "Aldatu 2. laneko areara"
-
-#: ../src/50-metacity-navigation.xml.in.h:20
-msgid "Switch to workspace 3"
-msgstr "Aldatu 3. laneko areara"
-
-#: ../src/50-metacity-navigation.xml.in.h:21
-msgid "Switch to workspace 4"
-msgstr "Aldatu 4. laneko areara"
-
-#: ../src/50-metacity-navigation.xml.in.h:22
-msgid "Move to workspace left"
-msgstr "Eraman ezkerreko laneko areara"
-
-#: ../src/50-metacity-navigation.xml.in.h:23
-msgid "Move to workspace right"
-msgstr "Eraman eskuineko laneko areara"
-
-#: ../src/50-metacity-navigation.xml.in.h:24
-msgid "Move to workspace above"
-msgstr "Eraman gaineko laneko areara"
-
-#: ../src/50-metacity-navigation.xml.in.h:25
-msgid "Move to workspace below"
-msgstr "Eraman azpiko laneko areara"
-
-#: ../src/50-metacity-system.xml.in.h:1
-msgid "System"
-msgstr "Sistema"
-
-#: ../src/50-metacity-system.xml.in.h:2
-msgid "Show the run command prompt"
-msgstr "Erakutsi gonbitea komandoa exekutatzeko"
-
-#: ../src/50-metacity-system.xml.in.h:3
-msgid "Show the applications menu"
-msgstr "Erakutsi aplikazioen menua"
-
-#: ../src/50-metacity-windows.xml.in.h:1
-msgid "Windows"
-msgstr "Leihoak"
-
-#: ../src/50-metacity-windows.xml.in.h:2
-msgid "Activate the window menu"
-msgstr "Aktibatu leiho-menua"
-
-#: ../src/50-metacity-windows.xml.in.h:3
-msgid "Toggle fullscreen mode"
-msgstr "Txandakatu pantaila osoaren modua"
-
-#: ../src/50-metacity-windows.xml.in.h:4
-msgid "Toggle maximization state"
-msgstr "Txandakatu maximizatze-egoera"
-
-#: ../src/50-metacity-windows.xml.in.h:5
-msgid "Maximize window"
-msgstr "Maximizatu leihoa"
-
-#: ../src/50-metacity-windows.xml.in.h:6
-msgid "Restore window"
-msgstr "Leheneratu leihoa"
-
-#: ../src/50-metacity-windows.xml.in.h:7
-msgid "Toggle shaded state"
-msgstr "Txandakatu bildutako egoera"
-
-#: ../src/50-metacity-windows.xml.in.h:8
-msgid "Close window"
-msgstr "Itxi leihoa"
-
-#: ../src/50-metacity-windows.xml.in.h:9
-msgid "Minimize window"
-msgstr "Minimizatu leihoa"
-
-#: ../src/50-metacity-windows.xml.in.h:10
-msgid "Move window"
-msgstr "Lekuz aldatu leihoa"
-
-#: ../src/50-metacity-windows.xml.in.h:11
-msgid "Resize window"
-msgstr "Aldatu leihoaren tamaina"
-
-#: ../src/50-metacity-windows.xml.in.h:12
-msgid "Toggle window on all workspaces or one"
-msgstr "Txandakatu leihoa laneko area guztietan edo bakar batean egotea"
-
-#: ../src/50-metacity-windows.xml.in.h:13
-msgid "Raise window if covered, otherwise lower it"
-msgstr "Goratu leihoa beste leiho batek estaltzen badu, bestela beheratu"
-
-#: ../src/50-metacity-windows.xml.in.h:14
-msgid "Raise window above other windows"
-msgstr "Goratu leihoa beste leihoen gainera"
-
-#: ../src/50-metacity-windows.xml.in.h:15
-msgid "Lower window below other windows"
-msgstr "Beheratu leihoa beste leihoen azpira"
-
-#: ../src/50-metacity-windows.xml.in.h:16
-msgid "Maximize window vertically"
-msgstr "Maximizatu leihoa bertikalki"
-
-#: ../src/50-metacity-windows.xml.in.h:17
-msgid "Maximize window horizontally"
-msgstr "Maximizatu leihoa horizontalki"
-
-#: ../src/core/bell.c:294
-msgid "Bell event"
-msgstr "Soinuaren gertaera"
-
-#: ../src/core/core.c:205
-#, c-format
-msgid "Unknown window information request: %d"
-msgstr "Leihoaren informazio eskaera ezezaguna: %d"
-
-#. Translators: %s is a window title
-#: ../src/core/delete.c:94
-#, c-format
-msgid "<tt>%s</tt> is not responding."
-msgstr "<tt>%s</tt>(e)k ez du erantzuten."
-
-#: ../src/core/delete.c:99
-msgid ""
-"You may choose to wait a short while for it to continue or force the "
-"application to quit entirely."
-msgstr ""
-"Aukeratu piskatean zain egotea aplikazioak jarraitzeko edo derrigortu "
-"aplikazioa erabat ixtea."
-
-#: ../src/core/delete.c:108
-msgid "_Wait"
-msgstr "_Itxaron"
-
-#: ../src/core/delete.c:108
-msgid "_Force Quit"
-msgstr "_Behartu ixtera"
-
-#: ../src/core/delete.c:206
-#, c-format
-msgid "Failed to get hostname: %s\n"
-msgstr "Huts egin du ostalari-izena hartzean: %s\n"
-
-#: ../src/core/display.c:261
-#, c-format
-msgid "Missing %s extension required for compositing"
-msgstr "Konposaketa lantzeko beharrezkoa den %s hedapena falta da"
-
-#: ../src/core/display.c:339
-#, c-format
-msgid "Failed to open X Window System display '%s'\n"
-msgstr "Huts egin du X Window sistemaren '%s' pantaila irekitzean\n"
-
-#: ../src/core/keybindings.c:727
-#, c-format
-msgid ""
-"Some other program is already using the key %s with modifiers %x as a "
-"binding\n"
-msgstr ""
-"Beste programaren batek erabiltzen du %s gakoa %x aldatzaileekin lotura "
-"gisa\n"
-
-#: ../src/core/main.c:129
-#, c-format
-msgid ""
-"metacity %s\n"
-"Copyright (C) 2001-%s Havoc Pennington, Red Hat, Inc., and others\n"
-"This is free software; see the source for copying conditions.\n"
-"There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A "
-"PARTICULAR PURPOSE.\n"
-msgstr ""
-"metacity %s\n"
-"Copyright-a (C) 2001-%s Havoc Pennington, Red Hat, Inc., eta beste batzuk\n"
-"Hau software librea da; ikus kopiatzeko baldintzak iturburu-kodean.\n"
-"EZ du bermerik; ezta MERKATURATZEKO edo XEDE JAKIN BATERAKO EGOKITASUNAREN "
-"BERMERIK ERE.\n"
-
-#: ../src/core/main.c:267
-msgid "Disable connection to session manager"
-msgstr "Desgaitu saio-kudeatzailearen konexioa"
-
-#: ../src/core/main.c:273
-msgid "Replace the running window manager with Metacity"
-msgstr "Ordeztu exekutatzen dagoen leiho-kudeatzailea Metacity-rekin"
-
-#: ../src/core/main.c:279
-msgid "Specify session management ID"
-msgstr "Zehaztu saio-kudeatzailearen IDa"
-
-#: ../src/core/main.c:284
-msgid "X Display to use"
-msgstr "X pantaila erabiltzeko"
-
-#: ../src/core/main.c:290
-msgid "Initialize session from savefile"
-msgstr "Hasieratu saioa babes-fitxategitik"
-
-#: ../src/core/main.c:296
-msgid "Print version"
-msgstr "Erakutsi bertsioa"
-
-#: ../src/core/main.c:302
-msgid "Make X calls synchronous"
-msgstr "Egin X deiak sinkronoak izatea"
-
-#: ../src/core/main.c:308
-msgid "Turn compositing on"
-msgstr "Aktibatu konposaketa"
-
-#: ../src/core/main.c:314
-msgid "Turn compositing off"
-msgstr "Desaktibatu konposaketa"
-
-#: ../src/core/main.c:320
-msgid ""
-"Don't make fullscreen windows that are maximized and have no decorations"
-msgstr ""
-"Ez jarri pantaila osoko leihoak maximizatuta badaude eta dekoraziorik ez "
-"badute"
-
-#: ../src/core/main.c:520
-#, c-format
-msgid "Failed to scan themes directory: %s\n"
-msgstr "Huts egin du gaien direktorioa aztertzean: %s\n"
-
-#: ../src/core/main.c:536
-#, c-format
-msgid ""
-"Could not find a theme! Be sure %s exists and contains the usual themes.\n"
-msgstr ""
-"Gai bat ezin izan da aurkitu. Ziurtatu %s badagoela eta ohiko gaiak "
-"dituela.\n"
-
-#: ../src/core/main.c:595
-#, c-format
-msgid "Failed to restart: %s\n"
-msgstr "Ezin izan da berrabiarazi: %s\n"
-
-#: ../src/core/prefs.c:894
-msgid ""
-"Workarounds for broken applications disabled. Some applications may not "
-"behave properly.\n"
-msgstr ""
-"Aplikazio hautsien konponbidea desgaituta. Aplikazio batzuk ez dira behar "
-"den bezala ibiliko.\n"
-
-#: ../src/core/prefs.c:962
-#, c-format
-msgid "Could not parse font description \"%s\" from GSettings key %s\n"
-msgstr ""
-"Ezin izan da \"%s\" letra-tipoaren deskribapena analizatu GSettings-eko %s "
-"gakoan\n"
-
-#: ../src/core/prefs.c:1028
-#, c-format
-msgid ""
-"\"%s\" found in configuration database is not a valid value for mouse button "
-"modifier\n"
-msgstr ""
-"Konfigurazioaren datu-basean aurkitutako \"%s\" balioa ez da baliozkoa sagu-"
-"botoiaren aldatzailearentzat\n"
-
-#: ../src/core/prefs.c:1513
-#, c-format
-msgid ""
-"\"%s\" found in configuration database is not a valid value for keybinding "
-"\"%s\"\n"
-msgstr ""
-"Konfigurazioaren datu-basean aurkitutako \"%s\" balioa ez da baliozkoa \"%s"
-"\" laster-teklarentzat.\n"
-
-#: ../src/core/prefs.c:1620
-#, c-format
-msgid "Workspace %d"
-msgstr "%d. laneko area"
-
-#: ../src/core/screen.c:362
-#, c-format
-msgid "Screen %d on display '%s' is invalid\n"
-msgstr "'%2$s' bistaratzeko %1$d pantaila ez da baliozkoa\n"
-
-#: ../src/core/screen.c:378
-#, c-format
-msgid ""
-"Screen %d on display \"%s\" already has a window manager; try using the --"
-"replace option to replace the current window manager.\n"
-msgstr ""
-"\"%2$s\" bistaratzeko %1$d pantailak badu leiho-kudeatzailea; leiho-"
-"kudeatzaile hori ordeztu nahi baduzu, saiatu --replace aukerarekin.\n"
-
-#: ../src/core/screen.c:405
-#, c-format
-msgid ""
-"Could not acquire window manager selection on screen %d display \"%s\"\n"
-msgstr ""
-"Ezin izan da eskuratu leiho-kudeatzailearen hautapena \"%2$s\" bistaratzeko "
-"%1$d pantailan\n"
-
-#: ../src/core/screen.c:463
-#, c-format
-msgid "Screen %d on display \"%s\" already has a window manager\n"
-msgstr "\"%2$s\" bistaratzeko %1$d pantailak badu leiho-kudeatzailea\n"
-
-#: ../src/core/screen.c:676
-#, c-format
-msgid "Could not release screen %d on display \"%s\"\n"
-msgstr "Ezin izan da askatu \"%2$s\" bistaratzeko %1$d pantaila\n"
-
-#: ../src/core/session.c:840 ../src/core/session.c:847
-#, c-format
-msgid "Could not create directory '%s': %s\n"
-msgstr "Ezin izan da '%s' direktorioa sortu: %s\n"
-
-#: ../src/core/session.c:857
-#, c-format
-msgid "Could not open session file '%s' for writing: %s\n"
-msgstr "Ezin izan da '%s' saio-fitxategia idazteko ireki: %s\n"
-
-#: ../src/core/session.c:998
-#, c-format
-msgid "Error writing session file '%s': %s\n"
-msgstr "Errorea '%s' saio-fitxategia idaztean: %s\n"
-
-#: ../src/core/session.c:1003
-#, c-format
-msgid "Error closing session file '%s': %s\n"
-msgstr "Errorea '%s' saio-fitxategia ixtean: %s\n"
-
-#: ../src/core/session.c:1133
-#, c-format
-msgid "Failed to parse saved session file: %s\n"
-msgstr "Huts egin du gordetako saio-fitxategia analizatzean: %s\n"
-
-#: ../src/core/session.c:1182
-#, c-format
-msgid "<metacity_session> attribute seen but we already have the session ID"
-msgstr "<metacity_session> atributua ikusi da baina dagoeneko badugu saio-IDa"
-
-#: ../src/core/session.c:1195 ../src/core/session.c:1270
-#: ../src/core/session.c:1302 ../src/core/session.c:1374
-#: ../src/core/session.c:1434
-#, c-format
-msgid "Unknown attribute %s on <%s> element"
-msgstr "%s atributu ezezaguna <%s> elementuan"
-
-#: ../src/core/session.c:1212
-#, c-format
-msgid "nested <window> tag"
-msgstr "<window> etiketa habiaratua"
-
-#: ../src/core/session.c:1454
-#, c-format
-msgid "Unknown element %s"
-msgstr "%s elementu ezezaguna"
-
-#: ../src/core/session.c:1806
-msgid ""
-"These windows do not support &quot;save current setup&quot; and will have to "
-"be restarted manually next time you log in."
-msgstr ""
-"Leiho hauek ez dute onartzen &quot;gorde uneko konfigurazioa&quot; eta eskuz "
-"berrabiarazi beharko dituzu hurrengo saioa hasten duzunean."
-
-#: ../src/core/util.c:99
-#, c-format
-msgid "Failed to open debug log: %s\n"
-msgstr "Huts egin du arazketako egunkaria irekitzean: %s\n"
-
-#: ../src/core/util.c:109
-#, c-format
-msgid "Failed to fdopen() log file %s: %s\n"
-msgstr "Huts egin du %s egunkari-fitxategian fdopen() egitean: %s\n"
-
-#: ../src/core/util.c:115
-#, c-format
-msgid "Opened log file %s\n"
-msgstr "%s egunkari-fitxategia irekita\n"
-
-#: ../src/core/util.c:134 ../src/tools/metacity-message.c:206
-#, c-format
-msgid "Metacity was compiled without support for verbose mode\n"
-msgstr "Metacity modu xehatuaren euskarririk gabe konpilatu da\n"
-
-#: ../src/core/util.c:234
-msgid "Window manager: "
-msgstr "Leiho-kudeatzailea: "
-
-#: ../src/core/util.c:386
-msgid "Bug in window manager: "
-msgstr "Akatsa leiho-kudeatzailean: "
-
-#: ../src/core/util.c:419
-msgid "Window manager warning: "
-msgstr "Leiho-kudeatzailearen abisua: "
-
-#: ../src/core/util.c:447
-msgid "Window manager error: "
-msgstr "Leiho-kudeatzailearen errorea: "
 
 #. Translators: This is the title used on dialog boxes
-#: ../src/core/util.c:567 ../src/metacity.desktop.in.h:1
-#: ../src/metacity-wm.desktop.in.h:1
+#: data/applications/metacity.desktop.in:4 src/core/util.c:426
 msgid "Metacity"
 msgstr "Metacity"
 
-#. first time through
-#: ../src/core/window.c:5771
-#, c-format
+#. TRANSLATORS: Don't translate this text (this is icon name)
+#: data/applications/metacity.desktop.in:7
+msgid "preferences-system-windows"
+msgstr "preferences-system-windows"
+
+#: data/keybindings/50-metacity-navigation.xml:6
+msgid "Navigation"
+msgstr "Nabigazioa"
+
+#: data/keybindings/50-metacity-navigation.xml:9
+msgid "Move window to workspace 1"
+msgstr "Eraman leihoa 1. laneko areara"
+
+#: data/keybindings/50-metacity-navigation.xml:12
+msgid "Move window to workspace 2"
+msgstr "Eraman leihoa 2. laneko areara"
+
+#: data/keybindings/50-metacity-navigation.xml:15
+msgid "Move window to workspace 3"
+msgstr "Eraman leihoa 3. laneko areara"
+
+#: data/keybindings/50-metacity-navigation.xml:18
+msgid "Move window to workspace 4"
+msgstr "Eraman leihoa 4. laneko areara"
+
+#: data/keybindings/50-metacity-navigation.xml:21
+msgid "Move window one workspace to the left"
+msgstr "Eraman leihoa laneko area bat ezkerrera"
+
+#: data/keybindings/50-metacity-navigation.xml:24
+msgid "Move window one workspace to the right"
+msgstr "Eraman leihoa laneko area bat eskuinera"
+
+#: data/keybindings/50-metacity-navigation.xml:27
+msgid "Move window one workspace up"
+msgstr "Eraman leihoa laneko area bat gora"
+
+#: data/keybindings/50-metacity-navigation.xml:30
+msgid "Move window one workspace down"
+msgstr "Eraman leihoa laneko area bat behera"
+
+#: data/keybindings/50-metacity-navigation.xml:33
+msgid "Switch windows"
+msgstr "Aldatu leihoz"
+
+#: data/keybindings/50-metacity-navigation.xml:36
+msgid "Switch applications"
+msgstr "Aldatu aplikazioz"
+
+#: data/keybindings/50-metacity-navigation.xml:39
+msgid "Switch windows of an application"
+msgstr "Aldatu aplikazio baten leihoen artean"
+
+#: data/keybindings/50-metacity-navigation.xml:42
+msgid "Switch system controls"
+msgstr "Aldatu sistemaren kontrolak"
+
+#: data/keybindings/50-metacity-navigation.xml:45
+msgid "Switch windows directly"
+msgstr "Aldatu leihoa zuzenean"
+
+#: data/keybindings/50-metacity-navigation.xml:48
+msgid "Switch windows of an app directly"
+msgstr "Aldatu aplikazio baten leihoa zuzenean"
+
+#: data/keybindings/50-metacity-navigation.xml:51
+msgid "Switch system controls directly"
+msgstr "Aldatu sistemaren kontrolak zuzenean"
+
+#: data/keybindings/50-metacity-navigation.xml:54
+msgid "Hide all normal windows"
+msgstr "Ezkutatu leiho arrunt guztiak"
+
+#: data/keybindings/50-metacity-navigation.xml:57
+msgid "Switch to workspace 1"
+msgstr "Aldatu 1. laneko areara"
+
+#: data/keybindings/50-metacity-navigation.xml:60
+msgid "Switch to workspace 2"
+msgstr "Aldatu 2. laneko areara"
+
+#: data/keybindings/50-metacity-navigation.xml:63
+msgid "Switch to workspace 3"
+msgstr "Aldatu 3. laneko areara"
+
+#: data/keybindings/50-metacity-navigation.xml:66
+msgid "Switch to workspace 4"
+msgstr "Aldatu 4. laneko areara"
+
+#: data/keybindings/50-metacity-navigation.xml:69
+msgid "Move to workspace left"
+msgstr "Eraman ezkerreko laneko areara"
+
+#: data/keybindings/50-metacity-navigation.xml:72
+msgid "Move to workspace right"
+msgstr "Eraman eskuineko laneko areara"
+
+#: data/keybindings/50-metacity-navigation.xml:75
+msgid "Move to workspace above"
+msgstr "Eraman gaineko laneko areara"
+
+#: data/keybindings/50-metacity-navigation.xml:78
+msgid "Move to workspace below"
+msgstr "Eraman azpiko laneko areara"
+
+#: data/keybindings/50-metacity-system.xml:6
+msgid "System"
+msgstr "Sistema"
+
+#: data/keybindings/50-metacity-system.xml:9
+msgid "Show the run command prompt"
+msgstr "Erakutsi gonbitea komandoa exekutatzeko"
+
+#: data/keybindings/50-metacity-system.xml:12
+msgid "Show the applications menu"
+msgstr "Erakutsi aplikazioen menua"
+
+#: data/keybindings/50-metacity-windows.xml:6
+msgid "Windows"
+msgstr "Leihoak"
+
+#: data/keybindings/50-metacity-windows.xml:9
+msgid "Activate the window menu"
+msgstr "Aktibatu leiho-menua"
+
+#: data/keybindings/50-metacity-windows.xml:12
+msgid "Toggle fullscreen mode"
+msgstr "Txandakatu pantaila osoaren modua"
+
+#: data/keybindings/50-metacity-windows.xml:15
+msgid "Toggle maximization state"
+msgstr "Txandakatu maximizatze-egoera"
+
+#: data/keybindings/50-metacity-windows.xml:18
+msgid "Maximize window"
+msgstr "Maximizatu leihoa"
+
+#: data/keybindings/50-metacity-windows.xml:21
+msgid "Restore window"
+msgstr "Leheneratu leihoa"
+
+#: data/keybindings/50-metacity-windows.xml:24
+msgid "Toggle shaded state"
+msgstr "Txandakatu bildutako egoera"
+
+#: data/keybindings/50-metacity-windows.xml:27
+msgid "Close window"
+msgstr "Itxi leihoa"
+
+#: data/keybindings/50-metacity-windows.xml:30
+msgid "Minimize window"
+msgstr "Minimizatu leihoa"
+
+#: data/keybindings/50-metacity-windows.xml:33
+msgid "Move window"
+msgstr "Aldatu leihoa lekuz"
+
+#: data/keybindings/50-metacity-windows.xml:36
+msgid "Resize window"
+msgstr "Aldatu leihoaren tamaina"
+
+#: data/keybindings/50-metacity-windows.xml:39
+msgid "Toggle window on all workspaces or one"
+msgstr "Txandakatu leihoa laneko area guztietan edo bakar batean egotea"
+
+#: data/keybindings/50-metacity-windows.xml:42
+msgid "Raise window if covered, otherwise lower it"
+msgstr "Goratu leihoa beste leiho batek estaltzen badu, bestela beheratu"
+
+#: data/keybindings/50-metacity-windows.xml:45
+msgid "Raise window above other windows"
+msgstr "Goratu leihoa beste leihoen gainera"
+
+#: data/keybindings/50-metacity-windows.xml:48
+msgid "Lower window below other windows"
+msgstr "Beheratu leihoa beste leihoen azpira"
+
+#: data/keybindings/50-metacity-windows.xml:51
+msgid "Maximize window vertically"
+msgstr "Maximizatu leihoa bertikalean"
+
+#: data/keybindings/50-metacity-windows.xml:54
+msgid "Maximize window horizontally"
+msgstr "Maximizatu leihoa horizontalean"
+
+#: data/keybindings/50-metacity-windows.xml:58
+msgid "View split on left"
+msgstr "Ikusi zatia ezkerrean"
+
+#: data/keybindings/50-metacity-windows.xml:62
+msgid "View split on right"
+msgstr "Ikusi zatia eskuinean"
+
+#: data/schemas/org.gnome.metacity.gschema.xml:14
+msgid "Show window content thumbnail in Alt-Tab"
+msgstr "Erakutsi leihoen edukiaren miniaturak Alt-Tab egitean"
+
+#: data/schemas/org.gnome.metacity.gschema.xml:15
 msgid ""
-"Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
-"window as specified in the ICCCM.\n"
-msgstr ""
-"%s leihoak bere buruari ezartzen dio SM_CLIENT_ID, WM_CLIENT_LEADER leihoari "
-"ezarri beharren, ICCCMan zehaztuta dagoen moduan.\n"
+"If set to true, Metacity will show window content thumbnails in the Alt-Tab "
+"window instead of only icons."
+msgstr "Egia ezartzen bada, Metacity-k leihoaren edukiaren miniaturak erakutsiko ditu ikonoak soilik erakutsi ordez Alt-TAb egitean."
 
-#. We ignore mwm_has_resize_func because WM_NORMAL_HINTS is the
-#. * authoritative source for that info. Some apps such as mplayer or
-#. * xine disable resize via MWM but not WM_NORMAL_HINTS, but that
-#. * leads to e.g. us not fullscreening their windows.  Apps that set
-#. * MWM but not WM_NORMAL_HINTS are basically broken. We complain
-#. * about these apps but make them work.
-#.
-#: ../src/core/window.c:6336
-#, c-format
-msgid ""
-"Window %s sets an MWM hint indicating it isn't resizable, but sets min size "
-"%d x %d and max size %d x %d; this doesn't make much sense.\n"
-msgstr ""
-"%s leihoak MWM aholkua ezartzen du, tamainarik ezin zaiola aldatu "
-"adierazteko, baina aldi berean gutxieneko tamaina (%d x %d) eta gehienezkoa "
-"(%d x %d) ezartzen ditu, eta horrek ez du zentzu handirik.\n"
-
-#: ../src/core/window-props.c:242
-#, c-format
-msgid "Application set a bogus _NET_WM_PID %lu\n"
-msgstr "Aplikazioak _NET_WM_PID %lu faltsua ezarri du\n"
-
-#. Translators: the title of a window from another machine
-#: ../src/core/window-props.c:393
-#, c-format
-msgid "%s (on %s)"
-msgstr "%s (%s)"
-
-#. Simple case-- don't bother to look it up.  It's root.
-#: ../src/core/window-props.c:425
-#, c-format
-msgid "%s (as superuser)"
-msgstr "%s (supererabiltzaile gisa)"
-
-#. Translators: the title of a window owned by another user
-#. * on this machine
-#: ../src/core/window-props.c:443
-#, c-format
-msgid "%s (as %s)"
-msgstr "%s (%s gisa)"
-
-#. Translators: the title of a window owned by another user
-#. * on this machine, whose name we don't know
-#: ../src/core/window-props.c:449
-#, c-format
-msgid "%s (as another user)"
-msgstr "%s (beste erabiltzaile bat gisa)"
-
-#: ../src/core/window-props.c:1435
-#, c-format
-msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
-msgstr "%2$s(e)n baliogabeko WM_TRANSIENT_FOR 0x%1$lx leihoa zehaztu da.\n"
-
-#: ../src/core/xprops.c:153
-#, c-format
-msgid ""
-"Window 0x%lx has property %s\n"
-"that was expected to have type %s format %d\n"
-"and actually has type %s format %d n_items %d.\n"
-"This is most likely an application bug, not a window manager bug.\n"
-"The window has title=\"%s\" class=\"%s\" name=\"%s\"\n"
-msgstr ""
-"0x%lx leihoak %s propietatea du\n"
-"horrek %s mota %d formatua izatea espero zen\n"
-"baina %s mota %d formatua %d n_items du.\n"
-"Gehiago ematen du aplikazioaren akatsa leiho-kudeatzailearena baino.\n"
-"Leihoak title=\"%s\" class=\"%s\" name=\"%s\" du\n"
-
-#: ../src/core/xprops.c:399
-#, c-format
-msgid "Property %s on window 0x%lx contained invalid UTF-8\n"
-msgstr "0x%2$lx leihoko %1$s propietateak UTF-8 baliogabea du\n"
-
-#: ../src/core/xprops.c:482
-#, c-format
-msgid ""
-"Property %s on window 0x%lx contained invalid UTF-8 for item %d in the list\n"
-msgstr ""
-"0x%2$lx leihoko %1$s propietateak UTF-8 baliogabea du zerrendako %3$d. "
-"elementuan\n"
-
-#: ../src/org.gnome.metacity.gschema.xml.in.h:1
+#: data/schemas/org.gnome.metacity.gschema.xml:23
 msgid "Compositing Manager"
 msgstr "Konposatze-kudeatzailea"
 
-#: ../src/org.gnome.metacity.gschema.xml.in.h:2
+#: data/schemas/org.gnome.metacity.gschema.xml:24
 msgid "Determines whether Metacity is a compositing manager."
 msgstr "Metacity konposatzeko kudeatzaile bat al den zehazten du."
 
-#: ../src/org.gnome.metacity.gschema.xml.in.h:3
-msgid "If true, trade off usability for less resource usage"
-msgstr ""
-"Egia bada, gutxiagotu erabilgarritasuna errekurtso gutxiago erabiltzeko"
-
-#: ../src/org.gnome.metacity.gschema.xml.in.h:4
-msgid ""
-"If true, metacity will give the user less feedback by using wireframes, "
-"avoiding animations, or other means. This is a significant reduction in "
-"usability for many users, but may allow legacy applications to continue "
-"working, and may also be a useful tradeoff for terminal servers. However, "
-"the wireframe feature is disabled when accessibility is on."
-msgstr ""
-"Egia bada, metacity-k erabiltzaileari informazio eta \"zuzeneko kudeaketa\" "
-"zentzu gutxiago eskainiko dio, burdin-hariak erabiliz, animazioak saihestuz, "
-"e.a. Erabiltzaile askorentzako honek erabilgarritasuna gutxiagotzen du, "
-"baina heredatutako aplikazioak eta terminal-zerbitzariak funtzionatzea "
-"baimendu dezake, beste kasuetan ezinezkoa izango zatekeena. Hala ere, "
-"erabilgarritasuna aktibo dagoenean wireframe funtzionalitatea desgaitu "
-"egiten da."
-
-#: ../src/org.gnome.metacity.gschema.xml.in.h:5
+#: data/schemas/org.gnome.metacity.gschema.xml:31
 msgid "Enable edge tiling when dropping windows on screen edges"
-msgstr ""
-"Gaitu ertza lauza gisa ezartzea leihoak pantailaren ertzetara jaregitean"
+msgstr "Gaitu lauzatzea leihoak pantailaren ertzetan jaregitean"
 
-#: ../src/org.gnome.metacity.gschema.xml.in.h:6
+#: data/schemas/org.gnome.metacity.gschema.xml:32
 msgid ""
 "If enabled, dropping windows on vertical screen edges maximizes them "
 "vertically and resizes them horizontally to cover half of the available "
 "area. Dropping windows on the top screen edge maximizes them completely."
-msgstr ""
+msgstr "Gaituta egonez gero, pantailaren ertz bertikaletan leihoak jaregiteak hauek bertikalean maximizatuko dira, eta horizontalean tamainaz aldatuko dira area erabilgarriaren erdia estaltzeko. Pantailaren goiko ertzean leihoak jaregitean, hauek erabat maximizatuko dira."
 
-#: ../src/org.gnome.metacity.gschema.xml.in.h:7
+#: data/schemas/org.gnome.metacity.gschema.xml:41
 msgid "Window placement behavior"
 msgstr "Leihoa kokatzeko portaera"
 
-#: ../src/org.gnome.metacity.gschema.xml.in.h:8
+#: data/schemas/org.gnome.metacity.gschema.xml:42
 msgid ""
 "Metacity's default window-placement behavior is smart (first-fit), similar "
 "to behaviors in some other window managers. It will try to tile windows so "
@@ -644,164 +259,1089 @@ msgid ""
 "their workspaces, \"origin\" for the upper-left corners of the workspaces, "
 "or \"random\" to place new windows at random locations within their "
 "workspaces."
-msgstr ""
+msgstr "Metacity-ren leiho-kokapen portaera lehenetsia 'smart' da (aurrenean egokitu), beste leiho kudeatzaile batzuen jokabideen tankerakoa. Leihoak metatzen saiatuko da, gainjarri ez daitezen. Ezarri \"smart\" aukera gisa jokabide honetarako. Aukeratu \"erdigunean\" leiho berriak beren laneko arearen erdian kokatzeko, \"jatorria\" laneko arearen goiko ezkerreko izkinetan edo \"ausaz\" leiho berriak ausazko kokapenetan kokatzeko beren laneko areatan."
 
-#: ../src/tools/metacity-message.c:176
+#: data/schemas/org.gnome.metacity.gschema.xml:57
+msgid "If true, trade off usability for less resource usage"
+msgstr "Egia bada, gutxiagotu erabilgarritasuna errekurtso gutxiago erabiltzeko"
+
+#: data/schemas/org.gnome.metacity.gschema.xml:58
+msgid ""
+"If true, Metacity will give the user less feedback by using wireframes, "
+"avoiding animations, or other means. This is a significant reduction in "
+"usability for many users, but may allow legacy applications to continue "
+"working, and may also be a useful tradeoff for terminal servers. However, "
+"the wireframe feature is disabled when accessibility is on."
+msgstr "Egia bada, Metacity-k erabiltzaileari berrelikadura gutxiago eskainiko dio, pantaila-eskemak erabiliz, animazioak saihestuz, etab. Erabiltzaile askorentzako horrek erabilgarritasuna gutxiagotzen du, baina heredatutako aplikazioak eta terminal-zerbitzariak funtzionatzea baimendu dezake, beste kasuetan ezinezkoa izango zatekeena. Hala ere, erabilgarritasuna aktibo dagoenean pantaila eskemen funtzionalitatea desgaitu egiten da."
+
+#: data/schemas/org.gnome.metacity.theme.gschema.xml:11
+msgid "Theme Name"
+msgstr "Gaiaren izena"
+
+#: data/schemas/org.gnome.metacity.theme.gschema.xml:12
+msgid ""
+"This setting is only used if Metacity is selected as the theme type. You "
+"MUST provide a valid Metacity theme name, otherwise Metacity will fall back "
+"to the default GTK+ theme - Adwaita."
+msgstr "Ezarpen hau gai mota gisa Metacity hautatuz gero soilik erabiliko da. Metacity gai izen baliozkoa DERRIGORREZKOA da, bestela Metacity berezko GTK+ gaia den Adwaita-ra bueltatuko da."
+
+#: data/schemas/org.gnome.metacity.theme.gschema.xml:21
+msgid "Theme Type"
+msgstr "Gai mota"
+
+#: data/schemas/org.gnome.metacity.theme.gschema.xml:22
+msgid ""
+"Metacity supports two theme types - GTK+ (gtk.css) and Metacity (metacity-"
+"theme-x.xml). GTK+ theme: all data is loaded from CSS. This is the same "
+"theme that is used by Mutter for server-side decorations and by GTK+ for "
+"client-side decorations. Metacity theme: data is loaded from metacity-theme-"
+"x.xml and CSS. When using this theme type you MUST provide a valid theme "
+"name."
+msgstr "Metacityk bi gai mota onartzen ditu:  GTK+ (gtk.css) eta Metacity (metacity-theme-x.xml). GTK+ gaia: datu guztiak CSS fitxategitik kargatuko dira. Gai hori Mutterrek zerbitzarien dekorazioetarako eta GTK+ bezeroen dekorazioetarako erabiltzen duen bera da. Metacity gaia: datuak metacity-theme-x.xml eta CSS fitxategietatik kargatuko ditu. Gai mota hori erabiltzean DERRIGORREZKOA \tda baliozko gai-izena ematea."
+
+#: data/ui/theme-viewer-window.ui:86
+msgid "Reload"
+msgstr "Birkargatu"
+
+#: data/ui/theme-viewer-window.ui:122
+msgid "Dark Theme:"
+msgstr "Gai iluna:"
+
+#: data/ui/theme-viewer-window.ui:161
+msgid "Frame Type:"
+msgstr "Marko mota:"
+
+#: data/ui/theme-viewer-window.ui:175
+msgid "Normal"
+msgstr "Arrunta"
+
+#: data/ui/theme-viewer-window.ui:176
+msgid "Dialog"
+msgstr "Elkarrizketa-koadroa"
+
+#: data/ui/theme-viewer-window.ui:177
+msgid "Modal Dialog"
+msgstr "Elkarrizketa-koadro modala"
+
+#: data/ui/theme-viewer-window.ui:178
+msgid "Utility"
+msgstr "Utilitatea"
+
+#: data/ui/theme-viewer-window.ui:179
+msgid "Menu"
+msgstr "Menua"
+
+#: data/ui/theme-viewer-window.ui:180
+msgid "Border"
+msgstr "Ertza"
+
+#: data/ui/theme-viewer-window.ui:181
+msgid "Attached"
+msgstr "Erantsita"
+
+#: data/ui/theme-viewer-window.ui:209
+msgid "Frame Flags:"
+msgstr "Markoaren banderak:"
+
+#: data/ui/theme-viewer-window.ui:224
+msgid "Has Focus"
+msgstr "Fokua du"
+
+#: data/ui/theme-viewer-window.ui:239
+msgid "Shaded"
+msgstr "Itzalarekin"
+
+#: data/ui/theme-viewer-window.ui:253
+msgid "Maximized"
+msgstr "Maximizatuta"
+
+#: data/ui/theme-viewer-window.ui:267
+msgid "Fullscreen"
+msgstr "Pantaila osoa"
+
+#: data/ui/theme-viewer-window.ui:281
+msgid "Tiled"
+msgstr "Lauza moduan"
+
+#: data/ui/theme-viewer-window.ui:321
+msgid "Button Layout:"
+msgstr "Botoien diseinua:"
+
+#: data/ui/theme-viewer-window.ui:360
+msgid "Composited:"
+msgstr "Konposizioa:"
+
+#: data/ui/theme-viewer-window.ui:400
+msgid "Scale:"
+msgstr "Eskala:"
+
+#: data/ui/theme-viewer-window.ui:468 theme-viewer/theme-viewer-window.c:636
+msgid "Choose Theme"
+msgstr "Aukeratu gaia"
+
+#: data/ui/theme-viewer-window.ui:508
+msgid "Preview"
+msgstr "Aurrebista"
+
+#: data/ui/theme-viewer-window.ui:597 theme-viewer/theme-viewer-window.c:252
+msgid "Run"
+msgstr "Exekutatu"
+
+#: data/ui/theme-viewer-window.ui:619
+msgid "Benchmark"
+msgstr "Errendimenduaren proba"
+
+#: data/ui/theme-viewer-window.ui:652 theme-viewer/theme-viewer-window.c:982
+msgid "Metacity Theme Viewer"
+msgstr "Metacityren gai-ikustailea"
+
+#: libmetacity/meta-color-spec.c:246
+#, c-format
+msgid ""
+"GTK custom color specification must have color name and fallback in "
+"parentheses, e.g. gtk:custom(foo,bar); could not parse '%s'"
+msgstr "GTK kolore pertsonalizatuaren zehaztapenak kolorearen izena eta, parentesi artean, ordezkoarena eduki behar ditu, adibidez gtk:custom(foo,bar); ezin da analizatu '%s'"
+
+#: libmetacity/meta-color-spec.c:260
+#, c-format
+msgid ""
+"Invalid character '%c' in color_name parameter of gtk:custom, only A-Za-z0-9-"
+"_ are valid"
+msgstr "gtk:custom-eko color-name parametroan '%c' baliogabeko karakterea dago, soilik A-Za-z0-9-_ onartzen dira."
+
+#: libmetacity/meta-color-spec.c:273
+#, c-format
+msgid ""
+"Gtk:custom format is 'gtk:custom(color_name,fallback)', '%s' does not fit "
+"the format"
+msgstr "GTK: formatu pertsonalizatua hau da: 'blend/bg_color/fg_color/alpha' da, \"%s\" ez dator bat formatuarekin"
+
+#: libmetacity/meta-color-spec.c:306
+#, c-format
+msgid ""
+"GTK color specification must have the state in brackets, e.g. gtk:fg[NORMAL] "
+"where NORMAL is the state; could not parse '%s'"
+msgstr "GTK kolore zehaztapenak kortxete artean izan behar du, adib. gtk:fg[NORMAL], NORMAL egoera izanik; ezin da analizatu '%s'"
+
+#: libmetacity/meta-color-spec.c:319
+#, c-format
+msgid ""
+"GTK color specification must have a close bracket after the state, e.g. gtk:"
+"fg[NORMAL] where NORMAL is the state; could not parse '%s'"
+msgstr "GTK kolore-zehaztapenak ixteko kortxetea izan behar egoeraren ondoren, adib. gtk:fg[NORMAL], NORMAL egoera izanik;  ezin da analizatu '%s'"
+
+#: libmetacity/meta-color-spec.c:328
+#, c-format
+msgid "Did not understand state '%s' in color specification"
+msgstr "Ez da ulertu '%s' egoera kolore-zehaztapenean"
+
+#: libmetacity/meta-color-spec.c:340
+#, c-format
+msgid "Did not understand color component '%s' in color specification"
+msgstr "Ez da ulertu '%s' kolore-osagaia kolore-zehaztapenean"
+
+#: libmetacity/meta-color-spec.c:366
+#, c-format
+msgid ""
+"Blend format is 'blend/bg_color/fg_color/alpha', '%s' does not fit the format"
+msgstr "Nahaste-formatua 'blend/bg_color/fg_color/alpha' da, '%s' ez dator bat formatuarekin"
+
+#: libmetacity/meta-color-spec.c:376
+#, c-format
+msgid "Could not parse alpha value '%s' in blended color"
+msgstr "Ezin da analizatu '%s' alfa balioa kolore nahastuan"
+
+#: libmetacity/meta-color-spec.c:385
+#, c-format
+msgid "Alpha value '%s' in blended color is not between 0.0 and 1.0"
+msgstr "Kolore nahastuko '%s' alfa balioa ez dago 0,0 eta 1,0 artean"
+
+#: libmetacity/meta-color-spec.c:428
+#, c-format
+msgid "Shade format is 'shade/base_color/factor', '%s' does not fit the format"
+msgstr "Itzal-faktorea 'shade/base_color/factor' da, '%s' ez dator bat formatuarekin"
+
+#: libmetacity/meta-color-spec.c:438
+#, c-format
+msgid "Could not parse shade factor '%s' in shaded color"
+msgstr "Ezin da analizatu '%s' itzala faktorea itzala duen kolorean"
+
+#: libmetacity/meta-color-spec.c:447
+#, c-format
+msgid "Shade factor '%s' in shaded color is negative"
+msgstr "Itzala duen kolorean '%s' itzal-faktorea negatiboa da"
+
+#: libmetacity/meta-color-spec.c:473
+#, c-format
+msgid "Could not parse color '%s'"
+msgstr "Ezin izan da kolorea analizatu: '%s'"
+
+#: libmetacity/meta-draw-spec.c:201
+#, c-format
+msgid "Coordinate expression contains character '%s' which is not allowed"
+msgstr "Koordenatuen adierazpenak '%s' karakterea dauka, eta hori ez da onartzen"
+
+#: libmetacity/meta-draw-spec.c:228
+#, c-format
+msgid ""
+"Coordinate expression contains floating point number '%s' which could not be "
+"parsed"
+msgstr "Koordenatuen adierazpenak '%s' koma mugikorreko zenbakia dauka, eta ezin da analizatu"
+
+#: libmetacity/meta-draw-spec.c:241
+#, c-format
+msgid "Coordinate expression contains integer '%s' which could not be parsed"
+msgstr "Koordenatuen adierazpenak '%s' osoko zenbakia dauka, eta ezin da analizatu"
+
+#: libmetacity/meta-draw-spec.c:368
+#, c-format
+msgid ""
+"Coordinate expression contained unknown operator at the start of this text: "
+"\"%s\""
+msgstr "Koordenatuen adierazpenak eragile ezezaguna dauka testu honen hasieran: \"%s\""
+
+#: libmetacity/meta-draw-spec.c:424
+msgid "Coordinate expression was empty or not understood"
+msgstr "Koordenatuen adierazpena hutsik dago edo ez da ulertu"
+
+#: libmetacity/meta-draw-spec.c:586
+#, c-format
+msgid "Coordinate expression had unknown variable or constant '%s'"
+msgstr "Koordenatuen adierazpenak aldagai edo konstante ezezaguna du '%s'"
+
+#: libmetacity/meta-draw-spec.c:631 libmetacity/meta-draw-spec.c:641
+#: libmetacity/meta-draw-spec.c:676 libmetacity/meta-draw-spec.c:686
+msgid "Coordinate expression results in division by zero"
+msgstr "Koordenatuen adierazpenak zero zatitzaileko zatiketa ematen du"
+
+#: libmetacity/meta-draw-spec.c:775
+#, c-format
+msgid ""
+"Coordinate expression has an operator \"%s\" where an operand was expected"
+msgstr "Koordenatuen adierazpenak \"%s\" eragilea du eragigai bat espero zen lekuan"
+
+#: libmetacity/meta-draw-spec.c:784
+msgid "Coordinate expression had an operand where an operator was expected"
+msgstr "Koordenatuen adierazpenak eragigai bat du eragile bat espero zen lekuan"
+
+#: libmetacity/meta-draw-spec.c:792
+msgid "Coordinate expression ended with an operator instead of an operand"
+msgstr "Koordenatuen adierazpena eragile batez amaitzen da, eragigai batez amaitu beharrean"
+
+#: libmetacity/meta-draw-spec.c:802
+#, c-format
+msgid ""
+"Coordinate expression has operator \"%c\" following operator \"%c\" with no "
+"operand in between"
+msgstr "Koordenatuen adierazpenak \"%c\" eragilea du \"%c\" eragilearen ondoren, tartean eragigairik gabe"
+
+#: libmetacity/meta-draw-spec.c:934
+msgid "Coordinate expression parser overflowed its buffer."
+msgstr "Koordenatuen adierazpenaren analizatzaileak bere bufferra gainezkatu du"
+
+#: libmetacity/meta-draw-spec.c:964
+msgid "Coordinate expression had a close parenthesis with no open parenthesis"
+msgstr "Koordenatuen adierazpenak ixteko parentesi bat du, baina irekitzekoa falta da"
+
+#: libmetacity/meta-draw-spec.c:1037
+msgid "Coordinate expression had an open parenthesis with no close parenthesis"
+msgstr "Koordenatuen adierazpenak irekitzeko parentesi bat du, baina ixtekoa falta da"
+
+#: libmetacity/meta-draw-spec.c:1047
+msgid "Coordinate expression doesn't seem to have any operators or operands"
+msgstr "Koordenatuen adierazpenak ez dirudi eragilerik edo eragigairik duenik"
+
+#: libmetacity/meta-draw-spec.c:1239 libmetacity/meta-draw-spec.c:1259
+#: libmetacity/meta-draw-spec.c:1279
+#, c-format
+msgid "Theme contained an expression that resulted in an error: %s"
+msgstr "Gaiak errorea ematen duen adierazpen bat dauka: %s"
+
+#: libmetacity/meta-frame-layout.c:47
+msgid "top"
+msgstr "goian"
+
+#: libmetacity/meta-frame-layout.c:49
+msgid "bottom"
+msgstr "behean"
+
+#: libmetacity/meta-frame-layout.c:51
+msgid "left"
+msgstr "ezkerrera"
+
+#: libmetacity/meta-frame-layout.c:53
+msgid "right"
+msgstr "eskuinera"
+
+#: libmetacity/meta-frame-layout.c:78
+#, c-format
+msgid "frame geometry does not specify '%s' dimension"
+msgstr "marko-geometriak ez du zehazten '%s' neurririk"
+
+#: libmetacity/meta-frame-layout.c:97
+#, c-format
+msgid "frame geometry does not specify dimension '%s' for border '%s'"
+msgstr "marko-geometriak ez du '%s' neurririk zehazten ertz honetarako: '%s'"
+
+#: libmetacity/meta-frame-layout.c:233
+#, c-format
+msgid "Button aspect ratio %g is not reasonable"
+msgstr "Botoiaren %g aspektu-erlazioa ez da arrazoizkoa"
+
+#: libmetacity/meta-frame-layout.c:251
+msgid "Frame geometry does not specify size of buttons"
+msgstr "Marko-geometriak ez du zehazten botoien tamainarik"
+
+#. Translators: This error occurs when a <frame> tag is missing
+#. * in theme XML.  The "<frame ...>" is intended as a noun phrase,
+#. * and the "missing" qualifies it.  You should translate "whatever".
+#.
+#: libmetacity/meta-frame-style.c:144 libmetacity/meta-frame-style.c:469
+#, c-format
+msgid "Missing <frame state='%s' resize='%s' focus='%s' style='whatever' />"
+msgstr "<frame state='%s' resize='%s' focus='%s' style=\"whatever\"/> falta da"
+
+#: libmetacity/meta-frame-style.c:326
+#, c-format
+msgid ""
+"<button function='%s' state='%s' draw_ops='whatever'/> must be specified for "
+"this frame style"
+msgstr "<button function='%s' state='%s' draw_ops=\"whatever\"/> zehaztu behar da marko-estilo honetan"
+
+#: libmetacity/meta-gradient-spec.c:182
+msgid "Gradients should have at least two colors"
+msgstr "Gradienteek bi kolore izan behar dituzte gutxienez"
+
+#: libmetacity/meta-theme-impl.c:41
+#, c-format
+msgid "MetaThemeImplClass::load not implemented for '%s'"
+msgstr "MetaThemeImplClass: kargatzea ez da inplementatu honetarako '%s'"
+
+#. Translators: This means that an attribute which should have been found
+#. * on an XML element was not in fact found.
+#.
+#: libmetacity/meta-theme-metacity.c:51
+#, c-format
+msgid "No '%s' attribute on element <%s>"
+msgstr "Ez dago '%s' atributurik <%s> elementuan"
+
+#: libmetacity/meta-theme-metacity.c:305 libmetacity/meta-theme-metacity.c:324
+#, c-format
+msgid "Line %d character %d: %s"
+msgstr "%d. lerroa %d. karakterea: %s"
+
+#: libmetacity/meta-theme-metacity.c:364
+#, c-format
+msgid "Could not parse '%s' as an integer"
+msgstr "Ezin da '%s' analizatu osoko gisa"
+
+#: libmetacity/meta-theme-metacity.c:372 libmetacity/meta-theme-metacity.c:589
+#, c-format
+msgid "Did not understand trailing characters '%s' in string '%s'"
+msgstr "Ez dira ulertzen amaierako '%s' karaktereak kate honetan '%s'"
+
+#: libmetacity/meta-theme-metacity.c:381
+#, c-format
+msgid "Integer %ld must be positive"
+msgstr "%ld osokoak positiboa izan behar du"
+
+#: libmetacity/meta-theme-metacity.c:388
+#, c-format
+msgid "Integer %ld is too large, current max is %d"
+msgstr "%ld osokoa handiegia da, uneko gehienezkoa %d da"
+
+#: libmetacity/meta-theme-metacity.c:490
+#, c-format
+msgid "Attribute '%s' repeated twice on the same <%s> element"
+msgstr "'%s' atributua birritan errepikatuta <%s> elementu berean"
+
+#: libmetacity/meta-theme-metacity.c:512 libmetacity/meta-theme-metacity.c:556
+#, c-format
+msgid "Attribute '%s' is invalid on <%s> element in this context"
+msgstr "'%s' atributua ez da baliozkoa <%s> elementuaren testuinguru honetan"
+
+#: libmetacity/meta-theme-metacity.c:581 libmetacity/meta-theme-metacity.c:619
+#, c-format
+msgid "Could not parse '%s' as a floating point number"
+msgstr "'%s' ezin da analizatu koma mugikorreko zenbaki gisa"
+
+#: libmetacity/meta-theme-metacity.c:651
+#, c-format
+msgid "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g"
+msgstr "Alfak 0,0 (ikusezina) eta 1,0 (erabat opakoa) artekoa izan behar du, %g zen"
+
+#: libmetacity/meta-theme-metacity.c:697
+#, c-format
+msgid ""
+"Invalid title scale '%s' (must be one of xx-small,x-small,small,medium,large,"
+"x-large,xx-large)\n"
+msgstr "'%s' titulu-eskala baliogabea (xx-small,x-small,small,medium,large,x-large,xx-large izan behar du)\n"
+
+#: libmetacity/meta-theme-metacity.c:726 libmetacity/meta-theme-metacity.c:754
+#, c-format
+msgid "Boolean values must be 'true' or 'false' not '%s'"
+msgstr "Balio boolearrak 'egiazkoak' edo 'faltsuak' izan daitezke, ez '%s'"
+
+#: libmetacity/meta-theme-metacity.c:783 libmetacity/meta-theme-metacity.c:820
+#: libmetacity/meta-theme-metacity.c:858
+#, c-format
+msgid "User-defined constants must begin with a capital letter; '%s' does not"
+msgstr "Erabiltzaileak definitutako konstanteak maiuskulaz hasi behar du; '%s' ez da maiuskulaz hasten"
+
+#: libmetacity/meta-theme-metacity.c:792 libmetacity/meta-theme-metacity.c:829
+#: libmetacity/meta-theme-metacity.c:867
+#, c-format
+msgid "Constant '%s' has already been defined"
+msgstr "'%s' konstantea lehendik definituta dago"
+
+#: libmetacity/meta-theme-metacity.c:1074
+#: libmetacity/meta-theme-metacity.c:1171
+#: libmetacity/meta-theme-metacity.c:1273
+#, c-format
+msgid "<%s> name \"%s\" used a second time"
+msgstr "<%s> \"%s\" izena bigarren aldiz erabili da"
+
+#: libmetacity/meta-theme-metacity.c:1086
+#, c-format
+msgid "<%s> parent \"%s\" has not been defined"
+msgstr "<%s> \"%s\" gurasoa ez da definitu"
+
+#: libmetacity/meta-theme-metacity.c:1137
+#, c-format
+msgid "<%s> name '%s' used a second time"
+msgstr "<%s> '%s' izena bigarren aldiz erabili da"
+
+#: libmetacity/meta-theme-metacity.c:1183
+#: libmetacity/meta-theme-metacity.c:1285
+#, c-format
+msgid "<%s> parent '%s' has not been defined"
+msgstr "<%s> '%s' gurasoa ez da definitu"
+
+#: libmetacity/meta-theme-metacity.c:1196
+#, c-format
+msgid "<%s> geometry '%s' has not been defined"
+msgstr "<%s> '%s' geometria ez da definitu"
+
+#: libmetacity/meta-theme-metacity.c:1209
+#, c-format
+msgid "<%s> must specify either a geometry or a parent that has a geometry"
+msgstr "<%s>(e)k geometria bat edo geometria duen guraso bat zehaztu behar du"
+
+#: libmetacity/meta-theme-metacity.c:1250
+msgid "You must specify a background for an alpha value to be meaningful"
+msgstr "Atzeko planoa zehaztu alfa balioarekin esanguratsua izateko"
+
+#: libmetacity/meta-theme-metacity.c:1318
+#, c-format
+msgid "Unknown type '%s' on <%s> element"
+msgstr "'%s' mota ezezaguna <%s> elementuan"
+
+#: libmetacity/meta-theme-metacity.c:1327
+#, c-format
+msgid "Unknown style_set '%s' on <%s> element"
+msgstr "'%s' style_set ezezaguna <%s> elementuan"
+
+#: libmetacity/meta-theme-metacity.c:1335
+#, c-format
+msgid "Window type '%s' has already been assigned a style set"
+msgstr "'%s' leiho motak dagoeneko esleituta du estilo-multzoa"
+
+#: libmetacity/meta-theme-metacity.c:1364
+#: libmetacity/meta-theme-metacity.c:1428
+#: libmetacity/meta-theme-metacity.c:1654
+#: libmetacity/meta-theme-metacity.c:2808
+#: libmetacity/meta-theme-metacity.c:2854
+#: libmetacity/meta-theme-metacity.c:3094
+#: libmetacity/meta-theme-metacity.c:3130
+#: libmetacity/meta-theme-metacity.c:3166
+#: libmetacity/meta-theme-metacity.c:3202
+#: libmetacity/meta-theme-metacity.c:3499
+#, c-format
+msgid "Element <%s> is not allowed below <%s>"
+msgstr "Ez da onartzen <%s> elementua <%s>(r)en azpian jartzea"
+
+#: libmetacity/meta-theme-metacity.c:1464
+#: libmetacity/meta-theme-metacity.c:1590
+#: libmetacity/meta-theme-metacity.c:1604
+msgid ""
+"Cannot specify both 'button_width'/'button_height' and 'aspect_ratio' for "
+"buttons"
+msgstr "'button_width\"/\"button_height' (botoi-zabalera/botoi-altuera) eta 'aspect_ratio' (aspektu-erlazioa) ezin dira batera zehaztu botoietan"
+
+#: libmetacity/meta-theme-metacity.c:1473
+#, c-format
+msgid "Aspect ratio '%s' is unknown"
+msgstr "'%s' aspektu-erlazioa ezezaguna da"
+
+#: libmetacity/meta-theme-metacity.c:1535
+#, c-format
+msgid "Border '%s' is unknown"
+msgstr "'%s' ertza ezezaguna da"
+
+#: libmetacity/meta-theme-metacity.c:1613
+#, c-format
+msgid "Distance '%s' is unknown"
+msgstr "'%s' distantzia ezezaguna da"
+
+#: libmetacity/meta-theme-metacity.c:1824
+#, c-format
+msgid "Angle must be between 0.0 and 360.0, was %g\n"
+msgstr "Angeluak 0.0 eta 360.0 bitartekoa behar du, %g\n"
+
+#: libmetacity/meta-theme-metacity.c:2013
+#, c-format
+msgid "No \"start_angle\" or \"from\" attribute on element <%s>"
+msgstr "Ez dago \"start_angle\" edo \"from\" atributurik <%s> elementuan"
+
+#: libmetacity/meta-theme-metacity.c:2020
+#, c-format
+msgid "No \"extent_angle\" or \"to\" attribute on element <%s>"
+msgstr "Ez dago \"extent_angle\" edo \"to\" atributurik <%s> elementuan"
+
+#: libmetacity/meta-theme-metacity.c:2206
+#, c-format
+msgid "Did not understand value \"%s\" for type of gradient"
+msgstr "Gradiente-motan ez da ulertu \"%s\" balioa"
+
+#: libmetacity/meta-theme-metacity.c:2271
+#: libmetacity/meta-theme-metacity.c:2593
+#, c-format
+msgid "Did not understand fill type \"%s\" for <%s> element"
+msgstr "Ez da ulertu \"%s\" betetze-mota <%s> elementuan"
+
+#: libmetacity/meta-theme-metacity.c:2424
+#: libmetacity/meta-theme-metacity.c:2493
+#: libmetacity/meta-theme-metacity.c:2544
+#, c-format
+msgid "Did not understand state \"%s\" for <%s> element"
+msgstr "Ez da ulertu \"%s\" egoera <%s> elementuan"
+
+#: libmetacity/meta-theme-metacity.c:2434
+#: libmetacity/meta-theme-metacity.c:2503
+#, c-format
+msgid "Did not understand shadow \"%s\" for <%s> element"
+msgstr "Ez da ulertu \"%s\" itzala <%s> elementuan"
+
+#: libmetacity/meta-theme-metacity.c:2444
+#, c-format
+msgid "Did not understand arrow \"%s\" for <%s> element"
+msgstr "Ez da ulertu \"%s\" gezia <%s> elementuan"
+
+#: libmetacity/meta-theme-metacity.c:2693
+#: libmetacity/meta-theme-metacity.c:2760
+#, c-format
+msgid "No <draw_ops> called \"%s\" has been defined"
+msgstr "Ez da \"%s\" izeneko <draw_ops> bat ere definitu"
+
+#: libmetacity/meta-theme-metacity.c:2705
+#: libmetacity/meta-theme-metacity.c:2772
+#, c-format
+msgid "Including draw_ops \"%s\" here would create a circular reference"
+msgstr "Hemen \"%s\" draw_ops sartzen bada, erreferentzia zirkularra sortuko da"
+
+#: libmetacity/meta-theme-metacity.c:2981
+#, c-format
+msgid "Unknown position \"%s\" for frame piece"
+msgstr "\"%s\" kokaleku ezezaguna markoarentzat"
+
+#: libmetacity/meta-theme-metacity.c:2989
+#, c-format
+msgid "Frame style already has a piece at position %s"
+msgstr "Marko-estiloak badu zati bat %s posizioan"
+
+#: libmetacity/meta-theme-metacity.c:3005
+#, c-format
+msgid "No <draw_ops> with the name \"%s\" has been defined"
+msgstr "Ez da \"%s\" izeneko <draw_ops> bat ere definitu"
+
+#: libmetacity/meta-theme-metacity.c:3036
+#, c-format
+msgid "Unknown function \"%s\" for button"
+msgstr "\"%s\" funtzioa ezezaguna botoiarentzat"
+
+#: libmetacity/meta-theme-metacity.c:3047
+#, c-format
+msgid "Button function '%s' does not exist in this version (%d, need %d)"
+msgstr "'%s' botoi-funtzioa ez da existitzen bertsio honetan (%d, %d behar du)"
+
+#: libmetacity/meta-theme-metacity.c:3056
+#, c-format
+msgid "Unknown state '%s' for button"
+msgstr "'%s' egoera ezezaguna botoiarentzat"
+
+#: libmetacity/meta-theme-metacity.c:3063
+#, c-format
+msgid "Frame style already has a button for function %s state %s"
+msgstr "Marko-estiloak badu botoi bat %s funtzioan %s egoeran"
+
+#: libmetacity/meta-theme-metacity.c:3080
+#, c-format
+msgid "No <draw_ops> with the name '%s' has been defined"
+msgstr "Ez da '%s' izeneko <draw_ops> bat ere definitu"
+
+#: libmetacity/meta-theme-metacity.c:3114
+msgid ""
+"Can't have a two draw_ops for a <piece> element (theme specified a draw_ops "
+"attribute and also a <draw_ops> element, or specified two elements)"
+msgstr "Ezin dira bi draw_ops izan <piece> elementu batean (gaiak draw_ops atributu bat eta <draw_ops> elementu bat zehaztu ditu, edo bi elementu zehaztu ditu)"
+
+#: libmetacity/meta-theme-metacity.c:3150
+msgid ""
+"Can't have a two draw_ops for a <button> element (theme specified a draw_ops "
+"attribute and also a <draw_ops> element, or specified two elements)"
+msgstr "Ezin dira bi draw_ops izan <button> elementu batean (gaiak draw_ops atributu bat eta <draw_ops> elementu bat zehaztu ditu, edo bi elementu zehaztu ditu)"
+
+#: libmetacity/meta-theme-metacity.c:3186
+msgid ""
+"Can't have a two draw_ops for a <menu_icon> element (theme specified a "
+"draw_ops attribute and also a <draw_ops> element, or specified two elements)"
+msgstr "Ezin dira bi draw_ops izan <menu_icon> elementu batean (gaiak draw_ops atributu bat eta <draw_ops> elementu bat zehaztu ditu, edo bi elementu zehaztu ditu)"
+
+#: libmetacity/meta-theme-metacity.c:3290
+#, c-format
+msgid "'%s' is not a valid value for focus attribute"
+msgstr "'%s' ez da baliozko balioa foku-atributuarentzat"
+
+#: libmetacity/meta-theme-metacity.c:3299
+#, c-format
+msgid "'%s' is not a valid value for state attribute"
+msgstr "'%s' ez da baliozko balioa egoera-atributuarentzat"
+
+#: libmetacity/meta-theme-metacity.c:3308
+#, c-format
+msgid "A style called '%s' has not been defined"
+msgstr "'%s' izeneko estiloa ez da definitu"
+
+#: libmetacity/meta-theme-metacity.c:3326
+#: libmetacity/meta-theme-metacity.c:3349
+#, c-format
+msgid "'%s' is not a valid value for resize attribute"
+msgstr "'%s' ez da baliozko balioa tamainaz aldatzeko atributuarentzat"
+
+#: libmetacity/meta-theme-metacity.c:3360
+#, c-format
+msgid ""
+"Should not have 'resize' attribute on <%s> element for maximized/shaded "
+"states"
+msgstr "Ez luke izan behar 'resize' atributurik <%s> elementuan maximizatutako/bildutako egoerentzat"
+
+#: libmetacity/meta-theme-metacity.c:3381
+#, c-format
+msgid "Should not have 'resize' attribute on <%s> element for maximized states"
+msgstr "Ez luke izan behar 'resize' atributurik <%s> elementuan maximizatutako egoerentzat"
+
+#: libmetacity/meta-theme-metacity.c:3396
+#: libmetacity/meta-theme-metacity.c:3444
+#, c-format
+msgid "Style has already been specified for state %s resize %s focus %s"
+msgstr "Estiloa dagoeneko zehaztu da %s egoeran %s tamaina-aldatzean %s fokuan"
+
+#: libmetacity/meta-theme-metacity.c:3408
+#: libmetacity/meta-theme-metacity.c:3420
+#: libmetacity/meta-theme-metacity.c:3432
+#: libmetacity/meta-theme-metacity.c:3456
+#: libmetacity/meta-theme-metacity.c:3468
+#: libmetacity/meta-theme-metacity.c:3480
+#, c-format
+msgid "Style has already been specified for state %s focus %s"
+msgstr "Estiloa dagoeneko zehaztu da %s egoeran %s fokuan"
+
+#: libmetacity/meta-theme-metacity.c:3546
+#, c-format
+msgid "Bad version specification '%s'"
+msgstr "Bertsioaren zehaztapen okerra: '%s'"
+
+#: libmetacity/meta-theme-metacity.c:3617
+msgid ""
+"'version' attribute cannot be used in metacity-theme-1.xml or metacity-"
+"theme-2.xml"
+msgstr "'version' atributua ezin da erabili metacity-theme-1.xml edo metacity-theme-2.xml fitxategietan."
+
+#: libmetacity/meta-theme-metacity.c:3640
+#, c-format
+msgid "Theme requires version %s but latest supported theme version is %d.%d"
+msgstr "Gaiak %s bertsioa eskatzen du baina onartutako gaiaren azken bertsioa %d da. %d"
+
+#: libmetacity/meta-theme-metacity.c:3664
+#, c-format
+msgid "Outermost element in theme must be <metacity_theme> not <%s>"
+msgstr "Gaian kanporen dagoen elementuak <metacity_theme> izan behar du, ez <%s>"
+
+#: libmetacity/meta-theme-metacity.c:3684
+#, c-format
+msgid ""
+"Element <%s> is not allowed inside a name/author/date/description element"
+msgstr "<%s> elementua ez da onartzen name/author/date/description elementuan"
+
+#: libmetacity/meta-theme-metacity.c:3690
+#, c-format
+msgid "Element <%s> is not allowed inside a <constant> element"
+msgstr "<%s> elementua ez da onartzen <constant> elementuaren barnean"
+
+#: libmetacity/meta-theme-metacity.c:3703
+#, c-format
+msgid ""
+"Element <%s> is not allowed inside a distance/border/aspect_ratio element"
+msgstr "<%s> elementua ez da onartzen distance/border/aspect_ratio elementuan"
+
+#: libmetacity/meta-theme-metacity.c:3726
+#, c-format
+msgid "Element <%s> is not allowed inside a draw operation element"
+msgstr "<%s> elementua ez da onartzen marrazteko eragiketaren elementuaren barnean"
+
+#: libmetacity/meta-theme-metacity.c:3737
+#: libmetacity/meta-theme-metacity.c:3768
+#: libmetacity/meta-theme-metacity.c:3774
+#: libmetacity/meta-theme-metacity.c:3780
+#, c-format
+msgid "Element <%s> is not allowed inside a <%s> element"
+msgstr "<%s> elementua ez da onartzen <%s> elementuaren barnean"
+
+#. Translators: This error means that a necessary XML tag (whose name
+#. * is given in angle brackets) was not found in a given theme (whose
+#. * name is given second, in quotation marks).
+#.
+#: libmetacity/meta-theme-metacity.c:3834
+#: libmetacity/meta-theme-metacity.c:3842
+#: libmetacity/meta-theme-metacity.c:3850
+#: libmetacity/meta-theme-metacity.c:3858
+#: libmetacity/meta-theme-metacity.c:3867
+#, c-format
+msgid "No <%s> set for theme '%s'"
+msgstr "<%s> ez da ezarri '%s' gaian"
+
+#: libmetacity/meta-theme-metacity.c:3878
+#, c-format
+msgid ""
+"No frame style set for window type '%s' in theme '%s', add a <window "
+"type='%s' style_set='whatever' /> element"
+msgstr "Ez da marko-estilorik ezarri set '%s' leiho motarentzat '%s' gaian, gehitu <window type='%s' style_set='whatever'/> elementu bat"
+
+#: libmetacity/meta-theme-metacity.c:4141
+msgid "No draw_ops provided for frame piece"
+msgstr "Ez da draw_ops-ik eman marko-zatiarentzat"
+
+#: libmetacity/meta-theme-metacity.c:4157
+msgid "No draw_ops provided for button"
+msgstr "Ez da draw_ops-ik eman botoiarentzat"
+
+#: libmetacity/meta-theme-metacity.c:4272
+#: libmetacity/meta-theme-metacity.c:4283
+#: libmetacity/meta-theme-metacity.c:4294
+#: libmetacity/meta-theme-metacity.c:4305
+#: libmetacity/meta-theme-metacity.c:4316
+#, c-format
+msgid "<%s> specified twice for this theme"
+msgstr "<%s> birritan zehaztu da gai honetan"
+
+#: libmetacity/meta-theme-metacity.c:4355
+#, c-format
+msgid "No text is allowed inside element <%s>"
+msgstr "Ez da testurik onartzen <%s> elementuaren barnean"
+
+#: libmetacity/meta-theme-metacity.c:4621
+#, c-format
+msgid "Failed to find a valid file for theme '%s'"
+msgstr "Huts egin du fitxategi egokia bilatzean gai honetan:  '%s'"
+
+#: src/core/bell.c:279
+msgid "Bell event"
+msgstr "Soinuaren gertaera"
+
+#. Translators: %s is a window title
+#: src/core/delete.c:94
+#, c-format
+msgid "<tt>%s</tt> is not responding."
+msgstr "<tt>%s</tt>(e)k ez du erantzuten."
+
+#: src/core/delete.c:99
+msgid ""
+"You may choose to wait a short while for it to continue or force the "
+"application to quit entirely."
+msgstr "Pixka bat itxoitearen edo aplikazioa irtetera derrigortzearen artean aukera dezakezu."
+
+#: src/core/delete.c:108
+msgid "_Wait"
+msgstr "_Itxaron"
+
+#: src/core/delete.c:108
+msgid "_Force Quit"
+msgstr "_Behartu ixtera"
+
+#: src/core/main.c:101
+#, c-format
+msgid ""
+"metacity %s\n"
+"Copyright (C) 2001-%s Havoc Pennington, Red Hat, Inc., and others\n"
+"This is free software; see the source for copying conditions.\n"
+"There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A "
+"PARTICULAR PURPOSE.\n"
+msgstr "metacity %s\n"
+"Copyright-a (C) 2001-%s Havoc Pennington, Red Hat, Inc., eta beste batzuk\n"
+"Hau software librea da; ikus kopiatzeko baldintzak iturburu-kodean.\n"
+"EZ du bermerik; ezta MERKATURATZEKO edo XEDE JAKIN BATERAKO EGOKITASUNAREN BERMERIK ERE.\n"
+
+#: src/core/main.c:205
+msgid "Disable connection to session manager"
+msgstr "Desgaitu saio-kudeatzailearen konexioa"
+
+#: src/core/main.c:211
+msgid "Replace the running window manager with Metacity"
+msgstr "Ordeztu exekutatzen dagoen leiho-kudeatzailea Metacity-rekin"
+
+#: src/core/main.c:217
+msgid "Specify session management ID"
+msgstr "Zehaztu saio-kudeatzailearen IDa"
+
+#: src/core/main.c:222
+msgid "X Display to use"
+msgstr "X pantaila erabiltzeko"
+
+#: src/core/main.c:228
+msgid "Initialize session from savefile"
+msgstr "Hasieratu saioa babes-fitxategitik"
+
+#: src/core/main.c:234
+msgid "Print version"
+msgstr "Bistaratu bertsioa"
+
+#: src/core/main.c:240
+msgid "Make X calls synchronous"
+msgstr "Bihurtu X dei sinkroniko"
+
+#: src/core/main.c:246
+msgid "Turn compositing on"
+msgstr "Aktibatu konposaketa"
+
+#: src/core/main.c:252
+msgid "Turn compositing off"
+msgstr "Desaktibatu konposaketa"
+
+#: src/core/main.c:258
+msgid ""
+"Don't make fullscreen windows that are maximized and have no decorations"
+msgstr "Ez jarri pantaila osoko leihoak maximizatuta badaude eta dekoraziorik ez badute"
+
+#: src/core/prefs.c:1421
+#, c-format
+msgid "Workspace %d"
+msgstr "%d. laneko area"
+
+#: src/core/session.c:1210
+msgid "<metacity_session> attribute seen but we already have the session ID"
+msgstr "<metacity_session> atributua ikusi da baina dagoeneko badugu saio-IDa"
+
+#: src/core/session.c:1223 src/core/session.c:1298 src/core/session.c:1330
+#: src/core/session.c:1402 src/core/session.c:1462
+#, c-format
+msgid "Unknown attribute %s on <%s> element"
+msgstr "%s atributu ezezaguna <%s> elementuan"
+
+#: src/core/session.c:1240
+msgid "nested <window> tag"
+msgstr "<window> etiketa habiaratua"
+
+#: src/core/session.c:1482
+#, c-format
+msgid "Unknown element %s"
+msgstr "%s elementu ezezaguna"
+
+#: src/core/session.c:1838
+msgid ""
+"These windows do not support &quot;save current setup&quot; and will have to "
+"be restarted manually next time you log in."
+msgstr "Leiho hauek ez dute onartzen &quot;gorde uneko konfigurazioa&quot; eta eskuz berrabiarazi beharko dituzu hurrengo saioa hasten duzunean."
+
+#: src/core/util.c:105
+#, c-format
+msgid "Opened log file %s\n"
+msgstr "%s egunkari-fitxategia irekita\n"
+
+#. Translators: the title of a window from another machine
+#: src/core/window-props.c:570
+#, c-format
+msgid "%s (on %s)"
+msgstr "%s (%s)"
+
+#. Simple case-- don't bother to look it up.  It's root.
+#: src/core/window-props.c:602
+#, c-format
+msgid "%s (as superuser)"
+msgstr "%s (supererabiltzaile gisa)"
+
+#. Translators: the title of a window owned by another user
+#. * on this machine
+#: src/core/window-props.c:620
+#, c-format
+msgid "%s (as %s)"
+msgstr "%s (%s gisa)"
+
+#. Translators: the title of a window owned by another user
+#. * on this machine, whose name we don't know
+#: src/core/window-props.c:626
+#, c-format
+msgid "%s (as another user)"
+msgstr "%s (beste erabiltzaile bat gisa)"
+
+#: src/tools/metacity-message.c:174
 #, c-format
 msgid "Usage: %s\n"
 msgstr "Erabilera: %s\n"
 
-#: ../src/ui/frames.c:1096
+#: src/ui/frames.c:1315
 msgid "Close Window"
 msgstr "Itxi leihoa"
 
-#: ../src/ui/frames.c:1099
+#: src/ui/frames.c:1318
 msgid "Window Menu"
 msgstr "Leiho-menua"
 
-#: ../src/ui/frames.c:1102
+#: src/ui/frames.c:1321
+msgid "Window App Menu"
+msgstr "Leiho-menua"
+
+#: src/ui/frames.c:1324
 msgid "Minimize Window"
 msgstr "Minimizatu leihoa"
 
-#: ../src/ui/frames.c:1105
+#: src/ui/frames.c:1327
 msgid "Maximize Window"
 msgstr "Maximizatu leihoa"
 
-#: ../src/ui/frames.c:1108
+#: src/ui/frames.c:1330
 msgid "Restore Window"
 msgstr "Leheneratu leihoa"
 
-#: ../src/ui/frames.c:1111
+#: src/ui/frames.c:1333
 msgid "Roll Up Window"
 msgstr "Bildu leihoa"
 
-#: ../src/ui/frames.c:1114
+#: src/ui/frames.c:1336
 msgid "Unroll Window"
 msgstr "Zabaldu leihoa"
 
-#: ../src/ui/frames.c:1117
+#: src/ui/frames.c:1339
 msgid "Keep Window On Top"
 msgstr "Mantendu leihoa gainean"
 
-#: ../src/ui/frames.c:1120
+#: src/ui/frames.c:1342
 msgid "Remove Window From Top"
 msgstr "Kendu leihoa gainetik"
 
-#: ../src/ui/frames.c:1123
+#: src/ui/frames.c:1345
 msgid "Always On Visible Workspace"
 msgstr "Beti laneko area ikusgaian"
 
-#: ../src/ui/frames.c:1126
+#: src/ui/frames.c:1348
 msgid "Put Window On Only One Workspace"
 msgstr "Jarri leihoa laneko area bakar batean"
 
 #. Translators: Translate this string the same way as you do in libwnck!
-#: ../src/ui/menu.c:66
+#: src/ui/menu.c:65
 msgid "Mi_nimize"
 msgstr "M_inimizatu"
 
 #. Translators: Translate this string the same way as you do in libwnck!
-#: ../src/ui/menu.c:68
+#: src/ui/menu.c:67
 msgid "Ma_ximize"
-msgstr "_Maximizatu"
+msgstr "M_aximizatu"
 
 #. Translators: Translate this string the same way as you do in libwnck!
-#: ../src/ui/menu.c:70
+#: src/ui/menu.c:69
 msgid "Unma_ximize"
-msgstr "Desma_ximizatu"
+msgstr "Leh_eneratu"
 
 #. Translators: Translate this string the same way as you do in libwnck!
-#: ../src/ui/menu.c:72
+#: src/ui/menu.c:71
 msgid "Roll _Up"
 msgstr "_Bildu"
 
 #. Translators: Translate this string the same way as you do in libwnck!
-#: ../src/ui/menu.c:74
+#: src/ui/menu.c:73
 msgid "_Unroll"
 msgstr "_Zabaldu"
 
 #. Translators: Translate this string the same way as you do in libwnck!
-#: ../src/ui/menu.c:76
+#: src/ui/menu.c:75
 msgid "_Move"
-msgstr "Aldatu _lekuz"
+msgstr "_Lekuz aldatu"
 
 #. Translators: Translate this string the same way as you do in libwnck!
-#: ../src/ui/menu.c:78
+#: src/ui/menu.c:77
 msgid "_Resize"
-msgstr "Aldatu _tamaina"
+msgstr "_Aldatu tamaina"
 
 #. Translators: Translate this string the same way as you do in libwnck!
-#: ../src/ui/menu.c:80
+#: src/ui/menu.c:79
 msgid "Move Titlebar On_screen"
 msgstr "Eraman titulu-barra p_antailara"
 
 #. separator
 #. Translators: Translate this string the same way as you do in libwnck!
-#: ../src/ui/menu.c:83 ../src/ui/menu.c:85
+#: src/ui/menu.c:82 src/ui/menu.c:84
 msgid "Always on _Top"
 msgstr "Beti _goian"
 
 #. Translators: Translate this string the same way as you do in libwnck!
-#: ../src/ui/menu.c:87
+#: src/ui/menu.c:86
 msgid "_Always on Visible Workspace"
 msgstr "Laneko area ikusgaian _beti"
 
 #. Translators: Translate this string the same way as you do in libwnck!
-#: ../src/ui/menu.c:89
+#: src/ui/menu.c:88
 msgid "_Only on This Workspace"
 msgstr "Laneko area _honetan bakarrik"
 
 #. Translators: Translate this string the same way as you do in libwnck!
-#: ../src/ui/menu.c:91
+#: src/ui/menu.c:90
 msgid "Move to Workspace _Left"
 msgstr "Eraman e_zkerreko laneko areara"
 
 #. Translators: Translate this string the same way as you do in libwnck!
-#: ../src/ui/menu.c:93
+#: src/ui/menu.c:92
 msgid "Move to Workspace R_ight"
 msgstr "Eraman e_skuineko laneko areara"
 
 #. Translators: Translate this string the same way as you do in libwnck!
-#: ../src/ui/menu.c:95
+#: src/ui/menu.c:94
 msgid "Move to Workspace _Up"
 msgstr "Eraman _gaineko laneko areara"
 
 #. Translators: Translate this string the same way as you do in libwnck!
-#: ../src/ui/menu.c:97
+#: src/ui/menu.c:96
 msgid "Move to Workspace _Down"
 msgstr "Eraman _azpiko laneko areara"
 
 #. separator
 #. Translators: Translate this string the same way as you do in libwnck!
-#: ../src/ui/menu.c:101
+#: src/ui/menu.c:100
 msgid "_Close"
 msgstr "It_xi"
 
-#: ../src/ui/menu.c:201
+#: src/ui/menu.c:174
 #, c-format
 msgid "Workspace %d%n"
 msgstr "%d.%n laneko area"
 
-#: ../src/ui/menu.c:211
-#, c-format
+#: src/ui/menu.c:184
 msgid "Workspace 1_0"
 msgstr "1_0 laneko area"
 
-#: ../src/ui/menu.c:213
+#: src/ui/menu.c:186
 #, c-format
 msgid "Workspace %s%d"
 msgstr "%s%d laneko area"
 
-#: ../src/ui/menu.c:384
+#: src/ui/menu.c:358
 msgid "Move to Another _Workspace"
-msgstr "Eraman beste laneko areara"
+msgstr "Aldatu beste _laneko areara"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the shift key. If the text on this key isn't typically
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:75
+#: src/ui/metaaccellabel.c:75
 msgid "Shift"
 msgstr "Maius"
 
@@ -810,16 +1350,16 @@ msgstr "Maius"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:81
+#: src/ui/metaaccellabel.c:81
 msgid "Ctrl"
-msgstr "Ktrl"
+msgstr "Ctrl"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the alt key. If the text on this key isn't typically
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:87
+#: src/ui/metaaccellabel.c:87
 msgid "Alt"
 msgstr "Alt"
 
@@ -828,7 +1368,7 @@ msgstr "Alt"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:93
+#: src/ui/metaaccellabel.c:93
 msgid "Meta"
 msgstr "Meta"
 
@@ -837,7 +1377,7 @@ msgstr "Meta"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:99
+#: src/ui/metaaccellabel.c:99
 msgid "Super"
 msgstr "Super"
 
@@ -846,7 +1386,7 @@ msgstr "Super"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:105
+#: src/ui/metaaccellabel.c:105
 msgid "Hyper"
 msgstr "Hiper"
 
@@ -855,7 +1395,7 @@ msgstr "Hiper"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:111
+#: src/ui/metaaccellabel.c:111
 msgid "Mod2"
 msgstr "Ald2"
 
@@ -864,7 +1404,7 @@ msgstr "Ald2"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:117
+#: src/ui/metaaccellabel.c:117
 msgid "Mod3"
 msgstr "Ald3"
 
@@ -873,7 +1413,7 @@ msgstr "Ald3"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:123
+#: src/ui/metaaccellabel.c:123
 msgid "Mod4"
 msgstr "Ald4"
 
@@ -882,803 +1422,316 @@ msgstr "Ald4"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../src/ui/metaaccellabel.c:129
+#: src/ui/metaaccellabel.c:129
 msgid "Mod5"
 msgstr "Ald5"
 
 #. Translators: This represents the size of a window.  The first number is
 #. * the width of the window and the second is the height.
 #.
-#: ../src/ui/resizepopup.c:111
+#: src/ui/resizepopup.c:86
 #, c-format
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: ../src/ui/theme.c:250
-msgid "top"
-msgstr "goian"
+#: src/ui/ui.c:871
+msgid "Falling back to default GTK+ theme - Adwaita"
+msgstr "Huts egin du berezko GTI+ Adwaita gaira leheneratzeak"
 
-#: ../src/ui/theme.c:252
-msgid "bottom"
-msgstr "behean"
+#: theme-viewer/theme-viewer-main.c:32
+msgid "Theme type to use (\"gtk\" or \"metacity\")"
+msgstr "Erabiliko den gai mota (\"gtk\" edo \"metacity\")"
 
-#: ../src/ui/theme.c:254
-msgid "left"
-msgstr "ezkerrean"
+#: theme-viewer/theme-viewer-main.c:32
+msgid "TYPE"
+msgstr "MOTA"
 
-#: ../src/ui/theme.c:256
-msgid "right"
-msgstr "eskuinean"
+#: theme-viewer/theme-viewer-main.c:36
+msgid "Theme name to use"
+msgstr "Erabiliko den gaiaren izena"
 
-#: ../src/ui/theme.c:283
+#: theme-viewer/theme-viewer-main.c:36
+msgid "NAME"
+msgstr "IZENA"
+
+#: theme-viewer/theme-viewer-window.c:102
 #, c-format
-msgid "frame geometry does not specify \"%s\" dimension"
-msgstr "marko-geometriak ez du zehazten \"%s\" neurririk"
+msgid "Loaded <b>%s</b> theme <b>%s</b> in <b>%f</b> seconds."
+msgstr "<b>%s</b> gaia <b>%s</b> <b>%f</b> segundotan kargatua."
 
-#: ../src/ui/theme.c:302
-#, c-format
-msgid "frame geometry does not specify dimension \"%s\" for border \"%s\""
-msgstr "marko-geometriak ez du zehazten \"%s\" neurririk \"%s\" ertzerako"
-
-#: ../src/ui/theme.c:339
-#, c-format
-msgid "Button aspect ratio %g is not reasonable"
-msgstr "Botoiaren %g aspektu-erlazioa ez da arrazoizkoa"
-
-#: ../src/ui/theme.c:351
-#, c-format
-msgid "Frame geometry does not specify size of buttons"
-msgstr "Marko-geometriak ez du zehazten botoien tamainarik"
-
-#: ../src/ui/theme.c:1051
-#, c-format
-msgid "Gradients should have at least two colors"
-msgstr "Gradienteek bi kolore izan behar dituzte gutxienez"
-
-#: ../src/ui/theme.c:1222
+#: theme-viewer/theme-viewer-window.c:132
 #, c-format
 msgid ""
-"GTK color specification must have the state in brackets, e.g. gtk:fg[NORMAL] "
-"where NORMAL is the state; could not parse \"%s\""
-msgstr ""
-"GTK kolore-zehaztapenak egoera kortxete artean izan behar du, adib. gtk:fg"
-"[NORMAL], NORMAL egoera izanik; \"%s\" ezin da analizatu"
+"Got MetaFrameBorders in <b>%f</b> seconds (CSS loading, PangoFontDescription "
+"creation and title height calculation)."
+msgstr "Lortu MetaFrameBorder-ak  <b>%f</b> segundotan (CSS-a kargatzen, PangoFontDescription sortzea and tituluaren alturera kalkulatzea)."
 
-#: ../src/ui/theme.c:1236
+#: theme-viewer/theme-viewer-window.c:207
 #, c-format
 msgid ""
-"GTK color specification must have a close bracket after the state, e.g. gtk:"
-"fg[NORMAL] where NORMAL is the state; could not parse \"%s\""
-msgstr ""
-"GTK kolore-zehaztapenak ixteko kortxetea izan behar egoeraren ondoren, adib. "
-"gtk:fg[NORMAL], NORMAL egoera izanik; \"%s\" ezin da analizatu"
-
-#: ../src/ui/theme.c:1247
-#, c-format
-msgid "Did not understand state \"%s\" in color specification"
-msgstr "Ez da ulertu \"%s\" egoera kolore-zehaztapenean"
-
-#: ../src/ui/theme.c:1260
-#, c-format
-msgid "Did not understand color component \"%s\" in color specification"
-msgstr "Ez da ulertu \"%s\" kolore-osagaia kolore-zehaztapenean"
-
-#: ../src/ui/theme.c:1289
-#, c-format
-msgid ""
-"Blend format is \"blend/bg_color/fg_color/alpha\", \"%s\" does not fit the "
-"format"
-msgstr ""
-"Nahaste-formatua \"blend/bg_color/fg_color/alpha\" da, \"%s\" ez dator bat "
-"formatuarekin"
-
-#: ../src/ui/theme.c:1300
-#, c-format
-msgid "Could not parse alpha value \"%s\" in blended color"
-msgstr "Ezin da analizatu \"%s\" alfa balioa kolore nahastuan"
-
-#: ../src/ui/theme.c:1310
-#, c-format
-msgid "Alpha value \"%s\" in blended color is not between 0.0 and 1.0"
-msgstr "Kolore nahastuko \"%s\" alfa balioa ez dago 0,0 eta 1,0 artean"
-
-#: ../src/ui/theme.c:1357
-#, c-format
-msgid ""
-"Shade format is \"shade/base_color/factor\", \"%s\" does not fit the format"
-msgstr ""
-"Itzal-faktorea \"shade/base_color/factor\" da, \"%s\" ez dator bat "
-"formatuarekin"
-
-#: ../src/ui/theme.c:1368
-#, c-format
-msgid "Could not parse shade factor \"%s\" in shaded color"
-msgstr "Ezin da analizatu \"%s\" itzal-faktorea itzaldun kolorean"
-
-#: ../src/ui/theme.c:1378
-#, c-format
-msgid "Shade factor \"%s\" in shaded color is negative"
-msgstr "Itzaldun kolorean \"%s\" itzal-faktorea negatiboa da"
-
-#: ../src/ui/theme.c:1407
-#, c-format
-msgid "Could not parse color \"%s\""
-msgstr "Ezin izan da \"%s\" kolorea analizatu"
-
-#: ../src/ui/theme.c:1697
-#, c-format
-msgid "Coordinate expression contains character '%s' which is not allowed"
-msgstr ""
-"Koordenatuen adierazpenak '%s' karakterea dauka, eta hori ez da onartzen"
-
-#: ../src/ui/theme.c:1724
-#, c-format
-msgid ""
-"Coordinate expression contains floating point number '%s' which could not be "
-"parsed"
-msgstr ""
-"Koordenatuen adierazpenak '%s' koma mugikorreko zenbakia dauka, eta ezin da "
-"analizatu"
-
-#: ../src/ui/theme.c:1738
-#, c-format
-msgid "Coordinate expression contains integer '%s' which could not be parsed"
-msgstr ""
-"Koordenatuen adierazpenak '%s' osoko zenbakia dauka, eta ezin da analizatu"
-
-#: ../src/ui/theme.c:1860
-#, c-format
-msgid ""
-"Coordinate expression contained unknown operator at the start of this text: "
-"\"%s\""
-msgstr ""
-"Koordenatuen adierazpenak eragile ezezaguna dauka testu honen hasieran: \"%s"
-"\""
-
-#: ../src/ui/theme.c:1917
-#, c-format
-msgid "Coordinate expression was empty or not understood"
-msgstr "Koordenatuen adierazpena hutsik dago edo ez da ulertu"
-
-#: ../src/ui/theme.c:2028 ../src/ui/theme.c:2038 ../src/ui/theme.c:2072
-#, c-format
-msgid "Coordinate expression results in division by zero"
-msgstr "Koordenatuen adierazpenak zero zatitzaileko zatiketa ematen du"
-
-#: ../src/ui/theme.c:2080
-#, c-format
-msgid ""
-"Coordinate expression tries to use mod operator on a floating-point number"
-msgstr ""
-"Koordenatuen adierazpena mod eragilea erabiltzen saiatzen da koma "
-"mugikorreko zenbaki batean"
-
-#: ../src/ui/theme.c:2136
-#, c-format
-msgid ""
-"Coordinate expression has an operator \"%s\" where an operand was expected"
-msgstr ""
-"Koordenatuen adierazpenak \"%s\" eragilea du eragigai bat espero zen lekuan"
-
-#: ../src/ui/theme.c:2145
-#, c-format
-msgid "Coordinate expression had an operand where an operator was expected"
-msgstr ""
-"Koordenatuen adierazpenak eragigai bat du eragile bat espero zen lekuan"
-
-#: ../src/ui/theme.c:2153
-#, c-format
-msgid "Coordinate expression ended with an operator instead of an operand"
-msgstr ""
-"Koordenatuen adierazpena eragile batez amaitzen da, eragigai batez amaitu "
-"beharrean"
-
-#: ../src/ui/theme.c:2163
-#, c-format
-msgid ""
-"Coordinate expression has operator \"%c\" following operator \"%c\" with no "
-"operand in between"
-msgstr ""
-"Koordenatuen adierazpenak \"%c\" eragilea du \"%c\" eragilearen ondoren, "
-"tartean eragigairik gabe"
-
-#: ../src/ui/theme.c:2310 ../src/ui/theme.c:2351
-#, c-format
-msgid "Coordinate expression had unknown variable or constant \"%s\""
-msgstr "Koordenatuen adierazpenak \"%s\" aldagai edo konstante ezezaguna du"
-
-#: ../src/ui/theme.c:2405
-#, c-format
-msgid "Coordinate expression parser overflowed its buffer."
-msgstr ""
-"Koordenatuen adierazpenaren analizatzaileak bere bufferra gainezkatu du"
-
-#: ../src/ui/theme.c:2434
-#, c-format
-msgid "Coordinate expression had a close parenthesis with no open parenthesis"
-msgstr ""
-"Koordenatuen adierazpenak ixteko parentesi bat du, baina irekitzekoa falta da"
-
-#: ../src/ui/theme.c:2498
-#, c-format
-msgid "Coordinate expression had an open parenthesis with no close parenthesis"
-msgstr ""
-"Koordenatuen adierazpenak irekitzeko parentesi bat du, baina ixtekoa falta da"
-
-#: ../src/ui/theme.c:2509
-#, c-format
-msgid "Coordinate expression doesn't seem to have any operators or operands"
-msgstr "Koordenatuen adierazpenak ez dirudi eragilerik edo eragigairik duenik"
-
-#: ../src/ui/theme.c:2713 ../src/ui/theme.c:2733 ../src/ui/theme.c:2753
-#, c-format
-msgid "Theme contained an expression that resulted in an error: %s\n"
-msgstr "Gaiak errorea ematen duen adierazpen bat dauka: %s\n"
-
-#: ../src/ui/theme.c:4350
-#, c-format
-msgid ""
-"<button function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> must be "
-"specified for this frame style"
-msgstr ""
-"<button function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> zehaztu behar "
-"da marko-estilo honetan"
-
-#: ../src/ui/theme.c:4857 ../src/ui/theme.c:4882
-#, c-format
-msgid ""
-"Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
-msgstr ""
-"<frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/> falta da"
-
-#: ../src/ui/theme.c:4926
-#, c-format
-msgid "Failed to load theme \"%s\": %s\n"
-msgstr "Huts egin du \"%s\" gaia kargatzean: %s\n"
-
-#: ../src/ui/theme.c:5056 ../src/ui/theme.c:5063 ../src/ui/theme.c:5070
-#: ../src/ui/theme.c:5077 ../src/ui/theme.c:5084
-#, c-format
-msgid "No <%s> set for theme \"%s\""
-msgstr "<%s> ez da ezarri \"%s\" gaian"
-
-#: ../src/ui/theme.c:5092
-#, c-format
-msgid ""
-"No frame style set for window type \"%s\" in theme \"%s\", add a <window "
-"type=\"%s\" style_set=\"whatever\"/> element"
-msgstr ""
-"Ez da marko-estilorik ezarri set \"%s\" leiho-motarentzat \"%s\" gaian, "
-"gehitu <window type=\"%s\" style_set=\"whatever\"/> elementu bat"
-
-#: ../src/ui/theme.c:5489 ../src/ui/theme.c:5551 ../src/ui/theme.c:5614
-#, c-format
-msgid ""
-"User-defined constants must begin with a capital letter; \"%s\" does not"
-msgstr ""
-"Erabiltzaileak definitutako konstanteak maiuskulaz hasi behar du; \"%s\" ez "
-"da maiuskulaz hasten"
-
-#: ../src/ui/theme.c:5497 ../src/ui/theme.c:5559 ../src/ui/theme.c:5622
-#, c-format
-msgid "Constant \"%s\" has already been defined"
-msgstr "\"%s\" konstantea lehendik definituta dago"
-
-#. Translators: This means that an attribute which should have been found
-#. * on an XML element was not in fact found.
-#.
-#: ../src/ui/theme-parser.c:216
-#, c-format
-msgid "No \"%s\" attribute on element <%s>"
-msgstr "Ez dago \"%s\" atributurik <%s> elementuan"
-
-#: ../src/ui/theme-parser.c:245 ../src/ui/theme-parser.c:263
-#, c-format
-msgid "Line %d character %d: %s"
-msgstr "%d. lerroa %d. karakterea: %s"
-
-#: ../src/ui/theme-parser.c:427
-#, c-format
-msgid "Attribute \"%s\" repeated twice on the same <%s> element"
-msgstr "\"%s\" atributua birritan errepikatuta <%s> elementu berean"
-
-#: ../src/ui/theme-parser.c:451 ../src/ui/theme-parser.c:494
-#, c-format
-msgid "Attribute \"%s\" is invalid on <%s> element in this context"
-msgstr "\"%s\" atributua ez da baliozkoa <%s> elementuaren testuinguru honetan"
-
-#: ../src/ui/theme-parser.c:536
-#, c-format
-msgid "Could not parse \"%s\" as an integer"
-msgstr "Ezin da \"%s\" analizatu osoko gisa"
-
-#: ../src/ui/theme-parser.c:545 ../src/ui/theme-parser.c:600
-#, c-format
-msgid "Did not understand trailing characters \"%s\" in string \"%s\""
-msgstr "Ez dira ulertzen amaierako \"%s\" karaktereak \"%s\" katean"
-
-#: ../src/ui/theme-parser.c:555
-#, c-format
-msgid "Integer %ld must be positive"
-msgstr "%ld osokoak positiboa izan behar du"
-
-#: ../src/ui/theme-parser.c:563
-#, c-format
-msgid "Integer %ld is too large, current max is %d"
-msgstr "%ld osokoa handiegia da, uneko gehienezkoa %d da"
-
-#: ../src/ui/theme-parser.c:591 ../src/ui/theme-parser.c:707
-#, c-format
-msgid "Could not parse \"%s\" as a floating point number"
-msgstr "\"%s\" ezin da analizatu koma mugikorreko zenbaki gisa"
-
-#: ../src/ui/theme-parser.c:622 ../src/ui/theme-parser.c:650
-#, c-format
-msgid "Boolean values must be \"true\" or \"false\" not \"%s\""
-msgstr ""
-"Balio boolearrak \"egiazkoak\" edo \"faltsuak\" izan daitezke, ez \"%s\""
-
-#: ../src/ui/theme-parser.c:677
-#, c-format
-msgid "Angle must be between 0.0 and 360.0, was %g\n"
-msgstr "Angeluak 0.0 eta 360.0 bitartekoa behar du, %g\n"
-
-#: ../src/ui/theme-parser.c:740
-#, c-format
-msgid "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g\n"
-msgstr ""
-"Alfak 0.0 (ikusezina) eta 1.0 (erabat opakoa) artekoa izan behar du, %g\n"
-
-#: ../src/ui/theme-parser.c:805
-#, c-format
-msgid ""
-"Invalid title scale \"%s\" (must be one of xx-small,x-small,small,medium,"
-"large,x-large,xx-large)\n"
-msgstr ""
-"\"%s\" titulu-eskala baliogabea (xx-small,x-small,small,medium,large,x-large,"
-"xx-large izan behar du)\n"
-
-#: ../src/ui/theme-parser.c:961 ../src/ui/theme-parser.c:1024
-#: ../src/ui/theme-parser.c:1058 ../src/ui/theme-parser.c:1161
-#, c-format
-msgid "<%s> name \"%s\" used a second time"
-msgstr "<%s> \"%s\" izena bigarren aldiz erabili da"
-
-#: ../src/ui/theme-parser.c:973 ../src/ui/theme-parser.c:1070
-#: ../src/ui/theme-parser.c:1173
-#, c-format
-msgid "<%s> parent \"%s\" has not been defined"
-msgstr "<%s> \"%s\" gurasoa ez da definitu"
-
-#: ../src/ui/theme-parser.c:1083
-#, c-format
-msgid "<%s> geometry \"%s\" has not been defined"
-msgstr "<%s> \"%s\" geometria ez da definitu"
-
-#: ../src/ui/theme-parser.c:1096
-#, c-format
-msgid "<%s> must specify either a geometry or a parent that has a geometry"
-msgstr "<%s>(e)k geometria bat edo geometria duen guraso bat zehaztu behar du"
-
-#: ../src/ui/theme-parser.c:1138
-msgid "You must specify a background for an alpha value to be meaningful"
-msgstr "Atzeko planoa zehaztu alfa balioarekin esanguratsua izateko"
-
-#: ../src/ui/theme-parser.c:1205
-#, c-format
-msgid "Unknown type \"%s\" on <%s> element"
-msgstr "\"%s\" mota ezezaguna <%s> elementuan"
-
-#: ../src/ui/theme-parser.c:1216
-#, c-format
-msgid "Unknown style_set \"%s\" on <%s> element"
-msgstr "\"%s\" style_set ezezaguna <%s> elementuan"
-
-#: ../src/ui/theme-parser.c:1224
-#, c-format
-msgid "Window type \"%s\" has already been assigned a style set"
-msgstr "\"%s\" leiho-motak dagoeneko esleituta du estilo-multzoa"
-
-#: ../src/ui/theme-parser.c:1254 ../src/ui/theme-parser.c:1318
-#: ../src/ui/theme-parser.c:1544 ../src/ui/theme-parser.c:2765
-#: ../src/ui/theme-parser.c:2811 ../src/ui/theme-parser.c:3025
-#: ../src/ui/theme-parser.c:3261 ../src/ui/theme-parser.c:3299
-#: ../src/ui/theme-parser.c:3337 ../src/ui/theme-parser.c:3354
-#: ../src/ui/theme-parser.c:3370 ../src/ui/theme-parser.c:3407
-#, c-format
-msgid "Element <%s> is not allowed below <%s>"
-msgstr "Ez da onartzen <%s> elementua <%s>(r)en azpian jartzea"
-
-#: ../src/ui/theme-parser.c:1368 ../src/ui/theme-parser.c:1382
-#: ../src/ui/theme-parser.c:1427
-msgid ""
-"Cannot specify both \"button_width\"/\"button_height\" and \"aspect_ratio\" "
-"for buttons"
-msgstr ""
-"\"button_width\"/\"button_height\" (botoi-zabalera/botoi-altuera) eta "
-"\"aspect_ratio\" (aspektu-erlazioa) ezin dira batera zehaztu botoietan"
-
-#: ../src/ui/theme-parser.c:1391
-#, c-format
-msgid "Distance \"%s\" is unknown"
-msgstr "\"%s\" distantzia ezezaguna da"
-
-#: ../src/ui/theme-parser.c:1436
-#, c-format
-msgid "Aspect ratio \"%s\" is unknown"
-msgstr "\"%s\" aspektu-erlazioa ezezaguna da"
-
-#: ../src/ui/theme-parser.c:1498
-#, c-format
-msgid "Border \"%s\" is unknown"
-msgstr "\"%s\" ertza ezezaguna da"
-
-#: ../src/ui/theme-parser.c:1809
-#, c-format
-msgid "No \"start_angle\" or \"from\" attribute on element <%s>"
-msgstr "Ez dago \"start_angle\" edo \"from\" atributurik <%s> elementuan"
-
-#: ../src/ui/theme-parser.c:1816
-#, c-format
-msgid "No \"extent_angle\" or \"to\" attribute on element <%s>"
-msgstr "Ez dago \"extent_angle\" edo \"to\" atributurik <%s> elementuan"
-
-#: ../src/ui/theme-parser.c:2056
-#, c-format
-msgid "Did not understand value \"%s\" for type of gradient"
-msgstr "Gradiente-motan ez da ulertu \"%s\" balioa"
-
-#: ../src/ui/theme-parser.c:2134 ../src/ui/theme-parser.c:2509
-#, c-format
-msgid "Did not understand fill type \"%s\" for <%s> element"
-msgstr "Ez da ulertu \"%s\" betetze-mota <%s> elementuan"
-
-#: ../src/ui/theme-parser.c:2301 ../src/ui/theme-parser.c:2384
-#: ../src/ui/theme-parser.c:2447
-#, c-format
-msgid "Did not understand state \"%s\" for <%s> element"
-msgstr "Ez da ulertu \"%s\" egoera <%s> elementuan"
-
-#: ../src/ui/theme-parser.c:2311 ../src/ui/theme-parser.c:2394
-#, c-format
-msgid "Did not understand shadow \"%s\" for <%s> element"
-msgstr "Ez da ulertu \"%s\" itzala <%s> elementuan"
-
-#: ../src/ui/theme-parser.c:2321
-#, c-format
-msgid "Did not understand arrow \"%s\" for <%s> element"
-msgstr "Ez da ulertu \"%s\" gezia <%s> elementuan"
-
-#: ../src/ui/theme-parser.c:2621 ../src/ui/theme-parser.c:2717
-#, c-format
-msgid "No <draw_ops> called \"%s\" has been defined"
-msgstr "Ez da \"%s\" izeneko <draw_ops> bat ere definitu"
-
-#: ../src/ui/theme-parser.c:2633 ../src/ui/theme-parser.c:2729
-#, c-format
-msgid "Including draw_ops \"%s\" here would create a circular reference"
-msgstr ""
-"Hemen \"%s\" draw_ops sartzen bada, erreferentzia zirkularra sortuko da"
-
-#: ../src/ui/theme-parser.c:2844
-#, c-format
-msgid "Unknown position \"%s\" for frame piece"
-msgstr "\"%s\" kokaleku ezezaguna markoarentzat"
-
-#: ../src/ui/theme-parser.c:2852
-#, c-format
-msgid "Frame style already has a piece at position %s"
-msgstr "Marko-estiloak badu zati bat %s posizioan"
-
-#: ../src/ui/theme-parser.c:2869 ../src/ui/theme-parser.c:2944
-#, c-format
-msgid "No <draw_ops> with the name \"%s\" has been defined"
-msgstr "Ez da \"%s\" izeneko <draw_ops> bat ere definitu"
-
-#: ../src/ui/theme-parser.c:2898
-#, c-format
-msgid "Unknown function \"%s\" for button"
-msgstr "\"%s\" funtzioa ezezaguna botoiarentzat"
-
-#: ../src/ui/theme-parser.c:2907
-#, c-format
-msgid "Button function \"%s\" does not exist in this version (%d, need %d)"
-msgstr ""
-"\"%s\" botoi-funtzioa ez da existitzen bertsio honetan (%d, %d behar du)"
-
-#: ../src/ui/theme-parser.c:2919
-#, c-format
-msgid "Unknown state \"%s\" for button"
-msgstr "\"%s\" egoera ezezaguna botoiarentzat"
-
-#: ../src/ui/theme-parser.c:2927
-#, c-format
-msgid "Frame style already has a button for function %s state %s"
-msgstr "Marko-estiloak badu botoi bat %s funtzioan %s egoeran"
-
-#: ../src/ui/theme-parser.c:3064
-#, c-format
-msgid "\"%s\" is not a valid value for focus attribute"
-msgstr "\"%s\" ez da baliozko balioa foku-atributuarentzat"
-
-#: ../src/ui/theme-parser.c:3073
-#, c-format
-msgid "\"%s\" is not a valid value for state attribute"
-msgstr "\"%s\" ez da baliozko balioa egoera-atributuarentzat"
-
-#: ../src/ui/theme-parser.c:3083
-#, c-format
-msgid "A style called \"%s\" has not been defined"
-msgstr "\"%s\" izeneko estiloa ez da definitu"
-
-#: ../src/ui/theme-parser.c:3104 ../src/ui/theme-parser.c:3127
-#, c-format
-msgid "\"%s\" is not a valid value for resize attribute"
-msgstr "\"%s\" ez da baliozko balioa tamainaz aldatzeko atributuarentzat"
-
-#: ../src/ui/theme-parser.c:3138
-#, c-format
-msgid ""
-"Should not have \"resize\" attribute on <%s> element for maximized/shaded "
-"states"
-msgstr ""
-"Ez luke izan behar \"resize\" atributurik <%s> elementuan maximizatutako/"
-"bildutako egoerentzat"
-
-#: ../src/ui/theme-parser.c:3152
-#, c-format
-msgid ""
-"Should not have \"resize\" attribute on <%s> element for maximized states"
-msgstr ""
-"Ez luke izan behar \"resize\" atributurik <%s> elementuan maximizatutako "
-"egoerentzat"
-
-#: ../src/ui/theme-parser.c:3166 ../src/ui/theme-parser.c:3210
-#, c-format
-msgid "Style has already been specified for state %s resize %s focus %s"
-msgstr "Estiloa dagoeneko zehaztu da %s egoeran %s tamaina-aldatzean %s fokuan"
-
-#: ../src/ui/theme-parser.c:3177 ../src/ui/theme-parser.c:3188
-#: ../src/ui/theme-parser.c:3199 ../src/ui/theme-parser.c:3221
-#: ../src/ui/theme-parser.c:3232 ../src/ui/theme-parser.c:3243
-#, c-format
-msgid "Style has already been specified for state %s focus %s"
-msgstr "Estiloa dagoeneko zehaztu da %s egoeran %s fokuan"
-
-#: ../src/ui/theme-parser.c:3282
-msgid ""
-"Can't have a two draw_ops for a <piece> element (theme specified a draw_ops "
-"attribute and also a <draw_ops> element, or specified two elements)"
-msgstr ""
-"Ezin dira bi draw_ops izan <piece> elementu batean (gaiak draw_ops atributu "
-"bat eta <draw_ops> elementu bat zehaztu ditu, edo bi elementu zehaztu ditu)"
-
-#: ../src/ui/theme-parser.c:3320
-msgid ""
-"Can't have a two draw_ops for a <button> element (theme specified a draw_ops "
-"attribute and also a <draw_ops> element, or specified two elements)"
-msgstr ""
-"Ezin dira bi draw_ops izan <button> elementu batean (gaiak draw_ops atributu "
-"bat eta <draw_ops> elementu bat zehaztu ditu, edo bi elementu zehaztu ditu)"
-
-#: ../src/ui/theme-parser.c:3390
-msgid ""
-"Can't have a two draw_ops for a <menu_icon> element (theme specified a "
-"draw_ops attribute and also a <draw_ops> element, or specified two elements)"
-msgstr ""
-"Ezin dira bi draw_ops izan <menu_icon> elementu batean (gaiak draw_ops "
-"atributu bat eta <draw_ops> elementu bat zehaztu ditu, edo bi elementu "
-"zehaztu ditu)"
-
-#: ../src/ui/theme-parser.c:3438
-#, c-format
-msgid "Outermost element in theme must be <metacity_theme> not <%s>"
-msgstr ""
-"Gaian kanporen dagoen elementuak <metacity_theme> izan behar du, ez <%s>"
-
-#: ../src/ui/theme-parser.c:3458
-#, c-format
-msgid ""
-"Element <%s> is not allowed inside a name/author/date/description element"
-msgstr "<%s> elementua ez da onartzen name/author/date/description elementuan"
-
-#: ../src/ui/theme-parser.c:3463
-#, c-format
-msgid "Element <%s> is not allowed inside a <constant> element"
-msgstr "<%s> elementua ez da onartzen <constant> elementuaren barnean"
-
-#: ../src/ui/theme-parser.c:3475
-#, c-format
-msgid ""
-"Element <%s> is not allowed inside a distance/border/aspect_ratio element"
-msgstr "<%s> elementua ez da onartzen distance/border/aspect_ratio elementuan"
-
-#: ../src/ui/theme-parser.c:3497
-#, c-format
-msgid "Element <%s> is not allowed inside a draw operation element"
-msgstr ""
-"<%s> elementua ez da onartzen marrazteko eragiketaren elementuaren barnean"
-
-#: ../src/ui/theme-parser.c:3507 ../src/ui/theme-parser.c:3547
-#: ../src/ui/theme-parser.c:3552 ../src/ui/theme-parser.c:3557
-#, c-format
-msgid "Element <%s> is not allowed inside a <%s> element"
-msgstr "<%s> elementua ez da onartzen <%s> elementuaren barnean"
-
-#: ../src/ui/theme-parser.c:3779
-msgid "No draw_ops provided for frame piece"
-msgstr "Ez da draw_ops-ik eman marko-zatiarentzat"
-
-#: ../src/ui/theme-parser.c:3794
-msgid "No draw_ops provided for button"
-msgstr "Ez da draw_ops-ik eman botoiarentzat"
-
-#: ../src/ui/theme-parser.c:3854
-#, c-format
-msgid "No text is allowed inside element <%s>"
-msgstr "Ez da testurik onartzen <%s> elementuaren barnean"
-
-#: ../src/ui/theme-parser.c:3909 ../src/ui/theme-parser.c:3921
-#: ../src/ui/theme-parser.c:3933 ../src/ui/theme-parser.c:3945
-#: ../src/ui/theme-parser.c:3957
-#, c-format
-msgid "<%s> specified twice for this theme"
-msgstr "<%s> birritan zehaztu da gai honetan"
-
-#: ../src/ui/theme-parser.c:4231
-#, c-format
-msgid "Failed to find a valid file for theme %s\n"
-msgstr "Huts egin du %s gaiaren fitxategi egokia bilatzean\n"
-
-#: ../src/ui/theme-parser.c:4287
-#, c-format
-msgid "Theme file %s did not contain a root <metacity_theme> element"
-msgstr "%s gai-fitxategiak ez du erroko <metacity_theme> elementurik"
-
-#: ../src/ui/theme-viewer.c:255
-msgid "OK"
-msgstr "Ados"
-
-#: ../src/ui/theme-viewer.c:265
-msgid "This is a sample message in a sample dialog"
-msgstr "Hau mezu adibide bat da, adibidezko elkarrizketa-koadro batekin"
-
-#: ../src/ui/theme-viewer.c:342
-#, c-format
-msgid "Fake menu item %d\n"
-msgstr "Menuko %d elementu faltsua\n"
-
-#: ../src/ui/theme-viewer.c:377
-msgid "Border-only window"
-msgstr "Ertz-soileko leihoa"
-
-#: ../src/ui/theme-viewer.c:379
-msgid "Bar"
-msgstr "Barra"
-
-#: ../src/ui/theme-viewer.c:396
-msgid "Normal Application Window"
-msgstr "Aplikazio normalaren leihoa"
-
-#: ../src/ui/theme-viewer.c:400
-msgid "Dialog Box"
-msgstr "Elkarrizketa-koadroko kutxa"
-
-#: ../src/ui/theme-viewer.c:404
-msgid "Modal Dialog Box"
-msgstr "Elkarrizketa-koadroko kutxa modala"
-
-#: ../src/ui/theme-viewer.c:408
-msgid "Utility Palette"
-msgstr "Paleta utilitatea"
-
-#: ../src/ui/theme-viewer.c:412
-msgid "Torn-off Menu"
-msgstr "Menua itzalita"
-
-#: ../src/ui/theme-viewer.c:416
-msgid "Border"
-msgstr "Ertza"
-
-#: ../src/ui/theme-viewer.c:754
-#, c-format
-msgid "Button layout test %d"
-msgstr "Botoi diseinuen %d. proba"
-
-#: ../src/ui/theme-viewer.c:783
-#, c-format
-msgid "%g milliseconds to draw one window frame"
-msgstr "%g milisegundo leiho-markoa marrazteko"
-
-#: ../src/ui/theme-viewer.c:828
-#, c-format
-msgid "Usage: metacity-theme-viewer [THEMENAME]\n"
-msgstr "Erabilera: metacity-theme-viewer [GAIA]\n"
-
-#: ../src/ui/theme-viewer.c:835
-#, c-format
-msgid "Error loading theme: %s\n"
-msgstr "Errorea gaia kargatzean: %s\n"
-
-#: ../src/ui/theme-viewer.c:841
-#, c-format
-msgid "Loaded theme \"%s\" in %g seconds\n"
-msgstr "\"%s\" gaia %g segundotan kargatua\n"
-
-#: ../src/ui/theme-viewer.c:885
-msgid "Normal Title Font"
-msgstr "Tituluko letra-tipo normala"
-
-#: ../src/ui/theme-viewer.c:891
-msgid "Small Title Font"
-msgstr "Tituluko letra-tipo txikia"
-
-#: ../src/ui/theme-viewer.c:897
-msgid "Large Title Font"
-msgstr "Tituluko letra-tipo handia"
-
-#: ../src/ui/theme-viewer.c:902
-msgid "Button Layouts"
-msgstr "Botoien diseinua"
-
-#: ../src/ui/theme-viewer.c:907
-msgid "Benchmark"
-msgstr "Proba-lekua"
-
-#: ../src/ui/theme-viewer.c:964
-msgid "Window Title Goes Here"
-msgstr "Leihoaren titulua hemen doa"
-
-#: ../src/ui/theme-viewer.c:1069
-#, c-format
-msgid ""
-"Drew %d frames in %g client-side seconds (%g milliseconds per frame) and %g "
-"seconds wall clock time including X server resources (%g milliseconds per "
-"frame)\n"
-msgstr ""
-"%d marko %g bezero-aldeko segundotan (%g milisegundo/markoko) marraztua eta "
-"denbora estandarreko %g segundo X zerbitzariko errekurtsoak barne (%g "
-"milisegundo/markoko)\n"
-
-#: ../src/ui/theme-viewer.c:1288
-msgid "position expression test returned TRUE but set error"
-msgstr ""
-"adierazpenaren posizioko probak TRUE itzuli du, baina errore bat ezarri du"
-
-#: ../src/ui/theme-viewer.c:1290
-msgid "position expression test returned FALSE but didn't set error"
-msgstr ""
-"adierazpenaren posizioko probak FALSE itzuli du, baina ez du errorerik ezarri"
-
-#: ../src/ui/theme-viewer.c:1294
-msgid "Error was expected but none given"
-msgstr "Errorea espero zen, baina ez da gertatu"
-
-#: ../src/ui/theme-viewer.c:1296
-#, c-format
-msgid "Error %d was expected but %d given"
-msgstr "%d errorea espero zen, baina %d gertatu da"
-
-#: ../src/ui/theme-viewer.c:1302
-#, c-format
-msgid "Error not expected but one was returned: %s"
-msgstr "Errorerik ez zen espero, baina bat itzuli du: %s"
-
-#: ../src/ui/theme-viewer.c:1306
-#, c-format
-msgid "x value was %d, %d was expected"
-msgstr "x balioa %d zen, %d espero zenean"
-
-#: ../src/ui/theme-viewer.c:1309
-#, c-format
-msgid "y value was %d, %d was expected"
-msgstr "y balioa %d zen, %d espero zenean"
-
-#: ../src/ui/theme-viewer.c:1374
-#, c-format
-msgid "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
-msgstr ""
-"%d koordenada adierazpen analizatua %g segundotan (%g segundo batezbesteko)\n"
+"Drew <b>%d</b> frames in <b>%f</b> client-side seconds (<b>%f</b> "
+"milliseconds per frame) and <b>%f</b> seconds wall clock time including X "
+"server resources (<b>%f</b> milliseconds per frame)."
+msgstr "%d marko %g bezero-aldeko segundotan (%g milisegundo/markoko) marraztua eta denbora estandarreko %g segundo X zerbitzariko errekurtsoak barne (%g milisegundo/markoko)."
+
+#: theme-viewer/theme-viewer-window.c:244
+msgid "Run again"
+msgstr "Exekutatu berriro"
+
+#~ msgid "Unknown window information request: %d"
+#~ msgstr "Leihoaren informazio eskaera ezezaguna: %d"
+
+#~ msgid "Failed to get hostname: %s\n"
+#~ msgstr "Huts egin du ostalari-izena hartzean: %s\n"
+
+#~ msgid "Missing %s extension required for compositing"
+#~ msgstr "Konposaketa lantzeko beharrezkoa den %s hedapena falta da"
+
+#~ msgid "Failed to open X Window System display '%s'\n"
+#~ msgstr "Huts egin du X Window sistemaren '%s' pantaila irekitzean\n"
+
+#~ msgid ""
+#~ "Some other program is already using the key %s with modifiers %x as a "
+#~ "binding\n"
+#~ msgstr ""
+#~ "Beste programaren batek erabiltzen du %s gakoa %x aldatzaileekin lotura "
+#~ "gisa\n"
+
+#~ msgid "Failed to scan themes directory: %s\n"
+#~ msgstr "Huts egin du gaien direktorioa aztertzean: %s\n"
+
+#~ msgid ""
+#~ "Could not find a theme! Be sure %s exists and contains the usual themes.\n"
+#~ msgstr ""
+#~ "Gai bat ezin izan da aurkitu. Ziurtatu %s badagoela eta ohiko gaiak "
+#~ "dituela.\n"
+
+#~ msgid "Failed to restart: %s\n"
+#~ msgstr "Ezin izan da berrabiarazi: %s\n"
+
+#~ msgid ""
+#~ "Workarounds for broken applications disabled. Some applications may not "
+#~ "behave properly.\n"
+#~ msgstr ""
+#~ "Aplikazio hautsien konponbidea desgaituta. Aplikazio batzuk ez dira behar "
+#~ "den bezala ibiliko.\n"
+
+#~ msgid "Could not parse font description \"%s\" from GSettings key %s\n"
+#~ msgstr ""
+#~ "Ezin izan da \"%s\" letra-tipoaren deskribapena analizatu GSettings-eko "
+#~ "%s gakoan\n"
+
+#~ msgid ""
+#~ "\"%s\" found in configuration database is not a valid value for mouse "
+#~ "button modifier\n"
+#~ msgstr ""
+#~ "Konfigurazioaren datu-basean aurkitutako \"%s\" balioa ez da baliozkoa "
+#~ "sagu-botoiaren aldatzailearentzat\n"
+
+#~ msgid ""
+#~ "\"%s\" found in configuration database is not a valid value for "
+#~ "keybinding \"%s\"\n"
+#~ msgstr ""
+#~ "Konfigurazioaren datu-basean aurkitutako \"%s\" balioa ez da baliozkoa "
+#~ "\"%s\" laster-teklarentzat.\n"
+
+#~ msgid "Screen %d on display '%s' is invalid\n"
+#~ msgstr "'%2$s' bistaratzeko %1$d pantaila ez da baliozkoa\n"
+
+#~ msgid ""
+#~ "Screen %d on display \"%s\" already has a window manager; try using the --"
+#~ "replace option to replace the current window manager.\n"
+#~ msgstr ""
+#~ "\"%2$s\" bistaratzeko %1$d pantailak badu leiho-kudeatzailea; leiho-"
+#~ "kudeatzaile hori ordeztu nahi baduzu, saiatu --replace aukerarekin.\n"
+
+#~ msgid ""
+#~ "Could not acquire window manager selection on screen %d display \"%s\"\n"
+#~ msgstr ""
+#~ "Ezin izan da eskuratu leiho-kudeatzailearen hautapena \"%2$s\" "
+#~ "bistaratzeko %1$d pantailan\n"
+
+#~ msgid "Screen %d on display \"%s\" already has a window manager\n"
+#~ msgstr "\"%2$s\" bistaratzeko %1$d pantailak badu leiho-kudeatzailea\n"
+
+#~ msgid "Could not release screen %d on display \"%s\"\n"
+#~ msgstr "Ezin izan da askatu \"%2$s\" bistaratzeko %1$d pantaila\n"
+
+#~ msgid "Could not create directory '%s': %s\n"
+#~ msgstr "Ezin izan da '%s' direktorioa sortu: %s\n"
+
+#~ msgid "Could not open session file '%s' for writing: %s\n"
+#~ msgstr "Ezin izan da '%s' saio-fitxategia idazteko ireki: %s\n"
+
+#~ msgid "Error writing session file '%s': %s\n"
+#~ msgstr "Errorea '%s' saio-fitxategia idaztean: %s\n"
+
+#~ msgid "Error closing session file '%s': %s\n"
+#~ msgstr "Errorea '%s' saio-fitxategia ixtean: %s\n"
+
+#~ msgid "Failed to parse saved session file: %s\n"
+#~ msgstr "Huts egin du gordetako saio-fitxategia analizatzean: %s\n"
+
+#~ msgid "Failed to open debug log: %s\n"
+#~ msgstr "Huts egin du arazketako egunkaria irekitzean: %s\n"
+
+#~ msgid "Failed to fdopen() log file %s: %s\n"
+#~ msgstr "Huts egin du %s egunkari-fitxategian fdopen() egitean: %s\n"
+
+#~ msgid "Metacity was compiled without support for verbose mode\n"
+#~ msgstr "Metacity modu xehatuaren euskarririk gabe konpilatu da\n"
+
+#~ msgid "Window manager: "
+#~ msgstr "Leiho-kudeatzailea: "
+
+#~ msgid "Bug in window manager: "
+#~ msgstr "Akatsa leiho-kudeatzailean: "
+
+#~ msgid "Window manager warning: "
+#~ msgstr "Leiho-kudeatzailearen abisua: "
+
+#~ msgid "Window manager error: "
+#~ msgstr "Leiho-kudeatzailearen errorea: "
+
+#~ msgid ""
+#~ "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
+#~ "window as specified in the ICCCM.\n"
+#~ msgstr ""
+#~ "%s leihoak bere buruari ezartzen dio SM_CLIENT_ID, WM_CLIENT_LEADER "
+#~ "leihoari ezarri beharren, ICCCMan zehaztuta dagoen moduan.\n"
+
+#~ msgid ""
+#~ "Window %s sets an MWM hint indicating it isn't resizable, but sets min "
+#~ "size %d x %d and max size %d x %d; this doesn't make much sense.\n"
+#~ msgstr ""
+#~ "%s leihoak MWM aholkua ezartzen du, tamainarik ezin zaiola aldatu "
+#~ "adierazteko, baina aldi berean gutxieneko tamaina (%d x %d) eta "
+#~ "gehienezkoa (%d x %d) ezartzen ditu, eta horrek ez du zentzu handirik.\n"
+
+#~ msgid "Application set a bogus _NET_WM_PID %lu\n"
+#~ msgstr "Aplikazioak _NET_WM_PID %lu faltsua ezarri du\n"
+
+#~ msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
+#~ msgstr "%2$s(e)n baliogabeko WM_TRANSIENT_FOR 0x%1$lx leihoa zehaztu da.\n"
+
+#~ msgid ""
+#~ "Window 0x%lx has property %s\n"
+#~ "that was expected to have type %s format %d\n"
+#~ "and actually has type %s format %d n_items %d.\n"
+#~ "This is most likely an application bug, not a window manager bug.\n"
+#~ "The window has title=\"%s\" class=\"%s\" name=\"%s\"\n"
+#~ msgstr ""
+#~ "0x%lx leihoak %s propietatea du\n"
+#~ "horrek %s mota %d formatua izatea espero zen\n"
+#~ "baina %s mota %d formatua %d n_items du.\n"
+#~ "Gehiago ematen du aplikazioaren akatsa leiho-kudeatzailearena baino.\n"
+#~ "Leihoak title=\"%s\" class=\"%s\" name=\"%s\" du\n"
+
+#~ msgid "Property %s on window 0x%lx contained invalid UTF-8\n"
+#~ msgstr "0x%2$lx leihoko %1$s propietateak UTF-8 baliogabea du\n"
+
+#~ msgid ""
+#~ "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the "
+#~ "list\n"
+#~ msgstr ""
+#~ "0x%2$lx leihoko %1$s propietateak UTF-8 baliogabea du zerrendako %3$d. "
+#~ "elementuan\n"
+
+#~ msgid ""
+#~ "Coordinate expression tries to use mod operator on a floating-point number"
+#~ msgstr ""
+#~ "Koordenatuen adierazpena mod eragilea erabiltzen saiatzen da koma "
+#~ "mugikorreko zenbaki batean"
+
+#~ msgid "Failed to load theme \"%s\": %s\n"
+#~ msgstr "Huts egin du \"%s\" gaia kargatzean: %s\n"
+
+#~ msgid "Theme file %s did not contain a root <metacity_theme> element"
+#~ msgstr "%s gai-fitxategiak ez du erroko <metacity_theme> elementurik"
+
+#~ msgid "OK"
+#~ msgstr "Ados"
+
+#~ msgid "This is a sample message in a sample dialog"
+#~ msgstr "Hau mezu adibide bat da, adibidezko elkarrizketa-koadro batekin"
+
+#~ msgid "Fake menu item %d\n"
+#~ msgstr "Menuko %d elementu faltsua\n"
+
+#~ msgid "Border-only window"
+#~ msgstr "Ertz-soileko leihoa"
+
+#~ msgid "Bar"
+#~ msgstr "Barra"
+
+#~ msgid "Normal Application Window"
+#~ msgstr "Aplikazio normalaren leihoa"
+
+#~ msgid "Dialog Box"
+#~ msgstr "Elkarrizketa-koadroko kutxa"
+
+#~ msgid "Modal Dialog Box"
+#~ msgstr "Elkarrizketa-koadroko kutxa modala"
+
+#~ msgid "Utility Palette"
+#~ msgstr "Paleta utilitatea"
+
+#~ msgid "Torn-off Menu"
+#~ msgstr "Menua itzalita"
+
+#~ msgid "Button layout test %d"
+#~ msgstr "Botoi diseinuen %d. proba"
+
+#~ msgid "%g milliseconds to draw one window frame"
+#~ msgstr "%g milisegundo leiho-markoa marrazteko"
+
+#~ msgid "Usage: metacity-theme-viewer [THEMENAME]\n"
+#~ msgstr "Erabilera: metacity-theme-viewer [GAIA]\n"
+
+#~ msgid "Error loading theme: %s\n"
+#~ msgstr "Errorea gaia kargatzean: %s\n"
+
+#~ msgid "Normal Title Font"
+#~ msgstr "Tituluko letra-tipo normala"
+
+#~ msgid "Small Title Font"
+#~ msgstr "Tituluko letra-tipo txikia"
+
+#~ msgid "Large Title Font"
+#~ msgstr "Tituluko letra-tipo handia"
+
+#~ msgid "Window Title Goes Here"
+#~ msgstr "Leihoaren titulua hemen doa"
+
+#~ msgid "position expression test returned TRUE but set error"
+#~ msgstr ""
+#~ "adierazpenaren posizioko probak TRUE itzuli du, baina errore bat ezarri du"
+
+#~ msgid "position expression test returned FALSE but didn't set error"
+#~ msgstr ""
+#~ "adierazpenaren posizioko probak FALSE itzuli du, baina ez du errorerik "
+#~ "ezarri"
+
+#~ msgid "Error was expected but none given"
+#~ msgstr "Errorea espero zen, baina ez da gertatu"
+
+#~ msgid "Error %d was expected but %d given"
+#~ msgstr "%d errorea espero zen, baina %d gertatu da"
+
+#~ msgid "Error not expected but one was returned: %s"
+#~ msgstr "Errorerik ez zen espero, baina bat itzuli du: %s"
+
+#~ msgid "x value was %d, %d was expected"
+#~ msgstr "x balioa %d zen, %d espero zenean"
+
+#~ msgid "y value was %d, %d was expected"
+#~ msgstr "y balioa %d zen, %d espero zenean"
+
+#~ msgid ""
+#~ "%d coordinate expressions parsed in %g seconds (%g seconds average)\n"
+#~ msgstr ""
+#~ "%d koordenada adierazpen analizatua %g segundotan (%g segundo "
+#~ "batezbesteko)\n"
 
 #~ msgid "Show the activities overview"
 #~ msgstr "Erakutsi jardueren aurkezpen orokorra"
@@ -1697,18 +1750,6 @@ msgstr ""
 
 #~ msgid "_Windows"
 #~ msgstr "_Leihoak"
-
-#~ msgid "_Dialog"
-#~ msgstr "_Elkarrizketa-koadroa"
-
-#~ msgid "_Modal dialog"
-#~ msgstr "Elkarrizketa-koadro _modala"
-
-#~ msgid "_Utility"
-#~ msgstr "_Utilitatea"
-
-#~ msgid "_Splashscreen"
-#~ msgstr "_Harrerako pantaila"
 
 #~ msgid "_Top dock"
 #~ msgstr "_Goiko atrakagarria"
@@ -2209,9 +2250,6 @@ msgstr ""
 #~ "eta maiuskulak eta minuskulak onartzen ditu, eta baita \"&lt;Ctl&gt;\" "
 #~ "eta \"&lt;Ctrl&gt;\" moduko laburdurak ere. Aukeran \"disabled\" kate "
 #~ "berezia ezartzen baduzu, ez da laster-teklarik izango ekintza honentzat."
-
-#~ msgid "The name of a workspace."
-#~ msgstr "Laneko area baten izena."
 
 #~ msgid "The screenshot command"
 #~ msgstr "Pantaila-argazkiaren komandoa"
