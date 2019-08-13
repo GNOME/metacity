@@ -3626,8 +3626,7 @@ meta_display_begin_grab_op (MetaDisplay *display,
   display->grab_anchor_root_y = root_y;
   display->grab_latest_motion_x = root_x;
   display->grab_latest_motion_y = root_y;
-  display->grab_last_moveresize_time.tv_sec = 0;
-  display->grab_last_moveresize_time.tv_usec = 0;
+  display->grab_last_moveresize_time = 0;
   display->grab_motion_notify_time = 0;
   display->grab_old_window_stacking = NULL;
   display->grab_last_user_action_was_snap = FALSE;
@@ -3663,8 +3662,7 @@ meta_display_begin_grab_op (MetaDisplay *display,
         {
           meta_window_create_sync_request_alarm (display->grab_window);
 
-          window->sync_request_time.tv_sec = 0;
-          window->sync_request_time.tv_usec = 0;
+          window->sync_request_time = 0;
         }
     }
 

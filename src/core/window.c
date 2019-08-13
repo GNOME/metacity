@@ -419,8 +419,7 @@ meta_window_new (MetaDisplay    *display,
 
   window->sync_request_counter = None;
   window->sync_request_serial = 0;
-  window->sync_request_time.tv_sec = 0;
-  window->sync_request_time.tv_usec = 0;
+  window->sync_request_time = 0;
   window->sync_request_alarm = None;
 
   window->screen = display->screen;
@@ -3489,7 +3488,7 @@ send_sync_request (MetaWindow *window)
   XSendEvent (window->display->xdisplay,
               window->xwindow, False, 0, (XEvent*) &ev);
 
-  g_get_current_time (&window->sync_request_time);
+  window->sync_request_time = g_get_real_time ();
 }
 
 /**
@@ -3892,8 +3891,7 @@ meta_window_move_resize_internal (MetaWindow          *window,
       if (window == window->display->grab_window &&
           window->sync_request_counter != None &&
           window->sync_request_alarm != None &&
-          window->sync_request_time.tv_usec == 0 &&
-          window->sync_request_time.tv_sec == 0)
+          window->sync_request_time == 0)
         {
           /* turn off updating */
           meta_window_set_updates_frozen_for_resize (window, TRUE);
@@ -7349,37 +7347,21 @@ meta_window_titlebar_is_onscreen (MetaWindow *window)
   return is_onscreen;
 }
 
-static double
-timeval_to_ms (const GTimeVal *timeval)
-{
-  return (timeval->tv_sec * G_USEC_PER_SEC + timeval->tv_usec) / 1000.0;
-}
-
-static double
-time_diff (const GTimeVal *first,
-           const GTimeVal *second)
-{
-  double first_ms = timeval_to_ms (first);
-  double second_ms = timeval_to_ms (second);
-
-  return first_ms - second_ms;
-}
-
 static gboolean
 check_moveresize_frequency (MetaWindow *window,
                             gdouble    *remaining)
 {
-  GTimeVal current_time;
+  gint64 current_time;
+  gdouble elapsed;
 
-  g_get_current_time (&current_time);
+  current_time = g_get_real_time ();
 
   if (!window->disable_sync &&
       window->sync_request_alarm != None)
     {
-      if (window->sync_request_time.tv_sec != 0 ||
-          window->sync_request_time.tv_usec != 0)
+      if (window->sync_request_time != 0)
         {
-          double elapsed = time_diff (&current_time, &window->sync_request_time);
+          elapsed = (current_time - window->sync_request_time) / 1000.0;
 
           if (elapsed < 1000.0)
             {
@@ -7412,9 +7394,8 @@ check_moveresize_frequency (MetaWindow *window,
     {
       const double max_resizes_per_second = 25.0;
       const double ms_between_resizes = 1000.0 / max_resizes_per_second;
-      double elapsed;
 
-      elapsed = time_diff (&current_time, &window->display->grab_last_moveresize_time);
+      elapsed = (current_time - window->display->grab_last_moveresize_time) / 1000.0;
 
       if (elapsed >= 0.0 && elapsed < ms_between_resizes)
         {
@@ -7920,7 +7901,7 @@ update_resize (MetaWindow *window,
 
   /* Store the latest resize time, if we actually resized. */
   if (window->rect.width != old.width || window->rect.height != old.height)
-    g_get_current_time (&window->display->grab_last_moveresize_time);
+    window->display->grab_last_moveresize_time = g_get_real_time ();
 }
 
 typedef struct
@@ -8033,8 +8014,7 @@ meta_window_update_sync_request_counter (MetaWindow *window,
        * busy with a pagefault or a long computation).
        */
       window->disable_sync = FALSE;
-      window->sync_request_time.tv_sec = 0;
-      window->sync_request_time.tv_usec = 0;
+      window->sync_request_time = 0;
 
       /* This means we are ready for another configure. */
       switch (window->display->grab_op)
