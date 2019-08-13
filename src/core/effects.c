@@ -71,7 +71,7 @@ typedef struct
   MetaScreen *screen;
 
   double millisecs_duration;
-  GTimeVal start_time;
+  gint64 start_time;
 
   /** For wireframe window */
   Window wireframe_xwindow;
@@ -159,16 +159,14 @@ static gboolean
 effects_draw_box_animation_timeout (BoxAnimationContext *context)
 {
   double elapsed;
-  GTimeVal current_time;
+  gint64 current_time;
   MetaRectangle draw_rect;
   double fraction;
 
-  g_get_current_time (&current_time);
+  current_time = g_get_real_time ();
 
   /* We use milliseconds for all times */
-  elapsed =
-    ((((double)current_time.tv_sec - context->start_time.tv_sec) * G_USEC_PER_SEC +
-      (current_time.tv_usec - context->start_time.tv_usec))) / 1000.0;
+  elapsed = (current_time - context->start_time) / 1000.0;
 
   if (elapsed < 0)
     {
@@ -265,7 +263,7 @@ draw_box_animation (MetaScreen     *screen,
   /* Do this only after we get the pixbuf from the server,
    * so that the animation doesn't get truncated.
    */
-  g_get_current_time (&context->start_time);
+  context->start_time = g_get_real_time ();
 
   /* Add the timeout - a short one, could even use an idle,
    * but this is maybe more CPU-friendly.
