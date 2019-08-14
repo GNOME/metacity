@@ -47,7 +47,6 @@
 #include "bell.h"
 #include "effects.h"
 #include "meta-compositor.h"
-#include <gdk/gdkx.h>
 #include <libmetacity/meta-frame-borders.h>
 #include <X11/Xatom.h>
 #include <X11/cursorfont.h>
@@ -1379,39 +1378,6 @@ meta_display_queue_autoraise_callback (MetaDisplay *display,
   display->autoraise_window = window;
 }
 
-static GdkEvent *
-button_press_event_new (XEvent *xevent,
-                        gint    scale)
-{
-  GdkDisplay *display;
-  GdkSeat *seat;
-  GdkWindow *window;
-  GdkDevice *device;
-  GdkEvent *event;
-
-  display = gdk_display_get_default ();
-  seat = gdk_display_get_default_seat (display);
-
-  window = gdk_x11_window_lookup_for_display (display, xevent->xbutton.window);
-  device = gdk_seat_get_pointer (seat);
-
-  event = gdk_event_new (GDK_BUTTON_PRESS);
-
-  event->button.window = window ? g_object_ref (window) : NULL;
-  event->button.send_event = xevent->xbutton.send_event ? TRUE : FALSE;
-  event->button.time = xevent->xbutton.time;
-  event->button.x = xevent->xbutton.x / scale;
-  event->button.y = xevent->xbutton.y / scale;
-  event->button.state = (GdkModifierType) xevent->xbutton.state;
-  event->button.button = xevent->xbutton.button;
-  event->button.x_root = xevent->xbutton.x_root / scale;
-  event->button.y_root = xevent->xbutton.y_root / scale;
-
-  gdk_event_set_device (event, device);
-
-  return event;
-}
-
 static void
 update_focus_window (MetaDisplay *display,
                      MetaWindow  *window,
@@ -2001,21 +1967,16 @@ event_callback (XEvent   *event,
           else if (event->xbutton.button == meta_prefs_get_mouse_button_menu())
             {
               GdkRectangle rect;
-              gint scale;
-              GdkEvent *gdk_event;
 
               if (meta_prefs_get_raise_on_click ())
                 meta_window_raise (window);
 
-              rect.x = event->xbutton.x;
-              rect.y = event->xbutton.y;
+              rect.x = event->xbutton.x_root;
+              rect.y = event->xbutton.y_root;
               rect.width = 0;
               rect.height = 0;
 
-              scale = meta_ui_get_scale (display->screen->ui);
-              gdk_event = button_press_event_new (event, scale);
-              meta_window_show_menu (window, &rect, gdk_event);
-              gdk_event_free (gdk_event);
+              meta_window_show_menu (window, &rect, event->xbutton.time);
             }
 
           if (!frame_was_receiver && unmodified)

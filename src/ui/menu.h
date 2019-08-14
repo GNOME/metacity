@@ -46,7 +46,7 @@ MetaWindowMenu* meta_window_menu_new      (MetaFrames         *frames,
                                            gpointer            data);
 void            meta_window_menu_popup    (MetaWindowMenu     *menu,
                                            const GdkRectangle *rect,
-                                           const GdkEvent     *event);
+                                           guint32             timestamp);
 void            meta_window_menu_free     (MetaWindowMenu     *menu);
 
 

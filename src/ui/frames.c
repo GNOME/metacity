@@ -1663,13 +1663,13 @@ meta_frame_titlebar_event (MetaFrames     *frames,
       {
         GdkRectangle rect;
 
-        rect.x = event->x;
-        rect.y = event->y;
+        rect.x = event->x_root;
+        rect.y = event->y_root;
         rect.width = 0;
         rect.height = 0;
 
         meta_core_show_window_menu (frames->xdisplay, frame->xwindow,
-                                    &rect, event);
+                                    &rect, event->time);
       }
       break;
 
@@ -1834,10 +1834,14 @@ meta_frames_button_press_event (GtkWidget      *widget,
               return FALSE;
             }
 
+          /* convert to root coords */
+          rect.x += event->x_root - event->x;
+          rect.y += event->y_root - event->y;
+
           frame->ignore_leave_notify = TRUE;
           meta_core_show_window_menu (frames->xdisplay,
                                       frame->xwindow,
-                                      &rect, event);
+                                      &rect, event->time);
         }
     }
   else if (event->button == 1 &&
