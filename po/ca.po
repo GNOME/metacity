@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity 2.24\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues\n"
-"POT-Creation-Date: 2018-06-10 17:51+0000\n"
-"PO-Revision-Date: 2019-07-22 20:54+0200\n"
+"POT-Creation-Date: 2019-07-22 19:06+0000\n"
+"PO-Revision-Date: 2019-08-17 21:18+0200\n"
 "Last-Translator: Jordi Mas <jmas@softcaatala.org>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "Language: ca\n"
@@ -24,7 +24,7 @@ msgstr ""
 "X-Generator: Poedit 2.2.1\n"
 
 #. Translators: This is the title used on dialog boxes
-#: data/applications/metacity.desktop.in:4 src/core/util.c:435
+#: data/applications/metacity.desktop.in:4 src/core/util.c:426
 msgid "Metacity"
 msgstr "Metacity"
 
@@ -242,14 +242,12 @@ msgid "Determines whether Metacity is a compositing manager."
 msgstr "Determina si el Metacity és un gestor de composició."
 
 #: data/schemas/org.gnome.metacity.gschema.xml:31
-#, fuzzy
 msgid "Enable edge tiling when dropping windows on screen edges"
 msgstr ""
-"Habilita el mòsaic a les vores en deixar anar les finestres a les vores de "
+"Habilita el mosaic a les vores en deixar anar les finestres a les vores de "
 "la pantalla"
 
 #: data/schemas/org.gnome.metacity.gschema.xml:32
-#, fuzzy
 msgid ""
 "If enabled, dropping windows on vertical screen edges maximizes them "
 "vertically and resizes them horizontally to cover half of the available "
@@ -280,13 +278,6 @@ msgid "If true, trade off usability for less resource usage"
 msgstr "Si és «true» (cert), sacrifica usabilitat per usar menys recursos"
 
 #: data/schemas/org.gnome.metacity.gschema.xml:58
-#, fuzzy
-#| msgid ""
-#| "If true, metacity will give the user less feedback by using wireframes, "
-#| "avoiding animations, or other means. This is a significant reduction in "
-#| "usability for many users, but may allow legacy applications to continue "
-#| "working, and may also be a useful tradeoff for terminal servers. However, "
-#| "the wireframe feature is disabled when accessibility is on."
 msgid ""
 "If true, Metacity will give the user less feedback by using wireframes, "
 "avoiding animations, or other means. This is a significant reduction in "
@@ -303,7 +294,7 @@ msgstr ""
 
 #: data/schemas/org.gnome.metacity.theme.gschema.xml:11
 msgid "Theme Name"
-msgstr ""
+msgstr "Nom del tema"
 
 #: data/schemas/org.gnome.metacity.theme.gschema.xml:12
 msgid ""
@@ -356,7 +347,7 @@ msgstr "Utilitat"
 
 #: data/ui/theme-viewer-window.ui:179
 msgid "Menu"
-msgstr ""
+msgstr "Menú"
 
 #: data/ui/theme-viewer-window.ui:180
 msgid "Border"
@@ -406,7 +397,7 @@ msgstr "Escala:"
 
 #: data/ui/theme-viewer-window.ui:468 theme-viewer/theme-viewer-window.c:636
 msgid "Choose Theme"
-msgstr ""
+msgstr "Trieu tema"
 
 #: data/ui/theme-viewer-window.ui:508
 msgid "Preview"
@@ -438,7 +429,7 @@ msgstr ""
 "analitzar «%s»"
 
 #: libmetacity/meta-color-spec.c:260
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Invalid character '%c' in color_name parameter of gtk:custom, only A-Za-z0-9-"
 "_ are valid"
@@ -539,8 +530,7 @@ msgid "Shade factor '%s' in shaded color is negative"
 msgstr "El factor d'ombrejat «%s» en el color ombrejat és negatiu"
 
 #: libmetacity/meta-color-spec.c:473
-#, fuzzy, c-format
-#| msgid "Could not parse color \"%s\""
+#, c-format
 msgid "Could not parse color '%s'"
 msgstr "No s'ha pogut analitzar el color «%s»"
 
@@ -752,7 +742,7 @@ msgid "Attribute '%s' is invalid on <%s> element in this context"
 msgstr "L'atribut «%s» no és vàlid per a l'element <%s> en aquest context"
 
 #: libmetacity/meta-theme-metacity.c:581 libmetacity/meta-theme-metacity.c:619
-#,  c-format
+#, c-format
 msgid "Could not parse '%s' as a floating point number"
 msgstr "No s'ha pogut analitzar «%s» com a un número de coma flotant"
 
@@ -760,8 +750,7 @@ msgstr "No s'ha pogut analitzar «%s» com a un número de coma flotant"
 #, c-format
 msgid "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g"
 msgstr ""
-"L'opacitat ha d'estar entre 0.0 (invisible) i 1.0 (totalment opac), era a "
-"%g"
+"L'opacitat ha d'estar entre 0.0 (invisible) i 1.0 (totalment opac), era a %g"
 
 #: libmetacity/meta-theme-metacity.c:697
 #, c-format
@@ -787,7 +776,7 @@ msgstr ""
 
 #: libmetacity/meta-theme-metacity.c:792 libmetacity/meta-theme-metacity.c:829
 #: libmetacity/meta-theme-metacity.c:867
-#,  c-format
+#, c-format
 msgid "Constant '%s' has already been defined"
 msgstr "La constant «%s» ja s'ha definit"
 
@@ -840,7 +829,7 @@ msgid "Unknown style_set '%s' on <%s> element"
 msgstr "style_set «%s» desconegut en l'element <%s>"
 
 #: libmetacity/meta-theme-metacity.c:1335
-#,, c-format
+#, c-format
 msgid "Window type '%s' has already been assigned a style set"
 msgstr "El tipus de finestra «%s» ja té assignat un joc d'estil"
 
@@ -874,7 +863,7 @@ msgid "Aspect ratio '%s' is unknown"
 msgstr "La ràtio d'aspecte «%s» és desconeguda"
 
 #: libmetacity/meta-theme-metacity.c:1535
-#,c-format
+#, c-format
 msgid "Border '%s' is unknown"
 msgstr "El contorn «%s» és desconegut"
 
@@ -1210,50 +1199,50 @@ msgstr ""
 "No hi ha CAP garantia; ni tan sols la garantia implícita de COMERCIABILITAT\n"
 "o ADEQUACIÓ A PER UN PROPÒSIT PARTICULAR.\n"
 
-#: src/core/main.c:215
+#: src/core/main.c:205
 msgid "Disable connection to session manager"
 msgstr "Inhabilita la connexió al gestor de sessions"
 
-#: src/core/main.c:221
+#: src/core/main.c:211
 msgid "Replace the running window manager with Metacity"
 msgstr "Reemplaça el gestor de finestres en execució pel Metacity"
 
-#: src/core/main.c:227
+#: src/core/main.c:217
 msgid "Specify session management ID"
 msgstr "Especifica l'ID de gestió de sessió"
 
-#: src/core/main.c:232
+#: src/core/main.c:222
 msgid "X Display to use"
 msgstr "Visualització de l'X a utilitzar"
 
-#: src/core/main.c:238
+#: src/core/main.c:228
 msgid "Initialize session from savefile"
 msgstr "Inicialitza la sessió des del fitxer desat"
 
-#: src/core/main.c:244
+#: src/core/main.c:234
 msgid "Print version"
 msgstr "Mostra la versió"
 
-#: src/core/main.c:250
+#: src/core/main.c:240
 msgid "Make X calls synchronous"
 msgstr "Fes que les crides a l'X siguin síncrones"
 
-#: src/core/main.c:256
+#: src/core/main.c:246
 msgid "Turn compositing on"
 msgstr "Habilita la composició"
 
-#: src/core/main.c:262
+#: src/core/main.c:252
 msgid "Turn compositing off"
 msgstr "Inhabilita la composició"
 
-#: src/core/main.c:268
+#: src/core/main.c:258
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr ""
 "No creïs finestres a pantalla completa que estiguin maximitzades i no "
 "tinguin decoracions"
 
-#: src/core/prefs.c:1524
+#: src/core/prefs.c:1421
 #, c-format
 msgid "Workspace %d"
 msgstr "Espai de treball %d"
@@ -1469,7 +1458,7 @@ msgstr "Espai de treball 1_0"
 msgid "Workspace %s%d"
 msgstr "Espai de treball %s%d"
 
-#: src/ui/menu.c:351
+#: src/ui/menu.c:358
 msgid "Move to Another _Workspace"
 msgstr "Mou a un altre es_pai de treball"
 
@@ -1516,7 +1505,7 @@ msgstr "Meta"
 #.
 #: src/ui/metaaccellabel.c:99
 msgid "Super"
-msgstr "Super"
+msgstr "Súper"
 
 #. This is the text that should appear next to menu accelerators
 #. * that use the hyper key. If the text on this key isn't typically
@@ -1584,10 +1573,8 @@ msgid "TYPE"
 msgstr ""
 
 #: theme-viewer/theme-viewer-main.c:36
-#, fuzzy
-#| msgid "The name of a workspace."
 msgid "Theme name to use"
-msgstr "El nom d'un espai de treball."
+msgstr "Nom del tema a usar"
 
 #: theme-viewer/theme-viewer-main.c:36
 msgid "NAME"
