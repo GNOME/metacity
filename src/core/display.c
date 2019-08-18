@@ -2440,19 +2440,18 @@ event_callback (XEvent   *event,
 
                   workspace = meta_screen_get_workspace_by_index (screen, space);
 
-                  /* Handle clients using the older version of the spec... */
-                  if (time == 0 && workspace)
-                    {
-                      g_warning ("Received a NET_CURRENT_DESKTOP message from "
-                                 "a broken (outdated) client who sent a 0 timestamp");
-
-                      time = meta_display_get_current_time_roundtrip (display);
-                    }
-
                   if (workspace)
-                    meta_workspace_activate (workspace, time);
+                    {
+                      /* Handle clients using the older version of the spec... */
+                      if (time == 0)
+                        time = meta_display_get_current_time_roundtrip (display);
+
+                      meta_workspace_activate (workspace, time);
+                    }
                   else
-                    meta_verbose ("Don't know about workspace %d\n", space);
+                    {
+                      meta_verbose ("Don't know about workspace %d\n", space);
+                    }
                 }
               else if (event->xclient.message_type ==
                        display->atom__NET_NUMBER_OF_DESKTOPS)
