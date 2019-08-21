@@ -174,6 +174,15 @@ struct _MetaCompositorXRender
 
 G_DEFINE_TYPE (MetaCompositorXRender, meta_compositor_xrender, META_TYPE_COMPOSITOR)
 
+static Visual *
+get_toplevel_xvisual (MetaWindow *window)
+{
+  if (window->frame != NULL)
+    return meta_frame_get_xvisual (window->frame);
+
+  return window->xvisual;
+}
+
 static Window
 get_toplevel_xwindow (MetaWindow *window)
 {
@@ -1232,7 +1241,7 @@ get_window_format (Display        *xdisplay,
 {
   XRenderPictFormat *format;
 
-  format = XRenderFindVisualFormat (xdisplay, cw->window->xvisual);
+  format = XRenderFindVisualFormat (xdisplay, get_toplevel_xvisual (cw->window));
 
   if (!format)
     {
@@ -1952,7 +1961,7 @@ determine_mode (MetaCompositorXRender *xrender,
       cw->alpha_pict = None;
     }
 
-  format = XRenderFindVisualFormat (xdisplay, cw->window->xvisual);
+  format = XRenderFindVisualFormat (xdisplay, get_toplevel_xvisual (cw->window));
 
   if ((format && format->type == PictTypeDirect && format->direct.alphaMask)
       || cw->window->opacity != (guint) OPAQUE)
@@ -2795,7 +2804,7 @@ meta_compositor_xrender_get_window_surface (MetaCompositor *compositor,
   height = shaded ? cw->shaded.height : cw->rect.height;
 
   back_surface = cairo_xlib_surface_create (xdisplay, back_pixmap,
-                                            cw->window->xvisual,
+                                            get_toplevel_xvisual (cw->window),
                                             width, height);
 
   window_surface = cairo_surface_create_similar (back_surface,
