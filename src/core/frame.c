@@ -100,6 +100,19 @@ meta_window_ensure_frame (MetaWindow *window)
 
   frame->xvisual = window->xvisual;
 
+  if (meta_compositor_is_composited (window->display->compositor))
+    {
+      XVisualInfo visual_info;
+
+      if (XMatchVisualInfo (window->display->xdisplay,
+                            XScreenNumberOfScreen (window->screen->xscreen),
+                            32, TrueColor,
+                            &visual_info) != 0)
+        {
+          frame->xvisual = visual_info.visual;
+        }
+    }
+
   frame->xwindow = meta_ui_create_frame_window (window->screen->ui,
                                                 window->display->xdisplay,
                                                 frame->xvisual,
