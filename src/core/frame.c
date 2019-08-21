@@ -98,9 +98,11 @@ meta_window_ensure_frame (MetaWindow *window)
                 frame->rect.x, frame->rect.y,
                 frame->rect.width, frame->rect.height);
 
+  frame->xvisual = window->xvisual;
+
   frame->xwindow = meta_ui_create_frame_window (window->screen->ui,
                                                 window->display->xdisplay,
-                                                window->xvisual,
+                                                frame->xvisual,
                                                 frame->rect.x,
                                                 frame->rect.y,
                                                 frame->rect.width,
@@ -450,6 +452,12 @@ meta_frame_set_screen_cursor (MetaFrame	*frame,
       XFlush (frame->window->display->xdisplay);
       XFreeCursor (frame->window->display->xdisplay, xcursor);
     }
+}
+
+Visual *
+meta_frame_get_xvisual (MetaFrame *frame)
+{
+  return frame->xvisual;
 }
 
 Window

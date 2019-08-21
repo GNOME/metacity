@@ -26,12 +26,14 @@
 #include "common.h"
 #include "types.h"
 
-void   meta_frame_get_mask     (MetaFrame        *frame,
-                                cairo_t          *cr);
+void    meta_frame_get_mask     (MetaFrame        *frame,
+                                 cairo_t          *cr);
 
-Window meta_frame_get_xwindow  (MetaFrame        *frame);
+Visual *meta_frame_get_xvisual  (MetaFrame        *frame);
 
-void   meta_frame_calc_borders (MetaFrame        *frame,
-                                MetaFrameBorders *borders);
+Window  meta_frame_get_xwindow  (MetaFrame        *frame);
+
+void    meta_frame_calc_borders (MetaFrame        *frame,
+                                 MetaFrameBorders *borders);
 
 #endif

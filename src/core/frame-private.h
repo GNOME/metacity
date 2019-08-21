@@ -30,6 +30,8 @@ struct _MetaFrame
   /* window we frame */
   MetaWindow *window;
 
+  Visual *xvisual;
+
   /* reparent window */
   Window xwindow;
 
