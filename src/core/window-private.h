@@ -99,8 +99,11 @@ struct _MetaWindow
   MetaScreen *screen;
   MetaWorkspace *workspace;
   Window xwindow;
+
   /* may be NULL! not all windows get decorated */
   MetaFrame *frame;
+  guint reframe_id;
+
   int depth;
   Visual *xvisual;
   Colormap colormap;
@@ -717,6 +720,8 @@ MetaFrameType meta_window_get_frame_type (MetaWindow *window);
 gboolean meta_window_updates_are_frozen (MetaWindow *window);
 
 void meta_window_update_shape_region (MetaWindow *window);
+
+void meta_window_reframe (MetaWindow *window);
 
 G_END_DECLS
 

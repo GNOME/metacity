@@ -9203,12 +9203,36 @@ meta_window_update_shape_region (MetaWindow *window)
   meta_compositor_window_shape_region_changed (window->display->compositor, window);
 }
 
+static gboolean
+reframe_cb (gpointer user_data)
+{
+  MetaWindow *window;
+
+  window = META_WINDOW (user_data);
+  window->reframe_id = 0;
+
+  if (!window->decorated)
+    return G_SOURCE_REMOVE;
+
+  meta_window_ensure_frame (window);
+  meta_window_queue (window, META_QUEUE_MOVE_RESIZE | META_QUEUE_CALC_SHOWING);
+  g_object_notify_by_pspec (G_OBJECT (window), properties[PROP_DECORATED]);
+
+  return G_SOURCE_REMOVE;
+}
+
 static void
 meta_window_finalize (GObject *object)
 {
   MetaWindow *window;
 
   window = META_WINDOW (object);
+
+  if (window->reframe_id != 0)
+    {
+      g_source_remove (window->reframe_id);
+      window->reframe_id = 0;
+    }
 
   g_clear_object (&window->icon);
   g_clear_object (&window->mini_icon);
@@ -9288,4 +9312,16 @@ meta_window_class_init (MetaWindowClass *window_class)
 static void
 meta_window_init (MetaWindow *window)
 {
+}
+
+void
+meta_window_reframe (MetaWindow *window)
+{
+  if (!window->decorated)
+    return;
+
+  meta_window_destroy_frame (window);
+  meta_window_move_resize_now (window);
+
+  window->reframe_id = g_idle_add (reframe_cb, window);
 }
