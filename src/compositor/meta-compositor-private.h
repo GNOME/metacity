@@ -81,17 +81,20 @@ struct _MetaCompositorClass
   void              (* redraw)                       (MetaCompositor     *compositor);
 };
 
-gboolean     meta_compositor_set_selection      (MetaCompositor  *compositor,
-                                                 GError         **error);
+gboolean     meta_compositor_check_common_extensions (MetaCompositor  *compositor,
+                                                      GError         **error);
 
-Window       meta_compositor_get_overlay_window (MetaCompositor  *compositor);
+gboolean     meta_compositor_set_selection           (MetaCompositor  *compositor,
+                                                      GError         **error);
 
-gboolean     meta_compositor_redirect_windows   (MetaCompositor  *compositor,
-                                                 GError         **error);
+Window       meta_compositor_get_overlay_window      (MetaCompositor  *compositor);
 
-MetaDisplay *meta_compositor_get_display        (MetaCompositor  *compositor);
+gboolean     meta_compositor_redirect_windows        (MetaCompositor  *compositor,
+                                                      GError         **error);
 
-void         meta_compositor_queue_redraw       (MetaCompositor  *compositor);
+MetaDisplay *meta_compositor_get_display             (MetaCompositor  *compositor);
+
+void         meta_compositor_queue_redraw            (MetaCompositor  *compositor);
 
 G_END_DECLS
 

@@ -2367,6 +2367,9 @@ meta_compositor_xrender_manage (MetaCompositor  *compositor,
   XRenderPictFormat *visual_format;
   int screen_number = meta_screen_get_screen_number (screen);
 
+  if (!meta_compositor_check_common_extensions (compositor, error))
+    return FALSE;
+
   if (!display->have_render)
     {
       g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
