@@ -2250,13 +2250,11 @@ generate_pixmap (MetaFrames            *frames,
     return NULL;
 
   result = gdk_window_create_similar_surface (frame->window,
-                                              CAIRO_CONTENT_COLOR,
+                                              CAIRO_CONTENT_COLOR_ALPHA,
                                               rect->width, rect->height);
 
   cr = cairo_create (result);
   cairo_translate (cr, -rect->x, -rect->y);
-
-  cairo_paint (cr);
 
   meta_frames_paint (frames, frame, cr);
 
