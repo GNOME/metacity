@@ -161,4 +161,5 @@ meta_compositor_none_class_init (MetaCompositorNoneClass *none_class)
 static void
 meta_compositor_none_init (MetaCompositorNone *none)
 {
+  meta_compositor_set_composited (META_COMPOSITOR (none), FALSE);
 }

@@ -33,6 +33,8 @@ typedef struct
 {
   MetaDisplay *display;
 
+  gboolean     composited;
+
   /* _NET_WM_CM_Sn */
   Atom         cm_atom;
   Window       cm_window;
@@ -53,6 +55,8 @@ enum
   PROP_0,
 
   PROP_DISPLAY,
+
+  PROP_COMPOSITED,
 
   LAST_PROP
 };
@@ -171,6 +175,10 @@ meta_compositor_get_property (GObject    *object,
         g_value_set_pointer (value, priv->display);
         break;
 
+      case PROP_COMPOSITED:
+        g_value_set_boolean (value, priv->composited);
+        break;
+
       default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
         break;
@@ -195,6 +203,10 @@ meta_compositor_set_property (GObject      *object,
         priv->display = g_value_get_pointer (value);
         break;
 
+      case PROP_COMPOSITED:
+        g_assert_not_reached ();
+        break;
+
       default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
         break;
@@ -208,6 +220,11 @@ install_properties (GObjectClass *object_class)
     g_param_spec_pointer ("display", "display", "display",
                          G_PARAM_CONSTRUCT_ONLY | G_PARAM_READWRITE |
                          G_PARAM_STATIC_STRINGS);
+
+  properties[PROP_COMPOSITED] =
+    g_param_spec_boolean ("composited", "composited", "composited",
+                          FALSE,
+                          G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
 
   g_object_class_install_properties (object_class, LAST_PROP, properties);
 }
@@ -463,7 +480,27 @@ meta_compositor_is_our_xwindow (MetaCompositor *compositor,
 gboolean
 meta_compositor_is_composited (MetaCompositor *compositor)
 {
-  return !META_IS_COMPOSITOR_NONE (compositor);
+  MetaCompositorPrivate *priv;
+
+  priv = meta_compositor_get_instance_private (compositor);
+
+  return priv->composited;
+}
+
+void
+meta_compositor_set_composited (MetaCompositor *compositor,
+                                gboolean        composited)
+{
+  MetaCompositorPrivate *priv;
+
+  priv = meta_compositor_get_instance_private (compositor);
+
+  if (priv->composited == composited)
+    return;
+
+  priv->composited = composited;
+
+  g_object_notify_by_pspec (G_OBJECT (compositor), properties[PROP_COMPOSITED]);
 }
 
 gboolean

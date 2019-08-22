@@ -1409,4 +1409,5 @@ meta_compositor_vulkan_class_init (MetaCompositorVulkanClass *vulkan_class)
 static void
 meta_compositor_vulkan_init (MetaCompositorVulkan *vulkan)
 {
+  meta_compositor_set_composited (META_COMPOSITOR (vulkan), TRUE);
 }

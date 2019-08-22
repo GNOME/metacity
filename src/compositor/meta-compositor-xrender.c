@@ -3146,4 +3146,5 @@ meta_compositor_xrender_class_init (MetaCompositorXRenderClass *xrender_class)
 static void
 meta_compositor_xrender_init (MetaCompositorXRender *xrender)
 {
+  meta_compositor_set_composited (META_COMPOSITOR (xrender), TRUE);
 }

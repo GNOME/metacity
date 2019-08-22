@@ -81,6 +81,9 @@ struct _MetaCompositorClass
   void              (* redraw)                       (MetaCompositor     *compositor);
 };
 
+void         meta_compositor_set_composited          (MetaCompositor  *compositor,
+                                                      gboolean         composited);
+
 gboolean     meta_compositor_check_common_extensions (MetaCompositor  *compositor,
                                                       GError         **error);
 
