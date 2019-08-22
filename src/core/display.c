@@ -236,15 +236,41 @@ sn_error_trap_pop (SnDisplay *sn_display,
 #endif
 
 static void
+reframe_func (MetaScreen *screen,
+              MetaWindow *window,
+              gpointer    user_data)
+{
+  meta_window_reframe (window);
+}
+
+static void
+notify_composited_cb (MetaCompositor *compositor,
+                      GParamSpec     *pspec,
+                      MetaDisplay    *display)
+{
+  gboolean composited;
+
+  meta_screen_foreach_window (display->screen, reframe_func, NULL);
+
+  composited = meta_compositor_is_composited (display->compositor);
+  meta_ui_set_composited (display->screen->ui, composited);
+}
+
+static void
 update_compositor (MetaDisplay *display,
                    gboolean     composite_windows)
 {
   const gchar *compositor;
   MetaCompositorType type;
+  gboolean old_composited;
   gboolean composited;
 
+  old_composited = FALSE;
   if (display->compositor != NULL)
-    g_object_unref (display->compositor);
+    {
+      old_composited = meta_compositor_is_composited (display->compositor);
+      g_object_unref (display->compositor);
+    }
 
   compositor = g_getenv ("META_COMPOSITOR");
   if (compositor != NULL)
@@ -265,11 +291,17 @@ update_compositor (MetaDisplay *display,
     }
 
   display->compositor = meta_compositor_new (type, display);
+  composited = meta_compositor_is_composited (display->compositor);
+
+  g_signal_connect (display->compositor, "notify::composited",
+                    G_CALLBACK (notify_composited_cb), display);
+
+  if (old_composited != composited)
+    meta_screen_foreach_window (display->screen, reframe_func, NULL);
 
   if (composite_windows)
     meta_screen_composite_all_windows (display->screen);
 
-  composited = meta_compositor_is_composited (display->compositor);
   meta_ui_set_composited (display->screen->ui, composited);
 }
 
