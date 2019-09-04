@@ -1,3 +1,10 @@
+Version 3.33.92
+===============
+- Added support for _GTK_SHOW_WINDOW_MENU. (#5)
+- Fix memory leak. (#7)
+- Updated translations:
+  Asier Sarasua Garmendia (eu), Jordi Mas (ca).
+
 Version 3.32.0
 ==============
 - Convert WM_NAME and WM_CLASS to UTF-8.
