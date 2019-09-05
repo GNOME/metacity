@@ -341,6 +341,9 @@ struct _MetaWindow
   /* if TRUE, we are freezing updates during a resize */
   guint updates_frozen_for_resize : 1;
 
+  /* whether focus should be restored on map */
+  guint restore_focus_on_map : 1;
+
   /* if non-NULL, the bounds of the window frame */
   cairo_region_t *frame_bounds;
 

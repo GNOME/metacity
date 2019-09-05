@@ -2352,6 +2352,11 @@ event_callback (XEvent   *event,
           window = meta_window_new (display, event->xmap.window, FALSE,
                                     META_EFFECT_TYPE_CREATE);
         }
+      else if (window && window->restore_focus_on_map)
+        {
+          meta_window_focus (window,
+                             meta_display_get_current_time_roundtrip (display));
+        }
       break;
     case MapRequest:
       if (window == NULL)
