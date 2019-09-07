@@ -2049,10 +2049,8 @@ notify_decorated_cb (MetaWindow            *window,
                      MetaCompositorXRender *xrender)
 {
   MetaCompWindow *cw;
-  XserverRegion damage;
 
   cw = find_comp_window_by_window (xrender, window);
-  damage = None;
 
   if (cw == NULL)
     return;
@@ -2121,7 +2119,8 @@ notify_decorated_cb (MetaWindow            *window,
 
   if (cw->extents != None)
     {
-      damage = cw->extents;
+      dump_xserver_region (xrender, "notify_decorated_cb", cw->extents);
+      add_damage (xrender, cw->extents);
       cw->extents = None;
     }
 
@@ -2164,8 +2163,6 @@ notify_decorated_cb (MetaWindow            *window,
 
   meta_error_trap_pop (window->display);
 
-  dump_xserver_region (xrender, "notify_decorated_cb", damage);
-  add_damage (xrender, damage);
   cw->damaged = TRUE;
 
   xrender->clip_changed = TRUE;
