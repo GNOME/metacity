@@ -183,19 +183,6 @@ get_toplevel_xvisual (MetaWindow *window)
   return window->xvisual;
 }
 
-static Window
-get_toplevel_xwindow (MetaWindow *window)
-{
-  MetaFrame *frame;
-
-  frame = meta_window_get_frame (window);
-
-  if (frame != NULL)
-    return meta_frame_get_xwindow (frame);
-
-  return meta_window_get_xwindow (window);
-}
-
 /* Gaussian stuff for creating the shadows */
 static double
 gaussian (double r,
@@ -1130,7 +1117,7 @@ get_window_region (MetaDisplay    *display,
   XserverRegion region;
 
   xdisplay = meta_display_get_xdisplay (display);
-  xwindow = get_toplevel_xwindow (cw->window);
+  xwindow = meta_window_get_toplevel_xwindow (cw->window);
 
   meta_error_trap_push (display);
   region = XFixesCreateRegionFromWindow (xdisplay, xwindow, WindowRegionBounding);
@@ -1264,7 +1251,7 @@ get_window_picture (MetaDisplay    *display,
   XRenderPictFormat *format;
 
   xdisplay = meta_display_get_xdisplay (display);
-  xwindow = get_toplevel_xwindow (cw->window);
+  xwindow = meta_window_get_toplevel_xwindow (cw->window);
 
   if (cw->back_pixmap == None)
     {
@@ -1320,7 +1307,7 @@ get_window_mask (MetaDisplay    *display,
     {
       Window xwindow;
 
-      xwindow = get_toplevel_xwindow (cw->window);
+      xwindow = meta_window_get_toplevel_xwindow (cw->window);
 
       meta_error_trap_push (display);
       cw->mask_pixmap = XCreatePixmap (xdisplay, xwindow, width, height,
@@ -2155,7 +2142,7 @@ notify_decorated_cb (MetaWindow            *window,
     }
 
   cw->damage = XDamageCreate (xrender->xdisplay,
-                              get_toplevel_xwindow (window),
+                              meta_window_get_toplevel_xwindow (window),
                               XDamageReportNonEmpty);
 
   determine_mode (xrender, cw);
@@ -2499,7 +2486,7 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
                              cw->rect.x, cw->rect.y);
     }
 
-  xwindow = get_toplevel_xwindow (window);
+  xwindow = meta_window_get_toplevel_xwindow (window);
   cw->damage = XDamageCreate (xrender->xdisplay, xwindow, XDamageReportNonEmpty);
 
   cw->alpha_pict = None;
