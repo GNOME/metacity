@@ -177,12 +177,6 @@ PKG_CHECK_MODULES(ALL, glib-2.0 >= $GLIB_REQUIRED_VERSION gthread-2.0 >= $GLIB_R
 PKG_CHECK_MODULES(METACITY_MESSAGE, gtk+-3.0 >= $GTK_REQUIRED_VERSION)
 PKG_CHECK_MODULES(METACITY_WINDOW_DEMO, gtk+-3.0 >= $GTK_REQUIRED_VERSION)
 
-if $PKG_CONFIG --atleast-version 1.2.0 pangoxft; then
-   echo "pangoxft found"
-else
-   AC_MSG_ERROR("Pango 1.2.0 or greater based on Xft2 is required")
-fi
-
 # Unconditionally use this dir to avoid a circular dep with gnomecc
 GNOME_KEYBINDINGS_KEYSDIR="${datadir}/gnome-control-center/keybindings"
 AC_SUBST(GNOME_KEYBINDINGS_KEYSDIR)
