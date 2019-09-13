@@ -25,29 +25,32 @@
 
 #include "display-private.h"
 #include "errors.h"
+#include "util.h"
 #include "screen-private.h"
 
 typedef struct
 {
-  MetaDisplay *display;
+  MetaDisplay   *display;
 
-  gboolean     composited;
+  gboolean       composited;
 
   /* _NET_WM_CM_Sn */
-  Atom         cm_atom;
-  Window       cm_window;
-  guint32      cm_timestamp;
+  Atom           cm_atom;
+  Window         cm_window;
+  guint32        cm_timestamp;
 
   /* XCompositeGetOverlayWindow */
-  Window       overlay_window;
+  Window         overlay_window;
 
   /* XCompositeRedirectSubwindows */
-  gboolean     windows_redirected;
+  gboolean       windows_redirected;
 
-  GHashTable  *surfaces;
+  XserverRegion  all_damage;
+
+  GHashTable    *surfaces;
 
   /* meta_compositor_queue_redraw */
-  guint        redraw_id;
+  guint          redraw_id;
 } MetaCompositorPrivate;
 
 enum
@@ -70,6 +73,58 @@ G_DEFINE_ABSTRACT_TYPE_WITH_CODE (MetaCompositor, meta_compositor, G_TYPE_OBJECT
                                   G_IMPLEMENT_INTERFACE (G_TYPE_INITABLE,
                                                          initable_iface_init))
 
+static void
+debug_damage_region (MetaCompositor *compositor,
+                     const gchar    *name,
+                     XserverRegion   damage)
+{
+  MetaCompositorPrivate *priv;
+  Display *xdisplay;
+
+  if (!meta_check_debug_flags (META_DEBUG_DAMAGE_REGION))
+    return;
+
+  priv = meta_compositor_get_instance_private (compositor);
+  xdisplay = priv->display->xdisplay;
+
+  if (damage != None)
+    {
+      XRectangle *rects;
+      int nrects;
+      XRectangle bounds;
+
+      rects = XFixesFetchRegionAndBounds (xdisplay, damage, &nrects, &bounds);
+
+      if (nrects > 0)
+        {
+          int i;
+
+          meta_topic (META_DEBUG_DAMAGE_REGION, "%s: %d rects, bounds: %d,%d (%d,%d)\n",
+                      name, nrects, bounds.x, bounds.y, bounds.width, bounds.height);
+
+          meta_push_no_msg_prefix ();
+
+          for (i = 0; i < nrects; i++)
+            {
+              meta_topic (META_DEBUG_DAMAGE_REGION, "\t%d,%d (%d,%d)\n", rects[i].x,
+                          rects[i].y, rects[i].width, rects[i].height);
+            }
+
+          meta_pop_no_msg_prefix ();
+        }
+      else
+        {
+          meta_topic (META_DEBUG_DAMAGE_REGION, "%s: empty\n", name);
+        }
+
+      XFree (rects);
+    }
+  else
+    {
+      meta_topic (META_DEBUG_DAMAGE_REGION, "%s: none\n", name);
+    }
+}
+
 static gboolean
 redraw_idle_cb (gpointer user_data)
 {
@@ -79,7 +134,12 @@ redraw_idle_cb (gpointer user_data)
   compositor = META_COMPOSITOR (user_data);
   priv = meta_compositor_get_instance_private (compositor);
 
-  META_COMPOSITOR_GET_CLASS (compositor)->redraw (compositor);
+  if (priv->all_damage != None)
+    {
+      META_COMPOSITOR_GET_CLASS (compositor)->redraw (compositor, priv->all_damage);
+      XFixesDestroyRegion (priv->display->xdisplay, priv->all_damage);
+      priv->all_damage = None;
+    }
 
   priv->redraw_id = 0;
 
@@ -135,6 +195,12 @@ meta_compositor_finalize (GObject *object)
     {
       g_source_remove (priv->redraw_id);
       priv->redraw_id = 0;
+    }
+
+  if (priv->all_damage != None)
+    {
+      XFixesDestroyRegion (xdisplay, priv->all_damage);
+      priv->all_damage = None;
     }
 
   if (priv->windows_redirected)
@@ -639,6 +705,40 @@ meta_compositor_get_display (MetaCompositor *compositor)
   priv = meta_compositor_get_instance_private (compositor);
 
   return priv->display;
+}
+
+/**
+ * meta_compositor_add_damage:
+ * @compositor: a #MetaCompositor
+ * @name: the name of damage region
+ * @damage: the damage region
+ *
+ * Adds damage region and queues a redraw.
+ */
+void
+meta_compositor_add_damage (MetaCompositor *compositor,
+                            const gchar    *name,
+                            XserverRegion   damage)
+{
+  MetaCompositorPrivate *priv;
+  Display *xdisplay;
+
+  priv = meta_compositor_get_instance_private (compositor);
+  xdisplay = priv->display->xdisplay;
+
+  debug_damage_region (compositor, name, damage);
+
+  if (priv->all_damage != None)
+    {
+      XFixesUnionRegion (xdisplay, priv->all_damage, priv->all_damage, damage);
+    }
+  else
+    {
+      priv->all_damage = XFixesCreateRegion (xdisplay, NULL, 0);
+      XFixesCopyRegion (xdisplay, priv->all_damage, damage);
+    }
+
+  meta_compositor_queue_redraw (compositor);
 }
 
 void

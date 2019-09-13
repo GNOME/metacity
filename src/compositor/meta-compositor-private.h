@@ -19,6 +19,7 @@
 #ifndef META_COMPOSITOR_PRIVATE_H
 #define META_COMPOSITOR_PRIVATE_H
 
+#include <X11/extensions/Xfixes.h>
 #include "meta-compositor.h"
 #include "meta-surface.h"
 
@@ -79,7 +80,8 @@ struct _MetaCompositorClass
   void              (* sync_window_geometry)         (MetaCompositor     *compositor,
                                                       MetaWindow         *window);
 
-  void              (* redraw)                       (MetaCompositor     *compositor);
+  void              (* redraw)                       (MetaCompositor     *compositor,
+                                                      XserverRegion       all_damage);
 };
 
 void         meta_compositor_set_composited          (MetaCompositor  *compositor,
@@ -97,6 +99,10 @@ gboolean     meta_compositor_redirect_windows        (MetaCompositor  *composito
                                                       GError         **error);
 
 MetaDisplay *meta_compositor_get_display             (MetaCompositor  *compositor);
+
+void         meta_compositor_add_damage              (MetaCompositor  *compositor,
+                                                      const gchar     *name,
+                                                      XserverRegion    damage);
 
 void         meta_compositor_queue_redraw            (MetaCompositor  *compositor);
 

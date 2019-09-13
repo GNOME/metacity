@@ -1363,7 +1363,8 @@ meta_compositor_vulkan_sync_window_geometry (MetaCompositor *compositor,
 }
 
 static void
-meta_compositor_vulkan_redraw (MetaCompositor *compositor)
+meta_compositor_vulkan_redraw (MetaCompositor *compositor,
+                               XserverRegion   all_damage)
 {
 }
 

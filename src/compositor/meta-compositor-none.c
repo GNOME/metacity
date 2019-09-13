@@ -129,7 +129,8 @@ meta_compositor_none_sync_window_geometry (MetaCompositor *compositor,
 }
 
 static void
-meta_compositor_none_redraw (MetaCompositor *compositor)
+meta_compositor_none_redraw (MetaCompositor *compositor,
+                             XserverRegion   all_damage)
 {
 }
 

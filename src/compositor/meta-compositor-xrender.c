@@ -163,7 +163,6 @@ struct _MetaCompositorXRender
   Picture         root_buffer;
   Picture         black_picture;
   Picture         root_tile;
-  XserverRegion   all_damage;
 
   gboolean        clip_changed;
 
@@ -1704,25 +1703,6 @@ add_repair (MetaCompositorXRender *xrender)
 }
 
 static void
-add_damage (MetaCompositorXRender *xrender,
-            XserverRegion          damage)
-{
-  Display *xdisplay = xrender->xdisplay;
-
-  /* dump_xserver_region (xrender, "add_damage", damage); */
-
-  if (xrender->all_damage)
-    {
-      XFixesUnionRegion (xdisplay, xrender->all_damage, xrender->all_damage, damage);
-      XFixesDestroyRegion (xdisplay, damage);
-    }
-  else
-    xrender->all_damage = damage;
-
-  add_repair (xrender);
-}
-
-static void
 damage_screen (MetaCompositorXRender *xrender)
 {
   MetaCompositor *compositor = META_COMPOSITOR (xrender);
@@ -1739,8 +1719,9 @@ damage_screen (MetaCompositorXRender *xrender)
   r.height = height;
 
   region = XFixesCreateRegion (xdisplay, &r, 1);
-  dump_xserver_region (xrender, "damage_screen", region);
-  add_damage (xrender, region);
+
+  meta_compositor_add_damage (compositor, "damage_screen", region);
+  XFixesDestroyRegion (xdisplay, region);
 }
 
 static void
@@ -1768,8 +1749,9 @@ repair_win (MetaCompositorXRender *xrender,
 
   meta_error_trap_pop (display);
 
-  dump_xserver_region (xrender, "repair_win", parts);
-  add_damage (xrender, parts);
+  meta_compositor_add_damage (compositor, "repair_win", parts);
+  XFixesDestroyRegion (xdisplay, parts);
+
   cw->damaged = TRUE;
 }
 
@@ -1972,8 +1954,8 @@ determine_mode (MetaCompositorXRender *xrender,
       damage = XFixesCreateRegion (xdisplay, NULL, 0);
       XFixesCopyRegion (xdisplay, damage, cw->extents);
 
-      dump_xserver_region (xrender, "determine_mode", damage);
-      add_damage (xrender, damage);
+      meta_compositor_add_damage (compositor, "determine_mode", damage);
+      XFixesDestroyRegion (xdisplay, damage);
     }
 }
 
@@ -1982,10 +1964,12 @@ notify_appears_focused_cb (MetaWindow            *window,
                            GParamSpec            *pspec,
                            MetaCompositorXRender *xrender)
 {
+  MetaCompositor *compositor;
   MetaCompWindow *cw;
   Display *xdisplay;
   XserverRegion damage;
 
+  compositor = META_COMPOSITOR (xrender);
   cw = find_comp_window_by_window (xrender, window);
 
   if (cw == NULL)
@@ -2033,8 +2017,8 @@ notify_appears_focused_cb (MetaWindow            *window,
       XFixesCopyRegion (xdisplay, damage, cw->extents);
     }
 
-  dump_xserver_region (xrender, "notify_appears_focused_cb", damage);
-  add_damage (xrender, damage);
+  meta_compositor_add_damage (compositor, "notify_appears_focused_cb", damage);
+  XFixesDestroyRegion (xdisplay, damage);
 
   xrender->clip_changed = TRUE;
   add_repair (xrender);
@@ -2045,8 +2029,10 @@ notify_decorated_cb (MetaWindow            *window,
                      GParamSpec            *pspec,
                      MetaCompositorXRender *xrender)
 {
+  MetaCompositor *compositor;
   MetaCompWindow *cw;
 
+  compositor = META_COMPOSITOR (xrender);
   cw = find_comp_window_by_window (xrender, window);
 
   if (cw == NULL)
@@ -2116,8 +2102,8 @@ notify_decorated_cb (MetaWindow            *window,
 
   if (cw->extents != None)
     {
-      dump_xserver_region (xrender, "notify_decorated_cb", cw->extents);
-      add_damage (xrender, cw->extents);
+      meta_compositor_add_damage (compositor, "notify_decorated_cb", cw->extents);
+      XFixesDestroyRegion (xrender->xdisplay, cw->extents);
       cw->extents = None;
     }
 
@@ -2220,8 +2206,8 @@ expose_area (MetaCompositorXRender *xrender,
 
   region = XFixesCreateRegion (xrender->xdisplay, rects, nrects);
 
-  dump_xserver_region (xrender, "expose_area", region);
-  add_damage (xrender, region);
+  meta_compositor_add_damage (META_COMPOSITOR (xrender), "expose_area", region);
+  XFixesDestroyRegion (xrender->xdisplay, region);
 }
 
 static void
@@ -2421,7 +2407,6 @@ meta_compositor_xrender_manage (MetaCompositor  *compositor,
   xrender->black_picture = solid_picture (xdisplay, TRUE, 1, 0, 0, 0);
 
   xrender->root_tile = None;
-  xrender->all_damage = None;
 
   xrender->windows = NULL;
   xrender->windows_by_xid = g_hash_table_new (g_direct_hash, g_direct_equal);
@@ -2559,8 +2544,8 @@ meta_compositor_xrender_remove_window (MetaCompositor *compositor,
 
   if (cw->extents != None)
     {
-      dump_xserver_region (xrender, "remove_window", cw->extents);
-      add_damage (xrender, cw->extents);
+      meta_compositor_add_damage (compositor, "remove_window", cw->extents);
+      XFixesDestroyRegion (xrender->xdisplay, cw->extents);
       cw->extents = None;
     }
 
@@ -2606,8 +2591,8 @@ meta_compositor_xrender_hide_window (MetaCompositor *compositor,
 
   if (cw->extents != None)
     {
-      dump_xserver_region (xrender, "hide_window", cw->extents);
-      add_damage (xrender, cw->extents);
+      meta_compositor_add_damage (compositor, "hide_window", cw->extents);
+      XFixesDestroyRegion (xrender->xdisplay, cw->extents);
       cw->extents = None;
     }
 
@@ -2667,8 +2652,8 @@ meta_compositor_xrender_window_shape_region_changed (MetaCompositor *compositor,
 
   if (cw->shape_region != None)
     {
-      dump_xserver_region (xrender, "shape_changed", cw->shape_region);
-      add_damage (xrender, cw->shape_region);
+      meta_compositor_add_damage (compositor, "shape_changed", cw->shape_region);
+      XFixesDestroyRegion (xrender->xdisplay, cw->shape_region);
 
       xrender->clip_changed = TRUE;
     }
@@ -3086,8 +3071,8 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
       XFixesTranslateRegion (xrender->xdisplay, cw->shape_region, dx, dy);
     }
 
-  dump_xserver_region (xrender, "sync_window_geometry", damage);
-  add_damage (xrender, damage);
+  meta_compositor_add_damage (compositor, "sync_window_geometry", damage);
+  XFixesDestroyRegion (xrender->xdisplay, damage);
 
   xrender->clip_changed = TRUE;
 
@@ -3095,7 +3080,8 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
 }
 
 static void
-meta_compositor_xrender_redraw (MetaCompositor *compositor)
+meta_compositor_xrender_redraw (MetaCompositor *compositor,
+                                XserverRegion   all_damage)
 {
   MetaCompositorXRender *xrender;
   MetaDisplay *display;
@@ -3103,14 +3089,9 @@ meta_compositor_xrender_redraw (MetaCompositor *compositor)
   xrender = META_COMPOSITOR_XRENDER (compositor);
   display = meta_compositor_get_display (compositor);
 
-  if (xrender->all_damage == None)
-    return;
-
   meta_error_trap_push (display);
 
-  paint_all (xrender, xrender->all_damage);
-  XFixesDestroyRegion (xrender->xdisplay, xrender->all_damage);
-  xrender->all_damage = None;
+  paint_all (xrender, all_damage);
   xrender->clip_changed = FALSE;
 
   meta_error_trap_pop (display);

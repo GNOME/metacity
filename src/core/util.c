@@ -56,7 +56,8 @@ static const GDebugKey debug_keys[] = {
   { "shapes", META_DEBUG_SHAPES },
   { "edge-resistance", META_DEBUG_EDGE_RESISTANCE },
   { "verbose", META_DEBUG_VERBOSE },
-  { "vulkan", META_DEBUG_VULKAN }
+  { "vulkan", META_DEBUG_VULKAN },
+  { "damage-region", META_DEBUG_DAMAGE_REGION }
 };
 
 static guint debug_flags = 0;
@@ -275,6 +276,8 @@ topic_name (MetaDebugFlags topic)
       return "VERBOSE";
     case META_DEBUG_VULKAN:
       return "VULKAN";
+    case META_DEBUG_DAMAGE_REGION:
+      return "DAMAGE_REGION";
     default:
       break;
     }
