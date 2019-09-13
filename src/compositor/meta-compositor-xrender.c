@@ -2342,7 +2342,13 @@ meta_compositor_xrender_finalize (GObject *object)
       int i;
 
       for (i = 0; i < LAST_SHADOW_TYPE; i++)
-        g_free (xrender->shadows[i]->gaussian_map);
+        {
+          g_clear_pointer (&xrender->shadows[i]->gaussian_map, g_free);
+          g_clear_pointer (&xrender->shadows[i]->shadow_corner, g_free);
+          g_clear_pointer (&xrender->shadows[i]->shadow_top, g_free);
+
+          g_clear_pointer (&xrender->shadows[i], g_free);
+        }
     }
 
   G_OBJECT_CLASS (meta_compositor_xrender_parent_class)->finalize (object);
