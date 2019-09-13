@@ -361,6 +361,8 @@ AS_IF([test "x$enable_vulkan" != "xno"], [
   ])
 ], [found_vulkan=no])
 
+AM_CONDITIONAL([HAVE_VULKAN], [test "x$found_vulkan" = "xyes"])
+
 dnl **************************************************************************
 dnl Process .in files
 dnl **************************************************************************

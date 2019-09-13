@@ -68,7 +68,10 @@
 
 #include "compositor/meta-compositor-none.h"
 #include "compositor/meta-compositor-xrender.h"
+
+#ifdef HAVE_VULKAN
 #include "compositor/meta-compositor-vulkan.h"
+#endif
 
 #define GRAB_OP_IS_WINDOW_SWITCH(g)                     \
         (g == META_GRAB_OP_KEYBOARD_TABBING_NORMAL  ||  \
@@ -308,7 +311,12 @@ create_compositor (MetaDisplay         *display,
         break;
 
       case META_COMPOSITOR_TYPE_VULKAN:
+#ifdef HAVE_VULKAN
         compositor = meta_compositor_vulkan_new (display, error);
+#else
+        g_set_error_literal (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                             "Compiled without Vulkan support");
+#endif
         break;
 
       default:

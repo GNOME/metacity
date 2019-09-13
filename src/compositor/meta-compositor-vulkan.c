@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 Alberts Muktupāvels
+ * Copyright (C) 2017-2019 Alberts Muktupāvels
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,10 +17,8 @@
 
 #include "config.h"
 
-#ifdef HAVE_VULKAN
 #define VK_USE_PLATFORM_XLIB_KHR
 #include <vulkan/vulkan.h>
-#endif
 
 #include "display-private.h"
 #include "meta-compositor-vulkan.h"
@@ -35,7 +33,6 @@ struct _MetaCompositorVulkan
   gboolean                  lunarg_validation_layer;
   gboolean                  debug_report_extension;
 
-#ifdef HAVE_VULKAN
   VkInstance                instance;
 
   VkDebugReportCallbackEXT  debug_callback;
@@ -72,12 +69,10 @@ struct _MetaCompositorVulkan
 
   uint32_t                  n_command_buffers;
   VkCommandBuffer          *command_buffers;
-#endif
 };
 
 G_DEFINE_TYPE (MetaCompositorVulkan, meta_compositor_vulkan, META_TYPE_COMPOSITOR)
 
-#ifdef HAVE_VULKAN
 static void
 destroy_command_buffers (MetaCompositorVulkan *vulkan)
 {
@@ -1124,12 +1119,10 @@ create_semaphore (MetaCompositorVulkan  *vulkan,
 
   return TRUE;
 }
-#endif
 
 static void
 meta_compositor_vulkan_finalize (GObject *object)
 {
-#ifdef HAVE_VULKAN
   MetaCompositorVulkan *vulkan;
 
   vulkan = META_COMPOSITOR_VULKAN (object);
@@ -1183,12 +1176,10 @@ meta_compositor_vulkan_finalize (GObject *object)
       vkDestroyInstance (vulkan->instance, NULL);
       vulkan->instance = VK_NULL_HANDLE;
     }
-#endif
 
   G_OBJECT_CLASS (meta_compositor_vulkan_parent_class)->finalize (object);
 }
 
-#ifdef HAVE_VULKAN
 static gboolean
 not_implemented_cb (MetaCompositorVulkan *vulkan)
 {
@@ -1205,13 +1196,11 @@ not_implemented_cb (MetaCompositorVulkan *vulkan)
 
   return G_SOURCE_REMOVE;
 }
-#endif
 
 static gboolean
 meta_compositor_vulkan_manage (MetaCompositor  *compositor,
                                GError         **error)
 {
-#ifdef HAVE_VULKAN
   MetaCompositorVulkan *vulkan;
 
   vulkan = META_COMPOSITOR_VULKAN (compositor);
@@ -1269,12 +1258,6 @@ meta_compositor_vulkan_manage (MetaCompositor  *compositor,
   g_timeout_add (10000, (GSourceFunc) not_implemented_cb, vulkan);
 
   return TRUE;
-#else
-  g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-               "Compiled without Vulkan support");
-
-  return FALSE;
-#endif
 }
 
 static void
