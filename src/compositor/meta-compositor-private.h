@@ -74,9 +74,6 @@ struct _MetaCompositorClass
 
   void              (* sync_screen_size)             (MetaCompositor     *compositor);
 
-  void              (* sync_stack)                   (MetaCompositor     *compositor,
-                                                      GList              *stack);
-
   void              (* sync_window_geometry)         (MetaCompositor     *compositor,
                                                       MetaWindow         *window);
 
@@ -99,6 +96,8 @@ gboolean     meta_compositor_redirect_windows        (MetaCompositor  *composito
                                                       GError         **error);
 
 MetaDisplay *meta_compositor_get_display             (MetaCompositor  *compositor);
+
+GList       *meta_compositor_get_stack               (MetaCompositor  *compositor);
 
 void         meta_compositor_add_damage              (MetaCompositor  *compositor,
                                                       const gchar     *name,

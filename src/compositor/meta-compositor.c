@@ -48,6 +48,7 @@ typedef struct
   XserverRegion  all_damage;
 
   GHashTable    *surfaces;
+  GList         *stack;
 
   /* meta_compositor_queue_redraw */
   guint          redraw_id;
@@ -176,6 +177,7 @@ meta_compositor_dispose (GObject *object)
   priv = meta_compositor_get_instance_private (compositor);
 
   g_clear_pointer (&priv->surfaces, g_hash_table_destroy);
+  g_clear_pointer (&priv->stack, g_list_free);
 
   G_OBJECT_CLASS (meta_compositor_parent_class)->dispose (object);
 }
@@ -358,6 +360,7 @@ meta_compositor_add_window (MetaCompositor *compositor,
     return;
 
   g_hash_table_insert (priv->surfaces, window, surface);
+  priv->stack = g_list_prepend (priv->stack, surface);
 }
 
 void
@@ -365,11 +368,18 @@ meta_compositor_remove_window (MetaCompositor *compositor,
                                MetaWindow     *window)
 {
   MetaCompositorPrivate *priv;
+  MetaSurface *surface;
 
   priv = meta_compositor_get_instance_private (compositor);
 
   META_COMPOSITOR_GET_CLASS (compositor)->remove_window (compositor, window);
 
+  surface = g_hash_table_lookup (priv->surfaces, window);
+
+  if (surface == NULL)
+    return;
+
+  priv->stack = g_list_remove (priv->stack, surface);
   g_hash_table_remove (priv->surfaces, window);
 }
 
@@ -501,11 +511,34 @@ void
 meta_compositor_sync_stack (MetaCompositor *compositor,
                             GList          *stack)
 {
-  MetaCompositorClass *compositor_class;
+  MetaCompositorPrivate *priv;
+  GList *l1;
 
-  compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
+  priv = meta_compositor_get_instance_private (compositor);
 
-  compositor_class->sync_stack (compositor, stack);
+  if (priv->stack == NULL)
+    return;
+
+  for (l1 = stack; l1 != NULL; l1 = l1->next)
+    {
+      MetaWindow *window;
+      MetaSurface *surface;
+
+      window = META_WINDOW (l1->data);
+      surface = g_hash_table_lookup (priv->surfaces, window);
+
+      if (surface == NULL)
+        {
+          g_warning ("Failed to find MetaSurface for MetaWindow %p", window);
+          continue;
+        }
+
+      priv->stack = g_list_remove (priv->stack, surface);
+      priv->stack = g_list_prepend (priv->stack, surface);
+    }
+
+  priv->stack = g_list_reverse (priv->stack);
+  meta_compositor_damage_screen (compositor);
 }
 
 void
@@ -705,6 +738,24 @@ meta_compositor_get_display (MetaCompositor *compositor)
   priv = meta_compositor_get_instance_private (compositor);
 
   return priv->display;
+}
+
+/**
+ * meta_compositor_get_stack:
+ * @compositor: a #MetaCompositor
+ *
+ * Returns the the list of surfaces in stacking order.
+ *
+ * Returns: (transfer none) (element-type MetaSurface): the list of surfaces
+ */
+GList *
+meta_compositor_get_stack (MetaCompositor *compositor)
+{
+  MetaCompositorPrivate *priv;
+
+  priv = meta_compositor_get_instance_private (compositor);
+
+  return priv->stack;
 }
 
 /**
