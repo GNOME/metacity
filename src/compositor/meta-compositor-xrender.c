@@ -1703,28 +1703,6 @@ add_repair (MetaCompositorXRender *xrender)
 }
 
 static void
-damage_screen (MetaCompositorXRender *xrender)
-{
-  MetaCompositor *compositor = META_COMPOSITOR (xrender);
-  MetaDisplay *display = meta_compositor_get_display (compositor);
-  Display *xdisplay = meta_display_get_xdisplay (display);
-  XserverRegion region;
-  int width, height;
-  XRectangle r;
-
-  r.x = 0;
-  r.y = 0;
-  meta_screen_get_size (xrender->screen, &width, &height);
-  r.width = width;
-  r.height = height;
-
-  region = XFixesCreateRegion (xdisplay, &r, 1);
-
-  meta_compositor_add_damage (compositor, "damage_screen", region);
-  XFixesDestroyRegion (xdisplay, region);
-}
-
-static void
 repair_win (MetaCompositorXRender *xrender,
             MetaCompWindow        *cw)
 {
@@ -2178,9 +2156,7 @@ process_property_notify (MetaCompositorXRender *xrender,
           /* Damage the whole screen as we may need to redraw the
            * background ourselves
            */
-          damage_screen (xrender);
-
-          add_repair (xrender);
+          meta_compositor_damage_screen (compositor);
           return;
         }
     }
@@ -2424,7 +2400,7 @@ meta_compositor_xrender_manage (MetaCompositor  *compositor,
 
   XClearArea (xdisplay, xrender->overlay_window, 0, 0, 0, 0, TRUE);
 
-  damage_screen (xrender);
+  meta_compositor_damage_screen (compositor);
 
   meta_prefs_add_listener (update_shadows, xrender);
   xrender->prefs_listener_added = TRUE;
@@ -2874,7 +2850,7 @@ meta_compositor_xrender_sync_screen_size (MetaCompositor *compositor)
       xrender->root_buffer = None;
     }
 
-  damage_screen (xrender);
+  meta_compositor_damage_screen (compositor);
 }
 
 static void
@@ -2906,8 +2882,7 @@ meta_compositor_xrender_sync_stack (MetaCompositor *compositor,
 
   xrender->windows = g_list_reverse (xrender->windows);
 
-  damage_screen (xrender);
-  add_repair (xrender);
+  meta_compositor_damage_screen (compositor);
 }
 
 static void

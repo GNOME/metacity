@@ -742,6 +742,29 @@ meta_compositor_add_damage (MetaCompositor *compositor,
 }
 
 void
+meta_compositor_damage_screen (MetaCompositor *compositor)
+{
+  MetaCompositorPrivate *priv;
+  Display *xdisplay;
+  int screen_width;
+  int screen_height;
+  XserverRegion screen_region;
+
+  priv = meta_compositor_get_instance_private (compositor);
+  xdisplay = priv->display->xdisplay;
+
+  meta_screen_get_size (priv->display->screen, &screen_width, &screen_height);
+
+  screen_region = XFixesCreateRegion (xdisplay, &(XRectangle) {
+                                        .width = screen_width,
+                                        .height = screen_height
+                                      }, 1);
+
+  meta_compositor_add_damage (compositor, "damage_screen", screen_region);
+  XFixesDestroyRegion (xdisplay, screen_region);
+}
+
+void
 meta_compositor_queue_redraw (MetaCompositor *compositor)
 {
   MetaCompositorPrivate *priv;

@@ -104,6 +104,8 @@ void         meta_compositor_add_damage              (MetaCompositor  *composito
                                                       const gchar     *name,
                                                       XserverRegion    damage);
 
+void         meta_compositor_damage_screen           (MetaCompositor  *compositor);
+
 void         meta_compositor_queue_redraw            (MetaCompositor  *compositor);
 
 G_END_DECLS
