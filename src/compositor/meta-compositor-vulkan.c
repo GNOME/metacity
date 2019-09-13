@@ -1411,3 +1411,12 @@ meta_compositor_vulkan_init (MetaCompositorVulkan *vulkan)
 {
   meta_compositor_set_composited (META_COMPOSITOR (vulkan), TRUE);
 }
+
+MetaCompositor *
+meta_compositor_vulkan_new (MetaDisplay  *display,
+                            GError      **error)
+{
+  return g_initable_new (META_TYPE_COMPOSITOR_VULKAN, NULL, error,
+                         "display", display,
+                         NULL);
+}

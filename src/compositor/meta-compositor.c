@@ -17,6 +17,7 @@
  */
 
 #include "config.h"
+#include "meta-compositor-private.h"
 
 #include <X11/extensions/shape.h>
 #include <X11/extensions/Xcomposite.h>
@@ -24,9 +25,6 @@
 
 #include "display-private.h"
 #include "errors.h"
-#include "meta-compositor-none.h"
-#include "meta-compositor-xrender.h"
-#include "meta-compositor-vulkan.h"
 #include "screen-private.h"
 
 typedef struct
@@ -246,50 +244,6 @@ meta_compositor_class_init (MetaCompositorClass *compositor_class)
 static void
 meta_compositor_init (MetaCompositor *compositor)
 {
-}
-
-MetaCompositor *
-meta_compositor_new (MetaCompositorType  type,
-                     MetaDisplay        *display)
-{
-  GType gtype;
-  MetaCompositor *compositor;
-  GError *error;
-
-  switch (type)
-    {
-      case META_COMPOSITOR_TYPE_NONE:
-        gtype = META_TYPE_COMPOSITOR_NONE;
-        break;
-
-      case META_COMPOSITOR_TYPE_XRENDER:
-        gtype = META_TYPE_COMPOSITOR_XRENDER;
-        break;
-
-      case META_COMPOSITOR_TYPE_VULKAN:
-        gtype = META_TYPE_COMPOSITOR_VULKAN;
-        break;
-
-      default:
-        g_assert_not_reached ();
-        break;
-    }
-
-  error = NULL;
-  compositor = g_initable_new (gtype, NULL, &error, "display", display, NULL);
-
-  if (compositor == NULL)
-    {
-      g_warning ("Failed to create %s: %s", g_type_name (gtype), error->message);
-      g_error_free (error);
-
-      if (type != META_COMPOSITOR_TYPE_NONE)
-        compositor = meta_compositor_new (META_COMPOSITOR_TYPE_NONE, display);
-    }
-
-  g_assert (compositor != NULL);
-
-  return compositor;
 }
 
 void

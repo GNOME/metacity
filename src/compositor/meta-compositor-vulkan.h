@@ -26,6 +26,9 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (MetaCompositorVulkan, meta_compositor_vulkan,
                       META, COMPOSITOR_VULKAN, MetaCompositor)
 
+MetaCompositor *meta_compositor_vulkan_new (MetaDisplay  *display,
+                                            GError      **error);
+
 G_END_DECLS
 
 #endif

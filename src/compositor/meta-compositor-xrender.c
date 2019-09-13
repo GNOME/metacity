@@ -3154,3 +3154,12 @@ meta_compositor_xrender_init (MetaCompositorXRender *xrender)
 {
   meta_compositor_set_composited (META_COMPOSITOR (xrender), TRUE);
 }
+
+MetaCompositor *
+meta_compositor_xrender_new (MetaDisplay  *display,
+                             GError      **error)
+{
+  return g_initable_new (META_TYPE_COMPOSITOR_XRENDER, NULL, error,
+                         "display", display,
+                         NULL);
+}

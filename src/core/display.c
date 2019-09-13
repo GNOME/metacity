@@ -66,6 +66,10 @@
 #include <X11/extensions/Xfixes.h>
 #include <string.h>
 
+#include "compositor/meta-compositor-none.h"
+#include "compositor/meta-compositor-xrender.h"
+#include "compositor/meta-compositor-vulkan.h"
+
 #define GRAB_OP_IS_WINDOW_SWITCH(g)                     \
         (g == META_GRAB_OP_KEYBOARD_TABBING_NORMAL  ||  \
          g == META_GRAB_OP_KEYBOARD_TABBING_DOCK    ||  \
@@ -256,23 +260,14 @@ notify_composited_cb (MetaCompositor *compositor,
   meta_ui_set_composited (display->screen->ui, composited);
 }
 
-static void
-update_compositor (MetaDisplay *display,
-                   gboolean     composite_windows)
+static MetaCompositorType
+get_compositor_type (MetaDisplay *display)
 {
   const gchar *compositor;
   MetaCompositorType type;
-  gboolean old_composited;
-  gboolean composited;
-
-  old_composited = FALSE;
-  if (display->compositor != NULL)
-    {
-      old_composited = meta_compositor_is_composited (display->compositor);
-      g_object_unref (display->compositor);
-    }
 
   compositor = g_getenv ("META_COMPOSITOR");
+
   if (compositor != NULL)
     {
       if (g_strcmp0 (compositor, "vulkan") == 0)
@@ -290,19 +285,84 @@ update_compositor (MetaDisplay *display,
         type = META_COMPOSITOR_TYPE_NONE;
     }
 
-  display->compositor = meta_compositor_new (type, display);
-  composited = meta_compositor_is_composited (display->compositor);
+  return type;
+}
+
+static MetaCompositor *
+create_compositor (MetaDisplay         *display,
+                   MetaCompositorType   type,
+                   GError             **error)
+{
+  MetaCompositor *compositor;
+
+  compositor = NULL;
+
+  switch (type)
+    {
+      case META_COMPOSITOR_TYPE_NONE:
+        compositor = meta_compositor_none_new (display, error);
+        break;
+
+      case META_COMPOSITOR_TYPE_XRENDER:
+        compositor = meta_compositor_xrender_new (display, error);
+        break;
+
+      case META_COMPOSITOR_TYPE_VULKAN:
+        compositor = meta_compositor_vulkan_new (display, error);
+        break;
+
+      default:
+        g_assert_not_reached ();
+        break;
+    }
+
+  return compositor;
+}
+
+static void
+update_compositor (MetaDisplay *display,
+                   gboolean     composite_windows)
+{
+  GError *error;
+  gboolean old_composited;
+  gboolean composited;
+
+  old_composited = FALSE;
+  if (display->compositor != NULL)
+    {
+      old_composited = meta_compositor_is_composited (display->compositor);
+      g_object_unref (display->compositor);
+    }
+
+  error = NULL;
+  display->compositor = create_compositor (display,
+                                           get_compositor_type (display),
+                                           &error);
+
+  if (error != NULL)
+    {
+      g_warning ("Failed to create compositor: %s", error->message);
+      g_error_free (error);
+
+      g_assert (display->compositor == NULL);
+      display->compositor = create_compositor (display,
+                                               META_COMPOSITOR_TYPE_NONE,
+                                               NULL);
+
+      g_assert (display->compositor != NULL);
+    }
 
   g_signal_connect (display->compositor, "notify::composited",
                     G_CALLBACK (notify_composited_cb), display);
+
+  composited = meta_compositor_is_composited (display->compositor);
+  meta_ui_set_composited (display->screen->ui, composited);
 
   if (old_composited != composited)
     meta_screen_foreach_window (display->screen, reframe_func, NULL);
 
   if (composite_windows)
     meta_screen_composite_all_windows (display->screen);
-
-  meta_ui_set_composited (display->screen->ui, composited);
 }
 
 /**

@@ -26,6 +26,9 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (MetaCompositorNone, meta_compositor_none,
                       META, COMPOSITOR_NONE, MetaCompositor)
 
+MetaCompositor *meta_compositor_none_new (MetaDisplay  *display,
+                                          GError      **error);
+
 G_END_DECLS
 
 #endif

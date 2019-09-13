@@ -47,9 +47,6 @@ typedef enum
   META_EFFECT_TYPE_UNMINIMIZE,
 } MetaEffectType;
 
-MetaCompositor  *meta_compositor_new                          (MetaCompositorType  type,
-                                                               MetaDisplay        *display);
-
 void             meta_compositor_add_window                   (MetaCompositor     *compositor,
                                                                MetaWindow         *window);
 

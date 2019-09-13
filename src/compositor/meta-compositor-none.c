@@ -163,3 +163,12 @@ meta_compositor_none_init (MetaCompositorNone *none)
 {
   meta_compositor_set_composited (META_COMPOSITOR (none), FALSE);
 }
+
+MetaCompositor *
+meta_compositor_none_new (MetaDisplay  *display,
+                          GError      **error)
+{
+  return g_initable_new (META_TYPE_COMPOSITOR_NONE, NULL, error,
+                         "display", display,
+                         NULL);
+}
