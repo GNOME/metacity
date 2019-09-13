@@ -22,6 +22,7 @@
 
 #include "display-private.h"
 #include "meta-compositor-vulkan.h"
+#include "meta-surface-vulkan.h"
 #include "prefs.h"
 #include "screen.h"
 #include "util.h"
@@ -1260,10 +1261,17 @@ meta_compositor_vulkan_manage (MetaCompositor  *compositor,
   return TRUE;
 }
 
-static void
+static MetaSurface *
 meta_compositor_vulkan_add_window (MetaCompositor *compositor,
                                    MetaWindow     *window)
 {
+  MetaSurface *surface;
+
+  surface = g_object_new (META_TYPE_SURFACE_VULKAN,
+                          "window", window,
+                          NULL);
+
+  return surface;
 }
 
 static void

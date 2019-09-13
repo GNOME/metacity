@@ -44,6 +44,8 @@ typedef struct
   /* XCompositeRedirectSubwindows */
   gboolean     windows_redirected;
 
+  GHashTable  *surfaces;
+
   /* meta_compositor_queue_redraw */
   guint        redraw_id;
 } MetaCompositorPrivate;
@@ -102,6 +104,20 @@ static void
 initable_iface_init (GInitableIface *iface)
 {
   iface->init = meta_compositor_initable_init;
+}
+
+static void
+meta_compositor_dispose (GObject *object)
+{
+  MetaCompositor *compositor;
+  MetaCompositorPrivate *priv;
+
+  compositor = META_COMPOSITOR (object);
+  priv = meta_compositor_get_instance_private (compositor);
+
+  g_clear_pointer (&priv->surfaces, g_hash_table_destroy);
+
+  G_OBJECT_CLASS (meta_compositor_parent_class)->dispose (object);
 }
 
 static void
@@ -234,6 +250,7 @@ meta_compositor_class_init (MetaCompositorClass *compositor_class)
 
   object_class = G_OBJECT_CLASS (compositor_class);
 
+  object_class->dispose = meta_compositor_dispose;
   object_class->finalize = meta_compositor_finalize;
   object_class->get_property = meta_compositor_get_property;
   object_class->set_property = meta_compositor_set_property;
@@ -244,28 +261,50 @@ meta_compositor_class_init (MetaCompositorClass *compositor_class)
 static void
 meta_compositor_init (MetaCompositor *compositor)
 {
+  MetaCompositorPrivate *priv;
+
+  priv = meta_compositor_get_instance_private (compositor);
+
+  priv->surfaces = g_hash_table_new_full (g_direct_hash, g_direct_equal,
+                                          NULL, g_object_unref);
 }
 
 void
 meta_compositor_add_window (MetaCompositor *compositor,
                             MetaWindow     *window)
 {
+  MetaCompositorPrivate *priv;
   MetaCompositorClass *compositor_class;
+  MetaSurface *surface;
+
+  g_assert (window != NULL);
+
+  priv = meta_compositor_get_instance_private (compositor);
+
+  /* If already added, ignore */
+  if (g_hash_table_lookup (priv->surfaces, window) != NULL)
+    return;
 
   compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
+  surface = compositor_class->add_window (compositor, window);
 
-  compositor_class->add_window (compositor, window);
+  if (surface == NULL)
+    return;
+
+  g_hash_table_insert (priv->surfaces, window, surface);
 }
 
 void
 meta_compositor_remove_window (MetaCompositor *compositor,
                                MetaWindow     *window)
 {
-  MetaCompositorClass *compositor_class;
+  MetaCompositorPrivate *priv;
 
-  compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
+  priv = meta_compositor_get_instance_private (compositor);
 
-  compositor_class->remove_window (compositor, window);
+  META_COMPOSITOR_GET_CLASS (compositor)->remove_window (compositor, window);
+
+  g_hash_table_remove (priv->surfaces, window);
 }
 
 void

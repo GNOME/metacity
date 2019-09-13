@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 Alberts Muktupāvels
+ * Copyright (C) 2017-2019 Alberts Muktupāvels
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,10 +33,11 @@ meta_compositor_none_manage (MetaCompositor  *compositor,
   return TRUE;
 }
 
-static void
+static MetaSurface *
 meta_compositor_none_add_window (MetaCompositor *compositor,
                                  MetaWindow     *window)
 {
+  return NULL;
 }
 
 static void

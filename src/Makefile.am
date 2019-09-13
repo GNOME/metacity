@@ -32,6 +32,11 @@ metacity_SOURCES= 				\
 	compositor/meta-compositor-private.h	\
 	compositor/meta-compositor-xrender.c	\
 	compositor/meta-compositor-xrender.h	\
+	compositor/meta-surface.c		\
+	compositor/meta-surface.h		\
+	compositor/meta-surface-private.h	\
+	compositor/meta-surface-xrender.c	\
+	compositor/meta-surface-xrender.h	\
 	include/meta-compositor.h		\
 	core/above-tab-keycode.c		\
 	core/constraints.c			\
@@ -117,6 +122,8 @@ if HAVE_VULKAN
 metacity_SOURCES += \
 	compositor/meta-compositor-vulkan.c \
 	compositor/meta-compositor-vulkan.h \
+	compositor/meta-surface-vulkan.c \
+	compositor/meta-surface-vulkan.h \
 	$(NULL)
 endif
 

@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2007 Iain Holmes
- * Copyright (C) 2017 Alberts Muktupāvels
+ * Copyright (C) 2017-2019 Alberts Muktupāvels
  *
  * Based on xcompmgr - (C) 2003 Keith Packard
  *          xfwm4    - (C) 2005-2007 Olivier Fourdan
@@ -41,6 +41,7 @@
 #include "prefs.h"
 #include "window-private.h"
 #include "meta-compositor-xrender.h"
+#include "meta-surface-xrender.h"
 #include "xprops.h"
 #include "util.h"
 #include <X11/Xatom.h>
@@ -1773,11 +1774,10 @@ repair_win (MetaCompositorXRender *xrender,
 }
 
 static void
-free_win (MetaCompositorXRender *xrender,
-          MetaCompWindow        *cw,
-          gboolean               destroy)
+free_win (MetaCompWindow *cw,
+          gboolean        destroy)
 {
-  MetaDisplay *display = meta_screen_get_display (xrender->screen);
+  MetaDisplay *display = meta_window_get_display (cw->window);
   Display *xdisplay = meta_display_get_xdisplay (display);
 
   meta_error_trap_push (display);
@@ -1885,6 +1885,16 @@ free_win (MetaCompositorXRender *xrender,
     }
 
   meta_error_trap_pop (display);
+}
+
+static void
+cw_destroy_cb (gpointer data)
+{
+  MetaCompWindow *cw;
+
+  cw = (MetaCompWindow *) data;
+
+  free_win (cw, TRUE);
 }
 
 static void
@@ -2310,7 +2320,6 @@ meta_compositor_xrender_finalize (GObject *object)
   MetaCompositorXRender *xrender;
   MetaDisplay *display;
   Display *xdisplay;
-  GList *index;
 
   xrender = META_COMPOSITOR_XRENDER (object);
   display = meta_compositor_get_display (META_COMPOSITOR (xrender));
@@ -2323,11 +2332,6 @@ meta_compositor_xrender_finalize (GObject *object)
     }
 
   /* Destroy the windows */
-  for (index = xrender->windows; index; index = index->next)
-    {
-      MetaCompWindow *cw = (MetaCompWindow *) index->data;
-      free_win (xrender, cw, TRUE);
-    }
   g_list_free (xrender->windows);
   g_clear_pointer (&xrender->windows_by_xid, g_hash_table_destroy);
 
@@ -2445,28 +2449,29 @@ meta_compositor_xrender_manage (MetaCompositor  *compositor,
   return TRUE;
 }
 
-static void
+static MetaSurface *
 meta_compositor_xrender_add_window (MetaCompositor *compositor,
                                     MetaWindow     *window)
 {
   MetaCompositorXRender *xrender;
   MetaDisplay *display;
+  MetaSurface *surface;
   MetaCompWindow *cw;
   Window xwindow;
-
-  g_assert (window != NULL);
 
   xrender = META_COMPOSITOR_XRENDER (compositor);
   display = meta_compositor_get_display (compositor);
 
-  /* If already added, ignore */
-  if (find_comp_window_by_window (xrender, window) != NULL)
-    return;
-
   meta_error_trap_push (display);
+
+  surface = g_object_new (META_TYPE_SURFACE_XRENDER,
+                          "window", window,
+                          NULL);
 
   cw = g_new0 (MetaCompWindow, 1);
   cw->window = window;
+
+  g_object_set_data_full (G_OBJECT (surface), "cw", cw, cw_destroy_cb);
 
   meta_window_get_input_rect (window, &cw->rect);
 
@@ -2534,6 +2539,8 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
     map_win (xrender, cw);
 
   meta_error_trap_pop (display);
+
+  return surface;
 }
 
 static void
@@ -2560,8 +2567,6 @@ meta_compositor_xrender_remove_window (MetaCompositor *compositor,
   xwindow = meta_window_get_xwindow (window);
   xrender->windows = g_list_remove (xrender->windows, (gconstpointer) cw);
   g_hash_table_remove (xrender->windows_by_xid, (gpointer) xwindow);
-
-  free_win (xrender, cw, TRUE);
 }
 
 static void
@@ -2606,7 +2611,7 @@ meta_compositor_xrender_hide_window (MetaCompositor *compositor,
       cw->extents = None;
     }
 
-  free_win (xrender, cw, FALSE);
+  free_win (cw, FALSE);
   xrender->clip_changed = TRUE;
 }
 

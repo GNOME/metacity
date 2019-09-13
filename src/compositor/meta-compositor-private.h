@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2008 Iain Holmes
- * Copyright (C) 2017 Alberts Muktupāvels
+ * Copyright (C) 2017-2019 Alberts Muktupāvels
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,6 +20,7 @@
 #define META_COMPOSITOR_PRIVATE_H
 
 #include "meta-compositor.h"
+#include "meta-surface.h"
 
 G_BEGIN_DECLS
 
@@ -30,7 +31,7 @@ struct _MetaCompositorClass
   gboolean          (* manage)                       (MetaCompositor     *compositor,
                                                       GError            **error);
 
-  void              (* add_window)                   (MetaCompositor     *compositor,
+  MetaSurface     * (* add_window)                   (MetaCompositor     *compositor,
                                                       MetaWindow         *window);
 
   void              (* remove_window)                (MetaCompositor     *compositor,
