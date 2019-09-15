@@ -2475,7 +2475,7 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
   cw->shadow_width = 0;
   cw->shadow_height = 0;
 
-  if (meta_window_has_focus (window))
+  if (meta_window_appears_focused (window))
     cw->shadow_type = META_SHADOW_LARGE;
   else
     cw->shadow_type = META_SHADOW_MEDIUM;
