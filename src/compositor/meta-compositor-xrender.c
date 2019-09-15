@@ -1958,7 +1958,6 @@ notify_appears_focused_cb (MetaWindow            *window,
   MetaCompositor *compositor;
   MetaCompWindow *cw;
   Display *xdisplay;
-  XserverRegion damage;
 
   compositor = META_COMPOSITOR (xrender);
   cw = find_comp_window_by_window (xrender, window);
@@ -1967,15 +1966,11 @@ notify_appears_focused_cb (MetaWindow            *window,
     return;
 
   xdisplay = window->display->xdisplay;
-  damage = None;
 
   if (meta_window_appears_focused (window))
     cw->shadow_type = META_SHADOW_LARGE;
   else
     cw->shadow_type = META_SHADOW_MEDIUM;
-
-  determine_mode (xrender, cw);
-  cw->needs_shadow = window_has_shadow (xrender, cw);
 
   if (cw->mask)
     {
@@ -1991,28 +1986,19 @@ notify_appears_focused_cb (MetaWindow            *window,
 
   if (cw->extents)
     {
-      damage = XFixesCreateRegion (xdisplay, NULL, 0);
-      XFixesCopyRegion (xdisplay, damage, cw->extents);
+      meta_compositor_add_damage (compositor,
+                                  "notify_appears_focused_cb",
+                                  cw->extents);
+
       XFixesDestroyRegion (xdisplay, cw->extents);
+      cw->extents = None;
     }
 
   cw->extents = win_extents (xrender, cw);
 
-  if (damage)
-    {
-      XFixesUnionRegion (xdisplay, damage, damage, cw->extents);
-    }
-  else
-    {
-      damage = XFixesCreateRegion (xdisplay, NULL, 0);
-      XFixesCopyRegion (xdisplay, damage, cw->extents);
-    }
-
-  meta_compositor_add_damage (compositor, "notify_appears_focused_cb", damage);
-  XFixesDestroyRegion (xdisplay, damage);
-
-  xrender->clip_changed = TRUE;
-  add_repair (xrender);
+  meta_compositor_add_damage (compositor,
+                              "notify_appears_focused_cb",
+                              cw->extents);
 }
 
 static void
