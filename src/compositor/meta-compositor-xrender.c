@@ -56,12 +56,9 @@
 #define WINDOW_SOLID 0
 #define WINDOW_ARGB 1
 
-#define SHADOW_SMALL_RADIUS 3.0
 #define SHADOW_MEDIUM_RADIUS 6.0
 #define SHADOW_LARGE_RADIUS 12.0
 
-#define SHADOW_SMALL_OFFSET_X (SHADOW_SMALL_RADIUS * -3 / 2)
-#define SHADOW_SMALL_OFFSET_Y (SHADOW_SMALL_RADIUS * -3 / 2)
 #define SHADOW_MEDIUM_OFFSET_X (SHADOW_MEDIUM_RADIUS * -3 / 2)
 #define SHADOW_MEDIUM_OFFSET_Y (SHADOW_MEDIUM_RADIUS * -5 / 4)
 #define SHADOW_LARGE_OFFSET_X -15
@@ -71,7 +68,6 @@
 
 typedef enum _MetaShadowType
 {
-  META_SHADOW_SMALL,
   META_SHADOW_MEDIUM,
   META_SHADOW_LARGE,
   LAST_SHADOW_TYPE
@@ -391,8 +387,7 @@ presum_gaussian (shadow *shad)
 static void
 generate_shadows (MetaCompositorXRender *xrender)
 {
-  double radii[LAST_SHADOW_TYPE] = {SHADOW_SMALL_RADIUS,
-                                    SHADOW_MEDIUM_RADIUS,
+  double radii[LAST_SHADOW_TYPE] = {SHADOW_MEDIUM_RADIUS,
                                     SHADOW_LARGE_RADIUS};
   int i;
 
@@ -527,11 +522,9 @@ make_shadow (MetaCompositorXRender *xrender,
   return ximage;
 }
 
-double shadow_offsets_x[LAST_SHADOW_TYPE] = {SHADOW_SMALL_OFFSET_X,
-                                             SHADOW_MEDIUM_OFFSET_X,
+double shadow_offsets_x[LAST_SHADOW_TYPE] = {SHADOW_MEDIUM_OFFSET_X,
                                              SHADOW_LARGE_OFFSET_X};
-double shadow_offsets_y[LAST_SHADOW_TYPE] = {SHADOW_SMALL_OFFSET_Y,
-                                             SHADOW_MEDIUM_OFFSET_Y,
+double shadow_offsets_y[LAST_SHADOW_TYPE] = {SHADOW_MEDIUM_OFFSET_Y,
                                              SHADOW_LARGE_OFFSET_Y};
 
 static XserverRegion
