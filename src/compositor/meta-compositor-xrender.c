@@ -1918,12 +1918,6 @@ determine_mode (MetaCompositorXRender *xrender,
   MetaDisplay *display = meta_compositor_get_display (compositor);
   Display *xdisplay = meta_display_get_xdisplay (display);
 
-  if (cw->alpha_pict)
-    {
-      XRenderFreePicture (xdisplay, cw->alpha_pict);
-      cw->alpha_pict = None;
-    }
-
   format = XRenderFindVisualFormat (xdisplay, get_toplevel_xvisual (cw->window));
 
   if ((format && format->type == PictTypeDirect && format->direct.alphaMask)
@@ -1931,16 +1925,6 @@ determine_mode (MetaCompositorXRender *xrender,
     cw->mode = WINDOW_ARGB;
   else
     cw->mode = WINDOW_SOLID;
-
-  if (cw->extents)
-    {
-      XserverRegion damage;
-      damage = XFixesCreateRegion (xdisplay, NULL, 0);
-      XFixesCopyRegion (xdisplay, damage, cw->extents);
-
-      meta_compositor_add_damage (compositor, "determine_mode", damage);
-      XFixesDestroyRegion (xdisplay, damage);
-    }
 }
 
 static void
@@ -2583,6 +2567,12 @@ meta_compositor_xrender_window_opacity_changed (MetaCompositor *compositor,
 
   determine_mode (xrender, cw);
   cw->needs_shadow = window_has_shadow (xrender, cw);
+
+  if (cw->alpha_pict)
+    {
+      XRenderFreePicture (xrender->xdisplay, cw->alpha_pict);
+      cw->alpha_pict = None;
+    }
 
   if (cw->shadow)
     {
