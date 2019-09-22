@@ -9127,6 +9127,12 @@ meta_window_is_attached_dialog (MetaWindow *window)
   return window->attached;
 }
 
+gboolean
+meta_window_is_toplevel_mapped (MetaWindow *window)
+{
+  return window->mapped || (window->frame != NULL && window->frame->mapped);
+}
+
 void
 meta_window_update_shape_region (MetaWindow *window)
 {
