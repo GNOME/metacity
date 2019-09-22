@@ -1448,7 +1448,7 @@ paint_windows (MetaCompositorXRender *xrender,
           continue;
         }
 
-      if (!cw->window->mapped)
+      if (!meta_window_is_toplevel_mapped (cw->window))
         continue;
 
       if (cw->picture == None)
@@ -2445,7 +2445,7 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
   xwindow = meta_window_get_xwindow (window);
   g_hash_table_insert (xrender->windows_by_xid, (gpointer) xwindow, cw);
 
-  if (cw->window->mapped)
+  if (meta_window_is_toplevel_mapped (cw->window))
     map_win (xrender, cw);
 
   meta_error_trap_pop (display);
