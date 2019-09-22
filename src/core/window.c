@@ -3691,7 +3691,7 @@ meta_window_move_resize_internal (MetaWindow          *window,
       new_w = window->rect.width + borders.total.left + borders.total.right;
 
       if (window->shaded)
-        new_h = borders.total.top;
+        new_h = borders.total.top + borders.total.bottom;
       else
         new_h = window->rect.height + borders.total.top + borders.total.bottom;
 
