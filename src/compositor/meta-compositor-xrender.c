@@ -159,8 +159,6 @@ struct _MetaCompositorXRender
   Picture         black_picture;
   Picture         root_tile;
 
-  gboolean        clip_changed;
-
   gboolean        prefs_listener_added;
 
   guint           show_redraw : 1;
@@ -1459,29 +1457,6 @@ paint_windows (MetaCompositorXRender *xrender,
       if (cw->mask == None)
         cw->mask = get_window_mask (display, cw);
 
-      /* If the clip region of the screen has been changed
-         then we need to recreate the extents of the window */
-      if (xrender->clip_changed)
-        {
-          if (cw->window_region)
-            {
-              XFixesDestroyRegion (xdisplay, cw->window_region);
-              cw->window_region = None;
-            }
-
-          if (cw->visible_region)
-            {
-              XFixesDestroyRegion (xdisplay, cw->visible_region);
-              cw->visible_region = None;
-            }
-
-          if (cw->client_region)
-            {
-              XFixesDestroyRegion (xdisplay, cw->client_region);
-              cw->client_region = None;
-            }
-        }
-
       if (cw->window_region == None)
         cw->window_region = get_window_region (display, cw);
 
@@ -2102,7 +2077,6 @@ notify_decorated_cb (MetaWindow            *window,
 
   cw->damaged = TRUE;
 
-  xrender->clip_changed = TRUE;
   add_repair (xrender);
 }
 
@@ -2365,8 +2339,6 @@ meta_compositor_xrender_manage (MetaCompositor  *compositor,
 
   xrender->windows_by_xid = g_hash_table_new (g_direct_hash, g_direct_equal);
 
-  xrender->clip_changed = TRUE;
-
   xrender->have_shadows = (g_getenv("META_DEBUG_NO_SHADOW") == NULL);
   if (xrender->have_shadows)
     {
@@ -2549,7 +2521,6 @@ meta_compositor_xrender_hide_window (MetaCompositor *compositor,
     }
 
   free_win (cw, FALSE);
-  xrender->clip_changed = TRUE;
 }
 
 static void
@@ -2612,7 +2583,23 @@ meta_compositor_xrender_window_shape_region_changed (MetaCompositor *compositor,
       meta_compositor_add_damage (compositor, "shape_changed", cw->shape_region);
       XFixesDestroyRegion (xrender->xdisplay, cw->shape_region);
 
-      xrender->clip_changed = TRUE;
+      if (cw->window_region)
+        {
+          XFixesDestroyRegion (xrender->xdisplay, cw->window_region);
+          cw->window_region = None;
+        }
+
+      if (cw->visible_region)
+        {
+          XFixesDestroyRegion (xrender->xdisplay, cw->visible_region);
+          cw->visible_region = None;
+        }
+
+      if (cw->client_region)
+        {
+          XFixesDestroyRegion (xrender->xdisplay, cw->client_region);
+          cw->client_region = None;
+        }
     }
 
   cw->shape_region = cairo_region_to_xserver_region (xrender->xdisplay,
@@ -2998,7 +2985,23 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
   meta_compositor_add_damage (compositor, "sync_window_geometry", damage);
   XFixesDestroyRegion (xrender->xdisplay, damage);
 
-  xrender->clip_changed = TRUE;
+  if (cw->window_region)
+    {
+      XFixesDestroyRegion (xrender->xdisplay, cw->window_region);
+      cw->window_region = None;
+    }
+
+  if (cw->visible_region)
+    {
+      XFixesDestroyRegion (xrender->xdisplay, cw->visible_region);
+      cw->visible_region = None;
+    }
+
+  if (cw->client_region)
+    {
+      XFixesDestroyRegion (xrender->xdisplay, cw->client_region);
+      cw->client_region = None;
+    }
 
   meta_error_trap_pop (window->display);
 }
@@ -3016,7 +3019,6 @@ meta_compositor_xrender_redraw (MetaCompositor *compositor,
   meta_error_trap_push (display);
 
   paint_all (xrender, all_damage);
-  xrender->clip_changed = FALSE;
 
   meta_error_trap_pop (display);
 }
