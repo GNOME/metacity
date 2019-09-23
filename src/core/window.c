@@ -6393,6 +6393,91 @@ meta_window_update_struts (MetaWindow *window)
 
   if (meta_prop_get_cardinal_list (window->display,
                                    window->xwindow,
+                                   window->display->atom__NET_WM_STRUT_AREA,
+                                   &struts, &nitems))
+    {
+      if (nitems != 4)
+        {
+          meta_verbose ("_NET_WM_STRUT_AREA on %s has %d values instead of 4\n",
+                        window->desc, nitems);
+        }
+      else
+        {
+          MetaEdge *temp;
+          MetaSide side;
+          gboolean valid;
+          int i;
+
+          temp = g_new (MetaEdge, 1);
+
+          temp->rect.x = struts[0];
+          temp->rect.y = struts[1];
+          temp->rect.width = struts[2];
+          temp->rect.height = struts[3];
+
+          side = META_SIDE_LEFT;
+          valid = FALSE;
+
+          for (i = 0; i < window->screen->n_monitor_infos; i++)
+            {
+              MetaRectangle monitor;
+
+              monitor = window->screen->monitor_infos[i].rect;
+              if (!meta_rectangle_contains_rect (&monitor, &temp->rect))
+                continue;
+
+              if (temp->rect.height > temp->rect.width)
+                {
+                  if (temp->rect.x == monitor.x)
+                    {
+                      side = META_SIDE_LEFT;
+                      valid = TRUE;
+                    }
+                  else if (temp->rect.x + temp->rect.width == monitor.x + monitor.width)
+                    {
+                      side = META_SIDE_RIGHT;
+                      valid = TRUE;
+                    }
+                }
+              else
+                {
+                  if (temp->rect.y == monitor.y)
+                    {
+                      side = META_SIDE_TOP;
+                      valid = TRUE;
+                    }
+                  else if (temp->rect.y + temp->rect.height == monitor.y + monitor.height)
+                    {
+                      side = META_SIDE_BOTTOM;
+                      valid = TRUE;
+                    }
+                }
+            }
+
+          if (valid)
+            {
+              temp->side_type = side;
+              temp->edge_type = META_EDGE_MONITOR;
+
+              new_struts = g_slist_prepend (new_struts, temp);
+            }
+          else
+            {
+              g_free (temp);
+            }
+        }
+
+      meta_XFree (struts);
+    }
+  else
+    {
+      meta_verbose ("No _NET_WM_STRUT_AREA property for %s\n",
+                    window->desc);
+    }
+
+  if (!new_struts &&
+      meta_prop_get_cardinal_list (window->display,
+                                   window->xwindow,
                                    window->display->atom__NET_WM_STRUT_PARTIAL,
                                    &struts, &nitems))
     {
@@ -6406,7 +6491,7 @@ meta_window_update_struts (MetaWindow *window)
           int i;
           for (i=0; i<4; i++)
             {
-              MetaStrut *temp;
+              MetaEdge *temp;
               int thickness, strut_begin, strut_end;
 
               thickness = struts[i];
@@ -6415,10 +6500,13 @@ meta_window_update_struts (MetaWindow *window)
               strut_begin = struts[4+(i*2)];
               strut_end   = struts[4+(i*2)+1];
 
-              temp = g_new (MetaStrut, 1);
-              temp->side = 1 << i; /* See MetaSide def.  Matches nicely, eh? */
+              temp = g_new (MetaEdge, 1);
+
+              temp->side_type = i;
+              temp->edge_type = META_EDGE_SCREEN;
+
               temp->rect = window->screen->rect;
-              switch (temp->side)
+              switch (temp->side_type)
                 {
                 case META_SIDE_RIGHT:
                   temp->rect.x = BOX_RIGHT(temp->rect) - thickness;
@@ -6477,17 +6565,20 @@ meta_window_update_struts (MetaWindow *window)
           int i;
           for (i=0; i<4; i++)
             {
-              MetaStrut *temp;
+              MetaEdge *temp;
               int thickness;
 
               thickness = struts[i];
               if (thickness == 0)
                 continue;
 
-              temp = g_new (MetaStrut, 1);
-              temp->side = 1 << i;
+              temp = g_new (MetaEdge, 1);
+
+              temp->side_type = i;
+              temp->edge_type = META_EDGE_SCREEN;
+
               temp->rect = window->screen->rect;
-              switch (temp->side)
+              switch (temp->side_type)
                 {
                 case META_SIDE_RIGHT:
                   temp->rect.x = BOX_RIGHT(temp->rect) - thickness;
@@ -6527,10 +6618,11 @@ meta_window_update_struts (MetaWindow *window)
   new_iter = new_struts;
   while (old_iter && new_iter)
     {
-      MetaStrut *old_strut = (MetaStrut*) old_iter->data;
-      MetaStrut *new_strut = (MetaStrut*) new_iter->data;
+      MetaEdge *old_strut = (MetaEdge *) old_iter->data;
+      MetaEdge *new_strut = (MetaEdge *) new_iter->data;
 
-      if (old_strut->side != new_strut->side ||
+      if (old_strut->side_type != new_strut->side_type ||
+          old_strut->edge_type != new_strut->edge_type ||
           !meta_rectangle_equal (&old_strut->rect, &new_strut->rect))
         break;
 
