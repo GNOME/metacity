@@ -34,13 +34,6 @@ struct _MetaRectangle
   int height;
 };
 
-typedef struct _MetaStrut MetaStrut;
-struct _MetaStrut
-{
-  MetaRectangle rect;
-  MetaSide side;
-};
-
 #define BOX_LEFT(box)    ((box).x)                /* Leftmost pixel of rect */
 #define BOX_RIGHT(box)   ((box).x + (box).width)  /* One pixel past right   */
 #define BOX_TOP(box)     ((box).y)                /* Topmost pixel of rect  */
@@ -156,7 +149,8 @@ void meta_rectangle_resize_with_gravity (const MetaRectangle *old_rect,
  */
 GList*   meta_rectangle_get_minimal_spanning_set_for_region (
                                          const MetaRectangle *basic_rect,
-                                         const GSList        *all_struts);
+                                         const GSList        *all_struts,
+                                         gboolean             skip_middle_struts);
 
 /* Expand all rectangles in region by the given amount on each side */
 GList*   meta_rectangle_expand_region   (GList               *region,

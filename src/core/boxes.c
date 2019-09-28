@@ -518,7 +518,8 @@ compare_rect_areas (gconstpointer a, gconstpointer b)
 GList*
 meta_rectangle_get_minimal_spanning_set_for_region (
   const MetaRectangle *basic_rect,
-  const GSList  *all_struts)
+  const GSList        *all_struts,
+  gboolean             skip_middle_struts)
 {
   /* NOTE FOR OPTIMIZERS: This function *might* be somewhat slow,
    * especially due to the call to merge_spanning_rects_in_region() (which
@@ -580,7 +581,24 @@ meta_rectangle_get_minimal_spanning_set_for_region (
   for (strut_iter = all_struts; strut_iter; strut_iter = strut_iter->next)
     {
       GList *rect_iter;
-      MetaRectangle *strut_rect = &((MetaStrut*)strut_iter->data)->rect;
+      MetaEdge *strut = (MetaEdge *) strut_iter->data;
+      MetaRectangle *strut_rect = &strut->rect;
+
+      if (skip_middle_struts &&
+          strut->edge_type == META_EDGE_MONITOR)
+        {
+          if ((strut->side_type == META_SIDE_LEFT &&
+               strut_rect->x != basic_rect->x) ||
+              (strut->side_type == META_SIDE_RIGHT &&
+               strut_rect->x + strut_rect->width != basic_rect->width) ||
+              (strut->side_type == META_SIDE_TOP &&
+               strut_rect->y != basic_rect->y) ||
+              (strut->side_type == META_SIDE_BOTTOM &&
+               strut_rect->y + strut_rect->height != basic_rect->height))
+            {
+              continue;
+            }
+        }
 
       tmp_list = ret;
       ret = NULL;
@@ -722,7 +740,7 @@ meta_rectangle_expand_to_avoiding_struts (MetaRectangle       *rect,
   /* Run over all struts */
   for (strut_iter = all_struts; strut_iter; strut_iter = strut_iter->next)
     {
-      MetaStrut *strut = (MetaStrut*) strut_iter->data;
+      MetaEdge *strut = (MetaEdge *) strut_iter->data;
 
       /* Skip struts that don't overlap */
       if (!meta_rectangle_overlap (&strut->rect, rect))
@@ -730,13 +748,13 @@ meta_rectangle_expand_to_avoiding_struts (MetaRectangle       *rect,
 
       if (direction == META_DIRECTION_HORIZONTAL)
         {
-          if (strut->side == META_SIDE_LEFT)
+          if (strut->side_type == META_SIDE_LEFT)
             {
               int offset = BOX_RIGHT(strut->rect) - BOX_LEFT(*rect);
               rect->x     += offset;
               rect->width -= offset;
             }
-          else if (strut->side == META_SIDE_RIGHT)
+          else if (strut->side_type == META_SIDE_RIGHT)
             {
               int offset = BOX_RIGHT (*rect) - BOX_LEFT(strut->rect);
               rect->width -= offset;
@@ -745,13 +763,13 @@ meta_rectangle_expand_to_avoiding_struts (MetaRectangle       *rect,
         }
       else /* direction == META_DIRECTION_VERTICAL */
         {
-          if (strut->side == META_SIDE_TOP)
+          if (strut->side_type == META_SIDE_TOP)
             {
               int offset = BOX_BOTTOM(strut->rect) - BOX_TOP(*rect);
               rect->y      += offset;
               rect->height -= offset;
             }
-          else if (strut->side == META_SIDE_BOTTOM)
+          else if (strut->side_type == META_SIDE_BOTTOM)
             {
               int offset = BOX_BOTTOM(*rect) - BOX_TOP(strut->rect);
               rect->height -= offset;
@@ -1255,7 +1273,7 @@ get_disjoint_strut_rect_list_in_region (const GSList        *old_struts,
   strut_rects = NULL;
   while (old_struts)
     {
-      MetaRectangle *cur = &((MetaStrut*)old_struts->data)->rect;
+      MetaRectangle *cur = &((MetaEdge *)old_struts->data)->rect;
       MetaRectangle *copy = g_new (MetaRectangle, 1);
       *copy = *cur;
       if (meta_rectangle_intersect (copy, region, copy))
@@ -1855,7 +1873,7 @@ meta_rectangle_find_nonintersected_monitor_edges (
   temp_rects = NULL;
   for (; all_struts; all_struts = all_struts->next)
     temp_rects = g_slist_prepend (temp_rects,
-                                  &((MetaStrut*)all_struts->data)->rect);
+                                  &((MetaEdge *)all_struts->data)->rect);
   ret = meta_rectangle_remove_intersections_with_boxes_from_edges (ret,
                                                                    temp_rects);
   g_slist_free (temp_rects);
