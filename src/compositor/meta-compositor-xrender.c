@@ -123,21 +123,12 @@ typedef struct _MetaCompWindow
 
   XserverRegion border_clip;
 
-  /* When the window is shaded we will store few data of the original unshaded
-   * window so we can still see what the window looked like when it is needed
-   * for _get_window_surface function.
+  /* When the window is shaded back_pixmap will be replaced with the pixmap
+   * for the shaded window. This is a copy of the original unshaded window
+   * so that we can still see what the window looked like when it is needed
+   * for the _get_window_surface function.
    */
-  struct {
-    Pixmap back_pixmap;
-    Pixmap mask_pixmap;
-
-    int x;
-    int y;
-    int width;
-    int height;
-
-    XserverRegion client_region;
-  } shaded;
+  cairo_surface_t *shaded_surface;
 } MetaCompWindow;
 
 struct _MetaCompositorXRender
@@ -1796,30 +1787,18 @@ free_win (MetaCompWindow *cw,
       cw->extents = None;
     }
 
-  if (cw->shaded.back_pixmap && destroy)
-    {
-      XFreePixmap (xdisplay, cw->shaded.back_pixmap);
-      cw->shaded.back_pixmap = None;
-    }
-
-  if (cw->shaded.mask_pixmap && destroy)
-    {
-      XFreePixmap (xdisplay, cw->shaded.mask_pixmap);
-      cw->shaded.mask_pixmap = None;
-    }
-
-  if (cw->shaded.client_region && destroy)
-    {
-      XFixesDestroyRegion (xdisplay, cw->shaded.client_region);
-      cw->shaded.client_region = None;
-    }
-
   if (destroy)
     {
       if (cw->damage != None)
         {
           XDamageDestroy (xdisplay, cw->damage);
           cw->damage = None;
+        }
+
+      if (cw->shaded_surface != NULL)
+        {
+          cairo_surface_destroy (cw->shaded_surface);
+          cw->shaded_surface = NULL;
         }
 
       g_free (cw);
@@ -1863,24 +1842,6 @@ map_win (MetaCompositorXRender *xrender,
     {
       XFixesDestroyRegion (xdisplay, cw->client_region);
       cw->client_region = None;
-    }
-
-  if (cw->shaded.back_pixmap)
-    {
-      XFreePixmap (xdisplay, cw->shaded.back_pixmap);
-      cw->shaded.back_pixmap = None;
-    }
-
-  if (cw->shaded.mask_pixmap)
-    {
-      XFreePixmap (xdisplay, cw->shaded.mask_pixmap);
-      cw->shaded.mask_pixmap = None;
-    }
-
-  if (cw->shaded.client_region)
-    {
-      XFixesDestroyRegion (xdisplay, cw->shaded.client_region);
-      cw->shaded.client_region = None;
     }
 }
 
@@ -2048,24 +2009,6 @@ notify_decorated_cb (MetaWindow            *window,
       cw->border_clip = None;
     }
 
-  if (cw->shaded.back_pixmap != None)
-    {
-      XFreePixmap (xrender->xdisplay, cw->shaded.back_pixmap);
-      cw->shaded.back_pixmap = None;
-    }
-
-  if (cw->shaded.mask_pixmap != None)
-    {
-      XFreePixmap (xrender->xdisplay, cw->shaded.mask_pixmap);
-      cw->shaded.mask_pixmap = None;
-    }
-
-  if (cw->shaded.client_region != None)
-    {
-      XFixesDestroyRegion (xrender->xdisplay, cw->shaded.client_region);
-      cw->shaded.client_region = None;
-    }
-
   cw->damage = XDamageCreate (xrender->xdisplay,
                               meta_window_get_toplevel_xwindow (window),
                               XDamageReportNonEmpty);
@@ -2078,6 +2021,125 @@ notify_decorated_cb (MetaWindow            *window,
   cw->damaged = TRUE;
 
   add_repair (xrender);
+}
+
+static cairo_surface_t *
+get_window_surface (MetaCompWindow *cw)
+{
+  MetaFrame *frame;
+  MetaDisplay *display;
+  Display *xdisplay;
+  XserverRegion xclient_region;
+  cairo_region_t *client_region;
+  cairo_surface_t *back_surface;
+  cairo_surface_t *window_surface;
+  cairo_t *cr;
+
+  frame = meta_window_get_frame (cw->window);
+  display = meta_window_get_display (cw->window);
+  xdisplay = meta_display_get_xdisplay (display);
+
+  if (cw->back_pixmap == None)
+    return NULL;
+
+  if (frame != NULL && cw->mask_pixmap == None)
+    return NULL;
+
+  xclient_region = None;
+  if (cw->client_region != None)
+    {
+      xclient_region = XFixesCreateRegion (xdisplay, NULL, 0);
+      XFixesCopyRegion (xdisplay, xclient_region, cw->client_region);
+      XFixesTranslateRegion (xdisplay, xclient_region, -cw->rect.x, -cw->rect.y);
+    }
+
+  if (frame != NULL && xclient_region == None)
+    return NULL;
+
+  client_region = xserver_region_to_cairo_region (xdisplay, xclient_region);
+  XFixesDestroyRegion (xdisplay, xclient_region);
+
+  if (frame != NULL && client_region == NULL)
+    return NULL;
+
+  back_surface = cairo_xlib_surface_create (xdisplay, cw->back_pixmap,
+                                            get_toplevel_xvisual (cw->window),
+                                            cw->rect.width, cw->rect.height);
+
+  window_surface = cairo_surface_create_similar (back_surface,
+                                                 CAIRO_CONTENT_COLOR_ALPHA,
+                                                 cw->rect.width,
+                                                 cw->rect.height);
+
+  cr = cairo_create (window_surface);
+  cairo_set_source_surface (cr, back_surface, 0, 0);
+  cairo_paint (cr);
+
+  if (frame != NULL)
+    {
+      cairo_region_t *region;
+      Screen *xscreen;
+      XRenderPictFormat *format;
+      cairo_surface_t *mask;
+
+      region = cairo_region_create_rectangle (&(cairo_rectangle_int_t) {
+                                                .width = cw->rect.width,
+                                                .height = cw->rect.height
+                                              });
+
+      cairo_region_subtract (region, client_region);
+
+      xscreen = DefaultScreenOfDisplay (xdisplay);
+      format = XRenderFindStandardFormat (xdisplay, PictStandardA8);
+      mask = cairo_xlib_surface_create_with_xrender_format (xdisplay,
+                                                            cw->mask_pixmap,
+                                                            xscreen, format,
+                                                            cw->rect.width,
+                                                            cw->rect.height);
+
+      gdk_cairo_region (cr, region);
+      cairo_clip (cr);
+
+      cairo_set_operator (cr, CAIRO_OPERATOR_CLEAR);
+      cairo_set_source_rgba (cr, 0, 0, 0, 0);
+      cairo_paint (cr);
+
+      cairo_set_operator (cr, CAIRO_OPERATOR_OVER);
+      cairo_set_source_surface (cr, back_surface, 0, 0);
+      cairo_mask_surface (cr, mask, 0, 0);
+      cairo_fill (cr);
+
+      cairo_surface_destroy (mask);
+      cairo_region_destroy (region);
+    }
+
+  cairo_destroy (cr);
+  cairo_surface_destroy (back_surface);
+  cairo_region_destroy (client_region);
+
+  return window_surface;
+}
+
+static void
+notify_shaded_cb (MetaWindow            *window,
+                  GParamSpec            *pspec,
+                  MetaCompositorXRender *xrender)
+{
+  MetaCompWindow *cw;
+
+  cw = find_comp_window_by_window (xrender, window);
+
+  if (cw == NULL)
+    return;
+
+  if (cw->shaded_surface != NULL)
+    {
+      cairo_surface_destroy (cw->shaded_surface);
+      cw->shaded_surface = NULL;
+    }
+
+  if (meta_window_is_shaded (cw->window))
+    cw->shaded_surface = get_window_surface (cw);
 }
 
 /* event processors must all be called with an error trap in place */
@@ -2394,6 +2456,10 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
                            G_CALLBACK (notify_decorated_cb),
                            xrender, 0);
 
+  g_signal_connect_object (window, "notify::shaded",
+                           G_CALLBACK (notify_shaded_cb),
+                           xrender, 0);
+
   cw->back_pixmap = None;
   cw->mask_pixmap = None;
 
@@ -2431,13 +2497,7 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
 
   cw->border_clip = None;
 
-  cw->shaded.back_pixmap = None;
-  cw->shaded.mask_pixmap = None;
-  cw->shaded.x = 0;
-  cw->shaded.y = 0;
-  cw->shaded.width = 0;
-  cw->shaded.height = 0;
-  cw->shaded.client_region = None;
+  cw->shaded_surface = NULL;
 
   determine_mode (xrender, cw);
   cw->needs_shadow = window_has_shadow (xrender, cw);
@@ -2660,123 +2720,22 @@ static cairo_surface_t *
 meta_compositor_xrender_get_window_surface (MetaCompositor *compositor,
                                             MetaWindow     *window)
 {
-  MetaFrame *frame;
   MetaCompWindow *cw;
-  MetaDisplay *display;
-  Display *xdisplay;
-  gboolean shaded;
-  Pixmap back_pixmap;
-  Pixmap mask_pixmap;
-  int width;
-  int height;
-  XserverRegion xclient_region;
-  cairo_region_t *client_region;
-  cairo_surface_t *back_surface;
-  cairo_surface_t *window_surface;
-  cairo_t *cr;
 
-  frame = meta_window_get_frame (window);
   cw = find_comp_window_by_window (META_COMPOSITOR_XRENDER (compositor), window);
 
   if (cw == NULL)
     return NULL;
 
-  display = meta_compositor_get_display (compositor);
-  xdisplay = meta_display_get_xdisplay (display);
-  shaded = meta_window_is_shaded (window);
-
-  back_pixmap = shaded ? cw->shaded.back_pixmap : cw->back_pixmap;
-  if (back_pixmap == None)
-    return NULL;
-
-  mask_pixmap = shaded ? cw->shaded.mask_pixmap : cw->mask_pixmap;
-  if (frame != NULL && mask_pixmap == None)
-    return NULL;
-
-  xclient_region = None;
-  if (shaded)
+  if (meta_window_is_shaded (window))
     {
-      if (cw->shaded.client_region != None)
-        {
-          xclient_region = XFixesCreateRegion (xdisplay, NULL, 0);
-          XFixesCopyRegion (xdisplay, xclient_region, cw->shaded.client_region);
-          XFixesTranslateRegion (xdisplay, xclient_region,
-                                 -cw->shaded.x, -cw->shaded.y);
-        }
-    }
-  else
-    {
-      if (cw->client_region != None)
-        {
-          xclient_region = XFixesCreateRegion (xdisplay, NULL, 0);
-          XFixesCopyRegion (xdisplay, xclient_region, cw->client_region);
-          XFixesTranslateRegion (xdisplay, xclient_region,
-                                 -cw->rect.x, -cw->rect.y);
-        }
+      if (cw->shaded_surface != NULL)
+        return cairo_surface_reference (cw->shaded_surface);
+      else
+        return NULL;
     }
 
-  if (frame != NULL && xclient_region == None)
-    return NULL;
-
-  client_region = xserver_region_to_cairo_region (xdisplay, xclient_region);
-  XFixesDestroyRegion (xdisplay, xclient_region);
-
-  if (frame != NULL && client_region == NULL)
-    return NULL;
-
-  width = shaded ? cw->shaded.width : cw->rect.width;
-  height = shaded ? cw->shaded.height : cw->rect.height;
-
-  back_surface = cairo_xlib_surface_create (xdisplay, back_pixmap,
-                                            get_toplevel_xvisual (cw->window),
-                                            width, height);
-
-  window_surface = cairo_surface_create_similar (back_surface,
-                                                 CAIRO_CONTENT_COLOR_ALPHA,
-                                                 width, height);
-
-  cr = cairo_create (window_surface);
-  cairo_set_source_surface (cr, back_surface, 0, 0);
-  cairo_paint (cr);
-
-  if (frame != NULL)
-    {
-      cairo_rectangle_int_t rect = { 0, 0, width, height};
-      cairo_region_t *region;
-      Screen *xscreen;
-      XRenderPictFormat *format;
-      cairo_surface_t *mask;
-
-      region = cairo_region_create_rectangle (&rect);
-      cairo_region_subtract (region, client_region);
-
-      xscreen = DefaultScreenOfDisplay (xdisplay);
-      format = XRenderFindStandardFormat (xdisplay, PictStandardA8);
-      mask = cairo_xlib_surface_create_with_xrender_format (xdisplay, mask_pixmap,
-                                                            xscreen, format,
-                                                            width, height);
-
-      gdk_cairo_region (cr, region);
-      cairo_clip (cr);
-
-      cairo_set_operator (cr, CAIRO_OPERATOR_CLEAR);
-      cairo_set_source_rgba (cr, 0, 0, 0, 0);
-      cairo_paint (cr);
-
-      cairo_set_operator (cr, CAIRO_OPERATOR_OVER);
-      cairo_set_source_surface (cr, back_surface, 0, 0);
-      cairo_mask_surface (cr, mask, 0, 0);
-      cairo_fill (cr);
-
-      cairo_surface_destroy (mask);
-      cairo_region_destroy (region);
-    }
-
-  cairo_destroy (cr);
-  cairo_surface_destroy (back_surface);
-  cairo_region_destroy (client_region);
-
-  return window_surface;
+  return get_window_surface (cw);
 }
 
 static void
@@ -2852,73 +2811,16 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
 
   if (cw->rect.width != old_rect.width || cw->rect.height != old_rect.height)
     {
-      if (cw->shaded.back_pixmap != None)
-        {
-          XFreePixmap (xrender->xdisplay, cw->shaded.back_pixmap);
-          cw->shaded.back_pixmap = None;
-        }
-
-      if (cw->shaded.mask_pixmap != None)
-        {
-          XFreePixmap (xrender->xdisplay, cw->shaded.mask_pixmap);
-          cw->shaded.mask_pixmap = None;
-        }
-
-      if (cw->shaded.client_region != None)
-        {
-          XFixesDestroyRegion (xrender->xdisplay, cw->shaded.client_region);
-          cw->shaded.client_region = None;
-        }
-
       if (cw->back_pixmap != None)
         {
-          /* If the window is shaded, we store the old backing pixmap
-           * so we can return a proper image of the window
-           */
-          if (meta_window_is_shaded (cw->window))
-            {
-              cw->shaded.back_pixmap = cw->back_pixmap;
-              cw->back_pixmap = None;
-            }
-          else
-            {
-              XFreePixmap (xrender->xdisplay, cw->back_pixmap);
-              cw->back_pixmap = None;
-            }
+          XFreePixmap (xrender->xdisplay, cw->back_pixmap);
+          cw->back_pixmap = None;
         }
 
       if (cw->mask_pixmap != None)
         {
-          /* If the window is shaded, we store the old backing pixmap
-           * so we can return a proper image of the window
-           */
-          if (meta_window_is_shaded (cw->window))
-            {
-              cw->shaded.mask_pixmap = cw->mask_pixmap;
-              cw->mask_pixmap = None;
-            }
-          else
-            {
-              XFreePixmap (xrender->xdisplay, cw->mask_pixmap);
-              cw->mask_pixmap = None;
-            }
-        }
-
-      if (meta_window_is_shaded (cw->window))
-        {
-          cw->shaded.x = old_rect.x;
-          cw->shaded.y = old_rect.y;
-          cw->shaded.width = old_rect.width;
-          cw->shaded.height = old_rect.height;
-
-          if (cw->client_region != None)
-            {
-              cw->shaded.client_region = XFixesCreateRegion (xrender->xdisplay,
-                                                             NULL, 0);
-
-              XFixesCopyRegion (xrender->xdisplay, cw->shaded.client_region,
-                                cw->client_region);
-            }
+          XFreePixmap (xrender->xdisplay, cw->mask_pixmap);
+          cw->mask_pixmap = None;
         }
 
       if (cw->picture != None)
