@@ -137,6 +137,7 @@ enum
 
   PROP_APPEARS_FOCUSED,
   PROP_DECORATED,
+  PROP_SHADED,
 
   LAST_PROP
 };
@@ -3098,6 +3099,8 @@ meta_window_shade (MetaWindow  *window,
       meta_window_focus (window, timestamp);
 
       set_net_wm_state (window);
+
+      g_object_notify_by_pspec (G_OBJECT (window), properties[PROP_SHADED]);
     }
 }
 
@@ -3123,6 +3126,8 @@ meta_window_unshade (MetaWindow  *window,
       meta_window_focus (window, timestamp);
 
       set_net_wm_state (window);
+
+      g_object_notify_by_pspec (G_OBJECT (window), properties[PROP_SHADED]);
     }
 }
 
@@ -9294,6 +9299,10 @@ meta_window_get_property (GObject    *object,
         g_value_set_boolean (value, window->decorated);
         break;
 
+      case PROP_SHADED:
+        g_value_set_boolean (value, window->shaded);
+        break;
+
       default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
         break;
@@ -9310,6 +9319,10 @@ install_properties (GObjectClass *object_class)
   properties[PROP_DECORATED] =
     g_param_spec_boolean ("decorated", "decorated", "decorated",
                           TRUE, G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
+
+  properties[PROP_SHADED] =
+    g_param_spec_boolean ("shaded", "shaded", "shaded",
+                          FALSE, G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
 
   g_object_class_install_properties (object_class, LAST_PROP, properties);
 }
