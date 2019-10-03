@@ -101,7 +101,6 @@ typedef struct _MetaCompWindow
 
   XserverRegion shape_region;
 
-  Damage damage;
   Picture picture;
   Picture mask;
   Picture alpha_pict;
@@ -1683,24 +1682,12 @@ repair_win (MetaCompositorXRender *xrender,
   Display *xdisplay = meta_display_get_xdisplay (display);
   XserverRegion parts;
 
-  meta_error_trap_push (display);
-
   if (!cw->damaged)
     {
       parts = win_extents (xrender, cw);
-      XDamageSubtract (xdisplay, cw->damage, None, None);
+      meta_compositor_add_damage (compositor, "repair_win", parts);
+      XFixesDestroyRegion (xdisplay, parts);
     }
-  else
-    {
-      parts = XFixesCreateRegion (xdisplay, 0, 0);
-      XDamageSubtract (xdisplay, cw->damage, None, parts);
-      XFixesTranslateRegion (xdisplay, parts, cw->rect.x, cw->rect.y);
-    }
-
-  meta_error_trap_pop (display);
-
-  meta_compositor_add_damage (compositor, "repair_win", parts);
-  XFixesDestroyRegion (xdisplay, parts);
 
   cw->damaged = TRUE;
 }
@@ -1789,12 +1776,6 @@ free_win (MetaCompWindow *cw,
 
   if (destroy)
     {
-      if (cw->damage != None)
-        {
-          XDamageDestroy (xdisplay, cw->damage);
-          cw->damage = None;
-        }
-
       if (cw->shaded_surface != NULL)
         {
           cairo_surface_destroy (cw->shaded_surface);
@@ -1948,12 +1929,6 @@ notify_decorated_cb (MetaWindow            *window,
       cw->shape_region = None;
     }
 
-  if (cw->damage != None)
-    {
-      XDamageDestroy (xrender->xdisplay, cw->damage);
-      cw->damage = None;
-    }
-
   if (cw->picture != None)
     {
       XRenderFreePicture (xrender->xdisplay, cw->picture);
@@ -2008,10 +1983,6 @@ notify_decorated_cb (MetaWindow            *window,
       XFixesDestroyRegion (xrender->xdisplay, cw->border_clip);
       cw->border_clip = None;
     }
-
-  cw->damage = XDamageCreate (xrender->xdisplay,
-                              meta_window_get_toplevel_xwindow (window),
-                              XDamageReportNonEmpty);
 
   determine_mode (xrender, cw);
   cw->needs_shadow = window_has_shadow (xrender, cw);
@@ -2474,9 +2445,6 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
       XFixesTranslateRegion (xrender->xdisplay, cw->shape_region,
                              cw->rect.x, cw->rect.y);
     }
-
-  xwindow = meta_window_get_toplevel_xwindow (window);
-  cw->damage = XDamageCreate (xrender->xdisplay, xwindow, XDamageReportNonEmpty);
 
   cw->alpha_pict = None;
 

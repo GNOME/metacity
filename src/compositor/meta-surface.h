@@ -18,6 +18,7 @@
 #ifndef META_SURFACE_H
 #define META_SURFACE_H
 
+#include <X11/extensions/Xdamage.h>
 #include "meta-compositor.h"
 #include "window.h"
 
@@ -26,11 +27,14 @@ G_BEGIN_DECLS
 #define META_TYPE_SURFACE (meta_surface_get_type ())
 G_DECLARE_DERIVABLE_TYPE (MetaSurface, meta_surface, META, SURFACE, GObject)
 
-MetaCompositor *meta_surface_get_compositor (MetaSurface *self);
+MetaCompositor *meta_surface_get_compositor (MetaSurface        *self);
 
-MetaWindow     *meta_surface_get_window     (MetaSurface *self);
+MetaWindow     *meta_surface_get_window     (MetaSurface        *self);
 
-void            meta_surface_pre_paint      (MetaSurface *self);
+void            meta_surface_process_damage (MetaSurface        *self,
+                                             XDamageNotifyEvent *event);
+
+void            meta_surface_pre_paint      (MetaSurface        *self);
 
 G_END_DECLS
 

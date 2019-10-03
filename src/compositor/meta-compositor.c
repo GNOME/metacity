@@ -25,6 +25,7 @@
 
 #include "display-private.h"
 #include "errors.h"
+#include "frame.h"
 #include "util.h"
 #include "screen-private.h"
 
@@ -124,6 +125,43 @@ debug_damage_region (MetaCompositor *compositor,
     {
       meta_topic (META_DEBUG_DAMAGE_REGION, "%s: none\n", name);
     }
+}
+
+static MetaSurface *
+find_surface_by_xwindow (MetaCompositor *compositor,
+                         Window          xwindow)
+{
+  MetaCompositorPrivate *priv;
+  MetaSurface *surface;
+  GHashTableIter iter;
+
+  priv = meta_compositor_get_instance_private (compositor);
+  surface = NULL;
+
+  g_hash_table_iter_init (&iter, priv->surfaces);
+  while (g_hash_table_iter_next (&iter, NULL, (gpointer) &surface))
+    {
+      MetaWindow *window;
+      MetaFrame *frame;
+
+      window = meta_surface_get_window (surface);
+      frame = meta_window_get_frame (window);
+
+      if (frame != NULL)
+        {
+          if (meta_frame_get_xwindow (frame) == xwindow)
+            break;
+        }
+      else
+        {
+          if (meta_window_get_xwindow (window) == xwindow)
+            break;
+        }
+
+      surface = NULL;
+    }
+
+  return surface;
 }
 
 static gboolean
@@ -472,11 +510,29 @@ meta_compositor_process_event (MetaCompositor *compositor,
                                XEvent         *event,
                                MetaWindow     *window)
 {
+  MetaCompositorPrivate *priv;
   MetaCompositorClass *compositor_class;
 
-  compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
+  priv = meta_compositor_get_instance_private (compositor);
 
+  compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
   compositor_class->process_event (compositor, event, window);
+
+  if (event->type == meta_display_get_damage_event_base (priv->display) + XDamageNotify)
+    {
+      XDamageNotifyEvent *damage_event;
+      MetaSurface *surface;
+
+      damage_event = (XDamageNotifyEvent *) event;
+
+      if (window != NULL)
+        surface = g_hash_table_lookup (priv->surfaces, window);
+      else
+        surface = find_surface_by_xwindow (compositor, damage_event->drawable);
+
+      if (surface != NULL)
+        meta_surface_process_damage (surface, damage_event);
+    }
 }
 
 cairo_surface_t *
