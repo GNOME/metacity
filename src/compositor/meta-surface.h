@@ -18,6 +18,7 @@
 #ifndef META_SURFACE_H
 #define META_SURFACE_H
 
+#include "meta-compositor.h"
 #include "window.h"
 
 G_BEGIN_DECLS
@@ -25,7 +26,9 @@ G_BEGIN_DECLS
 #define META_TYPE_SURFACE (meta_surface_get_type ())
 G_DECLARE_DERIVABLE_TYPE (MetaSurface, meta_surface, META, SURFACE, GObject)
 
-MetaWindow *meta_surface_get_window (MetaSurface *self);
+MetaCompositor *meta_surface_get_compositor (MetaSurface *self);
+
+MetaWindow     *meta_surface_get_window     (MetaSurface *self);
 
 G_END_DECLS
 

@@ -1268,6 +1268,7 @@ meta_compositor_vulkan_add_window (MetaCompositor *compositor,
   MetaSurface *surface;
 
   surface = g_object_new (META_TYPE_SURFACE_VULKAN,
+                          "compositor", compositor,
                           "window", window,
                           NULL);
 

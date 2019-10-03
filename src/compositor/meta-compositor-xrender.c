@@ -2438,6 +2438,7 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
   meta_error_trap_push (display);
 
   surface = g_object_new (META_TYPE_SURFACE_XRENDER,
+                          "compositor", compositor,
                           "window", window,
                           NULL);
 
