@@ -1353,7 +1353,7 @@ meta_compositor_vulkan_sync_screen_size (MetaCompositor *compositor)
 
 static void
 meta_compositor_vulkan_sync_window_geometry (MetaCompositor *compositor,
-                                             MetaWindow     *window)
+                                             MetaSurface    *surface)
 {
 }
 

@@ -75,7 +75,7 @@ struct _MetaCompositorClass
   void              (* sync_screen_size)             (MetaCompositor     *compositor);
 
   void              (* sync_window_geometry)         (MetaCompositor     *compositor,
-                                                      MetaWindow         *window);
+                                                      MetaSurface        *surface);
 
   void              (* pre_paint)                    (MetaCompositor     *compositor);
 

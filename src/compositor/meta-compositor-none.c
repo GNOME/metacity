@@ -118,7 +118,7 @@ meta_compositor_none_sync_screen_size (MetaCompositor *compositor)
 
 static void
 meta_compositor_none_sync_window_geometry (MetaCompositor *compositor,
-                                           MetaWindow     *window)
+                                           MetaSurface    *surface)
 {
 }
 
