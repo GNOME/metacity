@@ -48,7 +48,7 @@ meta_compositor_none_remove_window (MetaCompositor *compositor,
 
 static void
 meta_compositor_none_show_window (MetaCompositor *compositor,
-                                  MetaWindow     *window,
+                                  MetaSurface    *surface,
                                   MetaEffectType  effect)
 {
 }

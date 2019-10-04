@@ -39,7 +39,7 @@ struct _MetaCompositorClass
                                                       MetaWindow         *window);
 
   void              (* show_window)                  (MetaCompositor     *compositor,
-                                                      MetaWindow         *window,
+                                                      MetaSurface        *surface,
                                                       MetaEffectType      effect);
 
   void              (* hide_window)                  (MetaCompositor     *compositor,
