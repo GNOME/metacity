@@ -8980,6 +8980,15 @@ meta_window_get_toplevel_xwindow (MetaWindow *window)
   return window->xwindow;
 }
 
+Visual *
+meta_window_get_toplevel_xvisual (MetaWindow *window)
+{
+  if (window->frame != NULL)
+    return meta_frame_get_xvisual (window->frame);
+
+  return window->xvisual;
+}
+
 /**
  * meta_window_get_transient_for:
  * @window: a #MetaWindow
