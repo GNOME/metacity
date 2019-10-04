@@ -1329,7 +1329,7 @@ meta_compositor_vulkan_process_event (MetaCompositor *compositor,
 
 static cairo_surface_t *
 meta_compositor_vulkan_get_window_surface (MetaCompositor *compositor,
-                                           MetaWindow     *window)
+                                           MetaSurface    *surface)
 {
   return NULL;
 }

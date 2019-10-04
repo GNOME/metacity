@@ -94,7 +94,7 @@ meta_compositor_none_process_event (MetaCompositor *compositor,
 
 static cairo_surface_t *
 meta_compositor_none_get_window_surface (MetaCompositor *compositor,
-                                         MetaWindow     *window)
+                                         MetaSurface    *surface)
 {
   return NULL;
 }
