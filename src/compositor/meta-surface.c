@@ -18,6 +18,8 @@
 #include "config.h"
 #include "meta-surface-private.h"
 
+#include <X11/extensions/Xcomposite.h>
+
 #include "display-private.h"
 #include "errors.h"
 #include "meta-compositor-private.h"
@@ -29,6 +31,10 @@ typedef struct
   MetaWindow     *window;
 
   Damage          damage;
+  Pixmap          pixmap;
+
+  int             width;
+  int             height;
 } MetaSurfacePrivate;
 
 enum
@@ -44,6 +50,53 @@ enum
 static GParamSpec *surface_properties[LAST_PROP] = { NULL };
 
 G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (MetaSurface, meta_surface, G_TYPE_OBJECT)
+
+static void
+free_pixmap (MetaSurface *self)
+{
+  MetaSurfacePrivate *priv;
+  MetaDisplay *display;
+  Display *xdisplay;
+
+  priv = meta_surface_get_instance_private (self);
+
+  if (priv->pixmap == None)
+    return;
+
+  display = meta_compositor_get_display (priv->compositor);
+  xdisplay = meta_display_get_xdisplay (display);
+
+  meta_error_trap_push (display);
+
+  XFreePixmap (xdisplay, priv->pixmap);
+  priv->pixmap = None;
+
+  meta_error_trap_pop (display);
+}
+
+static void
+ensure_pixmap (MetaSurface *self)
+{
+  MetaSurfacePrivate *priv;
+  MetaDisplay *display;
+  Display *xdisplay;
+  Window xwindow;
+
+  priv = meta_surface_get_instance_private (self);
+  display = meta_compositor_get_display (priv->compositor);
+  xdisplay = meta_display_get_xdisplay (display);
+
+  if (priv->pixmap != None)
+    return;
+
+  meta_error_trap_push (display);
+
+  xwindow = meta_window_get_toplevel_xwindow (priv->window);
+  priv->pixmap = XCompositeNameWindowPixmap (xdisplay, xwindow);
+
+  if (meta_error_trap_pop_with_return (display) != 0)
+    priv->pixmap = None;
+}
 
 static void
 destroy_damage (MetaSurface *self)
@@ -95,6 +148,8 @@ notify_decorated_cb (MetaWindow  *window,
                      MetaSurface *self)
 {
   destroy_damage (self);
+  free_pixmap (self);
+
   create_damage (self);
 }
 
@@ -124,6 +179,7 @@ meta_surface_finalize (GObject *object)
   self = META_SURFACE (object);
 
   destroy_damage (self);
+  free_pixmap (self);
 
   G_OBJECT_CLASS (meta_surface_parent_class)->finalize (object);
 }
@@ -245,6 +301,45 @@ meta_surface_get_window (MetaSurface *self)
   return priv->window;
 }
 
+Pixmap
+meta_surface_get_pixmap (MetaSurface *self)
+{
+  MetaSurfacePrivate *priv;
+
+  priv = meta_surface_get_instance_private (self);
+
+  return priv->pixmap;
+}
+
+int
+meta_surface_get_width (MetaSurface *self)
+{
+  MetaSurfacePrivate *priv;
+
+  priv = meta_surface_get_instance_private (self);
+
+  return priv->width;
+}
+
+int
+meta_surface_get_height (MetaSurface *self)
+{
+  MetaSurfacePrivate *priv;
+
+  priv = meta_surface_get_instance_private (self);
+
+  return priv->height;
+}
+
+void
+meta_surface_show (MetaSurface *self)
+{
+  /* The reason we free pixmap here is so that we will still have
+   * a valid pixmap when the window is unmapped.
+   */
+  free_pixmap (self);
+}
+
 void
 meta_surface_process_damage (MetaSurface        *self,
                              XDamageNotifyEvent *event)
@@ -282,5 +377,27 @@ meta_surface_pre_paint (MetaSurface *self)
   meta_compositor_add_damage (priv->compositor, "meta_surface_pre_paint", parts);
   XFixesDestroyRegion (xdisplay, parts);
 
+  ensure_pixmap (self);
+
   META_SURFACE_GET_CLASS (self)->pre_paint (self);
+}
+
+void
+meta_surface_sync_geometry (MetaSurface *self)
+{
+  MetaSurfacePrivate *priv;
+  MetaRectangle rect;
+
+  priv = meta_surface_get_instance_private (self);
+
+  meta_window_get_input_rect (priv->window, &rect);
+
+  if (priv->width != rect.width ||
+      priv->height != rect.height)
+    {
+      free_pixmap (self);
+
+      priv->width = rect.width;
+      priv->height = rect.height;
+    }
 }

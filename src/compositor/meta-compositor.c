@@ -446,6 +446,7 @@ meta_compositor_show_window (MetaCompositor *compositor,
     return;
 
   compositor_class->show_window (compositor, surface, effect);
+  meta_surface_show (surface);
 }
 
 void
@@ -635,6 +636,7 @@ meta_compositor_sync_window_geometry (MetaCompositor *compositor,
     return;
 
   compositor_class->sync_window_geometry (compositor, surface);
+  meta_surface_sync_geometry (surface);
 }
 
 gboolean

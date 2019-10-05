@@ -92,7 +92,6 @@ typedef struct _MetaCompWindow
 
   MetaRectangle rect;
 
-  Pixmap back_pixmap;
   Pixmap mask_pixmap;
 
   int mode;
@@ -122,10 +121,9 @@ typedef struct _MetaCompWindow
 
   XserverRegion border_clip;
 
-  /* When the window is shaded back_pixmap will be replaced with the pixmap
-   * for the shaded window. This is a copy of the original unshaded window
-   * so that we can still see what the window looked like when it is needed
-   * for the _get_window_surface function.
+  /* This is a copy of the original unshaded window so that we can still see
+   * what the window looked like when it is needed for the _get_window_surface
+   * function.
    */
   cairo_surface_t *shaded_surface;
 } MetaCompWindow;
@@ -1222,25 +1220,23 @@ get_window_format (Display        *xdisplay,
 }
 
 static Picture
-get_window_picture (MetaDisplay    *display,
-                    MetaCompWindow *cw)
+get_window_picture (MetaSurface *surface)
 {
+  MetaCompWindow *cw;
+  MetaDisplay *display;
   Display *xdisplay;
   Window xwindow;
+  Pixmap back_pixmap;
   XRenderPictureAttributes pa;
   XRenderPictFormat *format;
 
+  cw = g_object_get_data (G_OBJECT (surface), "cw");
+
+  display = meta_window_get_display (cw->window);
   xdisplay = meta_display_get_xdisplay (display);
   xwindow = meta_window_get_toplevel_xwindow (cw->window);
 
-  if (cw->back_pixmap == None)
-    {
-      meta_error_trap_push (display);
-      cw->back_pixmap = XCompositeNameWindowPixmap (xdisplay, xwindow);
-
-      if (meta_error_trap_pop_with_return (display) != 0)
-        cw->back_pixmap = None;
-    }
+  back_pixmap = meta_surface_get_pixmap (surface);
 
   format = get_window_format (xdisplay, cw);
   if (format)
@@ -1248,7 +1244,7 @@ get_window_picture (MetaDisplay    *display,
       Drawable draw;
       Picture pict;
 
-      draw = cw->back_pixmap != None ? cw->back_pixmap : xwindow;
+      draw = back_pixmap != None ? back_pixmap : xwindow;
       pa.subwindow_mode = IncludeInferiors;
 
       meta_error_trap_push (display);
@@ -1442,7 +1438,7 @@ paint_windows (MetaCompositorXRender *xrender,
         continue;
 
       if (cw->picture == None)
-        cw->picture = get_window_picture (display, cw);
+        cw->picture = get_window_picture (surface);
 
       if (cw->mask == None)
         cw->mask = get_window_mask (display, cw);
@@ -1702,11 +1698,6 @@ free_win (MetaCompWindow *cw,
   meta_error_trap_push (display);
 
   /* See comment in map_win */
-  if (cw->back_pixmap && destroy)
-    {
-      XFreePixmap (xdisplay, cw->back_pixmap);
-      cw->back_pixmap = None;
-    }
 
   if (cw->mask_pixmap && destroy)
     {
@@ -1807,11 +1798,6 @@ map_win (MetaCompositorXRender *xrender,
   /* The reason we deallocate this here and not in unmap
      is so that we will still have a valid pixmap for
      whenever the window is unmapped */
-  if (cw->back_pixmap)
-    {
-      XFreePixmap (xdisplay, cw->back_pixmap);
-      cw->back_pixmap = None;
-    }
 
   if (cw->mask_pixmap)
     {
@@ -1911,12 +1897,6 @@ notify_decorated_cb (MetaWindow            *window,
 
   meta_error_trap_push (window->display);
 
-  if (cw->back_pixmap != None)
-    {
-      XFreePixmap (xrender->xdisplay, cw->back_pixmap);
-      cw->back_pixmap = None;
-    }
-
   if (cw->mask_pixmap != None)
     {
       XFreePixmap (xrender->xdisplay, cw->mask_pixmap);
@@ -2001,6 +1981,7 @@ get_window_surface (MetaSurface *surface)
   MetaFrame *frame;
   MetaDisplay *display;
   Display *xdisplay;
+  Pixmap back_pixmap;
   XserverRegion xclient_region;
   cairo_region_t *client_region;
   cairo_surface_t *back_surface;
@@ -2013,7 +1994,8 @@ get_window_surface (MetaSurface *surface)
   display = meta_window_get_display (cw->window);
   xdisplay = meta_display_get_xdisplay (display);
 
-  if (cw->back_pixmap == None)
+  back_pixmap = meta_surface_get_pixmap (surface);
+  if (back_pixmap == None)
     return NULL;
 
   if (frame != NULL && cw->mask_pixmap == None)
@@ -2036,7 +2018,7 @@ get_window_surface (MetaSurface *surface)
   if (frame != NULL && client_region == NULL)
     return NULL;
 
-  back_surface = cairo_xlib_surface_create (xdisplay, cw->back_pixmap,
+  back_surface = cairo_xlib_surface_create (xdisplay, back_pixmap,
                                             get_toplevel_xvisual (cw->window),
                                             cw->rect.width, cw->rect.height);
 
@@ -2432,7 +2414,6 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
                            G_CALLBACK (notify_shaded_cb),
                            surface, 0);
 
-  cw->back_pixmap = None;
   cw->mask_pixmap = None;
 
   cw->damaged = FALSE;
@@ -2775,12 +2756,6 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
 
   if (cw->rect.width != old_rect.width || cw->rect.height != old_rect.height)
     {
-      if (cw->back_pixmap != None)
-        {
-          XFreePixmap (xrender->xdisplay, cw->back_pixmap);
-          cw->back_pixmap = None;
-        }
-
       if (cw->mask_pixmap != None)
         {
           XFreePixmap (xrender->xdisplay, cw->mask_pixmap);
