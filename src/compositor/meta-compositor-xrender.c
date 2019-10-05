@@ -2898,6 +2898,11 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
 }
 
 static void
+meta_compositor_xrender_pre_paint (MetaCompositor *compositor)
+{
+}
+
+static void
 meta_compositor_xrender_redraw (MetaCompositor *compositor,
                                 XserverRegion   all_damage)
 {
@@ -2941,6 +2946,7 @@ meta_compositor_xrender_class_init (MetaCompositorXRenderClass *xrender_class)
   compositor_class->unmaximize_window = meta_compositor_xrender_unmaximize_window;
   compositor_class->sync_screen_size = meta_compositor_xrender_sync_screen_size;
   compositor_class->sync_window_geometry = meta_compositor_xrender_sync_window_geometry;
+  compositor_class->pre_paint = meta_compositor_xrender_pre_paint;
   compositor_class->redraw = meta_compositor_xrender_redraw;
 }
 

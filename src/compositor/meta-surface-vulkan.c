@@ -26,8 +26,18 @@ struct _MetaSurfaceVulkan
 G_DEFINE_TYPE (MetaSurfaceVulkan, meta_surface_vulkan, META_TYPE_SURFACE)
 
 static void
+meta_surface_vulkan_pre_paint (MetaSurface *surface)
+{
+}
+
+static void
 meta_surface_vulkan_class_init (MetaSurfaceVulkanClass *self_class)
 {
+  MetaSurfaceClass *surface_class;
+
+  surface_class = META_SURFACE_CLASS (self_class);
+
+  surface_class->pre_paint = meta_surface_vulkan_pre_paint;
 }
 
 static void

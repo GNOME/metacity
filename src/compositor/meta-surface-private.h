@@ -25,6 +25,8 @@ G_BEGIN_DECLS
 struct _MetaSurfaceClass
 {
   GObjectClass parent_class;
+
+  void (* pre_paint) (MetaSurface *self);
 };
 
 G_END_DECLS

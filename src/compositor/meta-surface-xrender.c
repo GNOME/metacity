@@ -26,8 +26,18 @@ struct _MetaSurfaceXRender
 G_DEFINE_TYPE (MetaSurfaceXRender, meta_surface_xrender, META_TYPE_SURFACE)
 
 static void
+meta_surface_xrender_pre_paint (MetaSurface *surface)
+{
+}
+
+static void
 meta_surface_xrender_class_init (MetaSurfaceXRenderClass *self_class)
 {
+  MetaSurfaceClass *surface_class;
+
+  surface_class = META_SURFACE_CLASS (self_class);
+
+  surface_class->pre_paint = meta_surface_xrender_pre_paint;
 }
 
 static void

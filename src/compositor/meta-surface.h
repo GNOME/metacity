@@ -30,6 +30,8 @@ MetaCompositor *meta_surface_get_compositor (MetaSurface *self);
 
 MetaWindow     *meta_surface_get_window     (MetaSurface *self);
 
+void            meta_surface_pre_paint      (MetaSurface *self);
+
 G_END_DECLS
 
 #endif

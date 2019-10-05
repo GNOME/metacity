@@ -152,3 +152,9 @@ meta_surface_get_window (MetaSurface *self)
 
   return priv->window;
 }
+
+void
+meta_surface_pre_paint (MetaSurface *self)
+{
+  META_SURFACE_GET_CLASS (self)->pre_paint (self);
+}

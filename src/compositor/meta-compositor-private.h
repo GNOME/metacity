@@ -77,6 +77,8 @@ struct _MetaCompositorClass
   void              (* sync_window_geometry)         (MetaCompositor     *compositor,
                                                       MetaWindow         *window);
 
+  void              (* pre_paint)                    (MetaCompositor     *compositor);
+
   void              (* redraw)                       (MetaCompositor     *compositor,
                                                       XserverRegion       all_damage);
 };
