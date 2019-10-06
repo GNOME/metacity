@@ -66,6 +66,8 @@ free_pixmap (MetaSurface *self)
   display = meta_compositor_get_display (priv->compositor);
   xdisplay = meta_display_get_xdisplay (display);
 
+  META_SURFACE_GET_CLASS (self)->free_pixmap (self);
+
   meta_error_trap_push (display);
 
   XFreePixmap (xdisplay, priv->pixmap);

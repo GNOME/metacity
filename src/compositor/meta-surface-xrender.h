@@ -18,6 +18,7 @@
 #ifndef META_SURFACE_XRENDER_H
 #define META_SURFACE_XRENDER_H
 
+#include <X11/extensions/Xrender.h>
 #include "meta-surface-private.h"
 
 G_BEGIN_DECLS
@@ -25,6 +26,8 @@ G_BEGIN_DECLS
 #define META_TYPE_SURFACE_XRENDER (meta_surface_xrender_get_type ())
 G_DECLARE_FINAL_TYPE (MetaSurfaceXRender, meta_surface_xrender,
                       META, SURFACE_XRENDER, MetaSurface)
+
+Picture meta_surface_xrender_get_picture (MetaSurfaceXRender *self);
 
 G_END_DECLS
 

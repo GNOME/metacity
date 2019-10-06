@@ -100,7 +100,6 @@ typedef struct _MetaCompWindow
 
   XserverRegion shape_region;
 
-  Picture picture;
   Picture mask;
   Picture alpha_pict;
 
@@ -1200,63 +1199,6 @@ get_visible_region (MetaDisplay    *display,
   return region;
 }
 
-static XRenderPictFormat *
-get_window_format (Display        *xdisplay,
-                   MetaCompWindow *cw)
-{
-  XRenderPictFormat *format;
-
-  format = XRenderFindVisualFormat (xdisplay, get_toplevel_xvisual (cw->window));
-
-  if (!format)
-    {
-      Visual *visual;
-
-      visual = DefaultVisual (xdisplay, DefaultScreen (xdisplay));
-      format = XRenderFindVisualFormat (xdisplay, visual);
-    }
-
-  return format;
-}
-
-static Picture
-get_window_picture (MetaSurface *surface)
-{
-  MetaCompWindow *cw;
-  MetaDisplay *display;
-  Display *xdisplay;
-  Window xwindow;
-  Pixmap back_pixmap;
-  XRenderPictureAttributes pa;
-  XRenderPictFormat *format;
-
-  cw = g_object_get_data (G_OBJECT (surface), "cw");
-
-  display = meta_window_get_display (cw->window);
-  xdisplay = meta_display_get_xdisplay (display);
-  xwindow = meta_window_get_toplevel_xwindow (cw->window);
-
-  back_pixmap = meta_surface_get_pixmap (surface);
-
-  format = get_window_format (xdisplay, cw);
-  if (format)
-    {
-      Drawable draw;
-      Picture pict;
-
-      draw = back_pixmap != None ? back_pixmap : xwindow;
-      pa.subwindow_mode = IncludeInferiors;
-
-      meta_error_trap_push (display);
-      pict = XRenderCreatePicture (xdisplay, draw, format, CPSubwindowMode, &pa);
-      meta_error_trap_pop (display);
-
-      return pict;
-    }
-
-  return None;
-}
-
 static Picture
 get_window_mask (MetaDisplay    *display,
                  MetaCompWindow *cw)
@@ -1421,6 +1363,7 @@ paint_windows (MetaCompositorXRender *xrender,
   for (index = surfaces; index; index = index->next)
     {
       MetaSurface *surface;
+      Picture picture;
 
       /* Store the last window we dealt with */
       last = index;
@@ -1437,8 +1380,7 @@ paint_windows (MetaCompositorXRender *xrender,
       if (!meta_window_is_toplevel_mapped (cw->window))
         continue;
 
-      if (cw->picture == None)
-        cw->picture = get_window_picture (surface);
+      picture = meta_surface_xrender_get_picture (META_SURFACE_XRENDER (surface));
 
       if (cw->mask == None)
         cw->mask = get_window_mask (display, cw);
@@ -1471,7 +1413,7 @@ paint_windows (MetaCompositorXRender *xrender,
 
           XFixesSetPictureClipRegion (xdisplay, root_buffer,
                                       0, 0, paint_region);
-          XRenderComposite (xdisplay, PictOpSrc, cw->picture, None, root_buffer,
+          XRenderComposite (xdisplay, PictOpSrc, picture, None, root_buffer,
                             borders.total.left, borders.total.top, 0, 0,
                             x + borders.total.left, y + borders.total.top,
                             wid - borders.total.left - borders.total.right,
@@ -1517,11 +1459,14 @@ paint_windows (MetaCompositorXRender *xrender,
   for (index = last; index; index = index->prev)
     {
       MetaSurface *surface;
+      Picture picture;
 
       surface = META_SURFACE (index->data);
       cw = g_object_get_data (G_OBJECT (surface), "cw");
 
-      if (cw->picture)
+      picture = meta_surface_xrender_get_picture (META_SURFACE_XRENDER (surface));
+
+      if (picture)
         {
           int x, y, wid, hei;
 
@@ -1567,7 +1512,7 @@ paint_windows (MetaCompositorXRender *xrender,
                                 cw->alpha_pict, root_buffer, 0, 0, 0, 0,
                                 x, y, wid, hei);
 
-              XRenderComposite (xdisplay, PictOpAdd, cw->picture,
+              XRenderComposite (xdisplay, PictOpAdd, picture,
                                 cw->alpha_pict, root_buffer, 0, 0, 0, 0,
                                 x, y, wid, hei);
             }
@@ -1586,14 +1531,14 @@ paint_windows (MetaCompositorXRender *xrender,
                                 cw->alpha_pict, root_buffer, 0, 0, 0, 0,
                                 x, y, wid, hei);
 
-              XRenderComposite (xdisplay, PictOpAdd, cw->picture,
+              XRenderComposite (xdisplay, PictOpAdd, picture,
                                 cw->alpha_pict, root_buffer, 0, 0, 0, 0,
                                 x, y, wid, hei);
 
               XFixesIntersectRegion (xdisplay, clip, cw->border_clip, client);
               XFixesSetPictureClipRegion (xdisplay, root_buffer, 0, 0, clip);
 
-              XRenderComposite (xdisplay, PictOpOver, cw->picture,
+              XRenderComposite (xdisplay, PictOpOver, picture,
                                 cw->alpha_pict, root_buffer, 0, 0, 0, 0,
                                 x, y, wid, hei);
 
@@ -1602,7 +1547,7 @@ paint_windows (MetaCompositorXRender *xrender,
             }
           else if (cw->mode == WINDOW_ARGB && cw->mask == None)
             {
-              XRenderComposite (xdisplay, PictOpOver, cw->picture,
+              XRenderComposite (xdisplay, PictOpOver, picture,
                                 cw->alpha_pict, root_buffer, 0, 0, 0, 0,
                                 x, y, wid, hei);
             }
@@ -1709,12 +1654,6 @@ free_win (MetaCompWindow *cw,
     {
       XFixesDestroyRegion (xdisplay, cw->shape_region);
       cw->shape_region = None;
-    }
-
-  if (cw->picture)
-    {
-      XRenderFreePicture (xdisplay, cw->picture);
-      cw->picture = None;
     }
 
   if (cw->mask)
@@ -1907,12 +1846,6 @@ notify_decorated_cb (MetaWindow            *window,
     {
       XFixesDestroyRegion (xrender->xdisplay, cw->shape_region);
       cw->shape_region = None;
-    }
-
-  if (cw->picture != None)
-    {
-      XRenderFreePicture (xrender->xdisplay, cw->picture);
-      cw->picture = None;
     }
 
   if (cw->mask != None)
@@ -2760,12 +2693,6 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
         {
           XFreePixmap (xrender->xdisplay, cw->mask_pixmap);
           cw->mask_pixmap = None;
-        }
-
-      if (cw->picture != None)
-        {
-          XRenderFreePicture (xrender->xdisplay, cw->picture);
-          cw->picture = None;
         }
 
       if (cw->mask != None)
