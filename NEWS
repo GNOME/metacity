@@ -1,3 +1,9 @@
+Version 3.34.1
+==============
+- Fix memory leak in compositor.
+- Fix shaded window regression.
+- Fix shadow regression.
+
 Version 3.34.0
 ==============
 - Fix possible crash in compositor.
