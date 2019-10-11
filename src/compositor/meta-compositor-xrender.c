@@ -101,7 +101,6 @@ typedef struct _MetaCompWindow
   XserverRegion shape_region;
 
   Picture mask;
-  Picture alpha_pict;
 
   gboolean needs_shadow;
   MetaShadowType shadow_type;
@@ -542,47 +541,6 @@ cairo_region_to_xserver_region (Display        *xdisplay,
   g_free (rects);
 
   return xregion;
-}
-
-static cairo_region_t *
-xserver_region_to_cairo_region (Display       *xdisplay,
-                                XserverRegion  xregion)
-{
-  XRectangle *xrects;
-  int nrects;
-  cairo_rectangle_int_t *rects;
-  int i;
-  cairo_region_t *region;
-
-  if (xregion == None)
-    return NULL;
-
-  xrects = XFixesFetchRegion (xdisplay, xregion, &nrects);
-  if (xrects == NULL)
-    return NULL;
-
-  if (nrects == 0)
-    {
-      XFree (xrects);
-      return NULL;
-    }
-
-  rects = g_new (cairo_rectangle_int_t, nrects);
-
-  for (i = 0; i < nrects; i++)
-    {
-      rects[i].x = xrects[i].x;
-      rects[i].y = xrects[i].y;
-      rects[i].width = xrects[i].width;
-      rects[i].height = xrects[i].height;
-    }
-
-  XFree (xrects);
-
-  region = cairo_region_create_rectangles (rects, nrects);
-  g_free (rects);
-
-  return region;
 }
 
 static void
@@ -1200,7 +1158,8 @@ get_visible_region (MetaDisplay    *display,
 }
 
 static Pixmap
-get_window_mask_pixmap (MetaCompWindow *cw)
+get_window_mask_pixmap (MetaCompWindow *cw,
+                        gboolean        with_opacity)
 {
   MetaFrame *frame;
   MetaDisplay *display;
@@ -1208,19 +1167,20 @@ get_window_mask_pixmap (MetaCompWindow *cw)
   int width;
   int height;
   XRenderPictFormat *format;
+  double opacity;
   cairo_surface_t *surface;
   cairo_t *cr;
   Pixmap pixmap;
 
   frame = meta_window_get_frame (cw->window);
-  if (frame == NULL)
+  if (frame == NULL && cw->window->opacity == (guint) OPAQUE)
     return None;
 
   display = meta_window_get_display (cw->window);
   xdisplay = meta_display_get_xdisplay (display);
 
-  width = cw->rect.width;
-  height = cw->rect.height;
+  width = frame != NULL ? cw->rect.width : 1;
+  height = frame != NULL ? cw->rect.height : 1;
 
   format = XRenderFindStandardFormat (xdisplay, PictStandardA8);
 
@@ -1233,6 +1193,10 @@ get_window_mask_pixmap (MetaCompWindow *cw)
 
   if (meta_error_trap_pop_with_return (display) != 0)
     return None;
+
+  opacity = 1.0;
+  if (with_opacity)
+    opacity = (double) cw->window->opacity / OPAQUE;
 
   surface = cairo_xlib_surface_create_with_xrender_format (xdisplay,
                                                            pixmap,
@@ -1247,35 +1211,53 @@ get_window_mask_pixmap (MetaCompWindow *cw)
   cairo_set_source_rgba (cr, 0, 0, 0, 1);
   cairo_paint (cr);
 
-  {
-    cairo_rectangle_int_t rect;
-    cairo_region_t *frame_paint_region;
-    MetaFrameBorders borders;
+  if (frame != NULL)
+    {
+      cairo_rectangle_int_t rect;
+      cairo_region_t *frame_paint_region;
+      MetaFrameBorders borders;
 
-    rect.x = 0;
-    rect.y = 0;
-    rect.width = width;
-    rect.height = height;
+      rect.x = 0;
+      rect.y = 0;
+      rect.width = width;
+      rect.height = height;
 
-    frame_paint_region = cairo_region_create_rectangle (&rect);
-    meta_frame_calc_borders (frame, &borders);
+      frame_paint_region = cairo_region_create_rectangle (&rect);
+      meta_frame_calc_borders (frame, &borders);
 
-    rect.x += borders.total.left;
-    rect.y += borders.total.top;
-    rect.width -= borders.total.left + borders.total.right;
-    rect.height -= borders.total.top + borders.total.bottom;
+      rect.x += borders.total.left;
+      rect.y += borders.total.top;
+      rect.width -= borders.total.left + borders.total.right;
+      rect.height -= borders.total.top + borders.total.bottom;
 
-    cairo_region_subtract_rectangle (frame_paint_region, &rect);
+      cairo_region_subtract_rectangle (frame_paint_region, &rect);
 
-    gdk_cairo_region (cr, frame_paint_region);
-    cairo_clip (cr);
+      cairo_rectangle (cr, rect.x, rect.y, rect.width, rect.height);
+      cairo_clip (cr);
 
-    cairo_set_operator (cr, CAIRO_OPERATOR_OVER);
-    meta_frame_get_mask (frame, cr);
+      cairo_set_operator (cr, CAIRO_OPERATOR_SOURCE);
+      cairo_set_source_rgba (cr, 0, 0, 0, opacity);
+      cairo_paint (cr);
 
-    cairo_surface_flush (surface);
-    cairo_region_destroy (frame_paint_region);
-  }
+      cairo_reset_clip (cr);
+      gdk_cairo_region (cr, frame_paint_region);
+      cairo_region_destroy (frame_paint_region);
+      cairo_clip (cr);
+
+      cairo_push_group (cr);
+
+      cairo_set_operator (cr, CAIRO_OPERATOR_OVER);
+      meta_frame_get_mask (frame, cr);
+
+      cairo_pop_group_to_source (cr);
+      cairo_paint_with_alpha (cr, opacity);
+    }
+  else
+    {
+      cairo_set_operator (cr, CAIRO_OPERATOR_SOURCE);
+      cairo_set_source_rgba (cr, 0, 0, 0, opacity);
+      cairo_paint (cr);
+    }
 
   cairo_destroy (cr);
   cairo_surface_destroy (surface);
@@ -1292,7 +1274,7 @@ get_window_mask (MetaDisplay    *display,
   Picture picture;
 
   if (cw->mask_pixmap == None)
-    cw->mask_pixmap = get_window_mask_pixmap (cw);
+    cw->mask_pixmap = get_window_mask_pixmap (cw, TRUE);
 
   if (cw->mask_pixmap == None)
     return None;
@@ -1516,13 +1498,6 @@ paint_windows (MetaCompositorXRender *xrender,
                 XFixesDestroyRegion (xdisplay, shadow_clip);
             }
 
-          if ((cw->window->opacity != (guint) OPAQUE) && !(cw->alpha_pict))
-            {
-              cw->alpha_pict = solid_picture (xdisplay, FALSE,
-                                              (double) cw->window->opacity / OPAQUE,
-                                              0, 0, 0);
-            }
-
           XFixesIntersectRegion (xdisplay, cw->border_clip, cw->border_clip,
                                  cw->window_region);
           XFixesSetPictureClipRegion (xdisplay, root_buffer, 0, 0,
@@ -1530,47 +1505,14 @@ paint_windows (MetaCompositorXRender *xrender,
 
           if (cw->mode == WINDOW_SOLID && cw->mask != None)
             {
-              XRenderComposite (xdisplay, PictOpOver, cw->mask,
-                                cw->alpha_pict, root_buffer, 0, 0, 0, 0,
-                                x, y, wid, hei);
-
-              XRenderComposite (xdisplay, PictOpAdd, picture,
-                                cw->alpha_pict, root_buffer, 0, 0, 0, 0,
+              XRenderComposite (xdisplay, PictOpOver, picture,
+                                cw->mask, root_buffer, 0, 0, 0, 0,
                                 x, y, wid, hei);
             }
-          else if (cw->mode == WINDOW_ARGB && cw->mask != None)
-            {
-              XserverRegion clip;
-              XserverRegion client;
-
-              clip = XFixesCreateRegion (xdisplay, NULL, 0);
-              client = cw->client_region;
-
-              XFixesSubtractRegion (xdisplay, clip, cw->border_clip, client);
-              XFixesSetPictureClipRegion (xdisplay, root_buffer, 0, 0, clip);
-
-              XRenderComposite (xdisplay, PictOpOver, cw->mask,
-                                cw->alpha_pict, root_buffer, 0, 0, 0, 0,
-                                x, y, wid, hei);
-
-              XRenderComposite (xdisplay, PictOpAdd, picture,
-                                cw->alpha_pict, root_buffer, 0, 0, 0, 0,
-                                x, y, wid, hei);
-
-              XFixesIntersectRegion (xdisplay, clip, cw->border_clip, client);
-              XFixesSetPictureClipRegion (xdisplay, root_buffer, 0, 0, clip);
-
-              XRenderComposite (xdisplay, PictOpOver, picture,
-                                cw->alpha_pict, root_buffer, 0, 0, 0, 0,
-                                x, y, wid, hei);
-
-              if (clip)
-                XFixesDestroyRegion (xdisplay, clip);
-            }
-          else if (cw->mode == WINDOW_ARGB && cw->mask == None)
+          else if (cw->mode == WINDOW_ARGB)
             {
               XRenderComposite (xdisplay, PictOpOver, picture,
-                                cw->alpha_pict, root_buffer, 0, 0, 0, 0,
+                                cw->mask, root_buffer, 0, 0, 0, 0,
                                 x, y, wid, hei);
             }
         }
@@ -1688,12 +1630,6 @@ free_win (MetaCompWindow *cw,
     {
       XRenderFreePicture (xdisplay, cw->shadow);
       cw->shadow = None;
-    }
-
-  if (cw->alpha_pict)
-    {
-      XRenderFreePicture (xdisplay, cw->alpha_pict);
-      cw->alpha_pict = None;
     }
 
   if (cw->window_region)
@@ -1876,12 +1812,6 @@ notify_decorated_cb (MetaWindow            *window,
       cw->mask = None;
     }
 
-  if (cw->alpha_pict != None)
-    {
-      XRenderFreePicture (xrender->xdisplay, cw->alpha_pict);
-      cw->alpha_pict = None;
-    }
-
   if (cw->window_region != None)
     {
       XFixesDestroyRegion (xrender->xdisplay, cw->window_region);
@@ -1937,8 +1867,7 @@ get_window_surface (MetaSurface *surface)
   MetaDisplay *display;
   Display *xdisplay;
   Pixmap back_pixmap;
-  XserverRegion xclient_region;
-  cairo_region_t *client_region;
+  Pixmap mask_pixmap;
   cairo_surface_t *back_surface;
   cairo_surface_t *window_surface;
   cairo_t *cr;
@@ -1953,25 +1882,9 @@ get_window_surface (MetaSurface *surface)
   if (back_pixmap == None)
     return NULL;
 
-  if (frame != NULL && cw->mask_pixmap == None)
-    return NULL;
-
-  xclient_region = None;
-  if (cw->client_region != None)
-    {
-      xclient_region = XFixesCreateRegion (xdisplay, NULL, 0);
-      XFixesCopyRegion (xdisplay, xclient_region, cw->client_region);
-      XFixesTranslateRegion (xdisplay, xclient_region, -cw->rect.x, -cw->rect.y);
-    }
-
-  if (frame != NULL && xclient_region == None)
-    return NULL;
-
-  client_region = xserver_region_to_cairo_region (xdisplay, xclient_region);
-  XFixesDestroyRegion (xdisplay, xclient_region);
-
-  if (frame != NULL && client_region == NULL)
-    return NULL;
+  mask_pixmap = None;
+  if (cw->window->opacity != (guint) OPAQUE)
+    mask_pixmap = get_window_mask_pixmap (cw, FALSE);
 
   back_surface = cairo_xlib_surface_create (xdisplay, back_pixmap,
                                             get_toplevel_xvisual (cw->window),
@@ -1984,49 +1897,52 @@ get_window_surface (MetaSurface *surface)
 
   cr = cairo_create (window_surface);
   cairo_set_source_surface (cr, back_surface, 0, 0);
-  cairo_paint (cr);
+  cairo_surface_destroy (back_surface);
 
-  if (frame != NULL)
+  if (mask_pixmap != None || cw->mask_pixmap != None)
     {
-      cairo_region_t *region;
+      Pixmap pixmap;
       Screen *xscreen;
       XRenderPictFormat *format;
+      int width;
+      int height;
       cairo_surface_t *mask;
+      cairo_pattern_t *pattern;
 
-      region = cairo_region_create_rectangle (&(cairo_rectangle_int_t) {
-                                                .width = cw->rect.width,
-                                                .height = cw->rect.height
-                                              });
-
-      cairo_region_subtract (region, client_region);
-
+      pixmap = mask_pixmap != None ? mask_pixmap : cw->mask_pixmap;
       xscreen = DefaultScreenOfDisplay (xdisplay);
       format = XRenderFindStandardFormat (xdisplay, PictStandardA8);
+
+      width = frame != NULL ? cw->rect.width : 1;
+      height = frame != NULL ? cw->rect.height : 1;
+
       mask = cairo_xlib_surface_create_with_xrender_format (xdisplay,
-                                                            cw->mask_pixmap,
-                                                            xscreen, format,
-                                                            cw->rect.width,
-                                                            cw->rect.height);
+                                                            pixmap,
+                                                            xscreen,
+                                                            format,
+                                                            width,
+                                                            height);
 
-      gdk_cairo_region (cr, region);
-      cairo_clip (cr);
+      pattern = cairo_pattern_create_for_surface (mask);
+      cairo_surface_destroy (mask);
 
-      cairo_set_operator (cr, CAIRO_OPERATOR_CLEAR);
-      cairo_set_source_rgba (cr, 0, 0, 0, 0);
-      cairo_paint (cr);
+      if (frame == NULL)
+        cairo_pattern_set_extend (pattern, CAIRO_EXTEND_REPEAT);
 
-      cairo_set_operator (cr, CAIRO_OPERATOR_OVER);
-      cairo_set_source_surface (cr, back_surface, 0, 0);
-      cairo_mask_surface (cr, mask, 0, 0);
+      cairo_mask (cr, pattern);
       cairo_fill (cr);
 
-      cairo_surface_destroy (mask);
-      cairo_region_destroy (region);
+      cairo_pattern_destroy (pattern);
+    }
+  else
+    {
+      cairo_paint (cr);
     }
 
   cairo_destroy (cr);
-  cairo_surface_destroy (back_surface);
-  cairo_region_destroy (client_region);
+
+  if (mask_pixmap != None)
+    XFreePixmap (xdisplay, mask_pixmap);
 
   return window_surface;
 }
@@ -2382,8 +2298,6 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
                              cw->rect.x, cw->rect.y);
     }
 
-  cw->alpha_pict = None;
-
   cw->window_region = None;
   cw->visible_region = None;
   cw->client_region = None;
@@ -2498,10 +2412,16 @@ meta_compositor_xrender_window_opacity_changed (MetaCompositor *compositor,
   determine_mode (xrender, cw);
   cw->needs_shadow = window_has_shadow (xrender, cw);
 
-  if (cw->alpha_pict)
+  if (cw->mask_pixmap != None)
     {
-      XRenderFreePicture (xrender->xdisplay, cw->alpha_pict);
-      cw->alpha_pict = None;
+      XFreePixmap (xrender->xdisplay, cw->mask_pixmap);
+      cw->mask_pixmap = None;
+    }
+
+  if (cw->mask != None)
+    {
+      XRenderFreePicture (xrender->xdisplay, cw->mask);
+      cw->mask = None;
     }
 
   if (cw->shadow)
