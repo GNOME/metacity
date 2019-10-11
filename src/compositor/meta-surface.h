@@ -39,6 +39,8 @@ int             meta_surface_get_height     (MetaSurface        *self);
 
 void            meta_surface_show           (MetaSurface        *self);
 
+void            meta_surface_hide           (MetaSurface        *self);
+
 void            meta_surface_process_damage (MetaSurface        *self,
                                              XDamageNotifyEvent *event);
 

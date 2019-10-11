@@ -466,6 +466,7 @@ meta_compositor_hide_window (MetaCompositor *compositor,
     return;
 
   compositor_class->hide_window (compositor, surface, effect);
+  meta_surface_hide (surface);
 }
 
 void

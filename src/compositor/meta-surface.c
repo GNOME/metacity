@@ -343,6 +343,12 @@ meta_surface_show (MetaSurface *self)
 }
 
 void
+meta_surface_hide (MetaSurface *self)
+{
+  META_SURFACE_GET_CLASS (self)->hide (self);
+}
+
+void
 meta_surface_process_damage (MetaSurface        *self,
                              XDamageNotifyEvent *event)
 {
