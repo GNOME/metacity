@@ -341,6 +341,8 @@ meta_surface_show (MetaSurface *self)
    * a valid pixmap when the window is unmapped.
    */
   free_pixmap (self);
+
+  META_SURFACE_GET_CLASS (self)->show (self);
 }
 
 void

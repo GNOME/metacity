@@ -26,6 +26,8 @@ struct _MetaSurfaceClass
 {
   GObjectClass parent_class;
 
+  void (* show)            (MetaSurface *self);
+
   void (* hide)            (MetaSurface *self);
 
   void (* opacity_changed) (MetaSurface *self);
