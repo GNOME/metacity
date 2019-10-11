@@ -2464,16 +2464,14 @@ meta_compositor_xrender_hide_window (MetaCompositor *compositor,
 
 static void
 meta_compositor_xrender_window_opacity_changed (MetaCompositor *compositor,
-                                                MetaWindow     *window)
+                                                MetaSurface    *surface)
 {
   MetaCompositorXRender *xrender;
   MetaCompWindow *cw;
 
   xrender = META_COMPOSITOR_XRENDER (compositor);
 
-  cw = find_comp_window_by_window (xrender, window);
-  if (cw == NULL)
-    return;
+  cw = g_object_get_data (G_OBJECT (surface), "cw");
 
   determine_mode (xrender, cw);
   cw->needs_shadow = window_has_shadow (xrender, cw);

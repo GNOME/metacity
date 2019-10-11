@@ -47,7 +47,7 @@ struct _MetaCompositorClass
                                                       MetaEffectType      effect);
 
   void              (* window_opacity_changed)       (MetaCompositor     *compositor,
-                                                      MetaWindow         *window);
+                                                      MetaSurface        *surface);
 
   void              (* window_opaque_region_changed) (MetaCompositor     *compositor,
                                                       MetaWindow         *window);

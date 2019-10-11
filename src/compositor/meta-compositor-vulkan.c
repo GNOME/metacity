@@ -1297,7 +1297,7 @@ meta_compositor_vulkan_hide_window (MetaCompositor *compositor,
 
 static void
 meta_compositor_vulkan_window_opacity_changed (MetaCompositor *compositor,
-                                               MetaWindow     *window)
+                                               MetaSurface    *surface)
 {
 }
 

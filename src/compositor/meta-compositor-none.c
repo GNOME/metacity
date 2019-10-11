@@ -62,7 +62,7 @@ meta_compositor_none_hide_window (MetaCompositor *compositor,
 
 static void
 meta_compositor_none_window_opacity_changed (MetaCompositor *compositor,
-                                             MetaWindow     *window)
+                                             MetaSurface    *surface)
 {
 }
 
