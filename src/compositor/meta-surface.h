@@ -44,9 +44,9 @@ void            meta_surface_hide           (MetaSurface        *self);
 void            meta_surface_process_damage (MetaSurface        *self,
                                              XDamageNotifyEvent *event);
 
-void            meta_surface_pre_paint      (MetaSurface        *self);
-
 void            meta_surface_sync_geometry  (MetaSurface        *self);
+
+void            meta_surface_pre_paint      (MetaSurface        *self);
 
 G_END_DECLS
 

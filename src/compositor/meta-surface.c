@@ -361,6 +361,26 @@ meta_surface_process_damage (MetaSurface        *self,
 }
 
 void
+meta_surface_sync_geometry (MetaSurface *self)
+{
+  MetaSurfacePrivate *priv;
+  MetaRectangle rect;
+
+  priv = meta_surface_get_instance_private (self);
+
+  meta_window_get_input_rect (priv->window, &rect);
+
+  if (priv->width != rect.width ||
+      priv->height != rect.height)
+    {
+      free_pixmap (self);
+
+      priv->width = rect.width;
+      priv->height = rect.height;
+    }
+}
+
+void
 meta_surface_pre_paint (MetaSurface *self)
 {
   MetaSurfacePrivate *priv;
@@ -389,24 +409,4 @@ meta_surface_pre_paint (MetaSurface *self)
   ensure_pixmap (self);
 
   META_SURFACE_GET_CLASS (self)->pre_paint (self);
-}
-
-void
-meta_surface_sync_geometry (MetaSurface *self)
-{
-  MetaSurfacePrivate *priv;
-  MetaRectangle rect;
-
-  priv = meta_surface_get_instance_private (self);
-
-  meta_window_get_input_rect (priv->window, &rect);
-
-  if (priv->width != rect.width ||
-      priv->height != rect.height)
-    {
-      free_pixmap (self);
-
-      priv->width = rect.width;
-      priv->height = rect.height;
-    }
 }
