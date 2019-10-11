@@ -25,6 +25,12 @@ struct _MetaSurfaceVulkan
 
 G_DEFINE_TYPE (MetaSurfaceVulkan, meta_surface_vulkan, META_TYPE_SURFACE)
 
+static cairo_surface_t *
+meta_surface_vulkan_get_image (MetaSurface *surface)
+{
+  return NULL;
+}
+
 static void
 meta_surface_vulkan_show (MetaSurface *surface)
 {
@@ -57,6 +63,7 @@ meta_surface_vulkan_class_init (MetaSurfaceVulkanClass *self_class)
 
   surface_class = META_SURFACE_CLASS (self_class);
 
+  surface_class->get_image = meta_surface_vulkan_get_image;
   surface_class->show = meta_surface_vulkan_show;
   surface_class->hide = meta_surface_vulkan_hide;
   surface_class->opacity_changed = meta_surface_vulkan_opacity_changed;

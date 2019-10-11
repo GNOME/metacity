@@ -31,8 +31,6 @@
 
 #include <gdk/gdk.h>
 #include <libmetacity/meta-frame-borders.h>
-#include <cairo/cairo-xlib.h>
-#include <cairo/cairo-xlib-xrender.h>
 
 #include "display-private.h"
 #include "screen.h"
@@ -1686,98 +1684,6 @@ notify_decorated_cb (MetaWindow            *window,
   add_repair (xrender);
 }
 
-static cairo_surface_t *
-get_window_surface (MetaSurface *surface)
-{
-  MetaCompWindow *cw;
-  MetaFrame *frame;
-  MetaDisplay *display;
-  Display *xdisplay;
-  Pixmap back_pixmap;
-  Pixmap mask_pixmap;
-  gboolean free_pixmap;
-  cairo_surface_t *back_surface;
-  cairo_surface_t *window_surface;
-  cairo_t *cr;
-
-  cw = g_object_get_data (G_OBJECT (surface), "cw");
-
-  frame = meta_window_get_frame (cw->window);
-  display = meta_window_get_display (cw->window);
-  xdisplay = meta_display_get_xdisplay (display);
-
-  back_pixmap = meta_surface_get_pixmap (surface);
-  if (back_pixmap == None)
-    return NULL;
-
-  mask_pixmap = meta_surface_xrender_get_mask_pixmap (META_SURFACE_XRENDER (surface));
-  free_pixmap = FALSE;
-
-  if (cw->window->opacity != (guint) OPAQUE)
-    {
-      mask_pixmap = meta_surface_xrender_create_mask_pixmap (META_SURFACE_XRENDER (surface), FALSE);
-      free_pixmap = TRUE;
-    }
-
-  back_surface = cairo_xlib_surface_create (xdisplay, back_pixmap,
-                                            get_toplevel_xvisual (cw->window),
-                                            cw->rect.width, cw->rect.height);
-
-  window_surface = cairo_surface_create_similar (back_surface,
-                                                 CAIRO_CONTENT_COLOR_ALPHA,
-                                                 cw->rect.width,
-                                                 cw->rect.height);
-
-  cr = cairo_create (window_surface);
-  cairo_set_source_surface (cr, back_surface, 0, 0);
-  cairo_surface_destroy (back_surface);
-
-  if (mask_pixmap != None)
-    {
-      Screen *xscreen;
-      XRenderPictFormat *format;
-      int width;
-      int height;
-      cairo_surface_t *mask;
-      cairo_pattern_t *pattern;
-
-      xscreen = DefaultScreenOfDisplay (xdisplay);
-      format = XRenderFindStandardFormat (xdisplay, PictStandardA8);
-
-      width = frame != NULL ? cw->rect.width : 1;
-      height = frame != NULL ? cw->rect.height : 1;
-
-      mask = cairo_xlib_surface_create_with_xrender_format (xdisplay,
-                                                            mask_pixmap,
-                                                            xscreen,
-                                                            format,
-                                                            width,
-                                                            height);
-
-      pattern = cairo_pattern_create_for_surface (mask);
-      cairo_surface_destroy (mask);
-
-      if (frame == NULL)
-        cairo_pattern_set_extend (pattern, CAIRO_EXTEND_REPEAT);
-
-      cairo_mask (cr, pattern);
-      cairo_fill (cr);
-
-      cairo_pattern_destroy (pattern);
-    }
-  else
-    {
-      cairo_paint (cr);
-    }
-
-  cairo_destroy (cr);
-
-  if (free_pixmap && mask_pixmap != None)
-    XFreePixmap (xdisplay, mask_pixmap);
-
-  return window_surface;
-}
-
 static void
 notify_shaded_cb (MetaWindow  *window,
                   GParamSpec  *pspec,
@@ -1794,7 +1700,7 @@ notify_shaded_cb (MetaWindow  *window,
     }
 
   if (meta_window_is_shaded (cw->window))
-    cw->shaded_surface = get_window_surface (surface);
+    cw->shaded_surface = meta_surface_get_image (surface);
 }
 
 /* event processors must all be called with an error trap in place */
@@ -2371,7 +2277,7 @@ meta_compositor_xrender_get_window_surface (MetaCompositor *compositor,
         return NULL;
     }
 
-  return get_window_surface (surface);
+  return meta_surface_get_image (surface);
 }
 
 static void

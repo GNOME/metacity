@@ -18,6 +18,7 @@
 #include "config.h"
 #include "meta-surface-xrender.h"
 
+#include <cairo/cairo-xlib.h>
 #include <cairo/cairo-xlib-xrender.h>
 #include <libmetacity/meta-frame-borders.h>
 
@@ -185,6 +186,110 @@ meta_surface_xrender_finalize (GObject *object)
   G_OBJECT_CLASS (meta_surface_xrender_parent_class)->finalize (object);
 }
 
+static cairo_surface_t *
+meta_surface_xrender_get_image (MetaSurface *surface)
+{
+  MetaSurfaceXRender *self;
+  Pixmap back_pixmap;
+  MetaWindow *window;
+  Pixmap mask_pixmap;
+  gboolean free_pixmap;
+  MetaDisplay *display;
+  Display *xdisplay;
+  Visual *visual;
+  int width;
+  int height;
+  cairo_surface_t *back_surface;
+  cairo_surface_t *image;
+  cairo_t *cr;
+
+  self = META_SURFACE_XRENDER (surface);
+
+  back_pixmap = meta_surface_get_pixmap (surface);
+  if (back_pixmap == None)
+    return NULL;
+
+  window = meta_surface_get_window (surface);
+
+  mask_pixmap = self->mask_pixmap;
+  free_pixmap = FALSE;
+
+  if (window->opacity != OPAQUE)
+    {
+      mask_pixmap = meta_surface_xrender_create_mask_pixmap (self, FALSE);
+      free_pixmap = TRUE;
+    }
+
+  display = meta_window_get_display (window);
+  xdisplay = meta_display_get_xdisplay (display);
+
+  visual = meta_window_get_toplevel_xvisual (window);
+  width = meta_surface_get_width (surface);
+  height = meta_surface_get_height (surface);
+
+  back_surface = cairo_xlib_surface_create (xdisplay,
+                                            back_pixmap,
+                                            visual,
+                                            width,
+                                            height);
+
+  image = cairo_surface_create_similar (back_surface,
+                                        CAIRO_CONTENT_COLOR_ALPHA,
+                                        width,
+                                        height);
+
+  cr = cairo_create (image);
+  cairo_set_source_surface (cr, back_surface, 0, 0);
+  cairo_surface_destroy (back_surface);
+
+  if (mask_pixmap != None)
+    {
+      Screen *xscreen;
+      XRenderPictFormat *format;
+      MetaFrame *frame;
+      int mask_width;
+      int mask_height;
+      cairo_surface_t *mask;
+      cairo_pattern_t *pattern;
+
+      xscreen = DefaultScreenOfDisplay (xdisplay);
+      format = XRenderFindStandardFormat (xdisplay, PictStandardA8);
+
+      frame = meta_window_get_frame (window);
+      mask_width = frame != NULL ? width : 1;
+      mask_height = frame != NULL ? height : 1;
+
+      mask = cairo_xlib_surface_create_with_xrender_format (xdisplay,
+                                                            mask_pixmap,
+                                                            xscreen,
+                                                            format,
+                                                            mask_width,
+                                                            mask_height);
+
+      pattern = cairo_pattern_create_for_surface (mask);
+      cairo_surface_destroy (mask);
+
+      if (frame == NULL)
+        cairo_pattern_set_extend (pattern, CAIRO_EXTEND_REPEAT);
+
+      cairo_mask (cr, pattern);
+      cairo_pattern_destroy (pattern);
+
+      cairo_fill (cr);
+    }
+  else
+    {
+      cairo_paint (cr);
+    }
+
+  cairo_destroy (cr);
+
+  if (free_pixmap && mask_pixmap != None)
+    XFreePixmap (xdisplay, mask_pixmap);
+
+  return image;
+}
+
 static void
 meta_surface_xrender_show (MetaSurface *surface)
 {
@@ -267,6 +372,7 @@ meta_surface_xrender_class_init (MetaSurfaceXRenderClass *self_class)
 
   object_class->finalize = meta_surface_xrender_finalize;
 
+  surface_class->get_image = meta_surface_xrender_get_image;
   surface_class->show = meta_surface_xrender_show;
   surface_class->hide = meta_surface_xrender_hide;
   surface_class->opacity_changed = meta_surface_xrender_opacity_changed;

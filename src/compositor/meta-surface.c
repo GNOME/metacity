@@ -334,6 +334,12 @@ meta_surface_get_height (MetaSurface *self)
   return priv->height;
 }
 
+cairo_surface_t *
+meta_surface_get_image (MetaSurface *self)
+{
+  return META_SURFACE_GET_CLASS (self)->get_image (self);
+}
+
 void
 meta_surface_show (MetaSurface *self)
 {
