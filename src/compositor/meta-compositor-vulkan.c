@@ -1290,7 +1290,7 @@ meta_compositor_vulkan_show_window (MetaCompositor *compositor,
 
 static void
 meta_compositor_vulkan_hide_window (MetaCompositor *compositor,
-                                    MetaWindow     *window,
+                                    MetaSurface    *surface,
                                     MetaEffectType  effect)
 {
 }

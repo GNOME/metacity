@@ -2440,7 +2440,7 @@ meta_compositor_xrender_show_window (MetaCompositor *compositor,
 
 static void
 meta_compositor_xrender_hide_window (MetaCompositor *compositor,
-                                     MetaWindow     *window,
+                                     MetaSurface    *surface,
                                      MetaEffectType  effect)
 {
   MetaCompositorXRender *xrender;
@@ -2448,9 +2448,7 @@ meta_compositor_xrender_hide_window (MetaCompositor *compositor,
 
   xrender = META_COMPOSITOR_XRENDER (compositor);
 
-  cw = find_comp_window_by_window (xrender, window);
-  if (cw == NULL)
-    return;
+  cw = g_object_get_data (G_OBJECT (surface), "cw");
 
   cw->damaged = FALSE;
 
