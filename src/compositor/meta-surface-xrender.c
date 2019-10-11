@@ -33,6 +33,9 @@ struct _MetaSurfaceXRender
   MetaSurface parent;
 
   Picture     picture;
+
+  Pixmap      mask_pixmap;
+  Picture     mask_picture;
 };
 
 G_DEFINE_TYPE (MetaSurfaceXRender, meta_surface_xrender, META_TYPE_SURFACE)
@@ -54,6 +57,44 @@ free_picture (MetaSurfaceXRender *self)
 
   XRenderFreePicture (xdisplay, self->picture);
   self->picture = None;
+}
+
+static void
+free_mask_pixmap (MetaSurfaceXRender *self)
+{
+  MetaWindow *window;
+  MetaDisplay *display;
+  Display *xdisplay;
+
+  if (self->mask_pixmap == None)
+    return;
+
+  window = meta_surface_get_window (META_SURFACE (self));
+
+  display = meta_window_get_display (window);
+  xdisplay = meta_display_get_xdisplay (display);
+
+  XFreePixmap (xdisplay, self->mask_pixmap);
+  self->mask_pixmap = None;
+}
+
+static void
+free_mask_picture (MetaSurfaceXRender *self)
+{
+  MetaWindow *window;
+  MetaDisplay *display;
+  Display *xdisplay;
+
+  if (self->mask_picture == None)
+    return;
+
+  window = meta_surface_get_window (META_SURFACE (self));
+
+  display = meta_window_get_display (window);
+  xdisplay = meta_display_get_xdisplay (display);
+
+  XRenderFreePicture (xdisplay, self->mask_picture);
+  self->mask_picture = None;
 }
 
 static Picture
@@ -103,6 +144,32 @@ get_window_picture (MetaSurfaceXRender *self)
   return picture;
 }
 
+static Picture
+get_window_mask_picture (MetaSurfaceXRender *self)
+{
+  MetaWindow *window;
+  MetaDisplay *display;
+  Display *xdisplay;
+  XRenderPictFormat *format;
+  Picture picture;
+
+  if (self->mask_pixmap == None)
+    return None;
+
+  window = meta_surface_get_window (META_SURFACE (self));
+
+  display = meta_window_get_display (window);
+  xdisplay = meta_display_get_xdisplay (display);
+
+  format = XRenderFindStandardFormat (xdisplay, PictStandardA8);
+
+  meta_error_trap_push (display);
+  picture = XRenderCreatePicture (xdisplay, self->mask_pixmap, format, 0, NULL);
+  meta_error_trap_pop (display);
+
+  return picture;
+}
+
 static void
 meta_surface_xrender_finalize (GObject *object)
 {
@@ -112,12 +179,23 @@ meta_surface_xrender_finalize (GObject *object)
 
   free_picture (self);
 
+  free_mask_pixmap (self);
+  free_mask_picture (self);
+
   G_OBJECT_CLASS (meta_surface_xrender_parent_class)->finalize (object);
 }
 
 static void
 meta_surface_xrender_show (MetaSurface *surface)
 {
+  MetaSurfaceXRender *self;
+
+  self = META_SURFACE_XRENDER (surface);
+
+  /* The reason we free pixmap here is so that we will still have
+   * a valid pixmap when the window is unmapped.
+   */
+  free_mask_pixmap (self);
 }
 
 static void
@@ -128,11 +206,18 @@ meta_surface_xrender_hide (MetaSurface *surface)
   self = META_SURFACE_XRENDER (surface);
 
   free_picture (self);
+  free_mask_picture (self);
 }
 
 static void
 meta_surface_xrender_opacity_changed (MetaSurface *surface)
 {
+  MetaSurfaceXRender *self;
+
+  self = META_SURFACE_XRENDER (surface);
+
+  free_mask_pixmap (self);
+  free_mask_picture (self);
 }
 
 static void
@@ -143,6 +228,9 @@ meta_surface_xrender_free_pixmap (MetaSurface *surface)
   self = META_SURFACE_XRENDER (surface);
 
   free_picture (self);
+
+  free_mask_pixmap (self);
+  free_mask_picture (self);
 }
 
 static void
@@ -160,6 +248,12 @@ meta_surface_xrender_pre_paint (MetaSurface *surface)
 
   if (self->picture == None)
     self->picture = get_window_picture (self);
+
+  if (self->mask_pixmap == None)
+    self->mask_pixmap = meta_surface_xrender_create_mask_pixmap (self, TRUE);
+
+  if (self->mask_picture == None)
+    self->mask_picture = get_window_mask_picture (self);
 }
 
 static void
@@ -300,4 +394,16 @@ Picture
 meta_surface_xrender_get_picture (MetaSurfaceXRender *self)
 {
   return self->picture;
+}
+
+Pixmap
+meta_surface_xrender_get_mask_pixmap (MetaSurfaceXRender *self)
+{
+  return self->mask_pixmap;
+}
+
+Picture
+meta_surface_xrender_get_mask_picture (MetaSurfaceXRender *self)
+{
+  return self->mask_picture;
 }

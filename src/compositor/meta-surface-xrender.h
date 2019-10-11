@@ -32,6 +32,10 @@ Pixmap  meta_surface_xrender_create_mask_pixmap (MetaSurfaceXRender *self,
 
 Picture meta_surface_xrender_get_picture        (MetaSurfaceXRender *self);
 
+Pixmap  meta_surface_xrender_get_mask_pixmap    (MetaSurfaceXRender *self);
+
+Picture meta_surface_xrender_get_mask_picture   (MetaSurfaceXRender *self);
+
 G_END_DECLS
 
 #endif

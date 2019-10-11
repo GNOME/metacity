@@ -92,15 +92,11 @@ typedef struct _MetaCompWindow
 
   MetaRectangle rect;
 
-  Pixmap mask_pixmap;
-
   int mode;
 
   gboolean damaged;
 
   XserverRegion shape_region;
-
-  Picture mask;
 
   gboolean needs_shadow;
   MetaShadowType shadow_type;
@@ -1157,34 +1153,6 @@ get_visible_region (MetaDisplay    *display,
   return region;
 }
 
-static Picture
-get_window_mask (MetaSurface *surface)
-{
-  MetaCompWindow *cw;
-  MetaDisplay *display;
-  Display *xdisplay;
-  XRenderPictFormat *format;
-  Picture picture;
-
-  cw = g_object_get_data (G_OBJECT (surface), "cw");
-
-  if (cw->mask_pixmap == None)
-    cw->mask_pixmap = meta_surface_xrender_create_mask_pixmap (META_SURFACE_XRENDER (surface), TRUE);
-
-  if (cw->mask_pixmap == None)
-    return None;
-
-  display = meta_window_get_display (cw->window);
-  xdisplay = meta_display_get_xdisplay (display);
-  format = XRenderFindStandardFormat (xdisplay, PictStandardA8);
-
-  meta_error_trap_push (display);
-  picture = XRenderCreatePicture (xdisplay, cw->mask_pixmap, format, 0, NULL);
-  meta_error_trap_pop (display);
-
-  return picture;
-}
-
 static void
 paint_dock_shadows (MetaCompositorXRender *xrender,
                     GList                 *surfaces,
@@ -1282,9 +1250,6 @@ paint_windows (MetaCompositorXRender *xrender,
 
       picture = meta_surface_xrender_get_picture (META_SURFACE_XRENDER (surface));
 
-      if (cw->mask == None)
-        cw->mask = get_window_mask (surface);
-
       if (cw->window_region == None)
         cw->window_region = get_window_region (display, cw);
 
@@ -1360,11 +1325,13 @@ paint_windows (MetaCompositorXRender *xrender,
     {
       MetaSurface *surface;
       Picture picture;
+      Picture mask;
 
       surface = META_SURFACE (index->data);
       cw = g_object_get_data (G_OBJECT (surface), "cw");
 
       picture = meta_surface_xrender_get_picture (META_SURFACE_XRENDER (surface));
+      mask = meta_surface_xrender_get_mask_picture (META_SURFACE_XRENDER (surface));
 
       if (picture)
         {
@@ -1399,16 +1366,16 @@ paint_windows (MetaCompositorXRender *xrender,
           XFixesSetPictureClipRegion (xdisplay, root_buffer, 0, 0,
                                       cw->border_clip);
 
-          if (cw->mode == WINDOW_SOLID && cw->mask != None)
+          if (cw->mode == WINDOW_SOLID && mask != None)
             {
               XRenderComposite (xdisplay, PictOpOver, picture,
-                                cw->mask, root_buffer, 0, 0, 0, 0,
+                                mask, root_buffer, 0, 0, 0, 0,
                                 x, y, wid, hei);
             }
           else if (cw->mode == WINDOW_ARGB)
             {
               XRenderComposite (xdisplay, PictOpOver, picture,
-                                cw->mask, root_buffer, 0, 0, 0, 0,
+                                mask, root_buffer, 0, 0, 0, 0,
                                 x, y, wid, hei);
             }
         }
@@ -1504,22 +1471,10 @@ free_win (MetaCompWindow *cw,
 
   /* See comment in map_win */
 
-  if (cw->mask_pixmap && destroy)
-    {
-      XFreePixmap (xdisplay, cw->mask_pixmap);
-      cw->mask_pixmap = None;
-    }
-
   if (cw->shape_region)
     {
       XFixesDestroyRegion (xdisplay, cw->shape_region);
       cw->shape_region = None;
-    }
-
-  if (cw->mask)
-    {
-      XRenderFreePicture (xdisplay, cw->mask);
-      cw->mask = None;
     }
 
   if (cw->shadow)
@@ -1592,12 +1547,6 @@ map_win (MetaCompositorXRender *xrender,
      is so that we will still have a valid pixmap for
      whenever the window is unmapped */
 
-  if (cw->mask_pixmap)
-    {
-      XFreePixmap (xdisplay, cw->mask_pixmap);
-      cw->mask_pixmap = None;
-    }
-
   if (cw->client_region)
     {
       XFixesDestroyRegion (xdisplay, cw->client_region);
@@ -1645,12 +1594,6 @@ notify_appears_focused_cb (MetaWindow            *window,
   else
     cw->shadow_type = META_SHADOW_MEDIUM;
 
-  if (cw->mask)
-    {
-      XRenderFreePicture (xdisplay, cw->mask);
-      cw->mask = None;
-    }
-
   if (cw->shadow)
     {
       XRenderFreePicture (xdisplay, cw->shadow);
@@ -1690,22 +1633,10 @@ notify_decorated_cb (MetaWindow            *window,
 
   meta_error_trap_push (window->display);
 
-  if (cw->mask_pixmap != None)
-    {
-      XFreePixmap (xrender->xdisplay, cw->mask_pixmap);
-      cw->mask_pixmap = None;
-    }
-
   if (cw->shape_region != None)
     {
       XFixesDestroyRegion (xrender->xdisplay, cw->shape_region);
       cw->shape_region = None;
-    }
-
-  if (cw->mask != None)
-    {
-      XRenderFreePicture (xrender->xdisplay, cw->mask);
-      cw->mask = None;
     }
 
   if (cw->window_region != None)
@@ -1764,6 +1695,7 @@ get_window_surface (MetaSurface *surface)
   Display *xdisplay;
   Pixmap back_pixmap;
   Pixmap mask_pixmap;
+  gboolean free_pixmap;
   cairo_surface_t *back_surface;
   cairo_surface_t *window_surface;
   cairo_t *cr;
@@ -1778,9 +1710,14 @@ get_window_surface (MetaSurface *surface)
   if (back_pixmap == None)
     return NULL;
 
-  mask_pixmap = None;
+  mask_pixmap = meta_surface_xrender_get_mask_pixmap (META_SURFACE_XRENDER (surface));
+  free_pixmap = FALSE;
+
   if (cw->window->opacity != (guint) OPAQUE)
-    mask_pixmap = meta_surface_xrender_create_mask_pixmap (META_SURFACE_XRENDER (surface), FALSE);
+    {
+      mask_pixmap = meta_surface_xrender_create_mask_pixmap (META_SURFACE_XRENDER (surface), FALSE);
+      free_pixmap = TRUE;
+    }
 
   back_surface = cairo_xlib_surface_create (xdisplay, back_pixmap,
                                             get_toplevel_xvisual (cw->window),
@@ -1795,9 +1732,8 @@ get_window_surface (MetaSurface *surface)
   cairo_set_source_surface (cr, back_surface, 0, 0);
   cairo_surface_destroy (back_surface);
 
-  if (mask_pixmap != None || cw->mask_pixmap != None)
+  if (mask_pixmap != None)
     {
-      Pixmap pixmap;
       Screen *xscreen;
       XRenderPictFormat *format;
       int width;
@@ -1805,7 +1741,6 @@ get_window_surface (MetaSurface *surface)
       cairo_surface_t *mask;
       cairo_pattern_t *pattern;
 
-      pixmap = mask_pixmap != None ? mask_pixmap : cw->mask_pixmap;
       xscreen = DefaultScreenOfDisplay (xdisplay);
       format = XRenderFindStandardFormat (xdisplay, PictStandardA8);
 
@@ -1813,7 +1748,7 @@ get_window_surface (MetaSurface *surface)
       height = frame != NULL ? cw->rect.height : 1;
 
       mask = cairo_xlib_surface_create_with_xrender_format (xdisplay,
-                                                            pixmap,
+                                                            mask_pixmap,
                                                             xscreen,
                                                             format,
                                                             width,
@@ -1837,7 +1772,7 @@ get_window_surface (MetaSurface *surface)
 
   cairo_destroy (cr);
 
-  if (mask_pixmap != None)
+  if (free_pixmap && mask_pixmap != None)
     XFreePixmap (xdisplay, mask_pixmap);
 
   return window_surface;
@@ -2181,8 +2116,6 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
                            G_CALLBACK (notify_shaded_cb),
                            surface, 0);
 
-  cw->mask_pixmap = None;
-
   cw->damaged = FALSE;
 
   cw->shape_region = cairo_region_to_xserver_region (xrender->xdisplay,
@@ -2307,18 +2240,6 @@ meta_compositor_xrender_window_opacity_changed (MetaCompositor *compositor,
 
   determine_mode (xrender, cw);
   cw->needs_shadow = window_has_shadow (xrender, cw);
-
-  if (cw->mask_pixmap != None)
-    {
-      XFreePixmap (xrender->xdisplay, cw->mask_pixmap);
-      cw->mask_pixmap = None;
-    }
-
-  if (cw->mask != None)
-    {
-      XRenderFreePicture (xrender->xdisplay, cw->mask);
-      cw->mask = None;
-    }
 
   if (cw->shadow)
     {
@@ -2526,18 +2447,6 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
 
   if (cw->rect.width != old_rect.width || cw->rect.height != old_rect.height)
     {
-      if (cw->mask_pixmap != None)
-        {
-          XFreePixmap (xrender->xdisplay, cw->mask_pixmap);
-          cw->mask_pixmap = None;
-        }
-
-      if (cw->mask != None)
-        {
-          XRenderFreePicture (xrender->xdisplay, cw->mask);
-          cw->mask = None;
-        }
-
       if (cw->shadow != None)
         {
           XRenderFreePicture (xrender->xdisplay, cw->shadow);
