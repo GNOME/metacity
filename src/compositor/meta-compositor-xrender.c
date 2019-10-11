@@ -1199,45 +1199,47 @@ get_visible_region (MetaDisplay    *display,
   return region;
 }
 
-static Picture
-get_window_mask (MetaDisplay    *display,
-                 MetaCompWindow *cw)
+static Pixmap
+get_window_mask_pixmap (MetaCompWindow *cw)
 {
   MetaFrame *frame;
+  MetaDisplay *display;
   Display *xdisplay;
   int width;
   int height;
   XRenderPictFormat *format;
   cairo_surface_t *surface;
   cairo_t *cr;
-  Picture picture;
+  Pixmap pixmap;
 
   frame = meta_window_get_frame (cw->window);
   if (frame == NULL)
     return None;
 
+  display = meta_window_get_display (cw->window);
   xdisplay = meta_display_get_xdisplay (display);
+
   width = cw->rect.width;
   height = cw->rect.height;
+
   format = XRenderFindStandardFormat (xdisplay, PictStandardA8);
 
-  if (cw->mask_pixmap == None)
-    {
-      Window xwindow;
+  meta_error_trap_push (display);
+  pixmap = XCreatePixmap (xdisplay,
+                          DefaultRootWindow (xdisplay),
+                          width,
+                          height,
+                          format->depth);
 
-      xwindow = meta_window_get_toplevel_xwindow (cw->window);
+  if (meta_error_trap_pop_with_return (display) != 0)
+    return None;
 
-      meta_error_trap_push (display);
-      cw->mask_pixmap = XCreatePixmap (xdisplay, xwindow, width, height,
-                                       format->depth);
-
-      if (meta_error_trap_pop_with_return (display) != 0)
-        return None;
-    }
-
-  surface = cairo_xlib_surface_create_with_xrender_format (xdisplay, cw->mask_pixmap,
+  surface = cairo_xlib_surface_create_with_xrender_format (xdisplay,
+                                                           pixmap,
                                                            DefaultScreenOfDisplay (xdisplay),
-                                                           format, width, height);
+                                                           format,
+                                                           width,
+                                                           height);
 
   cr = cairo_create (surface);
 
@@ -1277,6 +1279,26 @@ get_window_mask (MetaDisplay    *display,
 
   cairo_destroy (cr);
   cairo_surface_destroy (surface);
+
+  return pixmap;
+}
+
+static Picture
+get_window_mask (MetaDisplay    *display,
+                 MetaCompWindow *cw)
+{
+  Display *xdisplay;
+  XRenderPictFormat *format;
+  Picture picture;
+
+  if (cw->mask_pixmap == None)
+    cw->mask_pixmap = get_window_mask_pixmap (cw);
+
+  if (cw->mask_pixmap == None)
+    return None;
+
+  xdisplay = meta_display_get_xdisplay (display);
+  format = XRenderFindStandardFormat (xdisplay, PictStandardA8);
 
   meta_error_trap_push (display);
   picture = XRenderCreatePicture (xdisplay, cw->mask_pixmap, format, 0, NULL);
