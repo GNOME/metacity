@@ -1157,128 +1157,24 @@ get_visible_region (MetaDisplay    *display,
   return region;
 }
 
-static Pixmap
-get_window_mask_pixmap (MetaCompWindow *cw,
-                        gboolean        with_opacity)
-{
-  MetaFrame *frame;
-  MetaDisplay *display;
-  Display *xdisplay;
-  int width;
-  int height;
-  XRenderPictFormat *format;
-  double opacity;
-  cairo_surface_t *surface;
-  cairo_t *cr;
-  Pixmap pixmap;
-
-  frame = meta_window_get_frame (cw->window);
-  if (frame == NULL && cw->window->opacity == (guint) OPAQUE)
-    return None;
-
-  display = meta_window_get_display (cw->window);
-  xdisplay = meta_display_get_xdisplay (display);
-
-  width = frame != NULL ? cw->rect.width : 1;
-  height = frame != NULL ? cw->rect.height : 1;
-
-  format = XRenderFindStandardFormat (xdisplay, PictStandardA8);
-
-  meta_error_trap_push (display);
-  pixmap = XCreatePixmap (xdisplay,
-                          DefaultRootWindow (xdisplay),
-                          width,
-                          height,
-                          format->depth);
-
-  if (meta_error_trap_pop_with_return (display) != 0)
-    return None;
-
-  opacity = 1.0;
-  if (with_opacity)
-    opacity = (double) cw->window->opacity / OPAQUE;
-
-  surface = cairo_xlib_surface_create_with_xrender_format (xdisplay,
-                                                           pixmap,
-                                                           DefaultScreenOfDisplay (xdisplay),
-                                                           format,
-                                                           width,
-                                                           height);
-
-  cr = cairo_create (surface);
-
-  cairo_set_operator (cr, CAIRO_OPERATOR_CLEAR);
-  cairo_set_source_rgba (cr, 0, 0, 0, 1);
-  cairo_paint (cr);
-
-  if (frame != NULL)
-    {
-      cairo_rectangle_int_t rect;
-      cairo_region_t *frame_paint_region;
-      MetaFrameBorders borders;
-
-      rect.x = 0;
-      rect.y = 0;
-      rect.width = width;
-      rect.height = height;
-
-      frame_paint_region = cairo_region_create_rectangle (&rect);
-      meta_frame_calc_borders (frame, &borders);
-
-      rect.x += borders.total.left;
-      rect.y += borders.total.top;
-      rect.width -= borders.total.left + borders.total.right;
-      rect.height -= borders.total.top + borders.total.bottom;
-
-      cairo_region_subtract_rectangle (frame_paint_region, &rect);
-
-      cairo_rectangle (cr, rect.x, rect.y, rect.width, rect.height);
-      cairo_clip (cr);
-
-      cairo_set_operator (cr, CAIRO_OPERATOR_SOURCE);
-      cairo_set_source_rgba (cr, 0, 0, 0, opacity);
-      cairo_paint (cr);
-
-      cairo_reset_clip (cr);
-      gdk_cairo_region (cr, frame_paint_region);
-      cairo_region_destroy (frame_paint_region);
-      cairo_clip (cr);
-
-      cairo_push_group (cr);
-
-      cairo_set_operator (cr, CAIRO_OPERATOR_OVER);
-      meta_frame_get_mask (frame, cr);
-
-      cairo_pop_group_to_source (cr);
-      cairo_paint_with_alpha (cr, opacity);
-    }
-  else
-    {
-      cairo_set_operator (cr, CAIRO_OPERATOR_SOURCE);
-      cairo_set_source_rgba (cr, 0, 0, 0, opacity);
-      cairo_paint (cr);
-    }
-
-  cairo_destroy (cr);
-  cairo_surface_destroy (surface);
-
-  return pixmap;
-}
-
 static Picture
-get_window_mask (MetaDisplay    *display,
-                 MetaCompWindow *cw)
+get_window_mask (MetaSurface *surface)
 {
+  MetaCompWindow *cw;
+  MetaDisplay *display;
   Display *xdisplay;
   XRenderPictFormat *format;
   Picture picture;
 
+  cw = g_object_get_data (G_OBJECT (surface), "cw");
+
   if (cw->mask_pixmap == None)
-    cw->mask_pixmap = get_window_mask_pixmap (cw, TRUE);
+    cw->mask_pixmap = meta_surface_xrender_create_mask_pixmap (META_SURFACE_XRENDER (surface), TRUE);
 
   if (cw->mask_pixmap == None)
     return None;
 
+  display = meta_window_get_display (cw->window);
   xdisplay = meta_display_get_xdisplay (display);
   format = XRenderFindStandardFormat (xdisplay, PictStandardA8);
 
@@ -1387,7 +1283,7 @@ paint_windows (MetaCompositorXRender *xrender,
       picture = meta_surface_xrender_get_picture (META_SURFACE_XRENDER (surface));
 
       if (cw->mask == None)
-        cw->mask = get_window_mask (display, cw);
+        cw->mask = get_window_mask (surface);
 
       if (cw->window_region == None)
         cw->window_region = get_window_region (display, cw);
@@ -1884,7 +1780,7 @@ get_window_surface (MetaSurface *surface)
 
   mask_pixmap = None;
   if (cw->window->opacity != (guint) OPAQUE)
-    mask_pixmap = get_window_mask_pixmap (cw, FALSE);
+    mask_pixmap = meta_surface_xrender_create_mask_pixmap (META_SURFACE_XRENDER (surface), FALSE);
 
   back_surface = cairo_xlib_surface_create (xdisplay, back_pixmap,
                                             get_toplevel_xvisual (cw->window),

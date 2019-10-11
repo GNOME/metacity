@@ -18,8 +18,15 @@
 #include "config.h"
 #include "meta-surface-xrender.h"
 
+#include <cairo/cairo-xlib-xrender.h>
+#include <libmetacity/meta-frame-borders.h>
+
 #include "display.h"
 #include "errors.h"
+#include "frame.h"
+#include "window-private.h"
+
+#define OPAQUE 0xffffffff
 
 struct _MetaSurfaceXRender
 {
@@ -164,6 +171,117 @@ meta_surface_xrender_class_init (MetaSurfaceXRenderClass *self_class)
 static void
 meta_surface_xrender_init (MetaSurfaceXRender *self)
 {
+}
+
+Pixmap
+meta_surface_xrender_create_mask_pixmap (MetaSurfaceXRender *self,
+                                         gboolean            with_opacity)
+{
+  MetaWindow *window;
+  MetaFrame *frame;
+  MetaDisplay *display;
+  Display *xdisplay;
+  int width;
+  int height;
+  XRenderPictFormat *format;
+  double opacity;
+  cairo_surface_t *surface;
+  cairo_t *cr;
+  Pixmap pixmap;
+
+  window = meta_surface_get_window (META_SURFACE (self));
+
+  frame = meta_window_get_frame (window);
+  if (frame == NULL && window->opacity == OPAQUE)
+    return None;
+
+  display = meta_window_get_display (window);
+  xdisplay = meta_display_get_xdisplay (display);
+
+  width = frame != NULL ? meta_surface_get_width (META_SURFACE (self)) : 1;
+  height = frame != NULL ? meta_surface_get_height (META_SURFACE (self)) : 1;
+
+  format = XRenderFindStandardFormat (xdisplay, PictStandardA8);
+
+  meta_error_trap_push (display);
+  pixmap = XCreatePixmap (xdisplay,
+                          DefaultRootWindow (xdisplay),
+                          width,
+                          height,
+                          format->depth);
+
+  if (meta_error_trap_pop_with_return (display) != 0)
+    return None;
+
+  opacity = 1.0;
+  if (with_opacity)
+    opacity = (double) window->opacity / OPAQUE;
+
+  surface = cairo_xlib_surface_create_with_xrender_format (xdisplay,
+                                                           pixmap,
+                                                           DefaultScreenOfDisplay (xdisplay),
+                                                           format,
+                                                           width,
+                                                           height);
+
+  cr = cairo_create (surface);
+
+  cairo_set_operator (cr, CAIRO_OPERATOR_CLEAR);
+  cairo_set_source_rgba (cr, 0, 0, 0, 1);
+  cairo_paint (cr);
+
+  if (frame != NULL)
+    {
+      cairo_rectangle_int_t rect;
+      cairo_region_t *frame_paint_region;
+      MetaFrameBorders borders;
+
+      rect.x = 0;
+      rect.y = 0;
+      rect.width = width;
+      rect.height = height;
+
+      frame_paint_region = cairo_region_create_rectangle (&rect);
+      meta_frame_calc_borders (frame, &borders);
+
+      rect.x += borders.total.left;
+      rect.y += borders.total.top;
+      rect.width -= borders.total.left + borders.total.right;
+      rect.height -= borders.total.top + borders.total.bottom;
+
+      cairo_region_subtract_rectangle (frame_paint_region, &rect);
+
+      cairo_rectangle (cr, rect.x, rect.y, rect.width, rect.height);
+      cairo_clip (cr);
+
+      cairo_set_operator (cr, CAIRO_OPERATOR_SOURCE);
+      cairo_set_source_rgba (cr, 0, 0, 0, opacity);
+      cairo_paint (cr);
+
+      cairo_reset_clip (cr);
+      gdk_cairo_region (cr, frame_paint_region);
+      cairo_region_destroy (frame_paint_region);
+      cairo_clip (cr);
+
+      cairo_push_group (cr);
+
+      cairo_set_operator (cr, CAIRO_OPERATOR_OVER);
+      meta_frame_get_mask (frame, cr);
+
+      cairo_pop_group_to_source (cr);
+      cairo_paint_with_alpha (cr, opacity);
+    }
+  else
+    {
+      cairo_set_operator (cr, CAIRO_OPERATOR_SOURCE);
+      cairo_set_source_rgba (cr, 0, 0, 0, opacity);
+      cairo_paint (cr);
+    }
+
+  cairo_destroy (cr);
+  cairo_surface_destroy (surface);
+
+  return pixmap;
 }
 
 Picture
