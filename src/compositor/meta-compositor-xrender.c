@@ -2495,6 +2495,9 @@ meta_compositor_xrender_window_opacity_changed (MetaCompositor *compositor,
       meta_compositor_add_damage (compositor,
                                   "window_opacity_changed",
                                   cw->extents);
+
+      XFixesDestroyRegion (xrender->xdisplay, cw->extents);
+      cw->extents = None;
     }
 }
 
