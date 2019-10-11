@@ -485,6 +485,7 @@ meta_compositor_window_opacity_changed (MetaCompositor *compositor,
     return;
 
   compositor_class->window_opacity_changed (compositor, surface);
+  meta_surface_opacity_changed (surface);
 }
 
 void

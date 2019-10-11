@@ -126,6 +126,11 @@ meta_surface_xrender_hide (MetaSurface *surface)
 }
 
 static void
+meta_surface_xrender_opacity_changed (MetaSurface *surface)
+{
+}
+
+static void
 meta_surface_xrender_free_pixmap (MetaSurface *surface)
 {
   MetaSurfaceXRender *self;
@@ -164,6 +169,7 @@ meta_surface_xrender_class_init (MetaSurfaceXRenderClass *self_class)
   object_class->finalize = meta_surface_xrender_finalize;
 
   surface_class->hide = meta_surface_xrender_hide;
+  surface_class->opacity_changed = meta_surface_xrender_opacity_changed;
   surface_class->free_pixmap = meta_surface_xrender_free_pixmap;
   surface_class->pre_paint = meta_surface_xrender_pre_paint;
 }

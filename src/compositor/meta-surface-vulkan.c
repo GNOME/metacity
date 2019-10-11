@@ -31,6 +31,11 @@ meta_surface_vulkan_hide (MetaSurface *surface)
 }
 
 static void
+meta_surface_vulkan_opacity_changed (MetaSurface *surface)
+{
+}
+
+static void
 meta_surface_vulkan_free_pixmap (MetaSurface *surface)
 {
 }
@@ -48,6 +53,7 @@ meta_surface_vulkan_class_init (MetaSurfaceVulkanClass *self_class)
   surface_class = META_SURFACE_CLASS (self_class);
 
   surface_class->hide = meta_surface_vulkan_hide;
+  surface_class->opacity_changed = meta_surface_vulkan_opacity_changed;
   surface_class->free_pixmap = meta_surface_vulkan_free_pixmap;
   surface_class->pre_paint = meta_surface_vulkan_pre_paint;
 }

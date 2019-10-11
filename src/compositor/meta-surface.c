@@ -361,6 +361,12 @@ meta_surface_process_damage (MetaSurface        *self,
 }
 
 void
+meta_surface_opacity_changed (MetaSurface *self)
+{
+  META_SURFACE_GET_CLASS (self)->opacity_changed (self);
+}
+
+void
 meta_surface_sync_geometry (MetaSurface *self)
 {
   MetaSurfacePrivate *priv;

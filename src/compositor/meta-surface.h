@@ -27,26 +27,28 @@ G_BEGIN_DECLS
 #define META_TYPE_SURFACE (meta_surface_get_type ())
 G_DECLARE_DERIVABLE_TYPE (MetaSurface, meta_surface, META, SURFACE, GObject)
 
-MetaCompositor *meta_surface_get_compositor (MetaSurface        *self);
+MetaCompositor *meta_surface_get_compositor  (MetaSurface        *self);
 
-MetaWindow     *meta_surface_get_window     (MetaSurface        *self);
+MetaWindow     *meta_surface_get_window      (MetaSurface        *self);
 
-Pixmap          meta_surface_get_pixmap     (MetaSurface        *self);
+Pixmap          meta_surface_get_pixmap      (MetaSurface        *self);
 
-int             meta_surface_get_width      (MetaSurface        *self);
+int             meta_surface_get_width       (MetaSurface        *self);
 
-int             meta_surface_get_height     (MetaSurface        *self);
+int             meta_surface_get_height      (MetaSurface        *self);
 
-void            meta_surface_show           (MetaSurface        *self);
+void            meta_surface_show            (MetaSurface        *self);
 
-void            meta_surface_hide           (MetaSurface        *self);
+void            meta_surface_hide            (MetaSurface        *self);
 
-void            meta_surface_process_damage (MetaSurface        *self,
-                                             XDamageNotifyEvent *event);
+void            meta_surface_process_damage  (MetaSurface        *self,
+                                              XDamageNotifyEvent *event);
 
-void            meta_surface_sync_geometry  (MetaSurface        *self);
+void            meta_surface_opacity_changed (MetaSurface        *self);
 
-void            meta_surface_pre_paint      (MetaSurface        *self);
+void            meta_surface_sync_geometry   (MetaSurface        *self);
+
+void            meta_surface_pre_paint       (MetaSurface        *self);
 
 G_END_DECLS
 

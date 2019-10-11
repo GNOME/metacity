@@ -26,11 +26,13 @@ struct _MetaSurfaceClass
 {
   GObjectClass parent_class;
 
-  void (* hide)        (MetaSurface *self);
+  void (* hide)            (MetaSurface *self);
 
-  void (* free_pixmap) (MetaSurface *self);
+  void (* opacity_changed) (MetaSurface *self);
 
-  void (* pre_paint)   (MetaSurface *self);
+  void (* free_pixmap)     (MetaSurface *self);
+
+  void (* pre_paint)       (MetaSurface *self);
 };
 
 G_END_DECLS
