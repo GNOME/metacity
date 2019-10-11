@@ -166,6 +166,7 @@ meta_surface_constructed (GObject *object)
 
   G_OBJECT_CLASS (meta_surface_parent_class)->constructed (object);
 
+  meta_surface_sync_geometry (self);
   create_damage (self);
 
   g_signal_connect_object (priv->window, "notify::decorated",
