@@ -132,8 +132,14 @@ static void
 meta_surface_xrender_pre_paint (MetaSurface *surface)
 {
   MetaSurfaceXRender *self;
+  MetaWindow *window;
 
   self = META_SURFACE_XRENDER (surface);
+
+  window = meta_surface_get_window (surface);
+
+  if (!meta_window_is_toplevel_mapped (window))
+    return;
 
   if (self->picture == None)
     self->picture = get_window_picture (self);
