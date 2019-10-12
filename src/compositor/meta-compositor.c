@@ -607,11 +607,34 @@ meta_compositor_sync_stack (MetaCompositor *compositor,
                             GList          *stack)
 {
   MetaCompositorPrivate *priv;
+  gboolean changed;
   GList *l1;
+  GList *l2;
 
   priv = meta_compositor_get_instance_private (compositor);
 
   if (priv->stack == NULL)
+    return;
+
+  changed = FALSE;
+  for (l1 = stack, l2 = priv->stack;
+       l1 != NULL && l2 != NULL;
+       l1 = l1->next, l2 = l2->next)
+    {
+      MetaWindow *window;
+      MetaSurface *surface;
+
+      window = META_WINDOW (l1->data);
+      surface = g_hash_table_lookup (priv->surfaces, window);
+
+      if (surface != META_SURFACE (l2->data))
+        {
+          changed = TRUE;
+          break;
+        }
+    }
+
+  if (!changed)
     return;
 
   for (l1 = stack; l1 != NULL; l1 = l1->next)
