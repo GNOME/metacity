@@ -24,6 +24,7 @@
 #define META_UTIL_H
 
 #include <glib.h>
+#include <X11/extensions/Xfixes.h>
 
 G_BEGIN_DECLS
 
@@ -96,6 +97,10 @@ GPid meta_show_dialog (const char *type,
                        const int transient_for,
                        GSList *columns,
                        GSList *entries);
+
+gboolean meta_xserver_region_equal (Display       *xdisplay,
+                                    XserverRegion  region1,
+                                    XserverRegion  region2);
 
 G_END_DECLS
 

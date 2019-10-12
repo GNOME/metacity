@@ -495,3 +495,64 @@ meta_show_dialog (const char *type,
 
   return child_pid;
 }
+
+gboolean
+meta_xserver_region_equal (Display       *xdisplay,
+                           XserverRegion  region1,
+                           XserverRegion  region2)
+{
+  XRectangle *region1_rects;
+  int region1_nrects;
+  XRectangle *region2_rects;
+  int region2_nrects;
+  int i;
+
+  if (region1 == region2)
+    return TRUE;
+
+  if ((region1 != None && region2 == None) ||
+      (region1 == None && region2 != None))
+    return FALSE;
+
+  region1_rects = XFixesFetchRegion (xdisplay, region1, &region1_nrects);
+  region2_rects = XFixesFetchRegion (xdisplay, region2, &region2_nrects);
+
+  if ((region1_rects != NULL && region2_rects == NULL) ||
+      (region1_rects == NULL && region2_rects != NULL))
+    {
+      if (region1_rects != NULL)
+        XFree (region1_rects);
+
+      if (region2_rects != NULL)
+        XFree (region2_rects);
+
+      return FALSE;
+    }
+
+  if (region1_nrects != region2_nrects)
+    {
+      XFree (region1_rects);
+      XFree (region2_rects);
+
+      return FALSE;
+    }
+
+  for (i = 0; i < region1_nrects; i++)
+    {
+      if (region1_rects[i].x != region2_rects[i].x ||
+          region1_rects[i].y != region2_rects[i].y ||
+          region1_rects[i].width != region2_rects[i].width ||
+          region1_rects[i].height != region2_rects[i].height)
+        {
+          XFree (region1_rects);
+          XFree (region2_rects);
+
+          return FALSE;
+        }
+    }
+
+  XFree (region1_rects);
+  XFree (region2_rects);
+
+  return TRUE;
+}
