@@ -524,7 +524,7 @@ meta_window_new (MetaDisplay    *display,
   window->attached = FALSE;
   window->frame_bounds = NULL;
   window->shape_region = None;
-  window->opaque_region = NULL;
+  window->opaque_region = None;
   window->opacity = 0xffffffff;
 
   window->unmaps_pending = 0;
@@ -9271,7 +9271,11 @@ meta_window_finalize (GObject *object)
       window->shape_region = None;
     }
 
-  g_clear_pointer (&window->opaque_region, cairo_region_destroy);
+  if (window->opaque_region != None)
+    {
+      XFixesDestroyRegion (xdisplay, window->opaque_region);
+      window->opaque_region = None;
+    }
 
   meta_icon_cache_free (&window->icon_cache);
 

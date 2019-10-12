@@ -721,16 +721,27 @@ reload_wm_name (MetaWindow    *window,
 }
 
 static void
-meta_window_set_opaque_region (MetaWindow     *window,
-                               cairo_region_t *region)
+meta_window_set_opaque_region (MetaWindow    *window,
+                               XserverRegion  region)
 {
-  if (cairo_region_equal (window->opaque_region, region))
+  Display *xdisplay;
+
+  xdisplay = window->display->xdisplay;
+
+  if (meta_xserver_region_equal (xdisplay, window->opaque_region, region))
     return;
 
-  g_clear_pointer (&window->opaque_region, cairo_region_destroy);
+  if (window->opaque_region != None)
+    {
+      XFixesDestroyRegion (xdisplay, window->opaque_region);
+      window->opaque_region = None;
+    }
 
-  if (region != NULL)
-    window->opaque_region = cairo_region_reference (region);
+  if (region != None)
+    {
+      window->opaque_region = XFixesCreateRegion (xdisplay, NULL, 0);
+      XFixesCopyRegion (xdisplay, window->opaque_region, region);
+    }
 
   meta_compositor_window_opaque_region_changed (window->display->compositor, window);
 }
@@ -742,12 +753,13 @@ reload_opaque_region (MetaWindow    *window,
 {
   int nitems, nrects, rect_index, i;
   gulong *region;
-  cairo_rectangle_int_t *rects;
-  cairo_region_t *opaque_region;
+  XRectangle *rects;
+  Display *xdisplay;
+  XserverRegion opaque_region;
 
   if (value->type == META_PROP_VALUE_INVALID)
     {
-      meta_window_set_opaque_region (window, NULL);
+      meta_window_set_opaque_region (window, None);
       return;
     }
 
@@ -757,24 +769,24 @@ reload_opaque_region (MetaWindow    *window,
   if (nitems % 4 != 0)
     {
       meta_verbose ("_NET_WM_OPAQUE_REGION does not have a list of 4-tuples.");
-      meta_window_set_opaque_region (window, NULL);
+      meta_window_set_opaque_region (window, None);
       return;
     }
 
   /* empty region */
   if (nitems == 0)
     {
-      meta_window_set_opaque_region (window, NULL);
+      meta_window_set_opaque_region (window, None);
       return;
     }
 
   nrects = nitems / 4;
-  rects = g_new (cairo_rectangle_int_t, nrects);
+  rects = g_new (XRectangle, nrects);
   rect_index = i = 0;
 
   while (i < nitems)
     {
-      cairo_rectangle_int_t *rect;
+      XRectangle *rect;
 
       rect = &rects[rect_index];
 
@@ -786,11 +798,12 @@ reload_opaque_region (MetaWindow    *window,
       rect_index++;
     }
 
-  opaque_region = cairo_region_create_rectangles (rects, nrects);
+  xdisplay = window->display->xdisplay;
+  opaque_region = XFixesCreateRegion (xdisplay, rects, nrects);
   g_free (rects);
 
   meta_window_set_opaque_region (window, opaque_region);
-  cairo_region_destroy (opaque_region);
+  XFixesDestroyRegion (xdisplay, opaque_region);
 }
 
 static void

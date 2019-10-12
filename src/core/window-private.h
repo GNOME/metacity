@@ -351,8 +351,8 @@ struct _MetaWindow
   /* if non-None, the bounding shape region of the window */
   XserverRegion shape_region;
 
-  /* if non-NULL, the opaque region _NET_WM_OPAQUE_REGION */
-  cairo_region_t *opaque_region;
+  /* if non-None, the opaque region _NET_WM_OPAQUE_REGION */
+  XserverRegion opaque_region;
 
   /* _NET_WM_WINDOW_OPACITY */
   guint opacity;
