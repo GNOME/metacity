@@ -30,6 +30,9 @@ typedef struct
   MetaCompositor *compositor;
   MetaWindow     *window;
 
+  MetaDisplay    *display;
+  Display        *xdisplay;
+
   Damage          damage;
   Pixmap          pixmap;
 
@@ -55,48 +58,39 @@ static void
 free_pixmap (MetaSurface *self)
 {
   MetaSurfacePrivate *priv;
-  MetaDisplay *display;
-  Display *xdisplay;
 
   priv = meta_surface_get_instance_private (self);
 
   if (priv->pixmap == None)
     return;
 
-  display = meta_compositor_get_display (priv->compositor);
-  xdisplay = meta_display_get_xdisplay (display);
-
   META_SURFACE_GET_CLASS (self)->free_pixmap (self);
 
-  meta_error_trap_push (display);
+  meta_error_trap_push (priv->display);
 
-  XFreePixmap (xdisplay, priv->pixmap);
+  XFreePixmap (priv->xdisplay, priv->pixmap);
   priv->pixmap = None;
 
-  meta_error_trap_pop (display);
+  meta_error_trap_pop (priv->display);
 }
 
 static void
 ensure_pixmap (MetaSurface *self)
 {
   MetaSurfacePrivate *priv;
-  MetaDisplay *display;
-  Display *xdisplay;
   Window xwindow;
 
   priv = meta_surface_get_instance_private (self);
-  display = meta_compositor_get_display (priv->compositor);
-  xdisplay = meta_display_get_xdisplay (display);
 
   if (priv->pixmap != None)
     return;
 
-  meta_error_trap_push (display);
+  meta_error_trap_push (priv->display);
 
   xwindow = meta_window_get_toplevel_xwindow (priv->window);
-  priv->pixmap = XCompositeNameWindowPixmap (xdisplay, xwindow);
+  priv->pixmap = XCompositeNameWindowPixmap (priv->xdisplay, xwindow);
 
-  if (meta_error_trap_pop_with_return (display) != 0)
+  if (meta_error_trap_pop_with_return (priv->display) != 0)
     priv->pixmap = None;
 }
 
@@ -104,44 +98,35 @@ static void
 destroy_damage (MetaSurface *self)
 {
   MetaSurfacePrivate *priv;
-  MetaDisplay *display;
-  Display *xdisplay;
 
   priv = meta_surface_get_instance_private (self);
 
   if (priv->damage == None)
     return;
 
-  display = meta_compositor_get_display (priv->compositor);
-  xdisplay = meta_display_get_xdisplay (display);
+  meta_error_trap_push (priv->display);
 
-  meta_error_trap_push (display);
-
-  XDamageDestroy (xdisplay, priv->damage);
+  XDamageDestroy (priv->xdisplay, priv->damage);
   priv->damage = None;
 
-  meta_error_trap_pop (display);
+  meta_error_trap_pop (priv->display);
 }
 
 static void
 create_damage (MetaSurface *self)
 {
   MetaSurfacePrivate *priv;
-  MetaDisplay *display;
-  Display *xdisplay;
 
   priv = meta_surface_get_instance_private (self);
-  display = meta_compositor_get_display (priv->compositor);
-  xdisplay = meta_display_get_xdisplay (display);
 
-  meta_error_trap_push (display);
+  meta_error_trap_push (priv->display);
 
   g_assert (priv->damage == None);
-  priv->damage = XDamageCreate (xdisplay,
+  priv->damage = XDamageCreate (priv->xdisplay,
                                 meta_window_get_toplevel_xwindow (priv->window),
                                 XDamageReportNonEmpty);
 
-  meta_error_trap_pop (display);
+  meta_error_trap_pop (priv->display);
 }
 
 static void
@@ -165,6 +150,9 @@ meta_surface_constructed (GObject *object)
   priv = meta_surface_get_instance_private (self);
 
   G_OBJECT_CLASS (meta_surface_parent_class)->constructed (object);
+
+  priv->display = meta_compositor_get_display (priv->compositor);
+  priv->xdisplay = meta_display_get_xdisplay (priv->display);
 
   meta_surface_sync_geometry (self);
   create_damage (self);
@@ -412,27 +400,23 @@ void
 meta_surface_pre_paint (MetaSurface *self)
 {
   MetaSurfacePrivate *priv;
-  MetaDisplay *display;
-  Display *xdisplay;
   MetaRectangle rect;
   XserverRegion parts;
 
   priv = meta_surface_get_instance_private (self);
-  display = meta_compositor_get_display (priv->compositor);
-  xdisplay = meta_display_get_xdisplay (display);
 
   meta_window_get_input_rect (priv->window, &rect);
 
-  meta_error_trap_push (display);
+  meta_error_trap_push (priv->display);
 
-  parts = XFixesCreateRegion (xdisplay, 0, 0);
-  XDamageSubtract (xdisplay, priv->damage, None, parts);
-  XFixesTranslateRegion (xdisplay, parts, rect.x, rect.y);
+  parts = XFixesCreateRegion (priv->xdisplay, 0, 0);
+  XDamageSubtract (priv->xdisplay, priv->damage, None, parts);
+  XFixesTranslateRegion (priv->xdisplay, parts, rect.x, rect.y);
 
-  meta_error_trap_pop (display);
+  meta_error_trap_pop (priv->display);
 
   meta_compositor_add_damage (priv->compositor, "meta_surface_pre_paint", parts);
-  XFixesDestroyRegion (xdisplay, parts);
+  XFixesDestroyRegion (priv->xdisplay, parts);
 
   ensure_pixmap (self);
 
