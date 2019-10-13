@@ -1057,6 +1057,21 @@ get_window_region (MetaDisplay    *display,
 
   XFixesTranslateRegion (xdisplay, region, cw->rect.x, cw->rect.y);
 
+  if (cw->window->shape_region != NULL)
+    {
+      XserverRegion tmp;
+
+      tmp = XFixesCreateRegion (xdisplay, &(XRectangle) {
+                                  .x = cw->rect.x,
+                                  .y = cw->rect.y,
+                                  .width = cw->rect.width,
+                                  .height = cw->rect.height,
+                                }, 1);
+
+      XFixesIntersectRegion (xdisplay, region, region, tmp);
+      XFixesDestroyRegion (xdisplay, tmp);
+    }
+
   return region;
 }
 
