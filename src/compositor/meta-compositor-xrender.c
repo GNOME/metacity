@@ -2166,7 +2166,7 @@ meta_compositor_xrender_window_opacity_changed (MetaCompositor *compositor,
 
 static void
 meta_compositor_xrender_window_opaque_region_changed (MetaCompositor *compositor,
-                                                      MetaWindow     *window)
+                                                      MetaSurface    *surface)
 {
 }
 
