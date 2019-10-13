@@ -9220,6 +9220,19 @@ meta_window_update_shape_region (MetaWindow *window)
       return;
     }
 
+  if (shape_region != None)
+    {
+      XserverRegion tmp;
+
+      tmp = XFixesCreateRegion (xdisplay, &(XRectangle) {
+                                  .width = window->rect.width,
+                                  .height = window->rect.height
+                                }, 1);
+
+      XFixesIntersectRegion (xdisplay, shape_region, shape_region, tmp);
+      XFixesDestroyRegion (xdisplay, tmp);
+    }
+
   if (window->shape_region != None)
     XFixesDestroyRegion (xdisplay, window->shape_region);
   window->shape_region = shape_region;
