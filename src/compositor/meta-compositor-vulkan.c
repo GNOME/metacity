@@ -1309,7 +1309,7 @@ meta_compositor_vulkan_window_opaque_region_changed (MetaCompositor *compositor,
 
 static void
 meta_compositor_vulkan_window_shape_region_changed (MetaCompositor *compositor,
-                                                    MetaWindow     *window)
+                                                    MetaSurface    *surface)
 {
 }
 

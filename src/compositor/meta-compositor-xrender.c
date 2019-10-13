@@ -2172,16 +2172,14 @@ meta_compositor_xrender_window_opaque_region_changed (MetaCompositor *compositor
 
 static void
 meta_compositor_xrender_window_shape_region_changed (MetaCompositor *compositor,
-                                                     MetaWindow     *window)
+                                                     MetaSurface    *surface)
 {
   MetaCompositorXRender *xrender;
   MetaCompWindow *cw;
 
   xrender = META_COMPOSITOR_XRENDER (compositor);
 
-  cw = find_comp_window_by_window (xrender, window);
-  if (cw == NULL)
-    return;
+  cw = g_object_get_data (G_OBJECT (surface), "cw");
 
   if (cw->shape_region != None)
     {
@@ -2208,7 +2206,7 @@ meta_compositor_xrender_window_shape_region_changed (MetaCompositor *compositor,
     }
 
   cw->shape_region = cairo_region_to_xserver_region (xrender->xdisplay,
-                                                     window->shape_region);
+                                                     cw->window->shape_region);
 
   if (cw->shape_region != None)
     {

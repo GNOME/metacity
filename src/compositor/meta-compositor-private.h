@@ -53,7 +53,7 @@ struct _MetaCompositorClass
                                                       MetaSurface        *surface);
 
   void              (* window_shape_region_changed)  (MetaCompositor     *compositor,
-                                                      MetaWindow         *window);
+                                                      MetaSurface        *surface);
 
   void              (* set_updates_frozen)           (MetaCompositor     *compositor,
                                                       MetaWindow         *window,

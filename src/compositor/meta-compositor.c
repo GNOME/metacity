@@ -510,11 +510,18 @@ void
 meta_compositor_window_shape_region_changed (MetaCompositor *compositor,
                                              MetaWindow     *window)
 {
+  MetaCompositorPrivate *priv;
   MetaCompositorClass *compositor_class;
+  MetaSurface *surface;
 
+  priv = meta_compositor_get_instance_private (compositor);
   compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
 
-  compositor_class->window_shape_region_changed (compositor, window);
+  surface = g_hash_table_lookup (priv->surfaces, window);
+  if (surface == NULL)
+    return;
+
+  compositor_class->window_shape_region_changed (compositor, surface);
 }
 
 void
