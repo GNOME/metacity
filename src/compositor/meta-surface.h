@@ -33,6 +33,10 @@ MetaWindow      *meta_surface_get_window      (MetaSurface        *self);
 
 Pixmap           meta_surface_get_pixmap      (MetaSurface        *self);
 
+int              meta_surface_get_x           (MetaSurface        *self);
+
+int              meta_surface_get_y           (MetaSurface        *self);
+
 int              meta_surface_get_width       (MetaSurface        *self);
 
 int              meta_surface_get_height      (MetaSurface        *self);

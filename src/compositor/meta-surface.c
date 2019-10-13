@@ -36,6 +36,8 @@ typedef struct
   Damage          damage;
   Pixmap          pixmap;
 
+  int             x;
+  int             y;
   int             width;
   int             height;
 } MetaSurfacePrivate;
@@ -303,6 +305,26 @@ meta_surface_get_pixmap (MetaSurface *self)
 }
 
 int
+meta_surface_get_x (MetaSurface *self)
+{
+  MetaSurfacePrivate *priv;
+
+  priv = meta_surface_get_instance_private (self);
+
+  return priv->x;
+}
+
+int
+meta_surface_get_y (MetaSurface *self)
+{
+  MetaSurfacePrivate *priv;
+
+  priv = meta_surface_get_instance_private (self);
+
+  return priv->y;
+}
+
+int
 meta_surface_get_width (MetaSurface *self)
 {
   MetaSurfacePrivate *priv;
@@ -386,6 +408,13 @@ meta_surface_sync_geometry (MetaSurface *self)
 
   meta_window_get_input_rect (priv->window, &rect);
 
+  if (priv->x != rect.x ||
+      priv->y != rect.y)
+    {
+      priv->x = rect.x;
+      priv->y = rect.y;
+    }
+
   if (priv->width != rect.width ||
       priv->height != rect.height)
     {
@@ -400,18 +429,15 @@ void
 meta_surface_pre_paint (MetaSurface *self)
 {
   MetaSurfacePrivate *priv;
-  MetaRectangle rect;
   XserverRegion parts;
 
   priv = meta_surface_get_instance_private (self);
-
-  meta_window_get_input_rect (priv->window, &rect);
 
   meta_error_trap_push (priv->display);
 
   parts = XFixesCreateRegion (priv->xdisplay, 0, 0);
   XDamageSubtract (priv->xdisplay, priv->damage, None, parts);
-  XFixesTranslateRegion (priv->xdisplay, parts, rect.x, rect.y);
+  XFixesTranslateRegion (priv->xdisplay, parts, priv->x, priv->y);
 
   meta_error_trap_pop (priv->display);
 
