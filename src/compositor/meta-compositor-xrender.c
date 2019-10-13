@@ -94,8 +94,6 @@ typedef struct _MetaCompWindow
 
   gboolean damaged;
 
-  XserverRegion shape_region;
-
   gboolean needs_shadow;
   MetaShadowType shadow_type;
 
@@ -938,7 +936,7 @@ window_has_shadow (MetaCompositorXRender *xrender,
     }
 
   /* Never put a shadow around shaped windows */
-  if (cw->shape_region != None)
+  if (cw->window->shape_region != NULL)
     {
       meta_verbose ("Window has no shadow as it is shaped\n");
       return FALSE;
@@ -1484,12 +1482,6 @@ free_win (MetaCompWindow *cw,
 
   /* See comment in map_win */
 
-  if (cw->shape_region)
-    {
-      XFixesDestroyRegion (xdisplay, cw->shape_region);
-      cw->shape_region = None;
-    }
-
   if (cw->shadow)
     {
       XRenderFreePicture (xdisplay, cw->shadow);
@@ -1645,12 +1637,6 @@ notify_decorated_cb (MetaWindow            *window,
     return;
 
   meta_error_trap_push (window->display);
-
-  if (cw->shape_region != None)
-    {
-      XFixesDestroyRegion (xrender->xdisplay, cw->shape_region);
-      cw->shape_region = None;
-    }
 
   if (cw->window_region != None)
     {
@@ -2039,15 +2025,6 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
 
   cw->damaged = FALSE;
 
-  cw->shape_region = cairo_region_to_xserver_region (xrender->xdisplay,
-                                                     window->shape_region);
-
-  if (cw->shape_region != None)
-    {
-      XFixesTranslateRegion (xrender->xdisplay, cw->shape_region,
-                             cw->rect.x, cw->rect.y);
-    }
-
   cw->window_region = None;
   cw->visible_region = None;
   cw->client_region = None;
@@ -2196,37 +2173,23 @@ meta_compositor_xrender_window_shape_region_changed (MetaCompositor *compositor,
 
   cw = g_object_get_data (G_OBJECT (surface), "cw");
 
-  if (cw->shape_region != None)
+  if (cw->window_region)
     {
-      meta_compositor_add_damage (compositor, "shape_changed", cw->shape_region);
-      XFixesDestroyRegion (xrender->xdisplay, cw->shape_region);
-
-      if (cw->window_region)
-        {
-          XFixesDestroyRegion (xrender->xdisplay, cw->window_region);
-          cw->window_region = None;
-        }
-
-      if (cw->visible_region)
-        {
-          XFixesDestroyRegion (xrender->xdisplay, cw->visible_region);
-          cw->visible_region = None;
-        }
-
-      if (cw->client_region)
-        {
-          XFixesDestroyRegion (xrender->xdisplay, cw->client_region);
-          cw->client_region = None;
-        }
+      meta_compositor_add_damage (compositor, "shape_changed", cw->window_region);
+      XFixesDestroyRegion (xrender->xdisplay, cw->window_region);
+      cw->window_region = None;
     }
 
-  cw->shape_region = cairo_region_to_xserver_region (xrender->xdisplay,
-                                                     cw->window->shape_region);
-
-  if (cw->shape_region != None)
+  if (cw->visible_region)
     {
-      XFixesTranslateRegion (xrender->xdisplay, cw->shape_region,
-                             cw->rect.x, cw->rect.y);
+      XFixesDestroyRegion (xrender->xdisplay, cw->visible_region);
+      cw->visible_region = None;
+    }
+
+  if (cw->client_region)
+    {
+      XFixesDestroyRegion (xrender->xdisplay, cw->client_region);
+      cw->client_region = None;
     }
 }
 
@@ -2346,7 +2309,7 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
   if (xrender->debug)
     {
       fprintf (stderr, "configure notify %d %d %d\n", cw->damaged,
-               cw->shape_region != None, cw->needs_shadow);
+               cw->window->shape_region != NULL, cw->needs_shadow);
       dump_xserver_region (xrender, "\textents", cw->extents);
       fprintf (stderr, "\txy (%d %d), wh (%d %d)\n",
                cw->rect.x, cw->rect.y, cw->rect.width, cw->rect.height);
@@ -2389,18 +2352,6 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
     {
       damage = XFixesCreateRegion (xrender->xdisplay, NULL, 0);
       XFixesCopyRegion (xrender->xdisplay, damage, cw->extents);
-    }
-
-  if (cw->shape_region != None)
-    {
-      gint dx;
-      gint dy;
-
-      dx = cw->rect.x - old_rect.x;
-      dy = cw->rect.y - old_rect.y;
-
-      XFixesUnionRegion (xrender->xdisplay, damage, damage, cw->shape_region);
-      XFixesTranslateRegion (xrender->xdisplay, cw->shape_region, dx, dy);
     }
 
   meta_compositor_add_damage (compositor, "sync_window_geometry", damage);
