@@ -523,7 +523,7 @@ meta_window_new (MetaDisplay    *display,
   window->disable_sync = FALSE;
   window->attached = FALSE;
   window->frame_bounds = NULL;
-  window->shape_region = NULL;
+  window->shape_region = None;
   window->opaque_region = NULL;
   window->opacity = 0xffffffff;
 
@@ -9162,7 +9162,8 @@ meta_window_is_toplevel_mapped (MetaWindow *window)
 void
 meta_window_update_shape_region (MetaWindow *window)
 {
-  cairo_region_t *shape_region;
+  Display *xdisplay;
+  XserverRegion shape_region;
   int bshaped;
   int xbs;
   int ybs;
@@ -9174,8 +9175,12 @@ meta_window_update_shape_region (MetaWindow *window)
   unsigned int wcs;
   unsigned int hcs;
 
-  if (!window->display->have_shape)
+  if (!window->display->have_shape ||
+      !window->display->have_xfixes)
     return;
+
+  xdisplay = window->display->xdisplay;
+  shape_region = None;
 
   meta_error_trap_push (window->display);
 
@@ -9196,40 +9201,27 @@ meta_window_update_shape_region (MetaWindow *window)
 
       if (rects)
         {
-          cairo_rectangle_int_t cairo_rects[n_rects];
-          int i;
-
-          for (i = 0; i < n_rects; i ++)
-            {
-              cairo_rects[i].x = rects[i].x;
-              cairo_rects[i].y = rects[i].y;
-              cairo_rects[i].width = rects[i].width;
-              cairo_rects[i].height = rects[i].height;
-            }
-
-          shape_region = cairo_region_create_rectangles (cairo_rects, n_rects);
+          shape_region = XFixesCreateRegion (xdisplay, rects, n_rects);
           XFree (rects);
-        }
-      else
-        {
-          shape_region = NULL;
         }
     }
   else
     {
       window->has_shape = FALSE;
-      shape_region = NULL;
     }
 
   meta_error_trap_pop (window->display);
 
-  if (cairo_region_equal (window->shape_region, shape_region))
+  if (meta_xserver_region_equal (xdisplay, window->shape_region, shape_region))
     {
-      cairo_region_destroy (shape_region);
+      if (shape_region != None)
+        XFixesDestroyRegion (xdisplay, shape_region);
+
       return;
     }
 
-  g_clear_pointer (&window->shape_region, cairo_region_destroy);
+  if (window->shape_region != None)
+    XFixesDestroyRegion (xdisplay, window->shape_region);
   window->shape_region = shape_region;
 
   meta_compositor_window_shape_region_changed (window->display->compositor, window);
@@ -9257,8 +9249,10 @@ static void
 meta_window_finalize (GObject *object)
 {
   MetaWindow *window;
+  Display *xdisplay;
 
   window = META_WINDOW (object);
+  xdisplay = meta_display_get_xdisplay (window->display);
 
   if (window->reframe_id != 0)
     {
@@ -9270,7 +9264,13 @@ meta_window_finalize (GObject *object)
   g_clear_object (&window->mini_icon);
 
   g_clear_pointer (&window->frame_bounds, cairo_region_destroy);
-  g_clear_pointer (&window->shape_region, cairo_region_destroy);
+
+  if (window->shape_region != None)
+    {
+      XFixesDestroyRegion (xdisplay, window->shape_region);
+      window->shape_region = None;
+    }
+
   g_clear_pointer (&window->opaque_region, cairo_region_destroy);
 
   meta_icon_cache_free (&window->icon_cache);

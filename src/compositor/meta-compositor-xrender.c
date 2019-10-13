@@ -936,7 +936,7 @@ window_has_shadow (MetaCompositorXRender *xrender,
     }
 
   /* Never put a shadow around shaped windows */
-  if (cw->window->shape_region != NULL)
+  if (cw->window->shape_region != None)
     {
       meta_verbose ("Window has no shadow as it is shaped\n");
       return FALSE;
@@ -1055,7 +1055,7 @@ get_window_region (MetaDisplay    *display,
 
   XFixesTranslateRegion (xdisplay, region, cw->rect.x, cw->rect.y);
 
-  if (cw->window->shape_region != NULL)
+  if (cw->window->shape_region != None)
     {
       XserverRegion tmp;
 
@@ -2309,7 +2309,7 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
   if (xrender->debug)
     {
       fprintf (stderr, "configure notify %d %d %d\n", cw->damaged,
-               cw->window->shape_region != NULL, cw->needs_shadow);
+               cw->window->shape_region != None, cw->needs_shadow);
       dump_xserver_region (xrender, "\textents", cw->extents);
       fprintf (stderr, "\txy (%d %d), wh (%d %d)\n",
                cw->rect.x, cw->rect.y, cw->rect.width, cw->rect.height);
