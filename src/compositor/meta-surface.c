@@ -340,6 +340,20 @@ meta_surface_get_image (MetaSurface *self)
   return META_SURFACE_GET_CLASS (self)->get_image (self);
 }
 
+gboolean
+meta_surface_is_visible (MetaSurface *self)
+{
+  MetaSurfacePrivate *priv;
+
+  priv = meta_surface_get_instance_private (self);
+
+  if (!meta_window_is_toplevel_mapped (priv->window) ||
+      priv->pixmap == None)
+    return FALSE;
+
+  return TRUE;
+}
+
 void
 meta_surface_show (MetaSurface *self)
 {

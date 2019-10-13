@@ -1256,7 +1256,7 @@ paint_windows (MetaCompositorXRender *xrender,
           continue;
         }
 
-      if (!meta_window_is_toplevel_mapped (cw->window))
+      if (!meta_surface_is_visible (surface))
         continue;
 
       picture = meta_surface_xrender_get_picture (META_SURFACE_XRENDER (surface));

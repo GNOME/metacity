@@ -39,6 +39,8 @@ int              meta_surface_get_height      (MetaSurface        *self);
 
 cairo_surface_t *meta_surface_get_image       (MetaSurface        *self);
 
+gboolean         meta_surface_is_visible      (MetaSurface        *self);
+
 void             meta_surface_show            (MetaSurface        *self);
 
 void             meta_surface_hide            (MetaSurface        *self);
