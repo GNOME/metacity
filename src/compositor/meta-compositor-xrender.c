@@ -1480,8 +1480,6 @@ free_win (MetaCompWindow *cw,
 
   meta_error_trap_push (display);
 
-  /* See comment in map_win */
-
   if (cw->shadow)
     {
       XRenderFreePicture (xdisplay, cw->shadow);
@@ -1500,7 +1498,7 @@ free_win (MetaCompWindow *cw,
       cw->visible_region = None;
     }
 
-  if (cw->client_region && destroy)
+  if (cw->client_region)
     {
       XFixesDestroyRegion (xdisplay, cw->client_region);
       cw->client_region = None;
@@ -1540,23 +1538,6 @@ cw_destroy_cb (gpointer data)
   cw = (MetaCompWindow *) data;
 
   free_win (cw, TRUE);
-}
-
-static void
-map_win (MetaCompositorXRender *xrender,
-         MetaCompWindow        *cw)
-{
-  Display *xdisplay = xrender->xdisplay;
-
-  /* The reason we deallocate this here and not in unmap
-     is so that we will still have a valid pixmap for
-     whenever the window is unmapped */
-
-  if (cw->client_region)
-    {
-      XFixesDestroyRegion (xdisplay, cw->client_region);
-      cw->client_region = None;
-    }
 }
 
 static void
@@ -2051,9 +2032,6 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
   xwindow = meta_window_get_xwindow (window);
   g_hash_table_insert (xrender->windows_by_xid, (gpointer) xwindow, cw);
 
-  if (meta_window_is_toplevel_mapped (cw->window))
-    map_win (xrender, cw);
-
   meta_error_trap_pop (display);
 
   return surface;
@@ -2089,16 +2067,11 @@ meta_compositor_xrender_show_window (MetaCompositor *compositor,
                                      MetaSurface    *surface,
                                      MetaEffectType  effect)
 {
-  MetaCompositorXRender *xrender;
   MetaCompWindow *cw;
-
-  xrender = META_COMPOSITOR_XRENDER (compositor);
 
   cw = g_object_get_data (G_OBJECT (surface), "cw");
 
   cw->damaged = TRUE;
-
-  map_win (xrender, cw);
 }
 
 static void
