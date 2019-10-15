@@ -22,6 +22,7 @@
 
 #include "display-private.h"
 #include "errors.h"
+#include "frame.h"
 #include "meta-compositor-private.h"
 #include "window-private.h"
 
@@ -40,6 +41,9 @@ typedef struct
   int             y;
   int             width;
   int             height;
+
+  XserverRegion   opaque_region;
+  gboolean        opaque_region_changed;
 } MetaSurfacePrivate;
 
 enum
@@ -55,6 +59,63 @@ enum
 static GParamSpec *surface_properties[LAST_PROP] = { NULL };
 
 G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (MetaSurface, meta_surface, G_TYPE_OBJECT)
+
+static void
+update_opaque_region (MetaSurface *self)
+{
+  MetaSurfacePrivate *priv;
+  XserverRegion opaque_region;
+
+  priv = meta_surface_get_instance_private (self);
+
+  if (!priv->opaque_region_changed)
+    return;
+
+  g_assert (priv->opaque_region == None);
+
+  if (priv->window->frame != NULL && priv->window->opaque_region != None)
+    {
+      MetaFrameBorders borders;
+
+      meta_frame_calc_borders (priv->window->frame, &borders);
+
+      opaque_region = XFixesCreateRegion (priv->xdisplay, NULL, 0);
+      XFixesCopyRegion (priv->xdisplay,
+                        opaque_region,
+                        priv->window->opaque_region);
+
+      XFixesTranslateRegion (priv->xdisplay,
+                             opaque_region,
+                             borders.total.left,
+                             borders.total.top);
+    }
+  else if (priv->window->opaque_region != None)
+    {
+      opaque_region = XFixesCreateRegion (priv->xdisplay, NULL, 0);
+      XFixesCopyRegion (priv->xdisplay,
+                        opaque_region,
+                        priv->window->opaque_region);
+    }
+  else
+    {
+      opaque_region = None;
+    }
+
+  if (opaque_region != None)
+    {
+      XserverRegion copy;
+
+      copy = XFixesCreateRegion (priv->xdisplay, NULL, 0);
+      XFixesCopyRegion (priv->xdisplay, copy, opaque_region);
+      XFixesTranslateRegion (priv->xdisplay, copy, priv->x, priv->y);
+
+      meta_compositor_add_damage (priv->compositor, "update_opaque_region", copy);
+      XFixesDestroyRegion (priv->xdisplay, copy);
+    }
+
+  priv->opaque_region = opaque_region;
+  priv->opaque_region_changed = FALSE;
+}
 
 static void
 free_pixmap (MetaSurface *self)
@@ -168,11 +229,19 @@ static void
 meta_surface_finalize (GObject *object)
 {
   MetaSurface *self;
+  MetaSurfacePrivate *priv;
 
   self = META_SURFACE (object);
+  priv = meta_surface_get_instance_private (self);
 
   destroy_damage (self);
   free_pixmap (self);
+
+  if (priv->opaque_region != None)
+    {
+      XFixesDestroyRegion (priv->xdisplay, priv->opaque_region);
+      priv->opaque_region = None;
+    }
 
   G_OBJECT_CLASS (meta_surface_parent_class)->finalize (object);
 }
@@ -344,6 +413,16 @@ meta_surface_get_height (MetaSurface *self)
   return priv->height;
 }
 
+XserverRegion
+meta_surface_get_opaque_region (MetaSurface *self)
+{
+  MetaSurfacePrivate *priv;
+
+  priv = meta_surface_get_instance_private (self);
+
+  return priv->opaque_region;
+}
+
 cairo_surface_t *
 meta_surface_get_image (MetaSurface *self)
 {
@@ -399,6 +478,35 @@ meta_surface_opacity_changed (MetaSurface *self)
 }
 
 void
+meta_surface_opaque_region_changed (MetaSurface *self)
+{
+  MetaSurfacePrivate *priv;
+
+  priv = meta_surface_get_instance_private (self);
+
+  if (priv->opaque_region != None)
+    {
+      XFixesTranslateRegion (priv->xdisplay,
+                             priv->opaque_region,
+                             priv->x,
+                             priv->y);
+
+      meta_compositor_add_damage (priv->compositor,
+                                  "meta_surface_opaque_region_changed",
+                                  priv->opaque_region);
+
+      XFixesDestroyRegion (priv->xdisplay, priv->opaque_region);
+      priv->opaque_region = None;
+    }
+  else
+    {
+      meta_compositor_queue_redraw (priv->compositor);
+    }
+
+  priv->opaque_region_changed = TRUE;
+}
+
+void
 meta_surface_sync_geometry (MetaSurface *self)
 {
   MetaSurfacePrivate *priv;
@@ -419,6 +527,8 @@ meta_surface_sync_geometry (MetaSurface *self)
       priv->height != rect.height)
     {
       free_pixmap (self);
+
+      meta_surface_opaque_region_changed (self);
 
       priv->width = rect.width;
       priv->height = rect.height;
@@ -443,6 +553,8 @@ meta_surface_pre_paint (MetaSurface *self)
 
   meta_compositor_add_damage (priv->compositor, "meta_surface_pre_paint", parts);
   XFixesDestroyRegion (priv->xdisplay, parts);
+
+  update_opaque_region (self);
 
   ensure_pixmap (self);
 

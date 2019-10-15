@@ -504,6 +504,7 @@ meta_compositor_window_opaque_region_changed (MetaCompositor *compositor,
     return;
 
   compositor_class->window_opaque_region_changed (compositor, surface);
+  meta_surface_opaque_region_changed (surface);
 }
 
 void
