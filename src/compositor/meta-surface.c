@@ -35,6 +35,8 @@ typedef struct
   Display        *xdisplay;
 
   Damage          damage;
+  gboolean        damage_received;
+
   Pixmap          pixmap;
 
   int             x;
@@ -567,6 +569,8 @@ meta_surface_process_damage (MetaSurface        *self,
 
   priv = meta_surface_get_instance_private (self);
 
+  priv->damage_received = TRUE;
+
   meta_compositor_queue_redraw (priv->compositor);
 }
 
@@ -672,9 +676,14 @@ meta_surface_pre_paint (MetaSurface *self)
 
   damage = XFixesCreateRegion (priv->xdisplay, NULL, 0);
 
-  meta_error_trap_push (priv->display);
-  XDamageSubtract (priv->xdisplay, priv->damage, None, damage);
-  meta_error_trap_pop (priv->display);
+  if (priv->damage_received)
+    {
+      meta_error_trap_push (priv->display);
+      XDamageSubtract (priv->xdisplay, priv->damage, None, damage);
+      meta_error_trap_pop (priv->display);
+
+      priv->damage_received = FALSE;
+    }
 
   update_shape_region (self, damage);
   update_opaque_region (self, damage);
