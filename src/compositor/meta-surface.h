@@ -43,6 +43,8 @@ int              meta_surface_get_height            (MetaSurface        *self);
 
 XserverRegion    meta_surface_get_opaque_region     (MetaSurface        *self);
 
+XserverRegion    meta_surface_get_shape_region      (MetaSurface        *self);
+
 cairo_surface_t *meta_surface_get_image             (MetaSurface        *self);
 
 gboolean         meta_surface_is_visible            (MetaSurface        *self);
@@ -57,6 +59,8 @@ void             meta_surface_process_damage        (MetaSurface        *self,
 void             meta_surface_opacity_changed       (MetaSurface        *self);
 
 void             meta_surface_opaque_region_changed (MetaSurface        *self);
+
+void             meta_surface_shape_region_changed  (MetaSurface        *self);
 
 void             meta_surface_sync_geometry         (MetaSurface        *self);
 

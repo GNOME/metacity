@@ -42,6 +42,9 @@ typedef struct
   int             width;
   int             height;
 
+  XserverRegion   shape_region;
+  gboolean        shape_region_changed;
+
   XserverRegion   opaque_region;
   gboolean        opaque_region_changed;
 } MetaSurfacePrivate;
@@ -59,6 +62,64 @@ enum
 static GParamSpec *surface_properties[LAST_PROP] = { NULL };
 
 G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (MetaSurface, meta_surface, G_TYPE_OBJECT)
+
+static void
+update_shape_region (MetaSurface *self)
+{
+  MetaSurfacePrivate *priv;
+  MetaFrameBorders borders;
+  XRectangle client_rect;
+  XserverRegion shape_region;
+
+  priv = meta_surface_get_instance_private (self);
+
+  if (!priv->shape_region_changed)
+    return;
+
+  g_assert (priv->shape_region == None);
+
+  meta_frame_calc_borders (priv->window->frame, &borders);
+
+  client_rect.x = borders.total.left;
+  client_rect.y = borders.total.top;
+  client_rect.width = priv->width - borders.total.left - borders.total.right;
+  client_rect.height = priv->height - borders.total.top - borders.total.bottom;
+
+  if (priv->window->frame != NULL && priv->window->shape_region != None)
+    {
+      shape_region = XFixesCreateRegion (priv->xdisplay, NULL, 0);
+      XFixesCopyRegion (priv->xdisplay, shape_region, priv->window->shape_region);
+
+      XFixesTranslateRegion (priv->xdisplay,
+                             shape_region,
+                             client_rect.x,
+                             client_rect.y);
+    }
+  else if (priv->window->shape_region != None)
+    {
+      shape_region = XFixesCreateRegion (priv->xdisplay, NULL, 0);
+      XFixesCopyRegion (priv->xdisplay, shape_region, priv->window->shape_region);
+    }
+  else
+    {
+      shape_region = XFixesCreateRegion (priv->xdisplay, &client_rect, 1);
+    }
+
+  if (shape_region != None)
+    {
+      XserverRegion copy;
+
+      copy = XFixesCreateRegion (priv->xdisplay, NULL, 0);
+      XFixesCopyRegion (priv->xdisplay, copy, shape_region);
+      XFixesTranslateRegion (priv->xdisplay, copy, priv->x, priv->y);
+
+      meta_compositor_add_damage (priv->compositor, "update_shape_region", copy);
+      XFixesDestroyRegion (priv->xdisplay, copy);
+    }
+
+  priv->shape_region = shape_region;
+  priv->shape_region_changed = FALSE;
+}
 
 static void
 update_opaque_region (MetaSurface *self)
@@ -236,6 +297,21 @@ meta_surface_finalize (GObject *object)
 
   destroy_damage (self);
   free_pixmap (self);
+
+  if (priv->shape_region != None)
+    {
+      XFixesTranslateRegion (priv->xdisplay,
+                             priv->shape_region,
+                             priv->x,
+                             priv->y);
+
+      meta_compositor_add_damage (priv->compositor,
+                                  "meta_surface_finalize",
+                                  priv->shape_region);
+
+      XFixesDestroyRegion (priv->xdisplay, priv->shape_region);
+      priv->shape_region = None;
+    }
 
   if (priv->opaque_region != None)
     {
@@ -423,6 +499,16 @@ meta_surface_get_opaque_region (MetaSurface *self)
   return priv->opaque_region;
 }
 
+XserverRegion
+meta_surface_get_shape_region (MetaSurface *self)
+{
+  MetaSurfacePrivate *priv;
+
+  priv = meta_surface_get_instance_private (self);
+
+  return priv->shape_region;
+}
+
 cairo_surface_t *
 meta_surface_get_image (MetaSurface *self)
 {
@@ -507,6 +593,33 @@ meta_surface_opaque_region_changed (MetaSurface *self)
 }
 
 void
+meta_surface_shape_region_changed (MetaSurface *self)
+{
+  MetaSurfacePrivate *priv;
+
+  priv = meta_surface_get_instance_private (self);
+
+  meta_compositor_queue_redraw (priv->compositor);
+
+  if (priv->shape_region != None)
+    {
+      XFixesTranslateRegion (priv->xdisplay,
+                             priv->shape_region,
+                             priv->x,
+                             priv->y);
+
+      meta_compositor_add_damage (priv->compositor,
+                                  "meta_surface_shape_region_changed",
+                                  priv->shape_region);
+
+      XFixesDestroyRegion (priv->xdisplay, priv->shape_region);
+      priv->shape_region = None;
+    }
+
+  priv->shape_region_changed = TRUE;
+}
+
+void
 meta_surface_sync_geometry (MetaSurface *self)
 {
   MetaSurfacePrivate *priv;
@@ -529,6 +642,7 @@ meta_surface_sync_geometry (MetaSurface *self)
       free_pixmap (self);
 
       meta_surface_opaque_region_changed (self);
+      meta_surface_shape_region_changed (self);
 
       priv->width = rect.width;
       priv->height = rect.height;
@@ -554,6 +668,7 @@ meta_surface_pre_paint (MetaSurface *self)
   meta_compositor_add_damage (priv->compositor, "meta_surface_pre_paint", parts);
   XFixesDestroyRegion (priv->xdisplay, parts);
 
+  update_shape_region (self);
   update_opaque_region (self);
 
   ensure_pixmap (self);

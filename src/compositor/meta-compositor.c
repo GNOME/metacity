@@ -523,6 +523,7 @@ meta_compositor_window_shape_region_changed (MetaCompositor *compositor,
     return;
 
   compositor_class->window_shape_region_changed (compositor, surface);
+  meta_surface_shape_region_changed (surface);
 }
 
 void
