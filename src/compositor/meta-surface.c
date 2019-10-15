@@ -63,8 +63,28 @@ static GParamSpec *surface_properties[LAST_PROP] = { NULL };
 
 G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (MetaSurface, meta_surface, G_TYPE_OBJECT)
 
+static gboolean
+is_region_empty (Display       *xdisplay,
+                 XserverRegion  region)
+{
+  int n_rects;
+  XRectangle bounds;
+  XRectangle *rects;
+
+  rects = XFixesFetchRegionAndBounds (xdisplay, region, &n_rects, &bounds);
+
+  if (rects != NULL)
+    XFree (rects);
+
+  if (n_rects == 0 || bounds.width == 0 || bounds.height == 0)
+    return TRUE;
+
+  return FALSE;
+}
+
 static void
-update_shape_region (MetaSurface *self)
+update_shape_region (MetaSurface   *self,
+                     XserverRegion  damage_region)
 {
   MetaSurfacePrivate *priv;
   MetaFrameBorders borders;
@@ -107,14 +127,10 @@ update_shape_region (MetaSurface *self)
 
   if (shape_region != None)
     {
-      XserverRegion copy;
-
-      copy = XFixesCreateRegion (priv->xdisplay, NULL, 0);
-      XFixesCopyRegion (priv->xdisplay, copy, shape_region);
-      XFixesTranslateRegion (priv->xdisplay, copy, priv->x, priv->y);
-
-      meta_compositor_add_damage (priv->compositor, "update_shape_region", copy);
-      XFixesDestroyRegion (priv->xdisplay, copy);
+      XFixesUnionRegion (priv->xdisplay,
+                         damage_region,
+                         damage_region,
+                         shape_region);
     }
 
   priv->shape_region = shape_region;
@@ -122,7 +138,8 @@ update_shape_region (MetaSurface *self)
 }
 
 static void
-update_opaque_region (MetaSurface *self)
+update_opaque_region (MetaSurface   *self,
+                      XserverRegion  damage_region)
 {
   MetaSurfacePrivate *priv;
   XserverRegion opaque_region;
@@ -164,14 +181,10 @@ update_opaque_region (MetaSurface *self)
 
   if (opaque_region != None)
     {
-      XserverRegion copy;
-
-      copy = XFixesCreateRegion (priv->xdisplay, NULL, 0);
-      XFixesCopyRegion (priv->xdisplay, copy, opaque_region);
-      XFixesTranslateRegion (priv->xdisplay, copy, priv->x, priv->y);
-
-      meta_compositor_add_damage (priv->compositor, "update_opaque_region", copy);
-      XFixesDestroyRegion (priv->xdisplay, copy);
+      XFixesUnionRegion (priv->xdisplay,
+                         damage_region,
+                         damage_region,
+                         opaque_region);
     }
 
   priv->opaque_region = opaque_region;
@@ -653,25 +666,30 @@ void
 meta_surface_pre_paint (MetaSurface *self)
 {
   MetaSurfacePrivate *priv;
-  XserverRegion parts;
+  XserverRegion damage;
 
   priv = meta_surface_get_instance_private (self);
 
+  damage = XFixesCreateRegion (priv->xdisplay, NULL, 0);
+
   meta_error_trap_push (priv->display);
-
-  parts = XFixesCreateRegion (priv->xdisplay, 0, 0);
-  XDamageSubtract (priv->xdisplay, priv->damage, None, parts);
-  XFixesTranslateRegion (priv->xdisplay, parts, priv->x, priv->y);
-
+  XDamageSubtract (priv->xdisplay, priv->damage, None, damage);
   meta_error_trap_pop (priv->display);
 
-  meta_compositor_add_damage (priv->compositor, "meta_surface_pre_paint", parts);
-  XFixesDestroyRegion (priv->xdisplay, parts);
-
-  update_shape_region (self);
-  update_opaque_region (self);
+  update_shape_region (self, damage);
+  update_opaque_region (self, damage);
 
   ensure_pixmap (self);
 
   META_SURFACE_GET_CLASS (self)->pre_paint (self);
+
+  if (is_region_empty (priv->xdisplay, damage))
+    {
+      XFixesDestroyRegion (priv->xdisplay, damage);
+      return;
+    }
+
+  XFixesTranslateRegion (priv->xdisplay, damage, priv->x, priv->y);
+  meta_compositor_add_damage (priv->compositor, "meta_surface_pre_paint", damage);
+  XFixesDestroyRegion (priv->xdisplay, damage);
 }
