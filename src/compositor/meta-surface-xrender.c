@@ -31,12 +31,15 @@
 
 struct _MetaSurfaceXRender
 {
-  MetaSurface parent;
+  MetaSurface  parent;
 
-  Picture     picture;
+  MetaDisplay *display;
+  Display     *xdisplay;
 
-  Pixmap      mask_pixmap;
-  Picture     mask_picture;
+  Picture      picture;
+
+  Pixmap       mask_pixmap;
+  Picture      mask_picture;
 };
 
 G_DEFINE_TYPE (MetaSurfaceXRender, meta_surface_xrender, META_TYPE_SURFACE)
@@ -47,12 +50,11 @@ create_mask_pixmap (MetaSurfaceXRender *self,
 {
   MetaWindow *window;
   MetaFrame *frame;
-  MetaDisplay *display;
-  Display *xdisplay;
   int width;
   int height;
   XRenderPictFormat *format;
   double opacity;
+  Screen *xscreen;
   cairo_surface_t *surface;
   cairo_t *cr;
   Pixmap pixmap;
@@ -63,31 +65,29 @@ create_mask_pixmap (MetaSurfaceXRender *self,
   if (frame == NULL && window->opacity == OPAQUE)
     return None;
 
-  display = meta_window_get_display (window);
-  xdisplay = meta_display_get_xdisplay (display);
-
   width = frame != NULL ? meta_surface_get_width (META_SURFACE (self)) : 1;
   height = frame != NULL ? meta_surface_get_height (META_SURFACE (self)) : 1;
 
-  format = XRenderFindStandardFormat (xdisplay, PictStandardA8);
+  format = XRenderFindStandardFormat (self->xdisplay, PictStandardA8);
 
-  meta_error_trap_push (display);
-  pixmap = XCreatePixmap (xdisplay,
-                          DefaultRootWindow (xdisplay),
+  meta_error_trap_push (self->display);
+  pixmap = XCreatePixmap (self->xdisplay,
+                          DefaultRootWindow (self->xdisplay),
                           width,
                           height,
                           format->depth);
 
-  if (meta_error_trap_pop_with_return (display) != 0)
+  if (meta_error_trap_pop_with_return (self->display) != 0)
     return None;
 
   opacity = 1.0;
   if (with_opacity)
     opacity = (double) window->opacity / OPAQUE;
 
-  surface = cairo_xlib_surface_create_with_xrender_format (xdisplay,
+  xscreen = DefaultScreenOfDisplay (self->xdisplay);
+  surface = cairo_xlib_surface_create_with_xrender_format (self->xdisplay,
                                                            pixmap,
-                                                           DefaultScreenOfDisplay (xdisplay),
+                                                           xscreen,
                                                            format,
                                                            width,
                                                            height);
@@ -155,57 +155,30 @@ create_mask_pixmap (MetaSurfaceXRender *self,
 static void
 free_picture (MetaSurfaceXRender *self)
 {
-  MetaWindow *window;
-  MetaDisplay *display;
-  Display *xdisplay;
-
   if (self->picture == None)
     return;
 
-  window = meta_surface_get_window (META_SURFACE (self));
-
-  display = meta_window_get_display (window);
-  xdisplay = meta_display_get_xdisplay (display);
-
-  XRenderFreePicture (xdisplay, self->picture);
+  XRenderFreePicture (self->xdisplay, self->picture);
   self->picture = None;
 }
 
 static void
 free_mask_pixmap (MetaSurfaceXRender *self)
 {
-  MetaWindow *window;
-  MetaDisplay *display;
-  Display *xdisplay;
-
   if (self->mask_pixmap == None)
     return;
 
-  window = meta_surface_get_window (META_SURFACE (self));
-
-  display = meta_window_get_display (window);
-  xdisplay = meta_display_get_xdisplay (display);
-
-  XFreePixmap (xdisplay, self->mask_pixmap);
+  XFreePixmap (self->xdisplay, self->mask_pixmap);
   self->mask_pixmap = None;
 }
 
 static void
 free_mask_picture (MetaSurfaceXRender *self)
 {
-  MetaWindow *window;
-  MetaDisplay *display;
-  Display *xdisplay;
-
   if (self->mask_picture == None)
     return;
 
-  window = meta_surface_get_window (META_SURFACE (self));
-
-  display = meta_window_get_display (window);
-  xdisplay = meta_display_get_xdisplay (display);
-
-  XRenderFreePicture (xdisplay, self->mask_picture);
+  XRenderFreePicture (self->xdisplay, self->mask_picture);
   self->mask_picture = None;
 }
 
@@ -213,8 +186,6 @@ static Picture
 get_window_picture (MetaSurfaceXRender *self)
 {
   MetaWindow *window;
-  MetaDisplay *display;
-  Display *xdisplay;
   Window xwindow;
   Visual *xvisual;
   XRenderPictFormat *format;
@@ -226,18 +197,15 @@ get_window_picture (MetaSurfaceXRender *self)
 
   window = meta_surface_get_window (META_SURFACE (self));
 
-  display = meta_window_get_display (window);
-  xdisplay = meta_display_get_xdisplay (display);
-
   xwindow = meta_window_get_toplevel_xwindow (window);
   xvisual = meta_window_get_toplevel_xvisual (window);
 
-  format = XRenderFindVisualFormat (xdisplay, xvisual);
+  format = XRenderFindVisualFormat (self->xdisplay, xvisual);
 
   if (format == NULL)
     {
-      xvisual = DefaultVisual (xdisplay, DefaultScreen (xdisplay));
-      format = XRenderFindVisualFormat (xdisplay, xvisual);
+      xvisual = DefaultVisual (self->xdisplay, DefaultScreen (self->xdisplay));
+      format = XRenderFindVisualFormat (self->xdisplay, xvisual);
     }
 
   if (format == NULL)
@@ -249,9 +217,9 @@ get_window_picture (MetaSurfaceXRender *self)
   pa.subwindow_mode = IncludeInferiors;
   pa_mask = CPSubwindowMode;
 
-  meta_error_trap_push (display);
-  picture = XRenderCreatePicture (xdisplay, drawable, format, pa_mask, &pa);
-  meta_error_trap_pop (display);
+  meta_error_trap_push (self->display);
+  picture = XRenderCreatePicture (self->xdisplay, drawable, format, pa_mask, &pa);
+  meta_error_trap_pop (self->display);
 
   return picture;
 }
@@ -259,27 +227,41 @@ get_window_picture (MetaSurfaceXRender *self)
 static Picture
 get_window_mask_picture (MetaSurfaceXRender *self)
 {
-  MetaWindow *window;
-  MetaDisplay *display;
-  Display *xdisplay;
   XRenderPictFormat *format;
   Picture picture;
 
   if (self->mask_pixmap == None)
     return None;
 
-  window = meta_surface_get_window (META_SURFACE (self));
+  format = XRenderFindStandardFormat (self->xdisplay, PictStandardA8);
 
-  display = meta_window_get_display (window);
-  xdisplay = meta_display_get_xdisplay (display);
+  meta_error_trap_push (self->display);
 
-  format = XRenderFindStandardFormat (xdisplay, PictStandardA8);
+  picture = XRenderCreatePicture (self->xdisplay,
+                                  self->mask_pixmap,
+                                  format,
+                                  0,
+                                  NULL);
 
-  meta_error_trap_push (display);
-  picture = XRenderCreatePicture (xdisplay, self->mask_pixmap, format, 0, NULL);
-  meta_error_trap_pop (display);
+  meta_error_trap_pop (self->display);
 
   return picture;
+}
+
+static void
+meta_surface_xrender_constructed (GObject *object)
+{
+  MetaSurfaceXRender *self;
+  MetaWindow *window;
+
+  self = META_SURFACE_XRENDER (object);
+
+  G_OBJECT_CLASS (meta_surface_xrender_parent_class)->constructed (object);
+
+  window = meta_surface_get_window (META_SURFACE (self));
+
+  self->display = meta_window_get_display (window);
+  self->xdisplay = meta_display_get_xdisplay (self->display);
 }
 
 static void
@@ -305,8 +287,6 @@ meta_surface_xrender_get_image (MetaSurface *surface)
   MetaWindow *window;
   Pixmap mask_pixmap;
   gboolean free_pixmap;
-  MetaDisplay *display;
-  Display *xdisplay;
   Visual *visual;
   int width;
   int height;
@@ -331,14 +311,11 @@ meta_surface_xrender_get_image (MetaSurface *surface)
       free_pixmap = TRUE;
     }
 
-  display = meta_window_get_display (window);
-  xdisplay = meta_display_get_xdisplay (display);
-
   visual = meta_window_get_toplevel_xvisual (window);
   width = meta_surface_get_width (surface);
   height = meta_surface_get_height (surface);
 
-  back_surface = cairo_xlib_surface_create (xdisplay,
+  back_surface = cairo_xlib_surface_create (self->xdisplay,
                                             back_pixmap,
                                             visual,
                                             width,
@@ -363,14 +340,14 @@ meta_surface_xrender_get_image (MetaSurface *surface)
       cairo_surface_t *mask;
       cairo_pattern_t *pattern;
 
-      xscreen = DefaultScreenOfDisplay (xdisplay);
-      format = XRenderFindStandardFormat (xdisplay, PictStandardA8);
+      xscreen = DefaultScreenOfDisplay (self->xdisplay);
+      format = XRenderFindStandardFormat (self->xdisplay, PictStandardA8);
 
       frame = meta_window_get_frame (window);
       mask_width = frame != NULL ? width : 1;
       mask_height = frame != NULL ? height : 1;
 
-      mask = cairo_xlib_surface_create_with_xrender_format (xdisplay,
+      mask = cairo_xlib_surface_create_with_xrender_format (self->xdisplay,
                                                             mask_pixmap,
                                                             xscreen,
                                                             format,
@@ -396,7 +373,7 @@ meta_surface_xrender_get_image (MetaSurface *surface)
   cairo_destroy (cr);
 
   if (free_pixmap && mask_pixmap != None)
-    XFreePixmap (xdisplay, mask_pixmap);
+    XFreePixmap (self->xdisplay, mask_pixmap);
 
   return image;
 }
@@ -481,6 +458,7 @@ meta_surface_xrender_class_init (MetaSurfaceXRenderClass *self_class)
   object_class = G_OBJECT_CLASS (self_class);
   surface_class = META_SURFACE_CLASS (self_class);
 
+  object_class->constructed = meta_surface_xrender_constructed;
   object_class->finalize = meta_surface_xrender_finalize;
 
   surface_class->get_image = meta_surface_xrender_get_image;
