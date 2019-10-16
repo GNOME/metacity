@@ -730,7 +730,9 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
   if (style->layout->has_title && title_layout)
     {
       PangoRectangle logical;
-      gdouble text_width, x, y;
+      gdouble text_width;
+      int x;
+      int y;
 
       pango_layout_set_width (title_layout, -1);
       pango_layout_get_pixel_extents (title_layout, NULL, &logical);
