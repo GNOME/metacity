@@ -5476,23 +5476,7 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
   draw_info.width = fgeom->width / scale;
   draw_info.height = fgeom->height / scale;
 
-  cairo_save (cr);
-  clip_to_rounded_corners (cr, visible_rect, fgeom, scale);
-
   context = meta_style_info_get_style (style_info, META_STYLE_ELEMENT_WINDOW);
-
-  if (style->window_background_color != NULL)
-    {
-      GdkRGBA color;
-
-      meta_color_spec_render (style->window_background_color, context, &color);
-
-      if (meta_theme_impl_get_composited (impl))
-        color.alpha = style->window_background_alpha / 255.0;
-
-      gdk_cairo_set_source_rgba (cr, &color);
-      cairo_paint (cr);
-    }
 
   /* The enum is in the order the pieces should be rendered. */
   i = 0;
@@ -5564,8 +5548,28 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
 
       cairo_save (cr);
 
-      cairo_rectangle (cr, rect.x, rect.y, rect.width, rect.height);
-      cairo_clip (cr);
+      if (i == META_FRAME_PIECE_ENTIRE_BACKGROUND)
+        {
+          clip_to_rounded_corners (cr, rect, fgeom, scale);
+
+          if (style->window_background_color != NULL)
+            {
+              GdkRGBA color;
+
+              meta_color_spec_render (style->window_background_color, context, &color);
+
+              if (meta_theme_impl_get_composited (impl))
+                color.alpha = style->window_background_alpha / 255.0;
+
+              gdk_cairo_set_source_rgba (cr, &color);
+              cairo_paint (cr);
+            }
+        }
+      else
+        {
+          cairo_rectangle (cr, rect.x, rect.y, rect.width, rect.height);
+          cairo_clip (cr);
+        }
 
       if (gdk_cairo_get_clip_rectangle (cr, NULL))
         {
@@ -5670,8 +5674,6 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
 
       ++i;
     }
-
-  cairo_restore (cr);
 }
 
 static void
