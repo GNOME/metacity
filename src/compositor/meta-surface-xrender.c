@@ -249,6 +249,15 @@ get_window_mask_picture (MetaSurfaceXRender *self)
 }
 
 static void
+notify_appears_focused_cb (MetaWindow         *window,
+                           GParamSpec         *pspec,
+                           MetaSurfaceXRender *self)
+{
+  free_mask_pixmap (self);
+  free_mask_picture (self);
+}
+
+static void
 meta_surface_xrender_constructed (GObject *object)
 {
   MetaSurfaceXRender *self;
@@ -262,6 +271,10 @@ meta_surface_xrender_constructed (GObject *object)
 
   self->display = meta_window_get_display (window);
   self->xdisplay = meta_display_get_xdisplay (self->display);
+
+  g_signal_connect_object (window, "notify::appears-focused",
+                           G_CALLBACK (notify_appears_focused_cb),
+                           self, 0);
 }
 
 static void
