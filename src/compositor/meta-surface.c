@@ -714,14 +714,14 @@ meta_surface_pre_paint (MetaSurface *self)
 
   META_SURFACE_GET_CLASS (self)->pre_paint (self);
 
+  update_shape_region (self, damage);
+  update_opaque_region (self, damage);
+
   if (is_region_empty (priv->xdisplay, damage))
     {
       XFixesDestroyRegion (priv->xdisplay, damage);
       return;
     }
-
-  update_shape_region (self, damage);
-  update_opaque_region (self, damage);
 
   XFixesTranslateRegion (priv->xdisplay, damage, priv->x, priv->y);
   meta_compositor_add_damage (priv->compositor, "meta_surface_pre_paint", damage);
