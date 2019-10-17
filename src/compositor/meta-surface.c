@@ -84,6 +84,29 @@ is_region_empty (Display       *xdisplay,
   return FALSE;
 }
 
+static XserverRegion
+get_frame_region (MetaSurface *self,
+                  XRectangle  *client_rect)
+{
+  MetaSurfacePrivate *priv;
+  XserverRegion frame_region;
+  XserverRegion client_region;
+
+  priv = meta_surface_get_instance_private (self);
+
+  frame_region = XFixesCreateRegion (priv->xdisplay, &(XRectangle) {
+                                       .width = priv->width,
+                                       .height = priv->height
+                                     }, 1);
+
+  client_region = XFixesCreateRegion (priv->xdisplay, client_rect, 1);
+
+  XFixesSubtractRegion (priv->xdisplay, frame_region, frame_region, client_region);
+  XFixesDestroyRegion (priv->xdisplay, client_region);
+
+  return frame_region;
+}
+
 static void
 update_shape_region (MetaSurface   *self,
                      XserverRegion  damage_region)
@@ -109,6 +132,8 @@ update_shape_region (MetaSurface   *self,
 
   if (priv->window->frame != NULL && priv->window->shape_region != None)
     {
+      XserverRegion frame_region;
+
       shape_region = XFixesCreateRegion (priv->xdisplay, NULL, 0);
       XFixesCopyRegion (priv->xdisplay, shape_region, priv->window->shape_region);
 
@@ -116,6 +141,10 @@ update_shape_region (MetaSurface   *self,
                              shape_region,
                              client_rect.x,
                              client_rect.y);
+
+      frame_region = get_frame_region (self, &client_rect);
+      XFixesUnionRegion (priv->xdisplay, shape_region, shape_region, frame_region);
+      XFixesDestroyRegion (priv->xdisplay, frame_region);
     }
   else if (priv->window->shape_region != None)
     {
@@ -127,13 +156,9 @@ update_shape_region (MetaSurface   *self,
       shape_region = XFixesCreateRegion (priv->xdisplay, &client_rect, 1);
     }
 
-  if (shape_region != None)
-    {
-      XFixesUnionRegion (priv->xdisplay,
-                         damage_region,
-                         damage_region,
-                         shape_region);
-    }
+  g_assert (shape_region != None);
+
+  XFixesUnionRegion (priv->xdisplay, damage_region, damage_region, shape_region);
 
   priv->shape_region = shape_region;
   priv->shape_region_changed = FALSE;
@@ -685,9 +710,6 @@ meta_surface_pre_paint (MetaSurface *self)
       priv->damage_received = FALSE;
     }
 
-  update_shape_region (self, damage);
-  update_opaque_region (self, damage);
-
   ensure_pixmap (self);
 
   META_SURFACE_GET_CLASS (self)->pre_paint (self);
@@ -697,6 +719,9 @@ meta_surface_pre_paint (MetaSurface *self)
       XFixesDestroyRegion (priv->xdisplay, damage);
       return;
     }
+
+  update_shape_region (self, damage);
+  update_opaque_region (self, damage);
 
   XFixesTranslateRegion (priv->xdisplay, damage, priv->x, priv->y);
   meta_compositor_add_damage (priv->compositor, "meta_surface_pre_paint", damage);
