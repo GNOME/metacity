@@ -44,6 +44,34 @@ struct _MetaSurfaceXRender
 
 G_DEFINE_TYPE (MetaSurfaceXRender, meta_surface_xrender, META_TYPE_SURFACE)
 
+static void
+clip_to_shape_region (MetaSurfaceXRender *self,
+                      cairo_t            *cr)
+{
+  XserverRegion shape_region;
+  int n_rects;
+  XRectangle *rects;
+  int i;
+
+  shape_region = meta_surface_get_shape_region (META_SURFACE (self));
+  rects = XFixesFetchRegion (self->xdisplay, shape_region, &n_rects);
+
+  if (rects == NULL)
+    return;
+
+  for (i = 0; i < n_rects; i++)
+    {
+      XRectangle *rect;
+
+      rect = &rects[i];
+
+      cairo_rectangle (cr, rect->x, rect->y, rect->width, rect->height);
+    }
+
+  cairo_clip (cr);
+  XFree (rects);
+}
+
 static Pixmap
 create_mask_pixmap (MetaSurfaceXRender *self,
                     gboolean            with_opacity)
@@ -342,6 +370,8 @@ meta_surface_xrender_get_image (MetaSurface *surface)
   cr = cairo_create (image);
   cairo_set_source_surface (cr, back_surface, 0, 0);
   cairo_surface_destroy (back_surface);
+
+  clip_to_shape_region (self, cr);
 
   if (mask_pixmap != None)
     {
