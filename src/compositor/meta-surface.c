@@ -132,8 +132,6 @@ update_shape_region (MetaSurface   *self,
 
   if (priv->window->frame != NULL && priv->window->shape_region != None)
     {
-      XserverRegion frame_region;
-
       shape_region = XFixesCreateRegion (priv->xdisplay, NULL, 0);
       XFixesCopyRegion (priv->xdisplay, shape_region, priv->window->shape_region);
 
@@ -141,10 +139,6 @@ update_shape_region (MetaSurface   *self,
                              shape_region,
                              client_rect.x,
                              client_rect.y);
-
-      frame_region = get_frame_region (self, &client_rect);
-      XFixesUnionRegion (priv->xdisplay, shape_region, shape_region, frame_region);
-      XFixesDestroyRegion (priv->xdisplay, frame_region);
     }
   else if (priv->window->shape_region != None)
     {
@@ -157,6 +151,15 @@ update_shape_region (MetaSurface   *self,
     }
 
   g_assert (shape_region != None);
+
+  if (priv->window->frame != NULL)
+    {
+      XserverRegion frame_region;
+
+      frame_region = get_frame_region (self, &client_rect);
+      XFixesUnionRegion (priv->xdisplay, shape_region, shape_region, frame_region);
+      XFixesDestroyRegion (priv->xdisplay, frame_region);
+    }
 
   XFixesUnionRegion (priv->xdisplay, damage_region, damage_region, shape_region);
 
