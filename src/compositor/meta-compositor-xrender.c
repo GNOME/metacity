@@ -109,8 +109,6 @@ typedef struct _MetaCompWindow
   int shadow_width;
   int shadow_height;
 
-  XserverRegion border_clip;
-
   /* This is a copy of the original unshaded window so that we can still see
    * what the window looked like when it is needed for the _get_window_surface
    * function.
@@ -1175,19 +1173,23 @@ paint_dock_shadows (MetaCompositorXRender *xrender,
 
   for (l = surfaces; l != NULL; l = l->next)
     {
-      MetaSurface *surface;
+      MetaSurfaceXRender *surface;
       MetaCompWindow *cw;
       XserverRegion shadow_clip;
 
-      surface = META_SURFACE (l->data);
+      surface = META_SURFACE_XRENDER (l->data);
       cw = g_object_get_data (G_OBJECT (surface), "cw");
 
       if (cw->window->type == META_WINDOW_DOCK &&
           cw->needs_shadow && cw->shadow)
         {
+          XserverRegion border_clip;
+
           shadow_clip = XFixesCreateRegion (xdisplay, NULL, 0);
+          border_clip = meta_surface_xrender_get_border_clip (surface);
+
           XFixesIntersectRegion (xdisplay, shadow_clip,
-                                 cw->border_clip, region);
+                                 border_clip, region);
 
           XFixesSetPictureClipRegion (xdisplay, root_buffer, 0, 0, shadow_clip);
 
@@ -1241,13 +1243,12 @@ paint_windows (MetaCompositorXRender *xrender,
   last = NULL;
   for (index = surfaces; index; index = index->next)
     {
-      MetaSurface *surface;
-      Picture picture;
+      MetaSurfaceXRender *surface;
 
       /* Store the last window we dealt with */
       last = index;
 
-      surface = META_SURFACE (index->data);
+      surface = META_SURFACE_XRENDER (index->data);
       cw = g_object_get_data (G_OBJECT (surface), "cw");
 
       if (!cw->damaged)
@@ -1256,10 +1257,8 @@ paint_windows (MetaCompositorXRender *xrender,
           continue;
         }
 
-      if (!meta_surface_is_visible (surface))
+      if (!meta_surface_is_visible (META_SURFACE (surface)))
         continue;
-
-      picture = meta_surface_xrender_get_picture (META_SURFACE_XRENDER (surface));
 
       if (cw->window_region == None)
         cw->window_region = get_window_region (display, cw);
@@ -1273,50 +1272,15 @@ paint_windows (MetaCompositorXRender *xrender,
       if (cw->extents == None)
         cw->extents = win_extents (xrender, cw);
 
+      meta_surface_xrender_paint (surface, paint_region, root_buffer, TRUE);
+
       if (cw->mode == WINDOW_SOLID)
         {
-          int x, y, wid, hei;
-          MetaFrame *frame;
-          MetaFrameBorders borders;
-
-          x = cw->rect.x;
-          y = cw->rect.y;
-          wid = cw->rect.width;
-          hei = cw->rect.height;
-
-          frame = meta_window_get_frame (cw->window);
-          meta_frame_calc_borders (frame, &borders);
-
-          XFixesSetPictureClipRegion (xdisplay, root_buffer,
-                                      0, 0, paint_region);
-          XRenderComposite (xdisplay, PictOpSrc, picture, None, root_buffer,
-                            borders.total.left, borders.total.top, 0, 0,
-                            x + borders.total.left, y + borders.total.top,
-                            wid - borders.total.left - borders.total.right,
-                            hei - borders.total.top - borders.total.bottom);
-
           if (cw->window->type == META_WINDOW_DESKTOP)
             {
               desktop_region = XFixesCreateRegion (xdisplay, 0, 0);
               XFixesCopyRegion (xdisplay, desktop_region, paint_region);
             }
-
-          if (frame == NULL)
-            {
-              XFixesSubtractRegion (xdisplay, paint_region,
-                                    paint_region, cw->window_region);
-            }
-          else
-            {
-              XFixesSubtractRegion (xdisplay, paint_region,
-                                    paint_region, cw->client_region);
-            }
-        }
-
-      if (!cw->border_clip)
-        {
-          cw->border_clip = XFixesCreateRegion (xdisplay, 0, 0);
-          XFixesCopyRegion (xdisplay, cw->border_clip, paint_region);
         }
     }
 
@@ -1334,31 +1298,27 @@ paint_windows (MetaCompositorXRender *xrender,
    */
   for (index = last; index; index = index->prev)
     {
-      MetaSurface *surface;
-      Picture picture;
-      Picture mask;
+      MetaSurfaceXRender *surface;
 
-      surface = META_SURFACE (index->data);
+      surface = META_SURFACE_XRENDER (index->data);
       cw = g_object_get_data (G_OBJECT (surface), "cw");
 
-      picture = meta_surface_xrender_get_picture (META_SURFACE_XRENDER (surface));
-      mask = meta_surface_xrender_get_mask_picture (META_SURFACE_XRENDER (surface));
-
-      if (picture)
+      if (meta_surface_xrender_get_picture (surface) != None)
         {
-          int x, y, wid, hei;
+          int x, y;
 
           x = cw->rect.x;
           y = cw->rect.y;
-          wid = cw->rect.width;
-          hei = cw->rect.height;
 
           if (cw->shadow && cw->window->type != META_WINDOW_DOCK)
             {
               XserverRegion shadow_clip;
+              XserverRegion border_clip;
 
               shadow_clip = XFixesCreateRegion (xdisplay, NULL, 0);
-              XFixesSubtractRegion (xdisplay, shadow_clip, cw->border_clip,
+              border_clip = meta_surface_xrender_get_border_clip (surface);
+
+              XFixesSubtractRegion (xdisplay, shadow_clip, border_clip,
                                     cw->visible_region);
               XFixesSetPictureClipRegion (xdisplay, root_buffer, 0, 0,
                                           shadow_clip);
@@ -1372,29 +1332,7 @@ paint_windows (MetaCompositorXRender *xrender,
                 XFixesDestroyRegion (xdisplay, shadow_clip);
             }
 
-          XFixesIntersectRegion (xdisplay, cw->border_clip, cw->border_clip,
-                                 cw->window_region);
-          XFixesSetPictureClipRegion (xdisplay, root_buffer, 0, 0,
-                                      cw->border_clip);
-
-          if (cw->mode == WINDOW_SOLID && mask != None)
-            {
-              XRenderComposite (xdisplay, PictOpOver, picture,
-                                mask, root_buffer, 0, 0, 0, 0,
-                                x, y, wid, hei);
-            }
-          else if (cw->mode == WINDOW_ARGB)
-            {
-              XRenderComposite (xdisplay, PictOpOver, picture,
-                                mask, root_buffer, 0, 0, 0, 0,
-                                x, y, wid, hei);
-            }
-        }
-
-      if (cw->border_clip)
-        {
-          XFixesDestroyRegion (xdisplay, cw->border_clip);
-          cw->border_clip = None;
+          meta_surface_xrender_paint (surface, paint_region, root_buffer, FALSE);
         }
     }
 
@@ -1502,12 +1440,6 @@ free_win (MetaCompWindow *cw,
     {
       XFixesDestroyRegion (xdisplay, cw->client_region);
       cw->client_region = None;
-    }
-
-  if (cw->border_clip)
-    {
-      XFixesDestroyRegion (xdisplay, cw->border_clip);
-      cw->border_clip = None;
     }
 
   if (cw->extents)
@@ -1648,12 +1580,6 @@ notify_decorated_cb (MetaWindow            *window,
     {
       XRenderFreePicture (xrender->xdisplay, cw->shadow);
       cw->shadow = None;
-    }
-
-  if (cw->border_clip != None)
-    {
-      XFixesDestroyRegion (xrender->xdisplay, cw->border_clip);
-      cw->border_clip = None;
     }
 
   determine_mode (xrender, cw);
@@ -2021,8 +1947,6 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
     cw->shadow_type = META_SHADOW_LARGE;
   else
     cw->shadow_type = META_SHADOW_MEDIUM;
-
-  cw->border_clip = None;
 
   cw->shaded_surface = NULL;
 

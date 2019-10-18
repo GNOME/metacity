@@ -31,18 +31,181 @@
 
 struct _MetaSurfaceXRender
 {
-  MetaSurface  parent;
+  MetaSurface    parent;
 
-  MetaDisplay *display;
-  Display     *xdisplay;
+  MetaDisplay   *display;
+  Display       *xdisplay;
 
-  Picture      picture;
+  Picture        picture;
 
-  Pixmap       mask_pixmap;
-  Picture      mask_picture;
+  Pixmap         mask_pixmap;
+  Picture        mask_picture;
+
+  XserverRegion  border_clip;
 };
 
 G_DEFINE_TYPE (MetaSurfaceXRender, meta_surface_xrender, META_TYPE_SURFACE)
+
+static gboolean
+is_argb (MetaSurfaceXRender *self)
+{
+  MetaWindow *window;
+  Visual *xvisual;
+  XRenderPictFormat *format;
+
+  window = meta_surface_get_window (META_SURFACE (self));
+  xvisual = meta_window_get_toplevel_xvisual (window);
+
+  format = XRenderFindVisualFormat (self->xdisplay, xvisual);
+
+  if (format && format->type == PictTypeDirect && format->direct.alphaMask)
+    return TRUE;
+
+  if (window->opacity != OPAQUE)
+    return TRUE;
+
+  return FALSE;
+}
+
+static gboolean
+is_region_empty (Display       *xdisplay,
+                 XserverRegion  region)
+{
+  int n_rects;
+  XRectangle bounds;
+  XRectangle *rects;
+
+  rects = XFixesFetchRegionAndBounds (xdisplay, region, &n_rects, &bounds);
+
+  if (rects != NULL)
+    XFree (rects);
+
+  if (n_rects == 0 || bounds.width == 0 || bounds.height == 0)
+    return TRUE;
+
+  return FALSE;
+}
+
+static void
+paint_opaque_parts (MetaSurfaceXRender *self,
+                    XserverRegion       paint_region,
+                    Picture             paint_buffer)
+{
+  MetaSurface *surface;
+  MetaWindow *window;
+  XserverRegion shape_region;
+  XserverRegion opaque_region;
+  int x;
+  int y;
+  int width;
+  int height;
+  XserverRegion clip_region;
+
+  surface = META_SURFACE (self);
+
+  window = meta_surface_get_window (surface);
+  shape_region = meta_surface_get_shape_region (surface);
+  opaque_region = meta_surface_get_opaque_region (surface);
+
+  if ((is_argb (self) && opaque_region == None) ||
+      window->opacity != OPAQUE)
+    return;
+
+  x = meta_surface_get_x (surface);
+  y = meta_surface_get_y (surface);
+  width = meta_surface_get_width (surface);
+  height = meta_surface_get_height (surface);
+
+  clip_region = XFixesCreateRegion (self->xdisplay, NULL, 0);
+  XFixesCopyRegion (self->xdisplay, clip_region, shape_region);
+
+  if (window->frame != NULL)
+    {
+      MetaFrameBorders borders;
+      XRectangle client_rect;
+      XserverRegion client_region;
+
+      meta_frame_calc_borders (window->frame, &borders);
+
+      client_rect = (XRectangle) {
+        .x = borders.total.left,
+        .y = borders.total.top,
+        .width = width - borders.total.left - borders.total.right,
+        .height = height - borders.total.top - borders.total.bottom
+      };
+
+      client_region = XFixesCreateRegion (self->xdisplay, &client_rect, 1);
+
+      XFixesIntersectRegion (self->xdisplay, clip_region, clip_region, client_region);
+      XFixesDestroyRegion (self->xdisplay, client_region);
+    }
+
+  if (opaque_region != None)
+    XFixesIntersectRegion (self->xdisplay, clip_region, clip_region, opaque_region);
+
+  XFixesTranslateRegion (self->xdisplay, clip_region, x, y);
+  XFixesIntersectRegion (self->xdisplay, clip_region, clip_region, paint_region);
+
+  if (is_region_empty (self->xdisplay, clip_region))
+    {
+      XFixesDestroyRegion (self->xdisplay, clip_region);
+      return;
+    }
+
+  XFixesSetPictureClipRegion (self->xdisplay, paint_buffer, 0, 0, clip_region);
+
+  XRenderComposite (self->xdisplay, PictOpSrc,
+                    self->picture, None, paint_buffer,
+                    0, 0, 0, 0,
+                    x, y, width, height);
+
+  XFixesSubtractRegion (self->xdisplay, paint_region, paint_region, clip_region);
+  XFixesDestroyRegion (self->xdisplay, clip_region);
+}
+
+static void
+paint_argb_parts (MetaSurfaceXRender *self,
+                  Picture             paint_buffer)
+{
+  MetaSurface *surface;
+  int x;
+  int y;
+  int width;
+  int height;
+  XserverRegion border_clip;
+  XserverRegion shape_region;
+  XserverRegion clip_region;
+
+  if (is_region_empty (self->xdisplay, self->border_clip))
+    return;
+
+  surface = META_SURFACE (self);
+
+  x = meta_surface_get_x (surface);
+  y = meta_surface_get_y (surface);
+  width = meta_surface_get_width (surface);
+  height = meta_surface_get_height (surface);
+
+  border_clip = self->border_clip;
+  shape_region = meta_surface_get_shape_region (surface);
+
+  clip_region = XFixesCreateRegion (self->xdisplay, NULL, 0);
+  XFixesCopyRegion (self->xdisplay, clip_region, shape_region);
+
+  XFixesTranslateRegion (self->xdisplay, clip_region, x, y);
+  XFixesIntersectRegion (self->xdisplay, border_clip, border_clip, clip_region);
+  XFixesDestroyRegion (self->xdisplay, clip_region);
+
+  if (is_region_empty (self->xdisplay, border_clip))
+    return;
+
+  XFixesSetPictureClipRegion (self->xdisplay, paint_buffer, 0, 0, border_clip);
+
+  XRenderComposite (self->xdisplay, PictOpOver,
+                    self->picture, self->mask_picture, paint_buffer,
+                    0, 0, 0, 0,
+                    x, y, width, height);
+}
 
 static void
 clip_to_shape_region (MetaSurfaceXRender *self,
@@ -317,6 +480,12 @@ meta_surface_xrender_finalize (GObject *object)
   free_mask_pixmap (self);
   free_mask_picture (self);
 
+  if (self->border_clip != None)
+    {
+      XFixesDestroyRegion (self->xdisplay, self->border_clip);
+      self->border_clip = None;
+    }
+
   G_OBJECT_CLASS (meta_surface_xrender_parent_class)->finalize (object);
 }
 
@@ -523,14 +692,39 @@ meta_surface_xrender_get_picture (MetaSurfaceXRender *self)
   return self->picture;
 }
 
-Pixmap
-meta_surface_xrender_get_mask_pixmap (MetaSurfaceXRender *self)
+XserverRegion
+meta_surface_xrender_get_border_clip (MetaSurfaceXRender *self)
 {
-  return self->mask_pixmap;
+  return self->border_clip;
 }
 
-Picture
-meta_surface_xrender_get_mask_picture (MetaSurfaceXRender *self)
+void
+meta_surface_xrender_paint (MetaSurfaceXRender *self,
+                            XserverRegion       paint_region,
+                            Picture             paint_buffer,
+                            gboolean            opaque)
 {
-  return self->mask_picture;
+  if (!meta_surface_is_visible (META_SURFACE (self)) ||
+      self->picture == None)
+    return;
+
+  if (opaque)
+    {
+      paint_opaque_parts (self, paint_region, paint_buffer);
+
+      g_assert (self->border_clip == None);
+
+      self->border_clip = XFixesCreateRegion (self->xdisplay, NULL, 0);
+      XFixesCopyRegion (self->xdisplay, self->border_clip, paint_region);
+    }
+  else
+    {
+      paint_argb_parts (self, paint_buffer);
+
+      if (self->border_clip != None)
+        {
+          XFixesDestroyRegion (self->xdisplay, self->border_clip);
+          self->border_clip = None;
+        }
+    }
 }
