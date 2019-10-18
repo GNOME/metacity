@@ -1666,13 +1666,6 @@ meta_compositor_xrender_remove_window (MetaCompositor *compositor,
 }
 
 static void
-meta_compositor_xrender_show_window (MetaCompositor *compositor,
-                                     MetaSurface    *surface,
-                                     MetaEffectType  effect)
-{
-}
-
-static void
 meta_compositor_xrender_hide_window (MetaCompositor *compositor,
                                      MetaSurface    *surface,
                                      MetaEffectType  effect)
@@ -1883,7 +1876,6 @@ meta_compositor_xrender_class_init (MetaCompositorXRenderClass *xrender_class)
   compositor_class->manage = meta_compositor_xrender_manage;
   compositor_class->add_window = meta_compositor_xrender_add_window;
   compositor_class->remove_window = meta_compositor_xrender_remove_window;
-  compositor_class->show_window = meta_compositor_xrender_show_window;
   compositor_class->hide_window = meta_compositor_xrender_hide_window;
   compositor_class->window_opacity_changed = meta_compositor_xrender_window_opacity_changed;
   compositor_class->set_updates_frozen = meta_compositor_xrender_set_updates_frozen;
