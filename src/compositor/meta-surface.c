@@ -28,27 +28,33 @@
 
 typedef struct
 {
-  MetaCompositor *compositor;
-  MetaWindow     *window;
+  MetaCompositor  *compositor;
+  MetaWindow      *window;
 
-  MetaDisplay    *display;
-  Display        *xdisplay;
+  MetaDisplay     *display;
+  Display         *xdisplay;
 
-  Damage          damage;
-  gboolean        damage_received;
+  Damage           damage;
+  gboolean         damage_received;
 
-  Pixmap          pixmap;
+  Pixmap           pixmap;
 
-  int             x;
-  int             y;
-  int             width;
-  int             height;
+  int              x;
+  int              y;
+  int              width;
+  int              height;
 
-  XserverRegion   shape_region;
-  gboolean        shape_region_changed;
+  XserverRegion    shape_region;
+  gboolean         shape_region_changed;
 
-  XserverRegion   opaque_region;
-  gboolean        opaque_region_changed;
+  XserverRegion    opaque_region;
+  gboolean         opaque_region_changed;
+
+  /* This is a copy of the original unshaded window so that we can still see
+   * what the window looked like when it is needed for the _get_window_surface
+   * function.
+   */
+  cairo_surface_t *shaded_surface;
 } MetaSurfacePrivate;
 
 enum
@@ -308,6 +314,25 @@ notify_decorated_cb (MetaWindow  *window,
 }
 
 static void
+notify_shaded_cb (MetaWindow  *window,
+                  GParamSpec  *pspec,
+                  MetaSurface *self)
+{
+  MetaSurfacePrivate *priv;
+
+  priv = meta_surface_get_instance_private (self);
+
+  if (priv->shaded_surface != NULL)
+    {
+      cairo_surface_destroy (priv->shaded_surface);
+      priv->shaded_surface = NULL;
+    }
+
+  if (meta_window_is_shaded (priv->window))
+    priv->shaded_surface = META_SURFACE_GET_CLASS (self)->get_image (self);
+}
+
+static void
 meta_surface_constructed (GObject *object)
 {
   MetaSurface *self;
@@ -326,6 +351,10 @@ meta_surface_constructed (GObject *object)
 
   g_signal_connect_object (priv->window, "notify::decorated",
                            G_CALLBACK (notify_decorated_cb),
+                           self, 0);
+
+  g_signal_connect_object (priv->window, "notify::shaded",
+                           G_CALLBACK (notify_shaded_cb),
                            self, 0);
 }
 
@@ -360,6 +389,12 @@ meta_surface_finalize (GObject *object)
     {
       XFixesDestroyRegion (priv->xdisplay, priv->opaque_region);
       priv->opaque_region = None;
+    }
+
+  if (priv->shaded_surface != NULL)
+    {
+      cairo_surface_destroy (priv->shaded_surface);
+      priv->shaded_surface = NULL;
     }
 
   G_OBJECT_CLASS (meta_surface_parent_class)->finalize (object);
@@ -555,6 +590,18 @@ meta_surface_get_shape_region (MetaSurface *self)
 cairo_surface_t *
 meta_surface_get_image (MetaSurface *self)
 {
+  MetaSurfacePrivate *priv;
+
+  priv = meta_surface_get_instance_private (self);
+
+  if (meta_window_is_shaded (priv->window))
+    {
+      if (priv->shaded_surface != NULL)
+        return cairo_surface_reference (priv->shaded_surface);
+      else
+        return NULL;
+    }
+
   return META_SURFACE_GET_CLASS (self)->get_image (self);
 }
 

@@ -104,12 +104,6 @@ typedef struct _MetaCompWindow
   int shadow_dy;
   int shadow_width;
   int shadow_height;
-
-  /* This is a copy of the original unshaded window so that we can still see
-   * what the window looked like when it is needed for the _get_window_surface
-   * function.
-   */
-  cairo_surface_t *shaded_surface;
 } MetaCompWindow;
 
 struct _MetaCompositorXRender
@@ -1282,15 +1276,7 @@ free_win (MetaCompWindow *cw,
     }
 
   if (destroy)
-    {
-      if (cw->shaded_surface != NULL)
-        {
-          cairo_surface_destroy (cw->shaded_surface);
-          cw->shaded_surface = NULL;
-        }
-
-      g_free (cw);
-    }
+    g_free (cw);
 
   meta_error_trap_pop (display);
 }
@@ -1405,25 +1391,6 @@ notify_decorated_cb (MetaWindow            *window,
   cw->damaged = TRUE;
 
   add_repair (xrender);
-}
-
-static void
-notify_shaded_cb (MetaWindow  *window,
-                  GParamSpec  *pspec,
-                  MetaSurface *surface)
-{
-  MetaCompWindow *cw;
-
-  cw = g_object_get_data (G_OBJECT (surface), "cw");
-
-  if (cw->shaded_surface != NULL)
-    {
-      cairo_surface_destroy (cw->shaded_surface);
-      cw->shaded_surface = NULL;
-    }
-
-  if (meta_window_is_shaded (cw->window))
-    cw->shaded_surface = meta_surface_get_image (surface);
 }
 
 /* event processors must all be called with an error trap in place */
@@ -1741,10 +1708,6 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
                            G_CALLBACK (notify_decorated_cb),
                            xrender, 0);
 
-  g_signal_connect_object (window, "notify::shaded",
-                           G_CALLBACK (notify_shaded_cb),
-                           surface, 0);
-
   cw->damaged = FALSE;
 
   cw->extents = None;
@@ -1758,8 +1721,6 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
     cw->shadow_type = META_SHADOW_LARGE;
   else
     cw->shadow_type = META_SHADOW_MEDIUM;
-
-  cw->shaded_surface = NULL;
 
   determine_mode (xrender, cw);
   cw->needs_shadow = window_has_shadow (xrender, cw);
@@ -1912,18 +1873,6 @@ static cairo_surface_t *
 meta_compositor_xrender_get_window_surface (MetaCompositor *compositor,
                                             MetaSurface    *surface)
 {
-  MetaCompWindow *cw;
-
-  cw = g_object_get_data (G_OBJECT (surface), "cw");
-
-  if (meta_window_is_shaded (cw->window))
-    {
-      if (cw->shaded_surface != NULL)
-        return cairo_surface_reference (cw->shaded_surface);
-      else
-        return NULL;
-    }
-
   return meta_surface_get_image (surface);
 }
 
