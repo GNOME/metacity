@@ -1302,12 +1302,6 @@ meta_compositor_vulkan_window_opacity_changed (MetaCompositor *compositor,
 }
 
 static void
-meta_compositor_vulkan_window_shape_region_changed (MetaCompositor *compositor,
-                                                    MetaSurface    *surface)
-{
-}
-
-static void
 meta_compositor_vulkan_set_updates_frozen (MetaCompositor *compositor,
                                            MetaWindow     *window,
                                            gboolean        updates_frozen)
@@ -1379,7 +1373,6 @@ meta_compositor_vulkan_class_init (MetaCompositorVulkanClass *vulkan_class)
   compositor_class->show_window = meta_compositor_vulkan_show_window;
   compositor_class->hide_window = meta_compositor_vulkan_hide_window;
   compositor_class->window_opacity_changed = meta_compositor_vulkan_window_opacity_changed;
-  compositor_class->window_shape_region_changed = meta_compositor_vulkan_window_shape_region_changed;
   compositor_class->set_updates_frozen = meta_compositor_vulkan_set_updates_frozen;
   compositor_class->process_event = meta_compositor_vulkan_process_event;
   compositor_class->get_window_surface = meta_compositor_vulkan_get_window_surface;
