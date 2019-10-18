@@ -920,68 +920,66 @@ window_has_shadow (MetaCompositorXRender *xrender,
   return FALSE;
 }
 
-
 static XserverRegion
 win_extents (MetaCompositorXRender *xrender,
              MetaCompWindow        *cw)
 {
   XRectangle r;
+  MetaFrame *frame;
+  MetaFrameBorders borders;
+  XRectangle sr;
+
+  if (!cw->needs_shadow)
+    return None;
 
   r.x = cw->rect.x;
   r.y = cw->rect.y;
   r.width = cw->rect.width;
   r.height = cw->rect.height;
 
-  if (cw->needs_shadow)
+  frame = meta_window_get_frame (cw->window);
+  meta_frame_calc_borders (frame, &borders);
+
+  cw->shadow_dx = (int) shadow_offsets_x [cw->shadow_type] + borders.invisible.left;
+  cw->shadow_dy = (int) shadow_offsets_y [cw->shadow_type] + borders.invisible.top;
+
+  if (!cw->shadow)
     {
-      MetaFrame *frame;
-      MetaFrameBorders borders;
-      XRectangle sr;
+      double opacity = SHADOW_OPACITY;
+      int invisible_width = borders.invisible.left + borders.invisible.right;
+      int invisible_height = borders.invisible.top + borders.invisible.bottom;
 
-      frame = meta_window_get_frame (cw->window);
-      meta_frame_calc_borders (frame, &borders);
+      if (cw->window->opacity != (guint) OPAQUE)
+        opacity = opacity * ((double) cw->window->opacity) / ((double) OPAQUE);
 
-      cw->shadow_dx = (int) shadow_offsets_x [cw->shadow_type] + borders.invisible.left;
-      cw->shadow_dy = (int) shadow_offsets_y [cw->shadow_type] + borders.invisible.top;
-
-      if (!cw->shadow)
-        {
-          double opacity = SHADOW_OPACITY;
-          int invisible_width = borders.invisible.left + borders.invisible.right;
-          int invisible_height = borders.invisible.top + borders.invisible.bottom;
-
-          if (cw->window->opacity != (guint) OPAQUE)
-            opacity = opacity * ((double) cw->window->opacity) / ((double) OPAQUE);
-
-          cw->shadow = shadow_picture (xrender, cw, opacity, borders,
-                                       cw->rect.width - invisible_width,
-                                       cw->rect.height - invisible_height,
-                                       &cw->shadow_width, &cw->shadow_height);
-        }
-
-      sr.x = cw->rect.x + cw->shadow_dx;
-      sr.y = cw->rect.y + cw->shadow_dy;
-      sr.width = cw->shadow_width;
-      sr.height = cw->shadow_height;
-
-      if (sr.x < r.x)
-        {
-          r.width = (r.x + r.width) - sr.x;
-          r.x = sr.x;
-        }
-
-      if (sr.y < r.y)
-        {
-          r.height = (r.y + r.height) - sr.y;
-          r.y = sr.y;
-        }
-
-      if (sr.x + sr.width > r.x + r.width)
-        r.width = sr.x + sr.width - r.x;
-
-      if (sr.y + sr.height > r.y + r.height)
-        r.height = sr.y + sr.height - r.y;
+      cw->shadow = shadow_picture (xrender, cw, opacity, borders,
+                                   cw->rect.width - invisible_width,
+                                   cw->rect.height - invisible_height,
+                                   &cw->shadow_width, &cw->shadow_height);
     }
+
+  sr.x = cw->rect.x + cw->shadow_dx;
+  sr.y = cw->rect.y + cw->shadow_dy;
+  sr.width = cw->shadow_width;
+  sr.height = cw->shadow_height;
+
+  if (sr.x < r.x)
+    {
+      r.width = (r.x + r.width) - sr.x;
+      r.x = sr.x;
+    }
+
+  if (sr.y < r.y)
+    {
+      r.height = (r.y + r.height) - sr.y;
+      r.y = sr.y;
+    }
+
+  if (sr.x + sr.width > r.x + r.width)
+    r.width = sr.x + sr.width - r.x;
+
+  if (sr.y + sr.height > r.y + r.height)
+    r.height = sr.y + sr.height - r.y;
 
   return XFixesCreateRegion (xrender->xdisplay, &r, 1);
 }
@@ -1824,9 +1822,12 @@ meta_compositor_xrender_pre_paint (MetaCompositor *compositor)
         {
           cw->extents = win_extents (xrender, cw);
 
-          meta_compositor_add_damage (compositor,
-                                      "meta_compositor_xrender_pre_paint",
-                                      cw->extents);
+          if (cw->extents != None)
+            {
+              meta_compositor_add_damage (compositor,
+                                          "meta_compositor_xrender_pre_paint",
+                                          cw->extents);
+            }
         }
     }
 }
