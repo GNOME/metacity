@@ -1035,26 +1035,11 @@ paint_windows (MetaCompositorXRender *xrender,
   MetaDisplay *display = meta_screen_get_display (xrender->screen);
   Display *xdisplay = meta_display_get_xdisplay (display);
   GList *index, *last;
-  int screen_width, screen_height;
   MetaCompWindow *cw;
   XserverRegion paint_region, desktop_region;
 
-  meta_screen_get_size (xrender->screen, &screen_width, &screen_height);
-
-  if (region == None)
-    {
-      XRectangle r;
-      r.x = 0;
-      r.y = 0;
-      r.width = screen_width;
-      r.height = screen_height;
-      paint_region = XFixesCreateRegion (xdisplay, &r, 1);
-    }
-  else
-    {
-      paint_region = XFixesCreateRegion (xdisplay, NULL, 0);
-      XFixesCopyRegion (xdisplay, paint_region, region);
-    }
+  paint_region = XFixesCreateRegion (xdisplay, NULL, 0);
+  XFixesCopyRegion (xdisplay, paint_region, region);
 
   desktop_region = None;
 
