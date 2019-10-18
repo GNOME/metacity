@@ -1719,13 +1719,6 @@ meta_compositor_xrender_window_opacity_changed (MetaCompositor *compositor,
 }
 
 static void
-meta_compositor_xrender_set_updates_frozen (MetaCompositor *compositor,
-                                            MetaWindow     *window,
-                                            gboolean        updates_frozen)
-{
-}
-
-static void
 meta_compositor_xrender_process_event (MetaCompositor *compositor,
                                        XEvent         *event,
                                        MetaWindow     *window)
@@ -1878,7 +1871,6 @@ meta_compositor_xrender_class_init (MetaCompositorXRenderClass *xrender_class)
   compositor_class->remove_window = meta_compositor_xrender_remove_window;
   compositor_class->hide_window = meta_compositor_xrender_hide_window;
   compositor_class->window_opacity_changed = meta_compositor_xrender_window_opacity_changed;
-  compositor_class->set_updates_frozen = meta_compositor_xrender_set_updates_frozen;
   compositor_class->process_event = meta_compositor_xrender_process_event;
   compositor_class->sync_screen_size = meta_compositor_xrender_sync_screen_size;
   compositor_class->sync_window_geometry = meta_compositor_xrender_sync_window_geometry;

@@ -524,11 +524,6 @@ meta_compositor_set_updates_frozen (MetaCompositor *compositor,
                                     MetaWindow     *window,
                                     gboolean        updates_frozen)
 {
-  MetaCompositorClass *compositor_class;
-
-  compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
-
-  compositor_class->set_updates_frozen (compositor, window, updates_frozen);
 }
 
 void
