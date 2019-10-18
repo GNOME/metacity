@@ -1869,13 +1869,6 @@ meta_compositor_xrender_process_event (MetaCompositor *compositor,
   meta_error_trap_pop (display);
 }
 
-static cairo_surface_t *
-meta_compositor_xrender_get_window_surface (MetaCompositor *compositor,
-                                            MetaSurface    *surface)
-{
-  return meta_surface_get_image (surface);
-}
-
 static void
 meta_compositor_xrender_maximize_window (MetaCompositor *compositor,
                                          MetaWindow     *window)
@@ -2022,7 +2015,6 @@ meta_compositor_xrender_class_init (MetaCompositorXRenderClass *xrender_class)
   compositor_class->window_opacity_changed = meta_compositor_xrender_window_opacity_changed;
   compositor_class->set_updates_frozen = meta_compositor_xrender_set_updates_frozen;
   compositor_class->process_event = meta_compositor_xrender_process_event;
-  compositor_class->get_window_surface = meta_compositor_xrender_get_window_surface;
   compositor_class->maximize_window = meta_compositor_xrender_maximize_window;
   compositor_class->unmaximize_window = meta_compositor_xrender_unmaximize_window;
   compositor_class->sync_screen_size = meta_compositor_xrender_sync_screen_size;

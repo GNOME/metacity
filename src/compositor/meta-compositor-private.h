@@ -57,9 +57,6 @@ struct _MetaCompositorClass
                                                       XEvent             *event,
                                                       MetaWindow         *window);
 
-  cairo_surface_t * (* get_window_surface)           (MetaCompositor     *compositor,
-                                                      MetaSurface        *surface);
-
   void              (* maximize_window)              (MetaCompositor     *compositor,
                                                       MetaWindow         *window);
 

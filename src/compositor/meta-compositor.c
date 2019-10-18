@@ -567,17 +567,15 @@ meta_compositor_get_window_surface (MetaCompositor *compositor,
                                     MetaWindow     *window)
 {
   MetaCompositorPrivate *priv;
-  MetaCompositorClass *compositor_class;
   MetaSurface *surface;
 
   priv = meta_compositor_get_instance_private (compositor);
-  compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
 
   surface = g_hash_table_lookup (priv->surfaces, window);
   if (surface == NULL)
     return NULL;
 
-  return compositor_class->get_window_surface (compositor, surface);
+  return meta_surface_get_image (surface);
 }
 
 void
