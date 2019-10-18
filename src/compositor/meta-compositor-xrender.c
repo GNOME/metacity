@@ -99,7 +99,6 @@ typedef struct _MetaCompWindow
 
   XserverRegion window_region;
   XserverRegion visible_region;
-  XserverRegion client_region;
 
   XserverRegion extents;
 
@@ -1072,61 +1071,6 @@ get_window_region (MetaDisplay    *display,
 }
 
 static XserverRegion
-get_client_region (MetaDisplay    *display,
-                   MetaCompWindow *cw)
-{
-  Display *xdisplay;
-  XserverRegion region;
-  MetaFrame *frame;
-
-  xdisplay = meta_display_get_xdisplay (display);
-
-  if (cw->window_region != None)
-    {
-      region = XFixesCreateRegion (xdisplay, NULL, 0);
-      XFixesCopyRegion (xdisplay, region, cw->window_region);
-    }
-  else
-    {
-      region = get_window_region (display, cw);
-      if (region == None)
-        return None;
-    }
-
-  frame = meta_window_get_frame (cw->window);
-
-  if (frame != NULL)
-    {
-      MetaFrameBorders borders;
-      int x;
-      int y;
-      int width;
-      int height;
-      XRectangle rect;
-      XserverRegion client;
-
-      meta_frame_calc_borders (frame, &borders);
-
-      x = cw->rect.x;
-      y = cw->rect.y;
-      width = cw->rect.width;
-      height = cw->rect.height;
-
-      rect.x = x + borders.total.left;
-      rect.y = y + borders.total.top;
-      rect.width = width - borders.total.left - borders.total.right;
-      rect.height = height - borders.total.top - borders.total.bottom;
-
-      client = XFixesCreateRegion (xdisplay, &rect, 1);
-
-      XFixesIntersectRegion (xdisplay, region, region, client);
-      XFixesDestroyRegion (xdisplay, client);
-    }
-
-  return region;
-}
-
-static XserverRegion
 get_visible_region (MetaDisplay    *display,
                     MetaCompWindow *cw)
 {
@@ -1265,9 +1209,6 @@ paint_windows (MetaCompositorXRender *xrender,
 
       if (cw->visible_region == None)
         cw->visible_region = get_visible_region (display, cw);
-
-      if (cw->client_region == None)
-        cw->client_region = get_client_region (display, cw);
 
       if (cw->extents == None)
         cw->extents = win_extents (xrender, cw);
@@ -1436,12 +1377,6 @@ free_win (MetaCompWindow *cw,
       cw->visible_region = None;
     }
 
-  if (cw->client_region)
-    {
-      XFixesDestroyRegion (xdisplay, cw->client_region);
-      cw->client_region = None;
-    }
-
   if (cw->extents)
     {
       XFixesDestroyRegion (xdisplay, cw->extents);
@@ -1561,12 +1496,6 @@ notify_decorated_cb (MetaWindow            *window,
     {
       XFixesDestroyRegion (xrender->xdisplay, cw->visible_region);
       cw->visible_region = None;
-    }
-
-  if (cw->client_region != None)
-    {
-      XFixesDestroyRegion (xrender->xdisplay, cw->client_region);
-      cw->client_region = None;
     }
 
   if (cw->extents != None)
@@ -1934,7 +1863,6 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
 
   cw->window_region = None;
   cw->visible_region = None;
-  cw->client_region = None;
 
   cw->extents = None;
   cw->shadow = None;
@@ -2081,12 +2009,6 @@ meta_compositor_xrender_window_shape_region_changed (MetaCompositor *compositor,
     {
       XFixesDestroyRegion (xrender->xdisplay, cw->visible_region);
       cw->visible_region = None;
-    }
-
-  if (cw->client_region)
-    {
-      XFixesDestroyRegion (xrender->xdisplay, cw->client_region);
-      cw->client_region = None;
     }
 }
 
@@ -2264,12 +2186,6 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
     {
       XFixesDestroyRegion (xrender->xdisplay, cw->visible_region);
       cw->visible_region = None;
-    }
-
-  if (cw->client_region)
-    {
-      XFixesDestroyRegion (xrender->xdisplay, cw->client_region);
-      cw->client_region = None;
     }
 
   meta_error_trap_pop (window->display);
