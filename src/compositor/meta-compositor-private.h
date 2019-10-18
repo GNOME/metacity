@@ -29,43 +29,43 @@ struct _MetaCompositorClass
 {
   GObjectClass parent_class;
 
-  gboolean          (* manage)                       (MetaCompositor     *compositor,
-                                                      GError            **error);
+  gboolean      (* manage)                 (MetaCompositor  *compositor,
+                                            GError         **error);
 
-  MetaSurface     * (* add_window)                   (MetaCompositor     *compositor,
-                                                      MetaWindow         *window);
+  MetaSurface * (* add_window)             (MetaCompositor  *compositor,
+                                            MetaWindow      *window);
 
-  void              (* remove_window)                (MetaCompositor     *compositor,
-                                                      MetaWindow         *window);
+  void          (* remove_window)          (MetaCompositor  *compositor,
+                                            MetaWindow      *window);
 
-  void              (* show_window)                  (MetaCompositor     *compositor,
-                                                      MetaSurface        *surface,
-                                                      MetaEffectType      effect);
+  void          (* show_window)            (MetaCompositor  *compositor,
+                                            MetaSurface     *surface,
+                                            MetaEffectType   effect);
 
-  void              (* hide_window)                  (MetaCompositor     *compositor,
-                                                      MetaSurface        *surface,
-                                                      MetaEffectType      effect);
+  void          (* hide_window)            (MetaCompositor  *compositor,
+                                            MetaSurface     *surface,
+                                            MetaEffectType   effect);
 
-  void              (* window_opacity_changed)       (MetaCompositor     *compositor,
-                                                      MetaSurface        *surface);
+  void          (* window_opacity_changed) (MetaCompositor  *compositor,
+                                            MetaSurface     *surface);
 
-  void              (* set_updates_frozen)           (MetaCompositor     *compositor,
-                                                      MetaWindow         *window,
-                                                      gboolean            updates_frozen);
+  void          (* set_updates_frozen)     (MetaCompositor  *compositor,
+                                            MetaWindow      *window,
+                                            gboolean         updates_frozen);
 
-  void              (* process_event)                (MetaCompositor     *compositor,
-                                                      XEvent             *event,
-                                                      MetaWindow         *window);
+  void          (* process_event)          (MetaCompositor  *compositor,
+                                            XEvent          *event,
+                                            MetaWindow      *window);
 
-  void              (* sync_screen_size)             (MetaCompositor     *compositor);
+  void          (* sync_screen_size)       (MetaCompositor  *compositor);
 
-  void              (* sync_window_geometry)         (MetaCompositor     *compositor,
-                                                      MetaSurface        *surface);
+  void          (* sync_window_geometry)   (MetaCompositor  *compositor,
+                                            MetaSurface     *surface);
 
-  void              (* pre_paint)                    (MetaCompositor     *compositor);
+  void          (* pre_paint)              (MetaCompositor  *compositor);
 
-  void              (* redraw)                       (MetaCompositor     *compositor,
-                                                      XserverRegion       all_damage);
+  void          (* redraw)                 (MetaCompositor  *compositor,
+                                            XserverRegion    all_damage);
 };
 
 void         meta_compositor_set_composited          (MetaCompositor  *compositor,
