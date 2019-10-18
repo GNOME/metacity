@@ -92,8 +92,6 @@ typedef struct _MetaCompWindow
 
   int mode;
 
-  gboolean damaged;
-
   gboolean needs_shadow;
   MetaShadowType shadow_type;
 
@@ -1077,12 +1075,6 @@ paint_windows (MetaCompositorXRender *xrender,
       surface = META_SURFACE_XRENDER (index->data);
       cw = g_object_get_data (G_OBJECT (surface), "cw");
 
-      if (!cw->damaged)
-        {
-          /* Not damaged */
-          continue;
-        }
-
       if (!meta_surface_is_visible (META_SURFACE (surface)))
         continue;
 
@@ -1193,25 +1185,6 @@ static void
 add_repair (MetaCompositorXRender *xrender)
 {
   meta_compositor_queue_redraw (META_COMPOSITOR (xrender));
-}
-
-static void
-repair_win (MetaCompositorXRender *xrender,
-            MetaCompWindow        *cw)
-{
-  MetaCompositor *compositor = META_COMPOSITOR (xrender);
-  MetaDisplay *display = meta_compositor_get_display (compositor);
-  Display *xdisplay = meta_display_get_xdisplay (display);
-  XserverRegion parts;
-
-  if (!cw->damaged)
-    {
-      parts = win_extents (xrender, cw);
-      meta_compositor_add_damage (compositor, "repair_win", parts);
-      XFixesDestroyRegion (xdisplay, parts);
-    }
-
-  cw->damaged = TRUE;
 }
 
 static void
@@ -1342,8 +1315,6 @@ notify_decorated_cb (MetaWindow            *window,
 
   meta_error_trap_pop (window->display);
 
-  cw->damaged = TRUE;
-
   add_repair (xrender);
 }
 
@@ -1423,21 +1394,6 @@ process_expose (MetaCompositorXRender *xrender,
   rect[0].height = event->height;
 
   expose_area (xrender, rect, 1);
-}
-
-static void
-process_damage (MetaCompositorXRender *xrender,
-                XDamageNotifyEvent    *event)
-{
-  MetaCompWindow *cw = find_comp_window_by_xwindow (xrender, event->drawable);
-
-  if (cw == NULL)
-    return;
-
-  repair_win (xrender, cw);
-
-  if (event->more == FALSE)
-    add_repair (xrender);
 }
 
 static int
@@ -1661,8 +1617,6 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
                            G_CALLBACK (notify_decorated_cb),
                            xrender, 0);
 
-  cw->damaged = FALSE;
-
   cw->extents = None;
   cw->shadow = None;
   cw->shadow_dx = 0;
@@ -1716,11 +1670,6 @@ meta_compositor_xrender_show_window (MetaCompositor *compositor,
                                      MetaSurface    *surface,
                                      MetaEffectType  effect)
 {
-  MetaCompWindow *cw;
-
-  cw = g_object_get_data (G_OBJECT (surface), "cw");
-
-  cw->damaged = TRUE;
 }
 
 static void
@@ -1734,8 +1683,6 @@ meta_compositor_xrender_hide_window (MetaCompositor *compositor,
   xrender = META_COMPOSITOR_XRENDER (compositor);
 
   cw = g_object_get_data (G_OBJECT (surface), "cw");
-
-  cw->damaged = FALSE;
 
   if (cw->extents != None)
     {
@@ -1814,8 +1761,6 @@ meta_compositor_xrender_process_event (MetaCompositor *compositor,
       break;
 
     default:
-      if (event->type == meta_display_get_damage_event_base (display) + XDamageNotify)
-        process_damage (xrender, (XDamageNotifyEvent *) event);
       break;
     }
 
