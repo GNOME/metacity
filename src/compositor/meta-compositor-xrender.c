@@ -128,7 +128,6 @@ struct _MetaCompositorXRender
   gboolean        prefs_listener_added;
 
   guint           show_redraw : 1;
-  guint           debug : 1;
 };
 
 G_DEFINE_TYPE (MetaCompositorXRender, meta_compositor_xrender, META_TYPE_COMPOSITOR)
@@ -186,40 +185,6 @@ make_gaussian_map (double r)
     }
 
   return c;
-}
-
-static void
-dump_xserver_region (MetaCompositorXRender *xrender,
-                     const gchar           *location,
-                     XserverRegion          region)
-{
-  int nrects;
-  XRectangle *rects;
-  XRectangle bounds;
-
-  if (!xrender->debug)
-    return;
-
-  if (region)
-    {
-      rects = XFixesFetchRegionAndBounds (xrender->xdisplay, region,
-                                          &nrects, &bounds);
-
-      if (nrects > 0)
-        {
-          int i;
-          fprintf (stderr, "%s (XSR): %d rects, bounds: %d,%d (%d,%d)\n",
-                   location, nrects, bounds.x, bounds.y, bounds.width, bounds.height);
-          for (i = 1; i < nrects; i++)
-            fprintf (stderr, "\t%d,%d (%d,%d)\n",
-                     rects[i].x, rects[i].y, rects[i].width, rects[i].height);
-        }
-      else
-        fprintf (stderr, "%s (XSR): empty\n", location);
-      XFree (rects);
-    }
-  else
-    fprintf (stderr, "%s (XSR): null\n", location);
 }
 
 /*
@@ -1202,8 +1167,6 @@ paint_all (MetaCompositorXRender *xrender,
     {
       Picture overlay;
 
-      dump_xserver_region (xrender, "paint_all", region);
-
       /* Make a random colour overlay */
       overlay = solid_picture (xdisplay, TRUE, 1, /* 0.3, alpha */
                                ((double) (rand () % 100)) / 100.0,
@@ -1490,7 +1453,6 @@ static int
 timeout_debug (MetaCompositorXRender *compositor)
 {
   compositor->show_redraw = (g_getenv ("METACITY_DEBUG_REDRAWS") != NULL);
-  compositor->debug = (g_getenv ("METACITY_DEBUG_COMPOSITOR") != NULL);
 
   return FALSE;
 }
@@ -1907,15 +1869,6 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
   old_rect = cw->rect;
   meta_window_get_input_rect (window, &cw->rect);
 
-  if (xrender->debug)
-    {
-      fprintf (stderr, "configure notify %d %d %d\n", cw->damaged,
-               cw->window->shape_region != None, cw->needs_shadow);
-      dump_xserver_region (xrender, "\textents", cw->extents);
-      fprintf (stderr, "\txy (%d %d), wh (%d %d)\n",
-               cw->rect.x, cw->rect.y, cw->rect.width, cw->rect.height);
-    }
-
   if (cw->extents)
     {
       damage = XFixesCreateRegion (xrender->xdisplay, NULL, 0);
@@ -1924,8 +1877,6 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
   else
     {
       damage = None;
-      if (xrender->debug)
-        fprintf (stderr, "no extents to damage !\n");
     }
 
   if (cw->rect.width != old_rect.width || cw->rect.height != old_rect.height)
@@ -1944,9 +1895,6 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
 
   if (damage)
     {
-      if (xrender->debug)
-        fprintf (stderr, "Inexplicable intersection with new extents!\n");
-
       XFixesUnionRegion (xrender->xdisplay, damage, damage, cw->extents);
     }
   else

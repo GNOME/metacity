@@ -183,6 +183,8 @@ redraw_idle_cb (gpointer user_data)
 
   if (priv->all_damage != None)
     {
+      debug_damage_region (compositor, "paint_all", priv->all_damage);
+
       META_COMPOSITOR_GET_CLASS (compositor)->redraw (compositor, priv->all_damage);
       XFixesDestroyRegion (priv->display->xdisplay, priv->all_damage);
       priv->all_damage = None;
