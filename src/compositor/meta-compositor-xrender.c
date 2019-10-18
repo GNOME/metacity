@@ -1169,9 +1169,6 @@ paint_all (MetaCompositorXRender *xrender,
       usleep (100 * 1000);
     }
 
-  if (xrender->root_buffer == None)
-    xrender->root_buffer = create_root_buffer (xrender);
-
   stack = meta_compositor_get_stack (META_COMPOSITOR (xrender));
   paint_windows (xrender, stack, xrender->root_buffer, region);
 
@@ -1815,6 +1812,9 @@ meta_compositor_xrender_pre_paint (MetaCompositor *compositor)
   GList *l;
 
   xrender = META_COMPOSITOR_XRENDER (compositor);
+
+  if (xrender->root_buffer == None)
+    xrender->root_buffer = create_root_buffer (xrender);
 
   stack = meta_compositor_get_stack (compositor);
 
