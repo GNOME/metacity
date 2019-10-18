@@ -97,8 +97,6 @@ typedef struct _MetaCompWindow
   gboolean needs_shadow;
   MetaShadowType shadow_type;
 
-  XserverRegion visible_region;
-
   XserverRegion extents;
 
   Picture shadow;
@@ -1031,72 +1029,6 @@ win_extents (MetaCompositorXRender *xrender,
   return XFixesCreateRegion (xrender->xdisplay, &r, 1);
 }
 
-static XserverRegion
-get_window_region (MetaDisplay    *display,
-                   MetaCompWindow *cw)
-{
-  Display *xdisplay;
-  Window xwindow;
-  XserverRegion region;
-
-  xdisplay = meta_display_get_xdisplay (display);
-  xwindow = meta_window_get_toplevel_xwindow (cw->window);
-
-  meta_error_trap_push (display);
-  region = XFixesCreateRegionFromWindow (xdisplay, xwindow, WindowRegionBounding);
-  meta_error_trap_pop (display);
-
-  if (region == None)
-    return None;
-
-  XFixesTranslateRegion (xdisplay, region, cw->rect.x, cw->rect.y);
-
-  if (cw->window->shape_region != None)
-    {
-      XserverRegion tmp;
-
-      tmp = XFixesCreateRegion (xdisplay, &(XRectangle) {
-                                  .x = cw->rect.x,
-                                  .y = cw->rect.y,
-                                  .width = cw->rect.width,
-                                  .height = cw->rect.height,
-                                }, 1);
-
-      XFixesIntersectRegion (xdisplay, region, region, tmp);
-      XFixesDestroyRegion (xdisplay, tmp);
-    }
-
-  return region;
-}
-
-static XserverRegion
-get_visible_region (MetaDisplay    *display,
-                    MetaCompWindow *cw)
-{
-  Display *xdisplay;
-  XserverRegion region;
-  cairo_region_t *visible;
-  XserverRegion tmp;
-
-  xdisplay = meta_display_get_xdisplay (display);
-
-  region = get_window_region (display, cw);
-  if (region == None)
-    return None;
-
-  visible = meta_window_get_frame_bounds (cw->window);
-  tmp = cairo_region_to_xserver_region (xdisplay, visible);
-
-  if (tmp != None)
-    {
-      XFixesTranslateRegion (xdisplay, tmp, cw->rect.x, cw->rect.y);
-      XFixesIntersectRegion (xdisplay, region, region, tmp);
-      XFixesDestroyRegion (xdisplay, tmp);
-    }
-
-  return region;
-}
-
 static void
 paint_dock_shadows (MetaCompositorXRender *xrender,
                     GList                 *surfaces,
@@ -1195,9 +1127,6 @@ paint_windows (MetaCompositorXRender *xrender,
       if (!meta_surface_is_visible (META_SURFACE (surface)))
         continue;
 
-      if (cw->visible_region == None)
-        cw->visible_region = get_visible_region (display, cw);
-
       if (cw->extents == None)
         cw->extents = win_extents (xrender, cw);
 
@@ -1241,24 +1170,17 @@ paint_windows (MetaCompositorXRender *xrender,
 
           if (cw->shadow && cw->window->type != META_WINDOW_DOCK)
             {
-              XserverRegion shadow_clip;
               XserverRegion border_clip;
 
-              shadow_clip = XFixesCreateRegion (xdisplay, NULL, 0);
               border_clip = meta_surface_xrender_get_border_clip (surface);
 
-              XFixesSubtractRegion (xdisplay, shadow_clip, border_clip,
-                                    cw->visible_region);
               XFixesSetPictureClipRegion (xdisplay, root_buffer, 0, 0,
-                                          shadow_clip);
+                                          border_clip);
 
               XRenderComposite (xdisplay, PictOpOver, xrender->black_picture,
                                 cw->shadow, root_buffer, 0, 0, 0, 0,
                                 x + cw->shadow_dx, y + cw->shadow_dy,
                                 cw->shadow_width, cw->shadow_height);
-
-              if (shadow_clip)
-                XFixesDestroyRegion (xdisplay, shadow_clip);
             }
 
           meta_surface_xrender_paint (surface, paint_region, root_buffer, FALSE);
@@ -1351,12 +1273,6 @@ free_win (MetaCompWindow *cw,
     {
       XRenderFreePicture (xdisplay, cw->shadow);
       cw->shadow = None;
-    }
-
-  if (cw->visible_region)
-    {
-      XFixesDestroyRegion (xdisplay, cw->visible_region);
-      cw->visible_region = None;
     }
 
   if (cw->extents)
@@ -1467,12 +1383,6 @@ notify_decorated_cb (MetaWindow            *window,
     return;
 
   meta_error_trap_push (window->display);
-
-  if (cw->visible_region != None)
-    {
-      XFixesDestroyRegion (xrender->xdisplay, cw->visible_region);
-      cw->visible_region = None;
-    }
 
   if (cw->extents != None)
     {
@@ -1837,8 +1747,6 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
 
   cw->damaged = FALSE;
 
-  cw->visible_region = None;
-
   cw->extents = None;
   cw->shadow = None;
   cw->shadow_dx = 0;
@@ -1966,18 +1874,6 @@ static void
 meta_compositor_xrender_window_shape_region_changed (MetaCompositor *compositor,
                                                      MetaSurface    *surface)
 {
-  MetaCompositorXRender *xrender;
-  MetaCompWindow *cw;
-
-  xrender = META_COMPOSITOR_XRENDER (compositor);
-
-  cw = g_object_get_data (G_OBJECT (surface), "cw");
-
-  if (cw->visible_region)
-    {
-      XFixesDestroyRegion (xrender->xdisplay, cw->visible_region);
-      cw->visible_region = None;
-    }
 }
 
 static void
@@ -2143,12 +2039,6 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
 
   meta_compositor_add_damage (compositor, "sync_window_geometry", damage);
   XFixesDestroyRegion (xrender->xdisplay, damage);
-
-  if (cw->visible_region)
-    {
-      XFixesDestroyRegion (xrender->xdisplay, cw->visible_region);
-      cw->visible_region = None;
-    }
 
   meta_error_trap_pop (window->display);
 }
