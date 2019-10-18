@@ -97,7 +97,6 @@ typedef struct _MetaCompWindow
   gboolean needs_shadow;
   MetaShadowType shadow_type;
 
-  XserverRegion window_region;
   XserverRegion visible_region;
 
   XserverRegion extents;
@@ -1081,17 +1080,9 @@ get_visible_region (MetaDisplay    *display,
 
   xdisplay = meta_display_get_xdisplay (display);
 
-  if (cw->window_region != None)
-    {
-      region = XFixesCreateRegion (xdisplay, NULL, 0);
-      XFixesCopyRegion (xdisplay, region, cw->window_region);
-    }
-  else
-    {
-      region = get_window_region (display, cw);
-      if (region == None)
-        return None;
-    }
+  region = get_window_region (display, cw);
+  if (region == None)
+    return None;
 
   visible = meta_window_get_frame_bounds (cw->window);
   tmp = cairo_region_to_xserver_region (xdisplay, visible);
@@ -1203,9 +1194,6 @@ paint_windows (MetaCompositorXRender *xrender,
 
       if (!meta_surface_is_visible (META_SURFACE (surface)))
         continue;
-
-      if (cw->window_region == None)
-        cw->window_region = get_window_region (display, cw);
 
       if (cw->visible_region == None)
         cw->visible_region = get_visible_region (display, cw);
@@ -1365,12 +1353,6 @@ free_win (MetaCompWindow *cw,
       cw->shadow = None;
     }
 
-  if (cw->window_region)
-    {
-      XFixesDestroyRegion (xdisplay, cw->window_region);
-      cw->window_region = None;
-    }
-
   if (cw->visible_region)
     {
       XFixesDestroyRegion (xdisplay, cw->visible_region);
@@ -1485,12 +1467,6 @@ notify_decorated_cb (MetaWindow            *window,
     return;
 
   meta_error_trap_push (window->display);
-
-  if (cw->window_region != None)
-    {
-      XFixesDestroyRegion (xrender->xdisplay, cw->window_region);
-      cw->window_region = None;
-    }
 
   if (cw->visible_region != None)
     {
@@ -1861,7 +1837,6 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
 
   cw->damaged = FALSE;
 
-  cw->window_region = None;
   cw->visible_region = None;
 
   cw->extents = None;
@@ -1997,13 +1972,6 @@ meta_compositor_xrender_window_shape_region_changed (MetaCompositor *compositor,
   xrender = META_COMPOSITOR_XRENDER (compositor);
 
   cw = g_object_get_data (G_OBJECT (surface), "cw");
-
-  if (cw->window_region)
-    {
-      meta_compositor_add_damage (compositor, "shape_changed", cw->window_region);
-      XFixesDestroyRegion (xrender->xdisplay, cw->window_region);
-      cw->window_region = None;
-    }
 
   if (cw->visible_region)
     {
@@ -2175,12 +2143,6 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
 
   meta_compositor_add_damage (compositor, "sync_window_geometry", damage);
   XFixesDestroyRegion (xrender->xdisplay, damage);
-
-  if (cw->window_region)
-    {
-      XFixesDestroyRegion (xrender->xdisplay, cw->window_region);
-      cw->window_region = None;
-    }
 
   if (cw->visible_region)
     {
