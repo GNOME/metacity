@@ -41,6 +41,8 @@ typedef struct
 
   int              x;
   int              y;
+  gboolean         position_changed;
+
   int              width;
   int              height;
 
@@ -740,8 +742,25 @@ meta_surface_sync_geometry (MetaSurface *self)
   if (priv->x != rect.x ||
       priv->y != rect.y)
     {
+      if (priv->shape_region != None)
+        {
+          XserverRegion shape_region;
+
+          shape_region = XFixesCreateRegion (priv->xdisplay, NULL, 0);
+          XFixesCopyRegion (priv->xdisplay, shape_region, priv->shape_region);
+          XFixesTranslateRegion (priv->xdisplay, shape_region, priv->x, priv->y);
+
+          meta_compositor_add_damage (priv->compositor,
+                                      "position_changed",
+                                      shape_region);
+
+          XFixesDestroyRegion (priv->xdisplay, shape_region);
+        }
+
       priv->x = rect.x;
       priv->y = rect.y;
+
+      priv->position_changed = TRUE;
     }
 
   if (priv->width != rect.width ||
@@ -782,6 +801,13 @@ meta_surface_pre_paint (MetaSurface *self)
 
   update_shape_region (self, damage);
   update_opaque_region (self, damage);
+
+  if (priv->position_changed)
+    {
+      XFixesUnionRegion (priv->xdisplay, damage, damage, priv->shape_region);
+
+      priv->position_changed = FALSE;
+    }
 
   if (is_region_empty (priv->xdisplay, damage))
     {
