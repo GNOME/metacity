@@ -57,9 +57,6 @@ struct _MetaCompositorClass
                                                       XEvent             *event,
                                                       MetaWindow         *window);
 
-  void              (* maximize_window)              (MetaCompositor     *compositor,
-                                                      MetaWindow         *window);
-
   void              (* sync_screen_size)             (MetaCompositor     *compositor);
 
   void              (* sync_window_geometry)         (MetaCompositor     *compositor,
