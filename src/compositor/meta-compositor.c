@@ -593,11 +593,6 @@ void
 meta_compositor_unmaximize_window (MetaCompositor *compositor,
                                    MetaWindow     *window)
 {
-  MetaCompositorClass *compositor_class;
-
-  compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
-
-  compositor_class->unmaximize_window (compositor, window);
 }
 
 void
