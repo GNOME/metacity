@@ -1086,9 +1086,6 @@ paint_windows (MetaCompositorXRender *xrender,
       if (!meta_surface_is_visible (META_SURFACE (surface)))
         continue;
 
-      if (cw->extents == None)
-        cw->extents = win_extents (xrender, cw);
-
       meta_surface_xrender_paint (surface, paint_region, root_buffer, TRUE);
 
       if (cw->mode == WINDOW_SOLID)
@@ -1309,12 +1306,6 @@ notify_appears_focused_cb (MetaWindow            *window,
       XFixesDestroyRegion (xdisplay, cw->extents);
       cw->extents = None;
     }
-
-  cw->extents = win_extents (xrender, cw);
-
-  meta_compositor_add_damage (compositor,
-                              "notify_appears_focused_cb",
-                              cw->extents);
 }
 
 static void
@@ -1853,31 +1844,18 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
 {
   MetaCompositorXRender *xrender;
   MetaCompWindow *cw;
-  MetaWindow *window;
   MetaRectangle old_rect;
-  XserverRegion damage;
 
   xrender = META_COMPOSITOR_XRENDER (compositor);
 
   cw = g_object_get_data (G_OBJECT (surface), "cw");
-  window = cw->window;
 
   cw->needs_shadow = window_has_shadow (xrender, cw);
 
-  meta_error_trap_push (window->display);
+  meta_error_trap_push (cw->window->display);
 
   old_rect = cw->rect;
-  meta_window_get_input_rect (window, &cw->rect);
-
-  if (cw->extents)
-    {
-      damage = XFixesCreateRegion (xrender->xdisplay, NULL, 0);
-      XFixesCopyRegion (xrender->xdisplay, damage, cw->extents);
-    }
-  else
-    {
-      damage = None;
-    }
+  meta_window_get_input_rect (cw->window, &cw->rect);
 
   if (cw->rect.width != old_rect.width || cw->rect.height != old_rect.height)
     {
@@ -1888,30 +1866,44 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
         }
     }
 
-  if (cw->extents)
-    XFixesDestroyRegion (xrender->xdisplay, cw->extents);
-
-  cw->extents = win_extents (xrender, cw);
-
-  if (damage)
+  if (cw->extents != None)
     {
-      XFixesUnionRegion (xrender->xdisplay, damage, damage, cw->extents);
-    }
-  else
-    {
-      damage = XFixesCreateRegion (xrender->xdisplay, NULL, 0);
-      XFixesCopyRegion (xrender->xdisplay, damage, cw->extents);
+      meta_compositor_add_damage (compositor, "sync_window_geometry", cw->extents);
+      XFixesDestroyRegion (xrender->xdisplay, cw->extents);
+      cw->extents = None;
     }
 
-  meta_compositor_add_damage (compositor, "sync_window_geometry", damage);
-  XFixesDestroyRegion (xrender->xdisplay, damage);
-
-  meta_error_trap_pop (window->display);
+  meta_error_trap_pop (cw->window->display);
 }
 
 static void
 meta_compositor_xrender_pre_paint (MetaCompositor *compositor)
 {
+  MetaCompositorXRender *xrender;
+  GList *stack;
+  GList *l;
+
+  xrender = META_COMPOSITOR_XRENDER (compositor);
+
+  stack = meta_compositor_get_stack (compositor);
+
+  for (l = stack; l != NULL; l = l->next)
+    {
+      MetaSurface *surface;
+      MetaCompWindow *cw;
+
+      surface = META_SURFACE (l->data);
+      cw = g_object_get_data (G_OBJECT (surface), "cw");
+
+      if (cw->extents == None)
+        {
+          cw->extents = win_extents (xrender, cw);
+
+          meta_compositor_add_damage (compositor,
+                                      "meta_compositor_xrender_pre_paint",
+                                      cw->extents);
+        }
+    }
 }
 
 static void
