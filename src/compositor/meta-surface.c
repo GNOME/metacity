@@ -114,6 +114,18 @@ get_frame_region (MetaSurface *self,
 }
 
 static void
+clip_shape_region (Display       *xdisplay,
+                   XserverRegion  shape_region,
+                   XRectangle    *client_rect)
+{
+  XserverRegion client_region;
+
+  client_region = XFixesCreateRegion (xdisplay, client_rect, 1);
+  XFixesIntersectRegion (xdisplay, shape_region, shape_region, client_region);
+  XFixesDestroyRegion (xdisplay, client_region);
+}
+
+static void
 update_shape_region (MetaSurface   *self,
                      XserverRegion  damage_region)
 {
@@ -145,11 +157,15 @@ update_shape_region (MetaSurface   *self,
                              shape_region,
                              client_rect.x,
                              client_rect.y);
+
+      clip_shape_region (priv->xdisplay, shape_region, &client_rect);
     }
   else if (priv->window->shape_region != None)
     {
       shape_region = XFixesCreateRegion (priv->xdisplay, NULL, 0);
       XFixesCopyRegion (priv->xdisplay, shape_region, priv->window->shape_region);
+
+      clip_shape_region (priv->xdisplay, shape_region, &client_rect);
     }
   else
     {
