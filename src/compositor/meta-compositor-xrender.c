@@ -1185,13 +1185,16 @@ add_repair (MetaCompositorXRender *xrender)
 }
 
 static void
-free_win (MetaCompWindow *cw,
-          gboolean        destroy)
+cw_destroy_cb (gpointer data)
 {
-  MetaDisplay *display = meta_window_get_display (cw->window);
-  Display *xdisplay = meta_display_get_xdisplay (display);
+  MetaCompWindow *cw;
+  MetaDisplay *display;
+  Display *xdisplay;
 
-  meta_error_trap_push (display);
+  cw = (MetaCompWindow *) data;
+
+  display = meta_window_get_display (cw->window);
+  xdisplay = meta_display_get_xdisplay (display);
 
   if (cw->shadow)
     {
@@ -1205,20 +1208,7 @@ free_win (MetaCompWindow *cw,
       cw->extents = None;
     }
 
-  if (destroy)
-    g_free (cw);
-
-  meta_error_trap_pop (display);
-}
-
-static void
-cw_destroy_cb (gpointer data)
-{
-  MetaCompWindow *cw;
-
-  cw = (MetaCompWindow *) data;
-
-  free_win (cw, TRUE);
+  g_free (cw);
 }
 
 static void
@@ -1681,7 +1671,11 @@ meta_compositor_xrender_hide_window (MetaCompositor *compositor,
       cw->extents = None;
     }
 
-  free_win (cw, FALSE);
+  if (cw->shadow)
+    {
+      XRenderFreePicture (xrender->xdisplay, cw->shadow);
+      cw->shadow = None;
+    }
 }
 
 static void
