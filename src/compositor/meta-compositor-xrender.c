@@ -51,9 +51,6 @@
 
 #define OPAQUE 0xffffffff
 
-#define WINDOW_SOLID 0
-#define WINDOW_ARGB 1
-
 #define SHADOW_MEDIUM_RADIUS 6.0
 #define SHADOW_LARGE_RADIUS 12.0
 
@@ -89,8 +86,6 @@ typedef struct _MetaCompWindow
   MetaWindow *window;
 
   MetaRectangle rect;
-
-  int mode;
 
   gboolean needs_shadow;
   MetaShadowType shadow_type;
@@ -131,15 +126,6 @@ struct _MetaCompositorXRender
 };
 
 G_DEFINE_TYPE (MetaCompositorXRender, meta_compositor_xrender, META_TYPE_COMPOSITOR)
-
-static Visual *
-get_toplevel_xvisual (MetaWindow *window)
-{
-  if (window->frame != NULL)
-    return meta_frame_get_xvisual (window->frame);
-
-  return window->xvisual;
-}
 
 /* Gaussian stuff for creating the shadows */
 static double
@@ -983,7 +969,6 @@ paint_windows (MetaCompositorXRender *xrender,
   MetaDisplay *display = meta_screen_get_display (xrender->screen);
   Display *xdisplay = meta_display_get_xdisplay (display);
   GList *index, *last;
-  MetaCompWindow *cw;
   XserverRegion paint_region, desktop_region;
 
   paint_region = XFixesCreateRegion (xdisplay, NULL, 0);
@@ -998,27 +983,40 @@ paint_windows (MetaCompositorXRender *xrender,
   last = NULL;
   for (index = surfaces; index; index = index->next)
     {
-      MetaSurfaceXRender *surface;
+      MetaSurface *surface;
+      MetaWindow *window;
 
       /* Store the last window we dealt with */
       last = index;
 
-      surface = META_SURFACE_XRENDER (index->data);
-      cw = g_object_get_data (G_OBJECT (surface), "cw");
+      surface = META_SURFACE (index->data);
 
-      if (!meta_surface_is_visible (META_SURFACE (surface)))
+      if (!meta_surface_is_visible (surface))
         continue;
 
-      meta_surface_xrender_paint (surface, paint_region, root_buffer, TRUE);
+      window = meta_surface_get_window (surface);
 
-      if (cw->mode == WINDOW_SOLID)
+      if (window->type == META_WINDOW_DESKTOP &&
+          meta_surface_is_opaque (surface))
         {
-          if (cw->window->type == META_WINDOW_DESKTOP)
+          if (desktop_region == None)
             {
-              desktop_region = XFixesCreateRegion (xdisplay, 0, 0);
+              desktop_region = XFixesCreateRegion (xdisplay, NULL, 0);
               XFixesCopyRegion (xdisplay, desktop_region, paint_region);
             }
+          else
+            {
+              XFixesUnionRegion (xdisplay,
+                                 desktop_region,
+                                 desktop_region,
+                                 paint_region);
+            }
         }
+
+      meta_surface_xrender_paint (META_SURFACE_XRENDER (surface),
+                                  paint_region,
+                                  root_buffer,
+                                  TRUE);
     }
 
   XFixesSetPictureClipRegion (xdisplay, root_buffer, 0, 0, paint_region);
@@ -1038,11 +1036,13 @@ paint_windows (MetaCompositorXRender *xrender,
       MetaSurfaceXRender *surface;
 
       surface = META_SURFACE_XRENDER (index->data);
-      cw = g_object_get_data (G_OBJECT (surface), "cw");
 
       if (meta_surface_xrender_get_picture (surface) != None)
         {
+          MetaCompWindow *cw;
           int x, y;
+
+          cw = g_object_get_data (G_OBJECT (surface), "cw");
 
           x = cw->rect.x;
           y = cw->rect.y;
@@ -1137,24 +1137,6 @@ cw_destroy_cb (gpointer data)
 }
 
 static void
-determine_mode (MetaCompositorXRender *xrender,
-                MetaCompWindow        *cw)
-{
-  XRenderPictFormat *format;
-  MetaCompositor *compositor = META_COMPOSITOR (xrender);
-  MetaDisplay *display = meta_compositor_get_display (compositor);
-  Display *xdisplay = meta_display_get_xdisplay (display);
-
-  format = XRenderFindVisualFormat (xdisplay, get_toplevel_xvisual (cw->window));
-
-  if ((format && format->type == PictTypeDirect && format->direct.alphaMask)
-      || cw->window->opacity != (guint) OPAQUE)
-    cw->mode = WINDOW_ARGB;
-  else
-    cw->mode = WINDOW_SOLID;
-}
-
-static void
 notify_appears_focused_cb (MetaWindow            *window,
                            GParamSpec            *pspec,
                            MetaCompositorXRender *xrender)
@@ -1181,7 +1163,6 @@ notify_decorated_cb (MetaWindow            *window,
   if (cw == NULL)
     return;
 
-  determine_mode (xrender, cw);
   shadow_changed (xrender, cw);
 }
 
@@ -1486,8 +1467,6 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
                            G_CALLBACK (notify_window_type_cb),
                            xrender, 0);
 
-  determine_mode (xrender, cw);
-
   cw->shadow_changed = xrender->have_shadows;
 
   xwindow = meta_window_get_xwindow (window);
@@ -1544,7 +1523,6 @@ meta_compositor_xrender_window_opacity_changed (MetaCompositor *compositor,
 
   cw = g_object_get_data (G_OBJECT (surface), "cw");
 
-  determine_mode (xrender, cw);
   shadow_changed (xrender, cw);
 }
 
@@ -1660,7 +1638,6 @@ meta_compositor_xrender_pre_paint (MetaCompositor *compositor)
           else
             cw->shadow_type = META_SHADOW_MEDIUM;
 
-          determine_mode (xrender, cw);
           cw->needs_shadow = meta_surface_has_shadow (surface);
 
           g_assert (cw->extents == None);
