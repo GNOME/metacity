@@ -1162,12 +1162,6 @@ paint_all (MetaCompositorXRender *xrender,
 }
 
 static void
-add_repair (MetaCompositorXRender *xrender)
-{
-  meta_compositor_queue_redraw (META_COMPOSITOR (xrender));
-}
-
-static void
 cw_destroy_cb (gpointer data)
 {
   MetaCompWindow *cw;
@@ -1285,7 +1279,7 @@ notify_decorated_cb (MetaWindow            *window,
 
   meta_error_trap_pop (window->display);
 
-  add_repair (xrender);
+  meta_compositor_queue_redraw (compositor);
 }
 
 /* event processors must all be called with an error trap in place */
