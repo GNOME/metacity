@@ -19,6 +19,7 @@
 #include "meta-surface-private.h"
 
 #include <X11/extensions/Xcomposite.h>
+#include <X11/extensions/Xrender.h>
 
 #include "display-private.h"
 #include "errors.h"
@@ -621,6 +622,45 @@ meta_surface_get_image (MetaSurface *self)
     }
 
   return META_SURFACE_GET_CLASS (self)->get_image (self);
+}
+
+gboolean
+meta_surface_is_opaque (MetaSurface *self)
+{
+  MetaSurfacePrivate *priv;
+  Visual *xvisual;
+  XRenderPictFormat *format;
+  XserverRegion region;
+  int n_rects;
+  XRectangle bounds;
+  XRectangle *rects;
+
+  priv = meta_surface_get_instance_private (self);
+
+  if (priv->window->opacity != 0xffffffff)
+    return FALSE;
+
+  xvisual = meta_window_get_toplevel_xvisual (priv->window);
+  format = XRenderFindVisualFormat (priv->xdisplay, xvisual);
+
+  if (format->type != PictTypeDirect || !format->direct.alphaMask)
+    return TRUE;
+
+  if (priv->opaque_region == None)
+    return FALSE;
+
+  region = XFixesCreateRegion (priv->xdisplay, NULL, 0);
+
+  XFixesSubtractRegion (priv->xdisplay,
+                        region,
+                        priv->shape_region,
+                        priv->opaque_region);
+
+  rects = XFixesFetchRegionAndBounds (priv->xdisplay, region, &n_rects, &bounds);
+  XFixesDestroyRegion (priv->xdisplay, region);
+  XFree (rects);
+
+  return (n_rects == 0 || bounds.width == 0 || bounds.height == 0);
 }
 
 gboolean
