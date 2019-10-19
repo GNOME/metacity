@@ -116,6 +116,7 @@ metacity_SOURCES= 				\
 	include/tile-preview.h			\
 	ui/ui.c					\
 	ui/ui-private.h				\
+	$(BUILT_SOURCES) \
 	$(NULL)
 
 if HAVE_VULKAN
@@ -138,5 +139,27 @@ noinst_PROGRAMS=testboxes testasyncgetprop
 
 testboxes_LDADD= @METACITY_LIBS@
 testasyncgetprop_LDADD= @METACITY_LIBS@
+
+ENUM_TYPES = \
+	core/window-private.h \
+	$(NULL)
+
+core/meta-enum-types.c: core/meta-enum-types.c.in core/meta-enum-types.h $(ENUM_TYPES)
+	$(AM_V_GEN) $(GLIB_MKENUMS) --template $(srcdir)/core/meta-enum-types.c.in $(ENUM_TYPES) > \
+		meta-enum-types.c.tmp && mv meta-enum-types.c.tmp core/meta-enum-types.c
+
+core/meta-enum-types.h: core/meta-enum-types.h.in $(ENUM_TYPES)
+	$(AM_V_GEN) $(GLIB_MKENUMS) --template $(srcdir)/core/meta-enum-types.h.in $(ENUM_TYPES) > \
+		meta-enum-types.h.tmp && mv meta-enum-types.h.tmp core/meta-enum-types.h
+
+BUILT_SOURCES = \
+	core/meta-enum-types.c \
+	core/meta-enum-types.h \
+	$(NULL)
+
+EXTRA_DIST = \
+	core/meta-enum-types.c.in \
+	core/meta-enum-types.h.in \
+	$(NULL)
 
 -include $(top_srcdir)/git.mk

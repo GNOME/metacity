@@ -43,6 +43,7 @@
 #include "window-props.h"
 #include "constraints.h"
 #include "meta-compositor.h"
+#include "meta-enum-types.h"
 #include "effects.h"
 
 #include <X11/Xatom.h>
@@ -137,6 +138,7 @@ enum
 
   PROP_APPEARS_FOCUSED,
   PROP_DECORATED,
+  PROP_WINDOW_TYPE,
   PROP_SHADED,
 
   LAST_PROP
@@ -6702,6 +6704,8 @@ recalc_window_type (MetaWindow *window)
 
       if (decorated != window->decorated)
         g_object_notify_by_pspec (G_OBJECT (window), properties[PROP_DECORATED]);
+
+      g_object_notify_by_pspec (G_OBJECT (window), properties[PROP_WINDOW_TYPE]);
     }
 }
 
@@ -9312,6 +9316,10 @@ meta_window_get_property (GObject    *object,
         g_value_set_boolean (value, window->decorated);
         break;
 
+      case PROP_WINDOW_TYPE:
+        g_value_set_enum (value, window->type);
+        break;
+
       case PROP_SHADED:
         g_value_set_boolean (value, window->shaded);
         break;
@@ -9332,6 +9340,11 @@ install_properties (GObjectClass *object_class)
   properties[PROP_DECORATED] =
     g_param_spec_boolean ("decorated", "decorated", "decorated",
                           TRUE, G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
+
+  properties[PROP_WINDOW_TYPE] =
+    g_param_spec_enum ("window-type", "window-type", "window-type",
+                       META_TYPE_WINDOW_TYPE, META_WINDOW_NORMAL,
+                       G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
 
   properties[PROP_SHADED] =
     g_param_spec_boolean ("shaded", "shaded", "shaded",
