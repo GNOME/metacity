@@ -25,6 +25,7 @@
 #include "errors.h"
 #include "frame.h"
 #include "meta-compositor-private.h"
+#include "prefs.h"
 #include "window-private.h"
 
 typedef struct
@@ -622,6 +623,55 @@ meta_surface_get_image (MetaSurface *self)
     }
 
   return META_SURFACE_GET_CLASS (self)->get_image (self);
+}
+
+gboolean
+meta_surface_has_shadow (MetaSurface *self)
+{
+  MetaSurfacePrivate *priv;
+
+  priv = meta_surface_get_instance_private (self);
+
+  /* Do not add shadows to fullscreen windows */
+  if (meta_window_is_fullscreen (priv->window))
+    return FALSE;
+
+  /* Do not add shadows to maximized windows */
+  if (meta_window_is_maximized (priv->window))
+    return FALSE;
+
+  /* Add shadows to windows with frame */
+  if (meta_window_get_frame (priv->window) != NULL)
+    {
+      /* Do not add shadows if GTK+ theme is used */
+      if (meta_prefs_get_theme_type () == META_THEME_TYPE_GTK)
+        return FALSE;
+
+      return TRUE;
+    }
+
+  /* Do not add shadows to non-opaque windows */
+  if (!meta_surface_is_opaque (self))
+    return FALSE;
+
+  /* Do not add shadows to client side decorated windows */
+  if (meta_window_is_client_decorated (priv->window))
+    return FALSE;
+
+  /* Never put a shadow around shaped windows */
+  if (priv->window->shape_region != None)
+    return FALSE;
+
+  /* Don't put shadow around DND icon windows */
+  if (priv->window->type == META_WINDOW_DND)
+    return FALSE;
+
+  /* Don't put shadow around desktop windows */
+  if (priv->window->type == META_WINDOW_DESKTOP)
+    return FALSE;
+
+  /* Add shadows to all other windows */
+  return TRUE;
 }
 
 gboolean

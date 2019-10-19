@@ -47,6 +47,8 @@ XserverRegion    meta_surface_get_shape_region      (MetaSurface        *self);
 
 cairo_surface_t *meta_surface_get_image             (MetaSurface        *self);
 
+gboolean         meta_surface_has_shadow            (MetaSurface        *self);
+
 gboolean         meta_surface_is_opaque             (MetaSurface        *self);
 
 gboolean         meta_surface_is_visible            (MetaSurface        *self);
