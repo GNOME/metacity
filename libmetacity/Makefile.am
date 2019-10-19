@@ -73,7 +73,6 @@ libmetacity_includedir = $(includedir)/metacity/libmetacity
 libmetacity_include_HEADERS = \
 	meta-button.h \
 	meta-color.h \
-	meta-enum-types.h \
 	meta-frame-borders.h \
 	meta-frame-enums.h \
 	meta-theme.h \
