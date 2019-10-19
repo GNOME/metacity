@@ -102,6 +102,8 @@ typedef struct _MetaCompWindow
   int shadow_dy;
   int shadow_width;
   int shadow_height;
+
+  gboolean shadow_changed;
 } MetaCompWindow;
 
 struct _MetaCompositorXRender
@@ -920,6 +922,32 @@ window_has_shadow (MetaCompositorXRender *xrender,
   return FALSE;
 }
 
+static void
+shadow_changed (MetaCompositorXRender *xrender,
+                MetaCompWindow        *cw)
+{
+  MetaCompositor *compositor;
+
+  compositor = META_COMPOSITOR (xrender);
+
+  if (cw->extents != None)
+    {
+      meta_compositor_add_damage (compositor, "shadow_changed", cw->extents);
+      XFixesDestroyRegion (xrender->xdisplay, cw->extents);
+      cw->extents = None;
+    }
+
+  if (cw->shadow != None)
+    {
+      XRenderFreePicture (xrender->xdisplay, cw->shadow);
+      cw->shadow = None;
+    }
+
+  meta_compositor_queue_redraw (compositor);
+
+  cw->shadow_changed = TRUE;
+}
+
 static XserverRegion
 win_extents (MetaCompositorXRender *xrender,
              MetaCompWindow        *cw)
@@ -1211,38 +1239,14 @@ notify_appears_focused_cb (MetaWindow            *window,
                            GParamSpec            *pspec,
                            MetaCompositorXRender *xrender)
 {
-  MetaCompositor *compositor;
   MetaCompWindow *cw;
-  Display *xdisplay;
 
-  compositor = META_COMPOSITOR (xrender);
   cw = find_comp_window_by_window (xrender, window);
 
   if (cw == NULL)
     return;
 
-  xdisplay = window->display->xdisplay;
-
-  if (meta_window_appears_focused (window))
-    cw->shadow_type = META_SHADOW_LARGE;
-  else
-    cw->shadow_type = META_SHADOW_MEDIUM;
-
-  if (cw->shadow)
-    {
-      XRenderFreePicture (xdisplay, cw->shadow);
-      cw->shadow = None;
-    }
-
-  if (cw->extents)
-    {
-      meta_compositor_add_damage (compositor,
-                                  "notify_appears_focused_cb",
-                                  cw->extents);
-
-      XFixesDestroyRegion (xdisplay, cw->extents);
-      cw->extents = None;
-    }
+  shadow_changed (xrender, cw);
 }
 
 static void
@@ -1250,32 +1254,15 @@ notify_decorated_cb (MetaWindow            *window,
                      GParamSpec            *pspec,
                      MetaCompositorXRender *xrender)
 {
-  MetaCompositor *compositor;
   MetaCompWindow *cw;
 
-  compositor = META_COMPOSITOR (xrender);
   cw = find_comp_window_by_window (xrender, window);
 
   if (cw == NULL)
     return;
 
-  if (cw->extents != None)
-    {
-      meta_compositor_add_damage (compositor, "notify_decorated_cb", cw->extents);
-      XFixesDestroyRegion (xrender->xdisplay, cw->extents);
-      cw->extents = None;
-    }
-
-  if (cw->shadow != None)
-    {
-      XRenderFreePicture (xrender->xdisplay, cw->shadow);
-      cw->shadow = None;
-    }
-
   determine_mode (xrender, cw);
-  cw->needs_shadow = window_has_shadow (xrender, cw);
-
-  meta_compositor_queue_redraw (compositor);
+  shadow_changed (xrender, cw);
 }
 
 static void
@@ -1283,31 +1270,14 @@ notify_window_type_cb (MetaWindow            *window,
                        GParamSpec            *pspec,
                        MetaCompositorXRender *xrender)
 {
-  MetaCompositor *compositor;
   MetaCompWindow *cw;
 
-  compositor = META_COMPOSITOR (xrender);
   cw = find_comp_window_by_window (xrender, window);
 
   if (cw == NULL)
     return;
 
-  if (cw->extents != None)
-    {
-      meta_compositor_add_damage (compositor, "notify_window_type_cb", cw->extents);
-      XFixesDestroyRegion (xrender->xdisplay, cw->extents);
-      cw->extents = None;
-    }
-
-  if (cw->shadow != None)
-    {
-      XRenderFreePicture (xrender->xdisplay, cw->shadow);
-      cw->shadow = None;
-    }
-
-  cw->needs_shadow = window_has_shadow (xrender, cw);
-
-  meta_compositor_queue_redraw (compositor);
+  shadow_changed (xrender, cw);
 }
 
 /* event processors must all be called with an error trap in place */
@@ -1407,13 +1377,7 @@ update_shadows (MetaPreference pref,
       surface = META_SURFACE (index->data);
       cw = g_object_get_data (G_OBJECT (surface), "cw");
 
-      if (cw->shadow != None)
-        {
-          XRenderFreePicture (xrender->xdisplay, cw->shadow);
-          cw->shadow = None;
-        }
-
-      cw->needs_shadow = window_has_shadow (xrender, cw);
+      shadow_changed (xrender, cw);
     }
 }
 
@@ -1602,20 +1566,9 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
                            G_CALLBACK (notify_window_type_cb),
                            xrender, 0);
 
-  cw->extents = None;
-  cw->shadow = None;
-  cw->shadow_dx = 0;
-  cw->shadow_dy = 0;
-  cw->shadow_width = 0;
-  cw->shadow_height = 0;
-
-  if (meta_window_appears_focused (window))
-    cw->shadow_type = META_SHADOW_LARGE;
-  else
-    cw->shadow_type = META_SHADOW_MEDIUM;
-
   determine_mode (xrender, cw);
-  cw->needs_shadow = window_has_shadow (xrender, cw);
+
+  cw->shadow_changed = TRUE;
 
   xwindow = meta_window_get_xwindow (window);
   g_hash_table_insert (xrender->windows_by_xid, (gpointer) xwindow, cw);
@@ -1639,12 +1592,7 @@ meta_compositor_xrender_remove_window (MetaCompositor *compositor,
   if (cw == NULL)
     return;
 
-  if (cw->extents != None)
-    {
-      meta_compositor_add_damage (compositor, "remove_window", cw->extents);
-      XFixesDestroyRegion (xrender->xdisplay, cw->extents);
-      cw->extents = None;
-    }
+  shadow_changed (xrender, cw);
 
   xwindow = meta_window_get_xwindow (window);
   g_hash_table_remove (xrender->windows_by_xid, (gpointer) xwindow);
@@ -1662,18 +1610,7 @@ meta_compositor_xrender_hide_window (MetaCompositor *compositor,
 
   cw = g_object_get_data (G_OBJECT (surface), "cw");
 
-  if (cw->extents != None)
-    {
-      meta_compositor_add_damage (compositor, "hide_window", cw->extents);
-      XFixesDestroyRegion (xrender->xdisplay, cw->extents);
-      cw->extents = None;
-    }
-
-  if (cw->shadow)
-    {
-      XRenderFreePicture (xrender->xdisplay, cw->shadow);
-      cw->shadow = None;
-    }
+  shadow_changed (xrender, cw);
 }
 
 static void
@@ -1688,23 +1625,7 @@ meta_compositor_xrender_window_opacity_changed (MetaCompositor *compositor,
   cw = g_object_get_data (G_OBJECT (surface), "cw");
 
   determine_mode (xrender, cw);
-  cw->needs_shadow = window_has_shadow (xrender, cw);
-
-  if (cw->shadow)
-    {
-      XRenderFreePicture (xrender->xdisplay, cw->shadow);
-      cw->shadow = None;
-    }
-
-  if (cw->extents)
-    {
-      meta_compositor_add_damage (compositor,
-                                  "window_opacity_changed",
-                                  cw->extents);
-
-      XFixesDestroyRegion (xrender->xdisplay, cw->extents);
-      cw->extents = None;
-    }
+  shadow_changed (xrender, cw);
 }
 
 static void
@@ -1770,30 +1691,24 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
 
   cw = g_object_get_data (G_OBJECT (surface), "cw");
 
-  cw->needs_shadow = window_has_shadow (xrender, cw);
-
-  meta_error_trap_push (cw->window->display);
-
   old_rect = cw->rect;
   meta_window_get_input_rect (cw->window, &cw->rect);
 
   if (cw->rect.width != old_rect.width || cw->rect.height != old_rect.height)
     {
-      if (cw->shadow != None)
-        {
-          XRenderFreePicture (xrender->xdisplay, cw->shadow);
-          cw->shadow = None;
-        }
+      shadow_changed (xrender, cw);
     }
-
-  if (cw->extents != None)
+  else if (cw->extents != None)
     {
       meta_compositor_add_damage (compositor, "sync_window_geometry", cw->extents);
-      XFixesDestroyRegion (xrender->xdisplay, cw->extents);
-      cw->extents = None;
-    }
 
-  meta_error_trap_pop (cw->window->display);
+      XFixesTranslateRegion (xrender->xdisplay,
+                             cw->extents,
+                             cw->rect.x - old_rect.x,
+                             cw->rect.y - old_rect.y);
+
+      meta_compositor_add_damage (compositor, "sync_window_geometry", cw->extents);
+    }
 }
 
 static void
@@ -1818,8 +1733,17 @@ meta_compositor_xrender_pre_paint (MetaCompositor *compositor)
       surface = META_SURFACE (l->data);
       cw = g_object_get_data (G_OBJECT (surface), "cw");
 
-      if (cw->extents == None)
+      if (cw->shadow_changed)
         {
+          if (meta_window_appears_focused (cw->window))
+            cw->shadow_type = META_SHADOW_LARGE;
+          else
+            cw->shadow_type = META_SHADOW_MEDIUM;
+
+          determine_mode (xrender, cw);
+          cw->needs_shadow = window_has_shadow (xrender, cw);
+
+          g_assert (cw->extents == None);
           cw->extents = win_extents (xrender, cw);
 
           if (cw->extents != None)
@@ -1828,6 +1752,8 @@ meta_compositor_xrender_pre_paint (MetaCompositor *compositor)
                                           "meta_compositor_xrender_pre_paint",
                                           cw->extents);
             }
+
+          cw->shadow_changed = FALSE;
         }
     }
 }
