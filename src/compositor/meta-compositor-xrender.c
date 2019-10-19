@@ -1259,8 +1259,6 @@ notify_decorated_cb (MetaWindow            *window,
   if (cw == NULL)
     return;
 
-  meta_error_trap_push (window->display);
-
   if (cw->extents != None)
     {
       meta_compositor_add_damage (compositor, "notify_decorated_cb", cw->extents);
@@ -1276,8 +1274,6 @@ notify_decorated_cb (MetaWindow            *window,
 
   determine_mode (xrender, cw);
   cw->needs_shadow = window_has_shadow (xrender, cw);
-
-  meta_error_trap_pop (window->display);
 
   meta_compositor_queue_redraw (compositor);
 }
