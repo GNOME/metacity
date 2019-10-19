@@ -839,89 +839,6 @@ paint_root (MetaCompositorXRender *xrender,
                     0, 0, 0, 0, 0, 0, width, height);
 }
 
-static gboolean
-window_has_shadow (MetaCompositorXRender *xrender,
-                   MetaCompWindow        *cw)
-{
-  if (xrender->have_shadows == FALSE)
-    return FALSE;
-
-  /* Do not add shadows to client side decorated windows */
-  if (meta_window_is_client_decorated (cw->window))
-    {
-      meta_verbose ("Window might have shadow because it is client side decorated\n");
-      return FALSE;
-    }
-
-  /* Do not add shadows to fullscreen windows */
-  if (meta_window_is_fullscreen (cw->window))
-    {
-      meta_verbose ("Window has no shadow because it is fullscreen\n");
-      return FALSE;
-    }
-
-  /* Do not add shadows to maximized windows */
-  if (meta_window_is_maximized (cw->window))
-    {
-      meta_verbose ("Window has no shadow because it is maximized\n");
-      return FALSE;
-    }
-
-  /* Add shadows to windows with frame */
-  if (meta_window_get_frame (cw->window))
-    {
-      /* Do not add shadows if GTK+ theme is used */
-      if (meta_prefs_get_theme_type () == META_THEME_TYPE_GTK)
-        {
-          meta_verbose ("Window might have shadow from GTK+ theme\n");
-          return FALSE;
-        }
-
-      meta_verbose ("Window has shadow because it has a frame\n");
-      return TRUE;
-    }
-
-  /* Do not add shadows to ARGB windows */
-  if (cw->mode == WINDOW_ARGB)
-    {
-      meta_verbose ("Window has no shadow as it is ARGB\n");
-      return FALSE;
-    }
-
-  /* Never put a shadow around shaped windows */
-  if (cw->window->shape_region != None)
-    {
-      meta_verbose ("Window has no shadow as it is shaped\n");
-      return FALSE;
-    }
-
-  /* Don't put shadow around DND icon windows */
-  if (cw->window->type == META_WINDOW_DND ||
-      cw->window->type == META_WINDOW_DESKTOP) {
-    meta_verbose ("Window has no shadow as it is DND or Desktop\n");
-    return FALSE;
-  }
-
-  if (cw->mode != WINDOW_ARGB) {
-    meta_verbose ("Window has shadow as it is not ARGB\n");
-    return TRUE;
-  }
-
-  if (cw->window->type == META_WINDOW_MENU ||
-      cw->window->type == META_WINDOW_DROPDOWN_MENU) {
-    meta_verbose ("Window has shadow as it is a menu\n");
-    return TRUE;
-  }
-
-  if (cw->window->type == META_WINDOW_TOOLTIP) {
-    meta_verbose ("Window has shadow as it is a tooltip\n");
-    return TRUE;
-  }
-
-  meta_verbose ("Window has no shadow as it fell through\n");
-  return FALSE;
-}
-
 static void
 shadow_changed (MetaCompositorXRender *xrender,
                 MetaCompWindow        *cw)
@@ -929,6 +846,9 @@ shadow_changed (MetaCompositorXRender *xrender,
   MetaCompositor *compositor;
 
   compositor = META_COMPOSITOR (xrender);
+
+  if (xrender->have_shadows == FALSE)
+    return;
 
   if (cw->extents != None)
     {
@@ -1568,7 +1488,7 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
 
   determine_mode (xrender, cw);
 
-  cw->shadow_changed = TRUE;
+  cw->shadow_changed = xrender->have_shadows;
 
   xwindow = meta_window_get_xwindow (window);
   g_hash_table_insert (xrender->windows_by_xid, (gpointer) xwindow, cw);
@@ -1741,7 +1661,7 @@ meta_compositor_xrender_pre_paint (MetaCompositor *compositor)
             cw->shadow_type = META_SHADOW_MEDIUM;
 
           determine_mode (xrender, cw);
-          cw->needs_shadow = window_has_shadow (xrender, cw);
+          cw->needs_shadow = meta_surface_has_shadow (surface);
 
           g_assert (cw->extents == None);
           cw->extents = win_extents (xrender, cw);
