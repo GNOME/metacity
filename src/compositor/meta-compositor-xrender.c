@@ -1278,6 +1278,38 @@ notify_decorated_cb (MetaWindow            *window,
   meta_compositor_queue_redraw (compositor);
 }
 
+static void
+notify_window_type_cb (MetaWindow            *window,
+                       GParamSpec            *pspec,
+                       MetaCompositorXRender *xrender)
+{
+  MetaCompositor *compositor;
+  MetaCompWindow *cw;
+
+  compositor = META_COMPOSITOR (xrender);
+  cw = find_comp_window_by_window (xrender, window);
+
+  if (cw == NULL)
+    return;
+
+  if (cw->extents != None)
+    {
+      meta_compositor_add_damage (compositor, "notify_window_type_cb", cw->extents);
+      XFixesDestroyRegion (xrender->xdisplay, cw->extents);
+      cw->extents = None;
+    }
+
+  if (cw->shadow != None)
+    {
+      XRenderFreePicture (xrender->xdisplay, cw->shadow);
+      cw->shadow = None;
+    }
+
+  cw->needs_shadow = window_has_shadow (xrender, cw);
+
+  meta_compositor_queue_redraw (compositor);
+}
+
 /* event processors must all be called with an error trap in place */
 static void
 process_property_notify (MetaCompositorXRender *xrender,
@@ -1307,17 +1339,6 @@ process_property_notify (MetaCompositorXRender *xrender,
           meta_compositor_damage_screen (compositor);
           return;
         }
-    }
-
-  if (event->atom == display->atom__NET_WM_WINDOW_TYPE)
-    {
-      MetaCompWindow *cw = find_comp_window_by_xwindow (xrender, event->window);
-
-      if (!cw)
-        return;
-
-      cw->needs_shadow = window_has_shadow (xrender, cw);
-      return;
     }
 }
 
@@ -1575,6 +1596,10 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
 
   g_signal_connect_object (window, "notify::decorated",
                            G_CALLBACK (notify_decorated_cb),
+                           xrender, 0);
+
+  g_signal_connect_object (window, "notify::window-type",
+                           G_CALLBACK (notify_window_type_cb),
                            xrender, 0);
 
   cw->extents = None;
