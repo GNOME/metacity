@@ -607,17 +607,6 @@ find_comp_window_by_xwindow (MetaCompositorXRender *xrender,
   return NULL;
 }
 
-static MetaCompWindow *
-find_comp_window_by_window (MetaCompositorXRender *xrender,
-                            MetaWindow            *window)
-{
-  Window xwindow;
-
-  xwindow = meta_window_get_xwindow (window);
-
-  return g_hash_table_lookup (xrender->windows_by_xid, (gpointer) xwindow);
-}
-
 static Picture
 solid_picture (Display  *xdisplay,
                gboolean  argb,
@@ -820,15 +809,19 @@ paint_root (MetaCompositorXRender *xrender,
 }
 
 static void
-shadow_changed (MetaCompositorXRender *xrender,
-                MetaCompWindow        *cw)
+shadow_changed (MetaSurface *surface)
 {
   MetaCompositor *compositor;
+  MetaCompositorXRender *xrender;
+  MetaCompWindow *cw;
 
-  compositor = META_COMPOSITOR (xrender);
+  compositor = meta_surface_get_compositor (surface);
+  xrender = META_COMPOSITOR_XRENDER (compositor);
 
   if (xrender->have_shadows == FALSE)
     return;
+
+  cw = g_object_get_data (G_OBJECT (surface), "cw");
 
   if (cw->shadow_region != None)
     {
@@ -1129,48 +1122,27 @@ cw_destroy_cb (gpointer data)
 }
 
 static void
-notify_appears_focused_cb (MetaWindow            *window,
-                           GParamSpec            *pspec,
-                           MetaCompositorXRender *xrender)
+notify_appears_focused_cb (MetaWindow  *window,
+                           GParamSpec  *pspec,
+                           MetaSurface *surface)
 {
-  MetaCompWindow *cw;
-
-  cw = find_comp_window_by_window (xrender, window);
-
-  if (cw == NULL)
-    return;
-
-  shadow_changed (xrender, cw);
+  shadow_changed (surface);
 }
 
 static void
-notify_decorated_cb (MetaWindow            *window,
-                     GParamSpec            *pspec,
-                     MetaCompositorXRender *xrender)
+notify_decorated_cb (MetaWindow  *window,
+                     GParamSpec  *pspec,
+                     MetaSurface *surface)
 {
-  MetaCompWindow *cw;
-
-  cw = find_comp_window_by_window (xrender, window);
-
-  if (cw == NULL)
-    return;
-
-  shadow_changed (xrender, cw);
+  shadow_changed (surface);
 }
 
 static void
-notify_window_type_cb (MetaWindow            *window,
-                       GParamSpec            *pspec,
-                       MetaCompositorXRender *xrender)
+notify_window_type_cb (MetaWindow  *window,
+                       GParamSpec  *pspec,
+                       MetaSurface *surface)
 {
-  MetaCompWindow *cw;
-
-  cw = find_comp_window_by_window (xrender, window);
-
-  if (cw == NULL)
-    return;
-
-  shadow_changed (xrender, cw);
+  shadow_changed (surface);
 }
 
 /* event processors must all be called with an error trap in place */
@@ -1252,26 +1224,16 @@ static void
 update_shadows (MetaPreference pref,
                 gpointer       data)
 {
-  MetaCompositorXRender *xrender;
   GList *stack;
   GList *index;
 
   if (pref != META_PREF_THEME_TYPE)
     return;
 
-  xrender = META_COMPOSITOR_XRENDER (data);
   stack = meta_compositor_get_stack (META_COMPOSITOR (data));
 
   for (index = stack; index; index = index->next)
-    {
-      MetaSurface *surface;
-      MetaCompWindow *cw;
-
-      surface = META_SURFACE (index->data);
-      cw = g_object_get_data (G_OBJECT (surface), "cw");
-
-      shadow_changed (xrender, cw);
-    }
+    shadow_changed (META_SURFACE (index->data));
 }
 
 static void
@@ -1449,15 +1411,15 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
 
   g_signal_connect_object (window, "notify::appears-focused",
                            G_CALLBACK (notify_appears_focused_cb),
-                           xrender, 0);
+                           surface, 0);
 
   g_signal_connect_object (window, "notify::decorated",
                            G_CALLBACK (notify_decorated_cb),
-                           xrender, 0);
+                           surface, 0);
 
   g_signal_connect_object (window, "notify::window-type",
                            G_CALLBACK (notify_window_type_cb),
-                           xrender, 0);
+                           surface, 0);
 
   cw->shadow_changed = xrender->have_shadows;
 
@@ -1481,7 +1443,7 @@ meta_compositor_xrender_remove_window (MetaCompositor *compositor,
 
   cw = g_object_get_data (G_OBJECT (surface), "cw");
 
-  shadow_changed (xrender, cw);
+  shadow_changed (surface);
 
   xwindow = meta_window_get_xwindow (cw->window);
   g_hash_table_remove (xrender->windows_by_xid, (gpointer) xwindow);
@@ -1492,28 +1454,14 @@ meta_compositor_xrender_hide_window (MetaCompositor *compositor,
                                      MetaSurface    *surface,
                                      MetaEffectType  effect)
 {
-  MetaCompositorXRender *xrender;
-  MetaCompWindow *cw;
-
-  xrender = META_COMPOSITOR_XRENDER (compositor);
-
-  cw = g_object_get_data (G_OBJECT (surface), "cw");
-
-  shadow_changed (xrender, cw);
+  shadow_changed (surface);
 }
 
 static void
 meta_compositor_xrender_window_opacity_changed (MetaCompositor *compositor,
                                                 MetaSurface    *surface)
 {
-  MetaCompositorXRender *xrender;
-  MetaCompWindow *cw;
-
-  xrender = META_COMPOSITOR_XRENDER (compositor);
-
-  cw = g_object_get_data (G_OBJECT (surface), "cw");
-
-  shadow_changed (xrender, cw);
+  shadow_changed (surface);
 }
 
 static void
@@ -1584,7 +1532,7 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
 
   if (cw->rect.width != old_rect.width || cw->rect.height != old_rect.height)
     {
-      shadow_changed (xrender, cw);
+      shadow_changed (surface);
     }
   else if (cw->shadow_region != None)
     {
