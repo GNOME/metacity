@@ -42,7 +42,7 @@ meta_compositor_none_add_window (MetaCompositor *compositor,
 
 static void
 meta_compositor_none_remove_window (MetaCompositor *compositor,
-                                    MetaWindow     *window)
+                                    MetaSurface    *surface)
 {
 }
 

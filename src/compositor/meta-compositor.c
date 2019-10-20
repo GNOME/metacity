@@ -430,12 +430,11 @@ meta_compositor_remove_window (MetaCompositor *compositor,
 
   priv = meta_compositor_get_instance_private (compositor);
 
-  META_COMPOSITOR_GET_CLASS (compositor)->remove_window (compositor, window);
-
   surface = g_hash_table_lookup (priv->surfaces, window);
-
   if (surface == NULL)
     return;
+
+  META_COMPOSITOR_GET_CLASS (compositor)->remove_window (compositor, surface);
 
   priv->stack = g_list_remove (priv->stack, surface);
   g_hash_table_remove (priv->surfaces, window);
