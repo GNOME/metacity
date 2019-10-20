@@ -105,7 +105,6 @@ struct _MetaCompositorXRender
   Display        *xdisplay;
 
   MetaScreen     *screen;
-  GHashTable     *windows_by_xid;
 
   Window          overlay_window;
 
@@ -1205,9 +1204,6 @@ meta_compositor_xrender_finalize (GObject *object)
       xrender->prefs_listener_added = FALSE;
     }
 
-  /* Destroy the windows */
-  g_clear_pointer (&xrender->windows_by_xid, g_hash_table_destroy);
-
   if (xrender->root_picture)
     XRenderFreePicture (xdisplay, xrender->root_picture);
 
@@ -1295,8 +1291,6 @@ meta_compositor_xrender_manage (MetaCompositor  *compositor,
 
   xrender->root_tile = None;
 
-  xrender->windows_by_xid = g_hash_table_new (g_direct_hash, g_direct_equal);
-
   xrender->have_shadows = (g_getenv("META_DEBUG_NO_SHADOW") == NULL);
   if (xrender->have_shadows)
     {
@@ -1326,7 +1320,6 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
   MetaDisplay *display;
   MetaSurface *surface;
   MetaCompWindow *cw;
-  Window xwindow;
 
   xrender = META_COMPOSITOR_XRENDER (compositor);
   display = meta_compositor_get_display (compositor);
@@ -1359,9 +1352,6 @@ meta_compositor_xrender_add_window (MetaCompositor *compositor,
 
   cw->shadow_changed = xrender->have_shadows;
 
-  xwindow = meta_window_get_xwindow (window);
-  g_hash_table_insert (xrender->windows_by_xid, (gpointer) xwindow, cw);
-
   meta_error_trap_pop (display);
 
   return surface;
@@ -1371,18 +1361,7 @@ static void
 meta_compositor_xrender_remove_window (MetaCompositor *compositor,
                                        MetaSurface    *surface)
 {
-  MetaCompositorXRender *xrender;
-  MetaCompWindow *cw;
-  Window xwindow;
-
-  xrender = META_COMPOSITOR_XRENDER (compositor);
-
-  cw = g_object_get_data (G_OBJECT (surface), "cw");
-
   shadow_changed (surface);
-
-  xwindow = meta_window_get_xwindow (cw->window);
-  g_hash_table_remove (xrender->windows_by_xid, (gpointer) xwindow);
 }
 
 static void
