@@ -87,7 +87,6 @@ typedef struct _MetaCompWindow
 
   MetaRectangle rect;
 
-  gboolean needs_shadow;
   MetaShadowType shadow_type;
 
   XserverRegion extents;
@@ -863,9 +862,6 @@ win_extents (MetaCompositorXRender *xrender,
   MetaFrameBorders borders;
   XRectangle sr;
 
-  if (!cw->needs_shadow)
-    return None;
-
   r.x = cw->rect.x;
   r.y = cw->rect.y;
   r.width = cw->rect.width;
@@ -937,7 +933,7 @@ paint_dock_shadows (MetaCompositorXRender *xrender,
       cw = g_object_get_data (G_OBJECT (surface), "cw");
 
       if (cw->window->type == META_WINDOW_DOCK &&
-          cw->needs_shadow && cw->shadow)
+          cw->shadow != None)
         {
           XserverRegion border_clip;
 
@@ -1631,14 +1627,13 @@ meta_compositor_xrender_pre_paint (MetaCompositor *compositor)
       surface = META_SURFACE (l->data);
       cw = g_object_get_data (G_OBJECT (surface), "cw");
 
-      if (cw->shadow_changed)
+      if (cw->shadow_changed &&
+          meta_surface_has_shadow (surface))
         {
           if (meta_window_appears_focused (cw->window))
             cw->shadow_type = META_SHADOW_LARGE;
           else
             cw->shadow_type = META_SHADOW_MEDIUM;
-
-          cw->needs_shadow = meta_surface_has_shadow (surface);
 
           g_assert (cw->extents == None);
           cw->extents = win_extents (xrender, cw);
