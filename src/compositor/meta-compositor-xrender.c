@@ -89,7 +89,7 @@ typedef struct _MetaCompWindow
 
   MetaShadowType shadow_type;
 
-  XserverRegion extents;
+  XserverRegion shadow_region;
 
   Picture shadow;
   int shadow_dx;
@@ -835,11 +835,11 @@ shadow_changed (MetaCompositorXRender *xrender,
   if (xrender->have_shadows == FALSE)
     return;
 
-  if (cw->extents != None)
+  if (cw->shadow_region != None)
     {
-      meta_compositor_add_damage (compositor, "shadow_changed", cw->extents);
-      XFixesDestroyRegion (xrender->xdisplay, cw->extents);
-      cw->extents = None;
+      meta_compositor_add_damage (compositor, "shadow_changed", cw->shadow_region);
+      XFixesDestroyRegion (xrender->xdisplay, cw->shadow_region);
+      cw->shadow_region = None;
     }
 
   if (cw->shadow != None)
@@ -854,8 +854,8 @@ shadow_changed (MetaCompositorXRender *xrender,
 }
 
 static XserverRegion
-win_extents (MetaCompositorXRender *xrender,
-             MetaCompWindow        *cw)
+get_shadow_region (MetaCompositorXRender *xrender,
+                   MetaCompWindow        *cw)
 {
   XRectangle r;
   MetaFrame *frame;
@@ -1123,10 +1123,10 @@ cw_destroy_cb (gpointer data)
       cw->shadow = None;
     }
 
-  if (cw->extents)
+  if (cw->shadow_region != None)
     {
-      XFixesDestroyRegion (xdisplay, cw->extents);
-      cw->extents = None;
+      XFixesDestroyRegion (xdisplay, cw->shadow_region);
+      cw->shadow_region = None;
     }
 
   g_free (cw);
@@ -1592,16 +1592,16 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
     {
       shadow_changed (xrender, cw);
     }
-  else if (cw->extents != None)
+  else if (cw->shadow_region != None)
     {
-      meta_compositor_add_damage (compositor, "sync_window_geometry", cw->extents);
+      meta_compositor_add_damage (compositor, "sync_window_geometry", cw->shadow_region);
 
       XFixesTranslateRegion (xrender->xdisplay,
-                             cw->extents,
+                             cw->shadow_region,
                              cw->rect.x - old_rect.x,
                              cw->rect.y - old_rect.y);
 
-      meta_compositor_add_damage (compositor, "sync_window_geometry", cw->extents);
+      meta_compositor_add_damage (compositor, "sync_window_geometry", cw->shadow_region);
     }
 }
 
@@ -1637,14 +1637,14 @@ meta_compositor_xrender_pre_paint (MetaCompositor *compositor)
           else
             cw->shadow_type = META_SHADOW_MEDIUM;
 
-          g_assert (cw->extents == None);
-          cw->extents = win_extents (xrender, cw);
+          g_assert (cw->shadow_region == None);
+          cw->shadow_region = get_shadow_region (xrender, cw);
 
-          if (cw->extents != None)
+          if (cw->shadow_region != None)
             {
               meta_compositor_add_damage (compositor,
                                           "meta_compositor_xrender_pre_paint",
-                                          cw->extents);
+                                          cw->shadow_region);
             }
 
           cw->shadow_changed = FALSE;
