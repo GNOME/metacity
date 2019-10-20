@@ -542,13 +542,45 @@ meta_compositor_process_event (MetaCompositor *compositor,
 {
   MetaCompositorPrivate *priv;
   MetaCompositorClass *compositor_class;
+  int damage_event_base;
 
   priv = meta_compositor_get_instance_private (compositor);
 
   compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
   compositor_class->process_event (compositor, event, window);
 
-  if (event->type == meta_display_get_damage_event_base (priv->display) + XDamageNotify)
+  damage_event_base = meta_display_get_damage_event_base (priv->display);
+
+  if (event->type == Expose)
+    {
+      XExposeEvent *expose_event;
+      MetaSurface *surface;
+      XRectangle rect;
+      XserverRegion region;
+
+      expose_event = (XExposeEvent *) event;
+
+      if (window != NULL)
+        surface = g_hash_table_lookup (priv->surfaces, window);
+      else
+        surface = find_surface_by_xwindow (compositor, expose_event->window);
+
+      rect.x = expose_event->x;
+      rect.y = expose_event->y;
+      rect.width = expose_event->width;
+      rect.height = expose_event->height;
+
+      if (surface != NULL)
+        {
+          rect.x += meta_surface_get_x (surface);
+          rect.y += meta_surface_get_y (surface);
+        }
+
+      region = XFixesCreateRegion (priv->display->xdisplay, &rect, 1);
+      meta_compositor_add_damage (compositor, "XExposeEvent", region);
+      XFixesDestroyRegion (priv->display->xdisplay, region);
+    }
+  else if (event->type == damage_event_base + XDamageNotify)
     {
       XDamageNotifyEvent *damage_event;
       MetaSurface *surface;

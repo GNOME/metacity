@@ -578,35 +578,6 @@ shadow_picture (MetaCompositorXRender *xrender,
   return shadow_picture;
 }
 
-static MetaCompWindow *
-find_comp_window_by_xwindow (MetaCompositorXRender *xrender,
-                             Window                 xwindow)
-{
-  GHashTableIter iter;
-  MetaCompWindow *cw;
-
-  g_hash_table_iter_init (&iter, xrender->windows_by_xid);
-  while (g_hash_table_iter_next (&iter, NULL, (gpointer) &cw))
-    {
-      MetaFrame *frame;
-
-      frame = meta_window_get_frame (cw->window);
-
-      if (frame)
-        {
-          if (meta_frame_get_xwindow (frame) == xwindow)
-            return cw;
-        }
-      else
-        {
-          if (meta_window_get_xwindow (cw->window) == xwindow)
-            return cw;
-        }
-    }
-
-  return NULL;
-}
-
 static Picture
 solid_picture (Display  *xdisplay,
                gboolean  argb,
@@ -1177,41 +1148,6 @@ process_property_notify (MetaCompositorXRender *xrender,
     }
 }
 
-static void
-expose_area (MetaCompositorXRender *xrender,
-             XRectangle            *rects,
-             int                    nrects)
-{
-  XserverRegion region;
-
-  region = XFixesCreateRegion (xrender->xdisplay, rects, nrects);
-
-  meta_compositor_add_damage (META_COMPOSITOR (xrender), "expose_area", region);
-  XFixesDestroyRegion (xrender->xdisplay, region);
-}
-
-static void
-process_expose (MetaCompositorXRender *xrender,
-                XExposeEvent          *event)
-{
-  MetaCompWindow *cw = find_comp_window_by_xwindow (xrender, event->window);
-  XRectangle rect[1];
-  int origin_x = 0, origin_y = 0;
-
-  if (cw != NULL)
-    {
-      origin_x = cw->rect.x;
-      origin_y = cw->rect.y;
-    }
-
-  rect[0].x = event->x + origin_x;
-  rect[0].y = event->y + origin_y;
-  rect[0].width = event->width;
-  rect[0].height = event->height;
-
-  expose_area (xrender, rect, 1);
-}
-
 static int
 timeout_debug (MetaCompositorXRender *compositor)
 {
@@ -1486,10 +1422,6 @@ meta_compositor_xrender_process_event (MetaCompositor *compositor,
     {
     case PropertyNotify:
       process_property_notify (xrender, (XPropertyEvent *) event);
-      break;
-
-    case Expose:
-      process_expose (xrender, (XExposeEvent *) event);
       break;
 
     default:
