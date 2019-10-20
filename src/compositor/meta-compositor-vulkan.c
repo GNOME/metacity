@@ -1315,6 +1315,7 @@ meta_compositor_vulkan_sync_window_geometry (MetaCompositor *compositor,
 static void
 meta_compositor_vulkan_pre_paint (MetaCompositor *compositor)
 {
+  META_COMPOSITOR_CLASS (meta_compositor_vulkan_parent_class)->pre_paint (compositor);
 }
 
 static void

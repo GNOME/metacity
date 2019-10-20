@@ -169,17 +169,11 @@ redraw_idle_cb (gpointer user_data)
 {
   MetaCompositor *compositor;
   MetaCompositorPrivate *priv;
-  GHashTableIter iter;
-  MetaSurface *surface;
 
   compositor = META_COMPOSITOR (user_data);
   priv = meta_compositor_get_instance_private (compositor);
 
   META_COMPOSITOR_GET_CLASS (compositor)->pre_paint (compositor);
-
-  g_hash_table_iter_init (&iter, priv->surfaces);
-  while (g_hash_table_iter_next (&iter, NULL, (gpointer) &surface))
-    meta_surface_pre_paint (surface);
 
   if (priv->all_damage != None)
     {
@@ -344,6 +338,20 @@ meta_compositor_set_property (GObject      *object,
 }
 
 static void
+meta_compositor_pre_paint (MetaCompositor *compositor)
+{
+  MetaCompositorPrivate *priv;
+  GHashTableIter iter;
+  MetaSurface *surface;
+
+  priv = meta_compositor_get_instance_private (compositor);
+
+  g_hash_table_iter_init (&iter, priv->surfaces);
+  while (g_hash_table_iter_next (&iter, NULL, (gpointer) &surface))
+    meta_surface_pre_paint (surface);
+}
+
+static void
 install_properties (GObjectClass *object_class)
 {
   properties[PROP_DISPLAY] =
@@ -370,6 +378,8 @@ meta_compositor_class_init (MetaCompositorClass *compositor_class)
   object_class->finalize = meta_compositor_finalize;
   object_class->get_property = meta_compositor_get_property;
   object_class->set_property = meta_compositor_set_property;
+
+  compositor_class->pre_paint = meta_compositor_pre_paint;
 
   install_properties (object_class);
 }

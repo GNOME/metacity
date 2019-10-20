@@ -1617,6 +1617,8 @@ meta_compositor_xrender_pre_paint (MetaCompositor *compositor)
   if (xrender->root_buffer == None)
     xrender->root_buffer = create_root_buffer (xrender);
 
+  META_COMPOSITOR_CLASS (meta_compositor_xrender_parent_class)->pre_paint (compositor);
+
   stack = meta_compositor_get_stack (compositor);
 
   for (l = stack; l != NULL; l = l->next)
