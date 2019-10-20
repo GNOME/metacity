@@ -811,12 +811,7 @@ paint_root (MetaCompositorXRender *xrender,
   int width, height;
 
   g_return_if_fail (root_buffer != None);
-
-  if (xrender->root_tile == None)
-    {
-      xrender->root_tile = root_tile (xrender->screen);
-      g_return_if_fail (xrender->root_tile != None);
-    }
+  g_return_if_fail (xrender->root_tile != None);
 
   meta_screen_get_size (xrender->screen, &width, &height);
   XRenderComposite (xrender->xdisplay, PictOpSrc,
@@ -1616,6 +1611,9 @@ meta_compositor_xrender_pre_paint (MetaCompositor *compositor)
 
   if (xrender->root_buffer == None)
     xrender->root_buffer = create_root_buffer (xrender);
+
+  if (xrender->root_tile == None)
+    xrender->root_tile = root_tile (xrender->screen);
 
   META_COMPOSITOR_CLASS (meta_compositor_xrender_parent_class)->pre_paint (compositor);
 
