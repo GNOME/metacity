@@ -87,8 +87,6 @@ typedef struct _MetaCompWindow
 
   MetaRectangle rect;
 
-  MetaShadowType shadow_type;
-
   XserverRegion shadow_region;
 
   Picture shadow;
@@ -477,6 +475,7 @@ static void
 shadow_picture_clip (Display          *xdisplay,
                      Picture           shadow_picture,
                      MetaCompWindow   *cw,
+                     MetaShadowType    shadow_type,
                      MetaFrameBorders  borders,
                      int               width,
                      int               height)
@@ -493,8 +492,8 @@ shadow_picture_clip (Display          *xdisplay,
   if (!visible_region)
     return;
 
-  shadow_dx = -1 * (int) shadow_offsets_x [cw->shadow_type] - borders.invisible.left;
-  shadow_dy = -1 * (int) shadow_offsets_y [cw->shadow_type] - borders.invisible.top;
+  shadow_dx = -1 * (int) shadow_offsets_x [shadow_type] - borders.invisible.left;
+  shadow_dy = -1 * (int) shadow_offsets_y [shadow_type] - borders.invisible.top;
 
   rect.x = 0;
   rect.y = 0;
@@ -517,6 +516,7 @@ shadow_picture_clip (Display          *xdisplay,
 static Picture
 shadow_picture (MetaCompositorXRender *xrender,
                 MetaCompWindow        *cw,
+                MetaShadowType         shadow_type,
                 double                 opacity,
                 MetaFrameBorders       borders,
                 int                    width,
@@ -530,7 +530,7 @@ shadow_picture (MetaCompositorXRender *xrender,
   Picture shadow_picture;
   GC gc;
 
-  shadow_image = make_shadow (xrender, cw->shadow_type, opacity, width, height);
+  shadow_image = make_shadow (xrender, shadow_type, opacity, width, height);
 
   if (!shadow_image)
     return None;
@@ -554,7 +554,7 @@ shadow_picture (MetaCompositorXRender *xrender,
       return None;
     }
 
-  shadow_picture_clip (xdisplay, shadow_picture, cw, borders,
+  shadow_picture_clip (xdisplay, shadow_picture, cw, shadow_type, borders,
                        shadow_image->width, shadow_image->height);
 
   gc = XCreateGC (xdisplay, shadow_pixmap, 0, 0);
@@ -850,7 +850,8 @@ shadow_changed (MetaCompositorXRender *xrender,
 
 static XserverRegion
 get_shadow_region (MetaCompositorXRender *xrender,
-                   MetaCompWindow        *cw)
+                   MetaCompWindow        *cw,
+                   MetaShadowType         shadow_type)
 {
   XRectangle r;
   MetaFrame *frame;
@@ -865,8 +866,8 @@ get_shadow_region (MetaCompositorXRender *xrender,
   frame = meta_window_get_frame (cw->window);
   meta_frame_calc_borders (frame, &borders);
 
-  cw->shadow_dx = (int) shadow_offsets_x [cw->shadow_type] + borders.invisible.left;
-  cw->shadow_dy = (int) shadow_offsets_y [cw->shadow_type] + borders.invisible.top;
+  cw->shadow_dx = (int) shadow_offsets_x [shadow_type] + borders.invisible.left;
+  cw->shadow_dy = (int) shadow_offsets_y [shadow_type] + borders.invisible.top;
 
   if (!cw->shadow)
     {
@@ -877,7 +878,7 @@ get_shadow_region (MetaCompositorXRender *xrender,
       if (cw->window->opacity != (guint) OPAQUE)
         opacity = opacity * ((double) cw->window->opacity) / ((double) OPAQUE);
 
-      cw->shadow = shadow_picture (xrender, cw, opacity, borders,
+      cw->shadow = shadow_picture (xrender, cw, shadow_type, opacity, borders,
                                    cw->rect.width - invisible_width,
                                    cw->rect.height - invisible_height,
                                    &cw->shadow_width, &cw->shadow_height);
@@ -1630,13 +1631,15 @@ meta_compositor_xrender_pre_paint (MetaCompositor *compositor)
       if (cw->shadow_changed &&
           meta_surface_has_shadow (surface))
         {
+          MetaShadowType shadow_type;
+
           if (meta_window_appears_focused (cw->window))
-            cw->shadow_type = META_SHADOW_LARGE;
+            shadow_type = META_SHADOW_LARGE;
           else
-            cw->shadow_type = META_SHADOW_MEDIUM;
+            shadow_type = META_SHADOW_MEDIUM;
 
           g_assert (cw->shadow_region == None);
-          cw->shadow_region = get_shadow_region (xrender, cw);
+          cw->shadow_region = get_shadow_region (xrender, cw, shadow_type);
 
           if (cw->shadow_region != None)
             {
