@@ -75,6 +75,26 @@ static GParamSpec *surface_properties[LAST_PROP] = { NULL };
 
 G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (MetaSurface, meta_surface, G_TYPE_OBJECT)
 
+static void
+add_full_damage (MetaSurface *self)
+{
+  MetaSurfacePrivate *priv;
+  XserverRegion full_damage;
+
+  priv = meta_surface_get_instance_private (self);
+
+  if (priv->shape_region == None)
+    return;
+
+  full_damage = XFixesCreateRegion (priv->xdisplay, NULL, 0);
+  XFixesCopyRegion (priv->xdisplay, full_damage, priv->shape_region);
+
+  XFixesTranslateRegion (priv->xdisplay, full_damage, priv->x, priv->y);
+
+  meta_compositor_add_damage (priv->compositor, "add_full_damage", full_damage);
+  XFixesDestroyRegion (priv->xdisplay, full_damage);
+}
+
 static gboolean
 is_region_empty (Display       *xdisplay,
                  XserverRegion  region)
@@ -742,6 +762,7 @@ void
 meta_surface_hide (MetaSurface *self)
 {
   META_SURFACE_GET_CLASS (self)->hide (self);
+  add_full_damage (self);
 }
 
 void
@@ -832,20 +853,7 @@ meta_surface_sync_geometry (MetaSurface *self)
   if (priv->x != rect.x ||
       priv->y != rect.y)
     {
-      if (priv->shape_region != None)
-        {
-          XserverRegion shape_region;
-
-          shape_region = XFixesCreateRegion (priv->xdisplay, NULL, 0);
-          XFixesCopyRegion (priv->xdisplay, shape_region, priv->shape_region);
-          XFixesTranslateRegion (priv->xdisplay, shape_region, priv->x, priv->y);
-
-          meta_compositor_add_damage (priv->compositor,
-                                      "position_changed",
-                                      shape_region);
-
-          XFixesDestroyRegion (priv->xdisplay, shape_region);
-        }
+      add_full_damage (self);
 
       priv->x = rect.x;
       priv->y = rect.y;
