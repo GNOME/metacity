@@ -470,48 +470,6 @@ cairo_region_to_xserver_region (Display        *xdisplay,
   return xregion;
 }
 
-static void
-shadow_picture_clip (Display          *xdisplay,
-                     Picture           shadow_picture,
-                     MetaCompWindow   *cw,
-                     MetaShadowType    shadow_type,
-                     MetaFrameBorders  borders,
-                     int               width,
-                     int               height)
-{
-  int shadow_dx;
-  int shadow_dy;
-  cairo_region_t *visible_region;
-  XRectangle rect;
-  XserverRegion region1;
-  XserverRegion region2;
-
-  visible_region = meta_window_get_frame_bounds (cw->window);
-
-  if (!visible_region)
-    return;
-
-  shadow_dx = -1 * (int) shadow_offsets_x [shadow_type] - borders.invisible.left;
-  shadow_dy = -1 * (int) shadow_offsets_y [shadow_type] - borders.invisible.top;
-
-  rect.x = 0;
-  rect.y = 0;
-  rect.width = width;
-  rect.height = height;
-
-  region1 = XFixesCreateRegion (xdisplay, &rect, 1);
-  region2 = cairo_region_to_xserver_region (xdisplay, visible_region);
-
-  XFixesTranslateRegion (xdisplay, region2,
-                         shadow_dx, shadow_dy);
-
-  XFixesSubtractRegion (xdisplay, region1, region1, region2);
-  XFixesSetPictureClipRegion (xdisplay, shadow_picture, 0, 0, region1);
-
-  XFixesDestroyRegion (xdisplay, region1);
-  XFixesDestroyRegion (xdisplay, region2);
-}
-
 static Picture
 shadow_picture (MetaCompositorXRender *xrender,
                 MetaCompWindow        *cw,
@@ -552,9 +510,6 @@ shadow_picture (MetaCompositorXRender *xrender,
       XFreePixmap (xdisplay, shadow_pixmap);
       return None;
     }
-
-  shadow_picture_clip (xdisplay, shadow_picture, cw, shadow_type, borders,
-                       shadow_image->width, shadow_image->height);
 
   gc = XCreateGC (xdisplay, shadow_pixmap, 0, 0);
   if (!gc)
@@ -816,15 +771,12 @@ get_shadow_region (MetaCompositorXRender *xrender,
                    MetaCompWindow        *cw,
                    MetaShadowType         shadow_type)
 {
-  XRectangle r;
   MetaFrame *frame;
   MetaFrameBorders borders;
   XRectangle sr;
-
-  r.x = cw->rect.x;
-  r.y = cw->rect.y;
-  r.width = cw->rect.width;
-  r.height = cw->rect.height;
+  Display *xdisplay;
+  XserverRegion shadow_region;
+  cairo_region_t *frame_bounds;
 
   frame = meta_window_get_frame (cw->window);
   meta_frame_calc_borders (frame, &borders);
@@ -847,30 +799,27 @@ get_shadow_region (MetaCompositorXRender *xrender,
                                    &cw->shadow_width, &cw->shadow_height);
     }
 
-  sr.x = cw->rect.x + cw->shadow_dx;
-  sr.y = cw->rect.y + cw->shadow_dy;
+  sr.x = cw->shadow_dx;
+  sr.y = cw->shadow_dy;
   sr.width = cw->shadow_width;
   sr.height = cw->shadow_height;
 
-  if (sr.x < r.x)
+  xdisplay = xrender->xdisplay;
+  shadow_region = XFixesCreateRegion (xdisplay, &sr, 1);
+  frame_bounds = meta_window_get_frame_bounds (cw->window);
+
+  if (frame_bounds != NULL)
     {
-      r.width = (r.x + r.width) - sr.x;
-      r.x = sr.x;
+      XserverRegion bounds_region;
+
+      bounds_region = cairo_region_to_xserver_region (xdisplay, frame_bounds);
+      XFixesSubtractRegion (xdisplay, shadow_region, shadow_region, bounds_region);
+      XFixesDestroyRegion (xdisplay, bounds_region);
     }
 
-  if (sr.y < r.y)
-    {
-      r.height = (r.y + r.height) - sr.y;
-      r.y = sr.y;
-    }
+  XFixesTranslateRegion (xdisplay, shadow_region, cw->rect.x, cw->rect.y);
 
-  if (sr.x + sr.width > r.x + r.width)
-    r.width = sr.x + sr.width - r.x;
-
-  if (sr.y + sr.height > r.y + r.height)
-    r.height = sr.y + sr.height - r.y;
-
-  return XFixesCreateRegion (xrender->xdisplay, &r, 1);
+  return shadow_region;
 }
 
 static void
@@ -1004,12 +953,17 @@ paint_windows (MetaCompositorXRender *xrender,
 
           if (cw->shadow && cw->window->type != META_WINDOW_DOCK)
             {
+              XserverRegion shadow_clip;
               XserverRegion border_clip;
 
-              border_clip = meta_surface_xrender_get_border_clip (surface);
+              shadow_clip = XFixesCreateRegion (xdisplay, NULL, 0);
+              XFixesCopyRegion (xdisplay, shadow_clip, cw->shadow_region);
 
-              XFixesSetPictureClipRegion (xdisplay, root_buffer, 0, 0,
-                                          border_clip);
+              border_clip = meta_surface_xrender_get_border_clip (surface);
+              XFixesIntersectRegion (xdisplay, shadow_clip, shadow_clip, border_clip);
+
+              XFixesSetPictureClipRegion (xdisplay, root_buffer, 0, 0, shadow_clip);
+              XFixesDestroyRegion (xdisplay, shadow_clip);
 
               XRenderComposite (xdisplay, PictOpOver, xrender->black_picture,
                                 cw->shadow, root_buffer, 0, 0, 0, 0,
