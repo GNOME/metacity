@@ -782,6 +782,7 @@ void
 meta_surface_opacity_changed (MetaSurface *self)
 {
   META_SURFACE_GET_CLASS (self)->opacity_changed (self);
+  add_full_damage (self);
 }
 
 void
