@@ -19,6 +19,8 @@
 #define META_COMPOSITOR_XRENDER_H
 
 #include "meta-compositor-private.h"
+#include "meta-shadow-xrender.h"
+#include "meta-surface-private.h"
 
 G_BEGIN_DECLS
 
@@ -26,8 +28,11 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (MetaCompositorXRender, meta_compositor_xrender,
                       META, COMPOSITOR_XRENDER, MetaCompositor)
 
-MetaCompositor *meta_compositor_xrender_new (MetaDisplay  *display,
-                                             GError      **error);
+MetaCompositor    *meta_compositor_xrender_new           (MetaDisplay            *display,
+                                                          GError                **error);
+
+MetaShadowXRender *meta_compositor_xrender_create_shadow (MetaCompositorXRender  *self,
+                                                          MetaSurface            *surface);
 
 G_END_DECLS
 

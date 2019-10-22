@@ -758,74 +758,6 @@ shadow_changed (MetaSurface *surface)
   cw->shadow_changed = TRUE;
 }
 
-static MetaShadowXRender *
-create_shadow (MetaCompositorXRender *xrender,
-               MetaSurface           *surface,
-               MetaShadowType         shadow_type)
-{
-  MetaWindow *window;
-  MetaFrameBorders borders;
-  GtkBorder *invisible;
-  double opacity;
-  int width;
-  int height;
-  MetaShadowXRender *ret;
-  cairo_region_t *frame_bounds;
-
-  window = meta_surface_get_window (surface);
-
-  meta_frame_calc_borders (window->frame, &borders);
-  invisible = &borders.invisible;
-
-  opacity = SHADOW_OPACITY;
-  if (window->opacity != OPAQUE)
-    opacity = opacity * ((double) window->opacity) / OPAQUE;
-
-  width = meta_surface_get_width (surface);
-  height = meta_surface_get_height (surface);
-
-  ret = g_new0 (MetaShadowXRender, 1);
-  ret->xdisplay = xrender->xdisplay;
-
-  ret->dx = shadow_offsets_x[shadow_type] + invisible->left;
-  ret->dy = shadow_offsets_y[shadow_type] + invisible->top;
-
-  ret->black = solid_picture (xrender->xdisplay, TRUE, 1, 0, 0, 0);
-  ret->shadow = shadow_picture (xrender,
-                                shadow_type,
-                                opacity,
-                                width - invisible->left - invisible->right,
-                                height - invisible->top - invisible->bottom,
-                                &ret->width,
-                                &ret->height);
-
-  ret->region = XFixesCreateRegion (xrender->xdisplay, &(XRectangle) {
-                                      .x = ret->dx,
-                                      .y = ret->dy,
-                                      .width = ret->width,
-                                      .height = ret->height
-                                    }, 1);
-
-  frame_bounds = meta_window_get_frame_bounds (window);
-
-  if (frame_bounds != NULL)
-    {
-      XserverRegion bounds_region;
-
-      bounds_region = cairo_region_to_xserver_region (xrender->xdisplay,
-                                                      frame_bounds);
-
-      XFixesSubtractRegion (xrender->xdisplay,
-                            ret->region,
-                            ret->region,
-                            bounds_region);
-
-      XFixesDestroyRegion (xrender->xdisplay, bounds_region);
-    }
-
-  return ret;
-}
-
 static void
 paint_shadow (MetaCompositorXRender *xrender,
               MetaSurfaceXRender    *surface_xrender,
@@ -1430,16 +1362,10 @@ meta_compositor_xrender_pre_paint (MetaCompositor *compositor)
       if (cw->shadow_changed &&
           meta_surface_has_shadow (surface))
         {
-          MetaShadowType shadow_type;
           XserverRegion shadow_region;
 
-          if (meta_window_appears_focused (cw->window))
-            shadow_type = META_SHADOW_LARGE;
-          else
-            shadow_type = META_SHADOW_MEDIUM;
-
           g_assert (cw->shadow == NULL);
-          cw->shadow = create_shadow (xrender, surface, shadow_type);
+          cw->shadow = meta_compositor_xrender_create_shadow (xrender, surface);
 
           shadow_region = meta_shadow_xrender_get_region (cw->shadow);
           XFixesTranslateRegion (xrender->xdisplay,
@@ -1511,4 +1437,77 @@ meta_compositor_xrender_new (MetaDisplay  *display,
   return g_initable_new (META_TYPE_COMPOSITOR_XRENDER, NULL, error,
                          "display", display,
                          NULL);
+}
+
+MetaShadowXRender *
+meta_compositor_xrender_create_shadow (MetaCompositorXRender *self,
+                                       MetaSurface           *surface)
+{
+  MetaWindow *window;
+  MetaShadowType shadow_type;
+  MetaFrameBorders borders;
+  GtkBorder *invisible;
+  double opacity;
+  int width;
+  int height;
+  MetaShadowXRender *ret;
+  cairo_region_t *frame_bounds;
+
+  window = meta_surface_get_window (surface);
+
+  if (meta_window_appears_focused (window))
+    shadow_type = META_SHADOW_LARGE;
+  else
+    shadow_type = META_SHADOW_MEDIUM;
+
+  meta_frame_calc_borders (window->frame, &borders);
+  invisible = &borders.invisible;
+
+  opacity = SHADOW_OPACITY;
+  if (window->opacity != OPAQUE)
+    opacity = opacity * ((double) window->opacity) / OPAQUE;
+
+  width = meta_surface_get_width (surface);
+  height = meta_surface_get_height (surface);
+
+  ret = g_new0 (MetaShadowXRender, 1);
+  ret->xdisplay = self->xdisplay;
+
+  ret->dx = shadow_offsets_x[shadow_type] + invisible->left;
+  ret->dy = shadow_offsets_y[shadow_type] + invisible->top;
+
+  ret->black = solid_picture (self->xdisplay, TRUE, 1, 0, 0, 0);
+  ret->shadow = shadow_picture (self,
+                                shadow_type,
+                                opacity,
+                                width - invisible->left - invisible->right,
+                                height - invisible->top - invisible->bottom,
+                                &ret->width,
+                                &ret->height);
+
+  ret->region = XFixesCreateRegion (self->xdisplay, &(XRectangle) {
+                                      .x = ret->dx,
+                                      .y = ret->dy,
+                                      .width = ret->width,
+                                      .height = ret->height
+                                    }, 1);
+
+  frame_bounds = meta_window_get_frame_bounds (window);
+
+  if (frame_bounds != NULL)
+    {
+      XserverRegion bounds_region;
+
+      bounds_region = cairo_region_to_xserver_region (self->xdisplay,
+                                                      frame_bounds);
+
+      XFixesSubtractRegion (self->xdisplay,
+                            ret->region,
+                            ret->region,
+                            bounds_region);
+
+      XFixesDestroyRegion (self->xdisplay, bounds_region);
+    }
+
+  return ret;
 }
