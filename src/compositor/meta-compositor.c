@@ -697,17 +697,14 @@ meta_compositor_sync_window_geometry (MetaCompositor *compositor,
                                       MetaWindow     *window)
 {
   MetaCompositorPrivate *priv;
-  MetaCompositorClass *compositor_class;
   MetaSurface *surface;
 
   priv = meta_compositor_get_instance_private (compositor);
-  compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
 
   surface = g_hash_table_lookup (priv->surfaces, window);
   if (surface == NULL)
     return;
 
-  compositor_class->sync_window_geometry (compositor, surface);
   meta_surface_sync_geometry (surface);
 }
 

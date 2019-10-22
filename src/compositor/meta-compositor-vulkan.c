@@ -1307,12 +1307,6 @@ meta_compositor_vulkan_sync_screen_size (MetaCompositor *compositor)
 }
 
 static void
-meta_compositor_vulkan_sync_window_geometry (MetaCompositor *compositor,
-                                             MetaSurface    *surface)
-{
-}
-
-static void
 meta_compositor_vulkan_pre_paint (MetaCompositor *compositor)
 {
   META_COMPOSITOR_CLASS (meta_compositor_vulkan_parent_class)->pre_paint (compositor);
@@ -1342,7 +1336,6 @@ meta_compositor_vulkan_class_init (MetaCompositorVulkanClass *vulkan_class)
   compositor_class->window_opacity_changed = meta_compositor_vulkan_window_opacity_changed;
   compositor_class->process_event = meta_compositor_vulkan_process_event;
   compositor_class->sync_screen_size = meta_compositor_vulkan_sync_screen_size;
-  compositor_class->sync_window_geometry = meta_compositor_vulkan_sync_window_geometry;
   compositor_class->pre_paint = meta_compositor_vulkan_pre_paint;
   compositor_class->redraw = meta_compositor_vulkan_redraw;
 }

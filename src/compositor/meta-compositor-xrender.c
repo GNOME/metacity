@@ -1151,12 +1151,6 @@ meta_compositor_xrender_sync_screen_size (MetaCompositor *compositor)
 }
 
 static void
-meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
-                                              MetaSurface    *surface)
-{
-}
-
-static void
 meta_compositor_xrender_pre_paint (MetaCompositor *compositor)
 {
   MetaCompositorXRender *xrender;
@@ -1208,7 +1202,6 @@ meta_compositor_xrender_class_init (MetaCompositorXRenderClass *xrender_class)
   compositor_class->window_opacity_changed = meta_compositor_xrender_window_opacity_changed;
   compositor_class->process_event = meta_compositor_xrender_process_event;
   compositor_class->sync_screen_size = meta_compositor_xrender_sync_screen_size;
-  compositor_class->sync_window_geometry = meta_compositor_xrender_sync_window_geometry;
   compositor_class->pre_paint = meta_compositor_xrender_pre_paint;
   compositor_class->redraw = meta_compositor_xrender_redraw;
 }
