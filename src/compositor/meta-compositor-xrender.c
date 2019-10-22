@@ -837,46 +837,6 @@ paint_windows (MetaCompositorXRender *xrender,
   XFixesDestroyRegion (xdisplay, paint_region);
 }
 
-static void
-paint_all (MetaCompositorXRender *xrender,
-           XserverRegion          region)
-{
-  MetaDisplay *display = meta_screen_get_display (xrender->screen);
-  Display *xdisplay = meta_display_get_xdisplay (display);
-  int screen_width, screen_height;
-  GList *stack;
-
-  /* Set clipping to the given region */
-  XFixesSetPictureClipRegion (xdisplay, xrender->root_picture, 0, 0, region);
-
-  meta_screen_get_size (xrender->screen, &screen_width, &screen_height);
-
-  if (xrender->show_redraw)
-    {
-      Picture overlay;
-
-      /* Make a random colour overlay */
-      overlay = solid_picture (xdisplay, TRUE, 1, /* 0.3, alpha */
-                               ((double) (rand () % 100)) / 100.0,
-                               ((double) (rand () % 100)) / 100.0,
-                               ((double) (rand () % 100)) / 100.0);
-
-      XRenderComposite (xdisplay, PictOpOver, overlay, None, xrender->root_picture,
-                        0, 0, 0, 0, 0, 0, screen_width, screen_height);
-      XRenderFreePicture (xdisplay, overlay);
-      XFlush (xdisplay);
-      usleep (100 * 1000);
-    }
-
-  stack = meta_compositor_get_stack (META_COMPOSITOR (xrender));
-  paint_windows (xrender, stack, xrender->root_buffer, region);
-
-  XFixesSetPictureClipRegion (xdisplay, xrender->root_buffer, 0, 0, region);
-  XRenderComposite (xdisplay, PictOpSrc, xrender->root_buffer, None,
-                    xrender->root_picture, 0, 0, 0, 0, 0, 0,
-                    screen_width, screen_height);
-}
-
 /* event processors must all be called with an error trap in place */
 static void
 process_property_notify (MetaCompositorXRender *xrender,
@@ -1153,15 +1113,45 @@ meta_compositor_xrender_redraw (MetaCompositor *compositor,
 {
   MetaCompositorXRender *xrender;
   MetaDisplay *display;
+  Display *xdisplay;
+  int screen_width;
+  int screen_height;
+  GList *stack;
 
   xrender = META_COMPOSITOR_XRENDER (compositor);
+
   display = meta_compositor_get_display (compositor);
+  xdisplay = meta_display_get_xdisplay (display);
 
-  meta_error_trap_push (display);
+  meta_screen_get_size (xrender->screen, &screen_width, &screen_height);
 
-  paint_all (xrender, all_damage);
+  /* Set clipping to the given region */
+  XFixesSetPictureClipRegion (xdisplay, xrender->root_picture, 0, 0, all_damage);
 
-  meta_error_trap_pop (display);
+  if (xrender->show_redraw)
+    {
+      Picture overlay;
+
+      /* Make a random colour overlay */
+      overlay = solid_picture (xdisplay, TRUE, 1, /* 0.3, alpha */
+                               ((double) (rand () % 100)) / 100.0,
+                               ((double) (rand () % 100)) / 100.0,
+                               ((double) (rand () % 100)) / 100.0);
+
+      XRenderComposite (xdisplay, PictOpOver, overlay, None, xrender->root_picture,
+                        0, 0, 0, 0, 0, 0, screen_width, screen_height);
+      XRenderFreePicture (xdisplay, overlay);
+      XFlush (xdisplay);
+      usleep (100 * 1000);
+    }
+
+  stack = meta_compositor_get_stack (compositor);
+  paint_windows (xrender, stack, xrender->root_buffer, all_damage);
+
+  XFixesSetPictureClipRegion (xdisplay, xrender->root_buffer, 0, 0, all_damage);
+  XRenderComposite (xdisplay, PictOpSrc, xrender->root_buffer, None,
+                    xrender->root_picture, 0, 0, 0, 0, 0, 0,
+                    screen_width, screen_height);
 }
 
 static void
