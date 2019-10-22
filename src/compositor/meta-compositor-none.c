@@ -41,12 +41,6 @@ meta_compositor_none_add_window (MetaCompositor *compositor,
 }
 
 static void
-meta_compositor_none_remove_window (MetaCompositor *compositor,
-                                    MetaSurface    *surface)
-{
-}
-
-static void
 meta_compositor_none_hide_window (MetaCompositor *compositor,
                                   MetaSurface    *surface,
                                   MetaEffectType  effect)
@@ -80,7 +74,6 @@ meta_compositor_none_class_init (MetaCompositorNoneClass *none_class)
 
   compositor_class->manage = meta_compositor_none_manage;
   compositor_class->add_window = meta_compositor_none_add_window;
-  compositor_class->remove_window = meta_compositor_none_remove_window;
   compositor_class->hide_window = meta_compositor_none_hide_window;
   compositor_class->process_event = meta_compositor_none_process_event;
   compositor_class->sync_screen_size = meta_compositor_none_sync_screen_size;
