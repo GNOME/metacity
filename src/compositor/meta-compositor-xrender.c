@@ -472,10 +472,8 @@ cairo_region_to_xserver_region (Display        *xdisplay,
 
 static Picture
 shadow_picture (MetaCompositorXRender *xrender,
-                MetaCompWindow        *cw,
                 MetaShadowType         shadow_type,
                 double                 opacity,
-                MetaFrameBorders       borders,
                 int                    width,
                 int                    height,
                 int                   *wp,
@@ -793,7 +791,7 @@ get_shadow_region (MetaCompositorXRender *xrender,
       if (cw->window->opacity != (guint) OPAQUE)
         opacity = opacity * ((double) cw->window->opacity) / ((double) OPAQUE);
 
-      cw->shadow = shadow_picture (xrender, cw, shadow_type, opacity, borders,
+      cw->shadow = shadow_picture (xrender, shadow_type, opacity,
                                    cw->rect.width - invisible_width,
                                    cw->rect.height - invisible_height,
                                    &cw->shadow_width, &cw->shadow_height);
