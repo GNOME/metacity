@@ -461,17 +461,14 @@ meta_compositor_hide_window (MetaCompositor *compositor,
                              MetaEffectType  effect)
 {
   MetaCompositorPrivate *priv;
-  MetaCompositorClass *compositor_class;
   MetaSurface *surface;
 
   priv = meta_compositor_get_instance_private (compositor);
-  compositor_class = META_COMPOSITOR_GET_CLASS (compositor);
 
   surface = g_hash_table_lookup (priv->surfaces, window);
   if (surface == NULL)
     return;
 
-  compositor_class->hide_window (compositor, surface, effect);
   meta_surface_hide (surface);
 }
 

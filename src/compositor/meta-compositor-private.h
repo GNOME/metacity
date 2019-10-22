@@ -35,10 +35,6 @@ struct _MetaCompositorClass
   MetaSurface * (* add_window)             (MetaCompositor  *compositor,
                                             MetaWindow      *window);
 
-  void          (* hide_window)            (MetaCompositor  *compositor,
-                                            MetaSurface     *surface,
-                                            MetaEffectType   effect);
-
   void          (* process_event)          (MetaCompositor  *compositor,
                                             XEvent          *event,
                                             MetaWindow      *window);
