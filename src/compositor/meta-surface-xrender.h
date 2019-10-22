@@ -27,8 +27,6 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (MetaSurfaceXRender, meta_surface_xrender,
                       META, SURFACE_XRENDER, MetaSurface)
 
-Picture       meta_surface_xrender_get_picture     (MetaSurfaceXRender *self);
-
 XserverRegion meta_surface_xrender_get_border_clip (MetaSurfaceXRender *self);
 
 void          meta_surface_xrender_paint           (MetaSurfaceXRender *self,

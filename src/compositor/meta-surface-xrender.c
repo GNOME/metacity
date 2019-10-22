@@ -705,12 +705,6 @@ meta_surface_xrender_init (MetaSurfaceXRender *self)
 {
 }
 
-Picture
-meta_surface_xrender_get_picture (MetaSurfaceXRender *self)
-{
-  return self->picture;
-}
-
 XserverRegion
 meta_surface_xrender_get_border_clip (MetaSurfaceXRender *self)
 {
