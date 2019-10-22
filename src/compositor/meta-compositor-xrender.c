@@ -1098,12 +1098,6 @@ meta_compositor_xrender_hide_window (MetaCompositor *compositor,
 }
 
 static void
-meta_compositor_xrender_window_opacity_changed (MetaCompositor *compositor,
-                                                MetaSurface    *surface)
-{
-}
-
-static void
 meta_compositor_xrender_process_event (MetaCompositor *compositor,
                                        XEvent         *event,
                                        MetaWindow     *window)
@@ -1199,7 +1193,6 @@ meta_compositor_xrender_class_init (MetaCompositorXRenderClass *xrender_class)
   compositor_class->add_window = meta_compositor_xrender_add_window;
   compositor_class->remove_window = meta_compositor_xrender_remove_window;
   compositor_class->hide_window = meta_compositor_xrender_hide_window;
-  compositor_class->window_opacity_changed = meta_compositor_xrender_window_opacity_changed;
   compositor_class->process_event = meta_compositor_xrender_process_event;
   compositor_class->sync_screen_size = meta_compositor_xrender_sync_screen_size;
   compositor_class->pre_paint = meta_compositor_xrender_pre_paint;
