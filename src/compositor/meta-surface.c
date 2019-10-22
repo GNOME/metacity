@@ -845,10 +845,21 @@ meta_surface_sync_geometry (MetaSurface *self)
 {
   MetaSurfacePrivate *priv;
   MetaRectangle rect;
+  MetaRectangle old_geometry;
+  gboolean position_changed;
+  gboolean size_changed;
 
   priv = meta_surface_get_instance_private (self);
 
   meta_window_get_input_rect (priv->window, &rect);
+
+  old_geometry.x = priv->x;
+  old_geometry.y = priv->y;
+  old_geometry.width = priv->width;
+  old_geometry.height = priv->height;
+
+  position_changed = FALSE;
+  size_changed = FALSE;
 
   if (priv->x != rect.x ||
       priv->y != rect.y)
@@ -859,6 +870,7 @@ meta_surface_sync_geometry (MetaSurface *self)
       priv->y = rect.y;
 
       priv->position_changed = TRUE;
+      position_changed = TRUE;
     }
 
   if (priv->width != rect.width ||
@@ -871,7 +883,14 @@ meta_surface_sync_geometry (MetaSurface *self)
 
       priv->width = rect.width;
       priv->height = rect.height;
+
+      size_changed = TRUE;
     }
+
+  META_SURFACE_GET_CLASS (self)->sync_geometry (self,
+                                                old_geometry,
+                                                position_changed,
+                                                size_changed);
 }
 
 void

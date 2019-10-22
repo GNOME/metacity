@@ -36,6 +36,11 @@ struct _MetaSurfaceClass
 
   void              (* opacity_changed) (MetaSurface   *self);
 
+  void              (* sync_geometry)   (MetaSurface   *self,
+                                         MetaRectangle  old_geometry,
+                                         gboolean       position_changed,
+                                         gboolean       size_changed);
+
   void              (* free_pixmap)     (MetaSurface   *self);
 
   void              (* pre_paint)       (MetaSurface   *self,

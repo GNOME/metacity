@@ -634,6 +634,14 @@ meta_surface_xrender_opacity_changed (MetaSurface *surface)
 }
 
 static void
+meta_surface_xrender_sync_geometry (MetaSurface   *surface,
+                                    MetaRectangle  old_geometry,
+                                    gboolean       position_changed,
+                                    gboolean       size_changed)
+{
+}
+
+static void
 meta_surface_xrender_free_pixmap (MetaSurface *surface)
 {
   MetaSurfaceXRender *self;
@@ -687,6 +695,7 @@ meta_surface_xrender_class_init (MetaSurfaceXRenderClass *self_class)
   surface_class->show = meta_surface_xrender_show;
   surface_class->hide = meta_surface_xrender_hide;
   surface_class->opacity_changed = meta_surface_xrender_opacity_changed;
+  surface_class->sync_geometry = meta_surface_xrender_sync_geometry;
   surface_class->free_pixmap = meta_surface_xrender_free_pixmap;
   surface_class->pre_paint = meta_surface_xrender_pre_paint;
 }
