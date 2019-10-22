@@ -729,9 +729,6 @@ paint_dock_shadows (MetaCompositorXRender *xrender,
 
       surface = META_SURFACE (l->data);
 
-      if (!meta_surface_is_visible (surface))
-        continue;
-
       window = meta_surface_get_window (surface);
 
       if (window->type == META_WINDOW_DOCK)
@@ -773,9 +770,6 @@ paint_windows (MetaCompositorXRender *xrender,
       last = index;
 
       surface = META_SURFACE (index->data);
-
-      if (!meta_surface_is_visible (surface))
-        continue;
 
       window = meta_surface_get_window (surface);
 
@@ -822,9 +816,6 @@ paint_windows (MetaCompositorXRender *xrender,
 
       surface = META_SURFACE (index->data);
       surface_xrender = META_SURFACE_XRENDER (surface);
-
-      if (!meta_surface_is_visible (surface))
-        continue;
 
       window = meta_surface_get_window (surface);
 
@@ -1117,6 +1108,8 @@ meta_compositor_xrender_redraw (MetaCompositor *compositor,
   int screen_width;
   int screen_height;
   GList *stack;
+  GList *visible_stack;
+  GList *l;
 
   xrender = META_COMPOSITOR_XRENDER (compositor);
 
@@ -1146,7 +1139,17 @@ meta_compositor_xrender_redraw (MetaCompositor *compositor,
     }
 
   stack = meta_compositor_get_stack (compositor);
-  paint_windows (xrender, stack, xrender->root_buffer, all_damage);
+  visible_stack = NULL;
+
+  for (l = stack; l != NULL; l = l->next)
+    {
+      if (meta_surface_is_visible (META_SURFACE (l->data)))
+        visible_stack = g_list_prepend (visible_stack, l->data);
+    }
+
+  visible_stack = g_list_reverse (visible_stack);
+  paint_windows (xrender, visible_stack, xrender->root_buffer, all_damage);
+  g_list_free (visible_stack);
 
   XFixesSetPictureClipRegion (xdisplay, xrender->root_buffer, 0, 0, all_damage);
   XRenderComposite (xdisplay, PictOpSrc, xrender->root_buffer, None,
