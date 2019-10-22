@@ -32,6 +32,8 @@ metacity_SOURCES= 				\
 	compositor/meta-compositor-private.h	\
 	compositor/meta-compositor-xrender.c	\
 	compositor/meta-compositor-xrender.h	\
+	compositor/meta-shadow-xrender.c	\
+	compositor/meta-shadow-xrender.h	\
 	compositor/meta-surface.c		\
 	compositor/meta-surface.h		\
 	compositor/meta-surface-private.h	\

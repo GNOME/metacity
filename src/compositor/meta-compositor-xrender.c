@@ -39,6 +39,7 @@
 #include "prefs.h"
 #include "window-private.h"
 #include "meta-compositor-xrender.h"
+#include "meta-shadow-xrender.h"
 #include "meta-surface-xrender.h"
 #include "xprops.h"
 #include "util.h"
@@ -87,13 +88,7 @@ typedef struct _MetaCompWindow
 
   MetaRectangle rect;
 
-  XserverRegion shadow_region;
-
-  Picture shadow;
-  int shadow_dx;
-  int shadow_dy;
-  int shadow_width;
-  int shadow_height;
+  MetaShadowXRender *shadow;
 
   gboolean shadow_changed;
 } MetaCompWindow;
@@ -113,7 +108,6 @@ struct _MetaCompositorXRender
 
   Picture         root_picture;
   Picture         root_buffer;
-  Picture         black_picture;
   Picture         root_tile;
 
   gboolean        prefs_listener_added;
@@ -737,6 +731,7 @@ shadow_changed (MetaSurface *surface)
   MetaCompositor *compositor;
   MetaCompositorXRender *xrender;
   MetaCompWindow *cw;
+  XserverRegion shadow_region;
 
   compositor = meta_surface_get_compositor (surface);
   xrender = META_COMPOSITOR_XRENDER (compositor);
@@ -746,78 +741,89 @@ shadow_changed (MetaSurface *surface)
 
   cw = g_object_get_data (G_OBJECT (surface), "cw");
 
-  if (cw->shadow_region != None)
+  if (cw->shadow == NULL)
     {
-      meta_compositor_add_damage (compositor, "shadow_changed", cw->shadow_region);
-      XFixesDestroyRegion (xrender->xdisplay, cw->shadow_region);
-      cw->shadow_region = None;
+      meta_compositor_queue_redraw (compositor);
+      return;
     }
 
-  if (cw->shadow != None)
-    {
-      XRenderFreePicture (xrender->xdisplay, cw->shadow);
-      cw->shadow = None;
-    }
+  shadow_region = meta_shadow_xrender_get_region (cw->shadow);
+  XFixesTranslateRegion (xrender->xdisplay, shadow_region, cw->rect.x, cw->rect.y);
+  meta_compositor_add_damage (compositor, "shadow_changed", shadow_region);
+  XFixesDestroyRegion (xrender->xdisplay, shadow_region);
 
-  meta_compositor_queue_redraw (compositor);
+  meta_shadow_xrender_free (cw->shadow);
+  cw->shadow = NULL;
 
   cw->shadow_changed = TRUE;
 }
 
-static XserverRegion
-get_shadow_region (MetaCompositorXRender *xrender,
-                   MetaCompWindow        *cw,
-                   MetaShadowType         shadow_type)
+static MetaShadowXRender *
+create_shadow (MetaCompositorXRender *xrender,
+               MetaSurface           *surface,
+               MetaShadowType         shadow_type)
 {
-  MetaFrame *frame;
+  MetaWindow *window;
   MetaFrameBorders borders;
-  XRectangle sr;
-  Display *xdisplay;
-  XserverRegion shadow_region;
+  GtkBorder *invisible;
+  double opacity;
+  int width;
+  int height;
+  MetaShadowXRender *ret;
   cairo_region_t *frame_bounds;
 
-  frame = meta_window_get_frame (cw->window);
-  meta_frame_calc_borders (frame, &borders);
+  window = meta_surface_get_window (surface);
 
-  cw->shadow_dx = (int) shadow_offsets_x [shadow_type] + borders.invisible.left;
-  cw->shadow_dy = (int) shadow_offsets_y [shadow_type] + borders.invisible.top;
+  meta_frame_calc_borders (window->frame, &borders);
+  invisible = &borders.invisible;
 
-  if (!cw->shadow)
-    {
-      double opacity = SHADOW_OPACITY;
-      int invisible_width = borders.invisible.left + borders.invisible.right;
-      int invisible_height = borders.invisible.top + borders.invisible.bottom;
+  opacity = SHADOW_OPACITY;
+  if (window->opacity != OPAQUE)
+    opacity = opacity * ((double) window->opacity) / OPAQUE;
 
-      if (cw->window->opacity != (guint) OPAQUE)
-        opacity = opacity * ((double) cw->window->opacity) / ((double) OPAQUE);
+  width = meta_surface_get_width (surface);
+  height = meta_surface_get_height (surface);
 
-      cw->shadow = shadow_picture (xrender, shadow_type, opacity,
-                                   cw->rect.width - invisible_width,
-                                   cw->rect.height - invisible_height,
-                                   &cw->shadow_width, &cw->shadow_height);
-    }
+  ret = g_new0 (MetaShadowXRender, 1);
+  ret->xdisplay = xrender->xdisplay;
 
-  sr.x = cw->shadow_dx;
-  sr.y = cw->shadow_dy;
-  sr.width = cw->shadow_width;
-  sr.height = cw->shadow_height;
+  ret->dx = shadow_offsets_x[shadow_type] + invisible->left;
+  ret->dy = shadow_offsets_y[shadow_type] + invisible->top;
 
-  xdisplay = xrender->xdisplay;
-  shadow_region = XFixesCreateRegion (xdisplay, &sr, 1);
-  frame_bounds = meta_window_get_frame_bounds (cw->window);
+  ret->black = solid_picture (xrender->xdisplay, TRUE, 1, 0, 0, 0);
+  ret->shadow = shadow_picture (xrender,
+                                shadow_type,
+                                opacity,
+                                width - invisible->left - invisible->right,
+                                height - invisible->top - invisible->bottom,
+                                &ret->width,
+                                &ret->height);
+
+  ret->region = XFixesCreateRegion (xrender->xdisplay, &(XRectangle) {
+                                      .x = ret->dx,
+                                      .y = ret->dy,
+                                      .width = ret->width,
+                                      .height = ret->height
+                                    }, 1);
+
+  frame_bounds = meta_window_get_frame_bounds (window);
 
   if (frame_bounds != NULL)
     {
       XserverRegion bounds_region;
 
-      bounds_region = cairo_region_to_xserver_region (xdisplay, frame_bounds);
-      XFixesSubtractRegion (xdisplay, shadow_region, shadow_region, bounds_region);
-      XFixesDestroyRegion (xdisplay, bounds_region);
+      bounds_region = cairo_region_to_xserver_region (xrender->xdisplay,
+                                                      frame_bounds);
+
+      XFixesSubtractRegion (xrender->xdisplay,
+                            ret->region,
+                            ret->region,
+                            bounds_region);
+
+      XFixesDestroyRegion (xrender->xdisplay, bounds_region);
     }
 
-  XFixesTranslateRegion (xdisplay, shadow_region, cw->rect.x, cw->rect.y);
-
-  return shadow_region;
+  return ret;
 }
 
 static void
@@ -827,21 +833,18 @@ paint_shadow (MetaCompositorXRender *xrender,
               Picture                paint_buffer)
 {
   MetaCompWindow *cw;
-  XserverRegion shadow_clip;
   XserverRegion border_clip;
-  int x;
-  int y;
+  XserverRegion shadow_clip;
 
   cw = g_object_get_data (G_OBJECT (surface_xrender), "cw");
 
-  if (cw->shadow == None)
+  if (cw->shadow == NULL)
     return;
 
-  shadow_clip = XFixesCreateRegion (xrender->xdisplay, NULL, 0);
-  XFixesCopyRegion (xrender->xdisplay, shadow_clip, cw->shadow_region);
-
   border_clip = meta_surface_xrender_get_border_clip (surface_xrender);
-  XFixesIntersectRegion (xrender->xdisplay, shadow_clip, shadow_clip, border_clip);
+
+  shadow_clip = XFixesCreateRegion (xrender->xdisplay, NULL, 0);
+  XFixesCopyRegion (xrender->xdisplay, shadow_clip, border_clip);
 
   if (paint_region != None)
     {
@@ -851,17 +854,13 @@ paint_shadow (MetaCompositorXRender *xrender,
                              paint_region);
     }
 
-  XFixesSetPictureClipRegion (xrender->xdisplay, paint_buffer, 0, 0, shadow_clip);
+  meta_shadow_xrender_paint (cw->shadow,
+                             shadow_clip,
+                             paint_buffer,
+                             cw->rect.x,
+                             cw->rect.y);
+
   XFixesDestroyRegion (xrender->xdisplay, shadow_clip);
-
-  x = cw->rect.x;
-  y = cw->rect.y;
-
-  XRenderComposite (xrender->xdisplay, PictOpOver,
-                    xrender->black_picture, cw->shadow, paint_buffer,
-                    0, 0, 0, 0,
-                    x + cw->shadow_dx, y + cw->shadow_dy,
-                    cw->shadow_width, cw->shadow_height);
 }
 
 static void
@@ -1027,24 +1026,13 @@ static void
 cw_destroy_cb (gpointer data)
 {
   MetaCompWindow *cw;
-  MetaDisplay *display;
-  Display *xdisplay;
 
   cw = (MetaCompWindow *) data;
 
-  display = meta_window_get_display (cw->window);
-  xdisplay = meta_display_get_xdisplay (display);
-
-  if (cw->shadow)
+  if (cw->shadow != NULL)
     {
-      XRenderFreePicture (xdisplay, cw->shadow);
-      cw->shadow = None;
-    }
-
-  if (cw->shadow_region != None)
-    {
-      XFixesDestroyRegion (xdisplay, cw->shadow_region);
-      cw->shadow_region = None;
+      meta_shadow_xrender_free (cw->shadow);
+      cw->shadow = NULL;
     }
 
   g_free (cw);
@@ -1166,9 +1154,6 @@ meta_compositor_xrender_finalize (GObject *object)
   if (xrender->root_picture)
     XRenderFreePicture (xdisplay, xrender->root_picture);
 
-  if (xrender->black_picture)
-    XRenderFreePicture (xdisplay, xrender->black_picture);
-
   if (xrender->have_shadows)
     {
       int i;
@@ -1246,7 +1231,6 @@ meta_compositor_xrender_manage (MetaCompositor  *compositor,
     }
 
   xrender->root_buffer = None;
-  xrender->black_picture = solid_picture (xdisplay, TRUE, 1, 0, 0, 0);
 
   xrender->root_tile = None;
 
@@ -1404,16 +1388,15 @@ meta_compositor_xrender_sync_window_geometry (MetaCompositor *compositor,
     {
       shadow_changed (surface);
     }
-  else if (cw->shadow_region != None)
+  else if (cw->shadow != NULL)
     {
-      meta_compositor_add_damage (compositor, "sync_window_geometry", cw->shadow_region);
+      XserverRegion region;
 
-      XFixesTranslateRegion (xrender->xdisplay,
-                             cw->shadow_region,
-                             cw->rect.x - old_rect.x,
-                             cw->rect.y - old_rect.y);
+      region = meta_shadow_xrender_get_region (cw->shadow);
+      XFixesTranslateRegion (xrender->xdisplay, region, old_rect.x, old_rect.y);
 
-      meta_compositor_add_damage (compositor, "sync_window_geometry", cw->shadow_region);
+      meta_compositor_add_damage (compositor, "sync_window_geometry", region);
+      XFixesDestroyRegion (xrender->xdisplay, region);
     }
 }
 
@@ -1448,22 +1431,27 @@ meta_compositor_xrender_pre_paint (MetaCompositor *compositor)
           meta_surface_has_shadow (surface))
         {
           MetaShadowType shadow_type;
+          XserverRegion shadow_region;
 
           if (meta_window_appears_focused (cw->window))
             shadow_type = META_SHADOW_LARGE;
           else
             shadow_type = META_SHADOW_MEDIUM;
 
-          g_assert (cw->shadow_region == None);
-          cw->shadow_region = get_shadow_region (xrender, cw, shadow_type);
+          g_assert (cw->shadow == NULL);
+          cw->shadow = create_shadow (xrender, surface, shadow_type);
 
-          if (cw->shadow_region != None)
-            {
-              meta_compositor_add_damage (compositor,
-                                          "meta_compositor_xrender_pre_paint",
-                                          cw->shadow_region);
-            }
+          shadow_region = meta_shadow_xrender_get_region (cw->shadow);
+          XFixesTranslateRegion (xrender->xdisplay,
+                                 shadow_region,
+                                 meta_surface_get_x (surface),
+                                 meta_surface_get_y (surface));
 
+          meta_compositor_add_damage (compositor,
+                                      "meta_compositor_xrender_pre_paint",
+                                      shadow_region);
+
+          XFixesDestroyRegion (xrender->xdisplay, shadow_region);
           cw->shadow_changed = FALSE;
         }
     }
