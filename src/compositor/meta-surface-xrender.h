@@ -27,12 +27,16 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (MetaSurfaceXRender, meta_surface_xrender,
                       META, SURFACE_XRENDER, MetaSurface)
 
-XserverRegion meta_surface_xrender_get_border_clip (MetaSurfaceXRender *self);
+void meta_surface_xrender_update_shadow (MetaSurfaceXRender *self);
 
-void          meta_surface_xrender_paint           (MetaSurfaceXRender *self,
-                                                    XserverRegion       paint_region,
-                                                    Picture             paint_buffer,
-                                                    gboolean            opaque);
+void meta_surface_xrender_paint_shadow  (MetaSurfaceXRender *self,
+                                         XserverRegion       paint_region,
+                                         Picture             paint_buffer);
+
+void meta_surface_xrender_paint         (MetaSurfaceXRender *self,
+                                         XserverRegion       paint_region,
+                                         Picture             paint_buffer,
+                                         gboolean            opaque);
 
 G_END_DECLS
 

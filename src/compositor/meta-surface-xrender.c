@@ -25,26 +25,67 @@
 #include "display.h"
 #include "errors.h"
 #include "frame.h"
+#include "meta-compositor-xrender.h"
+#include "meta-shadow-xrender.h"
 #include "window-private.h"
 
 #define OPAQUE 0xffffffff
 
 struct _MetaSurfaceXRender
 {
-  MetaSurface    parent;
+  MetaSurface        parent;
 
-  MetaDisplay   *display;
-  Display       *xdisplay;
+  MetaDisplay       *display;
+  Display           *xdisplay;
 
-  Picture        picture;
+  Picture            picture;
 
-  Pixmap         mask_pixmap;
-  Picture        mask_picture;
+  Pixmap             mask_pixmap;
+  Picture            mask_picture;
 
-  XserverRegion  border_clip;
+  XserverRegion      border_clip;
+
+  MetaShadowXRender *shadow;
+  gboolean           shadow_changed;
 };
 
 G_DEFINE_TYPE (MetaSurfaceXRender, meta_surface_xrender, META_TYPE_SURFACE)
+
+static void
+shadow_changed (MetaSurfaceXRender *self)
+{
+  MetaSurface *surface;
+  MetaCompositor *compositor;
+
+  surface = META_SURFACE (self);
+
+  compositor = meta_surface_get_compositor (surface);
+
+  if (self->shadow != NULL)
+    {
+      int x;
+      int y;
+      XserverRegion shadow_region;
+
+      x = meta_surface_get_x (surface);
+      y = meta_surface_get_y (surface);
+
+      shadow_region = meta_shadow_xrender_get_region (self->shadow);
+      XFixesTranslateRegion (self->xdisplay, shadow_region, x, y);
+
+      meta_compositor_add_damage (compositor, "shadow_changed", shadow_region);
+      XFixesDestroyRegion (self->xdisplay, shadow_region);
+
+      meta_shadow_xrender_free (self->shadow);
+      self->shadow = NULL;
+    }
+  else
+    {
+      meta_compositor_queue_redraw (compositor);
+    }
+
+  self->shadow_changed = TRUE;
+}
 
 static gboolean
 is_argb (MetaSurfaceXRender *self)
@@ -444,6 +485,24 @@ notify_appears_focused_cb (MetaWindow         *window,
 {
   free_mask_pixmap (self);
   free_mask_picture (self);
+
+  shadow_changed (self);
+}
+
+static void
+notify_decorated_cb (MetaWindow         *window,
+                     GParamSpec         *pspec,
+                     MetaSurfaceXRender *self)
+{
+  shadow_changed (self);
+}
+
+static void
+notify_window_type_cb (MetaWindow         *window,
+                       GParamSpec         *pspec,
+                       MetaSurfaceXRender *self)
+{
+  shadow_changed (self);
 }
 
 static void
@@ -464,6 +523,14 @@ meta_surface_xrender_constructed (GObject *object)
   g_signal_connect_object (window, "notify::appears-focused",
                            G_CALLBACK (notify_appears_focused_cb),
                            self, 0);
+
+  g_signal_connect_object (window, "notify::decorated",
+                           G_CALLBACK (notify_decorated_cb),
+                           self, 0);
+
+  g_signal_connect_object (window, "notify::window-type",
+                           G_CALLBACK (notify_window_type_cb),
+                           self, 0);
 }
 
 static void
@@ -483,6 +550,8 @@ meta_surface_xrender_finalize (GObject *object)
       XFixesDestroyRegion (self->xdisplay, self->border_clip);
       self->border_clip = None;
     }
+
+  shadow_changed (self);
 
   G_OBJECT_CLASS (meta_surface_xrender_parent_class)->finalize (object);
 }
@@ -620,6 +689,8 @@ meta_surface_xrender_hide (MetaSurface *surface)
 
   free_picture (self);
   free_mask_picture (self);
+
+  shadow_changed (self);
 }
 
 static void
@@ -631,6 +702,8 @@ meta_surface_xrender_opacity_changed (MetaSurface *surface)
 
   free_mask_pixmap (self);
   free_mask_picture (self);
+
+  shadow_changed (self);
 }
 
 static void
@@ -639,6 +712,33 @@ meta_surface_xrender_sync_geometry (MetaSurface   *surface,
                                     gboolean       position_changed,
                                     gboolean       size_changed)
 {
+  MetaSurfaceXRender *self;
+  MetaCompositor *compositor;
+  XserverRegion region;
+
+  self = META_SURFACE_XRENDER (surface);
+
+  if (self->shadow == NULL)
+    return;
+
+  compositor = meta_surface_get_compositor (surface);
+
+  region = meta_shadow_xrender_get_region (self->shadow);
+  XFixesTranslateRegion (self->xdisplay, region, old_geometry.x, old_geometry.y);
+
+  meta_compositor_add_damage (compositor,
+                              "meta_surface_xrender_sync_geometry",
+                              region);
+
+  XFixesDestroyRegion (self->xdisplay, region);
+
+  if (size_changed)
+    {
+      meta_shadow_xrender_free (self->shadow);
+      self->shadow = NULL;
+
+      self->shadow_changed = TRUE;
+    }
 }
 
 static void
@@ -676,6 +776,29 @@ meta_surface_xrender_pre_paint (MetaSurface   *surface,
 
   if (self->mask_picture == None)
     self->mask_picture = get_window_mask_picture (self);
+
+  if (self->shadow_changed)
+    {
+      if (self->shadow == NULL &&
+          meta_surface_has_shadow (surface))
+        {
+          MetaCompositor *compositor;
+          MetaCompositorXRender *compositor_xrender;
+          XserverRegion shadow_region;
+
+          compositor = meta_surface_get_compositor (surface);
+          compositor_xrender = META_COMPOSITOR_XRENDER (compositor);
+
+          self->shadow = meta_compositor_xrender_create_shadow (compositor_xrender,
+                                                                surface);
+
+          shadow_region = meta_shadow_xrender_get_region (self->shadow);
+          XFixesUnionRegion (self->xdisplay, damage, damage, shadow_region);
+          XFixesDestroyRegion (self->xdisplay, shadow_region);
+        }
+
+      self->shadow_changed = FALSE;
+    }
 }
 
 static void
@@ -703,12 +826,44 @@ meta_surface_xrender_class_init (MetaSurfaceXRenderClass *self_class)
 static void
 meta_surface_xrender_init (MetaSurfaceXRender *self)
 {
+  self->shadow_changed = TRUE;
 }
 
-XserverRegion
-meta_surface_xrender_get_border_clip (MetaSurfaceXRender *self)
+void
+meta_surface_xrender_update_shadow (MetaSurfaceXRender *self)
 {
-  return self->border_clip;
+  shadow_changed (self);
+}
+
+void
+meta_surface_xrender_paint_shadow (MetaSurfaceXRender *self,
+                                   XserverRegion       paint_region,
+                                   Picture             paint_buffer)
+{
+  MetaSurface *surface;
+  XserverRegion shadow_clip;
+
+  surface = META_SURFACE (self);
+
+  if (!meta_surface_is_visible (surface))
+    return;
+
+  if (self->shadow == NULL)
+    return;
+
+  shadow_clip = XFixesCreateRegion (self->xdisplay, NULL, 0);
+  XFixesCopyRegion (self->xdisplay, shadow_clip, self->border_clip);
+
+  if (paint_region != None)
+    XFixesIntersectRegion (self->xdisplay, shadow_clip, shadow_clip, paint_region);
+
+  meta_shadow_xrender_paint (self->shadow,
+                             shadow_clip,
+                             paint_buffer,
+                             meta_surface_get_x (surface),
+                             meta_surface_get_y (surface));
+
+  XFixesDestroyRegion (self->xdisplay, shadow_clip);
 }
 
 void
