@@ -823,44 +823,71 @@ get_shadow_region (MetaCompositorXRender *xrender,
 }
 
 static void
+paint_shadow (MetaCompositorXRender *xrender,
+              MetaSurfaceXRender    *surface_xrender,
+              XserverRegion          paint_region,
+              Picture                paint_buffer)
+{
+  MetaCompWindow *cw;
+  XserverRegion shadow_clip;
+  XserverRegion border_clip;
+  int x;
+  int y;
+
+  cw = g_object_get_data (G_OBJECT (surface_xrender), "cw");
+
+  if (cw->shadow == None)
+    return;
+
+  shadow_clip = XFixesCreateRegion (xrender->xdisplay, NULL, 0);
+  XFixesCopyRegion (xrender->xdisplay, shadow_clip, cw->shadow_region);
+
+  border_clip = meta_surface_xrender_get_border_clip (surface_xrender);
+  XFixesIntersectRegion (xrender->xdisplay, shadow_clip, shadow_clip, border_clip);
+
+  if (paint_region != None)
+    {
+      XFixesIntersectRegion (xrender->xdisplay,
+                             shadow_clip,
+                             shadow_clip,
+                             paint_region);
+    }
+
+  XFixesSetPictureClipRegion (xrender->xdisplay, paint_buffer, 0, 0, shadow_clip);
+  XFixesDestroyRegion (xrender->xdisplay, shadow_clip);
+
+  x = cw->rect.x;
+  y = cw->rect.y;
+
+  XRenderComposite (xrender->xdisplay, PictOpOver,
+                    xrender->black_picture, cw->shadow, paint_buffer,
+                    0, 0, 0, 0,
+                    x + cw->shadow_dx, y + cw->shadow_dy,
+                    cw->shadow_width, cw->shadow_height);
+}
+
+static void
 paint_dock_shadows (MetaCompositorXRender *xrender,
                     GList                 *surfaces,
                     Picture                root_buffer,
                     XserverRegion          region)
 {
-  Display *xdisplay = xrender->xdisplay;
   GList *l;
 
   for (l = surfaces; l != NULL; l = l->next)
     {
-      MetaSurfaceXRender *surface;
-      MetaCompWindow *cw;
-      XserverRegion shadow_clip;
+      MetaSurface *surface;
+      MetaWindow *window;
 
-      surface = META_SURFACE_XRENDER (l->data);
-      cw = g_object_get_data (G_OBJECT (surface), "cw");
+      surface = META_SURFACE (l->data);
 
-      if (cw->window->type == META_WINDOW_DOCK &&
-          cw->shadow != None)
-        {
-          XserverRegion border_clip;
+      if (!meta_surface_is_visible (surface))
+        continue;
 
-          shadow_clip = XFixesCreateRegion (xdisplay, NULL, 0);
-          border_clip = meta_surface_xrender_get_border_clip (surface);
+      window = meta_surface_get_window (surface);
 
-          XFixesIntersectRegion (xdisplay, shadow_clip,
-                                 border_clip, region);
-
-          XFixesSetPictureClipRegion (xdisplay, root_buffer, 0, 0, shadow_clip);
-
-          XRenderComposite (xdisplay, PictOpOver, xrender->black_picture,
-                            cw->shadow, root_buffer,
-                            0, 0, 0, 0,
-                            cw->rect.x + cw->shadow_dx,
-                            cw->rect.y + cw->shadow_dy,
-                            cw->shadow_width, cw->shadow_height);
-          XFixesDestroyRegion (xdisplay, shadow_clip);
-        }
+      if (window->type == META_WINDOW_DOCK)
+        paint_shadow (xrender, META_SURFACE_XRENDER (surface), region, root_buffer);
     }
 }
 
@@ -937,42 +964,22 @@ paint_windows (MetaCompositorXRender *xrender,
    */
   for (index = last; index; index = index->prev)
     {
-      MetaSurfaceXRender *surface;
+      MetaSurface *surface;
+      MetaSurfaceXRender *surface_xrender;
+      MetaWindow *window;
 
-      surface = META_SURFACE_XRENDER (index->data);
+      surface = META_SURFACE (index->data);
+      surface_xrender = META_SURFACE_XRENDER (surface);
 
-      if (meta_surface_xrender_get_picture (surface) != None)
-        {
-          MetaCompWindow *cw;
-          int x, y;
+      if (!meta_surface_is_visible (surface))
+        continue;
 
-          cw = g_object_get_data (G_OBJECT (surface), "cw");
+      window = meta_surface_get_window (surface);
 
-          x = cw->rect.x;
-          y = cw->rect.y;
+      if (window->type != META_WINDOW_DOCK)
+        paint_shadow (xrender, surface_xrender, None, root_buffer);
 
-          if (cw->shadow && cw->window->type != META_WINDOW_DOCK)
-            {
-              XserverRegion shadow_clip;
-              XserverRegion border_clip;
-
-              shadow_clip = XFixesCreateRegion (xdisplay, NULL, 0);
-              XFixesCopyRegion (xdisplay, shadow_clip, cw->shadow_region);
-
-              border_clip = meta_surface_xrender_get_border_clip (surface);
-              XFixesIntersectRegion (xdisplay, shadow_clip, shadow_clip, border_clip);
-
-              XFixesSetPictureClipRegion (xdisplay, root_buffer, 0, 0, shadow_clip);
-              XFixesDestroyRegion (xdisplay, shadow_clip);
-
-              XRenderComposite (xdisplay, PictOpOver, xrender->black_picture,
-                                cw->shadow, root_buffer, 0, 0, 0, 0,
-                                x + cw->shadow_dx, y + cw->shadow_dy,
-                                cw->shadow_width, cw->shadow_height);
-            }
-
-          meta_surface_xrender_paint (surface, paint_region, root_buffer, FALSE);
-        }
+      meta_surface_xrender_paint (surface_xrender, None, root_buffer, FALSE);
     }
 
   XFixesDestroyRegion (xdisplay, paint_region);
