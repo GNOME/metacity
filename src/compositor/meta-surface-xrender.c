@@ -377,20 +377,16 @@ static Picture
 get_window_picture (MetaSurfaceXRender *self)
 {
   MetaWindow *window;
-  Window xwindow;
   Visual *xvisual;
   XRenderPictFormat *format;
   Pixmap pixmap;
-  Drawable drawable;
   XRenderPictureAttributes pa;
   unsigned int pa_mask;
   Picture picture;
 
   window = meta_surface_get_window (META_SURFACE (self));
 
-  xwindow = meta_window_get_toplevel_xwindow (window);
   xvisual = meta_window_get_toplevel_xvisual (window);
-
   format = XRenderFindVisualFormat (self->xdisplay, xvisual);
 
   if (format == NULL)
@@ -403,13 +399,15 @@ get_window_picture (MetaSurfaceXRender *self)
     return None;
 
   pixmap = meta_surface_get_pixmap (META_SURFACE (self));
-  drawable = pixmap != None ? pixmap : xwindow;
+
+  if (pixmap == None)
+    return None;
 
   pa.subwindow_mode = IncludeInferiors;
   pa_mask = CPSubwindowMode;
 
   meta_error_trap_push (self->display);
-  picture = XRenderCreatePicture (self->xdisplay, drawable, format, pa_mask, &pa);
+  picture = XRenderCreatePicture (self->xdisplay, pixmap, format, pa_mask, &pa);
   meta_error_trap_pop (self->display);
 
   return picture;
