@@ -31,6 +31,12 @@ meta_surface_vulkan_get_image (MetaSurface *surface)
   return NULL;
 }
 
+static gboolean
+meta_surface_vulkan_is_visible (MetaSurface *surface)
+{
+  return FALSE;
+}
+
 static void
 meta_surface_vulkan_show (MetaSurface *surface)
 {
@@ -64,6 +70,7 @@ meta_surface_vulkan_class_init (MetaSurfaceVulkanClass *self_class)
   surface_class = META_SURFACE_CLASS (self_class);
 
   surface_class->get_image = meta_surface_vulkan_get_image;
+  surface_class->is_visible = meta_surface_vulkan_is_visible;
   surface_class->show = meta_surface_vulkan_show;
   surface_class->hide = meta_surface_vulkan_hide;
   surface_class->opacity_changed = meta_surface_vulkan_opacity_changed;

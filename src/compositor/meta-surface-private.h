@@ -28,6 +28,8 @@ struct _MetaSurfaceClass
 
   cairo_surface_t * (* get_image)       (MetaSurface *self);
 
+  gboolean          (* is_visible)      (MetaSurface *self);
+
   void              (* show)            (MetaSurface *self);
 
   void              (* hide)            (MetaSurface *self);

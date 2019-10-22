@@ -744,7 +744,7 @@ meta_surface_is_visible (MetaSurface *self)
       priv->pixmap == None)
     return FALSE;
 
-  return TRUE;
+  return META_SURFACE_GET_CLASS (self)->is_visible (self);
 }
 
 void

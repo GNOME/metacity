@@ -588,6 +588,16 @@ meta_surface_xrender_get_image (MetaSurface *surface)
   return image;
 }
 
+static gboolean
+meta_surface_xrender_is_visible (MetaSurface *surface)
+{
+  MetaSurfaceXRender *self;
+
+  self = META_SURFACE_XRENDER (surface);
+
+  return self->picture != None;
+}
+
 static void
 meta_surface_xrender_show (MetaSurface *surface)
 {
@@ -672,6 +682,7 @@ meta_surface_xrender_class_init (MetaSurfaceXRenderClass *self_class)
   object_class->finalize = meta_surface_xrender_finalize;
 
   surface_class->get_image = meta_surface_xrender_get_image;
+  surface_class->is_visible = meta_surface_xrender_is_visible;
   surface_class->show = meta_surface_xrender_show;
   surface_class->hide = meta_surface_xrender_hide;
   surface_class->opacity_changed = meta_surface_xrender_opacity_changed;
@@ -702,8 +713,7 @@ meta_surface_xrender_paint (MetaSurfaceXRender *self,
                             Picture             paint_buffer,
                             gboolean            opaque)
 {
-  if (!meta_surface_is_visible (META_SURFACE (self)) ||
-      self->picture == None)
+  if (!meta_surface_is_visible (META_SURFACE (self)))
     return;
 
   if (opaque)
