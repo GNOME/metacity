@@ -647,7 +647,8 @@ meta_surface_xrender_free_pixmap (MetaSurface *surface)
 }
 
 static void
-meta_surface_xrender_pre_paint (MetaSurface *surface)
+meta_surface_xrender_pre_paint (MetaSurface   *surface,
+                                XserverRegion  damage)
 {
   MetaSurfaceXRender *self;
   MetaWindow *window;

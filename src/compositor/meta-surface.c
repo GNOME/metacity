@@ -895,7 +895,7 @@ meta_surface_pre_paint (MetaSurface *self)
 
   ensure_pixmap (self);
 
-  META_SURFACE_GET_CLASS (self)->pre_paint (self);
+  META_SURFACE_GET_CLASS (self)->pre_paint (self, damage);
 
   update_shape_region (self, damage);
   update_opaque_region (self, damage);

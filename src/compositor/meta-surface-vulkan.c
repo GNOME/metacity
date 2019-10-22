@@ -58,7 +58,8 @@ meta_surface_vulkan_free_pixmap (MetaSurface *surface)
 }
 
 static void
-meta_surface_vulkan_pre_paint (MetaSurface *surface)
+meta_surface_vulkan_pre_paint (MetaSurface   *surface,
+                               XserverRegion  damage)
 {
 }
 

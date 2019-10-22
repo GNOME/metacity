@@ -26,19 +26,20 @@ struct _MetaSurfaceClass
 {
   GObjectClass parent_class;
 
-  cairo_surface_t * (* get_image)       (MetaSurface *self);
+  cairo_surface_t * (* get_image)       (MetaSurface   *self);
 
-  gboolean          (* is_visible)      (MetaSurface *self);
+  gboolean          (* is_visible)      (MetaSurface   *self);
 
-  void              (* show)            (MetaSurface *self);
+  void              (* show)            (MetaSurface   *self);
 
-  void              (* hide)            (MetaSurface *self);
+  void              (* hide)            (MetaSurface   *self);
 
-  void              (* opacity_changed) (MetaSurface *self);
+  void              (* opacity_changed) (MetaSurface   *self);
 
-  void              (* free_pixmap)     (MetaSurface *self);
+  void              (* free_pixmap)     (MetaSurface   *self);
 
-  void              (* pre_paint)       (MetaSurface *self);
+  void              (* pre_paint)       (MetaSurface   *self,
+                                         XserverRegion  damage);
 };
 
 G_END_DECLS
