@@ -845,9 +845,6 @@ meta_surface_xrender_paint_shadow (MetaSurfaceXRender *self,
 
   surface = META_SURFACE (self);
 
-  if (!meta_surface_is_visible (surface))
-    return;
-
   if (self->shadow == NULL)
     return;
 
@@ -872,9 +869,6 @@ meta_surface_xrender_paint (MetaSurfaceXRender *self,
                             Picture             paint_buffer,
                             gboolean            opaque)
 {
-  if (!meta_surface_is_visible (META_SURFACE (self)))
-    return;
-
   if (opaque)
     {
       paint_opaque_parts (self, paint_region, paint_buffer);
