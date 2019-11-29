@@ -1155,6 +1155,53 @@ window_contains_point (MetaWindow *window,
   return POINT_IN_RECT (root_x, root_y, rect);
 }
 
+static int
+compare_default_focus_window_layer (MetaWindow *a,
+                                    MetaWindow *b)
+{
+  if (a->layer == META_LAYER_DESKTOP ||
+      b->layer == META_LAYER_DESKTOP)
+    {
+      if (a->layer < b->layer)
+        return 1;
+      else if (a->layer > b->layer)
+        return -1;
+    }
+
+  return 0;
+}
+
+static int
+compare_default_focus_window_position (MetaWindow *a,
+                                       MetaWindow *b)
+{
+  if (a->stack_position < b->stack_position)
+    return 1;
+  else if (a->stack_position > b->stack_position)
+    return -1;
+
+  return 0;
+}
+
+static int
+compare_default_focus_window_func (gconstpointer a,
+                                   gconstpointer b)
+{
+  MetaWindow *window_a;
+  MetaWindow *window_b;
+  int result;
+
+  window_a = (MetaWindow *) a;
+  window_b = (MetaWindow *) b;
+
+  result = compare_default_focus_window_layer (window_a, window_b);
+
+  if (result == 0)
+    result = compare_default_focus_window_position (window_a, window_b);
+
+  return result;
+}
+
 static MetaWindow*
 get_default_focus_window (MetaStack     *stack,
                           MetaWorkspace *workspace,
@@ -1163,20 +1210,28 @@ get_default_focus_window (MetaStack     *stack,
                           int            root_x,
                           int            root_y)
 {
+  MetaWindow *default_focus_window;
+  GList *tmp;
+  GList *l;
+
   /* Find the topmost, focusable, mapped, window.
    * not_this_one is being unfocused or going away, so exclude it.
    */
 
-  GList *l;
+  default_focus_window = NULL;
 
   stack_ensure_sorted (stack);
 
-  /* top of this layer is at the front of the list */
-  for (l = stack->sorted; l != NULL; l = l->next)
-    {
-      MetaWindow *window = l->data;
+  tmp = g_list_copy (stack->sorted);
+  tmp = g_list_sort (tmp, compare_default_focus_window_func);
 
-      if (!window)
+  for (l = tmp; l != NULL; l = l->next)
+    {
+      MetaWindow *window;
+
+      window = l->data;
+
+      if (window == NULL)
         continue;
 
       if (window == not_this_one)
@@ -1200,10 +1255,27 @@ get_default_focus_window (MetaStack     *stack,
       if (window->type == META_WINDOW_DOCK)
         continue;
 
-      return window;
+      if (window->fullscreen &&
+          not_this_one != NULL &&
+          default_focus_window == NULL &&
+          windows_on_different_monitor (window, not_this_one))
+        {
+          default_focus_window = window;
+          continue;
+        }
+
+      if (default_focus_window != NULL &&
+          (!windows_on_different_monitor (window, default_focus_window) ||
+           window->layer == META_LAYER_DESKTOP))
+        continue;
+
+      default_focus_window = window;
+      break;
     }
 
-  return NULL;
+  g_list_free (tmp);
+
+  return default_focus_window;
 }
 
 MetaWindow*
