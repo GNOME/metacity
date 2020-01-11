@@ -878,6 +878,7 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
 
               g_assert (pixbuf == NULL);
               pixbuf = gtk_icon_info_load_symbolic_for_context (info, context, NULL, NULL);
+              g_object_unref (info);
             }
 
           if (pixbuf)
