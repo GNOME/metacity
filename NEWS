@@ -1,3 +1,14 @@
+Version 3.35.1
+==============
+- Add support for _GTK_WORKAREAS_Dn. (!3)
+- Add support for _GNOME_WM_STRUT_AREA.
+- Clip shape region to window size. (#627879)
+- Don't move focus to fullscreen window that is on other monitor.
+- Fix blurry titlebar font. (#2)
+- Fix shadow regression with Metacity theme.
+- Fix some memory leaks.
+- Updated translations.
+
 Version 3.34.0
 ==============
 - Fix possible crash in compositor.
