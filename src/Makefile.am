@@ -2,6 +2,13 @@ NULL =
 
 SUBDIRS = tools
 
+bin_PROGRAMS = metacity
+
+noinst_PROGRAMS = \
+	testasyncgetprop \
+	testboxes \
+	$(NULL)
+
 AM_CPPFLAGS = \
 	-DMETACITY_LOCALEDIR=\""$(localedir)"\" \
 	-DG_LOG_DOMAIN=\"metacity\" \
@@ -10,114 +17,116 @@ AM_CPPFLAGS = \
 	-I$(srcdir)/core \
 	-I$(srcdir)/include \
 	-I$(top_srcdir) \
-	@METACITY_CFLAGS@ \
+	$(NULL)
+
+metacity_CFLAGS = \
+	$(METACITY_CFLAGS) \
 	$(WARN_CFLAGS) \
 	$(AM_CFLAGS) \
 	$(NULL)
 
-metacity_SOURCES= 				\
-	core/async-getprop.c			\
-	core/async-getprop.h			\
-	core/atomnames.h                        \
-	core/bell.c				\
-	core/bell.h				\
-	core/boxes.c				\
-	include/boxes.h				\
-	core/util.c				\
-	include/util.h				\
-	include/common.h			\
-	compositor/meta-compositor.c		\
-	compositor/meta-compositor-none.c	\
-	compositor/meta-compositor-none.h	\
-	compositor/meta-compositor-private.h	\
-	compositor/meta-compositor-xrender.c	\
-	compositor/meta-compositor-xrender.h	\
-	compositor/meta-shadow-xrender.c	\
-	compositor/meta-shadow-xrender.h	\
-	compositor/meta-surface.c		\
-	compositor/meta-surface.h		\
-	compositor/meta-surface-private.h	\
-	compositor/meta-surface-xrender.c	\
-	compositor/meta-surface-xrender.h	\
-	include/meta-compositor.h		\
-	core/above-tab-keycode.c		\
-	core/constraints.c			\
-	core/constraints.h			\
-	core/core.c				\
-	core/delete.c				\
-	core/display.c				\
-	core/display-private.h			\
-	include/display.h			\
-	ui/draw-workspace.c			\
-	ui/draw-workspace.h			\
-	core/edge-resistance.c			\
-	core/edge-resistance.h			\
-	core/effects.c				\
-	core/effects.h				\
-	core/errors.c				\
-	include/errors.h			\
-	core/frame.c				\
-	core/frame-private.h			\
-	include/frame.h				\
-	core/group-private.h			\
-	core/group-props.c			\
-	core/group-props.h			\
-	core/group.c				\
-	core/group.h				\
-	core/iconcache.c			\
-	core/iconcache.h			\
-	core/keybindings.c			\
-	core/keybindings.h			\
-	core/main.c				\
-	include/main.h				\
-	core/metacity-Xatomtype.h		\
-	core/place.c				\
-	core/place.h				\
-	core/prefs.c				\
-	include/prefs.h				\
-	core/screen.c				\
-	core/screen-private.h			\
-	include/screen.h			\
-	include/types.h                         \
-	core/session.c				\
-	core/session.h				\
-	core/stack.c				\
-	core/stack.h				\
-	core/stack-tracker.c			\
-	core/stack-tracker.h			\
-	core/window-props.c			\
-	core/window-props.h			\
-	core/window.c				\
-	core/window-private.h			\
-	include/window.h			\
-	core/workspace.c			\
-	core/workspace.h			\
-	core/xprops.c				\
-	include/xprops.h			\
-	include/core.h				\
-	include/ui.h				\
-	ui/fixedtip.c				\
-	ui/fixedtip.h				\
-	ui/frames.c				\
-	ui/frames.h				\
-	ui/menu.c				\
-	ui/menu.h				\
-	ui/metaaccellabel.c			\
-	ui/metaaccellabel.h			\
+metacity_SOURCES = \
+	compositor/meta-compositor.c \
+	compositor/meta-compositor-none.c \
+	compositor/meta-compositor-none.h \
+	compositor/meta-compositor-private.h \
+	compositor/meta-compositor-xrender.c \
+	compositor/meta-compositor-xrender.h \
+	compositor/meta-shadow-xrender.c \
+	compositor/meta-shadow-xrender.h \
+	compositor/meta-surface.c \
+	compositor/meta-surface.h \
+	compositor/meta-surface-private.h \
+	compositor/meta-surface-xrender.c \
+	compositor/meta-surface-xrender.h \
+	core/above-tab-keycode.c \
+	core/async-getprop.c \
+	core/async-getprop.h \
+	core/atomnames.h \
+	core/bell.c \
+	core/bell.h \
+	core/boxes.c \
+	core/constraints.c \
+	core/constraints.h \
+	core/core.c \
+	core/delete.c \
+	core/display.c \
+	core/display-private.h \
+	core/edge-resistance.c \
+	core/edge-resistance.h \
+	core/effects.c \
+	core/effects.h \
+	core/errors.c \
+	core/frame.c \
+	core/frame-private.h \
+	core/group.c \
+	core/group.h \
+	core/group-private.h \
+	core/group-props.c \
+	core/group-props.h \
+	core/iconcache.c \
+	core/iconcache.h \
+	core/keybindings.c \
+	core/keybindings.h \
+	core/main.c \
+	core/metacity-Xatomtype.h \
+	core/place.c \
+	core/place.h \
+	core/prefs.c \
+	core/screen.c \
+	core/screen-private.h \
+	core/session.c \
+	core/session.h \
+	core/stack.c \
+	core/stack.h \
+	core/stack-tracker.c \
+	core/stack-tracker.h \
+	core/util.c \
+	core/window.c \
+	core/window-private.h \
+	core/window-props.c \
+	core/window-props.h \
+	core/workspace.c \
+	core/workspace.h \
+	core/xprops.c \
+	include/boxes.h \
+	include/common.h \
+	include/core.h \
+	include/display.h \
+	include/errors.h \
+	include/frame.h \
+	include/main.h \
+	include/meta-compositor.h \
+	include/prefs.h \
+	include/resizepopup.h \
+	include/screen.h \
+	include/tabpopup.h \
+	include/tile-preview.h \
+	include/types.h \
+	include/ui.h \
+	include/window.h \
+	include/xprops.h \
+	ui/draw-workspace.c \
+	ui/draw-workspace.h \
+	ui/fixedtip.c \
+	ui/fixedtip.h \
+	ui/frames.c \
+	ui/frames.h \
+	ui/menu.c \
+	ui/menu.h \
+	ui/metaaccellabel.c \
+	ui/metaaccellabel.h \
 	ui/meta-tooltip.c \
 	ui/meta-tooltip.h \
-	ui/resizepopup.c			\
-	include/resizepopup.h			\
-	ui/tabpopup.c				\
-	include/tabpopup.h			\
-	ui/select-image.c			\
-	ui/select-image.h			\
-	ui/select-workspace.c			\
-	ui/select-workspace.h			\
-	ui/tile-preview.c			\
-	include/tile-preview.h			\
-	ui/ui.c					\
-	ui/ui-private.h				\
+	ui/resizepopup.c \
+	ui/select-image.c \
+	ui/select-image.h \
+	ui/select-workspace.c \
+	ui/select-workspace.h \
+	ui/tabpopup.c \
+	ui/tile-preview.c \
+	ui/ui.c \
+	ui/ui-private.h \
 	$(BUILT_SOURCES) \
 	$(NULL)
 
@@ -130,17 +139,59 @@ metacity_SOURCES += \
 	$(NULL)
 endif
 
-bin_PROGRAMS=metacity
+metacity_LDADD = \
+	$(top_builddir)/libmetacity/libmetacity.la \
+	$(METACITY_LIBS) \
+	$(NULL)
 
-metacity_LDADD=@METACITY_LIBS@ $(top_builddir)/libmetacity/libmetacity.la
+metacity_LDFLAGS = \
+	$(WARN_LDFLAGS) \
+	$(AM_LDFLAGS) \
+	$(NULL)
 
-testboxes_SOURCES=include/util.h core/util.c include/boxes.h core/boxes.c core/testboxes.c
-testasyncgetprop_SOURCES=core/async-getprop.h core/async-getprop.c core/testasyncgetprop.c
+testasyncgetprop_SOURCES = \
+	core/async-getprop.c \
+	core/async-getprop.h \
+	core/testasyncgetprop.c \
+	$(NULL)
 
-noinst_PROGRAMS=testboxes testasyncgetprop
+testasyncgetprop_LDADD = \
+	$(METACITY_LIBS) \
+	$(NULL)
 
-testboxes_LDADD= @METACITY_LIBS@
-testasyncgetprop_LDADD= @METACITY_LIBS@
+testasyncgetprop_LDFLAGS = \
+	$(WARN_LDFLAGS) \
+	$(AM_LDFLAGS) \
+	$(NULL)
+
+testboxes_CFLAGS = \
+	$(METACITY_CFLAGS) \
+	$(WARN_CFLAGS) \
+	$(AM_CFLAGS) \
+	$(NULL)
+
+testboxes_SOURCES = \
+	core/util.c \
+	core/boxes.c \
+	core/testboxes.c \
+	include/boxes.h \
+	include/util.h \
+	$(NULL)
+
+testboxes_LDADD = \
+	$(METACITY_LIBS) \
+	$(NULL)
+
+testboxes_LDFLAGS = \
+	$(WARN_LDFLAGS) \
+	$(AM_LDFLAGS) \
+	$(NULL)
+
+testasyncgetprop_CFLAGS = \
+	$(METACITY_CFLAGS) \
+	$(WARN_CFLAGS) \
+	$(AM_CFLAGS) \
+	$(NULL)
 
 ENUM_TYPES = \
 	core/window-private.h \
