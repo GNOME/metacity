@@ -108,25 +108,6 @@ is_argb (MetaSurfaceXRender *self)
   return FALSE;
 }
 
-static gboolean
-is_region_empty (Display       *xdisplay,
-                 XserverRegion  region)
-{
-  int n_rects;
-  XRectangle bounds;
-  XRectangle *rects;
-
-  rects = XFixesFetchRegionAndBounds (xdisplay, region, &n_rects, &bounds);
-
-  if (rects != NULL)
-    XFree (rects);
-
-  if (n_rects == 0 || bounds.width == 0 || bounds.height == 0)
-    return TRUE;
-
-  return FALSE;
-}
-
 static void
 paint_opaque_parts (MetaSurfaceXRender *self,
                     XserverRegion       paint_region,
@@ -187,12 +168,6 @@ paint_opaque_parts (MetaSurfaceXRender *self,
   XFixesTranslateRegion (self->xdisplay, clip_region, x, y);
   XFixesIntersectRegion (self->xdisplay, clip_region, clip_region, paint_region);
 
-  if (is_region_empty (self->xdisplay, clip_region))
-    {
-      XFixesDestroyRegion (self->xdisplay, clip_region);
-      return;
-    }
-
   XFixesSetPictureClipRegion (self->xdisplay, paint_buffer, 0, 0, clip_region);
 
   XRenderComposite (self->xdisplay, PictOpSrc,
@@ -217,9 +192,6 @@ paint_argb_parts (MetaSurfaceXRender *self,
   XserverRegion shape_region;
   XserverRegion clip_region;
 
-  if (is_region_empty (self->xdisplay, self->border_clip))
-    return;
-
   surface = META_SURFACE (self);
 
   x = meta_surface_get_x (surface);
@@ -236,9 +208,6 @@ paint_argb_parts (MetaSurfaceXRender *self,
   XFixesTranslateRegion (self->xdisplay, clip_region, x, y);
   XFixesIntersectRegion (self->xdisplay, border_clip, border_clip, clip_region);
   XFixesDestroyRegion (self->xdisplay, clip_region);
-
-  if (is_region_empty (self->xdisplay, border_clip))
-    return;
 
   XFixesSetPictureClipRegion (self->xdisplay, paint_buffer, 0, 0, border_clip);
 
