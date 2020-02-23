@@ -47,6 +47,8 @@ struct _MetaSurfaceXRender
 
   MetaShadowXRender *shadow;
   gboolean           shadow_changed;
+
+  gboolean           is_argb;
 };
 
 G_DEFINE_TYPE (MetaSurfaceXRender, meta_surface_xrender, META_TYPE_SURFACE)
@@ -87,27 +89,6 @@ shadow_changed (MetaSurfaceXRender *self)
   self->shadow_changed = TRUE;
 }
 
-static gboolean
-is_argb (MetaSurfaceXRender *self)
-{
-  MetaWindow *window;
-  Visual *xvisual;
-  XRenderPictFormat *format;
-
-  window = meta_surface_get_window (META_SURFACE (self));
-  xvisual = meta_window_get_toplevel_xvisual (window);
-
-  format = XRenderFindVisualFormat (self->xdisplay, xvisual);
-
-  if (format && format->type == PictTypeDirect && format->direct.alphaMask)
-    return TRUE;
-
-  if (window->opacity != OPAQUE)
-    return TRUE;
-
-  return FALSE;
-}
-
 static void
 paint_opaque_parts (MetaSurfaceXRender *self,
                     XserverRegion       paint_region,
@@ -129,7 +110,7 @@ paint_opaque_parts (MetaSurfaceXRender *self,
   shape_region = meta_surface_get_shape_region (surface);
   opaque_region = meta_surface_get_opaque_region (surface);
 
-  if ((is_argb (self) && opaque_region == None) ||
+  if ((self->is_argb && opaque_region == None) ||
       window->opacity != OPAQUE)
     return;
 
@@ -412,6 +393,8 @@ get_window_picture (MetaSurfaceXRender *self)
 
   if (pixmap == None)
     return None;
+
+  self->is_argb = format->type == PictTypeDirect && format->direct.alphaMask;
 
   pa.subwindow_mode = IncludeInferiors;
   pa_mask = CPSubwindowMode;
