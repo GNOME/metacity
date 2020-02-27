@@ -27,6 +27,8 @@ metacity_CFLAGS = \
 
 metacity_SOURCES = \
 	compositor/meta-compositor.c \
+	compositor/meta-compositor-external.c \
+	compositor/meta-compositor-external.h \
 	compositor/meta-compositor-none.c \
 	compositor/meta-compositor-none.h \
 	compositor/meta-compositor-private.h \
