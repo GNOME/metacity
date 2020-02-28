@@ -882,7 +882,6 @@ reload_mwm_hints (MetaWindow    *window,
                   gboolean       initial)
 {
   MotifWmHints *hints;
-  gboolean decorated;
 
   window->mwm_decorated = TRUE;
   window->mwm_border_only = FALSE;
@@ -900,7 +899,6 @@ reload_mwm_hints (MetaWindow    *window,
     }
 
   hints = value->v.motif_hints;
-  decorated = window->decorated;
 
   /* We support those MWM hints deemed non-stupid */
 
@@ -987,23 +985,6 @@ reload_mwm_hints (MetaWindow    *window,
     meta_verbose ("Functions flag unset\n");
 
   meta_window_recalc_features (window);
-
-  /* We do all this anyhow at the end of meta_window_new() */
-  if (!window->constructing)
-    {
-      if (window->decorated)
-        meta_window_ensure_frame (window);
-      else
-        meta_window_destroy_frame (window);
-
-      meta_window_queue (window,
-                         META_QUEUE_MOVE_RESIZE |
-                         /* because ensure/destroy frame may unmap: */
-                         META_QUEUE_CALC_SHOWING);
-
-      if (decorated != window->decorated)
-        g_object_notify (G_OBJECT (window), "decorated");
-    }
 }
 
 static void

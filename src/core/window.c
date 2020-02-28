@@ -6756,29 +6756,16 @@ recalc_window_type (MetaWindow *window)
 
   if (old_type != window->type)
     {
-      gboolean decorated;
-
-      decorated = window->decorated;
-
       window->attached = meta_window_should_attach_to_parent (window);
       recalc_window_features (window);
 
       if (!window->override_redirect)
         set_net_wm_state (window);
 
-      /* Update frame */
-      if (window->decorated)
-        meta_window_ensure_frame (window);
-      else
-        meta_window_destroy_frame (window);
-
       /* update stacking constraints */
       meta_window_update_layer (window);
 
       meta_window_grab_keys (window);
-
-      if (decorated != window->decorated)
-        g_object_notify_by_pspec (G_OBJECT (window), properties[PROP_DECORATED]);
 
       g_object_notify_by_pspec (G_OBJECT (window), properties[PROP_WINDOW_TYPE]);
     }
@@ -6877,6 +6864,7 @@ recalc_window_features (MetaWindow *window)
   gboolean old_has_resize_func;
   gboolean old_has_shade_func;
   gboolean old_always_sticky;
+  gboolean old_decorated;
 
   old_has_close_func = window->has_close_func;
   old_has_minimize_func = window->has_minimize_func;
@@ -6884,6 +6872,7 @@ recalc_window_features (MetaWindow *window)
   old_has_resize_func = window->has_resize_func;
   old_has_shade_func = window->has_shade_func;
   old_always_sticky = window->always_sticky;
+  old_decorated = window->decorated;
 
   /* Use MWM hints initially */
   window->decorated = window->mwm_decorated;
@@ -7080,6 +7069,23 @@ recalc_window_features (MetaWindow *window)
       old_has_shade_func != window->has_shade_func       ||
       old_always_sticky != window->always_sticky)
     set_allowed_actions_hint (window);
+
+  if (!window->constructing &&
+      old_decorated != window->decorated)
+    {
+      /* Update frame */
+      if (window->decorated)
+        meta_window_ensure_frame (window);
+      else
+        meta_window_destroy_frame (window);
+
+      meta_window_queue (window,
+                         META_QUEUE_MOVE_RESIZE |
+                         /* because ensure/destroy frame may unmap: */
+                         META_QUEUE_CALC_SHOWING);
+
+      g_object_notify_by_pspec (G_OBJECT (window), properties[PROP_DECORATED]);
+    }
 
   meta_window_frame_size_changed (window);
 
