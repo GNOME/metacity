@@ -40,9 +40,6 @@ struct _MetaSurfaceXRender
 
   Picture            picture;
 
-  Pixmap             mask_pixmap;
-  Picture            mask_picture;
-
   XserverRegion      border_clip;
 
   MetaShadowXRender *shadow;
@@ -193,7 +190,7 @@ paint_argb_parts (MetaSurfaceXRender *self,
   XFixesSetPictureClipRegion (self->xdisplay, paint_buffer, 0, 0, border_clip);
 
   XRenderComposite (self->xdisplay, PictOpOver,
-                    self->picture, self->mask_picture, paint_buffer,
+                    self->picture, None, paint_buffer,
                     0, 0, 0, 0,
                     x, y, width, height);
 }
@@ -226,114 +223,6 @@ clip_to_shape_region (MetaSurfaceXRender *self,
   XFree (rects);
 }
 
-static Pixmap
-create_mask_pixmap (MetaSurfaceXRender *self,
-                    gboolean            with_opacity)
-{
-  MetaWindow *window;
-  MetaFrame *frame;
-  int width;
-  int height;
-  XRenderPictFormat *format;
-  double opacity;
-  Screen *xscreen;
-  cairo_surface_t *surface;
-  cairo_t *cr;
-  Pixmap pixmap;
-
-  window = meta_surface_get_window (META_SURFACE (self));
-
-  frame = meta_window_get_frame (window);
-  if (frame == NULL && window->opacity == OPAQUE)
-    return None;
-
-  width = frame != NULL ? meta_surface_get_width (META_SURFACE (self)) : 1;
-  height = frame != NULL ? meta_surface_get_height (META_SURFACE (self)) : 1;
-
-  format = XRenderFindStandardFormat (self->xdisplay, PictStandardA8);
-
-  meta_error_trap_push (self->display);
-  pixmap = XCreatePixmap (self->xdisplay,
-                          DefaultRootWindow (self->xdisplay),
-                          width,
-                          height,
-                          format->depth);
-
-  if (meta_error_trap_pop_with_return (self->display) != 0)
-    return None;
-
-  opacity = 1.0;
-  if (with_opacity)
-    opacity = (double) window->opacity / OPAQUE;
-
-  xscreen = DefaultScreenOfDisplay (self->xdisplay);
-  surface = cairo_xlib_surface_create_with_xrender_format (self->xdisplay,
-                                                           pixmap,
-                                                           xscreen,
-                                                           format,
-                                                           width,
-                                                           height);
-
-  cr = cairo_create (surface);
-
-  cairo_set_operator (cr, CAIRO_OPERATOR_CLEAR);
-  cairo_set_source_rgba (cr, 0, 0, 0, 1);
-  cairo_paint (cr);
-
-  if (frame != NULL)
-    {
-      cairo_rectangle_int_t rect;
-      cairo_region_t *frame_paint_region;
-      MetaFrameBorders borders;
-
-      rect.x = 0;
-      rect.y = 0;
-      rect.width = width;
-      rect.height = height;
-
-      frame_paint_region = cairo_region_create_rectangle (&rect);
-      meta_frame_calc_borders (frame, &borders);
-
-      rect.x += borders.total.left;
-      rect.y += borders.total.top;
-      rect.width -= borders.total.left + borders.total.right;
-      rect.height -= borders.total.top + borders.total.bottom;
-
-      cairo_region_subtract_rectangle (frame_paint_region, &rect);
-
-      cairo_rectangle (cr, rect.x, rect.y, rect.width, rect.height);
-      cairo_clip (cr);
-
-      cairo_set_operator (cr, CAIRO_OPERATOR_SOURCE);
-      cairo_set_source_rgba (cr, 0, 0, 0, opacity);
-      cairo_paint (cr);
-
-      cairo_reset_clip (cr);
-      gdk_cairo_region (cr, frame_paint_region);
-      cairo_region_destroy (frame_paint_region);
-      cairo_clip (cr);
-
-      cairo_push_group (cr);
-
-      cairo_set_operator (cr, CAIRO_OPERATOR_OVER);
-      meta_frame_get_mask (frame, cr);
-
-      cairo_pop_group_to_source (cr);
-      cairo_paint_with_alpha (cr, opacity);
-    }
-  else
-    {
-      cairo_set_operator (cr, CAIRO_OPERATOR_SOURCE);
-      cairo_set_source_rgba (cr, 0, 0, 0, opacity);
-      cairo_paint (cr);
-    }
-
-  cairo_destroy (cr);
-  cairo_surface_destroy (surface);
-
-  return pixmap;
-}
-
 static void
 free_picture (MetaSurfaceXRender *self)
 {
@@ -342,26 +231,6 @@ free_picture (MetaSurfaceXRender *self)
 
   XRenderFreePicture (self->xdisplay, self->picture);
   self->picture = None;
-}
-
-static void
-free_mask_pixmap (MetaSurfaceXRender *self)
-{
-  if (self->mask_pixmap == None)
-    return;
-
-  XFreePixmap (self->xdisplay, self->mask_pixmap);
-  self->mask_pixmap = None;
-}
-
-static void
-free_mask_picture (MetaSurfaceXRender *self)
-{
-  if (self->mask_picture == None)
-    return;
-
-  XRenderFreePicture (self->xdisplay, self->mask_picture);
-  self->mask_picture = None;
 }
 
 static Picture
@@ -406,38 +275,11 @@ get_window_picture (MetaSurfaceXRender *self)
   return picture;
 }
 
-static Picture
-get_window_mask_picture (MetaSurfaceXRender *self)
-{
-  XRenderPictFormat *format;
-  Picture picture;
-
-  if (self->mask_pixmap == None)
-    return None;
-
-  format = XRenderFindStandardFormat (self->xdisplay, PictStandardA8);
-
-  meta_error_trap_push (self->display);
-
-  picture = XRenderCreatePicture (self->xdisplay,
-                                  self->mask_pixmap,
-                                  format,
-                                  0,
-                                  NULL);
-
-  meta_error_trap_pop (self->display);
-
-  return picture;
-}
-
 static void
 notify_appears_focused_cb (MetaWindow         *window,
                            GParamSpec         *pspec,
                            MetaSurfaceXRender *self)
 {
-  free_mask_pixmap (self);
-  free_mask_picture (self);
-
   shadow_changed (self);
 }
 
@@ -494,9 +336,6 @@ meta_surface_xrender_finalize (GObject *object)
 
   free_picture (self);
 
-  free_mask_pixmap (self);
-  free_mask_picture (self);
-
   if (self->border_clip != None)
     {
       XFixesDestroyRegion (self->xdisplay, self->border_clip);
@@ -514,8 +353,6 @@ meta_surface_xrender_get_image (MetaSurface *surface)
   MetaSurfaceXRender *self;
   Pixmap back_pixmap;
   MetaWindow *window;
-  Pixmap mask_pixmap;
-  gboolean free_pixmap;
   Visual *visual;
   int width;
   int height;
@@ -530,15 +367,6 @@ meta_surface_xrender_get_image (MetaSurface *surface)
     return NULL;
 
   window = meta_surface_get_window (surface);
-
-  mask_pixmap = self->mask_pixmap;
-  free_pixmap = FALSE;
-
-  if (window->opacity != OPAQUE)
-    {
-      mask_pixmap = create_mask_pixmap (self, FALSE);
-      free_pixmap = TRUE;
-    }
 
   visual = meta_window_get_toplevel_xvisual (window);
   width = meta_surface_get_width (surface);
@@ -561,50 +389,9 @@ meta_surface_xrender_get_image (MetaSurface *surface)
 
   clip_to_shape_region (self, cr);
 
-  if (mask_pixmap != None)
-    {
-      Screen *xscreen;
-      XRenderPictFormat *format;
-      MetaFrame *frame;
-      int mask_width;
-      int mask_height;
-      cairo_surface_t *mask;
-      cairo_pattern_t *pattern;
-
-      xscreen = DefaultScreenOfDisplay (self->xdisplay);
-      format = XRenderFindStandardFormat (self->xdisplay, PictStandardA8);
-
-      frame = meta_window_get_frame (window);
-      mask_width = frame != NULL ? width : 1;
-      mask_height = frame != NULL ? height : 1;
-
-      mask = cairo_xlib_surface_create_with_xrender_format (self->xdisplay,
-                                                            mask_pixmap,
-                                                            xscreen,
-                                                            format,
-                                                            mask_width,
-                                                            mask_height);
-
-      pattern = cairo_pattern_create_for_surface (mask);
-      cairo_surface_destroy (mask);
-
-      if (frame == NULL)
-        cairo_pattern_set_extend (pattern, CAIRO_EXTEND_REPEAT);
-
-      cairo_mask (cr, pattern);
-      cairo_pattern_destroy (pattern);
-
-      cairo_fill (cr);
-    }
-  else
-    {
-      cairo_paint (cr);
-    }
+  cairo_paint (cr);
 
   cairo_destroy (cr);
-
-  if (free_pixmap && mask_pixmap != None)
-    XFreePixmap (self->xdisplay, mask_pixmap);
 
   return image;
 }
@@ -622,14 +409,6 @@ meta_surface_xrender_is_visible (MetaSurface *surface)
 static void
 meta_surface_xrender_show (MetaSurface *surface)
 {
-  MetaSurfaceXRender *self;
-
-  self = META_SURFACE_XRENDER (surface);
-
-  /* The reason we free pixmap here is so that we will still have
-   * a valid pixmap when the window is unmapped.
-   */
-  free_mask_pixmap (self);
 }
 
 static void
@@ -640,7 +419,6 @@ meta_surface_xrender_hide (MetaSurface *surface)
   self = META_SURFACE_XRENDER (surface);
 
   free_picture (self);
-  free_mask_picture (self);
 
   shadow_changed (self);
 }
@@ -651,9 +429,6 @@ meta_surface_xrender_opacity_changed (MetaSurface *surface)
   MetaSurfaceXRender *self;
 
   self = META_SURFACE_XRENDER (surface);
-
-  free_mask_pixmap (self);
-  free_mask_picture (self);
 
   shadow_changed (self);
 }
@@ -701,9 +476,6 @@ meta_surface_xrender_free_pixmap (MetaSurface *surface)
   self = META_SURFACE_XRENDER (surface);
 
   free_picture (self);
-
-  free_mask_pixmap (self);
-  free_mask_picture (self);
 }
 
 static void
@@ -722,12 +494,6 @@ meta_surface_xrender_pre_paint (MetaSurface   *surface,
 
   if (self->picture == None)
     self->picture = get_window_picture (self);
-
-  if (self->mask_pixmap == None)
-    self->mask_pixmap = create_mask_pixmap (self, TRUE);
-
-  if (self->mask_picture == None)
-    self->mask_picture = get_window_mask_picture (self);
 
   if (self->shadow_changed)
     {

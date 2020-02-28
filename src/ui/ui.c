@@ -409,16 +409,6 @@ meta_ui_get_scale (MetaUI *ui)
 }
 
 void
-meta_ui_get_frame_mask (MetaUI  *ui,
-                        Window   frame_xwindow,
-                        guint    width,
-                        guint    height,
-                        cairo_t *cr)
-{
-  meta_frames_get_mask (ui->frames, frame_xwindow, width, height, cr);
-}
-
-void
 meta_ui_get_frame_borders (MetaUI *ui,
                            Window frame_xwindow,
                            MetaFrameBorders *borders)

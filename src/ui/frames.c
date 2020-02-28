@@ -2409,28 +2409,6 @@ cached_pixels_draw (CachedPixels   *pixels,
     }
 }
 
-void
-meta_frames_get_mask (MetaFrames *frames,
-                      Window      xwindow,
-                      guint       width,
-                      guint       height,
-                      cairo_t    *cr)
-{
-  MetaUIFrame *frame;
-
-  frame = meta_frames_lookup_window (frames, xwindow);
-
-  if (frame == NULL)
-    return;
-
-  cairo_push_group (cr);
-
-  meta_frames_paint (frames, frame, cr);
-
-  cairo_pop_group_to_source (cr);
-  cairo_paint (cr);
-}
-
 /* XXX -- this is disgusting. Find a better approach here.
  * Use multiple widgets? */
 static MetaUIFrame *
