@@ -6963,16 +6963,14 @@ recalc_window_features (MetaWindow *window)
         window->has_fullscreen_func = FALSE;
     }
 
-  /* We leave fullscreen windows decorated, just push the frame outside
-   * the screen. This avoids flickering to unparent them.
-   *
-   * Note that setting has_resize_func = FALSE here must come after the
+  /* Note that setting has_resize_func = FALSE here must come after the
    * above code that may disable fullscreen, because if the window
    * is not resizable purely due to fullscreen, we don't want to
    * disable fullscreen mode.
    */
   if (window->fullscreen)
     {
+      window->decorated = FALSE;
       window->has_shade_func = FALSE;
       window->has_move_func = FALSE;
       window->has_resize_func = FALSE;
