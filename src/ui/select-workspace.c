@@ -101,7 +101,7 @@ meta_select_workspace_draw (GtkWidget *widget,
 
       if (window->skip_pager ||
           !meta_window_showing_on_its_workspace (window) ||
-          window->unmaps_pending ||
+          window->unmaps_pending != NULL ||
           ignoreable_sticky)
         {
           --n_windows;

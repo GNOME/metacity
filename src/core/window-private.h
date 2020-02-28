@@ -367,11 +367,11 @@ struct _MetaWindow
   /* alarm monitoring client's _NET_WM_SYNC_REQUEST_COUNTER */
   XSyncAlarm sync_request_alarm;
 
-  /* Number of UnmapNotify that are caused by us, if
-   * we get UnmapNotify with none pending then the client
-   * is withdrawing the window.
+  /* List with UnmapNotify serials that are caused by us, if we get
+   * UnmapNotify with serial that is not in pending list then the
+   * client is withdrawing the window.
    */
-  int unmaps_pending;
+  GList *unmaps_pending;
 
   /* set to the most recent user-interaction event timestamp that we
      know about for this window */
@@ -726,6 +726,13 @@ gboolean meta_window_updates_are_frozen (MetaWindow *window);
 void meta_window_update_shape_region (MetaWindow *window);
 
 void meta_window_reframe (MetaWindow *window);
+
+void meta_window_add_pending_unmap (MetaWindow *window,
+                                    gulong      serial,
+                                    const char *reason);
+
+gboolean meta_window_remove_pending_unmap (MetaWindow *window,
+                                           gulong      serial);
 
 G_END_DECLS
 

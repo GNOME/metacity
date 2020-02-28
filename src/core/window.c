@@ -529,7 +529,7 @@ meta_window_new (MetaDisplay    *display,
   window->opaque_region = None;
   window->opacity = 0xffffffff;
 
-  window->unmaps_pending = 0;
+  window->unmaps_pending = NULL;
 
   window->mwm_decorated = TRUE;
   window->mwm_border_only = FALSE;
@@ -1266,6 +1266,9 @@ meta_window_unmanage (MetaWindow *window,
     XShapeSelectInput (window->display->xdisplay, window->xwindow, NoEventMask);
 
   meta_error_trap_pop (window->display);
+
+  g_list_free_full (window->unmaps_pending, g_free);
+  window->unmaps_pending = NULL;
 
   g_object_unref (window);
 }
@@ -2321,12 +2324,11 @@ meta_window_show (MetaWindow *window)
         {
           meta_topic (META_DEBUG_WINDOW_STATE,
                       "%s actually needs unmap (shaded)\n", window->desc);
-          meta_topic (META_DEBUG_WINDOW_STATE,
-                      "Incrementing unmaps_pending on %s for shade\n",
-                      window->desc);
           window->mapped = FALSE;
-          window->unmaps_pending += 1;
           meta_error_trap_push (window->display);
+          meta_window_add_pending_unmap (window,
+                                         NextRequest (window->display->xdisplay),
+                                         "shade");
           XUnmapWindow (window->display->xdisplay, window->xwindow);
           meta_error_trap_pop (window->display);
         }
@@ -2472,12 +2474,11 @@ meta_window_hide (MetaWindow *window)
     {
       meta_topic (META_DEBUG_WINDOW_STATE,
                   "%s actually needs unmap\n", window->desc);
-      meta_topic (META_DEBUG_WINDOW_STATE,
-                  "Incrementing unmaps_pending on %s for hide\n",
-                  window->desc);
       window->mapped = FALSE;
-      window->unmaps_pending += 1;
       meta_error_trap_push (window->display);
+      meta_window_add_pending_unmap (window,
+                                     NextRequest (window->display->xdisplay),
+                                     "hide");
       XUnmapWindow (window->display->xdisplay, window->xwindow);
       meta_error_trap_pop (window->display);
       did_hide = TRUE;
@@ -9455,4 +9456,50 @@ meta_window_reframe (MetaWindow *window)
   meta_window_move_resize_now (window);
 
   window->reframe_id = g_idle_add (reframe_cb, window);
+}
+
+void
+meta_window_add_pending_unmap (MetaWindow *window,
+                               gulong      serial,
+                               const char *reason)
+{
+  gulong *pending_unmap;
+
+  pending_unmap = g_new (gulong, 1);
+  *pending_unmap = serial;
+
+  meta_topic (META_DEBUG_WINDOW_STATE,
+              "Adding pending unmap on %s for %s\n",
+              window->desc,
+              reason);
+
+  window->unmaps_pending = g_list_append (window->unmaps_pending,
+                                          pending_unmap);
+}
+
+gboolean
+meta_window_remove_pending_unmap (MetaWindow *window,
+                                  gulong      serial)
+{
+  gboolean removed;
+  GList *l;
+
+  removed = FALSE;
+
+  for (l = window->unmaps_pending; l != NULL; l = l->next)
+    {
+      gulong *pending_unmap;
+
+      pending_unmap = l->data;
+
+      if (*pending_unmap == serial)
+        {
+          removed = TRUE;
+          window->unmaps_pending = g_list_remove_link (window->unmaps_pending, l);
+          g_list_free_full (l, g_free);
+          break;
+        }
+    }
+
+  return removed;
 }

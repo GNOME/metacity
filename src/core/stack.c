@@ -1237,7 +1237,7 @@ get_default_focus_window (MetaStack     *stack,
       if (window == not_this_one)
         continue;
 
-      if (window->unmaps_pending > 0)
+      if (window->unmaps_pending != NULL)
         continue;
 
       if (window->unmanaging)

@@ -2308,7 +2308,7 @@ event_callback (XEvent   *event,
 
           if (!frame_was_receiver)
             {
-              if (window->unmaps_pending == 0)
+              if (!meta_window_remove_pending_unmap (window, event->xany.serial))
                 {
                   meta_topic (META_DEBUG_WINDOW_STATE,
                               "Window %s withdrawn\n",
@@ -2321,10 +2321,9 @@ event_callback (XEvent   *event,
                 }
               else
                 {
-                  window->unmaps_pending -= 1;
                   meta_topic (META_DEBUG_WINDOW_STATE,
                               "Received pending unmap, %d now pending\n",
-                              window->unmaps_pending);
+                              g_list_length (window->unmaps_pending));
                 }
             }
         }
@@ -2371,6 +2370,9 @@ event_callback (XEvent   *event,
       break;
     case ReparentNotify:
       {
+        if (window)
+          meta_window_remove_pending_unmap (window, event->xany.serial);
+
         if (event->xreparent.event == screen->xroot)
           meta_stack_tracker_reparent_event (screen->stack_tracker,
                                              &event->xreparent);

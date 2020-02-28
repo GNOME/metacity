@@ -126,9 +126,6 @@ meta_window_ensure_frame (MetaWindow *window)
       window->mapped = FALSE; /* the reparent will unmap the window,
                                * we don't want to take that as a withdraw
                                */
-      meta_topic (META_DEBUG_WINDOW_STATE,
-                  "Incrementing unmaps_pending on %s for reparent\n", window->desc);
-      window->unmaps_pending += 1;
     }
   /* window was reparented to this position */
   window->rect.x = 0;
@@ -137,6 +134,10 @@ meta_window_ensure_frame (MetaWindow *window)
   meta_stack_tracker_record_remove (window->screen->stack_tracker,
                                     window->xwindow,
                                     XNextRequest (window->display->xdisplay));
+
+  meta_window_add_pending_unmap (window,
+                                 NextRequest (window->display->xdisplay),
+                                 "reparent");
 
   XReparentWindow (window->display->xdisplay,
                    window->xwindow,
@@ -200,14 +201,15 @@ meta_window_destroy_frame (MetaWindow *window)
                                * can identify a withdraw initiated
                                * by the client.
                                */
-      meta_topic (META_DEBUG_WINDOW_STATE,
-                  "Incrementing unmaps_pending on %s for reparent back to root\n", window->desc);
-      window->unmaps_pending += 1;
     }
 
   meta_stack_tracker_record_add (window->screen->stack_tracker,
                                  window->xwindow,
                                  XNextRequest (window->display->xdisplay));
+
+  meta_window_add_pending_unmap (window,
+                                 NextRequest (window->display->xdisplay),
+                                 "reparent back to root");
 
   XReparentWindow (window->display->xdisplay,
                    window->xwindow,
