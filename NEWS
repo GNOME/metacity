@@ -1,3 +1,7 @@
+Version 3.35.92
+===============
+- Use ARGB visual for window frame.
+
 Version 3.35.1
 ==============
 - Add support for _GTK_WORKAREAS_Dn. (!3)
