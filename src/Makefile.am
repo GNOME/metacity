@@ -16,6 +16,7 @@ AM_CPPFLAGS = \
 	-DSN_API_NOT_YET_FROZEN=1 \
 	-I$(srcdir)/core \
 	-I$(srcdir)/include \
+	-I$(builddir)/core \
 	-I$(top_srcdir) \
 	$(NULL)
 
@@ -196,7 +197,7 @@ testasyncgetprop_CFLAGS = \
 	$(NULL)
 
 ENUM_TYPES = \
-	core/window-private.h \
+	$(srcdir)/core/window-private.h \
 	$(NULL)
 
 core/meta-enum-types.c: core/meta-enum-types.c.in core/meta-enum-types.h $(ENUM_TYPES)
