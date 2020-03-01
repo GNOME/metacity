@@ -510,15 +510,16 @@ meta_xserver_region_equal (Display       *xdisplay,
   if (region1 == region2)
     return TRUE;
 
-  if ((region1 != None && region2 == None) ||
-      (region1 == None && region2 != None))
+  if (region1 == None || region2 == None)
     return FALSE;
 
   region1_rects = XFixesFetchRegion (xdisplay, region1, &region1_nrects);
   region2_rects = XFixesFetchRegion (xdisplay, region2, &region2_nrects);
 
-  if ((region1_rects != NULL && region2_rects == NULL) ||
-      (region1_rects == NULL && region2_rects != NULL))
+  if (region1_rects == NULL && region2_rects == NULL)
+    return TRUE;
+
+  if (region1_rects == NULL || region2_rects == NULL)
     {
       if (region1_rects != NULL)
         XFree (region1_rects);
