@@ -1,5 +1,6 @@
 stages:
   - build
+  - analysis
 
 build-ubuntu:
   image: ubuntu:devel
@@ -41,3 +42,57 @@ build-ubuntu:
     - ./autogen.sh
     - make
     - make distcheck
+
+coverity:
+  image: ubuntu:devel
+  stage: analysis
+  when: manual
+  before_script:
+    - apt-get update
+    - apt-get install -q -y --no-install-recommends
+                      autoconf-archive
+                      automake
+                      autopoint
+                      build-essential
+                      ca-certificates
+                      clang
+                      curl
+                      gettext
+                      gsettings-desktop-schemas-dev
+                      libcanberra-gtk3-dev
+                      libglib2.0-dev
+                      libgtk-3-dev
+                      libgtop2-dev
+                      libice-dev
+                      libpango1.0-dev
+                      libsm-dev
+                      libstartup-notification0-dev
+                      libtool
+                      libvulkan-dev
+                      libx11-dev
+                      libxcomposite-dev
+                      libxcursor-dev
+                      libxdamage-dev
+                      libxext-dev
+                      libxfixes-dev
+                      libxinerama-dev
+                      libxrandr-dev
+                      libxrender-dev
+                      libxt-dev
+                      yelp-tools
+                      zenity
+  script:
+    - curl https://scan.coverity.com/download/linux64
+      --data "token=$COVERITY_TOKEN&project=metacity"
+      --output /tmp/coverity_tool.tgz
+    - tar zxf /tmp/coverity_tool.tgz
+    - CC=clang ./autogen.sh --disable-Werror
+    - ./cov-analysis-linux64-*/bin/cov-build --dir cov-int make
+    - tar czf cov-int.tar.gz cov-int
+    - curl --form token=$COVERITY_TOKEN
+      --form email=alberts.muktupavels@gmail.com
+      --form file=@cov-int.tar.gz
+      --form version="$(autoconf --trace='AC_INIT:$2')-$CI_COMMIT_SHORT_SHA"
+      https://scan.coverity.com/builds?project=metacity
+  only:
+    - master
