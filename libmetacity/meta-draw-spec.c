@@ -602,15 +602,22 @@ do_operation (PosExpr *a,
   if (a->type == POS_EXPR_DOUBLE ||
       b->type == POS_EXPR_DOUBLE)
     {
+      int int_val;
+
       if (a->type != POS_EXPR_DOUBLE)
         {
+          int_val = a->d.int_val;
+
           a->type = POS_EXPR_DOUBLE;
-          a->d.double_val = a->d.int_val;
+          a->d.double_val = int_val;
         }
+
       if (b->type != POS_EXPR_DOUBLE)
         {
+          int_val = b->d.int_val;
+
           b->type = POS_EXPR_DOUBLE;
-          b->d.double_val = b->d.int_val;
+          b->d.double_val = int_val;
         }
     }
 
