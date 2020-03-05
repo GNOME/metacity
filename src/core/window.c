@@ -6849,6 +6849,46 @@ set_allowed_actions_hint (MetaWindow *window)
 #undef MAX_N_ACTIONS
 }
 
+static gboolean
+check_decorated_cb (gpointer user_data)
+{
+  MetaWindow *window;
+
+  window = META_WINDOW (user_data);
+  window->check_decorated_id = 0;
+
+  if ((window->decorated && window->frame != NULL) ||
+      (!window->decorated && window->frame == NULL))
+    return G_SOURCE_REMOVE;
+
+  /* Update frame */
+  if (window->decorated)
+    meta_window_ensure_frame (window);
+  else
+    meta_window_destroy_frame (window);
+
+  meta_window_queue (window,
+                     META_QUEUE_MOVE_RESIZE |
+                     /* because ensure/destroy frame may unmap: */
+                     META_QUEUE_CALC_SHOWING);
+
+  g_object_notify_by_pspec (G_OBJECT (window), properties[PROP_DECORATED]);
+
+  return G_SOURCE_REMOVE;
+}
+
+static void
+queue_check_decorated (MetaWindow *window)
+{
+  if (window->check_decorated_id != 0)
+    return;
+
+  window->check_decorated_id = g_idle_add (check_decorated_cb, window);
+
+  g_source_set_name_by_id (window->check_decorated_id,
+                           "[metacity] check_decorated_cb");
+}
+
 void
 meta_window_recalc_features (MetaWindow *window)
 {
@@ -7068,22 +7108,8 @@ recalc_window_features (MetaWindow *window)
       old_always_sticky != window->always_sticky)
     set_allowed_actions_hint (window);
 
-  if (!window->constructing &&
-      old_decorated != window->decorated)
-    {
-      /* Update frame */
-      if (window->decorated)
-        meta_window_ensure_frame (window);
-      else
-        meta_window_destroy_frame (window);
-
-      meta_window_queue (window,
-                         META_QUEUE_MOVE_RESIZE |
-                         /* because ensure/destroy frame may unmap: */
-                         META_QUEUE_CALC_SHOWING);
-
-      g_object_notify_by_pspec (G_OBJECT (window), properties[PROP_DECORATED]);
-    }
+  if (old_decorated != window->decorated)
+    queue_check_decorated (window);
 
   meta_window_frame_size_changed (window);
 
@@ -9310,24 +9336,6 @@ meta_window_update_shape_region (MetaWindow *window)
   meta_compositor_window_shape_region_changed (window->display->compositor, window);
 }
 
-static gboolean
-reframe_cb (gpointer user_data)
-{
-  MetaWindow *window;
-
-  window = META_WINDOW (user_data);
-  window->reframe_id = 0;
-
-  if (!window->decorated)
-    return G_SOURCE_REMOVE;
-
-  meta_window_ensure_frame (window);
-  meta_window_queue (window, META_QUEUE_MOVE_RESIZE | META_QUEUE_CALC_SHOWING);
-  g_object_notify_by_pspec (G_OBJECT (window), properties[PROP_DECORATED]);
-
-  return G_SOURCE_REMOVE;
-}
-
 static void
 meta_window_finalize (GObject *object)
 {
@@ -9337,10 +9345,10 @@ meta_window_finalize (GObject *object)
   window = META_WINDOW (object);
   xdisplay = meta_display_get_xdisplay (window->display);
 
-  if (window->reframe_id != 0)
+  if (window->check_decorated_id != 0)
     {
-      g_source_remove (window->reframe_id);
-      window->reframe_id = 0;
+      g_source_remove (window->check_decorated_id);
+      window->check_decorated_id = 0;
     }
 
   g_clear_object (&window->icon);
@@ -9459,7 +9467,7 @@ meta_window_reframe (MetaWindow *window)
   meta_window_destroy_frame (window);
   meta_window_move_resize_now (window);
 
-  window->reframe_id = g_idle_add (reframe_cb, window);
+  queue_check_decorated (window);
 }
 
 void

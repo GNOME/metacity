@@ -103,7 +103,7 @@ struct _MetaWindow
 
   /* may be NULL! not all windows get decorated */
   MetaFrame *frame;
-  guint reframe_id;
+  guint check_decorated_id;
 
   int depth;
   Visual *xvisual;
