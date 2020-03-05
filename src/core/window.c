@@ -98,18 +98,11 @@ static void meta_window_move_resize_now (MetaWindow  *window);
 
 static void meta_window_unqueue (MetaWindow *window, guint queuebits);
 
-static void     update_move           (MetaWindow   *window,
-                                       gboolean      snap,
-                                       int           x,
-                                       int           y);
-static gboolean update_move_timeout   (gpointer data);
 static void     update_resize         (MetaWindow   *window,
                                        gboolean      snap,
                                        int           x,
                                        int           y,
                                        gboolean      force);
-static gboolean update_resize_timeout (gpointer data);
-
 
 static void meta_window_flush_calc_showing   (MetaWindow *window);
 
@@ -7550,19 +7543,6 @@ check_moveresize_frequency (MetaWindow *window,
     }
 }
 
-static gboolean
-update_move_timeout (gpointer data)
-{
-  MetaWindow *window = data;
-
-  update_move (window,
-               window->display->grab_last_user_action_was_snap,
-               window->display->grab_latest_motion_x,
-               window->display->grab_latest_motion_y);
-
-  return FALSE;
-}
-
 static void
 update_move (MetaWindow  *window,
              gboolean     snap,
@@ -7784,7 +7764,6 @@ update_move (MetaWindow  *window,
                                         old.y,
                                         &new_x,
                                         &new_y,
-                                        update_move_timeout,
                                         snap,
                                         FALSE);
 
@@ -8005,7 +7984,6 @@ update_resize (MetaWindow *window,
                                           &new_w,
                                           &new_h,
                                           gravity,
-                                          update_resize_timeout,
                                           snap,
                                           FALSE);
 

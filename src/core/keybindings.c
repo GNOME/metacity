@@ -1557,7 +1557,6 @@ process_keyboard_move_grab (MetaDisplay *display,
                                             old_rect.y,
                                             &x,
                                             &y,
-                                            NULL,
                                             smart_snap,
                                             TRUE);
 
@@ -1990,7 +1989,6 @@ process_keyboard_resize_grab (MetaDisplay *display,
                                               &width,
                                               &height,
                                               gravity,
-                                              NULL,
                                               smart_snap,
                                               TRUE);
 
