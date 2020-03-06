@@ -1081,7 +1081,7 @@ msgid ""
 "<button function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> must be "
 "specified for this frame style"
 msgstr ""
-"<button function=«%s» state=«%s» draw_ops=«ett-eller-annet»/> må "
+"<button function=\"%s\" state=\"%s\" draw_ops=\"ett-eller-annet\"/> må "
 "spesifiseres for denne rammestilen"
 
 #: ../src/ui/theme.c:4827 ../src/ui/theme.c:4852
@@ -1089,7 +1089,7 @@ msgstr ""
 msgid ""
 "Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
 msgstr ""
-"Mangler <frame state=«%s» resize=«%s» focus=«%s» stil=«ett-eller-annet»/>"
+"Mangler <frame state=\"%s\" resize=\"%s\" focus=\"%s\" stil=\"ett-eller-annet\"/>"
 
 #: ../src/ui/theme.c:4896
 #, c-format
@@ -1109,7 +1109,7 @@ msgid ""
 "type=\"%s\" style_set=\"whatever\"/> element"
 msgstr ""
 "Ingen rammestil satt for vindutype «%s» i tema «%s», legg til et <window "
-"type=«%s» style_set=«ett-eller-annet»/>-element"
+"type=\"%s\" style_set=\"ett-eller-annet\"/>-element"
 
 #: ../src/ui/theme.c:5505 ../src/ui/theme.c:5567 ../src/ui/theme.c:5630
 #, c-format
