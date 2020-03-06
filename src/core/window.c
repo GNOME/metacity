@@ -5979,7 +5979,6 @@ meta_window_set_focused_internal (MetaWindow *window,
       XInstallColormap (window->display->xdisplay, window->colormap);
       meta_error_trap_pop (window->display);
 
-      /* move into FOCUSED_WINDOW layer */
       meta_window_update_layer (window);
 
       /* Ungrab click to focus button since the sync grab can interfere
@@ -6019,7 +6018,6 @@ meta_window_set_focused_internal (MetaWindow *window,
       XUninstallColormap (window->display->xdisplay, window->colormap);
       meta_error_trap_pop (window->display);
 
-      /* move out of FOCUSED_WINDOW layer */
       meta_window_update_layer (window);
 
       /* Re-grab for click to focus and raise-on-click, if necessary */
