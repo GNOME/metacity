@@ -98,8 +98,7 @@ METACITY FEATURES
      gsettings set org.gnome.desktop.wm.preferences theme Atlanta
      gsettings set org.gnome.desktop.wm.preferences theme Bright
 
-   See theme-format.txt for docs on the theme format. Use 
-   metacity-theme-viewer to preview themes.
+   Use metacity-theme-viewer to preview themes.
 
  - Change number of workspaces via gsettings:
      gsettings set org.gnome.desktop.wm.preferences num-workspaces 5

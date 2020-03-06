@@ -59,7 +59,6 @@ Applications opening in wrong workspace:
 Tracking bugs
 ====
 
-          revise theme format: http://bugzilla.gnome.org/show_bug.cgi?id=102547
            session management: http://bugzilla.gnome.org/show_bug.cgi?id=107063
     focus-stealing-prevention: http://bugzilla.gnome.org/show_bug.cgi?id=149028
              other focus bugs: http://bugzilla.gnome.org/show_bug.cgi?id=155450

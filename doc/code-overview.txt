@@ -147,7 +147,6 @@ Getting started -- where to look
         managers can collaborate correctly
 
     Theme issues: ???
-      doc/theme-format.txt
       theme.c
       theme-parser.c
       (ui.c, core.c, frames.c, frame.c?  I dunno...)
