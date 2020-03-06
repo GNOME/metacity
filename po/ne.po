@@ -3226,8 +3226,8 @@ msgid ""
 "No frame style set for window type \"%s\" in theme \"%s\", add a <window "
 "type=\"%s\" style_set=\"whatever\"/> element"
 msgstr ""
-"विन्डो प्रकार \"%s\" को लागी विषय \"%s\" मा खाका शैली सेट भएको छैन, <windowtype="
-"\"%s\"style_set=\"whatever\"/> तत्व थप्नुहोस्"
+"विन्डो प्रकार \"%s\" को लागी विषय \"%s\" मा खाका शैली सेट भएको छैन, <window type="
+"\"%s\" style_set=\"whatever\"/> तत्व थप्नुहोस्"
 
 #: ../src/theme.c:5006 ../src/theme.c:5068 ../src/theme.c:5131
 #, c-format
