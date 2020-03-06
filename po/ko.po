@@ -1092,7 +1092,7 @@ msgstr ""
 msgid ""
 "Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
 msgstr ""
-"<frame state=\"%s\" resize=\"%s\" focus=\"%s\" state=\"whatever\"/> 가 없습니"
+"<frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/> 가 없습니"
 "다"
 
 #: ../src/ui/theme.c:4896
