@@ -208,10 +208,6 @@ Debugging information
     work--but if you disable the keybindings for the global Metacity then
     the Metacity under the Xnest can then get those keybinding notifications).
 
-  metacity-window-demo
-    metacity-window-demo is good for trying behavior of various kinds
-    of window without launching a full desktop.
-
 Technical gotchas to keep in mind
   Files that include gdk.h or gtk.h are not supposed to include
   display.h or window.h or other core files.  Files in the core
