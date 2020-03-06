@@ -1098,7 +1098,7 @@ msgstr "响铃事件"
 #: src/core/delete.c:94
 #, c-format
 msgid "<tt>%s</tt> is not responding."
-msgstr "<tt>%s<tt> 未响应。"
+msgstr "<tt>%s</tt> 未响应。"
 
 #: src/core/delete.c:99
 msgid ""
