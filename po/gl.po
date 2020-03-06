@@ -1116,14 +1116,14 @@ msgid ""
 "<button function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> must be "
 "specified for this frame style"
 msgstr ""
-"<button function=«%s» state=«%s» draw_ops=\"whatever\"/> débese especificar "
+"<button function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> débese especificar "
 "para este estilo de marco"
 
 #: ../src/ui/theme.c:4827 ../src/ui/theme.c:4852
 #, c-format
 msgid ""
 "Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
-msgstr "Falta <frame state=«%s» resize=«%s» focus=«%s» style=\"whatever\"/>"
+msgstr "Falta <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
 
 #: ../src/ui/theme.c:4896
 #, c-format
@@ -1143,7 +1143,7 @@ msgid ""
 "type=\"%s\" style_set=\"whatever\"/> element"
 msgstr ""
 "Non hai un estilo de marco para o tipo de xanela «%s» no tema «%s», engada "
-"un elemento <window type=«%s» style_set=\"o_que_sexa\"/>"
+"un elemento <window type=\"%s\" style_set=\"o_que_sexa\"/>"
 
 #: ../src/ui/theme.c:5505 ../src/ui/theme.c:5567 ../src/ui/theme.c:5630
 #, c-format
