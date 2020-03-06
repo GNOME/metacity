@@ -566,16 +566,6 @@ void        meta_window_get_input_rect       (const MetaWindow *window,
                                               MetaRectangle    *rect);
 void        meta_window_get_outer_rect       (const MetaWindow *window,
                                               MetaRectangle    *rect);
-void        meta_window_get_xor_rect         (MetaWindow          *window,
-                                              const MetaRectangle *grab_wireframe_rect,
-                                              MetaRectangle       *xor_rect);
-void        meta_window_begin_wireframe (MetaWindow *window);
-void        meta_window_update_wireframe (MetaWindow *window,
-                                          int         x,
-                                          int         y,
-                                          int         width,
-                                          int         height);
-void        meta_window_end_wireframe (MetaWindow *window);
 
 void        meta_window_delete             (MetaWindow  *window,
                                             guint32      timestamp);

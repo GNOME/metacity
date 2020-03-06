@@ -1474,14 +1474,6 @@ meta_window_showing_on_its_workspace (MetaWindow *window)
         showing = FALSE;
     }
 
-#if 0
-  /* 4. See if we're drawing wireframe
-   */
-  if (window->display->grab_window == window &&
-      window->display->grab_wireframe_active)
-    showing = FALSE;
-#endif
-
   return showing;
 }
 
@@ -1532,8 +1524,7 @@ implement_showing (MetaWindow *window,
        * if we are mapped now, we are supposed to
        * be minimized, and we are on the current workspace.
        */
-      if (on_workspace && window->minimized && window->mapped &&
-          !meta_prefs_get_reduced_resources ())
+      if (on_workspace && window->minimized && window->mapped)
         {
           MetaRectangle icon_rect, window_rect;
           gboolean result;
@@ -2909,11 +2900,6 @@ meta_window_unmaximize (MetaWindow        *window,
           window->display->grab_anchor_window_pos = window->user_rect;
         }
 
-      if (window->display->grab_wireframe_active)
-        {
-          window->display->grab_wireframe_rect = target_rect;
-        }
-
       recalc_window_features (window);
       set_net_wm_state (window);
 
@@ -3919,10 +3905,7 @@ meta_window_move_resize_internal (MetaWindow          *window,
       meta_topic (META_DEBUG_GEOMETRY, "Size/position not modified\n");
     }
 
-  if (window->display->grab_wireframe_active)
-    meta_window_update_wireframe (window, root_x_nw, root_y_nw, w, h);
-  else
-    meta_window_refresh_resize_popup (window);
+  meta_window_refresh_resize_popup (window);
 
   /* Invariants leaving this function are:
    *   a) window->rect and frame->rect reflect the actual
@@ -4271,126 +4254,6 @@ meta_window_get_outer_rect (const MetaWindow *window,
           rect->height -= extents->top + extents->bottom;
         }
     }
-}
-
-void
-meta_window_get_xor_rect (MetaWindow          *window,
-                          const MetaRectangle *grab_wireframe_rect,
-                          MetaRectangle       *xor_rect)
-{
-  if (window->frame)
-    {
-      xor_rect->x = grab_wireframe_rect->x - window->frame->child_x;
-      xor_rect->y = grab_wireframe_rect->y - window->frame->child_y;
-      xor_rect->width = grab_wireframe_rect->width + window->frame->child_x + window->frame->right_width;
-
-      if (window->shaded)
-        xor_rect->height = window->frame->child_y;
-      else
-        xor_rect->height = grab_wireframe_rect->height + window->frame->child_y + window->frame->bottom_height;
-    }
-  else
-    *xor_rect = *grab_wireframe_rect;
-}
-
-/* Figure out the numbers that show up in the
- * resize popup when in reduced resources mode.
- */
-static void
-meta_window_get_wireframe_geometry (MetaWindow    *window,
-                                    int           *width,
-                                    int           *height)
-{
-  if (!window->display->grab_wireframe_active)
-    return;
-
-  if ((width == NULL) || (height == NULL))
-    return;
-
-  if ((window->display->grab_window->size_hints.width_inc <= 1) ||
-      (window->display->grab_window->size_hints.height_inc <= 1))
-    {
-      *width = -1;
-      *height = -1;
-      return;
-    }
-
-  *width = window->display->grab_wireframe_rect.width -
-      window->display->grab_window->size_hints.base_width;
-  *width /= window->display->grab_window->size_hints.width_inc;
-
-  *height = window->display->grab_wireframe_rect.height -
-      window->display->grab_window->size_hints.base_height;
-  *height /= window->display->grab_window->size_hints.height_inc;
-}
-
-/* XXX META_EFFECT_ALT_TAB, well, this and others */
-void
-meta_window_begin_wireframe (MetaWindow *window)
-{
-
-  MetaRectangle new_xor;
-  int display_width, display_height;
-
-  display_width = 0;
-  display_height = 0;
-
-  meta_window_get_client_root_coords (window,
-                                      &window->display->grab_wireframe_rect);
-
-  meta_window_get_xor_rect (window, &window->display->grab_wireframe_rect,
-                            &new_xor);
-  meta_window_get_wireframe_geometry (window, &display_width, &display_height);
-
-  meta_effects_begin_wireframe (window->screen,
-                                &new_xor, display_width, display_height);
-
-  window->display->grab_wireframe_last_xor_rect = new_xor;
-  window->display->grab_wireframe_last_display_width = display_width;
-  window->display->grab_wireframe_last_display_height = display_height;
-}
-
-void
-meta_window_update_wireframe (MetaWindow *window,
-                              int         x,
-                              int         y,
-                              int         width,
-                              int         height)
-{
-
-  MetaRectangle new_xor;
-  int display_width, display_height;
-
-  display_width = 0;
-  display_height = 0;
-
-  window->display->grab_wireframe_rect.x = x;
-  window->display->grab_wireframe_rect.y = y;
-  window->display->grab_wireframe_rect.width = width;
-  window->display->grab_wireframe_rect.height = height;
-
-  meta_window_get_xor_rect (window, &window->display->grab_wireframe_rect,
-                            &new_xor);
-  meta_window_get_wireframe_geometry (window, &display_width, &display_height);
-
-  meta_effects_update_wireframe (window->screen,
-                                 &window->display->grab_wireframe_last_xor_rect,
-                                 window->display->grab_wireframe_last_display_width,
-                                 window->display->grab_wireframe_last_display_height,
-                                 &new_xor, display_width, display_height);
-
-  window->display->grab_wireframe_last_xor_rect = new_xor;
-  window->display->grab_wireframe_last_display_width = display_width;
-  window->display->grab_wireframe_last_display_height = display_height;
-}
-
-void
-meta_window_end_wireframe (MetaWindow *window)
-{
-  meta_effects_end_wireframe (window->display->grab_window->screen,
-                              &window->display->grab_wireframe_last_xor_rect,
-                              window->display->grab_wireframe_last_display_width,
-                              window->display->grab_wireframe_last_display_height);
 }
 
 void
@@ -7739,10 +7602,7 @@ update_move (MetaWindow  *window,
   meta_screen_tile_preview_update (window->screen,
                                    window->tile_mode != META_TILE_NONE);
 
-  if (display->grab_wireframe_active)
-    old = display->grab_wireframe_rect;
-  else
-    meta_window_get_client_root_coords (window, &old);
+  meta_window_get_client_root_coords (window, &old);
 
   /* Don't allow movement in the maximized directions or while tiled */
   if (window->maximized_horizontally || META_WINDOW_TILED_SIDE_BY_SIDE (window))
@@ -7759,12 +7619,7 @@ update_move (MetaWindow  *window,
                                         snap,
                                         FALSE);
 
-  if (display->grab_wireframe_active)
-    meta_window_update_wireframe (window, new_x, new_y,
-                                  display->grab_wireframe_rect.width,
-                                  display->grab_wireframe_rect.height);
-  else
-    meta_window_move (window, TRUE, new_x, new_y);
+  meta_window_move (window, TRUE, new_x, new_y);
 }
 
 static gboolean
@@ -7790,7 +7645,6 @@ update_resize (MetaWindow *window,
   int new_w, new_h;
   int gravity;
   MetaRectangle old;
-  int new_x, new_y;
   double remaining;
   MetaGrabOp grab_op;
 
@@ -7819,10 +7673,6 @@ update_resize (MetaWindow *window,
    */
   if (dx == 0 && dy == 0)
     return;
-
-  /* FIXME this is only used in wireframe mode */
-  new_x = window->display->grab_anchor_window_pos.x;
-  new_y = window->display->grab_anchor_window_pos.y;
 
   if (window->display->grab_op == META_GRAB_OP_KEYBOARD_RESIZING_UNKNOWN)
     {
@@ -7868,12 +7718,6 @@ update_resize (MetaWindow *window,
         }
     }
 
-  /* FIXME: This stupidity only needed because of wireframe mode and
-   * the fact that wireframe isn't making use of
-   * meta_rectangle_resize_with_gravity().  If we were to use that, we
-   * could just increment new_w and new_h by dx and dy in all cases.
-   */
-
   grab_op = window->display->grab_op;
 
   if (grab_op == META_GRAB_OP_RESIZING_SE ||
@@ -7893,7 +7737,6 @@ update_resize (MetaWindow *window,
            grab_op == META_GRAB_OP_KEYBOARD_RESIZING_W)
     {
       new_w -= dx;
-      new_x += dx;
     }
 
   if (grab_op == META_GRAB_OP_RESIZING_SE ||
@@ -7913,7 +7756,6 @@ update_resize (MetaWindow *window,
            grab_op == META_GRAB_OP_KEYBOARD_RESIZING_NW)
     {
       new_h -= dy;
-      new_y += dy;
     }
 
   remaining = 0;
@@ -7944,10 +7786,7 @@ update_resize (MetaWindow *window,
       window->display->grab_resize_timeout_id = 0;
     }
 
-  if (window->display->grab_wireframe_active)
-    old = window->display->grab_wireframe_rect;
-  else
-    old = window->rect;  /* Don't actually care about x,y */
+  old = window->rect; /* Don't actually care about x,y */
 
   /* One sided resizing ought to actually be one-sided, despite the fact that
    * aspect ratio windows don't interact nicely with the above stuff.  So,
@@ -7979,28 +7818,11 @@ update_resize (MetaWindow *window,
                                           snap,
                                           FALSE);
 
-  if (window->display->grab_wireframe_active)
-    {
-      if ((new_x + new_w <= new_x) || (new_y + new_h <= new_y))
-        return;
-
-      /* FIXME This is crap. For example, the wireframe isn't
-       * constrained in the way that a real resize would be. An
-       * obvious elegant solution is to unmap the window during
-       * wireframe, but still resize it; however, that probably
-       * confuses broken clients that have problems with opaque
-       * resize, they probably don't track their visibility.
-       */
-      meta_window_update_wireframe (window, new_x, new_y, new_w, new_h);
-    }
-  else
-    {
-      /* We don't need to update unless the specified width and height
-       * are actually different from what we had before.
-       */
-      if (old.width != new_w || old.height != new_h)
-        meta_window_resize_with_gravity (window, TRUE, new_w, new_h, gravity);
-    }
+  /* We don't need to update unless the specified width and height
+   * are actually different from what we had before.
+   */
+  if (old.width != new_w || old.height != new_h)
+    meta_window_resize_with_gravity (window, TRUE, new_w, new_h, gravity);
 
   /* Store the latest resize time, if we actually resized. */
   if (window->rect.width != old.width || window->rect.height != old.height)
@@ -8427,16 +8249,6 @@ meta_window_refresh_resize_popup (MetaWindow *window)
   if (window->display->grab_window != window)
     return;
 
-  /* We shouldn't ever get called when the wireframe is active
-   * because that's handled by a different code path in effects.c
-   */
-  if (window->display->grab_wireframe_active)
-    {
-      meta_topic (META_DEBUG_WINDOW_OPS,
-                  "refresh_resize_popup called when wireframe active\n");
-      return;
-    }
-
   switch (window->display->grab_op)
     {
     case META_GRAB_OP_RESIZING_SE:
@@ -8500,10 +8312,7 @@ meta_window_refresh_resize_popup (MetaWindow *window)
     {
       MetaRectangle rect;
 
-      if (window->display->grab_wireframe_active)
-        rect = window->display->grab_wireframe_rect;
-      else
-        meta_window_get_client_root_coords (window, &rect);
+      meta_window_get_client_root_coords (window, &rect);
 
       meta_ui_resize_popup_set (window->display->grab_resize_popup,
                                 rect,
@@ -8615,14 +8424,7 @@ warp_grab_pointer (MetaWindow          *window,
   /* We may not have done begin_grab_op yet, i.e. may not be in a grab
    */
 
-  if (window == display->grab_window && display->grab_wireframe_active)
-    {
-      meta_window_get_xor_rect (window, &display->grab_wireframe_rect, &rect);
-    }
-  else
-    {
-      meta_window_get_outer_rect (window, &rect);
-    }
+  meta_window_get_outer_rect (window, &rect);
 
   if (grab_op == META_GRAB_OP_KEYBOARD_MOVING ||
       grab_op == META_GRAB_OP_KEYBOARD_RESIZING_UNKNOWN)
@@ -8696,11 +8498,9 @@ warp_grab_pointer (MetaWindow          *window,
   display->grab_anchor_root_y = *y;
   display->grab_latest_motion_x = *x;
   display->grab_latest_motion_y = *y;
-  if (display->grab_wireframe_active)
-    display->grab_anchor_window_pos = display->grab_wireframe_rect;
-  else
-    meta_window_get_client_root_coords (window,
-                                        &display->grab_anchor_window_pos);
+
+  meta_window_get_client_root_coords (window,
+                                      &display->grab_anchor_window_pos);
 
   XWarpPointer (display->xdisplay,
                 None,

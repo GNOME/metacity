@@ -96,22 +96,12 @@ struct _MetaFrames
   guint        tooltip_timeout;
   MetaUIFrame *last_motion_frame;
 
-  gint         expose_delay_count;
-
   gint         invalidate_cache_timeout_id;
   GList       *invalidate_frames;
   GHashTable  *cache;
 };
 
 G_DEFINE_TYPE (MetaFrames, meta_frames, GTK_TYPE_WINDOW)
-
-static void
-process_all_updates (void)
-{
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  gdk_window_process_all_updates ();
-  G_GNUC_END_IGNORE_DEPRECATIONS
-}
 
 static void
 get_client_rect (MetaFrameGeometry *fgeom,
@@ -450,8 +440,6 @@ meta_frames_init (MetaFrames *frames)
 
   frames->tooltip_timeout = 0;
 
-  frames->expose_delay_count = 0;
-
   frames->invalidate_cache_timeout_id = 0;
   frames->invalidate_frames = NULL;
   frames->cache = g_hash_table_new (g_direct_hash, g_direct_equal);
@@ -777,7 +765,6 @@ meta_frames_manage_window (MetaFrames *frames,
 
   frame->xwindow = xwindow;
   frame->title = NULL;
-  frame->expose_delayed = FALSE;
   frame->shape_applied = FALSE;
   frame->ignore_leave_notify = FALSE;
   frame->prelit_control = META_FRAME_CONTROL_NONE;
@@ -1284,7 +1271,9 @@ meta_frames_repaint_frame (MetaFrames *frames,
   /* repaint everything, so the other frame don't
    * lag behind if they are exposed
    */
-  process_all_updates ();
+  G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+  gdk_window_process_all_updates ();
+  G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
@@ -2444,13 +2433,6 @@ meta_frames_draw (GtkWidget *widget,
   if (frame == NULL)
     return FALSE;
 
-  if (frames->expose_delay_count > 0)
-    {
-      /* Redraw this entire frame later */
-      frame->expose_delayed = TRUE;
-      return TRUE;
-    }
-
   populate_cache (frames, frame);
 
   pixels = get_cache (frames, frame);
@@ -2709,50 +2691,6 @@ meta_frames_leave_notify_event      (GtkWidget           *widget,
   clear_tip (frames);
 
   return TRUE;
-}
-
-void
-meta_frames_push_delay_exposes (MetaFrames *frames)
-{
-  if (frames->expose_delay_count == 0)
-    {
-      /* Make sure we've repainted things */
-      process_all_updates ();
-      XFlush (frames->xdisplay);
-    }
-
-  frames->expose_delay_count += 1;
-}
-
-static void
-queue_pending_exposes_func (gpointer key, gpointer value, gpointer data)
-{
-  MetaUIFrame *frame;
-  MetaFrames *frames;
-
-  frames = META_FRAMES (data);
-  frame = value;
-
-  if (frame->expose_delayed)
-    {
-      invalidate_whole_window (frames, frame);
-      frame->expose_delayed = FALSE;
-    }
-}
-
-void
-meta_frames_pop_delay_exposes  (MetaFrames *frames)
-{
-  g_return_if_fail (frames->expose_delay_count > 0);
-
-  frames->expose_delay_count -= 1;
-
-  if (frames->expose_delay_count == 0)
-    {
-      g_hash_table_foreach (frames->frames,
-                            queue_pending_exposes_func,
-                            frames);
-    }
 }
 
 static void

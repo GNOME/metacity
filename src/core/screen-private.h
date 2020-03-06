@@ -64,8 +64,6 @@ typedef enum
   META_SCREEN_RIGHT
 } MetaScreenDirection;
 
-#define META_WIREFRAME_XOR_LINE_WIDTH 2
-
 struct _MetaScreen
 {
   MetaDisplay *display;
@@ -125,9 +123,6 @@ struct _MetaScreen
   guint all_keys_grabbed : 1;
 
   int closing;
-
-  /* gc for XOR on root window */
-  GC root_xor_gc;
 };
 
 MetaScreen*   meta_screen_new                 (MetaDisplay                *display,

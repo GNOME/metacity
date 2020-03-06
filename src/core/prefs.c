@@ -82,7 +82,6 @@ static gboolean auto_raise = FALSE;
 static gboolean auto_raise_delay = 500;
 static gboolean bell_is_visible = FALSE;
 static gboolean bell_is_audible = TRUE;
-static gboolean reduced_resources = FALSE;
 static gboolean gnome_accessibility = FALSE;
 static gboolean gnome_animations = TRUE;
 static char *cursor_theme = NULL;
@@ -312,14 +311,6 @@ static MetaBoolPreference preferences_bool[] =
         META_PREF_AUDIBLE_BELL,
       },
       &bell_is_audible, /* FIXME: change the name: it's confusing */
-      FALSE,
-    },
-    {
-      { "reduced-resources",
-        SCHEMA_METACITY,
-        META_PREF_REDUCED_RESOURCES,
-      },
-      &reduced_resources,
       FALSE,
     },
     {
@@ -1213,9 +1204,6 @@ meta_preference_to_string (MetaPreference pref)
     case META_PREF_VISUAL_BELL_TYPE:
       return "VISUAL_BELL_TYPE";
 
-    case META_PREF_REDUCED_RESOURCES:
-      return "REDUCED_RESOURCES";
-
     case META_PREF_GNOME_ACCESSIBILITY:
       return "GNOME_ACCESSIBILTY";
 
@@ -1582,12 +1570,6 @@ int
 meta_prefs_get_auto_raise_delay (void)
 {
   return auto_raise_delay;
-}
-
-gboolean
-meta_prefs_get_reduced_resources (void)
-{
-  return reduced_resources;
 }
 
 gboolean

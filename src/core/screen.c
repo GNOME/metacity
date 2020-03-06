@@ -433,37 +433,6 @@ meta_screen_new (MetaDisplay *display,
   screen->vertical_workspaces = FALSE;
   screen->starting_corner = META_SCREEN_TOPLEFT;
 
-  {
-    XFontStruct *font_info;
-    XGCValues gc_values;
-    gulong value_mask = 0;
-
-    gc_values.subwindow_mode = IncludeInferiors;
-    value_mask |= GCSubwindowMode;
-    gc_values.function = GXinvert;
-    value_mask |= GCFunction;
-    gc_values.line_width = META_WIREFRAME_XOR_LINE_WIDTH;
-    value_mask |= GCLineWidth;
-
-    font_info = XLoadQueryFont (screen->display->xdisplay, "fixed");
-
-    if (font_info != NULL)
-      {
-        gc_values.font = font_info->fid;
-        value_mask |= GCFont;
-        XFreeFontInfo (NULL, font_info, 1);
-      }
-    else
-      {
-        g_warning ("xserver doesn't have 'fixed' font.");
-      }
-
-    screen->root_xor_gc = XCreateGC (screen->display->xdisplay,
-                                     screen->xroot,
-                                     value_mask,
-                                     &gc_values);
-  }
-
   screen->monitor_infos = NULL;
   screen->n_monitor_infos = 0;
   screen->last_monitor_index = 0;
@@ -559,8 +528,6 @@ void
 meta_screen_free (MetaScreen *screen,
                   guint32     timestamp)
 {
-  XGCValues gc_values = { 0 };
-
   screen->closing += 1;
 
   meta_prefs_remove_listener (prefs_changed_callback, screen);
@@ -603,19 +570,6 @@ meta_screen_free (MetaScreen *screen,
 
   if (screen->work_area_idle != 0)
     g_source_remove (screen->work_area_idle);
-
-
-  if (XGetGCValues (screen->display->xdisplay,
-                    screen->root_xor_gc,
-                    GCFont,
-                    &gc_values))
-    {
-      XUnloadFont (screen->display->xdisplay,
-                   gc_values.font);
-    }
-
-  XFreeGC (screen->display->xdisplay,
-           screen->root_xor_gc);
 
   if (screen->monitor_infos)
     g_free (screen->monitor_infos);

@@ -122,9 +122,6 @@ void meta_frames_queue_draw (MetaFrames *frames,
 
 void meta_frames_notify_menu_hide (MetaFrames *frames);
 
-void meta_frames_push_delay_exposes (MetaFrames *frames);
-void meta_frames_pop_delay_exposes  (MetaFrames *frames);
-
 void meta_frames_composited_changed (MetaFrames *frames);
 
 #endif
