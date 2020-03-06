@@ -1160,14 +1160,14 @@ msgid ""
 "<button function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> must be "
 "specified for this frame style"
 msgstr ""
-"<button function= „%s‟state= „%s‟draw_ops=„hvaðsemer‟/> verður að vera "
+"<button function=\"%s\" state=\"%s\" draw_ops=\"hvaðsemer\"/> verður að vera "
 "skilgreint fyrir þennan rammastíl"
 
 #: ../src/ui/theme.c:5404 ../src/ui/theme.c:5429
 #, c-format
 msgid ""
 "Missing <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
-msgstr "Vantar <frame state=„%s‟ resize= „%s‟focus= „%s‟style=„hvaðsemer‟/>"
+msgstr "Vantar <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"hvaðsemer\"/>"
 
 #: ../src/ui/theme.c:5473
 #, c-format
@@ -1187,7 +1187,7 @@ msgid ""
 "type=\"%s\" style_set=\"whatever\"/> element"
 msgstr ""
 "Enginn rammastíll var settur fyrir gluggagerð „%s‟ í þema „%s‟, bættu við "
-"<window type=„%s‟  style_set=„hvað sem er‟ /> staki"
+"<window type=\"%s\" style_set=\"hvað sem er\"/> staki"
 
 #: ../src/ui/theme.c:6339 ../src/ui/theme.c:6401 ../src/ui/theme.c:6464
 #, c-format
