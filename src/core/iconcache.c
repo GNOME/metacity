@@ -45,38 +45,6 @@ get_fallback_icons (MetaScreen     *screen,
 }
 
 static gboolean
-find_largest_sizes (gulong *data,
-                    gulong  nitems,
-                    int    *width,
-                    int    *height)
-{
-  *width = 0;
-  *height = 0;
-
-  while (nitems > 0)
-    {
-      int w, h;
-
-      if (nitems < 3)
-        return FALSE; /* no space for w, h */
-
-      w = data[0];
-      h = data[1];
-
-      if (nitems < ((gulong)(w * h) + 2))
-        return FALSE; /* not enough data */
-
-      *width = MAX (w, *width);
-      *height = MAX (h, *height);
-
-      data += (w * h) + 2;
-      nitems -= (w * h) + 2;
-    }
-
-  return TRUE;
-}
-
-static gboolean
 find_best_size (gulong  *data,
                 gulong   nitems,
                 int      ideal_width,
@@ -88,19 +56,10 @@ find_best_size (gulong  *data,
   int best_w;
   int best_h;
   gulong *best_start;
-  int max_width, max_height;
 
   *width = 0;
   *height = 0;
   *start = NULL;
-
-  if (!find_largest_sizes (data, nitems, &max_width, &max_height))
-    return FALSE;
-
-  if (ideal_width < 0)
-    ideal_width = max_width;
-  if (ideal_height < 0)
-    ideal_height = max_height;
 
   best_w = 0;
   best_h = 0;
@@ -457,17 +416,13 @@ try_pixmap_and_mask (MetaDisplay *display,
     {
       *iconp =
         gdk_pixbuf_scale_simple (unscaled,
-                                 ideal_width > 0 ? ideal_width :
-                                 gdk_pixbuf_get_width (unscaled),
-                                 ideal_height > 0 ? ideal_height :
-                                 gdk_pixbuf_get_height (unscaled),
+                                 ideal_width,
+                                 ideal_height,
                                  GDK_INTERP_BILINEAR);
       *mini_iconp =
         gdk_pixbuf_scale_simple (unscaled,
-                                 ideal_mini_width > 0 ? ideal_mini_width :
-                                 gdk_pixbuf_get_width (unscaled),
-                                 ideal_mini_height > 0 ? ideal_mini_height :
-                                 gdk_pixbuf_get_height (unscaled),
+                                 ideal_mini_width,
+                                 ideal_mini_height,
                                  GDK_INTERP_BILINEAR);
 
       g_object_unref (G_OBJECT (unscaled));
