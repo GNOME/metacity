@@ -52,6 +52,10 @@
 
 #include <X11/extensions/shape.h>
 
+/* should investigate changing these to whatever most apps use */
+#define META_ICON_SIZE 96
+#define META_MINI_ICON_SIZE 16
+
 static int destroying_windows_disallowed = 0;
 
 static void     update_sm_hints           (MetaWindow     *window);
@@ -6257,10 +6261,9 @@ meta_window_update_icon_now (MetaWindow *window)
                        window->wm_hints_pixmap,
                        window->wm_hints_mask,
                        &icon,
-                       META_ICON_WIDTH, META_ICON_HEIGHT,
+                       META_ICON_SIZE,
                        &mini_icon,
-                       META_MINI_ICON_WIDTH,
-                       META_MINI_ICON_HEIGHT))
+                       META_MINI_ICON_SIZE))
     {
       if (window->icon)
         g_object_unref (G_OBJECT (window->icon));

@@ -122,7 +122,7 @@ meta_frame_layout_new  (void)
    * https://git.gnome.org/browse/gtk+/tree/gtk/gtkheaderbar.c?h=gtk-3-14#n53
    */
   layout->gtk.titlebar_spacing = 6;
-  layout->gtk.icon_size = 16; /* was META_MINI_ICON_WIDTH from common.h */
+  layout->gtk.icon_size = 16;
 
   /* Fill with -1 values to detect invalid themes */
   layout->metacity.left_width = -1;

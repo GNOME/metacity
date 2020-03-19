@@ -34,6 +34,8 @@
 #include <cairo-xlib.h>
 #include <libmetacity/meta-theme.h>
 
+#define META_DEFAULT_ICON_NAME "window"
+
 struct _MetaUI
 {
   Display *xdisplay;
@@ -707,13 +709,14 @@ load_default_window_icon (int size)
 }
 
 GdkPixbuf*
-meta_ui_get_default_window_icon (MetaUI *ui)
+meta_ui_get_default_window_icon (MetaUI *ui,
+                                 int     ideal_size)
 {
   static GdkPixbuf *default_icon = NULL;
 
   if (default_icon == NULL)
     {
-      default_icon = load_default_window_icon (META_ICON_WIDTH);
+      default_icon = load_default_window_icon (ideal_size);
       g_assert (default_icon);
     }
 
@@ -723,13 +726,14 @@ meta_ui_get_default_window_icon (MetaUI *ui)
 }
 
 GdkPixbuf*
-meta_ui_get_default_mini_icon (MetaUI *ui)
+meta_ui_get_default_mini_icon (MetaUI *ui,
+                               int     ideal_size)
 {
   static GdkPixbuf *default_icon = NULL;
 
   if (default_icon == NULL)
     {
-      default_icon = load_default_window_icon (META_MINI_ICON_WIDTH);
+      default_icon = load_default_window_icon (ideal_size);
       g_assert (default_icon);
     }
 

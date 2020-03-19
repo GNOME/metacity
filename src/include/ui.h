@@ -145,8 +145,11 @@ GdkPixbuf* meta_gdk_pixbuf_get_from_pixmap (Pixmap       xpixmap,
 void      meta_ui_push_delay_exposes (MetaUI *ui);
 void      meta_ui_pop_delay_exposes  (MetaUI *ui);
 
-GdkPixbuf* meta_ui_get_default_window_icon (MetaUI *ui);
-GdkPixbuf* meta_ui_get_default_mini_icon (MetaUI *ui);
+GdkPixbuf *meta_ui_get_default_window_icon (MetaUI *ui,
+                                            int     ideal_size);
+
+GdkPixbuf *meta_ui_get_default_mini_icon   (MetaUI *ui,
+                                            int     ideal_size);
 
 gboolean  meta_ui_window_should_not_cause_focus (Display *xdisplay,
                                                  Window   xwindow);

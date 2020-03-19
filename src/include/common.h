@@ -194,14 +194,6 @@ typedef enum
   META_SIDE_BOTTOM          = META_DIRECTION_BOTTOM
 } MetaSide;
 
-/* should investigate changing these to whatever most apps use */
-#define META_ICON_WIDTH 96
-#define META_ICON_HEIGHT 96
-#define META_MINI_ICON_WIDTH 16
-#define META_MINI_ICON_HEIGHT 16
-
-#define META_DEFAULT_ICON_NAME "window"
-
 /* #define GTK_PRIORITY_RESIZE       (G_PRIORITY_HIGH_IDLE + 10) */
 #define META_PRIORITY_RESIZE         (G_PRIORITY_HIGH_IDLE + 15)
 /* #define GDK_PRIORITY_REDRAW       (G_PRIORITY_HIGH_IDLE + 20) */
