@@ -177,8 +177,6 @@ meta_button_function_to_string (MetaButtonFunction function)
         return "unstick";
       case META_BUTTON_FUNCTION_MENU:
         return "menu";
-      case META_BUTTON_FUNCTION_APPMENU:
-        return "appmenu";
       case META_BUTTON_FUNCTION_LEFT_LEFT_BACKGROUND:
         return "left_left_background";
       case META_BUTTON_FUNCTION_LEFT_MIDDLE_BACKGROUND:

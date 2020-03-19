@@ -1351,7 +1351,6 @@ meta_display_process_key_event (MetaDisplay *display,
             case META_GRAB_OP_CLICKING_UNMAXIMIZE:
             case META_GRAB_OP_CLICKING_DELETE:
             case META_GRAB_OP_CLICKING_MENU:
-            case META_GRAB_OP_CLICKING_APPMENU:
             case META_GRAB_OP_CLICKING_SHADE:
             case META_GRAB_OP_CLICKING_UNSHADE:
             case META_GRAB_OP_CLICKING_ABOVE:
@@ -1690,7 +1689,6 @@ process_keyboard_resize_grab_op_change (MetaDisplay *display,
     case META_GRAB_OP_CLICKING_UNMAXIMIZE:
     case META_GRAB_OP_CLICKING_DELETE:
     case META_GRAB_OP_CLICKING_MENU:
-    case META_GRAB_OP_CLICKING_APPMENU:
     case META_GRAB_OP_CLICKING_SHADE:
     case META_GRAB_OP_CLICKING_UNSHADE:
     case META_GRAB_OP_CLICKING_ABOVE:

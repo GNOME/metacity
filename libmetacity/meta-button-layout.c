@@ -25,8 +25,6 @@ type_from_string (const gchar *str)
 {
   if (g_strcmp0 (str, "menu") == 0)
     return META_BUTTON_TYPE_MENU;
-  else if (g_strcmp0 (str, "appmenu") == 0)
-    return META_BUTTON_TYPE_APPMENU;
   else if (g_strcmp0 (str, "minimize") == 0)
     return META_BUTTON_TYPE_MINIMIZE;
   else if (g_strcmp0 (str, "maximize") == 0)
@@ -72,7 +70,6 @@ get_opposite_type (MetaButtonType type)
         return META_BUTTON_TYPE_STICK;
 
       case META_BUTTON_TYPE_MENU:
-      case META_BUTTON_TYPE_APPMENU:
       case META_BUTTON_TYPE_MINIMIZE:
       case META_BUTTON_TYPE_MAXIMIZE:
       case META_BUTTON_TYPE_CLOSE:

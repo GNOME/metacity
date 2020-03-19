@@ -654,8 +654,6 @@ get_class_from_button_type (MetaButtonType type)
     return "maximize";
   else if (type == META_BUTTON_TYPE_MINIMIZE)
     return "minimize";
-  else if (type == META_BUTTON_TYPE_APPMENU)
-    return "appmenu";
 
   return NULL;
 }
@@ -850,9 +848,6 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
                 break;
               case META_BUTTON_TYPE_MENU:
                 icon_name = "open-menu-symbolic";
-                break;
-              case META_BUTTON_TYPE_APPMENU:
-                pixbuf = g_object_ref (mini_icon);
                 break;
               case META_BUTTON_TYPE_SHADE:
               case META_BUTTON_TYPE_ABOVE:

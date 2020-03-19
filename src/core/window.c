@@ -4853,7 +4853,6 @@ meta_window_move_resize_request (MetaWindow *window,
         case META_GRAB_OP_CLICKING_UNMAXIMIZE:
         case META_GRAB_OP_CLICKING_DELETE:
         case META_GRAB_OP_CLICKING_MENU:
-        case META_GRAB_OP_CLICKING_APPMENU:
         case META_GRAB_OP_CLICKING_SHADE:
         case META_GRAB_OP_CLICKING_UNSHADE:
         case META_GRAB_OP_CLICKING_ABOVE:
@@ -7984,7 +7983,6 @@ meta_window_update_sync_request_counter (MetaWindow *window,
         case META_GRAB_OP_CLICKING_UNMAXIMIZE:
         case META_GRAB_OP_CLICKING_DELETE:
         case META_GRAB_OP_CLICKING_MENU:
-        case META_GRAB_OP_CLICKING_APPMENU:
         case META_GRAB_OP_CLICKING_SHADE:
         case META_GRAB_OP_CLICKING_UNSHADE:
         case META_GRAB_OP_CLICKING_ABOVE:
@@ -8285,7 +8283,6 @@ meta_window_refresh_resize_popup (MetaWindow *window)
     case META_GRAB_OP_CLICKING_UNMAXIMIZE:
     case META_GRAB_OP_CLICKING_DELETE:
     case META_GRAB_OP_CLICKING_MENU:
-    case META_GRAB_OP_CLICKING_APPMENU:
     case META_GRAB_OP_CLICKING_SHADE:
     case META_GRAB_OP_CLICKING_UNSHADE:
     case META_GRAB_OP_CLICKING_ABOVE:

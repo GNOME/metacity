@@ -122,11 +122,6 @@ is_button_visible (MetaButton     *button,
           visible = TRUE;
         break;
 
-      case META_BUTTON_TYPE_APPMENU:
-        if (flags & META_FRAME_ALLOWS_APPMENU)
-          visible = TRUE;
-        break;
-
       case META_BUTTON_TYPE_MINIMIZE:
         if (flags & META_FRAME_ALLOWS_MINIMIZE)
           visible = TRUE;
@@ -223,7 +218,6 @@ strip_buttons (MetaButtonLayout *layout,
   types[count++] = META_BUTTON_TYPE_MAXIMIZE;
   types[count++] = META_BUTTON_TYPE_CLOSE;
   types[count++] = META_BUTTON_TYPE_MENU;
-  types[count++] = META_BUTTON_TYPE_APPMENU;
 
   for (i = 0; i < count; i++)
     {

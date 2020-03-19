@@ -42,7 +42,7 @@
  * look out for.
  */
 #define THEME_MAJOR_VERSION 3
-#define THEME_MINOR_VERSION 5
+#define THEME_MINOR_VERSION 4
 #define THEME_VERSION (1000 * THEME_MAJOR_VERSION + THEME_MINOR_VERSION)
 
 /* Translators: This means that an attribute which should have been found
@@ -2897,8 +2897,6 @@ meta_button_function_from_string (MetaThemeMetacity *metacity,
     return META_BUTTON_FUNCTION_MINIMIZE;
   else if (strcmp ("menu", str) == 0)
     return META_BUTTON_FUNCTION_MENU;
-  else if (strcmp ("appmenu", str) == 0)
-    return META_BUTTON_FUNCTION_APPMENU;
   else if (strcmp ("left_left_background", str) == 0)
     return META_BUTTON_FUNCTION_LEFT_LEFT_BACKGROUND;
   else if (strcmp ("left_middle_background", str) == 0)
@@ -4814,7 +4812,6 @@ is_button_allowed (MetaThemeMetacity *metacity,
             return TRUE;
 
           case META_BUTTON_TYPE_MENU:
-          case META_BUTTON_TYPE_APPMENU:
           case META_BUTTON_TYPE_MINIMIZE:
           case META_BUTTON_TYPE_MAXIMIZE:
           case META_BUTTON_TYPE_CLOSE:
@@ -4829,7 +4826,6 @@ is_button_allowed (MetaThemeMetacity *metacity,
   switch (type)
     {
       case META_BUTTON_TYPE_MENU:
-      case META_BUTTON_TYPE_APPMENU:
       case META_BUTTON_TYPE_MINIMIZE:
       case META_BUTTON_TYPE_MAXIMIZE:
       case META_BUTTON_TYPE_CLOSE:
@@ -5344,9 +5340,6 @@ get_button_function (MetaButtonType type,
           case META_BUTTON_TYPE_MENU:
             return META_BUTTON_FUNCTION_MENU;
 
-          case META_BUTTON_TYPE_APPMENU:
-            return META_BUTTON_FUNCTION_APPMENU;
-
           case META_BUTTON_TYPE_MINIMIZE:
             return META_BUTTON_FUNCTION_MINIMIZE;
 
@@ -5820,9 +5813,6 @@ meta_theme_metacity_earliest_version_with_button (MetaButtonFunction function)
       case META_BUTTON_FUNCTION_LEFT_SINGLE_BACKGROUND:
       case META_BUTTON_FUNCTION_RIGHT_SINGLE_BACKGROUND:
         return 3003;
-
-      case META_BUTTON_FUNCTION_APPMENU:
-        return 3005;
 
       case META_BUTTON_FUNCTION_LAST:
       default:

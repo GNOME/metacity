@@ -330,7 +330,7 @@
                               <object class="GtkEntry" id="button_layout_entry">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
-                                <property name="text">appmenu:minimize,maximize,close</property>
+                                <property name="text">:minimize,maximize,close</property>
                                 <signal name="changed" handler="button_layout_entry_changed_cb" swapped="no"/>
                               </object>
                               <packing>

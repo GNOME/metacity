@@ -356,7 +356,7 @@ meta_theme_constructed (GObject *object)
   meta_theme_impl_set_composited (theme->impl, theme->composited);
   meta_theme_impl_set_scale (theme->impl, theme->scale);
 
-  button_layout = "appmenu:minimize,maximize,close";
+  button_layout = ":minimize,maximize,close";
   meta_theme_set_button_layout (theme, button_layout, FALSE);
 
   if (theme->type == META_THEME_TYPE_METACITY)
