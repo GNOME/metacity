@@ -849,12 +849,6 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
               case META_BUTTON_TYPE_MENU:
                 icon_name = "open-menu-symbolic";
                 break;
-              case META_BUTTON_TYPE_SHADE:
-              case META_BUTTON_TYPE_ABOVE:
-              case META_BUTTON_TYPE_STICK:
-              case META_BUTTON_TYPE_UNSHADE:
-              case META_BUTTON_TYPE_UNABOVE:
-              case META_BUTTON_TYPE_UNSTICK:
               case META_BUTTON_TYPE_SPACER:
               case META_BUTTON_TYPE_LAST:
               default:

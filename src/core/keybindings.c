@@ -1351,12 +1351,6 @@ meta_display_process_key_event (MetaDisplay *display,
             case META_GRAB_OP_CLICKING_UNMAXIMIZE:
             case META_GRAB_OP_CLICKING_DELETE:
             case META_GRAB_OP_CLICKING_MENU:
-            case META_GRAB_OP_CLICKING_SHADE:
-            case META_GRAB_OP_CLICKING_UNSHADE:
-            case META_GRAB_OP_CLICKING_ABOVE:
-            case META_GRAB_OP_CLICKING_UNABOVE:
-            case META_GRAB_OP_CLICKING_STICK:
-            case META_GRAB_OP_CLICKING_UNSTICK:
               break;
 
             default:
@@ -1689,12 +1683,6 @@ process_keyboard_resize_grab_op_change (MetaDisplay *display,
     case META_GRAB_OP_CLICKING_UNMAXIMIZE:
     case META_GRAB_OP_CLICKING_DELETE:
     case META_GRAB_OP_CLICKING_MENU:
-    case META_GRAB_OP_CLICKING_SHADE:
-    case META_GRAB_OP_CLICKING_UNSHADE:
-    case META_GRAB_OP_CLICKING_ABOVE:
-    case META_GRAB_OP_CLICKING_UNABOVE:
-    case META_GRAB_OP_CLICKING_STICK:
-    case META_GRAB_OP_CLICKING_UNSTICK:
       g_assert_not_reached ();
       break;
 
