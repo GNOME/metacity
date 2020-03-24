@@ -2,6 +2,9 @@ stages:
   - build
   - analysis
 
+variables:
+  DEBIAN_FRONTEND: noninteractive
+
 build-ubuntu:
   image: ubuntu:devel
   stage: build
