@@ -1,3 +1,9 @@
+Version 3.36.1
+==============
+- Fix fullscreen regression. (#8)
+- Do not unfocus on new window.
+- Updated translations.
+
 Version 3.36.0
 ==============
 - Fix fullscreen regression.
