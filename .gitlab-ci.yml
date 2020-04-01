@@ -56,6 +56,10 @@ coverity:
   before_script:
     - apt-get update
     - *install-ubuntu-dependencies
+    - apt-get install -q -y --no-install-recommends
+                      ca-certificates
+                      clang
+                      curl
   script:
     - curl https://scan.coverity.com/download/linux64
       --data "token=$COVERITY_TOKEN&project=metacity"
