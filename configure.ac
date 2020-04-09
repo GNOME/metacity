@@ -69,7 +69,8 @@ dnl Internationalization
 dnl **************************************************************************
 
 AM_GNU_GETTEXT([external])
-AM_GNU_GETTEXT_VERSION([0.19.4])
+AM_GNU_GETTEXT_VERSION([0.19.6])
+AM_GNU_GETTEXT_REQUIRE_VERSION([0.19.6])
 
 GETTEXT_PACKAGE=metacity
 AC_SUBST([GETTEXT_PACKAGE])
