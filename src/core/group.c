@@ -53,7 +53,10 @@ meta_group_new (MetaDisplay *display,
                 attrs.your_event_mask | PropertyChangeMask);
 
   if (meta_error_trap_pop_with_return (display) != 0)
-    return NULL;
+    {
+      g_free (group);
+      return NULL;
+    }
 
   if (display->groups_by_leader == NULL)
     display->groups_by_leader = g_hash_table_new (meta_unsigned_long_hash,
