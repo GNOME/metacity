@@ -200,11 +200,11 @@ ENUM_TYPES = \
 	$(srcdir)/core/window-private.h \
 	$(NULL)
 
-core/meta-enum-types.c: core/meta-enum-types.c.in core/meta-enum-types.h $(ENUM_TYPES)
+core/meta-enum-types.c: core/meta-enum-types.c.in $(ENUM_TYPES) Makefile.am
 	$(AM_V_GEN) $(GLIB_MKENUMS) --template $(srcdir)/core/meta-enum-types.c.in $(ENUM_TYPES) > \
 		meta-enum-types.c.tmp && mv meta-enum-types.c.tmp core/meta-enum-types.c
 
-core/meta-enum-types.h: core/meta-enum-types.h.in $(ENUM_TYPES)
+core/meta-enum-types.h: core/meta-enum-types.h.in $(ENUM_TYPES) Makefile.am
 	$(AM_V_GEN) $(GLIB_MKENUMS) --template $(srcdir)/core/meta-enum-types.h.in $(ENUM_TYPES) > \
 		meta-enum-types.h.tmp && mv meta-enum-types.h.tmp core/meta-enum-types.h
 

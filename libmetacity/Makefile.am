@@ -82,11 +82,11 @@ ENUM_TYPES = \
 	$(srcdir)/meta-theme.h \
 	$(NULL)
 
-meta-enum-types.c: meta-enum-types.c.in meta-enum-types.h $(ENUM_TYPES)
+meta-enum-types.c: meta-enum-types.c.in $(ENUM_TYPES) Makefile.am
 	$(AM_V_GEN) $(GLIB_MKENUMS) --template $(srcdir)/meta-enum-types.c.in $(ENUM_TYPES) > \
 		meta-enum-types.c.tmp && mv meta-enum-types.c.tmp meta-enum-types.c
 
-meta-enum-types.h: meta-enum-types.h.in $(ENUM_TYPES)
+meta-enum-types.h: meta-enum-types.h.in $(ENUM_TYPES) Makefile.am
 	$(AM_V_GEN) $(GLIB_MKENUMS) --template $(srcdir)/meta-enum-types.h.in $(ENUM_TYPES) > \
 		meta-enum-types.h.tmp && mv meta-enum-types.h.tmp meta-enum-types.h
 
