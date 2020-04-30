@@ -5,7 +5,7 @@
 /*** END file-header ***/
 
 /*** BEGIN file-production ***/
-#include "@filename@"
+#include "@basename@"
 /*** END file-production ***/
 
 /*** BEGIN value-header ***/
