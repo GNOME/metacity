@@ -1,3 +1,12 @@
+Version 3.37.1
+==============
+- Don't append "(as superuser)" to window title for flatpak apps. (#9)
+- Remove shade, stick, above and appmenu buttons. (!10)
+- Fix memory leak in MetaGroup.
+- Remove reduced-resources setting. (!6)
+- Remove unused metacity-window-demo. (!8)
+- Remove theme docs. (!7)
+
 Version 3.36.1
 ==============
 - Fix fullscreen regression. (#8)

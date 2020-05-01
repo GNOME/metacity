@@ -4,7 +4,7 @@ dnl **************************************************************************
 
 m4_define([m_major_version], [3])
 m4_define([m_minor_version], [37])
-m4_define([m_micro_version], [0])
+m4_define([m_micro_version], [1])
 m4_define([m_version], [m_major_version.m_minor_version.m_micro_version])
 
 dnl **************************************************************************
@@ -115,9 +115,9 @@ dnl **************************************************************************
 dnl Library version information
 dnl **************************************************************************
 
-m4_define([lt_current], [2])
+m4_define([lt_current], [3])
 m4_define([lt_revision], [0])
-m4_define([lt_age], [1])
+m4_define([lt_age], [0])
 m4_define([lt_version_info], [lt_current:lt_revision:lt_age])
 
 AC_SUBST([LT_VERSION_INFO], [lt_version_info])
