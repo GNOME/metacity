@@ -32,6 +32,7 @@ variables:
                   libxinerama-dev
                   libxrandr-dev
                   libxrender-dev
+                  libxres-dev
                   libxt-dev
                   yelp-tools
                   zenity
