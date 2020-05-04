@@ -115,6 +115,17 @@ dnl **************************************************************************
 dnl Library version information
 dnl **************************************************************************
 
+dnl Before making a release, the library version should be modified. Follow
+dnl these instructions sequentially:
+dnl 1. If the library source code has changed at all since the last update,
+dnl    then increment lt_revision.
+dnl 2. If any interfaces have been added, removed, or changed since the last
+dnl    update, increment lt_current, and set lt_revision to 0.
+dnl 3. If any interfaces have been added since the last public release, then
+dnl    increment lt_age.
+dnl 4. If any interfaces have been removed or changed since the last public
+dnl    release, then set lt_age to 0.
+
 m4_define([lt_current], [3])
 m4_define([lt_revision], [0])
 m4_define([lt_age], [0])
