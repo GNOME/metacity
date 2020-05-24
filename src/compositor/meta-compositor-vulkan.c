@@ -810,7 +810,9 @@ device_type_to_string (VkPhysicalDeviceType type)
         return "cpu";
         break;
 
+#if VK_HEADER_VERSION < 140
       case VK_PHYSICAL_DEVICE_TYPE_RANGE_SIZE:
+#endif
       case VK_PHYSICAL_DEVICE_TYPE_MAX_ENUM:
       default:
         break;
