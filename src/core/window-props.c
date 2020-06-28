@@ -1574,6 +1574,8 @@ reload_wm_protocols (MetaWindow    *window,
   if (value->type == META_PROP_VALUE_INVALID)
     return;
 
+  meta_verbose ("Updating WM_PROTOCOLS for %s\n", window->desc);
+
   i = 0;
   while (i < value->v.atom_list.n_atoms)
     {
@@ -1588,10 +1590,6 @@ reload_wm_protocols (MetaWindow    *window,
         window->net_wm_ping = TRUE;
       ++i;
     }
-
-  meta_verbose ("New _NET_STARTUP_ID \"%s\" for %s\n",
-                window->startup_id ? window->startup_id : "unset",
-                window->desc);
 }
 
 static void
