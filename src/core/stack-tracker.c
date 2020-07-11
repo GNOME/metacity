@@ -317,8 +317,9 @@ meta_stack_op_apply (MetaStackOp *op,
 
         if (old_pos >= 0)
           {
-            g_warning ("STACK_OP_ADD: window %#lx already in stack",
-                       op->add.window);
+            meta_topic (META_DEBUG_STACK,
+                        "STACK_OP_ADD: window %#lx already in stack",
+                        op->add.window);
             return FALSE;
           }
 
@@ -337,8 +338,9 @@ meta_stack_op_apply (MetaStackOp *op,
 
         if (old_pos < 0)
           {
-            g_warning ("STACK_OP_REMOVE: window %#lx not in stack",
-                       op->remove.window);
+            meta_topic (META_DEBUG_STACK,
+                        "STACK_OP_REMOVE: window %#lx not in stack",
+                        op->remove.window);
             return FALSE;
           }
 
@@ -352,8 +354,9 @@ meta_stack_op_apply (MetaStackOp *op,
         int above_pos;
         if (old_pos < 0)
           {
-            g_warning ("STACK_OP_RAISE_ABOVE: window %#lx not in stack",
-                       op->raise_above.window);
+            meta_topic (META_DEBUG_STACK,
+                        "STACK_OP_RAISE_ABOVE: window %#lx not in stack",
+                        op->raise_above.window);
             return FALSE;
           }
 
@@ -362,8 +365,9 @@ meta_stack_op_apply (MetaStackOp *op,
             above_pos = find_window (stack, op->raise_above.sibling);
             if (above_pos < 0)
               {
-                g_warning ("STACK_OP_RAISE_ABOVE: sibling window %#lx not in stack",
-                           op->raise_above.sibling);
+                meta_topic (META_DEBUG_STACK,
+                            "STACK_OP_RAISE_ABOVE: sibling window %#lx not in stack",
+                            op->raise_above.sibling);
                 return FALSE;
               }
           }
@@ -382,8 +386,9 @@ meta_stack_op_apply (MetaStackOp *op,
         int above_pos;
         if (old_pos < 0)
           {
-            g_warning ("STACK_OP_LOWER_BELOW: window %#lx not in stack",
-                       op->lower_below.window);
+            meta_topic (META_DEBUG_STACK,
+                        "STACK_OP_LOWER_BELOW: window %#lx not in stack",
+                        op->lower_below.window);
             return FALSE;
           }
 
@@ -392,8 +397,9 @@ meta_stack_op_apply (MetaStackOp *op,
             int below_pos = find_window (stack, op->lower_below.sibling);
             if (below_pos < 0)
               {
-                g_warning ("STACK_OP_LOWER_BELOW: sibling window %#lx not in stack",
-                           op->lower_below.sibling);
+                meta_topic (META_DEBUG_STACK,
+                            "STACK_OP_LOWER_BELOW: sibling window %#lx not in stack",
+                            op->lower_below.sibling);
                 return FALSE;
               }
 
