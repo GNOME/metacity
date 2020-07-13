@@ -31,6 +31,8 @@ G_DECLARE_FINAL_TYPE (MetaCompositorXRender, meta_compositor_xrender,
 MetaCompositor    *meta_compositor_xrender_new           (MetaDisplay            *display,
                                                           GError                **error);
 
+gboolean           meta_compositor_xrender_have_shadows  (MetaCompositorXRender  *self);
+
 MetaShadowXRender *meta_compositor_xrender_create_shadow (MetaCompositorXRender  *self,
                                                           MetaSurface            *surface);
 

@@ -1192,6 +1192,12 @@ meta_compositor_xrender_new (MetaDisplay  *display,
                          NULL);
 }
 
+gboolean
+meta_compositor_xrender_have_shadows (MetaCompositorXRender *self)
+{
+  return self->have_shadows;
+}
+
 MetaShadowXRender *
 meta_compositor_xrender_create_shadow (MetaCompositorXRender *self,
                                        MetaSurface           *surface)
