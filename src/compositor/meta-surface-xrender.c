@@ -497,15 +497,17 @@ meta_surface_xrender_pre_paint (MetaSurface   *surface,
 
   if (self->shadow_changed)
     {
+      MetaCompositor *compositor;
+      MetaCompositorXRender *compositor_xrender;
+
+      compositor = meta_surface_get_compositor (surface);
+      compositor_xrender = META_COMPOSITOR_XRENDER (compositor);
+
       if (self->shadow == NULL &&
+          meta_compositor_xrender_have_shadows (compositor_xrender) &&
           meta_surface_has_shadow (surface))
         {
-          MetaCompositor *compositor;
-          MetaCompositorXRender *compositor_xrender;
           XserverRegion shadow_region;
-
-          compositor = meta_surface_get_compositor (surface);
-          compositor_xrender = META_COMPOSITOR_XRENDER (compositor);
 
           self->shadow = meta_compositor_xrender_create_shadow (compositor_xrender,
                                                                 surface);
