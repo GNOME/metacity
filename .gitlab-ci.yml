@@ -6,7 +6,7 @@ variables:
   DEBIAN_FRONTEND: noninteractive
 
 build-ubuntu:
-  image: ubuntu:devel
+  image: ubuntu:focal
   stage: build
   except:
     - tags
@@ -47,7 +47,7 @@ build-ubuntu:
     - make distcheck
 
 coverity:
-  image: ubuntu:devel
+  image: ubuntu:focal
   stage: analysis
   when: manual
   before_script:
