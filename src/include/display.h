@@ -37,4 +37,6 @@ MetaWindow *meta_display_get_focus_window (MetaDisplay *display);
 int meta_display_get_damage_event_base (MetaDisplay *display);
 int meta_display_get_shape_event_base (MetaDisplay *display);
 
+void meta_display_update_compositor (MetaDisplay *display);
+
 #endif

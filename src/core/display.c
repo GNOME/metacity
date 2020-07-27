@@ -5120,8 +5120,7 @@ prefs_changed_callback (MetaPreference pref,
     }
   else if (pref == META_PREF_COMPOSITING_MANAGER)
     {
-      update_compositor (display, TRUE);
-      meta_display_retheme_all ();
+      meta_display_update_compositor (display);
     }
   else if (pref == META_PREF_THEME_NAME ||
            pref == META_PREF_THEME_TYPE)
@@ -5302,4 +5301,11 @@ int
 meta_display_get_shape_event_base (MetaDisplay *display)
 {
   return display->shape_event_base;
+}
+
+void
+meta_display_update_compositor (MetaDisplay *display)
+{
+  update_compositor (display, TRUE);
+  meta_display_retheme_all ();
 }

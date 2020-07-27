@@ -1186,16 +1186,17 @@ meta_compositor_vulkan_finalize (GObject *object)
 static gboolean
 not_implemented_cb (MetaCompositorVulkan *vulkan)
 {
+  MetaDisplay *display;
   gboolean cm;
 
+  display = meta_compositor_get_display (META_COMPOSITOR (vulkan));
   cm = meta_prefs_get_compositing_manager ();
 
   g_warning ("MetaCompositorVulkan is not implemented, switching to %s...",
              cm ? "MetaCompositorXRender" : "MetaCompositorNone");
 
   g_unsetenv ("META_COMPOSITOR");
-  meta_prefs_set_compositing_manager (!cm);
-  meta_prefs_set_compositing_manager (cm);
+  meta_display_update_compositor (display);
 
   return G_SOURCE_REMOVE;
 }
