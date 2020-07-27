@@ -23,6 +23,17 @@
       <summary>Compositing Manager</summary>
       <description>
         Determines whether Metacity is a compositing manager.
+
+        DEPRECATED: This key is deprecated, use the “compositor” instead.
+      </description>
+    </key>
+
+    <key name="compositor" enum="org.gnome.metacity.MetaCompositorType">
+      <default>'xrender'</default>
+      <summary>Compositor</summary>
+      <description>
+        Compositor that Metacity will use for compositing. Possible values
+        are “none” and “xrender”.
       </description>
     </key>
 

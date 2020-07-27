@@ -285,10 +285,7 @@ get_compositor_type (MetaDisplay *display)
     }
   else
     {
-      if (meta_prefs_get_compositing_manager ())
-        type = META_COMPOSITOR_TYPE_XRENDER;
-      else
-        type = META_COMPOSITOR_TYPE_NONE;
+      type = meta_prefs_get_compositor ();
     }
 
   return type;
@@ -5118,7 +5115,7 @@ prefs_changed_callback (MetaPreference pref,
     {
       meta_bell_set_audible (display, meta_prefs_bell_is_audible ());
     }
-  else if (pref == META_PREF_COMPOSITING_MANAGER)
+  else if (pref == META_PREF_COMPOSITOR)
     {
       meta_display_update_compositor (display);
     }

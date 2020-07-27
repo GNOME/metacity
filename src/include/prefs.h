@@ -25,6 +25,7 @@
 
 /* This header is a "common" one between the UI and core side */
 #include "common.h"
+#include "meta-compositor.h"
 #include "types.h"
 #include <libmetacity/meta-theme.h>
 #include <pango/pango-font.h>
@@ -58,7 +59,7 @@ typedef enum
   META_PREF_GNOME_ANIMATIONS,
   META_PREF_CURSOR_THEME,
   META_PREF_CURSOR_SIZE,
-  META_PREF_COMPOSITING_MANAGER,
+  META_PREF_COMPOSITOR,
   META_PREF_RESIZE_WITH_RIGHT_BUTTON,
   META_PREF_EDGE_TILING,
   META_PREF_FORCE_FULLSCREEN,
@@ -128,19 +129,15 @@ void        meta_prefs_change_workspace_name (int         i,
 
 const char* meta_prefs_get_cursor_theme      (void);
 int         meta_prefs_get_cursor_size       (void);
-gboolean    meta_prefs_get_compositing_manager (void);
 gboolean    meta_prefs_get_force_fullscreen  (void);
 
 MetaPlacementMode meta_prefs_get_placement_mode (void);
 
 gboolean    meta_prefs_get_alt_tab_thumbnails (void);
 
-/**
- * Sets whether the compositor is turned on.
- *
- * \param whether   TRUE to turn on, FALSE to turn off
- */
-void meta_prefs_set_compositing_manager (gboolean whether);
+MetaCompositorType meta_prefs_get_compositor (void);
+
+void               meta_prefs_set_compositor (MetaCompositorType compositor);
 
 void meta_prefs_set_force_fullscreen (gboolean whether);
 

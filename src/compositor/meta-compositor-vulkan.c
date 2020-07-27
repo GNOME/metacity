@@ -1187,13 +1187,32 @@ static gboolean
 not_implemented_cb (MetaCompositorVulkan *vulkan)
 {
   MetaDisplay *display;
-  gboolean cm;
+  MetaCompositorType type;
+  const char *compositor;
 
   display = meta_compositor_get_display (META_COMPOSITOR (vulkan));
-  cm = meta_prefs_get_compositing_manager ();
+  type = meta_prefs_get_compositor ();
+  compositor = "";
 
-  g_warning ("MetaCompositorVulkan is not implemented, switching to %s...",
-             cm ? "MetaCompositorXRender" : "MetaCompositorNone");
+  switch (type)
+    {
+      case META_COMPOSITOR_TYPE_NONE:
+        compositor = "none";
+        break;
+
+      case META_COMPOSITOR_TYPE_XRENDER:
+        compositor = "xrender";
+        break;
+
+      case META_COMPOSITOR_TYPE_EXTERNAL:
+      case META_COMPOSITOR_TYPE_VULKAN:
+      default:
+        g_assert_not_reached ();
+        break;
+    }
+
+  g_warning ("“vulkan” compositor is not implemented, switching to “%s”...",
+             compositor);
 
   g_unsetenv ("META_COMPOSITOR");
   meta_display_update_compositor (display);
