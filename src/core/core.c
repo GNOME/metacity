@@ -178,38 +178,6 @@ meta_core_queue_frame_resize (Display *xdisplay,
 }
 
 void
-meta_core_user_move (Display *xdisplay,
-                     Window   frame_xwindow,
-                     int      x,
-                     int      y)
-{
-  MetaWindow *window = get_window (xdisplay, frame_xwindow);
-
-  meta_window_move (window, TRUE, x, y);
-}
-
-void
-meta_core_user_resize  (Display *xdisplay,
-                        Window   frame_xwindow,
-                        int      gravity,
-                        int      width,
-                        int      height)
-{
-  MetaWindow *window = get_window (xdisplay, frame_xwindow);
-
-  meta_window_resize_with_gravity (window, TRUE, width, height, gravity);
-}
-
-void
-meta_core_user_raise (Display *xdisplay,
-                      Window   frame_xwindow)
-{
-  MetaWindow *window = get_window (xdisplay, frame_xwindow);
-
-  meta_window_raise (window);
-}
-
-void
 meta_core_user_lower_and_unfocus (Display *xdisplay,
                                   Window   frame_xwindow,
                                   guint32  timestamp)
@@ -398,74 +366,6 @@ meta_core_shade (Display *xdisplay,
   MetaWindow *window = get_window (xdisplay, frame_xwindow);
 
   meta_window_shade (window, timestamp);
-}
-
-void
-meta_core_unstick (Display *xdisplay,
-                   Window   frame_xwindow)
-{
-  MetaWindow *window = get_window (xdisplay, frame_xwindow);
-
-  meta_window_unstick (window);
-}
-
-void
-meta_core_make_above (Display *xdisplay,
-                      Window   frame_xwindow)
-{
-  MetaWindow *window = get_window (xdisplay, frame_xwindow);
-
-  meta_window_make_above (window);
-}
-
-void
-meta_core_unmake_above (Display *xdisplay,
-                        Window   frame_xwindow)
-{
-  MetaWindow *window = get_window (xdisplay, frame_xwindow);
-
-  meta_window_unmake_above (window);
-}
-
-void
-meta_core_stick (Display *xdisplay,
-                 Window   frame_xwindow)
-{
-  MetaWindow *window = get_window (xdisplay, frame_xwindow);
-
-  meta_window_stick (window);
-}
-
-void
-meta_core_change_workspace (Display *xdisplay,
-                            Window   frame_xwindow,
-                            int      new_workspace)
-{
-  MetaWindow *window = get_window (xdisplay, frame_xwindow);
-
-  meta_window_change_workspace (window,
-                                meta_screen_get_workspace_by_index (window->screen,
-                                                                    new_workspace));
-}
-
-int
-meta_core_get_num_workspaces (Screen  *xscreen)
-{
-  MetaScreen *screen;
-
-  screen = meta_screen_for_x_screen (xscreen);
-
-  return meta_screen_get_n_workspaces (screen);
-}
-
-int
-meta_core_get_active_workspace (Screen *xscreen)
-{
-  MetaScreen *screen;
-
-  screen = meta_screen_for_x_screen (xscreen);
-
-  return meta_workspace_index (screen->active_workspace);
 }
 
 void

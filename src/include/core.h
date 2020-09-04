@@ -82,9 +82,9 @@ typedef enum
  *
  * Another possible improvement is that core.h still has a bunch of
  * functions which can't be described by the formula "give a display and
- * an X window, get a single value" (meta_core_user_move, for example), but
- * which could theoretically be handled by this function if we relaxed the
- * requirement that all questions should have exactly one argument.
+ * an X window, get a single value", but which could theoretically be handled
+ * by this function if we relaxed the requirement that all questions should
+ * have exactly one argument.
  */
 void meta_core_get (Display *xdisplay,
                     Window window,
@@ -93,19 +93,6 @@ void meta_core_get (Display *xdisplay,
 void meta_core_queue_frame_resize (Display *xdisplay,
                                    Window frame_xwindow);
 
-/* Move as a result of user operation */
-void meta_core_user_move    (Display *xdisplay,
-                             Window   frame_xwindow,
-                             int      x,
-                             int      y);
-void meta_core_user_resize  (Display *xdisplay,
-                             Window   frame_xwindow,
-                             int      gravity,
-                             int      width,
-                             int      height);
-
-void meta_core_user_raise   (Display *xdisplay,
-                             Window   frame_xwindow);
 void meta_core_user_lower_and_unfocus (Display *xdisplay,
                                        Window   frame_xwindow,
                                        guint32  timestamp);
@@ -139,22 +126,7 @@ void meta_core_unshade          (Display *xdisplay,
 void meta_core_shade            (Display *xdisplay,
                                  Window   frame_xwindow,
                                  guint32  timestamp);
-void meta_core_unstick          (Display *xdisplay,
-                                 Window   frame_xwindow);
-void meta_core_stick            (Display *xdisplay,
-                                 Window   frame_xwindow);
-void meta_core_unmake_above     (Display *xdisplay,
-                                 Window   frame_xwindow);
-void meta_core_make_above       (Display *xdisplay,
-                                 Window   frame_xwindow);
-void meta_core_change_workspace (Display *xdisplay,
-                                 Window   frame_xwindow,
-                                 int      new_workspace);
 
-int meta_core_get_num_workspaces (Screen  *xscreen);
-int meta_core_get_active_workspace (Screen *xscreen);
-int meta_core_get_frame_workspace (Display *xdisplay,
-                                   Window frame_xwindow);
 const char* meta_core_get_workspace_name_with_index (Display *xdisplay,
                                                      int    index);
 
