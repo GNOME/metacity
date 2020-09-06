@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues\n"
-"POT-Creation-Date: 2020-09-05 20:28+0000\n"
-"PO-Revision-Date: 2020-09-06 08:45+0300\n"
+"POT-Creation-Date: 2020-09-06 11:32+0000\n"
+"PO-Revision-Date: 2020-09-06 19:47+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -26,11 +26,6 @@ msgstr ""
 #: data/applications/metacity.desktop.in:4 src/core/util.c:429
 msgid "Metacity"
 msgstr "Metacity"
-
-#. TRANSLATORS: Don't translate this text (this is icon name)
-#: data/applications/metacity.desktop.in:7
-msgid "preferences-system-windows"
-msgstr "preferences-system-windows"
 
 #: data/keybindings/50-metacity-navigation.xml:6
 msgid "Navigation"
@@ -235,16 +230,14 @@ msgid "Compositing Manager"
 msgstr "Композитний менеджер"
 
 #: data/schemas/org.gnome.metacity.gschema.xml:24
-#| msgid "Determines whether Metacity is a compositing manager."
 msgid ""
 "Determines whether Metacity is a compositing manager. DEPRECATED: This key "
 "is deprecated, use the “compositor” instead."
 msgstr ""
-"Визначає, чи є Metacity композитним менеджером. ЗАСТАРІЛИЙ: цей ключ є"
-" застарілим, скористайтеся замість нього ключем «compositor»."
+"Визначає, чи є Metacity композитним менеджером. ЗАСТАРІЛИЙ: цей ключ є "
+"застарілим, скористайтеся замість нього ключем «compositor»."
 
 #: data/schemas/org.gnome.metacity.gschema.xml:33
-#| msgid "Composited:"
 msgid "Compositor"
 msgstr "Засіб композиції"
 
@@ -253,8 +246,8 @@ msgid ""
 "Compositor that Metacity will use for compositing. Possible values are "
 "“none” and “xrender”."
 msgstr ""
-"Засіб композиції, який Metacity використовуватиме для компонування. Можливими"
-" значеннями є «none» і «xrender»."
+"Засіб композиції, який Metacity використовуватиме для компонування. "
+"Можливими значеннями є «none» і «xrender»."
 
 #: data/schemas/org.gnome.metacity.gschema.xml:42
 msgid "Enable edge tiling when dropping windows on screen edges"
@@ -1168,8 +1161,8 @@ msgstr ""
 #, c-format
 msgid "Option “%s” is deprecated, use the “--compositor” instead."
 msgstr ""
-"Параметр «%s» є застарілим. Скористайтеся замість нього параметром"
-" «--compositor»."
+"Параметр «%s» є застарілим. Скористайтеся замість нього параметром «--"
+"compositor»."
 
 #: src/core/main.c:243
 #, c-format
@@ -1213,7 +1206,6 @@ msgid "Turn compositing off"
 msgstr "Вимкнути композитний режим"
 
 #: src/core/main.c:337
-#| msgid "Composited:"
 msgid "Compositor to use"
 msgstr "Використаний засіб композиції"
 
@@ -1225,8 +1217,12 @@ msgstr ""
 "рамок"
 
 #: src/core/prefs.c:905
-msgid "Setting “"
-msgstr "Параметр «"
+#| msgid "Option “%s” is deprecated, use the “--compositor” instead."
+msgid ""
+"Setting “compositing-manager” is deprecated, use the “compositor” instead."
+msgstr ""
+"Параметр «compositing-manager» є застарілим. Скористайтеся замість нього"
+" параметром «compositor»."
 
 #: src/core/prefs.c:1446
 #, c-format
@@ -1564,6 +1560,12 @@ msgstr ""
 #: theme-viewer/theme-viewer-window.c:244
 msgid "Run again"
 msgstr "Повторити запуск"
+
+#~ msgid "preferences-system-windows"
+#~ msgstr "preferences-system-windows"
+
+#~ msgid "Setting “"
+#~ msgstr "Параметр «"
 
 #~ msgid "If true, trade off usability for less resource usage"
 #~ msgstr ""
