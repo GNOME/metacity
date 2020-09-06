@@ -902,7 +902,7 @@ settings_changed (GSettings *settings,
     }
   else if (strcmp (key, KEY_COMPOSITING_MANAGER) == 0)
     {
-      g_warning (_("Setting “" KEY_COMPOSITING_MANAGER "” is deprecated, "
+      g_warning (_("Setting “compositing-manager” is deprecated, "
                    "use the “compositor” instead."));
 
       update_compositing_manager ();
