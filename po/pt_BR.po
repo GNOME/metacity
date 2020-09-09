@@ -15,33 +15,27 @@
 # Krix Apolinário <krixapolinario@gmail.com> 2011.
 # Antonio Fernandes C. Neto <fernandesn@gnome.org> 2012.
 # Rafael Fontenelle <rafaelff@gnome.org>, 2013, 2014, 2016, 2017.
-# Enrico Nicoletto <liverig@gmail.com>, 2014, 2017.
+# Enrico Nicoletto <liverig@gmail.com>, 2014, 2017, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=metaci"
-"ty&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-04-02 16:23+0000\n"
-"PO-Revision-Date: 2017-04-02 18:05-0200\n"
-"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues\n"
+"POT-Creation-Date: 2020-09-06 11:32+0000\n"
+"PO-Revision-Date: 2020-09-09 20:08-0300\n"
+"Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Virtaal 1.0.0-beta1\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Project-Style: gnome\n"
 
 #. Translators: This is the title used on dialog boxes
-#: data/applications/metacity.desktop.in:4 src/core/util.c:435
+#: data/applications/metacity.desktop.in:4 src/core/util.c:429
 msgid "Metacity"
 msgstr "Metacity"
-
-#. TRANSLATORS: Don't translate this text (this is icon name)
-#: data/applications/metacity.desktop.in:7
-msgid "preferences-system-windows"
-msgstr "preferences-system-windows"
 
 #: data/keybindings/50-metacity-navigation.xml:6
 msgid "Navigation"
@@ -180,55 +174,51 @@ msgid "Restore window"
 msgstr "Restaurar janela"
 
 #: data/keybindings/50-metacity-windows.xml:24
-msgid "Toggle shaded state"
-msgstr "Alternar estado sombreado"
-
-#: data/keybindings/50-metacity-windows.xml:27
 msgid "Close window"
 msgstr "Fechar a janela"
 
-#: data/keybindings/50-metacity-windows.xml:30
+#: data/keybindings/50-metacity-windows.xml:27
 msgid "Minimize window"
 msgstr "Minimizar a janela"
 
-#: data/keybindings/50-metacity-windows.xml:33
+#: data/keybindings/50-metacity-windows.xml:30
 msgid "Move window"
 msgstr "Mover a janela"
 
-#: data/keybindings/50-metacity-windows.xml:36
+#: data/keybindings/50-metacity-windows.xml:33
 msgid "Resize window"
 msgstr "Redimensionar a janela"
 
-#: data/keybindings/50-metacity-windows.xml:39
+#: data/keybindings/50-metacity-windows.xml:36
 msgid "Toggle window on all workspaces or one"
 msgstr "Alternar janela em todos os espaços de trabalho ou em um"
 
-#: data/keybindings/50-metacity-windows.xml:42
+#: data/keybindings/50-metacity-windows.xml:39
 msgid "Raise window if covered, otherwise lower it"
 msgstr ""
 "Elevar janela se ela estiver coberta por outra; caso contrário, baixe-a"
 
-#: data/keybindings/50-metacity-windows.xml:45
+#: data/keybindings/50-metacity-windows.xml:42
 msgid "Raise window above other windows"
 msgstr "Elevar a janela para frente das outras"
 
-#: data/keybindings/50-metacity-windows.xml:48
+#: data/keybindings/50-metacity-windows.xml:45
 msgid "Lower window below other windows"
 msgstr "Colocar a janela atrás das outras"
 
-#: data/keybindings/50-metacity-windows.xml:51
+#: data/keybindings/50-metacity-windows.xml:48
 msgid "Maximize window vertically"
 msgstr "Maximizar a janela verticalmente"
 
-#: data/keybindings/50-metacity-windows.xml:54
+#: data/keybindings/50-metacity-windows.xml:51
 msgid "Maximize window horizontally"
 msgstr "Maximizar a janela horizontalmente"
 
-#: data/keybindings/50-metacity-windows.xml:58
+#: data/keybindings/50-metacity-windows.xml:55
 msgid "View split on left"
 msgstr "Exibição de divisão à esquerda"
 
-#: data/keybindings/50-metacity-windows.xml:62
+#: data/keybindings/50-metacity-windows.xml:59
 msgid "View split on right"
 msgstr "Exibição de divisão à direita"
 
@@ -249,14 +239,31 @@ msgid "Compositing Manager"
 msgstr "Gerenciador de composição"
 
 #: data/schemas/org.gnome.metacity.gschema.xml:24
-msgid "Determines whether Metacity is a compositing manager."
-msgstr "Determina se o Metacity é um gerenciador de composição."
+msgid ""
+"Determines whether Metacity is a compositing manager. DEPRECATED: This key "
+"is deprecated, use the “compositor” instead."
+msgstr ""
+"Determina se o Metacity é um gerenciador de composição. PRETERIDA: Esta "
+"chave foi descontinuada, no lugar dela use “compositor”."
 
-#: data/schemas/org.gnome.metacity.gschema.xml:31
+#: data/schemas/org.gnome.metacity.gschema.xml:33
+#| msgid "Composited:"
+msgid "Compositor"
+msgstr "Compositor"
+
+#: data/schemas/org.gnome.metacity.gschema.xml:34
+msgid ""
+"Compositor that Metacity will use for compositing. Possible values are "
+"“none” and “xrender”."
+msgstr ""
+"Compositor que o Metacity usará para a composição. Os valores possíveis são "
+"“none” e “xrender”."
+
+#: data/schemas/org.gnome.metacity.gschema.xml:42
 msgid "Enable edge tiling when dropping windows on screen edges"
 msgstr "Habilitar contorno ladrilhado ao soltar janelas nas bordas de janelas"
 
-#: data/schemas/org.gnome.metacity.gschema.xml:32
+#: data/schemas/org.gnome.metacity.gschema.xml:43
 msgid ""
 "If enabled, dropping windows on vertical screen edges maximizes them "
 "vertically and resizes them horizontally to cover half of the available "
@@ -266,11 +273,11 @@ msgstr ""
 "redimensiona-as horizontalmente para cobrir metade da área disponível. "
 "Soltar as janelas na borda superior da tela maximiza-as completamente."
 
-#: data/schemas/org.gnome.metacity.gschema.xml:41
+#: data/schemas/org.gnome.metacity.gschema.xml:52
 msgid "Window placement behavior"
 msgstr "Comportamento de localização de janelas"
 
-#: data/schemas/org.gnome.metacity.gschema.xml:42
+#: data/schemas/org.gnome.metacity.gschema.xml:53
 msgid ""
 "Metacity's default window-placement behavior is smart (first-fit), similar "
 "to behaviors in some other window managers. It will try to tile windows so "
@@ -288,26 +295,6 @@ msgstr ""
 "seus espaços de trabalho, \"origin\" para o canto superior esquerdo dos "
 "espaços de trabalho ou \"random\" para posicionar novas janelas em "
 "localizações aleatórias dentro de seus espaços de trabalho."
-
-#: data/schemas/org.gnome.metacity.gschema.xml:57
-msgid "If true, trade off usability for less resource usage"
-msgstr "Se verdadeiro, troca-se usabilidade por menos uso de recursos"
-
-#: data/schemas/org.gnome.metacity.gschema.xml:58
-msgid ""
-"If true, Metacity will give the user less feedback by using wireframes, "
-"avoiding animations, or other means. This is a significant reduction in "
-"usability for many users, but may allow legacy applications to continue "
-"working, and may also be a useful tradeoff for terminal servers. However, "
-"the wireframe feature is disabled when accessibility is on."
-msgstr ""
-"Se verdadeiro, o Metacity dará menor retorno ao usuário, por exemplo "
-"mostrando somente as bordas durante a movimentação da janela e evitando "
-"animações. Isso significa uma redução significativa na usabilidade para "
-"muitos usuários, mas pode possibilitar o funcionamento de aplicativos "
-"legados, e pode ser uma troca vantajosa em servidores de terminais. Quando a "
-"acessibilidade estivar ativada, no entanto, o recurso de bordas fica "
-"desabilitado."
 
 #: data/schemas/org.gnome.metacity.theme.gschema.xml:11
 msgid "Theme Name"
@@ -342,97 +329,101 @@ msgstr ""
 "Tema Metacity: os dados são carregados a partir de metacity-theme-x.xml e do "
 "CSS. Ao usar este tipo de tema, você DEVE fornecer um nome de tema válido."
 
-#: data/ui/theme-viewer-window.ui:45
+#: data/ui/theme-viewer-window.ui:86
 msgid "Reload"
 msgstr "Recarregar"
 
-#: data/ui/theme-viewer-window.ui:103
+#: data/ui/theme-viewer-window.ui:122
 msgid "Dark Theme:"
 msgstr "Tema escuro:"
 
-#: data/ui/theme-viewer-window.ui:142
+#: data/ui/theme-viewer-window.ui:161
 msgid "Frame Type:"
 msgstr "Tipo de quadro:"
 
-#: data/ui/theme-viewer-window.ui:156
+#: data/ui/theme-viewer-window.ui:175
 msgid "Normal"
 msgstr "Normal"
 
-#: data/ui/theme-viewer-window.ui:157
+#: data/ui/theme-viewer-window.ui:176
 msgid "Dialog"
 msgstr "Diálogo"
 
-#: data/ui/theme-viewer-window.ui:158
+#: data/ui/theme-viewer-window.ui:177
 msgid "Modal Dialog"
 msgstr "Diálogo modal"
 
-#: data/ui/theme-viewer-window.ui:159
+#: data/ui/theme-viewer-window.ui:178
 msgid "Utility"
 msgstr "Utilitário"
 
-#: data/ui/theme-viewer-window.ui:160
+#: data/ui/theme-viewer-window.ui:179
 msgid "Menu"
 msgstr "Menu"
 
-#: data/ui/theme-viewer-window.ui:161
+#: data/ui/theme-viewer-window.ui:180
 msgid "Border"
 msgstr "Borda"
 
-#: data/ui/theme-viewer-window.ui:162
+#: data/ui/theme-viewer-window.ui:181
 msgid "Attached"
 msgstr "Anexado"
 
-#: data/ui/theme-viewer-window.ui:190
+#: data/ui/theme-viewer-window.ui:209
 msgid "Frame Flags:"
 msgstr "Sinalizadores do quadro:"
 
-#: data/ui/theme-viewer-window.ui:205
+#: data/ui/theme-viewer-window.ui:224
 msgid "Has Focus"
 msgstr "Tem foco"
 
-#: data/ui/theme-viewer-window.ui:220
+#: data/ui/theme-viewer-window.ui:239
 msgid "Shaded"
 msgstr "Sombreado"
 
-#: data/ui/theme-viewer-window.ui:234
+#: data/ui/theme-viewer-window.ui:253
 msgid "Maximized"
 msgstr "Maximizada"
 
-#: data/ui/theme-viewer-window.ui:248
+#: data/ui/theme-viewer-window.ui:267
 msgid "Fullscreen"
 msgstr "Tela cheia"
 
-#: data/ui/theme-viewer-window.ui:262
+#: data/ui/theme-viewer-window.ui:281
 msgid "Tiled"
 msgstr "Lado a lado"
 
-#: data/ui/theme-viewer-window.ui:302
+#: data/ui/theme-viewer-window.ui:321
 msgid "Button Layout:"
 msgstr "Disposição de botões:"
 
-#: data/ui/theme-viewer-window.ui:341
+#: data/ui/theme-viewer-window.ui:360
 msgid "Composited:"
 msgstr "Composto:"
 
-#: data/ui/theme-viewer-window.ui:381
+#: data/ui/theme-viewer-window.ui:400
 msgid "Scale:"
 msgstr "Escala:"
 
-#: data/ui/theme-viewer-window.ui:441 theme-viewer/theme-viewer-window.c:650
+#: data/ui/theme-viewer-window.ui:468 theme-viewer/theme-viewer-window.c:636
 msgid "Choose Theme"
 msgstr "Escolher tema"
 
-#: data/ui/theme-viewer-window.ui:481
+#: data/ui/theme-viewer-window.ui:508
 msgid "Preview"
 msgstr "Visualizar"
 
-#: data/ui/theme-viewer-window.ui:570 theme-viewer/theme-viewer-window.c:269
+#: data/ui/theme-viewer-window.ui:597 theme-viewer/theme-viewer-window.c:252
 msgid "Run"
 msgstr "Executar"
 
-#: data/ui/theme-viewer-window.ui:592
+#: data/ui/theme-viewer-window.ui:619
 msgid "Benchmark"
 msgstr "Benchmark"
+
+#: data/ui/theme-viewer-window.ui:652 theme-viewer/theme-viewer-window.c:982
+msgid "Metacity Theme Viewer"
+msgstr "Visualizador de temas do Metacity"
 
 #: libmetacity/meta-color-spec.c:246
 #, c-format
@@ -450,7 +441,7 @@ msgid ""
 "Invalid character '%c' in color_name parameter of gtk:custom, only A-Za-z0-9-"
 "_ are valid"
 msgstr ""
-"caractere \"%c\" inválido no parâmetro color_name de gtk:custom, apenas A-Za-"
+"Caractere \"%c\" inválido no parâmetro color_name de gtk:custom, apenas A-Za-"
 "z0-9-_ são válidos"
 
 #: libmetacity/meta-color-spec.c:273
@@ -572,28 +563,28 @@ msgstr ""
 "A expressão coordenada tinha uma variável ou uma constante desconhecida \"%s"
 "\""
 
-#: libmetacity/meta-draw-spec.c:631 libmetacity/meta-draw-spec.c:641
-#: libmetacity/meta-draw-spec.c:676 libmetacity/meta-draw-spec.c:686
+#: libmetacity/meta-draw-spec.c:638 libmetacity/meta-draw-spec.c:648
+#: libmetacity/meta-draw-spec.c:683 libmetacity/meta-draw-spec.c:693
 msgid "Coordinate expression results in division by zero"
 msgstr "A expressão coordenada resulta na divisão por zero"
 
-#: libmetacity/meta-draw-spec.c:775
+#: libmetacity/meta-draw-spec.c:782
 #, c-format
 msgid ""
 "Coordinate expression has an operator \"%s\" where an operand was expected"
 msgstr ""
 "A expressão coordenada tem o operador \"%s\" onde era esperado um operando"
 
-#: libmetacity/meta-draw-spec.c:784
+#: libmetacity/meta-draw-spec.c:791
 msgid "Coordinate expression had an operand where an operator was expected"
 msgstr "A expressão coordenada tinha um operando onde era esperado um operador"
 
-#: libmetacity/meta-draw-spec.c:792
+#: libmetacity/meta-draw-spec.c:799
 msgid "Coordinate expression ended with an operator instead of an operand"
 msgstr ""
 "A expressão coordenada terminou com um operador, em vez de com um operando"
 
-#: libmetacity/meta-draw-spec.c:802
+#: libmetacity/meta-draw-spec.c:809
 #, c-format
 msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
@@ -602,28 +593,28 @@ msgstr ""
 "A expressão coordenada tem o operador \"%c\" após o operador \"%c\" sem "
 "nenhum operando entre eles"
 
-#: libmetacity/meta-draw-spec.c:934
+#: libmetacity/meta-draw-spec.c:941
 msgid "Coordinate expression parser overflowed its buffer."
 msgstr "O analisador de expressão coordenada estourou o buffer."
 
-#: libmetacity/meta-draw-spec.c:964
+#: libmetacity/meta-draw-spec.c:971
 msgid "Coordinate expression had a close parenthesis with no open parenthesis"
 msgstr ""
 "A expressão coordenada tinha um parêntese de fechamento sem um parêntese de "
 "abertura"
 
-#: libmetacity/meta-draw-spec.c:1037
+#: libmetacity/meta-draw-spec.c:1044
 msgid "Coordinate expression had an open parenthesis with no close parenthesis"
 msgstr ""
 "A expressão coordenada tinha um parêntese de abertura sem um parêntese de "
 "fechamento"
 
-#: libmetacity/meta-draw-spec.c:1047
+#: libmetacity/meta-draw-spec.c:1054
 msgid "Coordinate expression doesn't seem to have any operators or operands"
 msgstr "Aparentemente não há operadores nem operandos na expressão coordenada"
 
-#: libmetacity/meta-draw-spec.c:1239 libmetacity/meta-draw-spec.c:1259
-#: libmetacity/meta-draw-spec.c:1279
+#: libmetacity/meta-draw-spec.c:1246 libmetacity/meta-draw-spec.c:1266
+#: libmetacity/meta-draw-spec.c:1286
 #, c-format
 msgid "Theme contained an expression that resulted in an error: %s"
 msgstr "O tema continha uma expressão que resultou em um erro: %s"
@@ -667,13 +658,13 @@ msgstr "A geometria do quadro não especifica o tamanho dos botões"
 #. * in theme XML.  The "<frame ...>" is intended as a noun phrase,
 #. * and the "missing" qualifies it.  You should translate "whatever".
 #.
-#: libmetacity/meta-frame-style.c:144 libmetacity/meta-frame-style.c:469
+#: libmetacity/meta-frame-style.c:144 libmetacity/meta-frame-style.c:467
 #, c-format
 msgid "Missing <frame state='%s' resize='%s' focus='%s' style='whatever' />"
 msgstr ""
 "<frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/> ausente"
 
-#: libmetacity/meta-frame-style.c:326
+#: libmetacity/meta-frame-style.c:324
 #, c-format
 msgid ""
 "<button function='%s' state='%s' draw_ops='whatever'/> must be specified for "
@@ -686,7 +677,7 @@ msgstr ""
 msgid "Gradients should have at least two colors"
 msgstr "Os degradês devem ter pelo menos duas cores"
 
-#: libmetacity/meta-theme-impl.c:65
+#: libmetacity/meta-theme-impl.c:41
 #, c-format
 msgid "MetaThemeImplClass::load not implemented for '%s'"
 msgstr "MetaThemeImplClass::load não implementada para \"%s\""
@@ -699,54 +690,54 @@ msgstr "MetaThemeImplClass::load não implementada para \"%s\""
 msgid "No '%s' attribute on element <%s>"
 msgstr "Nenhum atributo \"%s\" no elemento <%s>"
 
-#: libmetacity/meta-theme-metacity.c:303 libmetacity/meta-theme-metacity.c:322
+#: libmetacity/meta-theme-metacity.c:305 libmetacity/meta-theme-metacity.c:324
 #, c-format
 msgid "Line %d character %d: %s"
 msgstr "Caractere %d da linha %d: %s"
 
-#: libmetacity/meta-theme-metacity.c:362
+#: libmetacity/meta-theme-metacity.c:364
 #, c-format
 msgid "Could not parse '%s' as an integer"
 msgstr "Não foi possível analisar \"%s\" como um inteiro"
 
-#: libmetacity/meta-theme-metacity.c:370 libmetacity/meta-theme-metacity.c:587
+#: libmetacity/meta-theme-metacity.c:372 libmetacity/meta-theme-metacity.c:589
 #, c-format
 msgid "Did not understand trailing characters '%s' in string '%s'"
 msgstr ""
 "Os caracteres à direita \"%s\" na string \"%s\" não foram compreendidos"
 
-#: libmetacity/meta-theme-metacity.c:379
+#: libmetacity/meta-theme-metacity.c:381
 #, c-format
 msgid "Integer %ld must be positive"
 msgstr "O inteiro %ld deve ser positivo"
 
-#: libmetacity/meta-theme-metacity.c:386
+#: libmetacity/meta-theme-metacity.c:388
 #, c-format
 msgid "Integer %ld is too large, current max is %d"
 msgstr "O inteiro %ld é muito grande; o valor máximo atual é %d"
 
-#: libmetacity/meta-theme-metacity.c:488
+#: libmetacity/meta-theme-metacity.c:490
 #, c-format
 msgid "Attribute '%s' repeated twice on the same <%s> element"
 msgstr "O atributo \"%s\" foi repetido duas vezes no mesmo elemento <%s>"
 
-#: libmetacity/meta-theme-metacity.c:510 libmetacity/meta-theme-metacity.c:554
+#: libmetacity/meta-theme-metacity.c:512 libmetacity/meta-theme-metacity.c:556
 #, c-format
 msgid "Attribute '%s' is invalid on <%s> element in this context"
 msgstr "O atributo \"%s\" é inválido no elemento <%s> neste contexto"
 
-#: libmetacity/meta-theme-metacity.c:579 libmetacity/meta-theme-metacity.c:617
+#: libmetacity/meta-theme-metacity.c:581 libmetacity/meta-theme-metacity.c:619
 #, c-format
 msgid "Could not parse '%s' as a floating point number"
 msgstr "Não foi possível analisar \"%s\" como um número de ponto flutuante"
 
-#: libmetacity/meta-theme-metacity.c:649
+#: libmetacity/meta-theme-metacity.c:651
 #, c-format
 msgid "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g"
 msgstr ""
 "Alfa deve estar entre 0,0 (invisível) e 1,0 (totalmente opaco) e era %g"
 
-#: libmetacity/meta-theme-metacity.c:695
+#: libmetacity/meta-theme-metacity.c:697
 #, c-format
 msgid ""
 "Invalid title scale '%s' (must be one of xx-small,x-small,small,medium,large,"
@@ -755,72 +746,72 @@ msgstr ""
 "Escala de título \"%s\" inválida (deve ser super pequena, extra pequena, "
 "pequena, média, grande, extra grande ou super grande)\n"
 
-#: libmetacity/meta-theme-metacity.c:724 libmetacity/meta-theme-metacity.c:752
+#: libmetacity/meta-theme-metacity.c:726 libmetacity/meta-theme-metacity.c:754
 #, c-format
 msgid "Boolean values must be 'true' or 'false' not '%s'"
 msgstr "Os valores booleanos devem ser \"true\" ou \"false\" e não \"%s\""
 
-#: libmetacity/meta-theme-metacity.c:781 libmetacity/meta-theme-metacity.c:818
-#: libmetacity/meta-theme-metacity.c:856
+#: libmetacity/meta-theme-metacity.c:783 libmetacity/meta-theme-metacity.c:820
+#: libmetacity/meta-theme-metacity.c:858
 #, c-format
 msgid "User-defined constants must begin with a capital letter; '%s' does not"
 msgstr ""
 "As constantes definidas pelo usuário devem iniciar com letra maiúscula; \"%s"
 "\" não inicia"
 
-#: libmetacity/meta-theme-metacity.c:790 libmetacity/meta-theme-metacity.c:827
-#: libmetacity/meta-theme-metacity.c:865
+#: libmetacity/meta-theme-metacity.c:792 libmetacity/meta-theme-metacity.c:829
+#: libmetacity/meta-theme-metacity.c:867
 #, c-format
 msgid "Constant '%s' has already been defined"
 msgstr "A constante \"%s\" já foi definida"
 
-#: libmetacity/meta-theme-metacity.c:1072
-#: libmetacity/meta-theme-metacity.c:1169
-#: libmetacity/meta-theme-metacity.c:1271
+#: libmetacity/meta-theme-metacity.c:1074
+#: libmetacity/meta-theme-metacity.c:1171
+#: libmetacity/meta-theme-metacity.c:1273
 #, c-format
 msgid "<%s> name \"%s\" used a second time"
 msgstr "<%s> nome \"%s\" usado uma segunda vez"
 
-#: libmetacity/meta-theme-metacity.c:1084
+#: libmetacity/meta-theme-metacity.c:1086
 #, c-format
 msgid "<%s> parent \"%s\" has not been defined"
 msgstr "<%s> pai \"%s\" não foi definido"
 
-#: libmetacity/meta-theme-metacity.c:1135
+#: libmetacity/meta-theme-metacity.c:1137
 #, c-format
 msgid "<%s> name '%s' used a second time"
 msgstr "<%s> nome \"%s\" usado uma segunda vez"
 
-#: libmetacity/meta-theme-metacity.c:1181
-#: libmetacity/meta-theme-metacity.c:1283
+#: libmetacity/meta-theme-metacity.c:1183
+#: libmetacity/meta-theme-metacity.c:1285
 #, c-format
 msgid "<%s> parent '%s' has not been defined"
 msgstr "<%s> pai \"%s\" não foi definido"
 
-#: libmetacity/meta-theme-metacity.c:1194
+#: libmetacity/meta-theme-metacity.c:1196
 #, c-format
 msgid "<%s> geometry '%s' has not been defined"
 msgstr "<%s> geometria \"%s\" não foi definida"
 
-#: libmetacity/meta-theme-metacity.c:1207
+#: libmetacity/meta-theme-metacity.c:1209
 #, c-format
 msgid "<%s> must specify either a geometry or a parent that has a geometry"
 msgstr "<%s> deve especificar uma geometria ou um pai que tenha uma geometria"
 
-#: libmetacity/meta-theme-metacity.c:1248
+#: libmetacity/meta-theme-metacity.c:1250
 msgid "You must specify a background for an alpha value to be meaningful"
 msgstr ""
 "Você pode especificar um plano de fundo para que um valor alfa faça sentido"
 
-#: libmetacity/meta-theme-metacity.c:1317
+#: libmetacity/meta-theme-metacity.c:1318
 #, c-format
 msgid "Unknown type '%s' on <%s> element"
 msgstr "Tipo \"%s\" desconhecido no elemento <%s>"
 
-#: libmetacity/meta-theme-metacity.c:1326
+#: libmetacity/meta-theme-metacity.c:1327
 #, c-format
 msgid "Unknown style_set '%s' on <%s> element"
-msgstr "conjunto_de_estilo \"%s\" desconhecido no elemento <%s>"
+msgstr "O conjunto_de_estilo \"%s\" é desconhecido no elemento <%s>"
 
 #: libmetacity/meta-theme-metacity.c:1335
 #, c-format
@@ -832,11 +823,11 @@ msgstr "O tipo de janela \"%s\" já foi atribuído a um estilo definido"
 #: libmetacity/meta-theme-metacity.c:1654
 #: libmetacity/meta-theme-metacity.c:2808
 #: libmetacity/meta-theme-metacity.c:2854
-#: libmetacity/meta-theme-metacity.c:3094
-#: libmetacity/meta-theme-metacity.c:3130
-#: libmetacity/meta-theme-metacity.c:3166
-#: libmetacity/meta-theme-metacity.c:3202
-#: libmetacity/meta-theme-metacity.c:3499
+#: libmetacity/meta-theme-metacity.c:3092
+#: libmetacity/meta-theme-metacity.c:3128
+#: libmetacity/meta-theme-metacity.c:3164
+#: libmetacity/meta-theme-metacity.c:3200
+#: libmetacity/meta-theme-metacity.c:3497
 #, c-format
 msgid "Element <%s> is not allowed below <%s>"
 msgstr "O elemento <%s> não é permitido abaixo de <%s>"
@@ -923,47 +914,47 @@ msgstr "Nenhum <draw_ops> chamado \"%s\" foi definido"
 msgid "Including draw_ops \"%s\" here would create a circular reference"
 msgstr "A inclusão do draw_ops \"%s\" aqui criaria uma referência circular"
 
-#: libmetacity/meta-theme-metacity.c:2981
+#: libmetacity/meta-theme-metacity.c:2979
 #, c-format
 msgid "Unknown position \"%s\" for frame piece"
 msgstr "Posição \"%s\" desconhecida para a parte do quadro"
 
-#: libmetacity/meta-theme-metacity.c:2989
+#: libmetacity/meta-theme-metacity.c:2987
 #, c-format
 msgid "Frame style already has a piece at position %s"
 msgstr "O estilo de quadro já tem uma parte na posição %s"
 
-#: libmetacity/meta-theme-metacity.c:3005
+#: libmetacity/meta-theme-metacity.c:3003
 #, c-format
 msgid "No <draw_ops> with the name \"%s\" has been defined"
 msgstr "Nenhum <draw_ops> com o nome \"%s\" foi definido"
 
-#: libmetacity/meta-theme-metacity.c:3036
+#: libmetacity/meta-theme-metacity.c:3034
 #, c-format
 msgid "Unknown function \"%s\" for button"
 msgstr "Função \"%s\" desconhecida para o botão"
 
-#: libmetacity/meta-theme-metacity.c:3047
+#: libmetacity/meta-theme-metacity.c:3045
 #, c-format
 msgid "Button function '%s' does not exist in this version (%d, need %d)"
 msgstr "A função \"%s\" de botão não existe nesta versão (%d, necessário %d)"
 
-#: libmetacity/meta-theme-metacity.c:3056
+#: libmetacity/meta-theme-metacity.c:3054
 #, c-format
 msgid "Unknown state '%s' for button"
 msgstr "Estado \"%s\" desconhecido para o botão"
 
-#: libmetacity/meta-theme-metacity.c:3063
+#: libmetacity/meta-theme-metacity.c:3061
 #, c-format
 msgid "Frame style already has a button for function %s state %s"
 msgstr "O estilo de quadro já possui um botão para o estado %s da função %s"
 
-#: libmetacity/meta-theme-metacity.c:3080
+#: libmetacity/meta-theme-metacity.c:3078
 #, c-format
 msgid "No <draw_ops> with the name '%s' has been defined"
 msgstr "Nenhum <draw_ops> com o nome \"%s\" foi definido"
 
-#: libmetacity/meta-theme-metacity.c:3114
+#: libmetacity/meta-theme-metacity.c:3112
 msgid ""
 "Can't have a two draw_ops for a <piece> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
@@ -972,7 +963,7 @@ msgstr ""
 "especificou um atributo draw_ops e um elemento <draw_ops> ou especificou "
 "dois elementos)"
 
-#: libmetacity/meta-theme-metacity.c:3150
+#: libmetacity/meta-theme-metacity.c:3148
 msgid ""
 "Can't have a two draw_ops for a <button> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
@@ -981,7 +972,7 @@ msgstr ""
 "especificou um atributo draw_ops e um elemento <draw_ops> ou especificou "
 "dois elementos)"
 
-#: libmetacity/meta-theme-metacity.c:3186
+#: libmetacity/meta-theme-metacity.c:3184
 msgid ""
 "Can't have a two draw_ops for a <menu_icon> element (theme specified a "
 "draw_ops attribute and also a <draw_ops> element, or specified two elements)"
@@ -990,28 +981,28 @@ msgstr ""
 "especificou um atributo draw_ops e um elemento <draw_ops> ou especificou "
 "dois elementos)"
 
-#: libmetacity/meta-theme-metacity.c:3290
+#: libmetacity/meta-theme-metacity.c:3288
 #, c-format
 msgid "'%s' is not a valid value for focus attribute"
 msgstr "\"%s\" não é um valor válido para o atributo de foco"
 
-#: libmetacity/meta-theme-metacity.c:3299
+#: libmetacity/meta-theme-metacity.c:3297
 #, c-format
 msgid "'%s' is not a valid value for state attribute"
 msgstr "\"%s\" não é um valor válido para o atributo de estado"
 
-#: libmetacity/meta-theme-metacity.c:3308
+#: libmetacity/meta-theme-metacity.c:3306
 #, c-format
 msgid "A style called '%s' has not been defined"
 msgstr "Um estilo chamado \"%s\" não foi definido"
 
-#: libmetacity/meta-theme-metacity.c:3326
-#: libmetacity/meta-theme-metacity.c:3349
+#: libmetacity/meta-theme-metacity.c:3324
+#: libmetacity/meta-theme-metacity.c:3347
 #, c-format
 msgid "'%s' is not a valid value for resize attribute"
 msgstr "\"%s\" não é um valor válido para o atributo de redimensionamento"
 
-#: libmetacity/meta-theme-metacity.c:3360
+#: libmetacity/meta-theme-metacity.c:3358
 #, c-format
 msgid ""
 "Should not have 'resize' attribute on <%s> element for maximized/shaded "
@@ -1020,37 +1011,37 @@ msgstr ""
 "Não deve haver o atributo \"resize\" no elemento <%s> para os estados "
 "maximizado/sombreado"
 
-#: libmetacity/meta-theme-metacity.c:3381
+#: libmetacity/meta-theme-metacity.c:3379
 #, c-format
 msgid "Should not have 'resize' attribute on <%s> element for maximized states"
 msgstr ""
 "Não deve haver o atributo \"resize\" no elemento <%s> para os estados "
 "maximizados"
 
-#: libmetacity/meta-theme-metacity.c:3396
-#: libmetacity/meta-theme-metacity.c:3444
+#: libmetacity/meta-theme-metacity.c:3394
+#: libmetacity/meta-theme-metacity.c:3442
 #, c-format
 msgid "Style has already been specified for state %s resize %s focus %s"
 msgstr ""
 "O estilo já foi especificado para o foco %s de redimensionamento %s do "
 "estado %s"
 
-#: libmetacity/meta-theme-metacity.c:3408
-#: libmetacity/meta-theme-metacity.c:3420
-#: libmetacity/meta-theme-metacity.c:3432
-#: libmetacity/meta-theme-metacity.c:3456
-#: libmetacity/meta-theme-metacity.c:3468
-#: libmetacity/meta-theme-metacity.c:3480
+#: libmetacity/meta-theme-metacity.c:3406
+#: libmetacity/meta-theme-metacity.c:3418
+#: libmetacity/meta-theme-metacity.c:3430
+#: libmetacity/meta-theme-metacity.c:3454
+#: libmetacity/meta-theme-metacity.c:3466
+#: libmetacity/meta-theme-metacity.c:3478
 #, c-format
 msgid "Style has already been specified for state %s focus %s"
 msgstr "O estilo já foi especificado para o foco %s do estado %s"
 
-#: libmetacity/meta-theme-metacity.c:3546
+#: libmetacity/meta-theme-metacity.c:3544
 #, c-format
 msgid "Bad version specification '%s'"
 msgstr "Especificação de versão '%s' inválida"
 
-#: libmetacity/meta-theme-metacity.c:3617
+#: libmetacity/meta-theme-metacity.c:3615
 msgid ""
 "'version' attribute cannot be used in metacity-theme-1.xml or metacity-"
 "theme-2.xml"
@@ -1058,29 +1049,29 @@ msgstr ""
 "Atributo \"version\" não pode ser usado em metacity-theme-1.xml ou metacity-"
 "theme-2.xml"
 
-#: libmetacity/meta-theme-metacity.c:3640
+#: libmetacity/meta-theme-metacity.c:3638
 #, c-format
 msgid "Theme requires version %s but latest supported theme version is %d.%d"
 msgstr "Tema requer versão %s, mas a última versão de tema com suporte é %d.%d"
 
-#: libmetacity/meta-theme-metacity.c:3664
+#: libmetacity/meta-theme-metacity.c:3662
 #, c-format
 msgid "Outermost element in theme must be <metacity_theme> not <%s>"
 msgstr "O elemento mais externo no tema deve ser <metacity_theme> e não <%s>"
 
-#: libmetacity/meta-theme-metacity.c:3684
+#: libmetacity/meta-theme-metacity.c:3682
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a name/author/date/description element"
 msgstr ""
 "O elemento <%s> não é permitido em um elemento nome/autor/data/descrição"
 
-#: libmetacity/meta-theme-metacity.c:3690
+#: libmetacity/meta-theme-metacity.c:3688
 #, c-format
 msgid "Element <%s> is not allowed inside a <constant> element"
 msgstr "O elemento <%s> não é permitido em um elemento <constant>"
 
-#: libmetacity/meta-theme-metacity.c:3703
+#: libmetacity/meta-theme-metacity.c:3701
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a distance/border/aspect_ratio element"
@@ -1088,15 +1079,15 @@ msgstr ""
 "O elemento <%s> não é permitido em um elemento distância/borda/"
 "taxa_de_proporção"
 
-#: libmetacity/meta-theme-metacity.c:3726
+#: libmetacity/meta-theme-metacity.c:3724
 #, c-format
 msgid "Element <%s> is not allowed inside a draw operation element"
 msgstr "O elemento <%s> não é permitido em um elemento de operação de desenho"
 
-#: libmetacity/meta-theme-metacity.c:3737
-#: libmetacity/meta-theme-metacity.c:3768
-#: libmetacity/meta-theme-metacity.c:3774
-#: libmetacity/meta-theme-metacity.c:3780
+#: libmetacity/meta-theme-metacity.c:3735
+#: libmetacity/meta-theme-metacity.c:3766
+#: libmetacity/meta-theme-metacity.c:3772
+#: libmetacity/meta-theme-metacity.c:3778
 #, c-format
 msgid "Element <%s> is not allowed inside a <%s> element"
 msgstr "O elemento <%s> não é permitido em um elemento <%s>"
@@ -1105,16 +1096,16 @@ msgstr "O elemento <%s> não é permitido em um elemento <%s>"
 #. * is given in angle brackets) was not found in a given theme (whose
 #. * name is given second, in quotation marks).
 #.
-#: libmetacity/meta-theme-metacity.c:3834
-#: libmetacity/meta-theme-metacity.c:3842
-#: libmetacity/meta-theme-metacity.c:3850
-#: libmetacity/meta-theme-metacity.c:3858
-#: libmetacity/meta-theme-metacity.c:3867
+#: libmetacity/meta-theme-metacity.c:3832
+#: libmetacity/meta-theme-metacity.c:3840
+#: libmetacity/meta-theme-metacity.c:3848
+#: libmetacity/meta-theme-metacity.c:3856
+#: libmetacity/meta-theme-metacity.c:3865
 #, c-format
 msgid "No <%s> set for theme '%s'"
 msgstr "Nenhum <%s> definido para o tema \"%s\""
 
-#: libmetacity/meta-theme-metacity.c:3884
+#: libmetacity/meta-theme-metacity.c:3876
 #, c-format
 msgid ""
 "No frame style set for window type '%s' in theme '%s', add a <window "
@@ -1123,34 +1114,34 @@ msgstr ""
 "Nenhum estilo de quadro definido para o tipo de janela \"%s\" no tema \"%s"
 "\", adicione um elemento <window type='%s' style_set='whatever'/>"
 
-#: libmetacity/meta-theme-metacity.c:4147
+#: libmetacity/meta-theme-metacity.c:4139
 msgid "No draw_ops provided for frame piece"
 msgstr "Nenhum draw_ops foi fornecido para a parte do quadro"
 
-#: libmetacity/meta-theme-metacity.c:4163
+#: libmetacity/meta-theme-metacity.c:4155
 msgid "No draw_ops provided for button"
 msgstr "Nenhum draw_ops foi fornecido para o botão"
 
-#: libmetacity/meta-theme-metacity.c:4278
-#: libmetacity/meta-theme-metacity.c:4289
-#: libmetacity/meta-theme-metacity.c:4300
-#: libmetacity/meta-theme-metacity.c:4311
-#: libmetacity/meta-theme-metacity.c:4322
+#: libmetacity/meta-theme-metacity.c:4270
+#: libmetacity/meta-theme-metacity.c:4281
+#: libmetacity/meta-theme-metacity.c:4292
+#: libmetacity/meta-theme-metacity.c:4303
+#: libmetacity/meta-theme-metacity.c:4314
 #, c-format
 msgid "<%s> specified twice for this theme"
 msgstr "<%s> especificado duas vezes para este tema"
 
-#: libmetacity/meta-theme-metacity.c:4361
+#: libmetacity/meta-theme-metacity.c:4353
 #, c-format
 msgid "No text is allowed inside element <%s>"
 msgstr "Nenhum texto é permitido no elemento <%s>"
 
-#: libmetacity/meta-theme-metacity.c:4614
+#: libmetacity/meta-theme-metacity.c:4619
 #, c-format
 msgid "Failed to find a valid file for theme '%s'"
 msgstr "Falha ao localizar um arquivo válido para o tema \"%s\""
 
-#: src/core/bell.c:290
+#: src/core/bell.c:279
 msgid "Bell event"
 msgstr "Campainha de evento"
 
@@ -1192,49 +1183,71 @@ msgstr ""
 "Não há NENHUMA garantia; nem mesmo para o COMÉRCIO ou ADEQUAÇÃO\n"
 "PARA UM PROPÓSITO PARTICULAR.\n"
 
-#: src/core/main.c:215
+#: src/core/main.c:197 src/core/main.c:214
+#, c-format
+msgid "Option “%s” is deprecated, use the “--compositor” instead."
+msgstr "A opção “%s” foi descontinuada, no lugar dela use “--compositor”."
+
+#: src/core/main.c:243
+#, c-format
+msgid "“%s” is not a valid compositor"
+msgstr "“%s” não é um compositor válido"
+
+#: src/core/main.c:275
 msgid "Disable connection to session manager"
 msgstr "Desabilitar a conexão com o gerenciador de sessões"
 
-#: src/core/main.c:221
+#: src/core/main.c:281
 msgid "Replace the running window manager with Metacity"
 msgstr "Substituir o gerenciador de janelas em execução pelo Metacity"
 
-#: src/core/main.c:227
+#: src/core/main.c:287
 msgid "Specify session management ID"
 msgstr "Especificar o ID do gerenciador de sessões"
 
-#: src/core/main.c:232
+#: src/core/main.c:292
 msgid "X Display to use"
 msgstr "Exibição do X a ser utilizada"
 
-#: src/core/main.c:238
+#: src/core/main.c:298
 msgid "Initialize session from savefile"
 msgstr "Inicializar a sessão a partir do arquivo salvo"
 
-#: src/core/main.c:244
+#: src/core/main.c:304
 msgid "Print version"
 msgstr "Versão impressa"
 
-#: src/core/main.c:250
+#: src/core/main.c:310
 msgid "Make X calls synchronous"
 msgstr "Fazer chamadas X em modo síncrono"
 
-#: src/core/main.c:256
+#: src/core/main.c:319
 msgid "Turn compositing on"
 msgstr "Ativar composição"
 
-#: src/core/main.c:262
+#: src/core/main.c:328
 msgid "Turn compositing off"
 msgstr "Desativar composição"
 
-#: src/core/main.c:268
+#: src/core/main.c:337
+#| msgid "Composited:"
+msgid "Compositor to use"
+msgstr "Compositor a ser usado"
+
+#: src/core/main.c:343
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr ""
 "Não torna janelas em tela-cheia que estão maximizadas e não tem decorações"
 
-#: src/core/prefs.c:1524
+#: src/core/prefs.c:905
+msgid ""
+"Setting “compositing-manager” is deprecated, use the “compositor” instead."
+msgstr ""
+"A configuração “compositing-manager” foi descontinuada, no lugar dela use "
+"“compositor”."
+
+#: src/core/prefs.c:1446
 #, c-format
 msgid "Workspace %d"
 msgstr "Espaço de trabalho %d"
@@ -1267,33 +1280,33 @@ msgstr ""
 "atual&quot; e precisarão ser reiniciadas manualmente a próxima vez que você "
 "iniciar a sessão."
 
-#: src/core/util.c:105
+#: src/core/util.c:106
 #, c-format
 msgid "Opened log file %s\n"
 msgstr "Arquivo de log %s aberto\n"
 
 #. Translators: the title of a window from another machine
-#: src/core/window-props.c:570
+#: src/core/window-props.c:617
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (em %s)"
 
 #. Simple case-- don't bother to look it up.  It's root.
-#: src/core/window-props.c:602
+#: src/core/window-props.c:649
 #, c-format
 msgid "%s (as superuser)"
 msgstr "%s (como superusuário)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine
-#: src/core/window-props.c:620
+#: src/core/window-props.c:667
 #, c-format
 msgid "%s (as %s)"
 msgstr "%s (como %s)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine, whose name we don't know
-#: src/core/window-props.c:626
+#: src/core/window-props.c:673
 #, c-format
 msgid "%s (as another user)"
 msgstr "%s (como outro usuário)"
@@ -1303,53 +1316,25 @@ msgstr "%s (como outro usuário)"
 msgid "Usage: %s\n"
 msgstr "Uso: %s\n"
 
-#: src/ui/frames.c:1307
+#: src/ui/frames.c:1255
 msgid "Close Window"
 msgstr "Fechar janela"
 
-#: src/ui/frames.c:1310
+#: src/ui/frames.c:1258
 msgid "Window Menu"
 msgstr "Menu de janela"
 
-#: src/ui/frames.c:1313
-msgid "Window App Menu"
-msgstr "Menu de aplicativo de janelas"
-
-#: src/ui/frames.c:1316
+#: src/ui/frames.c:1261
 msgid "Minimize Window"
 msgstr "Minimizar janela"
 
-#: src/ui/frames.c:1319
+#: src/ui/frames.c:1264
 msgid "Maximize Window"
 msgstr "Maximizar janela"
 
-#: src/ui/frames.c:1322
+#: src/ui/frames.c:1267
 msgid "Restore Window"
 msgstr "Restaurar janela"
-
-#: src/ui/frames.c:1325
-msgid "Roll Up Window"
-msgstr "Enrolar janela"
-
-#: src/ui/frames.c:1328
-msgid "Unroll Window"
-msgstr "Desenrolar janela"
-
-#: src/ui/frames.c:1331
-msgid "Keep Window On Top"
-msgstr "Manter no topo"
-
-#: src/ui/frames.c:1334
-msgid "Remove Window From Top"
-msgstr "Remover do topo"
-
-#: src/ui/frames.c:1337
-msgid "Always On Visible Workspace"
-msgstr "Sempre no espaço de trabalho visível"
-
-#: src/ui/frames.c:1340
-msgid "Put Window On Only One Workspace"
-msgstr "Colocar em apenas um espaço de trabalho"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: src/ui/menu.c:65
@@ -1433,21 +1418,21 @@ msgstr "Mover para o espaço de trabalho a_baixo"
 msgid "_Close"
 msgstr "Fe_char"
 
-#: src/ui/menu.c:175
+#: src/ui/menu.c:174
 #, c-format
 msgid "Workspace %d%n"
 msgstr "Espaço de trabalho %d%n"
 
-#: src/ui/menu.c:185
+#: src/ui/menu.c:184
 msgid "Workspace 1_0"
 msgstr "Espaço de trabalho 1_0"
 
-#: src/ui/menu.c:187
+#: src/ui/menu.c:186
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Espaço de trabalho %s%d"
 
-#: src/ui/menu.c:354
+#: src/ui/menu.c:358
 msgid "Move to Another _Workspace"
 msgstr "Mover para _outro espaço de trabalho"
 
@@ -1549,7 +1534,7 @@ msgstr "Mod5"
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: src/ui/ui.c:865
+#: src/ui/ui.c:853
 msgid "Falling back to default GTK+ theme - Adwaita"
 msgstr "Retrocedendo ao tema padrão do GTK+ - Adwaita"
 
@@ -1569,12 +1554,12 @@ msgstr "Nome do tema a ser usar"
 msgid "NAME"
 msgstr "NOME"
 
-#: theme-viewer/theme-viewer-window.c:119
+#: theme-viewer/theme-viewer-window.c:102
 #, c-format
 msgid "Loaded <b>%s</b> theme <b>%s</b> in <b>%f</b> seconds."
 msgstr "Carregado o tema <b>%s</b> <b>%s</b> em <b>%f</b> segundos."
 
-#: theme-viewer/theme-viewer-window.c:149
+#: theme-viewer/theme-viewer-window.c:132
 #, c-format
 msgid ""
 "Got MetaFrameBorders in <b>%f</b> seconds (CSS loading, PangoFontDescription "
@@ -1583,7 +1568,7 @@ msgstr ""
 "Obtido MetaFrameBorders em <b>%f</b> segundos (carregamento de CSS, criação "
 "de PangoFontDescription e cálculo de altura do título)."
 
-#: theme-viewer/theme-viewer-window.c:224
+#: theme-viewer/theme-viewer-window.c:207
 #, c-format
 msgid ""
 "Drew <b>%d</b> frames in <b>%f</b> client-side seconds (<b>%f</b> "
@@ -1594,13 +1579,54 @@ msgstr ""
 "b> milissegundos por quadro) e <b>%f</b> segundos no relógio, incluindo "
 "recursos do servidor X (<b>%f</b> milissegundos por quadro)."
 
-#: theme-viewer/theme-viewer-window.c:261
+#: theme-viewer/theme-viewer-window.c:244
 msgid "Run again"
 msgstr "Executar novamente"
 
-#: theme-viewer/theme-viewer-window.c:996
-msgid "Metacity Theme Viewer"
-msgstr "Visualizador de temas do Metacity"
+#~ msgid "preferences-system-windows"
+#~ msgstr "preferences-system-windows"
+
+#~ msgid "Toggle shaded state"
+#~ msgstr "Alternar estado sombreado"
+
+#~ msgid "If true, trade off usability for less resource usage"
+#~ msgstr "Se verdadeiro, troca-se usabilidade por menos uso de recursos"
+
+#~ msgid ""
+#~ "If true, Metacity will give the user less feedback by using wireframes, "
+#~ "avoiding animations, or other means. This is a significant reduction in "
+#~ "usability for many users, but may allow legacy applications to continue "
+#~ "working, and may also be a useful tradeoff for terminal servers. However, "
+#~ "the wireframe feature is disabled when accessibility is on."
+#~ msgstr ""
+#~ "Se verdadeiro, o Metacity dará menor retorno ao usuário, por exemplo "
+#~ "mostrando somente as bordas durante a movimentação da janela e evitando "
+#~ "animações. Isso significa uma redução significativa na usabilidade para "
+#~ "muitos usuários, mas pode possibilitar o funcionamento de aplicativos "
+#~ "legados, e pode ser uma troca vantajosa em servidores de terminais. "
+#~ "Quando a acessibilidade estivar ativada, no entanto, o recurso de bordas "
+#~ "fica desabilitado."
+
+#~ msgid "Window App Menu"
+#~ msgstr "Menu de aplicativo de janelas"
+
+#~ msgid "Roll Up Window"
+#~ msgstr "Enrolar janela"
+
+#~ msgid "Unroll Window"
+#~ msgstr "Desenrolar janela"
+
+#~ msgid "Keep Window On Top"
+#~ msgstr "Manter no topo"
+
+#~ msgid "Remove Window From Top"
+#~ msgstr "Remover do topo"
+
+#~ msgid "Always On Visible Workspace"
+#~ msgstr "Sempre no espaço de trabalho visível"
+
+#~ msgid "Put Window On Only One Workspace"
+#~ msgstr "Colocar em apenas um espaço de trabalho"
 
 #~ msgid "Unknown window information request: %d"
 #~ msgstr "Informação solicitada de janela desconhecida: %d"
