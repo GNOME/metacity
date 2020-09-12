@@ -132,6 +132,7 @@ struct _MetaWindow
   char *gtk_theme_variant;
 
   int net_wm_pid;
+  pid_t client_pid;
 
   Window xtransient_for;
   Window xgroup_leader;
@@ -723,6 +724,8 @@ void meta_window_add_pending_unmap (MetaWindow *window,
 
 gboolean meta_window_remove_pending_unmap (MetaWindow *window,
                                            gulong      serial);
+
+pid_t meta_window_get_client_pid (MetaWindow *self);
 
 G_END_DECLS
 

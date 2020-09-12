@@ -51,6 +51,7 @@
 #include <string.h>
 
 #include <X11/extensions/shape.h>
+#include <X11/extensions/XRes.h>
 
 /* should investigate changing these to whatever most apps use */
 #define META_ICON_SIZE 96
@@ -567,6 +568,7 @@ meta_window_new (MetaDisplay    *display,
   window->gtk_theme_variant = NULL;
 
   window->net_wm_pid = -1;
+  window->client_pid = -1;
 
   window->xtransient_for = None;
   window->xclient_leader = None;
@@ -9263,4 +9265,38 @@ meta_window_remove_pending_unmap (MetaWindow *window,
     }
 
   return removed;
+}
+
+pid_t
+meta_window_get_client_pid (MetaWindow *self)
+{
+  if (self->client_pid == -1)
+    {
+      XResClientIdSpec spec;
+      long num_ids;
+      XResClientIdValue *client_ids;
+      long i;
+
+      spec.client = self->xwindow;
+      spec.mask = XRES_CLIENT_ID_PID_MASK;
+
+      XResQueryClientIds (self->display->xdisplay,
+                          1,
+                          &spec,
+                          &num_ids,
+                          &client_ids);
+
+      for (i = 0; i < num_ids; i++)
+        {
+          if (client_ids[i].spec.mask == XRES_CLIENT_ID_PID_MASK)
+            {
+              self->client_pid = XResGetClientPid (&client_ids[i]);
+              break;
+            }
+        }
+
+      XResClientIdsDestroy (num_ids, client_ids);
+    }
+
+  return self->client_pid;
 }
