@@ -920,6 +920,18 @@ meta_compositor_xrender_finalize (GObject *object)
   if (xrender->root_picture)
     XRenderFreePicture (xdisplay, xrender->root_picture);
 
+  if (xrender->root_buffer)
+    {
+      XRenderFreePicture (xdisplay, xrender->root_buffer);
+      xrender->root_buffer = None;
+    }
+
+  if (xrender->root_tile)
+    {
+      XRenderFreePicture (xdisplay, xrender->root_tile);
+      xrender->root_tile = None;
+    }
+
   if (xrender->have_shadows)
     {
       int i;
