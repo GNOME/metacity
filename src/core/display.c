@@ -68,6 +68,7 @@
 
 #include "compositor/meta-compositor-none.h"
 #include "compositor/meta-compositor-xrender.h"
+#include "compositor/meta-compositor-xpresent.h"
 #include "compositor/meta-compositor-external.h"
 
 #ifdef HAVE_VULKAN
@@ -278,6 +279,8 @@ get_compositor_type (MetaDisplay *display)
         type = META_COMPOSITOR_TYPE_VULKAN;
       else if (g_strcmp0 (compositor, "xrender") == 0)
         type = META_COMPOSITOR_TYPE_XRENDER;
+      else if (g_strcmp0 (compositor, "xpresent") == 0)
+        type = META_COMPOSITOR_TYPE_XPRESENT;
       else if (g_strcmp0 (compositor, "external") == 0)
         type = META_COMPOSITOR_TYPE_EXTERNAL;
       else
@@ -308,6 +311,10 @@ create_compositor (MetaDisplay         *display,
 
       case META_COMPOSITOR_TYPE_XRENDER:
         compositor = meta_compositor_xrender_new (display, error);
+        break;
+
+      case META_COMPOSITOR_TYPE_XPRESENT:
+        compositor = meta_compositor_xpresent_new (display, error);
         break;
 
       case META_COMPOSITOR_TYPE_EXTERNAL:

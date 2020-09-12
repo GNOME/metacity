@@ -30,6 +30,7 @@ variables:
                   libxext-dev
                   libxfixes-dev
                   libxinerama-dev
+                  libxpresent-dev
                   libxrandr-dev
                   libxrender-dev
                   libxres-dev

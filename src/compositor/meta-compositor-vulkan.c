@@ -1204,6 +1204,7 @@ not_implemented_cb (MetaCompositorVulkan *vulkan)
         compositor = "xrender";
         break;
 
+      case META_COMPOSITOR_TYPE_XPRESENT:
       case META_COMPOSITOR_TYPE_EXTERNAL:
       case META_COMPOSITOR_TYPE_VULKAN:
       default:
