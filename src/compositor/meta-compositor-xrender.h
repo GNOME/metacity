@@ -33,13 +33,17 @@ struct _MetaCompositorXRenderClass
   MetaCompositorClass parent_class;
 };
 
-MetaCompositor    *meta_compositor_xrender_new           (MetaDisplay            *display,
-                                                          GError                **error);
+MetaCompositor    *meta_compositor_xrender_new                (MetaDisplay            *display,
+                                                               GError                **error);
 
-gboolean           meta_compositor_xrender_have_shadows  (MetaCompositorXRender  *self);
+gboolean           meta_compositor_xrender_have_shadows       (MetaCompositorXRender  *self);
 
-MetaShadowXRender *meta_compositor_xrender_create_shadow (MetaCompositorXRender  *self,
-                                                          MetaSurface            *surface);
+MetaShadowXRender *meta_compositor_xrender_create_shadow      (MetaCompositorXRender  *self,
+                                                               MetaSurface            *surface);
+
+void               meta_compositor_xrender_create_root_buffer (MetaCompositorXRender  *self,
+                                                               Pixmap                 *pixmap,
+                                                               Picture                *buffer);
 
 G_END_DECLS
 

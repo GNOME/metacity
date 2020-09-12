@@ -679,40 +679,6 @@ root_tile (MetaScreen *screen)
   return picture;
 }
 
-static Picture
-create_root_buffer (MetaCompositorXRender *self)
-{
-  MetaCompositorXRenderPrivate *priv;
-  Display *xdisplay;
-  Picture pict;
-  XRenderPictFormat *format;
-  Pixmap root_pixmap;
-  Visual *visual;
-  int depth, screen_width, screen_height, screen_number;
-
-  priv = meta_compositor_xrender_get_instance_private (self);
-
-  meta_screen_get_size (priv->screen, &screen_width, &screen_height);
-
-  xdisplay = priv->xdisplay;
-  screen_number = meta_screen_get_screen_number (priv->screen);
-  visual = DefaultVisual (xdisplay, screen_number);
-  depth = DefaultDepth (xdisplay, screen_number);
-
-  format = XRenderFindVisualFormat (xdisplay, visual);
-  g_return_val_if_fail (format != NULL, None);
-
-  root_pixmap = XCreatePixmap (xdisplay, priv->overlay_window,
-                               screen_width, screen_height, depth);
-
-  g_return_val_if_fail (root_pixmap != None, None);
-
-  pict = XRenderCreatePicture (xdisplay, root_pixmap, format, 0, NULL);
-  XFreePixmap (xdisplay, root_pixmap);
-
-  return pict;
-}
-
 static void
 paint_root (MetaCompositorXRender *self,
             Picture                root_buffer)
@@ -1158,7 +1124,17 @@ meta_compositor_xrender_pre_paint (MetaCompositor *compositor)
   priv = meta_compositor_xrender_get_instance_private (self);
 
   if (priv->root_buffer == None)
-    priv->root_buffer = create_root_buffer (self);
+    {
+      Pixmap root_pixmap;
+
+      root_pixmap = None;
+      meta_compositor_xrender_create_root_buffer (self,
+                                                  &root_pixmap,
+                                                  &priv->root_buffer);
+
+      if (root_pixmap != None)
+        XFreePixmap (priv->xdisplay, root_pixmap);
+    }
 
   if (priv->root_tile == None)
     priv->root_tile = root_tile (priv->screen);
@@ -1346,4 +1322,39 @@ meta_compositor_xrender_create_shadow (MetaCompositorXRender *self,
     }
 
   return ret;
+}
+
+void
+meta_compositor_xrender_create_root_buffer (MetaCompositorXRender *self,
+                                            Pixmap                *pixmap,
+                                            Picture               *buffer)
+{
+  MetaCompositorXRenderPrivate *priv;
+  int screen_width;
+  int screen_height;
+  int screen_number;
+  Visual *visual;
+  XRenderPictFormat *format;
+
+  g_return_if_fail (pixmap == NULL || *pixmap == None);
+  g_return_if_fail (buffer == NULL || *buffer == None);
+
+  priv = meta_compositor_xrender_get_instance_private (self);
+
+  meta_screen_get_size (priv->screen, &screen_width, &screen_height);
+
+  screen_number = meta_screen_get_screen_number (priv->screen);
+  visual = DefaultVisual (priv->xdisplay, screen_number);
+  format = XRenderFindVisualFormat (priv->xdisplay, visual);
+  g_return_if_fail (format != NULL);
+
+  *pixmap = XCreatePixmap (priv->xdisplay,
+                           priv->overlay_window,
+                           screen_width,
+                           screen_height,
+                           DefaultDepth (priv->xdisplay, screen_number));
+
+  g_return_if_fail (*pixmap != None);
+
+  *buffer = XRenderCreatePicture (priv->xdisplay, *pixmap, format, 0, NULL);
 }
