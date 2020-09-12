@@ -173,6 +173,13 @@ redraw_idle_cb (gpointer user_data)
   compositor = META_COMPOSITOR (user_data);
   priv = meta_compositor_get_instance_private (compositor);
 
+  if (!META_COMPOSITOR_GET_CLASS (compositor)->ready_to_redraw (compositor))
+    {
+      priv->redraw_id = 0;
+
+      return G_SOURCE_REMOVE;
+    }
+
   META_COMPOSITOR_GET_CLASS (compositor)->pre_paint (compositor);
 
   if (priv->all_damage != None)
@@ -337,6 +344,12 @@ meta_compositor_set_property (GObject      *object,
     }
 }
 
+static gboolean
+meta_compositor_ready_to_redraw (MetaCompositor *compositor)
+{
+  return TRUE;
+}
+
 static void
 meta_compositor_pre_paint (MetaCompositor *compositor)
 {
@@ -379,6 +392,7 @@ meta_compositor_class_init (MetaCompositorClass *compositor_class)
   object_class->get_property = meta_compositor_get_property;
   object_class->set_property = meta_compositor_set_property;
 
+  compositor_class->ready_to_redraw = meta_compositor_ready_to_redraw;
   compositor_class->pre_paint = meta_compositor_pre_paint;
 
   install_properties (object_class);

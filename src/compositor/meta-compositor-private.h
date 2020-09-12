@@ -44,6 +44,8 @@ struct _MetaCompositorClass
   void          (* sync_window_geometry)   (MetaCompositor  *compositor,
                                             MetaSurface     *surface);
 
+  gboolean      (* ready_to_redraw)        (MetaCompositor  *compositor);
+
   void          (* pre_paint)              (MetaCompositor  *compositor);
 
   void          (* redraw)                 (MetaCompositor  *compositor,
