@@ -618,21 +618,24 @@ set_title_text (MetaWindow  *window,
                       title, window->wm_client_machine);
       modified = TRUE;
     }
-  else if (window->net_wm_pid != -1)
+  else if (meta_window_get_client_pid (window) != -1)
     {
+      pid_t client_pid;
+      uid_t window_owner;
+      gboolean window_owner_known;
+      gboolean window_owner_is_us;
+
       /* We know the process which owns this window; perhaps we can
        * find out the name of its owner (if it's not us).
        */
 
-      char *found_name = NULL;
+      client_pid = meta_window_get_client_pid (window);
+      window_owner = 0;
 
-      uid_t window_owner = 0;
-      gboolean window_owner_known =
-              owner_of_process (window->net_wm_pid, &window_owner);
+      window_owner_known = owner_of_process (client_pid, &window_owner);
 
       /* Assume a window with unknown ownership is ours (call it usufruct!) */
-      gboolean window_owner_is_us =
-              !window_owner_known || window_owner==getuid ();
+      window_owner_is_us = !window_owner_known || window_owner==getuid ();
 
       if (window_owner_is_us)
         {
@@ -653,6 +656,7 @@ set_title_text (MetaWindow  *window,
             {
               /* Okay, let's look up the name. */
               struct passwd *pwd;
+              char *found_name = NULL;
 
               errno = 0;
               pwd = getpwuid (window_owner);
