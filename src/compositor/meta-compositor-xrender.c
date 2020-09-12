@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2007 Iain Holmes
- * Copyright (C) 2017-2019 Alberts Muktupāvels
+ * Copyright (C) 2017-2020 Alberts Muktupāvels
  *
  * Based on xcompmgr - (C) 2003 Keith Packard
  *          xfwm4    - (C) 2005-2007 Olivier Fourdan
@@ -82,29 +82,29 @@ typedef struct _shadow
   guchar *shadow_top;
 } shadow;
 
-struct _MetaCompositorXRender
+typedef struct
 {
-  MetaCompositor  parent;
+  Display    *xdisplay;
 
-  Display        *xdisplay;
+  MetaScreen *screen;
 
-  MetaScreen     *screen;
+  Window      overlay_window;
 
-  Window          overlay_window;
+  gboolean    have_shadows;
+  shadow     *shadows[LAST_SHADOW_TYPE];
 
-  gboolean        have_shadows;
-  shadow         *shadows[LAST_SHADOW_TYPE];
+  Picture     root_picture;
+  Picture     root_buffer;
+  Picture     root_tile;
 
-  Picture         root_picture;
-  Picture         root_buffer;
-  Picture         root_tile;
+  gboolean    prefs_listener_added;
 
-  gboolean        prefs_listener_added;
+  guint       show_redraw : 1;
+} MetaCompositorXRenderPrivate;
 
-  guint           show_redraw : 1;
-};
-
-G_DEFINE_TYPE (MetaCompositorXRender, meta_compositor_xrender, META_TYPE_COMPOSITOR)
+G_DEFINE_TYPE_WITH_PRIVATE (MetaCompositorXRender,
+                            meta_compositor_xrender,
+                            META_TYPE_COMPOSITOR)
 
 /* Gaussian stuff for creating the shadows */
 static double
@@ -279,11 +279,14 @@ presum_gaussian (shadow *shad)
 }
 
 static void
-generate_shadows (MetaCompositorXRender *xrender)
+generate_shadows (MetaCompositorXRender *self)
 {
+  MetaCompositorXRenderPrivate *priv;
   double radii[LAST_SHADOW_TYPE] = {SHADOW_MEDIUM_RADIUS,
                                     SHADOW_LARGE_RADIUS};
   int i;
+
+  priv = meta_compositor_xrender_get_instance_private (self);
 
   for (i = 0; i < LAST_SHADOW_TYPE; i++) {
     shadow *shad = g_new0 (shadow, 1);
@@ -291,17 +294,18 @@ generate_shadows (MetaCompositorXRender *xrender)
     shad->gaussian_map = make_gaussian_map (radii[i]);
     presum_gaussian (shad);
 
-    xrender->shadows[i] = shad;
+    priv->shadows[i] = shad;
   }
 }
 
 static XImage *
-make_shadow (MetaCompositorXRender *xrender,
+make_shadow (MetaCompositorXRender *self,
              MetaShadowType         shadow_type,
              double                 opacity,
              int                    width,
              int                    height)
 {
+  MetaCompositorXRenderPrivate *priv;
   Display *xdisplay;
   XImage *ximage;
   guchar *data;
@@ -316,7 +320,9 @@ make_shadow (MetaCompositorXRender *xrender,
   int opacity_int = (int)(opacity * 25);
   int screen_number;
 
-  shad = xrender->shadows[shadow_type];
+  priv = meta_compositor_xrender_get_instance_private (self);
+
+  shad = priv->shadows[shadow_type];
   msize = shad->gaussian_map->size;
   swidth = width + msize;
   sheight = height + msize;
@@ -324,7 +330,7 @@ make_shadow (MetaCompositorXRender *xrender,
 
   data = g_malloc (swidth * sheight * sizeof (guchar));
 
-  xdisplay = xrender->xdisplay;
+  xdisplay = priv->xdisplay;
   screen_number = DefaultScreen (xdisplay);
   ximage = XCreateImage (xdisplay, DefaultVisual (xdisplay, screen_number),
                          8, ZPixmap, 0, (char *) data,
@@ -454,7 +460,7 @@ cairo_region_to_xserver_region (Display        *xdisplay,
 }
 
 static Picture
-shadow_picture (MetaCompositorXRender *xrender,
+shadow_picture (MetaCompositorXRender *self,
                 MetaShadowType         shadow_type,
                 double                 opacity,
                 int                    width,
@@ -462,18 +468,21 @@ shadow_picture (MetaCompositorXRender *xrender,
                 int                   *wp,
                 int                   *hp)
 {
+  MetaCompositorXRenderPrivate *priv;
   Display *xdisplay;
   XImage *shadow_image;
   Pixmap shadow_pixmap;
   Picture shadow_picture;
   GC gc;
 
-  shadow_image = make_shadow (xrender, shadow_type, opacity, width, height);
+  priv = meta_compositor_xrender_get_instance_private (self);
+
+  shadow_image = make_shadow (self, shadow_type, opacity, width, height);
 
   if (!shadow_image)
     return None;
 
-  xdisplay = xrender->xdisplay;
+  xdisplay = priv->xdisplay;
   shadow_pixmap = XCreatePixmap (xdisplay, DefaultRootWindow (xdisplay),
                                  shadow_image->width, shadow_image->height, 8);
   if (!shadow_pixmap)
@@ -671,24 +680,29 @@ root_tile (MetaScreen *screen)
 }
 
 static Picture
-create_root_buffer (MetaCompositorXRender *xrender)
+create_root_buffer (MetaCompositorXRender *self)
 {
-  Display *xdisplay = xrender->xdisplay;
+  MetaCompositorXRenderPrivate *priv;
+  Display *xdisplay;
   Picture pict;
   XRenderPictFormat *format;
   Pixmap root_pixmap;
   Visual *visual;
   int depth, screen_width, screen_height, screen_number;
 
-  meta_screen_get_size (xrender->screen, &screen_width, &screen_height);
-  screen_number = meta_screen_get_screen_number (xrender->screen);
+  priv = meta_compositor_xrender_get_instance_private (self);
+
+  meta_screen_get_size (priv->screen, &screen_width, &screen_height);
+
+  xdisplay = priv->xdisplay;
+  screen_number = meta_screen_get_screen_number (priv->screen);
   visual = DefaultVisual (xdisplay, screen_number);
   depth = DefaultDepth (xdisplay, screen_number);
 
   format = XRenderFindVisualFormat (xdisplay, visual);
   g_return_val_if_fail (format != NULL, None);
 
-  root_pixmap = XCreatePixmap (xdisplay, xrender->overlay_window,
+  root_pixmap = XCreatePixmap (xdisplay, priv->overlay_window,
                                screen_width, screen_height, depth);
 
   g_return_val_if_fail (root_pixmap != None, None);
@@ -700,25 +714,27 @@ create_root_buffer (MetaCompositorXRender *xrender)
 }
 
 static void
-paint_root (MetaCompositorXRender *xrender,
+paint_root (MetaCompositorXRender *self,
             Picture                root_buffer)
 {
+  MetaCompositorXRenderPrivate *priv;
   int width, height;
 
-  g_return_if_fail (root_buffer != None);
-  g_return_if_fail (xrender->root_tile != None);
+  priv = meta_compositor_xrender_get_instance_private (self);
 
-  meta_screen_get_size (xrender->screen, &width, &height);
-  XRenderComposite (xrender->xdisplay, PictOpSrc,
-                    xrender->root_tile, None, root_buffer,
+  g_return_if_fail (root_buffer != None);
+  g_return_if_fail (priv->root_tile != None);
+
+  meta_screen_get_size (priv->screen, &width, &height);
+  XRenderComposite (priv->xdisplay, PictOpSrc,
+                    priv->root_tile, None, root_buffer,
                     0, 0, 0, 0, 0, 0, width, height);
 }
 
 static void
-paint_dock_shadows (MetaCompositorXRender *xrender,
-                    GList                 *surfaces,
-                    Picture                root_buffer,
-                    XserverRegion          region)
+paint_dock_shadows (GList         *surfaces,
+                    Picture        root_buffer,
+                    XserverRegion  region)
 {
   GList *l;
 
@@ -741,15 +757,21 @@ paint_dock_shadows (MetaCompositorXRender *xrender,
 }
 
 static void
-paint_windows (MetaCompositorXRender *xrender,
+paint_windows (MetaCompositorXRender *self,
                GList                 *surfaces,
                Picture                root_buffer,
                XserverRegion          region)
 {
-  MetaDisplay *display = meta_screen_get_display (xrender->screen);
-  Display *xdisplay = meta_display_get_xdisplay (display);
+  MetaCompositorXRenderPrivate *priv;
+  MetaDisplay *display;
+  Display *xdisplay;
   GList *index, *last;
   XserverRegion paint_region, desktop_region;
+
+  priv = meta_compositor_xrender_get_instance_private (self);
+
+  display = meta_screen_get_display (priv->screen);
+  xdisplay = meta_display_get_xdisplay (display);
 
   paint_region = XFixesCreateRegion (xdisplay, NULL, 0);
   XFixesCopyRegion (xdisplay, paint_region, region);
@@ -797,9 +819,10 @@ paint_windows (MetaCompositorXRender *xrender,
     }
 
   XFixesSetPictureClipRegion (xdisplay, root_buffer, 0, 0, paint_region);
-  paint_root (xrender, root_buffer);
+  paint_root (self, root_buffer);
 
-  paint_dock_shadows (xrender, surfaces, root_buffer,
+  paint_dock_shadows (surfaces,
+                      root_buffer,
                       desktop_region == None ? paint_region : desktop_region);
 
   if (desktop_region != None)
@@ -830,13 +853,20 @@ paint_windows (MetaCompositorXRender *xrender,
 
 /* event processors must all be called with an error trap in place */
 static void
-process_property_notify (MetaCompositorXRender *xrender,
+process_property_notify (MetaCompositorXRender *self,
                          XPropertyEvent        *event)
 {
-  MetaCompositor *compositor = META_COMPOSITOR (xrender);
-  MetaDisplay *display = meta_compositor_get_display (compositor);
-  Display *xdisplay = meta_display_get_xdisplay (display);
+  MetaCompositorXRenderPrivate *priv;
+  MetaCompositor *compositor;
+  MetaDisplay *display;
+  Display *xdisplay;
   MetaScreen *screen;
+
+  priv = meta_compositor_xrender_get_instance_private (self);
+
+  compositor = META_COMPOSITOR (self);
+  display = meta_compositor_get_display (compositor);
+  xdisplay = meta_display_get_xdisplay (display);
 
   /* Check for the background property changing */
   if (event->atom == display->atom__XROOTPMAP_ID ||
@@ -845,11 +875,11 @@ process_property_notify (MetaCompositorXRender *xrender,
       screen = meta_display_get_screen (display);
 
       if (event->window == meta_screen_get_xroot (screen) &&
-          xrender->root_tile != None)
+          priv->root_tile != None)
         {
           XClearArea (xdisplay, event->window, 0, 0, 0, 0, TRUE);
-          XRenderFreePicture (xdisplay, xrender->root_tile);
-          xrender->root_tile = None;
+          XRenderFreePicture (xdisplay, priv->root_tile);
+          priv->root_tile = None;
 
           /* Damage the whole screen as we may need to redraw the
            * background ourselves
@@ -861,9 +891,13 @@ process_property_notify (MetaCompositorXRender *xrender,
 }
 
 static int
-timeout_debug (MetaCompositorXRender *compositor)
+timeout_debug (MetaCompositorXRender *self)
 {
-  compositor->show_redraw = (g_getenv ("METACITY_DEBUG_REDRAWS") != NULL);
+  MetaCompositorXRenderPrivate *priv;
+
+  priv = meta_compositor_xrender_get_instance_private (self);
+
+  priv->show_redraw = (g_getenv ("METACITY_DEBUG_REDRAWS") != NULL);
 
   return FALSE;
 }
@@ -887,62 +921,68 @@ update_shadows (MetaPreference pref,
 static void
 meta_compositor_xrender_constructed (GObject *object)
 {
+  MetaCompositorXRender *self;
+  MetaCompositorXRenderPrivate *priv;
   MetaCompositor *compositor;
-  MetaCompositorXRender *xrender;
   MetaDisplay *display;
 
   G_OBJECT_CLASS (meta_compositor_xrender_parent_class)->constructed (object);
 
-  compositor = META_COMPOSITOR (object);
-  xrender = META_COMPOSITOR_XRENDER (object);
+  self = META_COMPOSITOR_XRENDER (object);
+  priv = meta_compositor_xrender_get_instance_private (self);
+
+  compositor = META_COMPOSITOR (self);
   display = meta_compositor_get_display (compositor);
 
-  xrender->xdisplay = meta_display_get_xdisplay (display);
+  priv->xdisplay = meta_display_get_xdisplay (display);
 }
 
 static void
 meta_compositor_xrender_finalize (GObject *object)
 {
-  MetaCompositorXRender *xrender;
+  MetaCompositorXRender *self;
+  MetaCompositorXRenderPrivate *priv;
   MetaDisplay *display;
   Display *xdisplay;
 
-  xrender = META_COMPOSITOR_XRENDER (object);
-  display = meta_compositor_get_display (META_COMPOSITOR (xrender));
+  self = META_COMPOSITOR_XRENDER (object);
+  priv = meta_compositor_xrender_get_instance_private (self);
+
+  display = meta_compositor_get_display (META_COMPOSITOR (self));
   xdisplay = meta_display_get_xdisplay (display);
 
-  if (xrender->prefs_listener_added)
+  if (priv->prefs_listener_added)
     {
-      meta_prefs_remove_listener (update_shadows, xrender);
-      xrender->prefs_listener_added = FALSE;
+      meta_prefs_remove_listener (update_shadows, self);
+      priv->prefs_listener_added = FALSE;
     }
 
-  if (xrender->root_picture)
-    XRenderFreePicture (xdisplay, xrender->root_picture);
+  if (priv->root_picture)
+    XRenderFreePicture (xdisplay, priv->root_picture);
 
-  if (xrender->root_buffer)
+  if (priv->root_buffer)
     {
-      XRenderFreePicture (xdisplay, xrender->root_buffer);
-      xrender->root_buffer = None;
+      XRenderFreePicture (xdisplay, priv->root_buffer);
+      priv->root_buffer = None;
     }
 
-  if (xrender->root_tile)
+  if (priv->root_tile)
     {
-      XRenderFreePicture (xdisplay, xrender->root_tile);
-      xrender->root_tile = None;
+      XRenderFreePicture (xdisplay, priv->root_tile);
+      priv->root_tile = None;
     }
 
-  if (xrender->have_shadows)
+  if (priv->have_shadows)
     {
       int i;
 
       for (i = 0; i < LAST_SHADOW_TYPE; i++)
         {
-          g_clear_pointer (&xrender->shadows[i]->gaussian_map, g_free);
-          g_clear_pointer (&xrender->shadows[i]->shadow_corner, g_free);
-          g_clear_pointer (&xrender->shadows[i]->shadow_top, g_free);
+          g_clear_pointer (&priv->shadows[i]->gaussian_map, g_free);
+          g_clear_pointer (&priv->shadows[i]->shadow_corner, g_free);
+          g_clear_pointer (&priv->shadows[i]->shadow_top, g_free);
 
-          g_clear_pointer (&xrender->shadows[i], g_free);
+          g_clear_pointer (&priv->shadows[i], g_free);
         }
     }
 
@@ -953,13 +993,23 @@ static gboolean
 meta_compositor_xrender_manage (MetaCompositor  *compositor,
                                 GError         **error)
 {
-  MetaCompositorXRender *xrender = META_COMPOSITOR_XRENDER (compositor);
-  MetaDisplay *display = meta_compositor_get_display (compositor);
-  MetaScreen *screen = meta_display_get_screen (display);
-  Display *xdisplay = meta_display_get_xdisplay (display);
+  MetaCompositorXRender *self;
+  MetaCompositorXRenderPrivate *priv;
+  MetaDisplay *display;
+  MetaScreen *screen;
+  Display *xdisplay;
   XRenderPictureAttributes pa;
   XRenderPictFormat *visual_format;
-  int screen_number = meta_screen_get_screen_number (screen);
+  int screen_number;
+
+  self = META_COMPOSITOR_XRENDER (compositor);
+  priv = meta_compositor_xrender_get_instance_private (self);
+
+  display = meta_compositor_get_display (compositor);
+  screen = meta_display_get_screen (display);
+  xdisplay = meta_display_get_xdisplay (display);
+
+  screen_number = meta_screen_get_screen_number (screen);
 
   if (!meta_compositor_check_common_extensions (compositor, error))
     return FALSE;
@@ -978,7 +1028,7 @@ meta_compositor_xrender_manage (MetaCompositor  *compositor,
   if (!meta_compositor_redirect_windows (compositor, error))
     return FALSE;
 
-  xrender->screen = screen;
+  priv->screen = screen;
 
   visual_format = XRenderFindVisualFormat (xdisplay, DefaultVisual (xdisplay,
                                                                     screen_number));
@@ -991,15 +1041,16 @@ meta_compositor_xrender_manage (MetaCompositor  *compositor,
       return FALSE;
     }
 
-  xrender->overlay_window = meta_compositor_get_overlay_window (compositor);
+  priv->overlay_window = meta_compositor_get_overlay_window (compositor);
 
   pa.subwindow_mode = IncludeInferiors;
-  xrender->root_picture = XRenderCreatePicture (xdisplay,
-                                                xrender->overlay_window,
-                                                visual_format,
-                                                CPSubwindowMode, &pa);
+  priv->root_picture = XRenderCreatePicture (xdisplay,
+                                             priv->overlay_window,
+                                             visual_format,
+                                             CPSubwindowMode,
+                                             &pa);
 
-  if (xrender->root_picture == None)
+  if (priv->root_picture == None)
     {
       g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
                    "Cannot create root picture on screen %i",
@@ -1008,25 +1059,25 @@ meta_compositor_xrender_manage (MetaCompositor  *compositor,
       return FALSE;
     }
 
-  xrender->root_buffer = None;
+  priv->root_buffer = None;
 
-  xrender->root_tile = None;
+  priv->root_tile = None;
 
-  xrender->have_shadows = (g_getenv("META_DEBUG_NO_SHADOW") == NULL);
-  if (xrender->have_shadows)
+  priv->have_shadows = (g_getenv("META_DEBUG_NO_SHADOW") == NULL);
+  if (priv->have_shadows)
     {
       meta_verbose ("Enabling shadows\n");
-      generate_shadows (xrender);
+      generate_shadows (self);
     }
   else
     meta_verbose ("Disabling shadows\n");
 
-  XClearArea (xdisplay, xrender->overlay_window, 0, 0, 0, 0, TRUE);
+  XClearArea (xdisplay, priv->overlay_window, 0, 0, 0, 0, TRUE);
 
   meta_compositor_damage_screen (compositor);
 
-  meta_prefs_add_listener (update_shadows, xrender);
-  xrender->prefs_listener_added = TRUE;
+  meta_prefs_add_listener (update_shadows, self);
+  priv->prefs_listener_added = TRUE;
 
   g_timeout_add (2000, (GSourceFunc) timeout_debug, compositor);
 
@@ -1052,10 +1103,11 @@ meta_compositor_xrender_process_event (MetaCompositor *compositor,
                                        XEvent         *event,
                                        MetaWindow     *window)
 {
-  MetaCompositorXRender *xrender;
+  MetaCompositorXRender *self;
   MetaDisplay *display;
 
-  xrender = META_COMPOSITOR_XRENDER (compositor);
+  self = META_COMPOSITOR_XRENDER (compositor);
+
   display = meta_compositor_get_display (compositor);
 
   /*
@@ -1068,7 +1120,7 @@ meta_compositor_xrender_process_event (MetaCompositor *compositor,
   switch (event->type)
     {
     case PropertyNotify:
-      process_property_notify (xrender, (XPropertyEvent *) event);
+      process_property_notify (self, (XPropertyEvent *) event);
       break;
 
     default:
@@ -1081,14 +1133,16 @@ meta_compositor_xrender_process_event (MetaCompositor *compositor,
 static void
 meta_compositor_xrender_sync_screen_size (MetaCompositor *compositor)
 {
-  MetaCompositorXRender *xrender;
+  MetaCompositorXRender *self;
+  MetaCompositorXRenderPrivate *priv;
 
-  xrender = META_COMPOSITOR_XRENDER (compositor);
+  self = META_COMPOSITOR_XRENDER (compositor);
+  priv = meta_compositor_xrender_get_instance_private (self);
 
-  if (xrender->root_buffer)
+  if (priv->root_buffer)
     {
-      XRenderFreePicture (xrender->xdisplay, xrender->root_buffer);
-      xrender->root_buffer = None;
+      XRenderFreePicture (priv->xdisplay, priv->root_buffer);
+      priv->root_buffer = None;
     }
 
   meta_compositor_damage_screen (compositor);
@@ -1097,15 +1151,17 @@ meta_compositor_xrender_sync_screen_size (MetaCompositor *compositor)
 static void
 meta_compositor_xrender_pre_paint (MetaCompositor *compositor)
 {
-  MetaCompositorXRender *xrender;
+  MetaCompositorXRender *self;
+  MetaCompositorXRenderPrivate *priv;
 
-  xrender = META_COMPOSITOR_XRENDER (compositor);
+  self = META_COMPOSITOR_XRENDER (compositor);
+  priv = meta_compositor_xrender_get_instance_private (self);
 
-  if (xrender->root_buffer == None)
-    xrender->root_buffer = create_root_buffer (xrender);
+  if (priv->root_buffer == None)
+    priv->root_buffer = create_root_buffer (self);
 
-  if (xrender->root_tile == None)
-    xrender->root_tile = root_tile (xrender->screen);
+  if (priv->root_tile == None)
+    priv->root_tile = root_tile (priv->screen);
 
   META_COMPOSITOR_CLASS (meta_compositor_xrender_parent_class)->pre_paint (compositor);
 }
@@ -1114,7 +1170,8 @@ static void
 meta_compositor_xrender_redraw (MetaCompositor *compositor,
                                 XserverRegion   all_damage)
 {
-  MetaCompositorXRender *xrender;
+  MetaCompositorXRender *self;
+  MetaCompositorXRenderPrivate *priv;
   MetaDisplay *display;
   Display *xdisplay;
   int screen_width;
@@ -1123,17 +1180,18 @@ meta_compositor_xrender_redraw (MetaCompositor *compositor,
   GList *visible_stack;
   GList *l;
 
-  xrender = META_COMPOSITOR_XRENDER (compositor);
+  self = META_COMPOSITOR_XRENDER (compositor);
+  priv = meta_compositor_xrender_get_instance_private (self);
 
   display = meta_compositor_get_display (compositor);
   xdisplay = meta_display_get_xdisplay (display);
 
-  meta_screen_get_size (xrender->screen, &screen_width, &screen_height);
+  meta_screen_get_size (priv->screen, &screen_width, &screen_height);
 
   /* Set clipping to the given region */
-  XFixesSetPictureClipRegion (xdisplay, xrender->root_picture, 0, 0, all_damage);
+  XFixesSetPictureClipRegion (xdisplay, priv->root_picture, 0, 0, all_damage);
 
-  if (xrender->show_redraw)
+  if (priv->show_redraw)
     {
       Picture overlay;
 
@@ -1143,7 +1201,7 @@ meta_compositor_xrender_redraw (MetaCompositor *compositor,
                                ((double) (rand () % 100)) / 100.0,
                                ((double) (rand () % 100)) / 100.0);
 
-      XRenderComposite (xdisplay, PictOpOver, overlay, None, xrender->root_picture,
+      XRenderComposite (xdisplay, PictOpOver, overlay, None, priv->root_picture,
                         0, 0, 0, 0, 0, 0, screen_width, screen_height);
       XRenderFreePicture (xdisplay, overlay);
       XFlush (xdisplay);
@@ -1160,23 +1218,23 @@ meta_compositor_xrender_redraw (MetaCompositor *compositor,
     }
 
   visible_stack = g_list_reverse (visible_stack);
-  paint_windows (xrender, visible_stack, xrender->root_buffer, all_damage);
+  paint_windows (self, visible_stack, priv->root_buffer, all_damage);
   g_list_free (visible_stack);
 
-  XFixesSetPictureClipRegion (xdisplay, xrender->root_buffer, 0, 0, all_damage);
-  XRenderComposite (xdisplay, PictOpSrc, xrender->root_buffer, None,
-                    xrender->root_picture, 0, 0, 0, 0, 0, 0,
+  XFixesSetPictureClipRegion (xdisplay, priv->root_buffer, 0, 0, all_damage);
+  XRenderComposite (xdisplay, PictOpSrc, priv->root_buffer, None,
+                    priv->root_picture, 0, 0, 0, 0, 0, 0,
                     screen_width, screen_height);
 }
 
 static void
-meta_compositor_xrender_class_init (MetaCompositorXRenderClass *xrender_class)
+meta_compositor_xrender_class_init (MetaCompositorXRenderClass *self_class)
 {
   GObjectClass *object_class;
   MetaCompositorClass *compositor_class;
 
-  object_class = G_OBJECT_CLASS (xrender_class);
-  compositor_class = META_COMPOSITOR_CLASS (xrender_class);
+  object_class = G_OBJECT_CLASS (self_class);
+  compositor_class = META_COMPOSITOR_CLASS (self_class);
 
   object_class->constructed = meta_compositor_xrender_constructed;
   object_class->finalize = meta_compositor_xrender_finalize;
@@ -1190,9 +1248,9 @@ meta_compositor_xrender_class_init (MetaCompositorXRenderClass *xrender_class)
 }
 
 static void
-meta_compositor_xrender_init (MetaCompositorXRender *xrender)
+meta_compositor_xrender_init (MetaCompositorXRender *self)
 {
-  meta_compositor_set_composited (META_COMPOSITOR (xrender), TRUE);
+  meta_compositor_set_composited (META_COMPOSITOR (self), TRUE);
 }
 
 MetaCompositor *
@@ -1207,13 +1265,18 @@ meta_compositor_xrender_new (MetaDisplay  *display,
 gboolean
 meta_compositor_xrender_have_shadows (MetaCompositorXRender *self)
 {
-  return self->have_shadows;
+  MetaCompositorXRenderPrivate *priv;
+
+  priv = meta_compositor_xrender_get_instance_private (self);
+
+  return priv->have_shadows;
 }
 
 MetaShadowXRender *
 meta_compositor_xrender_create_shadow (MetaCompositorXRender *self,
                                        MetaSurface           *surface)
 {
+  MetaCompositorXRenderPrivate *priv;
   MetaWindow *window;
   MetaShadowType shadow_type;
   MetaFrameBorders borders;
@@ -1223,6 +1286,8 @@ meta_compositor_xrender_create_shadow (MetaCompositorXRender *self,
   int height;
   MetaShadowXRender *ret;
   cairo_region_t *frame_bounds;
+
+  priv = meta_compositor_xrender_get_instance_private (self);
 
   window = meta_surface_get_window (surface);
 
@@ -1242,12 +1307,12 @@ meta_compositor_xrender_create_shadow (MetaCompositorXRender *self,
   height = meta_surface_get_height (surface);
 
   ret = g_new0 (MetaShadowXRender, 1);
-  ret->xdisplay = self->xdisplay;
+  ret->xdisplay = priv->xdisplay;
 
   ret->dx = shadow_offsets_x[shadow_type] + invisible->left;
   ret->dy = shadow_offsets_y[shadow_type] + invisible->top;
 
-  ret->black = solid_picture (self->xdisplay, TRUE, 1, 0, 0, 0);
+  ret->black = solid_picture (priv->xdisplay, TRUE, 1, 0, 0, 0);
   ret->shadow = shadow_picture (self,
                                 shadow_type,
                                 opacity,
@@ -1256,7 +1321,7 @@ meta_compositor_xrender_create_shadow (MetaCompositorXRender *self,
                                 &ret->width,
                                 &ret->height);
 
-  ret->region = XFixesCreateRegion (self->xdisplay, &(XRectangle) {
+  ret->region = XFixesCreateRegion (priv->xdisplay, &(XRectangle) {
                                       .x = ret->dx,
                                       .y = ret->dy,
                                       .width = ret->width,
@@ -1269,15 +1334,15 @@ meta_compositor_xrender_create_shadow (MetaCompositorXRender *self,
     {
       XserverRegion bounds_region;
 
-      bounds_region = cairo_region_to_xserver_region (self->xdisplay,
+      bounds_region = cairo_region_to_xserver_region (priv->xdisplay,
                                                       frame_bounds);
 
-      XFixesSubtractRegion (self->xdisplay,
+      XFixesSubtractRegion (priv->xdisplay,
                             ret->region,
                             ret->region,
                             bounds_region);
 
-      XFixesDestroyRegion (self->xdisplay, bounds_region);
+      XFixesDestroyRegion (priv->xdisplay, bounds_region);
     }
 
   return ret;

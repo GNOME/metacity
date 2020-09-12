@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 Alberts Muktupāvels
+ * Copyright (C) 2017-2020 Alberts Muktupāvels
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,8 +25,13 @@
 G_BEGIN_DECLS
 
 #define META_TYPE_COMPOSITOR_XRENDER meta_compositor_xrender_get_type ()
-G_DECLARE_FINAL_TYPE (MetaCompositorXRender, meta_compositor_xrender,
-                      META, COMPOSITOR_XRENDER, MetaCompositor)
+G_DECLARE_DERIVABLE_TYPE (MetaCompositorXRender, meta_compositor_xrender,
+                          META, COMPOSITOR_XRENDER, MetaCompositor)
+
+struct _MetaCompositorXRenderClass
+{
+  MetaCompositorClass parent_class;
+};
 
 MetaCompositor    *meta_compositor_xrender_new           (MetaDisplay            *display,
                                                           GError                **error);
