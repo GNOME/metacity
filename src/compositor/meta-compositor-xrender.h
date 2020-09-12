@@ -48,6 +48,11 @@ void               meta_compositor_xrender_create_root_buffer (MetaCompositorXRe
                                                                Pixmap                 *pixmap,
                                                                Picture                *buffer);
 
+void               meta_compositor_xrender_draw               (MetaCompositorXRender  *self,
+                                                               Picture                 buffer,
+                                                               XserverRegion           region);
+
+
 G_END_DECLS
 
 #endif

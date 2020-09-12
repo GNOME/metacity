@@ -1130,9 +1130,6 @@ meta_compositor_xrender_redraw (MetaCompositor *compositor,
   Display *xdisplay;
   int screen_width;
   int screen_height;
-  GList *stack;
-  GList *visible_stack;
-  GList *l;
 
   self = META_COMPOSITOR_XRENDER (compositor);
   priv = meta_compositor_xrender_get_instance_private (self);
@@ -1142,38 +1139,7 @@ meta_compositor_xrender_redraw (MetaCompositor *compositor,
 
   meta_screen_get_size (priv->screen, &screen_width, &screen_height);
 
-  /* Set clipping to the given region */
-  XFixesSetPictureClipRegion (xdisplay, priv->root_picture, 0, 0, all_damage);
-
-  if (priv->show_redraw)
-    {
-      Picture overlay;
-
-      /* Make a random colour overlay */
-      overlay = solid_picture (xdisplay, TRUE, 1, /* 0.3, alpha */
-                               ((double) (rand () % 100)) / 100.0,
-                               ((double) (rand () % 100)) / 100.0,
-                               ((double) (rand () % 100)) / 100.0);
-
-      XRenderComposite (xdisplay, PictOpOver, overlay, None, priv->root_picture,
-                        0, 0, 0, 0, 0, 0, screen_width, screen_height);
-      XRenderFreePicture (xdisplay, overlay);
-      XFlush (xdisplay);
-      usleep (100 * 1000);
-    }
-
-  stack = meta_compositor_get_stack (compositor);
-  visible_stack = NULL;
-
-  for (l = stack; l != NULL; l = l->next)
-    {
-      if (meta_surface_is_visible (META_SURFACE (l->data)))
-        visible_stack = g_list_prepend (visible_stack, l->data);
-    }
-
-  visible_stack = g_list_reverse (visible_stack);
-  paint_windows (self, visible_stack, priv->root_buffer, all_damage);
-  g_list_free (visible_stack);
+  meta_compositor_xrender_draw (self, priv->root_buffer, all_damage);
 
   XFixesSetPictureClipRegion (xdisplay, priv->root_buffer, 0, 0, all_damage);
   XRenderComposite (xdisplay, PictOpSrc, priv->root_buffer, None,
@@ -1373,4 +1339,59 @@ meta_compositor_xrender_create_root_buffer (MetaCompositorXRender *self,
   g_return_if_fail (*pixmap != None);
 
   *buffer = XRenderCreatePicture (priv->xdisplay, *pixmap, format, 0, NULL);
+}
+
+void
+meta_compositor_xrender_draw (MetaCompositorXRender *self,
+                              Picture                buffer,
+                              XserverRegion          region)
+{
+  MetaCompositorXRenderPrivate *priv;
+  MetaDisplay *display;
+  Display *xdisplay;
+  int screen_width;
+  int screen_height;
+  GList *stack;
+  GList *visible_stack;
+  GList *l;
+
+  priv = meta_compositor_xrender_get_instance_private (self);
+
+  display = meta_compositor_get_display (META_COMPOSITOR (self));
+  xdisplay = meta_display_get_xdisplay (display);
+
+  meta_screen_get_size (priv->screen, &screen_width, &screen_height);
+
+  /* Set clipping to the given region */
+  XFixesSetPictureClipRegion (xdisplay, priv->root_picture, 0, 0, region);
+
+  if (priv->show_redraw)
+    {
+      Picture overlay;
+
+      /* Make a random colour overlay */
+      overlay = solid_picture (xdisplay, TRUE, 1, /* 0.3, alpha */
+                               ((double) (rand () % 100)) / 100.0,
+                               ((double) (rand () % 100)) / 100.0,
+                               ((double) (rand () % 100)) / 100.0);
+
+      XRenderComposite (xdisplay, PictOpOver, overlay, None, priv->root_picture,
+                        0, 0, 0, 0, 0, 0, screen_width, screen_height);
+      XRenderFreePicture (xdisplay, overlay);
+      XFlush (xdisplay);
+      usleep (100 * 1000);
+    }
+
+  stack = meta_compositor_get_stack (META_COMPOSITOR (self));
+  visible_stack = NULL;
+
+  for (l = stack; l != NULL; l = l->next)
+    {
+      if (meta_surface_is_visible (META_SURFACE (l->data)))
+        visible_stack = g_list_prepend (visible_stack, l->data);
+    }
+
+  visible_stack = g_list_reverse (visible_stack);
+  paint_windows (self, visible_stack, buffer, region);
+  g_list_free (visible_stack);
 }
