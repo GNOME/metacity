@@ -285,10 +285,14 @@ meta_bell_notify (MetaDisplay *display,
 
       if (window)
         {
+          pid_t client_pid;
+
+          client_pid = meta_window_get_client_pid (window);
+
           ca_proplist_sets (p, CA_PROP_WINDOW_NAME, window->title);
           ca_proplist_setf (p, CA_PROP_WINDOW_X11_XID, "%lu", (unsigned long)window->xwindow);
           ca_proplist_sets (p, CA_PROP_APPLICATION_NAME, window->res_name);
-          ca_proplist_setf (p, CA_PROP_APPLICATION_PROCESS_ID, "%d", window->net_wm_pid);
+          ca_proplist_setf (p, CA_PROP_APPLICATION_PROCESS_ID, "%d", client_pid);
         }
 
       /* First, we try to play a real sound ... */
