@@ -131,7 +131,6 @@ struct _MetaWindow
   char *startup_id;
   char *gtk_theme_variant;
 
-  int net_wm_pid;
   pid_t client_pid;
 
   Window xtransient_for;

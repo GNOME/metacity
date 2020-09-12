@@ -43,7 +43,6 @@
 #include "frame-private.h"
 #include "group.h"
 #include <X11/Xatom.h>
-#include <X11/extensions/XRes.h>
 #include <unistd.h>
 #include <string.h>
 #include <errno.h>
@@ -394,74 +393,6 @@ reload_wm_window_role (MetaWindow    *window,
   g_clear_pointer (&window->role, g_free);
   if (value->type != META_PROP_VALUE_INVALID)
     window->role = g_strdup (value->v.str);
-}
-
-static pid_t
-get_local_pid (MetaWindow *window)
-{
-  pid_t pid;
-  XResClientIdSpec spec;
-  long num_ids;
-  XResClientIdValue *client_ids;
-  long i;
-
-  pid = -1;
-
-  spec.client = window->xwindow;
-  spec.mask = XRES_CLIENT_ID_PID_MASK;
-
-  XResQueryClientIds (window->display->xdisplay,
-                      1,
-                      &spec,
-                      &num_ids,
-                      &client_ids);
-
-  for (i = 0; i < num_ids; i++)
-    {
-      if (client_ids[i].spec.mask == XRES_CLIENT_ID_PID_MASK)
-        {
-          pid = XResGetClientPid (&client_ids[i]);
-          break;
-        }
-    }
-
-  XResClientIdsDestroy (num_ids, client_ids);
-
-  return pid;
-}
-
-static void
-reload_net_wm_pid (MetaWindow    *window,
-                   MetaPropValue *value,
-                   gboolean       initial)
-{
-  pid_t pid;
-
-  pid = get_local_pid (window);
-
-  if (pid != -1)
-    {
-      meta_verbose ("Ignoring _NET_WM_PID in favor of XResGetClientPid\n");
-
-      window->net_wm_pid = pid;
-      return;
-    }
-
-  if (value->type != META_PROP_VALUE_INVALID)
-    {
-      gulong cardinal = (int) value->v.cardinal;
-
-      if (cardinal <= 0)
-        {
-          g_warning ("Application set a bogus _NET_WM_PID %lu", cardinal);
-        }
-      else
-        {
-          window->net_wm_pid = cardinal;
-          meta_verbose ("Window has _NET_WM_PID %d\n",
-                        window->net_wm_pid);
-        }
-    }
 }
 
 static void
@@ -1845,12 +1776,6 @@ meta_display_init_window_prop_hooks (MetaDisplay *display)
       XA_WM_CLASS,
       META_PROP_VALUE_CLASS_HINT,
       reload_wm_class,
-      LOAD_INIT | INCLUDE_OR
-    },
-    {
-      display->atom__NET_WM_PID,
-      META_PROP_VALUE_CARDINAL,
-      reload_net_wm_pid,
       LOAD_INIT | INCLUDE_OR
     },
     {
