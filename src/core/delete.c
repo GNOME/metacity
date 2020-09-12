@@ -149,14 +149,17 @@ meta_window_delete (MetaWindow  *window,
 void
 meta_window_kill (MetaWindow *window)
 {
+  pid_t client_pid;
   char buf[257];
 
   meta_topic (META_DEBUG_WINDOW_OPS,
               "Killing %s brutally\n",
               window->desc);
 
+  client_pid = meta_window_get_client_pid (window);
+
   if (window->wm_client_machine != NULL &&
-      window->net_wm_pid > 0)
+      client_pid > 0)
     {
       if (gethostname (buf, sizeof(buf)-1) == 0)
         {
@@ -166,7 +169,7 @@ meta_window_kill (MetaWindow *window)
                           "Killing %s with kill()\n",
                           window->desc);
 
-              if (kill (window->net_wm_pid, 9) < 0)
+              if (kill (client_pid, 9) < 0)
                 meta_topic (META_DEBUG_WINDOW_OPS,
                             "Failed to signal %s: %s\n",
                             window->desc, strerror (errno));
