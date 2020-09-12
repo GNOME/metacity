@@ -31,6 +31,9 @@ G_DECLARE_DERIVABLE_TYPE (MetaCompositorXRender, meta_compositor_xrender,
 struct _MetaCompositorXRenderClass
 {
   MetaCompositorClass parent_class;
+
+  void (* ensure_root_buffers) (MetaCompositorXRender *self);
+  void (* free_root_buffers)   (MetaCompositorXRender *self);
 };
 
 MetaCompositor    *meta_compositor_xrender_new                (MetaDisplay            *display,

@@ -926,11 +926,7 @@ meta_compositor_xrender_finalize (GObject *object)
   if (priv->root_picture)
     XRenderFreePicture (xdisplay, priv->root_picture);
 
-  if (priv->root_buffer)
-    {
-      XRenderFreePicture (xdisplay, priv->root_buffer);
-      priv->root_buffer = None;
-    }
+  META_COMPOSITOR_XRENDER_GET_CLASS (self)->free_root_buffers (self);
 
   if (priv->root_tile)
     {
@@ -1100,17 +1096,10 @@ static void
 meta_compositor_xrender_sync_screen_size (MetaCompositor *compositor)
 {
   MetaCompositorXRender *self;
-  MetaCompositorXRenderPrivate *priv;
 
   self = META_COMPOSITOR_XRENDER (compositor);
-  priv = meta_compositor_xrender_get_instance_private (self);
 
-  if (priv->root_buffer)
-    {
-      XRenderFreePicture (priv->xdisplay, priv->root_buffer);
-      priv->root_buffer = None;
-    }
-
+  META_COMPOSITOR_XRENDER_GET_CLASS (self)->free_root_buffers (self);
   meta_compositor_damage_screen (compositor);
 }
 
@@ -1123,18 +1112,7 @@ meta_compositor_xrender_pre_paint (MetaCompositor *compositor)
   self = META_COMPOSITOR_XRENDER (compositor);
   priv = meta_compositor_xrender_get_instance_private (self);
 
-  if (priv->root_buffer == None)
-    {
-      Pixmap root_pixmap;
-
-      root_pixmap = None;
-      meta_compositor_xrender_create_root_buffer (self,
-                                                  &root_pixmap,
-                                                  &priv->root_buffer);
-
-      if (root_pixmap != None)
-        XFreePixmap (priv->xdisplay, root_pixmap);
-    }
+  META_COMPOSITOR_XRENDER_GET_CLASS (self)->ensure_root_buffers (self);
 
   if (priv->root_tile == None)
     priv->root_tile = root_tile (priv->screen);
@@ -1204,6 +1182,41 @@ meta_compositor_xrender_redraw (MetaCompositor *compositor,
 }
 
 static void
+meta_compositor_xrender_ensure_root_buffers (MetaCompositorXRender *self)
+{
+  MetaCompositorXRenderPrivate *priv;
+
+  priv = meta_compositor_xrender_get_instance_private (self);
+
+  if (priv->root_buffer == None)
+    {
+      Pixmap root_pixmap;
+
+      root_pixmap = None;
+      meta_compositor_xrender_create_root_buffer (self,
+                                                  &root_pixmap,
+                                                  &priv->root_buffer);
+
+      if (root_pixmap != None)
+        XFreePixmap (priv->xdisplay, root_pixmap);
+    }
+}
+
+static void
+meta_compositor_xrender_free_root_buffers (MetaCompositorXRender *self)
+{
+  MetaCompositorXRenderPrivate *priv;
+
+  priv = meta_compositor_xrender_get_instance_private (self);
+
+  if (priv->root_buffer)
+    {
+      XRenderFreePicture (priv->xdisplay, priv->root_buffer);
+      priv->root_buffer = None;
+    }
+}
+
+static void
 meta_compositor_xrender_class_init (MetaCompositorXRenderClass *self_class)
 {
   GObjectClass *object_class;
@@ -1221,6 +1234,9 @@ meta_compositor_xrender_class_init (MetaCompositorXRenderClass *self_class)
   compositor_class->sync_screen_size = meta_compositor_xrender_sync_screen_size;
   compositor_class->pre_paint = meta_compositor_xrender_pre_paint;
   compositor_class->redraw = meta_compositor_xrender_redraw;
+
+  self_class->ensure_root_buffers = meta_compositor_xrender_ensure_root_buffers;
+  self_class->free_root_buffers = meta_compositor_xrender_free_root_buffers;
 }
 
 static void
