@@ -53,22 +53,20 @@ ubuntu:
 coverity:
   image: ubuntu:devel
   stage: analysis
-  variables:
-    # cov-build doesn’t like GLIB_DEPRECATED_ENUMERATOR
-    CFLAGS: '-DGLIB_DISABLE_DEPRECATION_WARNINGS'
   when: manual
   before_script:
     - apt-get update
     - *install-ubuntu-dependencies
     - apt-get install -q -y --no-install-recommends
                       ca-certificates
+                      clang
                       curl
   script:
     - curl https://scan.coverity.com/download/linux64
       --data "token=$COVERITY_TOKEN&project=metacity"
       --output /tmp/coverity_tool.tgz
     - tar zxf /tmp/coverity_tool.tgz
-    - ./autogen.sh --disable-Werror
+    - CC=clang ./autogen.sh --disable-Werror
     - ./cov-analysis-linux64-*/bin/cov-build --dir cov-int make
     - tar czf cov-int.tar.gz cov-int
     - curl --form token=$COVERITY_TOKEN
