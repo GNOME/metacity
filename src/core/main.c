@@ -47,6 +47,7 @@
 #include "util.h"
 #include "display-private.h"
 #include "errors.h"
+#include "meta-enum-types.h"
 #include "ui.h"
 #include "session.h"
 #include "prefs.h"
@@ -224,19 +225,18 @@ option_compositior_cb (const char  *option_name,
                        GError     **error)
 {
   MetaArguments *args;
+  GEnumClass *enum_class;
+  GEnumValue *enum_value;
 
   args = data;
 
-  if (g_strcmp0 (value, "none") == 0)
+  enum_class = g_type_class_ref (META_TYPE_COMPOSITOR_TYPE);
+  enum_value = g_enum_get_value_by_nick (enum_class, value);
+
+  if (enum_value == NULL)
     {
-      args->compositor = META_COMPOSITOR_TYPE_NONE;
-    }
-  else if (g_strcmp0 (value, "xrender") == 0)
-    {
-      args->compositor = META_COMPOSITOR_TYPE_XRENDER;
-    }
-  else
-    {
+      g_type_class_unref (enum_class);
+
       g_set_error (error,
                    G_OPTION_ERROR,
                    G_OPTION_ERROR_FAILED,
@@ -246,7 +246,10 @@ option_compositior_cb (const char  *option_name,
       return FALSE;
     }
 
+  args->compositor = enum_value->value;
   args->compositor_set = TRUE;
+
+  g_type_class_unref (enum_class);
 
   return TRUE;
 }

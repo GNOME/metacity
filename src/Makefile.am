@@ -200,6 +200,7 @@ testasyncgetprop_CFLAGS = \
 
 ENUM_TYPES = \
 	$(srcdir)/core/window-private.h \
+	$(srcdir)/include/meta-compositor.h \
 	$(NULL)
 
 core/meta-enum-types.c: core/meta-enum-types.c.in $(ENUM_TYPES) Makefile.am
