@@ -22,6 +22,7 @@
 
 #include "display-private.h"
 #include "meta-compositor-vulkan.h"
+#include "meta-enum-types.h"
 #include "meta-surface-vulkan.h"
 #include "prefs.h"
 #include "screen.h"
@@ -1188,32 +1189,20 @@ not_implemented_cb (MetaCompositorVulkan *vulkan)
 {
   MetaDisplay *display;
   MetaCompositorType type;
-  const char *compositor;
+  GEnumClass *enum_class;
+  GEnumValue *enum_value;
 
   display = meta_compositor_get_display (META_COMPOSITOR (vulkan));
   type = meta_prefs_get_compositor ();
-  compositor = "";
 
-  switch (type)
-    {
-      case META_COMPOSITOR_TYPE_NONE:
-        compositor = "none";
-        break;
-
-      case META_COMPOSITOR_TYPE_XRENDER:
-        compositor = "xrender";
-        break;
-
-      case META_COMPOSITOR_TYPE_XPRESENT:
-      case META_COMPOSITOR_TYPE_EXTERNAL:
-      case META_COMPOSITOR_TYPE_VULKAN:
-      default:
-        g_assert_not_reached ();
-        break;
-    }
+  enum_class = g_type_class_ref (META_TYPE_COMPOSITOR_TYPE);
+  enum_value = g_enum_get_value (enum_class, type);
+  g_assert_nonnull (enum_value);
 
   g_warning ("“vulkan” compositor is not implemented, switching to “%s”...",
-             compositor);
+             enum_value->value_nick);
+
+  g_type_class_unref (enum_class);
 
   g_unsetenv ("META_COMPOSITOR");
   meta_display_update_compositor (display);
