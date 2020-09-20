@@ -7,33 +7,28 @@
 # Muhammet Kara <muhammetk@gmail.com>, 2014, 2015.
 # İşbaran Akçayır <isbaran@gmail.com>, 2015.
 # Serdar Sağlam <teknomobil@yandex.com>, 2019.
-# Emin Tufan Çetin <etcetin@gmail.com>, 2019.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2019, 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues\n"
-"POT-Creation-Date: 2019-11-27 01:55+0000\n"
-"PO-Revision-Date: 2019-12-07 14:59+0300\n"
+"POT-Creation-Date: 2020-09-06 11:32+0000\n"
+"PO-Revision-Date: 2020-09-21 01:11+0300\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
-"X-Generator: Gtranslator 3.32.1\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.2.3\n"
 "X-POOTLE-MTIME: 1424248750.000000\n"
 
 #. Translators: This is the title used on dialog boxes
 #: data/applications/metacity.desktop.in:4 src/core/util.c:429
 msgid "Metacity"
 msgstr "Metacity"
-
-#. TRANSLATORS: Don't translate this text (this is icon name)
-#: data/applications/metacity.desktop.in:7
-msgid "preferences-system-windows"
-msgstr "preferences-system-windows"
 
 #: data/keybindings/50-metacity-navigation.xml:6
 msgid "Navigation"
@@ -233,17 +228,33 @@ msgstr ""
 
 #: data/schemas/org.gnome.metacity.gschema.xml:23
 msgid "Compositing Manager"
-msgstr "Kompozisyon Yöneticisi"
+msgstr "Dizgileme Yöneticisi"
 
 #: data/schemas/org.gnome.metacity.gschema.xml:24
-msgid "Determines whether Metacity is a compositing manager."
-msgstr "Metacity'nin bir kompozisyon yöneticisi olmasına karar verir."
+msgid ""
+"Determines whether Metacity is a compositing manager. DEPRECATED: This key "
+"is deprecated, use the “compositor” instead."
+msgstr ""
+"Metacity’nin bir dizgileme yöneticisi olup olmayacağını saptar. TERK EDİLDİ: "
+"Bu anahtar terk edildi, bunun yerine “compositor” kullanın."
 
-#: data/schemas/org.gnome.metacity.gschema.xml:31
+#: data/schemas/org.gnome.metacity.gschema.xml:33
+msgid "Compositor"
+msgstr "Dizgileyici"
+
+#: data/schemas/org.gnome.metacity.gschema.xml:34
+msgid ""
+"Compositor that Metacity will use for compositing. Possible values are "
+"“none” and “xrender”."
+msgstr ""
+"Metacity’nin dizgilemede kullanacağı dizgileyici. Olası değerler: "
+"“none” (hiçbiri) e “xrender”."
+
+#: data/schemas/org.gnome.metacity.gschema.xml:42
 msgid "Enable edge tiling when dropping windows on screen edges"
 msgstr "Pencereleri ekran köşelerine bırakırken köşe döşemeyi etkinleştir"
 
-#: data/schemas/org.gnome.metacity.gschema.xml:32
+#: data/schemas/org.gnome.metacity.gschema.xml:43
 msgid ""
 "If enabled, dropping windows on vertical screen edges maximizes them "
 "vertically and resizes them horizontally to cover half of the available "
@@ -254,11 +265,11 @@ msgstr ""
 "kaplayacak şekilde ölçeklendirir. Pencereleri ekran köşelerinin üstüne "
 "bırakmak tamamen azami boyuta ölçeklenmelerine sebep olur."
 
-#: data/schemas/org.gnome.metacity.gschema.xml:41
+#: data/schemas/org.gnome.metacity.gschema.xml:52
 msgid "Window placement behavior"
 msgstr "Pencere yerleştirme davranışı"
 
-#: data/schemas/org.gnome.metacity.gschema.xml:42
+#: data/schemas/org.gnome.metacity.gschema.xml:53
 msgid ""
 "Metacity's default window-placement behavior is smart (first-fit), similar "
 "to behaviors in some other window managers. It will try to tile windows so "
@@ -275,26 +286,6 @@ msgstr ""
 "konumlandırmak için \"merkez\", çalışma alanlarının sol üst köşesi için "
 "\"köken\", veya yeni pencereleri çalışma alanlarının rastgele yerlerine "
 "koymak için \"rastgele\" olarak ayarlayabilirsiniz."
-
-#: data/schemas/org.gnome.metacity.gschema.xml:57
-msgid "If true, trade off usability for less resource usage"
-msgstr ""
-"Eğer seçiliyse, daha az kaynak kullanımı için kullanılabilirliği azaltır"
-
-#: data/schemas/org.gnome.metacity.gschema.xml:58
-msgid ""
-"If true, Metacity will give the user less feedback by using wireframes, "
-"avoiding animations, or other means. This is a significant reduction in "
-"usability for many users, but may allow legacy applications to continue "
-"working, and may also be a useful tradeoff for terminal servers. However, "
-"the wireframe feature is disabled when accessibility is on."
-msgstr ""
-"Eğer doğruysa; Metacity, iskeletleri kullanarak, animasyonları göz ardı "
-"ederek vesaire kullanıcıya daha az geribildirim verecektir. Bu, birçok "
-"kullanıcı için kullanışlığın epey azalması demektir, ancak eski "
-"uygulamaların çalışmaya devam etmesini sağlar ve uçbirim sunucular için "
-"kullanışlı olabilir. Yine de, erişebilirlik açıkken iskelet özelliği devre "
-"dışıdır."
 
 #: data/schemas/org.gnome.metacity.theme.gschema.xml:11
 msgid "Theme Name"
@@ -400,7 +391,7 @@ msgstr "Düğme Düzenleri:"
 
 #: data/ui/theme-viewer-window.ui:360
 msgid "Composited:"
-msgstr "Kompoze:"
+msgstr "Dizgilendi:"
 
 #: data/ui/theme-viewer-window.ui:400
 msgid "Scale:"
@@ -559,26 +550,26 @@ msgid "Coordinate expression had unknown variable or constant '%s'"
 msgstr ""
 "Koordinat ifadesi bilinmeyen bir değişken ya da sabit olan '%s 'içeriyor"
 
-#: libmetacity/meta-draw-spec.c:631 libmetacity/meta-draw-spec.c:641
-#: libmetacity/meta-draw-spec.c:676 libmetacity/meta-draw-spec.c:686
+#: libmetacity/meta-draw-spec.c:638 libmetacity/meta-draw-spec.c:648
+#: libmetacity/meta-draw-spec.c:683 libmetacity/meta-draw-spec.c:693
 msgid "Coordinate expression results in division by zero"
 msgstr "Koordinat ifadesi sıfıra bölümle sonuçlanıyor"
 
-#: libmetacity/meta-draw-spec.c:775
+#: libmetacity/meta-draw-spec.c:782
 #, c-format
 msgid ""
 "Coordinate expression has an operator \"%s\" where an operand was expected"
 msgstr "Koordinat ifadesi işleneni beklenen \"%s\", işlecini içeriyor"
 
-#: libmetacity/meta-draw-spec.c:784
+#: libmetacity/meta-draw-spec.c:791
 msgid "Coordinate expression had an operand where an operator was expected"
 msgstr "Koordinat ifadesi işleci beklenen bir işlenen içeriyor"
 
-#: libmetacity/meta-draw-spec.c:792
+#: libmetacity/meta-draw-spec.c:799
 msgid "Coordinate expression ended with an operator instead of an operand"
 msgstr "Koordinat ifadesi bir işlenen yerine işleçle bitiyor"
 
-#: libmetacity/meta-draw-spec.c:802
+#: libmetacity/meta-draw-spec.c:809
 #, c-format
 msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
@@ -587,24 +578,24 @@ msgstr ""
 "Koordinat ifadesi birbirlerinin izleyen ve aralarında işlenen olmayan \"%2$c"
 "\" ve \"%1$c\" işleçlerini içeriyor"
 
-#: libmetacity/meta-draw-spec.c:934
+#: libmetacity/meta-draw-spec.c:941
 msgid "Coordinate expression parser overflowed its buffer."
 msgstr "Koordinat belirtim ayrıştırıcısı tamponundan taştı."
 
-#: libmetacity/meta-draw-spec.c:964
+#: libmetacity/meta-draw-spec.c:971
 msgid "Coordinate expression had a close parenthesis with no open parenthesis"
 msgstr "Koordinat ifadesi sol parantezi olmayan bir sağ parantez içeriyor"
 
-#: libmetacity/meta-draw-spec.c:1037
+#: libmetacity/meta-draw-spec.c:1044
 msgid "Coordinate expression had an open parenthesis with no close parenthesis"
 msgstr "Koordinat ifadesi sağ parantezi olmayan bir sol parantez içeriyor"
 
-#: libmetacity/meta-draw-spec.c:1047
+#: libmetacity/meta-draw-spec.c:1054
 msgid "Coordinate expression doesn't seem to have any operators or operands"
 msgstr "Koordinat ifadesi göründüğü kadarıyla ne işleç ne de işlenen içeriyor"
 
-#: libmetacity/meta-draw-spec.c:1239 libmetacity/meta-draw-spec.c:1259
-#: libmetacity/meta-draw-spec.c:1279
+#: libmetacity/meta-draw-spec.c:1246 libmetacity/meta-draw-spec.c:1266
+#: libmetacity/meta-draw-spec.c:1286
 #, c-format
 msgid "Theme contained an expression that resulted in an error: %s"
 msgstr "Tema bir hata ile sonuçlanan ifadeye sahip: %s"
@@ -648,12 +639,12 @@ msgstr "Çerçeve geometrisi düğmelerin boyutunu tanımlamıyor"
 #. * in theme XML.  The "<frame ...>" is intended as a noun phrase,
 #. * and the "missing" qualifies it.  You should translate "whatever".
 #.
-#: libmetacity/meta-frame-style.c:144 libmetacity/meta-frame-style.c:469
+#: libmetacity/meta-frame-style.c:144 libmetacity/meta-frame-style.c:467
 #, c-format
 msgid "Missing <frame state='%s' resize='%s' focus='%s' style='whatever' />"
 msgstr "Eksik <frame state='%s' resize='%s' focus='%s' style=\"her neyse\"/>"
 
-#: libmetacity/meta-frame-style.c:326
+#: libmetacity/meta-frame-style.c:324
 #, c-format
 msgid ""
 "<button function='%s' state='%s' draw_ops='whatever'/> must be specified for "
@@ -811,11 +802,11 @@ msgstr "'%s' pencere türünün önceden atanmış bir biçem kümesi var"
 #: libmetacity/meta-theme-metacity.c:1654
 #: libmetacity/meta-theme-metacity.c:2808
 #: libmetacity/meta-theme-metacity.c:2854
-#: libmetacity/meta-theme-metacity.c:3094
-#: libmetacity/meta-theme-metacity.c:3130
-#: libmetacity/meta-theme-metacity.c:3166
-#: libmetacity/meta-theme-metacity.c:3202
-#: libmetacity/meta-theme-metacity.c:3499
+#: libmetacity/meta-theme-metacity.c:3092
+#: libmetacity/meta-theme-metacity.c:3128
+#: libmetacity/meta-theme-metacity.c:3164
+#: libmetacity/meta-theme-metacity.c:3200
+#: libmetacity/meta-theme-metacity.c:3497
 #, c-format
 msgid "Element <%s> is not allowed below <%s>"
 msgstr "<%s> ögesi <%s> altında kullanılamaz"
@@ -903,47 +894,47 @@ msgstr "\"%s\" adında hiç <draw_ops> tanımlanmamış"
 msgid "Including draw_ops \"%s\" here would create a circular reference"
 msgstr "Burada \"%s\" draw_ops'unu içermek çevrimsel gönderime yol açar"
 
-#: libmetacity/meta-theme-metacity.c:2981
+#: libmetacity/meta-theme-metacity.c:2979
 #, c-format
 msgid "Unknown position \"%s\" for frame piece"
 msgstr "Çerçeve parçası için bilinmeyen konum \"%s\""
 
-#: libmetacity/meta-theme-metacity.c:2989
+#: libmetacity/meta-theme-metacity.c:2987
 #, c-format
 msgid "Frame style already has a piece at position %s"
 msgstr "Çerçeve biçeminin %s konumunda zaten bir parça var"
 
-#: libmetacity/meta-theme-metacity.c:3005
+#: libmetacity/meta-theme-metacity.c:3003
 #, c-format
 msgid "No <draw_ops> with the name \"%s\" has been defined"
 msgstr "\"%s\" adında hiç <draw_ops> tanımlanmamış"
 
-#: libmetacity/meta-theme-metacity.c:3036
+#: libmetacity/meta-theme-metacity.c:3034
 #, c-format
 msgid "Unknown function \"%s\" for button"
 msgstr "Düğme için geçersiz işlev \"%s\""
 
-#: libmetacity/meta-theme-metacity.c:3047
+#: libmetacity/meta-theme-metacity.c:3045
 #, c-format
 msgid "Button function '%s' does not exist in this version (%d, need %d)"
 msgstr "Düğme işlevi '%s' bu sürümde mevcut değil (%d, gereken %d)"
 
-#: libmetacity/meta-theme-metacity.c:3056
+#: libmetacity/meta-theme-metacity.c:3054
 #, c-format
 msgid "Unknown state '%s' for button"
 msgstr "Düğme için geçersiz durum '%s'"
 
-#: libmetacity/meta-theme-metacity.c:3063
+#: libmetacity/meta-theme-metacity.c:3061
 #, c-format
 msgid "Frame style already has a button for function %s state %s"
 msgstr "Çerçeve biçeminde %s işlevi, %s durumu için zaten bir düğme var"
 
-#: libmetacity/meta-theme-metacity.c:3080
+#: libmetacity/meta-theme-metacity.c:3078
 #, c-format
 msgid "No <draw_ops> with the name '%s' has been defined"
 msgstr "'%s' adında hiç <draw_ops> tanımlanmamış"
 
-#: libmetacity/meta-theme-metacity.c:3114
+#: libmetacity/meta-theme-metacity.c:3112
 msgid ""
 "Can't have a two draw_ops for a <piece> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
@@ -951,7 +942,7 @@ msgstr ""
 "Bir <piece> ögesi içinde iki draw_ops olamaz (tema, ya bir draw_ops "
 "özniteliğiyle bir <draw_ops> ögesi, ya da iki öge belirtmiş)"
 
-#: libmetacity/meta-theme-metacity.c:3150
+#: libmetacity/meta-theme-metacity.c:3148
 msgid ""
 "Can't have a two draw_ops for a <button> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
@@ -959,7 +950,7 @@ msgstr ""
 "Bir <button> ögesi içinde iki draw_ops olamaz (tema, ya bir draw_ops "
 "özniteliğiyle bir <draw_ops> ögesi, ya da iki öge belirtmiş)"
 
-#: libmetacity/meta-theme-metacity.c:3186
+#: libmetacity/meta-theme-metacity.c:3184
 msgid ""
 "Can't have a two draw_ops for a <menu_icon> element (theme specified a "
 "draw_ops attribute and also a <draw_ops> element, or specified two elements)"
@@ -967,28 +958,28 @@ msgstr ""
 "Bir <menu_icon> ögesi içinde iki draw_ops olamaz (tema, ya bir draw_ops "
 "özniteliğiyle bir <draw_ops> ögesi, ya da iki öge belirtmiş)"
 
-#: libmetacity/meta-theme-metacity.c:3290
+#: libmetacity/meta-theme-metacity.c:3288
 #, c-format
 msgid "'%s' is not a valid value for focus attribute"
 msgstr "'%s', odak özniteliği için geçerli bir değer değil"
 
-#: libmetacity/meta-theme-metacity.c:3299
+#: libmetacity/meta-theme-metacity.c:3297
 #, c-format
 msgid "'%s' is not a valid value for state attribute"
 msgstr "'%s', durum özniteliği için geçerli bir değer değil"
 
-#: libmetacity/meta-theme-metacity.c:3308
+#: libmetacity/meta-theme-metacity.c:3306
 #, c-format
 msgid "A style called '%s' has not been defined"
 msgstr "'%s' adlı bir biçem tanımlanmamış"
 
-#: libmetacity/meta-theme-metacity.c:3326
-#: libmetacity/meta-theme-metacity.c:3349
+#: libmetacity/meta-theme-metacity.c:3324
+#: libmetacity/meta-theme-metacity.c:3347
 #, c-format
 msgid "'%s' is not a valid value for resize attribute"
 msgstr "'%s', yeniden boyutlandırma özniteliği için geçerli bir değer değil"
 
-#: libmetacity/meta-theme-metacity.c:3360
+#: libmetacity/meta-theme-metacity.c:3358
 #, c-format
 msgid ""
 "Should not have 'resize' attribute on <%s> element for maximized/shaded "
@@ -997,34 +988,34 @@ msgstr ""
 "<%s> ögesinin büyütülmüş/toplanmış durumlarında 'resize' özniteliği "
 "bulunmamalı"
 
-#: libmetacity/meta-theme-metacity.c:3381
+#: libmetacity/meta-theme-metacity.c:3379
 #, c-format
 msgid "Should not have 'resize' attribute on <%s> element for maximized states"
 msgstr "<%s> ögesinin büyütülmüş durumlarında 'resize'  özniteliği bulunmamalı"
 
-#: libmetacity/meta-theme-metacity.c:3396
-#: libmetacity/meta-theme-metacity.c:3444
+#: libmetacity/meta-theme-metacity.c:3394
+#: libmetacity/meta-theme-metacity.c:3442
 #, c-format
 msgid "Style has already been specified for state %s resize %s focus %s"
 msgstr ""
 "%s durumu, %s yeniden boyutlandırma, %s odak için biçem zaten belirtilmiş"
 
-#: libmetacity/meta-theme-metacity.c:3408
-#: libmetacity/meta-theme-metacity.c:3420
-#: libmetacity/meta-theme-metacity.c:3432
-#: libmetacity/meta-theme-metacity.c:3456
-#: libmetacity/meta-theme-metacity.c:3468
-#: libmetacity/meta-theme-metacity.c:3480
+#: libmetacity/meta-theme-metacity.c:3406
+#: libmetacity/meta-theme-metacity.c:3418
+#: libmetacity/meta-theme-metacity.c:3430
+#: libmetacity/meta-theme-metacity.c:3454
+#: libmetacity/meta-theme-metacity.c:3466
+#: libmetacity/meta-theme-metacity.c:3478
 #, c-format
 msgid "Style has already been specified for state %s focus %s"
 msgstr "%s durumu, odak %s için biçem zaten belirtilmiş"
 
-#: libmetacity/meta-theme-metacity.c:3546
+#: libmetacity/meta-theme-metacity.c:3544
 #, c-format
 msgid "Bad version specification '%s'"
 msgstr "Kötü sürüm belirtimi '%s'"
 
-#: libmetacity/meta-theme-metacity.c:3617
+#: libmetacity/meta-theme-metacity.c:3615
 msgid ""
 "'version' attribute cannot be used in metacity-theme-1.xml or metacity-"
 "theme-2.xml"
@@ -1032,42 +1023,42 @@ msgstr ""
 "'version' özniteliği metacity-theme-1.xml veya metacity-theme-2.xml "
 "içerisinde kullanılamaz"
 
-#: libmetacity/meta-theme-metacity.c:3640
+#: libmetacity/meta-theme-metacity.c:3638
 #, c-format
 msgid "Theme requires version %s but latest supported theme version is %d.%d"
 msgstr "Tema için %s sürümü gerekli ancak en son desteklenen tema sürümü %d.%d"
 
-#: libmetacity/meta-theme-metacity.c:3664
+#: libmetacity/meta-theme-metacity.c:3662
 #, c-format
 msgid "Outermost element in theme must be <metacity_theme> not <%s>"
 msgstr "Temanın en dış ögesi <%s> değil <metacity_theme> olmalıdır"
 
-#: libmetacity/meta-theme-metacity.c:3684
+#: libmetacity/meta-theme-metacity.c:3682
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a name/author/date/description element"
 msgstr "<%s> ögesi, name/author/date/description ögesinin içinde kullanılamaz"
 
-#: libmetacity/meta-theme-metacity.c:3690
+#: libmetacity/meta-theme-metacity.c:3688
 #, c-format
 msgid "Element <%s> is not allowed inside a <constant> element"
 msgstr "<constant> ögesinin içinde <%s> ögesi bulunmamalıdır"
 
-#: libmetacity/meta-theme-metacity.c:3703
+#: libmetacity/meta-theme-metacity.c:3701
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a distance/border/aspect_ratio element"
 msgstr "<%s> ögesi, distance/border/aspect_ratio ögesinin içinde kullanılamaz"
 
-#: libmetacity/meta-theme-metacity.c:3726
+#: libmetacity/meta-theme-metacity.c:3724
 #, c-format
 msgid "Element <%s> is not allowed inside a draw operation element"
 msgstr "<%s> ögesi, çizim işlemi ögesinin içinde kullanılamaz."
 
-#: libmetacity/meta-theme-metacity.c:3737
-#: libmetacity/meta-theme-metacity.c:3768
-#: libmetacity/meta-theme-metacity.c:3774
-#: libmetacity/meta-theme-metacity.c:3780
+#: libmetacity/meta-theme-metacity.c:3735
+#: libmetacity/meta-theme-metacity.c:3766
+#: libmetacity/meta-theme-metacity.c:3772
+#: libmetacity/meta-theme-metacity.c:3778
 #, c-format
 msgid "Element <%s> is not allowed inside a <%s> element"
 msgstr "<%s> ögesinin içinde <%s> ögesi bulunmamalıdır"
@@ -1076,16 +1067,16 @@ msgstr "<%s> ögesinin içinde <%s> ögesi bulunmamalıdır"
 #. * is given in angle brackets) was not found in a given theme (whose
 #. * name is given second, in quotation marks).
 #.
-#: libmetacity/meta-theme-metacity.c:3834
-#: libmetacity/meta-theme-metacity.c:3842
-#: libmetacity/meta-theme-metacity.c:3850
-#: libmetacity/meta-theme-metacity.c:3858
-#: libmetacity/meta-theme-metacity.c:3867
+#: libmetacity/meta-theme-metacity.c:3832
+#: libmetacity/meta-theme-metacity.c:3840
+#: libmetacity/meta-theme-metacity.c:3848
+#: libmetacity/meta-theme-metacity.c:3856
+#: libmetacity/meta-theme-metacity.c:3865
 #, c-format
 msgid "No <%s> set for theme '%s'"
 msgstr "'%s' temasında hiç <%s> atanmamış"
 
-#: libmetacity/meta-theme-metacity.c:3878
+#: libmetacity/meta-theme-metacity.c:3876
 #, c-format
 msgid ""
 "No frame style set for window type '%s' in theme '%s', add a <window "
@@ -1094,29 +1085,29 @@ msgstr ""
 "'%s' temasında '%s' pencere türüne çerçeve biçemi atanmamış, bir <window "
 "type='%s' style_set=\"her neyse\"/> ögesi ekleyin"
 
-#: libmetacity/meta-theme-metacity.c:4141
+#: libmetacity/meta-theme-metacity.c:4139
 msgid "No draw_ops provided for frame piece"
 msgstr "Çerçeve parçası için hiç draw_ops sağlanmamış"
 
-#: libmetacity/meta-theme-metacity.c:4157
+#: libmetacity/meta-theme-metacity.c:4155
 msgid "No draw_ops provided for button"
 msgstr "Düğme için hiç draw_ops sağlanmamış"
 
-#: libmetacity/meta-theme-metacity.c:4272
-#: libmetacity/meta-theme-metacity.c:4283
-#: libmetacity/meta-theme-metacity.c:4294
-#: libmetacity/meta-theme-metacity.c:4305
-#: libmetacity/meta-theme-metacity.c:4316
+#: libmetacity/meta-theme-metacity.c:4270
+#: libmetacity/meta-theme-metacity.c:4281
+#: libmetacity/meta-theme-metacity.c:4292
+#: libmetacity/meta-theme-metacity.c:4303
+#: libmetacity/meta-theme-metacity.c:4314
 #, c-format
 msgid "<%s> specified twice for this theme"
 msgstr "Bu temada <%s> iki kez belirtilmiş"
 
-#: libmetacity/meta-theme-metacity.c:4355
+#: libmetacity/meta-theme-metacity.c:4353
 #, c-format
 msgid "No text is allowed inside element <%s>"
 msgstr "<%s> ögesinin içinde metin bulunmamalıdır"
 
-#: libmetacity/meta-theme-metacity.c:4621
+#: libmetacity/meta-theme-metacity.c:4619
 #, c-format
 msgid "Failed to find a valid file for theme '%s'"
 msgstr "'%s' teması için geçerli bir dosya bulunamadı."
@@ -1161,48 +1152,69 @@ msgstr ""
 "Bu, özgür yazılımdır; telif koşullarını öğrenmek için kaynak koda bakın.\n"
 "Hiç bir garantisi, BELİRLİ BİR AMACA UYGUNLUĞU için dahi, YOKTUR.\n"
 
-#: src/core/main.c:205
+#: src/core/main.c:197 src/core/main.c:214
+#, c-format
+msgid "Option “%s” is deprecated, use the “--compositor” instead."
+msgstr "“%s” seçeneği terk edilmiştir, bunun yerine “--compositor” kullanın."
+
+#: src/core/main.c:243
+#, c-format
+msgid "“%s” is not a valid compositor"
+msgstr "“%s” geçerli dizgici değil"
+
+#: src/core/main.c:275
 msgid "Disable connection to session manager"
 msgstr "Ortam yöneticisine olan bağlantıyı kapat"
 
-#: src/core/main.c:211
+#: src/core/main.c:281
 msgid "Replace the running window manager with Metacity"
 msgstr "Çalışan pencere yöneticisini Metacity ile değiştir"
 
-#: src/core/main.c:217
+#: src/core/main.c:287
 msgid "Specify session management ID"
 msgstr "Ortam yönetim ID'sini belirtin"
 
-#: src/core/main.c:222
+#: src/core/main.c:292
 msgid "X Display to use"
 msgstr "Kullanılacak X Ekranı"
 
-#: src/core/main.c:228
+#: src/core/main.c:298
 msgid "Initialize session from savefile"
 msgstr "Ortamı kayıtlı dosyadan başlat"
 
-#: src/core/main.c:234
+#: src/core/main.c:304
 msgid "Print version"
 msgstr "Sürümü yazdır"
 
-#: src/core/main.c:240
+#: src/core/main.c:310
 msgid "Make X calls synchronous"
 msgstr "X çağrılarını eşazamanlı yap"
 
-#: src/core/main.c:246
+#: src/core/main.c:319
 msgid "Turn compositing on"
-msgstr "Kompozisyonları aç"
+msgstr "Dizgilemeyi aç"
 
-#: src/core/main.c:252
+#: src/core/main.c:328
 msgid "Turn compositing off"
-msgstr "Kompozisyonları kapat"
+msgstr "Dizgilemeyi kapat"
 
-#: src/core/main.c:258
+#: src/core/main.c:337
+msgid "Compositor to use"
+msgstr "Kullanılacak dizgileyici"
+
+#: src/core/main.c:343
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr "Büyütülmüş ve dekorasyonları olmayan pencereleri tam ekran yapma"
 
-#: src/core/prefs.c:1421
+#: src/core/prefs.c:905
+msgid ""
+"Setting “compositing-manager” is deprecated, use the “compositor” instead."
+msgstr ""
+"“compositing-manager” ayarı terk edilmiştir, bunun yerine “compositor” "
+"kullanın."
+
+#: src/core/prefs.c:1446
 #, c-format
 msgid "Workspace %d"
 msgstr "Çalışma Alanı %d"
@@ -1242,27 +1254,27 @@ msgid "Opened log file %s\n"
 msgstr "%s günlük dosyası açıldı\n"
 
 #. Translators: the title of a window from another machine
-#: src/core/window-props.c:570
+#: src/core/window-props.c:617
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (%s üzerinde)"
 
 #. Simple case-- don't bother to look it up.  It's root.
-#: src/core/window-props.c:602
+#: src/core/window-props.c:649
 #, c-format
 msgid "%s (as superuser)"
 msgstr "%s (superuser olarak)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine
-#: src/core/window-props.c:620
+#: src/core/window-props.c:667
 #, c-format
 msgid "%s (as %s)"
 msgstr "%s (%s olarak)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine, whose name we don't know
-#: src/core/window-props.c:626
+#: src/core/window-props.c:673
 #, c-format
 msgid "%s (as another user)"
 msgstr "%s (diğer kullanıcı olarak)"
@@ -1272,53 +1284,25 @@ msgstr "%s (diğer kullanıcı olarak)"
 msgid "Usage: %s\n"
 msgstr "Kullanım: %s\n"
 
-#: src/ui/frames.c:1315
+#: src/ui/frames.c:1255
 msgid "Close Window"
 msgstr "Pencereyi Kapat"
 
-#: src/ui/frames.c:1318
+#: src/ui/frames.c:1258
 msgid "Window Menu"
 msgstr "Pencere Menüsü"
 
-#: src/ui/frames.c:1321
-msgid "Window App Menu"
-msgstr "Pencere Uygulama Menüsü"
-
-#: src/ui/frames.c:1324
+#: src/ui/frames.c:1261
 msgid "Minimize Window"
 msgstr "Pencereyi Küçült"
 
-#: src/ui/frames.c:1327
+#: src/ui/frames.c:1264
 msgid "Maximize Window"
 msgstr "Pencereyi Büyült"
 
-#: src/ui/frames.c:1330
+#: src/ui/frames.c:1267
 msgid "Restore Window"
 msgstr "Pencereyi Eski Boyutuna Getir"
-
-#: src/ui/frames.c:1333
-msgid "Roll Up Window"
-msgstr "Pencereyi Yukarı Sar"
-
-#: src/ui/frames.c:1336
-msgid "Unroll Window"
-msgstr "Pencereyi Geri Sar"
-
-#: src/ui/frames.c:1339
-msgid "Keep Window On Top"
-msgstr "Pencereyi Üstte Tut"
-
-#: src/ui/frames.c:1342
-msgid "Remove Window From Top"
-msgstr "Pencereyi Üstten Kaldır"
-
-#: src/ui/frames.c:1345
-msgid "Always On Visible Workspace"
-msgstr "Her Zaman Görünen Çalışma Alanında"
-
-#: src/ui/frames.c:1348
-msgid "Put Window On Only One Workspace"
-msgstr "Pencereyi Sadece Bir Çalışma Alanına Yerleştir"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: src/ui/menu.c:65
@@ -1518,7 +1502,7 @@ msgstr "Mod5"
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: src/ui/ui.c:871
+#: src/ui/ui.c:853
 msgid "Falling back to default GTK+ theme - Adwaita"
 msgstr "Öntanımlı GTK+ temasına geri dönüyoruz - Adwaita"
 
@@ -1566,6 +1550,48 @@ msgstr ""
 #: theme-viewer/theme-viewer-window.c:244
 msgid "Run again"
 msgstr "Yeniden çalıştır"
+
+#~ msgid "preferences-system-windows"
+#~ msgstr "preferences-system-windows"
+
+#~ msgid "If true, trade off usability for less resource usage"
+#~ msgstr ""
+#~ "Eğer seçiliyse, daha az kaynak kullanımı için kullanılabilirliği azaltır"
+
+#~ msgid ""
+#~ "If true, Metacity will give the user less feedback by using wireframes, "
+#~ "avoiding animations, or other means. This is a significant reduction in "
+#~ "usability for many users, but may allow legacy applications to continue "
+#~ "working, and may also be a useful tradeoff for terminal servers. However, "
+#~ "the wireframe feature is disabled when accessibility is on."
+#~ msgstr ""
+#~ "Eğer doğruysa; Metacity, iskeletleri kullanarak, animasyonları göz ardı "
+#~ "ederek vesaire kullanıcıya daha az geribildirim verecektir. Bu, birçok "
+#~ "kullanıcı için kullanışlığın epey azalması demektir, ancak eski "
+#~ "uygulamaların çalışmaya devam etmesini sağlar ve uçbirim sunucular için "
+#~ "kullanışlı olabilir. Yine de, erişebilirlik açıkken iskelet özelliği "
+#~ "devre dışıdır."
+
+#~ msgid "Window App Menu"
+#~ msgstr "Pencere Uygulama Menüsü"
+
+#~ msgid "Roll Up Window"
+#~ msgstr "Pencereyi Yukarı Sar"
+
+#~ msgid "Unroll Window"
+#~ msgstr "Pencereyi Geri Sar"
+
+#~ msgid "Keep Window On Top"
+#~ msgstr "Pencereyi Üstte Tut"
+
+#~ msgid "Remove Window From Top"
+#~ msgstr "Pencereyi Üstten Kaldır"
+
+#~ msgid "Always On Visible Workspace"
+#~ msgstr "Her Zaman Görünen Çalışma Alanında"
+
+#~ msgid "Put Window On Only One Workspace"
+#~ msgstr "Pencereyi Sadece Bir Çalışma Alanına Yerleştir"
 
 #~ msgid "Toggle shaded state"
 #~ msgstr "Toplanmış durumu aç veya kapat"
