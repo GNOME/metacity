@@ -8,28 +8,22 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
-"product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-04-02 16:23+0000\n"
-"PO-Revision-Date: 2017-04-03 14:05+0700\n"
-"Last-Translator: Kukuh Syafaat <syafaatkukuh@gmail.com>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues\n"
+"POT-Creation-Date: 2020-09-06 11:32+0000\n"
+"PO-Revision-Date: 2020-10-04 17:06+0700\n"
+"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: GNOME Indonesian Translation Team <gnome@i15n.org>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.8.11\n"
+"Plural-Forms: nplurals=2; plural= n!=1;\n"
+"X-Generator: Poedit 2.4.1\n"
 
 #. Translators: This is the title used on dialog boxes
-#: data/applications/metacity.desktop.in:4 src/core/util.c:435
+#: data/applications/metacity.desktop.in:4 src/core/util.c:429
 msgid "Metacity"
 msgstr "Metacity"
-
-#. TRANSLATORS: Don't translate this text (this is icon name)
-#: data/applications/metacity.desktop.in:7
-msgid "preferences-system-windows"
-msgstr "preferences-system-windows"
 
 #: data/keybindings/50-metacity-navigation.xml:6
 msgid "Navigation"
@@ -168,54 +162,50 @@ msgid "Restore window"
 msgstr "Kembalikan ukuran jendela"
 
 #: data/keybindings/50-metacity-windows.xml:24
-msgid "Toggle shaded state"
-msgstr "Ubah kondisi berbayang"
-
-#: data/keybindings/50-metacity-windows.xml:27
 msgid "Close window"
 msgstr "Tutup jendela"
 
-#: data/keybindings/50-metacity-windows.xml:30
+#: data/keybindings/50-metacity-windows.xml:27
 msgid "Minimize window"
 msgstr "Minimalkan ukuran jendela"
 
-#: data/keybindings/50-metacity-windows.xml:33
+#: data/keybindings/50-metacity-windows.xml:30
 msgid "Move window"
 msgstr "Pindahkan jendela"
 
-#: data/keybindings/50-metacity-windows.xml:36
+#: data/keybindings/50-metacity-windows.xml:33
 msgid "Resize window"
 msgstr "Ubah ukuran jendela"
 
-#: data/keybindings/50-metacity-windows.xml:39
+#: data/keybindings/50-metacity-windows.xml:36
 msgid "Toggle window on all workspaces or one"
 msgstr "Menampilkan jendela pada semua atau satu area kerja"
 
-#: data/keybindings/50-metacity-windows.xml:42
+#: data/keybindings/50-metacity-windows.xml:39
 msgid "Raise window if covered, otherwise lower it"
 msgstr "Naikkan jendela bila tertutup jendela lain, sebaliknya diturunkan"
 
-#: data/keybindings/50-metacity-windows.xml:45
+#: data/keybindings/50-metacity-windows.xml:42
 msgid "Raise window above other windows"
 msgstr "Naikkan jendela di atas jendela-jendela lain"
 
-#: data/keybindings/50-metacity-windows.xml:48
+#: data/keybindings/50-metacity-windows.xml:45
 msgid "Lower window below other windows"
 msgstr "Turunkan jendela di bawah jendela lain"
 
-#: data/keybindings/50-metacity-windows.xml:51
+#: data/keybindings/50-metacity-windows.xml:48
 msgid "Maximize window vertically"
 msgstr "Maksimalkan ukuran jendela secara vertikal"
 
-#: data/keybindings/50-metacity-windows.xml:54
+#: data/keybindings/50-metacity-windows.xml:51
 msgid "Maximize window horizontally"
 msgstr "Maksimalkan ukuran jendela secara horisontal"
 
-#: data/keybindings/50-metacity-windows.xml:58
+#: data/keybindings/50-metacity-windows.xml:55
 msgid "View split on left"
 msgstr "Tilik belahan di kiri"
 
-#: data/keybindings/50-metacity-windows.xml:62
+#: data/keybindings/50-metacity-windows.xml:59
 msgid "View split on right"
 msgstr "Tilik belahan di kanan"
 
@@ -236,14 +226,30 @@ msgid "Compositing Manager"
 msgstr "Manajer Pengkomposisian"
 
 #: data/schemas/org.gnome.metacity.gschema.xml:24
-msgid "Determines whether Metacity is a compositing manager."
-msgstr "Menentukan apakah Metacity adalah suatu manajer pengkomposisian."
+msgid ""
+"Determines whether Metacity is a compositing manager. DEPRECATED: This key "
+"is deprecated, use the “compositor” instead."
+msgstr ""
+"Menentukan apakah Metacity adalah manajer kompositing. TIDAK DIGUNAKAN LAGI: "
+"Kunci ini tidak digunakan lagi, gunakan \"compositor\" sebagai pengganti."
 
-#: data/schemas/org.gnome.metacity.gschema.xml:31
+#: data/schemas/org.gnome.metacity.gschema.xml:33
+msgid "Compositor"
+msgstr "Kompositor"
+
+#: data/schemas/org.gnome.metacity.gschema.xml:34
+msgid ""
+"Compositor that Metacity will use for compositing. Possible values are "
+"“none” and “xrender”."
+msgstr ""
+"Kompositor yang Metacity akan gunakan untuk kompositing. Nilai yang mungkin "
+"adalah \"none\" dan \"xrender\"."
+
+#: data/schemas/org.gnome.metacity.gschema.xml:42
 msgid "Enable edge tiling when dropping windows on screen edges"
 msgstr "Fungsikan pengubinan tepi ketika menjatuhkan jendela pada tepi layar"
 
-#: data/schemas/org.gnome.metacity.gschema.xml:32
+#: data/schemas/org.gnome.metacity.gschema.xml:43
 msgid ""
 "If enabled, dropping windows on vertical screen edges maximizes them "
 "vertically and resizes them horizontally to cover half of the available "
@@ -254,11 +260,11 @@ msgstr ""
 "sehingga mencakup separuh dari area yang tersedia. Menjatuhkan jendela pada "
 "tepi atas layar memaksimalkan mereka sepenuhnya."
 
-#: data/schemas/org.gnome.metacity.gschema.xml:41
+#: data/schemas/org.gnome.metacity.gschema.xml:52
 msgid "Window placement behavior"
 msgstr "Perilaku penempatan jendela"
 
-#: data/schemas/org.gnome.metacity.gschema.xml:42
+#: data/schemas/org.gnome.metacity.gschema.xml:53
 msgid ""
 "Metacity's default window-placement behavior is smart (first-fit), similar "
 "to behaviors in some other window managers. It will try to tile windows so "
@@ -275,27 +281,6 @@ msgstr ""
 "\"center\" untuk menempatkan jendela baru di pusat ruang kerja mereka, "
 "\"origin\" untuk pojok kiri atas dari ruang kerja, atau \"random\" untuk "
 "menempatkan jendela baru pada lokasi acak di dalam ruang kerja mereka."
-
-#: data/schemas/org.gnome.metacity.gschema.xml:57
-msgid "If true, trade off usability for less resource usage"
-msgstr ""
-"Bila bernilai true, mementingkan penggunaan sumber daya yang lebih kecil "
-"dari pada daya guna"
-
-#: data/schemas/org.gnome.metacity.gschema.xml:58
-msgid ""
-"If true, Metacity will give the user less feedback by using wireframes, "
-"avoiding animations, or other means. This is a significant reduction in "
-"usability for many users, but may allow legacy applications to continue "
-"working, and may also be a useful tradeoff for terminal servers. However, "
-"the wireframe feature is disabled when accessibility is on."
-msgstr ""
-"Bila bernilai true, Metacity akan memberikan kembalian pengguna yang lebih "
-"sedikit dengan menggunakan bingkai kawat, menghindari animasi, atau yang "
-"lain. Ini adalah pengurangan kedayagunaan yang signifikan untuk kebanyakan "
-"pemakai, tetapi akan membolehkan aplikasi lama untuk tetap bekerja, dan "
-"mungkin juga berguna untuk server terminal. Bagaimanapun, fitur bingkai "
-"kawat akan dimatikan saat kemudahan akses dinyalakan."
 
 #: data/schemas/org.gnome.metacity.theme.gschema.xml:11
 msgid "Theme Name"
@@ -331,97 +316,101 @@ msgstr ""
 "xml dan CSS. Ketika memakai tipe tema ini anda HARUS memberikan nama tema "
 "yang valid."
 
-#: data/ui/theme-viewer-window.ui:45
+#: data/ui/theme-viewer-window.ui:86
 msgid "Reload"
 msgstr "Muat Ulang"
 
-#: data/ui/theme-viewer-window.ui:103
+#: data/ui/theme-viewer-window.ui:122
 msgid "Dark Theme:"
 msgstr "Tema Gelap:"
 
-#: data/ui/theme-viewer-window.ui:142
+#: data/ui/theme-viewer-window.ui:161
 msgid "Frame Type:"
-msgstr "Tipe Bingkai"
+msgstr "Tipe Bingkai:"
 
-#: data/ui/theme-viewer-window.ui:156
+#: data/ui/theme-viewer-window.ui:175
 msgid "Normal"
 msgstr "Normal"
 
-#: data/ui/theme-viewer-window.ui:157
+#: data/ui/theme-viewer-window.ui:176
 msgid "Dialog"
 msgstr "Dialog"
 
-#: data/ui/theme-viewer-window.ui:158
+#: data/ui/theme-viewer-window.ui:177
 msgid "Modal Dialog"
 msgstr "Dialog Modal"
 
-#: data/ui/theme-viewer-window.ui:159
+#: data/ui/theme-viewer-window.ui:178
 msgid "Utility"
 msgstr "Utilitas"
 
-#: data/ui/theme-viewer-window.ui:160
+#: data/ui/theme-viewer-window.ui:179
 msgid "Menu"
 msgstr "Menu"
 
-#: data/ui/theme-viewer-window.ui:161
+#: data/ui/theme-viewer-window.ui:180
 msgid "Border"
 msgstr "Batas"
 
-#: data/ui/theme-viewer-window.ui:162
+#: data/ui/theme-viewer-window.ui:181
 msgid "Attached"
 msgstr "Dilampirkan"
 
-#: data/ui/theme-viewer-window.ui:190
+#: data/ui/theme-viewer-window.ui:209
 msgid "Frame Flags:"
 msgstr "Flag Bingkai:"
 
-#: data/ui/theme-viewer-window.ui:205
+#: data/ui/theme-viewer-window.ui:224
 msgid "Has Focus"
 msgstr "Memegang Fokus"
 
-#: data/ui/theme-viewer-window.ui:220
+#: data/ui/theme-viewer-window.ui:239
 msgid "Shaded"
 msgstr "Berbayang"
 
-#: data/ui/theme-viewer-window.ui:234
+#: data/ui/theme-viewer-window.ui:253
 msgid "Maximized"
 msgstr "Dimaksimalkan"
 
-#: data/ui/theme-viewer-window.ui:248
+#: data/ui/theme-viewer-window.ui:267
 msgid "Fullscreen"
 msgstr "Layar Penuh"
 
-#: data/ui/theme-viewer-window.ui:262
+#: data/ui/theme-viewer-window.ui:281
 msgid "Tiled"
 msgstr "Berjajar"
 
-#: data/ui/theme-viewer-window.ui:302
+#: data/ui/theme-viewer-window.ui:321
 msgid "Button Layout:"
 msgstr "Tata Letak Tombol:"
 
-#: data/ui/theme-viewer-window.ui:341
+#: data/ui/theme-viewer-window.ui:360
 msgid "Composited:"
 msgstr "Dikomposisikan:"
 
-#: data/ui/theme-viewer-window.ui:381
+#: data/ui/theme-viewer-window.ui:400
 msgid "Scale:"
 msgstr "Skala:"
 
-#: data/ui/theme-viewer-window.ui:441 theme-viewer/theme-viewer-window.c:650
+#: data/ui/theme-viewer-window.ui:468 theme-viewer/theme-viewer-window.c:636
 msgid "Choose Theme"
 msgstr "Pilih Tema"
 
-#: data/ui/theme-viewer-window.ui:481
+#: data/ui/theme-viewer-window.ui:508
 msgid "Preview"
 msgstr "Pratinjau"
 
-#: data/ui/theme-viewer-window.ui:570 theme-viewer/theme-viewer-window.c:269
+#: data/ui/theme-viewer-window.ui:597 theme-viewer/theme-viewer-window.c:252
 msgid "Run"
 msgstr "Jalankan"
 
-#: data/ui/theme-viewer-window.ui:592
+#: data/ui/theme-viewer-window.ui:619
 msgid "Benchmark"
 msgstr "Pengukuran"
+
+#: data/ui/theme-viewer-window.ui:652 theme-viewer/theme-viewer-window.c:982
+msgid "Metacity Theme Viewer"
+msgstr "Peninjau Tema Metacity"
 
 #: libmetacity/meta-color-spec.c:246
 #, c-format
@@ -555,28 +544,28 @@ msgid "Coordinate expression had unknown variable or constant '%s'"
 msgstr ""
 "Ekspresi koordinat punya variabel atau konstanta '%s' yang tidak diketahui"
 
-#: libmetacity/meta-draw-spec.c:631 libmetacity/meta-draw-spec.c:641
-#: libmetacity/meta-draw-spec.c:676 libmetacity/meta-draw-spec.c:686
+#: libmetacity/meta-draw-spec.c:638 libmetacity/meta-draw-spec.c:648
+#: libmetacity/meta-draw-spec.c:683 libmetacity/meta-draw-spec.c:693
 msgid "Coordinate expression results in division by zero"
 msgstr "Ekspresi koordinat menghasilkan pembagian dengan nol"
 
-#: libmetacity/meta-draw-spec.c:775
+#: libmetacity/meta-draw-spec.c:782
 #, c-format
 msgid ""
 "Coordinate expression has an operator \"%s\" where an operand was expected"
 msgstr "Ekspresi koordinat menggunakan operator \"%s\" tanpa adanya operan"
 
-#: libmetacity/meta-draw-spec.c:784
+#: libmetacity/meta-draw-spec.c:791
 msgid "Coordinate expression had an operand where an operator was expected"
 msgstr "Ekspresi koordinat menggunakan operand tanpa operator"
 
-#: libmetacity/meta-draw-spec.c:792
+#: libmetacity/meta-draw-spec.c:799
 msgid "Coordinate expression ended with an operator instead of an operand"
 msgstr ""
 "Ekspresi koordinat diakhiri dengan operator, seharusnya diakhiri dengan "
 "operand"
 
-#: libmetacity/meta-draw-spec.c:802
+#: libmetacity/meta-draw-spec.c:809
 #, c-format
 msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
@@ -585,24 +574,24 @@ msgstr ""
 "Ekspresi koordinat memiliki operator \"%c\" diikuti operator \"%c\" tanpa "
 "adanya operand di antarany"
 
-#: libmetacity/meta-draw-spec.c:934
+#: libmetacity/meta-draw-spec.c:941
 msgid "Coordinate expression parser overflowed its buffer."
 msgstr "Ekspresi koordinat melampaui batasannya."
 
-#: libmetacity/meta-draw-spec.c:964
+#: libmetacity/meta-draw-spec.c:971
 msgid "Coordinate expression had a close parenthesis with no open parenthesis"
 msgstr "Terdapat kurung tutup tanpa kurung buka pada ekspresi koordinat"
 
-#: libmetacity/meta-draw-spec.c:1037
+#: libmetacity/meta-draw-spec.c:1044
 msgid "Coordinate expression had an open parenthesis with no close parenthesis"
-msgstr "Terdapat kurung buka tanpa kurung tutup pada ekspresi koordinat "
+msgstr "Ekspresi koordinat memiliki kurung terbuka tanpa kurung tutup"
 
-#: libmetacity/meta-draw-spec.c:1047
+#: libmetacity/meta-draw-spec.c:1054
 msgid "Coordinate expression doesn't seem to have any operators or operands"
 msgstr "Ekspresi koordinat sepertinya tidak memiliki operator atau operan"
 
-#: libmetacity/meta-draw-spec.c:1239 libmetacity/meta-draw-spec.c:1259
-#: libmetacity/meta-draw-spec.c:1279
+#: libmetacity/meta-draw-spec.c:1246 libmetacity/meta-draw-spec.c:1266
+#: libmetacity/meta-draw-spec.c:1286
 #, c-format
 msgid "Theme contained an expression that resulted in an error: %s"
 msgstr "Tema memuat suatu ekspresi yang menghasilkan galat: %s"
@@ -646,12 +635,12 @@ msgstr "Ukuran frame tidak menyebutkan ukuran tombol"
 #. * in theme XML.  The "<frame ...>" is intended as a noun phrase,
 #. * and the "missing" qualifies it.  You should translate "whatever".
 #.
-#: libmetacity/meta-frame-style.c:144 libmetacity/meta-frame-style.c:469
+#: libmetacity/meta-frame-style.c:144 libmetacity/meta-frame-style.c:467
 #, c-format
 msgid "Missing <frame state='%s' resize='%s' focus='%s' style='whatever' />"
 msgstr "Kurang <frame state='%s' resize='%s' focus='%s' style='whatever'/>"
 
-#: libmetacity/meta-frame-style.c:326
+#: libmetacity/meta-frame-style.c:324
 #, c-format
 msgid ""
 "<button function='%s' state='%s' draw_ops='whatever'/> must be specified for "
@@ -664,7 +653,7 @@ msgstr ""
 msgid "Gradients should have at least two colors"
 msgstr "Gradien harus paling tidak ada dua warna"
 
-#: libmetacity/meta-theme-impl.c:65
+#: libmetacity/meta-theme-impl.c:41
 #, c-format
 msgid "MetaThemeImplClass::load not implemented for '%s'"
 msgstr "MetaThemeImplClass::load tidak diimplementasi bagi '%s'"
@@ -677,54 +666,54 @@ msgstr "MetaThemeImplClass::load tidak diimplementasi bagi '%s'"
 msgid "No '%s' attribute on element <%s>"
 msgstr "Tidak ada atribut '%s' pada elemen <%s>"
 
-#: libmetacity/meta-theme-metacity.c:303 libmetacity/meta-theme-metacity.c:322
+#: libmetacity/meta-theme-metacity.c:305 libmetacity/meta-theme-metacity.c:324
 #, c-format
 msgid "Line %d character %d: %s"
 msgstr "Baris %d karakter %d: %s"
 
-#: libmetacity/meta-theme-metacity.c:362
+#: libmetacity/meta-theme-metacity.c:364
 #, c-format
 msgid "Could not parse '%s' as an integer"
 msgstr "Tidak dapat mengurai '%s' sebagai integer"
 
-#: libmetacity/meta-theme-metacity.c:370 libmetacity/meta-theme-metacity.c:587
+#: libmetacity/meta-theme-metacity.c:372 libmetacity/meta-theme-metacity.c:589
 #, c-format
 msgid "Did not understand trailing characters '%s' in string '%s'"
 msgstr "Tidak mengerti karakter '%s' di ekor string '%s'"
 
-#: libmetacity/meta-theme-metacity.c:379
+#: libmetacity/meta-theme-metacity.c:381
 #, c-format
 msgid "Integer %ld must be positive"
 msgstr "Integer %ld harus bernilai positif"
 
-#: libmetacity/meta-theme-metacity.c:386
+#: libmetacity/meta-theme-metacity.c:388
 #, c-format
 msgid "Integer %ld is too large, current max is %d"
 msgstr "Integer %ld terlalu besar, maksimal %d"
 
-#: libmetacity/meta-theme-metacity.c:488
+#: libmetacity/meta-theme-metacity.c:490
 #, c-format
 msgid "Attribute '%s' repeated twice on the same <%s> element"
 msgstr "Atribut '%s' diulang dua kali pada elemen <%s> yang sama"
 
-#: libmetacity/meta-theme-metacity.c:510 libmetacity/meta-theme-metacity.c:554
+#: libmetacity/meta-theme-metacity.c:512 libmetacity/meta-theme-metacity.c:556
 #, c-format
 msgid "Attribute '%s' is invalid on <%s> element in this context"
 msgstr "Atribut '%s' tidak valid pada elemen <%s> dalam konteks ini"
 
-#: libmetacity/meta-theme-metacity.c:579 libmetacity/meta-theme-metacity.c:617
+#: libmetacity/meta-theme-metacity.c:581 libmetacity/meta-theme-metacity.c:619
 #, c-format
 msgid "Could not parse '%s' as a floating point number"
 msgstr "Tidak dapat mengurai '%s' sebagai angka floating point"
 
-#: libmetacity/meta-theme-metacity.c:649
+#: libmetacity/meta-theme-metacity.c:651
 #, c-format
 msgid "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g"
 msgstr ""
 "Alpha harus dalam rentang 0,0 (tidak kelihatan) dan 1,0 (sepenuhnya legap), "
 "tertera %g"
 
-#: libmetacity/meta-theme-metacity.c:695
+#: libmetacity/meta-theme-metacity.c:697
 #, c-format
 msgid ""
 "Invalid title scale '%s' (must be one of xx-small,x-small,small,medium,large,"
@@ -733,70 +722,70 @@ msgstr ""
 "Skala judul '%s' tidak valid (harusnya bernilai xx-small, x-small, small, "
 "medium, large, x-large, xx-large)\n"
 
-#: libmetacity/meta-theme-metacity.c:724 libmetacity/meta-theme-metacity.c:752
+#: libmetacity/meta-theme-metacity.c:726 libmetacity/meta-theme-metacity.c:754
 #, c-format
 msgid "Boolean values must be 'true' or 'false' not '%s'"
 msgstr "Nilai boolean harus 'true' atau 'false' dan bukannya '%s'"
 
-#: libmetacity/meta-theme-metacity.c:781 libmetacity/meta-theme-metacity.c:818
-#: libmetacity/meta-theme-metacity.c:856
+#: libmetacity/meta-theme-metacity.c:783 libmetacity/meta-theme-metacity.c:820
+#: libmetacity/meta-theme-metacity.c:858
 #, c-format
 msgid "User-defined constants must begin with a capital letter; '%s' does not"
 msgstr "Konstanta buatan pengguna harus dimulai dengan huruf besar; '%s' tidak"
 
-#: libmetacity/meta-theme-metacity.c:790 libmetacity/meta-theme-metacity.c:827
-#: libmetacity/meta-theme-metacity.c:865
+#: libmetacity/meta-theme-metacity.c:792 libmetacity/meta-theme-metacity.c:829
+#: libmetacity/meta-theme-metacity.c:867
 #, c-format
 msgid "Constant '%s' has already been defined"
 msgstr "Konstanta '%s' telah didefinisikan sebelumnya"
 
-#: libmetacity/meta-theme-metacity.c:1072
-#: libmetacity/meta-theme-metacity.c:1169
-#: libmetacity/meta-theme-metacity.c:1271
+#: libmetacity/meta-theme-metacity.c:1074
+#: libmetacity/meta-theme-metacity.c:1171
+#: libmetacity/meta-theme-metacity.c:1273
 #, c-format
 msgid "<%s> name \"%s\" used a second time"
 msgstr "Nama <%s> \"%s\" digunakan kedua kali"
 
-#: libmetacity/meta-theme-metacity.c:1084
+#: libmetacity/meta-theme-metacity.c:1086
 #, c-format
 msgid "<%s> parent \"%s\" has not been defined"
 msgstr "Induk <%s> \"%s\" belum didefinisikan"
 
-#: libmetacity/meta-theme-metacity.c:1135
+#: libmetacity/meta-theme-metacity.c:1137
 #, c-format
 msgid "<%s> name '%s' used a second time"
 msgstr "Nama <%s> '%s' digunakan kedua kali"
 
-#: libmetacity/meta-theme-metacity.c:1181
-#: libmetacity/meta-theme-metacity.c:1283
+#: libmetacity/meta-theme-metacity.c:1183
+#: libmetacity/meta-theme-metacity.c:1285
 #, c-format
 msgid "<%s> parent '%s' has not been defined"
 msgstr "Induk <%s> '%s' belum didefinisikan"
 
-#: libmetacity/meta-theme-metacity.c:1194
+#: libmetacity/meta-theme-metacity.c:1196
 #, c-format
 msgid "<%s> geometry '%s' has not been defined"
 msgstr "Geometri <%s> '%s' belum didefinisikan"
 
-#: libmetacity/meta-theme-metacity.c:1207
+#: libmetacity/meta-theme-metacity.c:1209
 #, c-format
 msgid "<%s> must specify either a geometry or a parent that has a geometry"
 msgstr "<%s> harus menentukan geometri atau induk yang ada geometrinya"
 
-#: libmetacity/meta-theme-metacity.c:1248
+#: libmetacity/meta-theme-metacity.c:1250
 msgid "You must specify a background for an alpha value to be meaningful"
 msgstr ""
 "Anda mesti menyatakan suatu latar belakang bagi nilai alfa agar berarti"
 
-#: libmetacity/meta-theme-metacity.c:1317
+#: libmetacity/meta-theme-metacity.c:1318
 #, c-format
 msgid "Unknown type '%s' on <%s> element"
 msgstr "Tipe '%s' tidak dikenal pada elemen <%s>"
 
-#: libmetacity/meta-theme-metacity.c:1326
+#: libmetacity/meta-theme-metacity.c:1327
 #, c-format
 msgid "Unknown style_set '%s' on <%s> element"
-msgstr "style_set '%s' tidak dikenal pada elemen <%s>"
+msgstr "Style_set '%s' tidak dikenal pada elemen <%s>"
 
 #: libmetacity/meta-theme-metacity.c:1335
 #, c-format
@@ -808,11 +797,11 @@ msgstr "Tipe jendela '%s' sudah ditugasi set gaya"
 #: libmetacity/meta-theme-metacity.c:1654
 #: libmetacity/meta-theme-metacity.c:2808
 #: libmetacity/meta-theme-metacity.c:2854
-#: libmetacity/meta-theme-metacity.c:3094
-#: libmetacity/meta-theme-metacity.c:3130
-#: libmetacity/meta-theme-metacity.c:3166
-#: libmetacity/meta-theme-metacity.c:3202
-#: libmetacity/meta-theme-metacity.c:3499
+#: libmetacity/meta-theme-metacity.c:3092
+#: libmetacity/meta-theme-metacity.c:3128
+#: libmetacity/meta-theme-metacity.c:3164
+#: libmetacity/meta-theme-metacity.c:3200
+#: libmetacity/meta-theme-metacity.c:3497
 #, c-format
 msgid "Element <%s> is not allowed below <%s>"
 msgstr "Elemen <%s> tidak diperkenankan ada di bawah <%s>"
@@ -899,93 +888,93 @@ msgid "Including draw_ops \"%s\" here would create a circular reference"
 msgstr ""
 "Menyertakan draw_ops \"%s\" di sini akan membuat referensi tak berujung"
 
-#: libmetacity/meta-theme-metacity.c:2981
+#: libmetacity/meta-theme-metacity.c:2979
 #, c-format
 msgid "Unknown position \"%s\" for frame piece"
 msgstr "Posisi \"%s\" tidak dikenal untuk bagian frame"
 
-#: libmetacity/meta-theme-metacity.c:2989
+#: libmetacity/meta-theme-metacity.c:2987
 #, c-format
 msgid "Frame style already has a piece at position %s"
 msgstr "Gaya frame sudah memiliki bagian pada posisi %s"
 
-#: libmetacity/meta-theme-metacity.c:3005
+#: libmetacity/meta-theme-metacity.c:3003
 #, c-format
 msgid "No <draw_ops> with the name \"%s\" has been defined"
 msgstr "Tidak ada <draw_ops> dengan nama \"%s\" yang didefinisikan"
 
-#: libmetacity/meta-theme-metacity.c:3036
+#: libmetacity/meta-theme-metacity.c:3034
 #, c-format
 msgid "Unknown function \"%s\" for button"
 msgstr "Fungsi \"%s\" tidak dikenal untuk tombol"
 
-#: libmetacity/meta-theme-metacity.c:3047
+#: libmetacity/meta-theme-metacity.c:3045
 #, c-format
 msgid "Button function '%s' does not exist in this version (%d, need %d)"
 msgstr "Fungsi tombol '%s' tak ada pada versi ini (%d, perlu %d)"
 
-#: libmetacity/meta-theme-metacity.c:3056
+#: libmetacity/meta-theme-metacity.c:3054
 #, c-format
 msgid "Unknown state '%s' for button"
 msgstr "Keadaan '%s' tidak dikenal untuk tombol"
 
-#: libmetacity/meta-theme-metacity.c:3063
+#: libmetacity/meta-theme-metacity.c:3061
 #, c-format
 msgid "Frame style already has a button for function %s state %s"
 msgstr "Gaya bingkai sudah memiliki tombol untuk fungsi %s kondisi %s"
 
-#: libmetacity/meta-theme-metacity.c:3080
+#: libmetacity/meta-theme-metacity.c:3078
 #, c-format
 msgid "No <draw_ops> with the name '%s' has been defined"
 msgstr "Tidak ada <draw_ops> dengan nama '%s' yang didefinisikan"
 
-#: libmetacity/meta-theme-metacity.c:3114
+#: libmetacity/meta-theme-metacity.c:3112
 msgid ""
 "Can't have a two draw_ops for a <piece> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
 msgstr ""
 "Tidak boleh ada dua draw_ops untuk elemen <piece> (tema menyebutkan atribut "
-"draw_ops dan juga elemen <draw_ops> atau meyebutkan dua elemen tersebut "
+"draw_ops dan juga elemen <draw_ops> atau meyebutkan dua elemen tersebut"
 
-#: libmetacity/meta-theme-metacity.c:3150
+#: libmetacity/meta-theme-metacity.c:3148
 msgid ""
 "Can't have a two draw_ops for a <button> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
 msgstr ""
 "Tidak boleh ada dua draw_ops untuk elemen <button> (tema menyebutkan atribut "
-"draw_ops dan juga elemen <draw_ops> atau meyebutkan dua elemen tersebut "
+"draw_ops dan juga elemen <draw_ops> atau meyebutkan dua elemen tersebut"
 
-#: libmetacity/meta-theme-metacity.c:3186
+#: libmetacity/meta-theme-metacity.c:3184
 msgid ""
 "Can't have a two draw_ops for a <menu_icon> element (theme specified a "
 "draw_ops attribute and also a <draw_ops> element, or specified two elements)"
 msgstr ""
 "Tidak boleh ada dua draw_ops untuk elemen <menu_icon> (tema menyebutkan "
 "atribut draw_ops dan juga elemen <draw_ops> atau meyebutkan dua elemen "
-"tersebut "
+"tersebut"
 
-#: libmetacity/meta-theme-metacity.c:3290
+#: libmetacity/meta-theme-metacity.c:3288
 #, c-format
 msgid "'%s' is not a valid value for focus attribute"
 msgstr "'%s' bukan nilai yang valid untuk atribut focus"
 
-#: libmetacity/meta-theme-metacity.c:3299
+#: libmetacity/meta-theme-metacity.c:3297
 #, c-format
 msgid "'%s' is not a valid value for state attribute"
 msgstr "'%s' bukan nilai yang benar untuk atribut state"
 
-#: libmetacity/meta-theme-metacity.c:3308
+#: libmetacity/meta-theme-metacity.c:3306
 #, c-format
 msgid "A style called '%s' has not been defined"
 msgstr "Gaya bernama '%s' belum didefinisikan"
 
-#: libmetacity/meta-theme-metacity.c:3326
-#: libmetacity/meta-theme-metacity.c:3349
+#: libmetacity/meta-theme-metacity.c:3324
+#: libmetacity/meta-theme-metacity.c:3347
 #, c-format
 msgid "'%s' is not a valid value for resize attribute"
 msgstr "'%s' bukan nilai yang valid untuk atribut resize"
 
-#: libmetacity/meta-theme-metacity.c:3360
+#: libmetacity/meta-theme-metacity.c:3358
 #, c-format
 msgid ""
 "Should not have 'resize' attribute on <%s> element for maximized/shaded "
@@ -994,35 +983,35 @@ msgstr ""
 "Atribut 'resize' tidak boleh ada pada elemen <%s> pada kondisi "
 "termaksimalkan/berbayang"
 
-#: libmetacity/meta-theme-metacity.c:3381
+#: libmetacity/meta-theme-metacity.c:3379
 #, c-format
 msgid "Should not have 'resize' attribute on <%s> element for maximized states"
 msgstr ""
 "Atribut 'resize' tidak boleh ada pada elemen <%s> untuk kondisi "
 "termaksimalkan"
 
-#: libmetacity/meta-theme-metacity.c:3396
-#: libmetacity/meta-theme-metacity.c:3444
+#: libmetacity/meta-theme-metacity.c:3394
+#: libmetacity/meta-theme-metacity.c:3442
 #, c-format
 msgid "Style has already been specified for state %s resize %s focus %s"
 msgstr "Gaya sudah menjelaskan kondisi %s resize %s focus %s"
 
-#: libmetacity/meta-theme-metacity.c:3408
-#: libmetacity/meta-theme-metacity.c:3420
-#: libmetacity/meta-theme-metacity.c:3432
-#: libmetacity/meta-theme-metacity.c:3456
-#: libmetacity/meta-theme-metacity.c:3468
-#: libmetacity/meta-theme-metacity.c:3480
+#: libmetacity/meta-theme-metacity.c:3406
+#: libmetacity/meta-theme-metacity.c:3418
+#: libmetacity/meta-theme-metacity.c:3430
+#: libmetacity/meta-theme-metacity.c:3454
+#: libmetacity/meta-theme-metacity.c:3466
+#: libmetacity/meta-theme-metacity.c:3478
 #, c-format
 msgid "Style has already been specified for state %s focus %s"
 msgstr "Gaya sudah menjelaskan kondisi %s focus %s"
 
-#: libmetacity/meta-theme-metacity.c:3546
+#: libmetacity/meta-theme-metacity.c:3544
 #, c-format
 msgid "Bad version specification '%s'"
 msgstr "Spesifikasi bersi buruk '%s'"
 
-#: libmetacity/meta-theme-metacity.c:3617
+#: libmetacity/meta-theme-metacity.c:3615
 msgid ""
 "'version' attribute cannot be used in metacity-theme-1.xml or metacity-"
 "theme-2.xml"
@@ -1030,45 +1019,45 @@ msgstr ""
 "Atribut \"version\" tak dapat dipakai dalam metacity-theme-1.xml atau "
 "metacity-theme-2.xml"
 
-#: libmetacity/meta-theme-metacity.c:3640
+#: libmetacity/meta-theme-metacity.c:3638
 #, c-format
 msgid "Theme requires version %s but latest supported theme version is %d.%d"
 msgstr ""
 "Tema memerlukan versi %s tapi versi tema terakhir yang didukung adalah %d.%d"
 
-#: libmetacity/meta-theme-metacity.c:3664
+#: libmetacity/meta-theme-metacity.c:3662
 #, c-format
 msgid "Outermost element in theme must be <metacity_theme> not <%s>"
 msgstr "Elemen tema paling luar haruslah <metacity_theme> dan bukan <%s>"
 
-#: libmetacity/meta-theme-metacity.c:3684
+#: libmetacity/meta-theme-metacity.c:3682
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a name/author/date/description element"
 msgstr ""
 "Elemen <%s> tidak diperbolehkan berada elemen name/author/date/description"
 
-#: libmetacity/meta-theme-metacity.c:3690
+#: libmetacity/meta-theme-metacity.c:3688
 #, c-format
 msgid "Element <%s> is not allowed inside a <constant> element"
 msgstr "Elemen <%s> tidak boleh ada dalam elemen <constat>"
 
-#: libmetacity/meta-theme-metacity.c:3703
+#: libmetacity/meta-theme-metacity.c:3701
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a distance/border/aspect_ratio element"
 msgstr ""
 "Elemen <%s> tidak boleh ada di dalam elemen distance/border/aspec_ratio"
 
-#: libmetacity/meta-theme-metacity.c:3726
+#: libmetacity/meta-theme-metacity.c:3724
 #, c-format
 msgid "Element <%s> is not allowed inside a draw operation element"
 msgstr "Elemen <%s> tidak boleh ada di dalam elemen operasi gambar"
 
-#: libmetacity/meta-theme-metacity.c:3737
-#: libmetacity/meta-theme-metacity.c:3768
-#: libmetacity/meta-theme-metacity.c:3774
-#: libmetacity/meta-theme-metacity.c:3780
+#: libmetacity/meta-theme-metacity.c:3735
+#: libmetacity/meta-theme-metacity.c:3766
+#: libmetacity/meta-theme-metacity.c:3772
+#: libmetacity/meta-theme-metacity.c:3778
 #, c-format
 msgid "Element <%s> is not allowed inside a <%s> element"
 msgstr "Elemen <%s> tidak boleh ada di dalam elemen <%s>"
@@ -1077,16 +1066,16 @@ msgstr "Elemen <%s> tidak boleh ada di dalam elemen <%s>"
 #. * is given in angle brackets) was not found in a given theme (whose
 #. * name is given second, in quotation marks).
 #.
-#: libmetacity/meta-theme-metacity.c:3834
-#: libmetacity/meta-theme-metacity.c:3842
-#: libmetacity/meta-theme-metacity.c:3850
-#: libmetacity/meta-theme-metacity.c:3858
-#: libmetacity/meta-theme-metacity.c:3867
+#: libmetacity/meta-theme-metacity.c:3832
+#: libmetacity/meta-theme-metacity.c:3840
+#: libmetacity/meta-theme-metacity.c:3848
+#: libmetacity/meta-theme-metacity.c:3856
+#: libmetacity/meta-theme-metacity.c:3865
 #, c-format
 msgid "No <%s> set for theme '%s'"
 msgstr "Tidak ada <%s> yang ditata untuk tema '%s'"
 
-#: libmetacity/meta-theme-metacity.c:3884
+#: libmetacity/meta-theme-metacity.c:3876
 #, c-format
 msgid ""
 "No frame style set for window type '%s' in theme '%s', add a <window "
@@ -1095,34 +1084,34 @@ msgstr ""
 "Tidak ada gaya bingkai yang ditata untuk tipe jendela '%s' pada tema '%s', "
 "tambahkan elemen <window type='%s' style_set='whatever'/>"
 
-#: libmetacity/meta-theme-metacity.c:4147
+#: libmetacity/meta-theme-metacity.c:4139
 msgid "No draw_ops provided for frame piece"
 msgstr "Tidak ada draw_ops yang disediakan untuk bagian frame"
 
-#: libmetacity/meta-theme-metacity.c:4163
+#: libmetacity/meta-theme-metacity.c:4155
 msgid "No draw_ops provided for button"
 msgstr "Tidak ada draw_ops yang disediakan untuk tombol"
 
-#: libmetacity/meta-theme-metacity.c:4278
-#: libmetacity/meta-theme-metacity.c:4289
-#: libmetacity/meta-theme-metacity.c:4300
-#: libmetacity/meta-theme-metacity.c:4311
-#: libmetacity/meta-theme-metacity.c:4322
+#: libmetacity/meta-theme-metacity.c:4270
+#: libmetacity/meta-theme-metacity.c:4281
+#: libmetacity/meta-theme-metacity.c:4292
+#: libmetacity/meta-theme-metacity.c:4303
+#: libmetacity/meta-theme-metacity.c:4314
 #, c-format
 msgid "<%s> specified twice for this theme"
 msgstr "<%s> disebutkan dua kali pada tema ini"
 
-#: libmetacity/meta-theme-metacity.c:4361
+#: libmetacity/meta-theme-metacity.c:4353
 #, c-format
 msgid "No text is allowed inside element <%s>"
 msgstr "Tidak boleh ada teks di dalam elemen <%s>"
 
-#: libmetacity/meta-theme-metacity.c:4614
+#: libmetacity/meta-theme-metacity.c:4619
 #, c-format
 msgid "Failed to find a valid file for theme '%s'"
 msgstr "Gagal menemukan berkas yang sah untuk tema '%s'"
 
-#: src/core/bell.c:290
+#: src/core/bell.c:279
 msgid "Bell event"
 msgstr "Peristiwa bel"
 
@@ -1163,49 +1152,71 @@ msgstr ""
 "TIDAK ADA jaminan, bahkan untuk KELAYAKAN JUAL atau KELAYAKAN UNTUK KEGUNAAN "
 "TERTENTU.\n"
 
-#: src/core/main.c:215
+#: src/core/main.c:197 src/core/main.c:214
+#, c-format
+msgid "Option “%s” is deprecated, use the “--compositor” instead."
+msgstr ""
+"Opsi \"%s\" tidak berlaku lagi, gunakan \"--compositor\" sebagai pengganti."
+
+#: src/core/main.c:243
+#, c-format
+msgid "“%s” is not a valid compositor"
+msgstr "\"%s\" bukan kompositor yang valid"
+
+#: src/core/main.c:275
 msgid "Disable connection to session manager"
 msgstr "Menonaktifkan koneksi ke manajer sesi"
 
-#: src/core/main.c:221
+#: src/core/main.c:281
 msgid "Replace the running window manager with Metacity"
 msgstr "Mengganti manajer program yang berjalan dengan Metacity"
 
-#: src/core/main.c:227
+#: src/core/main.c:287
 msgid "Specify session management ID"
 msgstr "Tentukan kode pengaturan sesi"
 
-#: src/core/main.c:232
+#: src/core/main.c:292
 msgid "X Display to use"
 msgstr "Tampilan X yang digunakan"
 
-#: src/core/main.c:238
+#: src/core/main.c:298
 msgid "Initialize session from savefile"
 msgstr "Aktifkan sesi dari berkas simpanan"
 
-#: src/core/main.c:244
+#: src/core/main.c:304
 msgid "Print version"
 msgstr "Cetak versi"
 
-#: src/core/main.c:250
+#: src/core/main.c:310
 msgid "Make X calls synchronous"
 msgstr "Buat panggilan X selaras"
 
-#: src/core/main.c:256
+#: src/core/main.c:319
 msgid "Turn compositing on"
 msgstr "Nyalakan pengkomposisian"
 
-#: src/core/main.c:262
+#: src/core/main.c:328
 msgid "Turn compositing off"
 msgstr "Matikan pengkomposisian"
 
-#: src/core/main.c:268
+#: src/core/main.c:337
+msgid "Compositor to use"
+msgstr "Kompositor yang akan digunakan"
+
+#: src/core/main.c:343
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr ""
 "Jangan jadikan layar penuh jendela yang dimaksimalkan dan tak memiliki hiasan"
 
-#: src/core/prefs.c:1524
+#: src/core/prefs.c:905
+msgid ""
+"Setting “compositing-manager” is deprecated, use the “compositor” instead."
+msgstr ""
+"Pengaturan \"compositing-manager\" tidak berlaku lagi, gunakan \"compositor"
+"\" sebagai gantinya."
+
+#: src/core/prefs.c:1446
 #, c-format
 msgid "Workspace %d"
 msgstr "Area kerja %d"
@@ -1222,7 +1233,7 @@ msgstr "Atribut %s tidak dikenal pada elemen <%s>"
 
 #: src/core/session.c:1240
 msgid "nested <window> tag"
-msgstr "Ada tag <window> bersarang"
+msgstr "tag <window> bersarang"
 
 #: src/core/session.c:1482
 #, c-format
@@ -1237,33 +1248,33 @@ msgstr ""
 "Jendela ini tidak bisa &quot;menyimpan setelan aktif saat ini&quot; dan bila "
 "log masuk kali lain Anda harus menjalankannya ulang."
 
-#: src/core/util.c:105
+#: src/core/util.c:106
 #, c-format
 msgid "Opened log file %s\n"
 msgstr "Berkas log yang dibuka %s\n"
 
 #. Translators: the title of a window from another machine
-#: src/core/window-props.c:570
+#: src/core/window-props.c:617
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (pada %s)"
 
 #. Simple case-- don't bother to look it up.  It's root.
-#: src/core/window-props.c:602
+#: src/core/window-props.c:649
 #, c-format
 msgid "%s (as superuser)"
 msgstr "%s (sebagai pengguna super)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine
-#: src/core/window-props.c:620
+#: src/core/window-props.c:667
 #, c-format
 msgid "%s (as %s)"
 msgstr "%s (sebagai %s)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine, whose name we don't know
-#: src/core/window-props.c:626
+#: src/core/window-props.c:673
 #, c-format
 msgid "%s (as another user)"
 msgstr "%s (sebagai pengguna lain)"
@@ -1273,53 +1284,25 @@ msgstr "%s (sebagai pengguna lain)"
 msgid "Usage: %s\n"
 msgstr "Cara pakai: %s\n"
 
-#: src/ui/frames.c:1307
+#: src/ui/frames.c:1255
 msgid "Close Window"
 msgstr "Tutup Jendela"
 
-#: src/ui/frames.c:1310
+#: src/ui/frames.c:1258
 msgid "Window Menu"
 msgstr "Menu Jendela"
 
-#: src/ui/frames.c:1313
-msgid "Window App Menu"
-msgstr "Menu App Jendela"
-
-#: src/ui/frames.c:1316
+#: src/ui/frames.c:1261
 msgid "Minimize Window"
 msgstr "Kecilkan Jendela"
 
-#: src/ui/frames.c:1319
+#: src/ui/frames.c:1264
 msgid "Maximize Window"
 msgstr "Maksimalkan Ukuran Jendela"
 
-#: src/ui/frames.c:1322
+#: src/ui/frames.c:1267
 msgid "Restore Window"
 msgstr "Kembalikan Ukuran jendela"
-
-#: src/ui/frames.c:1325
-msgid "Roll Up Window"
-msgstr "Gulung Jendela"
-
-#: src/ui/frames.c:1328
-msgid "Unroll Window"
-msgstr "Buka Gulungan Jendela"
-
-#: src/ui/frames.c:1331
-msgid "Keep Window On Top"
-msgstr "Jaga Jendela Di Puncak"
-
-#: src/ui/frames.c:1334
-msgid "Remove Window From Top"
-msgstr "Hapus Jendela Dari Puncak"
-
-#: src/ui/frames.c:1337
-msgid "Always On Visible Workspace"
-msgstr "Selalu di Area Kerja Tampak"
-
-#: src/ui/frames.c:1340
-msgid "Put Window On Only One Workspace"
-msgstr "Menempatkan Jendela Hanya di Satu Area Kerja"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: src/ui/menu.c:65
@@ -1403,21 +1386,21 @@ msgstr "Pindahkan ke Area Kerja _Bawah"
 msgid "_Close"
 msgstr "_Tutup"
 
-#: src/ui/menu.c:175
+#: src/ui/menu.c:174
 #, c-format
 msgid "Workspace %d%n"
 msgstr "Area Kerja %d%n"
 
-#: src/ui/menu.c:185
+#: src/ui/menu.c:184
 msgid "Workspace 1_0"
 msgstr "Area Kerja 1_0"
 
-#: src/ui/menu.c:187
+#: src/ui/menu.c:186
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Area Kerja %s%d"
 
-#: src/ui/menu.c:354
+#: src/ui/menu.c:358
 msgid "Move to Another _Workspace"
 msgstr "Pindahkan ke Area Kerja _Lain"
 
@@ -1519,7 +1502,7 @@ msgstr "Mod5"
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: src/ui/ui.c:865
+#: src/ui/ui.c:853
 msgid "Falling back to default GTK+ theme - Adwaita"
 msgstr "Fall back ke tema baku GTK+ - Adwaita"
 
@@ -1539,12 +1522,12 @@ msgstr "Nama tema yang akan dipakai"
 msgid "NAME"
 msgstr "NAMA"
 
-#: theme-viewer/theme-viewer-window.c:119
+#: theme-viewer/theme-viewer-window.c:102
 #, c-format
 msgid "Loaded <b>%s</b> theme <b>%s</b> in <b>%f</b> seconds."
 msgstr "Memuat <b>%s</b> tema <b>%s</b> dalam <b>%f</b> detik."
 
-#: theme-viewer/theme-viewer-window.c:149
+#: theme-viewer/theme-viewer-window.c:132
 #, c-format
 msgid ""
 "Got MetaFrameBorders in <b>%f</b> seconds (CSS loading, PangoFontDescription "
@@ -1553,7 +1536,7 @@ msgstr ""
 "Mendapat MetaFrameBorders dalam <b>%f</b> detik (pemuatan CSS, pembuatan "
 "PangoFontDescription, dan perhitungan tinggi judul)."
 
-#: theme-viewer/theme-viewer-window.c:224
+#: theme-viewer/theme-viewer-window.c:207
 #, c-format
 msgid ""
 "Drew <b>%d</b> frames in <b>%f</b> client-side seconds (<b>%f</b> "
@@ -1564,157 +1547,6 @@ msgstr ""
 "b> milidetik per bingkai) dan <b>%f</b> detik waktu sebenarnya (<b>%f</b> "
 "milidetik per bingkai)."
 
-#: theme-viewer/theme-viewer-window.c:261
+#: theme-viewer/theme-viewer-window.c:244
 msgid "Run again"
 msgstr "Jalankan lagi"
-
-#: theme-viewer/theme-viewer-window.c:996
-msgid "Metacity Theme Viewer"
-msgstr "Peninjau Tema Metacity"
-
-#~ msgid "Unknown window information request: %d"
-#~ msgstr "Permintaan informasi jendela tak dikenal: %d"
-
-#~ msgid "Failed to get hostname: %s\n"
-#~ msgstr "Gagal mendapatkan alamat host: %s\n"
-
-#~ msgid "Failed to open X Window System display '%s'\n"
-#~ msgstr "Gagal membuka tampilan X Window System '%s'\n"
-
-#~ msgid ""
-#~ "Some other program is already using the key %s with modifiers %x as a "
-#~ "binding\n"
-#~ msgstr "Ada program lain yang menggunakan tombol %s dengan kombinasi %x\n"
-
-#~ msgid "Failed to restart: %s\n"
-#~ msgstr "Gagal menjalankan ulang: %s\n"
-
-#~ msgid ""
-#~ "Workarounds for broken applications disabled. Some applications may not "
-#~ "behave properly.\n"
-#~ msgstr ""
-#~ "Pencegahan kesalahan bagi aplikasi yang rusak sedang dinonaktifkan. "
-#~ "Mungkin nanti ada beberapa aplikasi yang akan bertingkah aneh.\n"
-
-#~ msgid "Could not parse font description \"%s\" from GSettings key %s\n"
-#~ msgstr ""
-#~ "Tidak dapat mengurai deskripsi fonta \"%s\" dari kunci GSettings %s\n"
-
-#~ msgid ""
-#~ "\"%s\" found in configuration database is not a valid value for mouse "
-#~ "button modifier\n"
-#~ msgstr ""
-#~ "\"%s\" yang ada pada database konfigurasi bukanlah nilai yang benar untuk "
-#~ "tombol mouse.\n"
-
-#~ msgid ""
-#~ "\"%s\" found in configuration database is not a valid value for "
-#~ "keybinding \"%s\"\n"
-#~ msgstr ""
-#~ "\"%s\" yang ada pada database konfigurasi bernilai tidak benar untuk "
-#~ "kombinasi tombol \"%s\"\n"
-
-#~ msgid "Missing %s extension required for compositing\n"
-#~ msgstr "Kurang ekstensi %s yang diperlukan untuk pengkomposisian\n"
-
-#~ msgid "Screen %d on display '%s' is invalid\n"
-#~ msgstr "Layar %d pada tampilan '%s' tidak benar\n"
-
-#~ msgid ""
-#~ "Screen %d on display \"%s\" already has a window manager; try using the --"
-#~ "replace option to replace the current window manager.\n"
-#~ msgstr ""
-#~ "Layar %d pada tampilan \"%s\" sudah memiliki pengatur jendela. Cobalah "
-#~ "gunakan pilihan --replace untuk mengganti pengatur jendela yang aktif.\n"
-
-#~ msgid ""
-#~ "Could not acquire window manager selection on screen %d display \"%s\"\n"
-#~ msgstr ""
-#~ "Tidak dapat mendapatkan pilihan pengatur jendela pada layar %d tampilan "
-#~ "\"%s\"\n"
-
-#~ msgid "Screen %d on display \"%s\" already has a window manager\n"
-#~ msgstr "Layar %d pada tampilan \"%s\" sudah ada pengatur jendelanya\n"
-
-#~ msgid "Could not release screen %d on display \"%s\"\n"
-#~ msgstr "Layar %d pada tampilan \"%s\" tidak dapat dilepas\n"
-
-#~ msgid "Could not create directory '%s': %s\n"
-#~ msgstr "Tidak dapat membuat direktori '%s': %s\n"
-
-#~ msgid "Could not open session file '%s' for writing: %s\n"
-#~ msgstr "Tidak dapat menulis ke dalam berkas sesi '%s': %s\n"
-
-#~ msgid "Error writing session file '%s': %s\n"
-#~ msgstr "Ada galat saat menulisi berkas sesi '%s': %s\n"
-
-#~ msgid "Error closing session file '%s': %s\n"
-#~ msgstr "Ada galat saat menutup berkas sesi '%s': %s\n"
-
-#~ msgid "Failed to parse saved session file: %s\n"
-#~ msgstr "Gagal membaca berkas sesi simpanan: %s\n"
-
-#~ msgid "Failed to open debug log: %s\n"
-#~ msgstr "Gagal membuka log debug: %s\n"
-
-#~ msgid "Failed to fdopen() log file %s: %s\n"
-#~ msgstr "Gagal melakukan fdopen pada berkas log %s: %s\n"
-
-#~ msgid "Metacity was compiled without support for verbose mode\n"
-#~ msgstr "Metacity dikompilasi tanpa dukungan mode verbose\n"
-
-#~ msgid "Window manager: "
-#~ msgstr "Manajer jendela: "
-
-#~ msgid "Bug in window manager: "
-#~ msgstr "Kutu pada manajer jendela: "
-
-#~ msgid "Window manager warning: "
-#~ msgstr "Peringatan manajer jendela: "
-
-#~ msgid "Window manager error: "
-#~ msgstr "Galat manajer jendela: "
-
-#~ msgid ""
-#~ "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
-#~ "window as specified in the ICCCM.\n"
-#~ msgstr ""
-#~ "Jendela %s menyetel SM_CLIENT_ID pada dirinya sendiri, padahal seharusnya "
-#~ "disetel pada jendela WM_CLIENT_LEADER sesuai aturan ICCCM.\n"
-
-#~ msgid ""
-#~ "Window %s sets an MWM hint indicating it isn't resizable, but sets min "
-#~ "size %d x %d and max size %d x %d; this doesn't make much sense.\n"
-#~ msgstr ""
-#~ "Jendela %s menyetel hint MWM yang menandakan bahwa ia tidak dapat dirubah "
-#~ "ukurannya, sedangkan ukuran minimalnya adalah %d x %d dan maksimal %d x "
-#~ "%d yang tidak masuk di akal.\n"
-
-#~ msgid "Application set a bogus _NET_WM_PID %lu\n"
-#~ msgstr "Aplikasi telah membuat _NET_WM_PID %lu bohongan\n"
-
-#~ msgid "Invalid WM_TRANSIENT_FOR window 0x%lx specified for %s.\n"
-#~ msgstr "WM_TRANSIENT_FOR salah jendela 0x%lx ditentukan untuk %s.\n"
-
-#~ msgid ""
-#~ "Window 0x%lx has property %s\n"
-#~ "that was expected to have type %s format %d\n"
-#~ "and actually has type %s format %d n_items %d.\n"
-#~ "This is most likely an application bug, not a window manager bug.\n"
-#~ "The window has title=\"%s\" class=\"%s\" name=\"%s\"\n"
-#~ msgstr ""
-#~ "Jendela 0x%lx memiliki properti %s\n"
-#~ "yang seharusnya memiliki tipe %s format %d.\n"
-#~ "Sekarang dia memiliki tipe %s format %d n_items %d.\n"
-#~ "Sepertinya ini adalah bug aplikasinya, bukan bug pengatur jendela.\n"
-#~ "Judul jendelanya adalah \"%s\" class=\"%s\" dan bernama=\"%s\"\n"
-
-#~ msgid "Property %s on window 0x%lx contained invalid UTF-8\n"
-#~ msgstr "Properti %s pada jendela 0x%lx berisi karakter UTF-8 yang salah\n"
-
-#~ msgid ""
-#~ "Property %s on window 0x%lx contained invalid UTF-8 for item %d in the "
-#~ "list\n"
-#~ msgstr ""
-#~ "Properti %s pada jendela 0x%lx di obyek %d berisi karakter UTF-8 yang "
-#~ "salah\n"
