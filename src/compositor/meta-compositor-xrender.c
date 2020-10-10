@@ -100,6 +100,7 @@ typedef struct
   gboolean    prefs_listener_added;
 
   guint       show_redraw : 1;
+  GRand      *rand;
 } MetaCompositorXRenderPrivate;
 
 G_DEFINE_TYPE_WITH_PRIVATE (MetaCompositorXRender,
@@ -865,6 +866,9 @@ timeout_debug (MetaCompositorXRender *self)
 
   priv->show_redraw = (g_getenv ("METACITY_DEBUG_REDRAWS") != NULL);
 
+  if (priv->show_redraw)
+    priv->rand = g_rand_new ();
+
   return FALSE;
 }
 
@@ -947,6 +951,8 @@ meta_compositor_xrender_finalize (GObject *object)
           g_clear_pointer (&priv->shadows[i], g_free);
         }
     }
+
+  g_clear_pointer (&priv->rand, g_rand_free);
 
   G_OBJECT_CLASS (meta_compositor_xrender_parent_class)->finalize (object);
 }
@@ -1371,9 +1377,9 @@ meta_compositor_xrender_draw (MetaCompositorXRender *self,
 
       /* Make a random colour overlay */
       overlay = solid_picture (xdisplay, TRUE, 1, /* 0.3, alpha */
-                               ((double) (rand () % 100)) / 100.0,
-                               ((double) (rand () % 100)) / 100.0,
-                               ((double) (rand () % 100)) / 100.0);
+                               g_rand_double (priv->rand),
+                               g_rand_double (priv->rand),
+                               g_rand_double (priv->rand));
 
       XRenderComposite (xdisplay, PictOpOver, overlay, None, priv->root_picture,
                         0, 0, 0, 0, 0, 0, screen_width, screen_height);
