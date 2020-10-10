@@ -1246,7 +1246,7 @@ get_default_focus_window (MetaStack     *stack,
       if (!(window->input || window->take_focus))
         continue;
 
-      if (!meta_window_should_be_showing (window))
+      if (!meta_window_should_be_showing_on_workspace (window, workspace))
         continue;
 
       if (must_be_at_point && !window_contains_point (window, root_x, root_y))

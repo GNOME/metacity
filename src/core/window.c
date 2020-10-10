@@ -1479,29 +1479,39 @@ meta_window_showing_on_its_workspace (MetaWindow *window)
 }
 
 gboolean
-meta_window_should_be_showing (MetaWindow  *window)
+meta_window_should_be_showing_on_workspace (MetaWindow    *window,
+                                            MetaWorkspace *workspace)
 {
   gboolean on_workspace;
 
   meta_verbose ("Should be showing for window %s\n", window->desc);
 
   /* See if we're on the workspace */
-  on_workspace = meta_window_located_on_workspace (window,
-                                                   window->screen->active_workspace);
+  on_workspace = meta_window_located_on_workspace (window, workspace);
 
   if (!on_workspace)
     meta_verbose ("Window %s is not on workspace %d\n",
                   window->desc,
-                  meta_workspace_index (window->screen->active_workspace));
+                  meta_workspace_index (workspace));
   else
-    meta_verbose ("Window %s is on the active workspace %d\n",
+    meta_verbose ("Window %s is on workspace %d\n",
                   window->desc,
-                  meta_workspace_index (window->screen->active_workspace));
+                  meta_workspace_index (workspace));
 
   if (window->on_all_workspaces)
     meta_verbose ("Window %s is on all workspaces\n", window->desc);
 
   return on_workspace && meta_window_showing_on_its_workspace (window);
+}
+
+gboolean
+meta_window_should_be_showing (MetaWindow *window)
+{
+  MetaWorkspace *active_workspace;
+
+  active_workspace = window->screen->active_workspace;
+
+  return meta_window_should_be_showing_on_workspace (window, active_workspace);
 }
 
 static void
