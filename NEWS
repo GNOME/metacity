@@ -1,3 +1,9 @@
+Version 3.38.0
+==============
+- Fix segfault when using META_DEBUG_NO_SHADOW=0. (#12)
+- New “compositor” setting and commandline option. (!15)
+- Updated translations.
+
 Version 3.37.1
 ==============
 - Don't append "(as superuser)" to window title for flatpak apps. (#9)
