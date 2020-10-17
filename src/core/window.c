@@ -9283,16 +9283,23 @@ meta_window_get_client_pid (MetaWindow *self)
       XResClientIdSpec spec;
       long num_ids;
       XResClientIdValue *client_ids;
+      Status status;
       long i;
 
       spec.client = self->xwindow;
       spec.mask = XRES_CLIENT_ID_PID_MASK;
 
-      XResQueryClientIds (self->display->xdisplay,
-                          1,
-                          &spec,
-                          &num_ids,
-                          &client_ids);
+      num_ids = 0;
+      client_ids = NULL;
+
+      status = XResQueryClientIds (self->display->xdisplay,
+                                   1,
+                                   &spec,
+                                   &num_ids,
+                                   &client_ids);
+
+      if (status != Success)
+        return -1;
 
       for (i = 0; i < num_ids; i++)
         {
