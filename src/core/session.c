@@ -131,12 +131,17 @@ new_ice_connection (IceConn connection, IcePointer client_data, Bool opening,
       /* Make sure we don't pass on these file descriptors to any
        * exec'ed children
        */
+      int fd;
+      int flags;
       GIOChannel *channel;
 
-      fcntl (IceConnectionNumber (connection), F_SETFD,
-             fcntl (IceConnectionNumber (connection), F_GETFD, 0) | FD_CLOEXEC);
+      fd = IceConnectionNumber (connection);
+      flags = fcntl (fd, F_GETFD);
 
-      channel = g_io_channel_unix_new (IceConnectionNumber (connection));
+      if (flags == -1 || fcntl (fd, F_SETFD, flags | FD_CLOEXEC) == -1)
+        g_warning ("Failed to set FD_CLOEXEC flag: %s", strerror (errno));
+
+      channel = g_io_channel_unix_new (fd);
 
       input_id = g_io_add_watch (channel,
                                  G_IO_IN | G_IO_ERR,
