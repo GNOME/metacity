@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity.HEAD.ro\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues\n"
-"POT-Creation-Date: 2020-05-30 07:55+0000\n"
-"PO-Revision-Date: 2020-07-21 15:38+0300\n"
+"POT-Creation-Date: 2020-10-01 19:45+0000\n"
+"PO-Revision-Date: 2021-01-02 20:39+0200\n"
 "Last-Translator: Florentina Mușat <florentina.musat.28@gmail.com>\n"
 "Language-Team: Romanian Gnome Team <gnomero-list@lists.sourceforge.net>\n"
 "Language: ro\n"
@@ -18,17 +18,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2);;\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. Translators: This is the title used on dialog boxes
 #: data/applications/metacity.desktop.in:4 src/core/util.c:429
 msgid "Metacity"
 msgstr "Metacity"
-
-#. TRANSLATORS: Don't translate this text (this is icon name)
-#: data/applications/metacity.desktop.in:7
-msgid "preferences-system-windows"
-msgstr "preferences-system-windows"
 
 #: data/keybindings/50-metacity-navigation.xml:6
 msgid "Navigation"
@@ -232,16 +227,32 @@ msgid "Compositing Manager"
 msgstr "Manager de compoziție"
 
 #: data/schemas/org.gnome.metacity.gschema.xml:24
-msgid "Determines whether Metacity is a compositing manager."
-msgstr "Determină dacă Metacity este un administrator de compoziție."
+msgid ""
+"Determines whether Metacity is a compositing manager. DEPRECATED: This key "
+"is deprecated, use the “compositor” instead."
+msgstr ""
+"Determină dacă Metacity este un gestionar de compunere. ÎNVECHIT: Această "
+"cheie este învechită, utilizați „compositor” în schimb."
 
-#: data/schemas/org.gnome.metacity.gschema.xml:31
+#: data/schemas/org.gnome.metacity.gschema.xml:33
+msgid "Compositor"
+msgstr "Compozitor"
+
+#: data/schemas/org.gnome.metacity.gschema.xml:34
+msgid ""
+"Compositor that Metacity will use for compositing. Possible values are "
+"“none” and “xrender”."
+msgstr ""
+"Compozitor pe care Metacity îl va utiliza pentru a compune. Valorile "
+"posibile sunt „nimic” și „xrender”."
+
+#: data/schemas/org.gnome.metacity.gschema.xml:42
 msgid "Enable edge tiling when dropping windows on screen edges"
 msgstr ""
 "Activează mozaicul marginilor când se plasează ferestrele pe marginile "
 "ecranului"
 
-#: data/schemas/org.gnome.metacity.gschema.xml:32
+#: data/schemas/org.gnome.metacity.gschema.xml:43
 msgid ""
 "If enabled, dropping windows on vertical screen edges maximizes them "
 "vertically and resizes them horizontally to cover half of the available "
@@ -252,11 +263,11 @@ msgstr ""
 "jumătate din zona disponibilă. Plasarea ferestrelor pe marginea de ecran de "
 "top le maximizează complet."
 
-#: data/schemas/org.gnome.metacity.gschema.xml:41
+#: data/schemas/org.gnome.metacity.gschema.xml:52
 msgid "Window placement behavior"
 msgstr "Comportament de plasare a ferestrei"
 
-#: data/schemas/org.gnome.metacity.gschema.xml:42
+#: data/schemas/org.gnome.metacity.gschema.xml:53
 msgid ""
 "Metacity's default window-placement behavior is smart (first-fit), similar "
 "to behaviors in some other window managers. It will try to tile windows so "
@@ -1137,7 +1148,7 @@ msgstr "_Așteaptă"
 msgid "_Force Quit"
 msgstr "_Forțează închiderea"
 
-#: src/core/main.c:101
+#: src/core/main.c:102
 #, c-format
 msgid ""
 "metacity %s\n"
@@ -1152,50 +1163,71 @@ msgstr ""
 "Nu există NICIO garanție; nici aceea de COMERCIALIZARE sau ADECVARE PENTRU "
 "UN SCOP ANUME.\n"
 
-#: src/core/main.c:205
+#: src/core/main.c:198 src/core/main.c:215
+#, c-format
+msgid "Option “%s” is deprecated, use the “--compositor” instead."
+msgstr "Opțiunea „%s” este învechită, utilizați „--compositor” în schimb."
+
+#: src/core/main.c:243
+#, c-format
+msgid "“%s” is not a valid compositor"
+msgstr "%s” nu este un compozitor valid"
+
+#: src/core/main.c:278
 msgid "Disable connection to session manager"
 msgstr "Dezactivează conexiunea la administratorul de sesiune"
 
-#: src/core/main.c:211
+#: src/core/main.c:284
 msgid "Replace the running window manager with Metacity"
 msgstr "Înlocuiește administratorul de ferestre curent cu Metacity"
 
-#: src/core/main.c:217
+#: src/core/main.c:290
 msgid "Specify session management ID"
 msgstr "Specifică ID-ul administrării de sesiune"
 
-#: src/core/main.c:222
+#: src/core/main.c:295
 msgid "X Display to use"
 msgstr "Afișajul X ce va fi folosit"
 
-#: src/core/main.c:228
+#: src/core/main.c:301
 msgid "Initialize session from savefile"
 msgstr "Inițializează sesiunea din fișierul salvat"
 
-#: src/core/main.c:234
+#: src/core/main.c:307
 msgid "Print version"
 msgstr "Afișează versiunea"
 
-#: src/core/main.c:240
+#: src/core/main.c:313
 msgid "Make X calls synchronous"
 msgstr "Realizează apelurile X sincron"
 
-#: src/core/main.c:246
+#: src/core/main.c:322
 msgid "Turn compositing on"
 msgstr "Pornește efectele compozite"
 
-#: src/core/main.c:252
+#: src/core/main.c:331
 msgid "Turn compositing off"
 msgstr "Oprește efectele compozite"
 
-#: src/core/main.c:258
+#: src/core/main.c:340
+msgid "Compositor to use"
+msgstr "Compozitor de utilizat"
+
+#: src/core/main.c:346
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr ""
 "Nu desena pe tot ecranul ferestrele care sunt maximizate, dar care nu au "
 "decorații"
 
-#: src/core/prefs.c:1409
+#: src/core/prefs.c:905
+msgid ""
+"Setting “compositing-manager” is deprecated, use the “compositor” instead."
+msgstr ""
+"Configurarea „compositing-manager” este învechită, utilizați „compositor” în "
+"schimb."
+
+#: src/core/prefs.c:1446
 #, c-format
 msgid "Workspace %d"
 msgstr "Spațiul de lucru %d"
@@ -1233,27 +1265,27 @@ msgid "Opened log file %s\n"
 msgstr "S-a deschis fișierul de înregistrare %s\n"
 
 #. Translators: the title of a window from another machine
-#: src/core/window-props.c:617
+#: src/core/window-props.c:548
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (pe %s)"
 
 #. Simple case-- don't bother to look it up.  It's root.
-#: src/core/window-props.c:649
+#: src/core/window-props.c:583
 #, c-format
 msgid "%s (as superuser)"
 msgstr "%s (drept superutilizator)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine
-#: src/core/window-props.c:667
+#: src/core/window-props.c:602
 #, c-format
 msgid "%s (as %s)"
 msgstr "%s (drept %s)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine, whose name we don't know
-#: src/core/window-props.c:673
+#: src/core/window-props.c:608
 #, c-format
 msgid "%s (as another user)"
 msgstr "%s (drept un alt utilizator)"
@@ -1529,6 +1561,9 @@ msgstr ""
 #: theme-viewer/theme-viewer-window.c:244
 msgid "Run again"
 msgstr "Rulează din nou"
+
+#~ msgid "preferences-system-windows"
+#~ msgstr "preferences-system-windows"
 
 #~ msgid "Launchers"
 #~ msgstr "Lansatori"
