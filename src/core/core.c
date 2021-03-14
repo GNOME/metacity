@@ -152,6 +152,7 @@ meta_core_get (Display *xdisplay,
         *((gint*)answer) = window->screen->rect.height;
         break;
 
+      /* coverity[dead_error_begin] */
       case META_CORE_GET_END:
         break;
 
