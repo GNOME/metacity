@@ -24,6 +24,7 @@
 #define META_UTIL_H
 
 #include <glib.h>
+#include <glib/gi18n.h>
 #include <X11/extensions/Xfixes.h>
 
 G_BEGIN_DECLS
@@ -81,10 +82,6 @@ gint  meta_unsigned_long_equal (gconstpointer v1,
 guint meta_unsigned_long_hash  (gconstpointer v);
 
 const char* meta_gravity_to_string (int gravity);
-
-#include <libintl.h>
-#define _(x) dgettext (GETTEXT_PACKAGE, x)
-#define N_(x) x
 
 char* meta_g_utf8_strndup (const gchar *src, gsize n);
 
