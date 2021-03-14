@@ -1903,7 +1903,6 @@ meta_frames_button_release_event    (GtkWidget           *widget,
           meta_core_end_grab_op (frames->xdisplay, event->time);
           break;
 
-        case META_GRAB_OP_NONE:
         case META_GRAB_OP_MOVING:
         case META_GRAB_OP_RESIZING_SE:
         case META_GRAB_OP_RESIZING_S:
@@ -1930,6 +1929,11 @@ meta_frames_button_release_event    (GtkWidget           *widget,
         case META_GRAB_OP_KEYBOARD_ESCAPING_GROUP:
         case META_GRAB_OP_KEYBOARD_TABBING_GROUP:
         case META_GRAB_OP_KEYBOARD_WORKSPACE_SWITCHING:
+          break;
+
+        /* coverity[dead_error_line] */
+        case META_GRAB_OP_NONE:
+          g_assert_not_reached ();
           break;
 
         default:
