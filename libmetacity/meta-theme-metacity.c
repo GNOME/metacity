@@ -3485,6 +3485,7 @@ parse_style_set_element (GMarkupParseContext  *context,
             info->style_set->tiled_right_and_shaded_styles[frame_focus] = frame_style;
             break;
 
+          /* coverity[dead_error_condition] */
           case META_FRAME_STATE_LAST:
           default:
             g_assert_not_reached ();
@@ -5480,6 +5481,7 @@ meta_theme_metacity_draw_frame (MetaThemeImpl           *impl,
           rect = visible_rect;
           break;
 
+        /* coverity[dead_error_condition] */
         case META_FRAME_PIECE_LAST:
         default:
           g_assert_not_reached ();
