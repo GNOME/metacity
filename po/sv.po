@@ -1,16 +1,15 @@
 # Swedish messages for metacity.
-# Copyright © 2001-2017 Free Software Foundation, Inc.
+# Copyright © 2001-2020 Free Software Foundation, Inc.
 # Christian Rose <menthos@menthos.com>, 2001, 2002, 2003, 2004, 2005.
 # Daniel Nylander <po@danielnylander.se>, 2006, 2007, 2008, 2009, 2010, 2011, 2012.
 # Josef Andersson <josef.andersson@fripost.org>, 2016.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2016, 2017.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2016, 2017, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
-"product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-07-21 13:51+0000\n"
-"PO-Revision-Date: 2017-10-02 20:33+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues\n"
+"POT-Creation-Date: 2020-09-06 11:32+0000\n"
+"PO-Revision-Date: 2020-09-07 14:16+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -18,18 +17,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Project-Style: gnome\n"
 
 #. Translators: This is the title used on dialog boxes
-#: data/applications/metacity.desktop.in:4 src/core/util.c:435
+#: data/applications/metacity.desktop.in:4 src/core/util.c:429
 msgid "Metacity"
 msgstr "Metacity"
-
-#. TRANSLATORS: Don't translate this text (this is icon name)
-#: data/applications/metacity.desktop.in:7
-msgid "preferences-system-windows"
-msgstr "preferences-system-windows"
 
 #: data/keybindings/50-metacity-navigation.xml:6
 msgid "Navigation"
@@ -168,54 +162,50 @@ msgid "Restore window"
 msgstr "Återställ fönster"
 
 #: data/keybindings/50-metacity-windows.xml:24
-msgid "Toggle shaded state"
-msgstr "Växla upprullat tillstånd"
-
-#: data/keybindings/50-metacity-windows.xml:27
 msgid "Close window"
 msgstr "Stäng fönster"
 
-#: data/keybindings/50-metacity-windows.xml:30
+#: data/keybindings/50-metacity-windows.xml:27
 msgid "Minimize window"
 msgstr "Minimera fönster"
 
-#: data/keybindings/50-metacity-windows.xml:33
+#: data/keybindings/50-metacity-windows.xml:30
 msgid "Move window"
 msgstr "Flytta fönster"
 
-#: data/keybindings/50-metacity-windows.xml:36
+#: data/keybindings/50-metacity-windows.xml:33
 msgid "Resize window"
 msgstr "Ändra storlek på fönster"
 
-#: data/keybindings/50-metacity-windows.xml:39
+#: data/keybindings/50-metacity-windows.xml:36
 msgid "Toggle window on all workspaces or one"
 msgstr "Växla fönster på alla arbetsytor eller bara en"
 
-#: data/keybindings/50-metacity-windows.xml:42
+#: data/keybindings/50-metacity-windows.xml:39
 msgid "Raise window if covered, otherwise lower it"
 msgstr "Höj fönstret om det skyms av ett annat fönster, sänk det annars"
 
-#: data/keybindings/50-metacity-windows.xml:45
+#: data/keybindings/50-metacity-windows.xml:42
 msgid "Raise window above other windows"
 msgstr "Höj fönster över andra fönster"
 
-#: data/keybindings/50-metacity-windows.xml:48
+#: data/keybindings/50-metacity-windows.xml:45
 msgid "Lower window below other windows"
 msgstr "Sänk fönster under andra fönster"
 
-#: data/keybindings/50-metacity-windows.xml:51
+#: data/keybindings/50-metacity-windows.xml:48
 msgid "Maximize window vertically"
 msgstr "Maximera fönster vertikalt"
 
-#: data/keybindings/50-metacity-windows.xml:54
+#: data/keybindings/50-metacity-windows.xml:51
 msgid "Maximize window horizontally"
 msgstr "Maximera fönster horisontellt"
 
-#: data/keybindings/50-metacity-windows.xml:58
+#: data/keybindings/50-metacity-windows.xml:55
 msgid "View split on left"
 msgstr "Visa delning till vänster"
 
-#: data/keybindings/50-metacity-windows.xml:62
+#: data/keybindings/50-metacity-windows.xml:59
 msgid "View split on right"
 msgstr "Visa delning till höger"
 
@@ -236,15 +226,31 @@ msgid "Compositing Manager"
 msgstr "Sammansättningshanterare"
 
 #: data/schemas/org.gnome.metacity.gschema.xml:24
-msgid "Determines whether Metacity is a compositing manager."
-msgstr "Fastställer huruvida Metacity är en sammansättningshanterare."
+msgid ""
+"Determines whether Metacity is a compositing manager. DEPRECATED: This key "
+"is deprecated, use the “compositor” instead."
+msgstr ""
+"Fastställer huruvida Metacity är en sammansättningshanterare. FÖRÅLDRAD: "
+"Denna nyckel är föråldrad, använd ”compositor” istället."
+
+#: data/schemas/org.gnome.metacity.gschema.xml:33
+msgid "Compositor"
+msgstr "Sammansättningshanterare"
+
+#: data/schemas/org.gnome.metacity.gschema.xml:34
+msgid ""
+"Compositor that Metacity will use for compositing. Possible values are "
+"“none” and “xrender”."
+msgstr ""
+"Sammansättningshanterare som Metacity kommer använda för sammansättning. "
+"Möjliga värden är ”none” (ingen) och ”xrender”."
 
 # Not. edge tiling är den funktion som gör att ett fönster expanderas när det släpps vid en skärm
-#: data/schemas/org.gnome.metacity.gschema.xml:31
+#: data/schemas/org.gnome.metacity.gschema.xml:42
 msgid "Enable edge tiling when dropping windows on screen edges"
 msgstr "Aktivera kantexpandering när fönster släpps på skärmkanterna"
 
-#: data/schemas/org.gnome.metacity.gschema.xml:32
+#: data/schemas/org.gnome.metacity.gschema.xml:43
 msgid ""
 "If enabled, dropping windows on vertical screen edges maximizes them "
 "vertically and resizes them horizontally to cover half of the available "
@@ -254,11 +260,11 @@ msgstr ""
 "storleksändras horisontellt för att täcka halva den tillgängliga ytan. Att "
 "släppa fönster på översta skärmkanten maximerar dem fullständigt."
 
-#: data/schemas/org.gnome.metacity.gschema.xml:41
+#: data/schemas/org.gnome.metacity.gschema.xml:52
 msgid "Window placement behavior"
 msgstr "Beteende för fönsterplacering"
 
-#: data/schemas/org.gnome.metacity.gschema.xml:42
+#: data/schemas/org.gnome.metacity.gschema.xml:53
 msgid ""
 "Metacity's default window-placement behavior is smart (first-fit), similar "
 "to behaviors in some other window managers. It will try to tile windows so "
@@ -275,27 +281,6 @@ msgstr ""
 "\"center\" för att placera nya fönster i centrum av deras arbetsytor, "
 "\"origin\" för övre vänstra hörnet av deras arbetsytor eller \"random\" för "
 "att placera nya fönster slumpmässigt inom deras arbetsytor."
-
-#: data/schemas/org.gnome.metacity.gschema.xml:57
-msgid "If true, trade off usability for less resource usage"
-msgstr ""
-"Om sant kommer användbarhet att åsidosättas till förmån för mindre "
-"resursanvändning"
-
-#: data/schemas/org.gnome.metacity.gschema.xml:58
-msgid ""
-"If true, Metacity will give the user less feedback by using wireframes, "
-"avoiding animations, or other means. This is a significant reduction in "
-"usability for many users, but may allow legacy applications to continue "
-"working, and may also be a useful tradeoff for terminal servers. However, "
-"the wireframe feature is disabled when accessibility is on."
-msgstr ""
-"Om detta är true (sant) kommer metacity att ge användaren mindre "
-"återkoppling genom att använda trådramar, undvika animationer, och andra "
-"sätt. Detta är en betydande minskning av användbarheten för många användare, "
-"men kan tillåta äldre program och terminalservrar att fungera i de fall de "
-"annars skulle varit olämpliga. Funktionaliteten med trådramar är dock "
-"inaktiverad då tillgänglighet är på."
 
 #: data/schemas/org.gnome.metacity.theme.gschema.xml:11
 msgid "Theme Name"
@@ -330,97 +315,101 @@ msgstr ""
 "klientsidan. Metacity-tema: data läses in från metacity-theme-x.xml och CSS. "
 "När detta tema används MÅSTE du använda ett giltigt temanamn."
 
-#: data/ui/theme-viewer-window.ui:45
+#: data/ui/theme-viewer-window.ui:86
 msgid "Reload"
 msgstr "Läs om"
 
-#: data/ui/theme-viewer-window.ui:103
+#: data/ui/theme-viewer-window.ui:122
 msgid "Dark Theme:"
 msgstr "Mörkt tema:"
 
-#: data/ui/theme-viewer-window.ui:142
+#: data/ui/theme-viewer-window.ui:161
 msgid "Frame Type:"
 msgstr "Ramtyp:"
 
-#: data/ui/theme-viewer-window.ui:156
+#: data/ui/theme-viewer-window.ui:175
 msgid "Normal"
 msgstr "Normal"
 
-#: data/ui/theme-viewer-window.ui:157
+#: data/ui/theme-viewer-window.ui:176
 msgid "Dialog"
 msgstr "Dialogruta"
 
-#: data/ui/theme-viewer-window.ui:158
+#: data/ui/theme-viewer-window.ui:177
 msgid "Modal Dialog"
 msgstr "Modalt dialogfönster"
 
-#: data/ui/theme-viewer-window.ui:159
+#: data/ui/theme-viewer-window.ui:178
 msgid "Utility"
 msgstr "Verktyg"
 
-#: data/ui/theme-viewer-window.ui:160
+#: data/ui/theme-viewer-window.ui:179
 msgid "Menu"
 msgstr "Meny"
 
-#: data/ui/theme-viewer-window.ui:161
+#: data/ui/theme-viewer-window.ui:180
 msgid "Border"
 msgstr "Ram"
 
-#: data/ui/theme-viewer-window.ui:162
+#: data/ui/theme-viewer-window.ui:181
 msgid "Attached"
 msgstr "Fäst"
 
-#: data/ui/theme-viewer-window.ui:190
+#: data/ui/theme-viewer-window.ui:209
 msgid "Frame Flags:"
 msgstr "Ramflaggor:"
 
-#: data/ui/theme-viewer-window.ui:205
+#: data/ui/theme-viewer-window.ui:224
 msgid "Has Focus"
 msgstr "Har fokus"
 
-#: data/ui/theme-viewer-window.ui:220
+#: data/ui/theme-viewer-window.ui:239
 msgid "Shaded"
 msgstr "Skuggad"
 
-#: data/ui/theme-viewer-window.ui:234
+#: data/ui/theme-viewer-window.ui:253
 msgid "Maximized"
 msgstr "Maximerad"
 
-#: data/ui/theme-viewer-window.ui:248
+#: data/ui/theme-viewer-window.ui:267
 msgid "Fullscreen"
 msgstr "Helskärm"
 
-#: data/ui/theme-viewer-window.ui:262
+#: data/ui/theme-viewer-window.ui:281
 msgid "Tiled"
 msgstr "Sida-vid-sida"
 
-#: data/ui/theme-viewer-window.ui:302
+#: data/ui/theme-viewer-window.ui:321
 msgid "Button Layout:"
 msgstr "Knapplayout:"
 
-#: data/ui/theme-viewer-window.ui:341
+#: data/ui/theme-viewer-window.ui:360
 msgid "Composited:"
 msgstr "Sammansatt:"
 
-#: data/ui/theme-viewer-window.ui:381
+#: data/ui/theme-viewer-window.ui:400
 msgid "Scale:"
 msgstr "Skala:"
 
-#: data/ui/theme-viewer-window.ui:441 theme-viewer/theme-viewer-window.c:637
+#: data/ui/theme-viewer-window.ui:468 theme-viewer/theme-viewer-window.c:636
 msgid "Choose Theme"
 msgstr "Välj tema"
 
-#: data/ui/theme-viewer-window.ui:481
+#: data/ui/theme-viewer-window.ui:508
 msgid "Preview"
 msgstr "Förhandsgranskning"
 
-#: data/ui/theme-viewer-window.ui:570 theme-viewer/theme-viewer-window.c:253
+#: data/ui/theme-viewer-window.ui:597 theme-viewer/theme-viewer-window.c:252
 msgid "Run"
 msgstr "Kör"
 
-#: data/ui/theme-viewer-window.ui:592
+#: data/ui/theme-viewer-window.ui:619
 msgid "Benchmark"
 msgstr "Prestandatest"
+
+#: data/ui/theme-viewer-window.ui:652 theme-viewer/theme-viewer-window.c:982
+msgid "Metacity Theme Viewer"
+msgstr "Metacity temavisare"
 
 #: libmetacity/meta-color-spec.c:246
 #, c-format
@@ -549,26 +538,26 @@ msgstr "Koordinatuttrycket var tomt eller förstods inte"
 msgid "Coordinate expression had unknown variable or constant '%s'"
 msgstr "Koordinatuttrycket hade en okänd variabel eller konstant ”%s”"
 
-#: libmetacity/meta-draw-spec.c:631 libmetacity/meta-draw-spec.c:641
-#: libmetacity/meta-draw-spec.c:676 libmetacity/meta-draw-spec.c:686
+#: libmetacity/meta-draw-spec.c:638 libmetacity/meta-draw-spec.c:648
+#: libmetacity/meta-draw-spec.c:683 libmetacity/meta-draw-spec.c:693
 msgid "Coordinate expression results in division by zero"
 msgstr "Koordinatuttrycket resulterar i division med noll"
 
-#: libmetacity/meta-draw-spec.c:775
+#: libmetacity/meta-draw-spec.c:782
 #, c-format
 msgid ""
 "Coordinate expression has an operator \"%s\" where an operand was expected"
 msgstr "Koordinatuttrycket har en operator ”%s” där en operand förväntades"
 
-#: libmetacity/meta-draw-spec.c:784
+#: libmetacity/meta-draw-spec.c:791
 msgid "Coordinate expression had an operand where an operator was expected"
 msgstr "Koordinatuttrycket hade en operand där en operator förväntades"
 
-#: libmetacity/meta-draw-spec.c:792
+#: libmetacity/meta-draw-spec.c:799
 msgid "Coordinate expression ended with an operator instead of an operand"
 msgstr "Koordinatuttrycket slutade med en operator istället för en operand"
 
-#: libmetacity/meta-draw-spec.c:802
+#: libmetacity/meta-draw-spec.c:809
 #, c-format
 msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
@@ -577,26 +566,26 @@ msgstr ""
 "Koordinatuttrycket har en operator ”%c” som följer på operatorn ”%c” utan "
 "någon operand emellan"
 
-#: libmetacity/meta-draw-spec.c:934
+#: libmetacity/meta-draw-spec.c:941
 msgid "Coordinate expression parser overflowed its buffer."
 msgstr "Koordinatuttryckstolk överflödade sin buffert."
 
-#: libmetacity/meta-draw-spec.c:964
+#: libmetacity/meta-draw-spec.c:971
 msgid "Coordinate expression had a close parenthesis with no open parenthesis"
 msgstr ""
 "Koordinatuttrycket hade en stängningsparentes utan någon öppningsparentes"
 
-#: libmetacity/meta-draw-spec.c:1037
+#: libmetacity/meta-draw-spec.c:1044
 msgid "Coordinate expression had an open parenthesis with no close parenthesis"
 msgstr ""
 "Koordinatuttrycket hade en öppningsparentes utan någon stängningsparentes"
 
-#: libmetacity/meta-draw-spec.c:1047
+#: libmetacity/meta-draw-spec.c:1054
 msgid "Coordinate expression doesn't seem to have any operators or operands"
 msgstr "Koordinatuttrycket verkar inte ha några operatorer eller operander"
 
-#: libmetacity/meta-draw-spec.c:1239 libmetacity/meta-draw-spec.c:1259
-#: libmetacity/meta-draw-spec.c:1279
+#: libmetacity/meta-draw-spec.c:1246 libmetacity/meta-draw-spec.c:1266
+#: libmetacity/meta-draw-spec.c:1286
 #, c-format
 msgid "Theme contained an expression that resulted in an error: %s"
 msgstr "Temat innehöll ett uttryck som resulterade i ett fel: %s"
@@ -640,13 +629,13 @@ msgstr "Ramgeometrin anger inte storlek på knappar"
 #. * in theme XML.  The "<frame ...>" is intended as a noun phrase,
 #. * and the "missing" qualifies it.  You should translate "whatever".
 #.
-#: libmetacity/meta-frame-style.c:144 libmetacity/meta-frame-style.c:469
+#: libmetacity/meta-frame-style.c:144 libmetacity/meta-frame-style.c:467
 #, c-format
 msgid "Missing <frame state='%s' resize='%s' focus='%s' style='whatever' />"
 msgstr ""
 "<frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/> saknas"
 
-#: libmetacity/meta-frame-style.c:326
+#: libmetacity/meta-frame-style.c:324
 #, c-format
 msgid ""
 "<button function='%s' state='%s' draw_ops='whatever'/> must be specified for "
@@ -809,11 +798,11 @@ msgstr "Fönstertypen ”%s” har redan tilldelats en stilsamling"
 #: libmetacity/meta-theme-metacity.c:1654
 #: libmetacity/meta-theme-metacity.c:2808
 #: libmetacity/meta-theme-metacity.c:2854
-#: libmetacity/meta-theme-metacity.c:3094
-#: libmetacity/meta-theme-metacity.c:3130
-#: libmetacity/meta-theme-metacity.c:3166
-#: libmetacity/meta-theme-metacity.c:3202
-#: libmetacity/meta-theme-metacity.c:3499
+#: libmetacity/meta-theme-metacity.c:3092
+#: libmetacity/meta-theme-metacity.c:3128
+#: libmetacity/meta-theme-metacity.c:3164
+#: libmetacity/meta-theme-metacity.c:3200
+#: libmetacity/meta-theme-metacity.c:3497
 #, c-format
 msgid "Element <%s> is not allowed below <%s>"
 msgstr "Elementet <%s> är inte tillåtet under <%s>"
@@ -901,47 +890,47 @@ msgstr "Inget <draw_ops> kallat ”%s” har definierats"
 msgid "Including draw_ops \"%s\" here would create a circular reference"
 msgstr "Att inkludera draw_ops ”%s” här skulle skapa en cirkulärreferens"
 
-#: libmetacity/meta-theme-metacity.c:2981
+#: libmetacity/meta-theme-metacity.c:2979
 #, c-format
 msgid "Unknown position \"%s\" for frame piece"
 msgstr "Okänd position ”%s” för ramdel"
 
-#: libmetacity/meta-theme-metacity.c:2989
+#: libmetacity/meta-theme-metacity.c:2987
 #, c-format
 msgid "Frame style already has a piece at position %s"
 msgstr "Ramstilen har redan en del vid position %s"
 
-#: libmetacity/meta-theme-metacity.c:3005
+#: libmetacity/meta-theme-metacity.c:3003
 #, c-format
 msgid "No <draw_ops> with the name \"%s\" has been defined"
 msgstr "Inget <draw_ops> med namnet ”%s” har definierats"
 
-#: libmetacity/meta-theme-metacity.c:3036
+#: libmetacity/meta-theme-metacity.c:3034
 #, c-format
 msgid "Unknown function \"%s\" for button"
 msgstr "Okänd funktion ”%s” för knapp"
 
-#: libmetacity/meta-theme-metacity.c:3047
+#: libmetacity/meta-theme-metacity.c:3045
 #, c-format
 msgid "Button function '%s' does not exist in this version (%d, need %d)"
 msgstr "Knappfunktionen ”%s” finns inte i den här versionen (%d, behöver %d)"
 
-#: libmetacity/meta-theme-metacity.c:3056
+#: libmetacity/meta-theme-metacity.c:3054
 #, c-format
 msgid "Unknown state '%s' for button"
 msgstr "Okänt tillstånd ”%s” för knapp"
 
-#: libmetacity/meta-theme-metacity.c:3063
+#: libmetacity/meta-theme-metacity.c:3061
 #, c-format
 msgid "Frame style already has a button for function %s state %s"
 msgstr "Ramstilen har redan en knapp för funktionen %s tillstånd %s"
 
-#: libmetacity/meta-theme-metacity.c:3080
+#: libmetacity/meta-theme-metacity.c:3078
 #, c-format
 msgid "No <draw_ops> with the name '%s' has been defined"
 msgstr "Inget <draw_ops> med namnet ”%s” har definierats"
 
-#: libmetacity/meta-theme-metacity.c:3114
+#: libmetacity/meta-theme-metacity.c:3112
 msgid ""
 "Can't have a two draw_ops for a <piece> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
@@ -949,7 +938,7 @@ msgstr ""
 "Kan inte ha två draw_ops för ett <piece>-element (temat angav ett draw_ops-"
 "attribut och även ett <draw_ops>-element, eller angav två element)"
 
-#: libmetacity/meta-theme-metacity.c:3150
+#: libmetacity/meta-theme-metacity.c:3148
 msgid ""
 "Can't have a two draw_ops for a <button> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
@@ -957,7 +946,7 @@ msgstr ""
 "Kan inte ha två draw_ops för ett <button>-element (temat angav ett draw_ops-"
 "attribut och även ett <draw_ops>-element, eller angav två element)"
 
-#: libmetacity/meta-theme-metacity.c:3186
+#: libmetacity/meta-theme-metacity.c:3184
 msgid ""
 "Can't have a two draw_ops for a <menu_icon> element (theme specified a "
 "draw_ops attribute and also a <draw_ops> element, or specified two elements)"
@@ -965,29 +954,29 @@ msgstr ""
 "Kan inte ha två draw_ops för ett <menu_icon>-element (temat angav ett "
 "draw_ops-attribut och även ett <draw_ops>-element, eller angav två element)"
 
-#: libmetacity/meta-theme-metacity.c:3290
+#: libmetacity/meta-theme-metacity.c:3288
 #, c-format
 msgid "'%s' is not a valid value for focus attribute"
 msgstr "”%s” är inte ett giltigt värde för fokusattribut"
 
-#: libmetacity/meta-theme-metacity.c:3299
+#: libmetacity/meta-theme-metacity.c:3297
 #, c-format
 msgid "'%s' is not a valid value for state attribute"
 msgstr "”%s” är inte ett giltigt värde för tillståndsattribut"
 
-#: libmetacity/meta-theme-metacity.c:3308
+#: libmetacity/meta-theme-metacity.c:3306
 #, c-format
 msgid "A style called '%s' has not been defined"
 msgstr "En stil med namnet ”%s” har inte definierats"
 
-#: libmetacity/meta-theme-metacity.c:3326
-#: libmetacity/meta-theme-metacity.c:3349
+#: libmetacity/meta-theme-metacity.c:3324
+#: libmetacity/meta-theme-metacity.c:3347
 #, c-format
 msgid "'%s' is not a valid value for resize attribute"
 msgstr "”%s” är inte ett giltigt värde för storleksändringsattribut"
 
 # SUN CHANGED MESSAGE
-#: libmetacity/meta-theme-metacity.c:3360
+#: libmetacity/meta-theme-metacity.c:3358
 #, c-format
 msgid ""
 "Should not have 'resize' attribute on <%s> element for maximized/shaded "
@@ -997,34 +986,34 @@ msgstr ""
 "tillstånd"
 
 # SUN CHANGED MESSAGE
-#: libmetacity/meta-theme-metacity.c:3381
+#: libmetacity/meta-theme-metacity.c:3379
 #, c-format
 msgid "Should not have 'resize' attribute on <%s> element for maximized states"
 msgstr "Bör inte ha ”resize”-attribut i <%s>-element för maximerade tillstånd"
 
-#: libmetacity/meta-theme-metacity.c:3396
-#: libmetacity/meta-theme-metacity.c:3444
+#: libmetacity/meta-theme-metacity.c:3394
+#: libmetacity/meta-theme-metacity.c:3442
 #, c-format
 msgid "Style has already been specified for state %s resize %s focus %s"
 msgstr ""
 "Stilen har redan angivits för tillståndet %s storleksändring %s fokus %s"
 
-#: libmetacity/meta-theme-metacity.c:3408
-#: libmetacity/meta-theme-metacity.c:3420
-#: libmetacity/meta-theme-metacity.c:3432
-#: libmetacity/meta-theme-metacity.c:3456
-#: libmetacity/meta-theme-metacity.c:3468
-#: libmetacity/meta-theme-metacity.c:3480
+#: libmetacity/meta-theme-metacity.c:3406
+#: libmetacity/meta-theme-metacity.c:3418
+#: libmetacity/meta-theme-metacity.c:3430
+#: libmetacity/meta-theme-metacity.c:3454
+#: libmetacity/meta-theme-metacity.c:3466
+#: libmetacity/meta-theme-metacity.c:3478
 #, c-format
 msgid "Style has already been specified for state %s focus %s"
 msgstr "Stilen har redan angivits för tillståndet %s fokus %s"
 
-#: libmetacity/meta-theme-metacity.c:3546
+#: libmetacity/meta-theme-metacity.c:3544
 #, c-format
 msgid "Bad version specification '%s'"
 msgstr "Felaktig versionspecifikation ”%s”"
 
-#: libmetacity/meta-theme-metacity.c:3617
+#: libmetacity/meta-theme-metacity.c:3615
 msgid ""
 "'version' attribute cannot be used in metacity-theme-1.xml or metacity-"
 "theme-2.xml"
@@ -1032,17 +1021,17 @@ msgstr ""
 "Attributet ”version” kan inte användas i metacity-theme-1.xml eller metacity-"
 "theme-2.xml"
 
-#: libmetacity/meta-theme-metacity.c:3640
+#: libmetacity/meta-theme-metacity.c:3638
 #, c-format
 msgid "Theme requires version %s but latest supported theme version is %d.%d"
 msgstr "Temat kräver version %s, men senaste temaversion som stöds är %d.%d"
 
-#: libmetacity/meta-theme-metacity.c:3664
+#: libmetacity/meta-theme-metacity.c:3662
 #, c-format
 msgid "Outermost element in theme must be <metacity_theme> not <%s>"
 msgstr "Yttersta elementet i temat måste vara <metacity_theme>, inte <%s>"
 
-#: libmetacity/meta-theme-metacity.c:3684
+#: libmetacity/meta-theme-metacity.c:3682
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a name/author/date/description element"
@@ -1050,12 +1039,12 @@ msgstr ""
 "Elementet <%s> är inte tillåtet inuti ett namn-/författare-/datum-/"
 "beskrivningselement"
 
-#: libmetacity/meta-theme-metacity.c:3690
+#: libmetacity/meta-theme-metacity.c:3688
 #, c-format
 msgid "Element <%s> is not allowed inside a <constant> element"
 msgstr "Elementet <%s> är inte tillåtet inuti ett <constant>-element"
 
-#: libmetacity/meta-theme-metacity.c:3703
+#: libmetacity/meta-theme-metacity.c:3701
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a distance/border/aspect_ratio element"
@@ -1063,15 +1052,15 @@ msgstr ""
 "Elementet <%s> är inte tillåtet inuti ett distance/border/aspect_ratio-"
 "element"
 
-#: libmetacity/meta-theme-metacity.c:3726
+#: libmetacity/meta-theme-metacity.c:3724
 #, c-format
 msgid "Element <%s> is not allowed inside a draw operation element"
 msgstr "Elementet <%s> är inte tillåtet inuti ett ritningsåtgärdselement"
 
-#: libmetacity/meta-theme-metacity.c:3737
-#: libmetacity/meta-theme-metacity.c:3768
-#: libmetacity/meta-theme-metacity.c:3774
-#: libmetacity/meta-theme-metacity.c:3780
+#: libmetacity/meta-theme-metacity.c:3735
+#: libmetacity/meta-theme-metacity.c:3766
+#: libmetacity/meta-theme-metacity.c:3772
+#: libmetacity/meta-theme-metacity.c:3778
 #, c-format
 msgid "Element <%s> is not allowed inside a <%s> element"
 msgstr "Elementet <%s> är inte tillåtet inuti ett <%s>-element"
@@ -1080,16 +1069,16 @@ msgstr "Elementet <%s> är inte tillåtet inuti ett <%s>-element"
 #. * is given in angle brackets) was not found in a given theme (whose
 #. * name is given second, in quotation marks).
 #.
-#: libmetacity/meta-theme-metacity.c:3834
-#: libmetacity/meta-theme-metacity.c:3842
-#: libmetacity/meta-theme-metacity.c:3850
-#: libmetacity/meta-theme-metacity.c:3858
-#: libmetacity/meta-theme-metacity.c:3867
+#: libmetacity/meta-theme-metacity.c:3832
+#: libmetacity/meta-theme-metacity.c:3840
+#: libmetacity/meta-theme-metacity.c:3848
+#: libmetacity/meta-theme-metacity.c:3856
+#: libmetacity/meta-theme-metacity.c:3865
 #, c-format
 msgid "No <%s> set for theme '%s'"
 msgstr "Inget <%s> angivet för temat ”%s”"
 
-#: libmetacity/meta-theme-metacity.c:3878
+#: libmetacity/meta-theme-metacity.c:3876
 #, c-format
 msgid ""
 "No frame style set for window type '%s' in theme '%s', add a <window "
@@ -1098,29 +1087,29 @@ msgstr ""
 "Ingen ramstil angiven för fönstertypen ”%s” i temat ”%s”, lägg till ett "
 "<window type=\"%s\" style_set=\"whatever\"/>-element"
 
-#: libmetacity/meta-theme-metacity.c:4141
+#: libmetacity/meta-theme-metacity.c:4139
 msgid "No draw_ops provided for frame piece"
 msgstr "Inget draw_ops tillhandahålls för ramdel"
 
-#: libmetacity/meta-theme-metacity.c:4157
+#: libmetacity/meta-theme-metacity.c:4155
 msgid "No draw_ops provided for button"
 msgstr "Inget draw_ops tillhandahålls för knappen"
 
-#: libmetacity/meta-theme-metacity.c:4272
-#: libmetacity/meta-theme-metacity.c:4283
-#: libmetacity/meta-theme-metacity.c:4294
-#: libmetacity/meta-theme-metacity.c:4305
-#: libmetacity/meta-theme-metacity.c:4316
+#: libmetacity/meta-theme-metacity.c:4270
+#: libmetacity/meta-theme-metacity.c:4281
+#: libmetacity/meta-theme-metacity.c:4292
+#: libmetacity/meta-theme-metacity.c:4303
+#: libmetacity/meta-theme-metacity.c:4314
 #, c-format
 msgid "<%s> specified twice for this theme"
 msgstr "<%s> är angiven två gånger för detta tema"
 
-#: libmetacity/meta-theme-metacity.c:4355
+#: libmetacity/meta-theme-metacity.c:4353
 #, c-format
 msgid "No text is allowed inside element <%s>"
 msgstr "Ingen text är tillåten inuti elementet <%s>"
 
-#: libmetacity/meta-theme-metacity.c:4621
+#: libmetacity/meta-theme-metacity.c:4619
 #, c-format
 msgid "Failed to find a valid file for theme '%s'"
 msgstr "Misslyckades med att hitta en giltig fil för temat ”%s”"
@@ -1166,48 +1155,69 @@ msgstr ""
 "Det finns INGA garantier; inte ens för SÄLJBARHET eller LÄMPLIGHET FÖR NÅGOT "
 "SPECIELLT ÄNDAMÅL.\n"
 
-#: src/core/main.c:215
+#: src/core/main.c:197 src/core/main.c:214
+#, c-format
+msgid "Option “%s” is deprecated, use the “--compositor” instead."
+msgstr "Flaggan ”%s” är föråldrad, använd ”--compositor” istället."
+
+#: src/core/main.c:243
+#, c-format
+msgid "“%s” is not a valid compositor"
+msgstr "”%s” är inte en giltig sammansättningshanterare"
+
+#: src/core/main.c:275
 msgid "Disable connection to session manager"
 msgstr "Inaktivera anslutning till sessionshanteraren"
 
-#: src/core/main.c:221
+#: src/core/main.c:281
 msgid "Replace the running window manager with Metacity"
 msgstr "Ersätt den körande fönsterhanteraren med Metacity"
 
-#: src/core/main.c:227
+#: src/core/main.c:287
 msgid "Specify session management ID"
 msgstr "Ange sessionshanterings-ID"
 
-#: src/core/main.c:232
+#: src/core/main.c:292
 msgid "X Display to use"
 msgstr "X-display att använda"
 
-#: src/core/main.c:238
+#: src/core/main.c:298
 msgid "Initialize session from savefile"
 msgstr "Initiera session från sparandefil"
 
-#: src/core/main.c:244
+#: src/core/main.c:304
 msgid "Print version"
 msgstr "Skriv ut version"
 
-#: src/core/main.c:250
+#: src/core/main.c:310
 msgid "Make X calls synchronous"
 msgstr "Gör X-anrop synkrona"
 
-#: src/core/main.c:256
+#: src/core/main.c:319
 msgid "Turn compositing on"
 msgstr "Slå på sammansättning"
 
-#: src/core/main.c:262
+#: src/core/main.c:328
 msgid "Turn compositing off"
 msgstr "Stäng av sammansättning"
 
-#: src/core/main.c:268
+#: src/core/main.c:337
+msgid "Compositor to use"
+msgstr "Sammansättningshanterare att använda"
+
+#: src/core/main.c:343
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr "Skapa inte helskärmsfönster som är maximerade och saknar dekorationer"
 
-#: src/core/prefs.c:1524
+#: src/core/prefs.c:905
+msgid ""
+"Setting “compositing-manager” is deprecated, use the “compositor” instead."
+msgstr ""
+"Att ställa in ”compositing-manager” är föråldrat, använd ”compositor” "
+"istället."
+
+#: src/core/prefs.c:1446
 #, c-format
 msgid "Workspace %d"
 msgstr "Arbetsyta %d"
@@ -1240,33 +1250,33 @@ msgstr ""
 "Dessa fönster har inte stöd för &quot;spara nuvarande inställningar&quot; "
 "och kommer att behöva startas om manuellt nästa gång du loggar in."
 
-#: src/core/util.c:105
+#: src/core/util.c:106
 #, c-format
 msgid "Opened log file %s\n"
 msgstr "Öppnade loggfilen %s\n"
 
 #. Translators: the title of a window from another machine
-#: src/core/window-props.c:570
+#: src/core/window-props.c:617
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (på %s)"
 
 #. Simple case-- don't bother to look it up.  It's root.
-#: src/core/window-props.c:602
+#: src/core/window-props.c:649
 #, c-format
 msgid "%s (as superuser)"
 msgstr "%s (som superanvändare)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine
-#: src/core/window-props.c:620
+#: src/core/window-props.c:667
 #, c-format
 msgid "%s (as %s)"
 msgstr "%s (som %s)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine, whose name we don't know
-#: src/core/window-props.c:626
+#: src/core/window-props.c:673
 #, c-format
 msgid "%s (as another user)"
 msgstr "%s (som en annan användare)"
@@ -1276,53 +1286,25 @@ msgstr "%s (som en annan användare)"
 msgid "Usage: %s\n"
 msgstr "Användning: %s\n"
 
-#: src/ui/frames.c:1307
+#: src/ui/frames.c:1255
 msgid "Close Window"
 msgstr "Stäng fönster"
 
-#: src/ui/frames.c:1310
+#: src/ui/frames.c:1258
 msgid "Window Menu"
 msgstr "Fönstermeny"
 
-#: src/ui/frames.c:1313
-msgid "Window App Menu"
-msgstr "Programfönstermeny"
-
-#: src/ui/frames.c:1316
+#: src/ui/frames.c:1261
 msgid "Minimize Window"
 msgstr "Minimera fönster"
 
-#: src/ui/frames.c:1319
+#: src/ui/frames.c:1264
 msgid "Maximize Window"
 msgstr "Maximera fönster"
 
-#: src/ui/frames.c:1322
+#: src/ui/frames.c:1267
 msgid "Restore Window"
 msgstr "Återställ fönster"
-
-#: src/ui/frames.c:1325
-msgid "Roll Up Window"
-msgstr "Rulla upp fönstret"
-
-#: src/ui/frames.c:1328
-msgid "Unroll Window"
-msgstr "Rulla tillbaka fönstret"
-
-#: src/ui/frames.c:1331
-msgid "Keep Window On Top"
-msgstr "Behåll fönstret överst"
-
-#: src/ui/frames.c:1334
-msgid "Remove Window From Top"
-msgstr "Ta bort överliggande fönster"
-
-#: src/ui/frames.c:1337
-msgid "Always On Visible Workspace"
-msgstr "Alltid på synlig arbetsyta"
-
-#: src/ui/frames.c:1340
-msgid "Put Window On Only One Workspace"
-msgstr "Placera fönstret på endast en arbetsyta"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: src/ui/menu.c:65
@@ -1420,7 +1402,7 @@ msgstr "Arbetsyta 1_0"
 msgid "Workspace %s%d"
 msgstr "Arbetsyta %s%d"
 
-#: src/ui/menu.c:351
+#: src/ui/menu.c:358
 msgid "Move to Another _Workspace"
 msgstr "Flytta till en annan _arbetsyta"
 
@@ -1522,7 +1504,7 @@ msgstr "Mod5"
 msgid "%d x %d"
 msgstr "%d × %d"
 
-#: src/ui/ui.c:871
+#: src/ui/ui.c:853
 msgid "Falling back to default GTK+ theme - Adwaita"
 msgstr "Faller tillbaka på standardtemat för GTK+ - Adwaita"
 
@@ -1542,12 +1524,12 @@ msgstr "Temanamn att använda"
 msgid "NAME"
 msgstr "NAMN"
 
-#: theme-viewer/theme-viewer-window.c:103
+#: theme-viewer/theme-viewer-window.c:102
 #, c-format
 msgid "Loaded <b>%s</b> theme <b>%s</b> in <b>%f</b> seconds."
 msgstr "Läste in <b>%s</b>-temat <b>%s</b> på <b>%f</b> sekunder."
 
-#: theme-viewer/theme-viewer-window.c:133
+#: theme-viewer/theme-viewer-window.c:132
 #, c-format
 msgid ""
 "Got MetaFrameBorders in <b>%f</b> seconds (CSS loading, PangoFontDescription "
@@ -1556,7 +1538,7 @@ msgstr ""
 "Fick MetaFrameBorders på <b>%f</b> sekunder (CSS-inläsning, skapande av "
 "PangoFontDescription och beräkning av titelhöjd)."
 
-#: theme-viewer/theme-viewer-window.c:208
+#: theme-viewer/theme-viewer-window.c:207
 #, c-format
 msgid ""
 "Drew <b>%d</b> frames in <b>%f</b> client-side seconds (<b>%f</b> "
@@ -1567,13 +1549,55 @@ msgstr ""
 "millisekunder per ram) och <b>%f</b> sekunder väggklockstid inklusive X-"
 "serverresurser (<b>%f</b> millisekunder per ram)."
 
-#: theme-viewer/theme-viewer-window.c:245
+#: theme-viewer/theme-viewer-window.c:244
 msgid "Run again"
 msgstr "Kör igen"
 
-#: theme-viewer/theme-viewer-window.c:986
-msgid "Metacity Theme Viewer"
-msgstr "Metacity temavisare"
+#~ msgid "preferences-system-windows"
+#~ msgstr "preferences-system-windows"
+
+#~ msgid "Toggle shaded state"
+#~ msgstr "Växla upprullat tillstånd"
+
+#~ msgid "If true, trade off usability for less resource usage"
+#~ msgstr ""
+#~ "Om sant kommer användbarhet att åsidosättas till förmån för mindre "
+#~ "resursanvändning"
+
+#~ msgid ""
+#~ "If true, Metacity will give the user less feedback by using wireframes, "
+#~ "avoiding animations, or other means. This is a significant reduction in "
+#~ "usability for many users, but may allow legacy applications to continue "
+#~ "working, and may also be a useful tradeoff for terminal servers. However, "
+#~ "the wireframe feature is disabled when accessibility is on."
+#~ msgstr ""
+#~ "Om detta är true (sant) kommer metacity att ge användaren mindre "
+#~ "återkoppling genom att använda trådramar, undvika animationer, och andra "
+#~ "sätt. Detta är en betydande minskning av användbarheten för många "
+#~ "användare, men kan tillåta äldre program och terminalservrar att fungera "
+#~ "i de fall de annars skulle varit olämpliga. Funktionaliteten med "
+#~ "trådramar är dock inaktiverad då tillgänglighet är på."
+
+#~ msgid "Window App Menu"
+#~ msgstr "Programfönstermeny"
+
+#~ msgid "Roll Up Window"
+#~ msgstr "Rulla upp fönstret"
+
+#~ msgid "Unroll Window"
+#~ msgstr "Rulla tillbaka fönstret"
+
+#~ msgid "Keep Window On Top"
+#~ msgstr "Behåll fönstret överst"
+
+#~ msgid "Remove Window From Top"
+#~ msgstr "Ta bort överliggande fönster"
+
+#~ msgid "Always On Visible Workspace"
+#~ msgstr "Alltid på synlig arbetsyta"
+
+#~ msgid "Put Window On Only One Workspace"
+#~ msgstr "Placera fönstret på endast en arbetsyta"
 
 #~ msgid "Unknown window information request: %d"
 #~ msgstr "Okänd fråga efter fönsterinformation: %d"
