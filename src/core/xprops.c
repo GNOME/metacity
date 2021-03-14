@@ -795,11 +795,8 @@ wm_hints_from_results (GetPropertyResults *results,
   else
     hints->window_group = 0;
 
-  if (results->prop)
-    {
-      XFree (results->prop);
-      results->prop = NULL;
-    }
+  XFree (results->prop);
+  results->prop = NULL;
 
   *hints_p = hints;
 
