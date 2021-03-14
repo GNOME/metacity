@@ -80,12 +80,6 @@ struct _MetaAccelLabelClass
   gchar		*mod_name_mod5;
   gchar		*mod_separator;
   guint		 latin1_to_char : 1;
-
-  /* Padding for future expansion */
-  void (*_gtk_reserved1) (void);
-  void (*_gtk_reserved2) (void);
-  void (*_gtk_reserved3) (void);
-  void (*_gtk_reserved4) (void);
 };
 
 GType	   meta_accel_label_get_type          (void) G_GNUC_CONST;
