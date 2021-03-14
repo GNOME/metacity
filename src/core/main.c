@@ -383,7 +383,10 @@ meta_select_display (gchar *display_name)
     env_var = g_getenv ("METACITY_DISPLAY");
 
   if (env_var)
-    g_setenv ("DISPLAY", env_var, TRUE);
+    {
+      if (!g_setenv ("DISPLAY", env_var, TRUE))
+        g_warning ("Couldn't set DISPLAY");
+    }
 }
 
 static void
