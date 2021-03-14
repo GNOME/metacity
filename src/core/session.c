@@ -1104,11 +1104,10 @@ load_state (const char *previous_save_file)
                               previous_save_file,
                               NULL);
 
-  error = NULL;
   if (!g_file_get_contents (session_file,
                             &text,
                             &length,
-                            &error))
+                            NULL))
     {
       char *canonical_session_file = session_file;
 
@@ -1127,7 +1126,6 @@ load_state (const char *previous_save_file)
         {
           /* oh, just give up */
 
-          g_error_free (error);
           g_free (session_file);
           g_free (canonical_session_file);
           return NULL;
