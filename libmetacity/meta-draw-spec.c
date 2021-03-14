@@ -1199,7 +1199,7 @@ meta_draw_spec_new (MetaThemeMetacity  *metacity,
 {
   MetaDrawSpec *spec;
 
-  spec = g_slice_new0 (MetaDrawSpec);
+  spec = g_new0 (MetaDrawSpec, 1);
 
   pos_tokenize (expr, &spec->tokens, &spec->n_tokens, NULL);
 
@@ -1229,7 +1229,7 @@ meta_draw_spec_free (MetaDrawSpec *spec)
     return;
 
   free_tokens (spec->tokens, spec->n_tokens);
-  g_slice_free (MetaDrawSpec, spec);
+  g_free (spec);
 }
 
 gdouble
