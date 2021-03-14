@@ -79,7 +79,6 @@ struct _MetaAccelLabelClass
   gchar		*mod_name_mod4;
   gchar		*mod_name_mod5;
   gchar		*mod_separator;
-  gchar		*accel_seperator;
   guint		 latin1_to_char : 1;
 
   /* Padding for future expansion */

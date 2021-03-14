@@ -129,7 +129,6 @@ meta_accel_label_class_init (MetaAccelLabelClass *class)
   class->mod_name_mod5 = g_strdup (_("Mod5"));
 
   class->mod_separator = g_strdup ("+");
-  class->accel_seperator = g_strdup (" / ");
   class->latin1_to_char = TRUE;
 }
 
@@ -343,8 +342,7 @@ meta_accel_label_update (MetaAccelLabel *accel_label)
   g_free (accel_label->accel_string);
   accel_label->accel_string = NULL;
 
-  gstring = g_string_new (accel_label->accel_string);
-  g_string_append (gstring, gstring->len ? class->accel_seperator : "   ");
+  gstring = g_string_new ("   ");
 
   if (accel_label->accel_mods & META_VIRTUAL_SHIFT_MASK)
     {
