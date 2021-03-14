@@ -2303,6 +2303,8 @@ parse_draw_op_element (GMarkupParseContext  *context,
       if (alpha && !parse_alpha (alpha, &alpha_spec, context, error))
         {
           g_object_unref (G_OBJECT (pixbuf));
+          if (colorize_spec != NULL)
+            meta_color_spec_free (colorize_spec);
           return;
         }
 
