@@ -2852,13 +2852,19 @@ meta_window_unmaximize (MetaWindow        *window,
       (unmaximize_vertically   && window->maximized_vertically))
     {
       MetaRectangle target_rect;
+      const char *direction;
+
+      if (unmaximize_horizontally && unmaximize_vertically)
+        direction = "";
+      else if (unmaximize_horizontally)
+        direction = "horizontally";
+      else
+        direction = "vertically";
 
       meta_topic (META_DEBUG_WINDOW_OPS,
                   "Unmaximizing %s%s\n",
                   window->desc,
-                  unmaximize_horizontally && unmaximize_vertically ? "" :
-                    unmaximize_horizontally ? " horizontally" :
-                      unmaximize_vertically ? " vertically" : "BUGGGGG");
+                  direction);
 
       window->maximized_horizontally =
         window->maximized_horizontally && !unmaximize_horizontally;
