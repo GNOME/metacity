@@ -65,8 +65,6 @@ meta_accel_label_class_init (MetaAccelLabelClass *class)
   widget_class->get_preferred_height = meta_accel_label_get_preferred_height;
   widget_class->draw = meta_accel_label_draw;
 
-  class->signal_quote1 = g_strdup ("<:");
-  class->signal_quote2 = g_strdup (":>");
   /* This is the text that should appear next to menu accelerators
    * that use the shift key. If the text on this key isn't typically
    * translated on keyboards used for your language, don't translate
