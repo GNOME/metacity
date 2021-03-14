@@ -337,9 +337,6 @@ meta_accel_label_update (MetaAccelLabel *accel_label)
 
   class = META_ACCEL_LABEL_GET_CLASS (accel_label);
 
-  g_free (accel_label->accel_string);
-  accel_label->accel_string = NULL;
-
   gstring = g_string_new ("   ");
 
   if (accel_label->accel_mods & META_VIRTUAL_SHIFT_MASK)
