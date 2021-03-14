@@ -596,7 +596,7 @@ meta_screen_manage_all_windows (MetaScreen *screen)
   meta_stack_tracker_get_stack (screen->stack_tracker, &windows, &n_windows);
 
   /* Copy the stack as it will be modified as part of the loop */
-  xwindows = g_memdup (windows, sizeof (Window) * n_windows);
+  xwindows = g_memdup2 (windows, sizeof (Window) * n_windows);
 
   for (i = 0; i < n_windows; i++)
     {

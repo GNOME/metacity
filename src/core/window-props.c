@@ -1939,7 +1939,7 @@ meta_display_init_window_prop_hooks (MetaDisplay *display)
     },
   };
 
-  MetaWindowPropHooks *table = g_memdup (hooks, sizeof (hooks)),
+  MetaWindowPropHooks *table = g_memdup2 (hooks, sizeof (hooks)),
     *cursor = table;
 
   g_assert (display->prop_hooks == NULL);
