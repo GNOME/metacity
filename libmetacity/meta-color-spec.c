@@ -263,11 +263,15 @@ meta_color_spec_new_from_string (const gchar  *str,
             }
           fallback_str_start++;
         }
-      fallback_str_start++;
+
+      if (*fallback_str_start != '\0')
+        fallback_str_start++;
 
       end = strrchr (str, ')');
 
-      if (color_name_start == NULL || fallback_str_start == NULL || end == NULL)
+      if (*color_name_start == '\0' ||
+          *fallback_str_start == '\0' ||
+          end == NULL)
         {
           g_set_error (error, META_THEME_ERROR, META_THEME_ERROR_FAILED,
                        _("Gtk:custom format is 'gtk:custom(color_name,fallback)', '%s' does not fit the format"),
