@@ -3578,7 +3578,7 @@ meta_display_begin_grab_op (MetaDisplay *display,
   /* If we're trying to move a window, move the first
    * non-attached dialog instead.
    */
-  if (meta_grab_op_is_moving (op))
+  if (window != NULL && meta_grab_op_is_moving (op))
     grab_window = get_first_freefloating_window (window);
 
   /* FIXME:
