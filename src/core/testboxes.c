@@ -1361,7 +1361,9 @@ test_find_closest_point_to_line (void)
                                                   x2,  y2,
                                                   px,  py,
                                                   &rx, &ry);
-  g_assert (rx == answer_x && ry == answer_y);
+
+  g_assert_cmpfloat_with_epsilon (rx, answer_x, 0.0001);
+  g_assert_cmpfloat_with_epsilon (ry, answer_y, 0.0001);
 
   /* Special test for x1 == x2, so that slop of line is infinite */
   x1 =  3.0;  y1 =  49.0;
@@ -1372,7 +1374,9 @@ test_find_closest_point_to_line (void)
                                                   x2,  y2,
                                                   px,  py,
                                                   &rx, &ry);
-  g_assert (rx == answer_x && ry == answer_y);
+
+  g_assert_cmpfloat_with_epsilon (rx, answer_x, 0.0001);
+  g_assert_cmpfloat_with_epsilon (ry, answer_y, 0.0001);
 
   /* Special test for y1 == y2, so perp line has slope of infinity */
   x1 =  3.14;  y1 =   7.0;
@@ -1383,7 +1387,9 @@ test_find_closest_point_to_line (void)
                                                   x2,  y2,
                                                   px,  py,
                                                   &rx, &ry);
-  g_assert (rx == answer_x && ry == answer_y);
+
+  g_assert_cmpfloat_with_epsilon (rx, answer_x, 0.0001);
+  g_assert_cmpfloat_with_epsilon (ry, answer_y, 0.0001);
 
   /* Test when we the point we want to be closest to is actually on the line */
   x1 =  3.0;  y1 =  49.0;
@@ -1394,7 +1400,9 @@ test_find_closest_point_to_line (void)
                                                   x2,  y2,
                                                   px,  py,
                                                   &rx, &ry);
-  g_assert (rx == answer_x && ry == answer_y);
+
+  g_assert_cmpfloat_with_epsilon (rx, answer_x, 0.0001);
+  g_assert_cmpfloat_with_epsilon (ry, answer_y, 0.0001);
 
   printf ("%s passed.\n", G_STRFUNC);
 }
