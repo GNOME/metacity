@@ -75,25 +75,8 @@ void meta_bell_set_audible (MetaDisplay *display, gboolean audible);
  * function to be a no-op.
  *
  * \param display  The display which is opening
- *
- * \bug There is a line of code that's never run that tells
- * XKB to reset the bell status after we quit. Bill H said
- * (<http://bugzilla.gnome.org/show_bug.cgi?id=99886#c12>)
- * that XFree86's implementation is broken so we shouldn't
- * call it, but that was in 2002. Is it working now?
  */
 gboolean meta_bell_init (MetaDisplay *display);
-
-/**
- * Shuts down the bell subsystem.
- *
- * \param display  The display which is closing
- *
- * \bug This is never called! If we had XkbSetAutoResetControls
- * enabled in meta_bell_init(), this wouldn't be a problem, but
- * we don't.
- */
-void meta_bell_shutdown (MetaDisplay *display);
 
 /**
  * Deals with a frame being destroyed. This is important because if we're

@@ -340,9 +340,6 @@ meta_bell_init (MetaDisplay *display)
     }
   else
     {
-      unsigned int mask = XkbBellNotifyMask;
-      gboolean visual_bell_auto_reset = FALSE;
-      /* TRUE if and when non-broken version is available */
       XkbSelectEvents (display->xdisplay,
                        XkbUseCoreKbd,
                        XkbBellNotifyMask,
@@ -352,30 +349,10 @@ meta_bell_init (MetaDisplay *display)
                                 XkbAudibleBellMask,
                                 0);
 
-      if (visual_bell_auto_reset)
-        {
-          XkbSetAutoResetControls (display->xdisplay,
-                                   XkbAudibleBellMask,
-                                   &mask,
-                                   &mask);
-        }
-
       return TRUE;
     }
 #endif
   return FALSE;
-}
-
-void
-meta_bell_shutdown (MetaDisplay *display)
-{
-#ifdef HAVE_XKB
-  /* TODO: persist initial bell state in display, reset here */
-  XkbChangeEnabledControls (display->xdisplay,
-                            XkbUseCoreKbd,
-                            XkbAudibleBellMask,
-                            XkbAudibleBellMask);
-#endif
 }
 
 /**
