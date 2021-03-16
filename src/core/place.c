@@ -702,6 +702,10 @@ find_preferred_position (MetaWindow *window,
    */
   if ((rect.width <= work_area.width) && (rect.height <= work_area.height))
     {
+      GRand *rand;
+
+      rand = g_rand_new ();
+
       switch (placement_mode_pref)
         {
           case META_PLACEMENT_MODE_CENTER:
@@ -717,9 +721,9 @@ find_preferred_position (MetaWindow *window,
 
           case META_PLACEMENT_MODE_RANDOM:
             *new_x = (int) ((float) (work_area.width - rect.width) *
-                            ((float) rand() / (float) RAND_MAX));
+                            (float) g_rand_double (rand));
             *new_y = (int) ((float) (work_area.height - rect.height) *
-                            ((float) rand() / (float) RAND_MAX));
+                            (float) g_rand_double (rand));
             *new_x += work_area.x;
             *new_y += work_area.y;
             break;
@@ -736,8 +740,8 @@ find_preferred_position (MetaWindow *window,
 
           default:
             g_warning ("Unknown window-placement option chosen.");
+            g_rand_free (rand);
             return FALSE;
-            break;
         }
 
       if (borders)
@@ -745,6 +749,8 @@ find_preferred_position (MetaWindow *window,
           *new_x += borders->visible.left;
           *new_y += borders->visible.top;
         }
+
+      g_rand_free (rand);
 
       return TRUE;
     }
