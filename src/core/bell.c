@@ -75,7 +75,7 @@
  */
 static void
 bell_flash_screen (MetaDisplay *display,
-			MetaScreen  *screen)
+                   MetaScreen  *screen)
 {
   Window root = screen->xroot;
   int width = screen->rect.width;
@@ -95,13 +95,13 @@ bell_flash_screen (MetaDisplay *display,
        * Not sure how to tell this yet...
        */
       screen->flash_window = XCreateWindow (display->xdisplay, root,
-					    0, 0, width, height,
-					    0, depth,
-					    InputOutput,
-					    visual,
-				    /* note: XSun doesn't like SaveUnder here */
-					    CWSaveUnder | CWOverrideRedirect,
-					    &xswa);
+                                            0, 0, width, height,
+                                            0, depth,
+                                            InputOutput,
+                                            visual,
+                                            /* note: XSun doesn't like SaveUnder here */
+                                            CWSaveUnder | CWOverrideRedirect,
+                                            &xswa);
       XSelectInput (display->xdisplay, screen->flash_window, ExposureMask);
       XMapWindow (display->xdisplay, screen->flash_window);
       XSync (display->xdisplay, False);
@@ -114,15 +114,15 @@ bell_flash_screen (MetaDisplay *display,
       GC gc = XCreateGC (display->xdisplay, screen->flash_window, 0, NULL);
       XMapWindow (display->xdisplay, screen->flash_window);
       XSetForeground (display->xdisplay, gc,
-		      WhitePixel (display->xdisplay,
-				  XScreenNumberOfScreen (screen->xscreen)));
+                      WhitePixel (display->xdisplay,
+                                  XScreenNumberOfScreen (screen->xscreen)));
       XFillRectangle (display->xdisplay, screen->flash_window, gc,
-		      0, 0, width, height);
+                      0, 0, width, height);
       XSetForeground (display->xdisplay, gc,
-		      BlackPixel (display->xdisplay,
-				  XScreenNumberOfScreen (screen->xscreen)));
+                      BlackPixel (display->xdisplay,
+                                  XScreenNumberOfScreen (screen->xscreen)));
       XFillRectangle (display->xdisplay, screen->flash_window, gc,
-		      0, 0, width, height);
+                      0, 0, width, height);
       XFlush (display->xdisplay);
       XSync (display->xdisplay, False);
       XUnmapWindow (display->xdisplay, screen->flash_window);
@@ -148,7 +148,7 @@ bell_flash_screen (MetaDisplay *display,
 #ifdef HAVE_XKB
 static void
 bell_flash_fullscreen (MetaDisplay *display,
-			    XkbAnyEvent *xkb_ev)
+                       XkbAnyEvent *xkb_ev)
 {
   g_assert (xkb_ev->xkb_type == XkbBellNotify);
 
@@ -208,7 +208,7 @@ bell_flash_window_frame (MetaWindow *window)
  */
 static void
 bell_flash_frame (MetaDisplay *display,
-		  XkbAnyEvent *xkb_ev)
+                  XkbAnyEvent *xkb_ev)
 {
   XkbBellNotifyEvent *xkb_bell_event = (XkbBellNotifyEvent *) xkb_ev;
   MetaWindow *window;
@@ -242,7 +242,7 @@ bell_flash_frame (MetaDisplay *display,
  */
 static void
 bell_visual_notify (MetaDisplay *display,
-			 XkbAnyEvent *xkb_ev)
+                    XkbAnyEvent *xkb_ev)
 {
   switch (meta_prefs_get_visual_bell_type ())
     {
@@ -259,7 +259,7 @@ bell_visual_notify (MetaDisplay *display,
 
 void
 meta_bell_notify (MetaDisplay *display,
-		  XkbAnyEvent *xkb_ev)
+                  XkbAnyEvent *xkb_ev)
 {
   /* flash something */
   if (meta_prefs_get_visual_bell ())
@@ -327,10 +327,12 @@ meta_bell_init (MetaDisplay *display)
 #ifdef HAVE_XKB
   int xkb_base_error_type, xkb_opcode;
 
-  if (!XkbQueryExtension (display->xdisplay, &xkb_opcode,
-			  &display->xkb_base_event_type,
-			  &xkb_base_error_type,
-			  NULL, NULL))
+  if (!XkbQueryExtension (display->xdisplay,
+                          &xkb_opcode,
+                          &display->xkb_base_event_type,
+                          &xkb_base_error_type,
+                          NULL,
+                          NULL))
     {
       display->xkb_base_event_type = -1;
       g_message ("could not find XKB extension.");
@@ -342,19 +344,22 @@ meta_bell_init (MetaDisplay *display)
       gboolean visual_bell_auto_reset = FALSE;
       /* TRUE if and when non-broken version is available */
       XkbSelectEvents (display->xdisplay,
-		       XkbUseCoreKbd,
-		       XkbBellNotifyMask,
-		       XkbBellNotifyMask);
+                       XkbUseCoreKbd,
+                       XkbBellNotifyMask,
+                       XkbBellNotifyMask);
       XkbChangeEnabledControls (display->xdisplay,
-				XkbUseCoreKbd,
-				XkbAudibleBellMask,
+                                XkbUseCoreKbd,
+                                XkbAudibleBellMask,
                                 0);
-      if (visual_bell_auto_reset) {
-	XkbSetAutoResetControls (display->xdisplay,
-				 XkbAudibleBellMask,
-				 &mask,
-				 &mask);
-      }
+
+      if (visual_bell_auto_reset)
+        {
+          XkbSetAutoResetControls (display->xdisplay,
+                                   XkbAudibleBellMask,
+                                   &mask,
+                                   &mask);
+        }
+
       return TRUE;
     }
 #endif
@@ -367,9 +372,9 @@ meta_bell_shutdown (MetaDisplay *display)
 #ifdef HAVE_XKB
   /* TODO: persist initial bell state in display, reset here */
   XkbChangeEnabledControls (display->xdisplay,
-			    XkbUseCoreKbd,
-			    XkbAudibleBellMask,
-			    XkbAudibleBellMask);
+                            XkbUseCoreKbd,
+                            XkbAudibleBellMask,
+                            XkbAudibleBellMask);
 #endif
 }
 
