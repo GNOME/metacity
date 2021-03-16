@@ -28,19 +28,15 @@
 
 #define NUM_RANDOM_RUNS 10000
 
-static void
-init_random_ness (void)
-{
-  srand(time(NULL));
-}
+static GRand *grand = NULL;
 
 static void
 get_random_rect (MetaRectangle *rect)
 {
-  rect->x = rand () % 1600;
-  rect->y = rand () % 1200;
-  rect->width  = rand () % 1600 + 1;
-  rect->height = rand () % 1200 + 1;
+  rect->x = g_rand_int (grand) % 1600;
+  rect->y = g_rand_int (grand) % 1200;
+  rect->width  = g_rand_int (grand) % 1600 + 1;
+  rect->height = g_rand_int (grand) % 1200 + 1;
 }
 
 static MetaRectangle*
@@ -1406,7 +1402,8 @@ test_find_closest_point_to_line (void)
 int
 main (int argc, char **argv)
 {
-  init_random_ness ();
+  grand = g_rand_new ();
+
   test_area ();
   test_intersect ();
   test_equal ();
@@ -1427,6 +1424,8 @@ main (int argc, char **argv)
   /* And now the misfit functions that don't quite fit in anywhere else... */
   test_gravity_resize ();
   test_find_closest_point_to_line ();
+
+  g_rand_free (grand);
 
   printf ("All tests passed.\n");
   return 0;
