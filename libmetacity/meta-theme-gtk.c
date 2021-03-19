@@ -953,7 +953,6 @@ meta_theme_gtk_init (MetaThemeGtk *gtk)
             style->layout->hide_buttons = TRUE;
             break;
 
-          /* coverity[dead_error_condition] */
           case META_FRAME_TYPE_LAST:
           default:
             g_assert_not_reached ();

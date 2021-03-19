@@ -536,12 +536,7 @@ meta_frame_style_set_get_style (MetaFrameStyleSet *style_set,
           styles = style_set->tiled_right_and_shaded_styles;
           break;
 
-        /* coverity[dead_error_begin] */
         case META_FRAME_STATE_NORMAL:
-          g_assert_not_reached ();
-          break;
-
-        /* coverity[dead_error_begin] */
         case META_FRAME_STATE_SHADED:
           g_assert_not_reached ();
           break;

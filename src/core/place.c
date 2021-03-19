@@ -728,12 +728,7 @@ find_preferred_position (MetaWindow *window,
             *new_y += work_area.y;
             break;
 
-          /* coverity[dead_error_begin] */
           case META_PLACEMENT_MODE_SMART:
-            g_assert_not_reached ();
-            break;
-
-          /* coverity[dead_error_begin] */
           case META_PLACEMENT_MODE_CASCADE:
             g_assert_not_reached ();
             break;

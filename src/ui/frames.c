@@ -1931,7 +1931,6 @@ meta_frames_button_release_event    (GtkWidget           *widget,
         case META_GRAB_OP_KEYBOARD_WORKSPACE_SWITCHING:
           break;
 
-        /* coverity[dead_error_begin] */
         case META_GRAB_OP_NONE:
           g_assert_not_reached ();
           break;
