@@ -1,3 +1,8 @@
+Version 3.40.0
+==============
+- Fix few memory leaks.
+- Updated translations.
+
 Version 3.38.0
 ==============
 - Fix segfault when using META_DEBUG_NO_SHADOW=0. (#12)
