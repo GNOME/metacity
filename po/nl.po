@@ -6,32 +6,27 @@
 # Reinout van Schouwen <reinouts@gnome.org>, 2003–2007.
 # Michiel Sikkes <michiels@gnome.org>, 2005.
 # Wouter Bolsterlee <wbolster@gnome.org>, 2006–2012.
-# Nathan Follens <nthn@unseen.is>, 2019.
+# Nathan Follens <nthn@unseen.is>, 2019, 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues\n"
-"POT-Creation-Date: 2018-06-10 17:51+0000\n"
-"PO-Revision-Date: 2019-03-04 23:18+0100\n"
+"POT-Creation-Date: 2021-03-14 13:44+0000\n"
+"PO-Revision-Date: 2021-04-02 13:36+0200\n"
 "Last-Translator: Nathan Follens <nthn@unseen.is>\n"
-"Language-Team: Dutch <vertaling@vrijschrift.org>\n"
+"Language-Team: Dutch <gnome-nl-list@gnome.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. Translators: This is the title used on dialog boxes
-#: data/applications/metacity.desktop.in:4 src/core/util.c:435
+#: data/applications/metacity.desktop.in:4 src/core/util.c:429
 msgid "Metacity"
 msgstr "Metacity"
-
-#. TRANSLATORS: Don't translate this text (this is icon name)
-#: data/applications/metacity.desktop.in:7
-msgid "preferences-system-windows"
-msgstr "preferences-system-windows"
 
 #: data/keybindings/50-metacity-navigation.xml:6
 msgid "Navigation"
@@ -172,54 +167,50 @@ msgid "Restore window"
 msgstr "Venster herstellen"
 
 #: data/keybindings/50-metacity-windows.xml:24
-msgid "Toggle shaded state"
-msgstr "Oprollen in- of uitschakelen"
-
-#: data/keybindings/50-metacity-windows.xml:27
 msgid "Close window"
 msgstr "Venster sluiten"
 
-#: data/keybindings/50-metacity-windows.xml:30
+#: data/keybindings/50-metacity-windows.xml:27
 msgid "Minimize window"
 msgstr "Venster minimaliseren"
 
-#: data/keybindings/50-metacity-windows.xml:33
+#: data/keybindings/50-metacity-windows.xml:30
 msgid "Move window"
 msgstr "Venster verplaatsen"
 
-#: data/keybindings/50-metacity-windows.xml:36
+#: data/keybindings/50-metacity-windows.xml:33
 msgid "Resize window"
 msgstr "Vensterafmetingen veranderen"
 
-#: data/keybindings/50-metacity-windows.xml:39
+#: data/keybindings/50-metacity-windows.xml:36
 msgid "Toggle window on all workspaces or one"
 msgstr "‘Venster is op alle werkbladen zichtbaar’ in- of uitschakelen"
 
-#: data/keybindings/50-metacity-windows.xml:42
+#: data/keybindings/50-metacity-windows.xml:39
 msgid "Raise window if covered, otherwise lower it"
 msgstr "Deels bedekte vensters naar voren halen of anders naar achter halen"
 
-#: data/keybindings/50-metacity-windows.xml:45
+#: data/keybindings/50-metacity-windows.xml:42
 msgid "Raise window above other windows"
 msgstr "Venster voor andere vensters brengen"
 
-#: data/keybindings/50-metacity-windows.xml:48
+#: data/keybindings/50-metacity-windows.xml:45
 msgid "Lower window below other windows"
 msgstr "Venster achter andere vensters brengen"
 
-#: data/keybindings/50-metacity-windows.xml:51
+#: data/keybindings/50-metacity-windows.xml:48
 msgid "Maximize window vertically"
 msgstr "Een venster verticaal maximaliseren"
 
-#: data/keybindings/50-metacity-windows.xml:54
+#: data/keybindings/50-metacity-windows.xml:51
 msgid "Maximize window horizontally"
 msgstr "Een venster horizontaal maximaliseren"
 
-#: data/keybindings/50-metacity-windows.xml:58
+#: data/keybindings/50-metacity-windows.xml:55
 msgid "View split on left"
 msgstr "Links opdelen"
 
-#: data/keybindings/50-metacity-windows.xml:62
+#: data/keybindings/50-metacity-windows.xml:59
 msgid "View split on right"
 msgstr "Rechts opdelen"
 
@@ -241,16 +232,34 @@ msgid "Compositing Manager"
 msgstr "Compositing manager"
 
 #: data/schemas/org.gnome.metacity.gschema.xml:24
-msgid "Determines whether Metacity is a compositing manager."
-msgstr "Bepaalt of Metacity een ‘compositing manager’ is."
+msgid ""
+"Determines whether Metacity is a compositing manager. DEPRECATED: This key "
+"is deprecated, use the “compositor” instead."
+msgstr ""
+"Bepaalt of Metacity een ‘compositing manager’ is. VEROUDERD: deze sleutel is "
+"verouderd, gebruik ‘compositor’ in de plaats."
 
-#: data/schemas/org.gnome.metacity.gschema.xml:31
+# technotalk
+#: data/schemas/org.gnome.metacity.gschema.xml:33
+#| msgid "Composited:"
+msgid "Compositor"
+msgstr "Compositor"
+
+#: data/schemas/org.gnome.metacity.gschema.xml:34
+msgid ""
+"Compositor that Metacity will use for compositing. Possible values are "
+"“none” and “xrender”."
+msgstr ""
+"De compositor die Metacity zal gebruiken voor compositing. Mogelijke waarden "
+"zijn ‘none’ (geen) en ‘xrender’."
+
+#: data/schemas/org.gnome.metacity.gschema.xml:42
 msgid "Enable edge tiling when dropping windows on screen edges"
 msgstr ""
 "Vensters langs de randen positioneren bij verslepen naar de rand van het "
 "scherm"
 
-#: data/schemas/org.gnome.metacity.gschema.xml:32
+#: data/schemas/org.gnome.metacity.gschema.xml:43
 msgid ""
 "If enabled, dropping windows on vertical screen edges maximizes them "
 "vertically and resizes them horizontally to cover half of the available "
@@ -261,11 +270,11 @@ msgstr ""
 "schermgrootte brengen. Het laten vallen van vensters op de bovenrand van het "
 "scherm maximaliseert ze helemaal."
 
-#: data/schemas/org.gnome.metacity.gschema.xml:41
+#: data/schemas/org.gnome.metacity.gschema.xml:52
 msgid "Window placement behavior"
 msgstr "Vensterplaatsingsgedrag"
 
-#: data/schemas/org.gnome.metacity.gschema.xml:42
+#: data/schemas/org.gnome.metacity.gschema.xml:53
 msgid ""
 "Metacity's default window-placement behavior is smart (first-fit), similar "
 "to behaviors in some other window managers. It will try to tile windows so "
@@ -282,25 +291,6 @@ msgstr ""
 "nieuwe vensters centraal op hun werkruimten te plaatsen, ‘origin’ om ze in "
 "de linkerbovenhoek van hun werkruimten te plaatsen, of ‘random’ om ze "
 "willekeurig op het werkruimten te plaatsen."
-
-#: data/schemas/org.gnome.metacity.gschema.xml:57
-msgid "If true, trade off usability for less resource usage"
-msgstr "Indien waar, bruikbaarheid inwisselen voor efficiënt bronnengebruik"
-
-#: data/schemas/org.gnome.metacity.gschema.xml:58
-msgid ""
-"If true, Metacity will give the user less feedback by using wireframes, "
-"avoiding animations, or other means. This is a significant reduction in "
-"usability for many users, but may allow legacy applications to continue "
-"working, and may also be a useful tradeoff for terminal servers. However, "
-"the wireframe feature is disabled when accessibility is on."
-msgstr ""
-"Indien waar, geeft metacity de gebruiker minder directe terugkoppeling door "
-"raamwerken te gebruiken en animaties te minimaliseren. Dit is een "
-"behoorlijke vermindering van bruikbaarheid, maar kan ervoor zorgen dat "
-"oudere toepassingen blijven werken. Ook kan dit een voordeel zijn als er met "
-"terminal servers gewerkt wordt. Echter, de raamwerk functie is uitgeschakeld "
-"indien toegankelijkheid ingeschakeld is."
 
 #: data/schemas/org.gnome.metacity.theme.gschema.xml:11
 msgid "Theme Name"
@@ -567,29 +557,29 @@ msgstr "Coördinaatuitdrukking was leeg of werd niet begrepen"
 msgid "Coordinate expression had unknown variable or constant '%s'"
 msgstr "Coördinaatuitdrukking bevat een onbekende variabele of constante ‘%s’"
 
-#: libmetacity/meta-draw-spec.c:631 libmetacity/meta-draw-spec.c:641
-#: libmetacity/meta-draw-spec.c:676 libmetacity/meta-draw-spec.c:686
+#: libmetacity/meta-draw-spec.c:638 libmetacity/meta-draw-spec.c:648
+#: libmetacity/meta-draw-spec.c:683 libmetacity/meta-draw-spec.c:693
 msgid "Coordinate expression results in division by zero"
 msgstr "Coördinaatuitdrukking resulteert in een deling door nul"
 
-#: libmetacity/meta-draw-spec.c:775
+#: libmetacity/meta-draw-spec.c:782
 #, c-format
 msgid ""
 "Coordinate expression has an operator \"%s\" where an operand was expected"
 msgstr ""
 "Coördinaatuitdrukking bevat een functie ‘%s’ waar een argument werd verwacht"
 
-#: libmetacity/meta-draw-spec.c:784
+#: libmetacity/meta-draw-spec.c:791
 msgid "Coordinate expression had an operand where an operator was expected"
 msgstr ""
 "Coördinaatuitdrukking bevat een argument waar een functie werd verwacht"
 
-#: libmetacity/meta-draw-spec.c:792
+#: libmetacity/meta-draw-spec.c:799
 msgid "Coordinate expression ended with an operator instead of an operand"
 msgstr ""
 "Coördinaatuitdrukking eindigde met een functie in plaats van een argument"
 
-#: libmetacity/meta-draw-spec.c:802
+#: libmetacity/meta-draw-spec.c:809
 #, c-format
 msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
@@ -602,24 +592,24 @@ msgstr ""
 # Engelse origineel een beter restultaat oplevert.
 #  -- Michiel Sikkes, zo 9 apr 2006
 # Niet liegen - Nathan
-#: libmetacity/meta-draw-spec.c:934
+#: libmetacity/meta-draw-spec.c:941
 msgid "Coordinate expression parser overflowed its buffer."
 msgstr "Buffer van coördinaatuitdrukkingsontleder is overgelopen."
 
-#: libmetacity/meta-draw-spec.c:964
+#: libmetacity/meta-draw-spec.c:971
 msgid "Coordinate expression had a close parenthesis with no open parenthesis"
 msgstr "Coördinaatuitdrukking bevat een sluithaakje zonder openingshaakje"
 
-#: libmetacity/meta-draw-spec.c:1037
+#: libmetacity/meta-draw-spec.c:1044
 msgid "Coordinate expression had an open parenthesis with no close parenthesis"
 msgstr "Coördinaatuitdrukking bevat een openingshaakje zonder sluithaakje"
 
-#: libmetacity/meta-draw-spec.c:1047
+#: libmetacity/meta-draw-spec.c:1054
 msgid "Coordinate expression doesn't seem to have any operators or operands"
 msgstr "Coördinaatuitdrukking bevat schijnbaar geen functies of argumenten"
 
-#: libmetacity/meta-draw-spec.c:1239 libmetacity/meta-draw-spec.c:1259
-#: libmetacity/meta-draw-spec.c:1279
+#: libmetacity/meta-draw-spec.c:1246 libmetacity/meta-draw-spec.c:1266
+#: libmetacity/meta-draw-spec.c:1286
 #, c-format
 msgid "Theme contained an expression that resulted in an error: %s"
 msgstr "Expressie in thema resulteerde in een foutmelding: %s"
@@ -664,13 +654,13 @@ msgstr "Kader-afmetingen geeft geen afmeting van knoppen"
 #. * in theme XML.  The "<frame ...>" is intended as a noun phrase,
 #. * and the "missing" qualifies it.  You should translate "whatever".
 #.
-#: libmetacity/meta-frame-style.c:144 libmetacity/meta-frame-style.c:469
+#: libmetacity/meta-frame-style.c:144 libmetacity/meta-frame-style.c:467
 #, c-format
 msgid "Missing <frame state='%s' resize='%s' focus='%s' style='whatever' />"
 msgstr ""
 "Ontbrekende <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"iets\"/>"
 
-#: libmetacity/meta-frame-style.c:326
+#: libmetacity/meta-frame-style.c:324
 #, c-format
 msgid ""
 "<button function='%s' state='%s' draw_ops='whatever'/> must be specified for "
@@ -831,11 +821,11 @@ msgstr "Venstertype ‘%s’ heeft reeds een stijlset toegewezen gekregen"
 #: libmetacity/meta-theme-metacity.c:1654
 #: libmetacity/meta-theme-metacity.c:2808
 #: libmetacity/meta-theme-metacity.c:2854
-#: libmetacity/meta-theme-metacity.c:3094
-#: libmetacity/meta-theme-metacity.c:3130
-#: libmetacity/meta-theme-metacity.c:3166
-#: libmetacity/meta-theme-metacity.c:3202
-#: libmetacity/meta-theme-metacity.c:3499
+#: libmetacity/meta-theme-metacity.c:3092
+#: libmetacity/meta-theme-metacity.c:3128
+#: libmetacity/meta-theme-metacity.c:3164
+#: libmetacity/meta-theme-metacity.c:3200
+#: libmetacity/meta-theme-metacity.c:3497
 #, c-format
 msgid "Element <%s> is not allowed below <%s>"
 msgstr "Element <%s> is niet toegestaan onder <%s>"
@@ -921,47 +911,47 @@ msgstr "Er zijn geen <draw_ops> genaamd ‘%s’ gedefinieerd"
 msgid "Including draw_ops \"%s\" here would create a circular reference"
 msgstr "Hier ‘draw_ops’ ‘%s’ meenemen zou een circulaire verwijzing creëren"
 
-#: libmetacity/meta-theme-metacity.c:2981
+#: libmetacity/meta-theme-metacity.c:2979
 #, c-format
 msgid "Unknown position \"%s\" for frame piece"
 msgstr "Onbekende positie ‘%s’ voor kader-onderdeel"
 
-#: libmetacity/meta-theme-metacity.c:2989
+#: libmetacity/meta-theme-metacity.c:2987
 #, c-format
 msgid "Frame style already has a piece at position %s"
 msgstr "Kader-stijl heeft al een onderdeel op positie %s"
 
-#: libmetacity/meta-theme-metacity.c:3005
+#: libmetacity/meta-theme-metacity.c:3003
 #, c-format
 msgid "No <draw_ops> with the name \"%s\" has been defined"
 msgstr "Er zijn geen <draw_ops> met naam ‘%s’ gedefinieerd"
 
-#: libmetacity/meta-theme-metacity.c:3036
+#: libmetacity/meta-theme-metacity.c:3034
 #, c-format
 msgid "Unknown function \"%s\" for button"
 msgstr "Onbekende functie ‘%s’ voor knop"
 
-#: libmetacity/meta-theme-metacity.c:3047
+#: libmetacity/meta-theme-metacity.c:3045
 #, c-format
 msgid "Button function '%s' does not exist in this version (%d, need %d)"
 msgstr "Knopfunctie ‘%s’ bestaat niet in deze versie (%d, %d benodigd)"
 
-#: libmetacity/meta-theme-metacity.c:3056
+#: libmetacity/meta-theme-metacity.c:3054
 #, c-format
 msgid "Unknown state '%s' for button"
 msgstr "Onbekende status ‘%s’ voor knop"
 
-#: libmetacity/meta-theme-metacity.c:3063
+#: libmetacity/meta-theme-metacity.c:3061
 #, c-format
 msgid "Frame style already has a button for function %s state %s"
 msgstr "Kader-stijl heeft reeds een knop voor functie %s status %s"
 
-#: libmetacity/meta-theme-metacity.c:3080
+#: libmetacity/meta-theme-metacity.c:3078
 #, c-format
 msgid "No <draw_ops> with the name '%s' has been defined"
 msgstr "Er zijn geen <draw_ops> met naam ‘%s’ gedefinieerd"
 
-#: libmetacity/meta-theme-metacity.c:3114
+#: libmetacity/meta-theme-metacity.c:3112
 msgid ""
 "Can't have a two draw_ops for a <piece> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
@@ -970,7 +960,7 @@ msgstr ""
 "specificeerde een ‘draw_ops’-attribuut en tevens een <draw_ops>-element, of "
 "specificeerde twee elementen)"
 
-#: libmetacity/meta-theme-metacity.c:3150
+#: libmetacity/meta-theme-metacity.c:3148
 msgid ""
 "Can't have a two draw_ops for a <button> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
@@ -979,7 +969,7 @@ msgstr ""
 "specificeerde een ‘draw_ops’-attribuut en tevens een <draw_ops>-element, of "
 "specificeerde twee elementen)"
 
-#: libmetacity/meta-theme-metacity.c:3186
+#: libmetacity/meta-theme-metacity.c:3184
 msgid ""
 "Can't have a two draw_ops for a <menu_icon> element (theme specified a "
 "draw_ops attribute and also a <draw_ops> element, or specified two elements)"
@@ -988,28 +978,28 @@ msgstr ""
 "specificeerde een ‘draw_ops’-attribuut en tevens een <draw_ops>-element, of "
 "specificeerde twee elementen)"
 
-#: libmetacity/meta-theme-metacity.c:3290
+#: libmetacity/meta-theme-metacity.c:3288
 #, c-format
 msgid "'%s' is not a valid value for focus attribute"
 msgstr "‘%s’ is geen geldige waarde voor ‘focus’-attribuut"
 
-#: libmetacity/meta-theme-metacity.c:3299
+#: libmetacity/meta-theme-metacity.c:3297
 #, c-format
 msgid "'%s' is not a valid value for state attribute"
 msgstr "‘%s’ is geen geldige waarde voor ‘state’-attribuut"
 
-#: libmetacity/meta-theme-metacity.c:3308
+#: libmetacity/meta-theme-metacity.c:3306
 #, c-format
 msgid "A style called '%s' has not been defined"
 msgstr "Een stijl genaamd ‘%s’ is niet gedefinieerd"
 
-#: libmetacity/meta-theme-metacity.c:3326
-#: libmetacity/meta-theme-metacity.c:3349
+#: libmetacity/meta-theme-metacity.c:3324
+#: libmetacity/meta-theme-metacity.c:3347
 #, c-format
 msgid "'%s' is not a valid value for resize attribute"
 msgstr "‘%s’ is geen geldige waarde voor ‘resize’-attribuut"
 
-#: libmetacity/meta-theme-metacity.c:3360
+#: libmetacity/meta-theme-metacity.c:3358
 #, c-format
 msgid ""
 "Should not have 'resize' attribute on <%s> element for maximized/shaded "
@@ -1018,36 +1008,36 @@ msgstr ""
 "Hoort geen ‘resize’-attribuut te hebben op <%s>-element voor "
 "gemaximaliseerde/opgerolde toestanden"
 
-#: libmetacity/meta-theme-metacity.c:3381
+#: libmetacity/meta-theme-metacity.c:3379
 #, c-format
 msgid "Should not have 'resize' attribute on <%s> element for maximized states"
 msgstr ""
 "Hoort geen ‘resize’-attribuut te hebben op <%s>-element voor "
 "gemaximaliseerde toestand"
 
-#: libmetacity/meta-theme-metacity.c:3396
-#: libmetacity/meta-theme-metacity.c:3444
+#: libmetacity/meta-theme-metacity.c:3394
+#: libmetacity/meta-theme-metacity.c:3442
 #, c-format
 msgid "Style has already been specified for state %s resize %s focus %s"
 msgstr ""
 "Stijl is reeds gespecificeerd voor status %s grootte aanpassen %s aandacht %s"
 
-#: libmetacity/meta-theme-metacity.c:3408
-#: libmetacity/meta-theme-metacity.c:3420
-#: libmetacity/meta-theme-metacity.c:3432
-#: libmetacity/meta-theme-metacity.c:3456
-#: libmetacity/meta-theme-metacity.c:3468
-#: libmetacity/meta-theme-metacity.c:3480
+#: libmetacity/meta-theme-metacity.c:3406
+#: libmetacity/meta-theme-metacity.c:3418
+#: libmetacity/meta-theme-metacity.c:3430
+#: libmetacity/meta-theme-metacity.c:3454
+#: libmetacity/meta-theme-metacity.c:3466
+#: libmetacity/meta-theme-metacity.c:3478
 #, c-format
 msgid "Style has already been specified for state %s focus %s"
 msgstr "Stijl is reeds gespecificeerd voor status %s aandacht %s"
 
-#: libmetacity/meta-theme-metacity.c:3546
+#: libmetacity/meta-theme-metacity.c:3544
 #, c-format
 msgid "Bad version specification '%s'"
 msgstr "Slechte versiespecificatie ‘%s’"
 
-#: libmetacity/meta-theme-metacity.c:3617
+#: libmetacity/meta-theme-metacity.c:3615
 msgid ""
 "'version' attribute cannot be used in metacity-theme-1.xml or metacity-"
 "theme-2.xml"
@@ -1055,17 +1045,17 @@ msgstr ""
 "‘versie’-attribuut kan niet gebruikt worden met metacity-thema-1.xml noch "
 "metacity-thema-2.xml"
 
-#: libmetacity/meta-theme-metacity.c:3640
+#: libmetacity/meta-theme-metacity.c:3638
 #, c-format
 msgid "Theme requires version %s but latest supported theme version is %d.%d"
 msgstr "Thema vereist versie %s, maar laatst ondersteunde themaversie is %d.%d"
 
-#: libmetacity/meta-theme-metacity.c:3664
+#: libmetacity/meta-theme-metacity.c:3662
 #, c-format
 msgid "Outermost element in theme must be <metacity_theme> not <%s>"
 msgstr "Buitenste element in thema moet zijn: <metacity_theme>, niet <%s>"
 
-#: libmetacity/meta-theme-metacity.c:3684
+#: libmetacity/meta-theme-metacity.c:3682
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a name/author/date/description element"
@@ -1073,12 +1063,12 @@ msgstr ""
 "Element <%s> is niet toegestaan binnen een naam/auteur/datum/beschrijving "
 "element"
 
-#: libmetacity/meta-theme-metacity.c:3690
+#: libmetacity/meta-theme-metacity.c:3688
 #, c-format
 msgid "Element <%s> is not allowed inside a <constant> element"
 msgstr "Element <%s> is niet toegestaan binnen een <constant>-element"
 
-#: libmetacity/meta-theme-metacity.c:3703
+#: libmetacity/meta-theme-metacity.c:3701
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a distance/border/aspect_ratio element"
@@ -1086,15 +1076,15 @@ msgstr ""
 "Element <%s> is niet toegestaan binnen de elementen distance/border/"
 "aspect_ratio"
 
-#: libmetacity/meta-theme-metacity.c:3726
+#: libmetacity/meta-theme-metacity.c:3724
 #, c-format
 msgid "Element <%s> is not allowed inside a draw operation element"
 msgstr "Element <%s> is niet toegestaan binnen een ‘draw operation’-element"
 
-#: libmetacity/meta-theme-metacity.c:3737
-#: libmetacity/meta-theme-metacity.c:3768
-#: libmetacity/meta-theme-metacity.c:3774
-#: libmetacity/meta-theme-metacity.c:3780
+#: libmetacity/meta-theme-metacity.c:3735
+#: libmetacity/meta-theme-metacity.c:3766
+#: libmetacity/meta-theme-metacity.c:3772
+#: libmetacity/meta-theme-metacity.c:3778
 #, c-format
 msgid "Element <%s> is not allowed inside a <%s> element"
 msgstr "Element <%s> is niet toegestaan binnen een <%s>-element"
@@ -1103,16 +1093,16 @@ msgstr "Element <%s> is niet toegestaan binnen een <%s>-element"
 #. * is given in angle brackets) was not found in a given theme (whose
 #. * name is given second, in quotation marks).
 #.
-#: libmetacity/meta-theme-metacity.c:3834
-#: libmetacity/meta-theme-metacity.c:3842
-#: libmetacity/meta-theme-metacity.c:3850
-#: libmetacity/meta-theme-metacity.c:3858
-#: libmetacity/meta-theme-metacity.c:3867
+#: libmetacity/meta-theme-metacity.c:3832
+#: libmetacity/meta-theme-metacity.c:3840
+#: libmetacity/meta-theme-metacity.c:3848
+#: libmetacity/meta-theme-metacity.c:3856
+#: libmetacity/meta-theme-metacity.c:3865
 #, c-format
 msgid "No <%s> set for theme '%s'"
 msgstr "Geen <%s> ingesteld voor thema ‘%s’"
 
-#: libmetacity/meta-theme-metacity.c:3878
+#: libmetacity/meta-theme-metacity.c:3876
 #, c-format
 msgid ""
 "No frame style set for window type '%s' in theme '%s', add a <window "
@@ -1121,29 +1111,29 @@ msgstr ""
 "Geen kader-stijl ingesteld voor venstertype ‘%s’ in thema ‘%s’, voeg een "
 "<window type=\"%s\" style_set=\"iets\"/>-element toe"
 
-#: libmetacity/meta-theme-metacity.c:4141
+#: libmetacity/meta-theme-metacity.c:4139
 msgid "No draw_ops provided for frame piece"
 msgstr "Geen ‘draw_ops’ gegeven voor kader-onderdeel"
 
-#: libmetacity/meta-theme-metacity.c:4157
+#: libmetacity/meta-theme-metacity.c:4155
 msgid "No draw_ops provided for button"
 msgstr "Geen ‘draw_ops’ gegeven voor knop"
 
-#: libmetacity/meta-theme-metacity.c:4272
-#: libmetacity/meta-theme-metacity.c:4283
-#: libmetacity/meta-theme-metacity.c:4294
-#: libmetacity/meta-theme-metacity.c:4305
-#: libmetacity/meta-theme-metacity.c:4316
+#: libmetacity/meta-theme-metacity.c:4270
+#: libmetacity/meta-theme-metacity.c:4281
+#: libmetacity/meta-theme-metacity.c:4292
+#: libmetacity/meta-theme-metacity.c:4303
+#: libmetacity/meta-theme-metacity.c:4314
 #, c-format
 msgid "<%s> specified twice for this theme"
 msgstr "<%s> twee keer gegeven voor dit thema"
 
-#: libmetacity/meta-theme-metacity.c:4355
+#: libmetacity/meta-theme-metacity.c:4353
 #, c-format
 msgid "No text is allowed inside element <%s>"
 msgstr "Geen tekst toegestaan binnen element <%s>"
 
-#: libmetacity/meta-theme-metacity.c:4621
+#: libmetacity/meta-theme-metacity.c:4619
 #, c-format
 msgid "Failed to find a valid file for theme '%s'"
 msgstr "Geen geldig bestand gevonden voor thema ‘%s’"
@@ -1174,7 +1164,7 @@ msgstr "_Wachten"
 msgid "_Force Quit"
 msgstr "Ge_forceerd afsluiten"
 
-#: src/core/main.c:101
+#: src/core/main.c:102
 #, c-format
 msgid ""
 "metacity %s\n"
@@ -1189,52 +1179,74 @@ msgstr ""
 "Er is GEEN garantie; zelfs niet voor VERKOOPBAARHEID of GESCHIKTHEID VOOR "
 "EEN BEPAALD DOEL.\n"
 
+#: src/core/main.c:198 src/core/main.c:215
+#, c-format
+msgid "Option “%s” is deprecated, use the “--compositor” instead."
+msgstr "De optie ‘%s’ is verouderd, gebruik in plaats daarvan ‘--compositor’."
+
+#: src/core/main.c:243
+#, c-format
+msgid "“%s” is not a valid compositor"
+msgstr "‘%s’ is geen geldige compositor"
+
 # te zien via: metacity --help
-#: src/core/main.c:215
+#: src/core/main.c:278
 msgid "Disable connection to session manager"
 msgstr "Schakel de verbinding met het sessiebeheer uit"
 
-#: src/core/main.c:221
+#: src/core/main.c:284
 msgid "Replace the running window manager with Metacity"
 msgstr "De huidige toepassing voor vensterbeheer vervangen door Metacity"
 
-#: src/core/main.c:227
+#: src/core/main.c:290
 msgid "Specify session management ID"
 msgstr "Specificeer de ID van het sessiebeheer"
 
-#: src/core/main.c:232
+#: src/core/main.c:295
 msgid "X Display to use"
 msgstr "De te gebruiken X-weergave"
 
-#: src/core/main.c:238
+#: src/core/main.c:301
 msgid "Initialize session from savefile"
 msgstr "Initialiseer de sessie middels een opslagbestand"
 
-#: src/core/main.c:244
+#: src/core/main.c:307
 msgid "Print version"
 msgstr "Versie-informatie tonen"
 
-#: src/core/main.c:250
+#: src/core/main.c:313
 msgid "Make X calls synchronous"
 msgstr "X-aanroepen synchroon maken"
 
 # technotalk
-#: src/core/main.c:256
+#: src/core/main.c:322
 msgid "Turn compositing on"
 msgstr "‘Compositing’ inschakelen"
 
-#: src/core/main.c:262
+#: src/core/main.c:331
 msgid "Turn compositing off"
 msgstr "‘Compositing’ uitschakelen"
 
-#: src/core/main.c:268
+# technotalk
+#: src/core/main.c:340
+msgid "Compositor to use"
+msgstr "De te gebruiken compositor"
+
+#: src/core/main.c:346
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr ""
 "Geen gemaximaliseerde vensters op het volledige scherm maken zonder "
 "vensterranden"
 
-#: src/core/prefs.c:1524
+#: src/core/prefs.c:905
+msgid ""
+"Setting “compositing-manager” is deprecated, use the “compositor” instead."
+msgstr ""
+"De instelling ‘compositing-manager’ is verouderd, gebruik in plaats daarvan "
+"‘compositor’."
+
+#: src/core/prefs.c:1446
 #, c-format
 msgid "Workspace %d"
 msgstr "Werkblad %d"
@@ -1267,33 +1279,33 @@ msgstr ""
 "Deze vensters ondersteunen het opslaan van de huidige instellingen niet en "
 "zullen bij een volgende sessie opnieuw moeten worden opgestart."
 
-#: src/core/util.c:105
+#: src/core/util.c:106
 #, c-format
 msgid "Opened log file %s\n"
 msgstr "Logboek %s geopend\n"
 
 #. Translators: the title of a window from another machine
-#: src/core/window-props.c:570
+#: src/core/window-props.c:548
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (op %s)"
 
 #. Simple case-- don't bother to look it up.  It's root.
-#: src/core/window-props.c:602
+#: src/core/window-props.c:583
 #, c-format
 msgid "%s (as superuser)"
 msgstr "%s (als beheerder)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine
-#: src/core/window-props.c:620
+#: src/core/window-props.c:602
 #, c-format
 msgid "%s (as %s)"
 msgstr "%s (als %s)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine, whose name we don't know
-#: src/core/window-props.c:626
+#: src/core/window-props.c:608
 #, c-format
 msgid "%s (as another user)"
 msgstr "%s (als een andere gebruiker)"
@@ -1303,53 +1315,25 @@ msgstr "%s (als een andere gebruiker)"
 msgid "Usage: %s\n"
 msgstr "Gebruik: %s\n"
 
-#: src/ui/frames.c:1315
+#: src/ui/frames.c:1255
 msgid "Close Window"
 msgstr "Venster sluiten"
 
-#: src/ui/frames.c:1318
+#: src/ui/frames.c:1258
 msgid "Window Menu"
 msgstr "Venstermenu"
 
-#: src/ui/frames.c:1321
-msgid "Window App Menu"
-msgstr "Venstertoepassingsmenu"
-
-#: src/ui/frames.c:1324
+#: src/ui/frames.c:1261
 msgid "Minimize Window"
 msgstr "Venster minimaliseren"
 
-#: src/ui/frames.c:1327
+#: src/ui/frames.c:1264
 msgid "Maximize Window"
 msgstr "Venster maximaliseren"
 
-#: src/ui/frames.c:1330
+#: src/ui/frames.c:1267
 msgid "Restore Window"
 msgstr "Venster herstellen"
-
-#: src/ui/frames.c:1333
-msgid "Roll Up Window"
-msgstr "Venster oprollen"
-
-#: src/ui/frames.c:1336
-msgid "Unroll Window"
-msgstr "Venster afrollen"
-
-#: src/ui/frames.c:1339
-msgid "Keep Window On Top"
-msgstr "Venster bovenop houden"
-
-#: src/ui/frames.c:1342
-msgid "Remove Window From Top"
-msgstr "Venster van boven weghalen"
-
-#: src/ui/frames.c:1345
-msgid "Always On Visible Workspace"
-msgstr "Altijd op zichtbaar werkblad"
-
-#: src/ui/frames.c:1348
-msgid "Put Window On Only One Workspace"
-msgstr "Venster op slechts één werkblad zetten"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: src/ui/menu.c:65
@@ -1447,7 +1431,7 @@ msgstr "Werkblad 1_0"
 msgid "Workspace %s%d"
 msgstr "Werkblad %s%d"
 
-#: src/ui/menu.c:351
+#: src/ui/menu.c:358
 msgid "Move to Another _Workspace"
 msgstr "Naar ander _werkblad verplaatsen"
 
@@ -1549,7 +1533,7 @@ msgstr "Mod5"
 msgid "%d x %d"
 msgstr "%d×%d"
 
-#: src/ui/ui.c:871
+#: src/ui/ui.c:853
 msgid "Falling back to default GTK+ theme - Adwaita"
 msgstr "Terugvallen op standaard-GTK+-thema - Adwaita"
 
@@ -1571,7 +1555,6 @@ msgstr "NAAM"
 
 #: theme-viewer/theme-viewer-window.c:102
 #, c-format
-#| msgid "Loaded theme \"%s\" in %g seconds\n"
 msgid "Loaded <b>%s</b> theme <b>%s</b> in <b>%f</b> seconds."
 msgstr "Thema <b>%s</b> geladen <b>%s</b> in <b>%f</b> seconden."
 
@@ -1598,6 +1581,50 @@ msgstr ""
 #: theme-viewer/theme-viewer-window.c:244
 msgid "Run again"
 msgstr "Opnieuw uitvoeren"
+
+#~ msgid "preferences-system-windows"
+#~ msgstr "preferences-system-windows"
+
+#~ msgid "Toggle shaded state"
+#~ msgstr "Oprollen in- of uitschakelen"
+
+#~ msgid "If true, trade off usability for less resource usage"
+#~ msgstr "Indien waar, bruikbaarheid inwisselen voor efficiënt bronnengebruik"
+
+#~ msgid ""
+#~ "If true, Metacity will give the user less feedback by using wireframes, "
+#~ "avoiding animations, or other means. This is a significant reduction in "
+#~ "usability for many users, but may allow legacy applications to continue "
+#~ "working, and may also be a useful tradeoff for terminal servers. However, "
+#~ "the wireframe feature is disabled when accessibility is on."
+#~ msgstr ""
+#~ "Indien waar, geeft metacity de gebruiker minder directe terugkoppeling "
+#~ "door raamwerken te gebruiken en animaties te minimaliseren. Dit is een "
+#~ "behoorlijke vermindering van bruikbaarheid, maar kan ervoor zorgen dat "
+#~ "oudere toepassingen blijven werken. Ook kan dit een voordeel zijn als er "
+#~ "met terminal servers gewerkt wordt. Echter, de raamwerk functie is "
+#~ "uitgeschakeld indien toegankelijkheid ingeschakeld is."
+
+#~ msgid "Window App Menu"
+#~ msgstr "Venstertoepassingsmenu"
+
+#~ msgid "Roll Up Window"
+#~ msgstr "Venster oprollen"
+
+#~ msgid "Unroll Window"
+#~ msgstr "Venster afrollen"
+
+#~ msgid "Keep Window On Top"
+#~ msgstr "Venster bovenop houden"
+
+#~ msgid "Remove Window From Top"
+#~ msgstr "Venster van boven weghalen"
+
+#~ msgid "Always On Visible Workspace"
+#~ msgstr "Altijd op zichtbaar werkblad"
+
+#~ msgid "Put Window On Only One Workspace"
+#~ msgstr "Venster op slechts één werkblad zetten"
 
 #~ msgid "Show the activities overview"
 #~ msgstr "Het activiteitenoverzicht tonen"
