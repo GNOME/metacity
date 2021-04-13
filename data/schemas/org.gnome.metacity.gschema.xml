@@ -33,7 +33,7 @@
       <summary>Compositor</summary>
       <description>
         Compositor that Metacity will use for compositing. Possible values
-        are “none” and “xrender”.
+        are “none”, “xrender” and “xpresent”.
       </description>
     </key>
 
