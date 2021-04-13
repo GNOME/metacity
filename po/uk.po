@@ -5,22 +5,21 @@
 # int_ua <xintx.ua@gmail.com>, 2011.
 # Korostil Daniel <ted.korostiled@gmail.com>, 2011, 2012.
 # root <ted.korostiled@gmail.com>, 2011.
-# Yuri Chornoivan <yurchor@ukr.net>, 2020.
+# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues\n"
-"POT-Creation-Date: 2020-09-06 11:32+0000\n"
-"PO-Revision-Date: 2020-09-06 19:47+0300\n"
+"POT-Creation-Date: 2021-04-13 15:44+0000\n"
+"PO-Revision-Date: 2021-04-13 20:15+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
-"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 20.11.70\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 20.12.0\n"
 
 #. Translators: This is the title used on dialog boxes
 #: data/applications/metacity.desktop.in:4 src/core/util.c:429
@@ -242,12 +241,15 @@ msgid "Compositor"
 msgstr "Засіб композиції"
 
 #: data/schemas/org.gnome.metacity.gschema.xml:34
+#| msgid ""
+#| "Compositor that Metacity will use for compositing. Possible values are "
+#| "“none” and “xrender”."
 msgid ""
 "Compositor that Metacity will use for compositing. Possible values are "
-"“none” and “xrender”."
+"“none”, “xrender” and “xpresent”."
 msgstr ""
 "Засіб композиції, який Metacity використовуватиме для компонування. "
-"Можливими значеннями є «none» і «xrender»."
+"Можливими значеннями є «none», «xrender» і «xpresent»."
 
 #: data/schemas/org.gnome.metacity.gschema.xml:42
 msgid "Enable edge tiling when dropping windows on screen edges"
@@ -435,7 +437,7 @@ msgstr ""
 "Некоректний символ «%c» у параметрі color_name gtk:custom, можна "
 "використовувати лише символи A-Za-z0-9-_"
 
-#: libmetacity/meta-color-spec.c:273
+#: libmetacity/meta-color-spec.c:277
 #, c-format
 msgid ""
 "Gtk:custom format is 'gtk:custom(color_name,fallback)', '%s' does not fit "
@@ -444,7 +446,7 @@ msgstr ""
 "Форматом Gtk:custom є «gtk:custom(color_name,fallback)», «%s» не відповідає "
 "формату"
 
-#: libmetacity/meta-color-spec.c:306
+#: libmetacity/meta-color-spec.c:310
 #, c-format
 msgid ""
 "GTK color specification must have the state in brackets, e.g. gtk:fg[NORMAL] "
@@ -453,7 +455,7 @@ msgstr ""
 "При визначенні кольору GTK потрібно вказувати режим у прямокутних дужках, "
 "наприклад, gtk:fg[NORMAL], де NORMAL — режим; неможливо розібрати «%s»"
 
-#: libmetacity/meta-color-spec.c:319
+#: libmetacity/meta-color-spec.c:323
 #, c-format
 msgid ""
 "GTK color specification must have a close bracket after the state, e.g. gtk:"
@@ -463,17 +465,17 @@ msgstr ""
 "прямокутна дужка, наприклад, gtk:fg[NORMAL], де NORMAL — режим; неможливо "
 "розібрати «%s»"
 
-#: libmetacity/meta-color-spec.c:328
+#: libmetacity/meta-color-spec.c:332
 #, c-format
 msgid "Did not understand state '%s' in color specification"
 msgstr "Неможливо розпізнати режим «%s» у визначенні кольору"
 
-#: libmetacity/meta-color-spec.c:340
+#: libmetacity/meta-color-spec.c:344
 #, c-format
 msgid "Did not understand color component '%s' in color specification"
 msgstr "Неможливо розпізнати компонент кольору «%s» у визначенні кольору"
 
-#: libmetacity/meta-color-spec.c:366
+#: libmetacity/meta-color-spec.c:370
 #, c-format
 msgid ""
 "Blend format is 'blend/bg_color/fg_color/alpha', '%s' does not fit the format"
@@ -481,33 +483,33 @@ msgstr ""
 "Формат визначення змішаного кольору такий — «blend/bg_color/fg_color/alpha», "
 "«%s» не відповідає формату"
 
-#: libmetacity/meta-color-spec.c:376
+#: libmetacity/meta-color-spec.c:380
 #, c-format
 msgid "Could not parse alpha value '%s' in blended color"
 msgstr "Неможливо розібрати значення альфа «%s» у змішаному кольорі"
 
-#: libmetacity/meta-color-spec.c:385
+#: libmetacity/meta-color-spec.c:389
 #, c-format
 msgid "Alpha value '%s' in blended color is not between 0.0 and 1.0"
 msgstr "Значення альфа «%s» у змішаному кольорі поза межами 0.0 — 1.0"
 
-#: libmetacity/meta-color-spec.c:428
+#: libmetacity/meta-color-spec.c:432
 #, c-format
 msgid "Shade format is 'shade/base_color/factor', '%s' does not fit the format"
 msgstr ""
 "Формат тіні такий — «shade/base_color/factor», «%s» не відповідає формату"
 
-#: libmetacity/meta-color-spec.c:438
+#: libmetacity/meta-color-spec.c:442
 #, c-format
 msgid "Could not parse shade factor '%s' in shaded color"
 msgstr "Не вдалось проаналізувати компонент тіні «%s» у затіненому кольорі"
 
-#: libmetacity/meta-color-spec.c:447
+#: libmetacity/meta-color-spec.c:451
 #, c-format
 msgid "Shade factor '%s' in shaded color is negative"
 msgstr "Компонент тіні «%s» у затіненому кольорі від'ємний"
 
-#: libmetacity/meta-color-spec.c:473
+#: libmetacity/meta-color-spec.c:477
 #, c-format
 msgid "Could not parse color '%s'"
 msgstr "Не вдалось проаналізувати колір «%s»"
@@ -799,13 +801,13 @@ msgstr "Типу вікна «%s» вже було визначено набір
 #: libmetacity/meta-theme-metacity.c:1364
 #: libmetacity/meta-theme-metacity.c:1428
 #: libmetacity/meta-theme-metacity.c:1654
-#: libmetacity/meta-theme-metacity.c:2808
-#: libmetacity/meta-theme-metacity.c:2854
-#: libmetacity/meta-theme-metacity.c:3092
-#: libmetacity/meta-theme-metacity.c:3128
-#: libmetacity/meta-theme-metacity.c:3164
-#: libmetacity/meta-theme-metacity.c:3200
-#: libmetacity/meta-theme-metacity.c:3497
+#: libmetacity/meta-theme-metacity.c:2810
+#: libmetacity/meta-theme-metacity.c:2856
+#: libmetacity/meta-theme-metacity.c:3094
+#: libmetacity/meta-theme-metacity.c:3130
+#: libmetacity/meta-theme-metacity.c:3166
+#: libmetacity/meta-theme-metacity.c:3202
+#: libmetacity/meta-theme-metacity.c:3499
 #, c-format
 msgid "Element <%s> is not allowed below <%s>"
 msgstr "Не допускається використання елементу <%s> нижче <%s>"
@@ -856,83 +858,83 @@ msgid "Did not understand value \"%s\" for type of gradient"
 msgstr "Не вдалось розпізнати значення «%s» типу градієнту"
 
 #: libmetacity/meta-theme-metacity.c:2271
-#: libmetacity/meta-theme-metacity.c:2593
+#: libmetacity/meta-theme-metacity.c:2595
 #, c-format
 msgid "Did not understand fill type \"%s\" for <%s> element"
 msgstr "Не вдалось розпізнати тип заповнення «%s» у елементі <%s>"
 
-#: libmetacity/meta-theme-metacity.c:2424
-#: libmetacity/meta-theme-metacity.c:2493
-#: libmetacity/meta-theme-metacity.c:2544
+#: libmetacity/meta-theme-metacity.c:2426
+#: libmetacity/meta-theme-metacity.c:2495
+#: libmetacity/meta-theme-metacity.c:2546
 #, c-format
 msgid "Did not understand state \"%s\" for <%s> element"
 msgstr "Не вдалось розпізнати режим «%s» у елементі <%s>"
 
-#: libmetacity/meta-theme-metacity.c:2434
-#: libmetacity/meta-theme-metacity.c:2503
+#: libmetacity/meta-theme-metacity.c:2436
+#: libmetacity/meta-theme-metacity.c:2505
 #, c-format
 msgid "Did not understand shadow \"%s\" for <%s> element"
 msgstr "Не вдалось розпізнати тінь «%s» у елементі <%s>"
 
-#: libmetacity/meta-theme-metacity.c:2444
+#: libmetacity/meta-theme-metacity.c:2446
 #, c-format
 msgid "Did not understand arrow \"%s\" for <%s> element"
 msgstr "Не вдалось розпізнати стрілку «%s» у елементі <%s>"
 
-#: libmetacity/meta-theme-metacity.c:2693
-#: libmetacity/meta-theme-metacity.c:2760
+#: libmetacity/meta-theme-metacity.c:2695
+#: libmetacity/meta-theme-metacity.c:2762
 #, c-format
 msgid "No <draw_ops> called \"%s\" has been defined"
 msgstr "Параметр <draw_ops> з назвою «%s» не було визначено"
 
-#: libmetacity/meta-theme-metacity.c:2705
-#: libmetacity/meta-theme-metacity.c:2772
+#: libmetacity/meta-theme-metacity.c:2707
+#: libmetacity/meta-theme-metacity.c:2774
 #, c-format
 msgid "Including draw_ops \"%s\" here would create a circular reference"
 msgstr ""
 "Вставлення сюди draw_ops «%s» призведе до створення циклічного посилання"
 
-#: libmetacity/meta-theme-metacity.c:2979
+#: libmetacity/meta-theme-metacity.c:2981
 #, c-format
 msgid "Unknown position \"%s\" for frame piece"
 msgstr "Невідома позиція «%s» ділянки рамки"
 
-#: libmetacity/meta-theme-metacity.c:2987
+#: libmetacity/meta-theme-metacity.c:2989
 #, c-format
 msgid "Frame style already has a piece at position %s"
 msgstr "У стилю рамки вже є ділянка рамки у позиції %s"
 
-#: libmetacity/meta-theme-metacity.c:3003
+#: libmetacity/meta-theme-metacity.c:3005
 #, c-format
 msgid "No <draw_ops> with the name \"%s\" has been defined"
 msgstr "Не було визначено параметру <draw_ops> з назвою «%s»"
 
-#: libmetacity/meta-theme-metacity.c:3034
+#: libmetacity/meta-theme-metacity.c:3036
 #, c-format
 msgid "Unknown function \"%s\" for button"
 msgstr "Невідома функція кнопки «%s»"
 
-#: libmetacity/meta-theme-metacity.c:3045
+#: libmetacity/meta-theme-metacity.c:3047
 #, c-format
 msgid "Button function '%s' does not exist in this version (%d, need %d)"
 msgstr "Функція кнопки «%s» не існує для цієї версії (%d, потрібно %d)"
 
-#: libmetacity/meta-theme-metacity.c:3054
+#: libmetacity/meta-theme-metacity.c:3056
 #, c-format
 msgid "Unknown state '%s' for button"
 msgstr "Невідомий стан кнопки - «%s»"
 
-#: libmetacity/meta-theme-metacity.c:3061
+#: libmetacity/meta-theme-metacity.c:3063
 #, c-format
 msgid "Frame style already has a button for function %s state %s"
 msgstr "Стиль рамки вже містить кнопку для функції %s зі станом %s"
 
-#: libmetacity/meta-theme-metacity.c:3078
+#: libmetacity/meta-theme-metacity.c:3080
 #, c-format
 msgid "No <draw_ops> with the name '%s' has been defined"
 msgstr "Не було визначено параметру <draw_ops> з назвою «%s»"
 
-#: libmetacity/meta-theme-metacity.c:3112
+#: libmetacity/meta-theme-metacity.c:3114
 msgid ""
 "Can't have a two draw_ops for a <piece> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
@@ -941,7 +943,7 @@ msgstr ""
 "(у темі вказано ознаку draw_ops та елемент <draw_ops>, або вказано два "
 "елементи)"
 
-#: libmetacity/meta-theme-metacity.c:3148
+#: libmetacity/meta-theme-metacity.c:3150
 msgid ""
 "Can't have a two draw_ops for a <button> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
@@ -950,7 +952,7 @@ msgstr ""
 "(у темі вказано ознаку draw_ops та елемент <draw_ops>, або вказано два "
 "елементи)"
 
-#: libmetacity/meta-theme-metacity.c:3184
+#: libmetacity/meta-theme-metacity.c:3186
 msgid ""
 "Can't have a two draw_ops for a <menu_icon> element (theme specified a "
 "draw_ops attribute and also a <draw_ops> element, or specified two elements)"
@@ -959,28 +961,28 @@ msgstr ""
 "<menu_icon> (у темі вказано ознаку draw_ops та елемент <draw_ops>, або "
 "вказано два елементи)"
 
-#: libmetacity/meta-theme-metacity.c:3288
+#: libmetacity/meta-theme-metacity.c:3290
 #, c-format
 msgid "'%s' is not a valid value for focus attribute"
 msgstr "«\"%s» не є правильною назвою ознаки «focus»"
 
-#: libmetacity/meta-theme-metacity.c:3297
+#: libmetacity/meta-theme-metacity.c:3299
 #, c-format
 msgid "'%s' is not a valid value for state attribute"
 msgstr "«%s» не є правильним станом ознаки «state»"
 
-#: libmetacity/meta-theme-metacity.c:3306
+#: libmetacity/meta-theme-metacity.c:3308
 #, c-format
 msgid "A style called '%s' has not been defined"
 msgstr "Стиль «%s» не визначено"
 
-#: libmetacity/meta-theme-metacity.c:3324
-#: libmetacity/meta-theme-metacity.c:3347
+#: libmetacity/meta-theme-metacity.c:3326
+#: libmetacity/meta-theme-metacity.c:3349
 #, c-format
 msgid "'%s' is not a valid value for resize attribute"
 msgstr "«%s» не є правильним значенням ознаки «resize»"
 
-#: libmetacity/meta-theme-metacity.c:3358
+#: libmetacity/meta-theme-metacity.c:3360
 #, c-format
 msgid ""
 "Should not have 'resize' attribute on <%s> element for maximized/shaded "
@@ -989,35 +991,35 @@ msgstr ""
 "Не слід використовувати ознаку «resize» у елементі <%s> для розгорнутого та "
 "згорнутого стану"
 
-#: libmetacity/meta-theme-metacity.c:3379
+#: libmetacity/meta-theme-metacity.c:3381
 #, c-format
 msgid "Should not have 'resize' attribute on <%s> element for maximized states"
 msgstr ""
 "Не слід використовувати ознаку «resize» у елементі <%s> для розгорнутого "
 "стану"
 
-#: libmetacity/meta-theme-metacity.c:3394
-#: libmetacity/meta-theme-metacity.c:3442
+#: libmetacity/meta-theme-metacity.c:3396
+#: libmetacity/meta-theme-metacity.c:3444
 #, c-format
 msgid "Style has already been specified for state %s resize %s focus %s"
 msgstr "Стиль вже було визначено для ознак state %s resize %s focus %s"
 
-#: libmetacity/meta-theme-metacity.c:3406
-#: libmetacity/meta-theme-metacity.c:3418
-#: libmetacity/meta-theme-metacity.c:3430
-#: libmetacity/meta-theme-metacity.c:3454
-#: libmetacity/meta-theme-metacity.c:3466
-#: libmetacity/meta-theme-metacity.c:3478
+#: libmetacity/meta-theme-metacity.c:3408
+#: libmetacity/meta-theme-metacity.c:3420
+#: libmetacity/meta-theme-metacity.c:3432
+#: libmetacity/meta-theme-metacity.c:3456
+#: libmetacity/meta-theme-metacity.c:3468
+#: libmetacity/meta-theme-metacity.c:3480
 #, c-format
 msgid "Style has already been specified for state %s focus %s"
 msgstr "Стиль вже було визначено для ознак state %s focus %s"
 
-#: libmetacity/meta-theme-metacity.c:3544
+#: libmetacity/meta-theme-metacity.c:3546
 #, c-format
 msgid "Bad version specification '%s'"
 msgstr "Помилкова специфікація версії «%s»"
 
-#: libmetacity/meta-theme-metacity.c:3615
+#: libmetacity/meta-theme-metacity.c:3617
 msgid ""
 "'version' attribute cannot be used in metacity-theme-1.xml or metacity-"
 "theme-2.xml"
@@ -1025,17 +1027,17 @@ msgstr ""
 "Атрибут «version» не можна використовувати у metacity-theme-1.xml або "
 "metacity-theme-2.xml"
 
-#: libmetacity/meta-theme-metacity.c:3638
+#: libmetacity/meta-theme-metacity.c:3640
 #, c-format
 msgid "Theme requires version %s but latest supported theme version is %d.%d"
 msgstr "Тема потребує версії %s, але найсвіжішою підтримуваною версією є %d.%d"
 
-#: libmetacity/meta-theme-metacity.c:3662
+#: libmetacity/meta-theme-metacity.c:3664
 #, c-format
 msgid "Outermost element in theme must be <metacity_theme> not <%s>"
 msgstr "Найвищим елементом в темі має бути  <metacity_theme>, не <%s>"
 
-#: libmetacity/meta-theme-metacity.c:3682
+#: libmetacity/meta-theme-metacity.c:3684
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a name/author/date/description element"
@@ -1043,27 +1045,27 @@ msgstr ""
 "Елемент <%s> не дозволяється у елементах <name>, <author>, <date> і "
 "<description>"
 
-#: libmetacity/meta-theme-metacity.c:3688
+#: libmetacity/meta-theme-metacity.c:3690
 #, c-format
 msgid "Element <%s> is not allowed inside a <constant> element"
 msgstr "Елемент <%s> не дозволяється у елементі <constant>"
 
-#: libmetacity/meta-theme-metacity.c:3701
+#: libmetacity/meta-theme-metacity.c:3703
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a distance/border/aspect_ratio element"
 msgstr ""
 "Елемент <%s> не дозволяється у елементах <distance>, <border>, <aspect_ratio>"
 
-#: libmetacity/meta-theme-metacity.c:3724
+#: libmetacity/meta-theme-metacity.c:3726
 #, c-format
 msgid "Element <%s> is not allowed inside a draw operation element"
 msgstr "Елемент <%s> не дозволяється у елементі операції малювання"
 
-#: libmetacity/meta-theme-metacity.c:3735
-#: libmetacity/meta-theme-metacity.c:3766
-#: libmetacity/meta-theme-metacity.c:3772
-#: libmetacity/meta-theme-metacity.c:3778
+#: libmetacity/meta-theme-metacity.c:3737
+#: libmetacity/meta-theme-metacity.c:3768
+#: libmetacity/meta-theme-metacity.c:3774
+#: libmetacity/meta-theme-metacity.c:3780
 #, c-format
 msgid "Element <%s> is not allowed inside a <%s> element"
 msgstr "Елемент <%s> не дозволяється у елементі <%s>"
@@ -1072,16 +1074,16 @@ msgstr "Елемент <%s> не дозволяється у елементі <%
 #. * is given in angle brackets) was not found in a given theme (whose
 #. * name is given second, in quotation marks).
 #.
-#: libmetacity/meta-theme-metacity.c:3832
-#: libmetacity/meta-theme-metacity.c:3840
-#: libmetacity/meta-theme-metacity.c:3848
-#: libmetacity/meta-theme-metacity.c:3856
-#: libmetacity/meta-theme-metacity.c:3865
+#: libmetacity/meta-theme-metacity.c:3834
+#: libmetacity/meta-theme-metacity.c:3842
+#: libmetacity/meta-theme-metacity.c:3850
+#: libmetacity/meta-theme-metacity.c:3858
+#: libmetacity/meta-theme-metacity.c:3867
 #, c-format
 msgid "No <%s> set for theme '%s'"
 msgstr "Не встановлено <%s> для теми «%s»"
 
-#: libmetacity/meta-theme-metacity.c:3876
+#: libmetacity/meta-theme-metacity.c:3878
 #, c-format
 msgid ""
 "No frame style set for window type '%s' in theme '%s', add a <window "
@@ -1090,29 +1092,29 @@ msgstr ""
 "Немає стилю рамки для вікна типу «%s» у темі «%s», додайте елемент  <window "
 "type=\"%s\" style_set=\"будь-що\"/> "
 
-#: libmetacity/meta-theme-metacity.c:4139
+#: libmetacity/meta-theme-metacity.c:4141
 msgid "No draw_ops provided for frame piece"
 msgstr "Для частини рамки не визначено параметр draw_ops"
 
-#: libmetacity/meta-theme-metacity.c:4155
+#: libmetacity/meta-theme-metacity.c:4157
 msgid "No draw_ops provided for button"
 msgstr "Для кнопки не визначено параметр draw_ops"
 
-#: libmetacity/meta-theme-metacity.c:4270
-#: libmetacity/meta-theme-metacity.c:4281
-#: libmetacity/meta-theme-metacity.c:4292
-#: libmetacity/meta-theme-metacity.c:4303
-#: libmetacity/meta-theme-metacity.c:4314
+#: libmetacity/meta-theme-metacity.c:4272
+#: libmetacity/meta-theme-metacity.c:4283
+#: libmetacity/meta-theme-metacity.c:4294
+#: libmetacity/meta-theme-metacity.c:4305
+#: libmetacity/meta-theme-metacity.c:4316
 #, c-format
 msgid "<%s> specified twice for this theme"
 msgstr "<%s> вказано для цієї теми двічі"
 
-#: libmetacity/meta-theme-metacity.c:4353
+#: libmetacity/meta-theme-metacity.c:4355
 #, c-format
 msgid "No text is allowed inside element <%s>"
 msgstr "Текст не дозволяється у елементі <%s>"
 
-#: libmetacity/meta-theme-metacity.c:4619
+#: libmetacity/meta-theme-metacity.c:4621
 #, c-format
 msgid "Failed to find a valid file for theme '%s'"
 msgstr "Не вдалось знайти коректний файл для теми «%s»"
@@ -1142,7 +1144,7 @@ msgstr "_Зачекати"
 msgid "_Force Quit"
 msgstr "П_римусово вийти"
 
-#: src/core/main.c:101
+#: src/core/main.c:102
 #, c-format
 msgid ""
 "metacity %s\n"
@@ -1157,7 +1159,7 @@ msgstr ""
 "Не надається НІЯКИХ гарантій; навіть ПРИДАТНОСТІ ДЛЯ ПРОДАЖУ чи "
 "ВІДПОВІДНОСТІ ПЕВНІЙ МЕТІ.\n"
 
-#: src/core/main.c:197 src/core/main.c:214
+#: src/core/main.c:198 src/core/main.c:215
 #, c-format
 msgid "Option “%s” is deprecated, use the “--compositor” instead."
 msgstr ""
@@ -1169,47 +1171,47 @@ msgstr ""
 msgid "“%s” is not a valid compositor"
 msgstr "«%s» не є коректним засобом композиції"
 
-#: src/core/main.c:275
+#: src/core/main.c:278
 msgid "Disable connection to session manager"
 msgstr "Вимкнути з'єднання з менеджером сеансу"
 
-#: src/core/main.c:281
+#: src/core/main.c:284
 msgid "Replace the running window manager with Metacity"
 msgstr "Замінити запущений менеджер вікон на Metacity"
 
-#: src/core/main.c:287
+#: src/core/main.c:290
 msgid "Specify session management ID"
 msgstr "Вказати ідентифікатор сеансу"
 
-#: src/core/main.c:292
+#: src/core/main.c:295
 msgid "X Display to use"
 msgstr "Екран X "
 
-#: src/core/main.c:298
+#: src/core/main.c:301
 msgid "Initialize session from savefile"
 msgstr "Розпочати сеанс зі збереженого файла"
 
-#: src/core/main.c:304
+#: src/core/main.c:307
 msgid "Print version"
 msgstr "Показати версію"
 
-#: src/core/main.c:310
+#: src/core/main.c:313
 msgid "Make X calls synchronous"
 msgstr "Зробити виклики X синхронними"
 
-#: src/core/main.c:319
+#: src/core/main.c:322
 msgid "Turn compositing on"
 msgstr "Увімкнути композитний режим"
 
-#: src/core/main.c:328
+#: src/core/main.c:331
 msgid "Turn compositing off"
 msgstr "Вимкнути композитний режим"
 
-#: src/core/main.c:337
+#: src/core/main.c:340
 msgid "Compositor to use"
 msgstr "Використаний засіб композиції"
 
-#: src/core/main.c:343
+#: src/core/main.c:346
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr ""
@@ -1217,40 +1219,39 @@ msgstr ""
 "рамок"
 
 #: src/core/prefs.c:905
-#| msgid "Option “%s” is deprecated, use the “--compositor” instead."
 msgid ""
 "Setting “compositing-manager” is deprecated, use the “compositor” instead."
 msgstr ""
-"Параметр «compositing-manager» є застарілим. Скористайтеся замість нього"
-" параметром «compositor»."
+"Параметр «compositing-manager» є застарілим. Скористайтеся замість нього "
+"параметром «compositor»."
 
 #: src/core/prefs.c:1446
 #, c-format
 msgid "Workspace %d"
 msgstr "Робочий простір %d"
 
-#: src/core/session.c:1210
+#: src/core/session.c:1213
 msgid "<metacity_session> attribute seen but we already have the session ID"
 msgstr ""
 "було прочитано атрибут <metacity_session>, але ідентифікатор сеансу вже було "
 "встановлено"
 
-#: src/core/session.c:1223 src/core/session.c:1298 src/core/session.c:1330
-#: src/core/session.c:1402 src/core/session.c:1462
+#: src/core/session.c:1226 src/core/session.c:1301 src/core/session.c:1333
+#: src/core/session.c:1405 src/core/session.c:1465
 #, c-format
 msgid "Unknown attribute %s on <%s> element"
 msgstr "Невідомий атрибут %s у елементі <%s>"
 
-#: src/core/session.c:1240
+#: src/core/session.c:1243
 msgid "nested <window> tag"
 msgstr "вкладена мітка <window>"
 
-#: src/core/session.c:1482
+#: src/core/session.c:1485
 #, c-format
 msgid "Unknown element %s"
 msgstr "Невідомий елемент %s"
 
-#: src/core/session.c:1838
+#: src/core/session.c:1841
 msgid ""
 "These windows do not support &quot;save current setup&quot; and will have to "
 "be restarted manually next time you log in."
@@ -1264,32 +1265,32 @@ msgid "Opened log file %s\n"
 msgstr "Відкрито журнал %s\n"
 
 #. Translators: the title of a window from another machine
-#: src/core/window-props.c:617
+#: src/core/window-props.c:548
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (на %s)"
 
 #. Simple case-- don't bother to look it up.  It's root.
-#: src/core/window-props.c:649
+#: src/core/window-props.c:583
 #, c-format
 msgid "%s (as superuser)"
 msgstr "%s (від адміністратора)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine
-#: src/core/window-props.c:667
+#: src/core/window-props.c:602
 #, c-format
 msgid "%s (as %s)"
 msgstr "%s (від %s)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine, whose name we don't know
-#: src/core/window-props.c:673
+#: src/core/window-props.c:608
 #, c-format
 msgid "%s (as another user)"
 msgstr "%s (від іншого користувача)"
 
-#: src/tools/metacity-message.c:174
+#: src/tools/metacity-message.c:170
 #, c-format
 msgid "Usage: %s\n"
 msgstr "Використання: %s\n"
@@ -1419,7 +1420,7 @@ msgstr "Перемістити на ін_ший робочий простір"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:75
+#: src/ui/metaaccellabel.c:73
 msgid "Shift"
 msgstr "Shift"
 
@@ -1428,7 +1429,7 @@ msgstr "Shift"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:81
+#: src/ui/metaaccellabel.c:79
 msgid "Ctrl"
 msgstr "Ctrl"
 
@@ -1437,7 +1438,7 @@ msgstr "Ctrl"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:87
+#: src/ui/metaaccellabel.c:85
 msgid "Alt"
 msgstr "Alt"
 
@@ -1446,7 +1447,7 @@ msgstr "Alt"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:93
+#: src/ui/metaaccellabel.c:91
 msgid "Meta"
 msgstr "Meta"
 
@@ -1455,7 +1456,7 @@ msgstr "Meta"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:99
+#: src/ui/metaaccellabel.c:97
 msgid "Super"
 msgstr "Super"
 
@@ -1464,7 +1465,7 @@ msgstr "Super"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:105
+#: src/ui/metaaccellabel.c:103
 msgid "Hyper"
 msgstr "Hyper"
 
@@ -1473,7 +1474,7 @@ msgstr "Hyper"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:111
+#: src/ui/metaaccellabel.c:109
 msgid "Mod2"
 msgstr "Mod2"
 
@@ -1482,7 +1483,7 @@ msgstr "Mod2"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:117
+#: src/ui/metaaccellabel.c:115
 msgid "Mod3"
 msgstr "Mod3"
 
@@ -1491,7 +1492,7 @@ msgstr "Mod3"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:123
+#: src/ui/metaaccellabel.c:121
 msgid "Mod4"
 msgstr "Mod4"
 
@@ -1500,7 +1501,7 @@ msgstr "Mod4"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:129
+#: src/ui/metaaccellabel.c:127
 msgid "Mod5"
 msgstr "Mod5"
 
