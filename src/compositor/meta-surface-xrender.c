@@ -39,6 +39,7 @@ struct _MetaSurfaceXRender
   Display           *xdisplay;
 
   Picture            picture;
+  Picture            alpha_pict;
 
   XserverRegion      border_clip;
 
@@ -190,7 +191,7 @@ paint_argb_parts (MetaSurfaceXRender *self,
   XFixesSetPictureClipRegion (self->xdisplay, paint_buffer, 0, 0, border_clip);
 
   XRenderComposite (self->xdisplay, PictOpOver,
-                    self->picture, None, paint_buffer,
+                    self->picture, self->alpha_pict, paint_buffer,
                     0, 0, 0, 0,
                     x, y, width, height);
 }
@@ -275,6 +276,55 @@ get_window_picture (MetaSurfaceXRender *self)
   return picture;
 }
 
+static Picture
+create_alpha_picture (MetaSurfaceXRender *self,
+                      guint               opacity)
+{
+  Window xroot;
+  Pixmap pixmap;
+  XRenderPictFormat *format;
+  XRenderPictureAttributes pa;
+  Picture picture;
+  XRenderColor c;
+
+  xroot = DefaultRootWindow (self->xdisplay);
+  pixmap = XCreatePixmap (self->xdisplay, xroot, 1, 1, 32);
+
+  if (pixmap == None)
+    return None;
+
+  format = XRenderFindStandardFormat (self->xdisplay, PictStandardARGB32);
+
+  if (format == NULL)
+    {
+      XFreePixmap (self->xdisplay, pixmap);
+      return None;
+    }
+
+  pa.repeat = True;
+  picture = XRenderCreatePicture (self->xdisplay,
+                                  pixmap,
+                                  format,
+                                  CPRepeat,
+                                  &pa);
+
+  if (picture == None)
+    {
+      XFreePixmap (self->xdisplay, pixmap);
+      return None;
+    }
+
+  c.alpha = ((double) opacity / OPAQUE) * 0xffff;
+  c.red = 0;
+  c.green = 0;
+  c.blue = 0;
+
+  XRenderFillRectangle (self->xdisplay, PictOpSrc, picture, &c, 0, 0, 1, 1);
+  XFreePixmap (self->xdisplay, pixmap);
+
+  return picture;
+}
+
 static void
 notify_appears_focused_cb (MetaWindow         *window,
                            GParamSpec         *pspec,
@@ -335,6 +385,12 @@ meta_surface_xrender_finalize (GObject *object)
   self = META_SURFACE_XRENDER (object);
 
   free_picture (self);
+
+  if (self->alpha_pict != None)
+    {
+      XRenderFreePicture (self->xdisplay, self->alpha_pict);
+      self->alpha_pict = None;
+    }
 
   if (self->border_clip != None)
     {
@@ -430,6 +486,12 @@ meta_surface_xrender_opacity_changed (MetaSurface *surface)
 
   self = META_SURFACE_XRENDER (surface);
 
+  if (self->alpha_pict != None)
+    {
+      XRenderFreePicture (self->xdisplay, self->alpha_pict);
+      self->alpha_pict = None;
+    }
+
   shadow_changed (self);
 }
 
@@ -494,6 +556,9 @@ meta_surface_xrender_pre_paint (MetaSurface   *surface,
 
   if (self->picture == None)
     self->picture = get_window_picture (self);
+
+  if (window->opacity != OPAQUE && self->alpha_pict == None)
+    self->alpha_pict = create_alpha_picture (self, window->opacity);
 
   if (self->shadow_changed)
     {
