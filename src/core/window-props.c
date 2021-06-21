@@ -1623,6 +1623,16 @@ reload_transient_for (MetaWindow    *window,
                      transient_for, window->desc);
           transient_for = None;
         }
+      else if (parent->override_redirect)
+        {
+          g_warning ("Ignoring WM_TRANSIENT_FOR for %s because it is pointing "
+                     "to override-redirect window %s.",
+                     window->desc,
+                     parent->desc);
+
+          transient_for = None;
+          parent = NULL;
+        }
 
       /* Make sure there is not a loop */
       while (parent)
