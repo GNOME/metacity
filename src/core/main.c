@@ -53,6 +53,7 @@
 #include "prefs.h"
 
 #include <glib-object.h>
+#include <glib-unix.h>
 #include <glib/gprintf.h>
 
 #include <stdlib.h>
@@ -401,29 +402,12 @@ meta_finalize (void)
   meta_session_shutdown ();
 }
 
-static int sigterm_pipe_fds[2] = { -1, -1 };
-
-static void
-sigterm_handler (int signum)
-{
-  if (sigterm_pipe_fds[1] >= 0)
-    {
-      if (write (sigterm_pipe_fds[1], "", 1) == -1)
-        {
-        }
-
-      close (sigterm_pipe_fds[1]);
-      sigterm_pipe_fds[1] = -1;
-    }
-}
-
 static gboolean
-on_sigterm (GIOChannel   *source,
-            GIOCondition  condition,
-            gpointer      user_data)
+sigterm_cb (gpointer user_data)
 {
   meta_quit ();
-  return FALSE;
+
+  return G_SOURCE_REMOVE;
 }
 
 /**
@@ -443,7 +427,6 @@ main (int argc, char **argv)
   struct sigaction act;
   sigset_t empty_mask;
   MetaArguments meta_args;
-  GIOChannel *channel;
 
   if (setlocale (LC_ALL, "") == NULL)
     g_warning ("Locale not understood by C library, internationalization "
@@ -462,20 +445,7 @@ main (int argc, char **argv)
                 g_strerror (errno));
 #endif
 
-  if (pipe (sigterm_pipe_fds) != 0)
-    g_printerr ("Failed to create SIGTERM pipe: %s\n",
-                g_strerror (errno));
-
-  channel = g_io_channel_unix_new (sigterm_pipe_fds[0]);
-  g_io_channel_set_flags (channel, G_IO_FLAG_NONBLOCK, NULL);
-  g_io_add_watch (channel, G_IO_IN, on_sigterm, NULL);
-  g_io_channel_set_close_on_unref (channel, TRUE);
-  g_io_channel_unref (channel);
-
-  act.sa_handler = &sigterm_handler;
-  if (sigaction (SIGTERM, &act, NULL) < 0)
-    g_printerr ("Failed to register SIGTERM handler: %s\n",
-		g_strerror (errno));
+  g_unix_signal_add (SIGTERM, sigterm_cb, NULL);
 
   meta_init_debug ();
 
