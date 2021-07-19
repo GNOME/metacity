@@ -81,6 +81,8 @@ static GMainLoop *meta_main_loop = NULL;
  */
 static gboolean meta_restart_after_quit = FALSE;
 
+static gboolean meta_shutdown_session = TRUE;
+
 /**
  * Prints the version notice. This is shown when Metacity is called
  * with the --version switch.
@@ -399,12 +401,22 @@ meta_finalize (void)
     meta_display_close (display,
                         CurrentTime); /* I doubt correct timestamps matter here */
 
-  meta_session_shutdown ();
+  if (meta_shutdown_session)
+    meta_session_shutdown ();
 }
 
 static gboolean
 sigterm_cb (gpointer user_data)
 {
+  meta_quit ();
+
+  return G_SOURCE_REMOVE;
+}
+
+static gboolean
+sigint_cb (gpointer user_data)
+{
+  meta_shutdown_session = FALSE;
   meta_quit ();
 
   return G_SOURCE_REMOVE;
@@ -446,6 +458,7 @@ main (int argc, char **argv)
 #endif
 
   g_unix_signal_add (SIGTERM, sigterm_cb, NULL);
+  g_unix_signal_add (SIGINT, sigint_cb, NULL);
 
   meta_init_debug ();
 
