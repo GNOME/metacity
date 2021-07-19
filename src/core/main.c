@@ -398,8 +398,13 @@ meta_finalize (void)
   MetaDisplay *display = meta_get_display();
 
   if (display)
-    meta_display_close (display,
-                        CurrentTime); /* I doubt correct timestamps matter here */
+    {
+      guint32 timestamp;
+
+      timestamp = meta_display_get_current_time_roundtrip (display);
+
+      meta_display_close (display, timestamp);
+    }
 
   if (meta_shutdown_session)
     meta_session_shutdown ();
