@@ -917,7 +917,6 @@ save_state (void)
 
   windows = g_slist_sort (windows, meta_display_stack_cmp);
   tmp = windows;
-  stack_position = 0;
 
   while (tmp != NULL)
     {
