@@ -1774,6 +1774,11 @@ dialog_closed (GPid pid, int status, gpointer user_data)
     {
       finish_interact (shutdown);
     }
+  else
+    {
+      SmcInteractDone (session_connection, shutdown ? True : False);
+      save_yourself_possibly_done (shutdown, FALSE);
+    }
 }
 
 static void
