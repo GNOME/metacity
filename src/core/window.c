@@ -4138,9 +4138,22 @@ meta_window_get_gravity_position (MetaWindow  *window,
   else
     {
       if (window->frame == NULL)
-        frame_extents = window->rect;
+        {
+          frame_extents = window->rect;
+        }
       else
-        frame_extents = window->frame->rect;
+        {
+          MetaFrameBorders borders;
+
+          frame_extents = window->frame->rect;
+
+          meta_frame_calc_borders (window->frame, &borders);
+
+          frame_extents.x += borders.invisible.left;
+          frame_extents.y += borders.invisible.top;
+          frame_extents.width -= borders.invisible.left + borders.invisible.right;
+          frame_extents.height -= borders.invisible.top + borders.invisible.bottom;
+        }
     }
 
   x = frame_extents.x;
