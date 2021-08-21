@@ -13,7 +13,7 @@
 GType
 @enum_name@_get_type (void)
 {
-  static volatile gsize g_enum_type_id;
+  static gsize g_enum_type_id;
   static const G@Type@Value values[] =
     {
 /*** END value-header ***/
