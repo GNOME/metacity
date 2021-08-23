@@ -12,7 +12,7 @@ dnl Define bugzilla address
 dnl **************************************************************************
 
 m4_define([m_bugzilla_url],
-          [https://bugzilla.gnome.org/enter_bug.cgi?product=metacity])
+          [https://gitlab.gnome.org/GNOME/metacity/-/issues])
 
 dnl **************************************************************************
 dnl Initialize autoconf
