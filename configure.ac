@@ -139,6 +139,7 @@ dnl **************************************************************************
 AC_SUBST(ACLOCAL_AMFLAGS, "\${ACLOCAL_FLAGS}")
 
 AC_PROG_CC
+AC_PROG_MKDIR_P
 AC_ISC_POSIX
 AC_HEADER_STDC
 
