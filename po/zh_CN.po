@@ -10,33 +10,27 @@
 # Jessica Ban <bancage@gmail.com>, 2010.
 # Lele Long <schemacs@gmail.com>, 2011.
 # YunQiang Su <wzssyqa@gmail.com>, 2012.
-# Dingzhong Chen <wsxy162@gmail.com>, 2016, 2017.
+# Dingzhong Chen <wsxy162@gmail.com>, 2016-2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
-"product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2018-03-11 14:19+0000\n"
-"PO-Revision-Date: 2018-03-24 22:05+0800\n"
-"Last-Translator: Dingzhong Chen <wsxy162@gmail.com>\n"
-"Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues\n"
+"POT-Creation-Date: 2021-07-22 15:35+0000\n"
+"PO-Revision-Date: 2021-08-29 15:44-0400\n"
+"Last-Translator: Boyuan Yang <073plan@gmail.com>\n"
+"Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 3.0\n"
 
 #. Translators: This is the title used on dialog boxes
-#: data/applications/metacity.desktop.in:4 src/core/util.c:435
+#: data/applications/metacity.desktop.in:4 src/core/util.c:429
 msgid "Metacity"
 msgstr "Metacity"
-
-#. TRANSLATORS: Don't translate this text (this is icon name)
-#: data/applications/metacity.desktop.in:7
-msgid "preferences-system-windows"
-msgstr "preferences-system-windows"
 
 #: data/keybindings/50-metacity-navigation.xml:6
 msgid "Navigation"
@@ -175,54 +169,50 @@ msgid "Restore window"
 msgstr "恢复窗口"
 
 #: data/keybindings/50-metacity-windows.xml:24
-msgid "Toggle shaded state"
-msgstr "切换卷起状态"
-
-#: data/keybindings/50-metacity-windows.xml:27
 msgid "Close window"
 msgstr "关闭窗口"
 
-#: data/keybindings/50-metacity-windows.xml:30
+#: data/keybindings/50-metacity-windows.xml:27
 msgid "Minimize window"
 msgstr "最小化窗口"
 
-#: data/keybindings/50-metacity-windows.xml:33
+#: data/keybindings/50-metacity-windows.xml:30
 msgid "Move window"
 msgstr "移动窗口"
 
-#: data/keybindings/50-metacity-windows.xml:36
+#: data/keybindings/50-metacity-windows.xml:33
 msgid "Resize window"
 msgstr "改变窗口大小"
 
-#: data/keybindings/50-metacity-windows.xml:39
+#: data/keybindings/50-metacity-windows.xml:36
 msgid "Toggle window on all workspaces or one"
 msgstr "在位于所有或仅一个工作区的窗口间切换"
 
-#: data/keybindings/50-metacity-windows.xml:42
+#: data/keybindings/50-metacity-windows.xml:39
 msgid "Raise window if covered, otherwise lower it"
 msgstr "如果窗口被其他窗口遮盖，则提升它，否则降低它"
 
-#: data/keybindings/50-metacity-windows.xml:45
+#: data/keybindings/50-metacity-windows.xml:42
 msgid "Raise window above other windows"
 msgstr "将窗口提升到其它窗口之上"
 
-#: data/keybindings/50-metacity-windows.xml:48
+#: data/keybindings/50-metacity-windows.xml:45
 msgid "Lower window below other windows"
 msgstr "将窗口降低到其它窗口之下"
 
-#: data/keybindings/50-metacity-windows.xml:51
+#: data/keybindings/50-metacity-windows.xml:48
 msgid "Maximize window vertically"
 msgstr "垂直最大化窗口"
 
-#: data/keybindings/50-metacity-windows.xml:54
+#: data/keybindings/50-metacity-windows.xml:51
 msgid "Maximize window horizontally"
 msgstr "水平最大化窗口"
 
-#: data/keybindings/50-metacity-windows.xml:58
+#: data/keybindings/50-metacity-windows.xml:55
 msgid "View split on left"
 msgstr "分屏到左侧"
 
-#: data/keybindings/50-metacity-windows.xml:62
+#: data/keybindings/50-metacity-windows.xml:59
 msgid "View split on right"
 msgstr "分屏到右侧"
 
@@ -239,17 +229,32 @@ msgstr ""
 
 #: data/schemas/org.gnome.metacity.gschema.xml:23
 msgid "Compositing Manager"
-msgstr "复合管理器"
+msgstr "合成管理器"
 
 #: data/schemas/org.gnome.metacity.gschema.xml:24
-msgid "Determines whether Metacity is a compositing manager."
-msgstr "决定 Metacity 是否是复合管理器。"
+msgid ""
+"Determines whether Metacity is a compositing manager. DEPRECATED: This key "
+"is deprecated, use the “compositor” instead."
+msgstr ""
+"确定 Metacity 是否作为合成管理器使用。已弃用：此键已弃用，使用“compositor”替"
+"代。"
 
-#: data/schemas/org.gnome.metacity.gschema.xml:31
+#: data/schemas/org.gnome.metacity.gschema.xml:33
+msgid "Compositor"
+msgstr "合成器"
+
+#: data/schemas/org.gnome.metacity.gschema.xml:34
+msgid ""
+"Compositor that Metacity will use for compositing. Possible values are "
+"“none”, “xrender” and “xpresent”."
+msgstr ""
+"Metacity 将用来进行显示合成的合成器。可用值有“none”、“xrender”和“xpresent”。"
+
+#: data/schemas/org.gnome.metacity.gschema.xml:42
 msgid "Enable edge tiling when dropping windows on screen edges"
 msgstr "启用边缘平铺当拖放窗口到屏幕边缘"
 
-#: data/schemas/org.gnome.metacity.gschema.xml:32
+#: data/schemas/org.gnome.metacity.gschema.xml:43
 msgid ""
 "If enabled, dropping windows on vertical screen edges maximizes them "
 "vertically and resizes them horizontally to cover half of the available "
@@ -258,11 +263,11 @@ msgstr ""
 "如果启用了，拖放窗口到垂直屏幕边缘会在垂直方向上最大化它们并且在水平方向上覆"
 "盖半个有效区域。拖放窗口到屏幕顶端边缘会完全最大化它们。"
 
-#: data/schemas/org.gnome.metacity.gschema.xml:41
+#: data/schemas/org.gnome.metacity.gschema.xml:52
 msgid "Window placement behavior"
 msgstr "窗口布局行为"
 
-#: data/schemas/org.gnome.metacity.gschema.xml:42
+#: data/schemas/org.gnome.metacity.gschema.xml:53
 msgid ""
 "Metacity's default window-placement behavior is smart (first-fit), similar "
 "to behaviors in some other window managers. It will try to tile windows so "
@@ -272,26 +277,10 @@ msgid ""
 "or \"random\" to place new windows at random locations within their "
 "workspaces."
 msgstr ""
-"Metacity 的默认窗口布局行为是 smart (最先匹配)，类似于其它一些窗口管理器的行"
+"Metacity 的默认窗口布局行为是 smart（最先匹配），类似于其它一些窗口管理器的行"
 "为。它会尝试平铺窗口以是他们不重叠。设置该选项为“smart”实现此行为。改选项也可"
 "设置为“center”来放置新窗口到它们工作区上的中心，“orgin”为工作区的左上角，或"
 "者“random”来放置新窗口到它们工作区上的随机位置。"
-
-#: data/schemas/org.gnome.metacity.gschema.xml:57
-msgid "If true, trade off usability for less resource usage"
-msgstr "如果为 true，则以可用性为代价而降低资源占用"
-
-#: data/schemas/org.gnome.metacity.gschema.xml:58
-msgid ""
-"If true, Metacity will give the user less feedback by using wireframes, "
-"avoiding animations, or other means. This is a significant reduction in "
-"usability for many users, but may allow legacy applications to continue "
-"working, and may also be a useful tradeoff for terminal servers. However, "
-"the wireframe feature is disabled when accessibility is on."
-msgstr ""
-"如果为 true，Metacity 将会给用户提供较少的反馈，方法是使用线框、避免动画或者"
-"其它途径。这对许多用户来说，可用性大打折扣，但是这将允许较早的应用程序和终端"
-"服务器能够顺利运行。此外，如果开启了辅助功能，系统会自动禁用线框特性。"
 
 #: data/schemas/org.gnome.metacity.theme.gschema.xml:11
 msgid "Theme Name"
@@ -319,10 +308,10 @@ msgid ""
 "x.xml and CSS. When using this theme type you MUST provide a valid theme "
 "name."
 msgstr ""
-"Metacity 支持两种主题类型—GTK+ (gtk.css) 和 Metacity (metacity-theme-x.xml)。"
-"GTK+ 主题：全部数据从 CSS 加载。这也是相同的主题为 Mutter 在服务器端装饰和 "
-"GTK+ 在客户端装饰所使用。Metacity 主题：数据从 metacity-theme-x.xml 和 CSS 加"
-"载。当使用该主题类型时你必须提供一个有效的主题名称。"
+"Metacity 支持两种主题类型——GTK+ (gtk.css) 和 Metacity (metacity-theme-x."
+"xml)。GTK+ 主题：全部数据从 CSS 加载。这也是相同的主题为 Mutter 在服务器端装"
+"饰和 GTK+ 在客户端装饰所使用。Metacity 主题：数据从 metacity-theme-x.xml 和 "
+"CSS 加载。当使用该主题类型时你必须提供一个有效的主题名称。"
 
 #: data/ui/theme-viewer-window.ui:86
 msgid "Reload"
@@ -437,14 +426,14 @@ msgid ""
 msgstr ""
 "无效字符“%c”存在于 gtk:custom 的 color_name 参数，只有 A-Za-z0-9-_ 是有效的"
 
-#: libmetacity/meta-color-spec.c:273
+#: libmetacity/meta-color-spec.c:277
 #, c-format
 msgid ""
 "Gtk:custom format is 'gtk:custom(color_name,fallback)', '%s' does not fit "
 "the format"
 msgstr "Gtk:custom 格式为“gtk:custom(color_name,fallback)”，“%s”不符合该格式"
 
-#: libmetacity/meta-color-spec.c:306
+#: libmetacity/meta-color-spec.c:310
 #, c-format
 msgid ""
 "GTK color specification must have the state in brackets, e.g. gtk:fg[NORMAL] "
@@ -453,7 +442,7 @@ msgstr ""
 "GTK 颜色规范必须将状态包含在方括号中，例如 gtk:fg[NORMAL]其中 NORMAL 是状态；"
 "无法解析“%s”"
 
-#: libmetacity/meta-color-spec.c:319
+#: libmetacity/meta-color-spec.c:323
 #, c-format
 msgid ""
 "GTK color specification must have a close bracket after the state, e.g. gtk:"
@@ -462,48 +451,48 @@ msgstr ""
 "GTK 颜色规范必须在状态后有一个闭方括号，例如 gtk:fg[NORMAL]，其中 NORMAL 是状"
 "态；无法解析“%s”"
 
-#: libmetacity/meta-color-spec.c:328
+#: libmetacity/meta-color-spec.c:332
 #, c-format
 msgid "Did not understand state '%s' in color specification"
 msgstr "不理解颜色规范中的状态“%s”"
 
-#: libmetacity/meta-color-spec.c:340
+#: libmetacity/meta-color-spec.c:344
 #, c-format
 msgid "Did not understand color component '%s' in color specification"
 msgstr "不理解颜色规范中的颜色组成部分“%s”"
 
-#: libmetacity/meta-color-spec.c:366
+#: libmetacity/meta-color-spec.c:370
 #, c-format
 msgid ""
 "Blend format is 'blend/bg_color/fg_color/alpha', '%s' does not fit the format"
 msgstr "混合格式为“blend/bg_color/fg_color/alpha”，“%s”不符合该格式"
 
-#: libmetacity/meta-color-spec.c:376
+#: libmetacity/meta-color-spec.c:380
 #, c-format
 msgid "Could not parse alpha value '%s' in blended color"
 msgstr "无法解析混合色中的 Alpha 值“%s”"
 
-#: libmetacity/meta-color-spec.c:385
+#: libmetacity/meta-color-spec.c:389
 #, c-format
 msgid "Alpha value '%s' in blended color is not between 0.0 and 1.0"
 msgstr "混合色中的 Alpha 值“%s”不在 0.0 到 1.0 之间"
 
-#: libmetacity/meta-color-spec.c:428
+#: libmetacity/meta-color-spec.c:432
 #, c-format
 msgid "Shade format is 'shade/base_color/factor', '%s' does not fit the format"
 msgstr "阴影格式为“shade/base_color/factor”，“%s”不符合该格式"
 
-#: libmetacity/meta-color-spec.c:438
+#: libmetacity/meta-color-spec.c:442
 #, c-format
 msgid "Could not parse shade factor '%s' in shaded color"
 msgstr "无法解析阴影色中的阴影因子“%s”"
 
-#: libmetacity/meta-color-spec.c:447
+#: libmetacity/meta-color-spec.c:451
 #, c-format
 msgid "Shade factor '%s' in shaded color is negative"
 msgstr "阴影色中的阴影因子“%s”为负数"
 
-#: libmetacity/meta-color-spec.c:473
+#: libmetacity/meta-color-spec.c:477
 #, c-format
 msgid "Could not parse color '%s'"
 msgstr "无法解析颜色“%s”"
@@ -541,50 +530,50 @@ msgstr "坐标表达式为空或无法理解"
 msgid "Coordinate expression had unknown variable or constant '%s'"
 msgstr "坐标表达式有未知的变量或常数“%s”"
 
-#: libmetacity/meta-draw-spec.c:631 libmetacity/meta-draw-spec.c:641
-#: libmetacity/meta-draw-spec.c:676 libmetacity/meta-draw-spec.c:686
+#: libmetacity/meta-draw-spec.c:638 libmetacity/meta-draw-spec.c:648
+#: libmetacity/meta-draw-spec.c:683 libmetacity/meta-draw-spec.c:693
 msgid "Coordinate expression results in division by zero"
 msgstr "坐标表达式用零做除数"
 
-#: libmetacity/meta-draw-spec.c:775
+#: libmetacity/meta-draw-spec.c:782
 #, c-format
 msgid ""
 "Coordinate expression has an operator \"%s\" where an operand was expected"
 msgstr "坐标表达式的运算符“%s”应该是一个操作数"
 
-#: libmetacity/meta-draw-spec.c:784
+#: libmetacity/meta-draw-spec.c:791
 msgid "Coordinate expression had an operand where an operator was expected"
 msgstr "坐标表达式的某个操作数应该是运算符"
 
-#: libmetacity/meta-draw-spec.c:792
+#: libmetacity/meta-draw-spec.c:799
 msgid "Coordinate expression ended with an operator instead of an operand"
 msgstr "坐标表达式以运算符结尾，而不是以操作数结尾"
 
-#: libmetacity/meta-draw-spec.c:802
+#: libmetacity/meta-draw-spec.c:809
 #, c-format
 msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
 "operand in between"
 msgstr "坐标表达式的运算符“%c”后面跟着运算符“%c”，之间没有操作数"
 
-#: libmetacity/meta-draw-spec.c:934
+#: libmetacity/meta-draw-spec.c:941
 msgid "Coordinate expression parser overflowed its buffer."
 msgstr "坐标表达式溢出了其缓冲区。"
 
-#: libmetacity/meta-draw-spec.c:964
+#: libmetacity/meta-draw-spec.c:971
 msgid "Coordinate expression had a close parenthesis with no open parenthesis"
 msgstr "坐标表达式有一个闭括号，而没有开括号"
 
-#: libmetacity/meta-draw-spec.c:1037
+#: libmetacity/meta-draw-spec.c:1044
 msgid "Coordinate expression had an open parenthesis with no close parenthesis"
 msgstr "坐标表达式有一个开括号，而没有闭括号"
 
-#: libmetacity/meta-draw-spec.c:1047
+#: libmetacity/meta-draw-spec.c:1054
 msgid "Coordinate expression doesn't seem to have any operators or operands"
 msgstr "坐标表达式似乎没有任何运算符或操作数"
 
-#: libmetacity/meta-draw-spec.c:1239 libmetacity/meta-draw-spec.c:1259
-#: libmetacity/meta-draw-spec.c:1279
+#: libmetacity/meta-draw-spec.c:1246 libmetacity/meta-draw-spec.c:1266
+#: libmetacity/meta-draw-spec.c:1286
 #, c-format
 msgid "Theme contained an expression that resulted in an error: %s"
 msgstr "主题包含的一个表达式产生错误：%s"
@@ -628,13 +617,13 @@ msgstr "框架几何布局没有指定按钮大小"
 #. * in theme XML.  The "<frame ...>" is intended as a noun phrase,
 #. * and the "missing" qualifies it.  You should translate "whatever".
 #.
-#: libmetacity/meta-frame-style.c:144 libmetacity/meta-frame-style.c:469
+#: libmetacity/meta-frame-style.c:144 libmetacity/meta-frame-style.c:467
 #, c-format
 msgid "Missing <frame state='%s' resize='%s' focus='%s' style='whatever' />"
 msgstr ""
 "缺少 <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
 
-#: libmetacity/meta-frame-style.c:326
+#: libmetacity/meta-frame-style.c:324
 #, c-format
 msgid ""
 "<button function='%s' state='%s' draw_ops='whatever'/> must be specified for "
@@ -786,8 +775,8 @@ msgstr "已经为窗口类型“%s”指定了一种风格设置"
 #: libmetacity/meta-theme-metacity.c:1364
 #: libmetacity/meta-theme-metacity.c:1428
 #: libmetacity/meta-theme-metacity.c:1654
-#: libmetacity/meta-theme-metacity.c:2808
-#: libmetacity/meta-theme-metacity.c:2854
+#: libmetacity/meta-theme-metacity.c:2810
+#: libmetacity/meta-theme-metacity.c:2856
 #: libmetacity/meta-theme-metacity.c:3094
 #: libmetacity/meta-theme-metacity.c:3130
 #: libmetacity/meta-theme-metacity.c:3166
@@ -841,37 +830,37 @@ msgid "Did not understand value \"%s\" for type of gradient"
 msgstr "不理解梯度类型的值“%s”"
 
 #: libmetacity/meta-theme-metacity.c:2271
-#: libmetacity/meta-theme-metacity.c:2593
+#: libmetacity/meta-theme-metacity.c:2595
 #, c-format
 msgid "Did not understand fill type \"%s\" for <%s> element"
 msgstr "不理解填充类型“%s”（用于 <%s> 元素）"
 
-#: libmetacity/meta-theme-metacity.c:2424
-#: libmetacity/meta-theme-metacity.c:2493
-#: libmetacity/meta-theme-metacity.c:2544
+#: libmetacity/meta-theme-metacity.c:2426
+#: libmetacity/meta-theme-metacity.c:2495
+#: libmetacity/meta-theme-metacity.c:2546
 #, c-format
 msgid "Did not understand state \"%s\" for <%s> element"
 msgstr "不理解状态“%s”（用于 <%s> 元素）"
 
-#: libmetacity/meta-theme-metacity.c:2434
-#: libmetacity/meta-theme-metacity.c:2503
+#: libmetacity/meta-theme-metacity.c:2436
+#: libmetacity/meta-theme-metacity.c:2505
 #, c-format
 msgid "Did not understand shadow \"%s\" for <%s> element"
 msgstr "不理解阴影“%s”（用于 <%s> 元素）"
 
-#: libmetacity/meta-theme-metacity.c:2444
+#: libmetacity/meta-theme-metacity.c:2446
 #, c-format
 msgid "Did not understand arrow \"%s\" for <%s> element"
 msgstr "不理解箭头“%s”（用于 <%s> 元素）"
 
-#: libmetacity/meta-theme-metacity.c:2693
-#: libmetacity/meta-theme-metacity.c:2760
+#: libmetacity/meta-theme-metacity.c:2695
+#: libmetacity/meta-theme-metacity.c:2762
 #, c-format
 msgid "No <draw_ops> called \"%s\" has been defined"
 msgstr "尚未定义名为“%s”的 <draw_ops>"
 
-#: libmetacity/meta-theme-metacity.c:2705
-#: libmetacity/meta-theme-metacity.c:2772
+#: libmetacity/meta-theme-metacity.c:2707
+#: libmetacity/meta-theme-metacity.c:2774
 #, c-format
 msgid "Including draw_ops \"%s\" here would create a circular reference"
 msgstr "此处包括 draw_ops“%s”将创建一个循环引用"
@@ -1114,7 +1103,7 @@ msgstr "等待(_W)"
 msgid "_Force Quit"
 msgstr "强制退出(_F)"
 
-#: src/core/main.c:101
+#: src/core/main.c:105
 #, c-format
 msgid ""
 "metacity %s\n"
@@ -1128,161 +1117,152 @@ msgstr ""
 "这是自由软件；版权条款请参见源码.\n"
 "不作任何保证；即使是对适销性或者适合某种特定目的也不作保证。\n"
 
-#: src/core/main.c:215
+#: src/core/main.c:201 src/core/main.c:218
+#, c-format
+msgid "Option “%s” is deprecated, use the “--compositor” instead."
+msgstr "选项“%s”已弃用，使用“--compositor”替代。"
+
+#: src/core/main.c:246
+#, c-format
+msgid "“%s” is not a valid compositor"
+msgstr "“%s”不是有效的合成器"
+
+#: src/core/main.c:281
 msgid "Disable connection to session manager"
 msgstr "禁止连接到会话管理器"
 
-#: src/core/main.c:221
+#: src/core/main.c:287
 msgid "Replace the running window manager with Metacity"
 msgstr "将运行中的窗口管理器替换为 Metacity"
 
-#: src/core/main.c:227
+#: src/core/main.c:293
 msgid "Specify session management ID"
 msgstr "指定会话管理 ID"
 
-#: src/core/main.c:232
+#: src/core/main.c:298
 msgid "X Display to use"
 msgstr "要使用的 X 显示"
 
-#: src/core/main.c:238
+#: src/core/main.c:304
 msgid "Initialize session from savefile"
 msgstr "从保存文件中初始化会话"
 
-#: src/core/main.c:244
+#: src/core/main.c:310
 msgid "Print version"
 msgstr "打印版本"
 
-#: src/core/main.c:250
+#: src/core/main.c:316
 msgid "Make X calls synchronous"
 msgstr "使 X 调用同步"
 
-#: src/core/main.c:256
+#: src/core/main.c:325
 msgid "Turn compositing on"
-msgstr "打开复合效果"
+msgstr "打开合成效果"
 
-#: src/core/main.c:262
+#: src/core/main.c:334
 msgid "Turn compositing off"
-msgstr "关闭复合效果"
+msgstr "关闭合成效果"
 
-#: src/core/main.c:268
+#: src/core/main.c:343
+msgid "Compositor to use"
+msgstr "要使用的合成器"
+
+#: src/core/main.c:349
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr "不要将已最大化的窗口全屏，不要做任何装饰"
 
-#: src/core/prefs.c:1524
+#: src/core/prefs.c:905
+msgid ""
+"Setting “compositing-manager” is deprecated, use the “compositor” instead."
+msgstr "设置“compositing-manager”已弃用，使用“compositor”替代。"
+
+#: src/core/prefs.c:1446
 #, c-format
 msgid "Workspace %d"
 msgstr "工作区 %d"
 
-#: src/core/session.c:1210
+#: src/core/session.c:1212
 msgid "<metacity_session> attribute seen but we already have the session ID"
 msgstr "<metacity_session> 属性已看到，但我们已经拥有该会话 ID"
 
-#: src/core/session.c:1223 src/core/session.c:1298 src/core/session.c:1330
-#: src/core/session.c:1402 src/core/session.c:1462
+#: src/core/session.c:1225 src/core/session.c:1300 src/core/session.c:1332
+#: src/core/session.c:1404 src/core/session.c:1464
 #, c-format
 msgid "Unknown attribute %s on <%s> element"
 msgstr "<%2$s> 元素上未知的属性 %1$s"
 
-#: src/core/session.c:1240
+#: src/core/session.c:1242
 msgid "nested <window> tag"
 msgstr "嵌套 <window> 标记"
 
-#: src/core/session.c:1482
+#: src/core/session.c:1484
 #, c-format
 msgid "Unknown element %s"
 msgstr "未知的元素 %s"
 
-#: src/core/session.c:1838
+#: src/core/session.c:1845
 msgid ""
 "These windows do not support &quot;save current setup&quot; and will have to "
 "be restarted manually next time you log in."
 msgstr ""
 "这些窗口不支持&quot;保存当前设置&quot;，您在下次登录时，必须手动重启动它们。"
 
-#: src/core/util.c:105
+#: src/core/util.c:106
 #, c-format
 msgid "Opened log file %s\n"
 msgstr "打开的日志文件 %s\n"
 
 #. Translators: the title of a window from another machine
-#: src/core/window-props.c:570
+#: src/core/window-props.c:548
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s（于 %s）"
 
 #. Simple case-- don't bother to look it up.  It's root.
-#: src/core/window-props.c:602
+#: src/core/window-props.c:583
 #, c-format
 msgid "%s (as superuser)"
 msgstr "%s（以超级用户）"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine
-#: src/core/window-props.c:620
+#: src/core/window-props.c:602
 #, c-format
 msgid "%s (as %s)"
-msgstr "%s（于 %s）"
+msgstr "%s（以 %s）"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine, whose name we don't know
-#: src/core/window-props.c:626
+#: src/core/window-props.c:608
 #, c-format
 msgid "%s (as another user)"
 msgstr "%s（以另一用户）"
 
-#: src/tools/metacity-message.c:174
+#: src/tools/metacity-message.c:170
 #, c-format
 msgid "Usage: %s\n"
 msgstr "用法：%s\n"
 
-#: src/ui/frames.c:1315
+#: src/ui/frames.c:1255
 msgid "Close Window"
 msgstr "关闭窗口"
 
-#: src/ui/frames.c:1318
+#: src/ui/frames.c:1258
 msgid "Window Menu"
 msgstr "窗口菜单"
 
-#: src/ui/frames.c:1321
-msgid "Window App Menu"
-msgstr "窗口应用菜单"
-
-#: src/ui/frames.c:1324
+#: src/ui/frames.c:1261
 msgid "Minimize Window"
 msgstr "最小化窗口"
 
-#: src/ui/frames.c:1327
+#: src/ui/frames.c:1264
 msgid "Maximize Window"
 msgstr "最大化窗口"
 
-#: src/ui/frames.c:1330
+#: src/ui/frames.c:1267
 msgid "Restore Window"
 msgstr "恢复窗口"
-
-#: src/ui/frames.c:1333
-msgid "Roll Up Window"
-msgstr "卷起窗口"
-
-#: src/ui/frames.c:1336
-msgid "Unroll Window"
-msgstr "展开窗口"
-
-#: src/ui/frames.c:1339
-msgid "Keep Window On Top"
-msgstr "窗口常居顶端"
-
-#: src/ui/frames.c:1342
-msgid "Remove Window From Top"
-msgstr "取消窗口常居顶端"
-
-#: src/ui/frames.c:1345
-msgid "Always On Visible Workspace"
-msgstr "总在可见工作区"
-
-#: src/ui/frames.c:1348
-msgid "Put Window On Only One Workspace"
-msgstr "只将窗口放在一个工作区"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: src/ui/menu.c:65
@@ -1380,7 +1360,7 @@ msgstr "工作区 1_0"
 msgid "Workspace %s%d"
 msgstr "工作区 %s%d"
 
-#: src/ui/menu.c:351
+#: src/ui/menu.c:358
 msgid "Move to Another _Workspace"
 msgstr "移动到另外的工作区(_W)"
 
@@ -1389,7 +1369,7 @@ msgstr "移动到另外的工作区(_W)"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:75
+#: src/ui/metaaccellabel.c:73
 msgid "Shift"
 msgstr "Shift"
 
@@ -1398,7 +1378,7 @@ msgstr "Shift"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:81
+#: src/ui/metaaccellabel.c:79
 msgid "Ctrl"
 msgstr "Ctrl"
 
@@ -1407,7 +1387,7 @@ msgstr "Ctrl"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:87
+#: src/ui/metaaccellabel.c:85
 msgid "Alt"
 msgstr "Alt"
 
@@ -1416,7 +1396,7 @@ msgstr "Alt"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:93
+#: src/ui/metaaccellabel.c:91
 msgid "Meta"
 msgstr "Meta"
 
@@ -1425,7 +1405,7 @@ msgstr "Meta"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:99
+#: src/ui/metaaccellabel.c:97
 msgid "Super"
 msgstr "Super"
 
@@ -1434,7 +1414,7 @@ msgstr "Super"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:105
+#: src/ui/metaaccellabel.c:103
 msgid "Hyper"
 msgstr "Hyper"
 
@@ -1443,7 +1423,7 @@ msgstr "Hyper"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:111
+#: src/ui/metaaccellabel.c:109
 msgid "Mod2"
 msgstr "Mod2"
 
@@ -1452,7 +1432,7 @@ msgstr "Mod2"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:117
+#: src/ui/metaaccellabel.c:115
 msgid "Mod3"
 msgstr "Mod3"
 
@@ -1461,7 +1441,7 @@ msgstr "Mod3"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:123
+#: src/ui/metaaccellabel.c:121
 msgid "Mod4"
 msgstr "Mod4"
 
@@ -1470,7 +1450,7 @@ msgstr "Mod4"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:129
+#: src/ui/metaaccellabel.c:127
 msgid "Mod5"
 msgstr "Mod5"
 
@@ -1482,7 +1462,7 @@ msgstr "Mod5"
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: src/ui/ui.c:871
+#: src/ui/ui.c:853
 msgid "Falling back to default GTK+ theme - Adwaita"
 msgstr "回落到默认的 GTK+ 主题 - Adwaita"
 
@@ -1529,6 +1509,47 @@ msgstr ""
 #: theme-viewer/theme-viewer-window.c:244
 msgid "Run again"
 msgstr "再次运行"
+
+#~ msgid "preferences-system-windows"
+#~ msgstr "preferences-system-windows"
+
+#~ msgid "Toggle shaded state"
+#~ msgstr "切换卷起状态"
+
+#~ msgid "If true, trade off usability for less resource usage"
+#~ msgstr "如果为 true，则以可用性为代价而降低资源占用"
+
+#~ msgid ""
+#~ "If true, Metacity will give the user less feedback by using wireframes, "
+#~ "avoiding animations, or other means. This is a significant reduction in "
+#~ "usability for many users, but may allow legacy applications to continue "
+#~ "working, and may also be a useful tradeoff for terminal servers. However, "
+#~ "the wireframe feature is disabled when accessibility is on."
+#~ msgstr ""
+#~ "如果为 true，Metacity 将会给用户提供较少的反馈，方法是使用线框、避免动画或"
+#~ "者其它途径。这对许多用户来说，可用性大打折扣，但是这将允许较早的应用程序和"
+#~ "终端服务器能够顺利运行。此外，如果开启了辅助功能，系统会自动禁用线框特性。"
+
+#~ msgid "Window App Menu"
+#~ msgstr "窗口应用菜单"
+
+#~ msgid "Roll Up Window"
+#~ msgstr "卷起窗口"
+
+#~ msgid "Unroll Window"
+#~ msgstr "展开窗口"
+
+#~ msgid "Keep Window On Top"
+#~ msgstr "窗口常居顶端"
+
+#~ msgid "Remove Window From Top"
+#~ msgstr "取消窗口常居顶端"
+
+#~ msgid "Always On Visible Workspace"
+#~ msgstr "总在可见工作区"
+
+#~ msgid "Put Window On Only One Workspace"
+#~ msgstr "只将窗口放在一个工作区"
 
 #~ msgid "Unknown window information request: %d"
 #~ msgstr "未知的窗口信息请求：%d"
