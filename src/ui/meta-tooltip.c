@@ -16,8 +16,9 @@
  */
 
 #include "config.h"
-
 #include "meta-tooltip.h"
+
+#include "meta-request-csd.h"
 
 struct _MetaTooltip
 {
@@ -85,6 +86,8 @@ meta_tooltip_init (MetaTooltip *tooltip)
 
   gtk_label_set_line_wrap (GTK_LABEL (tooltip->label), TRUE);
   gtk_label_set_max_width_chars (GTK_LABEL (tooltip->label), 70);
+
+  meta_request_csd (GTK_WINDOW (tooltip));
 }
 
 GtkWidget *

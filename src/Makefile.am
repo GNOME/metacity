@@ -121,6 +121,8 @@ metacity_SOURCES = \
 	ui/menu.h \
 	ui/metaaccellabel.c \
 	ui/metaaccellabel.h \
+	ui/meta-request-csd.c \
+	ui/meta-request-csd.h \
 	ui/meta-tooltip.c \
 	ui/meta-tooltip.h \
 	ui/resizepopup.c \

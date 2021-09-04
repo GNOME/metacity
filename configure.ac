@@ -90,7 +90,7 @@ dnl Check for required packages
 dnl **************************************************************************
 
 GLIB_REQUIRED_VERSION=2.67.3
-GTK_REQUIRED_VERSION=3.22.0
+GTK_REQUIRED_VERSION=3.24.6
 PANGO_REQUIRED_VERSION=1.2.0
 XCOMPOSITE_REQUIRED_VERSION=0.3
 
@@ -341,6 +341,10 @@ AC_PATH_PROG(ZENITY, zenity, no)
 if test x"$ZENITY" = xno; then
   AC_MSG_ERROR([zenity not found in your path - needed for dialogs])
 fi
+
+AC_SEARCH_LIBS([dlsym], [dl], [], [
+  AC_MSG_ERROR([unable to find the dlsym() function])
+])
 
 dnl **************************************************************************
 dnl Check for Vulkan support
