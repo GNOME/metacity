@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 3.4\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues\n"
-"POT-Creation-Date: 2021-05-13 16:49+0000\n"
-"PO-Revision-Date: 2021-10-08 14:41+0100\n"
+"POT-Creation-Date: 2021-10-08 13:43+0000\n"
+"PO-Revision-Date: 2021-10-08 14:44+0100\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <hugokarvalho@hotmail.com>\n"
 "Language: pt\n"
@@ -242,10 +242,10 @@ msgstr "Compositor"
 #: data/schemas/org.gnome.metacity.gschema.xml:34
 msgid ""
 "Compositor that Metacity will use for compositing. Possible values are "
-"“none” and “xrender”."
+"“none”, “xrender” and “xpresent”."
 msgstr ""
-"Compositor que o Metacity usará para composição. Os valores possíveis são "
-"\"nenhum\" e \"xrender\"."
+"Compositor que metacity usará para composição. Os valores possíveis são "
+"\"nenhum\", \"xrender\" e \"xpresent\"."
 
 #: data/schemas/org.gnome.metacity.gschema.xml:42
 msgid "Enable edge tiling when dropping windows on screen edges"
@@ -1153,7 +1153,7 @@ msgstr "_Aguardar"
 msgid "_Force Quit"
 msgstr "_Forçar terminar"
 
-#: src/core/main.c:102
+#: src/core/main.c:105
 #, c-format
 msgid ""
 "metacity %s\n"
@@ -1169,57 +1169,57 @@ msgstr ""
 "NÃO existe qualquer garantia; nem sequer de COMERCIALIZAÇÃO ou ADEQUAÇÃO A "
 "UM PROPÓSITO ESPECÍFICO.\n"
 
-#: src/core/main.c:198 src/core/main.c:215
+#: src/core/main.c:201 src/core/main.c:218
 #, c-format
 msgid "Option “%s” is deprecated, use the “--compositor” instead."
 msgstr "A opção \"%s\" é obsoleta, use o \"--compositor\" em vez disso."
 
-#: src/core/main.c:243
+#: src/core/main.c:246
 #, c-format
 msgid "“%s” is not a valid compositor"
 msgstr "\"%s\" não é um compositor válido"
 
-#: src/core/main.c:278
+#: src/core/main.c:281
 msgid "Disable connection to session manager"
 msgstr "Desativar a ligação ao gestor de sessão"
 
-#: src/core/main.c:284
+#: src/core/main.c:287
 msgid "Replace the running window manager with Metacity"
 msgstr "Substituir o gestor de janelas em execução pelo Metacity"
 
-#: src/core/main.c:290
+#: src/core/main.c:293
 msgid "Specify session management ID"
 msgstr "Especificar o ID de gestão de sessão"
 
-#: src/core/main.c:295
+#: src/core/main.c:298
 msgid "X Display to use"
 msgstr "Ecrã X a utilizar"
 
-#: src/core/main.c:301
+#: src/core/main.c:304
 msgid "Initialize session from savefile"
 msgstr "Inicializar a sessão a partir de um ficheiro de gravação de sessão"
 
-#: src/core/main.c:307
+#: src/core/main.c:310
 msgid "Print version"
 msgstr "Imprimir a versão"
 
-#: src/core/main.c:313
+#: src/core/main.c:316
 msgid "Make X calls synchronous"
 msgstr "Realizar as invocações X sincronamente"
 
-#: src/core/main.c:322
+#: src/core/main.c:325
 msgid "Turn compositing on"
 msgstr "Ativar a composição"
 
-#: src/core/main.c:331
+#: src/core/main.c:334
 msgid "Turn compositing off"
 msgstr "Desativar a composição"
 
-#: src/core/main.c:340
+#: src/core/main.c:343
 msgid "Compositor to use"
 msgstr "Compositor a usar"
 
-#: src/core/main.c:346
+#: src/core/main.c:349
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr ""
@@ -1238,26 +1238,26 @@ msgstr ""
 msgid "Workspace %d"
 msgstr "Área de trabalho %d"
 
-#: src/core/session.c:1213
+#: src/core/session.c:1212
 msgid "<metacity_session> attribute seen but we already have the session ID"
 msgstr "Atributo <metacity_session> enviado mas o ID de sessão já é conhecido"
 
-#: src/core/session.c:1226 src/core/session.c:1301 src/core/session.c:1333
-#: src/core/session.c:1405 src/core/session.c:1465
+#: src/core/session.c:1225 src/core/session.c:1300 src/core/session.c:1332
+#: src/core/session.c:1404 src/core/session.c:1464
 #, c-format
 msgid "Unknown attribute %s on <%s> element"
 msgstr "Atributo %s desconhecido no elemento <%s>"
 
-#: src/core/session.c:1243
+#: src/core/session.c:1242
 msgid "nested <window> tag"
 msgstr "etiqueta de <window> aninhada"
 
-#: src/core/session.c:1485
+#: src/core/session.c:1484
 #, c-format
 msgid "Unknown element %s"
 msgstr "Elemento %s desconhecido"
 
-#: src/core/session.c:1841
+#: src/core/session.c:1845
 msgid ""
 "These windows do not support &quot;save current setup&quot; and will have to "
 "be restarted manually next time you log in."
