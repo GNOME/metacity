@@ -39,7 +39,7 @@ variables:
                   zenity
 
 ubuntu:
-  image: ubuntu:hirsute
+  image: ubuntu:devel
   stage: build
   except:
     - tags
@@ -52,7 +52,7 @@ ubuntu:
     - make distcheck
 
 coverity:
-  image: ubuntu:hirsute
+  image: ubuntu:devel
   stage: analysis
   when: manual
   before_script:
