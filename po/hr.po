@@ -4,27 +4,22 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity 0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-02 22:46+0300\n"
-"PO-Revision-Date: 2018-03-10 01:22+0100\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues\n"
+"POT-Creation-Date: 2021-04-13 19:39+0000\n"
+"PO-Revision-Date: 2022-03-04 11:50+0100\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
+"Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2018-03-09 22:32+0000\n"
-"X-Generator: Poedit 2.0.6\n"
-"Language: hr\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. Translators: This is the title used on dialog boxes
-#: data/applications/metacity.desktop.in:4 src/core/util.c:435
+#: data/applications/metacity.desktop.in:4 src/core/util.c:429
 msgid "Metacity"
 msgstr "Metacity"
-
-#. TRANSLATORS: Don't translate this text (this is icon name)
-#: data/applications/metacity.desktop.in:7
-msgid "preferences-system-windows"
-msgstr "preferences-system-windows"
 
 #: data/keybindings/50-metacity-navigation.xml:6
 msgid "Navigation"
@@ -163,54 +158,50 @@ msgid "Restore window"
 msgstr "Vrati prozor"
 
 #: data/keybindings/50-metacity-windows.xml:24
-msgid "Toggle shaded state"
-msgstr "Uklj/Isklj  stanje zasjenčanosti"
-
-#: data/keybindings/50-metacity-windows.xml:27
 msgid "Close window"
 msgstr "Zatvori prozor"
 
-#: data/keybindings/50-metacity-windows.xml:30
+#: data/keybindings/50-metacity-windows.xml:27
 msgid "Minimize window"
 msgstr "Smanji prozor"
 
-#: data/keybindings/50-metacity-windows.xml:33
+#: data/keybindings/50-metacity-windows.xml:30
 msgid "Move window"
 msgstr "Pomakni prozor"
 
-#: data/keybindings/50-metacity-windows.xml:36
+#: data/keybindings/50-metacity-windows.xml:33
 msgid "Resize window"
 msgstr "Promijeni veličinu prozora"
 
-#: data/keybindings/50-metacity-windows.xml:39
+#: data/keybindings/50-metacity-windows.xml:36
 msgid "Toggle window on all workspaces or one"
 msgstr "Uklj/Isklj  pojavljivanje prozora na jednoj ili svim radnim površinama"
 
-#: data/keybindings/50-metacity-windows.xml:42
+#: data/keybindings/50-metacity-windows.xml:39
 msgid "Raise window if covered, otherwise lower it"
 msgstr "Podigni prozor ako je prekriven, u siprotnome ga spusti"
 
-#: data/keybindings/50-metacity-windows.xml:45
+#: data/keybindings/50-metacity-windows.xml:42
 msgid "Raise window above other windows"
 msgstr "Podigni prozor iznad ostalih prozora"
 
-#: data/keybindings/50-metacity-windows.xml:48
+#: data/keybindings/50-metacity-windows.xml:45
 msgid "Lower window below other windows"
 msgstr "Spusti prozor ispod ostalih prozora"
 
-#: data/keybindings/50-metacity-windows.xml:51
+#: data/keybindings/50-metacity-windows.xml:48
 msgid "Maximize window vertically"
 msgstr "Uvećaj prozora okomito"
 
-#: data/keybindings/50-metacity-windows.xml:54
+#: data/keybindings/50-metacity-windows.xml:51
 msgid "Maximize window horizontally"
 msgstr "Uvaćaj prozora vodoravno"
 
-#: data/keybindings/50-metacity-windows.xml:58
+#: data/keybindings/50-metacity-windows.xml:55
 msgid "View split on left"
 msgstr "Prikaži prijelom lijevo"
 
-#: data/keybindings/50-metacity-windows.xml:62
+#: data/keybindings/50-metacity-windows.xml:59
 msgid "View split on right"
 msgstr "Prikaži prijelom desno"
 
@@ -231,14 +222,30 @@ msgid "Compositing Manager"
 msgstr "Kompozitni upravitelj"
 
 #: data/schemas/org.gnome.metacity.gschema.xml:24
-msgid "Determines whether Metacity is a compositing manager."
-msgstr "Određuje li je Metacity kompozitni upravitelj."
+msgid ""
+"Determines whether Metacity is a compositing manager. DEPRECATED: This key "
+"is deprecated, use the “compositor” instead."
+msgstr ""
+"Određuje li je Metacity upravitelj kompoziranja. ZASTARJELO: Ovaj ključ je "
+"zastario. umjesto koristite “compositor”."
 
-#: data/schemas/org.gnome.metacity.gschema.xml:31
+#: data/schemas/org.gnome.metacity.gschema.xml:33
+msgid "Compositor"
+msgstr "Kompozitor"
+
+#: data/schemas/org.gnome.metacity.gschema.xml:34
+msgid ""
+"Compositor that Metacity will use for compositing. Possible values are "
+"“none”, “xrender” and “xpresent”."
+msgstr ""
+"Kompozitor koji će Metacity koristiti za kompozitiranje. Moguće vrijednosti "
+"su “none”, “xrender” i “xpresent”."
+
+#: data/schemas/org.gnome.metacity.gschema.xml:42
 msgid "Enable edge tiling when dropping windows on screen edges"
 msgstr "Omogući rubno poravnanje pri ispuštanju prozora na rubovima zaslona"
 
-#: data/schemas/org.gnome.metacity.gschema.xml:32
+#: data/schemas/org.gnome.metacity.gschema.xml:43
 msgid ""
 "If enabled, dropping windows on vertical screen edges maximizes them "
 "vertically and resizes them horizontally to cover half of the available "
@@ -248,11 +255,11 @@ msgstr ""
 "okomito i rasteže vodoravno do polovice dostupnog područja. Ispuštanje "
 "prozora na gornjem rubu zaslona uvećava prozor u potpunosti."
 
-#: data/schemas/org.gnome.metacity.gschema.xml:41
+#: data/schemas/org.gnome.metacity.gschema.xml:52
 msgid "Window placement behavior"
 msgstr "Ponašanje smještanja prozora"
 
-#: data/schemas/org.gnome.metacity.gschema.xml:42
+#: data/schemas/org.gnome.metacity.gschema.xml:53
 msgid ""
 "Metacity's default window-placement behavior is smart (first-fit), similar "
 "to behaviors in some other window managers. It will try to tile windows so "
@@ -270,26 +277,6 @@ msgstr ""
 "\"izvorno\" za gornje lijeve kuteve radnih prostora, ili \"naizmjenično\" za "
 "stavljanje novih prozora na naizmjenično odabrane lokacije na radnim "
 "prostorima."
-
-#: data/schemas/org.gnome.metacity.gschema.xml:57
-msgid "If true, trade off usability for less resource usage"
-msgstr ""
-"Ako je postavljeno, mijenja se iskoristivost za manje korištenje resursa"
-
-#: data/schemas/org.gnome.metacity.gschema.xml:58
-msgid ""
-"If true, Metacity will give the user less feedback by using wireframes, "
-"avoiding animations, or other means. This is a significant reduction in "
-"usability for many users, but may allow legacy applications to continue "
-"working, and may also be a useful tradeoff for terminal servers. However, "
-"the wireframe feature is disabled when accessibility is on."
-msgstr ""
-"Ako je odabrano, Metacity će korisniku davati manje povratnih informacija "
-"koristeći obične okvire, izbjegavajući animacije, ili ostala sredstva. To "
-"značajno smanjuje upotrebljivost mnogim korisnicima, ali može dopustiti "
-"zastarjelim aplikacijama da nastave raditi, a može biti isto korisno za "
-"terminalne poslužitelje. Ipak značajka običnog okvira je onemogućena kada je "
-"pristupačnost uključena."
 
 #: data/schemas/org.gnome.metacity.theme.gschema.xml:11
 msgid "Theme Name"
@@ -324,97 +311,101 @@ msgstr ""
 "na klijenitma. Metacity tema: podaci su učitani iz metacity-theme-x.xml i "
 "CSS-a. Kada koristite ovu vrstu teme morate pružati valjani naziv teme."
 
-#: data/ui/theme-viewer-window.ui:45
+#: data/ui/theme-viewer-window.ui:86
 msgid "Reload"
 msgstr "Ponovno učitaj"
 
-#: data/ui/theme-viewer-window.ui:103
+#: data/ui/theme-viewer-window.ui:122
 msgid "Dark Theme:"
 msgstr "Tamna tema:"
 
-#: data/ui/theme-viewer-window.ui:142
+#: data/ui/theme-viewer-window.ui:161
 msgid "Frame Type:"
 msgstr "Vrsta okvira:"
 
-#: data/ui/theme-viewer-window.ui:156
+#: data/ui/theme-viewer-window.ui:175
 msgid "Normal"
 msgstr "Normalan"
 
-#: data/ui/theme-viewer-window.ui:157
+#: data/ui/theme-viewer-window.ui:176
 msgid "Dialog"
 msgstr "Dijalog"
 
-#: data/ui/theme-viewer-window.ui:158
+#: data/ui/theme-viewer-window.ui:177
 msgid "Modal Dialog"
 msgstr "Prilagodljivi dijalog"
 
-#: data/ui/theme-viewer-window.ui:159
+#: data/ui/theme-viewer-window.ui:178
 msgid "Utility"
 msgstr "Pomagalo"
 
-#: data/ui/theme-viewer-window.ui:160
+#: data/ui/theme-viewer-window.ui:179
 msgid "Menu"
 msgstr "Izbornik"
 
-#: data/ui/theme-viewer-window.ui:161
+#: data/ui/theme-viewer-window.ui:180
 msgid "Border"
 msgstr "Rub"
 
-#: data/ui/theme-viewer-window.ui:162
+#: data/ui/theme-viewer-window.ui:181
 msgid "Attached"
 msgstr "Priloženo"
 
-#: data/ui/theme-viewer-window.ui:190
+#: data/ui/theme-viewer-window.ui:209
 msgid "Frame Flags:"
 msgstr "Oznake okvira:"
 
-#: data/ui/theme-viewer-window.ui:205
+#: data/ui/theme-viewer-window.ui:224
 msgid "Has Focus"
 msgstr "Sadrži fokus"
 
-#: data/ui/theme-viewer-window.ui:220
+#: data/ui/theme-viewer-window.ui:239
 msgid "Shaded"
 msgstr "Osjenčano"
 
-#: data/ui/theme-viewer-window.ui:234
+#: data/ui/theme-viewer-window.ui:253
 msgid "Maximized"
 msgstr "Uvećano"
 
-#: data/ui/theme-viewer-window.ui:248
+#: data/ui/theme-viewer-window.ui:267
 msgid "Fullscreen"
 msgstr "Cijeli zaslon"
 
-#: data/ui/theme-viewer-window.ui:262
+#: data/ui/theme-viewer-window.ui:281
 msgid "Tiled"
 msgstr "Poravnano"
 
-#: data/ui/theme-viewer-window.ui:302
+#: data/ui/theme-viewer-window.ui:321
 msgid "Button Layout:"
 msgstr "Raspored tipka:"
 
-#: data/ui/theme-viewer-window.ui:341
+#: data/ui/theme-viewer-window.ui:360
 msgid "Composited:"
 msgstr "Složeno:"
 
-#: data/ui/theme-viewer-window.ui:381
+#: data/ui/theme-viewer-window.ui:400
 msgid "Scale:"
 msgstr "Promjena veličine:"
 
-#: data/ui/theme-viewer-window.ui:441 theme-viewer/theme-viewer-window.c:650
+#: data/ui/theme-viewer-window.ui:468 theme-viewer/theme-viewer-window.c:636
 msgid "Choose Theme"
 msgstr "Odabir teme"
 
-#: data/ui/theme-viewer-window.ui:481
+#: data/ui/theme-viewer-window.ui:508
 msgid "Preview"
 msgstr "Pregled"
 
-#: data/ui/theme-viewer-window.ui:570 theme-viewer/theme-viewer-window.c:269
+#: data/ui/theme-viewer-window.ui:597 theme-viewer/theme-viewer-window.c:252
 msgid "Run"
 msgstr "Pokreni"
 
-#: data/ui/theme-viewer-window.ui:592
+#: data/ui/theme-viewer-window.ui:619
 msgid "Benchmark"
 msgstr "Testiranje"
+
+#: data/ui/theme-viewer-window.ui:652 theme-viewer/theme-viewer-window.c:982
+msgid "Metacity Theme Viewer"
+msgstr "Metacity preglednik tema"
 
 #: libmetacity/meta-color-spec.c:246
 #, c-format
@@ -434,7 +425,7 @@ msgstr ""
 "Neispravan znak '%c' u parametru naziv_boje od gtk:custom, samo A-Za-z0-9-_ "
 "su valjani"
 
-#: libmetacity/meta-color-spec.c:273
+#: libmetacity/meta-color-spec.c:277
 #, c-format
 msgid ""
 "Gtk:custom format is 'gtk:custom(color_name,fallback)', '%s' does not fit "
@@ -443,7 +434,7 @@ msgstr ""
 "Gtk:custom format je 'gtk:custom(naziv_boje,fallback)', '%s' ne pristaje "
 "formatu"
 
-#: libmetacity/meta-color-spec.c:306
+#: libmetacity/meta-color-spec.c:310
 #, c-format
 msgid ""
 "GTK color specification must have the state in brackets, e.g. gtk:fg[NORMAL] "
@@ -452,7 +443,7 @@ msgstr ""
 "Specifikacije GTK prilagođene boje moraju imati stanje u zagradama, npr. gtk:"
 "fg[NORMAL] gdje je NORMAL stanje; se ne može obraditi '%s'"
 
-#: libmetacity/meta-color-spec.c:319
+#: libmetacity/meta-color-spec.c:323
 #, c-format
 msgid ""
 "GTK color specification must have a close bracket after the state, e.g. gtk:"
@@ -461,50 +452,50 @@ msgstr ""
 "Specifikacije GTK prilagođene boje moraju imati zatvorene zagrade nakon "
 "stanja, npr. gtk:fg[NORMAL] gdje je NORMAL stanje; se ne može obraditi '%s'"
 
-#: libmetacity/meta-color-spec.c:328
+#: libmetacity/meta-color-spec.c:332
 #, c-format
 msgid "Did not understand state '%s' in color specification"
 msgstr "Ne razumijem stanje '%s' u specifikacijama boje"
 
-#: libmetacity/meta-color-spec.c:340
+#: libmetacity/meta-color-spec.c:344
 #, c-format
 msgid "Did not understand color component '%s' in color specification"
 msgstr "Ne razumijem komponentu boje '%s' u specifikacijama boje"
 
-#: libmetacity/meta-color-spec.c:366
+#: libmetacity/meta-color-spec.c:370
 #, c-format
 msgid ""
 "Blend format is 'blend/bg_color/fg_color/alpha', '%s' does not fit the format"
 msgstr ""
 "Format maske je 'blend/bg_color/fg_color/alpha', '%s' ne pristaje formatu"
 
-#: libmetacity/meta-color-spec.c:376
+#: libmetacity/meta-color-spec.c:380
 #, c-format
 msgid "Could not parse alpha value '%s' in blended color"
 msgstr "Nemoguća obrada alfa vrijednosti '%s' u zamaskiranoj boji"
 
-#: libmetacity/meta-color-spec.c:385
+#: libmetacity/meta-color-spec.c:389
 #, c-format
 msgid "Alpha value '%s' in blended color is not between 0.0 and 1.0"
 msgstr "Alfa vrijednost'%s' u zamaskiranoj boji je između 0.0 i 1.0"
 
-#: libmetacity/meta-color-spec.c:428
+#: libmetacity/meta-color-spec.c:432
 #, c-format
 msgid "Shade format is 'shade/base_color/factor', '%s' does not fit the format"
 msgstr ""
 "Format sjenčanja je 'shade/base_color/factor', '%s' ne pristaje formatu"
 
-#: libmetacity/meta-color-spec.c:438
+#: libmetacity/meta-color-spec.c:442
 #, c-format
 msgid "Could not parse shade factor '%s' in shaded color"
 msgstr "Nemoguća obrada vrijednosti sjenčanja '%s' u osjenčanoj boji"
 
-#: libmetacity/meta-color-spec.c:447
+#: libmetacity/meta-color-spec.c:451
 #, c-format
 msgid "Shade factor '%s' in shaded color is negative"
 msgstr "Veličina sjenčanja '%s' u osjenčanim bojama je negativna"
 
-#: libmetacity/meta-color-spec.c:473
+#: libmetacity/meta-color-spec.c:477
 #, c-format
 msgid "Could not parse color '%s'"
 msgstr "Nemoguća obrada boje '%s'"
@@ -547,26 +538,26 @@ msgid "Coordinate expression had unknown variable or constant '%s'"
 msgstr ""
 "Izraz koordinacije ima nepoznatu vrijednost varijable ili konstantu '%s'"
 
-#: libmetacity/meta-draw-spec.c:631 libmetacity/meta-draw-spec.c:641
-#: libmetacity/meta-draw-spec.c:676 libmetacity/meta-draw-spec.c:686
+#: libmetacity/meta-draw-spec.c:638 libmetacity/meta-draw-spec.c:648
+#: libmetacity/meta-draw-spec.c:683 libmetacity/meta-draw-spec.c:693
 msgid "Coordinate expression results in division by zero"
 msgstr "Izraz koordinata je rezultat podjele sa nulom"
 
-#: libmetacity/meta-draw-spec.c:775
+#: libmetacity/meta-draw-spec.c:782
 #, c-format
 msgid ""
 "Coordinate expression has an operator \"%s\" where an operand was expected"
 msgstr "Izraz koordinacije ima operator \"%s\" gdje se očekivao operand"
 
-#: libmetacity/meta-draw-spec.c:784
+#: libmetacity/meta-draw-spec.c:791
 msgid "Coordinate expression had an operand where an operator was expected"
 msgstr "Izraz koordinacije je imao operand a očekivao se operator"
 
-#: libmetacity/meta-draw-spec.c:792
+#: libmetacity/meta-draw-spec.c:799
 msgid "Coordinate expression ended with an operator instead of an operand"
 msgstr "Izraz koordinacije je završio sa operatorom umjesto operanda"
 
-#: libmetacity/meta-draw-spec.c:802
+#: libmetacity/meta-draw-spec.c:809
 #, c-format
 msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
@@ -575,25 +566,25 @@ msgstr ""
 "Izraz koordinacije ima operator \"%c\" koji prati operator \"%c\" ali bez "
 "operacija između"
 
-#: libmetacity/meta-draw-spec.c:934
+#: libmetacity/meta-draw-spec.c:941
 msgid "Coordinate expression parser overflowed its buffer."
 msgstr "Kod pregledavanja koordinata došlo je do prekoračenja spremnika."
 
-#: libmetacity/meta-draw-spec.c:964
+#: libmetacity/meta-draw-spec.c:971
 msgid "Coordinate expression had a close parenthesis with no open parenthesis"
 msgstr ""
 "Izraz koordinacije je morao zatvoriti zagrade sa ne otvorenim zagradama"
 
-#: libmetacity/meta-draw-spec.c:1037
+#: libmetacity/meta-draw-spec.c:1044
 msgid "Coordinate expression had an open parenthesis with no close parenthesis"
 msgstr "Izraz koordinacije je imao otvorene zagrade sa ne zatvorenim zagradama"
 
-#: libmetacity/meta-draw-spec.c:1047
+#: libmetacity/meta-draw-spec.c:1054
 msgid "Coordinate expression doesn't seem to have any operators or operands"
 msgstr "Izraz koordinacije izgleda ne sadrži operacije ili operande"
 
-#: libmetacity/meta-draw-spec.c:1239 libmetacity/meta-draw-spec.c:1259
-#: libmetacity/meta-draw-spec.c:1279
+#: libmetacity/meta-draw-spec.c:1246 libmetacity/meta-draw-spec.c:1266
+#: libmetacity/meta-draw-spec.c:1286
 #, c-format
 msgid "Theme contained an expression that resulted in an error: %s"
 msgstr "Tema sadrži izraz koji rezultira greškom: %s"
@@ -637,12 +628,12 @@ msgstr "Geometrija oblika nije odredila veličinu dugmadi"
 #. * in theme XML.  The "<frame ...>" is intended as a noun phrase,
 #. * and the "missing" qualifies it.  You should translate "whatever".
 #.
-#: libmetacity/meta-frame-style.c:144 libmetacity/meta-frame-style.c:469
+#: libmetacity/meta-frame-style.c:144 libmetacity/meta-frame-style.c:467
 #, c-format
 msgid "Missing <frame state='%s' resize='%s' focus='%s' style='whatever' />"
 msgstr "Nedostaje <frame state='%s' resize='%s' focus='%s' style='whatever' />"
 
-#: libmetacity/meta-frame-style.c:326
+#: libmetacity/meta-frame-style.c:324
 #, c-format
 msgid ""
 "<button function='%s' state='%s' draw_ops='whatever'/> must be specified for "
@@ -655,7 +646,7 @@ msgstr ""
 msgid "Gradients should have at least two colors"
 msgstr "Stupnjevanje mora imati barem dvije boje"
 
-#: libmetacity/meta-theme-impl.c:65
+#: libmetacity/meta-theme-impl.c:41
 #, c-format
 msgid "MetaThemeImplClass::load not implemented for '%s'"
 msgstr "MetaThemeImplClass::load nije implementiran za '%s'"
@@ -668,53 +659,53 @@ msgstr "MetaThemeImplClass::load nije implementiran za '%s'"
 msgid "No '%s' attribute on element <%s>"
 msgstr "Nema '%s' svojstava na elementu <%s>"
 
-#: libmetacity/meta-theme-metacity.c:303 libmetacity/meta-theme-metacity.c:322
+#: libmetacity/meta-theme-metacity.c:305 libmetacity/meta-theme-metacity.c:324
 #, c-format
 msgid "Line %d character %d: %s"
 msgstr "Redak %d znak %d: %s"
 
-#: libmetacity/meta-theme-metacity.c:362
+#: libmetacity/meta-theme-metacity.c:364
 #, c-format
 msgid "Could not parse '%s' as an integer"
 msgstr "Ne može se obraditi '%s' kao cijeli broj"
 
-#: libmetacity/meta-theme-metacity.c:370 libmetacity/meta-theme-metacity.c:587
+#: libmetacity/meta-theme-metacity.c:372 libmetacity/meta-theme-metacity.c:589
 #, c-format
 msgid "Did not understand trailing characters '%s' in string '%s'"
 msgstr "Ne razumijem prateće znakove '%s' u nizu '%s'"
 
-#: libmetacity/meta-theme-metacity.c:379
+#: libmetacity/meta-theme-metacity.c:381
 #, c-format
 msgid "Integer %ld must be positive"
 msgstr "Cijeli broj %ld mora biti pozitivan"
 
-#: libmetacity/meta-theme-metacity.c:386
+#: libmetacity/meta-theme-metacity.c:388
 #, c-format
 msgid "Integer %ld is too large, current max is %d"
 msgstr "Cijeli broj %ld je prevelik ,trenutno najveći je %d"
 
-#: libmetacity/meta-theme-metacity.c:488
+#: libmetacity/meta-theme-metacity.c:490
 #, c-format
 msgid "Attribute '%s' repeated twice on the same <%s> element"
 msgstr "Svojstvo \"%s\" je ponovljeno dva puta u istom <%s> elementu"
 
-#: libmetacity/meta-theme-metacity.c:510 libmetacity/meta-theme-metacity.c:554
+#: libmetacity/meta-theme-metacity.c:512 libmetacity/meta-theme-metacity.c:556
 #, c-format
 msgid "Attribute '%s' is invalid on <%s> element in this context"
 msgstr "Svojstvo \"%s\" je neispravno u <%s> elementu ovog sadržaja"
 
-#: libmetacity/meta-theme-metacity.c:579 libmetacity/meta-theme-metacity.c:617
+#: libmetacity/meta-theme-metacity.c:581 libmetacity/meta-theme-metacity.c:619
 #, c-format
 msgid "Could not parse '%s' as a floating point number"
 msgstr "Nemoguća obrada '%s' kao pomične točke broja"
 
-#: libmetacity/meta-theme-metacity.c:649
+#: libmetacity/meta-theme-metacity.c:651
 #, c-format
 msgid "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g"
 msgstr ""
 "Alfa mora biti između 0.0 (nevidljivo) i 1.0 (potpuno neprozirno), ali je %g"
 
-#: libmetacity/meta-theme-metacity.c:695
+#: libmetacity/meta-theme-metacity.c:697
 #, c-format
 msgid ""
 "Invalid title scale '%s' (must be one of xx-small,x-small,small,medium,large,"
@@ -723,67 +714,67 @@ msgstr ""
 "Neispravna veličina naslova '%s' (mora biti jedan od xx-small,x-small,small,"
 "medium,large,x-large,xx-large)\n"
 
-#: libmetacity/meta-theme-metacity.c:724 libmetacity/meta-theme-metacity.c:752
+#: libmetacity/meta-theme-metacity.c:726 libmetacity/meta-theme-metacity.c:754
 #, c-format
 msgid "Boolean values must be 'true' or 'false' not '%s'"
 msgstr "Booleove vrijednosti moraju biti \"true\" ili \"false\", a ne '% s'"
 
-#: libmetacity/meta-theme-metacity.c:781 libmetacity/meta-theme-metacity.c:818
-#: libmetacity/meta-theme-metacity.c:856
+#: libmetacity/meta-theme-metacity.c:783 libmetacity/meta-theme-metacity.c:820
+#: libmetacity/meta-theme-metacity.c:858
 #, c-format
 msgid "User-defined constants must begin with a capital letter; '%s' does not"
 msgstr ""
 "Korisnički određene konstante moraju biti s velikim slovima; '%s' ali nisu"
 
-#: libmetacity/meta-theme-metacity.c:790 libmetacity/meta-theme-metacity.c:827
-#: libmetacity/meta-theme-metacity.c:865
+#: libmetacity/meta-theme-metacity.c:792 libmetacity/meta-theme-metacity.c:829
+#: libmetacity/meta-theme-metacity.c:867
 #, c-format
 msgid "Constant '%s' has already been defined"
 msgstr "Konstanta '%s' je već određena"
 
-#: libmetacity/meta-theme-metacity.c:1072
-#: libmetacity/meta-theme-metacity.c:1169
-#: libmetacity/meta-theme-metacity.c:1271
+#: libmetacity/meta-theme-metacity.c:1074
+#: libmetacity/meta-theme-metacity.c:1171
+#: libmetacity/meta-theme-metacity.c:1273
 #, c-format
 msgid "<%s> name \"%s\" used a second time"
 msgstr "<%s> naziv \"%s\" se već drugi put koristi"
 
-#: libmetacity/meta-theme-metacity.c:1084
+#: libmetacity/meta-theme-metacity.c:1086
 #, c-format
 msgid "<%s> parent \"%s\" has not been defined"
 msgstr "<%s> izvor \"%s\" nije određen"
 
-#: libmetacity/meta-theme-metacity.c:1135
+#: libmetacity/meta-theme-metacity.c:1137
 #, c-format
 msgid "<%s> name '%s' used a second time"
 msgstr "<%s> naziv '%s' se već drugi put koristi"
 
-#: libmetacity/meta-theme-metacity.c:1181
-#: libmetacity/meta-theme-metacity.c:1283
+#: libmetacity/meta-theme-metacity.c:1183
+#: libmetacity/meta-theme-metacity.c:1285
 #, c-format
 msgid "<%s> parent '%s' has not been defined"
 msgstr "<%s> sadržajni '%s' nije određen"
 
-#: libmetacity/meta-theme-metacity.c:1194
+#: libmetacity/meta-theme-metacity.c:1196
 #, c-format
 msgid "<%s> geometry '%s' has not been defined"
 msgstr "<%s> geometrija '%s' nije određena"
 
-#: libmetacity/meta-theme-metacity.c:1207
+#: libmetacity/meta-theme-metacity.c:1209
 #, c-format
 msgid "<%s> must specify either a geometry or a parent that has a geometry"
 msgstr "<%s> morate odrediti geometriju ili izvor koji ima geometriju"
 
-#: libmetacity/meta-theme-metacity.c:1248
+#: libmetacity/meta-theme-metacity.c:1250
 msgid "You must specify a background for an alpha value to be meaningful"
 msgstr "Morate odrediti pozadinu kako bi alfa vrijednost imala smisla"
 
-#: libmetacity/meta-theme-metacity.c:1317
+#: libmetacity/meta-theme-metacity.c:1318
 #, c-format
 msgid "Unknown type '%s' on <%s> element"
 msgstr "Nepoznat vrsta %s na <%s> elementu"
 
-#: libmetacity/meta-theme-metacity.c:1326
+#: libmetacity/meta-theme-metacity.c:1327
 #, c-format
 msgid "Unknown style_set '%s' on <%s> element"
 msgstr "Nepoznat style_set %s na <%s> elementu"
@@ -796,8 +787,8 @@ msgstr "Vrsta prozora '%s' je već dodijeljena setu izgleda"
 #: libmetacity/meta-theme-metacity.c:1364
 #: libmetacity/meta-theme-metacity.c:1428
 #: libmetacity/meta-theme-metacity.c:1654
-#: libmetacity/meta-theme-metacity.c:2808
-#: libmetacity/meta-theme-metacity.c:2854
+#: libmetacity/meta-theme-metacity.c:2810
+#: libmetacity/meta-theme-metacity.c:2856
 #: libmetacity/meta-theme-metacity.c:3094
 #: libmetacity/meta-theme-metacity.c:3130
 #: libmetacity/meta-theme-metacity.c:3166
@@ -853,37 +844,37 @@ msgid "Did not understand value \"%s\" for type of gradient"
 msgstr "Ne razumijem vrijednost \"%s\" za vrstu stupnjevanja"
 
 #: libmetacity/meta-theme-metacity.c:2271
-#: libmetacity/meta-theme-metacity.c:2593
+#: libmetacity/meta-theme-metacity.c:2595
 #, c-format
 msgid "Did not understand fill type \"%s\" for <%s> element"
 msgstr "Ne razumijem vrstu popunjavanja \"%s\" za <%s> element"
 
-#: libmetacity/meta-theme-metacity.c:2424
-#: libmetacity/meta-theme-metacity.c:2493
-#: libmetacity/meta-theme-metacity.c:2544
+#: libmetacity/meta-theme-metacity.c:2426
+#: libmetacity/meta-theme-metacity.c:2495
+#: libmetacity/meta-theme-metacity.c:2546
 #, c-format
 msgid "Did not understand state \"%s\" for <%s> element"
 msgstr "Ne razumijem stanje \"%s\" za <%s> element"
 
-#: libmetacity/meta-theme-metacity.c:2434
-#: libmetacity/meta-theme-metacity.c:2503
+#: libmetacity/meta-theme-metacity.c:2436
+#: libmetacity/meta-theme-metacity.c:2505
 #, c-format
 msgid "Did not understand shadow \"%s\" for <%s> element"
 msgstr "Ne razumijem sjenu \"%s\" za <%s> element"
 
-#: libmetacity/meta-theme-metacity.c:2444
+#: libmetacity/meta-theme-metacity.c:2446
 #, c-format
 msgid "Did not understand arrow \"%s\" for <%s> element"
 msgstr "Ne razumijem strelicu \"%s\" za <%s> element"
 
-#: libmetacity/meta-theme-metacity.c:2693
-#: libmetacity/meta-theme-metacity.c:2760
+#: libmetacity/meta-theme-metacity.c:2695
+#: libmetacity/meta-theme-metacity.c:2762
 #, c-format
 msgid "No <draw_ops> called \"%s\" has been defined"
 msgstr "Nije određen <draw_ops> naziva \"%s\""
 
-#: libmetacity/meta-theme-metacity.c:2705
-#: libmetacity/meta-theme-metacity.c:2772
+#: libmetacity/meta-theme-metacity.c:2707
+#: libmetacity/meta-theme-metacity.c:2774
 #, c-format
 msgid "Including draw_ops \"%s\" here would create a circular reference"
 msgstr "Uključivanje draw_ops \"%s\" ovdje bi stvorilo kružnu napomenu"
@@ -1072,7 +1063,7 @@ msgstr "Element <%s> nije dopušten unutar <%s> elementa"
 msgid "No <%s> set for theme '%s'"
 msgstr "Nema <%s> postavke za temu '%s'"
 
-#: libmetacity/meta-theme-metacity.c:3884
+#: libmetacity/meta-theme-metacity.c:3878
 #, c-format
 msgid ""
 "No frame style set for window type '%s' in theme '%s', add a <window "
@@ -1081,34 +1072,34 @@ msgstr ""
 "Nema postavke okvira izgleda za prozor vrste '%s' u temi '%s', dodaj <window "
 "type='%s' style_set='whatever' /> element"
 
-#: libmetacity/meta-theme-metacity.c:4147
+#: libmetacity/meta-theme-metacity.c:4141
 msgid "No draw_ops provided for frame piece"
 msgstr "Bez draw_ops potrebnog za dio okvira"
 
-#: libmetacity/meta-theme-metacity.c:4163
+#: libmetacity/meta-theme-metacity.c:4157
 msgid "No draw_ops provided for button"
 msgstr "Bez draw_ops potrebnog za tipku"
 
-#: libmetacity/meta-theme-metacity.c:4278
-#: libmetacity/meta-theme-metacity.c:4289
-#: libmetacity/meta-theme-metacity.c:4300
-#: libmetacity/meta-theme-metacity.c:4311
-#: libmetacity/meta-theme-metacity.c:4322
+#: libmetacity/meta-theme-metacity.c:4272
+#: libmetacity/meta-theme-metacity.c:4283
+#: libmetacity/meta-theme-metacity.c:4294
+#: libmetacity/meta-theme-metacity.c:4305
+#: libmetacity/meta-theme-metacity.c:4316
 #, c-format
 msgid "<%s> specified twice for this theme"
 msgstr "<%s> određeno je dva puta za ovu temu"
 
-#: libmetacity/meta-theme-metacity.c:4361
+#: libmetacity/meta-theme-metacity.c:4355
 #, c-format
 msgid "No text is allowed inside element <%s>"
 msgstr "Tekst nije dopušten unutar elementa<%s>"
 
-#: libmetacity/meta-theme-metacity.c:4614
+#: libmetacity/meta-theme-metacity.c:4621
 #, c-format
 msgid "Failed to find a valid file for theme '%s'"
 msgstr "Neuspješan pronalazak valjane datoteke za temu '%s'"
 
-#: src/core/bell.c:290
+#: src/core/bell.c:279
 msgid "Bell event"
 msgstr "Događaj zvuka sustava"
 
@@ -1134,7 +1125,7 @@ msgstr "_Čekaj"
 msgid "_Force Quit"
 msgstr "_Prisilno zatvori"
 
-#: src/core/main.c:101
+#: src/core/main.c:102
 #, c-format
 msgid ""
 "metacity %s\n"
@@ -1149,72 +1140,92 @@ msgstr ""
 "NE postoji jamstvo; čak ni za UTRŽIVOST ili PRIKLADNOST ZA ODREĐENU "
 "NAMJENU.\n"
 
-#: src/core/main.c:215
+#: src/core/main.c:198 src/core/main.c:215
+#, c-format
+msgid "Option “%s” is deprecated, use the “--compositor” instead."
+msgstr "Mogućnost “%s” je zastarjela, umjesto koristite “--compositor”."
+
+#: src/core/main.c:243
+#, c-format
+msgid "“%s” is not a valid compositor"
+msgstr "“%s” nije valjan kompozitor"
+
+#: src/core/main.c:278
 msgid "Disable connection to session manager"
 msgstr "Isključi povezivanje prema upravitelju sesija"
 
-#: src/core/main.c:221
+#: src/core/main.c:284
 msgid "Replace the running window manager with Metacity"
 msgstr "Zamijeni pokrenuti upravitelj porozorima s Metacityjem"
 
-#: src/core/main.c:227
+#: src/core/main.c:290
 msgid "Specify session management ID"
 msgstr "Odredite ID upravljanja sesijama"
 
-#: src/core/main.c:232
+#: src/core/main.c:295
 msgid "X Display to use"
 msgstr "X zaslon za korištenje"
 
-#: src/core/main.c:238
+#: src/core/main.c:301
 msgid "Initialize session from savefile"
 msgstr "Pokreni sesiju iz spremljene datoteke"
 
-#: src/core/main.c:244
+#: src/core/main.c:307
 msgid "Print version"
 msgstr "Prikaži inačicu"
 
-#: src/core/main.c:250
+#: src/core/main.c:313
 msgid "Make X calls synchronous"
 msgstr "Izvršavaj X pozive usklađeno"
 
-#: src/core/main.c:256
+#: src/core/main.c:322
 msgid "Turn compositing on"
 msgstr "Uključi kompoziciju"
 
-#: src/core/main.c:262
+#: src/core/main.c:331
 msgid "Turn compositing off"
 msgstr "Isključi kompoziciju"
 
-#: src/core/main.c:268
+#: src/core/main.c:340
+msgid "Compositor to use"
+msgstr "Kompozitor koji se koristi"
+
+#: src/core/main.c:346
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr "Nemojte napraviti cjelozaslonski prozor koji je uvećan i bez ukrasa"
 
-#: src/core/prefs.c:1524
+#: src/core/prefs.c:905
+msgid ""
+"Setting “compositing-manager” is deprecated, use the “compositor” instead."
+msgstr ""
+"Postavka “compositing-manager” je zastarjela, umjesto koristite “compositor”."
+
+#: src/core/prefs.c:1446
 #, c-format
 msgid "Workspace %d"
 msgstr "Radni prostor %d"
 
-#: src/core/session.c:1210
+#: src/core/session.c:1213
 msgid "<metacity_session> attribute seen but we already have the session ID"
 msgstr "<metacity_session> svojstvo je opaženo ali već imamo ID sesije"
 
-#: src/core/session.c:1223 src/core/session.c:1298 src/core/session.c:1330
-#: src/core/session.c:1402 src/core/session.c:1462
+#: src/core/session.c:1226 src/core/session.c:1301 src/core/session.c:1333
+#: src/core/session.c:1405 src/core/session.c:1465
 #, c-format
 msgid "Unknown attribute %s on <%s> element"
 msgstr "Nepoznato svojstvo %s na <%s> elementu"
 
-#: src/core/session.c:1240
+#: src/core/session.c:1243
 msgid "nested <window> tag"
 msgstr "uklopljena <window> oznaka"
 
-#: src/core/session.c:1482
+#: src/core/session.c:1485
 #, c-format
 msgid "Unknown element %s"
 msgstr "Nepoznati element %s"
 
-#: src/core/session.c:1838
+#: src/core/session.c:1841
 msgid ""
 "These windows do not support &quot;save current setup&quot; and will have to "
 "be restarted manually next time you log in."
@@ -1222,89 +1233,61 @@ msgstr ""
 "Ovi prozori ne podržavaju &quot;spremi trenutne postavke&quot; i morati će "
 "se ručno pokrenuti sljedeći put kada se prijavite."
 
-#: src/core/util.c:105
+#: src/core/util.c:106
 #, c-format
 msgid "Opened log file %s\n"
 msgstr "Otvorena je datoteka zapisa %s\n"
 
 #. Translators: the title of a window from another machine
-#: src/core/window-props.c:570
+#: src/core/window-props.c:548
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (na %s)"
 
 #. Simple case-- don't bother to look it up.  It's root.
-#: src/core/window-props.c:602
+#: src/core/window-props.c:583
 #, c-format
 msgid "%s (as superuser)"
 msgstr "%s (kao super korisnik)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine
-#: src/core/window-props.c:620
+#: src/core/window-props.c:602
 #, c-format
 msgid "%s (as %s)"
 msgstr "%s (kao %s)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine, whose name we don't know
-#: src/core/window-props.c:626
+#: src/core/window-props.c:608
 #, c-format
 msgid "%s (as another user)"
 msgstr "%s (kao drugi korisnik)"
 
-#: src/tools/metacity-message.c:174
+#: src/tools/metacity-message.c:170
 #, c-format
 msgid "Usage: %s\n"
 msgstr "Upotreba: %s\n"
 
-#: src/ui/frames.c:1307
+#: src/ui/frames.c:1255
 msgid "Close Window"
 msgstr "Zatvori prozor"
 
-#: src/ui/frames.c:1310
+#: src/ui/frames.c:1258
 msgid "Window Menu"
 msgstr "Izbornik prozora"
 
-#: src/ui/frames.c:1313
-msgid "Window App Menu"
-msgstr "Prozor izbornika aplikacije"
-
-#: src/ui/frames.c:1316
+#: src/ui/frames.c:1261
 msgid "Minimize Window"
 msgstr "Smanji prozor"
 
-#: src/ui/frames.c:1319
+#: src/ui/frames.c:1264
 msgid "Maximize Window"
 msgstr "Uvećaj prozor"
 
-#: src/ui/frames.c:1322
+#: src/ui/frames.c:1267
 msgid "Restore Window"
 msgstr "Vrati prozor"
-
-#: src/ui/frames.c:1325
-msgid "Roll Up Window"
-msgstr "Namotaj prozor"
-
-#: src/ui/frames.c:1328
-msgid "Unroll Window"
-msgstr "Odmotaj prozor"
-
-#: src/ui/frames.c:1331
-msgid "Keep Window On Top"
-msgstr "Drži prozor na vrhu"
-
-#: src/ui/frames.c:1334
-msgid "Remove Window From Top"
-msgstr "Ukloni prozor s vrha"
-
-#: src/ui/frames.c:1337
-msgid "Always On Visible Workspace"
-msgstr "Uvijek na vidljivom radnom prostoru"
-
-#: src/ui/frames.c:1340
-msgid "Put Window On Only One Workspace"
-msgstr "Postavi prozor na samo jedan radni prostor"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: src/ui/menu.c:65
@@ -1388,21 +1371,21 @@ msgstr "Pomakni na _donji radni prostor"
 msgid "_Close"
 msgstr "_Zatvori"
 
-#: src/ui/menu.c:175
+#: src/ui/menu.c:174
 #, c-format
 msgid "Workspace %d%n"
 msgstr "Radni prostor %d%n"
 
-#: src/ui/menu.c:185
+#: src/ui/menu.c:184
 msgid "Workspace 1_0"
 msgstr "Radni prostor 1_0"
 
-#: src/ui/menu.c:187
+#: src/ui/menu.c:186
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Radni prostor %s%d"
 
-#: src/ui/menu.c:354
+#: src/ui/menu.c:358
 msgid "Move to Another _Workspace"
 msgstr "Pomakni na drugi _radni prostor"
 
@@ -1411,7 +1394,7 @@ msgstr "Pomakni na drugi _radni prostor"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:75
+#: src/ui/metaaccellabel.c:73
 msgid "Shift"
 msgstr "Shift"
 
@@ -1420,7 +1403,7 @@ msgstr "Shift"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:81
+#: src/ui/metaaccellabel.c:79
 msgid "Ctrl"
 msgstr "Ctrl"
 
@@ -1429,7 +1412,7 @@ msgstr "Ctrl"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:87
+#: src/ui/metaaccellabel.c:85
 msgid "Alt"
 msgstr "Alt"
 
@@ -1438,7 +1421,7 @@ msgstr "Alt"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:93
+#: src/ui/metaaccellabel.c:91
 msgid "Meta"
 msgstr "Meta"
 
@@ -1447,7 +1430,7 @@ msgstr "Meta"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:99
+#: src/ui/metaaccellabel.c:97
 msgid "Super"
 msgstr "Super"
 
@@ -1456,7 +1439,7 @@ msgstr "Super"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:105
+#: src/ui/metaaccellabel.c:103
 msgid "Hyper"
 msgstr "Hiper"
 
@@ -1465,7 +1448,7 @@ msgstr "Hiper"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:111
+#: src/ui/metaaccellabel.c:109
 msgid "Mod2"
 msgstr "Mod2"
 
@@ -1474,7 +1457,7 @@ msgstr "Mod2"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:117
+#: src/ui/metaaccellabel.c:115
 msgid "Mod3"
 msgstr "Mod3"
 
@@ -1483,7 +1466,7 @@ msgstr "Mod3"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:123
+#: src/ui/metaaccellabel.c:121
 msgid "Mod4"
 msgstr "Mod4"
 
@@ -1492,7 +1475,7 @@ msgstr "Mod4"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:129
+#: src/ui/metaaccellabel.c:127
 msgid "Mod5"
 msgstr "Mod5"
 
@@ -1504,7 +1487,7 @@ msgstr "Mod5"
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: src/ui/ui.c:865
+#: src/ui/ui.c:853
 msgid "Falling back to default GTK+ theme - Adwaita"
 msgstr "Vraćanje natrag na zadanu GTK+ temu - Adwaita"
 
@@ -1524,12 +1507,12 @@ msgstr "Naziv teme za korištenje"
 msgid "NAME"
 msgstr "NAZIV"
 
-#: theme-viewer/theme-viewer-window.c:119
+#: theme-viewer/theme-viewer-window.c:102
 #, c-format
 msgid "Loaded <b>%s</b> theme <b>%s</b> in <b>%f</b> seconds."
 msgstr "Učitana <b>%s</b> tema <b>%s</b> u <b>%f</b> sekundi."
 
-#: theme-viewer/theme-viewer-window.c:149
+#: theme-viewer/theme-viewer-window.c:132
 #, c-format
 msgid ""
 "Got MetaFrameBorders in <b>%f</b> seconds (CSS loading, PangoFontDescription "
@@ -1538,7 +1521,7 @@ msgstr ""
 "SadržiMetaFrameBorders u <b>%f</b> sekundi (CSS se učitava, "
 "PangoFontDescription stvaranje i izračunavanje visine naslova)."
 
-#: theme-viewer/theme-viewer-window.c:224
+#: theme-viewer/theme-viewer-window.c:207
 #, c-format
 msgid ""
 "Drew <b>%d</b> frames in <b>%f</b> client-side seconds (<b>%f</b> "
@@ -1549,10 +1532,51 @@ msgstr ""
 "milisekundi po okviru) i <b>%f</b> sekundama u zidnnom satu uključujući "
 "resurse X poslužitelja (<b>%f</b> milisekundi po okviru)."
 
-#: theme-viewer/theme-viewer-window.c:261
+#: theme-viewer/theme-viewer-window.c:244
 msgid "Run again"
 msgstr "Pokreni ponovno"
 
-#: theme-viewer/theme-viewer-window.c:996
-msgid "Metacity Theme Viewer"
-msgstr "Metacity preglednik tema"
+#~ msgid "preferences-system-windows"
+#~ msgstr "preferences-system-windows"
+
+#~ msgid "Toggle shaded state"
+#~ msgstr "Uklj/Isklj  stanje zasjenčanosti"
+
+#~ msgid "If true, trade off usability for less resource usage"
+#~ msgstr ""
+#~ "Ako je postavljeno, mijenja se iskoristivost za manje korištenje resursa"
+
+#~ msgid ""
+#~ "If true, Metacity will give the user less feedback by using wireframes, "
+#~ "avoiding animations, or other means. This is a significant reduction in "
+#~ "usability for many users, but may allow legacy applications to continue "
+#~ "working, and may also be a useful tradeoff for terminal servers. However, "
+#~ "the wireframe feature is disabled when accessibility is on."
+#~ msgstr ""
+#~ "Ako je odabrano, Metacity će korisniku davati manje povratnih informacija "
+#~ "koristeći obične okvire, izbjegavajući animacije, ili ostala sredstva. To "
+#~ "značajno smanjuje upotrebljivost mnogim korisnicima, ali može dopustiti "
+#~ "zastarjelim aplikacijama da nastave raditi, a može biti isto korisno za "
+#~ "terminalne poslužitelje. Ipak značajka običnog okvira je onemogućena kada "
+#~ "je pristupačnost uključena."
+
+#~ msgid "Window App Menu"
+#~ msgstr "Prozor izbornika aplikacije"
+
+#~ msgid "Roll Up Window"
+#~ msgstr "Namotaj prozor"
+
+#~ msgid "Unroll Window"
+#~ msgstr "Odmotaj prozor"
+
+#~ msgid "Keep Window On Top"
+#~ msgstr "Drži prozor na vrhu"
+
+#~ msgid "Remove Window From Top"
+#~ msgstr "Ukloni prozor s vrha"
+
+#~ msgid "Always On Visible Workspace"
+#~ msgstr "Uvijek na vidljivom radnom prostoru"
+
+#~ msgid "Put Window On Only One Workspace"
+#~ msgstr "Postavi prozor na samo jedan radni prostor"
