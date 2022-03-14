@@ -140,8 +140,6 @@ AC_SUBST(ACLOCAL_AMFLAGS, "\${ACLOCAL_FLAGS}")
 
 AC_PROG_CC
 AC_PROG_MKDIR_P
-AC_ISC_POSIX
-AC_HEADER_STDC
 
 #### Integer sizes 
 
@@ -161,7 +159,7 @@ METACITY_PC_MODULES="gtk+-3.0 >= $GTK_REQUIRED_VERSION gio-2.0 >= $GLIB_REQUIRED
 GLIB_GSETTINGS
 
 AC_ARG_ENABLE(canberra,
-  AC_HELP_STRING([--disable-canberra],
+  AS_HELP_STRING([--disable-canberra],
                  [disable use of canberra for event sounds, for embedded non-GNOME builds]),,
   enable_canberra=yes)
 
@@ -171,17 +169,17 @@ if test x$enable_canberra = xyes; then
 fi
 
 AC_ARG_ENABLE(sm,
-  AC_HELP_STRING([--disable-sm],
+  AS_HELP_STRING([--disable-sm],
                  [disable metacity's session management support, for embedded/size-sensitive custom non-GNOME builds]),,
   enable_sm=auto)
 
 AC_ARG_ENABLE(startup-notification,
-  AC_HELP_STRING([--disable-startup-notification],
+  AS_HELP_STRING([--disable-startup-notification],
                  [disable metacity's startup notification support, for embedded/size-sensitive custom non-GNOME builds]),,
   enable_startup_notification=auto)
 
 AC_ARG_ENABLE(render,
-  AC_HELP_STRING([--disable-render],
+  AS_HELP_STRING([--disable-render],
                  [disable metacity's use of the RENDER extension]),,
   enable_render=auto)
 
@@ -258,7 +256,7 @@ metacity_save_cppflags="$CPPFLAGS"
 CPPFLAGS="$CPPFLAGS $X_CFLAGS"
 
 AC_ARG_ENABLE(xinerama,
-  AC_HELP_STRING([--disable-xinerama],
+  AS_HELP_STRING([--disable-xinerama],
                  [disable metacity's use of the Xinerama extension]),
   try_xinerama=$enable_xinerama,try_xinerama=yes)
 
