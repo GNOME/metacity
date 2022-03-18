@@ -440,53 +440,6 @@ try_pixmap_and_mask (MetaDisplay  *display,
     return FALSE;
 }
 
-static void
-get_kwm_win_icon (MetaDisplay *display,
-                  Window       xwindow,
-                  Pixmap      *pixmap,
-                  Pixmap      *mask)
-{
-  Atom type;
-  int format;
-  gulong nitems;
-  gulong bytes_after;
-  guchar *data;
-  Pixmap *icons;
-  int err, result;
-
-  *pixmap = None;
-  *mask = None;
-
-  meta_error_trap_push (display);
-  icons = NULL;
-  result = XGetWindowProperty (display->xdisplay, xwindow,
-                               display->atom__KWM_WIN_ICON,
-			       0, G_MAXLONG,
-			       False,
-                               display->atom__KWM_WIN_ICON,
-			       &type, &format, &nitems,
-			       &bytes_after, &data);
-  icons = (Pixmap *)data;
-
-  err = meta_error_trap_pop_with_return (display);
-  if (err != Success ||
-      result != Success)
-    return;
-
-  if (type != display->atom__KWM_WIN_ICON)
-    {
-      XFree (icons);
-      return;
-    }
-
-  *pixmap = icons[0];
-  *mask = icons[1];
-
-  XFree (icons);
-
-  return;
-}
-
 void
 meta_icon_cache_init (MetaIconCache *icon_cache)
 {
@@ -496,7 +449,6 @@ meta_icon_cache_init (MetaIconCache *icon_cache)
   icon_cache->prev_pixmap = None;
   icon_cache->prev_mask = None;
   icon_cache->wm_hints_dirty = TRUE;
-  icon_cache->kwm_win_icon_dirty = TRUE;
   icon_cache->net_wm_icon_dirty = TRUE;
 }
 
@@ -513,8 +465,6 @@ meta_icon_cache_property_changed (MetaIconCache *icon_cache,
 {
   if (atom == display->atom__NET_WM_ICON)
     icon_cache->net_wm_icon_dirty = TRUE;
-  else if (atom == display->atom__KWM_WIN_ICON)
-    icon_cache->kwm_win_icon_dirty = TRUE;
   else if (atom == XA_WM_HINTS)
     icon_cache->wm_hints_dirty = TRUE;
 }
@@ -522,11 +472,8 @@ meta_icon_cache_property_changed (MetaIconCache *icon_cache,
 gboolean
 meta_icon_cache_get_icon_invalidated (MetaIconCache *icon_cache)
 {
-  if (icon_cache->origin <= USING_KWM_WIN_ICON &&
-      icon_cache->kwm_win_icon_dirty)
-    return TRUE;
-  else if (icon_cache->origin <= USING_WM_HINTS &&
-           icon_cache->wm_hints_dirty)
+  if (icon_cache->origin <= USING_WM_HINTS &&
+      icon_cache->wm_hints_dirty)
     return TRUE;
   else if (icon_cache->origin <= USING_NET_WM_ICON &&
            icon_cache->net_wm_icon_dirty)
@@ -707,35 +654,6 @@ meta_read_icons (MetaScreen     *screen,
               icon_cache->prev_mask = mask;
 
               icon_cache->origin = USING_WM_HINTS;
-
-              return TRUE;
-            }
-        }
-    }
-
-  if (icon_cache->origin <= USING_KWM_WIN_ICON &&
-      icon_cache->kwm_win_icon_dirty)
-    {
-      icon_cache->kwm_win_icon_dirty = FALSE;
-
-      get_kwm_win_icon (screen->display, xwindow, &pixmap, &mask);
-
-      if ((pixmap != icon_cache->prev_pixmap ||
-           mask != icon_cache->prev_mask) &&
-          pixmap != None)
-        {
-          if (try_pixmap_and_mask (screen->display,
-                                   pixmap,
-                                   mask,
-                                   iconp,
-                                   ideal_size,
-                                   mini_iconp,
-                                   ideal_mini_size))
-            {
-              icon_cache->prev_pixmap = pixmap;
-              icon_cache->prev_mask = mask;
-
-              icon_cache->origin = USING_KWM_WIN_ICON;
 
               return TRUE;
             }

@@ -34,7 +34,6 @@ typedef enum
    */
   USING_NO_ICON,
   USING_FALLBACK_ICON,
-  USING_KWM_WIN_ICON,
   USING_WM_HINTS,
   USING_NET_WM_ICON
 } IconOrigin;
@@ -46,7 +45,6 @@ struct _MetaIconCache
   Pixmap prev_mask;
   /* TRUE if these props have changed */
   guint wm_hints_dirty : 1;
-  guint kwm_win_icon_dirty : 1;
   guint net_wm_icon_dirty : 1;
 };
 

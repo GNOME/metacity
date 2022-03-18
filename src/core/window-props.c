@@ -287,14 +287,6 @@ reload_net_wm_icon (MetaWindow    *window,
 }
 
 static void
-reload_kwm_win_icon (MetaWindow    *window,
-                     MetaPropValue *value,
-                     gboolean       initial)
-{
-  reload_icon (window, window->display->atom__KWM_WIN_ICON);
-}
-
-static void
 meta_window_set_custom_frame_extents (MetaWindow *window,
                                       GtkBorder  *extents)
 {
@@ -1882,12 +1874,6 @@ meta_display_init_window_prop_hooks (MetaDisplay *display)
       display->atom__NET_WM_ICON,
       META_PROP_VALUE_INVALID,
       reload_net_wm_icon,
-      NONE
-    },
-    {
-      display->atom__KWM_WIN_ICON,
-      META_PROP_VALUE_INVALID,
-      reload_kwm_win_icon,
       NONE
     },
     {
