@@ -469,7 +469,7 @@ meta_icon_cache_property_changed (MetaIconCache *icon_cache,
     icon_cache->wm_hints_dirty = TRUE;
 }
 
-gboolean
+static gboolean
 meta_icon_cache_get_icon_invalidated (MetaIconCache *icon_cache)
 {
   if (icon_cache->origin <= USING_WM_HINTS &&
