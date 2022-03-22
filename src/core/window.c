@@ -9322,11 +9322,10 @@ meta_window_get_client_pid (MetaWindow *self)
 
       for (i = 0; i < num_ids; i++)
         {
-          if (client_ids[i].spec.mask == XRES_CLIENT_ID_PID_MASK)
-            {
-              self->client_pid = XResGetClientPid (&client_ids[i]);
-              break;
-            }
+          self->client_pid = XResGetClientPid (&client_ids[i]);
+
+          if (self->client_pid != -1)
+            break;
         }
 
       XResClientIdsDestroy (num_ids, client_ids);
