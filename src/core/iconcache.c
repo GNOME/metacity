@@ -458,17 +458,6 @@ meta_icon_cache_free (MetaIconCache *icon_cache)
   icon_cache->origin = USING_NO_ICON;
 }
 
-void
-meta_icon_cache_property_changed (MetaIconCache *icon_cache,
-                                  MetaDisplay   *display,
-                                  Atom           atom)
-{
-  if (atom == display->atom__NET_WM_ICON)
-    icon_cache->net_wm_icon_dirty = TRUE;
-  else if (atom == XA_WM_HINTS)
-    icon_cache->wm_hints_dirty = TRUE;
-}
-
 static gboolean
 meta_icon_cache_get_icon_invalidated (MetaIconCache *icon_cache)
 {
@@ -484,6 +473,22 @@ meta_icon_cache_get_icon_invalidated (MetaIconCache *icon_cache)
     return TRUE;
   else
     return FALSE;
+}
+
+void
+meta_icon_cache_property_changed (MetaIconCache *icon_cache,
+                                  MetaDisplay   *display,
+                                  Atom           atom)
+{
+  if (atom == display->atom__NET_WM_ICON)
+    icon_cache->net_wm_icon_dirty = TRUE;
+  else if (atom == XA_WM_HINTS)
+    icon_cache->wm_hints_dirty = TRUE;
+
+  if (!meta_icon_cache_get_icon_invalidated (icon_cache))
+    return;
+
+  icon_cache->origin = USING_NO_ICON;
 }
 
 static GdkPixbuf*
