@@ -64,6 +64,7 @@
 #include <X11/extensions/Xcomposite.h>
 #include <X11/extensions/Xdamage.h>
 #include <X11/extensions/Xfixes.h>
+#include <X11/extensions/XRes.h>
 #include <string.h>
 
 #include "compositor/meta-compositor-none.h"
@@ -685,6 +686,26 @@ meta_display_open (void)
     meta_verbose ("Attempted to init XFixes, found error base %d event base %d\n",
                   the_display->xfixes_error_base,
                   the_display->xfixes_event_base);
+  }
+
+  {
+    int event_base;
+    int error_base;
+    int major;
+    int minor;
+
+    event_base = error_base = major = minor = 0;
+    the_display->have_xres = FALSE;
+
+    if (XResQueryExtension (the_display->xdisplay, &event_base, &error_base) &&
+        XResQueryVersion (the_display->xdisplay, &major, &minor) == 1)
+      {
+        if (major > 1 || (major == 1 && minor >= 2))
+          the_display->have_xres = TRUE;
+      }
+
+    meta_verbose ("Attempted to init XRes, found version %d.%d error base %d event base %d\n",
+                  major, minor, error_base, event_base);
   }
 
 #ifdef HAVE_XCURSOR

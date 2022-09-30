@@ -276,6 +276,8 @@ struct _MetaDisplay
 #define META_DISPLAY_HAS_DAMAGE(display) ((display)->have_damage)
   unsigned int have_xfixes : 1;
 #define META_DISPLAY_HAS_XFIXES(display) ((display)->have_xfixes)
+  unsigned int have_xres : 1;
+#define META_DISPLAY_HAS_XRES(display) ((display)->have_xres)
 };
 
 /* Xserver time can wraparound, thus comparing two timestamps needs to take
