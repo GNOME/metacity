@@ -567,6 +567,7 @@ meta_window_new (MetaDisplay    *display,
   window->startup_id = NULL;
   window->gtk_theme_variant = NULL;
 
+  window->net_wm_pid = -1;
   window->client_pid = -1;
 
   window->xtransient_for = None;

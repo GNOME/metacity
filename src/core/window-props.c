@@ -389,6 +389,28 @@ reload_wm_window_role (MetaWindow    *window,
 }
 
 static void
+reload_net_wm_pid (MetaWindow    *window,
+                   MetaPropValue *value,
+                   gboolean       initial)
+{
+  if (value->type != META_PROP_VALUE_INVALID)
+    {
+      gulong cardinal = (int) value->v.cardinal;
+
+      if (cardinal <= 0)
+        {
+          g_warning ("Application set a bogus _NET_WM_PID %lu", cardinal);
+        }
+      else
+        {
+          window->net_wm_pid = cardinal;
+          meta_verbose ("Window has _NET_WM_PID %d\n",
+                        window->net_wm_pid);
+        }
+    }
+}
+
+static void
 reload_net_wm_user_time (MetaWindow    *window,
                          MetaPropValue *value,
                          gboolean       initial)
@@ -1779,6 +1801,12 @@ meta_display_init_window_prop_hooks (MetaDisplay *display)
       XA_WM_CLASS,
       META_PROP_VALUE_CLASS_HINT,
       reload_wm_class,
+      LOAD_INIT | INCLUDE_OR
+    },
+    {
+      display->atom__NET_WM_PID,
+      META_PROP_VALUE_CARDINAL,
+      reload_net_wm_pid,
       LOAD_INIT | INCLUDE_OR
     },
     {
