@@ -9298,6 +9298,9 @@ meta_window_remove_pending_unmap (MetaWindow *window,
 pid_t
 meta_window_get_client_pid (MetaWindow *self)
 {
+  if (!META_DISPLAY_HAS_XRES (self->display))
+    return self->net_wm_pid;
+
   if (self->client_pid == -1)
     {
       XResClientIdSpec spec;
