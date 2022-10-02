@@ -1163,13 +1163,6 @@ meta_set_normal_hints (MetaWindow *window,
   w = window->size_hints.width;
   h = window->size_hints.height;
 
-  /* as far as I can tell, value->v.size_hints.flags is just to
-   * check whether we had old-style normal hints without gravity,
-   * base size as returned by XGetNormalHints(), so we don't
-   * really use it as we fixup window->size_hints to have those
-   * fields if they're missing.
-   */
-
   /*
    * When the window is first created, NULL hints will
    * be passed in which will initialize all of the fields
@@ -1499,7 +1492,7 @@ reload_normal_hints (MetaWindow    *window,
 
       old_hints = window->size_hints;
 
-      meta_set_normal_hints (window, value->v.size_hints.hints);
+      meta_set_normal_hints (window, value->v.size_hints);
 
       spew_size_hints_differences (&old_hints, &window->size_hints);
 

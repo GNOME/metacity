@@ -151,11 +151,7 @@ typedef struct
       int     n_counters;
     } xcounter_list;
 
-    struct
-    {
-      XSizeHints   *hints;
-      unsigned long flags;
-    } size_hints;
+    XSizeHints *size_hints;
 
     struct
     {

@@ -796,15 +796,14 @@ class_hint_from_results (GetPropertyResults *results,
 }
 
 static gboolean
-size_hints_from_results (GetPropertyResults *results,
-                         XSizeHints        **hints_p,
-                         gulong             *flags_p)
+size_hints_from_results (GetPropertyResults  *results,
+                         XSizeHints         **hints_p)
 {
   xPropSizeHints *raw;
   XSizeHints *hints;
+  gulong flags;
 
   *hints_p = NULL;
-  *flags_p = 0;
 
   if (!validate_or_free_results (results, 32, XA_WM_SIZE_HINTS, FALSE))
     return FALSE;
@@ -833,16 +832,16 @@ size_hints_from_results (GetPropertyResults *results,
   hints->max_aspect.x = cvtINT32toInt (raw->maxAspectX);
   hints->max_aspect.y = cvtINT32toInt (raw->maxAspectY);
 
-  *flags_p = (USPosition | USSize | PAllHints);
+  flags = (USPosition | USSize | PAllHints);
   if (results->n_items >= NumPropSizeElements)
     {
       hints->base_width= cvtINT32toInt (raw->baseWidth);
       hints->base_height= cvtINT32toInt (raw->baseHeight);
       hints->win_gravity= cvtINT32toInt (raw->winGravity);
-      *flags_p |= (PBaseSize | PWinGravity);
+      flags |= (PBaseSize | PWinGravity);
     }
 
-  hints->flags &= (*flags_p);	/* get rid of unwanted bits */
+  hints->flags &= flags; /* get rid of unwanted bits */
 
   XFree (results->prop);
   results->prop = NULL;
@@ -1098,9 +1097,7 @@ meta_prop_get_values (MetaDisplay   *display,
             values[i].type = META_PROP_VALUE_INVALID;
           break;
         case META_PROP_VALUE_SIZE_HINTS:
-          if (!size_hints_from_results (&results,
-                                        &values[i].v.size_hints.hints,
-                                        &values[i].v.size_hints.flags))
+          if (!size_hints_from_results (&results, &values[i].v.size_hints))
             values[i].type = META_PROP_VALUE_INVALID;
           break;
         case META_PROP_VALUE_SYNC_COUNTER:
@@ -1158,7 +1155,7 @@ free_value (MetaPropValue *value)
       meta_XFree (value->v.class_hint.res_name);
       break;
     case META_PROP_VALUE_SIZE_HINTS:
-      meta_XFree (value->v.size_hints.hints);
+      meta_XFree (value->v.size_hints);
       break;
     case META_PROP_VALUE_UTF8_LIST:
       g_strfreev (value->v.string_list.strings);
