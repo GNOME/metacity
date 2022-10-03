@@ -969,14 +969,30 @@ meta_workspace_focus_default_window (MetaWorkspace *workspace,
     }
 }
 
-static gboolean
-record_ancestor (MetaWindow *window,
-                 void       *data)
+typedef struct
 {
-  MetaWindow **result = data;
+  MetaWorkspace *workspace;
+  MetaWindow    *ancestor;
+} FindFocusableAncestorData;
 
-  *result = window;
-  return FALSE; /* quit with the first ancestor we find */
+static gboolean
+find_focusable_ancestor (MetaWindow *window,
+                         gpointer    user_data)
+{
+  FindFocusableAncestorData *data;
+
+  data = user_data;
+
+  if (!window->unmanaging &&
+      meta_window_is_focusable (window) &&
+      meta_window_located_on_workspace (window, data->workspace) &&
+      meta_window_showing_on_its_workspace (window))
+    {
+      data->ancestor = window;
+      return FALSE;
+    }
+
+  return TRUE;
 }
 
 /* Focus ancestor of not_this_one if there is one */
@@ -998,8 +1014,17 @@ focus_ancestor_or_top_window (MetaWorkspace *workspace,
   if (not_this_one)
     {
       MetaWindow *ancestor;
-      ancestor = NULL;
-      meta_window_foreach_ancestor (not_this_one, record_ancestor, &ancestor);
+      FindFocusableAncestorData data;
+
+      data.workspace = workspace;
+      data.ancestor = NULL;
+
+      meta_window_foreach_ancestor (not_this_one,
+                                    find_focusable_ancestor,
+                                    &data);
+
+      ancestor = data.ancestor;
+
       if (ancestor != NULL)
         {
           meta_topic (META_DEBUG_FOCUS,
