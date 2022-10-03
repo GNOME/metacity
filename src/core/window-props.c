@@ -1492,7 +1492,8 @@ reload_normal_hints (MetaWindow    *window,
 
       meta_set_normal_hints (window, value->v.size_hints);
 
-      spew_size_hints_differences (&old_hints, &window->size_hints);
+      if (!initial)
+        spew_size_hints_differences (&old_hints, &window->size_hints);
 
       meta_window_recalc_features (window);
 
