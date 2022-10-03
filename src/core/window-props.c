@@ -1213,8 +1213,8 @@ meta_set_normal_hints (MetaWindow *window,
     }
   else
     {
-      window->size_hints.min_width = 0;
-      window->size_hints.min_height = 0;
+      window->size_hints.min_width = 1;
+      window->size_hints.min_height = 1;
     }
 
   /* Get max size hints */
@@ -1274,10 +1274,14 @@ meta_set_normal_hints (MetaWindow *window,
     }
   else
     {
-      meta_topic (META_DEBUG_GEOMETRY,
-                  "Window %s doesn't set gravity, using NW\n",
-                  window->desc);
       window->size_hints.win_gravity = NorthWestGravity;
+
+      if (hints != NULL)
+        {
+          meta_topic (META_DEBUG_GEOMETRY,
+                      "Window %s doesn't set gravity, using NW\n",
+                      window->desc);
+        }
     }
 
   /*** Lots of sanity checking ***/
