@@ -1,3 +1,9 @@
+Version 3.46.0
+==============
+- Fix crash minimizing parent window. (#31)
+- Fix fullscreen for Wine windows. (#33)
+- Updated translations.
+
 Version 3.44.0
 ==============
 - No changes.
