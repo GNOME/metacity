@@ -2044,7 +2044,7 @@ window_state_on_map (MetaWindow *window,
   /* don't initially focus windows that are intended to not accept
    * focus
    */
-  if (!(window->input || window->take_focus))
+  if (!meta_window_is_focusable (window))
     {
       *takes_focus = FALSE;
       return;
@@ -4418,7 +4418,7 @@ meta_window_focus (MetaWindow  *window,
    */
   if (window->frame &&
       (window->shaded ||
-       !(window->input || window->take_focus)))
+       !meta_window_is_focusable (window)))
     {
       if (window->frame)
         {
@@ -5901,6 +5901,12 @@ meta_window_set_focused_internal (MetaWindow *window,
           !meta_prefs_get_raise_on_click ())
         meta_display_grab_focus_window_button (window->display, window);
     }
+}
+
+gboolean
+meta_window_is_focusable (MetaWindow *self)
+{
+  return self->input || self->take_focus;
 }
 
 static gboolean

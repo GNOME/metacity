@@ -593,6 +593,8 @@ gboolean meta_window_client_message    (MetaWindow *window,
 void     meta_window_set_focused_internal (MetaWindow *window,
                                            gboolean    focused);
 
+gboolean meta_window_is_focusable (MetaWindow *self);
+
 void     meta_window_set_current_workspace_hint (MetaWindow *window);
 
 unsigned long meta_window_get_net_wm_desktop (MetaWindow *window);

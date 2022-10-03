@@ -1243,7 +1243,7 @@ get_default_focus_window (MetaStack     *stack,
       if (window->unmanaging)
         continue;
 
-      if (!(window->input || window->take_focus))
+      if (!meta_window_is_focusable (window))
         continue;
 
       if (!meta_window_should_be_showing_on_workspace (window, workspace))
