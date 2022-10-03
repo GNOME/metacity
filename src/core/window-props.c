@@ -1197,7 +1197,6 @@ meta_set_normal_hints (MetaWindow *window,
       window->size_hints.base_width = 0;
       window->size_hints.base_height = 0;
     }
-  window->size_hints.flags |= PBaseSize;
 
   /* Get min size hints */
   if (window->size_hints.flags & PMinSize)
@@ -1217,7 +1216,6 @@ meta_set_normal_hints (MetaWindow *window,
       window->size_hints.min_width = 0;
       window->size_hints.min_height = 0;
     }
-  window->size_hints.flags |= PMinSize;
 
   /* Get max size hints */
   if (window->size_hints.flags & PMaxSize)
@@ -1231,7 +1229,6 @@ meta_set_normal_hints (MetaWindow *window,
     {
       window->size_hints.max_width = G_MAXINT;
       window->size_hints.max_height = G_MAXINT;
-      window->size_hints.flags |= PMaxSize;
     }
 
   /* Get resize increment hints */
@@ -1247,7 +1244,6 @@ meta_set_normal_hints (MetaWindow *window,
     {
       window->size_hints.width_inc = 1;
       window->size_hints.height_inc = 1;
-      window->size_hints.flags |= PResizeInc;
     }
 
   /* Get aspect ratio hints */
@@ -1267,7 +1263,6 @@ meta_set_normal_hints (MetaWindow *window,
       window->size_hints.min_aspect.y = G_MAXINT;
       window->size_hints.max_aspect.x = G_MAXINT;
       window->size_hints.max_aspect.y = 1;
-      window->size_hints.flags |= PAspect;
     }
 
   /* Get gravity hint */
@@ -1283,7 +1278,6 @@ meta_set_normal_hints (MetaWindow *window,
                   "Window %s doesn't set gravity, using NW\n",
                   window->desc);
       window->size_hints.win_gravity = NorthWestGravity;
-      window->size_hints.flags |= PWinGravity;
     }
 
   /*** Lots of sanity checking ***/
