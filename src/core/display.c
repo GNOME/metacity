@@ -1717,6 +1717,20 @@ handle_window_focus_event (MetaDisplay *display,
     }
 }
 
+static Bool
+unmap_predicate (Display  *display,
+                 XEvent   *event,
+                 XPointer  arg)
+{
+  XUnmapEvent *unmap;
+
+  unmap = (XUnmapEvent *) arg;
+
+  return event->type == UnmapNotify &&
+         event->xunmap.window == unmap->window &&
+         event->xunmap.serial == unmap->serial;
+}
+
 /**
  * This is the most important function in the whole program. It is the heart,
  * it is the nexus, it is the Grand Central Station of Metacity's world.
@@ -2304,6 +2318,15 @@ event_callback (XEvent   *event,
 
           if (!frame_was_receiver)
             {
+              XEvent unmap_event;
+
+              while (XCheckIfEvent (display->xdisplay,
+                                    &unmap_event,
+                                    unmap_predicate,
+                                    (XPointer) &event->xunmap))
+                {
+                }
+
               if (!meta_window_remove_pending_unmap (window, event->xany.serial))
                 {
                   meta_topic (META_DEBUG_WINDOW_STATE,
