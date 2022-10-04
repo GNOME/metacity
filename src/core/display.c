@@ -1717,6 +1717,42 @@ handle_window_focus_event (MetaDisplay *display,
     }
 }
 
+static gboolean
+dock_has_overlaps (MetaWindow *dock,
+                   GList      *windows)
+{
+  MetaRectangle dock_rect;
+  GList *tmp;
+
+  if (dock->type != META_WINDOW_DOCK)
+    return FALSE;
+
+  meta_window_get_input_rect (dock, &dock_rect);
+
+  tmp = windows;
+  while (tmp != NULL)
+    {
+      MetaWindow *other;
+      MetaRectangle other_rect;
+
+      other = tmp->data;
+      tmp = tmp->next;
+
+      if (dock == other)
+        continue;
+
+      if (dock->layer != other->layer)
+        continue;
+
+      meta_window_get_input_rect (other, &other_rect);
+
+      if (meta_rectangle_overlap (&dock_rect, &other_rect))
+        return TRUE;
+    }
+
+  return FALSE;
+}
+
 /**
  * This is the most important function in the whole program. It is the heart,
  * it is the nexus, it is the Grand Central Station of Metacity's world.
@@ -2191,7 +2227,8 @@ event_callback (XEvent   *event,
               break;
             }
 
-          if (window->type == META_WINDOW_DOCK)
+          if (window->type == META_WINDOW_DOCK &&
+              dock_has_overlaps (window, screen->stack->sorted))
             meta_window_raise (window);
         }
       break;
@@ -2202,6 +2239,7 @@ event_callback (XEvent   *event,
       else if (window != NULL)
         {
           if (window->type == META_WINDOW_DOCK &&
+              dock_has_overlaps (window, screen->stack->sorted) &&
               event->xcrossing.mode != NotifyGrab &&
               event->xcrossing.mode != NotifyUngrab &&
               !window->has_focus)
