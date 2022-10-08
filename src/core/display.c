@@ -4570,9 +4570,42 @@ get_focussed_group (MetaDisplay *display)
     return NULL;
 }
 
-#define IN_TAB_CHAIN(w,t) (((t) == META_TAB_LIST_NORMAL && META_WINDOW_IN_NORMAL_TAB_CHAIN (w)) \
-    || ((t) == META_TAB_LIST_DOCKS && META_WINDOW_IN_DOCK_TAB_CHAIN (w)) \
-    || ((t) == META_TAB_LIST_GROUP && META_WINDOW_IN_GROUP_TAB_CHAIN (w, get_focussed_group(w->display))))
+static inline gboolean
+in_normal_tab_chain_type (MetaWindow *window)
+{
+  return window->type != META_WINDOW_DOCK &&
+         window->type != META_WINDOW_DESKTOP;
+}
+
+static inline gboolean
+in_tab_chain (MetaWindow  *window,
+              MetaTabList  type)
+{
+  if (!meta_window_is_focusable (window))
+    return FALSE;
+
+  if (type == META_TAB_LIST_NORMAL)
+    {
+      if (in_normal_tab_chain_type (window) && !window->skip_taskbar)
+        return TRUE;
+    }
+  else if (type == META_TAB_LIST_DOCKS)
+    {
+      if (!in_normal_tab_chain_type (window) || window->skip_taskbar)
+        return TRUE;
+    }
+  else if (type == META_TAB_LIST_GROUP)
+    {
+      MetaGroup *group;
+
+      group = get_focussed_group (window->display);
+
+      if (group == NULL || meta_window_get_group (window) == group)
+        return TRUE;
+    }
+
+  return FALSE;
+}
 
 static MetaWindow*
 find_tab_forward (MetaDisplay   *display,
@@ -4596,7 +4629,7 @@ find_tab_forward (MetaDisplay   *display,
       MetaWindow *window = tmp->data;
 
       if (window->screen == screen &&
-          IN_TAB_CHAIN (window, type))
+          in_tab_chain (window, type))
         return window;
 
       tmp = tmp->next;
@@ -4607,7 +4640,7 @@ find_tab_forward (MetaDisplay   *display,
     {
       MetaWindow *window = tmp->data;
 
-      if (IN_TAB_CHAIN (window, type))
+      if (in_tab_chain (window, type))
         return window;
 
       tmp = tmp->next;
@@ -4637,7 +4670,7 @@ find_tab_backward (MetaDisplay   *display,
       MetaWindow *window = tmp->data;
 
       if (window->screen == screen &&
-          IN_TAB_CHAIN (window, type))
+          in_tab_chain (window, type))
         return window;
 
       tmp = tmp->prev;
@@ -4648,7 +4681,7 @@ find_tab_backward (MetaDisplay   *display,
     {
       MetaWindow *window = tmp->data;
 
-      if (IN_TAB_CHAIN (window, type))
+      if (in_tab_chain (window, type))
         return window;
 
       tmp = tmp->prev;
@@ -4681,7 +4714,7 @@ meta_display_get_tab_list (MetaDisplay   *display,
 
         if (!window->minimized &&
             window->screen == screen &&
-            IN_TAB_CHAIN (window, type))
+            in_tab_chain (window, type))
           tab_list = g_list_prepend (tab_list, window);
 
         tmp = tmp->next;
@@ -4698,7 +4731,7 @@ meta_display_get_tab_list (MetaDisplay   *display,
 
         if (window->minimized &&
             window->screen == screen &&
-            IN_TAB_CHAIN (window, type))
+            in_tab_chain (window, type))
           tab_list = g_list_prepend (tab_list, window);
 
         tmp = tmp->next;
@@ -4722,7 +4755,7 @@ meta_display_get_tab_list (MetaDisplay   *display,
         /* Check to see if it demands attention */
         if (l_window->wm_state_demands_attention &&
             l_window->workspace!=workspace &&
-            IN_TAB_CHAIN (l_window, type))
+            in_tab_chain (l_window, type))
           {
             /* if it does, add it to the popup */
             tab_list = g_list_prepend (tab_list, l_window);
@@ -4799,7 +4832,7 @@ meta_display_get_tab_current (MetaDisplay   *display,
 
   if (window != NULL &&
       window->screen == screen &&
-      IN_TAB_CHAIN (window, type) &&
+      in_tab_chain (window, type) &&
       (workspace == NULL ||
        meta_window_located_on_workspace (window, workspace)))
     return window;
