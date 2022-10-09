@@ -633,6 +633,9 @@ void meta_window_get_current_tile_area         (MetaWindow    *window,
 gboolean meta_window_same_application (MetaWindow *window,
                                        MetaWindow *other_window);
 
+gboolean meta_window_same_client      (MetaWindow *window,
+                                       MetaWindow *other_window);
+
 void meta_window_refresh_resize_popup (MetaWindow *window);
 
 void meta_window_free_delete_dialog (MetaWindow *window);

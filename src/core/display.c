@@ -4594,6 +4594,9 @@ in_tab_chain (MetaWindow  *window,
 
       if (meta_window_same_application (window, focus_window))
         return TRUE;
+
+      if (meta_window_same_client (window, focus_window))
+        return TRUE;
     }
 
   return FALSE;

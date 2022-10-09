@@ -77,9 +77,6 @@ static gboolean process_property_notify   (MetaWindow     *window,
 static void     meta_window_show          (MetaWindow     *window);
 static void     meta_window_hide          (MetaWindow     *window);
 
-static gboolean meta_window_same_client (MetaWindow *window,
-                                         MetaWindow *other_window);
-
 static void     meta_window_save_rect         (MetaWindow    *window);
 static void     save_user_window_placement    (MetaWindow    *window);
 static void     force_save_user_window_placement (MetaWindow    *window);
@@ -8254,7 +8251,7 @@ meta_window_same_application (MetaWindow *window,
  * applications (which likely aren't setting the group properly
  * anyways), it may be desirable to check this as well.
  */
-static gboolean
+gboolean
 meta_window_same_client (MetaWindow *window,
                          MetaWindow *other_window)
 {
