@@ -4597,6 +4597,12 @@ in_tab_chain (MetaWindow  *window,
 
       if (meta_window_same_client (window, focus_window))
         return TRUE;
+
+      if (window->res_class != NULL &&
+          *window->res_class != '\0' &&
+          focus_window->res_class != NULL &&
+          strcmp (window->res_class, focus_window->res_class) == 0)
+        return TRUE;
     }
 
   return FALSE;
