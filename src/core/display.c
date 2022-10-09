@@ -164,8 +164,6 @@ static void    prefs_changed_callback    (MetaPreference pref,
 static void    sanity_check_timestamps   (MetaDisplay *display,
                                           guint32      known_good_timestamp);
 
-MetaGroup*     get_focussed_group (MetaDisplay *display);
-
 /**
  * Destructor for MetaPingData structs. Will destroy the
  * event source for the struct as well.
@@ -4561,15 +4559,6 @@ meta_display_window_has_pending_pings (MetaDisplay *display,
   return FALSE;
 }
 
-MetaGroup*
-get_focussed_group (MetaDisplay *display)
-{
-  if (display->focus_window)
-    return display->focus_window->group;
-  else
-    return NULL;
-}
-
 static inline gboolean
 in_normal_tab_chain_type (MetaWindow *window)
 {
@@ -4596,11 +4585,14 @@ in_tab_chain (MetaWindow  *window,
     }
   else if (type == META_TAB_LIST_GROUP)
     {
-      MetaGroup *group;
+      MetaWindow *focus_window;
 
-      group = get_focussed_group (window->display);
+      focus_window = window->display->focus_window;
 
-      if (group == NULL || meta_window_get_group (window) == group)
+      if (focus_window == NULL)
+        return FALSE;
+
+      if (meta_window_same_application (window, focus_window))
         return TRUE;
     }
 
