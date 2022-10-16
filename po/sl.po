@@ -656,7 +656,7 @@ msgid ""
 "this frame style"
 msgstr ""
 "za ta slog okvirja mora biti naveden <button function='%s' state='%s' "
-"draw_ops=‘karkoli’/>"
+"draw_ops='karkoli'/>"
 
 #: libmetacity/meta-gradient-spec.c:182
 msgid "Gradients should have at least two colors"
