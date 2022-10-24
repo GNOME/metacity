@@ -565,6 +565,44 @@ solid_picture (Display  *xdisplay,
   return picture;
 }
 
+static gboolean
+is_background_pixmap_valid (MetaDisplay  *display,
+                            Pixmap        pixmap,
+                            unsigned int *depth)
+{
+  Display *xdisplay;
+  Window root_return;
+  int x_return;
+  int y_return;
+  unsigned int width_return;
+  unsigned int height_return;
+  unsigned int border_width_return;
+  unsigned int depth_return;
+  Status status;
+
+  xdisplay = meta_display_get_xdisplay (display);
+
+  meta_error_trap_push (display);
+
+  status = XGetGeometry (xdisplay,
+                         pixmap,
+                         &root_return,
+                         &x_return,
+                         &y_return,
+                         &width_return,
+                         &height_return,
+                         &border_width_return,
+                         &depth_return);
+
+  if (meta_error_trap_pop_with_return (display) != 0 || status == 0)
+    return FALSE;
+
+  *depth = depth_return;
+
+  return TRUE;
+}
+
+
 static Picture
 root_tile (MetaScreen *screen)
 {
@@ -574,6 +612,7 @@ root_tile (MetaScreen *screen)
   Pixmap pixmap;
   gboolean free_pixmap;
   gboolean fill;
+  Visual *xvisual;
   XRenderPictureAttributes pa;
   XRenderPictFormat *format;
   int p;
@@ -585,6 +624,7 @@ root_tile (MetaScreen *screen)
   pixmap = None;
   free_pixmap = FALSE;
   fill = FALSE;
+  xvisual = NULL;
 
   background_atoms[0] = display->atom__XROOTPMAP_ID;
   background_atoms[1] = display->atom__XSETROOT_ID;
@@ -607,9 +647,27 @@ root_tile (MetaScreen *screen)
               actual_format == 32 &&
               nitems == 1)
             {
+              unsigned int depth;
+
               memcpy (&pixmap, prop, 4);
               XFree (prop);
-              break;
+
+              if (is_background_pixmap_valid (display, pixmap, &depth))
+                {
+                  XVisualInfo visual_info;
+
+                  if (XMatchVisualInfo (xdisplay,
+                                        screen_number,
+                                        depth,
+                                        TrueColor,
+                                        &visual_info) != 0)
+                    {
+                      xvisual = visual_info.visual;
+                      break;
+                    }
+                }
+
+              pixmap = None;
             }
         }
     }
@@ -655,9 +713,11 @@ root_tile (MetaScreen *screen)
       fill = TRUE;
     }
 
+  if (xvisual == NULL)
+    xvisual = DefaultVisual (xdisplay, screen_number);
+
   pa.repeat = TRUE;
-  format = XRenderFindVisualFormat (xdisplay, DefaultVisual (xdisplay,
-                                                             screen_number));
+  format = XRenderFindVisualFormat (xdisplay, xvisual);
   g_return_val_if_fail (format != NULL, None);
 
   picture = XRenderCreatePicture (xdisplay, pixmap, format, CPRepeat, &pa);
