@@ -602,7 +602,6 @@ is_background_pixmap_valid (MetaDisplay  *display,
   return TRUE;
 }
 
-
 static Picture
 root_tile (MetaScreen *screen)
 {
