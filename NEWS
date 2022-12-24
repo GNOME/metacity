@@ -1,3 +1,10 @@
+Version 3.46.1
+==============
+- Improve switching between windows of same application. (#26)
+- Fix crash when background pixmap has non-default depth. (#34)
+- Unminimaze child window together with main window. (#31)
+- Updated translations.
+
 Version 3.46.0
 ==============
 - Fix crash minimizing parent window. (#31)
