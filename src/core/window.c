@@ -6243,21 +6243,66 @@ invalidate_work_areas (MetaWindow *window)
     }
 }
 
+static void
+update_struts (MetaWindow *window,
+               GSList     *new_struts)
+{
+  GSList *old_struts;
+  GSList *old_iter;
+  GSList *new_iter;
+  gboolean changed;
+
+  old_struts = window->struts;
+
+  /* Determine whether old_struts and new_struts are the same */
+  old_iter = old_struts;
+  new_iter = new_struts;
+
+  while (old_iter && new_iter)
+    {
+      MetaStrut *old_strut = (MetaStrut*) old_iter->data;
+      MetaStrut *new_strut = (MetaStrut*) new_iter->data;
+
+      if (old_strut->side != new_strut->side ||
+          old_strut->edge != new_strut->edge ||
+          !meta_rectangle_equal (&old_strut->rect, &new_strut->rect))
+        break;
+
+      old_iter = old_iter->next;
+      new_iter = new_iter->next;
+    }
+
+  changed = (old_iter != NULL || new_iter != NULL);
+
+  /* Update appropriately */
+  g_slist_free_full (old_struts, g_free);
+  window->struts = new_struts;
+
+  if (changed)
+    {
+      meta_topic (META_DEBUG_WORKAREA,
+                  "Invalidating work areas of window %s due to struts update\n",
+                  window->desc);
+      invalidate_work_areas (window);
+    }
+  else
+    {
+      meta_topic (META_DEBUG_WORKAREA,
+                  "Struts on %s were unchanged\n", window->desc);
+    }
+}
+
 void
 meta_window_update_struts (MetaWindow *window)
 {
-  GSList *old_struts;
   GSList *new_struts;
-  GSList *old_iter, *new_iter;
   gulong *struts = NULL;
   int nitems;
-  gboolean changed;
 
   g_return_if_fail (!window->override_redirect);
 
   meta_verbose ("Updating struts for %s\n", window->desc);
 
-  old_struts = window->struts;
   new_struts = NULL;
 
   if (meta_prop_get_cardinal_list (window->display,
@@ -6276,6 +6321,11 @@ meta_window_update_struts (MetaWindow *window)
           MetaSide side;
           gboolean valid;
           int i;
+
+          meta_verbose ("_GNOME_WM_STRUT_AREA struts %lu %lu %lu %lu for "
+                        "window %s\n",
+                        struts[0], struts[1], struts[2], struts[3],
+                        window->desc);
 
           temp = g_new (MetaStrut, 1);
 
@@ -6336,7 +6386,10 @@ meta_window_update_struts (MetaWindow *window)
             }
         }
 
+      update_struts (window, new_struts);
+
       meta_XFree (struts);
+      return;
     }
   else
     {
@@ -6344,20 +6397,28 @@ meta_window_update_struts (MetaWindow *window)
                     window->desc);
     }
 
-  if (!new_struts &&
-      meta_prop_get_cardinal_list (window->display,
+  if (meta_prop_get_cardinal_list (window->display,
                                    window->xwindow,
                                    window->display->atom__NET_WM_STRUT_PARTIAL,
                                    &struts, &nitems))
     {
       if (nitems != 12)
-        meta_verbose ("_NET_WM_STRUT_PARTIAL on %s has %d values instead "
-                      "of 12\n",
-                      window->desc, nitems);
+        {
+          meta_verbose ("_NET_WM_STRUT_PARTIAL on %s has %d values instead "
+                        "of 12\n",
+                        window->desc, nitems);
+        }
       else
         {
           /* Pull out the strut info for each side in the hint */
           int i;
+
+          meta_verbose ("_NET_WM_STRUT_PARTIAL struts %lu %lu %lu %lu %lu %lu "
+                        "%lu %lu %lu %lu %lu %lu for window %s\n",
+                        struts[0], struts[1], struts[2], struts[3], struts[4],
+                        struts[5], struts[6], struts[7], struts[8], struts[9],
+                        struts[10], struts[11], window->desc);
+
           for (i=0; i<4; i++)
             {
               MetaStrut *temp;
@@ -6403,13 +6464,12 @@ meta_window_update_struts (MetaWindow *window)
 
               new_struts = g_slist_prepend (new_struts, temp);
             }
-
-          meta_verbose ("_NET_WM_STRUT_PARTIAL struts %lu %lu %lu %lu for "
-                        "window %s\n",
-                        struts[0], struts[1], struts[2], struts[3],
-                        window->desc);
         }
+
+      update_struts (window, new_struts);
+
       meta_XFree (struts);
+      return;
     }
   else
     {
@@ -6417,19 +6477,25 @@ meta_window_update_struts (MetaWindow *window)
                     window->desc);
     }
 
-  if (!new_struts &&
-      meta_prop_get_cardinal_list (window->display,
+  if (meta_prop_get_cardinal_list (window->display,
                                    window->xwindow,
                                    window->display->atom__NET_WM_STRUT,
                                    &struts, &nitems))
     {
       if (nitems != 4)
-        meta_verbose ("_NET_WM_STRUT on %s has %d values instead of 4\n",
-                      window->desc, nitems);
+        {
+          meta_verbose ("_NET_WM_STRUT on %s has %d values instead of 4\n",
+                        window->desc, nitems);
+        }
       else
         {
           /* Pull out the strut info for each side in the hint */
           int i;
+
+          meta_verbose ("_NET_WM_STRUT struts %lu %lu %lu %lu for window %s\n",
+                        struts[0], struts[1], struts[2], struts[3],
+                        window->desc);
+
           for (i=0; i<4; i++)
             {
               MetaStrut *temp;
@@ -6465,51 +6531,17 @@ meta_window_update_struts (MetaWindow *window)
 
               new_struts = g_slist_prepend (new_struts, temp);
             }
-
-          meta_verbose ("_NET_WM_STRUT struts %lu %lu %lu %lu for window %s\n",
-                        struts[0], struts[1], struts[2], struts[3],
-                        window->desc);
         }
+
+      update_struts (window, new_struts);
+
       meta_XFree (struts);
-    }
-  else if (!new_struts)
-    {
-      meta_verbose ("No _NET_WM_STRUT property for %s\n",
-                    window->desc);
-    }
-
-  /* Determine whether old_struts and new_struts are the same */
-  old_iter = old_struts;
-  new_iter = new_struts;
-  while (old_iter && new_iter)
-    {
-      MetaStrut *old_strut = (MetaStrut*) old_iter->data;
-      MetaStrut *new_strut = (MetaStrut*) new_iter->data;
-
-      if (old_strut->side != new_strut->side ||
-          old_strut->edge != new_strut->edge ||
-          !meta_rectangle_equal (&old_strut->rect, &new_strut->rect))
-        break;
-
-      old_iter = old_iter->next;
-      new_iter = new_iter->next;
-    }
-  changed = (old_iter != NULL || new_iter != NULL);
-
-  /* Update appropriately */
-  g_slist_free_full (old_struts, g_free);
-  window->struts = new_struts;
-  if (changed)
-    {
-      meta_topic (META_DEBUG_WORKAREA,
-                  "Invalidating work areas of window %s due to struts update\n",
-                  window->desc);
-      invalidate_work_areas (window);
+      return;
     }
   else
     {
-      meta_topic (META_DEBUG_WORKAREA,
-                  "Struts on %s were unchanged\n", window->desc);
+      meta_verbose ("No _NET_WM_STRUT property for %s\n",
+                    window->desc);
     }
 }
 
