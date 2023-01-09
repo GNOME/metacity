@@ -9,6 +9,7 @@
 # Kenneth Nielsen <k.nielsen81@gmail.com>, 2008.
 # Ask Hjorth Larsen <asklarsen@gmail.com>, 2007, 09, 11, 12, 16.
 # Joe Hansen <joedalton2@yahoo.dk>, 2018.
+# Alan Mortensen <alanmortensen.am@gmail.com>
 #
 # Konventioner:
 #
@@ -17,26 +18,21 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
-"product=metacity&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-11-11 17:57+0000\n"
-"PO-Revision-Date: 2018-03-03 14:17+0100\n"
-"Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues\n"
+"POT-Creation-Date: 2022-03-13 02:54+0000\n"
+"PO-Revision-Date: 2022-06-19 14:34+0200\n"
+"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
 
 #. Translators: This is the title used on dialog boxes
-#: data/applications/metacity.desktop.in:4 src/core/util.c:435
+#: data/applications/metacity.desktop.in:4 src/core/util.c:429
 msgid "Metacity"
 msgstr "Metacity"
-
-#. TRANSLATORS: Don't translate this text (this is icon name)
-#: data/applications/metacity.desktop.in:7
-msgid "preferences-system-windows"
-msgstr "preferences-system-windows"
 
 #: data/keybindings/50-metacity-navigation.xml:6
 msgid "Navigation"
@@ -175,54 +171,50 @@ msgid "Restore window"
 msgstr "Gendan vindue"
 
 #: data/keybindings/50-metacity-windows.xml:24
-msgid "Toggle shaded state"
-msgstr "Skift oprullethed"
-
-#: data/keybindings/50-metacity-windows.xml:27
 msgid "Close window"
 msgstr "Luk vindue"
 
-#: data/keybindings/50-metacity-windows.xml:30
+#: data/keybindings/50-metacity-windows.xml:27
 msgid "Minimize window"
 msgstr "Minimér vindue"
 
-#: data/keybindings/50-metacity-windows.xml:33
+#: data/keybindings/50-metacity-windows.xml:30
 msgid "Move window"
 msgstr "Flyt vindue"
 
-#: data/keybindings/50-metacity-windows.xml:36
+#: data/keybindings/50-metacity-windows.xml:33
 msgid "Resize window"
 msgstr "Ændr størrelsen på vindue"
 
-#: data/keybindings/50-metacity-windows.xml:39
+#: data/keybindings/50-metacity-windows.xml:36
 msgid "Toggle window on all workspaces or one"
 msgstr "Skift mellem visning af vindue på alle eller kun et arbejdsområde"
 
-#: data/keybindings/50-metacity-windows.xml:42
+#: data/keybindings/50-metacity-windows.xml:39
 msgid "Raise window if covered, otherwise lower it"
 msgstr "Hæv vindue hvis det er dækket, ellers sænk det"
 
-#: data/keybindings/50-metacity-windows.xml:45
+#: data/keybindings/50-metacity-windows.xml:42
 msgid "Raise window above other windows"
 msgstr "Hæv vindue over andre vinduer"
 
-#: data/keybindings/50-metacity-windows.xml:48
+#: data/keybindings/50-metacity-windows.xml:45
 msgid "Lower window below other windows"
 msgstr "Sænk vindue under andre vinduer"
 
-#: data/keybindings/50-metacity-windows.xml:51
+#: data/keybindings/50-metacity-windows.xml:48
 msgid "Maximize window vertically"
 msgstr "Maksimér et vindue lodret"
 
-#: data/keybindings/50-metacity-windows.xml:54
+#: data/keybindings/50-metacity-windows.xml:51
 msgid "Maximize window horizontally"
 msgstr "Maksimér et vindue vandret"
 
-#: data/keybindings/50-metacity-windows.xml:58
+#: data/keybindings/50-metacity-windows.xml:55
 msgid "View split on left"
 msgstr "Visning delt til venstre"
 
-#: data/keybindings/50-metacity-windows.xml:62
+#: data/keybindings/50-metacity-windows.xml:59
 msgid "View split on right"
 msgstr "Visning delt til højre"
 
@@ -243,15 +235,33 @@ msgid "Compositing Manager"
 msgstr "Kompositionshåndtering"
 
 #: data/schemas/org.gnome.metacity.gschema.xml:24
-msgid "Determines whether Metacity is a compositing manager."
-msgstr "Bestemmer om Metacity håndterer komposition."
+msgid ""
+"Determines whether Metacity is a compositing manager. DEPRECATED: This key "
+"is deprecated, use the “compositor” instead."
+msgstr ""
+"Bestemmer om Metacity håndterer komposition. FORÆLDET: Denne nøgle er "
+"forældet. Brug i stedet “compositor”."
+
+# ikke sikker på sammenhæng
+#: data/schemas/org.gnome.metacity.gschema.xml:33
+#| msgid "Composited:"
+msgid "Compositor"
+msgstr "Compositor"
+
+#: data/schemas/org.gnome.metacity.gschema.xml:34
+msgid ""
+"Compositor that Metacity will use for compositing. Possible values are "
+"“none”, “xrender” and “xpresent”."
+msgstr ""
+"Compositor som Metacity vil bruge til komposition. Mulige værdier er “none”, "
+"“xrender” og “xpresent”."
 
 # se forklaring nedenfor
-#: data/schemas/org.gnome.metacity.gschema.xml:31
+#: data/schemas/org.gnome.metacity.gschema.xml:42
 msgid "Enable edge tiling when dropping windows on screen edges"
 msgstr "Slå kantmaksimering til, når vinduer slippes ved skærmkanter"
 
-#: data/schemas/org.gnome.metacity.gschema.xml:32
+#: data/schemas/org.gnome.metacity.gschema.xml:43
 msgid ""
 "If enabled, dropping windows on vertical screen edges maximizes them "
 "vertically and resizes them horizontally to cover half of the available "
@@ -262,12 +272,12 @@ msgstr ""
 "halvdelen af den tilgængelige plads. Vinduer, som slippes over skærmens "
 "øverste kant, vil blive maksimeret helt."
 
-#: data/schemas/org.gnome.metacity.gschema.xml:41
+#: data/schemas/org.gnome.metacity.gschema.xml:52
 msgid "Window placement behavior"
 msgstr "Opførsel af vinduesplacering"
 
 # ved ikke om begrebet "first-fit" eksisterer rigtigt
-#: data/schemas/org.gnome.metacity.gschema.xml:42
+#: data/schemas/org.gnome.metacity.gschema.xml:53
 msgid ""
 "Metacity's default window-placement behavior is smart (first-fit), similar "
 "to behaviors in some other window managers. It will try to tile windows so "
@@ -285,24 +295,6 @@ msgstr ""
 "centrum, “origin” for øverste venstre hjørne i arbejdsområderne eller "
 "“random” for at placere nye vinduer på tilfældige steder i deres "
 "arbejdsområder."
-
-#: data/schemas/org.gnome.metacity.gschema.xml:57
-msgid "If true, trade off usability for less resource usage"
-msgstr "Hvis sand, så formindsk brugbarhed af hensyn til resurseforbrug"
-
-#: data/schemas/org.gnome.metacity.gschema.xml:58
-msgid ""
-"If true, Metacity will give the user less feedback by using wireframes, "
-"avoiding animations, or other means. This is a significant reduction in "
-"usability for many users, but may allow legacy applications to continue "
-"working, and may also be a useful tradeoff for terminal servers. However, "
-"the wireframe feature is disabled when accessibility is on."
-msgstr ""
-"Hvis sand, vil Metacity give brugeren mindre tilbagemelding ved at bruge "
-"rammelinjer, undgå animeringer og andet. Dette er en betydelig formindskelse "
-"af brugbarheden for mange brugere, men kan sætte gamle programmer i stand "
-"til at fungere, samt kan være et brugbart kompromis for terminalservere. "
-"Rammelinje-faciliteten er dog deaktiveret, når tilgængelighed er slået til."
 
 #: data/schemas/org.gnome.metacity.theme.gschema.xml:11
 msgid "Theme Name"
@@ -459,7 +451,7 @@ msgstr ""
 "Ugyldigt tegn “%c” i color_name-parameteren i gtk:custom; kun A-Za-z0-9-_ er "
 "gyldige"
 
-#: libmetacity/meta-color-spec.c:273
+#: libmetacity/meta-color-spec.c:277
 #, c-format
 msgid ""
 "Gtk:custom format is 'gtk:custom(color_name,fallback)', '%s' does not fit "
@@ -468,7 +460,7 @@ msgstr ""
 "Formatet for gtk:custom er “gtk:custom(farvenavn,reservefarve)”; “%s” har "
 "ikke dette format"
 
-#: libmetacity/meta-color-spec.c:306
+#: libmetacity/meta-color-spec.c:310
 #, c-format
 msgid ""
 "GTK color specification must have the state in brackets, e.g. gtk:fg[NORMAL] "
@@ -477,7 +469,7 @@ msgstr ""
 "GTK-farvespecifikation skal have tilstanden i firkantede klammer, f.eks. gtk:"
 "fg[NORMAL] hvor NORMAL er tilstanden; kunne ikke fortolke “%s”"
 
-#: libmetacity/meta-color-spec.c:319
+#: libmetacity/meta-color-spec.c:323
 #, c-format
 msgid ""
 "GTK color specification must have a close bracket after the state, e.g. gtk:"
@@ -486,17 +478,17 @@ msgstr ""
 "GTK-farvespecifikation skal have en afsluttende klamme efter tilstanden, f."
 "eks. gtk:fg[NORMAL] hvor NORMAL er tilstanden; kunne ikke fortolke “%s”"
 
-#: libmetacity/meta-color-spec.c:328
+#: libmetacity/meta-color-spec.c:332
 #, c-format
 msgid "Did not understand state '%s' in color specification"
 msgstr "Forstod ikke tilstanden “%s” i farvespecifikationen"
 
-#: libmetacity/meta-color-spec.c:340
+#: libmetacity/meta-color-spec.c:344
 #, c-format
 msgid "Did not understand color component '%s' in color specification"
 msgstr "Forstod ikke farvekomponenten “%s” i farvespecifikationen"
 
-#: libmetacity/meta-color-spec.c:366
+#: libmetacity/meta-color-spec.c:370
 #, c-format
 msgid ""
 "Blend format is 'blend/bg_color/fg_color/alpha', '%s' does not fit the format"
@@ -504,33 +496,33 @@ msgstr ""
 "Blandingsformat er “blend/bg_color/fg_color/alpha”, “%s” passer ikke med "
 "formatet"
 
-#: libmetacity/meta-color-spec.c:376
+#: libmetacity/meta-color-spec.c:380
 #, c-format
 msgid "Could not parse alpha value '%s' in blended color"
 msgstr "Kunne ikke fortolke alfaværdien “%s” i blandet farve"
 
-#: libmetacity/meta-color-spec.c:385
+#: libmetacity/meta-color-spec.c:389
 #, c-format
 msgid "Alpha value '%s' in blended color is not between 0.0 and 1.0"
 msgstr "Alfaværdien “%s” i blandet farve er ikke mellem 0,0 og 1,0"
 
-#: libmetacity/meta-color-spec.c:428
+#: libmetacity/meta-color-spec.c:432
 #, c-format
 msgid "Shade format is 'shade/base_color/factor', '%s' does not fit the format"
 msgstr ""
 "Skyggeformat er “shade/base_color/factor”, “%s” passer ikke med formatet"
 
-#: libmetacity/meta-color-spec.c:438
+#: libmetacity/meta-color-spec.c:442
 #, c-format
 msgid "Could not parse shade factor '%s' in shaded color"
 msgstr "Kunne ikke fortolke skyggefaktoren “%s” i skygget farve"
 
-#: libmetacity/meta-color-spec.c:447
+#: libmetacity/meta-color-spec.c:451
 #, c-format
 msgid "Shade factor '%s' in shaded color is negative"
 msgstr "Skyggefaktoren “%s” i skygget farve er negativ"
 
-#: libmetacity/meta-color-spec.c:473
+#: libmetacity/meta-color-spec.c:477
 #, c-format
 msgid "Could not parse color '%s'"
 msgstr "Kunne ikke fortolke farven “%s”"
@@ -569,26 +561,26 @@ msgstr "Koordinatudtrykket var tomt eller blev ikke forstået"
 msgid "Coordinate expression had unknown variable or constant '%s'"
 msgstr "Koordinatudtrykket havde en ukendt variabel eller konstant “%s”"
 
-#: libmetacity/meta-draw-spec.c:631 libmetacity/meta-draw-spec.c:641
-#: libmetacity/meta-draw-spec.c:676 libmetacity/meta-draw-spec.c:686
+#: libmetacity/meta-draw-spec.c:638 libmetacity/meta-draw-spec.c:648
+#: libmetacity/meta-draw-spec.c:683 libmetacity/meta-draw-spec.c:693
 msgid "Coordinate expression results in division by zero"
 msgstr "Koordinatudtrykket resulterer i division med nul"
 
-#: libmetacity/meta-draw-spec.c:775
+#: libmetacity/meta-draw-spec.c:782
 #, c-format
 msgid ""
 "Coordinate expression has an operator \"%s\" where an operand was expected"
 msgstr "Koordinatudtrykket har en operator “%s” hvor en operand var ventet"
 
-#: libmetacity/meta-draw-spec.c:784
+#: libmetacity/meta-draw-spec.c:791
 msgid "Coordinate expression had an operand where an operator was expected"
 msgstr "Koordinatudtrykket havde en operand hvor en operator var ventet"
 
-#: libmetacity/meta-draw-spec.c:792
+#: libmetacity/meta-draw-spec.c:799
 msgid "Coordinate expression ended with an operator instead of an operand"
 msgstr "Koordinatudtrykket sluttede med en operator i stedet for en operand"
 
-#: libmetacity/meta-draw-spec.c:802
+#: libmetacity/meta-draw-spec.c:809
 #, c-format
 msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
@@ -597,25 +589,25 @@ msgstr ""
 "Koordinatudtrykket har en operator “%c” efter en operator “%c” og ingen "
 "operand mellem dem"
 
-#: libmetacity/meta-draw-spec.c:934
+#: libmetacity/meta-draw-spec.c:941
 msgid "Coordinate expression parser overflowed its buffer."
 msgstr "Koordinatudtryksfortolkeren har fået bufferoverløb."
 
-#: libmetacity/meta-draw-spec.c:964
+#: libmetacity/meta-draw-spec.c:971
 msgid "Coordinate expression had a close parenthesis with no open parenthesis"
 msgstr "Koordinatudtrykket havde en slutparantes uden startparantes"
 
-#: libmetacity/meta-draw-spec.c:1037
+#: libmetacity/meta-draw-spec.c:1044
 msgid "Coordinate expression had an open parenthesis with no close parenthesis"
 msgstr "Koordinatudtrykket havde en startparantes uden en slutparantes"
 
-#: libmetacity/meta-draw-spec.c:1047
+#: libmetacity/meta-draw-spec.c:1054
 msgid "Coordinate expression doesn't seem to have any operators or operands"
 msgstr ""
 "Koordinatudtrykket ser ikke ud til at have nogen operatorer eller operander"
 
-#: libmetacity/meta-draw-spec.c:1239 libmetacity/meta-draw-spec.c:1259
-#: libmetacity/meta-draw-spec.c:1279
+#: libmetacity/meta-draw-spec.c:1246 libmetacity/meta-draw-spec.c:1266
+#: libmetacity/meta-draw-spec.c:1286
 #, c-format
 msgid "Theme contained an expression that resulted in an error: %s"
 msgstr "Tema indeholdt et udtryk som resulterede i en fejl: %s"
@@ -660,13 +652,13 @@ msgstr "Rammegeometri angiver ikke størrelsen af knapper"
 #. * in theme XML.  The "<frame ...>" is intended as a noun phrase,
 #. * and the "missing" qualifies it.  You should translate "whatever".
 #.
-#: libmetacity/meta-frame-style.c:144 libmetacity/meta-frame-style.c:469
+#: libmetacity/meta-frame-style.c:144 libmetacity/meta-frame-style.c:467
 #, c-format
 msgid "Missing <frame state='%s' resize='%s' focus='%s' style='whatever' />"
 msgstr ""
 "Manglende <frame state='%s' resize='%s' focus='%s' style='et-eller-andet'/>"
 
-#: libmetacity/meta-frame-style.c:326
+#: libmetacity/meta-frame-style.c:324
 #, c-format
 msgid ""
 "<button function='%s' state='%s' draw_ops='whatever'/> must be specified for "
@@ -821,8 +813,8 @@ msgstr "Vinduestypen “%s” er allerede blevet tildelt et stilsæt"
 #: libmetacity/meta-theme-metacity.c:1364
 #: libmetacity/meta-theme-metacity.c:1428
 #: libmetacity/meta-theme-metacity.c:1654
-#: libmetacity/meta-theme-metacity.c:2808
-#: libmetacity/meta-theme-metacity.c:2854
+#: libmetacity/meta-theme-metacity.c:2810
+#: libmetacity/meta-theme-metacity.c:2856
 #: libmetacity/meta-theme-metacity.c:3094
 #: libmetacity/meta-theme-metacity.c:3130
 #: libmetacity/meta-theme-metacity.c:3166
@@ -878,37 +870,37 @@ msgid "Did not understand value \"%s\" for type of gradient"
 msgstr "Forstod ikke værdien “%s” for farveovergangstypen"
 
 #: libmetacity/meta-theme-metacity.c:2271
-#: libmetacity/meta-theme-metacity.c:2593
+#: libmetacity/meta-theme-metacity.c:2595
 #, c-format
 msgid "Did not understand fill type \"%s\" for <%s> element"
 msgstr "Forstod ikke fyldtypen \"%s\" for elementet <%s>"
 
-#: libmetacity/meta-theme-metacity.c:2424
-#: libmetacity/meta-theme-metacity.c:2493
-#: libmetacity/meta-theme-metacity.c:2544
+#: libmetacity/meta-theme-metacity.c:2426
+#: libmetacity/meta-theme-metacity.c:2495
+#: libmetacity/meta-theme-metacity.c:2546
 #, c-format
 msgid "Did not understand state \"%s\" for <%s> element"
 msgstr "Forstod ikke tilstanden \"%s\" for elementet <%s>"
 
-#: libmetacity/meta-theme-metacity.c:2434
-#: libmetacity/meta-theme-metacity.c:2503
+#: libmetacity/meta-theme-metacity.c:2436
+#: libmetacity/meta-theme-metacity.c:2505
 #, c-format
 msgid "Did not understand shadow \"%s\" for <%s> element"
 msgstr "Forstod ikke skyggen \"%s\" for elementet <%s>"
 
-#: libmetacity/meta-theme-metacity.c:2444
+#: libmetacity/meta-theme-metacity.c:2446
 #, c-format
 msgid "Did not understand arrow \"%s\" for <%s> element"
 msgstr "Forstod ikke pilen \"%s\" for elementet <%s>"
 
-#: libmetacity/meta-theme-metacity.c:2693
-#: libmetacity/meta-theme-metacity.c:2760
+#: libmetacity/meta-theme-metacity.c:2695
+#: libmetacity/meta-theme-metacity.c:2762
 #, c-format
 msgid "No <draw_ops> called \"%s\" has been defined"
 msgstr "Ingen <draw_ops> med navnet \"%s\" er blevet defineret"
 
-#: libmetacity/meta-theme-metacity.c:2705
-#: libmetacity/meta-theme-metacity.c:2772
+#: libmetacity/meta-theme-metacity.c:2707
+#: libmetacity/meta-theme-metacity.c:2774
 #, c-format
 msgid "Including draw_ops \"%s\" here would create a circular reference"
 msgstr "Medtagelse af draw_ops “%s” ville skabe en cirkulær reference"
@@ -1166,7 +1158,7 @@ msgstr "_Vent"
 msgid "_Force Quit"
 msgstr "_Tving til at afslutte"
 
-#: src/core/main.c:101
+#: src/core/main.c:105
 #, c-format
 msgid ""
 "metacity %s\n"
@@ -1181,74 +1173,95 @@ msgstr ""
 "Der er INGEN garanti; ikke engang for SALGBARHED eller EGNETHED TIL ET "
 "BESTEMT FORMÅL.\n"
 
-#: src/core/main.c:215
+#: src/core/main.c:201 src/core/main.c:218
+#, c-format
+msgid "Option “%s” is deprecated, use the “--compositor” instead."
+msgstr "Tilvalget “%s” er forældet. Brug i stedet “--compositor”."
+
+#: src/core/main.c:246
+#, c-format
+msgid "“%s” is not a valid compositor"
+msgstr "“%s” er ikke en gyldig compositor"
+
+#: src/core/main.c:281
 msgid "Disable connection to session manager"
 msgstr "Deaktivér forbindelse til sessionshåndtering"
 
-#: src/core/main.c:221
+#: src/core/main.c:287
 msgid "Replace the running window manager with Metacity"
 msgstr "Erstat den kørende vindueshåndtering med Metacity"
 
-#: src/core/main.c:227
+#: src/core/main.c:293
 msgid "Specify session management ID"
 msgstr "Angiv sessionhåndterings-id"
 
-#: src/core/main.c:232
+#: src/core/main.c:298
 msgid "X Display to use"
 msgstr "X-skærm som bruges"
 
-#: src/core/main.c:238
+#: src/core/main.c:304
 msgid "Initialize session from savefile"
 msgstr "Initialisér session fra gemt fil"
 
-#: src/core/main.c:244
+#: src/core/main.c:310
 msgid "Print version"
 msgstr "Vis version"
 
-#: src/core/main.c:250
+#: src/core/main.c:316
 msgid "Make X calls synchronous"
 msgstr "Gør kald til X synkrone"
 
-#: src/core/main.c:256
+#: src/core/main.c:325
 msgid "Turn compositing on"
 msgstr "Aktivér komposition"
 
-#: src/core/main.c:262
+#: src/core/main.c:334
 msgid "Turn compositing off"
 msgstr "Deaktivér komposition"
 
-#: src/core/main.c:268
+# ikke sikker på sammenhæng
+#: src/core/main.c:343
+msgid "Compositor to use"
+msgstr "Compositor der skal bruges"
+
+#: src/core/main.c:349
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr ""
 "Opret ikke fuldskærmsvinduer, der er maksimeret og ikke har nogen "
 "dekorationer"
 
-#: src/core/prefs.c:1524
+#: src/core/prefs.c:905
+msgid ""
+"Setting “compositing-manager” is deprecated, use the “compositor” instead."
+msgstr ""
+"Angivelse af “compositing-manager” er forældet. Brug i stedet “compositor”."
+
+#: src/core/prefs.c:1446
 #, c-format
 msgid "Workspace %d"
 msgstr "Arbejdsområde %d"
 
-#: src/core/session.c:1210
+#: src/core/session.c:1212
 msgid "<metacity_session> attribute seen but we already have the session ID"
 msgstr "<metacity_session>-egenskaben set, men vi har allerede sessions-id'en"
 
-#: src/core/session.c:1223 src/core/session.c:1298 src/core/session.c:1330
-#: src/core/session.c:1402 src/core/session.c:1462
+#: src/core/session.c:1225 src/core/session.c:1300 src/core/session.c:1332
+#: src/core/session.c:1404 src/core/session.c:1464
 #, c-format
 msgid "Unknown attribute %s on <%s> element"
 msgstr "Ukendt egenskab %s for element <%s>"
 
-#: src/core/session.c:1240
+#: src/core/session.c:1242
 msgid "nested <window> tag"
 msgstr "indlejret <window>-mærke"
 
-#: src/core/session.c:1482
+#: src/core/session.c:1484
 #, c-format
 msgid "Unknown element %s"
 msgstr "Ukendt element %s"
 
-#: src/core/session.c:1838
+#: src/core/session.c:1845
 msgid ""
 "These windows do not support &quot;save current setup&quot; and will have to "
 "be restarted manually next time you log in."
@@ -1256,20 +1269,20 @@ msgstr ""
 "Disse vinduer understøtter ikke gemning af deres opsætning og skal "
 "genstartes manuelt næste gang du logger på."
 
-#: src/core/util.c:105
+#: src/core/util.c:106
 #, c-format
 msgid "Opened log file %s\n"
 msgstr "Åbnede logfilen %s\n"
 
 # Lad os håbe dette er rigtigt
 #. Translators: the title of a window from another machine
-#: src/core/window-props.c:570
+#: src/core/window-props.c:548
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (på %s)"
 
 #. Simple case-- don't bother to look it up.  It's root.
-#: src/core/window-props.c:602
+#: src/core/window-props.c:583
 #, c-format
 msgid "%s (as superuser)"
 msgstr "%s (som superbruger)"
@@ -1277,72 +1290,42 @@ msgstr "%s (som superbruger)"
 # Lad os håbe dette er rigtigt
 #. Translators: the title of a window owned by another user
 #. * on this machine
-#: src/core/window-props.c:620
+#: src/core/window-props.c:602
 #, c-format
 msgid "%s (as %s)"
 msgstr "%s (som %s)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine, whose name we don't know
-#: src/core/window-props.c:626
+#: src/core/window-props.c:608
 #, c-format
 msgid "%s (as another user)"
 msgstr "%s (som en anden bruger)"
 
-#: src/tools/metacity-message.c:174
+#: src/tools/metacity-message.c:170
 #, c-format
 msgid "Usage: %s\n"
 msgstr "Brug: %s\n"
 
-#: src/ui/frames.c:1307
+#: src/ui/frames.c:1255
 msgid "Close Window"
 msgstr "Luk vindue"
 
-#: src/ui/frames.c:1310
+#: src/ui/frames.c:1258
 msgid "Window Menu"
 msgstr "Vinduesmenu"
 
-# ?
-#: src/ui/frames.c:1313
-msgid "Window App Menu"
-msgstr "Vinduesprogrammenu"
-
-#: src/ui/frames.c:1316
+#: src/ui/frames.c:1261
 msgid "Minimize Window"
 msgstr "Minimér vindue"
 
-#: src/ui/frames.c:1319
+#: src/ui/frames.c:1264
 msgid "Maximize Window"
 msgstr "Maksimér vindue"
 
-#: src/ui/frames.c:1322
+#: src/ui/frames.c:1267
 msgid "Restore Window"
 msgstr "Gendan vindue"
-
-# roll up = sørg for at kun vindues-headeren er synlig.
-#: src/ui/frames.c:1325
-msgid "Roll Up Window"
-msgstr "Rul vinduet op"
-
-#: src/ui/frames.c:1328
-msgid "Unroll Window"
-msgstr "Rul vinduet ned"
-
-#: src/ui/frames.c:1331
-msgid "Keep Window On Top"
-msgstr "Behold vinduet øverst"
-
-#: src/ui/frames.c:1334
-msgid "Remove Window From Top"
-msgstr "Fjern vinduet fra toppen"
-
-#: src/ui/frames.c:1337
-msgid "Always On Visible Workspace"
-msgstr "Altid på synligt arbejdsområde"
-
-#: src/ui/frames.c:1340
-msgid "Put Window On Only One Workspace"
-msgstr "Vis vindue på kun ét arbejdsområde"
 
 #. Translators: Translate this string the same way as you do in libwnck!
 #: src/ui/menu.c:65
@@ -1440,7 +1423,7 @@ msgstr "Arbejdsområde 1_0"
 msgid "Workspace %s%d"
 msgstr "Arbejdsområde %s%d"
 
-#: src/ui/menu.c:351
+#: src/ui/menu.c:358
 msgid "Move to Another _Workspace"
 msgstr "Flyt til andet _arbejdsområde"
 
@@ -1449,7 +1432,7 @@ msgstr "Flyt til andet _arbejdsområde"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:75
+#: src/ui/metaaccellabel.c:73
 msgid "Shift"
 msgstr "Skift"
 
@@ -1458,7 +1441,7 @@ msgstr "Skift"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:81
+#: src/ui/metaaccellabel.c:79
 msgid "Ctrl"
 msgstr "Ctrl"
 
@@ -1467,7 +1450,7 @@ msgstr "Ctrl"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:87
+#: src/ui/metaaccellabel.c:85
 msgid "Alt"
 msgstr "Alt"
 
@@ -1476,7 +1459,7 @@ msgstr "Alt"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:93
+#: src/ui/metaaccellabel.c:91
 msgid "Meta"
 msgstr "Meta"
 
@@ -1485,7 +1468,7 @@ msgstr "Meta"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:99
+#: src/ui/metaaccellabel.c:97
 msgid "Super"
 msgstr "Super"
 
@@ -1494,7 +1477,7 @@ msgstr "Super"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:105
+#: src/ui/metaaccellabel.c:103
 msgid "Hyper"
 msgstr "Hyper"
 
@@ -1503,7 +1486,7 @@ msgstr "Hyper"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:111
+#: src/ui/metaaccellabel.c:109
 msgid "Mod2"
 msgstr "Mod2"
 
@@ -1512,7 +1495,7 @@ msgstr "Mod2"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:117
+#: src/ui/metaaccellabel.c:115
 msgid "Mod3"
 msgstr "Mod3"
 
@@ -1521,7 +1504,7 @@ msgstr "Mod3"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:123
+#: src/ui/metaaccellabel.c:121
 msgid "Mod4"
 msgstr "Mod4"
 
@@ -1530,7 +1513,7 @@ msgstr "Mod4"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:129
+#: src/ui/metaaccellabel.c:127
 msgid "Mod5"
 msgstr "Mod5"
 
@@ -1542,7 +1525,7 @@ msgstr "Mod5"
 msgid "%d x %d"
 msgstr "%d x %d"
 
-#: src/ui/ui.c:871
+#: src/ui/ui.c:853
 msgid "Falling back to default GTK+ theme - Adwaita"
 msgstr "Bruger standardtemaet Adwaita fra GTK+ som reserve"
 
@@ -1590,3 +1573,49 @@ msgstr ""
 #: theme-viewer/theme-viewer-window.c:244
 msgid "Run again"
 msgstr "Kør igen"
+
+#~ msgid "preferences-system-windows"
+#~ msgstr "preferences-system-windows"
+
+#~ msgid "Toggle shaded state"
+#~ msgstr "Skift oprullethed"
+
+#~ msgid "If true, trade off usability for less resource usage"
+#~ msgstr "Hvis sand, så formindsk brugbarhed af hensyn til resurseforbrug"
+
+#~ msgid ""
+#~ "If true, Metacity will give the user less feedback by using wireframes, "
+#~ "avoiding animations, or other means. This is a significant reduction in "
+#~ "usability for many users, but may allow legacy applications to continue "
+#~ "working, and may also be a useful tradeoff for terminal servers. However, "
+#~ "the wireframe feature is disabled when accessibility is on."
+#~ msgstr ""
+#~ "Hvis sand, vil Metacity give brugeren mindre tilbagemelding ved at bruge "
+#~ "rammelinjer, undgå animeringer og andet. Dette er en betydelig "
+#~ "formindskelse af brugbarheden for mange brugere, men kan sætte gamle "
+#~ "programmer i stand til at fungere, samt kan være et brugbart kompromis "
+#~ "for terminalservere. Rammelinje-faciliteten er dog deaktiveret, når "
+#~ "tilgængelighed er slået til."
+
+# ?
+#~ msgid "Window App Menu"
+#~ msgstr "Vinduesprogrammenu"
+
+# roll up = sørg for at kun vindues-headeren er synlig.
+#~ msgid "Roll Up Window"
+#~ msgstr "Rul vinduet op"
+
+#~ msgid "Unroll Window"
+#~ msgstr "Rul vinduet ned"
+
+#~ msgid "Keep Window On Top"
+#~ msgstr "Behold vinduet øverst"
+
+#~ msgid "Remove Window From Top"
+#~ msgstr "Fjern vinduet fra toppen"
+
+#~ msgid "Always On Visible Workspace"
+#~ msgstr "Altid på synligt arbejdsområde"
+
+#~ msgid "Put Window On Only One Workspace"
+#~ msgstr "Vis vindue på kun ét arbejdsområde"
