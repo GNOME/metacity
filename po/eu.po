@@ -4,13 +4,13 @@
 #
 # Hizkuntza Politikarako Sailburuordetza <hizpol@ej-gv.es>, 2004.
 # Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2014.
-# Asier Sarasua Garmendia <asiersarasua@ni.eus>, 2021.
+# Asier Sarasua Garmendia <asiersarasua@ni.eus>, 2021, 2023.
 #
 msgid ""
 msgstr "Project-Id-Version: metacity master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues\n"
-"POT-Creation-Date: 2021-03-14 13:44+0000\n"
-"PO-Revision-Date: 2021-03-19 13:15+0200\n"
+"POT-Creation-Date: 2022-10-23 21:23+0000\n"
+"PO-Revision-Date: 2023-01-14 13:15+0200\n"
 "Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
@@ -235,8 +235,8 @@ msgstr "Konposatzailea"
 #: data/schemas/org.gnome.metacity.gschema.xml:34
 msgid ""
 "Compositor that Metacity will use for compositing. Possible values are "
-"“none” and “xrender”."
-msgstr "Metacity-k konposiziorako erabiliko duen konposatzailea. Balizko balioak “none” eta “xrender” dira."
+"“none”, “xrender” and “xpresent”."
+msgstr "Metacity-k konposiziorako erabiliko duen konposatzailea. Balizko balioak “none”, “xrender” eta “xpresent”dira."
 
 #: data/schemas/org.gnome.metacity.gschema.xml:42
 msgid "Enable edge tiling when dropping windows on screen edges"
@@ -399,69 +399,69 @@ msgid ""
 "_ are valid"
 msgstr "gtk:custom-eko color-name parametroan '%c' baliogabeko karakterea dago, soilik A-Za-z0-9-_ onartzen dira."
 
-#: libmetacity/meta-color-spec.c:273
+#: libmetacity/meta-color-spec.c:277
 #, c-format
 msgid ""
 "Gtk:custom format is 'gtk:custom(color_name,fallback)', '%s' does not fit "
 "the format"
 msgstr "GTK: formatu pertsonalizatua hau da: 'blend/bg_color/fg_color/alpha' da, \"%s\" ez dator bat formatuarekin"
 
-#: libmetacity/meta-color-spec.c:306
+#: libmetacity/meta-color-spec.c:310
 #, c-format
 msgid ""
 "GTK color specification must have the state in brackets, e.g. gtk:fg[NORMAL] "
 "where NORMAL is the state; could not parse '%s'"
 msgstr "GTK kolore zehaztapenak kortxete artean izan behar du, adib. gtk:fg[NORMAL], NORMAL egoera izanik; ezin da analizatu '%s'"
 
-#: libmetacity/meta-color-spec.c:319
+#: libmetacity/meta-color-spec.c:323
 #, c-format
 msgid ""
 "GTK color specification must have a close bracket after the state, e.g. gtk:"
 "fg[NORMAL] where NORMAL is the state; could not parse '%s'"
 msgstr "GTK kolore-zehaztapenak ixteko kortxetea izan behar egoeraren ondoren, adib. gtk:fg[NORMAL], NORMAL egoera izanik;  ezin da analizatu '%s'"
 
-#: libmetacity/meta-color-spec.c:328
+#: libmetacity/meta-color-spec.c:332
 #, c-format
 msgid "Did not understand state '%s' in color specification"
 msgstr "Ez da ulertu '%s' egoera kolore-zehaztapenean"
 
-#: libmetacity/meta-color-spec.c:340
+#: libmetacity/meta-color-spec.c:344
 #, c-format
 msgid "Did not understand color component '%s' in color specification"
 msgstr "Ez da ulertu '%s' kolore-osagaia kolore-zehaztapenean"
 
-#: libmetacity/meta-color-spec.c:366
+#: libmetacity/meta-color-spec.c:370
 #, c-format
 msgid ""
 "Blend format is 'blend/bg_color/fg_color/alpha', '%s' does not fit the format"
 msgstr "Nahaste-formatua 'blend/bg_color/fg_color/alpha' da, '%s' ez dator bat formatuarekin"
 
-#: libmetacity/meta-color-spec.c:376
+#: libmetacity/meta-color-spec.c:380
 #, c-format
 msgid "Could not parse alpha value '%s' in blended color"
 msgstr "Ezin da analizatu '%s' alfa balioa kolore nahastuan"
 
-#: libmetacity/meta-color-spec.c:385
+#: libmetacity/meta-color-spec.c:389
 #, c-format
 msgid "Alpha value '%s' in blended color is not between 0.0 and 1.0"
 msgstr "Kolore nahastuko '%s' alfa balioa ez dago 0,0 eta 1,0 artean"
 
-#: libmetacity/meta-color-spec.c:428
+#: libmetacity/meta-color-spec.c:432
 #, c-format
 msgid "Shade format is 'shade/base_color/factor', '%s' does not fit the format"
 msgstr "Itzal-faktorea 'shade/base_color/factor' da, '%s' ez dator bat formatuarekin"
 
-#: libmetacity/meta-color-spec.c:438
+#: libmetacity/meta-color-spec.c:442
 #, c-format
 msgid "Could not parse shade factor '%s' in shaded color"
 msgstr "Ezin da analizatu '%s' itzala faktorea itzala duen kolorean"
 
-#: libmetacity/meta-color-spec.c:447
+#: libmetacity/meta-color-spec.c:451
 #, c-format
 msgid "Shade factor '%s' in shaded color is negative"
 msgstr "Itzala duen kolorean '%s' itzal-faktorea negatiboa da"
 
-#: libmetacity/meta-color-spec.c:473
+#: libmetacity/meta-color-spec.c:477
 #, c-format
 msgid "Could not parse color '%s'"
 msgstr "Ezin izan da kolorea analizatu: '%s'"
@@ -739,13 +739,13 @@ msgstr "'%s' leiho motak dagoeneko esleituta du estilo-multzoa"
 #: libmetacity/meta-theme-metacity.c:1364
 #: libmetacity/meta-theme-metacity.c:1428
 #: libmetacity/meta-theme-metacity.c:1654
-#: libmetacity/meta-theme-metacity.c:2808
-#: libmetacity/meta-theme-metacity.c:2854
-#: libmetacity/meta-theme-metacity.c:3092
-#: libmetacity/meta-theme-metacity.c:3128
-#: libmetacity/meta-theme-metacity.c:3164
-#: libmetacity/meta-theme-metacity.c:3200
-#: libmetacity/meta-theme-metacity.c:3497
+#: libmetacity/meta-theme-metacity.c:2810
+#: libmetacity/meta-theme-metacity.c:2856
+#: libmetacity/meta-theme-metacity.c:3094
+#: libmetacity/meta-theme-metacity.c:3130
+#: libmetacity/meta-theme-metacity.c:3166
+#: libmetacity/meta-theme-metacity.c:3202
+#: libmetacity/meta-theme-metacity.c:3499
 #, c-format
 msgid "Element <%s> is not allowed below <%s>"
 msgstr "Ez da onartzen <%s> elementua <%s>(r)en azpian jartzea"
@@ -794,195 +794,195 @@ msgid "Did not understand value \"%s\" for type of gradient"
 msgstr "Gradiente-motan ez da ulertu \"%s\" balioa"
 
 #: libmetacity/meta-theme-metacity.c:2271
-#: libmetacity/meta-theme-metacity.c:2593
+#: libmetacity/meta-theme-metacity.c:2595
 #, c-format
 msgid "Did not understand fill type \"%s\" for <%s> element"
 msgstr "Ez da ulertu \"%s\" betetze-mota <%s> elementuan"
 
-#: libmetacity/meta-theme-metacity.c:2424
-#: libmetacity/meta-theme-metacity.c:2493
-#: libmetacity/meta-theme-metacity.c:2544
+#: libmetacity/meta-theme-metacity.c:2426
+#: libmetacity/meta-theme-metacity.c:2495
+#: libmetacity/meta-theme-metacity.c:2546
 #, c-format
 msgid "Did not understand state \"%s\" for <%s> element"
 msgstr "Ez da ulertu \"%s\" egoera <%s> elementuan"
 
-#: libmetacity/meta-theme-metacity.c:2434
-#: libmetacity/meta-theme-metacity.c:2503
+#: libmetacity/meta-theme-metacity.c:2436
+#: libmetacity/meta-theme-metacity.c:2505
 #, c-format
 msgid "Did not understand shadow \"%s\" for <%s> element"
 msgstr "Ez da ulertu \"%s\" itzala <%s> elementuan"
 
-#: libmetacity/meta-theme-metacity.c:2444
+#: libmetacity/meta-theme-metacity.c:2446
 #, c-format
 msgid "Did not understand arrow \"%s\" for <%s> element"
 msgstr "Ez da ulertu \"%s\" gezia <%s> elementuan"
 
-#: libmetacity/meta-theme-metacity.c:2693
-#: libmetacity/meta-theme-metacity.c:2760
+#: libmetacity/meta-theme-metacity.c:2695
+#: libmetacity/meta-theme-metacity.c:2762
 #, c-format
 msgid "No <draw_ops> called \"%s\" has been defined"
 msgstr "Ez da \"%s\" izeneko <draw_ops> bat ere definitu"
 
-#: libmetacity/meta-theme-metacity.c:2705
-#: libmetacity/meta-theme-metacity.c:2772
+#: libmetacity/meta-theme-metacity.c:2707
+#: libmetacity/meta-theme-metacity.c:2774
 #, c-format
 msgid "Including draw_ops \"%s\" here would create a circular reference"
 msgstr "Hemen \"%s\" draw_ops sartzen bada, erreferentzia zirkularra sortuko da"
 
-#: libmetacity/meta-theme-metacity.c:2979
+#: libmetacity/meta-theme-metacity.c:2981
 #, c-format
 msgid "Unknown position \"%s\" for frame piece"
 msgstr "\"%s\" kokaleku ezezaguna markoarentzat"
 
-#: libmetacity/meta-theme-metacity.c:2987
+#: libmetacity/meta-theme-metacity.c:2989
 #, c-format
 msgid "Frame style already has a piece at position %s"
 msgstr "Marko-estiloak badu zati bat %s posizioan"
 
-#: libmetacity/meta-theme-metacity.c:3003
+#: libmetacity/meta-theme-metacity.c:3005
 #, c-format
 msgid "No <draw_ops> with the name \"%s\" has been defined"
 msgstr "Ez da \"%s\" izeneko <draw_ops> bat ere definitu"
 
-#: libmetacity/meta-theme-metacity.c:3034
+#: libmetacity/meta-theme-metacity.c:3036
 #, c-format
 msgid "Unknown function \"%s\" for button"
 msgstr "\"%s\" funtzioa ezezaguna botoiarentzat"
 
-#: libmetacity/meta-theme-metacity.c:3045
+#: libmetacity/meta-theme-metacity.c:3047
 #, c-format
 msgid "Button function '%s' does not exist in this version (%d, need %d)"
 msgstr "'%s' botoi-funtzioa ez da existitzen bertsio honetan (%d, %d behar du)"
 
-#: libmetacity/meta-theme-metacity.c:3054
+#: libmetacity/meta-theme-metacity.c:3056
 #, c-format
 msgid "Unknown state '%s' for button"
 msgstr "'%s' egoera ezezaguna botoiarentzat"
 
-#: libmetacity/meta-theme-metacity.c:3061
+#: libmetacity/meta-theme-metacity.c:3063
 #, c-format
 msgid "Frame style already has a button for function %s state %s"
 msgstr "Marko-estiloak badu botoi bat %s funtzioan %s egoeran"
 
-#: libmetacity/meta-theme-metacity.c:3078
+#: libmetacity/meta-theme-metacity.c:3080
 #, c-format
 msgid "No <draw_ops> with the name '%s' has been defined"
 msgstr "Ez da '%s' izeneko <draw_ops> bat ere definitu"
 
-#: libmetacity/meta-theme-metacity.c:3112
+#: libmetacity/meta-theme-metacity.c:3114
 msgid ""
 "Can't have a two draw_ops for a <piece> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
 msgstr "Ezin dira bi draw_ops izan <piece> elementu batean (gaiak draw_ops atributu bat eta <draw_ops> elementu bat zehaztu ditu, edo bi elementu zehaztu ditu)"
 
-#: libmetacity/meta-theme-metacity.c:3148
+#: libmetacity/meta-theme-metacity.c:3150
 msgid ""
 "Can't have a two draw_ops for a <button> element (theme specified a draw_ops "
 "attribute and also a <draw_ops> element, or specified two elements)"
 msgstr "Ezin dira bi draw_ops izan <button> elementu batean (gaiak draw_ops atributu bat eta <draw_ops> elementu bat zehaztu ditu, edo bi elementu zehaztu ditu)"
 
-#: libmetacity/meta-theme-metacity.c:3184
+#: libmetacity/meta-theme-metacity.c:3186
 msgid ""
 "Can't have a two draw_ops for a <menu_icon> element (theme specified a "
 "draw_ops attribute and also a <draw_ops> element, or specified two elements)"
 msgstr "Ezin dira bi draw_ops izan <menu_icon> elementu batean (gaiak draw_ops atributu bat eta <draw_ops> elementu bat zehaztu ditu, edo bi elementu zehaztu ditu)"
 
-#: libmetacity/meta-theme-metacity.c:3288
+#: libmetacity/meta-theme-metacity.c:3290
 #, c-format
 msgid "'%s' is not a valid value for focus attribute"
 msgstr "'%s' ez da baliozko balioa foku-atributuarentzat"
 
-#: libmetacity/meta-theme-metacity.c:3297
+#: libmetacity/meta-theme-metacity.c:3299
 #, c-format
 msgid "'%s' is not a valid value for state attribute"
 msgstr "'%s' ez da baliozko balioa egoera-atributuarentzat"
 
-#: libmetacity/meta-theme-metacity.c:3306
+#: libmetacity/meta-theme-metacity.c:3308
 #, c-format
 msgid "A style called '%s' has not been defined"
 msgstr "'%s' izeneko estiloa ez da definitu"
 
-#: libmetacity/meta-theme-metacity.c:3324
-#: libmetacity/meta-theme-metacity.c:3347
+#: libmetacity/meta-theme-metacity.c:3326
+#: libmetacity/meta-theme-metacity.c:3349
 #, c-format
 msgid "'%s' is not a valid value for resize attribute"
 msgstr "'%s' ez da baliozko balioa tamainaz aldatzeko atributuarentzat"
 
-#: libmetacity/meta-theme-metacity.c:3358
+#: libmetacity/meta-theme-metacity.c:3360
 #, c-format
 msgid ""
 "Should not have 'resize' attribute on <%s> element for maximized/shaded "
 "states"
 msgstr "Ez luke izan behar 'resize' atributurik <%s> elementuan maximizatutako/bildutako egoerentzat"
 
-#: libmetacity/meta-theme-metacity.c:3379
+#: libmetacity/meta-theme-metacity.c:3381
 #, c-format
 msgid "Should not have 'resize' attribute on <%s> element for maximized states"
 msgstr "Ez luke izan behar 'resize' atributurik <%s> elementuan maximizatutako egoerentzat"
 
-#: libmetacity/meta-theme-metacity.c:3394
-#: libmetacity/meta-theme-metacity.c:3442
+#: libmetacity/meta-theme-metacity.c:3396
+#: libmetacity/meta-theme-metacity.c:3444
 #, c-format
 msgid "Style has already been specified for state %s resize %s focus %s"
 msgstr "Estiloa dagoeneko zehaztu da %s egoeran %s tamaina-aldatzean %s fokuan"
 
-#: libmetacity/meta-theme-metacity.c:3406
-#: libmetacity/meta-theme-metacity.c:3418
-#: libmetacity/meta-theme-metacity.c:3430
-#: libmetacity/meta-theme-metacity.c:3454
-#: libmetacity/meta-theme-metacity.c:3466
-#: libmetacity/meta-theme-metacity.c:3478
+#: libmetacity/meta-theme-metacity.c:3408
+#: libmetacity/meta-theme-metacity.c:3420
+#: libmetacity/meta-theme-metacity.c:3432
+#: libmetacity/meta-theme-metacity.c:3456
+#: libmetacity/meta-theme-metacity.c:3468
+#: libmetacity/meta-theme-metacity.c:3480
 #, c-format
 msgid "Style has already been specified for state %s focus %s"
 msgstr "Estiloa dagoeneko zehaztu da %s egoeran %s fokuan"
 
-#: libmetacity/meta-theme-metacity.c:3544
+#: libmetacity/meta-theme-metacity.c:3546
 #, c-format
 msgid "Bad version specification '%s'"
 msgstr "Bertsioaren zehaztapen okerra: '%s'"
 
-#: libmetacity/meta-theme-metacity.c:3615
+#: libmetacity/meta-theme-metacity.c:3617
 msgid ""
 "'version' attribute cannot be used in metacity-theme-1.xml or metacity-"
 "theme-2.xml"
 msgstr "'version' atributua ezin da erabili metacity-theme-1.xml edo metacity-theme-2.xml fitxategietan."
 
-#: libmetacity/meta-theme-metacity.c:3638
+#: libmetacity/meta-theme-metacity.c:3640
 #, c-format
 msgid "Theme requires version %s but latest supported theme version is %d.%d"
 msgstr "Gaiak %s bertsioa eskatzen du baina onartutako gaiaren azken bertsioa %d da. %d"
 
-#: libmetacity/meta-theme-metacity.c:3662
+#: libmetacity/meta-theme-metacity.c:3664
 #, c-format
 msgid "Outermost element in theme must be <metacity_theme> not <%s>"
 msgstr "Gaian kanporen dagoen elementuak <metacity_theme> izan behar du, ez <%s>"
 
-#: libmetacity/meta-theme-metacity.c:3682
+#: libmetacity/meta-theme-metacity.c:3684
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a name/author/date/description element"
 msgstr "<%s> elementua ez da onartzen name/author/date/description elementuan"
 
-#: libmetacity/meta-theme-metacity.c:3688
+#: libmetacity/meta-theme-metacity.c:3690
 #, c-format
 msgid "Element <%s> is not allowed inside a <constant> element"
 msgstr "<%s> elementua ez da onartzen <constant> elementuaren barnean"
 
-#: libmetacity/meta-theme-metacity.c:3701
+#: libmetacity/meta-theme-metacity.c:3703
 #, c-format
 msgid ""
 "Element <%s> is not allowed inside a distance/border/aspect_ratio element"
 msgstr "<%s> elementua ez da onartzen distance/border/aspect_ratio elementuan"
 
-#: libmetacity/meta-theme-metacity.c:3724
+#: libmetacity/meta-theme-metacity.c:3726
 #, c-format
 msgid "Element <%s> is not allowed inside a draw operation element"
 msgstr "<%s> elementua ez da onartzen marrazteko eragiketaren elementuaren barnean"
 
-#: libmetacity/meta-theme-metacity.c:3735
-#: libmetacity/meta-theme-metacity.c:3766
-#: libmetacity/meta-theme-metacity.c:3772
-#: libmetacity/meta-theme-metacity.c:3778
+#: libmetacity/meta-theme-metacity.c:3737
+#: libmetacity/meta-theme-metacity.c:3768
+#: libmetacity/meta-theme-metacity.c:3774
+#: libmetacity/meta-theme-metacity.c:3780
 #, c-format
 msgid "Element <%s> is not allowed inside a <%s> element"
 msgstr "<%s> elementua ez da onartzen <%s> elementuaren barnean"
@@ -991,45 +991,45 @@ msgstr "<%s> elementua ez da onartzen <%s> elementuaren barnean"
 #. * is given in angle brackets) was not found in a given theme (whose
 #. * name is given second, in quotation marks).
 #.
-#: libmetacity/meta-theme-metacity.c:3832
-#: libmetacity/meta-theme-metacity.c:3840
-#: libmetacity/meta-theme-metacity.c:3848
-#: libmetacity/meta-theme-metacity.c:3856
-#: libmetacity/meta-theme-metacity.c:3865
+#: libmetacity/meta-theme-metacity.c:3834
+#: libmetacity/meta-theme-metacity.c:3842
+#: libmetacity/meta-theme-metacity.c:3850
+#: libmetacity/meta-theme-metacity.c:3858
+#: libmetacity/meta-theme-metacity.c:3867
 #, c-format
 msgid "No <%s> set for theme '%s'"
 msgstr "<%s> ez da ezarri '%s' gaian"
 
-#: libmetacity/meta-theme-metacity.c:3876
+#: libmetacity/meta-theme-metacity.c:3878
 #, c-format
 msgid ""
 "No frame style set for window type '%s' in theme '%s', add a <window "
 "type='%s' style_set='whatever' /> element"
 msgstr "Ez da marko-estilorik ezarri set '%s' leiho motarentzat '%s' gaian, gehitu <window type='%s' style_set='whatever'/> elementu bat"
 
-#: libmetacity/meta-theme-metacity.c:4139
+#: libmetacity/meta-theme-metacity.c:4141
 msgid "No draw_ops provided for frame piece"
 msgstr "Ez da draw_ops-ik eman marko-zatiarentzat"
 
-#: libmetacity/meta-theme-metacity.c:4155
+#: libmetacity/meta-theme-metacity.c:4157
 msgid "No draw_ops provided for button"
 msgstr "Ez da draw_ops-ik eman botoiarentzat"
 
-#: libmetacity/meta-theme-metacity.c:4270
-#: libmetacity/meta-theme-metacity.c:4281
-#: libmetacity/meta-theme-metacity.c:4292
-#: libmetacity/meta-theme-metacity.c:4303
-#: libmetacity/meta-theme-metacity.c:4314
+#: libmetacity/meta-theme-metacity.c:4272
+#: libmetacity/meta-theme-metacity.c:4283
+#: libmetacity/meta-theme-metacity.c:4294
+#: libmetacity/meta-theme-metacity.c:4305
+#: libmetacity/meta-theme-metacity.c:4316
 #, c-format
 msgid "<%s> specified twice for this theme"
 msgstr "<%s> birritan zehaztu da gai honetan"
 
-#: libmetacity/meta-theme-metacity.c:4353
+#: libmetacity/meta-theme-metacity.c:4355
 #, c-format
 msgid "No text is allowed inside element <%s>"
 msgstr "Ez da testurik onartzen <%s> elementuaren barnean"
 
-#: libmetacity/meta-theme-metacity.c:4619
+#: libmetacity/meta-theme-metacity.c:4621
 #, c-format
 msgid "Failed to find a valid file for theme '%s'"
 msgstr "Huts egin du fitxategi egokia bilatzean gai honetan:  '%s'"
@@ -1058,7 +1058,7 @@ msgstr "_Itxaron"
 msgid "_Force Quit"
 msgstr "_Behartu ixtera"
 
-#: src/core/main.c:102
+#: src/core/main.c:105
 #, c-format
 msgid ""
 "metacity %s\n"
@@ -1071,57 +1071,57 @@ msgstr "metacity %s\n"
 "Hau software librea da; ikus kopiatzeko baldintzak iturburu-kodean.\n"
 "EZ du bermerik; ezta MERKATURATZEKO edo XEDE JAKIN BATERAKO EGOKITASUNAREN BERMERIK ERE.\n"
 
-#: src/core/main.c:198 src/core/main.c:215
+#: src/core/main.c:201 src/core/main.c:218
 #, c-format
 msgid "Option “%s” is deprecated, use the “--compositor” instead."
 msgstr "“%s” aukera zaharkituta dago, erabili “--compositor” haren ordez."
 
-#: src/core/main.c:243
+#: src/core/main.c:246
 #, c-format
 msgid "“%s” is not a valid compositor"
 msgstr "“%s” ez da baliozko konposatzailea"
 
-#: src/core/main.c:278
+#: src/core/main.c:281
 msgid "Disable connection to session manager"
 msgstr "Desgaitu saio-kudeatzailearen konexioa"
 
-#: src/core/main.c:284
+#: src/core/main.c:287
 msgid "Replace the running window manager with Metacity"
 msgstr "Ordeztu exekutatzen dagoen leiho-kudeatzailea Metacity-rekin"
 
-#: src/core/main.c:290
+#: src/core/main.c:293
 msgid "Specify session management ID"
 msgstr "Zehaztu saio-kudeatzailearen IDa"
 
-#: src/core/main.c:295
+#: src/core/main.c:298
 msgid "X Display to use"
 msgstr "X pantaila erabiltzeko"
 
-#: src/core/main.c:301
+#: src/core/main.c:304
 msgid "Initialize session from savefile"
 msgstr "Hasieratu saioa babes-fitxategitik"
 
-#: src/core/main.c:307
+#: src/core/main.c:310
 msgid "Print version"
 msgstr "Bistaratu bertsioa"
 
-#: src/core/main.c:313
+#: src/core/main.c:316
 msgid "Make X calls synchronous"
 msgstr "Bihurtu X dei sinkroniko"
 
-#: src/core/main.c:322
+#: src/core/main.c:325
 msgid "Turn compositing on"
 msgstr "Aktibatu konposaketa"
 
-#: src/core/main.c:331
+#: src/core/main.c:334
 msgid "Turn compositing off"
 msgstr "Desaktibatu konposaketa"
 
-#: src/core/main.c:340
+#: src/core/main.c:343
 msgid "Compositor to use"
 msgstr "Erabiliko den konposatzailea"
 
-#: src/core/main.c:346
+#: src/core/main.c:349
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr "Ez jarri pantaila osoko leihoak maximizatuta badaude eta dekoraziorik ez badute"
@@ -1136,26 +1136,26 @@ msgstr "“compositing-manager” ezartzea zaharkituta dago, erabili “composit
 msgid "Workspace %d"
 msgstr "%d. laneko area"
 
-#: src/core/session.c:1210
+#: src/core/session.c:1212
 msgid "<metacity_session> attribute seen but we already have the session ID"
 msgstr "<metacity_session> atributua ikusi da baina dagoeneko badugu saio-IDa"
 
-#: src/core/session.c:1223 src/core/session.c:1298 src/core/session.c:1330
-#: src/core/session.c:1402 src/core/session.c:1462
+#: src/core/session.c:1225 src/core/session.c:1300 src/core/session.c:1332
+#: src/core/session.c:1404 src/core/session.c:1464
 #, c-format
 msgid "Unknown attribute %s on <%s> element"
 msgstr "%s atributu ezezaguna <%s> elementuan"
 
-#: src/core/session.c:1240
+#: src/core/session.c:1242
 msgid "nested <window> tag"
 msgstr "<window> etiketa habiaratua"
 
-#: src/core/session.c:1482
+#: src/core/session.c:1484
 #, c-format
 msgid "Unknown element %s"
 msgstr "%s elementu ezezaguna"
 
-#: src/core/session.c:1838
+#: src/core/session.c:1845
 msgid ""
 "These windows do not support &quot;save current setup&quot; and will have to "
 "be restarted manually next time you log in."
@@ -1192,7 +1192,7 @@ msgstr "%s (%s gisa)"
 msgid "%s (as another user)"
 msgstr "%s (beste erabiltzaile bat gisa)"
 
-#: src/tools/metacity-message.c:174
+#: src/tools/metacity-message.c:170
 #, c-format
 msgid "Usage: %s\n"
 msgstr "Erabilera: %s\n"
@@ -1322,7 +1322,7 @@ msgstr "Aldatu beste _laneko areara"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:75
+#: src/ui/metaaccellabel.c:73
 msgid "Shift"
 msgstr "Maius"
 
@@ -1331,7 +1331,7 @@ msgstr "Maius"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:81
+#: src/ui/metaaccellabel.c:79
 msgid "Ctrl"
 msgstr "Ctrl"
 
@@ -1340,7 +1340,7 @@ msgstr "Ctrl"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:87
+#: src/ui/metaaccellabel.c:85
 msgid "Alt"
 msgstr "Alt"
 
@@ -1349,7 +1349,7 @@ msgstr "Alt"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:93
+#: src/ui/metaaccellabel.c:91
 msgid "Meta"
 msgstr "Meta"
 
@@ -1358,7 +1358,7 @@ msgstr "Meta"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:99
+#: src/ui/metaaccellabel.c:97
 msgid "Super"
 msgstr "Super"
 
@@ -1367,7 +1367,7 @@ msgstr "Super"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:105
+#: src/ui/metaaccellabel.c:103
 msgid "Hyper"
 msgstr "Hiper"
 
@@ -1376,7 +1376,7 @@ msgstr "Hiper"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:111
+#: src/ui/metaaccellabel.c:109
 msgid "Mod2"
 msgstr "Ald2"
 
@@ -1385,7 +1385,7 @@ msgstr "Ald2"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:117
+#: src/ui/metaaccellabel.c:115
 msgid "Mod3"
 msgstr "Ald3"
 
@@ -1394,7 +1394,7 @@ msgstr "Ald3"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:123
+#: src/ui/metaaccellabel.c:121
 msgid "Mod4"
 msgstr "Ald4"
 
@@ -1403,7 +1403,7 @@ msgstr "Ald4"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: src/ui/metaaccellabel.c:129
+#: src/ui/metaaccellabel.c:127
 msgid "Mod5"
 msgstr "Ald5"
 
