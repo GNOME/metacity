@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues\n"
-"POT-Creation-Date: 2022-07-22 23:22+0000\n"
-"PO-Revision-Date: 2022-04-24 13:48+0300\n"
+"POT-Creation-Date: 2023-01-25 21:17+0000\n"
+"PO-Revision-Date: 2023-03-06 17:38+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1.1\n"
 "X-POOTLE-MTIME: 1424248750.000000\n"
 
 #. Translators: This is the title used on dialog boxes
@@ -576,8 +576,8 @@ msgid ""
 "Coordinate expression has operator \"%c\" following operator \"%c\" with no "
 "operand in between"
 msgstr ""
-"Koordinat ifadesi birbirlerinin izleyen ve aralarında işlenen olmayan \"%2$c"
-"\" ve \"%1$c\" işleçlerini içeriyor"
+"Koordinat ifadesi birbirlerinin izleyen ve aralarında işlenen olmayan "
+"\"%2$c\" ve \"%1$c\" işleçlerini içeriyor"
 
 #: libmetacity/meta-draw-spec.c:941
 msgid "Coordinate expression parser overflowed its buffer."
@@ -1255,27 +1255,27 @@ msgid "Opened log file %s\n"
 msgstr "%s günlük dosyası açıldı\n"
 
 #. Translators: the title of a window from another machine
-#: src/core/window-props.c:540
+#: src/core/window-props.c:563
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (%s üzerinde)"
 
 #. Simple case-- don't bother to look it up.  It's root.
-#: src/core/window-props.c:575
+#: src/core/window-props.c:598
 #, c-format
 msgid "%s (as superuser)"
 msgstr "%s (superuser olarak)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine
-#: src/core/window-props.c:594
+#: src/core/window-props.c:617
 #, c-format
 msgid "%s (as %s)"
 msgstr "%s (%s olarak)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine, whose name we don't know
-#: src/core/window-props.c:600
+#: src/core/window-props.c:623
 #, c-format
 msgid "%s (as another user)"
 msgstr "%s (diğer kullanıcı olarak)"
@@ -1535,7 +1535,7 @@ msgid ""
 "creation and title height calculation)."
 msgstr ""
 "MetaFrameBorders, <b>%f</b> saniyede alındı (CSS yüklemesi, "
-"PangoFontDescription yaratımı ve başlık yüksekliği hesaplaması)."
+"PangoFontDescription oluşturma ve başlık yüksekliği hesaplaması)."
 
 #: theme-viewer/theme-viewer-window.c:207
 #, c-format
