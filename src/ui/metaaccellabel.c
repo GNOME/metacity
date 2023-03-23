@@ -440,8 +440,7 @@ meta_accel_label_update (MetaAccelLabel *accel_label)
     }
 
   g_free (accel_label->accel_string);
-  accel_label->accel_string = gstring->str;
-  g_string_free (gstring, FALSE);
+  accel_label->accel_string = g_string_free (gstring, FALSE);
 
   g_assert (accel_label->accel_string);
   /* accel_label->accel_string = g_strdup ("-/-"); */
