@@ -2127,7 +2127,6 @@ process_tab_grab (MetaDisplay *display,
     case META_KEYBINDING_ACTION_TOGGLE_ABOVE:
     case META_KEYBINDING_ACTION_MAXIMIZE:
     case META_KEYBINDING_ACTION_UNMAXIMIZE:
-    case META_KEYBINDING_ACTION_TOGGLE_SHADED:
     case META_KEYBINDING_ACTION_MINIMIZE:
     case META_KEYBINDING_ACTION_CLOSE:
     case META_KEYBINDING_ACTION_BEGIN_MOVE:
@@ -2987,19 +2986,6 @@ handle_unmaximize         (MetaDisplay    *display,
 }
 
 static void
-handle_toggle_shaded      (MetaDisplay    *display,
-                           MetaScreen     *screen,
-                           MetaWindow     *window,
-                           XEvent         *event,
-                           MetaKeyBinding *binding)
-{
-  if (window->shaded)
-    meta_window_unshade (window, event->xkey.time);
-  else if (window->has_shade_func)
-    meta_window_shade (window, event->xkey.time);
-}
-
-static void
 handle_close              (MetaDisplay    *display,
                            MetaScreen     *screen,
                            MetaWindow     *window,
@@ -3581,13 +3567,6 @@ init_builtin_key_bindings (MetaDisplay *display)
                           META_KEY_BINDING_PER_WINDOW,
                           META_KEYBINDING_ACTION_UNMAXIMIZE,
                           handle_unmaximize, 0);
-
-  add_builtin_keybinding (display,
-                          "toggle-shaded",
-                          SCHEMA_COMMON_KEYBINDINGS,
-                          META_KEY_BINDING_PER_WINDOW,
-                          META_KEYBINDING_ACTION_TOGGLE_SHADED,
-                          handle_toggle_shaded, 0);
 
   add_builtin_keybinding (display,
                           "minimize",
