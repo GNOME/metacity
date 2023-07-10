@@ -1,3 +1,8 @@
+Version 3.49.1
+==============
+- Remove window shading keybinding.
+- Updated translations.
+
 Version 3.46.1
 ==============
 - Improve switching between windows of same application. (#26)
