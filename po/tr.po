@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues\n"
-"POT-Creation-Date: 2023-01-25 21:17+0000\n"
-"PO-Revision-Date: 2023-03-06 17:38+0300\n"
+"POT-Creation-Date: 2023-03-06 18:35+0000\n"
+"PO-Revision-Date: 2023-07-02 15:56+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-POOTLE-MTIME: 1424248750.000000\n"
 
 #. Translators: This is the title used on dialog boxes
@@ -684,7 +684,7 @@ msgstr "'%s' bir tamsayı olarak ayrıştırılamadı"
 #: libmetacity/meta-theme-metacity.c:372 libmetacity/meta-theme-metacity.c:589
 #, c-format
 msgid "Did not understand trailing characters '%s' in string '%s'"
-msgstr "'%s' dizgisinin sonundaki '%s' karakterleri anlaşılmadı"
+msgstr "'%s' dizgesinin sonundaki '%s' karakterleri anlaşılmadı"
 
 #: libmetacity/meta-theme-metacity.c:381
 #, c-format
