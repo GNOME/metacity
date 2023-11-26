@@ -27,13 +27,13 @@ Many window managers are like Marshmallow Froot Loops; Metacity is like Cheerios
 
  <wiki rdf:resource="https://wiki.gnome.org/Projects/Metacity" />
  <bug-database rdf:resource="https://gitlab.gnome.org/GNOME/metacity/issues/" />
- <screenshots rdf:resource="http://commons.wikimedia.org/wiki/Image:Metacity-screenshot.png" />
+ <screenshots rdf:resource="https://commons.wikimedia.org/wiki/Image:Metacity-screenshot.png" />
 
- <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/gnome-flashback-list" />
+ <support-forum rdf:resource="https://discourse.gnome.org/" />
 
  <programming-language>C</programming-language>
  <license rdf:resource="http://usefulinc.com/doap/licenses/gpl" />
- <download-page rdf:resource="http://download.gnome.org/sources/metacity/" />
+ <download-page rdf:resource="https://download.gnome.org/sources/metacity/" />
 
  <repository>
    <GitRepository>
@@ -58,7 +58,7 @@ Many window managers are like Marshmallow Froot Loops; Metacity is like Cheerios
   <foaf:Person>
      <foaf:name>Thomas Thurman</foaf:name>
      <foaf:mbox rdf:resource="mailto:tthurman@gnome.org"/>
-     <gnome:userid>tthurman</gnome:userid>
+<!--     <gnome:userid>tthurman</gnome:userid> -->
   </foaf:Person>
  </maintainer>
 
