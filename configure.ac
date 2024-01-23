@@ -90,6 +90,7 @@ dnl Check for required packages
 dnl **************************************************************************
 
 GLIB_REQUIRED_VERSION=2.67.3
+GSETTINGS_DESKTOP_SCHEMAS_REQUIRED_VERSION=42.0
 GTK_REQUIRED_VERSION=3.24.6
 PANGO_REQUIRED_VERSION=1.2.0
 XCOMPOSITE_REQUIRED_VERSION=0.3
@@ -155,7 +156,7 @@ AC_CHECK_SIZEOF(__int64)
 ## byte order
 AC_C_BIGENDIAN
 
-METACITY_PC_MODULES="gtk+-3.0 >= $GTK_REQUIRED_VERSION gio-2.0 >= $GLIB_REQUIRED_VERSION pango >= $PANGO_REQUIRED_VERSION gsettings-desktop-schemas >= 3.3.0 xcomposite >= $XCOMPOSITE_REQUIRED_VERSION xfixes xrender xdamage xres >= $XRES_REQUIRED_VERSION xpresent"
+METACITY_PC_MODULES="gtk+-3.0 >= $GTK_REQUIRED_VERSION gio-2.0 >= $GLIB_REQUIRED_VERSION pango >= $PANGO_REQUIRED_VERSION gsettings-desktop-schemas >= $GSETTINGS_DESKTOP_SCHEMAS_REQUIRED_VERSION xcomposite >= $XCOMPOSITE_REQUIRED_VERSION xfixes xrender xdamage xres >= $XRES_REQUIRED_VERSION xpresent"
 
 GLIB_GSETTINGS
 
