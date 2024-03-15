@@ -23,17 +23,18 @@ GNOME ftp site.
 REPORTING BUGS AND SUBMITTING PATCHES
 ===
 
-Report new bugs on http://bugzilla.gnome.org. Please check for
-duplicates, *especially* if you are reporting a feature request. 
+Report new bugs on https://gitlab.gnome.org/GNOME/metacity/-/issues/.
+Please check for duplicates, *especially* if you are reporting a
+feature request.
 
 Please do *not* add "me too!" or "yes I really want this!" comments to
-feature requests in bugzilla. Please read
+feature requests in the issue tracker. Please read
 http://pobox.com/~hp/features.html prior to adding any kind of flame
 about missing features or misfeatures.
 
 Feel free to send patches too; Metacity is relatively small and
 simple, so if you find a bug or want to add a feature it should be
-pretty easy.  Send me mail, or put the patch in bugzilla.
+pretty easy.  Send me mail, or put the patch in GNOME GitLab.
 
 See the HACKING file for some notes on hacking Metacity.
 
@@ -227,7 +228,7 @@ EWMH-compliant WMs).
 METACITY BUGS, NON-FEATURES, AND CAVEATS
 ===
 
-See bugzilla: http://bugzilla.gnome.org/query.cgi
+See https://gitlab.gnome.org/GNOME/metacity/-/issues/
 
 FAQ
 ===
@@ -367,7 +368,7 @@ A: This one is also in rationales.txt. Because "ouija board" UI, where
 Q: Why no XYZ?
 
 A: You are probably getting the idea by now - check rationales.txt,
-   query/search bugzilla, and read http://pobox.com/~hp/features.html
+   query/search GitLab, and read http://pobox.com/~hp/features.html
    and http://pobox.com/~hp/free-software-ui.html
 
    Then sit down and answer the question for yourself.  Is the feature
@@ -375,10 +376,9 @@ A: You are probably getting the idea by now - check rationales.txt,
    Justify in terms of users as a whole, not just users like
    yourself. How else can you solve the same problem? etc. If that
    leads you to a strong opinion, then please, post the rationale for
-   discussion to an appropriate bugzilla bug, or to
-   usability@gnome.org.
+   discussion to an appropriate ticket in the issue tracker.
 
-   Please don't just "me too!" on bugzilla bugs, please don't think
+   Please don't just "me too!" on tickets, please don't think
    flames will get you anywhere, and please don't repeat rationale
    that's already been offered.
 
