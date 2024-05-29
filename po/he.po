@@ -10,16 +10,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity.HEAD.he\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues\n"
-"POT-Creation-Date: 2022-07-22 09:12+0000\n"
-"PO-Revision-Date: 2024-02-09 09:24+0200\n"
-"Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
+"POT-Creation-Date: 2024-02-09 07:25+0000\n"
+"PO-Revision-Date: 2024-05-29 14:23+0300\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Gtranslator 45.3\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #. Translators: This is the title used on dialog boxes
 #: data/applications/metacity.desktop.in:4 src/core/util.c:429
@@ -639,7 +639,7 @@ msgid "Missing <frame state='%s' resize='%s' focus='%s' style='whatever' />"
 msgstr "Missing <frame state='%s' resize='%s' focus='%s' style='whatever' />"
 
 #: libmetacity/meta-frame-style.c:324
-#, fuzzy, c-format
+#, c-format
 #| msgid ""
 #| "<button function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> must be "
 #| "specified for this frame style"
@@ -647,8 +647,8 @@ msgid ""
 "<button function='%s' state='%s' draw_ops='whatever'/> must be specified for "
 "this frame style"
 msgstr ""
-"<button function=\"%s\" state=\"%s\" draw_ops=\"whatever\"/> must be "
-"specified for this frame style"
+"‫<button function='%s' state='%s' draw_ops='whatever'/> חובה לציין לסגנון "
+"תמוניות זה"
 
 #: libmetacity/meta-gradient-spec.c:182
 msgid "Gradients should have at least two colors"
@@ -1194,7 +1194,7 @@ msgstr "Turn compositing off"
 
 #: src/core/main.c:343
 msgid "Compositor to use"
-msgstr ""
+msgstr "ניהול חלונאי לשימוש"
 
 #: src/core/main.c:349
 msgid ""
@@ -1205,6 +1205,7 @@ msgstr "אין ליצור חלונות על כל המסך כך שיהיו מוג
 msgid ""
 "Setting “compositing-manager” is deprecated, use the “compositor” instead."
 msgstr ""
+"הגדרת „compositing-manager” לא זמינה עוד, יש להשתמש ב־„compositor” במקום."
 
 #: src/core/prefs.c:1446
 #, c-format
@@ -1244,27 +1245,27 @@ msgid "Opened log file %s\n"
 msgstr "Opened log file %s\n"
 
 #. Translators: the title of a window from another machine
-#: src/core/window-props.c:540
+#: src/core/window-props.c:563
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (מעל %s)"
 
 #. Simple case-- don't bother to look it up.  It's root.
-#: src/core/window-props.c:575
+#: src/core/window-props.c:598
 #, c-format
 msgid "%s (as superuser)"
 msgstr "‏%s (כמשתמש על)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine
-#: src/core/window-props.c:594
+#: src/core/window-props.c:617
 #, c-format
 msgid "%s (as %s)"
 msgstr "‏%s (מעל %s)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine, whose name we don't know
-#: src/core/window-props.c:600
+#: src/core/window-props.c:623
 #, c-format
 msgid "%s (as another user)"
 msgstr "‏%s (כמשתמש אחר)"
@@ -1533,6 +1534,9 @@ msgid ""
 "milliseconds per frame) and <b>%f</b> seconds wall clock time including X "
 "server resources (<b>%f</b> milliseconds per frame)."
 msgstr ""
+"צוירו <b>%d</b> תמוניות תוך <b>%f</b> שניות בצד הלקוח (<b>%f</b> מילישניות "
+"לתמונית) ו־<b>%f</b> שניות בשעון בעולם האמיתי כולל משאבי שרת X‏ (<b>%f</b> "
+"מילישניות לתמונית)."
 
 #: theme-viewer/theme-viewer-window.c:244
 msgid "Run again"
