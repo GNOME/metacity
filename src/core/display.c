@@ -220,8 +220,6 @@ remove_pending_pings_for_window (MetaDisplay *display, Window xwindow)
   g_slist_free (dead);
 }
 
-
-#ifdef HAVE_STARTUP_NOTIFICATION
 static void
 sn_error_trap_push (SnDisplay *sn_display,
                     Display   *xdisplay)
@@ -241,7 +239,6 @@ sn_error_trap_pop (SnDisplay *sn_display,
   if (display != NULL)
     meta_error_trap_pop (display);
 }
-#endif
 
 static void
 reframe_func (MetaScreen *screen,
@@ -493,11 +490,9 @@ meta_display_open (void)
 
   the_display->screen = NULL;
 
-#ifdef HAVE_STARTUP_NOTIFICATION
   the_display->sn_display = sn_display_new (the_display->xdisplay,
                                         sn_error_trap_push,
                                         sn_error_trap_pop);
-#endif
 
   /* Get events */
   meta_ui_add_event_func (the_display->xdisplay,
@@ -965,13 +960,11 @@ meta_display_close (MetaDisplay *display,
       display->screen = NULL;
     }
 
-#ifdef HAVE_STARTUP_NOTIFICATION
   if (display->sn_display)
     {
       sn_display_unref (display->sn_display);
       display->sn_display = NULL;
     }
-#endif
 
   /* Must be after all calls to meta_window_unmanage() since they
    * unregister windows
@@ -1798,9 +1791,7 @@ event_callback (XEvent   *event,
   if (dump_events)
     meta_spew_event (display, event);
 
-#ifdef HAVE_STARTUP_NOTIFICATION
   sn_display_process_event (display->sn_display, event);
-#endif
 
   filter_out_event = FALSE;
   display->current_time = event_get_time (display, event);

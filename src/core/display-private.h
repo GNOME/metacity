@@ -35,9 +35,7 @@
 #include "boxes.h"
 #include "display.h"
 
-#ifdef HAVE_STARTUP_NOTIFICATION
 #include <libsn/sn.h>
-#endif
 
 #include <X11/extensions/sync.h>
 
@@ -247,9 +245,7 @@ struct _MetaDisplay
   /* Managed by compositor.c */
   MetaCompositor *compositor;
 
-#ifdef HAVE_STARTUP_NOTIFICATION
   SnDisplay *sn_display;
-#endif
 
   int xsync_event_base;
   int xsync_error_base;

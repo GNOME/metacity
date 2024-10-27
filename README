@@ -50,7 +50,6 @@ options such as:
 
  --disable-sm
  --disable-verbose-mode
- --disable-startup-notification
 
 However the result is no good for desktop use, all prefs have to be
 hardcoded in the binary, for example. If you wanted to make a really

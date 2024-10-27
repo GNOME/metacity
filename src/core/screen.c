@@ -60,10 +60,8 @@ static void prefs_changed_callback (MetaPreference pref,
 static void set_desktop_geometry_hint (MetaScreen *screen);
 static void set_desktop_viewport_hint (MetaScreen *screen);
 
-#ifdef HAVE_STARTUP_NOTIFICATION
 static void meta_screen_sn_event   (SnMonitorEvent *event,
                                     void           *user_data);
-#endif
 
 static int
 set_wm_check_hint (MetaScreen *screen)
@@ -496,7 +494,6 @@ meta_screen_new (MetaDisplay *display,
 
   meta_prefs_add_listener (prefs_changed_callback, screen);
 
-#ifdef HAVE_STARTUP_NOTIFICATION
   screen->sn_context =
     sn_monitor_context_new (screen->display->sn_display,
                             screen->number,
@@ -505,7 +502,6 @@ meta_screen_new (MetaDisplay *display,
                             NULL);
   screen->startup_sequences = NULL;
   screen->startup_sequence_timeout = 0;
-#endif
 
   /* Switch to the _NET_CURRENT_DESKTOP workspace */
   {
@@ -534,7 +530,6 @@ meta_screen_free (MetaScreen *screen,
 
   meta_screen_ungrab_keys (screen);
 
-#ifdef HAVE_STARTUP_NOTIFICATION
   g_slist_free_full (screen->startup_sequences, (GDestroyNotify) sn_startup_sequence_unref);
   screen->startup_sequences = NULL;
 
@@ -548,7 +543,6 @@ meta_screen_free (MetaScreen *screen,
       sn_monitor_context_unref (screen->sn_context);
       screen->sn_context = NULL;
     }
-#endif
 
   meta_ui_free (screen->ui);
 
@@ -2341,8 +2335,6 @@ meta_screen_unshow_desktop (MetaScreen *screen)
   meta_screen_update_showing_desktop_hint (screen);
 }
 
-
-#ifdef HAVE_STARTUP_NOTIFICATION
 static gboolean startup_sequence_timeout (void *data);
 
 static void
@@ -2535,7 +2527,6 @@ meta_screen_sn_event (SnMonitorEvent *event,
       break;
     }
 }
-#endif
 
 /* Sets the initial_timestamp and initial_workspace properties
  * of a window according to information given us by the
@@ -2549,7 +2540,6 @@ gboolean
 meta_screen_apply_startup_properties (MetaScreen *screen,
                                       MetaWindow *window)
 {
-#ifdef HAVE_STARTUP_NOTIFICATION
   const char *startup_id;
   GSList *tmp;
   SnStartupSequence *sequence;
@@ -2671,8 +2661,6 @@ meta_screen_apply_startup_properties (MetaScreen *screen,
                   "Did not find startup sequence for window %s ID \"%s\"\n",
                   window->desc, startup_id);
     }
-
-#endif /* HAVE_STARTUP_NOTIFICATION */
 
   return FALSE;
 }

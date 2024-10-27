@@ -93,6 +93,7 @@ GLIB_REQUIRED_VERSION=2.67.3
 GSETTINGS_DESKTOP_SCHEMAS_REQUIRED_VERSION=42.0
 GTK_REQUIRED_VERSION=3.24.37
 PANGO_REQUIRED_VERSION=1.2.0
+STARTUP_NOTIFICATION_VERSION=0.7
 XCOMPOSITE_REQUIRED_VERSION=0.3
 XRES_REQUIRED_VERSION=1.2
 
@@ -156,7 +157,7 @@ AC_CHECK_SIZEOF(__int64)
 ## byte order
 AC_C_BIGENDIAN
 
-METACITY_PC_MODULES="gtk+-3.0 >= $GTK_REQUIRED_VERSION gio-2.0 >= $GLIB_REQUIRED_VERSION pango >= $PANGO_REQUIRED_VERSION gsettings-desktop-schemas >= $GSETTINGS_DESKTOP_SCHEMAS_REQUIRED_VERSION xcomposite >= $XCOMPOSITE_REQUIRED_VERSION xfixes xrender xdamage xres >= $XRES_REQUIRED_VERSION xpresent"
+METACITY_PC_MODULES="gtk+-3.0 >= $GTK_REQUIRED_VERSION gio-2.0 >= $GLIB_REQUIRED_VERSION pango >= $PANGO_REQUIRED_VERSION gsettings-desktop-schemas >= $GSETTINGS_DESKTOP_SCHEMAS_REQUIRED_VERSION libstartup-notification-1.0 >= $STARTUP_NOTIFICATION_VERSION xcomposite >= $XCOMPOSITE_REQUIRED_VERSION xfixes xrender xdamage xres >= $XRES_REQUIRED_VERSION xpresent"
 
 GLIB_GSETTINGS
 
@@ -175,11 +176,6 @@ AC_ARG_ENABLE(sm,
                  [disable metacity's session management support, for embedded/size-sensitive custom non-GNOME builds]),,
   enable_sm=auto)
 
-AC_ARG_ENABLE(startup-notification,
-  AS_HELP_STRING([--disable-startup-notification],
-                 [disable metacity's startup notification support, for embedded/size-sensitive custom non-GNOME builds]),,
-  enable_startup_notification=auto)
-
 AC_ARG_ENABLE(render,
   AS_HELP_STRING([--disable-render],
                  [disable metacity's use of the RENDER extension]),,
@@ -192,32 +188,6 @@ PKG_CHECK_MODULES(METACITY_MESSAGE, gtk+-3.0 >= $GTK_REQUIRED_VERSION)
 # Unconditionally use this dir to avoid a circular dep with gnomecc
 GNOME_KEYBINDINGS_KEYSDIR="${datadir}/gnome-control-center/keybindings"
 AC_SUBST(GNOME_KEYBINDINGS_KEYSDIR)
-
-STARTUP_NOTIFICATION_VERSION=0.7
-AC_MSG_CHECKING([Startup notification library >= $STARTUP_NOTIFICATION_VERSION])
-if $PKG_CONFIG --atleast-version $STARTUP_NOTIFICATION_VERSION libstartup-notification-1.0; then
-   have_startup_notification=yes
-else
-   have_startup_notification=no
-fi
-AC_MSG_RESULT($have_startup_notification)
-
-if test x$enable_startup_notification = xyes; then
-   have_startup_notification=yes
-   echo "startup-notification support forced on"
-elif test x$enable_startup_notification = xauto; then
-   true
-else
-   have_startup_notification=no
-fi
-
-if test x$have_startup_notification = xyes; then
-  echo "Building with libstartup-notification"
-  METACITY_PC_MODULES="$METACITY_PC_MODULES libstartup-notification-1.0 >= $STARTUP_NOTIFICATION_VERSION"
-  AC_DEFINE(HAVE_STARTUP_NOTIFICATION, , [Building with startup notification support])
-else
-  echo "Building without libstartup-notification"
-fi
 
 AC_MSG_CHECKING([Xcursor])
 if $PKG_CONFIG xcursor; then
@@ -422,7 +392,6 @@ echo "  libexecdir ..................: ${libexecdir}"
 echo ""
 echo "  Canberra ....................: ${enable_canberra}"
 echo "  Xinerama ....................: ${have_xinerama}"
-echo "  Startup notification ........: ${have_startup_notification}"
 echo "  Session management ..........: ${found_sm}"
 echo "  Resize-and-rotate ...........: ${found_randr}"
 echo "  Xcursor .....................: ${have_xcursor}"

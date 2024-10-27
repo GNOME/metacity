@@ -128,11 +128,6 @@ meta_print_compilation_info (void)
 #else
   meta_verbose ("Compiled without randr extension\n");
 #endif
-#ifdef HAVE_STARTUP_NOTIFICATION
-  meta_verbose ("Compiled with startup notification\n");
-#else
-  meta_verbose ("Compiled without startup notification\n");
-#endif
 }
 
 /**
