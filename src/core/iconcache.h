@@ -41,8 +41,8 @@ typedef enum
 struct _MetaIconCache
 {
   int origin;
-  Pixmap prev_pixmap;
-  Pixmap prev_mask;
+  Pixmap pixmap;
+  Pixmap mask;
   /* TRUE if these props have changed */
   guint wm_hints_dirty : 1;
   guint net_wm_icon_dirty : 1;
@@ -51,7 +51,7 @@ struct _MetaIconCache
 void           meta_icon_cache_init                 (MetaIconCache *icon_cache);
 void           meta_icon_cache_free                 (MetaIconCache *icon_cache);
 void           meta_icon_cache_property_changed     (MetaIconCache *icon_cache,
-                                                     MetaDisplay   *display,
+                                                     MetaWindow    *window,
                                                      Atom           atom);
 
 gboolean meta_read_icons         (MetaScreen     *screen,

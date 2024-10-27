@@ -26,6 +26,8 @@
 
 #include <X11/Xatom.h>
 
+#include "window-private.h"
+
 /* The icon-reading code is also in libwnck, please sync bugfixes */
 
 static void
@@ -446,8 +448,8 @@ meta_icon_cache_init (MetaIconCache *icon_cache)
   g_return_if_fail (icon_cache != NULL);
 
   icon_cache->origin = USING_NO_ICON;
-  icon_cache->prev_pixmap = None;
-  icon_cache->prev_mask = None;
+  icon_cache->pixmap = None;
+  icon_cache->mask = None;
   icon_cache->wm_hints_dirty = TRUE;
   icon_cache->net_wm_icon_dirty = TRUE;
 }
@@ -477,13 +479,30 @@ meta_icon_cache_get_icon_invalidated (MetaIconCache *icon_cache)
 
 void
 meta_icon_cache_property_changed (MetaIconCache *icon_cache,
-                                  MetaDisplay   *display,
+                                  MetaWindow    *window,
                                   Atom           atom)
 {
+  MetaDisplay *display;
+
+  display = window->display;
+
   if (atom == display->atom__NET_WM_ICON)
     icon_cache->net_wm_icon_dirty = TRUE;
   else if (atom == XA_WM_HINTS)
-    icon_cache->wm_hints_dirty = TRUE;
+    {
+      /* We won't update if pixmap is unchanged;
+       * avoids a get_from_drawable() on every geometry
+       * hints change
+       */
+      if (window->wm_hints_pixmap == icon_cache->pixmap &&
+          window->wm_hints_mask == icon_cache->mask)
+        return;
+
+      icon_cache->pixmap = window->wm_hints_pixmap;
+      icon_cache->mask = window->wm_hints_mask;
+
+      icon_cache->wm_hints_dirty = TRUE;
+    }
 
   if (!meta_icon_cache_get_icon_invalidated (icon_cache))
     return;
@@ -564,8 +583,6 @@ meta_read_icons (MetaScreen     *screen,
   int w, h;
   guchar *mini_pixdata;
   int mini_w, mini_h;
-  Pixmap pixmap;
-  Pixmap mask;
 
   /* Return value is whether the icon changed */
 
@@ -636,32 +653,21 @@ meta_read_icons (MetaScreen     *screen,
     {
       icon_cache->wm_hints_dirty = FALSE;
 
-      pixmap = wm_hints_pixmap;
-      mask = wm_hints_mask;
-
-      /* We won't update if pixmap is unchanged;
-       * avoids a get_from_drawable() on every geometry
-       * hints change
-       */
-      if ((pixmap != icon_cache->prev_pixmap ||
-           mask != icon_cache->prev_mask) &&
-          pixmap != None)
+      if (wm_hints_pixmap != None &&
+          try_pixmap_and_mask (screen->display,
+                               wm_hints_pixmap,
+                               wm_hints_mask,
+                               iconp,
+                               ideal_size,
+                               mini_iconp,
+                               ideal_mini_size))
         {
-          if (try_pixmap_and_mask (screen->display,
-                                   pixmap,
-                                   mask,
-                                   iconp,
-                                   ideal_size,
-                                   mini_iconp,
-                                   ideal_mini_size))
-            {
-              icon_cache->prev_pixmap = pixmap;
-              icon_cache->prev_mask = mask;
+          icon_cache->pixmap = wm_hints_pixmap;
+          icon_cache->mask = wm_hints_mask;
 
-              icon_cache->origin = USING_WM_HINTS;
+          icon_cache->origin = USING_WM_HINTS;
 
-              return TRUE;
-            }
+          return TRUE;
         }
     }
 
