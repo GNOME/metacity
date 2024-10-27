@@ -127,6 +127,8 @@ struct _GtkWindowPrivate
 
   guint                  use_subsurface               : 1;
 
+  guint                  in_present                   : 1;
+
   GdkWindowTypeHint      type_hint;
 
   GtkGesture            *multipress_gesture;
