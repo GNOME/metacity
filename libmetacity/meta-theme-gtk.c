@@ -847,7 +847,7 @@ meta_theme_gtk_draw_frame (MetaThemeImpl           *impl,
                 icon_name = "window-minimize-symbolic";
                 break;
               case META_BUTTON_TYPE_MENU:
-                icon_name = "open-menu-symbolic";
+                pixbuf = g_object_ref (mini_icon);
                 break;
               case META_BUTTON_TYPE_SPACER:
               case META_BUTTON_TYPE_LAST:
