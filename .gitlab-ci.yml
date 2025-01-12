@@ -75,7 +75,8 @@ release:
       aud: gnome-release-service
   script:
     - ls -al "${TARBALL_ARTIFACT_PATH}"
-    - curl --fail-with-body -X POST "$GNOME_RELEASE_SERVICE_API_INSTALL_MODULE_RELEASE_ENDPOINT"
+    - >
+      curl --fail-with-body -X POST "$GNOME_RELEASE_SERVICE_API_INSTALL_MODULE_RELEASE_ENDPOINT"
       -H "Authorization: Bearer $JWT_TOKEN"
       -F "tarball=@${TARBALL_ARTIFACT_PATH}"
   rules:
