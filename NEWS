@@ -1,3 +1,7 @@
+Version 3.56.0
+==============
+- Use window icon for the menu button. (!37)
+
 Version 3.54.0
 ==============
 - Add basic color-scheme support. (!36)
