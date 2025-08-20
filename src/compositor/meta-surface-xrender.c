@@ -342,6 +342,14 @@ notify_decorated_cb (MetaWindow         *window,
 }
 
 static void
+notify_client_decorated_cb (MetaWindow         *window,
+                            GParamSpec         *pspec,
+                            MetaSurfaceXRender *self)
+{
+  shadow_changed (self);
+}
+
+static void
 notify_window_type_cb (MetaWindow         *window,
                        GParamSpec         *pspec,
                        MetaSurfaceXRender *self)
@@ -371,6 +379,12 @@ meta_surface_xrender_constructed (GObject *object)
   g_signal_connect_object (window, "notify::decorated",
                            G_CALLBACK (notify_decorated_cb),
                            self, 0);
+
+  g_signal_connect_object (window,
+                           "notify::client-decorated",
+                           G_CALLBACK (notify_client_decorated_cb),
+                           self,
+                           0);
 
   g_signal_connect_object (window, "notify::window-type",
                            G_CALLBACK (notify_window_type_cb),
