@@ -133,6 +133,7 @@ enum
 
   PROP_APPEARS_FOCUSED,
   PROP_DECORATED,
+  PROP_CLIENT_DECORATED,
   PROP_WINDOW_TYPE,
   PROP_SHADED,
 
@@ -9218,6 +9219,10 @@ meta_window_get_property (GObject    *object,
         g_value_set_boolean (value, window->decorated);
         break;
 
+      case PROP_CLIENT_DECORATED:
+        g_value_set_boolean (value, meta_window_is_client_decorated (window));
+        break;
+
       case PROP_WINDOW_TYPE:
         g_value_set_enum (value, window->type);
         break;
@@ -9242,6 +9247,13 @@ install_properties (GObjectClass *object_class)
   properties[PROP_DECORATED] =
     g_param_spec_boolean ("decorated", "decorated", "decorated",
                           TRUE, G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
+
+  properties[PROP_CLIENT_DECORATED] =
+    g_param_spec_boolean ("client-decorated",
+                          NULL,
+                          NULL,
+                          FALSE,
+                          G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
 
   properties[PROP_WINDOW_TYPE] =
     g_param_spec_enum ("window-type", "window-type", "window-type",
@@ -9395,6 +9407,8 @@ meta_window_set_custom_frame_extents (MetaWindow *window,
       window->has_custom_frame_extents = FALSE;
       memset (&window->custom_frame_extents, 0, sizeof (window->custom_frame_extents));
     }
+
+  g_object_notify_by_pspec (G_OBJECT (window), properties[PROP_CLIENT_DECORATED]);
 
   meta_window_queue (window, META_QUEUE_MOVE_RESIZE);
 }
