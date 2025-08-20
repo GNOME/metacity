@@ -723,6 +723,10 @@ gboolean meta_window_remove_pending_unmap (MetaWindow *window,
 
 pid_t meta_window_get_client_pid (MetaWindow *self);
 
+void
+meta_window_set_custom_frame_extents (MetaWindow *window,
+                                      GtkBorder  *extents);
+
 G_END_DECLS
 
 #endif
