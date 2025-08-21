@@ -10,6 +10,7 @@ noinst_PROGRAMS = \
 	$(NULL)
 
 AM_CPPFLAGS = \
+	-DMETACITY_LIBEXECDIR=\""$(libexecdir)"\" \
 	-DMETACITY_LOCALEDIR=\""$(localedir)"\" \
 	-DG_LOG_DOMAIN=\"metacity\" \
 	-DG_LOG_USE_STRUCTURED=1 \

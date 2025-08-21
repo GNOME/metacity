@@ -102,6 +102,12 @@ PKG_CHECK_MODULES([LIBMETACITY], [
   gtk+-3.0 >= $GTK_REQUIRED_VERSION
 ])
 
+PKG_CHECK_MODULES([METACITY_DIALOG], [
+  glib-2.0 >= $GLIB_REQUIRED_VERSION
+  gtk+-3.0 >= $GTK_REQUIRED_VERSION
+  x11
+])
+
 PKG_CHECK_MODULES([METACITY_THEME_VIEWER], [
   glib-2.0 >= $GLIB_REQUIRED_VERSION
   gtk+-3.0 >= $GTK_REQUIRED_VERSION
@@ -307,11 +313,6 @@ fi
 
 AM_CONDITIONAL(HAVE_SM, test "$found_sm" = "yes") 
 
-AC_PATH_PROG(ZENITY, zenity, no)
-if test x"$ZENITY" = xno; then
-  AC_MSG_ERROR([zenity not found in your path - needed for dialogs])
-fi
-
 AC_SEARCH_LIBS([dlsym], [dl], [], [
   AC_MSG_ERROR([unable to find the dlsym() function])
 ])
@@ -360,6 +361,8 @@ AC_CONFIG_FILES([
   doc/man/Makefile
 
   libmetacity/Makefile
+
+  dialog/Makefile
 
   src/Makefile
   src/tools/Makefile

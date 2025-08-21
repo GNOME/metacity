@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/org/gnome/metacity/ui">
+    <file alias="delete-dialog.ui">../data/ui/delete-dialog.ui</file>
+    <file alias="session-dialog.ui">../data/ui/session-dialog.ui</file>
+  </gresource>
+</gresources>

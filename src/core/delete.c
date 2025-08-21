@@ -62,9 +62,58 @@ dialog_exited (GPid     pid,
 
   ours->dialog_pid = -1;
 
-  /* exit status of 1 means the user pressed "Force Quit" */
-  if (WIFEXITED (status) && WEXITSTATUS (status) == 1)
+  /* exit status of 0 means the user pressed "Force Quit" */
+  if (WIFEXITED (status) && WEXITSTATUS (status) == 0)
     meta_window_kill (ours);
+}
+
+static GPid
+show_delete_dialog (const char *window_title,
+                    const char *display,
+                    const int   transient_for)
+{
+  GError *error = NULL;
+  int i=0;
+  GPid child_pid;
+  const char **argvl;
+  char *transient_for_s;
+
+  argvl = g_malloc (sizeof (char *) * 12);
+  transient_for_s = g_strdup_printf ("%d", transient_for);
+
+  argvl[i++] = METACITY_LIBEXECDIR "/metacity-dialog";
+  argvl[i++] = "--type";
+  argvl[i++] = "delete";
+  argvl[i++] = "--display";
+  argvl[i++] = display;
+  argvl[i++] = "--class";
+  argvl[i++] = "metacity-dialog";
+  argvl[i++] = "--window-title";
+  argvl[i++] = window_title;
+  argvl[i++] = "--transient-for";
+  argvl[i++] = transient_for_s;
+
+  argvl[i] = NULL;
+
+  g_spawn_async ("/",
+                 (char **) argvl,
+                 NULL,
+                 G_SPAWN_SEARCH_PATH | G_SPAWN_DO_NOT_REAP_CHILD,
+                 NULL,
+                 NULL,
+                 &child_pid,
+                 &error);
+
+  g_free (transient_for_s);
+  g_free (argvl);
+
+  if (error != NULL)
+    {
+      g_warning ("%s", error->message);
+      g_error_free (error);
+    }
+
+  return child_pid;
 }
 
 static void
@@ -75,7 +124,6 @@ delete_ping_timeout_func (MetaDisplay *display,
 {
   MetaWindow *window = user_data;
   char *window_title;
-  gchar *window_content, *tmp;
   GPid dialog_pid;
 
   meta_topic (META_DEBUG_PING,
@@ -90,26 +138,11 @@ delete_ping_timeout_func (MetaDisplay *display,
 
   window_title = g_locale_from_utf8 (window->title, -1, NULL, NULL, NULL);
 
-  /* Translators: %s is a window title */
-  tmp = g_strdup_printf (_("<tt>%s</tt> is not responding."),
-                         window_title);
-  window_content = g_strdup_printf (
-      "<big><b>%s</b></big>\n\n<i>%s</i>",
-      tmp,
-      _("You may choose to wait a short while for it to "
-        "continue or force the application to quit entirely."));
+  dialog_pid = show_delete_dialog (window_title,
+                                   window->screen->screen_name,
+                                   window->xwindow);
 
   g_free (window_title);
-
-  dialog_pid =
-    meta_show_dialog ("--question",
-                      window_content, NULL,
-                      window->screen->screen_name,
-                      _("_Wait"), _("_Force Quit"), window->xwindow,
-                      NULL, NULL);
-
-  g_free (window_content);
-  g_free (tmp);
 
   window->dialog_pid = dialog_pid;
   g_child_watch_add (dialog_pid, dialog_exited, window);

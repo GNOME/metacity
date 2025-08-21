@@ -37,7 +37,6 @@ variables:
                   libxres-dev
                   libxt-dev
                   yelp-tools
-                  zenity
 
 ubuntu:
   image: ubuntu:devel

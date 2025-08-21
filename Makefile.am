@@ -2,6 +2,7 @@ NULL =
 
 SUBDIRS = \
 	data \
+	dialog \
 	libmetacity \
 	theme-viewer \
 	doc \

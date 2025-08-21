@@ -85,16 +85,6 @@ const char* meta_gravity_to_string (int gravity);
 
 char* meta_g_utf8_strndup (const gchar *src, gsize n);
 
-GPid meta_show_dialog (const char *type,
-                       const char *message,
-                       const char *timeout,
-                       const char *display,
-                       const char *ok_text,
-                       const char *cancel_text,
-                       const int transient_for,
-                       GSList *columns,
-                       GSList *entries);
-
 gboolean meta_xserver_region_equal (Display       *xdisplay,
                                     XserverRegion  region1,
                                     XserverRegion  region2);

@@ -7,7 +7,10 @@ data/keybindings/50-metacity-windows.xml
 data/schemas/org.gnome.metacity.gschema.xml
 data/schemas/org.gnome.metacity.keybindings.gschema.xml
 data/schemas/org.gnome.metacity.theme.gschema.xml
+data/ui/delete-dialog.ui
+data/ui/session-dialog.ui
 data/ui/theme-viewer-window.ui
+dialog/meta-delete-dialog.c
 libmetacity/meta-color-spec.c
 libmetacity/meta-draw-op.c
 libmetacity/meta-draw-spec.c

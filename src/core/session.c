@@ -1781,6 +1781,53 @@ dialog_closed (GPid pid, int status, gpointer user_data)
     }
 }
 
+static GPid
+show_session_dialog (const char *display,
+                     GSList     *entries)
+{
+  GError *error = NULL;
+  GSList *tmp;
+  int i=0;
+  GPid child_pid;
+  const char **argvl;
+
+  argvl = g_malloc (sizeof (char *) * (6 + g_slist_length (entries)));
+
+  argvl[i++] = METACITY_LIBEXECDIR "/metacity-dialog";
+  argvl[i++] = "--type";
+  argvl[i++] = "session";
+  argvl[i++] = "--display";
+  argvl[i++] = display;
+
+  tmp = entries;
+  while (tmp)
+    {
+      argvl[i++] = tmp->data;
+      tmp = tmp->next;
+    }
+
+  argvl[i] = NULL;
+
+  g_spawn_async ("/",
+                 (char **) argvl,
+                 NULL,
+                 G_SPAWN_SEARCH_PATH | G_SPAWN_DO_NOT_REAP_CHILD,
+                 NULL,
+                 NULL,
+                 &child_pid,
+                 &error);
+
+  g_free (argvl);
+
+  if (error)
+    {
+      g_warning ("%s", error->message);
+      g_error_free (error);
+    }
+
+  return child_pid;
+}
+
 static void
 warn_about_lame_clients_and_finish_interact (gboolean shutdown)
 {
@@ -1788,7 +1835,6 @@ warn_about_lame_clients_and_finish_interact (gboolean shutdown)
   GSList *windows;
   GSList *lame_details = NULL;
   GSList *tmp;
-  GSList *columns = NULL;
   GPid pid;
 
   windows = meta_display_list_windows (meta_get_display (), META_LIST_DEFAULT);
@@ -1818,9 +1864,6 @@ warn_about_lame_clients_and_finish_interact (gboolean shutdown)
       return;
     }
 
-  columns = g_slist_prepend (columns, (gpointer) "Window");
-  columns = g_slist_prepend (columns, (gpointer) "Class");
-
   lame = g_slist_sort (lame, (GCompareFunc) windows_cmp_by_title);
 
   tmp = lame;
@@ -1841,16 +1884,8 @@ warn_about_lame_clients_and_finish_interact (gboolean shutdown)
     }
   g_slist_free (lame);
 
-  pid = meta_show_dialog("--list",
-                         _("These windows do not support &quot;save current setup&quot; "
-                           "and will have to be restarted manually next time "
-                           "you log in."),
-                         "240",
-                         meta_get_display()->screen->screen_name,
-                         NULL, NULL,
-                         None,
-                         columns,
-                         lame_details);
+  pid = show_session_dialog (meta_get_display()->screen->screen_name,
+                             lame_details);
 
   g_slist_free (lame_details);
 
