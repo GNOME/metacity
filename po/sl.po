@@ -10,9 +10,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues\n"
-"POT-Creation-Date: 2022-07-22 09:12+0000\n"
-"PO-Revision-Date: 2022-10-15 09:55+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues/\n"
+"POT-Creation-Date: 2025-08-21 18:05+0000\n"
+"PO-Revision-Date: 2025-08-21 21:17+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -22,10 +22,11 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 2.2.1\n"
 
-#. Translators: This is the title used on dialog boxes
-#: data/applications/metacity.desktop.in:4 src/core/util.c:429
+#. This is the title used on dialog boxes
+#: data/applications/metacity.desktop.in:3 data/ui/delete-dialog.ui:8
+#: data/ui/session-dialog.ui:16
 msgid "Metacity"
 msgstr "Metacity"
 
@@ -324,6 +325,39 @@ msgstr ""
 "Tema Metacity: podatki so naloženi iz metacity-theme-x.xml in CSS. Ko "
 "uporabljate to vrsto tem, MORATE navesti veljavno ime teme."
 
+#: data/ui/delete-dialog.ui:22
+msgid "_Force Quit"
+msgstr "_Vsili končanje"
+
+#: data/ui/delete-dialog.ui:37
+msgid "_Wait"
+msgstr "_Počakaj"
+
+#: data/ui/delete-dialog.ui:105
+msgid ""
+"<i>You may choose to wait a short while for it to continue or force the "
+"application to quit entirely.</i>"
+msgstr ""
+"<i>Lahko malo počakate, če se program morda zbudi, ali pa vsiljeno končate "
+"njegovo delovanje.</i>"
+
+#: data/ui/session-dialog.ui:30
+msgid "_Cancel"
+msgstr "Pre_kliči"
+
+#: data/ui/session-dialog.ui:47
+msgid "_OK"
+msgstr "V _redu"
+
+# G:2 K:6 O:0
+#: data/ui/session-dialog.ui:78
+msgid ""
+"These windows do not support &quot;save current setup&quot; and will have to "
+"be restarted manually next time you log in."
+msgstr ""
+"Ta okna ne podpirajo možnosti &quot;shranjevanja trenutnih nastavitev&quot;, "
+"zato bodo morala biti ob vaši naslednji prijavi znova začeta ročno."
+
 #: data/ui/theme-viewer-window.ui:86
 msgid "Reload"
 msgstr "Ponovno naloži"
@@ -420,6 +454,12 @@ msgstr "Primerjalni preizkus"
 #: data/ui/theme-viewer-window.ui:652 theme-viewer/theme-viewer-window.c:982
 msgid "Metacity Theme Viewer"
 msgstr "Pregledovalnik tem Metacity"
+
+#. Translators: %s is a window title
+#: dialog/meta-delete-dialog.c:69
+#, c-format
+msgid "<tt>%s</tt> is not responding."
+msgstr "<tt>%s</tt> okno je neodzivno."
 
 #: libmetacity/meta-color-spec.c:246
 #, c-format
@@ -1123,28 +1163,6 @@ msgstr "Ni mogoče najti veljavne datoteke za temo »%s«"
 msgid "Bell event"
 msgstr "Dogodek zvonjenja"
 
-#. Translators: %s is a window title
-#: src/core/delete.c:94
-#, c-format
-msgid "<tt>%s</tt> is not responding."
-msgstr "<tt>%s</tt> okno je neodzivno."
-
-#: src/core/delete.c:99
-msgid ""
-"You may choose to wait a short while for it to continue or force the "
-"application to quit entirely."
-msgstr ""
-"Lahko malo počakate, če se program morda zbudi, ali pa vsiljeno končate "
-"njegovo delovanje."
-
-#: src/core/delete.c:108
-msgid "_Wait"
-msgstr "_Počakaj"
-
-#: src/core/delete.c:108
-msgid "_Force Quit"
-msgstr "_Vsili končanje"
-
 #: src/core/main.c:105
 #, c-format
 msgid ""
@@ -1159,57 +1177,57 @@ msgstr ""
 "To je prosto programje; za pogoje kopiranja si poglejte izvorno kodo.\n"
 "Program prihaja BREZ KAKRŠNIHKOLI ZAGOTOVIL delovanja.\n"
 
-#: src/core/main.c:201 src/core/main.c:218
+#: src/core/main.c:196 src/core/main.c:213
 #, c-format
 msgid "Option “%s” is deprecated, use the “--compositor” instead."
 msgstr "Možnost »%s« je opuščena, namesto tega uporabite »—compositor«."
 
-#: src/core/main.c:246
+#: src/core/main.c:241
 #, c-format
 msgid "“%s” is not a valid compositor"
 msgstr "»%s« ni veljaven upravljalnik sestavljanja"
 
-#: src/core/main.c:281
+#: src/core/main.c:276
 msgid "Disable connection to session manager"
 msgstr "Onemogoči povezavo z upravljalnikom sej"
 
-#: src/core/main.c:287
+#: src/core/main.c:282
 msgid "Replace the running window manager with Metacity"
 msgstr "Zamenjaj trenutni upravljalnik oken z Metacity"
 
-#: src/core/main.c:293
+#: src/core/main.c:288
 msgid "Specify session management ID"
 msgstr "Določi ID upravljanja seje"
 
-#: src/core/main.c:298
+#: src/core/main.c:293
 msgid "X Display to use"
 msgstr "Zaslon X, ki naj se uporabi"
 
-#: src/core/main.c:304
+#: src/core/main.c:299
 msgid "Initialize session from savefile"
 msgstr "Začni sejo iz shranjene datoteke"
 
-#: src/core/main.c:310
+#: src/core/main.c:305
 msgid "Print version"
 msgstr "Izpiši različico"
 
-#: src/core/main.c:316
+#: src/core/main.c:311
 msgid "Make X calls synchronous"
 msgstr "Naredi klice X usklajene"
 
-#: src/core/main.c:325
+#: src/core/main.c:320
 msgid "Turn compositing on"
 msgstr "Vključi skladanje"
 
-#: src/core/main.c:334
+#: src/core/main.c:329
 msgid "Turn compositing off"
 msgstr "Izključi skladanje"
 
-#: src/core/main.c:343
+#: src/core/main.c:338
 msgid "Compositor to use"
 msgstr "Upravljalnik sestavljanja, ki ga želite uporabiti"
 
-#: src/core/main.c:349
+#: src/core/main.c:344
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr "Ne ustvari celozaslonskih oken, ki so razpeta in nimajo oblikovanja"
@@ -1246,42 +1264,33 @@ msgstr "gnezdena oznaka <window>"
 msgid "Unknown element %s"
 msgstr "Neznan predmet %s"
 
-# G:2 K:6 O:0
-#: src/core/session.c:1845
-msgid ""
-"These windows do not support &quot;save current setup&quot; and will have to "
-"be restarted manually next time you log in."
-msgstr ""
-"Ta okna ne podpirajo možnosti &quot;shranjevanja trenutnih nastavitev&quot;, "
-"zato bodo morala biti ob vaši naslednji prijavi znova začeta ročno."
-
 #: src/core/util.c:106
 #, c-format
 msgid "Opened log file %s\n"
 msgstr "Odprta dnevniška datoteka %s\n"
 
 #. Translators: the title of a window from another machine
-#: src/core/window-props.c:540
+#: src/core/window-props.c:538
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (na %s)"
 
 #. Simple case-- don't bother to look it up.  It's root.
-#: src/core/window-props.c:575
+#: src/core/window-props.c:573
 #, c-format
 msgid "%s (as superuser)"
 msgstr "%s (kot skrbnik)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine
-#: src/core/window-props.c:594
+#: src/core/window-props.c:592
 #, c-format
 msgid "%s (as %s)"
 msgstr "%s (kot %s)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine, whose name we don't know
-#: src/core/window-props.c:600
+#: src/core/window-props.c:598
 #, c-format
 msgid "%s (as another user)"
 msgstr "%s (kot drug uporabnik)"
@@ -1291,25 +1300,25 @@ msgstr "%s (kot drug uporabnik)"
 msgid "Usage: %s\n"
 msgstr "Uporaba: %s\n"
 
-#: src/ui/frames.c:1255
+#: src/ui/frames.c:1288
 msgid "Close Window"
 msgstr "Zapri okno"
 
 # G:1 K:1 O:0
-#: src/ui/frames.c:1258
+#: src/ui/frames.c:1291
 msgid "Window Menu"
 msgstr "Meni okna"
 
 # G:0 K:1 O:0
-#: src/ui/frames.c:1261
+#: src/ui/frames.c:1294
 msgid "Minimize Window"
 msgstr "Skrči okno"
 
-#: src/ui/frames.c:1264
+#: src/ui/frames.c:1297
 msgid "Maximize Window"
 msgstr "Razpni okno"
 
-#: src/ui/frames.c:1267
+#: src/ui/frames.c:1300
 msgid "Restore Window"
 msgstr "Obnovi okno"
 
