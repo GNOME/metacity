@@ -5,24 +5,26 @@
 # int_ua <xintx.ua@gmail.com>, 2011.
 # Korostil Daniel <ted.korostiled@gmail.com>, 2011, 2012.
 # root <ted.korostiled@gmail.com>, 2011.
-# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021.
+# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues\n"
-"POT-Creation-Date: 2021-04-13 15:44+0000\n"
-"PO-Revision-Date: 2021-04-13 20:15+0300\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues/\n"
+"POT-Creation-Date: 2025-08-21 17:21+0000\n"
+"PO-Revision-Date: 2025-08-21 21:04+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 20.12.0\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 23.04.3\n"
 
-#. Translators: This is the title used on dialog boxes
-#: data/applications/metacity.desktop.in:4 src/core/util.c:429
+#. This is the title used on dialog boxes
+#: data/applications/metacity.desktop.in:3 data/ui/delete-dialog.ui:8
+#: data/ui/session-dialog.ui:16
 msgid "Metacity"
 msgstr "Metacity"
 
@@ -241,9 +243,6 @@ msgid "Compositor"
 msgstr "Засіб композиції"
 
 #: data/schemas/org.gnome.metacity.gschema.xml:34
-#| msgid ""
-#| "Compositor that Metacity will use for compositing. Possible values are "
-#| "“none” and “xrender”."
 msgid ""
 "Compositor that Metacity will use for compositing. Possible values are "
 "“none”, “xrender” and “xpresent”."
@@ -322,6 +321,41 @@ msgstr ""
 "використовується у GTK+ для декорацій на боці клієнта. Тема Metacity: дані "
 "завантажуються з metacity-theme-x.xml і CSS. Якщо ви використовуєте тему "
 "цього типу, вам СЛІД надати коректну назву теми."
+
+#: data/ui/delete-dialog.ui:22
+msgid "_Force Quit"
+msgstr "П_римусово вийти"
+
+#: data/ui/delete-dialog.ui:37
+msgid "_Wait"
+msgstr "_Зачекати"
+
+#: data/ui/delete-dialog.ui:105
+#| msgid ""
+#| "You may choose to wait a short while for it to continue or force the "
+#| "application to quit entirely."
+msgid ""
+"<i>You may choose to wait a short while for it to continue or force the "
+"application to quit entirely.</i>"
+msgstr ""
+"<i>Можете трошки зачекати відновлення активності або примусово закрити"
+" програму.</i>"
+
+#: data/ui/session-dialog.ui:30
+msgid "_Cancel"
+msgstr "_Скасувати"
+
+#: data/ui/session-dialog.ui:47
+msgid "_OK"
+msgstr "_Гаразд"
+
+#: data/ui/session-dialog.ui:78
+msgid ""
+"These windows do not support &quot;save current setup&quot; and will have to "
+"be restarted manually next time you log in."
+msgstr ""
+"Ці вікна не підтримують «збереження поточних параметрів», при наступному "
+"входженні їх треба запустити власноруч."
 
 #: data/ui/theme-viewer-window.ui:86
 msgid "Reload"
@@ -419,6 +453,12 @@ msgstr "Продуктивність"
 msgid "Metacity Theme Viewer"
 msgstr "Переглядач тем Metacity"
 
+#. Translators: %s is a window title
+#: dialog/meta-delete-dialog.c:69
+#, c-format
+msgid "<tt>%s</tt> is not responding."
+msgstr "<tt>%s</tt> не відповідає."
+
 #: libmetacity/meta-color-spec.c:246
 #, c-format
 msgid ""
@@ -458,8 +498,8 @@ msgstr ""
 #: libmetacity/meta-color-spec.c:323
 #, c-format
 msgid ""
-"GTK color specification must have a close bracket after the state, e.g. gtk:"
-"fg[NORMAL] where NORMAL is the state; could not parse '%s'"
+"GTK color specification must have a close bracket after the state, e.g. "
+"gtk:fg[NORMAL] where NORMAL is the state; could not parse '%s'"
 msgstr ""
 "При визначенні кольору GTK після вказування режиму повинна бути завершальна "
 "прямокутна дужка, наприклад, gtk:fg[NORMAL], де NORMAL — режим; неможливо "
@@ -495,7 +535,8 @@ msgstr "Значення альфа «%s» у змішаному кольорі 
 
 #: libmetacity/meta-color-spec.c:432
 #, c-format
-msgid "Shade format is 'shade/base_color/factor', '%s' does not fit the format"
+msgid ""
+"Shade format is 'shade/base_color/factor', '%s' does not fit the format"
 msgstr ""
 "Формат тіні такий — «shade/base_color/factor», «%s» не відповідає формату"
 
@@ -585,7 +626,8 @@ msgid "Coordinate expression had a close parenthesis with no open parenthesis"
 msgstr "Вираз координати містить завершальну дужку без відповідного відкриття"
 
 #: libmetacity/meta-draw-spec.c:1044
-msgid "Coordinate expression had an open parenthesis with no close parenthesis"
+msgid ""
+"Coordinate expression had an open parenthesis with no close parenthesis"
 msgstr "Вираз координати містить завершальну дужку без відповідного закриття "
 
 #: libmetacity/meta-draw-spec.c:1054
@@ -719,11 +761,11 @@ msgstr ""
 #: libmetacity/meta-theme-metacity.c:697
 #, c-format
 msgid ""
-"Invalid title scale '%s' (must be one of xx-small,x-small,small,medium,large,"
-"x-large,xx-large)\n"
+"Invalid title scale '%s' (must be one of xx-small,x-"
+"small,small,medium,large,x-large,xx-large)\n"
 msgstr ""
-"Неприпустимий масштаб заголовку «%s» (можливі значення: xx-small,x-small,"
-"small,medium,large,x-large,xx-large)\n"
+"Неприпустимий масштаб заголовку «%s» (можливі значення: xx-small,x-"
+"small,small,medium,large,x-large,xx-large)\n"
 
 #: libmetacity/meta-theme-metacity.c:726 libmetacity/meta-theme-metacity.c:754
 #, c-format
@@ -993,7 +1035,8 @@ msgstr ""
 
 #: libmetacity/meta-theme-metacity.c:3381
 #, c-format
-msgid "Should not have 'resize' attribute on <%s> element for maximized states"
+msgid ""
+"Should not have 'resize' attribute on <%s> element for maximized states"
 msgstr ""
 "Не слід використовувати ознаку «resize» у елементі <%s> для розгорнутого "
 "стану"
@@ -1030,7 +1073,8 @@ msgstr ""
 #: libmetacity/meta-theme-metacity.c:3640
 #, c-format
 msgid "Theme requires version %s but latest supported theme version is %d.%d"
-msgstr "Тема потребує версії %s, але найсвіжішою підтримуваною версією є %d.%d"
+msgstr ""
+"Тема потребує версії %s, але найсвіжішою підтримуваною версією є %d.%d"
 
 #: libmetacity/meta-theme-metacity.c:3664
 #, c-format
@@ -1123,28 +1167,7 @@ msgstr "Не вдалось знайти коректний файл для те
 msgid "Bell event"
 msgstr "Подія гудка"
 
-#. Translators: %s is a window title
-#: src/core/delete.c:94
-#, c-format
-msgid "<tt>%s</tt> is not responding."
-msgstr "<tt>%s</tt> не відповідає."
-
-#: src/core/delete.c:99
-msgid ""
-"You may choose to wait a short while for it to continue or force the "
-"application to quit entirely."
-msgstr ""
-"Можете трошки зачекати відновлення активності або примусово закрити програму."
-
-#: src/core/delete.c:108
-msgid "_Wait"
-msgstr "_Зачекати"
-
-#: src/core/delete.c:108
-msgid "_Force Quit"
-msgstr "П_римусово вийти"
-
-#: src/core/main.c:102
+#: src/core/main.c:105
 #, c-format
 msgid ""
 "metacity %s\n"
@@ -1159,59 +1182,59 @@ msgstr ""
 "Не надається НІЯКИХ гарантій; навіть ПРИДАТНОСТІ ДЛЯ ПРОДАЖУ чи "
 "ВІДПОВІДНОСТІ ПЕВНІЙ МЕТІ.\n"
 
-#: src/core/main.c:198 src/core/main.c:215
+#: src/core/main.c:196 src/core/main.c:213
 #, c-format
 msgid "Option “%s” is deprecated, use the “--compositor” instead."
 msgstr ""
 "Параметр «%s» є застарілим. Скористайтеся замість нього параметром «--"
 "compositor»."
 
-#: src/core/main.c:243
+#: src/core/main.c:241
 #, c-format
 msgid "“%s” is not a valid compositor"
 msgstr "«%s» не є коректним засобом композиції"
 
-#: src/core/main.c:278
+#: src/core/main.c:276
 msgid "Disable connection to session manager"
 msgstr "Вимкнути з'єднання з менеджером сеансу"
 
-#: src/core/main.c:284
+#: src/core/main.c:282
 msgid "Replace the running window manager with Metacity"
 msgstr "Замінити запущений менеджер вікон на Metacity"
 
-#: src/core/main.c:290
+#: src/core/main.c:288
 msgid "Specify session management ID"
 msgstr "Вказати ідентифікатор сеансу"
 
-#: src/core/main.c:295
+#: src/core/main.c:293
 msgid "X Display to use"
 msgstr "Екран X "
 
-#: src/core/main.c:301
+#: src/core/main.c:299
 msgid "Initialize session from savefile"
 msgstr "Розпочати сеанс зі збереженого файла"
 
-#: src/core/main.c:307
+#: src/core/main.c:305
 msgid "Print version"
 msgstr "Показати версію"
 
-#: src/core/main.c:313
+#: src/core/main.c:311
 msgid "Make X calls synchronous"
 msgstr "Зробити виклики X синхронними"
 
-#: src/core/main.c:322
+#: src/core/main.c:320
 msgid "Turn compositing on"
 msgstr "Увімкнути композитний режим"
 
-#: src/core/main.c:331
+#: src/core/main.c:329
 msgid "Turn compositing off"
 msgstr "Вимкнути композитний режим"
 
-#: src/core/main.c:340
+#: src/core/main.c:338
 msgid "Compositor to use"
 msgstr "Використаний засіб композиції"
 
-#: src/core/main.c:346
+#: src/core/main.c:344
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr ""
@@ -1230,34 +1253,26 @@ msgstr ""
 msgid "Workspace %d"
 msgstr "Робочий простір %d"
 
-#: src/core/session.c:1213
+#: src/core/session.c:1212
 msgid "<metacity_session> attribute seen but we already have the session ID"
 msgstr ""
 "було прочитано атрибут <metacity_session>, але ідентифікатор сеансу вже було "
 "встановлено"
 
-#: src/core/session.c:1226 src/core/session.c:1301 src/core/session.c:1333
-#: src/core/session.c:1405 src/core/session.c:1465
+#: src/core/session.c:1225 src/core/session.c:1300 src/core/session.c:1332
+#: src/core/session.c:1404 src/core/session.c:1464
 #, c-format
 msgid "Unknown attribute %s on <%s> element"
 msgstr "Невідомий атрибут %s у елементі <%s>"
 
-#: src/core/session.c:1243
+#: src/core/session.c:1242
 msgid "nested <window> tag"
 msgstr "вкладена мітка <window>"
 
-#: src/core/session.c:1485
+#: src/core/session.c:1484
 #, c-format
 msgid "Unknown element %s"
 msgstr "Невідомий елемент %s"
-
-#: src/core/session.c:1841
-msgid ""
-"These windows do not support &quot;save current setup&quot; and will have to "
-"be restarted manually next time you log in."
-msgstr ""
-"Ці вікна не підтримують «збереження поточних параметрів», при наступному "
-"входженні їх треба запустити власноруч."
 
 #: src/core/util.c:106
 #, c-format
@@ -1265,27 +1280,27 @@ msgid "Opened log file %s\n"
 msgstr "Відкрито журнал %s\n"
 
 #. Translators: the title of a window from another machine
-#: src/core/window-props.c:548
+#: src/core/window-props.c:538
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (на %s)"
 
 #. Simple case-- don't bother to look it up.  It's root.
-#: src/core/window-props.c:583
+#: src/core/window-props.c:573
 #, c-format
 msgid "%s (as superuser)"
 msgstr "%s (від адміністратора)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine
-#: src/core/window-props.c:602
+#: src/core/window-props.c:592
 #, c-format
 msgid "%s (as %s)"
 msgstr "%s (від %s)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine, whose name we don't know
-#: src/core/window-props.c:608
+#: src/core/window-props.c:598
 #, c-format
 msgid "%s (as another user)"
 msgstr "%s (від іншого користувача)"
@@ -1295,23 +1310,23 @@ msgstr "%s (від іншого користувача)"
 msgid "Usage: %s\n"
 msgstr "Використання: %s\n"
 
-#: src/ui/frames.c:1255
+#: src/ui/frames.c:1288
 msgid "Close Window"
 msgstr "Закрити вікно"
 
-#: src/ui/frames.c:1258
+#: src/ui/frames.c:1291
 msgid "Window Menu"
 msgstr "Меню вікна"
 
-#: src/ui/frames.c:1261
+#: src/ui/frames.c:1294
 msgid "Minimize Window"
 msgstr "Згорнути вікно"
 
-#: src/ui/frames.c:1264
+#: src/ui/frames.c:1297
 msgid "Maximize Window"
 msgstr "Розгорнути вікно"
 
-#: src/ui/frames.c:1267
+#: src/ui/frames.c:1300
 msgid "Restore Window"
 msgstr "Відновити вікно"
 
@@ -1555,8 +1570,8 @@ msgid ""
 "server resources (<b>%f</b> milliseconds per frame)."
 msgstr ""
 "Намальовано <b>%d</b> кадрів за <b>%f</b> с клієнтського часу (<b>%f</b> мс "
-"на кадр) і <b>%f</b> с календарного часу, враховуючи ресурси сервера X (<b>"
-"%f</b> мілісекунд на кадр)."
+"на кадр) і <b>%f</b> с календарного часу, враховуючи ресурси сервера X "
+"(<b>%f</b> мілісекунд на кадр)."
 
 #: theme-viewer/theme-viewer-window.c:244
 msgid "Run again"
