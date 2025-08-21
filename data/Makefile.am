@@ -5,6 +5,7 @@ SUBDIRS = \
 	keybindings \
 	pkgconfig \
 	schemas \
+	systemd \
 	ui \
 	$(NULL)
 

@@ -355,6 +355,7 @@ AC_CONFIG_FILES([
   data/pkgconfig/Makefile
   data/pkgconfig/libmetacity.pc
   data/schemas/Makefile
+  data/systemd/Makefile
   data/ui/Makefile
 
   doc/Makefile
