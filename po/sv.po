@@ -1,15 +1,15 @@
 # Swedish messages for metacity.
-# Copyright © 2001-2021 Free Software Foundation, Inc.
+# Copyright © 2001-2025 Free Software Foundation, Inc.
 # Christian Rose <menthos@menthos.com>, 2001, 2002, 2003, 2004, 2005.
 # Daniel Nylander <po@danielnylander.se>, 2006, 2007, 2008, 2009, 2010, 2011, 2012.
 # Josef Andersson <josef.andersson@fripost.org>, 2016.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2016, 2017, 2020, 2021.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2016, 2017, 2020, 2021, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues\n"
-"POT-Creation-Date: 2021-04-13 15:44+0000\n"
-"PO-Revision-Date: 2021-04-13 21:38+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues/\n"
+"POT-Creation-Date: 2025-08-21 19:18+0000\n"
+"PO-Revision-Date: 2025-08-22 01:45+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -17,11 +17,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.6\n"
 "X-Project-Style: gnome\n"
 
-#. Translators: This is the title used on dialog boxes
-#: data/applications/metacity.desktop.in:4 src/core/util.c:429
+#. This is the title used on dialog boxes
+#: data/applications/metacity.desktop.in:3 data/ui/delete-dialog.ui:8
+#: data/ui/session-dialog.ui:16
 msgid "Metacity"
 msgstr "Metacity"
 
@@ -219,7 +220,7 @@ msgid ""
 "window instead of only icons."
 msgstr ""
 "Om satt till true (sant) kommer Metacity att visa miniatyrbilder av "
-"fönsterinnehåll istället för ikoner i Alt-Tab-fönstret."
+"fönsterinnehåll i stället för ikoner i Alt-Tab-fönstret."
 
 #: data/schemas/org.gnome.metacity.gschema.xml:23
 msgid "Compositing Manager"
@@ -231,7 +232,7 @@ msgid ""
 "is deprecated, use the “compositor” instead."
 msgstr ""
 "Fastställer huruvida Metacity är en sammansättningshanterare. FÖRÅLDRAD: "
-"Denna nyckel är föråldrad, använd ”compositor” istället."
+"Denna nyckel är föråldrad, använd ”compositor” i stället."
 
 #: data/schemas/org.gnome.metacity.gschema.xml:33
 msgid "Compositor"
@@ -314,6 +315,38 @@ msgstr ""
 "av Mutter för dekorationer på serversidan och av GTK+ för dekorationer på "
 "klientsidan. Metacity-tema: data läses in från metacity-theme-x.xml och CSS. "
 "När detta tema används MÅSTE du använda ett giltigt temanamn."
+
+#: data/ui/delete-dialog.ui:22
+msgid "_Force Quit"
+msgstr "_Tvinga att avsluta"
+
+#: data/ui/delete-dialog.ui:37
+msgid "_Wait"
+msgstr "_Vänta"
+
+#: data/ui/delete-dialog.ui:105
+msgid ""
+"<i>You may choose to wait a short while for it to continue or force the "
+"application to quit entirely.</i>"
+msgstr ""
+"<i>Du kan välja att vänta en kort stund på det för att fortsätta eller "
+"tvinga programmet att helt avslutas.</i>"
+
+#: data/ui/session-dialog.ui:30
+msgid "_Cancel"
+msgstr "A_vbryt"
+
+#: data/ui/session-dialog.ui:47
+msgid "_OK"
+msgstr "_OK"
+
+#: data/ui/session-dialog.ui:78
+msgid ""
+"These windows do not support &quot;save current setup&quot; and will have to "
+"be restarted manually next time you log in."
+msgstr ""
+"Dessa fönster har inte stöd för &quot;spara nuvarande inställningar&quot; "
+"och kommer att behöva startas om manuellt nästa gång du loggar in."
 
 #: data/ui/theme-viewer-window.ui:86
 msgid "Reload"
@@ -411,6 +444,12 @@ msgstr "Prestandatest"
 msgid "Metacity Theme Viewer"
 msgstr "Metacity temavisare"
 
+#. Translators: %s is a window title
+#: dialog/meta-delete-dialog.c:69
+#, c-format
+msgid "<tt>%s</tt> is not responding."
+msgstr "<tt>%s</tt> svarar inte."
+
 #: libmetacity/meta-color-spec.c:246
 #, c-format
 msgid ""
@@ -444,17 +483,17 @@ msgid ""
 "GTK color specification must have the state in brackets, e.g. gtk:fg[NORMAL] "
 "where NORMAL is the state; could not parse '%s'"
 msgstr ""
-"GTK-färgspecifikationen måste ha tillståndet inom klamrar, t.ex. gtk:"
-"fg[NORMAL], där NORMAL är tillståndet; kunde inte tolka ”%s”"
+"GTK-färgspecifikationen måste ha tillståndet inom klamrar, t.ex. "
+"gtk:fg[NORMAL], där NORMAL är tillståndet; kunde inte tolka ”%s”"
 
 #: libmetacity/meta-color-spec.c:323
 #, c-format
 msgid ""
-"GTK color specification must have a close bracket after the state, e.g. gtk:"
-"fg[NORMAL] where NORMAL is the state; could not parse '%s'"
+"GTK color specification must have a close bracket after the state, e.g. "
+"gtk:fg[NORMAL] where NORMAL is the state; could not parse '%s'"
 msgstr ""
-"GTK-färgspecifikationen måste ha en stängningsklammer efter tillståndet, t."
-"ex. gtk:fg[NORMAL], där NORMAL är tillståndet; kunde inte tolka ”%s”"
+"GTK-färgspecifikationen måste ha en stängningsklammer efter tillståndet, "
+"t.ex. gtk:fg[NORMAL], där NORMAL är tillståndet; kunde inte tolka ”%s”"
 
 #: libmetacity/meta-color-spec.c:332
 #, c-format
@@ -555,7 +594,7 @@ msgstr "Koordinatuttrycket hade en operand där en operator förväntades"
 
 #: libmetacity/meta-draw-spec.c:799
 msgid "Coordinate expression ended with an operator instead of an operand"
-msgstr "Koordinatuttrycket slutade med en operator istället för en operand"
+msgstr "Koordinatuttrycket slutade med en operator i stället för en operand"
 
 #: libmetacity/meta-draw-spec.c:809
 #, c-format
@@ -713,11 +752,11 @@ msgstr ""
 #: libmetacity/meta-theme-metacity.c:697
 #, c-format
 msgid ""
-"Invalid title scale '%s' (must be one of xx-small,x-small,small,medium,large,"
-"x-large,xx-large)\n"
+"Invalid title scale '%s' (must be one of xx-small,x-"
+"small,small,medium,large,x-large,xx-large)\n"
 msgstr ""
-"Ogiltig titelskala ”%s” (måste vara ett av xx-small,x-small,small,medium,"
-"large,x-large,xx-large)\n"
+"Ogiltig titelskala ”%s” (måste vara ett av xx-small,x-"
+"small,small,medium,large,x-large,xx-large)\n"
 
 #: libmetacity/meta-theme-metacity.c:726 libmetacity/meta-theme-metacity.c:754
 #, c-format
@@ -1118,29 +1157,7 @@ msgstr "Misslyckades med att hitta en giltig fil för temat ”%s”"
 msgid "Bell event"
 msgstr "Ljudhändelse"
 
-#. Translators: %s is a window title
-#: src/core/delete.c:94
-#, c-format
-msgid "<tt>%s</tt> is not responding."
-msgstr "<tt>%s</tt> svarar inte."
-
-#: src/core/delete.c:99
-msgid ""
-"You may choose to wait a short while for it to continue or force the "
-"application to quit entirely."
-msgstr ""
-"Du kan välja att vänta en kort stund på det för att fortsätta eller tvinga "
-"programmet att helt avslutas."
-
-#: src/core/delete.c:108
-msgid "_Wait"
-msgstr "_Vänta"
-
-#: src/core/delete.c:108
-msgid "_Force Quit"
-msgstr "_Tvinga att avsluta"
-
-#: src/core/main.c:102
+#: src/core/main.c:105
 #, c-format
 msgid ""
 "metacity %s\n"
@@ -1155,57 +1172,57 @@ msgstr ""
 "Det finns INGA garantier; inte ens för SÄLJBARHET eller LÄMPLIGHET FÖR NÅGOT "
 "SPECIELLT ÄNDAMÅL.\n"
 
-#: src/core/main.c:198 src/core/main.c:215
+#: src/core/main.c:196 src/core/main.c:213
 #, c-format
 msgid "Option “%s” is deprecated, use the “--compositor” instead."
-msgstr "Flaggan ”%s” är föråldrad, använd ”--compositor” istället."
+msgstr "Flaggan ”%s” är föråldrad, använd ”--compositor” i stället."
 
-#: src/core/main.c:243
+#: src/core/main.c:241
 #, c-format
 msgid "“%s” is not a valid compositor"
 msgstr "”%s” är inte en giltig sammansättningshanterare"
 
-#: src/core/main.c:278
+#: src/core/main.c:276
 msgid "Disable connection to session manager"
 msgstr "Inaktivera anslutning till sessionshanteraren"
 
-#: src/core/main.c:284
+#: src/core/main.c:282
 msgid "Replace the running window manager with Metacity"
 msgstr "Ersätt den körande fönsterhanteraren med Metacity"
 
-#: src/core/main.c:290
+#: src/core/main.c:288
 msgid "Specify session management ID"
 msgstr "Ange sessionshanterings-ID"
 
-#: src/core/main.c:295
+#: src/core/main.c:293
 msgid "X Display to use"
 msgstr "X-display att använda"
 
-#: src/core/main.c:301
+#: src/core/main.c:299
 msgid "Initialize session from savefile"
 msgstr "Initiera session från sparandefil"
 
-#: src/core/main.c:307
+#: src/core/main.c:305
 msgid "Print version"
 msgstr "Skriv ut version"
 
-#: src/core/main.c:313
+#: src/core/main.c:311
 msgid "Make X calls synchronous"
 msgstr "Gör X-anrop synkrona"
 
-#: src/core/main.c:322
+#: src/core/main.c:320
 msgid "Turn compositing on"
 msgstr "Slå på sammansättning"
 
-#: src/core/main.c:331
+#: src/core/main.c:329
 msgid "Turn compositing off"
 msgstr "Stäng av sammansättning"
 
-#: src/core/main.c:340
+#: src/core/main.c:338
 msgid "Compositor to use"
 msgstr "Sammansättningshanterare att använda"
 
-#: src/core/main.c:346
+#: src/core/main.c:344
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr "Skapa inte helskärmsfönster som är maximerade och saknar dekorationer"
@@ -1214,41 +1231,33 @@ msgstr "Skapa inte helskärmsfönster som är maximerade och saknar dekorationer
 msgid ""
 "Setting “compositing-manager” is deprecated, use the “compositor” instead."
 msgstr ""
-"Att ställa in ”compositing-manager” är föråldrat, använd ”compositor” "
-"istället."
+"Att ställa in ”compositing-manager” är föråldrat, använd ”compositor” i "
+"stället."
 
 #: src/core/prefs.c:1446
 #, c-format
 msgid "Workspace %d"
 msgstr "Arbetsyta %d"
 
-#: src/core/session.c:1213
+#: src/core/session.c:1212
 msgid "<metacity_session> attribute seen but we already have the session ID"
 msgstr "<metacity_session>-attribut hittat men vi har redan sessions-ID"
 
 # SUN CHANGED MESSAGE
-#: src/core/session.c:1226 src/core/session.c:1301 src/core/session.c:1333
-#: src/core/session.c:1405 src/core/session.c:1465
+#: src/core/session.c:1225 src/core/session.c:1300 src/core/session.c:1332
+#: src/core/session.c:1404 src/core/session.c:1464
 #, c-format
 msgid "Unknown attribute %s on <%s> element"
 msgstr "Okänt attribut %s i <%s>-element"
 
-#: src/core/session.c:1243
+#: src/core/session.c:1242
 msgid "nested <window> tag"
 msgstr "nästlad <window>-tagg"
 
-#: src/core/session.c:1485
+#: src/core/session.c:1484
 #, c-format
 msgid "Unknown element %s"
 msgstr "Okänt element %s"
-
-#: src/core/session.c:1841
-msgid ""
-"These windows do not support &quot;save current setup&quot; and will have to "
-"be restarted manually next time you log in."
-msgstr ""
-"Dessa fönster har inte stöd för &quot;spara nuvarande inställningar&quot; "
-"och kommer att behöva startas om manuellt nästa gång du loggar in."
 
 #: src/core/util.c:106
 #, c-format
@@ -1256,27 +1265,27 @@ msgid "Opened log file %s\n"
 msgstr "Öppnade loggfilen %s\n"
 
 #. Translators: the title of a window from another machine
-#: src/core/window-props.c:548
+#: src/core/window-props.c:538
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (på %s)"
 
 #. Simple case-- don't bother to look it up.  It's root.
-#: src/core/window-props.c:583
+#: src/core/window-props.c:573
 #, c-format
 msgid "%s (as superuser)"
 msgstr "%s (som superanvändare)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine
-#: src/core/window-props.c:602
+#: src/core/window-props.c:592
 #, c-format
 msgid "%s (as %s)"
 msgstr "%s (som %s)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine, whose name we don't know
-#: src/core/window-props.c:608
+#: src/core/window-props.c:598
 #, c-format
 msgid "%s (as another user)"
 msgstr "%s (som en annan användare)"
@@ -1286,23 +1295,23 @@ msgstr "%s (som en annan användare)"
 msgid "Usage: %s\n"
 msgstr "Användning: %s\n"
 
-#: src/ui/frames.c:1255
+#: src/ui/frames.c:1288
 msgid "Close Window"
 msgstr "Stäng fönster"
 
-#: src/ui/frames.c:1258
+#: src/ui/frames.c:1291
 msgid "Window Menu"
 msgstr "Fönstermeny"
 
-#: src/ui/frames.c:1261
+#: src/ui/frames.c:1294
 msgid "Minimize Window"
 msgstr "Minimera fönster"
 
-#: src/ui/frames.c:1264
+#: src/ui/frames.c:1297
 msgid "Maximize Window"
 msgstr "Maximera fönster"
 
-#: src/ui/frames.c:1267
+#: src/ui/frames.c:1300
 msgid "Restore Window"
 msgstr "Återställ fönster"
 
@@ -1706,7 +1715,7 @@ msgstr "Kör igen"
 #~ "Window %s sets SM_CLIENT_ID on itself, instead of on the WM_CLIENT_LEADER "
 #~ "window as specified in the ICCCM.\n"
 #~ msgstr ""
-#~ "Fönstret %s ställer in SM_CLIENT_ID på sig själv, istället för på "
+#~ "Fönstret %s ställer in SM_CLIENT_ID på sig själv, i stället för på "
 #~ "WM_CLIENT_LEADER-fönstret som är angivet i ICCCM.\n"
 
 #~ msgid ""
