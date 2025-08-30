@@ -11,24 +11,26 @@
 # Lele Long <schemacs@gmail.com>, 2011.
 # YunQiang Su <wzssyqa@gmail.com>, 2012.
 # Dingzhong Chen <wsxy162@gmail.com>, 2016-2020.
+# lumingzh <lumingzh@qq.com>, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues\n"
-"POT-Creation-Date: 2021-07-22 15:35+0000\n"
-"PO-Revision-Date: 2021-08-29 15:44-0400\n"
-"Last-Translator: Boyuan Yang <073plan@gmail.com>\n"
-"Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues/\n"
+"POT-Creation-Date: 2025-08-23 10:41+0000\n"
+"PO-Revision-Date: 2025-08-30 10:18+0800\n"
+"Last-Translator: lumingzh <lumingzh@qq.com>\n"
+"Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Gtranslator 48.0\n"
 
-#. Translators: This is the title used on dialog boxes
-#: data/applications/metacity.desktop.in:4 src/core/util.c:429
+#. This is the title used on dialog boxes
+#: data/applications/metacity.desktop.in:3 data/ui/delete-dialog.ui:8
+#: data/ui/session-dialog.ui:16
 msgid "Metacity"
 msgstr "Metacity"
 
@@ -313,6 +315,35 @@ msgstr ""
 "饰和 GTK+ 在客户端装饰所使用。Metacity 主题：数据从 metacity-theme-x.xml 和 "
 "CSS 加载。当使用该主题类型时你必须提供一个有效的主题名称。"
 
+#: data/ui/delete-dialog.ui:22
+msgid "_Force Quit"
+msgstr "强制退出(_F)"
+
+#: data/ui/delete-dialog.ui:37
+msgid "_Wait"
+msgstr "等待(_W)"
+
+#: data/ui/delete-dialog.ui:105
+msgid ""
+"<i>You may choose to wait a short while for it to continue or force the "
+"application to quit entirely.</i>"
+msgstr "<i>您可以选择稍等一会儿然后继续，或者强制退出该应用程序。</i>"
+
+#: data/ui/session-dialog.ui:30
+msgid "_Cancel"
+msgstr "取消(_C)"
+
+#: data/ui/session-dialog.ui:47
+msgid "_OK"
+msgstr "确定(_O)"
+
+#: data/ui/session-dialog.ui:78
+msgid ""
+"These windows do not support &quot;save current setup&quot; and will have to "
+"be restarted manually next time you log in."
+msgstr ""
+"这些窗口不支持&quot;保存当前设置&quot;，您在下次登录时，必须手动重启动它们。"
+
 #: data/ui/theme-viewer-window.ui:86
 msgid "Reload"
 msgstr "重新加载"
@@ -408,6 +439,12 @@ msgstr "基准"
 #: data/ui/theme-viewer-window.ui:652 theme-viewer/theme-viewer-window.c:982
 msgid "Metacity Theme Viewer"
 msgstr "Metacity 主题查看器"
+
+#. Translators: %s is a window title
+#: dialog/meta-delete-dialog.c:69
+#, c-format
+msgid "<tt>%s</tt> is not responding."
+msgstr "<tt>%s</tt> 未响应。"
 
 #: libmetacity/meta-color-spec.c:246
 #, c-format
@@ -629,8 +666,8 @@ msgid ""
 "<button function='%s' state='%s' draw_ops='whatever'/> must be specified for "
 "this frame style"
 msgstr ""
-"必须为该框架风格指定<button function=\"%s\" state=\"%s\" draw_ops=\"whatever"
-"\"/>"
+"必须为该框架风格指定<button function=\"%s\" state=\"%s\" "
+"draw_ops=\"whatever\"/>"
 
 #: libmetacity/meta-gradient-spec.c:182
 msgid "Gradients should have at least two colors"
@@ -1049,8 +1086,8 @@ msgid ""
 "No frame style set for window type '%s' in theme '%s', add a <window "
 "type='%s' style_set='whatever' /> element"
 msgstr ""
-"没有为窗口类型“%s”（在主题“%s”中）设置框架风格，请添加一个 <window type=\"%s"
-"\" style_set=\"whatever\"/> 元素"
+"没有为窗口类型“%s”（在主题“%s”中）设置框架风格，请添加一个 <window "
+"type=\"%s\" style_set=\"whatever\"/> 元素"
 
 #: libmetacity/meta-theme-metacity.c:4141
 msgid "No draw_ops provided for frame piece"
@@ -1083,26 +1120,6 @@ msgstr "找不到主题“%s”的有效文件"
 msgid "Bell event"
 msgstr "响铃事件"
 
-#. Translators: %s is a window title
-#: src/core/delete.c:94
-#, c-format
-msgid "<tt>%s</tt> is not responding."
-msgstr "<tt>%s</tt> 未响应。"
-
-#: src/core/delete.c:99
-msgid ""
-"You may choose to wait a short while for it to continue or force the "
-"application to quit entirely."
-msgstr "您可以选择稍等一会儿然后继续，或者强制退出该应用程序。"
-
-#: src/core/delete.c:108
-msgid "_Wait"
-msgstr "等待(_W)"
-
-#: src/core/delete.c:108
-msgid "_Force Quit"
-msgstr "强制退出(_F)"
-
 #: src/core/main.c:105
 #, c-format
 msgid ""
@@ -1117,57 +1134,57 @@ msgstr ""
 "这是自由软件；版权条款请参见源码.\n"
 "不作任何保证；即使是对适销性或者适合某种特定目的也不作保证。\n"
 
-#: src/core/main.c:201 src/core/main.c:218
+#: src/core/main.c:196 src/core/main.c:213
 #, c-format
 msgid "Option “%s” is deprecated, use the “--compositor” instead."
 msgstr "选项“%s”已弃用，使用“--compositor”替代。"
 
-#: src/core/main.c:246
+#: src/core/main.c:241
 #, c-format
 msgid "“%s” is not a valid compositor"
 msgstr "“%s”不是有效的合成器"
 
-#: src/core/main.c:281
+#: src/core/main.c:276
 msgid "Disable connection to session manager"
 msgstr "禁止连接到会话管理器"
 
-#: src/core/main.c:287
+#: src/core/main.c:282
 msgid "Replace the running window manager with Metacity"
 msgstr "将运行中的窗口管理器替换为 Metacity"
 
-#: src/core/main.c:293
+#: src/core/main.c:288
 msgid "Specify session management ID"
 msgstr "指定会话管理 ID"
 
-#: src/core/main.c:298
+#: src/core/main.c:293
 msgid "X Display to use"
 msgstr "要使用的 X 显示"
 
-#: src/core/main.c:304
+#: src/core/main.c:299
 msgid "Initialize session from savefile"
 msgstr "从保存文件中初始化会话"
 
-#: src/core/main.c:310
+#: src/core/main.c:305
 msgid "Print version"
 msgstr "打印版本"
 
-#: src/core/main.c:316
+#: src/core/main.c:311
 msgid "Make X calls synchronous"
 msgstr "使 X 调用同步"
 
-#: src/core/main.c:325
+#: src/core/main.c:320
 msgid "Turn compositing on"
 msgstr "打开合成效果"
 
-#: src/core/main.c:334
+#: src/core/main.c:329
 msgid "Turn compositing off"
 msgstr "关闭合成效果"
 
-#: src/core/main.c:343
+#: src/core/main.c:338
 msgid "Compositor to use"
 msgstr "要使用的合成器"
 
-#: src/core/main.c:349
+#: src/core/main.c:344
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr "不要将已最大化的窗口全屏，不要做任何装饰"
@@ -1201,40 +1218,33 @@ msgstr "嵌套 <window> 标记"
 msgid "Unknown element %s"
 msgstr "未知的元素 %s"
 
-#: src/core/session.c:1845
-msgid ""
-"These windows do not support &quot;save current setup&quot; and will have to "
-"be restarted manually next time you log in."
-msgstr ""
-"这些窗口不支持&quot;保存当前设置&quot;，您在下次登录时，必须手动重启动它们。"
-
 #: src/core/util.c:106
 #, c-format
 msgid "Opened log file %s\n"
 msgstr "打开的日志文件 %s\n"
 
 #. Translators: the title of a window from another machine
-#: src/core/window-props.c:548
+#: src/core/window-props.c:538
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s（于 %s）"
 
 #. Simple case-- don't bother to look it up.  It's root.
-#: src/core/window-props.c:583
+#: src/core/window-props.c:573
 #, c-format
 msgid "%s (as superuser)"
 msgstr "%s（以超级用户）"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine
-#: src/core/window-props.c:602
+#: src/core/window-props.c:592
 #, c-format
 msgid "%s (as %s)"
 msgstr "%s（以 %s）"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine, whose name we don't know
-#: src/core/window-props.c:608
+#: src/core/window-props.c:598
 #, c-format
 msgid "%s (as another user)"
 msgstr "%s（以另一用户）"
@@ -1244,23 +1254,23 @@ msgstr "%s（以另一用户）"
 msgid "Usage: %s\n"
 msgstr "用法：%s\n"
 
-#: src/ui/frames.c:1255
+#: src/ui/frames.c:1288
 msgid "Close Window"
 msgstr "关闭窗口"
 
-#: src/ui/frames.c:1258
+#: src/ui/frames.c:1291
 msgid "Window Menu"
 msgstr "窗口菜单"
 
-#: src/ui/frames.c:1261
+#: src/ui/frames.c:1294
 msgid "Minimize Window"
 msgstr "最小化窗口"
 
-#: src/ui/frames.c:1264
+#: src/ui/frames.c:1297
 msgid "Maximize Window"
 msgstr "最大化窗口"
 
-#: src/ui/frames.c:1267
+#: src/ui/frames.c:1300
 msgid "Restore Window"
 msgstr "恢复窗口"
 
@@ -2139,8 +2149,9 @@ msgstr "再次运行"
 
 #~ msgid ""
 #~ "Set this to true to resize with the right button and show a menu with the "
-#~ "middle button while holding down the key given in \"mouse_button_modifier"
-#~ "\"; set it to false to make it work the opposite way around."
+#~ "middle button while holding down the key given in "
+#~ "\"mouse_button_modifier\"; set it to false to make it work the opposite "
+#~ "way around."
 #~ msgstr ""
 #~ "使用右键设置这个为真来更改大小并且当按下“鼠标按钮修饰键”时使用中键来显示菜"
 #~ "单，设置这个为假来实现相反的操作。"
