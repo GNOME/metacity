@@ -1,29 +1,30 @@
 # Hungarian translation of metacity.
-# Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2021 Free Software Foundation, Inc.
+# Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2021, 2025 Free Software Foundation, Inc.
 # This file is distributed under the same license as the metacity package.
 #
 # Andras Timar <timar at gnome dot hu>, 2002, 2003.
 # Gabor Sari <saga at externet dot hu>, 2003.
 # Laszlo Dvornik <dvornik at gnome dot hu>, 2004.
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2014, 2016.
-# Balázs Úr <ur.balazs at fsf dot hu>, 2013, 2014, 2015, 2016, 2017, 2021.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2013, 2014, 2015, 2016, 2017, 2021, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues\n"
-"POT-Creation-Date: 2021-07-19 12:03+0000\n"
-"PO-Revision-Date: 2021-09-12 08:30+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues/\n"
+"POT-Creation-Date: 2025-08-30 02:20+0000\n"
+"PO-Revision-Date: 2025-09-01 15:30+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
-"Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
+"Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 19.12.3\n"
+"X-Generator: Lokalize 24.12.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. Translators: This is the title used on dialog boxes
-#: data/applications/metacity.desktop.in:4 src/core/util.c:429
+#. This is the title used on dialog boxes
+#: data/applications/metacity.desktop.in:3 data/ui/delete-dialog.ui:8
+#: data/ui/session-dialog.ui:16
 msgid "Metacity"
 msgstr "Metacity"
 
@@ -240,9 +241,6 @@ msgid "Compositor"
 msgstr "Kompozitáló"
 
 #: data/schemas/org.gnome.metacity.gschema.xml:34
-#| msgid ""
-#| "Compositor that Metacity will use for compositing. Possible values are "
-#| "“none” and “xrender”."
 msgid ""
 "Compositor that Metacity will use for compositing. Possible values are "
 "“none”, “xrender” and “xpresent”."
@@ -320,6 +318,42 @@ msgstr ""
 "GTK+ a kliensoldalihoz. Metacity téma: az adatok a metacity-theme-x.xml "
 "fájlból és CSS-ből vannak betöltve. Ezen tématípus használatakor egy "
 "érvényes témanevet KELL megadnia."
+
+#: data/ui/delete-dialog.ui:22
+msgid "_Force Quit"
+msgstr "_Erőltetett kilépés"
+
+#: data/ui/delete-dialog.ui:37
+msgid "_Wait"
+msgstr "Vá_rakozás"
+
+#: data/ui/delete-dialog.ui:105
+#| msgid ""
+#| "You may choose to wait a short while for it to continue or force the "
+#| "application to quit entirely."
+msgid ""
+"<i>You may choose to wait a short while for it to continue or force the "
+"application to quit entirely.</i>"
+msgstr ""
+"<i>Várhat egy kicsit a folytatódására, vagy kikényszerítheti az alkalmazás tel"
+"jes kilépését.</i>"
+
+#: data/ui/session-dialog.ui:30
+msgid "_Cancel"
+msgstr "_Mégse"
+
+#: data/ui/session-dialog.ui:47
+msgid "_OK"
+msgstr "_Rendben"
+
+#: data/ui/session-dialog.ui:78
+msgid ""
+"These windows do not support &quot;save current setup&quot; and will have to "
+"be restarted manually next time you log in."
+msgstr ""
+"Az alábbi ablakok nem támogatják az &quot;aktuális beállítások "
+"mentését&quot;, emiatt ezeket a legközelebbi bejelentkezéskor manuálisan "
+"újra kell indítania."
 
 #: data/ui/theme-viewer-window.ui:86
 msgid "Reload"
@@ -417,6 +451,12 @@ msgstr "Teljesítményteszt"
 msgid "Metacity Theme Viewer"
 msgstr "Metacity témamegjelenítő"
 
+#. Translators: %s is a window title
+#: dialog/meta-delete-dialog.c:69
+#, c-format
+msgid "<tt>%s</tt> is not responding."
+msgstr "<tt>%s</tt> nem válaszol."
+
 #: libmetacity/meta-color-spec.c:246
 #, c-format
 msgid ""
@@ -451,15 +491,15 @@ msgid ""
 "GTK color specification must have the state in brackets, e.g. gtk:fg[NORMAL] "
 "where NORMAL is the state; could not parse '%s'"
 msgstr ""
-"GTK szín meghatározásnál az állapotnak szögletes zárójelben kell lennie, pl."
-"gtk:fg[NORMAL] ahol NORMAL az állapot; nem lehetett feldolgozni a "
+"GTK szín meghatározásnál az állapotnak szögletes zárójelben kell lennie, "
+"pl.gtk:fg[NORMAL] ahol NORMAL az állapot; nem lehetett feldolgozni a "
 "következőt: „%s”"
 
 #: libmetacity/meta-color-spec.c:323
 #, c-format
 msgid ""
-"GTK color specification must have a close bracket after the state, e.g. gtk:"
-"fg[NORMAL] where NORMAL is the state; could not parse '%s'"
+"GTK color specification must have a close bracket after the state, e.g. "
+"gtk:fg[NORMAL] where NORMAL is the state; could not parse '%s'"
 msgstr ""
 "A GTK színmeghatározásnál kötelező záró szögletes zárójelet tenni az állapot "
 "után, például gtk:fg[NORMAL], ahol NORMAL az állapot; nem sikerült "
@@ -725,11 +765,11 @@ msgstr ""
 #: libmetacity/meta-theme-metacity.c:697
 #, c-format
 msgid ""
-"Invalid title scale '%s' (must be one of xx-small,x-small,small,medium,large,"
-"x-large,xx-large)\n"
+"Invalid title scale '%s' (must be one of xx-small,x-"
+"small,small,medium,large,x-large,xx-large)\n"
 msgstr ""
-"„%s” érvénytelen címméret (lehetséges értékek: xx-small,x-small,small,medium,"
-"large,x-large,xx-large)\n"
+"„%s” érvénytelen címméret (lehetséges értékek: xx-small,x-"
+"small,small,medium,large,x-large,xx-large)\n"
 
 #: libmetacity/meta-theme-metacity.c:726 libmetacity/meta-theme-metacity.c:754
 #, c-format
@@ -1129,29 +1169,7 @@ msgstr "Nem található érvényes fájl a következő témához: „%s”"
 msgid "Bell event"
 msgstr "Csengetés esemény"
 
-#. Translators: %s is a window title
-#: src/core/delete.c:94
-#, c-format
-msgid "<tt>%s</tt> is not responding."
-msgstr "<tt>%s</tt> nem válaszol."
-
-#: src/core/delete.c:99
-msgid ""
-"You may choose to wait a short while for it to continue or force the "
-"application to quit entirely."
-msgstr ""
-"Várhat egy kicsit a folytatódására, vagy kikényszerítheti az alkalmazás "
-"teljes kilépését."
-
-#: src/core/delete.c:108
-msgid "_Wait"
-msgstr "Vá_rakozás"
-
-#: src/core/delete.c:108
-msgid "_Force Quit"
-msgstr "_Erőltetett kilépés"
-
-#: src/core/main.c:102
+#: src/core/main.c:105
 #, c-format
 msgid ""
 "metacity %s\n"
@@ -1166,58 +1184,58 @@ msgstr ""
 "NINCS garancia; még az ELADHATÓSÁGRA vagy EGY ADOTT CÉLRA VALÓ ALKALMASSÁGRA "
 "vonatkozólag sem.\n"
 
-#: src/core/main.c:198 src/core/main.c:215
+#: src/core/main.c:196 src/core/main.c:213
 #, c-format
 msgid "Option “%s” is deprecated, use the “--compositor” instead."
 msgstr ""
 "A(z) „%s” kapcsoló elavult, használja a „--compositor” kapcsolót helyette."
 
-#: src/core/main.c:243
+#: src/core/main.c:241
 #, c-format
 msgid "“%s” is not a valid compositor"
 msgstr "A(z) „%s” nem érvényes kompozitáló"
 
-#: src/core/main.c:278
+#: src/core/main.c:276
 msgid "Disable connection to session manager"
 msgstr "A munkamenet-kezelőhöz való csatlakozás tiltása"
 
-#: src/core/main.c:284
+#: src/core/main.c:282
 msgid "Replace the running window manager with Metacity"
 msgstr "A futó ablakkezelő helyettesítése a Metacity-vel"
 
-#: src/core/main.c:290
+#: src/core/main.c:288
 msgid "Specify session management ID"
 msgstr "A munkamenet-kezelő azonosítójának megadása"
 
-#: src/core/main.c:295
+#: src/core/main.c:293
 msgid "X Display to use"
 msgstr "A használandó X megjelenítő"
 
-#: src/core/main.c:301
+#: src/core/main.c:299
 msgid "Initialize session from savefile"
 msgstr "A munkamenet előkészítése a mentési fájlból"
 
-#: src/core/main.c:307
+#: src/core/main.c:305
 msgid "Print version"
 msgstr "Verzió kinyomtatása"
 
-#: src/core/main.c:313
+#: src/core/main.c:311
 msgid "Make X calls synchronous"
 msgstr "Az X-hívások szinkronná tétele"
 
-#: src/core/main.c:322
+#: src/core/main.c:320
 msgid "Turn compositing on"
 msgstr "Kompozitálás bekapcsolása"
 
-#: src/core/main.c:331
+#: src/core/main.c:329
 msgid "Turn compositing off"
 msgstr "Kompozitálás kikapcsolása"
 
-#: src/core/main.c:340
+#: src/core/main.c:338
 msgid "Compositor to use"
 msgstr "Használandó kompozitáló"
 
-#: src/core/main.c:346
+#: src/core/main.c:344
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr ""
@@ -1257,42 +1275,33 @@ msgstr "beágyazott <window> tag"
 msgid "Unknown element %s"
 msgstr "Ismeretlen elem: %s"
 
-#: src/core/session.c:1845
-msgid ""
-"These windows do not support &quot;save current setup&quot; and will have to "
-"be restarted manually next time you log in."
-msgstr ""
-"Az alábbi ablakok nem támogatják az &quot;aktuális beállítások "
-"mentését&quot;, emiatt ezeket a legközelebbi bejelentkezéskor manuálisan "
-"újra kell indítania."
-
 #: src/core/util.c:106
 #, c-format
 msgid "Opened log file %s\n"
 msgstr "%s naplófájl megnyitva\n"
 
 #. Translators: the title of a window from another machine
-#: src/core/window-props.c:548
+#: src/core/window-props.c:538
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (ezen: %s)"
 
 #. Simple case-- don't bother to look it up.  It's root.
-#: src/core/window-props.c:583
+#: src/core/window-props.c:573
 #, c-format
 msgid "%s (as superuser)"
 msgstr "%s (rendszergazdaként)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine
-#: src/core/window-props.c:602
+#: src/core/window-props.c:592
 #, c-format
 msgid "%s (as %s)"
 msgstr "%s (mint: %s)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine, whose name we don't know
-#: src/core/window-props.c:608
+#: src/core/window-props.c:598
 #, c-format
 msgid "%s (as another user)"
 msgstr "%s (másik felhasználóként)"
@@ -1302,23 +1311,23 @@ msgstr "%s (másik felhasználóként)"
 msgid "Usage: %s\n"
 msgstr "Használat: %s\n"
 
-#: src/ui/frames.c:1255
+#: src/ui/frames.c:1288
 msgid "Close Window"
 msgstr "Ablak bezárása"
 
-#: src/ui/frames.c:1258
+#: src/ui/frames.c:1291
 msgid "Window Menu"
 msgstr "Ablak menü"
 
-#: src/ui/frames.c:1261
+#: src/ui/frames.c:1294
 msgid "Minimize Window"
 msgstr "Ablak minimalizálása"
 
-#: src/ui/frames.c:1264
+#: src/ui/frames.c:1297
 msgid "Maximize Window"
 msgstr "Ablak maximalizálása"
 
-#: src/ui/frames.c:1267
+#: src/ui/frames.c:1300
 msgid "Restore Window"
 msgstr "Ablak visszaállítása"
 
@@ -1561,8 +1570,8 @@ msgid ""
 "milliseconds per frame) and <b>%f</b> seconds wall clock time including X "
 "server resources (<b>%f</b> milliseconds per frame)."
 msgstr ""
-"<b>%d</b> képkocka kirajzolása <b>%f</b> kliens-oldali másodperc alatt (<b>"
-"%f</b> ezredmásodperc képkockánként) és <b>%f</b> teljes idő alatt, "
+"<b>%d</b> képkocka kirajzolása <b>%f</b> kliens-oldali másodperc alatt "
+"(<b>%f</b> ezredmásodperc képkockánként) és <b>%f</b> teljes idő alatt, "
 "beleértve az X-kiszolgáló erőforrásokat (<b>%f</b> ezredmásodperc "
 "képkockánként)."
 
