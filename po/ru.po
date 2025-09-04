@@ -11,9 +11,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues\n"
-"POT-Creation-Date: 2022-10-05 11:32+0000\n"
-"PO-Revision-Date: 2022-10-12 09:30+1000\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues/\n"
+"POT-Creation-Date: 2025-08-30 02:20+0000\n"
+"PO-Revision-Date: 2025-09-01 11:12+1000\n"
 "Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
 "Language-Team: Russian <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -24,8 +24,9 @@ msgstr ""
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#. Translators: This is the title used on dialog boxes
-#: data/applications/metacity.desktop.in:4 src/core/util.c:429
+#. This is the title used on dialog boxes
+#: data/applications/metacity.desktop.in:3 data/ui/delete-dialog.ui:8
+#: data/ui/session-dialog.ui:16
 msgid "Metacity"
 msgstr "Metacity"
 
@@ -325,6 +326,37 @@ msgstr ""
 "metacity-theme-x.xml и CSS. При использовании этого типа темы вы ДОЛЖНЫ "
 "указать корректное название темы."
 
+#: data/ui/delete-dialog.ui:22
+msgid "_Force Quit"
+msgstr "Завер_шить"
+
+#: data/ui/delete-dialog.ui:37
+msgid "_Wait"
+msgstr "_Подождать"
+
+#: data/ui/delete-dialog.ui:105
+msgid ""
+"<i>You may choose to wait a short while for it to continue or force the "
+"application to quit entirely.</i>"
+msgstr ""
+"<i>Можно немного подождать или заставить приложение завершить работу.</i>"
+
+#: data/ui/session-dialog.ui:30
+msgid "_Cancel"
+msgstr "_Отменить"
+
+#: data/ui/session-dialog.ui:47
+msgid "_OK"
+msgstr "_ОК"
+
+#: data/ui/session-dialog.ui:78
+msgid ""
+"These windows do not support &quot;save current setup&quot; and will have to "
+"be restarted manually next time you log in."
+msgstr ""
+"Эти окна не поддерживают команду «Сохранить текущие настройки». При "
+"следующем входе в систему их придётся перезапустить вручную."
+
 #: data/ui/theme-viewer-window.ui:86
 msgid "Reload"
 msgstr "Перезагрузить"
@@ -420,6 +452,12 @@ msgstr "Оценка производительности"
 #: data/ui/theme-viewer-window.ui:652 theme-viewer/theme-viewer-window.c:982
 msgid "Metacity Theme Viewer"
 msgstr "Просмотр тем Metacity"
+
+#. Translators: %s is a window title
+#: dialog/meta-delete-dialog.c:69
+#, c-format
+msgid "<tt>%s</tt> is not responding."
+msgstr "<tt>%s</tt> не отвечает."
 
 #: libmetacity/meta-color-spec.c:246
 #, c-format
@@ -1136,26 +1174,6 @@ msgstr "Не удалось найти допустимый файл для те
 msgid "Bell event"
 msgstr "Событие звонка"
 
-#. Translators: %s is a window title
-#: src/core/delete.c:94
-#, c-format
-msgid "<tt>%s</tt> is not responding."
-msgstr "<tt>%s</tt> не отвечает."
-
-#: src/core/delete.c:99
-msgid ""
-"You may choose to wait a short while for it to continue or force the "
-"application to quit entirely."
-msgstr "Можно немного подождать или заставить приложение завершить работу."
-
-#: src/core/delete.c:108
-msgid "_Wait"
-msgstr "_Подождать"
-
-#: src/core/delete.c:108
-msgid "_Force Quit"
-msgstr "Завер_шить"
-
 #: src/core/main.c:105
 #, c-format
 msgid ""
@@ -1173,57 +1191,57 @@ msgstr ""
 "потребительской стоимости и пригодности для выполнения каких бы то ни было "
 "определённых задач.\n"
 
-#: src/core/main.c:201 src/core/main.c:218
+#: src/core/main.c:196 src/core/main.c:213
 #, c-format
 msgid "Option “%s” is deprecated, use the “--compositor” instead."
 msgstr "Параметр «%s» устарел, вместо него используйте «--compositor»."
 
-#: src/core/main.c:246
+#: src/core/main.c:241
 #, c-format
 msgid "“%s” is not a valid compositor"
 msgstr "«%s» не является допустимым композитором"
 
-#: src/core/main.c:281
+#: src/core/main.c:276
 msgid "Disable connection to session manager"
 msgstr "Запретить подключение к менеджеру сеансов"
 
-#: src/core/main.c:287
+#: src/core/main.c:282
 msgid "Replace the running window manager with Metacity"
 msgstr "Заменить запущенный менеджер окон на Metacity"
 
-#: src/core/main.c:293
+#: src/core/main.c:288
 msgid "Specify session management ID"
 msgstr "Указать идентификатор управления сеансом"
 
-#: src/core/main.c:298
+#: src/core/main.c:293
 msgid "X Display to use"
 msgstr "Используемый дисплей X"
 
-#: src/core/main.c:304
+#: src/core/main.c:299
 msgid "Initialize session from savefile"
 msgstr "Инициализировать сеанс из сохранённого файла"
 
-#: src/core/main.c:310
+#: src/core/main.c:305
 msgid "Print version"
 msgstr "Вывести версию"
 
-#: src/core/main.c:316
+#: src/core/main.c:311
 msgid "Make X calls synchronous"
 msgstr "Сделать X-вызовы синхронными"
 
-#: src/core/main.c:325
+#: src/core/main.c:320
 msgid "Turn compositing on"
 msgstr "Включить менеджер композиции"
 
-#: src/core/main.c:334
+#: src/core/main.c:329
 msgid "Turn compositing off"
 msgstr "Выключить менеджер композиции"
 
-#: src/core/main.c:343
+#: src/core/main.c:338
 msgid "Compositor to use"
 msgstr "Используемый композитор"
 
-#: src/core/main.c:349
+#: src/core/main.c:344
 msgid ""
 "Don't make fullscreen windows that are maximized and have no decorations"
 msgstr "Не создавать полноэкранные окна, не имеющие декораций"
@@ -1258,41 +1276,33 @@ msgstr "вложенный тег <window>"
 msgid "Unknown element %s"
 msgstr "Элемент %s неизвестен"
 
-#: src/core/session.c:1845
-msgid ""
-"These windows do not support &quot;save current setup&quot; and will have to "
-"be restarted manually next time you log in."
-msgstr ""
-"Эти окна не поддерживают команду «Сохранить текущие настройки». При "
-"следующем входе в систему их придётся перезапустить вручную."
-
 #: src/core/util.c:106
 #, c-format
 msgid "Opened log file %s\n"
 msgstr "Открыт журнал отладочной информации %s\n"
 
 #. Translators: the title of a window from another machine
-#: src/core/window-props.c:563
+#: src/core/window-props.c:538
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (на %s)"
 
 #. Simple case-- don't bother to look it up.  It's root.
-#: src/core/window-props.c:598
+#: src/core/window-props.c:573
 #, c-format
 msgid "%s (as superuser)"
 msgstr "%s (от суперпользователя)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine
-#: src/core/window-props.c:617
+#: src/core/window-props.c:592
 #, c-format
 msgid "%s (as %s)"
 msgstr "%s (от %s)"
 
 #. Translators: the title of a window owned by another user
 #. * on this machine, whose name we don't know
-#: src/core/window-props.c:623
+#: src/core/window-props.c:598
 #, c-format
 msgid "%s (as another user)"
 msgstr "%s (от другого пользователя)"
@@ -1302,23 +1312,23 @@ msgstr "%s (от другого пользователя)"
 msgid "Usage: %s\n"
 msgstr "Применение: %s\n"
 
-#: src/ui/frames.c:1255
+#: src/ui/frames.c:1288
 msgid "Close Window"
 msgstr "Закрыть окно"
 
-#: src/ui/frames.c:1258
+#: src/ui/frames.c:1291
 msgid "Window Menu"
 msgstr "Меню окна"
 
-#: src/ui/frames.c:1261
+#: src/ui/frames.c:1294
 msgid "Minimize Window"
 msgstr "Свернуть окно"
 
-#: src/ui/frames.c:1264
+#: src/ui/frames.c:1297
 msgid "Maximize Window"
 msgstr "Развернуть окно на весь экран"
 
-#: src/ui/frames.c:1267
+#: src/ui/frames.c:1300
 msgid "Restore Window"
 msgstr "Восстановить окно"
 
