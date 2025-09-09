@@ -47,6 +47,7 @@ gboolean meta_window_is_attached_dialog (MetaWindow *window);
 gboolean meta_window_is_toplevel_mapped (MetaWindow *window);
 gboolean meta_window_appears_focused (MetaWindow *window);
 cairo_region_t *meta_window_get_frame_bounds (MetaWindow *window);
+void meta_window_move_to_monitor (MetaWindow *window, int monitor);
 
 G_END_DECLS
 

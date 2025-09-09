@@ -3969,6 +3969,53 @@ meta_window_move (MetaWindow  *window,
                                     TRUE, NULL, NULL);
 }
 
+static void
+meta_window_move_between_rects (MetaWindow          *window,
+                                const MetaRectangle *old_area,
+                                const MetaRectangle *new_area)
+{
+  int rel_x, rel_y;
+  double scale_x, scale_y;
+
+  rel_x = window->user_rect.x - old_area->x;
+  rel_y = window->user_rect.y - old_area->y;
+  scale_x = (double)new_area->width / old_area->width;
+  scale_y = (double)new_area->height / old_area->height;
+
+  window->user_rect.x = new_area->x + rel_x * scale_x;
+  window->user_rect.y = new_area->y + rel_y * scale_y;
+  window->saved_rect.x = window->user_rect.x;
+  window->saved_rect.y = window->user_rect.y;
+
+  meta_window_move_resize (window, FALSE,
+                           window->user_rect.x,
+                           window->user_rect.y,
+                           window->user_rect.width,
+                           window->user_rect.height);
+}
+
+void
+meta_window_move_to_monitor (MetaWindow *window,
+                             int         monitor)
+{
+  MetaRectangle old_area, new_area;
+  const MetaMonitorInfo *current_monitor;
+
+  current_monitor = meta_screen_get_monitor_for_window (window->screen, window);
+
+  if (monitor == current_monitor->number)
+    return;
+
+  meta_window_get_work_area_for_monitor (window,
+                                         current_monitor->number,
+                                         &old_area);
+  meta_window_get_work_area_for_monitor (window,
+                                         monitor,
+                                         &new_area);
+
+  meta_window_move_between_rects (window, &old_area, &new_area);
+}
+
 void
 meta_window_move_resize (MetaWindow  *window,
                          gboolean     user_op,
