@@ -58,4 +58,19 @@
 	              schema="org.gnome.metacity.keybindings"
 	              description="View split on right" />
 
+	<KeyListEntry name="move-to-monitor-left"
+	              schema="org.gnome.metacity.keybindings"
+	              description="Move window to monitor on the left" />
+
+	<KeyListEntry name="move-to-monitor-right"
+	              schema="org.gnome.metacity.keybindings"
+	              description="Move window to monitor on the right" />
+
+	<KeyListEntry name="move-to-monitor-up"
+	              schema="org.gnome.metacity.keybindings"
+	              description="Move window to monitor above" />
+
+	<KeyListEntry name="move-to-monitor-down"
+	              schema="org.gnome.metacity.keybindings"
+	              description="Move window to monitor below" />
 </KeyListEntries>

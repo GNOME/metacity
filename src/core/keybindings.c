@@ -2148,6 +2148,10 @@ process_tab_grab (MetaDisplay *display,
     case META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_RIGHT:
     case META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_UP:
     case META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_DOWN:
+    case META_KEYBINDING_ACTION_MOVE_TO_MONITOR_LEFT:
+    case META_KEYBINDING_ACTION_MOVE_TO_MONITOR_RIGHT:
+    case META_KEYBINDING_ACTION_MOVE_TO_MONITOR_UP:
+    case META_KEYBINDING_ACTION_MOVE_TO_MONITOR_DOWN:
     case META_KEYBINDING_ACTION_RAISE_OR_LOWER:
     case META_KEYBINDING_ACTION_RAISE:
     case META_KEYBINDING_ACTION_LOWER:
@@ -3107,6 +3111,25 @@ handle_move_to_workspace  (MetaDisplay    *display,
 }
 
 static void
+handle_move_to_monitor (MetaDisplay    *display,
+                        MetaScreen     *screen,
+                        MetaWindow     *window,
+                        XEvent         *event,
+                        MetaKeyBinding *binding)
+{
+  gint which = binding->handler->data;
+  const MetaMonitorInfo *current, *new;
+
+  current = meta_screen_get_monitor_for_window (screen, window);
+  new = meta_screen_get_monitor_neighbor (screen, current->number, which);
+
+  if (new == NULL)
+    return;
+
+  meta_window_move_to_monitor (window, new->number);
+}
+
+static void
 handle_raise_or_lower (MetaDisplay    *display,
                        MetaScreen     *screen,
                        MetaWindow     *window,
@@ -3714,6 +3737,34 @@ init_builtin_key_bindings (MetaDisplay *display)
                           META_KEY_BINDING_PER_WINDOW,
                           META_KEYBINDING_ACTION_MOVE_TO_WORKSPACE_DOWN,
                           handle_move_to_workspace, META_MOTION_DOWN);
+
+  add_builtin_keybinding (display,
+                          "move-to-monitor-left",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MOVE_TO_MONITOR_LEFT,
+                          handle_move_to_monitor, META_SCREEN_LEFT);
+
+  add_builtin_keybinding (display,
+                          "move-to-monitor-right",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MOVE_TO_MONITOR_RIGHT,
+                          handle_move_to_monitor, META_SCREEN_RIGHT);
+
+  add_builtin_keybinding (display,
+                          "move-to-monitor-up",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MOVE_TO_MONITOR_UP,
+                          handle_move_to_monitor, META_SCREEN_UP);
+
+  add_builtin_keybinding (display,
+                          "move-to-monitor-down",
+                          SCHEMA_COMMON_KEYBINDINGS,
+                          META_KEY_BINDING_PER_WINDOW,
+                          META_KEYBINDING_ACTION_MOVE_TO_MONITOR_DOWN,
+                          handle_move_to_monitor, META_SCREEN_DOWN);
 
   add_builtin_keybinding (display,
                           "raise-or-lower",
