@@ -1,3 +1,8 @@
+Version 3.58.0
+==============
+- Add keybindings to move window between monitors. (!40)
+- Updated translations.
+
 Version 3.57.1
 ==============
 - Drop zentiy dependency.
