@@ -121,6 +121,21 @@ GTK_DATA_PREFIX=`$PKG_CONFIG --variable=prefix gtk+-3.0`
 AC_DEFINE_UNQUOTED([GTK_DATA_PREFIX], ["$GTK_DATA_PREFIX"], [GTK+ data prefix])
 
 dnl **************************************************************************
+dnl systemd user unit dir
+dnl **************************************************************************
+
+AS_IF([$PKG_CONFIG systemd], [
+  SYSTEMD_USER_UNIT_DIR=$($PKG_CONFIG \
+    --variable=systemduserunitdir \
+    --define-variable=prefix=${prefix} \
+    systemd)
+], [
+  SYSTEMD_USER_UNIT_DIR="${prefix}/lib/systemd/user"
+])
+
+AC_SUBST([SYSTEMD_USER_UNIT_DIR], [$SYSTEMD_USER_UNIT_DIR])
+
+dnl **************************************************************************
 dnl Library version information
 dnl **************************************************************************
 

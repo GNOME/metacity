@@ -3,7 +3,7 @@ NULL =
 service_in_files = metacity.service.in
 service_files = $(service_in_files:.service.in=.service)
 
-systemduserdir = $(libdir)/systemd/user
+systemduserdir = $(SYSTEMD_USER_UNIT_DIR)
 systemduser_DATA = $(service_files)
 
 %.service: %.service.in
