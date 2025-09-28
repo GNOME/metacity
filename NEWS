@@ -1,3 +1,8 @@
+Version 3.58.1
+==============
+- Use pkg-config to get systemd user unit dir.
+- Updated translations.
+
 Version 3.58.0
 ==============
 - Add keybindings to move window between monitors. (!40)
