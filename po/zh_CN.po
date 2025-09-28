@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues/\n"
-"POT-Creation-Date: 2025-09-09 21:18+0000\n"
+"POT-Creation-Date: 2025-09-28 16:09+0000\n"
 "PO-Revision-Date: 2025-09-10 10:35+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
@@ -326,10 +326,10 @@ msgid ""
 "x.xml and CSS. When using this theme type you MUST provide a valid theme "
 "name."
 msgstr ""
-"Metacity 支持两种主题类型——GTK+ (gtk.css) 和 Metacity (metacity-theme-x."
-"xml)。GTK+ 主题：全部数据从 CSS 加载。这也是相同的主题为 Mutter 在服务器端装"
-"饰和 GTK+ 在客户端装饰所使用。Metacity 主题：数据从 metacity-theme-x.xml 和 "
-"CSS 加载。当使用该主题类型时你必须提供一个有效的主题名称。"
+"Metacity 支持两种主题类型——GTK+ (gtk.css) 和 Metacity (metacity-theme-"
+"x.xml)。GTK+ 主题：全部数据从 CSS 加载。这也是相同的主题为 Mutter 在服务器端"
+"装饰和 GTK+ 在客户端装饰所使用。Metacity 主题：数据从 metacity-theme-x.xml "
+"和 CSS 加载。当使用该主题类型时你必须提供一个有效的主题名称。"
 
 #: data/ui/delete-dialog.ui:22
 msgid "_Force Quit"
@@ -436,7 +436,7 @@ msgstr "复合："
 msgid "Scale:"
 msgstr "比例："
 
-#: data/ui/theme-viewer-window.ui:468
+#: data/ui/theme-viewer-window.ui:468 theme-viewer/theme-viewer-window.c:636
 msgid "Choose Theme"
 msgstr "选择主题"
 
@@ -444,7 +444,7 @@ msgstr "选择主题"
 msgid "Preview"
 msgstr "预览"
 
-#: data/ui/theme-viewer-window.ui:597
+#: data/ui/theme-viewer-window.ui:597 theme-viewer/theme-viewer-window.c:252
 msgid "Run"
 msgstr "运行"
 
@@ -452,782 +452,1089 @@ msgstr "运行"
 msgid "Benchmark"
 msgstr "基准"
 
-#: data/ui/theme-viewer-window.ui:652
+#: data/ui/theme-viewer-window.ui:652 theme-viewer/theme-viewer-window.c:982
 msgid "Metacity Theme Viewer"
 msgstr "Metacity 主题查看器"
 
+#. Translators: %s is a window title
+#: dialog/meta-delete-dialog.c:69
 #, c-format
-#~ msgid "<tt>%s</tt> is not responding."
-#~ msgstr "<tt>%s</tt> 未响应。"
+msgid "<tt>%s</tt> is not responding."
+msgstr "<tt>%s</tt> 未响应。"
 
+#: libmetacity/meta-color-spec.c:246
 #, c-format
-#~ msgid ""
-#~ "GTK custom color specification must have color name and fallback in "
-#~ "parentheses, e.g. gtk:custom(foo,bar); could not parse '%s'"
-#~ msgstr ""
-#~ "GTK 自定义颜色规范必须包含颜色名称和备用于括号中，例如 gtk:custom(foo,"
-#~ "bar)；无法解析“%s”"
+msgid ""
+"GTK custom color specification must have color name and fallback in "
+"parentheses, e.g. gtk:custom(foo,bar); could not parse '%s'"
+msgstr ""
+"GTK 自定义颜色规范必须包含颜色名称和备用于括号中，例如 gtk:custom(foo,bar)；"
+"无法解析“%s”"
 
+#: libmetacity/meta-color-spec.c:260
 #, c-format
-#~ msgid ""
-#~ "Invalid character '%c' in color_name parameter of gtk:custom, only A-Za-"
-#~ "z0-9-_ are valid"
-#~ msgstr ""
-#~ "无效字符“%c”存在于 gtk:custom 的 color_name 参数，只有 A-Za-z0-9-_ 是有效"
-#~ "的"
+msgid ""
+"Invalid character '%c' in color_name parameter of gtk:custom, only A-Za-z0-9-"
+"_ are valid"
+msgstr ""
+"无效字符“%c”存在于 gtk:custom 的 color_name 参数，只有 A-Za-z0-9-_ 是有效的"
 
+#: libmetacity/meta-color-spec.c:277
 #, c-format
-#~ msgid ""
-#~ "Gtk:custom format is 'gtk:custom(color_name,fallback)', '%s' does not fit "
-#~ "the format"
-#~ msgstr ""
-#~ "Gtk:custom 格式为“gtk:custom(color_name,fallback)”，“%s”不符合该格式"
+msgid ""
+"Gtk:custom format is 'gtk:custom(color_name,fallback)', '%s' does not fit "
+"the format"
+msgstr "Gtk:custom 格式为“gtk:custom(color_name,fallback)”，“%s”不符合该格式"
 
+#: libmetacity/meta-color-spec.c:310
 #, c-format
-#~ msgid ""
-#~ "GTK color specification must have the state in brackets, e.g. gtk:"
-#~ "fg[NORMAL] where NORMAL is the state; could not parse '%s'"
-#~ msgstr ""
-#~ "GTK 颜色规范必须将状态包含在方括号中，例如 gtk:fg[NORMAL]其中 NORMAL 是状"
-#~ "态；无法解析“%s”"
+msgid ""
+"GTK color specification must have the state in brackets, e.g. gtk:fg[NORMAL] "
+"where NORMAL is the state; could not parse '%s'"
+msgstr ""
+"GTK 颜色规范必须将状态包含在方括号中，例如 gtk:fg[NORMAL]其中 NORMAL 是状态；"
+"无法解析“%s”"
 
+#: libmetacity/meta-color-spec.c:323
 #, c-format
-#~ msgid ""
-#~ "GTK color specification must have a close bracket after the state, e.g. "
-#~ "gtk:fg[NORMAL] where NORMAL is the state; could not parse '%s'"
-#~ msgstr ""
-#~ "GTK 颜色规范必须在状态后有一个闭方括号，例如 gtk:fg[NORMAL]，其中 NORMAL "
-#~ "是状态；无法解析“%s”"
+msgid ""
+"GTK color specification must have a close bracket after the state, e.g. "
+"gtk:fg[NORMAL] where NORMAL is the state; could not parse '%s'"
+msgstr ""
+"GTK 颜色规范必须在状态后有一个闭方括号，例如 gtk:fg[NORMAL]，其中 NORMAL 是状"
+"态；无法解析“%s”"
 
+#: libmetacity/meta-color-spec.c:332
 #, c-format
-#~ msgid "Did not understand state '%s' in color specification"
-#~ msgstr "不理解颜色规范中的状态“%s”"
+msgid "Did not understand state '%s' in color specification"
+msgstr "不理解颜色规范中的状态“%s”"
 
+#: libmetacity/meta-color-spec.c:344
 #, c-format
-#~ msgid "Did not understand color component '%s' in color specification"
-#~ msgstr "不理解颜色规范中的颜色组成部分“%s”"
+msgid "Did not understand color component '%s' in color specification"
+msgstr "不理解颜色规范中的颜色组成部分“%s”"
 
+#: libmetacity/meta-color-spec.c:370
 #, c-format
-#~ msgid ""
-#~ "Blend format is 'blend/bg_color/fg_color/alpha', '%s' does not fit the "
-#~ "format"
-#~ msgstr "混合格式为“blend/bg_color/fg_color/alpha”，“%s”不符合该格式"
+msgid ""
+"Blend format is 'blend/bg_color/fg_color/alpha', '%s' does not fit the format"
+msgstr "混合格式为“blend/bg_color/fg_color/alpha”，“%s”不符合该格式"
 
+#: libmetacity/meta-color-spec.c:380
 #, c-format
-#~ msgid "Could not parse alpha value '%s' in blended color"
-#~ msgstr "无法解析混合色中的 Alpha 值“%s”"
+msgid "Could not parse alpha value '%s' in blended color"
+msgstr "无法解析混合色中的 Alpha 值“%s”"
 
+#: libmetacity/meta-color-spec.c:389
 #, c-format
-#~ msgid "Alpha value '%s' in blended color is not between 0.0 and 1.0"
-#~ msgstr "混合色中的 Alpha 值“%s”不在 0.0 到 1.0 之间"
+msgid "Alpha value '%s' in blended color is not between 0.0 and 1.0"
+msgstr "混合色中的 Alpha 值“%s”不在 0.0 到 1.0 之间"
 
+#: libmetacity/meta-color-spec.c:432
 #, c-format
-#~ msgid ""
-#~ "Shade format is 'shade/base_color/factor', '%s' does not fit the format"
-#~ msgstr "阴影格式为“shade/base_color/factor”，“%s”不符合该格式"
+msgid "Shade format is 'shade/base_color/factor', '%s' does not fit the format"
+msgstr "阴影格式为“shade/base_color/factor”，“%s”不符合该格式"
 
+#: libmetacity/meta-color-spec.c:442
 #, c-format
-#~ msgid "Could not parse shade factor '%s' in shaded color"
-#~ msgstr "无法解析阴影色中的阴影因子“%s”"
+msgid "Could not parse shade factor '%s' in shaded color"
+msgstr "无法解析阴影色中的阴影因子“%s”"
 
+#: libmetacity/meta-color-spec.c:451
 #, c-format
-#~ msgid "Shade factor '%s' in shaded color is negative"
-#~ msgstr "阴影色中的阴影因子“%s”为负数"
+msgid "Shade factor '%s' in shaded color is negative"
+msgstr "阴影色中的阴影因子“%s”为负数"
 
+#: libmetacity/meta-color-spec.c:477
 #, c-format
-#~ msgid "Could not parse color '%s'"
-#~ msgstr "无法解析颜色“%s”"
+msgid "Could not parse color '%s'"
+msgstr "无法解析颜色“%s”"
 
+#: libmetacity/meta-draw-spec.c:201
 #, c-format
-#~ msgid "Coordinate expression contains character '%s' which is not allowed"
-#~ msgstr "坐标表达式包含不允许的字符“%s”"
+msgid "Coordinate expression contains character '%s' which is not allowed"
+msgstr "坐标表达式包含不允许的字符“%s”"
 
+#: libmetacity/meta-draw-spec.c:228
 #, c-format
-#~ msgid ""
-#~ "Coordinate expression contains floating point number '%s' which could not "
-#~ "be parsed"
-#~ msgstr "坐标表达式包含无法解析的浮点数“%s”"
+msgid ""
+"Coordinate expression contains floating point number '%s' which could not be "
+"parsed"
+msgstr "坐标表达式包含无法解析的浮点数“%s”"
 
+#: libmetacity/meta-draw-spec.c:241
 #, c-format
-#~ msgid ""
-#~ "Coordinate expression contains integer '%s' which could not be parsed"
-#~ msgstr "坐标表达式包含无法解析的整数“%s”"
+msgid "Coordinate expression contains integer '%s' which could not be parsed"
+msgstr "坐标表达式包含无法解析的整数“%s”"
 
+#: libmetacity/meta-draw-spec.c:368
 #, c-format
-#~ msgid ""
-#~ "Coordinate expression contained unknown operator at the start of this "
-#~ "text: \"%s\""
-#~ msgstr "坐标表达式在该文本开始处包含未知的运算符：“%s”"
+msgid ""
+"Coordinate expression contained unknown operator at the start of this text: "
+"\"%s\""
+msgstr "坐标表达式在该文本开始处包含未知的运算符：“%s”"
 
-#~ msgid "Coordinate expression was empty or not understood"
-#~ msgstr "坐标表达式为空或无法理解"
+#: libmetacity/meta-draw-spec.c:424
+msgid "Coordinate expression was empty or not understood"
+msgstr "坐标表达式为空或无法理解"
 
+#: libmetacity/meta-draw-spec.c:586
 #, c-format
-#~ msgid "Coordinate expression had unknown variable or constant '%s'"
-#~ msgstr "坐标表达式有未知的变量或常数“%s”"
+msgid "Coordinate expression had unknown variable or constant '%s'"
+msgstr "坐标表达式有未知的变量或常数“%s”"
 
-#~ msgid "Coordinate expression results in division by zero"
-#~ msgstr "坐标表达式用零做除数"
+#: libmetacity/meta-draw-spec.c:638 libmetacity/meta-draw-spec.c:648
+#: libmetacity/meta-draw-spec.c:683 libmetacity/meta-draw-spec.c:693
+msgid "Coordinate expression results in division by zero"
+msgstr "坐标表达式用零做除数"
 
+#: libmetacity/meta-draw-spec.c:782
 #, c-format
-#~ msgid ""
-#~ "Coordinate expression has an operator \"%s\" where an operand was expected"
-#~ msgstr "坐标表达式的运算符“%s”应该是一个操作数"
+msgid ""
+"Coordinate expression has an operator \"%s\" where an operand was expected"
+msgstr "坐标表达式的运算符“%s”应该是一个操作数"
 
-#~ msgid "Coordinate expression had an operand where an operator was expected"
-#~ msgstr "坐标表达式的某个操作数应该是运算符"
+#: libmetacity/meta-draw-spec.c:791
+msgid "Coordinate expression had an operand where an operator was expected"
+msgstr "坐标表达式的某个操作数应该是运算符"
 
-#~ msgid "Coordinate expression ended with an operator instead of an operand"
-#~ msgstr "坐标表达式以运算符结尾，而不是以操作数结尾"
+#: libmetacity/meta-draw-spec.c:799
+msgid "Coordinate expression ended with an operator instead of an operand"
+msgstr "坐标表达式以运算符结尾，而不是以操作数结尾"
 
+#: libmetacity/meta-draw-spec.c:809
 #, c-format
-#~ msgid ""
-#~ "Coordinate expression has operator \"%c\" following operator \"%c\" with "
-#~ "no operand in between"
-#~ msgstr "坐标表达式的运算符“%c”后面跟着运算符“%c”，之间没有操作数"
+msgid ""
+"Coordinate expression has operator \"%c\" following operator \"%c\" with no "
+"operand in between"
+msgstr "坐标表达式的运算符“%c”后面跟着运算符“%c”，之间没有操作数"
 
-#~ msgid "Coordinate expression parser overflowed its buffer."
-#~ msgstr "坐标表达式溢出了其缓冲区。"
+#: libmetacity/meta-draw-spec.c:941
+msgid "Coordinate expression parser overflowed its buffer."
+msgstr "坐标表达式溢出了其缓冲区。"
 
-#~ msgid ""
-#~ "Coordinate expression had a close parenthesis with no open parenthesis"
-#~ msgstr "坐标表达式有一个闭括号，而没有开括号"
+#: libmetacity/meta-draw-spec.c:971
+msgid "Coordinate expression had a close parenthesis with no open parenthesis"
+msgstr "坐标表达式有一个闭括号，而没有开括号"
 
-#~ msgid ""
-#~ "Coordinate expression had an open parenthesis with no close parenthesis"
-#~ msgstr "坐标表达式有一个开括号，而没有闭括号"
+#: libmetacity/meta-draw-spec.c:1044
+msgid "Coordinate expression had an open parenthesis with no close parenthesis"
+msgstr "坐标表达式有一个开括号，而没有闭括号"
 
-#~ msgid "Coordinate expression doesn't seem to have any operators or operands"
-#~ msgstr "坐标表达式似乎没有任何运算符或操作数"
+#: libmetacity/meta-draw-spec.c:1054
+msgid "Coordinate expression doesn't seem to have any operators or operands"
+msgstr "坐标表达式似乎没有任何运算符或操作数"
 
+#: libmetacity/meta-draw-spec.c:1246 libmetacity/meta-draw-spec.c:1266
+#: libmetacity/meta-draw-spec.c:1286
 #, c-format
-#~ msgid "Theme contained an expression that resulted in an error: %s"
-#~ msgstr "主题包含的一个表达式产生错误：%s"
+msgid "Theme contained an expression that resulted in an error: %s"
+msgstr "主题包含的一个表达式产生错误：%s"
 
-#~ msgid "top"
-#~ msgstr "上"
+#: libmetacity/meta-frame-layout.c:47
+msgid "top"
+msgstr "上"
 
-#~ msgid "bottom"
-#~ msgstr "下"
+#: libmetacity/meta-frame-layout.c:49
+msgid "bottom"
+msgstr "下"
 
-#~ msgid "left"
-#~ msgstr "左"
+#: libmetacity/meta-frame-layout.c:51
+msgid "left"
+msgstr "左"
 
-#~ msgid "right"
-#~ msgstr "右"
+#: libmetacity/meta-frame-layout.c:53
+msgid "right"
+msgstr "右"
 
+#: libmetacity/meta-frame-layout.c:78
 #, c-format
-#~ msgid "frame geometry does not specify '%s' dimension"
-#~ msgstr "框架几何布局没有指定“%s”尺寸"
+msgid "frame geometry does not specify '%s' dimension"
+msgstr "框架几何布局没有指定“%s”尺寸"
 
+#: libmetacity/meta-frame-layout.c:97
 #, c-format
-#~ msgid "frame geometry does not specify dimension '%s' for border '%s'"
-#~ msgstr "框架几何布局没有指定“%s”尺寸（该尺寸是为边框“%s”指定的）"
+msgid "frame geometry does not specify dimension '%s' for border '%s'"
+msgstr "框架几何布局没有指定“%s”尺寸（该尺寸是为边框“%s”指定的）"
 
+#: libmetacity/meta-frame-layout.c:233
 #, c-format
-#~ msgid "Button aspect ratio %g is not reasonable"
-#~ msgstr "按钮长宽比 %g 不合理"
+msgid "Button aspect ratio %g is not reasonable"
+msgstr "按钮长宽比 %g 不合理"
 
-#~ msgid "Frame geometry does not specify size of buttons"
-#~ msgstr "框架几何布局没有指定按钮大小"
+#: libmetacity/meta-frame-layout.c:251
+msgid "Frame geometry does not specify size of buttons"
+msgstr "框架几何布局没有指定按钮大小"
 
+#. Translators: This error occurs when a <frame> tag is missing
+#. * in theme XML.  The "<frame ...>" is intended as a noun phrase,
+#. * and the "missing" qualifies it.  You should translate "whatever".
+#.
+#: libmetacity/meta-frame-style.c:144 libmetacity/meta-frame-style.c:467
 #, c-format
-#~ msgid "Missing <frame state='%s' resize='%s' focus='%s' style='whatever' />"
-#~ msgstr ""
-#~ "缺少 <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
+msgid "Missing <frame state='%s' resize='%s' focus='%s' style='whatever' />"
+msgstr ""
+"缺少 <frame state=\"%s\" resize=\"%s\" focus=\"%s\" style=\"whatever\"/>"
 
+#: libmetacity/meta-frame-style.c:324
 #, c-format
-#~ msgid ""
-#~ "<button function='%s' state='%s' draw_ops='whatever'/> must be specified "
-#~ "for this frame style"
-#~ msgstr ""
-#~ "必须为该框架风格指定<button function=\"%s\" state=\"%s\" "
-#~ "draw_ops=\"whatever\"/>"
+msgid ""
+"<button function='%s' state='%s' draw_ops='whatever'/> must be specified for "
+"this frame style"
+msgstr ""
+"必须为该框架风格指定<button function=\"%s\" state=\"%s\" "
+"draw_ops=\"whatever\"/>"
 
-#~ msgid "Gradients should have at least two colors"
-#~ msgstr "渐变应至少有两种颜色"
+#: libmetacity/meta-gradient-spec.c:182
+msgid "Gradients should have at least two colors"
+msgstr "渐变应至少有两种颜色"
 
+#: libmetacity/meta-theme-impl.c:41
 #, c-format
-#~ msgid "MetaThemeImplClass::load not implemented for '%s'"
-#~ msgstr "MetaThemeImplClass::load 未实现于“%s”"
+msgid "MetaThemeImplClass::load not implemented for '%s'"
+msgstr "MetaThemeImplClass::load 未实现于“%s”"
 
+#. Translators: This means that an attribute which should have been found
+#. * on an XML element was not in fact found.
+#.
+#: libmetacity/meta-theme-metacity.c:51
 #, c-format
-#~ msgid "No '%s' attribute on element <%s>"
-#~ msgstr "元素 <%2$s> 上没有“%1$s”属性"
+msgid "No '%s' attribute on element <%s>"
+msgstr "元素 <%2$s> 上没有“%1$s”属性"
 
+#: libmetacity/meta-theme-metacity.c:305 libmetacity/meta-theme-metacity.c:324
 #, c-format
-#~ msgid "Line %d character %d: %s"
-#~ msgstr "行 %d 字符 %d：%s"
+msgid "Line %d character %d: %s"
+msgstr "行 %d 字符 %d：%s"
 
+#: libmetacity/meta-theme-metacity.c:364
 #, c-format
-#~ msgid "Could not parse '%s' as an integer"
-#~ msgstr "无法将“%s” 解析为整数"
+msgid "Could not parse '%s' as an integer"
+msgstr "无法将“%s” 解析为整数"
 
+#: libmetacity/meta-theme-metacity.c:372 libmetacity/meta-theme-metacity.c:589
 #, c-format
-#~ msgid "Did not understand trailing characters '%s' in string '%s'"
-#~ msgstr "不理解结尾字符“%1$s”（位于字符串“%2$s”中）"
+msgid "Did not understand trailing characters '%s' in string '%s'"
+msgstr "不理解结尾字符“%1$s”（位于字符串“%2$s”中）"
 
+#: libmetacity/meta-theme-metacity.c:381
 #, c-format
-#~ msgid "Integer %ld must be positive"
-#~ msgstr "整数 %ld 必须是正数"
+msgid "Integer %ld must be positive"
+msgstr "整数 %ld 必须是正数"
 
+#: libmetacity/meta-theme-metacity.c:388
 #, c-format
-#~ msgid "Integer %ld is too large, current max is %d"
-#~ msgstr "整数 %ld 过大，当前最大值为 %d"
+msgid "Integer %ld is too large, current max is %d"
+msgstr "整数 %ld 过大，当前最大值为 %d"
 
+#: libmetacity/meta-theme-metacity.c:490
 #, c-format
-#~ msgid "Attribute '%s' repeated twice on the same <%s> element"
-#~ msgstr "属性“%s”在同一个 <%s> 元素上重复了两次"
+msgid "Attribute '%s' repeated twice on the same <%s> element"
+msgstr "属性“%s”在同一个 <%s> 元素上重复了两次"
 
+#: libmetacity/meta-theme-metacity.c:512 libmetacity/meta-theme-metacity.c:556
 #, c-format
-#~ msgid "Attribute '%s' is invalid on <%s> element in this context"
-#~ msgstr "在该上下文中，属性“%s”对 <%s> 元素无效"
+msgid "Attribute '%s' is invalid on <%s> element in this context"
+msgstr "在该上下文中，属性“%s”对 <%s> 元素无效"
 
+#: libmetacity/meta-theme-metacity.c:581 libmetacity/meta-theme-metacity.c:619
 #, c-format
-#~ msgid "Could not parse '%s' as a floating point number"
-#~ msgstr "无法将“%s”解析为浮点数"
+msgid "Could not parse '%s' as a floating point number"
+msgstr "无法将“%s”解析为浮点数"
 
+#: libmetacity/meta-theme-metacity.c:651
 #, c-format
-#~ msgid "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g"
-#~ msgstr "Alpha 值必须界于 0.0（不可见）到 1.0（完全不透明）之间，现在是 %g"
+msgid "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g"
+msgstr "Alpha 值必须界于 0.0（不可见）到 1.0（完全不透明）之间，现在是 %g"
 
+#: libmetacity/meta-theme-metacity.c:697
 #, c-format
-#~ msgid ""
-#~ "Invalid title scale '%s' (must be one of xx-small,x-small,small,medium,"
-#~ "large,x-large,xx-large)\n"
-#~ msgstr ""
-#~ "无效的标题比例“%s”（必须是 xx-small、x-small、small、medium、large、x-"
-#~ "large、xx-large 中的一个）\n"
+msgid ""
+"Invalid title scale '%s' (must be one of xx-small,x-"
+"small,small,medium,large,x-large,xx-large)\n"
+msgstr ""
+"无效的标题比例“%s”（必须是 xx-small、x-small、small、medium、large、x-large、"
+"xx-large 中的一个）\n"
 
+#: libmetacity/meta-theme-metacity.c:726 libmetacity/meta-theme-metacity.c:754
 #, c-format
-#~ msgid "Boolean values must be 'true' or 'false' not '%s'"
-#~ msgstr "布尔值必须为“true”或“false”，不能为“%s”"
+msgid "Boolean values must be 'true' or 'false' not '%s'"
+msgstr "布尔值必须为“true”或“false”，不能为“%s”"
 
+#: libmetacity/meta-theme-metacity.c:783 libmetacity/meta-theme-metacity.c:820
+#: libmetacity/meta-theme-metacity.c:858
 #, c-format
-#~ msgid ""
-#~ "User-defined constants must begin with a capital letter; '%s' does not"
-#~ msgstr "用户定义的常数必须以大写字母开头；而“%s”却不必"
+msgid "User-defined constants must begin with a capital letter; '%s' does not"
+msgstr "用户定义的常数必须以大写字母开头；而“%s”却不必"
 
+#: libmetacity/meta-theme-metacity.c:792 libmetacity/meta-theme-metacity.c:829
+#: libmetacity/meta-theme-metacity.c:867
 #, c-format
-#~ msgid "Constant '%s' has already been defined"
-#~ msgstr "常数“%s”已被定义"
+msgid "Constant '%s' has already been defined"
+msgstr "常数“%s”已被定义"
 
+#: libmetacity/meta-theme-metacity.c:1074
+#: libmetacity/meta-theme-metacity.c:1171
+#: libmetacity/meta-theme-metacity.c:1273
 #, c-format
-#~ msgid "<%s> name \"%s\" used a second time"
-#~ msgstr "再次使用了 <%s> 名称“%s”"
+msgid "<%s> name \"%s\" used a second time"
+msgstr "再次使用了 <%s> 名称“%s”"
 
+#: libmetacity/meta-theme-metacity.c:1086
 #, c-format
-#~ msgid "<%s> parent \"%s\" has not been defined"
-#~ msgstr "<%s> 父级“%s”尚未定义"
+msgid "<%s> parent \"%s\" has not been defined"
+msgstr "<%s> 父级“%s”尚未定义"
 
+#: libmetacity/meta-theme-metacity.c:1137
 #, c-format
-#~ msgid "<%s> name '%s' used a second time"
-#~ msgstr "再次使用了 <%s> 名称“%s”"
+msgid "<%s> name '%s' used a second time"
+msgstr "再次使用了 <%s> 名称“%s”"
 
+#: libmetacity/meta-theme-metacity.c:1183
+#: libmetacity/meta-theme-metacity.c:1285
 #, c-format
-#~ msgid "<%s> parent '%s' has not been defined"
-#~ msgstr "<%s> 父级“%s”尚未定义"
+msgid "<%s> parent '%s' has not been defined"
+msgstr "<%s> 父级“%s”尚未定义"
 
+#: libmetacity/meta-theme-metacity.c:1196
 #, c-format
-#~ msgid "<%s> geometry '%s' has not been defined"
-#~ msgstr "<%s> 几何布局“%s”尚未定义"
+msgid "<%s> geometry '%s' has not been defined"
+msgstr "<%s> 几何布局“%s”尚未定义"
 
+#: libmetacity/meta-theme-metacity.c:1209
 #, c-format
-#~ msgid "<%s> must specify either a geometry or a parent that has a geometry"
-#~ msgstr "<%s> 必须指定一个几何布局或者一个带有几何布局的父级"
+msgid "<%s> must specify either a geometry or a parent that has a geometry"
+msgstr "<%s> 必须指定一个几何布局或者一个带有几何布局的父级"
 
-#~ msgid "You must specify a background for an alpha value to be meaningful"
-#~ msgstr "要让 alpha 值有意义，您必须指定背景"
+#: libmetacity/meta-theme-metacity.c:1250
+msgid "You must specify a background for an alpha value to be meaningful"
+msgstr "要让 alpha 值有意义，您必须指定背景"
 
+#: libmetacity/meta-theme-metacity.c:1318
 #, c-format
-#~ msgid "Unknown type '%s' on <%s> element"
-#~ msgstr "未知的类型“%s”在元素 <%s> 上"
+msgid "Unknown type '%s' on <%s> element"
+msgstr "未知的类型“%s”在元素 <%s> 上"
 
+#: libmetacity/meta-theme-metacity.c:1327
 #, c-format
-#~ msgid "Unknown style_set '%s' on <%s> element"
-#~ msgstr "未知的 style_set“%s”在元素 <%s> 上"
+msgid "Unknown style_set '%s' on <%s> element"
+msgstr "未知的 style_set“%s”在元素 <%s> 上"
 
+#: libmetacity/meta-theme-metacity.c:1335
 #, c-format
-#~ msgid "Window type '%s' has already been assigned a style set"
-#~ msgstr "已经为窗口类型“%s”指定了一种风格设置"
+msgid "Window type '%s' has already been assigned a style set"
+msgstr "已经为窗口类型“%s”指定了一种风格设置"
 
+#: libmetacity/meta-theme-metacity.c:1364
+#: libmetacity/meta-theme-metacity.c:1428
+#: libmetacity/meta-theme-metacity.c:1654
+#: libmetacity/meta-theme-metacity.c:2810
+#: libmetacity/meta-theme-metacity.c:2856
+#: libmetacity/meta-theme-metacity.c:3094
+#: libmetacity/meta-theme-metacity.c:3130
+#: libmetacity/meta-theme-metacity.c:3166
+#: libmetacity/meta-theme-metacity.c:3202
+#: libmetacity/meta-theme-metacity.c:3499
 #, c-format
-#~ msgid "Element <%s> is not allowed below <%s>"
-#~ msgstr "不允许元素 <%s> 在 <%s> 下方"
+msgid "Element <%s> is not allowed below <%s>"
+msgstr "不允许元素 <%s> 在 <%s> 下方"
 
-#~ msgid ""
-#~ "Cannot specify both 'button_width'/'button_height' and 'aspect_ratio' for "
-#~ "buttons"
-#~ msgstr "不能同时指定按钮的“button_width”、“button_height”和“aspect_ratio”"
+#: libmetacity/meta-theme-metacity.c:1464
+#: libmetacity/meta-theme-metacity.c:1590
+#: libmetacity/meta-theme-metacity.c:1604
+msgid ""
+"Cannot specify both 'button_width'/'button_height' and 'aspect_ratio' for "
+"buttons"
+msgstr "不能同时指定按钮的“button_width”、“button_height”和“aspect_ratio”"
 
+#: libmetacity/meta-theme-metacity.c:1473
 #, c-format
-#~ msgid "Aspect ratio '%s' is unknown"
-#~ msgstr "长宽比“%s”未知"
+msgid "Aspect ratio '%s' is unknown"
+msgstr "长宽比“%s”未知"
 
+#: libmetacity/meta-theme-metacity.c:1535
 #, c-format
-#~ msgid "Border '%s' is unknown"
-#~ msgstr "边框“%s”未知"
+msgid "Border '%s' is unknown"
+msgstr "边框“%s”未知"
 
+#: libmetacity/meta-theme-metacity.c:1613
 #, c-format
-#~ msgid "Distance '%s' is unknown"
-#~ msgstr "距离“%s”未知"
+msgid "Distance '%s' is unknown"
+msgstr "距离“%s”未知"
 
+#: libmetacity/meta-theme-metacity.c:1824
 #, c-format
-#~ msgid "Angle must be between 0.0 and 360.0, was %g\n"
-#~ msgstr "角度值必须界于 0.0 到 360.0 之间，现在是 %g\n"
+msgid "Angle must be between 0.0 and 360.0, was %g\n"
+msgstr "角度值必须界于 0.0 到 360.0 之间，现在是 %g\n"
 
+#: libmetacity/meta-theme-metacity.c:2013
 #, c-format
-#~ msgid "No \"start_angle\" or \"from\" attribute on element <%s>"
-#~ msgstr "元素 <%s> 上没有“start_angle”或“from”属性"
+msgid "No \"start_angle\" or \"from\" attribute on element <%s>"
+msgstr "元素 <%s> 上没有“start_angle”或“from”属性"
 
+#: libmetacity/meta-theme-metacity.c:2020
 #, c-format
-#~ msgid "No \"extent_angle\" or \"to\" attribute on element <%s>"
-#~ msgstr "元素 <%s> 上没有“extent_angle”或“to”属性"
+msgid "No \"extent_angle\" or \"to\" attribute on element <%s>"
+msgstr "元素 <%s> 上没有“extent_angle”或“to”属性"
 
+#: libmetacity/meta-theme-metacity.c:2206
 #, c-format
-#~ msgid "Did not understand value \"%s\" for type of gradient"
-#~ msgstr "不理解梯度类型的值“%s”"
+msgid "Did not understand value \"%s\" for type of gradient"
+msgstr "不理解梯度类型的值“%s”"
 
+#: libmetacity/meta-theme-metacity.c:2271
+#: libmetacity/meta-theme-metacity.c:2595
 #, c-format
-#~ msgid "Did not understand fill type \"%s\" for <%s> element"
-#~ msgstr "不理解填充类型“%s”（用于 <%s> 元素）"
+msgid "Did not understand fill type \"%s\" for <%s> element"
+msgstr "不理解填充类型“%s”（用于 <%s> 元素）"
 
+#: libmetacity/meta-theme-metacity.c:2426
+#: libmetacity/meta-theme-metacity.c:2495
+#: libmetacity/meta-theme-metacity.c:2546
 #, c-format
-#~ msgid "Did not understand state \"%s\" for <%s> element"
-#~ msgstr "不理解状态“%s”（用于 <%s> 元素）"
+msgid "Did not understand state \"%s\" for <%s> element"
+msgstr "不理解状态“%s”（用于 <%s> 元素）"
 
+#: libmetacity/meta-theme-metacity.c:2436
+#: libmetacity/meta-theme-metacity.c:2505
 #, c-format
-#~ msgid "Did not understand shadow \"%s\" for <%s> element"
-#~ msgstr "不理解阴影“%s”（用于 <%s> 元素）"
+msgid "Did not understand shadow \"%s\" for <%s> element"
+msgstr "不理解阴影“%s”（用于 <%s> 元素）"
 
+#: libmetacity/meta-theme-metacity.c:2446
 #, c-format
-#~ msgid "Did not understand arrow \"%s\" for <%s> element"
-#~ msgstr "不理解箭头“%s”（用于 <%s> 元素）"
+msgid "Did not understand arrow \"%s\" for <%s> element"
+msgstr "不理解箭头“%s”（用于 <%s> 元素）"
 
+#: libmetacity/meta-theme-metacity.c:2695
+#: libmetacity/meta-theme-metacity.c:2762
 #, c-format
-#~ msgid "No <draw_ops> called \"%s\" has been defined"
-#~ msgstr "尚未定义名为“%s”的 <draw_ops>"
+msgid "No <draw_ops> called \"%s\" has been defined"
+msgstr "尚未定义名为“%s”的 <draw_ops>"
 
+#: libmetacity/meta-theme-metacity.c:2707
+#: libmetacity/meta-theme-metacity.c:2774
 #, c-format
-#~ msgid "Including draw_ops \"%s\" here would create a circular reference"
-#~ msgstr "此处包括 draw_ops“%s”将创建一个循环引用"
+msgid "Including draw_ops \"%s\" here would create a circular reference"
+msgstr "此处包括 draw_ops“%s”将创建一个循环引用"
 
+#: libmetacity/meta-theme-metacity.c:2981
 #, c-format
-#~ msgid "Unknown position \"%s\" for frame piece"
-#~ msgstr "框架段的位置“%s”未知"
+msgid "Unknown position \"%s\" for frame piece"
+msgstr "框架段的位置“%s”未知"
 
+#: libmetacity/meta-theme-metacity.c:2989
 #, c-format
-#~ msgid "Frame style already has a piece at position %s"
-#~ msgstr "在位置 %s 处已经有一段框架风格"
+msgid "Frame style already has a piece at position %s"
+msgstr "在位置 %s 处已经有一段框架风格"
 
+#: libmetacity/meta-theme-metacity.c:3005
 #, c-format
-#~ msgid "No <draw_ops> with the name \"%s\" has been defined"
-#~ msgstr "尚未定义名为“%s”的 <draw_ops>"
+msgid "No <draw_ops> with the name \"%s\" has been defined"
+msgstr "尚未定义名为“%s”的 <draw_ops>"
 
+#: libmetacity/meta-theme-metacity.c:3036
 #, c-format
-#~ msgid "Unknown function \"%s\" for button"
-#~ msgstr "按钮的函数“%s”未知"
+msgid "Unknown function \"%s\" for button"
+msgstr "按钮的函数“%s”未知"
 
+#: libmetacity/meta-theme-metacity.c:3047
 #, c-format
-#~ msgid "Button function '%s' does not exist in this version (%d, need %d)"
-#~ msgstr "按钮函数“%s”在此版本（%d，需要的是 %d）中不存在"
+msgid "Button function '%s' does not exist in this version (%d, need %d)"
+msgstr "按钮函数“%s”在此版本（%d，需要的是 %d）中不存在"
 
+#: libmetacity/meta-theme-metacity.c:3056
 #, c-format
-#~ msgid "Unknown state '%s' for button"
-#~ msgstr "按钮的状态“%s”未知"
+msgid "Unknown state '%s' for button"
+msgstr "按钮的状态“%s”未知"
 
+#: libmetacity/meta-theme-metacity.c:3063
 #, c-format
-#~ msgid "Frame style already has a button for function %s state %s"
-#~ msgstr "框架风格已经有一个函数为 %s、状态为 %s 的按钮"
+msgid "Frame style already has a button for function %s state %s"
+msgstr "框架风格已经有一个函数为 %s、状态为 %s 的按钮"
 
+#: libmetacity/meta-theme-metacity.c:3080
 #, c-format
-#~ msgid "No <draw_ops> with the name '%s' has been defined"
-#~ msgstr "尚未定义名为“%s”的 <draw_ops>"
+msgid "No <draw_ops> with the name '%s' has been defined"
+msgstr "尚未定义名为“%s”的 <draw_ops>"
 
-#~ msgid ""
-#~ "Can't have a two draw_ops for a <piece> element (theme specified a "
-#~ "draw_ops attribute and also a <draw_ops> element, or specified two "
-#~ "elements)"
-#~ msgstr ""
-#~ "一个 <piece> 元素不能有两个 draw_ops（主题指定了一个 draw_ops属性和一个 "
-#~ "<draw_ops> 元素，或者指定了两个元素）"
+#: libmetacity/meta-theme-metacity.c:3114
+msgid ""
+"Can't have a two draw_ops for a <piece> element (theme specified a draw_ops "
+"attribute and also a <draw_ops> element, or specified two elements)"
+msgstr ""
+"一个 <piece> 元素不能有两个 draw_ops（主题指定了一个 draw_ops属性和一个 "
+"<draw_ops> 元素，或者指定了两个元素）"
 
-#~ msgid ""
-#~ "Can't have a two draw_ops for a <button> element (theme specified a "
-#~ "draw_ops attribute and also a <draw_ops> element, or specified two "
-#~ "elements)"
-#~ msgstr ""
-#~ "一个 <button> 元素不能有两个 draw_ops（主题指定了一个 draw_ops属性和一个 "
-#~ "<draw_ops> 元素，或者指定了两个元素）"
+#: libmetacity/meta-theme-metacity.c:3150
+msgid ""
+"Can't have a two draw_ops for a <button> element (theme specified a draw_ops "
+"attribute and also a <draw_ops> element, or specified two elements)"
+msgstr ""
+"一个 <button> 元素不能有两个 draw_ops（主题指定了一个 draw_ops属性和一个 "
+"<draw_ops> 元素，或者指定了两个元素）"
 
-#~ msgid ""
-#~ "Can't have a two draw_ops for a <menu_icon> element (theme specified a "
-#~ "draw_ops attribute and also a <draw_ops> element, or specified two "
-#~ "elements)"
-#~ msgstr ""
-#~ "一个 <menu_icon> 元素不能有两个 draw_ops（主题指定了一个draw_ops 属性和一"
-#~ "个 <draw_ops> 元素，或者指定了两个元素）"
+#: libmetacity/meta-theme-metacity.c:3186
+msgid ""
+"Can't have a two draw_ops for a <menu_icon> element (theme specified a "
+"draw_ops attribute and also a <draw_ops> element, or specified two elements)"
+msgstr ""
+"一个 <menu_icon> 元素不能有两个 draw_ops（主题指定了一个draw_ops 属性和一个 "
+"<draw_ops> 元素，或者指定了两个元素）"
 
+#: libmetacity/meta-theme-metacity.c:3290
 #, c-format
-#~ msgid "'%s' is not a valid value for focus attribute"
-#~ msgstr "“%s”不是 focus 属性的有效值"
+msgid "'%s' is not a valid value for focus attribute"
+msgstr "“%s”不是 focus 属性的有效值"
 
+#: libmetacity/meta-theme-metacity.c:3299
 #, c-format
-#~ msgid "'%s' is not a valid value for state attribute"
-#~ msgstr "“%s”不是 state 属性的有效值"
+msgid "'%s' is not a valid value for state attribute"
+msgstr "“%s”不是 state 属性的有效值"
 
+#: libmetacity/meta-theme-metacity.c:3308
 #, c-format
-#~ msgid "A style called '%s' has not been defined"
-#~ msgstr "尚未定义名为“%s”的风格"
+msgid "A style called '%s' has not been defined"
+msgstr "尚未定义名为“%s”的风格"
 
+#: libmetacity/meta-theme-metacity.c:3326
+#: libmetacity/meta-theme-metacity.c:3349
 #, c-format
-#~ msgid "'%s' is not a valid value for resize attribute"
-#~ msgstr "“%s”不是 resize 属性的有效值"
+msgid "'%s' is not a valid value for resize attribute"
+msgstr "“%s”不是 resize 属性的有效值"
 
+#: libmetacity/meta-theme-metacity.c:3360
 #, c-format
-#~ msgid ""
-#~ "Should not have 'resize' attribute on <%s> element for maximized/shaded "
-#~ "states"
-#~ msgstr "状态为 maximized/shaded 的 <%s> 元素不应有“resize”属性"
+msgid ""
+"Should not have 'resize' attribute on <%s> element for maximized/shaded "
+"states"
+msgstr "状态为 maximized/shaded 的 <%s> 元素不应有“resize”属性"
 
+#: libmetacity/meta-theme-metacity.c:3381
 #, c-format
-#~ msgid ""
-#~ "Should not have 'resize' attribute on <%s> element for maximized states"
-#~ msgstr "状态为 maximized 的 <%s> 元素不应有“resize”属性"
+msgid "Should not have 'resize' attribute on <%s> element for maximized states"
+msgstr "状态为 maximized 的 <%s> 元素不应有“resize”属性"
 
+#: libmetacity/meta-theme-metacity.c:3396
+#: libmetacity/meta-theme-metacity.c:3444
 #, c-format
-#~ msgid "Style has already been specified for state %s resize %s focus %s"
-#~ msgstr "已经为 state 属性 %s、resize 属性 %s、focus 属性 %s 指定了风格"
+msgid "Style has already been specified for state %s resize %s focus %s"
+msgstr "已经为 state 属性 %s、resize 属性 %s、focus 属性 %s 指定了风格"
 
+#: libmetacity/meta-theme-metacity.c:3408
+#: libmetacity/meta-theme-metacity.c:3420
+#: libmetacity/meta-theme-metacity.c:3432
+#: libmetacity/meta-theme-metacity.c:3456
+#: libmetacity/meta-theme-metacity.c:3468
+#: libmetacity/meta-theme-metacity.c:3480
 #, c-format
-#~ msgid "Style has already been specified for state %s focus %s"
-#~ msgstr "已经为 state 属性 %s、focus 属性 %s 指定了风格"
+msgid "Style has already been specified for state %s focus %s"
+msgstr "已经为 state 属性 %s、focus 属性 %s 指定了风格"
 
+#: libmetacity/meta-theme-metacity.c:3546
 #, c-format
-#~ msgid "Bad version specification '%s'"
-#~ msgstr "损坏的版本规范“%s”"
+msgid "Bad version specification '%s'"
+msgstr "损坏的版本规范“%s”"
 
-#~ msgid ""
-#~ "'version' attribute cannot be used in metacity-theme-1.xml or metacity-"
-#~ "theme-2.xml"
-#~ msgstr ""
-#~ "“version”属性无法被用在 metacity-theme-1.xml 或者 metacity-theme-2.xml 里"
-#~ "面"
+#: libmetacity/meta-theme-metacity.c:3617
+msgid ""
+"'version' attribute cannot be used in metacity-theme-1.xml or metacity-"
+"theme-2.xml"
+msgstr ""
+"“version”属性无法被用在 metacity-theme-1.xml 或者 metacity-theme-2.xml 里面"
 
+#: libmetacity/meta-theme-metacity.c:3640
 #, c-format
-#~ msgid ""
-#~ "Theme requires version %s but latest supported theme version is %d.%d"
-#~ msgstr "主题需要版本 %s 但是最新支持的主题版本为 %d.%d"
+msgid "Theme requires version %s but latest supported theme version is %d.%d"
+msgstr "主题需要版本 %s 但是最新支持的主题版本为 %d.%d"
 
+#: libmetacity/meta-theme-metacity.c:3664
 #, c-format
-#~ msgid "Outermost element in theme must be <metacity_theme> not <%s>"
-#~ msgstr "主题中最外面的元素必须是 <metacity_theme>，而不能是 <%s>"
+msgid "Outermost element in theme must be <metacity_theme> not <%s>"
+msgstr "主题中最外面的元素必须是 <metacity_theme>，而不能是 <%s>"
 
+#: libmetacity/meta-theme-metacity.c:3684
 #, c-format
-#~ msgid ""
-#~ "Element <%s> is not allowed inside a name/author/date/description element"
-#~ msgstr "name/author/date/description 元素中不允许有元素 <%s>"
+msgid ""
+"Element <%s> is not allowed inside a name/author/date/description element"
+msgstr "name/author/date/description 元素中不允许有元素 <%s>"
 
+#: libmetacity/meta-theme-metacity.c:3690
 #, c-format
-#~ msgid "Element <%s> is not allowed inside a <constant> element"
-#~ msgstr "<constant> 元素中不允许有元素 <%s>"
+msgid "Element <%s> is not allowed inside a <constant> element"
+msgstr "<constant> 元素中不允许有元素 <%s>"
 
+#: libmetacity/meta-theme-metacity.c:3703
 #, c-format
-#~ msgid ""
-#~ "Element <%s> is not allowed inside a distance/border/aspect_ratio element"
-#~ msgstr "distance/border/aspect_ratio 元素中不允许有元素 <%s>"
+msgid ""
+"Element <%s> is not allowed inside a distance/border/aspect_ratio element"
+msgstr "distance/border/aspect_ratio 元素中不允许有元素 <%s>"
 
+#: libmetacity/meta-theme-metacity.c:3726
 #, c-format
-#~ msgid "Element <%s> is not allowed inside a draw operation element"
-#~ msgstr "draw operation 元素中不允许有元素 <%s>"
+msgid "Element <%s> is not allowed inside a draw operation element"
+msgstr "draw operation 元素中不允许有元素 <%s>"
 
+#: libmetacity/meta-theme-metacity.c:3737
+#: libmetacity/meta-theme-metacity.c:3768
+#: libmetacity/meta-theme-metacity.c:3774
+#: libmetacity/meta-theme-metacity.c:3780
 #, c-format
-#~ msgid "Element <%s> is not allowed inside a <%s> element"
-#~ msgstr "元素 <%s> 不允许出现在 <%s> 元素内"
+msgid "Element <%s> is not allowed inside a <%s> element"
+msgstr "元素 <%s> 不允许出现在 <%s> 元素内"
 
+#. Translators: This error means that a necessary XML tag (whose name
+#. * is given in angle brackets) was not found in a given theme (whose
+#. * name is given second, in quotation marks).
+#.
+#: libmetacity/meta-theme-metacity.c:3834
+#: libmetacity/meta-theme-metacity.c:3842
+#: libmetacity/meta-theme-metacity.c:3850
+#: libmetacity/meta-theme-metacity.c:3858
+#: libmetacity/meta-theme-metacity.c:3867
 #, c-format
-#~ msgid "No <%s> set for theme '%s'"
-#~ msgstr "没有为主题“%2$s”设置 <%1$s>"
+msgid "No <%s> set for theme '%s'"
+msgstr "没有为主题“%2$s”设置 <%1$s>"
 
+#: libmetacity/meta-theme-metacity.c:3878
 #, c-format
-#~ msgid ""
-#~ "No frame style set for window type '%s' in theme '%s', add a <window "
-#~ "type='%s' style_set='whatever' /> element"
-#~ msgstr ""
-#~ "没有为窗口类型“%s”（在主题“%s”中）设置框架风格，请添加一个 <window "
-#~ "type=\"%s\" style_set=\"whatever\"/> 元素"
+msgid ""
+"No frame style set for window type '%s' in theme '%s', add a <window "
+"type='%s' style_set='whatever' /> element"
+msgstr ""
+"没有为窗口类型“%s”（在主题“%s”中）设置框架风格，请添加一个 <window "
+"type=\"%s\" style_set=\"whatever\"/> 元素"
 
-#~ msgid "No draw_ops provided for frame piece"
-#~ msgstr "没有为框架段提供 draw_ops"
+#: libmetacity/meta-theme-metacity.c:4141
+msgid "No draw_ops provided for frame piece"
+msgstr "没有为框架段提供 draw_ops"
 
-#~ msgid "No draw_ops provided for button"
-#~ msgstr "没有为按钮提供 draw_ops"
+#: libmetacity/meta-theme-metacity.c:4157
+msgid "No draw_ops provided for button"
+msgstr "没有为按钮提供 draw_ops"
 
+#: libmetacity/meta-theme-metacity.c:4272
+#: libmetacity/meta-theme-metacity.c:4283
+#: libmetacity/meta-theme-metacity.c:4294
+#: libmetacity/meta-theme-metacity.c:4305
+#: libmetacity/meta-theme-metacity.c:4316
 #, c-format
-#~ msgid "<%s> specified twice for this theme"
-#~ msgstr "为此主题指定了两次<%s>"
+msgid "<%s> specified twice for this theme"
+msgstr "为此主题指定了两次<%s>"
 
+#: libmetacity/meta-theme-metacity.c:4355
 #, c-format
-#~ msgid "No text is allowed inside element <%s>"
-#~ msgstr "元素 <%s> 中不允许有文本"
+msgid "No text is allowed inside element <%s>"
+msgstr "元素 <%s> 中不允许有文本"
 
+#: libmetacity/meta-theme-metacity.c:4621
 #, c-format
-#~ msgid "Failed to find a valid file for theme '%s'"
-#~ msgstr "找不到主题“%s”的有效文件"
+msgid "Failed to find a valid file for theme '%s'"
+msgstr "找不到主题“%s”的有效文件"
 
-#~ msgid "Bell event"
-#~ msgstr "响铃事件"
+#: src/core/bell.c:279
+msgid "Bell event"
+msgstr "响铃事件"
 
+#: src/core/main.c:105
 #, c-format
-#~ msgid ""
-#~ "metacity %s\n"
-#~ "Copyright (C) 2001-%s Havoc Pennington, Red Hat, Inc., and others\n"
-#~ "This is free software; see the source for copying conditions.\n"
-#~ "There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A "
-#~ "PARTICULAR PURPOSE.\n"
-#~ msgstr ""
-#~ "metacity %s\n"
-#~ "Copyright (C) 2001-%s Havoc Pennington, Red Hat, Inc., 以及其他人\n"
-#~ "这是自由软件；版权条款请参见源码.\n"
-#~ "不作任何保证；即使是对适销性或者适合某种特定目的也不作保证。\n"
+msgid ""
+"metacity %s\n"
+"Copyright (C) 2001-%s Havoc Pennington, Red Hat, Inc., and others\n"
+"This is free software; see the source for copying conditions.\n"
+"There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A "
+"PARTICULAR PURPOSE.\n"
+msgstr ""
+"metacity %s\n"
+"Copyright (C) 2001-%s Havoc Pennington, Red Hat, Inc., 以及其他人\n"
+"这是自由软件；版权条款请参见源码.\n"
+"不作任何保证；即使是对适销性或者适合某种特定目的也不作保证。\n"
 
+#: src/core/main.c:196 src/core/main.c:213
 #, c-format
-#~ msgid "Option “%s” is deprecated, use the “--compositor” instead."
-#~ msgstr "选项“%s”已弃用，使用“--compositor”替代。"
+msgid "Option “%s” is deprecated, use the “--compositor” instead."
+msgstr "选项“%s”已弃用，使用“--compositor”替代。"
 
+#: src/core/main.c:241
 #, c-format
-#~ msgid "“%s” is not a valid compositor"
-#~ msgstr "“%s”不是有效的合成器"
+msgid "“%s” is not a valid compositor"
+msgstr "“%s”不是有效的合成器"
 
-#~ msgid "Disable connection to session manager"
-#~ msgstr "禁止连接到会话管理器"
+#: src/core/main.c:276
+msgid "Disable connection to session manager"
+msgstr "禁止连接到会话管理器"
 
-#~ msgid "Replace the running window manager with Metacity"
-#~ msgstr "将运行中的窗口管理器替换为 Metacity"
+#: src/core/main.c:282
+msgid "Replace the running window manager with Metacity"
+msgstr "将运行中的窗口管理器替换为 Metacity"
 
-#~ msgid "Specify session management ID"
-#~ msgstr "指定会话管理 ID"
+#: src/core/main.c:288
+msgid "Specify session management ID"
+msgstr "指定会话管理 ID"
 
-#~ msgid "X Display to use"
-#~ msgstr "要使用的 X 显示"
+#: src/core/main.c:293
+msgid "X Display to use"
+msgstr "要使用的 X 显示"
 
-#~ msgid "Initialize session from savefile"
-#~ msgstr "从保存文件中初始化会话"
+#: src/core/main.c:299
+msgid "Initialize session from savefile"
+msgstr "从保存文件中初始化会话"
 
-#~ msgid "Print version"
-#~ msgstr "打印版本"
+#: src/core/main.c:305
+msgid "Print version"
+msgstr "打印版本"
 
-#~ msgid "Make X calls synchronous"
-#~ msgstr "使 X 调用同步"
+#: src/core/main.c:311
+msgid "Make X calls synchronous"
+msgstr "使 X 调用同步"
 
-#~ msgid "Turn compositing on"
-#~ msgstr "打开合成效果"
+#: src/core/main.c:320
+msgid "Turn compositing on"
+msgstr "打开合成效果"
 
-#~ msgid "Turn compositing off"
-#~ msgstr "关闭合成效果"
+#: src/core/main.c:329
+msgid "Turn compositing off"
+msgstr "关闭合成效果"
 
-#~ msgid "Compositor to use"
-#~ msgstr "要使用的合成器"
+#: src/core/main.c:338
+msgid "Compositor to use"
+msgstr "要使用的合成器"
 
-#~ msgid ""
-#~ "Don't make fullscreen windows that are maximized and have no decorations"
-#~ msgstr "不要将已最大化的窗口全屏，不要做任何装饰"
+#: src/core/main.c:344
+msgid ""
+"Don't make fullscreen windows that are maximized and have no decorations"
+msgstr "不要将已最大化的窗口全屏，不要做任何装饰"
 
-#~ msgid ""
-#~ "Setting “compositing-manager” is deprecated, use the “compositor” instead."
-#~ msgstr "设置“compositing-manager”已弃用，使用“compositor”替代。"
+#: src/core/prefs.c:905
+msgid ""
+"Setting “compositing-manager” is deprecated, use the “compositor” instead."
+msgstr "设置“compositing-manager”已弃用，使用“compositor”替代。"
 
+#: src/core/prefs.c:1446
 #, c-format
-#~ msgid "Workspace %d"
-#~ msgstr "工作区 %d"
+msgid "Workspace %d"
+msgstr "工作区 %d"
 
-#~ msgid "<metacity_session> attribute seen but we already have the session ID"
-#~ msgstr "<metacity_session> 属性已看到，但我们已经拥有该会话 ID"
+#: src/core/session.c:1212
+msgid "<metacity_session> attribute seen but we already have the session ID"
+msgstr "<metacity_session> 属性已看到，但我们已经拥有该会话 ID"
 
+#: src/core/session.c:1225 src/core/session.c:1300 src/core/session.c:1332
+#: src/core/session.c:1404 src/core/session.c:1464
 #, c-format
-#~ msgid "Unknown attribute %s on <%s> element"
-#~ msgstr "<%2$s> 元素上未知的属性 %1$s"
+msgid "Unknown attribute %s on <%s> element"
+msgstr "<%2$s> 元素上未知的属性 %1$s"
 
-#~ msgid "nested <window> tag"
-#~ msgstr "嵌套 <window> 标记"
+#: src/core/session.c:1242
+msgid "nested <window> tag"
+msgstr "嵌套 <window> 标记"
 
+#: src/core/session.c:1484
 #, c-format
-#~ msgid "Unknown element %s"
-#~ msgstr "未知的元素 %s"
+msgid "Unknown element %s"
+msgstr "未知的元素 %s"
 
+#: src/core/util.c:106
 #, c-format
-#~ msgid "Opened log file %s\n"
-#~ msgstr "打开的日志文件 %s\n"
+msgid "Opened log file %s\n"
+msgstr "打开的日志文件 %s\n"
 
+#. Translators: the title of a window from another machine
+#: src/core/window-props.c:538
 #, c-format
-#~ msgid "%s (on %s)"
-#~ msgstr "%s（于 %s）"
+msgid "%s (on %s)"
+msgstr "%s（于 %s）"
 
+#. Simple case-- don't bother to look it up.  It's root.
+#: src/core/window-props.c:573
 #, c-format
-#~ msgid "%s (as superuser)"
-#~ msgstr "%s（以超级用户）"
+msgid "%s (as superuser)"
+msgstr "%s（以超级用户）"
 
+#. Translators: the title of a window owned by another user
+#. * on this machine
+#: src/core/window-props.c:592
 #, c-format
-#~ msgid "%s (as %s)"
-#~ msgstr "%s（以 %s）"
+msgid "%s (as %s)"
+msgstr "%s（以 %s）"
 
+#. Translators: the title of a window owned by another user
+#. * on this machine, whose name we don't know
+#: src/core/window-props.c:598
 #, c-format
-#~ msgid "%s (as another user)"
-#~ msgstr "%s（以另一用户）"
+msgid "%s (as another user)"
+msgstr "%s（以另一用户）"
 
+#: src/tools/metacity-message.c:170
 #, c-format
-#~ msgid "Usage: %s\n"
-#~ msgstr "用法：%s\n"
+msgid "Usage: %s\n"
+msgstr "用法：%s\n"
 
-#~ msgid "Close Window"
-#~ msgstr "关闭窗口"
+#: src/ui/frames.c:1288
+msgid "Close Window"
+msgstr "关闭窗口"
 
-#~ msgid "Window Menu"
-#~ msgstr "窗口菜单"
+#: src/ui/frames.c:1291
+msgid "Window Menu"
+msgstr "窗口菜单"
 
-#~ msgid "Minimize Window"
-#~ msgstr "最小化窗口"
+#: src/ui/frames.c:1294
+msgid "Minimize Window"
+msgstr "最小化窗口"
 
-#~ msgid "Maximize Window"
-#~ msgstr "最大化窗口"
+#: src/ui/frames.c:1297
+msgid "Maximize Window"
+msgstr "最大化窗口"
 
-#~ msgid "Restore Window"
-#~ msgstr "恢复窗口"
+#: src/ui/frames.c:1300
+msgid "Restore Window"
+msgstr "恢复窗口"
 
-#~ msgid "Mi_nimize"
-#~ msgstr "最小化(_N)"
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:65
+msgid "Mi_nimize"
+msgstr "最小化(_N)"
 
-#~ msgid "Ma_ximize"
-#~ msgstr "最大化(_X)"
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:67
+msgid "Ma_ximize"
+msgstr "最大化(_X)"
 
-#~ msgid "Unma_ximize"
-#~ msgstr "取消最大化(_X)"
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:69
+msgid "Unma_ximize"
+msgstr "取消最大化(_X)"
 
-#~ msgid "Roll _Up"
-#~ msgstr "卷起(_U)"
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:71
+msgid "Roll _Up"
+msgstr "卷起(_U)"
 
-#~ msgid "_Unroll"
-#~ msgstr "展开(_U)"
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:73
+msgid "_Unroll"
+msgstr "展开(_U)"
 
-#~ msgid "_Move"
-#~ msgstr "移动(_M)"
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:75
+msgid "_Move"
+msgstr "移动(_M)"
 
-#~ msgid "_Resize"
-#~ msgstr "改变大小(_R)"
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:77
+msgid "_Resize"
+msgstr "改变大小(_R)"
 
-#~ msgid "Move Titlebar On_screen"
-#~ msgstr "将标题栏上移动到屏幕上(_S)"
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:79
+msgid "Move Titlebar On_screen"
+msgstr "将标题栏上移动到屏幕上(_S)"
 
-#~ msgid "Always on _Top"
-#~ msgstr "常居顶端(_T)"
+#. separator
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:82 src/ui/menu.c:84
+msgid "Always on _Top"
+msgstr "常居顶端(_T)"
 
-#~ msgid "_Always on Visible Workspace"
-#~ msgstr "总在可见工作区(_A)"
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:86
+msgid "_Always on Visible Workspace"
+msgstr "总在可见工作区(_A)"
 
-#~ msgid "_Only on This Workspace"
-#~ msgstr "只在此工作区(_O)"
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:88
+msgid "_Only on This Workspace"
+msgstr "只在此工作区(_O)"
 
-#~ msgid "Move to Workspace _Left"
-#~ msgstr "移动到左侧工作区(_L)"
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:90
+msgid "Move to Workspace _Left"
+msgstr "移动到左侧工作区(_L)"
 
-#~ msgid "Move to Workspace R_ight"
-#~ msgstr "移动到右侧工作区(_I)"
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:92
+msgid "Move to Workspace R_ight"
+msgstr "移动到右侧工作区(_I)"
 
-#~ msgid "Move to Workspace _Up"
-#~ msgstr "移动到上侧工作区(_U)"
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:94
+msgid "Move to Workspace _Up"
+msgstr "移动到上侧工作区(_U)"
 
-#~ msgid "Move to Workspace _Down"
-#~ msgstr "移动到下侧工作区(_D)"
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:96
+msgid "Move to Workspace _Down"
+msgstr "移动到下侧工作区(_D)"
 
-#~ msgid "_Close"
-#~ msgstr "关闭(_C)"
+#. separator
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:100
+msgid "_Close"
+msgstr "关闭(_C)"
 
+#: src/ui/menu.c:174
 #, c-format
-#~ msgid "Workspace %d%n"
-#~ msgstr "工作区 %d%n"
+msgid "Workspace %d%n"
+msgstr "工作区 %d%n"
 
-#~ msgid "Workspace 1_0"
-#~ msgstr "工作区 1_0"
+#: src/ui/menu.c:184
+msgid "Workspace 1_0"
+msgstr "工作区 1_0"
 
+#: src/ui/menu.c:186
 #, c-format
-#~ msgid "Workspace %s%d"
-#~ msgstr "工作区 %s%d"
+msgid "Workspace %s%d"
+msgstr "工作区 %s%d"
 
-#~ msgid "Move to Another _Workspace"
-#~ msgstr "移动到另外的工作区(_W)"
+#: src/ui/menu.c:358
+msgid "Move to Another _Workspace"
+msgstr "移动到另外的工作区(_W)"
 
-#~ msgid "Shift"
-#~ msgstr "Shift"
+#. This is the text that should appear next to menu accelerators
+#. * that use the shift key. If the text on this key isn't typically
+#. * translated on keyboards used for your language, don't translate
+#. * this.
+#.
+#: src/ui/metaaccellabel.c:73
+msgid "Shift"
+msgstr "Shift"
 
-#~ msgid "Ctrl"
-#~ msgstr "Ctrl"
+#. This is the text that should appear next to menu accelerators
+#. * that use the control key. If the text on this key isn't typically
+#. * translated on keyboards used for your language, don't translate
+#. * this.
+#.
+#: src/ui/metaaccellabel.c:79
+msgid "Ctrl"
+msgstr "Ctrl"
 
-#~ msgid "Alt"
-#~ msgstr "Alt"
+#. This is the text that should appear next to menu accelerators
+#. * that use the alt key. If the text on this key isn't typically
+#. * translated on keyboards used for your language, don't translate
+#. * this.
+#.
+#: src/ui/metaaccellabel.c:85
+msgid "Alt"
+msgstr "Alt"
 
-#~ msgid "Meta"
-#~ msgstr "Meta"
+#. This is the text that should appear next to menu accelerators
+#. * that use the meta key. If the text on this key isn't typically
+#. * translated on keyboards used for your language, don't translate
+#. * this.
+#.
+#: src/ui/metaaccellabel.c:91
+msgid "Meta"
+msgstr "Meta"
 
-#~ msgid "Super"
-#~ msgstr "Super"
+#. This is the text that should appear next to menu accelerators
+#. * that use the super key. If the text on this key isn't typically
+#. * translated on keyboards used for your language, don't translate
+#. * this.
+#.
+#: src/ui/metaaccellabel.c:97
+msgid "Super"
+msgstr "Super"
 
-#~ msgid "Hyper"
-#~ msgstr "Hyper"
+#. This is the text that should appear next to menu accelerators
+#. * that use the hyper key. If the text on this key isn't typically
+#. * translated on keyboards used for your language, don't translate
+#. * this.
+#.
+#: src/ui/metaaccellabel.c:103
+msgid "Hyper"
+msgstr "Hyper"
 
-#~ msgid "Mod2"
-#~ msgstr "Mod2"
+#. This is the text that should appear next to menu accelerators
+#. * that use the mod2 key. If the text on this key isn't typically
+#. * translated on keyboards used for your language, don't translate
+#. * this.
+#.
+#: src/ui/metaaccellabel.c:109
+msgid "Mod2"
+msgstr "Mod2"
 
-#~ msgid "Mod3"
-#~ msgstr "Mod3"
+#. This is the text that should appear next to menu accelerators
+#. * that use the mod3 key. If the text on this key isn't typically
+#. * translated on keyboards used for your language, don't translate
+#. * this.
+#.
+#: src/ui/metaaccellabel.c:115
+msgid "Mod3"
+msgstr "Mod3"
 
-#~ msgid "Mod4"
-#~ msgstr "Mod4"
+#. This is the text that should appear next to menu accelerators
+#. * that use the mod4 key. If the text on this key isn't typically
+#. * translated on keyboards used for your language, don't translate
+#. * this.
+#.
+#: src/ui/metaaccellabel.c:121
+msgid "Mod4"
+msgstr "Mod4"
 
-#~ msgid "Mod5"
-#~ msgstr "Mod5"
+#. This is the text that should appear next to menu accelerators
+#. * that use the mod5 key. If the text on this key isn't typically
+#. * translated on keyboards used for your language, don't translate
+#. * this.
+#.
+#: src/ui/metaaccellabel.c:127
+msgid "Mod5"
+msgstr "Mod5"
 
+#. Translators: This represents the size of a window.  The first number is
+#. * the width of the window and the second is the height.
+#.
+#: src/ui/resizepopup.c:86
 #, c-format
-#~ msgid "%d x %d"
-#~ msgstr "%d x %d"
+msgid "%d x %d"
+msgstr "%d x %d"
 
-#~ msgid "Falling back to default GTK+ theme - Adwaita"
-#~ msgstr "回落到默认的 GTK+ 主题 - Adwaita"
+#: src/ui/ui.c:853
+msgid "Falling back to default GTK+ theme - Adwaita"
+msgstr "回落到默认的 GTK+ 主题 - Adwaita"
 
-#~ msgid "Theme type to use (\"gtk\" or \"metacity\")"
-#~ msgstr "要使用的主题类型（“gtk”或“metacity”）"
+#: theme-viewer/theme-viewer-main.c:32
+msgid "Theme type to use (\"gtk\" or \"metacity\")"
+msgstr "要使用的主题类型（“gtk”或“metacity”）"
 
-#~ msgid "TYPE"
-#~ msgstr "类型"
+#: theme-viewer/theme-viewer-main.c:32
+msgid "TYPE"
+msgstr "类型"
 
-#~ msgid "Theme name to use"
-#~ msgstr "要使用的主题名称"
+#: theme-viewer/theme-viewer-main.c:36
+msgid "Theme name to use"
+msgstr "要使用的主题名称"
 
-#~ msgid "NAME"
-#~ msgstr "名称"
+#: theme-viewer/theme-viewer-main.c:36
+msgid "NAME"
+msgstr "名称"
 
+#: theme-viewer/theme-viewer-window.c:102
 #, c-format
-#~ msgid "Loaded <b>%s</b> theme <b>%s</b> in <b>%f</b> seconds."
-#~ msgstr "载入 <b>%s</b> 主题 <b>%s</b> 用了 <b>%f</b> 秒。"
+msgid "Loaded <b>%s</b> theme <b>%s</b> in <b>%f</b> seconds."
+msgstr "载入 <b>%s</b> 主题 <b>%s</b> 用了 <b>%f</b> 秒。"
 
+#: theme-viewer/theme-viewer-window.c:132
 #, c-format
-#~ msgid ""
-#~ "Got MetaFrameBorders in <b>%f</b> seconds (CSS loading, "
-#~ "PangoFontDescription creation and title height calculation)."
-#~ msgstr ""
-#~ "获取 MetaFrameBorders 用了 <b>%f</b> 秒（CSS 加载， PangoFontDescription "
-#~ "创建和标题高度计算）。"
+msgid ""
+"Got MetaFrameBorders in <b>%f</b> seconds (CSS loading, PangoFontDescription "
+"creation and title height calculation)."
+msgstr ""
+"获取 MetaFrameBorders 用了 <b>%f</b> 秒（CSS 加载， PangoFontDescription 创建"
+"和标题高度计算）。"
 
+#: theme-viewer/theme-viewer-window.c:207
 #, c-format
-#~ msgid ""
-#~ "Drew <b>%d</b> frames in <b>%f</b> client-side seconds (<b>%f</b> "
-#~ "milliseconds per frame) and <b>%f</b> seconds wall clock time including X "
-#~ "server resources (<b>%f</b> milliseconds per frame)."
-#~ msgstr ""
-#~ "绘画 <b>%d</b> 帧用了 <b>%f</b> 客户端秒（<b>%f</b> 毫秒每帧）和包括 X 服"
-#~ "务器资源在内的 <b>%f</b> 秒挂钟时间（<b>%f</b> 毫秒每帧）。"
+msgid ""
+"Drew <b>%d</b> frames in <b>%f</b> client-side seconds (<b>%f</b> "
+"milliseconds per frame) and <b>%f</b> seconds wall clock time including X "
+"server resources (<b>%f</b> milliseconds per frame)."
+msgstr ""
+"绘画 <b>%d</b> 帧用了 <b>%f</b> 客户端秒（<b>%f</b> 毫秒每帧）和包括 X 服务器"
+"资源在内的 <b>%f</b> 秒挂钟时间（<b>%f</b> 毫秒每帧）。"
 
-#~ msgid "Run again"
-#~ msgstr "再次运行"
+#: theme-viewer/theme-viewer-window.c:244
+msgid "Run again"
+msgstr "再次运行"
 
 #~ msgid "preferences-system-windows"
 #~ msgstr "preferences-system-windows"
@@ -1759,11 +2066,11 @@ msgstr "Metacity 主题查看器"
 #~ "versions without breaking older versions. A special spacer tag can be "
 #~ "used to insert some space between two adjacent buttons."
 #~ msgstr ""
-#~ "标题栏上按钮的排列。它的值必须是一个字符串，比如“menu:minimize,maximize,"
-#~ "spacer,close”；冒号分隔窗口左上角和右上角的按钮，按钮名称之间用逗号分隔。"
-#~ "不允许指定重复的按钮。未知的按钮名称将被忽略，因此在将来版本的 metacity 中"
-#~ "可以添加新的按钮，而不至于破坏旧的版本。而特殊的 spacer 标记可在两个按钮之"
-#~ "间添加一些空格。"
+#~ "标题栏上按钮的排列。它的值必须是一个字符串，比"
+#~ "如“menu:minimize,maximize,spacer,close”；冒号分隔窗口左上角和右上角的按"
+#~ "钮，按钮名称之间用逗号分隔。不允许指定重复的按钮。未知的按钮名称将被忽略，"
+#~ "因此在将来版本的 metacity 中可以添加新的按钮，而不至于破坏旧的版本。而特殊"
+#~ "的 spacer 标记可在两个按钮之间添加一些空格。"
 
 #~ msgid "Automatically raises the focused window"
 #~ msgstr "自动提升获得焦点的窗口"
@@ -1917,10 +2224,10 @@ msgstr "Metacity 主题查看器"
 #~ "sent the bell is unknown (as is usually the case for the default \"system "
 #~ "beep\"), the currently focused window's titlebar is flashed."
 #~ msgstr ""
-#~ "通知 Metacity 如何实现系统铃声或其它应用程序响铃的视觉标识。目前有两种"
-#~ "值，“全屏”将以黑白色闪烁整个屏幕，而“框架闪烁”将闪烁发出响铃信号的应用程序"
-#~ "的标题栏。如果发送响铃的程序未知(通常是默认的“系统响铃”)，则闪烁当前窗口的"
-#~ "标题栏。"
+#~ "通知 Metacity 如何实现系统铃声或其它应用程序响铃的视觉标识。目前有两种值，"
+#~ "“全屏”将以黑白色闪烁整个屏幕，而“框架闪烁”将闪烁发出响铃信号的应用程序的标"
+#~ "题栏。如果发送响铃的程序未知(通常是默认的“系统响铃”)，则闪烁当前窗口的标题"
+#~ "栏。"
 
 #~ msgid ""
 #~ "The /apps/metacity/global_keybindings/run_command_N keys define "
