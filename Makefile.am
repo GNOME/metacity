@@ -14,7 +14,7 @@ EXTRA_DIST = \
 	AUTHORS \
 	COPYING \
 	HACKING \
-	README \
+	README.md \
 	rationales.txt \
 	$(NULL)
 
