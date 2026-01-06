@@ -123,7 +123,9 @@ options such as:
      gsettings set org.gnome.desktop.wm.preferences focus-mode sloppy
      gsettings set org.gnome.desktop.wm.preferences focus-mode click
 
- - Global keybinding defaults include:   
+## Global Keybindings
+
+Global keybinding defaults include:
 
     Alt-Tab                forward cycle window focus
     Alt-Shift-Tab          backward cycle focus
@@ -140,65 +142,67 @@ options such as:
    
    Also try the GNOME keyboard shortcuts control panel.
 
- - Window keybindings:
+## Window Keybindings
 
-    Alt-space         window menu
+Alt-space         window menu
 
-    Mnemonics work in the menu. That is, Alt-space then underlined
-    letter in the menu item works.
+Mnemonics work in the menu. That is, Alt-space then underlined
+letter in the menu item works.
 
-    Choose Move from menu, and arrow keys to move the window.
+Choose Move from menu, and arrow keys to move the window.
 
-    While moving, hold down Control to move slower, and 
-      Shift to snap to edges.
+While moving, hold down Control to move slower, and 
+  Shift to snap to edges.
 
-    Choose Resize from menu, and nothing happens yet, but 
-      eventually I might implement something.
+Choose Resize from menu, and nothing happens yet, but 
+  eventually I might implement something.
 
-    Keybindings for things like maximize window, vertical maximize,
-    etc. can be bound, but may not all exist by default. See
-    metacity.schemas.
+Keybindings for things like maximize window, vertical maximize,
+etc. can be bound, but may not all exist by default. See
+metacity.schemas.
 
- - Window mouse bindings:
+## Window Mouse Bindings
 
-    Clicking anywhere on frame with button 1 will raise/focus window
-    
-    If you click a window control, such as the close button, then the 
-     control will activate on button release if you are still over it
-     on release (as with most GUI toolkits)
+Clicking anywhere on frame with button 1 will raise/focus window
 
-    If you click and drag borders with button 1 it resizes the window
-    
-    If you click and drag the titlebar with button 1 it moves the 
-     window.
+If you click a window control, such as the close button, then the 
+ control will activate on button release if you are still over it
+ on release (as with most GUI toolkits)
 
-    If you click anywhere on the frame with button 2 it lowers the 
-     window.
+If you click and drag borders with button 1 it resizes the window
 
-    If you click anywhere on the frame with button 3 it shows the 
-     window menu.
+If you click and drag the titlebar with button 1 it moves the 
+ window.
 
-    If you hold down Super (windows key) and click inside a window, it
-     will move the window (buttons 1 and 2) or show menu (button 3).
-     Or you can configure a different modifier for this.
+If you click anywhere on the frame with button 2 it lowers the 
+ window.
 
-    If you pick up a window with button 1 and then switch workspaces
-     the window will come with you to the new workspace, this is 
-     a feature copied from Enlightenment.
+If you click anywhere on the frame with button 3 it shows the 
+ window menu.
 
-    If you hold down Shift while moving a window, the window snaps
-     to edges of other windows and the screen.
+If you hold down Super (windows key) and click inside a window, it
+ will move the window (buttons 1 and 2) or show menu (button 3).
+ Or you can configure a different modifier for this.
 
- - Session management:
+If you pick up a window with button 1 and then switch workspaces
+ the window will come with you to the new workspace, this is 
+ a feature copied from Enlightenment.
 
-    Metacity connects to the session manager and will set itself up to
-     be respawned. It theoretically restores sizes/positions/workspace
-     for session-aware applications.
+If you hold down Shift while moving a window, the window snaps
+ to edges of other windows and the screen.
+
+## Session Management
+
+Metacity connects to the session manager and will set itself up to
+ be respawned. It theoretically restores sizes/positions/workspace
+ for session-aware applications.
 
  - Metacity implements much of the EWMH window manager specification
    from freedesktop.org, as well as the older ICCCM.  Please refer to
    the COMPLIANCE file for information on metacity compliance with
    these standards.
+
+## Other Features
 
  - Uses Pango to render text, so has cool i18n capabilities. 
    Supports UTF-8 window titles and such.
