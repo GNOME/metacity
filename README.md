@@ -2,6 +2,30 @@
 
 Metacity is a window manager for the X window system.
 
+# Usage
+
+When installed, metacity will be started by your desktop environment if it is
+configured as the default window manager. To explicitly start a new metacity
+process, run metacity with the `--replace` option:
+
+```bash
+metacity --replace &
+```
+
+Note that if a window manager process such as metacity is stopped without
+another instance replacing it, you will lose the ability to switch between
+windows or minimize and maximize windows.
+
+During development metacity can be started directly from the build directory:
+```bash
+./src/metacity --replace &
+```
+
+Metacity includes additional executables:
+
+* `metacity-theme-viewer`: A simple application to preview metacity themes.
+* `metacity-message`: A command to send a message to metacity.
+
 # Dependencies
 
 Metacity depends on the following libraries:
