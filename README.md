@@ -346,19 +346,6 @@ A: I could conceivably be convinced to use viewports _instead_ of
    features traditionally associated with either kind if those
    features make sense.
 
-Q: Why is the panel always on top?
-
-A: Because it's a better user interface, and until we made this not
-   configurable a bunch of apps were not getting fixed (the app
-   authors were just saying "put your panel on the bottom" instead of
-   properly supporting fullscreen mode, and such).
-
-   rationales.txt has the bugzilla URL for some flamefesting on this,
-   if you want to go back and relive the glory.
-   Read these and the bugzilla stuff before asking/commenting:
-     http://pobox.com/~hp/free-software-ui.html
-     http://pobox.com/~hp/features.html   
-
 Q: Why is there no edge flipping?
 
 A: This one is also in rationales.txt. Because "ouija board" UI, where
