@@ -214,11 +214,11 @@ Also try the GNOME keyboard shortcuts control panel.
 
 ## Other Features
 
-- Uses Pango to render text, so has cool i18n capabilities. 
-  Supports UTF-8 window titles and such.
+- Uses Pango to render text and support i18n capabilities, including UTF-8
+  support.
 
-- There are simple animations for actions such as minimization, 
-  to help users see what is happening. Should probably 
+- There are simple animations for actions such as minimization,
+  to help users see what is happening. Should probably
   have a few more of these and make them nicer.
 
 - considers the panel when placing windows and maximizing
@@ -226,13 +226,11 @@ Also try the GNOME keyboard shortcuts control panel.
 
 - handles the window manager selection from the ICCCM. Will exit if
   another WM claims it, and can claim it from another WM if you pass
-  the --replace argument. So if you're running another
-  ICCCM-compliant WM, you can run "metacity --replace" to replace it
+  the `--replace` argument. So if you're running another
+  ICCCM-compliant WM, you can run `metacity --replace` to replace it
   with Metacity.
 
 - does basic colormap handling
-
-- and much more! well, maybe not a lot more.
 
 # Extensibility
 
