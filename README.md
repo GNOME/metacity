@@ -85,43 +85,52 @@ options such as:
 
 # Features
 
-- Boring window manager for the adult in you. Many window managers
-  are like Marshmallow Froot Loops; Metacity is like Cheerios.
+- Window management for X11, such as drawing window decorations and managing
+  window size constraints.
 
-- Uses GTK+ 2.0 for drawing window frames. This means colors, fonts, 
+- Uses GTK+ 3.0 for drawing window frames. This means colors, fonts,
   etc. come from GTK+ theme.
 
-- Does not expose the concept of "window manager" to the user.  Some
-  of the features in the GNOME control panel and other parts of the
+- Does not expose the concept of "window manager" to the user. Some
+  features in the GNOME control panel and other parts of the
   desktop happen to be implemented in metacity, such as changing your
   window border theme, or changing your window navigation shortcuts,
   but the user doesn't need to know this.
 
 - Includes only the window manager; does not try to be a desktop
   environment. The pager, configuration, etc. are all separate and
-  modular. The "libwnck" library (which I also wrote) is available
-  for writing metacity extensions, pagers, and so on. (But libwnck
-  isn't metacity specific, or GNOME-dependent; it requires only GTK,
-  and should work with KWin, fvwm2, and other EWMH-compliant WMs.)
+  modular. The [libwnck](https://gitlab.gnome.org/GNOME/libwnck) library can
+  be used for writing metacity extensions, pagers, and so on. Libwnck
+  is not metacity specific, or GNOME-dependent; it requires only GTK,
+  and should work with KWin, fvwm2, and other EWMH-compliant WMs.
 
 - Has a simple theme system and a couple of extra themes come with it.
-  Change themes via gsettings:
-    gsettings set org.gnome.desktop.wm.preferences theme Crux
-    gsettings set org.gnome.desktop.wm.preferences theme Gorilla
-    gsettings set org.gnome.desktop.wm.preferences theme Atlanta
-    gsettings set org.gnome.desktop.wm.preferences theme Bright
+  Change themes via `gsettings`:
 
-  Use metacity-theme-viewer to preview themes.
+  ```bash
+  gsettings set org.gnome.desktop.wm.preferences theme Crux
+  gsettings set org.gnome.desktop.wm.preferences theme Gorilla
+  gsettings set org.gnome.desktop.wm.preferences theme Atlanta
+  gsettings set org.gnome.desktop.wm.preferences theme Bright
+  ```
+
+  Use `metacity-theme-viewer` to preview themes.
 
 - Change number of workspaces via gsettings:
-    gsettings set org.gnome.desktop.wm.preferences num-workspaces 5
+
+  ```bash
+  gsettings set org.gnome.desktop.wm.preferences num-workspaces 5
+  ```
 
   Can also change workspaces from GNOME 2 pager.
 
 - Change focus mode:
-    gsettings set org.gnome.desktop.wm.preferences focus-mode mouse
-    gsettings set org.gnome.desktop.wm.preferences focus-mode sloppy
-    gsettings set org.gnome.desktop.wm.preferences focus-mode click
+
+  ```bash
+  gsettings set org.gnome.desktop.wm.preferences focus-mode mouse
+  gsettings set org.gnome.desktop.wm.preferences focus-mode sloppy
+  gsettings set org.gnome.desktop.wm.preferences focus-mode click
+  ```
 
 ## Global Keybindings
 
