@@ -1,3 +1,5 @@
+# Metacity Window Manager
+
 Metacity is not a meta-City as in an urban center, but rather
 Meta-ness as in the state of being meta. i.e. metacity : meta as
 opacity : opaque. Also it may have something to do with the Meta key
