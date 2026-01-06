@@ -44,8 +44,19 @@ Metacity depends on the following libraries:
 
 # Building
 
-You need GTK+ 2.2.  For startup notification to work you need
-libstartup-notification at
+Metacity uses autotools. To build it, ensure that all
+[Dependencies](#dependencies) are installed in the required versions and run:
+
+```
+./autogen.sh --prefix=/usr
+make
+```
+
+The `autogen.sh` script calls all the necessary tools to generate the
+`configure` script and then also runs the `configure` script, so we can
+directly run make afterward.
+
+For startup notification to work you need `libstartup-notification` at
 http://www.freedesktop.org/software/startup-notification/ or on the
 GNOME ftp site.
 
