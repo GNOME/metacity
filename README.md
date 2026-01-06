@@ -439,23 +439,12 @@ A: There are quite a few, though many opportunities remain.  Sometimes
      where you launched them, not the active workspace when their
      window is opened.
 
-   - and much more.
-
 Q: I think metacity sucks.
 
 A: Feel free to use any WM you like. The reason metacity follows the
    ICCCM and EWMH specifications is that it makes metacity a modular,
    interchangeable part in the desktop. libwnck-based apps such as the
    GNOME window list will work just fine with any EWMH-compliant WM.
-
-Q: Did you spend a lot of time on this?
-
-A: Originally the answer was no. Sadly the answer is now yes.
-
-Q: How can you claim that you are anti-crack, while still 
-   writing a window manager?
-
-A: I have no comment on that.
 
 # History
 
