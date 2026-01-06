@@ -214,10 +214,10 @@ options such as:
 # Extensibility
 
 You can write a metacity "plugin" such as a pager, window list, icon
-box, task menu, or even things like "window matching" using the
-Extended Window Manager Hints. See http://www.freedesktop.org for the
-EWMH specification. An easy-to-use library called "libwnck" is
-available that uses the EWMH and is specifically designed for writing
+box, task menu, or even things like "window matching" using
+Extended Window Manager Hints (EWMH). See http://www.freedesktop.org for the
+EWMH specification. An easy-to-use library called `libwnck` is
+available that uses EWMH and is specifically designed for writing
 WM accessories.
 
 You might be interested in existing accessories such as "Devil's Pie"
