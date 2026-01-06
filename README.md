@@ -7,9 +7,10 @@ Metacity is a window manager for the X window system.
 3. [Building](#building)
 4. [Features](#features)
 5. [Extensibility](#extensibility)
-6. [FAQ](#faq)
-7. [History](#history)
-8. [Contributing](#contributing)
+6. [Environment Variables](#environment-variables)
+7. [FAQ](#faq)
+8. [History](#history)
+9. [Contributing](#contributing)
 
 # Usage
 
@@ -244,6 +245,42 @@ WM accessories.
 You might be interested in existing accessories such as "Devil's Pie"
 by Ross Burton, which add features to Metacity (or other
 EWMH-compliant WMs).
+
+# Environment Variables
+
+Metacity reads the `META_DEBUG` environment variable to enable additional
+debug output, such as with:
+
+```
+META_DEBUG=geometry,resizing
+```
+
+Supported debug keys are:
+
+* `focus`
+* `workarea`
+* `stack`
+* `sm`
+* `events`
+* `window`
+* `window`
+* `geometry`
+* `placement`
+* `ping`
+* `xinerama`
+* `keybindings`
+* `sync`
+* `startup`
+* `prefs`
+* `groups`
+* `resizing`
+* `shapes`
+* `edge`
+* `verbose`
+* `vulkan`
+* `damage`
+
+See [src/core/util.h](./src/core/util.h) for more details.
 
 # FAQ
 
