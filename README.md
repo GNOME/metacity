@@ -85,43 +85,43 @@ options such as:
 
 # Features
 
- - Boring window manager for the adult in you. Many window managers
-   are like Marshmallow Froot Loops; Metacity is like Cheerios.
+- Boring window manager for the adult in you. Many window managers
+  are like Marshmallow Froot Loops; Metacity is like Cheerios.
 
- - Uses GTK+ 2.0 for drawing window frames. This means colors, fonts, 
-   etc. come from GTK+ theme.
+- Uses GTK+ 2.0 for drawing window frames. This means colors, fonts, 
+  etc. come from GTK+ theme.
 
- - Does not expose the concept of "window manager" to the user.  Some
-   of the features in the GNOME control panel and other parts of the
-   desktop happen to be implemented in metacity, such as changing your
-   window border theme, or changing your window navigation shortcuts,
-   but the user doesn't need to know this.
+- Does not expose the concept of "window manager" to the user.  Some
+  of the features in the GNOME control panel and other parts of the
+  desktop happen to be implemented in metacity, such as changing your
+  window border theme, or changing your window navigation shortcuts,
+  but the user doesn't need to know this.
 
- - Includes only the window manager; does not try to be a desktop
-   environment. The pager, configuration, etc. are all separate and
-   modular. The "libwnck" library (which I also wrote) is available
-   for writing metacity extensions, pagers, and so on. (But libwnck
-   isn't metacity specific, or GNOME-dependent; it requires only GTK,
-   and should work with KWin, fvwm2, and other EWMH-compliant WMs.)
+- Includes only the window manager; does not try to be a desktop
+  environment. The pager, configuration, etc. are all separate and
+  modular. The "libwnck" library (which I also wrote) is available
+  for writing metacity extensions, pagers, and so on. (But libwnck
+  isn't metacity specific, or GNOME-dependent; it requires only GTK,
+  and should work with KWin, fvwm2, and other EWMH-compliant WMs.)
 
- - Has a simple theme system and a couple of extra themes come with it.
-   Change themes via gsettings:
-     gsettings set org.gnome.desktop.wm.preferences theme Crux
-     gsettings set org.gnome.desktop.wm.preferences theme Gorilla
-     gsettings set org.gnome.desktop.wm.preferences theme Atlanta
-     gsettings set org.gnome.desktop.wm.preferences theme Bright
+- Has a simple theme system and a couple of extra themes come with it.
+  Change themes via gsettings:
+    gsettings set org.gnome.desktop.wm.preferences theme Crux
+    gsettings set org.gnome.desktop.wm.preferences theme Gorilla
+    gsettings set org.gnome.desktop.wm.preferences theme Atlanta
+    gsettings set org.gnome.desktop.wm.preferences theme Bright
 
-   Use metacity-theme-viewer to preview themes.
+  Use metacity-theme-viewer to preview themes.
 
- - Change number of workspaces via gsettings:
-     gsettings set org.gnome.desktop.wm.preferences num-workspaces 5
+- Change number of workspaces via gsettings:
+    gsettings set org.gnome.desktop.wm.preferences num-workspaces 5
 
-   Can also change workspaces from GNOME 2 pager.
+  Can also change workspaces from GNOME 2 pager.
 
- - Change focus mode:
-     gsettings set org.gnome.desktop.wm.preferences focus-mode mouse
-     gsettings set org.gnome.desktop.wm.preferences focus-mode sloppy
-     gsettings set org.gnome.desktop.wm.preferences focus-mode click
+- Change focus mode:
+    gsettings set org.gnome.desktop.wm.preferences focus-mode mouse
+    gsettings set org.gnome.desktop.wm.preferences focus-mode sloppy
+    gsettings set org.gnome.desktop.wm.preferences focus-mode click
 
 ## Global Keybindings
 
@@ -136,11 +136,11 @@ Global keybinding defaults include:
     Ctrl-Alt-Right Arrow   next workspace
     Ctrl-Alt-D             minimize/unminimize all, to show desktop
 
-   Change keybindings for example:
+  Change keybindings for example:
 
-     gsettings set org.gnome.desktop.wm.keybindings switch_to_workspace_1 '<Alt>F1'
-   
-   Also try the GNOME keyboard shortcuts control panel.
+    gsettings set org.gnome.desktop.wm.keybindings switch_to_workspace_1 '<Alt>F1'
+
+  Also try the GNOME keyboard shortcuts control panel.
 
 ## Window Keybindings
 
@@ -193,36 +193,36 @@ If you hold down Shift while moving a window, the window snaps
 
 ## Session Management
 
-Metacity connects to the session manager and will set itself up to
- be respawned. It theoretically restores sizes/positions/workspace
- for session-aware applications.
+- Metacity connects to the session manager and will set itself up to
+  be respawned. It theoretically restores sizes/positions/workspace
+  for session-aware applications.
 
- - Metacity implements much of the EWMH window manager specification
-   from freedesktop.org, as well as the older ICCCM.  Please refer to
-   the COMPLIANCE file for information on metacity compliance with
-   these standards.
+- Metacity implements much of the EWMH window manager specification
+  from freedesktop.org, as well as the older ICCCM.  Please refer to
+  the COMPLIANCE file for information on metacity compliance with
+  these standards.
 
 ## Other Features
 
- - Uses Pango to render text, so has cool i18n capabilities. 
-   Supports UTF-8 window titles and such.
+- Uses Pango to render text, so has cool i18n capabilities. 
+  Supports UTF-8 window titles and such.
 
- - There are simple animations for actions such as minimization, 
-   to help users see what is happening. Should probably 
-   have a few more of these and make them nicer.
+- There are simple animations for actions such as minimization, 
+  to help users see what is happening. Should probably 
+  have a few more of these and make them nicer.
 
- - considers the panel when placing windows and maximizing
-   them.
+- considers the panel when placing windows and maximizing
+  them.
 
- - handles the window manager selection from the ICCCM. Will exit if
-   another WM claims it, and can claim it from another WM if you pass
-   the --replace argument. So if you're running another
-   ICCCM-compliant WM, you can run "metacity --replace" to replace it
-   with Metacity.
+- handles the window manager selection from the ICCCM. Will exit if
+  another WM claims it, and can claim it from another WM if you pass
+  the --replace argument. So if you're running another
+  ICCCM-compliant WM, you can run "metacity --replace" to replace it
+  with Metacity.
 
- - does basic colormap handling
+- does basic colormap handling
 
- - and much more! well, maybe not a lot more.
+- and much more! well, maybe not a lot more.
 
 # Extensibility
 
