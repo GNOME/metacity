@@ -71,16 +71,14 @@ GNOME ftp site.
 
 ## Built-time Options
 
-Metacity is not huge, but a significant amount of code is in
-preferences handling, in static strings that aren't essential, and in
-the theme engine.
-
-You can strip about 70K from the metacity binary by compiling with 
-options such as:
+Several features for metacity can be configured at build time using
+configure options:
 
 ```
---disable-sm
---disable-verbose-mode
+--disable-canberra # disable use of canberra for event sounds
+--disable-sm       # disable metacity's session management support
+--disable-render   # disable metacity's use of the RENDER extension
+--disable-xinerama # disable metacity's use of the Xinerama extension
 ```
 
 # Features
