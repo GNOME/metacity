@@ -145,30 +145,31 @@ Global keybinding defaults include:
     Ctrl-Alt-Right Arrow   next workspace
     Ctrl-Alt-D             minimize/unminimize all, to show desktop
 
-  Change keybindings for example:
+Change keybindings via gsettings, for example:
 
-    gsettings set org.gnome.desktop.wm.keybindings switch_to_workspace_1 '<Alt>F1'
+```bash
+gsettings set org.gnome.desktop.wm.keybindings switch_to_workspace_1 '<Alt>F1'
+```
 
-  Also try the GNOME keyboard shortcuts control panel.
+Also try the GNOME keyboard shortcuts control panel.
 
 ## Window Keybindings
 
-Alt-space         window menu
+* `Alt-space`: open window menu
 
-Mnemonics work in the menu. That is, Alt-space then underlined
-letter in the menu item works.
+* Mnemonics work in the menu. That is, Alt-space then underlined
+  letter in the menu item works.
 
-Choose Move from menu, and arrow keys to move the window.
+* Choose Move from menu, and arrow keys to move the window.
 
-While moving, hold down Control to move slower, and 
+* While moving, hold down Control to move slower, and
   Shift to snap to edges.
 
-Choose Resize from menu, and nothing happens yet, but 
-  eventually I might implement something.
+* Choose Resize from menu to resize the window.
 
-Keybindings for things like maximize window, vertical maximize,
-etc. can be bound, but may not all exist by default. See
-metacity.schemas.
+* Keybindings for things like maximize window, maximize vertically/horizontally,
+  minimize window, etc. can be bound to keyboard hotkeys (see
+  `metacity.schemas`).
 
 ## Window Mouse Bindings
 
