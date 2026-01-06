@@ -167,9 +167,6 @@ METACITY FEATURES
    to help users see what is happening. Should probably 
    have a few more of these and make them nicer.
 
- - if you have the proper X setup, set the GDK_USE_XFT=1 
-   environment variable to get antialiased window titles.
-
  - considers the panel when placing windows and maximizing
    them.
 
