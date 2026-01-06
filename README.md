@@ -173,33 +173,33 @@ Also try the GNOME keyboard shortcuts control panel.
 
 ## Window Mouse Bindings
 
-Clicking anywhere on frame with button 1 will raise/focus window
+- Clicking anywhere on frame with button 1 will raise/focus window
 
-If you click a window control, such as the close button, then the 
- control will activate on button release if you are still over it
- on release (as with most GUI toolkits)
+- If you click a window control, such as the close button, then the
+  control will activate on button release if you are still over it
+  on release (as with most GUI toolkits)
 
-If you click and drag borders with button 1 it resizes the window
+- If you click and drag borders with button 1 it resizes the window
 
-If you click and drag the titlebar with button 1 it moves the 
- window.
+- If you click and drag the titlebar with button 1 it moves the
+  window.
 
-If you click anywhere on the frame with button 2 it lowers the 
- window.
+- If you click anywhere on the frame with button 2 it lowers the
+  window.
 
-If you click anywhere on the frame with button 3 it shows the 
- window menu.
+- If you click anywhere on the frame with button 3 it shows the
+  window menu.
 
-If you hold down Super (windows key) and click inside a window, it
- will move the window (buttons 1 and 2) or show menu (button 3).
- Or you can configure a different modifier for this.
+- If you hold down Super (windows key) and click inside a window, it
+  will move the window (buttons 1 and 2) or show menu (button 3).
+  Or you can configure a different modifier for this.
 
-If you pick up a window with button 1 and then switch workspaces
- the window will come with you to the new workspace, this is 
- a feature copied from Enlightenment.
+- If you pick up a window with button 1 and then switch workspaces
+  the window will come with you to the new workspace, this is
+  a feature copied from Enlightenment.
 
-If you hold down Shift while moving a window, the window snaps
- to edges of other windows and the screen.
+- If you hold down Shift while moving a window, the window snaps
+  to edges of other windows and the screen.
 
 ## Session Management
 
