@@ -60,17 +60,19 @@ For startup notification to work you need `libstartup-notification` at
 http://www.freedesktop.org/software/startup-notification/ or on the
 GNOME ftp site.
 
-# Built-time Options
+## Built-time Options
 
-Not that metacity is huge, but a substantial amount of code is in
+Metacity is not huge, but a significant amount of code is in
 preferences handling, in static strings that aren't essential, and in
 the theme engine.
 
 You can strip about 70K from the metacity binary by compiling with 
 options such as:
 
- --disable-sm
- --disable-verbose-mode
+```
+--disable-sm
+--disable-verbose-mode
+```
 
 # Features
 
