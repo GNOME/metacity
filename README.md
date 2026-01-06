@@ -42,24 +42,6 @@ options such as:
  --disable-sm
  --disable-verbose-mode
 
-However the result is no good for desktop use, all prefs have to be
-hardcoded in the binary, for example. If you wanted to make a really
-small metacity, here's some additional stuff you might consider
-implementing:
- 
- - add --disable-themes, which would replace theme.c and theme-parser.c 
-   with a hardcoded implementation of the interface in theme.h, 
-   should save about 80K. This should be fairly easy.
-
- - add --disable-gtk, which would implement the interface in ui.h
-   without using GTK. This one is easier than you think because the
-   main part of the window manager doesn't use GTK directly, but is
-   still fairly hard to do.  You would probably have to give up some
-   of the features, such as window menus, as menus are pretty complex
-   to implement well.  So time may be better spent adding a GTK
-   configure script feature to build GTK with only a small core set of
-   functionality.
-
 METACITY FEATURES
 ===
 
