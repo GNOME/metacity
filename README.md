@@ -2,6 +2,22 @@
 
 Metacity is a window manager for the X window system.
 
+# Dependencies
+
+Metacity depends on the following libraries:
+
+* `gtk+-3.0`
+* `glib-2.0`
+* `x11`
+* `libstartup-notification`
+* `gsettings-desktop-schemas`
+* `pango`
+* `xcomposite`
+* `xfixes`
+* `xrender`
+* `xdamage`
+* `xres`
+
 # Building
 
 You need GTK+ 2.2.  For startup notification to work you need
