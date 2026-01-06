@@ -3,16 +3,14 @@ Meta-ness as in the state of being meta. i.e. metacity : meta as
 opacity : opaque. Also it may have something to do with the Meta key
 on UNIX keyboards.
 
-COMPILING METACITY
-===
+# COMPILING METACITY
 
 You need GTK+ 2.2.  For startup notification to work you need
 libstartup-notification at
 http://www.freedesktop.org/software/startup-notification/ or on the
 GNOME ftp site.
 
-REPORTING BUGS AND SUBMITTING PATCHES
-===
+# REPORTING BUGS AND SUBMITTING PATCHES
 
 Report new bugs on https://gitlab.gnome.org/GNOME/metacity/-/issues/.
 Please check for duplicates, *especially* if you are reporting a
@@ -29,8 +27,7 @@ pretty easy.  Send me mail, or put the patch in GNOME GitLab.
 
 See the HACKING file for some notes on hacking Metacity.
 
-SHRINKING METACITY
-===
+# SHRINKING METACITY
 
 Not that metacity is huge, but a substantial amount of code is in
 preferences handling, in static strings that aren't essential, and in
@@ -42,8 +39,7 @@ options such as:
  --disable-sm
  --disable-verbose-mode
 
-METACITY FEATURES
-===
+# METACITY FEATURES
 
  - Boring window manager for the adult in you. Many window managers
    are like Marshmallow Froot Loops; Metacity is like Cheerios.
@@ -180,8 +176,7 @@ METACITY FEATURES
 
  - and much more! well, maybe not a lot more.
 
-HOW TO ADD EXTERNAL FEATURES
-===
+# HOW TO ADD EXTERNAL FEATURES
 
 You can write a metacity "plugin" such as a pager, window list, icon
 box, task menu, or even things like "window matching" using the
@@ -194,13 +189,11 @@ You might be interested in existing accessories such as "Devil's Pie"
 by Ross Burton, which add features to Metacity (or other
 EWMH-compliant WMs).
 
-METACITY BUGS, NON-FEATURES, AND CAVEATS
-===
+# METACITY BUGS, NON-FEATURES, AND CAVEATS
 
 See https://gitlab.gnome.org/GNOME/metacity/-/issues/
 
-FAQ
-===
+# FAQ
 
 Q: Will you add my feature?
 
