@@ -276,13 +276,7 @@ A: If it makes sense to turn on unconditionally, or is genuinely a
    some crack-ridden configuration option.
 
    http://pobox.com/~hp/free-software-ui.html
-   http://pobox.com/~hp/features.html   
-
-Q: Will Metacity be part of GNOME?
-
-A: It is officially part of GNOME as of GNOME 2.2. Prior to that, 
-   it was unofficially shipped as the default GNOME WM by several 
-   OS vendors.
+   http://pobox.com/~hp/features.html
 
 Q: Is Metacity a Red Hat project?
 
@@ -469,6 +463,11 @@ Metacity is not a meta-City as in an urban center, but rather
 Meta-ness as in the state of being meta, i.e., metacity: meta and
 opacity: opaque. Also, it may have something to do with the Meta key
 on UNIX keyboards.
+
+Metacity was officially part of GNOME starting with GNOME 2.2. Prior to that,
+it was unofficially shipped as the default GNOME WM by several
+OS vendors. Starting with GNOME 3 Metacity was replaced by the Mutter window
+manager.
 
 # Contributing
 
