@@ -445,8 +445,8 @@ A: I have no comment on that.
 # History
 
 Metacity is not a meta-City as in an urban center, but rather
-Meta-ness as in the state of being meta. i.e. metacity : meta as
-opacity : opaque. Also it may have something to do with the Meta key
+Meta-ness as in the state of being meta, i.e., metacity: meta and
+opacity: opaque. Also, it may have something to do with the Meta key
 on UNIX keyboards.
 
 # Contributing
