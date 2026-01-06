@@ -2,36 +2,12 @@
 
 Metacity is a window manager for the X window system.
 
-# History
-
-Metacity is not a meta-City as in an urban center, but rather
-Meta-ness as in the state of being meta. i.e. metacity : meta as
-opacity : opaque. Also it may have something to do with the Meta key
-on UNIX keyboards.
-
 # Building
 
 You need GTK+ 2.2.  For startup notification to work you need
 libstartup-notification at
 http://www.freedesktop.org/software/startup-notification/ or on the
 GNOME ftp site.
-
-# Contributing
-
-Report new bugs on https://gitlab.gnome.org/GNOME/metacity/-/issues/.
-Please check for duplicates, *especially* if you are reporting a
-feature request.
-
-Please do *not* add "me too!" or "yes I really want this!" comments to
-feature requests in the issue tracker. Please read
-http://pobox.com/~hp/features.html prior to adding any kind of flame
-about missing features or misfeatures.
-
-Feel free to send patches too; Metacity is relatively small and
-simple, so if you find a bug or want to add a feature it should be
-pretty easy.  Send me mail, or put the patch in GNOME GitLab.
-
-See the HACKING file for some notes on hacking Metacity.
 
 # Built-time Options
 
@@ -412,3 +388,27 @@ Q: How can you claim that you are anti-crack, while still
    writing a window manager?
 
 A: I have no comment on that.
+
+# History
+
+Metacity is not a meta-City as in an urban center, but rather
+Meta-ness as in the state of being meta. i.e. metacity : meta as
+opacity : opaque. Also it may have something to do with the Meta key
+on UNIX keyboards.
+
+# Contributing
+
+Report new bugs on https://gitlab.gnome.org/GNOME/metacity/-/issues/.
+Please check for duplicates, *especially* if you are reporting a
+feature request.
+
+Please do *not* add "me too!" or "yes I really want this!" comments to
+feature requests in the issue tracker. Please read
+http://pobox.com/~hp/features.html prior to adding any kind of flame
+about missing features or misfeatures.
+
+Feel free to send patches too; Metacity is relatively small and
+simple, so if you find a bug or want to add a feature it should be
+pretty easy.  Send me mail, or put the patch in GNOME GitLab.
+
+See the HACKING file for some notes on hacking Metacity.
