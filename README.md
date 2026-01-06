@@ -208,9 +208,9 @@ Also try the GNOME keyboard shortcuts control panel.
   for session-aware applications.
 
 - Metacity implements much of the EWMH window manager specification
-  from freedesktop.org, as well as the older ICCCM.  Please refer to
-  the COMPLIANCE file for information on metacity compliance with
-  these standards.
+  from freedesktop.org, as well as the older ICCCM. Please refer to
+  the [COMPLIANCE](./compliance) file for information on metacity
+  compliance with these standards.
 
 ## Other Features
 
