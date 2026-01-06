@@ -452,16 +452,10 @@ on UNIX keyboards.
 # Contributing
 
 Report new bugs on https://gitlab.gnome.org/GNOME/metacity/-/issues/.
-Please check for duplicates, *especially* if you are reporting a
-feature request.
+Please always check for duplicates before you are reporting a
+bug or feature request.
 
-Please do *not* add "me too!" or "yes I really want this!" comments to
-feature requests in the issue tracker. Please read
-http://pobox.com/~hp/features.html prior to adding any kind of flame
-about missing features or misfeatures.
+Patches with bug fixes or features are welcome but should align with the overall
+strategy of metacity.
 
-Feel free to send patches too; Metacity is relatively small and
-simple, so if you find a bug or want to add a feature it should be
-pretty easy.  Send me mail, or put the patch in GNOME GitLab.
-
-See the HACKING file for some notes on hacking Metacity.
+See the [HACKING](./HACKING) file for some notes on hacking Metacity.
