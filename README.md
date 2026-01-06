@@ -2,6 +2,15 @@
 
 Metacity is a window manager for the X window system.
 
+1. [Usage](#usage)
+2. [Dependencies](#dependencies)
+3. [Building](#building)
+4. [Features](#features)
+5. [Extensibility](#extensibility)
+6. [FAQ](#faq)
+7. [History](#history)
+8. [Contributing](#contributing)
+
 # Usage
 
 When installed, metacity will be started by your desktop environment if it is
