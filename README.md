@@ -34,6 +34,8 @@ Metacity includes additional executables:
 
 * `metacity-theme-viewer`: A simple application to preview metacity themes.
 * `metacity-message`: A command to send a message to metacity.
+* `metacity-dialog`: A helper that displays dialogs, it is used to show the
+  window not responding dialog and the session save dialog.
 
 # Dependencies
 
