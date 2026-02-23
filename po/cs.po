@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues/\n"
-"POT-Creation-Date: 2025-08-21 19:18+0000\n"
-"PO-Revision-Date: 2025-08-22 12:02+0200\n"
+"POT-Creation-Date: 2025-09-09 21:08+0000\n"
+"PO-Revision-Date: 2026-02-23 15:28+0100\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.8\n"
 
 #. This is the title used on dialog boxes
 #: data/applications/metacity.desktop.in:3 data/ui/delete-dialog.ui:8
@@ -214,6 +214,22 @@ msgstr "Rozdělit okno přes levou půlku obrazovky"
 #: data/keybindings/50-metacity-windows.xml:59
 msgid "View split on right"
 msgstr "Rozdělit okno přes pravou půlku obrazovky"
+
+#: data/keybindings/50-metacity-windows.xml:63
+msgid "Move window to monitor on the left"
+msgstr "Přesunout okno na monitor vlevo"
+
+#: data/keybindings/50-metacity-windows.xml:67
+msgid "Move window to monitor on the right"
+msgstr "Přesunout okno na monitor vpravo"
+
+#: data/keybindings/50-metacity-windows.xml:71
+msgid "Move window to monitor above"
+msgstr "Přesunout okno na monitor výše"
+
+#: data/keybindings/50-metacity-windows.xml:75
+msgid "Move window to monitor below"
+msgstr "Přesunout okno na monitor níže"
 
 #: data/schemas/org.gnome.metacity.gschema.xml:14
 msgid "Show window content thumbnail in Alt-Tab"
