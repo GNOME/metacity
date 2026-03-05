@@ -1,25 +1,25 @@
 # Hungarian translation of metacity.
-# Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2021, 2025 Free Software Foundation, Inc.
+# Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2021, 2025, 2026 Free Software Foundation, Inc.
 # This file is distributed under the same license as the metacity package.
 #
 # Andras Timar <timar at gnome dot hu>, 2002, 2003.
 # Gabor Sari <saga at externet dot hu>, 2003.
 # Laszlo Dvornik <dvornik at gnome dot hu>, 2004.
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2014, 2016.
-# Balázs Úr <ur.balazs at fsf dot hu>, 2013, 2014, 2015, 2016, 2017, 2021, 2025.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2013, 2014, 2015, 2016, 2017, 2021, 2025, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues/\n"
-"POT-Creation-Date: 2025-08-30 02:20+0000\n"
-"PO-Revision-Date: 2025-09-01 15:30+0200\n"
+"POT-Creation-Date: 2025-09-09 21:08+0000\n"
+"PO-Revision-Date: 2026-03-05 02:09+0100\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.08.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. This is the title used on dialog boxes
@@ -212,6 +212,26 @@ msgstr "Bal oldali felosztás megjelenítése"
 msgid "View split on right"
 msgstr "Jobb oldali felosztás megjelenítése"
 
+#: data/keybindings/50-metacity-windows.xml:63
+#| msgid "Move window one workspace to the left"
+msgid "Move window to monitor on the left"
+msgstr "Ablak áthelyezése a balra lévő monitorra"
+
+#: data/keybindings/50-metacity-windows.xml:67
+#| msgid "Move window one workspace to the right"
+msgid "Move window to monitor on the right"
+msgstr "Ablak áthelyezése a jobbra lévő monitorra"
+
+#: data/keybindings/50-metacity-windows.xml:71
+#| msgid "Move window to workspace 1"
+msgid "Move window to monitor above"
+msgstr "Ablak áthelyezése a fenti monitorra"
+
+#: data/keybindings/50-metacity-windows.xml:75
+#| msgid "Move window to workspace 1"
+msgid "Move window to monitor below"
+msgstr "Ablak áthelyezése a lenti monitorra"
+
 #: data/schemas/org.gnome.metacity.gschema.xml:14
 msgid "Show window content thumbnail in Alt-Tab"
 msgstr "Az ablaktartalom bélyegképének megjelenítése Alt-Tab használatakor"
@@ -328,15 +348,12 @@ msgid "_Wait"
 msgstr "Vá_rakozás"
 
 #: data/ui/delete-dialog.ui:105
-#| msgid ""
-#| "You may choose to wait a short while for it to continue or force the "
-#| "application to quit entirely."
 msgid ""
 "<i>You may choose to wait a short while for it to continue or force the "
 "application to quit entirely.</i>"
 msgstr ""
-"<i>Várhat egy kicsit a folytatódására, vagy kikényszerítheti az alkalmazás tel"
-"jes kilépését.</i>"
+"<i>Várhat egy kicsit a folytatódására, vagy kikényszerítheti az alkalmazás "
+"teljes kilépését.</i>"
 
 #: data/ui/session-dialog.ui:30
 msgid "_Cancel"
