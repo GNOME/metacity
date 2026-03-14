@@ -1,0 +1,1487 @@
+# Kazakh translation for metacity.
+# Copyright (C) 2026 metacity's COPYRIGHT HOLDER
+# This file is distributed under the same license as the metacity package.
+# Baurzhan Muftakhidinov <baurthefirst@gmail.com>,  2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: metacity gnome-3-44\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues/\n"
+"POT-Creation-Date: 2021-07-22 12:54+0000\n"
+"PO-Revision-Date: 2026-03-14 23:30+0500\n"
+"Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
+"Language-Team: Kazakh <Kazakh>\n"
+"Language: kk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.9\n"
+
+#. Translators: This is the title used on dialog boxes
+#: data/applications/metacity.desktop.in:3 src/core/util.c:429
+msgid "Metacity"
+msgstr "Metacity"
+
+#: data/keybindings/50-metacity-navigation.xml:6
+msgid "Navigation"
+msgstr "Навигация"
+
+#: data/keybindings/50-metacity-navigation.xml:9
+msgid "Move window to workspace 1"
+msgstr "Терезені 1-жұмыс орнына ауыстыру"
+
+#: data/keybindings/50-metacity-navigation.xml:12
+msgid "Move window to workspace 2"
+msgstr "Терезені 2-жұмыс орнына ауыстыру"
+
+#: data/keybindings/50-metacity-navigation.xml:15
+msgid "Move window to workspace 3"
+msgstr "Терезені 3-жұмыс орнына ауыстыру"
+
+#: data/keybindings/50-metacity-navigation.xml:18
+msgid "Move window to workspace 4"
+msgstr "Терезені 4-жұмыс орнына ауыстыру"
+
+#: data/keybindings/50-metacity-navigation.xml:21
+msgid "Move window one workspace to the left"
+msgstr "Терезені бір жұмыс орнына солға ауыстыру"
+
+#: data/keybindings/50-metacity-navigation.xml:24
+msgid "Move window one workspace to the right"
+msgstr "Терезені бір жұмыс орнына оңға ауыстыру"
+
+#: data/keybindings/50-metacity-navigation.xml:27
+msgid "Move window one workspace up"
+msgstr "Терезені бір жұмыс орнына жоғары ауыстыру"
+
+#: data/keybindings/50-metacity-navigation.xml:30
+msgid "Move window one workspace down"
+msgstr "Терезені бір жұмыс орнына төмен ауыстыру"
+
+#: data/keybindings/50-metacity-navigation.xml:33
+msgid "Switch windows"
+msgstr "Терезелерді ауыстыру"
+
+#: data/keybindings/50-metacity-navigation.xml:36
+msgid "Switch applications"
+msgstr "Қолданбаларды ауыстыру"
+
+#: data/keybindings/50-metacity-navigation.xml:39
+msgid "Switch windows of an application"
+msgstr "Қолданба терезелерін ауыстыру"
+
+#: data/keybindings/50-metacity-navigation.xml:42
+msgid "Switch system controls"
+msgstr "Жүйелік басқару элементтерін ауыстыру"
+
+#: data/keybindings/50-metacity-navigation.xml:45
+msgid "Switch windows directly"
+msgstr "Терезелерді тікелей ауыстыру"
+
+#: data/keybindings/50-metacity-navigation.xml:48
+msgid "Switch windows of an app directly"
+msgstr "Қолданба терезелерін тікелей ауыстыру"
+
+#: data/keybindings/50-metacity-navigation.xml:51
+msgid "Switch system controls directly"
+msgstr "Жүйелік басқару элементтерін тікелей ауыстыру"
+
+#: data/keybindings/50-metacity-navigation.xml:54
+msgid "Hide all normal windows"
+msgstr "Барлық қалыпты терезелерді жасыру"
+
+#: data/keybindings/50-metacity-navigation.xml:57
+msgid "Switch to workspace 1"
+msgstr "1-жұмыс орнына ауысу"
+
+#: data/keybindings/50-metacity-navigation.xml:60
+msgid "Switch to workspace 2"
+msgstr "2-жұмыс орнына ауысу"
+
+#: data/keybindings/50-metacity-navigation.xml:63
+msgid "Switch to workspace 3"
+msgstr "3-жұмыс орнына ауысу"
+
+#: data/keybindings/50-metacity-navigation.xml:66
+msgid "Switch to workspace 4"
+msgstr "4-жұмыс орнына ауысу"
+
+#: data/keybindings/50-metacity-navigation.xml:69
+msgid "Move to workspace left"
+msgstr "Сол жақтағы жұмыс орнына ауысу"
+
+#: data/keybindings/50-metacity-navigation.xml:72
+msgid "Move to workspace right"
+msgstr "Оң жақтағы жұмыс орнына ауысу"
+
+#: data/keybindings/50-metacity-navigation.xml:75
+msgid "Move to workspace above"
+msgstr "Жоғарыдағы жұмыс орнына ауысу"
+
+#: data/keybindings/50-metacity-navigation.xml:78
+msgid "Move to workspace below"
+msgstr "Төмендегі жұмыс орнына ауысу"
+
+#: data/keybindings/50-metacity-system.xml:6
+msgid "System"
+msgstr "Жүйе"
+
+#: data/keybindings/50-metacity-system.xml:9
+msgid "Show the run command prompt"
+msgstr "Команданы орындау сұрауын көрсету"
+
+#: data/keybindings/50-metacity-system.xml:12
+msgid "Show the applications menu"
+msgstr "Қолданбалар мәзірін көрсету"
+
+#: data/keybindings/50-metacity-windows.xml:6
+msgid "Windows"
+msgstr "Терезелер"
+
+#: data/keybindings/50-metacity-windows.xml:9
+msgid "Activate the window menu"
+msgstr "Терезе мәзірін белсендіру"
+
+#: data/keybindings/50-metacity-windows.xml:12
+msgid "Toggle fullscreen mode"
+msgstr "Толық экран режимін қосу/сөндіру"
+
+#: data/keybindings/50-metacity-windows.xml:15
+msgid "Toggle maximization state"
+msgstr "Жайылған күйін қосу/сөндіру"
+
+#: data/keybindings/50-metacity-windows.xml:18
+msgid "Maximize window"
+msgstr "Терезені жаю"
+
+#: data/keybindings/50-metacity-windows.xml:21
+msgid "Restore window"
+msgstr "Терезені қалпына келтіру"
+
+#: data/keybindings/50-metacity-windows.xml:24
+msgid "Close window"
+msgstr "Терезені жабу"
+
+#: data/keybindings/50-metacity-windows.xml:27
+msgid "Minimize window"
+msgstr "Терезені жию"
+
+#: data/keybindings/50-metacity-windows.xml:30
+msgid "Move window"
+msgstr "Терезені жылжыту"
+
+#: data/keybindings/50-metacity-windows.xml:33
+msgid "Resize window"
+msgstr "Терезе өлшемін өзгерту"
+
+#: data/keybindings/50-metacity-windows.xml:36
+msgid "Toggle window on all workspaces or one"
+msgstr "Терезені барлық жұмыс орындарында немесе біреуінде көрсетуді қосу/сөндіру"
+
+#: data/keybindings/50-metacity-windows.xml:39
+msgid "Raise window if covered, otherwise lower it"
+msgstr "Терезе жабылған болса, көтеру, әйтпесе түсіру"
+
+#: data/keybindings/50-metacity-windows.xml:42
+msgid "Raise window above other windows"
+msgstr "Терезені басқа терезелердің үстіне көтеру"
+
+#: data/keybindings/50-metacity-windows.xml:45
+msgid "Lower window below other windows"
+msgstr "Терезені басқа терезелердің астына түсіру"
+
+#: data/keybindings/50-metacity-windows.xml:48
+msgid "Maximize window vertically"
+msgstr "Терезені вертикалды жаю"
+
+#: data/keybindings/50-metacity-windows.xml:51
+msgid "Maximize window horizontally"
+msgstr "Терезені горизонталды жаю"
+
+#: data/keybindings/50-metacity-windows.xml:55
+msgid "View split on left"
+msgstr "Сол жақтан бөліп қарау"
+
+#: data/keybindings/50-metacity-windows.xml:59
+msgid "View split on right"
+msgstr "Оң жақтан бөліп қарау"
+
+#: data/schemas/org.gnome.metacity.gschema.xml:14
+msgid "Show window content thumbnail in Alt-Tab"
+msgstr "Alt-Tab терезесінде терезе мазмұнының нобайын көрсету"
+
+#: data/schemas/org.gnome.metacity.gschema.xml:15
+msgid ""
+"If set to true, Metacity will show window content thumbnails in the Alt-Tab "
+"window instead of only icons."
+msgstr ""
+"Егер іске қосылған болса, Metacity Alt-Tab терезесінде тек таңбашаларды емес, "
+"терезе мазмұнының нобайларын көрсетеді."
+
+#: data/schemas/org.gnome.metacity.gschema.xml:23
+msgid "Compositing Manager"
+msgstr "Композиттік менеджер"
+
+#: data/schemas/org.gnome.metacity.gschema.xml:24
+msgid ""
+"Determines whether Metacity is a compositing manager. DEPRECATED: This key is "
+"deprecated, use the “compositor” instead."
+msgstr ""
+"Metacity композиттік менеджер болып табылатынын анықтайды. ЕСКІРГЕН: Бұл кілт "
+"ескірген, орнына «compositor» қолданыңыз."
+
+#: data/schemas/org.gnome.metacity.gschema.xml:33
+msgid "Compositor"
+msgstr "Композитор"
+
+#: data/schemas/org.gnome.metacity.gschema.xml:34
+msgid ""
+"Compositor that Metacity will use for compositing. Possible values are “none”, "
+"“xrender” and “xpresent”."
+msgstr ""
+"Metacity композиция үшін қолданатын композитор. Мүмкін мәндері: «none», "
+"«xrender» және «xpresent»."
+
+#: data/schemas/org.gnome.metacity.gschema.xml:42
+msgid "Enable edge tiling when dropping windows on screen edges"
+msgstr ""
+"Терезелерді экран шеттеріне апарғанда жиектер бойынша орналастыруды іске қосу"
+
+#: data/schemas/org.gnome.metacity.gschema.xml:43
+msgid ""
+"If enabled, dropping windows on vertical screen edges maximizes them vertically "
+"and resizes them horizontally to cover half of the available area. Dropping "
+"windows on the top screen edge maximizes them completely."
+msgstr ""
+"Іске қосылған болса, терезелерді вертикалды экран шеттеріне апару оларды "
+"вертикалды жайып, қолжетімді аумақтың жартысын алатындай горизонталды өлшемін "
+"өзгертеді. Терезелерді экранның жоғарғы шетіне апару оларды толықтай жаяды."
+
+#: data/schemas/org.gnome.metacity.gschema.xml:52
+msgid "Window placement behavior"
+msgstr "Терезелерді орналастыру мінез-құлқы"
+
+#: data/schemas/org.gnome.metacity.gschema.xml:53
+msgid ""
+"Metacity's default window-placement behavior is smart (first-fit), similar to "
+"behaviors in some other window managers. It will try to tile windows so that "
+"they do not overlap. Set this option to \"smart\" for this behavior. This "
+"option can be set to \"center\" to place new windows in the centers of their "
+"workspaces, \"origin\" for the upper-left corners of the workspaces, or "
+"\"random\" to place new windows at random locations within their workspaces."
+msgstr ""
+"Metacity-дің бастапқы терезе орналастыру мінез-құлқы — «smart» (бірінші "
+"сәйкестік), бұл кейбір басқа терезе менеджерлеріне ұқсас. Ол терезелерді бір-"
+"бірінің үстіне түспейтіндей орналастыруға тырысады. Осы мінез-құлық үшін бұл "
+"опцияны «smart» мәніне орнатыңыз. Жаңа терезелерді жұмыс орындарының ортасына "
+"орналастыру үшін «center», жоғарғы сол жақ бұрышына орналастыру үшін «origin» "
+"немесе кездейсоқ жерге орналастыру үшін «random» мәнін таңдауға болады."
+
+#: data/schemas/org.gnome.metacity.theme.gschema.xml:11
+msgid "Theme Name"
+msgstr "Тема аты"
+
+#: data/schemas/org.gnome.metacity.theme.gschema.xml:12
+msgid ""
+"This setting is only used if Metacity is selected as the theme type. You MUST "
+"provide a valid Metacity theme name, otherwise Metacity will fall back to the "
+"default GTK+ theme - Adwaita."
+msgstr ""
+"Бұл баптау тек тема түрі ретінде Metacity таңдалса ғана қолданылады. Сіз "
+"жарамды Metacity тема атын көрсетуіңіз КЕРЕК, әйтпесе Metacity бастапқы GTK+ "
+"темасына — Adwaita-ға оралады."
+
+#: data/schemas/org.gnome.metacity.theme.gschema.xml:21
+msgid "Theme Type"
+msgstr "Тема түрі"
+
+#: data/schemas/org.gnome.metacity.theme.gschema.xml:22
+msgid ""
+"Metacity supports two theme types - GTK+ (gtk.css) and Metacity (metacity-theme-"
+"x.xml). GTK+ theme: all data is loaded from CSS. This is the same theme that is "
+"used by Mutter for server-side decorations and by GTK+ for client-side "
+"decorations. Metacity theme: data is loaded from metacity-theme-x.xml and CSS. "
+"When using this theme type you MUST provide a valid theme name."
+msgstr ""
+"Metacity екі тема түрін қолдайды — GTK+ (gtk.css) және Metacity (metacity-theme-"
+"x.xml). GTK+ темасы: барлық деректер CSS-тен жүктеледі. Бұл Mutter серверлік "
+"безендірулер үшін және GTK+ клиенттік безендірулер үшін қолданатын тема. "
+"Metacity темасы: деректер metacity-theme-x.xml және CSS-тен жүктеледі. Бұл тема "
+"түрін қолданғанда жарамды тема атын көрсетуіңіз КЕРЕК."
+
+#: data/ui/theme-viewer-window.ui:86
+msgid "Reload"
+msgstr "Қайта жүктеу"
+
+#: data/ui/theme-viewer-window.ui:122
+msgid "Dark Theme:"
+msgstr "Қараңғы тема:"
+
+#: data/ui/theme-viewer-window.ui:161
+msgid "Frame Type:"
+msgstr "Жақтау түрі:"
+
+#: data/ui/theme-viewer-window.ui:175
+msgid "Normal"
+msgstr "Қалыпты"
+
+#: data/ui/theme-viewer-window.ui:176
+msgid "Dialog"
+msgstr "Сұхбат терезесі"
+
+#: data/ui/theme-viewer-window.ui:177
+msgid "Modal Dialog"
+msgstr "Модальді сұхбат терезесі"
+
+#: data/ui/theme-viewer-window.ui:178
+msgid "Utility"
+msgstr "Көмекші"
+
+#: data/ui/theme-viewer-window.ui:179
+msgid "Menu"
+msgstr "Мәзір"
+
+#: data/ui/theme-viewer-window.ui:180
+msgid "Border"
+msgstr "Жиек"
+
+#: data/ui/theme-viewer-window.ui:181
+msgid "Attached"
+msgstr "Тіркелген"
+
+#: data/ui/theme-viewer-window.ui:209
+msgid "Frame Flags:"
+msgstr "Жақтау жалаушалары:"
+
+#: data/ui/theme-viewer-window.ui:224
+msgid "Has Focus"
+msgstr "Фокусы бар"
+
+#: data/ui/theme-viewer-window.ui:239
+msgid "Shaded"
+msgstr "Көлеңкеленген"
+
+#: data/ui/theme-viewer-window.ui:253
+msgid "Maximized"
+msgstr "Жайылған"
+
+#: data/ui/theme-viewer-window.ui:267
+msgid "Fullscreen"
+msgstr "Толық экран"
+
+#: data/ui/theme-viewer-window.ui:281
+msgid "Tiled"
+msgstr "Мозаикалы"
+
+#: data/ui/theme-viewer-window.ui:321
+msgid "Button Layout:"
+msgstr "Батырмалар жаймасы:"
+
+#: data/ui/theme-viewer-window.ui:360
+msgid "Composited:"
+msgstr "Композитті:"
+
+#: data/ui/theme-viewer-window.ui:400
+msgid "Scale:"
+msgstr "Масштаб:"
+
+#: data/ui/theme-viewer-window.ui:468 theme-viewer/theme-viewer-window.c:636
+msgid "Choose Theme"
+msgstr "Теманы таңдау"
+
+#: data/ui/theme-viewer-window.ui:508
+msgid "Preview"
+msgstr "Алдын ала қарау"
+
+#: data/ui/theme-viewer-window.ui:597 theme-viewer/theme-viewer-window.c:252
+msgid "Run"
+msgstr "Орындау"
+
+#: data/ui/theme-viewer-window.ui:619
+msgid "Benchmark"
+msgstr "Тестілеу"
+
+#: data/ui/theme-viewer-window.ui:652 theme-viewer/theme-viewer-window.c:982
+msgid "Metacity Theme Viewer"
+msgstr "Metacity темаларын қарау құралы"
+
+#: libmetacity/meta-color-spec.c:246
+#, c-format
+msgid ""
+"GTK custom color specification must have color name and fallback in "
+"parentheses, e.g. gtk:custom(foo,bar); could not parse '%s'"
+msgstr ""
+"GTK қолданушы түсінің сипаттамасында жақша ішінде түс аты мен баламасы болуы "
+"керек, мысалы, gtk:custom(foo,bar); '%s' талданбады"
+
+#: libmetacity/meta-color-spec.c:260
+#, c-format
+msgid ""
+"Invalid character '%c' in color_name parameter of gtk:custom, only A-Za-z0-9-_ "
+"are valid"
+msgstr ""
+"gtk:custom функциясының color_name параметрінде жарамсыз '%c' таңбасы бар, тек "
+"A-Za-z0-9-_ рұқсат етілген"
+
+#: libmetacity/meta-color-spec.c:277
+#, c-format
+msgid ""
+"Gtk:custom format is 'gtk:custom(color_name,fallback)', '%s' does not fit the "
+"format"
+msgstr ""
+"Gtk:custom пішімі: 'gtk:custom(color_name,fallback)', '%s' бұл пішімге сәйкес "
+"келмейді"
+
+#: libmetacity/meta-color-spec.c:310
+#, c-format
+msgid ""
+"GTK color specification must have the state in brackets, e.g. gtk:fg[NORMAL] "
+"where NORMAL is the state; could not parse '%s'"
+msgstr ""
+"GTK түс сипаттамасында жақша ішінде күй болуы керек, мысалы, gtk:fg[NORMAL], "
+"мұндағы NORMAL — күй; '%s' талданбады"
+
+#: libmetacity/meta-color-spec.c:323
+#, c-format
+msgid ""
+"GTK color specification must have a close bracket after the state, e.g. "
+"gtk:fg[NORMAL] where NORMAL is the state; could not parse '%s'"
+msgstr ""
+"GTK түс сипаттамасында күйден кейін жабылатын жақша болуы керек, мысалы, "
+"gtk:fg[NORMAL], мұндағы NORMAL — күй; '%s' талданбады"
+
+#: libmetacity/meta-color-spec.c:332
+#, c-format
+msgid "Did not understand state '%s' in color specification"
+msgstr "Түс сипаттамасындағы '%s' күйі түсініксіз"
+
+#: libmetacity/meta-color-spec.c:344
+#, c-format
+msgid "Did not understand color component '%s' in color specification"
+msgstr "Түс сипаттамасындағы '%s' түс құраушысы түсініксіз"
+
+#: libmetacity/meta-color-spec.c:370
+#, c-format
+msgid ""
+"Blend format is 'blend/bg_color/fg_color/alpha', '%s' does not fit the format"
+msgstr ""
+"Араластыру пішімі: 'blend/bg_color/fg_color/alpha', '%s' бұл пішімге сәйкес "
+"келмейді"
+
+#: libmetacity/meta-color-spec.c:380
+#, c-format
+msgid "Could not parse alpha value '%s' in blended color"
+msgstr "Араластырылған түстегі '%s' альфа мәнін талдау мүмкін емес"
+
+#: libmetacity/meta-color-spec.c:389
+#, c-format
+msgid "Alpha value '%s' in blended color is not between 0.0 and 1.0"
+msgstr "Араластырылған түстегі '%s' альфа мәні 0.0 мен 1.0 аралығында емес"
+
+#: libmetacity/meta-color-spec.c:432
+#, c-format
+msgid "Shade format is 'shade/base_color/factor', '%s' does not fit the format"
+msgstr ""
+"Көлеңкелеу пішімі: 'shade/base_color/factor', '%s' бұл пішімге сәйкес келмейді"
+
+#: libmetacity/meta-color-spec.c:442
+#, c-format
+msgid "Could not parse shade factor '%s' in shaded color"
+msgstr "Көлеңкеленген түстегі '%s' көлеңкелеу коэффициентін талдау мүмкін емес"
+
+#: libmetacity/meta-color-spec.c:451
+#, c-format
+msgid "Shade factor '%s' in shaded color is negative"
+msgstr "Көлеңкеленген түстегі '%s' көлеңкелеу коэффициенті теріс мән"
+
+#: libmetacity/meta-color-spec.c:477
+#, c-format
+msgid "Could not parse color '%s'"
+msgstr "'%s' түсін талдау мүмкін емес"
+
+#: libmetacity/meta-draw-spec.c:201
+#, c-format
+msgid "Coordinate expression contains character '%s' which is not allowed"
+msgstr "Координаталық өрнекте рұқсат етілмеген '%s' таңбасы бар"
+
+#: libmetacity/meta-draw-spec.c:228
+#, c-format
+msgid ""
+"Coordinate expression contains floating point number '%s' which could not be "
+"parsed"
+msgstr "Координаталық өрнекте талдау мүмкін емес жылжымалы нүктелі '%s' саны бар"
+
+#: libmetacity/meta-draw-spec.c:241
+#, c-format
+msgid "Coordinate expression contains integer '%s' which could not be parsed"
+msgstr "Координаталық өрнекте талдау мүмкін емес '%s' бүтін саны бар"
+
+#: libmetacity/meta-draw-spec.c:368
+#, c-format
+msgid ""
+"Coordinate expression contained unknown operator at the start of this text: "
+"\"%s\""
+msgstr "Координаталық өрнекте мына мәтіннің басында белгісіз оператор бар: \"%s\""
+
+#: libmetacity/meta-draw-spec.c:424
+msgid "Coordinate expression was empty or not understood"
+msgstr "Координаталық өрнек бос немесе түсініксіз"
+
+#: libmetacity/meta-draw-spec.c:586
+#, c-format
+msgid "Coordinate expression had unknown variable or constant '%s'"
+msgstr "Координаталық өрнекте белгісіз '%s' айнымалысы немесе тұрақтысы бар"
+
+#: libmetacity/meta-draw-spec.c:638 libmetacity/meta-draw-spec.c:648
+#: libmetacity/meta-draw-spec.c:683 libmetacity/meta-draw-spec.c:693
+msgid "Coordinate expression results in division by zero"
+msgstr "Координаталық өрнек нөлге бөлуге әкеледі"
+
+#: libmetacity/meta-draw-spec.c:782
+#, c-format
+msgid "Coordinate expression has an operator \"%s\" where an operand was expected"
+msgstr "Координаталық өрнекте операнд күтілген жерде «%s» операторы бар"
+
+#: libmetacity/meta-draw-spec.c:791
+msgid "Coordinate expression had an operand where an operator was expected"
+msgstr "Координаталық өрнекте оператор күтілген жерде операнд бар"
+
+#: libmetacity/meta-draw-spec.c:799
+msgid "Coordinate expression ended with an operator instead of an operand"
+msgstr "Координаталық өрнек операндтың орнына оператормен аяқталған"
+
+#: libmetacity/meta-draw-spec.c:809
+#, c-format
+msgid ""
+"Coordinate expression has operator \"%c\" following operator \"%c\" with no "
+"operand in between"
+msgstr ""
+"Координаталық өрнекте операндсыз «%c» операторынан кейін «%c» операторы тұр"
+
+#: libmetacity/meta-draw-spec.c:941
+msgid "Coordinate expression parser overflowed its buffer."
+msgstr "Координаталық өрнекті талдаушы буфері толып кетті."
+
+#: libmetacity/meta-draw-spec.c:971
+msgid "Coordinate expression had a close parenthesis with no open parenthesis"
+msgstr "Координаталық өрнекте ашылатын жақшасыз жабылатын жақша бар"
+
+#: libmetacity/meta-draw-spec.c:1044
+msgid "Coordinate expression had an open parenthesis with no close parenthesis"
+msgstr "Координаталық өрнекте жабылатын жақшасыз ашылатын жақша бар"
+
+#: libmetacity/meta-draw-spec.c:1054
+msgid "Coordinate expression doesn't seem to have any operators or operands"
+msgstr "Координаталық өрнекте ешқандай операторлар немесе операндтар жоқ сияқты"
+
+#: libmetacity/meta-draw-spec.c:1246 libmetacity/meta-draw-spec.c:1266
+#: libmetacity/meta-draw-spec.c:1286
+#, c-format
+msgid "Theme contained an expression that resulted in an error: %s"
+msgstr "Темада қатеге әкелетін өрнек бар: %s"
+
+#: libmetacity/meta-frame-layout.c:47
+msgid "top"
+msgstr "үсті"
+
+#: libmetacity/meta-frame-layout.c:49
+msgid "bottom"
+msgstr "асты"
+
+#: libmetacity/meta-frame-layout.c:51
+msgid "left"
+msgstr "сол жақ"
+
+#: libmetacity/meta-frame-layout.c:53
+msgid "right"
+msgstr "оң жақ"
+
+#: libmetacity/meta-frame-layout.c:78
+#, c-format
+msgid "frame geometry does not specify '%s' dimension"
+msgstr "жақтау геометриясында '%s' өлшемі көрсетілмеген"
+
+#: libmetacity/meta-frame-layout.c:97
+#, c-format
+msgid "frame geometry does not specify dimension '%s' for border '%s'"
+msgstr "жақтау геометриясында '%s' өлшемі '%s' жиегі үшін көрсетілмеген"
+
+#: libmetacity/meta-frame-layout.c:233
+#, c-format
+msgid "Button aspect ratio %g is not reasonable"
+msgstr "Батырманың %g жақтар арақатынасы ақылға қонымсыз"
+
+#: libmetacity/meta-frame-layout.c:251
+msgid "Frame geometry does not specify size of buttons"
+msgstr "Жақтау геометриясында батырмалар өлшемі көрсетілмеген"
+
+#. Translators: This error occurs when a <frame> tag is missing
+#. * in theme XML.  The "<frame ...>" is intended as a noun phrase,
+#. * and the "missing" qualifies it.  You should translate "whatever".
+#: libmetacity/meta-frame-style.c:144 libmetacity/meta-frame-style.c:467
+#, c-format
+msgid "Missing <frame state='%s' resize='%s' focus='%s' style='whatever' />"
+msgstr "Жетіспейді: <frame state='%s' resize='%s' focus='%s' style='бірдеңе' />"
+
+#: libmetacity/meta-frame-style.c:324
+#, c-format
+msgid ""
+"<button function='%s' state='%s' draw_ops='whatever'/> must be specified for "
+"this frame style"
+msgstr ""
+"Бұл жақтау стилі үшін <button function='%s' state='%s' draw_ops='бірдеңе'/> "
+"көрсетілуі керек"
+
+#: libmetacity/meta-gradient-spec.c:182
+msgid "Gradients should have at least two colors"
+msgstr "Градиенттерде кем дегенде екі түс болуы керек"
+
+#: libmetacity/meta-theme-impl.c:41
+#, c-format
+msgid "MetaThemeImplClass::load not implemented for '%s'"
+msgstr "'%s' үшін MetaThemeImplClass::load іске асырылмаған"
+
+#. Translators: This means that an attribute which should have been found
+#. * on an XML element was not in fact found.
+#: libmetacity/meta-theme-metacity.c:51
+#, c-format
+msgid "No '%s' attribute on element <%s>"
+msgstr "'%s' атрибуты <%s> элементінде жоқ"
+
+#: libmetacity/meta-theme-metacity.c:305 libmetacity/meta-theme-metacity.c:324
+#, c-format
+msgid "Line %d character %d: %s"
+msgstr "%d жол, %d таңба: %s"
+
+#: libmetacity/meta-theme-metacity.c:364
+#, c-format
+msgid "Could not parse '%s' as an integer"
+msgstr "'%s' бүтін сан ретінде талданбады"
+
+#: libmetacity/meta-theme-metacity.c:372 libmetacity/meta-theme-metacity.c:589
+#, c-format
+msgid "Did not understand trailing characters '%s' in string '%s'"
+msgstr "'%2$s' жолындағы соңғы '%1$s' таңбалары түсініксіз"
+
+#: libmetacity/meta-theme-metacity.c:381
+#, c-format
+msgid "Integer %ld must be positive"
+msgstr "%ld бүтін саны оң мән болуы керек"
+
+#: libmetacity/meta-theme-metacity.c:388
+#, c-format
+msgid "Integer %ld is too large, current max is %d"
+msgstr "%ld бүтін саны тым үлкен, қазіргі максимум — %d"
+
+#: libmetacity/meta-theme-metacity.c:490
+#, c-format
+msgid "Attribute '%s' repeated twice on the same <%s> element"
+msgstr "'%s' атрибуты бір <%s> элементінде екі рет қайталанған"
+
+#: libmetacity/meta-theme-metacity.c:512 libmetacity/meta-theme-metacity.c:556
+#, c-format
+msgid "Attribute '%s' is invalid on <%s> element in this context"
+msgstr "'%s' атрибуты бұл контексте <%s> элементінде жарамсыз"
+
+#: libmetacity/meta-theme-metacity.c:581 libmetacity/meta-theme-metacity.c:619
+#, c-format
+msgid "Could not parse '%s' as a floating point number"
+msgstr "'%s' жылжымалы нүктелі сан ретінде талданбады"
+
+#: libmetacity/meta-theme-metacity.c:651
+#, c-format
+msgid "Alpha must be between 0.0 (invisible) and 1.0 (fully opaque), was %g"
+msgstr ""
+"Альфа 0.0 (көрінбейтін) мен 1.0 (толық мөлдір емес) аралығында болуы керек, %g "
+"болды"
+
+#: libmetacity/meta-theme-metacity.c:697
+#, c-format
+msgid ""
+"Invalid title scale '%s' (must be one of xx-small,x-small,small,medium,large,x-"
+"large,xx-large)\n"
+msgstr ""
+"Тақырыптың жарамсыз '%s' масштабы (xx-small,x-small,small,medium,large,x-"
+"large,xx-large мәндерінің бірі болуы керек)\n"
+
+#: libmetacity/meta-theme-metacity.c:726 libmetacity/meta-theme-metacity.c:754
+#, c-format
+msgid "Boolean values must be 'true' or 'false' not '%s'"
+msgstr "Логикалық мәндер '%s' емес, 'true' немесе 'false' болуы керек"
+
+#: libmetacity/meta-theme-metacity.c:783 libmetacity/meta-theme-metacity.c:820
+#: libmetacity/meta-theme-metacity.c:858
+#, c-format
+msgid "User-defined constants must begin with a capital letter; '%s' does not"
+msgstr ""
+"Пайдаланушы анықтаған тұрақтылар бас әріптен басталуы керек; '%s' бұлай "
+"басталмайды"
+
+#: libmetacity/meta-theme-metacity.c:792 libmetacity/meta-theme-metacity.c:829
+#: libmetacity/meta-theme-metacity.c:867
+#, c-format
+msgid "Constant '%s' has already been defined"
+msgstr "'%s' тұрақтысы бұрыннан анықталған"
+
+#: libmetacity/meta-theme-metacity.c:1074 libmetacity/meta-theme-metacity.c:1171
+#: libmetacity/meta-theme-metacity.c:1273
+#, c-format
+msgid "<%s> name \"%s\" used a second time"
+msgstr "<%s> элементінің \"%s\" атауы екінші рет қолданылды"
+
+#: libmetacity/meta-theme-metacity.c:1086
+#, c-format
+msgid "<%s> parent \"%s\" has not been defined"
+msgstr "<%s> элементінің \"%s\" ата-анасы анықталмаған"
+
+#: libmetacity/meta-theme-metacity.c:1137
+#, c-format
+msgid "<%s> name '%s' used a second time"
+msgstr "<%s> элементінің '%s' атауы екінші рет қолданылды"
+
+#: libmetacity/meta-theme-metacity.c:1183 libmetacity/meta-theme-metacity.c:1285
+#, c-format
+msgid "<%s> parent '%s' has not been defined"
+msgstr "<%s> элементінің '%s' ата-анасы анықталмаған"
+
+#: libmetacity/meta-theme-metacity.c:1196
+#, c-format
+msgid "<%s> geometry '%s' has not been defined"
+msgstr "<%s> элементінің '%s' геометриясы анықталмаған"
+
+#: libmetacity/meta-theme-metacity.c:1209
+#, c-format
+msgid "<%s> must specify either a geometry or a parent that has a geometry"
+msgstr "<%s> не геометрияны, не геометриясы бар ата-ананы көрсетуі керек"
+
+#: libmetacity/meta-theme-metacity.c:1250
+msgid "You must specify a background for an alpha value to be meaningful"
+msgstr "Альфа мәнінің мағынасы болуы үшін фонды көрсетуіңіз керек"
+
+#: libmetacity/meta-theme-metacity.c:1318
+#, c-format
+msgid "Unknown type '%s' on <%s> element"
+msgstr "Белгісіз '%s' түрі <%s> элементінде"
+
+#: libmetacity/meta-theme-metacity.c:1327
+#, c-format
+msgid "Unknown style_set '%s' on <%s> element"
+msgstr "Белгісіз style_set '%s' <%s> элементінде"
+
+#: libmetacity/meta-theme-metacity.c:1335
+#, c-format
+msgid "Window type '%s' has already been assigned a style set"
+msgstr "'%s' терезе түріне стильдер жиынтығы бұрыннан тағайындалған"
+
+#: libmetacity/meta-theme-metacity.c:1364 libmetacity/meta-theme-metacity.c:1428
+#: libmetacity/meta-theme-metacity.c:1654 libmetacity/meta-theme-metacity.c:2810
+#: libmetacity/meta-theme-metacity.c:2856 libmetacity/meta-theme-metacity.c:3094
+#: libmetacity/meta-theme-metacity.c:3130 libmetacity/meta-theme-metacity.c:3166
+#: libmetacity/meta-theme-metacity.c:3202 libmetacity/meta-theme-metacity.c:3499
+#, c-format
+msgid "Element <%s> is not allowed below <%s>"
+msgstr "<%s> элементіне <%s> астында рұқсат етілмейді"
+
+#: libmetacity/meta-theme-metacity.c:1464 libmetacity/meta-theme-metacity.c:1590
+#: libmetacity/meta-theme-metacity.c:1604
+msgid ""
+"Cannot specify both 'button_width'/'button_height' and 'aspect_ratio' for "
+"buttons"
+msgstr ""
+"Батырмалар үшін 'button_width'/'button_height' және 'aspect_ratio' атрибуттарын "
+"бірге көрсетуге болмайды"
+
+#: libmetacity/meta-theme-metacity.c:1473
+#, c-format
+msgid "Aspect ratio '%s' is unknown"
+msgstr "'%s' жақтар арақатынасы белгісіз"
+
+#: libmetacity/meta-theme-metacity.c:1535
+#, c-format
+msgid "Border '%s' is unknown"
+msgstr "'%s' жиегі белгісіз"
+
+#: libmetacity/meta-theme-metacity.c:1613
+#, c-format
+msgid "Distance '%s' is unknown"
+msgstr "'%s' қашықтығы белгісіз"
+
+#: libmetacity/meta-theme-metacity.c:1824
+#, c-format
+msgid "Angle must be between 0.0 and 360.0, was %g\n"
+msgstr "Бұрыш 0.0 мен 360.0 аралығында болуы керек, %g болды\n"
+
+#: libmetacity/meta-theme-metacity.c:2013
+#, c-format
+msgid "No \"start_angle\" or \"from\" attribute on element <%s>"
+msgstr "<%s> элементінде \"start_angle\" немесе \"from\" атрибуты жоқ"
+
+#: libmetacity/meta-theme-metacity.c:2020
+#, c-format
+msgid "No \"extent_angle\" or \"to\" attribute on element <%s>"
+msgstr "<%s> элементінде \"extent_angle\" немесе \"to\" атрибуты жоқ"
+
+#: libmetacity/meta-theme-metacity.c:2206
+#, c-format
+msgid "Did not understand value \"%s\" for type of gradient"
+msgstr "Градиент түрі үшін \"%s\" мәні түсініксіз"
+
+#: libmetacity/meta-theme-metacity.c:2271 libmetacity/meta-theme-metacity.c:2595
+#, c-format
+msgid "Did not understand fill type \"%s\" for <%s> element"
+msgstr "<%2$s> элементі үшін \"%1$s\" толтыру түрі түсініксіз"
+
+#: libmetacity/meta-theme-metacity.c:2426 libmetacity/meta-theme-metacity.c:2495
+#: libmetacity/meta-theme-metacity.c:2546
+#, c-format
+msgid "Did not understand state \"%s\" for <%s> element"
+msgstr "<%2$s> элементі үшін \"%1$s\" күйі түсініксіз"
+
+#: libmetacity/meta-theme-metacity.c:2436 libmetacity/meta-theme-metacity.c:2505
+#, c-format
+msgid "Did not understand shadow \"%s\" for <%s> element"
+msgstr "<%2$s> элементі үшін \"%1$s\" көлеңкесі түсініксіз"
+
+#: libmetacity/meta-theme-metacity.c:2446
+#, c-format
+msgid "Did not understand arrow \"%s\" for <%s> element"
+msgstr "<%2$s> элементі үшін \"%1$s\" бағдаршасы түсініксіз"
+
+#: libmetacity/meta-theme-metacity.c:2695 libmetacity/meta-theme-metacity.c:2762
+#, c-format
+msgid "No <draw_ops> called \"%s\" has been defined"
+msgstr "\"%s\" деп аталатын <draw_ops> анықталмаған"
+
+#: libmetacity/meta-theme-metacity.c:2707 libmetacity/meta-theme-metacity.c:2774
+#, c-format
+msgid "Including draw_ops \"%s\" here would create a circular reference"
+msgstr "Мұнда \"%s\" draw_ops қосу тұйық сілтеме жасайды"
+
+#: libmetacity/meta-theme-metacity.c:2981
+#, c-format
+msgid "Unknown position \"%s\" for frame piece"
+msgstr "Жақтау бөлігінің белгісіз \"%s\" орны"
+
+#: libmetacity/meta-theme-metacity.c:2989
+#, c-format
+msgid "Frame style already has a piece at position %s"
+msgstr "Жақтау стилінде %s орнында бөлік бар"
+
+#: libmetacity/meta-theme-metacity.c:3005
+#, c-format
+msgid "No <draw_ops> with the name \"%s\" has been defined"
+msgstr "\"%s\" атымен <draw_ops> анықталмаған"
+
+#: libmetacity/meta-theme-metacity.c:3036
+#, c-format
+msgid "Unknown function \"%s\" for button"
+msgstr "Батырманың белгісіз \"%s\" функциясы"
+
+#: libmetacity/meta-theme-metacity.c:3047
+#, c-format
+msgid "Button function '%s' does not exist in this version (%d, need %d)"
+msgstr "Батырманың '%s' функциясы бұл нұсқада жоқ (%d, %d керек)"
+
+#: libmetacity/meta-theme-metacity.c:3056
+#, c-format
+msgid "Unknown state '%s' for button"
+msgstr "Батырманың белгісіз '%s' күйі"
+
+#: libmetacity/meta-theme-metacity.c:3063
+#, c-format
+msgid "Frame style already has a button for function %s state %s"
+msgstr "Жақтау стилінде %s функциясы мен %s күйі үшін батырма бұрыннан бар"
+
+#: libmetacity/meta-theme-metacity.c:3080
+#, c-format
+msgid "No <draw_ops> with the name '%s' has been defined"
+msgstr "'%s' атымен <draw_ops> анықталмаған"
+
+#: libmetacity/meta-theme-metacity.c:3114
+msgid ""
+"Can't have a two draw_ops for a <piece> element (theme specified a draw_ops "
+"attribute and also a <draw_ops> element, or specified two elements)"
+msgstr ""
+"<piece> элементі үшін екі draw_ops болуы мүмкін емес (темада draw_ops атрибуты "
+"мен <draw_ops> элементі қатар көрсетілген немесе екі элемент көрсетілген)"
+
+#: libmetacity/meta-theme-metacity.c:3150
+msgid ""
+"Can't have a two draw_ops for a <button> element (theme specified a draw_ops "
+"attribute and also a <draw_ops> element, or specified two elements)"
+msgstr ""
+"<button> элементі үшін екі draw_ops болуы мүмкін емес (темада draw_ops атрибуты "
+"мен <draw_ops> элементі қатар көрсетілген немесе екі элемент көрсетілген)"
+
+#: libmetacity/meta-theme-metacity.c:3186
+msgid ""
+"Can't have a two draw_ops for a <menu_icon> element (theme specified a draw_ops "
+"attribute and also a <draw_ops> element, or specified two elements)"
+msgstr ""
+"<menu_icon> элементі үшін екі draw_ops болуы мүмкін емес (темада draw_ops "
+"атрибуты мен <draw_ops> элементі қатар көрсетілген немесе екі элемент "
+"көрсетілген)"
+
+#: libmetacity/meta-theme-metacity.c:3290
+#, c-format
+msgid "'%s' is not a valid value for focus attribute"
+msgstr "'%s' — focus атрибуты үшін жарамды мән емес"
+
+#: libmetacity/meta-theme-metacity.c:3299
+#, c-format
+msgid "'%s' is not a valid value for state attribute"
+msgstr "'%s' — state атрибуты үшін жарамды мән емес"
+
+#: libmetacity/meta-theme-metacity.c:3308
+#, c-format
+msgid "A style called '%s' has not been defined"
+msgstr "'%s' деп аталатын стиль анықталмаған"
+
+#: libmetacity/meta-theme-metacity.c:3326 libmetacity/meta-theme-metacity.c:3349
+#, c-format
+msgid "'%s' is not a valid value for resize attribute"
+msgstr "'%s' — resize атрибуты үшін жарамды мән емес"
+
+#: libmetacity/meta-theme-metacity.c:3360
+#, c-format
+msgid ""
+"Should not have 'resize' attribute on <%s> element for maximized/shaded states"
+msgstr ""
+"Жайылған/көлеңкеленген күйлер үшін <%s> элементінде 'resize' атрибуты болмауы "
+"керек"
+
+#: libmetacity/meta-theme-metacity.c:3381
+#, c-format
+msgid "Should not have 'resize' attribute on <%s> element for maximized states"
+msgstr "Жайылған күйлер үшін <%s> элементінде 'resize' атрибуты болмауы керек"
+
+#: libmetacity/meta-theme-metacity.c:3396 libmetacity/meta-theme-metacity.c:3444
+#, c-format
+msgid "Style has already been specified for state %s resize %s focus %s"
+msgstr "Стиль %s күйі, %s өлшем өзгерту және %s фокусы үшін бұрыннан көрсетілген"
+
+#: libmetacity/meta-theme-metacity.c:3408 libmetacity/meta-theme-metacity.c:3420
+#: libmetacity/meta-theme-metacity.c:3432 libmetacity/meta-theme-metacity.c:3456
+#: libmetacity/meta-theme-metacity.c:3468 libmetacity/meta-theme-metacity.c:3480
+#, c-format
+msgid "Style has already been specified for state %s focus %s"
+msgstr "Стиль %s күйі мен %s фокусы үшін бұрыннан көрсетілген"
+
+#: libmetacity/meta-theme-metacity.c:3546
+#, c-format
+msgid "Bad version specification '%s'"
+msgstr "Нұсқаның қате сипаттамасы: '%s'"
+
+#: libmetacity/meta-theme-metacity.c:3617
+msgid ""
+"'version' attribute cannot be used in metacity-theme-1.xml or metacity-"
+"theme-2.xml"
+msgstr ""
+"'version' атрибутын metacity-theme-1.xml немесе metacity-theme-2.xml "
+"файлдарында қолдануға болмайды"
+
+#: libmetacity/meta-theme-metacity.c:3640
+#, c-format
+msgid "Theme requires version %s but latest supported theme version is %d.%d"
+msgstr ""
+"Темаға %s нұсқасы қажет, бірақ қолдау көрсетілетін ең соңғы тема нұсқасы — %d.%d"
+
+#: libmetacity/meta-theme-metacity.c:3664
+#, c-format
+msgid "Outermost element in theme must be <metacity_theme> not <%s>"
+msgstr "Теманың ең сыртқы элементі <%s> емес, <metacity_theme> болуы керек"
+
+#: libmetacity/meta-theme-metacity.c:3684
+#, c-format
+msgid "Element <%s> is not allowed inside a name/author/date/description element"
+msgstr ""
+"name/author/date/description элементінің ішінде <%s> элементіне рұқсат етілмейді"
+
+#: libmetacity/meta-theme-metacity.c:3690
+#, c-format
+msgid "Element <%s> is not allowed inside a <constant> element"
+msgstr "<constant> элементінің ішінде <%s> элементіне рұқсат етілмейді"
+
+#: libmetacity/meta-theme-metacity.c:3703
+#, c-format
+msgid "Element <%s> is not allowed inside a distance/border/aspect_ratio element"
+msgstr ""
+"distance/border/aspect_ratio элементінің ішінде <%s> элементіне рұқсат етілмейді"
+
+#: libmetacity/meta-theme-metacity.c:3726
+#, c-format
+msgid "Element <%s> is not allowed inside a draw operation element"
+msgstr "Сурет салу операциясы элементінің ішінде <%s> элементіне рұқсат етілмейді"
+
+#: libmetacity/meta-theme-metacity.c:3737 libmetacity/meta-theme-metacity.c:3768
+#: libmetacity/meta-theme-metacity.c:3774 libmetacity/meta-theme-metacity.c:3780
+#, c-format
+msgid "Element <%s> is not allowed inside a <%s> element"
+msgstr "<%2$s> элементінің ішінде <%1$s> элементіне рұқсат етілмейді"
+
+#. Translators: This error means that a necessary XML tag (whose name
+#. * is given in angle brackets) was not found in a given theme (whose
+#. * name is given second, in quotation marks).
+#: libmetacity/meta-theme-metacity.c:3834 libmetacity/meta-theme-metacity.c:3842
+#: libmetacity/meta-theme-metacity.c:3850 libmetacity/meta-theme-metacity.c:3858
+#: libmetacity/meta-theme-metacity.c:3867
+#, c-format
+msgid "No <%s> set for theme '%s'"
+msgstr "<%s> элементі '%s' темасы үшін орнатылмаған"
+
+#: libmetacity/meta-theme-metacity.c:3878
+#, c-format
+msgid ""
+"No frame style set for window type '%s' in theme '%s', add a <window type='%s' "
+"style_set='whatever' /> element"
+msgstr ""
+"'%s' терезе түрі үшін '%s' темасында жақтау стилі орнатылмаған, <window "
+"type='%s' style_set='бірдеңе' /> элементін қосыңыз"
+
+#: libmetacity/meta-theme-metacity.c:4141
+msgid "No draw_ops provided for frame piece"
+msgstr "Жақтау бөлігі үшін draw_ops көрсетілмеген"
+
+#: libmetacity/meta-theme-metacity.c:4157
+msgid "No draw_ops provided for button"
+msgstr "Батырма үшін draw_ops көрсетілмеген"
+
+#: libmetacity/meta-theme-metacity.c:4272 libmetacity/meta-theme-metacity.c:4283
+#: libmetacity/meta-theme-metacity.c:4294 libmetacity/meta-theme-metacity.c:4305
+#: libmetacity/meta-theme-metacity.c:4316
+#, c-format
+msgid "<%s> specified twice for this theme"
+msgstr "Бұл тема үшін <%s> екі рет көрсетілген"
+
+#: libmetacity/meta-theme-metacity.c:4355
+#, c-format
+msgid "No text is allowed inside element <%s>"
+msgstr "<%s> элементінің ішінде мәтінге рұқсат етілмейді"
+
+#: libmetacity/meta-theme-metacity.c:4621
+#, c-format
+msgid "Failed to find a valid file for theme '%s'"
+msgstr "'%s' темасы үшін жарамды файл табылмады"
+
+#: src/core/bell.c:279
+msgid "Bell event"
+msgstr "Қоңырау оқиғасы"
+
+#. Translators: %s is a window title
+#: src/core/delete.c:94
+#, c-format
+msgid "<tt>%s</tt> is not responding."
+msgstr "<tt>%s</tt> жауап бермей жатыр."
+
+#: src/core/delete.c:99
+msgid ""
+"You may choose to wait a short while for it to continue or force the "
+"application to quit entirely."
+msgstr ""
+"Оның жұмысын жалғастыруын күте аласыз немесе қолданбаны мәжбүрлі түрде жаба "
+"аласыз."
+
+#: src/core/delete.c:108
+msgid "_Wait"
+msgstr "К_үту"
+
+#: src/core/delete.c:108
+msgid "_Force Quit"
+msgstr "М_әжбүрлі түрде шығу"
+
+#: src/core/main.c:105
+#, c-format
+msgid ""
+"metacity %s\n"
+"Copyright (C) 2001-%s Havoc Pennington, Red Hat, Inc., and others\n"
+"This is free software; see the source for copying conditions.\n"
+"There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR "
+"PURPOSE.\n"
+msgstr ""
+"metacity %s\n"
+"Авторлық құқық (C) 2001-%s Havoc Pennington, Red Hat, Inc. және басқалар\n"
+"Бұл еркін бағдарламалық қамтама; көшіру шарттарын бастапқы кодтан қараңыз.\n"
+"ЕШҚАНДАЙ кепілдік берілмейді; тіпті САТУҒА ЖАРАМДЫЛЫҒЫ немесе БЕЛГІЛІ БІР "
+"МАҚСАТҚА СӘЙКЕСТІГІ үшін де.\n"
+
+#: src/core/main.c:201 src/core/main.c:218
+#, c-format
+msgid "Option “%s” is deprecated, use the “--compositor” instead."
+msgstr "“%s” опциясы ескірген, орнына “--compositor” қолданыңыз."
+
+#: src/core/main.c:246
+#, c-format
+msgid "“%s” is not a valid compositor"
+msgstr "“%s” — жарамды композитор емес"
+
+#: src/core/main.c:281
+msgid "Disable connection to session manager"
+msgstr "Сеанс менеджеріне қосылуды сөндіру"
+
+#: src/core/main.c:287
+msgid "Replace the running window manager with Metacity"
+msgstr "Жұмыс істеп тұрған терезе менеджерін Metacity-мен алмастыру"
+
+#: src/core/main.c:293
+msgid "Specify session management ID"
+msgstr "Сеансты басқару ID-ін көрсету"
+
+#: src/core/main.c:298
+msgid "X Display to use"
+msgstr "Қолданылатын X дисплейі"
+
+#: src/core/main.c:304
+msgid "Initialize session from savefile"
+msgstr "Сеансты сақталған файлдан инициализациялау"
+
+#: src/core/main.c:310
+msgid "Print version"
+msgstr "Нұсқасын басып шығару"
+
+#: src/core/main.c:316
+msgid "Make X calls synchronous"
+msgstr "X шақыруларын синхронды ету"
+
+#: src/core/main.c:325
+msgid "Turn compositing on"
+msgstr "Композицияны іске қосу"
+
+#: src/core/main.c:334
+msgid "Turn compositing off"
+msgstr "Композицияны сөндіру"
+
+#: src/core/main.c:343
+msgid "Compositor to use"
+msgstr "Қолданылатын композитор"
+
+#: src/core/main.c:349
+msgid "Don't make fullscreen windows that are maximized and have no decorations"
+msgstr "Жайылған және безендірулері жоқ терезелерді толық экранды қылмау"
+
+#: src/core/prefs.c:905
+msgid "Setting “compositing-manager” is deprecated, use the “compositor” instead."
+msgstr "“compositing-manager” баптауы ескірген, орнына “compositor” қолданыңыз."
+
+#: src/core/prefs.c:1446
+#, c-format
+msgid "Workspace %d"
+msgstr "%d-жұмыс орны"
+
+#: src/core/session.c:1212
+msgid "<metacity_session> attribute seen but we already have the session ID"
+msgstr "<metacity_session> атрибуты табылды, бірақ бізде сеанс ID-і бар"
+
+#: src/core/session.c:1225 src/core/session.c:1300 src/core/session.c:1332
+#: src/core/session.c:1404 src/core/session.c:1464
+#, c-format
+msgid "Unknown attribute %s on <%s> element"
+msgstr "<%2$s> элементіндегі белгісіз %1$s атрибуты"
+
+#: src/core/session.c:1242
+msgid "nested <window> tag"
+msgstr "ішінде орналасқан <window> тегі"
+
+#: src/core/session.c:1484
+#, c-format
+msgid "Unknown element %s"
+msgstr "Белгісіз %s элементі"
+
+#: src/core/session.c:1845
+msgid ""
+"These windows do not support &quot;save current setup&quot; and will have to be "
+"restarted manually next time you log in."
+msgstr ""
+"Бұл терезелер «ағымдағы баптауларды сақтауды» қолдамайды және келесі жолы "
+"жүйеге кіргенде оларды қолмен қайта іске қосу керек болады."
+
+#: src/core/util.c:106
+#, c-format
+msgid "Opened log file %s\n"
+msgstr "%s журналы файлы ашылды\n"
+
+#. Translators: the title of a window from another machine
+#: src/core/window-props.c:548
+#, c-format
+msgid "%s (on %s)"
+msgstr "%s (%s ішінде)"
+
+#. Simple case-- don't bother to look it up.  It's root.
+#: src/core/window-props.c:583
+#, c-format
+msgid "%s (as superuser)"
+msgstr "%s (суперпайдаланушы ретінде)"
+
+#. Translators: the title of a window owned by another user
+#. * on this machine
+#: src/core/window-props.c:602
+#, c-format
+msgid "%s (as %s)"
+msgstr "%s (%s ретінде)"
+
+#. Translators: the title of a window owned by another user
+#. * on this machine, whose name we don't know
+#: src/core/window-props.c:608
+#, c-format
+msgid "%s (as another user)"
+msgstr "%s (басқа пайдаланушы ретінде)"
+
+#: src/tools/metacity-message.c:170
+#, c-format
+msgid "Usage: %s\n"
+msgstr "Қолданылуы: %s\n"
+
+#: src/ui/frames.c:1255
+msgid "Close Window"
+msgstr "Терезені жабу"
+
+#: src/ui/frames.c:1258
+msgid "Window Menu"
+msgstr "Терезе мәзірі"
+
+#: src/ui/frames.c:1261
+msgid "Minimize Window"
+msgstr "Терезені жию"
+
+#: src/ui/frames.c:1264
+msgid "Maximize Window"
+msgstr "Терезені жаю"
+
+#: src/ui/frames.c:1267
+msgid "Restore Window"
+msgstr "Терезені қалпына келтіру"
+
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:65
+msgid "Mi_nimize"
+msgstr "Ж_ию"
+
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:67
+msgid "Ma_ximize"
+msgstr "Ж_аю"
+
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:69
+msgid "Unma_ximize"
+msgstr "К_алпына келтіру"
+
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:71
+msgid "Roll _Up"
+msgstr "А_йналдыру"
+
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:73
+msgid "_Unroll"
+msgstr "Ж_азу"
+
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:75
+msgid "_Move"
+msgstr "Ж_ылжыту"
+
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:77
+msgid "_Resize"
+msgstr "Өлшемін ө_згерту"
+
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:79
+msgid "Move Titlebar On_screen"
+msgstr "Тақырып жолағын экранға ж_ылжыту"
+
+#. separator
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:82 src/ui/menu.c:84
+msgid "Always on _Top"
+msgstr "Әрқашан үс_тінде"
+
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:86
+msgid "_Always on Visible Workspace"
+msgstr "Әрқашан кө_рінетін жұмыс орнында"
+
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:88
+msgid "_Only on This Workspace"
+msgstr "Т_ек осы жұмыс орнында"
+
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:90
+msgid "Move to Workspace _Left"
+msgstr "С_ол жақтағы жұмыс орнына ауыстыру"
+
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:92
+msgid "Move to Workspace R_ight"
+msgstr "О_ң жақтағы жұмыс орнына ауыстыру"
+
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:94
+msgid "Move to Workspace _Up"
+msgstr "Ж_оғарыдағы жұмыс орнына ауыстыру"
+
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:96
+msgid "Move to Workspace _Down"
+msgstr "Т_өмендегі жұмыс орнына ауыстыру"
+
+#. separator
+#. Translators: Translate this string the same way as you do in libwnck!
+#: src/ui/menu.c:100
+msgid "_Close"
+msgstr "Ж_абу"
+
+#: src/ui/menu.c:174
+#, c-format
+msgid "Workspace %d%n"
+msgstr "%d%n-жұмыс орны"
+
+#: src/ui/menu.c:184
+msgid "Workspace 1_0"
+msgstr "1_0-жұмыс орны"
+
+#: src/ui/menu.c:186
+#, c-format
+msgid "Workspace %s%d"
+msgstr "%s%d-жұмыс орны"
+
+#: src/ui/menu.c:358
+msgid "Move to Another _Workspace"
+msgstr "Басқа ж_ұмыс орнына ауыстыру"
+
+#. This is the text that should appear next to menu accelerators
+#. * that use the shift key. If the text on this key isn't typically
+#. * translated on keyboards used for your language, don't translate
+#. * this.
+#: src/ui/metaaccellabel.c:73
+msgid "Shift"
+msgstr "Shift"
+
+#. This is the text that should appear next to menu accelerators
+#. * that use the control key. If the text on this key isn't typically
+#. * translated on keyboards used for your language, don't translate
+#. * this.
+#: src/ui/metaaccellabel.c:79
+msgid "Ctrl"
+msgstr "Ctrl"
+
+#. This is the text that should appear next to menu accelerators
+#. * that use the alt key. If the text on this key isn't typically
+#. * translated on keyboards used for your language, don't translate
+#. * this.
+#: src/ui/metaaccellabel.c:85
+msgid "Alt"
+msgstr "Alt"
+
+#. This is the text that should appear next to menu accelerators
+#. * that use the meta key. If the text on this key isn't typically
+#. * translated on keyboards used for your language, don't translate
+#. * this.
+#: src/ui/metaaccellabel.c:91
+msgid "Meta"
+msgstr "Meta"
+
+#. This is the text that should appear next to menu accelerators
+#. * that use the super key. If the text on this key isn't typically
+#. * translated on keyboards used for your language, don't translate
+#. * this.
+#: src/ui/metaaccellabel.c:97
+msgid "Super"
+msgstr "Super"
+
+#. This is the text that should appear next to menu accelerators
+#. * that use the hyper key. If the text on this key isn't typically
+#. * translated on keyboards used for your language, don't translate
+#. * this.
+#: src/ui/metaaccellabel.c:103
+msgid "Hyper"
+msgstr "Hyper"
+
+#. This is the text that should appear next to menu accelerators
+#. * that use the mod2 key. If the text on this key isn't typically
+#. * translated on keyboards used for your language, don't translate
+#. * this.
+#: src/ui/metaaccellabel.c:109
+msgid "Mod2"
+msgstr "Mod2"
+
+#. This is the text that should appear next to menu accelerators
+#. * that use the mod3 key. If the text on this key isn't typically
+#. * translated on keyboards used for your language, don't translate
+#. * this.
+#: src/ui/metaaccellabel.c:115
+msgid "Mod3"
+msgstr "Mod3"
+
+#. This is the text that should appear next to menu accelerators
+#. * that use the mod4 key. If the text on this key isn't typically
+#. * translated on keyboards used for your language, don't translate
+#. * this.
+#: src/ui/metaaccellabel.c:121
+msgid "Mod4"
+msgstr "Mod4"
+
+#. This is the text that should appear next to menu accelerators
+#. * that use the mod5 key. If the text on this key isn't typically
+#. * translated on keyboards used for your language, don't translate
+#. * this.
+#: src/ui/metaaccellabel.c:127
+msgid "Mod5"
+msgstr "Mod5"
+
+#. Translators: This represents the size of a window.  The first number is
+#. * the width of the window and the second is the height.
+#: src/ui/resizepopup.c:86
+#, c-format
+msgid "%d x %d"
+msgstr "%d x %d"
+
+#: src/ui/ui.c:853
+msgid "Falling back to default GTK+ theme - Adwaita"
+msgstr "Бастапқы GTK+ темасына — Adwaita-ға оралу"
+
+#: theme-viewer/theme-viewer-main.c:32
+msgid "Theme type to use (\"gtk\" or \"metacity\")"
+msgstr "Қолданылатын тема түрі (\"gtk\" немесе \"metacity\")"
+
+#: theme-viewer/theme-viewer-main.c:32
+msgid "TYPE"
+msgstr "ТҮРІ"
+
+#: theme-viewer/theme-viewer-main.c:36
+msgid "Theme name to use"
+msgstr "Қолданылатын тема аты"
+
+#: theme-viewer/theme-viewer-main.c:36
+msgid "NAME"
+msgstr "АТЫ"
+
+#: theme-viewer/theme-viewer-window.c:102
+#, c-format
+msgid "Loaded <b>%s</b> theme <b>%s</b> in <b>%f</b> seconds."
+msgstr "<b>%s</b> темасының <b>%s</b> түрі <b>%f</b> секундта жүктелді."
+
+#: theme-viewer/theme-viewer-window.c:132
+#, c-format
+msgid ""
+"Got MetaFrameBorders in <b>%f</b> seconds (CSS loading, PangoFontDescription "
+"creation and title height calculation)."
+msgstr ""
+"MetaFrameBorders <b>%f</b> секундта алынды (CSS жүктеу, PangoFontDescription "
+"жасау және тақырып биіктігін есептеу)."
+
+#: theme-viewer/theme-viewer-window.c:207
+#, c-format
+msgid ""
+"Drew <b>%d</b> frames in <b>%f</b> client-side seconds (<b>%f</b> milliseconds "
+"per frame) and <b>%f</b> seconds wall clock time including X server resources "
+"(<b>%f</b> milliseconds per frame)."
+msgstr ""
+"<b>%d</b> кадр <b>%f</b> клиенттік секундта (әр кадрға <b>%f</b> миллисекунд) "
+"және X-сервер ресурстарын қосқанда <b>%f</b> секунд нақты уақытта (әр кадрға "
+"<b>%f</b> миллисекунд) салынды."
+
+#: theme-viewer/theme-viewer-window.c:244
+msgid "Run again"
+msgstr "Қайта орындау"
