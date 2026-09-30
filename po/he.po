@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity.HEAD.he\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues/\n"
-"POT-Creation-Date: 2025-09-01 13:32+0000\n"
-"PO-Revision-Date: 2025-09-02 08:29+0300\n"
+"POT-Creation-Date: 2025-09-09 21:08+0000\n"
+"PO-Revision-Date: 2026-09-30 09:16+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.9\n"
 
 #. This is the title used on dialog boxes
 #: data/applications/metacity.desktop.in:3 data/ui/delete-dialog.ui:8
@@ -210,6 +210,22 @@ msgstr "View split on left"
 #: data/keybindings/50-metacity-windows.xml:59
 msgid "View split on right"
 msgstr "View split on right"
+
+#: data/keybindings/50-metacity-windows.xml:63
+msgid "Move window to monitor on the left"
+msgstr "העברת החלון לצג שמשמאל"
+
+#: data/keybindings/50-metacity-windows.xml:67
+msgid "Move window to monitor on the right"
+msgstr "העברת החלון לצג שמימין"
+
+#: data/keybindings/50-metacity-windows.xml:71
+msgid "Move window to monitor above"
+msgstr "הזזת החלון לצג שמעל"
+
+#: data/keybindings/50-metacity-windows.xml:75
+msgid "Move window to monitor below"
+msgstr "הזזת החלון לצג שמתחת"
 
 #: data/schemas/org.gnome.metacity.gschema.xml:14
 msgid "Show window content thumbnail in Alt-Tab"
@@ -2096,9 +2112,6 @@ msgstr "הפעלה חוזרת"
 
 #~ msgid "Move window to top left corner"
 #~ msgstr "הזזת החלון לפינה השמאלית העליונה"
-
-#~ msgid "Move window to top right corner"
-#~ msgstr "הזזת החלון לפינה הימנית העליונה"
 
 #~ msgid "Move window to bottom left corner"
 #~ msgstr "הזזת החלון לפינה השמאלית התחתונה"
