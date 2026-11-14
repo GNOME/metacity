@@ -139,6 +139,8 @@ MetaCompositorType meta_prefs_get_compositor (void);
 
 void               meta_prefs_set_compositor (MetaCompositorType compositor);
 
+void               meta_prefs_override_compositor (MetaCompositorType type);
+
 void meta_prefs_set_force_fullscreen (gboolean whether);
 
 /* XXX FIXME This should be x-macroed, but isn't yet because it would be

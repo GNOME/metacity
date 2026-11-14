@@ -43,6 +43,7 @@
 #define KEY_NUM_WORKSPACES "num-workspaces"
 #define KEY_WORKSPACE_NAMES "workspace-names"
 #define KEY_COMPOSITING_MANAGER "compositing-manager"
+#define KEY_COMPOSITOR "compositor"
 #define KEY_PLACEMENT_MODE "placement-mode"
 
 /* Keys from "foreign" schemas */
@@ -87,6 +88,8 @@ static gboolean gnome_animations = TRUE;
 static char *cursor_theme = NULL;
 static int   cursor_size = 24;
 static MetaCompositorType compositor = META_COMPOSITOR_TYPE_XRENDER;
+static MetaCompositorType compositor_override;
+static gboolean compositor_overridden = FALSE;
 static gboolean resize_with_right_button = FALSE;
 static gboolean edge_tiling = FALSE;
 static gboolean force_fullscreen = TRUE;
@@ -261,7 +264,7 @@ static MetaEnumPreference preferences_enum[] =
       &current_theme_type,
     },
     {
-      { "compositor",
+      { KEY_COMPOSITOR,
         SCHEMA_METACITY,
         META_PREF_COMPOSITOR,
       },
@@ -899,6 +902,11 @@ settings_changed (GSettings *settings,
         queue_changed (META_PREF_WORKSPACE_NAMES);
 
       return;
+    }
+  else if (strcmp (key, KEY_COMPOSITOR) == 0)
+    {
+      if (compositor_overridden)
+        return;
     }
   else if (strcmp (key, KEY_COMPOSITING_MANAGER) == 0)
     {
@@ -1705,17 +1713,27 @@ meta_prefs_get_alt_tab_thumbnails (void)
 MetaCompositorType
 meta_prefs_get_compositor (void)
 {
+  if (compositor_overridden)
+    return compositor_override;
+
   return compositor;
 }
 
 void
 meta_prefs_set_compositor (MetaCompositorType type)
 {
-  g_settings_set_enum (SETTINGS (SCHEMA_METACITY), "compositor", type);
+  g_settings_set_enum (SETTINGS (SCHEMA_METACITY), KEY_COMPOSITOR, type);
 }
 
 void
 meta_prefs_set_force_fullscreen (gboolean whether)
 {
   force_fullscreen = whether;
+}
+
+void
+meta_prefs_override_compositor (MetaCompositorType type)
+{
+  compositor_override = type;
+  compositor_overridden = TRUE;
 }

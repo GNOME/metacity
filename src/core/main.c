@@ -534,14 +534,14 @@ main (int argc, char **argv)
 
   if (meta_args.compositor_set)
     {
-      meta_prefs_set_compositor (meta_args.compositor);
+      meta_prefs_override_compositor (meta_args.compositor);
     }
   else if (meta_args.composite || meta_args.no_composite)
     {
       if (meta_args.composite)
-        meta_prefs_set_compositor (META_COMPOSITOR_TYPE_XRENDER);
+        meta_prefs_override_compositor (META_COMPOSITOR_TYPE_XRENDER);
       else
-        meta_prefs_set_compositor (META_COMPOSITOR_TYPE_NONE);
+        meta_prefs_override_compositor (META_COMPOSITOR_TYPE_NONE);
     }
 
   if (meta_args.no_force_fullscreen)
