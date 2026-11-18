@@ -9,14 +9,14 @@
 # İşbaran Akçayır <isbaran@gmail.com>, 2015.
 # Serdar Sağlam <teknomobil@yandex.com>, 2019.
 # Sabri Ünal <yakushabb@gmail.com>, 2025.
-# Emin Tufan Çetin <etcetin@gmail.com>, 2019, 2020, 2022, 2025.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2019, 2020, 2022, 2025, 2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/metacity/issues/\n"
-"POT-Creation-Date: 2025-09-03 16:42+0000\n"
-"PO-Revision-Date: 2025-09-09 08:00+0300\n"
+"POT-Creation-Date: 2026-11-14 10:23+0000\n"
+"PO-Revision-Date: 2026-11-18 08:00+0300\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -39,19 +39,19 @@ msgstr "Gezinme"
 
 #: data/keybindings/50-metacity-navigation.xml:9
 msgid "Move window to workspace 1"
-msgstr "Pencereyi çalışma alanı 1'e taşı"
+msgstr "Pencereyi çalışma alanı 1’e taşı"
 
 #: data/keybindings/50-metacity-navigation.xml:12
 msgid "Move window to workspace 2"
-msgstr "Pencereyi çalışma alanı 2'ye taşı"
+msgstr "Pencereyi çalışma alanı 2’ye taşı"
 
 #: data/keybindings/50-metacity-navigation.xml:15
 msgid "Move window to workspace 3"
-msgstr "Pencereyi çalışma alanı 3'e taşı"
+msgstr "Pencereyi çalışma alanı 3’e taşı"
 
 #: data/keybindings/50-metacity-navigation.xml:18
 msgid "Move window to workspace 4"
-msgstr "Pencereyi çalışma alanı 4'e taşı"
+msgstr "Pencereyi çalışma alanı 4’e taşı"
 
 #: data/keybindings/50-metacity-navigation.xml:21
 msgid "Move window one workspace to the left"
@@ -103,19 +103,19 @@ msgstr "Tüm normal pencereleri gizle"
 
 #: data/keybindings/50-metacity-navigation.xml:57
 msgid "Switch to workspace 1"
-msgstr "Çalışma alanı 1'e geç"
+msgstr "Çalışma alanı 1’e geç"
 
 #: data/keybindings/50-metacity-navigation.xml:60
 msgid "Switch to workspace 2"
-msgstr "Çalışma alanı 2'ye geç"
+msgstr "Çalışma alanı 2’ye geç"
 
 #: data/keybindings/50-metacity-navigation.xml:63
 msgid "Switch to workspace 3"
-msgstr "Çalışma alanı 3'e geç"
+msgstr "Çalışma alanı 3’e geç"
 
 #: data/keybindings/50-metacity-navigation.xml:66
 msgid "Switch to workspace 4"
-msgstr "Çalışma alanı 4'e geç"
+msgstr "Çalışma alanı 4’e geç"
 
 #: data/keybindings/50-metacity-navigation.xml:69
 msgid "Move to workspace left"
@@ -217,9 +217,25 @@ msgstr "Soldaki bölünmeyi görüntüle"
 msgid "View split on right"
 msgstr "Sağdaki bölünmeyi görüntüle"
 
+#: data/keybindings/50-metacity-windows.xml:63
+msgid "Move window to monitor on the left"
+msgstr "Pencereyi soldaki monitöre taşı"
+
+#: data/keybindings/50-metacity-windows.xml:67
+msgid "Move window to monitor on the right"
+msgstr "Pencereyi sağdaki monitöre taşı"
+
+#: data/keybindings/50-metacity-windows.xml:71
+msgid "Move window to monitor above"
+msgstr "Pencereyi yukarıdaki monitöre taşı"
+
+#: data/keybindings/50-metacity-windows.xml:75
+msgid "Move window to monitor below"
+msgstr "Pencereyi aşağıdaki monitöre taşı"
+
 #: data/schemas/org.gnome.metacity.gschema.xml:14
 msgid "Show window content thumbnail in Alt-Tab"
-msgstr "Alt-Tab'de pencere içeriği küçük resmini göster"
+msgstr "Alt-Tab’da pencere içeriği küçük resmini göster"
 
 #: data/schemas/org.gnome.metacity.gschema.xml:15
 msgid ""
@@ -282,13 +298,13 @@ msgid ""
 "or \"random\" to place new windows at random locations within their "
 "workspaces."
 msgstr ""
-"Metacity'nin öntanımlı pencere konumlandırma davranışı bazı diğer pencere "
+"Metacity’nin öntanımlı pencere konumlandırma davranışı bazı diğer pencere "
 "yöneticilerine benzer biçimde akıllıdır (first-fit). Pencereleri üst üste "
 "gelmeyecek biçimde döşemeye çalışacaktır. Bu davranış için bu seçeneği "
-"\"smart\" (akıllı) olarak ayarlayın. Yeni pencereleri çalışma alanlarının ortasına "
-"konumlandırmak için \"center\", çalışma alanlarının sol üst köşesi için "
-"\"origin\" (kök), ya da yeni pencereleri çalışma alanlarına rastgele yerleştirmek "
-"için \"random\" olarak ayarlayabilirsiniz."
+"\"smart\" (akıllı) olarak ayarlayın. Yeni pencereleri çalışma alanlarının "
+"ortasına konumlandırmak için \"center\", çalışma alanlarının sol üst köşesi "
+"için \"origin\" (kök), ya da yeni pencereleri çalışma alanlarına rastgele "
+"yerleştirmek için \"random\" olarak ayarlayabilirsiniz."
 
 #: data/schemas/org.gnome.metacity.theme.gschema.xml:11
 msgid "Theme Name"
@@ -302,7 +318,7 @@ msgid ""
 msgstr ""
 "Bu seçenek yalnızca tema türü olarak Metacity seçilince kullanılır. Geçerli "
 "bir Metacity tema adı sağlamalısınız, yoksa Metacity öntanımlı GTK+ teması - "
-"Adwaita'ya geri dönecektir."
+"Adwaita’ya geri dönecektir."
 
 #: data/schemas/org.gnome.metacity.theme.gschema.xml:21
 msgid "Theme Type"
@@ -318,10 +334,10 @@ msgid ""
 "name."
 msgstr ""
 "Metacity iki tema türünü destekler - GTK+ (gtk.css) ve Metacity (metacity-"
-"theme-x.xml). GTK+ teması: tüm veri CSS'den yüklenir. Bu tema, Mutter "
+"theme-x.xml). GTK+ teması: tüm veri CSS’den yüklenir. Bu tema, Mutter "
 "tarafından sunucu tarafı dekorasyonlar ve GTK+ tarafından istemci tarafı "
 "dekorasyonlar için kullanılan temanın aynısıdır. Metacity teması: veri "
-"metacity-theme-x.xml ve CSS'den yüklenir. Bu temayı kullanırken geçerli tema "
+"metacity-theme-x.xml ve CSS’den yüklenir. Bu temayı kullanırken geçerli tema "
 "adı sağlamalısınız."
 
 #: data/ui/delete-dialog.ui:22
@@ -337,8 +353,8 @@ msgid ""
 "<i>You may choose to wait a short while for it to continue or force the "
 "application to quit entirely.</i>"
 msgstr ""
-"<i>Uygulamanın sürmesi için beklemeyi seçebilir ya da "
-"uygulamayı tümüyle kapanmaya zorlayabilirsiniz.</i>"
+"<i>Uygulamanın sürmesi için beklemeyi seçebilir ya da uygulamayı tümüyle "
+"kapanmaya zorlayabilirsiniz.</i>"
 
 #: data/ui/session-dialog.ui:30
 msgid "_Cancel"
@@ -353,8 +369,8 @@ msgid ""
 "These windows do not support &quot;save current setup&quot; and will have to "
 "be restarted manually next time you log in."
 msgstr ""
-"Bu pencereler, &quot;geçerli durumu kaydet&quot; özelliğini desteklemiyor "
-"ve sonraki girişinizde yeniden başlatılmalıdır."
+"Bu pencereler, &quot;geçerli durumu kaydet&quot; özelliğini desteklemiyor ve "
+"sonraki girişinizde yeniden başlatılmalıdır."
 
 #: data/ui/theme-viewer-window.ui:86
 msgid "Reload"
